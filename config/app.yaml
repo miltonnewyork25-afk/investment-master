@@ -1,0 +1,39 @@
+# 投资大师 - 应用配置
+
+# 100Baggers API 配置
+baggers:
+  base_url: "https://www.100baggers.club"
+  endpoints:
+    search: "/api/search"
+    summary: "/api/generate-summary"
+    compare: "/api/compare-companies"
+    strategy: "/api/get-strategy-report"
+  max_compare: 10         # 对比功能最大股票数
+  timeout: 30000          # 请求超时（毫秒）
+
+# SEC API 配置
+sec:
+  base_url: "https://data.sec.gov"
+  user_agent: "InvestmentMaster/1.0 (contact@example.com)"
+  rate_limit: 10          # 每秒最大请求数
+  cache_ttl: 86400000     # 缓存有效期（毫秒，24小时）
+
+# 数据路径
+paths:
+  cache: "./data/cache"
+  output: "./data/output"
+  mock: "./data/mock"
+
+# 运行模式
+# - mock: 使用虚拟数据（开发/测试）
+# - live: 真实 API 调用（生产）
+mode: "mock"
+
+# IR 抓取配置（如需扩展）
+ir:
+  allowed_domains:
+    - "investor.asml.com"
+    - "investor.lamresearch.com"
+    - "ir.appliedmaterials.com"
+    - "ir.kla.com"
+  fetch_pdf: false        # 是否抓取 PDF（暂不支持）
