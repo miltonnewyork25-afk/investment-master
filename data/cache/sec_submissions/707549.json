@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "accession_number": "0000707549-24-000015",
+      "form_type": "10-K",
+      "filing_date": "2024-02-28",
+      "cik": "707549",
+      "company_name": "Lam Research Corporation",
+      "items_extracted": [
+        "Item 1",
+        "Item 1A",
+        "Item 7"
+      ]
+    }
+  ],
+  "cachedAt": 1768966863407,
+  "ttl": 86400000
+}

@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "accession_number": "0000006951-24-000008",
+      "form_type": "10-K",
+      "filing_date": "2024-01-20",
+      "cik": "6951",
+      "company_name": "Applied Materials, Inc.",
+      "items_extracted": [
+        "Item 1",
+        "Item 1A",
+        "Item 7"
+      ]
+    }
+  ],
+  "cachedAt": 1768966863407,
+  "ttl": 86400000
+}

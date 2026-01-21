@@ -1,0 +1,61 @@
+{
+  "exported_at": "2026-01-21T03:41:03.409Z",
+  "stats": {
+    "fetch": {
+      "total": 0,
+      "success": 0,
+      "failed": 0,
+      "cached": 0,
+      "avgDuration": 0
+    },
+    "rateLimit": {
+      "count": 0,
+      "lastHour": 0
+    }
+  },
+  "logs": [
+    {
+      "timestamp": "2026-01-21T03:41:03.406Z",
+      "level": "info",
+      "agent": "orchestrator",
+      "message": "开始执行周度分析流程"
+    },
+    {
+      "timestamp": "2026-01-21T03:41:03.407Z",
+      "level": "info",
+      "agent": "orchestrator",
+      "message": "Step 1: 获取 SEC filings"
+    },
+    {
+      "timestamp": "2026-01-21T03:41:03.408Z",
+      "level": "info",
+      "agent": "orchestrator",
+      "message": "Step 2: 抽取供应链证据"
+    },
+    {
+      "timestamp": "2026-01-21T03:41:03.408Z",
+      "level": "info",
+      "agent": "orchestrator",
+      "message": "Step 3: 执行数据审计"
+    },
+    {
+      "timestamp": "2026-01-21T03:41:03.408Z",
+      "level": "info",
+      "agent": "data-auditor",
+      "message": "审计完成: 通过, 4 个问题"
+    },
+    {
+      "timestamp": "2026-01-21T03:41:03.408Z",
+      "level": "info",
+      "agent": "orchestrator",
+      "message": "Step 4: 计算周度评分"
+    },
+    {
+      "timestamp": "2026-01-21T03:41:03.408Z",
+      "level": "info",
+      "agent": "orchestrator",
+      "message": "Step 5: 生成周度报告"
+    }
+  ],
+  "fetchLogs": []
+}

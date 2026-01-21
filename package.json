@@ -7,7 +7,10 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "tsx src/index.ts"
+    "dev": "tsx src/index.ts",
+    "run": "tsx src/index.ts run",
+    "audit": "tsx src/index.ts audit",
+    "info": "tsx src/index.ts info"
   },
   "keywords": [
     "investment",

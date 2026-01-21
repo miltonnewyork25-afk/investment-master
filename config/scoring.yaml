@@ -1,0 +1,36 @@
+# 投资大师 - 评分配置
+# 版本化配置，支持审计追溯
+
+version: "1.0.0"
+effective_date: "2024-01-01"
+
+# 估值阈值
+thresholds:
+  # PE 相关
+  pe_overvalued: 40      # PE > 40 视为估值过热
+  pe_undervalued: 15     # PE < 15 视为低估
+
+  # EV/EBIT 相关
+  ev_ebit_overvalued: 35 # EV/EBIT > 35 视为高估
+
+  # 质量指标
+  gm_healthy: 0.40       # 毛利率 >= 40% 为健康
+  roic_good: 0.15        # ROIC >= 15% 为优秀
+
+# 评分权重（必须和为 1.0）
+weights:
+  valuation: 0.35        # 估值权重
+  evidence: 0.40         # 证据权重（供应链关系强度）
+  momentum: 0.25         # 动量权重（收入增长）
+
+# 证据等级权重
+evidence_weights:
+  A: 1.0                 # SEC 官方文件 + 明确数字
+  B: 0.7                 # IR 材料或无数字的 SEC 文件
+  C: 0.4                 # 其他来源
+
+# 风险标志触发条件
+risk_triggers:
+  high_concentration: 1   # 客户数 <= 1 触发集中度风险
+  revenue_decline: -0.10  # 收入下滑 > 10% 触发风险
+  low_margin: 0.25        # 毛利率 < 25% 触发风险

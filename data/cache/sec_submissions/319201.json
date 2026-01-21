@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "accession_number": "0000319201-24-000010",
+      "form_type": "10-K",
+      "filing_date": "2024-03-01",
+      "cik": "319201",
+      "company_name": "KLA Corporation",
+      "items_extracted": [
+        "Item 1",
+        "Item 1A",
+        "Item 7"
+      ]
+    }
+  ],
+  "cachedAt": 1768966863407,
+  "ttl": 86400000
+}

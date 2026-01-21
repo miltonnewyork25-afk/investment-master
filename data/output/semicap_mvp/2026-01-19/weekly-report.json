@@ -1,0 +1,265 @@
+{
+  "generated_at": "2026-01-21T03:41:03.408Z",
+  "week_start": "2026-01-19",
+  "config_version": "1.0.0",
+  "summary": {
+    "total_companies": 19,
+    "new_edges_found": 0,
+    "top_ranked": [
+      "LRCX",
+      "AMAT",
+      "KLAC",
+      "SKHYNIX",
+      "ASML"
+    ],
+    "risk_alerts": [
+      "SKHYNIX: 证据不足",
+      "ASML: 估值过热",
+      "ACLS: 客户集中度高",
+      "ONTO: 客户集中度高",
+      "UCTT: 低毛利率",
+      "TER: 客户集中度高",
+      "UMC: 证据不足",
+      "ENTG: 估值过热, 客户集中度高",
+      "NVDA: 估值过热",
+      "AMD: 估值过热, 证据不足"
+    ]
+  },
+  "scores": [
+    {
+      "ticker": "LRCX",
+      "week_start": "2026-01-19",
+      "overall_score": 72,
+      "valuation_score": 70,
+      "evidence_score": 79,
+      "momentum_score": 65,
+      "risk_flags": [],
+      "config_version": "1.0.0",
+      "rank": 1
+    },
+    {
+      "ticker": "AMAT",
+      "week_start": "2026-01-19",
+      "overall_score": 70,
+      "valuation_score": 70,
+      "evidence_score": 79,
+      "momentum_score": 55,
+      "risk_flags": [],
+      "config_version": "1.0.0",
+      "rank": 2
+    },
+    {
+      "ticker": "KLAC",
+      "week_start": "2026-01-19",
+      "overall_score": 70,
+      "valuation_score": 70,
+      "evidence_score": 73,
+      "momentum_score": 65,
+      "risk_flags": [],
+      "config_version": "1.0.0",
+      "rank": 3
+    },
+    {
+      "ticker": "SKHYNIX",
+      "week_start": "2026-01-19",
+      "overall_score": 70,
+      "valuation_score": 100,
+      "evidence_score": 30,
+      "momentum_score": 90,
+      "risk_flags": [
+        "证据不足"
+      ],
+      "config_version": "1.0.0",
+      "rank": 4
+    },
+    {
+      "ticker": "ASML",
+      "week_start": "2026-01-19",
+      "overall_score": 68,
+      "valuation_score": 35,
+      "evidence_score": 98,
+      "momentum_score": 65,
+      "risk_flags": [
+        "估值过热"
+      ],
+      "config_version": "1.0.0",
+      "rank": 5
+    },
+    {
+      "ticker": "ACLS",
+      "week_start": "2026-01-19",
+      "overall_score": 68,
+      "valuation_score": 85,
+      "evidence_score": 49,
+      "momentum_score": 75,
+      "risk_flags": [
+        "客户集中度高"
+      ],
+      "config_version": "1.0.0",
+      "rank": 6
+    },
+    {
+      "ticker": "MU",
+      "week_start": "2026-01-19",
+      "overall_score": 66,
+      "valuation_score": 90,
+      "evidence_score": 30,
+      "momentum_score": 90,
+      "risk_flags": [],
+      "config_version": "1.0.0",
+      "rank": 7
+    },
+    {
+      "ticker": "ONTO",
+      "week_start": "2026-01-19",
+      "overall_score": 65,
+      "valuation_score": 70,
+      "evidence_score": 54,
+      "momentum_score": 75,
+      "risk_flags": [
+        "客户集中度高"
+      ],
+      "config_version": "1.0.0",
+      "rank": 8
+    },
+    {
+      "ticker": "MKSI",
+      "week_start": "2026-01-19",
+      "overall_score": 64,
+      "valuation_score": 70,
+      "evidence_score": 73,
+      "momentum_score": 40,
+      "risk_flags": [],
+      "config_version": "1.0.0",
+      "rank": 9
+    },
+    {
+      "ticker": "UCTT",
+      "week_start": "2026-01-19",
+      "overall_score": 59,
+      "valuation_score": 40,
+      "evidence_score": 79,
+      "momentum_score": 55,
+      "risk_flags": [
+        "低毛利率"
+      ],
+      "config_version": "1.0.0",
+      "rank": 10
+    },
+    {
+      "ticker": "TER",
+      "week_start": "2026-01-19",
+      "overall_score": 58,
+      "valuation_score": 70,
+      "evidence_score": 48,
+      "momentum_score": 55,
+      "risk_flags": [
+        "客户集中度高"
+      ],
+      "config_version": "1.0.0",
+      "rank": 11
+    },
+    {
+      "ticker": "UMC",
+      "week_start": "2026-01-19",
+      "overall_score": 57,
+      "valuation_score": 100,
+      "evidence_score": 30,
+      "momentum_score": 40,
+      "risk_flags": [
+        "证据不足"
+      ],
+      "config_version": "1.0.0",
+      "rank": 12
+    },
+    {
+      "ticker": "TSM",
+      "week_start": "2026-01-19",
+      "overall_score": 55,
+      "valuation_score": 70,
+      "evidence_score": 30,
+      "momentum_score": 75,
+      "risk_flags": [],
+      "config_version": "1.0.0",
+      "rank": 13
+    },
+    {
+      "ticker": "SAMSUNG",
+      "week_start": "2026-01-19",
+      "overall_score": 52,
+      "valuation_score": 75,
+      "evidence_score": 30,
+      "momentum_score": 55,
+      "risk_flags": [],
+      "config_version": "1.0.0",
+      "rank": 14
+    },
+    {
+      "ticker": "ENTG",
+      "week_start": "2026-01-19",
+      "overall_score": 49,
+      "valuation_score": 25,
+      "evidence_score": 54,
+      "momentum_score": 75,
+      "risk_flags": [
+        "估值过热",
+        "客户集中度高"
+      ],
+      "config_version": "1.0.0",
+      "rank": 15
+    },
+    {
+      "ticker": "NVDA",
+      "week_start": "2026-01-19",
+      "overall_score": 47,
+      "valuation_score": 35,
+      "evidence_score": 30,
+      "momentum_score": 90,
+      "risk_flags": [
+        "估值过热"
+      ],
+      "config_version": "1.0.0",
+      "rank": 16
+    },
+    {
+      "ticker": "GFS",
+      "week_start": "2026-01-19",
+      "overall_score": 46,
+      "valuation_score": 50,
+      "evidence_score": 30,
+      "momentum_score": 65,
+      "risk_flags": [],
+      "config_version": "1.0.0",
+      "rank": 17
+    },
+    {
+      "ticker": "AMD",
+      "week_start": "2026-01-19",
+      "overall_score": 40,
+      "valuation_score": 25,
+      "evidence_score": 30,
+      "momentum_score": 75,
+      "risk_flags": [
+        "估值过热",
+        "证据不足"
+      ],
+      "config_version": "1.0.0",
+      "rank": 18
+    },
+    {
+      "ticker": "INTC",
+      "week_start": "2026-01-19",
+      "overall_score": 18,
+      "valuation_score": 0,
+      "evidence_score": 30,
+      "momentum_score": 25,
+      "risk_flags": [
+        "当前亏损",
+        "收入下滑"
+      ],
+      "config_version": "1.0.0",
+      "rank": 19
+    }
+  ],
+  "new_evidence": []
+}
