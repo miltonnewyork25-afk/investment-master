@@ -3,3 +3,9 @@ dist/
 .env
 .DS_Store
 *.log
+
+# Data pipeline generated files
+data/investment.db
+data/raw/
+data/processed/
+data/pipeline.log

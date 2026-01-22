@@ -32,7 +32,7 @@ SKILLS_DIR = Path.home() / ".claude" / "skills" / "cycle-investing" / "reference
 
 # FMP (Financial Modeling Prep) API
 # 获取: https://financialmodelingprep.com/developer/docs/
-FMP_API_KEY = os.environ.get("FMP_API_KEY", "your_fmp_api_key_here")
+FMP_API_KEY = os.environ.get("FMP_API_KEY", "fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb")
 FMP_BASE_URL = "https://financialmodelingprep.com/api/v3"
 
 # ============================================================
