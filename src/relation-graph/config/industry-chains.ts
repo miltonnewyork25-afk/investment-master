@@ -439,6 +439,33 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Specialty Retail',
       'Restaurants',
     ],
+
+    'Industrial Chain': [
+      'Other Industrial Metals & Mining',
+      'Steel',
+      'Construction Materials',
+      'Farm & Heavy Construction Machinery',
+      'Construction & Engineering',
+      'Industrial Conglomerates',
+      'Railroads',
+      'Trucking',
+      'Integrated Freight & Logistics',
+    ],
+
+    'Packaging Chain': [
+      'Other Industrial Metals & Mining',
+      'Packaging & Containers',
+      'Packaged Foods',
+      'Beverages - Non-Alcoholic',
+    ],
+
+    'Chemicals Chain': [
+      'Chemicals',
+      'Chemicals - Specialty',
+      'Construction Materials',
+      'Auto - Parts',
+      'Packaged Foods',
+    ],
   },
 
   // ============================================================
@@ -765,6 +792,40 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'MDB': 'Enterprise SaaS',             // MongoDB
     'PANW': 'Enterprise SaaS',            // Palo Alto Networks
 
+    // ========== 工业综合/多元化 (Industrial Conglomerates) ==========
+    'HON': 'Industrial Conglomerate',     // Honeywell
+    'MMM': 'Industrial Conglomerate',     // 3M
+    'GE': 'Industrial Conglomerate',      // GE Aerospace
+    'ITW': 'Industrial Conglomerate',     // Illinois Tool Works
+    'EMR': 'Industrial Automation',       // Emerson
+    'ETN': 'Industrial Conglomerate',     // Eaton
+    'PH': 'Industrial Conglomerate',      // Parker Hannifin
+    'ROK': 'Industrial Automation',       // Rockwell Automation
+
+    // ========== 国防/航空航天 (Defense) ==========
+    'LMT': 'Defense Prime',               // Lockheed Martin
+    'GD': 'Defense Prime',                // General Dynamics
+    'NOC': 'Defense Prime',               // Northrop Grumman
+    'HII': 'Defense Prime',               // Huntington Ingalls - 造船
+    'LHX': 'Defense Electronics',         // L3Harris - 电子战
+    'HWM': 'Aerospace Supplier',          // Howmet - 航空紧固件/发动机件
+
+    // ========== 铁路 (Railroads) ==========
+    'UNP': 'Class I Railroad',            // Union Pacific
+    'CSX': 'Class I Railroad',            // CSX
+    'NSC': 'Class I Railroad',            // Norfolk Southern
+
+    // ========== 工业分销 (Industrial Distribution) ==========
+    'FAST': 'Industrial Distribution',    // Fastenal
+    'GWW': 'Industrial Distribution',     // Grainger
+    'MSM': 'Industrial Distribution',     // MSC Industrial
+    'WSO': 'HVAC Distribution',           // Watsco
+    'POOL': 'Pool Distribution',          // Pool Corp
+
+    // ========== 卡车/发动机 (Trucks & Engines) ==========
+    'PCAR': 'Truck OEM',                  // PACCAR
+    'CMI': 'Engine & Power',              // Cummins
+
     // ========== 建筑/基建产业链细分 ==========
     // 铜/有色金属 (Copper/Non-Ferrous)
     'FCX': 'Copper Mining',               // Freeport-McMoRan
@@ -784,7 +845,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'VMC': 'Aggregates',                  // Vulcan Materials
     'MLM': 'Aggregates',                  // Martin Marietta
     'SUM': 'Aggregates',                  // Summit Materials
-    'ITE': 'Aggregates',                  // US Concrete
+    'CX': 'Cement',                       // Cemex
 
     // 建筑机械 (Construction Equipment)
     'CAT': 'Construction Equipment',      // Caterpillar
@@ -811,6 +872,23 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'NVR': 'Homebuilder',                 // NVR
     'KBH': 'Homebuilder',                 // KB Home
     'MTH': 'Homebuilder',                 // Meritage Homes
+
+    // ========== 包装 (Packaging) ==========
+    'BALL': 'Metal Packaging',            // Ball Corp
+    'CCK': 'Metal Packaging',             // Crown Holdings
+    'PKG': 'Paper Packaging',             // Packaging Corp
+    'IP': 'Paper Packaging',              // International Paper
+    'WRK': 'Paper Packaging',             // WestRock
+    'AMCR': 'Flexible Packaging',         // Amcor
+
+    // ========== 特种化工/工业气体 (Specialty Chemicals) ==========
+    'APD': 'Industrial Gases',            // Air Products
+    'LIN': 'Industrial Gases',            // Linde
+    'SHW': 'Coatings',                    // Sherwin-Williams
+    'PPG': 'Coatings',                    // PPG Industries
+    'ECL': 'Specialty Chemicals',         // Ecolab
+    'IFF': 'Specialty Chemicals',         // IFF
+    'ALB': 'Lithium',                     // Albemarle
 
     // ========== 金融服务产业链细分 ==========
     // 交易所 (Exchanges)
@@ -1372,6 +1450,136 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'E&C Contractor': [
       'Homebuilder',
       'Data Center REIT',
+    ],
+
+    // ========== 工业产业链扩展 ==========
+    // 工业综合 - 服务多个下游
+    'Industrial Conglomerate': [
+      'E&C Contractor',
+      'Aircraft OEM',
+      'Traditional OEM',
+      'Data Center REIT',
+    ],
+
+    // 工业自动化 - 服务制造业
+    'Industrial Automation': [
+      'Traditional OEM',
+      'EV OEM',
+      'E&C Contractor',
+      'Semiconductor Foundry',
+    ],
+
+    // 工业分销 - 服务各类制造/建筑
+    'Industrial Distribution': [
+      'E&C Contractor',
+      'Construction Equipment',
+      'Traditional OEM',
+    ],
+
+    // HVAC分销 - 服务建筑/房建
+    'HVAC Distribution': [
+      'Homebuilder',
+      'E&C Contractor',
+    ],
+
+    // 泳池分销 - 服务房建
+    'Pool Distribution': [
+      'Homebuilder',
+    ],
+
+    // 卡车制造 - 服务物流/运输
+    'Truck OEM': [
+      'LTL Trucking',
+      'Truckload',
+      'Express Logistics',
+    ],
+
+    // 发动机/动力系统
+    'Engine & Power': [
+      'Truck OEM',
+      'Construction Equipment',
+      'Class I Railroad',
+    ],
+
+    // 特种车辆
+    'Specialty Vehicles': [
+      'E&C Contractor',
+      'Defense Prime',
+    ],
+
+    // ========== 包装产业链 ==========
+    // 金属包装 - 服务饮料/食品
+    'Metal Packaging': [
+      'Soft Drinks',
+      'Energy Drinks',
+      'Snacks & Beverages',
+    ],
+
+    // 纸包装 - 服务电商/零售/食品
+    'Paper Packaging': [
+      'E-commerce',
+      'Mass Retail',
+      'Packaged Foods',
+    ],
+
+    // 柔性包装 - 服务食品/医疗
+    'Flexible Packaging': [
+      'Packaged Foods',
+      'Snacks',
+      'Big Pharma',
+    ],
+
+    // ========== 特种化工产业链 ==========
+    // 工业气体 - 基础工业原料
+    'Industrial Gases': [
+      'Steel Producer',
+      'Refining',
+      'Semiconductor Foundry',
+      'Big Pharma',
+    ],
+
+    // 涂料 - 服务建筑/汽车
+    'Coatings': [
+      'Homebuilder',
+      'Auto Parts Tier1',
+      'Aircraft OEM',
+    ],
+
+    // 特种化学品 - 服务多行业
+    'Specialty Chemicals': [
+      'Packaged Foods',
+      'Household Products',
+      'Big Pharma',
+    ],
+
+    // 锂 - 服务电池/EV
+    'Lithium': [
+      'EV Battery',
+      'EV Components Tier1',
+    ],
+
+    // 水泥 - 服务基建
+    'Cement': [
+      'E&C Contractor',
+      'Homebuilder',
+    ],
+
+    // ========== 国防产业链 ==========
+    // 国防主承包商 - B2G模式
+    'Defense Prime': [
+      'Full-Service Airline',  // 军转民技术
+    ],
+
+    // 国防电子
+    'Defense Electronics': [
+      'Defense Prime',
+    ],
+
+    // 航空零部件供应商
+    'Aerospace Supplier': [
+      'Aircraft OEM',
+      'Aircraft Engine',
+      'Defense Prime',
     ],
 
     // ========== 金融服务产业链 ==========

@@ -563,15 +563,94 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // ========== 中周期 (Mid Cycle) ==========
   // 经济扩张期受益、资本开支增加
   // 工业、材料、科技
-  'CAT': 'mid',       // 工业机械
-  'DE': 'mid',
-  'EMR': 'mid',
-  'HON': 'mid',
-  'GE': 'mid',
-  'NUE': 'mid',       // 钢铁
-  'STLD': 'mid',
-  'CLF': 'mid',
-  'FCX': 'mid',       // 铜矿
+
+  // ---------- 工业综合 (Industrial Conglomerates) ----------
+  'HON': 'mid',       // Honeywell
+  'MMM': 'mid',       // 3M
+  'GE': 'mid',        // GE Aerospace
+  'ITW': 'mid',       // Illinois Tool Works
+  'EMR': 'mid',       // Emerson
+  'ETN': 'mid',       // Eaton
+  'PH': 'mid',        // Parker Hannifin
+  'ROK': 'mid',       // Rockwell Automation
+
+  // ---------- 建筑/农业机械 (Construction & Ag Equipment) ----------
+  'CAT': 'mid',       // Caterpillar
+  'DE': 'mid',        // Deere
+  'AGCO': 'mid',      // AGCO
+  'CNHI': 'mid',      // CNH Industrial
+  'PCAR': 'mid',      // PACCAR
+  'CMI': 'mid',       // Cummins
+  'TEX': 'mid',       // Terex
+  'OSK': 'mid',       // Oshkosh
+
+  // ---------- 铁路 (Railroads) ----------
+  'UNP': 'mid',       // Union Pacific
+  'CSX': 'mid',       // CSX
+  'NSC': 'mid',       // Norfolk Southern
+
+  // ---------- 工业分销 (Industrial Distribution) ----------
+  'FAST': 'mid',      // Fastenal
+  'GWW': 'mid',       // Grainger
+  'MSM': 'mid',       // MSC Industrial
+  'WSO': 'mid',       // Watsco
+  'POOL': 'mid',      // Pool Corp
+
+  // ---------- 钢铁 (Steel) ----------
+  'NUE': 'mid',       // Nucor
+  'STLD': 'mid',      // Steel Dynamics
+  'CLF': 'mid',       // Cleveland-Cliffs
+  'X': 'mid',         // US Steel
+  'RS': 'mid',        // Reliance Steel
+
+  // ---------- 铜/有色金属 (Copper & Non-Ferrous) ----------
+  'FCX': 'mid',       // Freeport-McMoRan
+  'SCCO': 'mid',      // Southern Copper
+  'AA': 'mid',        // Alcoa
+
+  // ---------- 骨料/水泥 (Aggregates & Cement) ----------
+  'VMC': 'mid',       // Vulcan Materials
+  'MLM': 'mid',       // Martin Marietta
+  'CX': 'mid',        // Cemex
+
+  // ---------- 工程承包 (E&C) ----------
+  'PWR': 'mid',       // Quanta Services
+  'ACM': 'mid',       // AECOM
+  'J': 'mid',         // Jacobs
+  'MTZ': 'mid',       // MasTec
+  'EME': 'mid',       // EMCOR Group
+
+  // ---------- 包装 (Packaging) ----------
+  'BALL': 'mid',      // Ball Corp
+  'CCK': 'mid',       // Crown Holdings
+  'PKG': 'mid',       // Packaging Corp
+  'IP': 'mid',        // International Paper
+  'WRK': 'mid',       // WestRock
+  'AMCR': 'mid',      // Amcor
+
+  // ---------- 特种化工/工业气体 (Specialty Chemicals) ----------
+  'APD': 'mid',       // Air Products
+  'LIN': 'mid',       // Linde
+  'SHW': 'mid',       // Sherwin-Williams
+  'PPG': 'mid',       // PPG Industries
+  'ECL': 'mid',       // Ecolab
+  'IFF': 'mid',       // IFF
+  'ALB': 'late',      // Albemarle - 锂周期
+
+  // ---------- 航空航天/国防 (Aerospace & Defense) ----------
+  // 国防相对防御，商用航空周期性
+  'BA': 'mid',        // Boeing - 商用航空周期
+  'RTX': 'defensive', // Raytheon - 国防为主
+  'LMT': 'defensive', // Lockheed Martin - 国防
+  'GD': 'defensive',  // General Dynamics - 国防
+  'NOC': 'defensive', // Northrop Grumman - 国防
+  'HII': 'defensive', // Huntington Ingalls - 国防
+  'TXT': 'mid',       // Textron - 商用
+  'HWM': 'mid',       // Howmet - 航空零部件
+  'TDG': 'mid',       // TransDigm - 航空零部件
+  'HEI': 'mid',       // HEICO - 航空零部件
+
+  // ---------- 科技 (Tech) ----------
   'MSFT': 'mid',      // 科技
   'AAPL': 'mid',
   'GOOGL': 'mid',
@@ -1547,6 +1626,282 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'NCLH': {
     interestRate: -0.5, inflation: -0.4, gdpGrowth: 0.8, unemployment: -0.6,
     consumerConfidence: 0.9, housingMarket: 0.1, dollarIndex: 0.3, oilPrice: -0.5,
+  },
+
+  // ========== 工业/材料 (中周期 - 高GDP敏感度) ==========
+
+  // 工业综合 - GDP和资本开支敏感
+  'HON': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  'MMM': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'GE': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'ITW': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'EMR': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'ETN': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'PH': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  'ROK': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // 建筑/农业机械 - 高GDP和投资敏感
+  'CAT': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.8, unemployment: -0.5,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.4, oilPrice: 0.3,
+  },
+  'DE': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  'AGCO': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  'CNHI': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  'PCAR': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.2,
+  },
+  'CMI': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'TEX': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  'OSK': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // 铁路 - GDP敏感，相对稳定
+  'UNP': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'CSX': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'NSC': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+
+  // 工业分销 - GDP敏感
+  'FAST': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'GWW': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'MSM': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'WSO': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.6, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'POOL': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // 钢铁 - 高GDP和工业生产敏感
+  'NUE': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.8, unemployment: -0.5,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  'STLD': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.8, unemployment: -0.5,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  'CLF': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.8, unemployment: -0.5,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  'X': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.8, unemployment: -0.5,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.5, oilPrice: 0.2,
+  },
+  'RS': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+
+  // 铜/有色金属 - 高GDP和通胀敏感
+  'FCX': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.8, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.6, oilPrice: 0.3,
+  },
+  'SCCO': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.8, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.6, oilPrice: 0.3,
+  },
+  'AA': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.8, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.5, oilPrice: 0.4,
+  },
+
+  // 骨料/水泥 - 基建周期敏感
+  'VMC': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'MLM': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'CX': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+
+  // 工程承包 - 资本开支敏感
+  'PWR': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+  'ACM': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'J': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'MTZ': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+  'EME': {  // EMCOR - 电气/机械承包
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+
+  // 包装 - 消费需求驱动，相对稳定
+  'BALL': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'CCK': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'PKG': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'IP': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'WRK': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'AMCR': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+
+  // 特种化工/工业气体 - GDP敏感
+  'APD': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'LIN': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  'SHW': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.6, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'PPG': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.4, oilPrice: 0.1,
+  },
+  'ECL': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  'IFF': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.1,
+  },
+  'ALB': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+
+  // 航空航天/国防 - 国防相对防御，商用航空周期性
+  'BA': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.2,
+  },
+  'RTX': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'LMT': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'GD': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'NOC': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'HII': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'TXT': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'HWM': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'TDG': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'HEI': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
   },
 };
 
