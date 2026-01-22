@@ -14,6 +14,11 @@
     python main.py --weekly                # 每周例行任务（含指标更新）
     python main.py --update-journals       # 更新投资日志
     python main.py --notify-test           # 测试通知系统
+    python main.py --predict all           # 预测管理（生成+验证+报告）
+    python main.py --predict generate      # 生成新预测
+    python main.py --predict verify        # 验证到期预测
+    python main.py --predict report        # 查看准确率报告
+    python main.py --predict errors        # 分析错误预测
 """
 
 import argparse
@@ -31,6 +36,7 @@ from collectors.scfi_collector import SCFICollector, BDICollector, OrderbookColl
 from collectors.dram_collector import DRAMCollector, MemoryCAPEXCollector
 from storage.db import Database
 from processors.scorer import Scorer
+from processors.predictor import Predictor
 from alerts.detector import AlertDetector
 from alerts.notifier import Notifier
 
@@ -369,13 +375,17 @@ def daily_routine():
     # 3. 检测信号
     alerts = detect_signals(score_results)
 
-    # 4. 发送每日摘要
+    # 4. 验证到期预测
+    predictor = Predictor()
+    predictor.verify_predictions()
+
+    # 5. 发送每日摘要
     if score_results:
         notifier = Notifier()
         summary_results = notifier.send_daily_summary(score_results, alerts or [])
         print(f"\n[NOTIFY] 每日摘要发送结果: {summary_results}")
 
-    # 5. 显示状态
+    # 6. 显示状态
     show_status()
 
     print("\n[DONE] 每日例行任务完成")
@@ -399,16 +409,41 @@ def weekly_routine():
     # 4. 更新投资日志
     update_journals()
 
-    # 5. 发送每日摘要
+    # 5. 预测管理：验证旧预测 + 生成新预测
+    predictor = Predictor()
+    predictor.verify_predictions()
+    predictor.generate_predictions()
+
+    # 6. 发送每周摘要
     if score_results:
         notifier = Notifier()
         summary_results = notifier.send_daily_summary(score_results, alerts or [])
         print(f"\n[NOTIFY] 每周摘要发送结果: {summary_results}")
 
-    # 6. 显示状态
+    # 7. 显示状态
     show_status()
 
+    # 8. 显示准确率报告
+    predictor.get_accuracy_report()
+
     print("\n[DONE] 每周例行任务完成")
+
+
+def manage_predictions(action: str = "all"):
+    """管理预测"""
+    predictor = Predictor()
+
+    if action in ["all", "generate"]:
+        predictor.generate_predictions()
+
+    if action in ["all", "verify"]:
+        predictor.verify_predictions()
+
+    if action in ["all", "report"]:
+        predictor.get_accuracy_report()
+
+    if action == "errors":
+        predictor.analyze_errors()
 
 
 def test_notification():
@@ -458,6 +493,8 @@ def main():
     parser.add_argument("--weekly", action="store_true", help="执行每周例行任务")
     parser.add_argument("--update-journals", action="store_true", help="更新投资日志")
     parser.add_argument("--notify-test", action="store_true", help="测试通知系统")
+    parser.add_argument("--predict", type=str, metavar="ACTION",
+                        help="预测管理 (all/generate/verify/report/errors)")
 
     args = parser.parse_args()
 
@@ -491,10 +528,13 @@ def main():
     if args.notify_test:
         test_notification()
 
+    if args.predict:
+        manage_predictions(args.predict)
+
     # 如果没有指定任何参数，显示帮助
     if not any([args.init, args.collect, args.score, args.detect,
                 args.status, args.daily, args.weekly, args.update_journals,
-                args.notify_test]):
+                args.notify_test, args.predict]):
         parser.print_help()
 
 

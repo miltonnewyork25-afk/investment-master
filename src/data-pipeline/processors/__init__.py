@@ -3,5 +3,6 @@
 """
 
 from .scorer import Scorer
+from .predictor import Predictor
 
-__all__ = ["Scorer"]
+__all__ = ["Scorer", "Predictor"]
