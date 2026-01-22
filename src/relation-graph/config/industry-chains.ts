@@ -712,6 +712,17 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'ZBH': 'Large MedTech',               // Zimmer Biomet
     'BDX': 'Large MedTech',               // Becton Dickinson
 
+    // 生命科学工具 (Life Sciences Tools)
+    'TMO': 'Life Sciences Tools',         // Thermo Fisher
+    'DHR': 'Life Sciences Tools',         // Danaher
+    'A': 'Life Sciences Tools',           // Agilent
+    'IQV': 'CRO',                         // IQVIA - 临床CRO
+    'WAT': 'Life Sciences Tools',         // Waters
+
+    // 动物健康 (Animal Health)
+    'ZTS': 'Animal Health',               // Zoetis
+    'IDXX': 'Animal Health',              // IDEXX
+
     // ========== 云计算/数据中心产业链细分 ==========
     // 服务器/存储硬件 (Server Hardware)
     'DELL': 'Server Hardware',            // Dell
@@ -1236,6 +1247,24 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     'Large MedTech': [
       'Hospital',
+    ],
+
+    // 生命科学工具服务于制药/生物科技研发
+    'Life Sciences Tools': [
+      'Big Pharma',
+      'Large Biotech',
+      'Emerging Biotech',
+    ],
+
+    'CRO': [
+      'Big Pharma',
+      'Large Biotech',
+      'Emerging Biotech',
+    ],
+
+    // 动物健康相对独立
+    'Animal Health': [
+      'Ag Commodities',  // 畜牧业相关
     ],
 
     // ========== 云计算/数据中心产业链 ==========

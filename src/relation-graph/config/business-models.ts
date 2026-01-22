@@ -2013,6 +2013,390 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Financial Data',
     tags: ['index', 'esg', 'analytics', 'benchmark'],
   },
+
+  // ========================================================
+  // 医疗健康行业 (Healthcare)
+  // 产业链: 制药 → 生物科技 → 医疗器械 → 医疗服务 → 药品分销
+  // ========================================================
+
+  // ---------- 大型制药 (Big Pharma) ----------
+  // 特点: 多元化产品线、稳定现金流、专利悬崖风险
+  'JNJ': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Big Pharma',
+    tags: ['diversified', 'consumer', 'medtech', 'oncology'],
+  },
+  'PFE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Big Pharma',
+    tags: ['vaccines', 'oncology', 'immunology', 'rare_disease'],
+  },
+  'MRK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Big Pharma',
+    tags: ['oncology', 'keytruda', 'vaccines', 'animal_health'],
+  },
+  'ABBV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Big Pharma',
+    tags: ['immunology', 'humira', 'oncology', 'aesthetics'],
+  },
+  'LLY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Big Pharma',
+    tags: ['diabetes', 'glp1', 'obesity', 'alzheimers', 'oncology'],
+  },
+  'BMY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Big Pharma',
+    tags: ['oncology', 'immunology', 'cardiovascular', 'cell_therapy'],
+  },
+  'AZN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Big Pharma',
+    tags: ['oncology', 'respiratory', 'cardiovascular', 'rare_disease'],
+  },
+  'NVS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Big Pharma',
+    tags: ['oncology', 'immunology', 'cardiovascular', 'ophthalmology'],
+  },
+  'GSK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Big Pharma',
+    tags: ['vaccines', 'respiratory', 'hiv', 'oncology'],
+  },
+
+  // ---------- 生物科技 (Biotech) ----------
+  // 特点: 高研发投入、二元结果、专利驱动
+  'AMGN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech',
+    tags: ['biosimilars', 'oncology', 'inflammation', 'bone'],
+  },
+  'GILD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech',
+    tags: ['hiv', 'hepatitis', 'oncology', 'cell_therapy'],
+  },
+  'BIIB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech',
+    tags: ['neurology', 'alzheimers', 'ms', 'biosimilars'],
+  },
+  'VRTX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech',
+    tags: ['cystic_fibrosis', 'gene_editing', 'rare_disease', 'pain'],
+  },
+  'REGN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech',
+    tags: ['ophthalmology', 'oncology', 'immunology', 'genetics'],
+  },
+  'MRNA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech',
+    tags: ['mrna', 'vaccines', 'oncology', 'rare_disease'],
+  },
+  'ALNY': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech',
+    tags: ['rnai', 'rare_disease', 'cardiovascular', 'genetic'],
+  },
+
+  // ---------- 医疗器械 (Medical Devices) ----------
+  // 特点: 高毛利、粘性客户、技术迭代
+  'MDT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['diversified', 'cardiac', 'spine', 'diabetes', 'surgical'],
+  },
+  'ABT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['diagnostics', 'nutrition', 'cardiac', 'diabetes', 'cgm'],
+  },
+  'SYK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['orthopedics', 'surgical', 'neurotechnology', 'robotics'],
+  },
+  'BSX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['cardiac', 'endoscopy', 'urology', 'neuromodulation'],
+  },
+  'ISRG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['robotic_surgery', 'da_vinci', 'instruments', 'training'],
+  },
+  'EW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['structural_heart', 'tavr', 'critical_care'],
+  },
+  'ZBH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['orthopedics', 'knee', 'hip', 'spine', 'dental'],
+  },
+  'BDX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['medical_supplies', 'diagnostics', 'diabetes', 'interventional'],
+  },
+
+  // ---------- 医疗保险/管理式医疗 (Managed Care) ----------
+  // 特点: 规模效应、会员基础、政策敏感
+  'UNH': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Managed Care',
+    tags: ['insurance', 'optum', 'pbm', 'analytics', 'medicare'],
+  },
+  'ELV': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Managed Care',
+    tags: ['insurance', 'medicaid', 'medicare', 'commercial'],
+  },
+  'HUM': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Managed Care',
+    tags: ['medicare_advantage', 'seniors', 'centerwell'],
+  },
+  'CI': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Managed Care',
+    tags: ['insurance', 'evernorth', 'pbm', 'specialty'],
+  },
+  'CNC': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Managed Care',
+    tags: ['medicaid', 'medicare', 'marketplace', 'government'],
+  },
+
+  // ---------- 药品分销/PBM (Drug Distribution) ----------
+  // 特点: 低毛利高周转、规模经济、合同定价
+  'MCK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Drug Distribution',
+    tags: ['distribution', 'specialty', 'oncology', 'analytics'],
+  },
+  'ABC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Drug Distribution',
+    tags: ['distribution', 'specialty', 'animal_health', 'alliance'],
+  },
+  'CAH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Drug Distribution',
+    tags: ['distribution', 'nuclear', 'medical_products', 'at_home'],
+  },
+
+  // ---------- 药房零售 (Pharmacy Retail) ----------
+  // 特点: 零售+医疗服务融合、PBM整合
+  'CVS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Pharmacy Retail',
+    tags: ['pharmacy', 'pbm', 'health_hubs', 'aetna', 'insurance'],
+  },
+  'WBA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Pharmacy Retail',
+    tags: ['pharmacy', 'retail', 'international', 'boots'],
+  },
+
+  // ---------- 医疗服务 (Healthcare Services) ----------
+  // 特点: 劳动密集、区域性、支付方多元
+  'HCA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Hospital Systems',
+    tags: ['hospitals', 'surgery_centers', 'emergency', 'urban'],
+  },
+  'THC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Hospital Systems',
+    tags: ['hospitals', 'ambulatory', 'uspi', 'behavioral'],
+  },
+  'UHS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Hospital Systems',
+    tags: ['hospitals', 'behavioral', 'acute', 'psychiatric'],
+  },
+
+  // ---------- 生命科学工具 (Life Sciences Tools) ----------
+  // 特点: 高毛利、研发支出驱动、耗材模式
+  'TMO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Sciences Tools',
+    tags: ['instruments', 'consumables', 'pharma_services', 'diagnostics'],
+  },
+  'DHR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Sciences Tools',
+    tags: ['diagnostics', 'bioprocessing', 'environmental', 'dbs'],
+  },
+  'A': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Sciences Tools',
+    tags: ['instruments', 'consumables', 'genomics', 'diagnostics'],
+  },
+  'IQV': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Sciences Tools',
+    tags: ['cro', 'clinical_trials', 'analytics', 'real_world_data'],
+  },
+  'WAT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Sciences Tools',
+    tags: ['chromatography', 'mass_spec', 'ta_instruments'],
+  },
+
+  // ---------- 动物健康 (Animal Health) ----------
+  // 特点: 宠物+畜牧、防御性需求
+  'ZTS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Animal Health',
+    tags: ['companion', 'livestock', 'vaccines', 'parasiticides'],
+  },
+  'IDXX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Animal Health',
+    tags: ['diagnostics', 'companion', 'reference_labs', 'software'],
+  },
 };
 
 // ============================================================

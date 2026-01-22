@@ -707,6 +707,69 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'AFL': 'defensive', // Aflac
   'LNC': 'defensive', // Lincoln National
   'PFG': 'defensive', // Principal
+
+  // ========== 医疗健康 (Defensive) ==========
+  // 大型制药 - 稳定现金流、专利保护
+  'JNJ': 'defensive',   // Johnson & Johnson
+  'PFE': 'defensive',   // Pfizer
+  'MRK': 'defensive',   // Merck
+  'ABBV': 'defensive',  // AbbVie
+  'LLY': 'defensive',   // Eli Lilly
+  'BMY': 'defensive',   // Bristol-Myers
+  'AZN': 'defensive',   // AstraZeneca
+  'NVS': 'defensive',   // Novartis
+  'GSK': 'defensive',   // GSK
+
+  // 生物科技 - 略带成长属性但仍防御
+  'AMGN': 'defensive',  // Amgen
+  'GILD': 'defensive',  // Gilead
+  'BIIB': 'defensive',  // Biogen
+  'VRTX': 'defensive',  // Vertex
+  'REGN': 'defensive',  // Regeneron
+  'MRNA': 'mid',        // Moderna - 疫苗周期性
+  'ALNY': 'defensive',  // Alnylam
+
+  // 医疗器械 - 手术量与经济相关但需求刚性
+  'MDT': 'defensive',   // Medtronic
+  'ABT': 'defensive',   // Abbott
+  'SYK': 'defensive',   // Stryker
+  'BSX': 'defensive',   // Boston Scientific
+  'ISRG': 'defensive',  // Intuitive Surgical
+  'EW': 'defensive',    // Edwards Lifesciences
+  'ZBH': 'defensive',   // Zimmer Biomet
+  'BDX': 'defensive',   // Becton Dickinson
+
+  // 医疗保险/管理式医疗
+  'UNH': 'defensive',   // UnitedHealth
+  'ELV': 'defensive',   // Elevance
+  'HUM': 'defensive',   // Humana
+  'CI': 'defensive',    // Cigna
+  'CNC': 'defensive',   // Centene
+
+  // 药品分销
+  'MCK': 'defensive',   // McKesson
+  'ABC': 'defensive',   // AmerisourceBergen
+  'CAH': 'defensive',   // Cardinal Health
+
+  // 药房零售
+  'CVS': 'defensive',   // CVS Health
+  'WBA': 'defensive',   // Walgreens
+
+  // 医院系统 - 略带周期性
+  'HCA': 'mid',         // HCA Healthcare
+  'THC': 'mid',         // Tenet
+  'UHS': 'mid',         // Universal Health
+
+  // 生命科学工具 - 研发支出驱动
+  'TMO': 'mid',         // Thermo Fisher
+  'DHR': 'mid',         // Danaher
+  'A': 'mid',           // Agilent
+  'IQV': 'mid',         // IQVIA
+  'WAT': 'mid',         // Waters
+
+  // 动物健康 - 防御性
+  'ZTS': 'defensive',   // Zoetis
+  'IDXX': 'defensive',  // IDEXX
 };
 
 // ============================================================
@@ -1090,6 +1153,126 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
     consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.0,
   },
+
+  // ========== 医疗健康 (低宏观敏感度 - 防御型) ==========
+
+  // 大型制药 - 需求刚性，低周期敏感
+  'JNJ': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'PFE': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'MRK': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ABBV': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'LLY': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'BMY': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // 生物科技 - 类似大型制药
+  'AMGN': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'GILD': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'VRTX': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'REGN': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // 医疗器械 - 略受手术量影响
+  'MDT': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ABT': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'SYK': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ISRG': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // 医疗保险/管理式医疗 - 略受失业率影响
+  'UNH': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'ELV': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'CI': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'HUM': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // 药品分销 - 低敏感度
+  'MCK': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'ABC': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'CAH': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // 生命科学工具 - 研发支出相关
+  'TMO': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'DHR': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'A': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // 动物健康 - 防御性
+  'ZTS': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'IDXX': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
 };
 
 // ============================================================
@@ -1148,6 +1331,15 @@ export const CROSS_CHAIN_IMPACT: Record<string, string[]> = {
   'BX': ['Private Equity', 'Real Estate', 'Credit', 'Infrastructure'],
   'SPGI': ['Ratings', 'Index', 'Commodities', 'Analytics'],
   'CME': ['Derivatives', 'Commodities', 'Interest Rates', 'FX'],
+
+  // 医疗健康 - 产业链交叉
+  'JNJ': ['Big Pharma', 'Medical Devices', 'Consumer Health'],
+  'UNH': ['Managed Care', 'PBM', 'Healthcare IT', 'Provider Services'],
+  'CVS': ['Pharmacy Retail', 'PBM', 'Managed Care', 'Healthcare Services'],
+  'TMO': ['Life Sciences Tools', 'Diagnostics', 'Pharma Services', 'Bioprocessing'],
+  'DHR': ['Life Sciences Tools', 'Diagnostics', 'Environmental', 'Industrial'],
+  'ABT': ['Medical Devices', 'Diagnostics', 'Nutrition', 'Diabetes Care'],
+  'MCK': ['Drug Distribution', 'Specialty Pharma', 'Healthcare IT', 'Oncology'],
 };
 
 // ============================================================
