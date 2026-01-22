@@ -24,6 +24,14 @@ import {
   getSubIndustryRelation,
   getSubIndustry,
 } from '../config/industry-chains.js';
+import {
+  getCustomerProfile,
+  getCyclePosition,
+  getMacroSensitivity,
+  checkCrossChainRelation,
+  calculateCustomerOverlap,
+  calculateMacroSimilarity,
+} from '../config/company-profiles.js';
 
 // ============ 工具函数 ============
 
@@ -340,6 +348,156 @@ export class RelationEngine {
     return null;
   }
 
+  // ============ 规则7: 跨产业链关联 ============
+
+  /** 检测跨产业链关联关系 */
+  checkCrossChainRelation(
+    companyA: CompanyAttributes,
+    companyB: CompanyAttributes
+  ): CompanyRelation | null {
+    const symbolA = companyA.identifier.symbol;
+    const symbolB = companyB.identifier.symbol;
+
+    const commonChains = checkCrossChainRelation(symbolA, symbolB);
+
+    if (commonChains.length > 0) {
+      return {
+        sourceSymbol: symbolA,
+        targetSymbol: symbolB,
+        relationType: RelationType.CROSS_CHAIN,
+        strength: Math.min(0.5 + commonChains.length * 0.15, 0.95),
+        confidence: 0.85,
+        evidence: `跨链关联: ${commonChains.join(', ')}`,
+        computedAt: new Date().toISOString(),
+      };
+    }
+
+    return null;
+  }
+
+  // ============ 规则8: 客群重合 ============
+
+  /** 检测目标客群重合关系 */
+  checkCustomerOverlap(
+    companyA: CompanyAttributes,
+    companyB: CompanyAttributes
+  ): CompanyRelation | null {
+    const symbolA = companyA.identifier.symbol;
+    const symbolB = companyB.identifier.symbol;
+
+    const profileA = getCustomerProfile(symbolA);
+    const profileB = getCustomerProfile(symbolB);
+
+    if (!profileA || !profileB) {
+      return null;
+    }
+
+    const overlap = calculateCustomerOverlap(profileA, profileB);
+
+    // 客群重合度阈值 0.6
+    if (overlap > 0.6) {
+      return {
+        sourceSymbol: symbolA,
+        targetSymbol: symbolB,
+        relationType: RelationType.CUSTOMER_OVERLAP,
+        strength: overlap,
+        confidence: 0.8,
+        evidence: `客群重合度: ${(overlap * 100).toFixed(1)}%`,
+        computedAt: new Date().toISOString(),
+      };
+    }
+
+    return null;
+  }
+
+  // ============ 规则9: 宏观敏感度 ============
+
+  /** 检测宏观因子敏感度相关性 */
+  checkMacroSensitivity(
+    companyA: CompanyAttributes,
+    companyB: CompanyAttributes
+  ): CompanyRelation | null {
+    const symbolA = companyA.identifier.symbol;
+    const symbolB = companyB.identifier.symbol;
+
+    const sensA = getMacroSensitivity(symbolA);
+    const sensB = getMacroSensitivity(symbolB);
+
+    if (!sensA || !sensB) {
+      return null;
+    }
+
+    const similarity = calculateMacroSimilarity(sensA, sensB);
+
+    // 宏观敏感度高度正相关 (> 0.7)
+    if (similarity > 0.7) {
+      return {
+        sourceSymbol: symbolA,
+        targetSymbol: symbolB,
+        relationType: RelationType.MACRO_CORRELATED,
+        strength: similarity,
+        confidence: 0.75,
+        evidence: `宏观因子正相关: ${(similarity * 100).toFixed(1)}%`,
+        computedAt: new Date().toISOString(),
+      };
+    }
+
+    // 宏观敏感度高度负相关 (< -0.5) - 对冲关系
+    if (similarity < -0.5) {
+      return {
+        sourceSymbol: symbolA,
+        targetSymbol: symbolB,
+        relationType: RelationType.MACRO_INVERSE,
+        strength: Math.abs(similarity),
+        confidence: 0.75,
+        evidence: `宏观因子负相关: ${(similarity * 100).toFixed(1)}%`,
+        computedAt: new Date().toISOString(),
+      };
+    }
+
+    return null;
+  }
+
+  // ============ 规则10: 周期同步 ============
+
+  /** 检测经济周期同步性 */
+  checkCycleSync(
+    companyA: CompanyAttributes,
+    companyB: CompanyAttributes
+  ): CompanyRelation | null {
+    const symbolA = companyA.identifier.symbol;
+    const symbolB = companyB.identifier.symbol;
+
+    const cycleA = getCyclePosition(symbolA);
+    const cycleB = getCyclePosition(symbolB);
+
+    if (!cycleA || !cycleB) {
+      return null;
+    }
+
+    // 同一周期位置
+    if (cycleA === cycleB) {
+      const cycleNames: Record<string, string> = {
+        early: '早周期',
+        mid: '中周期',
+        late: '晚周期',
+        defensive: '防御型',
+      };
+
+      return {
+        sourceSymbol: symbolA,
+        targetSymbol: symbolB,
+        relationType: RelationType.CYCLE_SYNC,
+        strength: 0.8,
+        confidence: 0.85,
+        evidence: `周期同步: ${cycleNames[cycleA]}`,
+        computedAt: new Date().toISOString(),
+      };
+    }
+
+    return null;
+  }
+
   // ============ 综合推导 ============
 
   /** 计算两个公司间的所有关系 */
@@ -372,6 +530,22 @@ export class RelationEngine {
     // 规则6: 财务相似
     const financialRelation = this.checkFinancialSimilarity(companyA, companyB);
     if (financialRelation) relations.push(financialRelation);
+
+    // 规则7: 跨产业链关联
+    const crossChainRelation = this.checkCrossChainRelation(companyA, companyB);
+    if (crossChainRelation) relations.push(crossChainRelation);
+
+    // 规则8: 客群重合
+    const customerRelation = this.checkCustomerOverlap(companyA, companyB);
+    if (customerRelation) relations.push(customerRelation);
+
+    // 规则9: 宏观敏感度
+    const macroRelation = this.checkMacroSensitivity(companyA, companyB);
+    if (macroRelation) relations.push(macroRelation);
+
+    // 规则10: 周期同步
+    const cycleRelation = this.checkCycleSync(companyA, companyB);
+    if (cycleRelation) relations.push(cycleRelation);
 
     return relations;
   }
@@ -464,6 +638,11 @@ export class RelationEngine {
       [RelationType.GEO_RESONANCE]: '地理分布相似',
       [RelationType.SEASONAL_RESONANCE]: '季节性相似',
       [RelationType.FINANCIAL_SIMILAR]: '财务特征相似',
+      [RelationType.CROSS_CHAIN]: '跨产业链关联',
+      [RelationType.CUSTOMER_OVERLAP]: '客群重合',
+      [RelationType.MACRO_CORRELATED]: '宏观因子正相关',
+      [RelationType.MACRO_INVERSE]: '宏观因子负相关',
+      [RelationType.CYCLE_SYNC]: '周期同步',
     };
     return descriptions[type] || type;
   }

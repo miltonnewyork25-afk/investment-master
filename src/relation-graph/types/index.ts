@@ -123,25 +123,38 @@ export interface CompanyAttributes {
 
 /** 关系类型枚举 */
 export enum RelationType {
-  // 规则1: 行业链条
+  // ===== 规则1: 行业链条 =====
   UPSTREAM = 'upstream',           // A是B的上游
   DOWNSTREAM = 'downstream',       // A是B的下游
 
-  // 规则2: 行业竞争
+  // ===== 规则2: 行业竞争 =====
   COMPETITOR = 'competitor',       // 同行业竞争
 
-  // 规则3: 因子共振
+  // ===== 规则3: 因子共振 =====
   FACTOR_RESONANCE = 'factor_resonance',    // 因子同涨同跌
   FACTOR_HEDGE = 'factor_hedge',            // 因子对冲
 
-  // 规则4: 地理共振
+  // ===== 规则4: 地理共振 =====
   GEO_RESONANCE = 'geo_resonance',  // 地理分布相似
 
-  // 规则5: 季节共振
+  // ===== 规则5: 季节共振 =====
   SEASONAL_RESONANCE = 'seasonal_resonance',  // 季节性模式相似
 
-  // 规则6: 财务相似
+  // ===== 规则6: 财务相似 =====
   FINANCIAL_SIMILAR = 'financial_similar',    // 财务特征相似
+
+  // ===== 规则7: 跨链关联 (新增) =====
+  CROSS_CHAIN = 'cross_chain',      // 跨产业链关联 (如半导体同时影响汽车和消费电子)
+
+  // ===== 规则8: 客群重合 (新增) =====
+  CUSTOMER_OVERLAP = 'customer_overlap',    // 目标客群重合 (如LULU和CELH)
+
+  // ===== 规则9: 宏观敏感度 (新增) =====
+  MACRO_CORRELATED = 'macro_correlated',    // 宏观因子正相关
+  MACRO_INVERSE = 'macro_inverse',          // 宏观因子负相关
+
+  // ===== 规则10: 周期同步 (新增) =====
+  CYCLE_SYNC = 'cycle_sync',        // 经济周期同步 (同为早周期/晚周期)
 }
 
 /** 公司间关系 */
@@ -211,3 +224,54 @@ export const DEFAULT_RELATION_CONFIG: RelationConfig = {
   lookbackDays: 252,  // 一年交易日
   minDataPoints: 60,  // 至少3个月数据
 };
+
+// ============ 扩展类型: 客群/消费者画像 ============
+
+/** 目标客群画像 */
+export interface CustomerProfile {
+  // 人口统计
+  demographics: {
+    ageGroup: 'gen_z' | 'millennial' | 'gen_x' | 'boomer' | 'all';
+    incomeLevel: 'mass' | 'affluent' | 'high_net_worth' | 'all';
+    gender?: 'male' | 'female' | 'all';
+  };
+
+  // 消费场景
+  occasions: string[];  // 如: 'fitness', 'travel', 'dining', 'entertainment'
+
+  // 价值主张
+  valueProps: string[]; // 如: 'premium', 'value', 'convenience', 'health'
+
+  // 购买渠道
+  channels: ('online' | 'retail' | 'direct' | 'subscription')[];
+}
+
+/** 经济周期位置 */
+export type CyclePosition = 'early' | 'mid' | 'late' | 'defensive';
+
+/** 宏观敏感度向量 */
+export interface MacroSensitivity {
+  interestRate: number;    // 利率敏感度 (-1 to 1)
+  inflation: number;       // 通胀敏感度
+  gdpGrowth: number;       // GDP敏感度
+  unemployment: number;    // 失业率敏感度
+  consumerConfidence: number; // 消费者信心敏感度
+  housingMarket: number;   // 房地产敏感度
+  dollarIndex: number;     // 美元指数敏感度
+  oilPrice: number;        // 油价敏感度
+}
+
+/** 扩展的公司属性 */
+export interface ExtendedCompanyAttributes extends CompanyAttributes {
+  // 客群画像
+  customerProfile?: CustomerProfile;
+
+  // 周期位置
+  cyclePosition?: CyclePosition;
+
+  // 宏观敏感度
+  macroSensitivity?: MacroSensitivity;
+
+  // 跨链标签 (该公司产品/服务影响的多个产业链)
+  crossChainImpact?: string[];
+}
