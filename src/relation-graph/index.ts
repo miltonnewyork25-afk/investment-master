@@ -39,6 +39,17 @@ export {
 // 导出引擎
 export { RelationEngine, getRelationEngine } from './engines/relation-engine.js';
 
+// 导出价格相关性分析器
+export {
+  PriceCorrelationAnalyzer,
+  getPriceCorrelationAnalyzer,
+} from './analyzers/price-correlation.js';
+export type {
+  PriceCorrelationConfig,
+  CorrelationResult,
+  ValidationResult,
+} from './analyzers/price-correlation.js';
+
 // ============ 便捷函数 ============
 
 import { FMPClient, getFMPClient } from './clients/fmp-client.js';

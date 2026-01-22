@@ -155,6 +155,12 @@ export enum RelationType {
 
   // ===== 规则10: 周期同步 (新增) =====
   CYCLE_SYNC = 'cycle_sync',        // 经济周期同步 (同为早周期/晚周期)
+
+  // ===== 规则11: 股价相关性 (新增) =====
+  PRICE_CORRELATED = 'price_correlated',    // 股价高度正相关
+  PRICE_INVERSE = 'price_inverse',          // 股价负相关 (对冲)
+  PRICE_LEADING = 'price_leading',          // A的股价领先B
+  PRICE_LAGGING = 'price_lagging',          // A的股价滞后于B
 }
 
 /** 公司间关系 */

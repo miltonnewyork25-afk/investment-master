@@ -315,7 +315,20 @@ export class FMPClient {
     const params: Record<string, string> = { symbol };
     if (from) params.from = from;
     if (to) params.to = to;
-    return this.fetchJSON('/stable/historical-price-eod/full', params);
+
+    // stable API 返回数组格式，需要转换
+    const data = await this.fetchJSON<FMPHistoricalPrice[]>('/stable/historical-price-eod/full', params);
+
+    // 确保返回统一的格式
+    if (Array.isArray(data)) {
+      return {
+        symbol,
+        historical: data,
+      };
+    }
+
+    // 兼容旧格式（如果 API 改变）
+    return data as unknown as { symbol: string; historical: FMPHistoricalPrice[] };
   }
 
   /** 获取TTM损益表 */

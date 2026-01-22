@@ -643,6 +643,10 @@ export class RelationEngine {
       [RelationType.MACRO_CORRELATED]: '宏观因子正相关',
       [RelationType.MACRO_INVERSE]: '宏观因子负相关',
       [RelationType.CYCLE_SYNC]: '周期同步',
+      [RelationType.PRICE_CORRELATED]: '股价高度相关',
+      [RelationType.PRICE_INVERSE]: '股价负相关(对冲)',
+      [RelationType.PRICE_LEADING]: '股价领先',
+      [RelationType.PRICE_LAGGING]: '股价滞后',
     };
     return descriptions[type] || type;
   }
