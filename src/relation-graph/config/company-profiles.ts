@@ -482,17 +482,57 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // ========== 早周期 (Early Cycle) ==========
   // 利率敏感、经济复苏初期受益
   // 房地产、金融、非必需消费
+
+  // ---------- 房建 (Homebuilders) ----------
   'LEN': 'early',     // 房建
   'DHI': 'early',
   'PHM': 'early',
   'TOL': 'early',
-  'HD': 'early',      // 家装
-  'LOW': 'early',
+
+  // ---------- 家居建材 (Home Improvement) ----------
+  'HD': 'early',      // Home Depot
+  'LOW': 'early',     // Lowe's
+
+  // ---------- 家电 (Appliances) ----------
   'WHR': 'early',     // 家电
-  'F': 'early',       // 汽车
-  'GM': 'early',
-  'TSLA': 'early',
-  'AN': 'early',      // 汽车经销
+
+  // ---------- 汽车 (Automotive) ----------
+  'F': 'early',       // Ford
+  'GM': 'early',      // General Motors
+  'TSLA': 'early',    // Tesla
+  'AN': 'early',      // AutoNation
+
+  // ---------- 餐饮 (Restaurants) ----------
+  'MCD': 'early',     // McDonald's - 价值导向
+  'SBUX': 'early',    // Starbucks
+  'CMG': 'early',     // Chipotle
+  'YUM': 'early',     // Yum! Brands
+  'DRI': 'early',     // Darden
+  'QSR': 'early',     // Restaurant Brands
+  'WING': 'early',    // Wingstop
+
+  // ---------- 服装零售 (Apparel Retail) ----------
+  'GPS': 'early',     // Gap
+  'ANF': 'early',     // Abercrombie
+  'AEO': 'early',     // American Eagle
+  'URBN': 'early',    // Urban Outfitters
+
+  // ---------- 专业零售 (Specialty Retail) ----------
+  'BBY': 'early',     // Best Buy
+  'ULTA': 'early',    // Ulta Beauty
+  'W': 'early',       // Wayfair
+  'RH': 'early',      // RH (Restoration Hardware)
+  'WSM': 'early',     // Williams-Sonoma
+
+  // ---------- 汽配零售 (Auto Parts Retail) ----------
+  'ORLY': 'mid',      // O'Reilly - 相对防御
+  'AZO': 'mid',       // AutoZone - 相对防御
+  'AAP': 'mid',       // Advance Auto Parts
+
+  // ---------- 邮轮 (Cruise Lines) ----------
+  'RCL': 'early',     // Royal Caribbean
+  'CCL': 'early',     // Carnival
+  'NCLH': 'early',    // Norwegian
 
   // 大型银行 (Money Center Banks)
   'JPM': 'early',     // JP Morgan
@@ -666,30 +706,57 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
 
   // ========== 防御型 (Defensive) ==========
   // 经济下行期防御、必需消费、公用事业、医疗
-  'JNJ': 'defensive', // 医疗
-  'PFE': 'defensive',
-  'MRK': 'defensive',
-  'ABBV': 'defensive',
-  'LLY': 'defensive',
-  'UNH': 'defensive',
-  'CVS': 'defensive',
-  'WBA': 'defensive',
-  'MCK': 'defensive',
-  'PG': 'defensive',  // 必需消费
-  'KO': 'defensive',
-  'PEP': 'defensive',
-  'CL': 'defensive',
-  'KMB': 'defensive',
-  'GIS': 'defensive',
-  'K': 'defensive',
-  'WMT': 'defensive',
-  'COST': 'defensive',
-  'DG': 'defensive',
+
+  // ---------- 家居用品 (Household Products) ----------
+  'PG': 'defensive',  // Procter & Gamble
+  'CL': 'defensive',  // Colgate-Palmolive
+  'KMB': 'defensive', // Kimberly-Clark
+  'CHD': 'defensive', // Church & Dwight
+  'CLX': 'defensive', // Clorox
+
+  // ---------- 包装食品 (Packaged Food) ----------
+  'GIS': 'defensive', // General Mills
+  'K': 'defensive',   // Kellogg
+  'KHC': 'defensive', // Kraft Heinz
+  'HSY': 'defensive', // Hershey
+  'CAG': 'defensive', // Conagra
+  'CPB': 'defensive', // Campbell Soup
+  'SJM': 'defensive', // J.M. Smucker
+  'MDLZ': 'defensive', // Mondelez
+  'HRL': 'defensive', // Hormel
+  'TSN': 'mid',       // Tyson - 商品周期性
+
+  // ---------- 饮料 (Beverages) ----------
+  'KO': 'defensive',  // Coca-Cola
+  'PEP': 'defensive', // PepsiCo
+  'MNST': 'defensive', // Monster Beverage
+  'CELH': 'mid',      // Celsius - 高成长
+  'KDP': 'defensive', // Keurig Dr Pepper
+
+  // ---------- 烟草 (Tobacco) ----------
+  'PM': 'defensive',  // Philip Morris
+  'MO': 'defensive',  // Altria
+  'BTI': 'defensive', // British American Tobacco
+
+  // ---------- 食品零售/分销 ----------
+  'WMT': 'defensive', // Walmart
+  'COST': 'defensive', // Costco
+  'KR': 'defensive',  // Kroger
+  'SYY': 'defensive', // Sysco
+  'USFD': 'defensive', // US Foods
+
+  // ---------- 折扣零售 ----------
+  'DG': 'defensive',  // Dollar General
+  'DLTR': 'defensive', // Dollar Tree
+
+  // ---------- 公用事业 ----------
   'NEE': 'defensive', // 公用事业
   'DUK': 'defensive',
   'SO': 'defensive',
   'D': 'defensive',
   'AEP': 'defensive',
+
+  // ---------- 电信 ----------
   'T': 'defensive',   // 电信
   'VZ': 'defensive',
   'TMUS': 'defensive',
@@ -1272,6 +1339,214 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'IDXX': {
     interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
     consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 消费必需品 (低宏观敏感度 - 防御型) ==========
+
+  // 家居用品 - 需求刚性，美元负敏感
+  'PG': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,
+  },
+  'CL': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,
+  },
+  'KMB': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'CHD': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'CLX': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // 包装食品 - 需求稳定，通胀正相关
+  'GIS': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'K': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'KHC': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'HSY': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'CAG': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'CPB': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'SJM': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'MDLZ': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'HRL': {
+    interestRate: 0.0, inflation: 0.3, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // 饮料 - 需求稳定，美元负敏感
+  'KO': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,
+  },
+  'PEP': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'MNST': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'KDP': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // 烟草 - 需求极度刚性
+  'PM': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.0,
+  },
+  'MO': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'BTI': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+
+  // 食品零售 - 防御性
+  'WMT': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'COST': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'KR': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'SYY': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+
+  // 折扣零售 - 逆周期（经济差时受益）
+  'DG': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: -0.1, unemployment: 0.3,
+    consumerConfidence: -0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'DLTR': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: -0.1, unemployment: 0.3,
+    consumerConfidence: -0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // ========== 消费可选 (高宏观敏感度 - 周期性) ==========
+
+  // 家居建材 - 房地产周期敏感
+  'HD': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'LOW': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // 餐饮 - 消费者信心敏感
+  'MCD': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'SBUX': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'CMG': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'YUM': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'DRI': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+
+  // 服装零售 - 高消费者信心敏感
+  'GPS': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'ANF': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // 专业零售 - 消费者信心敏感
+  'BBY': {
+    interestRate: -0.4, inflation: -0.3, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'ULTA': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'RH': {
+    interestRate: -0.6, inflation: -0.3, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.8, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'WSM': {
+    interestRate: -0.5, inflation: -0.3, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // 汽配零售 - 相对防御（维修需求）
+  'ORLY': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.2,
+  },
+  'AZO': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.2,
+  },
+
+  // 邮轮 - 极高周期敏感
+  'RCL': {
+    interestRate: -0.5, inflation: -0.4, gdpGrowth: 0.8, unemployment: -0.6,
+    consumerConfidence: 0.9, housingMarket: 0.1, dollarIndex: 0.3, oilPrice: -0.5,
+  },
+  'CCL': {
+    interestRate: -0.5, inflation: -0.4, gdpGrowth: 0.8, unemployment: -0.6,
+    consumerConfidence: 0.9, housingMarket: 0.1, dollarIndex: 0.3, oilPrice: -0.5,
+  },
+  'NCLH': {
+    interestRate: -0.5, inflation: -0.4, gdpGrowth: 0.8, unemployment: -0.6,
+    consumerConfidence: 0.9, housingMarket: 0.1, dollarIndex: 0.3, oilPrice: -0.5,
   },
 };
 

@@ -1372,10 +1372,139 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
 
   // ========================================================
-  // 消费必需品/饮料行业
+  // 消费必需品行业 (Consumer Staples)
+  // 产业链: 原材料 → 包装食品/家居用品 → 零售/分销
+  // 特点: 防御型、需求稳定、品牌护城河
   // ========================================================
 
-  // 传统饮料巨头
+  // ---------- 家居用品 (Household Products) ----------
+  // 特点: 品牌溢价、日常必需、渠道能力
+  'PG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Household Products',
+    tags: ['diversified', 'premium', 'global', 'beauty', 'grooming'],
+  },
+  'CL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Household Products',
+    tags: ['oral_care', 'personal_care', 'pet_nutrition', 'global'],
+  },
+  'KMB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Household Products',
+    tags: ['tissue', 'diapers', 'personal_care'],
+  },
+  'CHD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Household Products',
+    tags: ['baking_soda', 'laundry', 'personal_care', 'vitamins'],
+  },
+  'CLX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Household Products',
+    tags: ['cleaning', 'disinfecting', 'charcoal', 'bags'],
+  },
+
+  // ---------- 包装食品 (Packaged Food) ----------
+  // 特点: 品牌组合、渠道渗透、成本管理
+  'GIS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['cereal', 'snacks', 'pet', 'convenience'],
+  },
+  'K': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['cereal', 'snacks', 'frozen', 'plant_based'],
+  },
+  'KHC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['condiments', 'cheese', 'meat', 'legacy_brands'],
+  },
+  'HSY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['chocolate', 'confectionery', 'snacks', 'seasonal'],
+  },
+  'CAG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['frozen', 'snacks', 'grocery', 'foodservice'],
+  },
+  'CPB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['soup', 'snacks', 'meals', 'sauces'],
+  },
+  'SJM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['coffee', 'peanut_butter', 'jelly', 'pet'],
+  },
+  'MDLZ': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['snacks', 'biscuits', 'chocolate', 'global'],
+  },
+  'HRL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['meat', 'protein', 'deli', 'international'],
+  },
+  'TSN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['chicken', 'beef', 'pork', 'prepared_foods'],
+  },
+
+  // ---------- 饮料 (Beverages) ----------
+  // 特点: 品牌溢价、分销网络、全球化
   'KO': {
     assetModel: 'asset_light',
     revenueModels: ['product_sales', 'licensing'],
@@ -1392,8 +1521,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Beverages',
     tags: ['snacks', 'beverages', 'integrated'],
   },
-
-  // 能量饮料
   'MNST': {
     assetModel: 'asset_light',
     revenueModels: ['product_sales'],
@@ -1409,6 +1536,299 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2C',
     industrySegment: 'Beverages',
     tags: ['energy', 'fitness', 'health_conscious'],
+  },
+  'KDP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Beverages',
+    tags: ['coffee', 'soft_drinks', 'single_serve', 'dsd'],
+  },
+
+  // ---------- 烟草 (Tobacco) ----------
+  // 特点: 高现金流、下降趋势、转型中
+  'PM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Tobacco',
+    tags: ['international', 'iqos', 'reduced_risk', 'marlboro'],
+  },
+  'MO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Tobacco',
+    tags: ['us_domestic', 'marlboro', 'smokeless', 'oral'],
+  },
+  'BTI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Tobacco',
+    tags: ['global', 'new_categories', 'vaping', 'heated'],
+  },
+
+  // ---------- 食品零售/分销 (Food Retail) ----------
+  // 特点: 低毛利、高周转、规模效应
+  'KR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Food Retail',
+    tags: ['grocery', 'supermarket', 'private_label', 'fuel'],
+  },
+  'SYY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Food Distribution',
+    tags: ['foodservice', 'distribution', 'restaurants', 'healthcare'],
+  },
+  'USFD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Food Distribution',
+    tags: ['foodservice', 'distribution', 'independent'],
+  },
+
+  // ---------- 折扣零售 (Discount Retail) ----------
+  // 特点: 价值导向、低价策略
+  'DG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Discount Retail',
+    tags: ['dollar', 'rural', 'convenience', 'value'],
+  },
+  'DLTR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Discount Retail',
+    tags: ['dollar', 'family_dollar', 'value', 'suburban'],
+  },
+
+  // ========================================================
+  // 消费可选行业 (Consumer Discretionary)
+  // 特点: 周期性、消费者信心敏感、可支配收入驱动
+  // ========================================================
+
+  // ---------- 家居建材 (Home Improvement) ----------
+  // 特点: 房地产周期、DIY vs Pro
+  'HD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Home Improvement',
+    tags: ['diy', 'pro', 'omnichannel', 'big_box'],
+  },
+  'LOW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Home Improvement',
+    tags: ['diy', 'pro', 'omnichannel', 'suburban'],
+  },
+
+  // ---------- 餐饮 (Restaurants) ----------
+  // 特点: 加盟模式、品牌价值、便利性
+  'MCD': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Restaurants',
+    tags: ['qsr', 'global', 'real_estate', 'value'],
+  },
+  'SBUX': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Restaurants',
+    tags: ['coffee', 'premium', 'loyalty', 'third_place'],
+  },
+  'CMG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Restaurants',
+    tags: ['fast_casual', 'mexican', 'fresh', 'digital'],
+  },
+  'YUM': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Restaurants',
+    tags: ['qsr', 'global', 'kfc', 'taco_bell', 'pizza_hut'],
+  },
+  'DRI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Restaurants',
+    tags: ['casual_dining', 'olive_garden', 'longhorn'],
+  },
+  'QSR': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Restaurants',
+    tags: ['qsr', 'burger_king', 'tim_hortons', 'popeyes'],
+  },
+  'WING': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Restaurants',
+    tags: ['qsr', 'wings', 'sports', 'delivery'],
+  },
+
+  // ---------- 服装零售 (Apparel Retail) ----------
+  // 特点: 时尚周期、库存风险、品牌定位
+  'GPS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Apparel Retail',
+    tags: ['gap', 'old_navy', 'banana_republic', 'athleisure'],
+  },
+  'ANF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Apparel Retail',
+    tags: ['abercrombie', 'hollister', 'young_adult', 'turnaround'],
+  },
+  'AEO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Apparel Retail',
+    tags: ['american_eagle', 'aerie', 'teen', 'intimates'],
+  },
+  'URBN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Apparel Retail',
+    tags: ['urban_outfitters', 'anthropologie', 'free_people', 'lifestyle'],
+  },
+
+  // ---------- 专业零售 (Specialty Retail) ----------
+  // 特点: 品类专注、专业知识、服务附加值
+  'BBY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Retail',
+    tags: ['electronics', 'appliances', 'geek_squad', 'omnichannel'],
+  },
+  'ULTA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Retail',
+    tags: ['beauty', 'salon', 'prestige', 'mass'],
+  },
+  'ORLY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Auto Parts Retail',
+    tags: ['auto_parts', 'diy', 'difm', 'professional'],
+  },
+  'AZO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Auto Parts Retail',
+    tags: ['auto_parts', 'diy', 'commercial', 'hub_model'],
+  },
+  'AAP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Auto Parts Retail',
+    tags: ['auto_parts', 'diy', 'professional', 'carquest'],
+  },
+  'W': {
+    assetModel: 'platform',
+    revenueModels: ['product_sales', 'advertising'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Retail',
+    tags: ['home', 'furniture', 'e_commerce', 'dropship'],
+  },
+  'RH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Retail',
+    tags: ['luxury', 'home', 'galleries', 'membership'],
+  },
+  'WSM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Retail',
+    tags: ['home', 'pottery_barn', 'williams_sonoma', 'west_elm'],
+  },
+
+  // ---------- 邮轮/休闲 (Cruise & Leisure) ----------
+  // 特点: 重资产、高杠杆、强周期
+  'RCL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Cruise Lines',
+    tags: ['royal_caribbean', 'celebrity', 'premium', 'mega_ships'],
+  },
+  'CCL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Cruise Lines',
+    tags: ['carnival', 'princess', 'mass_market', 'global'],
+  },
+  'NCLH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Cruise Lines',
+    tags: ['norwegian', 'freestyle', 'regent', 'oceania'],
   },
 
   // ========================================================

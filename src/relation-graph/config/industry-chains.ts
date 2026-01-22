@@ -921,6 +921,44 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'AMZN': 'E-commerce',                 // Amazon (also Cloud)
     'EBAY': 'E-commerce Marketplace',     // eBay
     'ETSY': 'E-commerce Marketplace',     // Etsy
+    'W': 'E-commerce',                    // Wayfair - 家居电商
+
+    // 家居用品 (Household Products)
+    'PG': 'Household Products',           // Procter & Gamble
+    'CL': 'Household Products',           // Colgate-Palmolive
+    'KMB': 'Household Products',          // Kimberly-Clark
+    'CHD': 'Household Products',          // Church & Dwight
+    'CLX': 'Household Products',          // Clorox
+
+    // 烟草 (Tobacco)
+    'PM': 'Tobacco',                      // Philip Morris
+    'MO': 'Tobacco',                      // Altria
+    'BTI': 'Tobacco',                     // British American Tobacco
+
+    // 食品分销 (Food Distribution)
+    'SYY': 'Food Distribution',           // Sysco
+    'USFD': 'Food Distribution',          // US Foods
+    'KR': 'Grocery',                      // Kroger
+
+    // 服装零售 (Apparel Retail)
+    'GPS': 'Apparel Retail',              // Gap
+    'ANF': 'Apparel Retail',              // Abercrombie
+    'AEO': 'Apparel Retail',              // American Eagle
+    'URBN': 'Apparel Retail',             // Urban Outfitters
+
+    // 汽配零售 (Auto Parts Retail)
+    'ORLY': 'Auto Parts Retail',          // O'Reilly
+    'AZO': 'Auto Parts Retail',           // AutoZone
+    'AAP': 'Auto Parts Retail',           // Advance Auto Parts
+
+    // 家居家具零售 (Home Furnishing Retail)
+    'RH': 'Home Furnishing Retail',       // RH (Restoration Hardware)
+    'WSM': 'Home Furnishing Retail',      // Williams-Sonoma
+
+    // 邮轮 (Cruise Lines)
+    'RCL': 'Cruise Lines',                // Royal Caribbean
+    'CCL': 'Cruise Lines',                // Carnival
+    'NCLH': 'Cruise Lines',               // Norwegian
 
     // ========== 旅游/出行产业链细分 ==========
     // 酒店 (Hotels)
@@ -1441,6 +1479,63 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'OTA': [
       'Ride-hailing',
       'Car Rental',
+    ],
+
+    // 邮轮 - 与旅游产业链相关
+    'Cruise Lines': [
+      'OTA',
+      'Hotel Chain',
+    ],
+
+    // ========== 消费品扩展产业链 ==========
+    // 家居用品 → 零售
+    'Household Products': [
+      'Mass Retail',
+      'Warehouse Club',
+      'Dollar Store',
+      'Grocery',
+    ],
+
+    // 烟草 → 便利店/零售
+    'Tobacco': [
+      'Mass Retail',
+      'Dollar Store',
+      'Grocery',
+    ],
+
+    // 食品分销 → 餐饮/零售
+    'Food Distribution': [
+      'QSR',
+      'Fast Casual',
+      'Casual Dining',
+      'Hospital',  // 医院餐饮
+    ],
+
+    // 杂货店
+    'Grocery': [
+      'Packaged Foods',
+      'Household Products',
+    ],
+
+    // 家居建材 → 房建
+    'Home Improvement': [
+      'Homebuilder',
+    ],
+
+    // 家居家具
+    'Home Furnishing Retail': [
+      'Homebuilder',
+    ],
+
+    // 服装零售 - 与运动服饰相关
+    'Apparel Retail': [
+      'Athletic Apparel',
+    ],
+
+    // 汽配零售 - 与汽车后市场相关
+    'Auto Parts Retail': [
+      'Traditional OEM',  // 保有量驱动
+      'Auto Dealer',      // 二手车维修
     ],
   },
 };
