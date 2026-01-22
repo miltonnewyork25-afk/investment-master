@@ -51,6 +51,10 @@ TRACKED_STOCKS = {
     "energy": {
         "symbols": ["XOM", "CVX", "SLB", "HAL", "OXY"],
         "config": "energy.yaml"
+    },
+    "machinery": {
+        "symbols": ["CAT", "DE", "PCAR", "CMI"],
+        "config": "machinery.yaml"
     }
 }
 
@@ -94,6 +98,18 @@ INDICATOR_SOURCES = {
         "url": "https://www.eia.gov/petroleum/supply/weekly/",
         "frequency": "weekly",
         "industries": ["energy"]
+    },
+    "construction_spending": {
+        "name": "美国建筑支出",
+        "url": "https://www.census.gov/construction/c30/c30index.html",
+        "frequency": "monthly",
+        "industries": ["machinery"]
+    },
+    "excavator_sales": {
+        "name": "挖掘机销量",
+        "url": "AEM / 公司财报",
+        "frequency": "monthly",
+        "industries": ["machinery"]
     }
 }
 
@@ -170,6 +186,21 @@ VALUATION_SCORING = {
         "pb_symbols": ["XOM", "CVX"],
         # 油服公司列表（用PE估值）
         "pe_symbols": ["SLB", "HAL", "BKR", "OXY"]
+    },
+    "machinery": {
+        "pe_ranges": [
+            (0, 10, 9),
+            (10, 14, 7),
+            (14, 18, 5),
+            (18, 25, 3),
+            (25, 999, 1)
+        ],
+        "pb_ranges": [
+            (0, 2.0, 8),
+            (2.0, 3.5, 5),
+            (3.5, 5.0, 3),
+            (5.0, 999, 1)
+        ]
     }
 }
 

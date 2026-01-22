@@ -35,6 +35,7 @@ from collectors.fmp_collector import FMPCollector
 from collectors.scfi_collector import SCFICollector, BDICollector, OrderbookCollector
 from collectors.dram_collector import DRAMCollector, MemoryCAPEXCollector
 from collectors.energy_collector import EnergyIndicatorCollector
+from collectors.machinery_collector import MachineryIndicatorCollector
 from storage.db import Database
 from processors.scorer import Scorer
 from processors.predictor import Predictor
@@ -104,6 +105,10 @@ def collect_indicators():
     # 能源指标
     energy = EnergyIndicatorCollector()
     energy.collect_all(save=True)
+
+    # 工程机械指标
+    machinery = MachineryIndicatorCollector()
+    machinery.collect_all(save=True)
 
     print("\n[DONE] 行业指标采集完成")
 

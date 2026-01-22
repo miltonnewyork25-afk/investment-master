@@ -6,6 +6,7 @@ from .fmp_collector import FMPCollector
 from .scfi_collector import SCFICollector, BDICollector, OrderbookCollector
 from .dram_collector import DRAMCollector, MemoryCAPEXCollector
 from .energy_collector import WTICollector, RigCountCollector, CrudeInventoryCollector, EnergyIndicatorCollector
+from .machinery_collector import ExcavatorSalesCollector, ConstructionSpendingCollector, EquipmentUtilizationCollector, BacklogCollector, MachineryIndicatorCollector
 
 __all__ = [
     "FMPCollector",
@@ -17,5 +18,10 @@ __all__ = [
     "WTICollector",
     "RigCountCollector",
     "CrudeInventoryCollector",
-    "EnergyIndicatorCollector"
+    "EnergyIndicatorCollector",
+    "ExcavatorSalesCollector",
+    "ConstructionSpendingCollector",
+    "EquipmentUtilizationCollector",
+    "BacklogCollector",
+    "MachineryIndicatorCollector"
 ]

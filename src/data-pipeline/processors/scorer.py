@@ -360,6 +360,178 @@ class Scorer:
             }
         }
 
+    def calculate_score_machinery(self, symbol: str, data: dict) -> dict:
+        """计算工程机械股票评分"""
+        pe = data.get("pe") or 0
+        pb = data.get("pb") or 0
+        price = data.get("price") or data.get("close") or 0
+        dividend_yield = data.get("dividend_yield") or 0
+
+        # 获取估值得分
+        valuation_score = 5
+        machinery_config = VALUATION_SCORING.get("machinery", {})
+
+        # 优先使用PE
+        if pe and pe > 0 and "pe_ranges" in machinery_config:
+            for min_val, max_val, score in machinery_config["pe_ranges"]:
+                if min_val <= pe < max_val:
+                    valuation_score = score
+                    break
+        # 如果亏损，用PB
+        elif pb and "pb_ranges" in machinery_config:
+            for min_val, max_val, score in machinery_config["pb_ranges"]:
+                if min_val <= pb < max_val:
+                    valuation_score = score
+                    break
+
+        # 模拟行业指标得分（实际需要从指标数据库获取）
+        # TODO: 从指标数据库获取
+        excavator_yoy = 2.3  # 模拟全球挖掘机销量同比
+        if excavator_yoy < -30:
+            excavator_score = 9
+        elif excavator_yoy < -15:
+            excavator_score = 8
+        elif excavator_yoy < 0:
+            excavator_score = 6
+        elif excavator_yoy < 15:
+            excavator_score = 5
+        elif excavator_yoy < 30:
+            excavator_score = 3
+        else:
+            excavator_score = 1
+
+        construction_yoy = 4.5  # 模拟建筑支出同比
+        if construction_yoy < -10:
+            construction_score = 8
+        elif construction_yoy < 0:
+            construction_score = 6
+        elif construction_yoy < 5:
+            construction_score = 5
+        elif construction_yoy < 15:
+            construction_score = 4
+        else:
+            construction_score = 2
+
+        utilization = 75.0  # 模拟设备利用率
+        if utilization < 55:
+            utilization_score = 9
+        elif utilization < 65:
+            utilization_score = 7
+        elif utilization < 75:
+            utilization_score = 5
+        elif utilization < 85:
+            utilization_score = 3
+        else:
+            utilization_score = 1
+
+        backlog_yoy = 6.8  # 模拟积压订单同比
+        if backlog_yoy < -20:
+            backlog_score = 8
+        elif backlog_yoy < -5:
+            backlog_score = 6
+        elif backlog_yoy < 10:
+            backlog_score = 5
+        elif backlog_yoy < 25:
+            backlog_score = 4
+        else:
+            backlog_score = 2
+
+        # 综合指标评分
+        indicator_score = (
+            excavator_score * 0.35 +
+            construction_score * 0.25 +
+            utilization_score * 0.25 +
+            backlog_score * 0.15
+        )
+
+        # 基础分计算
+        base_score = (
+            valuation_score * 0.30 +
+            excavator_score * 0.25 +
+            construction_score * 0.20 +
+            utilization_score * 0.15 +
+            backlog_score * 0.10
+        ) * 10
+
+        # 背离检测
+        divergence_type, divergence_adj = self.detect_divergence(
+            valuation_score, int(indicator_score)
+        )
+
+        # 特殊规则
+        special_adj = 0
+        special_rules = []
+
+        # 规则1：基建刺激（假设无）
+        infrastructure_stimulus = False
+        if infrastructure_stimulus:
+            special_adj += 10
+            special_rules.append("infrastructure_stimulus")
+
+        # 规则2：中国市场疲软
+        china_excavator_yoy = -8.5  # 模拟
+        if china_excavator_yoy < -30:
+            special_adj -= 5
+            special_rules.append("china_slowdown")
+
+        # 规则3：股息率加分
+        if dividend_yield and dividend_yield > 3:
+            special_adj += 2
+            special_rules.append("dividend_bonus")
+        elif dividend_yield and dividend_yield > 2:
+            special_adj += 1
+            special_rules.append("dividend_bonus_small")
+
+        # 最终得分
+        final_score = base_score + divergence_adj + special_adj
+        final_score = max(0, min(100, final_score))
+
+        # 评级
+        if final_score >= 80:
+            rating = "积极"
+            recommendation = "大幅加仓"
+        elif final_score >= 65:
+            rating = "观察"
+            recommendation = "逐步建仓"
+        elif final_score >= 50:
+            rating = "中性"
+            recommendation = "持有观望"
+        elif final_score >= 35:
+            rating = "谨慎"
+            recommendation = "减仓/观望"
+        else:
+            rating = "消极"
+            recommendation = "卖出/回避"
+
+        return {
+            "symbol": symbol,
+            "industry": "machinery",
+            "framework_version": "v1.0",
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "base_score": round(base_score, 1),
+            "adjustments": {
+                "divergence": divergence_adj,
+                "divergence_type": divergence_type,
+                "special": special_adj,
+                "special_rules": special_rules
+            },
+            "final_score": round(final_score, 1),
+            "rating": rating,
+            "recommendation": recommendation,
+            "data_snapshot": {
+                "price": price,
+                "pe": pe,
+                "pb": pb,
+                "valuation_score": valuation_score,
+                "excavator_score": excavator_score,
+                "construction_score": construction_score,
+                "utilization_score": utilization_score,
+                "backlog_score": backlog_score,
+                "excavator_yoy": excavator_yoy,
+                "utilization": utilization
+            }
+        }
+
     def calculate_score(self, symbol: str, data: dict) -> Optional[dict]:
         """计算股票评分（自动识别行业）"""
         # 识别行业
@@ -380,6 +552,8 @@ class Scorer:
             return self.calculate_score_shipping(symbol, data)
         elif industry == "energy":
             return self.calculate_score_energy(symbol, data)
+        elif industry == "machinery":
+            return self.calculate_score_machinery(symbol, data)
         else:
             print(f"[WARNING] 不支持的行业: {industry}")
             return None
