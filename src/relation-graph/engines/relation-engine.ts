@@ -32,6 +32,11 @@ import {
   calculateCustomerOverlap,
   calculateMacroSimilarity,
 } from '../config/company-profiles.js';
+import {
+  getBusinessModel,
+  areBusinessModelVariants,
+  calculateBusinessModelSimilarity,
+} from '../config/business-models.js';
 
 // ============ 工具函数 ============
 
@@ -547,7 +552,63 @@ export class RelationEngine {
     const cycleRelation = this.checkCycleSync(companyA, companyB);
     if (cycleRelation) relations.push(cycleRelation);
 
+    // 规则11: 商业模式关系
+    const businessModelRelation = this.checkBusinessModelRelation(companyA, companyB);
+    if (businessModelRelation) relations.push(businessModelRelation);
+
     return relations;
+  }
+
+  // ============ 规则11: 商业模式关系 ============
+
+  /** 检测商业模式关系 (同行业同模式 vs 同行业不同模式) */
+  checkBusinessModelRelation(
+    companyA: CompanyAttributes,
+    companyB: CompanyAttributes
+  ): CompanyRelation | null {
+    const symbolA = companyA.identifier.symbol;
+    const symbolB = companyB.identifier.symbol;
+
+    const modelA = getBusinessModel(symbolA);
+    const modelB = getBusinessModel(symbolB);
+
+    if (!modelA || !modelB) {
+      return null;
+    }
+
+    // 检查是否是商业模式变体 (同行业不同模式)
+    const variantResult = areBusinessModelVariants(modelA, modelB);
+
+    if (variantResult.isVariant) {
+      return {
+        sourceSymbol: symbolA,
+        targetSymbol: symbolB,
+        relationType: RelationType.BUSINESS_MODEL_VARIANT,
+        strength: 0.8,
+        confidence: 0.9,
+        evidence: `商业模式变体: ${variantResult.reason}`,
+        computedAt: new Date().toISOString(),
+      };
+    }
+
+    // 同行业同模式 - 直接竞争
+    if (modelA.industrySegment === modelB.industrySegment) {
+      const similarity = calculateBusinessModelSimilarity(modelA, modelB);
+
+      if (similarity > 0.7) {
+        return {
+          sourceSymbol: symbolA,
+          targetSymbol: symbolB,
+          relationType: RelationType.BUSINESS_MODEL_PEER,
+          strength: similarity,
+          confidence: 0.9,
+          evidence: `商业模式相似: ${modelA.industrySegment} (${(similarity * 100).toFixed(0)}%)`,
+          computedAt: new Date().toISOString(),
+        };
+      }
+    }
+
+    return null;
   }
 
   /** 构建完整的关系图谱 */
@@ -647,6 +708,8 @@ export class RelationEngine {
       [RelationType.PRICE_INVERSE]: '股价负相关(对冲)',
       [RelationType.PRICE_LEADING]: '股价领先',
       [RelationType.PRICE_LAGGING]: '股价滞后',
+      [RelationType.BUSINESS_MODEL_PEER]: '商业模式相似',
+      [RelationType.BUSINESS_MODEL_VARIANT]: '商业模式变体',
     };
     return descriptions[type] || type;
   }

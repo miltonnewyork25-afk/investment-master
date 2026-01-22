@@ -161,6 +161,10 @@ export enum RelationType {
   PRICE_INVERSE = 'price_inverse',          // 股价负相关 (对冲)
   PRICE_LEADING = 'price_leading',          // A的股价领先B
   PRICE_LAGGING = 'price_lagging',          // A的股价滞后于B
+
+  // ===== 规则12: 商业模式关系 (新增) =====
+  BUSINESS_MODEL_PEER = 'business_model_peer',        // 同行业、同模式 (直接竞争)
+  BUSINESS_MODEL_VARIANT = 'business_model_variant',  // 同行业、不同模式 (替代品/间接竞争)
 }
 
 /** 公司间关系 */

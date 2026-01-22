@@ -22,8 +22,8 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
   // ========== 健身/健康生活方式 ==========
   'LULU': {
     demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
-    occasions: ['fitness', 'athleisure', 'yoga', 'wellness'],
-    valueProps: ['premium', 'quality', 'lifestyle', 'community'],
+    occasions: ['fitness', 'athleisure', 'yoga', 'wellness', 'health-conscious'],
+    valueProps: ['premium', 'quality', 'lifestyle', 'community', 'health'],
     channels: ['retail', 'online', 'direct'],
   },
   'NKE': {
@@ -33,21 +33,21 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     channels: ['retail', 'online', 'direct'],
   },
   'CELH': {
-    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
-    occasions: ['fitness', 'energy', 'health', 'pre-workout'],
-    valueProps: ['health', 'energy', 'low-calorie', 'functional'],
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['fitness', 'energy', 'wellness', 'pre-workout', 'health-conscious'],
+    valueProps: ['health', 'energy', 'premium', 'functional', 'lifestyle'],
     channels: ['retail', 'online'],
   },
   'PLNT': {
     demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
-    occasions: ['fitness', 'gym', 'wellness'],
-    valueProps: ['value', 'accessibility', 'judgment-free'],
+    occasions: ['fitness', 'gym', 'wellness', 'health-conscious'],
+    valueProps: ['value', 'accessibility', 'health', 'community'],
     channels: ['direct', 'subscription'],
   },
   'PTON': {
     demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
-    occasions: ['fitness', 'home-workout', 'cycling', 'wellness'],
-    valueProps: ['premium', 'convenience', 'community', 'connected'],
+    occasions: ['fitness', 'home-workout', 'cycling', 'wellness', 'health-conscious'],
+    valueProps: ['premium', 'convenience', 'community', 'connected', 'lifestyle'],
     channels: ['direct', 'subscription', 'online'],
   },
 
@@ -183,10 +183,34 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     channels: ['online'],
   },
   'SOFI': {
-    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
-    occasions: ['banking', 'investing', 'loans', 'financial-planning'],
-    valueProps: ['modern', 'integrated', 'community'],
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'investing', 'loans', 'trading', 'learning'],
+    valueProps: ['modern', 'integrated', 'simplicity', 'free', 'accessibility'],
     channels: ['online', 'direct'],
+  },
+  'AFRM': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['shopping', 'financing', 'big-purchases'],
+    valueProps: ['transparency', 'flexibility', 'no-hidden-fees'],
+    channels: ['online'],
+  },
+  'COIN': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['investing', 'crypto', 'trading', 'speculation', 'learning'],
+    valueProps: ['access', 'security', 'simplicity', 'modern', 'accessibility'],
+    channels: ['online', 'direct'],
+  },
+  'HOOD': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['investing', 'trading', 'crypto', 'learning', 'banking'],
+    valueProps: ['simplicity', 'free', 'accessibility', 'gamification', 'modern'],
+    channels: ['online', 'direct'],
+  },
+  'NU': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'payments', 'credit'],
+    valueProps: ['simplicity', 'no-fees', 'modern', 'accessibility'],
+    channels: ['online'],
   },
 
   // ========== 宠物 ==========
@@ -215,6 +239,238 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     occasions: ['beauty', 'skincare', 'luxury', 'anti-aging'],
     valueProps: ['premium', 'efficacy', 'brand', 'prestige'],
     channels: ['retail', 'online', 'direct'],
+  },
+
+  // ========== 科技/消费电子 ==========
+  'AAPL': {
+    demographics: { ageGroup: 'all', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['communication', 'entertainment', 'productivity', 'lifestyle'],
+    valueProps: ['premium', 'design', 'ecosystem', 'privacy', 'status'],
+    channels: ['retail', 'online', 'direct'],
+  },
+  'MSFT': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['productivity', 'gaming', 'business', 'education'],
+    valueProps: ['productivity', 'integration', 'enterprise', 'reliability'],
+    channels: ['online', 'direct', 'retail'],
+  },
+  'GOOGL': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['search', 'entertainment', 'communication', 'productivity'],
+    valueProps: ['convenience', 'free', 'integration', 'innovation'],
+    channels: ['online'],
+  },
+  'META': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['social', 'communication', 'entertainment', 'shopping'],
+    valueProps: ['connection', 'community', 'free', 'discovery'],
+    channels: ['online'],
+  },
+
+  // ========== 汽车 ==========
+  'TSLA': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'male' },
+    occasions: ['commute', 'lifestyle', 'tech-enthusiast', 'sustainability'],
+    valueProps: ['innovation', 'premium', 'sustainability', 'tech', 'status'],
+    channels: ['direct', 'online'],
+  },
+  'F': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['commute', 'family', 'work', 'adventure'],
+    valueProps: ['reliability', 'value', 'capability', 'american'],
+    channels: ['retail'],
+  },
+  'GM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commute', 'family', 'work'],
+    valueProps: ['value', 'variety', 'reliability'],
+    channels: ['retail'],
+  },
+  'RIVN': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'male' },
+    occasions: ['adventure', 'lifestyle', 'sustainability', 'outdoor'],
+    valueProps: ['adventure', 'sustainability', 'premium', 'tech'],
+    channels: ['direct', 'online'],
+  },
+
+  // ========== 运动服饰/健身器材 ==========
+  'UAA': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['fitness', 'sports', 'training'],
+    valueProps: ['performance', 'innovation', 'athletic'],
+    channels: ['retail', 'online'],
+  },
+  'DECK': {
+    demographics: { ageGroup: 'all', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['comfort', 'casual', 'outdoor'],
+    valueProps: ['comfort', 'quality', 'premium'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 家居/家装 ==========
+  'HD': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['home-improvement', 'diy', 'renovation', 'gardening'],
+    valueProps: ['selection', 'value', 'expertise', 'convenience'],
+    channels: ['retail', 'online'],
+  },
+  'LOW': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['home-improvement', 'diy', 'renovation', 'gardening'],
+    valueProps: ['value', 'service', 'selection'],
+    channels: ['retail', 'online'],
+  },
+  'RH': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'high_net_worth', gender: 'all' },
+    occasions: ['home', 'luxury', 'design', 'renovation'],
+    valueProps: ['luxury', 'design', 'curation', 'experience'],
+    channels: ['retail', 'direct', 'online'],
+  },
+  'WSM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['home', 'cooking', 'entertaining', 'gifting'],
+    valueProps: ['quality', 'curation', 'lifestyle', 'design'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 外卖/配送 ==========
+  'DASH': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['dining', 'convenience', 'delivery'],
+    valueProps: ['convenience', 'speed', 'selection'],
+    channels: ['online', 'subscription'],
+  },
+
+  // ========== 流媒体/娱乐 ==========
+  'ROKU': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['entertainment', 'streaming', 'relaxation'],
+    valueProps: ['value', 'convenience', 'selection'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 订阅服务 ==========
+  'AMZN_PRIME': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['shopping', 'entertainment', 'convenience'],
+    valueProps: ['convenience', 'speed', 'value', 'selection'],
+    channels: ['subscription', 'online'],
+  },
+
+  // ========== 电子产品零售 ==========
+  'BBY': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['electronics', 'entertainment', 'home-tech'],
+    valueProps: ['selection', 'expertise', 'service', 'price-match'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 户外/运动 ==========
+  'DKS': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['sports', 'fitness', 'outdoor', 'recreation'],
+    valueProps: ['selection', 'value', 'expertise'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 酒店/旅游 (扩展) ==========
+  'H': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'high_net_worth', gender: 'all' },
+    occasions: ['travel', 'luxury', 'business-travel'],
+    valueProps: ['luxury', 'experience', 'service'],
+    channels: ['online', 'direct'],
+  },
+  'EXPE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['travel', 'vacation', 'planning'],
+    valueProps: ['selection', 'convenience', 'bundling'],
+    channels: ['online'],
+  },
+
+  // ========== 饮料 ==========
+  'KO': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['refreshment', 'social', 'meals', 'everyday'],
+    valueProps: ['taste', 'refreshment', 'happiness', 'nostalgia'],
+    channels: ['retail'],
+  },
+  'PEP': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['refreshment', 'snacking', 'social', 'meals'],
+    valueProps: ['taste', 'variety', 'convenience'],
+    channels: ['retail'],
+  },
+  'MNST': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['energy', 'gaming', 'extreme-sports', 'late-night'],
+    valueProps: ['energy', 'bold', 'lifestyle', 'extreme'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 社交媒体 ==========
+  'SNAP': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['social', 'communication', 'entertainment', 'ar', 'gaming', 'creativity'],
+    valueProps: ['fun', 'authentic', 'creative', 'social', 'free'],
+    channels: ['online'],
+  },
+  'PINS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['planning', 'inspiration', 'shopping', 'diy'],
+    valueProps: ['inspiration', 'discovery', 'organization', 'visual'],
+    channels: ['online'],
+  },
+  'RDDT': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['community', 'discussion', 'news', 'entertainment'],
+    valueProps: ['authenticity', 'community', 'niche', 'anonymity'],
+    channels: ['online'],
+  },
+
+  // ========== 游戏 ==========
+  'EA': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['gaming', 'sports', 'entertainment', 'social'],
+    valueProps: ['sports', 'live-service', 'community', 'competition'],
+    channels: ['online', 'subscription'],
+  },
+  'TTWO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['gaming', 'entertainment', 'open-world', 'story'],
+    valueProps: ['immersion', 'quality', 'story', 'open-world'],
+    channels: ['online', 'retail'],
+  },
+  'RBLX': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['gaming', 'social', 'creativity', 'entertainment', 'communication'],
+    valueProps: ['creativity', 'social', 'free', 'fun', 'authentic'],
+    channels: ['online'],
+  },
+
+  // ========== 医疗健康 ==========
+  'CVS': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['pharmacy', 'health', 'convenience', 'wellness'],
+    valueProps: ['convenience', 'health', 'accessibility', 'service'],
+    channels: ['retail', 'online'],
+  },
+  'WBA': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['pharmacy', 'health', 'convenience'],
+    valueProps: ['convenience', 'trust', 'accessibility'],
+    channels: ['retail', 'online'],
+  },
+  'TDOC': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['healthcare', 'convenience', 'mental-health', 'wellness', 'self-care'],
+    valueProps: ['convenience', 'accessibility', 'privacy', 'modern', 'discretion'],
+    channels: ['online', 'subscription'],
+  },
+  'HIMS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['wellness', 'self-care', 'healthcare', 'convenience', 'mental-health'],
+    valueProps: ['convenience', 'discretion', 'modern', 'accessibility', 'privacy'],
+    channels: ['online', 'subscription'],
   },
 };
 
