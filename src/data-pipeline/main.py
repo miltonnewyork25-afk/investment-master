@@ -1,0 +1,266 @@
+#!/usr/bin/env python3
+"""
+投资数据管道主入口
+
+用法：
+    python main.py --init                  # 初始化数据库
+    python main.py --collect all           # 采集所有数据
+    python main.py --collect prices        # 只采集股价
+    python main.py --score                 # 计算评分
+    python main.py --detect                # 检测信号
+    python main.py --status                # 查看状态
+    python main.py --daily                 # 每日例行任务
+"""
+
+import argparse
+from datetime import datetime
+from pathlib import Path
+import sys
+
+# 添加当前目录到路径
+sys.path.insert(0, str(Path(__file__).parent))
+
+from config import TRACKED_STOCKS, DATA_DIR
+from collectors.fmp_collector import FMPCollector
+from storage.db import Database
+from processors.scorer import Scorer
+from alerts.detector import AlertDetector
+
+
+def init_database():
+    """初始化数据库"""
+    print("\n[TASK] 初始化数据库...")
+    db = Database()
+    db.init_db()
+    print("[DONE] 数据库初始化完成")
+
+
+def collect_data(data_type: str = "all"):
+    """采集数据"""
+    print(f"\n[TASK] 采集数据 (类型: {data_type})...")
+
+    collector = FMPCollector()
+    db = Database()
+
+    if data_type in ["all", "prices"]:
+        print("\n[INFO] 采集股价数据...")
+        all_data = collector.collect_all(save=True)
+
+        # 保存到数据库
+        for industry, stocks in all_data.items():
+            for symbol, data in stocks.items():
+                if data["quote"]:
+                    db.insert_price(
+                        symbol=symbol,
+                        date=datetime.now().strftime("%Y-%m-%d"),
+                        price_data=data["quote"]
+                    )
+                    print(f"  [DB] {symbol} 已保存到数据库")
+
+    # TODO: 实现其他数据类型的采集
+    # if data_type in ["all", "indicators"]:
+    #     collect_indicators()
+
+    print("\n[DONE] 数据采集完成")
+
+
+def calculate_scores():
+    """计算评分"""
+    print("\n[TASK] 计算评分...")
+
+    db = Database()
+    scorer = Scorer()
+
+    results = {}
+
+    for industry, config in TRACKED_STOCKS.items():
+        print(f"\n[INFO] === {industry} 行业评分 ===")
+
+        for symbol in config["symbols"]:
+            # 获取最新价格数据
+            price_data = db.get_latest_price(symbol)
+
+            if price_data:
+                score_result = scorer.score_and_save(symbol, price_data)
+                if score_result:
+                    results[symbol] = score_result
+
+                    # 与上次评分对比
+                    history = db.get_score_history(symbol, limit=2)
+                    if len(history) >= 2:
+                        change = score_result["final_score"] - history[1]["score"]
+                        if abs(change) > 0:
+                            direction = "↑" if change > 0 else "↓"
+                            print(f"       变化: {direction} {abs(change):.1f}分")
+            else:
+                print(f"  [WARNING] {symbol} 无价格数据")
+
+    print("\n[DONE] 评分计算完成")
+    return results
+
+
+def detect_signals(score_results: dict = None):
+    """检测信号"""
+    print("\n[TASK] 检测信号...")
+
+    detector = AlertDetector()
+    db = Database()
+
+    # 准备数据
+    price_data = {}
+    score_data = {}
+
+    for industry, config in TRACKED_STOCKS.items():
+        for symbol in config["symbols"]:
+            # 获取价格历史
+            history = db.get_price_history(symbol, days=2)
+            if len(history) >= 2:
+                price_data[symbol] = {
+                    "current_price": history[0]["close"],
+                    "previous_price": history[1]["close"]
+                }
+
+            # 获取评分历史
+            score_history = db.get_score_history(symbol, limit=2)
+            if score_history:
+                score_data[symbol] = {
+                    "current_score": score_history[0]["score"],
+                    "previous_score": score_history[1]["score"] if len(score_history) > 1 else None,
+                    "industry": industry
+                }
+
+                # 添加评分详情
+                latest = db.get_latest_score(symbol)
+                if latest:
+                    score_data[symbol].update({
+                        "pe": latest["data_snapshot"].get("pe"),
+                        "divergence_type": latest["adjustments"].get("divergence_type"),
+                        "valuation_score": latest["data_snapshot"].get("valuation_score"),
+                        "indicator_score": latest["data_snapshot"].get("indicator_score")
+                    })
+
+    # 运行检测
+    alerts = detector.run_all_checks(price_data, score_data)
+
+    # 打印结果
+    detector.print_alerts(alerts)
+
+    print("[DONE] 信号检测完成")
+    return alerts
+
+
+def show_status():
+    """显示当前状态"""
+    print("\n" + "=" * 60)
+    print("投资 Agent 状态报告")
+    print("=" * 60)
+    print(f"时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
+    db = Database()
+
+    # 显示各股票最新评分
+    print("\n📊 最新评分:")
+    print("-" * 50)
+    print(f"{'股票':<8} {'行业':<12} {'得分':<8} {'评级':<10} {'建议'}")
+    print("-" * 50)
+
+    for industry, config in TRACKED_STOCKS.items():
+        for symbol in config["symbols"]:
+            score = db.get_latest_score(symbol)
+            if score:
+                print(f"{symbol:<8} {industry:<12} {score['final_score']:<8.1f} "
+                      f"{score['rating']:<10} {score['recommendation']}")
+            else:
+                print(f"{symbol:<8} {industry:<12} {'--':<8} {'无数据':<10}")
+
+    # 显示未确认的预警
+    print("\n⚠️ 未确认预警:")
+    alerts = db.get_recent_alerts(limit=5, unack_only=True)
+    if alerts:
+        for a in alerts:
+            severity_icon = {"critical": "🔴", "warning": "🟡", "info": "🔵"}.get(a["severity"], "⚪")
+            print(f"  {severity_icon} [{a['created_at'][:10]}] {a['message']}")
+    else:
+        print("  无未确认预警")
+
+    # 显示预测准确率
+    print("\n📈 预测准确率:")
+    stats = db.get_accuracy_stats()
+    print(f"  总计: {stats['correct']}/{stats['total']} ({stats['accuracy']}%)")
+
+    # 显示待验证预测
+    print("\n📋 待验证预测:")
+    pending = db.get_pending_predictions()
+    if pending:
+        for p in pending[:5]:
+            print(f"  • {p['symbol']} ({p['prediction_type']}): "
+                  f"预测{p['predicted_direction']}，到期 {p['target_date']}")
+    else:
+        print("  无待验证预测")
+
+    print("\n" + "=" * 60)
+
+
+def daily_routine():
+    """每日例行任务"""
+    print("\n" + "=" * 60)
+    print(f"每日例行任务 - {datetime.now().strftime('%Y-%m-%d')}")
+    print("=" * 60)
+
+    # 1. 采集数据
+    collect_data("prices")
+
+    # 2. 计算评分
+    score_results = calculate_scores()
+
+    # 3. 检测信号
+    detect_signals(score_results)
+
+    # 4. 显示状态
+    show_status()
+
+    print("\n[DONE] 每日例行任务完成")
+
+
+def main():
+    """主函数"""
+    parser = argparse.ArgumentParser(description="投资数据管道")
+    parser.add_argument("--init", action="store_true", help="初始化数据库")
+    parser.add_argument("--collect", type=str, metavar="TYPE",
+                        help="采集数据 (all/prices/indicators)")
+    parser.add_argument("--score", action="store_true", help="计算评分")
+    parser.add_argument("--detect", action="store_true", help="检测信号")
+    parser.add_argument("--status", action="store_true", help="显示状态")
+    parser.add_argument("--daily", action="store_true", help="执行每日例行任务")
+
+    args = parser.parse_args()
+
+    # 确保数据目录存在
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+    if args.init:
+        init_database()
+
+    if args.collect:
+        collect_data(args.collect)
+
+    if args.score:
+        calculate_scores()
+
+    if args.detect:
+        detect_signals()
+
+    if args.status:
+        show_status()
+
+    if args.daily:
+        daily_routine()
+
+    # 如果没有指定任何参数，显示帮助
+    if not any([args.init, args.collect, args.score, args.detect,
+                args.status, args.daily]):
+        parser.print_help()
+
+
+if __name__ == "__main__":
+    main()
