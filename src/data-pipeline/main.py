@@ -13,6 +13,7 @@
     python main.py --daily                 # 每日例行任务
     python main.py --weekly                # 每周例行任务（含指标更新）
     python main.py --update-journals       # 更新投资日志
+    python main.py --notify-test           # 测试通知系统
 """
 
 import argparse
@@ -31,6 +32,7 @@ from collectors.dram_collector import DRAMCollector, MemoryCAPEXCollector
 from storage.db import Database
 from processors.scorer import Scorer
 from alerts.detector import AlertDetector
+from alerts.notifier import Notifier
 
 
 def init_database():
@@ -175,6 +177,12 @@ def detect_signals(score_results: dict = None):
 
     # 打印结果
     detector.print_alerts(alerts)
+
+    # 发送通知
+    if alerts:
+        notifier = Notifier()
+        notify_results = notifier.send_alerts(alerts)
+        print(f"\n[NOTIFY] 通知发送结果: {notify_results}")
 
     print("[DONE] 信号检测完成")
     return alerts
@@ -359,9 +367,15 @@ def daily_routine():
     score_results = calculate_scores()
 
     # 3. 检测信号
-    detect_signals(score_results)
+    alerts = detect_signals(score_results)
 
-    # 4. 显示状态
+    # 4. 发送每日摘要
+    if score_results:
+        notifier = Notifier()
+        summary_results = notifier.send_daily_summary(score_results, alerts or [])
+        print(f"\n[NOTIFY] 每日摘要发送结果: {summary_results}")
+
+    # 5. 显示状态
     show_status()
 
     print("\n[DONE] 每日例行任务完成")
@@ -380,15 +394,55 @@ def weekly_routine():
     score_results = calculate_scores()
 
     # 3. 检测信号
-    detect_signals(score_results)
+    alerts = detect_signals(score_results)
 
     # 4. 更新投资日志
     update_journals()
 
-    # 5. 显示状态
+    # 5. 发送每日摘要
+    if score_results:
+        notifier = Notifier()
+        summary_results = notifier.send_daily_summary(score_results, alerts or [])
+        print(f"\n[NOTIFY] 每周摘要发送结果: {summary_results}")
+
+    # 6. 显示状态
     show_status()
 
     print("\n[DONE] 每周例行任务完成")
+
+
+def test_notification():
+    """测试通知系统"""
+    print("\n[TASK] 测试通知系统...")
+
+    test_alerts = [
+        {
+            "type": "sell_signal",
+            "symbol": "LRCX",
+            "severity": "critical",
+            "message": "半导体卖出信号：顶部背离触发！（测试消息）"
+        },
+        {
+            "type": "buy_signal",
+            "symbol": "ZIM",
+            "severity": "warning",
+            "message": "航运买入信号：底部背离触发（测试消息）"
+        }
+    ]
+
+    notifier = Notifier()
+    results = notifier.send_alerts(test_alerts)
+
+    print(f"\n[RESULT] 通知发送结果:")
+    print(f"  本地日志: {'✓' if results.get('log') else '✗'}")
+    print(f"  邮件:     {'✓' if results.get('email') else '✗ (未配置或未启用)'}")
+    print(f"  Slack:    {'✓' if results.get('slack') else '✗ (未配置或未启用)'}")
+
+    if results.get('log'):
+        log_file = DATA_DIR / "notifications.log"
+        print(f"\n  日志已保存到: {log_file}")
+
+    print("\n[DONE] 通知测试完成")
 
 
 def main():
@@ -403,6 +457,7 @@ def main():
     parser.add_argument("--daily", action="store_true", help="执行每日例行任务")
     parser.add_argument("--weekly", action="store_true", help="执行每周例行任务")
     parser.add_argument("--update-journals", action="store_true", help="更新投资日志")
+    parser.add_argument("--notify-test", action="store_true", help="测试通知系统")
 
     args = parser.parse_args()
 
@@ -433,9 +488,13 @@ def main():
     if args.update_journals:
         update_journals()
 
+    if args.notify_test:
+        test_notification()
+
     # 如果没有指定任何参数，显示帮助
     if not any([args.init, args.collect, args.score, args.detect,
-                args.status, args.daily, args.weekly, args.update_journals]):
+                args.status, args.daily, args.weekly, args.update_journals,
+                args.notify_test]):
         parser.print_help()
 
 
