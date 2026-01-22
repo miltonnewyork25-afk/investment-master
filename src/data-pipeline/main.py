@@ -6,22 +6,28 @@
     python main.py --init                  # 初始化数据库
     python main.py --collect all           # 采集所有数据
     python main.py --collect prices        # 只采集股价
+    python main.py --collect indicators    # 只采集行业指标
     python main.py --score                 # 计算评分
     python main.py --detect                # 检测信号
     python main.py --status                # 查看状态
     python main.py --daily                 # 每日例行任务
+    python main.py --weekly                # 每周例行任务（含指标更新）
+    python main.py --update-journals       # 更新投资日志
 """
 
 import argparse
-from datetime import datetime
+import json
+from datetime import datetime, timedelta
 from pathlib import Path
 import sys
 
 # 添加当前目录到路径
 sys.path.insert(0, str(Path(__file__).parent))
 
-from config import TRACKED_STOCKS, DATA_DIR
+from config import TRACKED_STOCKS, DATA_DIR, PROJECT_ROOT
 from collectors.fmp_collector import FMPCollector
+from collectors.scfi_collector import SCFICollector, BDICollector, OrderbookCollector
+from collectors.dram_collector import DRAMCollector, MemoryCAPEXCollector
 from storage.db import Database
 from processors.scorer import Scorer
 from alerts.detector import AlertDetector
@@ -57,11 +63,36 @@ def collect_data(data_type: str = "all"):
                     )
                     print(f"  [DB] {symbol} 已保存到数据库")
 
-    # TODO: 实现其他数据类型的采集
-    # if data_type in ["all", "indicators"]:
-    #     collect_indicators()
+    if data_type in ["all", "indicators"]:
+        collect_indicators()
 
     print("\n[DONE] 数据采集完成")
+
+
+def collect_indicators():
+    """采集行业指标数据"""
+    print("\n[TASK] 采集行业指标...")
+
+    # 半导体指标
+    print("\n[INFO] === 半导体行业指标 ===")
+    dram = DRAMCollector()
+    dram.collect(save=True)
+
+    capex = MemoryCAPEXCollector()
+    capex.collect(save=True)
+
+    # 航运指标
+    print("\n[INFO] === 航运行业指标 ===")
+    scfi = SCFICollector()
+    scfi.collect(save=True)
+
+    bdi = BDICollector()
+    bdi.collect(save=True)
+
+    orderbook = OrderbookCollector()
+    orderbook.collect(save=True)
+
+    print("\n[DONE] 行业指标采集完成")
 
 
 def calculate_scores():
@@ -201,13 +232,127 @@ def show_status():
     print("\n" + "=" * 60)
 
 
+def update_journals():
+    """自动更新投资日志"""
+    print("\n[TASK] 更新投资日志...")
+
+    db = Database()
+    journals_dir = PROJECT_ROOT / "journals"
+
+    updated_count = 0
+
+    for industry, config in TRACKED_STOCKS.items():
+        for symbol in config["symbols"]:
+            # 获取最新评分
+            score = db.get_latest_score(symbol)
+            if not score:
+                continue
+
+            # 获取最新价格
+            price = db.get_latest_price(symbol)
+
+            # 查找该股票的日志目录
+            symbol_dir = journals_dir / symbol
+            if not symbol_dir.exists():
+                continue
+
+            # 创建或更新今日日志
+            today = datetime.now().strftime("%Y-%m-%d")
+            journal_file = symbol_dir / f"{today}.md"
+
+            # 生成日志内容
+            content = generate_journal_content(symbol, industry, score, price)
+
+            # 保存日志
+            with open(journal_file, "w", encoding="utf-8") as f:
+                f.write(content)
+
+            print(f"[INFO] 已更新: {journal_file}")
+            updated_count += 1
+
+    print(f"\n[DONE] 已更新 {updated_count} 个投资日志")
+
+
+def generate_journal_content(symbol: str, industry: str, score: dict, price: dict) -> str:
+    """生成投资日志内容"""
+    today = datetime.now().strftime("%Y-%m-%d")
+
+    # 确定框架版本
+    if industry == "semicap":
+        framework = "semicap-analysis v5.0"
+    elif industry == "shipping":
+        framework = "cycle-investing v1.1 (shipping)"
+    else:
+        framework = "cycle-investing"
+
+    content = f"""# {symbol} 评估日志 - {today}
+
+> 自动生成于 {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+
+## 评估时数据
+
+| 项目 | 数值 |
+|------|------|
+| 评估日期 | {today} |
+| 股价 | ${price.get('close', 'N/A') if price else 'N/A'} |
+| P/E | {price.get('pe', 'N/A') if price else 'N/A'} |
+| P/B | {price.get('pb', 'N/A') if price else 'N/A'} |
+
+## 框架评分
+
+| 项目 | 数值 |
+|------|------|
+| 框架版本 | {framework} |
+| 基础分 | {score.get('base_score', 'N/A')} |
+| 调整项 | {json.dumps(score.get('adjustments', {}), ensure_ascii=False)} |
+| **最终得分** | **{score.get('final_score', 'N/A')}** |
+| 评级 | {score.get('rating', 'N/A')} |
+| 建议 | {score.get('recommendation', 'N/A')} |
+
+## 数据快照
+
+```json
+{json.dumps(score.get('data_snapshot', {}), indent=2, ensure_ascii=False)}
+```
+
+---
+
+## 3个月回顾（待补充）
+
+| 项目 | 数值 |
+|------|------|
+| 回顾日期 | 待填写 |
+| 实际股价 | 待填写 |
+| 实际涨跌幅 | 待计算 |
+| 预测是否正确 | 待评估 |
+
+---
+
+## 6个月回顾（待补充）
+
+| 项目 | 数值 |
+|------|------|
+| 回顾日期 | 待填写 |
+| 实际股价 | 待填写 |
+| 实际涨跌幅 | 待计算 |
+| 预测是否正确 | 待评估 |
+
+---
+
+*自动生成 by Investment Agent*
+*下次评估：{(datetime.now().replace(day=1) + timedelta(days=32)).replace(day=1).strftime("%Y-%m-%d")}*
+"""
+
+    return content
+
+
 def daily_routine():
     """每日例行任务"""
     print("\n" + "=" * 60)
     print(f"每日例行任务 - {datetime.now().strftime('%Y-%m-%d')}")
     print("=" * 60)
 
-    # 1. 采集数据
+    # 1. 采集股价数据
     collect_data("prices")
 
     # 2. 计算评分
@@ -222,6 +367,30 @@ def daily_routine():
     print("\n[DONE] 每日例行任务完成")
 
 
+def weekly_routine():
+    """每周例行任务（含指标更新）"""
+    print("\n" + "=" * 60)
+    print(f"每周例行任务 - {datetime.now().strftime('%Y-%m-%d')}")
+    print("=" * 60)
+
+    # 1. 采集所有数据（含指标）
+    collect_data("all")
+
+    # 2. 计算评分
+    score_results = calculate_scores()
+
+    # 3. 检测信号
+    detect_signals(score_results)
+
+    # 4. 更新投资日志
+    update_journals()
+
+    # 5. 显示状态
+    show_status()
+
+    print("\n[DONE] 每周例行任务完成")
+
+
 def main():
     """主函数"""
     parser = argparse.ArgumentParser(description="投资数据管道")
@@ -232,6 +401,8 @@ def main():
     parser.add_argument("--detect", action="store_true", help="检测信号")
     parser.add_argument("--status", action="store_true", help="显示状态")
     parser.add_argument("--daily", action="store_true", help="执行每日例行任务")
+    parser.add_argument("--weekly", action="store_true", help="执行每周例行任务")
+    parser.add_argument("--update-journals", action="store_true", help="更新投资日志")
 
     args = parser.parse_args()
 
@@ -256,9 +427,15 @@ def main():
     if args.daily:
         daily_routine()
 
+    if args.weekly:
+        weekly_routine()
+
+    if args.update_journals:
+        update_journals()
+
     # 如果没有指定任何参数，显示帮助
     if not any([args.init, args.collect, args.score, args.detect,
-                args.status, args.daily]):
+                args.status, args.daily, args.weekly, args.update_journals]):
         parser.print_help()
 
 
