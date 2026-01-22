@@ -857,6 +857,208 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
 
   // ========================================================
+  // 航运物流行业
+  // ========================================================
+
+  // ---------- 集装箱航运 (Container Shipping) ----------
+  // 特点: 重资产、强周期、运价波动大、与全球贸易高度相关
+  'ZIM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Container Shipping',
+    tags: ['container', 'liner', 'israel', 'asia_focus'],
+  },
+  'MATX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Container Shipping',
+    tags: ['container', 'jones_act', 'pacific', 'logistics'],
+  },
+  // 全球集装箱巨头 (非美股但重要参考)
+  'MAERSK.B': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Container Shipping',
+    tags: ['container', 'integrated', 'logistics', 'global_leader'],
+  },
+
+  // ---------- 干散货航运 (Dry Bulk Shipping) ----------
+  // 特点: 运输铁矿石、煤炭、粮食等大宗商品
+  'GOGL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Dry Bulk Shipping',
+    tags: ['dry_bulk', 'capesize', 'spot_heavy'],
+  },
+  'SBLK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Dry Bulk Shipping',
+    tags: ['dry_bulk', 'diversified_fleet', 'dividend'],
+  },
+  'GNK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Dry Bulk Shipping',
+    tags: ['dry_bulk', 'mid_size', 'scrubber'],
+  },
+  'EGLE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Dry Bulk Shipping',
+    tags: ['dry_bulk', 'supramax', 'ultramax'],
+  },
+
+  // ---------- 油轮运输 (Tanker Shipping) ----------
+  // 特点: 运输原油、成品油、化学品
+  'FRO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Tanker Shipping',
+    tags: ['crude_tanker', 'vlcc', 'suezmax', 'hemen'],
+  },
+  'STNG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Tanker Shipping',
+    tags: ['product_tanker', 'mr', 'lr2', 'chemicals'],
+  },
+  'TNK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Tanker Shipping',
+    tags: ['crude_tanker', 'suezmax', 'aframax'],
+  },
+  'INSW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Tanker Shipping',
+    tags: ['product_tanker', 'crude', 'jones_act'],
+  },
+  'DHT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Tanker Shipping',
+    tags: ['crude_tanker', 'vlcc', 'pure_play'],
+  },
+
+  // ---------- LNG/LPG 运输 ----------
+  'FLNG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'LNG Shipping',
+    tags: ['lng', 'long_term_charter', 'contracted'],
+  },
+
+  // ---------- 快递物流 (Express & Parcel) ----------
+  // 特点: 时效性、网络效应、最后一公里
+  'FDX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Express Logistics',
+    tags: ['express', 'air_freight', 'ground', 'integrated'],
+  },
+  'UPS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Express Logistics',
+    tags: ['express', 'ground', 'supply_chain', 'union'],
+  },
+
+  // ---------- 货运代理 (Freight Forwarding) ----------
+  // 特点: 轻资产、整合运力、增值服务
+  'EXPD': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Freight Forwarding',
+    tags: ['forwarder', 'air_ocean', 'customs'],
+  },
+  'CHRW': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Freight Forwarding',
+    tags: ['broker', 'trucking', 'technology'],
+  },
+
+  // ---------- 第三方物流 (3PL) ----------
+  'XPO': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: '3PL',
+    tags: ['ltl', 'trucking', 'brokerage', 'technology'],
+  },
+  'JBHT': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: '3PL',
+    tags: ['intermodal', 'trucking', 'dedicated'],
+  },
+
+  // ---------- 铁路货运 ----------
+  'UNP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Rail Freight',
+    tags: ['rail', 'western_us', 'intermodal', 'bulk'],
+  },
+  'CSX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Rail Freight',
+    tags: ['rail', 'eastern_us', 'intermodal', 'coal'],
+  },
+  'NSC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Rail Freight',
+    tags: ['rail', 'eastern_us', 'intermodal', 'automotive'],
+  },
+
+  // ========================================================
   // 消费必需品/饮料行业
   // ========================================================
 

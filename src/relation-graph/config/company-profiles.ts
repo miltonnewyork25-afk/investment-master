@@ -546,6 +546,38 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'GOLD': 'late',     // 黄金
   'NEM': 'late',
 
+  // ========== 航运物流 (Late Cycle / Cyclical) ==========
+  // 航运是强周期行业，与全球贸易、大宗商品价格高度相关
+  // 集装箱航运
+  'ZIM': 'late',      // 集装箱航运
+  'MATX': 'late',     // Matson - 太平洋航线
+  // 干散货航运 - 与铁矿石、煤炭、粮食需求相关
+  'GOGL': 'late',     // Golden Ocean - Capesize
+  'SBLK': 'late',     // Star Bulk
+  'GNK': 'late',      // Genco
+  'EGLE': 'late',     // Eagle Bulk
+  // 油轮运输 - 与原油贸易相关
+  'FRO': 'late',      // Frontline - VLCC
+  'STNG': 'late',     // Scorpio Tankers - 成品油
+  'TNK': 'late',      // Teekay Tankers
+  'DHT': 'late',      // DHT Holdings
+  'INSW': 'late',     // International Seaways
+  // LNG运输
+  'FLNG': 'mid',      // Flex LNG - 长约为主，周期性较弱
+  // 物流快递 - 中周期
+  'FDX': 'mid',       // FedEx
+  'UPS': 'mid',       // UPS
+  // 货代/经纪 - 轻资产，相对稳定
+  'EXPD': 'mid',      // Expeditors
+  'CHRW': 'mid',      // C.H. Robinson
+  // 铁路 - 中周期
+  'UNP': 'mid',       // Union Pacific
+  'CSX': 'mid',       // CSX
+  'NSC': 'mid',       // Norfolk Southern
+  // 卡车物流
+  'XPO': 'mid',       // XPO
+  'JBHT': 'mid',      // J.B. Hunt
+
   // ========== 防御型 (Defensive) ==========
   // 经济下行期防御、必需消费、公用事业、医疗
   'JNJ': 'defensive', // 医疗
@@ -656,6 +688,65 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,
   },
 
+  // ========== 航运物流 (全球贸易敏感) ==========
+  // 集装箱航运 - 与全球贸易、消费需求高度相关
+  'ZIM': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.8, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.1, dollarIndex: -0.5, oilPrice: -0.3,
+  },
+  'MATX': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.4, oilPrice: -0.3,
+  },
+
+  // 干散货航运 - 与大宗商品、中国需求高度相关
+  'GOGL': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.9, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.6, oilPrice: -0.2,
+  },
+  'SBLK': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.9, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.6, oilPrice: -0.2,
+  },
+  'GNK': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.9, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.6, oilPrice: -0.2,
+  },
+
+  // 油轮运输 - 油价正相关（油价高→运输需求高）
+  'FRO': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.7,
+  },
+  'STNG': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.6,
+  },
+  'DHT': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.7,
+  },
+
+  // 快递物流 - 与消费、电商相关
+  'FDX': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.4,
+  },
+  'UPS': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.4,
+  },
+
+  // 铁路 - 与工业生产、大宗商品相关
+  'UNP': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'CSX': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+
   // ========== 防御型 (低宏观敏感度) ==========
   'JNJ': {
     interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
@@ -702,6 +793,14 @@ export const CROSS_CHAIN_IMPACT: Record<string, string[]> = {
   // 支付网络影响多个消费场景
   'V': ['Financial Chain', 'Consumer Retail Chain', 'Travel Chain', 'E-commerce'],
   'MA': ['Financial Chain', 'Consumer Retail Chain', 'Travel Chain', 'E-commerce'],
+
+  // 航运物流 - 全球贸易基础设施
+  'ZIM': ['Container Shipping', 'Consumer Retail Chain', 'E-commerce', 'Semiconductor Chain'],
+  'MATX': ['Container Shipping', 'Consumer Retail Chain', 'Pacific Trade'],
+  'FDX': ['Express Logistics', 'E-commerce', 'Consumer Retail Chain', 'Healthcare'],
+  'UPS': ['Express Logistics', 'E-commerce', 'Consumer Retail Chain', 'Healthcare'],
+  'UNP': ['Rail Freight', 'Industrial Chain', 'Agriculture', 'Energy'],
+  'CSX': ['Rail Freight', 'Industrial Chain', 'Auto Chain', 'Energy'],
 };
 
 // ============================================================

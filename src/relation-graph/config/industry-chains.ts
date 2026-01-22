@@ -254,18 +254,43 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     ],
 
     // ========== 物流/运输产业链 ==========
+    // 航运是全球贸易的基础设施，服务于多个下游行业
+    'Marine Shipping': [
+      'Internet Retail',        // 电商进口
+      'Specialty Retail',       // 零售商进口
+      'Discount Stores',        // 折扣店进口
+      'Auto - Manufacturers',   // 汽车零部件
+      'Consumer Electronics',   // 消费电子
+      'Semiconductors',         // 芯片运输
+      'Chemicals',              // 化工品
+      'Steel',                  // 钢铁
+    ],
+
     'Trucking': [
       'Integrated Freight & Logistics',
+      'Internet Retail',
+      'Specialty Retail',
     ],
 
     'Railroads': [
       'Integrated Freight & Logistics',
+      'Steel',
+      'Chemicals',
+      'Agriculture',
     ],
 
     'Integrated Freight & Logistics': [
       'Specialty Retail',
       'Internet Retail',
       'Discount Stores',
+    ],
+
+    // 航空货运 - 高价值、时效性货物
+    'Air Freight & Logistics': [
+      'Semiconductors',
+      'Medical - Devices',
+      'Internet Retail',
+      'Consumer Electronics',
     ],
 
     // ========== 电信/通信产业链 ==========
@@ -907,6 +932,51 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // 租车 (Car Rental)
     'CAR': 'Car Rental',                  // Avis Budget
     'HTZ': 'Car Rental',                  // Hertz
+
+    // ========== 航运物流产业链细分 ==========
+    // 集装箱航运 (Container Shipping)
+    'ZIM': 'Container Shipping',          // ZIM - 以色列
+    'MATX': 'Container Shipping',         // Matson - 太平洋/Jones Act
+    'KEX': 'Container Shipping',          // Kirby - 内河/沿海
+
+    // 干散货航运 (Dry Bulk Shipping)
+    'GOGL': 'Dry Bulk Shipping',          // Golden Ocean - Cape/Panamax
+    'SBLK': 'Dry Bulk Shipping',          // Star Bulk - 多船型
+    'GNK': 'Dry Bulk Shipping',           // Genco - 超灵便/巴拿马
+    'EGLE': 'Dry Bulk Shipping',          // Eagle Bulk - 超灵便
+
+    // 油轮运输 (Tanker Shipping)
+    'FRO': 'Crude Tanker',                // Frontline - VLCC/苏伊士
+    'DHT': 'Crude Tanker',                // DHT - VLCC
+    'TNK': 'Crude Tanker',                // Teekay Tankers - 阿芙拉/苏伊士
+    'STNG': 'Product Tanker',             // Scorpio - 成品油轮
+    'INSW': 'Product Tanker',             // International Seaways
+
+    // LNG运输
+    'FLNG': 'LNG Shipping',               // Flex LNG
+    'GLNG': 'LNG Shipping',               // Golar LNG
+
+    // 快递物流 (Express Logistics)
+    'FDX': 'Express Logistics',           // FedEx
+    'UPS': 'Express Logistics',           // UPS
+
+    // 货运代理 (Freight Forwarding)
+    'EXPD': 'Freight Forwarding',         // Expeditors
+    'CHRW': 'Freight Brokerage',          // C.H. Robinson
+
+    // 第三方物流/卡车 (3PL/Trucking)
+    'XPO': 'LTL Trucking',                // XPO - LTL
+    'JBHT': 'Intermodal',                 // J.B. Hunt - 联运
+    'ODFL': 'LTL Trucking',               // Old Dominion
+    'SAIA': 'LTL Trucking',               // Saia
+    'KNX': 'Truckload',                   // Knight-Swift
+
+    // 铁路货运 (Rail Freight)
+    'UNP': 'Class I Railroad',            // Union Pacific - 西部
+    'CSX': 'Class I Railroad',            // CSX - 东部
+    'NSC': 'Class I Railroad',            // Norfolk Southern - 东部
+    'CP': 'Class I Railroad',             // Canadian Pacific
+    'CNI': 'Class I Railroad',            // Canadian National
   },
 
   // ============================================================
@@ -1020,6 +1090,84 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Full-Service Airline',
       'Low-Cost Airline',
       'Trucking',
+      'Crude Tanker',              // 原油运输
+      'Product Tanker',            // 成品油运输
+    ],
+
+    // ========== 航运物流产业链 ==========
+    // 全球贸易流: 制造商 → 航运 → 物流 → 零售商/消费者
+    // 航运是全球贸易的核心基础设施
+
+    // 集装箱航运 - 服务电商/零售/制造业
+    'Container Shipping': [
+      'Express Logistics',         // 快递物流
+      'Freight Forwarding',        // 货代
+      'Mass Retail',               // 大型零售
+      'Internet Retail',           // 电商
+    ],
+
+    // 干散货航运 - 运输大宗商品
+    'Dry Bulk Shipping': [
+      'Steel Producer',            // 运输铁矿石
+      'Ag Commodities',            // 运输粮食
+      'Fertilizer',                // 运输化肥
+    ],
+
+    // 原油油轮 - 运输原油
+    'Crude Tanker': [
+      'Refining',                  // 炼厂需要原油
+      'Integrated Oil',            // 综合油企
+    ],
+
+    // 成品油轮 - 运输成品油
+    'Product Tanker': [
+      'Mass Retail',               // 加油站
+      'Full-Service Airline',      // 航空燃油
+      'Trucking',                  // 柴油
+    ],
+
+    // LNG运输 - 服务天然气产业
+    'LNG Shipping': [
+      'Utilities - Regulated Electric',  // 电厂
+      'Chemicals',                       // 化工
+    ],
+
+    // 快递物流 - 最后一公里
+    'Express Logistics': [
+      'Internet Retail',           // 电商配送
+      'Mass Retail',               // 零售配送
+    ],
+
+    // 货运代理 - 整合运力
+    'Freight Forwarding': [
+      'Express Logistics',
+      'Internet Retail',
+    ],
+
+    // 货运经纪 - 卡车运力撮合
+    'Freight Brokerage': [
+      'LTL Trucking',
+      'Truckload',
+    ],
+
+    // LTL零担 - 小批量货物
+    'LTL Trucking': [
+      'Mass Retail',
+      'Internet Retail',
+    ],
+
+    // 联运 - 铁路+卡车
+    'Intermodal': [
+      'Container Shipping',        // 港口接驳
+      'Class I Railroad',          // 铁路运输
+      'Mass Retail',
+    ],
+
+    // 铁路 - 大宗长途
+    'Class I Railroad': [
+      'Steel Producer',            // 钢铁运输
+      'Ag Commodities',            // 农产品运输
+      'Intermodal',                // 联运服务
     ],
 
     // ========== 汽车/EV产业链 ==========
