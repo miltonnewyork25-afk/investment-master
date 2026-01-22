@@ -528,23 +528,69 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // ========== 晚周期 (Late Cycle) ==========
   // 经济过热期受益、大宗商品
   // 能源、材料
-  'XOM': 'late',      // 能源
-  'CVX': 'late',
-  'COP': 'late',
-  'EOG': 'late',
-  'SLB': 'late',      // 油服
-  'HAL': 'late',
-  'BKR': 'late',
-  'VLO': 'late',      // 炼化
-  'MPC': 'late',
-  'PSX': 'late',
-  'MOS': 'late',      // 化肥
-  'NTR': 'late',
-  'CF': 'late',
-  'ADM': 'late',      // 农产品
-  'BG': 'late',
-  'GOLD': 'late',     // 黄金
-  'NEM': 'late',
+
+  // 综合油气 (Integrated Oil)
+  'XOM': 'late',      // ExxonMobil
+  'CVX': 'late',      // Chevron
+  'SHEL': 'late',     // Shell
+  'BP': 'late',       // BP
+  'TTE': 'late',      // TotalEnergies
+
+  // 油服设备 (Oilfield Services)
+  'SLB': 'late',      // Schlumberger
+  'HAL': 'late',      // Halliburton
+  'BKR': 'late',      // Baker Hughes
+  'NOV': 'late',      // NOV Inc
+  'LBRT': 'late',     // Liberty Energy
+  'HP': 'late',       // Helmerich & Payne
+
+  // E&P - 页岩油 (Shale E&P)
+  'EOG': 'late',      // EOG Resources
+  'PXD': 'late',      // Pioneer
+  'FANG': 'late',     // Diamondback
+  'DVN': 'late',      // Devon
+  'COP': 'late',      // ConocoPhillips
+  'OXY': 'late',      // Occidental
+
+  // E&P - 国际 (International E&P)
+  'HES': 'late',      // Hess
+  'MRO': 'late',      // Marathon Oil
+  'APA': 'late',      // APA Corp
+
+  // 中游管道 (Midstream) - 相对稳定但仍是晚周期
+  'WMB': 'late',      // Williams
+  'KMI': 'late',      // Kinder Morgan
+  'ET': 'late',       // Energy Transfer
+  'EPD': 'late',      // Enterprise Products
+  'MPLX': 'late',     // MPLX
+  'OKE': 'late',      // ONEOK
+  'TRGP': 'late',     // Targa Resources
+
+  // 炼化 (Refining)
+  'VLO': 'late',      // Valero
+  'MPC': 'late',      // Marathon Petroleum
+  'PSX': 'late',      // Phillips 66
+  'DK': 'late',       // Delek
+  'PBF': 'late',      // PBF Energy
+
+  // 化工 (Chemicals) - 与油气周期相关
+  'DOW': 'late',      // Dow
+  'LYB': 'late',      // LyondellBasell
+  'CE': 'late',       // Celanese
+  'EMN': 'late',      // Eastman
+
+  // 化肥
+  'MOS': 'late',      // Mosaic
+  'NTR': 'late',      // Nutrien
+  'CF': 'late',       // CF Industries
+
+  // 农产品
+  'ADM': 'late',      // ADM
+  'BG': 'late',       // Bunge
+
+  // 黄金
+  'GOLD': 'late',     // Barrick
+  'NEM': 'late',      // Newmont
 
   // ========== 航运物流 (Late Cycle / Cyclical) ==========
   // 航运是强周期行业，与全球贸易、大宗商品价格高度相关
@@ -654,6 +700,86 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'SLB': {
     interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
     consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.85,
+  },
+  'HAL': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.85,
+  },
+  'BKR': {
+    interestRate: 0.1, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.8,
+  },
+
+  // E&P公司 - 油价高度正相关
+  'EOG': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.9,
+  },
+  'PXD': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.9,
+  },
+  'FANG': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.9,
+  },
+  'DVN': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.88,
+  },
+  'COP': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.85,
+  },
+  'OXY': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.9,
+  },
+  'HES': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.88,
+  },
+
+  // 中游管道 - 油价敏感度较低，更稳定
+  'WMB': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.4,
+  },
+  'KMI': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.4,
+  },
+  'ET': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.5,
+  },
+  'EPD': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.4,
+  },
+
+  // 炼化 - 利润取决于裂解价差，与油价关系复杂
+  'VLO': {
+    interestRate: 0.0, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+  'MPC': {
+    interestRate: 0.0, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+  'PSX': {
+    interestRate: 0.0, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+
+  // 化工 - 油价是成本，中等敏感
+  'DOW': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'LYB': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: -0.3, oilPrice: 0.3,
   },
 
   // ========== 油价高敏感 (负相关) ==========
@@ -787,8 +913,15 @@ export const CROSS_CHAIN_IMPACT: Record<string, string[]> = {
   'STLD': ['Construction Chain', 'Auto Chain', 'Industrial'],
 
   // 能源影响运输和化工
-  'XOM': ['Oil & Gas Chain', 'Chemicals', 'Aviation Chain'],
-  'CVX': ['Oil & Gas Chain', 'Chemicals', 'Aviation Chain'],
+  'XOM': ['Oil & Gas Chain', 'Chemicals', 'Aviation Chain', 'Tanker Shipping'],
+  'CVX': ['Oil & Gas Chain', 'Chemicals', 'Aviation Chain', 'Tanker Shipping'],
+  'SLB': ['Oilfield Services', 'Oil & Gas Chain', 'LNG Shipping'],
+  'HAL': ['Oilfield Services', 'Oil & Gas Chain'],
+  'EOG': ['Oil & Gas Chain', 'Midstream'],
+  'VLO': ['Refining', 'Aviation Chain', 'Trucking', 'Product Tanker'],
+  'MPC': ['Refining', 'Midstream', 'Retail'],
+  'WMB': ['Midstream', 'Natural Gas', 'Utilities'],
+  'DOW': ['Chemicals', 'Plastics', 'Packaging'],
 
   // 支付网络影响多个消费场景
   'V': ['Financial Chain', 'Consumer Retail Chain', 'Travel Chain', 'E-commerce'],

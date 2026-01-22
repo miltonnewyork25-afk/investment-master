@@ -1059,6 +1059,319 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
 
   // ========================================================
+  // 能源行业 (Oil & Gas)
+  // 产业链: 油服设备 → E&P → 中游管道 → 炼化 → 化工
+  // ========================================================
+
+  // ---------- 油服设备 (Oilfield Services) ----------
+  // 特点: 轻/重资产混合、服务+设备收入、与油价/钻井活动高度相关
+  'SLB': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oilfield Services',
+    tags: ['integrated', 'digital', 'international', 'offshore'],
+  },
+  'HAL': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oilfield Services',
+    tags: ['completion', 'drilling', 'north_america'],
+  },
+  'BKR': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oilfield Services',
+    tags: ['equipment', 'lng', 'industrial'],
+  },
+  'NOV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oilfield Equipment',
+    tags: ['rig_equipment', 'completion', 'manufacturing'],
+  },
+  'LBRT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oilfield Services',
+    tags: ['frac', 'pressure_pumping', 'permian'],
+  },
+  'HP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oilfield Services',
+    tags: ['drilling_contractor', 'rigs', 'us_land'],
+  },
+
+  // ---------- 上游E&P - 页岩油 (Shale E&P) ----------
+  // 特点: 资产密集、现金流波动大、与油价高度相关
+  'EOG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['permian', 'eagle_ford', 'premium_drilling'],
+  },
+  'PXD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['permian', 'pure_play', 'low_cost'],
+  },
+  'FANG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['permian', 'midland', 'delaware'],
+  },
+  'DVN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['multi_basin', 'delaware', 'williston'],
+  },
+  'COP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['diversified', 'global', 'lng'],
+  },
+  'OXY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['permian', 'chemicals', 'carbon_capture'],
+  },
+
+  // ---------- 上游E&P - 海上/国际 (International E&P) ----------
+  'HES': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'International E&P',
+    tags: ['guyana', 'bakken', 'high_growth'],
+  },
+  'MRO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'International E&P',
+    tags: ['eagle_ford', 'bakken', 'oklahoma'],
+  },
+  'APA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'International E&P',
+    tags: ['permian', 'suriname', 'egypt'],
+  },
+
+  // ---------- 综合油气 (Integrated Oil) ----------
+  // 特点: 全产业链、规模效应、分红稳定
+  'XOM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Integrated Oil',
+    tags: ['supermajor', 'upstream', 'downstream', 'chemicals'],
+  },
+  'CVX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Integrated Oil',
+    tags: ['supermajor', 'permian', 'lng', 'dividend'],
+  },
+  'SHEL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Integrated Oil',
+    tags: ['supermajor', 'lng_leader', 'energy_transition'],
+  },
+  'BP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Integrated Oil',
+    tags: ['supermajor', 'renewables', 'trading'],
+  },
+  'TTE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Integrated Oil',
+    tags: ['supermajor', 'lng', 'renewables', 'european'],
+  },
+
+  // ---------- 中游管道 (Midstream Pipeline) ----------
+  // 特点: MLP结构、稳定现金流、费率制收入
+  'WMB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Pipeline',
+    tags: ['natural_gas', 'transco', 'gathering'],
+  },
+  'KMI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Pipeline',
+    tags: ['diversified', 'natural_gas', 'co2'],
+  },
+  'ET': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Pipeline',
+    tags: ['diversified', 'ngl', 'crude', 'gas'],
+  },
+  'EPD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Pipeline',
+    tags: ['ngl', 'petrochemical', 'export'],
+  },
+  'MPLX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Pipeline',
+    tags: ['crude', 'gas', 'mpc_affiliated'],
+  },
+  'OKE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Pipeline',
+    tags: ['ngl', 'natural_gas', 'midcontinent'],
+  },
+  'TRGP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Pipeline',
+    tags: ['permian', 'gathering', 'processing'],
+  },
+
+  // ---------- 下游炼化 (Refining) ----------
+  // 特点: 利润取决于裂解价差、资产密集、周期性
+  'VLO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Refining',
+    tags: ['largest_refiner', 'renewable_diesel', 'gulf_coast'],
+  },
+  'MPC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Refining',
+    tags: ['refining', 'midstream', 'retail'],
+  },
+  'PSX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Refining',
+    tags: ['refining', 'midstream', 'chemicals', 'jv'],
+  },
+  'DK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Refining',
+    tags: ['regional', 'midcontinent', 'retail'],
+  },
+  'PBF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Refining',
+    tags: ['east_coast', 'west_coast', 'mid_con'],
+  },
+
+  // ---------- 石化/化工 (Chemicals) ----------
+  // 特点: 上游整合、周期性、乙烯链
+  'DOW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Chemicals',
+    tags: ['commodity_chemicals', 'plastics', 'ethylene'],
+  },
+  'LYB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Chemicals',
+    tags: ['polyethylene', 'polypropylene', 'refining'],
+  },
+  'CE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Chemicals',
+    tags: ['acetyl', 'engineered_materials', 'specialty'],
+  },
+  'EMN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Chemicals',
+    tags: ['specialty', 'additives', 'fibers'],
+  },
+
+  // ========================================================
   // 消费必需品/饮料行业
   // ========================================================
 
