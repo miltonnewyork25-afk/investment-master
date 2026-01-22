@@ -5,6 +5,7 @@
 from .fmp_collector import FMPCollector
 from .scfi_collector import SCFICollector, BDICollector, OrderbookCollector
 from .dram_collector import DRAMCollector, MemoryCAPEXCollector
+from .energy_collector import WTICollector, RigCountCollector, CrudeInventoryCollector, EnergyIndicatorCollector
 
 __all__ = [
     "FMPCollector",
@@ -12,5 +13,9 @@ __all__ = [
     "BDICollector",
     "OrderbookCollector",
     "DRAMCollector",
-    "MemoryCAPEXCollector"
+    "MemoryCAPEXCollector",
+    "WTICollector",
+    "RigCountCollector",
+    "CrudeInventoryCollector",
+    "EnergyIndicatorCollector"
 ]

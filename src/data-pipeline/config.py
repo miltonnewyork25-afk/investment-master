@@ -47,6 +47,10 @@ TRACKED_STOCKS = {
     "shipping": {
         "symbols": ["ZIM", "MATX", "DAC", "GSL"],
         "config": "shipping.yaml"
+    },
+    "energy": {
+        "symbols": ["XOM", "CVX", "SLB", "HAL", "OXY"],
+        "config": "energy.yaml"
     }
 }
 
@@ -72,6 +76,24 @@ INDICATOR_SOURCES = {
         "url": "https://www.trendforce.com/",
         "frequency": "weekly",
         "industries": ["semicap"]
+    },
+    "wti": {
+        "name": "WTI原油价格",
+        "url": "https://api.eia.gov/v2/petroleum/pri/spt/data/",
+        "frequency": "daily",
+        "industries": ["energy"]
+    },
+    "rig_count": {
+        "name": "Baker Hughes钻机数",
+        "url": "https://rigcount.bakerhughes.com/",
+        "frequency": "weekly",
+        "industries": ["energy"]
+    },
+    "crude_inventory": {
+        "name": "EIA原油库存",
+        "url": "https://www.eia.gov/petroleum/supply/weekly/",
+        "frequency": "weekly",
+        "industries": ["energy"]
     }
 }
 
@@ -126,6 +148,28 @@ VALUATION_SCORING = {
             (1.0, 1.8, 3),
             (1.8, 999, 2)
         ]
+    },
+    "energy": {
+        # 综合石油用PB (XOM, CVX)
+        "pb_ranges": [
+            (0, 1.0, 9),
+            (1.0, 1.5, 7),
+            (1.5, 2.0, 5),
+            (2.0, 2.5, 3),
+            (2.5, 999, 1)
+        ],
+        # 油服用PE (SLB, HAL)
+        "pe_ranges": [
+            (0, 12, 9),
+            (12, 18, 7),
+            (18, 25, 5),
+            (25, 35, 3),
+            (35, 999, 1)
+        ],
+        # 综合石油公司列表（用PB估值）
+        "pb_symbols": ["XOM", "CVX"],
+        # 油服公司列表（用PE估值）
+        "pe_symbols": ["SLB", "HAL", "BKR", "OXY"]
     }
 }
 

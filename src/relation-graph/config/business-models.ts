@@ -1634,6 +1634,385 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Memory',
     tags: ['dram', 'nand', 'hbm'],
   },
+
+  // ========================================================
+  // 金融行业 (Financial Services)
+  // 产业链: 银行 → 资管 → 保险 | 支付网络
+  // ========================================================
+
+  // ---------- 大型银行 (Money Center Banks) ----------
+  // 特点: 全能银行、规模效应、利率敏感、系统重要性
+  'JPM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Money Center Bank',
+    tags: ['universal', 'investment_bank', 'wealth', 'trading', 'cards'],
+  },
+  'BAC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Money Center Bank',
+    tags: ['universal', 'consumer', 'wealth', 'merrill'],
+  },
+  'WFC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Money Center Bank',
+    tags: ['consumer', 'mortgage', 'retail', 'commercial'],
+  },
+  'C': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Money Center Bank',
+    tags: ['global', 'institutional', 'treasury', 'cards'],
+  },
+
+  // ---------- 区域银行 (Regional Banks) ----------
+  // 特点: 区域聚焦、商业贷款、利率敏感度高
+  'PNC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['mid_atlantic', 'commercial', 'wealth'],
+  },
+  'USB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['midwest', 'payments', 'trust'],
+  },
+  'TFC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['southeast', 'insurance', 'commercial'],
+  },
+  'FITB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['midwest', 'commercial', 'consumer'],
+  },
+  'RF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['southeast', 'commercial', 'consumer'],
+  },
+  'KEY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['midwest', 'commercial', 'investment_bank'],
+  },
+  'CFG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['northeast', 'commercial', 'consumer'],
+  },
+  'HBAN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['midwest', 'commercial', 'auto_lending'],
+  },
+
+  // ---------- 投资银行 (Investment Banks) ----------
+  // 特点: 轻资产、交易收入、周期性强、高杠杆
+  'GS': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Investment Bank',
+    tags: ['trading', 'm&a', 'asset_management', 'marcus'],
+  },
+  'MS': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Investment Bank',
+    tags: ['wealth', 'trading', 'm&a', 'e_trade'],
+  },
+
+  // ---------- 资产管理 (Asset Management) ----------
+  // 特点: 轻资产、AUM驱动、管理费+业绩费
+  'BLK': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Asset Management',
+    tags: ['passive', 'etf', 'ishares', 'aladdin'],
+  },
+  'BX': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Alternative Asset Manager',
+    tags: ['private_equity', 'real_estate', 'credit', 'infrastructure'],
+  },
+  'KKR': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Alternative Asset Manager',
+    tags: ['private_equity', 'credit', 'infrastructure', 'real_estate'],
+  },
+  'APO': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Alternative Asset Manager',
+    tags: ['credit', 'private_equity', 'insurance', 'athene'],
+  },
+  'ARES': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Alternative Asset Manager',
+    tags: ['credit', 'private_equity', 'real_estate', 'secondary'],
+  },
+  'CG': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Alternative Asset Manager',
+    tags: ['private_equity', 'credit', 'real_estate', 'global'],
+  },
+  'TROW': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Asset Management',
+    tags: ['active', 'mutual_funds', 'retirement'],
+  },
+
+  // ---------- 保险 - 财产险 (P&C Insurance) ----------
+  // 特点: 浮存金投资、承保周期、利率敏感
+  'TRV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'P&C Insurance',
+    tags: ['commercial', 'personal', 'specialty'],
+  },
+  'ALL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'P&C Insurance',
+    tags: ['auto', 'home', 'agent_network'],
+  },
+  'PGR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'P&C Insurance',
+    tags: ['auto', 'direct', 'usage_based', 'telematics'],
+  },
+  'CB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'P&C Insurance',
+    tags: ['commercial', 'specialty', 'global', 'high_net_worth'],
+  },
+  'AIG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'P&C Insurance',
+    tags: ['commercial', 'specialty', 'global'],
+  },
+
+  // ---------- 保险 - 寿险 (Life Insurance) ----------
+  // 特点: 长期负债、利差收入、利率敏感
+  'MET': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Life Insurance',
+    tags: ['group', 'retirement', 'annuities', 'global'],
+  },
+  'PRU': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Life Insurance',
+    tags: ['annuities', 'retirement', 'asset_management', 'international'],
+  },
+  'AFL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Life Insurance',
+    tags: ['supplemental', 'cancer', 'japan', 'worksite'],
+  },
+  'LNC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Life Insurance',
+    tags: ['annuities', 'life', 'retirement', 'group'],
+  },
+  'PFG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Insurance',
+    tags: ['retirement', 'asset_management', 'group'],
+  },
+
+  // ---------- 消费金融 (Consumer Finance) ----------
+  // 特点: 信用卡、汽车贷款、高收益高风险
+  'COF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Consumer Finance',
+    tags: ['cards', 'auto', 'digital', 'rewards'],
+  },
+  'DFS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Consumer Finance',
+    tags: ['cards', 'personal_loans', 'student_loans', 'cashback'],
+  },
+  'SYF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Consumer Finance',
+    tags: ['private_label', 'retail_cards', 'healthcare', 'home'],
+  },
+
+  // ---------- 券商/经纪 (Brokerage) ----------
+  // 特点: 交易收入、NIM、资产收集
+  'SCHW': {
+    assetModel: 'asset_light',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Brokerage',
+    tags: ['retail', 'ria', 'banking', 'etf'],
+  },
+  'LPLA': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Brokerage',
+    tags: ['ria', 'independent', 'advisor_platform'],
+  },
+
+  // ---------- 交易所/市场基础设施 ----------
+  // 特点: 网络效应、双边市场、稳定现金流
+  'CME': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Exchange',
+    tags: ['derivatives', 'futures', 'options', 'clearing'],
+  },
+  'ICE': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Exchange',
+    tags: ['commodities', 'fixed_income', 'mortgage', 'nyse'],
+  },
+  'NDAQ': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Exchange',
+    tags: ['equities', 'technology', 'market_tech', 'listing'],
+  },
+  'CBOE': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Exchange',
+    tags: ['options', 'vix', 'etf', 'fx'],
+  },
+
+  // ---------- 金融数据/信息服务 ----------
+  // 特点: 订阅收入、高粘性、轻资产
+  'SPGI': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Financial Data',
+    tags: ['ratings', 'index', 'analytics', 'commodities'],
+  },
+  'MCO': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Financial Data',
+    tags: ['ratings', 'analytics', 'kyc', 'research'],
+  },
+  'MSCI': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Financial Data',
+    tags: ['index', 'esg', 'analytics', 'benchmark'],
+  },
 };
 
 // ============================================================

@@ -493,13 +493,32 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'GM': 'early',
   'TSLA': 'early',
   'AN': 'early',      // 汽车经销
-  'JPM': 'early',     // 银行
-  'BAC': 'early',
-  'WFC': 'early',
-  'C': 'early',
-  'SCHW': 'early',    // 券商
-  'MS': 'early',
-  'GS': 'early',
+
+  // 大型银行 (Money Center Banks)
+  'JPM': 'early',     // JP Morgan
+  'BAC': 'early',     // Bank of America
+  'WFC': 'early',     // Wells Fargo
+  'C': 'early',       // Citigroup
+
+  // 区域银行 (Regional Banks)
+  'PNC': 'early',     // PNC Financial
+  'USB': 'early',     // U.S. Bancorp
+  'TFC': 'early',     // Truist
+  'FITB': 'early',    // Fifth Third
+  'RF': 'early',      // Regions
+  'KEY': 'early',     // KeyCorp
+  'CFG': 'early',     // Citizens
+  'HBAN': 'early',    // Huntington
+
+  // 投资银行/券商
+  'GS': 'early',      // Goldman Sachs
+  'MS': 'early',      // Morgan Stanley
+  'SCHW': 'early',    // Schwab
+
+  // 消费金融
+  'COF': 'early',     // Capital One
+  'DFS': 'early',     // Discover
+  'SYF': 'early',     // Synchrony
 
   // ========== 中周期 (Mid Cycle) ==========
   // 经济扩张期受益、资本开支增加
@@ -524,6 +543,27 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'ASML': 'mid',
   'FDX': 'mid',       // 物流
   'UPS': 'mid',
+
+  // 资产管理/另类资管 (Mid Cycle - 与市场周期相关)
+  'BLK': 'mid',       // BlackRock
+  'BX': 'mid',        // Blackstone
+  'KKR': 'mid',       // KKR
+  'APO': 'mid',       // Apollo
+  'ARES': 'mid',      // Ares
+  'CG': 'mid',        // Carlyle
+  'TROW': 'mid',      // T. Rowe Price
+  'LPLA': 'mid',      // LPL Financial
+
+  // 交易所 (Mid Cycle - 与交易量相关)
+  'CME': 'mid',       // CME Group
+  'ICE': 'mid',       // ICE
+  'NDAQ': 'mid',      // Nasdaq
+  'CBOE': 'mid',      // CBOE
+
+  // 金融数据 (Mid Cycle - 与资本市场活动相关)
+  'SPGI': 'mid',      // S&P Global
+  'MCO': 'mid',       // Moody's
+  'MSCI': 'mid',      // MSCI
 
   // ========== 晚周期 (Late Cycle) ==========
   // 经济过热期受益、大宗商品
@@ -653,6 +693,20 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'T': 'defensive',   // 电信
   'VZ': 'defensive',
   'TMUS': 'defensive',
+
+  // 保险 (Defensive - 稳定现金流、浮存金)
+  // 财产险
+  'TRV': 'defensive', // Travelers
+  'ALL': 'defensive', // Allstate
+  'PGR': 'defensive', // Progressive
+  'CB': 'defensive',  // Chubb
+  'AIG': 'defensive', // AIG
+  // 寿险
+  'MET': 'defensive', // MetLife
+  'PRU': 'defensive', // Prudential
+  'AFL': 'defensive', // Aflac
+  'LNC': 'defensive', // Lincoln National
+  'PFG': 'defensive', // Principal
 };
 
 // ============================================================
@@ -886,6 +940,156 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.2,
     consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
   },
+
+  // ========== 金融行业 (利率高敏感) ==========
+
+  // 区域银行 - 利率敏感度最高
+  'PNC': {
+    interestRate: 0.85, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+  'USB': {
+    interestRate: 0.85, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.4, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+  'TFC': {
+    interestRate: 0.85, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+  'FITB': {
+    interestRate: 0.85, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.4, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+  'RF': {
+    interestRate: 0.85, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+  'KEY': {
+    interestRate: 0.85, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.4, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+  'CFG': {
+    interestRate: 0.85, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+  'HBAN': {
+    interestRate: 0.85, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.4, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+
+  // 投资银行 - 市场活动敏感
+  'GS': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: 0.1,
+  },
+  'MS': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: 0.1,
+  },
+
+  // 资产管理 - 市场表现敏感
+  'BLK': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'BX': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.8, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.6, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'KKR': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.8, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'APO': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.4, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'ARES': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'TROW': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // 消费金融 - 信用周期敏感
+  'COF': {
+    interestRate: 0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.7,
+    consumerConfidence: 0.7, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: -0.1,
+  },
+  'DFS': {
+    interestRate: 0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.7,
+    consumerConfidence: 0.7, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: -0.1,
+  },
+  'SYF': {
+    interestRate: 0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.7,
+    consumerConfidence: 0.7, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: -0.1,
+  },
+
+  // 券商
+  'SCHW': {
+    interestRate: 0.7, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+
+  // 交易所 - 波动率敏感
+  'CME': {
+    interestRate: 0.3, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.3,
+  },
+  'ICE': {
+    interestRate: 0.3, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.2,
+  },
+  'NDAQ': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // 金融数据 - 资本市场活动敏感
+  'SPGI': {
+    interestRate: 0.4, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'MCO': {
+    interestRate: 0.4, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'MSCI': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // 保险 - 相对防御但利率正相关
+  'TRV': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'ALL': {
+    interestRate: 0.4, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: -0.2,
+  },
+  'PGR': {
+    interestRate: 0.4, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: -0.2,
+  },
+  'CB': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'MET': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'PRU': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'AFL': {
+    interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.0,
+  },
 };
 
 // ============================================================
@@ -934,6 +1138,16 @@ export const CROSS_CHAIN_IMPACT: Record<string, string[]> = {
   'UPS': ['Express Logistics', 'E-commerce', 'Consumer Retail Chain', 'Healthcare'],
   'UNP': ['Rail Freight', 'Industrial Chain', 'Agriculture', 'Energy'],
   'CSX': ['Rail Freight', 'Industrial Chain', 'Auto Chain', 'Energy'],
+
+  // 金融 - 跨行业基础设施
+  'JPM': ['Banking', 'Investment Banking', 'Asset Management', 'Consumer Finance', 'Real Estate'],
+  'BAC': ['Banking', 'Wealth Management', 'Consumer Finance', 'Real Estate'],
+  'GS': ['Investment Banking', 'Trading', 'Asset Management', 'Private Equity'],
+  'MS': ['Investment Banking', 'Wealth Management', 'Trading', 'Asset Management'],
+  'BLK': ['Asset Management', 'ETF', 'Technology', 'ESG'],
+  'BX': ['Private Equity', 'Real Estate', 'Credit', 'Infrastructure'],
+  'SPGI': ['Ratings', 'Index', 'Commodities', 'Analytics'],
+  'CME': ['Derivatives', 'Commodities', 'Interest Rates', 'FX'],
 };
 
 // ============================================================

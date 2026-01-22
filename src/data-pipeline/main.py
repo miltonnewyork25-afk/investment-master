@@ -34,6 +34,7 @@ from config import TRACKED_STOCKS, DATA_DIR, PROJECT_ROOT
 from collectors.fmp_collector import FMPCollector
 from collectors.scfi_collector import SCFICollector, BDICollector, OrderbookCollector
 from collectors.dram_collector import DRAMCollector, MemoryCAPEXCollector
+from collectors.energy_collector import EnergyIndicatorCollector
 from storage.db import Database
 from processors.scorer import Scorer
 from processors.predictor import Predictor
@@ -99,6 +100,10 @@ def collect_indicators():
 
     orderbook = OrderbookCollector()
     orderbook.collect(save=True)
+
+    # 能源指标
+    energy = EnergyIndicatorCollector()
+    energy.collect_all(save=True)
 
     print("\n[DONE] 行业指标采集完成")
 
