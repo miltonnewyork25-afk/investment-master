@@ -1,0 +1,50 @@
+{
+  "energy": {
+    "industry": "energy",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "machinery": {
+    "industry": "machinery",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "airlines": {
+    "industry": "airlines",
+    "accuracy": 100.0,
+    "total": 9,
+    "correct": 9,
+    "passed": true,
+    "errors": []
+  },
+  "chemicals": {
+    "industry": "chemicals",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "mining": {
+    "industry": "mining",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "industrial": {
+    "industry": "industrial",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  }
+}

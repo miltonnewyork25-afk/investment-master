@@ -1,0 +1,10 @@
+{
+  "steel": {
+    "industry": "steel",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  }
+}

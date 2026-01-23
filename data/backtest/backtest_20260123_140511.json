@@ -1,0 +1,10 @@
+{
+  "airlines": {
+    "industry": "airlines",
+    "accuracy": 100.0,
+    "total": 9,
+    "correct": 9,
+    "passed": true,
+    "errors": []
+  }
+}
