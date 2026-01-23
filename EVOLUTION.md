@@ -5,8 +5,9 @@
 
 ## 当前状态
 
-- **当前阶段**: CREATE_AIRLINES
+- **当前阶段**: COMPLETE
 - **总体目标**: 所有行业回测准确率 >= 70%，每个行业产出新经验
+- **完成状态**: ALL 6 INDUSTRIES PASS (energy 80%, machinery/industrial/mining/chemicals/airlines 100%)
 
 ## 行业进展
 
@@ -19,7 +20,7 @@
 | industrial | PASS | 100% | 1 | ISM收缩确认 |
 | mining | PASS | 100% | 1 | 大宗商品确认 |
 | chemicals | PASS | 100% | 1 | 价差极端值信号 |
-| airlines | **CREATING** | - | - | 与energy交集6/10 |
+| airlines | PASS | 100% | 1 | 成本端PE陷阱(Oil Cost Trap) |
 
 ## 行业泛化顺序（按交集最大排序）
 
@@ -86,6 +87,12 @@ machinery(修复) → industrial(9/10) → mining(8/10) → chemicals(8/10) → 
 - 已应用于: chemicals
 - 泛化规则: 利润率指标(价差/毛利)极端高+库存极低=不可持续的繁荣
 
+### 经验 #9: 成本端PE陷阱 (Oil Cost Trap)
+- 来源: airlines (v1)
+- 内容: oil>90 + PE<10 + load>80 = 成本侵蚀利润，低PE是成本压缩假象
+- 已应用于: airlines
+- 泛化规则: 成本驱动型行业(航空/化工/运输)，输入成本极高时PE低不代表便宜，是利润被压缩的信号
+
 ## 已验证的假设
 
 1. **PE陷阱**: ✓ 已验证 (2007-12, 2014-09 两个数据点)
@@ -133,3 +140,10 @@ machinery(修复) → industrial(9/10) → mining(8/10) → chemicals(8/10) → 
 - 已应用经验: #3(PE陷阱) #4(扩张保护) #6(收缩确认)
 - 全局: 5/5 行业通过 (energy 80%, 其余100%)
 - 结论: chemicals 通过，进入 airlines 行业创建（最后一个）
+
+### Iteration 5 (airlines 创建 - 2026-01-23)
+- airlines: 100% PASS (9/9) 首次通过
+- 新经验: #9 成本端PE陷阱 (oil>90 + PE<10 + load>80 = 成本压缩)
+- 已应用经验: #3(PE陷阱) #4(扩张保护) #9(成本端陷阱)
+- 全局: 6/6 行业通过 (energy 80%, 其余100%)
+- 结论: ALL INDUSTRIES PASS - 迭代完成

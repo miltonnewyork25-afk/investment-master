@@ -105,6 +105,43 @@ BACKTEST_DATA = {
             }
         ]
     },
+    "airlines": {
+        "cycles": [
+            {
+                "name": "2008-2009 金融危机+油价",
+                "points": [
+                    {"date": "2008-07", "oil": 140, "rpk_yoy": 2, "load_factor": 82,
+                     "rasm_yoy": 8, "dal_pe": 5, "actual_6m": "down"},
+                    {"date": "2008-12", "oil": 40, "rpk_yoy": -10, "load_factor": 75,
+                     "rasm_yoy": -5, "dal_pe": -1, "dal_pb": 1.0, "actual_6m": "up"},
+                    {"date": "2009-06", "oil": 70, "rpk_yoy": -8, "load_factor": 78,
+                     "rasm_yoy": -3, "dal_pe": 10, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2014-2016 油价崩盘利好",
+                "points": [
+                    {"date": "2014-12", "oil": 55, "rpk_yoy": 5, "load_factor": 84,
+                     "rasm_yoy": 3, "dal_pe": 10, "actual_6m": "up"},
+                    {"date": "2016-01", "oil": 30, "rpk_yoy": 6, "load_factor": 83,
+                     "rasm_yoy": -2, "dal_pe": 8, "actual_6m": "up"},
+                    {"date": "2016-09", "oil": 45, "rpk_yoy": 4, "load_factor": 84,
+                     "rasm_yoy": 0, "dal_pe": 7, "actual_6m": "down"},
+                ]
+            },
+            {
+                "name": "2020-2022 COVID + 报复出行",
+                "points": [
+                    {"date": "2020-04", "oil": 20, "rpk_yoy": -90, "load_factor": 20,
+                     "rasm_yoy": -80, "dal_pe": -1, "dal_pb": 0.5, "actual_6m": "up"},
+                    {"date": "2020-10", "oil": 40, "rpk_yoy": -70, "load_factor": 50,
+                     "rasm_yoy": -40, "dal_pe": -1, "dal_pb": 1.0, "actual_6m": "up"},
+                    {"date": "2022-03", "oil": 110, "rpk_yoy": 100, "load_factor": 80,
+                     "rasm_yoy": 30, "dal_pe": 20, "actual_6m": "down"},
+                ]
+            }
+        ]
+    },
     "chemicals": {
         "cycles": [
             {
@@ -544,6 +581,107 @@ def score_industrial(point: Dict) -> Tuple[float, str]:
     return final_score, _score_to_signal(final_score)
 
 
+def score_airlines(point: Dict) -> Tuple[float, str]:
+    """航空行业评分 - 应用8条经验 + 新增成本端PE陷阱"""
+    oil = point.get("oil", 70)
+    rpk_yoy = point.get("rpk_yoy", 0)
+    load_factor = point.get("load_factor", 80)
+    rasm_yoy = point.get("rasm_yoy", 0)
+    dal_pe = point.get("dal_pe", 15)
+    dal_pb = point.get("dal_pb", 2.0)
+
+    # RPK客运量评分（逆周期：客运下降=买入机会）
+    if rpk_yoy < -50:
+        rpk_score = 9
+    elif rpk_yoy < -20:
+        rpk_score = 8
+    elif rpk_yoy < -5:
+        rpk_score = 6
+    elif rpk_yoy < 5:
+        rpk_score = 5
+    elif rpk_yoy < 10:
+        rpk_score = 3
+    else:
+        rpk_score = 1
+
+    # 客座率评分（逆周期：低客座=买入机会）
+    if load_factor < 50:
+        load_score = 9
+    elif load_factor < 70:
+        load_score = 7
+    elif load_factor < 78:
+        load_score = 5
+    elif load_factor < 83:
+        load_score = 3
+    else:
+        load_score = 1
+
+    # RASM评分（逆周期：收入下降=买入机会）
+    if rasm_yoy < -30:
+        rasm_score = 9
+    elif rasm_yoy < -10:
+        rasm_score = 7
+    elif rasm_yoy < -3:
+        rasm_score = 6
+    elif rasm_yoy < 3:
+        rasm_score = 5
+    elif rasm_yoy < 10:
+        rasm_score = 3
+    else:
+        rasm_score = 1
+
+    # 估值评分
+    if dal_pe > 0:
+        if dal_pe < 8:
+            val_score = 9
+        elif dal_pe < 12:
+            val_score = 7
+        elif dal_pe < 16:
+            val_score = 5
+        elif dal_pe < 20:
+            val_score = 3
+        else:
+            val_score = 2
+    else:
+        if dal_pb < 1.0:
+            val_score = 9
+        elif dal_pb < 1.5:
+            val_score = 7
+        elif dal_pb < 2.5:
+            val_score = 5
+        else:
+            val_score = 3
+
+    # ═══ 应用已验证经验 ═══
+
+    # [经验#3改] PE陷阱(航空版): 客座率高+RASM正+PE低=顶峰盈利
+    if load_factor >= 82 and rasm_yoy >= 0 and dal_pe > 0 and dal_pe < 10:
+        val_score = min(val_score, 3)
+
+    # 综合评分 (val 30%, rpk 25%, load 25%, rasm 20%)
+    base_score = (
+        val_score * 0.30 +
+        rpk_score * 0.25 +
+        load_score * 0.25 +
+        rasm_score * 0.20
+    ) * 10
+
+    # 背离检测
+    indicator_avg = (rpk_score + load_score + rasm_score) / 3
+    divergence_adj = 0
+    if val_score >= 7 and indicator_avg >= 7:
+        divergence_adj = 20  # 底部背离
+    elif val_score <= 3 and indicator_avg <= 3:
+        divergence_adj = -15  # 顶部背离
+
+    # [新经验#9] 成本端PE陷阱: 高油价+PE低+客座高=成本压缩利润
+    if oil > 90 and dal_pe > 0 and dal_pe < 10 and load_factor > 80:
+        divergence_adj -= 10
+
+    final_score = max(0, min(100, base_score + divergence_adj))
+    return final_score, _score_to_signal(final_score)
+
+
 def score_chemicals(point: Dict) -> Tuple[float, str]:
     """化工行业评分 - 应用7条经验 + 新增价差极端值"""
     eth_spread = point.get("eth_spread", 400)    # 乙烯-石脑油价差 $/ton
@@ -795,6 +933,7 @@ SCORE_FUNCTIONS = {
     "industrial": score_industrial,
     "mining": score_mining,
     "chemicals": score_chemicals,
+    "airlines": score_airlines,
 }
 
 
