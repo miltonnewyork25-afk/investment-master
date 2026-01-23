@@ -258,6 +258,45 @@ BACKTEST_DATA = {
                 ]
             }
         ]
+    },
+    "steel": {
+        "cycles": [
+            {
+                "name": "2008-2009 金融危机",
+                "points": [
+                    {"date": "2008-06", "hrc": 1000, "steel_util": 85, "iron_ore": 150,
+                     "nue_pb": 3.4, "actual_6m": "down"},
+                    {"date": "2009-03", "hrc": 400, "steel_util": 50, "iron_ore": 60,
+                     "nue_pb": 1.22, "actual_6m": "up"},
+                    {"date": "2009-09", "hrc": 500, "steel_util": 60, "iron_ore": 80,
+                     "nue_pb": 1.86, "actual_6m": "sideways"},
+                ]
+            },
+            {
+                "name": "2014-2016 中国产能过剩",
+                "points": [
+                    {"date": "2014-09", "hrc": 620, "steel_util": 77, "iron_ore": 85,
+                     "nue_pb": 2.0, "actual_6m": "down"},
+                    {"date": "2015-12", "hrc": 370, "steel_util": 68, "iron_ore": 40,
+                     "nue_pb": 1.82, "actual_6m": "up"},
+                    {"date": "2016-06", "hrc": 550, "steel_util": 73, "iron_ore": 50,
+                     "nue_pb": 2.10, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2020-2022 COVID + 超级繁荣",
+                "points": [
+                    {"date": "2020-04", "hrc": 500, "steel_util": 56, "iron_ore": 85,
+                     "nue_pb": 1.05, "actual_6m": "up"},
+                    {"date": "2021-08", "hrc": 1945, "steel_util": 82, "iron_ore": 170,
+                     "nue_pb": 2.75, "actual_6m": "up"},
+                    {"date": "2022-03", "hrc": 1400, "steel_util": 80, "iron_ore": 140,
+                     "nue_pb": 2.45, "actual_6m": "down"},
+                    {"date": "2022-06", "hrc": 800, "steel_util": 78, "iron_ore": 120,
+                     "nue_pb": 2.45, "actual_6m": "sideways"},
+                ]
+            }
+        ]
     }
 }
 
@@ -920,6 +959,100 @@ def score_mining(point: Dict) -> Tuple[float, str]:
     return final_score, _score_to_signal(final_score)
 
 
+def score_steel(point: Dict) -> Tuple[float, str]:
+    """钢铁行业评分 - 应用经验#4扩张保护 + #7商品确认 + 新增#12价差背离"""
+    hrc = point.get("hrc", 700)
+    steel_util = point.get("steel_util", 75)
+    iron_ore = point.get("iron_ore", 100)
+    nue_pb = point.get("nue_pb", 2.0)
+
+    # HRC钢价评分（逆周期：低价=买入机会）
+    if hrc < 400:
+        hrc_score = 9
+    elif hrc < 550:
+        hrc_score = 7
+    elif hrc < 700:
+        hrc_score = 5
+    elif hrc < 900:
+        hrc_score = 3
+    elif hrc < 1500:
+        hrc_score = 2
+    else:
+        hrc_score = 1
+
+    # 产能利用率评分（逆周期：低利用率=行业萧条=买入）
+    if steel_util < 55:
+        util_score = 9
+    elif steel_util < 65:
+        util_score = 7
+    elif steel_util < 73:
+        util_score = 5
+    elif steel_util < 80:
+        util_score = 3
+    elif steel_util < 85:
+        util_score = 2
+    else:
+        util_score = 1
+
+    # 铁矿石成本评分（逆周期+成本维度：低铁矿=低成本+弱需求=底部）
+    if iron_ore < 50:
+        iron_score = 7
+    elif iron_ore < 70:
+        iron_score = 5
+    elif iron_ore < 100:
+        iron_score = 4
+    elif iron_ore < 140:
+        iron_score = 2
+    else:
+        iron_score = 1
+
+    # NUE PB估值（逆周期：低估=买入）
+    if nue_pb < 1.2:
+        val_score = 9
+    elif nue_pb < 1.5:
+        val_score = 7
+    elif nue_pb < 2.0:
+        val_score = 5
+    elif nue_pb < 2.5:
+        val_score = 3
+    elif nue_pb < 3.5:
+        val_score = 2
+    else:
+        val_score = 1
+
+    # 综合评分: val 30%, hrc 25%, util 20%, iron 15%, pad 10%
+    base_score = (
+        val_score * 0.30 +
+        hrc_score * 0.25 +
+        util_score * 0.20 +
+        iron_score * 0.15 +
+        5 * 0.10
+    ) * 10
+
+    divergence_adj = 0
+
+    # 底部背离: 估值极低 + HRC/利用率极低 → 强买入
+    if val_score >= 7 and (hrc_score >= 7 or util_score >= 7):
+        divergence_adj += 10
+
+    # [经验#4] 扩张保护: HRC超级高(>1500) + 利用率未满(<85%) = 繁荣未结束
+    if hrc > 1500 and steel_util < 85:
+        divergence_adj += 30
+
+    # [经验#11变体] 自满陷阱: 利用率中等 + 估值不便宜 + 钢价中低 + 铁矿成本高
+    # 行业看似正常但成本侵蚀利润，即将下行
+    if 73 <= steel_util < 80 and nue_pb > 1.8 and hrc < 700 and iron_ore > 70:
+        divergence_adj -= 10
+
+    # [新经验#12] 价差背离: HRC已跌到中位(<900)但铁矿仍高(>100)
+    # 说明全球需求未崩，是供给修正不是需求崩塌，修正有限
+    if hrc < 900 and iron_ore > 100:
+        divergence_adj += 10
+
+    final_score = max(0, min(100, base_score + divergence_adj))
+    return final_score, _score_to_signal(final_score)
+
+
 def _score_to_signal(score: float) -> str:
     """分数转信号"""
     if score >= 75:
@@ -955,6 +1088,7 @@ SCORE_FUNCTIONS = {
     "mining": score_mining,
     "chemicals": score_chemicals,
     "airlines": score_airlines,
+    "steel": score_steel,
 }
 
 
