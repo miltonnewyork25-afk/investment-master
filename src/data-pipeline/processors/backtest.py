@@ -105,6 +105,45 @@ BACKTEST_DATA = {
             }
         ]
     },
+    "mining": {
+        "cycles": [
+            {
+                "name": "2008-2009 大宗商品崩盘",
+                "points": [
+                    {"date": "2008-06", "copper": 3.8, "iron_ore": 150, "mining_capex_yoy": 30,
+                     "fcx_pb": 3.5, "actual_6m": "down"},
+                    {"date": "2009-03", "copper": 1.5, "iron_ore": 60, "mining_capex_yoy": -30,
+                     "fcx_pb": 1.2, "actual_6m": "up"},
+                    {"date": "2009-09", "copper": 2.8, "iron_ore": 80, "mining_capex_yoy": -25,
+                     "fcx_pb": 2.0, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2015-2016 中国减速",
+                "points": [
+                    {"date": "2014-06", "copper": 3.2, "iron_ore": 95, "mining_capex_yoy": 5,
+                     "fcx_pb": 2.5, "actual_6m": "down"},
+                    {"date": "2015-12", "copper": 2.1, "iron_ore": 40, "mining_capex_yoy": -35,
+                     "fcx_pb": 0.8, "actual_6m": "up"},
+                    {"date": "2016-06", "copper": 2.2, "iron_ore": 55, "mining_capex_yoy": -30,
+                     "fcx_pb": 1.0, "actual_6m": "up"},
+                    {"date": "2017-01", "copper": 2.6, "iron_ore": 80, "mining_capex_yoy": -10,
+                     "fcx_pb": 1.8, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2020-2022 COVID + 超级周期",
+                "points": [
+                    {"date": "2020-03", "copper": 2.2, "iron_ore": 85, "mining_capex_yoy": -15,
+                     "fcx_pb": 1.5, "actual_6m": "up"},
+                    {"date": "2021-05", "copper": 4.5, "iron_ore": 200, "mining_capex_yoy": 15,
+                     "fcx_pb": 3.0, "actual_6m": "down"},
+                    {"date": "2022-07", "copper": 3.5, "iron_ore": 110, "mining_capex_yoy": 20,
+                     "fcx_pb": 2.2, "actual_6m": "down"},
+                ]
+            }
+        ]
+    },
     "industrial": {
         "cycles": [
             {
@@ -466,6 +505,103 @@ def score_industrial(point: Dict) -> Tuple[float, str]:
     return final_score, _score_to_signal(final_score)
 
 
+def score_mining(point: Dict) -> Tuple[float, str]:
+    """矿业行业评分 - 应用6条经验 + 新增大宗商品确认"""
+    copper = point.get("copper", 3.0)       # $/lb
+    iron_ore = point.get("iron_ore", 90)    # $/ton
+    mining_capex_yoy = point.get("mining_capex_yoy", 0)
+    fcx_pb = point.get("fcx_pb", 2.0)
+
+    # 铜价评分（逆周期）
+    if copper < 2.0:
+        copper_score = 9
+    elif copper < 2.5:
+        copper_score = 7
+    elif copper < 3.0:
+        copper_score = 5
+    elif copper < 3.5:
+        copper_score = 4
+    elif copper < 4.0:
+        copper_score = 3
+    else:
+        copper_score = 1
+
+    # 铁矿石评分（逆周期）
+    if iron_ore < 50:
+        iron_score = 9
+    elif iron_ore < 70:
+        iron_score = 7
+    elif iron_ore < 90:
+        iron_score = 5
+    elif iron_ore < 120:
+        iron_score = 3
+    else:
+        iron_score = 1
+
+    # 矿业CAPEX评分（逆周期）
+    if mining_capex_yoy < -30:
+        capex_score = 9
+    elif mining_capex_yoy < -15:
+        capex_score = 7
+    elif mining_capex_yoy < 0:
+        capex_score = 5
+    elif mining_capex_yoy < 15:
+        capex_score = 4
+    elif mining_capex_yoy < 30:
+        capex_score = 2
+    else:
+        capex_score = 1
+
+    # FCX估值 (用PB，矿业周期性强常亏损)
+    if fcx_pb < 1.0:
+        val_score = 9
+    elif fcx_pb < 1.5:
+        val_score = 7
+    elif fcx_pb < 2.0:
+        val_score = 5
+    elif fcx_pb < 2.5:
+        val_score = 4
+    elif fcx_pb < 3.0:
+        val_score = 3
+    else:
+        val_score = 1
+
+    # ═══ 应用已验证经验 ═══
+
+    # 综合评分 (4指标: val 30%, copper 25%, capex 25%, iron 20%)
+    base_score = (
+        val_score * 0.30 +
+        copper_score * 0.25 +
+        capex_score * 0.25 +
+        iron_score * 0.20
+    ) * 10
+
+    # [经验#4] 扩张保护: CAPEX仍在收缩+铜价回升+PB低=复苏期
+    expansion_protection = (mining_capex_yoy < 0 and copper > 2.5 and fcx_pb < 2.0)
+
+    # 背离检测
+    indicator_avg = (copper_score + capex_score + iron_score) / 3
+    divergence_adj = 0
+    if val_score >= 7 and indicator_avg >= 7:
+        divergence_adj = 20  # 底部背离
+    elif val_score <= 3 and indicator_avg <= 3 and not expansion_protection:
+        divergence_adj = -15  # 顶部背离
+
+    if expansion_protection:
+        divergence_adj += 15  # 复苏期加分
+
+    # [新经验#7] 大宗商品确认: 铜+铁矿双高+CAPEX扩张=过度投资期
+    if copper > 3.0 and iron_ore > 90 and mining_capex_yoy > 0:
+        divergence_adj -= 10
+
+    # [经验#2] CAPEX收缩底部信号
+    if mining_capex_yoy < -25:
+        divergence_adj += 10
+
+    final_score = max(0, min(100, base_score + divergence_adj))
+    return final_score, _score_to_signal(final_score)
+
+
 def _score_to_signal(score: float) -> str:
     """分数转信号"""
     if score >= 75:
@@ -498,6 +634,7 @@ SCORE_FUNCTIONS = {
     "energy": score_energy,
     "machinery": score_machinery,
     "industrial": score_industrial,
+    "mining": score_mining,
 }
 
 
