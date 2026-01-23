@@ -1,0 +1,50 @@
+{
+  "energy": {
+    "company": "CVX",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "machinery": {
+    "company": "DE",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "industrial": {
+    "company": "EMR",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "mining": {
+    "company": "BHP",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "chemicals": {
+    "company": "LYB",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "airlines": {
+    "company": "UAL",
+    "accuracy": 100.0,
+    "total": 9,
+    "correct": 9,
+    "passed": true,
+    "errors": []
+  }
+}

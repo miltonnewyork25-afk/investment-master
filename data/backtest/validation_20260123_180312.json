@@ -1,0 +1,119 @@
+{
+  "energy": {
+    "company": "CVX",
+    "accuracy": 80.0,
+    "total": 10,
+    "correct": 8,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2014-06",
+        "cycle": "2014-2016 油价暴跌",
+        "score": 36.0,
+        "signal": "watch",
+        "actual": "down",
+        "val": 1.6
+      },
+      {
+        "date": "2015-01",
+        "cycle": "2014-2016 油价暴跌",
+        "score": 63.0,
+        "signal": "buy",
+        "actual": "down",
+        "val": 1.35
+      }
+    ]
+  },
+  "machinery": {
+    "company": "DE",
+    "accuracy": 80.0,
+    "total": 10,
+    "correct": 8,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2015-09",
+        "cycle": "2015-2016 矿业衰退",
+        "score": 54.5,
+        "signal": "neutral",
+        "actual": "down",
+        "val": 17.9
+      },
+      {
+        "date": "2017-01",
+        "cycle": "2015-2016 矿业衰退",
+        "score": 34.0,
+        "signal": "sell",
+        "actual": "up",
+        "val": 42.6
+      }
+    ]
+  },
+  "industrial": {
+    "company": "EMR",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "mining": {
+    "company": "BHP",
+    "accuracy": 90.0,
+    "total": 10,
+    "correct": 9,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2014-06",
+        "cycle": "2015-2016 中国减速",
+        "score": 37.0,
+        "signal": "watch",
+        "actual": "down",
+        "val": 1.9
+      }
+    ]
+  },
+  "chemicals": {
+    "company": "LYB",
+    "accuracy": 90.0,
+    "total": 10,
+    "correct": 9,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2016-06",
+        "cycle": "2015-2016 油价驱动",
+        "score": 29.0,
+        "signal": "sell",
+        "actual": "up",
+        "val": 7.2
+      }
+    ]
+  },
+  "airlines": {
+    "company": "UAL",
+    "accuracy": 77.8,
+    "total": 9,
+    "correct": 7,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2008-07",
+        "cycle": "2008-2009 金融危机+油价",
+        "score": 41.0,
+        "signal": "watch",
+        "actual": "down",
+        "val": -1
+      },
+      {
+        "date": "2014-12",
+        "cycle": "2014-2016 油价崩盘利好",
+        "score": 7.0,
+        "signal": "sell",
+        "actual": "up",
+        "val": 224.6
+      }
+    ]
+  }
+}

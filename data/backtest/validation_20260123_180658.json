@@ -1,0 +1,94 @@
+{
+  "energy": {
+    "company": "CVX",
+    "accuracy": 90.0,
+    "total": 10,
+    "correct": 9,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2015-01",
+        "cycle": "2014-2016 油价暴跌",
+        "score": 53.0,
+        "signal": "neutral",
+        "actual": "down",
+        "val": 1.35
+      }
+    ]
+  },
+  "machinery": {
+    "company": "DE",
+    "accuracy": 90.0,
+    "total": 10,
+    "correct": 9,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2015-09",
+        "cycle": "2015-2016 矿业衰退",
+        "score": 44.5,
+        "signal": "watch",
+        "actual": "down",
+        "val": 17.9
+      }
+    ]
+  },
+  "industrial": {
+    "company": "EMR",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "mining": {
+    "company": "BHP",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "chemicals": {
+    "company": "LYB",
+    "accuracy": 80.0,
+    "total": 10,
+    "correct": 8,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2017-06",
+        "cycle": "2015-2016 油价驱动",
+        "score": 48.0,
+        "signal": "neutral",
+        "actual": "down",
+        "val": 7.5
+      },
+      {
+        "date": "2022-06",
+        "cycle": "2020-2022 COVID + 供应冲击",
+        "score": 62.0,
+        "signal": "buy",
+        "actual": "down",
+        "val": 4.3
+      }
+    ]
+  },
+  "airlines": {
+    "company": "UAL",
+    "accuracy": 88.9,
+    "total": 9,
+    "correct": 8,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2014-12",
+        "cycle": "2014-2016 油价崩盘利好",
+        "score": 10.0,
+        "signal": "sell",
+        "actual": "up",
+        "val": 224.6
+      }
+    ]
+  }
+}

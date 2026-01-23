@@ -297,6 +297,45 @@ BACKTEST_DATA = {
                 ]
             }
         ]
+    },
+    "auto": {
+        "cycles": [
+            {
+                "name": "2016-2019 成熟期",
+                "points": [
+                    {"date": "2016-06", "saar": 17.5, "inv_days": 65, "gm_pb": 1.17,
+                     "actual_6m": "up"},
+                    {"date": "2017-06", "saar": 17.2, "inv_days": 70, "gm_pb": 1.11,
+                     "actual_6m": "up"},
+                    {"date": "2019-06", "saar": 16.5, "inv_days": 80, "gm_pb": 1.23,
+                     "actual_6m": "sideways"},
+                ]
+            },
+            {
+                "name": "2020-2022 COVID + 芯片短缺",
+                "points": [
+                    {"date": "2020-04", "saar": 8.5, "inv_days": 100, "gm_pb": 0.66,
+                     "actual_6m": "up"},
+                    {"date": "2021-06", "saar": 16, "inv_days": 25, "gm_pb": 1.92,
+                     "actual_6m": "sideways"},
+                    {"date": "2022-01", "saar": 15, "inv_days": 25, "gm_pb": 1.49,
+                     "actual_6m": "down"},
+                ]
+            },
+            {
+                "name": "2023-2024 正常化复苏",
+                "points": [
+                    {"date": "2023-01", "saar": 15, "inv_days": 50, "gm_pb": 0.71,
+                     "actual_6m": "up"},
+                    {"date": "2023-06", "saar": 15.5, "inv_days": 57, "gm_pb": 0.67,
+                     "actual_6m": "sideways"},
+                    {"date": "2024-01", "saar": 15.8, "inv_days": 60, "gm_pb": 0.79,
+                     "actual_6m": "up"},
+                    {"date": "2024-06", "saar": 16, "inv_days": 74, "gm_pb": 1.01,
+                     "actual_6m": "up"},
+                ]
+            }
+        ]
     }
 }
 
@@ -1053,6 +1092,87 @@ def score_steel(point: Dict) -> Tuple[float, str]:
     return final_score, _score_to_signal(final_score)
 
 
+def score_auto(point: Dict) -> Tuple[float, str]:
+    """汽车行业评分 - 库存逻辑反转 + 新经验#13库存紧缺扩张保护
+
+    核心逻辑: 汽车行业库存LOW=卖出(利润率峰值/PE陷阱), HIGH=买入(需求弱/估值低)
+    这与大多数行业相反。
+    """
+    saar = point.get("saar", 16)  # 百万辆年化销售率
+    inv_days = point.get("inv_days", 60)  # 经销商库存天数
+    gm_pb = point.get("gm_pb", 1.0)  # GM PB估值
+
+    # SAAR评分（逆周期：低销量=需求差=买入机会）
+    if saar < 10:
+        saar_score = 9
+    elif saar < 13:
+        saar_score = 7
+    elif saar < 15:
+        saar_score = 5
+    elif saar < 16.5:
+        saar_score = 3
+    elif saar < 17.5:
+        saar_score = 2
+    else:
+        saar_score = 1
+
+    # 库存评分（反转逻辑：高库存=需求弱=买入, 低库存=紧缺=利润峰值=卖出）
+    if inv_days > 100:
+        inv_score = 9
+    elif inv_days > 80:
+        inv_score = 7
+    elif inv_days > 65:
+        inv_score = 6
+    elif inv_days > 50:
+        inv_score = 5
+    elif inv_days > 30:
+        inv_score = 3
+    else:
+        inv_score = 1
+
+    # GM PB估值（逆周期：低估=买入）
+    if gm_pb < 0.7:
+        val_score = 9
+    elif gm_pb < 0.9:
+        val_score = 7
+    elif gm_pb < 1.2:
+        val_score = 5
+    elif gm_pb < 1.6:
+        val_score = 3
+    elif gm_pb < 2.0:
+        val_score = 2
+    else:
+        val_score = 1
+
+    # 综合评分: val 35%, saar 30%, inv 25%, pad 10%
+    base_score = (
+        val_score * 0.35 +
+        saar_score * 0.30 +
+        inv_score * 0.25 +
+        5 * 0.10
+    ) * 10
+
+    divergence_adj = 0
+
+    # 底部背离: 估值极低 + 需求极差 → 强买入
+    if val_score >= 7 and (saar_score >= 7 or inv_score >= 7):
+        divergence_adj += 15
+
+    # [新经验#13] 库存紧缺扩张保护:
+    # SAAR仍健康(>15.5) + 库存极低(<30) + PB偏高(>1.5)
+    # = 需求支撑的短缺，不是周期见顶，不应卖出
+    if saar > 15.5 and inv_days < 30 and gm_pb > 1.5:
+        divergence_adj += 20
+
+    # PE陷阱变体: SAAR高(>16.5) + 库存正常化(>60) + PB不便宜(>1.2)
+    # = 销量接近饱和 + 库存恢复 → 利润率即将压缩
+    if saar > 16.5 and inv_days > 60 and gm_pb > 1.2:
+        divergence_adj -= 10
+
+    final_score = max(0, min(100, base_score + divergence_adj))
+    return final_score, _score_to_signal(final_score)
+
+
 def _score_to_signal(score: float) -> str:
     """分数转信号"""
     if score >= 75:
@@ -1089,6 +1209,7 @@ SCORE_FUNCTIONS = {
     "chemicals": score_chemicals,
     "airlines": score_airlines,
     "steel": score_steel,
+    "auto": score_auto,
 }
 
 
