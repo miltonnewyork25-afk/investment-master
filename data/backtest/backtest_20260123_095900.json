@@ -1,0 +1,62 @@
+{
+  "energy": {
+    "industry": "energy",
+    "accuracy": 80.0,
+    "total": 10,
+    "correct": 8,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2015-01",
+        "cycle": "2014-2016 油价暴跌",
+        "score": 52.0,
+        "signal": "neutral",
+        "actual": "down"
+      },
+      {
+        "date": "2020-01",
+        "cycle": "2020 COVID崩盘",
+        "score": 57.0,
+        "signal": "neutral",
+        "actual": "down"
+      }
+    ]
+  },
+  "machinery": {
+    "industry": "machinery",
+    "accuracy": 60.0,
+    "total": 10,
+    "correct": 6,
+    "passed": false,
+    "errors": [
+      {
+        "date": "2007-12",
+        "cycle": "2008-2009 金融危机",
+        "score": 43.0,
+        "signal": "watch",
+        "actual": "down"
+      },
+      {
+        "date": "2014-09",
+        "cycle": "2015-2016 矿业衰退",
+        "score": 40.0,
+        "signal": "watch",
+        "actual": "down"
+      },
+      {
+        "date": "2015-09",
+        "cycle": "2015-2016 矿业衰退",
+        "score": 45.5,
+        "signal": "neutral",
+        "actual": "down"
+      },
+      {
+        "date": "2021-06",
+        "cycle": "2020 COVID + 2021-2022恢复",
+        "score": 10.0,
+        "signal": "sell",
+        "actual": "up"
+      }
+    ]
+  }
+}
