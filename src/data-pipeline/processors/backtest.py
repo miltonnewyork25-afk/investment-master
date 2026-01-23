@@ -105,6 +105,45 @@ BACKTEST_DATA = {
             }
         ]
     },
+    "chemicals": {
+        "cycles": [
+            {
+                "name": "2008-2009 金融危机",
+                "points": [
+                    {"date": "2008-06", "eth_spread": 600, "chem_util": 87, "inv_days": 22,
+                     "dow_pe": 8, "actual_6m": "down"},
+                    {"date": "2009-01", "eth_spread": 150, "chem_util": 72, "inv_days": 55,
+                     "dow_pe": -1, "dow_pb": 1.0, "actual_6m": "up"},
+                    {"date": "2009-09", "eth_spread": 350, "chem_util": 75, "inv_days": 40,
+                     "dow_pe": 25, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2015-2016 油价驱动",
+                "points": [
+                    {"date": "2014-09", "eth_spread": 700, "chem_util": 86, "inv_days": 25,
+                     "dow_pe": 15, "actual_6m": "down"},
+                    {"date": "2015-12", "eth_spread": 250, "chem_util": 78, "inv_days": 45,
+                     "dow_pe": 30, "actual_6m": "up"},
+                    {"date": "2016-06", "eth_spread": 400, "chem_util": 80, "inv_days": 35,
+                     "dow_pe": 22, "actual_6m": "up"},
+                    {"date": "2017-06", "eth_spread": 500, "chem_util": 85, "inv_days": 28,
+                     "dow_pe": 18, "actual_6m": "down"},
+                ]
+            },
+            {
+                "name": "2020-2022 COVID + 供应冲击",
+                "points": [
+                    {"date": "2020-04", "eth_spread": 200, "chem_util": 70, "inv_days": 50,
+                     "dow_pe": -1, "dow_pb": 0.8, "actual_6m": "up"},
+                    {"date": "2021-03", "eth_spread": 900, "chem_util": 88, "inv_days": 18,
+                     "dow_pe": 10, "actual_6m": "down"},
+                    {"date": "2022-06", "eth_spread": 400, "chem_util": 82, "inv_days": 35,
+                     "dow_pe": 8, "actual_6m": "down"},
+                ]
+            }
+        ]
+    },
     "mining": {
         "cycles": [
             {
@@ -505,6 +544,126 @@ def score_industrial(point: Dict) -> Tuple[float, str]:
     return final_score, _score_to_signal(final_score)
 
 
+def score_chemicals(point: Dict) -> Tuple[float, str]:
+    """化工行业评分 - 应用7条经验 + 新增价差极端值"""
+    eth_spread = point.get("eth_spread", 400)    # 乙烯-石脑油价差 $/ton
+    chem_util = point.get("chem_util", 80)       # 化工产能利用率 %
+    inv_days = point.get("inv_days", 35)         # 库存天数
+    dow_pe = point.get("dow_pe", 18)
+    dow_pb = point.get("dow_pb", 2.0)
+
+    # 乙烯价差评分（逆周期：高价差=过热=低分）
+    if eth_spread < 200:
+        spread_score = 9
+    elif eth_spread < 350:
+        spread_score = 7
+    elif eth_spread < 500:
+        spread_score = 5
+    elif eth_spread < 700:
+        spread_score = 3
+    else:
+        spread_score = 1
+
+    # 产能利用率评分（逆周期）
+    if chem_util < 70:
+        util_score = 9
+    elif chem_util < 78:
+        util_score = 7
+    elif chem_util < 83:
+        util_score = 5
+    elif chem_util < 88:
+        util_score = 3
+    else:
+        util_score = 1
+
+    # 库存天数评分（高库存=需求弱=买入机会）
+    if inv_days > 50:
+        inv_score = 9
+    elif inv_days > 40:
+        inv_score = 7
+    elif inv_days > 30:
+        inv_score = 5
+    elif inv_days > 20:
+        inv_score = 3
+    else:
+        inv_score = 1
+
+    # 估值评分
+    if dow_pe > 0:
+        if dow_pe < 10:
+            val_score = 9
+        elif dow_pe < 15:
+            val_score = 7
+        elif dow_pe < 20:
+            val_score = 5
+        elif dow_pe < 25:
+            val_score = 3
+        elif dow_pe < 30:
+            val_score = 2
+        else:
+            val_score = 1
+    else:
+        # 亏损时用PB
+        if dow_pb < 1.0:
+            val_score = 9
+        elif dow_pb < 1.5:
+            val_score = 7
+        elif dow_pb < 2.0:
+            val_score = 5
+        elif dow_pb < 2.5:
+            val_score = 3
+        else:
+            val_score = 1
+
+    # ═══ 应用已验证经验 ═══
+
+    # [经验#3] PE陷阱: 利用率高+价差高+PE低=顶峰盈利
+    if chem_util >= 80 and eth_spread > 300 and dow_pe > 0 and dow_pe < 20:
+        val_score = min(val_score, 3)
+
+    # 综合评分 (val 30%, spread 25%, util 25%, inv 20%)
+    base_score = (
+        val_score * 0.30 +
+        spread_score * 0.25 +
+        util_score * 0.25 +
+        inv_score * 0.20
+    ) * 10
+
+    # [经验#4] 扩张保护: 低价差+低PB/高PE=从谷底回升
+    expansion_protection = (eth_spread < 300 and
+                           ((dow_pb > 0 and dow_pb < 1.5) or dow_pe > 25))
+
+    # 背离检测
+    indicator_avg = (spread_score + util_score + inv_score) / 3
+    divergence_adj = 0
+    if val_score >= 7 and indicator_avg >= 7:
+        divergence_adj = 20  # 底部背离
+    elif val_score <= 3 and indicator_avg <= 3 and not expansion_protection:
+        divergence_adj = -15  # 顶部背离
+
+    if expansion_protection:
+        divergence_adj += 15  # 复苏期加分
+
+    # [新经验#8] 乙烯价差极端值: 高价差+低库存=过热
+    if eth_spread >= 600 and inv_days <= 25:
+        divergence_adj -= 15
+
+    # [经验#6] 收缩确认: 低价差+低利用率+高库存=确认衰退底部
+    if eth_spread < 300 and chem_util < 78 and inv_days > 40:
+        divergence_adj += 20
+
+    # 库存堆积底部信号
+    if inv_days > 45:
+        divergence_adj += 10
+
+    # 盈利最高期警告: PE极低+利用率高+价差中高
+    if dow_pe > 0 and dow_pe < 10 and chem_util >= 80 and eth_spread > 300:
+        divergence_adj -= 15
+
+    final_score = max(0, min(100, base_score + divergence_adj))
+    return final_score, _score_to_signal(final_score)
+
+
 def score_mining(point: Dict) -> Tuple[float, str]:
     """矿业行业评分 - 应用6条经验 + 新增大宗商品确认"""
     copper = point.get("copper", 3.0)       # $/lb
@@ -635,6 +794,7 @@ SCORE_FUNCTIONS = {
     "machinery": score_machinery,
     "industrial": score_industrial,
     "mining": score_mining,
+    "chemicals": score_chemicals,
 }
 
 

@@ -5,7 +5,7 @@
 
 ## 当前状态
 
-- **当前阶段**: CREATE_CHEMICALS
+- **当前阶段**: CREATE_AIRLINES
 - **总体目标**: 所有行业回测准确率 >= 70%，每个行业产出新经验
 
 ## 行业进展
@@ -18,8 +18,8 @@
 | machinery | PASS | 100% | 3 | PE陷阱+扩张保护+衰退未触底 |
 | industrial | PASS | 100% | 1 | ISM收缩确认 |
 | mining | PASS | 100% | 1 | 大宗商品确认 |
-| chemicals | **CREATING** | - | - | 与energy交集8/10 |
-| airlines | PENDING | - | - | 与energy交集6/10 |
+| chemicals | PASS | 100% | 1 | 价差极端值信号 |
+| airlines | **CREATING** | - | - | 与energy交集6/10 |
 
 ## 行业泛化顺序（按交集最大排序）
 
@@ -80,6 +80,12 @@ machinery(修复) → industrial(9/10) → mining(8/10) → chemicals(8/10) → 
 - 已应用于: mining
 - 泛化规则: 多个价格指标同向确认比单一指标更可靠，收敛信号强于分歧
 
+### 经验 #8: 乙烯价差极端值 (Extreme Spread Signal)
+- 来源: chemicals (v1)
+- 内容: 价差>=600$/ton + 库存<=25天 = 过热，修正即将到来
+- 已应用于: chemicals
+- 泛化规则: 利润率指标(价差/毛利)极端高+库存极低=不可持续的繁荣
+
 ## 已验证的假设
 
 1. **PE陷阱**: ✓ 已验证 (2007-12, 2014-09 两个数据点)
@@ -120,3 +126,10 @@ machinery(修复) → industrial(9/10) → mining(8/10) → chemicals(8/10) → 
 - 已应用经验: #2(CAPEX收缩) #4(扩张保护) #7(商品确认)
 - 全局: energy 80%, machinery 100%, industrial 100%, mining 100%
 - 结论: mining 通过，进入 chemicals 行业创建
+
+### Iteration 4 (chemicals 创建 - 2026-01-23)
+- chemicals: 100% PASS (10/10) 首次通过
+- 新经验: #8 价差极端值 (spread>=600 + inv<=25 = 过热)
+- 已应用经验: #3(PE陷阱) #4(扩张保护) #6(收缩确认)
+- 全局: 5/5 行业通过 (energy 80%, 其余100%)
+- 结论: chemicals 通过，进入 airlines 行业创建（最后一个）
