@@ -1,0 +1,41 @@
+{
+  "energy": {
+    "industry": "energy",
+    "accuracy": 80.0,
+    "total": 10,
+    "correct": 8,
+    "passed": true,
+    "errors": [
+      {
+        "date": "2015-01",
+        "cycle": "2014-2016 油价暴跌",
+        "score": 52.0,
+        "signal": "neutral",
+        "actual": "down"
+      },
+      {
+        "date": "2020-01",
+        "cycle": "2020 COVID崩盘",
+        "score": 57.0,
+        "signal": "neutral",
+        "actual": "down"
+      }
+    ]
+  },
+  "machinery": {
+    "industry": "machinery",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  },
+  "industrial": {
+    "industry": "industrial",
+    "accuracy": 100.0,
+    "total": 10,
+    "correct": 10,
+    "passed": true,
+    "errors": []
+  }
+}

@@ -104,6 +104,45 @@ BACKTEST_DATA = {
                 ]
             }
         ]
+    },
+    "industrial": {
+        "cycles": [
+            {
+                "name": "2008-2009 金融危机",
+                "points": [
+                    {"date": "2007-10", "ism": 51, "ind_prod_yoy": 3, "cap_goods_yoy": 5,
+                     "cap_util": 80, "hon_pe": 18, "actual_6m": "down"},
+                    {"date": "2009-01", "ism": 35, "ind_prod_yoy": -12, "cap_goods_yoy": -25,
+                     "cap_util": 68, "hon_pe": 12, "actual_6m": "up"},
+                    {"date": "2009-06", "ism": 44, "ind_prod_yoy": -10, "cap_goods_yoy": -20,
+                     "cap_util": 65, "hon_pe": 15, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2015-2016 工业衰退",
+                "points": [
+                    {"date": "2014-10", "ism": 56, "ind_prod_yoy": 4, "cap_goods_yoy": 8,
+                     "cap_util": 79, "hon_pe": 17, "actual_6m": "down"},
+                    {"date": "2015-12", "ism": 48, "ind_prod_yoy": -2, "cap_goods_yoy": -8,
+                     "cap_util": 75, "hon_pe": 20, "actual_6m": "down"},
+                    {"date": "2016-06", "ism": 53, "ind_prod_yoy": -1, "cap_goods_yoy": -5,
+                     "cap_util": 74, "hon_pe": 18, "actual_6m": "up"},
+                    {"date": "2017-06", "ism": 57, "ind_prod_yoy": 2, "cap_goods_yoy": 6,
+                     "cap_util": 76, "hon_pe": 22, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2020 COVID + 恢复",
+                "points": [
+                    {"date": "2020-04", "ism": 41, "ind_prod_yoy": -15, "cap_goods_yoy": -30,
+                     "cap_util": 60, "hon_pe": -1, "hon_pb": 5.0, "actual_6m": "up"},
+                    {"date": "2021-03", "ism": 64, "ind_prod_yoy": 1, "cap_goods_yoy": 25,
+                     "cap_util": 74, "hon_pe": 30, "actual_6m": "up"},
+                    {"date": "2022-06", "ism": 53, "ind_prod_yoy": 4, "cap_goods_yoy": 10,
+                     "cap_util": 80, "hon_pe": 22, "actual_6m": "down"},
+                ]
+            }
+        ]
     }
 }
 
@@ -290,6 +329,143 @@ def score_machinery(point: Dict) -> Tuple[float, str]:
     return final_score, _score_to_signal(final_score)
 
 
+def score_industrial(point: Dict) -> Tuple[float, str]:
+    """工业综合行业评分 - 应用5条已验证经验 + 新增收缩确认"""
+    ism = point.get("ism", 50)
+    ind_prod_yoy = point.get("ind_prod_yoy", 0)
+    cap_goods_yoy = point.get("cap_goods_yoy", 0)
+    cap_util = point.get("cap_util", 75)
+    hon_pe = point.get("hon_pe", 20)
+    hon_pb = point.get("hon_pb", 6.0)
+
+    # ISM PMI评分（逆周期）
+    if ism < 42:
+        ism_score = 9
+    elif ism < 47:
+        ism_score = 7
+    elif ism < 50:
+        ism_score = 6
+    elif ism < 53:
+        ism_score = 5
+    elif ism < 57:
+        ism_score = 3
+    else:
+        ism_score = 1
+
+    # 工业产出评分（逆周期）
+    if ind_prod_yoy < -10:
+        prod_score = 9
+    elif ind_prod_yoy < -3:
+        prod_score = 7
+    elif ind_prod_yoy < 0:
+        prod_score = 6
+    elif ind_prod_yoy < 3:
+        prod_score = 5
+    elif ind_prod_yoy < 6:
+        prod_score = 3
+    else:
+        prod_score = 1
+
+    # 资本品订单评分（逆周期）
+    if cap_goods_yoy < -20:
+        goods_score = 9
+    elif cap_goods_yoy < -8:
+        goods_score = 7
+    elif cap_goods_yoy < 0:
+        goods_score = 6
+    elif cap_goods_yoy < 5:
+        goods_score = 5
+    elif cap_goods_yoy < 15:
+        goods_score = 3
+    else:
+        goods_score = 1
+
+    # 产能利用率评分（逆周期）
+    if cap_util < 65:
+        util_score = 9
+    elif cap_util < 72:
+        util_score = 7
+    elif cap_util < 76:
+        util_score = 5
+    elif cap_util < 80:
+        util_score = 3
+    else:
+        util_score = 1
+
+    # 估值评分
+    if hon_pe > 0:
+        if hon_pe < 12:
+            val_score = 9
+        elif hon_pe < 16:
+            val_score = 7
+        elif hon_pe < 22:
+            val_score = 5
+        elif hon_pe < 28:
+            val_score = 3
+        else:
+            val_score = 2
+    else:
+        # 亏损时用PB（工业资产轻，PB阈值更高）
+        if hon_pb < 3:
+            val_score = 9
+        elif hon_pb < 5:
+            val_score = 7
+        elif hon_pb < 7:
+            val_score = 5
+        elif hon_pb < 9:
+            val_score = 3
+        else:
+            val_score = 1
+
+    # ═══ 应用已验证经验 ═══
+
+    # [经验#3] PE陷阱: 产能利用率高+增长正+PE低=顶峰
+    if cap_util >= 78 and ind_prod_yoy > 0 and 0 < hon_pe < 20:
+        val_score = min(val_score, 3)
+
+    # 综合评分
+    base_score = (
+        val_score * 0.30 +
+        ism_score * 0.25 +
+        goods_score * 0.20 +
+        prod_score * 0.15 +
+        util_score * 0.10
+    ) * 10
+
+    # [经验#4] 扩张保护: ISM强+订单正增长+产能未满=扩张期
+    expansion_protection = (ism > 55 and cap_goods_yoy > 5 and cap_util < 78)
+
+    # 背离检测
+    indicator_avg = (ism_score + goods_score + util_score) / 3
+    divergence_adj = 0
+    if val_score >= 7 and indicator_avg >= 7:
+        divergence_adj = 20  # 底部背离
+    elif val_score <= 3 and indicator_avg <= 3 and not expansion_protection:
+        divergence_adj = -15  # 顶部背离（扩张期豁免）
+
+    if expansion_protection:
+        divergence_adj += 25  # 扩张期加分
+
+    # [新经验#6] ISM收缩确认: PMI<50 + 产出负 + 订单负 = 确认衰退
+    if ism < 50 and ind_prod_yoy < 0 and cap_goods_yoy < 0:
+        divergence_adj -= 25
+
+    # [经验#5] 衰退未触底: 产出负+PE高=盈利下滑中
+    if ind_prod_yoy < 0 and hon_pe > 22:
+        divergence_adj -= 15
+
+    # [经验#2] CAPEX收缩底部信号
+    if cap_goods_yoy < -20:
+        divergence_adj += 10
+
+    # 极端衰退加分
+    if ism < 42 and cap_util < 65:
+        divergence_adj += 10
+
+    final_score = max(0, min(100, base_score + divergence_adj))
+    return final_score, _score_to_signal(final_score)
+
+
 def _score_to_signal(score: float) -> str:
     """分数转信号"""
     if score >= 75:
@@ -321,6 +497,7 @@ def check_signal(signal: str, actual: str) -> bool:
 SCORE_FUNCTIONS = {
     "energy": score_energy,
     "machinery": score_machinery,
+    "industrial": score_industrial,
 }
 
 

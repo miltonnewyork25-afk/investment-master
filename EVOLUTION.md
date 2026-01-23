@@ -5,7 +5,7 @@
 
 ## 当前状态
 
-- **当前阶段**: CREATE_INDUSTRIAL
+- **当前阶段**: CREATE_MINING
 - **总体目标**: 所有行业回测准确率 >= 70%，每个行业产出新经验
 
 ## 行业进展
@@ -16,9 +16,9 @@
 | shipping | DONE | 80%+ (参考框架) | 基线 | 第二个行业 |
 | energy | PASS | 80% | 2 | PB优于PE(综合油企), CAPEX收缩信号 |
 | machinery | PASS | 100% | 3 | PE陷阱+扩张保护+衰退未触底 |
-| industrial | **CREATING** | - | - | 与machinery交集9/10 |
+| industrial | PASS | 100% | 1 | ISM收缩确认 |
+| mining | **CREATING** | - | - | 与machinery交集8/10 |
 | chemicals | PENDING | - | - | 与energy交集8/10 |
-| mining | PENDING | - | - | 与machinery交集8/10 |
 | airlines | PENDING | - | - | 与energy交集6/10 |
 
 ## 行业泛化顺序（按交集最大排序）
@@ -68,6 +68,12 @@ machinery(修复) → industrial(9/10) → mining(8/10) → chemicals(8/10) → 
 - 已应用于: machinery
 - 泛化规则: 当核心指标下降但估值仍高，不要误认为"跌到位了"
 
+### 经验 #6: ISM收缩确认 (Contraction Confirmation)
+- 来源: industrial (v1)
+- 内容: ISM<50 + 工业产出负 + 资本品订单负 = 确认衰退，强卖出信号(-25分)
+- 已应用于: industrial
+- 泛化规则: 当领先指标跌破临界阈值，且滞后指标确认，信号极强
+
 ## 已验证的假设
 
 1. **PE陷阱**: ✓ 已验证 (2007-12, 2014-09 两个数据点)
@@ -94,3 +100,10 @@ machinery(修复) → industrial(9/10) → mining(8/10) → chemicals(8/10) → 
 - 新经验: 3条 (#3 PE陷阱, #4 扩张保护, #5 衰退未触底)
 - energy: 80% 保持不变
 - 结论: machinery 通过，进入 industrial 行业创建
+
+### Iteration 2 (industrial 创建 - 2026-01-23)
+- industrial: 100% PASS (10/10) 首次通过
+- 新经验: #6 ISM收缩确认 (ISM<50 + 产出负 + 订单负 = 确认衰退)
+- 已应用经验: #2(CAPEX收缩) #3(PE陷阱) #4(扩张保护) #5(衰退未触底)
+- energy: 80%, machinery: 100% 保持不变
+- 结论: industrial 通过，进入 mining 行业创建
