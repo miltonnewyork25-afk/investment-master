@@ -1,0 +1,72 @@
+{
+  "timestamp": "20260123_192135",
+  "overall_accuracy": 100.0,
+  "total_points": 95,
+  "all_pass": true,
+  "results": {
+    "AAPL": {
+      "name": "Apple Inc.",
+      "accuracy": 100.0,
+      "correct": 14,
+      "total": 14,
+      "errors": [],
+      "pass": true
+    },
+    "META": {
+      "name": "Meta Platforms",
+      "accuracy": 100.0,
+      "correct": 12,
+      "total": 12,
+      "errors": [],
+      "pass": true
+    },
+    "NVDA": {
+      "name": "NVIDIA Corporation",
+      "accuracy": 100.0,
+      "correct": 14,
+      "total": 14,
+      "errors": [],
+      "pass": true
+    },
+    "MSFT": {
+      "name": "Microsoft Corporation",
+      "accuracy": 100.0,
+      "correct": 13,
+      "total": 13,
+      "errors": [],
+      "pass": true
+    },
+    "AMZN": {
+      "name": "Amazon.com",
+      "accuracy": 100.0,
+      "correct": 11,
+      "total": 11,
+      "errors": [],
+      "pass": true
+    },
+    "GOOGL": {
+      "name": "Alphabet Inc.",
+      "accuracy": 100.0,
+      "correct": 11,
+      "total": 11,
+      "errors": [],
+      "pass": true
+    },
+    "TSLA": {
+      "name": "Tesla Inc.",
+      "accuracy": 100.0,
+      "correct": 11,
+      "total": 11,
+      "errors": [],
+      "pass": true
+    },
+    "CRM": {
+      "name": "Salesforce Inc.",
+      "accuracy": 100.0,
+      "correct": 9,
+      "total": 9,
+      "errors": [],
+      "pass": true
+    }
+  }
+}
