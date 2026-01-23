@@ -245,7 +245,13 @@ def score_machinery(point: Dict) -> Tuple[float, str]:
             val_score = 3
 
     # ═══ 以下为 Ralph Loop 迭代改进区域 ═══
-    # [v1 - 初始版本] 无特殊规则，准确率60%
+    # [v2 - 迭代1] PE陷阱+扩张保护+衰退未触底，目标70%+
+
+    # Fix 1: PE陷阱检测
+    # 周期顶部盈利最高→PE最低，看起来"便宜"实则是峰值
+    # 条件：利用率高 + 增长仍正(>=10%) + PE低 = 不是便宜，是顶峰
+    if utilization >= 78 and excavator_yoy >= 10 and 0 < cat_pe < 18:
+        val_score = min(val_score, 3)
 
     # 综合评分
     base_score = (
@@ -256,13 +262,25 @@ def score_machinery(point: Dict) -> Tuple[float, str]:
         5 * 0.10  # backlog placeholder
     ) * 10
 
+    # Fix 2: 扩张保护
+    # 极端正增长(>25%)是扩张初/中期回复，不是过热卖出点
+    expansion_protection = (excavator_yoy > 25 and construction_yoy > 5)
+
     # 背离检测
     indicator_avg = (exc_score + con_score + util_score) / 3
     divergence_adj = 0
     if val_score >= 7 and indicator_avg >= 7:
         divergence_adj = 20  # 底部背离
-    elif val_score <= 3 and indicator_avg <= 3:
-        divergence_adj = -15  # 顶部背离
+    elif val_score <= 3 and indicator_avg <= 3 and not expansion_protection:
+        divergence_adj = -15  # 顶部背离（扩张期豁免）
+
+    if expansion_protection:
+        divergence_adj += 25  # 扩张期加分：极端增长不要卖
+
+    # Fix 3: 衰退初期+高PE = 盈利下滑中，未触底
+    # 销量下降但PE升高，说明盈利下降速度快于股价
+    if -30 < excavator_yoy < -5 and cat_pe > 25:
+        divergence_adj -= 15
 
     # 特殊规则
     if excavator_yoy < -30 and utilization < 60:

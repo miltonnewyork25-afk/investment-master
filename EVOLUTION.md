@@ -5,7 +5,7 @@
 
 ## 当前状态
 
-- **当前阶段**: FIX_MACHINERY
+- **当前阶段**: CREATE_INDUSTRIAL
 - **总体目标**: 所有行业回测准确率 >= 70%，每个行业产出新经验
 
 ## 行业进展
@@ -15,8 +15,8 @@
 | semicap | DONE | 80%+ (参考框架) | 基线 | 首个行业，基线框架 |
 | shipping | DONE | 80%+ (参考框架) | 基线 | 第二个行业 |
 | energy | PASS | 80% | 2 | PB优于PE(综合油企), CAPEX收缩信号 |
-| machinery | **FIXING** | 60% → 目标70%+ | 0 | 4个错误点待修复 |
-| industrial | PENDING | - | - | 与machinery交集9/10 |
+| machinery | PASS | 100% | 3 | PE陷阱+扩张保护+衰退未触底 |
+| industrial | **CREATING** | - | - | 与machinery交集9/10 |
 | chemicals | PENDING | - | - | 与energy交集8/10 |
 | mining | PENDING | - | - | 与machinery交集8/10 |
 | airlines | PENDING | - | - | 与energy交集6/10 |
@@ -50,13 +50,29 @@ machinery(修复) → industrial(9/10) → mining(8/10) → chemicals(8/10) → 
 - 内容: 行业CAPEX大幅收缩代表供给侧出清，是强底部信号
 - 已应用于: energy
 
-### 经验 #3: （待 machinery 修复后提取）
+### 经验 #3: PE陷阱 (Peak Earnings Trap)
+- 来源: machinery (v2迭代)
+- 内容: 利用率>78% + 增长正(>=10%) + PE<18 = 顶峰盈利陷阱。低PE不是便宜，是盈利最高点
+- 已应用于: machinery
+- 泛化规则: 任何行业在产能利用率极高+增长正+估值看似便宜时，都是周期顶部
 
-## 待验证的假设
+### 经验 #4: 扩张保护
+- 来源: machinery (v2迭代)
+- 内容: YoY增长>25% + 配套指标正增长 = 扩张初/中期，不应卖出
+- 已应用于: machinery
+- 泛化规则: 极端正增长代表复苏动力强劲，逆周期不应在此时触发卖出
 
-1. **PE陷阱假设**: 利用率>78% + 增长正 + PE<18 = 顶峰盈利陷阱，非便宜
-2. **扩张保护假设**: YoY增长>25% = 扩张初/中期，不应卖出
-3. **衰退未触底假设**: 销量下降(-5%~-30%) + PE>25 = 盈利下滑中
+### 经验 #5: 衰退未触底信号
+- 来源: machinery (v2迭代)
+- 内容: 销量下降(-5%~-30%) + PE>25 = 盈利下滑速度快于股价，未到底部
+- 已应用于: machinery
+- 泛化规则: 当核心指标下降但估值仍高，不要误认为"跌到位了"
+
+## 已验证的假设
+
+1. **PE陷阱**: ✓ 已验证 (2007-12, 2014-09 两个数据点)
+2. **扩张保护**: ✓ 已验证 (2021-06 数据点)
+3. **衰退未触底**: ✓ 已验证 (2015-09 数据点)
 
 ## 回测数据位置
 
@@ -71,3 +87,10 @@ machinery(修复) → industrial(9/10) → mining(8/10) → chemicals(8/10) → 
 - energy: 80% PASS
 - machinery: 60% FAIL (4 errors identified)
 - 结论: 需要修复 machinery 评分逻辑再继续
+
+### Iteration 1 (machinery 修复 - 2026-01-23)
+- machinery: 60% → 100% PASS (10/10)
+- 修复: PE陷阱(Fix1) + 扩张保护(Fix2) + 衰退未触底(Fix3)
+- 新经验: 3条 (#3 PE陷阱, #4 扩张保护, #5 衰退未触底)
+- energy: 80% 保持不变
+- 结论: machinery 通过，进入 industrial 行业创建
