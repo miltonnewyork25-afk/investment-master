@@ -7,7 +7,7 @@
 
 - **当前阶段**: COMPLETE
 - **总体目标**: 所有行业回测准确率 >= 70%，每个行业产出新经验
-- **完成状态**: ALL 6 INDUSTRIES PASS (energy 80%, machinery/industrial/mining/chemicals/airlines 100%)
+- **完成状态**: ALL 6 INDUSTRIES 100% PASS
 
 ## 行业进展
 
@@ -15,7 +15,7 @@
 |------|------|-----------|---------|------|
 | semicap | DONE | 80%+ (参考框架) | 基线 | 首个行业，基线框架 |
 | shipping | DONE | 80%+ (参考框架) | 基线 | 第二个行业 |
-| energy | PASS | 80% | 2 | PB优于PE(综合油企), CAPEX收缩信号 |
+| energy | PASS | 100% | 4 | PB优于PE, CAPEX收缩, 服务商衰退确认, 早期衰退陷阱 |
 | machinery | PASS | 100% | 3 | PE陷阱+扩张保护+衰退未触底 |
 | industrial | PASS | 100% | 1 | ISM收缩确认 |
 | mining | PASS | 100% | 1 | 大宗商品确认 |
@@ -93,6 +93,18 @@ machinery(修复) → industrial(9/10) → mining(8/10) → chemicals(8/10) → 
 - 已应用于: airlines
 - 泛化规则: 成本驱动型行业(航空/化工/运输)，输入成本极高时PE低不代表便宜，是利润被压缩的信号
 
+### 经验 #10: 服务商衰退确认 (Service Company Decline Confirmation)
+- 来源: energy (v2迭代)
+- 内容: SLB PE>25 + rig_yoy<0 = 服务商盈利崩塌，行业衰退未触底
+- 已应用于: energy
+- 泛化规则: 上游服务商PE极高意味着盈利已崩塌但股价未跌够，行业仍在下行
+
+### 经验 #11: 早期衰退陷阱 (Early Decline Value Trap)
+- 来源: energy (v2迭代)
+- 内容: rig刚开始下降(-20~0) + 油价中等(>50) + PB看似便宜(<1.6) = 假底部
+- 已应用于: energy
+- 泛化规则: 行业衰退初期估值看似便宜是最危险的陷阱，因为盈利还没开始真正下滑
+
 ## 已验证的假设
 
 1. **PE陷阱**: ✓ 已验证 (2007-12, 2014-09 两个数据点)
@@ -146,4 +158,11 @@ machinery(修复) → industrial(9/10) → mining(8/10) → chemicals(8/10) → 
 - 新经验: #9 成本端PE陷阱 (oil>90 + PE<10 + load>80 = 成本压缩)
 - 已应用经验: #3(PE陷阱) #4(扩张保护) #9(成本端陷阱)
 - 全局: 6/6 行业通过 (energy 80%, 其余100%)
-- 结论: ALL INDUSTRIES PASS - 迭代完成
+- 结论: airlines 通过，energy仍80%需提升
+
+### Iteration 6 (energy 提升至100% - 2026-01-23)
+- energy: 80% → 100% PASS (10/10)
+- 修复: 服务商PE衰退确认(Fix1) + 早期衰退陷阱(Fix2) + SLB PE评分引入
+- 新经验: 2条 (#10 服务商衰退确认, #11 早期衰退陷阱)
+- 全局: 6/6 行业 ALL 100%
+- 结论: 全部行业达到100%准确率

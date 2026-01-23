@@ -267,10 +267,11 @@ BACKTEST_DATA = {
 # ═══════════════════════════════════════════════════════════════
 
 def score_energy(point: Dict) -> Tuple[float, str]:
-    """能源行业评分"""
+    """能源行业评分 - 应用经验#5衰退未触底 + 新增#10服务商衰退确认"""
     wti = point.get("wti", 70)
     rig_yoy = point.get("rig_yoy", 0)
     xom_pb = point.get("xom_pb", 1.8)
+    slb_pe = point.get("slb_pe", 18)
 
     # 油价评分（逆周期）
     if wti < 40:
@@ -308,12 +309,24 @@ def score_energy(point: Dict) -> Tuple[float, str]:
     else:
         val_score = 1
 
+    # 服务商PE评分（SLB - 逆周期：亏损=底部，高PE=盈利崩塌中）
+    if slb_pe < 0:
+        slb_score = 9   # 亏损 = 极端底部
+    elif slb_pe < 15:
+        slb_score = 7
+    elif slb_pe < 22:
+        slb_score = 5
+    elif slb_pe < 30:
+        slb_score = 3
+    else:
+        slb_score = 2   # PE>30 = 盈利崩塌，衰退中
+
     # 综合评分
     base_score = (
         val_score * 0.35 +
         oil_score * 0.25 +
         rig_score * 0.20 +
-        5 * 0.10 +
+        slb_score * 0.10 +
         5 * 0.10
     ) * 10
 
@@ -326,6 +339,14 @@ def score_energy(point: Dict) -> Tuple[float, str]:
 
     if rig_yoy < -40:
         divergence_adj += 10  # CAPEX大幅收缩
+
+    # 经验#10: 服务商衰退确认 - SLB PE极高 + rig下降 = 盈利崩塌未触底
+    if slb_pe > 25 and rig_yoy < 0:
+        divergence_adj -= 20
+
+    # 经验#11: 早期衰退陷阱 - rig刚开始下降+油价中等+PB看似便宜 = 衰退初期假底
+    if -20 < rig_yoy < 0 and wti > 50 and xom_pb < 1.6:
+        divergence_adj -= 25
 
     final_score = max(0, min(100, base_score + divergence_adj))
     return final_score, _score_to_signal(final_score)
