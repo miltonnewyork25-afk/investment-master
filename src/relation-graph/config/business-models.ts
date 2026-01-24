@@ -6312,6 +6312,268 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Industrial Distribution',
     tags: ['electrical', 'communications', 'utility', 'data_center'],
   },
+
+  // ========== 新增30只 (2026-01补充) ==========
+
+  // ---------- 生物科技 (Biotech) ----------
+  'BNTX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Large Biotech',
+    tags: ['mRNA', 'vaccine', 'oncology', 'immunology'],
+  },
+  'RARE': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Emerging Biotech',
+    tags: ['rare_disease', 'gene_therapy', 'hemophilia'],
+  },
+  'IONS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Emerging Biotech',
+    tags: ['antisense', 'RNA', 'neurology', 'cardiology'],
+  },
+
+  // ---------- 诊断/基因组学 (Diagnostics & Genomics) ----------
+  'EXAS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Diagnostics',
+    tags: ['cancer_screening', 'liquid_biopsy', 'cologuard', 'oncotype'],
+  },
+  'NTRA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Diagnostics',
+    tags: ['prenatal', 'genetic_testing', 'oncology', 'organ_transplant'],
+  },
+  'TXG': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Science Tools',
+    tags: ['single_cell', 'genomics', 'spatial_biology', 'sequencing'],
+  },
+
+  // ---------- 消费零售 (Consumer Retail) ----------
+  'RVLV': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Online Fashion Retail',
+    tags: ['fashion', 'millennial', 'influencer', 'owned_brands'],
+  },
+  'CAVA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Fast Casual',
+    tags: ['mediterranean', 'fast_casual', 'restaurant', 'growth'],
+  },
+
+  // ---------- 食品饮料 (Food & Beverage) ----------
+  'BUD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Beer',
+    tags: ['global_beer', 'brands', 'emerging_markets', 'distribution'],
+  },
+
+  // ---------- 博彩/娱乐 (Gaming & Entertainment) ----------
+  'DKNG': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Online Gaming',
+    tags: ['sports_betting', 'iGaming', 'DFS', 'mobile'],
+  },
+  'CZR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Casino & Resort',
+    tags: ['casino', 'hotel', 'sports_betting', 'loyalty'],
+  },
+  'MGM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Casino & Resort',
+    tags: ['casino', 'resort', 'convention', 'entertainment'],
+  },
+  'WYNN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Casino & Resort',
+    tags: ['luxury_casino', 'macau', 'las_vegas', 'resort'],
+  },
+  'PENN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Casino & Resort',
+    tags: ['regional_casino', 'sports_betting', 'ESPN_Bet'],
+  },
+
+  // ---------- 运输物流 (Transportation & Logistics) ----------
+  'GXO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Contract Logistics',
+    tags: ['warehouse', 'ecommerce_fulfillment', 'automation', '3PL'],
+  },
+  'HUBG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Intermodal',
+    tags: ['intermodal', 'trucking', 'drayage', 'dedicated'],
+  },
+  'WERN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Truckload',
+    tags: ['truckload', 'dedicated', 'logistics', 'temperature'],
+  },
+
+  // ---------- REITs (Real Estate) ----------
+  'HST': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'managed',
+    customerModel: 'B2C',
+    industrySegment: 'Hotel REIT',
+    tags: ['luxury_hotel', 'resort', 'convention', 'urban'],
+  },
+  'PK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'managed',
+    customerModel: 'B2C',
+    industrySegment: 'Hotel REIT',
+    tags: ['select_service', 'upscale', 'convention'],
+  },
+  'SLG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Office REIT',
+    tags: ['nyc', 'manhattan', 'office', 'mixed_use'],
+  },
+  'KIM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Retail REIT',
+    tags: ['open_air', 'grocery_anchored', 'suburban', 'mixed_use'],
+  },
+  'CUBE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Self-Storage REIT',
+    tags: ['self_storage', 'third_party_mgmt', 'suburban'],
+  },
+
+  // ---------- 地区银行 (Regional Banks) ----------
+  'ZION': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Regional Bank',
+    tags: ['intermountain', 'commercial', 'SBA', 'CRE'],
+  },
+  'NTRS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Trust Bank',
+    tags: ['custody', 'wealth_management', 'institutional', 'asset_servicing'],
+  },
+  'CMA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Regional Bank',
+    tags: ['commercial', 'texas', 'california', 'energy_lending'],
+  },
+
+  // ---------- 太阳能 (Solar) ----------
+  'NOVA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Solar Installer',
+    tags: ['residential_solar', 'storage', 'rooftop', 'financing'],
+  },
+  'ARRY': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Solar Equipment',
+    tags: ['solar_tracker', 'utility_scale', 'ground_mount'],
+  },
+  'SPWR': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Solar Installer',
+    tags: ['residential_solar', 'panels', 'storage', 'complete_system'],
+  },
+
+  // ---------- 建材 (Building Products) ----------
+  'TREX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['composite_decking', 'railing', 'outdoor_living', 'recycled'],
+  },
+  'MAS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Building Products',
+    tags: ['faucets', 'cabinets', 'plumbing', 'renovation'],
+  },
 };
 
 // ============================================================

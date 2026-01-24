@@ -2025,6 +2025,54 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // 工业分销
     'WCC': 'Industrial Distribution',     // WESCO International - 电气分销
+
+    // ========== 新增30只 (2026-01补充) ==========
+
+    // 生物科技/诊断
+    'BNTX': 'Large Biotech',              // BioNTech - mRNA疫苗/肿瘤
+    'RARE': 'Emerging Biotech',           // Ultragenyx - 罕见病基因治疗
+    'IONS': 'Emerging Biotech',           // Ionis - 反义寡核苷酸RNA疗法
+    'EXAS': 'Diagnostics',               // Exact Sciences - 癌症早筛
+    'NTRA': 'Diagnostics',               // Natera - 基因检测/产前
+    'TXG': 'Life Science Tools',          // 10x Genomics - 单细胞测序
+
+    // 消费/餐饮
+    'RVLV': 'Online Fashion Retail',      // Revolve - 时尚电商
+    'CAVA': 'Fast Casual',               // CAVA Group - 地中海快餐
+    'BUD': 'Beer',                        // AB InBev - 全球啤酒龙头
+
+    // 博彩/娱乐
+    'DKNG': 'Online Gaming',              // DraftKings - 体育博彩
+    'CZR': 'Casino & Resort',             // Caesars - 赌场度假村
+    'MGM': 'Casino & Resort',             // MGM Resorts - 赌场娱乐
+    'WYNN': 'Casino & Resort',            // Wynn Resorts - 高端赌场
+    'PENN': 'Casino & Resort',            // Penn Entertainment - 区域赌场
+
+    // 运输物流
+    'GXO': 'Contract Logistics',          // GXO Logistics - 合同物流
+    'HUBG': 'Intermodal',                 // Hub Group - 多式联运
+    'WERN': 'Truckload',                  // Werner - 整车运输
+
+    // REITs
+    'HST': 'Hotel REIT',                  // Host Hotels - 酒店REIT
+    'PK': 'Hotel REIT',                   // Park Hotels - 酒店REIT
+    'SLG': 'Office REIT',                 // SL Green - 纽约办公REIT
+    'KIM': 'Retail REIT',                 // Kimco - 零售REIT
+    'CUBE': 'Self-Storage REIT',          // CubeSmart - 自助仓储
+
+    // 地区银行
+    'ZION': 'Regional Bank',              // Zions Bancorp - 山间银行
+    'NTRS': 'Trust Bank',                 // Northern Trust - 托管银行
+    'CMA': 'Regional Bank',              // Comerica - 商业银行
+
+    // 太阳能
+    'NOVA': 'Solar Installer',            // Sunnova - 住宅光伏
+    'ARRY': 'Solar Equipment',            // Array Technologies - 跟踪支架
+    'SPWR': 'Solar Installer',            // SunPower - 住宅光伏系统
+
+    // 建材
+    'TREX': 'Building Products',          // Trex - 复合甲板材料
+    'MAS': 'Building Products',           // Masco - 水龙头/橱柜
   },
 
   // ============================================================
