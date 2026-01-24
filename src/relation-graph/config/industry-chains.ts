@@ -2179,12 +2179,14 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Large Biotech': [
       'Pharma Distributor',
       'Pharmacy Retail',
+      'Life Sciences Tools',     // 研发工具
     ],
 
     'Big Pharma': [
       'Pharma Distributor',
       'Pharmacy Retail',
       'Hospital',
+      'Life Sciences Tools',     // 研发工具采购
     ],
 
     'Generic Pharma': [
