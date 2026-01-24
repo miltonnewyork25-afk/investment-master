@@ -3162,6 +3162,13 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'CLB': 'Reservoir Description',               // Core Labs - 油藏描述/生产增强
     'AROC': 'Gas Compression Services',           // Archrock - 天然气压缩
     'USAC': 'Gas Compression Services',           // USA Compression - 天然气采集压缩
+
+    // Orphan references fix
+    'CTB': 'Tire Manufacturing',                  // Cooper Tire - 轮胎制造(被GT收购)
+    'ERIC': 'Telecom Equipment',                  // Ericsson - 电信设备/5G RAN
+    'GT': 'Tire Manufacturing',                   // Goodyear - 轮胎制造/零售
+    'HBM': 'Copper Mining',                       // Hudbay Minerals - 铜锌金矿
+    'TWOU': 'EdTech Platform',                    // 2U Inc - 在线教育OPM
   },
 
   // ============================================================
@@ -6925,6 +6932,13 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Midstream',                    // 中游
       'Natural Gas Processing',       // 天然气处理
       'Pipeline Infrastructure',      // 管道基础设施
+    ],
+
+    // 在线教育平台 → 高等教育/职业培训
+    'EdTech Platform': [
+      'Online Education',             // 在线教育
+      'University Services',          // 大学服务
+      'Professional Training',        // 职业培训
     ],
   },
 };

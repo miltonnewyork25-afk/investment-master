@@ -12935,6 +12935,48 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Gas Gathering Compression',
     tags: ['natural_gas', 'gathering', 'compression', 'MLP', 'midstream'],
   },
+
+  // --- Orphan references fix (referenced in cross-market/consumer-causality) ---
+  'CTB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Tire Manufacturing',
+    tags: ['tires', 'automotive', 'replacement', 'OEM', 'rubber'],
+  },
+  'ERIC': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'licensing', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Telecom Equipment',
+    tags: ['5G', 'telecom_infrastructure', 'network', 'RAN', 'patents'],
+  },
+  'GT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2B2C',
+    industrySegment: 'Tire Manufacturing',
+    tags: ['tires', 'automotive', 'replacement', 'OEM', 'rubber', 'retail'],
+  },
+  'HBM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Copper Mining',
+    tags: ['copper', 'gold', 'zinc', 'mining', 'base_metals', 'exploration'],
+  },
+  'TWOU': {
+    assetModel: 'platform',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B2C',
+    industrySegment: 'EdTech Platform',
+    tags: ['online_education', 'university_partnerships', 'OPM', 'bootcamps', 'digital_learning'],
+  },
 };
 
 // ============================================================

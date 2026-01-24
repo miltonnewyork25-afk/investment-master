@@ -6065,6 +6065,13 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'CLB': 'late',                // Core Labs - 油藏描述(晚周期)
   'AROC': 'mid',                // Archrock - 天然气压缩(中周期)
   'USAC': 'mid',                // USA Compression - 天然气采集压缩(中周期)
+
+  // Orphan references fix
+  'CTB': 'mid',                 // Cooper Tire - 轮胎制造(中周期)
+  'ERIC': 'mid',                // Ericsson - 电信设备(中周期)
+  'GT': 'mid',                  // Goodyear - 轮胎制造(中周期)
+  'HBM': 'early',               // Hudbay Minerals - 铜矿(早周期)
+  'TWOU': 'mid',                // 2U Inc - 在线教育平台(中周期)
 };
 
 // ============================================================
@@ -12540,6 +12547,28 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'USAC': {
     interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.1,
     consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.6,
+  },
+
+  // Orphan references fix
+  'CTB': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.4,
+  },
+  'ERIC': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'GT': {
+    interestRate: -0.3, inflation: -0.3, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.5,
+  },
+  'HBM': {
+    interestRate: -0.2, inflation: 0.5, gdpGrowth: 0.7, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.6, oilPrice: 0.2,
+  },
+  'TWOU': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.3, unemployment: 0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
   },
 };
 
