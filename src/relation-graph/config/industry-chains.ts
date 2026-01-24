@@ -5592,8 +5592,6 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     'Transplant Diagnostics': [],      // 终端移植中心/医院
 
-    'Genetic Testing': [],             // 终端医院/诊所
-
     // 殡葬/纪念产业链
     'Memorialization': [],             // 终端殡仪馆/墓地
 
