@@ -798,6 +798,14 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'NET': 'Enterprise SaaS',             // Cloudflare
     'MDB': 'Enterprise SaaS',             // MongoDB
     'PANW': 'Enterprise SaaS',            // Palo Alto Networks
+    'OKTA': 'Enterprise SaaS',            // Okta - IAM
+    'HUBS': 'Enterprise SaaS',            // HubSpot - CRM/Marketing
+    'PLTR': 'Enterprise SaaS',            // Palantir - Data/AI
+
+    // 垂直SaaS (Vertical SaaS)
+    'VEEV': 'Vertical SaaS',              // Veeva - 生命科学
+    'BILL': 'FinTech SaaS',               // BILL - SMB AP/AR
+    'SHOP': 'E-commerce Platform',         // Shopify
 
     // ========== 工业综合/多元化 (Industrial Conglomerates) ==========
     'HON': 'Industrial Conglomerate',     // Honeywell
@@ -1964,6 +1972,23 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'IT Outsourcing': [
       'Enterprise SaaS',
       'Cloud Hyperscaler',
+    ],
+
+    // 垂直SaaS - 服务特定行业
+    'Vertical SaaS': [
+      'Big Pharma',         // Veeva服务制药
+      'Large Biotech',
+      'CRO',
+    ],
+
+    // FinTech SaaS - 服务SMB财务
+    'FinTech SaaS': [
+      'Enterprise SaaS',    // 与CRM/ERP集成
+    ],
+
+    // 电商平台 - 服务商家
+    'E-commerce Platform': [
+      'Enterprise SaaS',    // 与营销/CRM集成
     ],
 
     // EDA → 芯片设计

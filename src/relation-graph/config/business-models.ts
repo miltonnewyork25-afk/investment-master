@@ -431,6 +431,56 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     tags: ['endpoint', 'ai', 'autonomous'],
   },
 
+  // ---------- SaaS/Cloud补充 ----------
+  'OKTA': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cybersecurity',
+    tags: ['identity', 'iam', 'zero_trust', 'workforce_identity'],
+  },
+  'VEEV': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Vertical SaaS',
+    tags: ['life_sciences', 'pharma_crm', 'clinical', 'regulatory'],
+  },
+  'HUBS': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['crm', 'marketing', 'sales', 'smb', 'inbound'],
+  },
+  'BILL': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'FinTech SaaS',
+    tags: ['ap_ar', 'payments', 'smb', 'accounting_integration'],
+  },
+  'SHOP': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B',
+    industrySegment: 'E-commerce Platform',
+    tags: ['merchants', 'shopify_payments', 'fulfillment', 'smb'],
+  },
+  'PLTR': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['data_analytics', 'government', 'defense', 'ai_platform'],
+  },
+
   // ========================================================
   // 科技硬件/基础设施
   // ========================================================
