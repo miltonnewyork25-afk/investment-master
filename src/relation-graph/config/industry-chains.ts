@@ -4109,6 +4109,262 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'TYRA': 'Precision Oncology',                             // Tyra Biosciences - 精准肿瘤
     'VINC': 'Gene Therapy',                                   // Vincerx - 基因治疗
     'VTYX': 'Autoimmune Biotech',                             // Ventyx - 自身免疫
+
+    // ========== 80 NEW S&P 500 / Russell 1000: subIndustryOverrides ==========
+    // --- IT Services / Data Analytics ---
+    'CDW': 'IT Solutions Distribution',                          // CDW - IT分销方案
+    'IT': 'Research & Advisory',                                 // Gartner - 研究咨询
+    'VRSN': 'Domain Registry',                                   // VeriSign - 域名注册
+    'EFX': 'Credit Bureau & Analytics',                          // Equifax - 信用数据
+    'TRU': 'Credit Bureau & Analytics',                          // TransUnion - 信用数据
+    'DXC': 'IT Outsourcing',                                     // DXC Technology - IT外包
+    'DOX': 'IT Services',                                        // Amdocs - IT服务
+    'GIB': 'IT Consulting',                                      // CGI Group - IT咨询
+    'BL': 'Financial Accounting Software',                       // BlackLine - 财务SaaS
+    'VERINT': 'Customer Engagement Software',                    // Verint - 客户分析
+    // --- Industrials / Building Products ---
+    'IDEX': 'Specialty Pumps & Flow Control',                    // IDEX - 特种泵/流控
+    'FBHS': 'Building Products',                                 // Fortune Brands - 家居建材
+    'BLD': 'Insulation Installation',                            // TopBuild - 隔热安装
+    'PGTI': 'Impact-Resistant Windows',                          // PGT - 防风窗户
+    'MODG': 'Golf & Entertainment',                              // Topgolf Callaway - 高尔夫
+    // --- Asset Management ---
+    'VCTR': 'Multi-Boutique Asset Management',                   // Victory Capital - 资管
+    'APAM': 'Active Asset Management',                           // Artisan Partners - 主动管理
+    'HLNE': 'Alternative Investment Advisory',                   // Hamilton Lane - 另类投资
+    'FGL': 'Annuity Insurance',                                  // FGL Holdings - 年金保险
+    // --- Restaurants ---
+    'ARCO': 'QSR Franchise (Latin America)',                     // Arcos Dorados - 拉美快餐
+    'NDLS': 'Fast Casual Dining',                                // Noodles & Company - 面食
+    'CHUY': 'Casual Dining (Tex-Mex)',                           // Chuy's - 墨西哥餐厅
+    // --- Retail / Apparel ---
+    'UA': 'Athletic Apparel & Footwear',                         // Under Armour - 运动服饰
+    'CRI': 'Children Apparel',                                   // Carter's - 童装
+    'ASO': 'Sporting Goods Retail',                              // Academy Sports - 体育用品
+    'CAL': 'Footwear Retail',                                    // Caleres - 鞋类零售
+    'HIBB': 'Athletic Footwear Retail',                          // Hibbett - 运动鞋零售
+    'KTB': 'Casual Apparel',                                     // Kontoor Brands - 休闲服饰
+    // --- Healthcare Distribution ---
+    'OMI': 'Medical Supply Distribution',                        // Owens & Minor - 医疗分销
+    // --- Media / Entertainment ---
+    'FWONA': 'Motorsports Media',                                // Liberty F1 - 赛车媒体
+    'SONY': 'Consumer Electronics & Entertainment',              // Sony - 电子娱乐
+    'NTDOY': 'Gaming Console & Software',                        // Nintendo - 游戏主机
+    'MSG': 'Sports & Entertainment Venues',                      // MSG - 体育场馆
+    'WDDD': 'Digital Media Services',                            // Wideopenwest - 数字媒体
+    'TDS': 'Rural Telecom',                                      // TDS - 农村电信
+    // --- Financials ---
+    'BOKF': 'Regional Banking (Energy)',                         // BOK Financial - 区域银行
+    'JEF': 'Investment Banking',                                 // Jefferies - 投行
+    'VIRTU': 'Electronic Market Making',                         // Virtu - 电子做市
+    // --- Energy (Canadian Oil & Gas) ---
+    'SU': 'Oil Sands Integrated',                                // Suncor - 油砂整合
+    'CNQ': 'Oil Sands E&P',                                      // Canadian Natural - 油砂E&P
+    'CVE': 'Oil Sands Integrated',                               // Cenovus - 油砂整合
+    'IMO': 'Oil Sands Integrated',                               // Imperial Oil - 油砂整合
+    // --- Chemicals ---
+    'MEOH': 'Methanol Production',                               // Methanex - 甲醇生产
+    'HUN': 'Specialty Chemicals (Polyurethanes)',                 // Huntsman - 聚氨酯
+    'BRBR': 'Protein & Nutrition',                               // BellRing Brands - 蛋白营养
+    // --- Utilities ---
+    'TXNM': 'Electric Utility (Southwest)',                      // TXNM Energy - 电力公用
+    // --- Consumer Staples ---
+    'BF': 'Premium Spirits',                                     // Brown-Forman - 高端烈酒
+    // --- Tech Distribution ---
+    'AVT': 'Electronic Components Distribution',                 // Avnet - 电子元件分销
+    'ARW': 'Electronic Components Distribution',                 // Arrow Electronics - 电子分销
+    'SNX': 'IT Products Distribution',                           // TD SYNNEX - IT分销
+    // --- Mining / Precious Metals ---
+    'PKX': 'Integrated Steel',                                   // POSCO - 综合钢铁
+    'EGO': 'Gold Mining',                                        // Eldorado Gold - 黄金矿业
+    'BTG': 'Gold Mining',                                        // B2Gold - 黄金矿业
+    'AG': 'Silver Mining',                                       // First Majestic - 白银矿业
+    'HL': 'Silver & Base Metals Mining',                         // Hecla Mining - 白银矿业
+    'PAAS': 'Silver Mining',                                     // Pan American Silver - 白银
+    'CDE': 'Silver Mining',                                      // Coeur Mining - 白银矿业
+    'SSRM': 'Gold Mining',                                       // SSR Mining - 黄金矿业
+    'SBSW': 'PGM Mining',                                        // Sibanye-Stillwater - PGM矿
+    // --- Sports / Recreation ---
+    'ELY': 'Golf Equipment & Entertainment',                     // Callaway/Topgolf - 高尔夫
+    // --- Additional: Packaging / Equipment / Exchange ---
+    'OI': 'Glass Packaging',                                     // O-I Glass - 玻璃包装
+    'TORO': 'Outdoor Power Equipment',                           // Toro Company - 户外设备
+    'LSEG': 'Financial Market Infrastructure',                   // London Stock Exchange - 交易所
+    'CUTR': 'Medical Aesthetics Devices',                        // Cutera - 医美设备
+
+    // ========== Batch 6: 80 NEW mid/large-cap subIndustryOverrides ==========
+    // --- Building / Construction ---
+    'CNM': 'Water & Fire Protection Distribution',               // Core & Main - 水务分销
+    'USLM': 'Lime & Limestone',                                  // US Lime - 石灰石
+    'BCC': 'Engineered Wood Products',                            // Boise Cascade - 木制品
+    // --- Insurance / Mortgage Insurance ---
+    'JRVR': 'Specialty Insurance',                                // James River - 特种保险
+    'STC': 'Title Insurance',                                     // Stewart Info - 产权保险
+    'NMI': 'Mortgage Insurance',                                  // NMI Holdings - 抵押保险
+    'MGIC': 'Mortgage Insurance',                                 // MGIC - 抵押保险
+    // --- Telecom / Internet ---
+    'GOOG': 'Internet Services & Cloud',                          // Alphabet C - 互联网
+    'EXTR': 'Enterprise Networking',                              // Extreme Networks - 企业网络
+    'IDCC': 'Wireless Technology Licensing',                      // InterDigital - 无线专利
+    // --- Chemicals / Materials / Steel ---
+    'TMST': 'Specialty Steel',                                    // TimkenSteel - 特种钢
+    'TX': 'Flat Steel Products',                                  // Ternium - 拉美钢铁
+    'SID': 'Integrated Steel',                                    // CSN - 巴西综合钢铁
+    // --- Pharma / Healthcare ---
+    'NOVO': 'GLP-1 Diabetes & Obesity',                           // Novo Nordisk - GLP-1药物
+    'TAK': 'Diversified Pharma',                                  // Takeda - 多元化制药
+    'RHHBY': 'Pharma & Diagnostics',                              // Roche - 肿瘤/诊断
+    'SOLV': 'Healthcare Products',                                // Solventum - 医疗产品
+    'SHC': 'Sterilization Services',                              // Sotera Health - 灭菌服务
+    'AMEH': 'Physician Practice Management',                      // Apollo Medical - 医师管理
+    'RCM': 'Healthcare Revenue Cycle',                            // R1 RCM - 医疗收入周期
+    'DNA': 'Synthetic Biology',                                   // Ginkgo Bioworks - 合成生物
+    // --- Payments / Finance ---
+    'CPAY': 'Corporate Payments',                                 // Corpay - 企业支付
+    'OMF': 'Consumer Lending',                                    // OneMain - 消费贷
+    'OPFI': 'Online Consumer Lending',                            // OppFi - 在线贷款
+    'BXMT': 'Commercial Mortgage REIT',                           // Blackstone Mortgage - 商业抵押
+    'MC': 'Investment Banking Advisory',                          // Moelis - 投行咨询
+    'SF': 'Diversified Financial Services',                       // Stifel - 多元金融
+    'SSB': 'Regional Banking',                                    // SouthState - 区域银行
+    // --- Asset Management ---
+    'AB': 'Diversified Asset Management',                         // AllianceBernstein - 资产管理
+    'WETF': 'ETF Asset Management',                               // WisdomTree - ETF资管
+    // --- Consumer / Retail ---
+    'WWW': 'Footwear & Apparel',                                  // Wolverine - 鞋类
+    'DDD': '3D Printing',                                         // 3D Systems - 3D打印
+    // --- Services ---
+    'ROL': 'Pest Control Services',                               // Rollins - 害虫防治
+    'FCN': 'Management Consulting',                               // FTI Consulting - 管理咨询
+    'DRVN': 'Automotive Aftermarket Services',                    // Driven Brands - 汽车服务
+    'PLUS': 'IT Solutions Provider',                              // ePlus - IT方案
+    'SCS': 'Office Furniture',                                    // Steelcase - 办公家具
+    'WLFC': 'Aircraft Engine Leasing',                            // Willis Lease - 发动机租赁
+    // --- Energy / Mining ---
+    'NFE': 'LNG Infrastructure',                                  // New Fortress - LNG基础设施
+    'WHD': 'Wellhead Equipment',                                  // Cactus - 井口设备
+    'OII': 'Subsea Robotics',                                     // Oceaneering - 水下机器人
+    'NE': 'Offshore Drilling',                                    // Noble Corp - 海上钻井
+    'PBR': 'Integrated Oil & Gas',                                // Petrobras - 巴西石油
+    'XPRO': 'Well Flow Management',                               // Expro - 油井管理
+    'AU': 'Gold Mining',                                          // AngloGold Ashanti - 金矿
+    // --- Utilities ---
+    'ETR': 'Integrated Electric Utility',                         // Entergy - 电力公用
+    // --- Industrials ---
+    'FLS': 'Flow Control Equipment',                              // Flowserve - 泵/阀
+    // --- Media ---
+    'SBGI': 'TV Broadcasting',                                    // Sinclair - 电视台
+    'SSP': 'TV Broadcasting',                                     // E.W. Scripps - 电视广播
+    'TGNA': 'TV Broadcasting',                                    // Tegna - 电视广播
+    'GCI': 'Newspaper & Digital Media',                           // Gannett - 报业
+    'LEE': 'Newspaper Publishing',                                // Lee Enterprises - 报业
+    'RADI': 'Outdoor Advertising',                                // Radius Global - 户外广告
+    // --- Gaming / Leisure ---
+    'MTN': 'Ski Resorts',                                         // Vail Resorts - 滑雪度假
+    'MLCO': 'Macau Casino',                                       // Melco Resorts - 澳门博彩
+    // ========== Batch 7: 31 new stocks subIndustryOverrides ==========
+    // --- Connectivity / Telecom ---
+    'GOGO': 'Aviation Connectivity',                                // Gogo - 机载互联网
+    // --- Consumer Products ---
+    'GOLF': 'Golf Equipment',                                       // Acushnet - 高尔夫器材(Titleist)
+    'GPRO': 'Action Cameras',                                       // GoPro - 运动相机
+    'HNST': 'Clean Consumer Products',                              // Honest Company - 清洁消费品
+    'MNSO': 'Value Lifestyle Retail',                               // MINISO - 生活好物零售
+    // --- Healthcare / Facility Services ---
+    'HCSG': 'Healthcare Facility Services',                         // Healthcare Services Group - 医疗设施服务
+    // --- Insurance ---
+    'HGTY': 'Specialty Insurance',                                  // Hagerty - 经典车保险
+    // --- Semiconductors / Electronics ---
+    'HIMX': 'Display Driver ICs',                                   // Himax - 显示驱动IC
+    'IPGP': 'Industrial Fiber Lasers',                              // IPG Photonics - 光纤激光器
+    'KOPN': 'Microdisplay Technology',                              // Kopin - 微显示器
+    'MXL': 'Mixed-Signal Semiconductors',                           // MaxLinear - 混合信号芯片
+    'NSSC': 'Security & IoT Semiconductors',                        // NAPCO Security - 安防IoT芯片
+    'NVMI': 'Semiconductor Metrology',                              // Nova Ltd - 半导体量测
+    // --- Financial Services ---
+    'KREF': 'Commercial Mortgage REIT',                             // KKR Real Estate Finance - 商业地产抵押REIT
+    'MGI': 'Money Transfer',                                        // MoneyGram - 汇款
+    'MGP': 'Gaming REIT',                                           // MGM Growth Properties - 博彩REIT
+    'LSPD': 'Commerce Platform',                                    // Lightspeed Commerce - 商务平台
+    // --- Auto / Vehicle ---
+    'IAA': 'Vehicle Auction',                                       // IAA Inc - 汽车拍卖
+    'MTOR': 'Powersports & Marine',                                 // Meritor - 动力运动与船舶
+    // --- Gaming / Entertainment ---
+    'IGT': 'Lottery & Gaming Systems',                              // International Game Technology - 彩票与博彩系统
+    'LNW': 'Gaming Equipment',                                      // Light & Wonder - 博彩设备
+    // --- Education ---
+    'LAUR': 'International Education',                              // Laureate Education - 国际教育
+    'LINC': 'Vocational Education',                                 // Lincoln Educational - 职业教育
+    // --- Fitness ---
+    'LTH': 'Premium Fitness',                                       // Life Time Group - 高端健身
+    // --- Industrial / Environmental ---
+    'MIR': 'Radiation Detection',                                   // Mirion Technologies - 辐射检测
+    'MNTK': 'Environmental Services',                               // Montrose Environmental - 环保服务
+    'NEX': 'Oilfield Completions',                                  // NexTier Oilfield - 油田完井
+    // --- Utilities ---
+    'MSEX': 'Water Utility',                                        // Middlesex Water - 水务
+    'NJR': 'Natural Gas Utility',                                   // New Jersey Resources - 天然气公用事业
+    'NEP': 'Renewable Energy Yieldco',                              // NextEra Energy Partners - 清洁能源YieldCo
+    // --- Technology / Self-Service ---
+    'NATL': 'ATM & Self-Service Banking',                           // NCR Atleos - ATM/自助银行
+
+    // ========== Batch 8: 16 new stocks subIndustryOverrides ==========
+    'PAHC': 'Animal Health Products',                                // Phibro Animal Health - 动物保健产品
+    'PAY': 'Bill Payment Technology',                                // Paymentus - 账单支付技术
+    'PING': 'Identity Security',                                     // Ping Identity - 身份安全
+    'PLXS': 'Electronics Manufacturing Services',                    // Plexus Corp - 电子代工服务
+    'PNNT': 'Business Development Company',                          // PennantPark - 业务发展公司
+    'PRMW': 'Water Solutions',                                       // Primo Water - 饮用水解决方案
+    'RGP': 'Professional Consulting',                                // Resources Connection - 专业咨询
+    'SANM': 'Electronics Manufacturing Services',                    // Sanmina - 电子代工服务
+    'SECU': 'Insurance & Mortgage Services',                         // Security National Financial - 保险与抵押服务
+    'SHYF': 'Specialty Vehicles',                                    // Shyft Group - 专用车辆
+    'SSTK': 'Stock Media Platform',                                  // Shutterstock - 图片素材平台
+    'ST': 'Sensors & Controls',                                      // Sensata Technologies - 传感器与控制
+    'TTEC': 'Customer Experience Services',                          // TTEC Holdings - 客户体验服务
+    'USCR': 'Ready-Mix Concrete',                                    // U.S. Concrete - 预拌混凝土
+    'USM': 'Regional Wireless Carrier',                              // US Cellular - 区域无线运营商
+    'VNET': 'China Data Centers',                                    // VNET Group - 中国数据中心
+
+    // ========== Batch 9: 20 new stocks subIndustryOverrides ==========
+    // --- Construction / Materials ---
+    'ACA': 'Construction Products & Aggregates',                       // Arcosa - 建筑产品与骨料
+    // --- Energy ---
+    'AESI': 'Proppant & Oilfield Services',                           // Atlas Energy Solutions - 压裂支撑剂与油田服务
+    // --- Real Estate ---
+    'AIRC': 'Apartment REIT',                                          // Apartment Income REIT - 公寓REIT
+    // --- Education ---
+    'APEI': 'Online Education',                                        // American Public Education - 在线教育
+    // --- Banking ---
+    'ASB': 'Regional Banking',                                         // Associated Banc-Corp - 区域银行
+    'FHB': 'Regional Banking',                                         // First Hawaiian Bank - 区域银行(夏威夷)
+    // --- Semiconductor ---
+    'ASX': 'Semiconductor Packaging',                                  // ASE Technology - 半导体封装
+    // --- Utilities ---
+    'AWR': 'Water Utility',                                            // American States Water - 水务公用事业
+    // --- Security / Logistics ---
+    'BCO': 'Security & Cash Logistics',                                // Brink's - 安保与现金物流
+    // --- Pharmaceuticals ---
+    'BHC': 'Specialty Pharma',                                         // Bausch Health - 特种制药
+    // --- Electronics Manufacturing ---
+    'BHE': 'Electronics Manufacturing Services',                       // Benchmark Electronics - 电子代工服务
+    'CLS': 'Electronics Manufacturing Services',                       // Celestica - 电子代工服务
+    // --- Telecom / Cable ---
+    'CABO': 'Cable & Broadband',                                       // Cable One - 有线电视与宽带
+    // --- Automotive ---
+    'CARS': 'Auto Marketplace',                                        // Cars.com - 汽车交易平台
+    // --- Cloud / IT ---
+    'CCSI': 'Cloud Fax & Digital Documents',                           // Consensus Cloud Solutions - 云传真与数字文档
+    // --- Data & Analytics ---
+    'CLVT': 'Research Analytics & IP',                                 // Clarivate - 研究分析与知识产权
+    // --- Gaming Peripherals ---
+    'CRSR': 'Gaming Peripherals & Components',                         // Corsair Gaming - 游戏外设与组件
+    // --- Specialty Trucks ---
+    'CTOS': 'Specialty Truck Rental & Sales',                          // Custom Truck One Source - 特种卡车租赁与销售
+    // --- Medical Devices ---
+    'ENOV': 'Orthopedic & Surgical Devices',                           // Enovis - 骨科与手术器械
+    // --- Diversified ---
+    'GHC': 'Diversified Media & Education',                            // Graham Holdings - 多元化媒体与教育
   },
 
   // ============================================================
