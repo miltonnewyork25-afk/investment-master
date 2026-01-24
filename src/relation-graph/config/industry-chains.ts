@@ -314,6 +314,107 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Uranium': [
       'Utilities - Regulated Electric',
     ],
+
+    // ========== 保险产业链 ==========
+    'Insurance Brokers': [
+      'Insurance - Property & Casualty',
+      'Insurance - Life',
+      'Insurance - Diversified',
+    ],
+
+    'Insurance - Property & Casualty': [
+      'Auto & Truck Dealerships',
+      'Residential Construction',
+    ],
+
+    // ========== 包装产业链 ==========
+    'Packaging & Containers': [
+      'Packaged Foods',
+      'Beverages - Non-Alcoholic',
+      'Beverages - Alcoholic',
+      'Household & Personal Products',
+    ],
+
+    // ========== 个人护理/家居产业链 ==========
+    'Household & Personal Products': [
+      'Grocery Stores',
+      'Discount Stores',
+      'Specialty Retail',
+    ],
+
+    // ========== REIT产业链 ==========
+    'REIT - Industrial': [
+      'Integrated Freight & Logistics',
+      'Internet Retail',
+    ],
+
+    'REIT - Retail': [
+      'Specialty Retail',
+      'Restaurants',
+    ],
+
+    // ========== 人力资源/专业服务 ==========
+    'Staffing & Employment Services': [
+      'Information Technology Services',
+      'Medical - Care Facilities',
+      'Construction & Engineering',
+    ],
+
+    // ========== 废弃物管理 ==========
+    'Waste Management': [
+      'Construction & Engineering',
+      'Residential Construction',
+      'Oil & Gas Exploration & Production',
+    ],
+
+    // ========== 互联网/电商产业链 ==========
+    'Internet Retail': [
+      'Specialty Retail',            // 电商替代实体零售
+      'Discount Stores',             // 竞争
+    ],
+
+    // ========== 广告/媒体产业链 ==========
+    'Advertising Agencies': [
+      'Internet Content & Information',  // 数字广告投放
+      'Entertainment',                   // 媒体广告
+      'Telecom Services',                // 电信广告
+    ],
+
+    // ========== 房地产/住宅产业链 ==========
+    'Residential Construction': [
+      'Building Materials',          // 建材采购
+      'Household & Personal Products', // 入住采购
+      'Furnishings, Fixtures & Appliances', // 家电家居
+    ],
+
+    'Building Materials': [
+      'Residential Construction',    // 住宅建设
+      'Construction & Engineering',  // 商业建设
+    ],
+
+    // ========== 教育/人力产业链 ==========
+    'Education & Training Services': [
+      'Staffing & Employment Services',  // 人才输出
+      'Information Technology Services',  // IT人才
+    ],
+
+    // ========== 支付/金融科技 ==========
+    'Financial - Conglomerates': [
+      'Banks - Diversified',
+      'Insurance - Diversified',
+      'Capital Markets',
+    ],
+
+    'Banks - Diversified': [
+      'Banks - Regional',
+      'Financial - Credit Services',
+    ],
+
+    // ========== 娱乐/内容 ==========
+    'Entertainment': [
+      'Leisure',
+      'Gambling',
+    ],
   },
 
   complementary: {
@@ -1708,6 +1809,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Express Logistics': [
       'Internet Retail',           // 电商配送
       'Mass Retail',               // 零售配送
+      'Specialty Retail',          // 专业零售配送
     ],
 
     // 货运代理 - 整合运力
@@ -2129,6 +2231,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Express Logistics',
       'E-commerce',
       'LTL Trucking',
+      'Truckload',            // 卡车运输
       'Warehouse Club',       // 仓储配送
     ],
 
@@ -2234,10 +2337,13 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Media Conglomerate',
     ],
 
-    // 流媒体 - 向广告商提供受众
+    // 流媒体 - 向广告商/硬件提供受众
     'Streaming': [
       'AdTech DSP',
       'AdTech SSP',
+      'Media Conglomerate',    // 内容采购
+      'Consumer Electronics',  // 显示终端
+      'Cable Operator',        // 网络分发
     ],
 
     // 媒体集团 - 内容 → 广告
@@ -2246,10 +2352,12 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Streaming',
     ],
 
-    // 社交平台 - 广告驱动
+    // 社交平台 - 广告/电商/游戏
     'Social Platform': [
       'AdTech DSP',
       'AdTech Verification',
+      'E-commerce Platform',   // 社交电商
+      'Gaming Publisher',      // 游戏分发
     ],
 
     // AdTech DSP → 验证/SSP
@@ -2642,6 +2750,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     'Ride-hailing': [
       'Car Rental',           // 竞争替代
+      'Full-Service Airline',  // 机场接送
+      'Hotel Chain',           // 酒店出行
     ],
 
     // ========== 零售/消费补充 ==========
@@ -2704,6 +2814,72 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Enterprise SaaS',       // 办公设备
       'Mass Retail',           // 零售渠道
     ],
+
+    // ========== 终端消费链补充 ==========
+    'Enterprise SaaS': [
+      'Cloud Hyperscaler',     // 基础设施需求
+      'Data Center REIT',      // 数据中心需求
+    ],
+
+    'Auto Dealer': [
+      'Traditional OEM',       // 车辆采购
+      'EV OEM',                // 电动车采购
+      'Auto Finance',          // 金融合作
+    ],
+
+    'QSR': [
+      'Food Distribution',     // 食材采购
+      'Packaged Foods',        // 供应链
+      'Payment Processor',     // 支付处理
+    ],
+
+    'Casual Dining': [
+      'Food Distribution',     // 食材配送
+      'Beer & Spirits',        // 酒水采购
+    ],
+
+    'Fast Casual': [
+      'Food Distribution',     // 供应链
+      'Payment Processor',     // 支付
+    ],
+
+    'Mass Retail': [
+      'Express Logistics',     // 物流配送
+      'Payment Processor',     // 收银支付
+      'Consumer Electronics',  // 电子产品
+    ],
+
+    'Off-Price Retail': [
+      'Apparel Retail',        // 过季库存
+      'Mass Retail',           // 竞争替代
+    ],
+
+    'Beauty Retail': [
+      'Prestige Beauty',       // 品牌采购
+      'Mass Beauty',           // 大众品牌
+    ],
+
+    'Consumer Electronics': [
+      'Cloud Hyperscaler',     // 云服务集成
+      'Streaming',             // 内容终端
+    ],
+
+    // ========== 健康保险链 ==========
+    'Health Insurance': [
+      'Hospital',              // 支付医院费用
+      'Pharmacy Retail',       // 处方药覆盖
+      'Digital Health',        // 远程医疗覆盖
+      'Large MedTech',         // 设备审批/报销
+    ],
+
+    // ========== 生活服务链补充 ==========
+    'Car Rental': [
+      'Full-Service Airline',  // 机场租车
+      'Hotel Chain',           // 酒店配套
+      'Traditional OEM',       // 车队采购
+    ],
+
+
 
   },
 };

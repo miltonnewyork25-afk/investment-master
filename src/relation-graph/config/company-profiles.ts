@@ -1634,6 +1634,174 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['value', 'store_brand', 'quality', 'accessibility'],
     channels: ['pharmacy', 'grocery', 'mass_retail'],
   },
+
+  // ========== 补充: 最后22个消费者相关公司 ==========
+
+  // --- 汽车零售 ---
+  'AN': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['vehicle_purchase', 'service', 'parts', 'trade_in'],
+    valueProps: ['selection', 'financing', 'service', 'convenience'],
+    channels: ['dealership', 'online'],
+  },
+
+  // --- 大型制药 (B2B2C) ---
+  'SNY': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['chronic_disease', 'rare_disease', 'vaccine', 'consumer_health'],
+    valueProps: ['innovation', 'efficacy', 'global_access', 'specialty'],
+    channels: ['hospital', 'pharmacy', 'clinic'],
+  },
+
+  // --- 数字健康 ---
+  'DXCM': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['diabetes_management', 'glucose_monitoring', 'chronic_care'],
+    valueProps: ['continuous_monitoring', 'convenience', 'data', 'accuracy'],
+    channels: ['pharmacy', 'online', 'clinic'],
+  },
+
+  // --- EV充电 ---
+  'EVGO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['ev_charging', 'road_trip', 'daily_commute'],
+    valueProps: ['fast_charging', 'network', 'convenience', 'sustainability'],
+    channels: ['app', 'station', 'partner_locations'],
+  },
+
+  // --- 教育科技 ---
+  'CHGG': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['homework', 'exam_prep', 'tutoring', 'textbook'],
+    valueProps: ['affordability', 'convenience', 'instant_help', 'academic_success'],
+    channels: ['online', 'mobile_app'],
+  },
+
+  // --- 新兴生物制药 (B2B2C) ---
+  'SGEN': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['cancer_treatment', 'oncology', 'rare_disease'],
+    valueProps: ['innovation', 'targeted_therapy', 'efficacy'],
+    channels: ['hospital', 'specialty_pharmacy'],
+  },
+  'INCY': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['oncology', 'inflammation', 'autoimmune'],
+    valueProps: ['innovation', 'specialty', 'efficacy'],
+    channels: ['hospital', 'specialty_pharmacy'],
+  },
+  'BMRN': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['rare_disease', 'genetic_disorder', 'enzyme_replacement'],
+    valueProps: ['rare_disease_expertise', 'innovation', 'patient_support'],
+    channels: ['hospital', 'specialty_pharmacy', 'home_infusion'],
+  },
+  'EXEL': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['cancer_treatment', 'oncology', 'kidney_cancer'],
+    valueProps: ['targeted_therapy', 'innovation', 'efficacy'],
+    channels: ['hospital', 'specialty_pharmacy'],
+  },
+  'SRPT': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['rare_disease', 'gene_therapy', 'muscular_dystrophy'],
+    valueProps: ['gene_therapy', 'innovation', 'rare_disease_focus'],
+    channels: ['hospital', 'specialty_center'],
+  },
+
+  // --- 金融数据 (B2B2C) ---
+  'MORN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['investment_research', 'fund_selection', 'portfolio_analysis'],
+    valueProps: ['data_quality', 'independence', 'research', 'ratings'],
+    channels: ['online', 'subscription', 'financial_advisor'],
+  },
+
+  // --- 游戏 ---
+  'ATVI': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['gaming', 'entertainment', 'social', 'esports'],
+    valueProps: ['franchise_quality', 'multiplayer', 'competitive', 'content_updates'],
+    channels: ['digital_store', 'console', 'mobile', 'pc'],
+  },
+
+  // --- 仿制药 (B2B2C) ---
+  'TEVA': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['chronic_disease', 'pain_relief', 'generic_rx'],
+    valueProps: ['affordability', 'accessibility', 'generic_quality'],
+    channels: ['pharmacy', 'hospital', 'online_pharmacy'],
+  },
+  'VTRS': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['chronic_disease', 'generic_rx', 'biosimilar'],
+    valueProps: ['affordability', 'broad_portfolio', 'accessibility'],
+    channels: ['pharmacy', 'hospital', 'online_pharmacy'],
+  },
+
+  // --- 独立电力 ---
+  'NRG': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['electricity', 'home_energy', 'renewable_plan'],
+    valueProps: ['choice', 'competitive_pricing', 'renewable_options', 'reliability'],
+    channels: ['online', 'direct_sales', 'broker'],
+  },
+
+  // --- 寿险 ---
+  'LNC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['life_insurance', 'annuity', 'retirement', 'wealth_protection'],
+    valueProps: ['security', 'retirement_income', 'tax_advantage', 'legacy'],
+    channels: ['financial_advisor', 'broker', 'online'],
+  },
+
+  // --- 管理式医疗 ---
+  'CNC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['medicaid', 'healthcare', 'managed_care', 'marketplace'],
+    valueProps: ['access', 'affordability', 'network', 'government_program'],
+    channels: ['government', 'marketplace', 'broker'],
+  },
+
+  // --- 住宅REIT ---
+  'MAA': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['apartment_rental', 'relocation', 'lifestyle'],
+    valueProps: ['location', 'amenities', 'value', 'sunbelt_markets'],
+    channels: ['online', 'property_office', 'broker'],
+  },
+
+  // --- 房地产科技 ---
+  'RDFN': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_purchase', 'home_sale', 'refinance', 'market_research'],
+    valueProps: ['savings', 'technology', 'transparency', 'lower_commission'],
+    channels: ['online', 'mobile_app', 'agent'],
+  },
+
+  // --- 快餐 ---
+  'QSR': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['quick_meal', 'drive_through', 'breakfast', 'snack'],
+    valueProps: ['convenience', 'value', 'speed', 'consistency'],
+    channels: ['drive_through', 'dine_in', 'delivery', 'mobile_app'],
+  },
+
+  // --- 光伏设备 (B2B2C) ---
+  'SEDG': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['solar_installation', 'home_energy', 'sustainability'],
+    valueProps: ['efficiency', 'monitoring', 'reliability', 'innovation'],
+    channels: ['installer', 'distributor', 'online'],
+  },
+
+  // --- 烟草 (B2B2C) ---
+  'BTI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['tobacco', 'nicotine', 'alternatives'],
+    valueProps: ['brand', 'satisfaction', 'reduced_risk_alternatives'],
+    channels: ['convenience_store', 'gas_station', 'online'],
+  },
 };
 
 // ============================================================
