@@ -1520,6 +1520,120 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['reliability', 'clean_generation', 'affordability', 'programs'],
     channels: ['utility_bill', 'online'],
   },
+
+  // ========== 区域银行 (零售银行业务) ==========
+  'TFC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'insurance', 'wealth'],
+    valueProps: ['community', 'service', 'digital', 'insurance_bundling'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'FITB': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'auto_loan', 'saving'],
+    valueProps: ['community', 'momentum_banking', 'digital', 'service'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'RF': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'wealth', 'small_business'],
+    valueProps: ['southern_presence', 'service', 'community', 'digital'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'KEY': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'investing', 'business'],
+    valueProps: ['relationship', 'digital', 'community', 'advisory'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'CFG': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'student_loan', 'mortgage', 'personal_loan'],
+    valueProps: ['education_refi', 'digital', 'community', 'service'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'HBAN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'auto_loan', 'mortgage', 'small_business'],
+    valueProps: ['community', 'service', 'midwest_presence', 'digital'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'MTB': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'wealth', 'commercial'],
+    valueProps: ['northeast_presence', 'stability', 'service', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+
+  // ========== 医院系统 ==========
+  'HCA': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['emergency', 'surgery', 'outpatient', 'maternity'],
+    valueProps: ['access', 'quality', 'network', 'specialists'],
+    channels: ['hospital', 'clinic', 'online'],
+  },
+  'THC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['emergency', 'surgery', 'behavioral_health', 'outpatient'],
+    valueProps: ['ambulatory', 'specialists', 'access', 'quality'],
+    channels: ['hospital', 'clinic', 'surgery_center'],
+  },
+  'UHS': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['behavioral_health', 'acute_care', 'emergency', 'rehab'],
+    valueProps: ['behavioral_specialty', 'access', 'quality', 'programs'],
+    channels: ['hospital', 'clinic', 'residential'],
+  },
+
+  // ========== 汽车经销商 ==========
+  'PAG': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['luxury_car', 'service', 'trade_in', 'financing'],
+    valueProps: ['luxury_brands', 'selection', 'service', 'experience'],
+    channels: ['dealer', 'online'],
+  },
+  'LAD': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['car_purchase', 'service', 'trade_in', 'financing'],
+    valueProps: ['selection', 'digital_retail', 'service', 'value'],
+    channels: ['dealer', 'online'],
+  },
+
+  // ========== 资产管理 (零售投资者) ==========
+  'BEN': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['investing', 'retirement', 'income', 'wealth_preservation'],
+    valueProps: ['global', 'fixed_income', 'expertise', 'track_record'],
+    channels: ['advisor', 'online', 'direct'],
+  },
+  'IVZ': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['investing', 'etf', 'retirement', 'alternatives'],
+    valueProps: ['global', 'solutions', 'etf_platform', 'expertise'],
+    channels: ['advisor', 'online', 'institutional'],
+  },
+
+  // ========== 教育服务 ==========
+  'LOPE': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['degree', 'career_advancement', 'adult_education', 'online_learning'],
+    valueProps: ['affordability', 'flexibility', 'outcomes', 'support'],
+    channels: ['online', 'campus'],
+  },
+  'STRA': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['degree', 'professional_development', 'career_change', 'military'],
+    valueProps: ['flexibility', 'career_focus', 'online', 'support'],
+    channels: ['online', 'campus'],
+  },
+
+  // ========== 通用制药 (OTC消费者) ==========
+  'PRGO': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['otc_medicine', 'wellness', 'pain_relief', 'cold_flu'],
+    valueProps: ['value', 'store_brand', 'quality', 'accessibility'],
+    channels: ['pharmacy', 'grocery', 'mass_retail'],
+  },
 };
 
 // ============================================================
@@ -3644,6 +3758,10 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'SYY': {
     interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
     consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'USFD': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.2,
   },
 
   // 折扣零售 - 逆周期（经济差时受益）
