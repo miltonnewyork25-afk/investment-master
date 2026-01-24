@@ -7234,7 +7234,6 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'SUPN': 'defensive',              // Supernus Pharma - CNS制药(防御型)
   'ANIP': 'defensive',              // ANI Pharma - 特种仿制药(防御型)
   'IRWD': 'defensive',              // Ironwood - 消化道制药(防御型)
-  'CTLT': 'defensive',              // Catalent - CDMO(防御型)
   'PPD': 'defensive',               // PPD - CRO临床研究(防御型)
   // --- Biotech: Gene/Cell Therapy ---
   'SANA': 'early',                  // Sana Biotech - 细胞疗法(早周期)
@@ -7312,7 +7311,6 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'PETQ': 'defensive',              // PetIQ - 宠物健康(防御型)
   // --- Med Device: Other ---
   'NBWR': 'mid',                    // MiMedx wound - 伤口护理(中周期)
-  'NVRO': 'mid',                    // Nevro - 神经调节(中周期)
 };
 
 // ============================================================
@@ -16266,7 +16264,6 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'SUPN': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
   'ANIP': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
   'IRWD': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
-  'CTLT': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
   'PPD': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.2, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
   // --- Biotech: Gene/Cell Therapy (high rate sensitivity, growth dependent) ---
   'SANA': { interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
@@ -16344,7 +16341,6 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'PETQ': { interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
   // --- Med Device: Other ---
   'NBWR': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
-  'NVRO': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
 };
 
 // ============================================================

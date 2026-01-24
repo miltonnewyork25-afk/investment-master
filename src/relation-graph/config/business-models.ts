@@ -18959,14 +18959,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Ophthalmic Devices',
     tags: ['ICL', 'implantable_lens', 'refractive', 'myopia'],
   },
-  'NVST': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales', 'consumables'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B',
-    industrySegment: 'Dental Technology',
-    tags: ['dental_imaging', 'orthodontics', 'digital_dentistry', 'CAD_CAM'],
-  },
   'ESTA': {
     assetModel: 'asset_light',
     revenueModels: ['product_sales', 'consumables'],
@@ -19016,14 +19008,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2B',
     industrySegment: 'Radiotherapy Devices',
     tags: ['radiation_therapy', 'stereotactic', 'oncology', 'linac'],
-  },
-  'NVRO': {
-    assetModel: 'asset_light',
-    revenueModels: ['product_sales', 'consumables'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B',
-    industrySegment: 'Neuromodulation Devices',
-    tags: ['spinal_cord_stimulation', 'pain', 'neuromodulation', 'HFX'],
   },
   'TMCI': {
     assetModel: 'asset_light',
