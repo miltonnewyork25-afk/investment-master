@@ -3820,6 +3820,148 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'TWIST': 'Synthetic Biology',
     'WB': 'Social Platform',
     'YMM': 'Freight Brokerage',
+    // --- Additional 5 ---
+    'BRFS': 'Food Producer',                                   // BRF S.A. - 巴西肉类加工
+    'AMWL': 'Telehealth',                                      // Amwell - 远程医疗
+    'RUTH': 'Restaurant',                                      // Ruth's Chris - 高端餐饮
+    'DAVE': 'Neobank',                                         // Dave - 新银行
+    'NNDM': 'Industrial Automation',                           // Nano Dimension - 3D电子打印
+
+    // ========== 64 NEW STOCKS: subIndustryOverrides ==========
+    // --- Consumer Staples ---
+    'SPB': 'Household Products',                               // Spectrum Brands - 家居/宠物产品
+    'EPC': 'Personal Care',                                    // Edgewell Personal Care - 个护产品
+    'ENR': 'Consumer Electronics',                             // Energizer - 电池/便携电源
+    'TR': 'Confectionery',                                     // Tootsie Roll - 糖果
+    // --- Utilities ---
+    'ATO': 'Gas Utility',                                      // Atmos Energy - 天然气公用
+    'ALE': 'Electric Utility',                                 // ALLETE - 电力公用
+    'POR': 'Electric Utility',                                 // Portland General - 电力公用
+    // --- Insurance ---
+    'MKL': 'Specialty Insurance',                              // Markel - 特种保险
+    'UNUM': 'Life Insurance',                                  // Unum Group - 人寿/残疾保险
+    // --- Telecom / Media ---
+    'LUMN': 'Fiber Telecom',                                   // Lumen Technologies - 光纤电信
+    'DISH': 'Satellite TV',                                    // DISH Network - 卫星电视
+    'SATS': 'Satellite Communications',                        // EchoStar - 卫星通信
+    'LBRDK': 'Cable & Broadband',                              // Liberty Broadband - 有线宽带
+    'NWS': 'Publishing & Media',                               // News Corp - 出版/新闻
+    'IPG': 'Advertising Agency',                               // Interpublic - 广告
+    'OMC': 'Advertising Agency',                               // Omnicom - 广告
+    'CCO': 'Outdoor Advertising',                              // Clear Channel - 户外广告
+    // --- Industrials ---
+    'CSL': 'Building Products',                                // Carlisle Companies - 建材
+    'SCHN': 'Scrap Metal',                                     // Schnitzer Steel - 废钢回收
+    'KALU': 'Aluminum Products',                               // Kaiser Aluminum - 铝制品
+    'HEES': 'Equipment Rental',                                // H&E Equipment - 设备租赁
+    'TPC': 'Construction & Engineering',                       // Tutor Perini - 重型施工
+    'AGX': 'Construction & Engineering',                       // Argan - 电厂建设
+    'WSP': 'Engineering Services',                             // WSP Global - 工程咨询
+    'MYRG': 'Electrical Construction',                         // MYR Group - 电气施工
+    'APG': 'Safety Services',                                  // APi Group - 安全/消防
+    'AYI': 'Lighting & Controls',                              // Acuity Brands - 照明
+    'MATV': 'Specialty Materials',                             // Mativ - 特种材料
+    'ITRI': 'Smart Grid',                                      // Itron - 智能电表
+    // --- Tech / Electronics ---
+    'DLB': 'Audio Technology',                                 // Dolby - 音频技术
+    'RVTY': 'Life Sciences Tools',                             // Revvity - 生命科学
+    'IQVIA': 'CRO & Health Data',                              // IQVIA - 临床研究/数据
+    'CTLT': 'Pharma CDMO',                                     // Catalent - 药物CDMO
+    'FN': 'Optical Manufacturing',                             // Fabrinet - 光学制造
+    'FLEX': 'Electronics Manufacturing',                       // Flex - 电子代工
+    'JBL': 'Electronics Manufacturing',                        // Jabil - 电子代工
+    'TTMI': 'Printed Circuit Boards',                          // TTM Technologies - PCB
+    'HEAR': 'Gaming Peripherals',                              // Turtle Beach - 游戏外设
+    // --- Financial / Payments ---
+    'EEFT': 'Cross-Border Payments',                           // Euronet - 跨境支付
+    'GDOT': 'Prepaid & BaaS',                                  // Green Dot - 预付卡
+    'PAYA': 'Integrated Payments',                             // Paya - B2B支付
+    'BKI': 'Mortgage Technology',                              // Black Knight - 按揭科技
+    'NCR': 'POS & ATM',                                        // NCR - 零售/银行科技
+    'VOYA': 'Retirement Services',                             // Voya Financial - 退休服务
+    'EQH': 'Life Insurance',                                   // Equitable - 寿险/资管
+    'NWLI': 'Life Insurance',                                  // National Western Life - 寿险
+    'WTM': 'Specialty Insurance',                              // White Mountains - 特种保险
+    'TRMK': 'Community Banking',                               // Trustmark - 社区银行
+    // --- Data & Analytics ---
+    'INFO': 'Financial Data',                                  // IHS Markit - 金融数据
+    // --- Midstream Energy ---
+    'ENLC': 'Midstream Gas',                                   // EnLink - 中游天然气
+    // --- Hospitality / Entertainment ---
+    'DRH': 'Hotel REIT',                                       // DiamondRock - 酒店REIT
+    'BALY': 'Casino & iGaming',                                // Bally's - 赌场
+    // --- Airlines ---
+    'HA': 'Regional Airline',                                  // Hawaiian Airlines - 地区航空
+    // --- Restaurants ---
+    'RRGB': 'Casual Dining',                                   // Red Robin - 休闲餐饮
+    'FRGI': 'Fast Casual',                                     // Fiesta Restaurant - 快餐
+    'SAFM': 'Poultry Processing',                              // Sanderson Farms - 禽肉加工
+    // --- Packaging & Materials ---
+    'GPK': 'Paperboard Packaging',                             // Graphic Packaging - 纸板包装
+    'REYN': 'Consumer Packaging',                              // Reynolds Consumer - 消费包装
+    'ATR': 'Dispensing & Closures',                            // AptarGroup - 分配/封装
+    'AVY': 'Labels & Materials',                               // Avery Dennison - 标签/材料
+    // --- REITs ---
+    'OFC': 'Office REIT',                                      // Corporate Office - 政府办公
+    'PGRE': 'Office REIT',                                     // Paramount Group - 办公REIT
+    'ALEX': 'Diversified REIT',                                // Alexander & Baldwin - 夏威夷REIT
+    'RLGY': 'Real Estate Services',                            // Realogy - 房产经纪
+
+    // ========== Batch 3: 54 new stocks subIndustryOverrides ==========
+    'MASI': 'Patient Monitoring Devices',                       // Masimo - 患者监护
+    'AMC': 'Movie Theaters',                                    // AMC Entertainment - 电影院
+    'NXST': 'TV Broadcasting',                                  // Nexstar Media - 电视广播
+    'FWONK': 'Motorsports Media',                               // Liberty Formula One - F1赛事
+    'ZD': 'Digital Media',                                      // Ziff Davis - 数字媒体
+    'ELS': 'Manufactured Housing REIT',                         // Equity LifeStyle - MH REIT
+    'TPG': 'Alternative Asset Management',                      // TPG Inc - 另类资管
+    'MBLY': 'ADAS Chips',                                       // Mobileye - ADAS芯片
+    'PEG': 'Electric & Gas Utility',                            // PSEG - 电力燃气
+    'HIPPO': 'InsurTech',                                       // Hippo Holdings - 保险科技
+    'KINS': 'Property Insurance',                               // Kingstone - 财产保险
+    'GDYN': 'IT Consulting',                                    // Grid Dynamics - IT咨询
+    'NUVEI': 'Payment Processing',                              // Nuvei - 支付处理
+    'RACE': 'Luxury Automotive',                                // Ferrari - 豪华汽车
+    'PII': 'Powersports',                                       // Polaris - 动力运动
+    'UDMY': 'Online Education',                                 // Udemy - 在线教育
+    'VRM': 'Online Auto Retail',                                // Vroom - 在线汽车
+    'AHCO': 'Home Medical Equipment',                           // AdaptHealth - 家庭医疗
+    'MDC': 'Homebuilding',                                      // MDC Holdings - 住宅建筑
+    'RBRK': 'Data Security',                                    // Rubrik - 数据安全
+    'CVCO': 'Manufactured Housing',                             // Cavco - 制造住宅
+    'MCFT': 'Recreational Boats',                               // MasterCraft - 游艇
+    'MBUU': 'Recreational Boats',                               // Malibu Boats - 游艇
+    'SHLS': 'Solar BOS Components',                             // Shoals Technologies - 太阳能BOS
+    'GPRE': 'Ethanol & Biofuels',                               // Green Plains - 乙醇
+    'CCRN': 'Healthcare Staffing',                              // Cross Country - 医疗人力
+    'AMN': 'Healthcare Staffing',                               // AMN Healthcare - 医疗人力
+    'UNM': 'Employee Benefits Insurance',                       // Unum Group - 员工保险
+    'GNW': 'Long-Term Care Insurance',                          // Genworth - 长护保险
+    'FLUT': 'Online Sports Betting',                            // Flutter - 体育博彩
+    'PGNY': 'Fertility Benefits',                               // Progyny - 生育福利
+    'SEM': 'Specialty Hospitals',                               // Select Medical - 专科医院
+    'PATK': 'Building Products',                                // Patrick Industries - 建材
+    'LL': 'Flooring Retail',                                    // LL Flooring - 地板零售
+    'PTRA': 'Electric Buses',                                   // Proterra - 电动公交
+    'HYLN': 'Electric Truck Systems',                           // Hyliion - 电动卡车
+    'ANGI': 'Home Services Marketplace',                        // Angi - 家庭服务
+    'GRPN': 'Local Commerce',                                   // Groupon - 本地商务
+    'MMYT': 'Online Travel Agency',                             // MakeMyTrip - OTA
+    'EURN': 'Crude Oil Tankers',                                // Euronav - 原油油轮
+    'NAT': 'Crude Oil Tankers',                                 // Nordic American - 油轮
+    'TRMD': 'Product Tankers',                                  // TORM - 成品油轮
+    'HAFN': 'Product & Chemical Tankers',                       // Hafnia - 化学品油轮
+    'CMRE': 'Containership Leasing',                            // Costamare - 集装箱租赁
+    'GSL': 'Containership Leasing',                             // Global Ship Lease - 集装箱
+    'ASC': 'LPG Carriers',                                      // Ardmore Shipping - LPG船
+    'TDC': 'Enterprise Data Analytics',                         // Teradata - 数据分析
+    'SDC': 'DTC Dental',                                        // SmileDirectClub - DTC正畸
+    'HCP': 'Healthcare IT',                                     // HashiCorp Health - 医疗IT
+    'SN': 'Specialty Metals',                                   // SharkNinja - 特种金属
+    'SMP': 'Auto Aftermarket Parts',                            // Standard Motor - 汽配
+    'SCHL': 'Publishing',                                       // Scholastic - 出版
+    'HMH': 'Educational Content',                               // HMH - 教育内容
+    'BKD': 'Senior Living',                                     // Brookdale - 养老社区
   },
 
   // ============================================================

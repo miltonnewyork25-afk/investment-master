@@ -7015,6 +7015,142 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'RUTH': 'mid',                   // Ruth's Chris - 高端餐饮(中周期)
   'DAVE': 'early',                 // Dave - 新银行(早周期)
   'NNDM': 'early',                 // Nano Dimension - 3D电子打印(早周期)
+
+  // ========== 64 NEW STOCKS: CYCLE_POSITIONS ==========
+  // --- Consumer Staples (defensive) ---
+  'SPB': 'defensive',               // Spectrum Brands - 家居/宠物/个护(防御型)
+  'EPC': 'defensive',               // Edgewell Personal Care - 个护产品(防御型)
+  'ENR': 'defensive',               // Energizer Holdings - 电池(防御型)
+  'TR': 'defensive',                // Tootsie Roll - 糖果(防御型)
+  // --- Utilities (defensive) ---
+  'ATO': 'defensive',               // Atmos Energy - 天然气公用(防御型)
+  'ALE': 'defensive',               // ALLETE - 电力公用(防御型)
+  'POR': 'defensive',               // Portland General - 电力公用(防御型)
+  // --- Insurance ---
+  'MKL': 'defensive',               // Markel - 特种保险(防御型)
+  'UNUM': 'defensive',              // Unum Group - 残疾/人寿保险(防御型)
+  // --- Telecom / Media ---
+  'LUMN': 'late',                   // Lumen Technologies - 光纤电信(晚周期)
+  'DISH': 'late',                   // DISH Network - 卫星电视(晚周期)
+  'SATS': 'mid',                    // EchoStar - 卫星通信(中周期)
+  'LBRDK': 'defensive',             // Liberty Broadband - 有线宽带(防御型)
+  'NWS': 'defensive',               // News Corp - 出版/媒体(防御型)
+  'IPG': 'mid',                     // Interpublic Group - 广告(中周期)
+  'OMC': 'mid',                     // Omnicom Group - 广告(中周期)
+  'CCO': 'mid',                     // Clear Channel Outdoor - 户外广告(中周期)
+  // --- Industrials ---
+  'CSL': 'mid',                     // Carlisle Companies - 建材(中周期)
+  'SCHN': 'late',                   // Schnitzer Steel - 废钢回收(晚周期)
+  'KALU': 'late',                   // Kaiser Aluminum - 铝制品(晚周期)
+  'HEES': 'mid',                    // H&E Equipment - 设备租赁(中周期)
+  'TPC': 'mid',                     // Tutor Perini - 重型施工(中周期)
+  'AGX': 'mid',                     // Argan - 电厂建设(中周期)
+  'WSP': 'mid',                     // WSP Global - 工程咨询(中周期)
+  'MYRG': 'mid',                    // MYR Group - 电气施工(中周期)
+  'APG': 'mid',                     // APi Group - 安全/消防(中周期)
+  'AYI': 'mid',                     // Acuity Brands - 照明(中周期)
+  'MATV': 'mid',                    // Mativ Holdings - 特种材料(中周期)
+  'ITRI': 'mid',                    // Itron - 智能电表(中周期)
+  // --- Tech / Electronics ---
+  'DLB': 'defensive',               // Dolby - 音频/影院技术(防御型)
+  'RVTY': 'defensive',              // Revvity - 生命科学/诊断(防御型)
+  'IQVIA': 'defensive',             // IQVIA - CRO/健康数据(防御型)
+  'CTLT': 'defensive',              // Catalent - 药物CDMO(防御型)
+  'FN': 'mid',                      // Fabrinet - 光学制造(中周期)
+  'FLEX': 'mid',                    // Flex - 电子制造(中周期)
+  'JBL': 'mid',                     // Jabil - 电子制造(中周期)
+  'TTMI': 'mid',                    // TTM Technologies - PCB(中周期)
+  'HEAR': 'early',                  // Turtle Beach - 游戏外设(早周期)
+  // --- Financial / Payments ---
+  'EEFT': 'mid',                    // Euronet - 跨境支付(中周期)
+  'GDOT': 'mid',                    // Green Dot - 预付卡/BaaS(中周期)
+  'PAYA': 'mid',                    // Paya - 综合支付(中周期)
+  'BKI': 'mid',                     // Black Knight - 按揭科技(中周期)
+  'NCR': 'mid',                     // NCR - POS/ATM(中周期)
+  'VOYA': 'defensive',              // Voya Financial - 退休/投管(防御型)
+  'EQH': 'defensive',               // Equitable - 寿险/资管(防御型)
+  'NWLI': 'defensive',              // National Western Life - 寿险(防御型)
+  'WTM': 'defensive',               // White Mountains - 特种保险(防御型)
+  'TRMK': 'defensive',              // Trustmark - 社区银行(防御型)
+  // --- Data & Analytics ---
+  'INFO': 'defensive',              // IHS Markit - 金融/商品数据(防御型)
+  // --- Midstream Energy ---
+  'ENLC': 'mid',                    // EnLink Midstream - 中游天然气(中周期)
+  // --- Hospitality / Entertainment ---
+  'DRH': 'mid',                     // DiamondRock - 酒店REIT(中周期)
+  'BALY': 'early',                  // Bally's - 赌场/iGaming(早周期)
+  // --- Airlines ---
+  'HA': 'mid',                      // Hawaiian Airlines - 地区航空(中周期)
+  // --- Restaurants ---
+  'RRGB': 'mid',                    // Red Robin - 休闲餐饮(中周期)
+  'FRGI': 'mid',                    // Fiesta Restaurant - 快餐(中周期)
+  'SAFM': 'mid',                    // Sanderson Farms - 禽肉加工(中周期)
+  // --- Packaging & Materials ---
+  'GPK': 'defensive',               // Graphic Packaging - 纸板包装(防御型)
+  'REYN': 'defensive',              // Reynolds Consumer - 消费包装(防御型)
+  'ATR': 'defensive',               // AptarGroup - 分配/封装系统(防御型)
+  'AVY': 'mid',                     // Avery Dennison - 标签/包装材料(中周期)
+  // --- REITs ---
+  'OFC': 'defensive',               // Corporate Office - 政府办公REIT(防御型)
+  'PGRE': 'late',                   // Paramount Group - 办公REIT(晚周期)
+  'ALEX': 'defensive',              // Alexander & Baldwin - 夏威夷REIT(防御型)
+  'RLGY': 'mid',                    // Realogy/Anywhere - 房产经纪(中周期)
+
+  // ========== Batch 3: 54 new stocks cycle positions ==========
+  'MASI': 'defensive',             // Masimo - 患者监护(防御型)
+  'AMC': 'late',                   // AMC Entertainment - 电影院(晚周期)
+  'NXST': 'mid',                   // Nexstar Media - 电视广播(中周期)
+  'FWONK': 'defensive',            // Liberty Formula One - F1赛事(防御型)
+  'ZD': 'mid',                     // Ziff Davis - 数字媒体(中周期)
+  'ELS': 'defensive',              // Equity LifeStyle - 制造住宅REIT(防御型)
+  'TPG': 'mid',                    // TPG Inc - 另类资产管理(中周期)
+  'MBLY': 'early',                 // Mobileye - ADAS自动驾驶(早周期)
+  'PEG': 'defensive',              // PSEG - 电力燃气公用事业(防御型)
+  'HIPPO': 'mid',                  // Hippo Holdings - 家庭保险科技(中周期)
+  'KINS': 'mid',                   // Kingstone Companies - 家庭保险(中周期)
+  'GDYN': 'mid',                   // Grid Dynamics - 数字化转型(中周期)
+  'NUVEI': 'mid',                  // Nuvei - 支付科技(中周期)
+  'RACE': 'defensive',             // Ferrari - 豪华跑车(防御型)
+  'PII': 'late',                   // Polaris - 动力运动(晚周期)
+  'UDMY': 'defensive',             // Udemy - 在线教育(防御型)
+  'VRM': 'late',                   // Vroom - 在线二手车(晚周期)
+  'AHCO': 'defensive',             // AdaptHealth - 家庭医疗设备(防御型)
+  'MDC': 'early',                  // MDC Holdings - 住宅建筑(早周期)
+  'RBRK': 'mid',                   // Rubrik - 数据安全(中周期)
+  'CVCO': 'early',                 // Cavco Industries - 制造住宅(早周期)
+  'MCFT': 'late',                  // MasterCraft Boat - 性能游艇(晚周期)
+  'MBUU': 'late',                  // Malibu Boats - 运动游艇(晚周期)
+  'SHLS': 'early',                 // Shoals Technologies - 太阳能BOS(早周期)
+  'GPRE': 'mid',                   // Green Plains - 乙醇燃料(中周期)
+  'CCRN': 'defensive',             // Cross Country Healthcare - 医疗人力(防御型)
+  'AMN': 'defensive',              // AMN Healthcare - 医疗人力(防御型)
+  'UNM': 'defensive',              // Unum Group - 员工福利保险(防御型)
+  'GNW': 'defensive',              // Genworth Financial - 长期护理保险(防御型)
+  'FLUT': 'defensive',             // Flutter Entertainment - 体育博彩(防御型)
+  'PGNY': 'defensive',             // Progyny - 生育福利(防御型)
+  'SEM': 'defensive',              // Select Medical - 专科康复(防御型)
+  'PATK': 'early',                 // Patrick Industries - 建筑材料(早周期)
+  'LL': 'early',                   // LL Flooring - 地板零售(早周期)
+  'PTRA': 'early',                 // Proterra - 电动公交(早周期)
+  'HYLN': 'early',                 // Hyliion - 电动卡车(早周期)
+  'ANGI': 'mid',                   // Angi Inc - 家庭服务平台(中周期)
+  'GRPN': 'late',                  // Groupon - 本地商务(晚周期)
+  'MMYT': 'mid',                   // MakeMyTrip - 印度OTA(中周期)
+  'EURN': 'mid',                   // Euronav - 原油油轮(中周期)
+  'NAT': 'mid',                    // Nordic American Tankers - 油轮(中周期)
+  'TRMD': 'mid',                   // TORM - 成品油轮(中周期)
+  'HAFN': 'mid',                   // Hafnia - 化学品油轮(中周期)
+  'CMRE': 'mid',                   // Costamare - 集装箱租赁(中周期)
+  'GSL': 'mid',                    // Global Ship Lease - 集装箱租赁(中周期)
+  'ASC': 'mid',                    // Ardmore Shipping - LPG航运(中周期)
+  'TDC': 'mid',                    // Teradata - 企业数据分析(中周期)
+  'SDC': 'late',                   // SmileDirectClub - DTC正畸(晚周期)
+  'HCP': 'defensive',              // HashiCorp - 医疗通信(防御型)
+  'SN': 'mid',                     // SharkNinja - 特种金属(中周期)
+  'SMP': 'mid',                    // Standard Motor - 汽车后市场(中周期)
+  'SCHL': 'defensive',             // Scholastic - 儿童出版(防御型)
+  'HMH': 'defensive',              // HMH - K12教育内容(防御型)
+  'BKD': 'defensive',              // Brookdale Senior - 养老社区(防御型)
 };
 
 // ============================================================
@@ -15749,6 +15885,142 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'RUTH': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: 0, oilPrice: -0.1 },
   'DAVE': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.4, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
   'NNDM': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1 },
+
+  // ========== 64 NEW STOCKS: MACRO_SENSITIVITY ==========
+  // --- Consumer Staples (low macro sensitivity) ---
+  'SPB': { interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1 },
+  'EPC': { interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.1, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'ENR': { interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'TR': { interestRate: 0, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  // --- Utilities (interest rate sensitive, low GDP) ---
+  'ATO': { interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0.2 },
+  'ALE': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0.1 },
+  'POR': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0.1 },
+  // --- Insurance ---
+  'MKL': { interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0 },
+  'UNUM': { interestRate: 0.3, inflation: 0, gdpGrowth: 0.2, unemployment: -0.3, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: 0.1, oilPrice: 0 },
+  // --- Telecom / Media ---
+  'LUMN': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: 0.1, oilPrice: 0 },
+  'DISH': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: 0, oilPrice: 0 },
+  'SATS': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'LBRDK': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0 },
+  'NWS': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'IPG': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.4, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'OMC': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.4, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'CCO': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: 0, oilPrice: 0 },
+  // --- Industrials ---
+  'CSL': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.1 },
+  'SCHN': { interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.1 },
+  'KALU': { interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1 },
+  'HEES': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.1 },
+  'TPC': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: 0, oilPrice: -0.1 },
+  'AGX': { interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: 0, oilPrice: 0.1 },
+  'WSP': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0 },
+  'MYRG': { interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0, oilPrice: -0.1 },
+  'APG': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0 },
+  'AYI': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0 },
+  'MATV': { interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1 },
+  'ITRI': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0 },
+  // --- Tech / Electronics ---
+  'DLB': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'RVTY': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'IQVIA': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'CTLT': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'FN': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0 },
+  'FLEX': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.3, oilPrice: -0.1 },
+  'JBL': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.3, oilPrice: -0.1 },
+  'TTMI': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0 },
+  'HEAR': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.4, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  // --- Financial / Payments ---
+  'EEFT': { interestRate: 0.1, inflation: 0, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0 },
+  'GDOT': { interestRate: 0.1, inflation: 0, gdpGrowth: 0.3, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: 0, oilPrice: 0 },
+  'PAYA': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: 0, oilPrice: 0 },
+  'BKI': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.5, dollarIndex: 0, oilPrice: 0 },
+  'NCR': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'VOYA': { interestRate: 0.3, inflation: 0, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: 0.1, oilPrice: 0 },
+  'EQH': { interestRate: 0.3, inflation: 0, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: 0.1, oilPrice: 0 },
+  'NWLI': { interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: 0.1, oilPrice: 0 },
+  'WTM': { interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0 },
+  'TRMK': { interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.3, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0 },
+  // --- Data & Analytics ---
+  'INFO': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0.1 },
+  // --- Midstream Energy ---
+  'ENLC': { interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0.4 },
+  // --- Hospitality / Entertainment ---
+  'DRH': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: -0.1, oilPrice: -0.1 },
+  'BALY': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: 0, oilPrice: 0 },
+  // --- Airlines ---
+  'HA': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: 0, oilPrice: -0.4 },
+  // --- Restaurants ---
+  'RRGB': { interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: 0, oilPrice: -0.1 },
+  'FRGI': { interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.3, consumerConfidence: 0.4, housingMarket: 0, dollarIndex: 0, oilPrice: -0.1 },
+  'SAFM': { interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  // --- Packaging & Materials ---
+  'GPK': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'REYN': { interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: -0.1 },
+  'ATR': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'AVY': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.3, oilPrice: -0.1 },
+  // --- REITs ---
+  'OFC': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0, housingMarket: 0.2, dollarIndex: 0, oilPrice: 0 },
+  'PGRE': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.4, dollarIndex: 0, oilPrice: 0 },
+  'ALEX': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: 0, oilPrice: 0 },
+  'RLGY': { interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.4, housingMarket: 0.7, dollarIndex: 0, oilPrice: 0 },
+
+  // ========== Batch 3: 54 new stocks macro sensitivity ==========
+  'MASI': { interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'AMC': { interestRate: -0.4, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.6, housingMarket: 0, dollarIndex: -0.1, oilPrice: -0.2 },
+  'NXST': { interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0, oilPrice: -0.1 },
+  'FWONK': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.1, oilPrice: -0.1 },
+  'ZD': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'ELS': { interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0.4, dollarIndex: 0, oilPrice: 0 },
+  'TPG': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.3, consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0 },
+  'MBLY': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'PEG': { interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0.1 },
+  'HIPPO': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0, oilPrice: 0 },
+  'KINS': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0, oilPrice: 0 },
+  'GDYN': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'NUVEI': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.4, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'RACE': { interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'PII': { interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.2 },
+  'UDMY': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: 0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'VRM': { interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: 0, oilPrice: -0.1 },
+  'AHCO': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'MDC': { interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4, consumerConfidence: 0.5, housingMarket: 0.8, dollarIndex: 0, oilPrice: -0.1 },
+  'RBRK': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'CVCO': { interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.4, housingMarket: 0.7, dollarIndex: 0, oilPrice: -0.1 },
+  'MCFT': { interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.2 },
+  'MBUU': { interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.2 },
+  'SHLS': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.2 },
+  'GPRE': { interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.5 },
+  'CCRN': { interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.3, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'AMN': { interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.3, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'UNM': { interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: 0.1, oilPrice: 0 },
+  'GNW': { interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: 0.1, oilPrice: 0 },
+  'FLUT': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.4, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'PGNY': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'SEM': { interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: 0, oilPrice: 0 },
+  'PATK': { interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.4, housingMarket: 0.7, dollarIndex: 0, oilPrice: -0.1 },
+  'LL': { interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0.7, dollarIndex: 0, oilPrice: -0.1 },
+  'PTRA': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0.2 },
+  'HYLN': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0.2 },
+  'ANGI': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: 0, oilPrice: 0 },
+  'GRPN': { interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: 0, oilPrice: 0 },
+  'MMYT': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: -0.3, oilPrice: -0.2 },
+  'EURN': { interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.6 },
+  'NAT': { interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.6 },
+  'TRMD': { interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.5 },
+  'HAFN': { interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.5 },
+  'CMRE': { interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.3 },
+  'GSL': { interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.3 },
+  'ASC': { interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.5 },
+  'TDC': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'SDC': { interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'HCP': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'SN': { interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.1 },
+  'SMP': { interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.1, oilPrice: -0.1 },
+  'SCHL': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'HMH': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'BKD': { interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0 },
 };
 
 // ============================================================

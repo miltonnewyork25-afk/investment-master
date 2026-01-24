@@ -3898,7 +3898,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Residential REIT',
-    tags: ['apartments', 'coastal', 'suburban', 'development'],
+    tags: ['apartments', 'coastal', 'suburban', 'project_based'],
   },
   'MAA': {
     assetModel: 'asset_heavy',
@@ -6230,7 +6230,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Brokerage',
-    tags: ['wealth_management', 'investment_banking', 'advisory'],
+    tags: ['advisory', 'investment_banking', 'advisory'],
   },
   'VIRT': {
     assetModel: 'asset_light',
@@ -7050,7 +7050,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Specialty REIT',
-    tags: ['data_center', 'records_management', 'information_destruction', 'digital'],
+    tags: ['data_center', 'records_management', 'information_destruction', 'self_operated'],
   },
   'LAMR': {
     assetModel: 'asset_heavy',
@@ -7066,7 +7066,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Advertising REIT',
-    tags: ['outdoor', 'billboard', 'transit', 'digital', 'urban'],
+    tags: ['outdoor', 'billboard', 'transit', 'self_operated', 'urban'],
   },
   'CPT': {
     assetModel: 'asset_heavy',
@@ -7990,7 +7990,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Industrial REIT',
-    tags: ['sunbelt', 'industrial', 'logistics', 'warehouse', 'development'],
+    tags: ['sunbelt', 'industrial', 'logistics', 'warehouse', 'project_based'],
   },
 
   // ---------- Discount Retail ----------
@@ -8300,7 +8300,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Enterprise SaaS',
-    tags: ['work_management', 'project', 'collaboration', 'workflow', 'productivity'],
+    tags: ['work_management', 'project', 'service_fee', 'workflow', 'productivity'],
   },
   'BOX': {
     assetModel: 'asset_light',
@@ -8308,7 +8308,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Enterprise SaaS',
-    tags: ['cloud_content', 'collaboration', 'file_sharing', 'security', 'governance'],
+    tags: ['cloud_content', 'service_fee', 'file_sharing', 'security', 'governance'],
   },
 
   // ---------- Building Products ----------
@@ -8356,7 +8356,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Health Insurance Tech',
-    tags: ['tech_insurance', 'individual', 'marketplace', 'digital', 'telehealth'],
+    tags: ['tech_insurance', 'individual', 'marketplace', 'self_operated', 'telehealth'],
   },
 
   // ---------- Investment Bank ----------
@@ -8630,7 +8630,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Enterprise SaaS',
-    tags: ['work_management', 'collaboration', 'project_planning', 'automation'],
+    tags: ['work_management', 'service_fee', 'project_planning', 'automation'],
   },
   'MQ': {
     assetModel: 'asset_light',
@@ -9016,7 +9016,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Bank',
-    tags: ['digital', 'online_banking', 'commercial', 'securities_lending'],
+    tags: ['self_operated', 'online_banking', 'commercial', 'securities_lending'],
   },
   'CALX': {
     assetModel: 'asset_light',
@@ -9169,7 +9169,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Work Management SaaS',
-    tags: ['work_os', 'project_management', 'collaboration', 'no_code'],
+    tags: ['work_os', 'project_management', 'service_fee', 'no_code'],
   },
   'GLBE': {
     assetModel: 'asset_light',
@@ -9225,7 +9225,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Bank',
-    tags: ['pennsylvania', 'digital', 'commercial', 'fintech_lending'],
+    tags: ['pennsylvania', 'self_operated', 'commercial', 'fintech_lending'],
   },
   'NBTB': {
     assetModel: 'asset_heavy',
@@ -9233,7 +9233,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Bank',
-    tags: ['new_york', 'northeast', 'community', 'wealth_management'],
+    tags: ['new_york', 'northeast', 'community', 'service_fee'],
   },
   'CBSH': {
     assetModel: 'asset_heavy',
@@ -9835,7 +9835,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Professional Services',
-    tags: ['consulting', 'healthcare', 'education', 'digital', 'strategy'],
+    tags: ['consulting', 'healthcare', 'education', 'self_operated', 'strategy'],
   },
   'ICF': {
     assetModel: 'asset_light',
@@ -10290,7 +10290,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Bank',
-    tags: ['community_bank', 'Virginia', 'insurance', 'wealth_management'],
+    tags: ['community_bank', 'Virginia', 'insurance', 'service_fee'],
   },
   'HOPE': {
     assetModel: 'asset_heavy',
@@ -11955,7 +11955,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Bank',
-    tags: ['community_bank', 'ohio', 'indiana', 'kentucky', 'wealth_management'],
+    tags: ['community_bank', 'ohio', 'indiana', 'kentucky', 'service_fee'],
   },
   'WSBC': {
     assetModel: 'asset_heavy',
@@ -13264,7 +13264,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Community Banking',
-    tags: ['community_bank', 'commercial_lending', 'retail_banking', 'wealth_management'],
+    tags: ['community_bank', 'commercial_lending', 'retail_banking', 'service_fee'],
   },
   'BOH': {
     assetModel: 'asset_light',
@@ -13272,7 +13272,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
-    tags: ['hawaii', 'regional_bank', 'commercial_lending', 'wealth_management'],
+    tags: ['hawaii', 'regional_bank', 'commercial_lending', 'service_fee'],
   },
   'CASH': {
     assetModel: 'asset_light',
@@ -13370,7 +13370,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Multifamily REIT',
-    tags: ['multifamily', 'apartments', 'value_add', 'development'],
+    tags: ['multifamily', 'apartments', 'value_add', 'project_based'],
   },
   'BNL': {
     assetModel: 'asset_heavy',
@@ -14310,7 +14310,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Crypto Mining',
-    tags: ['bitcoin_mining', 'ASIC_design', 'data_center', 'chip_manufacturing', 'hosting'],
+    tags: ['bitcoin_mining', 'ASIC_design', 'data_center', 'chip_manufacturing', 'usage_based'],
   },
 
   // ========================================================
@@ -14992,7 +14992,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Diversified REIT',
-    tags: ['office', 'retail', 'multifamily', 'mixed_use', 'development'],
+    tags: ['office', 'retail', 'multifamily', 'mixed_use', 'project_based'],
   },
   // --- Aerospace Composites ---
   'AIN': {
@@ -16282,7 +16282,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   // === GAP FILL: 156 Missing Entries ===
   'ABR': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Mortgage REIT',
@@ -16290,7 +16290,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'ACRE': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Commercial Mortgage REIT',
@@ -16306,7 +16306,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'ARI': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Commercial Mortgage REIT',
@@ -16314,7 +16314,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'EFC': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'trading'],
+    revenueModels: ['interest_income', 'transaction_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Mortgage REIT',
@@ -16330,7 +16330,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'LADR': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Commercial Mortgage REIT',
@@ -16362,7 +16362,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'NYMT': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Mortgage REIT',
@@ -16370,7 +16370,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'PMT': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Mortgage REIT',
@@ -16378,7 +16378,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'RWT': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Mortgage REIT',
@@ -16386,7 +16386,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'STWD': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Commercial Mortgage REIT',
@@ -16402,7 +16402,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'AUB': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16410,7 +16410,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'BANF': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16418,7 +16418,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'BPOP': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16426,7 +16426,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'CATY': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16434,15 +16434,15 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'CFR': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income', 'wealth_management'],
+    revenueModels: ['interest_income', 'service_fee', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
-    tags: ['Texas', 'wealth_management', 'commercial_lending'],
+    tags: ['Texas', 'service_fee', 'commercial_lending'],
   },
   'CPF': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16450,7 +16450,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'CVBF': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Regional Banking',
@@ -16458,7 +16458,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'FIBK': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income', 'wealth_management'],
+    revenueModels: ['interest_income', 'service_fee', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16466,7 +16466,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'HMST': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16474,7 +16474,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'ISBC': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16482,7 +16482,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'KRNY': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16490,7 +16490,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'PPBI': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Regional Banking',
@@ -16498,7 +16498,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'QCRH': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income', 'wealth_management'],
+    revenueModels: ['interest_income', 'service_fee', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16506,7 +16506,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'RNST': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16514,7 +16514,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'TCBI': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income', 'treasury_management'],
+    revenueModels: ['interest_income', 'service_fee', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Regional Banking',
@@ -16522,7 +16522,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'UBSI': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
@@ -16530,31 +16530,31 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'WSFS': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income', 'wealth_management'],
+    revenueModels: ['interest_income', 'service_fee', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
-    tags: ['Delaware', 'wealth_management', 'commercial'],
+    tags: ['Delaware', 'service_fee', 'commercial'],
   },
   'WTFC': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income', 'wealth_management'],
+    revenueModels: ['interest_income', 'service_fee', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Regional Banking',
-    tags: ['Chicago', 'commercial', 'wealth_management'],
+    tags: ['Chicago', 'commercial', 'service_fee'],
   },
   'AEL': {
     assetModel: 'asset_heavy',
-    revenueModels: ['premium_income', 'investment_income'],
-    deliveryModel: 'partner_network',
+    revenueModels: ['premium_service', 'interest_income'],
+    deliveryModel: 'hybrid',
     customerModel: 'B2C',
     industrySegment: 'Life Insurance & Annuities',
     tags: ['fixed_annuities', 'indexed', 'retirement'],
   },
   'AGM': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'guarantee_fees'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Agricultural Finance',
@@ -16562,23 +16562,23 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'AIZ': {
     assetModel: 'asset_light',
-    revenueModels: ['premium_income', 'fee_income'],
-    deliveryModel: 'partner_network',
+    revenueModels: ['premium_service', 'service_fee'],
+    deliveryModel: 'hybrid',
     customerModel: 'B2B2C',
     industrySegment: 'Specialty Insurance',
     tags: ['renters', 'mobile', 'specialty', 'connected_living'],
   },
   'AMG': {
     assetModel: 'asset_light',
-    revenueModels: ['management_fees', 'performance_fees'],
-    deliveryModel: 'partner_network',
+    revenueModels: ['service_fee', 'premium_service'],
+    deliveryModel: 'hybrid',
     customerModel: 'B2B',
     industrySegment: 'Asset Management',
     tags: ['multi_affiliate', 'alternatives', 'institutional'],
   },
   'AMP': {
     assetModel: 'asset_light',
-    revenueModels: ['advisory_fees', 'management_fees', 'premium_income'],
+    revenueModels: ['service_fee', 'service_fee', 'premium_service'],
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Wealth Management',
@@ -16586,7 +16586,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'BN': {
     assetModel: 'asset_heavy',
-    revenueModels: ['management_fees', 'performance_fees', 'investment_income'],
+    revenueModels: ['service_fee', 'premium_service', 'interest_income'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Alternative Asset Management',
@@ -16594,15 +16594,15 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'CNA': {
     assetModel: 'asset_heavy',
-    revenueModels: ['premium_income', 'investment_income'],
-    deliveryModel: 'partner_network',
+    revenueModels: ['premium_service', 'interest_income'],
+    deliveryModel: 'hybrid',
     customerModel: 'B2B',
     industrySegment: 'Commercial Insurance',
     tags: ['P&C', 'specialty', 'commercial_lines', 'surety'],
   },
   'FHI': {
     assetModel: 'asset_light',
-    revenueModels: ['management_fees', 'advisory_fees'],
+    revenueModels: ['service_fee', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Asset Management',
@@ -16610,7 +16610,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'HMN': {
     assetModel: 'asset_heavy',
-    revenueModels: ['premium_income', 'investment_income'],
+    revenueModels: ['premium_service', 'interest_income'],
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Specialty Insurance',
@@ -16618,7 +16618,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'MCY': {
     assetModel: 'asset_heavy',
-    revenueModels: ['premium_income', 'investment_income'],
+    revenueModels: ['premium_service', 'interest_income'],
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Auto Insurance',
@@ -16626,7 +16626,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'RGA': {
     assetModel: 'asset_heavy',
-    revenueModels: ['premium_income', 'fee_income'],
+    revenueModels: ['premium_service', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Reinsurance',
@@ -16634,7 +16634,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'SPNT': {
     assetModel: 'asset_heavy',
-    revenueModels: ['premium_income', 'investment_income'],
+    revenueModels: ['premium_service', 'interest_income'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Specialty Reinsurance',
@@ -16642,7 +16642,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'MAIN': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'equity_gains'],
+    revenueModels: ['interest_income', 'premium_service'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Business Development Company',
@@ -16650,7 +16650,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'PSEC': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Business Development Company',
@@ -16658,7 +16658,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'SLRC': {
     assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'fee_income'],
+    revenueModels: ['interest_income', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Business Development Company',
@@ -16666,7 +16666,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'PFSI': {
     assetModel: 'asset_light',
-    revenueModels: ['fee_income', 'interest_income'],
+    revenueModels: ['service_fee', 'interest_income'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Mortgage Origination',
@@ -16674,16 +16674,16 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'UWMC': {
     assetModel: 'asset_light',
-    revenueModels: ['fee_income', 'interest_income'],
-    deliveryModel: 'partner_network',
+    revenueModels: ['service_fee', 'interest_income'],
+    deliveryModel: 'hybrid',
     customerModel: 'B2B2C',
     industrySegment: 'Mortgage Origination',
     tags: ['wholesale', 'broker_channel', 'largest_wholesale'],
   },
   'LC': {
     assetModel: 'platform',
-    revenueModels: ['fee_income', 'interest_income'],
-    deliveryModel: 'digital',
+    revenueModels: ['service_fee', 'interest_income'],
+    deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Digital Banking',
     tags: ['marketplace_lending', 'personal_loans', 'fintech', 'digital_bank'],
@@ -16691,14 +16691,14 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'BLND': {
     assetModel: 'platform',
     revenueModels: ['subscription', 'transaction_fees'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Mortgage Technology',
     tags: ['digital_lending', 'mortgage_automation', 'cloud'],
   },
   'CTO': {
     assetModel: 'asset_heavy',
-    revenueModels: ['rental_income'],
+    revenueModels: ['rental'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Diversified REIT',
@@ -16706,7 +16706,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'DEA': {
     assetModel: 'asset_heavy',
-    revenueModels: ['rental_income'],
+    revenueModels: ['rental'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Government REIT',
@@ -16714,7 +16714,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'ESRT': {
     assetModel: 'asset_heavy',
-    revenueModels: ['rental_income', 'observatory_revenue'],
+    revenueModels: ['rental', 'product_sales'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Office REIT',
@@ -16722,7 +16722,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'GMRE': {
     assetModel: 'asset_heavy',
-    revenueModels: ['rental_income'],
+    revenueModels: ['rental'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Healthcare REIT',
@@ -16730,7 +16730,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'GOOD': {
     assetModel: 'asset_heavy',
-    revenueModels: ['rental_income'],
+    revenueModels: ['rental'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Net Lease REIT',
@@ -16738,7 +16738,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'HPP': {
     assetModel: 'asset_heavy',
-    revenueModels: ['rental_income', 'studio_revenue'],
+    revenueModels: ['rental', 'rental'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Office & Studio REIT',
@@ -16746,7 +16746,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'INN': {
     assetModel: 'asset_heavy',
-    revenueModels: ['room_revenue', 'F&B'],
+    revenueModels: ['rental', 'product_sales'],
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Hotel REIT',
@@ -16754,15 +16754,15 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'JBGS': {
     assetModel: 'asset_heavy',
-    revenueModels: ['rental_income', 'development'],
+    revenueModels: ['rental', 'project_based'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Mixed-Use REIT',
-    tags: ['DC_metro', 'mixed_use', 'placemaking', 'development'],
+    tags: ['DC_metro', 'mixed_use', 'placemaking', 'project_based'],
   },
   'PDM': {
     assetModel: 'asset_heavy',
-    revenueModels: ['rental_income'],
+    revenueModels: ['rental'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Office REIT',
@@ -16770,7 +16770,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'SAFE': {
     assetModel: 'asset_heavy',
-    revenueModels: ['ground_lease_income'],
+    revenueModels: ['rental'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Ground Lease REIT',
@@ -16778,7 +16778,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'XHR': {
     assetModel: 'asset_heavy',
-    revenueModels: ['room_revenue', 'F&B'],
+    revenueModels: ['rental', 'product_sales'],
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Hotel REIT',
@@ -16786,8 +16786,8 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'ACCD': {
     assetModel: 'asset_light',
-    revenueModels: ['subscription', 'fee_income'],
-    deliveryModel: 'digital',
+    revenueModels: ['subscription', 'service_fee'],
+    deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Healthcare Navigation',
     tags: ['health_navigation', 'benefits', 'advocacy', 'virtual_care'],
@@ -16795,15 +16795,15 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'AVPT': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'premium_service'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Cloud Management Software',
     tags: ['Microsoft_365', 'data_management', 'governance', 'SaaS'],
   },
   'BCOV': {
     assetModel: 'asset_light',
-    revenueModels: ['subscription', 'usage_fees'],
-    deliveryModel: 'digital',
+    revenueModels: ['subscription', 'usage_based'],
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Video Platform',
     tags: ['OTT', 'video_hosting', 'streaming', 'enterprise'],
@@ -16811,7 +16811,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'BIGC': {
     assetModel: 'platform',
     revenueModels: ['subscription', 'transaction_fees'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'E-commerce Platform',
     tags: ['headless', 'open_SaaS', 'B2B_commerce', 'enterprise'],
@@ -16819,7 +16819,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'BLKB': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'transaction_fees'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Nonprofit Technology',
     tags: ['fundraising', 'nonprofit', 'education', 'CRM'],
@@ -16827,7 +16827,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'CCCS': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'transaction_fees'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Insurance Technology',
     tags: ['claims', 'AI', 'auto_insurance', 'network'],
@@ -16835,7 +16835,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'CGNT': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'premium_service'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Security Analytics',
     tags: ['SIGINT', 'analytics', 'intelligence', 'government'],
@@ -16843,7 +16843,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'CXM': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Customer Experience Management',
     tags: ['social', 'CX', 'unified', 'AI', 'enterprise'],
@@ -16851,7 +16851,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'EBIX': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'transaction_fees'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Insurance Technology',
     tags: ['insurance_exchange', 'SaaS', 'fintech', 'India'],
@@ -16859,7 +16859,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'ENFN': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Investment Management Software',
     tags: ['portfolio_management', 'OEMS', 'cloud_native', 'hedge_fund'],
@@ -16878,12 +16878,12 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'AI Data Services',
-    tags: ['data_annotation', 'AI_training', 'NLP', 'digital'],
+    tags: ['data_annotation', 'AI_training', 'NLP', 'self_operated'],
   },
   'LPSN': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Conversational AI',
     tags: ['chatbot', 'messaging', 'AI', 'customer_engagement'],
@@ -16891,23 +16891,23 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'LVOX': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Contact Center Software',
     tags: ['CCaaS', 'cloud', 'AI', 'workforce_optimization'],
   },
   'MCHX': {
     assetModel: 'asset_light',
-    revenueModels: ['subscription', 'usage_fees'],
-    deliveryModel: 'digital',
+    revenueModels: ['subscription', 'usage_based'],
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Digital Analytics',
     tags: ['call_analytics', 'conversational', 'attribution', 'AI'],
   },
   'MIND': {
     assetModel: 'asset_light',
-    revenueModels: ['subscription', 'usage_fees'],
-    deliveryModel: 'digital',
+    revenueModels: ['subscription', 'usage_based'],
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Telecom BSS',
     tags: ['billing', 'telecom', 'VoIP', 'mediation'],
@@ -16915,7 +16915,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'MODN': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'premium_service'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Revenue Management Software',
     tags: ['pharma', 'medtech', 'pricing', 'compliance'],
@@ -16923,15 +16923,15 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'MSTR': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'product_sales'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Business Intelligence & Bitcoin',
     tags: ['BI', 'analytics', 'bitcoin_treasury', 'cloud'],
   },
   'NEWR': {
     assetModel: 'asset_light',
-    revenueModels: ['subscription', 'usage_fees'],
-    deliveryModel: 'digital',
+    revenueModels: ['subscription', 'usage_based'],
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Observability Platform',
     tags: ['APM', 'monitoring', 'cloud', 'full_stack'],
@@ -16939,7 +16939,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'NICE': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'premium_service'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'CX & Compliance Software',
     tags: ['CCaaS', 'workforce', 'compliance', 'AI', 'cloud'],
@@ -16947,7 +16947,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'OLO': {
     assetModel: 'platform',
     revenueModels: ['subscription', 'transaction_fees'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Restaurant Technology',
     tags: ['digital_ordering', 'delivery', 'payments', 'restaurants'],
@@ -16955,7 +16955,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'OSPN': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'product_sales'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Digital Identity Security',
     tags: ['e_signature', 'identity', 'authentication', 'banking'],
@@ -16963,7 +16963,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'QADA': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'premium_service'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Manufacturing ERP',
     tags: ['ERP', 'supply_chain', 'manufacturing', 'cloud'],
@@ -16971,15 +16971,15 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'RNG': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Unified Communications',
     tags: ['UCaaS', 'CCaaS', 'video', 'cloud', 'messaging'],
   },
   'SUMO': {
     assetModel: 'asset_light',
-    revenueModels: ['subscription', 'usage_fees'],
-    deliveryModel: 'digital',
+    revenueModels: ['subscription', 'usage_based'],
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Cloud SIEM',
     tags: ['log_analytics', 'security', 'observability', 'cloud_native'],
@@ -16987,7 +16987,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'TTGT': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'advertising'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'B2B Intent Data',
     tags: ['purchase_intent', 'content_marketing', 'demand_gen', 'tech_media'],
@@ -16995,7 +16995,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'UPLD': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Work Management Software',
     tags: ['cloud', 'digital_media', 'knowledge_management', 'roll_up'],
@@ -17003,7 +17003,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'VTEX': {
     assetModel: 'platform',
     revenueModels: ['subscription', 'transaction_fees'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'E-commerce Platform',
     tags: ['marketplace', 'composable', 'Latin_America', 'enterprise'],
@@ -17011,7 +17011,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'WK': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Regulatory Reporting Software',
     tags: ['SEC_filing', 'ESG', 'compliance', 'XBRL', 'cloud'],
@@ -17019,15 +17019,15 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'EGHT': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Unified Communications',
     tags: ['UCaaS', 'CPaaS', 'contact_center', 'cloud'],
   },
   'PLTK': {
     assetModel: 'asset_light',
-    revenueModels: ['in_app_purchases', 'advertising'],
-    deliveryModel: 'digital',
+    revenueModels: ['transaction_fee', 'advertising'],
+    deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Mobile Gaming',
     tags: ['casual', 'social_casino', 'mobile', 'live_ops'],
@@ -17035,7 +17035,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'SABR': {
     assetModel: 'platform',
     revenueModels: ['transaction_fees', 'subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Travel Technology',
     tags: ['GDS', 'airline', 'hotel', 'booking'],
@@ -17099,14 +17099,14 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'ESMT': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'transaction_fees'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Payments & Engagement Software',
     tags: ['billing', 'payments', 'government', 'healthcare'],
   },
   'BTBT': {
     assetModel: 'asset_heavy',
-    revenueModels: ['mining_revenue'],
+    revenueModels: ['commodity_sales'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Bitcoin Mining',
@@ -17114,7 +17114,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'CORZ': {
     assetModel: 'asset_heavy',
-    revenueModels: ['mining_revenue', 'hosting'],
+    revenueModels: ['commodity_sales', 'usage_based'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Bitcoin Mining & HPC',
@@ -17251,7 +17251,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'OPRX': {
     assetModel: 'platform',
     revenueModels: ['subscription', 'transaction_fees'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Pharma Marketing Technology',
     tags: ['HCP_engagement', 'pharma', 'digital_health', 'messaging'],
@@ -17266,8 +17266,8 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'SDGR': {
     assetModel: 'asset_light',
-    revenueModels: ['subscription', 'licensing', 'collaboration'],
-    deliveryModel: 'digital',
+    revenueModels: ['subscription', 'licensing', 'service_fee'],
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Computational Drug Discovery',
     tags: ['physics_based', 'molecular_simulation', 'AI', 'platform'],
@@ -17275,14 +17275,14 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'NABL': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'IT Management Software',
     tags: ['MSP', 'RMM', 'backup', 'security', 'SMB'],
   },
   'FTAI': {
     assetModel: 'asset_heavy',
-    revenueModels: ['leasing', 'maintenance_revenue'],
+    revenueModels: ['leasing', 'aftermarket'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Aviation Leasing & MRO',
@@ -17314,7 +17314,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'MMI': {
     assetModel: 'asset_light',
-    revenueModels: ['commission', 'fee_income'],
+    revenueModels: ['transaction_fee', 'service_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Commercial Real Estate Brokerage',
@@ -17395,7 +17395,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'SEAT': {
     assetModel: 'platform',
     revenueModels: ['transaction_fees', 'subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Event Ticketing',
     tags: ['secondary_tickets', 'live_events', 'marketplace', 'loyalty'],
@@ -17410,7 +17410,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'TIGO': {
     assetModel: 'asset_heavy',
-    revenueModels: ['subscription', 'usage_fees'],
+    revenueModels: ['subscription', 'usage_based'],
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Emerging Market Telecom',
@@ -17418,8 +17418,8 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
   'BOTZ': {
     assetModel: 'asset_light',
-    revenueModels: ['management_fees'],
-    deliveryModel: 'digital',
+    revenueModels: ['service_fee'],
+    deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Thematic ETF',
     tags: ['robotics', 'AI', 'automation', 'ETF'],
@@ -17427,7 +17427,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'MICT': {
     assetModel: 'platform',
     revenueModels: ['transaction_fees', 'advertising'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2C',
     industrySegment: 'Fintech Platform',
     tags: ['insurance', 'trading', 'emerging_markets'],
@@ -17451,7 +17451,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'APTI': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'premium_service'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Digital Advertising',
     tags: ['programmatic', 'DSP', 'data_management', 'identity'],
@@ -17475,7 +17475,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'PRCH': {
     assetModel: 'platform',
     revenueModels: ['subscription', 'transaction_fees', 'advertising'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Home Services Platform',
     tags: ['insurance', 'moving', 'home_warranty', 'marketplace'],
@@ -17483,7 +17483,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'GSKY': {
     assetModel: 'platform',
     revenueModels: ['transaction_fees', 'interest_income'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Home Improvement Fintech',
     tags: ['POS_lending', 'home_improvement', 'BNPL'],
@@ -17491,7 +17491,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'IRNT': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Cybersecurity',
     tags: ['network_detection', 'behavioral_analytics', 'government'],
@@ -17499,7 +17499,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'EIGI': {
     assetModel: 'asset_light',
     revenueModels: ['subscription', 'premium_service'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Endpoint Management',
     tags: ['web_hosting', 'email', 'SMB', 'cloud'],
@@ -17515,7 +17515,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   'SSTI': {
     assetModel: 'asset_light',
     revenueModels: ['subscription'],
-    deliveryModel: 'digital',
+    deliveryModel: 'self_operated',
     customerModel: 'B2B',
     industrySegment: 'Public Safety Technology',
     tags: ['gunshot_detection', 'acoustic', 'law_enforcement', 'smart_city'],
@@ -17648,7 +17648,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
     industrySegment: 'Cloud Storage',
-    tags: ['file_sync', 'collaboration', 'cloud_storage', 'productivity'],
+    tags: ['file_sync', 'service_fee', 'cloud_storage', 'productivity'],
   },
   'APPS': {
     assetModel: 'platform',
