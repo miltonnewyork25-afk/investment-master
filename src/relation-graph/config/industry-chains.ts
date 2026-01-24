@@ -3603,6 +3603,11 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Financial Data',          // 数据服务
     ],
 
+    'Uranium': [
+      'Regulated Utility',       // 核电站燃料
+      'Independent Power',       // 核能发电
+    ],
+
   },
 };
 
