@@ -8268,6 +8268,290 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Satellite Communications',
     tags: ['direct_to_cell', 'satellite', 'space', 'mobile', 'broadband'],
   },
+
+  // ========================================================
+  // 新增30只: advisory banks, office REITs, E&P, DTC brands, consulting
+  // ========================================================
+
+  // ---------- Athletic Footwear ----------
+  'SKX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Athletic Footwear',
+    tags: ['comfort', 'walking', 'casual', 'lifestyle', 'performance'],
+  },
+
+  // ---------- Enterprise SaaS ----------
+  'ASAN': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['work_management', 'project', 'collaboration', 'workflow', 'productivity'],
+  },
+  'BOX': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['cloud_content', 'collaboration', 'file_sharing', 'security', 'governance'],
+  },
+
+  // ---------- Building Products ----------
+  'WMS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['stormwater', 'drainage', 'pipe', 'water_management', 'infrastructure'],
+  },
+
+  // ---------- Electrical Equipment ----------
+  'ATKR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Electrical Equipment',
+    tags: ['conduit', 'raceway', 'cable_management', 'electrical', 'construction'],
+  },
+  'WIRE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Electrical Equipment',
+    tags: ['copper_wire', 'cable', 'building_wire', 'residential', 'commercial'],
+  },
+
+  // ---------- Building Systems ----------
+  'SPXC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Systems',
+    tags: ['HVAC', 'detection', 'cooling', 'boilers', 'specialty'],
+  },
+
+  // ---------- Health Insurance ----------
+  'OSCR': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Health Insurance',
+    tags: ['tech_insurance', 'individual', 'marketplace', 'digital', 'telehealth'],
+  },
+
+  // ---------- Investment Bank ----------
+  'LAZ': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Investment Bank',
+    tags: ['advisory', 'M&A', 'restructuring', 'asset_management', 'global'],
+  },
+  'PIPR': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Investment Bank',
+    tags: ['mid_market', 'advisory', 'equity_research', 'healthcare', 'technology'],
+  },
+  'EVR': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Investment Bank',
+    tags: ['elite_advisory', 'M&A', 'restructuring', 'shareholder_activism', 'independent'],
+  },
+  'HLI': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Investment Bank',
+    tags: ['restructuring', 'M&A', 'valuation', 'financial_opinions', 'mid_market'],
+  },
+  'PJT': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Investment Bank',
+    tags: ['strategic_advisory', 'restructuring', 'capital_markets', 'independent'],
+  },
+
+  // ---------- E&P ----------
+  'SM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'E&P',
+    tags: ['permian', 'eagle_ford', 'oil', 'shale', 'midland_basin'],
+  },
+  'NOG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'E&P',
+    tags: ['non_operated', 'williston', 'permian', 'appalachian', 'diversified'],
+  },
+
+  // ---------- Office REIT ----------
+  'KRC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Office REIT',
+    tags: ['west_coast', 'tech_tenants', 'life_science', 'san_francisco', 'seattle'],
+  },
+  'DEI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Office REIT',
+    tags: ['los_angeles', 'office', 'multifamily', 'westside', 'entertainment'],
+  },
+  'HIW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Office REIT',
+    tags: ['sunbelt', 'office', 'bbd', 'charlotte', 'raleigh', 'nashville'],
+  },
+
+  // ---------- Asset Management ----------
+  'VRTS': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Asset Management',
+    tags: ['multi_boutique', 'mutual_funds', 'alternatives', 'institutional'],
+  },
+
+  // ---------- Alternative Asset Management ----------
+  'STEP': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'transaction_fee'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Alternative Asset Management',
+    tags: ['private_markets', 'secondaries', 'co_investment', 'advisory', 'fund_of_funds'],
+  },
+
+  // ---------- Airline ----------
+  'ALGT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Airline',
+    tags: ['ulcc', 'leisure', 'small_city', 'sunbelt', 'ancillary_revenue'],
+  },
+
+  // ---------- Medical Devices ----------
+  'INMD': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['aesthetics', 'minimally_invasive', 'body_contouring', 'RF', 'laser'],
+  },
+
+  // ---------- Biotech Platform ----------
+  'HALO': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech Platform',
+    tags: ['drug_delivery', 'ENHANZE', 'subcutaneous', 'licensing', 'royalties'],
+  },
+
+  // ---------- Building Products Distribution ----------
+  'SITE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products Distribution',
+    tags: ['landscaping', 'nursery', 'hardscapes', 'irrigation', 'outdoor_living'],
+  },
+
+  // ---------- Consulting ----------
+  'EXPO': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Consulting',
+    tags: ['engineering', 'science', 'litigation', 'regulatory', 'failure_analysis'],
+  },
+
+  // ---------- Specialty E-commerce ----------
+  'WRBY': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty E-commerce',
+    tags: ['eyewear', 'DTC', 'optical', 'prescription', 'affordable'],
+  },
+  'FIGS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty E-commerce',
+    tags: ['medical_scrubs', 'DTC', 'healthcare_apparel', 'premium', 'community'],
+  },
+
+  // ---------- Fast Casual ----------
+  'BROS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Fast Casual',
+    tags: ['coffee', 'drive_thru', 'loyalty', 'west_coast', 'expansion'],
+  },
+
+  // ---------- Small Pharma ----------
+  'ACAD': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Small Pharma',
+    tags: ['CNS', 'psychiatry', 'neuroscience', 'pimavanserin', 'specialty'],
+  },
+
+  // ---------- Specialty Retail ----------
+  'DBI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Retail',
+    tags: ['footwear', 'DSW', 'shoes', 'accessories', 'value'],
+  },
 };
 
 // ============================================================

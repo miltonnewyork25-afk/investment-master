@@ -2299,6 +2299,38 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'OPEN': 'Online Real Estate',        // Opendoor - iBuying平台
     'LUNR': 'Space Systems',             // Intuitive Machines - 月球着陆器
     'ASTS': 'Satellite Communications',  // AST SpaceMobile - 直连卫星
+
+    // ========== 新增30只: advisory banks, office REITs, E&P, DTC brands, consulting ==========
+    'SKX': 'Athletic Footwear',           // Skechers - 运动休闲鞋
+    'ASAN': 'Enterprise SaaS',            // Asana - 工作管理SaaS
+    'BOX': 'Enterprise SaaS',             // Box - 云内容管理
+    'WMS': 'Building Products',           // Advanced Drainage - 排水/基建
+    'ATKR': 'Electrical Equipment',       // Atkore - 电气管道
+    'SPXC': 'Building Systems',           // SPX Technologies - HVAC/检测
+    'OSCR': 'Health Insurance',           // Oscar Health - 科技健康险
+    'LAZ': 'Investment Bank',             // Lazard - 咨询/资管
+    'PIPR': 'Investment Bank',            // Piper Sandler - 中市场投行
+    'EVR': 'Investment Bank',             // Evercore - 精英咨询
+    'HLI': 'Investment Bank',             // Houlihan Lokey - 重组/M&A
+    'PJT': 'Investment Bank',             // PJT Partners - 战略咨询
+    'SM': 'E&P',                          // SM Energy - Permian/Eagle Ford
+    'NOG': 'E&P',                         // Northern Oil & Gas - 非运营E&P
+    'KRC': 'Office REIT',                 // Kilroy Realty - 西海岸办公
+    'DEI': 'Office REIT',                 // Douglas Emmett - LA办公
+    'HIW': 'Office REIT',                 // Highwoods - 阳光带办公
+    'VRTS': 'Asset Management',           // Virtus - 多精品资管
+    'STEP': 'Alternative Asset Management', // StepStone - 私募市场
+    'ALGT': 'Low-Cost Airline',           // Allegiant - 超低成本航空
+    'INMD': 'Medical Devices',            // InMode - 微创美容器械
+    'HALO': 'Biotech Platform',           // Halozyme - ENHANZE药物递送
+    'SITE': 'Building Products Distribution', // SiteOne - 景观分销
+    'EXPO': 'Consulting',                 // Exponent - 工程/科学咨询
+    'WIRE': 'Electrical Equipment',       // Encore Wire - 铜线/电缆
+    'WRBY': 'Specialty E-commerce',       // Warby Parker - DTC眼镜
+    'FIGS': 'Specialty E-commerce',       // FIGS - 医疗服装DTC
+    'BROS': 'Fast Casual',                // Dutch Bros - 驾车咖啡
+    'ACAD': 'Small Pharma',               // Acadia Pharma - CNS特药
+    'DBI': 'Specialty Retail',            // Designer Brands - DSW鞋类
   },
 
   // ============================================================
@@ -4067,6 +4099,40 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'E&P': [
       'Midstream Pipeline',      // 管道运输
       'Refining',                // 炼油
+    ],
+
+    // ========== 新增子行业链 - advisory banks, office REITs, E&P, DTC brands, consulting ==========
+
+    // 生物技术平台 → 大药企/生物科技(授权客户)
+    'Biotech Platform': [
+      'Big Pharma',              // 授权合作
+      'Large Biotech',           // 生物科技客户
+      'Emerging Biotech',        // 新兴生物科技客户
+    ],
+
+    // 工程/科学咨询(独立终端)
+    'Consulting': [
+      'P&C Insurance',           // 保险诉讼/理赔
+      'E&C Contractor',          // 工程事故分析
+    ],
+
+    // DTC电商 → 物流/支付
+    'Specialty E-commerce': [
+      'Express Logistics',       // 配送物流
+      'Payment Processor',       // 支付处理
+    ],
+
+    // 小型制药 → 分销/保险
+    'Small Pharma': [
+      'Pharma Distributor',      // 药品分销
+      'Health Insurance',        // 保险报销
+      'Pharmacy Retail',         // 零售药房
+    ],
+
+    // 另类资管 → 经纪/银行渠道
+    'Alternative Asset Management': [
+      'Investment Bank',         // 投行承销/募资
+      'Brokerage',               // 经纪分销
     ],
 
   },

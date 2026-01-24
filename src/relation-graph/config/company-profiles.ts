@@ -2246,6 +2246,70 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['trust', 'discovery', 'reviews', 'local', 'recommendations'],
     channels: ['online'],
   },
+
+  // --- 运动鞋(B2C) ---
+  'SKX': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['walking', 'casual', 'work', 'fitness', 'everyday'],
+    valueProps: ['comfort', 'affordability', 'variety', 'durability'],
+    channels: ['retail', 'online', 'wholesale'],
+  },
+
+  // --- 健康保险(B2C) ---
+  'OSCR': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['health_insurance', 'marketplace', 'enrollment', 'healthcare_access'],
+    valueProps: ['technology', 'transparency', 'simplicity', 'virtual_care'],
+    channels: ['online', 'direct', 'marketplace'],
+  },
+
+  // --- 航空(B2C) ---
+  'ALGT': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['leisure_travel', 'vacation', 'beach', 'family_trip'],
+    valueProps: ['low_fare', 'direct_flights', 'small_city_access', 'bundled_travel'],
+    channels: ['online', 'direct'],
+  },
+
+  // --- DTC眼镜(B2C) ---
+  'WRBY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['eyewear', 'prescription', 'fashion', 'eye_exam'],
+    valueProps: ['affordability', 'style', 'convenience', 'social_mission'],
+    channels: ['online', 'retail', 'direct'],
+  },
+
+  // --- 医疗服装(B2C) ---
+  'FIGS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['work_apparel', 'medical', 'healthcare_professional', 'uniform'],
+    valueProps: ['style', 'comfort', 'premium_quality', 'community'],
+    channels: ['online', 'direct'],
+  },
+
+  // --- 咖啡连锁(B2C) ---
+  'BROS': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['morning_coffee', 'afternoon_pick_up', 'drive_thru', 'snack'],
+    valueProps: ['speed', 'customization', 'loyalty', 'fun_atmosphere'],
+    channels: ['retail', 'drive_thru'],
+  },
+
+  // --- CNS制药(B2B2C) ---
+  'ACAD': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'all', gender: 'all' },
+    occasions: ['neurological_treatment', 'psychiatric', 'chronic_condition', 'specialist_visit'],
+    valueProps: ['efficacy', 'specialty', 'innovation', 'patient_support'],
+    channels: ['pharmacy', 'specialist'],
+  },
+
+  // --- 鞋类零售(B2C) ---
+  'DBI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['shoe_shopping', 'seasonal', 'casual', 'work_shoes'],
+    valueProps: ['variety', 'value', 'brands', 'convenience'],
+    channels: ['retail', 'online'],
+  },
 };
 
 // ============================================================
@@ -3475,6 +3539,38 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'OPEN': 'early',      // Opendoor - iBuying(早周期)
   'LUNR': 'early',      // Intuitive Machines - 月球着陆器(早周期)
   'ASTS': 'early',      // AST SpaceMobile - 直连卫星(早周期)
+
+  // ========== 新增30只: advisory banks, office REITs, E&P, DTC brands, consulting ==========
+  'SKX': 'mid',          // Skechers - 休闲运动鞋(中周期)
+  'ASAN': 'early',       // Asana - 工作管理SaaS(早周期)
+  'BOX': 'mid',          // Box - 云内容管理(中周期)
+  'WMS': 'mid',          // Advanced Drainage - 排水/基建(中周期)
+  'ATKR': 'early',       // Atkore - 电气管道(早周期)
+  'SPXC': 'mid',         // SPX Technologies - HVAC/检测(中周期)
+  'OSCR': 'early',       // Oscar Health - 科技健康险(早周期)
+  'LAZ': 'mid',          // Lazard - 咨询/资管(中周期)
+  'PIPR': 'mid',         // Piper Sandler - 中市场投行(中周期)
+  'EVR': 'mid',          // Evercore - 精英咨询投行(中周期)
+  'HLI': 'mid',          // Houlihan Lokey - 重组/M&A(中周期)
+  'PJT': 'mid',          // PJT Partners - 战略咨询(中周期)
+  'SM': 'early',         // SM Energy - Permian/Eagle Ford(早周期)
+  'NOG': 'early',        // Northern Oil & Gas - 非运营E&P(早周期)
+  'KRC': 'mid',          // Kilroy Realty - 西海岸办公REIT(中周期)
+  'DEI': 'mid',          // Douglas Emmett - LA办公REIT(中周期)
+  'HIW': 'mid',          // Highwoods - 阳光带办公REIT(中周期)
+  'VRTS': 'mid',         // Virtus - 多精品资管(中周期)
+  'STEP': 'mid',         // StepStone - 私募市场(中周期)
+  'ALGT': 'early',       // Allegiant - 超低成本航空(早周期)
+  'INMD': 'mid',         // InMode - 微创美容器械(中周期)
+  'HALO': 'mid',         // Halozyme - ENHANZE药物递送(中周期)
+  'SITE': 'mid',         // SiteOne - 景观材料分销(中周期)
+  'EXPO': 'defensive',   // Exponent - 工程/科学咨询(防御)
+  'WIRE': 'early',       // Encore Wire - 铜线/电缆(早周期)
+  'WRBY': 'mid',         // Warby Parker - DTC眼镜(中周期)
+  'FIGS': 'mid',         // FIGS - 医疗服装DTC(中周期)
+  'BROS': 'mid',         // Dutch Bros - 驾车咖啡(中周期)
+  'ACAD': 'mid',         // Acadia Pharma - CNS特药(中周期)
+  'DBI': 'mid',          // Designer Brands - DSW鞋类零售(中周期)
 };
 
 // ============================================================
@@ -7498,6 +7594,153 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'ASTS': {
     interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.3, unemployment: 0.0,
     consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 新增30只: advisory banks, office REITs, E&P, DTC brands, consulting ==========
+
+  // 运动鞋 - 消费者可选
+  'SKX': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 工作管理SaaS - IT支出
+  'ASAN': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 云内容SaaS - IT支出(成熟)
+  'BOX': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 排水/基建 - 建设周期
+  'WMS': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.6, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  // 电气管道 - 建设/电气化
+  'ATKR': {
+    interestRate: -0.4, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  // HVAC/检测 - 建设周期
+  'SPXC': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  // 科技健康险 - 低周期/政策驱动
+  'OSCR': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.2,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // 咨询投行 - 资本市场/M&A周期
+  'LAZ': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'PIPR': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'EVR': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'HLI': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'PJT': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // Permian/Eagle Ford E&P - 油价驱动
+  'SM': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.9,
+  },
+  // 非运营E&P - 油价驱动
+  'NOG': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  // 办公REIT - 利率/办公需求
+  'KRC': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'DEI': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'HIW': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 多精品资管 - 资本市场
+  'VRTS': {
+    interestRate: 0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 私募市场 - 资本市场/利率
+  'STEP': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 超低成本航空 - 消费者可选/油价
+  'ALGT': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.5,
+  },
+  // 微创美容 - 消费医疗
+  'INMD': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 药物递送平台 - 低宏观敏感(授权/特许权)
+  'HALO': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 景观分销 - 住房/户外
+  'SITE': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.6, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // 工程咨询 - 防御型(诉讼/监管刚需)
+  'EXPO': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // 铜线电缆 - 建设/电气化周期
+  'WIRE': {
+    interestRate: -0.4, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  // DTC眼镜 - 消费者可选
+  'WRBY': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 医疗服装DTC - 就业/消费
+  'FIGS': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 驾车咖啡连锁 - 消费周期
+  'BROS': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // CNS特药 - 低宏观敏感(专利药刚需)
+  'ACAD': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 鞋类零售 - 消费者可选
+  'DBI': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.1,
   },
 };
 
