@@ -3582,6 +3582,72 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['innovation', 'science', 'community'],
     channels: ['direct_selling', 'online'],
   },
+
+  // ========== 珠宝零售 ==========
+  'SIG': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['engagement', 'anniversary', 'gift', 'holiday'],
+    valueProps: ['selection', 'financing', 'branding'],
+    channels: ['store', 'online'],
+  },
+
+  // ========== 汽车服务 ==========
+  'MNRO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['auto_maintenance', 'tire_replacement', 'repair'],
+    valueProps: ['convenience', 'trust', 'value'],
+    channels: ['store'],
+  },
+
+  // ========== 内衣/美妆零售 ==========
+  'VSCO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['intimates_shopping', 'beauty', 'self_care'],
+    valueProps: ['brand', 'fit', 'style'],
+    channels: ['store', 'online'],
+  },
+
+  // ========== 船舶/休闲 ==========
+  'BC': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'affluent', gender: 'male' },
+    occasions: ['boating', 'fishing', 'recreation'],
+    valueProps: ['quality', 'performance', 'brand'],
+    channels: ['dealer', 'marine_retail'],
+  },
+  'HZO': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'high_net_worth', gender: 'all' },
+    occasions: ['boat_purchase', 'marine_service'],
+    valueProps: ['selection', 'expertise', 'service'],
+    channels: ['marina', 'showroom'],
+  },
+
+  // ========== 赌场 ==========
+  'MCRI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['entertainment', 'gambling', 'dining'],
+    valueProps: ['experience', 'local_gaming', 'value'],
+    channels: ['casino'],
+  },
+
+  // ========== 保险 (B2B2C) ==========
+  'SIGI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'all', gender: 'all' },
+    occasions: ['insurance_purchase', 'renewal'],
+    valueProps: ['coverage', 'service', 'value'],
+    channels: ['agent', 'broker', 'online'],
+  },
+  'ORI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'all', gender: 'all' },
+    occasions: ['insurance_purchase', 'renewal'],
+    valueProps: ['coverage', 'service', 'value'],
+    channels: ['agent', 'broker', 'online'],
+  },
+  'THG': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'all', gender: 'all' },
+    occasions: ['insurance_purchase', 'renewal'],
+    valueProps: ['coverage', 'service', 'value'],
+    channels: ['agent', 'broker', 'online'],
+  },
 };
 
 // ============================================================
@@ -5327,6 +5393,53 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
 
   // Industrial Auctions
   'RBA': 'mid',              // RB Global - 工业设备拍卖(中周期)
+
+  // ---------- 特种化学品/涂料 (Specialty Chemicals/Coatings) ----------
+  'AXTA': 'mid',             // Axalta - 汽车/工业涂料(中周期)
+  'FUL': 'mid',              // H.B. Fuller - 粘合剂/密封剂(中周期)
+  'ESI': 'mid',              // Element Solutions - 电子化学品(中周期)
+
+  // ---------- 保险 (Insurance) ----------
+  'SIGI': 'mid',             // Selective Insurance - 特种P&C保险(中周期)
+  'ORI': 'defensive',        // Old Republic - 多元化保险/产权(防御型)
+  'THG': 'mid',              // Hanover Insurance - P&C保险(中周期)
+
+  // ---------- 医疗IT (Healthcare IT) ----------
+  'NXGN': 'defensive',       // NextGen Healthcare - EHR(防御型)
+  'PINC': 'defensive',       // Premier Inc - 医疗GPO/分析(防御型)
+  'HCAT': 'defensive',       // Health Catalyst - 医疗分析(防御型)
+  'PHR': 'defensive',        // Phreesia - 患者入院技术(防御型)
+
+  // ---------- 消费零售 (Consumer Retail) ----------
+  'SIG': 'mid',              // Signet Jewelers - 珠宝零售(中周期)
+  'MNRO': 'defensive',       // Monro Inc - 汽车服务/修理(防御型)
+  'VSCO': 'mid',             // Victoria's Secret - 内衣/美妆零售(中周期)
+
+  // ---------- 国防/航天 (Defense/Aerospace) ----------
+  'AVAV': 'mid',             // AeroVironment - 战术无人机(中周期)
+  'MRCY': 'mid',             // Mercury Systems - 国防电子(中周期)
+
+  // ---------- 半导体 (Semiconductor) ----------
+  'SYNA': 'mid',             // Synaptics - 人机界面半导体(中周期)
+  'SITM': 'mid',             // SiTime - MEMS时钟半导体(中周期)
+
+  // ---------- 医疗/生物科技 (Healthcare/Biotech) ----------
+  'HAE': 'defensive',        // Haemonetics - 血液管理技术(防御型)
+  'RVMD': 'early',           // Revolution Medicines - 肿瘤药物(早周期)
+  'PTCT': 'mid',             // PTC Therapeutics - 罕见病疗法(中周期)
+
+  // ---------- 船舶/休闲 (Marine/Recreation) ----------
+  'BC': 'mid',               // Brunswick - 船舶/休闲产品(中周期)
+  'HZO': 'mid',              // MarineMax - 船舶零售/服务(中周期)
+
+  // ---------- 赌场 (Casino) ----------
+  'MCRI': 'mid',             // Monarch Casino - 赌场/酒店(中周期)
+
+  // ---------- 商业服务 (Business Services) ----------
+  'CNXC': 'defensive',       // Concentrix - CX商业服务/BPO(防御型)
+
+  // ---------- 多元化工业 (Diversified Industrial) ----------
+  'SXI': 'mid',              // Standex International - 多元化工业(中周期)
 };
 
 // ============================================================
@@ -10939,6 +11052,134 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'RBA': {
     interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+
+  // Specialty Chemicals/Coatings
+  'AXTA': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'FUL': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'ESI': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+
+  // Insurance
+  'SIGI': {
+    interestRate: 0.4, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'ORI': {
+    interestRate: 0.4, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'THG': {
+    interestRate: 0.4, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Healthcare IT
+  'NXGN': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'PINC': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'HCAT': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'PHR': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Jewelry Retail
+  'SIG': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // Auto Service
+  'MNRO': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // Lingerie Retail
+  'VSCO': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Defense
+  'AVAV': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'MRCY': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Semiconductor
+  'SYNA': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'SITM': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+
+  // Blood Management
+  'HAE': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Biotech
+  'RVMD': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'PTCT': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Marine/Recreation
+  'BC': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.7, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'HZO': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.7, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+
+  // Casino
+  'MCRI': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // BPO
+  'CNXC': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Diversified Industrial
+  'SXI': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
   },
 };
 

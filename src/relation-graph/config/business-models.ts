@@ -11304,6 +11304,261 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Industrial Equipment Auctions',
     tags: ['auction', 'heavy_equipment', 'remarketing', 'marketplace'],
   },
+
+  // ========================================================
+  // 特种化学品/涂料 (Specialty Chemicals/Coatings)
+  // ========================================================
+
+  'AXTA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Chemicals',
+    tags: ['automotive_coatings', 'industrial_coatings', 'refinish'],
+  },
+  'FUL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Chemicals',
+    tags: ['adhesives', 'sealants', 'industrial'],
+  },
+  'ESI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Chemicals',
+    tags: ['electronics_chemicals', 'specialty', 'surface_treatment'],
+  },
+
+  // ========================================================
+  // 保险 (Insurance)
+  // ========================================================
+
+  'SIGI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Insurance',
+    tags: ['specialty_pc', 'commercial_lines', 'personal_lines'],
+  },
+  'ORI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Insurance',
+    tags: ['diversified_insurance', 'title_insurance', 'commercial'],
+  },
+  'THG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Insurance',
+    tags: ['pc_insurance', 'personal_lines', 'small_commercial'],
+  },
+
+  // ========================================================
+  // 医疗IT (Healthcare IT)
+  // ========================================================
+
+  'NXGN': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Healthcare IT',
+    tags: ['ehr', 'practice_management', 'ambulatory'],
+  },
+  'PINC': {
+    assetModel: 'platform',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Healthcare IT',
+    tags: ['gpo', 'analytics', 'supply_chain', 'hospital'],
+  },
+  'HCAT': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Healthcare IT',
+    tags: ['healthcare_analytics', 'data_platform', 'population_health'],
+  },
+  'PHR': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Healthcare IT',
+    tags: ['patient_intake', 'digital_health', 'payment_processing'],
+  },
+
+  // ========================================================
+  // 消费零售 (Consumer Retail)
+  // ========================================================
+
+  'SIG': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Jewelry Retail',
+    tags: ['jewelry', 'bridal', 'fashion_accessories', 'omnichannel'],
+  },
+  'MNRO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Auto Service',
+    tags: ['auto_repair', 'tire_service', 'maintenance', 'chain'],
+  },
+  'VSCO': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Apparel Retail',
+    tags: ['lingerie', 'beauty', 'intimate_apparel', 'brand'],
+  },
+
+  // ========================================================
+  // 国防/航天 (Defense/Aerospace)
+  // ========================================================
+
+  'AVAV': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Defense',
+    tags: ['tactical_drones', 'uas', 'loitering_munitions', 'b2g'],
+  },
+  'MRCY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Defense',
+    tags: ['defense_electronics', 'computing', 'signal_processing', 'b2g'],
+  },
+
+  // ========================================================
+  // 半导体 (Semiconductor)
+  // ========================================================
+
+  'SYNA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Semiconductor',
+    tags: ['human_interface', 'touch', 'display_driver', 'iot'],
+  },
+  'SITM': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Semiconductor',
+    tags: ['mems_timing', 'oscillator', 'precision_timing'],
+  },
+
+  // ========================================================
+  // 医疗/生物科技 (Healthcare/Biotech)
+  // ========================================================
+
+  'HAE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['blood_management', 'hemostasis', 'cell_processing'],
+  },
+  'RVMD': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech',
+    tags: ['oncology', 'ras_inhibitor', 'targeted_therapy'],
+  },
+  'PTCT': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech',
+    tags: ['rare_disease', 'gene_therapy', 'neurology'],
+  },
+
+  // ========================================================
+  // 船舶/休闲 (Marine/Recreation)
+  // ========================================================
+
+  'BC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Marine Recreation',
+    tags: ['boats', 'marine_engines', 'recreation', 'fishing'],
+  },
+  'HZO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Marine Recreation',
+    tags: ['boat_retail', 'marina', 'marine_service', 'dealer'],
+  },
+
+  // ========================================================
+  // 赌场 (Casino)
+  // ========================================================
+
+  'MCRI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Casino',
+    tags: ['casino', 'hotel', 'regional_gaming', 'entertainment'],
+  },
+
+  // ========================================================
+  // 商业服务 (Business Services)
+  // ========================================================
+
+  'CNXC': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Business Process Outsourcing',
+    tags: ['cx_services', 'bpo', 'customer_management', 'digital_cx'],
+  },
+
+  // ========================================================
+  // 多元化工业 (Diversified Industrial)
+  // ========================================================
+
+  'SXI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Diversified Industrial',
+    tags: ['electronics', 'engraving', 'engineering_tech', 'specialty'],
+  },
 };
 
 // ============================================================

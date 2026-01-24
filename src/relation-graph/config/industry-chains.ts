@@ -2814,6 +2814,55 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // Industrial Auctions
     'RBA': 'Industrial Auctions',              // RB Global - 工业设备拍卖
+
+    // ========== 新增25只 (Chemicals/Insurance/Healthcare IT/Retail/Defense/Semi/Biotech/Marine/Casino/BPO/Industrial) ==========
+
+    // Specialty Chemicals/Coatings
+    'AXTA': 'Automotive Coatings',             // Axalta - 汽车/工业涂料
+    'FUL': 'Adhesives & Sealants',             // H.B. Fuller - 粘合剂/密封剂
+    'ESI': 'Electronics Chemicals',            // Element Solutions - 电子化学品
+
+    // Insurance
+    'SIGI': 'Specialty P&C Insurance',         // Selective Insurance - 特种P&C保险
+    'ORI': 'Diversified Insurance',            // Old Republic - 多元化保险/产权
+    'THG': 'P&C Insurance',                    // Hanover Insurance - P&C保险
+
+    // Healthcare IT
+    'NXGN': 'Healthcare IT/EHR',               // NextGen Healthcare - EHR
+    'PINC': 'Healthcare GPO',                  // Premier Inc - 医疗GPO/分析
+    'HCAT': 'Healthcare Analytics',            // Health Catalyst - 医疗分析
+    'PHR': 'Patient Intake Tech',              // Phreesia - 患者入院技术
+
+    // Consumer Retail
+    'SIG': 'Jewelry Retail',                   // Signet Jewelers - 珠宝零售
+    'MNRO': 'Auto Service',                    // Monro Inc - 汽车服务/修理
+    'VSCO': 'Lingerie Retail',                 // Victoria's Secret - 内衣/美妆零售
+
+    // Defense/Aerospace
+    'AVAV': 'Tactical Drones',                 // AeroVironment - 战术无人机
+    'MRCY': 'Defense Computing',               // Mercury Systems - 国防电子/计算
+
+    // Semiconductor
+    'SYNA': 'Human Interface Semi',            // Synaptics - 人机界面半导体
+    'SITM': 'MEMS Timing',                     // SiTime - MEMS时钟半导体
+
+    // Healthcare/Biotech
+    'HAE': 'Blood Management',                 // Haemonetics - 血液管理技术
+    'RVMD': 'Oncology Drug',                   // Revolution Medicines - 肿瘤药物
+    'PTCT': 'Rare Disease Therapy',            // PTC Therapeutics - 罕见病疗法
+
+    // Marine/Recreation
+    'BC': 'Marine Products',                   // Brunswick - 船舶/休闲产品
+    'HZO': 'Boat Retail',                      // MarineMax - 船舶零售/服务
+
+    // Casino
+    'MCRI': 'Regional Casino',                 // Monarch Casino - 赌场/酒店
+
+    // Business Services
+    'CNXC': 'CX Business Services',            // Concentrix - CX商业服务/BPO
+
+    // Diversified Industrial
+    'SXI': 'Diversified Industrial',           // Standex International - 多元化工业
   },
 
   // ============================================================
@@ -5684,6 +5733,83 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // 健康补充剂产业链
     'Health Supplements': ['Packaged Food', 'Specialty Retail', 'Direct Selling'],
+
+    // ========== 新增子行业链 ==========
+
+    // 汽车涂料产业链
+    'Automotive Coatings': ['Auto - Manufacturers', 'Auto Parts', 'Body Shop'],
+
+    // 粘合剂/密封剂产业链
+    'Adhesives & Sealants': ['Building Products', 'Packaging', 'Consumer Electronics'],
+
+    // 电子化学品产业链
+    'Electronics Chemicals': ['Semiconductor Foundry', 'PCB Manufacturing', 'Consumer Electronics'],
+
+    // 医疗IT/EHR产业链
+    'Healthcare IT/EHR': ['Hospital', 'Ambulatory Care', 'Medical Practice'],
+
+    // 医疗GPO产业链
+    'Healthcare GPO': ['Hospital', 'Medical Devices', 'Pharmaceutical'],
+
+    // 医疗分析产业链
+    'Healthcare Analytics': ['Hospital', 'Health Insurance', 'Pharmaceutical'],
+
+    // 患者入院技术产业链
+    'Patient Intake Tech': ['Hospital', 'Ambulatory Care', 'Medical Practice'],
+
+    // 珠宝零售产业链
+    'Jewelry Retail': ['Luxury Goods', 'Specialty Retail', 'Consumer Discretionary'],
+
+    // 汽车服务产业链
+    'Auto Service': ['Auto Parts', 'Tire Manufacturing', 'Consumer Services'],
+
+    // 内衣零售产业链
+    'Lingerie Retail': ['Apparel Manufacturing', 'Specialty Retail', 'E-commerce'],
+
+    // 战术无人机产业链
+    'Tactical Drones': ['Defense Electronics', 'Military', 'Aerospace Components'],
+
+    // 国防计算产业链
+    'Defense Computing': ['Defense Electronics', 'Military', 'Signal Processing'],
+
+    // 人机界面半导体产业链
+    'Human Interface Semi': ['Consumer Electronics', 'IoT Platform', 'Auto - Manufacturers'],
+
+    // MEMS时钟产业链
+    'MEMS Timing': ['Consumer Electronics', 'Telecom Equipment', 'Aerospace Components'],
+
+    // 血液管理产业链
+    'Blood Management': ['Hospital', 'Blood Bank', 'Surgical Services'],
+
+    // 肿瘤药物产业链
+    'Oncology Drug': ['Hospital', 'Oncology Center', 'Pharmaceutical'],
+
+    // 罕见病疗法产业链
+    'Rare Disease Therapy': ['Hospital', 'Specialty Pharmacy', 'Pharmaceutical'],
+
+    // 船舶产品产业链
+    'Marine Products': ['Boat Retail', 'Marina', 'Recreation'],
+
+    // 船舶零售产业链
+    'Boat Retail': ['Marina', 'Consumer Services', 'Recreation'],
+
+    // CX商业服务产业链
+    'CX Business Services': ['Enterprise SaaS', 'Customer Management', 'Digital Advertising'],
+
+    // 特种P&C保险产业链
+    'Specialty P&C Insurance': ['Commercial Insurance', 'Personal Lines', 'Reinsurance'],
+
+    // 多元化保险产业链
+    'Diversified Insurance': ['Commercial Insurance', 'Title Insurance', 'Reinsurance'],
+
+    // P&C保险产业链
+    'P&C Insurance': ['Commercial Insurance', 'Personal Lines', 'Reinsurance'],
+
+    // 区域赌场产业链
+    'Regional Casino': ['Entertainment', 'Hospitality', 'Consumer Services'],
+
+    // 多元化工业产业链
+    'Diversified Industrial': ['Electronics', 'Engraving', 'Engineering Technology'],
   },
 };
 
