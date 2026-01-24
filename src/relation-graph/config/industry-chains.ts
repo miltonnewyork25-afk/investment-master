@@ -3612,6 +3612,9 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'P&C Insurance': [
       'Auto Dealer',
       'Homebuilder',
+      'Commercial Insurance',    // 商业保险
+      'Personal Lines',          // 个人保险
+      'Reinsurance',             // 再保险
     ],
 
     // 人寿保险 - 与资管相关
@@ -3735,6 +3738,9 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Big Pharma',
       'Pharma Distributor',   // 配送中心
       'Pharmacy Retail',      // 零售药房
+      'Large Pharma',         // 生命科学研发租户
+      'Large Biotech',        // 生物科技研发租户
+      'Hospital Operator',    // 门诊设施租户
     ],
 
     // 自存储 - 与搬迁/住房相关
@@ -4516,6 +4522,9 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Diversified Insurance': [
       'Regional Bank',           // 银保合作
       'Insurance Broker',        // 经纪分销
+      'Commercial Insurance',    // 商业保险
+      'Title Insurance',         // 产权保险
+      'Reinsurance',             // 再保险
     ],
 
     // ========== 新增子行业链 - 博彩/物流/医疗 ==========
@@ -5189,6 +5198,10 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Auto OEM',
       'Construction Equipment',
       'Residential Construction',
+      'Construction Chain',      // 建筑产业链
+      'Auto - Manufacturers',    // 汽车制造商
+      'Industrial Chain',        // 工业产业链
+      'Infrastructure',          // 基础设施
     ],
 
     // ========== S&P 400 Midcap 新增产业链 ==========
@@ -6026,12 +6039,6 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // 特种P&C保险产业链
     'Specialty P&C Insurance': ['Commercial Insurance', 'Personal Lines', 'Reinsurance'],
 
-    // 多元化保险产业链
-    'Diversified Insurance': ['Commercial Insurance', 'Title Insurance', 'Reinsurance'],
-
-    // P&C保险产业链
-    'P&C Insurance': ['Commercial Insurance', 'Personal Lines', 'Reinsurance'],
-
     // 区域赌场产业链
     'Regional Casino': ['Entertainment', 'Hospitality', 'Consumer Services'],
 
@@ -6067,9 +6074,6 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // 高端电动汽车产业链
     'Premium EV': ['Auto Dealer', 'EV Charging', 'Consumer Services', 'Auto - Manufacturers'],
-
-    // 综合钢铁产业链
-    'Integrated Steel': ['Construction Chain', 'Auto - Manufacturers', 'Industrial Chain', 'Infrastructure'],
 
     // 铁矿石矿业产业链
     'Iron Ore Mining': ['Integrated Steel', 'Construction Chain', 'Industrial Chain'],
@@ -6186,13 +6190,6 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Long-term Care',               // 护理运营商租户
       'Home Health Services',         // 居家护理转介
       'Health Insurance',             // 保险支付方
-    ],
-
-    // 医疗REIT → 生命科学/医疗
-    'Healthcare REIT': [
-      'Large Pharma',                 // 生命科学研发租户
-      'Large Biotech',                // 生物科技研发租户
-      'Hospital Operator',            // 门诊设施租户
     ],
 
     // 便利店/加油 → 燃油/食品
