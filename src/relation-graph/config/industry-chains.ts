@@ -4436,6 +4436,50 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'PFBC': 'Regional Banking',                                              // Preferred Bank - 加州区域银行
     'PRA': 'Specialty Insurance',                                            // ProAssurance - 专业责任保险
     'UFCS': 'P&C Insurance',                                                 // United Fire Group - 财产/意外保险
+
+    // ========== Batch: Consumer/Retail/Restaurants (Jan 2026 - Set E) ==========
+    'BWW': 'Casual Dining (Sports Bar)',                                       // Buffalo Wild Wings - 运动酒吧/休闲餐饮
+    'LE': 'Apparel Retail (DTC)',                                              // Lands' End - 服装目录/电商
+    'LZB': 'Furniture Manufacturing & Retail',                                 // La-Z-Boy - 家具制造/零售
+    'NATH': 'QSR Franchisor',                                                  // Nathan's Famous - 热狗品牌/特许
+    'NWL': 'Consumer Products Conglomerate',                                   // Newell Brands - 消费品集团
+    'ONL': 'Office REIT',                                                      // Orion Office REIT - 办公REIT
+    'ORG': 'Women\'s Health Pharma',                                            // Organon - 女性健康/制药
+    'OVEN': 'Fast Casual Restaurant',                                          // Oven Restaurant - 快休闲餐厅
+    'PBPB': 'Fast Casual (Sandwich)',                                          // Potbelly - 三明治快休闲
+    'REAL': 'Luxury Consignment Marketplace',                                  // The RealReal - 奢侈品寄售
+    'SWIM': 'Pool Products Manufacturing',                                     // Latham Group - 泳池产品
+    'TCS': 'Specialty Retail (Organization)',                                  // The Container Store - 收纳用品零售
+
+    // ========== Batch: Industrials/Materials/Construction (Jan 2026 - Set F) ==========
+    'CFX': 'Welding & Cutting Equipment',                                       // Colfax/ESAB - 焊接切割设备
+    'ECVT': 'Specialty Catalysts & Chemicals',                                  // Ecovyst - 特种催化剂
+    'FNKO': 'Collectibles & Licensed Products',                                 // Funko - 流行文化收藏品
+    'GCP': 'Construction Chemicals',                                            // GCP Applied Tech - 建筑化学品
+    'HNI': 'Office Furniture & Hearth',                                         // HNI Corp - 办公家具/壁炉
+    'KOP': 'Carbon Compounds & Wood Preservation',                              // Koppers - 碳化合物/木材防腐
+    'NVT': 'Electrical Connection & Protection',                                // nVent Electric - 电气连接保护
+    'RXN': 'Water Management Solutions',                                        // Rexnord/Zurn Elkay - 水管理
+
+    // ========== Batch: Energy/Utilities/Mining/REITs (Jan 2026 - Set G) ==========
+    'BCEI': 'Shale E&P (DJ Basin)',                                              // Bonanza Creek Energy - DJ盆地页岩油气
+    'BEP': 'Renewable Energy IPP',                                               // Brookfield Renewable Partners - 可再生能源
+    'CQP': 'LNG Export Terminal',                                                // Cheniere Energy Partners - LNG出口终端
+    'DKL': 'Midstream Logistics',                                                // Delek Logistics Partners - 中游物流
+    'ETRN': 'Midstream Gathering & Transmission',                                // Equitrans Midstream - 天然气采集/输送
+    'HE': 'Regulated Utility (Electric)',                                        // Hawaiian Electric - 夏威夷受管制电力
+    'IDA': 'Regulated Utility (Electric)',                                       // IDACORP - 爱达荷受管制电力
+    'KRP': 'Oil & Gas Mineral Rights',                                           // Kimbell Royalty Partners - 油气矿权
+    'LAND': 'Farmland REIT',                                                     // Gladstone Land - 农田REIT
+    'NGM': 'Clinical-Stage Biotech',                                             // NGM Biopharmaceuticals - 临床阶段生物科技
+    'NS': 'Midstream Pipeline & Storage',                                        // NuStar Energy - 中游管道/储存
+    'PAGP': 'Midstream Pipeline (Crude/NGL)',                                    // Plains All American - 原油/NGL管道
+    'PBA': 'Midstream Pipeline (Canadian)',                                      // Pembina Pipeline - 加拿大中游管道
+    'QEP': 'Shale E&P (Permian/Williston)',                                      // QEP Resources - 页岩油气E&P
+    'SLCA': 'Frac Sand & Industrial Minerals',                                   // U.S. Silica - 压裂砂/工业矿物
+    'SRC': 'Net Lease REIT',                                                     // Spirit Realty Capital - 净租赁REIT
+    'TPVG': 'Venture Lending BDC',                                               // TriplePoint Venture Growth - 风投贷款
+    'XEC': 'Shale E&P (Permian/Midcontinent)',                                   // Cimarex Energy - 页岩E&P
   },
 
   // ============================================================

@@ -4265,6 +4265,80 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['community_focus', 'trust_expertise', 'local_service', 'relationship'],
     channels: ['branch', 'online', 'mobile_app'],
   },
+
+  // --- Consumer/Retail/Restaurants (Jan 2026 - Set E) ---
+  'BWW': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['sports_viewing', 'casual_dining', 'social_gathering', 'takeout'],
+    valueProps: ['sports_experience', 'wings_variety', 'social_atmosphere', 'value'],
+    channels: ['dine_in', 'takeout', 'delivery'],
+  },
+  'LE': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['casual_wear', 'workwear', 'seasonal_wardrobe', 'online_shopping'],
+    valueProps: ['quality_basics', 'classic_style', 'durability', 'value'],
+    channels: ['online', 'catalog', 'retail'],
+  },
+  'LZB': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_furnishing', 'remodeling', 'comfort', 'living_room'],
+    valueProps: ['comfort', 'quality', 'brand_trust', 'customization'],
+    channels: ['retail', 'online', 'dealer'],
+  },
+  'NATH': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['quick_meal', 'snack', 'entertainment_venue', 'franchise'],
+    valueProps: ['iconic_brand', 'value', 'convenience', 'nostalgia'],
+    channels: ['franchise', 'retail', 'foodservice'],
+  },
+  'NWL': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['household_needs', 'organization', 'outdoor', 'baby_care'],
+    valueProps: ['brand_portfolio', 'availability', 'value', 'functionality'],
+    channels: ['retail', 'online', 'wholesale'],
+  },
+  'ONL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['office_lease', 'corporate_space', 'net_lease_investment'],
+    valueProps: ['single_tenant', 'suburban_location', 'net_lease', 'stable_income'],
+    channels: ['direct', 'broker'],
+  },
+  'ORG': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['women_health', 'fertility', 'biosimilar_treatment', 'chronic_condition'],
+    valueProps: ['specialized_care', 'affordability', 'established_brands', 'access'],
+    channels: ['pharmacy', 'hospital', 'clinic'],
+  },
+  'OVEN': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['lunch', 'casual_dinner', 'takeout', 'quick_meal'],
+    valueProps: ['fresh_food', 'convenience', 'quality', 'atmosphere'],
+    channels: ['dine_in', 'takeout', 'delivery'],
+  },
+  'PBPB': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['lunch', 'quick_meal', 'work_break', 'catering'],
+    valueProps: ['fresh_sandwiches', 'neighborhood_feel', 'value', 'speed'],
+    channels: ['dine_in', 'takeout', 'delivery', 'catering'],
+  },
+  'REAL': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['luxury_shopping', 'resale', 'sustainable_fashion', 'consignment'],
+    valueProps: ['authenticated_luxury', 'sustainability', 'value', 'discovery'],
+    channels: ['online', 'retail_store', 'consignment'],
+  },
+  'SWIM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['pool_installation', 'backyard_upgrade', 'home_improvement', 'outdoor_living'],
+    valueProps: ['fiberglass_quality', 'design_variety', 'durability', 'lifestyle'],
+    channels: ['dealer', 'direct', 'online'],
+  },
+  'TCS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['home_organization', 'moving', 'storage_solutions', 'closet_design'],
+    valueProps: ['organization_expertise', 'custom_solutions', 'quality_products', 'service'],
+    channels: ['retail', 'online', 'custom_design'],
+  },
 };
 
 // ============================================================
@@ -7627,6 +7701,49 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'PFBC': 'mid',                       // Preferred Bank - 加州区域银行(中周期)
   'PRA': 'mid',                        // ProAssurance - 专业责任保险(中周期)
   'UFCS': 'defensive',                 // United Fire Group - 财产险(防御型)
+  // --- Batch: Consumer/Retail/Restaurants (Jan 2026 - Set E) ---
+  'BWW': 'mid',                         // Buffalo Wild Wings - 运动酒吧/休闲餐饮(中周期)
+  'LE': 'mid',                          // Lands' End - 服装目录/电商零售(中周期)
+  'LZB': 'mid',                         // La-Z-Boy - 家具制造/零售(中周期)
+  'NATH': 'defensive',                  // Nathan's Famous - 热狗品牌/特许经营(防御型)
+  'NWL': 'mid',                         // Newell Brands - 消费品集团(中周期)
+  'ONL': 'late',                        // Orion Office REIT - 办公REIT(晚周期)
+  'ORG': 'defensive',                   // Organon - 女性健康/制药(防御型)
+  'OVEN': 'mid',                        // Oven Restaurant - 快休闲餐厅(中周期)
+  'PBPB': 'mid',                        // Potbelly - 三明治连锁(中周期)
+  'REAL': 'mid',                        // The RealReal - 奢侈品寄售平台(中周期)
+  'SWIM': 'mid',                        // Latham Group - 泳池产品(中周期)
+  'TCS': 'mid',                         // The Container Store - 收纳零售(中周期)
+
+  // ========== Industrials/Materials/Construction (Jan 2026 - Set F) ==========
+  'CFX': 'mid',                         // Colfax/ESAB - 焊接切割设备(中周期)
+  'ECVT': 'mid',                        // Ecovyst - 特种催化剂/化学品(中周期)
+  'FNKO': 'mid',                        // Funko - 流行文化收藏品(中周期)
+  'GCP': 'mid',                         // GCP Applied Tech - 建筑化学品(中周期)
+  'HNI': 'mid',                         // HNI Corp - 办公家具/壁炉(中周期)
+  'KOP': 'late',                        // Koppers Holdings - 碳化合物/基础设施(晚周期)
+  'NVT': 'mid',                         // nVent Electric - 电气连接解决方案(中周期)
+  'RXN': 'mid',                         // Rexnord/Zurn Elkay - 水管理(中周期)
+
+  // ========== Energy/Utilities/Mining/REITs (Jan 2026 - Set G) ==========
+  'BCEI': 'late',                        // Bonanza Creek Energy - DJ盆地油气E&P(晚周期)
+  'BEP': 'defensive',                   // Brookfield Renewable - 可再生能源(防御型)
+  'CQP': 'defensive',                   // Cheniere Energy Partners - LNG出口(防御型)
+  'DKL': 'defensive',                   // Delek Logistics - 中游管道/物流(防御型)
+  'ETRN': 'defensive',                  // Equitrans Midstream - 阿巴拉契亚天然气(防御型)
+  'HE': 'defensive',                    // Hawaiian Electric - 夏威夷受管制电力(防御型)
+  'IDA': 'defensive',                   // IDACORP - 爱达荷受管制电力(防御型)
+  'KRP': 'late',                         // Kimbell Royalty - 油气矿权/特许权(晚周期)
+  'LAND': 'defensive',                  // Gladstone Land - 农田REIT(防御型)
+  'NGM': 'early',                        // NGM Biopharmaceuticals - 临床阶段生物科技(早周期)
+  'NS': 'defensive',                    // NuStar Energy - 中游管道/储存(防御型)
+  'PAGP': 'defensive',                  // Plains All American - 中游原油/NGL管道(防御型)
+  'PBA': 'defensive',                   // Pembina Pipeline - 加拿大中游管道(防御型)
+  'QEP': 'late',                         // QEP Resources - 二叠纪/威利斯顿E&P(晚周期)
+  'SLCA': 'late',                        // U.S. Silica - 压裂砂/工业矿物(晚周期)
+  'SRC': 'defensive',                   // Spirit Realty Capital - 净租赁REIT(防御型)
+  'TPVG': 'mid',                         // TriplePoint Venture Growth - 风投贷款BDC(中周期)
+  'XEC': 'late',                         // Cimarex Energy - 二叠纪/中大陆E&P(晚周期)
 };
 
 // ============================================================
@@ -16934,6 +17051,49 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'PFBC': { interestRate: 0.6, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0, oilPrice: 0 },
   'PRA': { interestRate: 0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0 },
   'UFCS': { interestRate: 0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: 0, oilPrice: 0 },
+  // --- Batch: Consumer/Retail/Restaurants (Jan 2026 - Set E) ---
+  'BWW': { interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: 0, oilPrice: -0.1 },
+  'LE': { interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1 },
+  'LZB': { interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.6, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: -0.1 },
+  'NATH': { interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.1, oilPrice: -0.1 },
+  'NWL': { interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.1 },
+  'ONL': { interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0, oilPrice: 0 },
+  'ORG': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0 },
+  'OVEN': { interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: 0, oilPrice: -0.1 },
+  'PBPB': { interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: 0, oilPrice: -0.1 },
+  'REAL': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0 },
+  'SWIM': { interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0.6, dollarIndex: -0.1, oilPrice: -0.1 },
+  'TCS': { interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0.4, dollarIndex: 0, oilPrice: -0.1 },
+
+  // ========== Industrials/Materials/Construction (Jan 2026 - Set F) ==========
+  'CFX': { interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: -0.1 },
+  'ECVT': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.3 },
+  'FNKO': { interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.6, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'GCP': { interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0.6, dollarIndex: -0.2, oilPrice: -0.2 },
+  'HNI': { interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.4, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: -0.1 },
+  'KOP': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.2 },
+  'NVT': { interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.3, oilPrice: -0.1 },
+  'RXN': { interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: -0.1 },
+
+  // ========== Energy/Utilities/Mining/REITs (Jan 2026 - Set G) ==========
+  'BCEI': { interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0.8 },
+  'BEP': { interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'CQP': { interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.5 },
+  'DKL': { interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0.4 },
+  'ETRN': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0.3 },
+  'HE': { interestRate: -0.4, inflation: 0, gdpGrowth: 0.1, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0, oilPrice: -0.1 },
+  'IDA': { interestRate: -0.4, inflation: 0, gdpGrowth: 0.1, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0, oilPrice: -0.1 },
+  'KRP': { interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0.8 },
+  'LAND': { interestRate: -0.5, inflation: 0.4, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.1 },
+  'NGM': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'NS': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0.4 },
+  'PAGP': { interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.5 },
+  'PBA': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.4 },
+  'QEP': { interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0.8 },
+  'SLCA': { interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.6 },
+  'SRC': { interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0, oilPrice: 0 },
+  'TPVG': { interestRate: 0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'XEC': { interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0.8 },
 };
 
 // ============================================================
