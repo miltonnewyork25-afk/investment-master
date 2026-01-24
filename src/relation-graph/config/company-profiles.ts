@@ -472,6 +472,102 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['convenience', 'discretion', 'modern', 'accessibility', 'privacy'],
     channels: ['online', 'subscription'],
   },
+
+  // ========== 电信 (Consumer) ==========
+  'T': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['communication', 'entertainment', 'connectivity', 'family'],
+    valueProps: ['reliability', 'coverage', 'bundling', 'value'],
+    channels: ['retail', 'online', 'direct'],
+  },
+  'VZ': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['communication', 'connectivity', 'business', 'streaming'],
+    valueProps: ['reliability', 'network_quality', 'coverage', 'premium'],
+    channels: ['retail', 'online', 'direct'],
+  },
+  'TMUS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['communication', 'streaming', 'value', 'family'],
+    valueProps: ['value', 'innovation', 'simplicity', 'coverage'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 企业SaaS (B2B - Enterprise IT Buyer) ==========
+  'CRM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['enterprise-it', 'digital-transform', 'sales', 'automation'],
+    valueProps: ['platform', 'integration', 'ai', 'ecosystem'],
+    channels: ['direct', 'online'],
+  },
+  'NOW': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['enterprise-it', 'digital-transform', 'automation', 'workflow'],
+    valueProps: ['platform', 'automation', 'integration', 'efficiency'],
+    channels: ['direct'],
+  },
+  'WDAY': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['enterprise-it', 'hr', 'finance', 'workforce'],
+    valueProps: ['cloud', 'integration', 'analytics', 'user_experience'],
+    channels: ['direct'],
+  },
+  'CRWD': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['enterprise-it', 'security', 'threat-detection', 'compliance'],
+    valueProps: ['security', 'cloud_native', 'ai', 'real_time'],
+    channels: ['direct', 'online'],
+  },
+  'PANW': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['enterprise-it', 'security', 'network', 'compliance'],
+    valueProps: ['platform', 'security', 'integration', 'automation'],
+    channels: ['direct'],
+  },
+  'ORCL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['enterprise-it', 'database', 'cloud', 'erp'],
+    valueProps: ['enterprise', 'reliability', 'integration', 'performance'],
+    channels: ['direct'],
+  },
+  'CSCO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['enterprise-it', 'networking', 'security', 'collaboration'],
+    valueProps: ['reliability', 'enterprise', 'integration', 'scale'],
+    channels: ['direct', 'retail'],
+  },
+  'DELL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['enterprise-it', 'infrastructure', 'storage', 'compute'],
+    valueProps: ['reliability', 'enterprise', 'performance', 'scale'],
+    channels: ['direct', 'retail'],
+  },
+
+  // ========== 建筑/基建 (B2B - Construction Buyer) ==========
+  'CAT': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'male' },
+    occasions: ['construction', 'mining', 'infrastructure', 'rental'],
+    valueProps: ['reliability', 'performance', 'dealer_network', 'resale'],
+    channels: ['retail', 'direct'],
+  },
+  'DE': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'male' },
+    occasions: ['agriculture', 'construction', 'infrastructure', 'precision'],
+    valueProps: ['precision', 'technology', 'dealer_network', 'reliability'],
+    channels: ['retail', 'direct'],
+  },
+  'SHW': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['home-improvement', 'construction', 'renovation', 'professional'],
+    valueProps: ['quality', 'selection', 'expertise', 'pro_service'],
+    channels: ['retail', 'direct'],
+  },
+  'VMC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'male' },
+    occasions: ['construction', 'infrastructure', 'road-building', 'development'],
+    valueProps: ['proximity', 'quality', 'reliability', 'scale'],
+    channels: ['direct'],
+  },
 };
 
 // ============================================================
