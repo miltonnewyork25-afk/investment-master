@@ -7702,6 +7702,286 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Subprime Auto',
     tags: ['subprime', 'auto_loans', 'dealer_finance', 'credit'],
   },
+
+  // ---------- Convenience Store ----------
+  'CASY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Convenience Store',
+    tags: ['convenience', 'gas_station', 'pizza', 'prepared_food', 'rural'],
+  },
+
+  // ---------- Home Furnishings ----------
+  'TPX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Home Furnishings',
+    tags: ['mattress', 'bedding', 'sleep', 'premium', 'retail'],
+  },
+
+  // ---------- Furniture Components ----------
+  'LEG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Furniture Components',
+    tags: ['springs', 'foam', 'bedding_components', 'industrial'],
+  },
+
+  // ---------- Fast Casual (Donut) ----------
+  'DNUT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Fast Casual',
+    tags: ['donut', 'bakery', 'franchise', 'retail', 'snack'],
+  },
+
+  // ---------- Net Lease REIT ----------
+  'EPRT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Net Lease REIT',
+    tags: ['net_lease', 'single_tenant', 'reit', 'essential_properties'],
+  },
+  'ADC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Net Lease REIT',
+    tags: ['net_lease', 'retail_reit', 'investment_grade', 'triple_net'],
+  },
+
+  // ---------- Cold Storage REIT ----------
+  'COLD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cold Storage REIT',
+    tags: ['cold_chain', 'warehousing', 'food_storage', 'temperature_controlled'],
+  },
+
+  // ---------- Regional Bank (Growth/Specialty) ----------
+  'WAL': {
+    assetModel: 'asset_light',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['growth_bank', 'technology_banking', 'mortgage_warehouse'],
+  },
+  'EWBC': {
+    assetModel: 'asset_light',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['asian_focus', 'cross_border', 'trade_finance', 'community'],
+  },
+  'ONB': {
+    assetModel: 'asset_light',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['midwest', 'community_bank', 'commercial_lending', 'wealth'],
+  },
+  'PNFP': {
+    assetModel: 'asset_light',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['southeast', 'growth_bank', 'commercial_banking', 'advisory'],
+  },
+  'OZK': {
+    assetModel: 'asset_light',
+    revenueModels: ['interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Regional Bank',
+    tags: ['construction_lending', 'cre', 'specialty_finance'],
+  },
+  'FNB': {
+    assetModel: 'asset_light',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['mid_atlantic', 'community_bank', 'commercial', 'wealth'],
+  },
+
+  // ---------- Diagnostics ----------
+  'GH': {
+    assetModel: 'asset_light',
+    revenueModels: ['consumables', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Diagnostics',
+    tags: ['liquid_biopsy', 'genomics', 'oncology', 'precision_medicine'],
+  },
+
+  // ---------- Medical Devices ----------
+  'TFX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['specialty_devices', 'vascular', 'urology', 'interventional'],
+  },
+
+  // ---------- Dental Equipment ----------
+  'XRAY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Dental Equipment',
+    tags: ['dental', 'imaging', 'cad_cam', 'implants', 'orthodontics'],
+  },
+  'NVST': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Dental Equipment',
+    tags: ['dental', 'implants', 'orthodontics', 'imaging', 'equipment'],
+  },
+
+  // ---------- Nat Gas Midstream ----------
+  'DTM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Nat Gas Midstream',
+    tags: ['pipeline', 'gathering', 'natural_gas', 'storage', 'transportation'],
+  },
+  'AM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Nat Gas Midstream',
+    tags: ['gathering', 'processing', 'water_handling', 'appalachian'],
+  },
+  'WES': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Nat Gas Midstream',
+    tags: ['gas_processing', 'gathering', 'transportation', 'rockies'],
+  },
+
+  // ---------- Oil Refinery ----------
+  'DINO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Oil Refinery',
+    tags: ['refining', 'renewables', 'lubricants', 'fuel', 'biodiesel'],
+  },
+
+  // ---------- Payment Processing ----------
+  'FOUR': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Payment Processing',
+    tags: ['integrated_payments', 'pos', 'gateway', 'stadiums', 'hospitality'],
+  },
+  'RPAY': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Payment Processing',
+    tags: ['b2b_payments', 'healthcare', 'auto_lending', 'ap_solutions'],
+  },
+
+  // ---------- Water Technology ----------
+  'FELE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Water Technology',
+    tags: ['pumping_systems', 'water', 'fueling', 'distribution'],
+  },
+
+  // ---------- Defense Electronics ----------
+  'CW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Defense Electronics',
+    tags: ['defense', 'nuclear', 'naval', 'industrial', 'sensors'],
+  },
+
+  // ---------- Building Products ----------
+  'HAYW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2B2C',
+    industrySegment: 'Building Products',
+    tags: ['pool', 'outdoor_living', 'water_treatment', 'automation'],
+  },
+
+  // ---------- Satellite Communications ----------
+  'IRDM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Satellite Communications',
+    tags: ['satellite', 'iot', 'voice', 'data', 'global_coverage', 'leo'],
+  },
+
+  // ---------- Soft Drinks ----------
+  'COKE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Soft Drinks',
+    tags: ['bottler', 'distribution', 'coca_cola', 'beverages'],
+  },
+
+  // ---------- Pet Products ----------
+  'FRPT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Pet Products',
+    tags: ['fresh_pet_food', 'refrigerated', 'premium', 'natural'],
+  },
+
+  // ---------- Industrial REIT ----------
+  'EGP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial REIT',
+    tags: ['sunbelt', 'industrial', 'logistics', 'warehouse', 'development'],
+  },
 };
 
 // ============================================================

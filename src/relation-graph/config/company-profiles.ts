@@ -2046,6 +2046,102 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['accessibility', 'second_chance', 'dealer_network', 'approval'],
     channels: ['dealer', 'online'],
   },
+
+  // --- 便利店(B2C) ---
+  'CASY': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['fuel', 'snack', 'prepared_food', 'convenience', 'road_trip'],
+    valueProps: ['convenience', 'location', 'pizza', 'fuel', 'value'],
+    channels: ['retail'],
+  },
+
+  // --- 床垫/寝具(B2C) ---
+  'TPX': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_furnishing', 'sleep', 'mattress_replacement', 'new_home'],
+    valueProps: ['comfort', 'premium', 'quality', 'sleep_technology'],
+    channels: ['retail', 'online', 'direct'],
+  },
+
+  // --- 甜甜圈连锁(B2C) ---
+  'DNUT': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['snack', 'breakfast', 'treat', 'gathering', 'impulse'],
+    valueProps: ['indulgence', 'experience', 'freshness', 'brand'],
+    channels: ['retail', 'wholesale'],
+  },
+
+  // --- 区域银行(B2B2C) ---
+  'WAL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['banking', 'business_lending', 'mortgage', 'tech_banking'],
+    valueProps: ['growth', 'innovation', 'relationship', 'specialization'],
+    channels: ['direct', 'online'],
+  },
+  'EWBC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['banking', 'trade_finance', 'cross_border', 'real_estate'],
+    valueProps: ['cultural_expertise', 'bilingual', 'cross_border', 'relationship'],
+    channels: ['direct', 'online'],
+  },
+  'ONB': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'small_business', 'savings'],
+    valueProps: ['community', 'convenience', 'relationship', 'stability'],
+    channels: ['retail', 'online'],
+  },
+  'PNFP': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['banking', 'wealth_management', 'business_lending', 'advisory'],
+    valueProps: ['service', 'relationship', 'local_expertise', 'growth'],
+    channels: ['direct', 'online'],
+  },
+  'FNB': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'small_business', 'wealth'],
+    valueProps: ['community', 'convenience', 'relationship', 'trust'],
+    channels: ['retail', 'online'],
+  },
+
+  // --- 炼油/可再生能源(B2B2C) ---
+  'DINO': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['fuel', 'commute', 'travel', 'heating'],
+    valueProps: ['availability', 'value', 'reliability', 'local'],
+    channels: ['retail', 'wholesale'],
+  },
+
+  // --- 泳池/户外设备(B2B2C) ---
+  'HAYW': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['pool_maintenance', 'home_improvement', 'outdoor_living', 'renovation'],
+    valueProps: ['quality', 'automation', 'energy_efficiency', 'durability'],
+    channels: ['dealer', 'retail', 'online'],
+  },
+
+  // --- 卫星通信(B2B2C) ---
+  'IRDM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['remote_communication', 'maritime', 'aviation', 'emergency', 'iot'],
+    valueProps: ['global_coverage', 'reliability', 'safety', 'connectivity'],
+    channels: ['direct', 'dealer'],
+  },
+
+  // --- 可乐瓶装(B2B2C) ---
+  'COKE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['beverage', 'refreshment', 'meal', 'snack', 'social'],
+    valueProps: ['brand', 'distribution', 'availability', 'taste'],
+    channels: ['retail', 'wholesale', 'vending'],
+  },
+
+  // --- 鲜粮宠物食品(B2C) ---
+  'FRPT': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['pet_food', 'pet_health', 'premium_pet_care'],
+    valueProps: ['fresh', 'natural', 'health', 'premium', 'quality'],
+    channels: ['retail', 'online'],
+  },
 };
 
 // ============================================================
@@ -3215,6 +3311,36 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'OLN': 'mid',         // Olin - 氯碱化工(中周期)
   'PFGC': 'mid',        // Performance Food - 餐饮配送(中周期)
   'CACC': 'early',      // Credit Acceptance - 次贷汽车(早周期)
+  'CASY': 'defensive',  // Casey's General Stores - 便利店(防御)
+  'TPX': 'mid',         // Tempur-Sealy - 床垫(中周期)
+  'LEG': 'mid',         // Leggett & Platt - 家具组件(中周期)
+  'DNUT': 'mid',        // Krispy Kreme - 甜甜圈(中周期)
+  'EPRT': 'defensive',  // Essential Properties - 净租赁REIT(防御)
+  'ADC': 'defensive',   // Agree Realty - 净租赁REIT(防御)
+  'COLD': 'defensive',  // Americold - 冷链仓储REIT(防御)
+  'WAL': 'mid',         // Western Alliance - 成长型银行(中周期)
+  'EWBC': 'mid',        // East West Bancorp - 亚裔银行(中周期)
+  'ONB': 'mid',         // Old National - 中西部银行(中周期)
+  'PNFP': 'mid',        // Pinnacle Financial - 东南部银行(中周期)
+  'OZK': 'mid',         // Bank OZK - 建筑贷款(中周期)
+  'GH': 'early',        // Guardant Health - 液体活检(早周期)
+  'TFX': 'mid',         // Teleflex - 特种医疗器械(中周期)
+  'XRAY': 'mid',        // Dentsply Sirona - 牙科设备(中周期)
+  'DTM': 'mid',         // DT Midstream - 天然气中游(中周期)
+  'AM': 'mid',          // Antero Midstream - 气体采集(中周期)
+  'WES': 'mid',         // Western Midstream - 气体加工(中周期)
+  'DINO': 'early',      // HF Sinclair - 炼油(早周期)
+  'FOUR': 'mid',        // Shift4 Payments - 综合支付(中周期)
+  'RPAY': 'mid',        // Repay Holdings - 支付方案(中周期)
+  'FELE': 'mid',        // Franklin Electric - 泵送系统(中周期)
+  'CW': 'defensive',    // Curtiss-Wright - 国防/核电(防御)
+  'HAYW': 'mid',        // Hayward - 泳池/户外(中周期)
+  'IRDM': 'defensive',  // Iridium - 卫星通信(防御)
+  'COKE': 'defensive',  // Coca-Cola Consolidated - 可乐瓶装(防御)
+  'FRPT': 'mid',        // Freshpet - 鲜粮宠物食品(中周期)
+  'FNB': 'mid',         // F.N.B. Corp - 中大西洋银行(中周期)
+  'NVST': 'mid',        // Envista Holdings - 牙科产品(中周期)
+  'EGP': 'defensive',   // EastGroup - 阳光带工业REIT(防御)
 };
 
 // ============================================================
@@ -6954,6 +7080,146 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'CACC': {
     interestRate: 0.3, inflation: 0.1, gdpGrowth: -0.2, unemployment: 0.3,
     consumerConfidence: -0.3, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: -0.1,
+  },
+  // 便利店 - 防御消费/油价相关
+  'CASY': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.3,
+  },
+  // 床垫/家居 - 住房/消费周期
+  'TPX': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.6, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // 家具组件 - 住房/工业周期
+  'LEG': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // 甜甜圈连锁 - 消费周期
+  'DNUT': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // 净租赁REIT - 利率敏感/防御
+  'EPRT': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'ADC': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 冷链仓储REIT - 食品供应链/防御
+  'COLD': {
+    interestRate: -0.5, inflation: 0.3, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  // 区域银行 - 利率/信贷周期
+  'WAL': {
+    interestRate: 0.7, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+  'EWBC': {
+    interestRate: 0.7, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.3, oilPrice: 0.0,
+  },
+  'ONB': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'PNFP': {
+    interestRate: 0.7, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'OZK': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.6, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'FNB': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 液体活检/基因诊断 - 成长型/低周期敏感
+  'GH': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 特种医疗器械 - 中周期/医疗支出
+  'TFX': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 牙科设备 - 消费医疗
+  'XRAY': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'NVST': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  // 天然气中游 - 油气周期/利率
+  'DTM': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.5,
+  },
+  'AM': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.5,
+  },
+  'WES': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.5,
+  },
+  // 炼油 - 油价利差/早周期
+  'DINO': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.7,
+  },
+  // 综合支付 - GDP/消费周期
+  'FOUR': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'RPAY': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 泵送/水技术 - 工业周期
+  'FELE': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  // 国防电子 - 政府支出/防御
+  'CW': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.2, oilPrice: 0.1,
+  },
+  // 泳池/户外 - 住房/消费周期
+  'HAYW': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.6, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // 卫星通信 - 防御/低周期敏感
+  'IRDM': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+  // 可乐瓶装 - 防御消费
+  'COKE': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // 鲜粮宠物食品 - 消费周期/宠物经济
+  'FRPT': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // 阳光带工业REIT - 利率/工业
+  'EGP': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
   },
 };
 

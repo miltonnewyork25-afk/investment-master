@@ -2239,6 +2239,36 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'OLN': 'Specialty Chemicals',        // Olin - 氯碱化工/弹药
     'PFGC': 'Food Distribution',         // Performance Food - 餐饮配送
     'CACC': 'Subprime Auto',             // Credit Acceptance - 次贷汽车
+    'CASY': 'Convenience Store',         // Casey's General Stores - 便利店/披萨
+    'TPX': 'Home Furnishings',           // Tempur-Sealy - 床垫/寝具
+    'LEG': 'Furniture Components',       // Leggett & Platt - 弹簧/泡沫/组件
+    'DNUT': 'Fast Casual',               // Krispy Kreme - 甜甜圈
+    'EPRT': 'Net Lease REIT',            // Essential Properties - 净租赁
+    'ADC': 'Net Lease REIT',             // Agree Realty - 净租赁
+    'COLD': 'Cold Storage REIT',         // Americold - 冷链仓储
+    'WAL': 'Regional Bank',              // Western Alliance - 成长型银行
+    'EWBC': 'Regional Bank',             // East West Bancorp - 亚裔银行
+    'ONB': 'Regional Bank',              // Old National - 中西部银行
+    'PNFP': 'Regional Bank',             // Pinnacle Financial - 东南部银行
+    'OZK': 'Regional Bank',              // Bank OZK - 建筑贷款
+    'GH': 'Diagnostics',                 // Guardant Health - 液体活检
+    'TFX': 'Medical Devices',            // Teleflex - 特种医疗器械
+    'XRAY': 'Dental Equipment',          // Dentsply Sirona - 牙科设备
+    'DTM': 'Nat Gas Midstream',          // DT Midstream - 天然气中游
+    'AM': 'Nat Gas Midstream',           // Antero Midstream - 气体采集
+    'WES': 'Nat Gas Midstream',          // Western Midstream - 气体加工
+    'DINO': 'Oil Refinery',              // HF Sinclair - 炼油/可再生能源
+    'FOUR': 'Payment Processing',        // Shift4 - 综合支付
+    'RPAY': 'Payment Processing',        // Repay Holdings - 支付方案
+    'FELE': 'Water Technology',           // Franklin Electric - 泵送系统
+    'CW': 'Defense Electronics',         // Curtiss-Wright - 国防/核电
+    'HAYW': 'Building Products',         // Hayward - 泳池/户外设备
+    'IRDM': 'Satellite Communications',  // Iridium - 卫星通信
+    'COKE': 'Soft Drinks',               // Coca-Cola Consolidated - 可口可乐瓶装
+    'FRPT': 'Pet Products',              // Freshpet - 鲜粮宠物食品
+    'FNB': 'Regional Bank',              // F.N.B. Corp - 中大西洋银行
+    'NVST': 'Dental Equipment',          // Envista Holdings - 牙科产品
+    'EGP': 'Industrial REIT',            // EastGroup - 阳光带工业REIT
   },
 
   // ============================================================
@@ -3894,6 +3924,58 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Consumer Electronics',    // 消费电子终端
       'Auto - Manufacturers',    // 汽车电子
       'Industrial Conglomerate', // 工业设备
+    ],
+
+    // 便利店 → 消费终端
+    'Convenience Store': [
+      'Soft Drinks',             // 饮料供应
+      'Food Distribution',       // 食品配送
+    ],
+
+    // 家居寝具 → 组件上游
+    'Home Furnishings': [
+      'Furniture Components',    // 弹簧/泡沫组件
+    ],
+
+    // 家具组件 → 家居下游
+    'Furniture Components': [
+      'Home Furnishings',        // 床垫/家具制造
+    ],
+
+    // 冷链仓储REIT → 食品供应链
+    'Cold Storage REIT': [
+      'Food Distribution',       // 食品配送客户
+      'Grocery Retail',          // 超市冷藏需求
+    ],
+
+    // 牙科设备 → 医疗终端
+    'Dental Equipment': [
+      'Medical Devices',         // 医疗器械同行
+      'Diagnostics',             // 诊断设备关联
+    ],
+
+    // 天然气中游 → 油气产业链
+    'Nat Gas Midstream': [
+      'Oil Refinery',            // 炼油下游
+      'Power Generation',        // 发电用气
+    ],
+
+    // 炼油 → 燃料终端
+    'Oil Refinery': [
+      'Convenience Store',       // 加油站便利店
+      'Nat Gas Midstream',       // 中游气源
+    ],
+
+    // 卫星通信 → 终端应用
+    'Satellite Communications': [
+      'Defense Electronics',     // 国防通信需求
+      'Network Equipment',       // 网络设备集成
+    ],
+
+    // 宠物产品 → 消费终端
+    'Pet Products': [
+      'Grocery Retail',          // 超市渠道
+      'E-Commerce',              // 电商渠道
     ],
 
   },
