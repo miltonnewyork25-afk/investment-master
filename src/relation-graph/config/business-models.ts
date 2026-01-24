@@ -9024,6 +9024,179 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Specialty Industrial',
     tags: ['electrical', 'mechanical', 'data_center', 'infrastructure', 'contracting'],
   },
+
+  // ========== 追加企业 (2026-01-24) ==========
+  'ADBE': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Creative Software',
+    tags: ['creative_cloud', 'pdf', 'design', 'video', 'marketing_cloud'],
+  },
+  'BRK.B': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service', 'product_sales', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Diversified Conglomerate',
+    tags: ['insurance', 'railroad', 'energy', 'consumer', 'investments'],
+  },
+  'MARA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Crypto Mining',
+    tags: ['bitcoin', 'mining', 'blockchain', 'compute'],
+  },
+
+  // ========== 追加50只股票 (2026-01-24) ==========
+  // --- S&P 500 Remaining ---
+  'MTD': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Precision Instruments',
+    tags: ['lab_instruments', 'precision_balance', 'analytics', 'quality_control'],
+  },
+  'GL': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Life Insurance',
+    tags: ['life_insurance', 'supplemental', 'annuities', 'direct_to_consumer'],
+  },
+  'CINF': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'P&C Insurance',
+    tags: ['property_casualty', 'commercial_insurance', 'independent_agents'],
+  },
+  'CNP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'gas', 'regulated', 'texas', 'distribution'],
+  },
+  'EVRG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'regulated', 'midwest', 'generation'],
+  },
+  'FE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'regulated', 'transmission', 'distribution'],
+  },
+  'LNT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'gas', 'regulated', 'iowa', 'wisconsin'],
+  },
+  'NI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Gas Utility',
+    tags: ['natural_gas', 'regulated', 'distribution', 'pipeline'],
+  },
+  'PNW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'regulated', 'arizona', 'generation'],
+  },
+  'PPL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'regulated', 'pennsylvania', 'kentucky', 'distribution'],
+  },
+
+  // --- Mid-cap Industrials ---
+  'LFUS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Electronic Components',
+    tags: ['fuses', 'sensors', 'protection', 'automotive', 'industrial'],
+  },
+
+  // --- Mid-cap Tech ---
+  'PCOR': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Construction Software',
+    tags: ['construction', 'project_management', 'saas', 'field_operations'],
+  },
+  'MNDY': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Work Management SaaS',
+    tags: ['work_os', 'project_management', 'collaboration', 'no_code'],
+  },
+  'GLBE': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B',
+    industrySegment: 'Cross-border Commerce',
+    tags: ['cross_border', 'ecommerce', 'localization', 'payments'],
+  },
+
+  // --- Consumer/Retail ---
+  'WOOF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Pet Retail',
+    tags: ['pet_food', 'pet_supplies', 'grooming', 'veterinary', 'retail'],
+  },
+
+  // --- Healthcare ---
+  'GDRX': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'advertising'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2C',
+    industrySegment: 'Pharma Tech',
+    tags: ['prescription_savings', 'pharmacy', 'price_comparison', 'telehealth'],
+  },
+  'RPRX': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Pharma Royalties',
+    tags: ['royalties', 'pharma', 'biotech', 'drug_development'],
+  },
 };
 
 // ============================================================

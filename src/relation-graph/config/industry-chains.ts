@@ -2411,6 +2411,30 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'AX': 'Regional Bank',                // Axos Financial - 数字银行
     'CALX': 'Specialty Industrial',       // Calix - 宽带接入平台
     'IESC': 'Specialty Industrial',       // IES Holdings - 电气承包
+
+    // ========== 追加企业 (2026-01-24) ==========
+    'ADBE': 'Creative Software',         // Adobe - 创意设计软件
+    'BRK.B': 'Diversified Conglomerate', // Berkshire Hathaway - 多元化集团
+    'MARA': 'Crypto Mining',             // Marathon Digital - 加密挖矿
+
+    // ========== 追加50只新股票 ==========
+    'MTD': 'Precision Instruments',     // Mettler-Toledo - 精密仪器
+    'GL': 'Life Insurance',              // Globe Life - 人寿保险
+    'CINF': 'P&C Insurance',            // Cincinnati Financial - 财产险
+    'CNP': 'Regulated Utility',         // CenterPoint Energy - 电力/天然气
+    'EVRG': 'Regulated Utility',        // Evergy - 电力公用
+    'FE': 'Regulated Utility',          // FirstEnergy - 电力输配
+    'LNT': 'Regulated Utility',         // Alliant Energy - 电力/天然气
+    'NI': 'Gas Utility',                // NiSource - 天然气公用
+    'PNW': 'Regulated Utility',         // Pinnacle West - 电力公用
+    'PPL': 'Regulated Utility',         // PPL Corporation - 电力配送
+    'LFUS': 'Electronic Components',    // Littelfuse - 电子元件
+    'PCOR': 'Construction Software',    // Procore - 建筑SaaS
+    'MNDY': 'Work Management SaaS',     // monday.com - 工作管理
+    'GLBE': 'Cross-border Commerce',    // Global-e - 跨境电商
+    'WOOF': 'Pet Retail',               // Petco - 宠物零售
+    'GDRX': 'Pharma Tech',              // GoodRx - 药品折扣平台
+    'RPRX': 'Pharma Royalties',         // Royalty Pharma - 药品特许权
   },
 
   // ============================================================
@@ -4231,6 +4255,286 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Regional Bank',           // 地区银行
     ],
 
+
+    // ========== 追加子行业链 (2026-01-24) ==========
+    'Auto OEM': [
+      'Auto Parts Retail',
+      'Car Rental',
+      'Auto Dealer',
+    ],
+
+    'Global Bank': [
+      'Asset Management',
+      'Capital Markets',
+      'Commercial Real Estate Services',
+    ],
+
+    'Creative Software': [
+      'Digital Media',
+      'AdTech DSP',
+      'E-commerce Platform',
+    ],
+
+    'Legacy Airline': [
+      'Hotel',
+      'Car Rental',
+      'Travel Meta',
+    ],
+
+    'Hospital Operator': [
+      'Medical Devices',
+      'Pharma Distribution',
+      'Health Insurance',
+    ],
+
+    'Factory Automation': [
+      'Auto OEM',
+      'Semiconductor Fab',
+      'Consumer Electronics OEM',
+    ],
+
+    'Solar Panel Manufacturer': [
+      'Residential Solar',
+      'Utility-Scale Solar',
+      'Regulated Utility',
+    ],
+
+    'Digital Bank': [
+      'Payment Network',
+      'Consumer Finance',
+      'Subprime Auto',
+    ],
+
+    'Neobank': [
+      'Payment Network',
+      'Digital Bank',
+      'Consumer Finance',
+    ],
+
+    'Retail Brokerage': [
+      'Capital Markets',
+      'Crypto Exchange',
+      'ETF Provider',
+    ],
+
+    'Dollar Store': [
+      'Packaged Foods',
+      'Mass Beauty',
+      'Basics Apparel',
+    ],
+
+    'Connected TV': [
+      'AdTech DSP',
+      'Streaming',
+      'Content Studio',
+    ],
+
+    'Digital Mortgage': [
+      'Title Insurance',
+      'Mortgage Insurance',
+      'Residential Real Estate Tech',
+    ],
+
+    'HVAC': [
+      'Residential Construction',
+      'Data Center Infrastructure',
+      'Commercial Real Estate Services',
+    ],
+
+    'Residential HVAC': [
+      'Residential Construction',
+      'Building Products Distribution',
+      'Home Furnishings',
+    ],
+
+    'Edge Computing': [
+      'Enterprise Cybersecurity',
+      'Cloud Hyperscaler',
+      'Enterprise SaaS',
+    ],
+
+    'Database Platform': [
+      'Cloud Hyperscaler',
+      'Enterprise SaaS',
+      'Data Infrastructure',
+    ],
+
+    'Data Streaming': [
+      'Cloud Hyperscaler',
+      'Enterprise SaaS',
+      'Data Infrastructure',
+    ],
+
+    'Crypto Exchange': [
+      'Payment Network',
+      'Capital Markets',
+      'Crypto Mining',
+    ],
+
+    'Crypto Mining': [
+      'Semiconductor Fab',
+      'Data Center Infrastructure',
+      'Regulated Utility',
+    ],
+
+    'For-Profit Education': [
+      'EdTech',
+      'Education Services',
+      'Student Housing',
+    ],
+
+    'Backup Power': [
+      'Residential Construction',
+      'Data Center Infrastructure',
+      'Regulated Utility',
+    ],
+
+    'Diversified Conglomerate': [
+      'Insurance',
+      'Railroad',
+      'Regulated Utility',
+    ],
+
+    'Telecom Carrier': [
+      'Enterprise SaaS',
+      'Edge Computing',
+      'Streaming',
+    ],
+
+    'Digital Engineering': [
+      'Enterprise SaaS',
+      'Cloud Hyperscaler',
+      'E-commerce Platform',
+    ],
+
+    'Value Retail': [
+      'Toys & Games',
+      'Mass Beauty',
+      'Basics Apparel',
+    ],
+
+    'HVAC & Refrigeration': [
+      'Cold Storage REIT',
+      'Grocery',
+      'Data Center Infrastructure',
+    ],
+
+    // ========== 追加50只新股票子行业链 ==========
+    'Analytical Instruments': [
+      'Large Pharma',
+      'Biotech Platform',
+      'Life Sciences Tools',
+    ],
+    'Precision Instruments': [
+      'Analytical Instruments',
+      'Large Pharma',
+      'Chemical Specialty',
+    ],
+    'Gas Utility': [
+      'Residential Construction',
+      'Industrial Gases',
+      'Nat Gas Midstream',
+    ],
+    'Pool & Spa Distribution': [
+      'Residential Construction',
+      'Chemical Specialty',
+      'Home Furnishings',
+    ],
+    'Marketing SaaS': [
+      'E-commerce Platform',
+      'Digital Media',
+      'Enterprise SaaS',
+    ],
+    'Construction Software': [
+      'Residential Construction',
+      'Commercial Real Estate Services',
+      'Construction Equipment',
+    ],
+    'Work Management SaaS': [
+      'Enterprise SaaS',
+      'IT Outsourcing',
+      'Digital Engineering',
+    ],
+    'Cross-border Commerce': [
+      'E-commerce Platform',
+      'Payment Network',
+      'Express Logistics',
+    ],
+    'Pet Retail': [
+      'Pet Products',
+      'Veterinary',
+      'Online Pet Retail',
+    ],
+    'Online Pet Retail': [
+      'Pet Products',
+      'Express Logistics',
+      'Packaged Foods',
+    ],
+    'Home Sharing': [
+      'OTA',
+      'Hotel Management',
+      'Travel Meta',
+    ],
+    'OTA': [
+      'Legacy Airline',
+      'Hotel Management',
+      'Car Rental',
+    ],
+    'Hotel Management': [
+      'Hotel REIT',
+      'Travel Meta',
+      'OTA',
+    ],
+    'Health Tech': [
+      'Hospital Operator',
+      'Large Pharma',
+      'Medical Devices',
+    ],
+    'Pharma Tech': [
+      'Pharmacy Retail',
+      'Large Pharma',
+      'Health Insurance',
+    ],
+    'Telehealth': [
+      'Health Insurance',
+      'Hospital Operator',
+      'Large Pharma',
+    ],
+    'Pharma Royalties': [
+      'Large Pharma',
+      'Large Biotech',
+      'Small Pharma',
+    ],
+    'Wealth Management Platform': [
+      'Online Brokerage',
+      'Asset Management',
+      'Financial Infrastructure',
+    ],
+    'Online Brokerage': [
+      'Capital Markets',
+      'Crypto Exchange',
+      'ETF Provider',
+    ],
+    'Options Exchange': [
+      'Capital Markets',
+      'Market Making',
+      'Financial Infrastructure',
+    ],
+    'Fixed Income Trading': [
+      'Capital Markets',
+      'Asset Management',
+      'Global Bank',
+    ],
+    'Solar Inverter': [
+      'Residential Solar',
+      'Solar Panel Manufacturer',
+      'Regulated Utility',
+    ],
+    'Integrated Steel': [
+      'Auto OEM',
+      'Construction Equipment',
+      'Residential Construction',
+    ],
   },
 };
 

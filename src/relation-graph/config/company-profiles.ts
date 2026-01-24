@@ -2490,6 +2490,82 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['digital', 'competitive_rates', 'convenience', 'technology'],
     channels: ['online'],
   },
+
+  // ========== 多元化集团 (Diversified Conglomerate) ==========
+  'BRK.B': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['insurance', 'investment', 'daily_essentials', 'energy'],
+    valueProps: ['reliability', 'value', 'trust', 'diversification'],
+    channels: ['retail', 'online', 'agent'],
+  },
+
+  // ========== 公用事业 B2B2C (Utilities) ==========
+  'CNP': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'natural_gas', 'home_energy'],
+    valueProps: ['reliability', 'essential', 'regulated'],
+    channels: ['direct', 'online'],
+  },
+  'EVRG': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'home_energy'],
+    valueProps: ['reliability', 'essential', 'regulated'],
+    channels: ['direct', 'online'],
+  },
+  'FE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'home_energy'],
+    valueProps: ['reliability', 'essential', 'regulated'],
+    channels: ['direct', 'online'],
+  },
+  'LNT': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'natural_gas', 'home_energy'],
+    valueProps: ['reliability', 'essential', 'regulated'],
+    channels: ['direct', 'online'],
+  },
+  'NI': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['natural_gas', 'home_energy'],
+    valueProps: ['reliability', 'essential', 'regulated'],
+    channels: ['direct', 'online'],
+  },
+  'PNW': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'home_energy'],
+    valueProps: ['reliability', 'essential', 'regulated'],
+    channels: ['direct', 'online'],
+  },
+  'PPL': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'home_energy'],
+    valueProps: ['reliability', 'essential', 'regulated'],
+    channels: ['direct', 'online'],
+  },
+
+  // ========== 宠物零售 B2C (Pet Retail) ==========
+  'WOOF': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['pet_food', 'pet_supplies', 'grooming', 'veterinary'],
+    valueProps: ['selection', 'convenience', 'service', 'community'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 保险 B2C (Insurance) ==========
+  'GL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['life_insurance', 'supplemental', 'family_protection'],
+    valueProps: ['security', 'affordable', 'direct'],
+    channels: ['agent', 'direct', 'online'],
+  },
+
+  // ========== 医药折扣 B2C (Pharma Discount) ==========
+  'GDRX': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['prescription', 'pharmacy', 'healthcare_savings'],
+    valueProps: ['savings', 'convenience', 'transparency', 'accessibility'],
+    channels: ['online', 'mobile'],
+  },
 };
 
 // ============================================================
@@ -3809,6 +3885,36 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'AX': 'mid',            // Axos Financial - 数字银行(中周期)
   'CALX': 'mid',          // Calix - 宽带接入平台(中周期)
   'IESC': 'mid',          // IES Holdings - 电气/机械承包(中周期)
+  'ADBE': 'late',          // Adobe - 创意软件(晚周期)
+  'BRK.B': 'defensive',    // Berkshire Hathaway - 多元化集团(防御)
+  'MARA': 'early',         // Marathon Digital - 加密挖矿(早周期)
+
+  // --- 追加50只: S&P 500 Remaining ---
+  'MTD': 'mid',            // Mettler-Toledo - 精密仪器(中周期)
+  'GL': 'defensive',       // Globe Life - 人寿保险(防御)
+  'CINF': 'defensive',     // Cincinnati Financial - 财产险(防御)
+  'CNP': 'defensive',      // CenterPoint Energy - 公用事业(防御)
+  'EVRG': 'defensive',     // Evergy - 公用事业(防御)
+  'FE': 'defensive',       // FirstEnergy - 公用事业(防御)
+  'LNT': 'defensive',      // Alliant Energy - 公用事业(防御)
+  'NI': 'defensive',       // NiSource - 天然气公用(防御)
+  'PNW': 'defensive',      // Pinnacle West - 公用事业(防御)
+  'PPL': 'defensive',      // PPL Corporation - 公用事业(防御)
+
+  // --- Mid-cap Industrials ---
+  'LFUS': 'mid',           // Littelfuse - 电子元件(中周期)
+
+  // --- Mid-cap Tech ---
+  'PCOR': 'early',         // Procore - 建筑SaaS(早周期)
+  'MNDY': 'early',         // monday.com - 工作管理SaaS(早周期)
+  'GLBE': 'early',         // Global-e - 跨境电商(早周期)
+
+  // --- Consumer/Retail ---
+  'WOOF': 'mid',           // Petco - 宠物零售(中周期)
+
+  // --- Healthcare ---
+  'GDRX': 'mid',           // GoodRx - 医药折扣(中周期)
+  'RPRX': 'defensive',     // Royalty Pharma - 药品特许权(防御)
 };
 
 // ============================================================
@@ -8227,6 +8333,98 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'IESC': {
     interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // ========== 追加企业 (2026-01-24) ==========
+  'ADBE': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'BRK.B': {
+    interestRate: 0.3, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: 0.1,
+  },
+  'MARA': {
+    interestRate: -0.7, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.3,
+  },
+
+  // --- 追加50只: S&P 500 Remaining ---
+  'MTD': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'GL': {
+    interestRate: 0.4, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'CINF': {
+    interestRate: 0.5, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'CNP': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.2,
+  },
+  'EVRG': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'FE': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'LNT': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'NI': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.3,
+  },
+  'PNW': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'PPL': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+
+  // --- Mid-cap Industrials ---
+  'LFUS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+
+  // --- Mid-cap Tech ---
+  'PCOR': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'MNDY': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'GLBE': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.1,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+
+  // --- Consumer/Retail ---
+  'WOOF': {
+    interestRate: -0.3, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // --- Healthcare ---
+  'GDRX': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.2, unemployment: 0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'RPRX': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
   },
 };
 
