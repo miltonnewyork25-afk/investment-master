@@ -1,0 +1,261 @@
+# 投资大师 - 行为心理学评分修正配置
+# Psychology-Augmented Scoring Configuration
+# Version: 1.0.0 | Based on: Kahneman/Tversky Prospect Theory + Cialdini Influence
+# 与 scoring.yaml 配合使用，提供偏误修正层
+
+version: "1.0.0"
+effective_date: "2026-01-24"
+
+# ============================================================
+# 第一层: 认知偏误修正规则 (Bias Correction Layer)
+# 在现有评分之上叠加偏误检测与修正
+# ============================================================
+
+bias_corrections:
+  # --- A: 信息处理偏误修正 ---
+  anchoring:
+    description: "防止锚定于52周高/低价或分析师目标价"
+    trigger: "当前价格与52周高/低价偏差 > 40%"
+    correction: "使用均值回归期望值替代锚定值"
+    weight_adjustment: -0.10  # 降低当前估值权重10%
+    rule: "if abs(price - 52w_anchor) / 52w_anchor > 0.4: apply_mean_reversion_lens"
+
+  recency_bias:
+    description: "防止过度依赖最近1-2个季度数据"
+    trigger: "近期趋势与长期趋势方向相反"
+    correction: "增加历史周期数据权重"
+    lookback_minimum: 20  # 至少看20个季度(5年)
+    rule: "weight_recent_4q = 0.3; weight_historical_16q = 0.7"
+
+  confirmation_bias:
+    description: "检测是否只关注支持现有仓位的信号"
+    trigger: "同方向证据占比 > 80%"
+    correction: "主动搜索反方向证据"
+    flag: "CONFIRMATION_RISK"
+    rule: "if bull_evidence_ratio > 0.8: search_bear_signals(mandatory=True)"
+
+  narrative_fallacy:
+    description: "防止将故事性解释当作预测依据"
+    trigger: "分析中因果叙事 > 数据引用"
+    correction: "要求每个结论附带统计基准率"
+    rule: "if causal_claims > statistical_citations: flag_narrative_risk"
+
+  # --- B: 情绪估值偏误修正 ---
+  loss_aversion:
+    description: "修正损失厌恶导致的持有过久/卖出过早"
+    lambda: 2.25  # Kahneman/Tversky 损失厌恶系数
+    correction_rules:
+      - "if position_loss > 20%: evaluate_stop_loss_objectively (ignore sunk cost)"
+      - "if position_gain > 15%: do NOT sell just to lock in gains (check cycle stage)"
+      - "if score < 30 AND holding_loss: sell_signal_override (bias = holding losers)"
+      - "if score > 70 AND position_gain: hold_signal_override (bias = selling winners)"
+
+  disposition_effect:
+    description: "修正处置效应(卖赢持亏)"
+    detection: "realized_gain_count >> unrealized_gain_count"
+    correction: "评分系统忽略当前盈亏，只看基本面信号"
+    rule: "decision = f(score, cycle_stage); NOT f(current_pnl)"
+
+  endowment_effect:
+    description: "修正禀赋效应(高估已持有资产)"
+    trigger: "持仓时间 > 6个月 且 评分持续下降"
+    correction: "问自己：如果今天没有持仓，会以当前价格买入吗？"
+    rule: "if holding_period > 180d AND score_trend_down: apply_fresh_eyes_test"
+
+  sunk_cost:
+    description: "修正沉没成本谬误"
+    trigger: "持仓理由仅为'已经亏了太多'"
+    correction: "忽略历史成本，仅评估未来预期"
+    rule: "holding_reason != prior_investment_only"
+
+  # --- C: 社会/群体偏误修正 ---
+  herding:
+    description: "检测群体行为信号"
+    metrics:
+      - "put_call_ratio < 0.5 for 5d = peak_herding_bullish"
+      - "put_call_ratio > 1.2 for 5d = peak_herding_bearish"
+      - "analyst_consensus > 90% same_direction = contrarian_signal"
+    correction: "群体极端时增加逆向评分权重"
+    contrarian_bonus: +15  # 群体极端恐惧时加15分
+    contrarian_penalty: -15  # 群体极端贪婪时减15分
+
+  fomo:
+    description: "FOMO信号检测与抑制"
+    trigger: "股价快速上涨 > 30%/月 且 社交媒体热度 > 2σ"
+    correction: "激活冷静期规则，延迟决策24小时"
+    rule: "if price_momentum_1m > 0.3 AND social_buzz > 2_sigma: cooling_period(24h)"
+
+  information_cascade:
+    description: "信息瀑布检测"
+    trigger: "连续N个同方向信号且无反向信号"
+    cascade_probability:
+      n_2: 0.1
+      n_5: 0.4
+      n_10: 0.7
+      n_15: 0.9
+    correction: "瀑布概率 > 0.7时，搜索独立反向数据源"
+
+  # --- D: 过度自信偏误修正 ---
+  overconfidence:
+    description: "校准信心水平"
+    calibration_rule: "actual_accuracy = 0.55 * self_assessed_accuracy"
+    correction: "仓位大小与历史准确率挂钩，非与信心挂钩"
+    max_position_size: "f(historical_hit_rate, NOT confidence_feeling)"
+
+  hindsight_bias:
+    description: "事后诸葛亮修正"
+    prevention: "所有预测必须在事前记录，事后对比"
+    rule: "log_prediction_before_event; compare_after; track_accuracy_objectively"
+
+  # --- E: 时间偏误修正 ---
+  myopic_loss_aversion:
+    description: "频繁查看导致的风险厌恶放大"
+    correction: "默认展示月/季度视图，非日视图"
+    rule: "default_view = 'quarterly'; daily_view = opt_in_only"
+    effect: "daily_checkers_risk_aversion = 2x annual_checkers"
+
+  hyperbolic_discounting:
+    description: "现在偏好修正"
+    correction: "展示12个月持有历史收益，非当日涨跌"
+    rule: "show_12m_forward_return_history when score_triggers"
+
+# ============================================================
+# 第二层: 周期阶段心理映射 (Cycle Stage Psychology Map)
+# 每个周期阶段对应特定的心理偏误组合
+# ============================================================
+
+cycle_psychology_map:
+  trough:  # Y0/Y4 底部
+    dominant_biases: ["loss_aversion", "herding_bearish", "recency_bias", "availability"]
+    crowd_emotion: "恐惧/绝望"
+    correct_action: "买入（逆群体）"
+    bias_correction_priority: ["loss_aversion", "herding"]
+    message: "当所有人恐惧时，系统评分高=机会。信任数据，非情绪。"
+    score_adjustment: +10  # 底部区域额外加分（群体恐惧溢价）
+
+  early_recovery:  # Y1 早期恢复
+    dominant_biases: ["anchoring_to_lows", "disbelief", "regret_aversion"]
+    crowd_emotion: "怀疑/不信任"
+    correct_action: "持有/加仓"
+    bias_correction_priority: ["anchoring", "regret_aversion"]
+    message: "早期恢复时群体仍在怀疑。保持仓位。"
+    score_adjustment: +5
+
+  mid_cycle:  # Y2 中周期
+    dominant_biases: ["overconfidence", "disposition_effect", "narrative_fallacy"]
+    crowd_emotion: "乐观/自信"
+    correct_action: "持有，准备减仓"
+    bias_correction_priority: ["overconfidence", "disposition_effect"]
+    message: "收益开始积累，不要因为赚了就急于卖出。观察周期信号。"
+    score_adjustment: 0
+
+  peak:  # Y3 顶部
+    dominant_biases: ["fomo", "herding_bullish", "overconfidence", "optimism_bias"]
+    crowd_emotion: "贪婪/狂热"
+    correct_action: "减仓/卖出"
+    bias_correction_priority: ["fomo", "herding", "overconfidence"]
+    message: "群体狂热=卖出信号。100%的人都看好时，谁来接盘？"
+    score_adjustment: -10  # 顶部区域额外减分（群体贪婪折价）
+
+# ============================================================
+# 第三层: 边际收益分析框架 (Marginal Analysis Framework)
+# ============================================================
+
+marginal_analysis:
+  prospect_theory:
+    alpha: 0.88  # 递减敏感度
+    lambda: 2.25  # 损失厌恶系数
+    reference_point_rules:
+      - "adaptation_period: 60 days (gains become new reference)"
+      - "aspiration_effect: peer_return as reference"
+      - "expectation_effect: analyst_consensus as reference"
+      - "peak_effect: ATH as permanent anchor"
+
+  marginal_signal_value:
+    description: "每条新信号的边际贡献递减"
+    rules:
+      - "first_confirming_signal: value = 1.0"
+      - "second_confirming_signal: value = 0.7"
+      - "third_confirming_signal: value = 0.4"
+      - "fourth+_confirming_signal: value = 0.2"
+      - "first_CONTRARY_signal: value = 1.5 (novelty premium)"
+    implication: "独立反向信号比第N个同向信号更有价值"
+
+  marginal_position_sizing:
+    description: "基于边际效用递减的仓位管理"
+    rules:
+      - "score 80-100: position = 20% of portfolio (max conviction)"
+      - "score 60-79: position = 15%"
+      - "score 40-59: position = 10%"
+      - "score 20-39: position = 5% (or exit)"
+      - "score 0-19: position = 0% (exit)"
+    marginal_add_rule: "每次加仓量 = 上次加仓量 × 0.7 (递减)"
+
+# ============================================================
+# 第四层: 营销心理触发器 (Marketing Psychology Triggers)
+# ============================================================
+
+marketing_psychology:
+  fogg_behavior_model:
+    # B = M × A × P (Behavior = Motivation × Ability × Prompt)
+    motivation_levers:
+      - "pain_avoidance: '不要再买在半山腰'"
+      - "pleasure_seeking: '在底部抓住机会'"
+      - "social_acceptance: '加入理性投资者社区'"
+      - "social_rejection: '不要做最后的接盘侠'"
+    ability_simplifiers:
+      - "one_number: 0-100评分，一眼看懂"
+      - "one_click: 订阅后每周自动推送"
+      - "one_minute: 60秒快速视频解读"
+    prompt_triggers:
+      - "earnings_date: 财报发布日提醒"
+      - "score_change: 评分变化超过10分时通知"
+      - "cycle_stage_change: 周期阶段转换时"
+
+  cialdini_application:
+    reciprocity: "免费提供完整框架代码 → 建立互惠心理"
+    consistency: "从关注→订阅→使用→分享，逐步升级承诺"
+    social_proof: "164个数据点100%准确率 + 用户社区规模"
+    authority: "基于Damodaran/Howard Marks理论 + SEC数据"
+    scarcity: "每周评分是时间敏感的，过期即失效"
+    unity: "'我们是逆周期投资者'共同身份"
+
+  hook_model:
+    trigger: "周报发布/评分变化/财报日期"
+    action: "查看评分（1次点击，2秒完成）"
+    variable_reward: "新评分可能确认或挑战你的论点"
+    investment: "自定义观察列表，保存分析笔记"
+
+# ============================================================
+# 第五层: 质量控制标准 (Quality Control Standards)
+# ============================================================
+
+quality_standards:
+  output_validation:
+    - "每个投资建议必须附带至少2个独立数据源"
+    - "每个分析必须识别可能的偏误风险"
+    - "每个预测必须给出概率区间，非点估计"
+    - "每个信号必须经过反向验证（如果信号错了会怎样）"
+
+  bias_audit_checklist:
+    - "是否只看了支持结论的证据？(confirmation bias check)"
+    - "最近的事件是否被过度权重？(recency bias check)"
+    - "是否因为群体观点而动摇？(herding check)"
+    - "是否因为已经亏钱而不愿止损？(sunk cost check)"
+    - "是否因为赚钱了就想马上卖？(disposition effect check)"
+    - "是否因为'这次不一样'而忽视历史规律？(narrative fallacy check)"
+
+  multi_perspective_validation:
+    perspective_bull: "如果我是极度看多者，我会如何解读？"
+    perspective_bear: "如果我是极度看空者，我会如何解读？"
+    perspective_novice: "如果我是新手投资者，我会如何反应？"
+    perspective_quant: "纯粹的数据说了什么？没有任何叙事。"
+    resolution: "只有4个视角中3个以上一致时，才输出高信心建议"
+
+  ethical_boundaries:
+    - "永远不使用恐慌性语言操纵行为"
+    - "所有数据主张必须可验证"
+    - "明确标注历史回测 ≠ 未来保证"
+    - "不隐藏风险，不夸大收益"
+    - "不利用用户的认知偏误获利"
+    - "营销使用教育性引导，非操纵性诱导"

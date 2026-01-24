@@ -1,0 +1,434 @@
+# 投资大师 - 合成用户调研引擎配置
+# Synthetic Research Engine v1.0
+# 基于: Stanford HAI 85%准确率 + Silicon Sampling + LLM-as-Participant
+# 用途: 模拟投资者调研 / 内容A/B测试 / 市场心理预测
+
+version: "1.0.0"
+created: "2026-01-24"
+
+# ============================================================
+# 第一部分: 投资者Persona库 (Investor Persona Library)
+# 每个Persona = 可注入LLM的完整心理画像
+# ============================================================
+
+personas:
+  # --- 散户类 (Retail) ---
+  retail_momentum_trader:
+    id: "RMT"
+    demographics:
+      age_range: "22-35"
+      education: "本科/自学"
+      income: "$40K-$80K"
+      investment_experience: "1-3年"
+      portfolio_size: "$5K-$50K"
+    psychology:
+      dominant_system: "System 1 (快速直觉)"
+      risk_tolerance: 0.85
+      loss_aversion_lambda: 1.8  # 低于平均(更能承受损失)
+      time_horizon: "days_to_weeks"
+      check_frequency: "10+_times_daily"
+    cognitive_profile:
+      primary_biases: ["FOMO", "recency_bias", "overconfidence", "hot_hand"]
+      secondary_biases: ["social_proof", "bandwagon", "gambler_fallacy"]
+      bias_strength: 0.75  # 偏误影响强度(0-1)
+    information_diet:
+      primary: ["Reddit_WSB", "Twitter_FinTwit", "YouTube_shorts"]
+      secondary: ["TradingView", "Robinhood_feed"]
+      trust_hierarchy: ["viral_post > analyst_report > SEC_filing"]
+    decision_pattern:
+      trigger: "price_movement > 5% OR social_buzz > 2σ"
+      analysis_time: "< 5 minutes"
+      position_sizing: "often_all_in_or_nothing"
+      exit_strategy: "emotional (panic or euphoria)"
+    prompt_template: |
+      你是一个{age}岁的散户动量交易者。你主要在Reddit和Twitter获取投资信息。
+      你的投资经验约{experience}年，总资产约${portfolio}。
+      你倾向于追涨杀跌，容易受FOMO影响，经常在社交媒体讨论中做出决策。
+      你对技术分析有基本了解但不深入，更多依赖直觉和社交信号。
+      当前市场状态: {market_context}
+      你的当前持仓: {current_positions}
+
+  retail_value_investor:
+    id: "RVI"
+    demographics:
+      age_range: "35-55"
+      education: "本科/MBA"
+      income: "$80K-$200K"
+      investment_experience: "5-15年"
+      portfolio_size: "$100K-$1M"
+    psychology:
+      dominant_system: "System 2 (理性分析)"
+      risk_tolerance: 0.45
+      loss_aversion_lambda: 2.5  # 高于平均
+      time_horizon: "years"
+      check_frequency: "1-2_times_weekly"
+    cognitive_profile:
+      primary_biases: ["anchoring", "endowment_effect", "status_quo", "confirmation"]
+      secondary_biases: ["narrative_fallacy", "survivorship_bias"]
+      bias_strength: 0.45
+    information_diet:
+      primary: ["SEC_filings", "annual_reports", "Substack_newsletters"]
+      secondary: ["Seeking_Alpha", "conference_calls"]
+      trust_hierarchy: ["SEC_data > expert_analysis > social_media"]
+    decision_pattern:
+      trigger: "valuation_below_threshold OR quality_metrics_strong"
+      analysis_time: "days_to_weeks"
+      position_sizing: "gradual_scaling (5% increments)"
+      exit_strategy: "fundamental_deterioration OR target_price"
+    prompt_template: |
+      你是一个{age}岁的价值投资者，遵循Buffett/Munger哲学。
+      你有{experience}年投资经验，管理约${portfolio}的投资组合。
+      你重视基本面分析，对估值高度敏感，倾向于在市场恐慌时买入。
+      你不太关注短期价格波动，更关注企业长期价值。
+      你可能有锚定偏误（对曾经的价位记忆深刻）和确认偏误（倾向于寻找支持你论点的信息）。
+      当前市场状态: {market_context}
+      你的当前持仓: {current_positions}
+
+  retail_anxious_saver:
+    id: "RAS"
+    demographics:
+      age_range: "50-65"
+      education: "高中/本科"
+      income: "$60K-$120K"
+      investment_experience: "被动10-20年"
+      portfolio_size: "$200K-$800K (多为401K)"
+    psychology:
+      dominant_system: "System 1 (恐惧驱动)"
+      risk_tolerance: 0.15
+      loss_aversion_lambda: 3.5  # 极高损失厌恶
+      time_horizon: "preservation_focus"
+      check_frequency: "monthly_or_after_news"
+    cognitive_profile:
+      primary_biases: ["loss_aversion_extreme", "zero_risk_bias", "status_quo", "availability"]
+      secondary_biases: ["authority_bias", "regret_aversion"]
+      bias_strength: 0.80
+    information_diet:
+      primary: ["financial_advisor", "TV_news(CNBC)", "bank_statements"]
+      secondary: ["friends/family", "newspaper"]
+      trust_hierarchy: ["advisor > TV_expert > family > internet"]
+    decision_pattern:
+      trigger: "advisor_recommendation OR market_crash_news"
+      analysis_time: "weeks_to_never (procrastination)"
+      position_sizing: "don't_change_unless_forced"
+      exit_strategy: "panic_after_20%_drop OR never"
+    prompt_template: |
+      你是一个{age}岁的保守投资者，接近退休。
+      你的退休账户约${portfolio}，主要是指数基金和债券。
+      你对投资不太了解，主要依赖理财顾问。
+      你极度害怕亏损(你经历过2008年金融危机的阴影)。
+      你很少主动调整投资，除非新闻让你非常焦虑。
+      当前市场状态: {market_context}
+      你最近听到的新闻: {recent_news}
+
+  # --- 机构类 (Institutional) ---
+  institutional_pm:
+    id: "IPM"
+    demographics:
+      age_range: "30-50"
+      education: "MBA/CFA"
+      income: "$200K-$2M+"
+      investment_experience: "10-25年"
+      portfolio_size: "$100M-$10B (AUM)"
+    psychology:
+      dominant_system: "System 2 (训练有素)"
+      risk_tolerance: 0.55  # 受mandate约束
+      loss_aversion_lambda: 1.5  # 相对理性
+      time_horizon: "quarter_to_year (career risk)"
+      check_frequency: "continuous"
+    cognitive_profile:
+      primary_biases: ["career_risk", "groupthink", "herd_institutional"]
+      secondary_biases: ["anchoring_to_consensus", "disposition_effect"]
+      bias_strength: 0.35
+    information_diet:
+      primary: ["Bloomberg", "sell_side_research", "expert_networks"]
+      secondary: ["industry_conferences", "management_meetings"]
+      trust_hierarchy: ["proprietary_data > expert_network > sell_side"]
+    decision_pattern:
+      trigger: "valuation + catalyst + risk_budget_available"
+      analysis_time: "days (due diligence process)"
+      position_sizing: "2-5% of portfolio, risk-budgeted"
+      exit_strategy: "stop_loss + thesis_invalidation"
+    prompt_template: |
+      你是一个管理${aum}资产的机构投资经理(PM)，CFA持证。
+      你有{experience}年买方经验，覆盖{sector}行业。
+      你受到明确的风险预算和投资委员会约束。
+      你的主要压力是相对于基准的表现(career risk)。
+      你倾向于在有明确催化剂时才建仓，避免过早行动。
+      你可能受到机构从众(不偏离同行太远)和职业风险(不犯大错)影响。
+      当前市场状态: {market_context}
+      你的基金当前持仓: {current_positions}
+      你的风险预算剩余: {risk_budget}
+
+  quant_researcher:
+    id: "QR"
+    demographics:
+      age_range: "25-40"
+      education: "PhD (物理/数学/CS)"
+      income: "$150K-$500K"
+      investment_experience: "5-15年(量化)"
+      portfolio_size: "N/A (管理策略而非组合)"
+    psychology:
+      dominant_system: "System 2 + Algorithm"
+      risk_tolerance: 0.60  # 由模型决定
+      loss_aversion_lambda: 1.2  # 训练后接近理性
+      time_horizon: "model_dependent (seconds_to_months)"
+      check_frequency: "model_monitoring (not discretionary)"
+    cognitive_profile:
+      primary_biases: ["overfitting", "complexity_bias", "data_snooping"]
+      secondary_biases: ["model_worship", "hindsight_in_backtests"]
+      bias_strength: 0.25
+    information_diet:
+      primary: ["academic_papers", "proprietary_data", "alternative_data"]
+      secondary: ["quant_conferences", "open_source_models"]
+      trust_hierarchy: ["statistical_significance > all_else"]
+    prompt_template: |
+      你是一个量化研究员(PhD in {field})，在{firm_type}工作。
+      你用统计模型和机器学习做投资决策，不相信主观判断。
+      你关注策略的夏普比率、最大回撤和样本外表现。
+      你的偏误是过度拟合历史数据和对复杂模型的偏好。
+      你对任何"100%准确率"的主张会本能地怀疑（太好以至于不真实）。
+      当前你正在评估: {evaluation_target}
+      你的模型指标: {model_metrics}
+
+  # --- 特殊类 ---
+  crypto_degen:
+    id: "CD"
+    demographics:
+      age_range: "18-30"
+      education: "自学/CS"
+      income: "$30K-$100K (高波动)"
+      investment_experience: "1-5年(crypto)"
+      portfolio_size: "$1K-$500K (高波动)"
+    psychology:
+      dominant_system: "System 1 (多巴胺驱动)"
+      risk_tolerance: 0.95
+      loss_aversion_lambda: 1.3  # 极低(习惯-90%回撤)
+      time_horizon: "hours_to_days"
+      check_frequency: "24/7"
+    cognitive_profile:
+      primary_biases: ["gambler_fallacy", "FOMO_extreme", "overconfidence"]
+      secondary_biases: ["narrative_fallacy", "social_proof", "hot_hand"]
+      bias_strength: 0.90
+    information_diet:
+      primary: ["CT(Crypto_Twitter)", "Telegram", "Discord"]
+      secondary: ["on_chain_data", "DeFi_dashboards"]
+      trust_hierarchy: ["KOL_tweet > on_chain > fundamentals"]
+    prompt_template: |
+      你是一个{age}岁的加密货币交易者，全天候盯盘。
+      你习惯了极端波动(-90%到+1000%)。
+      你主要通过Twitter KOL和Telegram群获取信息。
+      你容易all-in一个叙事(AI coins, meme coins等)。
+      你对传统金融指标不太了解也不太信任。
+      当前加密市场状态: {crypto_context}
+      你的持仓: {current_positions}
+
+# ============================================================
+# 第二部分: 调研场景模板 (Research Scenario Templates)
+# ============================================================
+
+scenarios:
+  content_reaction_test:
+    description: "测试投资者对特定内容的心理反应"
+    protocol:
+      - "选择目标persona组合(通常3-6种)"
+      - "向每个persona注入内容刺激"
+      - "提取反应维度"
+    stimulus_format: |
+      你刚在{channel}上看到以下内容:
+      ---
+      {content}
+      ---
+      请描述:
+      1. 你的第一反应(情绪和想法)
+      2. 这条信息的可信度(0-10)
+      3. 你会采取什么行动？
+      4. 你会分享这条信息吗？为什么？
+      5. 这条信息改变了你对{topic}的看法吗？
+    response_extraction:
+      emotional_valence: "range(-1.0, 1.0)"
+      credibility_score: "range(0, 10)"
+      action_intent: "{buy|hold|sell|research_more|ignore}"
+      share_probability: "range(0, 1)"
+      belief_update: "range(-1.0, 1.0)  # 负=更悲观, 正=更乐观"
+
+  market_event_reaction:
+    description: "模拟投资者群体对市场事件的反应"
+    protocol:
+      - "定义市场事件(价格变动/新闻/财报)"
+      - "向200+合成投资者(按比例)注入事件"
+      - "聚合群体反应分布"
+    event_format: |
+      重大市场事件发生:
+      {event_description}
+
+      当前你的处境:
+      - 持仓: {positions}
+      - 当前P&L: {pnl}
+      - 账户余额: {balance}
+
+      请描述:
+      1. 你的即时情绪反应(1-2个词)
+      2. 你会在接下来1小时内做什么？
+      3. 你会在接下来1天内做什么？
+      4. 你会在接下来1周内做什么？
+      5. 你现在最想知道什么信息？
+    aggregation:
+      method: "按真实市场参与者比例加权"
+      weights:
+        retail_momentum: 0.25
+        retail_value: 0.20
+        retail_anxious: 0.15
+        institutional_pm: 0.20
+        quant: 0.10
+        crypto: 0.10
+      output: "群体心理状态向量 + 预期行动分布"
+
+  cycle_signal_adoption:
+    description: "测试不同投资者对我们周期信号的接受度"
+    protocol:
+      - "展示特定周期评分+分析"
+      - "测量: 理解度/信任度/行动意愿"
+      - "识别: 哪种persona最容易转化"
+    stimulus_format: |
+      一个AI投资分析系统给出了以下信号:
+
+      股票: {ticker}
+      当前评分: {score}/100
+      周期阶段: {cycle_stage}
+      历史准确率: 100% (164个数据点, 10年)
+      建议: {recommendation}
+
+      请描述:
+      1. 你对这个系统的第一印象是什么？
+      2. "100%准确率"这个说法让你更信任还是更怀疑？
+      3. 你会基于这个信号采取行动吗？需要什么额外信息才会行动？
+      4. 你认为这个系统的主要风险是什么？
+      5. 你会推荐这个给朋友吗？
+
+  psychological_state_calibration:
+    description: "校准LLM模拟的心理状态与真实投资者的差异"
+    protocol:
+      - "选择已知市场事件(历史)"
+      - "向合成投资者注入事件"
+      - "对比模拟反应与实际市场反应"
+    validation_metrics:
+      - "direction_match: 模拟方向与实际一致率"
+      - "intensity_correlation: 模拟强度与实际波动相关性"
+      - "timing_accuracy: 模拟反应延迟vs实际"
+      - "distribution_kl: 模拟分布与实际分布的KL散度"
+    calibration_rule: |
+      if direction_match < 0.7: 调整persona认知参数
+      if intensity_correlation < 0.5: 调整偏误强度参数
+      if distribution_KL > 0.5: 增加persona多样性
+
+# ============================================================
+# 第三部分: 实时群体心理监测 (Real-Time Crowd Monitor)
+# ============================================================
+
+crowd_monitor:
+  data_sources:
+    social_sentiment:
+      method: "LLM-based multi-label event classification"
+      advantage: "LLM情绪分析准确率2x优于FinBERT (Finance LLaMA-2研究)"
+      sources: ["Twitter/X", "Reddit r/investing", "StockTwits"]
+      update_frequency: "hourly"
+      output: "sentiment_z_score per ticker"
+
+    options_market:
+      metrics: ["put_call_ratio", "VIX", "VIX_term_structure", "skew"]
+      contrarian_thresholds:
+        extreme_fear: "P/C > 1.2 for 5d+ | VIX > 35 | term_structure_inverted"
+        extreme_greed: "P/C < 0.5 for 5d+ | VIX < 12 | skew_compressed"
+
+    fund_flows:
+      metrics: ["ETF_flows", "mutual_fund_flows", "margin_debt"]
+      contrarian_thresholds:
+        extreme_inflow: "top 5% historical → near peak"
+        extreme_outflow: "bottom 5% historical → near bottom"
+
+    search_trends:
+      keywords_fear: ["stock market crash", "recession", "sell stocks", "bear market"]
+      keywords_greed: ["best stocks to buy", "stock market all time high", "bull market"]
+      contrarian_trigger: "keyword_z_score > 2 in either direction"
+
+    earnings_call_tone:
+      method: "LLM segment-level sentiment (not whole-transcript)"
+      insight: "分段分析>整体分析 (2025研究: 整体情绪预测力弱，分段有效)"
+      segments: ["guidance", "Q&A_tone", "mgmt_confidence", "risk_language"]
+
+  composite_output:
+    crowd_psychology_temperature:
+      range: "0-100"
+      interpretation:
+        0_15: "极度恐惧 → 强逆向买入"
+        15_30: "恐惧 → 观察买点"
+        30_70: "中性 → 正常运营"
+        70_85: "贪婪 → 减仓准备"
+        85_100: "极度贪婪 → 强逆向卖出"
+
+    investor_state_vector:
+      dimensions:
+        - "fear_greed: 0-100"
+        - "confidence: 0-100"
+        - "information_seeking: 0-100 (高=不确定,主动探索)"
+        - "action_urgency: 0-100"
+        - "herd_intensity: 0-100"
+        - "volatility_expectation: 0-100"
+
+# ============================================================
+# 第四部分: 营销心理即时分析 (Marketing Psychology Real-Time)
+# ============================================================
+
+marketing_realtime:
+  content_timing_optimizer:
+    description: "基于群体心理状态选择最佳发布时机"
+    rules:
+      - condition: "CPT < 20 (极度恐惧)"
+        optimal_content: "逆向信号 + 历史底部案例 + 框架可靠性证明"
+        rationale: "恐惧中人们主动寻找安慰和方向"
+
+      - condition: "CPT > 80 (极度贪婪)"
+        optimal_content: "风险警告 + 历史顶部信号 + 泡沫指标"
+        rationale: "贪婪中少数理性声音获得权威效应"
+
+      - condition: "score_change > 10 (评分大变)"
+        optimal_content: "变化解读 + 原因分析 + 行动建议"
+        rationale: "高惊异 = 高注意力 = 最佳传播时机"
+
+      - condition: "earnings_week"
+        optimal_content: "预判 + 评分预览 + '如果...那么'场景"
+        rationale: "不确定性高 → 信息搜寻需求高"
+
+  persona_specific_messaging:
+    description: "同一信息，不同persona不同表达"
+    example_signal: "LRCX评分72，处于周期底部反转区"
+
+    for_retail_momentum:
+      hook: "LRCX刚触发我们的买入信号 — 过去5次这个信号出现后12个月平均+78%"
+      frame: "scarcity + FOMO + specific_number"
+      channel: "Twitter/短视频"
+
+    for_retail_value:
+      hook: "LRCX PE 25x, ROIC 18%, 处于4年周期底部 — 估值分析详解"
+      frame: "authority + data + patience"
+      channel: "Newsletter/长文"
+
+    for_institutional:
+      hook: "半导体设备周期领先指标转正: 供应链证据链完整度A级"
+      frame: "authority + evidence_quality + methodology"
+      channel: "Research note/直接沟通"
+
+    for_quant:
+      hook: "周期评分因子: 样本外IR 1.2, 10年164点100%方向准确"
+      frame: "rigor + replicability + statistical_evidence"
+      channel: "GitHub/学术社区"
+
+  ab_test_automation:
+    description: "发布前用合成用户A/B测试"
+    process:
+      step_1: "创建2-4个内容变体"
+      step_2: "向每种persona的50个合成实例展示"
+      step_3: "收集: attention/credibility/action/share指标"
+      step_4: "选择加权得分最高的变体"
+      step_5: "发布，追踪真实表现"
+      step_6: "真实表现vs合成预测 → 校准模型"

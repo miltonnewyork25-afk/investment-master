@@ -1,0 +1,305 @@
+# 投资大师 - 心理学驱动营销引擎
+# Psychology-Driven Marketing Engine v1.0
+# 基于: Cialdini 7原则 + Fogg B=MAP + Hook Model + 前景理论
+# 用途: 指导所有内容创作、社区运营、转化优化
+
+version: "1.0.0"
+created: "2026-01-24"
+
+# ============================================================
+# 原子级内容创作规则 (Atomic Content Rules)
+# 每条规则是最小可执行单元
+# ============================================================
+
+content_atoms:
+  # --- 标题/Hook 心理学规则 ---
+  headline_rules:
+    curiosity_gap:
+      description: "信息缺口制造好奇心"
+      formula: "已知信息 + 暗示更多 + 不完全揭示"
+      examples:
+        - "这3只股票刚触发了100%历史准确率的买入信号"
+        - "LRCX评分72 vs INTC评分18 —— 差距为何如此之大？"
+        - "华尔街不告诉散户的逆周期法则"
+      dont:
+        - "我们的评分系统很好"  # 太抽象
+        - "半导体分析报告"  # 无好奇心
+
+    loss_frame:
+      description: "损失框架比收益框架有效2.25倍"
+      formula: "强调不行动的损失 > 行动的收益"
+      examples:
+        - "你正在错过底部 —— 这个信号过去5次都对了"
+        - "每次忽视这个指标的投资者，平均多亏23%"
+        - "不要做最后一个知道周期已经转向的人"
+      dont:
+        - "使用我们的工具可以赚更多"  # 收益框架，弱
+
+    specific_number:
+      description: "具体数字 > 模糊描述 (锚定效应)"
+      formula: "精确数据点 + 时间范围 + 可验证性"
+      examples:
+        - "164个数据点，10年验证，100%准确"
+        - "过去5个周期底部，12个月平均回报78%"
+        - "评分>70时买入，持有12个月，胜率100%"
+
+    social_proof_hook:
+      description: "群体验证降低决策门槛"
+      formula: "数量 + 身份标签 + 行为描述"
+      examples:
+        - "1000+投资者已经在使用这个周期评分系统"
+        - "量化研究员正在把这个框架集成到他们的模型中"
+
+    authority_signal:
+      description: "权威背书提升可信度"
+      formula: "理论基础 + 数据来源 + 方法论透明"
+      examples:
+        - "基于Damodaran估值理论 + Howard Marks周期理论"
+        - "数据来源: SEC EDGAR官方文件 + FMP财务API"
+        - "完整代码开源，任何人可审计"
+
+  # --- 内容结构心理学 ---
+  content_structure:
+    inverted_pyramid:
+      description: "最重要结论先行，递减敏感度"
+      rationale: "前景理论: 第一个信息单元影响最大"
+      structure:
+        - "HOOK: 最震撼的数据点/结论 (2秒内抓住注意力)"
+        - "CONTEXT: 为什么这很重要 (解决'与我何关')"
+        - "EVIDENCE: 3个支撑数据点 (锚定效应)"
+        - "ACTION: 明确下一步 (简化决策)"
+        - "SOCIAL: 他人如何行动 (从众效应正面利用)"
+
+    peak_end_rule:
+      description: "体验记忆 = 峰值时刻 + 结尾印象"
+      rationale: "Kahneman: 人们记住的是高潮和结局，非过程"
+      application:
+        - "文章中间放最有冲击力的洞察(峰值)"
+        - "结尾用简洁有力的行动号召或金句(结尾)"
+        - "避免虎头蛇尾 —— 结尾质量决定传播意愿"
+
+    chunking:
+      description: "信息分块降低认知负载"
+      rationale: "Miller's Law: 工作记忆容量 7±2"
+      rules:
+        - "每个要点不超过3个子弹点"
+        - "每段不超过3-4行"
+        - "每个线程不超过7-9条推文"
+        - "复杂概念拆分为3步框架"
+
+  # --- 转化心理学 ---
+  conversion_psychology:
+    friction_reduction:
+      description: "每一步额外摩擦降低转化30%+"
+      rules:
+        - "订阅: 仅需邮箱，无需注册"
+        - "使用: 一个命令启动，无配置"
+        - "分享: 预置分享模板，一键转发"
+        - "反馈: 直接回复即可"
+
+    commitment_escalation:
+      description: "从微小承诺逐步升级"
+      ladder:
+        - step_1: "关注/点赞 (零成本)"
+        - step_2: "阅读完整分析 (时间投入)"
+        - step_3: "订阅周报 (邮箱承诺)"
+        - step_4: "Star GitHub仓库 (身份标记)"
+        - step_5: "使用框架做分析 (行为投入)"
+        - step_6: "分享给朋友 (社会承诺)"
+        - step_7: "贡献代码/反馈 (共创者身份)"
+
+    variable_reward:
+      description: "可变奖励比固定奖励更具粘性"
+      implementation:
+        - "每周评分变化 = 不确定性(是涨还是跌？)"
+        - "新公司分析 = 新发现(这次会发现什么？)"
+        - "周期信号变化 = 稀缺性(转折点很少出现)"
+
+# ============================================================
+# 渠道专属心理策略 (Channel-Specific Psychology)
+# ============================================================
+
+channel_psychology:
+  twitter:
+    primary_bias: "social_proof + scarcity (时间流逝)"
+    optimal_format: "数据Hook → 1张图 → 简短解读 → CTA"
+    psychology_rules:
+      - "前5个字决定是否被阅读 (注意力稀缺)"
+      - "数字开头比文字开头CTR高2.3倍"
+      - "图表比纯文字互动率高4倍"
+      - "提问句比陈述句回复率高3倍"
+      - "发布时间: 美东8AM/12PM/6PM (习惯性检查)"
+    thread_psychology:
+      - "第1条: 最强Hook (好奇心缺口)"
+      - "第2条: 为什么你应该关心 (损失框架)"
+      - "第3-5条: 核心洞察 (权威+数据)"
+      - "第6条: 反直觉结论 (峰值时刻)"
+      - "最后1条: CTA + 社会证明"
+
+  newsletter:
+    primary_bias: "authority + reciprocity (免费高质量内容)"
+    optimal_format: "评分表 → 本周亮点 → 深度分析 → 行动建议"
+    psychology_rules:
+      - "主题行使用损失框架或好奇心缺口"
+      - "开头用最重要的评分变化(锚定效应)"
+      - "中间用1-2个深度案例(峰值体验)"
+      - "结尾用下周预期(未完成效应/蔡格尼克)"
+      - "每期保持相同结构(习惯化降低认知负载)"
+    subject_line_formulas:
+      - "[Stock] just hit [score] — here's what happened last 5 times"
+      - "3 stocks crossing the buy threshold this week"
+      - "The signal you're ignoring (and what it cost investors last cycle)"
+
+  github:
+    primary_bias: "authority + unity (开发者身份认同)"
+    optimal_format: "README = 价值主张 → 快速开始 → 结果展示"
+    psychology_rules:
+      - "Star数量 = 社会证明(展示徽章)"
+      - "活跃度 = 权威信号(定期commit)"
+      - "文档质量 = 信任信号(降低使用摩擦)"
+      - "MIT许可证 = 互惠(免费使用建立好感)"
+
+  youtube:
+    primary_bias: "authority + curiosity + variable_reward"
+    optimal_format: "Hook(5s) → 问题(15s) → 方法(2min) → 证据(1min) → CTA(10s)"
+    psychology_rules:
+      - "缩略图: 数字+对比+表情 (注意力捕获)"
+      - "前5秒: 最震撼的结论先说 (防跳出)"
+      - "中间: 展示实际数据和操作 (能力信号)"
+      - "结尾: 预告下期内容 (蔡格尼克效应)"
+
+# ============================================================
+# 用户心理画像与个性化 (User Psychology Profiles)
+# ============================================================
+
+user_archetypes:
+  analytical_investor:
+    dominant_system: "System 2 (理性分析)"
+    triggers: "数据、方法论、可验证性"
+    biases_to_watch: "过度自信、确认偏误"
+    content_preference: "深度分析、代码、回测结果"
+    persuasion_path: "Authority → Evidence → Logic"
+    message_tone: "数据驱动、精确、不夸大"
+
+  emotional_investor:
+    dominant_system: "System 1 (直觉判断)"
+    triggers: "故事、社会证明、紧迫感"
+    biases_to_watch: "从众、FOMO、损失厌恶"
+    content_preference: "简洁图表、排名、信号"
+    persuasion_path: "Social Proof → Scarcity → Emotion"
+    message_tone: "简洁有力、视觉化、有紧迫感"
+
+  novice_investor:
+    dominant_system: "System 1 (缺乏System 2训练)"
+    triggers: "简单性、安全感、专家指导"
+    biases_to_watch: "权威偏误、Dunning-Kruger"
+    content_preference: "教程、简化评分、入门指南"
+    persuasion_path: "Authority → Simplification → Hand-holding"
+    message_tone: "教育性、耐心、鼓励性"
+
+  quant_researcher:
+    dominant_system: "System 2 (高度理性)"
+    triggers: "方法论创新、数据源、可复制性"
+    biases_to_watch: "过度拟合盲点、complexity bias"
+    content_preference: "算法细节、API文档、原始数据"
+    persuasion_path: "Novelty → Rigor → Replicability"
+    message_tone: "技术性、精确、学术化"
+
+# ============================================================
+# A/B测试心理学假设 (Testable Hypotheses)
+# ============================================================
+
+ab_test_hypotheses:
+  - id: "H001"
+    hypothesis: "损失框架标题比收益框架标题CTR高50%+"
+    test: "A='避免错过底部' vs B='抓住底部机会'"
+    metric: "click_through_rate"
+    expected_effect: "+50% for loss frame"
+
+  - id: "H002"
+    hypothesis: "具体数字比模糊描述转化率高30%+"
+    test: "A='100%准确率,164数据点' vs B='高准确率,大量验证'"
+    metric: "subscribe_rate"
+    expected_effect: "+30% for specific numbers"
+
+  - id: "H003"
+    hypothesis: "评分变化通知比定期推送打开率高2倍"
+    test: "A='LRCX评分从65升至72' vs B='本周半导体周报'"
+    metric: "open_rate"
+    expected_effect: "+100% for score change trigger"
+
+  - id: "H004"
+    hypothesis: "社会证明+稀缺性组合比单一原则效果强"
+    test: "A='1000人已使用+本周信号即将过期' vs B='我们的工具很有用'"
+    metric: "conversion_rate"
+    expected_effect: "+80% for compound principles"
+
+  - id: "H005"
+    hypothesis: "承诺阶梯比直接CTA转化率高"
+    test: "A='先关注→再订阅' vs B='直接订阅'"
+    metric: "final_conversion_rate"
+    expected_effect: "+40% for ladder approach"
+
+# ============================================================
+# 内容迭代循环 (Content Iteration Loop)
+# ============================================================
+
+iteration_loop:
+  step_1_create:
+    action: "基于心理规则创建内容原子"
+    psychology_check: "是否应用了至少2个影响力原则？"
+    output: "初稿内容"
+
+  step_2_validate:
+    action: "多视角验证"
+    checks:
+      - "分析型投资者会觉得有价值吗？"
+      - "情绪型投资者会被吸引吗？"
+      - "新手能理解吗？"
+      - "是否有操纵嫌疑？(伦理检查)"
+    output: "修订后内容"
+
+  step_3_publish:
+    action: "发布并追踪"
+    metrics: ["impressions", "engagement_rate", "click_through", "subscribe"]
+    output: "性能数据"
+
+  step_4_analyze:
+    action: "对比心理假设vs实际表现"
+    questions:
+      - "哪个心理触发器最有效？"
+      - "哪个用户画像反应最强？"
+      - "边际效果是否递减？"
+    output: "洞察报告"
+
+  step_5_iterate:
+    action: "更新心理规则权重"
+    rule: "有效规则权重+0.1，无效规则权重-0.1"
+    output: "更新后的规则集"
+
+# ============================================================
+# 伦理红线 (Ethical Boundaries)
+# ============================================================
+
+ethical_rules:
+  never_do:
+    - "不使用虚假紧迫感(假倒计时/假限量)"
+    - "不伪造社会证明(假用户数/假评价)"
+    - "不利用恐惧制造恐慌性卖出"
+    - "不承诺保证收益"
+    - "不隐藏风险或历史失败案例"
+    - "不利用信息不对称剥削用户"
+    - "不使用暗模式(dark patterns)诱导注册"
+
+  always_do:
+    - "明确标注: 历史回测 ≠ 未来保证"
+    - "展示完整的风险/收益比"
+    - "提供退出路径(随时取消订阅)"
+    - "教育用户识别自己的偏误"
+    - "公开方法论和数据来源"
+    - "用户成功 > 平台增长"
+
+  the_brenncke_line:
+    description: "教育vs操纵的分界线"
+    rule: "如果用户充分了解我们的意图后仍会感谢我们 = 教育; 否则 = 操纵"
+    test: "Would a fully informed user still feel grateful for this nudge?"

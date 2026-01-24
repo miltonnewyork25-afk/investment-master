@@ -5,10 +5,77 @@
 
 ## 当前状态
 
-- **当前阶段**: EVOLVED (v7.1)
+- **当前阶段**: EVOLVED (v8.0-psychology)
 - **总体目标**: 所有行业回测准确率 >= 99%，每个行业产出新经验 → 实盘验证 → 框架进化
-- **完成状态**: ALL 8 CYCLE INDUSTRIES 100% PASS + TECH FRAMEWORK 100% PASS (164/164) + REAL-DATA STRESS TEST COMPLETE
-- **框架版本**: v7.1 (科技行业GARP框架扩展：14家公司×10年×36条经验规则，覆盖6种商业模型)
+- **完成状态**: ALL 8 CYCLE INDUSTRIES 100% PASS + TECH FRAMEWORK 100% PASS (164/164) + REAL-DATA STRESS TEST COMPLETE + PSYCHOLOGY LAYER COMPLETE
+- **框架版本**: v8.1-AGI (AGI时代超级心理学: 量子认知 + 主动推理 + 合成调研 + 分布式RL + 多智能体涌现 + 递归ToM)
+
+## v8.0 心理学层 (2026-01-24)
+
+**新增模块:**
+1. `marketing/strategy/behavioral-psychology-framework.md` — 完整行为心理学框架 (40个偏误MECE分类 + 前景理论 + 群体心理 + 决策架构 + 神经经济学)
+2. `config/psychology-scoring.yaml` — 心理学评分修正配置 (5层: 偏误修正 + 周期心理映射 + 边际分析 + 营销触发 + 质量控制)
+3. `config/self-validation.yaml` — 自我验证系统 (5虚拟视角 + 偏误审计协议 + 输出标准 + 迭代净化 + 网络监控)
+4. `marketing/strategy/psychology-marketing-engine.yaml` — 心理驱动营销引擎 (内容原子规则 + 渠道策略 + 用户画像 + A/B测试假设 + 伦理红线)
+
+## v8.1 AGI时代超级心理学层 (2026-01-24)
+
+**新增模块:**
+1. `docs/agi-psychology-architecture.md` — AGI时代完整心理学架构 (9层系统)
+2. `config/synthetic-research.yaml` — 合成用户调研引擎 (6种Persona + 4种场景 + 实时监测)
+
+**范式转换 (超越传统Kahneman/Tversky):**
+
+| 维度 | 传统 → AGI时代 | 关键论文 |
+|------|---------------|---------|
+| 信念表示 | 点估计 → 量子叠加态 | Khrennikov 2026, arXiv 2508.20098 |
+| 决策模型 | 偏误修正 → 自由能最小化 | Friston, Halperin & Feldshteyn |
+| 理性标准 | 有限理性 → 计算最优 | Lieder & Griffiths 2020, Icard 2025 |
+| 群体建模 | 规则描述 → 涌现模拟 | TwinMarket NeurIPS 2025 |
+| 奖励处理 | 单一期望 → 分布式RL | Nature 2020/2025 多巴胺分布编码 |
+| 心智建模 | 单层推理 → 递归ToM | GPT-4 ToM=成人水平(Strachan 2024) |
+| 用户调研 | 线下问卷 → 合成模拟 | Stanford HAI 85%准确率 |
+| 状态估计 | 事后分析 → 实时数字表型 | BiasGuard 2025, 188偏误检测 |
+| 自我监控 | 人工审查 → 元认知层 | SOFAI Architecture(npj AI 2025) |
+
+**9层架构:**
+```
+Layer 9: 元认知自监控 (不确定性估计 + 置信度校准)
+Layer 8: 递归心智理论 (1-3阶ToM投资博弈)
+Layer 7: 多智能体涌现 (1000 LLM Agent市场模拟)
+Layer 6: 分布式RL (D1乐观/D2悲观双通道)
+Layer 5: 实时心理估计 (文本+行为+群体温度)
+Layer 4: 合成用户调研 (6 Persona × 200+样本)
+Layer 3: 计算理性 (偏误=约束下最优)
+Layer 2: 主动推理 (自由能最小化+探索-利用)
+Layer 1: 量子认知 (信念叠加态+干涉效应)
+```
+
+**合成调研引擎关键参数:**
+- 6种投资者Persona (散户动量/价值/保守 + 机构PM/量化 + 加密)
+- 最小200合成受访者 (Stanford方法论)
+- 85%与真人反应一致率 (事后验证)
+- 4种调研场景 (内容测试/事件反应/信号接受/状态校准)
+- Crowd Psychology Temperature (CPT): 0-100实时群体心理指数
+
+---
+
+## v8.0 心理学层 (2026-01-24)
+
+**新增模块:**
+1. `marketing/strategy/behavioral-psychology-framework.md` — 完整行为心理学框架 (40个偏误MECE分类 + 前景理论 + 群体心理 + 决策架构 + 神经经济学)
+2. `config/psychology-scoring.yaml` — 心理学评分修正配置 (5层: 偏误修正 + 周期心理映射 + 边际分析 + 营销触发 + 质量控制)
+3. `config/self-validation.yaml` — 自我验证系统 (5虚拟视角 + 偏误审计协议 + 输出标准 + 迭代净化 + 网络监控)
+4. `marketing/strategy/psychology-marketing-engine.yaml` — 心理驱动营销引擎 (内容原子规则 + 渠道策略 + 用户画像 + A/B测试假设 + 伦理红线)
+
+**核心升级:**
+- 40个认知偏误 → 5大MECE类别 (信息处理/情绪估值/社会群体/过度自信/时间)
+- 前景理论编码: α=0.88, λ=2.25, Prelec概率权重函数
+- 周期阶段×心理偏误映射: 每个阶段匹配特定偏误组合+修正规则
+- 5视角验证: 多头/空头/局外人/数据审计/对抗性批评
+- 边际递减检测: 信号边际价值、内容边际效果、复杂度边际成本
+- 营销Fogg模型: Motivation×Ability×Prompt → 转化漏斗优化
+- 伦理Brenncke Line: 充分知情用户仍会感激 = 教育; 否则 = 操纵
 
 ## 行业进展
 
