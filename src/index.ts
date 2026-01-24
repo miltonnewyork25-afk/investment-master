@@ -26,6 +26,7 @@ export { sentimentFetcher, SentimentFetcher } from './agents/sentiment-fetcher.j
 export { cfaValuation, CFAValuation } from './agents/cfa-valuation.js';
 export { portfolioRisk, PortfolioRisk } from './agents/portfolio-risk.js';
 export { strategicAnalysis, StrategicAnalysis } from './agents/strategic-analysis.js';
+export { techFinancialAnalysis, TechFinancialAnalysis } from './agents/tech-financial-analysis.js';
 
 // 导出工具类
 export { cacheManager, CacheManager } from './utils/cache.js';
@@ -74,6 +75,7 @@ export type { ContentAtom, WeeklyContentPack } from './agents/content-generator.
 export type { ValuationResult, FactorExposure } from './agents/cfa-valuation.js';
 export type { PositionSize, RiskBudget, PortfolioAllocation, PortfolioMetrics } from './agents/portfolio-risk.js';
 export type { StrategicProfile, MoatAssessment, PorterFiveForces, FlywheelEffect, ProductUnit, ReinvestmentMoat } from './agents/strategic-analysis.js';
+export type { TechFinancialProfile, SBCAdjustedMetrics, CapExAnalysis, TechAdjustedValuation } from './agents/tech-financial-analysis.js';
 
 // CLI 入口
 async function main() {

@@ -105,9 +105,27 @@ Type F - 消费品 (KO/PG/NKE): Porter + 护城河 + 品牌(维度3)
 
 ```
 src/agents/strategic-analysis.ts (530+ lines)
-CLI: npx tsx src/index.ts strategy [TICKER]
-Types: StrategicProfile, MoatAssessment, PorterFiveForces, FlywheelEffect
-Method: analyzeFull(company, products, flywheels, market, position, moatOverrides, porterOverrides)
+  CLI: npx tsx src/index.ts strategy [TICKER]
+  Types: StrategicProfile, MoatAssessment, PorterFiveForces, FlywheelEffect
+  Method: analyzeFull(company, products, flywheels, market, position, moatOverrides, porterOverrides)
+
+src/agents/tech-financial-analysis.ts (430+ lines)
+  科技生态公司专用财务分析引擎
+  解决: 通用CFA(P/E, ROIC, DCF)对科技公司分析肤浅
+  7大专用维度:
+    1. SBC调整 (真实P/E = 报告×1.25, 真实OPM = 报告-6pp)
+    2. CapEx拆分 (增长vs维护, Owner Earnings, 投资周期判断)
+    3. 增量利润率 (Δ OI / Δ Rev → 运营杠杆)
+    4. R&D效率 (Δ Rev / R&D, 资本化修正P/B)
+    5. 分部Rule of 40 (各业务线独立健康度)
+    6. ARPU地理分析 (海外vs美国变现差距=长期空间)
+    7. 净股东回报 (回购+股息-SBC稀释)
+
+  关键发现(GOOGL验证):
+    - 通用CFA给出MoS=-5.8% → 科技修正后MoS=-21.5% (实际更贵!)
+    - 原因: SBC虚增利润20% + CapEx投资期压缩FCF
+    - 但Owner Earnings P/E(32x)接近报告P/E → 增长CapEx本质是投资
+    - CapEx正常化后(2027估) P/FCF将从54x降至33x → 关键赌注
 ```
 
 ---
