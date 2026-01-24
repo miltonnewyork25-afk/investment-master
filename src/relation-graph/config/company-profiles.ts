@@ -2566,6 +2566,375 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['savings', 'convenience', 'transparency', 'accessibility'],
     channels: ['online', 'mobile'],
   },
+
+  // ========== 送金 B2C (Money Transfer) ==========
+  'WU': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['remittance', 'money_transfer', 'bill_payment'],
+    valueProps: ['convenience', 'global_reach', 'speed', 'trust'],
+    channels: ['retail', 'online', 'mobile'],
+  },
+
+  // ========== 保険 B2B2C (Insurance) ==========
+  'HIG': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['property_insurance', 'casualty', 'employee_benefits'],
+    valueProps: ['security', 'reliability', 'comprehensive'],
+    channels: ['agent', 'broker', 'online'],
+  },
+  'ERIE': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['auto_insurance', 'home_insurance', 'life_insurance'],
+    valueProps: ['affordable', 'local_service', 'reliability'],
+    channels: ['agent', 'online'],
+  },
+
+  // ========== 医療機器 B2B2C (Medical Devices) ==========
+  'ALGN': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['dental', 'orthodontics', 'cosmetic'],
+    valueProps: ['aesthetics', 'innovation', 'convenience'],
+    channels: ['dental_office', 'online'],
+  },
+  'PODD': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['diabetes_management', 'insulin_delivery'],
+    valueProps: ['convenience', 'health', 'innovation'],
+    channels: ['healthcare_provider', 'pharmacy', 'online'],
+  },
+  'INMD': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['body_contouring', 'skin_treatment', 'cosmetic'],
+    valueProps: ['minimally_invasive', 'aesthetics', 'results'],
+    channels: ['medical_office', 'clinic'],
+  },
+
+  // ========== 小売 B2C (Retail) ==========
+  'FIVE': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['gifts', 'home_decor', 'impulse'],
+    valueProps: ['value', 'fun', 'discovery'],
+    channels: ['retail'],
+  },
+  'RVLV': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['fashion', 'occasion_wear', 'seasonal'],
+    valueProps: ['trend', 'curation', 'brand'],
+    channels: ['online', 'mobile'],
+  },
+  'JWN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['fashion', 'department_store', 'seasonal'],
+    valueProps: ['quality', 'service', 'selection'],
+    channels: ['retail', 'online'],
+  },
+  'BOOT': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['western_wear', 'outdoor', 'workwear'],
+    valueProps: ['authenticity', 'quality', 'selection'],
+    channels: ['retail', 'online'],
+  },
+  'BURL': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['discount_shopping', 'seasonal', 'everyday'],
+    valueProps: ['value', 'brand_deals', 'treasure_hunt'],
+    channels: ['retail'],
+  },
+  'TSCO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['farm_supplies', 'pet', 'outdoor_living'],
+    valueProps: ['selection', 'value', 'expertise'],
+    channels: ['retail', 'online'],
+  },
+  'SFM': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['grocery', 'organic', 'health_food'],
+    valueProps: ['fresh', 'natural', 'quality'],
+    channels: ['retail'],
+  },
+
+  // ========== 発電機 B2C (Power Equipment) ==========
+  'GNRC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['backup_power', 'storm_prep', 'home_improvement'],
+    valueProps: ['reliability', 'protection', 'independence'],
+    channels: ['dealer', 'retail', 'online'],
+  },
+
+  // ========== GPS/ウェアラブル B2C (GPS/Wearables) ==========
+  'GRMN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['fitness', 'outdoor', 'marine', 'aviation'],
+    valueProps: ['precision', 'durability', 'innovation'],
+    channels: ['retail', 'online', 'specialty'],
+  },
+
+  // ========== 金融サービス B2C (Financial Services) ==========
+  'RJF': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['investment', 'retirement', 'wealth_management'],
+    valueProps: ['personalized', 'trust', 'comprehensive'],
+    channels: ['advisor', 'online'],
+  },
+
+  // ========== 診断 B2B2C (Diagnostics) ==========
+  'EXAS': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'all', gender: 'all' },
+    occasions: ['cancer_screening', 'preventive_health'],
+    valueProps: ['early_detection', 'non_invasive', 'convenience'],
+    channels: ['healthcare_provider', 'direct'],
+  },
+  'NTRA': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'all', gender: 'female' },
+    occasions: ['prenatal', 'genetic_testing', 'oncology'],
+    valueProps: ['accuracy', 'early_detection', 'innovation'],
+    channels: ['healthcare_provider', 'lab'],
+  },
+
+  // ========== ホテル B2C (Hotels/Hospitality) ==========
+  'HST': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['business_travel', 'leisure', 'conference'],
+    valueProps: ['luxury', 'location', 'service'],
+    channels: ['online', 'direct', 'travel_agent'],
+  },
+  'PK': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['business_travel', 'leisure', 'resort'],
+    valueProps: ['upscale', 'location', 'amenities'],
+    channels: ['online', 'direct', 'travel_agent'],
+  },
+
+  // ========== ストレージ B2C (Self-Storage) ==========
+  'CUBE': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['moving', 'decluttering', 'life_transition'],
+    valueProps: ['convenience', 'security', 'flexibility'],
+    channels: ['online', 'direct'],
+  },
+
+
+  // ========== 太陽光 B2C (Residential Solar) ==========
+  'SPWR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_solar', 'energy_savings', 'green_energy'],
+    valueProps: ['efficiency', 'reliability', 'premium'],
+    channels: ['dealer', 'direct_sales', 'online'],
+  },
+
+  // ========== 住宅設備 B2B2C (Home Products) ==========
+  'MAS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_renovation', 'new_construction', 'repair'],
+    valueProps: ['quality', 'brand', 'selection'],
+    channels: ['retail', 'dealer', 'online'],
+  },
+  'AOS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['water_heater', 'water_treatment', 'home_comfort'],
+    valueProps: ['reliability', 'efficiency', 'essential'],
+    channels: ['dealer', 'retail', 'plumber'],
+  },
+
+  // ========== ヘルスケア B2C (Healthcare Services) ==========
+  'DVA': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'all', gender: 'all' },
+    occasions: ['dialysis', 'kidney_care', 'chronic_disease'],
+    valueProps: ['essential', 'accessibility', 'expertise'],
+    channels: ['clinic', 'healthcare_provider'],
+  },
+  'ENSG': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'all', gender: 'all' },
+    occasions: ['skilled_nursing', 'rehabilitation', 'senior_care'],
+    valueProps: ['quality_care', 'local', 'comprehensive'],
+    channels: ['healthcare_provider', 'direct'],
+  },
+  'ACHC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['behavioral_health', 'addiction', 'mental_health'],
+    valueProps: ['specialized', 'comprehensive', 'recovery'],
+    channels: ['healthcare_provider', 'referral', 'direct'],
+  },
+  'SGRY': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'all', gender: 'all' },
+    occasions: ['surgery', 'outpatient', 'specialty_care'],
+    valueProps: ['convenience', 'efficiency', 'quality'],
+    channels: ['healthcare_provider', 'referral'],
+  },
+  'AMED': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'all', gender: 'all' },
+    occasions: ['home_health', 'hospice', 'personal_care'],
+    valueProps: ['comfort', 'home_based', 'compassionate'],
+    channels: ['healthcare_provider', 'referral', 'direct'],
+  },
+
+  // ========== 自動車部品 B2B2C (Auto Parts Distribution) ==========
+  'GPC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['auto_repair', 'maintenance', 'DIY'],
+    valueProps: ['selection', 'availability', 'expertise'],
+    channels: ['retail', 'professional', 'online'],
+  },
+
+  // ========== 食品 B2B2C (Food Producers) ==========
+  'CALM': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['grocery', 'breakfast', 'cooking'],
+    valueProps: ['fresh', 'quality', 'value'],
+    channels: ['grocery', 'retail'],
+  },
+  'POST': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['breakfast', 'snack', 'daily_nutrition'],
+    valueProps: ['convenience', 'taste', 'value'],
+    channels: ['grocery', 'retail'],
+  },
+  'FLO': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['grocery', 'daily_bread', 'sandwich'],
+    valueProps: ['freshness', 'value', 'availability'],
+    channels: ['grocery', 'retail'],
+  },
+
+  // ========== 製薬 B2B2C (Specialty Pharma) ==========
+  'JAZZ': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['sleep_disorders', 'oncology', 'rare_disease'],
+    valueProps: ['specialized', 'efficacy', 'innovation'],
+    channels: ['healthcare_provider', 'specialty_pharmacy'],
+  },
+  'UTHR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'all', gender: 'all' },
+    occasions: ['pulmonary_hypertension', 'rare_disease'],
+    valueProps: ['life_saving', 'specialized', 'support'],
+    channels: ['healthcare_provider', 'specialty_pharmacy'],
+  },
+  'NBIX': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['movement_disorders', 'neurology', 'psychiatry'],
+    valueProps: ['specialized', 'efficacy', 'innovation'],
+    channels: ['healthcare_provider', 'specialty_pharmacy'],
+  },
+  'PCVX': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['vaccination', 'pneumonia_prevention', 'infectious_disease'],
+    valueProps: ['prevention', 'efficacy', 'next_generation'],
+    channels: ['healthcare_provider', 'pharmacy'],
+  },
+
+  // ========== 葬儀 B2C (Funeral Services) ==========
+  'SCI': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['funeral', 'pre_planning', 'cemetery'],
+    valueProps: ['trust', 'compassion', 'comprehensive'],
+    channels: ['direct', 'retail', 'online'],
+  },
+
+  // ========== 賃貸住宅 B2C (Residential REITs) ==========
+  'CPT': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['apartment_rental', 'relocation', 'lifestyle'],
+    valueProps: ['location', 'amenities', 'community'],
+    channels: ['online', 'direct'],
+  },
+  'AMH': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_rental', 'family', 'suburban_living'],
+    valueProps: ['space', 'flexibility', 'neighborhood'],
+    channels: ['online', 'direct'],
+  },
+
+  // ========== S&P 400 Midcap B2C/B2B2C 追加 ==========
+
+  // --- Regional Banks (B2B2C) ---
+  'BANR': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['checking', 'savings', 'mortgage', 'small_business'],
+    valueProps: ['community', 'local', 'personal_service', 'convenience'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'CUBI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['checking', 'savings', 'business_lending', 'fintech'],
+    valueProps: ['digital', 'technology', 'speed', 'competitive_rates'],
+    channels: ['online', 'mobile'],
+  },
+  'NBTB': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['checking', 'savings', 'mortgage', 'wealth_management'],
+    valueProps: ['community', 'trust', 'personal_service', 'stability'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'CBSH': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['checking', 'savings', 'commercial', 'trust'],
+    valueProps: ['service', 'reliability', 'midwest_values', 'wealth_services'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+
+  // --- Insurance B2C ---
+  'ROOT': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['auto_insurance', 'safe_driving', 'mobile_purchase'],
+    valueProps: ['fairness', 'technology', 'savings', 'mobile_first'],
+    channels: ['mobile', 'online'],
+  },
+  'LMND': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['renters_insurance', 'homeowners', 'pet_insurance'],
+    valueProps: ['simplicity', 'instant', 'social_good', 'digital'],
+    channels: ['mobile', 'online'],
+  },
+  'KMPR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['auto_insurance', 'home_insurance', 'personal_lines'],
+    valueProps: ['value', 'reliability', 'local_agents', 'bundling'],
+    channels: ['agent', 'online', 'mobile'],
+  },
+
+  // --- Smart Home B2B2C ---
+  'ALRM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_security', 'smart_home', 'energy_management'],
+    valueProps: ['security', 'convenience', 'connected', 'automation'],
+    channels: ['dealer', 'online', 'mobile'],
+  },
+
+  // --- Smart Home Camera B2C ---
+  'ARLO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_security', 'baby_monitor', 'package_theft'],
+    valueProps: ['wireless', 'easy_setup', 'smart_alerts', 'cloud'],
+    channels: ['retail', 'online', 'mobile'],
+  },
+
+  // --- Restaurant B2C ---
+  'JACK': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['late_night', 'drive_through', 'quick_meal', 'budget'],
+    valueProps: ['convenience', 'value', 'late_hours', 'variety'],
+    channels: ['drive_through', 'dine_in', 'delivery'],
+  },
+  'CAKE': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['celebration', 'family_dinner', 'date_night', 'brunch'],
+    valueProps: ['variety', 'portions', 'atmosphere', 'cheesecake'],
+    channels: ['dine_in', 'takeout', 'delivery'],
+  },
+  'DINE': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['family_dining', 'breakfast', 'casual_meal', 'neighborhood'],
+    valueProps: ['familiar', 'value', 'convenience', 'variety'],
+    channels: ['dine_in', 'takeout', 'delivery'],
+  },
+
+  // --- Residential Solar B2C ---
+  'NOVA': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['solar_installation', 'energy_savings', 'home_improvement'],
+    valueProps: ['savings', 'green', 'energy_independence', 'financing'],
+    channels: ['dealer', 'online', 'direct'],
+  },
 };
 
 // ============================================================
@@ -3038,6 +3407,7 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // 集装箱航运
   'ZIM': 'late',      // 集装箱航运
   'MATX': 'late',     // Matson - 太平洋航线
+  'MAERSK.B': 'mid',    // Maersk - 丹麦集装箱航运(参考)
   // 干散货航运 - 与铁矿石、煤炭、粮食需求相关
   'GOGL': 'late',     // Golden Ocean - Capesize
   'SBLK': 'late',     // Star Bulk
@@ -3915,6 +4285,57 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // --- Healthcare ---
   'GDRX': 'mid',           // GoodRx - 医药折扣(中周期)
   'RPRX': 'defensive',     // Royalty Pharma - 药品特许权(防御)
+
+  // ========== S&P 400 Midcap 追加 (30 stocks) ==========
+  // --- Regional Banks ---
+  'BANR': 'mid',           // Banner Financial - 地区银行(中周期)
+  'CUBI': 'mid',           // Customers Bancorp - 地区银行(中周期)
+  'NBTB': 'mid',           // NBT Bancorp - 地区银行(中周期)
+  'CBSH': 'mid',           // Commerce Bankshares - 地区银行(中周期)
+
+  // --- Insurance ---
+  'RLI': 'defensive',      // RLI Corp - 特种P&C(防御)
+  'PLMR': 'defensive',     // Palomar - 特种保险(防御)
+  'ROOT': 'early',         // Root Inc - 保险科技(早周期)
+  'LMND': 'early',         // Lemonade - 保险科技(早周期)
+  'KMPR': 'mid',           // Kemper - 汽车保险(中周期)
+
+  // --- Specialty Industrial ---
+  'ROCK': 'mid',           // Gibraltar Industries - 建材(中周期)
+
+  // --- Tech/SaaS ---
+  'ALRM': 'mid',           // Alarm.com - 智能家居(中周期)
+  'ARLO': 'mid',           // Arlo - 智能摄像(中周期)
+  'RAMP': 'mid',           // LiveRamp - 数据连接(中周期)
+  'PYCR': 'mid',           // Paycor - HCM SaaS(中周期)
+  'CWAN': 'mid',           // Clearwater Analytics - 金融软件(中周期)
+  'NCNO': 'mid',           // nCino - 银行SaaS(中周期)
+  'JAMF': 'mid',           // Jamf - 终端管理(中周期)
+
+  // --- Consumer/Restaurant ---
+  'JACK': 'mid',           // Jack in the Box - QSR(中周期)
+  'CAKE': 'mid',           // Cheesecake Factory - 正餐(中周期)
+  'DINE': 'mid',           // Dine Brands - 餐饮特许(中周期)
+
+  // --- Healthcare ---
+  'NVAX': 'early',         // Novavax - 疫苗(早周期)
+  'GKOS': 'mid',           // Glaukos - 眼科器械(中周期)
+  'INSP': 'mid',           // Inspire Medical - 睡眠治疗(中周期)
+
+  // --- Energy ---
+  'STEM': 'early',         // Stem Inc - 储能(早周期)
+  'FLNC': 'early',         // Fluence - 储能(早周期)
+  'ORA': 'defensive',      // Ormat - 地热能(防御)
+
+  // --- Materials ---
+  'CMC': 'mid',            // Commercial Metals - 废钢回收(中周期)
+  'ASPN': 'early',         // Aspen Aerogels - 先进材料(早周期)
+
+  // --- REITs ---
+  'IIPR': 'early',         // Innovative Industrial - 大麻REIT(早周期)
+
+  // --- Transportation ---
+  'SNDR': 'mid',           // Schneider National - 整车运输(中周期)
 };
 
 // ============================================================
@@ -4658,6 +5079,10 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'MATX': {
     interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.3,
     consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.4, oilPrice: -0.3,
+  },
+  'MAERSK.B': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.5,
   },
 
   // 干散货航运 - 与大宗商品、中国需求高度相关
@@ -8425,6 +8850,148 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'RPRX': {
     interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
     consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== S&P 400 Midcap 追加 (30 stocks) ==========
+
+  // --- Regional Banks - 利率正相关 ---
+  'BANR': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'CUBI': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'NBTB': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'CBSH': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // --- Insurance ---
+  'RLI': {
+    interestRate: 0.3, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'PLMR': {
+    interestRate: 0.3, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'ROOT': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.2,
+  },
+  'LMND': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'KMPR': {
+    interestRate: 0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.2,
+  },
+
+  // --- Specialty Industrial ---
+  'ROCK': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // --- Tech/SaaS ---
+  'ALRM': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'ARLO': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'RAMP': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'PYCR': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'CWAN': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'NCNO': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'JAMF': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // --- Consumer/Restaurant ---
+  'JACK': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'CAKE': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'DINE': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // --- Healthcare ---
+  'NVAX': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'GKOS': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'INSP': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // --- Energy ---
+  'STEM': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+  'FLNC': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+  'ORA': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.2,
+  },
+
+  // --- Materials ---
+  'CMC': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'ASPN': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+
+  // --- REITs ---
+  'IIPR': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.3, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // --- Transportation ---
+  'SNDR': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.3,
   },
 };
 

@@ -9197,6 +9197,268 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Pharma Royalties',
     tags: ['royalties', 'pharma', 'biotech', 'drug_development'],
   },
+
+  // ========== S&P 400 Midcap 追加 (30 stocks) ==========
+
+  // ---------- Regional Banks ----------
+  'BANR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['pacific_northwest', 'washington', 'community', 'agricultural'],
+  },
+  'CUBI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['pennsylvania', 'digital', 'commercial', 'fintech_lending'],
+  },
+  'NBTB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['new_york', 'northeast', 'community', 'wealth_management'],
+  },
+  'CBSH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['missouri', 'midwest', 'commercial', 'trust_services'],
+  },
+
+  // ---------- Insurance ----------
+  'RLI': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Insurance',
+    tags: ['property_casualty', 'niche_lines', 'specialty', 'underwriting'],
+  },
+  'PLMR': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Insurance',
+    tags: ['earthquake', 'catastrophe', 'specialty', 'technology_driven'],
+  },
+  'ROOT': {
+    assetModel: 'platform',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Insurtech',
+    tags: ['auto_insurance', 'telematics', 'mobile_first', 'usage_based'],
+  },
+  'LMND': {
+    assetModel: 'platform',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Insurtech',
+    tags: ['renters', 'homeowners', 'AI_claims', 'digital_first'],
+  },
+  'KMPR': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Auto Insurance',
+    tags: ['auto', 'personal_lines', 'preferred', 'specialty_auto'],
+  },
+
+  // ---------- Specialty Industrial ----------
+  'ROCK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['steel_framing', 'ventilation', 'solar_racking', 'infrastructure'],
+  },
+
+  // ---------- Tech/SaaS ----------
+  'ALRM': {
+    assetModel: 'platform',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Smart Home',
+    tags: ['smart_home', 'security', 'IoT', 'connected_devices'],
+  },
+  'ARLO': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Smart Home Camera',
+    tags: ['security_camera', 'smart_home', 'cloud', 'subscription'],
+  },
+  'RAMP': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Data Infrastructure',
+    tags: ['data_connectivity', 'identity', 'privacy', 'marketing_data'],
+  },
+  'PYCR': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'HCM SaaS',
+    tags: ['payroll', 'HR', 'workforce_management', 'SMB'],
+  },
+  'CWAN': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Financial Software',
+    tags: ['investment_accounting', 'analytics', 'portfolio', 'asset_managers'],
+  },
+  'NCNO': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Banking Software',
+    tags: ['bank_operating_system', 'loan_origination', 'cloud', 'digital_banking'],
+  },
+  'JAMF': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Endpoint Management',
+    tags: ['apple', 'device_management', 'MDM', 'enterprise_mobility'],
+  },
+
+  // ---------- Consumer/Restaurant ----------
+  'JACK': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'rental'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Quick Service Restaurant',
+    tags: ['burgers', 'drive_through', 'west_coast', 'late_night'],
+  },
+  'CAKE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Casual Dining',
+    tags: ['full_service', 'diverse_menu', 'upscale_casual', 'cheesecake'],
+  },
+  'DINE': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'rental'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Restaurant Franchisor',
+    tags: ['applebees', 'ihop', 'franchise', 'family_dining'],
+  },
+
+  // ---------- Healthcare ----------
+  'NVAX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Vaccine Manufacturer',
+    tags: ['protein_subunit', 'COVID', 'influenza', 'adjuvant'],
+  },
+  'GKOS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Ophthalmic Devices',
+    tags: ['glaucoma', 'MIGS', 'corneal', 'ophthalmic_surgery'],
+  },
+  'INSP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Sleep Therapy Devices',
+    tags: ['sleep_apnea', 'hypoglossal', 'implantable', 'neurostimulation'],
+  },
+
+  // ---------- Energy ----------
+  'STEM': {
+    assetModel: 'hybrid',
+    revenueModels: ['subscription', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Battery Storage',
+    tags: ['energy_storage', 'AI_optimization', 'solar_plus_storage', 'grid'],
+  },
+  'FLNC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Battery Storage',
+    tags: ['utility_scale', 'BESS', 'grid_storage', 'digital_platform'],
+  },
+  'ORA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Geothermal Energy',
+    tags: ['geothermal', 'baseload', 'renewable', 'recovered_energy'],
+  },
+
+  // ---------- Materials ----------
+  'CMC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Steel Recycler',
+    tags: ['rebar', 'recycled_steel', 'construction', 'EAF'],
+  },
+  'ASPN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Advanced Materials',
+    tags: ['aerogel', 'insulation', 'EV_battery', 'thermal_barrier'],
+  },
+
+  // ---------- REITs ----------
+  'IIPR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty REIT',
+    tags: ['cannabis', 'industrial', 'sale_leaseback', 'triple_net'],
+  },
+
+  // ---------- Transportation ----------
+  'SNDR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'TL Trucking',
+    tags: ['truckload', 'intermodal', 'logistics', 'dedicated'],
+  },
 };
 
 // ============================================================

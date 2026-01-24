@@ -1662,6 +1662,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'ZIM': 'Container Shipping',          // ZIM - 以色列
     'MATX': 'Container Shipping',         // Matson - 太平洋/Jones Act
     'KEX': 'Container Shipping',          // Kirby - 内河/沿海
+    'MAERSK.B': 'Container Shipping',      // Maersk - 丹麦集装箱航运(参考)
 
     // 干散货航运 (Dry Bulk Shipping)
     'GOGL': 'Dry Bulk Shipping',          // Golden Ocean - Cape/Panamax
@@ -2435,6 +2436,57 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'WOOF': 'Pet Retail',               // Petco - 宠物零售
     'GDRX': 'Pharma Tech',              // GoodRx - 药品折扣平台
     'RPRX': 'Pharma Royalties',         // Royalty Pharma - 药品特许权
+
+    // ========== S&P 400 Midcap 追加 (30 stocks) ==========
+    // --- Regional Banks ---
+    'BANR': 'Regional Bank',              // Banner Financial - 太平洋西北
+    'CUBI': 'Regional Bank',              // Customers Bancorp - 宾州数字银行
+    'NBTB': 'Regional Bank',              // NBT Bancorp - 纽约
+    'CBSH': 'Regional Bank',              // Commerce Bankshares - 密苏里
+
+    // --- Insurance ---
+    'RLI': 'Specialty Insurance',          // RLI Corp - 特种P&C
+    'PLMR': 'Specialty Insurance',         // Palomar - 巨灾保险
+    'ROOT': 'Insurtech',                   // Root Inc - 车险科技
+    'LMND': 'Insurtech',                   // Lemonade - 保险科技
+    'KMPR': 'Auto Insurance',              // Kemper - 汽车保险
+
+    // --- Specialty Industrial ---
+    'ROCK': 'Building Products',           // Gibraltar Industries - 建材
+
+    // --- Tech/SaaS ---
+    'ALRM': 'Smart Home',                  // Alarm.com - 智能家居
+    'ARLO': 'Smart Home Camera',           // Arlo - 智能摄像
+    'RAMP': 'Data Infrastructure',         // LiveRamp - 数据连接
+    'PYCR': 'HCM SaaS',                    // Paycor - HCM
+    'CWAN': 'Financial Software',          // Clearwater Analytics - 金融软件
+    'NCNO': 'Banking Software',            // nCino - 银行SaaS
+    'JAMF': 'Endpoint Management',         // Jamf - 终端管理
+
+    // --- Consumer/Restaurant ---
+    'JACK': 'Quick Service Restaurant',    // Jack in the Box - 快餐
+    'CAKE': 'Casual Dining',               // Cheesecake Factory - 正餐
+    'DINE': 'Restaurant Franchisor',       // Dine Brands - 餐饮特许
+
+    // --- Healthcare ---
+    'NVAX': 'Vaccine Manufacturer',        // Novavax - 疫苗
+    'GKOS': 'Ophthalmic Devices',          // Glaukos - 眼科器械
+    'INSP': 'Sleep Therapy Devices',       // Inspire Medical - 睡眠
+
+    // --- Energy ---
+    'STEM': 'Battery Storage',             // Stem Inc - 储能软件
+    'FLNC': 'Battery Storage',             // Fluence - 储能系统
+    'ORA': 'Geothermal Energy',            // Ormat - 地热能
+
+    // --- Materials ---
+    'CMC': 'Steel Recycler',               // Commercial Metals - 废钢
+    'ASPN': 'Advanced Materials',          // Aspen Aerogels - 气凝胶
+
+    // --- REITs ---
+    'IIPR': 'Specialty REIT',              // Innovative Industrial - 大麻REIT
+
+    // --- Transportation ---
+    'SNDR': 'TL Trucking',                 // Schneider National - 整车运输
   },
 
   // ============================================================
@@ -4530,6 +4582,133 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Auto OEM',
       'Construction Equipment',
       'Residential Construction',
+    ],
+
+    // ========== S&P 400 Midcap 新增产业链 ==========
+    'Smart Home': [
+      'Residential Construction',
+      'IoT Platform',
+      'Telecom Carrier',
+    ],
+    'Smart Home Camera': [
+      'Smart Home',
+      'Edge Computing',
+      'Consumer Electronics OEM',
+    ],
+    'Restaurant Tech': [
+      'Quick Service Restaurant',
+      'Fast Casual Restaurant',
+      'Casual Dining',
+    ],
+    'Banking Software': [
+      'Regional Bank',
+      'Global Bank',
+      'Digital Bank',
+    ],
+    'Endpoint Management': [
+      'Enterprise SaaS',
+      'Enterprise Cybersecurity',
+      'IT Outsourcing',
+    ],
+    'Fast Casual Restaurant': [
+      'Packaged Foods',
+      'Food Distribution',
+      'Commercial Real Estate Services',
+    ],
+    'Restaurant Franchisor': [
+      'Quick Service Restaurant',
+      'Fast Casual Restaurant',
+      'Commercial Real Estate Services',
+    ],
+    'Genetic Testing': [
+      'Large Pharma',
+      'Hospital Operator',
+      'Health Insurance',
+    ],
+    'Cancer Diagnostics': [
+      'Hospital Operator',
+      'Large Pharma',
+      'Health Insurance',
+    ],
+    'Ophthalmic Devices': [
+      'Hospital Operator',
+      'Medical Devices',
+      'Health Insurance',
+    ],
+    'Sleep Therapy Devices': [
+      'Hospital Operator',
+      'Medical Devices',
+      'Health Insurance',
+    ],
+    'Battery Storage': [
+      'Solar Panel Manufacturer',
+      'Regulated Utility',
+      'Data Center Infrastructure',
+    ],
+    'Geothermal Energy': [
+      'Regulated Utility',
+      'Industrial Gases',
+      'Residential Construction',
+    ],
+    'Steel Recycler': [
+      'Construction Equipment',
+      'Residential Construction',
+      'Auto OEM',
+    ],
+    'Mini Mill Steel': [
+      'Construction Equipment',
+      'Residential Construction',
+      'Auto OEM',
+    ],
+    'Advanced Materials': [
+      'Aerospace',
+      'EV Battery',
+      'Oil Services',
+    ],
+    'Insurtech': [
+      'P&C Insurance',
+      'Auto Insurance',
+      'Health Insurance',
+    ],
+    'Auto Insurance': [
+      'Auto OEM',
+      'Auto Parts Retail',
+      'Car Rental',
+    ],
+    'Pacific Shipping': [
+      'Container Shipping',
+      'Express Logistics',
+      'Port Operator',
+    ],
+    'TL Trucking': [
+      'LTL Trucking',
+      'Express Logistics',
+      'Intermodal',
+    ],
+    'Building Materials Distribution': [
+      'Residential Construction',
+      'Building Products',
+      'Commercial Real Estate Services',
+    ],
+    'Life Science Reagents': [
+      'Large Pharma',
+      'Biotech Platform',
+      'Analytical Instruments',
+    ],
+    'Financial Software': [
+      'Asset Management',
+      'Online Brokerage',
+      'Global Bank',
+    ],
+    'Vaccine Manufacturer': [
+      'Large Pharma',
+      'Hospital Operator',
+      'Health Insurance',
+    ],
+    'Specialty Insurance': [
+      'Reinsurance',
+      'P&C Insurance',
+      'Commercial Real Estate Services',
     ],
   },
 };
