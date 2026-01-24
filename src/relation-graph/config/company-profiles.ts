@@ -3256,12 +3256,6 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['expertise', 'convenience', 'selection'],
     channels: ['store', 'online'],
   },
-  'PLNT': {
-    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
-    occasions: ['fitness', 'health'],
-    valueProps: ['affordability', 'judgement_free', 'convenience'],
-    channels: ['gym', 'app'],
-  },
   'XPOF': {
     demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
     occasions: ['fitness', 'wellness'],
@@ -3437,6 +3431,28 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     occasions: ['education', 'career_change'],
     valueProps: ['flexibility', 'career_outcomes', 'accreditation'],
     channels: ['online', 'campus'],
+  },
+
+  // ========== 数字汇款/跨境支付 ==========
+  'RELY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['sending_money', 'family_support'],
+    valueProps: ['speed', 'low_cost', 'trust'],
+    channels: ['app', 'online'],
+  },
+  'PAYO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['freelance_payment', 'business_payment'],
+    valueProps: ['global_reach', 'multi_currency', 'low_fees'],
+    channels: ['online', 'app'],
+  },
+
+  // ========== HSA健康储蓄 ==========
+  'HQY': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['healthcare_savings', 'benefits_enrollment'],
+    valueProps: ['tax_savings', 'investment_options', 'convenience'],
+    channels: ['employer', 'online', 'app'],
   },
 };
 
@@ -5088,6 +5104,101 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
 
   // SaaS
   'FRSH': 'mid',            // Freshworks - 客服SaaS(中周期)
+
+  // ========== 新增19只 (2026-01-24) ==========
+
+  // Security/Services
+  'ADT': 'defensive',       // ADT - 安防订阅(防御型)
+
+  // Childcare
+  'BFAM': 'defensive',      // Bright Horizons - 托儿服务(防御型)
+
+  // Entertainment
+  'CNK': 'mid',             // Cinemark - 电影院(中周期)
+  'IMAX': 'mid',            // IMAX - 影院科技(中周期)
+
+  // Shipping
+  'DAC': 'early',           // Danaos - 集装箱航运(早周期)
+
+  // Housing/Furnishing
+  'ETD': 'late',            // Ethan Allen - 家居(晚周期)
+  'FBIN': 'mid',            // Fortune Brands - 建材(中周期)
+  'TMHC': 'early',          // Taylor Morrison - 房建(早周期)
+  'REZI': 'mid',            // Resideo - HVAC(中周期)
+
+  // Leisure/Travel
+  'FUN': 'mid',             // Cedar Fair - 主题公园(中周期)
+  'LVS': 'mid',             // Las Vegas Sands - 赌场(中周期)
+
+  // Tech/Platform
+  'GRAB': 'early',          // Grab - 超级App(早周期)
+  'LOGI': 'mid',            // Logitech - PC外设(中周期)
+  'OLED': 'early',          // Universal Display - 显示技术(早周期)
+
+  // Luxury
+  'LVMUY': 'late',          // LVMH - 奢侈品(晚周期)
+
+  // Aesthetics
+  'SKIN': 'mid',            // Beauty Health - 医美(中周期)
+
+  // Health Supplements
+  'USNA': 'defensive',      // USANA - 保健品(防御型)
+  'NUS': 'defensive',       // Nu Skin - 保健品(防御型)
+
+  // ========== 新增29只 (Gene Editing/Biotech/FinTech/Infra等) ==========
+
+  // Gene Editing/Biotech
+  'TWST': 'early',           // Twist Bioscience - 合成生物工具(早周期)
+  'CRSP': 'early',           // CRISPR Therapeutics - 基因编辑(早周期)
+  'NTLA': 'early',           // Intellia Therapeutics - 体内基因编辑(早周期)
+  'RXRX': 'early',           // Recursion Pharmaceuticals - AI药物发现(早周期)
+
+  // Clean Energy
+  'PLUG': 'early',           // Plug Power - 氢燃料电池(早周期)
+
+  // FinTech
+  'UPST': 'mid',             // Upstart - AI借贷平台(中周期)
+  'RELY': 'defensive',       // Remitly - 数字汇款(防御型)
+  'PAYO': 'defensive',       // Payoneer - 跨境支付(防御型)
+
+  // Software/Analytics
+  'VRNT': 'defensive',       // Verint Systems - CX分析/AI(防御型)
+  'TYL': 'defensive',        // Tyler Technologies - 政府软件(防御型)
+  'APPF': 'defensive',       // AppFolio - 物业管理SaaS(防御型)
+
+  // Banking/Finance SaaS
+  'ALKT': 'defensive',       // Alkami Technology - 数字银行SaaS(防御型)
+  'HQY': 'defensive',        // HealthEquity - HSA管理(防御型)
+
+  // Infrastructure/Construction
+  'ASTE': 'mid',             // Astec Industries - 筑路设备(中周期)
+  'ROAD': 'mid',             // Construction Partners - 公路建设(中周期)
+  'PRIM': 'mid',             // Primoris Services - 基础设施建设(中周期)
+  'STRL': 'mid',             // Sterling Infrastructure - 电子基础设施(中周期)
+  'TTEK': 'defensive',       // Tetra Tech - 环保/基础设施咨询(防御型)
+  'KNF': 'mid',              // Knife River - 建材/骨料(中周期)
+  'APOG': 'mid',             // Apogee Enterprises - 建筑玻璃(中周期)
+  'GLDD': 'mid',             // Great Lakes Dredge - 海洋疏浚(中周期)
+
+  // Materials/Wood
+  'UFPI': 'mid',             // UFP Industries - 木材/复合建材(中周期)
+
+  // Life Science Diagnostics
+  'CDNA': 'defensive',       // CareDx - 移植诊断(防御型)
+  'MYGN': 'defensive',       // Myriad Genetics - 基因检测(防御型)
+  'OLINK': 'mid',            // Olink Proteomics - 蛋白质组学(中周期)
+
+  // Death Care/Industrial
+  'MATW': 'defensive',       // Matthews International - 纪念产品(防御型)
+
+  // Agriculture
+  'ANDE': 'mid',             // Andersons - 农业供应链/乙醇(中周期)
+
+  // Digital Infrastructure
+  'DBRG': 'mid',             // DigitalBridge - 数字基础设施投资(中周期)
+
+  // Industrial Auctions
+  'RBA': 'mid',              // RB Global - 工业设备拍卖(中周期)
 };
 
 // ============================================================
@@ -10460,6 +10571,246 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'FRSH': {
     interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
     consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // ========== 新增19只 (2026-01-24) ==========
+
+  // Security/Services
+  'ADT': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.6, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Childcare
+  'BFAM': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Entertainment
+  'CNK': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'IMAX': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Shipping
+  'DAC': {
+    interestRate: 0.1, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.3,
+  },
+
+  // Housing/Furnishing
+  'ETD': {
+    interestRate: -0.5, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.7, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'FBIN': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.8, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'TMHC': {
+    interestRate: -0.8, inflation: -0.3, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.9, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'REZI': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'WHR': {
+    interestRate: -0.6, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.8, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // Leisure/Travel
+  'FUN': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: -0.1,
+  },
+  'LVS': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // Tech/Platform
+  'GRAB': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.2,
+  },
+  'LOGI': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'OLED': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // Luxury
+  'LVMUY': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+
+  // Aesthetics
+  'SKIN': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Health Supplements
+  'USNA': {
+    interestRate: 0.0, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'NUS': {
+    interestRate: 0.0, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // ========== 新增29只 (Gene Editing/Biotech/FinTech/Infra等) ==========
+
+  // Gene Editing/Biotech
+  'TWST': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CRSP': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'NTLA': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'RXRX': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Clean Energy (Hydrogen)
+  'PLUG': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+
+  // FinTech/Payments
+  'UPST': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'RELY': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'PAYO': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Software/Analytics
+  'VRNT': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'TYL': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'APPF': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Banking/Finance SaaS
+  'ALKT': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'HQY': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Infrastructure/Construction
+  'ASTE': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  'ROAD': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  'PRIM': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  'STRL': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  'TTEK': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  'GLDD': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+
+  // Construction Materials
+  'KNF': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.4, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'APOG': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.4, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'UFPI': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.4, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // Diagnostics/Life Science
+  'CDNA': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'MYGN': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'OLINK': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Death Care/Industrial
+  'MATW': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Agriculture
+  'ANDE': {
+    interestRate: -0.1, inflation: 0.3, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+
+  // Digital Infrastructure
+  'DBRG': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Industrial Auctions
+  'RBA': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.2,
   },
 };
 

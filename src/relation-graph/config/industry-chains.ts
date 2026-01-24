@@ -2738,6 +2738,82 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // SaaS
     'FRSH': 'Customer Service SaaS',           // Freshworks - 客服SaaS
+
+    // ========== 新增19只 (2026-01-24) ==========
+    'ADT': 'Home Security',                    // ADT - 家庭安防
+    'BFAM': 'Childcare Services',              // Bright Horizons - 托儿服务
+    'CNK': 'Movie Theater',                    // Cinemark - 电影院
+    'DAC': 'Container Shipping',               // Danaos - 集装箱航运
+    'ETD': 'Home Furnishing',                  // Ethan Allen - 家居
+    'FBIN': 'Building Products',               // Fortune Brands - 建材
+    'FUN': 'Theme Parks',                      // Cedar Fair - 主题公园
+    'GRAB': 'Super App',                       // Grab - 超级App
+    'IMAX': 'Cinema Technology',               // IMAX - 影院科技
+    'LOGI': 'Computer Peripherals',            // Logitech - 电脑外设
+    'LVMUY': 'Luxury Conglomerate',            // LVMH - 奢侈品集团
+    'LVS': 'Casino & Resort',                  // Las Vegas Sands - 赌场度假村
+    'OLED': 'Display Materials',               // Universal Display - 显示材料
+    'REZI': 'Home Comfort',                    // Resideo - 家居舒适
+    'SKIN': 'Medical Aesthetics',              // Beauty Health - 医美
+    'TMHC': 'Homebuilders',                    // Taylor Morrison - 住宅建筑
+    'WHR': 'Home Appliances',                  // Whirlpool - 家电
+    'USNA': 'Health Supplements',              // USANA - 保健品
+    'NUS': 'Health Supplements',               // Nu Skin - 保健品
+
+    // ========== 新增29只 (Gene Editing/Biotech/FinTech/Infra等) ==========
+
+    // Gene Editing/Biotech
+    'TWST': 'Synthetic Biology',               // Twist Bioscience - 合成生物工具
+    'CRSP': 'Gene Editing',                    // CRISPR Therapeutics - 基因编辑疗法
+    'NTLA': 'Gene Editing',                    // Intellia Therapeutics - 体内基因编辑
+    'RXRX': 'AI Drug Discovery',              // Recursion Pharmaceuticals - AI药物发现
+
+    // Clean Energy
+    'PLUG': 'Hydrogen Fuel Cell',              // Plug Power - 氢燃料电池
+
+    // FinTech
+    'UPST': 'AI Lending',                      // Upstart - AI借贷平台
+    'RELY': 'Digital Remittance',              // Remitly - 数字汇款
+    'PAYO': 'Cross-border Payments',           // Payoneer - 跨境支付
+
+    // Software/Analytics
+    'VRNT': 'CX Analytics',                    // Verint Systems - CX分析/AI
+    'TYL': 'Government Software',              // Tyler Technologies - 政府软件
+    'APPF': 'Property Management SaaS',        // AppFolio - 物业管理SaaS
+
+    // Banking/Finance SaaS
+    'ALKT': 'Digital Banking SaaS',            // Alkami Technology - 数字银行SaaS
+    'HQY': 'HSA Platform',                     // HealthEquity - HSA管理平台
+
+    // Infrastructure/Construction
+    'ASTE': 'Road Building Equipment',         // Astec Industries - 筑路设备
+    'ROAD': 'Highway Construction',            // Construction Partners - 公路建设
+    'PRIM': 'Infrastructure Construction',     // Primoris Services - 基础设施建设
+    'STRL': 'E-Infrastructure',                // Sterling Infrastructure - 电子基础设施
+    'TTEK': 'Environmental Consulting',        // Tetra Tech - 环保/基础设施咨询
+    'KNF': 'Construction Materials/Aggregates', // Knife River - 建材/骨料
+    'APOG': 'Architectural Glass',             // Apogee Enterprises - 建筑玻璃
+    'GLDD': 'Marine Dredging',                 // Great Lakes Dredge - 海洋疏浚
+
+    // Materials/Wood
+    'UFPI': 'Wood/Composite Products',         // UFP Industries - 木材/复合建材
+
+    // Life Science Diagnostics
+    'CDNA': 'Transplant Diagnostics',          // CareDx - 移植诊断
+    'MYGN': 'Genetic Testing',                 // Myriad Genetics - 基因检测
+    'OLINK': 'Proteomics Tools',               // Olink Proteomics - 蛋白质组学工具
+
+    // Death Care/Industrial
+    'MATW': 'Memorialization',                 // Matthews International - 纪念产品
+
+    // Agriculture
+    'ANDE': 'Ag Supply Chain',                 // Andersons - 农业供应链/乙醇
+
+    // Digital Infrastructure
+    'DBRG': 'Digital Infrastructure Investment', // DigitalBridge - 数字基础设施投资
+
+    // Industrial Auctions
+    'RBA': 'Industrial Auctions',              // RB Global - 工业设备拍卖
   },
 
   // ============================================================
@@ -3439,6 +3515,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Environmental Services': [
       'Shale E&P',           // 油田废弃物
       'E&C Contractor',
+      'Integrated Steel',    // 钢铁废料
+      'Construction Equipment', // 建筑废弃物
     ],
 
     // ========== 电信/媒体产业链 ==========
@@ -4685,6 +4763,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'EdTech',
       'Education Services',
       'Student Housing',
+      'Enterprise Software',   // 教育科技
+      'Consumer Finance',      // 助学贷款
     ],
 
     'Backup Power': [
@@ -5185,13 +5265,6 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'E-commerce',                   // 电商供应链
     ],
 
-    // 环保服务 → 工业客户
-    'Environmental Services': [
-      'Integrated Steel',             // 钢铁废料
-      'Construction Equipment',       // 建筑废弃物
-      'Shale E&P',                    // 油田环保
-    ],
-
     // 区域航空 → 干线航空
     'Regional Airline': [
       'Low-Cost Airline',             // 干线航空衔接
@@ -5204,13 +5277,6 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Food Distribution',            // 食材供应
       'Casual Dining',                // 餐饮同行
       'Quick Service Restaurant',     // 快餐竞争
-    ],
-
-    // 营利教育 → 教育消费
-    'For-Profit Education': [
-      'Enterprise Software',          // 教育科技
-      'Student Housing',              // 学生住房
-      'Consumer Finance',             // 助学贷款
     ],
 
     // 海底服务 → 海上油气
@@ -5452,6 +5518,93 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // ========== SaaS产业链 ==========
     'Customer Service SaaS': [],      // 终端企业客户
+
+    // ========== 新增29只子行业链 (Gene Editing/Biotech/FinTech/Infra等) ==========
+
+    // 基因编辑/生物技术产业链
+    // 合成生物工具 → 基因编辑 → AI药物发现 (工具→疗法→应用)
+    'Synthetic Biology': [
+      'Gene Editing',                  // DNA合成工具供应基因编辑
+      'AI Drug Discovery',             // 合成生物学数据用于AI药物发现
+    ],
+
+    'Gene Editing': [],                // 终端疗法 (患者)
+
+    'AI Drug Discovery': [],           // 终端制药合作 (药企)
+
+    // 氢能产业链
+    'Hydrogen Fuel Cell': [],          // 终端工业/运输客户
+
+    // 金融科技产业链
+    'AI Lending': [],                  // 终端银行/借贷机构
+
+    'Digital Remittance': [],          // 终端消费者(汇款人)
+
+    'Cross-border Payments': [],       // 终端自由职业者/企业
+
+    // 软件/分析产业链
+    'CX Analytics': [],                // 终端企业客户
+
+    'Government Software': [],         // 终端政府机构
+
+    'Property Management SaaS': [],    // 终端物业管理公司
+
+    // 银行/金融SaaS产业链
+    'Digital Banking SaaS': [],        // 终端社区银行/信用社
+
+    'HSA Platform': [],                // 终端雇主/消费者
+
+    // 基础设施/建筑产业链
+    // 建材/骨料 → 筑路设备 → 公路/基础设施建设 (材料→设备→施工)
+    'Construction Materials/Aggregates': [
+      'Highway Construction',          // 骨料供应公路建设
+      'Infrastructure Construction',   // 骨料供应基础设施建设
+    ],
+
+    'Road Building Equipment': [
+      'Highway Construction',          // 筑路设备供应公路建设
+      'Infrastructure Construction',   // 设备供应基础设施建设
+    ],
+
+    'Architectural Glass': [
+      'E-Infrastructure',             // 建筑玻璃供应电子基础设施
+      'Infrastructure Construction',   // 建筑玻璃供应建筑
+    ],
+
+    'Wood/Composite Products': [
+      'E-Infrastructure',             // 木材供应建筑
+      'Infrastructure Construction',   // 木材供应基础设施
+    ],
+
+    'Highway Construction': [],        // 终端政府/出行者
+
+    'Infrastructure Construction': [], // 终端工业/公用事业客户
+
+    'E-Infrastructure': [],            // 终端数据中心/商业客户
+
+    'Marine Dredging': [],             // 终端政府/港口客户
+
+    // 生命科学诊断产业链
+    'Proteomics Tools': [
+      'Transplant Diagnostics',        // 蛋白质组学工具用于移植诊断
+      'Genetic Testing',               // 蛋白质组学工具辅助基因检测
+    ],
+
+    'Transplant Diagnostics': [],      // 终端移植中心/医院
+
+    'Genetic Testing': [],             // 终端医院/诊所
+
+    // 殡葬/纪念产业链
+    'Memorialization': [],             // 终端殡仪馆/墓地
+
+    // 农业产业链
+    'Ag Supply Chain': [],             // 终端农场/食品加工
+
+    // 数字基础设施产业链
+    'Digital Infrastructure Investment': [],  // 终端数字经济客户
+
+    // 工业拍卖产业链
+    'Industrial Auctions': [],         // 终端设备买卖方
   },
 };
 

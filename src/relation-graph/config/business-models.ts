@@ -10855,6 +10855,455 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Customer Service SaaS',
     tags: ['helpdesk', 'crm', 'itsm', 'customer_engagement'],
   },
+
+  // ========================================================
+  // Cross-Market & Consumer Causality Gap-Fill
+  // ========================================================
+
+  'ADT': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Home Security',
+    tags: ['security', 'monitoring', 'smart_home', 'alarm', 'residential'],
+  },
+  'BFAM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Childcare Services',
+    tags: ['childcare', 'daycare', 'employer_sponsored', 'education', 'backup_care'],
+  },
+  'CNK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Movie Theater',
+    tags: ['cinema', 'box_office', 'concessions', 'premium_format', 'IMAX'],
+  },
+  'DAC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Container Shipping',
+    tags: ['containership', 'charter', 'liner', 'global_trade', 'vessel_leasing'],
+  },
+  'ETD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Home Furnishing',
+    tags: ['furniture', 'interior_design', 'premium', 'custom', 'showroom'],
+  },
+  'FBIN': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Building Products',
+    tags: ['plumbing', 'outdoor_living', 'security', 'Moen', 'Master_Lock'],
+  },
+  'FUN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Theme Parks',
+    tags: ['amusement_park', 'roller_coaster', 'season_pass', 'Six_Flags', 'Cedar_Fair'],
+  },
+  'GRAB': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'advertising'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2C',
+    industrySegment: 'Super App',
+    tags: ['rideshare', 'delivery', 'fintech', 'southeast_asia', 'GrabPay'],
+  },
+  'IMAX': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cinema Technology',
+    tags: ['large_format', 'projection', 'immersive', 'premium_cinema', 'IMAX_Enhanced'],
+  },
+  'LOGI': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Computer Peripherals',
+    tags: ['mouse', 'keyboard', 'webcam', 'headset', 'video_conferencing'],
+  },
+  'LVMUY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Luxury Conglomerate',
+    tags: ['Louis_Vuitton', 'Dior', 'Hennessy', 'Tiffany', 'luxury', 'fashion', 'wines_spirits'],
+  },
+  'LVS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Casino & Resort',
+    tags: ['casino', 'resort', 'Venetian', 'Marina_Bay_Sands', 'Macau', 'Singapore'],
+  },
+  'OLED': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Display Materials',
+    tags: ['OLED', 'organic_materials', 'emitter', 'display', 'phosphorescent'],
+  },
+  'REZI': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Home Comfort & Security',
+    tags: ['HVAC', 'thermostat', 'security', 'air_distribution', 'Honeywell_spinoff'],
+  },
+  'SKIN': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Aesthetics',
+    tags: ['HydraFacial', 'skin_treatment', 'aesthetics', 'facial', 'consumable_tips'],
+  },
+  'TMHC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['homebuilding', 'single_family', 'entry_level', 'move_up', 'luxury_homes'],
+  },
+  'WHR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Home Appliances',
+    tags: ['appliances', 'Whirlpool', 'KitchenAid', 'Maytag', 'laundry', 'kitchen'],
+  },
+  'USNA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Health Supplements',
+    tags: ['nutrition', 'supplements', 'direct_selling', 'vitamins', 'personal_care'],
+  },
+  'NUS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Health Supplements',
+    tags: ['anti_aging', 'nutrition', 'direct_selling', 'ageLOC', 'beauty_devices'],
+  },
+
+  // ========================================================
+  // 基因编辑/生物技术 (Gene Editing/Biotech)
+  // ========================================================
+
+  'TWST': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Synthetic Biology Tools',
+    tags: ['synthetic_biology', 'DNA_synthesis', 'gene_tools', 'biopharma'],
+  },
+  'CRSP': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gene Editing Therapy',
+    tags: ['CRISPR', 'gene_editing', 'cell_therapy', 'rare_disease'],
+  },
+  'NTLA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'In Vivo Gene Editing',
+    tags: ['in_vivo', 'gene_editing', 'CRISPR', 'liver_disease'],
+  },
+  'RXRX': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'AI Drug Discovery',
+    tags: ['AI', 'drug_discovery', 'machine_learning', 'biology_platform'],
+  },
+
+  // ========================================================
+  // 清洁能源 (Clean Energy)
+  // ========================================================
+
+  'PLUG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Hydrogen Fuel Cells',
+    tags: ['hydrogen', 'fuel_cell', 'electrolyzer', 'green_energy'],
+  },
+
+  // ========================================================
+  // 金融科技 (FinTech)
+  // ========================================================
+
+  'UPST': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B',
+    industrySegment: 'AI Lending Platform',
+    tags: ['AI_lending', 'credit_scoring', 'bank_partnership', 'fintech'],
+  },
+  'RELY': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Digital Remittance',
+    tags: ['remittance', 'cross_border', 'mobile_money', 'immigrants'],
+  },
+  'PAYO': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Cross-border Payments',
+    tags: ['cross_border', 'payments', 'freelancer', 'marketplace_payout'],
+  },
+
+  // ========================================================
+  // 软件/分析 (Software/Analytics)
+  // ========================================================
+
+  'VRNT': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'CX Analytics',
+    tags: ['customer_experience', 'analytics', 'AI', 'workforce_engagement'],
+  },
+  'TYL': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Government Software',
+    tags: ['government', 'public_sector', 'ERP', 'courts', 'schools'],
+  },
+  'APPF': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Property Management SaaS',
+    tags: ['property_management', 'real_estate', 'SaaS', 'landlord'],
+  },
+
+  // ========================================================
+  // 银行/金融SaaS (Banking/Finance SaaS)
+  // ========================================================
+
+  'ALKT': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Digital Banking SaaS',
+    tags: ['digital_banking', 'credit_union', 'community_bank', 'fintech'],
+  },
+  'HQY': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'HSA Platform',
+    tags: ['HSA', 'health_savings', 'benefits', 'investment'],
+  },
+
+  // ========================================================
+  // 基础设施/建筑 (Infrastructure/Construction)
+  // ========================================================
+
+  'ASTE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Road Building Equipment',
+    tags: ['road_equipment', 'asphalt', 'aggregate', 'paving'],
+  },
+  'ROAD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Highway Construction',
+    tags: ['road_construction', 'highway', 'asphalt', 'government'],
+  },
+  'PRIM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Infrastructure Construction',
+    tags: ['infrastructure', 'pipeline', 'utility', 'industrial'],
+  },
+  'STRL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'E-Infrastructure',
+    tags: ['e_infrastructure', 'data_center', 'building', 'transportation'],
+  },
+  'TTEK': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Environmental Consulting',
+    tags: ['environmental', 'water', 'infrastructure', 'consulting'],
+  },
+  'KNF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Construction Materials/Aggregates',
+    tags: ['aggregates', 'ready_mix', 'asphalt', 'construction_materials'],
+  },
+  'APOG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Architectural Glass',
+    tags: ['glass', 'building_envelope', 'curtain_wall', 'framing'],
+  },
+  'GLDD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Marine Dredging',
+    tags: ['dredging', 'marine_construction', 'coastal', 'government'],
+  },
+
+  // ========================================================
+  // 材料/木材 (Materials/Wood)
+  // ========================================================
+
+  'UFPI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Wood/Composite Products',
+    tags: ['wood', 'composite', 'building_products', 'packaging'],
+  },
+
+  // ========================================================
+  // 生命科学诊断 (Life Science Diagnostics)
+  // ========================================================
+
+  'CDNA': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Transplant Diagnostics',
+    tags: ['transplant', 'genomics', 'diagnostics', 'rejection_monitoring'],
+  },
+  'MYGN': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Genetic Testing',
+    tags: ['genetic_testing', 'hereditary_cancer', 'prenatal', 'pharmacogenomics'],
+  },
+  'OLINK': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Proteomics Tools',
+    tags: ['proteomics', 'biomarker', 'PEA_technology', 'drug_development'],
+  },
+
+  // ========================================================
+  // 殡葬/工业 (Death Care/Industrial)
+  // ========================================================
+
+  'MATW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Memorialization',
+    tags: ['memorialization', 'cremation', 'industrial_tech', 'marking'],
+  },
+
+  // ========================================================
+  // 农业 (Agriculture)
+  // ========================================================
+
+  'ANDE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Ag Supply Chain',
+    tags: ['grain', 'ethanol', 'fertilizer', 'ag_supply_chain'],
+  },
+
+  // ========================================================
+  // 数字基础设施 (Digital Infrastructure)
+  // ========================================================
+
+  'DBRG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Digital Infrastructure Investment',
+    tags: ['digital_infrastructure', 'data_center', 'tower', 'fiber'],
+  },
+
+  // ========================================================
+  // 工业拍卖 (Industrial Auctions)
+  // ========================================================
+
+  'RBA': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial Equipment Auctions',
+    tags: ['auction', 'heavy_equipment', 'remarketing', 'marketplace'],
+  },
 };
 
 // ============================================================
