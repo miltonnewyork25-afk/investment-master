@@ -5470,6 +5470,52 @@ export const CROSS_CHAIN_IMPACT: Record<string, string[]> = {
   // 大型科技服务 - 跨链
   'ACN': ['IT Consulting', 'Healthcare IT', 'Financial Services', 'Government', 'Industrial'],
   'IBM': ['Tech/Cloud Chain', 'Healthcare IT', 'Financial Services', 'AI'],
+
+  // 汽车OEM - 跨链
+  'F': ['Auto Chain', 'EV Chain', 'Financial Services', 'Fleet/Commercial'],
+  'GM': ['Auto Chain', 'EV Chain', 'Financial Services', 'Autonomous Driving'],
+  'TSLA': ['EV Chain', 'Energy Storage', 'Solar', 'AI/Autonomous'],
+
+  // 防务/航空 - 跨链
+  'LMT': ['Defense', 'Aviation Chain', 'Space', 'Cybersecurity'],
+  'RTX': ['Defense', 'Aviation Chain', 'Cybersecurity', 'Missile'],
+  'NOC': ['Defense', 'Space', 'Cybersecurity', 'Autonomous'],
+  'BA': ['Aviation Chain', 'Defense', 'Space', 'Satellite'],
+  'GD': ['Defense', 'Aviation Chain', 'Marine', 'IT Services'],
+
+  // 零售平台 - 跨链
+  'TGT': ['Consumer Retail Chain', 'Grocery', 'Apparel', 'Beauty'],
+  'HD': ['Home Improvement', 'Construction Chain', 'Pro Services'],
+  'LOW': ['Home Improvement', 'Construction Chain', 'Appliances'],
+
+  // 食品/消费品 - 跨链
+  'PEP': ['Beverages', 'Snacks', 'Mass Retail', 'QSR'],
+  'MDLZ': ['Snacks', 'Confectionery', 'Mass Retail', 'International'],
+  'CL': ['Consumer Staples', 'Oral Care', 'Pet Nutrition', 'Mass Retail'],
+  'KMB': ['Consumer Staples', 'Healthcare', 'Professional', 'Mass Retail'],
+
+  // 科技平台 - 补充
+  'NFLX': ['Streaming', 'Content', 'Consumer Tech', 'Advertising'],
+  'DIS': ['Entertainment', 'Streaming', 'Theme Parks', 'Consumer Products'],
+  'UBER': ['Ride-hailing', 'Food Delivery', 'Freight', 'Advertising'],
+
+  // 工业自动化 - 跨链
+  'ROK': ['Industrial Automation', 'Auto Chain', 'Oil & Gas Chain', 'Mining'],
+  'EMR': ['Industrial Automation', 'Energy', 'HVAC', 'Software'],
+  'ETN': ['Electrical Equipment', 'Data Centers', 'Auto Chain', 'Aviation Chain'],
+
+  // REITs - 跨链
+  'PLD': ['Industrial REIT', 'E-commerce', 'Logistics', 'Data Centers'],
+  'DLR': ['Data Center REIT', 'Tech/Cloud Chain', 'Telecom', 'Enterprise'],
+  'SPG': ['Retail REIT', 'Apparel', 'Restaurants', 'Entertainment'],
+
+  // 材料 - 跨链
+  'FCX': ['Copper Mining', 'EV Chain', 'Construction Chain', 'Electronics'],
+  'NEM': ['Gold Mining', 'Precious Metals', 'Inflation Hedge'],
+
+  // 公用事业/可再生 - 跨链
+  'NEE': ['Utilities', 'Solar', 'Wind', 'Energy Storage'],
+  'ENPH': ['Solar', 'Energy Storage', 'EV Charging', 'Smart Home'],
 };
 
 // ============================================================

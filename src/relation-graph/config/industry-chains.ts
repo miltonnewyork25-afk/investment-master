@@ -502,6 +502,73 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Trucking',
       'Marine Shipping',
     ],
+
+    // 科技硬件互补
+    'Consumer Electronics': [
+      'Electronic Gaming & Multimedia',
+      'Software - Application',
+      'Telecom Services',
+    ],
+
+    'Semiconductors': [
+      'Electronic Components',
+      'Computer Hardware',
+      'Communication Equipment',
+    ],
+
+    // 汽车互补
+    'Auto - Manufacturers': [
+      'Auto - Parts',
+      'Rental & Leasing Services',
+      'Insurance - Property & Casualty',
+    ],
+
+    // 传媒/娱乐互补
+    'Entertainment': [
+      'Electronic Gaming & Multimedia',
+      'Internet Content & Information',
+      'Advertising Agencies',
+    ],
+
+    // 工业互补
+    'Industrial Distribution': [
+      'Electrical Equipment & Parts',
+      'Farm & Heavy Construction Machinery',
+      'Specialty Industrial Machinery',
+    ],
+
+    // 消费品互补
+    'Household Products': [
+      'Personal Care Products',
+      'Packaged Foods',
+    ],
+
+    'Beverages - Alcoholic': [
+      'Beverages - Non-Alcoholic',
+      'Restaurants',
+      'Grocery Stores',
+    ],
+
+    // REIT互补
+    'REIT - Retail': [
+      'REIT - Industrial',
+      'Specialty Retail',
+      'Restaurants',
+    ],
+
+    // 保险互补
+    'Insurance - Life': [
+      'Insurance - Property & Casualty',
+      'Insurance Brokers',
+      'Asset Management',
+    ],
+
+    // 电信互补
+    'Telecom Services': [
+      'Internet Content & Information',
+      'Software - Infrastructure',
+      'Communication Equipment',
+    ],
   },
 
   industryGroups: {
