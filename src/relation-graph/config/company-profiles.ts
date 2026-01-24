@@ -592,6 +592,180 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['proximity', 'quality', 'reliability', 'scale'],
     channels: ['direct'],
   },
+
+  // ========== 低成本航空 - 补充 ==========
+  'JBLU': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['travel', 'vacation', 'weekend-trips', 'leisure'],
+    valueProps: ['value', 'comfort', 'entertainment', 'legroom'],
+    channels: ['online', 'direct'],
+  },
+  'ALK': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['travel', 'vacation', 'business-travel', 'west-coast'],
+    valueProps: ['reliability', 'loyalty', 'value', 'premium_economy'],
+    channels: ['online', 'direct'],
+  },
+  'SAVE': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'value', gender: 'all' },
+    occasions: ['travel', 'vacation', 'budget-travel', 'leisure'],
+    valueProps: ['low_price', 'point-to-point', 'no-frills'],
+    channels: ['online', 'direct'],
+  },
+  'ULCC': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'value', gender: 'all' },
+    occasions: ['travel', 'vacation', 'budget-travel', 'leisure'],
+    valueProps: ['low_price', 'frequency', 'no-frills'],
+    channels: ['online', 'direct'],
+  },
+
+  // ========== 汽车OEM/经销商 - 补充 ==========
+  'STLA': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['commute', 'family', 'outdoor', 'work'],
+    valueProps: ['brand_variety', 'SUV', 'truck', 'value'],
+    channels: ['retail', 'direct'],
+  },
+  'TM': {
+    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['commute', 'family', 'reliability', 'daily-use'],
+    valueProps: ['reliability', 'resale_value', 'hybrid', 'efficiency'],
+    channels: ['retail'],
+  },
+  'HMC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['commute', 'family', 'motorcycles', 'outdoor'],
+    valueProps: ['reliability', 'value', 'efficiency', 'practicality'],
+    channels: ['retail'],
+  },
+  'FSR': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['commute', 'luxury', 'sustainability', 'tech'],
+    valueProps: ['design', 'EV', 'sustainability', 'premium'],
+    channels: ['direct', 'online'],
+  },
+  'NIO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['commute', 'tech', 'premium', 'family'],
+    valueProps: ['premium', 'battery_swap', 'community', 'tech'],
+    channels: ['direct', 'online'],
+  },
+  'XPEV': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['commute', 'tech', 'autonomous', 'daily-use'],
+    valueProps: ['smart', 'autonomous', 'tech', 'value'],
+    channels: ['direct', 'online'],
+  },
+  'LI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['family', 'road-trip', 'commute', 'outdoor'],
+    valueProps: ['range', 'family', 'space', 'practical_EV'],
+    channels: ['direct', 'online'],
+  },
+  'GPI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['vehicle-purchase', 'luxury', 'service', 'upgrade'],
+    valueProps: ['selection', 'luxury', 'service', 'financing'],
+    channels: ['retail'],
+  },
+  'SAH': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['vehicle-purchase', 'luxury', 'service', 'pre-owned'],
+    valueProps: ['premium', 'luxury', 'service', 'convenience'],
+    channels: ['retail', 'online'],
+  },
+  'ABG': {
+    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['vehicle-purchase', 'service', 'trade-in', 'financing'],
+    valueProps: ['selection', 'value', 'service', 'one-stop'],
+    channels: ['retail', 'online'],
+  },
+  'CAR': {
+    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['travel', 'vacation', 'business-travel', 'temporary-transport'],
+    valueProps: ['convenience', 'selection', 'price', 'flexibility'],
+    channels: ['online', 'retail'],
+  },
+  'HTZ': {
+    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['travel', 'vacation', 'business-travel', 'temporary-transport'],
+    valueProps: ['convenience', 'brand', 'selection', 'loyalty'],
+    channels: ['online', 'retail'],
+  },
+
+  // ========== 旅游/电商/零售 - 补充 ==========
+  'TRIP': {
+    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['travel', 'vacation', 'restaurants', 'research'],
+    valueProps: ['reviews', 'price_comparison', 'user_content', 'planning'],
+    channels: ['online'],
+  },
+  'MTH': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['home-purchase', 'family', 'relocation', 'first-home'],
+    valueProps: ['value', 'design', 'energy_efficiency', 'community'],
+    channels: ['direct', 'online'],
+  },
+  'IHG': {
+    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['travel', 'vacation', 'business-travel', 'family'],
+    valueProps: ['brand_variety', 'loyalty', 'consistency', 'value'],
+    channels: ['online', 'direct'],
+  },
+  'WH': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['travel', 'vacation', 'road-trip', 'budget-travel'],
+    valueProps: ['value', 'consistency', 'loyalty', 'accessibility'],
+    channels: ['online', 'direct'],
+  },
+  'EBAY': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['shopping', 'collectibles', 'bargain', 'secondhand'],
+    valueProps: ['selection', 'price', 'auction', 'unique_items'],
+    channels: ['online'],
+  },
+  'ETSY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'middle', gender: 'female' },
+    occasions: ['gifts', 'home-decor', 'handmade', 'personalized'],
+    valueProps: ['unique', 'handmade', 'personalized', 'artisan'],
+    channels: ['online'],
+  },
+  'TJX': {
+    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'female' },
+    occasions: ['shopping', 'bargain', 'fashion', 'home-decor'],
+    valueProps: ['value', 'brands', 'treasure_hunt', 'savings'],
+    channels: ['retail'],
+  },
+  'ROST': {
+    demographics: { ageGroup: 'all', incomeLevel: 'value', gender: 'female' },
+    occasions: ['shopping', 'bargain', 'fashion', 'basics'],
+    valueProps: ['value', 'discount', 'brands', 'savings'],
+    channels: ['retail'],
+  },
+  'WEN': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['dining', 'quick-meal', 'drive-thru', 'lunch'],
+    valueProps: ['quality', 'value', 'fresh', 'convenience'],
+    channels: ['retail', 'direct'],
+  },
+  'LYFT': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['commute', 'night-out', 'airport', 'convenience'],
+    valueProps: ['convenience', 'price', 'safety', 'app'],
+    channels: ['online'],
+  },
+  'RAD': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['pharmacy', 'health', 'convenience', 'wellness'],
+    valueProps: ['convenience', 'proximity', 'pharmacy', 'health'],
+    channels: ['retail'],
+  },
+  'CYH': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['healthcare', 'emergency', 'surgery', 'chronic-care'],
+    valueProps: ['access', 'proximity', 'community', 'acute_care'],
+    channels: ['direct'],
+  },
 };
 
 // ============================================================
@@ -1230,6 +1404,165 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // 动物健康 - 防御性
   'ZTS': 'defensive',   // Zoetis
   'IDXX': 'defensive',  // IDEXX
+  // ---------- 半导体设备 - 补充 ----------
+  'ENTG': 'mid',
+  'ONTO': 'mid',
+  'ACMR': 'mid',
+  'MKSI': 'mid',
+  'CAMT': 'mid',
+  'COHU': 'mid',
+  'ICHR': 'mid',
+  'UCTT': 'mid',
+  'FORM': 'mid',
+  'KLIC': 'mid',
+  'TOELY': 'mid',
+  'AEHR': 'mid',
+  // ---------- Fabless/IDM/Foundry - 补充 ----------
+  'TXN': 'mid',
+  'ADI': 'mid',
+  'MXIM': 'mid',
+  'WOLF': 'mid',
+  'MPWR': 'mid',
+  'MCHP': 'mid',
+  'LSCC': 'mid',
+  'SMTC': 'mid',
+  'ALGM': 'mid',
+  'UMC': 'mid',
+  'GFS': 'mid',
+  'STX': 'mid',
+  // ---------- 航空工业 - 补充 ----------
+  'EADSY': 'mid',
+  'ERJ': 'mid',
+  'SAFRY': 'mid',
+  'RR': 'mid',
+  'SPR': 'mid',
+  'HXL': 'mid',
+  'WWD': 'mid',
+  'AAR': 'mid',
+  'AIR': 'mid',
+  'VSEC': 'defensive',
+  'AER': 'mid',
+  'AL': 'mid',
+  'FLY': 'mid',
+  // ---------- 低成本航空 - 补充 ----------
+  'JBLU': 'early',
+  'ALK': 'early',
+  'SAVE': 'early',
+  'ULCC': 'early',
+  // ---------- 汽车 - 补充 ----------
+  'STLA': 'early',
+  'TM': 'early',
+  'HMC': 'early',
+  'FSR': 'early',
+  'NIO': 'early',
+  'XPEV': 'early',
+  'LI': 'early',
+  'VC': 'early',
+  'ADNT': 'early',
+  'DAN': 'early',
+  'MOD': 'early',
+  'AXL': 'early',
+  'THRM': 'early',
+  'GPI': 'early',
+  'SAH': 'early',
+  'ABG': 'early',
+  'CAR': 'early',
+  'HTZ': 'early',
+  // ---------- EV电池 - 补充 ----------
+  'LTHM': 'mid',
+  'LAC': 'mid',
+  'PLL': 'mid',
+  'QS': 'mid',
+  // ---------- 运输 - 补充 ----------
+  'CP': 'mid',
+  'CNI': 'mid',
+  'ODFL': 'mid',
+  'SAIA': 'mid',
+  'KNX': 'mid',
+  'KEX': 'mid',
+  'GLNG': 'late',
+  // ---------- 农业 - 补充 ----------
+  'CTVA': 'mid',
+  'FMC': 'mid',
+  'INGR': 'defensive',
+  // ---------- 矿业/资源 - 补充 ----------
+  'CENX': 'late',
+  'TECK': 'late',
+  'SUM': 'mid',
+  // ---------- 油气服务 - 补充 ----------
+  'FTI': 'late',
+  'CHX': 'late',
+  'PTEN': 'late',
+  'WFRD': 'late',
+  'HFC': 'late',
+  // ---------- 医药/生物 - 补充 ----------
+  'SNY': 'defensive',
+  'SGEN': 'defensive',
+  'INCY': 'defensive',
+  'BMRN': 'defensive',
+  'EXEL': 'defensive',
+  'SRPT': 'defensive',
+  'TEVA': 'defensive',
+  'VTRS': 'defensive',
+  'PRGO': 'defensive',
+  'CYH': 'mid',
+  'RAD': 'defensive',
+  'DXCM': 'defensive',
+  // ---------- 金融 - 补充 ----------
+  'BEN': 'mid',
+  'IVZ': 'mid',
+  'OWL': 'mid',
+  'FDS': 'defensive',
+  'MORN': 'defensive',
+  'TRI': 'defensive',
+  'ADYEY': 'mid',
+  // ---------- 基础设施REIT - 补充 ----------
+  'AMT': 'defensive',
+  'CCI': 'defensive',
+  'SBAC': 'defensive',
+  // ---------- 工程/建筑 - 补充 ----------
+  'FLR': 'mid',
+  'KBR': 'defensive',
+  // ---------- 旅游/零售 - 补充 ----------
+  'TRIP': 'early',
+  'MTH': 'early',
+  'IHG': 'early',
+  'EBAY': 'mid',
+  'ETSY': 'early',
+  'TJX': 'mid',
+  'ROST': 'mid',
+  'WEN': 'defensive',
+  'LYFT': 'early',
+  // ---------- 环保服务 - 补充 ----------
+  'CWST': 'defensive',
+  'ECOL': 'mid',
+  // ---------- 人力资源 - 补充 ----------
+  'RHI': 'early',
+  'MAN': 'early',
+  'ASGN': 'early',
+  'NSP': 'mid',
+  'CTAS': 'defensive',
+  // ---------- 教育 - 补充 ----------
+  'LOPE': 'defensive',
+  'STRA': 'defensive',
+  'DUOL': 'mid',
+  'CHGG': 'mid',
+  // ---------- 房地产服务 - 补充 ----------
+  'CBRE': 'early',
+  'JLL': 'early',
+  'ZG': 'early',
+  'RDFN': 'early',
+  // ---------- 贵金属 - 补充 ----------
+  'AEM': 'late',
+  'WPM': 'late',
+  'FNV': 'late',
+  // ---------- EV充电 - 补充 ----------
+  'CHPT': 'mid',
+  'EVGO': 'mid',
+  'BLNK': 'mid',
+  // ---------- 数据中心基础设施 - 补充 ----------
+  'VRT': 'mid',
+  'PWSC': 'defensive',
 };
 
 // ============================================================
@@ -1999,6 +2332,23 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'UPS': {
     interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.4,
     consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.4,
+  },
+  // 货运经纪/LTL - 经济周期敏感，油价影响
+  'XPO': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.3,
+  },
+  'CHRW': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'JBHT': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.4,
+  },
+  'EXPD': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.2,
   },
 
   // ========== 金融行业 (利率高敏感) ==========
@@ -2900,6 +3250,484 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
   },
+
+  // ========== 半导体设备 - capex cycle敏感 ==========
+  'ENTG': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ONTO': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ACMR': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'MKSI': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'CAMT': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'COHU': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ICHR': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'UCTT': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'FORM': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'KLIC': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'TOELY': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'AEHR': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // ========== Fabless/IDM/Foundry - 科技周期敏感 ==========
+  'TXN': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ADI': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'MXIM': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'WOLF': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  'MPWR': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'MCHP': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'LSCC': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'SMTC': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ALGM': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'UMC': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'GFS': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'STX': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // ========== 航空工业 - 航空周期 ==========
+  'EADSY': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'ERJ': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'SAFRY': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'RR': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'SPR': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'HXL': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'WWD': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'AAR': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'AIR': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'VSEC': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.3, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'AER': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.3,
+  },
+  'AL': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.3,
+  },
+  'FLY': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.3,
+  },
+
+  // ========== 低成本航空 - 油价高敏感 ==========
+  'JBLU': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.7,
+  },
+  'ALK': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.7,
+  },
+  'SAVE': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.8,
+  },
+  'ULCC': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.8,
+  },
+
+  // ========== 汽车OEM/零部件 - 利率+消费者信心 ==========
+  'STLA': {
+    interestRate: -0.5, inflation: -0.3, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: -0.2,
+  },
+  'TM': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'HMC': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'FSR': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+  'NIO': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'XPEV': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'LI': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  'VC': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'ADNT': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'DAN': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'MOD': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'AXL': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'THRM': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'GPI': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'SAH': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'ABG': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'CAR': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'HTZ': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+
+  // ========== EV电池材料 - 商品周期 ==========
+  'LTHM': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  'LAC': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  'PLL': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  'QS': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+
+  // ========== 运输/铁路 - GDP驱动 ==========
+  'CP': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'CNI': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'ODFL': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.3,
+  },
+  'SAIA': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.3,
+  },
+  'KNX': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.4,
+  },
+  'KEX': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.3,
+  },
+  'GLNG': {
+    interestRate: -0.1, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.6,
+  },
+
+  // ========== 农业 - 商品价格敏感 ==========
+  'CTVA': {
+    interestRate: -0.1, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'FMC': {
+    interestRate: -0.1, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'INGR': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+
+  // ========== 矿业/资源 - 商品超级周期 ==========
+  'CENX': {
+    interestRate: -0.2, inflation: 0.5, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.6, oilPrice: 0.3,
+  },
+  'TECK': {
+    interestRate: -0.2, inflation: 0.5, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.5, oilPrice: 0.3,
+  },
+  'SUM': {
+    interestRate: -0.4, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // ========== 油气服务 - 油价高度正相关 ==========
+  'FTI': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  'CHX': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  'PTEN': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.8,
+  },
+  'WFRD': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  'HFC': {
+    interestRate: 0.1, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.5,
+  },
+
+  // ========== 医药/生物 - 防御型 ==========
+  'SNY': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'SGEN': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'INCY': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'BMRN': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'EXEL': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'SRPT': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'TEVA': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'VTRS': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'PRGO': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CYH': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'RAD': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'DXCM': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 金融/数据 - 混合 ==========
+  'BEN': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'IVZ': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'OWL': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'FDS': {
+    interestRate: 0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'MORN': {
+    interestRate: 0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'TRI': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ADYEY': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 基础设施REIT - 利率敏感 ==========
+  'AMT': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CCI': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'SBAC': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 工程/建筑 ==========
+  'FLR': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+  'KBR': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+
+  // ========== 旅游/零售/电商 ==========
+  'TRIP': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'MTH': {
+    interestRate: -0.8, inflation: -0.3, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'IHG': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'EBAY': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ETSY': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'WEN': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'LYFT': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.3,
+  },
 };
 
 // ============================================================
@@ -2967,6 +3795,35 @@ export const CROSS_CHAIN_IMPACT: Record<string, string[]> = {
   'DHR': ['Life Sciences Tools', 'Diagnostics', 'Environmental', 'Industrial'],
   'ABT': ['Medical Devices', 'Diagnostics', 'Nutrition', 'Diabetes Care'],
   'MCK': ['Drug Distribution', 'Specialty Pharma', 'Healthcare IT', 'Oncology'],
+
+  // 半导体 - 跨链补充
+  'TXN': ['Semiconductor Chain', 'Auto Chain', 'Industrial Chain'],
+  'ADI': ['Semiconductor Chain', 'Industrial Chain', 'Auto Chain', 'Healthcare'],
+  'MCHP': ['Semiconductor Chain', 'Industrial Chain', 'Auto Chain', 'IoT'],
+  'WOLF': ['Semiconductor Chain', 'EV/Auto Chain', 'Energy Infrastructure'],
+
+  // 航空 - 跨链
+  'EADSY': ['Aviation Chain', 'Defense', 'Space', 'Helicopter'],
+  'SAFRY': ['Aviation Chain', 'Defense', 'Helicopter', 'Propulsion'],
+
+  // 锂/电池 - 跨链补充
+  'LTHM': ['EV/Auto Chain', 'Energy Storage', 'Consumer Electronics'],
+  'LAC': ['EV/Auto Chain', 'Energy Storage'],
+
+  // 运输 - 跨链补充
+  'CP': ['Rail Freight', 'Agriculture', 'Energy', 'Industrial Chain'],
+  'CNI': ['Rail Freight', 'Agriculture', 'Energy', 'Consumer Retail Chain'],
+
+  // 农业 - 跨链
+  'CTVA': ['Agriculture', 'Chemicals', 'Biotech'],
+  'ADM': ['Agriculture', 'Food Chain', 'Biofuels', 'Nutrition'],
+
+  // 矿业 - 跨链
+  'TECK': ['Mining', 'Steel Chain', 'EV/Auto Chain', 'Energy'],
+
+  // 基础设施 - 跨链
+  'AMT': ['Telecom Infrastructure', 'Data Centers', 'Fiber', '5G'],
+  'CCI': ['Telecom Infrastructure', 'Small Cells', 'Fiber', '5G'],
 };
 
 // ============================================================

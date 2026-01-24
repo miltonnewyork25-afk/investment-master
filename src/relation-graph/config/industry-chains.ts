@@ -470,6 +470,46 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Auto - Parts',
       'Packaged Foods',
     ],
+
+    'Environmental Services Chain': [
+      'Waste Collection',
+      'Waste Processing',
+      'Environmental Remediation',
+      'Hazardous Waste',
+    ],
+
+    'Professional Services Chain': [
+      'Staffing & Temp',
+      'Professional Services',
+      'Uniform & Workplace',
+    ],
+
+    'Education Chain': [
+      'Education Services',
+      'EdTech',
+    ],
+
+    'Precious Metals Chain': [
+      'Gold Mining',
+      'Precious Metals Streaming',
+    ],
+
+    'EV Infrastructure Chain': [
+      'EV Charging',
+      'EV Battery',
+      'EV OEM',
+    ],
+
+    'Real Estate Services Chain': [
+      'Commercial Real Estate Services',
+      'Residential Real Estate Tech',
+    ],
+
+    'Data Center Chain': [
+      'Data Center Infrastructure',
+      'Data Center REIT',
+      'Cloud Computing',
+    ],
   },
 
   // ============================================================
@@ -779,6 +819,9 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'CCI': 'Data Center REIT',            // Crown Castle
     'SBAC': 'Data Center REIT',           // SBA Communications
 
+    // 消费电子 (Consumer Electronics)
+    'AAPL': 'Consumer Electronics',        // Apple
+
     // 云服务商 - Hyperscaler (Cloud Provider)
     'AMZN': 'Cloud Hyperscaler',          // AWS
     'MSFT': 'Cloud Hyperscaler',          // Azure
@@ -1037,8 +1080,11 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'ULTA': 'Beauty Retail',              // Ulta
     'LULU': 'Athletic Apparel',           // Lululemon
     'NKE': 'Athletic Apparel',            // Nike
+    'UAA': 'Athletic Apparel',            // Under Armour
+    'DKS': 'Sporting Goods Retail',       // Dick's Sporting Goods
     'TJX': 'Off-Price Retail',            // TJX
     'ROST': 'Off-Price Retail',           // Ross Stores
+    'BURL': 'Off-Price Retail',           // Burlington
 
     // 电商 (E-commerce)
     // AMZN: defined above as 'Cloud Hyperscaler'
@@ -1097,9 +1143,10 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'ABNB': 'Short-term Rental',          // Airbnb
     'TRIP': 'Travel Meta',                // TripAdvisor
 
-    // 出行服务 (Mobility)
+    // 出行/配送服务 (Mobility & Delivery)
     'UBER': 'Ride-hailing',               // Uber
     'LYFT': 'Ride-hailing',               // Lyft
+    'DASH': 'Food Delivery',              // DoorDash
 
     // 租车 (Car Rental)
     'CAR': 'Car Rental',                  // Avis Budget
@@ -1219,9 +1266,9 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'AWK': 'Water Utility',                // American Water Works
 
     // 废弃物处理 (Waste Management)
-    'WM': 'Waste Management',              // Waste Management
-    'RSG': 'Waste Management',             // Republic Services
-    'CLH': 'Environmental Services',       // Clean Harbors - 危废
+    'WM': 'Waste Collection',              // Waste Management
+    'RSG': 'Waste Collection',             // Republic Services
+    'CLH': 'Hazardous Waste',              // Clean Harbors - 危废
 
     // ========== 电信/媒体/娱乐细分 ==========
     // 电信运营商 (Telecom Operators)
@@ -1270,6 +1317,45 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'CDNS': 'EDA Software',               // Cadence
     'SNPS': 'EDA Software',               // Synopsys
     'ANSS': 'Simulation Software',        // Ansys
+
+    // ========== 环保/废物管理 - 补充 (Environmental Services) ==========
+    'CWST': 'Waste Processing',             // Casella Waste
+    'ECOL': 'Environmental Remediation',    // US Ecology
+
+    // ========== 人力资源/职业服务 (Staffing & Professional Services) ==========
+    'RHI': 'Staffing & Temp',               // Robert Half
+    'MAN': 'Staffing & Temp',               // ManpowerGroup
+    'ASGN': 'Staffing & Temp',              // ASGN Inc
+    'NSP': 'Professional Services',         // Insperity - PEO
+    'CTAS': 'Uniform & Workplace',          // Cintas
+
+    // ========== 教育 (Education) ==========
+    'LOPE': 'Education Services',           // Grand Canyon Education
+    'STRA': 'Education Services',           // Strategic Education
+    'DUOL': 'EdTech',                       // Duolingo
+    'CHGG': 'EdTech',                       // Chegg
+
+    // ========== 房地产服务 (Real Estate Services) ==========
+    'CBRE': 'Commercial Real Estate Services',  // CBRE Group
+    'JLL': 'Commercial Real Estate Services',   // Jones Lang LaSalle
+    'ZG': 'Residential Real Estate Tech',       // Zillow
+    'RDFN': 'Residential Real Estate Tech',     // Redfin
+
+    // ========== 贵金属 (Precious Metals) ==========
+    'NEM': 'Gold Mining',                   // Newmont
+    'GOLD': 'Gold Mining',                  // Barrick Gold
+    'AEM': 'Gold Mining',                   // Agnico Eagle
+    'WPM': 'Precious Metals Streaming',     // Wheaton Precious Metals
+    'FNV': 'Precious Metals Streaming',     // Franco-Nevada
+
+    // ========== EV充电基础设施 (EV Infrastructure) ==========
+    'CHPT': 'EV Charging',                  // ChargePoint
+    'EVGO': 'EV Charging',                  // EVgo
+    'BLNK': 'EV Charging',                  // Blink Charging
+
+    // ========== 数据中心基础设施 (Data Center Infrastructure) ==========
+    'VRT': 'Data Center Infrastructure',    // Vertiv
+    'PWSC': 'Data Center Infrastructure',   // PowerSchool (Data Infra)
   },
 
   // ============================================================
@@ -2156,9 +2242,17 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Homebuilder',
     ],
 
+    // 运动服饰 → 零售渠道
+    'Athletic Apparel': [
+      'Sporting Goods Retail',
+      'Mass Retail',
+      'E-commerce',
+    ],
+
     // 服装零售 - 与运动服饰相关
     'Apparel Retail': [
       'Athletic Apparel',
+      'Off-Price Retail',
     ],
 
     // 汽配零售 - 与汽车后市场相关
@@ -2234,6 +2328,50 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Apparel Retail',
       'Mass Retail',
       'Off-Price Retail',
+    ],
+
+    // ========== 环保服务链 ==========
+    'Waste Collection': [
+      'Waste Processing',
+    ],
+    'Waste Processing': [
+      'Environmental Remediation',
+    ],
+    'Hazardous Waste': [
+      'Environmental Remediation',
+    ],
+
+    // ========== 人力资源链 ==========
+    'Staffing & Temp': [
+      'Professional Services',
+    ],
+
+    // ========== 教育链 ==========
+    'EdTech': [
+      'Education Services',
+    ],
+
+    // ========== 贵金属链 ==========
+    'Gold Mining': [
+      'Precious Metals Streaming',
+    ],
+
+    // ========== EV充电链 ==========
+    'EV Charging': [
+      'EV OEM',
+    ],
+
+    // ========== 数据中心链 ==========
+    'Data Center Infrastructure': [
+      'Data Center REIT',
+    ],
+
+    // ========== 房地产服务链 ==========
+    'Commercial Real Estate Services': [
+      'Data Center REIT',
+    ],
+    'Residential Real Estate Tech': [
+      'Homebuilder',
     ],
   },
 };
