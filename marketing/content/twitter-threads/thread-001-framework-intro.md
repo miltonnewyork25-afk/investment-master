@@ -96,23 +96,22 @@ But HOW do you know when to be greedy?
 This framework gives you a SYSTEMATIC answer:
 When the score > 65, leading indicators turn positive, and valuation is below historical median.
 
-**12/12 [CTA]**
-I publish weekly scoring updates for 19 semiconductor stocks.
+**12/12 [CTA — Reply-Driving]**
+The framework currently covers 19 semiconductor stocks + 14 tech companies + 8 cyclical industries.
 
-Follow me for:
-• Weekly score rankings
-• Deep-dive analysis reports
-• Cycle turning point alerts
-• Supply chain intelligence
+What stock or sector should I analyze next?
 
-The next update drops Sunday.
-
-🔔 Turn on notifications so you don't miss it.
+Drop a ticker in the replies. Most requested gets a full thread next week. 👇
 
 ---
 
-## 分发说明
-- 发布时间: 美东时间 周二 8:00 AM（交易日开盘前）
-- 配图: 评分排名表截图（Tweet 6）
-- 追加: 发布后 Pin 到主页
-- 互动: 回复所有评论，引导至 Newsletter 订阅
+## 分发说明 (2026算法优化)
+- 发布时间: 美东 周二 8:00 AM（发布前15min先评论5-10条FinTwit帖子）
+- 配图: 评分排名表截图（Tweet 6）— 图片有算法加成
+- 追加: 发布后立即Pin到主页
+- **第一条回复 (发布后5分钟内)**:
+  "Full framework (open source): [GitHub link]
+   Weekly signals newsletter: [Substack link]
+   Turn on 🔔 for cycle alerts."
+- 互动: 前30分钟回复每一条评论(75x权重窗口)
+- 回复策略: 对每条回复的ticker给简短评价 → 引发reply-to-reply(75x)

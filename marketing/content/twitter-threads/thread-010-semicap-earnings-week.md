@@ -129,19 +129,23 @@ Would you take that bet?
 
 ---
 
-## Tweet 9/9 (CTA)
+## Tweet 9/9 (CTA — Reply-Driving)
 
 I'll be posting live reactions to each earnings report:
 - Tue PM: ASML scorecard
 - Wed PM: LRCX + KLAC scorecard
 - Feb 12: AMAT (final verdict)
 
-Follow for the full Semicap Earnings Week coverage.
+Which semicap stock are YOU most interested in this week? And are you positioned for a beat or a miss?
 
-Every prediction tracked. Every score graded.
+Reply with your take 👇
 
-Full framework (open source): [GitHub]
-Weekly signals: [Substack]
+---
+
+**[FIRST REPLY — 发布后5分钟内自己回复]:**
+"Full open-source framework: [GitHub link]
+Weekly cycle signals: [Substack link]
+Every prediction tracked and graded publicly."
 
 ---
 

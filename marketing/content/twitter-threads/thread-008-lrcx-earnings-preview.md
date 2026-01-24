@@ -140,16 +140,21 @@ At 50x P/E after +305%, the risk/reward has flipped.
 
 ---
 
-## Tweet 10/10 (CTA)
+## Tweet 10/10 (CTA — Reply-Driving)
 
 Whether our 23.5/100 signal proves right or wrong on Wednesday — I'll share the full post-earnings analysis.
 
 That's the difference: we make VERIFIABLE predictions, then transparently grade ourselves.
 
-Follow for the earnings reaction analysis.
+What's YOUR call on LRCX earnings?
+Bull 🟢 or Bear 🔴? Reply with your prediction. 👇
 
-Full framework (open source): [GitHub link]
-Weekly signals: [Substack link]
+---
+
+**[FIRST REPLY — 发布后5分钟内自己回复]:**
+"Full open-source framework: [GitHub link]
+Weekly cycle signals: [Substack link]
+All our predictions tracked transparently."
 
 ---
 
