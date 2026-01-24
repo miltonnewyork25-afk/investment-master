@@ -29,7 +29,9 @@ export type RevenueModel =
   | 'advertising'      // 广告收入 (搜索、社交媒体)
   | 'licensing'        // 授权/版税 (IP、专利)
   | 'interest_income'  // 利息收入 (银行、信用卡)
-  | 'premium_service'; // 增值服务
+  | 'premium_service'  // 增值服务
+  | 'rental'           // 租赁收入 (REIT、设备租赁)
+  | 'consumables';     // 耗材/试剂 (医疗诊断、打印)
 
 /** 服务交付模式 */
 export type DeliveryModel =
@@ -5621,6 +5623,214 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2B',
     industrySegment: 'Data Center Infrastructure',
     tags: ['power_monitoring', 'DCIM', 'efficiency', 'software'],
+  },
+
+  // ========================================================
+  // 企业软件 (Enterprise Software - Missing S&P 500)
+  // ========================================================
+  'SAP': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise ERP',
+    tags: ['ERP', 'S4HANA', 'cloud', 'business_suite', 'global'],
+  },
+  'INTU': {
+    assetModel: 'platform',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'SMB Financial Software',
+    tags: ['TurboTax', 'QuickBooks', 'Mailchimp', 'Credit_Karma', 'tax'],
+  },
+  'ADP': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'HCM / Payroll',
+    tags: ['payroll', 'HR_outsourcing', 'benefits', 'workforce_management'],
+  },
+  'ADSK': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Design Software',
+    tags: ['AutoCAD', 'Revit', 'Fusion360', 'AEC', 'manufacturing', 'media'],
+  },
+
+  // ========================================================
+  // 医疗设备 (Healthcare Equipment - Missing S&P 500)
+  // ========================================================
+  'GEHC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Large MedTech',
+    tags: ['imaging', 'ultrasound', 'monitoring', 'pharma_diagnostics', 'AI'],
+  },
+  'HOLX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Diagnostics',
+    tags: ['womens_health', 'mammography', 'molecular_diagnostics', 'surgical'],
+  },
+
+  // ========================================================
+  // 工业设备 (Industrials - Missing S&P 500)
+  // ========================================================
+  'URI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Equipment Rental',
+    tags: ['construction', 'industrial', 'specialty', 'fleet', 'largest_US'],
+  },
+  'SWK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Tools & Industrial',
+    tags: ['DeWalt', 'Stanley', 'Craftsman', 'power_tools', 'storage'],
+  },
+  'IR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Industrial Machinery',
+    tags: ['compressors', 'pumps', 'fluid_management', 'precision_tech'],
+  },
+  'DOV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Diversified Industrial',
+    tags: ['pumps', 'printing', 'fueling', 'refrigeration', 'polymer'],
+  },
+  'XYL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Water Technology',
+    tags: ['water_infrastructure', 'analytics', 'treatment', 'smart_meters'],
+  },
+  'OTIS': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Systems',
+    tags: ['elevators', 'escalators', 'service', 'modernization', 'IoT'],
+  },
+  'CARR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'HVAC & Refrigeration',
+    tags: ['HVAC', 'refrigeration', 'fire_safety', 'building_automation'],
+  },
+
+  // ========================================================
+  // 消费品 (Consumer - Missing S&P 500)
+  // ========================================================
+  'DECK': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Footwear',
+    tags: ['UGG', 'HOKA', 'Teva', 'performance', 'lifestyle'],
+  },
+
+  // ========================================================
+  // 公用事业 (Utilities - Missing S&P 500)
+  // ========================================================
+  'AES': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Independent Power Producer',
+    tags: ['renewable', 'energy_storage', 'LNG', 'global', 'clean_energy'],
+  },
+  'WEC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'gas', 'Wisconsin', 'regulated', 'renewable_transition'],
+  },
+  'ES': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'gas', 'New_England', 'transmission', 'offshore_wind'],
+  },
+  'ED': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'gas', 'steam', 'New_York_City', 'ConEdison'],
+  },
+  'D': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'gas', 'Virginia', 'regulated', 'offshore_wind'],
+  },
+  'DTE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'gas', 'Michigan', 'midstream', 'clean_energy'],
+  },
+  'AEE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'gas', 'Missouri', 'Illinois', 'Ameren', 'regulated'],
+  },
+  'CMS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'gas', 'Michigan', 'Consumers_Energy', 'renewable'],
+  },
+
+  // ========================================================
+  // 生物科技REIT (Life Science REIT - Missing S&P 500)
+  // ========================================================
+  'ARE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Science REIT',
+    tags: ['lab_space', 'biotech_clusters', 'R&D_campus', 'Alexandria'],
   },
 };
 

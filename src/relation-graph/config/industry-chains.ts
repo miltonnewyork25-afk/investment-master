@@ -415,6 +415,62 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Leisure',
       'Gambling',
     ],
+
+    // ========== 游戏 ==========
+    'Electronic Gaming & Multimedia': [
+      'Internet Content & Information',
+      'Consumer Electronics',
+    ],
+
+    // ========== 奢侈品/服装 ==========
+    'Luxury Goods': [
+      'Specialty Retail',
+      'Internet Retail',
+    ],
+
+    'Apparel - Manufacturers': [
+      'Apparel - Retail',
+      'Specialty Retail',
+      'Internet Retail',
+    ],
+
+    'Footwear & Accessories': [
+      'Specialty Retail',
+      'Internet Retail',
+      'Discount Stores',
+    ],
+
+    'Personal Care Products': [
+      'Grocery Stores',
+      'Specialty Retail',
+      'Discount Stores',
+    ],
+
+    // ========== 工业设备 ==========
+    'Specialty Industrial Machinery': [
+      'Construction & Engineering',
+      'Oil & Gas Exploration & Production',
+      'Auto - Manufacturers',
+    ],
+
+    'Industrial Distribution': [
+      'Construction & Engineering',
+      'Farm & Heavy Construction Machinery',
+      'Auto - Parts',
+    ],
+
+    'Scientific & Technical Instruments': [
+      'Medical - Diagnostics & Research',
+      'Construction & Engineering',
+      'Oil & Gas Exploration & Production',
+    ],
+
+    'Industrial Conglomerates': [
+      'Aerospace & Defense',
+      'Construction & Engineering',
+      'Auto - Manufacturers',
+      'Utilities - Regulated Electric',
+    ],
   },
 
   complementary: {
@@ -1769,6 +1825,31 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'FL': 'Sporting Goods Retail',          // Foot Locker
     'HIMS': 'Digital Health',               // Hims & Hers
     'TDOC': 'Digital Health',               // Teladoc
+
+    // ========== 补充覆盖 - 缺失的S&P 500 ==========
+    'SAP': 'Enterprise ERP',               // SAP - ERP/Business Suite
+    'INTU': 'SMB Software',                // Intuit - TurboTax/QuickBooks
+    'ADP': 'Enterprise SaaS',             // ADP - HCM/Payroll
+    'ADSK': 'Enterprise SaaS',            // Autodesk - Design/BIM
+    'GEHC': 'Large MedTech',              // GE HealthCare - Imaging
+    'HOLX': 'Large MedTech',              // Hologic - Women's Health
+    'URI': 'Equipment Rental',             // United Rentals
+    'SWK': 'Industrial Conglomerate',      // Stanley Black & Decker
+    'IR': 'Specialty Industrial',          // Ingersoll Rand
+    'DOV': 'Specialty Industrial',         // Dover Corporation
+    'XYL': 'Water Technology',             // Xylem - Water Infrastructure
+    'OTIS': 'Building Systems',            // Otis - Elevators
+    'CARR': 'Building Systems',            // Carrier - HVAC/Fire Safety
+    'DECK': 'Athletic Apparel',            // Deckers - HOKA/UGG
+    'AES': 'Independent Power',            // AES Corporation
+    'WEC': 'Regulated Utility',            // WEC Energy
+    'ES': 'Regulated Utility',             // Eversource
+    'ED': 'Regulated Utility',             // Con Edison
+    'D': 'Regulated Utility',              // Dominion Energy
+    'DTE': 'Regulated Utility',            // DTE Energy
+    'AEE': 'Regulated Utility',            // Ameren
+    'CMS': 'Regulated Utility',            // CMS Energy
+    'ARE': 'Life Science REIT',            // Alexandria RE
   },
 
   // ============================================================
@@ -3041,6 +3122,51 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Financial Data',        // 数据供应
     ],
 
+    // ========== 企业软件补充链 ==========
+    'Enterprise ERP': [
+      'Cloud Hyperscaler',     // 云基础设施
+      'IT Outsourcing',        // 系统集成实施
+      'Enterprise SaaS',       // 与SaaS集成
+    ],
+
+    'SMB Software': [
+      'Payment Processor',     // 支付集成
+      'E-commerce',            // 在线商店集成
+      'Digital Payments',      // 金融服务
+    ],
+
+    // ========== 工业设备补充链 ==========
+    'Equipment Rental': [
+      'Construction Equipment',  // 设备来源
+      'E&C Contractor',          // 施工客户
+      'Homebuilder',             // 住宅建设客户
+    ],
+
+    'Specialty Industrial': [
+      'E&C Contractor',          // 工程客户
+      'Shale E&P',               // 油气客户
+      'Commodity Chemicals',     // 化工客户
+    ],
+
+    'Water Technology': [
+      'Regulated Utility',       // 公用事业客户
+      'E&C Contractor',          // 工程集成
+      'Homebuilder',             // 住宅供水
+    ],
+
+    'Building Systems': [
+      'Commercial REIT',         // 商业建筑
+      'E&C Contractor',          // 建设阶段
+      'Homebuilder',             // 住宅安装
+      'Industrial REIT',         // 仓库/工业
+    ],
+
+    // ========== 生命科学REIT ==========
+    'Life Science REIT': [
+      'Large Pharma',            // 制药研发
+      'Large Biotech',           // 生物科技研发
+      'Large MedTech',           // 医疗设备研发
+    ],
 
   },
 };

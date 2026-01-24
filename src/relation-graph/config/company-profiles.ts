@@ -1802,6 +1802,50 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['brand', 'satisfaction', 'reduced_risk_alternatives'],
     channels: ['convenience_store', 'gas_station', 'online'],
   },
+
+  // --- 公用事业 (B2C) ---
+  'WEC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'heating', 'cooling', 'cooking'],
+    valueProps: ['reliability', 'affordability', 'clean_energy'],
+    channels: ['utility_bill', 'online_portal', 'phone'],
+  },
+  'ES': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'heating', 'cooling'],
+    valueProps: ['reliability', 'affordability', 'grid_resilience'],
+    channels: ['utility_bill', 'online_portal', 'phone'],
+  },
+  'ED': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'steam', 'gas', 'cooling'],
+    valueProps: ['reliability', 'urban_infrastructure', 'essential_service'],
+    channels: ['utility_bill', 'online_portal', 'phone'],
+  },
+  'D': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'natural_gas', 'heating'],
+    valueProps: ['reliability', 'affordability', 'clean_energy_transition'],
+    channels: ['utility_bill', 'online_portal', 'phone'],
+  },
+  'DTE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'natural_gas', 'heating'],
+    valueProps: ['reliability', 'affordability', 'community_programs'],
+    channels: ['utility_bill', 'online_portal', 'phone'],
+  },
+  'AEE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'natural_gas', 'heating'],
+    valueProps: ['reliability', 'affordability', 'clean_energy'],
+    channels: ['utility_bill', 'online_portal', 'phone'],
+  },
+  'CMS': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'natural_gas', 'heating', 'cooling'],
+    valueProps: ['reliability', 'affordability', 'renewable_programs'],
+    channels: ['utility_bill', 'online_portal', 'phone'],
+  },
 };
 
 // ============================================================
@@ -2648,6 +2692,29 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'BK': 'mid',         // Bank of New York Mellon - 托管
   'STT': 'mid',        // State Street - 托管
   'DD': 'mid',         // DuPont - 特种化工
+  // ---------- 缺失S&P 500 - 补充 ----------
+  'SAP': 'defensive',  // SAP - 企业ERP粘性极高
+  'INTU': 'defensive', // Intuit - 税务/会计刚需
+  'ADP': 'defensive',  // ADP - 薪资刚需服务
+  'ADSK': 'mid',       // Autodesk - 建筑/制造周期
+  'GEHC': 'defensive', // GE HealthCare - 医疗刚需
+  'HOLX': 'defensive', // Hologic - 医疗诊断
+  'URI': 'early',      // United Rentals - 建设周期
+  'SWK': 'mid',        // Stanley Black & Decker
+  'IR': 'mid',         // Ingersoll Rand - 工业设备
+  'DOV': 'mid',        // Dover - 多元工业
+  'XYL': 'late',       // Xylem - 水基础设施/政策驱动
+  'OTIS': 'defensive', // Otis - 服务收入高占比
+  'CARR': 'mid',       // Carrier - 建筑周期
+  'DECK': 'mid',       // Deckers - 消费可选
+  'AES': 'defensive',  // AES - 发电合约
+  'WEC': 'defensive',  // WEC Energy - 受管制
+  'ES': 'defensive',   // Eversource - 受管制
+  'ED': 'defensive',   // Con Edison - 受管制
+  'DTE': 'defensive',  // DTE Energy - 受管制
+  'AEE': 'defensive',  // Ameren - 受管制
+  'CMS': 'defensive',  // CMS Energy - 受管制
+  'ARE': 'late',       // Alexandria - 生物科技REIT
 };
 
 // ============================================================
@@ -5331,6 +5398,100 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'H': {
     interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // ========== 缺失S&P 500 - 补充 ==========
+  'SAP': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'INTU': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'ADP': {
+    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.4,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'ADSK': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'GEHC': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'HOLX': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'URI': {
+    interestRate: -0.4, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'SWK': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'IR': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'DOV': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'XYL': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'OTIS': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'CARR': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.4, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'DECK': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'AES': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'WEC': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'ES': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'ED': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'D': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'DTE': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'AEE': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'CMS': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'ARE': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
   },
 };
 
