@@ -2062,6 +2062,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Network Equipment': [
       'Data Center REIT',
       'Cloud Hyperscaler',
+      'Wireless Carrier',      // 运营商采购
+      'Cable Operator',        // 有线网络
     ],
 
     'Data Center REIT': [
@@ -2514,6 +2516,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'IT Outsourcing': [
       'Enterprise SaaS',
       'Cloud Hyperscaler',
+      'Financial Data',        // 金融系统服务
     ],
 
     // 垂直SaaS - 服务特定行业
@@ -2999,6 +3002,11 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Traditional OEM',       // 车队采购
     ],
 
+    // ========== 证券经纪链 ==========
+    'Brokerage': [
+      'Exchange',              // 交易所接入
+      'Financial Data',        // 数据供应
+    ],
 
 
   },
