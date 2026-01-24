@@ -2331,6 +2331,86 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'BROS': 'Fast Casual',                // Dutch Bros - 驾车咖啡
     'ACAD': 'Small Pharma',               // Acadia Pharma - CNS特药
     'DBI': 'Specialty Retail',            // Designer Brands - DSW鞋类
+
+    // ========== 新增50家公司子行业分类 ==========
+
+    // --- 地区银行 ---
+    'NYCB': 'Regional Bank',              // NY Community Bancorp - 多户/CRE
+    'VLY': 'Regional Bank',               // Valley National - 新泽西
+    'FHN': 'Regional Bank',               // First Horizon - 田纳西
+    'SNV': 'Regional Bank',               // Synovus - 乔治亚
+    'HWC': 'Regional Bank',               // Hancock Whitney - 墨西哥湾南部
+    'WBS': 'Regional Bank',               // Webster Financial - 康州
+    'COLB': 'Regional Bank',              // Columbia Banking - 太平洋西北
+
+    // --- Tech/SaaS ---
+    'SMAR': 'Enterprise SaaS',            // Smartsheet - 工作管理
+    'MQ': 'FinTech SaaS',                 // Marqeta - 卡发行
+    'DSGX': 'Enterprise SaaS',            // Descartes - 物流IT
+    'TWKS': 'IT Services',                // Thoughtworks - 技术咨询
+    'CERT': 'CRO',                        // Certara - 生物模拟
+    'FLT': 'Payment Processing',          // FLEETCOR/Corpay - 商业支付
+
+    // --- Consumer/Retail ---
+    'ELF': 'Mass Beauty',                 // e.l.f. Beauty - 平价美妆
+    'BBWI': 'Specialty Retail',           // Bath & Body Works - 个护
+    'DDS': 'Specialty Retail',            // Dillard's - 百货
+    'GOOS': 'Luxury Apparel',            // Canada Goose - 奢侈外衣
+    'SMPL': 'Packaged Foods',            // Simply Good Foods - 营养食品
+    'NWSA': 'Digital Media',             // News Corp - 数字媒体
+    'TRUP': 'P&C Insurance',             // Trupanion - 宠物保险
+
+    // --- Entertainment/Sports ---
+    'TKO': 'Live Entertainment',          // TKO Group - UFC/WWE
+    'EDR': 'Live Entertainment',          // Endeavor - 体育/娱乐经纪
+    'SIX': 'Theme Parks',                 // Six Flags - 主题公园
+    'SEAS': 'Theme Parks',                // SeaWorld - 海洋公园
+
+    // --- REITs ---
+    'FRT': 'Retail REIT',                 // Federal Realty - 优质零售
+    'BRX': 'Retail REIT',                 // Brixmor - 零售REIT
+    'NSA': 'Self-Storage REIT',           // National Storage - 仓储
+
+    // --- Insurance/Mortgage ---
+    'ESNT': 'Mortgage Insurance',         // Essent - 按揭保险
+    'NMIH': 'Mortgage Insurance',         // NMI Holdings - 按揭保险
+    'RDN': 'Mortgage Insurance',          // Radian - 按揭/产权
+    'MTG': 'Mortgage Insurance',          // MGIC - 按揭保险
+    'SLM': 'Consumer Finance',            // Sallie Mae - 学生贷款
+
+    // --- Waste/Environment ---
+    'GFL': 'Waste Collection',            // GFL Environmental - 废弃物收集
+    'SRCL': 'Environmental Services',     // Stericycle - 医疗废弃物
+
+    // --- Biotech/Pharma ---
+    'LEGN': 'Large Biotech',              // Legend Biotech - BCMA细胞疗法
+    'BCRX': 'Small Pharma',              // BioCryst - 罕见病
+    'BEAM': 'Biotech Platform',           // Beam Therapeutics - 碱基编辑
+    'FOLD': 'Small Pharma',              // Amicus - Fabry病
+    'ARVN': 'Biotech Platform',           // Arvinas - 蛋白质降解
+    'KURA': 'Small Pharma',              // Kura Oncology - menin抑制
+    'IMVT': 'Small Pharma',              // Immunovant - FcRn抗体
+
+    // --- Industrials ---
+    'CSWI': 'Specialty Industrial',       // CSW Industrials - 特种产品
+    'RRX': 'Specialty Industrial',        // Regal Rexnord - 动力传动
+    'ESE': 'Specialty Industrial',        // ESCO Technologies - 公用事业方案
+    'MWA': 'Water Technology',            // Mueller Water - 水基建
+    'LNN': 'Farm Equipment',              // Lindsay Corp - 灌溉
+    'FSS': 'Specialty Industrial',        // Federal Signal - 安全/清洁
+
+    // --- Energy ---
+    'TALO': 'E&P',                        // Talos Energy - 墨西哥湾
+    'CRK': 'Natural Gas E&P',            // Comstock Resources - Haynesville
+    'SD': 'E&P',                          // SandRidge Energy - 中大陆
+
+    // --- 补充6家 ---
+    'SFNC': 'Regional Bank',              // Simmons First - 中南部银行
+    'SBCF': 'Regional Bank',              // Seacoast Banking - 佛州银行
+    'FFIN': 'Regional Bank',              // First Financial - 德州银行
+    'AX': 'Regional Bank',                // Axos Financial - 数字银行
+    'CALX': 'Specialty Industrial',       // Calix - 宽带接入平台
+    'IESC': 'Specialty Industrial',       // IES Holdings - 电气承包
   },
 
   // ============================================================
@@ -4133,6 +4213,22 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Alternative Asset Management': [
       'Investment Bank',         // 投行承销/募资
       'Brokerage',               // 经纪分销
+    ],
+
+    // ========== 新增子行业链 ==========
+
+    // 主题公园 → 下游消费/旅游
+    'Theme Parks': [
+      'Travel Services',         // 旅游服务
+      'Lodging',                 // 住宿
+      'Live Entertainment',      // 现场娱乐
+    ],
+
+    // 按揭保险 → 下游地产/银行
+    'Mortgage Insurance': [
+      'Mortgage Lender',         // 按揭贷款
+      'Homebuilder',             // 住宅建设
+      'Regional Bank',           // 地区银行
     ],
 
   },

@@ -2310,6 +2310,186 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['variety', 'value', 'brands', 'convenience'],
     channels: ['retail', 'online'],
   },
+
+  // ========== 新增50家公司客群画像 ==========
+
+  // --- 地区银行(B2B2C) ---
+  'NYCB': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['mortgage', 'deposits', 'commercial_banking', 'multifamily'],
+    valueProps: ['local', 'CRE_expertise', 'convenience', 'community'],
+    channels: ['branch', 'online'],
+  },
+  'VLY': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commercial_banking', 'deposits', 'mortgage', 'small_business'],
+    valueProps: ['local', 'relationship', 'convenience', 'community'],
+    channels: ['branch', 'online'],
+  },
+  'FHN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['commercial_banking', 'wealth_management', 'deposits', 'mortgage'],
+    valueProps: ['regional_expertise', 'relationship', 'fixed_income', 'trust'],
+    channels: ['branch', 'online', 'advisor'],
+  },
+  'SNV': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commercial_banking', 'deposits', 'treasury', 'small_business'],
+    valueProps: ['community', 'relationship', 'convenience', 'local'],
+    channels: ['branch', 'online'],
+  },
+  'HWC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commercial_banking', 'deposits', 'energy_lending', 'wealth'],
+    valueProps: ['gulf_south_expertise', 'relationship', 'community', 'stability'],
+    channels: ['branch', 'online'],
+  },
+  'WBS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commercial_banking', 'deposits', 'HSA', 'healthcare_finance'],
+    valueProps: ['healthcare_specialty', 'relationship', 'convenience', 'HSA'],
+    channels: ['branch', 'online'],
+  },
+  'COLB': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commercial_banking', 'deposits', 'small_business', 'mortgage'],
+    valueProps: ['community', 'local', 'relationship', 'pacific_northwest'],
+    channels: ['branch', 'online'],
+  },
+
+  // --- 平价美妆(B2C) ---
+  'ELF': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['daily_makeup', 'skincare', 'value_beauty', 'social_media'],
+    valueProps: ['affordable', 'quality', 'cruelty_free', 'trendy', 'inclusive'],
+    channels: ['retail', 'online', 'drugstore'],
+  },
+
+  // --- 个护零售(B2C) ---
+  'BBWI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['self_care', 'gifting', 'home_fragrance', 'seasonal'],
+    valueProps: ['fragrance', 'experience', 'variety', 'promotions', 'indulgence'],
+    channels: ['retail', 'online'],
+  },
+
+  // --- 百货(B2C) ---
+  'DDS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['apparel_shopping', 'cosmetics', 'home_furnishing', 'seasonal'],
+    valueProps: ['selection', 'brands', 'service', 'southeast_presence'],
+    channels: ['retail', 'online'],
+  },
+
+  // --- 奢侈外衣(B2C) ---
+  'GOOS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'high_net_worth', gender: 'all' },
+    occasions: ['winter_outerwear', 'luxury_fashion', 'outdoor', 'travel'],
+    valueProps: ['premium', 'warmth', 'craftsmanship', 'status', 'durability'],
+    channels: ['retail', 'online', 'direct'],
+  },
+
+  // --- 营养食品(B2C) ---
+  'SMPL': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['snacking', 'fitness', 'meal_replacement', 'diet', 'convenience'],
+    valueProps: ['nutrition', 'protein', 'low_carb', 'convenience', 'taste'],
+    channels: ['retail', 'online'],
+  },
+
+  // --- 数字媒体(B2C) ---
+  'NWSA': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['news', 'business_info', 'real_estate_data', 'publishing'],
+    valueProps: ['authoritative', 'depth', 'global', 'data', 'premium_content'],
+    channels: ['online', 'subscription', 'print'],
+  },
+
+  // --- 宠物保险(B2C) ---
+  'TRUP': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['pet_health', 'veterinary', 'pet_ownership', 'insurance'],
+    valueProps: ['comprehensive', 'direct_pay', 'no_payout_limits', 'peace_of_mind'],
+    channels: ['online', 'veterinary_partners'],
+  },
+
+  // --- 格斗/体育娱乐(B2C) ---
+  'TKO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['combat_sports', 'live_events', 'PPV', 'streaming', 'fan_engagement'],
+    valueProps: ['excitement', 'entertainment', 'community', 'spectacle'],
+    channels: ['streaming', 'live_events', 'TV'],
+  },
+
+  // --- 主题公园(B2C) ---
+  'SIX': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['family_outing', 'thrill_seeking', 'summer', 'weekend'],
+    valueProps: ['thrills', 'fun', 'value', 'seasonal_pass', 'accessibility'],
+    channels: ['direct', 'online'],
+  },
+  'SEAS': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['family_outing', 'animal_encounter', 'vacation', 'education'],
+    valueProps: ['unique_experience', 'marine_life', 'rides', 'seasonal_pass'],
+    channels: ['direct', 'online'],
+  },
+
+  // --- 自助仓储REIT(B2C) ---
+  'NSA': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['moving', 'decluttering', 'life_transition', 'seasonal_storage'],
+    valueProps: ['convenience', 'security', 'accessibility', 'flexible_terms'],
+    channels: ['online', 'direct'],
+  },
+
+  // --- 学生贷款(B2B2C) ---
+  'SLM': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['college_tuition', 'education_finance', 'savings', 'refinance'],
+    valueProps: ['education_access', 'competitive_rates', 'flexibility', 'digital'],
+    channels: ['online', 'campus_partners'],
+  },
+
+  // --- 罕见病制药(B2B2C) ---
+  'BCRX': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['rare_disease_treatment', 'HAE_management', 'chronic_condition'],
+    valueProps: ['efficacy', 'oral_therapy', 'patient_support', 'rare_disease_expertise'],
+    channels: ['specialty_pharmacy', 'physician'],
+  },
+  'FOLD': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['Fabry_treatment', 'lysosomal_disease', 'enzyme_therapy', 'chronic_care'],
+    valueProps: ['efficacy', 'oral_option', 'patient_support', 'rare_disease_access'],
+    channels: ['specialty_pharmacy', 'physician'],
+  },
+
+  // --- 补充6家银行(B2B2C) ---
+  'SFNC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commercial_banking', 'deposits', 'wealth', 'insurance', 'mortgage'],
+    valueProps: ['community', 'relationship', 'local', 'mid_south'],
+    channels: ['branch', 'online'],
+  },
+  'SBCF': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commercial_banking', 'deposits', 'wealth', 'mortgage'],
+    valueProps: ['community', 'relationship', 'florida', 'local'],
+    channels: ['branch', 'online'],
+  },
+  'FFIN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commercial_banking', 'deposits', 'trust', 'mortgage'],
+    valueProps: ['conservative', 'stability', 'community', 'texas'],
+    channels: ['branch', 'online'],
+  },
+  'AX': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['online_banking', 'savings', 'securities_lending', 'commercial'],
+    valueProps: ['digital', 'competitive_rates', 'convenience', 'technology'],
+    channels: ['online'],
+  },
 };
 
 // ============================================================
@@ -3571,6 +3751,64 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'BROS': 'mid',         // Dutch Bros - 驾车咖啡(中周期)
   'ACAD': 'mid',         // Acadia Pharma - CNS特药(中周期)
   'DBI': 'mid',          // Designer Brands - DSW鞋类零售(中周期)
+
+  // ========== 新增50家公司周期位置 ==========
+  'NYCB': 'mid',          // NY Community Bancorp - 地区银行(中周期)
+  'VLY': 'mid',           // Valley National - 地区银行(中周期)
+  'FHN': 'mid',           // First Horizon - 地区银行(中周期)
+  'SNV': 'mid',           // Synovus - 地区银行(中周期)
+  'HWC': 'mid',           // Hancock Whitney - 地区银行(中周期)
+  'WBS': 'mid',           // Webster Financial - 地区银行(中周期)
+  'COLB': 'mid',          // Columbia Banking - 地区银行(中周期)
+  'SMAR': 'mid',          // Smartsheet - 工作管理SaaS(中周期)
+  'MQ': 'mid',            // Marqeta - 卡发行平台(中周期)
+  'DSGX': 'mid',          // Descartes - 物流IT(中周期)
+  'TWKS': 'mid',          // Thoughtworks - 技术咨询(中周期)
+  'CERT': 'mid',          // Certara - 生物模拟SaaS(中周期)
+  'FLT': 'mid',           // FLEETCOR/Corpay - 商业支付(中周期)
+  'ELF': 'mid',           // e.l.f. Beauty - 平价美妆(中周期)
+  'BBWI': 'mid',          // Bath & Body Works - 个护零售(中周期)
+  'DDS': 'mid',           // Dillard's - 百货(中周期)
+  'GOOS': 'mid',          // Canada Goose - 奢侈外衣(中周期)
+  'SMPL': 'defensive',    // Simply Good Foods - 营养食品(防御)
+  'NWSA': 'mid',          // News Corp - 数字媒体(中周期)
+  'TRUP': 'mid',          // Trupanion - 宠物保险(中周期)
+  'TKO': 'mid',           // TKO Group - UFC/WWE(中周期)
+  'EDR': 'mid',           // Endeavor Group - 体育娱乐(中周期)
+  'SIX': 'mid',           // Six Flags - 主题公园(中周期)
+  'SEAS': 'mid',          // SeaWorld - 海洋公园(中周期)
+  'FRT': 'defensive',     // Federal Realty - 优质零售REIT(防御)
+  'BRX': 'defensive',     // Brixmor - 零售REIT(防御)
+  'NSA': 'defensive',     // National Storage - 仓储REIT(防御)
+  'ESNT': 'mid',          // Essent - 按揭保险(中周期)
+  'NMIH': 'mid',          // NMI Holdings - 按揭保险(中周期)
+  'RDN': 'mid',           // Radian - 按揭/产权(中周期)
+  'MTG': 'mid',           // MGIC - 按揭保险(中周期)
+  'SLM': 'mid',           // Sallie Mae - 学生贷款(中周期)
+  'GFL': 'defensive',     // GFL Environmental - 废弃物(防御)
+  'SRCL': 'defensive',    // Stericycle - 医疗废弃物(防御)
+  'LEGN': 'early',        // Legend Biotech - BCMA细胞疗法(早周期)
+  'BCRX': 'early',        // BioCryst - 罕见病(早周期)
+  'BEAM': 'early',        // Beam Therapeutics - 碱基编辑(早周期)
+  'FOLD': 'early',        // Amicus - Fabry病(早周期)
+  'ARVN': 'early',        // Arvinas - 蛋白质降解(早周期)
+  'KURA': 'early',        // Kura Oncology - menin抑制(早周期)
+  'IMVT': 'early',        // Immunovant - FcRn抗体(早周期)
+  'CSWI': 'mid',          // CSW Industrials - 特种工业(中周期)
+  'RRX': 'mid',           // Regal Rexnord - 动力传动(中周期)
+  'ESE': 'mid',           // ESCO Technologies - 公用事业方案(中周期)
+  'MWA': 'mid',           // Mueller Water - 水基础设施(中周期)
+  'LNN': 'mid',           // Lindsay Corp - 灌溉/基建(中周期)
+  'FSS': 'mid',           // Federal Signal - 安全/清洁(中周期)
+  'TALO': 'early',        // Talos Energy - 墨西哥湾E&P(早周期)
+  'CRK': 'early',         // Comstock Resources - Haynesville天然气(早周期)
+  'SD': 'early',          // SandRidge Energy - 中大陆E&P(早周期)
+  'SFNC': 'mid',          // Simmons First - 中南部银行(中周期)
+  'SBCF': 'mid',          // Seacoast Banking - 佛州银行(中周期)
+  'FFIN': 'mid',          // First Financial - 德州银行(中周期)
+  'AX': 'mid',            // Axos Financial - 数字银行(中周期)
+  'CALX': 'mid',          // Calix - 宽带接入平台(中周期)
+  'IESC': 'mid',          // IES Holdings - 电气/机械承包(中周期)
 };
 
 // ============================================================
@@ -7741,6 +7979,254 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'DBI': {
     interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.4,
     consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // ========== 新增50家公司宏观敏感度 ==========
+
+  // 地区银行 - 利率/信贷周期
+  'NYCB': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'VLY': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'FHN': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'SNV': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'HWC': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'WBS': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'COLB': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Tech/SaaS - 利率/增长敏感
+  'SMAR': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'MQ': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'DSGX': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  'TWKS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'CERT': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'FLT': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+
+  // Consumer/Retail - 消费/GDP敏感
+  'ELF': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'BBWI': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'DDS': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'GOOS': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'SMPL': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'NWSA': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'TRUP': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Entertainment/Sports - 消费可选
+  'TKO': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'EDR': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'SIX': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  'SEAS': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+
+  // REITs - 利率/房地产
+  'FRT': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'BRX': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'NSA': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Mortgage Insurance - 住房/利率高度敏感
+  'ESNT': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'NMIH': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'RDN': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'MTG': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // 学生贷款 - 利率/就业
+  'SLM': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Waste/Environment - 防御性
+  'GFL': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'SRCL': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Biotech/Pharma - 低宏观敏感(pipeline驱动)
+  'LEGN': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'BCRX': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'BEAM': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'FOLD': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'ARVN': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'KURA': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'IMVT': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Industrials - 工业/GDP周期
+  'CSWI': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'RRX': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ESE': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'MWA': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'LNN': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'FSS': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Energy E&P - 油价/增长高敏感
+  'TALO': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.9,
+  },
+  'CRK': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.7,
+  },
+  'SD': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  // 补充6家
+  'SFNC': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'SBCF': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'FFIN': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'AX': {
+    interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'CALX': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'IESC': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.0,
   },
 };
 
