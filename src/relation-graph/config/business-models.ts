@@ -1660,6 +1660,14 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Chemicals',
     tags: ['specialty', 'additives', 'fibers'],
   },
+  'DD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Chemicals',
+    tags: ['electronics', 'water', 'protection', 'industrial'],
+  },
 
   // ========================================================
   // 消费必需品行业 (Consumer Staples)
@@ -2451,6 +2459,23 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2B',
     industrySegment: 'Investment Bank',
     tags: ['wealth', 'trading', 'm&a', 'e_trade'],
+  },
+  // ---------- 托管银行 (Custody Banks) ----------
+  'BK': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Custody Bank',
+    tags: ['custody', 'asset_servicing', 'clearing', 'treasury_services'],
+  },
+  'STT': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Custody Bank',
+    tags: ['custody', 'etf', 'spdr', 'asset_servicing'],
   },
 
   // ---------- 资产管理 (Asset Management) ----------

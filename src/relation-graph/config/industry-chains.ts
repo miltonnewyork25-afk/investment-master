@@ -957,6 +957,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'PPG': 'Coatings',                    // PPG Industries
     'ECL': 'Specialty Chemicals',         // Ecolab
     'IFF': 'Specialty Chemicals',         // IFF
+    'DD': 'Specialty Chemicals',           // DuPont
     // ALB: defined above as 'EV Battery Materials'
 
     // ========== 金融服务产业链细分 ==========
@@ -981,6 +982,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'C': 'Universal Bank',                // Citigroup
     'BAC': 'Universal Bank',              // Bank of America
     'WFC': 'Universal Bank',              // Wells Fargo
+    'BK': 'Custody Bank',                 // Bank of New York Mellon
+    'STT': 'Custody Bank',                // State Street
 
     // 资管/另类 (Asset Management)
     'BLK': 'Asset Manager',               // BlackRock
@@ -1913,6 +1916,13 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     ],
 
     'Alternative Asset Manager': [
+      'Brokerage',
+    ],
+
+    // 托管银行 → 资管/券商 (托管/清算服务)
+    'Custody Bank': [
+      'Asset Manager',
+      'Alternative Asset Manager',
       'Brokerage',
     ],
 

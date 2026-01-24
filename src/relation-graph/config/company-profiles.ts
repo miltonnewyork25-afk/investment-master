@@ -1601,6 +1601,10 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'H': 'early',        // Hyatt - 酒店
   // ---------- 矿业 - 补充 ----------
   'SQM': 'mid',        // SQM - 锂矿
+  // ---------- 托管银行/化工 - 补充 ----------
+  'BK': 'mid',         // Bank of New York Mellon - 托管
+  'STT': 'mid',        // State Street - 托管
+  'DD': 'mid',         // DuPont - 特种化工
 };
 
 // ============================================================
@@ -3793,6 +3797,15 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'PWSC': { interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0 },
 
   // ========== 金融 - 补充 (Financial Services) ==========
+  // 托管银行 (Custody Banks) - 利率受益，AUM相关
+  'BK': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'STT': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
   'C': {
     interestRate: 0.7, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.5,
     consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: -0.3, oilPrice: 0.0,
@@ -4169,6 +4182,10 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'EMN': {
     interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
     consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.3,
+  },
+  'DD': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.2,
   },
 
   // ========== REIT - 补充 (Real Estate Investment Trusts) ==========
