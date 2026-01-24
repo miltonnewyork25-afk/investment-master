@@ -1418,6 +1418,108 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['essential', 'reliability', 'infrastructure', 'quality'],
     channels: ['utility_bill', 'online'],
   },
+
+  // ========== 区域银行 (大型零售业务) ==========
+  'WFC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'credit_card', 'investing'],
+    valueProps: ['network', 'products', 'convenience', 'digital'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'USB': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'payments', 'credit_card'],
+    valueProps: ['service', 'digital', 'reliability', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'PNC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'wealth', 'education_savings'],
+    valueProps: ['technology', 'community', 'virtual_wallet', 'service'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+
+  // ========== 人寿保险 ==========
+  'PRU': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['life_insurance', 'retirement', 'annuity', 'financial_planning'],
+    valueProps: ['stability', 'expertise', 'protection', 'retirement_solutions'],
+    channels: ['agent', 'employer', 'online'],
+  },
+  'AFL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['supplemental_insurance', 'cancer_coverage', 'accident', 'disability'],
+    valueProps: ['supplemental', 'affordability', 'peace_of_mind', 'payroll'],
+    channels: ['employer', 'agent', 'online'],
+  },
+
+  // ========== 邮轮补充 ==========
+  'NCLH': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['vacation', 'celebration', 'freestyle', 'adventure'],
+    valueProps: ['freestyle', 'destinations', 'entertainment', 'luxury'],
+    channels: ['online', 'travel_agent'],
+  },
+
+  // ========== 房建补充 ==========
+  'KBH': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['first_home', 'family', 'relocation', 'value_home'],
+    valueProps: ['design_studio', 'energy_efficiency', 'value', 'personalization'],
+    channels: ['sales_center', 'online'],
+  },
+
+  // ========== 汽配补充 ==========
+  'AAP': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['car_repair', 'maintenance', 'emergency', 'diy'],
+    valueProps: ['expertise', 'parts', 'service', 'value'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 消费金融/FinTech ==========
+  'IBKR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'male' },
+    occasions: ['trading', 'investing', 'options', 'global_markets'],
+    valueProps: ['low_cost', 'global_access', 'tools', 'margin_rates'],
+    channels: ['online', 'mobile'],
+  },
+
+  // ========== EV ==========
+  'LCID': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'high_net_worth', gender: 'male' },
+    occasions: ['luxury_ev', 'technology', 'sustainability', 'performance'],
+    valueProps: ['range', 'luxury', 'technology', 'design'],
+    channels: ['direct', 'online', 'studio'],
+  },
+
+  // ========== 食品补充 ==========
+  'HRL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['protein', 'snacking', 'quick_meal', 'deli'],
+    valueProps: ['quality', 'brands', 'convenience', 'protein'],
+    channels: ['grocery', 'mass_retail', 'foodservice'],
+  },
+
+  // ========== 公用事业补充 ==========
+  'AEP': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'home_power', 'reliability', 'service'],
+    valueProps: ['reliability', 'affordability', 'reach', 'infrastructure'],
+    channels: ['utility_bill', 'online'],
+  },
+  'XEL': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'gas', 'clean_energy', 'home_power'],
+    valueProps: ['clean_energy_leader', 'reliability', 'affordability', 'service'],
+    channels: ['utility_bill', 'online'],
+  },
+  'EXC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'gas', 'home_power', 'service'],
+    valueProps: ['reliability', 'clean_generation', 'affordability', 'programs'],
+    channels: ['utility_bill', 'online'],
+  },
 };
 
 // ============================================================
