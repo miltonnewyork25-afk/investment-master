@@ -815,6 +815,59 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Full-Service Airline',
       'Low-Cost Airline',
     ],
+
+    'Utilities Chain': [
+      'Utilities - Regulated Electric',
+      'Utilities - Renewable',
+      'Utilities - Independent Power Producers',
+      'Solar',
+      'Solar Manufacturing',
+      'Solar Equipment',
+      'Electrical Equipment & Parts',
+    ],
+
+    'Telecom & Connectivity Chain': [
+      'Wireless Carrier',
+      'Cable Operator',
+      'Tower REIT',
+      'Network Equipment',
+    ],
+
+    'Cybersecurity & Infrastructure Chain': [
+      'Cybersecurity',
+      'Data Center Infrastructure',
+      'Data Center REIT',
+      'Cloud Hyperscaler',
+      'Enterprise SaaS',
+    ],
+
+    'Agriculture Chain': [
+      'Ag Equipment',
+      'Ag & Construction Equipment',
+      'Ag Inputs',
+      'Ag Commodities',
+      'Fertilizer',
+      'Food Ingredients',
+      'Food Distribution',
+    ],
+
+    'Media & Content Chain': [
+      'Media Conglomerate',
+      'Streaming',
+      'Gaming Publisher',
+      'Gaming Platform',
+      'Broadcast TV',
+    ],
+
+    'Mining & Metals Chain': [
+      'Copper Mining',
+      'Gold Mining',
+      'Aluminum',
+      'Steel',
+      'Steel Distributor',
+      'Aggregates',
+      'Cement',
+    ],
   },
 
   // ============================================================
