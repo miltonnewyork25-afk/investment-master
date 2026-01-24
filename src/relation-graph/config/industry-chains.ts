@@ -3688,6 +3688,12 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Express Logistics',       // 快递物流客户
     ],
 
+    'Specialty REIT': [
+      'Enterprise SaaS',         // 数据中心客户（云/SaaS）
+      'Cloud Hyperscaler',       // 云托管客户
+      'Big Pharma',              // 医药合规存储
+    ],
+
   },
 };
 
