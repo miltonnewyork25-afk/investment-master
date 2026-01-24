@@ -704,6 +704,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'AZN': 'Big Pharma',                  // AstraZeneca
     'GSK': 'Big Pharma',                  // GSK
     'SNY': 'Big Pharma',                  // Sanofi
+    'NVO': 'Big Pharma',                  // Novo Nordisk
 
     // 仿制药 (Generic/Specialty)
     'TEVA': 'Generic Pharma',             // Teva
@@ -749,6 +750,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'DHR': 'Life Sciences Tools',         // Danaher
     'A': 'Life Sciences Tools',           // Agilent
     'IQV': 'CRO',                         // IQVIA - 临床CRO
+    'CRL': 'CRO',                         // Charles River - 临床前CRO
     'WAT': 'Life Sciences Tools',         // Waters
 
     // 动物健康 (Animal Health)

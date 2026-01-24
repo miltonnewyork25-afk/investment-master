@@ -1127,6 +1127,7 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'AZN': 'defensive',   // AstraZeneca
   'NVS': 'defensive',   // Novartis
   'GSK': 'defensive',   // GSK
+  'NVO': 'defensive',   // Novo Nordisk
 
   // 生物科技 - 略带成长属性但仍防御
   'AMGN': 'defensive',  // Amgen
@@ -1173,6 +1174,7 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'DHR': 'mid',         // Danaher
   'A': 'mid',           // Agilent
   'IQV': 'mid',         // IQVIA
+  'CRL': 'mid',         // Charles River Labs
   'WAT': 'mid',         // Waters
 
   // 动物健康 - 防御性
@@ -1903,6 +1905,10 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
     consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
   },
+  'NVO': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
 
   // 生物科技 - 类似大型制药
   'AMGN': {
@@ -1983,6 +1989,14 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   },
   'A': {
     interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'IQV': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'CRL': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
     consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
   },
 

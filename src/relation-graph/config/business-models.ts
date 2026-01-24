@@ -1012,13 +1012,98 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     tags: ['online', 'used_cars', 'vending_machine'],
   },
 
+  'LCID': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Auto',
+    tags: ['dtc', 'ev_pure', 'luxury', 'saudi'],
+  },
+
+  // 汽车零部件 (Auto Parts OEM)
+  'APTV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Auto Parts OEM',
+    tags: ['electronics', 'connectivity', 'adas', 'ev'],
+  },
+  'BWA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Auto Parts OEM',
+    tags: ['powertrain', 'drivetrain', 'ev_transition'],
+  },
+  'LEA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Auto Parts OEM',
+    tags: ['seating', 'electrical', 'interior'],
+  },
+  'MGA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Auto Parts OEM',
+    tags: ['contract_mfg', 'body', 'powertrain', 'mirrors'],
+  },
+  'ALV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Auto Parts OEM',
+    tags: ['safety', 'airbags', 'seatbelts', 'adas'],
+  },
+  'GNTX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Auto Parts OEM',
+    tags: ['mirrors', 'dimming', 'electronics', 'cameras'],
+  },
+
+  // 汽车经销商 (More Dealers)
+  'PAG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Auto Dealer',
+    tags: ['premium', 'multi_brand', 'service', 'uk'],
+  },
+  'LAD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Auto Dealer',
+    tags: ['growth', 'acquisitions', 'multi_brand'],
+  },
+  'KMX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Auto Dealer',
+    tags: ['used_cars', 'no_haggle', 'national'],
+  },
+
   // 租车
   'CAR': {
     assetModel: 'asset_heavy',
     revenueModels: ['product_sales'],
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
-    industrySegment: 'Auto',
+    industrySegment: 'Car Rental',
     tags: ['rental', 'fleet', 'travel'],
   },
 
@@ -2650,6 +2735,14 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Big Pharma',
     tags: ['vaccines', 'respiratory', 'hiv', 'oncology'],
   },
+  'NVO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Big Pharma',
+    tags: ['diabetes', 'glp1', 'obesity', 'insulin', 'hemophilia'],
+  },
 
   // ---------- 生物科技 (Biotech) ----------
   // 特点: 高研发投入、二元结果、专利驱动
@@ -2926,6 +3019,14 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2B',
     industrySegment: 'Life Sciences Tools',
     tags: ['cro', 'clinical_trials', 'analytics', 'real_world_data'],
+  },
+  'CRL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Sciences Tools',
+    tags: ['preclinical', 'safety_assessment', 'discovery', 'lab_animal'],
   },
   'WAT': {
     assetModel: 'asset_heavy',
