@@ -2177,6 +2177,38 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // 特种零售
     'JWN': 'Department Store',            // Nordstrom - 高端百货
     'BOOT': 'Specialty Retail',           // Boot Barn - 西部/工装零售
+
+    // 新增30只 - 消费/医疗/金融科技/工业/材料/媒体
+    'MKC': 'Packaged Foods',              // McCormick - 调味品/香料
+    'MOH': 'Managed Care',               // Molina Healthcare - Medicaid管理
+    'BAX': 'Medical Devices',             // Baxter International - 医疗产品
+    'SNA': 'Specialty Industrial',        // Snap-on - 专业工具
+    'WPC': 'Net Lease REIT',              // W.P. Carey - 多元化净租赁
+    'SRE': 'Regulated Utility',           // Sempra - 公用事业/基础设施
+    'MTCH': 'Social Platform',            // Match Group - 约会平台
+    'GDDY': 'Cloud Infrastructure',       // GoDaddy - 域名/托管
+    'AKAM': 'Cloud Infrastructure',       // Akamai - CDN/安全
+    'GEN': 'Consumer Cybersecurity',      // Gen Digital - Norton/Avast消费安全
+    'PATH': 'Enterprise SaaS',            // UiPath - RPA/自动化
+    'AOS': 'Building Products',           // A.O. Smith - 热水器/水处理
+    'LSTR': 'Truckload',                  // Landstar - 轻资产卡车
+    'RXO': '3PL',                         // RXO - 卡车经纪/物流
+    'SEIC': 'Asset Management',           // SEI Investments - 投资管理技术
+    'SON': 'Packaging',                   // Sonoco - 工业/消费包装
+    'BLL': 'Packaging',                   // Ball Corp - 铝罐包装
+    'EXP': 'Aggregates',                  // Eagle Materials - 石膏/水泥
+    'LYV': 'Live Entertainment',          // Live Nation - 演唱会/Ticketmaster
+    'PAYX': 'HCM SaaS',                  // Paychex - 薪资/人力资源
+    'JKHY': 'FinTech SaaS',              // Jack Henry - 银行核心系统
+    'WEX': 'Payment Processing',          // WEX - 车队卡/支付
+    'CNH': 'Farm Equipment',              // CNH Industrial - 农机/工程机械
+    'JCI': 'Building Systems',            // Johnson Controls - 楼宇自动化
+    'AAON': 'Building Systems',           // AAON - 商用HVAC
+    'CRUS': 'Analog Semis',               // Cirrus Logic - 音频/触觉IC
+    'MTSI': 'RF Semiconductor',           // MACOM - RF/微波模拟半导体
+    'NYT': 'Digital Media',               // New York Times - 数字新闻
+    'SHAK': 'Fast Casual',               // Shake Shack - 快休闲汉堡
+    'ERIE': 'P&C Insurance',              // Erie Indemnity - 财产险
   },
 
   // ============================================================
@@ -3692,6 +3724,104 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Enterprise SaaS',         // 数据中心客户（云/SaaS）
       'Cloud Hyperscaler',       // 云托管客户
       'Big Pharma',              // 医药合规存储
+    ],
+
+    // ========== 新增子行业链 - 第五批 (30只新股票) ==========
+
+    // 管理式医疗 → 医院/药房
+    'Managed Care': [
+      'Hospital',                // 支付医院费用
+      'Pharmacy Retail',         // 处方药覆盖
+      'Digital Health',          // 远程医疗合作
+    ],
+
+    // 医疗器械 → 医院
+    'Medical Devices': [
+      'Hospital',                // 医院采购
+      'Health Insurance',        // 保险报销
+      'Pharma Distributor',      // 分销渠道
+    ],
+
+    // 云基础设施(CDN/托管) → 企业SaaS/电商
+    'Cloud Infrastructure': [
+      'Enterprise SaaS',         // SaaS交付基础设施
+      'E-commerce',              // 电商网站性能
+      'Social Platform',         // 社交平台CDN
+      'Streaming',               // 视频CDN
+    ],
+
+    // 消费网络安全 → 终端消费者(无明确下游，连接零售)
+    'Consumer Cybersecurity': [
+      'Mass Retail',             // 零售渠道分销
+      'E-commerce',              // 在线订阅分销
+    ],
+
+    // 3PL物流 → 零售/电商
+    '3PL': [
+      'Mass Retail',             // 零售配送
+      'E-commerce',              // 电商履约
+      'Truckload',               // 整车运输合作
+    ],
+
+    // 包装 → 食品饮料/消费品
+    'Packaging': [
+      'Packaged Foods',          // 食品包装
+      'Soft Drinks',             // 饮料包装(铝罐)
+      'Beer & Spirits',          // 酒类包装
+      'Household Products',      // 消费品包装
+    ],
+
+    // 现场娱乐 → 广告/平台
+    'Live Entertainment': [
+      'AdTech DSP',              // 活动广告
+      'Social Platform',         // 社交传播
+      'Streaming',               // 直播竞争
+    ],
+
+    // HCM SaaS → 企业客户
+    'HCM SaaS': [
+      'Enterprise SaaS',         // 与ERP/CRM集成
+      'Regional Bank',           // 薪资代发合作
+      'SMB Software',            // SMB生态集成
+    ],
+
+    // 支付处理(车队卡) → 物流/运输
+    'Payment Processing': [
+      'Truckload',               // 车队加油卡
+      'LTL Trucking',            // 零担车队
+      'Express Logistics',       // 快递车队
+    ],
+
+    // 农机 → 农业商品
+    'Farm Equipment': [
+      'Ag Commodities',          // 农业生产
+      'Fertilizer',              // 农资配套
+    ],
+
+    // 模拟半导体 → 消费电子
+    'Analog Semis': [
+      'Consumer Electronics',    // 音频/触觉终端
+      'Fabless Chips',           // 芯片集成
+    ],
+
+    // RF半导体 → 通信/国防
+    'RF Semiconductor': [
+      'Network Equipment',       // 5G基站
+      'Defense Electronics',     // 国防雷达/通信
+      'Wireless Carrier',        // 运营商设备
+    ],
+
+    // 数字媒体 → 广告
+    'Digital Media': [
+      'AdTech DSP',              // 广告库存
+      'Social Platform',         // 内容分发竞争
+      'Streaming',               // 数字内容竞争
+    ],
+
+    // 资产管理(已有Asset Manager, 新增Asset Management连接)
+    'Asset Management': [
+      'Brokerage',               // 经纪渠道
+      'Regional Bank',           // 银行财富管理
     ],
 
   },

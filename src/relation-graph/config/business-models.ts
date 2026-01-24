@@ -7134,6 +7134,298 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Off-Price Retail',
     tags: ['off_price', 'apparel', 'home', 'value', 'treasure_hunt'],
   },
+
+  // ========================================================
+  // 新增30只股票 - 消费/医疗/金融科技/工业/材料/媒体
+  // ========================================================
+
+  // ---------- Packaged Foods ----------
+  'MKC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Packaged Foods',
+    tags: ['spices', 'seasonings', 'flavor', 'staples', 'grocery'],
+  },
+
+  // ---------- Healthcare ----------
+  'MOH': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2G',
+    industrySegment: 'Managed Care',
+    tags: ['medicaid', 'managed_care', 'government', 'health_insurance', 'low_income'],
+  },
+  'BAX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['renal', 'IV_therapy', 'surgical', 'hospital_products', 'infusion'],
+  },
+
+  // ---------- Specialty Industrial ----------
+  'SNA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Industrial',
+    tags: ['professional_tools', 'diagnostics', 'repair', 'mobile_distribution'],
+  },
+
+  // ---------- REITs ----------
+  'WPC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Net Lease REIT',
+    tags: ['diversified', 'net_lease', 'triple_net', 'industrial', 'retail'],
+  },
+
+  // ---------- Utilities ----------
+  'SRE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['natural_gas', 'electric', 'infrastructure', 'LNG', 'california'],
+  },
+
+  // ---------- Social/Dating Platform ----------
+  'MTCH': {
+    assetModel: 'platform',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Social Platform',
+    tags: ['dating', 'tinder', 'hinge', 'matchmaking', 'subscription'],
+  },
+
+  // ---------- Cloud/Internet Infrastructure ----------
+  'GDDY': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Cloud Infrastructure',
+    tags: ['domain', 'web_hosting', 'SMB', 'website_builder', 'commerce'],
+  },
+  'AKAM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cloud Infrastructure',
+    tags: ['CDN', 'edge_computing', 'security', 'web_performance', 'DDoS'],
+  },
+
+  // ---------- Consumer Cybersecurity ----------
+  'GEN': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Consumer Cybersecurity',
+    tags: ['norton', 'avast', 'antivirus', 'VPN', 'identity_protection'],
+  },
+
+  // ---------- Enterprise SaaS (RPA) ----------
+  'PATH': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['RPA', 'automation', 'AI', 'workflow', 'process_mining'],
+  },
+
+  // ---------- Building Products ----------
+  'AOS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Building Products',
+    tags: ['water_heater', 'water_treatment', 'boiler', 'residential', 'commercial'],
+  },
+
+  // ---------- Trucking/Logistics ----------
+  'LSTR': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B',
+    industrySegment: 'Truckload',
+    tags: ['asset_light', 'owner_operator', 'brokerage', 'agent_model'],
+  },
+  'RXO': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B',
+    industrySegment: '3PL',
+    tags: ['truck_brokerage', 'last_mile', 'managed_transportation', 'logistics'],
+  },
+
+  // ---------- Asset Management ----------
+  'SEIC': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'transaction_fee'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Asset Management',
+    tags: ['investment_management', 'technology_platform', 'wealth', 'outsourcing'],
+  },
+
+  // ---------- Packaging ----------
+  'SON': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Packaging',
+    tags: ['industrial_packaging', 'consumer_packaging', 'paper', 'plastics', 'metal'],
+  },
+  'BLL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Packaging',
+    tags: ['aluminum_cans', 'beverage_packaging', 'sustainability', 'recycling'],
+  },
+
+  // ---------- Aggregates/Cement ----------
+  'EXP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Aggregates',
+    tags: ['gypsum', 'wallboard', 'cement', 'concrete', 'construction'],
+  },
+
+  // ---------- Live Entertainment ----------
+  'LYV': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Live Entertainment',
+    tags: ['concerts', 'ticketmaster', 'venues', 'festivals', 'events'],
+  },
+
+  // ---------- HCM/Payroll SaaS ----------
+  'PAYX': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'HCM SaaS',
+    tags: ['payroll', 'HR', 'SMB', 'benefits', 'compliance'],
+  },
+
+  // ---------- FinTech SaaS ----------
+  'JKHY': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'FinTech SaaS',
+    tags: ['core_banking', 'community_bank', 'credit_union', 'digital_banking'],
+  },
+
+  // ---------- Payment Processing ----------
+  'WEX': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Payment Processing',
+    tags: ['fleet_cards', 'fuel_cards', 'corporate_payments', 'benefits', 'travel'],
+  },
+
+  // ---------- Farm Equipment ----------
+  'CNH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Farm Equipment',
+    tags: ['tractors', 'harvesting', 'construction', 'case_IH', 'new_holland'],
+  },
+
+  // ---------- Building Systems (HVAC) ----------
+  'JCI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Systems',
+    tags: ['HVAC', 'fire_safety', 'building_automation', 'smart_building', 'controls'],
+  },
+  'AAON': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Systems',
+    tags: ['commercial_HVAC', 'rooftop_units', 'custom', 'energy_efficient'],
+  },
+
+  // ---------- Semiconductors ----------
+  'CRUS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Analog Semis',
+    tags: ['audio_IC', 'haptics', 'apple_supplier', 'mixed_signal', 'codec'],
+  },
+  'MTSI': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'RF Semiconductor',
+    tags: ['RF', 'microwave', 'photonics', '5G', 'defense_electronics'],
+  },
+
+  // ---------- Digital Media ----------
+  'NYT': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Digital Media',
+    tags: ['news', 'journalism', 'digital_subscription', 'podcasts', 'games'],
+  },
+
+  // ---------- Fast Casual ----------
+  'SHAK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Fast Casual',
+    tags: ['burgers', 'shakes', 'urban', 'premium_QSR', 'fast_casual'],
+  },
+
+  // ---------- P&C Insurance ----------
+  'ERIE': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'P&C Insurance',
+    tags: ['property', 'casualty', 'auto', 'homeowners', 'independent_agents'],
+  },
 };
 
 // ============================================================

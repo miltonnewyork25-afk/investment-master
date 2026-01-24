@@ -1902,6 +1902,76 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['speed', 'bundling', 'reliability', 'coverage'],
     channels: ['retail_store', 'online', 'phone'],
   },
+
+  // --- 调味品/食品 ---
+  'MKC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['cooking', 'meal_prep', 'grilling', 'baking'],
+    valueProps: ['quality', 'flavor', 'variety', 'trusted_brand'],
+    channels: ['retail', 'online', 'grocery'],
+  },
+
+  // --- 约会/社交 ---
+  'MTCH': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['dating', 'relationships', 'social'],
+    valueProps: ['convenience', 'matching', 'variety', 'safety'],
+    channels: ['mobile_app', 'online'],
+  },
+
+  // --- 消费安全 ---
+  'GEN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['online_security', 'privacy', 'device_protection'],
+    valueProps: ['protection', 'peace_of_mind', 'comprehensive', 'trusted'],
+    channels: ['online', 'retail', 'OEM_bundling'],
+  },
+
+  // --- 现场娱乐 ---
+  'LYV': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['concerts', 'festivals', 'live_events', 'entertainment'],
+    valueProps: ['experience', 'access', 'variety', 'exclusivity'],
+    channels: ['online', 'mobile_app', 'venue'],
+  },
+
+  // --- 数字新闻 ---
+  'NYT': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['news', 'reading', 'cooking', 'games', 'podcasts'],
+    valueProps: ['quality_journalism', 'depth', 'credibility', 'digital_experience'],
+    channels: ['online', 'mobile_app', 'subscription'],
+  },
+
+  // --- 快休闲餐饮 ---
+  'SHAK': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['lunch', 'dinner', 'casual_dining', 'quick_meal'],
+    valueProps: ['premium_quality', 'fresh', 'urban', 'experience'],
+    channels: ['dine_in', 'delivery', 'mobile_app'],
+  },
+
+  // --- 域名/网站(B2B2C) ---
+  'GDDY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['website_creation', 'online_store', 'branding', 'email'],
+    valueProps: ['simplicity', 'affordability', 'all_in_one', 'support'],
+    channels: ['online', 'mobile_app'],
+  },
+
+  // --- 公用事业(B2B2C) ---
+  'WPC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['investment', 'income', 'diversification'],
+    valueProps: ['stable_income', 'diversification', 'inflation_protection'],
+    channels: ['brokerage', 'online'],
+  },
+  'SRE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'natural_gas', 'home_energy'],
+    valueProps: ['reliability', 'essential_service', 'infrastructure'],
+    channels: ['direct', 'utility_billing'],
+  },
 };
 
 // ============================================================
@@ -3009,6 +3079,38 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'JWN': 'early',       // Nordstrom - 高端消费周期
   'BOOT': 'early',      // Boot Barn - 消费可选
   'BURL': 'mid',        // Burlington - 折扣零售(相对防御)
+
+  // 新增30只 - 消费/医疗/金融科技/工业/材料/媒体
+  'MKC': 'defensive',   // McCormick - 调味品(必需消费)
+  'MOH': 'defensive',   // Molina - Medicaid管理(防御)
+  'BAX': 'mid',         // Baxter - 医疗产品
+  'SNA': 'mid',         // Snap-on - 专业工具
+  'WPC': 'defensive',   // W.P. Carey - 净租赁REIT
+  'SRE': 'defensive',   // Sempra - 公用事业
+  'MTCH': 'mid',        // Match Group - 约会平台
+  'GDDY': 'mid',        // GoDaddy - 域名/托管
+  'AKAM': 'mid',        // Akamai - CDN/安全
+  'GEN': 'mid',         // Gen Digital - 消费安全
+  'PATH': 'early',      // UiPath - RPA/自动化(早期成长)
+  'AOS': 'mid',         // A.O. Smith - 热水器
+  'LSTR': 'mid',        // Landstar - 轻资产卡车
+  'RXO': 'mid',         // RXO - 卡车经纪
+  'SEIC': 'mid',        // SEI Investments - 投资管理
+  'SON': 'mid',         // Sonoco - 包装
+  'BLL': 'mid',         // Ball Corp - 铝罐包装
+  'EXP': 'early',       // Eagle Materials - 石膏/水泥(早周期)
+  'LYV': 'mid',         // Live Nation - 现场娱乐
+  'PAYX': 'defensive',  // Paychex - 薪资(防御型SaaS)
+  'JKHY': 'defensive',  // Jack Henry - 银行核心(防御)
+  'WEX': 'mid',         // WEX - 支付处理
+  'CNH': 'early',       // CNH Industrial - 农机(早周期)
+  'JCI': 'mid',         // Johnson Controls - 楼宇自动化
+  'AAON': 'mid',        // AAON - 商用HVAC
+  'CRUS': 'early',      // Cirrus Logic - 模拟半导体(早周期)
+  'MTSI': 'early',      // MACOM - RF半导体(早周期)
+  'NYT': 'defensive',   // NYT - 数字订阅(防御)
+  'SHAK': 'mid',        // Shake Shack - 快休闲
+  'ERIE': 'defensive',  // Erie Indemnity - 财产险(防御)
 };
 
 // ============================================================
@@ -6454,6 +6556,159 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'R': {
     interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+
+  // ========== 新增30只 - 消费/医疗/金融科技/工业/材料/媒体 ==========
+
+  // 调味品 - 必需消费(防御)
+  'MKC': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Medicaid管理 - 政府合同(防御)
+  'MOH': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: -0.1, unemployment: 0.3,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // 医疗产品 - 稳定需求
+  'BAX': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 专业工具 - 工业周期
+  'SNA': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  // 净租赁REIT - 利率敏感
+  'WPC': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 公用事业 - 利率/基建
+  'SRE': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.2,
+  },
+  // 约会平台 - 消费者信心
+  'MTCH': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 域名/托管 - SMB支出
+  'GDDY': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // CDN/安全 - 互联网流量
+  'AKAM': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 消费安全 - 防御型订阅
+  'GEN': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // RPA/自动化 - 企业IT支出
+  'PATH': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 热水器 - 住房周期
+  'AOS': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.6, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 轻资产卡车 - 货运周期
+  'LSTR': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.3,
+  },
+  // 卡车经纪 - 货运周期
+  'RXO': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  // 投资管理技术 - 资本市场
+  'SEIC': {
+    interestRate: 0.3, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 工业包装 - 经济周期
+  'SON': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  // 铝罐包装 - 饮料消费
+  'BLL': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  // 石膏/水泥 - 建设周期
+  'EXP': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.7, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  // 现场娱乐 - 消费者可选
+  'LYV': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // 薪资SaaS - 就业市场
+  'PAYX': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.4,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // 银行核心系统 - 金融IT(防御)
+  'JKHY': {
+    interestRate: 0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // 车队卡/支付 - 物流周期
+  'WEX': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.3,
+  },
+  // 农机 - 农业周期
+  'CNH': {
+    interestRate: -0.4, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  // 楼宇自动化 - 建设/改造周期
+  'JCI': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  // 商用HVAC - 商业建设周期
+  'AAON': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  // 模拟半导体 - 消费电子周期
+  'CRUS': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // RF半导体 - 5G/国防周期
+  'MTSI': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 数字新闻订阅 - 防御型
+  'NYT': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 快休闲 - 消费者可选
+  'SHAK': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // 财产险 - 防御/利率正相关
+  'ERIE': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
   },
 };
 
