@@ -4064,6 +4064,119 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Simulation Software',
     tags: ['simulation', 'cae', 'engineering', 'digital-twin', 'multiphysics'],
   },
+
+  // ---------- 房屋建筑商 (Homebuilders) ----------
+  // 特点: 重资产(土地储备)、利率高敏感、区域性
+  'LEN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['single_family', 'multifamily', 'sunbelt', 'first_time_buyer'],
+  },
+  'DHI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['entry_level', 'single_family', 'volume', 'affordable'],
+  },
+  'PHM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['move_up', 'active_adult', '55_plus', 'del_webb'],
+  },
+  'NVR': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['lot_option', 'asset_light_model', 'mid_atlantic', 'ryan_homes'],
+  },
+  'TOL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['luxury', 'move_up', 'urban', 'high_asp'],
+  },
+  'KBH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['entry_level', 'west_coast', 'built_to_order', 'energy_star'],
+  },
+
+  // ---------- 建筑材料 (Building Products) ----------
+  // 特点: 制造业、新建+翻新双驱动
+  'JHX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['fiber_cement', 'siding', 'exterior', 'weather_resistant'],
+  },
+  'AZEK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['composite_decking', 'trim', 'recycled', 'outdoor_living'],
+  },
+  'OC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['insulation', 'roofing', 'composites', 'fiberglass'],
+  },
+  'BLDR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products Distribution',
+    tags: ['lumber', 'windows', 'distribution', 'pro_builder'],
+  },
+
+  // ---------- 房地产服务 (Real Estate Services) ----------
+  // 特点: 交易量驱动、利率敏感
+  'RKT': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Mortgage',
+    tags: ['mortgage_origination', 'refinance', 'fintech', 'online'],
+  },
+  'FAF': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Title Insurance',
+    tags: ['title_insurance', 'escrow', 'settlement', 'data'],
+  },
+  'FNF': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Title Insurance',
+    tags: ['title_insurance', 'escrow', 'annuities', 'f&g'],
+  },
 };
 
 // ============================================================

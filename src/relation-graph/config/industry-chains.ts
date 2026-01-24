@@ -880,6 +880,17 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'KBH': 'Homebuilder',                 // KB Home
     'MTH': 'Homebuilder',                 // Meritage Homes
 
+    // 建筑材料/产品 (Building Products)
+    'JHX': 'Building Products',             // James Hardie - 纤维水泥
+    'AZEK': 'Building Products',            // AZEK - 复合材料
+    'OC': 'Building Products',              // Owens Corning - 绝缘/屋顶
+    'BLDR': 'Building Products Distributor',// Builders FirstSource
+
+    // 房地产服务 (Real Estate Services)
+    'RKT': 'Mortgage Lender',              // Rocket Mortgage
+    'FAF': 'Title Insurance',              // First American Financial
+    'FNF': 'Title Insurance',              // Fidelity National Financial
+
     // ========== 包装 (Packaging) ==========
     'BALL': 'Metal Packaging',            // Ball Corp
     'CCK': 'Metal Packaging',             // Crown Holdings
@@ -1592,6 +1603,25 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'E&C Contractor': [
       'Homebuilder',
       'Data Center REIT',
+    ],
+
+    // 建筑材料 → 房建商 → 房贷/产权保险
+    'Building Products': [
+      'Homebuilder',
+      'Building Products Distributor',
+    ],
+
+    'Building Products Distributor': [
+      'Homebuilder',
+    ],
+
+    'Homebuilder': [
+      'Mortgage Lender',
+      'Title Insurance',
+    ],
+
+    'Mortgage Lender': [
+      'Title Insurance',
     ],
 
     // ========== 工业产业链扩展 ==========

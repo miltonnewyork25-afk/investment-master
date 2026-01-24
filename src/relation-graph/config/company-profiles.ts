@@ -604,10 +604,21 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // 房地产、金融、非必需消费
 
   // ---------- 房建 (Homebuilders) ----------
-  'LEN': 'early',     // 房建
-  'DHI': 'early',
-  'PHM': 'early',
-  'TOL': 'early',
+  'LEN': 'early',     // Lennar
+  'DHI': 'early',     // D.R. Horton
+  'PHM': 'early',     // PulteGroup
+  'TOL': 'early',     // Toll Brothers
+  'NVR': 'early',     // NVR
+  'KBH': 'early',     // KB Home
+  // 建筑材料/产品 (Building Products)
+  'JHX': 'early',     // James Hardie - 纤维水泥
+  'AZEK': 'early',    // AZEK - 复合材料
+  'OC': 'early',      // Owens Corning - 绝缘/屋顶
+  'BLDR': 'early',    // Builders FirstSource - 分销
+  // 房地产服务 (Real Estate Services)
+  'RKT': 'early',     // Rocket Mortgage
+  'FAF': 'early',     // First American Financial
+  'FNF': 'early',     // Fidelity National Financial
 
   // ---------- 家居建材 (Home Improvement) ----------
   'HD': 'early',      // Home Depot
@@ -1220,6 +1231,55 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: -0.8, inflation: -0.3, gdpGrowth: 0.7, unemployment: -0.5,
     consumerConfidence: 0.7, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: -0.2,
   },
+  'PHM': {
+    interestRate: -0.8, inflation: -0.3, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'NVR': {
+    interestRate: -0.7, inflation: -0.3, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'TOL': {
+    interestRate: -0.7, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'KBH': {
+    interestRate: -0.8, inflation: -0.3, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+
+  // 建筑材料 (新建+翻新驱动，利率敏感略低)
+  'JHX': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.8, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'AZEK': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'OC': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.8, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'BLDR': {
+    interestRate: -0.7, inflation: -0.2, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.6, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // 房地产服务 (利率极敏感 - 房贷交易量)
+  'RKT': {
+    interestRate: -0.9, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'FAF': {
+    interestRate: -0.8, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'FNF': {
+    interestRate: -0.8, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
   'TSLA': {
     interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: -0.4,
