@@ -22,25 +22,39 @@
 
 **这3条规则优先级高于一切。任何违反铁律的标题=0分，直接丢弃。**
 
-### 铁律1: 人格视角 (Human Voice)
+### 铁律1: 去身份化 + 合规安全 (No Identity, No Advice)
 
 ```
-❌ 绝对禁止: 在标题中暴露AI身份
+❌ 绝对禁止: 暴露任何身份(AI或个人)
    - "Our AI framework..." → 禁止
    - "AI says SELL..." → 禁止
-   - "AI predicted..." → 禁止
+   - "I score it..." / "My framework..." → 禁止
+   - "我看空..." / "我的判断..." → 禁止
 
-✅ 必须使用: 人的视角和语态
-   - "My framework scores..." → 正确
-   - "I scored it 23.5/100..." → 正确
-   - "My cycle model says..." → 正确
-   - "Here's what my analysis shows..." → 正确
+❌ 绝对禁止: 主观方向性判断(荐股/诱导投资)
+   - "BUY" / "SELL" / "看多" / "看空" → 禁止
+   - "该买了" / "该跑了" / "赶紧卖" → 禁止
+   - "I'm bearish" / "I'm bullish" → 禁止
+   - 任何暗示读者应该买入/卖出的措辞 → 禁止
+
+✅ 必须使用: 客观第三方视角
+   - 数据陈述: "50.4x P/E, 历史均值20-30x"
+   - 现象描述: "25位分析师看多，周期信号亮红灯"
+   - 提问式: "...意味着什么？" / "...是否合理？"
+   - 教育式: "一文读懂..." / "...的底层逻辑"
+   - 框架展示: "周期框架评分23.5/100" (不加"我的")
+
+✅ 安全表达方式:
+   - "值得关注的信号" → 替代 "危险信号"
+   - "历史上类似情况的结果" → 替代 "一定会跌"
+   - "估值与历史均值的偏离" → 替代 "太贵了"
+   - "共识与数据的分歧" → 替代 "分析师都错了"
 
 原理:
-- 读者连接的是人，不是工具
-- "AI说"=推卸判断责任，削弱权威感
-- 个人视角=更强的信任+更高的回复率
-- 人格化=可追踪、可验证、可对话
+- 各平台合规: 避免被判定为"荐股"/"投资建议"/"诱导交易"
+- 封号风险规避: X/雪球/小红书对金融内容审核趋严
+- 客观视角反而更可信: 数据说话>个人意见
+- 提问式=更高互动率: 读者回复补充自己的判断
 ```
 
 ### 铁律2: 忠实于原文 (Content Fidelity)
@@ -75,7 +89,7 @@
 ✅ 高传播力的正确来源:
    - 真实的认知冲突: "好公司≠好投资" (来自数据，非炒作)
    - 具体的反直觉数据: "57% ROIC，但期望收益仅+1%"
-   - 可验证的预测框架: "周三财报将验证这个判断"
+   - 可验证的时间窗口: "周三财报后这组数据将被检验"
    - 结构性悬念: 来自信息本身的张力，非人工制造
 
 判断标准:
@@ -123,11 +137,11 @@ E = Effort (获取成本)
 | 模块 | 定义 | 投资大师示例 |
 |------|------|------------|
 | **BIG Problem** | 所有痛点浓缩为一句 | "大多数投资者在周期顶部买入" |
-| **BIG Benefit** | 所有利益浓缩为一句 | "在别人恐慌时精准抄底" |
+| **BIG Benefit** | 所有利益浓缩为一句 | "识别周期位置的量化方法" |
 | **BIG Idea** | 最有冲击力的核心概念 | "好公司≠好投资" |
 | **Transformation** | 数字/命名暗示过程 | "5维评分系统" / "Top Divergence信号" |
-| **Timeframe** | 量化时间/阅读成本 | "3分钟理解" / "30秒判断" |
-| **Negative Experience** | 暗示低谷+情绪 | "我曾在周期顶部亏损40%" |
+| **Timeframe** | 量化时间/阅读成本 | "3分钟理解" / "20年历史数据" |
+| **Historical Pattern** | 暗示历史重复性 | "历史上每次50x PE后12个月内..." |
 
 ### 1.4 Gene Schwartz 10大标题强化术 (从38术中精选)
 
@@ -140,7 +154,7 @@ E = Effort (获取成本)
 | 5 | **感官化** | 让读者看到/感受到 | "亏损"→"看着账户每天缩水$5000" |
 | 6 | **案例证明** | 具体实例 | "有效"→"LRCX验证: 3个月前预测, 今天应验" |
 | 7 | **戏剧化** | 放大结果的冲击 | "框架有用"→"一个AI vs 25位顶级分析师" |
-| 8 | **悖论表达** | 违反直觉 | "最好的季报=卖出信号" |
+| 8 | **悖论表达** | 违反直觉 | "最好的季报=周期见顶信号" |
 | 9 | **消除限制** | 移除反对理由 | "不需要金融学位" / "完全免费" |
 | 10 | **身份关联** | 与目标身份绑定 | "逆向投资者的秘密武器" |
 
@@ -201,7 +215,7 @@ S = Shareability (2阶选美通过率)
 | **YouTube** 标题 | 100字符 | 60-70字符(完整显示) | Shorts: 40字符可见 |
 | **Reddit** 标题 | 300字符 | 80-150字符(信息密度) | 含[DD]/[Analysis]标签 |
 | **雪球** 标题 | 无严格限制 | 30-60中文字 | 含$标的代码+明确观点 |
-| **小红书** 标题 | 20中文字 | 15中文字(完整显示) | 前10字=60%权重! |
+| **小红书** 标题 | 20中文字 | 15-20中文字(信息充分+完整显示) | 前10字=60%权重! |
 | **Substack** 标题 | 无限制 | 50-80字符 | 邮件主题行=决定打开率 |
 
 ### 3.2 X/Twitter标题规则
@@ -215,12 +229,12 @@ S = Shareability (2阶选美通过率)
 [第三句暗示内容价值]
 🧵
 
-Hook类型(5种, Ship30for30):
-1. 强声明: "X is wrong about Y."
+Hook类型(5种, 改编自Ship30for30, 适配去身份化铁律):
+1. 数据声明: "X says A. Data says B."
 2. 提问: "What if X actually means Y?"
-3. 逆向观点: "Everyone thinks X. They're wrong."
-4. 时刻定位: "3 months ago, I predicted X..."
-5. 脆弱声明: "I lost $X because of Y."
+3. 现象悖论: "Every indicator says X. History says otherwise."
+4. 时间锚定: "3 months ago this framework scored X. Today the data is in."
+5. 历史回顾: "The last time [condition], [outcome] followed within [timeframe]."
 
 Reply Guy策略:
 回复大V时的Hook也需要设计 — 信息量+逆向+具体数字
@@ -228,11 +242,11 @@ Reply Guy策略:
 
 **投资人群专属Hook模板:**
 ```
-对抗型: "25 analysts say BUY. I score it {score}/100. Here's why."
-数据型: "{stock} P/E is {X}x. The last time it was this high, it dropped {Y}%."
-预测型: "I called {stock}'s top {X} months ago. Here's my next signal."
-教育型: "The one metric that predicted every semicap crash since 2018:"
-损失型: "If you own {stock} above {price}, you need to see this."
+数据悖论型: "25 analysts say BUY. Cycle framework scores {score}/100. The gap is worth examining."
+历史类比型: "{stock} P/E is {X}x. The last time it was this high? {event}. Here's the data."
+现象提问型: "What happens when every indicator is green but the cycle clock says peak?"
+教育型: "The one metric that signaled every semicap peak since 2018:"
+数据冲突型: "{stock}: {ROIC}% ROIC, {PE}x P/E. Great company, but is the price right?"
 ```
 
 ### 3.3 YouTube标题规则
@@ -243,7 +257,7 @@ Reply Guy策略:
 IMPACT公式:
 I = Immediate Hook ("How", "Why", "What if")
 M = Measurable ("45%", "#1", "$7M")
-P = Proof/Personal ("I tested", "AI predicted", "Data shows")
+P = Proof/Evidence ("Back-tested", "Data shows", "Historical pattern")
 A = Audience ("investors", "traders", "beginners")
 C = Curiosity/Controversy ("No one talks about", "Shocking")
 T = Timeframe ("in 30 days", "before earnings")
@@ -260,16 +274,16 @@ Shorts: ≤40字符(极简, 1个核心冲击)
 **投资人群专属YouTube标题模板:**
 ```
 长视频:
-"How I Predicted {stock}'s {X}% Drop — 3 Months Early"
-"I Tested Wall Street's #1 Pick With My Framework — The Results"
-"The Math Behind Every Semiconductor Crash (And When the Next One Hits)"
-"Why {stock} at {P/E}x PE Is a Ticking Time Bomb — Full Analysis"
+"What Happens When a 57% ROIC Stock Hits 50x PE? — Historical Data"
+"25 Analysts Say Buy, the Cycle Says Peak — Who's Right?"
+"The Math Behind Every Semiconductor Cycle Peak (A 20-Year Study)"
+"{stock} at {P/E}x PE vs Historical Range {Y}-{Z}x — What the Data Shows"
 
 Shorts:
-"I say SELL when 25 analysts say BUY"
-"This signal predicted every crash since 2018"
-"{stock}: {X}% gain or {Y}% crash?"
-"One number that Wall Street ignores"
+"25 analysts agree. The cycle disagrees."
+"This signal preceded every semicap peak since 2000"
+"{stock}: +{X}% in 52 weeks. What happened next historically?"
+"The number Wall Street ignores at cycle peaks"
 ```
 
 ### 3.4 Reddit标题规则
@@ -298,48 +312,48 @@ Shorts:
 **投资人群专属Reddit标题模板:**
 ```
 r/stocks:
-"[DD] LRCX — My Cycle Framework Scores 23.5/100 Despite 57% ROIC. Here's the Math."
-"[Analysis] Semicap P/E Ratios vs Historical Crash Points — A 20-Year Dataset"
+"[DD] LRCX — Cycle Framework Scores 23.5/100 Despite 57% ROIC. Here's the Math."
+"[Analysis] Semicap P/E Ratios vs Historical Peak Points — A 20-Year Dataset"
 "[Tool] Free Open-Source Cycle Scoring Framework for 2004 US Stocks"
 
 r/investing:
-"Why Fundamentals Alone Can't Protect You at Cycle Peaks — A Quantitative Approach"
-"I Built a Quantitative Cycle Framework That Caught Every Semicap Peak Since 2000. AMA."
+"Why Fundamentals Alone Don't Protect at Cycle Peaks — A Quantitative Study"
+"When Every Indicator Is Green but P/E Is 2x Historical Average — What Does History Say?"
 
 r/ValueInvesting:
-"LRCX: 57% ROIC, 8/9 Piotroski, and Still Overvalued? The Cycle Investor's Dilemma"
+"LRCX: 57% ROIC, 8/9 Piotroski, 50x P/E. When Great Fundamentals Meet Peak Valuation."
 ```
 
 ### 3.5 雪球标题规则
 
 ```
-核心: 专业深度+明确观点+标的代码。用户期待有"研报感"的个人观点。
+核心: 专业深度+数据悖论+标的代码。用户期待有深度的量化分析视角。
 
 最优格式:
-$标的代码 + 核心观点 + 关键数据/理由
-例: "$LRCX 当所有人看多时，周期信号给出23.5分——为什么好公司≠好价格"
+$标的代码 + 数据现象/悖论 + 提问或悬念
+例: "$LRCX 25位分析师看多，周期框架只给23.5分——这个分歧意味着什么？"
 
 规则:
 - 字数: 30-60中文字(标题区完整显示)
-- 必须: $标的代码(进入个股讨论流) + 明确多空观点
-- 语气: 专业+有锐度(非学术枯燥)
+- 必须: $标的代码(进入个股讨论流) + 数据冲突/现象 + 提问
+- 语气: 专业+有锐度(非学术枯燥), 但不给方向性结论
 - 话题: 关联热门话题标签(#半导体 #周期投资)
-- 避免: 纯标题党(雪球用户对深度有预期)
+- 避免: 纯标题党 / "看多" "看空" "建议买入" 等主观判断
 ```
 
 **投资人群专属雪球标题模板:**
 ```
-逆向型:
-"$LRCX 25位分析师看多，我的周期框架只给23.5分——顶部信号解读"
-"$LRCX 57%ROIC的公司为什么可能跌45%? 因为50倍PE不是护城河"
+数据悖论型:
+"$LRCX 25位分析师看多，周期框架只给23.5分——这个分歧意味着什么？"
+"$LRCX ROIC 57%，PE却到了50倍——好公司与好价格的距离有多远？"
 
-验证型:
-"3个月前我给$LRCX 23.5分看空，现在结果如何？——框架首次公开验证"
-"$ASML/$LRCX/$AMAT 三家设备商的周期信号全部亮红灯——这意味着什么"
+历史类比型:
+"$LRCX 上次半导体设备股到50倍PE是2021年Q4——之后发生了什么？"
+"$ASML/$LRCX/$AMAT 三家设备商PE同时超40倍——历史上这种情况出现过3次"
 
 教育型:
 "为什么周期投资者不看PE而看递延收入？——一个被忽视的领先指标"
-"好公司≠好投资：周期股估值陷阱的数学证明"
+"好公司≠好投资：当ROIC 57%遇上PE 50倍的数学分析"
 ```
 
 ### 3.6 小红书标题规则
@@ -347,11 +361,11 @@ $标的代码 + 核心观点 + 关键数据/理由
 ```
 核心: 20字限制=每个字都必须有信息量。前10字=60%算法权重。搜索占50%流量。
 
-最优格式: [结果/痛点] + [方法/工具] + [情绪词]
-例: "用AI避开30%暴跌! 小白也能学的周期判断法"
+最优格式: [数据/现象] + [悬念/提问] + [教育价值]
+例: "涨了305%的股票，估值已经是历史均值2倍"
 
 规则:
-- 字数: ≤20中文字(硬限制!), 最优15字
+- 字数: 15-20中文字(太短信息不足, 太长被截断)
 - 前10字: 必须含核心关键词(搜索权重)
 - 必须: 数字量化 + 情绪触发 + 搜索关键词
 - 语气: 通俗+有人味+场景化
@@ -360,26 +374,26 @@ $标的代码 + 核心观点 + 关键数据/理由
 - CES优化: 设计引发评论的悬念(评论4x权重)
 
 搜索关键词策略:
-- 信息型: "投资入门" "理财方法" "股票分析"
-- 工具型: "AI投资" "选股工具" "投资app"
-- 结果型: "避开亏损" "赚钱方法" "投资收益"
+- 教育型: "投资入门" "周期投资" "股票分析" "估值方法"
+- 工具型: "选股方法" "投资框架" "数据分析"
+- 现象型: "股票涨跌" "历史规律" "市场周期"
 ```
 
 **投资人群专属小红书标题模板:**
 ```
-结果型:
-"我用这个方法避开了30%暴跌!" (13字, 结果+方法+情绪)
-"涨305%的股票，我选择卖出" (12字, 数据+逆向+悬念)
-"这个免费方法帮我判断买卖时机" (13字, 免费+方法+痛点)
+数据冲突型:
+"涨了305%的股票，估值已经是历史均值2倍" (17字, 数据+反直觉)
+"25位分析师全看多，但这个指标亮了红灯" (17字, 对抗+好奇)
+"这只股票基本面第一名，但价格贵了一倍" (17字, 悖论+教育)
 
 教育型:
-"投资小白必看！5个周期信号判断法" (14字, 受众+数字+方法)
-"为什么越涨越危险？周期投资入门" (14字, 反直觉+教育+关键词)
-"1分钟看懂一只股票该不该买" (12字, 时间+痛点+动作)
+"投资小白必看！5个判断周期顶部的方法" (16字, 受众+数字+方法)
+"为什么越涨越要小心？周期投资入门科普" (17字, 反直觉+教育)
+"好公司不等于好价格，一张图看懂估值陷阱" (18字, 悖论+工具)
 
-对比型:
-"25个分析师看多，我看空，谁对？" (14字, 对抗+悬念)
-"华尔街说买入，数据说卖出" (11字, 极简对抗)
+提问型:
+"一只股票涨了3倍之后，还值得关注吗？" (16字, 提问+数据)
+"所有分析师都看好的时候，该怎么思考？" (17字, 提问+认知)
 ```
 
 ---
@@ -474,33 +488,33 @@ OUTPUT: 5平台×最优标题
 
 **INPUT**: "LRCX Q4营收$4.5B超预期, 但guidance低于预期$200M, 股价盘后-5%"
 
-**Step 1 核心洞察**: 我3个月前的23.5/100 SELL判断被验证——Beat but Guide Down正是Top Divergence模式
+**Step 1 核心洞察**: 3个月前框架评分23.5/100——Beat but Guide Down正是Top Divergence模式的典型表现
 
 **Step 2 Dan Koe模块**:
-- BIG Idea: "好季报=卖出信号"
+- BIG Idea: "好季报=周期见顶的典型模式"
 - Transformation: "23.5/100评分系统"
-- Timeframe: "3个月前预测"
-- Negative: "所有看多的人亏了5%"
+- Timeframe: "3个月前的框架评分"
+- Negative: "Beat后股价反跌5%"
 
 **Step 3 Schwartz强化**:
 - 量化: "23.5分" + "3个月前" + "-5%"
-- 对比: "25分析师 vs 我的框架"
-- 悖论: "最好的季报=最危险的信号"
+- 对比: "25分析师共识 vs 周期框架评分"
+- 悖论: "最好的季报=周期见顶的典型模式"
 
 **Step 4 三变体**:
-- 情绪型: "LRCX beat earnings and still dropped. I warned you 3 months ago."
-- 好奇型: "What if the best quarter IS the sell signal? Here's the math."
-- 身份型: "While 25 analysts celebrated the beat, cycle investors already knew."
+- 数据冲突型: "LRCX beat earnings and still dropped 5%. The cycle framework scored 23.5/100 three months ago."
+- 提问型: "What if the best quarter IS the peak signal? Here's what history shows."
+- 现象型: "25 analysts celebrated the beat. The stock dropped. A familiar pattern at cycle peaks."
 
 **Step 5 平台适配**:
 
 | 平台 | 标题 | 字数 | 评分 |
 |------|------|------|------|
-| X Hook | "LRCX beat earnings. Stock dropped 5%. I scored it 23.5/100 three months ago. Here's why the best quarter is often the last 🧵" | 125字符 | 8.7 |
-| YouTube | "I Called LRCX's Drop 3 Months Early — Why Good Earnings = Sell Signal" | 69字符 | 8.5 |
-| Reddit | "[DD] LRCX Beat & Guide Down — My 23.5/100 Sell Call Validated. Cycle Peak Confirmed?" | 86字符 | 8.3 |
-| 雪球 | "$LRCX 3个月前我给23.5分看空，今天Beat后跌5%验证——周期顶部信号详解" | 33中文字 | 8.6 |
-| 小红书 | "提前3月判断对了! 这个选股方法真管用" | 16中文字 | 7.8 |
+| X Hook | "LRCX beat earnings. Stock dropped 5%. Cycle framework had scored it 23.5/100 three months ago. Here's what 'beat and drop' means at cycle peaks 🧵" | 152字符 | 8.5 |
+| YouTube | "LRCX Beat Earnings and Still Dropped — What Happens at 50x PE Cycle Peaks" | 74字符 | 8.3 |
+| Reddit | "[DD] LRCX Beat & Guide Down — Framework Scored 23.5/100 Pre-Earnings. Cycle Peak Pattern?" | 91字符 | 8.2 |
+| 雪球 | "$LRCX Beat后反跌5%——3个月前周期框架评分23.5意味着什么？" | 30中文字 | 8.4 |
+| 小红书 | "季报超预期却跌了5%，这种现象说明了什么？" | 18中文字 | 7.9 |
 
 ---
 
@@ -509,63 +523,63 @@ OUTPUT: 5平台×最优标题
 ### 6.1 通用高效标题模板 (20个)
 
 ```
-对抗类:
-1. "[权威]说X。[数据]说Y。谁对了？"
-2. "X个[专家]在做A。他们都错了。原因在这里。"
-3. "[主流观点]正在害死你的投资。这才是真相。"
+数据冲突类:
+1. "[权威]说X。[数据]说Y。这个分歧意味着什么？"
+2. "X个[专家]在做A。但[数据]指向相反方向。"
+3. "[主流观点] vs [客观指标]——两者为什么出现背离？"
 
 数据类:
-4. "我分析了[数量]个[标的]，发现了1个所有人忽视的规律"
-5. "[X]%的投资者不知道这个[Y]年一遇的信号"
-6. "一个数字告诉你[标的]该买还是该卖: [具体数字]"
+4. "[数量]个[标的]的数据中，隐藏着1个被忽视的规律"
+5. "[X]%的情况下这个[Y]年一遇的信号出现后，发生了什么？"
+6. "[标的]的一个关键数字值得关注: [具体数字]——历史均值是[Y]"
 
-预测类:
-7. "[X]天前我预测了[Y]。今天验证了。这是我的下一个信号。"
-8. "如果[事件]发生，[标的]会怎样？3种情景分析。"
-9. "我给[标的]打了[X]分——历史上每次这个分数之后都[Y]"
+历史类比类:
+7. "[X]天前框架评分[Y]。今天数据出来了。历史是否重复？"
+8. "如果[事件]发生，历史上[标的]会怎样？3种情景分析。"
+9. "[标的]的框架评分[X]——历史上每次这个分数区间的后续走势"
 
 教育类:
-10. "[X]分钟理解[Y]——99%的投资者不知道的[Z]"
-11. "[X]条规则，让你永远不在周期顶部买入"
+10. "[X]分钟理解[Y]——大多数投资者忽视的[Z]"
+11. "识别周期顶部的[X]个量化指标——附历史数据"
 12. "从[数据]到[结论]——[X]的底层数学原理"
 
-损失/恐惧类:
-13. "如果你持有[标的]，你需要看这个。"
-14. "每次[指标]达到[X]，[Y]月内平均跌[Z]%"
-15. "不要犯我曾经犯过的[X]万美元的错误"
+现象/历史类:
+13. "每次[指标]达到[X]，后续[Y]月发生了什么？——历史统计"
+14. "历史上[标的]在这个估值水平出现过[X]次，之后的走势规律"
+15. "当内部人净卖出时，股价通常在[Y]月内怎样表现？"
 
-结果/时间机器类:
-16. "如果[X]年前你按这个策略做，现在会[+Y%]"
-17. "用这个方法，我在[X]个月内避开了[Y]%的暴跌"
-18. "[框架名]的第一次实战验证——完整复盘"
+回测/验证类:
+16. "如果[X]年前按这个框架操作，历史回测结果是什么？"
+17. "[框架名]评分 vs 后续[Y]月走势——[X]年数据回顾"
+18. "[框架名]的首次实战检验——完整数据复盘"
 
-身份类:
-19. "逆向投资者不会告诉你的[X]个秘密"
-20. "聪明的投资者已经在做[X]了。你呢？"
+提问类:
+19. "好公司在什么情况下会变成高风险持仓？"
+20. "共识最强烈的时候，历史数据告诉了什么？"
 ```
 
 ### 6.2 平台专属标题增强词
 
 | 平台 | 高效词 | 避免词 |
 |------|--------|--------|
-| X | "Here's why" "Thread🧵" "Data:" | "Click here" "Link in bio" |
-| YouTube | "How" "Why" "I tested" "Shocked" | 全大写 / 过度标点 |
-| Reddit | "[DD]" "Thesis:" "TL;DR" "Positions" | "Amazing!" "You won't believe" |
-| 雪球 | "$代码" "估值" "信号" "周期" | 营销语气 / "最好" "必涨" |
-| 小红书 | "!" "入门" "小白" "免费" "避坑" | 专业缩写 / 英文术语 |
+| X | "Here's why" "Thread🧵" "Data:" "What this means" | "Click here" "Link in bio" / "I" / "Buy/Sell" |
+| YouTube | "How" "Why" "What happens when" "vs" | 全大写 / 过度标点 / "I predict" |
+| Reddit | "[DD]" "Thesis:" "TL;DR" "Historical data" | "Amazing!" "You won't believe" / 荐股语气 |
+| 雪球 | "$代码" "估值" "周期" "历史上" "意味着" | "必涨" "必跌" "看多" "看空" "建议" |
+| 小红书 | "!" "入门" "小白" "科普" "一文看懂" | 专业缩写 / "买入" "卖出" / 英文术语 |
 
 ### 6.3 情绪×角度组合矩阵
 
 ```
-              对抗型        数据型        教育型        结果型
-敬畏(Awe)  │ "1人 vs     │ "100%准确率 │ "底层数学   │ "+305%验证 │
-           │  25分析师"   │  的秘密"    │  原理"      │  全过程"   │
-焦虑       │ "所有人在   │ "这个指标=  │ "不知道这个 │ "如果你没  │
-(Anxiety)  │  走进陷阱"  │  崩盘前兆"  │  你会亏钱"  │  卖, 看这" │
-兴奋       │ "框架又对了│ "发现一个   │ "学会这个=  │ "3个月赚   │
-(Excitement)│  !"        │  新信号"    │  超越99%"   │  X%秘诀"   │
-好奇       │ "为什么大家│ "一个被忽视 │ "真正影响   │ "如果当初  │
-(Curiosity)│  都错了?"   │  的数字"    │  的不是PE"  │  按这做..."│
+              数据冲突型       历史类比型       教育型          提问型
+敬畏(Awe)  │ "共识 vs       │ "20年数据     │ "底层数学     │ "为什么会   │
+           │  数据的背离"    │  揭示的规律"  │  原理"        │  出现背离?" │
+焦虑       │ "所有指标      │ "历史上这个   │ "这个信号     │ "当估值到   │
+(Anxiety)  │  绿灯≠安全?"  │  位置发生过3次"│  值得关注"    │  这里..."   │
+兴奋       │ "框架评分      │ "发现一个     │ "一文看懂     │ "这组数据   │
+(Excitement)│  再次验证"    │  新的规律"    │  周期逻辑"    │  说明什么?" │
+好奇       │ "共识为什么    │ "一个被忽视   │ "真正影响     │ "如果回到   │
+(Curiosity)│  与数据矛盾?"  │  的历史信号"  │  的不是PE"    │  均值..."   │
 ```
 
 ---
@@ -586,23 +600,23 @@ OUTPUT: 5平台×最优标题
 ### 7.2 投资人群的标题信任放大器
 
 ```
-✅ 具体数字+来源: "23.5/100 (my v5.0 framework)"
+✅ 具体数字+来源: "23.5/100 (v5.0 cycle framework)"
 ✅ 可验证声明: "publicly tracked" "open-source"
 ✅ 风险明示: "probability-weighted" "scenario analysis"
-✅ 透明度信号: "here's my methodology" "full data available"
+✅ 透明度信号: "methodology open-source" "full data available"
 ✅ 专业术语(适度): "ROIC" "EV/EBITDA" "FCF Margin"
-✅ 时间验证: "I called this 3 months ago" "since 2018"
-✅ 人格权威: "my framework" "I scored" "my analysis shows"
+✅ 时间锚定: "3 months ago" "since 2018" "20-year data"
+✅ 客观框架: "cycle framework" "quantitative scoring" "historical pattern"
 ```
 
 ### 7.3 投资人群的2阶选美标题设计
 
 ```
 转发者获得的身份标签:
-- "发现非共识alpha信号的人" → 用: 对抗型标题
-- "有估值纪律的理性投资者" → 用: 数据型标题
+- "关注非共识数据信号的人" → 用: 数据冲突型标题
+- "有估值纪律的理性投资者" → 用: 历史类比型标题
 - "掌握量化周期方法论的先驱" → 用: 教育型标题
-- "被验证正确的逆向投资者" → 用: 结果型标题
+- "独立思考不跟风的投资者" → 用: 提问型标题
 
 最高V₃标题特征:
 1. 分享者无需额外解释就能展示自己的品味
