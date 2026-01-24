@@ -2768,8 +2768,20 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'NTLA': 'Gene Editing',                    // Intellia Therapeutics - 体内基因编辑
     'RXRX': 'AI Drug Discovery',              // Recursion Pharmaceuticals - AI药物发现
 
-    // Clean Energy
+    // Clean Energy / Hydrogen / Alt Fuel
     'PLUG': 'Hydrogen Fuel Cell',              // Plug Power - 氢燃料电池
+    'BE': 'Fuel Cell Power',                   // Bloom Energy - 固体氧化物燃料电池
+    'CLNE': 'RNG/CNG Fueling',                // Clean Energy Fuels - 可再生天然气加注
+
+    // LNG Export
+    'NEXT': 'LNG Export',                      // NextDecade - LNG出口/液化
+
+    // Nuclear Energy (Advanced/SMR)
+    'NNE': 'Advanced Nuclear',                 // Nano Nuclear - 微型核反应堆
+    'OKLO': 'Advanced Nuclear',                // Oklo - 先进核能/快堆
+    'SMR': 'Advanced Nuclear',                 // NuScale Power - 小型模块化反应堆
+    'LEU': 'Uranium Enrichment',               // Centrus Energy - 铀浓缩/HALEU
+    'UUUU': 'Uranium Mining',                  // Energy Fuels - 铀矿/稀土
 
     // FinTech
     'UPST': 'AI Lending',                      // Upstart - AI借贷平台
@@ -3169,6 +3181,246 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'GT': 'Tire Manufacturing',                   // Goodyear - 轮胎制造/零售
     'HBM': 'Copper Mining',                       // Hudbay Minerals - 铜锌金矿
     'TWOU': 'EdTech Platform',                    // 2U Inc - 在线教育OPM
+
+    // New Batch: Real Estate/Space/IT/Biotech/Financial/eVTOL/Analytics
+    'Z': 'Real Estate Tech Platform',              // Zillow - 房地产科技平台
+    'COMP': 'Real Estate Brokerage Tech',          // Compass - 房地产经纪科技
+    'RDW': 'Space Infrastructure',                 // Redwire - 太空基础设施
+    'KD': 'IT Infrastructure Services',            // Kyndryl - IT基础设施服务
+    'YOU': 'Identity Verification Tech',           // Clear Secure - 身份验证科技
+    'ROIV': 'Biotech Platform',                    // Roivant Sciences - 生物科技平台
+    'VCEL': 'Regenerative Medicine',               // Vericel - 再生医学
+    'VERV': 'Gene Editing',                        // Verve Therapeutics - 基因编辑
+    'SNEX': 'Commodities Brokerage',               // StoneX Group - 大宗商品经纪
+    'BSIG': 'Asset Management',                    // BrightSphere - 资产管理
+    'ACHR': 'eVTOL',                               // Archer Aviation - eVTOL
+    'MTTR': '3D Spatial Data',                     // Matterport - 3D空间数据
+    'ENVX': 'Orthopedic Devices',                  // Enovis - 骨科器械
+    'AMPL': 'Digital Analytics Platform',          // Amplitude - 数字分析平台
+    'SEMR': 'Digital Marketing SaaS',              // SEMrush - 数字营销SaaS
+    'SRAD': 'Sports Data Analytics',               // Sportradar - 体育数据分析
+
+    // ---------- Financials (Batch) ----------
+    'BHF': 'Life Insurance & Annuities',            // Brighthouse Financial - 年金/寿险
+    'BHLB': 'Community Banking',                    // Berkshire Hills Bancorp - 社区银行
+    'BOH': 'Regional Banking',                      // Bank of Hawaii - 区域银行
+    'CASH': 'BaaS Banking',                         // Pathward Financial - BaaS银行
+    'CNO': 'Life & Health Insurance',               // CNO Financial - 寿险/健康险
+    'CRD.A': 'Claims Management',                   // Crawford & Company - 理赔管理
+    'EVER': 'Insurance Marketplace',                // EverQuote - 保险市场
+    'FBRT': 'Mortgage REIT',                        // Franklin BSP Realty Trust - 抵押REIT
+    'FG': 'Fixed Annuities',                        // F&G Annuities - 固定年金
+    'HOMB': 'Regional Banking',                     // Home BancFunds - 区域银行
+    'HTLF': 'Community Banking',                    // Heartland Financial - 社区银行
+    'SFBS': 'Commercial Banking',                   // ServisFirst Bancshares - 商业银行
+    'UCB': 'Community Banking',                     // United Community Banks - 社区银行
+    'WAFD': 'Regional Banking',                     // WaFd - 区域银行
+
+    // ---------- REITs (Batch) ----------
+    'AIV': 'Multifamily REIT',                      // Apartment Investment - 多户住宅
+    'BNL': 'Net Lease REIT',                        // Broadstone Net Lease - 净租赁
+    'CUZ': 'Office REIT',                           // Cousins Properties - 办公REIT
+    'ELME': 'Multifamily REIT',                     // Elme Communities - 多户住宅
+    'GTY': 'Net Lease REIT',                        // Getty Realty - 净租赁/便利店
+    'IRT': 'Multifamily REIT',                      // Independence Realty Trust - 多户住宅
+    'KRG': 'Retail REIT',                           // Kite Realty Group - 零售REIT
+    'LTC': 'Healthcare REIT',                       // LTC Properties - 高级住宅/护理
+    'PECO': 'Retail REIT',                          // Phillips Edison - 杂货锚定
+    'PINE': 'Net Lease REIT',                       // Alpine Income - 净租赁
+    'ROIC': 'Retail REIT',                          // Retail Opportunity - 杂货锚定零售
+    'SKT': 'Retail REIT',                           // Tanger Outlets - 奥特莱斯
+    'STOR': 'Net Lease REIT',                       // STORE Capital - 净租赁
+    'UNIT': 'Fiber REIT',                           // Uniti Group - 光纤REIT
+    'UE': 'Retail REIT',                            // Urban Edge Properties - 城市零售
+
+    // ---------- Energy (Batch) ----------
+    'ARIS': 'Water Solutions',                      // Aris Water Solutions - 油田水处理
+    'BORR': 'Offshore Drilling',                    // Borr Drilling - 自升式钻井
+    'CRC': 'Oil & Gas E&P',                         // California Resources - E&P
+    'DRQ': 'Subsea Equipment',                      // Dril-Quip - 海底设备
+    'GRNT': 'Mortgage REIT',                        // Granite Point Mortgage - 抵押REIT
+    'MUR': 'Oil & Gas E&P',                         // Murphy Oil - E&P
+    'PARR': 'Oil Refining',                         // Par Pacific - 炼油
+    'VNOM': 'Mineral Rights',                       // Viper Energy - 矿权/版税
+    'WTTR': 'Water Solutions',                      // Select Water Solutions - 油田水处理
+
+    // ========== Russell 2000 / S&P 600 Diversification Batch ==========
+    'ALIT': 'HR Tech SaaS',                          // Alight - HR/福利管理SaaS
+    'PRFT': 'Digital Consulting',                     // Perficient - 数字咨询/IT服务
+    'UPWK': 'Freelance Marketplace',                  // Upwork - 自由职业市场
+    'COUR': 'Online Education Platform',              // Coursera - 在线教育平台
+    'GENI': 'Sports Betting Data',                    // Genius Sports - 体育数据/博彩科技
+    'IONQ': 'Quantum Computing',                      // IonQ - 量子计算(离子阱)
+    'RGTI': 'Quantum Computing',                      // Rigetti - 量子计算(超导)
+    'QBTS': 'Quantum Computing',                      // D-Wave - 量子计算(量子退火)
+    'ALAB': 'Data Center Connectivity',               // Astera Labs - 数据中心连接芯片
+    'WULF': 'Crypto Mining',                          // TeraWulf - 比特币挖矿/数据中心
+    'CIFR': 'Crypto Mining',                          // Cipher Mining - 比特币挖矿
+    'HUT': 'Crypto Mining',                           // Hut 8 - 比特币挖矿/HPC
+    'BTDR': 'Crypto Mining/ASIC Design',              // Bitdeer - 比特币挖矿/ASIC设计
+
+    // ========== 补充: Healthcare Biotech (2026-01 batch) ==========
+    'DNLI': 'Neurodegeneration Therapy',               // Denali Therapeutics - 神经退行性疗法
+    'PRAX': 'Neuropsychiatry Therapy',                 // Praxis Precision Medicine - 神经精神疗法
+    'DAWN': 'Oncology Drug',                           // Day One Biopharmaceuticals - 儿童肿瘤药物
+    'VERA': 'Nephrology Therapy',                      // Vera Therapeutics - 肾脏病疗法
+    'JANX': 'Immuno-Oncology',                         // Janux Therapeutics - 免疫肿瘤(TCE)
+    'TGTX': 'Hematology Therapeutics',                 // TG Therapeutics - 血液/肿瘤
+    'DNAB': 'Vaccine Adjuvant',                        // Dynavax - 疫苗佐剂
+    'PRME': 'Gene Editing',                            // Prime Medicine - 先导编辑
+    'KROS': 'Hematology Therapeutics',                 // Keros Therapeutics - 血液/骨
+
+    // ========== Consumer / Retail / Services (New Batch) ==========
+    'BGFV': 'Sporting Goods Retail',                    // Big 5 Sporting Goods - 运动零售
+    'BNED': 'Educational Retail',                       // Barnes & Noble Education - 教育零售
+    'BOWL': 'Entertainment Venues',                     // Bowlero - 保龄球娱乐
+    'BWMX': 'Home Products Direct Sales',               // Betterware de Mexico - 家居直销
+    'COCO': 'Natural Beverages',                        // Vita Coco - 椰子饮品
+    'COOK': 'Outdoor Cooking',                          // Traeger - 户外烹饪/烤架
+    'CURV': 'Plus-Size Fashion Retail',                 // Torrid - 大码时尚
+    'DIN': 'Casual Dining Franchise',                   // Dine Brands - IHOP/Applebee's
+    'DLTH': 'Workwear Retail',                          // Duluth Trading - 工装零售
+    'DSGR': 'Industrial Distribution',                  // Distribution Solutions - 工业分销
+    'EXPR': 'Fashion Retail',                           // Express - 时尚零售
+    'FTDR': 'Home Warranty Services',                   // Frontdoor - 家庭保修
+    'GRWG': 'Hydroponics Retail',                       // GrowGeneration - 水培零售
+    'HRMY': 'Specialty Pharma',                         // Harmony Biosciences - 嗜睡症特药
+    'IBTA': 'Digital Rewards Platform',                 // Ibotta - 数字返利平台
+    'LMNR': 'Citrus Agriculture',                       // Limoneira - 柑橘/牛油果
+    'LQDT': 'Surplus Asset Marketplace',                // Liquidity Services - 剩余资产拍卖
+    'LVLU': 'Fashion E-commerce',                       // Lulu's Holdings - 时尚电商
+    'MGPI': 'Distilled Spirits',                        // MGP Ingredients - 威士忌/烈酒
+    'NAPA': 'Premium Wine',                             // Duckhorn Portfolio - 高端葡萄酒
+    'NGVT': 'Specialty Chemicals',                      // Ingevity - 特种化学品
+    'ODP': 'Office Products Retail',                    // Office Depot - 办公用品零售
+    'SGH': 'Specialty Computing Solutions',             // SMART Global - 特种计算
+    'TACO': 'Quick Service Restaurant',                 // Del Taco - 墨西哥快餐
+    'THO': 'Recreational Vehicles',                     // Thor Industries - 房车制造
+    'TUP': 'Home Storage Products',                     // Tupperware - 家居收纳
+    'TVTX': 'Rare Disease Therapeutics',                // Travere Therapeutics - 罕见病
+    'VLTO': 'Water Quality & Product ID',               // Veralto - 水质/产品质量
+    'WINA': 'Resale Franchise',                         // Winmark - 转售特许经营
+
+    // ========== Biotech/Pharma Emerging & Specialty (Batch 2) ==========
+    'ALKS': 'Specialty Pharma',                          // Alkermes - CNS/成瘾特药
+    'APLS': 'Emerging Biotech',                          // Apellis - 补体生物科技
+    'AGIO': 'Emerging Biotech',                          // Agios - 罕见病
+    'AKRO': 'Emerging Biotech',                          // Akero - NASH/代谢
+    'ARWR': 'Emerging Biotech',                          // Arrowhead - RNAi疗法
+    'AXSM': 'Specialty Pharma',                          // Axsome - CNS制药
+    'BHVN': 'Emerging Biotech',                          // Biohaven - 神经/疼痛
+    'CORT': 'Specialty Pharma',                          // Corcept - 内分泌特药
+    'ENTA': 'Emerging Biotech',                          // Enanta - 抗病毒
+    'FGEN': 'Emerging Biotech',                          // FibroGen - 贫血/纤维化
+    'GERN': 'Emerging Biotech',                          // Geron - 血液/端粒酶
+    'GLPG': 'Emerging Biotech',                          // Galapagos - 炎症
+    'GOSS': 'Emerging Biotech',                          // Gossamer Bio - 免疫
+    'HZNP': 'Specialty Pharma',                          // Horizon - 罕见病(Amgen收购)
+    'IDYA': 'Emerging Biotech',                          // IDEAYA - 精准肿瘤
+    'IMGO': 'Emerging Biotech',                          // Imago - 血液肿瘤
+    'ITCI': 'Specialty Pharma',                          // Intra-Cellular - CNS
+    'KALA': 'Emerging Biotech',                          // Kala Bio - 眼科
+    'LQDA': 'Specialty Pharma',                          // Liquidia - 肺动脉
+    'MGNX': 'Emerging Biotech',                          // MacroGenics - 抗体肿瘤
+    'MIRM': 'Specialty Pharma',                          // Mirum - 肝病特药
+    'MRVI': 'Life Sciences Tools',                       // Maravai - 核酸制造
+    'NKTX': 'Cell Therapy',                              // Nkarta - NK细胞治疗
+    'OLMA': 'Emerging Biotech',                          // Olema - 乳腺癌
+    'PTGX': 'Emerging Biotech',                          // Protagonist - 多肽疗法
+    'RCUS': 'Emerging Biotech',                          // Arcus - 免疫肿瘤
+    'RETA': 'Specialty Pharma',                          // Reata - NF2罕见病(Biogen收购)
+    'RLAY': 'Emerging Biotech',                          // Relay - 精准医学
+    'RXDX': 'Emerging Biotech',                          // Prometheus - GI自免
+    'SAVA': 'Emerging Biotech',                          // Cassava - 阿尔茨海默
+    'SLNO': 'Emerging Biotech',                          // Soleno - Prader-Willi
+    'SMMT': 'Emerging Biotech',                          // Summit - 肿瘤
+    'VCNX': 'Emerging Biotech',                          // Vaccinex - 神经
+    'VKTX': 'Emerging Biotech',                          // Viking - 代谢/NASH
+    'VRDN': 'Emerging Biotech',                          // Viridian - 甲状腺眼病
+    'XERS': 'Specialty Pharma',                          // Xeris - 内分泌
+    'YMAB': 'Emerging Biotech',                          // Y-mAbs - 儿童肿瘤
+    'ZNTL': 'Emerging Biotech',                          // Zentalis - 肿瘤
+
+    // ---------- Tech/Software/Internet Batch ----------
+    'AGYS': 'Hospitality Technology',                      // Agilysys - 酒店科技
+    'AVLR': 'Tax Compliance SaaS',                        // Avalara - 税务合规SaaS
+    'AYX': 'Data Analytics Platform',                     // Alteryx - 数据分析
+    'BASE': 'Database Software',                          // Couchbase - NoSQL数据库
+    'BLZE': 'Cloud Storage',                              // Backblaze - 云存储
+    'BSY': 'Infrastructure Engineering Software',         // Bentley Systems - 基础设施软件
+    'CDAY': 'HCM/Payroll SaaS',                           // Ceridian/Dayforce - HCM
+    'CLBT': 'Digital Intelligence',                       // Cellebrite - 数字情报
+    'DLO': 'Cross-Border Payments',                       // DLocal - 跨境支付
+    'DOMO': 'Business Intelligence SaaS',                 // Domo - BI/分析
+    'EVCM': 'SMB Vertical SaaS',                          // EverCommerce - SMB垂直SaaS
+    'EVBG': 'Mass Notification SaaS',                     // Everbridge - 大规模通知
+    'FIVN': 'Contact Center as a Service',                // Five9 - CCaaS
+    'FSLY': 'Edge Computing/CDN',                         // Fastly - 边缘计算/CDN
+    'GETY': 'Visual Content Platform',                    // Getty Images - 视觉内容
+    'HLIT': 'Video Infrastructure',                       // Harmonic - 视频基础设施
+    'INTA': 'Professional Services Tech',                 // Intapp - 专业服务科技
+    'KNBE': 'Security Awareness Training',                // KnowBe4 - 安全意识
+    'KORE': 'IoT Connectivity',                           // KORE Group - IoT连接
+    'LIDR': 'LiDAR Sensors',                              // AEye - 激光雷达
+    'MDAI': 'AI Medical Diagnostics',                     // Spectral AI - AI诊断
+    'NATI': 'Test & Measurement',                         // NI - 测试测量
+    'OOMA': 'Cloud Communications',                       // Ooma - 云通信
+    'OS': 'Corporate Performance Management',             // OneStream - 企业CPM
+    'PAX': 'Alternative Asset Management',                // Patria - 另类资产管理
+    'PERI': 'Digital Advertising Tech',                   // Perion - 广告科技
+    'QUBT': 'Quantum Computing Software',                 // Quantum Computing - 量子优化
+    'RCAT': 'Drone Technology',                           // Red Cat - 无人机科技
+    'RDVT': 'Data Analytics Platform',                    // Red Violet - 数据分析
+    'SCWX': 'Managed Security Services',                  // SecureWorks - 托管安全
+    'SMWB': 'Digital Intelligence Platform',              // Similarweb - 数字情报
+    'SPNS': 'Insurance Technology',                       // Sapiens - 保险科技
+    'VMEO': 'Video Platform SaaS',                        // Vimeo - 视频平台
+    'VYX': 'Retail/Restaurant POS',                       // NCR Voyix - 零售POS
+    'WEAV': 'Healthcare Communications',                  // Weave - 医疗通信
+    'WKME': 'Digital Adoption Platform',                  // WalkMe - 数字采纳
+    'ZUO': 'Subscription Management',                     // Zuora - 订阅管理
+
+    // ========== 工业/材料/运输批次 ==========
+    'AIMC': 'Motion Control',                             // Altra Industrial Motion - 运动控制
+    'ATLKY': 'Compressors & Vacuum',                      // Atlas Copco - 压缩机/真空
+    'BGSF': 'Workforce Solutions',                        // BG Staffing - 劳务解决方案
+    'BWMN': 'Engineering Consulting',                     // Bowman Consulting - 工程咨询
+    'CENTA': 'Garden & Pet Products',                     // Central Garden - 花园/宠物
+    'CMCO': 'Motion Control',                             // Columbus McKinnon - 运动控制
+    'CNDT': 'Business Process Services',                  // Conduent - 业务流程服务
+    'CPAC': 'Cement & Building Materials',                // Cementos Pacasmayo - 水泥
+    'DCI': 'Filtration Systems',                          // Donaldson - 过滤系统
+    'DNOW': 'Energy Distribution',                        // DistributionNOW - 能源分销
+    'DY': 'Utility & Telecom Contracting',                // Dycom - 公用事业/电信承包
+    'EAF': 'Graphite Electrodes',                         // GrafTech - 石墨电极
+    'ERII': 'Pressure Exchangers',                        // Energy Recovery - 压力交换器
+    'FLOW': 'Process Technology',                         // SPX FLOW - 工艺技术
+    'GBX': 'Railcar Manufacturing',                       // Greenbrier - 铁路车辆制造
+    'GEF': 'Industrial Packaging',                        // Greif - 工业包装
+    'GTES': 'Power Transmission',                         // Gates Industrial - 动力传输
+    'GVA': 'Heavy Construction',                          // Granite Construction - 重型建筑
+    'HI': 'Industrial Equipment',                         // Hillenbrand - 工业设备
+    'JBT': 'Food & Aerospace Technology',                 // John Bean Technologies - 食品/航空
+    'KAI': 'Process Equipment',                           // Kadant - 工艺设备
+    'KMT': 'Cutting Tools & Tooling',                     // Kennametal - 切削工具
+    'KNTK': 'Midstream Gas',                              // Kinetik - 中游天然气
+    'LXFR': 'Gas Cylinders & Specialty Materials',        // Luxfer - 气瓶
+    'MBC': 'Cabinetry',                                   // MasterBrand - 橱柜
+    'MHK': 'Flooring',                                    // Mohawk Industries - 地板
+    'MMS': 'Government Services',                         // Maximus - 政府服务
+    'MSA': 'Safety Equipment',                            // MSA Safety - 安全设备
+    'MTW': 'Cranes & Lifting',                            // Manitowoc - 起重机
+    'NPO': 'Engineered Seals & Components',               // EnPro - 工程密封件
+    'NX': 'Building Products',                            // Quanex - 建筑产品
+    'SEB': 'Agribusiness & Transport',                    // Seaboard - 农业/运输
+    'SSD': 'Structural Connectors',                       // Simpson Manufacturing - 结构连接件
+    'TKR': 'Bearings & Power Transmission',               // Timken - 轴承/动力传输
+    'TRNS': 'Calibration & Testing',                      // Transcat - 校准/测试
+    'UTL': 'Electric & Gas Utility',                      // UNITIL - 公用事业
+    'WDFC': 'Maintenance Products',                       // WD-40 - 维护产品
+    'WOR': 'Steel Processing',                            // Worthington - 钢材加工
+    'FWRG': 'Fast Casual Restaurant',                      // First Watch - 早午餐连锁
+    'NUVB': 'Oncology Biotech',                            // Nuvation Bio - 肿瘤生物科技
   },
 
   // ============================================================
@@ -5900,8 +6152,37 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     'AI Drug Discovery': [],           // 终端制药合作 (药企)
 
-    // 氢能产业链
-    'Hydrogen Fuel Cell': [],          // 终端工业/运输客户
+    // 氢能/清洁能源产业链
+    'Hydrogen Fuel Cell': [
+      'Fuel Cell Power',               // 同类燃料电池技术
+      'RNG/CNG Fueling',              // 替代燃料同行
+    ],
+
+    'Fuel Cell Power': [
+      'Hydrogen Fuel Cell',            // 同类燃料电池
+      'Regulated Utility',             // 电力客户
+      'Independent Power',             // 分布式发电
+    ],
+
+    'RNG/CNG Fueling': [
+      'Truckload',                     // 卡车车队客户
+      'LTL Trucking',                  // 零担车队客户
+      'Natural Gas E&P',               // 天然气上游供应
+    ],
+
+    // 先进核能产业链
+    'Advanced Nuclear': [
+      'Uranium Enrichment',            // 核燃料供应
+      'Uranium Mining',                // 铀矿上游
+      'Nuclear Power Generation',      // 传统核电同行
+      'Regulated Utility',             // 电力客户
+    ],
+
+    'Uranium Enrichment': [
+      'Advanced Nuclear',              // 先进核能客户
+      'Nuclear Power Generation',      // 传统核电客户
+      'Uranium Mining',                // 铀矿上游供应
+    ],
 
     // 金融科技产业链
     'AI Lending': [],                  // 终端银行/借贷机构
@@ -6102,6 +6383,9 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // 肿瘤药物产业链
     'Oncology Drug': ['Hospital', 'Oncology Center', 'Pharmaceutical'],
+
+    // 肿瘤生物科技产业链
+    'Oncology Biotech': ['Oncology Drug', 'Biotechnology', 'Clinical Trials', 'Pharmaceutical'],
 
     // 罕见病疗法产业链
     'Rare Disease Therapy': ['Hospital', 'Specialty Pharmacy', 'Pharmaceutical'],
@@ -6939,6 +7223,433 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Online Education',             // 在线教育
       'University Services',          // 大学服务
       'Professional Training',        // 职业培训
+    ],
+
+    // ========== 新增16只子行业链 ==========
+
+    // 房地产科技平台 → 房地产服务
+    'Real Estate Tech Platform': [
+      'Real Estate Services',         // 房地产服务
+      'Residential Construction',     // 住宅建设
+      'Regional Bank',                // 区域银行(抵押贷款)
+    ],
+
+    // 房地产经纪科技 → 房地产服务
+    'Real Estate Brokerage Tech': [
+      'Real Estate Services',         // 房地产服务
+      'Residential Construction',     // 住宅建设
+      'Real Estate Tech Platform',    // 房地产科技平台
+    ],
+
+    // 太空基础设施 → 太空系统
+    'Space Infrastructure': [
+      'Space Systems',                // 太空系统
+      'Satellite Communications',     // 卫星通信
+      'Aerospace Supplier',           // 航空航天供应商
+    ],
+
+    // IT基础设施服务 → 企业IT
+    'IT Infrastructure Services': [
+      'Enterprise SaaS',              // 企业SaaS
+      'Cloud Infrastructure',         // 云基础设施
+      'Data Center REIT',             // 数据中心REIT
+    ],
+
+    // 身份验证科技 → 安全/旅行
+    'Identity Verification Tech': [
+      'Cybersecurity',                // 网络安全
+      'Airlines',                     // 航空公司
+      'Entertainment',                // 娱乐(场馆入场)
+    ],
+
+    // 再生医学 → 骨科/外科
+    'Regenerative Medicine': [
+      'Orthopedic Devices',           // 骨科器械
+      'Surgical Services',            // 外科服务
+      'Biotechnology',                // 生物技术
+    ],
+
+    // 大宗商品经纪 → 交易/金融
+    'Commodities Brokerage': [
+      'E&P',                          // 勘探与开采
+      'Ag Commodities',               // 农业大宗商品
+      'Asset Management',             // 资产管理
+    ],
+
+    // 3D空间数据 → 房地产/建筑
+    '3D Spatial Data': [
+      'Real Estate Services',         // 房地产服务
+      'Construction Software',        // 建筑软件
+      'Enterprise SaaS',              // 企业SaaS
+    ],
+
+    // 骨科器械 → 外科/医疗
+    'Orthopedic Devices': [
+      'Medical Devices',              // 医疗器械
+      'Surgical Services',            // 外科服务
+      'Ambulatory Care',              // 门诊护理
+    ],
+
+    // 数字分析平台 → 企业软件
+    'Digital Analytics Platform': [
+      'Enterprise SaaS',              // 企业SaaS
+      'Digital Marketing SaaS',       // 数字营销SaaS
+      'Social Platform',              // 社交平台
+    ],
+
+    // 数字营销SaaS → 营销/广告
+    'Digital Marketing SaaS': [
+      'Enterprise SaaS',              // 企业SaaS
+      'Social Platform',              // 社交平台
+      'Digital Advertising',          // 数字广告
+    ],
+
+    // 体育数据分析 → 博彩/体育
+    'Sports Data Analytics': [
+      'Sports Betting',               // 体育博彩
+      'Entertainment',                // 娱乐
+      'Enterprise SaaS',              // 企业SaaS
+    ],
+
+    // ========== Russell 2000 / S&P 600 Diversification Batch - 新增子行业链 ==========
+
+    // HR科技SaaS → 企业客户
+    'HR Tech SaaS': [
+      'Enterprise SaaS',              // 企业SaaS集成
+      'HCM SaaS',                     // HCM协同(Workday等)
+      'Regional Bank',                // 薪资代发合作
+    ],
+
+    // 数字咨询 → IT/企业服务
+    'Digital Consulting': [
+      'Enterprise SaaS',              // SaaS实施服务
+      'Cloud Infrastructure',         // 云迁移客户
+      'Digital Engineering',          // 数字工程同行
+    ],
+
+    // 自由职业市场 → 企业/个人
+    'Freelance Marketplace': [
+      'Enterprise SaaS',              // 企业用工需求
+      'Digital Engineering',          // 技术外包竞争
+      'HR Tech SaaS',                 // HR科技协同
+    ],
+
+    // 在线教育平台 → 大学/企业
+    'Online Education Platform': [
+      'For-Profit Education',         // 教育同行
+      'Enterprise SaaS',              // 企业培训集成
+      'Education Services',           // 教育服务
+    ],
+
+    // 体育博彩数据 → 博彩/媒体
+    'Sports Betting Data': [
+      'Online Gaming',                // 在线博彩客户
+      'Sports Data Analytics',        // 体育分析同行
+      'Entertainment',                // 媒体/内容
+    ],
+
+    // 量子计算 → 企业/科研
+    'Quantum Computing': [
+      'Cloud Hyperscaler',            // 云量子服务
+      'Enterprise SaaS',              // 企业优化计算
+      'AI Services',                  // AI/ML加速
+    ],
+
+    // 数据中心连接芯片 → 服务器/网络
+    'Data Center Connectivity': [
+      'Server Hardware',              // 服务器互连
+      'Network Equipment',            // 网络设备客户
+      'Cloud Hyperscaler',            // 超大规模云客户
+    ],
+
+    // 加密挖矿/ASIC设计 → 半导体/数据中心
+    'Crypto Mining/ASIC Design': [
+      'Crypto Mining',                // 挖矿设备客户
+      'Data Center Infrastructure',   // 数据中心
+      'Semiconductor Foundry',        // 芯片代工
+    ],
+
+    // ========== 补充: Healthcare Biotech (2026-01 batch) ==========
+
+    // 神经退行性疗法 → 神经科/罕见病
+    'Neurodegeneration Therapy': [
+      'Neurology',                    // 神经科
+      'Rare Disease',                 // 罕见病
+      'Specialty Pharma',             // 特种药物
+    ],
+
+    // 神经精神疗法 → 精神科/神经科
+    'Neuropsychiatry Therapy': [
+      'Neurology',                    // 神经科
+      'Psychiatry',                   // 精神科
+      'Specialty Pharma',             // 特种药物
+    ],
+
+    // 肾脏病疗法 → 肾病科/免疫
+    'Nephrology Therapy': [
+      'Nephrology',                   // 肾病科
+      'Autoimmune Therapy',           // 自身免疫
+      'Specialty Pharma',             // 特种药物
+    ],
+
+    // 疫苗佐剂 → 疫苗/生物科技
+    'Vaccine Adjuvant': [
+      'Vaccines',                     // 疫苗制造
+      'Biotechnology',                // 生物科技
+      'Large Biotech',                // 大型生物科技(合作伙伴)
+    ],
+
+    // ========== Fix orphan sub-industries: Financials/REITs/Energy batch ==========
+
+    // 寿险/年金 → 财富管理
+    'Life Insurance & Annuities': [
+      'Wealth Management',            // 财富管理
+      'Retirement Services',          // 退休服务
+    ],
+
+    // 社区银行 → 本地金融
+    'Community Banking': [
+      'Mortgage Lending',             // 抵押贷款
+      'Small Business Lending',       // 小企业贷款
+    ],
+
+    // 区域银行 → 贷款/存款
+    'Regional Banking': [
+      'Mortgage Lending',             // 抵押贷款
+      'Commercial Lending',           // 商业贷款
+    ],
+
+    // BaaS银行 → 金融科技
+    'BaaS Banking': [
+      'FinTech SaaS',                 // 金融科技合作
+      'Digital Payments',             // 数字支付
+    ],
+
+    // 寿险/健康险 → 保险服务
+    'Life & Health Insurance': [
+      'Wealth Management',            // 财富管理
+      'Healthcare Services',          // 健康服务
+    ],
+
+    // 理赔管理 → 保险运营
+    'Claims Management': [
+      'Property Insurance',           // 财产保险
+      'Insurance Technology',         // 保险科技
+    ],
+
+    // 保险市场 → 保险分销
+    'Insurance Marketplace': [
+      'Property Insurance',           // 财产保险
+      'Auto Insurance',               // 汽车保险
+    ],
+
+    // 固定年金 → 退休储蓄
+    'Fixed Annuities': [
+      'Wealth Management',            // 财富管理
+      'Retirement Services',          // 退休服务
+    ],
+
+    // 商业银行 → 企业融资
+    'Commercial Banking': [
+      'Commercial Lending',           // 商业贷款
+      'Treasury Management',          // 资金管理
+    ],
+
+    // 多户住宅REIT → 住房
+    'Multifamily REIT': [
+      'Property Management',          // 物业管理
+      'Residential Construction',     // 住宅建设
+    ],
+
+    // 净租赁REIT (已有但补充链条)
+    // 'Net Lease REIT' - already exists at line ~3885
+
+    // 光纤REIT → 电信基础设施
+    'Fiber REIT': [
+      'Fiber Broadband',              // 光纤宽带
+      'Telecom Infrastructure',       // 电信基础设施
+    ],
+
+    // 油田水处理 → 油服
+    'Water Solutions': [
+      'Oilfield Services',            // 油田服务
+      'Shale E&P',                    // 页岩油E&P
+    ],
+
+    // 海上钻井 → E&P
+    'Offshore Drilling': [
+      'International E&P',            // 国际E&P
+      'Deepwater E&P',                // 深水E&P
+    ],
+
+    // 海底设备 → 海上开发
+    'Subsea Equipment': [
+      'Offshore Drilling',            // 海上钻井
+      'International E&P',            // 国际E&P
+    ],
+
+    // 油气勘探生产 → 中下游
+    'Oil & Gas E&P': [
+      'Midstream Pipeline',           // 中游管道
+      'Oil Refining',                 // 炼油
+    ],
+
+    // 炼油 → 化工/运输
+    'Oil Refining': [
+      'Commodity Chemicals',          // 大宗化学品
+      'Fuel Distribution',            // 燃油分销
+    ],
+
+    // 矿权/版税 → E&P
+    'Mineral Rights': [
+      'Shale E&P',                    // 页岩油E&P
+      'Oil & Gas E&P',                // 传统E&P
+    ],
+
+    // 抵押REIT → 房地产融资
+    'Mortgage REIT': [
+      'Mortgage Lending',             // 抵押贷款
+      'Commercial Real Estate',       // 商业地产
+    ],
+
+    // ========== Fix orphan sub-industries: Consumer/Retail/Services batch ==========
+
+    // 教育零售 → 学校/教育
+    'Educational Retail': [
+      'Education',                    // 教育
+      'Specialty Retail',             // 特种零售
+    ],
+
+    // 家居直销 → 消费品
+    'Home Products Direct Sales': [
+      'Consumer Products',            // 消费品
+      'Direct Selling',               // 直销渠道
+    ],
+
+    // 天然饮料 → 饮料/健康
+    'Natural Beverages': [
+      'Beverages',                    // 饮料行业
+      'Health & Wellness',            // 健康消费
+    ],
+
+    // 户外烹饪 → 户外/消费品
+    'Outdoor Cooking': [
+      'Consumer Products',            // 消费品
+      'Outdoor Recreation',           // 户外休闲
+    ],
+
+    // 大码时尚零售 → 服装
+    'Plus-Size Fashion Retail': [
+      'Fashion Brand',                // 时尚品牌
+      'E-commerce',                   // 电商渠道
+    ],
+
+    // 休闲餐饮特许 → 餐饮
+    'Casual Dining Franchise': [
+      'Restaurant Chain',             // 餐饮连锁
+      'Franchise',                    // 加盟模式
+    ],
+
+    // 工装零售 → 服装/劳保
+    'Workwear Retail': [
+      'Specialty Retail',             // 特种零售
+      'Consumer Products',            // 消费品
+    ],
+
+    // 时尚零售 → 服装/电商
+    'Fashion Retail': [
+      'Fashion Brand',                // 时尚品牌
+      'E-commerce',                   // 电商
+    ],
+
+    // 家庭保修服务 → 房产服务
+    'Home Warranty Services': [
+      'Home Services',                // 家庭服务
+      'Property Management',          // 物业管理
+    ],
+
+    // 水培零售 → 园艺/农业
+    'Hydroponics Retail': [
+      'Agriculture',                  // 农业
+      'Specialty Retail',             // 特种零售
+    ],
+
+    // 数字奖励平台 → 营销科技
+    'Digital Rewards Platform': [
+      'Digital Marketing SaaS',       // 数字营销
+      'Enterprise SaaS',              // 企业SaaS
+    ],
+
+    // 柑橘农业 → 农产品
+    'Citrus Agriculture': [
+      'Agriculture',                  // 农业
+      'Food Processing',              // 食品加工
+    ],
+
+    // 剩余资产市场 → 拍卖/B2B
+    'Surplus Asset Marketplace': [
+      'E-commerce',                   // 电商
+      'Industrial Services',          // 工业服务
+    ],
+
+    // 时尚电商 → 零售/电商
+    'Fashion E-commerce': [
+      'Fashion Brand',                // 时尚品牌
+      'E-commerce',                   // 电商
+    ],
+
+    // 蒸馏酒 → 酒类
+    'Distilled Spirits': [
+      'Beverages',                    // 饮料
+      'Specialty Retail',             // 特种零售
+    ],
+
+    // 高端葡萄酒 → 酒类
+    'Premium Wine': [
+      'Beverages',                    // 饮料
+      'Luxury Goods',                 // 奢侈品
+    ],
+
+    // 办公用品零售 → 办公/零售
+    'Office Products Retail': [
+      'Specialty Retail',             // 零售
+      'E-commerce',                   // 电商
+    ],
+
+    // 特种计算解决方案 → 半导体/IT
+    'Specialty Computing Solutions': [
+      'Server Hardware',              // 服务器
+      'Memory Chips',                 // 存储芯片
+    ],
+
+    // 房车 → 户外/消费品
+    'Recreational Vehicles': [
+      'Outdoor Recreation',           // 户外休闲
+      'Auto - Manufacturers',         // 汽车制造
+    ],
+
+    // 家庭收纳产品 → 消费品
+    'Home Storage Products': [
+      'Consumer Products',            // 消费品
+      'Specialty Retail',             // 零售
+    ],
+
+    // 罕见病疗法 → 特种药物
+    'Rare Disease Therapeutics': [
+      'Rare Disease',                 // 罕见病
+      'Specialty Pharma',             // 特种药物
+    ],
+
+    // 水质/产品ID → 工业检测
+    'Water Quality & Product ID': [
+      'Water Technology',             // 水技术
+      'Industrial Automation',        // 工业自动化
+    ],
+
+    // 转售特许经营 → 零售/循环经济
+    'Resale Franchise': [
+      'Specialty Retail',             // 特种零售
+      'Franchise',                    // 加盟模式
     ],
   },
 };
