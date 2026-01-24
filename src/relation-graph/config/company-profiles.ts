@@ -4196,7 +4196,7 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
   },
   // --- Value Apparel Retail (B2C) ---
   'CATO': {
-    demographics: { ageGroup: 'gen_x', incomeLevel: 'budget', gender: 'female' },
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'female' },
     occasions: ['everyday_wear', 'family_clothing', 'budget_shopping', 'seasonal'],
     valueProps: ['value', 'family_friendly', 'convenience', 'plus_size', 'small_town'],
     channels: ['retail'],
@@ -4220,7 +4220,7 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
 
   // --- Digital Lending (B2C) ---
   'LC': {
-    demographics: { ageGroup: 'millennial', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
     occasions: ['debt_consolidation', 'personal_loan', 'savings', 'auto_refinance'],
     valueProps: ['convenience', 'speed', 'competitive_rates', 'digital_first'],
     channels: ['online', 'mobile_app'],
@@ -4236,7 +4236,7 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
 
   // --- Healthcare Navigation (B2B2C) ---
   'ACCD': {
-    demographics: { ageGroup: 'working_age', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
     occasions: ['health_navigation', 'benefits_selection', 'care_coordination', 'wellness'],
     valueProps: ['personalized_guidance', 'cost_savings', 'advocacy', 'convenience'],
     channels: ['employer', 'mobile_app', 'phone'],
@@ -4244,7 +4244,7 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
 
   // --- Home Services InsurTech (B2B2C) ---
   'PRCH': {
-    demographics: { ageGroup: 'millennial', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
     occasions: ['home_purchase', 'moving', 'home_maintenance', 'insurance'],
     valueProps: ['convenience', 'bundled_services', 'digital_homebuying', 'protection'],
     channels: ['online', 'partner_channel', 'mobile_app'],
@@ -4260,7 +4260,7 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
 
   // --- Mid-Atlantic Regional Bank (B2B2C) ---
   'WSFS': {
-    demographics: { ageGroup: 'gen_x', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
     occasions: ['banking', 'trust_services', 'business_banking', 'mortgage'],
     valueProps: ['community_focus', 'trust_expertise', 'local_service', 'relationship'],
     channels: ['branch', 'online', 'mobile_app'],
@@ -6699,8 +6699,6 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'ACCD': 'early',              // Accolade - 医疗导航(早周期)
   // --- Computational Drug Discovery ---
   'SDGR': 'early',              // Schrodinger - 计算药物发现(早周期)
-  // --- Digital Lending ---
-  'LC': 'early',                // LendingClub - 数字贷款(早周期)
   // --- Wholesale Mortgage ---
   'UWMC': 'early',              // UWM Holdings - 批发按揭(早周期)
   // --- Restaurant Tech ---
@@ -6733,8 +6731,6 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'CRS': 'mid',                 // Carpenter Technology - 特种合金(中周期)
   // --- Metallurgical Coal ---
   'HCC': 'late',                // Warrior Met Coal - 焦煤(晚周期)
-  // --- Regional Banks ---
-  'CFR': 'early',               // Culberson-Frost - 德州银行(早周期)
   'TCBI': 'early',              // Texas Capital - 德州商业银行(早周期)
   'WSFS': 'early',              // WSFS Financial - 中大西洋银行(早周期)
 
@@ -6860,7 +6856,6 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'BWEN': 'early',                 // Broadwind - 风能组件(早周期)
   'CDMO': 'defensive',             // Avid Bioservices - 生物药CDMO(防御型)
   'CIR': 'mid',                    // CIRCOR - 流量控制(中周期)
-  'CRS': 'mid',                    // Carpenter Technology - 特种合金(中周期)
   'DRS': 'defensive',              // Leonardo DRS - 国防电子(防御型)
   'GNSS': 'defensive',             // Genasys - 声学/大规模通知(防御型)
   'GTLS': 'mid',                   // Chart Industries - 气体处理设备(中周期)
@@ -15014,6 +15009,288 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'ZYME': {
     interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
     consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 新增50只: Energy, Utilities, Mining, Materials (2026-01-24) ==========
+  // Amplify Energy - 成熟资产E&P
+  'AMPY': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.9,
+  },
+  // Berry Corp - 加州热采E&P
+  'BRY': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.9,
+  },
+  // Callon Petroleum - 二叠纪E&P
+  'CPE': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.9,
+  },
+  // CNX Resources - 阿巴拉契亚天然气
+  'CNX': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.7,
+  },
+  // Denbury - 二叠纪E&P
+  'DEN': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.9,
+  },
+  // Enerplus - 加拿大水驱E&P
+  'ERF': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.8,
+  },
+  // Kosmos Energy - 西非深水E&P
+  'KOS': {
+    interestRate: -0.4, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.9,
+  },
+  // National Fuel Gas - 综合天然气
+  'NFG': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.5,
+  },
+  // Oasis Petroleum - 巴肯E&P
+  'OAS': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.9,
+  },
+  // Equinor - 挪威综合石油
+  'EQNR': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  // YPF - 阿根廷综合石油
+  'YPF': {
+    interestRate: -0.3, inflation: 0.4, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.8,
+  },
+  // BKV Corp - 天然气E&P/碳捕获
+  'BKV': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.6,
+  },
+  // Texas Pacific Land - 权益金/水务
+  'TPL': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.7,
+  },
+  // Permian Basin Royalty Trust - 权益金信托
+  'PBT': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.9,
+  },
+  // Black Stone Minerals - 矿权MLP
+  'BSM': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  // Enbridge - 加拿大管道巨头
+  'ENB': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.4,
+  },
+  // TC Energy - 天然气管道
+  'TRP': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+  // Plains All American - 原油管道MLP
+  'PAA': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.6,
+  },
+  // Genesis Energy - 中游服务MLP
+  'GEL': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.5,
+  },
+  // Green Plains Partners - 天然气采集MLP
+  'GPP': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.5,
+  },
+  // Martin Midstream - 终端/仓储MLP
+  'MMLP': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.5,
+  },
+  // Natural Resource Partners - 矿权MLP
+  'NRP': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.4,
+  },
+  // Sunoco LP - 成品油分销MLP
+  'SUN': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.5,
+  },
+  // Tallgrass Energy Partners - 天然气采集
+  'TEP': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.5,
+  },
+  // Dorian LPG - LPG航运
+  'LPG': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.6,
+  },
+  // TGS - 阿根廷天然气管道
+  'TGS': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.4,
+  },
+  // Seadrill - 深水钻井
+  'SDRL': {
+    interestRate: -0.4, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.9,
+  },
+  // Oil States International - 油服设备
+  'OIS': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  // Precision Drilling - 加拿大钻井
+  'PDS': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  // Bristow Group - 海上直升机
+  'VTOL': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.7,
+  },
+  // Sabine Royalty Trust - 井下作业服务
+  'SBR': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  // MRC Global - PVF分销
+  'MRC': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.6,
+  },
+  // Civeo - 远程营地/劳务
+  'CVEO': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.7,
+  },
+  // Navios Maritime Partners - 干散货船
+  'NMM': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.3,
+  },
+  // Atlas Corp/Seaspan - 集装箱租赁
+  'ATCO': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  // Algonquin Power - 综合公用事业
+  'AQN': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // PNM Resources - 新墨西哥电力
+  'PNM': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Excelerate Energy - 巴西电力分销
+  'EE': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  // Companhia Energetica - 巴西电力
+  'CIG': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  // TELUS - 加拿大电信
+  'TU': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // UGI Corp - 天然气/丙烷公用
+  'UGI': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.3,
+  },
+  // Peabody Energy - 动力煤/焦煤
+  'BTU': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.5,
+  },
+  // CONSOL Energy - 阿巴拉契亚煤
+  'CEIX': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.4,
+  },
+  // Kinross Gold - 黄金矿商
+  'KGC': {
+    interestRate: -0.5, inflation: 0.6, gdpGrowth: -0.2, unemployment: 0.2,
+    consumerConfidence: -0.2, housingMarket: 0.0, dollarIndex: -0.7, oilPrice: 0.2,
+  },
+  // Magnesita/Mining - 铁矿石
+  'MGX': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.7, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  // Glencore - 多元矿业/贸易
+  'GLNCY': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.4, oilPrice: 0.4,
+  },
+  // Calumet Specialty - 再炼制
+  'CLMT': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.6,
+  },
+  // LSB Industries - 氮肥/化工
+  'LXU': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.5,
+  },
+  // Ameresco - 能效项目
+  'AMRC': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.2,
+  },
+  // Iris Energy - 比特币矿/数据中心
+  'IREN': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  // Clearwater Paper - 生物质/纸板
+  'CLW': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // OPAL Fuels - 炭黑/特种化学
+  'OPAL': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.3,
+  },
+  // Enel Chile - 智利电力
+  'ENIC': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  // MultiPlan - 产水管理
+  'MPLN': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.7,
+  },
+  // TransAlta - 工业维修服务
+  'TAC': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.6,
+  },
+  // GTN - 天然气州际管道
+  'GTN': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.3,
   },
 };
 
