@@ -5,10 +5,10 @@
 
 ## 当前状态
 
-- **当前阶段**: EVOLVED (v8.0-psychology)
+- **当前阶段**: EVOLVED (v8.2-implementation)
 - **总体目标**: 所有行业回测准确率 >= 99%，每个行业产出新经验 → 实盘验证 → 框架进化
-- **完成状态**: ALL 8 CYCLE INDUSTRIES 100% PASS + TECH FRAMEWORK 100% PASS (164/164) + REAL-DATA STRESS TEST COMPLETE + PSYCHOLOGY LAYER COMPLETE
-- **框架版本**: v8.1-AGI (AGI时代超级心理学: 量子认知 + 主动推理 + 合成调研 + 分布式RL + 多智能体涌现 + 递归ToM)
+- **完成状态**: ALL 8 CYCLE INDUSTRIES 100% PASS + TECH FRAMEWORK 100% PASS (164/164) + REAL-DATA STRESS TEST COMPLETE + PSYCHOLOGY LAYER IMPLEMENTED (6 agents + test suite + backtest)
+- **框架版本**: v8.2-implementation (心理学层TS实现: 情绪管道 + 评分集成 + 5视角验证 + 合成调研 + 内容引擎 + 心理学回测)
 
 ## v8.0 心理学层 (2026-01-24)
 
@@ -57,6 +57,101 @@ Layer 1: 量子认知 (信念叠加态+干涉效应)
 - 85%与真人反应一致率 (事后验证)
 - 4种调研场景 (内容测试/事件反应/信号接受/状态校准)
 - Crowd Psychology Temperature (CPT): 0-100实时群体心理指数
+
+## v8.2 心理学层TypeScript实现 (2026-01-24)
+
+**从YAML到可执行代码 — 完整心理学管道实现:**
+
+### 新增TypeScript Agent (6个)
+
+| 文件 | 行数 | 功能 |
+|------|------|------|
+| `src/agents/sentiment-fetcher.ts` | 376 | CPT指数计算 (VIX+动量+宽度+离散度 → 0-100温度) |
+| `src/agents/multi-perspective-validator.ts` | ~280 | 5视角验证 (多头/空头/局外人/量化/对抗性) |
+| `src/agents/synthetic-research.ts` | ~350 | 合成调研 (6种Persona × 心理参数模拟) |
+| `src/agents/content-generator.ts` | ~300 | 内容心理引擎 (损失框架/好奇缺口/具体数字/峰终) |
+| `src/tests/psychology-layer.test.ts` | ~260 | 35个单元测试 (7组) |
+| `src/tests/backtest-psychology.ts` | 233 | 心理学回测验证器 |
+
+### 修改文件
+
+| 文件 | 变更 |
+|------|------|
+| `src/agents/scorer.ts` | +`setMarketCPT()` + CPT优先级逻辑 + 个股修正 |
+| `src/agents/orchestrator.ts` | +Step 3.5(CPT) + Step 4.5(验证) + Step 5.6(合成调研) |
+| `src/index.ts` | +心理学agent/类型导出 |
+| `package.json` | +test/backtest脚本 |
+
+### Orchestrator管道流程 (更新后)
+
+```
+Step 1: SEC数据抓取
+Step 2: 证据抽取
+Step 3: 基础评分
+Step 3.5: CPT情绪获取 (FMP API → VIX/SPY/Breadth/Dispersion)  ← NEW
+Step 4: 心理学调整 (CPT信号 → 逆向加减分)
+Step 4.5: 5视角验证 (高调整股 → 多视角审查)  ← NEW
+Step 5: 排名输出
+Step 5.6: 合成调研 (Top变化股 → 6 Persona模拟)  ← NEW
+Step 6: 报告生成
+```
+
+### CPT计算公式
+
+```
+CPT = VIX_score × 0.35 + Momentum_score × 0.25 + Breadth_score × 0.20 + Dispersion_score × 0.20
+
+VIX映射: <15→85, 15-20→70, 20-25→50, 25-30→30, >30→15
+动量: SPY/200MA ratio → 0-100
+宽度: 涨跌比 → 0-100
+离散度: 行业ETF标准差 → 0-100 (反转)
+```
+
+### 逆向信号规则
+
+| CPT范围 | 信号 | 评分调整 | 动作 |
+|---------|------|---------|------|
+| 0-15 | extreme_fear | +15 | buy |
+| 15-30 | fear | +7 | watch |
+| 30-70 | neutral | 0 | hold |
+| 70-85 | greed | -7 | watch |
+| 85-100 | extreme_greed | -15 | sell |
+
+### 测试覆盖
+
+```
+35/35 tests pass (node:test + tsx)
+- CPT Scoring: 信号映射 + VIX/动量转换
+- Scorer Adjustment: 周期推断 + 逆向加减分 + 个股修正
+- Validator: 5视角共识 + 分歧检测
+- Synthetic Research: Persona模拟 + 平均计算
+- Content Generator: 4条内容原则
+- Historical Cases: 10案例匹配
+- Pipeline Integration: 端到端管道
+```
+
+### 回测结果
+
+```
+10/10 Directional match (100%)
+8/10 Exact action match (80%)
+9/9 Verified outcomes correct (100%)
+
+Extreme signals (CPT<15 or >85): 7/7 correct
+Mid signals (15<CPT<85): 2/2 correct (directional)
+```
+
+### 输出产物 (新增)
+
+- `data/semicap_mvp/YYYY-MM-DD/market-cpt.json` — CPT快照
+- `data/semicap_mvp/YYYY-MM-DD/validations.json` — 5视角验证结果
+- `data/semicap_mvp/YYYY-MM-DD/synthetic-research.json` — 合成调研结果
+
+### 优雅降级
+
+- FMP API不可用 → CPT fallback到PE/Growth启发式
+- 部分数据缺失 → `data_quality: 'partial'`，继续运行
+- 全部失败 → `data_quality: 'fallback'`，仅用基础评分
 
 ---
 

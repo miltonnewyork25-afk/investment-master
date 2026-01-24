@@ -19,6 +19,10 @@ export { secFetcher, SECFetcher } from './agents/sec-fetcher.js';
 export { evidenceExtractor, EvidenceExtractor } from './agents/evidence-extractor.js';
 export { scorer, Scorer } from './agents/scorer.js';
 export { dataAuditor, DataAuditor } from './agents/data-auditor.js';
+export { contentGenerator, ContentGenerator } from './agents/content-generator.js';
+export { validator, MultiPerspectiveValidator } from './agents/multi-perspective-validator.js';
+export { syntheticResearch, SyntheticResearch } from './agents/synthetic-research.js';
+export { sentimentFetcher, SentimentFetcher } from './agents/sentiment-fetcher.js';
 
 // 导出工具类
 export { cacheManager, CacheManager } from './utils/cache.js';
@@ -47,8 +51,16 @@ export type {
   FetchLog,
   AgentResult,
   ScoringConfig,
-  EvidenceGrade
+  EvidenceGrade,
+  CycleStage,
+  PsychologyAdjustment
 } from './types/index.js';
+
+// 导出心理学相关类型
+export type { CPTIndex, TickerSentiment } from './agents/sentiment-fetcher.js';
+export type { ValidationResult, PerspectiveResult } from './agents/multi-perspective-validator.js';
+export type { PersonaConfig, PersonaResponse, AggregatedResult } from './agents/synthetic-research.js';
+export type { ContentAtom, WeeklyContentPack } from './agents/content-generator.js';
 
 // CLI 入口
 async function main() {

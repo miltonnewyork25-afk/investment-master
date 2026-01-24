@@ -7,7 +7,7 @@
  * 输出: 验证分数 + 信心等级 + 分歧点
  */
 
-import type { WeeklyScore, CycleStage } from '../types/index.js';
+import type { WeeklyScore } from '../types/index.js';
 
 export interface PerspectiveResult {
   perspective: string;

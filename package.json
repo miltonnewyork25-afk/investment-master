@@ -10,7 +10,10 @@
     "dev": "tsx src/index.ts",
     "run": "tsx src/index.ts run",
     "audit": "tsx src/index.ts audit",
-    "info": "tsx src/index.ts info"
+    "info": "tsx src/index.ts info",
+    "test": "tsx --test src/tests/*.test.ts",
+    "test:psychology": "tsx --test src/tests/psychology-layer.test.ts",
+    "backtest:psychology": "tsx src/tests/backtest-psychology.ts"
   },
   "keywords": [
     "investment",
