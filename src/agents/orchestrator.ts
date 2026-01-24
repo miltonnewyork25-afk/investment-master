@@ -27,6 +27,8 @@ import { syntheticResearch } from './synthetic-research.js';
 import { sentimentFetcher } from './sentiment-fetcher.js';
 import { upstreamCompanies, downstreamCompanies, mockSupplyChainEdges } from '../data/mock-data.js';
 import { enrichWithCycleStage, getMacroBetas, getCrossChainEdges, getEnrichmentStats } from '../utils/relation-graph-bridge.js';
+import { cfaValuation } from './cfa-valuation.js';
+import { portfolioRisk } from './portfolio-risk.js';
 import { config, getScoringConfig } from '../config/index.js';
 import { cacheManager } from '../utils/cache.js';
 import { auditLogger } from '../utils/audit-logger.js';
@@ -141,6 +143,35 @@ class Orchestrator {
         `${lowConfidence.length}个低信心`
       );
 
+      // Step 4.7: CFA估值分析
+      auditLogger.log('orchestrator', 'info', 'Step 4.7: CFA估值分析');
+      const cfaResults = cfaValuation.valuateAll(allCompanies);
+      const portfolioValuation = cfaValuation.assessPortfolioValuation(cfaResults);
+      auditLogger.log('orchestrator', 'info',
+        `CFA: avg_composite=${portfolioValuation.avg_composite}, ` +
+        `MoS=${(portfolioValuation.avg_margin_of_safety * 100).toFixed(0)}%, ` +
+        `deep_value=${portfolioValuation.top_value_picks.length}只`
+      );
+      if (portfolioValuation.overvalued_warnings.length > 0) {
+        for (const w of portfolioValuation.overvalued_warnings) {
+          this.warnings.push(`CFA高估: ${w}`);
+        }
+      }
+
+      // Step 4.8: 组合风险评估
+      auditLogger.log('orchestrator', 'info', 'Step 4.8: 组合风险评估');
+      const allocation = portfolioRisk.calculateAllocation(scores, cfaResults);
+      if (allocation.risk_budget.risk_signals.length > 0) {
+        for (const sig of allocation.risk_budget.risk_signals) {
+          this.warnings.push(sig);
+        }
+      }
+      auditLogger.log('orchestrator', 'info',
+        `Risk: HHI=${allocation.risk_budget.concentration_hhi}, ` +
+        `VaR95=${(allocation.risk_budget.var_95 * 100).toFixed(2)}%, ` +
+        `${allocation.overall_assessment}`
+      );
+
       // Step 5: 生成周报
       auditLogger.log('orchestrator', 'info', 'Step 5: 生成周度报告');
       const report = this.generateReport(scores, edges);
@@ -174,6 +205,15 @@ class Orchestrator {
       if (syntheticResults.length > 0) {
         await outputManager.writeJSON(outputPath, 'synthetic-research.json', syntheticResults);
       }
+
+      // 保存CFA估值结果
+      await outputManager.writeJSON(outputPath, 'cfa-valuation.json', {
+        portfolio: portfolioValuation,
+        positions: cfaResults,
+      });
+
+      // 保存组合配置
+      await outputManager.writeJSON(outputPath, 'portfolio-allocation.json', allocation);
 
       // 保存CPT快照
       if (marketCPT) {

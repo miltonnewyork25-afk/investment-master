@@ -3916,19 +3916,14 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'ELS': 'Manufactured Housing REIT',                         // Equity LifeStyle - MH REIT
     'TPG': 'Alternative Asset Management',                      // TPG Inc - 另类资管
     'MBLY': 'ADAS Chips',                                       // Mobileye - ADAS芯片
-    'PEG': 'Electric & Gas Utility',                            // PSEG - 电力燃气
     'HIPPO': 'InsurTech',                                       // Hippo Holdings - 保险科技
     'KINS': 'Property Insurance',                               // Kingstone - 财产保险
     'GDYN': 'IT Consulting',                                    // Grid Dynamics - IT咨询
     'NUVEI': 'Payment Processing',                              // Nuvei - 支付处理
     'RACE': 'Luxury Automotive',                                // Ferrari - 豪华汽车
     'PII': 'Powersports',                                       // Polaris - 动力运动
-    'UDMY': 'Online Education',                                 // Udemy - 在线教育
-    'VRM': 'Online Auto Retail',                                // Vroom - 在线汽车
     'AHCO': 'Home Medical Equipment',                           // AdaptHealth - 家庭医疗
-    'MDC': 'Homebuilding',                                      // MDC Holdings - 住宅建筑
     'RBRK': 'Data Security',                                    // Rubrik - 数据安全
-    'CVCO': 'Manufactured Housing',                             // Cavco - 制造住宅
     'MCFT': 'Recreational Boats',                               // MasterCraft - 游艇
     'MBUU': 'Recreational Boats',                               // Malibu Boats - 游艇
     'SHLS': 'Solar BOS Components',                             // Shoals Technologies - 太阳能BOS
@@ -3942,11 +3937,6 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'SEM': 'Specialty Hospitals',                               // Select Medical - 专科医院
     'PATK': 'Building Products',                                // Patrick Industries - 建材
     'LL': 'Flooring Retail',                                    // LL Flooring - 地板零售
-    'PTRA': 'Electric Buses',                                   // Proterra - 电动公交
-    'HYLN': 'Electric Truck Systems',                           // Hyliion - 电动卡车
-    'ANGI': 'Home Services Marketplace',                        // Angi - 家庭服务
-    'GRPN': 'Local Commerce',                                   // Groupon - 本地商务
-    'MMYT': 'Online Travel Agency',                             // MakeMyTrip - OTA
     'EURN': 'Crude Oil Tankers',                                // Euronav - 原油油轮
     'NAT': 'Crude Oil Tankers',                                 // Nordic American - 油轮
     'TRMD': 'Product Tankers',                                  // TORM - 成品油轮
@@ -3962,6 +3952,92 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'SCHL': 'Publishing',                                       // Scholastic - 出版
     'HMH': 'Educational Content',                               // HMH - 教育内容
     'BKD': 'Senior Living',                                     // Brookdale - 养老社区
+    'NXE': 'Uranium Mining',                                    // NexGen Energy - 铀矿
+    'JKS': 'Solar Module Manufacturing',                        // JinkoSolar - 太阳能组件
+    'DQ': 'Polysilicon Manufacturing',                          // Daqo - 多晶硅
+    'CSIQ': 'Solar Module Manufacturing',                       // Canadian Solar - 太阳能
+    'BEPC': 'Renewable Power Generation',                       // Brookfield Renewable - 可再生能源
+    'CPLP': 'LNG Carrier Leasing',                              // Capital Product - LNG船
+    'CLDR': 'Enterprise Data Cloud',                            // Cloudera - 数据云
+    'KRTX': 'Neuroscience Biotech',                             // Karuna - 神经精神药
+    'PACW': 'Technology Banking',                               // PacWest - 科技银行
+    'BFLY': 'Point-of-Care Ultrasound',                         // Butterfly - 便携超声
+    'PRTS': 'Online Auto Parts',                                // CarParts.com - 在线汽配
+    'KGS': 'Natural Gas Utility',                               // Kodiak Gas - 天然气公用
+    'SAIL': 'Identity Security',                                // SailPoint - 身份安全
+    'MIME': 'Email Security',                                   // Mimecast - 邮件安全
+// ========== 70 NEW STOCKS ==========
+    'NTES': 'Online Gaming',                                    // NetEase - 网络游戏
+    'TME': 'Music Streaming',                                   // Tencent Music - 音乐流媒体
+    'VIPS': 'Discount E-Commerce',                              // Vipshop - 折扣电商
+    'ZTO': 'Express Delivery',                                  // ZTO Express - 快递物流
+    'BEKE': 'Real Estate Platform',                             // KE Holdings - 房产平台
+    'FUTU': 'Digital Brokerage',                                // Futu - 互联网券商
+    'DIDI': 'Ride-Hailing',                                     // DiDi - 出行平台
+    'LKNCY': 'Coffee Chain',                                    // Luckin Coffee - 咖啡连锁
+    'TIGR': 'Digital Brokerage',                                // UP Fintech - 互联网券商
+    'GAP': 'Apparel Retail',                                    // Gap Inc - 服装零售
+    'PKI': 'Life Science Instruments',                          // PerkinElmer - 生命科学
+    'MACOM': 'RF Semiconductors',                               // MACOM - RF芯片
+    'CHH': 'Hotel Franchise',                                   // Choice Hotels - 酒店特许
+    'RYAAY': 'Low-Cost Airline',                                // Ryanair - 廉价航空
+    'CPA': 'Regional Airline',                                  // Copa Holdings - 拉美航空
+    'AZUL': 'Regional Airline',                                 // Azul - 巴西航空
+    'AC': 'Full-Service Airline',                               // Air Canada - 加拿大航空
+    'BLDE': 'Air Mobility',                                     // Blade - 空中出行
+    'SPCE': 'Space Tourism',                                    // Virgin Galactic - 太空旅游
+    'MMYT': 'OTA',                                              // MakeMyTrip - 印度OTA
+    'PEG': 'Electric Utility',                                  // PSEG - 电力公用事业
+    'XP': 'Digital Brokerage',                                  // XP Inc - 巴西券商
+    'BAM': 'Alternative Asset Management',                      // Brookfield AM - 另类资管
+    'RE': 'Reinsurance',                                        // Everest Re - 再保险
+    'LPRO': 'Auto Lending Technology',                          // Open Lending - 汽车贷款
+    'ARCC': 'Business Development Company',                     // Ares Capital - BDC
+    'HTGC': 'Business Development Company',                     // Hercules Capital - BDC
+    'ORCC': 'Business Development Company',                     // Owl Rock Capital - BDC
+    'BXSL': 'Business Development Company',                     // Blackstone SL - BDC
+    'IEP': 'Diversified Conglomerate',                          // Icahn Enterprises - 综合集团
+    'FROG': 'DevOps Platform',                                  // JFrog - DevOps
+    'PEGA': 'BPM Software',                                    // Pegasystems - BPM
+    'GWRE': 'Insurance Technology',                             // Guidewire - 保险科技
+    'SSNC': 'Financial Software',                               // SS&C - 金融软件
+    'FVRR': 'Freelance Marketplace',                            // Fiverr - 自由职业
+    'DAVA': 'IT Services',                                      // Endava - IT服务
+    'VMW': 'Virtualization Software',                           // VMware - 虚拟化
+    'YEXT': 'Digital Presence Platform',                        // Yext - 数字存在
+    'GRPN': 'Local Commerce',                                   // Groupon - 本地团购
+    'ANGI': 'Home Services Marketplace',                        // Angi - 家居服务
+    'DOXI': 'Physician Network',                                // Doximity - 医生网络
+    'PLAN': 'Enterprise Planning',                              // Anaplan - 企业规划
+    'UDMY': 'Online Education',                                 // Udemy - 在线教育
+    'BYND': 'Plant-Based Meat',                                 // Beyond Meat - 植物肉
+    'LW': 'Frozen Potato Products',                             // Lamb Weston - 冷冻薯条
+    'HYLN': 'EV Powertrain',                                    // Hyliion - EV动力
+    'GOEV': 'Electric Vehicle',                                 // Canoo - 电动车
+    'PTRA': 'Electric Bus',                                     // Proterra - 电动巴士
+    'TELL': 'LNG Development',                                  // Tellurian - LNG开发
+    'CHK': 'Natural Gas E&P',                                   // Chesapeake - 天然气
+    'VRM': 'Online Auto Retail',                                // Vroom - 线上二手车
+    'WESCO': 'Electrical Distribution',                         // WESCO - 电气分销
+    'MDC': 'Homebuilding',                                      // MDC Holdings - 住宅建设
+    'DFH': 'Homebuilding',                                      // Dream Finders - 住宅建设
+    'CVCO': 'Manufactured Housing',                             // Cavco - 预制房屋
+    'LEGH': 'Manufactured Housing',                             // Legacy Housing - 预制房屋
+    'RMAX': 'Real Estate Franchise',                            // RE/MAX - 房产经纪
+    'RGLD': 'Precious Metals Royalty',                          // Royal Gold - 贵金属版税
+    'IAG': 'Gold Mining',                                       // IAMGOLD - 黄金矿业
+    'AGI': 'Gold Mining',                                       // Alamos Gold - 黄金矿业
+    'INFN': 'Optical Networking',                               // Infinera - 光网络
+    'COMM': 'Network Infrastructure',                           // CommScope - 网络基建
+    'AAOI': 'Optical Components',                               // Applied Optoelectronics - 光器件
+    'GILT': 'Satellite Networking',                             // Gilat Satellite - 卫星网络
+    'BITF': 'Bitcoin Mining',                                   // Bitfarms - 比特币挖矿
+    'BYD': 'Casino & Gaming',                                   // Boyd Gaming - 赌场博彩
+    'LAZR': 'Lidar Sensors',                                    // Luminar - 激光雷达
+    'OUST': 'Lidar Sensors',                                    // Ouster - 激光雷达
+    'LILM': 'eVTOL Aircraft',                                   // Lilium - 电动飞行器
+    'SWI': 'IT Management Software',                            // SolarWinds - IT管理
+    'CRTO': 'Performance Advertising',                          // Criteo - 效果广告
   },
 
   // ============================================================

@@ -23,6 +23,8 @@ export { contentGenerator, ContentGenerator } from './agents/content-generator.j
 export { validator, MultiPerspectiveValidator } from './agents/multi-perspective-validator.js';
 export { syntheticResearch, SyntheticResearch } from './agents/synthetic-research.js';
 export { sentimentFetcher, SentimentFetcher } from './agents/sentiment-fetcher.js';
+export { cfaValuation, CFAValuation } from './agents/cfa-valuation.js';
+export { portfolioRisk, PortfolioRisk } from './agents/portfolio-risk.js';
 
 // 导出工具类
 export { cacheManager, CacheManager } from './utils/cache.js';
@@ -68,6 +70,8 @@ export type { CPTIndex, TickerSentiment } from './agents/sentiment-fetcher.js';
 export type { ValidationResult, PerspectiveResult } from './agents/multi-perspective-validator.js';
 export type { PersonaConfig, PersonaResponse, AggregatedResult } from './agents/synthetic-research.js';
 export type { ContentAtom, WeeklyContentPack } from './agents/content-generator.js';
+export type { ValuationResult, FactorExposure } from './agents/cfa-valuation.js';
+export type { PositionSize, RiskBudget, PortfolioAllocation, PortfolioMetrics } from './agents/portfolio-risk.js';
 
 // CLI 入口
 async function main() {
@@ -312,6 +316,103 @@ async function main() {
       break;
     }
 
+    case 'valuation': {
+      console.log('执行CFA估值分析...');
+      const { cfaValuation: cliCFA } = await import('./agents/cfa-valuation.js');
+      const { scorer: valScorer } = await import('./agents/scorer.js');
+      const { allCompanies: valCompanies, mockSupplyChainEdges: valEdges } = await import('./data/mock-data.js');
+
+      const valTickers = args.slice(1).filter(a => !a.startsWith('--'));
+      const targets = valTickers.length > 0
+        ? valCompanies.filter(c => valTickers.includes(c.ticker))
+        : valCompanies.slice(0, 10);
+
+      const results = cliCFA.valuateAll(targets);
+      const portfolio = cliCFA.assessPortfolioValuation(results);
+
+      console.log(`\n=== CFA Valuation Dashboard ===`);
+      console.log(`  Stocks analyzed: ${results.length}`);
+      console.log(`  Avg Composite: ${portfolio.avg_composite}/100`);
+      console.log(`  Avg MoS: ${(portfolio.avg_margin_of_safety * 100).toFixed(0)}%`);
+      console.log('');
+
+      console.log('  Zone Distribution:');
+      for (const [zone, count] of Object.entries(portfolio.zone_distribution)) {
+        console.log(`    ${zone}: ${count}`);
+      }
+      console.log('');
+
+      console.log('  Factor Tilt:');
+      const ft = portfolio.factor_tilt;
+      console.log(`    Size: ${ft.size.toFixed(2)} | Value: ${ft.value.toFixed(2)} | Profit: ${ft.profitability.toFixed(2)} | Invest: ${ft.investment.toFixed(2)} | Mom: ${ft.momentum.toFixed(2)}`);
+      console.log('');
+
+      console.log('  Per-Stock Results:');
+      const sorted = [...results].sort((a, b) => b.composite_score - a.composite_score);
+      for (const r of sorted) {
+        const mos = (r.margin_of_safety * 100).toFixed(0);
+        console.log(`    ${r.ticker.padEnd(6)} ${r.valuation_zone.padEnd(20)} Comp=${r.composite_score} Rel=${r.relative_score} Qual=${r.quality_score} IV=${r.intrinsic_value_score} MoS=${mos}%`);
+        for (const sig of r.signals.slice(0, 2)) {
+          console.log(`      ${sig}`);
+        }
+      }
+      break;
+    }
+
+    case 'risk': {
+      console.log('执行组合风险评估...');
+      const { portfolioRisk: cliRisk } = await import('./agents/portfolio-risk.js');
+      const { cfaValuation: riskCFA } = await import('./agents/cfa-valuation.js');
+      const { scorer: riskScorer } = await import('./agents/scorer.js');
+      const { allCompanies: riskCompanies, mockSupplyChainEdges: riskEdges } = await import('./data/mock-data.js');
+
+      const riskTickers = args.slice(1).filter(a => !a.startsWith('--'));
+      const riskTargets = riskTickers.length > 0
+        ? riskCompanies.filter(c => riskTickers.includes(c.ticker))
+        : riskCompanies;
+
+      const scores = riskScorer.scoreAndRank(riskTargets, riskEdges, true);
+      const valuations = riskCFA.valuateAll(riskTargets);
+      const allocation = cliRisk.calculateAllocation(scores, valuations);
+
+      console.log(`\n=== Portfolio Risk Dashboard ===`);
+      console.log(`  ${allocation.overall_assessment}`);
+      console.log('');
+
+      console.log('  Risk Budget:');
+      console.log(`    Risk Used: ${(allocation.risk_budget.total_risk_used * 100).toFixed(0)}%`);
+      console.log(`    HHI: ${allocation.risk_budget.concentration_hhi}`);
+      console.log(`    VaR(95%): ${(allocation.risk_budget.var_95 * 100).toFixed(2)}% daily`);
+      console.log(`    Max DD Est: ${(allocation.risk_budget.max_drawdown_estimate * 100).toFixed(1)}%`);
+      console.log('');
+
+      if (Object.keys(allocation.risk_budget.sector_weights).length > 0) {
+        console.log('  Sector Weights:');
+        for (const [sector, weight] of Object.entries(allocation.risk_budget.sector_weights).sort((a, b) => b[1] - a[1])) {
+          const bar = '█'.repeat(Math.round(weight * 50));
+          console.log(`    ${sector.padEnd(22)} ${(weight * 100).toFixed(1)}% ${bar}`);
+        }
+        console.log('');
+      }
+
+      console.log('  Position Sizing (Top 10):');
+      const topPositions = allocation.positions
+        .sort((a, b) => b.recommended_weight - a.recommended_weight)
+        .slice(0, 10);
+      for (const p of topPositions) {
+        console.log(`    ${p.ticker.padEnd(6)} ${(p.recommended_weight * 100).toFixed(1)}% [${p.conviction_level}] Kelly=${(p.kelly_half * 100).toFixed(1)}%`);
+      }
+      console.log('');
+
+      if (allocation.risk_budget.risk_signals.length > 0) {
+        console.log('  Risk Signals:');
+        for (const sig of allocation.risk_budget.risk_signals) {
+          console.log(`    ⚠ ${sig}`);
+        }
+      }
+      break;
+    }
+
     default:
       console.log('用法: npx tsx src/index.ts <command>');
       console.log('');
@@ -325,6 +426,10 @@ async function main() {
       console.log('  content [T..]  生成内容原子 (可指定ticker)');
       console.log('  validate [T..] 多视角验证 (可指定ticker)');
       console.log('  research [文本] 合成研究模拟 (指定事件描述)');
+      console.log('');
+      console.log('CFA估值模块:');
+      console.log('  valuation [T..]  CFA L2 估值分析 (DCF+相对+质量)');
+      console.log('  risk [T..]       CFA L3 组合风险 (Kelly+VaR+行业)');
       console.log('');
       console.log('选项:');
       console.log('  --skip-audit       跳过数据审计');
