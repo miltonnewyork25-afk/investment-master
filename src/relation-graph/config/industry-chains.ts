@@ -3351,6 +3351,105 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Large MedTech',           // 医疗设备研发
     ],
 
+    // ========== 补充链 - 新增子行业连接 ==========
+
+    'Auto Auction': [
+      'Auto Dealer',             // 二手车供应
+      'Auto Finance',            // 贷款回收车辆
+    ],
+
+    'Pharma Packaging': [
+      'Big Pharma',              // 药品包装需求
+      'Large Biotech',           // 生物药包装
+      'Generic Pharma',          // 仿制药包装
+    ],
+
+    'Medical Sterilization': [
+      'Hospital',                // 医院灭菌服务
+      'Large MedTech',           // 设备灭菌
+    ],
+
+    'Power Equipment': [
+      'Homebuilder',             // 住宅备用电源
+      'Data Center REIT',        // 备用发电
+      'Regulated Utility',       // 电力设备
+    ],
+
+    'Welding Equipment': [
+      'E&C Contractor',          // 建设焊接
+      'Shipbuilder',             // 造船焊接
+      'Midstream Pipeline',      // 管道焊接
+    ],
+
+    'Outdoor Equipment': [
+      'Homebuilder',             // 园林设备
+      'Ag & Construction Equipment',  // 场地维护
+    ],
+
+    'Geospatial Tech': [
+      'E&C Contractor',          // 测量/BIM
+      'Ag & Construction Equipment',  // 精准农业
+    ],
+
+    'Test & Measurement': [
+      'Semiconductor Equipment', // 芯片测试
+      'Network Equipment',       // 通信测试
+      'Large MedTech',           // 医疗设备测试
+    ],
+
+    'Enterprise Mobility': [
+      'Express Logistics',       // 仓库扫描
+      'Mass Retail',             // 零售移动终端
+      'Hospital',                // 医疗追踪
+    ],
+
+    'Financial Infrastructure': [
+      'Exchange',                // 交易后处理
+      'Brokerage',               // 经纪后台
+      'Asset Manager',           // 基金管理
+    ],
+
+    'Market Making': [
+      'Exchange',                // 交易所流动性
+      'Brokerage',               // 做市服务
+    ],
+
+    'Commercial Real Estate Data': [
+      'Commercial REIT',         // 数据服务
+      'Industrial REIT',         // 物业数据
+    ],
+
+    'Process Industry Software': [
+      'Commodity Chemicals',     // 化工优化
+      'Midstream Pipeline',      // 管道优化
+      'Shale E&P',               // 油气优化
+    ],
+
+    'Defense IT': [
+      'Defense Prime',           // 国防IT系统
+      'Cybersecurity',           // 安全服务
+    ],
+
+    'Law Enforcement Tech': [
+      'Enterprise SaaS',         // 执法SaaS平台
+    ],
+
+    'Specialty Metals': [
+      'Aircraft Engine',         // 航空合金
+      'Aerospace Supplier',      // 航天材料
+      'Large MedTech',           // 植入物合金
+    ],
+
+    'Remittance': [
+      'Digital Payments',        // 数字支付竞争
+      'Regional Bank',           // 银行汇款通道
+    ],
+
+    'Diversified Insurance': [
+      'Regional Bank',           // 银保合作
+      'Insurance Broker',        // 经纪分销
+    ],
+
   },
 };
 
