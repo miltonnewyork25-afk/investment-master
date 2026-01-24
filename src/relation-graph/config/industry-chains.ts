@@ -2644,6 +2644,49 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'CIVI': 'Shale E&P',                     // Civitas Resources - 页岩油气
     'HLX': 'Subsea Services',                // Helix Energy Solutions - 海底服务
     'ARCH': 'Metallurgical Coal',            // Arch Resources - 焦煤
+
+    // ========== S&P 600 Small-Cap Additions ==========
+
+    // Consumer/Retail
+    'SCVL': 'Footwear Retail',               // Shoe Carnival - 鞋类零售
+    'LESL': 'Pool Supplies Retail',          // Leslie's - 泳池用品零售
+    'PLNT': 'Fitness Franchise',             // Planet Fitness - 健身加盟
+    'XPOF': 'Boutique Fitness',              // Xponential Fitness - 精品健身
+    'EYE': 'Eyewear Retail',                 // National Vision - 眼镜零售
+
+    // Biotech
+    'MDGL': 'NASH Therapy',                  // Madrigal Pharmaceuticals - NASH药物
+    'KRYS': 'Gene Therapy',                  // Krystal Biotech - 基因治疗
+
+    // Industrial Equipment
+    'POWL': 'Power Distribution Equipment',  // Powell Industries - 配电设备
+    'MIDD': 'Commercial Kitchen Equipment',  // Middleby Corp - 商用厨房设备
+    'EPAC': 'Hydraulic Tools',               // Enerpac Tool - 液压工具
+
+    // Specialty Finance
+    'TREE': 'Online Lending Marketplace',    // LendingTree - 在线贷款市场
+    'WRLD': 'Subprime Consumer Finance',     // World Acceptance - 次贷消费金融
+    'EZPW': 'Pawn/Consumer Finance',         // EZCorp - 典当/消费金融
+
+    // Regional Banks
+    'FCNCA': 'Regional Bank',                // First Citizens BancShares - 区域银行
+    'IBOC': 'Regional Bank',                 // International Bancshares - 区域银行
+    'CADE': 'Regional Bank',                 // Cadence Bank - 区域银行
+
+    // Transportation
+    'ARCB': 'LTL Trucking',                  // ArcBest Corp - LTL货运
+    'MRTN': 'Temperature-Controlled Trucking', // Marten Transport - 冷链货运
+    'FWRD': 'Expedited Freight',             // Forward Air - 加急货运
+
+    // REITs
+    'TRNO': 'Industrial REIT',               // Terreno Realty - 工业REIT
+
+    // Specialty Chemicals
+    'HWKN': 'Specialty Chemical Distribution', // Hawkins Inc - 特种化学品分销
+    'KWR': 'Industrial Fluids',              // Quaker Houghton - 工业流体
+    'IOSP': 'Specialty Chemicals',           // Innospec - 特种化学品
+    'CBT': 'Carbon Black',                   // Cabot Corp - 炭黑
+    'BCPC': 'Specialty Ingredients',         // Balchem Corp - 特种配料
   },
 
   // ============================================================
@@ -5124,6 +5167,135 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'International E&P',            // 国际深水项目
       'Integrated Oil',               // 综合油企
       'Offshore Driller',             // 海上钻井
+    ],
+
+    // ========== S&P 600 Small-Cap Sub-Industry Chains ==========
+
+    // 鞋类零售 → 消费者/品牌
+    'Footwear Retail': [
+      'Footwear',                     // 鞋类品牌供应
+      'Mass Retail',                  // 零售竞争
+      'Athletic Apparel',             // 运动鞋关联
+    ],
+
+    // 次贷消费金融 → 金融服务
+    'Subprime Consumer Finance': [
+      'Consumer Finance',             // 消费金融同行
+      'Regional Bank',                // 银行竞争
+    ],
+
+    // 泳池用品零售 → 消费者(泳池屋主)
+    'Pool Supplies Retail': [
+      'Homebuilder',                  // 新建泳池需求
+      'Building Products',            // 建筑/泳池用品
+    ],
+
+    // 健身加盟 → 消费者/房产
+    'Fitness Franchise': [
+      'Retail REIT',                  // 商业物业租户
+      'Athleisure',                   // 运动休闲关联
+    ],
+
+    // 精品健身 → 消费者/房产
+    'Boutique Fitness': [
+      'Retail REIT',                  // 商业物业租户
+      'Athleisure',                   // 运动休闲关联
+    ],
+
+    // 眼镜零售 → 医疗/消费
+    'Eyewear Retail': [
+      'Medical Devices',              // 镜片/隐形眼镜供应
+      'Mass Retail',                  // 零售竞争
+    ],
+
+    // NASH药物 → 制药/肝脏疾病
+    'NASH Therapy': [
+      'Big Pharma',                   // 药企合作/竞争
+      'Pharma Distributor',           // 分销渠道
+      'Specialty Pharma',             // 特药竞争
+    ],
+
+    // 基因治疗 → 生物科技
+    'Gene Therapy': [
+      'Big Pharma',                   // 授权合作
+      'Emerging Biotech',             // 生物技术同行
+      'Life Sciences Tools',          // 研发工具
+    ],
+
+    // 配电设备 → 电力/工业
+    'Power Distribution Equipment': [
+      'Electrical Equipment',         // 电气设备同行
+      'E&C Contractor',               // 工程承包客户
+      'Industrial REIT',              // 工业设施用电
+    ],
+
+    // 商用厨房设备 → 餐饮/食品
+    'Commercial Kitchen Equipment': [
+      'Casual Dining',                // 餐饮客户
+      'Quick Service Restaurant',     // 快餐客户
+      'Food Distribution',            // 食品加工客户
+    ],
+
+    // 液压工具 → 工业/建筑
+    'Hydraulic Tools': [
+      'Construction Equipment',       // 建筑设备
+      'E&C Contractor',               // 工程承包
+      'Integrated Steel',             // 重工业客户
+    ],
+
+    // 在线贷款市场 → 金融/消费
+    'Online Lending Marketplace': [
+      'Regional Bank',                // 银行放贷方
+      'Mortgage REIT',                // 抵押贷款
+      'Consumer Finance',             // 消费金融
+    ],
+
+    // 典当/消费金融 → 金融/零售
+    'Pawn/Consumer Finance': [
+      'Consumer Finance',             // 消费金融同行
+      'Discount Retail',              // 二手商品零售
+    ],
+
+    // 冷链货运 → 食品/物流
+    'Temperature-Controlled Trucking': [
+      'Food Distribution',            // 食品分销客户
+      'Packaged Foods',               // 食品生产客户
+      'Grocery Retail',               // 杂货零售
+    ],
+
+    // 加急货运 → 物流/零售
+    'Expedited Freight': [
+      'LTL Trucking',                 // LTL货运同行
+      'Express Logistics',            // 快递物流
+      'Internet Retail',              // 电商客户
+    ],
+
+    // 特种化学品分销 → 化工/工业
+    'Specialty Chemical Distribution': [
+      'Specialty Chemicals',          // 化学品供应
+      'Water Treatment',              // 水处理客户
+      'Industrial Gases',             // 工业气体同行
+    ],
+
+    // 工业流体 → 金属加工/制造
+    'Industrial Fluids': [
+      'Integrated Steel',             // 钢铁加工客户
+      'Auto Parts',                   // 汽车制造客户
+      'Construction Equipment',       // 重型设备客户
+    ],
+
+    // 炭黑 → 轮胎/橡胶
+    'Carbon Black': [
+      'Auto Parts',                   // 轮胎/汽车配件
+      'Specialty Chemicals',          // 特种化学品同行
+      'Commodity Chemicals',          // 大宗化工同行
+    ],
+
+    // 特种配料 → 食品/营养/动物
+    'Specialty Ingredients': [
+      'Packaged Foods',               // 食品客户
+      'Animal Health',                // 动物健康客户
+      'Specialty Chemicals',          // 化学品同行
     ],
   },
 };

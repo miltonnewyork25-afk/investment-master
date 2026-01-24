@@ -3242,6 +3242,78 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['local_service', 'relationship', 'community'],
     channels: ['branch', 'online', 'mobile'],
   },
+
+  // ---------- S&P 600 Consumer/Retail ----------
+  'SCVL': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['shoe_shopping', 'back_to_school'],
+    valueProps: ['value', 'selection', 'brands'],
+    channels: ['store', 'online'],
+  },
+  'LESL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['pool_maintenance', 'seasonal'],
+    valueProps: ['expertise', 'convenience', 'selection'],
+    channels: ['store', 'online'],
+  },
+  'PLNT': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['fitness', 'health'],
+    valueProps: ['affordability', 'judgement_free', 'convenience'],
+    channels: ['gym', 'app'],
+  },
+  'XPOF': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['fitness', 'wellness'],
+    valueProps: ['community', 'variety', 'quality_instruction'],
+    channels: ['studio', 'app'],
+  },
+  'EYE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['vision_care', 'eye_exam'],
+    valueProps: ['affordability', 'convenience', 'selection'],
+    channels: ['store', 'online'],
+  },
+
+  // ---------- S&P 600 Specialty Finance ----------
+  'TREE': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['loan_shopping', 'refinance', 'insurance'],
+    valueProps: ['comparison', 'convenience', 'savings'],
+    channels: ['online', 'mobile'],
+  },
+  'WRLD': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['emergency_funding', 'personal_loan'],
+    valueProps: ['access', 'speed'],
+    channels: ['branch'],
+  },
+  'EZPW': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['short_term_funding', 'buying_goods'],
+    valueProps: ['immediate_cash', 'value_goods'],
+    channels: ['store'],
+  },
+
+  // ---------- S&P 600 Regional Banks ----------
+  'FCNCA': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'IBOC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'CADE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
 };
 
 // ============================================================
@@ -4800,6 +4872,47 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'CIVI': 'late',           // Civitas Resources - 页岩油气E&P(晚周期)
   'HLX': 'late',            // Helix Energy Solutions - 海底服务(晚周期)
   'ARCH': 'mid',            // Arch Resources - 焦煤(中周期)
+
+  // S&P 600 Consumer/Retail
+  'SCVL': 'mid',            // Shoe Carnival - 鞋类零售(中周期)
+  'LESL': 'mid',            // Leslie's - 泳池用品零售(中周期)
+  'PLNT': 'mid',            // Planet Fitness - 健身加盟(中周期)
+  'XPOF': 'mid',            // Xponential Fitness - 精品健身(中周期)
+  'EYE': 'mid',             // National Vision - 眼镜零售(中周期)
+
+  // Biotech
+  'MDGL': 'mid',            // Madrigal Pharmaceuticals - NASH药物(中周期)
+  'KRYS': 'early',          // Krystal Biotech - 基因治疗(早周期)
+
+  // Industrial Equipment
+  'POWL': 'mid',            // Powell Industries - 配电设备(中周期)
+  'MIDD': 'mid',            // Middleby Corp - 商用厨房设备(中周期)
+  'EPAC': 'mid',            // Enerpac Tool - 液压工具(中周期)
+
+  // Specialty Finance
+  'TREE': 'mid',            // LendingTree - 在线贷款市场(中周期)
+  'WRLD': 'mid',            // World Acceptance - 消费金融/次贷(中周期)
+  'EZPW': 'mid',            // EZCorp - 典当/消费金融(中周期)
+
+  // Regional Banks
+  'FCNCA': 'mid',           // First Citizens BancShares - 区域银行(中周期)
+  'IBOC': 'mid',            // International Bancshares - 区域银行(中周期)
+  'CADE': 'mid',            // Cadence Bank - 区域银行(中周期)
+
+  // Transportation
+  'ARCB': 'mid',            // ArcBest Corp - LTL货运(中周期)
+  'MRTN': 'mid',            // Marten Transport - 冷链货运(中周期)
+  'FWRD': 'mid',            // Forward Air - 加急货运(中周期)
+
+  // REITs
+  'TRNO': 'mid',            // Terreno Realty - 工业REIT(中周期)
+
+  // Specialty Chemicals
+  'HWKN': 'mid',            // Hawkins Inc - 特种化学品分销(中周期)
+  'KWR': 'mid',             // Quaker Houghton - 工业流体(中周期)
+  'IOSP': 'mid',            // Innospec - 特种化学品(中周期)
+  'CBT': 'mid',             // Cabot Corp - 炭黑/特种化学品(中周期)
+  'BCPC': 'mid',            // Balchem Corp - 特种配料(中周期)
 };
 
 // ============================================================
@@ -9916,6 +10029,122 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'ARCH': {
     interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
     consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+
+  // S&P 600 Consumer/Retail
+  'SCVL': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'LESL': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'PLNT': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'XPOF': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'EYE': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // Biotech
+  'MDGL': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'KRYS': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Industrial Equipment
+  'POWL': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'MIDD': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'EPAC': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+
+  // Specialty Finance
+  'TREE': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'WRLD': {
+    interestRate: 0.3, inflation: -0.2, gdpGrowth: -0.2, unemployment: 0.4,
+    consumerConfidence: -0.3, housingMarket: -0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'EZPW': {
+    interestRate: 0.3, inflation: -0.2, gdpGrowth: -0.2, unemployment: 0.4,
+    consumerConfidence: -0.3, housingMarket: -0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Regional Banks
+  'FCNCA': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'IBOC': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'CADE': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+
+  // Transportation
+  'ARCB': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.4,
+  },
+  'MRTN': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.4,
+  },
+  'FWRD': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.4,
+  },
+
+  // REITs
+  'TRNO': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Specialty Chemicals
+  'HWKN': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'KWR': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'IOSP': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'CBT': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'BCPC': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.2,
   },
 };
 

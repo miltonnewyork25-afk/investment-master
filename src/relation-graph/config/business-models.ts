@@ -10348,6 +10348,226 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Metallurgical Coal',
     tags: ['met_coal', 'coking_coal', 'steelmaking', 'thermal_coal', 'Appalachian'],
   },
+
+  // ========================================================
+  // S&P 600 / Russell 2000 Small-Cap Additions
+  // ========================================================
+
+  // ---------- Consumer/Retail ----------
+  'SCVL': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Footwear Retail',
+    tags: ['footwear', 'family', 'value', 'back_to_school'],
+  },
+  'LESL': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Pool Supplies Retail',
+    tags: ['pool', 'maintenance', 'seasonal', 'chemicals'],
+  },
+  'PLNT': {
+    assetModel: 'hybrid',
+    revenueModels: ['licensing', 'subscription'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Fitness Franchise',
+    tags: ['gym', 'affordable', 'judgement_free', 'franchise'],
+  },
+  'XPOF': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'subscription'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Boutique Fitness',
+    tags: ['boutique', 'pilates', 'cycling', 'yoga', 'franchise'],
+  },
+  'EYE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Eyewear Retail',
+    tags: ['eyewear', 'vision_care', 'optical', 'exam'],
+  },
+
+  // ---------- Biotech ----------
+  'MDGL': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Pharma',
+    tags: ['NASH', 'liver', 'thyroid_receptor', 'resmetirom'],
+  },
+  'KRYS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gene Therapy',
+    tags: ['gene_therapy', 'dermatology', 'rare_disease', 'topical'],
+  },
+
+  // ---------- Industrial Equipment ----------
+  'POWL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Power Distribution Equipment',
+    tags: ['switchgear', 'power_distribution', 'industrial', 'utility'],
+  },
+  'MIDD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Commercial Kitchen Equipment',
+    tags: ['commercial_kitchen', 'cooking', 'food_processing', 'beverage'],
+  },
+  'EPAC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Hydraulic Tools',
+    tags: ['hydraulic', 'tools', 'industrial', 'heavy_lifting'],
+  },
+
+  // ---------- Specialty Finance ----------
+  'TREE': {
+    assetModel: 'platform',
+    revenueModels: ['advertising', 'transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2C',
+    industrySegment: 'Online Lending Marketplace',
+    tags: ['lending', 'mortgage', 'insurance', 'comparison'],
+  },
+  'WRLD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Consumer Finance',
+    tags: ['subprime', 'personal_loans', 'installment', 'underserved'],
+  },
+  'EZPW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Pawn/Consumer Finance',
+    tags: ['pawn', 'buy_sell', 'short_term_lending', 'collateral'],
+  },
+
+  // ---------- Regional Banks ----------
+  'FCNCA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['southeast', 'commercial', 'SVB_acquisition', 'large_regional'],
+  },
+  'IBOC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['texas', 'border', 'international', 'trade'],
+  },
+  'CADE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['southeast', 'commercial', 'community', 'mississippi'],
+  },
+
+  // ---------- Transportation ----------
+  'ARCB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'LTL Trucking',
+    tags: ['LTL', 'asset_based', 'managed_transportation', 'ABF_Freight'],
+  },
+  'MRTN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Temperature-Controlled Trucking',
+    tags: ['refrigerated', 'temperature_controlled', 'food', 'perishable'],
+  },
+  'FWRD': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Expedited Freight',
+    tags: ['expedited', 'LTL', 'intermodal', 'final_mile'],
+  },
+
+  // ---------- REITs ----------
+  'TRNO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial REIT',
+    tags: ['industrial', 'infill', 'coastal', 'logistics'],
+  },
+
+  // ---------- Specialty Chemicals ----------
+  'HWKN': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Chemical Distribution',
+    tags: ['chemical_distribution', 'water_treatment', 'industrial'],
+  },
+  'KWR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial Fluids',
+    tags: ['metalworking', 'lubricants', 'process_fluids', 'steel'],
+  },
+  'IOSP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Chemicals',
+    tags: ['fuel_additives', 'personal_care', 'oilfield', 'specialty'],
+  },
+  'CBT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Carbon Black',
+    tags: ['carbon_black', 'rubber', 'tire', 'specialty_compounds'],
+  },
+  'BCPC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Ingredients',
+    tags: ['nutrition', 'minerals', 'flavors', 'animal_health'],
+  },
 };
 
 // ============================================================
