@@ -142,12 +142,6 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['luxury', 'heritage', 'exclusivity', 'craftsmanship'],
     channels: ['retail', 'direct'],
   },
-  'RH': {
-    demographics: { ageGroup: 'gen_x', incomeLevel: 'high_net_worth', gender: 'all' },
-    occasions: ['home', 'luxury', 'design', 'renovation'],
-    valueProps: ['luxury', 'design', 'curation', 'experience'],
-    channels: ['retail', 'direct', 'online'],
-  },
 
   // ========== 娱乐/流媒体 ==========
   'NFLX': {
@@ -645,6 +639,7 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'KEY': 'early',     // KeyCorp
   'CFG': 'early',     // Citizens
   'HBAN': 'early',    // Huntington
+  'MTB': 'early',     // M&T Bank
 
   // 投资银行/券商
   'GS': 'early',      // Goldman Sachs
@@ -679,11 +674,6 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'CMI': 'mid',       // Cummins
   'TEX': 'mid',       // Terex
   'OSK': 'mid',       // Oshkosh
-
-  // ---------- 铁路 (Railroads) ----------
-  'UNP': 'mid',       // Union Pacific
-  'CSX': 'mid',       // CSX
-  'NSC': 'mid',       // Norfolk Southern
 
   // ---------- 工业分销 (Industrial Distribution) ----------
   'FAST': 'mid',      // Fastenal
@@ -756,8 +746,6 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'LRCX': 'mid',      // 半导体设备
   'AMAT': 'mid',
   'ASML': 'mid',
-  'FDX': 'mid',       // 物流
-  'UPS': 'mid',
 
   // ---------- 科技硬件/基础设施 ----------
   'DELL': 'mid',       // 服务器/PC
@@ -790,9 +778,6 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'ORCL': 'mid',       // Oracle
 
   // ---------- 电信 (Telecom) ----------
-  'T': 'defensive',    // AT&T
-  'VZ': 'defensive',   // Verizon
-  'TMUS': 'mid',       // T-Mobile (成长型)
   'CMCSA': 'defensive', // Comcast
   'CHTR': 'defensive',  // Charter
 
@@ -826,6 +811,18 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'TROW': 'mid',      // T. Rowe Price
   'LPLA': 'mid',      // LPL Financial
 
+  // 支付网络 (Defensive - 刚需消费)
+  'V': 'defensive',    // Visa
+  'MA': 'defensive',   // Mastercard
+  'AXP': 'mid',        // American Express (更偏中周期，旅行消费)
+
+  // 金融科技/支付 (Mid Cycle)
+  'PYPL': 'mid',       // PayPal
+  'SQ': 'mid',         // Block/Square
+  'FIS': 'defensive',  // FIS (基础设施)
+  'FISV': 'defensive', // Fiserv (基础设施)
+  'GPN': 'mid',        // Global Payments
+
   // 交易所 (Mid Cycle - 与交易量相关)
   'CME': 'mid',       // CME Group
   'ICE': 'mid',       // ICE
@@ -845,7 +842,6 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'AIG': 'mid',        // AIG - P&C
   'MET': 'mid',        // MetLife - Life
   'PRU': 'mid',        // Prudential - Life
-  'AFL': 'defensive',  // Aflac - Supplemental
   'AON': 'defensive',  // Aon - Broker
   'MMC': 'defensive',  // Marsh - Broker
   'WTW': 'defensive',  // WTW - Broker
@@ -873,10 +869,6 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'EXR': 'defensive',  // Extra Space Storage
 
   // ---------- 公用事业 (Utilities) ----------
-  'NEE': 'defensive',  // NextEra - 可再生
-  'DUK': 'defensive',  // Duke Energy
-  'SO': 'defensive',   // Southern Co
-  'AEP': 'defensive',  // American Electric Power
   'EXC': 'defensive',  // Exelon
   'XEL': 'defensive',  // Xcel Energy
   'VST': 'mid',        // Vistra - IPP
@@ -1044,16 +1036,7 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'VZ': 'defensive',
   'TMUS': 'defensive',
 
-  // 保险 (Defensive - 稳定现金流、浮存金)
-  // 财产险
-  'TRV': 'defensive', // Travelers
-  'ALL': 'defensive', // Allstate
-  'PGR': 'defensive', // Progressive
-  'CB': 'defensive',  // Chubb
-  'AIG': 'defensive', // AIG
-  // 寿险
-  'MET': 'defensive', // MetLife
-  'PRU': 'defensive', // Prudential
+  // 保险经纪 (已在上方定义)
   'AFL': 'defensive', // Aflac
   'LNC': 'defensive', // Lincoln National
   'PFG': 'defensive', // Principal
@@ -1139,6 +1122,16 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'WFC': {
     interestRate: 0.7, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.4,
     consumerConfidence: 0.5, housingMarket: 0.6, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+
+  'MTB': {
+    interestRate: 0.7, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.5, housingMarket: 0.5, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+
+  'ALLY': {
+    interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.6, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: -0.1,
   },
 
   // ========== 利率高敏感 (负相关 - 受损于加息) ==========
@@ -1310,10 +1303,6 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
     consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
   },
-  'EQIX': {
-    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
-    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
-  },
   'DLR': {
     interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
     consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
@@ -1401,40 +1390,6 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
   },
 
-  // 保险 - 利率受益
-  'PGR': {
-    interestRate: 0.3, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
-    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.1,
-  },
-  'ALL': {
-    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
-    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.1,
-  },
-  'TRV': {
-    interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
-    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
-  },
-  'CB': {
-    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
-    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
-  },
-  'MET': {
-    interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
-    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
-  },
-  'PRU': {
-    interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
-    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
-  },
-  'AON': {
-    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
-    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
-  },
-  'MMC': {
-    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
-    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
-  },
-
   // REITs - 高利率敏感
   'PLD': {
     interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
@@ -1515,15 +1470,6 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
   },
 
-  'PG': {
-    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
-    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,
-  },
-  'KO': {
-    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
-    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,
-  },
-
   // ========== 航运物流 (全球贸易敏感) ==========
   // 集装箱航运 - 与全球贸易、消费需求高度相关
   'ZIM': {
@@ -1571,30 +1517,6 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'UPS': {
     interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.4,
     consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.4,
-  },
-
-  // 铁路 - 与工业生产、大宗商品相关
-  'UNP': {
-    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
-    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.2,
-  },
-  'CSX': {
-    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.3,
-    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.2,
-  },
-
-  // ========== 防御型 (低宏观敏感度) ==========
-  'JNJ': {
-    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
-    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
-  },
-  'UNH': {
-    interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.1,
-    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
-  },
-  'WMT': {
-    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.2,
-    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
   },
 
   // ========== 金融行业 (利率高敏感) ==========
@@ -1715,6 +1637,34 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'MSCI': {
     interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.7, unemployment: -0.3,
     consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // 支付网络 - 消费量驱动，低利率敏感
+  'V': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'MA': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'AXP': {
+    interestRate: 0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // 金融科技基础设施 - 防御型
+  'FIS': {
+    interestRate: 0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'FISV': {
+    interestRate: 0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'GPN': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
   },
 
   // 保险 - 相对防御但利率正相关

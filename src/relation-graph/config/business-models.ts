@@ -826,6 +826,102 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
 
   // ========================================================
+  // 银行/信贷行业
+  // ========================================================
+
+  // ---------- 区域银行 (Regional Banks) ----------
+  'USB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['payments', 'wealth', 'commercial', 'midwest'],
+  },
+  'PNC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['commercial', 'retail', 'asset_management', 'east'],
+  },
+  'TFC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['insurance', 'wealth', 'commercial', 'southeast'],
+  },
+  'KEY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['commercial', 'investment_banking', 'payments'],
+  },
+  'FITB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['commercial', 'retail', 'wealth', 'midwest'],
+  },
+  'RF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['commercial', 'retail', 'wealth', 'southeast'],
+  },
+  'CFG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['retail', 'commercial', 'northeast'],
+  },
+  'MTB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['commercial', 'retail', 'northeast', 'conservative'],
+  },
+
+  // ---------- 消费金融 (Consumer Finance) ----------
+  'SYF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Consumer Finance',
+    tags: ['private_label', 'retail_cards', 'health', 'home'],
+  },
+  'COF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Consumer Finance',
+    tags: ['credit_cards', 'auto_loans', 'banking', 'digital'],
+  },
+  'ALLY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Consumer Finance',
+    tags: ['auto_finance', 'digital_banking', 'dealer'],
+  },
+
+  // ========================================================
   // 保险行业
   // 产业链: 保费收入 → 投资 → 赔付
   // 特点: 利率受益、承保周期、资本密集

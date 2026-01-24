@@ -426,6 +426,10 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Asset Management',
       'Banks - Diversified',
       'Banks - Regional',
+      'Insurance - Property & Casualty',
+      'Insurance - Life',
+      'Insurance - Diversified',
+      'Insurance Brokers',
     ],
 
     'Consumer Retail Chain': [
@@ -795,7 +799,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // ========== 工业综合/多元化 (Industrial Conglomerates) ==========
     'HON': 'Industrial Conglomerate',     // Honeywell
     'MMM': 'Industrial Conglomerate',     // 3M
-    'GE': 'Industrial Conglomerate',      // GE Aerospace
+    // GE: defined above as 'Aircraft Engine'
     'ITW': 'Industrial Conglomerate',     // Illinois Tool Works
     'EMR': 'Industrial Automation',       // Emerson
     'ETN': 'Industrial Conglomerate',     // Eaton
@@ -888,7 +892,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'PPG': 'Coatings',                    // PPG Industries
     'ECL': 'Specialty Chemicals',         // Ecolab
     'IFF': 'Specialty Chemicals',         // IFF
-    'ALB': 'Lithium',                     // Albemarle
+    // ALB: defined above as 'EV Battery Materials'
 
     // ========== 金融服务产业链细分 ==========
     // 交易所 (Exchanges)
@@ -996,7 +1000,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'ROST': 'Off-Price Retail',           // Ross Stores
 
     // 电商 (E-commerce)
-    'AMZN': 'E-commerce',                 // Amazon (also Cloud)
+    // AMZN: defined above as 'Cloud Hyperscaler'
     'EBAY': 'E-commerce Marketplace',     // eBay
     'ETSY': 'E-commerce Marketplace',     // Etsy
     'W': 'E-commerce',                    // Wayfair - 家居电商
@@ -1098,10 +1102,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'SAIA': 'LTL Trucking',               // Saia
     'KNX': 'Truckload',                   // Knight-Swift
 
-    // 铁路货运 (Rail Freight)
-    'UNP': 'Class I Railroad',            // Union Pacific - 西部
-    'CSX': 'Class I Railroad',            // CSX - 东部
-    'NSC': 'Class I Railroad',            // Norfolk Southern - 东部
+    // 铁路货运 (Rail Freight) - UNP/CSX/NSC already defined above
     'CP': 'Class I Railroad',             // Canadian Pacific
     'CNI': 'Class I Railroad',            // Canadian National
 
@@ -1119,6 +1120,26 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'WTW': 'Insurance Broker',           // WTW
     'AJG': 'Insurance Broker',           // Gallagher
     'BRO': 'Insurance Broker',           // Brown & Brown
+
+    // ========== 银行/消费金融细分 ==========
+    // 区域银行 (Regional Banks)
+    'USB': 'Regional Bank',               // U.S. Bancorp
+    'PNC': 'Regional Bank',               // PNC Financial
+    'TFC': 'Regional Bank',               // Truist
+    'KEY': 'Regional Bank',               // KeyCorp
+    'FITB': 'Regional Bank',              // Fifth Third
+    'RF': 'Regional Bank',                // Regions Financial
+    'CFG': 'Regional Bank',               // Citizens Financial
+    'HBAN': 'Regional Bank',              // Huntington
+    'MTB': 'Regional Bank',               // M&T Bank
+
+    // 消费金融 (Consumer Finance)
+    'COF': 'Consumer Finance',            // Capital One
+    'SYF': 'Consumer Finance',            // Synchrony
+    'ALLY': 'Auto Finance',               // Ally Financial
+
+    // 券商 (Brokerage)
+    'SCHW': 'Brokerage',                 // Schwab
 
     // ========== REITs细分 ==========
     'PLD': 'Industrial REIT',             // Prologis
@@ -1192,7 +1213,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'RDDT': 'Social Platform',            // Reddit
 
     // IT服务 (IT Services)
-    'IBM': 'IT Services',                 // IBM
+    // IBM: defined above as 'Cloud Hyperscaler'
     'ACN': 'IT Consulting',               // Accenture
     'INFY': 'IT Outsourcing',             // Infosys
   },
@@ -1674,6 +1695,68 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Alternative Asset Manager',
     ],
 
+    // ========== 银行/金融产业链 ==========
+    // 交易所/数据 → 投行 → 资管 (金融服务链)
+    'Exchange': [
+      'Investment Bank',
+      'Brokerage',
+      'Alternative Asset Manager',
+    ],
+
+    'Financial Data': [
+      'Investment Bank',
+      'Asset Manager',
+      'Alternative Asset Manager',
+    ],
+
+    // 投行 → 资管/银行
+    'Investment Bank': [
+      'Asset Manager',
+      'Alternative Asset Manager',
+    ],
+
+    // 大型银行 → 区域银行/消费金融 (批发资金、代理银行)
+    'Universal Bank': [
+      'Regional Bank',
+      'Consumer Finance',
+      'Asset Manager',
+    ],
+
+    // 区域银行 → 消费金融/住房贷款
+    'Regional Bank': [
+      'Consumer Finance',
+      'Auto Finance',
+      'Homebuilder',
+    ],
+
+    // 支付基础设施 → 消费者终端
+    'Payment Processor': [
+      'Payment Network',
+      'Digital Payments',
+      'Regional Bank',
+      'E-commerce',
+      'Mass Retail',
+    ],
+
+    'Payment Network': [
+      'Consumer Finance',
+      'Digital Payments',
+      'Payment Processor',
+    ],
+
+    'Digital Payments': [
+      'E-commerce',
+    ],
+
+    // 资管 → 券商渠道
+    'Asset Manager': [
+      'Brokerage',
+    ],
+
+    'Alternative Asset Manager': [
+      'Brokerage',
+    ],
+
     // ========== REITs产业链 ==========
     // 工业REIT - 服务物流/电商
     'Industrial REIT': [
@@ -1836,42 +1919,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Defense Prime',
     ],
 
-    // ========== 金融服务产业链 ==========
-    // 交易所 → 数据 → 投行 → 资管
-    'Exchange': [
-      'Investment Bank',
-      'Asset Manager',
-      'Alternative Asset Manager',
-    ],
-
-    'Financial Data': [
-      'Investment Bank',
-      'Asset Manager',
-      'Alternative Asset Manager',
-    ],
-
-    'Investment Bank': [
-      'Asset Manager',
-      'Alternative Asset Manager',
-    ],
-
-    'Universal Bank': [
-      'Asset Manager',
-    ],
-
-    'Payment Network': [
-      'Payment Processor',
-      'Digital Payments',
-    ],
-
-    'Payment Processor': [
-      'E-commerce',
-      'Mass Retail',
-    ],
-
-    'Digital Payments': [
-      'E-commerce',
-    ],
+    // (金融服务产业链已在上方定义)
 
     // ========== 消费品产业链 ==========
     // 农业投入 → 农产品 → 加工 → 品牌 → 零售/餐饮
