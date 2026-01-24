@@ -4365,6 +4365,77 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'ENOV': 'Orthopedic & Surgical Devices',                           // Enovis - 骨科与手术器械
     // --- Diversified ---
     'GHC': 'Diversified Media & Education',                            // Graham Holdings - 多元化媒体与教育
+
+    // ========== Batch: Small-cap Biotech/Pharma & Healthcare Services (Jan 2026) ==========
+    'ANIK': 'Regenerative Medicine',                                      // Anika Therapeutics - 再生医学/透明质酸
+    'ARNA': 'GI & Inflammation Biotech',                                  // Arena Pharmaceuticals - GI/炎症
+    'BHG': 'Behavioral Health Services',                                  // Bright Health - 行为健康服务
+    'BLFS': 'Cell Therapy Biopreservation',                               // BioLife Solutions - 细胞治疗保存
+    'CALA': 'Oncology Biotech',                                           // Calithera - RAS靶向肿瘤
+    'CERE': 'Gene Therapy Biotech',                                       // Cerevel Therapeutics - 基因治疗/神经
+    'CGEN': 'Computational Drug Discovery',                               // Compugen - 计算生物学药物发现
+    'CNSP': 'CNS Oncology Biotech',                                       // CNS Pharmaceuticals - CNS肿瘤
+    'COGT': 'Cell Therapy Biotech',                                       // Cogent - NK细胞治疗
+    'DARE': 'Womens Health Pharma',                                       // Dare Bioscience - 女性健康制药
+    'DMTK': 'Dermatology Diagnostics',                                    // DermTech - 皮肤基因组诊断
+    'ETON': 'Specialty Injectable Pharma',                                // Eton Pharmaceuticals - 特种注射药
+    'EVLO': 'Protein Engineering Biotech',                                // Evolvus - 蛋白质工程生物技术
+    'GALT': 'Fibrosis Biotech',                                           // Galectin Therapeutics - 半乳糖凝集素/纤维化
+    'GHRS': 'Endocrinology Pharma',                                       // GH Research - 内分泌/生长激素
+    'HARP': 'Oncology Antibody Biotech',                                  // Harpoon Therapeutics - 肿瘤抗体
+    'ICPT': 'Liver Disease Pharma',                                       // Intercept Pharma - NASH/PBC肝病
+    'LXRX': 'Metabolic Disease Biotech',                                  // Lexicon - 糖尿病/代谢
+    'MDXH': 'Radiology & Telehealth',                                     // MDxHealth - 放射/远程医疗
+    'MLAB': 'Life Science Tools',                                         // Mesa Labs - 灭菌/实验室设备
+    'MRSN': 'ADC Oncology Biotech',                                       // Mersana - 抗体药物偶联
+    'NKTR': 'Polymer Conjugate Biotech',                                  // Nektar Therapeutics - 聚合物偶联
+    'OBSV': 'Reproductive Health Biotech',                                // ObsEva - 女性生殖健康
+    'ONCT': 'Oncology Biotech',                                           // Onconova - 肿瘤激酶抑制
+    'ONEM': 'Digital Primary Care',                                       // 1Life Healthcare - 数字初级保健
+    'OPGN': 'Infectious Disease Diagnostics',                             // OpGen - 感染病快速诊断
+    'OTIC': 'Otology Biotech',                                            // Otonomy - 耳科/听力治疗
+    'PLSE': 'Lithotripsy Devices',                                        // Pulse Biosciences - 碎石设备
+    'PRLD': 'Autoimmune Biotech',                                         // Prelude Therapeutics - 自免/炎症
+    'PRTX': 'Conditional Activation Biotech',                             // ProTx - 条件激活肿瘤靶向
+    'QDEL': 'Rapid Point-of-Care Diagnostics',                            // QuidelOrtho - 快速即时诊断
+    'REPL': 'Gene Therapy Biotech',                                       // Replimune - 基因治疗/罕见病
+    // ========== Batch: Small-Cap Tech/SaaS/Fintech (Jan 2026) ==========
+    'AAN': 'Lease-to-Own Retail',                                           // Aarons Holdings - 租赁零售
+    'AMSF': 'Workers Compensation Insurance',                               // AMERISAFE - 工伤保险
+    'AMWD': 'Cabinetry & Building Products',                                // American Woodmark - 橱柜建材
+    'APSG': 'Professional Staffing & Services',                             // Applied Signal - 专业人力服务
+    'BBSI': 'PEO & HR Services',                                            // Barrett Business Services - PEO/HR
+    'CASA': '5G Telecom Equipment',                                          // Casa Systems - 5G电信设备
+    'CASS': 'Payment & Information Services',                                // Cass Information - 支付信息服务
+    'CLDN': 'Cloud Identity Security',                                       // Clarivate/Celldene - 云身份安全
+    'CMBM': 'Fixed Wireless Broadband Equipment',                           // Cambium Networks - 固定无线宽带
+    'COUP': 'Procurement SaaS',                                             // Coupa Software - 采购管理SaaS
+    'DCT': 'Clean Energy Software',                                          // Duck Creek - 清洁能源软件
+    'DH': 'Healthcare Data Analytics SaaS',                                  // Definitive Healthcare - 医疗数据SaaS
+    'KVYO': 'Marketing Automation Platform',                                 // Klaviyo - 营销自动化平台
+    'LAWS': 'Vertical Industry ERP SaaS',                                    // Lawson - 垂直行业ERP
+    'NOMD': 'Specialty Packaging',                                           // Nomad Foods - 特种包装
+    'OPAD': 'Real Estate Technology Platform',                               // Offerpad - 房地产科技平台
+
+    // ========== Batch: Financials/Banks/Insurance/Industrials (Jan 2026 - Set D) ==========
+    'AAWW': 'Air Cargo & Leasing',                                           // Atlas Air - 货运航空/飞机租赁
+    'ABUS': 'Gene Editing Biotech',                                          // Arbutus Biopharma - 基因编辑/RNA
+    'AGO': 'Financial Guarantee Insurance',                                  // Assured Guaranty - 债券担保保险
+    'BRKL': 'Regional Banking',                                              // Brookline Bancorp - 马萨诸塞区域银行
+    'CIGI': 'Commercial Real Estate Services',                               // Colliers International - 商业地产服务
+    'CNOB': 'Regional Banking',                                              // ConnectOne Bancorp - 新泽西区域银行
+    'CRGY': 'Oil & Gas E&P',                                                 // Crescent Energy - 油气勘探开发
+    'EBC': 'Regional Banking',                                               // Eastern Bankshares - 新英格兰区域银行
+    'FBNC': 'Regional Banking',                                              // First Bancshares NC - 北卡区域银行
+    'GNTY': 'Regional Banking',                                              // Guaranty Bancshares - 德州区域银行
+    'IBTX': 'Regional Banking',                                              // Independent Bank TX - 德州区域银行
+    'INDB': 'Regional Banking',                                              // Independent Bank MA - 马萨诸塞区域银行
+    'LKFN': 'Regional Banking',                                              // Lakeland Financial - 印第安纳区域银行
+    'NNI': 'Student Lending & Services',                                     // Nelnet - 学生贷款/教育金融
+    'PB': 'Regional Banking',                                                // Prosperity Bancshares - 德州区域银行
+    'PFBC': 'Regional Banking',                                              // Preferred Bank - 加州区域银行
+    'PRA': 'Specialty Insurance',                                            // ProAssurance - 专业责任保险
+    'UFCS': 'P&C Insurance',                                                 // United Fire Group - 财产/意外保险
   },
 
   // ============================================================
