@@ -3261,6 +3261,49 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Aerospace Components',
     tags: ['pma_parts', 'repair', 'electronic_tech'],
   },
+  'LHX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Defense',
+    tags: ['comms', 'ew', 'isr', 'space', 'sensors'],
+  },
+
+  // ---------- 航空公司 (Airlines) ----------
+  // 特点: 重资产、油价敏感、高运营杠杆
+  'DAL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Airlines',
+    tags: ['full_service', 'hub', 'loyalty', 'premium'],
+  },
+  'UAL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Airlines',
+    tags: ['full_service', 'international', 'hub', 'premium'],
+  },
+  'AAL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Airlines',
+    tags: ['full_service', 'hub', 'largest_fleet', 'high_leverage'],
+  },
+  'LUV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Airlines',
+    tags: ['low_cost', 'point_to_point', 'domestic', 'no_frills'],
+  },
 
   // ---------- 建筑机械/农业机械 (Construction & Ag Equipment) ----------
   // 特点: 资本开支周期、经销商网络

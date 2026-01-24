@@ -790,6 +790,12 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'HWM': 'mid',       // Howmet - 航空零部件
   'TDG': 'mid',       // TransDigm - 航空零部件
   'HEI': 'mid',       // HEICO - 航空零部件
+  'LHX': 'defensive', // L3Harris - 国防电子
+  // 航空公司 (Airlines) - 早周期，油价极敏感
+  'DAL': 'early',     // Delta
+  'UAL': 'early',     // United
+  'AAL': 'early',     // American
+  'LUV': 'early',     // Southwest
 
   // ---------- 科技 (Tech) ----------
   'MSFT': 'mid',      // 科技
@@ -1465,6 +1471,16 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'LUV': {
     interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.6, unemployment: -0.4,
     consumerConfidence: 0.7, housingMarket: 0.1, dollarIndex: 0.2, oilPrice: -0.75,
+  },
+  'AAL': {
+    interestRate: -0.4, inflation: -0.4, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.8, housingMarket: 0.1, dollarIndex: 0.2, oilPrice: -0.8,
+  },
+
+  // 国防 - 低宏观敏感(政府合同)
+  'LHX': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
   },
 
   // ========== 美元高敏感 (负相关 - 出口/海外收入) ==========
