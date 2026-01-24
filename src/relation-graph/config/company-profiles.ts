@@ -2943,6 +2943,128 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['reliability', 'essential', 'regulated_rates', 'safety'],
     channels: ['direct', 'utility_billing'],
   },
+
+  // --- Online Gaming B2C ---
+  'RSI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['sports_betting', 'casino', 'entertainment', 'live_events'],
+    valueProps: ['convenience', 'variety', 'promotions', 'mobile_first'],
+    channels: ['mobile', 'online'],
+  },
+
+  // --- Healthcare B2C ---
+  'USPH': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['injury_recovery', 'surgery_rehab', 'chronic_pain', 'sports_therapy'],
+    valueProps: ['clinical_expertise', 'convenience', 'insurance_accepted', 'local'],
+    channels: ['clinic', 'referral'],
+  },
+
+  // --- Consumer/Retail B2C ---
+  'COLM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['outdoor_recreation', 'hiking', 'skiing', 'casual_wear'],
+    valueProps: ['durability', 'value', 'technology', 'outdoor_performance'],
+    channels: ['retail', 'online', 'wholesale', 'outlet'],
+  },
+  'ACI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['grocery_shopping', 'weekly_meals', 'pharmacy', 'household'],
+    valueProps: ['convenience', 'fresh_food', 'pharmacy', 'loyalty_rewards'],
+    channels: ['store', 'online', 'delivery'],
+  },
+  'GO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['grocery_shopping', 'bargain_hunting', 'pantry_stocking'],
+    valueProps: ['value', 'treasure_hunt', 'savings', 'brand_variety'],
+    channels: ['store'],
+  },
+  'PLCE': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['back_to_school', 'seasonal', 'growth_spurts', 'basics'],
+    valueProps: ['value', 'variety', 'convenience', 'quality_basics'],
+    channels: ['retail', 'online', 'outlet'],
+  },
+  'LOVE': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_furnishing', 'moving', 'home_upgrade', 'entertainment'],
+    valueProps: ['modular', 'customizable', 'washable', 'lifetime_value'],
+    channels: ['showroom', 'online', 'popup'],
+  },
+  'ARHS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_furnishing', 'renovation', 'new_home', 'design_refresh'],
+    valueProps: ['artisan_quality', 'unique_design', 'sustainability', 'premium'],
+    channels: ['showroom', 'online'],
+  },
+  'MUSA': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['fuel_stop', 'road_trip', 'quick_snack', 'tobacco'],
+    valueProps: ['low_price_fuel', 'convenience', 'location', 'speed'],
+    channels: ['store'],
+  },
+  'PZZA': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['delivery', 'family_dinner', 'game_day', 'quick_meal'],
+    valueProps: ['quality_ingredients', 'delivery', 'digital_ordering', 'rewards'],
+    channels: ['delivery', 'carryout', 'dine_in', 'mobile'],
+  },
+  'BLMN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['family_dinner', 'celebration', 'date_night', 'casual_dining'],
+    valueProps: ['steakhouse', 'atmosphere', 'variety', 'value'],
+    channels: ['dine_in', 'takeout', 'delivery'],
+  },
+  'SNBR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['mattress_replacement', 'sleep_improvement', 'new_home', 'wellness'],
+    valueProps: ['smart_technology', 'adjustable', 'sleep_tracking', 'comfort'],
+    channels: ['retail', 'online', 'direct'],
+  },
+  'IRBT': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_cleaning', 'convenience', 'smart_home', 'gift'],
+    valueProps: ['automation', 'time_saving', 'smart_mapping', 'hands_free'],
+    channels: ['retail', 'online', 'direct'],
+  },
+  'CSV': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['bereavement', 'pre_planning', 'memorial', 'cremation'],
+    valueProps: ['compassion', 'dignity', 'local_tradition', 'comprehensive'],
+    channels: ['direct', 'referral'],
+  },
+  'YETI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'male' },
+    occasions: ['outdoor_recreation', 'camping', 'fishing', 'tailgating', 'gift'],
+    valueProps: ['durability', 'premium', 'outdoor_lifestyle', 'brand_status'],
+    channels: ['retail', 'online', 'wholesale', 'direct'],
+  },
+  'CLAR': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['climbing', 'skiing', 'adventure_sports', 'outdoor_recreation'],
+    valueProps: ['performance', 'safety', 'innovation', 'adventure_lifestyle'],
+    channels: ['specialty_retail', 'online', 'wholesale'],
+  },
+
+  // --- B2B2C Profiles ---
+  'GIII': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['seasonal', 'outerwear', 'fashion', 'everyday'],
+    valueProps: ['brand_names', 'value', 'style', 'quality'],
+    channels: ['wholesale', 'retail', 'online', 'department_store'],
+  },
+  'JJSF': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['snacking', 'stadium_events', 'school', 'entertainment'],
+    valueProps: ['taste', 'convenience', 'fun', 'nostalgia'],
+    channels: ['food_service', 'retail', 'vending', 'stadium'],
+  },
+  'FIZZ': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['refreshment', 'health_alternative', 'social', 'daily_hydration'],
+    valueProps: ['zero_calorie', 'natural_flavor', 'sparkling', 'healthy'],
+    channels: ['retail', 'online', 'wholesale'],
+  },
 };
 
 // ============================================================
@@ -4350,6 +4472,72 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
 
   // --- Gas Utility ---
   'SW': 'defensive',       // Southwest Gas - 天然气公用事业(防御)
+
+  // --- AdTech/Digital ---
+  'PUBM': 'mid',           // PubMatic - AdTech DSP(中周期)
+  'RSI': 'mid',            // Rush Street Interactive - 在线博彩(中周期)
+
+  // --- Communications/Software ---
+  'BAND': 'mid',           // Bandwidth - CPaaS(中周期)
+  'PAR': 'mid',            // PAR Technology - 餐饮科技(中周期)
+  'FLYW': 'mid',           // Flywire - 金融基础设施(中周期)
+
+  // --- Healthcare ---
+  'USPH': 'defensive',     // US Physical Therapy - 门诊康复(防御)
+  'NEO': 'mid',            // NeoGenomics - 医学诊断(中周期)
+  'AZTA': 'mid',           // Azenta - 生命科学工具(中周期)
+  'BIO': 'mid',            // Bio-Rad - 生命科学工具(中周期)
+
+  // --- Materials/Mining ---
+  'TROX': 'mid',           // Tronox - 商品化学品(中周期)
+  'CC': 'mid',             // Chemours - 商品化学品(中周期)
+  'SMID': 'early',         // Smith-Midland - 预制混凝土(早周期)
+  'UEC': 'early',          // Uranium Energy - 铀矿(早周期)
+  'DNN': 'early',          // Denison Mines - 铀矿(早周期)
+  'MAXN': 'early',         // Maxeon Solar - 太阳能制造(早周期)
+
+  // --- Energy ---
+  'SLDP': 'early',         // Solid Power - EV电池(早周期)
+  'RIOT': 'early',         // Riot Platforms - 加密货币挖矿(早周期)
+  'CLSK': 'early',         // CleanSpark - 加密货币挖矿(早周期)
+
+  // --- Consumer/Retail ---
+  'COLM': 'mid',           // Columbia Sportswear - 户外服装(中周期)
+  'ACI': 'defensive',      // Albertsons - 食品零售(防御)
+  'GO': 'defensive',       // Grocery Outlet - 折扣食品(防御)
+  'PLCE': 'mid',           // Children's Place - 基础服装(中周期)
+  'GIII': 'mid',           // G-III Apparel - 基础服装(中周期)
+  'LOVE': 'mid',           // Lovesac - 家具(中周期)
+  'ARHS': 'mid',           // Arhaus - 家具(中周期)
+  'MUSA': 'defensive',     // Murphy USA - 便利店(防御)
+  'PZZA': 'mid',           // Papa John's - 快餐(中周期)
+  'BLMN': 'mid',           // Bloomin' Brands - 正餐(中周期)
+  'JJSF': 'defensive',    // J&J Snack Foods - 烘焙零食(防御)
+  'SNBR': 'mid',           // Sleep Number - 家具/床垫(中周期)
+  'FIZZ': 'defensive',     // National Beverage - 软饮料(防御)
+  'IRBT': 'mid',           // iRobot - 智能家居(中周期)
+
+  // --- Transport/Logistics ---
+  'HTLD': 'mid',           // Heartland Express - 整车运输(中周期)
+  'GATX': 'mid',           // GATX Corp - 铁路车辆租赁(中周期)
+  'CSV': 'defensive',      // Carriage Services - 殡葬服务(防御)
+
+  // --- Specialty Vehicles ---
+  'REVG': 'mid',           // REV Group - 特种车辆(中周期)
+
+  // --- Industrials ---
+  'THS': 'defensive',      // TreeHouse Foods - 食品原料/自有品牌(防御)
+  'BERY': 'mid',           // Berry Global - 柔性包装(中周期)
+  'HURN': 'defensive',     // Huron Consulting - 专业服务(防御)
+  'ICF': 'defensive',      // ICF International - 政府咨询(防御)
+
+  // --- Semiconductors/Electronics ---
+  'LITE': 'mid',           // Lumentum - 光通信(中周期)
+  'VIAV': 'mid',           // Viavi Solutions - 网络测试(中周期)
+
+  // --- Outdoor Equipment ---
+  'YETI': 'mid',           // YETI - 户外装备(中周期)
+  'CLAR': 'mid',           // Clarus Corp - 户外装备(中周期)
 };
 
 // ============================================================
@@ -9018,6 +9206,204 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'SW': {
     interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
     consumerConfidence: 0.0, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.3,
+  },
+
+  // --- AdTech/Digital ---
+  'PUBM': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'RSI': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // --- Communications/Software ---
+  'BAND': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'PAR': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'FLYW': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // --- Healthcare ---
+  'USPH': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'NEO': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'AZTA': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'BIO': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // --- Materials/Mining ---
+  'TROX': {
+    interestRate: -0.3, inflation: 0.4, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.4, oilPrice: 0.1,
+  },
+  'CC': {
+    interestRate: -0.3, inflation: 0.4, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.4, oilPrice: 0.1,
+  },
+  'SMID': {
+    interestRate: -0.4, inflation: 0.3, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'UEC': {
+    interestRate: -0.4, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  'DNN': {
+    interestRate: -0.4, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  'MAXN': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+
+  // --- Energy ---
+  'SLDP': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+  'RIOT': {
+    interestRate: -0.7, inflation: 0.5, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.2,
+  },
+  'CLSK': {
+    interestRate: -0.7, inflation: 0.5, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.2,
+  },
+
+  // --- Consumer/Retail ---
+  'COLM': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'ACI': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'GO': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.1,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'PLCE': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'GIII': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'LOVE': {
+    interestRate: -0.4, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'ARHS': {
+    interestRate: -0.4, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'MUSA': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.3,
+  },
+  'PZZA': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'BLMN': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'JJSF': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'SNBR': {
+    interestRate: -0.3, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'FIZZ': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'IRBT': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // --- Transport/Logistics ---
+  'HTLD': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.5,
+  },
+  'GATX': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  'CSV': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // --- Specialty Vehicles ---
+  'REVG': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // --- Industrials ---
+  'THS': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'BERY': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'HURN': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'ICF': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // --- Semiconductors/Electronics ---
+  'LITE': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'VIAV': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // --- Outdoor Equipment ---
+  'YETI': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'CLAR': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
   },
 };
 

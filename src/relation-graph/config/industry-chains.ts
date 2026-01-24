@@ -2493,6 +2493,72 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // --- Gas Utility ---
     'SW': 'Gas Utility',                   // Southwest Gas - 天然气配送
+
+    // --- AdTech/Digital ---
+    'PUBM': 'AdTech DSP',                  // PubMatic - 程序化广告
+    'RSI': 'Online Gaming',                // Rush Street Interactive - 在线博彩
+
+    // --- Communications/Software ---
+    'BAND': 'CPaaS',                       // Bandwidth - 通信平台
+    'PAR': 'Restaurant Tech',              // PAR Technology - 餐饮科技
+    'FLYW': 'Financial Infrastructure',    // Flywire - 金融基础设施
+
+    // --- Healthcare ---
+    'USPH': 'Outpatient Rehab',            // US Physical Therapy - 门诊康复
+    'NEO': 'Medical Diagnostics',          // NeoGenomics - 医学诊断
+    'AZTA': 'Life Science Tools',          // Azenta - 生命科学工具
+    'BIO': 'Life Science Tools',           // Bio-Rad - 生命科学工具
+
+    // --- Materials/Mining ---
+    'TROX': 'Commodity Chemicals',         // Tronox - 钛白粉
+    'CC': 'Commodity Chemicals',           // Chemours - 氟化学品
+    'SMID': 'Cement/Precast Concrete',     // Smith-Midland - 预制混凝土
+    'UEC': 'Uranium Mining',               // Uranium Energy - 铀矿
+    'DNN': 'Uranium Mining',               // Denison Mines - 铀矿
+    'MAXN': 'Solar Manufacturing',         // Maxeon Solar - 太阳能制造
+
+    // --- Energy ---
+    'SLDP': 'EV Battery',                  // Solid Power - 固态电池
+    'RIOT': 'Crypto Mining',               // Riot Platforms - 比特币挖矿
+    'CLSK': 'Crypto Mining',               // CleanSpark - 比特币挖矿
+
+    // --- Consumer/Retail ---
+    'COLM': 'Outdoor Apparel',             // Columbia Sportswear - 户外服装
+    'ACI': 'Specialty Grocery',            // Albertsons - 食品零售
+    'GO': 'Specialty Grocery',             // Grocery Outlet - 折扣食品
+    'PLCE': 'Basics Apparel',              // Children's Place - 儿童服装
+    'GIII': 'Basics Apparel',              // G-III Apparel - 授权品牌服装
+    'LOVE': 'Home Furnishings',            // Lovesac - 模块化家具
+    'ARHS': 'Home Furnishings',            // Arhaus - 高端家具
+    'MUSA': 'Convenience Store',           // Murphy USA - 便利店
+    'PZZA': 'Quick Service Restaurant',    // Papa John's - 披萨快餐
+    'BLMN': 'Casual Dining',              // Bloomin' Brands - 休闲餐饮
+    'JJSF': 'Bakery/Snacks',              // J&J Snack Foods - 烘焙零食
+    'SNBR': 'Furniture/Mattress',          // Sleep Number - 智能床垫
+    'FIZZ': 'Soft Drinks',                 // National Beverage - 软饮料
+    'IRBT': 'Smart Home',                  // iRobot - 扫地机器人
+
+    // --- Transport/Logistics ---
+    'HTLD': 'TL Trucking',                 // Heartland Express - 整车运输
+    'GATX': 'Truck/Railcar Leasing',       // GATX Corp - 铁路车辆租赁
+    'CSV': 'Death Care',                   // Carriage Services - 殡葬服务
+
+    // --- Specialty Vehicles ---
+    'REVG': 'Specialty Vehicles',          // REV Group - 特种车辆
+
+    // --- Industrials ---
+    'THS': 'Food Ingredients/Private Label', // TreeHouse Foods - 食品原料
+    'BERY': 'Flexible Packaging',          // Berry Global - 柔性包装
+    'HURN': 'Professional Services',       // Huron Consulting - 咨询
+    'ICF': 'Professional Services',        // ICF International - 政府咨询
+
+    // --- Semiconductors/Electronics ---
+    'LITE': 'High-Speed Interconnect',     // Lumentum - 光通信
+    'VIAV': 'High-Speed Interconnect',     // Viavi Solutions - 网络测试
+
+    // --- Outdoor Equipment ---
+    'YETI': 'Outdoor Equipment',           // YETI - 户外装备
+    'CLAR': 'Outdoor Equipment',           // Clarus Corp - 户外装备
   },
 
   // ============================================================
@@ -4715,6 +4781,58 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Reinsurance',
       'P&C Insurance',
       'Commercial Real Estate Services',
+    ],
+
+    // ========== 新增子行业链 ==========
+    'CPaaS': [
+      'Enterprise SaaS',
+      'Contact Center',
+      'Financial Infrastructure',
+    ],
+    'Outpatient Rehab': [
+      'Hospital Operator',
+      'Health Insurance',
+      'Medical Devices',
+    ],
+    'Medical Diagnostics': [
+      'Hospital Operator',
+      'Large Pharma',
+      'Health Insurance',
+    ],
+    'Cement/Precast Concrete': [
+      'Residential Construction',
+      'Building Products',
+      'Construction Equipment',
+    ],
+    'Uranium Mining': [
+      'Regulated Utility',
+      'Nuclear Equipment',
+      'Industrial Gases',
+    ],
+    'Specialty Grocery': [
+      'Packaged Foods',
+      'Food Distribution',
+      'Consumer Staples',
+    ],
+    'Bakery/Snacks': [
+      'Food Distribution',
+      'Packaged Foods',
+      'Quick Service Restaurant',
+    ],
+    'Furniture/Mattress': [
+      'Residential Construction',
+      'Home Furnishings',
+      'Mass Retail',
+    ],
+    'Truck/Railcar Leasing': [
+      'TL Trucking',
+      'LTL Trucking',
+      'Midstream Pipeline',
+    ],
+    'Food Ingredients/Private Label': [
+      'Specialty Grocery',
+      'Mass Retail',
+      'Packaged Foods',
     ],
   },
 };

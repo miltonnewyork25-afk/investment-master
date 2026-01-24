@@ -9479,6 +9479,402 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Gas Utility',
     tags: ['natural_gas', 'distribution', 'regulated', 'utility', 'pipeline'],
   },
+
+  // ========================================================
+  // AdTech/Digital
+  // ========================================================
+  'PUBM': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'AdTech DSP',
+    tags: ['programmatic', 'digital_advertising', 'supply_side', 'platform'],
+  },
+  'RSI': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2C',
+    industrySegment: 'Online Gaming',
+    tags: ['igaming', 'sports_betting', 'casino', 'mobile'],
+  },
+
+  // ========================================================
+  // Communications/Software
+  // ========================================================
+  'BAND': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'CPaaS',
+    tags: ['voice', 'messaging', 'api', 'communications_platform'],
+  },
+  'PAR': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Restaurant Tech',
+    tags: ['pos', 'payments', 'loyalty', 'restaurant_management'],
+  },
+  'FLYW': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Financial Infrastructure',
+    tags: ['payments', 'education', 'healthcare', 'cross_border'],
+  },
+
+  // ========================================================
+  // Healthcare
+  // ========================================================
+  'USPH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2C',
+    industrySegment: 'Outpatient Rehab',
+    tags: ['physical_therapy', 'ambulatory', 'clinic_network', 'rehabilitation'],
+  },
+  'NEO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Diagnostics',
+    tags: ['genomics', 'oncology', 'testing', 'biomarkers'],
+  },
+  'AZTA': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Science Tools',
+    tags: ['biorepository', 'sample_management', 'genomics_services', 'automation'],
+  },
+  'BIO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Science Tools',
+    tags: ['clinical_diagnostics', 'life_science_research', 'reagents', 'instruments'],
+  },
+
+  // ========================================================
+  // Materials/Mining
+  // ========================================================
+  'TROX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Commodity Chemicals',
+    tags: ['titanium_dioxide', 'pigment', 'mining', 'vertical_integration'],
+  },
+  'CC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Commodity Chemicals',
+    tags: ['titanium_dioxide', 'fluoroproducts', 'chemical_solutions', 'specialty'],
+  },
+  'SMID': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cement/Precast Concrete',
+    tags: ['precast', 'concrete', 'infrastructure', 'sound_walls', 'barriers'],
+  },
+  'UEC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Uranium Mining',
+    tags: ['uranium', 'nuclear', 'isr_mining', 'exploration'],
+  },
+  'DNN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Uranium Mining',
+    tags: ['uranium', 'nuclear', 'exploration', 'athabasca_basin'],
+  },
+  'MAXN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Solar Manufacturing',
+    tags: ['solar_panels', 'photovoltaic', 'shingled_cells', 'residential_solar'],
+  },
+
+  // ========================================================
+  // Energy
+  // ========================================================
+  'SLDP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'EV Battery',
+    tags: ['solid_state', 'battery', 'ev', 'next_gen', 'licensing'],
+  },
+  'RIOT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Crypto Mining',
+    tags: ['bitcoin', 'mining', 'data_center', 'blockchain', 'energy_intensive'],
+  },
+  'CLSK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Crypto Mining',
+    tags: ['bitcoin', 'mining', 'renewable_energy', 'blockchain', 'sustainable'],
+  },
+
+  // ========================================================
+  // Consumer/Retail
+  // ========================================================
+  'COLM': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Outdoor Apparel',
+    tags: ['outdoor', 'sportswear', 'wholesale', 'dtc', 'columbia', 'sorel', 'prana'],
+  },
+  'ACI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Grocery',
+    tags: ['grocery', 'supermarket', 'pharmacy', 'fresh_food', 'private_label'],
+  },
+  'GO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Grocery',
+    tags: ['discount', 'grocery', 'opportunistic', 'closeout', 'value'],
+  },
+  'PLCE': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Basics Apparel',
+    tags: ['children', 'value', 'basics', 'mall', 'ecommerce'],
+  },
+  'GIII': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Basics Apparel',
+    tags: ['licensed_brands', 'outerwear', 'wholesale', 'dkny', 'karl_lagerfeld'],
+  },
+  'LOVE': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Home Furnishings',
+    tags: ['modular', 'furniture', 'dtc', 'showroom', 'sactional'],
+  },
+  'ARHS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Home Furnishings',
+    tags: ['premium', 'furniture', 'showroom', 'artisan', 'handcrafted'],
+  },
+  'MUSA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Convenience Store',
+    tags: ['fuel', 'convenience', 'tobacco', 'snacks', 'walmart_adjacent'],
+  },
+  'PZZA': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Quick Service Restaurant',
+    tags: ['pizza', 'delivery', 'franchise', 'digital_ordering'],
+  },
+  'BLMN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Casual Dining',
+    tags: ['outback', 'steakhouse', 'casual', 'bar_grill', 'carrabba'],
+  },
+  'JJSF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Bakery/Snacks',
+    tags: ['pretzels', 'frozen', 'food_service', 'retail', 'stadium'],
+  },
+  'SNBR': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Furniture/Mattress',
+    tags: ['smart_bed', 'sleep_technology', 'dtc', 'adjustable', 'biometric'],
+  },
+  'FIZZ': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Soft Drinks',
+    tags: ['lacroix', 'sparkling_water', 'flavored', 'health_conscious'],
+  },
+  'IRBT': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Smart Home',
+    tags: ['robot_vacuum', 'roomba', 'home_automation', 'iot'],
+  },
+
+  // ========================================================
+  // Transport/Logistics
+  // ========================================================
+  'HTLD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'TL Trucking',
+    tags: ['truckload', 'dry_van', 'dedicated', 'refrigerated'],
+  },
+  'GATX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Truck/Railcar Leasing',
+    tags: ['railcar', 'leasing', 'fleet_management', 'tank_cars'],
+  },
+  'CSV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Death Care',
+    tags: ['funeral', 'cemetery', 'cremation', 'preneed', 'memorial'],
+  },
+
+  // ========================================================
+  // Specialty Vehicles
+  // ========================================================
+  'REVG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Vehicles',
+    tags: ['fire_trucks', 'ambulance', 'bus', 'recreation', 'specialty'],
+  },
+
+  // ========================================================
+  // Industrials
+  // ========================================================
+  'THS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Food Ingredients/Private Label',
+    tags: ['private_label', 'snacks', 'beverages', 'meals', 'co_manufacturing'],
+  },
+  'BERY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Flexible Packaging',
+    tags: ['plastic', 'film', 'containers', 'consumer_packaging', 'healthcare_packaging'],
+  },
+  'HURN': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Professional Services',
+    tags: ['consulting', 'healthcare', 'education', 'digital', 'strategy'],
+  },
+  'ICF': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Professional Services',
+    tags: ['government', 'consulting', 'technology', 'environment', 'defense'],
+  },
+
+  // ========================================================
+  // Semiconductors/Electronics
+  // ========================================================
+  'LITE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'High-Speed Interconnect',
+    tags: ['optical', 'photonics', 'telecom', 'datacom', '3d_sensing'],
+  },
+  'VIAV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'High-Speed Interconnect',
+    tags: ['network_test', 'optical', 'anti_counterfeiting', 'fiber_optics'],
+  },
+
+  // ========================================================
+  // Outdoor Equipment
+  // ========================================================
+  'YETI': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Outdoor Equipment',
+    tags: ['coolers', 'drinkware', 'outdoor', 'premium', 'lifestyle'],
+  },
+  'CLAR': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Outdoor Equipment',
+    tags: ['black_diamond', 'sierra', 'rhino_rack', 'climbing', 'adventure'],
+  },
 };
 
 // ============================================================
