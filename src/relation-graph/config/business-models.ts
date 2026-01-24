@@ -10568,6 +10568,293 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Specialty Ingredients',
     tags: ['nutrition', 'minerals', 'flavors', 'animal_health'],
   },
+
+  // ========================================================
+  // 保险/博彩 (Insurance/Gaming)
+  // ========================================================
+
+  'HCI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Homeowners Insurance',
+    tags: ['property_insurance', 'florida', 'catastrophe'],
+  },
+  'GDEN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Casino/Tavern Gaming',
+    tags: ['casino', 'tavern', 'gaming', 'food_beverage'],
+  },
+  'RRR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Casino',
+    tags: ['casino', 'resort', 'locals_gaming', 'las_vegas'],
+  },
+  'CHDN': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Horse Racing/Gaming',
+    tags: ['horse_racing', 'gaming', 'twinspires', 'historical_racing'],
+  },
+
+  // ========================================================
+  // 广告科技/营销 (AdTech/Marketing)
+  // ========================================================
+
+  'IAS': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Ad Verification',
+    tags: ['ad_verification', 'brand_safety', 'viewability', 'fraud_detection'],
+  },
+  'ZETA': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Marketing Data Platform',
+    tags: ['data_platform', 'marketing_automation', 'cdp', 'ai_marketing'],
+  },
+  'CARG': {
+    assetModel: 'platform',
+    revenueModels: ['advertising', 'subscription'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2C',
+    industrySegment: 'Auto Marketplace',
+    tags: ['auto_marketplace', 'car_shopping', 'dealer_listings', 'digital_retail'],
+  },
+
+  // ========================================================
+  // 房车/汽车 (Auto/RV)
+  // ========================================================
+
+  'LCII': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'RV Components',
+    tags: ['rv_components', 'chassis', 'windows', 'doors'],
+  },
+  'WGO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'RV Manufacturing',
+    tags: ['motorhome', 'towable', 'marine', 'rv_manufacturing'],
+  },
+  'CWH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'RV Retail',
+    tags: ['rv_dealer', 'parts', 'service', 'accessories'],
+  },
+  'FOXF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Performance Suspension',
+    tags: ['suspension', 'shocks', 'off_road', 'performance'],
+  },
+  'MPAA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Auto Parts Remanufacturing',
+    tags: ['remanufacturing', 'alternators', 'starters', 'brake_calipers'],
+  },
+
+  // ========================================================
+  // 汽车配件 (Auto Parts)
+  // ========================================================
+
+  'LKQ': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Alternative Auto Parts',
+    tags: ['aftermarket', 'recycled', 'salvage', 'collision_repair'],
+  },
+
+  // ========================================================
+  // 食品/饮料 (Food/Beverage)
+  // ========================================================
+
+  'JBSS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Nut Processing',
+    tags: ['nuts', 'snacks', 'private_label', 'branded'],
+  },
+  'BGS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Packaged Foods',
+    tags: ['shelf_stable', 'frozen', 'spices', 'branded_foods'],
+  },
+  'UTZ': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Salty Snacks',
+    tags: ['chips', 'pretzels', 'snacks', 'dsd_distribution'],
+  },
+  'HAIN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Natural Foods',
+    tags: ['organic', 'natural', 'health_foods', 'baby_food'],
+  },
+
+  // ========================================================
+  // 医疗服务 (Healthcare Services)
+  // ========================================================
+
+  'CHE': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2C',
+    industrySegment: 'Hospice Care',
+    tags: ['hospice', 'palliative', 'vitas', 'end_of_life'],
+  },
+  'NHC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2C',
+    industrySegment: 'Long-term Care',
+    tags: ['nursing_home', 'assisted_living', 'rehabilitation'],
+  },
+  'ADUS': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2C',
+    industrySegment: 'Home Health Services',
+    tags: ['home_care', 'personal_care', 'hospice', 'medicaid'],
+  },
+
+  // ========================================================
+  // 房地产 (Real Estate)
+  // ========================================================
+
+  'NMRK': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Commercial RE Services',
+    tags: ['commercial_brokerage', 'capital_markets', 'leasing', 'valuation'],
+  },
+  'RMR': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'REIT Management',
+    tags: ['reit_management', 'property_management', 'advisory'],
+  },
+  'HHH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Master Planned Communities',
+    tags: ['master_planned', 'mixed_use', 'land_development', 'seaport'],
+  },
+
+  // ========================================================
+  // 教育 (Education)
+  // ========================================================
+
+  'LRN': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Online K-12',
+    tags: ['virtual_school', 'k12', 'online_learning', 'curriculum'],
+  },
+  'ATGE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Healthcare Education',
+    tags: ['medical_school', 'nursing', 'healthcare_training', 'professional'],
+  },
+
+  // ========================================================
+  // 人力资源 (Staffing)
+  // ========================================================
+
+  'KFRC': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Staffing/Workforce',
+    tags: ['tech_staffing', 'finance_staffing', 'professional'],
+  },
+  'KELYA': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Staffing/Workforce',
+    tags: ['workforce_solutions', 'outsourcing', 'temp_staffing'],
+  },
+
+  // ========================================================
+  // 环保 (Environmental)
+  // ========================================================
+
+  'MEG': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Environmental Consulting',
+    tags: ['environmental_testing', 'remediation', 'compliance', 'consulting'],
+  },
+
+  // ========================================================
+  // SaaS
+  // ========================================================
+
+  'FRSH': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Customer Service SaaS',
+    tags: ['helpdesk', 'crm', 'itsm', 'customer_engagement'],
+  },
 };
 
 // ============================================================

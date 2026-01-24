@@ -3314,6 +3314,130 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['local_service', 'relationship', 'community'],
     channels: ['branch', 'online', 'mobile'],
   },
+
+  // ========== 保险 (Insurance B2B2C) ==========
+  'HCI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_purchase', 'policy_renewal', 'property_protection'],
+    valueProps: ['coverage', 'claims_service', 'affordability'],
+    channels: ['agent', 'online'],
+  },
+
+  // ========== 博彩/娱乐 (Casino/Gaming B2C) ==========
+  'GDEN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['entertainment', 'gambling', 'dining'],
+    valueProps: ['excitement', 'entertainment', 'rewards'],
+    channels: ['casino', 'online', 'app'],
+  },
+  'RRR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['entertainment', 'gambling', 'dining'],
+    valueProps: ['excitement', 'entertainment', 'rewards'],
+    channels: ['casino', 'online', 'app'],
+  },
+  'CHDN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['entertainment', 'gambling', 'dining'],
+    valueProps: ['excitement', 'entertainment', 'rewards'],
+    channels: ['casino', 'online', 'app'],
+  },
+
+  // ========== 汽车市场 (Auto Marketplace B2C) ==========
+  'CARG': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['car_shopping', 'selling_car'],
+    valueProps: ['transparency', 'comparison', 'convenience'],
+    channels: ['online', 'app'],
+  },
+
+  // ========== 房车/户外 (RV/Outdoor B2C/B2B2C) ==========
+  'WGO': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['recreation', 'travel', 'retirement'],
+    valueProps: ['freedom', 'adventure', 'quality'],
+    channels: ['dealer', 'online'],
+  },
+  'CWH': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['recreation', 'travel', 'retirement'],
+    valueProps: ['freedom', 'adventure', 'quality'],
+    channels: ['dealer', 'online'],
+  },
+  'FOXF': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['recreation', 'travel', 'retirement'],
+    valueProps: ['freedom', 'adventure', 'quality'],
+    channels: ['dealer', 'online'],
+  },
+
+  // ========== 食品品牌 (Food B2C/B2B2C) ==========
+  'JBSS': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['grocery_shopping', 'snacking'],
+    valueProps: ['taste', 'value', 'convenience'],
+    channels: ['grocery', 'mass_retail', 'online'],
+  },
+  'BGS': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['grocery_shopping', 'snacking'],
+    valueProps: ['taste', 'value', 'convenience'],
+    channels: ['grocery', 'mass_retail', 'online'],
+  },
+  'UTZ': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['grocery_shopping', 'snacking'],
+    valueProps: ['taste', 'value', 'convenience'],
+    channels: ['grocery', 'mass_retail', 'online'],
+  },
+  'HAIN': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['grocery_shopping', 'snacking'],
+    valueProps: ['taste', 'value', 'convenience'],
+    channels: ['grocery', 'mass_retail', 'online'],
+  },
+
+  // ========== 医疗服务 (Healthcare B2C) ==========
+  'CHE': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'all', gender: 'all' },
+    occasions: ['healthcare_need', 'aging_care'],
+    valueProps: ['quality_care', 'compassion', 'proximity'],
+    channels: ['healthcare_provider', 'referral'],
+  },
+  'NHC': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'all', gender: 'all' },
+    occasions: ['healthcare_need', 'aging_care'],
+    valueProps: ['quality_care', 'compassion', 'proximity'],
+    channels: ['healthcare_provider', 'referral'],
+  },
+  'ADUS': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'all', gender: 'all' },
+    occasions: ['healthcare_need', 'aging_care'],
+    valueProps: ['quality_care', 'compassion', 'proximity'],
+    channels: ['healthcare_provider', 'referral'],
+  },
+
+  // ========== 房地产 (Real Estate B2C) ==========
+  'HHH': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_purchase', 'community_living'],
+    valueProps: ['master_plan', 'amenities', 'appreciation'],
+    channels: ['model_homes', 'realtor', 'online'],
+  },
+
+  // ========== 教育 (Education B2C) ==========
+  'LRN': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['education', 'career_change'],
+    valueProps: ['flexibility', 'career_outcomes', 'accreditation'],
+    channels: ['online', 'campus'],
+  },
+  'ATGE': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['education', 'career_change'],
+    valueProps: ['flexibility', 'career_outcomes', 'accreditation'],
+    channels: ['online', 'campus'],
+  },
 };
 
 // ============================================================
@@ -4913,6 +5037,57 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'IOSP': 'mid',            // Innospec - 特种化学品(中周期)
   'CBT': 'mid',             // Cabot Corp - 炭黑/特种化学品(中周期)
   'BCPC': 'mid',            // Balchem Corp - 特种配料(中周期)
+
+  // Insurance/Gaming
+  'HCI': 'mid',             // HCI Group - 房屋保险(中周期)
+  'GDEN': 'mid',            // Golden Entertainment - 博彩/酒馆(中周期)
+  'RRR': 'mid',             // Red Rock Resorts - 赌场(中周期)
+  'CHDN': 'mid',            // Churchill Downs - 赛马/博彩(中周期)
+
+  // AdTech/Marketing
+  'IAS': 'defensive',       // Integral Ad Science - 广告验证(防御型)
+  'ZETA': 'mid',            // Zeta Global - 营销数据平台(中周期)
+  'CARG': 'mid',            // CarGurus - 汽车市场平台(中周期)
+
+  // Auto/RV
+  'LCII': 'mid',            // LCI Industries - 房车零部件(中周期)
+  'WGO': 'mid',             // Winnebago - 房车制造(中周期)
+  'CWH': 'mid',             // Camping World - 房车零售(中周期)
+  'FOXF': 'mid',            // Fox Factory - 悬挂系统(中周期)
+  'MPAA': 'mid',            // Motorcar Parts - 汽车零件再制造(中周期)
+
+  // Auto Parts
+  'LKQ': 'mid',             // LKQ Corp - 替代汽车配件(中周期)
+
+  // Food/Beverage
+  'JBSS': 'defensive',      // John B. Sanfilippo - 坚果加工(防御型)
+  'BGS': 'defensive',       // B&G Foods - 包装食品(防御型)
+  'UTZ': 'defensive',       // Utz Brands - 咸味零食(防御型)
+  'HAIN': 'defensive',      // Hain Celestial - 天然有机食品(防御型)
+
+  // Healthcare Services
+  'CHE': 'defensive',       // Chemed/VITAS - 临终关怀(防御型)
+  'NHC': 'defensive',       // National HealthCare - 长期护理(防御型)
+  'ADUS': 'defensive',      // Addus HomeCare - 家庭健康服务(防御型)
+
+  // Real Estate
+  'NMRK': 'mid',            // Newmark Group - 商业地产服务(中周期)
+  'RMR': 'defensive',       // RMR Group - REIT管理(防御型)
+  'HHH': 'early',           // Howard Hughes - 总体规划社区(早周期)
+
+  // Education
+  'LRN': 'defensive',       // Stride Inc - 在线K-12教育(防御型)
+  'ATGE': 'defensive',      // Adtalem Global - 医疗教育(防御型)
+
+  // Staffing
+  'KFRC': 'mid',            // Kforce - 科技/金融人力(中周期)
+  'KELYA': 'mid',           // Kelly Services - 人力资源(中周期)
+
+  // Environmental
+  'MEG': 'defensive',       // Montrose Environmental - 环保咨询(防御型)
+
+  // SaaS
+  'FRSH': 'mid',            // Freshworks - 客服SaaS(中周期)
 };
 
 // ============================================================
@@ -10145,6 +10320,146 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'BCPC': {
     interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
     consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+
+  // Insurance
+  'HCI': {
+    interestRate: 0.4, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Gaming/Casino
+  'GDEN': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'RRR': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'CHDN': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // AdTech/Marketing
+  'IAS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'ZETA': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'CARG': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // RV/Recreation
+  'LCII': {
+    interestRate: -0.4, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.3,
+  },
+  'WGO': {
+    interestRate: -0.4, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.3,
+  },
+  'CWH': {
+    interestRate: -0.4, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.3,
+  },
+  'FOXF': {
+    interestRate: -0.4, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.3,
+  },
+
+  // Auto Parts
+  'MPAA': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'LKQ': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+
+  // Food/Staples
+  'JBSS': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'BGS': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'UTZ': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'HAIN': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // Healthcare Services
+  'CHE': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'NHC': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'ADUS': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Real Estate Services
+  'NMRK': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'RMR': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'HHH': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Education
+  'LRN': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: -0.2, unemployment: 0.3,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'ATGE': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: -0.2, unemployment: 0.3,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Staffing
+  'KFRC': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.6,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'KELYA': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.6,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Environmental
+  'MEG': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+
+  // SaaS
+  'FRSH': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
   },
 };
 

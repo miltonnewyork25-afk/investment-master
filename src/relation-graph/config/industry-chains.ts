@@ -2687,6 +2687,57 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'IOSP': 'Specialty Chemicals',           // Innospec - 特种化学品
     'CBT': 'Carbon Black',                   // Cabot Corp - 炭黑
     'BCPC': 'Specialty Ingredients',         // Balchem Corp - 特种配料
+
+    // Insurance/Gaming
+    'HCI': 'Homeowners Insurance',             // HCI Group - 房屋保险
+    'GDEN': 'Casino/Tavern Gaming',            // Golden Entertainment - 博彩/酒馆
+    'RRR': 'Casino/Tavern Gaming',             // Red Rock Resorts - 赌场
+    'CHDN': 'Horse Racing/Gaming',             // Churchill Downs - 赛马/博彩
+
+    // AdTech/Marketing
+    'IAS': 'Ad Verification',                  // Integral Ad Science - 广告验证
+    'ZETA': 'Marketing Data Platform',         // Zeta Global - 营销数据平台
+    'CARG': 'Auto Marketplace',                // CarGurus - 汽车市场平台
+
+    // Auto/RV
+    'LCII': 'RV Components',                   // LCI Industries - 房车零部件
+    'WGO': 'RV Manufacturing',                 // Winnebago - 房车制造
+    'CWH': 'RV Retail',                        // Camping World - 房车零售
+    'FOXF': 'Performance Suspension',          // Fox Factory - 高性能悬挂
+    'MPAA': 'Auto Parts Remanufacturing',      // Motorcar Parts - 汽车零件再制造
+
+    // Auto Parts
+    'LKQ': 'Alternative Auto Parts',           // LKQ Corp - 替代汽车配件
+
+    // Food/Beverage
+    'JBSS': 'Nut Processing',                  // John B. Sanfilippo - 坚果加工
+    'BGS': 'Packaged Foods',                   // B&G Foods - 包装食品
+    'UTZ': 'Salty Snacks',                     // Utz Brands - 咸味零食
+    'HAIN': 'Natural Foods',                   // Hain Celestial - 天然有机食品
+
+    // Healthcare Services
+    'CHE': 'Hospice Care',                     // Chemed/VITAS - 临终关怀
+    'NHC': 'Long-term Care',                   // National HealthCare - 长期护理
+    'ADUS': 'Home Health Services',            // Addus HomeCare - 家庭健康服务
+
+    // Real Estate
+    'NMRK': 'Commercial RE Services',          // Newmark Group - 商业地产服务
+    'RMR': 'REIT Management',                  // RMR Group - REIT管理
+    'HHH': 'Master Planned Communities',       // Howard Hughes - 总体规划社区
+
+    // Education
+    'LRN': 'Online K-12',                      // Stride Inc - 在线K-12教育
+    'ATGE': 'Healthcare Education',            // Adtalem Global - 医疗教育
+
+    // Staffing
+    'KFRC': 'Staffing/Workforce',              // Kforce - 科技/金融人力
+    'KELYA': 'Staffing/Workforce',             // Kelly Services - 人力资源
+
+    // Environmental
+    'MEG': 'Environmental Consulting',         // Montrose Environmental - 环保咨询
+
+    // SaaS
+    'FRSH': 'Customer Service SaaS',           // Freshworks - 客服SaaS
   },
 
   // ============================================================
@@ -5297,6 +5348,110 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Animal Health',                // 动物健康客户
       'Specialty Chemicals',          // 化学品同行
     ],
+
+    // ========== 保险产业链 ==========
+    // 房屋保险 → 房地产相关
+    'Homeowners Insurance': [
+      'Master Planned Communities',   // 房屋社区客户
+    ],
+
+    // ========== 博彩/娱乐产业链 ==========
+    'Casino/Tavern Gaming': [
+      'Resorts & Casinos',            // 赌场同行
+    ],
+
+    'Horse Racing/Gaming': [
+      'Resorts & Casinos',            // 赌场同行
+    ],
+
+    // ========== 广告科技产业链 ==========
+    // 广告验证 → 广告平台
+    'Ad Verification': [
+      'Marketing Data Platform',      // 营销平台下游
+    ],
+
+    // 营销数据平台 → 广告投放
+    'Marketing Data Platform': [
+      'Advertising Agencies',         // 广告代理客户
+    ],
+
+    // 汽车市场平台 → 经销商
+    'Auto Marketplace': [
+      'Auto & Truck Dealerships',     // 汽车经销商
+    ],
+
+    // ========== 房车产业链 ==========
+    // 零部件 → 制造 → 零售
+    'RV Components': [
+      'RV Manufacturing',             // 房车制造商
+    ],
+
+    'RV Manufacturing': [
+      'RV Retail',                    // 房车零售商
+    ],
+
+    'RV Retail': [],                  // 终端消费
+
+    // 高性能悬挂 → 户外/汽车
+    'Performance Suspension': [
+      'RV Manufacturing',             // 房车制造
+      'Auto - Manufacturers',         // 汽车制造
+    ],
+
+    // ========== 汽车配件产业链 ==========
+    'Auto Parts Remanufacturing': [
+      'Alternative Auto Parts',       // 替代配件分销
+    ],
+
+    'Alternative Auto Parts': [
+      'Auto & Truck Dealerships',     // 汽车经销商
+    ],
+
+    // ========== 食品产业链 ==========
+    'Nut Processing': [
+      'Packaged Foods',               // 包装食品
+      'Salty Snacks',                 // 零食客户
+    ],
+
+    'Salty Snacks': [],               // 终端消费
+
+    'Natural Foods': [],              // 终端消费
+
+    // ========== 医疗服务产业链 ==========
+    'Hospice Care': [],               // 终端患者
+
+    'Long-term Care': [
+      'Home Health Services',         // 居家护理转介
+    ],
+
+    'Home Health Services': [],       // 终端患者
+
+    // ========== 房地产服务产业链 ==========
+    'Commercial RE Services': [
+      'REIT Management',              // REIT管理
+    ],
+
+    'REIT Management': [],            // 终端REIT
+
+    'Master Planned Communities': [], // 终端购房者
+
+    // ========== 教育产业链 ==========
+    'Online K-12': [],                // 终端学生
+
+    'Healthcare Education': [
+      'Hospice Care',                 // 医疗服务人才输送
+      'Long-term Care',               // 护理人才输送
+      'Home Health Services',         // 家庭护理人才输送
+    ],
+
+    // ========== 人力资源产业链 ==========
+    'Staffing/Workforce': [],         // 终端企业客户
+
+    // ========== 环保产业链 ==========
+    'Environmental Consulting': [],   // 终端企业/政府客户
+
+    // ========== SaaS产业链 ==========
+    'Customer Service SaaS': [],      // 终端企业客户
   },
 };
 
