@@ -1076,7 +1076,10 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // 大型零售 (Mass Retail)
     'WMT': 'Mass Retail',                 // Walmart
     'COST': 'Warehouse Club',             // Costco
+    'BJ': 'Warehouse Club',              // BJ's Wholesale Club
     'TGT': 'Mass Retail',                 // Target
+    'M': 'Department Store',              // Macy's
+    'KSS': 'Department Store',            // Kohl's
     'DG': 'Dollar Store',                 // Dollar General
     'DLTR': 'Dollar Store',               // Dollar Tree
 
@@ -1084,6 +1087,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'HD': 'Home Improvement',             // Home Depot
     'LOW': 'Home Improvement',            // Lowe's
     'BBY': 'Electronics Retail',          // Best Buy
+    'CHWY': 'Pet E-commerce',             // Chewy - 宠物电商
+    'PTON': 'Connected Fitness',          // Peloton - 健身
     'ULTA': 'Beauty Retail',              // Ulta
     'LULU': 'Athletic Apparel',           // Lululemon
     'NKE': 'Athletic Apparel',            // Nike

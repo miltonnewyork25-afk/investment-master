@@ -1098,6 +1098,82 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['efficiency', 'reliability', 'monitoring', 'microinverter'],
     channels: ['installer', 'online'],
   },
+
+  // ========== 包装食品补充 ==========
+  'CAG': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['frozen_meals', 'snacking', 'family_dinner', 'convenience'],
+    valueProps: ['convenience', 'brands', 'value', 'variety'],
+    channels: ['grocery', 'mass_retail', 'warehouse'],
+  },
+  'CPB': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['soup', 'snacking', 'comfort_food', 'quick_meal'],
+    valueProps: ['trust', 'nostalgia', 'convenience', 'brands'],
+    channels: ['grocery', 'mass_retail'],
+  },
+  'SJM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['breakfast', 'coffee', 'pet_food', 'baking'],
+    valueProps: ['quality', 'brands', 'taste', 'tradition'],
+    channels: ['grocery', 'mass_retail', 'warehouse'],
+  },
+  'TSN': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['protein', 'family_meals', 'grilling', 'meal_prep'],
+    valueProps: ['quality', 'variety', 'value', 'protein_brands'],
+    channels: ['grocery', 'mass_retail', 'warehouse', 'foodservice'],
+  },
+  'CHD': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['cleaning', 'personal_care', 'laundry', 'wellness'],
+    valueProps: ['value', 'trusted_brands', 'efficacy', 'variety'],
+    channels: ['grocery', 'mass_retail', 'warehouse', 'online'],
+  },
+
+  // ========== 消费金融 ==========
+  'SYF': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['large_purchase', 'home_improvement', 'healthcare', 'retail_financing'],
+    valueProps: ['financing_options', 'rewards', 'partnership', 'accessibility'],
+    channels: ['retail_partner', 'online', 'mobile'],
+  },
+
+  // ========== 家具/家居零售补充 ==========
+  'W': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_furnishing', 'apartment', 'renovation', 'decor'],
+    valueProps: ['selection', 'value', 'convenience', 'visualization'],
+    channels: ['online', 'mobile'],
+  },
+
+  // ========== 汽车零售 ==========
+  'CVNA': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['car_purchase', 'trade_in', 'financing', 'convenience'],
+    valueProps: ['no_haggle', 'delivery', 'selection', 'digital_first'],
+    channels: ['online', 'vending_machine'],
+  },
+
+  // ========== 时尚/奢侈品 ==========
+  'CPRI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['luxury', 'fashion', 'accessory', 'formal'],
+    valueProps: ['glamour', 'brands', 'craftsmanship', 'status'],
+    channels: ['retail', 'online', 'wholesale'],
+  },
+  'VFC': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['outdoor', 'workwear', 'casual', 'adventure'],
+    valueProps: ['durability', 'heritage', 'performance', 'brands'],
+    channels: ['retail', 'online', 'wholesale'],
+  },
+  'PVH': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['fashion', 'basics', 'underwear', 'denim'],
+    valueProps: ['iconic_brands', 'style', 'quality', 'global'],
+    channels: ['retail', 'wholesale', 'online'],
+  },
 };
 
 // ============================================================
@@ -1649,13 +1725,18 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // ---------- 食品零售/分销 ----------
   'WMT': 'defensive', // Walmart
   'COST': 'defensive', // Costco
+  'BJ': 'defensive',  // BJ's Wholesale Club
   'KR': 'defensive',  // Kroger
   'SYY': 'defensive', // Sysco
   'USFD': 'defensive', // US Foods
 
-  // ---------- 折扣零售 ----------
+  // ---------- 折扣零售/百货 ----------
   'DG': 'defensive',  // Dollar General
   'DLTR': 'defensive', // Dollar Tree
+  'M': 'mid',         // Macy's - 百货周期
+  'KSS': 'mid',       // Kohl's - 百货周期
+  'CHWY': 'defensive', // Chewy - 宠物必需品
+  'PTON': 'early',    // Peloton - 可选消费
 
   // ---------- 公用事业 ----------
   'NEE': 'defensive', // 公用事业
@@ -3206,6 +3287,10 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
     consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
   },
+  'BJ': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
   'KR': {
     interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.1,
     consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
@@ -3223,6 +3308,26 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'DLTR': {
     interestRate: 0.0, inflation: 0.1, gdpGrowth: -0.1, unemployment: 0.3,
     consumerConfidence: -0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // 百货 - 消费周期敏感
+  'M': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'KSS': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // 宠物/健身电商
+  'CHWY': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'PTON': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.0,
   },
 
   // ========== 消费可选 (高宏观敏感度 - 周期性) ==========

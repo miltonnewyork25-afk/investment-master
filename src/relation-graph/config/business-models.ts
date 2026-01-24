@@ -168,6 +168,14 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Retail',
     tags: ['membership', 'bulk', 'limited_sku', 'treasure_hunt'],
   },
+  'BJ': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Retail',
+    tags: ['membership', 'warehouse_club', 'grocery', 'bulk'],
+  },
 
   // 电商平台
   'AMZN': {
@@ -193,6 +201,38 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'C2C',
     industrySegment: 'Retail',
     tags: ['handmade', 'unique', 'small_business'],
+  },
+  'CHWY': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty E-commerce',
+    tags: ['pet_supplies', 'autoship', 'pharmacy', 'pet_health'],
+  },
+  'PTON': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Connected Fitness',
+    tags: ['fitness_equipment', 'streaming', 'community', 'wellness'],
+  },
+  'M': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Department Store',
+    tags: ['department_store', 'omnichannel', 'private_label', 'loyalty'],
+  },
+  'KSS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Department Store',
+    tags: ['department_store', 'value', 'kohls_cash', 'private_label'],
   },
 
   // 折扣零售
