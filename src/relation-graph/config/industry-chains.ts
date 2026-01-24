@@ -2209,6 +2209,36 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'NYT': 'Digital Media',               // New York Times - 数字新闻
     'SHAK': 'Fast Casual',               // Shake Shack - 快休闲汉堡
     'ERIE': 'P&C Insurance',              // Erie Indemnity - 财产险
+    'TXRH': 'Fast Casual',               // Texas Roadhouse - 休闲牛排
+    'EAT': 'Fast Casual',                // Brinker - Chili's/Maggiano's
+    'PLAY': 'Live Entertainment',         // Dave & Buster's - 娱乐餐饮
+    'ESS': 'Apartment REIT',             // Essex Property - 西海岸公寓
+    'UDR': 'Apartment REIT',             // UDR - 公寓REIT
+    'SUI': 'Specialty REIT',             // Sun Communities - 制造房/RV
+    'APPN': 'Enterprise SaaS',           // Appian - 低代码平台
+    'BRZE': 'Enterprise SaaS',           // Braze - 客户互动平台
+    'DOCN': 'Cloud Infrastructure',      // DigitalOcean - 开发者云
+    'ZI': 'Enterprise SaaS',             // ZoomInfo - B2B数据/情报
+    'ESTC': 'Enterprise SaaS',           // Elastic - 搜索/可观测性
+    'CRDO': 'High-Speed Interconnect',   // Credo Technology - 高速互连
+    'WRB': 'P&C Insurance',              // W.R. Berkley - 专业财险
+    'RNR': 'Reinsurance',                // RenaissanceRe - 再保险
+    'ACGL': 'Reinsurance',               // Arch Capital - 再保险
+    'AFG': 'P&C Insurance',              // American Financial - 专业险
+    'GMS': 'Building Products Distribution', // GMS - 墙板/天花分销
+    'BECN': 'Building Products Distribution', // Beacon - 屋顶分销
+    'FND': 'Home Improvement',           // Floor & Decor - 地板/瓷砖
+    'AWI': 'Building Products',          // Armstrong World - 天花/墙面
+    'DGX': 'Diagnostics',               // Quest Diagnostics - 检验
+    'LH': 'Diagnostics',                // Labcorp - 检验/药物开发
+    'SAIC': 'Defense IT',                // SAIC - 政府IT
+    'CACI': 'Defense IT',                // CACI - 国防/情报IT
+    'DIOD': 'Analog Semis',             // Diodes - 分立/模拟
+    'VSH': 'Electronic Components',     // Vishay - 被动元件/分立
+    'AVNT': 'Specialty Chemicals',       // Avient - 特种聚合物
+    'OLN': 'Specialty Chemicals',        // Olin - 氯碱化工/弹药
+    'PFGC': 'Food Distribution',         // Performance Food - 餐饮配送
+    'CACC': 'Subprime Auto',             // Credit Acceptance - 次贷汽车
   },
 
   // ============================================================
@@ -3822,6 +3852,48 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Asset Management': [
       'Brokerage',               // 经纪渠道
       'Regional Bank',           // 银行财富管理
+    ],
+
+    // ========== 新增子行业链 - 第六批 (30只新股票) ==========
+
+    // 公寓REIT → 住房市场
+    'Apartment REIT': [
+      'Homebuilder',             // 新建公寓/出租住宅
+      'Residential REIT',        // 住宅REIT同行
+      'Home Improvement',        // 租户装修需求
+    ],
+
+    // 再保险 → P&C保险
+    'Reinsurance': [
+      'P&C Insurance',           // 分保业务
+      'Life Insurance',          // 寿险再保
+    ],
+
+    // 建材分销 → 建筑商
+    'Building Products Distribution': [
+      'Homebuilder',             // 住宅建商客户
+      'Building Products',       // 上游建材供应
+      'E&C Contractor',          // 商业工程承包
+    ],
+
+    // 次贷汽车 → 汽车经销
+    'Subprime Auto': [
+      'Auto Dealer',             // 经销商合作
+      'P&C Insurance',           // 车险配套
+    ],
+
+    // 高速互连 → 数据中心/网络
+    'High-Speed Interconnect': [
+      'Network Equipment',       // 网络设备客户
+      'Data Center REIT',        // 数据中心互连
+      'Cloud Hyperscaler',       // 超大规模云
+    ],
+
+    // 电子元件 → 终端产品
+    'Electronic Components': [
+      'Consumer Electronics',    // 消费电子终端
+      'Auto - Manufacturers',    // 汽车电子
+      'Industrial Conglomerate', // 工业设备
     ],
 
   },

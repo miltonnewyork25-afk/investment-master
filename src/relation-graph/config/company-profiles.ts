@@ -1972,6 +1972,80 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['reliability', 'essential_service', 'infrastructure'],
     channels: ['direct', 'utility_billing'],
   },
+
+  // ========== 第六批: 餐饮/REIT/诊断/汽车金融 ==========
+
+  // --- 休闲餐饮(B2C) ---
+  'TXRH': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['dinner', 'family_dining', 'casual_dining', 'celebration'],
+    valueProps: ['value', 'quality_steak', 'family_friendly', 'fresh_baked'],
+    channels: ['dine_in', 'takeout'],
+  },
+  'EAT': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['lunch', 'dinner', 'casual_dining', 'happy_hour'],
+    valueProps: ['value', 'variety', 'convenience', 'familiar'],
+    channels: ['dine_in', 'delivery', 'takeout'],
+  },
+  'PLAY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['entertainment', 'group_outing', 'date_night', 'events'],
+    valueProps: ['fun', 'experience', 'games', 'social', 'food_drinks'],
+    channels: ['dine_in', 'events', 'mobile_app'],
+  },
+
+  // --- 公寓REIT(B2B2C) ---
+  'ESS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['housing', 'rental', 'relocation', 'urban_living'],
+    valueProps: ['location', 'amenities', 'west_coast', 'quality'],
+    channels: ['online', 'direct', 'broker'],
+  },
+  'UDR': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['housing', 'rental', 'relocation'],
+    valueProps: ['amenities', 'convenience', 'diverse_markets', 'quality'],
+    channels: ['online', 'direct', 'broker'],
+  },
+
+  // --- 特殊REIT(B2C) ---
+  'SUI': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['housing', 'retirement', 'rv_living', 'vacation'],
+    valueProps: ['affordability', 'community', 'lifestyle', 'outdoor'],
+    channels: ['direct', 'online'],
+  },
+
+  // --- 地板零售(B2B2C) ---
+  'FND': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['renovation', 'new_home', 'flooring', 'remodel'],
+    valueProps: ['selection', 'value', 'warehouse', 'pro_quality'],
+    channels: ['retail', 'online', 'pro_desk'],
+  },
+
+  // --- 诊断检验(B2B2C) ---
+  'DGX': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['health_screening', 'diagnostic', 'employer_testing', 'routine'],
+    valueProps: ['accuracy', 'convenience', 'network', 'reliability'],
+    channels: ['direct', 'physician_referral', 'employer'],
+  },
+  'LH': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['health_screening', 'diagnostic', 'clinical_trial', 'drug_development'],
+    valueProps: ['accuracy', 'comprehensive', 'research', 'innovation'],
+    channels: ['direct', 'physician_referral', 'pharma_partner'],
+  },
+
+  // --- 次贷汽车金融(B2B2C) ---
+  'CACC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['car_purchase', 'auto_financing', 'credit_rebuild'],
+    valueProps: ['accessibility', 'second_chance', 'dealer_network', 'approval'],
+    channels: ['dealer', 'online'],
+  },
 };
 
 // ============================================================
@@ -3111,6 +3185,36 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'NYT': 'defensive',   // NYT - 数字订阅(防御)
   'SHAK': 'mid',        // Shake Shack - 快休闲
   'ERIE': 'defensive',  // Erie Indemnity - 财产险(防御)
+  'TXRH': 'mid',        // Texas Roadhouse - 休闲牛排(中周期)
+  'EAT': 'mid',         // Brinker - Chili's(中周期)
+  'PLAY': 'mid',        // Dave & Buster's - 娱乐餐饮(中周期)
+  'ESS': 'defensive',   // Essex Property - 公寓REIT(防御)
+  'UDR': 'defensive',   // UDR - 公寓REIT(防御)
+  'SUI': 'mid',         // Sun Communities - 制造房/RV(中周期)
+  'APPN': 'early',      // Appian - 低代码(早期)
+  'BRZE': 'early',      // Braze - 客户互动(早期)
+  'DOCN': 'mid',        // DigitalOcean - 开发者云(中周期)
+  'ZI': 'mid',          // ZoomInfo - B2B数据(中周期)
+  'ESTC': 'mid',        // Elastic - 搜索/可观测(中周期)
+  'CRDO': 'early',      // Credo Technology - 高速互连(早周期)
+  'WRB': 'defensive',   // W.R. Berkley - 专业财险(防御)
+  'RNR': 'defensive',   // RenaissanceRe - 再保险(防御)
+  'ACGL': 'defensive',  // Arch Capital - 再保险(防御)
+  'AFG': 'defensive',   // American Financial - 专业险(防御)
+  'GMS': 'mid',         // GMS - 建材分销(中周期)
+  'BECN': 'mid',        // Beacon - 屋顶分销(中周期)
+  'FND': 'mid',         // Floor & Decor - 地板(中周期)
+  'AWI': 'mid',         // Armstrong World - 天花(中周期)
+  'DGX': 'defensive',   // Quest Diagnostics - 检验(防御)
+  'LH': 'defensive',    // Labcorp - 检验(防御)
+  'SAIC': 'defensive',  // SAIC - 政府IT(防御)
+  'CACI': 'defensive',  // CACI - 国防IT(防御)
+  'DIOD': 'early',      // Diodes - 模拟/分立(早周期)
+  'VSH': 'early',       // Vishay - 被动元件(早周期)
+  'AVNT': 'mid',        // Avient - 特种聚合物(中周期)
+  'OLN': 'mid',         // Olin - 氯碱化工(中周期)
+  'PFGC': 'mid',        // Performance Food - 餐饮配送(中周期)
+  'CACC': 'early',      // Credit Acceptance - 次贷汽车(早周期)
 };
 
 // ============================================================
@@ -6709,6 +6813,147 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'ERIE': {
     interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
     consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // ========== 第六批: 餐饮/REIT/SaaS/保险/建材/国防/化工 ==========
+
+  // 休闲餐饮 - 消费者可选/食品成本
+  'TXRH': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  'EAT': {
+    interestRate: -0.3, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  // 娱乐餐饮 - 高度可选消费
+  'PLAY': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  // 公寓REIT - 利率敏感/住房相关
+  'ESS': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.7, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'UDR': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.7, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 特殊REIT - 制造房/RV
+  'SUI': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // Enterprise SaaS - 成长型/利率敏感
+  'APPN': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'BRZE': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ZI': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ESTC': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 云基础设施 - SMB/开发者
+  'DOCN': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 高速互连半导体 - 数据中心周期
+  'CRDO': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 专业P&C保险 - 利率正相关/防御
+  'WRB': {
+    interestRate: 0.4, inflation: 0.2, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'AFG': {
+    interestRate: 0.4, inflation: 0.2, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // 再保险 - 利率正相关/灾难事件
+  'RNR': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'ACGL': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 建材分销 - 住房建设周期
+  'GMS': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.7, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'BECN': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.7, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // 地板零售 - 住房/翻新周期
+  'FND': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.7, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // 建材(天花) - 商业建设
+  'AWI': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 诊断检验 - 防御型医疗
+  'DGX': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'LH': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 政府/国防IT - 预算驱动/防御
+  'SAIC': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'CACI': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 模拟/分立半导体 - 工业/汽车周期
+  'DIOD': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'VSH': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 特种化工 - 工业周期/油价
+  'AVNT': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+  'OLN': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+  // 餐饮配送 - 餐饮行业周期
+  'PFGC': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  // 次贷汽车金融 - 利率/信用周期
+  'CACC': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: -0.2, unemployment: 0.3,
+    consumerConfidence: -0.3, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: -0.1,
   },
 };
 

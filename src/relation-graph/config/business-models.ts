@@ -7426,6 +7426,282 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'P&C Insurance',
     tags: ['property', 'casualty', 'auto', 'homeowners', 'independent_agents'],
   },
+
+  // ========================================================
+  // 第六批: 餐饮/REIT/SaaS/保险/建材/国防/化工
+  // ========================================================
+
+  // ---------- Fast Casual / Casual Dining ----------
+  'TXRH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Fast Casual',
+    tags: ['steakhouse', 'casual_dining', 'family', 'value_steak'],
+  },
+  'EAT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Fast Casual',
+    tags: ['chilis', 'maggianos', 'casual_dining', 'value'],
+  },
+  'PLAY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Live Entertainment',
+    tags: ['entertainment_dining', 'arcade', 'games', 'events', 'experience'],
+  },
+
+  // ---------- Apartment REIT ----------
+  'ESS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Apartment REIT',
+    tags: ['west_coast', 'multifamily', 'apartments', 'urban'],
+  },
+  'UDR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Apartment REIT',
+    tags: ['multifamily', 'apartments', 'diversified_markets'],
+  },
+
+  // ---------- Specialty REIT ----------
+  'SUI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty REIT',
+    tags: ['manufactured_housing', 'rv_parks', 'marinas', 'sun_belt'],
+  },
+
+  // ---------- Enterprise SaaS ----------
+  'APPN': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['low_code', 'automation', 'process_mining', 'enterprise_apps'],
+  },
+  'BRZE': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['customer_engagement', 'marketing_automation', 'messaging', 'personalization'],
+  },
+  'ZI': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['b2b_data', 'sales_intelligence', 'lead_generation', 'intent_data'],
+  },
+  'ESTC': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['search', 'observability', 'security', 'elasticsearch', 'open_source'],
+  },
+
+  // ---------- Cloud Infrastructure ----------
+  'DOCN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cloud Infrastructure',
+    tags: ['cloud', 'developers', 'smb', 'droplets', 'kubernetes'],
+  },
+
+  // ---------- High-Speed Interconnect ----------
+  'CRDO': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'High-Speed Interconnect',
+    tags: ['serdes', 'pcie', 'ethernet', 'data_center', 'optical'],
+  },
+
+  // ---------- P&C Insurance / Reinsurance ----------
+  'WRB': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'P&C Insurance',
+    tags: ['specialty', 'commercial_lines', 'excess_surplus', 'property_casualty'],
+  },
+  'RNR': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Reinsurance',
+    tags: ['reinsurance', 'catastrophe', 'property', 'specialty'],
+  },
+  'ACGL': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Reinsurance',
+    tags: ['reinsurance', 'insurance', 'mortgage', 'specialty'],
+  },
+  'AFG': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'P&C Insurance',
+    tags: ['specialty', 'property_casualty', 'annuities', 'niche_markets'],
+  },
+
+  // ---------- Building Products Distribution ----------
+  'GMS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products Distribution',
+    tags: ['wallboard', 'ceilings', 'steel_framing', 'distribution'],
+  },
+  'BECN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products Distribution',
+    tags: ['roofing', 'waterproofing', 'exterior', 'distribution'],
+  },
+
+  // ---------- Home Improvement ----------
+  'FND': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Home Improvement',
+    tags: ['flooring', 'tile', 'stone', 'warehouse', 'pro_contractor'],
+  },
+
+  // ---------- Building Products ----------
+  'AWI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['ceilings', 'walls', 'acoustics', 'commercial', 'renovation'],
+  },
+
+  // ---------- Diagnostics ----------
+  'DGX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['consumables', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Diagnostics',
+    tags: ['lab_testing', 'clinical', 'routine', 'employer_testing'],
+  },
+  'LH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['consumables', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Diagnostics',
+    tags: ['lab_testing', 'drug_development', 'clinical_trials', 'CRO'],
+  },
+
+  // ---------- Defense IT ----------
+  'SAIC': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Defense IT',
+    tags: ['govt_IT', 'defense', 'intelligence', 'systems_integration'],
+  },
+  'CACI': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Defense IT',
+    tags: ['defense', 'intelligence', 'cybersecurity', 'signals', 'C4ISR'],
+  },
+
+  // ---------- Analog Semis / Electronic Components ----------
+  'DIOD': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Analog Semis',
+    tags: ['discrete', 'analog', 'connectivity', 'automotive', 'industrial'],
+  },
+  'VSH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Electronic Components',
+    tags: ['resistors', 'capacitors', 'inductors', 'discretes', 'mosfets'],
+  },
+
+  // ---------- Specialty Chemicals ----------
+  'AVNT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Chemicals',
+    tags: ['polymers', 'colorants', 'additives', 'sustainable_solutions'],
+  },
+  'OLN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Chemicals',
+    tags: ['chlor_alkali', 'epoxy', 'ammunition', 'winchester'],
+  },
+
+  // ---------- Food Distribution ----------
+  'PFGC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Food Distribution',
+    tags: ['foodservice', 'restaurants', 'convenience', 'distribution'],
+  },
+
+  // ---------- Subprime Auto ----------
+  'CACC': {
+    assetModel: 'asset_light',
+    revenueModels: ['interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Subprime Auto',
+    tags: ['subprime', 'auto_loans', 'dealer_finance', 'credit'],
+  },
 };
 
 // ============================================================
