@@ -233,6 +233,39 @@ K = 每用户邀请数(i) × 转化率(c)
 | 供应链图谱 | 独特性+实用 | 被引用和转发 |
 | 预测验证 | 权威+确认偏误 | "上次说的LRCX果然涨了" |
 
+## 事件驱动营销系统（Event-Driven Marketing / Newsjacking）
+
+### 核心原则（David Meerman Scott + 自研叙事弧理论）
+可预测事件（财报、数据发布）= 零成本注意力杠杆。利用已有关注度注入框架观点。
+
+### 事件内容生产协议
+```
+事件前7天: 识别事件群集（同期多个相关事件）
+事件前3天: 生产预览内容(Thread+Newsletter+Video)
+事件前1天: 预热推文(悬念建设)
+事件当天: 即时反应(使用预生成双模板 A/B)
+事件后1天: 深度分析Newsletter
+事件后7天: 总结+框架更新展示
+```
+
+### 叙事弧设计模板
+```
+Setup(设立) → First Signal(信号) → Confirmation(确认) → Verdict(裁决)
+  Mon         Tue/Wed              Thu/Fri              Next Week
+  预告          第一个数据点          2-3个验证点            可传播结论
+```
+
+### 永赢策略(No-Lose)双模板
+| 预测结果 | 内容方向 | 触发偏误 |
+|----------|---------|---------|
+| 正确 | "框架验证+信号回顾" | 权威+从众 |
+| 错误 | "透明反思+模型更新" | 互惠+一致性 |
+
+### 事件群集放大器
+- 同行业多家公司同周报告 → 创造"行业裁决周"叙事
+- 每个事件回引前一个 → 累积信任
+- 总结thread收割全部分散注意力 → 远超单事件效果
+
 ---
 
 # 第四部分：度量层（MEASURE — 数据驱动决策）
@@ -268,7 +301,8 @@ K = 每用户邀请数(i) × 转化率(c)
 | 2 | 方法论完善 | 覆盖主流理论+渠道 | ✅ |
 | 3 | 内容生成 | 批量产出可分发内容 | ✅ |
 | 4 | 分发准备 | Playbook+交叉推广+Launch计划 | ✅ |
-| 5 | 第一性原理 | 所有决策可追溯到底层原理 | ✅ (本次) |
+| 5 | 第一性原理 | 所有决策可追溯到底层原理 | ✅ |
+| 5.5 | 事件驱动 | Newsjacking+叙事弧+永赢策略+事件群集 | ✅ (本次) |
 | 6 | 数据驱动 | 实时度量+自动优化 | ⏳ |
 | 7 | 自主任务 | 主动识别机会+自动执行 | ⏳ |
 | 8 | AGI营销 | 预测趋势+创造需求+全自动 | ⏳ |
@@ -323,6 +357,10 @@ Agent 应在以下情况自主发起新任务：
 | 15 | 品类设计 | Play Bigger | 创造并主导新品类 | 策略层-定位 |
 | 16 | 叙事经济学 | Shiller | 故事驱动经济行为 | 战术层-内容 |
 | 17 | 复利效应 | 系统思维 | 持续积累的乘数效应 | 进化层 |
+| 18 | Newsjacking | David Meerman Scott | 利用事件注入品牌观点 | 战术层-事件驱动 |
+| 19 | 叙事弧策略 | 自研 | 多事件串联=超线性注意力 | 战术层-事件驱动 |
+| 20 | 永赢策略 | 自研 | 二元结果双模板=零风险内容 | 战术层-事件驱动 |
+| 21 | 事件群集效应 | 自研 | 同期多事件=受众叠加 | 战术层-事件驱动 |
 
 ## 目录结构
 ```
@@ -332,16 +370,16 @@ marketing/
 │   ├── meta-knowledge-library.md  # 元知识库（完整理论）
 │   └── launch-playbook.md      # 发布执行手册
 ├── content/
-│   ├── twitter-threads/        # 7条Thread
-│   ├── newsletter/             # Newsletter模板
+│   ├── twitter-threads/        # 10条Thread (含earnings event系列)
+│   ├── newsletter/             # 2期Newsletter
 │   ├── reddit/                 # Reddit帖子
 │   ├── medium/                 # Medium长文
 │   ├── youtube/                # 视频脚本
 │   ├── wechat/                 # 公众号文章
-│   ├── short-video/            # 短视频脚本
+│   ├── short-video/            # 4个短视频脚本
 │   ├── infographics/           # 信息图描述
 │   ├── hackernews/             # HN帖子
-│   └── content-calendar.md     # 内容日历
+│   └── content-calendar.md     # 内容日历 (27+ units)
 ├── channels/
 │   ├── twitter-playbook.md     # Twitter运营手册
 │   ├── substack-playbook.md    # Substack运营手册
@@ -353,7 +391,9 @@ marketing/
 └── evolution/
     ├── iteration-001.md        # 进化日志#1
     ├── iteration-002.md        # 进化日志#2
-    └── iteration-003.md        # 进化日志#3（本次）
+    ├── iteration-003.md        # 进化日志#3
+    ├── iteration-004.md        # 进化日志#4 (事件驱动)
+    └── hook-audit-001.md       # Hook偏误矩阵审查
 ```
 
 ---
@@ -361,3 +401,4 @@ marketing/
 ## 版本历史
 - v1.0 (2026-01-24 AM): 初始框架。VIRAL-SYSTEM + 内容管线 + 渠道矩阵。Level 3。
 - v2.0 (2026-01-24 PM): 第一性原理重构。融合17个元理论。增加决策框架层、原理层。Level 5。
+- v2.5 (2026-01-24 PM): 事件驱动营销层。Newsjacking+叙事弧+永赢策略+事件群集。21个元理论。Level 5.5。

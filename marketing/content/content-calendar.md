@@ -45,16 +45,19 @@
 | 24 | LRCX Earnings Newsletter | Newsletter | Substack | newsletter/issue-002 |
 | 25 | LRCX Earnings Reaction | Thread 8条(双模板) | Twitter/X | twitter-threads/thread-009 |
 | 26 | LRCX 60s Earnings Video | 短视频脚本 | TikTok/Reels | short-video/script-004 |
+| 27 | Semicap Earnings Week Overview | Thread 9条 | Twitter/X | twitter-threads/thread-010 |
 
 ### 待生产（Phase 2 批次）
 | # | 主题 | 格式 | 优先级 |
 |---|------|------|--------|
-| 27 | "How to Read the Score Table" | Tutorial Video | P1 |
-| 28 | Framework Q&A / FAQ | Thread + Post | P1 |
-| 29 | Memory Cycle Analysis (MU) | Thread + Newsletter | P1 |
-| 30 | Product Hunt Launch Post | 产品页 | P1 |
-| 31 | LinkedIn Article | 长文 | P2 |
-| 32 | LRCX Post-Earnings Newsletter | Newsletter详析 | P0 (Jan 30) |
+| 28 | "How to Read the Score Table" | Tutorial Video | P1 |
+| 29 | Framework Q&A / FAQ | Thread + Post | P1 |
+| 30 | Memory Cycle Analysis (MU) | Thread + Newsletter | P1 (Apr 1前) |
+| 31 | AMAT Earnings Preview | Thread + Newsletter | P0 (Feb 12前) |
+| 32 | Product Hunt Launch Post | 产品页 | P1 |
+| 33 | LinkedIn Article | 长文 | P2 |
+| 34 | LRCX Post-Earnings Newsletter | Newsletter详析 | P0 (Jan 30) |
+| 35 | ASML Earnings Reaction | Thread快速反应 | P0 (Jan 28 PM) |
 
 ## 内容复用策略（1→21 执行）
 
@@ -70,7 +73,7 @@
 | 供应链角度 | ✅ #006 | — | ✅ Infographic #6 |
 | 透明度角度 | ✅ #007 | — | — |
 
-**当前完成度**: 26/21 (124%) ✅ 超额完成 (+4 earnings event content)
+**当前完成度**: 27/21 (129%) ✅ 超额完成 (+5 earnings event系列)
 
 ## 发布检查清单
 
