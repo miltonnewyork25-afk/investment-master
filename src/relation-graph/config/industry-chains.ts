@@ -2308,7 +2308,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'WMS': 'Building Products',           // Advanced Drainage - 排水/基建
     'ATKR': 'Electrical Equipment',       // Atkore - 电气管道
     'SPXC': 'Building Systems',           // SPX Technologies - HVAC/检测
-    'OSCR': 'Health Insurance',           // Oscar Health - 科技健康险
+    'OSCR': 'Health Insurance Tech',      // Oscar Health - 科技健康险
     'LAZ': 'Investment Bank',             // Lazard - 咨询/资管
     'PIPR': 'Investment Bank',            // Piper Sandler - 中市场投行
     'EVR': 'Investment Bank',             // Evercore - 精英咨询
@@ -2908,6 +2908,41 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // LNG Export
     'LNG': 'LNG Export',                       // Cheniere Energy - LNG出口/液化
+
+    // ========== 补充: 2026-01 第八批 (20只新股票) ==========
+
+    // Biotech
+    'XENE': 'Epilepsy Biotech',                // Xenon Pharmaceuticals - 癫痫生物科技
+    'SWTX': 'Rare Tumor Biotech',              // SpringWorks Therapeutics - 罕见肿瘤生物科技
+    'KYMR': 'Protein Degradation',             // Kymera Therapeutics - 蛋白降解
+    'RCKT': 'Gene Therapy',                    // Rocket Pharmaceuticals - 基因治疗
+
+    // Healthcare REITs
+    'GLPI': 'Casino REIT',                     // Gaming & Leisure Properties - 赌场REIT
+    'MPW': 'Hospital REIT',                    // Medical Properties Trust - 医院REIT
+    'SBRA': 'Senior Housing REIT',             // Sabra Healthcare REIT - 老年住宅REIT
+    'DOC': 'Healthcare REIT',                  // Healthpeak Properties - 医疗/生命科学REIT
+
+    // Consumer
+    'PTLO': 'Fast Casual Restaurant',          // Portillo's - 快餐连锁
+    'ARKO': 'Convenience Store/Fuel',          // ARKO Group - 便利店/加油
+
+    // Industrial
+    'BLBD': 'School Bus Manufacturing',        // Blue Bird Corp - 校车制造
+
+    // E&P
+    'VTLE': 'Shale E&P',                       // Vital Energy - 页岩油E&P
+    'GPOR': 'Natural Gas E&P',                 // Gulfport Energy - 天然气E&P
+
+    // Regional Banks
+    'TBBK': 'Banking-as-a-Service',            // The Bancorp - BaaS银行
+    'FFBC': 'Regional Bank',                   // First Financial Bankshares - 区域银行
+    'WSBC': 'Regional Bank',                   // WesBanco - 区域银行
+
+    // Healthcare Services
+    'LFST': 'Mental Health Services',          // LifeStance Health - 心理健康服务
+    'OPCH': 'Home Infusion',                   // Option Care Health - 家庭输液服务
+    'PACS': 'Post-Acute Care',                 // PACS Group - 急性期后护理
   },
 
   // ============================================================
@@ -5963,6 +5998,107 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Urban Air Mobility': ['Aerospace Components', 'EV Chain', 'Aviation Services'],
     'Utilities': ['Power Generation', 'Infrastructure', 'Regulated Utility'],
     'Waste Management': ['Environmental Services', 'Construction & Engineering', 'Infrastructure'],
+
+    // ========== 补充子行业链 - 2026-01 第八批 (20只新股票) ==========
+
+    // 癫痫生物科技 → 制药/医院
+    'Epilepsy Biotech': [
+      'Big Pharma',                   // 授权合作
+      'Hospital Operator',            // 处方渠道
+      'Health Insurance',             // 保险报销
+    ],
+
+    // 罕见肿瘤生物科技 → 制药/医院
+    'Rare Tumor Biotech': [
+      'Big Pharma',                   // 授权合作
+      'Hospital Operator',            // 肿瘤中心
+      'Health Insurance',             // 保险报销
+    ],
+
+    // 蛋白降解 → 生物科技/制药
+    'Protein Degradation': [
+      'Big Pharma',                   // 授权合作
+      'Large Biotech',                // 生物科技客户
+      'Emerging Biotech',             // 新兴生物科技
+    ],
+
+    // 赌场REIT → 博彩运营商
+    'Casino REIT': [
+      'Casino & Resort',              // 赌场运营商租户
+      'Hotel Chain',                  // 酒店配套
+    ],
+
+    // 医院REIT → 医疗运营商
+    'Hospital REIT': [
+      'Hospital Operator',            // 医院运营商租户
+      'Health Insurance',             // 保险支付方
+    ],
+
+    // 老年住宅REIT → 医疗/养老
+    'Senior Housing REIT': [
+      'Long-term Care',               // 护理运营商租户
+      'Home Health Services',         // 居家护理转介
+      'Health Insurance',             // 保险支付方
+    ],
+
+    // 医疗REIT → 生命科学/医疗
+    'Healthcare REIT': [
+      'Large Pharma',                 // 生命科学研发租户
+      'Large Biotech',                // 生物科技研发租户
+      'Hospital Operator',            // 门诊设施租户
+    ],
+
+    // 便利店/加油 → 燃油/食品
+    'Convenience Store/Fuel': [
+      'Oil Refinery',                 // 燃油供应
+      'Soft Drinks',                  // 饮料供应
+      'Food Distribution',            // 食品配送
+    ],
+
+    // 校车制造 → 教育/政府
+    'School Bus Manufacturing': [
+      'Education Services',           // 学校客户
+      'EV Battery',                   // 电动校车电池
+    ],
+
+    // 天然气E&P → 中下游(已有定义，此处为覆盖确认)
+    // 'Natural Gas E&P' already defined above
+
+    // BaaS银行 → 金融科技/支付
+    'Banking-as-a-Service': [
+      'Fintech',                      // 金融科技合作方
+      'Payment Processor',            // 支付处理合作
+      'Digital Bank',                 // 数字银行客户
+    ],
+
+    // 心理健康服务 → 保险/医院
+    'Mental Health Services': [
+      'Health Insurance',             // 保险支付方
+      'Hospital Operator',            // 医院转介
+      'Telehealth',                   // 远程问诊
+    ],
+
+    // 家庭输液服务 → 医院/药品
+    'Home Infusion': [
+      'Hospital Operator',            // 医院出院转介
+      'Big Pharma',                   // 药品供应
+      'Health Insurance',             // 保险支付方
+    ],
+
+    // 急性期后护理 → 医院/保险
+    'Post-Acute Care': [
+      'Hospital Operator',            // 医院出院转介
+      'Health Insurance',             // 保险支付方
+      'Home Health Services',         // 居家护理竞争/转介
+    ],
+
+    // 科技健康险 → 医疗支付
+    'Health Insurance Tech': [
+      'Hospital Operator',            // 支付医院费用
+      'Pharmacy Retail',              // 处方药覆盖
+      'Digital Health',               // 远程医疗合作
+      'Telehealth',                   // 虚拟问诊
+    ],
   },
 };
 

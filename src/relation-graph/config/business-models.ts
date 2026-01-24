@@ -8341,11 +8341,11 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
 
   // ---------- Health Insurance ----------
   'OSCR': {
-    assetModel: 'asset_light',
+    assetModel: 'platform',
     revenueModels: ['premium_service'],
     deliveryModel: 'self_operated',
     customerModel: 'B2C',
-    industrySegment: 'Health Insurance',
+    industrySegment: 'Health Insurance Tech',
     tags: ['tech_insurance', 'individual', 'marketplace', 'digital', 'telehealth'],
   },
 
@@ -11749,6 +11749,176 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2B',
     industrySegment: 'LNG Export',
     tags: ['lng', 'liquefaction', 'natural_gas', 'energy_export'],
+  },
+
+  // ========================================================
+  // 补充: 20 只新股票 (2026-01 第八批)
+  // ========================================================
+
+  // ---------- Biotech ----------
+  'XENE': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Epilepsy Biotech',
+    tags: ['epilepsy', 'neuroscience', 'ion_channel', 'CNS'],
+  },
+  'SWTX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Rare Tumor Biotech',
+    tags: ['rare_tumor', 'oncology', 'desmoid', 'targeted_therapy'],
+  },
+  'KYMR': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Protein Degradation',
+    tags: ['protein_degradation', 'TPD', 'molecular_glue', 'immunology'],
+  },
+  'RCKT': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gene Therapy',
+    tags: ['gene_therapy', 'lentiviral', 'rare_disease', 'pediatric'],
+  },
+
+  // ---------- Healthcare REITs ----------
+  'GLPI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Casino REIT',
+    tags: ['casino', 'gaming', 'triple_net', 'experiential'],
+  },
+  'MPW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Hospital REIT',
+    tags: ['hospital', 'acute_care', 'triple_net', 'healthcare'],
+  },
+  'SBRA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Senior Housing REIT',
+    tags: ['senior_housing', 'skilled_nursing', 'triple_net', 'healthcare'],
+  },
+  'DOC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Healthcare REIT',
+    tags: ['life_science', 'medical_office', 'senior_housing', 'outpatient'],
+  },
+
+  // ---------- Consumer ----------
+  'PTLO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Fast Casual Restaurant',
+    tags: ['fast_casual', 'hot_dogs', 'italian_beef', 'chicago', 'drive_through'],
+  },
+  'ARKO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Convenience Store/Fuel',
+    tags: ['convenience', 'fuel', 'gas_station', 'value', 'rural'],
+  },
+
+  // ---------- Industrial ----------
+  'BLBD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'School Bus Manufacturing',
+    tags: ['school_bus', 'electric_bus', 'EV', 'government', 'fleet'],
+  },
+
+  // ---------- E&P ----------
+  'VTLE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['permian', 'delaware', 'midland', 'shale_oil'],
+  },
+  'GPOR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Natural Gas E&P',
+    tags: ['natural_gas', 'utica', 'scoop', 'appalachian'],
+  },
+
+  // ---------- Regional Banks ----------
+  'TBBK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Banking-as-a-Service',
+    tags: ['BaaS', 'fintech_partner', 'prepaid_cards', 'payments', 'digital_banking'],
+  },
+  'FFBC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['community_bank', 'ohio', 'indiana', 'kentucky', 'wealth_management'],
+  },
+  'WSBC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['community_bank', 'west_virginia', 'ohio', 'mortgage', 'trust'],
+  },
+
+  // ---------- Healthcare Services ----------
+  'LFST': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2C',
+    industrySegment: 'Mental Health Services',
+    tags: ['mental_health', 'behavioral', 'therapy', 'psychiatry', 'telehealth'],
+  },
+  'OPCH': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'product_sales'],
+    deliveryModel: 'managed',
+    customerModel: 'B2C',
+    industrySegment: 'Home Infusion',
+    tags: ['home_infusion', 'specialty_pharmacy', 'IV_therapy', 'chronic_care'],
+  },
+  'PACS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2C',
+    industrySegment: 'Post-Acute Care',
+    tags: ['skilled_nursing', 'rehabilitation', 'post_acute', 'senior_care'],
   },
 };
 

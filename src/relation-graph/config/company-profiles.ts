@@ -2258,9 +2258,9 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
   // --- 健康保险(B2C) ---
   'OSCR': {
     demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
-    occasions: ['health_insurance', 'marketplace', 'enrollment', 'healthcare_access'],
-    valueProps: ['technology', 'transparency', 'simplicity', 'virtual_care'],
-    channels: ['online', 'direct', 'marketplace'],
+    occasions: ['health_insurance', 'open_enrollment'],
+    valueProps: ['simplicity', 'technology', 'affordability'],
+    channels: ['online', 'app', 'broker'],
   },
 
   // --- 航空(B2C) ---
@@ -3722,6 +3722,62 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['design', 'sustainability', 'performance'],
     channels: ['online', 'showroom'],
   },
+
+  // ========== 补充: 2026-01 第八批 (B2C/B2B2C) ==========
+
+  // --- 快餐 (Fast Casual) ---
+  'PTLO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['lunch', 'dinner', 'quick_meal'],
+    valueProps: ['authentic_flavor', 'nostalgia', 'speed'],
+    channels: ['dine_in', 'drive_through', 'takeout'],
+  },
+
+  // --- 便利店/加油 ---
+  'ARKO': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['fuel_purchase', 'convenience_shopping'],
+    valueProps: ['location', 'speed', 'value'],
+    channels: ['store', 'fuel_pump'],
+  },
+
+  // --- 心理健康 ---
+  'LFST': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'all', gender: 'all' },
+    occasions: ['mental_health', 'therapy', 'wellness'],
+    valueProps: ['accessibility', 'quality_care', 'insurance_accepted'],
+    channels: ['office', 'telehealth'],
+  },
+
+  // --- 家庭输液 ---
+  'OPCH': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'all', gender: 'all' },
+    occasions: ['chronic_treatment', 'home_therapy'],
+    valueProps: ['home_convenience', 'clinical_expertise', 'insurance'],
+    channels: ['home_delivery', 'healthcare_provider'],
+  },
+
+  // --- 急性期后护理 ---
+  'PACS': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'all', gender: 'all' },
+    occasions: ['post_surgery', 'rehabilitation', 'long_term_care'],
+    valueProps: ['quality_care', 'proximity', 'outcomes'],
+    channels: ['facility', 'referral'],
+  },
+
+  // --- 区域银行 (B2B2C) ---
+  'FFBC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'WSBC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
 };
 
 // ============================================================
@@ -4960,7 +5016,7 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'WMS': 'mid',          // Advanced Drainage - 排水/基建(中周期)
   'ATKR': 'early',       // Atkore - 电气管道(早周期)
   'SPXC': 'mid',         // SPX Technologies - HVAC/检测(中周期)
-  'OSCR': 'early',       // Oscar Health - 科技健康险(早周期)
+  'OSCR': 'defensive',   // Oscar Health - 科技健康险(防御)
   'LAZ': 'mid',          // Lazard - 咨询/资管(中周期)
   'PIPR': 'mid',         // Piper Sandler - 中市场投行(中周期)
   'EVR': 'mid',          // Evercore - 精英咨询投行(中周期)
@@ -5553,6 +5609,40 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
 
   // ---------- LNG出口 (LNG Export) ----------
   'LNG': 'mid',              // Cheniere Energy - LNG出口/液化(中周期)
+
+  // ---------- 补充: 2026-01 第八批 ----------
+  // Biotech (early cycle)
+  'XENE': 'early',            // Xenon Pharmaceuticals - 癫痫生物科技(早周期)
+  'SWTX': 'early',            // SpringWorks Therapeutics - 罕见肿瘤生物科技(早周期)
+  'KYMR': 'early',            // Kymera Therapeutics - 蛋白降解生物科技(早周期)
+  'RCKT': 'early',            // Rocket Pharmaceuticals - 基因治疗(早周期)
+
+  // Healthcare REITs
+  'GLPI': 'mid',              // Gaming & Leisure Properties - 赌场REIT(中周期)
+  'MPW': 'defensive',         // Medical Properties Trust - 医院REIT(防御)
+  'SBRA': 'defensive',        // Sabra Healthcare REIT - 老年住宅REIT(防御)
+  'DOC': 'defensive',         // Healthpeak Properties - 医疗/生命科学REIT(防御)
+
+  // Consumer
+  'PTLO': 'mid',              // Portillo's - 快餐(中周期)
+  'ARKO': 'defensive',        // ARKO Group - 便利店/加油(防御)
+
+  // Industrial
+  'BLBD': 'mid',              // Blue Bird Corp - 校车制造(中周期)
+
+  // E&P (late cycle)
+  'VTLE': 'late',             // Vital Energy - 页岩油E&P(晚周期)
+  'GPOR': 'late',             // Gulfport Energy - 天然气E&P(晚周期)
+
+  // Regional Banks (mid cycle)
+  'TBBK': 'mid',              // The Bancorp - BaaS银行(中周期)
+  'FFBC': 'mid',              // First Financial Bankshares - 区域银行(中周期)
+  'WSBC': 'mid',              // WesBanco - 区域银行(中周期)
+
+  // Healthcare Services (defensive)
+  'LFST': 'defensive',        // LifeStance Health - 心理健康(防御)
+  'OPCH': 'defensive',        // Option Care Health - 家庭输液(防御)
+  'PACS': 'defensive',        // PACS Group - 急性期后护理(防御)
 };
 
 // ============================================================
@@ -9616,8 +9706,8 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   },
   // 科技健康险 - 低周期/政策驱动
   'OSCR': {
-    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.2,
-    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+    interestRate: 0.2, inflation: -0.2, gdpGrowth: 0.1, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
   },
   // 咨询投行 - 资本市场/M&A周期
   'LAZ': {
@@ -11381,6 +11471,108 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'LNG': {
     interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.1,
     consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.6,
+  },
+
+  // ========== 补充: 2026-01 第八批 ==========
+
+  // Biotech
+  'XENE': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'SWTX': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'KYMR': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'RCKT': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Casino REIT
+  'GLPI': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Healthcare REITs
+  'MPW': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'SBRA': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'DOC': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Fast Casual Restaurant
+  'PTLO': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // Convenience/Fuel
+  'ARKO': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.2,
+  },
+
+  // School Bus Manufacturing
+  'BLBD': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+
+  // E&P
+  'VTLE': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.7,
+  },
+  'GPOR': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.7,
+  },
+
+  // Banking-as-a-Service
+  'TBBK': {
+    interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Regional Bank
+  'FFBC': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'WSBC': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+
+  // Mental Health Services
+  'LFST': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.0, unemployment: 0.1,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Home Infusion
+  'OPCH': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Post-Acute Care (same as home infusion profile)
+  'PACS': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
   },
 };
 
