@@ -9459,6 +9459,26 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'TL Trucking',
     tags: ['truckload', 'intermodal', 'logistics', 'dedicated'],
   },
+
+  // ---------- Specialty Metals ----------
+  'HAYN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Metals',
+    tags: ['nickel_alloy', 'cobalt_alloy', 'high_temperature', 'corrosion_resistant', 'aerospace'],
+  },
+
+  // ---------- Gas Utility ----------
+  'SW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Gas Utility',
+    tags: ['natural_gas', 'distribution', 'regulated', 'utility', 'pipeline'],
+  },
 };
 
 // ============================================================

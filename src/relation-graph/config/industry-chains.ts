@@ -2487,6 +2487,12 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // --- Transportation ---
     'SNDR': 'TL Trucking',                 // Schneider National - 整车运输
+
+    // --- Specialty Metals ---
+    'HAYN': 'Specialty Metals',            // Haynes International - 高温/耐腐蚀合金
+
+    // --- Gas Utility ---
+    'SW': 'Gas Utility',                   // Southwest Gas - 天然气配送
   },
 
   // ============================================================

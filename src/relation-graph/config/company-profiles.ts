@@ -2935,6 +2935,14 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['savings', 'green', 'energy_independence', 'financing'],
     channels: ['dealer', 'online', 'direct'],
   },
+
+  // --- Gas Utility B2B2C ---
+  'SW': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_heating', 'cooking', 'water_heating', 'essential_utility'],
+    valueProps: ['reliability', 'essential', 'regulated_rates', 'safety'],
+    channels: ['direct', 'utility_billing'],
+  },
 };
 
 // ============================================================
@@ -4336,6 +4344,12 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
 
   // --- Transportation ---
   'SNDR': 'mid',           // Schneider National - 整车运输(中周期)
+
+  // --- Specialty Metals ---
+  'HAYN': 'late',          // Haynes International - 高温合金(晚周期/航空)
+
+  // --- Gas Utility ---
+  'SW': 'defensive',       // Southwest Gas - 天然气公用事业(防御)
 };
 
 // ============================================================
@@ -8992,6 +9006,18 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'SNDR': {
     interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.3,
     consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.3,
+  },
+
+  // --- Specialty Metals ---
+  'HAYN': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+
+  // --- Gas Utility ---
+  'SW': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.3,
   },
 };
 
