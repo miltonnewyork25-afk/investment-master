@@ -67,10 +67,13 @@ const CPT_WEIGHTS = {
 };
 
 class SentimentFetcher {
-  private client: FMPClient;
+  private _client: FMPClient | null = null;
 
-  constructor() {
-    this.client = new FMPClient();
+  private get client(): FMPClient {
+    if (!this._client) {
+      this._client = new FMPClient();
+    }
+    return this._client;
   }
 
   /**

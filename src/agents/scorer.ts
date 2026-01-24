@@ -22,6 +22,7 @@ class Scorer {
   private config: ScoringConfig;
   private psychConfig: PsychologyConfig;
   private marketCPT: CPTIndex | null = null;
+  private macroBetas: Map<string, number> = new Map();
 
   constructor() {
     this.config = getScoringConfig();
@@ -34,6 +35,14 @@ class Scorer {
    */
   setMarketCPT(cpt: CPTIndex): void {
     this.marketCPT = cpt;
+  }
+
+  /**
+   * 注入个股宏观beta (由relation-graph-bridge提供)
+   * 用于修正逆向信号: 高beta股在恐慌期受创更深 → 逆向bonus更强
+   */
+  setMacroBetas(betas: Map<string, number>): void {
+    this.macroBetas = betas;
   }
 
   /**
@@ -117,6 +126,24 @@ class Scorer {
       // 个股修正: 如果市场贪婪但个股PE极低(价值股)，减弱penalty
       if (crowdSignal === 'extreme_greed' && pe !== undefined && pe > 0 && pe < 15) {
         contrarianAdj = Math.round(contrarianAdj * 0.5);
+      }
+
+      // 宏观beta修正: 高beta股在恐慌中被惩罚更多 → 逆向加仓力度更大
+      const beta = this.macroBetas.get(company.ticker);
+      if (beta !== undefined && contrarianAdj !== 0) {
+        if (beta > 0.5 && (crowdSignal === 'extreme_fear' || crowdSignal === 'fear')) {
+          // 高beta + 恐慌 → 放大逆向bonus 20%
+          contrarianAdj = Math.round(contrarianAdj * 1.2);
+        } else if (beta < 0 && (crowdSignal === 'extreme_fear' || crowdSignal === 'fear')) {
+          // 防御型 + 恐慌 → 缩减逆向bonus 30% (本来没跌多少)
+          contrarianAdj = Math.round(contrarianAdj * 0.7);
+        } else if (beta > 0.5 && (crowdSignal === 'extreme_greed' || crowdSignal === 'greed')) {
+          // 高beta + 贪婪 → 放大逆向penalty 20% (泡沫中涨更多)
+          contrarianAdj = Math.round(contrarianAdj * 1.2);
+        } else if (beta < 0 && (crowdSignal === 'extreme_greed' || crowdSignal === 'greed')) {
+          // 防御型 + 贪婪 → 缩减penalty 30% (没参与泡沫)
+          contrarianAdj = Math.round(contrarianAdj * 0.7);
+        }
       }
     } else {
       // === Fallback: 纯PE/Growth启发式 ===

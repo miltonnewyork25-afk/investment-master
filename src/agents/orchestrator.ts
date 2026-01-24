@@ -26,6 +26,7 @@ import { validator } from './multi-perspective-validator.js';
 import { syntheticResearch } from './synthetic-research.js';
 import { sentimentFetcher } from './sentiment-fetcher.js';
 import { upstreamCompanies, downstreamCompanies, mockSupplyChainEdges } from '../data/mock-data.js';
+import { enrichWithCycleStage, getMacroBetas, getCrossChainEdges, getEnrichmentStats } from '../utils/relation-graph-bridge.js';
 import { config, getScoringConfig } from '../config/index.js';
 import { cacheManager } from '../utils/cache.js';
 import { auditLogger } from '../utils/audit-logger.js';
@@ -101,10 +102,30 @@ class Orchestrator {
         auditLogger.log('orchestrator', 'warn', `CPT获取失败: ${errMsg}`);
       }
 
-      // Step 4: 计算评分
+      // Step 4: 计算评分 (先用relation-graph enrichment)
       auditLogger.log('orchestrator', 'info', 'Step 4: 计算周度评分');
-      const allCompanies = [...upstreamCompanies, ...downstreamCompanies];
-      const scores = scorer.scoreAndRank(allCompanies, edges, true);
+      const rawCompanies = [...upstreamCompanies, ...downstreamCompanies];
+
+      // 4a: 注入cycle_stage (来自relation-graph的CYCLE_POSITIONS)
+      const allCompanies = enrichWithCycleStage(rawCompanies);
+
+      // 4b: 注入宏观beta (来自relation-graph的MACRO_SENSITIVITY)
+      const tickers = allCompanies.map(c => c.ticker);
+      const betas = getMacroBetas(tickers);
+      scorer.setMacroBetas(betas);
+
+      // 4c: 补充cross-chain edges
+      const crossEdges = getCrossChainEdges(tickers);
+      const allEdges = [...edges, ...crossEdges];
+
+      const enrichStats = getEnrichmentStats(allCompanies);
+      auditLogger.log('orchestrator', 'info',
+        `Enrichment: cycle=${enrichStats.enriched_cycle}/${enrichStats.total}, ` +
+        `macro=${enrichStats.enriched_macro}/${enrichStats.total}, ` +
+        `cross-chain edges=${enrichStats.cross_chain_edges}`
+      );
+
+      const scores = scorer.scoreAndRank(allCompanies, allEdges, true);
 
       // Step 4.5: 多视角验证
       auditLogger.log('orchestrator', 'info', 'Step 4.5: 多视角交叉验证');

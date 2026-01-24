@@ -28,6 +28,13 @@ export { sentimentFetcher, SentimentFetcher } from './agents/sentiment-fetcher.j
 export { cacheManager, CacheManager } from './utils/cache.js';
 export { auditLogger, AuditLogger } from './utils/audit-logger.js';
 export { outputManager, OutputManager } from './utils/output-manager.js';
+export {
+  enrichWithCycleStage,
+  getMacroBeta,
+  getMacroBetas,
+  getCrossChainEdges,
+  getEnrichmentStats
+} from './utils/relation-graph-bridge.js';
 
 // 导出配置
 export { config, getScoringConfig, getConfigInfo } from './config/index.js';
@@ -149,13 +156,175 @@ async function main() {
       console.log(`  缓存条目: ${cacheStats.diskEntries} (磁盘) / ${cacheStats.memoryEntries} (内存)`);
       break;
 
+    case 'cpt': {
+      console.log('获取市场心理温度 (CPT)...');
+      const { sentimentFetcher } = await import('./agents/sentiment-fetcher.js');
+
+      try {
+        const cpt = await sentimentFetcher.fetchCPT();
+        console.log(`\n=== CPT Dashboard ===`);
+        console.log(`  CPT Value: ${cpt.value}/100`);
+        console.log(`  Signal: ${cpt.signal}`);
+        console.log(`  Data Quality: ${cpt.data_quality}`);
+        console.log(`\n  Components:`);
+        console.log(`    VIX Score:        ${cpt.components.vix_score.toFixed(1)}`);
+        console.log(`    Momentum Score:   ${cpt.components.momentum_score.toFixed(1)}`);
+        console.log(`    Breadth Score:    ${cpt.components.breadth_score.toFixed(1)}`);
+        console.log(`    Dispersion Score: ${cpt.components.dispersion_score.toFixed(1)}`);
+        console.log(`\n  Raw Data:`);
+        if (cpt.raw_data.vix_level != null) console.log(`    VIX Level:      ${cpt.raw_data.vix_level.toFixed(2)}`);
+        if (cpt.raw_data.sp500_vs_200ma != null) console.log(`    SPY vs 200MA:   ${(cpt.raw_data.sp500_vs_200ma * 100).toFixed(2)}%`);
+        if (cpt.raw_data.sector_dispersion != null) console.log(`    Sector Disp:    ${(cpt.raw_data.sector_dispersion * 100).toFixed(2)}%`);
+        if (cpt.raw_data.market_breadth != null) console.log(`    Market Breadth:  ${(cpt.raw_data.market_breadth * 100).toFixed(1)}%`);
+        console.log(`\n  Fetched: ${cpt.fetched_at}`);
+
+        // Contrarian interpretation
+        const bonus = cpt.signal === 'extreme_fear' ? '+15' :
+                      cpt.signal === 'fear' ? '+7' :
+                      cpt.signal === 'extreme_greed' ? '-15' :
+                      cpt.signal === 'greed' ? '-7' : '0';
+        console.log(`\n  Contrarian Adjustment: ${bonus} points`);
+        if (cpt.signal === 'extreme_fear') console.log(`  Interpretation: 极度恐慌 → 逆向加仓机会`);
+        else if (cpt.signal === 'extreme_greed') console.log(`  Interpretation: 极度贪婪 → 逆向减仓信号`);
+        else console.log(`  Interpretation: 市场情绪正常范围`);
+      } catch (err) {
+        console.error(`\n获取CPT失败: ${err instanceof Error ? err.message : err}`);
+        console.log('提示: 需要配置 FMP_API_KEY 环境变量');
+        process.exit(1);
+      }
+      break;
+    }
+
+    case 'content': {
+      console.log('生成心理学内容原子...');
+      const { contentGenerator } = await import('./agents/content-generator.js');
+      const { scorer: contentScorer } = await import('./agents/scorer.js');
+      const { allCompanies: contentCompanies, mockSupplyChainEdges: contentEdges } = await import('./data/mock-data.js');
+
+      const contentTickers = args.slice(1).filter(a => !a.startsWith('--'));
+      const targetCompanies = contentTickers.length > 0
+        ? contentCompanies.filter(c => contentTickers.includes(c.ticker))
+        : contentCompanies.slice(0, 5);
+
+      const scores = contentScorer.scoreAndRank(targetCompanies, contentEdges, true);
+      const pack = contentGenerator.generateWeeklyContent(scores);
+
+      console.log(`\n=== Content Pack ===`);
+      console.log(`  Week: ${pack.week_start}`);
+      console.log(`  Atoms: ${pack.atoms.length}`);
+      console.log('');
+
+      for (const atom of pack.atoms) {
+        console.log(`  [${atom.type}] (${atom.urgency})`);
+        console.log(`    Content: ${atom.content.substring(0, 100)}`);
+        console.log(`    Persona: ${atom.target_persona}`);
+        console.log(`    Principles: ${atom.psychology_principles.join(', ')}`);
+        console.log('');
+      }
+
+      if (pack.score_changes.length > 0) {
+        console.log('  Score Changes:');
+        for (const sc of pack.score_changes) {
+          const dir = sc.direction === 'bullish' ? '↑' : sc.direction === 'bearish' ? '↓' : '→';
+          console.log(`    ${dir} ${sc.ticker}: score=${sc.current_score} adj=${sc.psychology_adjustment} [${sc.crowd_signal}]`);
+        }
+      }
+      break;
+    }
+
+    case 'validate': {
+      console.log('执行多视角验证...');
+      const { validator: cliValidator } = await import('./agents/multi-perspective-validator.js');
+      const { scorer: validateScorer } = await import('./agents/scorer.js');
+      const { allCompanies: validateCompanies, mockSupplyChainEdges: validateEdges } = await import('./data/mock-data.js');
+
+      const validateTickers = args.slice(1).filter(a => !a.startsWith('--'));
+      const targetValidateCompanies = validateTickers.length > 0
+        ? validateCompanies.filter(c => validateTickers.includes(c.ticker))
+        : validateCompanies.slice(0, 10);
+
+      const scores = validateScorer.scoreAndRank(targetValidateCompanies, validateEdges, true);
+      const results = cliValidator.validateAll(scores);
+
+      console.log(`\n=== Validation Results ===`);
+      console.log(`  Scores validated: ${results.length}`);
+      console.log('');
+
+      for (const r of results) {
+        const flag = r.confidence_level === 'low' || r.confidence_level === 'insufficient' ? ' ⚠ LOW' : '';
+        console.log(`  ${r.ticker}: consensus=${r.consensus_score}% confidence=${r.confidence_level}${flag}`);
+        if (r.dissent_points.length > 0) {
+          console.log(`    Dissent: ${r.dissent_points.join('; ')}`);
+        }
+        for (const p of r.perspectives) {
+          const icon = p.assessment === 'agree' ? '✓' : p.assessment === 'disagree' ? '✗' : '?';
+          console.log(`    ${icon} ${p.perspective} (${p.score}): ${p.key_argument.substring(0, 60)}`);
+        }
+        console.log(`    → ${r.recommendation}`);
+        console.log('');
+      }
+      break;
+    }
+
+    case 'research': {
+      console.log('执行合成研究模拟...');
+      const { syntheticResearch: cliResearch } = await import('./agents/synthetic-research.js');
+
+      const topic = args.slice(1).join(' ') || '半导体周期见底信号增强,设备商订单回升';
+      const stimulus = {
+        type: 'market_event' as const,
+        content: topic,
+        context: {
+          market_state: 'mid-cycle recovery',
+          recent_price_action: 'sector +5% last month',
+        }
+      };
+
+      const result = cliResearch.runScenario(stimulus);
+
+      console.log(`\n=== Synthetic Research ===`);
+      console.log(`  Stimulus: ${topic}`);
+      console.log(`  Respondents: ${result.total_respondents}`);
+      console.log(`  Avg Credibility: ${result.avg_credibility.toFixed(1)}/10`);
+      console.log(`  Share Probability: ${(result.avg_share_probability * 100).toFixed(0)}%`);
+      console.log('');
+
+      const n = result.total_respondents;
+      console.log('  Emotion Distribution:');
+      console.log(`    Positive: ${result.emotion_distribution.positive}/${n} (${Math.round(result.emotion_distribution.positive / n * 100)}%)`);
+      console.log(`    Neutral:  ${result.emotion_distribution.neutral}/${n} (${Math.round(result.emotion_distribution.neutral / n * 100)}%)`);
+      console.log(`    Negative: ${result.emotion_distribution.negative}/${n} (${Math.round(result.emotion_distribution.negative / n * 100)}%)`);
+      console.log('');
+
+      console.log('  Action Distribution:');
+      console.log(`    Buy: ${result.action_distribution.buy}/${n} | Hold: ${result.action_distribution.hold}/${n} | Sell: ${result.action_distribution.sell}/${n}`);
+      console.log(`    Research: ${result.action_distribution.research_more}/${n} | Ignore: ${result.action_distribution.ignore}/${n}`);
+      console.log('');
+
+      console.log('  Persona Breakdown:');
+      for (const r of result.persona_breakdown) {
+        console.log(`    [${r.persona_id}] ${r.action_intent} (credibility: ${r.credibility_score.toFixed(1)})`);
+        console.log(`      ${r.reasoning.substring(0, 80)}`);
+        console.log('');
+      }
+
+      console.log(`  Key Insight: ${result.key_insight}`);
+      break;
+    }
+
     default:
-      console.log('用法: npx ts-node src/index.ts <command>');
+      console.log('用法: npx tsx src/index.ts <command>');
       console.log('');
       console.log('命令:');
       console.log('  run, weekly    执行周度分析');
       console.log('  audit          执行数据审计');
       console.log('  info           显示系统信息');
+      console.log('');
+      console.log('心理学模块:');
+      console.log('  cpt            获取市场心理温度 (CPT Index)');
+      console.log('  content [T..]  生成内容原子 (可指定ticker)');
+      console.log('  validate [T..] 多视角验证 (可指定ticker)');
+      console.log('  research [文本] 合成研究模拟 (指定事件描述)');
       console.log('');
       console.log('选项:');
       console.log('  --skip-audit       跳过数据审计');
