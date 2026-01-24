@@ -3454,6 +3454,134 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['tax_savings', 'investment_options', 'convenience'],
     channels: ['employer', 'online', 'app'],
   },
+
+  // ========== 数据中心REIT ==========
+  'DLR': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['data_hosting', 'cloud_infrastructure'],
+    valueProps: ['reliability', 'connectivity', 'scalability'],
+    channels: ['direct_sales', 'online'],
+  },
+
+  // ========== 保险经纪 ==========
+  'BRO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'all', gender: 'all' },
+    occasions: ['insurance_purchase', 'risk_management'],
+    valueProps: ['expertise', 'selection', 'service'],
+    channels: ['broker', 'online'],
+  },
+
+  // ========== 家庭安防 ==========
+  'ADT': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_protection', 'moving'],
+    valueProps: ['security', 'peace_of_mind', 'monitoring'],
+    channels: ['direct_sales', 'retail', 'online'],
+  },
+
+  // ========== 托幼服务 ==========
+  'BFAM': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['childcare', 'back_to_work'],
+    valueProps: ['quality_care', 'convenience', 'employer_benefit'],
+    channels: ['center', 'employer'],
+  },
+
+  // ========== 电影院 ==========
+  'CNK': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['entertainment', 'date_night', 'family_outing'],
+    valueProps: ['experience', 'convenience', 'value'],
+    channels: ['theater', 'app', 'online'],
+  },
+
+  // ========== 家居零售 ==========
+  'ETD': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_furnishing', 'remodel', 'moving'],
+    valueProps: ['quality', 'design', 'customization'],
+    channels: ['showroom', 'online', 'interior_designer'],
+  },
+
+  // ========== 家居产品 ==========
+  'FBIN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_improvement', 'remodel', 'new_home'],
+    valueProps: ['quality', 'design', 'durability'],
+    channels: ['home_center', 'dealer', 'online'],
+  },
+
+  // ========== 主题公园 ==========
+  'FUN': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['family_outing', 'entertainment', 'vacation'],
+    valueProps: ['thrills', 'family_fun', 'seasonal_events'],
+    channels: ['park', 'online', 'app'],
+  },
+
+  // ========== 超级应用 ==========
+  'GRAB': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['ride_hailing', 'food_delivery', 'payments'],
+    valueProps: ['convenience', 'speed', 'variety'],
+    channels: ['app'],
+  },
+
+  // ========== 电脑外设 ==========
+  'LOGI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['work_setup', 'gaming', 'content_creation'],
+    valueProps: ['quality', 'ergonomics', 'design'],
+    channels: ['retail', 'online', 'direct'],
+  },
+
+  // ========== 赌场度假村 ==========
+  'LVS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['vacation', 'gambling', 'convention'],
+    valueProps: ['luxury', 'entertainment', 'integrated_resort'],
+    channels: ['resort', 'online', 'travel_agent'],
+  },
+
+  // ========== 家庭舒适/安防 ==========
+  'REZI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_improvement', 'hvac_install', 'security'],
+    valueProps: ['comfort', 'efficiency', 'connected_home'],
+    channels: ['contractor', 'retail', 'online'],
+  },
+
+  // ========== 住宅建设 ==========
+  'TMHC': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_purchase', 'family_growth', 'relocation'],
+    valueProps: ['quality_construction', 'design', 'community'],
+    channels: ['model_homes', 'realtor', 'online'],
+  },
+
+  // ========== 家用电器 ==========
+  'WHR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['appliance_replacement', 'new_home', 'remodel'],
+    valueProps: ['reliability', 'brand_trust', 'innovation'],
+    channels: ['retail', 'home_center', 'online'],
+  },
+
+  // ========== 健康补充剂 ==========
+  'USNA': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['health_wellness', 'nutrition'],
+    valueProps: ['quality', 'science_backed', 'community'],
+    channels: ['direct_selling', 'online'],
+  },
+
+  // ========== 美容健康 ==========
+  'NUS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['skincare', 'anti_aging', 'wellness'],
+    valueProps: ['innovation', 'science', 'community'],
+    channels: ['direct_selling', 'online'],
+  },
 };
 
 // ============================================================

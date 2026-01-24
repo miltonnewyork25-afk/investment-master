@@ -5603,6 +5603,87 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // 工业拍卖产业链
     'Industrial Auctions': [],         // 终端设备买卖方
+
+    // 产权保险产业链
+    'Title Insurance': ['Regional Bank', 'Real Estate Services', 'Mortgage Lender'],
+
+    // 仓储会员店产业链
+    'Warehouse Club': ['Packaged Food', 'Consumer Staples', 'Mass Retail'],
+
+    // 体育用品零售产业链
+    'Sporting Goods Retail': ['Athletic Footwear', 'Outdoor Equipment', 'Apparel Manufacturing'],
+
+    // 电子商务产业链
+    'E-commerce': ['Payments', 'Logistics', 'Packaged Food', 'Consumer Electronics'],
+
+    // 广告验证产业链
+    'AdTech Verification': ['AdTech DSP', 'Digital Advertising', 'Enterprise SaaS'],
+
+    // 广告供给侧平台产业链
+    'AdTech SSP': ['AdTech DSP', 'Digital Advertising', 'AdTech Verification'],
+
+    // 广告平台产业链
+    'AdTech Platform': ['AdTech DSP', 'AdTech SSP', 'Digital Advertising'],
+
+    // 环境修复产业链
+    'Environmental Remediation': ['Environmental Services', 'Construction & Engineering', 'Waste Management'],
+
+    // 专业服务产业链
+    'Professional Services': ['Enterprise SaaS', 'Government Software', 'Management Consulting'],
+
+    // 教育服务产业链
+    'Education Services': ['Online K-12', 'For-Profit Education', 'Healthcare Education'],
+
+    // 贵金属流媒体产业链
+    'Precious Metals Streaming': ['Gold Mining', 'Silver Mining', 'Specialty Metals'],
+
+    // 数据基础设施产业链
+    'Data Infrastructure': ['Cloud Computing', 'Enterprise SaaS', 'Digital Infrastructure Investment'],
+
+    // 快餐产业链
+    'Quick Service Restaurant': ['Packaged Food', 'Food Distribution', 'Restaurant Tech'],
+
+    // 家庭安防产业链
+    'Home Security': ['Smart Home', 'IoT Platform', 'Alarm Monitoring'],
+
+    // 托幼服务产业链
+    'Childcare Services': ['Education Services', 'Real Estate Services', 'Staffing/Workforce'],
+
+    // 电影院产业链
+    'Movie Theater': ['Entertainment', 'Cinema Technology', 'Content Streaming'],
+
+    // 家居装饰产业链
+    'Home Furnishing': ['Residential Construction', 'Home Furnishings', 'Mass Retail'],
+
+    // 超级应用产业链
+    'Super App': ['Payments', 'E-commerce', 'Digital Advertising'],
+
+    // 影院技术产业链
+    'Cinema Technology': ['Movie Theater', 'Entertainment', 'Display Technology'],
+
+    // 电脑外设产业链
+    'Computer Peripherals': ['Consumer Electronics', 'Enterprise Hardware', 'Semiconductor'],
+
+    // 奢侈品集团产业链
+    'Luxury Conglomerate': ['Fashion Brand', 'Prestige Beauty', 'Luxury Goods'],
+
+    // 显示材料产业链
+    'Display Materials': ['Consumer Electronics', 'Display Technology', 'Semiconductor'],
+
+    // 家庭舒适产业链
+    'Home Comfort': ['HVAC & Refrigeration', 'Building Products', 'Residential Construction'],
+
+    // 医学美容产业链
+    'Medical Aesthetics': ['Medical Devices', 'Prestige Beauty', 'Dermatology'],
+
+    // 住宅建设产业链
+    'Homebuilders': ['Building Products', 'Residential Construction', 'Regional Bank'],
+
+    // 家用电器产业链
+    'Home Appliances': ['Consumer Electronics', 'Residential Construction', 'Mass Retail'],
+
+    // 健康补充剂产业链
+    'Health Supplements': ['Packaged Food', 'Specialty Retail', 'Direct Selling'],
   },
 };
 
