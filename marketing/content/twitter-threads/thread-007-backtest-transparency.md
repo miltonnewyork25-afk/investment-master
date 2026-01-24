@@ -11,7 +11,9 @@
 **1/10 [HOOK]**
 "100% accuracy sounds like BS."
 
-I get this a lot. So let me show you EXACTLY how I backtested the framework — every assumption, every limitation, completely transparent. 🧵
+I hear this every week. So here's something 99% of investment "gurus" would NEVER do:
+
+I'm publishing every signal, every assumption, every limitation — right or wrong — for you to judge. 🧵
 
 **2/10 [WHAT I TESTED]**
 I tested ONE specific claim:

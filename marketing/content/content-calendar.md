@@ -1,6 +1,6 @@
 # Content Calendar - Week of 2026-01-27
-# Super Marketing Agent v1.0
-# 更新时间: 2026-01-24
+# Super Marketing Agent v2.0
+# 更新时间: 2026-01-24 (Iteration #004)
 
 ## 每周固定节奏
 
@@ -41,16 +41,20 @@
 | 20 | 10 Rules Carousel | 10页轮播 | Instagram | infographics/ |
 | 21 | Supply Chain Map | 信息图描述 | Instagram | infographics/ |
 | 22 | Show HN Post | 社区帖 | Hacker News | hackernews/show-hn-post |
+| 23 | LRCX Earnings Preview | Thread 10条 | Twitter/X | twitter-threads/thread-008 |
+| 24 | LRCX Earnings Newsletter | Newsletter | Substack | newsletter/issue-002 |
+| 25 | LRCX Earnings Reaction | Thread 8条(双模板) | Twitter/X | twitter-threads/thread-009 |
+| 26 | LRCX 60s Earnings Video | 短视频脚本 | TikTok/Reels | short-video/script-004 |
 
 ### 待生产（Phase 2 批次）
 | # | 主题 | 格式 | 优先级 |
 |---|------|------|--------|
-| 23 | LRCX Earnings Preview | Thread + Newsletter | P0 (Jan 29前) |
-| 24 | "How to Read the Score Table" | Tutorial Video | P1 |
-| 25 | Framework Q&A / FAQ | Thread + Post | P1 |
-| 26 | Memory Cycle Analysis (MU) | Thread + Newsletter | P1 |
-| 27 | Product Hunt Launch Post | 产品页 | P1 |
-| 28 | LinkedIn Article | 长文 | P2 |
+| 27 | "How to Read the Score Table" | Tutorial Video | P1 |
+| 28 | Framework Q&A / FAQ | Thread + Post | P1 |
+| 29 | Memory Cycle Analysis (MU) | Thread + Newsletter | P1 |
+| 30 | Product Hunt Launch Post | 产品页 | P1 |
+| 31 | LinkedIn Article | 长文 | P2 |
+| 32 | LRCX Post-Earnings Newsletter | Newsletter详析 | P0 (Jan 30) |
 
 ## 内容复用策略（1→21 执行）
 
@@ -66,7 +70,7 @@
 | 供应链角度 | ✅ #006 | — | ✅ Infographic #6 |
 | 透明度角度 | ✅ #007 | — | — |
 
-**当前完成度**: 22/21 (105%) ✅ 超额完成
+**当前完成度**: 26/21 (124%) ✅ 超额完成 (+4 earnings event content)
 
 ## 发布检查清单
 

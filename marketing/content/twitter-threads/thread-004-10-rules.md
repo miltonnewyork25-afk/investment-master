@@ -9,11 +9,11 @@
 ## Thread (12 tweets)
 
 **1/12 [HOOK]**
-After backtesting 10 years of data across 8 industries, I've distilled cycle investing into 10 rules.
+Most investors lose 30-50% in every cycle downturn.
 
-These rules helped the framework achieve 100% accuracy on 164 data points.
+After testing 164 data points over 10 years, I found 10 rules that caught EVERY cycle turn in advance.
 
-Save this thread. 🧵👇
+Rule #7 is the one Wall Street won't tell you. 🧵👇
 
 **2/12 [RULE 1]**
 Rule 1: Buy when the rate of decline SLOWS, not when things are "good."
