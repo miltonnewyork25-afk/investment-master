@@ -1862,6 +1862,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Shale E&P': [
       'Midstream Pipeline',
       'Refining',
+      'LNG Shipping',           // LNG出口
+      'Commodity Chemicals',    // 化工原料
     ],
 
     'International E&P': [
@@ -1876,6 +1878,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     'Midstream Pipeline': [
       'Refining',
+      'LNG Shipping',           // 天然气出口
+      'Commodity Chemicals',    // 化工原料
     ],
 
     'Refining': [
@@ -1984,10 +1988,14 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Auto Parts Tier1': [
       'EV OEM',
       'Traditional OEM',
+      'Auto Dealer',            // 售后零配件
+      'Specialty Vehicles',     // 特种车辆
     ],
 
     'EV OEM': [
       'Auto Dealer',
+      'EV Charging',            // 充电网络
+      'Auto Finance',           // 汽车金融
     ],
 
     'Traditional OEM': [
@@ -2032,6 +2040,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Large MedTech': [
       'Hospital',
       'Pharma Distributor',   // 分销渠道
+      'Health Insurance',      // 报销审批
+      'Digital Health',        // 远程医疗设备
     ],
 
     // 生命科学工具服务于制药/生物科技研发
@@ -2068,10 +2078,15 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     'Data Center REIT': [
       'Cloud Hyperscaler',
+      'Enterprise SaaS',        // SaaS托管
+      'Financial Data',         // 金融数据托管
     ],
 
     'Cloud Hyperscaler': [
       'Enterprise SaaS',
+      'Streaming',              // 内容分发
+      'Gaming Platform',        // 云游戏
+      'Digital Health',         // 医疗云
     ],
 
     // ========== 建筑/基建产业链 ==========
@@ -2121,6 +2136,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'E&C Contractor': [
       'Homebuilder',
       'Data Center REIT',
+      'Industrial REIT',        // 工业建筑
+      'Midstream Pipeline',     // 管道建设
     ],
 
     // 建筑材料 → 房建商 → 房贷/产权保险
@@ -2136,6 +2153,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Homebuilder': [
       'Mortgage Lender',
       'Title Insurance',
+      'Home Furnishing Retail', // 家居采购
+      'Home Improvement',       // 装修材料
     ],
 
     'Mortgage Lender': [
@@ -2329,6 +2348,9 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     'Digital Payments': [
       'E-commerce',
+      'Mass Retail',            // 移动支付
+      'QSR',                    // 快餐支付
+      'Ride-hailing',           // 出行支付
     ],
 
     // 资管 → 券商渠道
@@ -2338,6 +2360,9 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     'Alternative Asset Manager': [
       'Brokerage',
+      'Industrial REIT',        // 不动产投资
+      'Data Center REIT',       // 基建投资
+      'E&C Contractor',         // 基建项目
     ],
 
     // 托管银行 → 资管/券商 (托管/清算服务)
@@ -2595,11 +2620,15 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Packaged Foods': [
       'Mass Retail',
       'Warehouse Club',
+      'Dollar Store',           // 折扣渠道
+      'Grocery',                // 超市渠道
+      'E-commerce',             // 线上渠道
     ],
 
     'Snacks': [
       'Mass Retail',
       'Warehouse Club',
+      'Dollar Store',           // 折扣渠道
       'Dollar Store',
     ],
 
@@ -2641,6 +2670,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // ========== 旅游/出行产业链 ==========
     'Hotel Chain': [
       'OTA',
+      'Travel Meta',            // 比价平台
+      'Ride-hailing',           // 酒店出行
     ],
 
     'Short-term Rental': [
@@ -2942,6 +2973,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Enterprise SaaS': [
       'Cloud Hyperscaler',     // 基础设施需求
       'Data Center REIT',      // 数据中心需求
+      'IT Outsourcing',        // 实施服务
+      'Cybersecurity',         // 安全需求
     ],
 
     'Auto Dealer': [
