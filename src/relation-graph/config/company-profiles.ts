@@ -837,6 +837,21 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'MCO': 'mid',       // Moody's
   'MSCI': 'mid',      // MSCI
 
+  // ---------- 保险 (Insurance) ----------
+  'PGR': 'mid',        // Progressive - P&C
+  'ALL': 'mid',        // Allstate - P&C
+  'TRV': 'mid',        // Travelers - P&C
+  'CB': 'mid',         // Chubb - P&C
+  'AIG': 'mid',        // AIG - P&C
+  'MET': 'mid',        // MetLife - Life
+  'PRU': 'mid',        // Prudential - Life
+  'AFL': 'defensive',  // Aflac - Supplemental
+  'AON': 'defensive',  // Aon - Broker
+  'MMC': 'defensive',  // Marsh - Broker
+  'WTW': 'defensive',  // WTW - Broker
+  'AJG': 'defensive',  // Gallagher - Broker
+  'BRO': 'defensive',  // Brown & Brown - Broker
+
   // ---------- REITs (利率敏感) ----------
   'PLD': 'mid',        // Prologis - 工业REIT
   'REXR': 'mid',       // Rexford - 工业REIT
@@ -1384,6 +1399,40 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'APP': {
     interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // 保险 - 利率受益
+  'PGR': {
+    interestRate: 0.3, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'ALL': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'TRV': {
+    interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'CB': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'MET': {
+    interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'PRU': {
+    interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'AON': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'MMC': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
   },
 
   // REITs - 高利率敏感

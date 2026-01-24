@@ -826,6 +826,122 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
 
   // ========================================================
+  // 保险行业
+  // 产业链: 保费收入 → 投资 → 赔付
+  // 特点: 利率受益、承保周期、资本密集
+  // ========================================================
+
+  // ---------- 财产与意外险 (P&C Insurance) ----------
+  'PGR': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'P&C Insurance',
+    tags: ['auto', 'home', 'direct', 'usage_based'],
+  },
+  'ALL': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'interest_income'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'P&C Insurance',
+    tags: ['auto', 'home', 'life', 'agent'],
+  },
+  'TRV': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'interest_income'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2B',
+    industrySegment: 'P&C Insurance',
+    tags: ['commercial', 'personal', 'specialty'],
+  },
+  'CB': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'interest_income'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2B',
+    industrySegment: 'P&C Insurance',
+    tags: ['commercial', 'specialty', 'global', 'high_net_worth'],
+  },
+  'AIG': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'interest_income'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2B',
+    industrySegment: 'P&C Insurance',
+    tags: ['commercial', 'specialty', 'global', 'restructuring'],
+  },
+
+  // ---------- 人寿与健康保险 (Life Insurance) ----------
+  'MET': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'interest_income'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2B2C',
+    industrySegment: 'Life Insurance',
+    tags: ['group', 'individual', 'annuities', 'global'],
+  },
+  'PRU': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'interest_income'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2B2C',
+    industrySegment: 'Life Insurance',
+    tags: ['retirement', 'annuities', 'asset_management', 'global'],
+  },
+  'AFL': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Life Insurance',
+    tags: ['supplemental', 'japan', 'cancer', 'worksite'],
+  },
+
+  // ---------- 保险经纪 (Insurance Brokers) ----------
+  'AON': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Insurance Broker',
+    tags: ['risk', 'reinsurance', 'consulting', 'global'],
+  },
+  'MMC': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Insurance Broker',
+    tags: ['marsh', 'mercer', 'consulting', 'global'],
+  },
+  'WTW': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Insurance Broker',
+    tags: ['risk', 'human_capital', 'consulting'],
+  },
+  'AJG': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Insurance Broker',
+    tags: ['mid_market', 'acquisitions', 'specialty'],
+  },
+  'BRO': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Insurance Broker',
+    tags: ['mid_market', 'specialty', 'wholesale'],
+  },
+
+  // ========================================================
   // 支付/金融科技行业
   // ========================================================
 

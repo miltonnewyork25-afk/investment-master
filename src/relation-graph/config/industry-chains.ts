@@ -1105,6 +1105,21 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'CP': 'Class I Railroad',             // Canadian Pacific
     'CNI': 'Class I Railroad',            // Canadian National
 
+    // ========== 保险细分 ==========
+    'PGR': 'P&C Insurance',              // Progressive
+    'ALL': 'P&C Insurance',              // Allstate
+    'TRV': 'P&C Insurance',              // Travelers
+    'CB': 'P&C Insurance',               // Chubb
+    'AIG': 'P&C Insurance',              // AIG
+    'MET': 'Life Insurance',             // MetLife
+    'PRU': 'Life Insurance',             // Prudential
+    'AFL': 'Life Insurance',             // Aflac
+    'AON': 'Insurance Broker',           // Aon
+    'MMC': 'Insurance Broker',           // Marsh McLennan
+    'WTW': 'Insurance Broker',           // WTW
+    'AJG': 'Insurance Broker',           // Gallagher
+    'BRO': 'Insurance Broker',           // Brown & Brown
+
     // ========== REITs细分 ==========
     'PLD': 'Industrial REIT',             // Prologis
     'REXR': 'Industrial REIT',            // Rexford
@@ -1638,6 +1653,25 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Cement': [
       'E&C Contractor',
       'Homebuilder',
+    ],
+
+    // ========== 保险产业链 ==========
+    // 保险经纪 → 保险公司
+    'Insurance Broker': [
+      'P&C Insurance',
+      'Life Insurance',
+    ],
+
+    // P&C保险 - 与房产/汽车相关
+    'P&C Insurance': [
+      'Auto Dealer',
+      'Homebuilder',
+    ],
+
+    // 人寿保险 - 与资管相关
+    'Life Insurance': [
+      'Asset Manager',
+      'Alternative Asset Manager',
     ],
 
     // ========== REITs产业链 ==========
