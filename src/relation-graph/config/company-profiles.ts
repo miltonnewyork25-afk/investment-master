@@ -3167,6 +3167,81 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['platform', 'tools', 'monetization', 'real_time_3D'],
     channels: ['online', 'direct', 'app_store'],
   },
+
+  // --- S&P 600 Small-Cap Additions ---
+
+  // Casual Dining (B2C)
+  'BJRI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['dinner', 'family_dining', 'social'],
+    valueProps: ['variety', 'casual_atmosphere', 'value'],
+    channels: ['dine_in', 'takeout', 'delivery'],
+  },
+  // Japanese Fast Casual (B2C)
+  'KRUS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['dinner', 'date_night', 'social'],
+    valueProps: ['novelty', 'quality_food', 'experience'],
+    channels: ['dine_in'],
+  },
+  // Quick Service Restaurant (B2C)
+  'LOCO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['lunch', 'dinner', 'quick_meal'],
+    valueProps: ['value', 'freshness', 'speed'],
+    channels: ['drive_through', 'dine_in', 'delivery'],
+  },
+  // For-Profit Education (B2C)
+  'PRDO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['career_advancement', 'degree_completion'],
+    valueProps: ['flexibility', 'affordability', 'career_outcomes'],
+    channels: ['online'],
+  },
+  // Insulin Pump Devices (B2B2C)
+  'TNDM': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['chronic_disease_management'],
+    valueProps: ['convenience', 'accuracy', 'quality_of_life'],
+    channels: ['healthcare_provider', 'direct'],
+  },
+  // Regional Banks (B2B2C)
+  'GBCI': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'TOWN': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'HOPE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'OFG': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'UMBF': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'ABCB': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'lending', 'mortgage'],
+    valueProps: ['local_service', 'relationship', 'community'],
+    channels: ['branch', 'online', 'mobile'],
+  },
 };
 
 // ============================================================
@@ -4683,6 +4758,48 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'TDW': 'late',            // Tidewater - 海洋服务(晚周期)
   'CRAI': 'defensive',      // CRA International - 管理咨询(防御)
   'LNTH': 'defensive',      // Lantheus Holdings - 核医学(防御)
+
+  // --- S&P 600 Small-Cap Additions ---
+
+  // Healthcare/MedTech
+  'OMCL': 'mid',            // Omnicell - 药房自动化(中周期)
+  'NVCR': 'mid',            // NovoCure - 肿瘤治疗设备(中周期)
+  'PRCT': 'mid',            // PROCEPT BioRobotics - 手术机器人(中周期)
+  'IRTC': 'mid',            // iRhythm Technologies - 心脏监测(中周期)
+  'TNDM': 'mid',            // Tandem Diabetes - 胰岛素泵(中周期)
+
+  // Semiconductors/Tech
+  'POWI': 'mid',            // Power Integrations - 电源半导体(中周期)
+  'AMBA': 'mid',            // Ambarella - 视频处理芯片(中周期)
+  'CEVA': 'mid',            // CEVA Inc - 芯片IP授权(中周期)
+  'RMBS': 'mid',            // Rambus - 内存接口IP(中周期)
+  'PI': 'mid',              // Impinj - RFID解决方案(中周期)
+
+  // Industrials
+  'ESAB': 'mid',            // ESAB Corp - 焊接切割设备(中周期)
+  'SPSC': 'defensive',      // SPS Commerce - 供应链SaaS(防御)
+  'NVRI': 'mid',            // Enviri Group - 环保服务(中周期)
+  'SKYW': 'mid',            // SkyWest Inc - 区域航空(中周期)
+
+  // Consumer/Restaurant
+  'BJRI': 'mid',            // BJ's Restaurants - 休闲餐饮(中周期)
+  'KRUS': 'mid',            // Kura Sushi - 日式快餐(中周期)
+  'LOCO': 'mid',            // El Pollo Loco - 快餐(中周期)
+  'PRDO': 'defensive',      // Perdoceo Education - 营利教育(防御)
+
+  // Regional Banks
+  'GBCI': 'mid',            // Glacier Bancorp - 区域银行(中周期)
+  'TOWN': 'mid',            // TowneBank - 区域银行(中周期)
+  'HOPE': 'mid',            // Hope Bancorp - 区域银行(中周期)
+  'OFG': 'mid',             // OFG Bancorp - 区域银行(中周期)
+  'UMBF': 'mid',            // UMB Financial - 区域银行(中周期)
+  'ABCB': 'mid',            // Ameris Bancorp - 区域银行(中周期)
+
+  // Energy
+  'REPX': 'late',           // Riley Exploration - 页岩油气E&P(晚周期)
+  'CIVI': 'late',           // Civitas Resources - 页岩油气E&P(晚周期)
+  'HLX': 'late',            // Helix Energy Solutions - 海底服务(晚周期)
+  'ARCH': 'mid',            // Arch Resources - 焦煤(中周期)
 };
 
 // ============================================================
@@ -9673,6 +9790,132 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'LNTH': {
     interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
     consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // --- S&P 600 Small-Cap Additions ---
+
+  // Healthcare/MedTech
+  'OMCL': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'NVCR': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'PRCT': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'IRTC': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'TNDM': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Semiconductors/Tech
+  'POWI': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'AMBA': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'CEVA': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'RMBS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'PI': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+
+  // Industrials
+  'ESAB': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'SPSC': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'NVRI': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'SKYW': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Consumer/Restaurant
+  'BJRI': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'KRUS': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'LOCO': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'PRDO': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: -0.2, unemployment: 0.4,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Regional Banks
+  'GBCI': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'TOWN': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'HOPE': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'OFG': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'UMBF': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'ABCB': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+
+  // Energy
+  'REPX': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.7,
+  },
+  'CIVI': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.7,
+  },
+  'HLX': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.6,
+  },
+  'ARCH': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
   },
 };
 

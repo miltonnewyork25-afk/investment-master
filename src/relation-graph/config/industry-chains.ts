@@ -2602,6 +2602,48 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'TDW': 'Offshore Marine Services',     // Tidewater - 海洋服务
     'CRAI': 'Management Consulting',       // CRA International - 管理咨询
     'LNTH': 'Nuclear Imaging',             // Lantheus Holdings - 核医学
+
+    // --- S&P 600 Small-Cap Additions ---
+
+    // Healthcare/MedTech
+    'OMCL': 'Pharmacy Automation',           // Omnicell - 药房自动化
+    'NVCR': 'Cancer Treatment Devices',      // NovoCure - 肿瘤治疗设备(TTFields)
+    'PRCT': 'Surgical Robotics',             // PROCEPT BioRobotics - 手术机器人
+    'IRTC': 'Cardiac Monitoring',            // iRhythm Technologies - 心脏监测
+    'TNDM': 'Insulin Pump Devices',          // Tandem Diabetes - 胰岛素泵
+
+    // Semiconductors/Tech
+    'POWI': 'Power Semiconductor',           // Power Integrations - 电源半导体
+    'AMBA': 'Video Processing Chip',         // Ambarella - 视频处理芯片
+    'CEVA': 'Chip IP Licensing',             // CEVA Inc - 芯片IP授权
+    'RMBS': 'Memory Interface IP',           // Rambus - 内存接口IP/芯片
+    'PI': 'RFID Solutions',                  // Impinj - RFID解决方案
+
+    // Industrials
+    'ESAB': 'Welding & Cutting Equipment',   // ESAB Corp - 焊接切割设备
+    'SPSC': 'Supply Chain SaaS',             // SPS Commerce - 供应链SaaS
+    'NVRI': 'Environmental Services',        // Enviri Group - 环保服务
+    'SKYW': 'Regional Airline',              // SkyWest Inc - 区域航空
+
+    // Consumer/Restaurant
+    'BJRI': 'Casual Dining',                 // BJ's Restaurants - 休闲餐饮
+    'KRUS': 'Fast Casual Japanese',          // Kura Sushi - 日式快餐
+    'LOCO': 'Quick Service Restaurant',      // El Pollo Loco - 快餐
+    'PRDO': 'For-Profit Education',          // Perdoceo Education - 营利教育
+
+    // Regional Banks
+    'GBCI': 'Regional Bank',              // Glacier Bancorp - 区域银行
+    'TOWN': 'Regional Bank',              // TowneBank - 区域银行
+    'HOPE': 'Regional Bank',              // Hope Bancorp - 区域银行
+    'OFG': 'Regional Bank',               // OFG Bancorp - 区域银行
+    'UMBF': 'Regional Bank',              // UMB Financial - 区域银行
+    'ABCB': 'Regional Bank',              // Ameris Bancorp - 区域银行
+
+    // Energy
+    'REPX': 'Shale E&P',                     // Riley Exploration - 页岩油气
+    'CIVI': 'Shale E&P',                     // Civitas Resources - 页岩油气
+    'HLX': 'Subsea Services',                // Helix Energy Solutions - 海底服务
+    'ARCH': 'Metallurgical Coal',            // Arch Resources - 焦煤
   },
 
   // ============================================================
@@ -4961,6 +5003,127 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Hospital Operator',            // 医院影像科
       'Health Insurance',             // 保险覆盖
       'Large Pharma',                 // 药物伴随诊断
+    ],
+
+    // ========== S&P 600 Small-Cap Additions ==========
+
+    // 药房自动化 → 医院/药房
+    'Pharmacy Automation': [
+      'Hospital Operator',            // 医院药房
+      'Pharma Distribution',          // 药品分销
+      'Health Insurance',             // 效率降本
+    ],
+
+    // 肿瘤治疗设备 → 医疗终端
+    'Cancer Treatment Devices': [
+      'Hospital Operator',            // 肿瘤科
+      'Health Insurance',             // 保险报销
+      'Large Pharma',                 // 联合治疗
+    ],
+
+    // 手术机器人 → 医院
+    'Surgical Robotics': [
+      'Hospital Operator',            // 手术室
+      'Medical Devices',              // 器械配套
+      'Health Insurance',             // 手术报销
+    ],
+
+    // 心脏监测 → 医疗终端
+    'Cardiac Monitoring': [
+      'Hospital Operator',            // 心内科
+      'Health Insurance',             // 远程监护报销
+      'Medical Devices',              // 心脏器械协同
+    ],
+
+    // 胰岛素泵 → 糖尿病管理
+    'Insulin Pump Devices': [
+      'Hospital Operator',            // 内分泌科
+      'Health Insurance',             // 慢病报销
+      'Medical Devices',              // CGM配套
+    ],
+
+    // 电源半导体 → 电子终端
+    'Power Semiconductor': [
+      'Consumer Electronics',         // 消费电子电源
+      'EV Battery',                   // 新能源汽车
+      'Industrial Automation',        // 工业电源
+    ],
+
+    // 视频处理芯片 → 终端应用
+    'Video Processing Chip': [
+      'Consumer Electronics',         // 安防摄像
+      'Auto OEM',                     // 汽车视觉
+      'Cloud Infrastructure',         // 云端视频
+    ],
+
+    // 芯片IP授权 → 芯片设计
+    'Chip IP Licensing': [
+      'Fabless Chips',                // 芯片设计客户
+      'Consumer Electronics',         // 消费电子芯片
+      'Communication Equipment',      // 通信芯片
+    ],
+
+    // 内存接口IP → 存储/计算
+    'Memory Interface IP': [
+      'Memory Chips',                 // 内存厂商
+      'Server/Storage',               // 服务器
+      'Data Center Infrastructure',   // 数据中心
+    ],
+
+    // RFID → 零售/物流
+    'RFID Solutions': [
+      'Mass Retail',                  // 零售库存管理
+      'Express Logistics',            // 物流追踪
+      'Pharma Distribution',          // 药品追溯
+    ],
+
+    // 焊接切割 → 工业制造
+    'Welding & Cutting Equipment': [
+      'Construction Equipment',       // 工程机械
+      'Integrated Steel',             // 钢结构焊接
+      'Aerospace',                    // 航空航天焊接
+    ],
+
+    // 供应链SaaS → 零售/物流
+    'Supply Chain SaaS': [
+      'Mass Retail',                  // 零售供应链
+      'Express Logistics',            // 物流管理
+      'E-commerce',                   // 电商供应链
+    ],
+
+    // 环保服务 → 工业客户
+    'Environmental Services': [
+      'Integrated Steel',             // 钢铁废料
+      'Construction Equipment',       // 建筑废弃物
+      'Shale E&P',                    // 油田环保
+    ],
+
+    // 区域航空 → 干线航空
+    'Regional Airline': [
+      'Low-Cost Airline',             // 干线航空衔接
+      'Travel Services',              // 旅游服务
+      'Aerospace',                    // 飞机制造
+    ],
+
+    // 日式快餐 → 餐饮消费
+    'Fast Casual Japanese': [
+      'Food Distribution',            // 食材供应
+      'Casual Dining',                // 餐饮同行
+      'Quick Service Restaurant',     // 快餐竞争
+    ],
+
+    // 营利教育 → 教育消费
+    'For-Profit Education': [
+      'Enterprise Software',          // 教育科技
+      'Student Housing',              // 学生住房
+      'Consumer Finance',             // 助学贷款
+    ],
+
+    // 海底服务 → 海上油气
+    'Subsea Services': [
+      'International E&P',            // 国际深水项目
+      'Integrated Oil',               // 综合油企
+      'Offshore Driller',             // 海上钻井
     ],
   },
 };

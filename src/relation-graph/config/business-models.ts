@@ -10271,7 +10271,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     revenueModels: ['interest_income', 'transaction_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
-    industrySegment: 'Regional Banking',
+    industrySegment: 'Regional Bank',
     tags: ['community_bank', 'Montana', 'mountain_west', 'commercial_lending'],
   },
   'TOWN': {
@@ -10279,7 +10279,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     revenueModels: ['interest_income', 'transaction_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
-    industrySegment: 'Regional Banking',
+    industrySegment: 'Regional Bank',
     tags: ['community_bank', 'Virginia', 'insurance', 'wealth_management'],
   },
   'HOPE': {
@@ -10287,7 +10287,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     revenueModels: ['interest_income', 'transaction_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
-    industrySegment: 'Regional Banking',
+    industrySegment: 'Regional Bank',
     tags: ['community_bank', 'Korean_American', 'California', 'SBA_lending'],
   },
   'OFG': {
@@ -10295,7 +10295,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     revenueModels: ['interest_income', 'transaction_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
-    industrySegment: 'Regional Banking',
+    industrySegment: 'Regional Bank',
     tags: ['community_bank', 'Puerto_Rico', 'Caribbean', 'auto_lending'],
   },
   'UMBF': {
@@ -10303,7 +10303,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     revenueModels: ['interest_income', 'transaction_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
-    industrySegment: 'Regional Banking',
+    industrySegment: 'Regional Bank',
     tags: ['commercial_bank', 'fund_services', 'healthcare_banking', 'institutional'],
   },
   'ABCB': {
@@ -10311,7 +10311,7 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     revenueModels: ['interest_income', 'transaction_fee'],
     deliveryModel: 'self_operated',
     customerModel: 'B2B2C',
-    industrySegment: 'Regional Banking',
+    industrySegment: 'Regional Bank',
     tags: ['community_bank', 'Southeast', 'mortgage', 'commercial_lending'],
   },
 
