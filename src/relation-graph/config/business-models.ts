@@ -5832,6 +5832,58 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Life Science REIT',
     tags: ['lab_space', 'biotech_clusters', 'R&D_campus', 'Alexandria'],
   },
+
+  // ========================================================
+  // 工业/建筑补充 (Industrial/Building Additions)
+  // ========================================================
+  'HRI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Equipment Rental',
+    tags: ['aerial', 'earthmoving', 'specialty', 'construction'],
+  },
+  'WTS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Water Technology',
+    tags: ['pumps', 'valves', 'water_quality', 'flow_control'],
+  },
+  'TT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Systems',
+    tags: ['HVAC', 'transport_refrigeration', 'Thermo_King', 'Trane'],
+  },
+  'LII': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Systems',
+    tags: ['HVAC', 'residential', 'commercial', 'refrigeration'],
+  },
+  'GGG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Industrial',
+    tags: ['fluid_handling', 'spray_technology', 'contractor', 'process'],
+  },
+  'ROP': {
+    assetModel: 'hybrid',
+    revenueModels: ['subscription', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Industrial',
+    tags: ['niche_software', 'industrial_tech', 'water', 'measurement'],
+  },
 };
 
 // ============================================================

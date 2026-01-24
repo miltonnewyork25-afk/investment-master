@@ -2715,6 +2715,13 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'AEE': 'defensive',  // Ameren - 受管制
   'CMS': 'defensive',  // CMS Energy - 受管制
   'ARE': 'late',       // Alexandria - 生物科技REIT
+  // ---------- 工业/建筑 - 补充 ----------
+  'HRI': 'early',      // Herc Holdings - 设备租赁周期
+  'WTS': 'mid',        // Watts Water - 水基础设施
+  'TT': 'mid',         // Trane Technologies - 建筑HVAC
+  'LII': 'mid',        // Lennox - HVAC周期
+  'GGG': 'mid',        // Graco - 流体处理
+  'ROP': 'defensive',  // Roper - 利基软件+工业
 };
 
 // ============================================================
@@ -5493,6 +5500,32 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
     consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
   },
+
+  // ========== 工业/建筑 - 补充 ==========
+  'HRI': {
+    interestRate: -0.4, inflation: 0.2, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'WTS': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'TT': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.4, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'LII': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'GGG': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ROP': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
 };
 
 // ============================================================
@@ -5677,6 +5710,19 @@ export const CROSS_CHAIN_IMPACT: Record<string, string[]> = {
   // 公用事业/可再生 - 跨链
   'NEE': ['Utilities', 'Solar', 'Wind', 'Energy Storage'],
   'ENPH': ['Solar', 'Energy Storage', 'EV Charging', 'Smart Home'],
+
+  // 新增S&P 500 - 跨链
+  'SAP': ['Enterprise Software', 'Cloud', 'AI', 'Supply Chain'],
+  'INTU': ['SMB Software', 'Tax/Accounting', 'Financial Services', 'AI'],
+  'ADP': ['HCM/Payroll', 'Insurance', 'Financial Services', 'Data'],
+  'ADSK': ['Design Software', 'Construction Chain', 'Manufacturing', 'Media'],
+  'GEHC': ['Healthcare', 'Medical Imaging', 'AI', 'Pharma Diagnostics'],
+  'URI': ['Equipment Rental', 'Construction Chain', 'Industrial Chain', 'Energy'],
+  'IR': ['Industrial Chain', 'Oil & Gas Chain', 'HVAC', 'Food & Beverage'],
+  'CARR': ['HVAC', 'Fire Safety', 'Construction Chain', 'Cold Chain'],
+  'OTIS': ['Building Systems', 'Construction Chain', 'IoT', 'Smart Building'],
+  'XYL': ['Water Infrastructure', 'Utilities', 'Industrial Chain', 'Smart Meters'],
+
 };
 
 // ============================================================

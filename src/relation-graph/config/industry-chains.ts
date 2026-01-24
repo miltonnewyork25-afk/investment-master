@@ -625,6 +625,83 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Software - Infrastructure',
       'Communication Equipment',
     ],
+
+    // 航空旅游互补
+    'Airlines, Airports & Air Services': [
+      'Lodging',
+      'Travel Services',
+      'Resorts & Casinos',
+    ],
+
+    // 生物科技互补
+    'Biotechnology': [
+      'Drug Manufacturers - General',
+      'Medical - Devices',
+      'Medical - Diagnostics & Research',
+    ],
+
+    // 农业互补
+    'Agricultural Inputs': [
+      'Farm Products',
+      'Farm & Heavy Construction Machinery',
+      'Packaged Foods',
+    ],
+
+    // 建筑互补
+    'Construction & Engineering': [
+      'Construction Materials',
+      'Building Materials',
+      'Residential Construction',
+    ],
+
+    // 可再生能源互补
+    'Solar': [
+      'Electrical Equipment & Parts',
+      'Utilities - Renewable',
+      'Uranium',
+    ],
+
+    // 科技基础设施互补
+    'Software - Infrastructure': [
+      'Information Technology Services',
+      'Semiconductors',
+      'Communication Equipment',
+    ],
+
+    // 教育互补
+    'Education & Training Services': [
+      'Software - Application',
+      'Internet Content & Information',
+      'Staffing & Employment Services',
+    ],
+
+    // 奢侈品互补
+    'Luxury Goods': [
+      'Apparel - Manufacturers',
+      'Footwear & Accessories',
+      'Lodging',
+    ],
+
+    // 废物处理互补
+    'Waste Management': [
+      'Construction & Engineering',
+      'Utilities - Regulated Electric',
+      'Chemicals - Specialty',
+    ],
+
+    // 食品互补
+    'Packaged Foods': [
+      'Beverages - Non-Alcoholic',
+      'Grocery Stores',
+      'Food Distribution',
+    ],
+
+    // 资本市场互补
+    'Capital Markets': [
+      'Financial - Data & Stock Exchanges',
+      'Asset Management',
+      'Insurance Brokers',
+    ],
   },
 
   industryGroups: {
@@ -1850,6 +1927,14 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'AEE': 'Regulated Utility',            // Ameren
     'CMS': 'Regulated Utility',            // CMS Energy
     'ARE': 'Life Science REIT',            // Alexandria RE
+
+    // ========== 补充覆盖 - 工业/建筑 ==========
+    'HRI': 'Equipment Rental',             // Herc Holdings
+    'WTS': 'Water Technology',             // Watts Water
+    'TT': 'Building Systems',              // Trane Technologies
+    'LII': 'Building Systems',             // Lennox International
+    'GGG': 'Specialty Industrial',         // Graco
+    'ROP': 'Specialty Industrial',         // Roper Technologies
   },
 
   // ============================================================
