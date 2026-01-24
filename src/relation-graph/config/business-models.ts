@@ -11697,19 +11697,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
 
   // ========================================================
-  // 钢铁 (Integrated Steel)
-  // ========================================================
-
-  'X': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B',
-    industrySegment: 'Integrated Steel',
-    tags: ['steel', 'integrated', 'flat_rolled', 'tubular'],
-  },
-
-  // ========================================================
   // 矿业 (Mining)
   // ========================================================
 
@@ -12323,14 +12310,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
 
   // Russell 2000 small-caps (healthcare)
-  'GMED': {
-    assetModel: 'asset_light',
-    revenueModels: ['product_sales'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B',
-    industrySegment: 'Surgical Robotics',
-    tags: ['spine_surgery', 'robotics', 'musculoskeletal', 'navigation'],
-  },
   'FLGT': {
     assetModel: 'asset_light',
     revenueModels: ['premium_service'],
@@ -12484,6 +12463,110 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2C',
     industrySegment: 'Sustainable Footwear',
     tags: ['sustainable', 'dtc', 'footwear', 'eco_friendly'],
+  },
+
+  // ========================================================
+  // Energy/Midstream - Oil Gathering
+  // ========================================================
+
+  'HESM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil Gathering',
+    tags: ['midstream', 'oil_gathering', 'gas_processing', 'water'],
+  },
+
+  // ========================================================
+  // Food/Beverage - Specialty Foods
+  // ========================================================
+
+  'LANC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Specialty Foods',
+    tags: ['food', 'specialty', 'dressings', 'frozen', 'foodservice'],
+  },
+
+  // ========================================================
+  // Russell 2000/3000 Small-Caps 补充 (Cannabis/EV/Space/Specialty)
+  // ========================================================
+
+  // Cannabis/Alternative
+  'CRON': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Cannabis',
+    tags: ['cannabis', 'CBD', 'wellness', 'Canada', 'Altria_backed'],
+  },
+  'GTBIF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Cannabis MSO',
+    tags: ['cannabis', 'MSO', 'dispensary', 'multi_state', 'vertical_integration'],
+  },
+
+  // EV/Clean Energy Small-Caps
+  'FCEL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Fuel Cell Platforms',
+    tags: ['fuel_cell', 'hydrogen', 'stationary_power', 'clean_energy'],
+  },
+
+  // Space/Satellite
+  'VSAT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Satellite Internet',
+    tags: ['satellite', 'broadband', 'in_flight', 'maritime', 'government'],
+  },
+
+  // Specialty Retail/Auto
+  'XPEL': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Auto Paint Protection',
+    tags: ['PPF', 'window_tint', 'ceramic_coating', 'aftermarket'],
+  },
+  'DORM': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Aftermarket Auto Parts',
+    tags: ['aftermarket', 'OE_replacement', 'hardware', 'brake', 'engine'],
+  },
+
+  // Data/Analytics Small-Caps
+  'EVRI': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gaming FinTech',
+    tags: ['gaming', 'fintech', 'cash_access', 'loyalty', 'casino_floor'],
+  },
+  'VERX': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Tax Compliance SaaS',
+    tags: ['tax', 'compliance', 'SaaS', 'indirect_tax', 'enterprise'],
   },
 };
 

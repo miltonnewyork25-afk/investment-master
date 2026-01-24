@@ -2896,9 +2896,6 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // Premium EV
     'PSNY': 'Premium EV',                      // Polestar - 高端电动汽车
 
-    // Integrated Steel
-    'X': 'Integrated Steel',                   // US Steel - 综合钢铁
-
     // Iron Ore Mining
     'VALE': 'Iron Ore Mining',                 // Vale - 铁矿石/镍矿
 
@@ -3006,6 +3003,93 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // Business Services
     'G': 'Digital Operations',                 // Genpact - 数字运营/BPO
+
+    // ========== 新增14只股票 (2026-01 batch) ==========
+
+    // Medical Devices
+    'RMD': 'CPAP/Respiratory Devices',         // ResMed - CPAP/呼吸机医疗设备
+
+    // Biotech
+    'ARGX': 'FcRn Antibody Biotech',           // argenx - FcRn抗体生物科技
+
+    // Waste Management
+    'WCN': 'Waste Collection/Disposal',        // Waste Connections - 废物收集/处理
+
+    // Building Materials
+    'CRH': 'Cement/Aggregates',                // CRH plc - 水泥/骨料建材
+
+    // E-commerce
+    'CPNG': 'Korean E-commerce',               // Coupang - 韩国电商
+
+    // Music/Entertainment
+    'WMG': 'Music Labels/Publishing',          // Warner Music - 音乐厂牌/版权
+
+    // Aerospace Components
+    'MOG.A': 'Flight Control Systems',         // Moog Inc - 飞行控制系统
+
+    // Genetic Testing
+    'FLGT': 'Genetic Testing Services',        // Fulgent Genetics - 基因检测
+
+    // Simulation Software
+    'ALTR': 'Simulation/CAE Software',         // Altair Engineering - 仿真/CAE软件
+
+    // Banking SaaS
+    'QTWO': 'Digital Banking Platform',        // Q2 Holdings - 数字银行平台
+
+    // Flooring
+    'TILE': 'Modular Flooring',                // Interface - 模块地板
+
+    // DTC Brands
+    'DTC': 'DTC Outdoor Brands',               // Solo Brands - DTC户外品牌
+
+    // BPO
+    'TASK': 'Digital BPO Services',            // TaskUs - 数字BPO服务
+
+    // Mortgage Servicing
+    'COOP': 'Mortgage Servicing',              // Mr. Cooper - 抵押贷款服务
+
+    // Oil Gathering Midstream
+    'HESM': 'Oil Gathering Midstream',         // Hess Midstream - 油气集输
+
+    // Specialty Foods
+    'LANC': 'Specialty Foods',                 // Lancaster Colony - 特色食品/酱料
+
+    // Russell 2000 Small-Caps Batch (biotech/pharma)
+    'ARQT': 'Immuno-Oncology',                  // Arcus Biosciences - 免疫肿瘤
+    'FATE': 'Cell Therapy',                      // Fate Therapeutics - 细胞治疗
+
+    // Russell 2000 Small-Caps Batch (semiconductor)
+    'INDI': 'Automotive Chips',                  // Indie Semiconductor - 汽车芯片
+    'SLAB': 'IoT Chips',                         // Silicon Labs - IoT无线芯片
+    'AOSL': 'Power Semis',                       // Alpha & Omega Semi - 功率MOSFET
+
+    // Russell 2000 Small-Caps Batch (industrial)
+    'WAB': 'Rail Equipment',                     // Wabtec - 铁路设备/机车
+    'SWX': 'Gas Utility',                        // Southwest Gas - 天然气公用事业
+
+    // Russell 2000 Small-Caps Batch (consumer/retail)
+    'PLBY': 'Lifestyle Brands',                  // PLBY Group - 生活方式品牌授权
+    'RENT': 'Fashion Rental',                    // Rent the Runway - 时尚租赁
+    'BIRD': 'Sustainable Footwear',              // Allbirds - 可持续鞋类DTC
+
+    // Russell 2000/3000 Small-Caps 补充 (Cannabis/EV/Space/Specialty)
+    // Cannabis/Alternative
+    'CRON': 'Cannabis',                           // Cronos Group - 大麻
+    'GTBIF': 'Cannabis MSO',                      // Green Thumb Industries - 大麻MSO
+
+    // EV/Clean Energy
+    'FCEL': 'Hydrogen Fuel Cell',                 // FuelCell Energy - 燃料电池平台
+
+    // Space/Satellite
+    'VSAT': 'Satellite Communications',           // Viasat - 卫星互联网/通信
+
+    // Specialty Retail/Auto
+    'XPEL': 'Auto Accessories',                   // XPEL Inc - 汽车漆面保护膜
+    'DORM': 'Aftermarket Auto Parts',             // Dorman Products - 汽车售后零件
+
+    // Data/Analytics
+    'EVRI': 'Gaming Technology',                  // Everi Holdings - 博彩金融科技
+    'VERX': 'Tax Software',                       // Vertex Inc - 税务合规SaaS
   },
 
   // ============================================================
@@ -6345,6 +6429,218 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Digital Operations': [
       'IT Solutions',                 // IT服务同行
       'CX Business Services',        // CX服务同行
+    ],
+
+    // ========== 补充: 孤立子行业链接 ==========
+
+    // 医疗器械/呼吸设备
+    'CPAP/Respiratory Devices': [
+      'Medical Devices',
+      'Home Health Services',
+      'Health Insurance',
+    ],
+
+    // FcRn抗体生物技术
+    'FcRn Antibody Biotech': [
+      'Biotechnology',
+      'Clinical Trials',
+      'Pharmaceutical',
+    ],
+
+    // 废物收集/处理
+    'Waste Collection/Disposal': [
+      'Waste Management',
+      'Environmental Services',
+      'Infrastructure',
+    ],
+
+    // 水泥/骨料
+    'Cement/Aggregates': [
+      'Construction Materials',
+      'Residential Construction',
+      'Infrastructure',
+    ],
+
+    // 韩国电商
+    'Korean E-commerce': [
+      'E-commerce',
+      'Payments',
+      'Logistics',
+    ],
+
+    // 音乐标签/出版
+    'Music Labels/Publishing': [
+      'Entertainment',
+      'Content Streaming',
+      'Digital Advertising',
+    ],
+
+    // 飞控系统
+    'Flight Control Systems': [
+      'Aerospace & Defense',
+      'Aviation Services',
+      'Tactical Drones',
+    ],
+
+    // 基因检测服务
+    'Genetic Testing Services': [
+      'Genetic Testing',
+      'Medical Diagnostics',
+      'Clinical Trials',
+    ],
+
+    // 仿真/CAE软件
+    'Simulation/CAE Software': [
+      'Enterprise SaaS',
+      'Engineering Technology',
+      'Aerospace & Defense',
+    ],
+
+    // 数字银行平台
+    'Digital Banking Platform': [
+      'Regional Bank',
+      'Fintech',
+      'Payments',
+    ],
+
+    // 模块化地板
+    'Modular Flooring': [
+      'Building Materials',
+      'Residential Construction',
+      'Commercial Construction',
+    ],
+
+    // DTC户外品牌
+    'DTC Outdoor Brands': [
+      'Outdoor Recreation',
+      'E-commerce',
+      'Specialty Retail',
+    ],
+
+    // 数字BPO服务
+    'Digital BPO Services': [
+      'IT Solutions',
+      'CX Business Services',
+      'Enterprise SaaS',
+    ],
+
+    // 抵押贷款服务
+    'Mortgage Servicing': [
+      'Mortgage Finance',
+      'Regional Bank',
+      'Housing Market',
+    ],
+
+    // 油气集输中游
+    'Oil Gathering Midstream': [
+      'Midstream',
+      'E&P',
+      'Natural Gas',
+    ],
+
+    // 特色食品
+    'Specialty Foods': [
+      'Food Distribution',
+      'Grocery',
+      'Restaurant Supply',
+    ],
+
+    // 免疫肿瘤
+    'Immuno-Oncology': [
+      'Biotechnology',
+      'Clinical Trials',
+      'Oncology Center',
+    ],
+
+    // 细胞治疗
+    'Cell Therapy': [
+      'Biotechnology',
+      'Clinical Trials',
+      'Gene Editing',
+    ],
+
+    // 汽车芯片
+    'Automotive Chips': [
+      'Semiconductor',
+      'Auto - Manufacturers',
+      'Autonomous Driving',
+    ],
+
+    // IoT芯片
+    'IoT Chips': [
+      'Semiconductor',
+      'IoT Platform',
+      'Smart Home',
+    ],
+
+    // 功率半导体
+    'Power Semis': [
+      'Semiconductor',
+      'EV Charging',
+      'Industrial Automation',
+    ],
+
+    // 铁路设备
+    'Rail Equipment': [
+      'Specialty Industrial',
+      'Logistics',
+      'Infrastructure',
+    ],
+
+    // 生活方式品牌
+    'Lifestyle Brands': [
+      'Fashion Brand',
+      'E-commerce',
+      'Direct Selling',
+    ],
+
+    // 时尚租赁
+    'Fashion Rental': [
+      'Online Fashion Retail',
+      'E-commerce',
+      'Luxury Goods',
+    ],
+
+    // 可持续鞋类
+    'Sustainable Footwear': [
+      'Footwear',
+      'E-commerce',
+      'Specialty Retail',
+    ],
+
+    // 大麻
+    'Cannabis': [
+      'Cannabis/Craft Beer',
+      'Consumer Staples',
+      'Pharmaceutical',
+    ],
+
+    // 大麻MSO (多州运营)
+    'Cannabis MSO': [
+      'Cannabis',
+      'Specialty Retail',
+      'Consumer Staples',
+    ],
+
+    // 汽车配件
+    'Auto Accessories': [
+      'Auto Parts',
+      'Auto - Manufacturers',
+      'Specialty Retail',
+    ],
+
+    // 汽车售后零件
+    'Aftermarket Auto Parts': [
+      'Auto Parts',
+      'Auto Service',
+      'Specialty Retail',
+    ],
+
+    // 税务软件
+    'Tax Software': [
+      'Enterprise SaaS',
+      'Accounting Services',
+      'Fintech',
     ],
   },
 };
