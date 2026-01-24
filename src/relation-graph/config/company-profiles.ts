@@ -5040,6 +5040,48 @@ export const CROSS_CHAIN_IMPACT: Record<string, string[]> = {
   // 基础设施 - 跨链
   'AMT': ['Telecom Infrastructure', 'Data Centers', 'Fiber', '5G'],
   'CCI': ['Telecom Infrastructure', 'Small Cells', 'Fiber', '5G'],
+
+  // 工业气体 - 跨多个产业链
+  'APD': ['Industrial Gases', 'Semiconductor Chain', 'Healthcare', 'Energy', 'Steel Chain'],
+  'LIN': ['Industrial Gases', 'Semiconductor Chain', 'Healthcare', 'Energy', 'Chemicals'],
+
+  // 工业综合 - 跨链
+  'HON': ['Industrial Chain', 'Aviation Chain', 'Building Tech', 'Defense', 'Oil & Gas Chain'],
+  'GE': ['Aviation Chain', 'Energy', 'Healthcare', 'Industrial Chain'],
+  'MMM': ['Industrial Chain', 'Healthcare', 'Consumer', 'Electronics', 'Auto Chain'],
+
+  // 建材/化工 - 跨链
+  'SHW': ['Coatings', 'Construction Chain', 'Auto Chain', 'Industrial Chain'],
+  'PPG': ['Coatings', 'Auto Chain', 'Aviation Chain', 'Construction Chain'],
+  'ECL': ['Chemicals', 'Food Chain', 'Healthcare', 'Hospitality', 'Industrial Chain'],
+  'DD': ['Specialty Chemicals', 'Electronics', 'Auto Chain', 'Construction Chain'],
+
+  // 零售/消费 - 跨链
+  'WMT': ['Consumer Retail Chain', 'Grocery', 'Pharmacy', 'Financial Services', 'Logistics'],
+  'COST': ['Consumer Retail Chain', 'Grocery', 'Travel', 'Financial Services'],
+  'PG': ['Consumer Staples', 'Grocery', 'Mass Retail', 'E-commerce', 'Beauty'],
+  'KO': ['Beverages', 'QSR', 'Mass Retail', 'Hospitality'],
+
+  // 科技平台 - 跨链
+  'AAPL': ['Consumer Electronics', 'Semiconductor Chain', 'Streaming', 'Payments', 'Healthcare'],
+  'META': ['Social Media', 'Advertising', 'VR/AR', 'E-commerce'],
+  'CRM': ['Enterprise SaaS', 'E-commerce', 'Healthcare', 'Financial Services'],
+
+  // 包装 - 跨链
+  'IP': ['Paper Packaging', 'E-commerce', 'Consumer Retail Chain', 'Industrial Chain'],
+  'BALL': ['Metal Packaging', 'Beverages', 'Aerospace'],
+
+  // 电信 - 跨链
+  'TMUS': ['Wireless', 'Streaming', 'IoT', 'Enterprise'],
+  'VZ': ['Wireless', 'Fiber', 'Enterprise', 'IoT'],
+
+  // 保险 - 跨产业链
+  'BRK.B': ['Insurance', 'Energy', 'Rail', 'Consumer', 'Real Estate'],
+  'AIG': ['P&C Insurance', 'Life Insurance', 'Commercial', 'Real Estate'],
+
+  // 大型科技服务 - 跨链
+  'ACN': ['IT Consulting', 'Healthcare IT', 'Financial Services', 'Government', 'Industrial'],
+  'IBM': ['Tech/Cloud Chain', 'Healthcare IT', 'Financial Services', 'AI'],
 };
 
 // ============================================================
