@@ -22,6 +22,8 @@ import { evidenceExtractor } from './evidence-extractor.js';
 import { scorer } from './scorer.js';
 import { dataAuditor } from './data-auditor.js';
 import { contentGenerator } from './content-generator.js';
+import { validator } from './multi-perspective-validator.js';
+import { syntheticResearch } from './synthetic-research.js';
 import { upstreamCompanies, downstreamCompanies, mockSupplyChainEdges } from '../data/mock-data.js';
 import { config, getScoringConfig } from '../config/index.js';
 import { cacheManager } from '../utils/cache.js';
@@ -85,6 +87,20 @@ class Orchestrator {
       const allCompanies = [...upstreamCompanies, ...downstreamCompanies];
       const scores = scorer.scoreAndRank(allCompanies, edges, true);
 
+      // Step 4.5: 多视角验证
+      auditLogger.log('orchestrator', 'info', 'Step 4.5: 多视角交叉验证');
+      const validations = validator.validateAll(scores);
+      const lowConfidence = validations.filter(v => v.confidence_level === 'low' || v.confidence_level === 'insufficient');
+      if (lowConfidence.length > 0) {
+        for (const v of lowConfidence) {
+          this.warnings.push(`${v.ticker}: 验证信心${v.confidence_level} (共识${v.consensus_score}%), 分歧: ${v.dissent_points[0] || 'N/A'}`);
+        }
+      }
+      auditLogger.log('orchestrator', 'info',
+        `验证完成: ${validations.filter(v => v.confidence_level === 'high').length}个高信心, ` +
+        `${lowConfidence.length}个低信心`
+      );
+
       // Step 5: 生成周报
       auditLogger.log('orchestrator', 'info', 'Step 5: 生成周度报告');
       const report = this.generateReport(scores, edges);
@@ -93,11 +109,31 @@ class Orchestrator {
       auditLogger.log('orchestrator', 'info', 'Step 5.5: 生成营销内容原子');
       const contentPack = contentGenerator.generateWeeklyContent(scores);
 
+      // Step 5.6: 合成用户调研 (对高分变动股)
+      auditLogger.log('orchestrator', 'info', 'Step 5.6: 合成用户调研');
+      const topChanges = scores.filter(s => Math.abs(s.psychology_adjustment) >= 10);
+      const syntheticResults = topChanges.map(s => {
+        const stimulus = {
+          type: 'cycle_signal' as const,
+          content: `${s.ticker}周期评分${s.overall_score}/100, 心理修正${s.psychology_adjustment > 0 ? '+' : ''}${s.psychology_adjustment}`,
+          context: { market_state: s.psychology_detail?.crowd_signal || 'neutral' },
+        };
+        return { ticker: s.ticker, result: syntheticResearch.runScenario(stimulus) };
+      });
+
       // Step 6: 输出到产物目录
       const outputPath = await this.saveOutput(report, outputFormat);
 
       // 保存内容包
       await outputManager.writeJSON(outputPath, 'content-atoms.json', contentPack);
+
+      // 保存验证结果
+      await outputManager.writeJSON(outputPath, 'validations.json', validations);
+
+      // 保存合成调研结果
+      if (syntheticResults.length > 0) {
+        await outputManager.writeJSON(outputPath, 'synthetic-research.json', syntheticResults);
+      }
 
       const executionTime = Date.now() - startTime;
       auditLogger.log('orchestrator', 'info', `流程完成，耗时 ${executionTime}ms`);
