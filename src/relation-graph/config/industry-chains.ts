@@ -3569,6 +3569,109 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'VNDA': 'CNS Specialty Pharma',                           // Vanda Pharmaceuticals - CNS
     'XNCR': 'Antibody Engineering Biotech',                   // Xencor - Fc工程抗体
     'ZYME': 'ADC Biotech',                                    // Zymeworks - ADC平台
+
+    // ========== 补充101只: Industrial/Defense/Energy/Mining subIndustryOverrides ==========
+    'ACTG': 'Patent Licensing',                               // Acacia Research - 专利授权
+    'ADS': 'Marketing & Loyalty Services',                    // Alliance Data - 营销服务
+    'AEYE': 'Digital Accessibility',                          // AudioEye - 数字无障碍
+    'AGR': 'Renewable Utility',                               // Avangrid - 可再生能源公用事业
+    'AHH': 'Diversified REIT',                                // Armada Hoffler - 多元化REIT
+    'AIN': 'Aerospace Composites',                            // Albany International - 航空复合材料
+    'AJRD': 'Rocket Propulsion',                              // Aerojet Rocketdyne - 火箭推进
+    'ALSN': 'Transmission Systems',                           // Allison Transmission - 变速器
+    'AMKR': 'Semiconductor Packaging & Test',                 // Amkor Technology - 半导体封装
+    'AMPY': 'Oil & Gas E&P',                                  // Amplify Energy - 油气勘探
+    'AMRC': 'Energy Efficiency',                              // Ameresco - 能效服务
+    'AMSC': 'Power Electronics & Superconductors',            // American Superconductor - 超导
+    'AQN': 'Diversified Utilities',                           // Algonquin Power - 多元化公用事业
+    'ATCO': 'Container Leasing',                              // Atlas Corp - 集装箱租赁
+    'ATRO': 'Aerospace Electronics',                          // Astronics - 航空电子
+    'ATSG': 'Air Cargo Transport',                            // Air Transport Services - 航空货运
+    'B': 'Aerospace & Industrial Components',                 // Barnes Group - 航空/工业零件
+    'BBU': 'Industrial Conglomerate',                         // Brookfield Business - 工业集团
+    'BKSY': 'Geospatial Intelligence',                        // BlackSky - 地理空间情报
+    'BKV': 'Natural Gas E&P',                                 // BKV Corp - 天然气勘探
+    'BLDP': 'Fuel Cell Systems',                              // Ballard Power - 燃料电池
+    'BLX': 'Trade Finance',                                   // Banco Latinoamericano - 贸易融资
+    'BRY': 'Oil & Gas E&P',                                   // Berry Corp - 油气勘探
+    'BSM': 'Oil & Gas Minerals',                              // Black Stone Minerals - 矿权
+    'BTU': 'Coal Mining',                                     // Peabody Energy - 煤矿
+    'BWEN': 'Wind Energy Components',                         // Broadwind - 风能组件
+    'CDMO': 'Biologics CDMO',                                 // Avid Bioservices - 生物药代工
+    'CEIX': 'Coal Mining',                                    // CONSOL Energy - 煤矿
+    'CIG': 'Electric Utility',                                // Companhia Energetica - 电力公用
+    'CIR': 'Flow Control Equipment',                          // CIRCOR - 流量控制设备
+    'CLMT': 'Specialty Refining',                             // Calumet Specialty - 特种炼油
+    'CLW': 'Biomass & Specialty Products',                    // Clearwater Paper - 生物质产品
+    'CNX': 'Natural Gas E&P',                                 // CNX Resources - 天然气勘探
+    'CPE': 'Oil & Gas E&P',                                   // Callon Petroleum - 油气勘探
+    'CVEO': 'Workforce Solutions',                            // Civeo - 远程劳动力方案
+    'DEN': 'Oil & Gas E&P',                                   // Denbury - 油气/碳捕获
+    'DRS': 'Defense Electronics',                             // Leonardo DRS - 国防电子
+    'EE': 'Electric Utility',                                 // Excelerate Energy - 电力LNG
+    'ENB': 'Midstream Pipeline',                              // Enbridge - 管道运输
+    'ENIC': 'Electric Utility',                               // Enel Chile - 智利电力
+    'EQNR': 'Integrated Oil & Gas',                           // Equinor - 综合油气
+    'ERF': 'Oil & Gas E&P',                                   // Enerplus - 油气勘探
+    'GEL': 'Midstream Services',                              // Genesis Energy - 中游服务
+    'GLNCY': 'Diversified Mining & Trading',                  // Glencore - 矿业贸易
+    'GNSS': 'Mass Notification Systems',                      // Genasys - 声学通知
+    'GPP': 'Midstream Gathering',                             // Green Plains Partners - 中游采集
+    'GTLS': 'Gas Processing Equipment',                       // Chart Industries - 气处理设备
+    'GTN': 'Natural Gas Pipeline',                            // Gray Television - 天然气管道
+    'HDS': 'MRO Distribution',                                // HD Supply - MRO分销
+    'HEICO': 'Aerospace Replacement Parts',                   // HEICO - 航空替换件
+    'HOG': 'Motorcycles',                                     // Harley-Davidson - 摩托车
+    'IREN': 'Bitcoin Mining / Data Center',                   // Iris Energy - 比特币挖矿
+    'KGC': 'Gold Mining',                                     // Kinross Gold - 黄金开采
+    'KOS': 'Oil & Gas E&P',                                   // Kosmos Energy - 油气勘探
+    'KRNT': 'Digital Textile Printing',                       // Kornit Digital - 数字纺织
+    'LPG': 'LPG Shipping',                                   // Dorian LPG - 液化石油气运输
+    'LPX': 'Engineered Wood Products',                        // Louisiana-Pacific - 工程木产品
+    'LXU': 'Chemicals & Fertilizers',                         // LSB Industries - 化肥
+    'MFGP': 'Enterprise Software',                            // Micro Focus - 企业软件
+    'MGRC': 'Modular Equipment Rental',                       // McGrath RentCorp - 模块化租赁
+    'MGX': 'Iron Ore Mining',                                 // Metagenomi - 铁矿石
+    'MLI': 'Copper & Brass Products',                         // Mueller Industries - 铜产品
+    'MMLP': 'Midstream Terminals',                            // Martin Midstream - 中游码头
+    'MPLN': 'Midstream Services',                             // MultiPlan - 中游服务
+    'MRC': 'PVF Distribution',                                // MRC Global - 管阀件分销
+    'MTRN': 'Advanced Materials',                             // Materion - 先进材料
+    'NFG': 'Integrated Gas',                                  // National Fuel Gas - 综合天然气
+    'NMM': 'Dry Bulk Shipping',                               // Navios Maritime - 干散货运输
+    'NRP': 'Natural Resource Royalties',                      // Natural Resource Partners - 资源版税
+    'OAS': 'Oil & Gas E&P',                                   // Oasis Petroleum - 油气勘探
+    'OFLX': 'Flexible Piping Systems',                        // Omega Flex - 柔性管道
+    'OIS': 'Oilfield Services',                               // Oil States International - 油服
+    'OPAL': 'Carbon Black & Specialty Chemicals',             // OPAL Fuels - 炭黑特化
+    'OXM': 'Premium Apparel',                                 // Oxford Industries - 高端服饰
+    'PAA': 'Midstream Pipeline',                              // Plains All American - 管道
+    'PBT': 'Oil & Gas Royalties',                             // Permian Basin - 油气版税
+    'PDS': 'Oilfield Services',                               // Precision Drilling - 钻井服务
+    'PLPC': 'Utility Hardware',                               // Preformed Line - 电力线缆硬件
+    'PNM': 'Electric Utility',                                // PNM Resources - 电力公用
+    'PNR': 'Water Treatment & Flow Control',                  // Pentair - 水处理
+    'RAVN': 'Precision Agriculture & Defense',                // Raven Industries - 精准农业
+    'RUSHA': 'Commercial Truck Dealerships',                  // Rush Enterprises - 卡车经销
+    'SBR': 'Oilfield Services',                               // Sabine Royalty - 油服/版税
+    'SDRL': 'Offshore Drilling',                              // Seadrill - 海上钻井
+    'SUN': 'Fuel Distribution',                               // Sunoco - 燃油分销
+    'TAC': 'Construction & Industrial Services',              // TransAlta - 建设/工业服务
+    'TEP': 'Midstream Gathering',                             // Tallgrass Energy - 中游采集
+    'TGS': 'Natural Gas Transport',                           // TGS-NOPEC - 天然气运输
+    'TMC': 'Deep-Sea Mining',                                 // The Metals Co - 深海采矿
+    'TPL': 'Oil & Gas Royalties',                             // Texas Pacific Land - 油气版税
+    'TRP': 'Midstream Pipeline',                              // TC Energy - 管道运输
+    'TTI': 'Completion Fluids & Water Management',            // TETRA Technologies - 完井液
+    'TU': 'Telecom Utility',                                  // TELUS - 电信公用事业
+    'UGI': 'Gas Utility',                                     // UGI Corp - 天然气公用事业
+    'UHAL': 'Moving & Storage',                               // U-Haul - 搬家仓储
+    'VRRM': 'Traffic Management Solutions',                   // Verra Mobility - 交通管理
+    'VTOL': 'Offshore Aviation',                              // Bristow Group - 海上航空
+    'VVV': 'Automotive Preventive Maintenance',               // Valvoline - 汽车维护
+    'WNC': 'Trailer Manufacturing',                           // Wabash National - 拖车制造
+    'WSC': 'Modular Space & Storage',                         // WillScot Mobile Mini - 模块化空间
+    'YPF': 'Integrated Oil & Gas',                            // YPF - 阿根廷综合油气
   },
 
   // ============================================================

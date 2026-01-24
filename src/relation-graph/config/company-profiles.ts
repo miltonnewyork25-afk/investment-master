@@ -15292,6 +15292,234 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
     consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.3,
   },
+
+  // ========== 新增45只: Industrial/Defense/Transport MACRO_SENSITIVITY ==========
+
+  // Acacia Research - 专利授权
+  'ACTG': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Alliance Data - 营销/忠诚度服务
+  'ADS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // AudioEye - 数字无障碍SaaS
+  'AEYE': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Avangrid - 可再生能源公用事业
+  'AGR': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  // Armada Hoffler - 多元化REIT
+  'AHH': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Albany International - 航空复合材料
+  'AIN': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  // Aerojet Rocketdyne - 火箭推进
+  'AJRD': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Allison Transmission - 变速器系统
+  'ALSN': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  // Amkor Technology - 半导体封装测试
+  'AMKR': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // American Superconductor - 电力电子/超导
+  'AMSC': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // Astronics - 航空电子/照明
+  'ATRO': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // Air Transport Services - 航空货运
+  'ATSG': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.4,
+  },
+  // Barnes Group - 航空/工业零部件
+  'B': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  // Brookfield Business Partners - 工业集团
+  'BBU': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // BlackSky Technology - 地理空间情报
+  'BKSY': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Ballard Power - 燃料电池
+  'BLDP': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+  // Banco Latinoamericano - 贸易融资
+  'BLX': {
+    interestRate: 0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.1,
+  },
+  // Broadwind Energy - 风能组件
+  'BWEN': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.2,
+  },
+  // Avid Bioservices - 生物药CDMO
+  'CDMO': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // CIRCOR International - 流量控制
+  'CIR': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  // Leonardo DRS - 国防电子
+  'DRS': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Genasys - 声学/通知系统
+  'GNSS': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // Chart Industries - 气体处理设备
+  'GTLS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.3,
+  },
+  // HD Supply - MRO分销
+  'HDS': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // HEICO - 航空替换件
+  'HEICO': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // Harley-Davidson - 摩托车
+  'HOG': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.2,
+  },
+  // Kornit Digital - 数字纺织印刷
+  'KRNT': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // Louisiana-Pacific - 工程木产品
+  'LPX': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // Micro Focus - 企业遗留软件
+  'MFGP': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // McGrath RentCorp - 模块化设备租赁
+  'MGRC': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // Mueller Industries - 铜产品
+  'MLI': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // Materion - 先进材料
+  'MTRN': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // Omega Flex - 柔性管道
+  'OFLX': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.6, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  // Oxford Industries - 高端服饰
+  'OXM': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // Preformed Line Products - 电力线缆硬件
+  'PLPC': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Pentair - 水处理/流量控制
+  'PNR': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // RAVN (Raven Industries) - 精准农业/国防
+  'RAVN': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  // Rush Enterprises - 商用卡车经销
+  'RUSHA': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  // TMC the metals co - 深海采矿
+  'TMC': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  // TETRA Technologies - 完井液/水管理
+  'TTI': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.5,
+  },
+  // U-Haul - 搬家/仓储
+  'UHAL': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  // Verra Mobility - 交通管理
+  'VRRM': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Valvoline - 汽车预防性维护
+  'VVV': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  // Wabash National - 拖车制造
+  'WNC': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  // WillScot Mobile Mini - 模块化空间/仓储
+  'WSC': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.1,
+  },
 };
 
 // ============================================================
