@@ -2269,6 +2269,36 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'FNB': 'Regional Bank',              // F.N.B. Corp - 中大西洋银行
     'NVST': 'Dental Equipment',          // Envista Holdings - 牙科产品
     'EGP': 'Industrial REIT',            // EastGroup - 阳光带工业REIT
+    'OLLI': 'Discount Retail',           // Ollie's - 尾货折扣零售
+    'MEDP': 'CRO',                       // Medpace - 中型生物CRO
+    'ICLR': 'CRO',                       // Icon PLC - 全球CRO
+    'BMBL': 'Social Platform',           // Bumble - 约会社交平台
+    'NOVT': 'Specialty Industrial',      // Novanta - 精密光子/医疗
+    'COHR': 'Semiconductor Equipment',   // Coherent - 光学/激光/SiC
+    'CWK': 'Real Estate Services',       // Cushman & Wakefield - 商业地产服务
+    'KNSL': 'P&C Insurance',             // Kinsale Capital - E&S专业保险
+    'RYAN': 'Insurance Broker',          // Ryan Specialty - 保险批发
+    'RIG': 'Offshore Driller',           // Transocean - 深水钻井
+    'VAL': 'Offshore Driller',           // Valaris - 海上钻井
+    'NBR': 'Oil Services',               // Nabors - 钻井服务
+    'DOOR': 'Building Products',         // Masonite - 门类产品
+    'JELD': 'Building Products',         // JELD-WEN - 窗/门
+    'BF.B': 'Spirits',                   // Brown-Forman - 威士忌/烈酒
+    'NTNX': 'Cloud Infrastructure',      // Nutanix - 混合云
+    'WIX': 'SMB Software',               // Wix - 网站建设
+    'SQSP': 'SMB Software',              // Squarespace - 网站/电商
+    'HAS': 'Toys & Games',               // Hasbro - 玩具/游戏
+    'MAT': 'Toys & Games',               // Mattel - 芭比/风火轮
+    'CROX': 'Athletic Footwear',         // Crocs - 休闲鞋
+    'ONON': 'Athletic Footwear',         // On Holding - 跑步鞋
+    'CHRD': 'E&P',                       // Chord Energy - Bakken页岩
+    'FBP': 'Regional Bank',              // First BanCorp - 波多黎各银行
+    'GRND': 'Social Platform',           // Grindr - LGBTQ+约会
+    'IAC': 'Digital Media',              // IAC - Dotdash Meredith/互联网
+    'YELP': 'AdTech DSP',               // Yelp - 本地商家广告
+    'OPEN': 'Online Real Estate',        // Opendoor - iBuying平台
+    'LUNR': 'Space Systems',             // Intuitive Machines - 月球着陆器
+    'ASTS': 'Satellite Communications',  // AST SpaceMobile - 直连卫星
   },
 
   // ============================================================
@@ -3976,6 +4006,67 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Pet Products': [
       'Grocery Retail',          // 超市渠道
       'E-Commerce',              // 电商渠道
+    ],
+
+    // ========== 新增子行业链 - 第七批 (30只新股票) ==========
+
+    // 商业地产服务 → 房地产下游
+    'Real Estate Services': [
+      'Industrial REIT',         // 工业物业服务
+      'Office REIT',             // 办公物业服务
+      'Retail REIT',             // 零售物业服务
+      'Homebuilder',             // 住宅交易服务
+    ],
+
+    // 海上钻井 → 油气E&P
+    'Offshore Driller': [
+      'International E&P',       // 国际油气开采
+      'Integrated Oil',          // 综合油企深水项目
+    ],
+
+    // 玩具/游戏 → 零售渠道
+    'Toys & Games': [
+      'Mass Retail',             // 大型零售渠道
+      'E-commerce',              // 电商渠道
+      'Streaming',               // 娱乐IP授权
+    ],
+
+    // 线上房地产 → 房产相关
+    'Online Real Estate': [
+      'Homebuilder',             // 新房交易
+      'Mortgage Lender',         // 按揭合作
+      'Title Insurance',         // 产权保险
+    ],
+
+    // 太空系统 → 国防/卫星
+    'Space Systems': [
+      'Defense Prime',           // 国防航天合作
+      'Satellite Communications', // 卫星基础设施
+    ],
+
+    // 运动鞋 → 零售渠道
+    'Athletic Footwear': [
+      'Sporting Goods Retail',   // 运动零售渠道
+      'Mass Retail',             // 大众零售渠道
+      'E-commerce',              // 电商DTC
+    ],
+
+    // 油田服务 → 上游E&P
+    'Oil Services': [
+      'Shale E&P',               // 页岩油气
+      'International E&P',       // 国际E&P
+      'Integrated Oil',          // 综合油企
+    ],
+
+    // 折扣零售(独立终端，无明确下游)
+    'Discount Retail': [
+      'Mass Retail',             // 零售竞争替代
+    ],
+
+    // E&P → 中下游
+    'E&P': [
+      'Midstream Pipeline',      // 管道运输
+      'Refining',                // 炼油
     ],
 
   },

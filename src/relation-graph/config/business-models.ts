@@ -7982,6 +7982,292 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Industrial REIT',
     tags: ['sunbelt', 'industrial', 'logistics', 'warehouse', 'development'],
   },
+
+  // ---------- Discount Retail ----------
+  'OLLI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Discount Retail',
+    tags: ['closeout', 'bargain', 'treasure_hunt', 'off_price', 'value'],
+  },
+
+  // ---------- CRO ----------
+  'MEDP': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'CRO',
+    tags: ['mid_size_biotech', 'clinical_trials', 'full_service', 'oncology'],
+  },
+  'ICLR': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'CRO',
+    tags: ['global', 'clinical_trials', 'pharma', 'biotech', 'regulatory'],
+  },
+
+  // ---------- Social Platform ----------
+  'BMBL': {
+    assetModel: 'platform',
+    revenueModels: ['subscription', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Social Platform',
+    tags: ['dating', 'bumble', 'badoo', 'women_first', 'social'],
+  },
+  'GRND': {
+    assetModel: 'platform',
+    revenueModels: ['subscription', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Social Platform',
+    tags: ['dating', 'lgbtq', 'social', 'community', 'location_based'],
+  },
+
+  // ---------- Specialty Industrial ----------
+  'NOVT': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Industrial',
+    tags: ['photonics', 'precision_motion', 'medical', 'industrial_automation'],
+  },
+
+  // ---------- Semiconductor Equipment ----------
+  'COHR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Semiconductor Equipment',
+    tags: ['optical', 'laser', 'silicon_carbide', 'datacom', 'telecom'],
+  },
+
+  // ---------- Real Estate Services ----------
+  'CWK': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Real Estate Services',
+    tags: ['commercial', 'leasing', 'property_management', 'valuation'],
+  },
+
+  // ---------- P&C Insurance ----------
+  'KNSL': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'P&C Insurance',
+    tags: ['e_and_s', 'specialty', 'excess_surplus', 'underwriting'],
+  },
+
+  // ---------- Insurance Broker ----------
+  'RYAN': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Insurance Broker',
+    tags: ['wholesale', 'specialty', 'mgus', 'binding_authority'],
+  },
+
+  // ---------- Offshore Driller ----------
+  'RIG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Offshore Driller',
+    tags: ['deepwater', 'ultra_deepwater', 'drillship', 'semi_submersible'],
+  },
+  'VAL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Offshore Driller',
+    tags: ['deepwater', 'jackup', 'drillship', 'offshore'],
+  },
+
+  // ---------- Oil Services ----------
+  'NBR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil Services',
+    tags: ['drilling', 'land_rigs', 'international', 'rig_technologies'],
+  },
+
+  // ---------- Building Products ----------
+  'DOOR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['doors', 'interior', 'exterior', 'residential', 'commercial'],
+  },
+  'JELD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['windows', 'doors', 'residential', 'commercial', 'global'],
+  },
+
+  // ---------- Spirits ----------
+  'BF.B': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Spirits',
+    tags: ['jack_daniels', 'whiskey', 'bourbon', 'premium', 'aged'],
+  },
+
+  // ---------- Cloud Infrastructure ----------
+  'NTNX': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cloud Infrastructure',
+    tags: ['hybrid_cloud', 'hci', 'multicloud', 'enterprise', 'storage'],
+  },
+
+  // ---------- SMB Software ----------
+  'WIX': {
+    assetModel: 'platform',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'SMB Software',
+    tags: ['website_builder', 'smb', 'ecommerce', 'drag_drop', 'saas'],
+  },
+  'SQSP': {
+    assetModel: 'platform',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'SMB Software',
+    tags: ['website_builder', 'commerce', 'design', 'domains', 'saas'],
+  },
+
+  // ---------- Toys & Games ----------
+  'HAS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'licensing'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Toys & Games',
+    tags: ['toys', 'games', 'hasbro', 'wizards', 'transformers', 'entertainment'],
+  },
+  'MAT': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'licensing'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Toys & Games',
+    tags: ['barbie', 'hot_wheels', 'fisher_price', 'toys', 'dolls'],
+  },
+
+  // ---------- Athletic Footwear ----------
+  'CROX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Athletic Footwear',
+    tags: ['casual', 'clogs', 'crocs', 'heydude', 'comfort', 'foam'],
+  },
+  'ONON': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Athletic Footwear',
+    tags: ['running', 'performance', 'swiss', 'cloudtec', 'premium'],
+  },
+
+  // ---------- E&P ----------
+  'CHRD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'E&P',
+    tags: ['bakken', 'shale', 'oil', 'williston_basin', 'upstream'],
+  },
+
+  // ---------- Regional Bank ----------
+  'FBP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regional Bank',
+    tags: ['puerto_rico', 'caribbean', 'commercial', 'retail_banking'],
+  },
+
+  // ---------- Digital Media ----------
+  'IAC': {
+    assetModel: 'platform',
+    revenueModels: ['advertising', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Digital Media',
+    tags: ['dotdash_meredith', 'publishing', 'internet', 'content', 'brands'],
+  },
+
+  // ---------- AdTech DSP ----------
+  'YELP': {
+    assetModel: 'platform',
+    revenueModels: ['advertising', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'AdTech DSP',
+    tags: ['local', 'reviews', 'smb_advertising', 'restaurants', 'services'],
+  },
+
+  // ---------- Online Real Estate ----------
+  'OPEN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Online Real Estate',
+    tags: ['ibuying', 'instant_offers', 'residential', 'proptech', 'marketplace'],
+  },
+
+  // ---------- Space Systems ----------
+  'LUNR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Space Systems',
+    tags: ['lunar_lander', 'nasa', 'moon', 'payload', 'space_infrastructure'],
+  },
+
+  // ---------- Satellite Communications ----------
+  'ASTS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Satellite Communications',
+    tags: ['direct_to_cell', 'satellite', 'space', 'mobile', 'broadband'],
+  },
 };
 
 // ============================================================

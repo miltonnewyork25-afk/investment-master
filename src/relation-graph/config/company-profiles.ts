@@ -2142,6 +2142,110 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['fresh', 'natural', 'health', 'premium', 'quality'],
     channels: ['retail', 'online'],
   },
+
+  // --- 折扣零售(B2C) ---
+  'OLLI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['bargain_hunting', 'home', 'seasonal', 'treasure_hunt'],
+    valueProps: ['value', 'savings', 'discovery', 'variety'],
+    channels: ['retail'],
+  },
+
+  // --- 约会社交(B2C) ---
+  'BMBL': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['dating', 'social', 'networking', 'friendship'],
+    valueProps: ['safety', 'empowerment', 'community', 'quality_matches'],
+    channels: ['online', 'subscription'],
+  },
+  'GRND': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['dating', 'social', 'community', 'lgbtq'],
+    valueProps: ['community', 'inclusivity', 'location_based', 'identity'],
+    channels: ['online', 'subscription'],
+  },
+
+  // --- 烈酒(B2C) ---
+  'BF.B': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['social', 'celebration', 'relaxation', 'gifting', 'dining'],
+    valueProps: ['heritage', 'premium', 'craftsmanship', 'brand', 'aged'],
+    channels: ['retail', 'bars_restaurants', 'online'],
+  },
+
+  // --- 玩具/游戏(B2C) ---
+  'HAS': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['play', 'gifting', 'gaming', 'entertainment', 'holiday'],
+    valueProps: ['fun', 'imagination', 'brand', 'collectible', 'nostalgia'],
+    channels: ['retail', 'online', 'direct'],
+  },
+  'MAT': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['play', 'gifting', 'creative_play', 'holiday', 'collectible'],
+    valueProps: ['iconic', 'imagination', 'brand', 'fashion', 'nostalgia'],
+    channels: ['retail', 'online', 'direct'],
+  },
+
+  // --- 运动鞋(B2C) ---
+  'CROX': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['casual', 'comfort', 'outdoor', 'lifestyle', 'customization'],
+    valueProps: ['comfort', 'fun', 'lightweight', 'customizable', 'value'],
+    channels: ['retail', 'online', 'direct'],
+  },
+  'ONON': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['running', 'training', 'athleisure', 'performance'],
+    valueProps: ['performance', 'innovation', 'premium', 'swiss_design', 'comfort'],
+    channels: ['retail', 'online', 'direct'],
+  },
+
+  // --- 数字媒体(B2C) ---
+  'IAC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['information', 'lifestyle', 'entertainment', 'inspiration'],
+    valueProps: ['content', 'expertise', 'trust', 'discovery'],
+    channels: ['online'],
+  },
+
+  // --- 线上房地产(B2C) ---
+  'OPEN': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_selling', 'home_buying', 'relocation', 'convenience'],
+    valueProps: ['speed', 'certainty', 'convenience', 'simplicity'],
+    channels: ['online', 'direct'],
+  },
+
+  // --- SMB软件(B2B2C) ---
+  'WIX': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['website_creation', 'online_store', 'business_launch', 'portfolio'],
+    valueProps: ['ease_of_use', 'affordability', 'flexibility', 'design'],
+    channels: ['online', 'subscription'],
+  },
+  'SQSP': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['website_creation', 'branding', 'commerce', 'portfolio'],
+    valueProps: ['design', 'premium', 'simplicity', 'aesthetics'],
+    channels: ['online', 'subscription'],
+  },
+
+  // --- 区域银行(B2B2C) ---
+  'FBP': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'savings', 'business_loan'],
+    valueProps: ['local', 'community', 'accessibility', 'trust'],
+    channels: ['retail', 'online', 'direct'],
+  },
+
+  // --- 本地广告(B2B2C) ---
+  'YELP': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['restaurant', 'local_services', 'shopping', 'reviews'],
+    valueProps: ['trust', 'discovery', 'reviews', 'local', 'recommendations'],
+    channels: ['online'],
+  },
 };
 
 // ============================================================
@@ -3341,6 +3445,36 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'FNB': 'mid',         // F.N.B. Corp - 中大西洋银行(中周期)
   'NVST': 'mid',        // Envista Holdings - 牙科产品(中周期)
   'EGP': 'defensive',   // EastGroup - 阳光带工业REIT(防御)
+  'OLLI': 'defensive',  // Ollie's - 尾货折扣零售(防御)
+  'MEDP': 'defensive',  // Medpace - 中型CRO(防御)
+  'ICLR': 'defensive',  // Icon PLC - 全球CRO(防御)
+  'BMBL': 'mid',        // Bumble - 约会社交(中周期)
+  'NOVT': 'mid',        // Novanta - 精密光子/医疗(中周期)
+  'COHR': 'early',      // Coherent - 光学/激光/SiC(早周期)
+  'CWK': 'mid',         // Cushman & Wakefield - 商业地产服务(中周期)
+  'KNSL': 'mid',        // Kinsale Capital - E&S保险(中周期)
+  'RYAN': 'mid',        // Ryan Specialty - 保险批发(中周期)
+  'RIG': 'early',       // Transocean - 深水钻井(早周期)
+  'VAL': 'early',       // Valaris - 海上钻井(早周期)
+  'NBR': 'early',       // Nabors - 钻井服务(早周期)
+  'DOOR': 'mid',        // Masonite - 门类产品(中周期)
+  'JELD': 'mid',        // JELD-WEN - 窗/门(中周期)
+  'BF.B': 'defensive',  // Brown-Forman - 烈酒(防御)
+  'NTNX': 'mid',        // Nutanix - 混合云(中周期)
+  'WIX': 'mid',         // Wix - 网站建设(中周期)
+  'SQSP': 'mid',        // Squarespace - 网站/电商(中周期)
+  'HAS': 'mid',         // Hasbro - 玩具/游戏(中周期)
+  'MAT': 'mid',         // Mattel - 玩具(中周期)
+  'CROX': 'mid',        // Crocs - 休闲鞋(中周期)
+  'ONON': 'mid',        // On Holding - 跑步鞋(中周期)
+  'CHRD': 'early',      // Chord Energy - Bakken页岩(早周期)
+  'FBP': 'mid',         // First BanCorp - 波多黎各银行(中周期)
+  'GRND': 'mid',        // Grindr - LGBTQ+约会(中周期)
+  'IAC': 'mid',         // IAC - 数字媒体(中周期)
+  'YELP': 'mid',        // Yelp - 本地广告(中周期)
+  'OPEN': 'early',      // Opendoor - iBuying(早周期)
+  'LUNR': 'early',      // Intuitive Machines - 月球着陆器(早周期)
+  'ASTS': 'early',      // AST SpaceMobile - 直连卫星(早周期)
 };
 
 // ============================================================
@@ -7220,6 +7354,150 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'EGP': {
     interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
     consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // 折扣零售 - 防御/反周期(经济差时受益)
+  'OLLI': {
+    interestRate: -0.1, inflation: 0.3, gdpGrowth: -0.2, unemployment: 0.3,
+    consumerConfidence: -0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  // CRO - 防御(药企研发支出稳定)
+  'MEDP': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ICLR': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 约会社交 - 消费者信心/就业
+  'BMBL': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 精密工业 - GDP/工业周期
+  'NOVT': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 光学/半导体设备 - 资本开支周期
+  'COHR': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 商业地产服务 - 利率/地产周期
+  'CWK': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.4, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // E&S专业保险 - 保费周期
+  'KNSL': {
+    interestRate: 0.4, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 保险批发 - 保费周期
+  'RYAN': {
+    interestRate: 0.3, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 深水钻井 - 油价驱动
+  'RIG': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.9,
+  },
+  'VAL': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.9,
+  },
+  // 钻井服务 - 油价驱动
+  'NBR': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  // 建材(门) - 住房周期
+  'DOOR': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'JELD': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // 烈酒 - 防御消费
+  'BF.B': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 混合云 - IT支出周期
+  'NTNX': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // SMB软件 - 中小企业周期
+  'WIX': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'SQSP': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 玩具 - 消费者信心/节日
+  'HAS': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'MAT': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 休闲鞋 - 消费者可选
+  'CROX': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ONON': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // Bakken页岩E&P - 油价驱动
+  'CHRD': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  // 波多黎各银行 - 利率/地方经济
+  'FBP': {
+    interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 约会社交 - 消费者信心
+  'GRND': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 数字媒体 - 广告周期
+  'IAC': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 本地广告 - SMB广告支出
+  'YELP': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // iBuying - 住房周期强敏感
+  'OPEN': {
+    interestRate: -0.8, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // 月球着陆器 - 政府航天预算
+  'LUNR': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // 直连卫星 - 科技投资/电信
+  'ASTS': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.3, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
   },
 };
 
