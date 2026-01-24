@@ -663,6 +663,63 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'FDX': 'mid',       // 物流
   'UPS': 'mid',
 
+  // ---------- 科技硬件/基础设施 ----------
+  'DELL': 'mid',       // 服务器/PC
+  'HPE': 'mid',        // 服务器/存储
+  'NTAP': 'mid',       // 存储
+  'PSTG': 'mid',       // 存储
+  'SMCI': 'mid',       // AI服务器
+  'IBM': 'mid',        // IT服务/云
+  'CSCO': 'mid',       // 网络设备
+  'ANET': 'mid',       // 云网络
+  'JNPR': 'mid',       // 路由器
+  'FFIV': 'mid',       // 应用交付
+  'CIEN': 'mid',       // 光网络
+  'EQIX': 'defensive', // 数据中心REIT
+  'DLR': 'defensive',  // 数据中心REIT
+
+  // ---------- SaaS/软件 ----------
+  'CRM': 'mid',        // Salesforce
+  'NOW': 'mid',        // ServiceNow
+  'WDAY': 'mid',       // Workday
+  'SNOW': 'mid',       // Snowflake
+  'TEAM': 'mid',       // Atlassian
+  'DDOG': 'mid',       // Datadog
+  'MDB': 'mid',        // MongoDB
+  'NET': 'mid',        // Cloudflare
+  'CRWD': 'mid',       // CrowdStrike
+  'PANW': 'mid',       // Palo Alto
+  'ZS': 'mid',         // Zscaler
+  'FTNT': 'mid',       // Fortinet
+  'ORCL': 'mid',       // Oracle
+
+  // ---------- 电信 (Telecom) ----------
+  'T': 'defensive',    // AT&T
+  'VZ': 'defensive',   // Verizon
+  'TMUS': 'mid',       // T-Mobile (成长型)
+  'CMCSA': 'defensive', // Comcast
+  'CHTR': 'defensive',  // Charter
+
+  // ---------- 媒体/娱乐 ----------
+  'DIS': 'mid',        // Disney
+  'NFLX': 'mid',       // Netflix
+  'WBD': 'mid',        // Warner Bros
+  'PARA': 'mid',       // Paramount
+  'FOX': 'defensive',  // Fox
+  'SPOT': 'mid',       // Spotify
+  'META': 'mid',       // Meta
+
+  // ---------- 游戏 ----------
+  'EA': 'mid',         // EA
+  'TTWO': 'mid',       // Take-Two
+  'RBLX': 'mid',       // Roblox
+
+  // ---------- 数字广告 ----------
+  'TTD': 'mid',        // Trade Desk
+  'DV': 'mid',         // DoubleVerify
+  'MGNI': 'mid',       // Magnite
+  'APP': 'mid',        // AppLovin
+
   // 资产管理/另类资管 (Mid Cycle - 与市场周期相关)
   'BLK': 'mid',       // BlackRock
   'BX': 'mid',        // Blackstone
@@ -1068,6 +1125,135 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
     consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
   },
+  'GOOGL': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'META': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'AMZN': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+
+  // 科技硬件/基础设施
+  'DELL': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'HPE': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'SMCI': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'IBM': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'CSCO': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'ANET': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'EQIX': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'DLR': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // SaaS/软件
+  'CRM': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'NOW': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'CRWD': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'PANW': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ORCL': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // 电信 - 防御型，低GDP敏感
+  'T': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'VZ': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'TMUS': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'CMCSA': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CHTR': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // 媒体/娱乐
+  'DIS': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'NFLX': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: 0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'WBD': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'SPOT': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // 游戏
+  'EA': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: 0.1,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'TTWO': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: 0.1,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // 数字广告
+  'TTD': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'APP': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
   'PG': {
     interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
     consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,

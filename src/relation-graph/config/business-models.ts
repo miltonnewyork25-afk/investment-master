@@ -546,6 +546,286 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
 
   // ========================================================
+  // 科技硬件/基础设施
+  // ========================================================
+
+  // ---------- 消费电子 (Consumer Electronics) ----------
+  'AAPL': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'subscription', 'licensing'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Consumer Electronics',
+    tags: ['iphone', 'mac', 'services', 'ecosystem'],
+  },
+
+  // ---------- 服务器/存储 (Server Hardware) ----------
+  'DELL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Server Hardware',
+    tags: ['server', 'storage', 'pc', 'enterprise'],
+  },
+  'HPE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Server Hardware',
+    tags: ['server', 'storage', 'networking', 'edge'],
+  },
+  'NTAP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Server Hardware',
+    tags: ['storage', 'data_management', 'cloud'],
+  },
+  'PSTG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Server Hardware',
+    tags: ['flash_storage', 'data', 'as_a_service'],
+  },
+  'SMCI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Server Hardware',
+    tags: ['gpu_server', 'ai_infrastructure', 'rack_scale'],
+  },
+  'IBM': {
+    assetModel: 'hybrid',
+    revenueModels: ['subscription', 'premium_service', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'IT Services',
+    tags: ['hybrid_cloud', 'ai', 'consulting', 'mainframe'],
+  },
+
+  // ---------- 网络设备 (Network Equipment) ----------
+  'CSCO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Network Equipment',
+    tags: ['switching', 'routing', 'security', 'collaboration'],
+  },
+  'ANET': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Network Equipment',
+    tags: ['cloud_networking', 'data_center', 'high_speed'],
+  },
+  'JNPR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Network Equipment',
+    tags: ['routing', 'switching', 'ai_networking'],
+  },
+  'FFIV': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Network Equipment',
+    tags: ['application_delivery', 'load_balancing', 'security'],
+  },
+  'CIEN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Network Equipment',
+    tags: ['optical_networking', 'coherent_optics', 'telecom'],
+  },
+
+  // ---------- 数据中心REIT (Data Center REIT) ----------
+  'EQIX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Data Center REIT',
+    tags: ['colocation', 'interconnection', 'global'],
+  },
+  'DLR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Data Center REIT',
+    tags: ['colocation', 'hyperscale', 'wholesale'],
+  },
+
+  // ========================================================
+  // 电信/媒体/娱乐行业
+  // ========================================================
+
+  // ---------- 电信运营商 (Telecom) ----------
+  'T': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Telecom',
+    tags: ['wireless', 'fiber', '5g', 'broadband'],
+  },
+  'VZ': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Telecom',
+    tags: ['wireless', 'fios', '5g', 'enterprise'],
+  },
+  'TMUS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Telecom',
+    tags: ['wireless', '5g', 'un_carrier', 'growth'],
+  },
+  'CMCSA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Cable & Telecom',
+    tags: ['cable', 'broadband', 'nbc', 'peacock', 'theme_parks'],
+  },
+  'CHTR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Cable & Telecom',
+    tags: ['cable', 'broadband', 'spectrum', 'mobile'],
+  },
+
+  // ---------- 流媒体/娱乐 (Streaming & Entertainment) ----------
+  'DIS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'product_sales', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Entertainment',
+    tags: ['disney_plus', 'parks', 'marvel', 'pixar', 'espn'],
+  },
+  'NFLX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Streaming',
+    tags: ['original_content', 'global', 'ad_tier'],
+  },
+  'WBD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'advertising', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Entertainment',
+    tags: ['hbo', 'warner', 'discovery', 'dc'],
+  },
+  'PARA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'advertising', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Entertainment',
+    tags: ['paramount_plus', 'cbs', 'nickelodeon', 'showtime'],
+  },
+  'FOX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['advertising', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Entertainment',
+    tags: ['news', 'sports', 'tubi', 'broadcast'],
+  },
+  'SPOT': {
+    assetModel: 'platform',
+    revenueModels: ['subscription', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Streaming',
+    tags: ['music', 'podcast', 'audio', 'freemium'],
+  },
+
+  // ---------- 游戏 (Gaming) ----------
+  'EA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Gaming',
+    tags: ['sports_games', 'live_services', 'mobile', 'ea_play'],
+  },
+  'TTWO': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Gaming',
+    tags: ['gta', 'nba2k', 'rockstar', 'take_two'],
+  },
+  'RBLX': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Gaming',
+    tags: ['ugc', 'metaverse', 'youth', 'social'],
+  },
+
+  // ---------- 数字广告 (Digital Advertising) ----------
+  'TTD': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Digital Advertising',
+    tags: ['dsp', 'programmatic', 'connected_tv', 'open_internet'],
+  },
+  'DV': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Digital Advertising',
+    tags: ['verification', 'brand_safety', 'measurement'],
+  },
+  'MGNI': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Digital Advertising',
+    tags: ['ssp', 'programmatic', 'connected_tv'],
+  },
+  'APP': {
+    assetModel: 'platform',
+    revenueModels: ['advertising', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Digital Advertising',
+    tags: ['mobile', 'app_monetization', 'ai', 'gaming'],
+  },
+
+  // ========================================================
   // 支付/金融科技行业
   // ========================================================
 

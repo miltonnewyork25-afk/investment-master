@@ -1104,6 +1104,46 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'NSC': 'Class I Railroad',            // Norfolk Southern - 东部
     'CP': 'Class I Railroad',             // Canadian Pacific
     'CNI': 'Class I Railroad',            // Canadian National
+
+    // ========== 电信/媒体/娱乐细分 ==========
+    // 电信运营商 (Telecom Operators)
+    'T': 'Wireless Carrier',              // AT&T
+    'VZ': 'Wireless Carrier',             // Verizon
+    'TMUS': 'Wireless Carrier',           // T-Mobile
+
+    // 有线电视/宽带 (Cable & Broadband)
+    'CMCSA': 'Cable Operator',            // Comcast
+    'CHTR': 'Cable Operator',             // Charter
+
+    // 流媒体 (Streaming)
+    'NFLX': 'Streaming',                  // Netflix
+    'DIS': 'Media Conglomerate',          // Disney
+    'WBD': 'Media Conglomerate',          // Warner Bros
+    'PARA': 'Media Conglomerate',         // Paramount
+    'FOX': 'Broadcast TV',               // Fox
+    'SPOT': 'Audio Streaming',            // Spotify
+
+    // 游戏 (Gaming)
+    'EA': 'Gaming Publisher',             // EA
+    'TTWO': 'Gaming Publisher',           // Take-Two
+    'RBLX': 'Gaming Platform',            // Roblox
+
+    // 数字广告 (Digital Advertising)
+    'TTD': 'AdTech DSP',                  // The Trade Desk
+    'DV': 'AdTech Verification',          // DoubleVerify
+    'MGNI': 'AdTech SSP',                 // Magnite
+    'APP': 'AdTech Platform',             // AppLovin
+
+    // 社交媒体 (Social Media)
+    'META': 'Social Platform',            // Meta
+    'SNAP': 'Social Platform',            // Snap
+    'PINS': 'Social Platform',            // Pinterest
+    'RDDT': 'Social Platform',            // Reddit
+
+    // IT服务 (IT Services)
+    'IBM': 'IT Services',                 // IBM
+    'ACN': 'IT Consulting',               // Accenture
+    'INFY': 'IT Outsourcing',             // Infosys
   },
 
   // ============================================================
@@ -1562,6 +1602,68 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Cement': [
       'E&C Contractor',
       'Homebuilder',
+    ],
+
+    // ========== 电信/媒体产业链 ==========
+    // 电信运营商 - 基础设施
+    'Wireless Carrier': [
+      'Streaming',
+      'Social Platform',
+      'Cloud Hyperscaler',
+    ],
+
+    // 有线电视 - 内容分发
+    'Cable Operator': [
+      'Streaming',
+      'Media Conglomerate',
+    ],
+
+    // 流媒体 - 向广告商提供受众
+    'Streaming': [
+      'AdTech DSP',
+      'AdTech SSP',
+    ],
+
+    // 媒体集团 - 内容 → 广告
+    'Media Conglomerate': [
+      'AdTech DSP',
+      'Streaming',
+    ],
+
+    // 社交平台 - 广告驱动
+    'Social Platform': [
+      'AdTech DSP',
+      'AdTech Verification',
+    ],
+
+    // AdTech DSP → 验证/SSP
+    'AdTech DSP': [
+      'AdTech Verification',
+    ],
+
+    // 游戏 → 广告平台
+    'Gaming Publisher': [
+      'AdTech Platform',
+    ],
+
+    'Gaming Platform': [
+      'AdTech Platform',
+    ],
+
+    // 音频流媒体
+    'Audio Streaming': [
+      'AdTech DSP',
+    ],
+
+    // IT服务 - 服务企业客户
+    'IT Services': [
+      'Enterprise SaaS',
+      'Cloud Hyperscaler',
+    ],
+
+    'IT Consulting': [
+      'Enterprise SaaS',
+      'Cloud Hyperscaler',
     ],
 
     // ========== 国防产业链 ==========
