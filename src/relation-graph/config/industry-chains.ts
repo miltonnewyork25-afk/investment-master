@@ -2073,6 +2073,64 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // 建材
     'TREX': 'Building Products',          // Trex - 复合甲板材料
     'MAS': 'Building Products',           // Masco - 水龙头/橱柜
+
+    // ========== 2026-01 新增30只 ==========
+
+    // 网络安全 (Cybersecurity)
+    'CYBR': 'Cybersecurity',              // CyberArk - 身份安全/特权访问
+    'TENB': 'Cybersecurity',              // Tenable - 漏洞管理
+    'QLYS': 'Cybersecurity',              // Qualys - 云安全/合规
+    'VRNS': 'Cybersecurity',              // Varonis - 数据安全
+    'RPD': 'Cybersecurity',               // Rapid7 - 威胁检测/响应
+
+    // HCM/Payroll SaaS
+    'PCTY': 'Enterprise SaaS',            // Paylocity - HCM/薪资
+
+    // CPaaS/通信平台
+    'TWLO': 'Enterprise SaaS',            // Twilio - 通信API/CPaaS
+
+    // 企业SaaS
+    'IOT': 'Enterprise SaaS',             // Samsara - IoT车队管理
+    'CFLT': 'Enterprise SaaS',            // Confluent - 数据流Kafka
+    'DT': 'Enterprise SaaS',              // Dynatrace - 可观测性
+    'GTLB': 'Enterprise SaaS',            // GitLab - DevSecOps
+    'TOST': 'Enterprise SaaS',            // Toast - 餐饮SaaS/POS
+
+    // 透析服务 (Dialysis)
+    'DVA': 'Hospital',                    // DaVita - 透析中心
+
+    // 护理/康复
+    'ENSG': 'Hospital',                   // Ensign Group - 专业护理
+    'ACHC': 'Hospital',                   // Acadia Healthcare - 行为健康
+    'SGRY': 'Hospital',                   // Surgery Partners - 门诊手术
+    'AMED': 'Hospital',                   // Amedisys - 居家护理
+
+    // 医生网络/健康科技
+    'DOCS': 'Enterprise SaaS',            // Doximity - 医生网络平台
+
+    // 铀矿 (Uranium)
+    'CCJ': 'Uranium',                     // Cameco - 铀矿开采
+
+    // 稀土 (Rare Earth)
+    'MP': 'Specialty Metals',             // MP Materials - 稀土开采
+
+    // 国防科技
+    'KTOS': 'Defense Electronics',        // Kratos - 无人机/高超音速
+    'BWXT': 'Defense Prime',              // BWX Technologies - 核推进
+    'RKLB': 'Aerospace Supplier',         // Rocket Lab - 太空发射
+
+    // 汽配分销
+    'GPC': 'Auto Parts Retail',           // Genuine Parts - NAPA汽配
+
+    // 乡村零售
+    'TSCO': 'Specialty Retail',           // Tractor Supply - 农场/乡村
+
+    // 食品加工
+    'DAR': 'Food Ingredients',            // Darling Ingredients - 动物副产品
+    'CALM': 'Food Ingredients',           // Cal-Maine Foods - 鸡蛋
+    'POST': 'Food Ingredients',           // Post Holdings - 包装食品
+    'FLO': 'Food Ingredients',            // Flowers Foods - 烘焙
+    'SFM': 'Grocery',                     // Sprouts Farmers Market - 有机超市
   },
 
   // ============================================================

@@ -6574,6 +6574,314 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Building Products',
     tags: ['faucets', 'cabinets', 'plumbing', 'renovation'],
   },
+
+  // ========================================================
+  // 2026-01 新增30只 (Cybersecurity/Cloud/SaaS)
+  // ========================================================
+
+  // ---------- 网络安全 (Cybersecurity) ----------
+  'CYBR': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cybersecurity',
+    tags: ['identity', 'privileged_access', 'secrets_management', 'zero_trust'],
+  },
+  'TENB': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cybersecurity',
+    tags: ['vulnerability_management', 'exposure', 'cloud_security'],
+  },
+  'QLYS': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cybersecurity',
+    tags: ['vulnerability', 'compliance', 'cloud_security', 'web_app'],
+  },
+  'VRNS': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cybersecurity',
+    tags: ['data_security', 'insider_threat', 'data_governance'],
+  },
+  'RPD': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cybersecurity',
+    tags: ['threat_detection', 'incident_response', 'siem', 'xdr'],
+  },
+
+  // ---------- HCM/Payroll SaaS ----------
+  'PCTY': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'HCM SaaS',
+    tags: ['payroll', 'hr', 'talent_management', 'mid_market'],
+  },
+
+  // ---------- CPaaS/通信 ----------
+  'TWLO': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'CPaaS',
+    tags: ['messaging', 'voice', 'video', 'api', 'customer_engagement'],
+  },
+
+  // ---------- 企业SaaS (Enterprise SaaS) ----------
+  'IOT': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'IoT Platform',
+    tags: ['fleet', 'telematics', 'sensors', 'operations', 'connected'],
+  },
+  'CFLT': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Data Infrastructure',
+    tags: ['data_streaming', 'kafka', 'real_time', 'event_driven'],
+  },
+  'DT': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Observability',
+    tags: ['apm', 'infrastructure_monitoring', 'ai_ops', 'log_analytics'],
+  },
+  'GTLB': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'DevOps',
+    tags: ['devsecops', 'ci_cd', 'source_control', 'security_scanning'],
+  },
+  'TOST': {
+    assetModel: 'platform',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Restaurant Tech',
+    tags: ['pos', 'payments', 'restaurant', 'ordering', 'fintech'],
+  },
+
+  // ========================================================
+  // 2026-01 新增 (Healthcare Services)
+  // ========================================================
+
+  // ---------- 透析服务 (Dialysis) ----------
+  'DVA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Dialysis',
+    tags: ['kidney', 'dialysis_centers', 'chronic_care', 'renal'],
+  },
+
+  // ---------- 护理/康复 (Nursing/Rehab) ----------
+  'ENSG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Skilled Nursing',
+    tags: ['skilled_nursing', 'rehab', 'senior_care', 'post_acute'],
+  },
+
+  // ---------- 行为健康 (Behavioral Health) ----------
+  'ACHC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Behavioral Health',
+    tags: ['psychiatric', 'addiction', 'eating_disorders', 'inpatient'],
+  },
+
+  // ---------- 医生网络 (Physician Network) ----------
+  'DOCS': {
+    assetModel: 'platform',
+    revenueModels: ['advertising', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Health Tech',
+    tags: ['physician_network', 'pharma_marketing', 'telehealth', 'medical'],
+  },
+
+  // ---------- 门诊手术 (Ambulatory Surgery) ----------
+  'SGRY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Ambulatory Surgery',
+    tags: ['surgery_centers', 'outpatient', 'orthopedic', 'multi_specialty'],
+  },
+
+  // ---------- 居家护理 (Home Health) ----------
+  'AMED': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Home Health',
+    tags: ['home_health', 'hospice', 'personal_care', 'aging_in_place'],
+  },
+
+  // ========================================================
+  // 2026-01 新增 (Materials/Mining)
+  // ========================================================
+
+  // ---------- 铀矿 (Uranium) ----------
+  'CCJ': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Uranium Mining',
+    tags: ['uranium', 'nuclear_fuel', 'mining', 'enrichment'],
+  },
+
+  // ---------- 稀土 (Rare Earth) ----------
+  'MP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Rare Earth Mining',
+    tags: ['rare_earth', 'magnets', 'ev', 'mining', 'defense'],
+  },
+
+  // ========================================================
+  // 2026-01 新增 (Aerospace/Defense)
+  // ========================================================
+
+  // ---------- 无人机/防务科技 (Defense Tech) ----------
+  'KTOS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Defense Tech',
+    tags: ['drones', 'unmanned', 'hypersonic', 'satellite', 'tactical'],
+  },
+
+  // ---------- 核技术/国防 (Nuclear Defense) ----------
+  'BWXT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Nuclear Defense',
+    tags: ['nuclear_propulsion', 'reactors', 'navy', 'medical_isotopes'],
+  },
+
+  // ---------- 太空发射 (Space Launch) ----------
+  'RKLB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Space Launch',
+    tags: ['rockets', 'small_sat', 'space', 'satellite_bus', 'electron'],
+  },
+
+  // ========================================================
+  // 2026-01 新增 (Consumer/Retail)
+  // ========================================================
+
+  // ---------- 汽车/工业配件分销 (Auto/Industrial Parts) ----------
+  'GPC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Auto Parts Distribution',
+    tags: ['napa', 'aftermarket', 'industrial_parts', 'motion'],
+  },
+
+  // ---------- 乡村零售 (Farm/Rural Retail) ----------
+  'TSCO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Farm & Rural Retail',
+    tags: ['farm', 'ranch', 'pet', 'rural', 'outdoor'],
+  },
+
+  // ========================================================
+  // 2026-01 新增 (Food/Agriculture)
+  // ========================================================
+
+  // ---------- 动物副产品/可再生能源 (Rendering) ----------
+  'DAR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Rendering & Renewable',
+    tags: ['rendering', 'renewable_diesel', 'animal_fats', 'circular_economy'],
+  },
+
+  // ---------- 鸡蛋生产 (Egg Production) ----------
+  'CALM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Egg Production',
+    tags: ['eggs', 'shell_eggs', 'specialty_eggs', 'poultry'],
+  },
+
+  // ---------- 消费食品品牌 (Consumer Food) ----------
+  'POST': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Packaged Food',
+    tags: ['cereal', 'protein', 'pet_food', 'refrigerated'],
+  },
+
+  // ---------- 烘焙 (Bakery) ----------
+  'FLO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Bakery',
+    tags: ['bread', 'buns', 'snack_cakes', 'dsd'],
+  },
+
+  // ---------- 天然有机超市 (Natural Grocery) ----------
+  'SFM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Grocery',
+    tags: ['organic', 'natural', 'fresh', 'health_conscious'],
+  },
 };
 
 // ============================================================

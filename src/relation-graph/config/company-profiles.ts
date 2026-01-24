@@ -2916,6 +2916,52 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // 建材
   'TREX': 'early',     // Trex - 住宅翻新/新建
   'MAS': 'early',      // Masco - 住宅装修周期
+
+  // ========== 2026-01 新增30只 ==========
+
+  // 网络安全 (Cybersecurity) - 防御性,IT预算驱动
+  'CYBR': 'defensive',  // CyberArk - 身份安全刚需
+  'TENB': 'defensive',  // Tenable - 漏洞管理刚需
+  'QLYS': 'defensive',  // Qualys - 合规安全刚需
+  'VRNS': 'defensive',  // Varonis - 数据安全
+  'RPD': 'defensive',   // Rapid7 - 威胁检测
+
+  // HCM/SaaS - IT支出中周期
+  'PCTY': 'mid',        // Paylocity - HCM/薪资
+  'TWLO': 'mid',        // Twilio - 通信平台
+  'IOT': 'mid',         // Samsara - IoT车队
+  'CFLT': 'mid',        // Confluent - 数据流
+  'DT': 'mid',          // Dynatrace - 可观测性
+  'GTLB': 'mid',        // GitLab - DevSecOps
+  'TOST': 'mid',        // Toast - 餐饮SaaS
+
+  // 医疗服务 - 防御性/刚需
+  'DVA': 'defensive',   // DaVita - 透析刚需
+  'ENSG': 'defensive',  // Ensign - 护理刚需
+  'ACHC': 'defensive',  // Acadia - 行为健康刚需
+  'DOCS': 'defensive',  // Doximity - 医生网络
+  'SGRY': 'defensive',  // Surgery Partners - 门诊手术
+  'AMED': 'defensive',  // Amedisys - 居家护理
+
+  // 材料/矿业 - 中/晚周期
+  'CCJ': 'mid',         // Cameco - 铀矿/核能周期
+  'MP': 'mid',          // MP Materials - 稀土/EV周期
+
+  // 国防 - 防御性(政府支出驱动)
+  'KTOS': 'defensive',  // Kratos - 国防无人机
+  'BWXT': 'defensive',  // BWX Tech - 核推进/国防
+  'RKLB': 'mid',        // Rocket Lab - 太空发射(成长期)
+
+  // 消费零售
+  'GPC': 'late',        // Genuine Parts - 后周期汽配
+  'TSCO': 'defensive',  // Tractor Supply - 农村刚需
+
+  // 食品 - 防御性
+  'DAR': 'mid',         // Darling - 可再生柴油周期
+  'CALM': 'defensive',  // Cal-Maine - 鸡蛋刚需
+  'POST': 'defensive',  // Post Holdings - 包装食品
+  'FLO': 'defensive',   // Flowers Foods - 面包刚需
+  'SFM': 'defensive',   // Sprouts - 有机超市
 };
 
 // ============================================================
@@ -6091,6 +6137,142 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'MAS': {
     interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.5, housingMarket: 0.7, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // ========== 2026-01 新增30只 ==========
+
+  // 网络安全 - IT预算驱动,低宏观敏感
+  'CYBR': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'TENB': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'QLYS': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'VRNS': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'RPD': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // SaaS/Cloud - 利率负相关(成长股),IT支出正相关
+  'PCTY': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'TWLO': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'IOT': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'CFLT': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'DT': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'GTLB': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'TOST': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // 医疗服务 - 防御性,低宏观敏感
+  'DVA': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'ENSG': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'ACHC': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.1,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'DOCS': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'SGRY': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'AMED': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // 材料/矿业 - 大宗商品价格敏感
+  'CCJ': {
+    interestRate: -0.2, inflation: 0.4, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.3,
+  },
+  'MP': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.1,
+  },
+
+  // 国防 - 政府支出驱动,低宏观敏感
+  'KTOS': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'BWXT': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'RKLB': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.3, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // 消费零售
+  'GPC': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'TSCO': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // 食品 - 防御性/大宗农产品
+  'DAR': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.5,
+  },
+  'CALM': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'POST': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'FLO': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'SFM': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
   },
 };
 
