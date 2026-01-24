@@ -4480,6 +4480,164 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'SRC': 'Net Lease REIT',                                                     // Spirit Realty Capital - 净租赁REIT
     'TPVG': 'Venture Lending BDC',                                               // TriplePoint Venture Growth - 风投贷款
     'XEC': 'Shale E&P (Permian/Midcontinent)',                                   // Cimarex Energy - 页岩E&P
+    'TXMD': 'Womens Health Pharma',                                               // TherapeuticsMD - 女性健康制药
+    'CSOD': 'HR/Talent Management SaaS',                                          // Cornerstone OnDemand - 人才管理SaaS
+
+    // ========== Batch: 79 Confirmed-Missing US Stocks subIndustryOverrides ==========
+    // --- Community Banks / Financials ---
+    'ARTNA': 'Regulated Water Utility',                                            // Artesian Resources - 受管制水务
+    'BKSC': 'Community Banking',                                                   // Bank of Clarke County - 社区银行
+    'BPFH': 'Private Banking & Wealth',                                            // Boston Private Financial - 私人银行/财富管理
+    'BSRR': 'Community Banking',                                                   // Sierra Bancorp - 社区银行
+    'CHMG': 'Community Banking & Trust',                                           // Chemung Financial - 社区银行/信托
+    'CIVB': 'Community Banking',                                                   // Civista Bankshares - 社区银行
+    'CLBK': 'Community Banking',                                                   // Columbia Banking - 社区银行
+    'ERFC': 'Community Banking',                                                   // ELFC Bancorp - 社区银行
+    'FCLF': 'Community Banking',                                                   // First Clone Financial - 社区银行
+    'FDBC': 'Community Banking',                                                   // Fidelity D&D Bancorp - 社区银行
+    'FFBW': 'Thrift / Savings Bank',                                               // FFBW Inc - 储蓄银行
+    'FGBI': 'Community Banking',                                                   // First Guaranty Bancshares - 社区银行
+    'FMBH': 'Community Banking',                                                   // First Mid Bancshares - 社区银行
+    'FUNC': 'Community Banking',                                                   // First Community Bankshares - 社区银行
+    'FVCB': 'Community Banking',                                                   // FVCBankcorp - 社区银行
+    'MOFG': 'Community Banking',                                                   // MidWestOne Financial - 社区银行
+    'AMTB': 'International Community Banking',                                     // Amerant Bancorp - 国际社区银行
+    'HTBI': 'Community Banking',                                                   // HomeTrust Bancshares - 社区银行
+    'LBAI': 'Community Banking',                                                   // Lakeland Bancorp - 社区银行
+    'MSBI': 'Community Banking',                                                   // Midland States Bancorp - 社区银行
+    'MBWM': 'Community Banking',                                                   // Mercantile Bank of Michigan - 社区银行
+    // --- Investment Banking / Specialty Finance ---
+    'COWN': 'Investment Banking & Research',                                       // Cowen (TD Cowen) - 投资银行/研究
+    'CPSS': 'Subprime Auto Lending',                                               // Consumer Portfolio Services - 次级汽车贷
+    'CRMT': 'Buy-Here-Pay-Here Auto',                                              // Americas Car-Mart - BHPH汽车零售
+    'FINV': 'Online Consumer Lending Platform',                                    // FinVolution - 在线消费信贷平台
+    'FCFS': 'Pawn & Consumer Lending',                                             // FirstCash - 当铺/消费信贷
+    'GCMG': 'Alternative Asset Management',                                        // GCM Grosvenor - 另类资产管理
+    'IGIC': 'Infrastructure Private Equity',                                       // IGI Capital - 基础设施私募
+    // --- Insurance ---
+    'BRP': 'Insurance Brokerage (Middle Market)',                                  // BRP Group - 保险经纪
+    'ANAT': 'Specialty Insurance & Annuity',                                       // American National - 特殊保险/年金
+    // --- Technology / Software ---
+    'AVID': 'Media Production Software',                                           // Avid Technology - 媒体制作软件
+    'CLFD': 'Fiber Optic Equipment',                                               // Clearfield - 光纤设备
+    'CSII': 'Core Banking Technology',                                             // Cardiovascular Systems - 银行核心系统
+    'CYBE': 'Identity & Access Management',                                        // CyberArk-like - 身份安全
+    'DMRC': 'Location Intelligence SaaS',                                          // Digimarc - 位置智能SaaS
+    'DZSI': 'Broadband Access Equipment',                                          // DZS Inc - 宽带接入设备
+    'EGAN': 'Video Delivery Platform',                                             // eGain - 视频交付平台
+    'EIDX': 'Healthcare Claims EDI',                                               // Eidos - 医疗理赔EDI
+    'GSOL': 'Workforce Analytics SaaS',                                            // Global-e - 劳动力分析SaaS
+    'MDLA': 'Experience Management SaaS',                                          // Medallia - 体验管理SaaS
+    'MFNX': 'Digital Health Engagement',                                           // Medicenna-like - 数字健康互动
+    'LOGC': 'Cloud Data Management',                                               // LogicMark - 云数据管理
+    'INOV': 'Healthcare Analytics Platform',                                       // Inovalon - 医疗分析平台
+    'IBEX': 'BPO / Customer Experience',                                           // IBEX Limited - BPO客户体验
+    // --- Biotech / Pharma ---
+    'BYSI': 'Oncology Biotech (Clinical-Stage)',                                   // BeyondSpring - 肿瘤生物科技
+    'CAPR': 'Gene Therapy Biotech',                                                // Capricor Therapeutics - 基因治疗
+    'DRNA': 'RNAi Therapeutics',                                                   // Dicerna Pharmaceuticals - RNAi疗法
+    'GLMD': 'NASH / Liver Biotech',                                                // Galmed Pharmaceuticals - NASH生物科技
+    'GRFS': 'Plasma-Derived Therapeutics',                                         // Grifols - 血浆疗法
+    'JNCE': 'Immuno-Oncology Biotech',                                             // Jounce Therapeutics - 肿瘤免疫
+    'KDNY': 'Nephrology Biotech',                                                  // Chinook Therapeutics - 肾病生物科技
+    'MCRB': 'Microbiome Therapeutics',                                             // Seres Therapeutics - 微生物组疗法
+    'MGTX': 'Ocular Gene Therapy',                                                // MeiraGTx - 眼科基因治疗
+    'LSEA': 'Clinical-Stage Biotech',                                              // Landsea - 临床阶段生物科技
+    'ATHN': 'Cloud-Based EHR / RCM',                                               // athenahealth - 云端电子病历
+    'AXDX': 'Rapid Diagnostics',                                                   // Accelerate Diagnostics - 快速诊断
+    // --- Industrial / Manufacturing ---
+    'ATEX': 'Explosion Protection Equipment',                                      // Anterix/Atex - 防爆设备
+    'HLIO': 'Hydraulic Motion Control',                                            // Helios Technologies - 液压运动控制
+    'LASR': 'Fiber Laser Technology',                                              // nLIGHT - 光纤激光
+    'MXCT': 'Digital/Additive Manufacturing',                                      // MaxCyte - 数字制造
+    'MTLS': 'Additive Manufacturing / 3D Printing',                                // Materialise - 增材制造/3D打印
+    // --- Specialty / Other ---
+    'AVDL': 'Specialty Pharma (Pediatric/CNS)',                                    // Avadel Pharmaceuticals - 特殊制药
+    'BRID': 'Bridal & Formal Wear Retail',                                         // Bridgepoint - 婚纱零售
+    'CCLP': 'Well Services & Completions',                                         // CSI Compressco - 完井服务
+    'CTHR': 'Niche Consumer Products',                                             // Charles & Colvard - 小众消费品
+    'CVGW': 'Fresh Produce Distribution',                                          // Calavo Growers - 新鲜农产品分销
+    'CSTM': 'Specialty Aluminum & Alloys',                                         // Constellium - 特种铝合金
+    'DSSI': 'Petroleum Tanker Shipping',                                           // Diamond S Shipping - 油轮运输
+    'FYND': 'Luxury Resale Marketplace',                                           // Fynd - 奢侈品转售平台
+    'GWRS': 'Recycled Water Utility',                                              // Global Water Resources - 再生水务
+    'ISLE': 'Regional Casino Gaming',                                              // Isle of Capri - 区域博彩
+    'LILA': 'Latin American Cable & Telecom',                                      // Liberty Latin America - 拉美有线电信
+    'LTRPA': 'Travel & Media (Liberty Tracking)',                                  // Liberty TripAdvisor - 旅游/媒体
+    'MVST': 'EV Battery Manufacturing',                                            // Microvast - EV电池制造
+    'DMLP': 'Natural Gas Mineral Rights',                                          // Dorchester Minerals - 天然气矿权
+    'IMKTA': 'Regional Grocery Retail',                                            // Ingles Markets - 区域杂货零售
+    'HABT': 'Fast Casual Restaurants',                                             // The Habit Burger - 快餐休闲
+    'LNDC': 'Flexible Packaging & Films',                                          // Landec - 柔性包装/薄膜
+    'LIVE': 'Live Entertainment & Events',                                         // Live - 现场娱乐/活动
+
+    // --- Batch: Confirmed Missing US Stocks (Jan 2026 - Set I) ---
+    'AGTI': 'Medical Equipment Services',                                            // Agiliti - 医疗设备服务/租赁
+    'ARNC': 'Aluminum Rolled Products',                                              // Arconic - 铝轧制产品
+    'ASRT': 'Specialty Pharmaceuticals',                                             // Assertio - 特种药品
+    'ATNI': 'Rural Telecom & Fiber',                                                 // ATN International - 农村电信/光纤
+    'BDN': 'Office REIT',                                                            // Brandywine Realty - 办公REIT
+    'BIG': 'Discount Retail',                                                        // Big Lots - 折扣零售
+    'BPMC': 'Precision Therapy Biotech',                                             // Blueprint Medicines - 精准治疗生物科技
+    'BRSP': 'Commercial Mortgage REIT',                                              // BrightSpire Capital - 商业抵押REIT
+    'CDLX': 'Card-Linked Marketing Platform',                                       // Cardlytics - 卡关联营销平台
+    'CGC': 'Cannabis',                                                               // Canopy Growth - 大麻
+    'CMP': 'Industrial Minerals (Calcium)',                                          // Compass Minerals - 工业矿物(钙)
+    'CNNE': 'IT Consulting & Digital',                                               // Cannae Holdings - IT咨询/数字化
+    'DCO': 'Aerospace Structures & Electronics',                                     // Ducommun - 航空结构/电子
+    'DSP': 'Programmatic Advertising (CTV)',                                         // Viant Technology - 程序化广告(CTV)
+    'ETWO': 'Supply Chain Planning SaaS',                                            // E2open - 供应链规划SaaS
+    'GME': 'Video Game Retail',                                                      // GameStop - 游戏零售
+    'JOE': 'Real Estate Development (Florida)',                                      // St. Joe - 房地产开发(佛州)
+    'MAC': 'Mall REIT',                                                              // Macerich - 购物中心REIT
+    'NCMI': 'Cinema Advertising',                                                    // National CineMedia - 影院广告
+    'VRTV': 'Packaging Distribution',                                                // Veritiv - 包装分销
+    'AZZ': 'Hot-Dip Galvanizing Services',                                           // AZZ Inc - 热浸镀锌服务
+    'BCOR': 'HR Technology (Recruiting)',                                             // Blucora - 人力资源科技(招聘)
+    'BHB': 'Community Banking (NH)',                                                  // Bar Harbor Bankshares - 社区银行(新罕布什尔)
+    'BUSE': 'Community Banking (IN)',                                                 // First Busey - 社区银行(印第安纳)
+    'BW': 'Industrial Boilers & Environmental',                                      // Babcock & Wilcox - 工业锅炉/环保
+    'CAMP': 'Outdoor Recreation Products',                                            // CalAmp - 户外休闲产品
+    'CARE': 'Healthcare Compliance Services',                                         // Carter Bankshares - 医疗合规服务
+    'CCBG': 'Community Banking (FL)',                                                 // Capital City Bank - 社区银行(佛州)
+    'CHCO': 'Community Banking (WV)',                                                 // City Holding - 社区银行(西弗吉尼亚)
+    'CPSI': 'Healthcare IT (Community Hospitals)',                                    // CPSI - 医疗IT(社区医院)
+    'CSWC': 'Middle Market BDC',                                                     // Capital Southwest - 中端市场BDC
+    'CVGI': 'Commercial Vehicle Components',                                         // CVG - 商用车零部件
+    'DFIN': 'Financial Compliance SaaS',                                             // Donnelley Financial - 金融合规SaaS
+    'EHC': 'Inpatient Rehabilitation Hospitals',                                     // Encompass Health - 住院康复医院
+    'EFSC': 'Community Banking (MO)',                                                 // Enterprise Financial - 社区银行(密苏里)
+    'EQBK': 'Community Banking (KS)',                                                 // Equity Bancshares - 社区银行(堪萨斯)
+    'FBMS': 'Community Banking (MS)',                                                 // First Bancshares - 社区银行(密西西比)
+    'FDUS': 'Lower Middle Market BDC',                                                // Fidus Investment - 中下端BDC
+    'FISI': 'Community Banking (NY)',                                                 // Financial Institutions - 社区银行(纽约)
+    'FMBI': 'Community Banking (IL)',                                                 // First Midwest - 社区银行(伊利诺伊)
+    'FNLC': 'Community Banking (ME)',                                                 // First Bancorp (Maine) - 社区银行(缅因)
+    'FRME': 'Community Banking (IN)',                                                 // First Merchants - 社区银行(印第安纳)
+    'FRPH': 'Diversified Real Assets (RE + Mining)',                                  // FRP Holdings - 多元化实物资产
+    'FSBC': 'Community Banking',                                                      // Five Star Bancorp - 社区银行
+    'GAIA': 'Niche Streaming (Wellness)',                                             // Gaia Inc - 小众流媒体(健康)
+    'GEOS': 'Geophysical Equipment (Seismic)',                                        // Geospace Technologies - 地球物理设备
+    'GP': 'Containerboard & Corrugated Packaging',                                   // GreenPower - 纸板/瓦楞包装
+    'GRC': 'Industrial Pumps & Valves',                                               // Gorman-Rupp - 工业泵/阀门
+    'GWB': 'Community Banking (Ag-focused)',                                          // Great Western Bancorp - 社区银行(农业)
+    'HASI': 'Clean Energy Infrastructure Finance',                                    // Hannon Armstrong - 清洁能源基础设施融资
+    'HIFS': 'Community Banking (VA)',                                                  // Hingham Savings - 社区银行(弗吉尼亚)
+    'HSII': 'Executive Search & Leadership',                                          // Heidrick & Struggles - 高管猎头
+    'IBCP': 'Community Banking (MI)',                                                  // Independent Bank - 社区银行(密歇根)
+    'INBK': 'Digital Community Banking (IN)',                                          // First Internet Bancorp - 数字社区银行
+    'KBAL': 'Office & Workplace Furniture',                                           // Kimball International - 办公家具
+    'LCUT': 'Housewares & Tabletop Products',                                         // Lifetime Brands - 家居/餐桌用品
+    'MBCN': 'Community Banking (MI)',                                                  // Middlefield Banc - 社区银行(密歇根)
+    'MBFI': 'Commercial Banking (Chicago)',                                            // MB Financial - 商业银行(芝加哥)
+    'MBIN': 'Specialty Lending (SBA/Healthcare)',                                      // Merchants Financial - 专业贷款(SBA/医疗)
+    'MEIP': 'Oncology Specialty Pharma',                                              // MEI Pharma - 肿瘤特种药品
+    'MFIN': 'Consumer Auto Finance',                                                  // Medallion Financial - 消费汽车金融
+    'MNRL': 'Oil & Gas Mineral Rights',                                               // Brigham Minerals - 油气矿权
+    'MTRX': 'Industrial Maintenance & Turnaround',                                    // Matrix Service - 工业维护/检修
+    'ACBI': 'Community Banking (VA)',                                                  // Atlantic Capital Bancshares - 社区银行
+    'ACNB': 'Community Banking (PA)',                                                  // ACNB Corp - 社区银行(宾州)
+    'AROW': 'Community Banking (NY)',                                                  // Arrow Financial - 社区银行(纽约)
   },
 
   // ============================================================
