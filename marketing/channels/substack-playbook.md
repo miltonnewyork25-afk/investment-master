@@ -1,7 +1,7 @@
 # Substack Newsletter Playbook
-# Super Marketing Agent v1.0
-# 创建时间: 2026-01-24
-# 元知识来源: Substack 2026 趋势, Sprout Social SEO指南, Shopify变现指南
+# Super Marketing Agent v2.5 (Notes-First Edition)
+# 更新时间: 2026-01-24 | 基于Substack算法创建者(Mike Cohen)公开说明
+# 核心认知更新: Notes是#1增长驱动(70%新订阅来源), Newsletter是留存工具
 
 ## 账号设置清单
 
@@ -79,22 +79,34 @@ The framework behind these scores has been backtested with 100% accuracy across 
 
 ## 增长策略
 
-### Phase 1: 0→500 订阅者（Substack内部增长）
+### Phase 1: 0→500 订阅者（Notes-First策略）
 
-**Notes 策略（核心增长引擎）**
-- 每日发布 2-3 条 Notes
-- 内容类型：
-  - 市场快评（1-2句话+数据截图）
-  - 框架洞察片段（从Newsletter中提取）
-  - 互动提问（"你觉得半导体到底了吗？"）
-  - 回应热门讨论
-- 互动：评论其他投资类Writer的Notes
-- 时间：美东 8AM + 12PM + 5PM
+**⚠️ 核心认知: Notes是#1增长引擎 (70%新订阅来源)**
+- Notes算法会将内容展示给从未关注你的读者
+- Substack站内用户转化率 = 站外流量的 **4倍**
+- Newsletter只触达已订阅者; Notes触达全平台潜在读者
+
+**Notes 操作规程 (每日20-30分钟)**
+1. 发2-3条原创Notes:
+   - 市场快评 + 评分截图 (视觉内容占Notes的1/3)
+   - 框架洞察片段 (从Newsletter中chunk出来)
+   - 问题互动 ("LRCX scores 23.5. What would you do?")
+2. Restack 2-3条相关创作者的帖子 (带你的评论)
+   → 触发互惠: 他们也会restack你的内容 → 到他们的订阅者
+3. 评论5-10条其他投资类Writer的Notes
+   → 你的名字出现在他们的读者面前
+
+**时间节奏**: 美东 8AM (主力发布) + 12PM (互动) + 5PM (补充)
 
 **Recommendations 交叉推荐**
 - 找到 10-20 个互补的投资Newsletter
-- 主动推荐他们（触发反向推荐）
-- 目标：每月通过Recommendations获得 100+ 订阅者
+- 主动推荐他们（触发反向推荐循环）
+- 被推荐 = 自动增长引擎(订阅者看到你的推荐=算法推送)
+
+**Live功能策略**
+- 每周1次直播 (5-15分钟): 周报简评或市场快评
+- 直播触发全量邮件通知 (绕过算法, 100%触达)
+- 自动生成highlight clips → 可二次分发
 
 **首发内容策略**
 前10篇文章规划：

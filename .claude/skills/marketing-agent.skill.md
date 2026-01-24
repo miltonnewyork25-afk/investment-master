@@ -198,16 +198,17 @@ M - Multiply（倍增分发）  → 网络效应 + K-Factor > 1 设计
 
 ## 渠道策略（基于边际收益排序）
 
-### 当前边际收益排序（初始假设，待数据验证）
-1. **Twitter/X** — 最高：0成本，即时反馈，Thread适合深度内容
-2. **Substack** — 高：内部发现机制强，留存价值高
-3. **GitHub** — 高：技术权威+长尾SEO+永久资产
-4. **Reddit** — 中高：长尾流量，SEO价值
-5. **Hacker News** — 中：爆发潜力高但一次性
-6. **YouTube** — 中：长期价值高但制作成本高
-7. **Medium** — 中：SEO价值好
-8. **公众号** — 中低：中文市场覆盖
-9. **TikTok** — 低（初期）：需视频制作能力
+### 当前边际收益排序（2026算法情报更新版）
+1. **Twitter/X (Premium)** — 最高：4x曝光+即时反馈+Video10x | ⚠️需Premium
+2. **Substack Notes** — 极高：70%新订阅来源+站内4x转化率 | Notes > Newsletter
+3. **GitHub** — 高：技术权威+GEO可被AI引用+长尾SEO
+4. **GEO (AI引擎优化)** — 高(新增)：ChatGPT/Claude/Perplexity引用=免费曝光
+5. **Reddit** — 中高：AI大量引用社区讨论(GEO加成)+长尾SEO
+6. **YouTube** — 中高：视频跨平台分发(Shorts→TikTok→Reels)+长期SEO
+7. **Hacker News** — 中：爆发潜力+GEO权威来源
+8. **TikTok/Reels** — 中：视频10x engagement+跨平台分发
+9. **Medium** — 中低：SEO价值但被AI搜索替代中
+10. **公众号** — 中低：中文市场覆盖
 
 ### 饱和监测规则
 当某渠道出现以下信号 → 降低投入，转向下一渠道：
