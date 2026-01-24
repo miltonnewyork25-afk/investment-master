@@ -1474,6 +1474,236 @@ export const CROSS_MARKET_LINKS: Record<string, CrossMarketLink[]> = {
       note: '铜/钴矿竞争',
     },
   ],
+
+  // =====================================================
+  // 奢侈品/免税 (EL, LVMUY, CPRI, TPR)
+  // =====================================================
+
+  'LVMUY': [
+    {
+      foreignSymbol: '601888',
+      name: '中国中免',
+      exchange: 'SH',
+      relation: 'distributor',
+      signals: ['demand_proxy', 'asp_trend', 'revenue_proxy'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.1,
+      note: '中国免税渠道(海南离岛免税)→奢侈品中国消费信号',
+    },
+    {
+      foreignSymbol: '06110',
+      name: '滔搏',
+      exchange: 'HK',
+      relation: 'distributor',
+      signals: ['demand_proxy', 'inventory_cycle'],
+      strength: 'moderate',
+      timing: 'leading',
+      revenueRelevance: 0.05,
+      note: '运动/时尚鞋服中国分销商',
+    },
+  ],
+
+  // =====================================================
+  // 餐饮/食品 (MCD, YUM, DRI)
+  // =====================================================
+
+  'YUM': [
+    {
+      foreignSymbol: '09987',
+      name: '百胜中国',
+      exchange: 'HK',
+      relation: 'licensee',
+      signals: ['revenue_proxy', 'demand_proxy', 'market_share'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.2,
+      note: '肯德基/必胜客中国独家运营商(YUMC)',
+    },
+  ],
+
+  'MCD': [
+    {
+      foreignSymbol: '02420',
+      name: '金拱门(中信资本)',
+      exchange: 'HK',
+      relation: 'licensee',
+      signals: ['demand_proxy', 'market_share'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: '麦当劳中国特许经营',
+    },
+  ],
+
+  // =====================================================
+  // 乳制品/食品原料 (对比中国消费信号)
+  // =====================================================
+
+  'MDLZ': [
+    {
+      foreignSymbol: '600887',
+      name: '伊利股份',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'asp_trend'],
+      strength: 'weak',
+      timing: 'coincident',
+      revenueRelevance: 0.03,
+      note: '中国乳制品/零食消费信号',
+    },
+    {
+      foreignSymbol: '02319',
+      name: '蒙牛乳业',
+      exchange: 'HK',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'asp_trend'],
+      strength: 'weak',
+      timing: 'coincident',
+      revenueRelevance: 0.02,
+    },
+  ],
+
+  // =====================================================
+  // 医疗器械 (MDT, SYK, EW, BSX)
+  // =====================================================
+
+  'MDT': [
+    {
+      foreignSymbol: '300760',
+      name: '迈瑞医疗',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['market_share', 'demand_proxy', 'tech_adoption'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: '中国医疗器械龙头(监护/超声/IVD)',
+    },
+    {
+      foreignSymbol: '688139',
+      name: '海尔生物',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['market_share'],
+      strength: 'weak',
+      timing: 'lagging',
+      revenueRelevance: 0.01,
+      note: '生物安全/低温存储',
+    },
+  ],
+
+  'ABT': [
+    {
+      foreignSymbol: '300760',
+      name: '迈瑞医疗',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['market_share', 'demand_proxy'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.03,
+      note: 'IVD/POC诊断中国竞争',
+    },
+  ],
+
+  // =====================================================
+  // 家电 (WHR → 中国家电信号)
+  // =====================================================
+
+  'WHR': [
+    {
+      foreignSymbol: '000333',
+      name: '美的集团',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'market_share', 'asp_trend'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.1,
+      note: '全球白电竞争(洗衣机/冰箱/空调)',
+    },
+    {
+      foreignSymbol: '000651',
+      name: '格力电器',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'asp_trend'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: '空调全球竞争',
+    },
+    {
+      foreignSymbol: '600690',
+      name: '海尔智家',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'market_share', 'asp_trend'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.1,
+      note: '全球白电TOP3竞争',
+    },
+  ],
+
+  // =====================================================
+  // 电力设备 (EATON/ETN → 中国电网投资)
+  // =====================================================
+
+  'ETN': [
+    {
+      foreignSymbol: '601877',
+      name: '正泰电器',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'market_share'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.03,
+      note: '低压电器/光伏逆变器',
+    },
+    {
+      foreignSymbol: '300274',
+      name: '阳光电源',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'market_share'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.03,
+      note: '储能/逆变器竞争',
+    },
+  ],
+
+  // =====================================================
+  // 轮胎/橡胶 (GT → 中国轮胎)
+  // =====================================================
+
+  'GT': [
+    {
+      foreignSymbol: '601966',
+      name: '玲珑轮胎',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['asp_trend', 'market_share', 'demand_proxy'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: '中国轮胎出口→美国市场竞争',
+    },
+    {
+      foreignSymbol: '601058',
+      name: '赛轮轮胎',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['asp_trend', 'market_share'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.03,
+      note: '中国轮胎出海竞争',
+    },
+  ],
 };
 
 // ============ 行业级别映射 ============
@@ -1851,6 +2081,106 @@ export const INDUSTRY_CROSS_MARKET: Record<string, IndustryCrossMarketMap> = {
       },
     ],
   },
+
+  'luxury_consumer': {
+    description: '奢侈品/高端消费 - 中国贡献全球奢侈品消费35%+',
+    keyMetrics: [
+      '中国中免月度销售额(海南)',
+      '中国社零-化妆品/金银珠宝类增速',
+      '瑞士手表出口到大中华数据',
+      '中国免税购物人次/客单价',
+    ],
+    usStocks: ['EL', 'CPRI', 'TPR', 'RL', 'LVMUY'],
+    links: [
+      {
+        foreignSymbol: '601888', name: '中国中免', exchange: 'SH',
+        relation: 'distributor', signals: ['demand_proxy', 'asp_trend'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.1,
+        note: '免税渠道=中国高端消费晴雨表',
+      },
+      {
+        foreignSymbol: '600887', name: '伊利股份', exchange: 'SH',
+        relation: 'competitor', signals: ['demand_proxy'],
+        strength: 'weak', timing: 'coincident', revenueRelevance: 0.02,
+        note: '中国快消品整体消费信号',
+      },
+    ],
+  },
+
+  'home_appliance': {
+    description: '家电 - 中国占全球产能60%，出口决定行业景气',
+    keyMetrics: [
+      '中国空调/冰箱/洗衣机内销月度出货量',
+      '家电出口金额(海关)',
+      '中国房地产竣工面积(→家电需求)',
+      '原材料(铜/钢/塑料)价格',
+    ],
+    usStocks: ['WHR', 'SWK', 'SNA', 'AAON'],
+    links: [
+      {
+        foreignSymbol: '000333', name: '美的集团', exchange: 'SZ',
+        relation: 'competitor', signals: ['demand_proxy', 'asp_trend', 'market_share'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.1,
+      },
+      {
+        foreignSymbol: '600690', name: '海尔智家', exchange: 'SH',
+        relation: 'competitor', signals: ['demand_proxy', 'market_share'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.1,
+      },
+      {
+        foreignSymbol: '000651', name: '格力电器', exchange: 'SZ',
+        relation: 'competitor', signals: ['demand_proxy', 'asp_trend'],
+        strength: 'moderate', timing: 'coincident', revenueRelevance: 0.05,
+      },
+    ],
+  },
+
+  'medical_devices': {
+    description: '医疗器械 - 中国国产替代政策→影响外资份额',
+    keyMetrics: [
+      '中国医疗器械招标(集采)政策',
+      '迈瑞医疗季度海外营收增速',
+      '中国医院设备采购预算(月度)',
+      '中国IVD试剂集采降幅',
+    ],
+    usStocks: ['MDT', 'SYK', 'EW', 'BSX', 'ABT', 'BDX', 'BAX', 'ZBH'],
+    links: [
+      {
+        foreignSymbol: '300760', name: '迈瑞医疗', exchange: 'SZ',
+        relation: 'competitor', signals: ['market_share', 'demand_proxy', 'tech_adoption'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.05,
+      },
+      {
+        foreignSymbol: '688388', name: '嘉和美康', exchange: 'SH',
+        relation: 'competitor', signals: ['market_share'],
+        strength: 'weak', timing: 'lagging', revenueRelevance: 0.01,
+        note: '医疗信息化',
+      },
+    ],
+  },
+
+  'tire_rubber': {
+    description: '轮胎 - 中国轮胎出口占全球40%，价格战影响全球',
+    keyMetrics: [
+      '中国轮胎月度出口量(条)',
+      '天然橡胶/合成橡胶价格',
+      '中国轮胎开工率',
+      '美国轮胎进口数据(ITC)',
+    ],
+    usStocks: ['GT', 'CTB'],
+    links: [
+      {
+        foreignSymbol: '601966', name: '玲珑轮胎', exchange: 'SH',
+        relation: 'competitor', signals: ['asp_trend', 'market_share'],
+        strength: 'moderate', timing: 'coincident', revenueRelevance: 0.05,
+      },
+      {
+        foreignSymbol: '601058', name: '赛轮轮胎', exchange: 'SH',
+        relation: 'competitor', signals: ['asp_trend', 'market_share'],
+        strength: 'moderate', timing: 'coincident', revenueRelevance: 0.03,
+      },
+    ],
+  },
 };
 
 // ============ 监控日历 ============
@@ -1990,5 +2320,47 @@ export const MONITORING_CALENDAR: Record<string, {
     source: '工信部',
     description: '中国5G基站新建数量(月度累计)',
     relevantUSStocks: ['ERIC', 'NOK', 'CSCO', 'QCOM'],
+  },
+  'china_duty_free_sales': {
+    frequency: 'monthly',
+    source: '海口海关/中国中免公告',
+    description: '海南离岛免税销售额(月度)',
+    relevantUSStocks: ['EL', 'CPRI', 'TPR', 'LVMUY'],
+  },
+  'china_appliance_shipments': {
+    frequency: 'monthly',
+    source: '产业在线/奥维云网',
+    description: '中国白电内销出货量(空调/冰箱/洗衣机)',
+    relevantUSStocks: ['WHR', 'SWK'],
+  },
+  'china_cro_cdmo_orders': {
+    frequency: 'quarterly',
+    source: '药明康德/凯莱英/康龙化成季报',
+    description: '中国CRO/CDMO新签订单增速及backlog',
+    relevantUSStocks: ['IQV', 'CRL', 'TMO', 'A'],
+  },
+  'rubber_price': {
+    frequency: 'weekly',
+    source: '上海期货交易所/新加坡交易所',
+    description: '天然橡胶/合成橡胶期货价格',
+    relevantUSStocks: ['GT', 'CTB'],
+  },
+  'china_medical_procurement': {
+    frequency: 'quarterly',
+    source: '国家医保局/各省招标平台',
+    description: '医疗器械集中采购(集采)结果及降幅',
+    relevantUSStocks: ['MDT', 'SYK', 'BSX', 'EW', 'ABT', 'BDX'],
+  },
+  'china_power_grid_investment': {
+    frequency: 'monthly',
+    source: '国家电网/南方电网',
+    description: '电网投资完成额(月度累计)',
+    relevantUSStocks: ['ETN', 'EMR', 'ROK', 'HUBB'],
+  },
+  'hainan_tourism': {
+    frequency: 'monthly',
+    source: '海南省旅游厅',
+    description: '海南旅游人次及收入(免税消费代理)',
+    relevantUSStocks: ['EL', 'LVMUY', 'CPRI'],
   },
 };
