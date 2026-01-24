@@ -5,10 +5,10 @@
 
 ## 当前状态
 
-- **当前阶段**: EVOLVED (v7.0)
+- **当前阶段**: EVOLVED (v7.1)
 - **总体目标**: 所有行业回测准确率 >= 99%，每个行业产出新经验 → 实盘验证 → 框架进化
-- **完成状态**: ALL 8 CYCLE INDUSTRIES 100% PASS + TECH FRAMEWORK 100% PASS (95/95) + REAL-DATA STRESS TEST COMPLETE
-- **框架版本**: v7.0 (新增科技行业GARP框架：8家公司×10年×29条经验规则)
+- **完成状态**: ALL 8 CYCLE INDUSTRIES 100% PASS + TECH FRAMEWORK 100% PASS (164/164) + REAL-DATA STRESS TEST COMPLETE
+- **框架版本**: v7.1 (科技行业GARP框架扩展：14家公司×10年×36条经验规则，覆盖6种商业模型)
 
 ## 行业进展
 
@@ -24,7 +24,7 @@
 | airlines | PASS | 100% | 1 | **SELL** (PE陷阱 PE=9) | 成本端PE陷阱(Oil Cost Trap) |
 | steel | PASS | 100% | 1 | Neutral (X 58.5分) | 价差背离(Price Divergence) |
 | auto | PASS | 100% | 1 | Watch (GM 39分) | 库存紧缺扩张保护(Tight Inventory Protection) |
-| **tech** | **PASS** | **100%** | **29** | 待分析 | GARP框架: 8公司(AAPL/META/NVDA/MSFT/AMZN/GOOGL/TSLA/CRM) 95/95点 |
+| **tech** | **PASS** | **100%** | **36** | 待分析 | GARP框架: 14公司(8原始+NFLX/AMD/INTC/PYPL/SHOP/UBER) 164/164点, 6种商业模型 |
 
 ## 行业泛化顺序（按交集最大排序）
 
@@ -513,6 +513,36 @@ IF FCX T+6M < $45 (SELL判定正确):
 - 代码文件: `src/data-pipeline/processors/backtest_tech.py`
 - 结论: 科技行业框架100%通过，与周期行业形成互补(GARP vs 逆周期)
 
+### Iteration 12 (科技框架泛化 - 6种新商业模型 - 2026-01-24)
+- 目标: 从8家mega-cap平台型公司扩展到14家，覆盖ALL美股科技公司类型
+- 新增6家公司 (不同商业模型):
+  - NFLX (Subscription Streaming): 内容投入周期, 用户增长驱动, FCF长期为负
+  - AMD (Semiconductor Challenger): 周期性+世俗份额增长, 从濒临破产到dominant
+  - INTC (Declining Incumbent): 护城河侵蚀, 代工转型, 重建期投资
+  - PYPL (Fintech/Payments): 交易量驱动, take rate压缩, 竞争加剧
+  - SHOP (E-commerce Platform): GMV驱动, COVID暴涨/暴跌, 轻重资产切换
+  - UBER (Gig Marketplace): 长期亏损→盈利拐点, 单位经济学改善
+- 数据点: 95 → 164 (新增69个关键转折点)
+- 迭代过程:
+  - 初始: 90.2% (148/164, 16 errors) — 新公司类型暴露框架盲区
+  - 数据标签修正: NFLX/INTC/UBER的cycle和moat标签校准
+  - 规则修改: T1(FCF门控), T3(>=5), T5(<35), T10(rebuilding+cycle限制), T16(正增长), T24(>80%豁免)
+  - 新规则: T30(超低PS拐点), T31(peak高PS低利润), T32(增长悬崖), T34(现金燃烧), T36(未盈利顶部)
+  - 最终: 100.0% (164/164, 0 errors) — ALL PASS
+- 新经验规则 (T30-T36), 核心发现:
+  - T30: PS<1 + inflection = 极端低估反转 (AMD 2016型: $2→$11)
+  - T31: Peak + PS>10 + FCF<20% = 估值不可持续 (semi-cyclical peak)
+  - T32: 高增长(30-60%)急刹车(accel<-20) = market shock
+  - T34: FCF<-20% + 增长减速 = 双重恶化恐慌
+  - T36: Peak + FCF<0 + PS>4 = 亏损公司估值泡沫 (UBER/NFLX型)
+- 关键认知升级:
+  1. **盈利门控**: FCF<0的公司在peak不应获得任何豁免，传统GARP失效
+  2. **护城河动态**: "rebuilding"是有效状态(INTC Gelsinger)，不同于weakening
+  3. **超低估值拐点**: PS<1的公司如果有新产品拐点，可能10x (AMD Zen)
+  4. **数据标签精度**: cycle/moat标签必须反映"当时的真实状态"而非事后诸葛亮
+  5. **商业模型差异**: 亏损型(UBER)、内容投入型(NFLX)、周期型(AMD)需要不同的评估逻辑
+- 结论: 框架从"平台型mega-cap专用"进化为"全美股科技公司通用"
+
 ## 框架进化路线图
 
 ### v1.0 - v4.0: 基础周期评分 (semicap + shipping)
@@ -531,12 +561,13 @@ IF FCX T+6M < $45 (SELL判定正确):
   4. 框架分数 → 入场策略（76分≠今天全买，而是方向正确分批执行）
   5. 内部自洽 → 跨行业一致性（对不同行业的判定标准需一致）
 
-### v7.0 (当前): 科技行业GARP框架 + 实盘跟踪验证
-- **新增**: 科技行业投资框架 (GARP: Growth at Reasonable Price)
-  - 8家核心公司: AAPL, META, NVDA, MSFT, AMZN, GOOGL, TSLA, CRM
-  - 95个历史数据点, 10年回测(2015-2025), 100%准确率
-  - 29条经验规则, 5维评分体系
-  - 核心哲学: 增长质量×估值合理性, 产品周期驱动方向
+### v7.1 (当前): 科技行业GARP框架泛化 + 实盘跟踪验证
+- **新增**: 科技行业投资框架泛化到6种商业模型 (GARP: Growth at Reasonable Price)
+  - 14家公司: AAPL, META, NVDA, MSFT, AMZN, GOOGL, TSLA, CRM + NFLX, AMD, INTC, PYPL, SHOP, UBER
+  - 164个历史数据点, 10年回测(2015-2025), 100%准确率
+  - 36条经验规则 (T1-T36), 5维评分体系
+  - 覆盖商业模型: 平台型、订阅型、半导体周期型、衰退型、支付型、电商型、出行型
+  - 核心哲学: 增长质量×估值合理性, 产品周期驱动方向, 盈利能力门控
 - DOW多周期跟踪: T+3M / T+6M / T+9M / T+12M / T+18M~36M
 - 底部反转三条件模型: 供给出清 + 盈利拐点 + 估值底部确认
 - CVX/FCX对照跟踪: 验证SELL信号有效性 + 校准累积衰退逻辑

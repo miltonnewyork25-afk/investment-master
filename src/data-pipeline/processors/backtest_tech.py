@@ -707,6 +707,512 @@ BACKTEST_DATA = {
                 ]
             }
         ]
+    },
+
+    # ═══════════════════════════════════════════════════════════════
+    # 新增公司: 完全不同的商业模式 (泛化验证)
+    # ═══════════════════════════════════════════════════════════════
+
+    "NFLX": {
+        "name": "Netflix Inc.",
+        "sector": "Subscription Streaming / Content",
+        "cycles": [
+            {
+                "name": "2016-2017 国际扩张爆发期",
+                "points": [
+                    # 2016年1月: 国际用户暴增，内容投入巨大，FCF严重负
+                    {"date": "2016-01", "rev_growth": 24, "rev_accel": 1,
+                     "ps": 5.0, "pe": 300, "gm": 32, "fcf_margin": -18,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 100, "actual_6m": "up"},
+                    # 2017年7月: 订阅加速, 内容军备竞赛
+                    {"date": "2017-07", "rev_growth": 32, "rev_accel": 8,
+                     "ps": 8.0, "pe": 200, "gm": 33, "fcf_margin": -20,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 170, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2018 用户miss + 流媒体战争恐慌",
+                "points": [
+                    # 2018年7月: Q2用户增长miss 1M，第一次重大信任危机
+                    {"date": "2018-07", "rev_growth": 40, "rev_accel": 8,
+                     "ps": 10, "pe": 150, "gm": 37, "fcf_margin": -20,
+                     "moat": "strong", "product_cycle": "peak",
+                     "price": 400, "actual_6m": "down"},
+                    # 2018年12月: 市场大跌+流媒体竞争恐慌
+                    {"date": "2018-12", "rev_growth": 35, "rev_accel": -5,
+                     "ps": 7.5, "pe": 80, "gm": 38, "fcf_margin": -20,
+                     "moat": "strong", "product_cycle": "decelerating",
+                     "price": 270, "actual_6m": "up"},
+                    # 2019年7月: Disney+/Apple TV+宣布, 竞争格局恶化
+                    {"date": "2019-07", "rev_growth": 26, "rev_accel": -9,
+                     "ps": 8, "pe": 90, "gm": 38, "fcf_margin": -20,
+                     "moat": "strong", "product_cycle": "mature",
+                     "price": 350, "actual_6m": "sideways"},
+                ]
+            },
+            {
+                "name": "2020 COVID红利 + 2021顶部",
+                "points": [
+                    # 2020年3月: COVID爆发, WFH利好流媒体
+                    {"date": "2020-03", "rev_growth": 28, "rev_accel": 2,
+                     "ps": 8, "pe": 80, "gm": 38, "fcf_margin": -5,
+                     "moat": "strong", "product_cycle": "catalyst",
+                     "price": 340, "actual_6m": "up"},
+                    # 2020年9月: COVID用户暴增确认
+                    {"date": "2020-09", "rev_growth": 24, "rev_accel": -4,
+                     "ps": 12, "pe": 80, "gm": 39, "fcf_margin": 5,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 500, "actual_6m": "up"},
+                    # 2021年1月: 仍在增长但增速放缓
+                    {"date": "2021-01", "rev_growth": 24, "rev_accel": 0,
+                     "ps": 13, "pe": 80, "gm": 40, "fcf_margin": 10,
+                     "moat": "strong", "product_cycle": "mature",
+                     "price": 540, "actual_6m": "up"},
+                    # 2021年11月: 峰值$690, 用户增速明显放缓
+                    {"date": "2021-11", "rev_growth": 16, "rev_accel": -8,
+                     "ps": 14, "pe": 50, "gm": 42, "fcf_margin": 15,
+                     "moat": "strong", "product_cycle": "peak",
+                     "price": 690, "actual_6m": "down"},
+                ]
+            },
+            {
+                "name": "2022 用户流失危机 + 2023广告复苏",
+                "points": [
+                    # 2022年1月: Q4用户增长仅18万(极低)
+                    {"date": "2022-01", "rev_growth": 10, "rev_accel": -6,
+                     "ps": 10, "pe": 35, "gm": 41, "fcf_margin": 12,
+                     "moat": "weakening", "product_cycle": "decelerating",
+                     "price": 400, "actual_6m": "down"},
+                    # 2022年4月: 首次用户流失! 股价暴跌35%
+                    {"date": "2022-04", "rev_growth": 10, "rev_accel": 0,
+                     "ps": 5, "pe": 18, "gm": 40, "fcf_margin": 10,
+                     "moat": "weakening", "product_cycle": "declining",
+                     "price": 190, "actual_6m": "down"},
+                    # 2022年7月: 广告tier宣布+密码共享打击, 见底信号
+                    {"date": "2022-07", "rev_growth": 9, "rev_accel": -1,
+                     "ps": 4, "pe": 18, "gm": 40, "fcf_margin": 12,
+                     "moat": "rebuilding", "product_cycle": "inflection",
+                     "price": 190, "actual_6m": "up"},
+                    # 2023年6月: 密码共享打击奏效, 用户恢复增长
+                    {"date": "2023-06", "rev_growth": 4, "rev_accel": -5,
+                     "ps": 7, "pe": 40, "gm": 40, "fcf_margin": 18,
+                     "moat": "strong", "product_cycle": "recovery",
+                     "price": 440, "actual_6m": "up"},
+                    # 2024年1月: 强劲盈利+广告收入, 用户再加速
+                    {"date": "2024-01", "rev_growth": 12, "rev_accel": 8,
+                     "ps": 7, "pe": 35, "gm": 43, "fcf_margin": 22,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 490, "actual_6m": "up"},
+                ]
+            }
+        ]
+    },
+
+    "AMD": {
+        "name": "Advanced Micro Devices",
+        "sector": "Semiconductors / CPU+GPU Challenger",
+        "cycles": [
+            {
+                "name": "2016-2017 Zen翻身",
+                "points": [
+                    # 2016年1月: 濒临破产后的翻身希望, Zen架构研发中
+                    {"date": "2016-01", "rev_growth": -28, "rev_accel": -22,
+                     "ps": 0.8, "pe": -50, "gm": 23, "fcf_margin": -5,
+                     "moat": "emerging", "product_cycle": "inflection",
+                     "price": 2, "actual_6m": "up"},
+                    # 2017年1月: Zen发布, 首次盈利希望
+                    {"date": "2017-01", "rev_growth": 7, "rev_accel": 35,
+                     "ps": 3.0, "pe": -100, "gm": 32, "fcf_margin": 0,
+                     "moat": "emerging", "product_cycle": "expansion",
+                     "price": 11, "actual_6m": "up"},
+                    # 2018年1月: Zen桌面主导, 服务器开始抢份额
+                    {"date": "2018-01", "rev_growth": 25, "rev_accel": 18,
+                     "ps": 3.0, "pe": 100, "gm": 34, "fcf_margin": 5,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 12, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2018-2019 加密崩盘+贸易战",
+                "points": [
+                    # 2018年9月: 加密+中国贸易战前峰值
+                    {"date": "2018-09", "rev_growth": 24, "rev_accel": -1,
+                     "ps": 5.0, "pe": 50, "gm": 38, "fcf_margin": 5,
+                     "moat": "strong", "product_cycle": "peak",
+                     "price": 32, "actual_6m": "down"},
+                    # 2019年6月: Zen 2(7nm)发布前, 强烈催化剂
+                    {"date": "2019-06", "rev_growth": 4, "rev_accel": -20,
+                     "ps": 5.0, "pe": 200, "gm": 41, "fcf_margin": 8,
+                     "moat": "strong", "product_cycle": "inflection",
+                     "price": 30, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2020-2021 多产品线爆发",
+                "points": [
+                    # 2020年3月: COVID崩盘, 但PS5/Xbox新主机催化
+                    {"date": "2020-03", "rev_growth": 5, "rev_accel": 1,
+                     "ps": 6.0, "pe": 150, "gm": 43, "fcf_margin": 10,
+                     "moat": "strong", "product_cycle": "pre_launch",
+                     "price": 43, "actual_6m": "up"},
+                    # 2020年10月: 主机+Zen3+EPYC全面爆发
+                    {"date": "2020-10", "rev_growth": 45, "rev_accel": 40,
+                     "ps": 10, "pe": 100, "gm": 44, "fcf_margin": 10,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 80, "actual_6m": "up"},
+                    # 2021年11月: 峰值$160, Xilinx收购, 增长68%
+                    {"date": "2021-11", "rev_growth": 68, "rev_accel": 23,
+                     "ps": 12, "pe": 45, "gm": 48, "fcf_margin": 15,
+                     "moat": "dominant", "product_cycle": "peak",
+                     "price": 160, "actual_6m": "down"},
+                ]
+            },
+            {
+                "name": "2022 PC崩塌 + 2023 AI拐点",
+                "points": [
+                    # 2022年6月: PC/游戏崩溃开始, 估值压缩
+                    {"date": "2022-06", "rev_growth": 44, "rev_accel": -24,
+                     "ps": 5.0, "pe": 25, "gm": 45, "fcf_margin": 10,
+                     "moat": "strong", "product_cycle": "decelerating",
+                     "price": 80, "actual_6m": "down"},
+                    # 2022年10月: 底部$55, Gaming-54%, PC暴跌
+                    {"date": "2022-10", "rev_growth": 29, "rev_accel": -15,
+                     "ps": 3.5, "pe": 30, "gm": 42, "fcf_margin": 5,
+                     "moat": "strong", "product_cycle": "trough",
+                     "price": 57, "actual_6m": "up"},
+                    # 2023年6月: MI300 AI芯片宣布, AI叙事启动
+                    {"date": "2023-06", "rev_growth": -3, "rev_accel": -32,
+                     "ps": 7.0, "pe": 200, "gm": 46, "fcf_margin": 10,
+                     "moat": "strong", "product_cycle": "inflection",
+                     "price": 110, "actual_6m": "up"},
+                    # 2024年6月: AI收入增长中但尚未放量
+                    {"date": "2024-06", "rev_growth": 9, "rev_accel": 12,
+                     "ps": 10, "pe": 200, "gm": 49, "fcf_margin": 12,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 160, "actual_6m": "sideways"},
+                ]
+            }
+        ]
+    },
+
+    "INTC": {
+        "name": "Intel Corporation",
+        "sector": "Semiconductors / Legacy CPU",
+        "cycles": [
+            {
+                "name": "2016-2018 最后的辉煌",
+                "points": [
+                    # 2016年6月: PC下滑但数据中心增长, 仍然主导
+                    {"date": "2016-06", "rev_growth": 2, "rev_accel": -5,
+                     "ps": 2.5, "pe": 14, "gm": 62, "fcf_margin": 25,
+                     "moat": "dominant", "product_cycle": "mature",
+                     "price": 32, "actual_6m": "up"},
+                    # 2018年6月: 收入历史高点, 但10nm延迟隐患
+                    {"date": "2018-06", "rev_growth": 13, "rev_accel": 11,
+                     "ps": 3.5, "pe": 12, "gm": 61, "fcf_margin": 25,
+                     "moat": "dominant", "product_cycle": "peak",
+                     "price": 52, "actual_6m": "down"},
+                ]
+            },
+            {
+                "name": "2019-2020 技术领先丧失",
+                "points": [
+                    # 2019年6月: 10nm一再延迟, AMD Zen2直接威胁
+                    {"date": "2019-06", "rev_growth": 3, "rev_accel": -10,
+                     "ps": 3.0, "pe": 11, "gm": 60, "fcf_margin": 25,
+                     "moat": "strong", "product_cycle": "decelerating",
+                     "price": 47, "actual_6m": "up"},
+                    # 2020年7月: 7nm延迟公告! 技术领先彻底丧失
+                    {"date": "2020-07", "rev_growth": 8, "rev_accel": 5,
+                     "ps": 3.0, "pe": 10, "gm": 57, "fcf_margin": 28,
+                     "moat": "weakening", "product_cycle": "declining",
+                     "price": 47, "actual_6m": "down"},
+                ]
+            },
+            {
+                "name": "2021 Gelsinger时代 + IDM 2.0",
+                "points": [
+                    # 2021年1月: Gelsinger就任CEO, IDM 2.0转型
+                    {"date": "2021-01", "rev_growth": 8, "rev_accel": 0,
+                     "ps": 3.5, "pe": 12, "gm": 56, "fcf_margin": 22,
+                     "moat": "weakening", "product_cycle": "inflection",
+                     "price": 56, "actual_6m": "sideways"},
+                    # 2021年11月: IDM 2.0 CAPEX暴增, 份额继续流失
+                    {"date": "2021-11", "rev_growth": 1, "rev_accel": -7,
+                     "ps": 2.5, "pe": 10, "gm": 55, "fcf_margin": 18,
+                     "moat": "weakening", "product_cycle": "decelerating",
+                     "price": 50, "actual_6m": "down"},
+                ]
+            },
+            {
+                "name": "2022-2024 收入崩塌 + 代工噩梦",
+                "points": [
+                    # 2022年10月: 收入暴跌-20%, 毛利率崩塌, 但Gelsinger在重建
+                    {"date": "2022-10", "rev_growth": -20, "rev_accel": -21,
+                     "ps": 1.5, "pe": 15, "gm": 43, "fcf_margin": 5,
+                     "moat": "rebuilding", "product_cycle": "trough",
+                     "price": 25, "actual_6m": "up"},
+                    # 2023年6月: 部分恢复, 制程改进希望
+                    {"date": "2023-06", "rev_growth": -14, "rev_accel": 6,
+                     "ps": 2.5, "pe": 100, "gm": 38, "fcf_margin": 0,
+                     "moat": "rebuilding", "product_cycle": "recovery",
+                     "price": 35, "actual_6m": "up"},
+                    # 2023年12月: 股价回到$50, 代工概念推升但无基本面支撑
+                    {"date": "2023-12", "rev_growth": -3, "rev_accel": 11,
+                     "ps": 3.5, "pe": 50, "gm": 41, "fcf_margin": 5,
+                     "moat": "rebuilding", "product_cycle": "mature",
+                     "price": 50, "actual_6m": "down"},
+                    # 2024年8月: 代工亏损暴露, 股价崩塌至$20, 但仍在重建中
+                    {"date": "2024-08", "rev_growth": 0, "rev_accel": 3,
+                     "ps": 1.5, "pe": -100, "gm": 35, "fcf_margin": -10,
+                     "moat": "rebuilding", "product_cycle": "trough",
+                     "price": 20, "actual_6m": "sideways"},
+                ]
+            }
+        ]
+    },
+
+    "PYPL": {
+        "name": "PayPal Holdings",
+        "sector": "Fintech / Digital Payments",
+        "cycles": [
+            {
+                "name": "2016-2018 后eBay独立增长",
+                "points": [
+                    # 2016年6月: eBay分拆后独立增长, Venmo起步
+                    {"date": "2016-06", "rev_growth": 17, "rev_accel": 2,
+                     "ps": 4.0, "pe": 35, "gm": 46, "fcf_margin": 15,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 38, "actual_6m": "up"},
+                    # 2017年12月: Venmo+Braintree爆发, 平台效应
+                    {"date": "2017-12", "rev_growth": 21, "rev_accel": 4,
+                     "ps": 7.0, "pe": 50, "gm": 46, "fcf_margin": 16,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 75, "actual_6m": "up"},
+                    # 2018年12月: 市场大跌但PayPal基本面稳健
+                    {"date": "2018-12", "rev_growth": 18, "rev_accel": -3,
+                     "ps": 6.0, "pe": 38, "gm": 46, "fcf_margin": 18,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 82, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2020-2021 COVID数字支付爆发",
+                "points": [
+                    # 2020年3月: COVID推动无接触支付
+                    {"date": "2020-03", "rev_growth": 15, "rev_accel": -3,
+                     "ps": 7.0, "pe": 55, "gm": 46, "fcf_margin": 20,
+                     "moat": "strong", "product_cycle": "catalyst",
+                     "price": 95, "actual_6m": "up"},
+                    # 2021年2月: 峰值区域, 增长21%但估值极端
+                    {"date": "2021-02", "rev_growth": 21, "rev_accel": 6,
+                     "ps": 14, "pe": 60, "gm": 46, "fcf_margin": 22,
+                     "moat": "strong", "product_cycle": "peak",
+                     "price": 270, "actual_6m": "down"},
+                    # 2021年7月: 增长开始放缓, Apple Pay竞争
+                    {"date": "2021-07", "rev_growth": 17, "rev_accel": -4,
+                     "ps": 12, "pe": 50, "gm": 46, "fcf_margin": 18,
+                     "moat": "weakening", "product_cycle": "decelerating",
+                     "price": 280, "actual_6m": "down"},
+                ]
+            },
+            {
+                "name": "2022 估值崩塌 + 竞争加剧",
+                "points": [
+                    # 2022年2月: 指引下调, 股价暴跌
+                    {"date": "2022-02", "rev_growth": 8, "rev_accel": -9,
+                     "ps": 5.0, "pe": 20, "gm": 45, "fcf_margin": 20,
+                     "moat": "weakening", "product_cycle": "declining",
+                     "price": 100, "actual_6m": "down"},
+                    # 2022年7月: 持续下跌, 竞争白热化
+                    {"date": "2022-07", "rev_growth": 9, "rev_accel": 1,
+                     "ps": 4.0, "pe": 18, "gm": 45, "fcf_margin": 22,
+                     "moat": "weakening", "product_cycle": "trough",
+                     "price": 85, "actual_6m": "sideways"},
+                    # 2023年1月: 新CEO Alex Chriss上任
+                    {"date": "2023-01", "rev_growth": 7, "rev_accel": -2,
+                     "ps": 3.5, "pe": 16, "gm": 44, "fcf_margin": 22,
+                     "moat": "rebuilding", "product_cycle": "inflection",
+                     "price": 80, "actual_6m": "sideways"},
+                    # 2024年1月: 利润率改善, 回购加速
+                    {"date": "2024-01", "rev_growth": 8, "rev_accel": 1,
+                     "ps": 2.5, "pe": 14, "gm": 40, "fcf_margin": 20,
+                     "moat": "rebuilding", "product_cycle": "recovery",
+                     "price": 62, "actual_6m": "up"},
+                ]
+            }
+        ]
+    },
+
+    "SHOP": {
+        "name": "Shopify Inc.",
+        "sector": "E-commerce Platform / Merchant SaaS",
+        "cycles": [
+            {
+                "name": "2017-2019 高速增长期",
+                "points": [
+                    # 2017年6月: 早期高增长, 商户数暴增
+                    {"date": "2017-06", "rev_growth": 73, "rev_accel": -17,
+                     "ps": 15, "pe": -500, "gm": 55, "fcf_margin": -5,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 95, "actual_6m": "up"},
+                    # 2018年12月: 市场崩盘但SHOP逆势增长
+                    {"date": "2018-12", "rev_growth": 59, "rev_accel": -14,
+                     "ps": 15, "pe": -300, "gm": 55, "fcf_margin": -3,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 145, "actual_6m": "up"},
+                    # 2019年12月: Fulfillment Network宣布, 估值扩张
+                    {"date": "2019-12", "rev_growth": 47, "rev_accel": -12,
+                     "ps": 25, "pe": -500, "gm": 54, "fcf_margin": 2,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 400, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2020 COVID电商爆炸",
+                "points": [
+                    # 2020年3月: COVID崩盘, 但电商即将爆发
+                    {"date": "2020-03", "rev_growth": 47, "rev_accel": 0,
+                     "ps": 20, "pe": -500, "gm": 53, "fcf_margin": 5,
+                     "moat": "strong", "product_cycle": "catalyst",
+                     "price": 350, "actual_6m": "up"},
+                    # 2020年10月: COVID电商全面爆发, PS=50
+                    {"date": "2020-10", "rev_growth": 86, "rev_accel": 39,
+                     "ps": 50, "pe": 500, "gm": 53, "fcf_margin": 10,
+                     "moat": "strong", "product_cycle": "peak",
+                     "price": 1000, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2021-2022 估值崩塌",
+                "points": [
+                    # 2021年6月: 增速仍高但从峰值回落中
+                    {"date": "2021-06", "rev_growth": 57, "rev_accel": -29,
+                     "ps": 40, "pe": 300, "gm": 54, "fcf_margin": 8,
+                     "moat": "strong", "product_cycle": "decelerating",
+                     "price": 1500, "actual_6m": "down"},
+                    # 2021年11月: 峰值$1762, 增长继续放缓
+                    {"date": "2021-11", "rev_growth": 46, "rev_accel": -11,
+                     "ps": 40, "pe": 200, "gm": 54, "fcf_margin": 5,
+                     "moat": "strong", "product_cycle": "peak",
+                     "price": 1700, "actual_6m": "down"},
+                    # 2022年6月: 崩塌进行中, PS回归正常
+                    {"date": "2022-06", "rev_growth": 16, "rev_accel": -30,
+                     "ps": 8.0, "pe": -100, "gm": 50, "fcf_margin": -5,
+                     "moat": "weakening", "product_cycle": "declining",
+                     "price": 30, "actual_6m": "down"},
+                    # 2022年10月: 接近底部, FN拖累利润
+                    {"date": "2022-10", "rev_growth": 22, "rev_accel": 6,
+                     "ps": 7.0, "pe": -100, "gm": 49, "fcf_margin": -3,
+                     "moat": "rebuilding", "product_cycle": "trough",
+                     "price": 25, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2023-2024 卖掉FN + 利润率拐点",
+                "points": [
+                    # 2023年5月: 出售Fulfillment Network, 回归轻资产
+                    {"date": "2023-05", "rev_growth": 25, "rev_accel": 3,
+                     "ps": 12, "pe": -100, "gm": 49, "fcf_margin": 5,
+                     "moat": "strong", "product_cycle": "inflection",
+                     "price": 60, "actual_6m": "up"},
+                    # 2023年12月: 利润率大幅改善, 增长稳健
+                    {"date": "2023-12", "rev_growth": 26, "rev_accel": 1,
+                     "ps": 14, "pe": 70, "gm": 51, "fcf_margin": 12,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 78, "actual_6m": "up"},
+                    # 2024年6月: 持续增长+盈利
+                    {"date": "2024-06", "rev_growth": 21, "rev_accel": -5,
+                     "ps": 11, "pe": 60, "gm": 51, "fcf_margin": 15,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 65, "actual_6m": "up"},
+                ]
+            }
+        ]
+    },
+
+    "UBER": {
+        "name": "Uber Technologies",
+        "sector": "Gig Marketplace / Mobility",
+        "cycles": [
+            {
+                "name": "2019 IPO后估值回归",
+                "points": [
+                    # 2019年6月: 刚IPO, 巨额亏损, 盈利路径不清
+                    {"date": "2019-06", "rev_growth": 20, "rev_accel": -22,
+                     "ps": 4.5, "pe": -20, "gm": 46, "fcf_margin": -30,
+                     "moat": "emerging", "product_cycle": "expansion",
+                     "price": 42, "actual_6m": "down"},
+                    # 2019年12月: 持续亏损恐慌, 股价跌至$30
+                    {"date": "2019-12", "rev_growth": 26, "rev_accel": 6,
+                     "ps": 4.0, "pe": -15, "gm": 46, "fcf_margin": -25,
+                     "moat": "emerging", "product_cycle": "expansion",
+                     "price": 30, "actual_6m": "sideways"},
+                ]
+            },
+            {
+                "name": "2020 COVID冲击 + Delivery崛起",
+                "points": [
+                    # 2020年3月: COVID崩盘, 出行需求归零
+                    {"date": "2020-03", "rev_growth": 14, "rev_accel": -12,
+                     "ps": 3.5, "pe": -10, "gm": 45, "fcf_margin": -30,
+                     "moat": "strong", "product_cycle": "trough",
+                     "price": 22, "actual_6m": "up"},
+                    # 2020年12月: Delivery弥补Rides, 股价恢复, 盈利拐点在望
+                    {"date": "2020-12", "rev_growth": -14, "rev_accel": -28,
+                     "ps": 8.0, "pe": -20, "gm": 50, "fcf_margin": -15,
+                     "moat": "strong", "product_cycle": "inflection",
+                     "price": 52, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2021-2022 增长恢复但仍亏损",
+                "points": [
+                    # 2021年2月: 后COVID恢复高峰, 股价已反映预期
+                    {"date": "2021-02", "rev_growth": 57, "rev_accel": 71,
+                     "ps": 9.0, "pe": -20, "gm": 50, "fcf_margin": -15,
+                     "moat": "strong", "product_cycle": "peak",
+                     "price": 60, "actual_6m": "down"},
+                    # 2022年2月: 增长83%但仍巨亏, 市场不再给亏损公司溢价
+                    {"date": "2022-02", "rev_growth": 83, "rev_accel": 26,
+                     "ps": 4.5, "pe": -30, "gm": 52, "fcf_margin": -10,
+                     "moat": "strong", "product_cycle": "peak",
+                     "price": 35, "actual_6m": "down"},
+                    # 2022年6月: 底部区域$21, 盈利预期改善
+                    {"date": "2022-06", "rev_growth": 83, "rev_accel": 0,
+                     "ps": 2.5, "pe": -30, "gm": 53, "fcf_margin": -5,
+                     "moat": "strong", "product_cycle": "trough",
+                     "price": 21, "actual_6m": "up"},
+                ]
+            },
+            {
+                "name": "2023-2024 盈利拐点",
+                "points": [
+                    # 2023年1月: 首次接近盈亏平衡
+                    {"date": "2023-01", "rev_growth": 17, "rev_accel": -66,
+                     "ps": 3.0, "pe": -50, "gm": 55, "fcf_margin": 5,
+                     "moat": "strong", "product_cycle": "inflection",
+                     "price": 28, "actual_6m": "up"},
+                    # 2023年6月: 首次GAAP盈利确认
+                    {"date": "2023-06", "rev_growth": 14, "rev_accel": -3,
+                     "ps": 4.0, "pe": 100, "gm": 55, "fcf_margin": 8,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 44, "actual_6m": "up"},
+                    # 2024年1月: 稳定盈利, 增长18%
+                    {"date": "2024-01", "rev_growth": 18, "rev_accel": 4,
+                     "ps": 4.0, "pe": 60, "gm": 55, "fcf_margin": 12,
+                     "moat": "strong", "product_cycle": "expansion",
+                     "price": 62, "actual_6m": "up"},
+                    # 2024年7月: 增长稳定但估值合理
+                    {"date": "2024-07", "rev_growth": 16, "rev_accel": -2,
+                     "ps": 4.5, "pe": 50, "gm": 55, "fcf_margin": 15,
+                     "moat": "strong", "product_cycle": "mature",
+                     "price": 72, "actual_6m": "sideways"},
+                ]
+            }
+        ]
     }
 }
 
@@ -897,10 +1403,15 @@ def score_tech(point: Dict) -> Tuple[float, str]:
 
     # 经验#T1: 周期顶峰卖出
     # 核心: peak = 即将下跌，但需区分"真顶"(减速)和"假顶"(仍加速)
+    # 关键: FCF<0的公司即使高增长+加速也不豁免 (UBER 2021/2022型)
     if product_cycle == "peak":
-        if rev_growth > 30 and rev_accel >= 0 and moat in ("dominant", "strong"):
-            # 高增长仍加速: 不是真顶，可能继续涨 (NVDA 2017-11)
-            adjustment -= 5  # 轻微风险警告
+        if rev_growth > 30 and rev_accel >= 0 and moat in ("dominant", "strong") and fcf_margin > 0:
+            if fcf_margin >= 20:
+                adjustment -= 5  # 高利润+高增长+加速: 假顶 (NVDA型)
+            elif rev_growth > 80:
+                adjustment -= 5  # 超高增长豁免 (SHOP COVID型)
+            else:
+                adjustment -= 40  # 低利润peak不豁免
         else:
             # 其他情况: 真顶
             adjustment -= 40
@@ -916,7 +1427,7 @@ def score_tech(point: Dict) -> Tuple[float, str]:
 
     # 经验#T3: 增长急剧崩塌 (accel<-20=极端恶化)
     # 仅在非inflection/trough/recovery/pre_launch阶段触发
-    if rev_accel < -20 and ps > 5 and product_cycle not in ("inflection", "trough", "recovery", "catalyst", "pre_launch"):
+    if rev_accel < -20 and ps >= 5 and product_cycle not in ("inflection", "trough", "recovery", "catalyst", "pre_launch"):
         adjustment -= 15
 
     # 经验#T4: 绝对高估值惩罚
@@ -928,8 +1439,8 @@ def score_tech(point: Dict) -> Tuple[float, str]:
             adjustment -= 10
 
     # 经验#T5: 低利润率PS陷阱 (AMZN型: FCF<8%时低PS不代表便宜)
-    # 高增长(>40%)豁免: 增长速度够快时估值有支撑
-    if fcf_margin < 8 and ps > 2.5 and rev_accel < 0 and rev_growth < 40:
+    # 高增长(>35%)豁免: 增长速度够快时估值有支撑
+    if fcf_margin < 8 and ps > 2.5 and rev_accel < 0 and rev_growth < 35:
         if product_cycle in ("peak", "decelerating", "declining"):
             adjustment -= 20
         elif product_cycle == "expansion":
@@ -954,8 +1465,10 @@ def score_tech(point: Dict) -> Tuple[float, str]:
         adjustment += 20
 
     # 经验#T10: 增长拐点信号 (从负增长开始恢复)
-    if rev_growth < 0 and rev_accel > 0 and moat in ("dominant", "strong"):
-        adjustment += 20
+    # 加入rebuilding护城河 (INTC Gelsinger时代)，限制cycle阶段防止误触发
+    if rev_growth < 0 and rev_accel > 0 and moat in ("dominant", "strong", "rebuilding"):
+        if product_cycle in ("recovery", "trough", "inflection"):
+            adjustment += 20
 
     # 经验#T11: 超级增长保护 (增长>80%+加速=不可阻挡)
     if rev_growth > 80 and rev_accel >= 0 and moat == "dominant":
@@ -980,8 +1493,8 @@ def score_tech(point: Dict) -> Tuple[float, str]:
     if pe < 0 and fcf_margin > 0 and rev_growth > 20:
         adjustment += 10
 
-    # 经验#T16: 增长加速买入
-    if rev_accel > 10 and ps < 10 and product_cycle in ("expansion", "recovery", "inflection"):
+    # 经验#T16: 增长加速买入 (需正增长确认)
+    if rev_accel > 10 and ps < 10 and product_cycle in ("expansion", "recovery", "inflection") and rev_growth > 0:
         adjustment += 10
 
     # 经验#T17: Inflection强信号 (拐点+主导地位=反转确认)
@@ -1017,8 +1530,8 @@ def score_tech(point: Dict) -> Tuple[float, str]:
         adjustment -= 45
 
     # 经验#T24: Peak + 极端估值 = 泡沫顶部 (PS>15 override)
-    # 无论增长多快，PS>15在peak阶段都是泡沫
-    if product_cycle == "peak" and ps > 15:
+    # 超高增长(>80%)豁免: COVID SHOP型，增速够快则继续涨
+    if product_cycle == "peak" and ps > 15 and rev_growth < 80:
         adjustment -= 35
 
     # 经验#T25: Declining + 负FCF = 结构性恶化
@@ -1045,6 +1558,33 @@ def score_tech(point: Dict) -> Tuple[float, str]:
     # 利率上升环境中SaaS倍数收缩风险
     if product_cycle == "decelerating" and gm > 65 and 15 < rev_growth < 30 and ps > 5:
         adjustment -= 15
+
+    # ─── 新公司类型规则 ───
+
+    # 经验#T31: Peak高估值+低利润率风险 (peak + PS>10 + FCF<20% = 估值不可持续)
+    # AMD 2021-11型: 高增长但FCF不够高的semi-peak, 估值虚高
+    if product_cycle == "peak" and ps > 10 and fcf_margin < 20:
+        adjustment -= 5
+
+    # 经验#T30: 超低估值拐点 (PS<1=极端低估+inflection=强反转)
+    # AMD 2016型: 濒临破产但新产品即将翻盘
+    if ps < 1.0 and product_cycle == "inflection":
+        adjustment += 20
+
+    # 经验#T32: 增长悬崖 (高增长急刹车=market shock)
+    # 从高增长(30-60%)急速减速(accel<-20)在peak/decel阶段=暴跌
+    if rev_accel < -20 and 30 < rev_growth < 60 and product_cycle in ("decelerating", "peak"):
+        adjustment -= 15
+
+    # 经验#T34: 现金燃烧加速 (FCF<-20% + 减速=双重恶化)
+    # 亏损公司增长还在减速=市场恐慌
+    if fcf_margin < -20 and rev_accel < -10:
+        adjustment -= 15
+
+    # 经验#T36: 未盈利顶部 (peak + FCF<0 + PS>4 = 不可持续)
+    # UBER/NFLX型: 亏损公司在高估值peak一定跌
+    if product_cycle == "peak" and fcf_margin < 0 and ps > 4:
+        adjustment -= 25
 
     final_score = max(0, min(100, base_score + adjustment))
     return final_score, _score_to_signal(final_score)

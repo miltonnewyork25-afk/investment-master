@@ -1,0 +1,120 @@
+{
+  "timestamp": "20260124_085621",
+  "overall_accuracy": 100.0,
+  "total_points": 164,
+  "all_pass": true,
+  "results": {
+    "AAPL": {
+      "name": "Apple Inc.",
+      "accuracy": 100.0,
+      "correct": 14,
+      "total": 14,
+      "errors": [],
+      "pass": true
+    },
+    "META": {
+      "name": "Meta Platforms",
+      "accuracy": 100.0,
+      "correct": 12,
+      "total": 12,
+      "errors": [],
+      "pass": true
+    },
+    "NVDA": {
+      "name": "NVIDIA Corporation",
+      "accuracy": 100.0,
+      "correct": 14,
+      "total": 14,
+      "errors": [],
+      "pass": true
+    },
+    "MSFT": {
+      "name": "Microsoft Corporation",
+      "accuracy": 100.0,
+      "correct": 13,
+      "total": 13,
+      "errors": [],
+      "pass": true
+    },
+    "AMZN": {
+      "name": "Amazon.com",
+      "accuracy": 100.0,
+      "correct": 11,
+      "total": 11,
+      "errors": [],
+      "pass": true
+    },
+    "GOOGL": {
+      "name": "Alphabet Inc.",
+      "accuracy": 100.0,
+      "correct": 11,
+      "total": 11,
+      "errors": [],
+      "pass": true
+    },
+    "TSLA": {
+      "name": "Tesla Inc.",
+      "accuracy": 100.0,
+      "correct": 11,
+      "total": 11,
+      "errors": [],
+      "pass": true
+    },
+    "CRM": {
+      "name": "Salesforce Inc.",
+      "accuracy": 100.0,
+      "correct": 9,
+      "total": 9,
+      "errors": [],
+      "pass": true
+    },
+    "NFLX": {
+      "name": "Netflix Inc.",
+      "accuracy": 100.0,
+      "correct": 14,
+      "total": 14,
+      "errors": [],
+      "pass": true
+    },
+    "AMD": {
+      "name": "Advanced Micro Devices",
+      "accuracy": 100.0,
+      "correct": 12,
+      "total": 12,
+      "errors": [],
+      "pass": true
+    },
+    "INTC": {
+      "name": "Intel Corporation",
+      "accuracy": 100.0,
+      "correct": 10,
+      "total": 10,
+      "errors": [],
+      "pass": true
+    },
+    "PYPL": {
+      "name": "PayPal Holdings",
+      "accuracy": 100.0,
+      "correct": 10,
+      "total": 10,
+      "errors": [],
+      "pass": true
+    },
+    "SHOP": {
+      "name": "Shopify Inc.",
+      "accuracy": 100.0,
+      "correct": 12,
+      "total": 12,
+      "errors": [],
+      "pass": true
+    },
+    "UBER": {
+      "name": "Uber Technologies",
+      "accuracy": 100.0,
+      "correct": 11,
+      "total": 11,
+      "errors": [],
+      "pass": true
+    }
+  }
+}
