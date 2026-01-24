@@ -25,6 +25,7 @@ export { syntheticResearch, SyntheticResearch } from './agents/synthetic-researc
 export { sentimentFetcher, SentimentFetcher } from './agents/sentiment-fetcher.js';
 export { cfaValuation, CFAValuation } from './agents/cfa-valuation.js';
 export { portfolioRisk, PortfolioRisk } from './agents/portfolio-risk.js';
+export { strategicAnalysis, StrategicAnalysis } from './agents/strategic-analysis.js';
 
 // 导出工具类
 export { cacheManager, CacheManager } from './utils/cache.js';
@@ -72,6 +73,7 @@ export type { PersonaConfig, PersonaResponse, AggregatedResult } from './agents/
 export type { ContentAtom, WeeklyContentPack } from './agents/content-generator.js';
 export type { ValuationResult, FactorExposure } from './agents/cfa-valuation.js';
 export type { PositionSize, RiskBudget, PortfolioAllocation, PortfolioMetrics } from './agents/portfolio-risk.js';
+export type { StrategicProfile, MoatAssessment, PorterFiveForces, FlywheelEffect, ProductUnit, ReinvestmentMoat } from './agents/strategic-analysis.js';
 
 // CLI 入口
 async function main() {
@@ -413,6 +415,60 @@ async function main() {
       break;
     }
 
+    case 'strategy': {
+      console.log('执行战略分析...');
+      const { strategicAnalysis: cliStrategy } = await import('./agents/strategic-analysis.js');
+      const { allCompanies: stratCompanies } = await import('./data/mock-data.js');
+
+      const stratTickers = args.slice(1).filter(a => !a.startsWith('--'));
+      const stratTargets = stratTickers.length > 0
+        ? stratCompanies.filter(c => stratTickers.includes(c.ticker))
+        : stratCompanies.slice(0, 5);
+
+      for (const target of stratTargets) {
+        const profile = cliStrategy.analyzeBasic(target);
+        console.log(`\n${'═'.repeat(50)}`);
+        console.log(`  ${target.ticker} - ${target.name}`);
+        console.log(`${'═'.repeat(50)}`);
+        console.log(`  战略评分: ${profile.strategic_score}/100 [${profile.strategic_zone}]`);
+        console.log('');
+
+        // 护城河
+        console.log('  护城河分析:');
+        console.log(`    宽度: ${profile.moat.width} | 趋势: ${profile.moat.trend} | 持续: ~${profile.moat.durability_years}年`);
+        console.log(`    综合: ${profile.moat.composite_score}/100 | 主导: ${profile.moat.dominant_moat}`);
+        for (const dim of profile.moat.dimensions.slice(0, 3)) {
+          const bar = '█'.repeat(Math.round(dim.score / 10));
+          console.log(`      ${dim.type.padEnd(20)} ${dim.score.toString().padStart(3)}/100 ${bar}`);
+        }
+        console.log('');
+
+        // Porter五力
+        console.log('  Porter五力 (1=低威胁, 5=高威胁):');
+        const p = profile.porter;
+        console.log(`    竞争对手: ${p.rivalry.score}/5 | 新进入者: ${p.new_entrants.score}/5 | 替代品: ${p.substitutes.score}/5`);
+        console.log(`    供应商力: ${p.supplier_power.score}/5 | 买家力: ${p.buyer_power.score}/5`);
+        console.log(`    行业吸引力: ${p.industry_attractiveness}/100`);
+        console.log('');
+
+        // 再投资护城河
+        console.log('  再投资护城河:');
+        const ri = profile.reinvestment;
+        console.log(`    ROIC: ${(ri.roic * 100).toFixed(1)}% | 再投资率: ${(ri.reinvestment_rate * 100).toFixed(0)}% | 有机增长: ${(ri.organic_growth * 100).toFixed(1)}%`);
+        console.log(`    增量ROIC: ${(ri.incremental_roic * 100).toFixed(1)}% | 跑道: ~${ri.runway_years}年 | 复利护城河: ${ri.moat_compounding ? '是' : '否'}`);
+        console.log('');
+
+        // 关键洞察
+        if (profile.key_insights.length > 0) {
+          console.log('  关键洞察:');
+          for (const insight of profile.key_insights) {
+            console.log(`    • ${insight}`);
+          }
+        }
+      }
+      break;
+    }
+
     default:
       console.log('用法: npx tsx src/index.ts <command>');
       console.log('');
@@ -430,6 +486,9 @@ async function main() {
       console.log('CFA估值模块:');
       console.log('  valuation [T..]  CFA L2 估值分析 (DCF+相对+质量)');
       console.log('  risk [T..]       CFA L3 组合风险 (Kelly+VaR+行业)');
+      console.log('');
+      console.log('战略分析模块:');
+      console.log('  strategy [T..]   战略分析 (护城河+五力+飞轮+BCG)');
       console.log('');
       console.log('选项:');
       console.log('  --skip-audit       跳过数据审计');
