@@ -601,19 +601,19 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     channels: ['online', 'direct'],
   },
   'ALK': {
-    demographics: { ageGroup: 'gen_x', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
     occasions: ['travel', 'vacation', 'business-travel', 'west-coast'],
     valueProps: ['reliability', 'loyalty', 'value', 'premium_economy'],
     channels: ['online', 'direct'],
   },
   'SAVE': {
-    demographics: { ageGroup: 'millennial', incomeLevel: 'value', gender: 'all' },
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
     occasions: ['travel', 'vacation', 'budget-travel', 'leisure'],
     valueProps: ['low_price', 'point-to-point', 'no-frills'],
     channels: ['online', 'direct'],
   },
   'ULCC': {
-    demographics: { ageGroup: 'millennial', incomeLevel: 'value', gender: 'all' },
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
     occasions: ['travel', 'vacation', 'budget-travel', 'leisure'],
     valueProps: ['low_price', 'frequency', 'no-frills'],
     channels: ['online', 'direct'],
@@ -621,19 +621,19 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
 
   // ========== 汽车OEM/经销商 - 补充 ==========
   'STLA': {
-    demographics: { ageGroup: 'gen_x', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
     occasions: ['commute', 'family', 'outdoor', 'work'],
     valueProps: ['brand_variety', 'SUV', 'truck', 'value'],
     channels: ['retail', 'direct'],
   },
   'TM': {
-    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
     occasions: ['commute', 'family', 'reliability', 'daily-use'],
     valueProps: ['reliability', 'resale_value', 'hybrid', 'efficiency'],
     channels: ['retail'],
   },
   'HMC': {
-    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
     occasions: ['commute', 'family', 'motorcycles', 'outdoor'],
     valueProps: ['reliability', 'value', 'efficiency', 'practicality'],
     channels: ['retail'],
@@ -651,7 +651,7 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     channels: ['direct', 'online'],
   },
   'XPEV': {
-    demographics: { ageGroup: 'millennial', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
     occasions: ['commute', 'tech', 'autonomous', 'daily-use'],
     valueProps: ['smart', 'autonomous', 'tech', 'value'],
     channels: ['direct', 'online'],
@@ -675,19 +675,19 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     channels: ['retail', 'online'],
   },
   'ABG': {
-    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
     occasions: ['vehicle-purchase', 'service', 'trade-in', 'financing'],
     valueProps: ['selection', 'value', 'service', 'one-stop'],
     channels: ['retail', 'online'],
   },
   'CAR': {
-    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
     occasions: ['travel', 'vacation', 'business-travel', 'temporary-transport'],
     valueProps: ['convenience', 'selection', 'price', 'flexibility'],
     channels: ['online', 'retail'],
   },
   'HTZ': {
-    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
     occasions: ['travel', 'vacation', 'business-travel', 'temporary-transport'],
     valueProps: ['convenience', 'brand', 'selection', 'loyalty'],
     channels: ['online', 'retail'],
@@ -695,19 +695,19 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
 
   // ========== 旅游/电商/零售 - 补充 ==========
   'TRIP': {
-    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
     occasions: ['travel', 'vacation', 'restaurants', 'research'],
     valueProps: ['reviews', 'price_comparison', 'user_content', 'planning'],
     channels: ['online'],
   },
   'MTH': {
-    demographics: { ageGroup: 'gen_x', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
     occasions: ['home-purchase', 'family', 'relocation', 'first-home'],
     valueProps: ['value', 'design', 'energy_efficiency', 'community'],
     channels: ['direct', 'online'],
   },
   'IHG': {
-    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
     occasions: ['travel', 'vacation', 'business-travel', 'family'],
     valueProps: ['brand_variety', 'loyalty', 'consistency', 'value'],
     channels: ['online', 'direct'],
@@ -725,19 +725,19 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     channels: ['online'],
   },
   'ETSY': {
-    demographics: { ageGroup: 'millennial', incomeLevel: 'middle', gender: 'female' },
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'female' },
     occasions: ['gifts', 'home-decor', 'handmade', 'personalized'],
     valueProps: ['unique', 'handmade', 'personalized', 'artisan'],
     channels: ['online'],
   },
   'TJX': {
-    demographics: { ageGroup: 'all', incomeLevel: 'middle', gender: 'female' },
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'female' },
     occasions: ['shopping', 'bargain', 'fashion', 'home-decor'],
     valueProps: ['value', 'brands', 'treasure_hunt', 'savings'],
     channels: ['retail'],
   },
   'ROST': {
-    demographics: { ageGroup: 'all', incomeLevel: 'value', gender: 'female' },
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'female' },
     occasions: ['shopping', 'bargain', 'fashion', 'basics'],
     valueProps: ['value', 'discount', 'brands', 'savings'],
     channels: ['retail'],
@@ -749,7 +749,7 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     channels: ['retail', 'direct'],
   },
   'LYFT': {
-    demographics: { ageGroup: 'millennial', incomeLevel: 'middle', gender: 'all' },
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
     occasions: ['commute', 'night-out', 'airport', 'convenience'],
     valueProps: ['convenience', 'price', 'safety', 'app'],
     channels: ['online'],

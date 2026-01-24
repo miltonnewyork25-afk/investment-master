@@ -253,7 +253,7 @@ export interface CustomerProfile {
   valueProps: string[]; // 如: 'premium', 'value', 'convenience', 'health'
 
   // 购买渠道
-  channels: ('online' | 'retail' | 'direct' | 'subscription')[];
+  channels: string[];
 }
 
 /** 经济周期位置 */
