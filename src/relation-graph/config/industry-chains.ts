@@ -1614,10 +1614,12 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     'Pharmacy Retail': [
       'Health Insurance',
+      'Pharma Distributor',   // 药品采购
     ],
 
     'Large MedTech': [
       'Hospital',
+      'Pharma Distributor',   // 分销渠道
     ],
 
     // 生命科学工具服务于制药/生物科技研发
@@ -1810,11 +1812,14 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Refining',
       'Semiconductor Foundry',
       'Big Pharma',
+      'Hospital',             // 医用氧气
+      'Water Utility',        // 水处理
     ],
 
-    // 涂料 - 服务建筑/汽车
+    // 涂料 - 服务建筑/汽车/航空
     'Coatings': [
       'Homebuilder',
+      'Traditional OEM',      // 汽车涂料
       'Auto Parts Tier1',
       'Aircraft OEM',
     ],
@@ -1824,6 +1829,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Packaged Foods',
       'Household Products',
       'Big Pharma',
+      'Coatings',             // 颜料/助剂
+      'EV OEM',               // 电池材料
     ],
 
     // 锂 - 服务电池/EV
@@ -1932,6 +1939,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Express Logistics',
       'E-commerce',
       'LTL Trucking',
+      'Warehouse Club',       // 仓储配送
     ],
 
     // 零售REIT - 服务零售商
@@ -1962,6 +1970,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Healthcare REIT': [
       'Hospital',
       'Big Pharma',
+      'Pharma Distributor',   // 配送中心
+      'Pharmacy Retail',      // 零售药房
     ],
 
     // 自存储 - 与搬迁/住房相关
@@ -2354,11 +2364,16 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // ========== 人力资源链 ==========
     'Staffing & Temp': [
       'Professional Services',
+      'E&C Contractor',       // 建筑劳务
+      'Enterprise SaaS',      // IT/技术人才
+      'Hospital',             // 护理人员
+      'Mass Retail',          // 季节性零售
     ],
 
     // ========== 教育链 ==========
     'EdTech': [
       'Education Services',
+      'Enterprise SaaS',      // 学习管理系统
     ],
 
     // ========== 贵金属链 ==========
@@ -2382,6 +2397,66 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     ],
     'Residential Real Estate Tech': [
       'Homebuilder',
+    ],
+
+    // ========== 消费金融/汽车金融链 ==========
+    'Consumer Finance': [
+      'Mass Retail',          // 消费信贷 → 零售消费
+      'Auto Dealer',          // 信用卡/分期
+      'E-commerce',           // 在线消费
+    ],
+
+    'Auto Finance': [
+      'Auto Dealer',          // 汽车贷款 → 经销商
+      'Traditional OEM',      // 产能消化/销量驱动
+    ],
+
+    // ========== 电商/外卖平台链 ==========
+    'E-commerce Marketplace': [
+      'Payment Processor',    // 交易处理
+      'Express Logistics',    // 物流配送
+      'Enterprise SaaS',      // 卖家工具
+    ],
+
+    'Food Delivery': [
+      'QSR',                  // 快餐客户
+      'Fast Casual',          // 餐饮客户
+      'Casual Dining',        // 正餐客户
+    ],
+
+    // ========== 媒体/广告补充 ==========
+    'Broadcast TV': [
+      'AdTech DSP',           // 广告库存
+      'AdTech Verification',  // 广告验证
+      'Streaming',            // 内容分发
+    ],
+
+    // ========== 旅游补充 ==========
+    'Travel Meta': [
+      'Hotel Chain',          // 酒店比价
+      'OTA',                  // 预订渠道
+      'Cruise Lines',         // 邮轮评价
+    ],
+
+    'Ride-hailing': [
+      'Car Rental',           // 竞争替代
+    ],
+
+    // ========== 零售/消费补充 ==========
+    'Electronics Retail': [
+      'Consumer Electronics', // 上游供应
+      'Payment Processor',    // 支付基础设施
+    ],
+
+    'Uniform & Workplace': [
+      'E&C Contractor',       // 建筑工装
+      'Hospital',             // 医疗制服
+      'Professional Services', // 企业客户
+    ],
+
+    // ========== 医疗采购链补充 ==========
+    'Hospital': [
+      'Pharma Distributor',   // 药品采购
     ],
   },
 };
