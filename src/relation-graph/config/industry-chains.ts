@@ -673,6 +673,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'GPI': 'Auto Dealer',                 // Group 1 Auto
     'SAH': 'Auto Dealer',                 // Sonic Automotive
     'ABG': 'Auto Dealer',                 // Asbury Automotive
+    'KMX': 'Auto Dealer',                 // CarMax - 二手车
     'CVNA': 'Auto Dealer',                // Carvana - 线上
 
     // ========== 医疗产业链细分 ==========

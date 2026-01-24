@@ -620,7 +620,21 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'F': 'early',       // Ford
   'GM': 'early',      // General Motors
   'TSLA': 'early',    // Tesla
+  'RIVN': 'early',    // Rivian
+  'LCID': 'early',    // Lucid
+  // 零部件 (Auto Parts OEM)
+  'APTV': 'early',    // Aptiv - 电气化
+  'BWA': 'early',     // BorgWarner - 电驱动
+  'LEA': 'early',     // Lear - 座椅/电子
+  'MGA': 'early',     // Magna - 综合Tier1
+  'ALV': 'mid',       // Autoliv - 安全件(相对稳定)
+  'GNTX': 'mid',      // Gentex - 后视镜(相对稳定)
+  // 经销商 (Dealers)
   'AN': 'early',      // AutoNation
+  'PAG': 'early',     // Penske Automotive
+  'LAD': 'early',     // Lithia Motors
+  'KMX': 'early',     // CarMax
+  'CVNA': 'early',    // Carvana
 
   // ---------- 餐饮 (Restaurants) ----------
   'MCD': 'early',     // McDonald's - 价值导向
@@ -1207,6 +1221,74 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'TSLA': {
     interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: -0.4,
+  },
+
+  // 汽车 - 传统OEM (利率负相关，消费信心正相关，油价负面)
+  'F': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: -0.3,
+  },
+  'GM': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: -0.3,
+  },
+
+  // 汽车 - EV纯电 (利率负相关更强，油价反向受益)
+  'RIVN': {
+    interestRate: -0.7, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.4,
+  },
+  'LCID': {
+    interestRate: -0.7, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.4,
+  },
+
+  // 汽车零部件 (与OEM同步，利率负相关)
+  'APTV': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: -0.2,
+  },
+  'BWA': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: -0.2,
+  },
+  'LEA': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'MGA': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: -0.4, oilPrice: -0.2,
+  },
+  'ALV': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'GNTX': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // 汽车经销商 (利率负相关 - 贷款购车，消费信心正相关)
+  'AN': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.8, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'PAG': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.8, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'LAD': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.8, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'KMX': {
+    interestRate: -0.7, inflation: -0.3, gdpGrowth: 0.7, unemployment: -0.5,
+    consumerConfidence: 0.8, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  'CVNA': {
+    interestRate: -0.7, inflation: -0.3, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: -0.1,
   },
 
   // ========== 油价高敏感 (正相关) ==========
