@@ -958,6 +958,10 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'FSLR': 'mid',       // First Solar
   'RUN': 'mid',        // Sunrun
   'AWK': 'defensive',  // American Water Works
+  // 废弃物处理 (Waste Management)
+  'WM': 'defensive',   // Waste Management
+  'RSG': 'defensive',  // Republic Services
+  'CLH': 'mid',        // Clean Harbors - 特殊废弃物(工业周期)
 
   // ========== 晚周期 (Late Cycle) ==========
   // 经济过热期受益、大宗商品
@@ -1768,6 +1772,37 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
     consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.2,
   },
+  'AEP': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'XEL': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'SEDG': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'RUN': {
+    interestRate: -0.6, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.6, dollarIndex: 0.0, oilPrice: 0.2,
+  },
+
+  // 废弃物处理 - 防御型，略受GDP影响
+  'WM': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'RSG': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'CLH': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+
   'AWK': {
     interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
     consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,

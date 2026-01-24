@@ -3980,6 +3980,33 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     tags: ['regulated', 'water', 'wastewater', 'acquisitions'],
   },
 
+  // ---------- 废弃物处理 (Waste Management) ----------
+  // 特点: 区域垄断、定价权、防御性
+  'WM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Waste Management',
+    tags: ['collection', 'landfill', 'recycling', 'renewable_energy'],
+  },
+  'RSG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Waste Management',
+    tags: ['collection', 'landfill', 'recycling', 'transfer'],
+  },
+  'CLH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Environmental Services',
+    tags: ['hazardous_waste', 'industrial', 'oil_re_refining', 'field_services'],
+  },
+
   // ========== 酒精饮料 (Alcoholic Beverages) ==========
   'STZ': {
     assetModel: 'asset_heavy',

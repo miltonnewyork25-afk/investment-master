@@ -1218,6 +1218,11 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'RUN': 'Solar Installer',              // Sunrun
     'AWK': 'Water Utility',                // American Water Works
 
+    // 废弃物处理 (Waste Management)
+    'WM': 'Waste Management',              // Waste Management
+    'RSG': 'Waste Management',             // Republic Services
+    'CLH': 'Environmental Services',       // Clean Harbors - 危废
+
     // ========== 电信/媒体/娱乐细分 ==========
     // 电信运营商 (Telecom Operators)
     'T': 'Wireless Carrier',              // AT&T
@@ -1905,6 +1910,17 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Water Utility': [
       'Homebuilder',
       'Residential REIT',
+    ],
+
+    // 废弃物处理 - 服务各行业
+    'Waste Management': [
+      'Homebuilder',
+      'E&C Contractor',
+    ],
+
+    'Environmental Services': [
+      'Shale E&P',           // 油田废弃物
+      'E&C Contractor',
     ],
 
     // ========== 电信/媒体产业链 ==========
