@@ -1173,6 +1173,307 @@ export const CROSS_MARKET_LINKS: Record<string, CrossMarketLink[]> = {
       revenueRelevance: 0.15,
     },
   ],
+
+  // =====================================================
+  // CRO/CDMO 医药外包 (IQV, CRL, WST, TMO)
+  // =====================================================
+
+  'IQV': [
+    {
+      foreignSymbol: '603259',
+      name: '药明康德',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['revenue_proxy', 'order_flow', 'market_share'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.15,
+      note: '全球CRO/CDMO业务直接竞争（新药研发外包）',
+    },
+    {
+      foreignSymbol: '02359',
+      name: '药明生物',
+      exchange: 'HK',
+      relation: 'competitor',
+      signals: ['order_flow', 'demand_proxy', 'market_share'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.1,
+      note: '大分子CDMO竞争',
+    },
+    {
+      foreignSymbol: '300759',
+      name: '康龙化成',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['order_flow', 'market_share'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: 'CRO早期研发竞争',
+    },
+  ],
+
+  'CRL': [
+    {
+      foreignSymbol: '603259',
+      name: '药明康德',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['order_flow', 'market_share'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.1,
+      note: '临床前CRO竞争',
+    },
+    {
+      foreignSymbol: '300759',
+      name: '康龙化成',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['order_flow', 'market_share'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+    },
+  ],
+
+  // =====================================================
+  // 钢铁/金属 (NUE, CLF, STLD, X)
+  // =====================================================
+
+  'NUE': [
+    {
+      foreignSymbol: '600019',
+      name: '宝钢股份',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['asp_trend', 'demand_proxy', 'inventory_cycle'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.1,
+      note: '全球钢铁价格基准（热轧/冷轧）',
+    },
+    {
+      foreignSymbol: '000898',
+      name: '鞍钢股份',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['asp_trend', 'demand_proxy'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+    },
+    {
+      foreignSymbol: '005490',
+      name: 'POSCO',
+      exchange: 'KS',
+      relation: 'competitor',
+      signals: ['asp_trend', 'inventory_cycle', 'market_share'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.1,
+      note: '亚洲高端钢材竞争',
+    },
+  ],
+
+  'AA': [
+    {
+      foreignSymbol: '601600',
+      name: '中国铝业',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['asp_trend', 'demand_proxy', 'cost_pressure'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.15,
+      note: '全球铝价由中国产能主导',
+    },
+    {
+      foreignSymbol: '600219',
+      name: '南山铝业',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['asp_trend', 'demand_proxy'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: '航空铝材竞争',
+    },
+  ],
+
+  // =====================================================
+  // 电信/5G (T, VZ, ERIC, NOK)
+  // =====================================================
+
+  'ERIC': [
+    {
+      foreignSymbol: '000063',
+      name: '中兴通讯',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['market_share', 'capex_signal', 'demand_proxy'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.1,
+      note: '5G基站/核心网全球竞争',
+    },
+    {
+      foreignSymbol: '600050',
+      name: '中国联通',
+      exchange: 'SH',
+      relation: 'customer',
+      signals: ['capex_signal', 'demand_proxy'],
+      strength: 'moderate',
+      timing: 'leading',
+      revenueRelevance: 0.05,
+      note: '中国5G建设Capex信号',
+    },
+  ],
+
+  // =====================================================
+  // 游戏 (EA, TTWO, RBLX)
+  // =====================================================
+
+  'EA': [
+    {
+      foreignSymbol: '00700',
+      name: '腾讯控股',
+      exchange: 'HK',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'market_share'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: '手游/PC游戏全球竞争',
+    },
+    {
+      foreignSymbol: '09999',
+      name: '网易',
+      exchange: 'HK',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'market_share'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.03,
+      note: '游戏出海竞争',
+    },
+  ],
+
+  // =====================================================
+  // 白酒/饮料 (对比消费信号)
+  // =====================================================
+
+  'DEO': [
+    {
+      foreignSymbol: '600519',
+      name: '贵州茅台',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'asp_trend'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: '高端酒类中国消费信号(财富效应)',
+    },
+    {
+      foreignSymbol: '000858',
+      name: '五粮液',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['demand_proxy', 'asp_trend'],
+      strength: 'weak',
+      timing: 'coincident',
+      revenueRelevance: 0.03,
+    },
+  ],
+
+  // =====================================================
+  // 光学/精密仪器 (COHR, II-VI)
+  // =====================================================
+
+  'COHR': [
+    {
+      foreignSymbol: '002281',
+      name: '光迅科技',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['market_share', 'tech_adoption'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: '光通信器件竞争',
+    },
+    {
+      foreignSymbol: '300308',
+      name: '中际旭创',
+      exchange: 'SZ',
+      relation: 'competitor',
+      signals: ['order_flow', 'market_share', 'demand_proxy'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.1,
+      note: '800G光模块直接竞争（AI数据中心）',
+    },
+  ],
+
+  // =====================================================
+  // 风电 (GEV, VWDRY)
+  // =====================================================
+
+  'GEV': [
+    {
+      foreignSymbol: '601899',
+      name: '金风科技', // 紫金矿业 → 金风科技 is 002202
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['market_share', 'demand_proxy', 'order_flow'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: '海上/陆上风电整机竞争',
+    },
+    {
+      foreignSymbol: '601016',
+      name: '节能风电',
+      exchange: 'SH',
+      relation: 'customer',
+      signals: ['demand_proxy', 'capex_signal'],
+      strength: 'weak',
+      timing: 'coincident',
+      revenueRelevance: 0.02,
+      note: '中国风电运营商装机需求',
+    },
+  ],
+
+  // =====================================================
+  // 铜矿 (FCX, SCCO)
+  // =====================================================
+
+  'FCX': [
+    {
+      foreignSymbol: '601899',
+      name: '紫金矿业',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['asp_trend', 'market_share', 'cost_pressure'],
+      strength: 'strong',
+      timing: 'coincident',
+      revenueRelevance: 0.1,
+      note: '全球铜/金矿竞争（紫金铜产量快速增长）',
+    },
+    {
+      foreignSymbol: '603993',
+      name: '洛阳钼业',
+      exchange: 'SH',
+      relation: 'competitor',
+      signals: ['asp_trend', 'market_share'],
+      strength: 'moderate',
+      timing: 'coincident',
+      revenueRelevance: 0.05,
+      note: '铜/钴矿竞争',
+    },
+  ],
 };
 
 // ============ 行业级别映射 ============
@@ -1426,6 +1727,130 @@ export const INDUSTRY_CROSS_MARKET: Record<string, IndustryCrossMarketMap> = {
       },
     ],
   },
+
+  'pharma_cro_cdmo': {
+    description: '医药CRO/CDMO - 中国外包产能是全球新药研发的领先信号',
+    keyMetrics: [
+      '药明康德季度订单增速(backlog)',
+      '中国IND/NDA申报数量(CDE)',
+      '创新药License-out交易金额',
+      'Biotech一级市场融资额',
+    ],
+    usStocks: ['IQV', 'CRL', 'TMO', 'DHR', 'A', 'WST'],
+    links: [
+      {
+        foreignSymbol: '603259', name: '药明康德', exchange: 'SH',
+        relation: 'competitor', signals: ['order_flow', 'revenue_proxy', 'market_share'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.15,
+      },
+      {
+        foreignSymbol: '02359', name: '药明生物', exchange: 'HK',
+        relation: 'competitor', signals: ['order_flow', 'demand_proxy'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.1,
+        note: '大分子CDMO',
+      },
+      {
+        foreignSymbol: '300759', name: '康龙化成', exchange: 'SZ',
+        relation: 'competitor', signals: ['order_flow'],
+        strength: 'moderate', timing: 'coincident', revenueRelevance: 0.05,
+      },
+      {
+        foreignSymbol: '688202', name: '美迪西', exchange: 'SH',
+        relation: 'competitor', signals: ['order_flow'],
+        strength: 'weak', timing: 'lagging', revenueRelevance: 0.02,
+        note: '临床前CRO',
+      },
+    ],
+  },
+
+  'steel_metals': {
+    description: '钢铁/有色金属 - 中国占全球产量50%+，定价权在中国',
+    keyMetrics: [
+      '中国粗钢月产量(统计局)',
+      '螺纹钢/热轧现货价(Mysteel)',
+      '钢材社会库存(每周)',
+      '高炉开工率',
+      'LME铜铝锌价格',
+    ],
+    usStocks: ['NUE', 'CLF', 'STLD', 'X', 'AA', 'FCX', 'SCCO'],
+    links: [
+      {
+        foreignSymbol: '600019', name: '宝钢股份', exchange: 'SH',
+        relation: 'competitor', signals: ['asp_trend', 'demand_proxy', 'inventory_cycle'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.1,
+      },
+      {
+        foreignSymbol: '601600', name: '中国铝业', exchange: 'SH',
+        relation: 'competitor', signals: ['asp_trend', 'cost_pressure'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.1,
+      },
+      {
+        foreignSymbol: '601899', name: '紫金矿业', exchange: 'SH',
+        relation: 'competitor', signals: ['asp_trend', 'market_share'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.1,
+        note: '铜/金/锌多金属矿',
+      },
+    ],
+  },
+
+  'optical_modules': {
+    description: '光模块/光通信 - AI数据中心400G/800G需求关键信号',
+    keyMetrics: [
+      '中际旭创/新易盛月度出货量',
+      '800G光模块ASP趋势',
+      '数据中心交换机出货(Dell/HPE)',
+      'AI服务器GPU配套光模块需求',
+    ],
+    usStocks: ['COHR', 'LITE', 'VIAV'],
+    links: [
+      {
+        foreignSymbol: '300308', name: '中际旭创', exchange: 'SZ',
+        relation: 'competitor', signals: ['order_flow', 'asp_trend', 'market_share'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.15,
+        note: '800G光模块全球Top3',
+      },
+      {
+        foreignSymbol: '300502', name: '新易盛', exchange: 'SZ',
+        relation: 'competitor', signals: ['order_flow', 'market_share'],
+        strength: 'moderate', timing: 'coincident', revenueRelevance: 0.05,
+        note: '400G/800G光模块',
+      },
+      {
+        foreignSymbol: '002281', name: '光迅科技', exchange: 'SZ',
+        relation: 'competitor', signals: ['market_share', 'tech_adoption'],
+        strength: 'moderate', timing: 'coincident', revenueRelevance: 0.03,
+      },
+    ],
+  },
+
+  'copper_mining': {
+    description: '铜矿 - 电气化/AI基建的核心金属，中国消费占全球55%',
+    keyMetrics: [
+      'LME/SHFE铜价',
+      '中国铜精矿TC/RC(加工费→供需)',
+      '中国电网投资额(月度)',
+      '铜杆线开工率',
+    ],
+    usStocks: ['FCX', 'SCCO', 'TECK', 'HBM'],
+    links: [
+      {
+        foreignSymbol: '601899', name: '紫金矿业', exchange: 'SH',
+        relation: 'competitor', signals: ['asp_trend', 'cost_pressure', 'market_share'],
+        strength: 'strong', timing: 'coincident', revenueRelevance: 0.1,
+      },
+      {
+        foreignSymbol: '603993', name: '洛阳钼业', exchange: 'SH',
+        relation: 'competitor', signals: ['asp_trend'],
+        strength: 'moderate', timing: 'coincident', revenueRelevance: 0.05,
+      },
+      {
+        foreignSymbol: '000630', name: '铜陵有色', exchange: 'SZ',
+        relation: 'competitor', signals: ['demand_proxy'],
+        strength: 'weak', timing: 'coincident', revenueRelevance: 0.02,
+        note: '中国铜冶炼加工信号',
+      },
+    ],
+  },
 };
 
 // ============ 监控日历 ============
@@ -1511,5 +1936,59 @@ export const MONITORING_CALENDAR: Record<string, {
     source: '百川盈孚/亚洲金属网',
     description: '稀土氧化物价格(镨钕/镝铽)',
     relevantUSStocks: ['MP'],
+  },
+  'china_steel_inventory': {
+    frequency: 'weekly',
+    source: 'Mysteel/兰格钢铁',
+    description: '中国钢材社会库存(螺纹/热轧/冷轧)',
+    relevantUSStocks: ['NUE', 'CLF', 'STLD', 'X'],
+  },
+  'lme_copper_price': {
+    frequency: 'weekly',
+    source: 'LME/SHFE',
+    description: '伦铜/沪铜价格及库存',
+    relevantUSStocks: ['FCX', 'SCCO', 'TECK'],
+  },
+  'wuxi_apptec_orders': {
+    frequency: 'quarterly',
+    source: '药明康德季度业绩',
+    description: '药明康德新签订单/backlog（全球新药研发需求代理）',
+    relevantUSStocks: ['IQV', 'CRL', 'TMO', 'DHR'],
+  },
+  'china_optical_module': {
+    frequency: 'monthly',
+    source: '中际旭创/新易盛月报',
+    description: '中国光模块出货量及ASP（AI服务器需求代理）',
+    relevantUSStocks: ['COHR', 'LITE', 'NVDA', 'AVGO'],
+  },
+  'china_auto_monthly': {
+    frequency: 'monthly',
+    source: '中汽协',
+    description: '中国汽车月度产销量(含合资品牌)',
+    relevantUSStocks: ['GM', 'F', 'TSLA', 'NIO'],
+  },
+  'china_retail_sales': {
+    frequency: 'monthly',
+    source: '国家统计局',
+    description: '中国社会消费品零售总额(每月15日)',
+    relevantUSStocks: ['NKE', 'SBUX', 'EL', 'AAPL', 'LULU'],
+  },
+  'china_property_sales': {
+    frequency: 'monthly',
+    source: '国家统计局/克而瑞',
+    description: '中国商品房销售面积及金额',
+    relevantUSStocks: ['CAT', 'DE', 'SHW', 'NUE', 'WHR'],
+  },
+  'bdi_index': {
+    frequency: 'weekly',
+    source: '波罗的海交易所',
+    description: '波罗的海干散货指数(全球大宗贸易晴雨表)',
+    relevantUSStocks: ['SBLK', 'GNK', 'GOGL', 'NUE', 'FCX'],
+  },
+  'china_5g_base_stations': {
+    frequency: 'monthly',
+    source: '工信部',
+    description: '中国5G基站新建数量(月度累计)',
+    relevantUSStocks: ['ERIC', 'NOK', 'CSCO', 'QCOM'],
   },
 };
