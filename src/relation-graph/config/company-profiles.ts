@@ -3992,6 +3992,24 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['trusted_brand', 'results', 'ease_of_use'],
     channels: ['home_center', 'garden_store', 'online'],
   },
+  'PSFE': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['online_payment', 'gaming_deposit', 'digital_wallet'],
+    valueProps: ['security', 'convenience', 'global_reach'],
+    channels: ['online', 'app', 'integrated'],
+  },
+  'PAGS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['payment', 'business_transaction', 'e_commerce'],
+    valueProps: ['simplicity', 'speed', 'integration'],
+    channels: ['app', 'online', 'POS'],
+  },
+  'BODY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['fitness', 'weight_loss', 'wellness'],
+    valueProps: ['convenience', 'community', 'programs'],
+    channels: ['app', 'streaming', 'online'],
+  },
 };
 
 // ============================================================
@@ -12459,6 +12477,69 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'BODY': {
     interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.2,
     consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // ========== Diversified Industrial/Infrastructure ==========
+  // Roper Technologies - 多元化工业软件(防御/低敏感)
+  'ROPER': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // Zurn Elkay Water - 水管理/基建
+  'ZWS': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // ========== Healthcare/Biotech (Specialty) ==========
+  // Iovance - 细胞治疗(低宏观敏感)
+  'IOVA': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // Cytokinetics - 心脏药物(低宏观敏感)
+  'CYTK': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // Disc Medicine - 血液学(低宏观敏感)
+  'IRON': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // Verona Pharma - 呼吸系统(低宏观敏感)
+  'VRNA': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // ========== AI/Voice Technology ==========
+  // SoundHound AI - 语音AI平台
+  'SOUN': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // BigBear.ai - AI决策分析/国防
+  'BBAI': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+
+  // ========== Energy Services ==========
+  // Core Labs - 油藏描述/生产增强
+  'CLB': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.7,
+  },
+  // Archrock - 天然气压缩服务
+  'AROC': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.6,
+  },
+  // USA Compression - 天然气采集压缩
+  'USAC': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.6,
   },
 };
 
