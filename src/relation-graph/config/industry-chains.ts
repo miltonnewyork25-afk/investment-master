@@ -4732,6 +4732,169 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'HCKT': 'IT Consulting & Benchmarking',                                               // Hackett Group - IT咨询/基准测试
     'HDSN': 'Refrigerant Distribution',                                                   // Hudson Technologies - 制冷剂分销
     'HGBL': 'Asset Liquidation & Auction',                                                // Heritage Global - 资产清算/拍卖
+    // ========== 51 NEW STOCKS ==========
+    'TORC': 'Robotics & Autonomous Systems',                                              // Torc Robotics - 机器人/自动驾驶
+    'TPB': 'Tobacco Alternatives',                                                        // Turning Point Brands - 烟草替代品
+    'TPIC': 'Wind Turbine Components',                                                    // TPI Composites - 风力涡轮叶片
+    'TRDA': 'Trade Compliance Software',                                                  // Trada - 贸易合规
+    'TRHC': 'Medication Management',                                                      // Tabula Rasa Healthcare - 药物管理
+    'TRMR': 'Programmatic Advertising',                                                   // Tremor International - 程序化广告
+    'TRUE': 'Automotive Marketplace',                                                     // TrueCar - 汽车交易平台
+    'TRVG': 'Travel Metasearch',                                                          // Trivago - 旅游比价
+    'TRVN': 'Pain Management Biotech',                                                    // Trevena - 疼痛管理生物科技
+    'TSAT': 'Satellite Communications',                                                   // Telesat - 卫星通信
+    'TSEM': 'Analog Semiconductor Foundry',                                               // Tower Semiconductor - 模拟半导体代工
+    'TTCF': 'Plant-Based Frozen Foods',                                                   // Tattooed Chef - 植物基冷冻食品
+    'TWFG': 'Insurance Distribution',                                                     // TWFG Inc - 保险分销
+    'TZOO': 'Travel Deals Platform',                                                      // Travelzoo - 旅游优惠平台
+    'UCBI': 'Community Banking (Southeast)',                                               // United Community Banks - 社区银行(东南)
+    'UGP': 'Fuel & Ethanol Distribution',                                                 // Ultrapar - 燃料/乙醇分销
+    'ULH': 'Trucking & Intermodal Logistics',                                             // Universal Logistics - 卡车/多式联运
+    'UNVR': 'Chemical Distribution',                                                      // Univar - 化学品分销
+    'USHP': 'Healthcare Staffing',                                                        // US Physical Therapy - 医疗人员配置
+    'UVSP': 'Community Banking (PA)',                                                      // Univest Financial - 社区银行(宾州)
+    'VEL': 'Non-QM Mortgage Lending',                                                     // Velocity Financial - 非QM抵押贷款
+    'VGFC': 'Plant-Based Foods',                                                          // Very Good Food - 植物基食品
+    'VIRI': 'Antiviral Therapeutics',                                                     // Virios Therapeutics - 抗病毒疗法
+    'VLDR': 'LiDAR Sensors & Mapping',                                                    // Velodyne Lidar - 激光雷达传感器
+    'VNTR': 'Industrial Biotechnology',                                                   // Inventure - 工业生物科技
+    'VOCL': 'Voice AI & Communication',                                                   // Vocalocity - 语音AI/通信
+    'VOR': 'Cell Therapy & Gene Editing',                                                  // Vor Biopharma - 细胞疗法/基因编辑
+    'VPG': 'Precision Sensors & Weighing',                                                 // Vishay Precision - 精密传感器/称重
+    'VREX': 'Precast Concrete Products',                                                  // Varex - 预制混凝土
+    'VVX': 'Specialty Chemicals & Laminates',                                              // V2X - 特种化学品/层压板
+    'VXRT': 'Oral Vaccine Development',                                                   // Vaxart - 口服疫苗开发
+    'WABC': 'Community Banking (CA)',                                                      // Westamerica Bancorp - 社区银行(加州)
+    'WATT': 'Wireless Charging Technology',                                                // Energous - 无线充电技术
+    'WISA': 'Wireless Audio Technology',                                                  // WiSA Technologies - 无线音频技术
+    'WKHS': 'Electric Delivery Vehicles',                                                 // Workhorse Group - 电动运输车
+    'WMK': 'Regional Grocery Retail',                                                     // Weis Markets - 区域超市零售
+    'WTBA': 'Community Banking (WA)',                                                      // West Bancorporation - 社区银行(华盛顿)
+    'WVE': 'RNA Therapeutics',                                                            // Wave Life Sciences - RNA疗法
+    'XAIR': 'Nitric Oxide Therapeutics',                                                  // Beyond Air - 一氧化氮疗法
+    'XBIT': 'Gene Therapy Biotech',                                                       // XBiotech - 基因疗法
+    'XELA': 'Business Process Automation',                                                // Exela Technologies - 业务流程自动化
+    'XENT': 'ENT Medical Devices',                                                        // Intersect ENT - 耳鼻喉医疗器械
+    'XFOR': 'Radiopharmaceutical Oncology',                                               // X4 Pharmaceuticals - 放射性药物肿瘤
+    'XGN': 'Cloud Analytics Software',                                                    // Exagen - 云分析软件
+    'XMTR': 'Experience Management SaaS',                                                 // Xometry - 体验管理SaaS
+    'XOMA': 'Biotech Royalty Portfolio',                                                  // XOMA Corp - 生物科技版税组合
+    'XPER': 'Digital Media IP & Licensing',                                                // Xperi - 数字媒体IP/授权
+    'XTLB': 'Immunology Biotech',                                                        // XTL Biopharma - 免疫学生物科技
+    'YGTY': 'Digital Identity Verification',                                              // Yield10 - 数字身份验证
+    'YTEN': 'Specialty Steel & Alloys',                                                   // Yield10 - 特种钢/合金
+    'RSVR': 'Oil & Gas Technology (SaaS)',                                                 // Reservoir Media - 油气科技(SaaS)
+    'RTLR': 'E-commerce Retail',                                                          // Rattler Midstream - 电商零售
+    'RUHN': 'Influencer Marketing (China)',                                                // Ruhnn Holding - 网红营销(中国)
+    'RZLT': 'Clinical-Stage Biotech (Rare Disease)',                                       // Rezolute - 临床阶段生物科技(罕见病)
+    'SAND': 'Gold Royalties & Streaming',                                                  // Sandstorm Gold - 黄金版税/流
+    'SBFM': 'Clinical-Stage Biotech (Anti-Infective)',                                     // Sunshine Biopharma - 临床阶段生物科技(抗感染)
+    'SBNY': 'Commercial Banking (Crypto/Fintech)',                                         // Signature Bank - 商业银行(加密/金融科技)
+    'SBTX': 'Clinical-Stage Biotech (Oncology)',                                           // Silverback Therapeutics - 临床阶段生物科技(肿瘤)
+    'SCPH': 'Specialty Pharma (Acute Care)',                                               // scPharmaceuticals - 特种制药(急性护理)
+    'SEER': 'Proteomics & Spatial Biology Tools',                                          // Seer - 蛋白组学/空间生物学工具
+    'SELB': 'Clinical-Stage Biotech (RNA)',                                                // Selecta Biosciences - 临床阶段生物科技(RNA)
+    'SFIX': 'Personalized Apparel (AI Styling)',                                           // Stitch Fix - 个性化服装(AI造型)
+    'SFRG': 'Specialty Food Retail (Franchise)',                                           // Seva Food Group - 特色食品零售(加盟)
+    'SGML': 'Lithium Mining (Battery Materials)',                                          // Sigma Lithium - 锂矿开采(电池材料)
+    'SHBI': 'Community Banking (VA)',                                                      // Shore Bankshares - 社区银行(弗吉尼亚)
+    'SIGA': 'Biodefense Pharma (Smallpox)',                                                // SIGA Technologies - 生物防御制药(天花)
+    'SILO': 'Farmland REIT',                                                              // Farmland Partners - 农地REIT
+    'SIM': 'IT Staffing & Consulting',                                                     // Grupo Simec - IT人才派遣/咨询
+    'SIVB': 'Innovation Banking (VC/PE)',                                                  // Silicon Valley Bank - 创新银行(VC/PE)
+    'SKIL': 'Workforce Training (Tech)',                                                   // Skillful Craftsmen - 劳动力培训(科技)
+    'SKLZ': 'Mobile Gaming Platform',                                                     // Skillz - 移动游戏平台
+    'SMBC': 'Community Banking (MO)',                                                      // Southern Missouri Bancorp - 社区银行(密苏里)
+    'SMLR': 'Medical Devices (Diabetes Monitoring)',                                       // Semler Scientific - 医疗器械(糖尿病监测)
+    'SONN': 'Clinical-Stage Biotech (Neurology)',                                          // Sonnet BioTherapeutics - 临床阶段生物科技(神经)
+    'SPHR': 'Entertainment Venues & Hospitality',                                          // Sphere Entertainment - 娱乐场馆/接待
+    'SPOK': 'Healthcare Communications (Paging)',                                          // Spok Holdings - 医疗通讯(寻呼)
+    'SPRO': 'Sales Enablement SaaS',                                                      // Seapro - 销售赋能SaaS
+    'SPT': 'Loyalty & Engagement SaaS',                                                    // Sprout Social - 忠诚度/互动SaaS
+    'SPWH': 'Outdoor & Sporting Goods Retail',                                             // Sportsman's Warehouse - 户外/运动用品零售
+    'SQNS': 'IoT Semiconductors (5G/LTE)',                                                 // Sequans Communications - IoT半导体(5G/LTE)
+    'SRCE': 'Community Banking (IN)',                                                      // 1st Source Corp - 社区银行(印第安纳)
+    'SRDX': 'Medical Devices (Vascular Coatings)',                                         // Surmodics - 医疗器械(血管涂层)
+    'STBA': 'Community Banking (PA)',                                                      // S&T Bancorp - 社区银行(宾夕法尼亚)
+    'STRO': 'Clinical-Stage Biotech (Immuno-Oncology)',                                    // Sutro Biopharma - 临床阶段生物科技(免疫肿瘤)
+    'STRS': 'Building Materials & Real Estate (TX)',                                       // Stratus Properties - 建材/地产(德州)
+    'STTK': 'Synthetic Biology & Genomics Tools',                                          // Shattuck Labs - 合成生物/基因组学工具
+    'SUNW': 'Residential Solar Installation',                                              // Sunrun - 住宅太阳能安装
+    'SVA': 'Vaccine Manufacturing (China)',                                                 // Sinovac Biotech - 疫苗制造(中国)
+    'SVRA': 'Clinical-Stage Biotech (Hematology)',                                         // Savara - 临床阶段生物科技(血液学)
+    'SWBI': 'Firearms Manufacturing',                                                     // Smith & Wesson - 枪械制造
+    'SWCH': 'Data Center (Colocation)',                                                    // Switch - 数据中心(托管)
+    'SXTC': 'Specialty Chemicals (China)',                                                 // China SXT Pharmaceuticals - 特种化工(中国)
+    'SYBT': 'Community Banking (KY)',                                                      // Stock Yards Bancorp - 社区银行(肯塔基)
+    'SYNL': 'Specialty Manufacturing (Metal Fabrication)',                                  // Synalloy - 特种制造(金属加工)
+    'TCBK': 'Community Banking (CA)',                                                      // TriCo Bankshares - 社区银行(加州)
+    'TDUP': 'Resale Marketplace (Thrift)',                                                 // ThredUp - 二手转售平台
+    'TELA': 'Medical Devices (Surgical/Hernia)',                                           // TELA Bio - 医疗器械(外科/疝气)
+    'TFFP': 'Specialty Pharma (Women\'s Health)',                                           // TFF Pharmaceuticals - 特种制药(女性健康)
+    'TFSL': 'Savings & Loan (OH)',                                                         // TFS Financial - 储蓄贷款(俄亥俄)
+    'TIPT': 'Diversified REIT (Office/Hotel)',                                             // Tiptree - 多元化REIT(办公/酒店)
+    'TIRX': 'Clinical-Stage Biotech (Respiratory)',                                        // TIAN Ruixiang - 临床阶段生物科技(呼吸)
+    'TLMD': 'Telehealth Platform (Latin America)',                                         // SOC Telemed - 远程医疗平台(拉美)
+    'TLS': 'Precision Medicine & Genomics Tools',                                          // Telos Corp - 精准医学/基因组学工具
+    'TLSA': 'Gold Mining (Peru)',                                                          // Tinka Resources - 金矿开采(秘鲁)
+    'TNXP': 'Clinical-Stage Biotech (CNS)',                                                // Tonix Pharmaceuticals - 临床阶段生物科技(CNS)
+
+    // ========== Batch: 55 Confirmed-Missing US Stocks subIndustryOverrides (Set K) ==========
+    'MSGM': 'Motorsport Entertainment',                                                    // Motorsport Games - 赛车娱乐
+    'MTEX': 'Specialty Textiles',                                                          // Manheim Textile - 特种纺织
+    'MVBF': 'Community Banking (WV)',                                                      // MVB Financial - 社区银行(西弗吉尼亚)
+    'MVIS': 'Lidar & AR Display Technology',                                               // MicroVision - 激光雷达/AR显示
+    'NBHC': 'Community Banking (CO)',                                                      // National Bank Holdings - 社区银行(科罗拉多)
+    'NCBS': 'Community Banking (OH)',                                                      // Nicolet Bankshares - 社区银行(俄亥俄)
+    'NCTY': 'Online Gaming (China)',                                                       // The9 Limited - 中国在线游戏
+    'NEOS': 'Specialty Pharma (CNS)',                                                      // Neos Therapeutics - 特种制药(CNS)
+    'NERV': 'CNS Biotech',                                                                 // Minerva Neurosciences - CNS生物科技
+    'NEWT': 'BDC / Fintech Lending',                                                       // Newtek Business Services - BDC/金融科技
+    'NGMS': 'Defense IT & Analytics',                                                      // NightDragon - 国防IT/分析
+    'NGVC': 'Natural & Organic Grocery',                                                   // Natural Grocers - 有机杂货零售
+    'NHTC': 'Health & Wellness Direct Sales',                                              // Natural Health Trends - 健康直销
+    'NINE': 'Oilfield Completion Services',                                                // Nine Energy Service - 油田完井服务
+    'NMFC': 'Middle Market BDC',                                                           // New Mountain Finance - 中端市场BDC
+    'NNOX': 'Digital Medical Imaging',                                                     // Nano-X Imaging - 数字医学影像
+    'NPTN': 'Optical Components (Photonics)',                                              // NeoPhotonics - 光学组件(光子学)
+    'NR': 'Drilling Fluids & Industrial Mats',                                             // Newpark Resources - 钻井液/工业垫
+    'NTCT': 'Network Test & Visibility',                                                   // NetScout Systems - 网络测试/可视化
+    'NTST': 'Net Lease REIT',                                                              // NetSTREIT - 净租赁REIT
+    'NUAN': 'Conversational AI & NLP',                                                     // Nuance Communications - 对话式AI/NLP
+    'NURO': 'Neurology Biotech',                                                           // NeuroMetrix - 神经学生物科技
+    'NVEC': 'Spintronic Sensors & Components',                                             // NVE Corporation - 自旋电子传感器/组件
+    'NWBI': 'Community Banking (PA)',                                                      // Northwest Bancshares - 社区银行(宾夕法尼亚)
+    'OCFC': 'Community Banking (NJ)',                                                      // OceanFirst Financial - 社区银行(新泽西)
+    'OCFT': 'Digital Freight Platform',                                                    // OneConnect Financial - 数字货运平台
+    'OEC': 'Specialty Chemicals (Polymer)',                                                 // Orion Engineered Carbons - 特种化学品(聚合物)
+    'OMER': 'Specialty Pharma (Complement)',                                                // Omeros Corporation - 特种制药(补体)
+    'OMIC': 'Genomics & Transcriptomics',                                                  // Singular Genomics - 基因组学/转录组学
+    'ONEW': 'Marine Retail & Dealer',                                                      // OneWater Marine - 船舶零售/经销
+    'OPRT': 'Consumer Finance (AI)',                                                        // OppFi/Oportun - AI消费金融
+    'ORGO': 'Regenerative Medicine (Wound)',                                                // Organogenesis - 再生医学(创面)
+    'ORLA': 'Gold Mining (Oxide/Heap Leach)',                                               // Orla Mining - 金矿(氧化物/堆浸)
+    'OSBC': 'Community Banking (IL)',                                                      // Old Second Bancorp - 社区银行(伊利诺伊)
+    'PBCT': 'Regional Banking (New England)',                                               // People's United Financial - 地区银行(新英格兰)
+    'PBH': 'OTC Consumer Healthcare',                                                      // Prestige Consumer Healthcare - OTC消费保健
+    'PDFS': 'Semiconductor Yield Analytics',                                                // PDF Solutions - 半导体良率分析
+    'PFIS': 'Community Banking (PA)',                                                      // Peoples Financial Services - 社区银行(宾州)
+    'PFS': 'Community Banking (NJ)',                                                       // Provident Financial Services - 社区银行(新泽西)
+    'PHAT': 'Specialty Health Food',                                                        // Phathom Pharmaceuticals - 特色健康食品
+    'PKOH': 'Industrial Material Handling',                                                 // Park-Ohio Holdings - 工业物料搬运
+    'PMD': 'Medical Diagnostics (Biomarker)',                                               // Psychemedics - 医学诊断(生物标志物)
+    'PNRG': 'Oil & Gas E&P',                                                               // PrimeEnergy - 油气E&P
+    'PRAH': 'Contract Research Organization',                                               // PRA Health Sciences - CRO
+    'PRKS': 'Community Banking & Insurance',                                                // United Fire Group - 社区银行/保险
+    'PRTK': 'Specialty Pharma (GI/Oral)',                                                   // Paratek Pharmaceuticals - 特种制药(胃肠/口服)
+    'QLGN': 'Oncology Cell Therapy',                                                       // Qualigen Therapeutics - 肿瘤细胞治疗
+    'RBNC': 'Community Banking',                                                           // Reliant Bancorp - 社区银行
+    'RCII': 'Rent-to-Own Retail',                                                          // Rent-A-Center - 租赁零售
+    'RDUS': 'Hospital Injectable Pharma',                                                   // Radius Health - 医院注射制药
+    'RERE': 'Recommerce Platform (China)',                                                  // ATRenew - 再商务平台(中国)
+    'RIVE': 'Community Banking',                                                           // Riverview Bancorp - 社区银行
+    'RNAC': 'RNA Therapeutics',                                                             // Cartesian Therapeutics - RNA疗法
+    'RNLX': 'Kidney AI Diagnostics',                                                       // Renalytix - 肾脏AI诊断
+    'RRBI': 'Community Banking (Agriculture)',                                              // Red River Bankshares - 社区银行(农业)
   },
 
   // ============================================================
