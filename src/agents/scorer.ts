@@ -16,14 +16,24 @@ import type {
 } from '../types/index.js';
 import { getScoringConfig, getPsychologyConfig } from '../config/index.js';
 import type { PsychologyConfig } from '../config/index.js';
+import type { CPTIndex } from './sentiment-fetcher.js';
 
 class Scorer {
   private config: ScoringConfig;
   private psychConfig: PsychologyConfig;
+  private marketCPT: CPTIndex | null = null;
 
   constructor() {
     this.config = getScoringConfig();
     this.psychConfig = getPsychologyConfig();
+  }
+
+  /**
+   * 注入市场CPT指数(由sentiment-fetcher提供)
+   * 若设置了CPT，心理学修正将使用真实市场情绪数据
+   */
+  setMarketCPT(cpt: CPTIndex): void {
+    this.marketCPT = cpt;
   }
 
   /**
@@ -80,34 +90,58 @@ class Scorer {
     const cycleAdj = this.psychConfig.cycle_adjustments[cycleStage];
 
     // --- 2. 逆向信号调整 ---
-    // 简化版: 当估值极端时视为群体极端的代理指标
+    // 优先使用外部CPT信号(来自sentiment-fetcher)，fallback到PE/Growth启发式
     let contrarianAdj = 0;
     let crowdSignal: PsychologyAdjustment['crowd_signal'] = 'neutral';
 
     const pe = company.pe_ttm;
     const growth = company.revenue_growth_yoy;
 
-    // 极度恐惧信号: 亏损(PE<0) + 收入大幅下滑 → 群体可能过度恐慌
-    if (pe !== undefined && pe < 0 && growth !== undefined && growth < -0.2) {
-      contrarianAdj = this.psychConfig.contrarian.bonus;
-      crowdSignal = 'extreme_fear';
-    }
-    // 恐惧信号: 低PE + 负增长
-    else if (pe !== undefined && pe < this.config.thresholds.pe_undervalued
-      && growth !== undefined && growth < -0.1) {
-      contrarianAdj = Math.round(this.psychConfig.contrarian.bonus * 0.5);
-      crowdSignal = 'fear';
-    }
-    // 极度贪婪信号: 极高PE + 强增长 → 群体可能过度乐观
-    else if (pe !== undefined && pe > 50 && growth !== undefined && growth > 0.3) {
-      contrarianAdj = this.psychConfig.contrarian.penalty;
-      crowdSignal = 'extreme_greed';
-    }
-    // 贪婪信号: 高PE + 正增长
-    else if (pe !== undefined && pe > this.psychConfig.loss_aversion.hold_threshold
-      && growth !== undefined && growth > 0.15) {
-      contrarianAdj = Math.round(this.psychConfig.contrarian.penalty * 0.5);
-      crowdSignal = 'greed';
+    if (this.marketCPT && this.marketCPT.data_quality !== 'fallback') {
+      // === 使用真实市场情绪数据 ===
+      crowdSignal = this.marketCPT.signal;
+      if (crowdSignal === 'extreme_fear') {
+        contrarianAdj = this.psychConfig.contrarian.bonus;
+      } else if (crowdSignal === 'fear') {
+        contrarianAdj = Math.round(this.psychConfig.contrarian.bonus * 0.5);
+      } else if (crowdSignal === 'extreme_greed') {
+        contrarianAdj = this.psychConfig.contrarian.penalty;
+      } else if (crowdSignal === 'greed') {
+        contrarianAdj = Math.round(this.psychConfig.contrarian.penalty * 0.5);
+      }
+
+      // 个股修正: 如果市场恐惧但个股PE极高，减弱逆向bonus
+      if (crowdSignal === 'extreme_fear' && pe !== undefined && pe > 50) {
+        contrarianAdj = Math.round(contrarianAdj * 0.5);
+      }
+      // 个股修正: 如果市场贪婪但个股PE极低(价值股)，减弱penalty
+      if (crowdSignal === 'extreme_greed' && pe !== undefined && pe > 0 && pe < 15) {
+        contrarianAdj = Math.round(contrarianAdj * 0.5);
+      }
+    } else {
+      // === Fallback: 纯PE/Growth启发式 ===
+      // 极度恐惧信号: 亏损(PE<0) + 收入大幅下滑 → 群体可能过度恐慌
+      if (pe !== undefined && pe < 0 && growth !== undefined && growth < -0.2) {
+        contrarianAdj = this.psychConfig.contrarian.bonus;
+        crowdSignal = 'extreme_fear';
+      }
+      // 恐惧信号: 低PE + 负增长
+      else if (pe !== undefined && pe < this.config.thresholds.pe_undervalued
+        && growth !== undefined && growth < -0.1) {
+        contrarianAdj = Math.round(this.psychConfig.contrarian.bonus * 0.5);
+        crowdSignal = 'fear';
+      }
+      // 极度贪婪信号: 极高PE + 强增长 → 群体可能过度乐观
+      else if (pe !== undefined && pe > 50 && growth !== undefined && growth > 0.3) {
+        contrarianAdj = this.psychConfig.contrarian.penalty;
+        crowdSignal = 'extreme_greed';
+      }
+      // 贪婪信号: 高PE + 正增长
+      else if (pe !== undefined && pe > this.psychConfig.loss_aversion.hold_threshold
+        && growth !== undefined && growth > 0.15) {
+        contrarianAdj = Math.round(this.psychConfig.contrarian.penalty * 0.5);
+        crowdSignal = 'greed';
+      }
     }
 
     // --- 3. 偏误警告检测 ---

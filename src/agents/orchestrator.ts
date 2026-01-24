@@ -24,6 +24,7 @@ import { dataAuditor } from './data-auditor.js';
 import { contentGenerator } from './content-generator.js';
 import { validator } from './multi-perspective-validator.js';
 import { syntheticResearch } from './synthetic-research.js';
+import { sentimentFetcher } from './sentiment-fetcher.js';
 import { upstreamCompanies, downstreamCompanies, mockSupplyChainEdges } from '../data/mock-data.js';
 import { config, getScoringConfig } from '../config/index.js';
 import { cacheManager } from '../utils/cache.js';
@@ -82,6 +83,24 @@ class Orchestrator {
         await this.runDataAudit(edges);
       }
 
+      // Step 3.5: 获取市场情绪 → CPT指数
+      auditLogger.log('orchestrator', 'info', 'Step 3.5: 获取市场情绪数据');
+      let marketCPT: Awaited<ReturnType<typeof sentimentFetcher.fetchCPT>> | null = null;
+      try {
+        marketCPT = await sentimentFetcher.fetchCPT();
+        scorer.setMarketCPT(marketCPT);
+        auditLogger.log('orchestrator', 'info',
+          `CPT指数: ${marketCPT.value} (${marketCPT.signal}), 数据质量: ${marketCPT.data_quality}`
+        );
+        if (marketCPT.data_quality === 'fallback') {
+          this.warnings.push('市场情绪数据获取不完整,使用启发式fallback');
+        }
+      } catch (error) {
+        const errMsg = error instanceof Error ? error.message : 'Unknown';
+        this.warnings.push(`市场情绪获取失败: ${errMsg}, 使用纯基本面启发式`);
+        auditLogger.log('orchestrator', 'warn', `CPT获取失败: ${errMsg}`);
+      }
+
       // Step 4: 计算评分
       auditLogger.log('orchestrator', 'info', 'Step 4: 计算周度评分');
       const allCompanies = [...upstreamCompanies, ...downstreamCompanies];
@@ -133,6 +152,11 @@ class Orchestrator {
       // 保存合成调研结果
       if (syntheticResults.length > 0) {
         await outputManager.writeJSON(outputPath, 'synthetic-research.json', syntheticResults);
+      }
+
+      // 保存CPT快照
+      if (marketCPT) {
+        await outputManager.writeJSON(outputPath, 'market-cpt.json', marketCPT);
       }
 
       const executionTime = Date.now() - startTime;
