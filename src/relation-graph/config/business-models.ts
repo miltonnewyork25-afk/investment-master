@@ -14946,6 +14946,1339 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Oncology Biotech',
     tags: ['oncology', 'clinical_stage', 'small_molecule', 'cancer', 'drug_development'],
   },
+
+  // ========== 新增46只: Industrial/Defense/Aerospace/Transport (2026-01-24) ==========
+
+  // --- Patent Licensing ---
+  'ACTG': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Patent Licensing',
+    tags: ['patents', 'IP_monetization', 'licensing', 'technology_rights'],
+  },
+  // --- Marketing Services ---
+  'ADS': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Marketing & Loyalty Services',
+    tags: ['loyalty', 'data_analytics', 'card_services', 'marketing'],
+  },
+  // --- Accessibility Tech ---
+  'AEYE': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Digital Accessibility',
+    tags: ['accessibility', 'SaaS', 'compliance', 'web_technology'],
+  },
+  // --- Renewable Utility ---
+  'AGR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['regulated_utility'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Renewable Utility',
+    tags: ['wind_energy', 'electric_utility', 'regulated', 'renewable'],
+  },
+  // --- Diversified REIT ---
+  'AHH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Diversified REIT',
+    tags: ['office', 'retail', 'multifamily', 'mixed_use', 'development'],
+  },
+  // --- Aerospace Composites ---
+  'AIN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Aerospace Composites',
+    tags: ['composites', 'paper_machine_clothing', 'aerospace', 'engineered_materials'],
+  },
+  // --- Rocket Propulsion ---
+  'AJRD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Rocket Propulsion',
+    tags: ['propulsion', 'defense', 'space', 'missiles', 'hypersonics'],
+  },
+  // --- Transmission Systems ---
+  'ALSN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'aftermarket'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Transmission Systems',
+    tags: ['transmissions', 'commercial_vehicles', 'defense', 'hybrid_propulsion'],
+  },
+  // --- Semiconductor Packaging ---
+  'AMKR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Semiconductor Packaging & Test',
+    tags: ['OSAT', 'packaging', 'advanced_packaging', 'semiconductor_test'],
+  },
+  // --- Power Electronics ---
+  'AMSC': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Power Electronics & Superconductors',
+    tags: ['superconductor', 'grid', 'wind', 'power_electronics', 'navy'],
+  },
+  // --- Air Cargo Transport ---
+  'ATSG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['leasing', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Air Cargo Transport',
+    tags: ['air_freight', 'cargo_aircraft', 'leasing', 'ACMI', 'logistics'],
+  },
+  // --- Aerospace Electronics ---
+  'ATRO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Aerospace Electronics',
+    tags: ['aircraft_lighting', 'power_systems', 'avionics', 'connectivity'],
+  },
+  // --- Aerospace/Industrial Components ---
+  'B': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'aftermarket'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Aerospace & Industrial Components',
+    tags: ['springs', 'aerospace_OEM', 'molding', 'precision_components'],
+  },
+  // --- Industrial Conglomerate ---
+  'BBU': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial Conglomerate',
+    tags: ['infrastructure', 'industrials', 'private_equity', 'operations'],
+  },
+  // --- Satellite Imagery ---
+  'BKSY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Geospatial Intelligence',
+    tags: ['satellites', 'earth_observation', 'geospatial', 'defense_intel'],
+  },
+  // --- Fuel Cells ---
+  'BLDP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Fuel Cell Systems',
+    tags: ['hydrogen', 'fuel_cells', 'PEM', 'clean_energy', 'heavy_duty'],
+  },
+  // --- Trade Finance ---
+  'BLX': {
+    assetModel: 'asset_light',
+    revenueModels: ['interest_income', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Trade Finance',
+    tags: ['latin_america', 'trade_finance', 'foreign_trade', 'banking'],
+  },
+  // --- Wind Energy Components ---
+  'BWEN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Wind Energy Components',
+    tags: ['wind_towers', 'gearing', 'heavy_fabrication', 'renewable'],
+  },
+  // --- Biologics CDMO ---
+  'CDMO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biologics CDMO',
+    tags: ['CDMO', 'biologics', 'cell_culture', 'drug_manufacturing'],
+  },
+  // --- Flow Control ---
+  'CIR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'aftermarket'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Flow Control Equipment',
+    tags: ['valves', 'pumps', 'flow_control', 'aerospace', 'industrial'],
+  },
+  // --- Specialty Alloys ---
+  'CRS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Alloys',
+    tags: ['specialty_steel', 'titanium', 'superalloys', 'aerospace', 'defense'],
+  },
+  // --- Defense Electronics ---
+  'DRS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Defense Electronics',
+    tags: ['sensors', 'electronic_warfare', 'C4ISR', 'naval_systems'],
+  },
+  // --- Acoustic/Mass Notification ---
+  'GNSS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Mass Notification Systems',
+    tags: ['LRAD', 'acoustic', 'mass_notification', 'public_safety'],
+  },
+  // --- Gas Processing Equipment ---
+  'GTLS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'aftermarket'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gas Processing Equipment',
+    tags: ['cryogenics', 'LNG', 'heat_exchangers', 'hydrogen', 'gas_processing'],
+  },
+  // --- MRO Distribution ---
+  'HDS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['distribution'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'MRO Distribution',
+    tags: ['facilities_maintenance', 'MRO', 'distribution', 'waterworks'],
+  },
+  // --- Aerospace Replacement Parts ---
+  'HEICO': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'aftermarket'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Aerospace Replacement Parts',
+    tags: ['PMA_parts', 'aerospace_aftermarket', 'electronic_components', 'defense'],
+  },
+  // --- Motorcycles ---
+  'HOG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'aftermarket'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Motorcycles',
+    tags: ['motorcycles', 'powersports', 'lifestyle', 'brand', 'dealer_network'],
+  },
+  // --- Digital Textile Printing ---
+  'KRNT': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Digital Textile Printing',
+    tags: ['digital_printing', 'textile', 'ink', 'industrial_printing'],
+  },
+  // --- Building Products/OSB ---
+  'LPX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Engineered Wood Products',
+    tags: ['OSB', 'siding', 'structural_panels', 'housing', 'building_products'],
+  },
+  // --- Enterprise Software Legacy ---
+  'MFGP': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise Software',
+    tags: ['legacy_software', 'mainframe', 'COBOL', 'IT_operations'],
+  },
+  // --- Equipment Rental ---
+  'MGRC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Modular Equipment Rental',
+    tags: ['modular_buildings', 'electronic_test', 'rental', 'portable_storage'],
+  },
+  // --- Copper Products ---
+  'MLI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Copper & Brass Products',
+    tags: ['copper_tube', 'fittings', 'HVAC', 'plumbing', 'refrigeration'],
+  },
+  // --- Advanced Materials ---
+  'MTRN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Advanced Materials',
+    tags: ['beryllium', 'precision_alloys', 'thin_film', 'semiconductor', 'defense'],
+  },
+  // --- Flexible Piping ---
+  'OFLX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Flexible Piping Systems',
+    tags: ['CSST', 'gas_piping', 'flexible_pipe', 'residential', 'commercial'],
+  },
+  // --- Premium Apparel ---
+  'OXM': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Premium Apparel',
+    tags: ['Tommy_Bahama', 'Lilly_Pulitzer', 'lifestyle', 'resort_wear'],
+  },
+  // --- Utility Hardware ---
+  'PLPC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Utility Hardware',
+    tags: ['power_line', 'telecom_hardware', 'cable_anchors', 'fiber_optic'],
+  },
+  // --- Water Treatment ---
+  'PNR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'aftermarket'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Water Treatment & Flow Control',
+    tags: ['water_treatment', 'filtration', 'pumps', 'pool_equipment', 'sustainable_water'],
+  },
+  // --- Precision Ag/Defense ---
+  'RAVN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Precision Agriculture & Defense',
+    tags: ['precision_ag', 'aerostar', 'defense_drones', 'composites'],
+  },
+  // --- Truck Dealerships ---
+  'RUSHA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'aftermarket', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Commercial Truck Dealerships',
+    tags: ['truck_sales', 'Peterbilt', 'aftermarket_parts', 'leasing', 'service'],
+  },
+  // --- Deep-Sea Mining ---
+  'TMC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Deep-Sea Mining',
+    tags: ['polymetallic_nodules', 'nickel', 'cobalt', 'manganese', 'ocean_mining'],
+  },
+  // --- Completion Fluids ---
+  'TTI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Completion Fluids & Water Management',
+    tags: ['completion_fluids', 'water_management', 'calcium_chloride', 'oilfield'],
+  },
+  // --- Moving & Storage ---
+  'UHAL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Moving & Storage',
+    tags: ['truck_rental', 'self_storage', 'moving', 'trailers', 'consumer'],
+  },
+  // --- Automotive Services ---
+  'VVV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee', 'product_sales'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Automotive Preventive Maintenance',
+    tags: ['oil_change', 'quick_lube', 'automotive_services', 'franchise'],
+  },
+  // --- Traffic Solutions ---
+  'VRRM': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Traffic Management Solutions',
+    tags: ['tolling', 'photo_enforcement', 'violations', 'smart_mobility'],
+  },
+  // --- Trailer Manufacturing ---
+  'WNC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Trailer Manufacturing',
+    tags: ['dry_van', 'refrigerated', 'platform', 'tank_trailers'],
+  },
+  // --- Modular Space Solutions ---
+  'WSC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Modular Space & Storage',
+    tags: ['modular_buildings', 'portable_storage', 'construction', 'temporary_space'],
+  },
+
+  // ========== 新增50只: Energy, Utilities, Mining, Materials (2026-01-24) ==========
+
+  // --- Oil & Gas E&P ---
+  'AMPY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil & Gas E&P',
+    tags: ['upstream', 'onshore', 'rockies', 'uinta_basin', 'mature_assets'],
+  },
+  'BRY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil & Gas E&P',
+    tags: ['upstream', 'california', 'thermal_EOR', 'low_decline', 'conventional'],
+  },
+  'CPE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil & Gas E&P',
+    tags: ['upstream', 'permian', 'delaware_basin', 'shale', 'horizontal'],
+  },
+  'CNX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Natural Gas E&P',
+    tags: ['upstream', 'appalachian', 'marcellus', 'natural_gas', 'shale'],
+  },
+  'DEN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil & Gas E&P',
+    tags: ['upstream', 'permian', 'midland_basin', 'horizontal', 'unconventional'],
+  },
+  'ERF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil & Gas E&P',
+    tags: ['upstream', 'canada', 'waterfloods', 'conventional', 'heavy_oil'],
+  },
+  'KOS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil & Gas E&P',
+    tags: ['upstream', 'offshore', 'ghana', 'west_africa', 'deepwater'],
+  },
+  'NFG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales', 'throughput_fee', 'regulated_utility'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Integrated Gas',
+    tags: ['upstream', 'midstream', 'utility', 'seneca', 'appalachian'],
+  },
+  'OAS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil & Gas E&P',
+    tags: ['upstream', 'bakken', 'williston', 'shale', 'horizontal'],
+  },
+  'EQNR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Integrated Oil & Gas',
+    tags: ['upstream', 'offshore', 'norway', 'north_sea', 'renewables'],
+  },
+  'YPF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Integrated Oil & Gas',
+    tags: ['upstream', 'downstream', 'argentina', 'vaca_muerta', 'shale'],
+  },
+  'BKV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Natural Gas E&P',
+    tags: ['upstream', 'natural_gas', 'barnett', 'marcellus', 'carbon_capture'],
+  },
+  'TPL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales', 'rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil & Gas Royalties',
+    tags: ['royalties', 'permian', 'land_trust', 'water_sales', 'mineral_rights'],
+  },
+  'PBT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil & Gas Royalties',
+    tags: ['royalties', 'permian', 'trust', 'net_profits_interest', 'waddell_ranch'],
+  },
+  'BSM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil & Gas Minerals',
+    tags: ['minerals', 'royalties', 'diversified_basins', 'non_operated', 'MLP'],
+  },
+
+  // --- Midstream / Pipeline / Gathering ---
+  'ENB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['throughput_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Pipeline',
+    tags: ['pipeline', 'oil_sands', 'natural_gas', 'canada', 'liquids'],
+  },
+  'TRP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['throughput_fee', 'regulated_utility'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Pipeline',
+    tags: ['pipeline', 'natural_gas', 'canada', 'regulated', 'power_generation'],
+  },
+  'PAA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['throughput_fee', 'gathering'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Pipeline',
+    tags: ['pipeline', 'crude_oil', 'NGL', 'gathering', 'MLP'],
+  },
+  'GEL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['throughput_fee', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Services',
+    tags: ['pipeline', 'sulfur', 'NaOH', 'marine_transport', 'industrial_gases'],
+  },
+  'GPP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['gathering', 'throughput_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Gathering',
+    tags: ['gathering', 'processing', 'natural_gas', 'NGL', 'MLP'],
+  },
+  'MMLP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['throughput_fee', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Terminals',
+    tags: ['terminals', 'storage', 'marine', 'specialty_products', 'MLP'],
+  },
+  'NRP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales', 'rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Natural Resource Royalties',
+    tags: ['coal_royalties', 'mineral_rights', 'aggregates', 'oil_gas', 'MLP'],
+  },
+  'SUN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['distribution', 'throughput_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Fuel Distribution',
+    tags: ['fuel_distribution', 'convenience_stores', 'pipeline', 'MLP', 'refined_products'],
+  },
+  'TEP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['throughput_fee', 'gathering'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Gathering',
+    tags: ['gathering', 'processing', 'natural_gas', 'rockies', 'piceance'],
+  },
+
+  // --- LNG / Gas Shipping ---
+  'LPG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['leasing', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'LPG Shipping',
+    tags: ['shipping', 'LPG', 'ammonia', 'VLGC', 'seaborne_trade'],
+  },
+  'TGS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee', 'throughput_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Natural Gas Transport',
+    tags: ['pipeline', 'argentina', 'natural_gas', 'midstream', 'regulated'],
+  },
+
+  // --- Offshore Drilling & Services ---
+  'SDRL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['leasing', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Offshore Drilling',
+    tags: ['drilling', 'deepwater', 'harsh_environment', 'drillships', 'semi_submersible'],
+  },
+  'OIS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oilfield Services',
+    tags: ['tubular', 'downhole', 'offshore', 'completion', 'well_equipment'],
+  },
+  'PDS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oilfield Services',
+    tags: ['drilling', 'completion', 'canada', 'onshore', 'contract_drilling'],
+  },
+  'VTOL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee', 'leasing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Offshore Aviation',
+    tags: ['helicopter', 'offshore', 'oil_gas', 'SAR', 'air_medical'],
+  },
+  'SBR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oilfield Services',
+    tags: ['workover', 'well_servicing', 'completion', 'onshore', 'permian'],
+  },
+  'MRC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['distribution'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'PVF Distribution',
+    tags: ['pipes_valves_fittings', 'distribution', 'oil_gas', 'industrial', 'utilities'],
+  },
+  'CVEO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee', 'rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Workforce Solutions',
+    tags: ['remote_camps', 'workforce_housing', 'catering', 'oil_sands', 'mining'],
+  },
+
+  // --- Shipping ---
+  'NMM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['leasing', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Dry Bulk Shipping',
+    tags: ['dry_bulk', 'containership', 'tanker', 'diversified_fleet', 'navios'],
+  },
+  'ATCO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['leasing', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Container Leasing',
+    tags: ['container_leasing', 'logistics', 'intermodal', 'fleet_management'],
+  },
+
+  // --- Utilities ---
+  'AQN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['regulated_utility'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Diversified Utilities',
+    tags: ['electric', 'gas', 'water', 'renewable', 'regulated'],
+  },
+  'PNM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['regulated_utility'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Electric Utility',
+    tags: ['electric', 'new_mexico', 'texas', 'regulated', 'generation'],
+  },
+  'EE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['regulated_utility'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Electric Utility',
+    tags: ['electric', 'brazil', 'distribution', 'regulated', 'latin_america'],
+  },
+  'CIG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['regulated_utility'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Electric Utility',
+    tags: ['electric', 'brazil', 'generation', 'transmission', 'regulated'],
+  },
+  'TU': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'regulated_utility'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Telecom Utility',
+    tags: ['telecom', 'broadband', 'wireless', 'canada', 'fiber'],
+  },
+  'UGI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['regulated_utility', 'distribution'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Gas Utility',
+    tags: ['natural_gas', 'propane', 'distribution', 'regulated', 'midstream'],
+  },
+
+  // --- Coal ---
+  'BTU': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Coal Mining',
+    tags: ['thermal_coal', 'met_coal', 'seaborne', 'PRB', 'australia'],
+  },
+  'CEIX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Coal Mining',
+    tags: ['met_coal', 'thermal_coal', 'appalachian', 'export', 'high_BTU'],
+  },
+
+  // --- Mining & Metals ---
+  'KGC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gold Mining',
+    tags: ['gold', 'silver', 'americas', 'west_africa', 'senior_producer'],
+  },
+  'MGX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Iron Ore Mining',
+    tags: ['iron_ore', 'mining', 'brazil', 'pellets', 'steel_feedstock'],
+  },
+  'GLNCY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales', 'distribution'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Diversified Mining & Trading',
+    tags: ['copper', 'zinc', 'coal', 'commodity_trading', 'cobalt'],
+  },
+
+  // --- Refining & Downstream ---
+  'CLMT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Refining',
+    tags: ['re_refining', 'used_oil', 'base_oil', 'circular_economy', 'specialty_chemicals'],
+  },
+  'LXU': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Chemicals & Fertilizers',
+    tags: ['nitrogen', 'ammonia', 'UAN', 'fertilizer', 'industrial_chemicals'],
+  },
+
+  // --- Clean Energy / Renewables ---
+  'AMRC': {
+    assetModel: 'asset_light',
+    revenueModels: ['project_based', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Energy Efficiency',
+    tags: ['energy_efficiency', 'renewable_infrastructure', 'federal', 'ESG', 'carbon_reduction'],
+  },
+  'IREN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Bitcoin Mining / Data Center',
+    tags: ['bitcoin_mining', 'data_center', 'renewable_energy', 'HPC', 'AI_cloud'],
+  },
+  'CLW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biomass & Specialty Products',
+    tags: ['paperboard', 'biomass', 'tissue', 'pulp', 'renewable_fiber'],
+  },
+  'OPAL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['commodity_sales', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Carbon Black & Specialty Chemicals',
+    tags: ['carbon_black', 'specialty_chemicals', 'rubber', 'tire', 'industrial'],
+  },
+  'ENIC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['regulated_utility'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Electric Utility',
+    tags: ['electric', 'chile', 'renewable', 'hydro', 'latin_america'],
+  },
+
+  // --- Oilfield Support / Energy Services ---
+  'MPLN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Midstream Services',
+    tags: ['water_management', 'produced_water', 'recycling', 'permian', 'disposal'],
+  },
+  'TAC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee', 'project_based'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Construction & Industrial Services',
+    tags: ['turnaround', 'maintenance', 'industrial_construction', 'refinery', 'petrochemical'],
+  },
+  'GTN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['throughput_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Natural Gas Pipeline',
+    tags: ['pipeline', 'natural_gas', 'pacific_northwest', 'regulated', 'interstate'],
+  },
+
+  // ========== 新增50只: Healthcare / Biotech / MedTech (2026-01-24) ==========
+
+  // --- Plasma-Derived Biologics ---
+  'ADMA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Plasma-Derived Therapeutics',
+    tags: ['plasma', 'immunoglobulin', 'biologics', 'specialty_pharma', 'rare_disease'],
+  },
+  // --- Immuno-Oncology ---
+  'AGEN': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Immuno-Oncology',
+    tags: ['checkpoint_inhibitor', 'antibody', 'oncology', 'clinical_stage', 'immunotherapy'],
+  },
+  // --- Anti-Inflammatory Biotech ---
+  'ALLK': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Allergy/Immunology Biotech',
+    tags: ['allergy', 'eosinophil', 'inflammation', 'biologic', 'clinical_stage'],
+  },
+  // --- Specialty Generics ---
+  'AMPH': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Pharma',
+    tags: ['generic', 'complex_injectable', 'hospital', 'specialty_generic', 'ANDA'],
+  },
+  // --- Antibody Biotech ---
+  'ANAB': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Autoimmune Biotech',
+    tags: ['antibody', 'autoimmune', 'dermatology', 'inflammation', 'biologic'],
+  },
+  // --- Gene Therapy ---
+  'APGE': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gene Editing Biotech',
+    tags: ['gene_editing', 'epigenetics', 'liver', 'cardiovascular', 'clinical_stage'],
+  },
+  // --- Radiation Therapy ---
+  'ARAY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Radiation Oncology Equipment',
+    tags: ['radiation_therapy', 'oncology', 'medical_device', 'treatment_planning', 'linac'],
+  },
+  // --- Neuroscience Biotech ---
+  'ATHA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Neuroscience Biotech',
+    tags: ['alzheimer', 'neurodegenerative', 'clinical_stage', 'CNS', 'precision_medicine'],
+  },
+  // --- Nephrology Biotech ---
+  'AUPH': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Nephrology Biotech',
+    tags: ['lupus_nephritis', 'kidney', 'autoimmune', 'voclosporin', 'specialty_pharma'],
+  },
+  // --- Oncology Biotech ---
+  'AVEO': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oncology Biotech',
+    tags: ['renal_cell_carcinoma', 'VEGF', 'oncology', 'tivozanib', 'targeted_therapy'],
+  },
+  // --- Biopharma Discovery ---
+  'BBI': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Clinical-Stage Biotech',
+    tags: ['oncology', 'clinical_stage', 'small_molecule', 'targeted_therapy', 'pipeline'],
+  },
+  // --- Antibody Drug Conjugate ---
+  'BCAB': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'ADC Biotech',
+    tags: ['antibody_drug_conjugate', 'oncology', 'clinical_stage', 'ADC', 'bispecific'],
+  },
+  // --- Precision Oncology ---
+  'BDTX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Precision Oncology Biotech',
+    tags: ['mutation_selective', 'oncology', 'small_molecule', 'precision_medicine', 'allosteric'],
+  },
+  // --- Genomic Imaging ---
+  'BNGO': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Genomic Analysis Tools',
+    tags: ['optical_genome_mapping', 'cytogenetics', 'diagnostics', 'structural_variant', 'research_tools'],
+  },
+  // --- Pain/Pruritus Biotech ---
+  'CARA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Pain/Pruritus Biotech',
+    tags: ['pruritus', 'pain', 'kappa_opioid', 'nephrology', 'dermatology'],
+  },
+  // --- Biosimilars ---
+  'CHRS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biosimilars',
+    tags: ['biosimilar', 'oncology', 'immunology', 'ophthalmology', 'affordable_biologics'],
+  },
+  // --- Digital Therapeutics ---
+  'CLPT': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Digital Therapeutics',
+    tags: ['digital_health', 'prescription_digital', 'insomnia', 'behavioral_health', 'SaMD'],
+  },
+  // --- Ophthalmology Biotech ---
+  'DCPH': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Ophthalmology Biotech',
+    tags: ['ophthalmology', 'retinal', 'gene_therapy', 'rare_disease', 'clinical_stage'],
+  },
+  // --- Vaccine Biotech ---
+  'DVAX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Vaccine Biotech',
+    tags: ['vaccine', 'adjuvant', 'hepatitis_B', 'immunology', 'commercial_stage'],
+  },
+  // --- Gene Therapy ---
+  'DYN': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gene Therapy Biotech',
+    tags: ['AAV', 'gene_therapy', 'muscle_disease', 'rare_disease', 'clinical_stage'],
+  },
+  // --- Gene Editing ---
+  'EDIT': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gene Editing Biotech',
+    tags: ['CRISPR', 'gene_editing', 'sickle_cell', 'oncology', 'clinical_stage'],
+  },
+  // --- AI Drug Discovery ---
+  'EXAI': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'AI Drug Discovery',
+    tags: ['AI', 'drug_discovery', 'precision_medicine', 'clinical_stage', 'machine_learning'],
+  },
+  // --- Epigenetics Biotech ---
+  'FULC': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Epigenetics Biotech',
+    tags: ['epigenetics', 'sickle_cell', 'hematology', 'clinical_stage', 'gene_regulation'],
+  },
+  // --- Antibody Therapeutics ---
+  'GMAB': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Antibody Platform Biotech',
+    tags: ['bispecific_antibody', 'T_cell_engager', 'oncology', 'autoimmune', 'platform'],
+  },
+  // --- mRNA Therapeutics ---
+  'GRTS': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'mRNA Biotech',
+    tags: ['mRNA', 'self_amplifying', 'oncology', 'infectious_disease', 'clinical_stage'],
+  },
+  // --- Pain Management ---
+  'HRTX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Pain Management Biotech',
+    tags: ['non_opioid', 'pain', 'post_surgical', 'hospital', 'specialty_pharma'],
+  },
+  // --- AI Radiology ---
+  'ICAD': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'AI Medical Imaging',
+    tags: ['AI', 'mammography', 'cancer_detection', 'radiology', 'SaaS_medtech'],
+  },
+  // --- Bispecific Antibody ---
+  'IMNM': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Immunology Biotech',
+    tags: ['bispecific', 'autoimmune', 'IgG4', 'inflammation', 'clinical_stage'],
+  },
+  // --- Respiratory Pharma ---
+  'INVA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Respiratory Pharma',
+    tags: ['COPD', 'respiratory', 'inhaler', 'pulmonology', 'commercial_stage'],
+  },
+  // --- Retinal Biotech ---
+  'ISEE': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Ophthalmology Biotech',
+    tags: ['complement', 'geographic_atrophy', 'retinal', 'ophthalmology', 'clinical_stage'],
+  },
+  // --- Nuclear Export Inhibitor ---
+  'KPTI': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oncology Biotech',
+    tags: ['nuclear_export', 'myeloma', 'oncology', 'commercial_stage', 'small_molecule'],
+  },
+  // --- Drug Royalties ---
+  'LGND': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Drug Royalties',
+    tags: ['royalty', 'licensing', 'diversified_pharma', 'portfolio', 'asset_light'],
+  },
+  // --- Inhaled Therapeutics ---
+  'MNKD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Inhaled Therapeutics',
+    tags: ['inhaled_insulin', 'diabetes', 'pulmonary', 'drug_delivery', 'commercial_stage'],
+  },
+  // --- Protein Degradation ---
+  'MORF': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Protein Degradation Biotech',
+    tags: ['molecular_glue', 'protein_degradation', 'oncology', 'clinical_stage', 'novel_mechanism'],
+  },
+  // --- KRAS Oncology ---
+  'MRTX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Precision Oncology Biotech',
+    tags: ['KRAS', 'lung_cancer', 'precision_oncology', 'small_molecule', 'commercial_stage'],
+  },
+  // --- Bispecific Antibody Platform ---
+  'MRUS': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Bispecific Antibody Biotech',
+    tags: ['bispecific', 'T_cell_engager', 'oncology', 'clinical_stage', 'platform'],
+  },
+  // --- Neuroscience Biotech ---
+  'NRIX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Neuroscience Biotech',
+    tags: ['kinase_inhibitor', 'pain', 'neuroscience', 'clinical_stage', 'precision_medicine'],
+  },
+  // --- Vaccine Development ---
+  'OCGN': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Vaccine/Gene Therapy Biotech',
+    tags: ['vaccine', 'gene_therapy', 'ophthalmology', 'clinical_stage', 'global_health'],
+  },
+  // --- Established Pharma ---
+  'OGN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Womens Health Pharma',
+    tags: ['womens_health', 'biosimilar', 'fertility', 'established_brands', 'global_pharma'],
+  },
+  // --- Radiology Services ---
+  'RDNT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Radiology Services',
+    tags: ['radiology', 'imaging_center', 'teleradiology', 'healthcare_services', 'JV_model'],
+  },
+  // --- AAV Gene Therapy ---
+  'RGNX': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gene Therapy Platform',
+    tags: ['AAV', 'gene_therapy', 'rare_disease', 'platform', 'licensing'],
+  },
+  // --- Neuroscience Pharma ---
+  'SAGE': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Neuroscience Pharma',
+    tags: ['depression', 'GABA', 'neuroscience', 'CNS', 'commercial_stage'],
+  },
+  // --- Gene Medicine ---
+  'SGMO': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gene Medicine Biotech',
+    tags: ['zinc_finger', 'gene_regulation', 'hemophilia', 'rare_disease', 'clinical_stage'],
+  },
+  // --- Genomic Medicine ---
+  'SNDX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Genomic Medicine Biotech',
+    tags: ['menin_inhibitor', 'leukemia', 'oncology', 'clinical_stage', 'epigenetics'],
+  },
+  // --- Endocrine Pharma ---
+  'TARS': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Endocrine Biotech',
+    tags: ['thyroid', 'endocrine', 'rare_disease', 'clinical_stage', 'precision_medicine'],
+  },
+  // --- Molecular Diagnostics ---
+  'VCYT': {
+    assetModel: 'asset_light',
+    revenueModels: ['service_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Molecular Diagnostics',
+    tags: ['thyroid_diagnostics', 'genomic_testing', 'cancer_diagnostics', 'CLIA_lab', 'precision_medicine'],
+  },
+  // --- CNS Pharma ---
+  'VNDA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'CNS Specialty Pharma',
+    tags: ['sleep_disorder', 'schizophrenia', 'CNS', 'commercial_stage', 'specialty_pharma'],
+  },
+  // --- Antibody Engineering ---
+  'XNCR': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Antibody Engineering Biotech',
+    tags: ['Fc_engineering', 'bispecific', 'oncology', 'autoimmune', 'platform'],
+  },
+  // --- Antibody-Drug Conjugate ---
+  'ZYME': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'ADC Biotech',
+    tags: ['ADC', 'site_specific', 'oncology', 'platform', 'clinical_stage'],
+  },
 };
 
 // ============================================================

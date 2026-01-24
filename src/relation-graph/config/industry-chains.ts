@@ -3421,6 +3421,154 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'WOR': 'Steel Processing',                            // Worthington - 钢材加工
     'FWRG': 'Fast Casual Restaurant',                      // First Watch - 早午餐连锁
     'NUVB': 'Oncology Biotech',                            // Nuvation Bio - 肿瘤生物科技
+
+    // ========== 新增: Healthcare, Industrials, REITs, Banks, Consumer (2026-01-24) ==========
+    // --- Biotech ---
+    'GPCR': 'Emerging Biotech',                            // Structure Therapeutics - GPCR生物科技
+    'CRNX': 'Emerging Biotech',                            // Crinetics Pharmaceuticals - 内分泌生物科技
+    'ERAS': 'Emerging Biotech',                            // Erasca - RAS肿瘤生物科技
+    'FUSN': 'Emerging Biotech',                            // Fusion Pharmaceuticals - 放射性药物
+    'ACLX': 'Cell Therapy',                                // Arcellx - CAR-T细胞治疗
+    'BCYC': 'Emerging Biotech',                            // Bicycle Therapeutics - 自行车毒素偶联
+    'CMPS': 'Emerging Biotech',                            // COMPASS Pathways - 迷幻疗法
+    'CRVS': 'Immuno-Oncology',                             // Corvus Pharmaceuticals - 免疫肿瘤
+    'DICE': 'Emerging Biotech',                            // DICE Therapeutics - 口服生物制剂
+    'CLDX': 'Emerging Biotech',                            // Celldex Therapeutics - 抗体疗法
+    'AVXL': 'Emerging Biotech',                            // Anavex Life Sciences - 神经生物科技
+    'BTAI': 'Emerging Biotech',                            // BioXcel Therapeutics - AI神经科学
+    'ETNB': 'Emerging Biotech',                            // 89bio - 肝病生物科技
+    'CPRX': 'Emerging Biotech',                            // Catalyst Pharma - 罕见神经肌肉
+    'ALEC': 'Emerging Biotech',                            // Alector - 神经退行性疾病
+    // --- Animal Health ---
+    'ELAN': 'Animal Health',                               // Elanco Animal Health - 动物健康
+    // --- Infrastructure Engineering ---
+    'NVEE': 'Infrastructure Engineering',                  // NV5 Global - 基础设施工程
+    // --- Building Products ---
+    'GFF': 'Building Products',                            // Griffon Corp - 家居/建筑产品
+    // --- REITs ---
+    'DEA': 'Office REIT',                                  // Easterly Government Properties - 政府办公REIT
+    'CTO': 'Retail REIT',                                  // CTO Realty Growth - 零售/混合REIT
+    'GMRE': 'Healthcare REIT',                             // Global Medical REIT - 医疗办公REIT
+    'JBGS': 'Office REIT',                                 // JBG SMITH Properties - 混合用途REIT
+    'PDM': 'Office REIT',                                  // Piedmont Office Realty - 办公REIT
+    // --- Regional Banks ---
+    'FIBK': 'Regional Bank',                               // First Interstate BancSystem - 蒙大拿区域银行
+    'UBSI': 'Regional Bank',                               // United Bankshares - WV/VA区域银行
+    'WTFC': 'Regional Bank',                               // Wintrust Financial - 芝加哥区域银行
+    'PPBI': 'Regional Bank',                               // Pacific Premier Bancorp - 加州区域银行
+    // --- Consumer ---
+    'PRPL': 'Furniture/Mattress',                          // Purple Innovation - DTC床垫
+    'CATO': 'Value Retail',                                // Cato Corp - 价值服装零售
+
+    // ========== 新增30只: Media, SaaS, Aviation, Industrials, Banks (2026-01-24) ==========
+    // --- Media/Broadcasting ---
+    'FOXA': 'Broadcast TV',                                // Fox Corp Class A - 广播电视
+    // --- eCommerce Platform SaaS ---
+    'BIGC': 'eCommerce Platform SaaS',                     // BigCommerce - 电商SaaS平台
+    'VTEX': 'eCommerce Platform SaaS',                     // VTEX - 拉美电商SaaS平台
+    // --- UCaaS/Cloud Communications ---
+    'RNG': 'UCaaS',                                        // RingCentral - 统一通信
+    // --- CX/Workforce Management ---
+    'NICE': 'CX Software',                                 // NICE - CX/劳动力管理
+    // --- Conversational AI ---
+    'LPSN': 'Conversational AI',                           // LivePerson - 对话AI平台
+    // --- Aviation Services ---
+    'FTAI': 'Aviation Services',                           // FTAI Aviation - 航空租赁/MRO
+    // --- Consumer Health ---
+    'KVUE': 'Consumer Health',                             // Kenvue - 消费健康产品
+    // --- Healthcare Navigation ---
+    'ACCD': 'Healthcare Navigation',                       // Accolade - 医疗导航平台
+    // --- Computational Drug Discovery ---
+    'SDGR': 'Computational Drug Discovery',                // Schrodinger - 计算药物发现
+    // --- Digital Lending ---
+    'LC': 'Digital Lending',                               // LendingClub - 数字贷款
+    // --- Wholesale Mortgage ---
+    'UWMC': 'Wholesale Mortgage',                          // UWM Holdings - 批发按揭
+    // --- Restaurant Tech ---
+    'OLO': 'Restaurant Tech',                              // Olo - 餐饮订购SaaS
+    // --- Home Services InsurTech ---
+    'PRCH': 'Home Services InsurTech',                     // Porch Group - 家庭服务/保险科技
+    // --- Banking Software ---
+    'BLND': 'Banking Software',                            // Blend Labs - 按揭/银行SaaS
+    // --- IT Management SaaS ---
+    'NABL': 'IT Management SaaS',                          // N-able - IT管理SaaS(MSP)
+    // --- GRC Software ---
+    'WK': 'GRC Software',                                  // Workiva - GRC/ESG报告
+    // --- Observability ---
+    'NEWR': 'Observability',                               // New Relic - 可观测性/APM
+    // --- Cloud SIEM ---
+    'SUMO': 'Cloud SIEM',                                  // Sumo Logic - 云SIEM/分析
+    // --- CTV Platform ---
+    'VZIO': 'CTV Platform',                                // Vizio - 智能电视/CTV平台
+    // --- LatAm Payments ---
+    'EVTC': 'LatAm Payments',                             // EVERTEC - 拉美支付处理
+    // --- AI Data Engineering ---
+    'INOD': 'AI Data Engineering',                         // Innodata - AI数据工程
+    // --- Power Conversion ---
+    'AEIS': 'Power Conversion',                            // Advanced Energy - 电力转换设备
+    // --- Railcar ---
+    'TRN': 'Railcar',                                      // Trinity Industries - 轨道车辆
+    // --- Specialty Chemicals ---
+    'ASH': 'Specialty Chemicals',                          // Ashland - 特种化学/添加剂
+    // --- Specialty Alloys ---
+    'CRS': 'Specialty Alloys',                             // Carpenter Technology - 特种合金
+    // --- Metallurgical Coal ---
+    'HCC': 'Metallurgical Coal',                           // Warrior Met Coal - 焦煤
+    // --- Regional Banks ---
+    'CFR': 'Regional Bank',                                // Culberson-Frost Bankers - 德州银行
+    'TCBI': 'Regional Bank',                               // Texas Capital Bancshares - 德州商业银行
+    'WSFS': 'Regional Bank',                               // WSFS Financial - 中大西洋银行
+
+    // ========== 新增50只: Healthcare / Biotech / MedTech (2026-01-24) ==========
+    'ADMA': 'Plasma-Derived Therapeutics',                    // ADMA Biologics - 血浆蛋白
+    'AGEN': 'Immuno-Oncology',                                // Agenus - 免疫肿瘤
+    'ALLK': 'Allergy/Immunology Biotech',                     // Allakos - 嗜酸性粒细胞
+    'AMPH': 'Specialty Pharma',                               // Amphastar - 特种仿制药
+    'ANAB': 'Autoimmune Biotech',                             // AnaptysBio - 自免抗体
+    'APGE': 'Gene Editing Biotech',                           // Apogee Therapeutics - 基因编辑
+    'ARAY': 'Radiation Oncology Equipment',                   // Accuray - 放射治疗设备
+    'ATHA': 'Neuroscience Biotech',                           // Athira Pharma - 阿尔茨海默
+    'AUPH': 'Nephrology Biotech',                             // Aurinia - 肾病
+    'AVEO': 'Oncology Biotech',                               // AVEO Pharma - 肾细胞癌
+    'BBI': 'Clinical-Stage Biotech',                          // Brickell Biotech - 临床肿瘤
+    'BCAB': 'ADC Biotech',                                    // BioAtla - ADC抗体偶联
+    'BDTX': 'Precision Oncology Biotech',                     // Black Diamond - 精准肿瘤
+    'BNGO': 'Genomic Analysis Tools',                         // Bionano Genomics - 光学基因组
+    'CARA': 'Pain/Pruritus Biotech',                          // Cara Therapeutics - 瘙痒/疼痛
+    'CHRS': 'Biosimilars',                                    // Coherus BioSciences - 生物仿制药
+    'CLPT': 'Digital Therapeutics',                            // ClearPoint Neuro - 数字疗法
+    'DCPH': 'Ophthalmology Biotech',                          // Deciphera - 眼科基因疗法
+    'DVAX': 'Vaccine Biotech',                                // Dynavax - 疫苗/佐剂
+    'DYN': 'Gene Therapy Biotech',                            // Dyne Therapeutics - AAV基因疗法
+    'EDIT': 'Gene Editing Biotech',                           // Editas Medicine - CRISPR基因编辑
+    'EXAI': 'AI Drug Discovery',                              // Exscientia - AI药物发现
+    'FULC': 'Epigenetics Biotech',                            // Fulcrum Therapeutics - 表观遗传
+    'GMAB': 'Antibody Platform Biotech',                      // Genmab - 抗体平台
+    'GRTS': 'mRNA Biotech',                                   // Gritstone bio - mRNA疗法
+    'HRTX': 'Pain Management Biotech',                        // Heron Therapeutics - 疼痛管理
+    'ICAD': 'AI Medical Imaging',                             // iCAD - AI医学影像
+    'IMNM': 'Immunology Biotech',                             // Immunomedics - 免疫生物科技
+    'INVA': 'Respiratory Pharma',                             // Innoviva - 呼吸制药
+    'ISEE': 'Ophthalmology Biotech',                          // IVERIC bio - 视网膜补体
+    'KPTI': 'Oncology Biotech',                               // Karyopharm - 核输出抑制
+    'LGND': 'Drug Royalties',                                 // Ligand Pharma - 药物特许权
+    'MNKD': 'Inhaled Therapeutics',                           // MannKind - 吸入胰岛素
+    'MORF': 'Protein Degradation Biotech',                    // Morphic Holding - 蛋白降解
+    'MRTX': 'Precision Oncology Biotech',                     // Mirati Therapeutics - KRAS肿瘤
+    'MRUS': 'Bispecific Antibody Biotech',                    // Merus - 双特异性抗体
+    'NRIX': 'Neuroscience Biotech',                           // Nurix Therapeutics - 神经激酶
+    'OCGN': 'Vaccine/Gene Therapy Biotech',                   // Ocugen - 疫苗/基因疗法
+    'OGN': 'Womens Health Pharma',                            // Organon - 女性健康
+    'RDNT': 'Radiology Services',                             // RadNet - 放射影像服务
+    'RGNX': 'Gene Therapy Platform',                          // REGENXBIO - AAV基因疗法
+    'SAGE': 'Neuroscience Pharma',                            // Sage Therapeutics - 神经科学
+    'SGMO': 'Gene Medicine Biotech',                          // Sangamo - 锌指基因调控
+    'SNDX': 'Genomic Medicine Biotech',                       // Syndax Pharmaceuticals - 基因组医学
+    'TARS': 'Endocrine Biotech',                              // Tarsus Pharmaceuticals - 内分泌
+    'VCYT': 'Molecular Diagnostics',                          // Veracyte - 分子诊断
+    'VNDA': 'CNS Specialty Pharma',                           // Vanda Pharmaceuticals - CNS
+    'XNCR': 'Antibody Engineering Biotech',                   // Xencor - Fc工程抗体
+    'ZYME': 'ADC Biotech',                                    // Zymeworks - ADC平台
   },
 
   // ============================================================
@@ -7650,6 +7798,148 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Resale Franchise': [
       'Specialty Retail',             // 特种零售
       'Franchise',                    // 加盟模式
+    ],
+
+    // 基础设施工程 → 建筑/政府
+    'Infrastructure Engineering': [
+      'Construction & Engineering',   // 建筑工程
+      'Building Products',            // 建筑产品
+      'Office REIT',                  // 办公物业客户
+    ],
+
+    // ========== 新增子行业链 (2026-01-24) ==========
+
+    // 电商SaaS平台 → 电商/支付/物流
+    'eCommerce Platform SaaS': [
+      'E-commerce',                   // 电商客户
+      'Payments',                     // 支付集成
+      'Logistics',                    // 履约物流
+    ],
+
+    // UCaaS → 企业SaaS/通信
+    'UCaaS': [
+      'Enterprise SaaS',              // 企业软件协同
+      'Conversational AI',            // AI客服集成
+      'CX Software',                  // CX平台集成
+    ],
+
+    // CX软件 → 企业SaaS/AI
+    'CX Software': [
+      'Enterprise SaaS',              // 企业软件
+      'Conversational AI',            // 对话AI
+      'UCaaS',                        // 通信平台
+    ],
+
+    // 消费健康 → 零售/医药
+    'Consumer Health': [
+      'Pharmacy Retail',              // 药房渠道
+      'Grocery Retail',               // 超市渠道
+      'Consumer Staples',             // 消费必需品同行
+    ],
+
+    // 医疗导航 → 保险/数字健康
+    'Healthcare Navigation': [
+      'Health Insurance',             // 保险合作
+      'Digital Health',               // 数字健康
+      'Enterprise SaaS',              // 企业HR集成
+    ],
+
+    // 计算药物发现 → 药企/生物科技
+    'Computational Drug Discovery': [
+      'Big Pharma',                   // 大药企客户
+      'Emerging Biotech',             // 生物科技客户
+      'AI Services',                  // AI/ML技术
+    ],
+
+    // 数字贷款 → 银行/金融科技
+    'Digital Lending': [
+      'Regional Bank',                // 银行竞争/合作
+      'Fintech',                      // 金融科技同行
+      'Mortgage Lender',              // 按揭贷款
+    ],
+
+    // 批发按揭 → 银行/房地产
+    'Wholesale Mortgage': [
+      'Mortgage Lender',              // 按揭贷款行业
+      'Regional Bank',                // 银行合作
+      'Real Estate Services',         // 房地产服务
+    ],
+
+    // 家庭服务保险科技 → 保险/房地产
+    'Home Services InsurTech': [
+      'P&C Insurance',                // 财产险
+      'Real Estate Services',         // 房地产服务
+      'Mortgage Lender',              // 按揭贷款
+    ],
+
+    // IT管理SaaS → 企业SaaS/安全
+    'IT Management SaaS': [
+      'Enterprise SaaS',              // 企业软件
+      'Cybersecurity',                // 网络安全
+      'Cloud Computing',              // 云计算
+    ],
+
+    // GRC软件 → 企业SaaS/合规
+    'GRC Software': [
+      'Enterprise SaaS',              // 企业软件
+      'Regional Bank',                // 银行合规客户
+      'Health Insurance',             // 保险合规客户
+    ],
+
+    // 可观测性 → 企业SaaS/云计算
+    'Observability': [
+      'Enterprise SaaS',              // 企业软件
+      'Cloud Computing',              // 云计算
+      'Cybersecurity',                // 安全监控
+    ],
+
+    // 云SIEM → 安全/企业SaaS
+    'Cloud SIEM': [
+      'Cybersecurity',                // 网络安全
+      'Enterprise SaaS',              // 企业软件
+      'Cloud Computing',              // 云计算
+    ],
+
+    // CTV平台 → 流媒体/广告
+    'CTV Platform': [
+      'Content Streaming',            // 流媒体竞争
+      'Digital Advertising',          // 数字广告
+      'Consumer Electronics',         // 消费电子
+    ],
+
+    // 拉美支付 → 金融科技/电商
+    'LatAm Payments': [
+      'Payments',                     // 全球支付行业
+      'Fintech',                      // 金融科技
+      'E-commerce',                   // 电商客户
+    ],
+
+    // AI数据工程 → AI服务/企业SaaS
+    'AI Data Engineering': [
+      'AI Services',                  // AI服务
+      'Enterprise SaaS',              // 企业软件客户
+      'Cloud Computing',              // 云计算
+    ],
+
+    // 电力转换 → 半导体设备/工业
+    'Power Conversion': [
+      'Semiconductor Equipment',      // 半导体设备
+      'Industrial Automation',        // 工业自动化
+      'Power Equipment',              // 电力设备
+    ],
+
+    // 轨道车辆 → 铁路/化工/能源
+    'Railcar': [
+      'Railroad',                     // 铁路运营商
+      'Specialty Chemicals',          // 化工品运输
+      'Midstream Gas',                // 油气运输
+    ],
+
+    // 特种合金 → 航空/国防/医疗
+    'Specialty Alloys': [
+      'Aerospace Components',         // 航空零部件
+      'Aviation Services',            // 航空服务
+      'Medical Devices',              // 医疗器械
     ],
   },
 };

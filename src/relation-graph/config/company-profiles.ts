@@ -4186,6 +4186,85 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['fresh_ingredients', 'daytime_concept', 'quality', 'atmosphere'],
     channels: ['dine_in', 'takeout'],
   },
+
+  // --- DTC Mattress (B2C) ---
+  'PRPL': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['mattress_replacement', 'new_home', 'sleep_improvement', 'comfort_upgrade'],
+    valueProps: ['comfort_technology', 'DTC_value', 'hyper_elastic', 'no_pressure'],
+    channels: ['online', 'retail', 'direct'],
+  },
+  // --- Value Apparel Retail (B2C) ---
+  'CATO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'budget', gender: 'female' },
+    occasions: ['everyday_wear', 'family_clothing', 'budget_shopping', 'seasonal'],
+    valueProps: ['value', 'family_friendly', 'convenience', 'plus_size', 'small_town'],
+    channels: ['retail'],
+  },
+
+  // --- Broadcast TV (B2C) ---
+  'FOXA': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['news', 'sports', 'entertainment', 'live_events'],
+    valueProps: ['live_content', 'sports_rights', 'brand_trust', 'cable_bundle'],
+    channels: ['broadcast', 'cable', 'streaming'],
+  },
+
+  // --- Consumer Health (B2C) ---
+  'KVUE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['health_maintenance', 'pain_relief', 'skincare', 'baby_care'],
+    valueProps: ['trusted_brands', 'heritage', 'efficacy', 'accessibility'],
+    channels: ['retail', 'pharmacy', 'online'],
+  },
+
+  // --- Digital Lending (B2C) ---
+  'LC': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['debt_consolidation', 'personal_loan', 'savings', 'auto_refinance'],
+    valueProps: ['convenience', 'speed', 'competitive_rates', 'digital_first'],
+    channels: ['online', 'mobile_app'],
+  },
+
+  // --- CTV Platform (B2C) ---
+  'VZIO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['entertainment', 'streaming', 'cord_cutting', 'smart_home'],
+    valueProps: ['value', 'smart_features', 'free_content', 'picture_quality'],
+    channels: ['retail', 'online'],
+  },
+
+  // --- Healthcare Navigation (B2B2C) ---
+  'ACCD': {
+    demographics: { ageGroup: 'working_age', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['health_navigation', 'benefits_selection', 'care_coordination', 'wellness'],
+    valueProps: ['personalized_guidance', 'cost_savings', 'advocacy', 'convenience'],
+    channels: ['employer', 'mobile_app', 'phone'],
+  },
+
+  // --- Home Services InsurTech (B2B2C) ---
+  'PRCH': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['home_purchase', 'moving', 'home_maintenance', 'insurance'],
+    valueProps: ['convenience', 'bundled_services', 'digital_homebuying', 'protection'],
+    channels: ['online', 'partner_channel', 'mobile_app'],
+  },
+
+  // --- Texas Regional Bank (B2B2C) ---
+  'CFR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['banking', 'wealth_management', 'business_banking', 'lending'],
+    valueProps: ['relationship_banking', 'local_expertise', 'wealth_services', 'texas_presence'],
+    channels: ['branch', 'online', 'mobile_app'],
+  },
+
+  // --- Mid-Atlantic Regional Bank (B2B2C) ---
+  'WSFS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'middle', gender: 'all' },
+    occasions: ['banking', 'trust_services', 'business_banking', 'mortgage'],
+    valueProps: ['community_focus', 'trust_expertise', 'local_service', 'relationship'],
+    channels: ['branch', 'online', 'mobile_app'],
+  },
 };
 
 // ============================================================
@@ -6500,6 +6579,382 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'ZUO': 'mid',                   // Zuora - 订阅管理(中周期)
   'FWRG': 'mid',                  // First Watch - 早午餐连锁(中周期)
   'NUVB': 'early',                // Nuvation Bio - 临床肿瘤生物科技(早周期)
+
+  // ========== 新增: Healthcare, Industrials, REITs, Banks, Consumer (2026-01-24) ==========
+  // --- Biotech (Early Cycle) ---
+  'GPCR': 'early',               // Structure Therapeutics - GPCR生物科技(早周期)
+  'CRNX': 'early',               // Crinetics Pharmaceuticals - 内分泌生物科技(早周期)
+  'ERAS': 'early',               // Erasca - RAS肿瘤(早周期)
+  'FUSN': 'early',               // Fusion Pharmaceuticals - 放射性药物(早周期)
+  'ACLX': 'early',               // Arcellx - CAR-T细胞治疗(早周期)
+  'BCYC': 'early',               // Bicycle Therapeutics - 自行车毒素偶联(早周期)
+  'CMPS': 'early',               // COMPASS Pathways - 迷幻疗法(早周期)
+  'CRVS': 'early',               // Corvus Pharmaceuticals - 免疫肿瘤(早周期)
+  'DICE': 'early',               // DICE Therapeutics - 口服生物制剂(早周期)
+  'CLDX': 'early',               // Celldex Therapeutics - 抗体疗法(早周期)
+  'AVXL': 'early',               // Anavex Life Sciences - 神经生物科技(早周期)
+  'BTAI': 'early',               // BioXcel Therapeutics - AI神经科学(早周期)
+  'ETNB': 'early',               // 89bio - 肝病生物科技(早周期)
+  'CPRX': 'early',               // Catalyst Pharma - 罕见神经肌肉(早周期)
+  'ALEC': 'early',               // Alector - 神经退行性疾病(早周期)
+  // --- Animal Health ---
+  'ELAN': 'defensive',           // Elanco Animal Health - 动物健康(防御型)
+  // --- Infrastructure Engineering ---
+  'NVEE': 'mid',                 // NV5 Global - 基础设施工程(中周期)
+  // --- Building Products ---
+  'GFF': 'early',                // Griffon Corp - 家居/建筑产品(早周期)
+  // --- REITs (Mid Cycle, Interest Rate Sensitive) ---
+  'DEA': 'defensive',            // Easterly Government Properties - 政府REIT(防御型)
+  'CTO': 'mid',                  // CTO Realty Growth - 零售/混合REIT(中周期)
+  'GMRE': 'defensive',           // Global Medical REIT - 医疗办公REIT(防御型)
+  'JBGS': 'mid',                 // JBG SMITH Properties - 混合用途REIT(中周期)
+  'PDM': 'mid',                  // Piedmont Office Realty - 办公REIT(中周期)
+  // --- Regional Banks (Defensive-Mid Cycle) ---
+  'FIBK': 'early',               // Glacier Bancorp/FIBK - 蒙大拿区域银行(早周期)
+  'UBSI': 'early',               // United Bankshares - WV/VA区域银行(早周期)
+  'WTFC': 'early',               // Wintrust Financial - 芝加哥区域银行(早周期)
+  'PPBI': 'early',               // Pacific Premier Bancorp - 加州区域银行(早周期)
+  // --- Consumer ---
+  'PRPL': 'mid',                 // Purple Innovation - DTC床垫(中周期)
+  'CATO': 'defensive',           // Cato Corp - 价值服装零售(防御型)
+
+  // ========== 新增50只: Financial Services/Insurance/REITs/Banks (2026-01-24) ==========
+  // --- Agency Mortgage REITs (利率敏感, 早周期) ---
+  'AGNC': 'early',               // AGNC Investment - 机构MBS抵押REIT(早周期)
+  'NLY': 'early',                // Annaly Capital - 机构MBS抵押REIT(早周期)
+  'TWO': 'early',                // Two Harbors - 机构MBS/MSR抵押REIT(早周期)
+  'IVR': 'early',                // Invesco Mortgage - 机构MBS抵押REIT(早周期)
+  // --- Residential/Hybrid Mortgage REITs ---
+  'MFA': 'early',                // MFA Financial - 住宅非机构mREIT(早周期)
+  'NYMT': 'early',               // NY Mortgage Trust - 住宅/多户mREIT(早周期)
+  'MITT': 'early',               // AG Mortgage - 住宅非机构mREIT(早周期)
+  'RWT': 'early',                // Redwood Trust - 住宅Jumbo mREIT(早周期)
+  'EFC': 'early',                // Ellington Financial - 混合mREIT/CLO(早周期)
+  'PMT': 'early',                // PennyMac Mortgage Trust - 对应贷款/MSR(早周期)
+  // --- Commercial Mortgage REITs ---
+  'STWD': 'early',               // Starwood Property Trust - 商业抵押REIT(早周期)
+  'ARI': 'early',                // Apollo Commercial RE - 商业抵押REIT(早周期)
+  'LADR': 'early',               // Ladder Capital - 商业过桥贷/CMBS(早周期)
+  'ABR': 'early',                // Arbor Realty - 多户/桥梁贷款mREIT(早周期)
+  'ACRE': 'early',               // Ares Commercial RE - 商业浮动利率贷款(早周期)
+  // --- Specialty REITs ---
+  'SAFE': 'defensive',           // Safehold - 地面租赁REIT(防御型)
+  'ESRT': 'mid',                 // Empire State Realty - NYC办公REIT(中周期)
+  'HPP': 'mid',                  // Hudson Pacific - 西海岸办公/影棚REIT(中周期)
+  'GOOD': 'defensive',           // Gladstone Commercial - 净租赁REIT(防御型)
+  'INN': 'mid',                  // Summit Hotel Properties - 精选服务酒店REIT(中周期)
+  'XHR': 'mid',                  // Xenia Hotels - 高端酒店REIT(中周期)
+  // --- Regional Banks (早周期, 利率敏感) ---
+  'CATY': 'early',               // Cathay General Bancorp - 加州亚裔社区银行(早周期)
+  'BPOP': 'early',               // Popular Inc - 波多黎各区域银行(早周期)
+  'CFR': 'early',                // Cullen/Frost Bankers - 德州区域银行(早周期)
+  'CVBF': 'early',               // CVB Financial - 加州商业银行(早周期)
+  'BANF': 'early',               // BancFirst - 俄克拉荷马社区银行(早周期)
+  'AUB': 'early',                // Atlantic Union Bankshares - 弗吉尼亚区域银行(早周期)
+  'QCRH': 'early',               // QCR Holdings - 中西部区域银行(早周期)
+  'ISBC': 'early',               // Investors Bancorp - 新泽西储蓄银行(早周期)
+  'KRNY': 'early',               // Kearny Financial - 新泽西储蓄银行(早周期)
+  'CPF': 'early',                // Central Pacific Financial - 夏威夷银行(早周期)
+  // --- Insurance ---
+  'AIZ': 'defensive',            // Assurant - 特种保险/住房(防御型)
+  'CNA': 'defensive',            // CNA Financial - 商业财产险(防御型)
+  'HMN': 'defensive',            // Horace Mann - 教育工作者保险(防御型)
+  'MCY': 'defensive',            // Mercury General - 加州车险(防御型)
+  'RGA': 'defensive',            // Reinsurance Group - 寿险再保险(防御型)
+  'AEL': 'mid',                  // American Equity - 固定年金保险(中周期)
+  'SPNT': 'defensive',           // SiriusPoint - 特种再保险(防御型)
+  'AGM': 'defensive',            // Federal Ag Mortgage - 农业抵押GSE(防御型)
+  // --- Asset Managers & Wealth Management ---
+  'AMP': 'mid',                  // Ameriprise Financial - 财富管理/资管(中周期)
+  'BN': 'mid',                   // Brookfield Corp - 另类资产管理(中周期)
+  'AMG': 'mid',                  // Affiliated Managers - 多元附属资管(中周期)
+  'FHI': 'defensive',            // Federated Hermes - 货币市场/固收资管(防御型)
+  // --- BDCs ---
+  'MAIN': 'mid',                 // Main Street Capital - 中下游市场BDC(中周期)
+  'PSEC': 'mid',                 // Prospect Capital - 中市场BDC(中周期)
+  'SLRC': 'mid',                 // SLR Investment - 高级担保BDC(中周期)
+  // --- Specialty Finance & Fintech ---
+  'LC': 'early',                 // LendingClub - 数字银行/个人贷(早周期)
+  'PFSI': 'early',               // PennyMac Financial - 抵押贷款发起/服务(早周期)
+  'HRB': 'defensive',            // H&R Block - 税务服务(防御型)
+  'MMI': 'mid',                  // Marcus & Millichap - 商业地产经纪(中周期)
+
+  // ========== 新增30只 (2026-01-24) ==========
+  // --- Media/Broadcasting ---
+  'FOXA': 'mid',                 // Fox Corp Class A - 广播电视(中周期)
+  // --- eCommerce Platform SaaS ---
+  'BIGC': 'early',              // BigCommerce - 电商SaaS(早周期)
+  'VTEX': 'early',              // VTEX - 拉美电商SaaS(早周期)
+  // --- UCaaS/Cloud Communications ---
+  'RNG': 'early',               // RingCentral - UCaaS(早周期)
+  // --- CX/Workforce Management ---
+  'NICE': 'mid',                // NICE Ltd - CX/劳动力管理(中周期)
+  // --- Conversational AI ---
+  'LPSN': 'early',              // LivePerson - 对话AI(早周期)
+  // --- Aviation Services ---
+  'FTAI': 'mid',                // FTAI Aviation - 航空租赁/MRO(中周期)
+  // --- Consumer Health ---
+  'KVUE': 'defensive',          // Kenvue - 消费健康(防御型)
+  // --- Healthcare Navigation ---
+  'ACCD': 'early',              // Accolade - 医疗导航(早周期)
+  // --- Computational Drug Discovery ---
+  'SDGR': 'early',              // Schrodinger - 计算药物发现(早周期)
+  // --- Digital Lending ---
+  'LC': 'early',                // LendingClub - 数字贷款(早周期)
+  // --- Wholesale Mortgage ---
+  'UWMC': 'early',              // UWM Holdings - 批发按揭(早周期)
+  // --- Restaurant Tech ---
+  'OLO': 'mid',                 // Olo - 餐饮订购SaaS(中周期)
+  // --- Home Services InsurTech ---
+  'PRCH': 'early',              // Porch Group - 家庭服务/保险科技(早周期)
+  // --- Banking Software ---
+  'BLND': 'early',              // Blend Labs - 银行/按揭SaaS(早周期)
+  // --- IT Management SaaS ---
+  'NABL': 'mid',                // N-able - IT管理SaaS(中周期)
+  // --- GRC Software ---
+  'WK': 'mid',                  // Workiva - GRC/ESG报告(中周期)
+  // --- Observability ---
+  'NEWR': 'mid',                // New Relic - 可观测性/APM(中周期)
+  // --- Cloud SIEM ---
+  'SUMO': 'mid',                // Sumo Logic - 云SIEM(中周期)
+  // --- CTV Platform ---
+  'VZIO': 'mid',                // Vizio - 智能电视/CTV(中周期)
+  // --- LatAm Payments ---
+  'EVTC': 'mid',                // EVERTEC - 拉美支付(中周期)
+  // --- AI Data Engineering ---
+  'INOD': 'early',              // Innodata - AI数据工程(早周期)
+  // --- Power Conversion ---
+  'AEIS': 'mid',                // Advanced Energy - 电力转换(中周期)
+  // --- Railcar ---
+  'TRN': 'mid',                 // Trinity Industries - 轨道车辆(中周期)
+  // --- Specialty Chemicals ---
+  'ASH': 'mid',                 // Ashland - 特种化学(中周期)
+  // --- Specialty Alloys ---
+  'CRS': 'mid',                 // Carpenter Technology - 特种合金(中周期)
+  // --- Metallurgical Coal ---
+  'HCC': 'late',                // Warrior Met Coal - 焦煤(晚周期)
+  // --- Regional Banks ---
+  'CFR': 'early',               // Culberson-Frost - 德州银行(早周期)
+  'TCBI': 'early',              // Texas Capital - 德州商业银行(早周期)
+  'WSFS': 'early',              // WSFS Financial - 中大西洋银行(早周期)
+
+  // ========== 新增50只: Healthcare / Biotech / MedTech (2026-01-24) ==========
+  'ADMA': 'defensive',            // ADMA Biologics - 血浆蛋白疗法(防御型，商业化)
+  'AGEN': 'early',                // Agenus - 免疫肿瘤抗体(早周期)
+  'ALLK': 'early',                // Allakos - 嗜酸性粒细胞生物科技(早周期)
+  'AMPH': 'defensive',            // Amphastar - 特种仿制药(防御型，商业化)
+  'ANAB': 'early',                // AnaptysBio - 自免抗体(早周期)
+  'APGE': 'early',                // Apogee Therapeutics - 基因编辑(早周期)
+  'ARAY': 'mid',                  // Accuray - 放射治疗设备(中周期)
+  'ATHA': 'early',                // Athira Pharma - 阿尔茨海默(早周期)
+  'AUPH': 'defensive',            // Aurinia - 肾病(防御型，商业化)
+  'AVEO': 'defensive',            // AVEO Pharmaceuticals - 肾细胞癌(防御型)
+  'BBI': 'early',                 // Brickell Biotech - 临床肿瘤(早周期)
+  'BCAB': 'early',                // BioAtla - ADC抗体偶联(早周期)
+  'BDTX': 'early',                // Black Diamond - 精准肿瘤(早周期)
+  'BNGO': 'early',                // Bionano Genomics - 光学基因组图谱(早周期)
+  'CARA': 'early',                // Cara Therapeutics - 瘙痒/疼痛(早周期)
+  'CHRS': 'mid',                  // Coherus BioSciences - 生物仿制药(中周期)
+  'CLPT': 'early',                // ClearPoint Neuro - 数字疗法(早周期)
+  'DCPH': 'early',                // Deciphera - 眼科基因疗法(早周期)
+  'DVAX': 'defensive',            // Dynavax - 疫苗/佐剂(防御型，商业化)
+  'DYN': 'early',                 // Dyne Therapeutics - AAV基因疗法(早周期)
+  'EDIT': 'early',                // Editas Medicine - CRISPR基因编辑(早周期)
+  'EXAI': 'early',                // Exscientia - AI药物发现(早周期)
+  'FULC': 'early',                // Fulcrum Therapeutics - 表观遗传(早周期)
+  'GMAB': 'mid',                  // Genmab - 抗体平台(中周期，有许可收入)
+  'GRTS': 'early',                // Gritstone bio - mRNA疗法(早周期)
+  'HRTX': 'defensive',            // Heron Therapeutics - 疼痛管理(防御型，商业化)
+  'ICAD': 'mid',                  // iCAD - AI医学影像(中周期)
+  'IMNM': 'early',                // Immunomedics/Gilead - 免疫生物科技(早周期)
+  'INVA': 'defensive',            // Innoviva - 呼吸制药(防御型，商业化)
+  'ISEE': 'early',                // IVERIC bio - 视网膜补体(早周期)
+  'KPTI': 'mid',                  // Karyopharm - 核输出抑制(中周期，商业化)
+  'LGND': 'defensive',            // Ligand Pharma - 药物特许权(防御型)
+  'MNKD': 'mid',                  // MannKind - 吸入胰岛素(中周期，商业化)
+  'MORF': 'early',                // Morphic Holding - 蛋白降解(早周期)
+  'MRTX': 'mid',                  // Mirati Therapeutics - KRAS肿瘤(中周期，商业化)
+  'MRUS': 'early',                // Merus - 双特异性抗体平台(早周期)
+  'NRIX': 'early',                // Nurix Therapeutics - 神经激酶(早周期)
+  'OCGN': 'early',                // Ocugen - 疫苗/基因疗法(早周期)
+  'OGN': 'defensive',             // Organon - 女性健康(防御型，成熟产品)
+  'RDNT': 'mid',                  // RadNet - 放射影像服务(中周期)
+  'RGNX': 'early',                // REGENXBIO - AAV基因疗法平台(早周期)
+  'SAGE': 'mid',                  // Sage Therapeutics - 神经科学(中周期，商业化)
+  'SGMO': 'early',                // Sangamo Therapeutics - 锌指基因调控(早周期)
+  'SNDX': 'early',                // Syndax Pharmaceuticals - 基因组医学(早周期)
+  'TARS': 'early',                // Tarsus Pharmaceuticals - 内分泌(早周期)
+  'VCYT': 'mid',                  // Veracyte - 分子诊断(中周期，商业化)
+  'VNDA': 'defensive',            // Vanda Pharmaceuticals - CNS(防御型，商业化)
+  'XNCR': 'early',                // Xencor - Fc工程抗体平台(早周期)
+  'ZYME': 'early',                // Zymeworks - ADC平台(早周期)
+  // --- Small/Mid-Cap Technology (2026-01-24) ---
+  'ADTN': 'mid',                  // ADTRAN - 光纤网络设备(中周期)
+  'ATEN': 'mid',                  // A10 Networks - 网络安全/ADC(中周期)
+  'AVPT': 'mid',                  // AvePoint - 云数据管理(中周期)
+  'BCOV': 'mid',                  // Brightcove - 视频平台(中周期)
+  'BLKB': 'defensive',            // Blackbaud - 非营利SaaS(防御型)
+  'CCCS': 'mid',                  // CCC Intelligent Solutions - 汽车保险科技(中周期)
+  'CGNT': 'defensive',            // Cognyte - 安全分析(防御型)
+  'CMTL': 'mid',                  // Comtech Telecom - 电信设备(中周期)
+  'CORZ': 'early',                // Core Scientific - 加密矿业/HPC(早周期)
+  'CXM': 'mid',                   // Sprinklr - 客户体验管理(中周期)
+  'EGHT': 'mid',                  // 8x8 - 统一通信(中周期)
+  'ENFN': 'mid',                  // Enfusion - 投资管理SaaS(中周期)
+  'EXLS': 'mid',                  // ExlService - 分析/数字化转型(中周期)
+  'FARO': 'mid',                  // FARO Technologies - 3D测量(中周期)
+  'FORR': 'defensive',            // Forrester Research - 科技研究咨询(防御型)
+  'MODN': 'mid',                  // Model N - 收入管理SaaS(中周期)
+  'MSTR': 'early',                // MicroStrategy - BI/比特币(早周期)
+  'SABR': 'late',                 // Sabre - 旅行技术/GDS(晚周期)
+  'TTGT': 'mid',                  // TechTarget - B2B科技媒体(中周期)
+  'UPLD': 'mid',                  // Upland Software - 云工作管理(中周期)
+  'BTBT': 'early',                // Bit Digital - 加密矿业(早周期)
+  'OSPN': 'defensive',            // OneSpan - 数字身份安全(防御型)
+  'PLTK': 'mid',                  // Playtika - 手游/社交博彩(中周期)
+  'QADA': 'defensive',            // QAD Inc - 制造业ERP(防御型)
+  'SEAT': 'late',                 // Vivid Seats - 票务平台(晚周期)
+  'SSTI': 'defensive',            // ShotSpotter - 枪声检测(防御型)
+  'EBIX': 'mid',                  // Ebix - 保险科技(中周期)
+  'DUOT': 'early',                // Duos Technologies - AI铁路检测(早周期)
+  'LEDS': 'late',                 // SemiLEDs - LED芯片(晚周期)
+  'LLAP': 'early',                // Terran Orbital - 小卫星制造(早周期)
+  'LVOX': 'mid',                  // LiveVox - 联络中心即服务(中周期)
+  'MCHX': 'mid',                  // Marchex - 通话分析(中周期)
+  'MIND': 'late',                 // MIND Technology - 地震技术(晚周期)
+  'NKLA': 'early',                // Nikola - 电动/氢能卡车(早周期)
+  'OPRX': 'mid',                  // OptimizeRx - 健康科技营销(中周期)
+  'GSKY': 'mid',                  // GreenSky - 家装贷款金融科技(中周期)
+  'TIGO': 'mid',                  // Millicom/Tigo - 拉美电信(中周期)
+  'IRNT': 'early',                // IronNet - 网络安全NDR(早周期)
+  'MICT': 'early',                // MICT Inc - 新兴市场金融科技(早周期)
+  'EIGI': 'mid',                  // Endpoint/IT Intelligence - IT资产管理(中周期)
+  'ESMT': 'mid',                  // EngageSmart - 计费/患者参与(中周期)
+  'HMST': 'early',                // HomeStreet - 太平洋西北区域银行(早周期)
+  'RNST': 'early',                // Renasant Corp - 东南区域银行(早周期)
+  'CLPS': 'mid',                  // CLPS Technology - 中国金融科技IT(中周期)
+  'BOTZ': 'mid',                  // Global X Robotics ETF - 机器人/AI主题(中周期)
+  'APTI': 'mid',                  // Apptio - IT规划/FinOps(中周期)
+  'CYRX': 'mid',                  // Cryoport - 低温物流(中周期)
+  'SGHT': 'early',                // Sight Sciences - 眼科医疗器械(早周期)
+  'EPIQ': 'defensive',            // Epiq Systems - 法律科技(防御型)
+
+  // ========== 新增46只: Industrial/Defense/Aerospace/Transport (2026-01-24) ==========
+  'ACTG': 'mid',                   // Acacia Research - 专利授权(中周期)
+  'ADS': 'mid',                    // Alliance Data - 营销/忠诚度服务(中周期)
+  'AEYE': 'early',                 // AudioEye - 数字无障碍(早周期)
+  'AGR': 'defensive',              // Avangrid - 可再生能源公用事业(防御型)
+  'AHH': 'late',                   // Armada Hoffler - 多元化REIT(晚周期)
+  'AIN': 'mid',                    // Albany International - 航空复合材料(中周期)
+  'AJRD': 'defensive',             // Aerojet Rocketdyne - 火箭推进(防御型)
+  'ALSN': 'mid',                   // Allison Transmission - 变速器(中周期)
+  'AMKR': 'mid',                   // Amkor Technology - 半导体封测(中周期)
+  'AMSC': 'early',                 // American Superconductor - 超导/电力电子(早周期)
+  'ATSG': 'mid',                   // Air Transport Services - 航空货运(中周期)
+  'ATRO': 'mid',                   // Astronics - 航空电子照明(中周期)
+  'B': 'mid',                      // Barnes Group - 航空/工业部件(中周期)
+  'BBU': 'mid',                    // Brookfield Business Partners - 工业集团(中周期)
+  'BKSY': 'early',                 // BlackSky - 卫星地理情报(早周期)
+  'BLDP': 'early',                 // Ballard Power - 燃料电池(早周期)
+  'BLX': 'mid',                    // Banco Latinoamericano - 贸易融资(中周期)
+  'BWEN': 'early',                 // Broadwind - 风能组件(早周期)
+  'CDMO': 'defensive',             // Avid Bioservices - 生物药CDMO(防御型)
+  'CIR': 'mid',                    // CIRCOR - 流量控制(中周期)
+  'CRS': 'mid',                    // Carpenter Technology - 特种合金(中周期)
+  'DRS': 'defensive',              // Leonardo DRS - 国防电子(防御型)
+  'GNSS': 'defensive',             // Genasys - 声学/大规模通知(防御型)
+  'GTLS': 'mid',                   // Chart Industries - 气体处理设备(中周期)
+  'HDS': 'mid',                    // HD Supply - MRO分销(中周期)
+  'HEICO': 'defensive',            // HEICO - 航空替换零件(防御型)
+  'HOG': 'late',                   // Harley-Davidson - 摩托车(晚周期)
+  'KRNT': 'mid',                   // Kornit Digital - 数字纺织印刷(中周期)
+  'LPX': 'early',                  // Louisiana-Pacific - 工程木制品(早周期)
+  'MFGP': 'defensive',             // Micro Focus - 企业遗留软件(防御型)
+  'MGRC': 'mid',                   // McGrath RentCorp - 模块化设备租赁(中周期)
+  'MLI': 'mid',                    // Mueller Industries - 铜制品(中周期)
+  'MTRN': 'mid',                   // Materion - 先进材料(中周期)
+  'OFLX': 'mid',                   // Omega Flex - 柔性管道(中周期)
+  'OXM': 'late',                   // Oxford Industries - 高端服饰(晚周期)
+  'PLPC': 'mid',                   // Preformed Line Products - 电力硬件(中周期)
+  'PNR': 'mid',                    // Pentair - 水处理(中周期)
+  'RAVN': 'mid',                   // Raven Industries - 精准农业/国防(中周期)
+  'RUSHA': 'mid',                  // Rush Enterprises - 商用卡车经销(中周期)
+  'TMC': 'early',                  // TMC Metals - 深海采矿(早周期)
+  'TTI': 'mid',                    // TETRA Technologies - 完井液(中周期)
+  'UHAL': 'defensive',             // U-Haul - 搬家/仓储(防御型)
+  'VVV': 'defensive',              // Valvoline - 汽车养护服务(防御型)
+  'VRRM': 'defensive',             // Verra Mobility - 交通管理(防御型)
+  'WNC': 'mid',                    // Wabash National - 拖车制造(中周期)
+  'WSC': 'mid',                    // WillScot Mobile Mini - 模块化空间(中周期)
+
+  // ========== 新增50只: Energy, Utilities, Mining, Materials (2026-01-24) ==========
+  // --- Oil & Gas E&P ---
+  'AMPY': 'late',                 // Amplify Energy - 成熟资产E&P(晚周期)
+  'BRY': 'late',                  // Berry Corp - 加州热采E&P(晚周期)
+  'CPE': 'mid',                   // Callon Petroleum - 二叠纪E&P(中周期)
+  'CNX': 'mid',                   // CNX Resources - 阿巴拉契亚天然气(中周期)
+  'DEN': 'mid',                   // Denbury - 二叠纪E&P(中周期)
+  'ERF': 'late',                  // Enerplus - 加拿大水驱E&P(晚周期)
+  'KOS': 'mid',                   // Kosmos Energy - 西非深水E&P(中周期)
+  'NFG': 'defensive',             // National Fuel Gas - 综合天然气(防御型)
+  'OAS': 'mid',                   // Oasis Petroleum - 巴肯E&P(中周期)
+  'EQNR': 'mid',                  // Equinor - 挪威综合石油(中周期)
+  'YPF': 'mid',                   // YPF - 阿根廷综合石油(中周期)
+  'BKV': 'mid',                   // BKV Corp - 天然气E&P/碳捕获(中周期)
+  'TPL': 'defensive',             // Texas Pacific Land - 权益金/水务(防御型)
+  'PBT': 'late',                  // Permian Basin Royalty Trust - 权益金信托(晚周期)
+  'BSM': 'late',                  // Black Stone Minerals - 矿权MLP(晚周期)
+  // --- Midstream / Pipeline ---
+  'ENB': 'defensive',             // Enbridge - 加拿大管道巨头(防御型)
+  'TRP': 'defensive',             // TC Energy - 天然气管道(防御型)
+  'PAA': 'mid',                   // Plains All American - 原油管道MLP(中周期)
+  'GEL': 'mid',                   // Genesis Energy - 中游服务MLP(中周期)
+  'GPP': 'mid',                   // Green Plains Partners - 天然气采集(中周期)
+  'MMLP': 'mid',                  // Martin Midstream - 终端/仓储MLP(中周期)
+  'NRP': 'late',                  // Natural Resource Partners - 矿权MLP(晚周期)
+  'SUN': 'mid',                   // Sunoco LP - 成品油分销MLP(中周期)
+  'TEP': 'mid',                   // Tallgrass Energy Partners - 天然气采集(中周期)
+  // --- LNG / Gas Shipping ---
+  'LPG': 'mid',                   // Dorian LPG - LPG航运(中周期)
+  'TGS': 'defensive',             // TGS Nopec - 阿根廷天然气管道(防御型)
+  // --- Offshore Drilling & Services ---
+  'SDRL': 'late',                 // Seadrill - 深水钻井(晚周期)
+  'OIS': 'mid',                   // Oil States International - 油服设备(中周期)
+  'PDS': 'mid',                   // Precision Drilling - 加拿大钻井(中周期)
+  'VTOL': 'mid',                  // Bristow Group - 海上直升机(中周期)
+  'SBR': 'mid',                   // Sabine Royalty Trust - 井下作业(中周期)
+  'MRC': 'mid',                   // MRC Global - PVF分销(中周期)
+  'CVEO': 'mid',                  // Civeo - 远程营地/劳务(中周期)
+  // --- Shipping ---
+  'NMM': 'late',                  // Navios Maritime Partners - 干散货船(晚周期)
+  'ATCO': 'mid',                  // Atlas Corp/Seaspan - 集装箱租赁(中周期)
+  // --- Utilities ---
+  'AQN': 'defensive',             // Algonquin Power - 综合公用事业(防御型)
+  'PNM': 'defensive',             // PNM Resources - 新墨西哥电力(防御型)
+  'EE': 'defensive',              // Excelerate Energy - 巴西电力分销(防御型)
+  'CIG': 'defensive',             // Companhia Energetica - 巴西电力(防御型)
+  'TU': 'defensive',              // TELUS - 加拿大电信(防御型)
+  'UGI': 'defensive',             // UGI Corp - 天然气/丙烷公用(防御型)
+  // --- Coal ---
+  'BTU': 'late',                  // Peabody Energy - 动力煤/焦煤(晚周期)
+  'CEIX': 'late',                 // CONSOL Energy - 阿巴拉契亚煤(晚周期)
+  // --- Mining & Metals ---
+  'KGC': 'mid',                   // Kinross Gold - 黄金矿商(中周期)
+  'MGX': 'mid',                   // Magnesita/Mining - 铁矿石(中周期)
+  'GLNCY': 'mid',                 // Glencore - 多元矿业/贸易(中周期)
+  // --- Refining & Chemicals ---
+  'CLMT': 'mid',                  // Calumet Specialty - 再炼制(中周期)
+  'LXU': 'late',                  // LSB Industries - 氮肥/化工(晚周期)
+  // --- Clean Energy / Renewables ---
+  'AMRC': 'early',                // Ameresco - 能效项目(早周期)
+  'IREN': 'early',                // Iris Energy - 比特币矿/数据中心(早周期)
+  'CLW': 'mid',                   // Clearwater Paper - 生物质/纸板(中周期)
+  'OPAL': 'mid',                  // OPAL Fuels - 炭黑/特种化学(中周期)
+  'ENIC': 'defensive',            // Enel Chile - 智利电力(防御型)
+  // --- Energy Services ---
+  'MPLN': 'mid',                  // MultiPlan - 产水管理(中周期)
+  'TAC': 'mid',                   // TransAlta - 工业维修服务(中周期)
+  'GTN': 'defensive',             // GTN - 天然气州际管道(防御型)
 };
 
 // ============================================================
@@ -14034,6 +14489,530 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   // Nuvation Bio - 肿瘤生物科技
   'NUVB': {
     interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 新增: Healthcare, Industrials, REITs, Banks, Consumer (2026-01-24) ==========
+  // --- Biotech (利率敏感, 增长不敏感) ---
+  'GPCR': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CRNX': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ERAS': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'FUSN': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ACLX': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'BCYC': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CMPS': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CRVS': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'DICE': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CLDX': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'AVXL': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'BTAI': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ETNB': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CPRX': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ALEC': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // --- Animal Health (防御型) ---
+  'ELAN': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  // --- Infrastructure Engineering ---
+  'NVEE': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // --- Building Products ---
+  'GFF': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.6, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // --- REITs (高利率敏感) ---
+  'DEA': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'CTO': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'GMRE': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'JBGS': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'PDM': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  // --- Regional Banks (利率正相关) ---
+  'FIBK': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'UBSI': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'WTFC': {
+    interestRate: 0.7, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: 0.2, oilPrice: 0.0,
+  },
+  'PPBI': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  // --- Consumer ---
+  'PRPL': {
+    interestRate: -0.3, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'CATO': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // ========== 新增30只 (2026-01-24) ==========
+  // Fox Corp - 广播/媒体(广告敏感)
+  'FOXA': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // BigCommerce - 电商SaaS(SMB敏感)
+  'BIGC': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // VTEX - 拉美电商SaaS(新兴市场+美元敏感)
+  'VTEX': {
+    interestRate: -0.4, inflation: -0.3, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.0,
+  },
+  // RingCentral - UCaaS(企业IT支出)
+  'RNG': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // NICE - CX/劳动力管理(企业支出稳定)
+  'NICE': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // LivePerson - 对话AI(成长型)
+  'LPSN': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // FTAI Aviation - 航空租赁/MRO(航空周期)
+  'FTAI': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.4,
+  },
+  // Kenvue - 消费健康(防御型必需品)
+  'KVUE': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  // Accolade - 医疗导航(企业健康福利)
+  'ACCD': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.4,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // Schrodinger - 计算药物发现(研发支出)
+  'SDGR': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // LendingClub - 数字贷款(利率高敏感)
+  'LC': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // UWM Holdings - 批发按揭(利率+住房高敏感)
+  'UWMC': {
+    interestRate: -0.8, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Olo - 餐饮订购SaaS(餐饮行业)
+  'OLO': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // Porch Group - 家庭服务/保险科技(住房敏感)
+  'PRCH': {
+    interestRate: -0.5, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Blend Labs - 银行/按揭SaaS(住房+利率)
+  'BLND': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // N-able - IT管理SaaS(SMB IT支出)
+  'NABL': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Workiva - GRC/ESG报告(合规需求)
+  'WK': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // New Relic - 可观测性/APM(IT支出)
+  'NEWR': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Sumo Logic - 云SIEM(安全支出)
+  'SUMO': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Vizio - 智能电视/CTV(消费电子)
+  'VZIO': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // EVERTEC - 拉美支付(新兴市场)
+  'EVTC': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  // Innodata - AI数据工程(AI资本支出)
+  'INOD': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Advanced Energy - 电力转换(半导体设备+工业)
+  'AEIS': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  // Trinity Industries - 轨道车辆(工业周期)
+  'TRN': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.7, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+  // Ashland - 特种化学(工业+消费)
+  'ASH': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.2,
+  },
+  // Carpenter Technology - 特种合金(航空+国防)
+  'CRS': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  // Warrior Met Coal - 焦煤(钢铁周期)
+  'HCC': {
+    interestRate: -0.1, inflation: 0.3, gdpGrowth: 0.7, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.4, oilPrice: 0.3,
+  },
+  // Culberson-Frost - 德州银行(利率+房地产)
+  'CFR': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0.2,
+  },
+  // Texas Capital - 德州商业银行(利率+商业)
+  'TCBI': {
+    interestRate: 0.7, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0.2,
+  },
+  // WSFS Financial - 中大西洋银行(利率+信托)
+  'WSFS': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // ========== 新增50只: Healthcare / Biotech / MedTech (2026-01-24) ==========
+  // ADMA Biologics - 血浆蛋白疗法(防御型)
+  'ADMA': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // Agenus - 免疫肿瘤(临床阶段，利率敏感)
+  'AGEN': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Allakos - 嗜酸性粒细胞(临床阶段)
+  'ALLK': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Amphastar - 特种仿制药(防御型)
+  'AMPH': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // AnaptysBio - 自免抗体(临床阶段)
+  'ANAB': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Apogee Therapeutics - 基因编辑(临床阶段)
+  'APGE': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Accuray - 放射治疗设备(中周期)
+  'ARAY': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // Athira Pharma - 阿尔茨海默(临床阶段)
+  'ATHA': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Aurinia Pharma - 肾病(商业化)
+  'AUPH': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // AVEO Pharmaceuticals - 肾细胞癌(商业化)
+  'AVEO': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Brickell Biotech - 临床肿瘤(早周期)
+  'BBI': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // BioAtla - ADC抗体偶联(临床阶段)
+  'BCAB': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Black Diamond - 精准肿瘤(临床阶段)
+  'BDTX': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Bionano Genomics - 光学基因组(早周期)
+  'BNGO': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Cara Therapeutics - 瘙痒/疼痛(临床阶段)
+  'CARA': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Coherus BioSciences - 生物仿制药(中周期)
+  'CHRS': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // ClearPoint Neuro - 数字疗法(早周期)
+  'CLPT': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // Deciphera - 眼科基因疗法(临床阶段)
+  'DCPH': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Dynavax - 疫苗/佐剂(商业化)
+  'DVAX': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Dyne Therapeutics - AAV基因疗法(临床阶段)
+  'DYN': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Editas Medicine - CRISPR基因编辑(临床阶段)
+  'EDIT': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Exscientia - AI药物发现(早周期)
+  'EXAI': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Fulcrum Therapeutics - 表观遗传(临床阶段)
+  'FULC': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Genmab - 抗体平台(中周期，有许可收入)
+  'GMAB': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // Gritstone bio - mRNA疗法(临床阶段)
+  'GRTS': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Heron Therapeutics - 疼痛管理(商业化)
+  'HRTX': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // iCAD - AI医学影像(中周期)
+  'ICAD': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Immunomedics - 免疫生物科技(临床阶段)
+  'IMNM': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Innoviva - 呼吸制药(防御型)
+  'INVA': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // IVERIC bio - 视网膜补体(临床阶段)
+  'ISEE': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Karyopharm - 核输出抑制(商业化)
+  'KPTI': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Ligand Pharma - 药物特许权(防御型)
+  'LGND': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // MannKind - 吸入胰岛素(中周期)
+  'MNKD': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Morphic Holding - 蛋白降解(临床阶段)
+  'MORF': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Mirati Therapeutics - KRAS肿瘤(商业化)
+  'MRTX': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Merus - 双特异性抗体(临床阶段)
+  'MRUS': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // Nurix Therapeutics - 神经激酶(临床阶段)
+  'NRIX': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Ocugen - 疫苗/基因疗法(临床阶段)
+  'OCGN': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Organon - 女性健康(防御型)
+  'OGN': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // RadNet - 放射影像服务(中周期)
+  'RDNT': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  // REGENXBIO - AAV基因疗法平台(临床阶段)
+  'RGNX': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Sage Therapeutics - 神经科学(商业化)
+  'SAGE': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Sangamo Therapeutics - 锌指基因调控(临床阶段)
+  'SGMO': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Syndax Pharmaceuticals - 基因组医学(临床阶段)
+  'SNDX': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Tarsus Pharmaceuticals - 内分泌(临床阶段)
+  'TARS': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Veracyte - 分子诊断(中周期)
+  'VCYT': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Vanda Pharmaceuticals - CNS(防御型)
+  'VNDA': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Xencor - Fc工程抗体平台(临床阶段)
+  'XNCR': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Zymeworks - ADC平台(临床阶段)
+  'ZYME': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0.0,
     consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
   },
 };
