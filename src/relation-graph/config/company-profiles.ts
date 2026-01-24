@@ -1563,6 +1563,44 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // ---------- 数据中心基础设施 - 补充 ----------
   'VRT': 'mid',
   'PWSC': 'defensive',
+  // ---------- 消费品牌 - 补充 ----------
+  'NKE': 'mid',        // Nike - 品牌消费
+  'LULU': 'mid',       // Lululemon - 品牌消费
+  'UAA': 'early',      // Under Armour - 周期性更强
+  'DKS': 'early',      // Dick's - 零售周期
+  'FL': 'early',       // Foot Locker - 零售周期
+  'TGT': 'mid',        // Target - 大型零售
+  'ADDYY': 'mid',      // Adidas - 品牌消费
+  'DPZ': 'mid',        // Domino's - 快餐
+  // ---------- 科技/互联网 - 补充 ----------
+  'SNAP': 'early',     // Snapchat - 广告周期
+  'PINS': 'early',     // Pinterest - 广告周期
+  'ROKU': 'early',     // Roku - 广告+消费
+  'RDDT': 'early',     // Reddit - 早期
+  'ZM': 'mid',         // Zoom - 企业IT
+  'U': 'early',        // Unity - 游戏引擎
+  'ATVI': 'defensive', // Activision - 游戏防御
+  'DOCU': 'mid',       // DocuSign - 企业SaaS
+  'SPLK': 'mid',       // Splunk - 企业分析
+  'S': 'mid',          // SentinelOne - 安全
+  // ---------- 金融科技 - 补充 ----------
+  'COIN': 'early',     // Coinbase - 加密高波动
+  'HOOD': 'early',     // Robinhood - 零售交易
+  'AFRM': 'early',     // Affirm - BNPL周期
+  'SOFI': 'early',     // SoFi - 金融科技
+  'NU': 'early',       // Nu Holdings - 新兴市场
+  'IBKR': 'mid',       // Interactive Brokers
+  'ALLY': 'early',     // Ally Financial - 汽车贷
+  // ---------- 出行/外卖 - 补充 ----------
+  'UBER': 'mid',       // Uber - 平台经济
+  'DASH': 'mid',       // DoorDash - 外卖平台
+  // ---------- 医疗/数字健康 - 补充 ----------
+  'HIMS': 'early',     // Hims & Hers
+  'TDOC': 'mid',       // Teladoc
+  // ---------- 酒店 - 补充 ----------
+  'H': 'early',        // Hyatt - 酒店
+  // ---------- 矿业 - 补充 ----------
+  'SQM': 'mid',        // SQM - 锂矿
 };
 
 // ============================================================
@@ -3727,6 +3765,476 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'LYFT': {
     interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
     consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.3,
+  },
+  'CWST': { interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.1 },
+  'ECOL': { interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.2 },
+  'RHI': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.7, unemployment: -0.8, consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0 },
+  'MAN': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.7, unemployment: -0.8, consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.0 },
+  'ASGN': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.7, consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0 },
+  'NSP': { interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.6, consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0 },
+  'CTAS': { interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.5, consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0 },
+  'LOPE': { interestRate: 0.0, inflation: 0.0, gdpGrowth: -0.2, unemployment: 0.3, consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0 },
+  'STRA': { interestRate: 0.0, inflation: 0.0, gdpGrowth: -0.2, unemployment: 0.3, consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0 },
+  'DUOL': { interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.1, consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0 },
+  'CHGG': { interestRate: -0.1, inflation: 0.0, gdpGrowth: -0.1, unemployment: 0.2, consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0 },
+  'CBRE': { interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.4, consumerConfidence: 0.4, housingMarket: 0.7, dollarIndex: -0.2, oilPrice: 0.0 },
+  'JLL': { interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.4, consumerConfidence: 0.4, housingMarket: 0.7, dollarIndex: -0.2, oilPrice: 0.0 },
+  'ZG': { interestRate: -0.8, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4, consumerConfidence: 0.6, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: 0.0 },
+  'RDFN': { interestRate: -0.8, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4, consumerConfidence: 0.6, housingMarket: 0.9, dollarIndex: 0.0, oilPrice: 0.0 },
+  'NEM': { interestRate: -0.7, inflation: 0.7, gdpGrowth: -0.2, unemployment: 0.2, consumerConfidence: -0.3, housingMarket: 0.0, dollarIndex: -0.8, oilPrice: 0.2 },
+  'GOLD': { interestRate: -0.7, inflation: 0.7, gdpGrowth: -0.2, unemployment: 0.2, consumerConfidence: -0.3, housingMarket: 0.0, dollarIndex: -0.8, oilPrice: 0.2 },
+  'AEM': { interestRate: -0.7, inflation: 0.7, gdpGrowth: -0.2, unemployment: 0.2, consumerConfidence: -0.3, housingMarket: 0.0, dollarIndex: -0.8, oilPrice: 0.2 },
+  'WPM': { interestRate: -0.6, inflation: 0.6, gdpGrowth: -0.1, unemployment: 0.1, consumerConfidence: -0.2, housingMarket: 0.0, dollarIndex: -0.7, oilPrice: 0.1 },
+  'FNV': { interestRate: -0.6, inflation: 0.6, gdpGrowth: -0.1, unemployment: 0.1, consumerConfidence: -0.2, housingMarket: 0.0, dollarIndex: -0.7, oilPrice: 0.1 },
+  'CHPT': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.3 },
+  'EVGO': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.3 },
+  'BLNK': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.3 },
+  'VRT': { interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0 },
+  'PWSC': { interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0 },
+
+  // ========== 金融 - 补充 (Financial Services) ==========
+  'C': {
+    interestRate: 0.7, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.4, housingMarket: 0.3, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'AIG': {
+    interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'CBOE': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: -0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'IBKR': {
+    interestRate: 0.6, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'LPLA': {
+    interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'PFG': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'LNC': {
+    interestRate: 0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 保险经纪 (Insurance Brokers)
+  'AJG': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'AON': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'MMC': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'BRO': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'WTW': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CG': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  // 金融科技 (FinTech)
+  'COIN': {
+    interestRate: -0.5, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'HOOD': {
+    interestRate: 0.3, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'AFRM': {
+    interestRate: -0.7, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'SOFI': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'NU': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'SQ': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'PYPL': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 医疗保健 - 补充 (Healthcare) ==========
+  'AZN': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'GSK': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'NVS': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'MRNA': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ALNY': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'BIIB': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 医疗器械 (Medical Devices)
+  'BDX': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'BSX': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'EW': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ZBH': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'WAT': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 医院/医疗服务 (Hospitals & Health Services)
+  'HCA': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'UHS': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'THC': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // 保险/PBM (MCO/PBM)
+  'CNC': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: -0.1, unemployment: 0.2,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'CVS': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'WBA': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // 远程医疗/数字健康
+  'TDOC': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'HIMS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // ========== 科技/软件 - 补充 (Tech/Software) ==========
+  'DDOG': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'SNOW': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'TEAM': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'NET': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ZS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'FTNT': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'DOCU': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'WDAY': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'MDB': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'SPLK': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 网络设备/IT基础设施
+  'CIEN': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'JNPR': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'FFIV': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'NTAP': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'PSTG': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 社交媒体/消费互联网
+  'SNAP': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'PINS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ROKU': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'RDDT': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ZM': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // 游戏/元宇宙
+  'U': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'RBLX': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ATVI': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 消费 - 补充 (Consumer) ==========
+  'TGT': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'UAA': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'FL': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'AAP': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.1,
+  },
+  'CELH': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'ADDYY': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // 出行/外卖平台
+  'UBER': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.3,
+  },
+  'DASH': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+
+  // ========== 能源 - 补充 (Energy) ==========
+  'BP': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.8,
+  },
+  'SHEL': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.8,
+  },
+  'TTE': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.8,
+  },
+  'MPLX': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.5,
+  },
+  'NRG': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.3,
+  },
+  'DK': {
+    interestRate: 0.0, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.6,
+  },
+  'PBF': {
+    interestRate: 0.0, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.5,
+  },
+  'NOV': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.7,
+  },
+  'LBRT': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.8,
+  },
+  'HP': {
+    interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.8,
+  },
+
+  // ========== 农业/化工 (Agriculture & Chemicals) ==========
+  'ADM': {
+    interestRate: -0.1, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'BG': {
+    interestRate: -0.1, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+  'CF': {
+    interestRate: 0.0, inflation: 0.4, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.5,
+  },
+  'MOS': {
+    interestRate: 0.0, inflation: 0.4, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.3,
+  },
+  'NTR': {
+    interestRate: 0.0, inflation: 0.4, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.4,
+  },
+  'TSN': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'SQM': {
+    interestRate: 0.0, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+  // 特种化工 (Specialty Chemicals)
+  'CE': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.3,
+  },
+  'EMN': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.3,
+  },
+
+  // ========== REIT - 补充 (Real Estate Investment Trusts) ==========
+  'EXR': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'MAA': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'VNO': {
+    interestRate: -0.7, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'VICI': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'OHI': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'NNN': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'STAG': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'REXR': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'VTR': {
+    interestRate: -0.6, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // ========== 航运 - 补充 (Shipping) ==========
+  'EGLE': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.5,
+  },
+  'INSW': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.6,
+  },
+  'TNK': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.6,
+  },
+  'FLNG': {
+    interestRate: 0.0, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.4,
+  },
+
+  // ========== 其他 - 补充 ==========
+  'S': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'H': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
   },
 };
 
