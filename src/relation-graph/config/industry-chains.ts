@@ -972,6 +972,25 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'MNST': 'Energy Drinks',              // Monster
     'CELH': 'Energy Drinks',              // Celsius
 
+    // 酒精饮料 (Alcoholic Beverages)
+    'STZ': 'Beer & Spirits',              // Constellation Brands
+    'TAP': 'Beer',                        // Molson Coors
+    'DEO': 'Spirits',                     // Diageo
+    'SAM': 'Craft Beer',                  // Boston Beer
+
+    // 美妆/个护 (Beauty & Personal Care)
+    'EL': 'Prestige Beauty',              // Estée Lauder
+    'COTY': 'Mass Beauty',                // Coty
+
+    // 时尚/奢侈品牌 (Fashion & Luxury Brands)
+    'TPR': 'Accessible Luxury',           // Tapestry (Coach, Kate Spade)
+    'CPRI': 'Accessible Luxury',          // Capri (Michael Kors, Versace)
+    'PVH': 'Fashion Brand',              // PVH (Calvin Klein, Tommy Hilfiger)
+    'RL': 'Luxury Apparel',              // Ralph Lauren
+    'VFC': 'Outdoor Apparel',            // VF Corp (The North Face, Vans)
+    'HBI': 'Basics Apparel',             // Hanesbrands
+    'LEVI': 'Denim Brand',              // Levi Strauss
+
     // 餐饮 - 快餐 (QSR)
     'MCD': 'QSR',                         // McDonald's
     'SBUX': 'Coffee Chain',               // Starbucks
@@ -1216,6 +1235,14 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // IBM: defined above as 'Cloud Hyperscaler'
     'ACN': 'IT Consulting',               // Accenture
     'INFY': 'IT Outsourcing',             // Infosys
+    'WIT': 'IT Outsourcing',              // Wipro
+    'CTSH': 'IT Outsourcing',             // Cognizant
+    'EPAM': 'IT Consulting',              // EPAM
+
+    // EDA/设计软件 (EDA & Simulation)
+    'CDNS': 'EDA Software',               // Cadence
+    'SNPS': 'EDA Software',               // Synopsys
+    'ANSS': 'Simulation Software',        // Ansys
   },
 
   // ============================================================
@@ -1901,6 +1928,24 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Cloud Hyperscaler',
     ],
 
+    'IT Outsourcing': [
+      'Enterprise SaaS',
+      'Cloud Hyperscaler',
+    ],
+
+    // EDA → 芯片设计
+    'EDA Software': [
+      'Fabless Chips',
+      'IDM',
+      'Semiconductor Foundry',
+    ],
+
+    'Simulation Software': [
+      'Fabless Chips',
+      'Industrial Conglomerate',
+      'Industrial Automation',
+    ],
+
     // ========== 国防产业链 ==========
     // 国防主承包商 - B2G模式
     'Defense Prime': [
@@ -2046,6 +2091,75 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Auto Parts Retail': [
       'Traditional OEM',  // 保有量驱动
       'Auto Dealer',      // 二手车维修
+    ],
+
+    // 酒精饮料 → 餐饮/零售渠道
+    'Beer & Spirits': [
+      'QSR',
+      'Casual Dining',
+      'Mass Retail',
+      'Grocery',
+    ],
+
+    'Beer': [
+      'Mass Retail',
+      'Grocery',
+      'Casual Dining',
+    ],
+
+    'Spirits': [
+      'Casual Dining',
+      'Mass Retail',
+      'Grocery',
+    ],
+
+    'Craft Beer': [
+      'Mass Retail',
+      'Grocery',
+    ],
+
+    // 美妆 → 零售渠道
+    'Prestige Beauty': [
+      'Beauty Retail',
+      'Mass Retail',
+    ],
+
+    'Mass Beauty': [
+      'Mass Retail',
+      'Dollar Store',
+      'Grocery',
+    ],
+
+    // 时尚品牌 → 零售渠道
+    'Accessible Luxury': [
+      'Off-Price Retail',
+      'Mass Retail',
+    ],
+
+    'Fashion Brand': [
+      'Off-Price Retail',
+      'Mass Retail',
+      'Apparel Retail',
+    ],
+
+    'Luxury Apparel': [
+      'Apparel Retail',
+    ],
+
+    'Outdoor Apparel': [
+      'Apparel Retail',
+      'Mass Retail',
+    ],
+
+    'Basics Apparel': [
+      'Mass Retail',
+      'Dollar Store',
+    ],
+
+    'Denim Brand': [
+      'Apparel Retail',
+      'Mass Retail',
+      'Off-Price Retail',
     ],
   },
 };

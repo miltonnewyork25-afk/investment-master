@@ -212,52 +212,10 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Retail',
     tags: ['off_price', 'value'],
   },
-  'DG': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Retail',
-    tags: ['dollar_store', 'rural', 'convenience'],
-  },
-  'DLTR': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Retail',
-    tags: ['dollar_store', 'fixed_price'],
-  },
-
   // ========================================================
   // 餐饮行业
   // ========================================================
 
-  // 快餐连锁 - 加盟模式
-  'MCD': {
-    assetModel: 'asset_light',
-    revenueModels: ['licensing', 'product_sales'],
-    deliveryModel: 'franchise',
-    customerModel: 'B2C',
-    industrySegment: 'Restaurants',
-    tags: ['qsr', 'global', 'real_estate'],
-  },
-  'YUM': {
-    assetModel: 'asset_light',
-    revenueModels: ['licensing'],
-    deliveryModel: 'franchise',
-    customerModel: 'B2C',
-    industrySegment: 'Restaurants',
-    tags: ['qsr', 'multi_brand', 'franchise_pure'],
-  },
-  'QSR': {
-    assetModel: 'asset_light',
-    revenueModels: ['licensing'],
-    deliveryModel: 'franchise',
-    customerModel: 'B2C',
-    industrySegment: 'Restaurants',
-    tags: ['qsr', 'burger_king', 'tim_hortons'],
-  },
   'WEN': {
     assetModel: 'hybrid',
     revenueModels: ['licensing', 'product_sales'],
@@ -273,34 +231,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2C',
     industrySegment: 'Restaurants',
     tags: ['qsr', 'delivery_focus', 'tech_driven'],
-  },
-
-  // 快休闲 - 自营为主
-  'CMG': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Restaurants',
-    tags: ['fast_casual', 'fresh', 'company_owned'],
-  },
-  'SBUX': {
-    assetModel: 'hybrid',
-    revenueModels: ['product_sales', 'licensing'],
-    deliveryModel: 'hybrid',
-    customerModel: 'B2C',
-    industrySegment: 'Restaurants',
-    tags: ['coffee', 'third_place', 'loyalty', 'global'],
-  },
-
-  // 休闲餐饮
-  'DRI': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Restaurants',
-    tags: ['casual_dining', 'multi_brand'],
   },
 
   // 外卖平台
@@ -324,50 +254,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   // ========================================================
   // 流媒体/娱乐行业
   // ========================================================
-
-  // 订阅流媒体
-  'NFLX': {
-    assetModel: 'asset_light',
-    revenueModels: ['subscription'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Streaming',
-    tags: ['original_content', 'global', 'binge'],
-  },
-  'DIS': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['subscription', 'product_sales', 'licensing'],
-    deliveryModel: 'hybrid',
-    customerModel: 'B2C',
-    industrySegment: 'Streaming',
-    tags: ['ip_library', 'theme_parks', 'bundle'],
-  },
-  'WBD': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['subscription', 'advertising', 'licensing'],
-    deliveryModel: 'hybrid',
-    customerModel: 'B2C',
-    industrySegment: 'Streaming',
-    tags: ['hbo', 'discovery', 'sports'],
-  },
-  'PARA': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['subscription', 'advertising', 'licensing'],
-    deliveryModel: 'hybrid',
-    customerModel: 'B2C',
-    industrySegment: 'Streaming',
-    tags: ['cbs', 'paramount_plus', 'legacy_media'],
-  },
-
-  // 音乐流媒体
-  'SPOT': {
-    assetModel: 'platform',
-    revenueModels: ['subscription', 'advertising'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Streaming',
-    tags: ['music', 'podcast', 'freemium'],
-  },
 
   // 广告支持
   'ROKU': {
@@ -765,32 +651,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     tags: ['music', 'podcast', 'audio', 'freemium'],
   },
 
-  // ---------- 游戏 (Gaming) ----------
-  'EA': {
-    assetModel: 'asset_light',
-    revenueModels: ['product_sales', 'subscription', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Gaming',
-    tags: ['sports_games', 'live_services', 'mobile', 'ea_play'],
-  },
-  'TTWO': {
-    assetModel: 'asset_light',
-    revenueModels: ['product_sales', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Gaming',
-    tags: ['gta', 'nba2k', 'rockstar', 'take_two'],
-  },
-  'RBLX': {
-    assetModel: 'platform',
-    revenueModels: ['transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Gaming',
-    tags: ['ugc', 'metaverse', 'youth', 'social'],
-  },
-
   // ---------- 数字广告 (Digital Advertising) ----------
   'TTD': {
     assetModel: 'platform',
@@ -830,62 +690,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   // ========================================================
 
   // ---------- 区域银行 (Regional Banks) ----------
-  'USB': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B2C',
-    industrySegment: 'Regional Bank',
-    tags: ['payments', 'wealth', 'commercial', 'midwest'],
-  },
-  'PNC': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B2C',
-    industrySegment: 'Regional Bank',
-    tags: ['commercial', 'retail', 'asset_management', 'east'],
-  },
-  'TFC': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B2C',
-    industrySegment: 'Regional Bank',
-    tags: ['insurance', 'wealth', 'commercial', 'southeast'],
-  },
-  'KEY': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B2C',
-    industrySegment: 'Regional Bank',
-    tags: ['commercial', 'investment_banking', 'payments'],
-  },
-  'FITB': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B2C',
-    industrySegment: 'Regional Bank',
-    tags: ['commercial', 'retail', 'wealth', 'midwest'],
-  },
-  'RF': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B2C',
-    industrySegment: 'Regional Bank',
-    tags: ['commercial', 'retail', 'wealth', 'southeast'],
-  },
-  'CFG': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B2C',
-    industrySegment: 'Regional Bank',
-    tags: ['retail', 'commercial', 'northeast'],
-  },
   'MTB': {
     assetModel: 'asset_heavy',
     revenueModels: ['interest_income', 'transaction_fee'],
@@ -896,22 +700,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
 
   // ---------- 消费金融 (Consumer Finance) ----------
-  'SYF': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B2C',
-    industrySegment: 'Consumer Finance',
-    tags: ['private_label', 'retail_cards', 'health', 'home'],
-  },
-  'COF': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Consumer Finance',
-    tags: ['credit_cards', 'auto_loans', 'banking', 'digital'],
-  },
   'ALLY': {
     assetModel: 'asset_heavy',
     revenueModels: ['interest_income'],
@@ -927,73 +715,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   // 特点: 利率受益、承保周期、资本密集
   // ========================================================
 
-  // ---------- 财产与意外险 (P&C Insurance) ----------
-  'PGR': {
-    assetModel: 'asset_light',
-    revenueModels: ['subscription', 'interest_income'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'P&C Insurance',
-    tags: ['auto', 'home', 'direct', 'usage_based'],
-  },
-  'ALL': {
-    assetModel: 'asset_light',
-    revenueModels: ['subscription', 'interest_income'],
-    deliveryModel: 'hybrid',
-    customerModel: 'B2C',
-    industrySegment: 'P&C Insurance',
-    tags: ['auto', 'home', 'life', 'agent'],
-  },
-  'TRV': {
-    assetModel: 'asset_light',
-    revenueModels: ['subscription', 'interest_income'],
-    deliveryModel: 'hybrid',
-    customerModel: 'B2B',
-    industrySegment: 'P&C Insurance',
-    tags: ['commercial', 'personal', 'specialty'],
-  },
-  'CB': {
-    assetModel: 'asset_light',
-    revenueModels: ['subscription', 'interest_income'],
-    deliveryModel: 'hybrid',
-    customerModel: 'B2B',
-    industrySegment: 'P&C Insurance',
-    tags: ['commercial', 'specialty', 'global', 'high_net_worth'],
-  },
-  'AIG': {
-    assetModel: 'asset_light',
-    revenueModels: ['subscription', 'interest_income'],
-    deliveryModel: 'hybrid',
-    customerModel: 'B2B',
-    industrySegment: 'P&C Insurance',
-    tags: ['commercial', 'specialty', 'global', 'restructuring'],
-  },
-
-  // ---------- 人寿与健康保险 (Life Insurance) ----------
-  'MET': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['subscription', 'interest_income'],
-    deliveryModel: 'hybrid',
-    customerModel: 'B2B2C',
-    industrySegment: 'Life Insurance',
-    tags: ['group', 'individual', 'annuities', 'global'],
-  },
-  'PRU': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['subscription', 'interest_income'],
-    deliveryModel: 'hybrid',
-    customerModel: 'B2B2C',
-    industrySegment: 'Life Insurance',
-    tags: ['retirement', 'annuities', 'asset_management', 'global'],
-  },
-  'AFL': {
-    assetModel: 'asset_light',
-    revenueModels: ['subscription', 'interest_income'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B2C',
-    industrySegment: 'Life Insurance',
-    tags: ['supplemental', 'japan', 'cancer', 'worksite'],
-  },
 
   // ---------- 保险经纪 (Insurance Brokers) ----------
   'AON': {
@@ -1220,40 +941,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   // ========================================================
   // 银行/金融服务行业
   // ========================================================
-
-  // 全能银行
-  'JPM': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Banking',
-    tags: ['universal_bank', 'investment_bank', 'wealth'],
-  },
-  'BAC': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Banking',
-    tags: ['universal_bank', 'consumer', 'wealth'],
-  },
-  'WFC': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Banking',
-    tags: ['consumer_bank', 'mortgage', 'retail'],
-  },
-  'C': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['interest_income', 'transaction_fee'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B',
-    industrySegment: 'Banking',
-    tags: ['global', 'institutional', 'cards'],
-  },
 
   // 纯数字银行/新银行
   'SOFI': {
@@ -1525,30 +1212,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   },
 
   // ---------- 铁路货运 ----------
-  'UNP': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B',
-    industrySegment: 'Rail Freight',
-    tags: ['rail', 'western_us', 'intermodal', 'bulk'],
-  },
-  'CSX': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B',
-    industrySegment: 'Rail Freight',
-    tags: ['rail', 'eastern_us', 'intermodal', 'coal'],
-  },
-  'NSC': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2B',
-    industrySegment: 'Rail Freight',
-    tags: ['rail', 'eastern_us', 'intermodal', 'automotive'],
-  },
 
   // ========================================================
   // 能源行业 (Oil & Gas)
@@ -2408,24 +2071,6 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
   // ========================================================
   // 医疗健康行业
   // ========================================================
-
-  // 药店零售
-  'CVS': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales', 'premium_service'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Healthcare Retail',
-    tags: ['pharmacy', 'pbm', 'health_hubs'],
-  },
-  'WBA': {
-    assetModel: 'asset_heavy',
-    revenueModels: ['product_sales'],
-    deliveryModel: 'self_operated',
-    customerModel: 'B2C',
-    industrySegment: 'Healthcare Retail',
-    tags: ['pharmacy', 'retail', 'international'],
-  },
 
   // 远程医疗
   'TDOC': {
@@ -4139,6 +3784,184 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2C',
     industrySegment: 'Water Utility',
     tags: ['regulated', 'water', 'wastewater', 'acquisitions'],
+  },
+
+  // ========== 酒精饮料 (Alcoholic Beverages) ==========
+  'STZ': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Beer & Spirits',
+    tags: ['beer', 'wine', 'spirits', 'premium', 'modelo', 'corona'],
+  },
+  'TAP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Beer',
+    tags: ['beer', 'mass-market', 'coors', 'miller'],
+  },
+  'DEO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Spirits',
+    tags: ['spirits', 'premium', 'scotch', 'vodka', 'tequila', 'global'],
+  },
+  'SAM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Craft Beer',
+    tags: ['craft-beer', 'hard-seltzer', 'innovation'],
+  },
+
+  // ========== 美妆/个护 (Beauty & Personal Care) ==========
+  'EL': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Prestige Beauty',
+    tags: ['skincare', 'makeup', 'fragrance', 'premium', 'travel-retail'],
+  },
+  'COTY': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Mass Beauty',
+    tags: ['fragrance', 'cosmetics', 'mass-market', 'prestige'],
+  },
+
+  // ========== 时尚/奢侈品牌 (Fashion & Luxury Brands) ==========
+  'TPR': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Accessible Luxury',
+    tags: ['coach', 'kate-spade', 'leather-goods', 'premium'],
+  },
+  'CPRI': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Accessible Luxury',
+    tags: ['michael-kors', 'versace', 'jimmy-choo', 'premium'],
+  },
+  'PVH': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'licensing'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Fashion Brand',
+    tags: ['calvin-klein', 'tommy-hilfiger', 'wholesale', 'global'],
+  },
+  'RL': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'licensing'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Luxury Apparel',
+    tags: ['luxury', 'lifestyle', 'heritage', 'premium'],
+  },
+  'VFC': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Outdoor Apparel',
+    tags: ['north-face', 'vans', 'outdoor', 'streetwear', 'timberland'],
+  },
+  'HBI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Basics Apparel',
+    tags: ['basics', 'underwear', 'activewear', 'value', 'wholesale'],
+  },
+  'LEVI': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Denim Brand',
+    tags: ['denim', 'casual', 'heritage', 'wholesale', 'direct'],
+  },
+
+  // ========== IT服务/咨询 (IT Services & Consulting) ==========
+  'ACN': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'IT Consulting',
+    tags: ['consulting', 'outsourcing', 'digital', 'cloud', 'enterprise'],
+  },
+  'INFY': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'IT Outsourcing',
+    tags: ['outsourcing', 'offshore', 'digital', 'enterprise'],
+  },
+  'WIT': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'IT Outsourcing',
+    tags: ['outsourcing', 'offshore', 'cloud', 'enterprise'],
+  },
+  'CTSH': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'IT Outsourcing',
+    tags: ['outsourcing', 'healthcare-it', 'digital', 'enterprise'],
+  },
+  'EPAM': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'IT Consulting',
+    tags: ['engineering', 'platform', 'digital', 'product-development'],
+  },
+
+  // ========== EDA/设计软件 (Electronic Design Automation) ==========
+  'CDNS': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'EDA Software',
+    tags: ['eda', 'chip-design', 'simulation', 'verification', 'ip'],
+  },
+  'SNPS': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'EDA Software',
+    tags: ['eda', 'chip-design', 'verification', 'security', 'ip'],
+  },
+  'ANSS': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Simulation Software',
+    tags: ['simulation', 'cae', 'engineering', 'digital-twin', 'multiphysics'],
   },
 };
 

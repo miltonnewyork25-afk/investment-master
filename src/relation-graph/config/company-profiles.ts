@@ -234,6 +234,36 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['premium', 'efficacy', 'brand', 'prestige'],
     channels: ['retail', 'online', 'direct'],
   },
+  'COTY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['beauty', 'fragrance', 'cosmetics', 'self-care'],
+    valueProps: ['brand', 'value', 'trend'],
+    channels: ['retail', 'online'],
+  },
+  'TPR': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['fashion', 'accessories', 'gifting', 'luxury'],
+    valueProps: ['brand', 'quality', 'accessible-luxury', 'heritage'],
+    channels: ['retail', 'online', 'direct'],
+  },
+  'RL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['fashion', 'lifestyle', 'luxury', 'heritage'],
+    valueProps: ['premium', 'heritage', 'lifestyle', 'quality'],
+    channels: ['retail', 'online', 'direct'],
+  },
+  'STZ': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['social', 'dining', 'relaxation', 'celebration'],
+    valueProps: ['premium', 'brand', 'taste', 'lifestyle'],
+    channels: ['retail', 'online'],
+  },
+  'DEO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['social', 'celebration', 'gifting', 'luxury'],
+    valueProps: ['premium', 'heritage', 'quality', 'variety'],
+    channels: ['retail', 'online'],
+  },
 
   // ========== 科技/消费电子 ==========
   'AAPL': {
@@ -848,6 +878,18 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'AJG': 'defensive',  // Gallagher - Broker
   'BRO': 'defensive',  // Brown & Brown - Broker
 
+  // ---------- IT服务/咨询 ----------
+  'ACN': 'mid',        // Accenture
+  'INFY': 'mid',       // Infosys
+  'WIT': 'mid',        // Wipro
+  'CTSH': 'mid',       // Cognizant
+  'EPAM': 'mid',       // EPAM
+
+  // ---------- EDA/设计软件 ----------
+  'CDNS': 'mid',       // Cadence
+  'SNPS': 'mid',       // Synopsys
+  'ANSS': 'mid',       // Ansys
+
   // ---------- REITs (利率敏感) ----------
   'PLD': 'mid',        // Prologis - 工业REIT
   'REXR': 'mid',       // Rexford - 工业REIT
@@ -1007,6 +1049,25 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'MNST': 'defensive', // Monster Beverage
   'CELH': 'mid',      // Celsius - 高成长
   'KDP': 'defensive', // Keurig Dr Pepper
+
+  // ---------- 酒精饮料 (Alcoholic Beverages) ----------
+  'STZ': 'defensive', // Constellation Brands
+  'TAP': 'defensive', // Molson Coors
+  'DEO': 'defensive', // Diageo
+  'SAM': 'mid',       // Boston Beer - 高成长波动
+
+  // ---------- 美妆 (Beauty) ----------
+  'EL': 'mid',        // Estée Lauder - 旅游零售敏感
+  'COTY': 'mid',      // Coty
+
+  // ---------- 时尚/奢侈品牌 (Fashion) ----------
+  'TPR': 'mid',       // Tapestry
+  'CPRI': 'mid',      // Capri
+  'PVH': 'mid',       // PVH
+  'RL': 'mid',        // Ralph Lauren
+  'VFC': 'mid',       // VF Corp
+  'HBI': 'mid',       // Hanesbrands
+  'LEVI': 'mid',      // Levi Strauss
 
   // ---------- 烟草 (Tobacco) ----------
   'PM': 'defensive',  // Philip Morris
@@ -1327,6 +1388,42 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   },
   'ORCL': {
     interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // IT服务/咨询 - 企业IT支出驱动
+  'ACN': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'INFY': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.0,
+  },
+  'WIT': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.0,
+  },
+  'CTSH': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'EPAM': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+
+  // EDA/设计软件 - 半导体设计支出驱动
+  'CDNS': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'SNPS': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ANSS': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
     consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
   },
 
@@ -1895,6 +1992,64 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'KDP': {
     interestRate: 0.0, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
     consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // 酒精饮料 - 需求稍有弹性，但总体防御
+  'STZ': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'TAP': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'DEO': {
+    interestRate: 0.0, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.0,
+  },
+  'SAM': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // 美妆 - 中等周期性，旅游零售敏感
+  'EL': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'COTY': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+
+  // 时尚/奢侈品 - 消费信心和GDP高度敏感
+  'TPR': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'CPRI': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'PVH': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'RL': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'VFC': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'HBI': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'LEVI': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
   },
 
   // 烟草 - 需求极度刚性
