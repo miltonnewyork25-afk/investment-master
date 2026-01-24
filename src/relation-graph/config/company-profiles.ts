@@ -3850,6 +3850,68 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['quality', 'brand_variety', 'craft'],
     channels: ['dispensary', 'retail'],
   },
+
+  // ========== 补充 B2C/B2B2C 公司 ==========
+  'CPNG': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['online_shopping', 'grocery', 'convenience'],
+    valueProps: ['rocket_delivery', 'selection', 'value'],
+    channels: ['app', 'online'],
+  },
+  'WMG': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['music_listening', 'entertainment'],
+    valueProps: ['artist_catalog', 'discovery', 'quality'],
+    channels: ['streaming', 'retail', 'live_events'],
+  },
+  'TILE': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['renovation', 'commercial_design', 'flooring'],
+    valueProps: ['sustainability', 'design', 'durability'],
+    channels: ['dealer', 'architect', 'online'],
+  },
+  'DTC': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['outdoor_recreation', 'camping', 'lifestyle'],
+    valueProps: ['quality', 'brand_community', 'direct_relationship'],
+    channels: ['online', 'retail'],
+  },
+  'COOP': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['mortgage_servicing', 'refinance', 'home_purchase'],
+    valueProps: ['digital_experience', 'service', 'rates'],
+    channels: ['online', 'phone', 'app'],
+  },
+  'SWX': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['essential_service', 'home_heating'],
+    valueProps: ['reliability', 'safety', 'affordability'],
+    channels: ['direct_service', 'online'],
+  },
+  'PLBY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['entertainment', 'lifestyle', 'fashion'],
+    valueProps: ['brand_heritage', 'lifestyle', 'content'],
+    channels: ['online', 'retail', 'licensing'],
+  },
+  'RENT': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['fashion', 'events', 'work_wardrobe'],
+    valueProps: ['variety', 'sustainability', 'affordability'],
+    channels: ['app', 'online'],
+  },
+  'BIRD': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['casual_footwear', 'sustainable_shopping'],
+    valueProps: ['comfort', 'sustainability', 'simplicity'],
+    channels: ['online', 'retail'],
+  },
+  'LANC': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['grocery_shopping', 'cooking'],
+    valueProps: ['quality', 'brand_trust', 'taste'],
+    channels: ['grocery', 'mass_retail'],
+  },
 };
 
 // ============================================================
@@ -5804,6 +5866,12 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'DTC': 'early',             // Solo Brands - DTC户外品牌(早周期)
   'TASK': 'mid',              // TaskUs - BPO外包(中周期)
   'COOP': 'mid',              // Mr. Cooper - 抵押贷款服务(中周期)
+
+  // Energy/Midstream - Oil Gathering
+  'HESM': 'early',             // Hess Midstream - 油气集输(早周期)
+
+  // Food/Beverage - Specialty Foods
+  'LANC': 'defensive',         // Lancaster Colony - 特色食品(防御)
 };
 
 // ============================================================
@@ -11916,6 +11984,89 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'G': {
     interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.3,
     consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 新增15只股票 (2026-01 batch) ==========
+
+  // Medical Devices - CPAP/Ventilators
+  'RMD': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // Biotech - FcRn antibodies
+  'ARGX': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // Waste Management - defensive
+  'WCN': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.2,
+  },
+  // Building Materials - cement/aggregates
+  'CRH': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.7, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  // Korean E-commerce
+  'CPNG': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  // Music Labels - defensive
+  'WMG': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // Aerospace Components
+  'MOG.A': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: 0.2, oilPrice: 0.1,
+  },
+  // Genetic Testing
+  'FLGT': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  // Simulation Software
+  'ALTR': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // Banking SaaS
+  'QTWO': {
+    interestRate: 0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Modular Flooring
+  'TILE': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  // DTC Outdoor Brands
+  'DTC': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  // BPO/Outsourcing
+  'TASK': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  // Mortgage Servicing
+  'COOP': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  // Oil Gathering Midstream
+  'HESM': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.5,
+  },
+  // Specialty Foods
+  'LANC': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
   },
 };
 
