@@ -1899,7 +1899,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // ========== 补充覆盖 - 游戏/流媒体 (Gaming/Streaming) ==========
     'ATVI': 'Gaming Publisher',             // Activision Blizzard
-    'U': 'Gaming Platform',                 // Unity - 游戏引擎
+    'U': 'Game Engine',                     // Unity - 游戏引擎
     'ROKU': 'Streaming',                    // Roku - 流媒体硬件+平台
 
     // ========== 补充覆盖 - 消费/健康 (Consumer/Health) ==========
@@ -2559,6 +2559,49 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // --- Outdoor Equipment ---
     'YETI': 'Outdoor Equipment',           // YETI - 户外装备
     'CLAR': 'Outdoor Equipment',           // Clarus Corp - 户外装备
+
+    // ========== 追加 (2026-01-24 batch 2) ==========
+
+    // --- Water Utilities ---
+    'WTRG': 'Water Utility',               // Essential Utilities - 水务
+    'CWT': 'Water Utility',                // California Water Service - 水务
+    'SJW': 'Water Utility',                // SJW Group - 水务
+
+    // --- Consumer/Retail ---
+    'SHOO': 'Fashion Footwear',            // Steven Madden - 时尚鞋类
+    'FAT': 'Restaurant Franchisor',        // FAT Brands - 餐饮特许
+    'DENN': 'Restaurant Franchisor',       // Denny's - 餐饮特许
+    'SKY': 'Manufactured Housing',         // Skyline Champion - 制造住房
+    'EXPI': 'Residential Real Estate Tech', // eXp Realty - 房产科技
+    'PNTG': 'Skilled Nursing',             // Pennant Group - 护理服务
+
+    // --- Homebuilders ---
+    'GRBK': 'Homebuilder',                // Green Brick Partners - 住宅
+    'CCS': 'Homebuilder',                 // Century Communities - 住宅
+    'MHO': 'Homebuilder',                 // M/I Homes - 住宅
+    'LGIH': 'Homebuilder',                // LGI Homes - 住宅
+
+    // --- Energy/Materials ---
+    'CVI': 'Oil Refinery',                // CVR Energy - 炼油
+    'ZEUS': 'Steel Distributor',           // Olympic Steel - 钢材分销
+    'RES': 'Oil Services',                 // RPC Inc - 油服/压裂
+    'PUMP': 'Oil Services',                // ProPetro - 油服/压裂
+    'AMR': 'Metallurgical Coal',           // Alpha Metallurgical - 焦煤
+
+    // --- Building Products ---
+    'IBP': 'Building Products',            // Installed Building Products - 保温安装
+
+    // --- Technology/Software ---
+    'ACIW': 'Financial Software',          // ACI Worldwide - 金融软件/支付
+    'CGNX': 'Machine Vision',              // Cognex - 机器视觉
+    'PD': 'DevOps Software',               // PagerDuty - 事故管理
+    'PRGS': 'Enterprise Software',         // Progress Software - 企业软件
+
+    // --- Other ---
+    'SLGN': 'Specialty Packaging',         // Silgan Holdings - 食品/药品包装
+    'TDW': 'Offshore Marine Services',     // Tidewater - 海洋服务
+    'CRAI': 'Management Consulting',       // CRA International - 管理咨询
+    'LNTH': 'Nuclear Imaging',             // Lantheus Holdings - 核医学
   },
 
   // ============================================================
@@ -4833,6 +4876,91 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Specialty Grocery',
       'Mass Retail',
       'Packaged Foods',
+    ],
+
+    // ========== 追加子行业链 (2026-01-24 batch 2) ==========
+
+    // 时尚鞋类 → 零售渠道
+    'Fashion Footwear': [
+      'Department Store',             // 百货渠道
+      'Mass Retail',                  // 大众零售
+      'E-commerce',                   // 电商DTC
+    ],
+
+    // 制造住房 → 社区/零售
+    'Manufactured Housing': [
+      'Homebuilder',                  // 住宅市场竞争
+      'Building Products',            // 上游建材
+      'Mortgage Lender',              // 按揭融资
+    ],
+
+    // 护理服务 → 医疗终端
+    'Skilled Nursing': [
+      'Hospital Operator',            // 医院转介
+      'Health Insurance',             // 保险支付方
+      'Home Health',                  // 居家护理
+    ],
+
+    // 游戏引擎 → 游戏/内容
+    'Game Engine': [
+      'Gaming',                       // 游戏开发者
+      'Streaming',                    // 流媒体内容
+      'AR/VR',                        // 元宇宙/AR/VR
+    ],
+
+    // 焦煤 → 钢铁
+    'Metallurgical Coal': [
+      'Integrated Steel',             // 高炉钢厂
+      'Steel Distributor',            // 钢材分销
+    ],
+
+    // 机器视觉 → 自动化终端
+    'Machine Vision': [
+      'Factory Automation',           // 工厂自动化
+      'Semiconductor Equipment',      // 半导体检测
+      'E-commerce',                   // 物流仓储
+    ],
+
+    // DevOps软件 → IT终端
+    'DevOps Software': [
+      'Cloud Infrastructure',         // 云基础设施
+      'Enterprise Software',          // 企业IT
+      'Cybersecurity',                // 安全运维
+    ],
+
+    // 企业软件 → IT终端
+    'Enterprise Software': [
+      'Cloud Infrastructure',         // 云平台
+      'Financial Software',           // 金融科技
+      'System Integrator',            // 系统集成商
+    ],
+
+    // 食品/药品包装 → 消费品
+    'Specialty Packaging': [
+      'Packaged Foods',               // 食品包装客户
+      'Large Pharma',                 // 药品包装客户
+      'Consumer Staples',             // 消费品包装
+    ],
+
+    // 海洋服务 → 海上油气
+    'Offshore Marine Services': [
+      'International E&P',            // 国际深水E&P
+      'Integrated Oil',               // 综合油企海上项目
+      'Offshore Driller',             // 海上钻井配合
+    ],
+
+    // 管理咨询 → 企业客户
+    'Management Consulting': [
+      'Large Pharma',                 // 药企诉讼
+      'P&C Insurance',                // 保险诉讼
+      'Global Bank',                  // 金融合规
+    ],
+
+    // 核医学影像 → 医疗终端
+    'Nuclear Imaging': [
+      'Hospital Operator',            // 医院影像科
+      'Health Insurance',             // 保险覆盖
+      'Large Pharma',                 // 药物伴随诊断
     ],
   },
 };

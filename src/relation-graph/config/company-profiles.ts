@@ -3065,6 +3065,108 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['zero_calorie', 'natural_flavor', 'sparkling', 'healthy'],
     channels: ['retail', 'online', 'wholesale'],
   },
+
+  // ========== 追加 (2026-01-24 batch 2) ==========
+
+  // --- Water Utilities (B2B2C) ---
+  'WTRG': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['essential_service', 'home_utility', 'reliability'],
+    valueProps: ['reliability', 'water_quality', 'essential', 'infrastructure'],
+    channels: ['direct_service', 'utility_bill', 'online'],
+  },
+  'CWT': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['essential_service', 'home_utility', 'reliability'],
+    valueProps: ['reliability', 'water_quality', 'local_service', 'essential'],
+    channels: ['direct_service', 'utility_bill', 'online'],
+  },
+  'SJW': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['essential_service', 'home_utility', 'reliability'],
+    valueProps: ['reliability', 'water_quality', 'local_service', 'essential'],
+    channels: ['direct_service', 'utility_bill', 'online'],
+  },
+
+  // --- Homebuilders (B2C) ---
+  'GRBK': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_purchase', 'first_home', 'family_growth', 'move_up'],
+    valueProps: ['affordability', 'new_construction', 'customization', 'land_development'],
+    channels: ['model_homes', 'online', 'real_estate_agents'],
+  },
+  'CCS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_purchase', 'first_home', 'family_growth', 'affordability'],
+    valueProps: ['affordability', 'new_construction', 'customization', 'entry_level'],
+    channels: ['model_homes', 'online', 'real_estate_agents'],
+  },
+  'MHO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_purchase', 'first_home', 'family_growth', 'relocation'],
+    valueProps: ['affordability', 'new_construction', 'customization', 'smart_design'],
+    channels: ['model_homes', 'online', 'real_estate_agents'],
+  },
+  'LGIH': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_purchase', 'first_home', 'family_growth', 'affordability'],
+    valueProps: ['affordability', 'new_construction', 'move_in_ready', 'bulk_value'],
+    channels: ['model_homes', 'online', 'real_estate_agents'],
+  },
+
+  // --- Restaurant Franchisors (B2C) ---
+  'FAT': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['casual_meal', 'quick_service', 'dining_out', 'sports_bar'],
+    valueProps: ['variety', 'brand_portfolio', 'value', 'experience'],
+    channels: ['dine_in', 'takeout', 'delivery', 'drive_through'],
+  },
+  'DENN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['breakfast', 'family_dining', 'late_night', 'casual_meal'],
+    valueProps: ['value', 'familiar', 'breakfast_specialty', '24hr_service'],
+    channels: ['dine_in', 'takeout', 'delivery'],
+  },
+
+  // --- Footwear (B2C) ---
+  'SHOO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['fashion', 'everyday_wear', 'going_out', 'seasonal'],
+    valueProps: ['trend', 'style', 'affordability', 'variety'],
+    channels: ['retail', 'online', 'department_store', 'wholesale'],
+  },
+
+  // --- Manufactured Housing (B2C) ---
+  'SKY': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_purchase', 'affordable_housing', 'retirement', 'first_home'],
+    valueProps: ['affordability', 'quality', 'customization', 'speed'],
+    channels: ['dealer_network', 'online', 'communities'],
+  },
+
+  // --- Real Estate Services (B2B2C) ---
+  'EXPI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_purchase', 'home_sale', 'relocation', 'investment'],
+    valueProps: ['technology', 'agent_support', 'commission_model', 'virtual'],
+    channels: ['online', 'agent_network', 'virtual_platform'],
+  },
+
+  // --- Skilled Nursing (B2C) ---
+  'PNTG': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['elderly_care', 'rehabilitation', 'home_health', 'hospice'],
+    valueProps: ['quality_care', 'compassion', 'skilled_staff', 'local'],
+    channels: ['direct_service', 'hospital_referral', 'online'],
+  },
+
+  // --- Game Engine (B2B2C) ---
+  'U': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['game_development', 'AR_VR', '3D_content', 'simulation'],
+    valueProps: ['platform', 'tools', 'monetization', 'real_time_3D'],
+    channels: ['online', 'direct', 'app_store'],
+  },
 };
 
 // ============================================================
@@ -3889,7 +3991,7 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'ROKU': 'early',     // Roku - 广告+消费
   'RDDT': 'early',     // Reddit - 早期
   'ZM': 'mid',         // Zoom - 企业IT
-  'U': 'early',        // Unity - 游戏引擎
+  'U': 'mid',          // Unity - 游戏引擎(中周期)
   'ATVI': 'defensive', // Activision - 游戏防御
   'DOCU': 'mid',       // DocuSign - 企业SaaS
   'SPLK': 'mid',       // Splunk - 企业分析
@@ -4538,6 +4640,49 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // --- Outdoor Equipment ---
   'YETI': 'mid',           // YETI - 户外装备(中周期)
   'CLAR': 'mid',           // Clarus Corp - 户外装备(中周期)
+
+  // ========== 追加 (2026-01-24 batch 2) ==========
+
+  // --- Water Utilities (Defensive) ---
+  'WTRG': 'defensive',      // Essential Utilities - 水务(防御)
+  'CWT': 'defensive',       // California Water Service - 水务(防御)
+  'SJW': 'defensive',       // SJW Group - 水务(防御)
+
+  // --- Consumer/Retail ---
+  'SHOO': 'mid',            // Steven Madden - 鞋类(中周期)
+  'FAT': 'mid',             // FAT Brands - 餐饮特许(中周期)
+  'DENN': 'mid',            // Denny's - 餐饮特许(中周期)
+  'SKY': 'early',           // Skyline Champion - 制造住房(早周期)
+  'EXPI': 'mid',            // eXp Realty - 房产服务(中周期)
+  'PNTG': 'defensive',      // Pennant Group - 护理(防御)
+
+  // --- Homebuilders (Early Cycle) ---
+  'GRBK': 'early',          // Green Brick Partners - 住宅(早周期)
+  'CCS': 'early',           // Century Communities - 住宅(早周期)
+  'MHO': 'early',           // M/I Homes - 住宅(早周期)
+  'LGIH': 'early',          // LGI Homes - 住宅(早周期)
+
+  // --- Energy/Materials ---
+  'CVI': 'late',            // CVR Energy - 炼油(晚周期)
+  'ZEUS': 'mid',            // Olympic Steel - 钢材分销(中周期)
+  'RES': 'late',            // RPC Inc - 油服(晚周期)
+  'PUMP': 'late',           // ProPetro - 油服(晚周期)
+  'AMR': 'mid',             // Alpha Metallurgical - 焦煤(中周期)
+
+  // --- Building Products ---
+  'IBP': 'early',           // Installed Building Products - 建材安装(早周期)
+
+  // --- Technology/Software (Defensive) ---
+  'ACIW': 'defensive',      // ACI Worldwide - 金融软件(防御)
+  'CGNX': 'mid',            // Cognex - 机器视觉(中周期)
+  'PD': 'defensive',        // PagerDuty - DevOps(防御)
+  'PRGS': 'defensive',      // Progress Software - 企业软件(防御)
+
+  // --- Other ---
+  'SLGN': 'mid',            // Silgan Holdings - 食品包装(中周期)
+  'TDW': 'late',            // Tidewater - 海洋服务(晚周期)
+  'CRAI': 'defensive',      // CRA International - 管理咨询(防御)
+  'LNTH': 'defensive',      // Lantheus Holdings - 核医学(防御)
 };
 
 // ============================================================
@@ -7043,10 +7188,10 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.1,
     consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
   },
-  // 游戏/元宇宙
+  // 游戏引擎/元宇宙
   'U': {
-    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
-    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
   },
   'RBLX': {
     interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
@@ -9404,6 +9549,130 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'CLAR': {
     interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
     consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // ========== 追加 (2026-01-24 batch 2) ==========
+
+  // --- Water Utilities ---
+  'WTRG': {
+    interestRate: 0.6, inflation: -0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'CWT': {
+    interestRate: 0.6, inflation: -0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'SJW': {
+    interestRate: 0.6, inflation: -0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // --- Consumer/Retail ---
+  'SHOO': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'FAT': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'DENN': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'SKY': {
+    interestRate: -0.6, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'EXPI': {
+    interestRate: -0.7, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'PNTG': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // --- Homebuilders ---
+  'GRBK': {
+    interestRate: -0.7, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.6, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'CCS': {
+    interestRate: -0.7, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.6, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'MHO': {
+    interestRate: -0.7, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.6, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'LGIH': {
+    interestRate: -0.7, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.6, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // --- Energy/Materials ---
+  'CVI': {
+    interestRate: -0.1, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.6,
+  },
+  'ZEUS': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'RES': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.7,
+  },
+  'PUMP': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.7,
+  },
+  'AMR': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+
+  // --- Building Products ---
+  'IBP': {
+    interestRate: -0.6, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.5, housingMarket: 0.6, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // --- Technology/Software ---
+  'ACIW': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'CGNX': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'PD': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'PRGS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // --- Other ---
+  'SLGN': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'TDW': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.8,
+  },
+  'CRAI': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'LNTH': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
   },
 };
 

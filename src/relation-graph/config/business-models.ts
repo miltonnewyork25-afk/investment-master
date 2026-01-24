@@ -2285,12 +2285,12 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     tags: ['call_of_duty', 'warcraft', 'mobile'],
   },
   'U': {
-    assetModel: 'platform',
-    revenueModels: ['subscription', 'transaction_fee'],
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing', 'advertising'],
     deliveryModel: 'self_operated',
-    customerModel: 'B2B',
-    industrySegment: 'Gaming',
-    tags: ['game_engine', 'developer_tools', 'rt3d'],
+    customerModel: 'B2B2C',
+    industrySegment: 'Game Engine',
+    tags: ['game_engine', 'real_time_3d', 'AR_VR', 'monetization', 'create'],
   },
 
   // ========================================================
@@ -9874,6 +9874,239 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2C',
     industrySegment: 'Outdoor Equipment',
     tags: ['black_diamond', 'sierra', 'rhino_rack', 'climbing', 'adventure'],
+  },
+
+  // ========================================================
+  // 追加企业 (2026-01-24 batch 2) - 28只新股票
+  // ========================================================
+
+  // ---------- Water Utilities ----------
+  'WTRG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Water Utility',
+    tags: ['regulated', 'water', 'wastewater', 'natural_gas', 'essential'],
+  },
+  'CWT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Water Utility',
+    tags: ['regulated', 'water', 'california', 'municipal'],
+  },
+  'SJW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Water Utility',
+    tags: ['regulated', 'water', 'west_coast', 'municipal'],
+  },
+
+  // ---------- Consumer/Retail ----------
+  'SHOO': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Fashion Footwear',
+    tags: ['fashion', 'footwear', 'accessories', 'wholesale', 'DTC'],
+  },
+  'FAT': {
+    assetModel: 'hybrid',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Restaurant Franchisor',
+    tags: ['multi_brand', 'franchise', 'fatburger', 'johnny_rockets', 'twin_peaks'],
+  },
+  'DENN': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Restaurant Franchisor',
+    tags: ['family_dining', 'breakfast', 'franchise', 'dennys', '24hr'],
+  },
+  'SKY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Manufactured Housing',
+    tags: ['modular', 'manufactured_home', 'affordable', 'champion'],
+  },
+  'EXPI': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B2C',
+    industrySegment: 'Real Estate Services',
+    tags: ['cloud_brokerage', 'agent_platform', 'virtual', 'residential'],
+  },
+  'PNTG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2C',
+    industrySegment: 'Skilled Nursing',
+    tags: ['senior_living', 'skilled_nursing', 'home_health', 'hospice'],
+  },
+  // ---------- Homebuilders ----------
+  'GRBK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['single_family', 'texas', 'land_development', 'move_up'],
+  },
+  'CCS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['entry_level', 'single_family', 'affordable', 'century_complete'],
+  },
+  'MHO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['single_family', 'midwest', 'southeast', 'smart_series'],
+  },
+  'LGIH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Homebuilders',
+    tags: ['entry_level', 'affordable', 'bulk_sales', 'move_in_ready'],
+  },
+
+  // ---------- Energy/Materials ----------
+  'CVI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Refining',
+    tags: ['refining', 'nitrogen_fertilizer', 'midcontinent', 'CVR_partners'],
+  },
+  'ZEUS': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Steel Distribution',
+    tags: ['service_center', 'flat_rolled', 'pipe_tube', 'processing'],
+  },
+  'RES': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil Services',
+    tags: ['pressure_pumping', 'coiled_tubing', 'cementing', 'downhole'],
+  },
+  'PUMP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Oil Services',
+    tags: ['frac_services', 'pressure_pumping', 'permian', 'completions'],
+  },
+  'AMR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Metallurgical Coal',
+    tags: ['met_coal', 'steelmaking', 'export', 'appalachia'],
+  },
+
+  // ---------- Building Products ----------
+  'IBP': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['insulation', 'installation', 'residential', 'commercial', 'gutters'],
+  },
+
+  // ---------- Technology/Software ----------
+  'ACIW': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Financial Software',
+    tags: ['payments', 'real_time', 'banking', 'merchant', 'fraud'],
+  },
+  'CGNX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Machine Vision',
+    tags: ['machine_vision', 'barcode', 'inspection', 'automation', 'precision'],
+  },
+  'PD': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'DevOps Software',
+    tags: ['incident_management', 'on_call', 'AIOps', 'automation', 'SRE'],
+  },
+  'PRGS': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise Software',
+    tags: ['application_platform', 'data_connectivity', 'chef', 'devops'],
+  },
+
+  // ---------- Other ----------
+  'SLGN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Packaging',
+    tags: ['food_packaging', 'metal_containers', 'closures', 'pharma_packaging'],
+  },
+  'TDW': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service', 'rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Offshore Marine Services',
+    tags: ['OSV', 'offshore', 'deepwater', 'vessel_fleet', 'subsea_support'],
+  },
+  'CRAI': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Management Consulting',
+    tags: ['litigation', 'expert_witness', 'strategy', 'forensic', 'regulatory'],
+  },
+  'LNTH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Nuclear Imaging',
+    tags: ['radiopharmaceuticals', 'PET_imaging', 'DEFINITY', 'PYLARIFY', 'diagnostics'],
   },
 };
 
