@@ -656,6 +656,14 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'QSR': 'early',     // Restaurant Brands
   'WING': 'early',    // Wingstop
 
+  // ---------- 旅游/酒店 (Travel & Hospitality) ----------
+  'MAR': 'early',     // Marriott
+  'HLT': 'early',     // Hilton
+  'WH': 'early',      // Wyndham
+  'ABNB': 'early',    // Airbnb
+  'BKNG': 'early',    // Booking
+  'EXPE': 'early',    // Expedia
+
   // ---------- 服装零售 (Apparel Retail) ----------
   'GPS': 'early',     // Gap
   'ANF': 'early',     // Abercrombie
@@ -1435,6 +1443,14 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
     consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.88,
   },
+  'MRO': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.85,
+  },
+  'APA': {
+    interestRate: 0.1, inflation: 0.4, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.85,
+  },
 
   // 中游管道 - 油价敏感度较低，更稳定
   'WMB': {
@@ -1452,6 +1468,14 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'EPD': {
     interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
     consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.4,
+  },
+  'OKE': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.45,
+  },
+  'TRGP': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.5,
   },
 
   // 炼化 - 利润取决于裂解价差，与油价关系复杂
@@ -1494,6 +1518,32 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'AAL': {
     interestRate: -0.4, inflation: -0.4, gdpGrowth: 0.7, unemployment: -0.5,
     consumerConfidence: 0.8, housingMarket: 0.1, dollarIndex: 0.2, oilPrice: -0.8,
+  },
+
+  // 酒店 - 商务/旅游双驱动，消费信心正相关
+  'MAR': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'HLT': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'WH': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.2,
+  },
+  'ABNB': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.7, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: -0.2,
+  },
+  'BKNG': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.2,
+  },
+  'EXPE': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.6, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.2,
   },
 
   // 国防 - 低宏观敏感(政府合同)
@@ -2474,6 +2524,28 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
     consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.2,
   },
+  'QSR': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'DPZ': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'WING': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // 服装/运动 - 高消费者信心敏感
+  'NKE': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,
+  },
+  'LULU': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
 
   // 服装零售 - 高消费者信心敏感
   'GPS': {
@@ -2483,6 +2555,28 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'ANF': {
     interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.5,
     consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'AEO': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'URBN': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // 折扣零售 - 相对防御(经济下行受益)
+  'TJX': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'ROST': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'DKS': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
   },
 
   // 专业零售 - 消费者信心敏感
@@ -2501,6 +2595,10 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'WSM': {
     interestRate: -0.5, inflation: -0.3, gdpGrowth: 0.6, unemployment: -0.5,
     consumerConfidence: 0.7, housingMarket: 0.7, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'W': {
+    interestRate: -0.6, inflation: -0.3, gdpGrowth: 0.6, unemployment: -0.5,
+    consumerConfidence: 0.7, housingMarket: 0.8, dollarIndex: 0.0, oilPrice: -0.1,
   },
 
   // 汽配零售 - 相对防御（维修需求）
