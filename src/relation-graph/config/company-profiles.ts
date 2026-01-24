@@ -2126,6 +2126,7 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // ---------- 电信 (Telecom) ----------
   'CMCSA': 'defensive', // Comcast
   'CHTR': 'defensive',  // Charter
+  'LBRDA': 'defensive', // Liberty Broadband
 
   // ---------- 媒体/娱乐 ----------
   'DIS': 'mid',        // Disney
@@ -2168,6 +2169,8 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'FIS': 'defensive',  // FIS (基础设施)
   'FISV': 'defensive', // Fiserv (基础设施)
   'GPN': 'mid',        // Global Payments
+  'FI': 'defensive',   // Fiserv (基础设施)
+  'WU': 'defensive',   // Western Union (汇款刚需)
 
   // 交易所 (Mid Cycle - 与交易量相关)
   'CME': 'mid',       // CME Group
@@ -2188,6 +2191,7 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'AIG': 'mid',        // AIG - P&C
   'MET': 'mid',        // MetLife - Life
   'PRU': 'mid',        // Prudential - Life
+  'HIG': 'mid',         // Hartford Financial - Diversified
   'AON': 'defensive',  // Aon - Broker
   'MMC': 'defensive',  // Marsh - Broker
   'WTW': 'defensive',  // WTW - Broker
@@ -3312,6 +3316,10 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
     consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
   },
+  'LBRDA': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
 
   // 媒体/娱乐
   'DIS': {
@@ -3691,6 +3699,14 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
     interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
     consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
   },
+  'FI': {
+    interestRate: 0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'WU': {
+    interestRate: 0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
 
   // 保险 - 相对防御但利率正相关
   'TRV': {
@@ -3720,6 +3736,10 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'AFL': {
     interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
     consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'HIG': {
+    interestRate: 0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
   },
 
   // ========== 医疗健康 (低宏观敏感度 - 防御型) ==========

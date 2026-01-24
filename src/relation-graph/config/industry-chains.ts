@@ -1502,6 +1502,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'FIS': 'Payment Processor',           // FIS
     'FISV': 'Payment Processor',          // Fiserv
     'GPN': 'Payment Processor',           // Global Payments
+    'FI': 'Payment Processor',            // Fiserv
+    'WU': 'Remittance',                   // Western Union
     'PYPL': 'Digital Payments',           // PayPal
     'SQ': 'Digital Payments',             // Block (Square)
     'ADYEY': 'Payment Processor',         // Adyen
@@ -1706,6 +1708,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'MET': 'Life Insurance',             // MetLife
     'PRU': 'Life Insurance',             // Prudential
     'AFL': 'Life Insurance',             // Aflac
+    'HIG': 'Diversified Insurance',      // Hartford Financial
     'AON': 'Insurance Broker',           // Aon
     'MMC': 'Insurance Broker',           // Marsh McLennan
     'WTW': 'Insurance Broker',           // WTW
@@ -1782,6 +1785,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // 有线电视/宽带 (Cable & Broadband)
     'CMCSA': 'Cable Operator',            // Comcast
     'CHTR': 'Cable Operator',             // Charter
+    'LBRDA': 'Cable Operator',            // Liberty Broadband
 
     // 流媒体 (Streaming)
     'NFLX': 'Streaming',                  // Netflix

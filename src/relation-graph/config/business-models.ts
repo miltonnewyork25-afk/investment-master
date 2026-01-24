@@ -692,6 +692,14 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Cable & Telecom',
     tags: ['cable', 'broadband', 'spectrum', 'mobile'],
   },
+  'LBRDA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Cable & Telecom',
+    tags: ['cable', 'broadband', 'charter_stake', 'holding_company'],
+  },
 
   // ---------- 流媒体/娱乐 (Streaming & Entertainment) ----------
   'DIS': {
@@ -922,6 +930,22 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2B',
     industrySegment: 'Payments',
     tags: ['merchant_acquiring', 'issuer_solutions'],
+  },
+  'FI': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Payments',
+    tags: ['bank_tech', 'clover', 'merchant', 'core_banking'],
+  },
+  'WU': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Payments',
+    tags: ['remittance', 'cross_border', 'agent_network', 'digital'],
   },
 
   // Buy Now Pay Later
@@ -2679,6 +2703,14 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     customerModel: 'B2B',
     industrySegment: 'Life Insurance',
     tags: ['retirement', 'asset_management', 'group'],
+  },
+  'HIG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Diversified Insurance',
+    tags: ['commercial', 'personal', 'group_benefits', 'mutual_funds'],
   },
 
   // ---------- 消费金融 (Consumer Finance) ----------
