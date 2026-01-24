@@ -326,6 +326,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Restaurants': [
       'Packaged Foods',
       'Beverages - Non-Alcoholic',
+      'Food Distribution',
     ],
 
     'Lodging': [
@@ -338,18 +339,67 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Insurance - Life',
       'Asset Management',
       'Capital Markets',
+      'Banks - Regional',
     ],
 
     // 医疗互补
     'Medical - Healthcare Plans': [
       'Medical - Care Facilities',
       'Pharmaceutical Retailers',
+      'Medical - Devices',
     ],
 
     // 云计算互补
     'Internet Content & Information': [
       'Software - Application',
       'Entertainment',
+      'Electronic Gaming & Multimedia',
+    ],
+
+    // 零售互补
+    'Specialty Retail': [
+      'Internet Retail',
+      'Discount Stores',
+      'Apparel - Retail',
+    ],
+
+    'Grocery Stores': [
+      'Discount Stores',
+      'Household Products',
+      'Packaged Foods',
+    ],
+
+    // 能源互补
+    'Oil & Gas Exploration & Production': [
+      'Oil & Gas Midstream',
+      'Marine Shipping',
+    ],
+
+    'Utilities - Regulated Electric': [
+      'Utilities - Renewable',
+      'Utilities - Independent Power Producers',
+      'Solar',
+    ],
+
+    // 房地产互补
+    'Residential Construction': [
+      'Building Materials',
+      'Banks - Regional',
+      'Insurance - Property & Casualty',
+    ],
+
+    // 支付/金融互补
+    'Financial - Credit Services': [
+      'Internet Retail',
+      'Specialty Retail',
+      'Travel Services',
+    ],
+
+    // 物流互补
+    'Integrated Freight & Logistics': [
+      'Railroads',
+      'Trucking',
+      'Marine Shipping',
     ],
   },
 
@@ -509,6 +559,93 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Data Center Infrastructure',
       'Data Center REIT',
       'Cloud Computing',
+    ],
+
+    'Shipping & Maritime Chain': [
+      'Marine Shipping',
+      'Container Shipping',
+      'Dry Bulk Shipping',
+      'Crude Tanker',
+      'Product Tanker',
+      'LNG Shipping',
+    ],
+
+    'Insurance Chain': [
+      'Insurance - Property & Casualty',
+      'Insurance - Life',
+      'Insurance Brokers',
+      'Insurance - Diversified',
+    ],
+
+    'REIT Chain': [
+      'Industrial REIT',
+      'Retail REIT',
+      'Net Lease REIT',
+      'Residential REIT',
+      'Office REIT',
+      'Healthcare REIT',
+      'Self-Storage REIT',
+      'Data Center REIT',
+    ],
+
+    'Digital Advertising Chain': [
+      'Social Platform',
+      'AdTech DSP',
+      'AdTech Verification',
+      'AdTech SSP',
+      'AdTech Platform',
+      'Streaming',
+      'Audio Streaming',
+    ],
+
+    'Beauty & Personal Care Chain': [
+      'Prestige Beauty',
+      'Mass Beauty',
+      'Beauty Retail',
+      'Household Products',
+    ],
+
+    'Apparel & Fashion Chain': [
+      'Athletic Apparel',
+      'Accessible Luxury',
+      'Fashion Brand',
+      'Luxury Apparel',
+      'Outdoor Apparel',
+      'Basics Apparel',
+      'Denim Brand',
+      'Apparel Retail',
+      'Sporting Goods Retail',
+      'Off-Price Retail',
+    ],
+
+    'Restaurant Chain': [
+      'QSR',
+      'Coffee Chain',
+      'Fast Casual',
+      'Casual Dining',
+      'Food Distribution',
+      'Food Delivery',
+    ],
+
+    'Payments & FinTech Chain': [
+      'Payment Network',
+      'Payment Processor',
+      'Digital Payments',
+      'Consumer Finance',
+      'Auto Finance',
+      'FinTech SaaS',
+    ],
+
+    'Travel & Hospitality Chain': [
+      'Hotel Chain',
+      'Short-term Rental',
+      'OTA',
+      'Cruise Lines',
+      'Travel Meta',
+      'Ride-hailing',
+      'Car Rental',
+      'Full-Service Airline',
+      'Low-Cost Airline',
     ],
   },
 
