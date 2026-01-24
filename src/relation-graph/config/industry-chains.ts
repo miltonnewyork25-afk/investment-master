@@ -2863,6 +2863,51 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // Diversified Industrial
     'SXI': 'Diversified Industrial',           // Standex International - 多元化工业
+
+    // Chip Architecture/IP Licensing
+    'ARM': 'Chip Architecture/IP',             // Arm Holdings - 芯片架构IP授权
+
+    // Grocery Delivery Platform
+    'CART': 'Grocery Delivery Platform',       // Instacart - 生鲜配送平台
+
+    // Premium Footwear
+    'BIRK': 'Premium Footwear',               // Birkenstock - 高端凉鞋
+
+    // LatAm E-commerce
+    'MELI': 'LatAm E-commerce',               // MercadoLibre - 拉美电商/金融科技
+
+    // SE Asia Platform
+    'SE': 'SE Asia Platform',                  // Sea Limited - 东南亚游戏/电商/金融
+
+    // Chinese E-commerce
+    'BABA': 'Chinese E-commerce',              // Alibaba - 中国电商/云
+    'PDD': 'Chinese E-commerce',               // PDD Holdings - 全球电商Temu/拼多多
+    'JD': 'Chinese E-commerce',                // JD.com - 中国电商/物流
+
+    // Chinese Search/AI
+    'BIDU': 'Chinese Search/AI',               // Baidu - 中国搜索/AI
+
+    // Chinese Oncology Biotech
+    'BGNE': 'Chinese Oncology',                // BeiGene - 中国肿瘤生物科技
+
+    // eVTOL
+    'JOBY': 'eVTOL',                           // Joby Aviation - eVTOL空中出租车
+
+    // Premium EV
+    'PSNY': 'Premium EV',                      // Polestar - 高端电动汽车
+
+    // Integrated Steel
+    'X': 'Integrated Steel',                   // US Steel - 综合钢铁
+
+    // Iron Ore Mining
+    'VALE': 'Iron Ore Mining',                 // Vale - 铁矿石/镍矿
+
+    // Diversified Mining
+    'RIO': 'Diversified Mining',               // Rio Tinto - 多元化矿业
+    'BHP': 'Diversified Mining',               // BHP Group - 多元化矿业
+
+    // LNG Export
+    'LNG': 'LNG Export',                       // Cheniere Energy - LNG出口/液化
   },
 
   // ============================================================
@@ -5810,6 +5855,48 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // 多元化工业产业链
     'Diversified Industrial': ['Electronics', 'Engraving', 'Engineering Technology'],
+
+    // 芯片架构/IP授权产业链
+    'Chip Architecture/IP': ['Fabless Chips', 'Semiconductor Foundry', 'Consumer Electronics', 'Server Hardware'],
+
+    // 生鲜配送平台产业链
+    'Grocery Delivery Platform': ['Grocery Retail', 'Consumer Services', 'Digital Advertising'],
+
+    // 高端鞋履产业链
+    'Premium Footwear': ['Specialty Retail', 'Department Store', 'Consumer Services'],
+
+    // 拉美电商产业链
+    'LatAm E-commerce': ['Consumer Services', 'Digital Advertising', 'Fintech', 'Logistics'],
+
+    // 东南亚平台产业链
+    'SE Asia Platform': ['Consumer Services', 'Digital Advertising', 'Gaming', 'Fintech'],
+
+    // 中国电商产业链
+    'Chinese E-commerce': ['Consumer Services', 'Digital Advertising', 'Logistics', 'Cloud Computing'],
+
+    // 中国搜索/AI产业链
+    'Chinese Search/AI': ['Digital Advertising', 'Cloud Computing', 'Autonomous Driving', 'AI Services'],
+
+    // 中国肿瘤生物科技产业链
+    'Chinese Oncology': ['Hospital', 'Oncology Center', 'Pharmaceutical', 'Clinical Trials'],
+
+    // eVTOL空中出租车产业链
+    'eVTOL': ['Urban Air Mobility', 'Aviation Services', 'Consumer Services'],
+
+    // 高端电动汽车产业链
+    'Premium EV': ['Auto Dealer', 'EV Charging', 'Consumer Services', 'Auto - Manufacturers'],
+
+    // 综合钢铁产业链
+    'Integrated Steel': ['Construction Chain', 'Auto - Manufacturers', 'Industrial Chain', 'Infrastructure'],
+
+    // 铁矿石矿业产业链
+    'Iron Ore Mining': ['Integrated Steel', 'Construction Chain', 'Industrial Chain'],
+
+    // 多元化矿业产业链
+    'Diversified Mining': ['Integrated Steel', 'Construction Chain', 'EV Chain', 'Industrial Chain'],
+
+    // LNG出口产业链
+    'LNG Export': ['Utilities', 'Industrial Chain', 'Power Generation', 'Petrochemical'],
   },
 };
 

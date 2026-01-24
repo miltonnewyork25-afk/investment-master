@@ -3648,6 +3648,80 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['coverage', 'service', 'value'],
     channels: ['agent', 'broker', 'online'],
   },
+
+  // ========== 生鲜配送 (Grocery Delivery) ==========
+  'CART': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['grocery_shopping', 'convenience', 'busy_schedule'],
+    valueProps: ['convenience', 'speed', 'selection'],
+    channels: ['app', 'online'],
+  },
+
+  // ========== 高端鞋履 (Premium Footwear) ==========
+  'BIRK': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['casual_footwear', 'comfort', 'fashion'],
+    valueProps: ['comfort', 'durability', 'heritage'],
+    channels: ['retail', 'online', 'department_store'],
+  },
+
+  // ========== 拉美电商 (LatAm E-commerce) ==========
+  'MELI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['online_shopping', 'payments'],
+    valueProps: ['selection', 'convenience', 'fintech'],
+    channels: ['app', 'online'],
+  },
+
+  // ========== 东南亚平台 (SE Asia Platform) ==========
+  'SE': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['gaming', 'shopping', 'payments'],
+    valueProps: ['entertainment', 'convenience', 'value'],
+    channels: ['app', 'online'],
+  },
+
+  // ========== 中国电商/科技 (Chinese E-commerce/Tech) ==========
+  'BABA': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['online_shopping', 'wholesale'],
+    valueProps: ['selection', 'value', 'global_trade'],
+    channels: ['app', 'online'],
+  },
+  'PDD': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['bargain_shopping', 'daily_deals'],
+    valueProps: ['ultra_value', 'gamification', 'social_shopping'],
+    channels: ['app'],
+  },
+  'JD': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['electronics_shopping', 'fast_delivery'],
+    valueProps: ['authenticity', 'speed', 'quality'],
+    channels: ['app', 'online'],
+  },
+  'BIDU': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['search', 'information', 'AI_services'],
+    valueProps: ['comprehensive', 'AI_powered', 'local_content'],
+    channels: ['web', 'app'],
+  },
+
+  // ========== eVTOL (eVTOL Air Taxi) ==========
+  'JOBY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'high_net_worth', gender: 'all' },
+    occasions: ['urban_transport', 'airport_transfer'],
+    valueProps: ['speed', 'convenience', 'sustainability'],
+    channels: ['app'],
+  },
+
+  // ========== 高端电动汽车 (Premium EV) ==========
+  'PSNY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['car_purchase', 'ev_adoption'],
+    valueProps: ['design', 'sustainability', 'performance'],
+    channels: ['online', 'showroom'],
+  },
 };
 
 // ============================================================
@@ -5440,6 +5514,45 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
 
   // ---------- 多元化工业 (Diversified Industrial) ----------
   'SXI': 'mid',              // Standex International - 多元化工业(中周期)
+
+  // ---------- 芯片架构/IP (Chip Architecture/IP) ----------
+  'ARM': 'mid',              // Arm Holdings - 芯片架构IP授权(中周期)
+
+  // ---------- 生鲜配送 (Grocery Delivery) ----------
+  'CART': 'mid',             // Instacart - 生鲜配送平台(中周期)
+
+  // ---------- 高端鞋履 (Premium Footwear) ----------
+  'BIRK': 'mid',             // Birkenstock - 高端凉鞋(中周期)
+
+  // ---------- 拉美/东南亚电商 (LatAm/SE Asia E-commerce) ----------
+  'MELI': 'mid',             // MercadoLibre - 拉美电商/金融科技(中周期)
+  'SE': 'mid',               // Sea Limited - 东南亚游戏/电商/金融(中周期)
+
+  // ---------- 中国电商/科技 (Chinese E-commerce/Tech) ----------
+  'BABA': 'mid',             // Alibaba - 中国电商/云(中周期)
+  'PDD': 'mid',              // PDD Holdings - 全球电商Temu/拼多多(中周期)
+  'JD': 'mid',               // JD.com - 中国电商/物流(中周期)
+  'BIDU': 'mid',             // Baidu - 中国搜索/AI(中周期)
+
+  // ---------- 中国肿瘤生物科技 (Chinese Oncology Biotech) ----------
+  'BGNE': 'mid',             // BeiGene - 中国肿瘤生物科技(中周期)
+
+  // ---------- eVTOL/电动飞行器 ----------
+  'JOBY': 'early',           // Joby Aviation - eVTOL空中出租车(早周期)
+
+  // ---------- 高端电动汽车 (Premium EV) ----------
+  'PSNY': 'early',           // Polestar - 高端电动汽车(早周期)
+
+  // ---------- 钢铁 (Steel) ----------
+  'X': 'mid',                // US Steel - 综合钢铁(中周期)
+
+  // ---------- 矿业 (Mining) ----------
+  'VALE': 'mid',             // Vale - 铁矿石/镍矿(中周期)
+  'RIO': 'mid',              // Rio Tinto - 多元化矿业(中周期)
+  'BHP': 'mid',              // BHP Group - 多元化矿业(中周期)
+
+  // ---------- LNG出口 (LNG Export) ----------
+  'LNG': 'mid',              // Cheniere Energy - LNG出口/液化(中周期)
 };
 
 // ============================================================
@@ -11180,6 +11293,94 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'SXI': {
     interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
     consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // Chip Architecture/IP
+  'ARM': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // Grocery Delivery
+  'CART': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // Premium Footwear
+  'BIRK': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // LatAm/SE Asia E-commerce
+  'MELI': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,
+  },
+  'SE': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,
+  },
+  'PDD': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: -0.1,
+  },
+
+  // Chinese Tech
+  'BABA': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'JD': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'BIDU': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+
+  // Chinese Biotech
+  'BGNE': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // EV/eVTOL
+  'JOBY': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+  'PSNY': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.3,
+  },
+
+  // Steel
+  'X': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.4, oilPrice: 0.1,
+  },
+
+  // Mining
+  'VALE': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.5, oilPrice: 0.1,
+  },
+  'RIO': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.5, oilPrice: 0.1,
+  },
+  'BHP': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: -0.5, oilPrice: 0.1,
+  },
+
+  // LNG Export
+  'LNG': {
+    interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.6,
   },
 };
 

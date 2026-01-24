@@ -11559,6 +11559,197 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Diversified Industrial',
     tags: ['electronics', 'engraving', 'engineering_tech', 'specialty'],
   },
+
+  // ========================================================
+  // 芯片架构/IP授权 (Chip Architecture/IP Licensing)
+  // ========================================================
+
+  'ARM': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Chip Architecture/IP',
+    tags: ['ip_licensing', 'arm_architecture', 'mobile_computing', 'iot'],
+  },
+
+  // ========================================================
+  // 生鲜配送平台 (Grocery Delivery Platform)
+  // ========================================================
+
+  'CART': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'advertising'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2C',
+    industrySegment: 'Grocery Delivery',
+    tags: ['grocery', 'on_demand', 'gig_economy', 'advertising'],
+  },
+
+  // ========================================================
+  // 高端鞋履 (Premium Footwear)
+  // ========================================================
+
+  'BIRK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Premium Footwear',
+    tags: ['heritage_brand', 'comfort', 'sandals', 'premium'],
+  },
+
+  // ========================================================
+  // 拉美/东南亚电商平台 (LatAm/SE Asia E-commerce)
+  // ========================================================
+
+  'MELI': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'advertising'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2C',
+    industrySegment: 'LatAm E-commerce',
+    tags: ['latam', 'marketplace', 'fintech', 'logistics'],
+  },
+  'SE': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'advertising'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2C',
+    industrySegment: 'SE Asia Platform',
+    tags: ['gaming', 'ecommerce', 'fintech', 'southeast_asia'],
+  },
+
+  // ========================================================
+  // 中国电商/科技 (Chinese E-commerce/Tech)
+  // ========================================================
+
+  'BABA': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'advertising', 'subscription'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B2C',
+    industrySegment: 'Chinese E-commerce',
+    tags: ['marketplace', 'cloud', 'global_trade', 'fintech'],
+  },
+  'PDD': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'advertising'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2C',
+    industrySegment: 'Chinese E-commerce',
+    tags: ['value_ecommerce', 'social_shopping', 'temu', 'gamification'],
+  },
+  'JD': {
+    assetModel: 'platform',
+    revenueModels: ['product_sales', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Chinese E-commerce',
+    tags: ['self_operated', 'logistics', 'electronics', 'fast_delivery'],
+  },
+  'BIDU': {
+    assetModel: 'platform',
+    revenueModels: ['advertising', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Chinese Search/AI',
+    tags: ['search_engine', 'ai', 'autonomous_driving', 'cloud'],
+  },
+
+  // ========================================================
+  // 中国肿瘤生物科技 (Chinese Oncology Biotech)
+  // ========================================================
+
+  'BGNE': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Chinese Oncology',
+    tags: ['oncology', 'biotech', 'global_clinical', 'immuno_oncology'],
+  },
+
+  // ========================================================
+  // eVTOL/电动飞行器 (eVTOL Air Taxi)
+  // ========================================================
+
+  'JOBY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'eVTOL',
+    tags: ['evtol', 'air_taxi', 'urban_mobility', 'electric_aviation'],
+  },
+
+  // ========================================================
+  // 高端电动汽车 (Premium Electric Vehicles)
+  // ========================================================
+
+  'PSNY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Premium EV',
+    tags: ['ev', 'premium', 'scandinavian_design', 'sustainability'],
+  },
+
+  // ========================================================
+  // 钢铁 (Integrated Steel)
+  // ========================================================
+
+  'X': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Integrated Steel',
+    tags: ['steel', 'integrated', 'flat_rolled', 'tubular'],
+  },
+
+  // ========================================================
+  // 矿业 (Mining)
+  // ========================================================
+
+  'VALE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Iron Ore Mining',
+    tags: ['iron_ore', 'nickel', 'brazil', 'bulk_commodities'],
+  },
+  'RIO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Diversified Mining',
+    tags: ['iron_ore', 'aluminum', 'copper', 'global_mining'],
+  },
+  'BHP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Diversified Mining',
+    tags: ['iron_ore', 'copper', 'coal', 'global_mining'],
+  },
+
+  // ========================================================
+  // LNG出口 (LNG Export/Liquefaction)
+  // ========================================================
+
+  'LNG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'LNG Export',
+    tags: ['lng', 'liquefaction', 'natural_gas', 'energy_export'],
+  },
 };
 
 // ============================================================
