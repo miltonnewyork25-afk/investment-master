@@ -1359,6 +1359,49 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // ========== 数据中心基础设施 (Data Center Infrastructure) ==========
     'VRT': 'Data Center Infrastructure',    // Vertiv
     'PWSC': 'Data Center Infrastructure',   // PowerSchool (Data Infra)
+
+    // ========== 补充覆盖 - 化工 (Chemicals) ==========
+    'CE': 'Specialty Chemicals',            // Celanese - 醋酸/工程材料
+    'EMN': 'Specialty Chemicals',           // Eastman Chemical
+    'DOW': 'Commodity Chemicals',           // Dow - 大宗化工
+    'LYB': 'Commodity Chemicals',           // LyondellBasell - 聚烯烃
+
+    // ========== 补充覆盖 - 食品 (Food) ==========
+    'KHC': 'Packaged Foods',                // Kraft Heinz
+    'HRL': 'Packaged Foods',                // Hormel Foods
+    'TSN': 'Packaged Foods',                // Tyson Foods
+    'WING': 'QSR',                          // Wingstop - 快餐
+
+    // ========== 补充覆盖 - 金融科技 (FinTech) ==========
+    'COIN': 'Digital Payments',             // Coinbase - 加密交易
+    'HOOD': 'Brokerage',                    // Robinhood - 零售券商
+    'AFRM': 'Digital Payments',             // Affirm - BNPL
+    'SOFI': 'Digital Payments',             // SoFi - 数字银行
+    'NU': 'Digital Payments',               // Nu Holdings - 数字银行
+    'IBKR': 'Brokerage',                    // Interactive Brokers
+
+    // ========== 补充覆盖 - 保险/资管 (Insurance/AM) ==========
+    'LNC': 'Life Insurance',                // Lincoln National
+    'PFG': 'Life Insurance',                // Principal Financial
+    'LPLA': 'Brokerage',                    // LPL Financial
+
+    // ========== 补充覆盖 - 科技/SaaS (Tech/SaaS) ==========
+    'DOCU': 'Enterprise SaaS',             // DocuSign
+    'SPLK': 'Enterprise SaaS',             // Splunk
+    'ZM': 'Enterprise SaaS',               // Zoom
+    'FTNT': 'Cybersecurity',                // Fortinet
+    'S': 'Cybersecurity',                   // SentinelOne
+
+    // ========== 补充覆盖 - 游戏/流媒体 (Gaming/Streaming) ==========
+    'ATVI': 'Gaming Publisher',             // Activision Blizzard
+    'U': 'Gaming Platform',                 // Unity - 游戏引擎
+    'ROKU': 'Streaming',                    // Roku - 流媒体硬件+平台
+
+    // ========== 补充覆盖 - 消费/健康 (Consumer/Health) ==========
+    'ADDYY': 'Athletic Apparel',            // Adidas
+    'FL': 'Sporting Goods Retail',          // Foot Locker
+    'HIMS': 'Digital Health',               // Hims & Hers
+    'TDOC': 'Digital Health',               // Teladoc
   },
 
   // ============================================================
@@ -2072,6 +2115,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     ],
 
     'Gaming Platform': [
+      'Gaming Publisher',     // 游戏引擎服务发行商
       'AdTech Platform',
     ],
 
@@ -2458,6 +2502,28 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Hospital': [
       'Pharma Distributor',   // 药品采购
     ],
+
+    // ========== 数字健康链 ==========
+    'Digital Health': [
+      'Hospital',             // 远程问诊服务医院
+      'Health Insurance',     // 保险覆盖
+      'Pharmacy Retail',      // 在线处方
+    ],
+
+    // ========== 大宗化工链 ==========
+    'Commodity Chemicals': [
+      'Packaged Foods',       // 包装材料
+      'Homebuilder',          // 建筑化工
+      'Traditional OEM',      // 汽车化工
+    ],
+
+    // ========== 网络安全链 ==========
+    'Cybersecurity': [
+      'Enterprise SaaS',      // 保护SaaS平台
+      'Cloud Hyperscaler',    // 保护云基础设施
+      'Universal Bank',       // 银行安全
+    ],
+
   },
 };
 
