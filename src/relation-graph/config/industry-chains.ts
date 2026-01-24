@@ -3143,6 +3143,25 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // Digital Fitness
     'BODY': 'Digital Fitness',                    // Beachbody - 数字健身/订阅
+
+    // Diversified Industrial/Infrastructure
+    'ROPER': 'Diversified Industrial Software',   // Roper Technologies - 多元化工业软件
+    'ZWS': 'Water Technology',                    // Zurn Elkay Water - 水管理/饮水
+
+    // Healthcare/Biotech (Specialty)
+    'IOVA': 'Cell Therapy',                       // Iovance - TIL细胞治疗
+    'CYTK': 'Cardiac Therapeutics',               // Cytokinetics - 心肌肌球蛋白
+    'IRON': 'Hematology Therapeutics',            // Disc Medicine - 血液学
+    'VRNA': 'Respiratory Therapeutics',           // Verona Pharma - 呼吸系统
+
+    // AI/Voice Technology
+    'SOUN': 'Voice AI Platform',                  // SoundHound AI - 语音AI
+    'BBAI': 'AI Decision Analytics',              // BigBear.ai - AI决策分析
+
+    // Energy Services
+    'CLB': 'Reservoir Description',               // Core Labs - 油藏描述/生产增强
+    'AROC': 'Gas Compression Services',           // Archrock - 天然气压缩
+    'USAC': 'Gas Compression Services',           // USA Compression - 天然气采集压缩
   },
 
   // ============================================================
@@ -6850,6 +6869,62 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Connected Fitness',            // 智能健身设备
       'Streaming Media',              // 流媒体内容
       'DTC Wellness',                 // 直销健康品
+    ],
+
+    // 多元化工业软件 → 垂直SaaS/工业
+    'Diversified Industrial Software': [
+      'Enterprise SaaS',              // 企业软件
+      'Industrial Automation',        // 工业自动化
+      'Vertical SaaS',                // 垂直行业软件
+    ],
+
+    // 心脏治疗 → 心血管
+    'Cardiac Therapeutics': [
+      'Cardiology Devices',           // 心脏器械
+      'Specialty Pharma',             // 特种药物
+      'Heart Failure',                // 心衰治疗
+    ],
+
+    // 血液学治疗 → 罕见病
+    'Hematology Therapeutics': [
+      'Rare Disease',                 // 罕见病
+      'Specialty Pharma',             // 特种药物
+      'Diagnostics',                  // 诊断
+    ],
+
+    // 呼吸系统治疗 → 肺病学
+    'Respiratory Therapeutics': [
+      'Pulmonology Devices',          // 肺部设备
+      'Specialty Pharma',             // 特种药物
+      'Inhaled Therapeutics',         // 吸入治疗
+    ],
+
+    // 语音AI平台 → 对话式AI
+    'Voice AI Platform': [
+      'Conversational AI',            // 对话AI
+      'Restaurant Technology',        // 餐饮科技
+      'Automotive Software',          // 汽车软件
+    ],
+
+    // AI决策分析 → 国防/情报
+    'AI Decision Analytics': [
+      'Defense Technology',           // 国防科技
+      'Intelligence Analytics',       // 情报分析
+      'Government IT',                // 政府IT
+    ],
+
+    // 油藏描述 → 油田服务
+    'Reservoir Description': [
+      'Oilfield Services',            // 油田服务
+      'Production Enhancement',       // 增产
+      'E&P',                          // 勘探与开采
+    ],
+
+    // 天然气压缩 → 中游基建
+    'Gas Compression Services': [
+      'Midstream',                    // 中游
+      'Natural Gas Processing',       // 天然气处理
+      'Pipeline Infrastructure',      // 管道基础设施
     ],
   },
 };
