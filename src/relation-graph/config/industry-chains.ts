@@ -2545,6 +2545,29 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Universal Bank',       // 银行安全
     ],
 
+    // ========== 百货/零售补充 ==========
+    'Department Store': [
+      'Apparel Retail',        // 服装竞争
+      'Mass Retail',           // 零售竞争替代
+    ],
+
+    // 宠物电商 → 宠物上游
+    'Pet E-commerce': [
+      'Animal Health',         // 宠物医疗产品
+    ],
+
+    // 健身平台
+    'Connected Fitness': [
+      'Streaming',             // 内容竞争
+      'Consumer Electronics',  // 硬件竞争
+    ],
+
+    // 计算机硬件 → 下游
+    'Computer Hardware': [
+      'Enterprise SaaS',       // 办公设备
+      'Mass Retail',           // 零售渠道
+    ],
+
   },
 };
 

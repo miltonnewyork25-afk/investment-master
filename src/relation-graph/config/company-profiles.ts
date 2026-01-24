@@ -1174,6 +1174,250 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['iconic_brands', 'style', 'quality', 'global'],
     channels: ['retail', 'wholesale', 'online'],
   },
+
+  // ========== 百货/折扣零售 ==========
+  'M': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'female' },
+    occasions: ['shopping', 'fashion', 'home', 'gift', 'event'],
+    valueProps: ['brands', 'selection', 'experience', 'loyalty'],
+    channels: ['retail', 'online'],
+  },
+  'KSS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['family_clothing', 'home', 'value_shopping', 'basics'],
+    valueProps: ['value', 'kohls_cash', 'convenience', 'brands'],
+    channels: ['retail', 'online'],
+  },
+  'BJ': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['bulk_shopping', 'grocery', 'household', 'gas'],
+    valueProps: ['value', 'membership', 'convenience', 'selection'],
+    channels: ['warehouse', 'online'],
+  },
+
+  // ========== 消费金融 ==========
+  'ALLY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['auto_loan', 'savings', 'investing', 'banking'],
+    valueProps: ['digital_first', 'rates', 'no_fees', 'simplicity'],
+    channels: ['online', 'mobile'],
+  },
+  'COF': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['credit_card', 'travel_rewards', 'banking', 'auto_loan'],
+    valueProps: ['rewards', 'no_foreign_fee', 'matching', 'digital'],
+    channels: ['online', 'mobile', 'retail_partner'],
+  },
+  'DFS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['credit_card', 'cashback', 'banking', 'student_loan'],
+    valueProps: ['cashback', 'no_annual_fee', 'service', 'simplicity'],
+    channels: ['online', 'mobile'],
+  },
+  'AXP': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['travel', 'business_expense', 'premium_purchase', 'dining'],
+    valueProps: ['prestige', 'rewards', 'perks', 'service'],
+    channels: ['online', 'mobile', 'phone'],
+  },
+
+  // ========== 有线/电信 ==========
+  'CMCSA': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['internet', 'tv', 'streaming', 'mobile'],
+    valueProps: ['bundling', 'speed', 'content', 'coverage'],
+    channels: ['retail', 'online', 'phone'],
+  },
+  'CHTR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['internet', 'tv', 'mobile', 'bundling'],
+    valueProps: ['speed', 'no_contract', 'bundling', 'coverage'],
+    channels: ['retail', 'online', 'phone'],
+  },
+
+  // ========== 住宅REIT ==========
+  'EQR': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['apartment_rental', 'relocation', 'urban_living', 'lease'],
+    valueProps: ['location', 'amenities', 'quality', 'community'],
+    channels: ['online', 'leasing_office'],
+  },
+  'AVB': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['apartment_rental', 'urban_living', 'commute', 'lifestyle'],
+    valueProps: ['quality', 'location', 'amenities', 'management'],
+    channels: ['online', 'leasing_office'],
+  },
+  'INVH': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_rental', 'family', 'relocation', 'flexibility'],
+    valueProps: ['single_family', 'space', 'neighborhood', 'no_mortgage'],
+    channels: ['online', 'property_manager'],
+  },
+
+  // ========== 自存储REIT ==========
+  'PSA': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['moving', 'declutter', 'renovation', 'business_storage'],
+    valueProps: ['convenience', 'security', 'accessibility', 'variety'],
+    channels: ['online', 'retail'],
+  },
+  'EXR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['moving', 'storage', 'downsizing', 'seasonal'],
+    valueProps: ['locations', 'value', 'convenience', 'security'],
+    channels: ['online', 'retail'],
+  },
+
+  // ========== 房建补充 ==========
+  'PHM': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['first_home', 'move_up', 'active_adult', 'retirement'],
+    valueProps: ['design', 'quality', 'value', 'communities'],
+    channels: ['sales_center', 'online'],
+  },
+  'TOL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['luxury_home', 'move_up', 'relocation', 'custom'],
+    valueProps: ['luxury', 'customization', 'quality', 'locations'],
+    channels: ['sales_center', 'online'],
+  },
+  'NVR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['first_home', 'family_home', 'relocation', 'upgrade'],
+    valueProps: ['value', 'speed', 'quality', 'financing'],
+    channels: ['sales_center', 'online'],
+  },
+
+  // ========== P&C保险 ==========
+  'PGR': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['auto_insurance', 'home_insurance', 'bundling', 'switching'],
+    valueProps: ['price', 'ease', 'name_your_price', 'snapshot'],
+    channels: ['online', 'mobile', 'agent'],
+  },
+  'ALL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['auto_insurance', 'home_insurance', 'life', 'bundling'],
+    valueProps: ['protection', 'agent_relationship', 'bundling', 'trust'],
+    channels: ['agent', 'online', 'phone'],
+  },
+
+  // ========== 管理式医疗 ==========
+  'CI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['health_plan', 'pharmacy', 'dental', 'employer_benefit'],
+    valueProps: ['network', 'pharmacy_benefit', 'wellness', 'affordability'],
+    channels: ['employer', 'exchange', 'online'],
+  },
+  'HUM': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['medicare', 'health_plan', 'wellness', 'pharmacy'],
+    valueProps: ['medicare_focus', 'care_coordination', 'wellness', 'simplicity'],
+    channels: ['direct', 'agent', 'online'],
+  },
+  'ELV': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['health_plan', 'medicaid', 'employer_benefit', 'family'],
+    valueProps: ['scale', 'access', 'value', 'network'],
+    channels: ['employer', 'exchange', 'government'],
+  },
+
+  // ========== 公用事业 ==========
+  'DUK': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'gas', 'home_power', 'reliability'],
+    valueProps: ['reliability', 'affordability', 'clean_transition', 'service'],
+    channels: ['utility_bill', 'online'],
+  },
+  'SO': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'gas', 'home_energy', 'reliability'],
+    valueProps: ['reliability', 'low_rates', 'service', 'southern_reach'],
+    channels: ['utility_bill', 'online'],
+  },
+
+  // ========== 汽车零售 ==========
+  'KMX': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['used_car', 'trade_in', 'financing', 'first_car'],
+    valueProps: ['no_haggle', 'selection', 'warranty', 'transparency'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 食品零售 ==========
+  'KR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['weekly_grocery', 'pharmacy', 'fuel', 'household'],
+    valueProps: ['value', 'selection', 'loyalty', 'convenience'],
+    channels: ['retail', 'online', 'pickup'],
+  },
+
+  // ========== 教育 ==========
+  'DUOL': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['language_learning', 'education', 'self_improvement', 'travel_prep'],
+    valueProps: ['gamification', 'free_tier', 'accessibility', 'fun'],
+    channels: ['mobile', 'online'],
+  },
+
+  // ========== 房地产科技 ==========
+  'ZG': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_search', 'home_value', 'mortgage', 'rental'],
+    valueProps: ['data', 'zestimate', 'convenience', 'comparison'],
+    channels: ['online', 'mobile'],
+  },
+
+  // ========== 太阳能安装 ==========
+  'RUN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['solar_installation', 'energy_savings', 'home_upgrade', 'ev_charging'],
+    valueProps: ['savings', 'lease_options', 'installation', 'monitoring'],
+    channels: ['door_to_door', 'online', 'referral'],
+  },
+
+  // ========== 娱乐/媒体 ==========
+  'PARA': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['streaming', 'sports', 'news', 'entertainment'],
+    valueProps: ['content_library', 'sports', 'brands', 'value'],
+    channels: ['streaming', 'cable', 'theatrical'],
+  },
+  'WBD': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['streaming', 'movies', 'documentary', 'family_entertainment'],
+    valueProps: ['hbo_content', 'dc_universe', 'discovery', 'quality'],
+    channels: ['streaming', 'cable', 'theatrical'],
+  },
+  'FOX': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['news', 'sports', 'entertainment', 'political'],
+    valueProps: ['perspective', 'sports_rights', 'live_content', 'loyalty'],
+    channels: ['cable', 'streaming', 'online'],
+  },
+
+  // ========== 服装补充 ==========
+  'AEO': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['casual', 'denim', 'intimates', 'back_to_school'],
+    valueProps: ['inclusivity', 'comfort', 'value', 'aerie'],
+    channels: ['retail', 'online'],
+  },
+  'LEVI': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['denim', 'casual', 'heritage', 'everyday'],
+    valueProps: ['iconic', 'quality', 'fit', 'heritage'],
+    channels: ['retail', 'wholesale', 'online'],
+  },
+
+  // ========== 水务 ==========
+  'AWK': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['water_service', 'home_utility', 'reliability'],
+    valueProps: ['essential', 'reliability', 'infrastructure', 'quality'],
+    channels: ['utility_bill', 'online'],
+  },
 };
 
 // ============================================================
