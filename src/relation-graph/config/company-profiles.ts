@@ -2722,6 +2722,32 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'LII': 'mid',        // Lennox - HVAC周期
   'GGG': 'mid',        // Graco - 流体处理
   'ROP': 'defensive',  // Roper - 利基软件+工业
+
+  // ---------- 补充: 医疗健康 ----------
+  'ALGN': 'mid',       // Align Technology - 牙科消费医疗
+  'PODD': 'defensive', // Insulet - 胰岛素泵刚需
+  'TECH': 'mid',       // Bio-Techne - 生命科学试剂
+
+  // ---------- 补充: 金融服务 ----------
+  'MKTX': 'mid',       // MarketAxess - 债券交易量周期
+
+  // ---------- 补充: 科技 ----------
+  'PTC': 'mid',        // PTC - 工业设计软件
+  'MANH': 'defensive', // Manhattan Associates - 供应链刚需
+  'PAYC': 'defensive', // Paycom - 工资单刚需
+
+  // ---------- 补充: 消费/零售 ----------
+  'FIVE': 'early',     // Five Below - 消费信心敏感
+
+  // ---------- 补充: 工业 ----------
+  'NDSN': 'mid',       // Nordson - 制造业周期
+  'FTV': 'mid',        // Fortive - 工业仪器周期
+  'AME': 'mid',        // AMETEK - 电子仪器周期
+
+  // ---------- 补充: 能源/材料 ----------
+  'OVV': 'late',       // Ovintiv - 油气晚周期
+  'CTRA': 'late',      // Coterra - 油气晚周期
+  'RPM': 'mid',        // RPM International - 建筑涂料周期
 };
 
 // ============================================================
@@ -5525,6 +5551,74 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'ROP': {
     interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1,
     consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ---------- 补充: 医疗健康 ----------
+  'ALGN': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'PODD': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'TECH': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // ---------- 补充: 金融服务 ----------
+  'MKTX': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // ---------- 补充: 科技 ----------
+  'PTC': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'MANH': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'PAYC': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // ---------- 补充: 消费/零售 ----------
+  'FIVE': {
+    interestRate: -0.3, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // ---------- 补充: 工业 ----------
+  'NDSN': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'FTV': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'AME': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+
+  // ---------- 补充: 能源/材料 ----------
+  'OVV': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.9,
+  },
+  'CTRA': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.8,
+  },
+  'RPM': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.2, oilPrice: -0.1,
   },
 };
 

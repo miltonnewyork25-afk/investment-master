@@ -5884,6 +5884,130 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Specialty Industrial',
     tags: ['niche_software', 'industrial_tech', 'water', 'measurement'],
   },
+
+  // ---------- 补充: 医疗健康 (Healthcare) ----------
+  'ALGN': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Large MedTech',
+    tags: ['dental', 'invisalign', 'clear_aligners', 'orthodontics', 'itero'],
+  },
+  'PODD': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Large MedTech',
+    tags: ['insulin_pump', 'diabetes', 'omnipod', 'tubeless', 'wearable'],
+  },
+  'TECH': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Sciences Tools',
+    tags: ['proteins', 'reagents', 'diagnostics', 'bioactive', 'instruments'],
+  },
+
+  // ---------- 补充: 金融服务 (Financial Services) ----------
+  'MKTX': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B',
+    industrySegment: 'Exchange',
+    tags: ['fixed_income', 'electronic_trading', 'bonds', 'credit'],
+  },
+
+  // ---------- 补充: 科技 (Technology) ----------
+  'PTC': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Design Software',
+    tags: ['cad', 'plm', 'iot', 'augmented_reality', 'windchill'],
+  },
+  'MANH': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['supply_chain', 'warehouse', 'omnichannel', 'inventory'],
+  },
+  'PAYC': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise SaaS',
+    tags: ['hcm', 'payroll', 'hr', 'talent_management', 'single_database'],
+  },
+
+  // ---------- 补充: 消费/零售 (Consumer/Retail) ----------
+  'FIVE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Retail',
+    tags: ['dollar_store', 'value', 'teens', 'trend', 'discretionary'],
+  },
+
+  // ---------- 补充: 工业 (Industrials) ----------
+  'NDSN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Industrial',
+    tags: ['precision_dispensing', 'adhesives', 'coatings', 'testing'],
+  },
+  'FTV': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Industrial',
+    tags: ['instrumentation', 'sensing', 'fluke', 'software', 'healthcare'],
+  },
+  'AME': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Industrial',
+    tags: ['electronic_instruments', 'electromechanical', 'aerospace', 'process'],
+  },
+
+  // ---------- 补充: 能源/材料 (Energy/Materials) ----------
+  'OVV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['permian', 'montney', 'uinta', 'multi_basin'],
+  },
+  'CTRA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['marcellus', 'permian', 'anadarko', 'natural_gas', 'oil'],
+  },
+  'RPM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Coatings',
+    tags: ['sealants', 'waterproofing', 'roofing', 'rust_oleum', 'specialty'],
+  },
 };
 
 // ============================================================

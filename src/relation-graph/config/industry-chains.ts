@@ -1935,6 +1935,32 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'LII': 'Building Systems',             // Lennox International
     'GGG': 'Specialty Industrial',         // Graco
     'ROP': 'Specialty Industrial',         // Roper Technologies
+
+    // ========== 补充覆盖 - 医疗健康 ==========
+    'ALGN': 'Large MedTech',              // Align Technology - 隐适美
+    'PODD': 'Large MedTech',              // Insulet - Omnipod
+    'TECH': 'Life Sciences Tools',        // Bio-Techne - 蛋白试剂
+
+    // ========== 补充覆盖 - 金融服务 ==========
+    'MKTX': 'Exchange',                   // MarketAxess - 债券电子交易
+
+    // ========== 补充覆盖 - 科技 ==========
+    'PTC': 'Design Software',             // PTC - CAD/PLM/IoT
+    'MANH': 'Enterprise SaaS',            // Manhattan Associates - 供应链
+    'PAYC': 'Enterprise SaaS',            // Paycom - HCM/Payroll
+
+    // ========== 补充覆盖 - 消费/零售 ==========
+    'FIVE': 'Dollar Store',               // Five Below - 折扣零售
+
+    // ========== 补充覆盖 - 工业 ==========
+    'NDSN': 'Specialty Industrial',       // Nordson - 精密点胶
+    'FTV': 'Specialty Industrial',        // Fortive - 仪器/传感
+    'AME': 'Specialty Industrial',        // AMETEK - 电子仪器
+
+    // ========== 补充覆盖 - 能源/材料 ==========
+    'OVV': 'Shale E&P',                   // Ovintiv - 多盆地
+    'CTRA': 'Shale E&P',                  // Coterra - Marcellus/Permian
+    'RPM': 'Coatings',                    // RPM International - 特种涂料
   },
 
   // ============================================================
@@ -2740,6 +2766,12 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Fabless Chips',
       'Industrial Conglomerate',
       'Industrial Automation',
+    ],
+
+    'Design Software': [
+      'Industrial Automation',
+      'Industrial Conglomerate',
+      'Large MedTech',
     ],
 
     // ========== 国防产业链 ==========
