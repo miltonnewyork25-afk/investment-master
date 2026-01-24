@@ -3640,6 +3640,294 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Specialty Chemicals',
     tags: ['lithium', 'bromine', 'catalysts', 'ev_battery'],
   },
+
+  // ========================================================
+  // 房地产/REITs行业
+  // 产业链: 建筑 → 物业运营 → 租户/消费者
+  // 特点: 高利率敏感、稳定收益、区域性
+  // ========================================================
+
+  // ---------- 工业REITs (Industrial/Logistics) ----------
+  'PLD': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial REIT',
+    tags: ['logistics', 'warehouse', 'ecommerce', 'global'],
+  },
+  'REXR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial REIT',
+    tags: ['industrial', 'socal', 'infill', 'last_mile'],
+  },
+  'STAG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial REIT',
+    tags: ['single_tenant', 'industrial', 'net_lease'],
+  },
+
+  // ---------- 零售REITs (Retail) ----------
+  'SPG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Retail REIT',
+    tags: ['malls', 'premium_outlets', 'mixed_use'],
+  },
+  'O': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Net Lease REIT',
+    tags: ['triple_net', 'retail', 'monthly_dividend'],
+  },
+  'NNN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Net Lease REIT',
+    tags: ['triple_net', 'retail', 'single_tenant'],
+  },
+  'VICI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Net Lease REIT',
+    tags: ['gaming', 'experiential', 'triple_net'],
+  },
+
+  // ---------- 住宅REITs (Residential) ----------
+  'EQR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Residential REIT',
+    tags: ['apartments', 'coastal', 'urban', 'luxury'],
+  },
+  'AVB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Residential REIT',
+    tags: ['apartments', 'coastal', 'suburban', 'development'],
+  },
+  'MAA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Residential REIT',
+    tags: ['apartments', 'sunbelt', 'garden_style'],
+  },
+  'INVH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Residential REIT',
+    tags: ['single_family', 'rental', 'sunbelt'],
+  },
+
+  // ---------- 办公REITs (Office) ----------
+  'BXP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Office REIT',
+    tags: ['class_a', 'urban', 'life_science', 'coastal'],
+  },
+  'VNO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Office REIT',
+    tags: ['nyc', 'office', 'mixed_use'],
+  },
+
+  // ---------- 医疗REITs (Healthcare) ----------
+  'WELL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Healthcare REIT',
+    tags: ['senior_housing', 'medical_office', 'wellness'],
+  },
+  'VTR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Healthcare REIT',
+    tags: ['senior_housing', 'life_science', 'medical_office'],
+  },
+  'OHI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Healthcare REIT',
+    tags: ['skilled_nursing', 'triple_net', 'operators'],
+  },
+
+  // ---------- 自存储REITs (Self-Storage) ----------
+  'PSA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Self-Storage REIT',
+    tags: ['self_storage', 'brand', 'scale'],
+  },
+  'EXR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Self-Storage REIT',
+    tags: ['self_storage', 'management', 'technology'],
+  },
+
+  // ========================================================
+  // 公用事业行业 (Utilities)
+  // 产业链: 发电 → 输配电 → 终端用户
+  // 特点: 高分红、利率敏感、监管环境
+  // ========================================================
+
+  // ---------- 受管制电力 (Regulated Electric) ----------
+  'NEE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['renewable', 'fpl', 'wind', 'solar', 'nuclear'],
+  },
+  'DUK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['regulated', 'southeast', 'nuclear', 'gas'],
+  },
+  'SO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['regulated', 'southeast', 'nuclear', 'gas'],
+  },
+  'AEP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['regulated', 'transmission', 'midwest'],
+  },
+  'EXC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['regulated', 'nuclear', 'northeast', 'midwest'],
+  },
+  'XEL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['regulated', 'wind', 'clean_energy', 'midwest'],
+  },
+
+  // ---------- 独立发电商 (IPP) ----------
+  'VST': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Independent Power',
+    tags: ['merchant', 'nuclear', 'gas', 'texas'],
+  },
+  'NRG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Independent Power',
+    tags: ['merchant', 'retail', 'gas', 'solar'],
+  },
+  'CEG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Independent Power',
+    tags: ['nuclear', 'clean_energy', 'ppa', 'data_center'],
+  },
+
+  // ---------- 可再生能源 (Solar/Renewable) ----------
+  'ENPH': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2B2C',
+    industrySegment: 'Solar Equipment',
+    tags: ['microinverter', 'residential', 'battery', 'software'],
+  },
+  'SEDG': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2B2C',
+    industrySegment: 'Solar Equipment',
+    tags: ['inverter', 'optimizer', 'commercial', 'battery'],
+  },
+  'FSLR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Solar Manufacturing',
+    tags: ['thin_film', 'utility_scale', 'us_manufacturing'],
+  },
+  'RUN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Solar Installer',
+    tags: ['residential', 'lease', 'ppa', 'battery'],
+  },
+
+  // ---------- 水务 (Water) ----------
+  'AWK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Water Utility',
+    tags: ['regulated', 'water', 'wastewater', 'acquisitions'],
+  },
 };
 
 // ============================================================

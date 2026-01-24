@@ -1105,6 +1105,42 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'CP': 'Class I Railroad',             // Canadian Pacific
     'CNI': 'Class I Railroad',            // Canadian National
 
+    // ========== REITs细分 ==========
+    'PLD': 'Industrial REIT',             // Prologis
+    'REXR': 'Industrial REIT',            // Rexford
+    'STAG': 'Industrial REIT',            // STAG
+    'SPG': 'Retail REIT',                 // Simon Property
+    'O': 'Net Lease REIT',                // Realty Income
+    'NNN': 'Net Lease REIT',              // NNN
+    'VICI': 'Net Lease REIT',             // VICI
+    'EQR': 'Residential REIT',            // Equity Residential
+    'AVB': 'Residential REIT',            // AvalonBay
+    'MAA': 'Residential REIT',            // Mid-America
+    'INVH': 'Residential REIT',           // Invitation Homes
+    'BXP': 'Office REIT',                 // Boston Properties
+    'VNO': 'Office REIT',                 // Vornado
+    'WELL': 'Healthcare REIT',            // Welltower
+    'VTR': 'Healthcare REIT',             // Ventas
+    'OHI': 'Healthcare REIT',             // Omega Healthcare
+    'PSA': 'Self-Storage REIT',           // Public Storage
+    'EXR': 'Self-Storage REIT',           // Extra Space
+
+    // ========== 公用事业细分 ==========
+    'NEE': 'Regulated Utility',            // NextEra
+    'DUK': 'Regulated Utility',            // Duke
+    'SO': 'Regulated Utility',             // Southern
+    'AEP': 'Regulated Utility',            // AEP
+    'EXC': 'Regulated Utility',            // Exelon
+    'XEL': 'Regulated Utility',            // Xcel
+    'VST': 'Independent Power',            // Vistra
+    'NRG': 'Independent Power',            // NRG
+    'CEG': 'Independent Power',            // Constellation
+    'ENPH': 'Solar Equipment',             // Enphase
+    'SEDG': 'Solar Equipment',             // SolarEdge
+    'FSLR': 'Solar Manufacturing',         // First Solar
+    'RUN': 'Solar Installer',              // Sunrun
+    'AWK': 'Water Utility',                // American Water Works
+
     // ========== 电信/媒体/娱乐细分 ==========
     // 电信运营商 (Telecom Operators)
     'T': 'Wireless Carrier',              // AT&T
@@ -1602,6 +1638,88 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Cement': [
       'E&C Contractor',
       'Homebuilder',
+    ],
+
+    // ========== REITs产业链 ==========
+    // 工业REIT - 服务物流/电商
+    'Industrial REIT': [
+      'Express Logistics',
+      'E-commerce',
+      'LTL Trucking',
+    ],
+
+    // 零售REIT - 服务零售商
+    'Retail REIT': [
+      'Mass Retail',
+      'Apparel Retail',
+    ],
+
+    // 净租赁REIT - 服务稳定租户
+    'Net Lease REIT': [
+      'QSR',
+      'Dollar Store',
+      'Auto Parts Retail',
+    ],
+
+    // 住宅REIT - 与住房市场相关
+    'Residential REIT': [
+      'Homebuilder',
+    ],
+
+    // 办公REIT - 服务企业租户
+    'Office REIT': [
+      'Enterprise SaaS',
+      'IT Consulting',
+    ],
+
+    // 医疗REIT - 服务医疗运营商
+    'Healthcare REIT': [
+      'Hospital',
+      'Big Pharma',
+    ],
+
+    // 自存储 - 与搬迁/住房相关
+    'Self-Storage REIT': [
+      'Homebuilder',
+      'Residential REIT',
+    ],
+
+    // ========== 公用事业产业链 ==========
+    // 受管制公用事业 - 基础设施
+    'Regulated Utility': [
+      'Residential REIT',
+      'Industrial REIT',
+      'Data Center REIT',
+    ],
+
+    // 独立发电商 - 向批发市场售电
+    'Independent Power': [
+      'Data Center REIT',
+      'Cloud Hyperscaler',
+    ],
+
+    // 太阳能设备 - 服务安装商和公用事业
+    'Solar Equipment': [
+      'Solar Installer',
+      'Regulated Utility',
+    ],
+
+    // 太阳能制造 - 服务公用事业
+    'Solar Manufacturing': [
+      'Regulated Utility',
+      'Independent Power',
+    ],
+
+    // 太阳能安装 - 服务消费者
+    'Solar Installer': [
+      'Homebuilder',
+      'Residential REIT',
+    ],
+
+    // 水务 - 基础设施
+    'Water Utility': [
+      'Homebuilder',
+      'Residential REIT',
     ],
 
     // ========== 电信/媒体产业链 ==========

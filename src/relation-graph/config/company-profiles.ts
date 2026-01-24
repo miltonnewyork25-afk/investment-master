@@ -741,6 +741,42 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'MCO': 'mid',       // Moody's
   'MSCI': 'mid',      // MSCI
 
+  // ---------- REITs (利率敏感) ----------
+  'PLD': 'mid',        // Prologis - 工业REIT
+  'REXR': 'mid',       // Rexford - 工业REIT
+  'STAG': 'mid',       // STAG - 工业REIT
+  'SPG': 'mid',        // Simon Property - 零售REIT
+  'O': 'defensive',    // Realty Income - 净租赁
+  'NNN': 'defensive',  // NNN - 净租赁
+  'VICI': 'defensive', // VICI - 博彩净租赁
+  'EQR': 'mid',        // Equity Residential
+  'AVB': 'mid',        // AvalonBay
+  'MAA': 'mid',        // Mid-America Apartment
+  'INVH': 'mid',       // Invitation Homes
+  'BXP': 'mid',        // Boston Properties - 办公
+  'VNO': 'mid',        // Vornado - 办公
+  'WELL': 'defensive', // Welltower - 医疗
+  'VTR': 'defensive',  // Ventas - 医疗
+  'OHI': 'defensive',  // Omega Healthcare
+  'PSA': 'defensive',  // Public Storage
+  'EXR': 'defensive',  // Extra Space Storage
+
+  // ---------- 公用事业 (Utilities) ----------
+  'NEE': 'defensive',  // NextEra - 可再生
+  'DUK': 'defensive',  // Duke Energy
+  'SO': 'defensive',   // Southern Co
+  'AEP': 'defensive',  // American Electric Power
+  'EXC': 'defensive',  // Exelon
+  'XEL': 'defensive',  // Xcel Energy
+  'VST': 'mid',        // Vistra - IPP
+  'NRG': 'mid',        // NRG Energy - IPP
+  'CEG': 'mid',        // Constellation - 核电
+  'ENPH': 'mid',       // Enphase - 太阳能设备
+  'SEDG': 'mid',       // SolarEdge
+  'FSLR': 'mid',       // First Solar
+  'RUN': 'mid',        // Sunrun
+  'AWK': 'defensive',  // American Water Works
+
   // ========== 晚周期 (Late Cycle) ==========
   // 经济过热期受益、大宗商品
   // 能源、材料
@@ -1252,6 +1288,86 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'APP': {
     interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // REITs - 高利率敏感
+  'PLD': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'SPG': {
+    interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'O': {
+    interestRate: -0.6, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'EQR': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'AVB': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'INVH': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.6, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'BXP': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'WELL': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'PSA': {
+    interestRate: -0.4, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.4, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'EQIX': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // 公用事业 - 防御型，高利率敏感
+  'NEE': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'DUK': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'SO': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'EXC': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'VST': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.3,
+  },
+  'CEG': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'ENPH': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+  'FSLR': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+  'AWK': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
   },
 
   'PG': {
