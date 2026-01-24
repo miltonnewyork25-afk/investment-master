@@ -15743,6 +15743,12 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'MGEE': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0.1 },
   'SR': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0.2 },
   'OGE': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0.1 },
+  // --- Additional 5 ---
+  'BRFS': { interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.3, oilPrice: -0.1 },
+  'AMWL': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'RUTH': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: 0, oilPrice: -0.1 },
+  'DAVE': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.4, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'NNDM': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1 },
 };
 
 // ============================================================
