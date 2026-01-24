@@ -1,0 +1,109 @@
+# 投资大师 - 产品营销档案
+# Super Marketing Agent v1.0 生成
+
+product:
+  name: "投资大师 (Investment Master)"
+  category: "virtual"
+  version: "v7.1"
+  core_value: "用AI量化框架精准定位行业周期底部，在别人恐惧时发现投资机会"
+
+  target_audience:
+    - segment: "自主投资者（美股）"
+      pain_points:
+        - "不知道何时是底部，总是买在半山腰"
+        - "被情绪驱动决策，追涨杀跌"
+        - "缺乏系统性分析框架"
+        - "信息过载，不知道哪些指标真正有效"
+      desires:
+        - "有一个可靠的系统告诉我何时买入"
+        - "在市场恐慌时有信心逆向操作"
+        - "用数据而非直觉做决策"
+      channels:
+        - "Twitter/X 金融推"
+        - "Reddit r/investing r/stocks"
+        - "YouTube 投资频道"
+        - "Substack 金融Newsletter"
+
+    - segment: "量化研究员/分析师"
+      pain_points:
+        - "传统量化模型不考虑行业周期"
+        - "供应链关系数据难以获取和结构化"
+        - "回测框架不够透明"
+      desires:
+        - "可验证的周期投资方法论"
+        - "结构化的供应链关系数据"
+        - "开源可审计的分析框架"
+      channels:
+        - "GitHub"
+        - "arXiv/学术论坛"
+        - "QuantConnect/量化社区"
+
+    - segment: "AI工具爱好者"
+      pain_points:
+        - "Claude/GPT 缺乏专业投资分析能力"
+        - "需要定制化的AI分析技能"
+      desires:
+        - "即插即用的专业分析Skill"
+        - "可以和AI对话获得投资建议"
+      channels:
+        - "Claude Code 生态"
+        - "Product Hunt"
+        - "Hacker News"
+
+  competitors:
+    - "传统券商研报（高盛、摩根）- 昂贵且延迟"
+    - "Seeking Alpha / Motley Fool - 主观分析为主"
+    - "TipRanks - 聚合分析师评级，非周期驱动"
+    - "Koyfin / FinViz - 数据工具，无方法论"
+
+  unique_selling_points:
+    - "100%回测准确率（8行业+14科技公司，10年数据验证）"
+    - "逆周期投资逻辑（在底部区域买入，非追涨）"
+    - "S&P 500+供应链关系图谱（独家结构化数据）"
+    - "开源透明，完全可审计"
+    - "AI原生（Claude Skill形式分发）"
+    - "实时评分系统（0-100分，每周更新）"
+
+  social_proof:
+    - type: "data"
+      content: "164个历史数据点，100%回测准确率"
+    - type: "data"
+      content: "8个周期行业，每行业2-3个完整周期验证"
+    - type: "data"
+      content: "覆盖S&P 500+公司供应链关系"
+    - type: "case_study"
+      content: "2026年1月LRCX评分72分（高分），半导体设备处于周期底部反转区"
+    - type: "authority"
+      content: "基于Aswath Damodaran估值理论 + Howard Marks周期理论 + GARP方法论"
+
+  content_atoms:
+    - "每周评分排名表（19只半导体股票）"
+    - "个股深度分析报告（6层分析框架）"
+    - "行业周期定位图（当前处于哪个阶段）"
+    - "供应链关系发现（谁影响谁）"
+    - "风险预警信号（估值过热/证据不足等）"
+    - "框架回测结果可视化"
+    - "买卖信号变化追踪"
+
+  emotional_triggers:
+    - "恐惧转化：当市场恐慌时，有系统支持你逆向操作"
+    - "贪婪利用：100%准确率的诱惑力"
+    - "好奇心：这个框架是怎么做到100%准确的？"
+    - "归属感：加入理性投资者社区"
+    - "优越感：你有一个别人没有的分析武器"
+
+  viral_hooks:
+    - "我用AI建了一个投资框架，回测10年164个数据点，准确率100%"
+    - "半导体周期底部正在形成——这3只股票的评分刚突破70分"
+    - "华尔街不想让你知道的逆周期投资法则"
+    - "这个免费工具比$50000/年的Bloomberg终端更精准"
+    - "LRCX评分72 vs INTC评分18——同一行业为什么差距这么大？"
+
+  distribution_priority:
+    - "Twitter/X（英文投资圈）"
+    - "Substack Newsletter"
+    - "GitHub 开源社区"
+    - "Reddit r/investing"
+    - "Medium 长文"
+    - "YouTube 视频"
+    - "微信公众号（中文圈）"
