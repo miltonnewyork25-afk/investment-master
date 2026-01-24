@@ -540,6 +540,30 @@ export const CONSUMER_CLUSTERS: ConsumerCluster[] = [
     stocks: ['CHWY', 'TRUP', 'IDXX', 'ZTS', 'WOOF'],
     drivers: ['情感陪伴替代', '人性化养宠趋势', '宠物保健支出增长'],
   },
+
+  {
+    name: '远程办公族',
+    demographic: 'Millennial/Gen-X, 中高收入, 科技/知识工作者',
+    categories: ['electronics', 'subscriptions', 'streaming', 'delivery', 'coffee', 'home_improvement', 'fitness'],
+    stocks: ['ZM', 'LOGI', 'AAPL', 'MSFT', 'AMZN', 'SBUX', 'HD', 'PTON', 'DASH'],
+    drivers: ['混合办公常态化', '居家办公设备需求', '在家时间增加→居家消费升级'],
+  },
+
+  {
+    name: '投资者/交易族',
+    demographic: 'Gen-Z/Millennial, 中高收入, 对金融感兴趣',
+    categories: ['financial_services', 'subscriptions', 'electronics', 'coffee'],
+    stocks: ['HOOD', 'COIN', 'SCHW', 'IBKR', 'MKTX', 'CME', 'ICE', 'NDAQ'],
+    drivers: ['零佣金交易普及', '加密货币热潮', '金融信息民主化'],
+  },
+
+  {
+    name: '新能源车主族',
+    demographic: 'Millennial/Gen-X, 中高收入, 科技爱好者',
+    categories: ['ev_charging', 'solar_residential', 'electronics', 'subscriptions', 'wearables'],
+    stocks: ['TSLA', 'RIVN', 'CHPT', 'ENPH', 'AAPL', 'GRMN'],
+    drivers: ['环保+科技双重价值观', '政策补贴驱动', '自动驾驶技术好奇心'],
+  },
 ];
 
 // ============ 替代/互补关系 ============
@@ -677,7 +701,7 @@ export const CATEGORY_TO_STOCKS: Record<ConsumerCategory, string[]> = {
   'gaming': ['RBLX', 'EA', 'TTWO', 'ATVI', 'U'],
   'gambling': ['DKNG', 'CZR', 'MGM', 'WYNN', 'LVS', 'PENN'],
   'pets': ['CHWY', 'TRUP', 'IDXX', 'ZTS', 'WOOF'],
-  'childcare': ['BFAM', 'LRN', 'STRA', 'KSS'],
+  'childcare': ['BFAM', 'LRN', 'STRA', 'LOPE', 'TWOU'],
   'electronics': ['AAPL', 'DELL', 'HPQ', 'LOGI', 'SONO'],
   'smartphones': ['AAPL', 'GOOGL', 'MSFT'],
   'wearables': ['AAPL', 'GRMN', 'OLED'],
@@ -689,7 +713,7 @@ export const CATEGORY_TO_STOCKS: Record<ConsumerCategory, string[]> = {
   'online_shopping': ['AMZN', 'SHOP', 'ETSY', 'W', 'EBAY'],
   'delivery': ['DASH', 'UBER', 'GRAB'],
   'rideshare': ['UBER', 'LYFT'],
-  'home_security': ['ADT', 'REZI'],
+  'home_security': ['ADT', 'REZI', 'ARLO', 'VRNT'],
   'solar_residential': ['ENPH', 'SEDG', 'RUN', 'NOVA'],
   'ev_charging': ['CHPT', 'EVGO', 'BLNK', 'TSLA'],
 };
