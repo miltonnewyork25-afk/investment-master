@@ -821,6 +821,10 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
 
     // 消费电子 (Consumer Electronics)
     'AAPL': 'Consumer Electronics',        // Apple
+    'SONO': 'Consumer Electronics',        // Sonos - 智能音箱
+
+    // 计算机硬件 (Computer Hardware)
+    'HPQ': 'Computer Hardware',            // HP Inc - PC/打印
 
     // 云服务商 - Hyperscaler (Cloud Provider)
     'AMZN': 'Cloud Hyperscaler',          // AWS
@@ -1514,7 +1518,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Refining': [
       'Full-Service Airline',
       'Low-Cost Airline',
-      'Trucking',
+      'Truckload',                 // 长途卡车用柴油
+      'LTL Trucking',              // 零担卡车
       'Crude Tanker',              // 原油运输
       'Product Tanker',            // 成品油运输
     ],
@@ -1548,7 +1553,7 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Product Tanker': [
       'Mass Retail',               // 加油站
       'Full-Service Airline',      // 航空燃油
-      'Trucking',                  // 柴油
+      'Truckload',                 // 柴油
     ],
 
     // LNG运输 - 服务天然气产业
@@ -2061,8 +2066,9 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Residential REIT',
     ],
 
-    // 废弃物处理 - 服务各行业
-    'Waste Management': [
+    // 废弃物收集 - 服务各行业 (matches subIndustryOverrides)
+    'Waste Collection': [
+      'Waste Processing',
       'Homebuilder',
       'E&C Contractor',
     ],
@@ -2246,6 +2252,19 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Warehouse Club',
     ],
 
+    // 咖啡连锁 → 零售/OTA (客流关联)
+    'Coffee Chain': [
+      'Mass Retail',               // 购物中心客流
+      'Grocery',                   // 超市零售渠道(包装咖啡)
+    ],
+
+    // 长途卡车运输 → 零售终端
+    'Truckload': [
+      'Mass Retail',               // 大宗配送
+      'Warehouse Club',            // 仓储配送
+      'Grocery',                   // 生鲜配送
+    ],
+
     // ========== 旅游/出行产业链 ==========
     'Hotel Chain': [
       'OTA',
@@ -2395,9 +2414,6 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     ],
 
     // ========== 环保服务链 ==========
-    'Waste Collection': [
-      'Waste Processing',
-    ],
     'Waste Processing': [
       'Environmental Remediation',
     ],

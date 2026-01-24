@@ -810,6 +810,294 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['selection', 'brands', 'culture', 'exclusives'],
     channels: ['retail', 'online'],
   },
+
+  // ========== 航空公司 ==========
+  'DAL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['business_travel', 'vacation', 'family_trip', 'commute'],
+    valueProps: ['reliability', 'loyalty_program', 'premium_service', 'network'],
+    channels: ['online', 'mobile', 'travel_agent'],
+  },
+  'UAL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['business_travel', 'international', 'vacation', 'connecting'],
+    valueProps: ['global_network', 'loyalty', 'premium_cabins', 'hubs'],
+    channels: ['online', 'mobile', 'travel_agent'],
+  },
+  'LUV': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['leisure', 'weekend_trip', 'family', 'budget_travel'],
+    valueProps: ['low_fare', 'no_fees', 'flexibility', 'fun'],
+    channels: ['online', 'mobile'],
+  },
+  'AAL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['business_travel', 'vacation', 'domestic', 'international'],
+    valueProps: ['network', 'loyalty', 'frequency', 'alliances'],
+    channels: ['online', 'mobile', 'travel_agent'],
+  },
+
+  // ========== 邮轮 ==========
+  'CCL': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['vacation', 'retirement', 'family_reunion', 'celebration'],
+    valueProps: ['all_inclusive', 'entertainment', 'destinations', 'relaxation'],
+    channels: ['online', 'travel_agent'],
+  },
+  'RCL': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['family_vacation', 'adventure', 'celebration', 'getaway'],
+    valueProps: ['innovation', 'family_friendly', 'adventure', 'luxury'],
+    channels: ['online', 'travel_agent'],
+  },
+
+  // ========== 家居建材 ==========
+  'DHI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['first_home', 'family_growth', 'relocation', 'upgrade'],
+    valueProps: ['affordability', 'selection', 'quality', 'speed'],
+    channels: ['sales_center', 'online'],
+  },
+  'LEN': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['first_home', 'move_up', 'relocation', 'retirement'],
+    valueProps: ['value', 'design', 'communities', 'technology'],
+    channels: ['sales_center', 'online'],
+  },
+
+  // ========== 餐饮补充 ==========
+  'DRI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['family_dinner', 'celebration', 'casual_dining', 'date_night'],
+    valueProps: ['variety', 'value', 'atmosphere', 'quality'],
+    channels: ['retail', 'online', 'delivery'],
+  },
+  'WING': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['sports_watching', 'casual_meal', 'group_dining', 'takeout'],
+    valueProps: ['flavor', 'sports', 'social', 'delivery'],
+    channels: ['retail', 'delivery', 'online'],
+  },
+
+  // ========== 包装食品 ==========
+  'GIS': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['family_meals', 'breakfast', 'baking', 'snacking'],
+    valueProps: ['trust', 'nutrition', 'convenience', 'variety'],
+    channels: ['grocery', 'mass_retail', 'online'],
+  },
+  'K': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['breakfast', 'snacking', 'school_lunch', 'convenience'],
+    valueProps: ['brands', 'nutrition', 'taste', 'convenience'],
+    channels: ['grocery', 'mass_retail'],
+  },
+  'KHC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['family_cooking', 'quick_meals', 'condiments', 'snacking'],
+    valueProps: ['iconic_brands', 'value', 'taste', 'convenience'],
+    channels: ['grocery', 'mass_retail', 'warehouse'],
+  },
+  'MDLZ': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['snacking', 'treat', 'gift', 'sharing'],
+    valueProps: ['brands', 'indulgence', 'variety', 'quality'],
+    channels: ['grocery', 'mass_retail', 'convenience'],
+  },
+  'HSY': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['holiday', 'gift', 'treat', 'sharing', 'celebration'],
+    valueProps: ['iconic_brands', 'quality', 'variety', 'tradition'],
+    channels: ['grocery', 'mass_retail', 'convenience', 'online'],
+  },
+
+  // ========== 家居用品 ==========
+  'PG': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['daily_essentials', 'household', 'personal_care', 'baby'],
+    valueProps: ['quality', 'trust', 'innovation', 'brand_portfolio'],
+    channels: ['grocery', 'mass_retail', 'warehouse', 'online'],
+  },
+  'CL': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['oral_care', 'cleaning', 'personal_care', 'pet_nutrition'],
+    valueProps: ['trust', 'efficacy', 'global_brands', 'value'],
+    channels: ['grocery', 'mass_retail', 'pharmacy'],
+  },
+  'KMB': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['baby_care', 'personal_care', 'household', 'workplace'],
+    valueProps: ['quality', 'essentials', 'trust', 'comfort'],
+    channels: ['grocery', 'mass_retail', 'warehouse', 'online'],
+  },
+  'CLX': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['cleaning', 'disinfecting', 'wellness', 'home_care'],
+    valueProps: ['efficacy', 'safety', 'trust', 'essential'],
+    channels: ['grocery', 'mass_retail', 'warehouse'],
+  },
+
+  // ========== 支付/银行 ==========
+  'V': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['shopping', 'travel', 'online_purchase', 'daily_spend'],
+    valueProps: ['acceptance', 'security', 'rewards', 'convenience'],
+    channels: ['partner_banks', 'online', 'mobile'],
+  },
+  'MA': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['shopping', 'travel', 'online_purchase', 'daily_spend'],
+    valueProps: ['global_acceptance', 'security', 'innovation', 'priceless'],
+    channels: ['partner_banks', 'online', 'mobile'],
+  },
+  'JPM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['banking', 'investing', 'mortgage', 'credit_card'],
+    valueProps: ['scale', 'products', 'technology', 'rewards'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+  'BAC': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['banking', 'mortgage', 'auto_loan', 'saving'],
+    valueProps: ['convenience', 'digital', 'network', 'services'],
+    channels: ['branch', 'online', 'mobile'],
+  },
+
+  // ========== 保险 ==========
+  'UNH': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['health_coverage', 'pharmacy', 'wellness', 'employer_plan'],
+    valueProps: ['network', 'coverage', 'digital_tools', 'optum_services'],
+    channels: ['employer', 'exchange', 'direct', 'online'],
+  },
+  'MET': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['life_insurance', 'dental', 'disability', 'retirement'],
+    valueProps: ['reliability', 'global', 'benefits', 'financial_protection'],
+    channels: ['employer', 'agent', 'online'],
+  },
+
+  // ========== 公用事业 ==========
+  'NEE': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['electricity', 'home_power', 'solar', 'reliability'],
+    valueProps: ['clean_energy', 'reliability', 'affordability', 'innovation'],
+    channels: ['utility_bill', 'online'],
+  },
+
+  // ========== 烟草 ==========
+  'PM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['smoking', 'nicotine', 'reduced_risk', 'habitual'],
+    valueProps: ['brands', 'quality', 'iqos_innovation', 'satisfaction'],
+    channels: ['retail', 'convenience', 'duty_free'],
+  },
+  'MO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['smoking', 'nicotine', 'habitual', 'convenience'],
+    valueProps: ['marlboro', 'availability', 'loyalty', 'value'],
+    channels: ['convenience', 'retail', 'gas_station'],
+  },
+
+  // ========== 酒类 ==========
+  'TAP': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['sports', 'social', 'barbecue', 'relaxation'],
+    valueProps: ['refreshment', 'brands', 'affordability', 'tradition'],
+    channels: ['grocery', 'convenience', 'bar', 'online'],
+  },
+  'SAM': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['craft_beer', 'social', 'discovery', 'dining'],
+    valueProps: ['variety', 'quality', 'innovation', 'local_craft'],
+    channels: ['grocery', 'bar', 'liquor_store'],
+  },
+
+  // ========== 服装零售 ==========
+  'GPS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['casual', 'work', 'basics', 'athleisure'],
+    valueProps: ['value', 'variety', 'brands', 'accessibility'],
+    channels: ['retail', 'online', 'outlet'],
+  },
+  'ANF': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['casual', 'going_out', 'vacation', 'date'],
+    valueProps: ['style', 'quality', 'brand', 'experience'],
+    channels: ['retail', 'online'],
+  },
+  'URBN': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['fashion', 'home_decor', 'lifestyle', 'self_expression'],
+    valueProps: ['curation', 'aesthetics', 'lifestyle', 'discovery'],
+    channels: ['retail', 'online'],
+  },
+  'HBI': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['everyday_basics', 'underwear', 'activewear', 'essentials'],
+    valueProps: ['comfort', 'value', 'quality', 'basics'],
+    channels: ['mass_retail', 'online', 'warehouse'],
+  },
+
+  // ========== 汽配零售 ==========
+  'AZO': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['car_repair', 'maintenance', 'diy', 'emergency'],
+    valueProps: ['expertise', 'parts_availability', 'service', 'value'],
+    channels: ['retail', 'online'],
+  },
+  'ORLY': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['car_repair', 'professional_mechanic', 'diy', 'maintenance'],
+    valueProps: ['selection', 'expertise', 'availability', 'professional_grade'],
+    channels: ['retail', 'online'],
+  },
+
+  // ========== 住房/抵押 ==========
+  'RKT': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_purchase', 'refinance', 'personal_loan', 'first_home'],
+    valueProps: ['speed', 'digital', 'simplicity', 'transparency'],
+    channels: ['online', 'mobile'],
+  },
+
+  // ========== 券商 ==========
+  'SCHW': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['investing', 'retirement', 'trading', 'wealth_management'],
+    valueProps: ['low_cost', 'tools', 'research', 'service'],
+    channels: ['online', 'mobile', 'branch'],
+  },
+
+  // ========== 计算机/消费电子 ==========
+  'HPQ': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['work', 'printing', 'home_office', 'school'],
+    valueProps: ['reliability', 'value', 'productivity', 'ecosystem'],
+    channels: ['retail', 'online', 'enterprise'],
+  },
+  'SONO': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['home_audio', 'music', 'entertainment', 'smart_home'],
+    valueProps: ['sound_quality', 'design', 'multi_room', 'ecosystem'],
+    channels: ['retail', 'online', 'direct'],
+  },
+
+  // ========== 饮料 ==========
+  'KDP': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['morning_coffee', 'refreshment', 'convenience', 'variety'],
+    valueProps: ['keurig_system', 'brand_variety', 'convenience', 'value'],
+    channels: ['grocery', 'mass_retail', 'warehouse', 'online'],
+  },
+
+  // ========== 太阳能 ==========
+  'ENPH': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['solar_installation', 'energy_savings', 'home_upgrade', 'sustainability'],
+    valueProps: ['efficiency', 'reliability', 'monitoring', 'microinverter'],
+    channels: ['installer', 'online'],
+  },
 };
 
 // ============================================================
@@ -1026,6 +1314,8 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   // ---------- 科技 (Tech) ----------
   'MSFT': 'mid',      // 科技
   'AAPL': 'mid',
+  'HPQ': 'mid',
+  'SONO': 'mid',
   'GOOGL': 'mid',
   'AMZN': 'mid',
   'NVDA': 'mid',
@@ -1975,6 +2265,14 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'AAPL': {
     interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.6, housingMarket: 0.1, dollarIndex: -0.5, oilPrice: -0.1,
+  },
+  'HPQ': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'SONO': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0.0,
   },
   'MSFT': {
     interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,

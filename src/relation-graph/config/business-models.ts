@@ -2045,6 +2045,22 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Specialty Retail',
     tags: ['electronics', 'appliances', 'geek_squad', 'omnichannel'],
   },
+  'HPQ': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Computer Hardware',
+    tags: ['pc', 'printing', 'peripherals', 'ink_subscription'],
+  },
+  'SONO': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Consumer Electronics',
+    tags: ['smart_speakers', 'audio', 'streaming_hardware', 'home_audio'],
+  },
   'ULTA': {
     assetModel: 'asset_heavy',
     revenueModels: ['product_sales', 'premium_service'],
