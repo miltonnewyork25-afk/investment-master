@@ -807,6 +807,21 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'LRCX': 'mid',      // 半导体设备
   'AMAT': 'mid',
   'ASML': 'mid',
+  'KLAC': 'mid',       // KLA - 检测设备
+  'TER': 'mid',        // Teradyne - 测试设备
+  // 芯片设计/IDM
+  'INTC': 'mid',       // Intel
+  'QCOM': 'mid',       // Qualcomm
+  'AVGO': 'mid',       // Broadcom
+  'MRVL': 'mid',       // Marvell
+  'NXPI': 'mid',       // NXP - 汽车/工业
+  'SWKS': 'mid',       // Skyworks - 射频
+  'QRVO': 'mid',       // Qorvo - 射频
+  'ON': 'mid',         // ON Semi - 汽车/工业
+  // 代工/存储
+  'TSM': 'mid',        // TSMC
+  'MU': 'early',       // Micron - 存储周期性更强
+  'WDC': 'early',      // Western Digital - 存储
 
   // ---------- 科技硬件/基础设施 ----------
   'DELL': 'mid',       // 服务器/PC
@@ -1619,6 +1634,85 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'ANSS': {
     interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
     consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // ========== 半导体 (Semiconductors) ==========
+  // 设备商 - 资本支出周期驱动，利率弱负相关
+  'LRCX': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'AMAT': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'ASML': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.0,
+  },
+  'KLAC': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'TER': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // 芯片设计 - 消费电子/云驱动，美元负敏感
+  'NVDA': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'AMD': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'INTC': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'QCOM': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'AVGO': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'MRVL': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.0,
+  },
+  'NXPI': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: -0.1,
+  },
+  'SWKS': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'QRVO': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'ON': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+
+  // 代工/存储 - 周期性更强
+  'TSM': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.0,
+  },
+  'MU': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.7, unemployment: -0.4,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'WDC': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.6, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
   },
 
   // 电信 - 防御型，低GDP敏感
