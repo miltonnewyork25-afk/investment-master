@@ -4638,6 +4638,100 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'ACBI': 'Community Banking (VA)',                                                  // Atlantic Capital Bancshares - 社区银行
     'ACNB': 'Community Banking (PA)',                                                  // ACNB Corp - 社区银行(宾州)
     'AROW': 'Community Banking (NY)',                                                  // Arrow Financial - 社区银行(纽约)
+    'HLLY': 'Automotive Aftermarket Parts',                                              // Holley - 汽车性能零件
+    'HNGE': 'Email Security SaaS',                                                       // Hinge Health - 邮件安全SaaS
+    'HROW': 'Ophthalmology Pharma',                                                      // Harrow Health - 眼科制药
+    'HRTG': 'P&C Insurance',                                                             // Heritage Insurance - 财产险
+    'HYMC': 'Gold & Silver Mining',                                                      // Hycroft Mining - 金银矿业
+    'IBIO': 'Biologics CDMO',                                                            // iBio - 植物基生物CDMO
+    'IFRX': 'Rare Disease Pharma',                                                       // InflaRx - 罕见病制药
+    'IMAB': 'Oncology Biotech',                                                          // I-Mab - 肿瘤生物科技
+    'IMGN': 'Antibody-Drug Conjugates',                                                  // ImmunoGen - ADC
+    'IMMP': 'Immuno-Oncology',                                                           // Immutep - 免疫肿瘤
+    'INCR': 'HR Tech SaaS',                                                              // IntelliCheck - HR科技
+    'INFA': 'Data Management SaaS',                                                      // Informatica - 数据管理
+    'INFI': 'Oncology Biotech',                                                          // Infinity Pharma - 肿瘤生物科技
+    'INGN': 'Respiratory Medical Devices',                                               // Inogen - 呼吸设备
+    'ISPC': 'Cybersecurity SaaS',                                                        // iSpecimen - 网络安全
+    'IVAC': 'Vaccine Biotech',                                                           // Intivac - 疫苗生物科技
+    'KGEI': 'Oncology Biotech',                                                          // Kineta - 肿瘤小分子
+    'KVHI': 'Maritime Satellite Connectivity',                                           // KVH Industries - 海事卫星通信
+    'LAKE': 'Protective Clothing & PPE',                                                 // Lakeland Industries - 防护服
+    'LANV': 'Network Security SaaS',                                                     // Lanvin - 网络安全/零信任
+    'LBPH': 'CNS Specialty Pharma',                                                      // Longboard Pharma - CNS制药
+    'LBTYA': 'European Cable & Telecom',                                                 // Liberty Global - 欧洲有线电信
+    'LHCG': 'Home Health & Hospice',                                                     // LHC Group - 家庭健康/临终关怀
+    'LKCO': 'Smart City IoT',                                                            // Luokung Tech - 智慧城市IoT
+    'LMNX': 'Life Science Instruments',                                                  // Luminex - 生命科学仪器
+    'LOAR': 'Aerospace Components',                                                      // Loar Holdings - 航空航天零部件
+    'LOGM': 'Collaboration & Remote Access SaaS',                                        // LogMeIn - 远程协作SaaS
+    'LOOP': 'EV Charging Technology',                                                    // Loop Industries - EV充电技术
+    'LPEN': 'Liquid Biopsy Diagnostics',                                                 // LiquidPiston - 液体活检诊断
+    'LTBR': 'Advanced Nuclear Technology',                                               // Lightbridge - 先进核技术
+    'LYRA': 'Mental Health Platform',                                                    // Lyra Health - 心理健康平台
+    'MARN': 'Cell Therapy Biotech',                                                      // Marin Software - 细胞治疗
+    'MAXY': 'Cloud Communications (CPaaS)',                                              // Maxygen - 云通信CPaaS
+    'MDAS': 'Defense Electronics',                                                       // MiDAS - 国防电子
+    'MDNA': 'Gene Therapy Biotech',                                                      // Medicenna - 基因治疗
+    'MESA': 'Regional Airlines',                                                         // Mesa Air - 支线航空
+    'MODV': 'Modular Building Solutions',                                                // ModivCare - 模块化建筑
+    'MOGO': 'Digital Finance Platform',                                                  // Mogo - 数字金融平台
+
+    // ========== Batch: 54 Confirmed-Missing US Stocks subIndustryOverrides (Set J) ==========
+    'ALTG': 'Equipment Dealer & Rental',                                                  // Alta Equipment Group - 设备经销/租赁
+    'AMBP': 'Metal Packaging',                                                            // Ardagh Metal Packaging - 金属罐包装
+    'APTS': 'Multifamily REIT',                                                           // Preferred Apartment - 多户REIT
+    'AQUA': 'Water Treatment Equipment',                                                  // Evoqua Water - 水处理设备
+    'ARCT': 'mRNA Therapeutics',                                                          // Arcturus Therapeutics - mRNA疗法
+    'ASAI': 'Grocery Retail (LatAm)',                                                     // Sendas Distribuidora - 巴西杂货零售
+    'ATHM': 'Auto Digital Platform',                                                      // Autohome - 中国汽车数字平台
+    'ATRC': 'Cardiac Surgery Devices',                                                    // AtriCure - 心脏外科器械
+    'AVDX': 'AP Automation SaaS',                                                        // AvidXchange - 应付账款自动化SaaS
+    'AVAL': 'Latin American Banking',                                                     // Grupo Aval - 拉美银行集团
+    'AXGN': 'Nerve Repair & Regeneration',                                                // AxoGen - 神经修复/再生
+    'AY': 'Renewable Energy Yieldco',                                                     // Atlantica Yield - 可再生能源Yieldco
+    'BGCP': 'Interdealer Brokerage',                                                     // BGC Partners - 机构间经纪
+    'BKEP': 'Crude Oil Midstream MLP',                                                   // Blueknight Energy - 原油中游MLP
+    'BRBS': 'Community Banking (VA)',                                                     // Blue Ridge Bank - 社区银行(弗吉尼亚)
+    'CBNK': 'Community Banking (MD)',                                                     // Capital Bancorp - 社区银行(马里兰)
+    'CDAK': 'Oncology Immunotherapy',                                                     // Codiak BioSciences - 肿瘤免疫治疗
+    'CENT': 'Garden & Pet Products',                                                      // Central Garden & Pet - 花园/宠物产品
+    'CEQP': 'Natural Gas Gathering & Processing',                                        // Crestwood Equity Partners - 天然气采集加工
+    'CFFN': 'Thrift / Savings Bank',                                                     // Capitol Federal Financial - 储蓄银行
+    'CHCT': 'Healthcare Net Lease REIT',                                                  // Community Healthcare Trust - 医疗净租赁REIT
+    'CION': 'Middle Market BDC',                                                          // CION Investment - 中端市场BDC
+    'CLVS': 'Oncology Biotech (PARP)',                                                    // Clovis Oncology - 肿瘤生物科技(PARP)
+    'CMRX': 'Anti-Infective Biotech',                                                    // Chimerix - 抗感染生物科技
+    'CNXN': 'IT Solutions & VAR',                                                         // PC Connection - IT方案/增值经销
+    'CORS': 'Network Security',                                                           // Corsair - 网络安全
+    'CRD': 'Claims Management',                                                           // Crawford & Company - 理赔管理
+    'CSGS': 'Telecom Billing SaaS',                                                      // CSG Systems - 电信计费SaaS
+    'CSTE': 'Specialty Food Products',                                                    // Caesarstone - 特色食品产品
+    'CVAC': 'mRNA Vaccines',                                                              // CureVac - mRNA疫苗
+    'CVLT': 'Data Protection & Backup SaaS',                                             // Commvault - 数据保护/备份SaaS
+    'CXDO': 'Document Management SaaS',                                                   // Crexendo - 文档管理SaaS
+    'CZFS': 'Community Banking (OH)',                                                     // Citizens Financial Group - 社区银行(俄亥俄)
+    'DCGO': 'Digital Health Platform',                                                    // DocGo - 数字健康平台
+    'DCP': 'Natural Gas Midstream (NGL)',                                                 // DCP Midstream - 天然气中游(NGL)
+    'DXP': 'Industrial MRO Distribution',                                                // DXP Enterprises - 工业MRO分销
+    'DXPE': 'Industrial MRO Distribution',                                               // DXP Enterprises - 工业MRO分销
+    'ELVN': 'Precision Oncology Biotech',                                                 // Enliven Therapeutics - 精准肿瘤生物科技
+    'EOLS': 'Ophthalmology Pharma',                                                      // Evolus - 眼科制药
+    'EOSE': 'Zinc Battery Energy Storage',                                                // Eos Energy - 锌电池储能
+    'EQRX': 'Value-Based Pharma',                                                        // EQRx - 价值导向制药
+    'ESTE': 'Shale E&P (Permian)',                                                        // Earthstone Energy - 页岩E&P(二叠纪)
+    'EWCZ': 'Workforce Management SaaS',                                                 // European Wax - 劳动力管理SaaS
+    'FCPT': 'Net Lease REIT (Restaurant)',                                                // Four Corners Property Trust - 净租赁REIT(餐饮)
+    'FLUX': 'EV Charging Equipment',                                                     // Flux Power - EV充电设备
+    'FNGR': 'Digital Payments (Emerging)',                                                // FingerMotion - 数字支付(新兴市场)
+    'GATO': 'Silver & Gold Mining',                                                       // Gatos Silver - 银金矿业
+    'GDS': 'China Data Center',                                                           // GDS Holdings - 中国数据中心
+    'GNPX': 'Rare Disease Biotech',                                                      // Genprobe - 罕见病生物科技
+    'GYRE': 'Environmental Remediation',                                                  // Gyre Therapeutics - 环境修复服务
+    'HBT': 'Community Banking (IL)',                                                      // HBT Financial - 社区银行(伊利诺伊)
+    'HCKT': 'IT Consulting & Benchmarking',                                               // Hackett Group - IT咨询/基准测试
+    'HDSN': 'Refrigerant Distribution',                                                   // Hudson Technologies - 制冷剂分销
+    'HGBL': 'Asset Liquidation & Auction',                                                // Heritage Global - 资产清算/拍卖
   },
 
   // ============================================================

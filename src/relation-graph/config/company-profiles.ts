@@ -7902,6 +7902,99 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'ACBI': 'defensive',                   // Atlantic Capital Bancshares - 社区银行(防御型)
   'ACNB': 'defensive',                   // ACNB Corp - 社区银行(防御型)
   'AROW': 'defensive',                   // Arrow Financial - 社区银行(防御型)
+  'HLLY': 'mid',                         // Holley - 汽车性能零件(中周期)
+  'HNGE': 'mid',                         // Hinge Health - 邮件安全SaaS(中周期)
+  'HROW': 'defensive',                   // Harrow Health - 眼科制药(防御型)
+  'HRTG': 'defensive',                   // Heritage Insurance - 财产险(防御型)
+  'HYMC': 'late',                        // Hycroft Mining - 金银矿业(晚周期)
+  'IBIO': 'early',                       // iBio - 生物CDMO(早周期)
+  'IFRX': 'early',                       // InflaRx - 罕见病制药(早周期)
+  'IMAB': 'early',                       // I-Mab - 肿瘤生物科技(早周期)
+  'IMGN': 'early',                       // ImmunoGen - ADC生物科技(早周期)
+  'IMMP': 'early',                       // Immutep - 免疫肿瘤(早周期)
+  'INCR': 'mid',                         // IntelliCheck - HR科技SaaS(中周期)
+  'INFA': 'mid',                         // Informatica - 数据管理SaaS(中周期)
+  'INFI': 'early',                       // Infinity Pharma - 肿瘤生物科技(早周期)
+  'INGN': 'defensive',                   // Inogen - 呼吸设备(防御型)
+  'ISPC': 'mid',                         // iSpecimen - 网络安全SaaS(中周期)
+  'IVAC': 'early',                       // Intivac - 疫苗生物科技(早周期)
+  'KGEI': 'early',                       // Kineta - 肿瘤生物科技(早周期)
+  'KVHI': 'mid',                         // KVH Industries - 海事通信(中周期)
+  'LAKE': 'defensive',                   // Lakeland Industries - 防护服(防御型)
+  'LANV': 'mid',                         // Lanvin - 网络安全SaaS(中周期)
+  'LBPH': 'early',                       // Longboard Pharma - CNS制药(早周期)
+  'LBTYA': 'defensive',                  // Liberty Global - 欧洲电信(防御型)
+  'LHCG': 'defensive',                   // LHC Group - 家庭健康(防御型)
+  'LKCO': 'mid',                         // Luokung Tech - 智慧城市IoT(中周期)
+  'LMNX': 'mid',                         // Luminex - 生命科学仪器(中周期)
+  'LOAR': 'mid',                         // Loar Holdings - 航空航天零部件(中周期)
+  'LOGM': 'mid',                         // LogMeIn - 协作SaaS(中周期)
+  'LOOP': 'early',                       // Loop Industries - EV充电技术(早周期)
+  'LPEN': 'early',                       // LiquidPiston - 肿瘤诊断(早周期)
+  'LTBR': 'early',                       // Lightbridge - 核技术(早周期)
+  'LYRA': 'mid',                         // Lyra Health - 心理健康平台(中周期)
+  'MARN': 'early',                       // Marin Software - 肿瘤生物科技(早周期)
+  'MAXY': 'mid',                         // Maxygen - 云通信(中周期)
+  'MDAS': 'mid',                         // MiDAS - 国防电子(中周期)
+  'MDNA': 'early',                       // Medicenna - 基因治疗生物科技(早周期)
+  'MESA': 'late',                        // Mesa Air - 支线航空(晚周期)
+  'MODV': 'mid',                         // ModivCare - 模块化建筑(中周期)
+  'MOGO': 'mid',                         // Mogo - 数字金融(中周期)
+  // --- Batch: 54 Confirmed-Missing US Stocks (Jan 2026 - Set J) ---
+  'ALTG': 'mid',                         // Alta Equipment Group - 设备经销(中周期)
+  'AMBP': 'mid',                         // Ardagh Metal Packaging - 金属包装(中周期)
+  'APTS': 'mid',                         // Preferred Apartment - 多户REIT(中周期)
+  'AQUA': 'mid',                         // Evoqua Water - 水处理(中周期)
+  'ARCT': 'early',                       // Arcturus Therapeutics - mRNA生物科技(早周期)
+  'ASAI': 'defensive',                   // Sendas Distribuidora - 巴西杂货(防御型)
+  'ATHM': 'mid',                         // Autohome - 中国汽车平台(中周期)
+  'ATRC': 'mid',                         // AtriCure - 心脏外科器械(中周期)
+  'AVDX': 'mid',                         // AvidXchange - AP自动化SaaS(中周期)
+  'AVAL': 'mid',                         // Grupo Aval - 拉美银行(中周期)
+  'AXGN': 'mid',                         // AxoGen - 神经修复(中周期)
+  'AY': 'defensive',                     // Atlantica Yield - 可再生能源Yieldco(防御型)
+  'BGCP': 'mid',                         // BGC Partners - 经纪商(中周期)
+  'BKEP': 'late',                        // Blueknight Energy - 中游MLP(晚周期)
+  'BRBS': 'defensive',                   // Blue Ridge Bank - 社区银行(防御型)
+  'CBNK': 'defensive',                   // Capital Bancorp - 社区银行(防御型)
+  'CDAK': 'early',                       // Codiak BioSciences - 肿瘤生物科技(早周期)
+  'CENT': 'defensive',                   // Central Garden & Pet - 花园/宠物(防御型)
+  'CEQP': 'late',                        // Crestwood Equity - 中游MLP(晚周期)
+  'CFFN': 'defensive',                   // Capitol Federal Financial - 储蓄银行(防御型)
+  'CHCT': 'defensive',                   // Community Healthcare Trust - 医疗REIT(防御型)
+  'CION': 'defensive',                   // CION Investment - BDC(防御型)
+  'CLVS': 'early',                       // Clovis Oncology - 肿瘤生物科技(早周期)
+  'CMRX': 'early',                       // Chimerix - 抗感染生物科技(早周期)
+  'CNXN': 'mid',                         // PC Connection - IT方案提供商(中周期)
+  'CORS': 'mid',                         // Corsair Gaming - 网络安全(中周期)
+  'CRD': 'mid',                          // Crawford & Company - 理赔管理(中周期)
+  'CSGS': 'defensive',                   // CSG Systems - 电信计费SaaS(防御型)
+  'CSTE': 'defensive',                   // Caesarstone - 特色食品(防御型)
+  'CVAC': 'early',                       // CureVac - mRNA疫苗(早周期)
+  'CVLT': 'defensive',                   // Commvault - 数据保护SaaS(防御型)
+  'CXDO': 'defensive',                   // Crexendo - 文档管理SaaS(防御型)
+  'CZFS': 'defensive',                   // Citizens Financial - 社区银行(防御型)
+  'DCGO': 'mid',                         // DocGo - 数字健康平台(中周期)
+  'DCP': 'late',                         // DCP Midstream - 天然气中游(晚周期)
+  'DXP': 'mid',                          // DXP Enterprises - 工业分销(中周期)
+  'DXPE': 'mid',                         // DXP Enterprises - 工业分销(中周期)
+  'ELVN': 'early',                       // Enliven Therapeutics - 肿瘤生物科技(早周期)
+  'EOLS': 'mid',                         // Evolus - 眼科制药(中周期)
+  'EOSE': 'early',                       // Eos Energy - 锌电池储能(早周期)
+  'EQRX': 'early',                       // EQRx - 价值制药(早周期)
+  'ESTE': 'late',                        // Earthstone Energy - 页岩E&P(晚周期)
+  'EWCZ': 'mid',                         // European Wax - 劳动力管理SaaS(中周期)
+  'FCPT': 'defensive',                   // Four Corners Property - 净租赁REIT(防御型)
+  'FLUX': 'early',                       // Flux Power - EV充电设备(早周期)
+  'FNGR': 'mid',                         // FingerMotion - 数字支付平台(中周期)
+  'GATO': 'late',                        // Gatos Silver - 金银矿业(晚周期)
+  'GDS': 'mid',                          // GDS Holdings - 中国数据中心(中周期)
+  'GNPX': 'early',                       // Genprobe - 生物科技(早周期)
+  'GYRE': 'mid',                         // Gyre Therapeutics - 环保服务(中周期)
+  'HBT': 'defensive',                    // HBT Financial - 社区银行(防御型)
+  'HCKT': 'mid',                         // Hackett Group - IT咨询(中周期)
+  'HDSN': 'mid',                         // Hudson Technologies - 制冷剂分销(中周期)
+  'HGBL': 'mid',                         // Heritage Global - 资产清算(中周期)
 };
 
 // ============================================================
@@ -17410,6 +17503,99 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'ACBI': { interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0 },
   'ACNB': { interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0 },
   'AROW': { interestRate: 0.4, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0.1, oilPrice: 0 },
+  'HLLY': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.5, housingMarket: 0, dollarIndex: -0.1, oilPrice: -0.2 },
+  'HNGE': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'HROW': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'HRTG': { interestRate: 0.2, inflation: -0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0.1, housingMarket: 0.3, dollarIndex: 0, oilPrice: 0 },
+  'HYMC': { interestRate: -0.5, inflation: 0.7, gdpGrowth: -0.1, unemployment: 0.1, consumerConfidence: -0.2, housingMarket: 0, dollarIndex: -0.8, oilPrice: 0.1 },
+  'IBIO': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.2, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'IFRX': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'IMAB': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.2, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'IMGN': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.2, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'IMMP': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'INCR': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'INFA': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'INFI': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'INGN': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'ISPC': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'IVAC': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'KGEI': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'KVHI': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.1 },
+  'LAKE': { interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'LANV': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'LBPH': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'LBTYA': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0 },
+  'LHCG': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: 0, oilPrice: 0 },
+  'LKCO': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'LMNX': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'LOAR': { interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0.1 },
+  'LOGM': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'LOOP': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: -0.2 },
+  'LPEN': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'LTBR': { interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0.2 },
+  'LYRA': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'MARN': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'MAXY': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'MDAS': { interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0, housingMarket: 0, dollarIndex: 0, oilPrice: 0 },
+  'MDNA': { interestRate: -0.3, inflation: 0, gdpGrowth: 0.1, unemployment: 0, consumerConfidence: 0, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'MESA': { interestRate: -0.4, inflation: -0.3, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.4, housingMarket: 0, dollarIndex: 0, oilPrice: -0.5 },
+  'MODV': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0.3, dollarIndex: -0.1, oilPrice: -0.1 },
+  'MOGO': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  // --- Batch: 54 Confirmed-Missing US Stocks MACRO_SENSITIVITY (Jan 2026 - Set J) ---
+  'ALTG': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.1 },
+  'AMBP': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'APTS': { interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: 0, oilPrice: 0 },
+  'AQUA': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'ARCT': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'ASAI': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.4, oilPrice: 0 },
+  'ATHM': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.4, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0 },
+  'ATRC': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'AVDX': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'AVAL': { interestRate: 0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: 0 },
+  'AXGN': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'AY': { interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.1, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.1 },
+  'BGCP': { interestRate: 0.2, inflation: 0, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'BKEP': { interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.6 },
+  'BRBS': { interestRate: 0.5, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0, oilPrice: 0 },
+  'CBNK': { interestRate: 0.5, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0, oilPrice: 0 },
+  'CDAK': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'CENT': { interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0 },
+  'CEQP': { interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.6 },
+  'CFFN': { interestRate: 0.6, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.5, dollarIndex: 0, oilPrice: 0 },
+  'CHCT': { interestRate: -0.4, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0, oilPrice: 0 },
+  'CION': { interestRate: 0.3, inflation: 0, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: 0, oilPrice: 0 },
+  'CLVS': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'CMRX': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.1, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'CNXN': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'CORS': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'CRD': { interestRate: 0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0 },
+  'CSGS': { interestRate: -0.1, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'CSTE': { interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'CVAC': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0 },
+  'CVLT': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'CXDO': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'CZFS': { interestRate: 0.5, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0, oilPrice: 0 },
+  'DCGO': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'DCP': { interestRate: -0.2, inflation: 0.2, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.6 },
+  'DXP': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.2 },
+  'DXPE': { interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0.2 },
+  'ELVN': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'EOLS': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'EOSE': { interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.2 },
+  'EQRX': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'ESTE': { interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0.8 },
+  'EWCZ': { interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
+  'FCPT': { interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: 0, oilPrice: 0 },
+  'FLUX': { interestRate: -0.5, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.2, oilPrice: -0.3 },
+  'FNGR': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.3, oilPrice: 0 },
+  'GATO': { interestRate: -0.4, inflation: 0.6, gdpGrowth: -0.1, unemployment: 0.1, consumerConfidence: -0.2, housingMarket: 0, dollarIndex: -0.7, oilPrice: 0.1 },
+  'GDS': { interestRate: -0.4, inflation: 0, gdpGrowth: 0.5, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.4, oilPrice: 0 },
+  'GNPX': { interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'GYRE': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.1, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0.2 },
+  'HBT': { interestRate: 0.5, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: 0, oilPrice: 0 },
+  'HCKT': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.4, unemployment: -0.3, consumerConfidence: 0.3, housingMarket: 0, dollarIndex: -0.2, oilPrice: 0 },
+  'HDSN': { interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.1 },
+  'HGBL': { interestRate: -0.2, inflation: 0, gdpGrowth: 0.3, unemployment: -0.2, consumerConfidence: 0.2, housingMarket: 0, dollarIndex: -0.1, oilPrice: 0 },
 };
 
 // ============================================================
