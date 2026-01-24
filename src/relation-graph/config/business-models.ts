@@ -11920,6 +11920,201 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Post-Acute Care',
     tags: ['skilled_nursing', 'rehabilitation', 'post_acute', 'senior_care'],
   },
+
+  // ========================================================
+  // 牙科/医疗分销
+  // ========================================================
+
+  'HSIC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Dental/Medical Distribution',
+    tags: ['dental', 'medical', 'distribution', 'supplies'],
+  },
+  'PDCO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Dental/Veterinary Distribution',
+    tags: ['dental', 'veterinary', 'distribution', 'equipment'],
+  },
+
+  // ========================================================
+  // 游戏/支付技术
+  // ========================================================
+
+  'EVERI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gaming Technology',
+    tags: ['gaming', 'payments', 'slot_machines', 'casino_tech'],
+  },
+  'CXT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Payment Technology/Sensors',
+    tags: ['payment', 'sensors', 'currency_detection', 'security'],
+  },
+
+  // ========================================================
+  // 媒体/体育/娱乐
+  // ========================================================
+
+  'ATUS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Cable/Broadband',
+    tags: ['cable', 'broadband', 'internet', 'telecom'],
+  },
+  'MSGS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Pro Sports Teams',
+    tags: ['sports', 'arena', 'nba', 'nhl', 'live_entertainment'],
+  },
+  'MSGE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Entertainment Venues',
+    tags: ['venues', 'concerts', 'shows', 'live_entertainment', 'msg'],
+  },
+
+  // ========================================================
+  // 特种制造
+  // ========================================================
+
+  'TRS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Containers/Packaging',
+    tags: ['containers', 'packaging', 'specialty', 'industrial'],
+  },
+  'TNET': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'HR/PEO Services',
+    tags: ['hr', 'peo', 'payroll', 'benefits', 'outsourcing'],
+  },
+  'NSIT': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'IT Solutions/Distribution',
+    tags: ['it_distribution', 'solutions', 'hardware', 'cloud', 'services'],
+  },
+  'PLAB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Semiconductor Photomasks',
+    tags: ['photomasks', 'semiconductor', 'lithography', 'ic_manufacturing'],
+  },
+
+  // ========================================================
+  // 消费品
+  // ========================================================
+
+  'HELE': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Consumer Products/Housewares',
+    tags: ['housewares', 'personal_care', 'home', 'beauty', 'consumer'],
+  },
+  'IPAR': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Prestige Fragrances',
+    tags: ['fragrance', 'prestige', 'luxury', 'licensed_brands'],
+  },
+  'VITL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Pasture-Raised Food',
+    tags: ['eggs', 'butter', 'pasture_raised', 'ethical', 'organic'],
+  },
+
+  // ========================================================
+  // 特种食品
+  // ========================================================
+
+  'CHEF': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Food Distribution',
+    tags: ['specialty_food', 'distribution', 'restaurant', 'gourmet'],
+  },
+
+  // ========================================================
+  // 酒店REITs
+  // ========================================================
+
+  'RLJ': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Hotel REIT/Select-Service',
+    tags: ['hotel_reit', 'select_service', 'focused_service'],
+  },
+  'SHO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Hotel REIT/Upper-Upscale',
+    tags: ['hotel_reit', 'upper_upscale', 'resort'],
+  },
+  'PEB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Hotel REIT/Lifestyle',
+    tags: ['hotel_reit', 'lifestyle', 'urban', 'boutique'],
+  },
+  'RHP': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental', 'premium_service'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Entertainment Venue REIT',
+    tags: ['entertainment', 'venue_reit', 'convention', 'hospitality'],
+  },
+  'APLE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'managed',
+    customerModel: 'B2B',
+    industrySegment: 'Hotel REIT/Select-Service',
+    tags: ['hotel_reit', 'select_service', 'upscale_select', 'diversified'],
+  },
 };
 
 // ============================================================

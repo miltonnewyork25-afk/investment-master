@@ -3778,6 +3778,48 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['local_service', 'relationship', 'community'],
     channels: ['branch', 'online', 'mobile'],
   },
+
+  // ========== 有线/宽带 ==========
+  'ATUS': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['internet', 'tv', 'phone'],
+    valueProps: ['bundling', 'speed', 'local_service'],
+    channels: ['online', 'phone', 'retail'],
+  },
+
+  // ========== 体育/娱乐 ==========
+  'MSGS': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'male' },
+    occasions: ['sports_event', 'entertainment'],
+    valueProps: ['premium_experience', 'loyalty', 'iconic_teams'],
+    channels: ['venue', 'streaming', 'app'],
+  },
+  'MSGE': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['concerts', 'shows', 'events'],
+    valueProps: ['premium_venue', 'unique_experience', 'iconic_location'],
+    channels: ['venue', 'online', 'app'],
+  },
+
+  // ========== 消费品 ==========
+  'HELE': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['home_care', 'personal_care'],
+    valueProps: ['quality', 'brand_trust', 'innovation'],
+    channels: ['retail', 'online'],
+  },
+  'IPAR': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['fragrance_purchase', 'gift', 'self_treat'],
+    valueProps: ['prestige', 'quality', 'brand_variety'],
+    channels: ['department_store', 'specialty', 'online'],
+  },
+  'VITL': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['grocery_shopping', 'ethical_eating'],
+    valueProps: ['animal_welfare', 'quality', 'transparency'],
+    channels: ['grocery', 'natural_store', 'online'],
+  },
 };
 
 // ============================================================
@@ -5643,6 +5685,40 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'LFST': 'defensive',        // LifeStance Health - 心理健康(防御)
   'OPCH': 'defensive',        // Option Care Health - 家庭输液(防御)
   'PACS': 'defensive',        // PACS Group - 急性期后护理(防御)
+
+  // Dental/Medical Distribution (defensive)
+  'HSIC': 'defensive',        // Henry Schein - 牙科/医疗分销(防御)
+  'PDCO': 'defensive',        // Patterson Companies - 牙科/兽医分销(防御)
+
+  // Gaming/Payments Tech (mid cycle)
+  'EVERI': 'mid',             // Everi Holdings - 游戏技术/支付(中周期)
+  'CXT': 'mid',               // Crane NXT - 支付技术/传感器(中周期)
+
+  // Media/Sports/Entertainment
+  'ATUS': 'defensive',        // Altice USA - 有线/宽带(防御)
+  'MSGS': 'mid',              // MSG Sports - 职业体育(中周期)
+  'MSGE': 'mid',              // MSG Entertainment - 娱乐场馆(中周期)
+
+  // Specialty Manufacturing (mid cycle)
+  'TRS': 'mid',               // TriMas Corp - 特种容器/包装(中周期)
+  'TNET': 'defensive',        // TriNet Group - HR/PEO服务(防御)
+  'NSIT': 'mid',              // Insight Enterprises - IT解决方案(中周期)
+  'PLAB': 'mid',              // Photronics - 半导体光掩模(中周期)
+
+  // Consumer Products (mid cycle)
+  'HELE': 'mid',              // Helen of Troy - 消费品/家居(中周期)
+  'IPAR': 'mid',              // Inter Parfums - 高端香水(中周期)
+  'VITL': 'defensive',        // Vital Farms - 牧场鸡蛋/黄油(防御)
+
+  // Specialty Food Distribution (mid cycle)
+  'CHEF': 'mid',              // Chef's Warehouse - 特种食品分销(中周期)
+
+  // Hotel REITs (mid cycle)
+  'RLJ': 'mid',               // RLJ Lodging Trust - 精选服务酒店REIT(中周期)
+  'SHO': 'mid',               // Sunstone Hotel - 高端全服务酒店REIT(中周期)
+  'PEB': 'mid',               // Pebblebrook Hotel - 生活方式酒店REIT(中周期)
+  'RHP': 'mid',               // Ryman Hospitality - 娱乐场馆REIT(中周期)
+  'APLE': 'mid',              // Apple Hospitality REIT - 精选服务酒店REIT(中周期)
 };
 
 // ============================================================
@@ -11573,6 +11649,112 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'PACS': {
     interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.0, unemployment: 0.0,
     consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Dental/Medical Distribution
+  'HSIC': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'PDCO': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Gaming Technology
+  'EVERI': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'CXT': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // Cable/Broadband
+  'ATUS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Pro Sports/Venues
+  'MSGS': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'MSGE': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // Specialty Manufacturing
+  'TRS': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // HR/PEO Services
+  'TNET': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.5,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // IT Distribution
+  'NSIT': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Photomasks
+  'PLAB': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // Consumer Products
+  'HELE': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Fragrances
+  'IPAR': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+
+  // Eggs/Food
+  'VITL': {
+    interestRate: -0.1, inflation: 0.2, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // Specialty Food Distribution
+  'CHEF': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // Hotel REITs
+  'RLJ': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'SHO': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'PEB': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'RHP': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+  'APLE': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.2,
   },
 };
 

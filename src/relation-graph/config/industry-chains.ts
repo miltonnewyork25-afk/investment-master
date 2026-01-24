@@ -2943,6 +2943,40 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'LFST': 'Mental Health Services',          // LifeStance Health - 心理健康服务
     'OPCH': 'Home Infusion',                   // Option Care Health - 家庭输液服务
     'PACS': 'Post-Acute Care',                 // PACS Group - 急性期后护理
+
+    // Dental/Medical Distribution
+    'HSIC': 'Dental Distribution',             // Henry Schein - 牙科/医疗分销
+    'PDCO': 'Veterinary Distribution',         // Patterson Companies - 牙科/兽医分销
+
+    // Gaming/Payments Technology
+    'EVERI': 'Gaming Technology',              // Everi Holdings - 游戏技术/支付
+    'CXT': 'Payment Sensors',                  // Crane NXT - 支付技术/传感器
+
+    // Media/Sports/Entertainment
+    'ATUS': 'Cable/Broadband',                 // Altice USA - 有线/宽带
+    'MSGS': 'Pro Sports',                      // MSG Sports - 职业体育队/场馆
+    'MSGE': 'Entertainment Venues',            // MSG Entertainment - 娱乐场馆
+
+    // Specialty Manufacturing
+    'TRS': 'Specialty Containers',             // TriMas Corp - 特种容器/包装
+    'TNET': 'HR/PEO Services',                // TriNet Group - HR/PEO服务
+    'NSIT': 'IT Solutions',                    // Insight Enterprises - IT解决方案/分销
+    'PLAB': 'Photomasks',                      // Photronics - 半导体光掩模
+
+    // Consumer Products
+    'HELE': 'Consumer Housewares',             // Helen of Troy - 消费品/家居用品
+    'IPAR': 'Prestige Fragrances',             // Inter Parfums - 高端香水
+    'VITL': 'Pasture-Raised Food',             // Vital Farms - 牧场鸡蛋/黄油
+
+    // Specialty Food
+    'CHEF': 'Specialty Food Distribution',     // Chef's Warehouse - 特种食品分销
+
+    // Hotel REITs
+    'RLJ': 'Select-Service Hotel',             // RLJ Lodging Trust - 精选服务酒店REIT
+    'SHO': 'Upper-Upscale Hotel',              // Sunstone Hotel - 高端全服务酒店REIT
+    'PEB': 'Lifestyle Hotel',                  // Pebblebrook Hotel - 生活方式酒店REIT
+    'RHP': 'Entertainment Venue REIT',         // Ryman Hospitality - 娱乐场馆REIT
+    'APLE': 'Select-Service Hotel',            // Apple Hospitality REIT - 精选服务酒店REIT
   },
 
   // ============================================================
@@ -6098,6 +6132,123 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Pharmacy Retail',              // 处方药覆盖
       'Digital Health',               // 远程医疗合作
       'Telehealth',                   // 虚拟问诊
+    ],
+
+    // ========== 牙科/医疗分销产业链 ==========
+    // 牙科分销 → 牙科诊所/医院
+    'Dental Distribution': [
+      'Veterinary Distribution',      // 兽医分销(类似渠道)
+    ],
+
+    // 兽医分销 → 兽医诊所
+    'Veterinary Distribution': [
+      'Dental Distribution',          // 牙科分销(互补渠道)
+    ],
+
+    // ========== 游戏/支付技术产业链 ==========
+    // 游戏技术 → 赌场运营
+    'Gaming Technology': [
+      'Payment Sensors',              // 支付传感器(互补技术)
+    ],
+
+    // 支付传感器 → 自动售货/ATM
+    'Payment Sensors': [
+      'Gaming Technology',            // 游戏技术(支付验证)
+    ],
+
+    // ========== 媒体/体育/娱乐产业链 ==========
+    // 有线/宽带 → 消费者
+    'Cable/Broadband': [
+      'Pro Sports',                   // 体育内容分发
+      'Entertainment Venues',         // 娱乐内容
+    ],
+
+    // 职业体育 → 媒体/票务
+    'Pro Sports': [
+      'Entertainment Venues',         // 共享场馆
+      'Cable/Broadband',              // 转播权
+    ],
+
+    // 娱乐场馆 → 消费者体验
+    'Entertainment Venues': [
+      'Pro Sports',                   // 共享受众
+    ],
+
+    // ========== 特种制造/服务产业链 ==========
+    // 特种容器 → 消费品/工业包装
+    'Specialty Containers': [
+      'Consumer Housewares',          // 消费品包装
+      'Specialty Food Distribution',  // 食品包装
+    ],
+
+    // HR/PEO服务 → 企业客户
+    'HR/PEO Services': [
+      'IT Solutions',                 // IT企业客户重叠
+    ],
+
+    // IT解决方案 → 企业IT需求
+    'IT Solutions': [
+      'HR/PEO Services',              // 企业服务互补
+    ],
+
+    // ========== 半导体光掩模产业链 ==========
+    // 光掩模 → 半导体制造
+    'Photomasks': [
+      'Semiconductor Foundry',        // 代工厂客户
+    ],
+
+    // ========== 消费品产业链 ==========
+    // 消费家居 → 零售渠道
+    'Consumer Housewares': [
+      'Prestige Fragrances',          // 消费品同渠道
+    ],
+
+    // 高端香水 → 零售/百货
+    'Prestige Fragrances': [
+      'Consumer Housewares',          // 消费品同渠道
+    ],
+
+    // 牧场食品 → 杂货零售
+    'Pasture-Raised Food': [
+      'Specialty Food Distribution',  // 特种食品渠道
+    ],
+
+    // ========== 特种食品产业链 ==========
+    // 特种食品分销 → 餐厅/酒店
+    'Specialty Food Distribution': [
+      'Select-Service Hotel',         // 酒店餐饮供应
+      'Upper-Upscale Hotel',          // 高端酒店餐饮
+      'Lifestyle Hotel',              // 生活方式酒店餐饮
+      'Entertainment Venue REIT',     // 场馆餐饮
+    ],
+
+    // ========== 酒店REIT产业链 ==========
+    // 精选服务酒店 → 旅游/商务
+    'Select-Service Hotel': [
+      'Upper-Upscale Hotel',          // 同业竞争/互补
+      'Lifestyle Hotel',              // 同业竞争/互补
+      'Entertainment Venue REIT',     // 会议/活动互补
+    ],
+
+    // 高端全服务酒店 → 商务/休闲
+    'Upper-Upscale Hotel': [
+      'Select-Service Hotel',         // 同业竞争
+      'Lifestyle Hotel',              // 同业竞争
+    ],
+
+    // 生活方式酒店 → 都市/休闲
+    'Lifestyle Hotel': [
+      'Select-Service Hotel',         // 同业竞争
+      'Upper-Upscale Hotel',          // 同业竞争
+      'Entertainment Venue REIT',     // 活动/娱乐互补
+    ],
+
+    // 娱乐场馆REIT → 会议/活动
+    'Entertainment Venue REIT': [
+      'Select-Service Hotel',         // 住宿需求
+      'Lifestyle Hotel',              // 住宿需求
+      'Entertainment Venues',         // 娱乐同业
+      'Pro Sports',                   // 活动内容
     ],
   },
 };
