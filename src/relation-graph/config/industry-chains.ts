@@ -3498,6 +3498,53 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Insurance Broker',        // 经纪分销
     ],
 
+    // ========== 新增子行业链 - 博彩/物流/医疗 ==========
+    'Casino & Resort': [
+      'Hotel Chain',             // 酒店住宿
+      'Full-Service Airline',    // 航空合作
+      'Payment Processor',       // 赌场支付
+    ],
+
+    'Online Gaming': [
+      'Streaming',               // 体育直播合作
+      'Payment Processor',       // 在线支付
+    ],
+
+    'Contract Logistics': [
+      'E-commerce',              // 电商履约
+      'Mass Retail',             // 零售配送
+      'Express Logistics',       // 快递合作
+    ],
+
+    'Hotel REIT': [
+      'Hotel Chain',             // 酒店运营商
+      'Travel Meta',             // OTA渠道
+    ],
+
+    'Diagnostics': [
+      'Hospital',                // 医院检测
+      'Big Pharma',              // 伴随诊断
+      'Health Insurance',        // 保险报销
+    ],
+
+    'Life Science Tools': [
+      'Big Pharma',              // 研发工具
+      'Large Biotech',           // 生物研发
+      'CRO',                     // 合同研究
+    ],
+
+    'Online Fashion Retail': [
+      'Apparel Retail',          // 时装零售竞争
+      'Express Logistics',       // 配送
+      'Payment Processor',       // 在线支付
+    ],
+
+    'Trust Bank': [
+      'Asset Manager',           // 资产管理服务
+      'Exchange',                // 证券托管
+      'Financial Data',          // 数据服务
+    ],
+
   },
 };
 

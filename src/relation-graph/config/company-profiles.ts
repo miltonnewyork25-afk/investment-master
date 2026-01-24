@@ -1846,6 +1846,62 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['reliability', 'affordability', 'renewable_programs'],
     channels: ['utility_bill', 'online_portal', 'phone'],
   },
+
+  // --- 博彩/娱乐 (Gaming/Entertainment) ---
+  'CZR': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'all', gender: 'all' },
+    occasions: ['entertainment', 'gambling', 'dining', 'shows', 'sports_betting'],
+    valueProps: ['rewards', 'experience', 'variety', 'excitement'],
+    channels: ['casino', 'online', 'mobile_app', 'sportsbook'],
+  },
+  'MGM': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['entertainment', 'gambling', 'luxury_dining', 'shows', 'convention'],
+    valueProps: ['luxury', 'entertainment', 'rewards', 'experience'],
+    channels: ['casino', 'hotel', 'online', 'mobile_app'],
+  },
+  'WYNN': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'high_net_worth', gender: 'all' },
+    occasions: ['luxury_entertainment', 'gambling', 'fine_dining', 'spa'],
+    valueProps: ['ultra_luxury', 'exclusivity', 'service', 'ambiance'],
+    channels: ['casino', 'hotel', 'concierge'],
+  },
+  'PENN': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['sports_betting', 'gambling', 'entertainment'],
+    valueProps: ['accessibility', 'sports_integration', 'rewards'],
+    channels: ['casino', 'online', 'mobile_app'],
+  },
+  'DKNG': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['sports_betting', 'fantasy_sports', 'iGaming'],
+    valueProps: ['convenience', 'excitement', 'promotions', 'social'],
+    channels: ['mobile_app', 'online'],
+  },
+
+  // --- 快餐/餐饮 ---
+  'CAVA': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['lunch', 'dinner', 'healthy_meal', 'quick_service'],
+    valueProps: ['healthy', 'fresh', 'Mediterranean', 'customizable'],
+    channels: ['dine_in', 'online', 'delivery', 'mobile_app'],
+  },
+
+  // --- 啤酒 ---
+  'BUD': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'male' },
+    occasions: ['social', 'sports', 'casual_dining', 'celebration'],
+    valueProps: ['brand', 'variety', 'accessibility', 'tradition'],
+    channels: ['retail', 'bar_restaurant', 'convenience_store'],
+  },
+
+  // --- 有线电视 ---
+  'LBRDA': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'all', gender: 'all' },
+    occasions: ['internet', 'TV', 'phone', 'streaming'],
+    valueProps: ['speed', 'bundling', 'reliability', 'coverage'],
+    channels: ['retail_store', 'online', 'phone'],
+  },
 };
 
 // ============================================================
