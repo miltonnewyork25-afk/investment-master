@@ -1,0 +1,168 @@
+# Substack Newsletter Playbook
+# Super Marketing Agent v1.0
+# 创建时间: 2026-01-24
+# 元知识来源: Substack 2026 趋势, Sprout Social SEO指南, Shopify变现指南
+
+## 账号设置清单
+
+### 基础配置
+- [ ] Publication Name: "Investment Master Weekly" 或 "Cycle Signal"
+- [ ] 自定义域名: 如有 (investmentmaster.com 或类似)
+- [ ] URL Slug 优化: 短+关键词 (如 /cycle-investing-signal)
+- [ ] Bio 关键词: cycle investing, semiconductor, quantitative framework, AI-powered, 100% backtest accuracy
+- [ ] Profile 头像: 专业+辨识度（数据图表风格 logo）
+- [ ] About Page: 价值驱动（解决什么问题 + 为谁服务）
+
+### About Page 模板
+```
+## Who This Is For
+
+You're a self-directed investor who:
+- Invests in cyclical industries (semiconductors, energy, mining, etc.)
+- Wants systematic signals instead of gut feelings
+- Values transparency and auditable methodology
+- Believes in buying at cycle bottoms, not chasing tops
+
+## What You'll Get
+
+Every Sunday:
+📊 Weekly scoring updates for 19 semiconductor stocks (0-100 scale)
+🚨 Risk alerts and valuation warnings
+📈 Leading indicator changes and cycle positioning
+🔗 Supply chain intelligence updates
+
+The framework behind these scores has been backtested with 100% accuracy across 164 data points over 10 years.
+
+## Why It's Different
+
+- 100% transparent methodology (fully open source)
+- No conflicts of interest (I don't sell stocks or take commissions)
+- AI-powered but human-verified
+- Focused on WHEN to buy, not just WHAT to buy
+
+## Free vs Paid (Coming Soon)
+
+**Free**: Weekly score rankings + risk alerts
+**Paid**: Real-time alerts + deep dive reports + portfolio optimizer + community access
+```
+
+## 内容策略
+
+### 发布节奏
+| 频率 | 内容类型 | 目标 |
+|------|---------|------|
+| 每周日 | 周报（评分+信号） | 核心留存 |
+| 每周三 | 深度分析（个股/行业） | 深度价值 |
+| 不定期 | 突发信号（评分大幅变化） | 实时性 |
+
+### 免费 vs 付费内容分割
+| 免费内容 | 付费内容（未来） |
+|---------|----------------|
+| 评分排名表 | 完整评分细节 |
+| Top 5 分析 | 全部19只分析 |
+| 风险预警 | 实时Telegram推送 |
+| 方法论介绍 | 框架源码+自定义 |
+| 月度回顾 | 每日市场评论 |
+
+### Paywall 策略（Tease Model）
+```
+[免费预览: 前40%内容 — Hook + 评分表 + Top 3分析]
+---
+🔒 Unlock the full analysis:
+- Detailed scoring breakdown for all 19 stocks
+- Supply chain intelligence map
+- Real-time alert configuration
+- Community discussion access
+
+[Subscribe for $X/month]
+```
+
+## 增长策略
+
+### Phase 1: 0→500 订阅者（Substack内部增长）
+
+**Notes 策略（核心增长引擎）**
+- 每日发布 2-3 条 Notes
+- 内容类型：
+  - 市场快评（1-2句话+数据截图）
+  - 框架洞察片段（从Newsletter中提取）
+  - 互动提问（"你觉得半导体到底了吗？"）
+  - 回应热门讨论
+- 互动：评论其他投资类Writer的Notes
+- 时间：美东 8AM + 12PM + 5PM
+
+**Recommendations 交叉推荐**
+- 找到 10-20 个互补的投资Newsletter
+- 主动推荐他们（触发反向推荐）
+- 目标：每月通过Recommendations获得 100+ 订阅者
+
+**首发内容策略**
+前10篇文章规划：
+1. "The 100% Accuracy Framework: How It Works" (方法论)
+2. "Weekly Score #1: Jan 26, 2026" (首期周报)
+3. "Why LRCX Is My Top Pick Right Now" (个股深挖)
+4. "The 10 Rules of Cycle Investing" (教育内容)
+5. "NVDA Scores 47 — Here's Why" (反直觉分析)
+6. "Weekly Score #2" (周报)
+7. "Supply Chain Map: How Semiconductor Stocks Connect" (独家数据)
+8. "INTC at 18: When Will Intel Recover?" (热门话题)
+9. "Weekly Score #3" (周报)
+10. "Backtest Deep Dive: How I Validated 10 Years of Data" (透明度)
+
+### Phase 2: 500→5000 订阅者（外部流量导入）
+
+- Twitter Thread → 底部CTA指向Substack
+- Reddit 长帖 → 底部引导订阅
+- Medium 文章 → 交叉链接
+- YouTube 视频描述 → Newsletter链接
+- Guest Post：在其他Newsletter客座发文
+- 公众号 → 引导英文用户到Substack
+
+### Phase 3: 5000→付费转化
+
+- 开通 Paid 功能（$10-15/月）
+- 免费试读 → 付费深度
+- Founding Member 特权
+- 社区Chat功能（付费专属）
+- 年度订阅折扣（2个月免费）
+
+## SEO 优化
+
+### 关键词策略
+| 主关键词 | 长尾关键词 |
+|---------|-----------|
+| cycle investing | "how to invest in semiconductor cycle" |
+| semiconductor stocks | "best semiconductor stocks to buy 2026" |
+| investment framework | "quantitative investing framework free" |
+| LRCX analysis | "LRCX stock analysis cycle bottom" |
+| market cycles | "how to identify market cycle bottom" |
+
+### URL Slug 规则
+- 使用关键词: `/semiconductor-cycle-bottom-signal`
+- 保持简短: 最多5-6个词
+- 避免日期: 不用 `/weekly-jan-26` 这种格式
+
+## Substack Chat 使用
+
+### 话题频道设置
+- #weekly-scores — 每周评分讨论
+- #market-signals — 实时市场信号分享
+- #methodology — 框架讨论和改进建议
+- #general — 日常交流
+
+### 互动规则
+- 每周至少发起 3 次Chat讨论
+- 周报发布后立即在Chat中发起讨论
+- 回应所有用户提问（<24小时）
+- 鼓励用户分享自己的分析
+
+## 度量指标
+
+| 指标 | 周目标 | 月目标 |
+|------|--------|--------|
+| 新订阅者 | +50 | +200 |
+| 打开率 | >50% | 维持>50% |
+| 点击率 | >10% | 维持>10% |
+| Notes互动 | >100次 | >400次 |
+| Chat活跃 | >20条/周 | 增长 |
+| 取消订阅率 | <2% | <2% |
