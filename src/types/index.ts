@@ -5,6 +5,9 @@
 // 证据等级
 export type EvidenceGrade = 'A' | 'B' | 'C';
 
+// 周期阶段
+export type CycleStage = 'trough' | 'early_recovery' | 'mid_cycle' | 'peak';
+
 // 公司基础信息
 export interface Company {
   ticker: string;
@@ -18,6 +21,8 @@ export interface Company {
   gross_margin?: number;
   roic?: number;
   revenue_growth_yoy?: number;
+  // 周期信息（可选，由外部注入或推断）
+  cycle_stage?: CycleStage;
 }
 
 // 供应链边（上下游关系）
@@ -32,6 +37,14 @@ export interface SupplyChainEdge {
   confidence: number;       // 0-1
 }
 
+// 心理学调整明细
+export interface PsychologyAdjustment {
+  cycle_stage_adjustment: number;    // 周期阶段修正 (±10)
+  contrarian_adjustment: number;     // 逆向修正 (±15)
+  bias_warnings: string[];           // 偏误警告
+  crowd_signal?: 'extreme_fear' | 'fear' | 'neutral' | 'greed' | 'extreme_greed';
+}
+
 // 周度评分
 export interface WeeklyScore {
   ticker: string;
@@ -40,6 +53,8 @@ export interface WeeklyScore {
   valuation_score: number;
   evidence_score: number;
   momentum_score: number;
+  psychology_adjustment: number;     // 心理学修正值
+  psychology_detail?: PsychologyAdjustment;  // 修正明细
   risk_flags: string[];
   rank: number;
   config_version: string;

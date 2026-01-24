@@ -21,6 +21,7 @@ import { secFetcher } from './sec-fetcher.js';
 import { evidenceExtractor } from './evidence-extractor.js';
 import { scorer } from './scorer.js';
 import { dataAuditor } from './data-auditor.js';
+import { contentGenerator } from './content-generator.js';
 import { upstreamCompanies, downstreamCompanies, mockSupplyChainEdges } from '../data/mock-data.js';
 import { config, getScoringConfig } from '../config/index.js';
 import { cacheManager } from '../utils/cache.js';
@@ -88,8 +89,15 @@ class Orchestrator {
       auditLogger.log('orchestrator', 'info', 'Step 5: 生成周度报告');
       const report = this.generateReport(scores, edges);
 
+      // Step 5.5: 生成营销内容原子
+      auditLogger.log('orchestrator', 'info', 'Step 5.5: 生成营销内容原子');
+      const contentPack = contentGenerator.generateWeeklyContent(scores);
+
       // Step 6: 输出到产物目录
       const outputPath = await this.saveOutput(report, outputFormat);
+
+      // 保存内容包
+      await outputManager.writeJSON(outputPath, 'content-atoms.json', contentPack);
 
       const executionTime = Date.now() - startTime;
       auditLogger.log('orchestrator', 'info', `流程完成，耗时 ${executionTime}ms`);
@@ -308,14 +316,17 @@ class Orchestrator {
       lines.push(`无重大风险提示`);
     }
 
-    lines.push(``, `## 评分排名`, ``, `| 排名 | 股票 | 总分 | 估值 | 证据 | 动量 | 风险标志 |`);
-    lines.push(`|------|------|------|------|------|------|----------|`);
+    lines.push(``, `## 评分排名`, ``, `| 排名 | 股票 | 总分 | 估值 | 证据 | 动量 | 心理修正 | 风险标志 |`);
+    lines.push(`|------|------|------|------|------|------|----------|----------|`);
 
     for (const score of report.scores) {
+      const psychAdj = score.psychology_adjustment !== 0
+        ? `${score.psychology_adjustment > 0 ? '+' : ''}${score.psychology_adjustment}`
+        : '0';
       lines.push(
         `| ${score.rank} | ${score.ticker} | ${score.overall_score} | ` +
         `${score.valuation_score} | ${score.evidence_score} | ${score.momentum_score} | ` +
-        `${score.risk_flags.join(', ') || '-'} |`
+        `${psychAdj} | ${score.risk_flags.join(', ') || '-'} |`
       );
     }
 

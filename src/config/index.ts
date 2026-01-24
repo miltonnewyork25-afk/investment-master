@@ -210,6 +210,75 @@ export function getScoringConfig(): ScoringConfig {
   return defaultScoringConfig;
 }
 
+// 心理学评分配置类型
+export interface PsychologyConfig {
+  cycle_adjustments: {
+    trough: number;         // 底部额外加分
+    early_recovery: number; // 早期恢复加分
+    mid_cycle: number;      // 中周期无调整
+    peak: number;           // 顶部额外减分
+  };
+  contrarian: {
+    bonus: number;          // 群体极端恐惧时加分
+    penalty: number;        // 群体极端贪婪时减分
+  };
+  loss_aversion: {
+    lambda: number;         // 损失厌恶系数
+    sell_threshold: number; // 强制卖出信号的评分阈值
+    hold_threshold: number; // 强制持有信号的评分阈值
+  };
+  marginal_signal: {
+    first_confirming: number;    // 第1个确认信号价值
+    second_confirming: number;   // 第2个确认信号价值
+    third_confirming: number;    // 第3个确认信号价值
+    first_contrary: number;      // 第1个反向信号价值(溢价)
+  };
+}
+
+// 加载心理学配置
+export function getPsychologyConfig(): PsychologyConfig {
+  // 从psychology-scoring.yaml加载，回退到默认值
+  const yamlConfig = loadYAMLConfig<Record<string, unknown>>('psychology-scoring.yaml');
+
+  if (yamlConfig) {
+    const cycleMap = yamlConfig.cycle_psychology_map as Record<string, unknown> | undefined;
+    const biasCorrections = yamlConfig.bias_corrections as Record<string, unknown> | undefined;
+    const marginal = yamlConfig.marginal_analysis as Record<string, unknown> | undefined;
+
+    return {
+      cycle_adjustments: {
+        trough: (cycleMap?.trough as Record<string, unknown>)?.score_adjustment as number ?? 10,
+        early_recovery: (cycleMap?.early_recovery as Record<string, unknown>)?.score_adjustment as number ?? 5,
+        mid_cycle: (cycleMap?.mid_cycle as Record<string, unknown>)?.score_adjustment as number ?? 0,
+        peak: (cycleMap?.peak as Record<string, unknown>)?.score_adjustment as number ?? -10,
+      },
+      contrarian: {
+        bonus: (biasCorrections?.herding as Record<string, unknown>)?.contrarian_bonus as number ?? 15,
+        penalty: (biasCorrections?.herding as Record<string, unknown>)?.contrarian_penalty as number ?? -15,
+      },
+      loss_aversion: {
+        lambda: 2.25,
+        sell_threshold: 30,
+        hold_threshold: 70,
+      },
+      marginal_signal: {
+        first_confirming: 1.0,
+        second_confirming: 0.7,
+        third_confirming: 0.4,
+        first_contrary: 1.5,
+      },
+    };
+  }
+
+  // 默认心理学配置
+  return {
+    cycle_adjustments: { trough: 10, early_recovery: 5, mid_cycle: 0, peak: -10 },
+    contrarian: { bonus: 15, penalty: -15 },
+    loss_aversion: { lambda: 2.25, sell_threshold: 30, hold_threshold: 70 },
+    marginal_signal: { first_confirming: 1.0, second_confirming: 0.7, third_confirming: 0.4, first_contrary: 1.5 },
+  };
+}
+
 // 获取配置版本信息
 export function getConfigInfo(): { version: string; effectiveDate: string; mode: string } {
   const scoringConfig = getScoringConfig();

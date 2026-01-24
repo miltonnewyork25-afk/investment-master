@@ -10,15 +10,144 @@ import type {
   SupplyChainEdge,
   WeeklyScore,
   ScoringConfig,
-  EvidenceGrade
+  EvidenceGrade,
+  CycleStage,
+  PsychologyAdjustment
 } from '../types/index.js';
-import { getScoringConfig } from '../config/index.js';
+import { getScoringConfig, getPsychologyConfig } from '../config/index.js';
+import type { PsychologyConfig } from '../config/index.js';
 
 class Scorer {
   private config: ScoringConfig;
+  private psychConfig: PsychologyConfig;
 
   constructor() {
     this.config = getScoringConfig();
+    this.psychConfig = getPsychologyConfig();
+  }
+
+  /**
+   * 推断周期阶段（当Company未提供cycle_stage时）
+   * 基于估值+动量的组合推断:
+   *   - 低估值 + 负增长 = trough
+   *   - 低估值 + 正增长 = early_recovery
+   *   - 合理估值 + 强增长 = mid_cycle
+   *   - 高估值 + 正/减速增长 = peak
+   */
+  private inferCycleStage(company: Company): CycleStage {
+    if (company.cycle_stage) return company.cycle_stage;
+
+    const pe = company.pe_ttm;
+    const growth = company.revenue_growth_yoy;
+    const { pe_undervalued, pe_overvalued } = this.config.thresholds;
+
+    // 亏损(PE<0) + 负增长 = 底部
+    if (pe !== undefined && pe < 0 && growth !== undefined && growth < 0) {
+      return 'trough';
+    }
+    // 低PE + 负增长或微增 = 底部
+    if (pe !== undefined && pe < pe_undervalued && growth !== undefined && growth < 0.05) {
+      return 'trough';
+    }
+    // 低PE + 正增长 = 早期恢复
+    if (pe !== undefined && pe < pe_undervalued && growth !== undefined && growth >= 0.05) {
+      return 'early_recovery';
+    }
+    // 高PE + 正增长 = 顶部区域
+    if (pe !== undefined && pe > pe_overvalued && growth !== undefined && growth > 0) {
+      return 'peak';
+    }
+    // 高PE + 负增长 = 顶部(估值尚未修正)
+    if (pe !== undefined && pe > pe_overvalued && growth !== undefined && growth <= 0) {
+      return 'peak';
+    }
+
+    return 'mid_cycle';
+  }
+
+  /**
+   * 计算心理学调整
+   * 基于: 周期阶段修正 + 逆向信号 + 偏误检测
+   */
+  private calculatePsychologyAdjustment(
+    company: Company,
+    baseScore: number
+  ): PsychologyAdjustment {
+    const cycleStage = this.inferCycleStage(company);
+    const biasWarnings: string[] = [];
+
+    // --- 1. 周期阶段调整 ---
+    const cycleAdj = this.psychConfig.cycle_adjustments[cycleStage];
+
+    // --- 2. 逆向信号调整 ---
+    // 简化版: 当估值极端时视为群体极端的代理指标
+    let contrarianAdj = 0;
+    let crowdSignal: PsychologyAdjustment['crowd_signal'] = 'neutral';
+
+    const pe = company.pe_ttm;
+    const growth = company.revenue_growth_yoy;
+
+    // 极度恐惧信号: 亏损(PE<0) + 收入大幅下滑 → 群体可能过度恐慌
+    if (pe !== undefined && pe < 0 && growth !== undefined && growth < -0.2) {
+      contrarianAdj = this.psychConfig.contrarian.bonus;
+      crowdSignal = 'extreme_fear';
+    }
+    // 恐惧信号: 低PE + 负增长
+    else if (pe !== undefined && pe < this.config.thresholds.pe_undervalued
+      && growth !== undefined && growth < -0.1) {
+      contrarianAdj = Math.round(this.psychConfig.contrarian.bonus * 0.5);
+      crowdSignal = 'fear';
+    }
+    // 极度贪婪信号: 极高PE + 强增长 → 群体可能过度乐观
+    else if (pe !== undefined && pe > 50 && growth !== undefined && growth > 0.3) {
+      contrarianAdj = this.psychConfig.contrarian.penalty;
+      crowdSignal = 'extreme_greed';
+    }
+    // 贪婪信号: 高PE + 正增长
+    else if (pe !== undefined && pe > this.psychConfig.loss_aversion.hold_threshold
+      && growth !== undefined && growth > 0.15) {
+      contrarianAdj = Math.round(this.psychConfig.contrarian.penalty * 0.5);
+      crowdSignal = 'greed';
+    }
+
+    // --- 3. 偏误警告检测 ---
+
+    // 锚定偏误警告: PE在历史极端区域
+    if (pe !== undefined && pe > 60) {
+      biasWarnings.push('锚定风险: PE极高,可能被历史高点锚定,实际估值已过热');
+    }
+
+    // 处置效应警告: 中等评分但处于底部 → 人们倾向过早卖出
+    if (baseScore > 50 && baseScore < 70 && cycleStage === 'early_recovery') {
+      biasWarnings.push('处置效应风险: 早期恢复阶段,不要因为小幅盈利就急于卖出');
+    }
+
+    // 沉没成本警告: 低评分在顶部区域 → 人们倾向不止损
+    if (baseScore < 40 && cycleStage === 'peak') {
+      biasWarnings.push('沉没成本风险: 估值过热+评分低,应考虑止损而非期望回本');
+    }
+
+    // 从众偏误警告: 高增长+高PE → 人们追涨
+    if (growth !== undefined && growth > 0.3 && pe !== undefined && pe > 40) {
+      biasWarnings.push('从众风险: 高增长+高估值吸引追涨资金,注意周期位置');
+    }
+
+    // FOMO警告: 中周期强增长 → 晚期进入风险
+    if (cycleStage === 'mid_cycle' && growth !== undefined && growth > 0.25) {
+      biasWarnings.push('FOMO风险: 增长强劲但已处中周期,不宜重仓追入');
+    }
+
+    // 近期偏误警告: 负增长容易让人过度悲观
+    if (growth !== undefined && growth < -0.15 && cycleStage === 'trough') {
+      biasWarnings.push('近期偏误: 当前负增长容易引发过度悲观,但底部往往如此');
+    }
+
+    return {
+      cycle_stage_adjustment: cycleAdj,
+      contrarian_adjustment: contrarianAdj,
+      bias_warnings: biasWarnings,
+      crowd_signal: crowdSignal,
+    };
   }
 
   /**
@@ -167,6 +296,7 @@ class Scorer {
 
   /**
    * 计算单个公司的周度评分
+   * 流程: 基础评分(估值+证据+动量) → 心理学修正 → 最终评分
    */
   scoreCompany(
     company: Company,
@@ -179,13 +309,23 @@ class Scorer {
 
     const { valuation, evidence, momentum } = this.config.weights;
 
-    const overallScore = Math.round(
+    const baseScore = Math.round(
       valuationScore * valuation +
       evidenceScore * evidence +
       momentumScore * momentum
     );
 
+    // 心理学修正层
+    const psychAdj = this.calculatePsychologyAdjustment(company, baseScore);
+    const totalPsychAdjustment = psychAdj.cycle_stage_adjustment + psychAdj.contrarian_adjustment;
+    const overallScore = Math.max(0, Math.min(100, baseScore + totalPsychAdjustment));
+
     const riskFlags = this.identifyRiskFlags(company, edges);
+
+    // 将偏误警告合并到risk_flags
+    if (psychAdj.bias_warnings.length > 0) {
+      riskFlags.push(...psychAdj.bias_warnings);
+    }
 
     const weekStart = this.getWeekStart();
 
@@ -196,6 +336,8 @@ class Scorer {
       valuation_score: Math.round(valuationScore),
       evidence_score: Math.round(evidenceScore),
       momentum_score: Math.round(momentumScore),
+      psychology_adjustment: totalPsychAdjustment,
+      psychology_detail: psychAdj,
       risk_flags: riskFlags,
       config_version: this.config.version,
     };

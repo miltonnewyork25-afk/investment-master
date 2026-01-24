@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "description": "预测追踪日志 - 用于置信度校准和元认知反馈",
+  "calibration_target": "置信度X%的预测,实际准确率应≈X%",
+  "predictions": [
+    {
+      "id": "PRED-2026-01-24-001",
+      "date": "2026-01-24",
+      "ticker": "LRCX",
+      "score": 72,
+      "cycle_stage": "trough",
+      "psychology_adjustment": 10,
+      "direction": "bullish",
+      "confidence": 85,
+      "time_horizon": "12_months",
+      "thesis": "周期底部反转信号,估值合理(PE 24.8),ROIC 31.2%,收入增长12%恢复中",
+      "invalidation_criteria": "评分降至40以下持续4周 OR 收入增速转负",
+      "crowd_signal": "neutral",
+      "bias_check": {
+        "confirmation_risk": "low - 多因子支撑",
+        "recency_risk": "medium - 近期增长恢复可能过度权重",
+        "narrative_risk": "low - 基于数据非故事"
+      },
+      "outcome": null,
+      "outcome_date": null,
+      "actual_return_12m": null,
+      "review_notes": null
+    },
+    {
+      "id": "PRED-2026-01-24-002",
+      "date": "2026-01-24",
+      "ticker": "DOW",
+      "score": 76,
+      "cycle_stage": "trough",
+      "psychology_adjustment": 15,
+      "direction": "strong_bullish",
+      "confidence": 80,
+      "time_horizon": "12_months",
+      "thesis": "化学品价差极端值信号,周期底部,逆向买入窗口",
+      "invalidation_criteria": "乙烯价差持续收窄至历史均值以下 OR 需求端持续恶化",
+      "crowd_signal": "fear",
+      "bias_check": {
+        "confirmation_risk": "low",
+        "recency_risk": "high - 化学品低迷持续较久,可能影响底部判断",
+        "narrative_risk": "medium - '价差极端值'可能是新常态"
+      },
+      "outcome": null,
+      "outcome_date": null,
+      "actual_return_12m": null,
+      "review_notes": null
+    },
+    {
+      "id": "PRED-2026-01-24-003",
+      "date": "2026-01-24",
+      "ticker": "UAL",
+      "score": 35,
+      "cycle_stage": "peak",
+      "psychology_adjustment": -10,
+      "direction": "bearish",
+      "confidence": 75,
+      "time_horizon": "6_months",
+      "thesis": "成本端PE陷阱(Oil Cost Trap),PE=9看似便宜实为周期顶部利润",
+      "invalidation_criteria": "油价持续下跌>20% OR 载客率突破新高",
+      "crowd_signal": "greed",
+      "bias_check": {
+        "confirmation_risk": "medium - 框架偏向看空此类信号",
+        "recency_risk": "low - 多周期验证",
+        "narrative_risk": "low - 基于定量PE陷阱检测"
+      },
+      "outcome": null,
+      "outcome_date": null,
+      "actual_return_6m": null,
+      "review_notes": null
+    }
+  ],
+  "calibration_report": {
+    "last_updated": "2026-01-24",
+    "total_predictions": 3,
+    "resolved_predictions": 0,
+    "accuracy_by_confidence": {},
+    "notes": "初始化 - 需要积累至少20个已解决预测才能产生有意义的校准曲线"
+  }
+}
