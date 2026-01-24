@@ -3932,6 +3932,66 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['coverage', 'reliability', 'global_reach'],
     channels: ['online', 'partner', 'enterprise'],
   },
+
+  // ========== 债务/消费金融 ==========
+  'NAVI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['student_loan', 'refinance'],
+    valueProps: ['options', 'digital_tools', 'guidance'],
+    channels: ['online', 'phone'],
+  },
+
+  // ========== 设施/食品服务 ==========
+  'ARMK': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['dining', 'events', 'workplace'],
+    valueProps: ['convenience', 'variety', 'quality'],
+    channels: ['cafeteria', 'venue', 'vending'],
+  },
+
+  // ========== 网络设备 ==========
+  'UI': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'male' },
+    occasions: ['networking_setup', 'smart_home'],
+    valueProps: ['performance', 'value', 'ecosystem'],
+    channels: ['online', 'direct'],
+  },
+
+  // ========== 媒体/广播 ==========
+  'SIRI': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commuting', 'road_trip', 'entertainment'],
+    valueProps: ['variety', 'commercial_free', 'exclusive_content'],
+    channels: ['car', 'app', 'online'],
+  },
+  'IHRT': {
+    demographics: { ageGroup: 'gen_x', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['commuting', 'background', 'entertainment'],
+    valueProps: ['local_content', 'variety', 'free_access'],
+    channels: ['radio', 'app', 'podcast'],
+  },
+
+  // ========== 消费品牌 ==========
+  'OLPX': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'female' },
+    occasions: ['hair_care', 'salon_treatment'],
+    valueProps: ['repair', 'quality', 'professional_grade'],
+    channels: ['salon', 'retail', 'online'],
+  },
+  'SG': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'affluent', gender: 'all' },
+    occasions: ['lunch', 'healthy_meal', 'quick_dinner'],
+    valueProps: ['health', 'fresh', 'sustainability'],
+    channels: ['store', 'app', 'delivery'],
+  },
+
+  // ========== 草坪/园艺 ==========
+  'SMG': {
+    demographics: { ageGroup: 'boomer', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['lawn_care', 'gardening', 'spring'],
+    valueProps: ['trusted_brand', 'results', 'ease_of_use'],
+    channels: ['home_center', 'garden_store', 'online'],
+  },
 };
 
 // ============================================================
@@ -5917,6 +5977,76 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'DORM': 'defensive',         // Dorman Products - 汽车售后零件(防御型)
   'EVRI': 'mid',               // Everi Holdings - 博彩金融科技(中周期)
   'VERX': 'defensive',         // Vertex Inc - 税务SaaS(防御型)
+
+  // ---------- 债务购买/消费金融 ----------
+  'ECPG': 'mid',               // Encore Capital - 债务购买(中周期)
+  'PRAA': 'mid',               // PRA Group - 债务购买(中周期)
+  'NAVI': 'mid',               // Navient - 学生贷款服务(中周期)
+
+  // ---------- 数据/分析 ----------
+  'VRSK': 'defensive',         // Verisk Analytics - 保险数据分析(防御型)
+  'DNB': 'defensive',          // Dun & Bradstreet - 商业数据(防御型)
+
+  // ---------- 设施/食品服务 ----------
+  'ABM': 'defensive',          // ABM Industries - 设施服务(防御型)
+  'ARMK': 'defensive',         // Aramark - 食品/设施服务(防御型)
+
+  // ---------- 清洁能源 ----------
+  'CWEN': 'defensive',         // Clearway Energy - 可再生能源(防御型)
+
+  // ---------- 网络设备 ----------
+  'UI': 'mid',                 // Ubiquiti - 网络设备(中周期)
+
+  // ---------- 媒体/广播 ----------
+  'SIRI': 'defensive',         // SiriusXM - 卫星广播(防御型)
+  'IHRT': 'mid',               // iHeartMedia - 广播/播客(中周期)
+
+  // ---------- 消费品牌 ----------
+  'OLPX': 'mid',               // Olaplex - 高端护发(中周期)
+  'SG': 'mid',                 // Sweetgreen - 快休闲沙拉(中周期)
+
+  // ---------- 保险/再保险 ----------
+  'EG': 'mid',                 // Everest Group - 再保险(中周期)
+  'AXS': 'mid',                // Axis Capital - 特种保险/再保险(中周期)
+
+  // ---------- 多元化工业 ----------
+  'CR': 'mid',                 // Crane Company - 航空/工业流程(中周期)
+  'ITT': 'mid',                // ITT Inc - 运动/流体控制(中周期)
+
+  // ---------- 草坪/园艺 ----------
+  'SMG': 'mid',                // Scotts Miracle-Gro - 草坪/园艺(中周期)
+
+  // ---------- 医疗器械/MedTech ----------
+  'TMDX': 'mid',               // TransMedics - 器官运输(中周期)
+  'IART': 'mid',               // Integra LifeSciences - 神经外科器械(中周期)
+  'ATEC': 'mid',               // Alphatec - 脊柱手术器械(中周期)
+
+  // ---------- Payments/Fintech - International ----------
+  'PSFE': 'mid',               // Paysafe - 数字支付(中周期)
+  'PAGS': 'early',             // PagSeguro - 巴西支付(早周期)
+  'STNE': 'early',             // StoneCo - 巴西金融科技(早周期)
+
+  // ---------- Digital Fitness ----------
+  'BODY': 'late',              // Beachbody - 数字健身(晚周期)
+
+  // ---------- Diversified Industrial/Infrastructure ----------
+  'ROPER': 'defensive',         // Roper Technologies - 多元化工业软件(防御型)
+  'ZWS': 'mid',                 // Zurn Elkay Water - 水管理(中周期)
+
+  // ---------- Healthcare/Biotech (Specialty) ----------
+  'IOVA': 'early',              // Iovance - 细胞治疗(早周期)
+  'CYTK': 'early',              // Cytokinetics - 心肌肌球蛋白(早周期)
+  'IRON': 'early',              // Disc Medicine - 血液学(早周期)
+  'VRNA': 'early',              // Verona Pharma - 呼吸系统(早周期)
+
+  // ---------- AI/Voice Technology ----------
+  'SOUN': 'early',              // SoundHound AI - 语音AI(早周期)
+  'BBAI': 'mid',                // BigBear.ai - AI决策分析(中周期)
+
+  // ---------- Energy Services ----------
+  'CLB': 'late',                // Core Labs - 油藏描述(晚周期)
+  'AROC': 'mid',                // Archrock - 天然气压缩(中周期)
+  'USAC': 'mid',                // USA Compression - 天然气采集压缩(中周期)
 };
 
 // ============================================================
@@ -12195,6 +12325,140 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'VERX': {
     interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
     consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // ========== 债务购买 ==========
+  'ECPG': {
+    interestRate: 0.3, inflation: -0.1, gdpGrowth: -0.3, unemployment: 0.5,
+    consumerConfidence: -0.4, housingMarket: -0.2, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'PRAA': {
+    interestRate: 0.3, inflation: -0.1, gdpGrowth: -0.3, unemployment: 0.5,
+    consumerConfidence: -0.4, housingMarket: -0.2, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+
+  // ========== 学生贷款 ==========
+  'NAVI': {
+    interestRate: 0.4, inflation: 0.0, gdpGrowth: -0.1, unemployment: 0.2,
+    consumerConfidence: -0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // ========== 数据/分析 ==========
+  'VRSK': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'DNB': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // ========== 设施服务 ==========
+  'ABM': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'ARMK': {
+    interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // ========== 可再生能源 ==========
+  'CWEN': {
+    interestRate: -0.5, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.2,
+  },
+
+  // ========== 网络设备 ==========
+  'UI': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 广播/媒体 ==========
+  'SIRI': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'IHRT': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // ========== 护发/美容 ==========
+  'OLPX': {
+    interestRate: -0.1, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== 快休闲餐饮 ==========
+  'SG': {
+    interestRate: -0.2, inflation: -0.3, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // ========== 再保险 ==========
+  'EG': {
+    interestRate: 0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'AXS': {
+    interestRate: 0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+
+  // ========== 多元化工业 ==========
+  'CR': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'ITT': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+
+  // ========== 草坪/园艺 ==========
+  'SMG': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // ========== 医疗器械 ==========
+  'TMDX': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'IART': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ATEC': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // ========== Payments/Fintech - International ==========
+  // Paysafe - 数字支付/iGaming
+  'PSFE': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  // PagSeguro - 巴西支付
+  'PAGS': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.0,
+  },
+  // StoneCo - 巴西金融科技
+  'STNE': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.4, housingMarket: 0.0, dollarIndex: -0.5, oilPrice: 0.0,
+  },
+
+  // ========== Digital Fitness ==========
+  // Beachbody - 数字健身/订阅
+  'BODY': {
+    interestRate: -0.2, inflation: -0.2, gdpGrowth: 0.2, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
   },
 };
 

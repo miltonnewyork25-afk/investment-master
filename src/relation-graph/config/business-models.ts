@@ -12568,6 +12568,373 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Tax Compliance SaaS',
     tags: ['tax', 'compliance', 'SaaS', 'indirect_tax', 'enterprise'],
   },
+
+  // ========================================================
+  // 债务购买/消费金融
+  // ========================================================
+
+  'ECPG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Debt Purchasing',
+    tags: ['debt_buying', 'collections', 'consumer_debt', 'portfolio_recovery'],
+  },
+  'PRAA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Debt Purchasing',
+    tags: ['debt_buying', 'collections', 'consumer_debt', 'international'],
+  },
+  'NAVI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['interest_income', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Student Loan Servicing',
+    tags: ['student_loans', 'loan_servicing', 'refinancing', 'education_finance'],
+  },
+
+  // ========================================================
+  // 数据/分析
+  // ========================================================
+
+  'VRSK': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Insurance Analytics',
+    tags: ['insurance_data', 'risk_analytics', 'actuarial', 'claims_analytics'],
+  },
+  'DNB': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Business Data',
+    tags: ['business_data', 'credit_risk', 'B2B_analytics', 'commercial_data'],
+  },
+
+  // ========================================================
+  // 设施/食品服务
+  // ========================================================
+
+  'ABM': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Facility Services',
+    tags: ['janitorial', 'facility_management', 'building_services', 'commercial'],
+  },
+  'ARMK': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Food/Facilities Services',
+    tags: ['food_service', 'facilities', 'uniforms', 'events_catering'],
+  },
+
+  // ========================================================
+  // 清洁能源
+  // ========================================================
+
+  'CWEN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Renewable Wind/Solar',
+    tags: ['wind', 'solar', 'renewable_energy', 'power_purchase_agreements'],
+  },
+
+  // ========================================================
+  // 网络设备
+  // ========================================================
+
+  'UI': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Networking Equipment',
+    tags: ['wifi', 'networking', 'enterprise_wireless', 'prosumer'],
+  },
+
+  // ========================================================
+  // 媒体/广播
+  // ========================================================
+
+  'SIRI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Satellite Radio',
+    tags: ['satellite_radio', 'streaming', 'exclusive_content', 'auto_OEM'],
+  },
+  'IHRT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Radio/Podcasts',
+    tags: ['radio', 'podcasts', 'local_media', 'advertising'],
+  },
+
+  // ========================================================
+  // 消费品牌
+  // ========================================================
+
+  'OLPX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Premium Hair Care',
+    tags: ['hair_care', 'beauty', 'salon_professional', 'DTC'],
+  },
+  'SG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Fast Casual Salad',
+    tags: ['fast_casual', 'healthy_food', 'salads', 'sustainability'],
+  },
+
+  // ========================================================
+  // 保险/再保险
+  // ========================================================
+
+  'EG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Reinsurance',
+    tags: ['reinsurance', 'property_casualty', 'specialty_lines', 'global'],
+  },
+  'AXS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Reinsurance',
+    tags: ['specialty_insurance', 'reinsurance', 'E&S', 'professional_lines'],
+  },
+
+  // ========================================================
+  // 多元化工业
+  // ========================================================
+
+  'CR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Process Industrial',
+    tags: ['aerospace', 'process_flow', 'engineered_materials', 'sensing'],
+  },
+  'ITT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Motion/Flow Components',
+    tags: ['motion_technologies', 'flow_control', 'connectors', 'industrial'],
+  },
+
+  // ========================================================
+  // 草坪/园艺
+  // ========================================================
+
+  'SMG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Lawn/Garden',
+    tags: ['lawn_care', 'garden', 'fertilizer', 'hydroponics'],
+  },
+
+  // ========================================================
+  // 医疗器械/MedTech
+  // ========================================================
+
+  'TMDX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Organ Transport',
+    tags: ['organ_care', 'transplant', 'preservation', 'logistics'],
+  },
+  'IART': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Neurosurgery Devices',
+    tags: ['neurosurgery', 'wound_care', 'regenerative_medicine', 'implants'],
+  },
+  'ATEC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Spine Devices',
+    tags: ['spine_surgery', 'surgical_systems', 'biologics', 'informatics'],
+  },
+
+  // Payments/Fintech - International
+  'PSFE': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Digital Payments',
+    tags: ['payments', 'digital_wallet', 'iGaming', 'e-commerce', 'fintech'],
+  },
+  'PAGS': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Brazil Payments',
+    tags: ['payments', 'POS', 'SMB', 'Brazil', 'fintech'],
+  },
+  'STNE': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'subscription', 'interest_income'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Brazil Fintech',
+    tags: ['payments', 'banking', 'SMB', 'Brazil', 'software'],
+  },
+
+  // Digital Fitness - Consumer
+  'BODY': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Digital Fitness',
+    tags: ['fitness', 'streaming', 'supplements', 'DTC', 'wellness'],
+  },
+
+  // ========================================================
+  // Diversified Industrial/Infrastructure
+  // ========================================================
+
+  'ROPER': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'product_sales', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Diversified Industrial Software',
+    tags: ['industrial_software', 'niche_markets', 'vertical_SaaS', 'M&A', 'cash_compounder'],
+  },
+  'ZWS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Water Management',
+    tags: ['water', 'plumbing', 'infrastructure', 'commercial_building', 'sustainability'],
+  },
+
+  // ========================================================
+  // Healthcare/Biotech (Cell/Gene/Specialty)
+  // ========================================================
+
+  'IOVA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cell Therapy',
+    tags: ['TIL_therapy', 'oncology', 'immunotherapy', 'melanoma', 'biologics'],
+  },
+  'CYTK': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cardiac Therapeutics',
+    tags: ['cardiac_myosin', 'heart_failure', 'HCM', 'small_molecule', 'cardiology'],
+  },
+  'IRON': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Hematology Therapeutics',
+    tags: ['hematology', 'iron_metabolism', 'rare_disease', 'hepcidin', 'anemia'],
+  },
+  'VRNA': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Respiratory Therapeutics',
+    tags: ['respiratory', 'COPD', 'inflammation', 'inhaled_therapy', 'pulmonology'],
+  },
+
+  // ========================================================
+  // AI/Voice Technology
+  // ========================================================
+
+  'SOUN': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Voice AI Platform',
+    tags: ['voice_AI', 'NLP', 'conversational_AI', 'restaurant_tech', 'automotive_AI'],
+  },
+  'BBAI': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'AI Decision Analytics',
+    tags: ['AI_analytics', 'defense', 'intelligence', 'decision_support', 'government'],
+  },
+
+  // ========================================================
+  // Energy Services (Compression/Reservoir)
+  // ========================================================
+
+  'CLB': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Reservoir Description',
+    tags: ['reservoir', 'core_analysis', 'production_enhancement', 'oilfield_services', 'diagnostics'],
+  },
+  'AROC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gas Compression Services',
+    tags: ['natural_gas', 'compression', 'midstream', 'contract_services', 'infrastructure'],
+  },
+  'USAC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Gas Gathering Compression',
+    tags: ['natural_gas', 'gathering', 'compression', 'MLP', 'midstream'],
+  },
 };
 
 // ============================================================

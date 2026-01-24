@@ -3090,6 +3090,59 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     // Data/Analytics
     'EVRI': 'Gaming Technology',                  // Everi Holdings - 博彩金融科技
     'VERX': 'Tax Software',                       // Vertex Inc - 税务合规SaaS
+
+    // ========== 新增21只股票 ==========
+
+    // 债务购买/消费金融
+    'ECPG': 'Debt Purchasing',                    // Encore Capital - 债务购买/催收
+    'PRAA': 'Debt Purchasing',                    // PRA Group - 债务购买/催收
+    'NAVI': 'Student Loan Servicing',             // Navient - 学生贷款服务
+
+    // 数据/分析
+    'VRSK': 'Insurance Analytics',                // Verisk Analytics - 保险/风险分析
+    'DNB': 'Business Data',                       // Dun & Bradstreet - 商业数据/分析
+
+    // 设施/食品服务
+    'ABM': 'Facility Services',                   // ABM Industries - 设施服务/保洁
+    'ARMK': 'Food/Facilities Services',           // Aramark - 食品/设施服务
+
+    // 清洁能源
+    'CWEN': 'Renewable Wind/Solar',               // Clearway Energy - 可再生能源风电/光伏
+
+    // 网络设备
+    'UI': 'Networking Equipment',                 // Ubiquiti - 网络设备/WiFi
+
+    // 媒体/广播
+    'SIRI': 'Satellite Radio',                    // SiriusXM - 卫星广播/流媒体
+    'IHRT': 'Radio/Podcasts',                     // iHeartMedia - 广播/播客
+
+    // 消费品牌
+    'OLPX': 'Premium Hair Care',                  // Olaplex - 高端护发
+    'SG': 'Fast Casual Salad',                    // Sweetgreen - 快休闲沙拉
+
+    // 保险/再保险
+    'EG': 'Reinsurance',                          // Everest Group - 再保险
+    'AXS': 'Specialty Reinsurance',               // Axis Capital - 特种保险/再保险
+
+    // 多元化工业
+    'CR': 'Process Industrial',                   // Crane Company - 航空/过程工业
+    'ITT': 'Motion/Flow Components',              // ITT Inc - 运动/流体控制组件
+
+    // 草坪/园艺
+    'SMG': 'Lawn/Garden',                         // Scotts Miracle-Gro - 草坪/园艺产品
+
+    // 医疗器械/MedTech
+    'TMDX': 'Organ Transport',                    // TransMedics - 器官运输/保存
+    'IART': 'Neurosurgery Devices',               // Integra LifeSciences - 神经外科器械
+    'ATEC': 'Spine Devices',                      // Alphatec - 脊柱手术器械
+
+    // Payments/Fintech - International
+    'PSFE': 'Digital Payments',                   // Paysafe - 数字支付/iGaming
+    'PAGS': 'Brazil Payments',                    // PagSeguro - 巴西支付
+    'STNE': 'Brazil Fintech',                     // StoneCo - 巴西金融科技/支付
+
+    // Digital Fitness
+    'BODY': 'Digital Fitness',                    // Beachbody - 数字健身/订阅
   },
 
   // ============================================================
@@ -6638,6 +6691,165 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Enterprise SaaS',
       'Accounting Services',
       'Fintech',
+    ],
+
+    // ========== 新增21只股票子行业链 ==========
+
+    // 债务购买 → 银行/消费金融(购买不良贷款)
+    'Debt Purchasing': [
+      'Regional Bank',                // 银行出售不良资产
+      'Consumer Finance',             // 消费金融不良贷款
+      'Subprime Consumer Finance',    // 次贷消费金融
+    ],
+
+    // 学生贷款服务 → 教育/金融
+    'Student Loan Servicing': [
+      'For-Profit Education',         // 教育机构学费贷款
+      'Consumer Finance',             // 消费金融同行
+      'Regional Bank',                // 银行贷款服务
+    ],
+
+    // 保险数据分析 → 保险公司
+    'Insurance Analytics': [
+      'P&C Insurance',                // 财产险客户
+      'Specialty Insurance',          // 特种险客户
+      'Reinsurance',                  // 再保险客户
+    ],
+
+    // 商业数据 → 企业信用/金融
+    'Business Data': [
+      'Regional Bank',                // 银行信用决策
+      'P&C Insurance',                // 保险承保分析
+      'Enterprise SaaS',              // 企业软件集成
+    ],
+
+    // 设施服务 → 商业地产
+    'Facility Services': [
+      'Office REIT',                  // 办公楼客户
+      'Industrial REIT',              // 工业设施客户
+      'Retail REIT',                  // 零售物业客户
+    ],
+
+    // 食品/设施服务 → 企业/场馆
+    'Food/Facilities Services': [
+      'Office REIT',                  // 办公楼餐饮
+      'Entertainment Venues',         // 场馆餐饮
+      'Education Services',           // 学校餐饮
+    ],
+
+    // 可再生能源风电/光伏 → 电网/公用事业
+    'Renewable Wind/Solar': [
+      'Regulated Utility',            // 电力购买协议
+      'Independent Power',            // 独立发电商
+      'Industrial REIT',              // 工业设施用电
+    ],
+
+    // 网络设备 → 企业/消费终端
+    'Networking Equipment': [
+      'Cloud Infrastructure',         // 云基础设施网络
+      'Data Center REIT',             // 数据中心网络
+      'Smart Home',                   // 智能家居网络
+    ],
+
+    // 卫星广播 → 汽车/媒体
+    'Satellite Radio': [
+      'Auto OEM',                     // 汽车预装
+      'Content Streaming',            // 流媒体竞争
+      'Digital Advertising',          // 广告市场
+    ],
+
+    // 广播/播客 → 广告/媒体
+    'Radio/Podcasts': [
+      'Digital Advertising',          // 广告竞争
+      'Content Streaming',            // 流媒体竞争
+      'Entertainment',                // 娱乐内容
+    ],
+
+    // 高端护发 → 零售/美容
+    'Premium Hair Care': [
+      'Prestige Beauty',              // 高端美容同行
+      'Specialty Retail',             // 专业零售渠道
+      'E-commerce',                   // 电商DTC渠道
+    ],
+
+    // 快休闲沙拉 → 餐饮/食品
+    'Fast Casual Salad': [
+      'Fast Casual Restaurant',       // 快休闲同行
+      'Food Distribution',            // 食材供应
+      'Commercial Real Estate Services', // 门店选址
+    ],
+
+    // 再保险 → 保险同业(已有'Reinsurance'定义，此处为确认)
+    // 'Reinsurance' already defined above
+
+    // 特种再保险 → 保险公司
+    'Specialty Reinsurance': [
+      'P&C Insurance',                // 财产险分保
+      'Specialty Insurance',          // 特种险分保
+      'Reinsurance',                  // 再保险同行
+    ],
+
+    // 过程工业 → 航空/工业终端
+    'Process Industrial': [
+      'Aerospace',                    // 航空航天客户
+      'Regulated Utility',            // 公用事业流程控制
+      'Specialty Chemicals',          // 化工过程设备
+    ],
+
+    // 运动/流体控制组件 → 工业/航空/汽车
+    'Motion/Flow Components': [
+      'Aerospace',                    // 航空航天组件
+      'Auto - Manufacturers',         // 汽车制动/连接器
+      'Industrial Automation',        // 工业自动化
+    ],
+
+    // 草坪/园艺 → 零售/住房
+    'Lawn/Garden': [
+      'Home Improvement',             // 家居建材渠道
+      'Mass Retail',                  // 大众零售渠道
+      'Homebuilder',                  // 新建住宅配套
+    ],
+
+    // 器官运输 → 医院/移植
+    'Organ Transport': [
+      'Hospital Operator',            // 移植中心
+      'Health Insurance',             // 保险覆盖
+      'Medical Devices',              // 器械配套
+    ],
+
+    // 神经外科器械 → 医院/手术
+    'Neurosurgery Devices': [
+      'Hospital Operator',            // 神经外科
+      'Medical Devices',              // 器械同行
+      'Health Insurance',             // 保险报销
+    ],
+
+    // 脊柱器械 → 医院/手术
+    'Spine Devices': [
+      'Hospital Operator',            // 脊柱外科
+      'Spine Surgery Robotics',       // 脊柱手术机器人
+      'Health Insurance',             // 保险报销
+    ],
+
+    // 巴西支付 → 电商/中小企业
+    'Brazil Payments': [
+      'E-commerce',                   // 巴西电商
+      'Digital Payments',             // 全球数字支付
+      'SMB Banking',                  // 中小企业银行
+    ],
+
+    // 巴西金融科技 → 银行/支付
+    'Brazil Fintech': [
+      'Digital Payments',             // 支付基础设施
+      'SMB Banking',                  // 中小企业金融
+      'E-commerce',                   // 电商平台
+    ],
+
+    // 数字健身 → 消费者健康
+    'Digital Fitness': [
+      'Connected Fitness',            // 智能健身设备
+      'Streaming Media',              // 流媒体内容
+      'DTC Wellness',                 // 直销健康品
     ],
   },
 };
