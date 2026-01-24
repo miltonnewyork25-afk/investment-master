@@ -2131,6 +2131,52 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'POST': 'Food Ingredients',           // Post Holdings - 包装食品
     'FLO': 'Food Ingredients',            // Flowers Foods - 烘焙
     'SFM': 'Grocery',                     // Sprouts Farmers Market - 有机超市
+
+    // ========== 2026-01 第四批 30只 ==========
+
+    // 天然气E&P (Natural Gas E&P)
+    'EQT': 'Natural Gas E&P',             // EQT Corp - 美国最大天然气生产商
+    'RRC': 'Natural Gas E&P',             // Range Resources - 阿巴拉契亚天然气
+    'AR': 'Natural Gas E&P',              // Antero Resources - 阿巴拉契亚天然气/NGL
+    'SWN': 'Natural Gas E&P',             // Southwestern Energy - 天然气
+
+    // Permian E&P
+    'MTDR': 'Shale E&P',                  // Matador Resources - Permian油气
+    'PR': 'Shale E&P',                    // Permian Resources - Permian成长
+    'MGY': 'Shale E&P',                   // Magnolia Oil & Gas - Eagle Ford
+
+    // 特种制药 (Specialty Pharma)
+    'JAZZ': 'Specialty Pharma',           // Jazz Pharmaceuticals - 睡眠/神经
+    'UTHR': 'Specialty Pharma',           // United Therapeutics - 肺动脉高压
+    'NBIX': 'Specialty Pharma',           // Neurocrine Biosciences - 运动障碍
+    'PCVX': 'Emerging Biotech',           // Vaxcyte - 肺炎球菌疫苗
+
+    // 电气/工业设备
+    'HUBB': 'Electrical Equipment',       // Hubbell - 电气设备/电网
+    'FIX': 'E&C Contractor',             // Comfort Systems - 暖通承包
+    'AIT': 'Industrial Distribution',     // Applied Industrial Tech - 工业分销
+    'ALLE': 'Building Products',          // Allegion - 安防锁具
+    'WLK': 'Commodity Chemicals',         // Westlake Chemical - PVC/聚乙烯
+
+    // 特种服务
+    'SCI': 'Death Care',                  // Service Corp Intl - 殡葬服务
+
+    // REITs
+    'IRM': 'Specialty REIT',              // Iron Mountain - 数据中心/档案
+    'LAMR': 'Advertising REIT',           // Lamar Advertising - 户外广告
+    'OUT': 'Advertising REIT',            // Outfront Media - 户外广告
+    'CPT': 'Residential REIT',            // Camden Property - 公寓
+    'AMH': 'Residential REIT',            // American Homes 4 Rent - 独栋租赁
+    'REG': 'Retail REIT',                 // Regency Centers - 超市锚定零售
+    'FR': 'Industrial REIT',              // First Industrial - 物流仓储
+    'PEAK': 'Healthcare REIT',            // Healthpeak - 生命科学/医疗办公
+
+    // 卡车租赁/物流
+    'R': 'Truck Leasing',                 // Ryder System - 卡车租赁/车队管理
+
+    // 特种零售
+    'JWN': 'Department Store',            // Nordstrom - 高端百货
+    'BOOT': 'Specialty Retail',           // Boot Barn - 西部/工装零售
   },
 
   // ============================================================
@@ -3606,6 +3652,40 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'Uranium': [
       'Regulated Utility',       // 核电站燃料
       'Independent Power',       // 核能发电
+    ],
+
+    // ========== 新增子行业链 - 第四批 ==========
+    'Natural Gas E&P': [
+      'Midstream Pipeline',      // 管道运输
+      'LNG Shipping',            // LNG出口
+      'Commodity Chemicals',     // 化工原料
+    ],
+
+    'Specialty Pharma': [
+      'Pharma Distributor',      // 药品分销
+      'Pharmacy Retail',         // 药房零售
+      'Hospital',                // 医院处方
+    ],
+
+    'Death Care': [
+      'Life Insurance',          // 寿险预需计划
+    ],
+
+    'Advertising REIT': [
+      'AdTech DSP',              // 数字广告竞争
+      'Social Platform',         // 品牌广告竞争
+    ],
+
+    'Electrical Equipment': [
+      'Regulated Utility',       // 电力公司采购
+      'E&C Contractor',          // 工程承包安装
+      'Industrial REIT',         // 工业设施用电
+    ],
+
+    'Truck Leasing': [
+      'Truckload',               // 整车运输客户
+      'LTL Trucking',            // 零担运输客户
+      'Express Logistics',       // 快递物流客户
     ],
 
   },

@@ -2962,6 +2962,53 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'POST': 'defensive',  // Post Holdings - 包装食品
   'FLO': 'defensive',   // Flowers Foods - 面包刚需
   'SFM': 'defensive',   // Sprouts - 有机超市
+
+  // ---------- 补充: 第四批30只 ----------
+
+  // 天然气E&P - 高周期性(气价驱动)
+  'EQT': 'late',        // EQT - 美国最大天然气生产商
+  'RRC': 'late',        // Range Resources - 阿巴拉契亚天然气
+  'AR': 'late',         // Antero Resources - 天然气/NGL
+  'SWN': 'late',        // Southwestern Energy - 天然气
+
+  // Permian E&P - 高周期性(油价驱动)
+  'MTDR': 'late',       // Matador Resources - Permian
+  'PR': 'late',         // Permian Resources - Permian成长型
+  'MGY': 'late',        // Magnolia Oil & Gas - Eagle Ford
+
+  // 特种制药 - 相对防御
+  'JAZZ': 'defensive',  // Jazz Pharmaceuticals - 专利药
+  'UTHR': 'defensive',  // United Therapeutics - 肺动脉高压
+  'NBIX': 'defensive',  // Neurocrine - 运动障碍
+  'PCVX': 'early',      // Vaxcyte - 临床阶段(资本市场敏感)
+
+  // 电气/工业 - 中周期
+  'HUBB': 'mid',        // Hubbell - 电网/公用事业capex
+  'FIX': 'mid',         // Comfort Systems - 商业建筑周期
+  'AIT': 'mid',         // Applied Industrial - 工业MRO
+  'ALLE': 'mid',        // Allegion - 商业/住宅建筑
+  'WLK': 'early',       // Westlake Chemical - 化工强周期
+
+  // 特种服务
+  'SCI': 'defensive',   // Service Corp - 殡葬(人口老龄化)
+
+  // REITs - 利率敏感中周期
+  'IRM': 'mid',         // Iron Mountain - 数据中心/档案
+  'LAMR': 'mid',        // Lamar - 户外广告(广告支出周期)
+  'OUT': 'mid',         // Outfront - 户外广告
+  'CPT': 'mid',         // Camden - 公寓(住房周期)
+  'AMH': 'mid',         // American Homes - 独栋租赁
+  'REG': 'mid',         // Regency Centers - 零售REIT
+  'FR': 'mid',          // First Industrial - 工业REIT
+  'PEAK': 'mid',        // Healthpeak - 医疗REIT
+
+  // 卡车租赁
+  'R': 'mid',            // Ryder - 卡车租赁/车队管理
+
+  // 特种零售
+  'JWN': 'early',       // Nordstrom - 高端消费周期
+  'BOOT': 'early',      // Boot Barn - 消费可选
+  'BURL': 'mid',        // Burlington - 折扣零售(相对防御)
 };
 
 // ============================================================
@@ -6273,6 +6320,140 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'SFM': {
     interestRate: -0.1, inflation: 0.1, gdpGrowth: 0.2, unemployment: -0.1,
     consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // ---------- 补充: 第四批30只 ----------
+
+  // 天然气E&P - 天然气价格高敏感
+  'EQT': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.6,
+  },
+  'RRC': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.6,
+  },
+  'AR': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.6,
+  },
+  'SWN': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.6,
+  },
+
+  // Permian E&P - 油价高敏感
+  'MTDR': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.9,
+  },
+  'PR': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.9,
+  },
+  'MGY': {
+    interestRate: -0.2, inflation: 0.3, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.8,
+  },
+
+  // 特种制药 - 低宏观敏感(专利药刚需)
+  'JAZZ': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'UTHR': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'NBIX': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'PCVX': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // 电气/工业设备
+  'HUBB': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'FIX': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'AIT': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'ALLE': {
+    interestRate: -0.3, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'WLK': {
+    interestRate: -0.3, inflation: 0.2, gdpGrowth: 0.6, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.5, dollarIndex: -0.3, oilPrice: 0.3,
+  },
+
+  // 特种服务 - 防御性
+  'SCI': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.0, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // REITs - 利率高敏感
+  'IRM': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'LAMR': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'OUT': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'CPT': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'AMH': {
+    interestRate: -0.5, inflation: 0.2, gdpGrowth: 0.4, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.6, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'REG': {
+    interestRate: -0.4, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+  'FR': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'PEAK': {
+    interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.1, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // 特种零售
+  'JWN': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.4,
+    consumerConfidence: 0.6, housingMarket: 0.2, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+  'BOOT': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+  'BURL': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.4, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // 卡车租赁 - 经济周期敏感
+  'R': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.1, oilPrice: -0.2,
   },
 };
 

@@ -6882,6 +6882,258 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Specialty Grocery',
     tags: ['organic', 'natural', 'fresh', 'health_conscious'],
   },
+
+  // ========================================================
+  // 补充: 30 只重要股票 (2026-01 第四批)
+  // ========================================================
+
+  // ---------- 天然气E&P (Natural Gas E&P) ----------
+  'EQT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Natural Gas E&P',
+    tags: ['appalachian', 'marcellus', 'utica', 'largest_us_natgas'],
+  },
+  'RRC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Natural Gas E&P',
+    tags: ['appalachian', 'marcellus', 'ngl', 'dry_gas'],
+  },
+  'AR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Natural Gas E&P',
+    tags: ['appalachian', 'marcellus', 'utica', 'ngl', 'midstream_integration'],
+  },
+  'SWN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Natural Gas E&P',
+    tags: ['appalachian', 'haynesville', 'dry_gas'],
+  },
+
+  // ---------- Permian E&P ----------
+  'MTDR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['permian', 'delaware_basin', 'oil', 'midstream'],
+  },
+  'PR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['permian', 'delaware_basin', 'oil', 'growth'],
+  },
+  'MGY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Shale E&P',
+    tags: ['giddings', 'eagle_ford', 'austin_chalk', 'low_leverage'],
+  },
+
+  // ---------- Specialty Pharma/Biotech ----------
+  'JAZZ': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Specialty Pharma',
+    tags: ['sleep', 'neuroscience', 'oncology', 'narcolepsy', 'xywav'],
+  },
+  'UTHR': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Specialty Pharma',
+    tags: ['pulmonary_hypertension', 'tyvaso', 'organ_manufacturing', 'rare_disease'],
+  },
+  'NBIX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Specialty Pharma',
+    tags: ['movement_disorders', 'neuroscience', 'ingrezza', 'psychiatry'],
+  },
+  'PCVX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Emerging Biotech',
+    tags: ['vaccines', 'pneumococcal', 'pipeline', 'clinical_stage'],
+  },
+
+  // ---------- Electrical/Industrial Equipment ----------
+  'HUBB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Electrical Equipment',
+    tags: ['utility_solutions', 'electrical_products', 'grid', 'transmission'],
+  },
+  'FIX': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'E&C Contractor',
+    tags: ['hvac', 'mechanical', 'electrical', 'building_services'],
+  },
+  'AIT': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial Distribution',
+    tags: ['bearings', 'power_transmission', 'fluid_power', 'automation'],
+  },
+  'ALLE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Products',
+    tags: ['locks', 'security', 'access_control', 'schlage', 'commercial'],
+  },
+  'WLK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Commodity Chemicals',
+    tags: ['pvc', 'polyethylene', 'chlor_alkali', 'building_products', 'vinyls'],
+  },
+
+  // ---------- Specialty Services ----------
+  'SCI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Death Care',
+    tags: ['funeral', 'cemetery', 'preneed', 'cremation', 'consolidator'],
+  },
+
+  // ---------- REITs ----------
+  'IRM': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty REIT',
+    tags: ['data_center', 'records_management', 'information_destruction', 'digital'],
+  },
+  'LAMR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Advertising REIT',
+    tags: ['outdoor', 'billboard', 'digital_display', 'highway', 'transit'],
+  },
+  'OUT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Advertising REIT',
+    tags: ['outdoor', 'billboard', 'transit', 'digital', 'urban'],
+  },
+  'CPT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Residential REIT',
+    tags: ['apartment', 'sunbelt', 'multifamily', 'class_a'],
+  },
+  'AMH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Residential REIT',
+    tags: ['single_family_rental', 'sunbelt', 'build_to_rent', 'suburban'],
+  },
+  'REG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Retail REIT',
+    tags: ['grocery_anchored', 'neighborhood_center', 'essential_retail'],
+  },
+  'FR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial REIT',
+    tags: ['logistics', 'warehouse', 'infill', 'last_mile', 'coastal'],
+  },
+  'PEAK': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Healthcare REIT',
+    tags: ['life_science', 'medical_office', 'senior_housing', 'lab_space'],
+  },
+
+  // ---------- Fleet Leasing/Logistics ----------
+  'R': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['rental', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Truck Leasing',
+    tags: ['fleet_management', 'truck_leasing', 'logistics', 'maintenance', 'used_trucks'],
+  },
+
+  // ---------- Specialty Retail ----------
+  'JWN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Department Store',
+    tags: ['upscale', 'nordstrom_rack', 'fashion', 'off_price', 'ecommerce'],
+  },
+  'BOOT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Specialty Retail',
+    tags: ['western', 'work_wear', 'boots', 'rural', 'lifestyle'],
+  },
+  'BURL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Off-Price Retail',
+    tags: ['off_price', 'apparel', 'home', 'value', 'treasure_hunt'],
+  },
 };
 
 // ============================================================
