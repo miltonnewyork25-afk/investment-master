@@ -3353,7 +3353,8 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     ],
 
     'OTA': [
-      'Ride-hailing',
+      'Legacy Airline',
+      'Hotel Management',
       'Car Rental',
     ],
 
@@ -4474,11 +4475,6 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'OTA',
       'Hotel Management',
       'Travel Meta',
-    ],
-    'OTA': [
-      'Legacy Airline',
-      'Hotel Management',
-      'Car Rental',
     ],
     'Hotel Management': [
       'Hotel REIT',
