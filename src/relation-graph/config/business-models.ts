@@ -6040,6 +6040,278 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Coatings',
     tags: ['sealants', 'waterproofing', 'roofing', 'rust_oleum', 'specialty'],
   },
+
+  // ========================================================
+  // 补充: 30 只重要 Russell 1000 成分股
+  // ========================================================
+
+  // ---------- 汽车后市场 ----------
+  'CPRT': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'premium_service'],
+    deliveryModel: 'marketplace',
+    customerModel: 'B2B',
+    industrySegment: 'Auto Auction',
+    tags: ['salvage', 'insurance', 'online_auction', 'global'],
+  },
+
+  // ---------- 医药包装/器械 ----------
+  'WST': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Pharma Packaging',
+    tags: ['drug_delivery', 'stoppers', 'seals', 'injectable'],
+  },
+  'STE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Sterilization',
+    tags: ['sterilization', 'infection_prevention', 'surgical'],
+  },
+
+  // ---------- 生命科学工具 ----------
+  'ILMN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Life Sciences Tools',
+    tags: ['genomics', 'sequencing', 'ngs', 'research'],
+  },
+
+  // ---------- 包装 ----------
+  'SEE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Flexible Packaging',
+    tags: ['food_packaging', 'protective', 'cryovac', 'bubble_wrap'],
+  },
+
+  // ---------- 电力设备 ----------
+  'GNRC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2C',
+    industrySegment: 'Power Equipment',
+    tags: ['generators', 'backup_power', 'residential', 'commercial'],
+  },
+
+  // ---------- 特种工业 ----------
+  'IEX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Industrial',
+    tags: ['pumps', 'flow_control', 'metering', 'diversified'],
+  },
+  'RBC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Industrial',
+    tags: ['motion_control', 'bearings', 'conveyors', 'power_transmission'],
+  },
+  'LECO': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Welding Equipment',
+    tags: ['welding', 'cutting', 'brazing', 'industrial'],
+  },
+  'TTC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'hybrid',
+    customerModel: 'B2B',
+    industrySegment: 'Outdoor Equipment',
+    tags: ['mowers', 'irrigation', 'landscaping', 'snow_removal'],
+  },
+
+  // ---------- 科技仪器/测试 ----------
+  'TRMB': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Geospatial Tech',
+    tags: ['gps', 'construction_tech', 'agriculture_tech', 'precision'],
+  },
+  'TDY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Test & Measurement',
+    tags: ['imaging', 'instruments', 'sensors', 'defense_electronics'],
+  },
+  'ZBRA': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise Mobility',
+    tags: ['barcode', 'rfid', 'mobile_computing', 'warehouse'],
+  },
+  'KEYS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Test & Measurement',
+    tags: ['electronic_test', 'rf_test', '5g_test', 'oscilloscope'],
+  },
+  'GRMN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Consumer Electronics',
+    tags: ['gps', 'wearables', 'fitness', 'aviation', 'marine'],
+  },
+
+  // ---------- 半导体设备 ----------
+  'BRKS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Semiconductor Equipment',
+    tags: ['automation', 'vacuum', 'cryogenics', 'contamination_control'],
+  },
+  'ACLS': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Semiconductor Equipment',
+    tags: ['ion_implant', 'doping', 'high_energy', 'sic'],
+  },
+
+  // ---------- 金融数据/基础设施 ----------
+  'FICO': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Financial Data',
+    tags: ['credit_scoring', 'analytics', 'decision_management', 'fraud'],
+  },
+  'BR': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Financial Infrastructure',
+    tags: ['proxy', 'investor_communication', 'trade_processing', 'fintech'],
+  },
+  'RJF': {
+    assetModel: 'hybrid',
+    revenueModels: ['transaction_fee', 'interest_income', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Brokerage',
+    tags: ['wealth_management', 'investment_banking', 'advisory'],
+  },
+  'VIRT': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Market Making',
+    tags: ['hft', 'liquidity', 'electronic_trading', 'etf_market_making'],
+  },
+  'TW': {
+    assetModel: 'platform',
+    revenueModels: ['transaction_fee', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Exchange',
+    tags: ['fixed_income', 'electronic_trading', 'rates', 'credit'],
+  },
+
+  // ---------- 商业信息/SaaS ----------
+  'CSGP': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'advertising'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Commercial Real Estate Data',
+    tags: ['costar', 'loopnet', 'apartments_com', 'property_data'],
+  },
+  'AZPN': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Process Industry Software',
+    tags: ['process_optimization', 'asset_management', 'chemicals', 'energy'],
+  },
+
+  // ---------- IT 服务 ----------
+  'GLOB': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'IT Consulting',
+    tags: ['digital_transformation', 'ai', 'nearshore', 'latin_america'],
+  },
+
+  // ---------- 国防/政府 ----------
+  'BAH': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Defense IT',
+    tags: ['consulting', 'analytics', 'cyber', 'intelligence'],
+  },
+  'LDOS': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Defense IT',
+    tags: ['it_services', 'systems_integration', 'cyber', 'health_it'],
+  },
+  'AXON': {
+    assetModel: 'hybrid',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2G',
+    industrySegment: 'Law Enforcement Tech',
+    tags: ['taser', 'body_camera', 'cloud_evidence', 'public_safety'],
+  },
+
+  // ---------- 金属/材料 ----------
+  'ATI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Specialty Metals',
+    tags: ['titanium', 'nickel_alloy', 'aerospace_alloy', 'jet_engine'],
+  },
+
+  // ---------- 工业分销 ----------
+  'WCC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Industrial Distribution',
+    tags: ['electrical', 'communications', 'utility', 'data_center'],
+  },
 };
 
 // ============================================================

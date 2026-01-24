@@ -2752,6 +2752,66 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'OVV': 'late',       // Ovintiv - 油气晚周期
   'CTRA': 'late',      // Coterra - 油气晚周期
   'RPM': 'mid',        // RPM International - 建筑涂料周期
+
+  // ---------- 补充: 30只新增股票 ----------
+
+  // 汽车后市场
+  'CPRT': 'defensive', // Copart - 保险理赔刚需(事故量稳定)
+
+  // 医药包装/灭菌
+  'WST': 'defensive',  // West Pharmaceutical - 注射剂包装刚需
+  'STE': 'defensive',  // STERIS - 医院灭菌刚需
+
+  // 生命科学工具
+  'ILMN': 'mid',       // Illumina - 基因测序设备capex
+
+  // 包装
+  'SEE': 'mid',        // Sealed Air - 工业/食品包装周期
+
+  // 电力设备
+  'GNRC': 'mid',       // Generac - 住宅建设/极端天气
+
+  // 特种工业
+  'IEX': 'mid',        // IDEX - 工业生产周期
+  'RBC': 'mid',        // Regal Rexnord - 制造业周期
+  'LECO': 'mid',       // Lincoln Electric - 制造业capex周期
+  'TTC': 'mid',        // Toro - 住宅/商用景观
+
+  // 科技仪器/测试
+  'TRMB': 'mid',       // Trimble - 建筑/农业周期
+  'TDY': 'mid',        // Teledyne - 工业/国防仪器
+  'ZBRA': 'mid',       // Zebra Technologies - 企业IT支出
+  'KEYS': 'mid',       // Keysight - 5G/半导体测试capex
+  'GRMN': 'mid',       // Garmin - 消费电子周期
+
+  // 半导体设备
+  'BRKS': 'mid',       // Brooks Automation - 半导体设备周期
+  'ACLS': 'mid',       // Axcelis - 半导体设备周期
+
+  // 金融数据/基础设施
+  'FICO': 'defensive', // Fair Isaac - 信用评分刚需
+  'BR': 'defensive',   // Broadridge - 合规通讯刚需
+  'RJF': 'mid',        // Raymond James - 市场周期
+  'VIRT': 'early',     // Virtu Financial - 波动率受益
+  'TW': 'mid',         // Tradeweb - 债券交易量
+
+  // 商业信息/SaaS
+  'CSGP': 'mid',       // CoStar - 商业地产交易周期
+  'AZPN': 'mid',       // Aspen Technology - 化工/能源capex
+
+  // IT 服务
+  'GLOB': 'mid',       // Globant - 企业IT支出
+
+  // 国防/政府IT
+  'BAH': 'defensive',  // Booz Allen - 政府预算稳定
+  'LDOS': 'defensive', // Leidos - 政府合同稳定
+  'AXON': 'defensive', // Axon - 执法预算刚需
+
+  // 金属/材料
+  'ATI': 'late',       // ATI - 航空/能源晚周期
+
+  // 工业分销
+  'WCC': 'mid',        // WESCO - 建设/工业周期
 };
 
 // ============================================================
@@ -5639,6 +5699,156 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'RPM': {
     interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
     consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // ---------- 补充: 30只新增股票 ----------
+
+  // 汽车后市场
+  'CPRT': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+
+  // 医药包装/灭菌
+  'WST': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'STE': {
+    interestRate: -0.2, inflation: -0.1, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+
+  // 生命科学工具
+  'ILMN': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+
+  // 包装
+  'SEE': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+
+  // 电力设备
+  'GNRC': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: 0.2,
+  },
+
+  // 特种工业
+  'IEX': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.1, dollarIndex: -0.3, oilPrice: 0.1,
+  },
+  'RBC': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'LECO': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+  'TTC': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: -0.1,
+  },
+
+  // 科技仪器/测试
+  'TRMB': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'TDY': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.1,
+  },
+  'ZBRA': {
+    interestRate: -0.4, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.1,
+  },
+  'KEYS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.0,
+  },
+  'GRMN': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.5, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: -0.1,
+  },
+
+  // 半导体设备
+  'BRKS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+  'ACLS': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // 金融数据/基础设施
+  'FICO': {
+    interestRate: -0.1, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.4, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'BR': {
+    interestRate: 0.1, inflation: -0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'RJF': {
+    interestRate: 0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.5, housingMarket: 0.2, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'VIRT': {
+    interestRate: 0.2, inflation: 0.1, gdpGrowth: -0.2, unemployment: 0.2,
+    consumerConfidence: -0.3, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.1,
+  },
+  'TW': {
+    interestRate: 0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // 商业信息/SaaS
+  'CSGP': {
+    interestRate: -0.4, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.3, housingMarket: 0.5, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+  'AZPN': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.4,
+  },
+
+  // IT 服务
+  'GLOB': {
+    interestRate: -0.3, inflation: -0.2, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // 国防/政府IT
+  'BAH': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'LDOS': {
+    interestRate: 0.0, inflation: 0.0, gdpGrowth: 0.1, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: 0.1, oilPrice: 0.0,
+  },
+  'AXON': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.1,
+    consumerConfidence: -0.1, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.0,
+  },
+
+  // 金属/材料
+  'ATI': {
+    interestRate: -0.3, inflation: 0.3, gdpGrowth: 0.5, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.4, oilPrice: 0.2,
+  },
+
+  // 工业分销
+  'WCC': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
+    consumerConfidence: 0.2, housingMarket: 0.3, dollarIndex: -0.2, oilPrice: 0.0,
   },
 };
 

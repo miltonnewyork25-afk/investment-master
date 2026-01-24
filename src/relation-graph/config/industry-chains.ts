@@ -1965,6 +1965,66 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'OVV': 'Shale E&P',                   // Ovintiv - 多盆地
     'CTRA': 'Shale E&P',                  // Coterra - Marcellus/Permian
     'RPM': 'Coatings',                    // RPM International - 特种涂料
+
+    // ========== 补充覆盖 - 30只新增股票 ==========
+
+    // 汽车后市场
+    'CPRT': 'Auto Auction',               // Copart - 在线车辆拍卖/保险理赔
+
+    // 医药包装/灭菌
+    'WST': 'Pharma Packaging',            // West Pharmaceutical - 药物封装
+    'STE': 'Medical Sterilization',       // STERIS - 灭菌/感染控制
+
+    // 生命科学工具
+    'ILMN': 'Life Sciences Tools',        // Illumina - 基因测序
+
+    // 包装
+    'SEE': 'Flexible Packaging',          // Sealed Air - 食品/保护包装
+
+    // 电力设备
+    'GNRC': 'Power Equipment',            // Generac - 备用发电机
+
+    // 特种工业
+    'IEX': 'Specialty Industrial',        // IDEX - 泵/流量控制
+    'RBC': 'Specialty Industrial',        // Regal Rexnord - 运动控制
+    'LECO': 'Welding Equipment',          // Lincoln Electric - 焊接设备
+    'TTC': 'Outdoor Equipment',           // Toro - 园林/灌溉设备
+
+    // 科技仪器/测试
+    'TRMB': 'Geospatial Tech',            // Trimble - 地理空间/建筑科技
+    'TDY': 'Test & Measurement',          // Teledyne - 仪器/成像
+    'ZBRA': 'Enterprise Mobility',        // Zebra Technologies - 条码/RFID
+    'KEYS': 'Test & Measurement',         // Keysight - 电子测试测量
+    'GRMN': 'Consumer Electronics',       // Garmin - GPS/穿戴
+
+    // 半导体设备
+    'BRKS': 'Semiconductor Equipment',    // Brooks Automation - 自动化
+    'ACLS': 'Semiconductor Equipment',    // Axcelis - 离子注入
+
+    // 金融数据/基础设施
+    'FICO': 'Financial Data',             // Fair Isaac - 信用评分
+    'BR': 'Financial Infrastructure',     // Broadridge - 金融基础设施
+    'RJF': 'Brokerage',                   // Raymond James - 财富管理
+    'VIRT': 'Market Making',              // Virtu Financial - 做市商
+    'TW': 'Exchange',                     // Tradeweb - 固收电子交易
+
+    // 商业信息/SaaS
+    'CSGP': 'Commercial Real Estate Data', // CoStar - 商业地产数据
+    'AZPN': 'Process Industry Software',  // Aspen Technology - 流程优化
+
+    // IT 服务
+    'GLOB': 'IT Consulting',              // Globant - 数字化转型
+
+    // 国防/政府IT
+    'BAH': 'Defense IT',                  // Booz Allen Hamilton - 国防咨询
+    'LDOS': 'Defense IT',                 // Leidos - 国防IT服务
+    'AXON': 'Law Enforcement Tech',       // Axon Enterprise - 执法科技
+
+    // 金属/材料
+    'ATI': 'Specialty Metals',            // ATI - 钛/镍合金(航空)
+
+    // 工业分销
+    'WCC': 'Industrial Distribution',     // WESCO International - 电气分销
   },
 
   // ============================================================
