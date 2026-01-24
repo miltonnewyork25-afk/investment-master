@@ -4038,6 +4038,77 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'LILM': 'eVTOL Aircraft',                                   // Lilium - 电动飞行器
     'SWI': 'IT Management Software',                            // SolarWinds - IT管理
     'CRTO': 'Performance Advertising',                          // Criteo - 效果广告
+
+    // ========== 补充69只: Healthcare/Biotech/MedTech subIndustryOverrides ==========
+    'ABCL': 'Antibody Discovery',                             // AbCellera - 抗体发现
+    'ACRS': 'Dermatology Biotech',                            // Aclaris - 皮肤科生物
+    'ADPT': 'Immune Diagnostics',                             // Adaptive Biotech - 免疫诊断
+    'ADVM': 'Gene Therapy',                                   // Adverum - 基因治疗
+    'AFMD': 'Immuno-Oncology',                                // Affimed - 免疫肿瘤
+    'ALDX': 'Ophthalmology Biotech',                          // Aldeyra - 眼科生物
+    'ANGO': 'Vascular Access Devices',                        // AngioDynamics - 血管通路
+    'ANIP': 'Specialty Generics',                             // ANI Pharma - 特种仿制药
+    'ANNX': 'Rare Disease Biotech',                           // Annexon - 罕见病生物
+    'AORT': 'Cardiovascular Devices',                         // Artivion - 心血管器械
+    'APYX': 'Energy-Based Surgical Devices',                  // Apyx Medical - 能量手术
+    'BNR': 'Health IT',                                       // Burning Rock - 健康信息
+    'CABA': 'ADC Biotech',                                    // Cabaletta - ADC生物
+    'CANO': 'Primary Care',                                   // Cano Health - 初级保健
+    'CERS': 'Surgical Sensing',                               // Cerus - 手术感知
+    'CKPT': 'Immuno-Oncology',                                // Checkpoint - 免疫肿瘤
+    'CLOV': 'Medicare Advantage',                             // Clover Health - 医保优势
+    'CLVR': 'Health Data Analytics',                          // Clever Leaves - 健康数据
+    'CNMD': 'Surgical Devices',                               // CONMED - 外科器械
+    'COO': 'Contact Lens & Women Health',                     // CooperCompanies - 隐形眼镜
+    'CRIS': 'Precision Oncology',                             // Curis - 精准肿瘤
+    'CTMX': 'Antibody Biotech',                              // CytomX - 抗体生物
+    'ELEV': 'Obesity Biotech',                                // Elevation Oncology - 肥胖生物
+    'EMBC': 'Vascular Devices',                               // Embecta - 血管器械
+    'EPZM': 'Epigenetics Biotech',                            // Epizyme - 表观遗传
+    'ESTA': 'Aesthetic Devices',                              // Establishment Labs - 医美器械
+    'ICUI': 'Infusion Therapy',                               // ICU Medical - 输液治疗
+    'IGMS': 'Antibody Engineering',                           // IGM Biosciences - 抗体工程
+    'IMCR': 'Immuno-Oncology',                                // Immunocore - 免疫肿瘤
+    'INSM': 'Rare Disease Pharma',                            // Insmed - 罕见病制药
+    'IRWD': 'GI Pharma',                                     // Ironwood Pharma - 消化道
+    'ITGR': 'Surgical Instruments',                           // Integer Holdings - 手术器械
+    'ITOS': 'Immuno-Oncology',                                // iTeos - 免疫肿瘤
+    'LMAT': 'Cardiovascular Devices',                         // LeMaitre - 心血管器械
+    'LUNG': 'Pulmonary Devices',                              // Pulmonx - 肺部器械
+    'LYEL': 'Cell Therapy',                                   // Lyell Immunopharma - 细胞治疗
+    'MDXG': 'Regenerative Medicine',                          // MiMedx - 再生医学
+    'NARI': 'Neurovascular Devices',                          // Inari Medical - 神经血管
+    'NBWR': 'Wound Care Devices',                             // MiMedx Wound - 伤口护理
+    'NEOG': 'Food & Animal Safety',                           // Neogen - 食品/动物安全
+    'NUVA': 'Spine Surgery Devices',                          // NuVasive - 脊柱手术
+    'OCUL': 'Ophthalmology Biotech',                          // Ocular Therapeutix - 眼科
+    'OFIX': 'Orthopedic Devices',                             // Orthofix - 骨科器械
+    'ORIC': 'Oncology Biotech',                               // ORIC Pharma - 肿瘤生物
+    'PEN': 'GI Devices',                                      // Penumbra - 消化道器械
+    'PETQ': 'Veterinary Pharma',                              // PetIQ - 兽药
+    'PLRX': 'ADC Biotech',                                   // Pliant - ADC生物
+    'PPD': 'Clinical Research CRO',                           // PPD - CRO临床研究
+    'PRTA': 'Neurodegeneration Biotech',                      // Prothena - 神经退行
+    'RPTX': 'Precision Oncology',                             // Repare - 精准肿瘤
+    'RVNC': 'Medical Aesthetics',                             // Revance - 医美注射
+    'SANA': 'Cell Therapy',                                   // Sana Biotech - 细胞治疗
+    'SENS': 'CGM Devices',                                    // Senseonics - 连续血糖
+    'SIBN': 'Spine Surgery Devices',                          // SI-BONE - 脊柱器械
+    'SILK': 'Robotic Surgery',                                // Silk Road Medical - 机器人手术
+    'SPNE': 'Spine Surgery Devices',                          // SeaSpine - 脊柱器械
+    'SRRK': 'Neuroscience Biotech',                           // Scholar Rock - 神经科学
+    'STAA': 'Ophthalmic Devices',                             // STAAR Surgical - 眼科器械
+    'STVN': 'Radiotherapy Devices',                           // Stevanato - 放疗器械
+    'SUPN': 'CNS Pharma',                                    // Supernus - CNS制药
+    'SWAV': 'Cardiovascular Devices',                         // ShockWave - 心血管器械
+    'TALK': 'Digital Mental Health',                          // Talkspace - 数字心理
+    'TCRR': 'TCR Therapy',                                   // TCR2 Therapeutics - TCR疗法
+    'TCRT': 'TCR Therapy',                                   // Alaunos - TCR疗法
+    'TMCI': 'Robotic Surgery',                                // TransMedics - 机器人手术
+    'TRIL': 'Immuno-Oncology',                                // Trillium - 免疫肿瘤
+    'TYRA': 'Precision Oncology',                             // Tyra Biosciences - 精准肿瘤
+    'VINC': 'Gene Therapy',                                   // Vincerx - 基因治疗
+    'VTYX': 'Autoimmune Biotech',                             // Ventyx - 自身免疫
   },
 
   // ============================================================
