@@ -3820,6 +3820,36 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['animal_welfare', 'quality', 'transparency'],
     channels: ['grocery', 'natural_store', 'online'],
   },
+
+  // ========== 公用事业 (Utilities - B2B2C) ==========
+  'PCG': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['essential_service', 'home_energy'],
+    valueProps: ['reliability', 'safety', 'clean_energy'],
+    channels: ['direct_service', 'online'],
+  },
+  'EIX': {
+    demographics: { ageGroup: 'all', incomeLevel: 'all', gender: 'all' },
+    occasions: ['essential_service', 'home_energy'],
+    valueProps: ['reliability', 'clean_energy', 'affordability'],
+    channels: ['direct_service', 'online'],
+  },
+
+  // ========== 电信宽带 (Fiber Broadband - B2C) ==========
+  'FYBR': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['internet_service', 'broadband'],
+    valueProps: ['fiber_speed', 'reliability', 'value'],
+    channels: ['online', 'phone', 'retail'],
+  },
+
+  // ========== 大麻/饮料 (Cannabis/Beverage - B2C) ==========
+  'TLRY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['recreation', 'wellness'],
+    valueProps: ['quality', 'brand_variety', 'craft'],
+    channels: ['dispensary', 'retail'],
+  },
 };
 
 // ============================================================
@@ -5719,6 +5749,61 @@ export const CYCLE_POSITIONS: Record<string, CyclePosition> = {
   'PEB': 'mid',               // Pebblebrook Hotel - 生活方式酒店REIT(中周期)
   'RHP': 'mid',               // Ryman Hospitality - 娱乐场馆REIT(中周期)
   'APLE': 'mid',              // Apple Hospitality REIT - 精选服务酒店REIT(中周期)
+
+  // Power/Energy (mid cycle)
+  'GEV': 'mid',               // GE Vernova - 电力设备/电网(中周期)
+  'TLN': 'mid',               // Talen Energy - 核电/发电(中周期)
+
+  // Utilities (defensive)
+  'PCG': 'defensive',         // PG&E Corp - 受管制公用事业(防御)
+  'EIX': 'defensive',         // Edison International - 受管制公用事业(防御)
+
+  // Telecom/Networking
+  'FYBR': 'defensive',        // Frontier Communications - 光纤宽带(防御)
+  'BDC': 'mid',               // Belden Inc - 网络基础设施(中周期)
+
+  // Technology
+  'AI': 'early',              // C3.ai - 企业AI平台(早周期)
+  'PURE': 'mid',              // Pure Storage - 全闪存(中周期)
+
+  // Healthcare (mid cycle)
+  'GMED': 'mid',              // Globus Medical - 脊柱手术机器人(中周期)
+  'MMSI': 'mid',              // Merit Medical - 介入医疗器械(中周期)
+
+  // Mobility/Industrial (mid cycle)
+  'VNT': 'mid',               // Vontier Corp - 出行科技/燃油(中周期)
+
+  // Cannabis (early cycle)
+  'TLRY': 'early',            // Tilray Brands - 大麻/精酿啤酒(早周期)
+
+  // Business Services (defensive)
+  'G': 'defensive',           // Genpact - 数字运营/BPO(防御)
+
+  // ========== 新增15只股票 (2026-01 batch) ==========
+
+  // Large-cap gap fills
+  'RMD': 'mid',               // ResMed - 医疗设备CPAP/呼吸机(中周期)
+  'ARGX': 'mid',              // argenx - FcRn抗体生物科技(中周期)
+  'WCN': 'defensive',         // Waste Connections - 废物管理(防御型)
+  'CRH': 'mid',               // CRH plc - 水泥/建材(中周期)
+  'CPNG': 'mid',              // Coupang - 韩国电商(中周期)
+  'WMG': 'defensive',         // Warner Music - 音乐厂牌(防御型)
+  'MOG.A': 'mid',             // Moog Inc - 航空航天组件(中周期)
+
+  // Russell 2000 small-caps (healthcare)
+  'FLGT': 'defensive',        // Fulgent Genetics - 基因检测(防御型)
+
+  // Russell 2000 small-caps (tech/software)
+  'ALTR': 'mid',              // Altair Engineering - 仿真软件(中周期)
+  'QTWO': 'mid',              // Q2 Holdings - 银行SaaS(中周期)
+
+  // Russell 2000 small-caps (industrials/materials)
+  'TILE': 'mid',              // Interface - 模块地板(中周期)
+
+  // Russell 2000 small-caps (consumer/financial)
+  'DTC': 'early',             // Solo Brands - DTC户外品牌(早周期)
+  'TASK': 'mid',              // TaskUs - BPO外包(中周期)
+  'COOP': 'mid',              // Mr. Cooper - 抵押贷款服务(中周期)
 };
 
 // ============================================================
@@ -11755,6 +11840,82 @@ export const MACRO_SENSITIVITY: Record<string, MacroSensitivity> = {
   'APLE': {
     interestRate: -0.5, inflation: 0.1, gdpGrowth: 0.5, unemployment: -0.3,
     consumerConfidence: 0.5, housingMarket: 0.1, dollarIndex: -0.2, oilPrice: -0.2,
+  },
+
+  // Power Equipment
+  'GEV': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.3, oilPrice: 0.2,
+  },
+
+  // Nuclear/Power Generation
+  'TLN': {
+    interestRate: -0.3, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.1, oilPrice: 0.1,
+  },
+
+  // Regulated Utility
+  'PCG': {
+    interestRate: 0.6, inflation: -0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+  'EIX': {
+    interestRate: 0.6, inflation: -0.2, gdpGrowth: 0.1, unemployment: -0.1,
+    consumerConfidence: 0.0, housingMarket: 0.1, dollarIndex: 0.0, oilPrice: -0.1,
+  },
+
+  // Fiber Broadband
+  'FYBR': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.2, housingMarket: 0.2, dollarIndex: 0.0, oilPrice: 0.0,
+  },
+
+  // Networking Infrastructure
+  'BDC': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.4, unemployment: -0.2,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Enterprise AI
+  'AI': {
+    interestRate: -0.4, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // All-Flash Storage
+  'PURE': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.4, unemployment: -0.1,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Surgical Robotics
+  'GMED': {
+    interestRate: -0.2, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Interventional Medical Devices
+  'MMSI': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.2, unemployment: 0.0,
+    consumerConfidence: 0.0, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // Mobility Technology
+  'VNT': {
+    interestRate: -0.2, inflation: 0.1, gdpGrowth: 0.3, unemployment: -0.2,
+    consumerConfidence: 0.2, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.2,
+  },
+
+  // Cannabis
+  'TLRY': {
+    interestRate: -0.3, inflation: -0.1, gdpGrowth: 0.2, unemployment: -0.1,
+    consumerConfidence: 0.3, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
+  },
+
+  // BPO/Digital Operations
+  'G': {
+    interestRate: -0.1, inflation: 0.0, gdpGrowth: 0.3, unemployment: -0.3,
+    consumerConfidence: 0.1, housingMarket: 0.0, dollarIndex: -0.2, oilPrice: 0.0,
   },
 };
 

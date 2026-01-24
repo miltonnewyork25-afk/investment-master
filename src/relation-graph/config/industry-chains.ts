@@ -2977,6 +2977,35 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
     'PEB': 'Lifestyle Hotel',                  // Pebblebrook Hotel - 生活方式酒店REIT
     'RHP': 'Entertainment Venue REIT',         // Ryman Hospitality - 娱乐场馆REIT
     'APLE': 'Select-Service Hotel',            // Apple Hospitality REIT - 精选服务酒店REIT
+
+    // Power/Energy
+    'GEV': 'Power Equipment/Grid',             // GE Vernova - 电力设备/电网解决方案
+    'TLN': 'Nuclear Power Generation',         // Talen Energy - 核电/发电
+
+    // Utilities
+    'PCG': 'Regulated Utility',                // PG&E Corp - 受管制公用事业
+    'EIX': 'Regulated Utility',                // Edison International - 受管制公用事业
+
+    // Telecom/Networking
+    'FYBR': 'Fiber Broadband',                 // Frontier Communications - 光纤宽带
+    'BDC': 'Networking Infrastructure',        // Belden Inc - 网络基础设施
+
+    // Technology
+    'AI': 'Enterprise AI Platform',            // C3.ai - 企业AI平台
+    'PURE': 'All-Flash Storage',               // Pure Storage - 全闪存数据存储
+
+    // Healthcare
+    'GMED': 'Spine Surgery Robotics',          // Globus Medical - 脊柱手术机器人
+    'MMSI': 'Interventional Devices',          // Merit Medical - 介入医疗器械
+
+    // Mobility/Industrial
+    'VNT': 'Mobility Technology',              // Vontier Corp - 出行科技/燃油
+
+    // Cannabis/Beverage
+    'TLRY': 'Cannabis/Craft Beer',             // Tilray Brands - 大麻/精酿啤酒
+
+    // Business Services
+    'G': 'Digital Operations',                 // Genpact - 数字运营/BPO
   },
 
   // ============================================================
@@ -6249,6 +6278,73 @@ export const INDUSTRY_CHAIN_CONFIG: IndustryChainConfig = {
       'Lifestyle Hotel',              // 住宿需求
       'Entertainment Venues',         // 娱乐同业
       'Pro Sports',                   // 活动内容
+    ],
+
+    // ========== 电力/能源产业链 ==========
+    // 电力设备 → 发电/公用事业
+    'Power Equipment/Grid': [
+      'Regulated Utility',            // 电网设备客户
+      'Independent Power',            // 发电设备客户
+      'Nuclear Power Generation',     // 核电设备
+    ],
+
+    // 核电发电 → 公用事业/数据中心
+    'Nuclear Power Generation': [
+      'Regulated Utility',            // 电力供应
+      'Independent Power',            // 电力批发
+    ],
+
+    // ========== 电信/网络产业链 ==========
+    // 光纤宽带 → 消费者/企业
+    'Fiber Broadband': [
+      'Cable/Broadband',              // 同业竞争
+      'Networking Infrastructure',    // 网络设备供应
+    ],
+
+    // ========== 技术产业链 ==========
+    // 企业AI平台 → 企业客户
+    'Enterprise AI Platform': [
+      'Enterprise Software',          // 企业软件协同
+      'Cloud Infrastructure',         // 云平台依赖
+    ],
+
+    // 全闪存存储 → 数据中心/企业
+    'All-Flash Storage': [
+      'Server Hardware',              // 服务器配套
+      'Data Center REIT',             // 数据中心客户
+      'Cloud Infrastructure',         // 云存储
+    ],
+
+    // ========== 医疗产业链 ==========
+    // 脊柱手术机器人 → 医院/器械
+    'Spine Surgery Robotics': [
+      'Medical Devices',              // 器械同行
+      'Surgical Robotics',            // 手术机器人同行
+    ],
+
+    // 介入医疗器械 → 医院/手术
+    'Interventional Devices': [
+      'Medical Devices',              // 器械同行
+    ],
+
+    // ========== 出行科技产业链 ==========
+    // 出行科技 → 能源/车队
+    'Mobility Technology': [
+      'Gas Utility',                  // 燃油分销
+      'EV Charging',                  // 充电设备
+    ],
+
+    // ========== 大麻/饮料产业链 ==========
+    // 大麻/精酿 → 消费
+    'Cannabis/Craft Beer': [
+      'Craft Brewery',                // 精酿同行
+    ],
+
+    // ========== 商业服务产业链 ==========
+    // 数字运营 → 企业客户
+    'Digital Operations': [
+      'IT Solutions',                 // IT服务同行
+      'CX Business Services',        // CX服务同行
     ],
   },
 };

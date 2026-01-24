@@ -12115,6 +12115,376 @@ export const BUSINESS_MODEL_PROFILES: Record<string, BusinessModelProfile> = {
     industrySegment: 'Hotel REIT/Select-Service',
     tags: ['hotel_reit', 'select_service', 'upscale_select', 'diversified'],
   },
+
+  // ========================================================
+  // 电力/能源 (Power/Energy)
+  // ========================================================
+
+  'GEV': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Power Equipment/Grid',
+    tags: ['power_equipment', 'grid_solutions', 'gas_turbines', 'electrification'],
+  },
+  'TLN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Nuclear Power Generation',
+    tags: ['nuclear', 'power_generation', 'baseload', 'data_center'],
+  },
+  'PCG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'gas', 'california', 'regulated', 'wildfire_risk'],
+  },
+
+  // ========================================================
+  // 公用事业 (Utilities)
+  // ========================================================
+
+  'EIX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Regulated Utility',
+    tags: ['electric', 'california', 'regulated', 'clean_energy', 'transmission'],
+  },
+
+  // ========================================================
+  // 电信/网络 (Telecom/Networking)
+  // ========================================================
+
+  'FYBR': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Fiber Broadband',
+    tags: ['fiber', 'broadband', 'internet', 'residential', 'ftth'],
+  },
+  'BDC': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Networking Infrastructure',
+    tags: ['networking', 'cable', 'connectivity', 'industrial', 'enterprise'],
+  },
+
+  // ========================================================
+  // 技术 (Technology)
+  // ========================================================
+
+  'AI': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Enterprise AI Platform',
+    tags: ['enterprise_ai', 'platform', 'predictive_analytics', 'digital_transformation'],
+  },
+  'PURE': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'All-Flash Storage',
+    tags: ['flash_storage', 'data_storage', 'evergreen', 'as_a_service'],
+  },
+
+  // ========================================================
+  // 医疗 (Healthcare)
+  // ========================================================
+
+  'GMED': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Spine Surgery Robotics',
+    tags: ['spine', 'surgical_robotics', 'musculoskeletal', 'navigation'],
+  },
+  'MMSI': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Interventional Medical Devices',
+    tags: ['interventional', 'cardiology', 'endoscopy', 'consumables'],
+  },
+
+  // ========================================================
+  // 出行/工业 (Mobility/Industrial)
+  // ========================================================
+
+  'VNT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Mobility Technology',
+    tags: ['fuel_dispensing', 'telematics', 'fleet', 'ev_charging'],
+  },
+
+  // ========================================================
+  // 大麻/饮料 (Cannabis/Beverage)
+  // ========================================================
+
+  'TLRY': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Cannabis/Craft Beer',
+    tags: ['cannabis', 'craft_beer', 'beverage', 'wellness', 'international'],
+  },
+
+  // ========================================================
+  // 商业服务 (Business Services)
+  // ========================================================
+
+  'G': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Digital Operations/BPO',
+    tags: ['digital_operations', 'bpo', 'analytics', 'process_transformation'],
+  },
+
+  // ========================================================
+  // 新增15只股票 (2026-01 batch)
+  // ========================================================
+
+  // Large-cap gap fills
+  'RMD': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales', 'consumables'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Medical Devices',
+    tags: ['CPAP', 'ventilators', 'sleep_apnea', 'respiratory', 'connected_health'],
+  },
+  'ARGX': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Biotech',
+    tags: ['FcRn_antibodies', 'autoimmune', 'rare_disease', 'immunology'],
+  },
+  'WCN': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Waste Management',
+    tags: ['waste_collection', 'landfill', 'recycling', 'environmental_services'],
+  },
+  'CRH': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Building Materials',
+    tags: ['cement', 'aggregates', 'infrastructure', 'construction'],
+  },
+  'CPNG': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['transaction_fee', 'product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'E-commerce',
+    tags: ['korean_ecommerce', 'rocket_delivery', 'grocery', 'fulfillment'],
+  },
+  'WMG': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing', 'subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Music',
+    tags: ['music_labels', 'publishing', 'streaming', 'artist_services'],
+  },
+  'MOG.A': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Aerospace Components',
+    tags: ['flight_controls', 'actuators', 'defense', 'space'],
+  },
+
+  // Russell 2000 small-caps (healthcare)
+  'GMED': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Surgical Robotics',
+    tags: ['spine_surgery', 'robotics', 'musculoskeletal', 'navigation'],
+  },
+  'FLGT': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Genetic Testing',
+    tags: ['genomics', 'diagnostics', 'oncology', 'pharma_services'],
+  },
+
+  // Russell 2000 small-caps (tech/software)
+  'ALTR': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription', 'licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Simulation Software',
+    tags: ['CAE', 'HPC', 'engineering_simulation', 'digital_twin'],
+  },
+  'QTWO': {
+    assetModel: 'asset_light',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Banking SaaS',
+    tags: ['digital_banking', 'credit_unions', 'fintech_platform', 'community_banks'],
+  },
+
+  // Russell 2000 small-caps (industrials/materials)
+  'TILE': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B2C',
+    industrySegment: 'Flooring',
+    tags: ['modular_flooring', 'carpet_tile', 'sustainability', 'commercial'],
+  },
+
+  // Russell 2000 small-caps (consumer/financial)
+  'DTC': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'DTC Brands',
+    tags: ['outdoor', 'direct_to_consumer', 'solo_stove', 'lifestyle'],
+  },
+  'TASK': {
+    assetModel: 'asset_light',
+    revenueModels: ['premium_service'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Business Process Outsourcing',
+    tags: ['BPO', 'content_moderation', 'AI_services', 'digital_CX'],
+  },
+  'COOP': {
+    assetModel: 'asset_light',
+    revenueModels: ['transaction_fee'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Mortgage Servicing',
+    tags: ['mortgage', 'loan_servicing', 'refinancing', 'home_lending'],
+  },
+
+  // ========================================================
+  // Russell 2000 Small-Caps Batch
+  // ========================================================
+
+  // ---------- Biotech/Pharma Small-Caps ----------
+  'ARQT': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Immuno-Oncology',
+    tags: ['immuno_oncology', 'anti_tigit', 'checkpoint', 'bispecific'],
+  },
+  'FATE': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Cell Therapy',
+    tags: ['cell_therapy', 'ipsc', 'nk_cell', 'off_the_shelf'],
+  },
+
+  // ---------- Semiconductor Small-Caps ----------
+  'INDI': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Automotive Chips',
+    tags: ['automotive', 'adas', 'lidar', 'edge_computing'],
+  },
+  'SLAB': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'IoT Chips',
+    tags: ['iot', 'wireless', 'zigbee', 'bluetooth', 'matter'],
+  },
+  'AOSL': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Power Semiconductor',
+    tags: ['power_mosfet', 'trench', 'computing', 'consumer'],
+  },
+
+  // ---------- Specialty Industrial ----------
+  'WAB': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2B',
+    industrySegment: 'Rail Equipment',
+    tags: ['locomotive', 'freight', 'transit', 'digital_electronics'],
+  },
+  'SWX': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Gas Utility',
+    tags: ['natural_gas', 'distribution', 'regulated', 'southwest'],
+  },
+
+  // ---------- Specialty Retail/Consumer ----------
+  'PLBY': {
+    assetModel: 'asset_light',
+    revenueModels: ['licensing'],
+    deliveryModel: 'franchise',
+    customerModel: 'B2C',
+    industrySegment: 'Lifestyle Brands',
+    tags: ['brand_licensing', 'lifestyle', 'apparel', 'digital_media'],
+  },
+  'RENT': {
+    assetModel: 'asset_heavy',
+    revenueModels: ['subscription'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Fashion Rental',
+    tags: ['rental', 'fashion', 'subscription', 'circular_economy'],
+  },
+  'BIRD': {
+    assetModel: 'asset_light',
+    revenueModels: ['product_sales'],
+    deliveryModel: 'self_operated',
+    customerModel: 'B2C',
+    industrySegment: 'Sustainable Footwear',
+    tags: ['sustainable', 'dtc', 'footwear', 'eco_friendly'],
+  },
 };
 
 // ============================================================
