@@ -1,0 +1,269 @@
+{
+  "timestamp": "20260124_083918",
+  "overall_accuracy": 90.2,
+  "total_points": 164,
+  "all_pass": false,
+  "results": {
+    "AAPL": {
+      "name": "Apple Inc.",
+      "accuracy": 100.0,
+      "correct": 14,
+      "total": 14,
+      "errors": [],
+      "pass": true
+    },
+    "META": {
+      "name": "Meta Platforms",
+      "accuracy": 100.0,
+      "correct": 12,
+      "total": 12,
+      "errors": [],
+      "pass": true
+    },
+    "NVDA": {
+      "name": "NVIDIA Corporation",
+      "accuracy": 100.0,
+      "correct": 14,
+      "total": 14,
+      "errors": [],
+      "pass": true
+    },
+    "MSFT": {
+      "name": "Microsoft Corporation",
+      "accuracy": 100.0,
+      "correct": 13,
+      "total": 13,
+      "errors": [],
+      "pass": true
+    },
+    "AMZN": {
+      "name": "Amazon.com",
+      "accuracy": 100.0,
+      "correct": 11,
+      "total": 11,
+      "errors": [],
+      "pass": true
+    },
+    "GOOGL": {
+      "name": "Alphabet Inc.",
+      "accuracy": 100.0,
+      "correct": 11,
+      "total": 11,
+      "errors": [],
+      "pass": true
+    },
+    "TSLA": {
+      "name": "Tesla Inc.",
+      "accuracy": 100.0,
+      "correct": 11,
+      "total": 11,
+      "errors": [],
+      "pass": true
+    },
+    "CRM": {
+      "name": "Salesforce Inc.",
+      "accuracy": 100.0,
+      "correct": 9,
+      "total": 9,
+      "errors": [],
+      "pass": true
+    },
+    "NFLX": {
+      "name": "Netflix Inc.",
+      "accuracy": 78.6,
+      "correct": 11,
+      "total": 14,
+      "errors": [
+        {
+          "date": "2018-07",
+          "score": 50.6,
+          "signal": "neutral",
+          "actual": "down",
+          "rev_growth": 40,
+          "ps": 10,
+          "product_cycle": "peak"
+        },
+        {
+          "date": "2018-12",
+          "score": 14.6,
+          "signal": "sell",
+          "actual": "up",
+          "rev_growth": 35,
+          "ps": 7.5,
+          "product_cycle": "decelerating"
+        },
+        {
+          "date": "2019-07",
+          "score": 2.1,
+          "signal": "sell",
+          "actual": "sideways",
+          "rev_growth": 26,
+          "ps": 8,
+          "product_cycle": "decelerating"
+        }
+      ],
+      "pass": false
+    },
+    "AMD": {
+      "name": "Advanced Micro Devices",
+      "accuracy": 75.0,
+      "correct": 9,
+      "total": 12,
+      "errors": [
+        {
+          "date": "2016-01",
+          "score": 14.0,
+          "signal": "sell",
+          "actual": "up",
+          "rev_growth": -28,
+          "ps": 0.8,
+          "product_cycle": "inflection"
+        },
+        {
+          "date": "2021-11",
+          "score": 66.0,
+          "signal": "buy",
+          "actual": "down",
+          "rev_growth": 68,
+          "ps": 12,
+          "product_cycle": "peak"
+        },
+        {
+          "date": "2022-06",
+          "score": 46.0,
+          "signal": "neutral",
+          "actual": "down",
+          "rev_growth": 44,
+          "ps": 5.0,
+          "product_cycle": "decelerating"
+        }
+      ],
+      "pass": false
+    },
+    "INTC": {
+      "name": "Intel Corporation",
+      "accuracy": 60.0,
+      "correct": 6,
+      "total": 10,
+      "errors": [
+        {
+          "date": "2022-10",
+          "score": 0,
+          "signal": "sell",
+          "actual": "up",
+          "rev_growth": -20,
+          "ps": 1.5,
+          "product_cycle": "declining"
+        },
+        {
+          "date": "2023-06",
+          "score": 28.1,
+          "signal": "sell",
+          "actual": "up",
+          "rev_growth": -14,
+          "ps": 2.5,
+          "product_cycle": "recovery"
+        },
+        {
+          "date": "2023-12",
+          "score": 40.3,
+          "signal": "watch",
+          "actual": "down",
+          "rev_growth": -3,
+          "ps": 3.5,
+          "product_cycle": "expansion"
+        },
+        {
+          "date": "2024-08",
+          "score": 0,
+          "signal": "sell",
+          "actual": "sideways",
+          "rev_growth": 0,
+          "ps": 1.5,
+          "product_cycle": "declining"
+        }
+      ],
+      "pass": false
+    },
+    "PYPL": {
+      "name": "PayPal Holdings",
+      "accuracy": 100.0,
+      "correct": 10,
+      "total": 10,
+      "errors": [],
+      "pass": true
+    },
+    "SHOP": {
+      "name": "Shopify Inc.",
+      "accuracy": 91.7,
+      "correct": 11,
+      "total": 12,
+      "errors": [
+        {
+          "date": "2020-10",
+          "score": 20.5,
+          "signal": "sell",
+          "actual": "up",
+          "rev_growth": 86,
+          "ps": 50,
+          "product_cycle": "peak"
+        }
+      ],
+      "pass": false
+    },
+    "UBER": {
+      "name": "Uber Technologies",
+      "accuracy": 54.5,
+      "correct": 6,
+      "total": 11,
+      "errors": [
+        {
+          "date": "2019-06",
+          "score": 39.9,
+          "signal": "watch",
+          "actual": "down",
+          "rev_growth": 20,
+          "ps": 4.5,
+          "product_cycle": "expansion"
+        },
+        {
+          "date": "2019-12",
+          "score": 61.9,
+          "signal": "neutral",
+          "actual": "down",
+          "rev_growth": 26,
+          "ps": 4.0,
+          "product_cycle": "expansion"
+        },
+        {
+          "date": "2020-12",
+          "score": 28.9,
+          "signal": "sell",
+          "actual": "up",
+          "rev_growth": -14,
+          "ps": 8.0,
+          "product_cycle": "recovery"
+        },
+        {
+          "date": "2021-02",
+          "score": 79.4,
+          "signal": "buy",
+          "actual": "down",
+          "rev_growth": 57,
+          "ps": 9.0,
+          "product_cycle": "expansion"
+        },
+        {
+          "date": "2022-02",
+          "score": 86.9,
+          "signal": "strong_buy",
+          "actual": "down",
+          "rev_growth": 83,
+          "ps": 4.5,
+          "product_cycle": "expansion"
+        }
+      ],
+      "pass": false
+    }
+  }
+}
