@@ -766,6 +766,50 @@ export const CUSTOMER_PROFILES: Record<string, CustomerProfile> = {
     valueProps: ['access', 'proximity', 'community', 'acute_care'],
     channels: ['direct'],
   },
+
+  // ========== 大型零售 - 补充 (Mass Retail) ==========
+  'DG': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['convenience', 'household', 'snacks', 'quick-trip'],
+    valueProps: ['value', 'proximity', 'convenience', 'affordability'],
+    channels: ['retail'],
+  },
+  'DLTR': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['household', 'party', 'snacks', 'bargain'],
+    valueProps: ['value', 'treasure_hunt', 'affordability'],
+    channels: ['retail'],
+  },
+
+  // ========== 快餐/餐饮 - 补充 ==========
+  'YUM': {
+    demographics: { ageGroup: 'all', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['quick-meal', 'drive-thru', 'convenience', 'snack'],
+    valueProps: ['value', 'convenience', 'variety', 'speed'],
+    channels: ['retail'],
+  },
+
+  // ========== 电商平台 - 补充 ==========
+  'SHOP': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['small-business', 'online-shopping', 'direct-brand', 'entrepreneurship'],
+    valueProps: ['simplicity', 'tools', 'independence', 'growth'],
+    channels: ['online'],
+  },
+
+  // ========== 运动/户外 - 补充 ==========
+  'ADDYY': {
+    demographics: { ageGroup: 'millennial', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['sports', 'athleisure', 'fitness', 'casual', 'streetwear'],
+    valueProps: ['brand', 'performance', 'style', 'collaboration'],
+    channels: ['retail', 'online', 'direct'],
+  },
+  'FL': {
+    demographics: { ageGroup: 'gen_z', incomeLevel: 'mass', gender: 'all' },
+    occasions: ['sneakers', 'streetwear', 'sports', 'fashion'],
+    valueProps: ['selection', 'brands', 'culture', 'exclusives'],
+    channels: ['retail', 'online'],
+  },
 };
 
 // ============================================================
