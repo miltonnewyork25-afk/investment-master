@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-01-24T11:40:41.014Z",
+  "version": "1.0.0",
+  "metrics": {
+    "nodes": 2004,
+    "edges": 120241,
+    "density": 0.05991063305241738,
+    "avgDegree": 120.00099800399201,
+    "maxDegree": 809,
+    "medianDegree": 105,
+    "minDegree": 1,
+    "isolatedNodes": 6,
+    "edgesByType": {
+      "downstream": 28672,
+      "upstream": 28672,
+      "business_model_peer": 3733,
+      "business_model_variant": 1889,
+      "customer_overlap": 369,
+      "cycle_sync": 19118,
+      "macro_correlated": 32832,
+      "macro_inverse": 4095,
+      "cross_chain": 861
+    }
+  },
+  "coverage": {
+    "industryChains": 2004,
+    "businessModels": 2004,
+    "cyclePositions": 2004,
+    "macroSensitivity": 2004,
+    "total": 2004,
+    "completeness": 1
+  },
+  "spotChecks": {
+    "AAPL": {
+      "totalEdges": 220,
+      "types": 8
+    },
+    "NVDA": {
+      "totalEdges": 272,
+      "types": 7
+    },
+    "TSLA": {
+      "totalEdges": 127,
+      "types": 9
+    },
+    "GOOGL": {
+      "totalEdges": 425,
+      "types": 8
+    },
+    "LRCX": {
+      "totalEdges": 258,
+      "types": 7
+    },
+    "NLY": {
+      "totalEdges": 5,
+      "types": 3
+    },
+    "WM": {
+      "totalEdges": 47,
+      "types": 4
+    },
+    "UNH": {
+      "totalEdges": 201,
+      "types": 5
+    }
+  }
+}
