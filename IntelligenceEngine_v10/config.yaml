@@ -1,0 +1,191 @@
+# IntelligenceEngine v10 全局配置文件
+# 可复用到任何公司 - 只需修改company section
+
+company:
+  name: Tesla
+  ticker: TSLA
+  cik: "0001318605"
+  industry: automotive
+  competitors:
+    - GM
+    - F
+    - RIVN
+    - LCID
+    - NIO
+    - BYD
+
+# 6大引擎配置
+engines:
+  sec_monitor:
+    enabled: true
+    schedule: "0 18 * * *"  # 每天18:00 UTC
+    check_forms:
+      - "8-K"
+      - "10-Q"
+      - "10-K"
+      - "4"
+      - "SC 13D"
+      - "SC 13G"
+    alert_on_keywords:
+      - "material"
+      - "investigation"
+      - "restatement"
+      - "default"
+
+  sentiment_tracker:
+    enabled: true
+    schedule: "0 9,21 * * *"  # 每天9:00和21:00
+    sources:
+      reddit:
+        enabled: true
+        subreddits:
+          - teslamotors
+          - TeslaFSD
+          - RealTesla
+          - wallstreetbets
+        min_upvotes: 10
+      twitter:
+        enabled: true
+        keywords:
+          - "$TSLA"
+          - "@elonmusk"
+          - "FSD"
+          - "Robotaxi"
+        influential_accounts:
+          - elonmusk
+          - teslaownersSV
+      stocktwits:
+        enabled: true
+    sentiment_threshold:
+      extreme_positive: 0.8
+      extreme_negative: -0.8
+
+  supply_chain_intel:
+    enabled: true
+    schedule: "0 10 * * 1"  # 每周一10:00
+    suppliers_config: suppliers_config.yaml
+    track_metrics:
+      - revenue_exposure
+      - inventory_days
+      - order_backlog
+      - capex_trends
+    china_shipping_ports:
+      - Shanghai
+      - Ningbo
+      - Shenzhen
+
+  options_decoder:
+    enabled: true
+    schedule: "0 16 * * 1-5"  # 工作日16:00 (市场收盘)
+    strike_range: 0.20  # ±20% from current price
+    min_volume: 100
+    max_pain_calculation: true
+    whale_threshold: 10000  # >10K contracts = whale
+
+  competitor_tracker:
+    enabled: true
+    schedule: "0 11 * * *"  # 每天11:00
+    compare_metrics:
+      - market_cap
+      - pe_ratio
+      - revenue_growth
+      - gross_margin
+      - delivery_volume
+      - ev_sales_share
+    price_correlation_window: 90  # days
+
+  earnings_predictor:
+    enabled: true
+    schedule: "0 8 * * *"  # 每天8:00
+    prediction_models:
+      - linear_regression
+      - prophet
+      - lstm
+    features:
+      - delivery_numbers
+      - avg_selling_price
+      - energy_deployments
+      - regulatory_credits
+      - bitcoin_holdings
+    confidence_threshold: 0.75
+
+# 数据库配置
+database:
+  type: sqlite
+  path: data/database.db
+  backup_enabled: true
+  backup_schedule: "0 2 * * *"  # 每天2:00
+  retention_days: 365
+
+# 报告生成
+reports:
+  daily_report:
+    enabled: true
+    schedule: "0 20 * * *"  # 每天20:00
+    output_format: markdown
+    save_path: data/reports/daily
+
+  weekly_report:
+    enabled: true
+    schedule: "0 22 * * 0"  # 每周日22:00
+    output_format: markdown
+    save_path: data/reports/weekly
+
+  monthly_report:
+    enabled: true
+    schedule: "0 23 28-31 * *"  # 每月最后一天
+    output_format: markdown
+    save_path: data/reports/monthly
+
+# 告警系统
+alerts:
+  email:
+    enabled: false
+    smtp_server: smtp.gmail.com
+    smtp_port: 587
+    from_address: your_email@gmail.com
+    to_addresses:
+      - investor@example.com
+    password_env: EMAIL_PASSWORD
+
+  slack:
+    enabled: false
+    webhook_url_env: SLACK_WEBHOOK_URL
+    channel: "#tesla-intelligence"
+
+  telegram:
+    enabled: false
+    bot_token_env: TELEGRAM_BOT_TOKEN
+    chat_id_env: TELEGRAM_CHAT_ID
+
+# API密钥 (从环境变量读取)
+api_keys:
+  sec_api: SEC_API_KEY
+  reddit: REDDIT_CLIENT_ID
+  reddit_secret: REDDIT_CLIENT_SECRET
+  twitter: TWITTER_BEARER_TOKEN
+  alpha_vantage: ALPHA_VANTAGE_API_KEY
+  financial_modeling_prep: FMP_API_KEY
+  quandl: QUANDL_API_KEY
+
+# 日志配置
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: logs/intelligence_engine.log
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+# 性能配置
+performance:
+  max_workers: 4
+  request_timeout: 30
+  rate_limit_delay: 1.0
+  cache_enabled: true
+  cache_ttl: 3600  # seconds
+
+# 开发模式
+dev_mode:
+  enabled: false
+  mock_api_calls: false
+  verbose_logging: true

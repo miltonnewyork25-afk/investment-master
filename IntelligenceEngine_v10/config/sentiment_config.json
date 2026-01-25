@@ -1,0 +1,37 @@
+{
+  "reddit": {
+    "client_id": "YOUR_CLIENT_ID_HERE",
+    "client_secret": "YOUR_CLIENT_SECRET_HERE",
+    "user_agent": "TeslaSentimentTracker/1.0 by YourUsername"
+  },
+  "data_dir": "../data/sentiment",
+  "lookback_days": 7,
+  "posts_per_subreddit": 100,
+  "comments_per_post": 50,
+  "analysis_config": {
+    "positive_threshold": 0.05,
+    "negative_threshold": -0.05,
+    "min_score_threshold": 2,
+    "oci_window_days": 7
+  },
+  "subreddits": [
+    "teslamotors",
+    "TeslaFSD",
+    "RealTesla"
+  ],
+  "keywords": [
+    "FSD",
+    "autopilot",
+    "service",
+    "delivery",
+    "quality",
+    "reliability",
+    "customer service",
+    "build quality",
+    "recall",
+    "battery",
+    "range",
+    "charging",
+    "supercharger"
+  ]
+}

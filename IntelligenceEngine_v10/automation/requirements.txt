@@ -1,0 +1,38 @@
+# Tesla Intelligence Engine - 自动化系统依赖
+
+# 核心调度
+apscheduler==3.10.4
+
+# 数据处理
+pandas==2.1.4
+numpy==1.26.2
+
+# 数据可视化
+matplotlib==3.8.2
+
+# HTTP请求（告警推送）
+requests==2.31.0
+
+# 数据库（SQLite内置，无需安装）
+# sqlite3 - built-in
+
+# 可选：增强数据库功能
+# sqlalchemy==2.0.23
+
+# 可选：更好的日志
+# loguru==0.7.2
+
+# 可选：配置管理
+# pydantic==2.5.3
+
+# 可选：进度条
+# tqdm==4.66.1
+
+# 可选：异步支持
+# aiohttp==3.9.1
+# asyncio - built-in
+
+# 开发工具
+# pytest==7.4.3
+# black==23.12.1
+# flake8==7.0.0

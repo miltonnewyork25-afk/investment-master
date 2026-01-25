@@ -1,0 +1,110 @@
+# Intelligence Engine v10.0 Configuration
+
+# 基本设置
+ticker: TSLA
+base_currency: USD
+
+# Engine 5: Competitor Tracker
+competitor_tracker:
+  enabled: true
+  update_frequency: weekly  # daily, weekly, monthly
+  competitors:
+    - BYD
+    - XPEV
+    - NIO
+    - RIVN
+    - LCID
+  metrics:
+    - deliveries
+    - pricing
+    - tech_specs
+    - market_share
+  alert_threshold: 75  # 竞争压力评分超过75时发送警报
+
+# Engine 6: Earnings Predictor
+earnings_predictor:
+  enabled: true
+  model_type: xgboost  # xgboost, random_forest, lstm
+  retrain_frequency: quarterly
+  confidence_threshold: 0.7
+  prediction_horizon: 1  # 预测未来1个季度
+  market_consensus_source: manual  # manual, bloomberg, factset
+
+# ML Model
+ml_model:
+  eps_model:
+    type: xgboost
+    n_estimators: 100
+    max_depth: 5
+    learning_rate: 0.1
+  revenue_model:
+    type: xgboost
+    n_estimators: 100
+    max_depth: 5
+    learning_rate: 0.1
+  margin_model:
+    type: random_forest
+    n_estimators: 100
+    max_depth: 5
+  features:
+    - insider_buy_ratio
+    - insider_net_value
+    - insider_signal_strength
+    - sentiment_score
+    - sentiment_volume
+    - sentiment_momentum
+    - supplier_signal
+    - china_demand
+    - inventory_health
+    - put_call_ratio
+    - unusual_activity
+    - smart_money_signal
+    - competitive_pressure
+    - market_share_trend
+    - threat_growth_rate
+    - quarter
+    - year
+
+# 数据源
+data_sources:
+  competitor_data:
+    - company_ir_pages
+    - sec_filings
+    - automotive_news
+  market_consensus:
+    source: manual
+    # bloomberg_api_key: YOUR_KEY_HERE
+    # factset_api_key: YOUR_KEY_HERE
+  options_data:
+    provider: yfinance  # yfinance, cboe, thinkorswim
+  sentiment_data:
+    - twitter
+    - reddit
+    - stocktwits
+
+# 报告设置
+reporting:
+  format: markdown  # markdown, pdf, html
+  output_dir: /Users/milton/投资大师/IntelligenceEngine_v10/reports
+  email_alerts: false
+  slack_webhook: null
+
+# 自动化
+automation:
+  daily_update: false
+  earnings_countdown: true  # 财报季前14天开始每日预测
+  api_enabled: false
+  api_port: 5000
+
+# 日志
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  file: /Users/milton/投资大师/IntelligenceEngine_v10/logs/engine.log
+  console: true
+
+# 性能
+performance:
+  cache_enabled: true
+  cache_ttl: 3600  # 缓存1小时
+  parallel_processing: false
+  max_workers: 4

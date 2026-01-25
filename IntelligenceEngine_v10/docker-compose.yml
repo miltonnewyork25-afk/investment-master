@@ -1,0 +1,104 @@
+version: '3.8'
+
+services:
+  intelligence-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: intelligence-engine
+    restart: unless-stopped
+
+    # 环境变量
+    env_file:
+      - .env
+
+    # 数据持久化
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config.yaml:/app/config.yaml
+      - ./suppliers_config.yaml:/app/suppliers_config.yaml
+
+    # 资源限制
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+    # 健康检查
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+    # 日志配置
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+    # 网络
+    networks:
+      - intelligence-net
+
+  # 可选: 添加数据库服务 (如果使用PostgreSQL)
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: intelligence-db
+  #   restart: unless-stopped
+  #   environment:
+  #     POSTGRES_DB: intelligence
+  #     POSTGRES_USER: intelligence
+  #     POSTGRES_PASSWORD: ${DB_PASSWORD}
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   networks:
+  #     - intelligence-net
+
+  # 可选: 添加Redis缓存
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: intelligence-cache
+  #   restart: unless-stopped
+  #   volumes:
+  #     - redis-data:/data
+  #   networks:
+  #     - intelligence-net
+
+networks:
+  intelligence-net:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  redis-data:
+
+# 使用说明:
+#
+# 1. 启动所有服务:
+#    docker-compose up -d
+#
+# 2. 查看日志:
+#    docker-compose logs -f intelligence-engine
+#
+# 3. 停止服务:
+#    docker-compose down
+#
+# 4. 重启服务:
+#    docker-compose restart intelligence-engine
+#
+# 5. 查看状态:
+#    docker-compose ps
+#
+# 6. 进入容器:
+#    docker-compose exec intelligence-engine bash
+#
+# 7. 运行单个命令:
+#    docker-compose run --rm intelligence-engine python main.py --engine sec

@@ -1,0 +1,54 @@
+# 供应商配置文件
+# 根据目标公司调整
+
+# Tesla供应商示例
+suppliers:
+  - name: Panasonic
+    ticker: PCRFY
+    cik: "0000821144"
+    relationship: "电池供应商"
+    critical_metrics:
+      - revenue_from_tesla
+      - battery_production_capacity
+      - inventory_levels
+
+  - name: CATL (Contemporary Amperex)
+    ticker: 300750.SZ
+    relationship: "电池供应商 (中国)"
+    critical_metrics:
+      - capacity_expansion
+      - order_backlog
+
+  - name: BYD
+    ticker: 002594.SZ
+    relationship: "电池供应商 (同时是竞争对手)"
+    critical_metrics:
+      - battery_sales
+      - ev_sales
+
+  - name: Samsung SDI
+    ticker: 006400.KS
+    relationship: "电池供应商"
+    critical_metrics:
+      - automotive_battery_revenue
+      - capex_guidance
+
+  - name: LG Energy Solution
+    ticker: 373220.KS
+    relationship: "电池供应商"
+    critical_metrics:
+      - tesla_revenue_share
+      - production_capacity
+
+  - name: Livent
+    ticker: LTHM
+    relationship: "锂供应商"
+    critical_metrics:
+      - lithium_prices
+      - production_volume
+
+# 其他行业公司可添加相应供应商
+# 例如Apple的供应商:
+# - TSMC (TSM)
+# - Foxconn (2317.TW)
+# - SK Hynix (000660.KS)

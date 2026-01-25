@@ -1,0 +1,37 @@
+# Tesla Intelligence Engine - systemd 服务文件
+# 用于在Linux系统上作为服务运行
+
+[Unit]
+Description=Tesla Intelligence Engine Scheduler
+After=network.target
+Documentation=https://github.com/your-repo/tesla-intelligence
+
+[Service]
+Type=simple
+User=your_username
+Group=your_group
+WorkingDirectory=/path/to/IntelligenceEngine_v10/automation
+Environment="PATH=/usr/bin:/usr/local/bin"
+Environment="PYTHONUNBUFFERED=1"
+
+# 主命令
+ExecStart=/usr/bin/python3 scheduler.py
+
+# 自动重启配置
+Restart=always
+RestartSec=10
+StartLimitInterval=200
+StartLimitBurst=5
+
+# 日志配置
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=tesla-intelligence
+
+# 资源限制（可选）
+LimitNOFILE=65536
+# MemoryLimit=1G
+# CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target

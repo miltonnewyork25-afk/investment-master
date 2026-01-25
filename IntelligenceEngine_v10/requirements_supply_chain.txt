@@ -1,0 +1,24 @@
+# Supply Chain Intelligence Engine - Dependencies
+# 安装: pip install -r requirements_supply_chain.txt
+
+# PDF处理
+PyPDF2>=3.0.0
+
+# HTML解析
+beautifulsoup4>=4.12.0
+
+# HTTP请求
+requests>=2.31.0
+
+# 配置文件
+PyYAML>=6.0
+
+# 数据处理
+pandas>=2.0.0
+numpy>=1.24.0
+
+# NLP处理
+nltk>=3.8.0
+
+# 可选：加速
+# lxml>=4.9.0

@@ -1,0 +1,302 @@
+# Supply Chain Intelligence Network - Supplier Configuration
+# 15家Tesla核心供应商配置文件
+# 更新日期: 2026-01-25
+
+suppliers:
+  # === 电池供应商 ===
+  - name: CATL
+    full_name: Contemporary Amperex Technology Co., Limited
+    ticker: 300750.SZ
+    exchange: 深交所
+    segment: battery
+    importance: critical
+    revenue_share: 0.35  # 约35%电池供应
+    ir_url: http://www.catl.com/en/investors/
+    financial_reports_url: http://www.catl.com/en/investors/reports/
+    keywords: ["electric vehicles", "energy storage", "北美", "automotive"]
+    extraction_fields:
+      - revenue
+      - gross_margin
+      - overseas_revenue_pct
+      - ev_battery_revenue
+      - energy_storage_revenue
+    impact_score: 10
+
+  - name: Panasonic
+    full_name: Panasonic Holdings Corporation
+    ticker: 6752.T
+    exchange: Tokyo
+    segment: battery
+    importance: critical
+    revenue_share: 0.30
+    ir_url: https://holdings.panasonic/global/ir.html
+    financial_reports_url: https://holdings.panasonic/global/ir/library.html
+    keywords: ["automotive batteries", "4680 cells", "Nevada", "Gigafactory"]
+    extraction_fields:
+      - automotive_revenue
+      - battery_revenue
+      - operating_margin
+      - capex
+    impact_score: 9
+
+  - name: LG Energy Solution
+    full_name: LG Energy Solution Ltd.
+    ticker: 373220.KS
+    exchange: Korea
+    segment: battery
+    importance: high
+    revenue_share: 0.20
+    ir_url: https://www.lgensol.com/en/ir
+    financial_reports_url: https://www.lgensol.com/en/ir/disclosure
+    keywords: ["EV battery", "cylindrical", "North America", "automotive"]
+    extraction_fields:
+      - ev_battery_sales
+      - capacity_expansion
+      - margin
+    impact_score: 8
+
+  # === 芯片/半导体 ===
+  - name: TSMC
+    full_name: Taiwan Semiconductor Manufacturing Company
+    ticker: 2330.TW
+    exchange: Taiwan
+    segment: chip
+    importance: critical
+    revenue_share: 0.15
+    ir_url: https://investor.tsmc.com/english
+    financial_reports_url: https://investor.tsmc.com/english/quarterly-results
+    keywords: ["automotive", "HPC", "5nm", "7nm"]
+    extraction_fields:
+      - automotive_revenue_pct
+      - hpc_revenue_pct
+      - gross_margin
+      - capex
+    impact_score: 7
+
+  - name: Samsung
+    full_name: Samsung Electronics Co., Ltd.
+    ticker: 005930.KS
+    exchange: Korea
+    segment: chip
+    importance: high
+    revenue_share: 0.10
+    ir_url: https://www.samsung.com/global/ir/
+    financial_reports_url: https://www.samsung.com/global/ir/financial-information/
+    keywords: ["foundry", "automotive chip", "DRAM"]
+    extraction_fields:
+      - foundry_revenue
+      - automotive_revenue
+    impact_score: 6
+
+  # === 压铸设备 ===
+  - name: IDRA
+    full_name: IDRA Group (LK Technology)
+    ticker: 0558.HK
+    parent: LK Technology Holdings Limited
+    exchange: Hong Kong
+    segment: equipment
+    importance: critical
+    revenue_share: 0.08
+    ir_url: http://www.lktechnology.com/en/investor_relations
+    financial_reports_url: http://www.lktechnology.com/en/investor_relations/financial_reports
+    keywords: ["Giga Press", "die casting", "automotive", "Tesla"]
+    extraction_fields:
+      - die_casting_revenue
+      - order_backlog
+      - new_contracts
+    impact_score: 8
+
+  # === 玻璃 ===
+  - name: Saint-Gobain
+    full_name: Compagnie de Saint-Gobain S.A.
+    ticker: SGO.PA
+    exchange: Paris
+    segment: glass
+    importance: medium
+    revenue_share: 0.05
+    ir_url: https://www.saint-gobain.com/en/finance
+    financial_reports_url: https://www.saint-gobain.com/en/finance/publications
+    keywords: ["automotive glass", "mobility", "innovative materials"]
+    extraction_fields:
+      - mobility_revenue
+      - automotive_revenue
+    impact_score: 4
+
+  # === 汽车座椅 ===
+  - name: Lear Corporation
+    full_name: Lear Corporation
+    ticker: LEA
+    exchange: NYSE
+    segment: interior
+    importance: medium
+    revenue_share: 0.06
+    ir_url: https://ir.lear.com/
+    financial_reports_url: https://ir.lear.com/financials/quarterly-results
+    keywords: ["seating", "e-systems", "electric vehicles"]
+    extraction_fields:
+      - seating_revenue
+      - e_systems_revenue
+      - margin
+    impact_score: 5
+
+  # === 车载计算 ===
+  - name: NVIDIA
+    full_name: NVIDIA Corporation
+    ticker: NVDA
+    exchange: NASDAQ
+    segment: compute
+    importance: critical
+    revenue_share: 0.12
+    ir_url: https://investor.nvidia.com/
+    financial_reports_url: https://investor.nvidia.com/financial-info/quarterly-results
+    keywords: ["automotive", "Drive platform", "AI compute"]
+    extraction_fields:
+      - automotive_revenue
+      - datacenter_revenue
+      - gross_margin
+    impact_score: 9
+
+  # === 传感器/激光雷达 ===
+  - name: Luminar
+    full_name: Luminar Technologies Inc.
+    ticker: LAZR
+    exchange: NASDAQ
+    segment: sensor
+    importance: medium
+    revenue_share: 0.03
+    ir_url: https://investors.luminartech.com/
+    financial_reports_url: https://investors.luminartech.com/financials/sec-filings
+    keywords: ["lidar", "ADAS", "automotive production"]
+    extraction_fields:
+      - revenue
+      - units_shipped
+      - cash_burn
+    impact_score: 5
+
+  # === 钴/锂原材料 ===
+  - name: Albemarle
+    full_name: Albemarle Corporation
+    ticker: ALB
+    exchange: NYSE
+    segment: materials
+    importance: high
+    revenue_share: 0.10
+    ir_url: https://investors.albemarle.com/
+    financial_reports_url: https://investors.albemarle.com/financials/sec-filings
+    keywords: ["lithium", "battery grade", "pricing", "supply"]
+    extraction_fields:
+      - lithium_revenue
+      - lithium_price
+      - production_volume
+    impact_score: 7
+
+  - name: Ganfeng Lithium
+    full_name: Ganfeng Lithium Co., Ltd.
+    ticker: 002460.SZ
+    exchange: 深交所
+    segment: materials
+    importance: high
+    revenue_share: 0.08
+    ir_url: http://www.ganfenglithium.com/
+    financial_reports_url: http://www.ganfenglithium.com/index.php?m=content&c=index&a=lists&catid=165
+    keywords: ["锂盐", "电池级", "产能", "价格"]
+    extraction_fields:
+      - lithium_carbonate_production
+      - lithium_hydroxide_production
+      - avg_selling_price
+    impact_score: 7
+
+  # === 电机/驱动 ===
+  - name: BorgWarner
+    full_name: BorgWarner Inc.
+    ticker: BWA
+    exchange: NYSE
+    segment: powertrain
+    importance: medium
+    revenue_share: 0.05
+    ir_url: https://investor.borgwarner.com/
+    financial_reports_url: https://investor.borgwarner.com/financials/sec-filings
+    keywords: ["electric drivetrain", "eMotor", "inverter"]
+    extraction_fields:
+      - ev_revenue
+      - combustion_revenue
+      - margin_trend
+    impact_score: 5
+
+  # === 自动驾驶传感器 ===
+  - name: Mobileye
+    full_name: Mobileye Global Inc.
+    ticker: MBLY
+    exchange: NASDAQ
+    segment: adas
+    importance: low
+    revenue_share: 0.01
+    ir_url: https://ir.mobileye.com/
+    financial_reports_url: https://ir.mobileye.com/financials/sec-filings
+    keywords: ["ADAS", "EyeQ", "SuperVision"]
+    extraction_fields:
+      - revenue
+      - unit_shipments
+    impact_score: 3
+
+  # === 热管理 ===
+  - name: Valeo
+    full_name: Valeo SE
+    ticker: FR.PA
+    exchange: Paris
+    segment: thermal
+    importance: medium
+    revenue_share: 0.04
+    ir_url: https://www.valeo.com/en/finance/
+    financial_reports_url: https://www.valeo.com/en/finance/financial-publications/
+    keywords: ["thermal systems", "electrification", "HVAC"]
+    extraction_fields:
+      - thermal_systems_revenue
+      - electrification_revenue
+    impact_score: 4
+
+# === 分析参数 ===
+analysis_config:
+  # 报告下载设置
+  download_frequency: quarterly  # 季度下载
+  lookback_periods: 8  # 过去8个季度
+
+  # NLP提取设置
+  confidence_threshold: 0.7  # 置信度阈值
+  language_support: ["en", "zh", "ja", "ko"]
+
+  # 影响评分权重
+  impact_weights:
+    revenue_change: 0.25
+    margin_change: 0.20
+    capacity_expansion: 0.20
+    pricing_trend: 0.15
+    contract_news: 0.10
+    management_commentary: 0.10
+
+  # 交易信号阈值
+  signal_thresholds:
+    strong_buy: 8.0
+    buy: 6.0
+    hold: 4.0
+    sell: 2.0
+    strong_sell: 0.0
+
+  # 数据验证
+  cross_validation:
+    min_sources: 2  # 关键数据至少2个来源
+    variance_tolerance: 0.15  # 允许15%差异
+
+# === 数据源优先级 ===
+data_source_priority:
+  tier1:  # 直接引用
+    - official_ir
+    - sec_filings
+    - exchange_announcements
+  tier2:  # 交叉验证后可用
+    - bloomberg
+    - reuters
+    - company_presentations
+  tier3:  # 仅作参考
+    - industry_reports
+    - media_coverage

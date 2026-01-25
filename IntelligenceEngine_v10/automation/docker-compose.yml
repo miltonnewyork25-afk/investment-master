@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  tesla-intelligence:
+    build: .
+    container_name: tesla-intelligence-scheduler
+    restart: unless-stopped
+
+    # 环境变量
+    environment:
+      - TZ=America/New_York
+      - PYTHONUNBUFFERED=1
+
+    # 数据持久化
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+      - ./logs:/app/logs
+      - ./scheduler_config.json:/app/scheduler_config.json
+      - ./alert_config.json:/app/alert_config.json
+      - ./tesla_intelligence.db:/app/tesla_intelligence.db
+
+    # 日志配置
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+    # 健康检查
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sqlite3; conn = sqlite3.connect('tesla_intelligence.db'); conn.close()"]
+      interval: 5m
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+# 可选：添加监控服务
+# prometheus:
+#   image: prom/prometheus
+#   container_name: prometheus
+#   volumes:
+#     - ./prometheus.yml:/etc/prometheus/prometheus.yml
+#   ports:
+#     - "9090:9090"
+#
+# grafana:
+#   image: grafana/grafana
+#   container_name: grafana
+#   ports:
+#     - "3000:3000"

@@ -1,0 +1,84 @@
+# Tesla Intelligence Engine - Git忽略文件
+
+# 敏感配置文件
+alert_config.json
+scheduler_config.json
+*_config.json
+
+# 数据库文件
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# 日志文件
+*.log
+logs/
+
+# 报告输出
+reports/
+test_reports/
+
+# 数据文件
+data/
+backups/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 虚拟环境
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints
+
+# 测试
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# 临时文件
+*.tmp
+*.bak
+*.backup
+temp/
+tmp/
+
+# Docker
+.dockerignore
+
+# 环境变量
+.env
+.env.local
