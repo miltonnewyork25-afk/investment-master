@@ -115,9 +115,39 @@ lessons:
     effectiveness: "已生效"
     priority: "P0"
 
+  - id: "LL_012"
+    date: "2026-01-27"
+    context: "AAPL v1.0 分析"
+    category: "workflow_optimization"
+    lesson: "并行调用多个API和搜索可以显著提升效率"
+    root_cause: "之前是串行执行，浪费时间"
+    action_taken: "确认并行执行模式作为标准流程"
+    effectiveness: "已验证"
+    priority: "P1"
+
+  - id: "LL_013"
+    date: "2026-01-27"
+    context: "AAPL v1.0 分析"
+    category: "quality_control"
+    lesson: "质量门控显式执行+报告末尾附结果表的模式有效"
+    root_cause: "之前门控是隐式的，难以验证"
+    action_taken: "将此模式固化为标准流程"
+    effectiveness: "已验证"
+    priority: "P1"
+
+  - id: "LL_014"
+    date: "2026-01-27"
+    context: "AAPL v1.0 分析"
+    category: "valuation_discipline"
+    lesson: "铁律4（SOTP为锚）有效防止了估值逻辑断层"
+    root_cause: "LRCX分析中SOTP$161 vs 目标价$250-280差距过大"
+    action_taken: "AAPL分析中SOTP$267 vs 目标价$270-290差距5%，逻辑自洽"
+    effectiveness: "已验证"
+    priority: "P0"
+
 # 统计
 statistics:
-  total_lessons: 11
+  total_lessons: 14
   by_category:
     agent_execution: 1
     api_integration: 1
