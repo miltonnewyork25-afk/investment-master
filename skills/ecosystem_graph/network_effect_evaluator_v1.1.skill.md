@@ -1,6 +1,6 @@
-# 网络效应评估框架 v1.0
+# 网络效应评估框架 v1.1
 
-> **Skill ID**: `ecosystem_graph.network_effect_evaluator_v1.0`
+> **Skill ID**: `ecosystem_graph.network_effect_evaluator_v1.1`
 > **主路由**: Ecosystem Graph (70%)
 > **辅助路由**: Research Mechanism (20%), Quality Gate (10%)
 > **理论基础**: Rochet & Tirole (双边市场) / Katz & Shapiro (网络外部性) / Farrell & Klemperer (切换成本) / Eisenmann-Parker-Van Alstyne (平台策略)
@@ -64,22 +64,26 @@ inputs:
 
 ---
 
-## 9模块评分体系 (Scoring System)
+## 11模块评分体系 (Scoring System) - v1.1升级
 
 **评分范围**: 每模块 -2 到 +2
 **加权汇总**: NE_Score = 0-100
 
 | 模块 | 权重 | 核心问题 |
 |------|------|----------|
-| M1_MarketCeiling | 10% | 市场天花板来自需求还是供给？ |
-| M2_Mechanism | 15% | 是真网络效应还是仅规模？ |
-| M3_PricingStructure | 10% | 价格结构是否优化了跨边外部性？ |
-| M4_LiquidityDensity | 12% | 流动性密度够吗？冷启动怎么破？ |
-| M5_StandardizationIntegration | 10% | 服务标准化程度如何？ |
-| M6_MultiHomingSwitching | 15% | 多归属和切换成本如何？ |
-| M7_NegativeNetworkEffects | 10% | 负网络效应何时占主导？ |
-| M8_ViralGameTheory | 8% | 病毒传播是正和还是零和？ |
-| M9_DataLearningLoop | 10% | 数据飞轮是否形成？ |
+| M1_MarketCeiling | 7% | 市场天花板来自需求还是供给？ |
+| M2_Mechanism | 11% | 是真网络效应还是仅规模？ |
+| M3_PricingStructure | 7% | 价格结构是否优化了跨边外部性？ |
+| M4_LiquidityDensity | 9% | 流动性密度够吗？冷启动怎么破？ |
+| M5_StandardizationIntegration | 8% | 服务标准化程度如何？ |
+| M6_MultiHomingSwitching | 11% | 多归属和切换成本如何？ |
+| M7_NegativeNetworkEffects | 8% | 负网络效应何时占主导？ |
+| M8_ViralGameTheory | 6% | 病毒传播是正和还是零和？ |
+| M9_DataLearningLoop | 8% | 数据飞轮是否形成？ |
+| **M10_DataNetworkEffect** | **15%** | **数据积累带来的边际价值提升？** |
+| **M11_AIFlywheel** | **10%** | **AI训练闭环是否加速飞轮？** |
+
+**v1.1升级说明**: 新增M10、M11模块专门量化数据网络效应和AI飞轮，适用于科技平台公司（Google/Meta/Amazon等）。原有模块权重按比例下调。
 
 **评分转换**：
 ```
@@ -249,7 +253,7 @@ NE_Score = Σ(模块分数 × 权重) × 25 + 50
 
 ---
 
-### M9: 数据学习闭环 (Data Learning Loop) - 10%
+### M9: 数据学习闭环 (Data Learning Loop) - 8%
 
 **检查项**：
 1. **数据-学习-体验闭环**: 用户越多→数据越好→匹配/推荐/模型越好→留存越强（可形成复利）
@@ -264,6 +268,142 @@ NE_Score = Σ(模块分数 × 权重) × 25 + 50
 | 0 | 数据作用中性 |
 | -1 | 数据可被复制或低频难以积累 |
 | -2 | 无数据优势或数据反而成为负担 |
+
+---
+
+### M10: 数据网络效应 (Data Network Effect) - 15% [v1.1新增]
+
+> **理论锚点**: Varian & Shapiro (1999) - 数据作为网络外部性来源
+
+**定义**: 用户增加→数据量/质提升→产品/服务质量提升→吸引更多用户
+
+**与M9的区别**: M9关注"是否存在数据闭环"，M10量化"数据闭环带来的竞争优势强度"
+
+**检查项**：
+1. **数据量级优势**: 数据量级对比竞争者（用户数×数据点/用户×历史深度）
+2. **数据独特性**: 数据来源的独占程度（只有我能采集 vs 公开可获得）
+3. **边际效用曲线**: 新增数据是否仍有边际价值？（是否进入收益递减区）
+4. **竞争者追赶时间**: 假设竞争者无限资金，需要多少年追平数据优势？
+
+**评分标准**：
+| 分数 | 状态 | 追赶时间 |
+|------|------|----------|
+| +2 | 不可逾越的数据优势，数据来源完全独占 | >10年 |
+| +1 | 强数据优势，来源难以复制 | 5-10年 |
+| 0 | 有数据优势但非决定性 | 2-5年 |
+| -1 | 数据优势有限，可被快速追赶 | 1-2年 |
+| -2 | 无数据优势，数据为公共资源 | <1年 |
+
+**量化指标**：
+```yaml
+data_network_effect_metrics:
+  data_volume:
+    users: "用户数（亿）"
+    data_points_per_user: "每用户数据点/天"
+    historical_depth: "历史数据年限"
+    total_estimate: "users × points × 365 × years"
+
+  data_uniqueness:
+    exclusivity_score: "1-10 (10=完全独占)"
+    collection_difficulty: "竞争者采集同类数据的成本($)"
+    regulatory_protection: "是否有监管壁垒保护"
+
+  marginal_utility:
+    current_position: "收益递增/平台期/递减"
+    inflection_point: "预计何时进入递减区"
+
+  competitive_gap:
+    closest_competitor: "最近竞争者数据量级"
+    gap_ratio: "我方/竞争者"
+    catch_up_time_estimate: "追赶时间（年）"
+```
+
+**示例评分**：
+| 公司 | 数据资产 | 量级优势 | 独特性 | 追赶时间 | 得分 |
+|------|----------|----------|--------|----------|------|
+| Google Search | 搜索意图 | 10x | 极高 | >15年 | +2 |
+| Meta | 社交图谱 | 3x | 高 | 8-10年 | +1.5 |
+| Netflix | 观看偏好 | 2x | 中 | 3-5年 | +0.5 |
+| 传统零售 | 交易数据 | 1x | 低 | <1年 | -1 |
+
+---
+
+### M11: AI飞轮效应 (AI Flywheel) - 10% [v1.1新增]
+
+> **理论锚点**: AI时代特有的网络效应形态
+
+**定义**: 更多用户→更多训练数据→更好AI模型→更好产品→更多用户
+
+**与M10的区别**: M10是通用数据网络效应，M11专注于AI/ML模型训练形成的闭环
+
+**检查项**：
+1. **数据→模型转化**: 用户数据是否有效用于模型训练？（还是只用于规则系统）
+2. **模型→产品转化**: 更好模型是否显著提升用户体验？（可量化的提升）
+3. **闭环速度**: 从数据采集到模型改进到产品上线的周期（日/周/月）
+4. **反馈信号质量**: 用户反馈是否足够丰富以支撑有监督学习？
+
+**评分标准**：
+| 分数 | 状态 | 闭环特征 |
+|------|------|----------|
+| +2 | 完美AI闭环，数据→模型→产品全链路打通 | 日级迭代，用户体验随用户增长显著提升 |
+| +1 | 强AI闭环，主要环节打通 | 周级迭代，有明确的模型驱动产品改进 |
+| 0 | 有AI应用但闭环不完整 | 月级迭代，AI为辅助而非核心 |
+| -1 | AI应用有限，数据利用率低 | 季度级或更慢，规则系统为主 |
+| -2 | 无AI飞轮，传统业务模式 | 不适用AI或数据未用于模型训练 |
+
+**量化框架**：
+```yaml
+ai_flywheel_metrics:
+  data_to_model:
+    training_data_utilization: "用于模型训练的数据比例（%）"
+    labeling_method: "自动标注/人工标注/无监督"
+    data_freshness: "训练数据时效（天）"
+
+  model_to_product:
+    ai_driven_features: "AI驱动功能占比（%）"
+    model_improvement_rate: "模型性能提升速度（%/季度）"
+    user_experience_impact: "AI功能对NPS/留存的贡献"
+
+  flywheel_velocity:
+    iteration_cycle: "从数据到模型上线的周期（天）"
+    feedback_loop_completeness: "反馈闭环完整度（0-100%）"
+
+  competitive_moat:
+    model_gap_vs_competitors: "与竞争者模型性能差距"
+    data_advantage_sustainability: "数据优势可持续性（年）"
+```
+
+**AI飞轮类型**：
+| 类型 | 代表 | 闭环机制 | 典型得分 |
+|------|------|----------|----------|
+| **搜索AI飞轮** | Google | 搜索→点击→训练→更好排序 | +2 |
+| **推荐AI飞轮** | TikTok/YouTube | 观看→反馈→推荐模型→更好推荐 | +2 |
+| **自动驾驶飞轮** | Tesla FSD | 驾驶→标注→训练→更安全驾驶 | +1.5 |
+| **对话AI飞轮** | ChatGPT | 对话→RLHF→模型→更好对话 | +1 |
+| **传统软件** | Office | 无AI闭环 | -1 |
+
+**示例（Google AI飞轮评估）**：
+```yaml
+google_ai_flywheel:
+  data_to_model:
+    search_queries_per_day: "85亿次"
+    youtube_watch_hours: "10亿小时/天"
+    training_utilization: ">90%"
+    labeling: "隐式反馈（点击）+ 显式反馈"
+
+  model_to_product:
+    ai_driven_features: "95%+ (Search, Ads, YouTube, Maps)"
+    gemini_integration: "全面整合中"
+    user_impact: "搜索相关性提升约2-3%/年"
+
+  flywheel_velocity:
+    iteration_cycle: "日级（搜索质量）"
+    feedback_completeness: "95%+"
+
+  assessment:
+    score: +2
+    rationale: "最完整的AI飞轮之一，日级迭代，7×20亿用户提供海量训练数据"
+```
 
 ---
 
@@ -347,6 +487,8 @@ network_effect_card:
     M7_NegativeNetworkEffects: {score: "[-2,+2]", rationale: "..."}
     M8_ViralGameTheory: {score: "[-2,+2]", rationale: "..."}
     M9_DataLearningLoop: {score: "[-2,+2]", rationale: "..."}
+    M10_DataNetworkEffect: {score: "[-2,+2]", rationale: "...", catch_up_time: "X年"}  # v1.1新增
+    M11_AIFlywheel: {score: "[-2,+2]", rationale: "...", flywheel_velocity: "日/周/月"}  # v1.1新增
 
   # 阶段与瓶颈
   stage: "[起步/成长/成熟/衰退]"
@@ -720,18 +862,29 @@ blackboard_outputs:
 
   extended_fields:
     ne_score: {type: "integer", range: "0-100"}
-    module_scores: {type: "object", schema: "{M1..M9: {score, rationale}}"}
+    module_scores: {type: "object", schema: "{M1..M11: {score, rationale}}"}  # v1.1: M1-M11
     network_type: {type: "enum", values: ["信息撮合", "交易闭环", "服务撮合", "硬件+软件", "数据+模型", "生态系统"]}
     tipping_likelihood: {type: "enum", values: ["高", "中", "低"]}
     primary_bottleneck: {type: "enum", values: ["需求", "供给", "冷启动", "治理", "多归属", "兼容性"]}
     disconfirmers: {type: "array"}
     monitoring_kpis: {type: "array"}
+    data_network_effect: {type: "object", schema: "{catch_up_time, data_volume, uniqueness}"}  # v1.1新增
+    ai_flywheel: {type: "object", schema: "{velocity, model_gap, feedback_completeness}"}  # v1.1新增
 ```
 
 ---
 
-**版本**: v1.0
+**版本**: v1.1
 **合约版本**: skill_design_standard_v2.0
 **代码字典版本**: code_dictionary_v1.0
 **归档位置**: `skills/ecosystem_graph/`
-**状态**: 新建，v2.0合约兼容
+**状态**: 升级，v2.0合约兼容
+
+---
+
+## 版本历史
+
+| 版本 | 日期 | 变更 |
+|------|------|------|
+| v1.0 | 2026-01-27 | 初始版本，9模块评分体系 |
+| v1.1 | 2026-01-27 | 新增M10_DataNetworkEffect、M11_AIFlywheel，适配科技平台分析需求 |
