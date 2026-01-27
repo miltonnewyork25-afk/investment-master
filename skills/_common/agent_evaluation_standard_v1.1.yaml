@@ -1,0 +1,606 @@
+# Agent Architecture & Run Evaluation Standard v1.1
+# 用于评估多Agent美股研究系统的架构或单次运行
+# 基于: Multi_Agent_Architecture_v1.2 + skill_output_contract_v1.0 + code_dictionary_v1.0
+# 版本: 1.1 (升级自原版1.0)
+# 更新日期: 2026-01-27
+
+---
+
+# ============================================================
+# 1. 元信息
+# ============================================================
+evaluator:
+  name: "invest-agent-architecture-and-run-audit"
+  version: "1.1"
+
+  purpose: |
+    评估多Agent美股研究系统（架构或单次运行）的：
+    - 可审计性 (Auditability)
+    - 安全性 (Safety)
+    - 证据质量 (Evidence Quality)
+    - 质量门正确性 (Gate Correctness)
+    - 评估驱动的健壮性 (Eval-driven Robustness)
+    - 合约兼容性 (Contract Compliance) [v1.1新增]
+    - Kill Switch有效性 [v1.1新增]
+
+  changelog:
+    v1.1:
+      - "新增D2维度: Contract & Blackboard Compliance"
+      - "新增K1维度: Kill Switch Effectiveness"
+      - "调整权重分配"
+      - "新增B5-B7 Blockers"
+      - "对齐code_dictionary_v1.0标准编码"
+      - "增加细分检查项"
+
+# ============================================================
+# 2. 输入
+# ============================================================
+inputs:
+  mode:
+    type: "enum"
+    values: ["ARCH", "RUN"]
+    description: |
+      ARCH: 评估架构设计文档
+      RUN: 评估单次运行的输出产物
+
+  artifact:
+    type: "object"
+    description: "待评估的架构文档或运行产物"
+
+  contract_version:
+    type: "string"
+    default: "skill_output_contract_v1.0"
+    description: "对标的合约版本"
+
+# ============================================================
+# 3. 评分量表
+# ============================================================
+scoring_scale:
+  0:
+    label: "缺失/不可用/高风险"
+    description: "完全缺失或存在严重风险，不可接受"
+    color: "RED"
+
+  1:
+    label: "存在但脆弱"
+    description: "存在但依赖人工判断，不可重复"
+    color: "ORANGE"
+
+  2:
+    label: "可重复"
+    description: "有明确规则，可回归测试"
+    color: "YELLOW"
+
+  3:
+    label: "生产级"
+    description: "自动化、可观测、可回放"
+    color: "GREEN"
+
+# ============================================================
+# 4. 评估维度 (总分100)
+# ============================================================
+dimensions:
+  # --- 治理与边界 ---
+  G1:
+    id: "G1"
+    name: "Governance & Boundaries"
+    name_zh: "治理与边界"
+    weight: 8  # v1.1: 10→8
+    description: "Agent职责划分、调用权限、边界清晰度"
+
+    sub_checks:
+      - id: "G1.1"
+        check: "每个Agent有明确的单一职责"
+        evidence: "架构文档中的Agent定义"
+
+      - id: "G1.2"
+        check: "Agent间调用关系有明确规则"
+        evidence: "Supervisor路由逻辑"
+
+      - id: "G1.3"
+        check: "禁止的操作有显式列表"
+        evidence: "Guardrails定义"
+
+  G2:
+    id: "G2"
+    name: "Tool Contracts & Minimality"
+    name_zh: "工具合约与最小化"
+    weight: 8  # v1.1: 10→8
+    description: "工具调用规范、最小权限原则"
+
+    sub_checks:
+      - id: "G2.1"
+        check: "每个工具有输入/输出schema"
+        evidence: "Tool定义文档"
+
+      - id: "G2.2"
+        check: "工具调用遵循最小权限"
+        evidence: "权限矩阵"
+
+      - id: "G2.3"
+        check: "工具错误有标准处理流程"
+        evidence: "错误处理文档"
+
+  # --- 数据完整性 ---
+  D1:
+    id: "D1"
+    name: "Data Integrity"
+    name_zh: "数据完整性"
+    weight: 12  # v1.1: 15→12
+    description: "数据校验、定义、单位、新鲜度、血缘"
+
+    sub_checks:
+      - id: "D1.1"
+        check: "数据有reconciliation检查"
+        evidence: "多源交叉验证逻辑"
+
+      - id: "D1.2"
+        check: "数据有明确定义(definition)"
+        evidence: "数据字典"
+
+      - id: "D1.3"
+        check: "数据有单位(unit)标注"
+        evidence: "schema中的unit字段"
+
+      - id: "D1.4"
+        check: "数据有新鲜度(freshness)检查"
+        evidence: "FRESH/STALE/EXPIRED标签"
+
+      - id: "D1.5"
+        check: "数据有血缘(lineage)追踪"
+        evidence: "source_chain字段"
+
+  # --- 合约与Blackboard [v1.1新增] ---
+  D2:
+    id: "D2"
+    name: "Contract & Blackboard Compliance"
+    name_zh: "合约与Blackboard合规"
+    weight: 8  # v1.1新增
+    description: "skill输出是否符合统一合约，Blackboard状态是否正确维护"
+
+    sub_checks:
+      - id: "D2.1"
+        check: "输出符合skill_output_contract_v1.0"
+        evidence: "metadata/quality_gate/claims/evidence_registry完整"
+
+      - id: "D2.2"
+        check: "使用标准编码(code_dictionary_v1.0)"
+        evidence: "P0/P1/P2, Tier 1/2/3, RF-xxx代码"
+
+      - id: "D2.3"
+        check: "Blackboard输出字段正确定义"
+        evidence: "blackboard_outputs非空且符合schema"
+
+      - id: "D2.4"
+        check: "Claim Type正确标注"
+        evidence: "每个claim有FACT/INFERENCE/FORECAST/OPINION"
+
+  # --- 证据可审计性 ---
+  E1:
+    id: "E1"
+    name: "Evidence Auditability"
+    name_zh: "证据可审计性"
+    weight: 12  # v1.1: 15→12
+    description: "证据层级覆盖、可追溯性"
+
+    sub_checks:
+      - id: "E1.1"
+        check: "关键论点有Tier 1证据"
+        evidence: "critical claim → Tier 1 evidence mapping"
+
+      - id: "E1.2"
+        check: "证据有完整引用(source/section/page)"
+        evidence: "evidence_registry字段完整度"
+
+      - id: "E1.3"
+        check: "Tier 3证据有'待验证'标注"
+        evidence: "caveat字段"
+
+      - id: "E1.4"
+        check: "证据分布合理(Tier 1 ≥ 30%)"
+        evidence: "evidence_tier_distribution统计"
+
+  # --- 质量门正确性 ---
+  Q1:
+    id: "Q1"
+    name: "Quality Gate Correctness"
+    name_zh: "质量门正确性"
+    weight: 12  # v1.1: 15→12
+    description: "PASS/DEGRADE/FAIL判定正确性，reason code使用"
+
+    sub_checks:
+      - id: "Q1.1"
+        check: "verdict有三态(PASS/DEGRADE/FAIL)"
+        evidence: "quality_gate.verdict字段"
+
+      - id: "Q1.2"
+        check: "reason_code使用标准编码"
+        evidence: "RC-xxx格式"
+
+      - id: "Q1.3"
+        check: "DEGRADE有next_actions_required(3-7项)"
+        evidence: "degrade_mode.next_actions_required"
+
+      - id: "Q1.4"
+        check: "DEGRADE时template_locked=true"
+        evidence: "degrade_mode.template_locked"
+
+      - id: "Q1.5"
+        check: "severity与auto_action一致"
+        evidence: "P0→BLOCK, P1→REVIEW, P2→LOG"
+
+  # --- 安全性 ---
+  S1:
+    id: "S1"
+    name: "Safety"
+    name_zh: "安全性"
+    weight: 12  # v1.1: 15→12
+    description: "输入分区、输出清洗、PII/可执行内容阻断"
+
+    sub_checks:
+      - id: "S1.1"
+        check: "输入有Zone标记(TRUSTED/DATA_ONLY/HIGH_RISK/QUARANTINED)"
+        evidence: "content_zone字段"
+
+      - id: "S1.2"
+        check: "QUARANTINED内容不作为决策依据"
+        evidence: "hard_rules执行记录"
+
+      - id: "S1.3"
+        check: "输出有PII检测"
+        evidence: "egress_gate.pii_check"
+
+      - id: "S1.4"
+        check: "输出有可执行内容阻断"
+        evidence: "egress_gate.executable_block"
+
+      - id: "S1.5"
+        check: "遵循OWASP LLM Top 10"
+        evidence: "注入防护、输出处理文档"
+
+  # --- Kill Switch有效性 [v1.1新增] ---
+  K1:
+    id: "K1"
+    name: "Kill Switch Effectiveness"
+    name_zh: "Kill Switch有效性"
+    weight: 10  # v1.1新增
+    description: "Kill Switch定义、监控、触发响应"
+
+    sub_checks:
+      - id: "K1.1"
+        check: "每个skill有Kill Switch定义"
+        evidence: "kill_switches数组非空"
+
+      - id: "K1.2"
+        check: "Kill Switch有权重(critical=3.0)"
+        evidence: "weight字段"
+
+      - id: "K1.3"
+        check: "Kill Switch有可观测阈值"
+        evidence: "threshold + monitoring_metric"
+
+      - id: "K1.4"
+        check: "Kill Switch状态有持续监控"
+        evidence: "current_status + last_checked"
+
+      - id: "K1.5"
+        check: "Kill Switch触发时有响应动作"
+        evidence: "RED状态→REASSESS_THESIS"
+
+  # --- 可观测性与回放 ---
+  O1:
+    id: "O1"
+    name: "Observability & Replay"
+    name_zh: "可观测性与回放"
+    weight: 10
+    description: "追加日志、版本控制、门历史"
+
+    sub_checks:
+      - id: "O1.1"
+        check: "有append-only审计日志"
+        evidence: "audit_trail字段"
+
+      - id: "O1.2"
+        check: "artifact有版本控制"
+        evidence: "version字段 + 历史保留"
+
+      - id: "O1.3"
+        check: "质量门判定有历史记录"
+        evidence: "gate_history"
+
+      - id: "O1.4"
+        check: "可回放任意历史状态"
+        evidence: "replay capability"
+
+  # --- 评估与回归 ---
+  M1:
+    id: "M1"
+    name: "Eval & Regression"
+    name_zh: "评估与回归"
+    weight: 8  # v1.1: 10→8
+    description: "日志转测试用例、自动评分、工具调用正确性"
+
+    sub_checks:
+      - id: "M1.1"
+        check: "失败案例转换为回归测试"
+        evidence: "failure→test_case流程"
+
+      - id: "M1.2"
+        check: "有自动化评分机制"
+        evidence: "scoring pipeline"
+
+      - id: "M1.3"
+        check: "工具调用有4维评估"
+        evidence: "selection/arg_extraction/result_interpretation/error_handling"
+
+      - id: "M1.4"
+        check: "有基准数据集"
+        evidence: "golden_dataset"
+
+# ============================================================
+# 5. 阻塞项 (Blockers)
+# ============================================================
+blockers:
+  B1:
+    id: "B1"
+    name: "CRITICAL_UNSUPPORTED"
+    description: "任何critical声明无证据支持"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+
+  B2:
+    id: "B2"
+    name: "QUARANTINED_AS_DECISION"
+    description: "QUARANTINED或HIGH_RISK内容被用作决策依据"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+
+  B3:
+    id: "B3"
+    name: "INSECURE_OUTPUT"
+    description: "可执行内容未被阻断/清洗"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+
+  B4:
+    id: "B4"
+    name: "NO_AUDIT_LOG"
+    description: "无append-only审计日志或无法回放"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+
+  # v1.1新增
+  B5:
+    id: "B5"
+    name: "KILL_SWITCH_IGNORED"
+    description: "Kill Switch触发(RED)但未执行响应动作"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+
+  B6:
+    id: "B6"
+    name: "DEGRADE_WITHOUT_ACTIONS"
+    description: "verdict=DEGRADE但缺少next_actions_required"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+
+  B7:
+    id: "B7"
+    name: "CONTRACT_VIOLATION"
+    description: "skill输出严重违反output_contract(缺少必填字段)"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+
+# ============================================================
+# 6. 输出格式
+# ============================================================
+output_format:
+  type: "json"
+
+  schema:
+    overall_verdict:
+      type: "enum"
+      values: ["PASS", "DEGRADE", "FAIL"]
+      description: "总体判定"
+
+    total_score:
+      type: "integer"
+      range: "0-100"
+      description: "总分"
+
+    dimension_scores:
+      type: "array"
+      items:
+        id: "string"
+        name: "string"
+        score_0_to_3: "integer"
+        weighted_score: "float"
+        max_weighted: "float"
+        evidence: "string"
+        gaps: "array"
+      description: "各维度得分"
+
+    blockers_triggered:
+      type: "array"
+      items:
+        id: "string"
+        description: "string"
+        evidence: "string"
+      description: "触发的阻塞项"
+
+    reason_codes:
+      type: "array"
+      items:
+        code: "string"  # RC-xxx
+        severity: "string"  # P0/P1/P2
+        auto_action: "string"  # BLOCK/REVIEW/LOG
+        description: "string"
+      description: "原因代码列表"
+
+    contract_compliance:
+      type: "object"
+      schema:
+        output_contract: "boolean"
+        code_dictionary: "boolean"
+        blackboard: "boolean"
+        claim_types: "boolean"
+      description: "合约合规检查结果"
+
+    kill_switch_status:
+      type: "array"
+      items:
+        id: "string"
+        status: "string"  # GREEN/YELLOW/RED
+        action_taken: "boolean"
+      description: "Kill Switch状态"
+
+    top_risks:
+      type: "array"
+      max_items: 5
+      description: "前5大风险"
+
+    action_plan:
+      type: "array"
+      items:
+        priority: "string"  # P0/P1/P2
+        action: "string"
+        owner: "string"
+        dimension: "string"
+      description: "优先级排序的修复计划"
+
+# ============================================================
+# 7. 判定规则
+# ============================================================
+verdict_rules:
+  FAIL:
+    conditions:
+      - "任何Blocker触发"
+      - "total_score < 40"
+      - "任何维度score = 0 且 weight ≥ 10"
+
+  DEGRADE:
+    conditions:
+      - "40 ≤ total_score < 70"
+      - "任何维度score = 1 且 weight ≥ 10"
+      - "Kill Switch状态为YELLOW"
+
+  PASS:
+    conditions:
+      - "total_score ≥ 70"
+      - "无Blocker触发"
+      - "所有weight≥10的维度score ≥ 2"
+
+# ============================================================
+# 8. 规则
+# ============================================================
+rules:
+  - id: "R1"
+    rule: "不编造证据或数据。如缺失，标记为gap并相应降级/失败。"
+
+  - id: "R2"
+    rule: "对于DEGRADE，禁止投资结论；只允许假设+监控触发器。"
+
+  - id: "R3"
+    rule: "使用NIST风格的风险思维：映射上下文、度量风险、用控制措施管理。"
+
+  - id: "R4"
+    rule: "使用OWASP LLM风险标签注入/输出处理问题。"
+
+  - id: "R5"
+    rule: "使用评估驱动逻辑：从失败中推导测试和回归用例。"
+
+  # v1.1新增
+  - id: "R6"
+    rule: "所有评估必须对标skill_output_contract_v1.0和code_dictionary_v1.0。"
+
+  - id: "R7"
+    rule: "Kill Switch触发必须立即响应，不可延迟或忽略。"
+
+  - id: "R8"
+    rule: "Claim Type必须与证据层级匹配：FACT需Tier 1，INFERENCE需Tier 1/2，FORECAST/OPINION可用Tier 2/3。"
+
+# ============================================================
+# 9. 评估示例
+# ============================================================
+example_output:
+  overall_verdict: "DEGRADE"
+  total_score: 65
+
+  dimension_scores:
+    - id: "G1"
+      name: "Governance & Boundaries"
+      score_0_to_3: 2
+      weighted_score: 5.3
+      max_weighted: 8.0
+      evidence: "Agent职责清晰，但缺少显式禁止操作列表"
+      gaps: ["G1.3"]
+
+    - id: "D2"
+      name: "Contract & Blackboard Compliance"
+      score_0_to_3: 1
+      weighted_score: 2.7
+      max_weighted: 8.0
+      evidence: "部分skill缺少Claim Type标注"
+      gaps: ["D2.4"]
+
+  blockers_triggered: []
+
+  reason_codes:
+    - code: "RC-COVERAGE-001"
+      severity: "P1"
+      auto_action: "REQUIRE_REVIEW"
+      description: "3个skill缺少Kill Switch定义"
+
+  contract_compliance:
+    output_contract: true
+    code_dictionary: true
+    blackboard: false
+    claim_types: false
+
+  kill_switch_status:
+    - id: "KS-MOAT-001"
+      status: "GREEN"
+      action_taken: false
+    - id: "KS-VAL-002"
+      status: "YELLOW"
+      action_taken: false
+
+  top_risks:
+    - "Blackboard输出字段不完整，Agent间通信可能失败"
+    - "部分Claim缺少类型标注，可信度无法评估"
+    - "Kill Switch YELLOW状态需密切监控"
+
+  action_plan:
+    - priority: "P1"
+      action: "补充所有skill的Claim Type标注"
+      owner: "agent"
+      dimension: "D2"
+
+    - priority: "P1"
+      action: "完善Blackboard输出字段定义"
+      owner: "agent"
+      dimension: "D2"
+
+    - priority: "P2"
+      action: "添加显式禁止操作列表"
+      owner: "human"
+      dimension: "G1"
+
+# ============================================================
+# 10. 版本历史
+# ============================================================
+version_history:
+  - version: "1.0"
+    date: "2026-01-27"
+    changes: "初始版本"
+
+  - version: "1.1"
+    date: "2026-01-27"
+    changes: |
+      - 新增D2维度: Contract & Blackboard Compliance (8分)
+      - 新增K1维度: Kill Switch Effectiveness (10分)
+      - 调整权重: G1(10→8), G2(10→8), D1(15→12), E1(15→12), Q1(15→12), S1(15→12), M1(10→8)
+      - 新增B5-B7阻塞项
+      - 对齐code_dictionary_v1.0标准编码
+      - 新增R6-R8规则
+      - 增加contract_compliance和kill_switch_status输出字段
