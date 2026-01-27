@@ -554,6 +554,215 @@ market_is_pricing:
 
 ---
 
-**版本**: v1.0
+## Contract Compliance (v1.0合约兼容)
+
+> 本节确保skill输出符合 `skills/_common/skill_output_contract_v1.0.yaml`
+
+### 质量门条件
+
+```yaml
+quality_gate:
+  # PASS条件
+  pass_criteria:
+    - "5步工作流全部完成"
+    - "Base Value有P25/P50/P75区间"
+    - "Options Table每个期权有Kill-Switch"
+    - "所有假设有Tier 1/2证据"
+    - "Sanity Anchor通过"
+
+  # DEGRADE条件 - 常见场景
+  degrade_scenarios:
+    - scenario: "财务数据不完整"
+      reason_code: "RC-DATA-001"
+      limitations:
+        - "R&D资本化使用估算值"
+        - "历史数据不足5年"
+      usable: ["Base估值(宽区间)", "Options定性分析"]
+      unusable: ["精确ROIC计算", "跨周期验证"]
+
+    - scenario: "期权信息不足"
+      reason_code: "RC-DATA-002"
+      limitations:
+        - "某期权TAM无可靠来源"
+        - "成功概率为主观判断"
+      usable: ["Base估值", "已知期权分析"]
+      unusable: ["该期权定量估值"]
+
+    - scenario: "Sanity Anchor未通过"
+      reason_code: "RC-CONSISTENCY-002"
+      limitations:
+        - "隐含增长与再投资不一致"
+      usable: ["定性分析"]
+      unusable: ["定量估值结论"]
+
+  # FAIL条件
+  fail_criteria:
+    - "Base业务定义不清"
+    - "无法区分Base vs Options"
+    - "关键财务数据完全缺失"
+    - "核心假设相互矛盾"
+```
+
+### DEGRADE模式模板
+
+```yaml
+degrade_mode:
+  template_locked: true
+
+  # 示例：数据不完整时的DEGRADE输出
+  example_output:
+    verdict: "DEGRADE"
+    reason_code: "RC-DATA-001"
+    severity: "P1"
+    confidence: 0.6
+
+    limitations:
+      - "仅有3年历史数据，R&D资本化估算不精确"
+      - "储能业务单独财务数据不可得"
+
+    next_actions_required:
+      - action: "获取完整5年历史R&D数据"
+        owner: "human"
+        priority: 1
+        deadline: "下次更新前"
+
+      - action: "寻找储能业务分部报告"
+        owner: "agent"
+        priority: 2
+
+      - action: "用同业对比验证R&D寿命假设"
+        owner: "agent"
+        priority: 3
+
+      - action: "与IR确认业务拆分口径"
+        owner: "human"
+        priority: 4
+
+    usable_sections:
+      - "Base Value (宽区间: P25-P75)"
+      - "Options Table (定性)"
+      - "Market is Pricing"
+
+    unusable_sections:
+      - "精确ROIC计算"
+      - "再投资效率量化"
+
+    # DEGRADE时的输出格式
+    base_value_degrade:
+      range: "P10-P90 (非P25-P75)"
+      caveat: "区间因数据限制而扩大"
+
+    options_degrade:
+      format: "定性描述 + 概率范围(如20-40%)"
+      caveat: "不提供单点概率估计"
+```
+
+### 声明类型标注
+
+| 估值组件 | 声明类型 | 重要性 |
+|----------|----------|--------|
+| 历史财务数据 | FACT | supporting |
+| R&D资本化金额 | INFERENCE | critical |
+| Base Value | INFERENCE | critical |
+| Options Payoff | FORECAST | critical |
+| 成功概率p | FORECAST | critical |
+| Market is Pricing | INFERENCE | supporting |
+| 护城河→fade映射 | INFERENCE | supporting |
+
+### Kill Switch加权
+
+```yaml
+kill_switches:
+  # Base相关
+  - id: "KS-VAL-001"
+    condition: "Base业务毛利率跌破盈亏平衡"
+    weight: 3.0  # critical
+    threshold: "毛利率 < 10%"
+    monitoring_metric: "季度毛利率"
+
+  - id: "KS-VAL-002"
+    condition: "核心业务市场份额崩塌"
+    weight: 3.0
+    threshold: "份额下降>10pp/年"
+    monitoring_metric: "市场份额"
+
+  # Options相关
+  - id: "KS-VAL-003"
+    condition: "期权业务监管永久禁止"
+    weight: 3.0
+    threshold: "主要市场立法禁止"
+    monitoring_metric: "监管动态"
+
+  - id: "KS-VAL-004"
+    condition: "技术路线被证伪"
+    weight: 3.0
+    threshold: "物理/工程极限证明不可行"
+    monitoring_metric: "技术进展"
+
+  # 估值逻辑相关
+  - id: "KS-VAL-005"
+    condition: "Sanity Anchor持续失败"
+    weight: 1.5  # supporting
+    threshold: "Growth/ROIC/Reinvest连续3季不一致"
+    monitoring_metric: "季度校验"
+```
+
+### Blackboard输出字段
+
+```yaml
+blackboard_outputs:
+  - field: "base_value_range"
+    type: "object"
+    schema: "{p25: float, p50: float, p75: float, currency: string}"
+
+  - field: "options_table"
+    type: "array"
+    schema: "[{name, payoff, T, implied_p, analyst_p, kill_switch}]"
+
+  - field: "total_equity_value_range"
+    type: "object"
+    schema: "{low: float, mid: float, high: float}"
+
+  - field: "market_implied_assumptions"
+    type: "array"
+    description: "市场隐含假设列表"
+
+  - field: "valuation_confidence"
+    type: "float"
+    range: "0.0-1.0"
+
+  - field: "valuation_verdict"
+    type: "enum"
+    values: ["UNDERVALUED", "FAIR", "OVERVALUED", "UNCERTAIN"]
+```
+
+### 下游依赖提示
+
+```yaml
+downstream_hints:
+  recommended_next_skills:
+    - skill: "forensic_financial"
+      reason: "验证Base业务盈利质量"
+      priority: 1
+
+    - skill: "moat_evaluation"
+      reason: "验证fade假设的护城河基础"
+      priority: 2
+
+  data_for_downstream:
+    report_composer:
+      - "base_value_range"
+      - "options_table"
+      - "market_implied_assumptions"
+
+    ecosystem_graph:
+      - "业务拆分(Base vs Options)"
+      - "期权依赖关系"
+```
+
+---
+
+**版本**: v1.1
+**合约版本**: skill_output_contract_v1.0
 **归档位置**: `skills/valuation_engine/`
-**状态**: 已整合到架构
+**状态**: 已整合到架构，合约兼容

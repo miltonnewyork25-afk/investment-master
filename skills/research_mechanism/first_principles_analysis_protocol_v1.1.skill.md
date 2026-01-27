@@ -604,6 +604,83 @@ quality_gate_enhancement:
 
 ---
 
-**版本**: v1.0
+## Contract Compliance (v1.0合约兼容)
+
+### Kill Criteria与Quality Gate映射
+
+FPAC的KillCriteria直接映射到Quality Gate：
+
+| FPAC Action | Quality Gate | 说明 |
+|-------------|--------------|------|
+| KILL | **FAIL** | 核心假设被证伪 |
+| DEGRADE | **DEGRADE** | 关键指标触发警告 |
+| (无触发) | **PASS** | 正常继续分析 |
+
+### 质量门条件
+
+```yaml
+quality_gate:
+  pass_criteria:
+    - "FPAC 9步完成"
+    - "DominantTerms(80/20)识别完成"
+    - "Model_v0可量化"
+    - "Paths(Bull/Base/Bear)定义完整"
+    - "KillCriteria明确"
+
+  degrade_criteria:
+    - "Unknown变量范围过宽"
+    - "TOC瓶颈不明确"
+    - "部分Path缺少Step"
+
+  fail_criteria:
+    - "KillCriteria触发"
+    - "Objective无法定义"
+    - "Boundary无法划定"
+```
+
+### Blackboard输出字段
+
+```yaml
+blackboard_outputs:
+  - field: "fpac_objective"
+    type: "string"
+    description: "分析目标"
+
+  - field: "dominant_terms"
+    type: "array"
+    description: "80/20主导因素"
+
+  - field: "model_unknowns"
+    type: "array"
+    schema: "[{var, range}]"
+
+  - field: "toc_bottleneck"
+    type: "object"
+    schema: "{constraint, throughput_metric}"
+
+  - field: "scenario_paths"
+    type: "array"
+    schema: "[{type, hypothesis, conditions, risks, steps}]"
+
+  - field: "kill_criteria"
+    type: "array"
+    schema: "[{signal, threshold, action}]"
+```
+
+### 声明类型标注
+
+| FPAC组件 | 声明类型 | 重要性 |
+|----------|----------|--------|
+| Objective | FACT | critical |
+| Boundary | INFERENCE | critical |
+| DominantTerms | INFERENCE | critical |
+| Model_v0 | INFERENCE | critical |
+| Paths | FORECAST | supporting |
+| KillCriteria | INFERENCE | critical |
+
+---
+
+**版本**: v1.1
+**合约版本**: skill_output_contract_v1.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构
+**状态**: 已整合到架构，合约兼容

@@ -419,6 +419,81 @@ triggers:
 
 ---
 
-**版本**: v1.1
+## Contract Compliance (v1.0合约兼容)
+
+### 相位与Quality Gate映射
+
+| 周期相位 | Quality Gate | 投资含义 |
+|----------|--------------|----------|
+| Bottom | **PASS** | 逆向布局窗口 |
+| Recovery | **PASS** | 持有/加仓 |
+| Top | **DEGRADE** | 谨慎，准备退出 |
+| Down | **DEGRADE** | 观望/减仓 |
+| (Gate=RISK_HIGH) | **FAIL** | 不参与周期判断 |
+
+### 质量门条件
+
+```yaml
+quality_gate:
+  pass_criteria:
+    - "5维度评分完成"
+    - "相位判定明确"
+    - "RATES_GATE ≠ RISK_HIGH"
+    - "触发器(upgrade/downgrade)定义"
+
+  degrade_criteria:
+    - "部分维度数据滞后>30天"
+    - "评分分歧大(如SUPPLY vs INV_PRICE矛盾)"
+    - "置信度Medium"
+
+  fail_criteria:
+    - "RATES_GATE = RISK_HIGH"
+    - "关键数据缺失无法评分"
+```
+
+### Blackboard输出字段
+
+```yaml
+blackboard_outputs:
+  - field: "cycle_phase"
+    type: "enum"
+    values: ["Top", "Down", "Bottom", "Recovery"]
+
+  - field: "cycle_scores"
+    type: "object"
+    schema: "{supply, inv_price, credit, rates_gate, sentiment}"
+
+  - field: "cycle_confidence"
+    type: "enum"
+    values: ["High", "Medium", "Low"]
+
+  - field: "cycle_triggers"
+    type: "object"
+    schema: "{upgrade, downgrade}"
+
+  - field: "monitoring_plan"
+    type: "object"
+    schema: "{daily[], weekly[], monthly[], quarterly[]}"
+```
+
+### Kill Switch定义
+
+```yaml
+kill_switches:
+  - id: "KS-CYCLE-001"
+    condition: "RATES_GATE触发RISK_HIGH"
+    weight: 3.0
+    threshold: "10Y-2Y反转深度>50bp OR 衰退概率>50%"
+
+  - id: "KS-CYCLE-002"
+    condition: "信用市场冻结"
+    weight: 3.0
+    threshold: "OAS>500bp OR 信用事件"
+```
+
+---
+
+**版本**: v1.2
+**合约版本**: skill_output_contract_v1.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构
+**状态**: 已整合到架构，合约兼容

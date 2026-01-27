@@ -1,0 +1,436 @@
+# Code Dictionary v1.0
+# 所有skill共享的标准化编码字典
+# 归档位置: skills/_common/
+# 版本: 1.0
+# 更新日期: 2026-01-27
+
+---
+
+# ============================================================
+# 1. 严重度编码 (Severity Codes)
+# ============================================================
+severity_codes:
+  P0:
+    name: "阻塞性"
+    description: "阻塞性问题，必须立即处理，下游流程暂停"
+    auto_action: "BLOCK_DOWNSTREAM"
+    color: "RED"
+    legacy_mapping:
+      - "HIGH"
+      - "Strong"
+      - "Critical"
+
+  P1:
+    name: "重要"
+    description: "重要问题，影响结论可信度，需人工审核"
+    auto_action: "REQUIRE_REVIEW"
+    color: "YELLOW"
+    legacy_mapping:
+      - "MED"
+      - "Medium"
+      - "Moderate"
+
+  P2:
+    name: "次要"
+    description: "次要问题，需记录但不阻塞流程"
+    auto_action: "LOG_ONLY"
+    color: "GREEN"
+    legacy_mapping:
+      - "LOW"
+      - "Weak"
+      - "Minor"
+
+# ============================================================
+# 2. 证据层级 (Evidence Tiers)
+# ============================================================
+evidence_tiers:
+  1:
+    name: "一手来源"
+    description: "官方直接发布，最高可信度"
+    examples:
+      - "10-K / 10-Q / 8-K"
+      - "年报 / 季报"
+      - "SEC文件"
+      - "投资者演示 (IR Presentation)"
+      - "Earnings Call Transcript"
+      - "公司官方公告"
+      - "监管机构文件"
+    credibility: 1.0
+    legacy_mapping:
+      - "A类"
+      - "Tier 1"
+      - "Primary"
+      - "Category A"
+
+  2:
+    name: "二手验证"
+    description: "独立机构分析，需交叉验证"
+    examples:
+      - "知名投行/机构研究报告"
+      - "行业协会数据"
+      - "学术研究/论文"
+      - "专业数据库 (Bloomberg, FactSet)"
+      - "政府统计数据"
+    credibility: 0.7
+    legacy_mapping:
+      - "B类"
+      - "Tier 2"
+      - "Secondary"
+      - "Category B"
+
+  3:
+    name: "参考来源"
+    description: "仅作参考，不可作为核心论据"
+    examples:
+      - "媒体报道"
+      - "社交媒体"
+      - "匿名来源"
+      - "专家访谈 (非官方)"
+      - "论坛/Reddit"
+    credibility: 0.3
+    caveat: "如用于核心论据必须标注'待验证'"
+    legacy_mapping:
+      - "C类"
+      - "Tier 3"
+      - "Reference"
+      - "Category C"
+
+# ============================================================
+# 3. 声明类型 (Claim Types)
+# ============================================================
+claim_types:
+  FACT:
+    name: "事实"
+    description: "可直接验证的客观事实"
+    verification: "可通过一手来源直接验证"
+    examples:
+      - "FY2025收入为$100B"
+      - "毛利率为25%"
+      - "CEO于2025年1月辞职"
+    weight_modifier: 1.0
+
+  INFERENCE:
+    name: "推断"
+    description: "基于事实的合理推断"
+    verification: "逻辑推导，需明确前提假设"
+    examples:
+      - "毛利率下降说明竞争加剧"
+      - "库存增加可能导致下季度减值"
+    weight_modifier: 0.8
+
+  FORECAST:
+    name: "预测"
+    description: "对未来的预测"
+    verification: "只能在未来验证，需给出假设和置信区间"
+    examples:
+      - "预计FY2026收入增长15%"
+      - "Robotaxi有50%概率在2027年规模化"
+    weight_modifier: 0.6
+
+  OPINION:
+    name: "观点"
+    description: "主观判断/偏好，不可直接验证"
+    verification: "需标明为观点，读者自行判断"
+    examples:
+      - "管理层执行力强"
+      - "品牌形象正面"
+    weight_modifier: 0.4
+
+# ============================================================
+# 4. 声明重要性 (Claim Criticality)
+# ============================================================
+claim_criticality:
+  critical:
+    name: "核心"
+    description: "核心论点，如果错误则整体结论失效"
+    weight: 3.0
+    kill_switch_eligible: true
+
+  supporting:
+    name: "支撑"
+    description: "支撑论据，增强结论但非必须"
+    weight: 1.5
+    kill_switch_eligible: false
+
+  optional:
+    name: "补充"
+    description: "补充信息，可有可无"
+    weight: 1.0
+    kill_switch_eligible: false
+
+# ============================================================
+# 5. 质量门判决 (Quality Gate Verdicts)
+# ============================================================
+quality_verdicts:
+  PASS:
+    description: "数据完整，分析可靠，可直接使用"
+    downstream_action: "PROCEED"
+    template_locked: false
+
+  DEGRADE:
+    description: "部分数据缺失或质量问题，需标注限制条件"
+    downstream_action: "PROCEED_WITH_CAUTION"
+    template_locked: true
+    required_fields:
+      - "limitations"
+      - "next_actions_required"  # 3-7项
+      - "usable_sections"
+      - "unusable_sections"
+
+  FAIL:
+    description: "关键数据缺失或严重质量问题，不可使用"
+    downstream_action: "BLOCK"
+    template_locked: true
+    required_fields:
+      - "failure_reason"
+      - "remediation_steps"
+
+# ============================================================
+# 6. 原因代码 (Reason Codes)
+# ============================================================
+reason_codes:
+  # 数据问题
+  RC-DATA-001:
+    description: "关键财务数据缺失"
+    severity: "P0"
+    category: "DATA"
+
+  RC-DATA-002:
+    description: "数据过期 (>90天)"
+    severity: "P1"
+    category: "DATA"
+
+  RC-DATA-003:
+    description: "数据来源不可靠 (仅Tier 3)"
+    severity: "P1"
+    category: "DATA"
+
+  RC-DATA-004:
+    description: "数据口径不一致"
+    severity: "P2"
+    category: "DATA"
+
+  # 证据问题
+  RC-EVIDENCE-001:
+    description: "核心论点缺少Tier 1证据"
+    severity: "P0"
+    category: "EVIDENCE"
+
+  RC-EVIDENCE-002:
+    description: "证据相互矛盾"
+    severity: "P1"
+    category: "EVIDENCE"
+
+  RC-EVIDENCE-003:
+    description: "引用无法验证"
+    severity: "P1"
+    category: "EVIDENCE"
+
+  # 分析问题
+  RC-ANALYSIS-001:
+    description: "关键假设未明确"
+    severity: "P1"
+    category: "ANALYSIS"
+
+  RC-ANALYSIS-002:
+    description: "缺少证伪条件"
+    severity: "P1"
+    category: "ANALYSIS"
+
+  RC-ANALYSIS-003:
+    description: "推断链过长 (>3步)"
+    severity: "P2"
+    category: "ANALYSIS"
+
+  # 覆盖问题
+  RC-COVERAGE-001:
+    description: "必检模块未覆盖"
+    severity: "P0"
+    category: "COVERAGE"
+
+  RC-COVERAGE-002:
+    description: "时间窗口不足"
+    severity: "P1"
+    category: "COVERAGE"
+
+  # 一致性问题
+  RC-CONSISTENCY-001:
+    description: "内部结论矛盾"
+    severity: "P0"
+    category: "CONSISTENCY"
+
+  RC-CONSISTENCY-002:
+    description: "与外部基准偏差过大"
+    severity: "P1"
+    category: "CONSISTENCY"
+
+# ============================================================
+# 7. 红旗类别 (Red Flag Categories)
+# ============================================================
+red_flag_categories:
+  CASH:
+    name: "现金/现金流"
+    description: "现金转换、OCF、FCF相关问题"
+    codes:
+      RF-CASH-001: "OCF/Revenue < 5%"
+      RF-CASH-002: "FCF/NI < 0% (持续)"
+      RF-CASH-003: "OCF via WC pull (营运资金虚增)"
+      RF-CASH-004: "Cash conversion持续恶化"
+
+  AR:
+    name: "应收账款"
+    description: "收入确认、应收账款相关问题"
+    codes:
+      RF-AR-001: "DSO增速 > Revenue增速"
+      RF-AR-002: "坏账准备率下降"
+      RF-AR-003: "大额合同资产增加"
+      RF-AR-004: "关联方应收异常"
+
+  INV:
+    name: "存货"
+    description: "存货管理相关问题"
+    codes:
+      RF-INV-001: "DIO增速 > COGS增速"
+      RF-INV-002: "存货减值准备下降"
+      RF-INV-003: "存货周转恶化"
+
+  AP:
+    name: "应付/应计"
+    description: "应付账款、应计费用相关问题"
+    codes:
+      RF-AP-001: "DPO异常延长 (AP stretch)"
+      RF-AP-002: "应计费用异常变动"
+      RF-AP-003: "Accruals proxy过高"
+
+  CAP:
+    name: "资本化"
+    description: "费用资本化相关问题"
+    codes:
+      RF-CAP-001: "资本化成本异常增加"
+      RF-CAP-002: "Capex/D&A持续错配"
+      RF-CAP-003: "摊销政策变更"
+      RF-CAP-004: "使用寿命延长"
+
+  NONGAAP:
+    name: "Non-GAAP/一次性"
+    description: "Non-GAAP调整、一次性项目问题"
+    codes:
+      RF-NONGAAP-001: "GAAP与Non-GAAP差距>30%"
+      RF-NONGAAP-002: "一次性项目反复出现"
+      RF-NONGAAP-003: "SBC/Revenue>10%"
+      RF-NONGAAP-004: "净稀释持续"
+
+  LEVERAGE:
+    name: "杠杆/流动性"
+    description: "债务、流动性相关问题"
+    codes:
+      RF-LEV-001: "Net Debt/EBITDA > 4x"
+      RF-LEV-002: "Interest coverage < 3x"
+      RF-LEV-003: "短期债务到期集中"
+      RF-LEV-004: "现金税率与GAAP税率差距大"
+
+  CYCLE:
+    name: "跨周期"
+    description: "周期性、韧性相关问题"
+    codes:
+      RF-CYCLE-001: "周期底部现金转换恶化"
+      RF-CYCLE-002: "利润率波动过大"
+      RF-CYCLE-003: "改善靠WC而非结构性"
+
+  MGMT:
+    name: "管理层"
+    description: "管理层行为相关问题"
+    codes:
+      RF-MGMT-001: "内部人集中卖出"
+      RF-MGMT-002: "激励与股东利益错配"
+      RF-MGMT-003: "举债回购"
+      RF-MGMT-004: "连续M&A掩盖有机疲软"
+
+  MOAT:
+    name: "护城河"
+    description: "竞争优势相关问题"
+    codes:
+      RF-MOAT-001: "NRR持续下降"
+      RF-MOAT-002: "大客户流失"
+      RF-MOAT-003: "定价权丧失"
+      RF-MOAT-004: "多归属增加"
+
+  VAL:
+    name: "估值"
+    description: "估值相关问题"
+    codes:
+      RF-VAL-001: "高估值+弱现金转换"
+      RF-VAL-002: "隐含假设不合理"
+      RF-VAL-003: "估值与质量错配"
+
+# ============================================================
+# 8. 数据新鲜度 (Data Freshness)
+# ============================================================
+data_freshness:
+  FRESH:
+    max_age_days: 30
+    description: "新鲜数据，可直接使用"
+    weight_modifier: 1.0
+
+  STALE:
+    min_age_days: 31
+    max_age_days: 90
+    description: "略旧数据，需注意时效"
+    weight_modifier: 0.8
+
+  EXPIRED:
+    min_age_days: 91
+    description: "过期数据，需更新后使用"
+    weight_modifier: 0.5
+
+# ============================================================
+# 9. Kill Switch状态 (Kill Switch Status)
+# ============================================================
+kill_switch_status:
+  GREEN:
+    description: "安全，无触发迹象"
+    action: "CONTINUE"
+
+  YELLOW:
+    description: "警告，接近触发阈值"
+    action: "MONITOR_CLOSELY"
+
+  RED:
+    description: "触发，需要立即重新评估"
+    action: "REASSESS_THESIS"
+
+# ============================================================
+# 10. 遗留映射表 (Legacy Mapping)
+# ============================================================
+legacy_mapping:
+  # 用于将旧skill的术语映射到新标准
+  severity:
+    "Strong": "P0"
+    "HIGH": "P0"
+    "Critical": "P0"
+    "Medium": "P1"
+    "MED": "P1"
+    "Moderate": "P1"
+    "Weak": "P2"
+    "LOW": "P2"
+    "Minor": "P2"
+
+  evidence:
+    "A类": 1
+    "Category A": 1
+    "一手": 1
+    "Primary": 1
+    "B类": 2
+    "Category B": 2
+    "二手": 2
+    "Secondary": 2
+    "C类": 3
+    "Category C": 3
+    "参考": 3
+    "Reference": 3
+
+  verdict:
+    "Strong": "PASS"
+    "Medium": "DEGRADE"
+    "Weak": "DEGRADE"
+    "None": "FAIL"

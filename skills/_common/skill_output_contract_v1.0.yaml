@@ -1,0 +1,213 @@
+# Skill Output Contract v1.0
+# 所有skill的输出必须遵循此合约，确保Agent间数据一致性和可审计性
+# 归档位置: skills/_common/
+# 版本: 1.0
+# 更新日期: 2026-01-27
+
+---
+
+# ============================================================
+# 1. 元数据 (Metadata) - 必填
+# ============================================================
+metadata:
+  skill_id: "string"           # 格式: {agent}.{skill_name}_v{version}
+                               # 示例: research_mechanism.moat_evaluation_v1.0
+
+  skill_name: "string"         # 人类可读名称
+
+  execution_timestamp: "ISO8601"  # 执行时间戳
+                                  # 示例: 2026-01-27T14:30:00Z
+
+  data_cutoff: "YYYY-MM-DD"    # 数据截止日期
+                               # 示例: 2026-01-25
+
+  version: "string"            # skill版本号
+
+  inputs_received:             # 接收到的输入摘要
+    company: "string"
+    ticker: "string"
+    time_window: "string"
+    custom_params: {}          # 其他自定义参数
+
+# ============================================================
+# 2. 质量门 (Quality Gate) - 必填
+# ============================================================
+quality_gate:
+  verdict: "PASS | DEGRADE | FAIL"
+
+  reason_code: "string"        # 格式: RC-{CATEGORY}-{NUMBER}
+                               # 示例: RC-DATA-001, RC-EVIDENCE-002
+
+  reason_message: "string"     # 人类可读的原因描述
+
+  severity: "P0 | P1 | P2"     # P0=阻塞, P1=重要, P2=次要
+
+  confidence: 0.0-1.0          # 置信度分数
+
+  auto_action: "string"        # 建议的自动处理动作
+                               # 示例: BLOCK_DOWNSTREAM, REQUIRE_REVIEW, LOG_ONLY
+
+# ============================================================
+# 3. 声明列表 (Claims) - 必填，至少1条
+# ============================================================
+claims:
+  - id: "string"               # 格式: C{NUMBER}, 示例: C001
+
+    type: "FACT | INFERENCE | FORECAST | OPINION"
+    # FACT: 可直接验证的客观事实
+    # INFERENCE: 基于事实的合理推断
+    # FORECAST: 对未来的预测
+    # OPINION: 主观判断/偏好
+
+    criticality: "critical | supporting | optional"
+    # critical: 核心论点，必须验证
+    # supporting: 支撑论据
+    # optional: 补充信息
+
+    weight: 3.0 | 1.5 | 1.0    # Kill Switch加权
+    # critical = 3.0
+    # supporting = 1.5
+    # optional = 1.0
+
+    statement: "string"        # 声明内容
+
+    evidence_refs: ["E001"]    # 关联的证据ID列表
+
+    falsifier: "string"        # 证伪条件
+                               # 格式: 如果___，则此声明失效
+
+    confidence: 0.0-1.0        # 该声明的置信度
+
+# ============================================================
+# 4. 证据注册表 (Evidence Registry) - 必填，至少1条
+# ============================================================
+evidence_registry:
+  - id: "string"               # 格式: E{NUMBER}, 示例: E001
+
+    tier: 1 | 2 | 3            # 证据层级
+    # 1 = 一手来源 (财报/SEC文件/官方发布)
+    # 2 = 二手验证 (知名机构报告/行业协会)
+    # 3 = 参考来源 (媒体/社交/匿名)
+
+    source_type: "string"      # 来源类型
+    # 10-K, 10-Q, 8-K, DEF14A, Earnings_Call,
+    # Analyst_Report, Industry_Data, Media, Other
+
+    source_name: "string"      # 来源名称
+                               # 示例: Tesla 10-K FY2025
+
+    section: "string"          # 具体章节/位置
+                               # 示例: Note 5, MD&A Section 3
+
+    quote: "string"            # 原文引用（如适用）
+
+    retrieved_at: "ISO8601"    # 获取时间
+
+    hash: "string"             # 内容哈希（可选，用于防篡改）
+                               # 格式: sha256:xxxxx
+
+    freshness: "FRESH | STALE | EXPIRED"
+    # FRESH: <30天
+    # STALE: 30-90天
+    # EXPIRED: >90天
+
+# ============================================================
+# 5. Kill Switch列表 - 必填，至少1条
+# ============================================================
+kill_switches:
+  - id: "string"               # 格式: KS{NUMBER}
+
+    condition: "string"        # 触发条件
+
+    weight: 3.0 | 1.5 | 1.0    # 重要性权重
+
+    threshold: "string"        # 触发阈值
+
+    monitoring_metric: "string"  # 监控指标
+
+    current_status: "GREEN | YELLOW | RED"
+
+    last_checked: "ISO8601"
+
+# ============================================================
+# 6. 红旗列表 (Red Flags) - 如有
+# ============================================================
+red_flags:
+  - id: "string"               # 格式: RF-{CATEGORY}-{NUMBER}
+                               # 示例: RF-CASH-001
+
+    category: "string"         # 类别 (见code_dictionary)
+
+    severity: "P0 | P1 | P2"
+
+    signal: "string"           # 信号描述
+
+    metrics: "string"          # 具体数值
+
+    why: "string"              # 为什么是红旗
+
+    evidence_ref: "string"     # 证据引用
+
+    alternative_explanation: "string"  # 良性替代解释
+
+# ============================================================
+# 7. DEGRADE模式 (当verdict=DEGRADE时必填)
+# ============================================================
+degrade_mode:
+  template_locked: true        # 模板锁定，禁止自由发挥
+
+  degradation_reason: "string" # 降级原因
+
+  limitations: []              # 当前分析的局限性列表
+
+  next_actions_required:       # 必填，3-7项
+    - action: "string"         # 具体行动
+      owner: "string"          # 负责方 (human/agent/system)
+      priority: 1-5            # 优先级
+      deadline: "string"       # 期限描述
+
+  usable_sections: []          # 仍可使用的部分
+
+  unusable_sections: []        # 不可信赖的部分
+
+# ============================================================
+# 8. Blackboard输出 (写入共享状态)
+# ============================================================
+blackboard_outputs:
+  - field: "string"            # 字段名
+    value: "any"               # 值
+    type: "string"             # 数据类型
+    ttl: "string"              # 有效期 (可选)
+
+# ============================================================
+# 9. 下游依赖 (Downstream Dependencies)
+# ============================================================
+downstream_hints:
+  recommended_next_skills: []  # 建议接下来运行的skill
+
+  data_for_downstream:         # 为下游准备的数据
+    valuation_engine: {}
+    ecosystem_graph: {}
+    report_composer: {}
+
+# ============================================================
+# 10. 执行摘要 (Executive Summary) - 必填
+# ============================================================
+executive_summary:
+  one_liner: "string"          # 一句话总结
+
+  key_findings: []             # 关键发现 (3-5条)
+
+  key_risks: []                # 关键风险 (3-5条)
+
+  recommendation: "string"     # 建议
+
+# ============================================================
+# 11. 审计追踪 (Audit Trail)
+# ============================================================
+audit_trail:
+  skill_version: "string"
+  contract_version: "1.0"
+  execution_duration_ms: 0
+  tools_called: []
+  errors_encountered: []

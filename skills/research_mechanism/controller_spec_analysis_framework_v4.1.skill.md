@@ -314,6 +314,61 @@ next_mve:
 
 ---
 
-**版本**: v4.0
+## Contract Compliance (v1.0合约兼容)
+
+### 与Quality Gate三态的映射
+
+本skill的三层控制策略天然对应Quality Gate：
+
+| 控制层 | Quality Gate | 说明 |
+|--------|--------------|------|
+| Safety Controller | **FAIL** | Hard Stop → Kill Switch触发 |
+| Stability Controller | **DEGRADE** | Hysteresis → 需要更多数据 |
+| Performance Controller | **PASS** | 正常优化模式 |
+
+### 质量门条件
+
+```yaml
+quality_gate:
+  pass_criteria:
+    - "4个组件定义完成(Plant/Control/Matrix/Loop)"
+    - "Safety Controller triggers明确"
+    - "VoI检验完成"
+
+  degrade_criteria:
+    - "关键隐变量(state_x)不可观测"
+    - "观测信号噪声过高"
+    - "VoI > 0 但数据不足"
+
+  fail_criteria:
+    - "触发Safety Controller"
+    - "核心假设被证伪"
+```
+
+### Blackboard输出字段
+
+```yaml
+blackboard_outputs:
+  - field: "state_variables"
+    type: "array"
+    description: "识别的隐变量列表"
+
+  - field: "observation_quality"
+    type: "object"
+    schema: "{signal, noise_level, lag}"
+
+  - field: "control_status"
+    type: "enum"
+    values: ["SAFETY_TRIGGERED", "STABILITY_MODE", "PERFORMANCE_MODE"]
+
+  - field: "voi_assessment"
+    type: "object"
+    schema: "{voi_value, decision, next_probe}"
+```
+
+---
+
+**版本**: v4.1
+**合约版本**: skill_output_contract_v1.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构
+**状态**: 已整合到架构，合约兼容

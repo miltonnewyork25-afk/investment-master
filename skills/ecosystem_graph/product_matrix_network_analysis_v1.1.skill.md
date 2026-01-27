@@ -512,6 +512,138 @@ flywheel:
 
 ---
 
-**版本**: v1.0
+## Contract Compliance (v1.0合约兼容)
+
+> 本节确保skill输出符合 `skills/_common/skill_output_contract_v1.0.yaml`
+
+### 质量门条件
+
+```yaml
+quality_gate:
+  pass_criteria:
+    - "10步工作流全部完成"
+    - "A0 Executive Map 7项必答完成"
+    - "节点覆盖scope所有维度"
+    - "强边≥20条"
+    - "飞轮≥3个"
+    - "Kill Switch + 证伪项≥5"
+
+  degrade_criteria:
+    - "部分scope维度缺失(如开发者生态数据不足)"
+    - "强边<20条"
+    - "飞轮<3个"
+
+  fail_criteria:
+    - "无法识别Hub节点"
+    - "核心边类型(Identity/Payments/Data)完全缺失"
+    - "无法完成分层网络图"
+```
+
+### DEGRADE模式模板
+
+```yaml
+degrade_mode:
+  template_locked: true
+
+  common_limitations:
+    - "开发者生态数据不完整"
+    - "部分边的量化指标缺失"
+    - "利润池归因存在估算"
+
+  next_actions_required:
+    - action: "补充开发者API调用量数据"
+      owner: "agent"
+      priority: 1
+    - action: "获取分部财务数据验证利润池"
+      owner: "human"
+      priority: 2
+    - action: "验证边强度的量化指标"
+      owner: "agent"
+      priority: 3
+```
+
+### Blackboard输出字段
+
+```yaml
+blackboard_outputs:
+  # 核心图结构
+  - field: "ecosystem_nodes"
+    type: "array"
+    schema: "[{id, name, roles[], layer, metrics{}}]"
+
+  - field: "ecosystem_edges"
+    type: "array"
+    schema: "[{from, to, edge_type, mechanism, strength, evidence}]"
+
+  - field: "hub_nodes"
+    type: "array"
+    description: "网络中心节点列表"
+
+  - field: "bridge_nodes"
+    type: "array"
+    description: "结构洞节点列表"
+
+  # 飞轮
+  - field: "flywheels"
+    type: "array"
+    schema: "[{id, name, loop_path, accelerators, break_points, kpis[]}]"
+
+  # 利润池
+  - field: "profit_pools"
+    type: "object"
+    schema: "{current[], emerging[], future[], migration_direction}"
+
+  # 判断
+  - field: "platform_score"
+    type: "integer"
+    range: "1-5"
+    description: "平台化程度评分"
+
+  - field: "ecosystem_kill_switch"
+    type: "string"
+    description: "生态系统级Kill Switch"
+```
+
+### 声明类型标注
+
+| 输出组件 | 声明类型 | 重要性 |
+|----------|----------|--------|
+| 节点存在性 | FACT | supporting |
+| 节点角色标注 | INFERENCE | critical |
+| 边机制描述 | INFERENCE | critical |
+| 飞轮路径 | INFERENCE | critical |
+| 飞轮KPI | FACT | supporting |
+| 利润池归因 | INFERENCE | supporting |
+| 情景推演 | FORECAST | optional |
+
+### Kill Switch定义
+
+```yaml
+kill_switches:
+  - id: "KS-ECO-001"
+    condition: "Hub节点被替代或拆分"
+    weight: 3.0
+    example: "监管强制拆分App Store"
+
+  - id: "KS-ECO-002"
+    condition: "核心飞轮断裂"
+    weight: 3.0
+    example: "用户增长→数据→体验循环逆转"
+
+  - id: "KS-ECO-003"
+    condition: "Identity/Payments层被绕过"
+    weight: 3.0
+    example: "第三方支付绕过平台抽成"
+
+  - id: "KS-ECO-004"
+    condition: "开发者大规模离开"
+    weight: 1.5
+    example: "开发者转向竞争平台"
+```
+
+---
+
+**版本**: v1.1
+**合约版本**: skill_output_contract_v1.0
 **归档位置**: `skills/ecosystem_graph/`
-**状态**: 已整合到架构
+**状态**: 已整合到架构，合约兼容

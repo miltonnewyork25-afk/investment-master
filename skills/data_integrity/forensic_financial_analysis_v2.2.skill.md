@@ -595,6 +595,132 @@ quality_gate_integration:
 
 ---
 
-**版本**: v2.1
+## Contract Compliance (v1.0合约兼容)
+
+> 本节确保skill输出符合 `skills/_common/skill_output_contract_v1.0.yaml`
+
+### 严重度映射
+
+| 原术语 | 标准代码 | 含义 |
+|--------|----------|------|
+| HIGH | **P0** | 阻塞性，必须有filing引用 |
+| MED | **P1** | 重要，需人工审核 |
+| LOW | **P2** | 次要，记录即可 |
+
+### 红旗代码映射
+
+本skill使用以下标准红旗代码（参见 `code_dictionary_v1.0.yaml`）：
+
+| 类别 | 代码 | 触发条件 |
+|------|------|----------|
+| CASH | RF-CASH-001 | OCF/Revenue < 5% |
+| CASH | RF-CASH-002 | FCF/NI < 0% (持续) |
+| CASH | RF-CASH-003 | OCF via WC pull |
+| AR | RF-AR-001 | DSO增速 > Revenue增速 |
+| AR | RF-AR-002 | 坏账准备率下降 |
+| INV | RF-INV-001 | DIO增速 > COGS增速 |
+| AP | RF-AP-001 | DPO异常延长 |
+| AP | RF-AP-003 | Accruals proxy > 10% |
+| CAP | RF-CAP-001 | 资本化成本异常增加 |
+| CAP | RF-CAP-002 | Capex/D&A > 1.5x持续 |
+| NONGAAP | RF-NONGAAP-001 | GAAP↔NonGAAP差距>30% |
+| NONGAAP | RF-NONGAAP-002 | 一次性项目反复出现 |
+| NONGAAP | RF-NONGAAP-003 | SBC/Revenue > 10% |
+| LEVERAGE | RF-LEV-001 | Net Debt/EBITDA > 4x |
+| LEVERAGE | RF-LEV-002 | Interest coverage < 3x |
+
+### 质量门输出
+
+```yaml
+quality_gate_output:
+  verdict: "PASS | DEGRADE | FAIL"
+
+  # PASS条件
+  pass_criteria:
+    - "所有10步完成"
+    - "每个P0红旗有Tier 1证据"
+    - "无内部矛盾"
+
+  # DEGRADE条件
+  degrade_criteria:
+    - "部分财务数据缺失(1-2年)"
+    - "仅有Tier 2证据支持P0红旗"
+    - "跨周期分析窗口不足5年"
+
+  # FAIL条件
+  fail_criteria:
+    - "关键财务报表缺失"
+    - "P0红旗无任何证据"
+    - "数据过期>180天"
+```
+
+### DEGRADE模式模板
+
+当verdict=DEGRADE时，输出必须包含：
+
+```yaml
+degrade_mode:
+  template_locked: true
+
+  limitations:
+    - "[具体限制1]"
+    - "[具体限制2]"
+
+  next_actions_required:  # 3-7项
+    - action: "获取最新10-Q补充Q3数据"
+      owner: "human"
+      priority: 1
+    - action: "验证P0红旗的Tier 1来源"
+      owner: "agent"
+      priority: 2
+    - action: "补充跨周期数据至5年"
+      owner: "agent"
+      priority: 3
+
+  usable_sections:
+    - "Step 2-6 (当期分析)"
+
+  unusable_sections:
+    - "Step 8 (跨周期分析) - 数据不足"
+```
+
+### Blackboard输出字段
+
+```yaml
+blackboard_outputs:
+  - field: "earnings_quality_score"
+    type: "float"
+    range: "0.0-1.0"
+    description: "盈利质量综合评分"
+
+  - field: "cash_conversion_flag"
+    type: "enum"
+    values: ["HEALTHY", "WARNING", "CRITICAL"]
+    description: "现金转换健康度"
+
+  - field: "forensic_red_flags"
+    type: "array"
+    description: "红旗代码列表"
+
+  - field: "evidence_tier_distribution"
+    type: "object"
+    description: "证据层级分布 {tier_1: n, tier_2: n, tier_3: n}"
+```
+
+### 声明类型标注要求
+
+本skill输出的声明必须标注类型：
+
+| 声明示例 | 类型 | 重要性 |
+|----------|------|--------|
+| "FY25 OCF/Revenue = 8%" | FACT | supporting |
+| "现金转换下降因WC收紧" | INFERENCE | critical |
+| "预计下季度继续恶化" | FORECAST | optional |
+| "管理层诚信存疑" | OPINION | supporting |
+
+---
+
+**版本**: v2.2
+**合约版本**: skill_output_contract_v1.0
 **归档位置**: `skills/data_integrity/`
-**状态**: 已整合到架构
+**状态**: 已整合到架构，合约兼容

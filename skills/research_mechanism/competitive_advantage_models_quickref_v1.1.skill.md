@@ -541,6 +541,69 @@ quality_gate_integration:
 
 ---
 
-**版本**: v1.0
+## Contract Compliance (v1.0合约兼容)
+
+### 严重度映射
+
+| 模型命中强度 | 标准代码 |
+|--------------|----------|
+| High | **P0** - 该模型是核心护城河来源 |
+| Med | **P1** - 该模型有贡献但非核心 |
+| Low | **P2** - 该模型边际贡献 |
+
+### 质量门条件
+
+```yaml
+quality_gate:
+  pass_criteria:
+    - "4步工作流完成"
+    - "每个命中模型有falsifier"
+    - "至少命中1个模型(strength≥Med)"
+    - "Top 3 falsifiers定义完整"
+
+  degrade_criteria:
+    - "部分模型无法评估(数据不足)"
+    - "falsifier阈值不明确"
+
+  fail_criteria:
+    - "无法判断任何模型"
+    - "关键数据完全缺失"
+```
+
+### Blackboard输出字段
+
+```yaml
+blackboard_outputs:
+  - field: "models_hit"
+    type: "array"
+    schema: "[{model_id, strength, evidence, falsifier}]"
+
+  - field: "primary_moat_source"
+    type: "string"
+    description: "主要护城河来源(M1-M10)"
+
+  - field: "moat_sustainability"
+    type: "enum"
+    values: ["High", "Med", "Low"]
+
+  - field: "top_falsifiers"
+    type: "array"
+    schema: "[{path, threshold, status}]"
+```
+
+### 声明类型标注
+
+| 输出组件 | 声明类型 | 重要性 |
+|----------|----------|--------|
+| 模型命中判断 | INFERENCE | critical |
+| 领先信号 | FACT/INFERENCE | supporting |
+| 滞后确认 | FACT | supporting |
+| Falsifier | INFERENCE | critical |
+| 可持续性判断 | INFERENCE | critical |
+
+---
+
+**版本**: v1.1
+**合约版本**: skill_output_contract_v1.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构
+**状态**: 已整合到架构，合约兼容

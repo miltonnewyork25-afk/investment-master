@@ -464,6 +464,73 @@ ecosystem_graph_integration:
 
 ---
 
-**版本**: v1.0
+## Contract Compliance (v1.0合约兼容)
+
+### 严重度映射
+
+| 评分(0-5) | 标准代码 | 含义 |
+|-----------|----------|------|
+| 4-5 | **P0** | 强竞争优势，核心论点 |
+| 2-3 | **P1** | 中等优势，需持续监控 |
+| 0-1 | **P2** | 弱/无优势 |
+
+### 质量门条件
+
+```yaml
+quality_gate:
+  pass_criteria:
+    - "11步工作流完成"
+    - "结论卡5维度评分完成"
+    - "监控项≥10(加剧+缓和各≥5)"
+    - "每条结论有可推翻条件"
+
+  degrade_criteria:
+    - "部分步骤数据不足"
+    - "评分依据不完整"
+
+  fail_criteria:
+    - "无法完成核心步骤(S1-S4)"
+    - "市场边界无法定义"
+```
+
+### Blackboard输出字段
+
+```yaml
+blackboard_outputs:
+  - field: "market_structure"
+    type: "object"
+    schema: "{hhi, cr4, concentration_level}"
+
+  - field: "five_forces_scores"
+    type: "object"
+    schema: "{entry, substitute, supplier, buyer, rivalry}"
+
+  - field: "moat_assertions"
+    type: "array"
+    schema: "[{assertion, sources[], kpi_thresholds[]}]"
+
+  - field: "ews_dashboard"
+    type: "object"
+    schema: "{leading[], lagging[]}"
+
+  - field: "competitive_verdict"
+    type: "object"
+    schema: "{structure, power, dynamic, high_dim, moat, total}"
+```
+
+### 声明类型标注
+
+| 输出组件 | 声明类型 | 重要性 |
+|----------|----------|--------|
+| HHI/CR4 | FACT | supporting |
+| 五力评分 | INFERENCE | critical |
+| 护城河断言 | INFERENCE | critical |
+| EWS信号 | FACT/INFERENCE | supporting |
+| 终局情景 | FORECAST | optional |
+
+---
+
+**版本**: v1.1
+**合约版本**: skill_output_contract_v1.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构
+**状态**: 已整合到架构，合约兼容

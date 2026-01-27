@@ -674,6 +674,79 @@ systemic_foresight_output:
 
 ---
 
-**版本**: v1.0
+## Contract Compliance (v1.0合约兼容)
+
+### 监控触发器与Quality Gate映射
+
+| 触发类型 | Quality Gate | 说明 |
+|----------|--------------|------|
+| kill | **FAIL** | 致命事件，论点失效 |
+| downgrade | **DEGRADE** | 需重新评估 |
+| upgrade | **PASS** | 论点强化 |
+| (无触发) | **PASS** | 维持当前判断 |
+
+### 质量门条件
+
+```yaml
+quality_gate:
+  pass_criteria:
+    - "4层分析完成(L0-L3)"
+    - "证据A_tier ≥ 10"
+    - "Milestones定义(6m/12-18m/24-36m)"
+    - "RedTeam disconfirmers ≥ 3"
+
+  degrade_criteria:
+    - "证据gaps > 5"
+    - "关键里程碑无A_tier证据"
+    - "依赖kill_list存在高风险项"
+
+  fail_criteria:
+    - "kill触发器激活"
+    - "核心战略引擎证伪"
+```
+
+### Blackboard输出字段
+
+```yaml
+blackboard_outputs:
+  - field: "strategic_engines"
+    type: "array"
+    schema: "[{name, status, value_potential, dependencies}]"
+
+  - field: "real_options"
+    type: "array"
+    schema: "[{name, stage, estimated_value, kill_switch}]"
+
+  - field: "dependency_kill_list"
+    type: "array"
+    schema: "[{critical_item, risk_level}]"
+
+  - field: "thesis_milestones"
+    type: "object"
+    schema: "{6m[], 12_18m[], 24_36m[]}"
+
+  - field: "monitoring_triggers"
+    type: "object"
+    schema: "{upgrade, downgrade, kill}"
+
+  - field: "evidence_distribution"
+    type: "object"
+    schema: "{A_tier, B_tier, C_tier, gaps}"
+```
+
+### 证据层级要求
+
+| 论点类型 | 最低证据要求 |
+|----------|--------------|
+| 战略引擎存在性 | A_tier |
+| 期权价值估算 | B_tier |
+| 里程碑时间表 | A_tier (公司发布) 或 B_tier (分析师) |
+| 竞争力判断 | B_tier |
+| 终局情景 | B/C_tier |
+
+---
+
+**版本**: v1.1
+**合约版本**: skill_output_contract_v1.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构
+**状态**: 已整合到架构，合约兼容
