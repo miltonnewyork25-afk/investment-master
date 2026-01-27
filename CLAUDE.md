@@ -99,6 +99,53 @@ industry_skill_mapping:
 - 识别到"搜索/广告" → 加载 `zero_click_impact_model` + `advertising_cycle_indicator`
 - 识别到"Robotaxi/自动驾驶" → 加载 `robotaxi_valuation`
 
+### 0c. 前置学习：顶级分析师方法论 [v7.0强化]
+
+**在任何分析开始前，必须先完成以下学习步骤**：
+
+```yaml
+pre_analysis_learning:
+  step_1_search:
+    queries:
+      - "[公司名] best analyst report 2025 2026"
+      - "[公司名] investment thesis deep dive"
+      - "[公司名] bull case bear case methodology"
+      - "[公司名] valuation framework assumptions"
+      - "[ticker] top analyst research methodology"
+    sources:
+      - Seeking Alpha (长文深度分析)
+      - Substack (独立分析师)
+      - 卖方研报 (Morgan Stanley/Goldman等)
+      - 投资博客 (Yet Another Value Blog等)
+      - YouTube/Podcast (访谈/讨论)
+
+  step_2_extract:
+    for_each_report:
+      - 核心投资论点是什么？
+      - 用了什么独特模型/方法？
+      - 最敏感的变量是哪个？
+      - 他忽视了什么？（盲区）
+      - 他的预测错过什么？（历史验证）
+
+  step_3_synthesize:
+    output:
+      - 顶级分析师观点全景表（5-10位）
+      - 市场核心分歧表（3-5个）
+      - 我要超越的具体点（≥3个）
+
+  blocking_gate: |
+    ⚠️ 如果未完成前置学习，不允许进入正式分析
+    必须先输出"分析师学习笔记"才能继续
+```
+
+**为什么这样做**：
+- 避免"闭门造车"，站在巨人肩膀上
+- 快速识别市场共识和分歧点
+- 找到超越的具体方向（不是泛泛而谈）
+- 提高效率：学习30分钟 > 自己摸索3小时
+
+---
+
 ### 1. 先定义核心命题 + 核心矛盾 + 识别认知陷阱
 
 分析任何公司前，做三件事：
@@ -139,25 +186,37 @@ SaaS：ARR增速放缓 vs 利润率改善 → 增长vs效率的切换时点矛�
 
 ### 2. 深度学习顶级分析师的方法论
 
-识别5-10位该公司最顶级的分析师。**不是找目标价，是学方法论**：
+> **前置条件**：必须先完成Rule 0c的前置学习步骤
 
-对每位需要回答：
+在0c搜索学习的基础上，对5-10位最顶级分析师进行深度分析：
+
+**对每位分析师回答**：
 - 他用什么模型？模型里最敏感的变量是什么？
 - 他有什么独特数据源或观察角度？
 - 他最近一次判断错误的原因是什么？
 - 他的结构性盲区在哪？
 
-搜索方式：不搜"XX target price"，而搜"XX methodology"、"XX model assumptions"、"XX investment thesis"、"XX interview"。如果某分析师用Wright's Law，你要理解Wright's Law然后用最新数据重算。
+**搜索技巧**：不搜"XX target price"，而搜：
+- "XX methodology" / "XX model assumptions"
+- "XX investment thesis" / "XX framework"
+- "XX interview" / "XX podcast"
 
-**呈现方式**：
+如果某分析师用Wright's Law，你要理解Wright's Law然后用最新数据重算。
 
-1. 先列「顶级分析师观点全景」表（5-10位），展示市场观点分布：
-| 分析师 | 机构 | 评级 | 目标价 | 核心逻辑 | 方法论特点 |
+**标准输出格式**：
 
-2. 再列「市场核心分歧与本报告立场」表（3-5个争议点）：
-| 争议点 | 多头代表观点 | 空头代表观点 | 本报告判断 | 关键证据 |
+```markdown
+## 顶级分析师观点全景
+| 分析师 | 机构 | 评级 | 目标价 | 核心逻辑 | 方法论特点 | 盲区 |
 
-这样做的好处：读者先看到完整的市场观点图谱，再看我们在争议点上的立场——既显示我们的全面性，又突出我们的独立判断。
+## 市场核心分歧与本报告立场
+| 争议点 | 多头观点 | 空头观点 | 本报告判断 | 关键证据 | 我的超越点 |
+
+## 我要超越的3个具体方向
+1. [分析师A忽视了X，我将用Y方法深入]
+2. [分析师B的数据滞后，我将用最新Z数据更新]
+3. [所有分析师都没发现W因果链]
+```
 
 ### 3. 超越的五个具体动作
 
