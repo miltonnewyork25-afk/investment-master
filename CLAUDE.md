@@ -1,4 +1,4 @@
-# 投资研究 Agent v6.0
+# 投资研究 Agent v7.0
 
 ## 你是谁
 
@@ -44,11 +44,60 @@ skill创建/修改完成 → git add → git commit → git push
 6. 金融/银行 → NIM拆解 + 资产质量 + 资本充足率
 7. 生物医药 → 管线rNPV + 临床概率 + 现金跑道
 8. 消费品ToC → 品牌资产 + 渠道分析 + 用户LTV
+9. **AI基础设施/科技平台** [v7.0新增] → 数据护城河 + AI能力对比 + CapEx正常化 + 平台组合矩阵
 
 步骤3：确保报告≥20,000字
 ├── 各模块最小字数要求（见Rule 11）
 └── 深度达到Level 3+（机制层以上）
 ```
+
+### 0b. 行业→Skill自动映射 [v7.0新增]
+
+根据行业类型自动加载对应的专业Skills：
+
+```yaml
+industry_skill_mapping:
+  ai_tech_platform:  # Google/Meta/Amazon/Microsoft
+    required:
+      - network_effect_evaluator_v1.1  # 11模块网络效应
+      - data_moat_quantifier_v1.0       # DM_Score数据护城河
+      - platform_portfolio_matrix_v1.0   # 替代BCG的平台矩阵
+      - ai_competitive_landscape_v1.0    # AI竞争格局追踪
+      - capex_intensive_valuation_v1.0   # CapEx正常化估值
+    optional:
+      - zero_click_impact_model_v1.0     # 搜索广告公司
+      - cloud_competitive_tracker_v1.0   # 云业务公司
+      - advertising_cycle_indicator_v1.0 # 广告驱动公司
+      - robotaxi_valuation_v1.0          # Waymo/Tesla
+
+  saas_subscription:
+    required:
+      - arr_cohort_analysis
+      - rule_of_40
+      - net_dollar_retention
+    optional:
+      - moat_evaluation_framework_v1.3
+
+  platform_marketplace:
+    required:
+      - network_effect_evaluator_v1.1
+      - platform_portfolio_matrix_v1.0
+    optional:
+      - data_moat_quantifier_v1.0
+
+  manufacturing_hardware:
+    required:
+      - pvm_analysis
+      - supply_chain_risk
+
+  # 其他行业按需加载
+```
+
+**自动触发规则**：
+- 识别到"Google/Meta/Amazon/Microsoft/Anthropic/OpenAI" → 加载 `ai_tech_platform` skills
+- 识别到"Cloud/云" → 加载 `cloud_competitive_tracker`
+- 识别到"搜索/广告" → 加载 `zero_click_impact_model` + `advertising_cycle_indicator`
+- 识别到"Robotaxi/自动驾驶" → 加载 `robotaxi_valuation`
 
 ### 1. 先定义核心命题 + 核心矛盾 + 识别认知陷阱
 
@@ -201,6 +250,14 @@ Level 4 - 本质层：这家公司存在的根本原因和不可替代性（解�
 - SBC计入稀释后股数
 - 投资者情绪溢价/折价融入市价对比环节
 
+**v7.0新增估值方法**（适用于AI/科技平台）：
+- **期权价值叠加法**：核心业务估值 + AI期权 + 其他期权（参考 `ai_option_valuation` skill）
+- **正常化FCF法**：对高CapEx期公司调整FCF（参考 `capex_intensive_valuation` skill）
+  - 维护性CapEx ≈ 折旧
+  - 正常化FCF = OCF - 维护性CapEx
+- **TAM渗透法**：对早期高增长业务（参考 `robotaxi_valuation` skill）
+  - 适用于Robotaxi、AI SaaS等尚未规模化的业务
+
 ### 7. 假设证伪、反事实检验与Kill Switch
 
 每份报告必须包含：
@@ -332,10 +389,19 @@ Level 4 - 本质层：这家公司存在的根本原因和不可替代性（解�
 24. ✓ 多重估值: ≥3种方法（DCF/SOTP/可比）
 25. ✓ 市场情绪: 期权/社交/机构至少2个维度
 
+### 科技平台专项检验 [v7.0新增] (5项，仅AI/科技平台公司)
+26. ✓ 数据护城河: DM_Score已计算，竞争者追赶时间已评估
+27. ✓ AI能力对比: AIC_Score已计算，5维度评估完成
+28. ✓ CapEx正常化: 维护性vs增长性CapEx已区分，正常化FCF已计算
+29. ✓ 平台组合: 平台矩阵已画，协同效应已评估
+30. ✓ 芯片战略: 自研vs外购、NVIDIA依赖度已评估
+
 **若任一项不通过 → 返回补充，直至全部✓**
 
 ---
 
-**版本**: v6.0
-**更新日期**: 2026-01-25
-**主要改进**: 行业自适应引擎 + 字数保障(≥20K) + 深度检验(Level 3+) + 25项质量清单 + 市场情绪强化
+**版本**: v7.0
+**更新日期**: 2026-01-27
+**主要改进**:
+- v6.0: 行业自适应引擎 + 字数保障(≥20K) + 深度检验(Level 3+) + 25项质量清单 + 市场情绪强化
+- v7.0: 第9类行业(AI基础设施/科技平台) + 行业→Skill自动映射 + 3种新估值方法(期权叠加/正常化FCF/TAM渗透) + 30项质量清单(含科技平台专项5项) + 11个专业Skill集成
