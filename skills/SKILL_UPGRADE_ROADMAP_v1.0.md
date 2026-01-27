@@ -12,14 +12,18 @@
 | `ai_option_valuation` | v1.0 | ✅ 已创建 | AI期权业务估值方法缺失 |
 | `regulatory_risk_framework` | v1.0 | ✅ 已创建 | 监管风险量化不足 |
 | `macro_liquidity_regime` | v1.0 | ✅ 已创建 | 宏观流动性分析框架 |
+| `capex_intensive_valuation` | v1.0 | ✅ 已创建 | 高CapEx期FCF正常化估值 |
+| `platform_portfolio_matrix` | v1.0 | ✅ 已创建 | 替代BCG矩阵的平台分析 |
+| `data_moat_quantifier` | v1.0 | ✅ 已创建 | 数据护城河量化(DM_Score) |
+| `network_effect_evaluator` | v1.1 | ✅ 已升级 | 新增M10数据网效+M11 AI飞轮 |
 
 ---
 
 ## 二、需要新建的Skills
 
-### 2.1 高优先级（P0）
+### 2.1 高优先级（P0）- ✅ 全部完成
 
-#### Skill 1: `capex_intensive_valuation`
+#### Skill 1: `capex_intensive_valuation` ✅ 已创建
 **问题**: 高CapEx期公司（Google/Meta/Amazon）的FCF失真，传统DCF估值失效
 
 **核心功能**:
