@@ -65,19 +65,63 @@ lessons:
     effectiveness: "待验证"
     priority: "P1"
 
+  - id: "LL_007"
+    date: "2026-01-27"
+    context: "LRCX v1.0 分析"
+    category: "data_traceability"
+    lesson: "报告中数字来源不清晰（API vs 估算 vs 分析师预测混在一起）"
+    root_cause: "缺少数据来源强制标注机制"
+    action_taken: "在CLAUDE.md中添加数据分层标注要求"
+    effectiveness: "待验证"
+    priority: "P0"
+
+  - id: "LL_008"
+    date: "2026-01-27"
+    context: "LRCX v1.0 分析"
+    category: "api_utilization"
+    lesson: "100baggers API返回的7维度雷达图评分未在报告中展示"
+    root_cause: "API数据获取后未强制融入报告结构"
+    action_taken: "添加API数据展示强制清单"
+    effectiveness: "待验证"
+    priority: "P0"
+
+  - id: "LL_009"
+    date: "2026-01-27"
+    context: "LRCX v1.0 分析"
+    category: "valuation_logic"
+    lesson: "SOTP概率加权目标价($161)与最终评级目标价($250-280)存在逻辑断层"
+    root_cause: "主观情绪调整缺乏量化支撑，终端目标价反而依赖市场共识而非自己的模型"
+    action_taken: "估值必须以自己的SOTP为锚，与市场共识差距>30%必须详细解释"
+    effectiveness: "待验证"
+    priority: "P0"
+
+  - id: "LL_010"
+    date: "2026-01-27"
+    context: "LRCX v1.0 分析"
+    category: "quality_gate"
+    lesson: "质量门控声称'通过'但未显式执行每个检查项"
+    root_cause: "质量门控是文档而非强制流程"
+    action_taken: "报告末尾必须附上Quality Gate执行结果表"
+    effectiveness: "待验证"
+    priority: "P1"
+
 # 统计
 statistics:
-  total_lessons: 6
+  total_lessons: 10
   by_category:
     agent_execution: 1
     api_integration: 1
+    api_utilization: 1
     framework_design: 1
     automation: 1
     tool_integration: 1
     data_quality: 1
+    data_traceability: 1
+    valuation_logic: 1
+    quality_gate: 1
   by_priority:
-    P0: 2
-    P1: 3
+    P0: 5
+    P1: 4
     P2: 1
-  resolved: 0
-  pending: 6
+  resolved: 1
+  pending: 9
