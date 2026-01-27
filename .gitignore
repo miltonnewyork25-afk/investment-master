@@ -9,3 +9,17 @@ data/investment.db
 data/raw/
 data/processed/
 data/pipeline.log
+
+# Quality check outputs (auto-generated, can be regenerated)
+*_quality_report*.json
+*_fix_suggestions.md
+
+# Temporary and cache files
+__pycache__/
+*.pyc
+.pytest_cache/
+*.tmp
+
+# IDE
+.vscode/
+.idea/
