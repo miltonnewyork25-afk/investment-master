@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DI FactKey Builder v2.2
+  事实身份构建器 - FactKey一等公民
+  Position: Skill 3
+-->
+<skill id="di_factkey_builder_v2_2" version="2.2">
+  <metadata>
+    <name>DI FactKey Builder</name>
+    <description>构建事实身份FactKey：concept/entity/period/unit/dimensions/decimals；为对账与解释提供基准</description>
+    <position>3</position>
+    <asof>2026-01-27</asof>
+    <owner>data_integrity_agent</owner>
+  </metadata>
+
+  <inputs>
+    <param name="snapshots" type="array" required="true"/>
+    <param name="canonical_specs" type="array" required="true"/>
+    <param name="policy" type="object" required="true"/>
+  </inputs>
+
+  <outputs>
+    <param name="facts" type="array">
+      <description>带FactKey的事实列表</description>
+    </param>
+    <param name="factkey_quality_report" type="object">
+      <description>FactKey质量报告</description>
+    </param>
+  </outputs>
+
+  <workflow>
+    <step id="1" name="parse_source_facts">
+      <action>解析各源的原始事实</action>
+      <extract>
+        <field>concept (XBRL element name or key)</field>
+        <field>value</field>
+        <field>unit (measure, scale)</field>
+        <field>decimals</field>
+        <field>context (period, entity, dimensions)</field>
+      </extract>
+    </step>
+
+    <step id="2" name="extract_xbrl_identity">
+      <action>提取XBRL事实身份信息</action>
+      <for_source type="SEC_XBRL">
+        <extract>accession_number, entry_point, fact_id (fragment_ref)</extract>
+        <extract>context dimensions (segment, geography, etc.)</extract>
+      </for_source>
+    </step>
+
+    <step id="3" name="build_factkey">
+      <action>构建FactKey</action>
+      <factkey_components>
+        <component>concept</component>
+        <component>entity (ticker/cik/lei)</component>
+        <component>period_key (normalized period representation)</component>
+        <component>unit_key (normalized unit representation)</component>
+        <component>dimensions (array of axis:member pairs)</component>
+        <component>decimals</component>
+      </factkey_components>
+    </step>
+
+    <step id="4" name="attach_provenance">
+      <action>附加来源追溯信息</action>
+      <provenance_fields>
+        <field>source_id</field>
+        <field>accession_number</field>
+        <field>entry_point</field>
+        <field>fact_ref</field>
+        <field>extension_used</field>
+        <field>retrieved_at</field>
+      </provenance_fields>
+    </step>
+
+    <step id="5" name="score_factkey_quality">
+      <action>评估FactKey完整性</action>
+      <scoring>
+        <criterion weight="0.3">has_unit</criterion>
+        <criterion weight="0.2">has_decimals</criterion>
+        <criterion weight="0.2">has_dimensions_if_applicable</criterion>
+        <criterion weight="0.2">has_period_details</criterion>
+        <criterion weight="0.1">has_provenance</criterion>
+      </scoring>
+      <output>factkey_confidence per fact</output>
+    </step>
+  </workflow>
+
+  <scoring>
+    <metric name="factkey_confidence">weighted_completeness_score</metric>
+    <confidence>avg(factkey_confidence)</confidence>
+  </scoring>
+
+  <reason_codes>
+    <code severity="HIGH">DI_FACTKEY_INCOMPLETE</code>
+    <code severity="HIGH">DI_DIMENSIONS_UNRESOLVED</code>
+    <code severity="WARN">DI_DECIMALS_MISSING</code>
+    <code severity="HIGH">DI_CONCEPT_NOT_MAPPED</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>数值型fact缺unit => DI_FACTKEY_INCOMPLETE</item>
+    <item>无法解析dimensions/context => DI_DIMENSIONS_UNRESOLVED</item>
+    <item>concept无法映射到canonical key => DI_CONCEPT_NOT_MAPPED</item>
+  </disconfirmers>
+
+  <output_contract>
+    <facts>
+      [{key, value, period, unit, decimals, dimensions, fact_key, provenance, factkey_confidence}]
+    </facts>
+    <factkey_quality_report>
+      {total, complete, partial, incomplete, avg_confidence, by_source: {...}}
+    </factkey_quality_report>
+  </output_contract>
+
+  <invariants>
+    <invariant id="INV-DFB-01">每个fact必须有fact_key</invariant>
+    <invariant id="INV-DFB-02">数值型fact必须有unit</invariant>
+    <invariant id="INV-DFB-03">SEC_XBRL来源必须有accession_number</invariant>
+  </invariants>
+</skill>

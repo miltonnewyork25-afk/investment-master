@@ -1,0 +1,287 @@
+# Data Integrity Policy Pack v2.2
+# FactKey-aware arbitration + DQ suites + bridge tables + incremental snapshots
+
+policy_pack:
+  version: "di-2.2.0"
+  hash: "sha256:TO_BE_COMPUTED_AT_BUILD"
+  asof: "2026-01-27"
+  description: "Data Integrity policy pack v2.2"
+
+---
+
+# 运行不变量
+run_invariants:
+  freeze_policy_within_run: true
+  require_policy_hash_match_within_run: true
+  no_hot_reload: true
+
+---
+
+# 数据源配置
+sources:
+  allowlist:
+    - SEC_XBRL
+    - SEC_FILINGS_TEXT
+    - BROKER_API
+    - FMP
+
+  trust_rank:   # higher is better (0-1)
+    SEC_XBRL: 1.00
+    SEC_FILINGS_TEXT: 0.85
+    BROKER_API: 0.75
+    FMP: 0.60
+
+  evidence_grade:
+    A:
+      - SEC_XBRL
+      - SEC_FILINGS_TEXT
+    B:
+      - BROKER_API
+    C:
+      - FMP
+
+---
+
+# 快照配置
+snapshot:
+  mode_default: "hybrid"   # full | incremental | hybrid
+
+  hybrid:
+    full_refresh_keys:
+      - price_snapshot
+      - shares_out_diluted
+      - market_cap
+    incremental_keys_default: true
+
+  incremental:
+    delta_detection:
+      method: "payload_hash_compare"
+      reuse_if_unchanged: true
+
+  capture:
+    store_raw_payload: true
+    append_only_log: true
+    hash_chain: true
+    max_payload_size_mb: 50
+
+---
+
+# FactKey配置
+factkey:
+  # FactKey = concept + entity + period + unit + dimensions + decimals
+  match_policy:
+    default_level: "relaxed"   # strict | relaxed
+
+    relaxed_rules:
+      require_concept_match: true
+      require_entity_match: true
+      require_period_match: true
+      require_unit_match: true
+      allow_dimensions_mismatch: true   # 但必须记录为归因
+      allow_decimals_mismatch: true     # 但必须记录为归因
+
+    strict_rules:
+      require_concept_match: true
+      require_entity_match: true
+      require_period_match: true
+      require_unit_match: true
+      require_dimensions_match: true
+      require_decimals_match: true
+
+  # 按key覆盖匹配级别
+  per_key_overrides:
+    # 维度敏感的key: 必须strict
+    segment_revenue:
+      level: "strict"
+    geographic_revenue:
+      level: "strict"
+    product_revenue:
+      level: "strict"
+    derivative_notional:
+      level: "strict"
+
+    # 合并总数: 可以relaxed但要记录
+    total_revenue:
+      level: "relaxed"
+    operating_income:
+      level: "relaxed"
+    net_income:
+      level: "relaxed"
+
+---
+
+# 裁决配置
+arbitration:
+  # 冲突无法干净解决时，仍选selected_value但标记弱裁决(Option B)
+  failure_behavior:
+    mode: "select_with_low_confidence"
+    emit_selected_value: true
+    arbitration_confidence_on_failure: "LOW"
+    add_reason_codes:
+      - DI_ARBITRATION_WEAK
+      - DI_ARBITRATION_TIE
+
+  # Tie-breaker顺序
+  tie_breakers_order:
+    - trust_rank
+    - factkey_completeness     # 优先有dims+decimals的
+    - freshness_observed_at
+    - freshness_retrieved_at
+    - source_stability         # 历史冲突少的
+
+  # 偏差阈值
+  divergence_thresholds:
+    value_divergence_pct_high: 0.10      # >10%视为HIGH冲突
+    value_divergence_pct_low: 0.005      # <=0.5%可能是舍入
+
+  # 舍入规则
+  rounding_rules:
+    allow_calc_rounding_under_pct: 0.002   # 0.2%
+
+---
+
+# 冲突归因枚举
+conflict_attribution:
+  causes_enum:
+    - PERIOD_MISMATCH
+    - UNIT_MISMATCH
+    - DECIMALS_MISMATCH
+    - DIMENSIONS_MISMATCH
+    - EXTENSION_MISMATCH
+    - LATENCY_MISMATCH
+    - VALUE_DIVERGENCE
+    - CALCULATION_ROUNDING
+
+---
+
+# 桥表配置
+bridges:
+  enabled: true
+
+  tables:
+    ttm_fy:
+      enabled: true
+      method: "sum_last_4_quarters"
+      fallback: "mark_unresolved"
+      reason_code_on_fail: "DI_PERIOD_UNRESOLVED"
+
+    shares:
+      enabled: true
+      rules:
+        - name: "basic_vs_diluted_bridge"
+          allow:
+            - shares_out_basic
+            - shares_out_diluted
+          required_fields:
+            - definition
+            - unit
+            - asof_date
+
+    segment_to_consolidated:
+      enabled: true
+      method: "sum_segments_if_complete_else_flag"
+      completeness_threshold: 0.95
+      reason_code_on_incomplete: "DI_DIMENSIONS_UNRESOLVED"
+
+---
+
+# DQ配置
+dq:
+  enabled: true
+
+  suites:
+    xbrl_semantics:
+      enabled: true
+      checks:
+        - units_valid
+        - decimals_present_for_numeric
+        - precision_decimals_consistent
+        - context_period_valid
+
+    dqc_rules:
+      enabled: true
+      core_ruleset:
+        vendor: "XBRL_US_DQC"
+        version: "v28"
+        mode: "built_in_plus_external"   # Option C
+      external_paths:
+        - "dqc_rules/*.yaml"
+      severity_mapping:
+        error: "HIGH"
+        warning: "WARN"
+
+    internal_rules:
+      enabled: true
+      checks:
+        - period_consistency_ttm_fy
+        - shares_definition_unit_consistency
+        - segment_sum_sanity
+        - revenue_cost_sign_check
+
+  # DQ评分计算
+  scoring:
+    pass_weight: 1.0
+    warn_weight: 0.5
+    fail_weight: 0.0
+    dq_score_formula: "(pass*1.0 + warn*0.5) / total"
+
+---
+
+# 时效性配置
+freshness:
+  use_observed_at_first: true
+
+  max_age_seconds:
+    price_snapshot: 86400          # 1天
+    fundamentals_quarterly: 7776000   # 90天
+    fundamentals_annual: 31536000     # 1年
+    filings: 31536000                 # 1年
+
+  on_critical_stale:
+    add_reason_codes:
+      - DI_CRITICAL_STALE
+    confidence_cap_floor: 0.60
+
+---
+
+# 输出配置
+outputs:
+  require_selected_value_for_keys:
+    - total_revenue
+    - net_income
+    - shares_out_diluted
+    - eps_diluted
+
+  confidence_cap_rule:
+    mode: "min_of_upstream_and_dq"
+    dq_weight: 0.50
+    formula: "min(arbitration_confidence, dq_score * dq_weight + (1-dq_weight))"
+
+---
+
+# 集成配置
+integration:
+  qg:
+    export_confidence_cap: true
+    export_reason_codes: true
+    export_evidence_registry: true
+    export_conflicts_summary: true
+
+  eval:
+    emit_validation_result_store: true
+    emit_snapshot_hashes: true
+    emit_lineage_events: true
+
+---
+
+# 版本历史
+version_history:
+  - version: "di-2.2.0"
+    date: "2026-01-27"
+    changes:
+      - "FactKey匹配策略可配(strict/relaxed + per_key_overrides)"
+      - "裁决失败行为Option B(select_with_low_confidence)"
+      - "DQ规则Option C(core内置+external扩展)"
+      - "Bridge Tables(TTM↔FY, shares, segment)"
+      - "Incremental Snapshot模式"
+      - "Conflict Attribution细化枚举"

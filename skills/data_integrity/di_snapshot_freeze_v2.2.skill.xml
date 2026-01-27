@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DI Snapshot Freeze v2.2
+  快照冻结器 - 抓取并冻结原始快照，生成hash chain
+  Position: Skill 1
+-->
+<skill id="di_snapshot_freeze_v2_2" version="2.2">
+  <metadata>
+    <name>DI Snapshot Freeze</name>
+    <description>抓取并冻结各源原始快照；同run_id内不可变；生成hash链用于审计与复现</description>
+    <position>1</position>
+    <asof>2026-01-27</asof>
+    <owner>data_integrity_agent</owner>
+  </metadata>
+
+  <inputs>
+    <param name="run_id" type="uuid" required="true"/>
+    <param name="requests" type="array" required="true">
+      <item>{source, query, priority, critical_claim_id?}</item>
+    </param>
+    <param name="sources_allowlist" type="array" required="true"/>
+    <param name="policy" type="object" required="true"/>
+  </inputs>
+
+  <outputs>
+    <param name="snapshots" type="array">
+      <description>冻结的快照列表</description>
+    </param>
+    <param name="snapshot_index" type="object">
+      <description>快照索引供下游解析</description>
+    </param>
+    <param name="hash_chain" type="array">
+      <description>Hash链用于审计</description>
+    </param>
+    <param name="stats" type="object">
+      <description>抓取统计</description>
+    </param>
+  </outputs>
+
+  <workflow>
+    <step id="1" name="validate_sources">
+      <action>验证请求的source在allowlist中</action>
+      <on_fail>DI_SOURCE_NOT_ALLOWED</on_fail>
+    </step>
+
+    <step id="2" name="determine_fetch_mode">
+      <action>根据policy确定抓取模式(full/incremental/hybrid)</action>
+      <modes>
+        <full>完整抓取</full>
+        <incremental>增量抓取(比较prev_hash)</incremental>
+        <hybrid>关键项full，非关键incremental</hybrid>
+      </modes>
+    </step>
+
+    <step id="3" name="fetch_raw_payloads">
+      <action>从各源抓取原始payload</action>
+      <parallel>true</parallel>
+      <retry>3</retry>
+      <on_fail>DI_FETCH_FAILED</on_fail>
+      <record>retrieved_at for each</record>
+    </step>
+
+    <step id="4" name="compute_payload_hashes">
+      <action>计算每个payload的SHA256 hash</action>
+      <algorithm>SHA256(raw_payload)</algorithm>
+    </step>
+
+    <step id="5" name="build_hash_chain">
+      <action>构建append-only hash chain</action>
+      <formula>event_hash = SHA256(payload_hash + prev_hash)</formula>
+    </step>
+
+    <step id="6" name="freeze_snapshots">
+      <action>冻结快照，同run_id+source+query不可变</action>
+      <immutability>true</immutability>
+    </step>
+
+    <step id="7" name="detect_mutation">
+      <action>检测同run_id是否出现mutation</action>
+      <check>同source+query的payload_hash是否一致</check>
+      <on_mutation>DI_SNAPSHOT_MUTATION (BLOCK)</on_mutation>
+    </step>
+  </workflow>
+
+  <scoring>
+    <metric name="coverage">(succeeded / requested)</metric>
+    <confidence>coverage</confidence>
+  </scoring>
+
+  <reason_codes>
+    <code severity="CRITICAL">DI_SOURCE_NOT_ALLOWED</code>
+    <code severity="HIGH">DI_FETCH_FAILED</code>
+    <code severity="HIGH">DI_SNAPSHOT_EMPTY</code>
+    <code severity="CRITICAL">DI_SNAPSHOT_MUTATION</code>
+    <code severity="HIGH">DI_SNAPSHOT_TOO_LARGE</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>同run_id+source+query出现不同payload_hash => DI_SNAPSHOT_MUTATION (BLOCK)</item>
+    <item>payload为空 => DI_SNAPSHOT_EMPTY</item>
+  </disconfirmers>
+
+  <output_contract>
+    <snapshots>[{snapshot_id, source, retrieved_at, request_hash, payload_hash, payload_ref, size_bytes}]</snapshots>
+    <snapshot_index>{by_source: {}, by_key: {}}</snapshot_index>
+    <hash_chain>[{seq, event_hash, prev_hash, timestamp}]</hash_chain>
+    <stats>{requested, succeeded, failed, total_bytes}</stats>
+  </output_contract>
+
+  <invariants>
+    <invariant id="INV-DSF-01">同run_id+source+query的payload_hash不变</invariant>
+    <invariant id="INV-DSF-02">hash_chain必须连续且可验证</invariant>
+  </invariants>
+</skill>

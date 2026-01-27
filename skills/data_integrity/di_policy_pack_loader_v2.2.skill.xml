@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DI Policy Pack Loader v2.2
+  策略包加载器 - 加载、冻结、校验hash
+  Position: Skill 0
+-->
+<skill id="di_policy_pack_loader_v2_2" version="2.2">
+  <metadata>
+    <name>DI Policy Pack Loader</name>
+    <description>加载并冻结policy_pack，校验version+hash，确保同run_id内不可变</description>
+    <position>0</position>
+    <asof>2026-01-27</asof>
+    <owner>data_integrity_agent</owner>
+  </metadata>
+
+  <inputs>
+    <param name="policy_pack_path" type="string" required="true">
+      <description>策略包文件路径</description>
+    </param>
+    <param name="expected_version" type="string" required="false">
+      <description>期望的策略包版本（可选校验）</description>
+    </param>
+    <param name="expected_hash" type="string" required="false">
+      <description>期望的内容哈希（可选校验）</description>
+    </param>
+  </inputs>
+
+  <outputs>
+    <param name="policy" type="object">
+      <description>已加载的策略包对象</description>
+    </param>
+    <param name="policy_version" type="string">
+      <description>策略包版本号</description>
+    </param>
+    <param name="policy_hash" type="string">
+      <description>策略包内容哈希</description>
+    </param>
+    <param name="frozen_at" type="datetime">
+      <description>冻结时间戳</description>
+    </param>
+  </outputs>
+
+  <workflow>
+    <step id="1" name="load_policy_file">
+      <action>读取策略包YAML文件</action>
+      <validation>
+        <check>文件存在且可读</check>
+        <check>YAML格式有效</check>
+      </validation>
+      <on_fail>DI_POLICY_NOT_FOUND</on_fail>
+    </step>
+
+    <step id="2" name="compute_content_hash">
+      <action>计算策略包内容的SHA256哈希</action>
+      <algorithm>SHA256(canonical_yaml_content)</algorithm>
+      <output_format>sha256:hexdigest</output_format>
+    </step>
+
+    <step id="3" name="validate_version_hash">
+      <action>验证版本和哈希</action>
+      <conditions>
+        <if test="expected_version provided AND mismatch">
+          <emit>DI_POLICY_SCHEMA_INVALID</emit>
+        </if>
+        <if test="expected_hash provided AND mismatch">
+          <emit>DI_POLICY_HASH_MISMATCH</emit>
+        </if>
+      </conditions>
+    </step>
+
+    <step id="4" name="validate_schema">
+      <action>验证必需字段</action>
+      <required_fields>
+        <field>policy_pack.version</field>
+        <field>sources.allowlist</field>
+        <field>sources.trust_rank</field>
+        <field>factkey.match_policy</field>
+        <field>arbitration</field>
+        <field>dq.suites</field>
+      </required_fields>
+      <on_missing>DI_POLICY_SCHEMA_INVALID</on_missing>
+    </step>
+
+    <step id="5" name="freeze_policy">
+      <action>冻结策略包，同run_id内不可变</action>
+      <immutability>true</immutability>
+    </step>
+  </workflow>
+
+  <scoring>
+    <metric name="load_success" type="binary">1 if loaded else 0</metric>
+    <confidence>load_success</confidence>
+  </scoring>
+
+  <reason_codes>
+    <code severity="CRITICAL">DI_POLICY_NOT_FOUND</code>
+    <code severity="CRITICAL">DI_POLICY_HASH_MISMATCH</code>
+    <code severity="CRITICAL">DI_POLICY_SCHEMA_INVALID</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>同run_id内policy_hash变化 => DI_POLICY_HASH_MISMATCH (BLOCK)</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="policy">frozen_policy_object</field>
+    <field name="policy_version">policy.version</field>
+    <field name="policy_hash">computed_hash</field>
+    <field name="frozen_at">current_timestamp</field>
+  </output_contract>
+
+  <invariants>
+    <invariant id="INV-DPL-01">同run_id内policy_hash不变</invariant>
+    <invariant id="INV-DPL-02">冻结后不可热加载</invariant>
+  </invariants>
+</skill>

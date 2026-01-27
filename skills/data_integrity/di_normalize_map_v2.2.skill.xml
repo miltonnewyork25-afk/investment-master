@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DI Normalize & Map v2.2
+  规范化映射器 - 映射到canonical schema
+  Position: Skill 4
+-->
+<skill id="di_normalize_map_v2_2" version="2.2">
+  <metadata>
+    <name>DI Normalize &amp; Map</name>
+    <description>将各源facts映射为canonical datapoints：统一period/unit/scale/definition；保留原始fact_key与来源引用</description>
+    <position>4</position>
+    <asof>2026-01-27</asof>
+    <owner>data_integrity_agent</owner>
+  </metadata>
+
+  <inputs>
+    <param name="facts" type="array" required="true">
+      <description>带FactKey的事实列表</description>
+    </param>
+    <param name="canonical_specs" type="array" required="true">
+      <description>规范化定义列表</description>
+    </param>
+    <param name="bridge_tables" type="object" required="true">
+      <description>桥表配置</description>
+    </param>
+    <param name="policy" type="object" required="true"/>
+  </inputs>
+
+  <outputs>
+    <param name="canonical_datapoints" type="array">
+      <description>规范化后的数据点列表</description>
+    </param>
+    <param name="normalization_notes" type="array">
+      <description>标准化过程的注释记录</description>
+    </param>
+  </outputs>
+
+  <workflow>
+    <step id="1" name="map_concept_to_key">
+      <action>将source concept映射到canonical key</action>
+      <methods>
+        <method>exact_match (gaap_concepts, ifrs_concepts)</method>
+        <method>pattern_match (extension patterns)</method>
+        <method>semantic_match (definition similarity)</method>
+      </methods>
+      <on_fail>DI_CONCEPT_NOT_MAPPED</on_fail>
+    </step>
+
+    <step id="2" name="resolve_period">
+      <action>确定性解析period</action>
+      <resolution>
+        <detect>FY / Q1-Q4 / TTM / ASOF / INSTANT</detect>
+        <use>source context when available</use>
+        <apply>bridge_tables.ttm_fy if conversion needed</apply>
+      </resolution>
+      <on_fail>DI_PERIOD_UNRESOLVED</on_fail>
+    </step>
+
+    <step id="3" name="normalize_unit_scale">
+      <action>标准化unit和scale</action>
+      <normalization>
+        <convert_to>allowed_units from canonical_spec</convert_to>
+        <scale_to>specified scale (units/thousands/millions/billions)</scale_to>
+        <record>original_unit, conversion_factor</record>
+      </normalization>
+      <on_fail>DI_UNIT_UNRESOLVED</on_fail>
+      <on_suspicious>DI_SCALE_SUSPECTED</on_suspicious>
+    </step>
+
+    <step id="4" name="apply_bridges">
+      <action>应用桥表转换</action>
+      <bridges>
+        <bridge name="shares">
+          <apply>basic_vs_diluted口径桥</apply>
+          <record>bridge_applied, original_definition</record>
+        </bridge>
+        <bridge name="segment_to_consolidated">
+          <apply>segment合并规则</apply>
+          <check>completeness_threshold</check>
+        </bridge>
+      </bridges>
+    </step>
+
+    <step id="5" name="attach_definition">
+      <action>附加canonical定义</action>
+      <fields>
+        <field>definition (from canonical_spec)</field>
+        <field>datatype</field>
+        <field>decimals_policy</field>
+      </fields>
+    </step>
+
+    <step id="6" name="compute_preliminary_confidence">
+      <action>计算初步置信度</action>
+      <factors>
+        <factor weight="0.3">mapping_confidence</factor>
+        <factor weight="0.3">factkey_confidence</factor>
+        <factor weight="0.2">period_resolution_confidence</factor>
+        <factor weight="0.2">unit_normalization_confidence</factor>
+      </factors>
+    </step>
+
+    <step id="7" name="emit_datapoints">
+      <action>输出规范化数据点</action>
+      <preserve>
+        <field>fact_key (original)</field>
+        <field>provenance</field>
+        <field>reason_codes if any</field>
+      </preserve>
+    </step>
+  </workflow>
+
+  <scoring>
+    <metric name="mapping_confidence">successful_mappings / total_facts</metric>
+    <confidence>avg(preliminary_confidence)</confidence>
+  </scoring>
+
+  <reason_codes>
+    <code severity="HIGH">DI_CONCEPT_NOT_MAPPED</code>
+    <code severity="HIGH">DI_PERIOD_UNRESOLVED</code>
+    <code severity="HIGH">DI_UNIT_UNRESOLVED</code>
+    <code severity="WARN">DI_SCALE_SUSPECTED</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>period无法解析 => DI_PERIOD_UNRESOLVED，保留原值并降级</item>
+    <item>unit无法标准化 => DI_UNIT_UNRESOLVED，保留原值并降级</item>
+    <item>scale可疑(如值差1000倍) => DI_SCALE_SUSPECTED，记录但继续</item>
+  </disconfirmers>
+
+  <output_contract>
+    <canonical_datapoints>
+      [{id, key, value, unit, definition, period, fact_key, provenance, confidence, reason_codes}]
+    </canonical_datapoints>
+    <normalization_notes>
+      [{datapoint_id, note_type, original_value, normalized_value, conversion_factor, bridge_applied}]
+    </normalization_notes>
+  </output_contract>
+
+  <invariants>
+    <invariant id="INV-DNM-01">每个datapoint必须有key</invariant>
+    <invariant id="INV-DNM-02">原始fact_key和provenance必须保留</invariant>
+    <invariant id="INV-DNM-03">标准化转换必须可逆(记录conversion_factor)</invariant>
+  </invariants>
+</skill>

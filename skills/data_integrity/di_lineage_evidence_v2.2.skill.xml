@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DI Lineage + Evidence v2.2
+  血缘与证据绑定器 - OpenLineage兼容
+  Position: Skill 8
+-->
+<skill id="di_lineage_evidence_v2_2" version="2.2">
+  <metadata>
+    <name>DI Lineage + Evidence Binder</name>
+    <description>生成append-only lineage事件(兼容OpenLineage)并绑定证据：datapoint→accession/fact_ref/fragment_ref + A/B/C分级</description>
+    <position>8</position>
+    <asof>2026-01-27</asof>
+    <owner>data_integrity_agent</owner>
+  </metadata>
+
+  <inputs>
+    <param name="run_id" type="uuid" required="true"/>
+    <param name="snapshots" type="array" required="true"/>
+    <param name="selected_bundle" type="array" required="true"/>
+    <param name="validation_result" type="object" required="true"/>
+    <param name="policy" type="object" required="true"/>
+  </inputs>
+
+  <outputs>
+    <param name="lineage_events" type="array">
+      <description>OpenLineage兼容的血缘事件</description>
+    </param>
+    <param name="evidence_registry" type="object">
+      <description>证据注册表</description>
+    </param>
+    <param name="stats" type="object">
+      <description>统计信息(ab_coverage, unsupported_ratio)</description>
+    </param>
+  </outputs>
+
+  <workflow>
+    <step id="1" name="emit_start_event">
+      <action>发出START事件</action>
+      <event_type>START</event_type>
+      <facets>
+        <run>run_id, parent_run_id (if any)</run>
+        <job>namespace: data_integrity_agent, name: di_lineage_evidence</job>
+        <inputs>snapshots as datasets</inputs>
+      </facets>
+    </step>
+
+    <step id="2" name="bind_evidence">
+      <action>为每个selected datapoint绑定证据</action>
+      <for_each datapoint="selected_bundle">
+        <create_evidence_entry>
+          <field name="datapoint_id">datapoint.id</field>
+          <field name="key">datapoint.key</field>
+          <field name="source_id">datapoint.provenance.source_id</field>
+          <field name="accession_number">datapoint.provenance.accession_number</field>
+          <field name="fact_ref">datapoint.provenance.fact_id</field>
+          <field name="fragment_ref">datapoint.provenance.fragment_ref</field>
+          <field name="grade">lookup(policy.sources.evidence_grade, source_id)</field>
+          <field name="retrieved_at">datapoint.provenance.retrieved_at</field>
+          <field name="observed_at">datapoint.provenance.observed_at</field>
+        </create_evidence_entry>
+      </for_each>
+    </step>
+
+    <step id="3" name="check_traceability">
+      <action>检查可追溯性</action>
+      <check>每个selected_value必须有source_id和fact_ref/fragment_ref</check>
+      <on_missing>DI_UNTRACEABLE_DATAPOINT</on_missing>
+    </step>
+
+    <step id="4" name="compute_coverage">
+      <action>计算证据覆盖率</action>
+      <metrics>
+        <metric name="ab_coverage">
+          <formula>(grade_a_count + grade_b_count) / total</formula>
+        </metric>
+        <metric name="unsupported_ratio">
+          <formula>no_evidence_count / total</formula>
+        </metric>
+      </metrics>
+      <if ab_coverage_low="true">
+        <add_code>DI_EVIDENCE_GAP</add_code>
+      </if>
+    </step>
+
+    <step id="5" name="build_hash_chain">
+      <action>构建事件hash chain</action>
+      <for_each event="events">
+        <compute>event_hash = SHA256(event_content + prev_hash)</compute>
+      </for_each>
+    </step>
+
+    <step id="6" name="emit_complete_event">
+      <action>发出COMPLETE/FAIL事件</action>
+      <event_type>COMPLETE or FAIL (based on status)</event_type>
+      <facets>
+        <outputs>selected_bundle as datasets</outputs>
+        <di_facets>
+          <policy_version>policy.version</policy_version>
+          <policy_hash>policy.hash</policy_hash>
+          <entity>ticker, cik</entity>
+          <stats>datapoints_requested, resolved, conflicts, dq_score</stats>
+          <reason_codes>collected_codes</reason_codes>
+        </di_facets>
+      </facets>
+    </step>
+
+    <step id="7" name="append_log">
+      <action>追加到append-only日志</action>
+      <storage>lineage_logs/{run_id}.jsonl</storage>
+      <immutable>true</immutable>
+    </step>
+  </workflow>
+
+  <scoring>
+    <metric name="lineage_completeness">events_with_hash / total_events</metric>
+    <confidence>min(lineage_completeness, ab_coverage)</confidence>
+  </scoring>
+
+  <reason_codes>
+    <code severity="HIGH">DI_LINEAGE_MISSING</code>
+    <code severity="CRITICAL">DI_UNTRACEABLE_DATAPOINT</code>
+    <code severity="HIGH">DI_EVIDENCE_GAP</code>
+    <code severity="CRITICAL">DI_HASH_CHAIN_BROKEN</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>selected_value无source_id/fact_ref => DI_UNTRACEABLE_DATAPOINT (不可审计)</item>
+    <item>A/B证据覆盖率低 => DI_EVIDENCE_GAP</item>
+    <item>hash chain断裂 => DI_HASH_CHAIN_BROKEN (BLOCK)</item>
+  </disconfirmers>
+
+  <output_contract>
+    <lineage_events>
+      [{event_id, event_type, event_time, run, job, inputs, outputs, di_facets, hash_chain: {event_hash, prev_hash}}]
+    </lineage_events>
+    <evidence_registry>
+      {
+        run_id,
+        entries: [{datapoint_id, key, source_id, grade, accession_number, fact_ref, fragment_ref, retrieved_at, observed_at}],
+        stats: {total, grade_a, grade_b, grade_c, ab_coverage, unsupported_ratio}
+      }
+    </evidence_registry>
+    <stats>
+      {ab_coverage, unsupported_ratio, lineage_completeness}
+    </stats>
+  </output_contract>
+
+  <invariants>
+    <invariant id="INV-DLE-01">每个selected datapoint必须有evidence entry</invariant>
+    <invariant id="INV-DLE-02">lineage log必须append-only</invariant>
+    <invariant id="INV-DLE-03">hash chain必须连续可验证</invariant>
+  </invariants>
+</skill>

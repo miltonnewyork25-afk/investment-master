@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DI DQ Validation v2.2
+  数据质量验证器 - 三层规则包
+  Position: Skill 6
+-->
+<skill id="di_dq_validation_v2_2" version="2.2">
+  <metadata>
+    <name>DI DQ Validation Suites</name>
+    <description>运行DQ规则包并产出可存档ValidationResult：XBRL语义/DQC规则/内部口径规则</description>
+    <position>6</position>
+    <asof>2026-01-27</asof>
+    <owner>data_integrity_agent</owner>
+  </metadata>
+
+  <inputs>
+    <param name="canonical_datapoints" type="array" required="true"/>
+    <param name="selected_bundle" type="array" required="true"/>
+    <param name="dq_suites" type="object" required="true">
+      <fields>xbrl_semantics, dqc_rules, internal_rules</fields>
+    </param>
+    <param name="policy" type="object" required="true"/>
+  </inputs>
+
+  <outputs>
+    <param name="validation_result" type="object">
+      <description>可存档的验证结果(GE兼容)</description>
+    </param>
+    <param name="dq_score" type="number">
+      <description>DQ评分(0-100)</description>
+    </param>
+  </outputs>
+
+  <workflow>
+    <step id="1" name="run_xbrl_semantics">
+      <action>运行XBRL语义检查</action>
+      <checks>
+        <check name="units_valid">
+          <rule>unit必须在XBRL registry或扩展中定义</rule>
+        </check>
+        <check name="decimals_present_for_numeric">
+          <rule>数值型fact必须有decimals属性</rule>
+        </check>
+        <check name="precision_decimals_consistent">
+          <rule>precision和decimals不能同时出现且不一致</rule>
+        </check>
+        <check name="context_period_valid">
+          <rule>context的period必须有效(startDate < endDate)</rule>
+        </check>
+      </checks>
+      <on_fail>DI_XBRL_SEMANTICS_FAIL</on_fail>
+    </step>
+
+    <step id="2" name="run_dqc_rules">
+      <action>运行DQC approved validation rules</action>
+      <ruleset>
+        <core>XBRL_US_DQC v28 (built-in)</core>
+        <external>dqc_rules/*.yaml</external>
+      </ruleset>
+      <rule_examples>
+        <rule id="DQC_0001">Axis with inappropriate members</rule>
+        <rule id="DQC_0004">Element values are equal</rule>
+        <rule id="DQC_0005">Context dates after period end date</rule>
+        <rule id="DQC_0006">DEI and block tag date contexts</rule>
+        <rule id="DQC_0009">Element used with incorrect dimensions</rule>
+      </rule_examples>
+      <on_fail>DI_DQC_RULE_FAIL</on_fail>
+    </step>
+
+    <step id="3" name="run_internal_rules">
+      <action>运行内部口径规则</action>
+      <checks>
+        <check name="period_consistency_ttm_fy">
+          <rule>TTM和FY数据应一致(考虑时间差)</rule>
+        </check>
+        <check name="shares_definition_unit_consistency">
+          <rule>shares数据的definition和unit必须匹配</rule>
+        </check>
+        <check name="segment_sum_sanity">
+          <rule>segment之和应接近consolidated总数</rule>
+        </check>
+        <check name="revenue_cost_sign_check">
+          <rule>revenue为正，cost/expense为负</rule>
+        </check>
+      </checks>
+      <on_fail>DI_INTERNAL_RULE_FAIL</on_fail>
+    </step>
+
+    <step id="4" name="aggregate_results">
+      <action>聚合验证结果</action>
+      <per_check>
+        <status>PASS / WARN / FAIL</status>
+        <affected_datapoints>list</affected_datapoints>
+        <message>explanation</message>
+      </per_check>
+    </step>
+
+    <step id="5" name="compute_dq_score">
+      <action>计算DQ评分</action>
+      <formula>
+        dq_score = (pass_count * 1.0 + warn_count * 0.5 + fail_count * 0.0) / total_checks * 100
+      </formula>
+    </step>
+
+    <step id="6" name="build_validation_result">
+      <action>构建可存档的ValidationResult</action>
+      <format>GE ExpectationSuiteValidationResult兼容</format>
+      <fields>
+        <field>run_id</field>
+        <field>suite_name</field>
+        <field>results (per check)</field>
+        <field>statistics</field>
+        <field>meta (policy_version, timestamp)</field>
+      </fields>
+    </step>
+
+    <step id="7" name="store_result">
+      <action>存档ValidationResult</action>
+      <storage>validation_results/{run_id}/</storage>
+      <format>JSON</format>
+      <retention>365 days</retention>
+    </step>
+  </workflow>
+
+  <scoring>
+    <metric name="dq_score">0-100</metric>
+    <confidence>dq_score / 100</confidence>
+  </scoring>
+
+  <reason_codes>
+    <code severity="HIGH">DI_XBRL_SEMANTICS_FAIL</code>
+    <code severity="HIGH">DI_DQC_RULE_FAIL</code>
+    <code severity="HIGH">DI_INTERNAL_RULE_FAIL</code>
+    <code severity="WARN">DI_DQ_SUITE_NOT_FOUND</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>任何FAIL不得隐藏；必须进入reason_codes并降低confidence_cap</item>
+    <item>DQC规则FAIL应记录具体rule_id</item>
+  </disconfirmers>
+
+  <output_contract>
+    <validation_result>
+      {
+        run_id,
+        suite_results: [
+          {suite: "xbrl_semantics", checks: [{name, status, affected, message}]},
+          {suite: "dqc_rules", checks: [{rule_id, status, affected, message}]},
+          {suite: "internal_rules", checks: [{name, status, affected, message}]}
+        ],
+        statistics: {total, pass, warn, fail},
+        dq_score,
+        refs: [datapoint_ids],
+        timestamp
+      }
+    </validation_result>
+    <dq_score>0-100</dq_score>
+  </output_contract>
+
+  <invariants>
+    <invariant id="INV-DDV-01">ValidationResult必须存档</invariant>
+    <invariant id="INV-DDV-02">FAIL不得隐藏</invariant>
+    <invariant id="INV-DDV-03">DQC规则版本必须记录</invariant>
+  </invariants>
+</skill>

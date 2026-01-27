@@ -1,0 +1,244 @@
+# Data Integrity Agent v2.2
+# 数据完整性智能体 - 审计就绪的规范化数据层
+# FactKey一等公民 + 裁决必须产出selected_value + DQ三层规则包
+
+agent:
+  id: data_integrity_agent
+  version: "2.2"
+  name: "Data Integrity Agent"
+  description: |
+    为下游(Quality Gate/Valuation/Ecosystem/Report/Eval)提供审计就绪的规范化数据层：
+    - Canonical Datapoints（统一口径）
+    - Reconciliation + Arbitration（跨源对账 + 冲突裁决：选用值/备选值/原因）
+    - DQ Validation Results（可执行质量规则 → 可存档结果）
+    - Lineage（append-only血缘事件，支持回放/复盘）
+    - Reason Codes（可路由回退）
+
+    强约束：不做投资结论、不"猜值"补缺；所有不确定必须通过reason_codes+降级表达。
+
+---
+
+# 理论基础
+theory_foundation:
+  xbrl:
+    - name: "SEC EDGAR XBRL Guide"
+      application: "FactKey身份、extensions/instances规则"
+      ref: "https://www.sec.gov/files/edgar/filer-information/specifications/xbrl-guide.pdf"
+
+    - name: "XBRL Precision, Decimals and Units"
+      application: "数值语义：decimals/units/precision一致性"
+      ref: "https://www.xbrl.org/WGN/precision-decimals-units/WGN-2017-01-11/"
+
+  data_quality:
+    - name: "XBRL US DQC Approved Rules"
+      application: "DQ可执行规则库"
+      ref: "https://xbrl.us/home/priorities/data-quality/rules-guidance/"
+
+    - name: "Great Expectations ValidationResult"
+      application: "DQ结果存档与回归"
+      ref: "https://docs.greatexpectations.io/docs/reference/learn/terms/validation_result"
+
+  lineage:
+    - name: "OpenLineage Specification"
+      application: "血缘事件标准化"
+      ref: "https://openlineage.io/docs/spec/facets/"
+
+---
+
+# 核心设计原则
+design_principles:
+  factkey_first_class:
+    description: "FactKey(concept+entity+period+unit+dimensions+decimals)是事实身份的唯一标准"
+    implementation: "先定事实身份，再做映射与对账"
+
+  arbitration_must_select:
+    description: "对账必须裁决产出selected_value，否则下游无法自动化"
+    implementation: "即使弱裁决也要选值，通过confidence+reason_codes传递不确定性"
+
+  dq_executable:
+    description: "DQ规则必须可执行、结果必须可存档"
+    implementation: "三层规则包(XBRL语义/DQC/内部) + ValidationResult存档"
+
+  lineage_standardized:
+    description: "血缘必须标准化(OpenLineage兼容)，支持回放/复盘"
+    implementation: "append-only事件日志 + hash chain"
+
+  no_guessing:
+    description: "不猜值补缺，所有不确定通过reason_codes表达"
+    implementation: "缺失/冲突/弱裁决都有对应reason_code"
+
+---
+
+# Skill 依赖图
+skill_dependency:
+  graph: |
+    Skill 0 (Policy Pack Loader)
+       ↓
+    Skill 1 (Snapshot Freeze)
+       ↓
+    ┌──────────────────────────────────────────┐
+    │  Skill 2 (Canonical Dictionary)          │
+    │  Skill 3 (FactKey Builder)               │  ← 并行
+    └──────────────────────────────────────────┘
+       ↓
+    Skill 4 (Normalize & Map)
+       ↓
+    Skill 5 (Reconcile + Arbitration)
+       ↓
+    ┌──────────────────────────────────────────┐
+    │  Skill 6 (DQ Validation Suites)          │
+    │  Skill 7 (Freshness/Staleness)           │  ← 并行
+    └──────────────────────────────────────────┘
+       ↓
+    Skill 8 (Lineage + Evidence Binder)
+
+  execution_order:
+    sequential_init: [0, 1]
+    parallel_prep: [2, 3]
+    sequential_core: [4, 5]
+    parallel_validation: [6, 7]
+    final: [8]
+
+---
+
+# 9 Core Skills
+skills:
+  - id: di_policy_pack_loader_v2_2
+    file: "di_policy_pack_loader_v2.2.skill.xml"
+    position: 0
+    purpose: "加载并冻结policy_pack，校验version+hash"
+    key_outputs: ["policy", "policy_hash", "frozen_at"]
+
+  - id: di_snapshot_freeze_v2_2
+    file: "di_snapshot_freeze_v2.2.skill.xml"
+    position: 1
+    purpose: "抓取并冻结各源原始快照，生成hash chain"
+    key_outputs: ["snapshots", "snapshot_index", "hash_chain"]
+
+  - id: di_canonical_dictionary_v2_2
+    file: "di_canonical_dictionary_v2.2.skill.xml"
+    position: 2
+    purpose: "加载指标定义字典，提供统一坐标系"
+    key_outputs: ["canonical_specs", "bridge_tables"]
+
+  - id: di_factkey_builder_v2_2
+    file: "di_factkey_builder_v2.2.skill.xml"
+    position: 3
+    purpose: "构建事实身份FactKey"
+    key_outputs: ["facts_with_factkey", "factkey_quality_report"]
+
+  - id: di_normalize_map_v2_2
+    file: "di_normalize_map_v2.2.skill.xml"
+    position: 4
+    purpose: "映射到canonical schema，统一period/unit/scale"
+    key_outputs: ["canonical_datapoints", "normalization_notes"]
+
+  - id: di_reconcile_arbitrate_v2_2
+    file: "di_reconcile_arbitrate_v2.2.skill.xml"
+    position: 5
+    purpose: "跨源对账+冲突裁决，必须产出selected_value"
+    key_outputs: ["selected_bundle", "data_confidence_report", "conflicts"]
+
+  - id: di_dq_validation_v2_2
+    file: "di_dq_validation_v2.2.skill.xml"
+    position: 6
+    purpose: "运行DQ三层规则包，产出ValidationResult"
+    key_outputs: ["validation_result", "dq_score"]
+
+  - id: di_freshness_staleness_v2_2
+    file: "di_freshness_staleness_v2.2.skill.xml"
+    position: 7
+    purpose: "评估数据时效，标记stale/fresh"
+    key_outputs: ["freshness_report", "stale_flags"]
+
+  - id: di_lineage_evidence_v2_2
+    file: "di_lineage_evidence_v2.2.skill.xml"
+    position: 8
+    purpose: "生成OpenLineage兼容血缘事件，绑定证据"
+    key_outputs: ["lineage_events", "evidence_registry"]
+
+---
+
+# 输入输出规范
+io_spec:
+  input:
+    from_run_context:
+      - run_id: "本次运行UUID"
+      - entity: "{ticker, cik?}"
+      - requested_datapoints: "[{key, period_hint?, unit_hint?, priority, critical_claim_id?}]"
+      - sources_allowlist: "[SEC_XBRL, SEC_FILINGS_TEXT, FMP, BROKER_API...]"
+      - policy_pack: "版本化策略包"
+
+  output:
+    canonical_datapoint_bundle:
+      description: "规范化数据点集合"
+      fields:
+        - datapoints: "每个含key/value/unit/period/fact_key/selected_value/alternates/provenance/confidence"
+
+    data_confidence_report:
+      description: "数据置信度报告"
+      fields:
+        - coverage: "请求覆盖率、关键项缺失数"
+        - conflicts: "冲突分组、严重级别、归因"
+        - arbitrations: "每个关键datapoint的裁决记录"
+        - confidence_cap: "下游置信度上限"
+
+    lineage_log:
+      description: "OpenLineage兼容血缘日志"
+      format: "append-only JSONL"
+
+    evidence_registry:
+      description: "证据注册表"
+      format: "datapoint → {source, accession, fragment_ref, grade}"
+
+---
+
+# 冲突归因枚举
+conflict_attribution:
+  causes:
+    - PERIOD_MISMATCH        # FY vs Q vs TTM
+    - UNIT_MISMATCH          # USD vs USD_millions
+    - DECIMALS_MISMATCH      # precision不同
+    - DIMENSIONS_MISMATCH    # segment/geography不同
+    - EXTENSION_MISMATCH     # 公司扩展tag不同
+    - LATENCY_MISMATCH       # 数据时点不同
+    - VALUE_DIVERGENCE       # 同口径但数值差异>阈值
+    - CALCULATION_ROUNDING   # 计算舍入导致的微小差异
+
+---
+
+# 与其他Agent的集成
+integration:
+  quality_gate:
+    exports:
+      - confidence_cap
+      - reason_codes
+      - evidence_registry
+      - conflicts_summary
+    triggers:
+      - on_critical_missing: "QG DEGRADE"
+      - on_arbitration_weak: "QG DEGRADE"
+
+  eval_agent:
+    exports:
+      - validation_result_store
+      - snapshot_hashes
+      - lineage_events
+    usage: "回归测试、趋势对比"
+
+---
+
+# 版本历史
+version_history:
+  - version: "2.2"
+    date: "2026-01-27"
+    changes:
+      - "FactKey一等公民(concept+entity+period+unit+dimensions+decimals)"
+      - "裁决必须产出selected_value(Option B: 弱裁决也要选值)"
+      - "DQ三层规则包(XBRL语义/DQC/内部)"
+      - "ValidationResult存档(GE兼容)"
+      - "OpenLineage兼容血缘"
+      - "Bridge Tables(TTM↔FY, shares口径, segment合并)"
+      - "Incremental Snapshot模式"
+      - "新增Skill0 Policy Pack Loader"
+      - "Conflict Attribution细化枚举"

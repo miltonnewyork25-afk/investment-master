@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DI Canonical Dictionary v2.2
+  指标定义字典 - 提供统一坐标系
+  Position: Skill 2
+-->
+<skill id="di_canonical_dictionary_v2_2" version="2.2">
+  <metadata>
+    <name>DI Canonical Dictionary</name>
+    <description>加载指标定义字典：definition+datatype+allowed_units+period_rules+decimals_policy，提供统一坐标系</description>
+    <position>2</position>
+    <asof>2026-01-27</asof>
+    <owner>data_integrity_agent</owner>
+  </metadata>
+
+  <inputs>
+    <param name="keys" type="array" required="true">
+      <item>{key, period_hint?, unit_hint?}</item>
+    </param>
+    <param name="policy" type="object" required="true"/>
+  </inputs>
+
+  <outputs>
+    <param name="canonical_specs" type="array">
+      <description>规范化定义列表</description>
+    </param>
+    <param name="bridge_tables" type="object">
+      <description>桥表配置(TTM↔FY, shares, segment)</description>
+    </param>
+    <param name="mapping_hints" type="object">
+      <description>XBRL concept映射提示</description>
+    </param>
+  </outputs>
+
+  <workflow>
+    <step id="1" name="load_dictionary">
+      <action>加载canonical指标定义字典</action>
+      <source>内置字典 + 扩展字典</source>
+    </step>
+
+    <step id="2" name="lookup_specs">
+      <action>查找每个key的定义</action>
+      <for_each key="requested_keys">
+        <lookup>canonical_dictionary[key]</lookup>
+        <on_not_found>DI_UNKNOWN_KEY</on_not_found>
+      </for_each>
+    </step>
+
+    <step id="3" name="resolve_ambiguity">
+      <action>解决定义歧义</action>
+      <use_hints>period_hint, unit_hint</use_hints>
+      <on_ambiguous>DI_AMBIGUOUS_DEFINITION</on_ambiguous>
+    </step>
+
+    <step id="4" name="load_bridge_tables">
+      <action>加载桥表配置</action>
+      <tables>
+        <table name="ttm_fy">TTM ↔ FY转换规则</table>
+        <table name="shares">basic vs diluted口径桥</table>
+        <table name="segment_to_consolidated">segment → consolidated合并</table>
+      </tables>
+    </step>
+
+    <step id="5" name="generate_mapping_hints">
+      <action>生成XBRL concept映射提示</action>
+      <output>gaap_tag_hint, ifrs_tag_hint, extension_patterns</output>
+    </step>
+  </workflow>
+
+  <scoring>
+    <metric name="dict_hit_rate">(found / requested)</metric>
+    <confidence>dict_hit_rate</confidence>
+  </scoring>
+
+  <reason_codes>
+    <code severity="HIGH">DI_UNKNOWN_KEY</code>
+    <code severity="HIGH">DI_AMBIGUOUS_DEFINITION</code>
+    <code severity="HIGH">DI_UNIT_POLICY_MISSING</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>关键key无definition => DI_UNKNOWN_KEY，不得猜测</item>
+    <item>多个可能定义且无法消歧 => DI_AMBIGUOUS_DEFINITION</item>
+  </disconfirmers>
+
+  <output_contract>
+    <canonical_specs>
+      [{key, definition, datatype, allowed_units, period_rules, decimals_policy, gaap_concepts, ifrs_concepts}]
+    </canonical_specs>
+    <bridge_tables>
+      {ttm_fy: {...}, shares: {...}, segment_to_consolidated: {...}}
+    </bridge_tables>
+    <mapping_hints>
+      {by_key: {key: [possible_concepts]}}
+    </mapping_hints>
+  </output_contract>
+
+  <invariants>
+    <invariant id="INV-DCD-01">已定义的key必须有完整spec</invariant>
+    <invariant id="INV-DCD-02">bridge_tables必须有fallback策略</invariant>
+  </invariants>
+</skill>

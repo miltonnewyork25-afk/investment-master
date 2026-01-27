@@ -1,0 +1,329 @@
+# Data Integrity Lineage Event Schema
+# OpenLineage兼容的血缘事件格式
+
+version: "1.0"
+asof: "2026-01-27"
+compatibility: "OpenLineage 1.0"
+
+---
+
+# 事件类型
+event_types:
+  - START      # 任务开始
+  - COMPLETE   # 任务成功完成
+  - FAIL       # 任务失败
+  - ABORT      # 任务中止
+
+---
+
+# Lineage Event Schema (OpenLineage兼容)
+lineage_event_schema:
+  type: object
+  required:
+    - event_id
+    - event_type
+    - event_time
+    - run
+    - job
+
+  properties:
+    event_id:
+      type: string
+      format: uuid
+      description: "事件唯一标识"
+
+    event_type:
+      type: string
+      enum: ["START", "COMPLETE", "FAIL", "ABORT"]
+      description: "事件类型"
+
+    event_time:
+      type: string
+      format: date-time
+      description: "事件时间(ISO8601)"
+
+    # Run Facet (OpenLineage)
+    run:
+      type: object
+      required: [run_id]
+      properties:
+        run_id:
+          type: string
+          format: uuid
+          description: "运行标识"
+        facets:
+          type: object
+          properties:
+            parent:
+              type: object
+              properties:
+                run_id:
+                  type: string
+                job:
+                  type: object
+            nominalTime:
+              type: object
+              properties:
+                nominalStartTime:
+                  type: string
+                  format: date-time
+                nominalEndTime:
+                  type: string
+                  format: date-time
+            errorMessage:
+              type: object
+              properties:
+                message:
+                  type: string
+                programmingLanguage:
+                  type: string
+                stackTrace:
+                  type: string
+
+    # Job Facet (OpenLineage)
+    job:
+      type: object
+      required: [namespace, name]
+      properties:
+        namespace:
+          type: string
+          description: "命名空间"
+          examples: ["data_integrity_agent"]
+        name:
+          type: string
+          description: "Job名称"
+          examples: ["di_snapshot_freeze", "di_reconcile_arbitrate"]
+        facets:
+          type: object
+          properties:
+            documentation:
+              type: object
+              properties:
+                description:
+                  type: string
+            sourceCodeLocation:
+              type: object
+              properties:
+                type:
+                  type: string
+                url:
+                  type: string
+            sql:
+              type: object
+              properties:
+                query:
+                  type: string
+
+    # Input Datasets (OpenLineage)
+    inputs:
+      type: array
+      items:
+        type: object
+        required: [namespace, name]
+        properties:
+          namespace:
+            type: string
+          name:
+            type: string
+          facets:
+            type: object
+            properties:
+              dataSource:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  uri:
+                    type: string
+              schema:
+                type: object
+                properties:
+                  fields:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        type:
+                          type: string
+              # DI专用: 快照信息
+              snapshot:
+                type: object
+                properties:
+                  snapshot_id:
+                    type: string
+                  payload_hash:
+                    type: string
+                  retrieved_at:
+                    type: string
+                    format: date-time
+
+    # Output Datasets (OpenLineage)
+    outputs:
+      type: array
+      items:
+        type: object
+        required: [namespace, name]
+        properties:
+          namespace:
+            type: string
+          name:
+            type: string
+          facets:
+            type: object
+            properties:
+              outputStatistics:
+                type: object
+                properties:
+                  rowCount:
+                    type: integer
+                  size:
+                    type: integer
+              # DI专用: 裁决信息
+              arbitration:
+                type: object
+                properties:
+                  conflicts_count:
+                    type: integer
+                  arbitrations_count:
+                    type: integer
+                  confidence_cap:
+                    type: number
+
+    # DI专用扩展
+    di_facets:
+      type: object
+      properties:
+        policy:
+          type: object
+          properties:
+            version:
+              type: string
+            hash:
+              type: string
+        entity:
+          type: object
+          properties:
+            ticker:
+              type: string
+            cik:
+              type: string
+        stats:
+          type: object
+          properties:
+            datapoints_requested:
+              type: integer
+            datapoints_resolved:
+              type: integer
+            conflicts_count:
+              type: integer
+            dq_score:
+              type: number
+        reason_codes:
+          type: array
+          items:
+            type: string
+
+    # Hash Chain (审计用)
+    hash_chain:
+      type: object
+      properties:
+        event_hash:
+          type: string
+          description: "当前事件的hash"
+        prev_hash:
+          type: string
+          description: "前一个事件的hash"
+
+---
+
+# Evidence Entry Schema
+evidence_entry_schema:
+  type: object
+  required:
+    - datapoint_id
+    - source_id
+    - grade
+
+  properties:
+    datapoint_id:
+      type: string
+      format: uuid
+      description: "关联的datapoint ID"
+
+    key:
+      type: string
+      description: "Canonical key"
+
+    source_id:
+      type: string
+      description: "数据源标识"
+      examples: ["SEC_XBRL", "FMP", "BROKER_API"]
+
+    grade:
+      type: string
+      enum: ["A", "B", "C"]
+      description: "证据等级"
+
+    accession_number:
+      type: string
+      description: "SEC filing accession number"
+
+    fact_ref:
+      type: string
+      description: "XBRL fact fragment reference"
+
+    fragment_ref:
+      type: string
+      description: "文档片段引用"
+
+    retrieved_at:
+      type: string
+      format: date-time
+
+    observed_at:
+      type: string
+      format: date-time
+
+---
+
+# Evidence Registry Schema
+evidence_registry_schema:
+  type: object
+  required:
+    - run_id
+    - entries
+    - stats
+
+  properties:
+    run_id:
+      type: string
+      format: uuid
+
+    entries:
+      type: array
+      items:
+        $ref: "#/evidence_entry_schema"
+
+    stats:
+      type: object
+      properties:
+        total_entries:
+          type: integer
+        grade_a_count:
+          type: integer
+        grade_b_count:
+          type: integer
+        grade_c_count:
+          type: integer
+        ab_coverage:
+          type: number
+          description: "A/B级证据覆盖率"
+        unsupported_ratio:
+          type: number
+          description: "无证据支持的datapoint比例"
+
+    created_at:
+      type: string
+      format: date-time

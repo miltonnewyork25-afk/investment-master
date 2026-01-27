@@ -1,0 +1,348 @@
+# Canonical Datapoint Schema v1.1
+# Data Integrity Agent 输出的规范化数据点格式
+
+version: "1.1"
+asof: "2026-01-27"
+
+---
+
+# Datapoint Schema
+datapoint_schema:
+  type: object
+  required:
+    - id
+    - key
+    - value
+    - unit
+    - period
+    - fact_key
+    - selected_value
+    - provenance
+    - confidence
+
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: "Datapoint唯一标识"
+
+    key:
+      type: string
+      description: "Canonical key名称"
+      examples: ["total_revenue", "net_income", "shares_out_diluted"]
+
+    value:
+      type: number
+      description: "数值（已标准化）"
+
+    unit:
+      type: object
+      required: [code, scale]
+      properties:
+        code:
+          type: string
+          description: "单位代码"
+          examples: ["USD", "shares", "ratio"]
+        scale:
+          type: string
+          enum: ["units", "thousands", "millions", "billions"]
+          description: "数量级"
+        original_unit:
+          type: string
+          description: "原始单位（标准化前）"
+
+    definition:
+      type: string
+      description: "指标定义说明"
+
+    period:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          enum: ["FY", "Q1", "Q2", "Q3", "Q4", "TTM", "ASOF", "INSTANT"]
+        fiscal_year:
+          type: integer
+        fiscal_quarter:
+          type: integer
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        instant_date:
+          type: string
+          format: date
+
+    # FactKey - 事实身份（核心）
+    fact_key:
+      type: object
+      required: [concept, entity, period_key, unit_key]
+      properties:
+        concept:
+          type: string
+          description: "XBRL concept或canonical key"
+        entity:
+          type: object
+          properties:
+            ticker:
+              type: string
+            cik:
+              type: string
+            lei:
+              type: string
+        period_key:
+          type: string
+          description: "Period的标准化表示"
+        unit_key:
+          type: string
+          description: "Unit的标准化表示"
+        dimensions:
+          type: array
+          items:
+            type: object
+            properties:
+              axis:
+                type: string
+              member:
+                type: string
+          description: "XBRL dimensions (segment, geography等)"
+        decimals:
+          type: integer
+          description: "XBRL decimals属性"
+
+    # 裁决结果
+    selected_value:
+      type: number
+      description: "裁决选定的值"
+
+    alternates:
+      type: array
+      items:
+        type: object
+        properties:
+          value:
+            type: number
+          source_id:
+            type: string
+          fact_ref:
+            type: string
+          reason_not_selected:
+            type: string
+      description: "备选值列表"
+
+    arbitration_reason:
+      type: string
+      description: "裁决原因"
+      examples: ["highest_trust_rank", "most_complete_factkey", "freshest_data"]
+
+    conflict_severity:
+      type: string
+      enum: ["NONE", "LOW", "MEDIUM", "HIGH"]
+      description: "冲突严重程度"
+
+    # 来源追溯
+    provenance:
+      type: object
+      required: [source_id]
+      properties:
+        source_id:
+          type: string
+          description: "数据源标识"
+          examples: ["SEC_XBRL", "FMP", "BROKER_API"]
+        accession_number:
+          type: string
+          description: "SEC filing accession number"
+        entry_point:
+          type: string
+          description: "XBRL entry point文件"
+        fact_id:
+          type: string
+          description: "XBRL fact fragment reference"
+        extension_used:
+          type: boolean
+          description: "是否使用了公司扩展"
+        retrieved_at:
+          type: string
+          format: date-time
+        observed_at:
+          type: string
+          format: date-time
+          description: "数据实际观测时间（如报告日期）"
+
+    # 置信度
+    confidence:
+      type: number
+      minimum: 0
+      maximum: 1
+      description: "置信度评分"
+
+    reason_codes:
+      type: array
+      items:
+        type: string
+        pattern: "^DI_"
+      description: "相关reason codes"
+
+    # 验证引用
+    validation_refs:
+      type: array
+      items:
+        type: string
+      description: "DQ ValidationResult引用"
+
+    # 时效性
+    freshness:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: ["FRESH", "STALE", "UNKNOWN"]
+        age_seconds:
+          type: integer
+        threshold_seconds:
+          type: integer
+
+---
+
+# Selected Bundle Schema
+selected_bundle_schema:
+  type: object
+  required:
+    - run_id
+    - entity
+    - datapoints
+    - stats
+
+  properties:
+    run_id:
+      type: string
+      format: uuid
+
+    entity:
+      type: object
+      properties:
+        ticker:
+          type: string
+        cik:
+          type: string
+
+    datapoints:
+      type: array
+      items:
+        $ref: "#/datapoint_schema"
+
+    stats:
+      type: object
+      properties:
+        total_requested:
+          type: integer
+        total_resolved:
+          type: integer
+        total_missing:
+          type: integer
+        total_conflicts:
+          type: integer
+        coverage_ratio:
+          type: number
+
+    created_at:
+      type: string
+      format: date-time
+
+---
+
+# Data Confidence Report Schema
+data_confidence_report_schema:
+  type: object
+  required:
+    - run_id
+    - coverage
+    - conflicts
+    - arbitrations
+    - confidence_cap
+
+  properties:
+    run_id:
+      type: string
+      format: uuid
+
+    coverage:
+      type: object
+      properties:
+        requested_count:
+          type: integer
+        resolved_count:
+          type: integer
+        missing_count:
+          type: integer
+        critical_missing_count:
+          type: integer
+        coverage_ratio:
+          type: number
+
+    conflicts:
+      type: array
+      items:
+        type: object
+        properties:
+          key:
+            type: string
+          period:
+            type: string
+          severity:
+            type: string
+            enum: ["LOW", "MEDIUM", "HIGH"]
+          cause:
+            type: string
+            enum:
+              - PERIOD_MISMATCH
+              - UNIT_MISMATCH
+              - DECIMALS_MISMATCH
+              - DIMENSIONS_MISMATCH
+              - EXTENSION_MISMATCH
+              - LATENCY_MISMATCH
+              - VALUE_DIVERGENCE
+              - CALCULATION_ROUNDING
+          sources_involved:
+            type: array
+            items:
+              type: string
+          value_spread_pct:
+            type: number
+
+    arbitrations:
+      type: array
+      items:
+        type: object
+        properties:
+          key:
+            type: string
+          selected_value:
+            type: number
+          selected_source:
+            type: string
+          arbitration_reason:
+            type: string
+          arbitration_confidence:
+            type: string
+            enum: ["HIGH", "MEDIUM", "LOW"]
+          alternates_count:
+            type: integer
+
+    confidence_cap:
+      type: number
+      minimum: 0
+      maximum: 1
+      description: "下游置信度上限"
+
+    reason_codes:
+      type: array
+      items:
+        type: string
+
+    timestamp:
+      type: string
+      format: date-time

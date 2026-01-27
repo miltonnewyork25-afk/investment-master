@@ -1,0 +1,323 @@
+# Reason Code Dictionary - Data Integrity (DI) Namespace
+# v2.2.0 - 可路由回退
+
+namespace: "DI"
+version: "di-reason-codes-2.2.0"
+asof: "2026-01-27"
+description: "Data Integrity Agent reason codes - routing-ready"
+
+---
+
+# 严重级别定义
+severity_levels:
+  INFO:
+    description: "信息性，不影响流程"
+    action: "LOG"
+
+  WARN:
+    description: "警告，可继续但需注意"
+    action: "CONTINUE"
+
+  HIGH:
+    description: "高严重性，需降级处理"
+    action: "DEGRADE"
+
+  CRITICAL:
+    description: "关键性，可能需要阻断"
+    action: "BLOCK"
+
+---
+
+# 默认动作
+default_actions:
+  - CONTINUE       # 继续执行
+  - DEGRADE        # 降级输出
+  - BLOCK          # 阻断执行
+  - RETRY_UPSTREAM # 重试上游
+  - FETCH_MORE_SOURCES  # 补充数据源
+
+---
+
+# Policy / Invariants 相关
+policy_codes:
+  DI_POLICY_NOT_FOUND:
+    severity: CRITICAL
+    action: BLOCK
+    description: "Policy pack文件不存在"
+    resolution: "检查policy_pack_path配置"
+
+  DI_POLICY_HASH_MISMATCH:
+    severity: CRITICAL
+    action: BLOCK
+    description: "同run_id内policy_hash变化，违反可回放性"
+    resolution: "禁止热加载policy"
+
+  DI_POLICY_SCHEMA_INVALID:
+    severity: CRITICAL
+    action: BLOCK
+    description: "Policy pack缺少必需字段"
+    resolution: "修复policy schema"
+
+  DI_SOURCE_NOT_ALLOWED:
+    severity: CRITICAL
+    action: BLOCK
+    description: "请求的数据源不在allowlist中"
+    resolution: "更新sources.allowlist配置"
+
+---
+
+# Snapshot 相关
+snapshot_codes:
+  DI_FETCH_FAILED:
+    severity: HIGH
+    action: RETRY_UPSTREAM
+    retry_budget: 3
+    description: "从源端点抓取失败"
+    resolution: "重试或使用备选源"
+
+  DI_SNAPSHOT_EMPTY:
+    severity: HIGH
+    action: FETCH_MORE_SOURCES
+    description: "Payload为空或缺少关键section"
+    resolution: "补充其他数据源"
+
+  DI_SNAPSHOT_MUTATION:
+    severity: CRITICAL
+    action: BLOCK
+    description: "同run_id+同request产生不同payload_hash"
+    resolution: "检查数据源稳定性，可能需要人工介入"
+
+  DI_SNAPSHOT_TOO_LARGE:
+    severity: HIGH
+    action: DEGRADE
+    description: "Payload超过max_payload_size_mb限制"
+    resolution: "分批抓取或调整限制"
+
+---
+
+# Canonical Dictionary / Mapping 相关
+dictionary_codes:
+  DI_UNKNOWN_KEY:
+    severity: HIGH
+    action: DEGRADE
+    description: "Canonical key未定义，不得猜测"
+    resolution: "扩展canonical dictionary"
+
+  DI_AMBIGUOUS_DEFINITION:
+    severity: HIGH
+    action: DEGRADE
+    description: "多个可能的定义，需要消歧"
+    resolution: "细化key定义或添加hint"
+
+  DI_UNIT_POLICY_MISSING:
+    severity: HIGH
+    action: DEGRADE
+    description: "缺少unit转换策略"
+    resolution: "扩展allowed_units配置"
+
+  DI_PERIOD_UNRESOLVED:
+    severity: HIGH
+    action: DEGRADE
+    description: "无法确定性解析FY/Q/TTM/ASOF"
+    resolution: "检查period_hint或source context"
+
+  DI_UNIT_UNRESOLVED:
+    severity: HIGH
+    action: DEGRADE
+    description: "无法标准化unit/scale到allowed_units"
+    resolution: "检查unit_hint或添加转换规则"
+
+  DI_SCALE_SUSPECTED:
+    severity: WARN
+    action: CONTINUE
+    description: "可能存在scale问题(如USD vs USD millions)"
+    resolution: "人工确认或添加scale规则"
+
+---
+
+# FactKey 质量相关
+factkey_codes:
+  DI_FACTKEY_INCOMPLETE:
+    severity: HIGH
+    action: DEGRADE
+    description: "FactKey缺少unit/decimals/dimensions/context"
+    resolution: "检查源数据完整性"
+
+  DI_DIMENSIONS_UNRESOLVED:
+    severity: HIGH
+    action: DEGRADE
+    description: "Dimensions/context无法解析或标准化"
+    resolution: "检查XBRL context或添加映射规则"
+
+  DI_DECIMALS_MISSING:
+    severity: WARN
+    action: CONTINUE
+    description: "缺少decimals，可能降低可比性"
+    resolution: "记录但继续"
+
+  DI_CONCEPT_NOT_MAPPED:
+    severity: HIGH
+    action: DEGRADE
+    description: "XBRL concept无法映射到canonical key"
+    resolution: "扩展concept映射表"
+
+---
+
+# Reconciliation / Conflicts 相关
+reconcile_codes:
+  DI_SOURCE_CONFLICT:
+    severity: HIGH
+    action: DEGRADE
+    description: "多源对同一key+period在可比语义下不一致"
+    resolution: "执行裁决，记录alternates"
+
+  DI_MISSING_CRITICAL:
+    severity: CRITICAL
+    action: DEGRADE
+    description: "关键datapoint缺失"
+    resolution: "补充数据源或标记为不可投资结论"
+
+  DI_UNIT_MISMATCH:
+    severity: HIGH
+    action: DEGRADE
+    description: "Unit不匹配(如USD vs shares)"
+    resolution: "检查FactKey映射"
+
+  DI_DECIMALS_INCONSISTENT:
+    severity: HIGH
+    action: DEGRADE
+    description: "Decimals/precision不匹配，语义可能不同"
+    resolution: "记录归因，降低confidence"
+
+  DI_FACTKEY_MISMATCH_DIMENSIONS:
+    severity: HIGH
+    action: DEGRADE
+    description: "Dimensions/context不匹配，可能是不同事实"
+    resolution: "严格匹配或记录为不同事实"
+
+  DI_ARBITRATION_WEAK:
+    severity: HIGH
+    action: DEGRADE
+    description: "选择了selected_value但裁决confidence为LOW"
+    resolution: "通知QG降级处理"
+
+  DI_ARBITRATION_TIE:
+    severity: WARN
+    action: CONTINUE
+    description: "使用tie-breaker选择，保留alternates"
+    resolution: "记录并继续"
+
+  DI_VALUE_DIVERGENCE_HIGH:
+    severity: HIGH
+    action: DEGRADE
+    description: "同口径数值差异>10%"
+    resolution: "检查数据源或标记冲突"
+
+---
+
+# DQ Suite 相关
+dq_codes:
+  DI_XBRL_SEMANTICS_FAIL:
+    severity: HIGH
+    action: DEGRADE
+    description: "XBRL语义检查失败(units/decimals/precision)"
+    resolution: "检查数据源XBRL质量"
+
+  DI_DQC_RULE_FAIL:
+    severity: HIGH
+    action: DEGRADE
+    description: "DQC approved validation rule失败"
+    resolution: "检查具体规则，可能是数据源问题"
+
+  DI_INTERNAL_RULE_FAIL:
+    severity: HIGH
+    action: DEGRADE
+    description: "内部口径规则检查失败"
+    resolution: "检查TTM/FY桥表或shares口径规则"
+
+  DI_DQ_SUITE_NOT_FOUND:
+    severity: WARN
+    action: CONTINUE
+    description: "指定的DQ suite不存在"
+    resolution: "检查suite配置"
+
+---
+
+# Freshness 相关
+freshness_codes:
+  DI_STALE_DATA:
+    severity: WARN
+    action: CONTINUE
+    description: "Datapoint超过policy定义的max_age"
+    resolution: "尝试获取更新数据"
+
+  DI_TIME_UNKNOWN:
+    severity: HIGH
+    action: DEGRADE
+    description: "缺少observed_at/retrieved_at，无法判断时效"
+    resolution: "标记为未知时效"
+
+  DI_CRITICAL_STALE:
+    severity: HIGH
+    action: DEGRADE
+    description: "关键datapoint严重过期"
+    resolution: "必须获取新数据或降级输出"
+
+---
+
+# Lineage / Evidence 相关
+lineage_codes:
+  DI_LINEAGE_MISSING:
+    severity: HIGH
+    action: DEGRADE
+    description: "血缘事件缺失，弱可回放性"
+    resolution: "检查lineage记录流程"
+
+  DI_UNTRACEABLE_DATAPOINT:
+    severity: CRITICAL
+    action: DEGRADE
+    description: "Selected datapoint缺少source_id/accession/fact_ref，不可审计"
+    resolution: "必须有provenance才能输出"
+
+  DI_EVIDENCE_GAP:
+    severity: HIGH
+    action: DEGRADE
+    description: "关键datapoint的A/B证据覆盖不足"
+    resolution: "补充A/B级数据源"
+
+  DI_HASH_CHAIN_BROKEN:
+    severity: CRITICAL
+    action: BLOCK
+    description: "Hash chain断裂，数据可能被篡改"
+    resolution: "检查snapshot完整性"
+
+---
+
+# 路由矩阵摘要
+routing_summary:
+  BLOCK_triggers:
+    - DI_POLICY_HASH_MISMATCH
+    - DI_SOURCE_NOT_ALLOWED
+    - DI_SNAPSHOT_MUTATION
+    - DI_HASH_CHAIN_BROKEN
+
+  DEGRADE_triggers:
+    - DI_UNKNOWN_KEY
+    - DI_FACTKEY_INCOMPLETE
+    - DI_SOURCE_CONFLICT
+    - DI_MISSING_CRITICAL
+    - DI_ARBITRATION_WEAK
+    - DI_XBRL_SEMANTICS_FAIL
+    - DI_DQC_RULE_FAIL
+    - DI_CRITICAL_STALE
+    - DI_UNTRACEABLE_DATAPOINT
+    - DI_EVIDENCE_GAP
+
+  RETRY_triggers:
+    - DI_FETCH_FAILED
+
+  CONTINUE_triggers:
+    - DI_SCALE_SUSPECTED
+    - DI_DECIMALS_MISSING
+    - DI_ARBITRATION_TIE
+    - DI_STALE_DATA

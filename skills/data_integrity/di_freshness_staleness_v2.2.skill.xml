@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DI Freshness/Staleness v2.2
+  时效性评估器 - observed_at vs retrieved_at
+  Position: Skill 7
+-->
+<skill id="di_freshness_staleness_v2_2" version="2.2">
+  <metadata>
+    <name>DI Freshness/Staleness</name>
+    <description>按策略评估数据时效：区分observed_at与retrieved_at；关键项超期触发reason_codes</description>
+    <position>7</position>
+    <asof>2026-01-27</asof>
+    <owner>data_integrity_agent</owner>
+  </metadata>
+
+  <inputs>
+    <param name="selected_bundle" type="array" required="true"/>
+    <param name="freshness_policy" type="object" required="true">
+      <fields>max_age_seconds, use_observed_at_first</fields>
+    </param>
+    <param name="critical_keys" type="array" required="true"/>
+  </inputs>
+
+  <outputs>
+    <param name="freshness_report" type="object">
+      <description>时效性评估报告</description>
+    </param>
+    <param name="stale_flags" type="array">
+      <description>过期标记列表</description>
+    </param>
+  </outputs>
+
+  <workflow>
+    <step id="1" name="determine_reference_time">
+      <action>确定参考时间</action>
+      <priority>
+        <first>observed_at (数据实际观测时间，如报告日期)</first>
+        <fallback>retrieved_at (抓取时间)</fallback>
+      </priority>
+      <on_missing>DI_TIME_UNKNOWN</on_missing>
+    </step>
+
+    <step id="2" name="compute_age">
+      <action>计算数据年龄</action>
+      <formula>age_seconds = current_time - reference_time</formula>
+    </step>
+
+    <step id="3" name="lookup_threshold">
+      <action>查找时效阈值</action>
+      <thresholds>
+        <threshold key="price_snapshot">86400 (1 day)</threshold>
+        <threshold key="fundamentals_quarterly">7776000 (90 days)</threshold>
+        <threshold key="fundamentals_annual">31536000 (1 year)</threshold>
+        <threshold key="filings">31536000 (1 year)</threshold>
+        <default>policy.freshness.max_age_seconds.default</default>
+      </thresholds>
+    </step>
+
+    <step id="4" name="classify_freshness">
+      <action>分类时效状态</action>
+      <classification>
+        <class name="FRESH">age_seconds &lt;= threshold</class>
+        <class name="STALE">age_seconds > threshold</class>
+        <class name="UNKNOWN">无法确定reference_time</class>
+      </classification>
+    </step>
+
+    <step id="5" name="flag_critical_stale">
+      <action>标记关键项过期</action>
+      <if key_in="critical_keys" and="STALE">
+        <add_code>DI_CRITICAL_STALE</add_code>
+        <reduce>confidence_cap to freshness.confidence_cap_floor (0.60)</reduce>
+      </if>
+    </step>
+
+    <step id="6" name="build_report">
+      <action>构建时效性报告</action>
+      <report>
+        <section name="fresh">正常时效的datapoints</section>
+        <section name="stale">过期的datapoints</section>
+        <section name="unknown">无法判断的datapoints</section>
+        <section name="stats">统计摘要</section>
+      </report>
+    </step>
+  </workflow>
+
+  <scoring>
+    <metric name="freshness_pass_rate">fresh_count / total_count</metric>
+    <confidence>freshness_pass_rate</confidence>
+  </scoring>
+
+  <reason_codes>
+    <code severity="WARN">DI_STALE_DATA</code>
+    <code severity="HIGH">DI_TIME_UNKNOWN</code>
+    <code severity="HIGH">DI_CRITICAL_STALE</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>关键价格/时点数据缺observed_at且无法推断 => DI_TIME_UNKNOWN，降级</item>
+    <item>关键项严重过期 => DI_CRITICAL_STALE，必须降低confidence_cap</item>
+  </disconfirmers>
+
+  <output_contract>
+    <freshness_report>
+      {
+        fresh: [{datapoint_id, key, age_seconds, threshold_seconds}],
+        stale: [{datapoint_id, key, age_seconds, threshold_seconds, excess_seconds}],
+        unknown: [{datapoint_id, key, reason}],
+        stats: {
+          total, fresh_count, stale_count, unknown_count,
+          freshness_pass_rate,
+          oldest_age_seconds,
+          critical_stale_count
+        }
+      }
+    </freshness_report>
+    <stale_flags>
+      [{datapoint_id, key, severity, reason_code}]
+    </stale_flags>
+  </output_contract>
+
+  <invariants>
+    <invariant id="INV-DFS-01">优先使用observed_at而非retrieved_at</invariant>
+    <invariant id="INV-DFS-02">关键项过期必须触发reason_code</invariant>
+    <invariant id="INV-DFS-03">时效分类必须明确(FRESH/STALE/UNKNOWN)</invariant>
+  </invariants>
+</skill>

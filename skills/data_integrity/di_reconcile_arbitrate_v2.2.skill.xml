@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DI Reconcile + Arbitration v2.2
+  对账裁决器 - 必须产出selected_value
+  Position: Skill 5
+-->
+<skill id="di_reconcile_arbitrate_v2_2" version="2.2">
+  <metadata>
+    <name>DI Reconcile + Arbitration</name>
+    <description>跨源对账并裁决：输出selected_value+alternates+arbitration_reason；冲突可解释、可路由</description>
+    <position>5</position>
+    <asof>2026-01-27</asof>
+    <owner>data_integrity_agent</owner>
+  </metadata>
+
+  <inputs>
+    <param name="canonical_datapoints" type="array" required="true"/>
+    <param name="policy" type="object" required="true">
+      <fields>source_trust_rank, arbitration_rules, factkey_match_policy</fields>
+    </param>
+    <param name="critical_keys" type="array" required="true">
+      <description>关键datapoint key列表</description>
+    </param>
+  </inputs>
+
+  <outputs>
+    <param name="selected_bundle" type="array">
+      <description>裁决后的数据点(含selected_value)</description>
+    </param>
+    <param name="data_confidence_report" type="object">
+      <description>数据置信度报告</description>
+    </param>
+    <param name="conflicts" type="array">
+      <description>冲突详情列表</description>
+    </param>
+  </outputs>
+
+  <workflow>
+    <step id="1" name="group_by_key_period">
+      <action>按key+period分组</action>
+      <grouping>canonical_datapoints grouped by (key, period)</grouping>
+    </step>
+
+    <step id="2" name="compare_by_factkey">
+      <action>先按FactKey比较，再比较值</action>
+      <comparison_order>
+        <compare level="1">unit_key</compare>
+        <compare level="2">decimals</compare>
+        <compare level="3">dimensions</compare>
+        <compare level="4">value (if semantics match)</compare>
+      </comparison_order>
+      <match_level>policy.factkey.match_policy (strict/relaxed)</match_level>
+    </step>
+
+    <step id="3" name="classify_result">
+      <action>分类结果</action>
+      <classification>
+        <class name="MATCH">所有源一致</class>
+        <class name="CONFLICT">源不一致</class>
+        <class name="MISSING">关键源缺失</class>
+      </classification>
+    </step>
+
+    <step id="4" name="attribute_conflict_cause">
+      <action>归因冲突原因</action>
+      <causes>
+        <cause>PERIOD_MISMATCH</cause>
+        <cause>UNIT_MISMATCH</cause>
+        <cause>DECIMALS_MISMATCH</cause>
+        <cause>DIMENSIONS_MISMATCH</cause>
+        <cause>EXTENSION_MISMATCH</cause>
+        <cause>LATENCY_MISMATCH</cause>
+        <cause>VALUE_DIVERGENCE</cause>
+        <cause>CALCULATION_ROUNDING</cause>
+      </causes>
+      <output>conflict with cause and severity</output>
+    </step>
+
+    <step id="5" name="arbitrate">
+      <action>裁决选出selected_value</action>
+      <tie_breakers_order>
+        <breaker order="1">trust_rank (higher wins)</breaker>
+        <breaker order="2">factkey_completeness (more complete wins)</breaker>
+        <breaker order="3">freshness_observed_at (newer wins)</breaker>
+        <breaker order="4">freshness_retrieved_at (newer wins)</breaker>
+        <breaker order="5">source_stability (fewer historical conflicts wins)</breaker>
+      </tie_breakers_order>
+      <must_output>selected_value (even if weak arbitration)</must_output>
+      <on_weak_arbitration>
+        <set>arbitration_confidence = LOW</set>
+        <add_code>DI_ARBITRATION_WEAK</add_code>
+      </on_weak_arbitration>
+    </step>
+
+    <step id="6" name="keep_alternates">
+      <action>保留备选值</action>
+      <alternates>
+        <include>value, source_id, fact_ref, reason_not_selected</include>
+      </alternates>
+    </step>
+
+    <step id="7" name="compute_confidence">
+      <action>计算置信度和confidence_cap</action>
+      <confidence_score>
+        <factor>match_rate</factor>
+        <factor>arbitration_confidence</factor>
+        <factor>critical_coverage</factor>
+      </confidence_score>
+      <confidence_cap>min(confidence_score, upstream_constraint)</confidence_cap>
+    </step>
+
+    <step id="8" name="handle_missing_critical">
+      <action>处理关键项缺失</action>
+      <if key_in="critical_keys" and="MISSING">
+        <add_code>DI_MISSING_CRITICAL</add_code>
+        <set>conflict_severity = HIGH</set>
+      </if>
+    </step>
+  </workflow>
+
+  <scoring>
+    <metric name="confidence_score">weighted_factors</metric>
+    <confidence>confidence_score</confidence>
+  </scoring>
+
+  <reason_codes>
+    <code severity="HIGH">DI_SOURCE_CONFLICT</code>
+    <code severity="CRITICAL">DI_MISSING_CRITICAL</code>
+    <code severity="HIGH">DI_UNIT_MISMATCH</code>
+    <code severity="HIGH">DI_DECIMALS_INCONSISTENT</code>
+    <code severity="HIGH">DI_FACTKEY_MISMATCH_DIMENSIONS</code>
+    <code severity="HIGH">DI_ARBITRATION_WEAK</code>
+    <code severity="WARN">DI_ARBITRATION_TIE</code>
+    <code severity="HIGH">DI_VALUE_DIVERGENCE_HIGH</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>关键项missing => DI_MISSING_CRITICAL</item>
+    <item>关键项冲突且无法干净裁决 => DI_ARBITRATION_WEAK (仍输出selected_value)</item>
+    <item>同口径值差>10% => DI_VALUE_DIVERGENCE_HIGH</item>
+  </disconfirmers>
+
+  <output_contract>
+    <selected_bundle>
+      [{key, period, selected_value, alternates, arbitration_reason, arbitration_confidence, conflict_severity, fact_key, provenance}]
+    </selected_bundle>
+    <data_confidence_report>
+      {matches: [], conflicts: [], missing: [], arbitrations: [], confidence_score, confidence_cap, reason_codes: []}
+    </data_confidence_report>
+    <conflicts>
+      [{key, period, severity, cause, sources_involved, value_spread_pct}]
+    </conflicts>
+  </output_contract>
+
+  <invariants>
+    <invariant id="INV-DRA-01">每个关键datapoint必须有selected_value</invariant>
+    <invariant id="INV-DRA-02">冲突必须有cause归因</invariant>
+    <invariant id="INV-DRA-03">弱裁决必须标记DI_ARBITRATION_WEAK</invariant>
+  </invariants>
+</skill>
