@@ -105,9 +105,19 @@ lessons:
     effectiveness: "待验证"
     priority: "P1"
 
+  - id: "LL_011"
+    date: "2026-01-27"
+    context: "用户反馈"
+    category: "data_quality"
+    lesson: "100baggers API的7维度雷达图评分过于主观，权重算法不透明，可能误导判断"
+    root_cause: "评分基于主观权重，缺乏可解释性和可验证性"
+    action_taken: "禁用7维度评分，仅使用客观数据（杜邦分解、ROIC、领先指标触发）"
+    effectiveness: "已生效"
+    priority: "P0"
+
 # 统计
 statistics:
-  total_lessons: 10
+  total_lessons: 11
   by_category:
     agent_execution: 1
     api_integration: 1
