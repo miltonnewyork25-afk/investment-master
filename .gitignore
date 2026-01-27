@@ -10,6 +10,11 @@ data/raw/
 data/processed/
 data/pipeline.log
 
+# Database files (large, can be regenerated)
+*.db
+*.sqlite
+*.sqlite3
+
 # Quality check outputs (auto-generated, can be regenerated)
 *_quality_report*.json
 *_fix_suggestions.md
