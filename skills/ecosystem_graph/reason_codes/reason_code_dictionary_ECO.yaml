@@ -1,0 +1,298 @@
+# Reason Code Dictionary - Ecosystem Graph (ECO) Namespace
+# v1.0 - 可路由回退
+
+namespace: "ECO"
+version: "eco-reason-codes-1.0.0"
+asof: "2026-01-27"
+description: "Ecosystem Graph Agent reason codes - routing-ready"
+
+---
+
+# 严重级别定义
+severity_levels:
+  INFO:
+    description: "信息性，不影响流程"
+    action: "LOG"
+
+  WARN:
+    description: "警告，可继续但需注意"
+    action: "CONTINUE"
+
+  HIGH:
+    description: "高严重性，需降级处理"
+    action: "DEGRADE"
+
+  CRITICAL:
+    description: "关键性，可能需要阻断"
+    action: "BLOCK"
+
+---
+
+# Policy / Invariants 相关
+policy_codes:
+  ECO_POLICY_NOT_FOUND:
+    severity: CRITICAL
+    action: BLOCK
+    description: "Policy pack文件不存在"
+
+  ECO_POLICY_HASH_MISMATCH:
+    severity: CRITICAL
+    action: BLOCK
+    description: "同run_id内policy_hash变化"
+
+  ECO_POLICY_SCHEMA_INVALID:
+    severity: CRITICAL
+    action: BLOCK
+    description: "Policy pack缺少必需字段"
+
+---
+
+# Edge Evidence 相关
+edge_evidence_codes:
+  ECO_EDGE_EVIDENCE_GAP:
+    severity: HIGH
+    action: DEGRADE
+    description: "边的证据不足(A/B覆盖率低于阈值)"
+    resolution: "补充高质量证据源"
+
+  ECO_EDGE_NO_EVIDENCE:
+    severity: HIGH
+    action: DEGRADE
+    description: "边完全没有证据支持"
+    resolution: "必须有至少一个证据才能创建边"
+
+  ECO_EDGE_STALE_EVIDENCE:
+    severity: WARN
+    action: CONTINUE
+    description: "边的证据过期"
+    resolution: "更新证据或标记时效性"
+
+  ECO_EDGE_CONFLICTING_EVIDENCE:
+    severity: HIGH
+    action: DEGRADE
+    description: "证据之间存在冲突"
+    resolution: "裁决或保留冲突标记"
+
+---
+
+# Edge Type 相关
+edge_type_codes:
+  ECO_EDGE_TYPE_NOT_ALLOWED:
+    severity: HIGH
+    action: DEGRADE
+    description: "Policy不允许的边类型"
+    resolution: "检查policy配置或更换边类型"
+
+  ECO_EDGE_TYPE_INVALID:
+    severity: HIGH
+    action: DEGRADE
+    description: "无效的边类型"
+    resolution: "使用schema定义的边类型"
+
+  ECO_EDGE_DIRECTION_CONFLICT:
+    severity: WARN
+    action: CONTINUE
+    description: "边方向存在冲突"
+    resolution: "保留两条边并标记冲突"
+
+---
+
+# Rule Edge 相关
+rule_edge_codes:
+  ECO_RULE_EDGE_UNSUPPORTED:
+    severity: HIGH
+    action: DEGRADE
+    description: "规则边缺失必需字段(owner/enforcer/mechanism)"
+    resolution: "补充规则边必需字段"
+
+  ECO_RULE_EDGE_WEAK_MECHANISM:
+    severity: WARN
+    action: CONTINUE
+    description: "规则执行机制不明确"
+    resolution: "明确mechanism字段"
+
+  ECO_RULE_EDGE_HIGH_REVERSIBILITY:
+    severity: INFO
+    action: LOG
+    description: "规则边高可逆性(>0.7)"
+    resolution: "记录但继续"
+
+---
+
+# Substitute 相关
+substitute_codes:
+  ECO_SUBSTITUTE_WEAK_SAME_JOB:
+    severity: HIGH
+    action: DEGRADE
+    description: "Same Job得分不足(<2)，不允许标记为substitute"
+    resolution: "降级为adjacent_competitor或移除substitute标签"
+
+  ECO_SUBSTITUTE_NO_SAME_JOB:
+    severity: CRITICAL
+    action: BLOCK
+    description: "未进行Same Job评估"
+    resolution: "必须先评估Same Job"
+
+  ECO_SUBSTITUTE_LOW_COMPOSITE:
+    severity: WARN
+    action: CONTINUE
+    description: "Substitute综合得分低(<0.5)"
+    resolution: "标记为weak substitute"
+
+  ECO_SUBSTITUTE_MISSING_TRAJECTORY:
+    severity: WARN
+    action: CONTINUE
+    description: "缺少trajectory评估"
+    resolution: "补充动态因子评估"
+
+---
+
+# Disruption 相关
+disruption_codes:
+  ECO_DISRUPTION_NO_FOOTHOLD:
+    severity: CRITICAL
+    action: BLOCK
+    description: "Disruption判定缺少foothold证据"
+    resolution: "补充foothold证据或移除disruption标签"
+
+  ECO_DISRUPTION_NO_UPMARKET:
+    severity: HIGH
+    action: DEGRADE
+    description: "缺少upmarket trajectory证据"
+    resolution: "补充upmarket证据"
+
+  ECO_DISRUPTION_DISQUALIFIED:
+    severity: HIGH
+    action: DEGRADE
+    description: "触发了disruption disqualifier"
+    resolution: "移除disruption标签"
+
+  ECO_DISRUPTION_DQ1_SUSTAINING:
+    severity: HIGH
+    action: DEGRADE
+    description: "DQ1: 是sustaining innovation而非disruptive"
+
+  ECO_DISRUPTION_DQ2_HIGH_END:
+    severity: HIGH
+    action: DEGRADE
+    description: "DQ2: 从高端市场进入"
+
+  ECO_DISRUPTION_DQ3_FEATURE:
+    severity: HIGH
+    action: DEGRADE
+    description: "DQ3: 仅是功能添加"
+
+  ECO_DISRUPTION_DQ4_HORIZONTAL:
+    severity: HIGH
+    action: DEGRADE
+    description: "DQ4: 横向移动而非向上"
+
+  ECO_DISRUPTION_DQ5_INCUMBENT:
+    severity: HIGH
+    action: DEGRADE
+    description: "DQ5: incumbent可以轻松响应"
+
+  ECO_DISRUPTION_DQ6_REGULATORY:
+    severity: HIGH
+    action: DEGRADE
+    description: "DQ6: 受监管保护"
+
+---
+
+# Graph Invariant 相关
+invariant_codes:
+  ECO_GRAPH_INVARIANT_FAIL:
+    severity: HIGH
+    action: DEGRADE
+    description: "图谱不变量检查失败"
+    resolution: "修复不变量违规"
+
+  ECO_INVARIANT_ROLE_FLOW_MISMATCH:
+    severity: HIGH
+    action: DEGRADE
+    description: "Role Map中的player在Flow Graph中无边(ORPHAN)"
+    resolution: "补充缺失的边或删除孤立节点"
+
+  ECO_INVARIANT_CONFIDENCE_VIOLATION:
+    severity: HIGH
+    action: DEGRADE
+    description: "下游confidence超过上游min"
+    resolution: "自动cap到min(upstream)"
+
+  ECO_INVARIANT_CRITICAL_EDGE_MISSING:
+    severity: CRITICAL
+    action: BLOCK
+    description: "关键边缺失"
+    resolution: "必须补充关键边"
+
+---
+
+# Node 相关
+node_codes:
+  ECO_NODE_DUPLICATE:
+    severity: WARN
+    action: CONTINUE
+    description: "检测到重复节点"
+    resolution: "按merge policy合并"
+
+  ECO_NODE_NO_STABLE_ID:
+    severity: HIGH
+    action: DEGRADE
+    description: "节点无法计算stable_id"
+    resolution: "补充必需的标识字段"
+
+  ECO_NODE_ORPHAN:
+    severity: WARN
+    action: CONTINUE
+    description: "孤立节点(无任何边)"
+    resolution: "检查是否需要删除或补充边"
+
+---
+
+# Confidence 相关
+confidence_codes:
+  ECO_LOW_EDGE_CONFIDENCE:
+    severity: WARN
+    action: CONTINUE
+    description: "边置信度低(<0.4)"
+    resolution: "补充证据或标记低置信度"
+
+  ECO_CONFIDENCE_CAP_APPLIED:
+    severity: INFO
+    action: LOG
+    description: "应用了confidence cap"
+    resolution: "信息性，无需action"
+
+  ECO_CRITICAL_EDGE_LOW_CONFIDENCE:
+    severity: HIGH
+    action: DEGRADE
+    description: "关键边置信度不足"
+    resolution: "必须提升关键边置信度"
+
+---
+
+# 路由矩阵摘要
+routing_summary:
+  BLOCK_triggers:
+    - ECO_POLICY_HASH_MISMATCH
+    - ECO_SUBSTITUTE_NO_SAME_JOB
+    - ECO_DISRUPTION_NO_FOOTHOLD
+    - ECO_INVARIANT_CRITICAL_EDGE_MISSING
+
+  DEGRADE_triggers:
+    - ECO_EDGE_EVIDENCE_GAP
+    - ECO_EDGE_TYPE_NOT_ALLOWED
+    - ECO_RULE_EDGE_UNSUPPORTED
+    - ECO_SUBSTITUTE_WEAK_SAME_JOB
+    - ECO_DISRUPTION_DISQUALIFIED
+    - ECO_GRAPH_INVARIANT_FAIL
+    - ECO_CRITICAL_EDGE_LOW_CONFIDENCE
+
+  CONTINUE_triggers:
+    - ECO_EDGE_STALE_EVIDENCE
+    - ECO_EDGE_DIRECTION_CONFLICT
+    - ECO_RULE_EDGE_WEAK_MECHANISM
+    - ECO_SUBSTITUTE_LOW_COMPOSITE
+    - ECO_NODE_DUPLICATE
+    - ECO_NODE_ORPHAN
+    - ECO_LOW_EDGE_CONFIDENCE

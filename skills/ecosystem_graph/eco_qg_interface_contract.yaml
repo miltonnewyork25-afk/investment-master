@@ -1,0 +1,265 @@
+# Ecosystem Graph - Quality Gate Interface Contract v1.0
+# 与QG的硬接口字段锁死
+# QG不需要理解生态图谱细节，只需要读取固定字段
+
+version: "1.0"
+asof: "2026-01-27"
+description: "ECO与QG之间的硬接口契约，字段锁死不可变"
+
+---
+
+# 接口目的
+purpose: |
+  让Quality Gate Agent能够：
+  1. 评估生态图谱的可信度（confidence_cap）
+  2. 检查不变量结果（invariants_results）
+  3. 获取证据覆盖率（evidence_registry）
+  4. 识别关键边（critical_edges）
+  5. 路由reason_codes进行回退
+
+  QG不需要理解ECO的内部逻辑（如6-factor模型、disruption qualification等），
+  只需要读取标准化的输出字段。
+
+---
+
+# 必需导出字段（ECO必须提供）
+required_exports:
+
+  # 1. 不变量检查结果
+  invariants_results:
+    type: object
+    description: "不变量检查结果摘要"
+    required: true
+    schema:
+      total_checked:
+        type: integer
+        description: "检查的不变量总数"
+      passed:
+        type: integer
+        description: "通过的不变量数"
+      failed:
+        type: integer
+        description: "失败的不变量数"
+      pass_rate:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "通过率"
+      failed_invariants:
+        type: array
+        items:
+          type: object
+          properties:
+            invariant_id:
+              type: string
+            name:
+              type: string
+            severity:
+              type: string
+              enum: [INFO, WARN, HIGH, CRITICAL]
+            affected_items:
+              type: array
+              items:
+                type: string
+            reason_code:
+              type: string
+              pattern: "^ECO_"
+
+  # 2. 置信度上限
+  edge_confidence_cap:
+    type: number
+    description: "边置信度上限，供QG计算整体confidence_cap"
+    required: true
+    minimum: 0
+    maximum: 1
+    computation: "min(all_edge_confidences)"
+
+  # 3. 证据注册表
+  evidence_registry:
+    type: object
+    description: "证据覆盖率统计"
+    required: true
+    schema:
+      total_edges:
+        type: integer
+        description: "边总数"
+      edges_with_evidence:
+        type: integer
+        description: "有证据的边数"
+      grade_a_count:
+        type: integer
+        description: "A级证据数"
+      grade_b_count:
+        type: integer
+        description: "B级证据数"
+      grade_c_count:
+        type: integer
+        description: "C级证据数"
+      ab_coverage:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "A/B级证据覆盖率"
+      unsupported_ratio:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "无证据支持的边占比"
+
+  # 4. 关键边列表
+  critical_edges:
+    type: array
+    description: "关键边列表（影响投资论点的边）"
+    required: true
+    items:
+      type: object
+      properties:
+        edge_id:
+          type: string
+        edge_type:
+          type: string
+        from_node:
+          type: string
+        to_node:
+          type: string
+        criticality:
+          type: string
+          enum: [HIGH, MEDIUM]
+        criticality_type:
+          type: string
+          enum:
+            - platform_dependency
+            - single_supplier
+            - regulatory_gating
+            - exclusive_contract
+            - standard_compliance
+        confidence:
+          type: number
+        ab_coverage:
+          type: number
+        reason_codes:
+          type: array
+          items:
+            type: string
+
+  # 5. Reason Codes
+  reason_codes:
+    type: array
+    description: "ECO命名空间的reason codes"
+    required: true
+    items:
+      type: string
+      pattern: "^ECO_"
+
+---
+
+# 可选导出字段
+optional_exports:
+
+  # 图谱元数据
+  graph_metadata:
+    type: object
+    description: "图谱基本信息"
+    schema:
+      graph_id:
+        type: string
+        format: uuid
+      entity:
+        type: object
+        properties:
+          ticker: { type: string }
+          company_name: { type: string }
+      node_count:
+        type: integer
+      edge_count:
+        type: integer
+      policy_pack_version:
+        type: string
+      created_at:
+        type: string
+        format: date-time
+
+  # 冲突摘要
+  conflicts_summary:
+    type: object
+    description: "边冲突摘要"
+    schema:
+      total_conflicts:
+        type: integer
+      by_type:
+        type: object
+        additionalProperties:
+          type: integer
+      high_severity_count:
+        type: integer
+
+  # 覆盖率详情
+  coverage_details:
+    type: object
+    description: "节点和边的覆盖率详情"
+    schema:
+      node_coverage:
+        type: object
+      edge_coverage:
+        type: object
+
+---
+
+# QG读取规则
+qg_reading_rules:
+  # QG如何使用这些字段
+
+  confidence_cap_calculation:
+    description: "QG计算整体confidence_cap时使用edge_confidence_cap"
+    rule: "overall_cap = min(di_confidence_cap, eco_edge_confidence_cap, ...)"
+
+  invariants_check:
+    description: "QG检查invariants_results.pass_rate"
+    thresholds:
+      pass: "pass_rate >= 0.80"
+      degrade: "0.50 <= pass_rate < 0.80"
+      fail: "pass_rate < 0.50"
+
+  evidence_check:
+    description: "QG检查evidence_registry.ab_coverage"
+    thresholds:
+      pass: "ab_coverage >= 0.40"
+      degrade: "0.20 <= ab_coverage < 0.40"
+      fail: "ab_coverage < 0.20"
+
+  critical_edge_check:
+    description: "QG检查critical_edges的置信度"
+    rule: "所有HIGH criticality边的confidence >= 0.60"
+
+  reason_code_routing:
+    description: "QG根据reason_codes进行回退路由"
+    routing:
+      ECO_*_BLOCK: "触发FAIL verdict"
+      ECO_*_DEGRADE: "触发DEGRADE verdict"
+      ECO_*_WARN: "记录但不影响verdict"
+
+---
+
+# 接口版本兼容性
+compatibility:
+  min_eco_version: "2.4"
+  min_qg_version: "2.2"
+
+  breaking_changes:
+    - version: "1.0"
+      date: "2026-01-27"
+      changes: "初始版本，字段锁定"
+
+---
+
+# 验证规则
+validation:
+  on_export:
+    - "所有required_exports字段必须存在"
+    - "字段类型必须匹配schema"
+    - "reason_codes必须以ECO_开头"
+
+  on_import_by_qg:
+    - "验证接口版本兼容性"
+    - "验证必需字段存在"
+    - "验证数值在有效范围内"

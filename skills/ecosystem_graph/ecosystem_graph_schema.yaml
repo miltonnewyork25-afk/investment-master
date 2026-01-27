@@ -1,0 +1,458 @@
+# Ecosystem Graph Schema v1.0
+# Property Graph Schema - 可落库、可diff、可回归
+# 采用Property Graph模型（优于RDF：edge属性天然支持）
+
+version: "1.0"
+asof: "2026-01-27"
+model: "property_graph"
+
+---
+
+# Node Labels（节点类型）
+node_labels:
+  # 实体类型
+  Company:
+    description: "公司实体"
+    stable_id_rule: "ticker || cik || lei"
+    required_properties:
+      - name
+      - entity_type
+    optional_properties:
+      - ticker
+      - cik
+      - lei
+      - industry
+      - sub_industry
+      - headquarters
+      - founded_year
+
+  Product:
+    description: "产品/服务"
+    stable_id_rule: "company_id + product_name_normalized"
+    required_properties:
+      - name
+      - product_type
+      - owner_company_id
+    optional_properties:
+      - category
+      - launch_date
+      - lifecycle_stage
+
+  Platform:
+    description: "平台（双边/多边市场）"
+    stable_id_rule: "company_id + platform_name"
+    required_properties:
+      - name
+      - platform_type
+      - owner_company_id
+    optional_properties:
+      - sides
+      - network_effects_type
+
+  Standard:
+    description: "技术标准/协议"
+    stable_id_rule: "standard_body + standard_id"
+    required_properties:
+      - name
+      - standard_body
+    optional_properties:
+      - version
+      - adoption_level
+      - successor_standard
+
+  Channel:
+    description: "分销渠道"
+    stable_id_rule: "channel_type + geography + owner_id"
+    required_properties:
+      - name
+      - channel_type
+    optional_properties:
+      - coverage
+      - exclusivity
+
+  CustomerSegment:
+    description: "客户群体"
+    stable_id_rule: "segment_definition_hash"
+    required_properties:
+      - name
+      - segment_type
+    optional_properties:
+      - size_estimate
+      - growth_rate
+      - price_sensitivity
+
+  SupplierTier:
+    description: "供应商层级"
+    stable_id_rule: "tier_level + category + geography"
+    required_properties:
+      - tier_level
+      - category
+    optional_properties:
+      - concentration
+      - switching_cost
+
+  RegBody:
+    description: "监管机构"
+    stable_id_rule: "jurisdiction + regulator_code"
+    required_properties:
+      - name
+      - jurisdiction
+    optional_properties:
+      - scope
+      - enforcement_power
+
+  Technology:
+    description: "技术/能力"
+    stable_id_rule: "tech_category + tech_name"
+    required_properties:
+      - name
+      - tech_type
+    optional_properties:
+      - maturity_level
+      - adoption_curve_stage
+
+---
+
+# Edge Types（边类型）
+edge_types:
+  # 供应链关系
+  SUPPLIES:
+    description: "供应关系"
+    direction: "directed"
+    from_labels: [Company, SupplierTier]
+    to_labels: [Company, Product]
+
+  BUYS:
+    description: "采购关系"
+    direction: "directed"
+    from_labels: [Company]
+    to_labels: [Company, Product, SupplierTier]
+
+  DISTRIBUTES:
+    description: "分销关系"
+    direction: "directed"
+    from_labels: [Company, Channel]
+    to_labels: [Company, Product, CustomerSegment]
+
+  # 依赖关系
+  DEPENDS_ON:
+    description: "依赖关系（技术/业务）"
+    direction: "directed"
+    from_labels: [Company, Product, Platform]
+    to_labels: [Company, Product, Platform, Standard, Technology]
+    criticality_assessment: true
+
+  COMPLEMENTS:
+    description: "互补关系"
+    direction: "undirected"
+    from_labels: [Company, Product, Platform]
+    to_labels: [Company, Product, Platform]
+    adner_ecosystem: true  # Adner生态系统理论
+
+  # 竞争关系
+  COMPETES_WITH:
+    description: "竞争关系"
+    direction: "undirected"
+    from_labels: [Company, Product]
+    to_labels: [Company, Product]
+
+  SUBSTITUTES:
+    description: "替代关系"
+    direction: "directed"
+    from_labels: [Company, Product]
+    to_labels: [Company, Product]
+    require_same_job: true  # 必须通过Same Job门禁
+
+  DISRUPTS:
+    description: "颠覆关系"
+    direction: "directed"
+    from_labels: [Company, Product, Technology]
+    to_labels: [Company, Product]
+    require_foothold: true
+    require_upmarket: true
+
+  # 治理关系
+  GOVERNED_BY:
+    description: "受监管/治理"
+    direction: "directed"
+    from_labels: [Company, Product, Platform]
+    to_labels: [RegBody, Standard]
+
+  CERTIFIES:
+    description: "认证关系"
+    direction: "directed"
+    from_labels: [RegBody]
+    to_labels: [Company, Product]
+
+  # 技术关系
+  API_COMPATIBLE:
+    description: "API兼容"
+    direction: "undirected"
+    from_labels: [Product, Platform]
+    to_labels: [Product, Platform, Standard]
+
+  IMPLEMENTS:
+    description: "实现标准"
+    direction: "directed"
+    from_labels: [Product, Platform]
+    to_labels: [Standard, Technology]
+
+  # 商业关系
+  CONTRACTED_WITH:
+    description: "合同关系"
+    direction: "undirected"
+    from_labels: [Company]
+    to_labels: [Company]
+    rule_edge: true
+
+  LICENSES_TO:
+    description: "授权关系"
+    direction: "directed"
+    from_labels: [Company]
+    to_labels: [Company]
+    ip_related: true
+
+  INVESTS_IN:
+    description: "投资关系"
+    direction: "directed"
+    from_labels: [Company]
+    to_labels: [Company]
+
+  PARTNERS_WITH:
+    description: "合作伙伴关系"
+    direction: "undirected"
+    from_labels: [Company]
+    to_labels: [Company]
+
+---
+
+# Required Edge Properties（必需边属性）
+edge_properties:
+  required:
+    - edge_type:
+        type: string
+        description: "边类型"
+
+    - confidence:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "置信度评分"
+
+    - evidence_refs:
+        type: array
+        items:
+          type: object
+          properties:
+            source_id: { type: string }
+            grade: { type: string, enum: [A, B, C] }
+            fragment_ref: { type: string }
+        description: "证据引用列表"
+
+    - asof:
+        type: string
+        format: date
+        description: "这条边在什么时点成立"
+
+    - policy_pack_version:
+        type: string
+        description: "创建时使用的policy pack版本"
+
+    - reason_codes:
+        type: array
+        items:
+          type: string
+          pattern: "^ECO_"
+        description: "相关reason codes"
+
+  optional:
+    - valid_from:
+        type: string
+        format: date
+        description: "生效起始时间"
+
+    - valid_to:
+        type: string
+        format: date
+        nullable: true
+        description: "失效时间（null=当前有效）"
+
+    - strength:
+        type: string
+        enum: [strong, moderate, weak]
+        description: "关系强度"
+
+    - direction_certainty:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "方向确定性（对于有向边）"
+
+    - attribution:
+        type: object
+        description: "归因详情"
+        properties:
+          basis: { type: string }
+          factors: { type: array }
+
+    - criticality:
+        type: string
+        enum: [HIGH, MEDIUM, LOW]
+        description: "关键性评估"
+
+    - rule_edge_details:
+        type: object
+        description: "规则边详情（仅规则边）"
+        properties:
+          owner: { type: string }
+          enforcer: { type: string }
+          mechanism: { type: string }
+          reversibility: { type: number }
+
+---
+
+# Required Node Properties（必需节点属性）
+node_properties:
+  required:
+    - node_id:
+        type: string
+        format: uuid
+        description: "节点唯一ID"
+
+    - stable_id:
+        type: string
+        description: "稳定ID（按label的stable_id_rule计算）"
+
+    - label:
+        type: string
+        description: "节点类型"
+
+    - name:
+        type: string
+        description: "节点名称"
+
+    - created_at:
+        type: string
+        format: date-time
+        description: "创建时间"
+
+    - policy_pack_version:
+        type: string
+        description: "创建时使用的policy pack版本"
+
+  optional:
+    - confidence:
+        type: number
+        description: "节点置信度（实体识别置信度）"
+
+    - evidence_refs:
+        type: array
+        description: "证据引用"
+
+    - aliases:
+        type: array
+        items:
+          type: string
+        description: "别名列表"
+
+    - attributes:
+        type: object
+        description: "其他属性（按label定义）"
+
+---
+
+# Stable ID 规则（避免重跑ID漂移）
+stable_id_rules:
+  purpose: "确保同一实体在不同run中有相同的stable_id"
+
+  computation:
+    method: "deterministic_hash"
+    algorithm: "SHA256"
+    input: "label + stable_id_fields_sorted_concatenated"
+
+  by_label:
+    Company: "ticker || cik || lei || name_normalized"
+    Product: "owner_company_stable_id + ':' + product_name_normalized"
+    Platform: "owner_company_stable_id + ':' + platform_name_normalized"
+    Standard: "standard_body + ':' + standard_id"
+    # ... 其他label同理
+
+---
+
+# Graph Metadata Schema
+graph_metadata:
+  required:
+    - graph_id:
+        type: string
+        format: uuid
+
+    - entity:
+        type: object
+        properties:
+          ticker: { type: string }
+          company_name: { type: string }
+
+    - policy_pack_version:
+        type: string
+
+    - policy_pack_hash:
+        type: string
+
+    - created_at:
+        type: string
+        format: date-time
+
+    - node_count:
+        type: integer
+
+    - edge_count:
+        type: integer
+
+  optional:
+    - description:
+        type: string
+
+    - scope:
+        type: string
+        enum: [full, partial, incremental]
+
+    - parent_graph_id:
+        type: string
+        format: uuid
+        description: "增量更新时的父图ID"
+
+---
+
+# Diff Schema（用于回归对比）
+diff_schema:
+  type: object
+  properties:
+    base_graph_id:
+      type: string
+    compare_graph_id:
+      type: string
+    timestamp:
+      type: string
+      format: date-time
+
+    nodes:
+      type: object
+      properties:
+        added: { type: array }
+        removed: { type: array }
+        modified: { type: array }
+
+    edges:
+      type: object
+      properties:
+        added: { type: array }
+        removed: { type: array }
+        modified: { type: array }
+        confidence_changed: { type: array }
+
+    summary:
+      type: object
+      properties:
+        total_changes: { type: integer }
+        breaking_changes: { type: integer }
+        critical_edge_changes: { type: integer }

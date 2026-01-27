@@ -1,0 +1,343 @@
+# Ecosystem Graph Policy Pack v2.4
+# 生态图谱策略包 - 版本化、可回放、hash冻结
+# 对齐 DI/QG/Eval 的 policy pack 体系
+
+policy_pack:
+  version: "eco-2.4.0"
+  hash: "sha256:TO_BE_COMPUTED_AT_BUILD"
+  asof: "2026-01-27"
+  description: "Ecosystem Graph policy pack - deterministic edge/node rules"
+
+---
+
+# 运行不变量
+run_invariants:
+  freeze_policy_within_run: true
+  require_policy_hash_match_within_run: true
+  no_hot_reload: true
+
+---
+
+# 规则边类型（Rule Edge Types）
+rule_edge_types:
+  allowed:
+    - standards           # 技术标准依赖
+    - apis                # API兼容/依赖
+    - contracts           # 合同约束
+    - certifications      # 认证要求
+    - regulations         # 监管规则
+    - ip_patents          # 知识产权/专利
+    - data_rights         # 数据权限
+    - pricing_rules       # 定价规则
+    - network_lock_in     # 网络锁定
+    - habit_lock_in       # 习惯锁定
+    - exclusivity         # 排他性协议
+
+  required_fields:
+    - owner               # 规则制定者
+    - enforcer            # 规则执行者
+    - mechanism           # 执行机制
+    - reversibility       # 可逆性评估 (0-1)
+    - evidence_refs       # 证据引用
+
+---
+
+# FactKey匹配策略（用于edge成立判断）
+fact_match_policies:
+  default_level: "relaxed"
+
+  strict_rules:
+    require_exact_entity_match: true
+    require_time_overlap: true
+    overlap_threshold: 0.8
+    require_evidence_grade_a_or_b: true
+
+  relaxed_rules:
+    require_exact_entity_match: true
+    require_time_overlap: true
+    overlap_threshold: 0.5
+    allow_evidence_grade_c: true
+
+  per_edge_type_overrides:
+    # 高风险边：必须严格
+    SUBSTITUTES:
+      level: "strict"
+    DISRUPTS:
+      level: "strict"
+    DEPENDS_ON:
+      level: "strict"
+    # 一般边：可放宽
+    COMPLEMENTS:
+      level: "relaxed"
+    COMPETES_WITH:
+      level: "relaxed"
+
+---
+
+# Substitute 6-Factor 阈值
+substitute_6_factors:
+  # Factor 1: Same Job (门禁，必须通过)
+  same_job:
+    is_gate: true
+    min_score: 2          # 1-5分，至少2分才能进入后续评估
+    evidence_required: true
+    job_definition_source: ["JTBD_framework", "user_research", "market_analysis"]
+
+  # Factor 2: Price-Performance
+  price_performance:
+    weight: 0.25
+    scoring:
+      superior: 1.0       # 显著优于
+      comparable: 0.6     # 可比
+      inferior: 0.2       # 劣于但有其他优势
+
+  # Factor 3: Switching Cost
+  switching_cost:
+    weight: 0.20
+    scoring:
+      low: 1.0            # 低切换成本
+      medium: 0.5
+      high: 0.1           # 高切换成本（不太可能替代）
+
+  # Factor 4: Ceiling Effect
+  ceiling_effect:
+    weight: 0.15
+    scoring:
+      no_ceiling: 1.0     # 无天花板
+      partial_ceiling: 0.5
+      hard_ceiling: 0.1   # 硬天花板（无法替代高端）
+
+  # Factor 5: Trajectory (动态因子)
+  trajectory:
+    weight: 0.25
+    slope_window_months: 24
+    scoring:
+      accelerating: 1.0   # 加速改进
+      steady: 0.6         # 稳定改进
+      stalling: 0.2       # 停滞
+      declining: 0.0      # 下降
+
+  # Factor 6: Trigger Events (动态因子)
+  trigger_events:
+    weight: 0.15
+    event_categories:
+      - price_shock
+      - technology_breakthrough
+      - regulation_change
+      - supply_disruption
+      - demand_shift
+    recency_weight:
+      within_6_months: 1.0
+      within_12_months: 0.7
+      within_24_months: 0.4
+      older: 0.1
+
+  # 综合阈值
+  composite_threshold:
+    substitute_strong: 0.75
+    substitute_moderate: 0.50
+    substitute_weak: 0.30
+
+---
+
+# Disruption Qualification 严格门槛
+disruption_qualification:
+  # 必须条件
+  required:
+    foothold:
+      must_exist: true
+      evidence_required: true
+      foothold_types:
+        - low_end_market
+        - new_market
+        - niche_segment
+      min_evidence_count: 2
+
+    upmarket_trajectory:
+      must_exist: true
+      evidence_required: true
+      trajectory_indicators:
+        - product_improvement_rate
+        - market_segment_expansion
+        - customer_tier_migration
+
+  # 6个否决条件（任一触发即不是disruption）
+  disqualifiers:
+    - id: "DQ1_SUSTAINING_INNOVATION"
+      description: "是sustaining innovation而非disruptive"
+      trigger: "incumbent_can_adopt_without_business_model_change"
+
+    - id: "DQ2_HIGH_END_ENTRY"
+      description: "从高端市场进入"
+      trigger: "initial_target_is_premium_segment"
+
+    - id: "DQ3_FEATURE_ADDITION"
+      description: "仅是功能添加"
+      trigger: "no_new_value_network"
+
+    - id: "DQ4_HORIZONTAL_MOVE"
+      description: "横向移动而非向上"
+      trigger: "no_upmarket_trajectory"
+
+    - id: "DQ5_INCUMBENT_RESPONSE"
+      description: "incumbent可以轻松响应"
+      trigger: "incumbent_response_cost_low"
+
+    - id: "DQ6_REGULATORY_PROTECTION"
+      description: "受监管保护"
+      trigger: "regulatory_barrier_blocks_entry"
+
+---
+
+# 证据等级权重
+evidence_grade_weights:
+  grades:
+    A:
+      weight: 1.0
+      sources:
+        - SEC_FILINGS
+        - COMPANY_REPORTS
+        - PATENT_DATABASE
+        - REGULATORY_FILINGS
+    B:
+      weight: 0.7
+      sources:
+        - INDUSTRY_REPORTS
+        - ANALYST_RESEARCH
+        - TRADE_PUBLICATIONS
+    C:
+      weight: 0.4
+      sources:
+        - NEWS_ARTICLES
+        - PRESS_RELEASES
+        - SOCIAL_MEDIA
+
+  coverage_thresholds:
+    min_ab_coverage: 0.40           # A/B证据覆盖率最低40%
+    critical_edge_min_ab: 0.60      # 关键边最低60%
+    unsupported_ratio_block: 0.50   # >50%无证据支持则BLOCK
+
+---
+
+# Edge Confidence 计算规则
+confidence_rules:
+  # 基础计算公式
+  formula: |
+    edge_confidence =
+      evidence_score * evidence_weight +
+      factkey_completeness * factkey_weight +
+      recency_score * recency_weight +
+      source_diversity_score * diversity_weight
+
+  weights:
+    evidence_weight: 0.40
+    factkey_weight: 0.25
+    recency_weight: 0.20
+    diversity_weight: 0.15
+
+  # Cap传播规则
+  propagation:
+    rule: "downstream_confidence ≤ min(upstream_confidences)"
+    apply_to: ["derived_edges", "inferred_relationships"]
+
+  # 阈值
+  thresholds:
+    high_confidence: 0.80
+    medium_confidence: 0.60
+    low_confidence: 0.40
+    reject_below: 0.30
+
+---
+
+# Critical Edges 定义
+critical_edges:
+  definition: "影响投资论点的关键边"
+
+  categories:
+    - type: "platform_dependency"
+      description: "平台依赖（如App依赖iOS/Android）"
+      criticality: "HIGH"
+
+    - type: "single_supplier"
+      description: "单一供应商依赖"
+      criticality: "HIGH"
+
+    - type: "regulatory_gating"
+      description: "监管门槛"
+      criticality: "HIGH"
+
+    - type: "exclusive_contract"
+      description: "排他性合同"
+      criticality: "MEDIUM"
+
+    - type: "standard_compliance"
+      description: "标准合规要求"
+      criticality: "MEDIUM"
+
+  treatment:
+    require_higher_evidence: true
+    min_ab_coverage: 0.60
+    require_explicit_confidence: true
+    flag_to_qg: true
+
+---
+
+# Node合并策略
+node_merge_policy:
+  match_by:
+    - ticker
+    - cik
+    - lei
+    - name_normalized
+
+  conflict_resolution: "highest_confidence"
+
+  merge_rules:
+    attributes: "union_with_provenance"
+    edges: "preserve_all_with_dedup"
+
+---
+
+# Edge去重策略
+edge_dedup_policy:
+  same_type_same_direction: "merge_evidence"
+  conflicting_direction: "keep_both_flag_conflict"
+
+  merge_evidence_rules:
+    confidence: "max"
+    evidence_refs: "union"
+    timestamps: "latest"
+
+---
+
+# 不变量清单引用
+invariants:
+  manifest_ref: "invariants_manifest.yaml"
+  version: "1.0"
+
+---
+
+# 与QG的接口字段
+qg_interface:
+  export_fields:
+    - invariants_results
+    - edge_confidence_cap
+    - evidence_registry
+    - critical_edges
+    - reason_codes
+
+---
+
+# 版本历史
+version_history:
+  - version: "eco-2.4.0"
+    date: "2026-01-27"
+    changes:
+      - "Policy Pack体系对齐DI/QG/Eval"
+      - "Hash冻结确保可回放"
+      - "Substitute 6-Factor阈值完整定义"
+      - "Disruption 6个Disqualifiers"
+      - "Evidence Grade权重与覆盖率阈值"
+      - "Edge Confidence计算公式与Cap传播"
+      - "Critical Edges定义"
+      - "Node/Edge合并去重策略"

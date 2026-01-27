@@ -1,0 +1,233 @@
+# Ecosystem Graph Invariants Manifest v1.0
+# 不变量清单 - 上游定义，QG执行
+# 独立可版本化，避免散落在各skill里
+
+version: "1.0"
+asof: "2026-01-27"
+description: "Ecosystem Graph跨skill不变量清单，由QG读取并执行"
+
+---
+
+# 不变量执行策略
+execution_strategy:
+  executor: "quality_gate_agent"
+  timing: "after_all_eco_skills_complete"
+  fail_action: "emit_reason_codes_to_qg"
+
+---
+
+# Role-Flow 一致性
+role_flow_invariants:
+  - id: "XCHK-ECO-01"
+    name: "role_flow_coverage"
+    description: "Role Map中的每个player在Flow Graph中至少有一条边"
+    rule: |
+      FOR EACH player IN role_map.players:
+        EXISTS edge IN flow_graph.edges WHERE
+          edge.from == player OR edge.to == player
+    on_fail:
+      reason_code: "ECO_INVARIANT_ROLE_FLOW_MISMATCH"
+      action: "DEGRADE"
+      resolution: "补充缺失的边或删除孤立节点"
+
+  - id: "XCHK-ECO-02"
+    name: "role_type_edge_consistency"
+    description: "player的role_type与其参与的边类型一致"
+    rule: |
+      FOR EACH player IN role_map.players:
+        player.role_type IMPLIES allowed_edge_types(player.role_type)
+    on_fail:
+      reason_code: "ECO_INVARIANT_ROLE_FLOW_MISMATCH"
+      action: "DEGRADE"
+
+---
+
+# Substitute 不变量
+substitute_invariants:
+  - id: "XCHK-ECO-03"
+    name: "substitute_same_job_gate"
+    description: "所有SUBSTITUTES边必须通过Same Job门禁(score>=2)"
+    rule: |
+      FOR EACH edge IN graph.edges WHERE edge.type == "SUBSTITUTES":
+        edge.attribution.substitution_factors.same_job_score >= 2
+    on_fail:
+      reason_code: "ECO_SUBSTITUTE_WEAK_SAME_JOB"
+      action: "DEGRADE"
+      resolution: "降级为adjacent_competitor或移除substitute标签"
+
+  - id: "XCHK-ECO-04"
+    name: "substitute_evidence_required"
+    description: "Substitute边必须有证据支持"
+    rule: |
+      FOR EACH edge IN graph.edges WHERE edge.type == "SUBSTITUTES":
+        LENGTH(edge.evidence_refs) >= 1
+    on_fail:
+      reason_code: "ECO_EDGE_NO_EVIDENCE"
+      action: "DEGRADE"
+
+---
+
+# Disruption 不变量
+disruption_invariants:
+  - id: "XCHK-ECO-05"
+    name: "disruption_foothold_required"
+    description: "所有DISRUPTS边必须有foothold证据"
+    rule: |
+      FOR EACH edge IN graph.edges WHERE edge.type == "DISRUPTS":
+        edge.attribution.disruption_factors.foothold_type IS NOT NULL AND
+        LENGTH(edge.attribution.disruption_factors.foothold_evidence) >= 2
+    on_fail:
+      reason_code: "ECO_DISRUPTION_NO_FOOTHOLD"
+      action: "BLOCK"
+      resolution: "补充foothold证据或移除disruption标签"
+
+  - id: "XCHK-ECO-06"
+    name: "disruption_upmarket_required"
+    description: "所有DISRUPTS边必须有upmarket trajectory证据"
+    rule: |
+      FOR EACH edge IN graph.edges WHERE edge.type == "DISRUPTS":
+        LENGTH(edge.attribution.disruption_factors.upmarket_evidence) >= 1
+    on_fail:
+      reason_code: "ECO_DISRUPTION_NO_UPMARKET"
+      action: "DEGRADE"
+
+  - id: "XCHK-ECO-07"
+    name: "disruption_no_disqualifiers"
+    description: "DISRUPTS边不能触发任何disqualifier"
+    rule: |
+      FOR EACH edge IN graph.edges WHERE edge.type == "DISRUPTS":
+        FOR EACH dq IN [DQ1, DQ2, DQ3, DQ4, DQ5, DQ6]:
+          NOT edge.attribution.disruption_factors.disqualifiers_triggered.contains(dq)
+    on_fail:
+      reason_code: "ECO_DISRUPTION_DISQUALIFIED"
+      action: "DEGRADE"
+      resolution: "移除disruption标签"
+
+---
+
+# Confidence 传播不变量
+confidence_invariants:
+  - id: "XCHK-ECO-08"
+    name: "confidence_cap_propagation"
+    description: "下游置信度 ≤ min(上游置信度)"
+    rule: |
+      FOR EACH derived_edge IN graph.derived_edges:
+        derived_edge.confidence <= MIN(derived_edge.upstream_confidences)
+    on_fail:
+      reason_code: "ECO_INVARIANT_CONFIDENCE_VIOLATION"
+      action: "auto-cap"
+      resolution: "自动cap到min(upstream)"
+
+  - id: "XCHK-ECO-09"
+    name: "confidence_above_threshold"
+    description: "所有边的置信度必须高于reject阈值"
+    rule: |
+      FOR EACH edge IN graph.edges:
+        edge.confidence >= policy.confidence_rules.thresholds.reject_below
+    on_fail:
+      reason_code: "ECO_LOW_EDGE_CONFIDENCE"
+      action: "WARN"
+
+---
+
+# Critical Edge 不变量
+critical_edge_invariants:
+  - id: "XCHK-ECO-10"
+    name: "critical_edge_high_evidence"
+    description: "关键边必须有较高的A/B证据覆盖率"
+    rule: |
+      FOR EACH edge IN graph.edges WHERE edge.criticality == "HIGH":
+        ab_coverage(edge.evidence_refs) >= policy.critical_edges.treatment.min_ab_coverage
+    on_fail:
+      reason_code: "ECO_CRITICAL_EDGE_LOW_CONFIDENCE"
+      action: "DEGRADE"
+
+  - id: "XCHK-ECO-11"
+    name: "critical_edge_must_exist"
+    description: "已识别的关键依赖必须有对应的边"
+    rule: |
+      FOR EACH critical_dependency IN analysis.identified_critical_dependencies:
+        EXISTS edge IN graph.edges WHERE
+          edge.represents(critical_dependency)
+    on_fail:
+      reason_code: "ECO_INVARIANT_CRITICAL_EDGE_MISSING"
+      action: "BLOCK"
+
+---
+
+# Rule Edge 不变量
+rule_edge_invariants:
+  - id: "XCHK-ECO-12"
+    name: "rule_edge_complete"
+    description: "规则边必须有完整的PARTS字段"
+    rule: |
+      FOR EACH edge IN graph.edges WHERE edge.is_rule_edge:
+        edge.rule_edge_details.owner IS NOT NULL AND
+        edge.rule_edge_details.enforcer IS NOT NULL AND
+        edge.rule_edge_details.mechanism IS NOT NULL AND
+        edge.rule_edge_details.reversibility IS NOT NULL
+    on_fail:
+      reason_code: "ECO_RULE_EDGE_UNSUPPORTED"
+      action: "DEGRADE"
+
+---
+
+# Graph Consistency 不变量
+graph_consistency_invariants:
+  - id: "XCHK-ECO-13"
+    name: "no_self_loops"
+    description: "不允许自环边"
+    rule: |
+      FOR EACH edge IN graph.edges:
+        edge.from != edge.to
+    on_fail:
+      reason_code: "ECO_GRAPH_INVARIANT_FAIL"
+      action: "auto-remove"
+
+  - id: "XCHK-ECO-14"
+    name: "stable_id_unique"
+    description: "同类型节点的stable_id必须唯一"
+    rule: |
+      FOR EACH label IN node_labels:
+        UNIQUE(nodes.filter(n => n.label == label).map(n => n.stable_id))
+    on_fail:
+      reason_code: "ECO_NODE_DUPLICATE"
+      action: "auto-merge"
+
+  - id: "XCHK-ECO-15"
+    name: "edge_nodes_exist"
+    description: "边的两端节点必须存在"
+    rule: |
+      FOR EACH edge IN graph.edges:
+        EXISTS node IN graph.nodes WHERE node.node_id == edge.from AND
+        EXISTS node IN graph.nodes WHERE node.node_id == edge.to
+    on_fail:
+      reason_code: "ECO_GRAPH_INVARIANT_FAIL"
+      action: "BLOCK"
+
+---
+
+# 不变量统计输出
+output_schema:
+  invariants_summary:
+    total_checked: integer
+    passed: integer
+    failed: integer
+    pass_rate: number  # 0-1
+    failed_invariants:
+      - invariant_id: string
+        name: string
+        affected_items: array
+        reason_code: string
+        action: string
+
+---
+
+# QG接口
+qg_interface:
+  export_fields:
+    - invariants_summary
+    - failed_invariants
+    - reason_codes
+  trigger_on_fail:
+    pass_rate_threshold: 0.80  # 低于80%触发DEGRADE

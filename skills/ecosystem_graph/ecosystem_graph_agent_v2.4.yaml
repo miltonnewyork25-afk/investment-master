@@ -1,0 +1,294 @@
+# Ecosystem Graph Agent v2.4
+# 生态图谱智能体 - Policy Pack体系对齐版本
+# 升级自v2.3：增加策略包、reason codes、schema、接口契约
+
+agent:
+  id: ecosystem_graph_agent
+  version: "2.4"
+  name: "Ecosystem Graph Agent"
+  description: |
+    构建可审计、可回归、可与QG集成的生态系统图谱：
+    - Policy Pack版本化（hash冻结，确定性配置）
+    - Property Graph Schema（可落库、可diff）
+    - ECO_ Reason Codes（可路由回退）
+    - 结构化Edge Attribution（可机器处理）
+    - Invariants Manifest（上游定义，QG执行）
+    - QG Interface Contract（硬接口字段锁死）
+
+---
+
+# 理论基础
+theory_foundation:
+  ecosystem:
+    - name: "Ron Adner - The Wide Lens"
+      application: "生态系统依赖、co-innovation risk、adoption chain risk"
+      concepts:
+        - hidden_dependencies
+        - co_innovation_risk
+        - adoption_chain_risk
+        - ecosystem_carryover
+
+    - name: "Christensen - Disruption Theory"
+      application: "颠覆判定：foothold + upmarket + disqualifiers"
+      concepts:
+        - low_end_disruption
+        - new_market_disruption
+        - sustaining_vs_disruptive
+
+    - name: "Porter - Five Forces"
+      application: "竞争格局分析"
+      concepts:
+        - supplier_power
+        - buyer_power
+        - substitutes
+        - new_entrants
+        - rivalry
+
+    - name: "Brandenburger & Nalebuff - Co-opetition"
+      application: "互补者与竞争者分析"
+      concepts:
+        - value_net
+        - complementors
+        - added_value
+
+  graph_theory:
+    - name: "Property Graph Model"
+      application: "图谱存储与查询"
+      why_not_rdf: "edge属性天然支持、tooling成熟"
+
+---
+
+# 核心设计原则
+design_principles:
+  policy_pack_determinism:
+    description: "Policy Pack确保确定性配置，同run_id内不可变"
+    implementation: "eco_policy_pack_v2.4.yaml with hash freeze"
+
+  schema_first:
+    description: "Property Graph Schema定义节点和边的结构"
+    implementation: "ecosystem_graph_schema.yaml"
+
+  reason_code_routing:
+    description: "ECO_命名空间的reason codes支持自动路由回退"
+    implementation: "reason_code_dictionary_ECO.yaml"
+
+  structured_attribution:
+    description: "边归因结构化，可机器处理"
+    implementation: "edge_attribution_enum.yaml"
+
+  invariants_separation:
+    description: "不变量上游定义，QG执行"
+    implementation: "invariants_manifest.yaml"
+
+  qg_interface_contract:
+    description: "与QG的硬接口字段锁死"
+    implementation: "eco_qg_interface_contract.yaml"
+
+---
+
+# Skill 依赖图（继承v2.3，增加Skill 0）
+skill_dependency:
+  graph: |
+    Skill 0 (Policy Pack Loader) [v2.4新增]
+       ↓
+    Skill 1 (Role Map)
+       ↓
+    Skill 2 (Flow Rules Graph)
+       ↓
+    ┌──────────────────────────────────────────┐
+    │  Skill 3 (Competition Surface)           │
+    │  Skill 4 (Substitute Classifier)         │  ← 并行
+    │  Skill 5 (Disruption Qualification)      │
+    └──────────────────────────────────────────┘
+       ↓
+    Skill 6 (Adjacency Shared Constraint)
+       ↓
+    Skill 7 (Graph Assembler) [v2.4新增]
+       ↓
+    Skill 8 (QG Interface Exporter) [v2.4新增]
+
+---
+
+# Skills清单（v2.4）
+skills:
+  # 新增 Skill 0
+  - id: eco_policy_pack_loader_v2_4
+    file: "eco_policy_pack_loader_v2.4.skill.xml"
+    position: 0
+    purpose: "加载并冻结policy_pack，校验version+hash"
+    key_outputs: ["policy", "policy_hash", "frozen_at"]
+    new_in_v2_4: true
+
+  # 继承自v2.3
+  - id: eco_role_map_v2_3
+    file: "eco_role_map_v2.3.skill.xml"
+    position: 1
+    purpose: "识别生态系统中的players及其roles"
+    key_outputs: ["role_map", "players"]
+
+  - id: eco_flow_rules_graph_v2_3
+    file: "eco_flow_rules_graph_v2.3.skill.xml"
+    position: 2
+    purpose: "构建11种规则边类型的流图"
+    key_outputs: ["flow_graph", "rule_edges"]
+
+  - id: eco_competition_surface_v2_3
+    file: "eco_competition_surface_v2.3.skill.xml"
+    position: 3
+    purpose: "5维竞争面分析"
+    key_outputs: ["competition_surface", "ci_scores"]
+
+  - id: eco_substitute_classifier_v2_3
+    file: "eco_substitute_classifier_v2.3.skill.xml"
+    position: 4
+    purpose: "6-factor替代分类（Same Job门禁）"
+    key_outputs: ["substitute_classifications", "same_job_results"]
+
+  - id: eco_disruption_qualification_v2_3
+    file: "eco_disruption_qualification_v2.3.skill.xml"
+    position: 5
+    purpose: "颠覆资格判定（6个disqualifiers）"
+    key_outputs: ["disruption_qualifications", "disqualifier_results"]
+
+  - id: eco_adjacency_shared_constraint_v2_3
+    file: "eco_adjacency_shared_constraint_v2.3.skill.xml"
+    position: 6
+    purpose: "相邻约束与共享约束分析"
+    key_outputs: ["adjacencies", "shared_constraints"]
+
+  # 新增 Skill 7
+  - id: eco_graph_assembler_v2_4
+    file: "eco_graph_assembler_v2.4.skill.xml"
+    position: 7
+    purpose: "组装最终图谱，执行不变量检查"
+    key_outputs: ["ecosystem_graph", "invariants_results"]
+    new_in_v2_4: true
+
+  # 新增 Skill 8
+  - id: eco_qg_interface_exporter_v2_4
+    file: "eco_qg_interface_exporter_v2.4.skill.xml"
+    position: 8
+    purpose: "导出QG接口字段"
+    key_outputs: ["qg_interface_payload"]
+    new_in_v2_4: true
+
+---
+
+# 配置文件清单（v2.4新增）
+config_files:
+  - file: "eco_policy_pack_v2.4.yaml"
+    purpose: "策略包（阈值、规则、配置）"
+    category: "P0"
+
+  - file: "ecosystem_graph_schema.yaml"
+    purpose: "Property Graph Schema"
+    category: "P0"
+
+  - file: "reason_codes/reason_code_dictionary_ECO.yaml"
+    purpose: "ECO_命名空间reason codes"
+    category: "P0"
+
+  - file: "edge_attribution_enum.yaml"
+    purpose: "边归因枚举"
+    category: "P1"
+
+  - file: "invariants_manifest.yaml"
+    purpose: "不变量清单"
+    category: "P1"
+
+  - file: "eco_qg_interface_contract.yaml"
+    purpose: "QG接口契约"
+    category: "P1"
+
+---
+
+# 输出规范
+io_spec:
+  input:
+    from_run_context:
+      - run_id: "本次运行UUID"
+      - entity: "{ticker, cik?, company_name}"
+      - policy_pack: "eco_policy_pack_v2.4.yaml路径"
+
+    from_data_integrity:
+      - canonical_datapoints: "规范化数据点"
+      - evidence_registry: "证据注册表"
+
+  output:
+    ecosystem_package:
+      description: "生态系统分析包"
+      components:
+        - ecosystem_graph: "Property Graph格式的图谱"
+        - role_map: "角色映射"
+        - competition_analysis: "竞争分析"
+        - substitute_analysis: "替代分析"
+        - disruption_analysis: "颠覆分析"
+
+    qg_interface_payload:
+      description: "QG接口负载"
+      fields:
+        - invariants_results
+        - edge_confidence_cap
+        - evidence_registry
+        - critical_edges
+        - reason_codes
+
+---
+
+# 与其他Agent的集成
+integration:
+  data_integrity:
+    receives:
+      - canonical_datapoints
+      - evidence_registry
+      - confidence_cap
+
+  quality_gate:
+    exports:
+      - invariants_results
+      - edge_confidence_cap
+      - evidence_registry
+      - critical_edges
+      - reason_codes
+    interface: "eco_qg_interface_contract.yaml"
+
+  eval_agent:
+    exports:
+      - ecosystem_graph (for golden tests)
+      - invariants_results (for governance tests)
+    test_types:
+      - golden_outcome: "图谱结构快照"
+      - metamorphic: "证据单调性、噪声鲁棒性"
+      - governance: "不变量必须pass"
+
+---
+
+# 版本历史
+version_history:
+  - version: "2.4"
+    date: "2026-01-27"
+    changes:
+      - "新增eco_policy_pack_v2.4.yaml（策略包+hash冻结）"
+      - "新增ecosystem_graph_schema.yaml（Property Graph Schema）"
+      - "新增reason_code_dictionary_ECO.yaml（ECO_命名空间）"
+      - "新增edge_attribution_enum.yaml（结构化归因）"
+      - "新增invariants_manifest.yaml（不变量清单）"
+      - "新增eco_qg_interface_contract.yaml（QG接口契约）"
+      - "新增Skill 0: Policy Pack Loader"
+      - "新增Skill 7: Graph Assembler"
+      - "新增Skill 8: QG Interface Exporter"
+
+  - version: "2.3"
+    date: "2026-01-27"
+    changes:
+      - "时间维度一等公民(asof, valid_from/to)"
+      - "PARTS规则边"
+      - "6-factor Substitute模型"
+      - "6个Disruption Disqualifiers"
+      - "Confidence传播"
+      - "Invariants as auto-tests"
+
+  - version: "2.2"
+    date: "2026-01-26"
+    changes:
+      - "初始6-skill架构"

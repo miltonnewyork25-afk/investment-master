@@ -1,0 +1,285 @@
+# Edge Attribution Enum v1.0
+# 结构化归因：为什么连这条边
+# 与DI的conflict_attribution对称
+
+version: "1.0"
+asof: "2026-01-27"
+description: "可机器处理的边归因枚举，支持自动回退/聚类失败原因"
+
+---
+
+# Overlap Basis（重叠基础）
+# 用于判断两个实体是否存在关系的基础维度
+overlap_basis:
+  description: "判断边成立的重叠/共享基础"
+
+  categories:
+    CUSTOMER_OVERLAP:
+      description: "共享客户群体"
+      indicators:
+        - common_customer_segments
+        - customer_migration_data
+        - survey_data
+      evidence_sources: [market_research, company_filings, surveys]
+
+    CHANNEL_OVERLAP:
+      description: "共享分销渠道"
+      indicators:
+        - same_distributors
+        - same_retail_partners
+        - same_platform_presence
+      evidence_sources: [partnership_announcements, channel_data]
+
+    BUDGET_OVERLAP:
+      description: "竞争同一预算"
+      indicators:
+        - same_budget_category
+        - purchasing_decision_data
+      evidence_sources: [market_research, procurement_data]
+
+    TOOLCHAIN_OVERLAP:
+      description: "技术栈重叠"
+      indicators:
+        - common_dependencies
+        - integration_patterns
+      evidence_sources: [technical_docs, developer_surveys]
+
+    INTERFACE_OVERLAP:
+      description: "接口/API重叠"
+      indicators:
+        - api_compatibility
+        - protocol_compliance
+      evidence_sources: [api_docs, technical_specs]
+
+    STANDARD_OVERLAP:
+      description: "共享标准"
+      indicators:
+        - same_standard_compliance
+        - certification_overlap
+      evidence_sources: [certification_records, standards_bodies]
+
+---
+
+# Rule Basis（规则基础）
+# 规则边成立的具体规则类型
+rule_basis:
+  description: "规则边的具体规则类型归因"
+
+  categories:
+    STANDARDS:
+      description: "技术标准约束"
+      examples: [ISO, IEEE, W3C, IETF]
+      reversibility_typical: 0.3
+
+    APIS:
+      description: "API依赖约束"
+      examples: [platform_api, integration_api]
+      reversibility_typical: 0.5
+
+    CONTRACTS:
+      description: "合同约束"
+      examples: [supply_agreement, licensing, partnership]
+      reversibility_typical: 0.4
+
+    CERTIFICATIONS:
+      description: "认证要求"
+      examples: [FDA, CE, FCC]
+      reversibility_typical: 0.2
+
+    REGULATIONS:
+      description: "监管规则"
+      examples: [SEC, EPA, GDPR]
+      reversibility_typical: 0.1
+
+    IP_PATENTS:
+      description: "知识产权/专利"
+      examples: [patent_license, trade_secret]
+      reversibility_typical: 0.3
+
+    DATA_RIGHTS:
+      description: "数据权限"
+      examples: [data_sharing, privacy_constraints]
+      reversibility_typical: 0.4
+
+    PRICING_RULES:
+      description: "定价规则"
+      examples: [MFN, price_parity, tiered_pricing]
+      reversibility_typical: 0.6
+
+    NETWORK_LOCK_IN:
+      description: "网络锁定"
+      examples: [platform_dependency, ecosystem_lock_in]
+      reversibility_typical: 0.4
+
+    HABIT_LOCK_IN:
+      description: "习惯锁定"
+      examples: [user_habit, workflow_dependency]
+      reversibility_typical: 0.5
+
+---
+
+# Substitution Cause（替代原因）
+# Substitute边成立的具体因子归因
+substitution_cause:
+  description: "Substitute边的6-factor归因"
+
+  categories:
+    SAME_JOB:
+      description: "执行相同的Job-to-be-Done"
+      is_gate: true
+      min_score_for_substitute: 2
+      scoring: [1, 2, 3, 4, 5]
+
+    PRICE_PERFORMANCE:
+      description: "价格-性能比优势"
+      weight: 0.25
+      values: [superior, comparable, inferior]
+
+    SWITCHING_COST:
+      description: "切换成本"
+      weight: 0.20
+      values: [low, medium, high]
+
+    CEILING_EFFECT:
+      description: "天花板效应"
+      weight: 0.15
+      values: [no_ceiling, partial_ceiling, hard_ceiling]
+
+    TRAJECTORY:
+      description: "改进轨迹"
+      weight: 0.25
+      is_dynamic: true
+      values: [accelerating, steady, stalling, declining]
+
+    TRIGGER_EVENT:
+      description: "触发事件"
+      weight: 0.15
+      is_dynamic: true
+      event_types:
+        - price_shock
+        - technology_breakthrough
+        - regulation_change
+        - supply_disruption
+        - demand_shift
+
+---
+
+# Disruption Cause（颠覆原因）
+# Disruption边成立的具体原因归因
+disruption_cause:
+  description: "Disruption边的成立原因"
+
+  required_factors:
+    FOOTHOLD:
+      description: "立足点市场"
+      types:
+        - low_end_market
+        - new_market
+        - niche_segment
+      evidence_required: true
+
+    UPMARKET_TRAJECTORY:
+      description: "向上轨迹"
+      indicators:
+        - product_improvement_rate
+        - market_segment_expansion
+        - customer_tier_migration
+      evidence_required: true
+
+  disqualifier_triggers:
+    DQ1_SUSTAINING:
+      cause: "incumbent_can_adopt_without_business_model_change"
+    DQ2_HIGH_END:
+      cause: "initial_target_is_premium_segment"
+    DQ3_FEATURE:
+      cause: "no_new_value_network"
+    DQ4_HORIZONTAL:
+      cause: "no_upmarket_trajectory"
+    DQ5_INCUMBENT:
+      cause: "incumbent_response_cost_low"
+    DQ6_REGULATORY:
+      cause: "regulatory_barrier_blocks_entry"
+
+---
+
+# Evidence Cause（证据原因）
+# 边无法成立或置信度低的证据相关原因
+evidence_cause:
+  description: "证据相关的归因（通常导致降级或阻断）"
+
+  categories:
+    MISSING_A_GRADE:
+      description: "缺少A级证据"
+      action: "补充SEC_FILINGS/COMPANY_REPORTS等"
+
+    MISSING_B_GRADE:
+      description: "缺少B级证据"
+      action: "补充INDUSTRY_REPORTS/ANALYST_RESEARCH等"
+
+    SOURCE_CONFLICT:
+      description: "来源冲突"
+      action: "裁决或标记冲突"
+
+    STALE_EVIDENCE:
+      description: "证据过期"
+      action: "更新证据"
+
+    AMBIGUOUS_DEFINITION:
+      description: "定义歧义"
+      action: "消歧或标记"
+
+    INSUFFICIENT_COVERAGE:
+      description: "覆盖率不足"
+      action: "补充更多证据源"
+
+---
+
+# Attribution Schema（用于edge属性）
+attribution_schema:
+  type: object
+  properties:
+    primary_basis:
+      type: string
+      enum: [overlap, rule, substitution, disruption]
+      description: "主要归因类别"
+
+    overlap_factors:
+      type: array
+      items:
+        type: string
+        enum: [CUSTOMER_OVERLAP, CHANNEL_OVERLAP, BUDGET_OVERLAP, TOOLCHAIN_OVERLAP, INTERFACE_OVERLAP, STANDARD_OVERLAP]
+
+    rule_factors:
+      type: array
+      items:
+        type: string
+        enum: [STANDARDS, APIS, CONTRACTS, CERTIFICATIONS, REGULATIONS, IP_PATENTS, DATA_RIGHTS, PRICING_RULES, NETWORK_LOCK_IN, HABIT_LOCK_IN]
+
+    substitution_factors:
+      type: object
+      properties:
+        same_job_score: { type: integer, minimum: 1, maximum: 5 }
+        price_performance: { type: string }
+        switching_cost: { type: string }
+        ceiling_effect: { type: string }
+        trajectory: { type: string }
+        trigger_events: { type: array }
+
+    disruption_factors:
+      type: object
+      properties:
+        foothold_type: { type: string }
+        upmarket_evidence: { type: array }
+        disqualifiers_checked: { type: array }
+
+    evidence_factors:
+      type: array
+      items:
+        type: string
+        enum: [MISSING_A_GRADE, MISSING_B_GRADE, SOURCE_CONFLICT, STALE_EVIDENCE, AMBIGUOUS_DEFINITION, INSUFFICIENT_COVERAGE]
+
+    confidence_impact:
+      type: number
+      minimum: -1
+      maximum: 1
+      description: "归因对置信度的影响"
