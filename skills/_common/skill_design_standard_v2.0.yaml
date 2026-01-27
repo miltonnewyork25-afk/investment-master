@@ -1,0 +1,798 @@
+# Skill Design Standard v2.0
+# 顶级Skill的设计标准 - 可评测的产品合约
+# 版本: 2.0
+# 创建日期: 2026-01-27
+# 核心原则: Contract-first | Eval-first | SRE-first
+
+---
+
+# ============================================================
+# 〇、v2.0 核心原则
+# ============================================================
+core_principles:
+  contract_first:
+    description: |
+      Skill不只是prompt，而是"输入校验→工作流→输出schema→质量门禁→降级/熔断"的系统合约。
+      工具/函数调用本质是模型与确定性系统的多步合约交互。
+    requirements:
+      - "tool-call与tool-output可追踪"
+      - "结构约束明确"
+      - "边界条件定义清晰"
+
+  eval_first:
+    description: |
+      每个Skill必须能被"测试集 + 评分器 + 回放日志"验证并持续迭代。
+    requirements:
+      - "golden cases (正常/边界/失败)"
+      - "可量化指标"
+      - "回归测试"
+
+  sre_first:
+    description: |
+      降级路径要"简单、可演练、可快速关闭"。
+      监控进入降级模式的频率。复杂降级会制造新的风险。
+    requirements:
+      - "降级剧本可执行"
+      - "定期演练"
+      - "快速关闭机制"
+
+# ============================================================
+# 一、元信息 (Metadata)
+# ============================================================
+metadata:
+  skill_id:
+    format: "{agent}.{skill_name}_v{major}.{minor}"
+    example: "research_mechanism.moat_evaluation_v2.0"
+    rule: "全局唯一，snake_case"
+
+  skill_name:
+    format: "人类可读名称"
+    language: "中文"
+
+  version:
+    format: "语义化版本 major.minor"
+    rule: "breaking change增major，功能增强增minor"
+
+  routing:
+    primary_agent:
+      weight: "≥60%"
+    secondary_agents:
+      weight: "每个<40%"
+
+  dependencies:
+    required_skills: []
+    optional_skills: []
+    data_sources: []
+
+  contract_version: "skill_design_standard_v2.0"
+  code_dictionary_version: "code_dictionary_v1.0"
+
+# ============================================================
+# 二、用途 (Purpose)
+# ============================================================
+purpose:
+  one_liner:
+    max_length: 100
+    rule: "动词开头，说清解决什么问题"
+
+  when_to_use:
+    triggers: []
+
+  when_not_to_use:
+    anti_patterns: []
+
+  value_proposition:
+    description: "使用此skill后能获得什么"
+
+# ============================================================
+# 三、输入规范 (Input Specification)
+# ============================================================
+input_spec:
+  required: []
+  optional: []
+
+  validation_rules:
+    - rule: "必填字段检查"
+      on_fail: "FAIL with RC-DATA-001"
+    - rule: "数据新鲜度检查"
+      on_fail: "DEGRADE with RC-DATA-002"
+
+  preprocessing:
+    - "数据标准化"
+    - "缺失值处理"
+
+# ============================================================
+# 四、工作流 (Workflow)
+# ============================================================
+workflow:
+  steps:
+    - id: "S1"
+      name: "步骤名称"
+      description: "做什么"
+      inputs: []
+      outputs: []
+      tools_used: []
+      quality_check:
+        required: true
+        criteria: []
+
+  dependency_graph:
+    format: "DAG"
+
+  parallelization:
+    parallelizable_steps: []
+    sequential_steps: []
+
+  error_handling:
+    on_step_failure:
+      action: "DEGRADE | FAIL | RETRY"
+      max_retries: 3
+
+# ============================================================
+# 五、核心模型 (Core Models)
+# ============================================================
+core_models:
+  models:
+    - id: "M1"
+      name: "模型名称"
+      type: "分析框架 | 评分模型 | 决策树"
+      assumptions: []
+      limitations: []
+
+  model_selection:
+    decision_tree: {}
+
+# ============================================================
+# 六、输出规范 (Output Specification) - v2.0重构
+# ============================================================
+output_spec:
+  # ========== HARD层（审计必需，缺一则FAIL）==========
+  hard_components:
+
+    # 1. 质量门判定
+    quality_gate:
+      required: true
+      schema:
+        verdict: "PASS | DEGRADE | FAIL"
+        reason_code: "RC-xxx"
+        severity: "P0 | P1 | P2"
+        confidence: "0.0-1.0"
+        p0_score: "通过数/总数"
+        p1_score: "通过数/总数"
+        p2_score: "通过数/总数"
+
+    # 2. 声明列表 - v2.0强化
+    claims:
+      required: true
+      min_count: 1
+      claim_types:  # v2.0: 5类强制
+        FACT_DESCRIPTIVE:
+          description: "事实描述：发生了什么"
+          min_evidence_tier: 1
+
+        CAUSAL_INFERENCE:
+          description: "因果推断：A导致B"
+          min_evidence_tier: 1
+          requires_alternatives: true  # 必须列替代假说
+
+        FORECAST:
+          description: "预测：未来X会发生"
+          min_evidence_tier: 2
+          requires_sensitivity: true   # 必须做敏感性测试
+
+        VALUATION_IMPLIED:
+          description: "估值/隐含假设：价格要求什么"
+          min_evidence_tier: 2
+
+        ACTION_RECOMMENDATION:
+          description: "行动建议：因此应做什么"
+          min_evidence_tier: 2
+
+      claim_schema:
+        id: "C001"
+        type: "见上述5类"
+        statement: "string"
+        confidence: "0.0-1.0"
+        impact: "H | M | L"
+        time_horizon: "string"
+        evidence_refs: ["E001"]
+        falsifier: "如果___，则此声明失效"
+        min_evidence_grade: "1 | 2 | 3"
+        # v2.0新增
+        alternative_hypotheses: []     # CAUSAL类必填
+        sensitivity_threshold: {}      # FORECAST类必填
+
+    # 3. 证据注册表 - v2.0双门槛
+    evidence_registry:
+      required: true
+      min_count: 1
+
+      tier_thresholds:  # v2.0: 双门槛规则
+        quantity_threshold:
+          tier_1_minimum: 2
+          fallback: "如果Tier1仅1条，必须写reason_code并DEGRADE"
+        coverage_threshold:
+          tier_1_covers_key_nodes: "≥50%"
+          key_nodes_definition: "关键因果节点/关键输入"
+          fallback: "未覆盖则只能DEGRADE"
+
+      evidence_schema:
+        id: "E001"
+        tier: "1 | 2 | 3"
+        source_type: "10-K | Earnings_Call | Analyst_Report | ..."
+        source_name: "string"
+        section: "string"
+        quote: "string (关键摘录，≤200字)"
+        retrieved_at: "ISO8601"
+        hash: "sha256:xxx (可选)"
+        freshness: "FRESH | STALE | EXPIRED"
+
+    # 4. Kill Switch - v2.0: 最少3+1类
+    kill_switches:
+      required: true
+      min_count: 3
+
+      mandatory_types:
+        KS_EVIDENCE_FABRICATION:
+          description: "检测到无来源/伪造链接/不可追溯引用"
+          action: "FAIL"
+          detection_method: "evidence_hash验证 + source可访问性检查"
+
+        KS_TOOL_OVERREACH:
+          description: "越权调用/调用非允许工具/参数越界"
+          action: "FAIL"
+          detection_method: "tool_whitelist + 参数schema验证"
+
+        KS_HIGH_RISK_OUTPUT:
+          description: "输出触发策略/合规红线"
+          action: "FAIL 或 转人审"
+          detection_method: "content_filter + 敏感词检测"
+
+      optional_types:
+        KS_BUDGET_BREACH:
+          description: "超过token/tool/latency硬预算"
+          action: "DEGRADE 或 FAIL"
+
+      kill_switch_schema:
+        id: "KS001"
+        type: "见上述类型"
+        condition: "string"
+        threshold: "string"
+        monitoring_metric: "string"
+        current_status: "GREEN | YELLOW | RED"
+        action_on_trigger: "FAIL | DEGRADE | HUMAN_REVIEW"
+
+    # 5. DEGRADE模式 - v2.0: 可执行剧本
+    degrade_mode:
+      required_when: "verdict == DEGRADE"
+
+      schema:
+        template_locked: true
+        trigger_reason: "string"
+
+        # 可执行剧本（非文档说明）
+        playbook:
+          immediate_actions: []        # 立即执行
+          next_actions_required:       # 3-7项
+            min_count: 3
+            max_count: 7
+            item_schema:
+              action: "string"
+              owner: "human | agent | system"
+              priority: "P0 | P1 | P2"
+              deadline: "string"
+              verification: "如何验证完成"
+
+        usable_sections: []
+        unusable_sections: []
+
+        # v2.0新增：快速关闭机制
+        fast_close:
+          enabled: true
+          method: "如何快速关闭此降级状态"
+          rollback_steps: []
+
+    # 6. Blackboard输出 - v2.0: Core + Extended
+    blackboard_outputs:
+      required: true
+
+      core_fields:  # 必须（6个）
+        - field: "run_id"
+          type: "string"
+          description: "本次运行唯一标识"
+
+        - field: "skill_id"
+          type: "string"
+          description: "skill标识"
+
+        - field: "skill_version"
+          type: "string"
+          description: "skill版本"
+
+        - field: "verdict"
+          type: "enum"
+          values: ["PASS", "DEGRADE", "FAIL"]
+
+        - field: "reason_codes"
+          type: "array"
+          description: "原因代码列表"
+
+        - field: "key_claims"
+          type: "array"
+          description: "核心声明列表"
+
+      extended_fields:  # 推荐（按需）
+        - field: "evidence_refs"
+          type: "array"
+
+        - field: "next_actions"
+          type: "array"
+
+        - field: "tool_calls"
+          type: "array"
+          description: "工具调用记录"
+
+        - field: "token_usage"
+          type: "integer"
+
+        - field: "latency_ms"
+          type: "integer"
+
+  # ========== READER层（面向读者，可配置）==========
+  reader_components:
+
+    # 7. 执行摘要
+    executive_summary:
+      required: true
+      schema:
+        one_liner:
+          max_chars: 100
+        key_findings:
+          count: "3-5"
+          max_chars_each: 80
+        key_risks:
+          count: "3-5"
+          max_chars_each: 80
+        recommendation:
+          max_chars: 150
+
+      # v2.0: Token上限
+      total_token_limit: 300
+
+    # 8. 红旗列表 - v2.0升级为必须
+    red_flags:
+      required: true  # 升级：原为可选
+      rationale: "负面发现的结构化输出，避免天然偏正向"
+
+      schema:
+        id: "RF-xxx-001"
+        category: "string"
+        severity: "P0 | P1 | P2"
+        signal: "string"
+        metrics: "string"
+        evidence_ref: "string"
+        alternative_explanation: "string"
+
+# ============================================================
+# 七、威胁模型与安全边界 (Threat Model) - v2.0新增
+# ============================================================
+threat_model:
+  purpose: "定义'这个Skill最可能怎么出事'，并把风险外置为可执行规则"
+
+  # 风险类型
+  risk_types:
+    prompt_injection:
+      description: "恶意输入试图改变skill行为"
+      detection: "输入sanitization + 模式匹配"
+      mitigation: "拒绝执行 + 告警"
+
+    evidence_fabrication:
+      description: "伪造或编造证据"
+      detection: "source验证 + hash检查"
+      mitigation: "FAIL + 标记"
+
+    tool_overreach:
+      description: "越权调用工具"
+      detection: "whitelist + 参数边界检查"
+      mitigation: "阻断 + 告警"
+
+    high_risk_output:
+      description: "输出可能造成合规/安全问题"
+      detection: "content filter + 敏感词"
+      mitigation: "阻断 或 人审"
+
+    data_leakage:
+      description: "敏感数据泄露"
+      detection: "PII检测 + 数据分类"
+      mitigation: "脱敏 或 阻断"
+
+  # 防护机制
+  protection_mechanisms:
+    tool_firewall:
+      description: "外置拦截规则"
+      rules: []
+
+    kill_switches:
+      description: "见上述Kill Switch定义"
+
+    human_review_conditions:
+      description: "触发人工审核的条件"
+      conditions: []
+
+    content_zones:
+      description: "内容分区(TRUSTED/DATA_ONLY/HIGH_RISK/QUARANTINED)"
+
+  # 不依赖模型自觉
+  principle: "防护机制必须外置为可执行规则，不依赖模型自觉判断"
+
+# ============================================================
+# 八、可观测性与回放 (Observability & Replay) - v2.0新增
+# ============================================================
+observability:
+  purpose: "让每次运行都能被回放与审计"
+
+  # 必备字段
+  required_fields:
+    - field: "run_id"
+      description: "运行唯一标识"
+      format: "UUID"
+
+    - field: "skill_version"
+      description: "skill版本号"
+
+    - field: "timestamp"
+      description: "执行时间"
+      format: "ISO8601"
+
+    - field: "tool_calls"
+      description: "工具调用序列"
+      schema:
+        - tool_name: "string"
+          input: {}
+          output: {}
+          latency_ms: "integer"
+          success: "boolean"
+
+    - field: "gate_scores"
+      description: "质量门评分"
+      schema:
+        p0_passed: "integer"
+        p0_total: "integer"
+        p1_passed: "integer"
+        p1_total: "integer"
+
+    - field: "degrade_path"
+      description: "降级路径（如有）"
+
+    - field: "evidence_hashes"
+      description: "证据哈希列表"
+
+  # 运行指标
+  metrics:
+    - name: "success_rate"
+      description: "成功率"
+      formula: "PASS runs / total runs"
+
+    - name: "p0_failure_rate"
+      description: "P0失败率"
+      formula: "P0 failures / total runs"
+
+    - name: "avg_tool_calls"
+      description: "平均工具调用数"
+
+    - name: "token_consumption"
+      description: "Token消耗"
+
+    - name: "tier1_evidence_ratio"
+      description: "Tier1证据占比"
+
+    - name: "degrade_trigger_rate"
+      description: "降级触发率"
+      formula: "DEGRADE runs / total runs"
+      alert_threshold: ">20%"
+
+  # 回放能力
+  replay:
+    enabled: true
+    requirements:
+      - "所有输入可重建"
+      - "工具调用序列可重放"
+      - "输出可对比"
+
+# ============================================================
+# 九、成本/延迟预算 (Cost/Latency Budget) - v2.0新增
+# ============================================================
+budget:
+  purpose: "像SRE的error budget一样，把'质量-成本-延迟'的权衡写进规则"
+
+  token_budget:
+    soft_limit: 8000
+    soft_action: "LOG warning"
+    hard_limit: 12000
+    hard_action: "DEGRADE with RC-BUDGET-001"
+    critical_limit: 20000
+    critical_action: "FAIL with RC-BUDGET-002"
+
+  tool_call_budget:
+    soft_limit: 10
+    soft_action: "LOG warning"
+    hard_limit: 20
+    hard_action: "DEGRADE with RC-BUDGET-003"
+    critical_limit: 30
+    critical_action: "FAIL with RC-BUDGET-004"
+
+  latency_budget:
+    soft_limit_ms: 30000
+    soft_action: "LOG warning"
+    hard_limit_ms: 60000
+    hard_action: "DEGRADE with RC-BUDGET-005"
+    critical_limit_ms: 120000
+    critical_action: "FAIL with RC-BUDGET-006"
+
+  # 预算超限reason codes
+  budget_reason_codes:
+    RC-BUDGET-001: "Token超过hard limit"
+    RC-BUDGET-002: "Token超过critical limit"
+    RC-BUDGET-003: "Tool calls超过hard limit"
+    RC-BUDGET-004: "Tool calls超过critical limit"
+    RC-BUDGET-005: "Latency超过hard limit"
+    RC-BUDGET-006: "Latency超过critical limit"
+
+# ============================================================
+# 十、质量检验 (Quality Checks) - v2.0强化
+# ============================================================
+quality_checks:
+  # Hard-FAIL触发器（任一触发直接FAIL）
+  hard_fail_triggers:
+    - "schema不合法"
+    - "claim无falsifier"
+    - "evidence不可追溯"
+    - "伪造引用"
+    - "越权tool call"
+    - "Kill Switch RED状态被忽略"
+
+  # 评分标准 - v2.0提高阈值
+  scoring:
+    PASS:
+      p0_requirement: "100% 通过"
+      p1_requirement: "≥85% 通过"
+      p2_requirement: "≥50% 通过"
+
+    DEGRADE:
+      p0_requirement: "100% 通过"
+      p1_requirement: "70-85% 通过"
+
+    FAIL:
+      conditions:
+        - "P0未100%通过"
+        - "P1 < 70%"
+        - "任何Hard-FAIL触发"
+
+  # 运行态约束 - v2.0新增
+  runtime_constraints:
+    degrade_path_testing:
+      required: true
+      frequency: "每周演练"
+      rationale: "未常走的降级路径更危险"
+
+    tool_call_efficiency:
+      as_p1_metric: true
+      criteria:
+        - "冗余调用不超过20%"
+        - "返回低信号字段不超过30%"
+
+  # Error Budget策略 - v2.0新增
+  error_budget:
+    description: "当质量预算被消耗到阈值，冻结迭代，只做修复"
+    threshold: "P0失败率>5% 或 P1通过率<80%"
+    action: "暂停新功能，只修复"
+
+# ============================================================
+# 十一、证伪设计 (Falsification Design) - v2.0强化
+# ============================================================
+falsification:
+  principles:
+    - "每个核心声明必须可证伪"
+    - "证伪条件必须可观测"
+    - "证伪阈值必须明确"
+
+  # 基础要求
+  basic_requirements:
+    falsifier_per_claim:
+      required: true
+      format: "如果___，则此声明失效"
+
+    premortem:
+      required: true
+      question: "假设3年后失败，最可能的路径是什么？"
+      output: "失败路径列表 + 早期预警信号"
+
+    counterfactual:
+      required: true
+      question: "如果去掉因素X，结论是否改变？"
+      purpose: "验证因果关系"
+
+  # v2.0强化：3个额外强制件
+  advanced_requirements:
+    alternative_hypotheses:
+      required_for: ["CAUSAL_INFERENCE", "FORECAST"]
+      min_count: 2
+      schema:
+        hypothesis: "替代解释"
+        distinguishing_evidence: "如何区分（需要什么证据）"
+
+    sensitivity_stress_test:
+      required_for: ["FORECAST", "VALUATION_IMPLIED"]
+      schema:
+        parameter: "关键参数"
+        base_value: "基准值"
+        perturbation: "扰动幅度"
+        conclusion_flip_threshold: "结论翻转阈值"
+
+    disconfirming_evidence_plan:
+      required: true
+      schema:
+        claim: "待反证的声明"
+        where_to_look: "去哪里找打脸证据"
+        sources:
+          - "竞争对手财报"
+          - "渠道数据"
+          - "监管文件"
+          - "专家访谈"
+        check_frequency: "检查频率"
+
+# ============================================================
+# 十二、Agent整合 (Agent Integration)
+# ============================================================
+agent_integration:
+  primary_integration:
+    agent: "{primary_agent}"
+    capability: "string"
+    triggers: []
+
+  secondary_integrations:
+    - agent: "{secondary_agent}"
+      data_exchange: []
+
+  blackboard_protocol:
+    reads: []
+    writes: []
+    conflicts: []
+
+  downstream_hints:
+    recommended_next_skills: []
+    data_for_downstream: {}
+
+# ============================================================
+# 十三、评估与回归 (Eval & Regression) - v2.0强化
+# ============================================================
+eval_regression:
+  # Self-Score（必须）
+  self_score:
+    required: true
+    dimensions: 10  # 对标evaluation_standard
+    schema:
+      dimension_id: "G1 | G2 | D1 | D2 | E1 | Q1 | S1 | K1 | O1 | M1"
+      score: "0-5"
+      rationale: "一句话理由"
+      evidence_pointer: "证据指针"
+
+  # Calibration Hook（必须）
+  calibration:
+    required: true
+
+    golden_cases:
+      min_count: 3
+      types:
+        - "normal_case"
+        - "edge_case"
+        - "failure_case"
+      schema:
+        case_id: "string"
+        input: {}
+        expected_verdict: "PASS | DEGRADE | FAIL"
+        expected_key_claims: []
+        validation_criteria: []
+
+    metrics:
+      - "success_rate"
+      - "p0_failure_rate"
+      - "tier1_evidence_ratio"
+      - "degrade_trigger_rate"
+      - "tool_error_rate"
+      - "avg_latency"
+      - "avg_token_usage"
+
+  # 回归测试
+  regression:
+    failure_to_test_case:
+      description: "失败案例自动转换为回归测试"
+      process:
+        - "捕获失败输入/输出"
+        - "分析失败原因"
+        - "生成测试用例"
+        - "加入测试集"
+
+# ============================================================
+# 十四、演进与维护 (Evolution & Maintenance)
+# ============================================================
+evolution:
+  version_history:
+    - version: "2.0"
+      date: "2026-01-27"
+      changes: "基于讨论全面升级"
+
+  known_limitations: []
+
+  improvement_backlog: []
+
+  deprecation:
+    planned: false
+    successor_skill: null
+
+# ============================================================
+# 十五、评估对标 (Evaluation Alignment)
+# ============================================================
+evaluation_alignment:
+  standard_version: "agent_evaluation_standard_v1.1"
+
+  dimension_coverage:
+    G1_governance:
+      how: "通过metadata.routing + workflow.error_handling"
+    G2_tool_contracts:
+      how: "通过workflow.tools_used + budget"
+    D1_data_integrity:
+      how: "通过input_spec.validation_rules + evidence_registry"
+    D2_contract_compliance:
+      how: "通过output_spec schema + blackboard_outputs"
+    E1_evidence_auditability:
+      how: "通过evidence_registry.tier_thresholds"
+    Q1_quality_gate:
+      how: "通过quality_gate + quality_checks"
+    S1_safety:
+      how: "通过threat_model + kill_switches"
+    K1_kill_switch:
+      how: "通过kill_switches.mandatory_types"
+    O1_observability:
+      how: "通过observability模块"
+    M1_eval_regression:
+      how: "通过eval_regression模块"
+
+  blocker_avoidance:
+    B1_critical_unsupported:
+      how: "通过claims.min_evidence_grade + evidence_registry.tier_thresholds"
+    B2_quarantined_decision:
+      how: "通过threat_model.content_zones"
+    B3_insecure_output:
+      how: "通过threat_model.protection_mechanisms"
+    B4_no_audit_log:
+      how: "通过observability.required_fields"
+    B5_kill_switch_ignored:
+      how: "通过kill_switches.action_on_trigger"
+    B6_degrade_without_actions:
+      how: "通过degrade_mode.playbook.next_actions_required"
+    B7_contract_violation:
+      how: "通过output_spec.hard_components schema"
+
+# ============================================================
+# 附录：v2.0 快速落地清单
+# ============================================================
+implementation_checklist:
+  P0_this_week:
+    - "Claim Type强制5类 + 每条claim绑定evidence_refs + falsifier"
+    - "red_flags升级为必须"
+    - "kill_switches最少3类（伪造证据/越权tool/高风险输出）"
+    - "evidence Tier规则改为双门槛（数量+覆盖）"
+    - "Hard-FAIL触发器定义"
+
+  P1_two_weeks:
+    - "Observability & Replay: run_id/tool_calls/gate_scores标准化"
+    - "Cost/Latency budget: max_tokens/max_tool_calls/超限降级"
+    - "Degrade剧本可执行+快速关闭机制"
+    - "降级路径定期演练机制"
+
+  P2_ongoing:
+    - "Error-budget式质量冻结策略"
+    - "Eval harness: golden cases + 指标面板 + 回放对比"
+    - "替代假说 + 敏感性测试 + 反证取证计划"
+    - "Self-Score + Calibration闭环"
