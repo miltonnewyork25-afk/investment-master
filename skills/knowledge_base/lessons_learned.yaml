@@ -1,0 +1,83 @@
+# Lessons Learned Knowledge Base
+# 累积的经验教训存储
+
+version: "1.0"
+last_updated: "2026-01-27"
+
+lessons:
+  - id: "LL_001"
+    date: "2026-01-27"
+    context: "Tesla v11.0 分析"
+    category: "agent_execution"
+    lesson: "Innovation Agent Pipeline被提及但未真正执行完整流程"
+    root_cause: "缺少强制执行器skill，Pipeline各阶段没有checkpoint验证"
+    action_taken: "创建 innovation_pipeline_executor_v1.skill.md"
+    effectiveness: "待验证"
+    priority: "P0"
+
+  - id: "LL_002"
+    date: "2026-01-27"
+    context: "Tesla v11.0 分析"
+    category: "api_integration"
+    lesson: "FMP analyst-estimates API需要period参数(annual/quarter)"
+    root_cause: "data_source_registry中未明确说明必需参数"
+    action_taken: "更新data_source_registry添加period参数说明"
+    effectiveness: "已验证"
+    priority: "P1"
+
+  - id: "LL_003"
+    date: "2026-01-27"
+    context: "Tesla v11.0 分析"
+    category: "framework_design"
+    lesson: "7个Agent的输出是单体混合的，缺少结构化分离"
+    root_cause: "没有强制要求每个Agent产出独立的YAML/JSON块"
+    action_taken: "在analysis_preloader中添加Agent输出格式强制要求"
+    effectiveness: "待验证"
+    priority: "P1"
+
+  - id: "LL_004"
+    date: "2026-01-27"
+    context: "Tesla v11.0 分析"
+    category: "automation"
+    lesson: "没有自动反思机制，需要用户手动触发"
+    root_cause: "缺少post-analysis skill"
+    action_taken: "创建 post_analysis_reflection_v1.skill.md 和 compound_learning_v1.skill.md"
+    effectiveness: "待验证"
+    priority: "P0"
+
+  - id: "LL_005"
+    date: "2026-01-27"
+    context: "Tesla v11.0 分析"
+    category: "tool_integration"
+    lesson: "Ralph Loop插件有bug无法启动"
+    root_cause: "setup-ralph-loop.sh脚本中PROMPT_PARTS变量未绑定"
+    action_taken: "记录问题，等待插件更新"
+    effectiveness: "N/A - 外部依赖"
+    priority: "P2"
+
+  - id: "LL_006"
+    date: "2026-01-27"
+    context: "Tesla v11.0 分析"
+    category: "data_quality"
+    lesson: "应收账款增速(+42%)显著高于收入增速(+12%)的异常未深挖"
+    root_cause: "盈利质量警示被标注但未追溯具体原因"
+    action_taken: "在quality_checklist中添加'异常指标必须追溯原因'要求"
+    effectiveness: "待验证"
+    priority: "P1"
+
+# 统计
+statistics:
+  total_lessons: 6
+  by_category:
+    agent_execution: 1
+    api_integration: 1
+    framework_design: 1
+    automation: 1
+    tool_integration: 1
+    data_quality: 1
+  by_priority:
+    P0: 2
+    P1: 3
+    P2: 1
+  resolved: 0
+  pending: 6

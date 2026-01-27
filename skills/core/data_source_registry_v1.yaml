@@ -178,11 +178,13 @@ data_sources:
         priority: P1
         params:
           symbol: "{TICKER}"
+          period: "annual"  # 必需参数! annual 或 quarter
           apikey: "{api_key}"
         provides:
           - "分析师预期EPS"
           - "分析师预期收入"
-        example: 'curl "https://financialmodelingprep.com/stable/analyst-estimates?symbol=TSLA&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+        note: "⚠️ period参数是必需的，否则返回错误"
+        example: 'curl "https://financialmodelingprep.com/stable/analyst-estimates?symbol=TSLA&period=annual&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
 
       insider_trading:
         path: "/stable/insider-trading/statistics"
