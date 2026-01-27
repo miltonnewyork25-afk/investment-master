@@ -1,0 +1,375 @@
+# Valuation Engine - Router Rules Tests v1.0
+# 15个公司类型单测样例，覆盖所有model_families和边界情况
+
+test_suite:
+  version: "1.0.0"
+  description: "VE Router路由规则单元测试"
+  created: "2026-01-27"
+
+---
+
+tests:
+  # ===== 基础路由测试 =====
+
+  - id: T01_platform_saas
+    name: "Platform SaaS - 高成长科技"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.2
+        ecosystem_moat_score: 0.85
+        net_debt_to_ebitda: 1.0
+        capex_intensity: 0.05
+        segment_count: 1
+      growth_bounds:
+        tam_range: [100e9, 200e9]
+        penetration_cap: 0.30
+        current_penetration: 0.05
+      evidence:
+        ab_coverage: 0.65
+        freshness_days: 10
+    expect:
+      selected_model: "VE_PLATFORM_OPTIONALITY_ANNOTATED"
+      flags_has: ["ROUTED_PLATFORM"]
+      recommend: "PASS"
+
+  - id: T02_cyclical_steel
+    name: "Cyclical Steel - 周期钢铁"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.85
+        ecosystem_moat_score: 0.2
+        net_debt_to_ebitda: 2.5
+        capex_intensity: 0.12
+        segment_count: 1
+      normalized_metrics:
+        normalized_margin: 0.12
+        mid_cycle_revenue: 50e9
+        through_cycle_roic: 0.10
+      evidence:
+        ab_coverage: 0.55
+        freshness_days: 15
+    expect:
+      selected_model: "VE_CYCLICAL_NORMALIZED_REVERSE_DCF"
+      flags_has: ["ROUTED_CYCLICAL"]
+      recommend: "PASS"
+
+  - id: T03_financial_bank
+    name: "Financial Bank - 商业银行"
+    input:
+      profile:
+        is_financial: true
+        is_reit: false
+        cyclicality_score: 0.3
+        ecosystem_moat_score: 0.3
+        net_debt_to_ebitda: 0.0
+        capex_intensity: 0.02
+        segment_count: 4
+      financial_core:
+        roe: 0.12
+        coe: 0.10
+        book_value_per_share: 45.0
+        cet1_or_rbc: 0.13
+      evidence:
+        ab_coverage: 0.70
+        freshness_days: 5
+    expect:
+      selected_model: "VE_FINANCIAL_ROE_RESIDUAL_INCOME"
+      flags_has: ["ROUTED_FINANCIAL"]
+      recommend: "PASS"
+
+  - id: T04_high_leverage_retailer
+    name: "High Leverage Retailer - 高杠杆零售"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.4
+        ecosystem_moat_score: 0.3
+        net_debt_to_ebitda: 6.0
+        capex_intensity: 0.08
+        segment_count: 2
+      leverage_schedule:
+        maturities: [2027, 2028, 2030]
+        avg_rate: 0.065
+        total_debt: 15e9
+      base_metrics:
+        interest_coverage: 2.5
+      evidence:
+        ab_coverage: 0.50
+        freshness_days: 20
+    expect:
+      selected_model: "VE_CORP_FCFF_REVERSE_DCF"  # 默认+叠加
+      overlay_model: "VE_HIGH_LEVERAGE_REFI_SENSITIVE"
+      flags_has: ["ROUTED_DEFAULT", "ROUTED_HIGH_LEVERAGE"]
+      reason_codes_has: ["VE_HIGH_LEVERAGE_REFI_SENSITIVE"]
+      recommend: "PASS"
+
+  - id: T05_default_industrial
+    name: "Default Industrial - 标准工业"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.4
+        ecosystem_moat_score: 0.4
+        net_debt_to_ebitda: 1.8
+        capex_intensity: 0.06
+        segment_count: 2
+      evidence:
+        ab_coverage: 0.60
+        freshness_days: 12
+    expect:
+      selected_model: "VE_CORP_FCFF_REVERSE_DCF"
+      flags_has: ["ROUTED_DEFAULT"]
+      recommend: "PASS"
+
+  - id: T06_reit_office
+    name: "REIT Office - 办公REIT"
+    input:
+      profile:
+        is_financial: false
+        is_reit: true
+        cyclicality_score: 0.5
+        ecosystem_moat_score: 0.3
+        net_debt_to_ebitda: 5.0
+        capex_intensity: 0.04
+        segment_count: 1
+      reit_core:
+        noi: 500e6
+        cap_rate: 0.065
+        nav_per_share: 42.0
+        ffo_per_share: 3.20
+      evidence:
+        ab_coverage: 0.55
+        freshness_days: 8
+    expect:
+      selected_model: "VE_REIT_NAV_IMPLIED"
+      flags_has: ["ROUTED_REIT"]
+      recommend: "PASS"
+
+  - id: T07_capex_intensive_datacenter
+    name: "CapEx Intensive Datacenter - 数据中心"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.3
+        ecosystem_moat_score: 0.6
+        net_debt_to_ebitda: 3.0
+        capex_intensity: 0.25
+        segment_count: 1
+      capex_decomposition:
+        maintenance_capex: 2e9
+        growth_capex: 8e9
+        capex_cycle_phase: "acceleration"
+      evidence:
+        ab_coverage: 0.60
+        freshness_days: 15
+    expect:
+      selected_model: "VE_CAPEX_INTENSIVE_NORMALIZED"
+      flags_has: ["ROUTED_CAPEX_INTENSIVE"]
+      recommend: "PASS"
+
+  - id: T08_multi_segment_conglomerate
+    name: "Multi-Segment Conglomerate - 多元化集团"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.4
+        ecosystem_moat_score: 0.5
+        net_debt_to_ebitda: 2.0
+        capex_intensity: 0.10
+        segment_count: 5
+      segments:
+        - name: "Aviation"
+          revenue: 30e9
+          margin: 0.08
+          growth_rate: 0.03
+        - name: "Healthcare"
+          revenue: 20e9
+          margin: 0.15
+          growth_rate: 0.06
+        - name: "Power"
+          revenue: 25e9
+          margin: 0.12
+          growth_rate: 0.02
+      evidence:
+        ab_coverage: 0.55
+        freshness_days: 20
+    expect:
+      selected_model: "VE_MULTI_SEGMENT_SOTP"
+      flags_has: ["ROUTED_MULTI_SEGMENT"]
+      recommend: "PASS"
+
+  # ===== 缺失字段降级测试 =====
+
+  - id: T09_financial_missing_fields
+    name: "Financial Missing Fields - 金融缺失核心字段"
+    input:
+      profile:
+        is_financial: true
+        is_reit: false
+        cyclicality_score: 0.3
+      financial_core: {}  # 缺失
+      evidence:
+        ab_coverage: 0.60
+        freshness_days: 10
+    expect:
+      selected_model: "VE_CORP_FCFF_REVERSE_DCF"  # fallback
+      flags_has: ["ROUTED_FINANCIAL"]
+      reason_codes_has: ["VE_FINANCIAL_MODEL_REQUIRED"]
+      recommend: "DEGRADE"
+
+  - id: T10_cyclical_missing_normalized
+    name: "Cyclical Missing Normalized - 周期缺失正常化"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.90
+        ecosystem_moat_score: 0.2
+      normalized_metrics: {}  # 缺失
+      evidence:
+        ab_coverage: 0.55
+        freshness_days: 12
+    expect:
+      selected_model: "VE_CORP_FCFF_REVERSE_DCF"  # fallback
+      flags_has: ["ROUTED_CYCLICAL"]
+      reason_codes_has: ["VE_CYCLICAL_NOT_NORMALIZED"]
+      recommend: "DEGRADE"
+
+  - id: T11_reit_missing_nav
+    name: "REIT Missing NAV - REIT缺失NAV数据"
+    input:
+      profile:
+        is_financial: false
+        is_reit: true
+        cyclicality_score: 0.4
+      reit_core: {}  # 缺失
+      evidence:
+        ab_coverage: 0.50
+        freshness_days: 15
+    expect:
+      selected_model: "VE_CORP_FCFF_REVERSE_DCF"  # fallback
+      flags_has: ["ROUTED_REIT"]
+      reason_codes_has: ["VE_REIT_NAV_REQUIRED"]
+      recommend: "DEGRADE"
+
+  # ===== 证据质量测试 =====
+
+  - id: T12_evidence_low_coverage
+    name: "Evidence Low Coverage - 证据覆盖不足"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.3
+        ecosystem_moat_score: 0.4
+        net_debt_to_ebitda: 1.5
+      evidence:
+        ab_coverage: 0.20  # 低于0.40阈值
+        freshness_days: 10
+    expect:
+      selected_model: "VE_CORP_FCFF_REVERSE_DCF"
+      reason_codes_has: ["VE_EVIDENCE_COVERAGE_LOW"]
+      recommend: "DEGRADE"
+
+  - id: T13_evidence_stale_data
+    name: "Evidence Stale Data - 数据过期"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.3
+        ecosystem_moat_score: 0.4
+        net_debt_to_ebitda: 1.5
+      evidence:
+        ab_coverage: 0.80
+        freshness_days: 120  # 超过30天阈值
+    expect:
+      selected_model: "VE_CORP_FCFF_REVERSE_DCF"
+      reason_codes_has: ["VE_FRESHNESS_TOO_OLD"]
+      recommend: "DEGRADE"
+
+  # ===== 组合路由测试 =====
+
+  - id: T14_platform_and_leverage
+    name: "Platform and High Leverage - 平台+高杠杆叠加"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.2
+        ecosystem_moat_score: 0.85
+        net_debt_to_ebitda: 5.0  # 高杠杆
+        capex_intensity: 0.08
+        segment_count: 1
+      growth_bounds:
+        tam_range: [50e9, 100e9]
+        penetration_cap: 0.25
+        current_penetration: 0.08
+      leverage_schedule:
+        maturities: [2027, 2029]
+        avg_rate: 0.07
+        total_debt: 10e9
+      evidence:
+        ab_coverage: 0.60
+        freshness_days: 15
+    expect:
+      selected_model: "VE_PLATFORM_OPTIONALITY_ANNOTATED"
+      overlay_model: "VE_HIGH_LEVERAGE_REFI_SENSITIVE"
+      flags_has: ["ROUTED_PLATFORM", "ROUTED_HIGH_LEVERAGE"]
+      reason_codes_has: ["VE_HIGH_LEVERAGE_REFI_SENSITIVE"]
+      recommend: "PASS"
+
+  - id: T15_cyclical_and_leverage
+    name: "Cyclical and High Leverage - 周期+高杠杆"
+    input:
+      profile:
+        is_financial: false
+        is_reit: false
+        cyclicality_score: 0.80
+        ecosystem_moat_score: 0.2
+        net_debt_to_ebitda: 4.5
+        capex_intensity: 0.10
+        segment_count: 1
+      normalized_metrics:
+        normalized_margin: 0.10
+        mid_cycle_revenue: 20e9
+        through_cycle_roic: 0.08
+      leverage_schedule:
+        maturities: [2026, 2028]
+        avg_rate: 0.055
+        total_debt: 8e9
+      evidence:
+        ab_coverage: 0.55
+        freshness_days: 18
+    expect:
+      selected_model: "VE_CYCLICAL_NORMALIZED_REVERSE_DCF"
+      overlay_model: "VE_HIGH_LEVERAGE_REFI_SENSITIVE"
+      flags_has: ["ROUTED_CYCLICAL", "ROUTED_HIGH_LEVERAGE"]
+      reason_codes_has: ["VE_HIGH_LEVERAGE_REFI_SENSITIVE"]
+      recommend: "PASS"
+
+---
+
+# 测试汇总
+test_summary:
+  total_tests: 15
+  coverage:
+    model_families_covered: 8
+    edge_cases_covered: 5
+    evidence_checks_covered: 2
+    combination_tests: 2
+
+  expected_results:
+    pass: 8
+    degrade: 5
+    warn: 0
+    fail: 0
+    overlay_applied: 3

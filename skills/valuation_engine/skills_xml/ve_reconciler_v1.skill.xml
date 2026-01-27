@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- VE Reconciler Skill v1.0 -->
+<!-- Position: L3 | Purpose: 对比Implied vs Forward，识别Expectation Gap -->
+<!-- 核心: Expectations Investing核心环节 - 市场预期与分析师预期的差异 -->
+
+<skill name="ve_reconciler_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>VE Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Expectations Investing (Mauboussin &amp; Rappaport) - Chapter 5: Gap Analysis</ref>
+      <ref>Behavioral Finance - Expectation Revision</ref>
+      <ref>Investment Decision Framework - CFA Institute</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    Reconciliation Layer - 估值引擎最终整合层：
+    1. 对比implied_expectations(L1) vs forward_valuation(L2)
+    2. 识别expectation_gap及其来源
+    3. 整合CAP假设与RM机制信号
+    4. 计算最终ve_confidence_cap
+    5. 决定degrade_mode
+
+    输出：expectation_gap + 整合后的monitoring_triggers + ve_confidence_cap
+    不输出投资结论。
+  </purpose>
+
+  <inputs>
+    <input name="policy_ref" type="object" required="true">
+      {version, hash} from policy_pack_loader
+    </input>
+
+    <input name="implied_expectations" type="ImpliedExpectations" required="true">
+      来自L1 Reverse DCF Solver
+      <field name="rev_cagr" type="float"/>
+      <field name="target_margin" type="float"/>
+      <field name="reinvestment_ratio" type="float"/>
+      <field name="fade_years_or_cap" type="float"/>
+      <field name="terminal_g" type="float"/>
+      <field name="confidence" type="float"/>
+      <field name="reason_codes" type="array"/>
+    </input>
+
+    <input name="forward_valuation" type="ForwardValuation" required="true">
+      来自L2 Forward Bridge
+      <field name="scenario_values" type="object"/>
+      <field name="weighted_value" type="float"/>
+      <field name="value_range" type="object"/>
+      <field name="key_drivers" type="object"/>
+      <field name="reason_codes" type="array"/>
+    </input>
+
+    <input name="cap_hypotheses" type="array" required="true">
+      来自L1 Reverse DCF Solver
+      <item_schema>
+        <field name="id" type="string"/>
+        <field name="claim" type="string"/>
+        <field name="metric" type="string"/>
+        <field name="threshold" type="string"/>
+        <field name="time_window" type="string"/>
+        <field name="verification_sources" type="array"/>
+        <field name="disconfirmers" type="array"/>
+      </item_schema>
+    </input>
+
+    <input name="fragility_assessment" type="object" required="true">
+      来自L1 Reverse DCF Solver
+      <field name="terminal_fragile" type="boolean"/>
+      <field name="key_drivers_fragile" type="array"/>
+      <field name="tornado_chart_data" type="array"/>
+    </input>
+
+    <input name="rm_signals" type="RMSignals" required="false">
+      来自Research Mechanism Agent
+      <field name="mechanism_claims" type="array"/>
+      <field name="claim_confidence" type="float"/>
+      <field name="key_catalysts" type="array"/>
+    </input>
+
+    <input name="valuation_anchor" type="ValuationAnchor" required="true">
+      当前市场价格锚
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="ComputeExpectationGap">
+      <action>
+        计算Implied vs Forward的差异：
+
+        implied_value = valuation_anchor.ev_or_mktcap / valuation_anchor.shares_diluted
+        forward_weighted = forward_valuation.weighted_value
+
+        absolute_gap = implied_value - forward_weighted
+        relative_gap = absolute_gap / forward_weighted
+
+        gap_direction:
+          IF relative_gap > 0.10: "MARKET_MORE_OPTIMISTIC"
+          ELIF relative_gap &lt; -0.10: "MARKET_MORE_PESSIMISTIC"
+          ELSE: "ALIGNED"
+      </action>
+      <output>
+        expectation_gap:
+          absolute: float
+          relative_pct: float
+          direction: string
+      </output>
+    </step>
+
+    <step id="s2" name="DecomposeGapSources">
+      <action>
+        分解gap来源：
+
+        FOR EACH driver IN [rev_cagr, target_margin, fade_years, terminal_g]:
+          implied_value = implied_expectations[driver]
+          forward_value = forward_valuation.key_assumptions[driver]
+
+          driver_gap = implied_value - forward_value
+          driver_contribution = estimate_value_impact(driver_gap)
+
+        RANK drivers BY contribution DESC
+        top_gap_drivers = top_3(drivers)
+
+        gap_decomposition:
+          - driver: rev_cagr
+            implied: 0.15
+            forward: 0.12
+            gap: +0.03
+            value_impact: +$15/share
+          - driver: fade_years
+            implied: 12
+            forward: 8
+            gap: +4
+            value_impact: +$20/share
+      </action>
+    </step>
+
+    <step id="s3" name="CrossValidateWithRM">
+      <action>
+        IF rm_signals PROVIDED:
+          FOR EACH mechanism_claim IN rm_signals.mechanism_claims:
+            FIND matching_cap_hypothesis IN cap_hypotheses
+            WHERE mechanism_claim.subject overlaps cap_hypothesis.metric
+
+            IF FOUND:
+              check_consistency(mechanism_claim.direction, cap_hypothesis.threshold)
+              IF inconsistent:
+                add_reason_codes: [VE_IMPLIED_INCONSISTENT_WITH_RM]
+                flag_for_review: mechanism_claim.id, cap_hypothesis.id
+
+          rm_alignment_score = consistent_pairs / total_pairs
+        ELSE:
+          rm_alignment_score = null
+          add_reason_codes: [VE_NO_RM_SIGNALS_FOR_VALIDATION]
+      </action>
+    </step>
+
+    <step id="s4" name="BuildMonitoringTriggers">
+      <action>
+        整合CAP假设和RM催化剂为统一监控触发器：
+
+        FOR EACH cap_hypothesis IN cap_hypotheses:
+          CREATE monitoring_trigger:
+            id: MT_{cap_hypothesis.id}
+            type: CAP_HYPOTHESIS
+            metric: cap_hypothesis.metric
+            threshold: cap_hypothesis.threshold
+            time_window: cap_hypothesis.time_window
+            action_if_breached: "REVIEW_CAP_ASSUMPTION"
+            verification_sources: cap_hypothesis.verification_sources
+
+        IF rm_signals PROVIDED:
+          FOR EACH catalyst IN rm_signals.key_catalysts:
+            CREATE monitoring_trigger:
+              id: MT_CAT_{catalyst.id}
+              type: RM_CATALYST
+              event: catalyst.description
+              expected_date: catalyst.expected_date
+              impact_direction: catalyst.impact
+              action_if_occurs: "TRIGGER_REVALUATION"
+
+        ENSURE monitoring_triggers.count >= 5
+      </action>
+    </step>
+
+    <step id="s5" name="EvaluateReconciliationFlags">
+      <action>
+        检查对账标志：
+
+        IF |relative_gap| > 0.50:
+          add_reason_codes: [VE_FORWARD_REVERSE_GAP_EXTREME]
+          recommend = DEGRADE
+
+        IF |relative_gap| > 0.30 AND |relative_gap| &lt;= 0.50:
+          add_reason_codes: [VE_FORWARD_REVERSE_GAP_ALERT]
+          recommend = WARN
+
+        IF fragility_assessment.terminal_fragile == true:
+          add_reason_codes: [VE_TERMINAL_ASSUMPTION_FRAGILE]
+          IF NOT already_degraded:
+            recommend = DEGRADE
+
+        IF gap_direction == "MARKET_MORE_OPTIMISTIC" AND
+           top_gap_driver == "fade_years" AND
+           implied_fade > 15:
+          add_reason_codes: [VE_MARKET_PRICING_EXTENDED_CAP]
+          recommend = WARN
+      </action>
+    </step>
+
+    <step id="s6" name="ComputeConfidenceCap">
+      <action>
+        计算VE层置信度上限：
+
+        ve_internal_confidence = weighted_average(
+          0.30 × evidence_coverage_score,
+          0.25 × solver_quality_score,
+          0.25 × reconciliation_alignment_score,
+          0.20 × cap_falsifiability_score
+        )
+
+        reconciliation_alignment_score:
+          IF |relative_gap| &lt; 0.10: 1.0
+          ELIF |relative_gap| &lt; 0.30: 0.7
+          ELIF |relative_gap| &lt; 0.50: 0.4
+          ELSE: 0.2
+
+        upstream_confidence = min(
+          implied_expectations.confidence,
+          forward_valuation.confidence ?? 1.0,
+          rm_signals.claim_confidence ?? 1.0
+        )
+
+        ve_confidence_cap = min(upstream_confidence, ve_internal_confidence)
+
+        IF ve_confidence_cap &lt; 0.50:
+          add_reason_codes: [VE_CONFIDENCE_TOO_LOW]
+          degrade_mode = true
+      </action>
+    </step>
+
+    <step id="s7" name="DetermineDegrade">
+      <action>
+        汇总所有reason_codes确定最终degrade状态：
+
+        all_reason_codes = UNION(
+          implied_expectations.reason_codes,
+          forward_valuation.reason_codes,
+          reconciler_reason_codes
+        )
+
+        degrade_reasons = FILTER(all_reason_codes, severity IN [P0, P1] AND action == DEGRADE)
+
+        IF degrade_reasons.length > 0:
+          degrade_mode = true
+          forbid_sections: [target_price, buy_sell_recommendation, position_sizing]
+        ELSE:
+          degrade_mode = false
+      </action>
+    </step>
+
+    <step id="s8" name="GenerateGapInsights">
+      <action>
+        生成gap洞察（不是投资建议）：
+
+        IF gap_direction == "MARKET_MORE_OPTIMISTIC":
+          insight = "市场隐含预期高于基于证据的估值，关键假设集中在{top_gap_drivers}"
+
+        IF gap_direction == "MARKET_MORE_PESSIMISTIC":
+          insight = "市场隐含预期低于基于证据的估值，可能低估{top_gap_drivers}贡献"
+
+        IF gap_direction == "ALIGNED":
+          insight = "市场预期与Forward估值基本一致，关注{monitoring_triggers}变化"
+
+        gap_insights:
+          summary: insight
+          key_question: "如果{top_gap_driver}实现值为X，隐含价值将变化Y%"
+          falsification_path: "监控{monitoring_triggers}中的{top_trigger}可在{time_window}内验证"
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="gap_coherence" range="[0,1]" weight="30">
+      <formula>1 - min(1, |relative_gap| / 0.50)</formula>
+      <description>Implied vs Forward一致性</description>
+    </score>
+    <score name="rm_alignment" range="[0,1]" weight="25">
+      <formula>rm_alignment_score ?? 0.5</formula>
+      <description>与RM机制信号一致性</description>
+    </score>
+    <score name="monitoring_coverage" range="[0,1]" weight="25">
+      <formula>min(1, monitoring_triggers.count / 8)</formula>
+      <description>监控触发器覆盖度</description>
+    </score>
+    <score name="falsifiability" range="[0,1]" weight="20">
+      <formula>triggers_with_all_fields / total_triggers</formula>
+      <description>可证伪性完整度</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="VE_FORWARD_REVERSE_GAP_EXTREME" severity="P0" action="DEGRADE">
+      Implied vs Forward差异超过50%
+    </code>
+    <code id="VE_FORWARD_REVERSE_GAP_ALERT" severity="P1" action="WARN">
+      Implied vs Forward差异30-50%
+    </code>
+    <code id="VE_IMPLIED_INCONSISTENT_WITH_RM" severity="P1" action="WARN">
+      隐含预期与RM机制信号不一致
+    </code>
+    <code id="VE_NO_RM_SIGNALS_FOR_VALIDATION" severity="P2" action="INFO">
+      无RM信号可用于交叉验证
+    </code>
+    <code id="VE_MARKET_PRICING_EXTENDED_CAP" severity="P2" action="WARN">
+      市场定价了过长的CAP(>15年)
+    </code>
+    <code id="VE_CONFIDENCE_TOO_LOW" severity="P0" action="DEGRADE">
+      置信度低于50%阈值
+    </code>
+    <code id="VE_MONITORING_TRIGGERS_INSUFFICIENT" severity="P2" action="WARN">
+      监控触发器少于5个
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>Gap主要来源于Forward skill假设错误而非市场预期偏差</item>
+    <item>RM信号与VE隐含预期不一致但无法判断哪方正确</item>
+    <item>监控触发器指标不可观测或验证周期过长</item>
+    <item>Confidence计算权重不适合当前公司类型</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="expectation_gap" type="object" required="true">
+      <field name="absolute" type="float"/>
+      <field name="relative_pct" type="float"/>
+      <field name="direction" type="string">
+        <enum>MARKET_MORE_OPTIMISTIC, MARKET_MORE_PESSIMISTIC, ALIGNED</enum>
+      </field>
+      <field name="gap_decomposition" type="array">
+        <item>
+          <field name="driver" type="string"/>
+          <field name="implied" type="float"/>
+          <field name="forward" type="float"/>
+          <field name="gap" type="float"/>
+          <field name="value_impact" type="float"/>
+        </item>
+      </field>
+      <field name="top_gap_drivers" type="array" items="string"/>
+    </field>
+
+    <field name="gap_insights" type="object" required="true">
+      <field name="summary" type="string"/>
+      <field name="key_question" type="string"/>
+      <field name="falsification_path" type="string"/>
+    </field>
+
+    <field name="monitoring_triggers" type="array" required="true" min_items="5">
+      <item_schema>
+        <field name="id" type="string" required="true"/>
+        <field name="type" type="string" required="true">
+          <enum>CAP_HYPOTHESIS, RM_CATALYST</enum>
+        </field>
+        <field name="metric_or_event" type="string" required="true"/>
+        <field name="threshold_or_date" type="string" required="true"/>
+        <field name="action_if_triggered" type="string" required="true"/>
+        <field name="verification_sources" type="array"/>
+      </item_schema>
+    </field>
+
+    <field name="rm_cross_validation" type="object" required="false">
+      <field name="alignment_score" type="float"/>
+      <field name="inconsistent_pairs" type="array"/>
+    </field>
+
+    <field name="ve_confidence_cap" type="float" required="true" range="[0,1]"/>
+
+    <field name="degrade_mode" type="boolean" required="true"/>
+
+    <field name="reason_codes_all" type="array" required="true" items="string">
+      汇总L1+L2+L3所有reason_codes
+    </field>
+
+    <field name="reconciliation_stats" type="object" required="true">
+      <field name="implied_vs_forward_processed" type="boolean"/>
+      <field name="rm_signals_available" type="boolean"/>
+      <field name="triggers_generated" type="integer"/>
+      <field name="execution_time_ms" type="integer"/>
+    </field>
+  </output_contract>
+</skill>

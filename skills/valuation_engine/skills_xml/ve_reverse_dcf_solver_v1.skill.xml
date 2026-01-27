@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- VE Reverse DCF Solver Skill v1.0 -->
+<!-- Position: L1 | Purpose: 从价格反解市场隐含预期 -->
+<!-- 核心: Expectations Investing + Value Drivers + CAP/fade -->
+
+<skill name="ve_reverse_dcf_solver_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>VE Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Expectations Investing (Mauboussin &amp; Rappaport)</ref>
+      <ref>Value Driver Formula: ROIC + Growth + Reinvestment + Fade</ref>
+      <ref>Competitive Advantage Period (CAP) - Damodaran</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    Reverse DCF / Implied Expectations：
+    以当前EV/Price为锚，反解市场隐含的：
+    - 增长率(rev_cagr)
+    - 利润率路径(target_margin)
+    - 再投资率(reinvestment_ratio)
+    - 超额回报持续期(CAP/fade)
+    - 长期增长率(terminal_g)
+
+    只输出"隐含预期 + 可证伪验证计划"，不下投资结论。
+  </purpose>
+
+  <inputs>
+    <input name="policy_ref" type="object" required="true">
+      {version, hash} from policy_pack_loader
+    </input>
+
+    <input name="router_result" type="RouterResult" required="true">
+      selected_model, constraints, flags from router
+    </input>
+
+    <input name="valuation_anchor" type="ValuationAnchor" required="true">
+      <field name="as_of" type="date"/>
+      <field name="mode" type="enum" values="EV,Equity"/>
+      <field name="ev_or_mktcap" type="float"/>
+      <field name="cash_and_nonop" type="float"/>
+      <field name="debt_and_like" type="float"/>
+      <field name="shares_diluted" type="float"/>
+    </input>
+
+    <input name="base_metrics" type="BaseMetrics" required="true">
+      <field name="revenue_ttm" type="float"/>
+      <field name="ebit_margin_ttm" type="float"/>
+      <field name="fcf_ttm" type="float"/>
+      <field name="roic_ttm" type="float"/>
+      <field name="reinvestment_ratio" type="float"/>
+      <field name="wacc" type="float"/>
+      <field name="tax_rate" type="float"/>
+    </input>
+
+    <input name="model_specific_inputs" type="object" required="false">
+      根据router_result.selected_model提供的特定输入
+    </input>
+
+    <input name="solve_config" type="SolveConfig" required="false">
+      <field name="unknowns" type="array" default="[rev_cagr, target_margin, fade_years]"/>
+      <field name="horizon_years" type="int" default="10"/>
+      <field name="terminal_method" type="enum" values="gordon,value_driver,multiple" default="gordon"/>
+      <field name="constraints" type="object">
+        <field name="rev_cagr_range" type="array" default="[-0.10, 0.30]"/>
+        <field name="margin_range" type="array" default="[0.0, 0.40]"/>
+        <field name="fade_years_range" type="array" default="[3, 15]"/>
+        <field name="terminal_g_cap" type="float" default="0.04"/>
+      </field>
+    </input>
+
+    <input name="evidence" type="EvidencePackage" required="true"/>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="ValidateAnchor">
+      <action>
+        1. 检查anchor一致性：EV = Equity + Debt - Cash (tolerance 1%)
+        2. 验证单位/期间一致性（TTM vs FY）
+        3. 验证稀释口径一致性
+        4. 如不一致，emit VE_ANCHOR_INCONSISTENT
+      </action>
+      <validation>
+        |EV - (Equity + Debt - Cash)| / EV &lt; 0.01
+      </validation>
+      <on_fail reason_code="VE_ANCHOR_INCONSISTENT">
+        solver_status = FAILED
+        return early
+      </on_fail>
+    </step>
+
+    <step id="s2" name="MapToFCFFModel">
+      <action>
+        根据router_result.selected_model映射到FCFF主干：
+
+        IF VE_CORP_FCFF_REVERSE_DCF:
+          使用标准FCFF = EBIT(1-t) - Reinvestment
+          Growth约束: g = Reinvestment_Rate × ROIIC
+
+        IF VE_CYCLICAL_NORMALIZED_REVERSE_DCF:
+          使用normalized_margin和mid_cycle_revenue作为基数
+          Fade更短(3-10年)
+
+        IF VE_PLATFORM_OPTIONALITY_ANNOTATED:
+          标准FCFF + TAM/渗透上限检查
+          Fade可更长(5-20年)
+
+        IF VE_FINANCIAL_ROE_RESIDUAL_INCOME:
+          映射到Residual Income: RI = (ROE - COE) × Book_Value
+          Fade = Excess Return衰减
+
+        IF VE_CAPEX_INTENSIVE_NORMALIZED:
+          使用normalized_fcf (剔除growth capex)
+          调整reinvestment_ratio
+
+        IF VE_REIT_NAV_IMPLIED:
+          映射到Cap Rate反解: Implied_Cap_Rate = NOI / Price
+          比较Price vs NAV
+      </action>
+    </step>
+
+    <step id="s3" name="SolveForUnknowns">
+      <action>
+        数值求解使 NPV = EV/Price：
+
+        OBJECTIVE: minimize |NPV(unknowns) - anchor_value|
+
+        CONSTRAINTS:
+          - rev_cagr within rev_cagr_range
+          - target_margin within margin_range
+          - fade_years within fade_years_range
+          - terminal_g &lt;= terminal_g_cap
+          - growth must satisfy: g = reinvestment × ROIIC
+
+        METHOD: Newton-Raphson / Brent's method with bounds
+
+        IF multiple solutions exist:
+          记录可行域边界 [min_solution, max_solution]
+          emit VE_MULTI_SOLUTION
+
+        IF no solution within constraints:
+          emit VE_NO_FEASIBLE_SOLUTION
+          solver_status = FAILED
+      </action>
+      <output>
+        implied_expectations:
+          rev_cagr: solved_value
+          target_margin: solved_value
+          reinvestment_ratio: derived_or_input
+          fade_years_or_cap: solved_value
+          terminal_g: solved_or_capped
+      </output>
+    </step>
+
+    <step id="s4" name="SensitivityAnalysis">
+      <action>
+        对以下参数做敏感性分析：
+        - wacc: ±1%, ±2%
+        - terminal_g: ±0.5%, ±1%
+        - target_margin: ±2%, ±5%
+        - rev_cagr: ±2%, ±5%
+
+        FOR EACH shock:
+          重新求解，记录implied_value变化
+
+        IDENTIFY:
+          - top_3_sensitive_params
+          - fragility_flag = true IF any small_shock causes >30% value change
+
+        IF fragility_flag:
+          emit VE_TERMINAL_ASSUMPTION_FRAGILE
+      </action>
+      <output>
+        key_sensitivities:
+          - param: wacc
+            shock: +0.01
+            impact_on_value_pct: -15%
+          - param: terminal_g
+            shock: +0.005
+            impact_on_value_pct: +12%
+          ...
+        fragility_flag: true/false
+      </output>
+    </step>
+
+    <step id="s5" name="ValidatePhysicalLimits">
+      <action>
+        检查隐含预期是否超出物理/行业上限：
+
+        IF implied_rev_cagr > industry_max_growth:
+          emit VE_IMPLIED_EXCEEDS_PHYSICAL_LIMIT
+          flag = "growth exceeds industry ceiling"
+
+        IF implied_margin > industry_max_margin:
+          emit VE_IMPLIED_EXCEEDS_PHYSICAL_LIMIT
+          flag = "margin exceeds industry ceiling"
+
+        IF VE_PLATFORM_OPTIONALITY_ANNOTATED:
+          implied_market_share = implied_revenue / TAM
+          IF implied_market_share > penetration_cap:
+            emit VE_IMPLIED_EXCEEDS_PHYSICAL_LIMIT
+      </action>
+    </step>
+
+    <step id="s6" name="BuildCAPHypotheses">
+      <action>
+        将隐含的CAP/fade转换为可证伪假设（至少3条）：
+
+        FOR EACH key_driver OF [margin, growth, roic_spread, moat_indicator]:
+          CREATE hypothesis:
+            id: CAP_H_{NNN}
+            claim: "CAP requires {driver} to sustain at {level}"
+            metric: {specific_observable}
+            threshold: ">= or &lt;= {value}"
+            time_window: "next N quarters"
+            verification_sources: [10-K, 10-Q, industry_data, ...]
+            disconfirmers: ["metric breaches threshold for N periods", ...]
+
+        ENSURE hypotheses.count >= 3
+      </action>
+      <output>
+        cap_hypotheses:
+          - id: CAP_H_001
+            claim: string
+            metric: string
+            threshold: string
+            time_window: string
+            verification_sources: [string]
+            disconfirmers: [string]
+      </output>
+    </step>
+
+    <step id="s7" name="ComputeConfidence">
+      <action>
+        solver_confidence = weighted_average(
+          0.30 × evidence_coverage,
+          0.30 × solver_convergence_quality,
+          0.20 × physical_limit_check_pass,
+          0.20 × sensitivity_stability
+        )
+
+        IF solver_confidence &lt; 0.50:
+          recommend = DEGRADE
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="anchor_consistency" range="[0,1]" weight="25">
+      <formula>1 if anchor_check_pass else 0</formula>
+      <description>口径/单位/期间一致性</description>
+    </score>
+    <score name="solver_quality" range="[0,1]" weight="25">
+      <formula>convergence_rate × (1 - multi_solution_penalty)</formula>
+      <description>求解收敛性和唯一性</description>
+    </score>
+    <score name="sensitivity_stability" range="[0,1]" weight="20">
+      <formula>1 - fragility_score</formula>
+      <description>敏感性与脆弱性识别</description>
+    </score>
+    <score name="cap_falsifiability" range="[0,1]" weight="30">
+      <formula>hypotheses_with_all_fields / hypotheses_total</formula>
+      <description>可证伪计划质量(>=3条、可执行、带时间窗)</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="VE_INPUT_MISSING" severity="P1" action="DEGRADE">
+      必需输入字段缺失
+    </code>
+    <code id="VE_UNIT_PERIOD_MISMATCH" severity="P1" action="DEGRADE">
+      单位或期间不匹配(TTM/FY混用)
+    </code>
+    <code id="VE_ANCHOR_INCONSISTENT" severity="P0" action="FAIL">
+      EV/Equity/Debt/Cash不一致
+    </code>
+    <code id="VE_NO_FEASIBLE_SOLUTION" severity="P0" action="FAIL">
+      约束内无可行解
+    </code>
+    <code id="VE_MULTI_SOLUTION" severity="P2" action="WARN">
+      存在多解，输出可行域边界
+    </code>
+    <code id="VE_TERMINAL_ASSUMPTION_FRAGILE" severity="P1" action="DEGRADE">
+      Terminal假设对微扰敏感(脆弱)
+    </code>
+    <code id="VE_IMPLIED_EXCEEDS_PHYSICAL_LIMIT" severity="P0" action="DEGRADE">
+      隐含预期超出物理/行业上限
+    </code>
+    <code id="VE_CAP_HYPOTHESES_INCOMPLETE" severity="P2" action="WARN">
+      CAP假设少于3条或字段不完整
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>隐含增长/利润率超出行业物理上限且无机制证据</item>
+    <item>对WACC或terminal_g微小变化隐含预期剧烈跳变(脆弱)</item>
+    <item>关键口径无法统一(稀释/分部/一次性/重述)导致不可比</item>
+    <item>CAP假设缺少可观测指标或验证渠道</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="implied_expectations" type="object" required="true">
+      <field name="rev_cagr" type="float"/>
+      <field name="target_margin" type="float"/>
+      <field name="reinvestment_ratio" type="float"/>
+      <field name="fade_years_or_cap" type="float"/>
+      <field name="terminal_g" type="float"/>
+      <field name="key_sensitivities" type="array">
+        [{param, shock, impact_on_value_pct}]
+      </field>
+      <field name="confidence" type="float" range="[0,1]"/>
+      <field name="reason_codes" type="array"/>
+    </field>
+
+    <field name="cap_hypotheses" type="array" required="true" min_items="3">
+      <item_schema>
+        <field name="id" type="string" required="true"/>
+        <field name="claim" type="string" required="true"/>
+        <field name="metric" type="string" required="true"/>
+        <field name="threshold" type="string" required="true"/>
+        <field name="time_window" type="string" required="true"/>
+        <field name="verification_sources" type="array" min_items="1" required="true"/>
+        <field name="disconfirmers" type="array" min_items="1" required="true"/>
+      </item_schema>
+    </field>
+
+    <field name="solver_status" type="enum" values="OK,MULTI_SOLUTION,NO_SOLUTION,FRAGILE" required="true"/>
+
+    <field name="fragility_assessment" type="object" required="true">
+      <field name="terminal_fragile" type="boolean"/>
+      <field name="key_drivers_fragile" type="array"/>
+      <field name="tornado_chart_data" type="array"/>
+    </field>
+
+    <field name="stats" type="object" required="true">
+      {anchor_check, solver_iterations, convergence_error, physical_limit_flags}
+    </field>
+
+    <field name="reason_codes_all" type="array" items="string"/>
+    <field name="degrade_recommended" type="boolean" required="true"/>
+  </output_contract>
+</skill>

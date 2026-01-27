@@ -1,0 +1,306 @@
+# Valuation Engine - Router Rules v1.0
+# 通用+特殊性路由：保证"一个引擎，多种公司类型"
+# 核心思想: Reverse DCF Solver永远作为通用底座
+
+router_rules:
+  version: "1.0.0"
+  description: |
+    路由核心逻辑：
+    1. Reverse DCF Solver 永远作为通用底座（读价格→反推隐含预期）
+    2. 特殊性通过 "模型族 + 约束/桥表 + 必需字段" 路由
+    3. 周期股强制"正常化"
+    4. 金融股切换到 ROE/Residual Income
+    5. 高杠杆加上再融资敏感旋钮
+
+---
+
+# 输入契约
+input_contract:
+  required:
+    - profile           # CompanyProfile (from ECO)
+    - valuation_anchor  # 当前市场价格/EV
+    - evidence          # 证据包 (from DI)
+  optional:
+    - rm_signals        # RM机制信号
+    - eco_signals       # ECO生态信号
+    - normalized_metrics  # 周期股正常化指标
+    - financial_core    # 金融核心指标
+    - growth_bounds     # 成长边界
+    - capex_decomposition  # CapEx分解
+    - leverage_schedule # 杠杆时间表
+    - segments          # 分部数据
+    - reit_core         # REIT核心指标
+
+---
+
+# 模型族定义
+model_families:
+  - id: VE_CORP_FCFF_REVERSE_DCF
+    description: "非金融公司：FCFF主干 + fade(CAP)"
+    required_fields:
+      - base_metrics.revenue_ttm
+      - base_metrics.ebit_margin_ttm
+      - wacc_or_ke
+    constraints:
+      terminal_method: ["gordon", "value_driver", "multiple"]
+      fade_years_range: [3, 15]
+    forward_skill_ref: "generic_dcf_forward"
+
+  - id: VE_CYCLICAL_NORMALIZED_REVERSE_DCF
+    description: "周期/商品：normalized margin/volume + mid-cycle锚"
+    required_fields:
+      - normalized_metrics.normalized_margin
+      - normalized_metrics.mid_cycle_revenue
+      - normalized_metrics.through_cycle_roic
+    constraints:
+      terminal_method: ["value_driver"]
+      use_normalized_base: true
+      fade_years_range: [3, 10]
+    forward_skill_ref: "cyclical_normalized_forward"
+
+  - id: VE_PLATFORM_OPTIONALITY_ANNOTATED
+    description: "平台/高成长：仍是FCFF，但强制TAM/渗透率物理上限检查"
+    required_fields:
+      - growth_bounds.tam_range
+      - growth_bounds.penetration_cap
+      - growth_bounds.current_penetration
+    constraints:
+      fade_years_range: [5, 20]
+      require_tam_check: true
+      require_optionality_annotation: true
+    forward_skill_ref: "high_growth_tech_valuation_framework_v1.2"
+
+  - id: VE_FINANCIAL_ROE_RESIDUAL_INCOME
+    description: "金融：ROE/COE + residual income / excess return fade"
+    required_fields:
+      - financial_core.roe
+      - financial_core.coe
+      - financial_core.book_value_per_share
+      - financial_core.cet1_or_rbc
+    constraints:
+      use_residual_income: true
+      use_book_value_anchor: true
+      fade_method: "excess_return_fade"
+    forward_skill_ref: "financial_roe_residual_forward"
+
+  - id: VE_HIGH_LEVERAGE_REFI_SENSITIVE
+    description: "高杠杆：在FCFF上增加再融资/债务成本敏感性"
+    required_fields:
+      - leverage_schedule.maturities
+      - leverage_schedule.avg_rate
+      - leverage_schedule.total_debt
+      - base_metrics.interest_coverage
+    constraints:
+      add_refi_sensitivity: true
+      add_credit_spread_shock: true
+      fade_years_range: [3, 10]
+    forward_skill_ref: "high_leverage_forward"
+
+  - id: VE_CAPEX_INTENSIVE_NORMALIZED
+    description: "资本密集：CapEx分解(维护vs成长) + 正常化FCF"
+    required_fields:
+      - capex_decomposition.maintenance_capex
+      - capex_decomposition.growth_capex
+      - capex_decomposition.capex_cycle_phase
+    constraints:
+      use_normalized_fcf: true
+      separate_maintenance_growth: true
+      fade_years_range: [5, 15]
+    forward_skill_ref: "capex_intensive_valuation_v1.0"
+
+  - id: VE_MULTI_SEGMENT_SOTP
+    description: "多业务：分部反推再汇总"
+    required_fields:
+      - segments[].name
+      - segments[].revenue
+      - segments[].margin
+      - segments[].growth_rate
+    constraints:
+      require_segment_level_solve: true
+      allow_different_models_per_segment: true
+    forward_skill_ref: "sotp_forward"
+
+  - id: VE_REIT_NAV_IMPLIED
+    description: "REIT：NAV隐含预期"
+    required_fields:
+      - reit_core.noi
+      - reit_core.cap_rate
+      - reit_core.nav_per_share
+      - reit_core.ffo_per_share
+    constraints:
+      use_nav_anchor: true
+      use_cap_rate_reverse: true
+      compare_price_to_nav: true
+    forward_skill_ref: "reit_nav_forward"
+
+---
+
+# 路由规则（按优先级排序）
+rules:
+  # Rule 1: 金融优先
+  - id: R1
+    name: "Financial Routing"
+    priority: 100
+    when:
+      condition: "profile.is_financial == true"
+    then:
+      select_model: "VE_FINANCIAL_ROE_RESIDUAL_INCOME"
+      add_flags: ["ROUTED_FINANCIAL"]
+    on_missing_required:
+      add_reason_codes: ["VE_FINANCIAL_MODEL_REQUIRED"]
+      recommend: "DEGRADE"
+      fallback_model: "VE_CORP_FCFF_REVERSE_DCF"
+
+  # Rule 2: REIT
+  - id: R2
+    name: "REIT Routing"
+    priority: 95
+    when:
+      condition: "profile.is_reit == true"
+    then:
+      select_model: "VE_REIT_NAV_IMPLIED"
+      add_flags: ["ROUTED_REIT"]
+    on_missing_required:
+      add_reason_codes: ["VE_REIT_NAV_REQUIRED"]
+      recommend: "DEGRADE"
+      fallback_model: "VE_CORP_FCFF_REVERSE_DCF"
+
+  # Rule 3: 周期/商品
+  - id: R3
+    name: "Cyclical Routing"
+    priority: 90
+    when:
+      condition: "profile.is_financial != true AND profile.cyclicality_score >= 0.70"
+    then:
+      select_model: "VE_CYCLICAL_NORMALIZED_REVERSE_DCF"
+      add_flags: ["ROUTED_CYCLICAL"]
+      constraints_patch:
+        terminal_method: "value_driver"
+    on_missing_required:
+      add_reason_codes: ["VE_CYCLICAL_NOT_NORMALIZED"]
+      recommend: "DEGRADE"
+      fallback_model: "VE_CORP_FCFF_REVERSE_DCF"
+
+  # Rule 4: 多业务/集团
+  - id: R4
+    name: "Multi-Segment Routing"
+    priority: 85
+    when:
+      condition: "profile.segment_count >= 3 AND segments != null"
+    then:
+      select_model: "VE_MULTI_SEGMENT_SOTP"
+      add_flags: ["ROUTED_MULTI_SEGMENT"]
+    on_missing_required:
+      add_reason_codes: ["VE_SEGMENT_DATA_MISSING"]
+      recommend: "WARN"
+      fallback_model: "VE_CORP_FCFF_REVERSE_DCF"
+
+  # Rule 5: 资本密集
+  - id: R5
+    name: "CapEx Intensive Routing"
+    priority: 80
+    when:
+      condition: "profile.capex_intensity >= 0.15 AND capex_decomposition != null"
+    then:
+      select_model: "VE_CAPEX_INTENSIVE_NORMALIZED"
+      add_flags: ["ROUTED_CAPEX_INTENSIVE"]
+    on_missing_required:
+      add_reason_codes: ["VE_CAPEX_NOT_DECOMPOSED"]
+      recommend: "WARN"
+      fallback_model: "VE_CORP_FCFF_REVERSE_DCF"
+
+  # Rule 6: 平台/高成长
+  - id: R6
+    name: "Platform/High Growth Routing"
+    priority: 75
+    when:
+      condition: "profile.is_financial != true AND profile.ecosystem_moat_score >= 0.70"
+    then:
+      select_model: "VE_PLATFORM_OPTIONALITY_ANNOTATED"
+      add_flags: ["ROUTED_PLATFORM"]
+      constraints_patch:
+        fade_years_range: [5, 20]
+    on_missing_required:
+      add_reason_codes: ["VE_GROWTH_BOUNDS_MISSING"]
+      recommend: "WARN"
+      fallback_model: "VE_CORP_FCFF_REVERSE_DCF"
+
+  # Rule 7: 高杠杆 (可与其他规则叠加)
+  - id: R7
+    name: "High Leverage Overlay"
+    priority: 70
+    when:
+      condition: "profile.is_financial != true AND profile.net_debt_to_ebitda >= 4.0"
+    then:
+      # 可以叠加到已选模型上
+      overlay_model: "VE_HIGH_LEVERAGE_REFI_SENSITIVE"
+      add_flags: ["ROUTED_HIGH_LEVERAGE"]
+      add_reason_codes: ["VE_HIGH_LEVERAGE_REFI_SENSITIVE"]
+    on_missing_required:
+      add_reason_codes: ["VE_LEVERAGE_SCHEDULE_MISSING"]
+      recommend: "WARN"
+
+  # Rule 8: 默认
+  - id: R8
+    name: "Default Routing"
+    priority: 0
+    when:
+      condition: "true"  # 兜底
+    then:
+      select_model: "VE_CORP_FCFF_REVERSE_DCF"
+      add_flags: ["ROUTED_DEFAULT"]
+
+---
+
+# 证据检查规则
+evidence_rules:
+  - id: EV1
+    name: "Evidence Coverage Check"
+    when:
+      condition: "evidence.ab_coverage < 0.40"
+    then:
+      add_reason_codes: ["VE_EVIDENCE_COVERAGE_LOW"]
+      recommend: "DEGRADE"
+
+  - id: EV2
+    name: "Evidence Freshness Check"
+    when:
+      condition: "evidence.freshness_days > 30"
+    then:
+      add_reason_codes: ["VE_FRESHNESS_TOO_OLD"]
+      recommend: "DEGRADE"
+
+---
+
+# 输出契约
+output_contract:
+  router_result:
+    type: object
+    required:
+      - selected_model
+      - flags
+      - constraints
+      - reason_codes
+      - recommend
+    properties:
+      selected_model:
+        type: string
+        enum: [VE_CORP_FCFF_REVERSE_DCF, VE_CYCLICAL_NORMALIZED_REVERSE_DCF,
+               VE_PLATFORM_OPTIONALITY_ANNOTATED, VE_FINANCIAL_ROE_RESIDUAL_INCOME,
+               VE_HIGH_LEVERAGE_REFI_SENSITIVE, VE_CAPEX_INTENSIVE_NORMALIZED,
+               VE_MULTI_SEGMENT_SOTP, VE_REIT_NAV_IMPLIED]
+      overlay_model:
+        type: string
+        description: "叠加模型（如高杠杆）"
+      flags:
+        type: array
+        items: string
+      constraints:
+        type: object
+        description: "传递给solver的约束"
+      reason_codes:
+        type: array
+        items: string
+      recommend:
+        type: string
+        enum: [PASS, WARN, DEGRADE, FAIL]

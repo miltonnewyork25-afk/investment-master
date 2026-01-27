@@ -1,0 +1,274 @@
+# VE → QG Interface Contract v1.0
+# Valuation Engine向Quality Gate传递的标准化接口
+# 确保VE输出与QG输入完全对齐
+
+contract:
+  name: ve_qg_interface_contract
+  version: "1.0.0"
+  created: "2026-01-27"
+  description: |
+    VE → QG 接口契约
+    定义Valuation Engine向Quality Gate传递的所有字段
+    QG基于这些字段进行最终判定
+
+---
+
+# 接口概览
+interface_overview:
+  producer: valuation_engine_agent
+  consumer: quality_gate_agent
+  trigger: "VE完成L3 Reconciliation后"
+  frequency: "每次run_id执行一次"
+
+---
+
+# 必需字段
+required_fields:
+  - name: ve_confidence_cap
+    type: float
+    range: "[0, 1]"
+    description: |
+      VE层置信度上限
+      计算: min(upstream_confidence, ve_internal_confidence)
+      ve_internal_confidence = 0.30×evidence + 0.25×solver + 0.25×reconciliation + 0.20×falsifiability
+    qg_usage: |
+      - 作为overall_confidence的输入组件
+      - 如果<0.50，QG应考虑DEGRADE
+    example: 0.72
+
+  - name: implied_expectations
+    type: object
+    description: "L1 Reverse DCF反解的市场隐含预期"
+    schema_ref: "schemas/implied_expectations_schema_v1.yaml"
+    required_subfields:
+      - rev_cagr
+      - target_margin
+      - fade_years_or_cap
+      - terminal_g
+      - confidence
+      - solver_status
+    qg_usage: |
+      - 验证隐含预期是否合理
+      - 与forward_valuation对比
+      - 识别market pricing的假设
+    example:
+      rev_cagr: 0.18
+      target_margin: 0.14
+      fade_years_or_cap: 12
+      terminal_g: 0.03
+      confidence: 0.75
+      solver_status: "OK"
+
+  - name: cap_hypotheses
+    type: array
+    min_items: 3
+    description: |
+      CAP可证伪假设
+      每个假设描述维持CAP所需的条件
+    item_schema:
+      id: "CAP_H_{NNN}"
+      claim: string  # 假设陈述
+      metric: string  # 可观测指标
+      threshold: string  # 阈值条件
+      time_window: string  # 验证时间窗
+      verification_sources: array  # 验证来源
+      disconfirmers: array  # 证伪条件
+    qg_usage: |
+      - 检查假设完整性
+      - 验证时间窗合理性
+      - 确保可证伪性
+    example:
+      - id: "CAP_H_001"
+        claim: "FSD干预率需保持<5次/万英里以支撑12年CAP"
+        metric: "FSD intervention rate"
+        threshold: "< 5 per 10,000 miles"
+        time_window: "next 4 quarters"
+        verification_sources: ["Tesla Safety Report", "NHTSA data"]
+        disconfirmers: ["干预率连续2季度>10次/万英里"]
+
+  - name: forward_valuation_range
+    type: object
+    description: "L2 Forward Valuation三场景估值区间"
+    required_subfields:
+      - bear
+      - base
+      - bull
+      - weighted_value
+    qg_usage: |
+      - 验证场景一致性(bear < base < bull)
+      - 检查区间宽度是否合理
+      - 与implied对比
+    example:
+      bear:
+        probability: 0.25
+        per_share_value: 180
+      base:
+        probability: 0.50
+        per_share_value: 280
+      bull:
+        probability: 0.25
+        per_share_value: 420
+      weighted_value: 290
+
+  - name: expectation_gap
+    type: object
+    description: "L3 Reconciliation的Implied vs Forward差异"
+    required_subfields:
+      - absolute
+      - relative_pct
+      - direction
+      - top_gap_drivers
+    qg_usage: |
+      - 如果relative_pct > 0.50，触发DEGRADE
+      - 如果relative_pct > 0.30，触发WARN
+      - 用于生成gap_insights
+    example:
+      absolute: 160  # $160/share
+      relative_pct: 0.55  # 55%
+      direction: "MARKET_MORE_OPTIMISTIC"
+      top_gap_drivers: ["fade_years", "rev_cagr"]
+
+  - name: fragility_assessment
+    type: object
+    description: "敏感性与脆弱性评估"
+    required_subfields:
+      - terminal_fragile
+      - key_drivers_fragile
+    qg_usage: |
+      - 如果terminal_fragile=true，QG应标记风险
+      - key_drivers_fragile用于生成风险摘要
+    example:
+      terminal_fragile: false
+      key_drivers_fragile: ["fade_years"]
+      tornado_chart_data:
+        - param: "wacc"
+          low_shock: -0.01
+          high_shock: +0.01
+          value_at_low: 320
+          value_at_high: 245
+
+  - name: reason_codes_all
+    type: array
+    items: string
+    description: "L1+L2+L3所有reason codes汇总"
+    qg_usage: |
+      - 用于最终verdict判定
+      - P0级别reason code → FAIL
+      - P1级别reason code → DEGRADE
+      - P2级别reason code → WARN
+    example:
+      - "VE_FORWARD_REVERSE_GAP_ALERT"
+      - "VE_TERMINAL_VALUE_DOMINANT"
+
+  - name: degrade_mode
+    type: boolean
+    description: "VE是否建议进入降级模式"
+    qg_usage: |
+      - 如果true，QG应强制forbid投资结论输出
+      - 即使QG自身判断为PASS，也应respect VE的degrade建议
+    example: false
+
+---
+
+# 可选字段
+optional_fields:
+  - name: monitoring_triggers
+    type: array
+    description: "监控触发器列表"
+    qg_usage: "纳入最终monitoring_plan"
+
+  - name: rm_cross_validation
+    type: object
+    description: "与RM机制信号的交叉验证结果"
+    qg_usage: "如果inconsistent_pairs存在，标记为额外风险"
+
+  - name: router_result
+    type: object
+    description: "L1 Router的路由结果"
+    qg_usage: "用于审计和诊断"
+
+  - name: execution_stats
+    type: object
+    description: "执行统计"
+    qg_usage: "用于性能监控"
+
+---
+
+# QG处理规则
+qg_processing_rules:
+  verdict_determination:
+    - rule: "IF any reason_code severity == P0 THEN verdict = FAIL"
+    - rule: "IF degrade_mode == true THEN verdict >= DEGRADE"
+    - rule: "IF ve_confidence_cap < 0.50 THEN verdict >= DEGRADE"
+    - rule: "IF expectation_gap.relative_pct > 0.50 THEN verdict >= DEGRADE"
+    - rule: "IF fragility_assessment.terminal_fragile THEN verdict >= WARN"
+    - rule: "IF cap_hypotheses.count < 3 THEN verdict >= WARN"
+
+  confidence_integration:
+    formula: |
+      qg_overall_confidence = weighted_average(
+        ve_confidence_cap,
+        rm_confidence_cap,
+        di_confidence_cap,
+        eco_confidence_cap
+      )
+
+  output_restrictions:
+    - condition: "verdict >= DEGRADE"
+      forbid:
+        - target_price
+        - buy_sell_recommendation
+        - position_sizing
+        - conviction_level
+      require:
+        - implied_expectations
+        - cap_hypotheses
+        - fragility_assessment
+        - monitoring_triggers
+        - data_gaps
+
+---
+
+# 版本兼容性
+compatibility:
+  qg_min_version: "qg-2.2.0"
+  ve_min_version: "ve-1.0.0"
+
+---
+
+# 测试用例
+test_cases:
+  - name: "正常通过"
+    input:
+      ve_confidence_cap: 0.75
+      expectation_gap: {relative_pct: 0.15, direction: "ALIGNED"}
+      degrade_mode: false
+      reason_codes_all: []
+      cap_hypotheses: [{...}, {...}, {...}]
+    expected_qg_verdict: "PASS"
+
+  - name: "Gap过大降级"
+    input:
+      ve_confidence_cap: 0.72
+      expectation_gap: {relative_pct: 0.55, direction: "MARKET_MORE_OPTIMISTIC"}
+      degrade_mode: true
+      reason_codes_all: ["VE_FORWARD_REVERSE_GAP_EXTREME"]
+      cap_hypotheses: [{...}, {...}, {...}]
+    expected_qg_verdict: "DEGRADE"
+
+  - name: "置信度过低降级"
+    input:
+      ve_confidence_cap: 0.42
+      expectation_gap: {relative_pct: 0.20, direction: "ALIGNED"}
+      degrade_mode: true
+      reason_codes_all: ["VE_CONFIDENCE_TOO_LOW"]
+      cap_hypotheses: [{...}, {...}, {...}]
+    expected_qg_verdict: "DEGRADE"
+
+  - name: "无可行解失败"
+    input:
+      ve_confidence_cap: 0.0
+      degrade_mode: true
+      reason_codes_all: ["VE_NO_FEASIBLE_SOLUTION"]
+      cap_hypotheses: []
+    expected_qg_verdict: "FAIL"

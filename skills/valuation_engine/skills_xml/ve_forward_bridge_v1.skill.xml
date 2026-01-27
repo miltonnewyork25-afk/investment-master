@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- VE Forward Bridge Skill v1.0 -->
+<!-- Position: L2 | Purpose: 正向估值桥接层 -->
+<!-- 核心: 调用model_family对应的forward skill，输出估值区间 -->
+
+<skill name="ve_forward_bridge_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>VE Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>DCF Valuation - Damodaran</ref>
+      <ref>Scenario Analysis - CFA Institute</ref>
+      <ref>SOTP Methodology - Investment Banking Practice</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    Forward Valuation桥接层：
+    1. 根据selected_model_family选择对应的forward skill
+    2. 准备forward skill所需的输入
+    3. 执行forward valuation（DCF/Comps/专用模型）
+    4. 输出三场景估值区间（Bear/Base/Bull）
+
+    桥接作用：解耦Router和具体Forward实现
+  </purpose>
+
+  <inputs>
+    <input name="policy_ref" type="object" required="true">
+      {version, hash} from policy_pack_loader
+    </input>
+
+    <input name="selected_model_family" type="string" required="true">
+      来自Router的选定模型族
+    </input>
+
+    <input name="constraints" type="object" required="true">
+      来自Router的约束参数
+    </input>
+
+    <input name="base_metrics" type="BaseMetrics" required="true">
+      <field name="revenue_ttm" type="float"/>
+      <field name="ebit_margin_ttm" type="float"/>
+      <field name="fcf_ttm" type="float"/>
+      <field name="roic_ttm" type="float"/>
+      <field name="reinvestment_ratio" type="float"/>
+      <field name="wacc" type="float"/>
+      <field name="tax_rate" type="float"/>
+    </input>
+
+    <input name="profile" type="CompanyProfile" required="true"/>
+
+    <input name="evidence" type="EvidencePackage" required="true"/>
+
+    <input name="model_specific_inputs" type="object" required="false">
+      根据model_family提供的特定输入（如normalized_metrics, financial_core等）
+    </input>
+
+    <input name="analyst_assumptions" type="object" required="false">
+      分析师假设覆盖（如果需要）
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="MapToForwardSkill">
+      <action>
+        根据selected_model_family映射到forward skill：
+
+        VE_CORP_FCFF_REVERSE_DCF → generic_dcf_forward
+        VE_CYCLICAL_NORMALIZED_REVERSE_DCF → cyclical_normalized_forward
+        VE_PLATFORM_OPTIONALITY_ANNOTATED → high_growth_tech_valuation_framework_v1.2
+        VE_FINANCIAL_ROE_RESIDUAL_INCOME → financial_roe_residual_forward
+        VE_HIGH_LEVERAGE_REFI_SENSITIVE → high_leverage_forward
+        VE_CAPEX_INTENSIVE_NORMALIZED → capex_intensive_valuation_v1.0
+        VE_MULTI_SEGMENT_SOTP → sotp_forward
+        VE_REIT_NAV_IMPLIED → reit_nav_forward
+
+        IF forward_skill NOT EXISTS:
+          fallback_skill = generic_dcf_forward
+          add_reason_codes: [VE_FORWARD_SKILL_FALLBACK]
+      </action>
+    </step>
+
+    <step id="s2" name="PrepareForwardInputs">
+      <action>
+        为forward skill准备标准化输入：
+
+        forward_inputs = {
+          base_metrics: base_metrics,
+          constraints: constraints,
+          profile: profile,
+          evidence: evidence
+        }
+
+        IF selected_model_family == VE_CYCLICAL_NORMALIZED_REVERSE_DCF:
+          forward_inputs.normalized_margin = model_specific_inputs.normalized_margin
+          forward_inputs.mid_cycle_revenue = model_specific_inputs.mid_cycle_revenue
+          forward_inputs.through_cycle_roic = model_specific_inputs.through_cycle_roic
+
+        IF selected_model_family == VE_FINANCIAL_ROE_RESIDUAL_INCOME:
+          forward_inputs.roe = model_specific_inputs.roe
+          forward_inputs.coe = model_specific_inputs.coe
+          forward_inputs.book_value_per_share = model_specific_inputs.book_value_per_share
+
+        IF selected_model_family == VE_PLATFORM_OPTIONALITY_ANNOTATED:
+          forward_inputs.tam_range = model_specific_inputs.tam_range
+          forward_inputs.penetration_cap = model_specific_inputs.penetration_cap
+          forward_inputs.current_penetration = model_specific_inputs.current_penetration
+
+        IF selected_model_family == VE_MULTI_SEGMENT_SOTP:
+          forward_inputs.segments = model_specific_inputs.segments
+
+        IF selected_model_family == VE_REIT_NAV_IMPLIED:
+          forward_inputs.noi = model_specific_inputs.noi
+          forward_inputs.cap_rate = model_specific_inputs.cap_rate
+          forward_inputs.nav_per_share = model_specific_inputs.nav_per_share
+      </action>
+    </step>
+
+    <step id="s3" name="DefineScenarios">
+      <action>
+        定义三场景参数：
+
+        base_scenario:
+          rev_cagr: evidence_weighted_estimate
+          target_margin: trend_extrapolation
+          fade_years: model_family_default
+          terminal_g: min(nominal_gdp_growth, 0.03)
+
+        bear_scenario:
+          rev_cagr: base - 0.03 to 0.05
+          target_margin: base - 0.02 to 0.05
+          fade_years: base - 2
+          terminal_g: 0.02
+          probability: 0.25
+
+        bull_scenario:
+          rev_cagr: base + 0.03 to 0.05
+          target_margin: base + 0.02 to 0.03
+          fade_years: base + 3
+          terminal_g: 0.035
+          probability: 0.25
+
+        base_probability: 0.50
+
+        IF analyst_assumptions PROVIDED:
+          OVERRIDE with analyst_assumptions
+      </action>
+    </step>
+
+    <step id="s4" name="ExecuteForwardValuation">
+      <action>
+        FOR EACH scenario IN [bear, base, bull]:
+          CALL forward_skill WITH (forward_inputs, scenario_params)
+          CAPTURE:
+            - enterprise_value
+            - equity_value
+            - per_share_value
+            - key_drivers_used
+            - model_diagnostics
+
+        IF forward_skill RETURNS error:
+          IF retryable_error:
+            RETRY with simplified_params
+          ELSE:
+            mark_scenario_as_failed
+            use_comparable_valuation_fallback
+      </action>
+    </step>
+
+    <step id="s5" name="ValidateOutputs">
+      <action>
+        FOR EACH scenario_result:
+          CHECK per_share_value > 0
+          CHECK equity_value > 0
+          CHECK implied_multiples within reasonable_range:
+            - P/E: 5x to 100x (or N/A if negative earnings)
+            - EV/EBITDA: 3x to 50x
+            - P/S: 0.5x to 30x
+
+          IF any_check_fails:
+            add_reason_codes: [VE_FORWARD_OUTPUT_IMPLAUSIBLE]
+            recommend = WARN
+      </action>
+    </step>
+
+    <step id="s6" name="ComputeWeightedValue">
+      <action>
+        weighted_value = Σ(scenario.probability × scenario.per_share_value)
+
+        value_range = {
+          low: bear_scenario.per_share_value,
+          base: base_scenario.per_share_value,
+          high: bull_scenario.per_share_value,
+          weighted: weighted_value
+        }
+
+        IF (high - low) / base > 0.80:
+          add_reason_codes: [VE_FORWARD_HIGH_UNCERTAINTY]
+          recommend = WARN
+      </action>
+    </step>
+
+    <step id="s7" name="ExtractKeyDrivers">
+      <action>
+        从forward valuation结果提取关键驱动因素：
+
+        key_drivers = {
+          most_sensitive_param: identify from sensitivity
+          terminal_value_pct: terminal_value / enterprise_value
+          growth_vs_efficiency_contribution: decomposition
+          scenario_spread_drivers: what differs between scenarios
+        }
+
+        IF terminal_value_pct > 0.70:
+          add_reason_codes: [VE_TERMINAL_VALUE_DOMINANT]
+          recommend = WARN
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="skill_execution_success" range="[0,1]" weight="30">
+      <formula>successful_scenarios / 3</formula>
+      <description>Forward skill执行成功率</description>
+    </score>
+    <score name="output_plausibility" range="[0,1]" weight="35">
+      <formula>1 - (implausible_checks / total_checks)</formula>
+      <description>输出合理性</description>
+    </score>
+    <score name="scenario_coherence" range="[0,1]" weight="35">
+      <formula>1 if bear &lt; base &lt; bull else penalty</formula>
+      <description>场景一致性（熊&lt;基&lt;牛）</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="VE_FORWARD_SKILL_FALLBACK" severity="P2" action="WARN">
+      指定forward skill不可用，使用fallback
+    </code>
+    <code id="VE_FORWARD_OUTPUT_IMPLAUSIBLE" severity="P1" action="WARN">
+      Forward估值输出不合理
+    </code>
+    <code id="VE_FORWARD_HIGH_UNCERTAINTY" severity="P2" action="WARN">
+      场景差异过大(>80%)，不确定性高
+    </code>
+    <code id="VE_TERMINAL_VALUE_DOMINANT" severity="P2" action="WARN">
+      Terminal Value占比过高(>70%)
+    </code>
+    <code id="VE_FORWARD_EXECUTION_FAILED" severity="P0" action="DEGRADE">
+      Forward skill执行失败
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>Forward skill假设与Reverse DCF隐含预期严重不一致</item>
+    <item>Terminal Value占比>80%且依赖单一假设</item>
+    <item>三场景价值区间过窄(可能假设过于乐观)或过宽(不确定性过高)</item>
+    <item>Forward skill版本不兼容导致输出格式异常</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="forward_skill_used" type="string" required="true"/>
+
+    <field name="scenario_values" type="object" required="true">
+      <field name="bear" type="ScenarioResult">
+        <field name="probability" type="float"/>
+        <field name="enterprise_value" type="float"/>
+        <field name="equity_value" type="float"/>
+        <field name="per_share_value" type="float"/>
+        <field name="key_assumptions" type="object"/>
+        <field name="implied_multiples" type="object"/>
+      </field>
+      <field name="base" type="ScenarioResult"/>
+      <field name="bull" type="ScenarioResult"/>
+    </field>
+
+    <field name="weighted_value" type="float" required="true"/>
+
+    <field name="value_range" type="object" required="true">
+      <field name="low" type="float"/>
+      <field name="base" type="float"/>
+      <field name="high" type="float"/>
+    </field>
+
+    <field name="key_drivers" type="object" required="true">
+      <field name="most_sensitive_param" type="string"/>
+      <field name="terminal_value_pct" type="float"/>
+      <field name="growth_vs_efficiency_contribution" type="object"/>
+    </field>
+
+    <field name="execution_stats" type="object" required="true">
+      <field name="scenarios_successful" type="integer"/>
+      <field name="fallback_used" type="boolean"/>
+      <field name="execution_time_ms" type="integer"/>
+    </field>
+
+    <field name="reason_codes" type="array" items="string"/>
+    <field name="recommend" type="string">
+      <enum>PASS, WARN, DEGRADE</enum>
+    </field>
+  </output_contract>
+</skill>

@@ -1,0 +1,307 @@
+# Valuation Engine - Policy Pack v1.0
+# 运行时由Supervisor计算hash并冻结；同run_id内不可变
+# 核心原则: Expectations-first + Value Drivers + CAP/fade + Normalization
+
+policy_pack:
+  name: ve_policy_pack
+  version: "ve-1.0.0"
+  hash: "sha256:__COMPUTED_AT_RUNTIME__"
+  created_at: "2026-01-27"
+  compatibility:
+    qg_min_version: "qg-2.2.0"
+    rm_min_version: "rm-1.2.0"
+    di_min_version: "di-2.2.0"
+    eco_min_version: "eco-2.4.0"
+
+---
+
+# 核心原则
+principles:
+  - id: P1
+    name: "Expectations-first"
+    description: "先读价格，再谈叙事；从市场价格反推隐含预期"
+    reference: "Expectations Investing (Mauboussin & Rappaport)"
+
+  - id: P2
+    name: "Value Drivers"
+    description: "ROIC + Growth + Reinvestment + Fade(CAP) 决定价值"
+    reference: "Value Driver Framework"
+
+  - id: P3
+    name: "Cyclicals Must Normalize"
+    description: "周期股必须使用正常化盈利，避免周期顶/底误估"
+    reference: "Damodaran - Valuing Cyclical Companies"
+
+  - id: P4
+    name: "No Investment Conclusion in DEGRADE"
+    description: "降级模式下禁止输出投资建议"
+    reference: "RM/QG Policy Alignment"
+
+  - id: P5
+    name: "Fragility Must Be Explicit"
+    description: "terminal/WACC小扰动导致隐含预期跳变必须显式标记"
+    reference: "Sensitivity Analysis Best Practice"
+
+---
+
+# 阈值配置
+thresholds:
+  evidence:
+    ab_coverage_min: 0.40
+    freshness_days_max: 30
+    tier1_min_for_critical: 0.30
+
+  solver:
+    terminal_g_cap: 0.04           # 长期增长上限(可按国家/通胀调整)
+    terminal_g_floor: 0.00         # 下限
+    wacc_range: [0.06, 0.15]       # 合理WACC区间
+    max_sensitivity_shock: 0.30    # WACC/terminal轻微变化导致隐含预期跳变>30%=>fragile
+    max_solve_iterations: 100
+    convergence_tolerance: 0.001
+
+  leverage:
+    net_debt_to_ebitda_high: 4.0
+    interest_coverage_low: 2.0
+    debt_maturity_alert_months: 24
+
+  cyclicality:
+    cyclicality_score_high: 0.70   # 0-1，触发周期模型
+    normalized_window_years: 7     # 正常化回看周期
+
+  platform:
+    ecosystem_moat_score_high: 0.70
+    max_fade_years: 20
+    min_fade_years: 5
+
+  reconciliation:
+    gap_alert_threshold: 0.30      # implied vs forward差异>30%触发FLAG
+    gap_extreme_threshold: 0.50    # 差异>50%触发DEGRADE
+
+  confidence:
+    high_confidence: 0.80
+    medium_confidence: 0.60
+    low_confidence: 0.40
+    degrade_below: 0.50
+
+---
+
+# 判定规则
+verdict_rules:
+  degrade_if:
+    - condition: "evidence.ab_coverage < 0.40"
+      reason_code: "VE_EVIDENCE_COVERAGE_LOW"
+
+    - condition: "evidence.freshness_days > 30"
+      reason_code: "VE_FRESHNESS_TOO_OLD"
+
+    - condition: "solver.multi_solution == true"
+      reason_code: "VE_MULTI_SOLUTION"
+
+    - condition: "solver.fragile_terminal == true"
+      reason_code: "VE_TERMINAL_ASSUMPTION_FRAGILE"
+
+    - condition: "profile.is_financial == true AND inputs.missing_financial_core == true"
+      reason_code: "VE_FINANCIAL_MODEL_REQUIRED"
+
+    - condition: "profile.cyclicality_score >= 0.70 AND inputs.missing_normalized == true"
+      reason_code: "VE_CYCLICAL_NOT_NORMALIZED"
+
+    - condition: "reconciliation.gap > 0.50"
+      reason_code: "VE_FORWARD_REVERSE_GAP_EXTREME"
+
+    - condition: "ve_confidence_cap < 0.50"
+      reason_code: "VE_CONFIDENCE_TOO_LOW"
+
+  fail_if:
+    - condition: "inputs.anchor_inconsistent == true"
+      reason_code: "VE_ANCHOR_INCONSISTENT"
+
+    - condition: "solver.no_feasible_solution == true"
+      reason_code: "VE_NO_FEASIBLE_SOLUTION"
+
+---
+
+# DEGRADE模式规则
+degrade_mode:
+  enabled: true
+  enforce_no_investment_conclusions: true
+
+  trigger_conditions:
+    - "ve_confidence_cap < 0.50"
+    - "evidence.ab_coverage < 0.40"
+    - "solver.fragile_terminal == true"
+    - "reconciliation.gap > 0.50"
+
+  forbid_sections:
+    - "target_price"
+    - "buy_sell_recommendation"
+    - "position_sizing"
+    - "conviction_level"
+
+  forbid_phrases_zh:
+    - "目标价"
+    - "强烈买入"
+    - "强烈卖出"
+    - "确定性"
+    - "无风险"
+
+  forbid_phrases_en:
+    - "target price"
+    - "strong buy"
+    - "strong sell"
+    - "guaranteed"
+    - "risk-free"
+
+  required_sections:
+    - "implied_expectations"
+    - "cap_hypotheses"
+    - "fragility_assessment"
+    - "monitoring_triggers"
+    - "data_gaps"
+
+---
+
+# CAP/Fade规则
+cap_policy:
+  description: "Competitive Advantage Period - 超额回报持续期"
+
+  cap_definition: "Duration where incremental returns > cost of capital (fade to COC)"
+
+  hypothesis_requirements:
+    min_hypotheses: 3
+    required_fields:
+      - metric
+      - threshold
+      - time_window
+      - verification_sources
+      - disconfirmers
+
+  fade_models:
+    linear_fade:
+      description: "线性衰减到COC"
+      parameters: [fade_years, terminal_roic]
+
+    exponential_fade:
+      description: "指数衰减到COC"
+      parameters: [half_life_years, terminal_roic]
+
+    step_fade:
+      description: "分阶段衰减"
+      parameters: [stages[], roic_per_stage[]]
+
+  cap_to_claim_mapping:
+    template:
+      claim_id_prefix: "CLM_VE_CAP_"
+      claim_type: "FORECAST"
+      criticality: "CRITICAL"
+      risk_type: "initiative_risk"
+
+---
+
+# 敏感性分析规则
+sensitivity_policy:
+  required_parameters:
+    - wacc
+    - terminal_g
+    - target_margin
+    - rev_cagr
+
+  shock_levels:
+    small: 0.10   # ±10%
+    medium: 0.20  # ±20%
+    large: 0.30   # ±30%
+
+  fragility_threshold: 0.30  # 如果小扰动导致价值变化>30%，标记fragile
+
+  output_requirements:
+    - key_sensitivities_top_3
+    - fragility_flag
+    - tornado_chart_data
+
+---
+
+# 置信度计算规则
+confidence_policy:
+  ve_internal_components:
+    - name: "evidence_coverage"
+      weight: 0.30
+      description: "A/B级证据覆盖率"
+
+    - name: "solver_quality"
+      weight: 0.25
+      description: "求解收敛性和唯一性"
+
+    - name: "reconciliation_alignment"
+      weight: 0.25
+      description: "implied vs forward一致性"
+
+    - name: "cap_falsifiability"
+      weight: 0.20
+      description: "CAP假设可证伪程度"
+
+  cap_rule: "ve_confidence_cap = min(upstream_confidence, ve_internal_confidence)"
+
+---
+
+# Kill Switch规则
+kill_switch_rules:
+  description: "VE flags, QG makes final verdict"
+
+  rules:
+    - id: "VE_KS_001"
+      name: "Anchor Inconsistent"
+      if: "EV != Equity + Debt - Cash (tolerance 1%)"
+      then:
+        action: "FORCE_FAIL"
+        reason_code: "VE_ANCHOR_INCONSISTENT"
+
+    - id: "VE_KS_002"
+      name: "No Feasible Solution"
+      if: "solver fails to converge within constraints"
+      then:
+        action: "FORCE_FAIL"
+        reason_code: "VE_NO_FEASIBLE_SOLUTION"
+
+    - id: "VE_KS_003"
+      name: "Implied Exceeds Physical Limit"
+      if: "implied_rev_cagr > industry_max OR implied_margin > physical_max"
+      then:
+        action: "FORCE_DEGRADE"
+        reason_code: "VE_IMPLIED_EXCEEDS_PHYSICAL_LIMIT"
+
+    - id: "VE_KS_004"
+      name: "Terminal Fragility"
+      if: "terminal_g ±0.5% causes value change > 30%"
+      then:
+        action: "FORCE_DEGRADE"
+        reason_code: "VE_TERMINAL_ASSUMPTION_FRAGILE"
+
+    - id: "VE_KS_005"
+      name: "Extreme Gap"
+      if: "|implied_value - forward_value| / forward_value > 0.50"
+      then:
+        action: "FORCE_DEGRADE"
+        reason_code: "VE_FORWARD_REVERSE_GAP_EXTREME"
+
+---
+
+# 输出契约
+outputs:
+  contracts:
+    valuation_summary_schema: "schemas/valuation_summary_schema_v1.yaml"
+    implied_expectations_schema: "schemas/implied_expectations_schema_v1.yaml"
+    qg_interface: "contracts/ve_qg_interface_contract_v1.yaml"
+
+---
+
+# 版本历史
+version_history:
+  - version: "ve-1.0.0"
+    date: "2026-01-27"
+    changes:
+      - "初始版本"
+      - "Expectations-first + Value Drivers原则"
+      - "8个model_families支持"
+      - "CAP可证伪策略"
+      - "敏感性/脆弱性规则"
+      - "Kill switch规则"

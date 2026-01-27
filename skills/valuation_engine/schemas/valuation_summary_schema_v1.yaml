@@ -1,0 +1,402 @@
+# Valuation Summary Schema v1.0
+# VE Agent最终输出的完整估值汇总Schema
+# 遵循JSON Schema Draft-07
+
+$schema: "https://json-schema.org/draft-07/schema#"
+$id: "valuation_summary_schema_v1"
+title: "Valuation Summary"
+description: "VE Agent估值汇总输出，包含implied + forward + reconciliation全量数据"
+version: "1.0.0"
+created: "2026-01-27"
+
+type: object
+required:
+  - run_id
+  - entity
+  - as_of
+  - policy_ref
+  - implied_expectations
+  - forward_valuation
+  - expectation_gap
+  - cap_hypotheses
+  - ve_confidence_cap
+  - degrade_mode
+  - reason_codes_all
+
+properties:
+  run_id:
+    type: string
+    description: "执行ID，全局唯一"
+
+  entity:
+    type: object
+    required: [ticker, company_name]
+    properties:
+      ticker:
+        type: string
+      company_name:
+        type: string
+      sector:
+        type: string
+      industry:
+        type: string
+
+  as_of:
+    type: string
+    format: date
+    description: "估值基准日期"
+
+  policy_ref:
+    type: object
+    required: [version, hash]
+    properties:
+      version:
+        type: string
+        pattern: "^ve-[0-9]+\\.[0-9]+\\.[0-9]+$"
+      hash:
+        type: string
+        pattern: "^sha256:[a-f0-9]{64}$"
+
+  # ===== Layer 1: Implied Expectations =====
+  implied_expectations:
+    type: object
+    required:
+      - rev_cagr
+      - target_margin
+      - fade_years_or_cap
+      - terminal_g
+      - confidence
+    properties:
+      rev_cagr:
+        type: number
+        minimum: -0.50
+        maximum: 1.00
+        description: "隐含收入复合增长率"
+      target_margin:
+        type: number
+        minimum: -0.50
+        maximum: 0.80
+        description: "隐含目标利润率"
+      reinvestment_ratio:
+        type: number
+        minimum: 0
+        maximum: 1.0
+        description: "隐含再投资率"
+      fade_years_or_cap:
+        type: number
+        minimum: 0
+        maximum: 30
+        description: "隐含CAP/fade年数"
+      terminal_g:
+        type: number
+        minimum: 0
+        maximum: 0.05
+        description: "隐含永续增长率"
+      key_sensitivities:
+        type: array
+        items:
+          type: object
+          properties:
+            param:
+              type: string
+            shock:
+              type: number
+            impact_on_value_pct:
+              type: number
+      confidence:
+        type: number
+        minimum: 0
+        maximum: 1
+      reason_codes:
+        type: array
+        items:
+          type: string
+
+  # ===== Layer 2: Forward Valuation =====
+  forward_valuation:
+    type: object
+    required:
+      - forward_skill_used
+      - scenario_values
+      - weighted_value
+      - value_range
+    properties:
+      forward_skill_used:
+        type: string
+      scenario_values:
+        type: object
+        required: [bear, base, bull]
+        properties:
+          bear:
+            $ref: "#/$defs/ScenarioResult"
+          base:
+            $ref: "#/$defs/ScenarioResult"
+          bull:
+            $ref: "#/$defs/ScenarioResult"
+      weighted_value:
+        type: number
+        minimum: 0
+        description: "概率加权估值"
+      value_range:
+        type: object
+        properties:
+          low:
+            type: number
+          base:
+            type: number
+          high:
+            type: number
+      key_drivers:
+        type: object
+        properties:
+          most_sensitive_param:
+            type: string
+          terminal_value_pct:
+            type: number
+          growth_vs_efficiency_contribution:
+            type: object
+      reason_codes:
+        type: array
+        items:
+          type: string
+
+  # ===== Layer 3: Reconciliation =====
+  expectation_gap:
+    type: object
+    required:
+      - absolute
+      - relative_pct
+      - direction
+    properties:
+      absolute:
+        type: number
+        description: "绝对差异（美元/每股）"
+      relative_pct:
+        type: number
+        description: "相对差异百分比"
+      direction:
+        type: string
+        enum: [MARKET_MORE_OPTIMISTIC, MARKET_MORE_PESSIMISTIC, ALIGNED]
+      gap_decomposition:
+        type: array
+        items:
+          type: object
+          properties:
+            driver:
+              type: string
+            implied:
+              type: number
+            forward:
+              type: number
+            gap:
+              type: number
+            value_impact:
+              type: number
+      top_gap_drivers:
+        type: array
+        items:
+          type: string
+
+  gap_insights:
+    type: object
+    properties:
+      summary:
+        type: string
+      key_question:
+        type: string
+      falsification_path:
+        type: string
+
+  # ===== CAP Hypotheses =====
+  cap_hypotheses:
+    type: array
+    minItems: 3
+    items:
+      $ref: "#/$defs/CAPHypothesis"
+
+  # ===== Fragility Assessment =====
+  fragility_assessment:
+    type: object
+    properties:
+      terminal_fragile:
+        type: boolean
+      key_drivers_fragile:
+        type: array
+        items:
+          type: string
+      tornado_chart_data:
+        type: array
+        items:
+          type: object
+          properties:
+            param:
+              type: string
+            low_shock:
+              type: number
+            high_shock:
+              type: number
+            value_at_low:
+              type: number
+            value_at_high:
+              type: number
+
+  # ===== Monitoring Triggers =====
+  monitoring_triggers:
+    type: array
+    minItems: 5
+    items:
+      $ref: "#/$defs/MonitoringTrigger"
+
+  # ===== Final Outputs =====
+  ve_confidence_cap:
+    type: number
+    minimum: 0
+    maximum: 1
+    description: "VE层置信度上限"
+
+  degrade_mode:
+    type: boolean
+    description: "是否进入降级模式"
+
+  reason_codes_all:
+    type: array
+    items:
+      type: string
+    description: "L1+L2+L3所有reason codes汇总"
+
+  # ===== Router Info =====
+  router_result:
+    type: object
+    properties:
+      selected_model:
+        type: string
+        enum:
+          - VE_CORP_FCFF_REVERSE_DCF
+          - VE_CYCLICAL_NORMALIZED_REVERSE_DCF
+          - VE_PLATFORM_OPTIONALITY_ANNOTATED
+          - VE_FINANCIAL_ROE_RESIDUAL_INCOME
+          - VE_CAPEX_INTENSIVE_NORMALIZED
+          - VE_MULTI_SEGMENT_SOTP
+          - VE_REIT_NAV_IMPLIED
+      overlay_model:
+        type: string
+      flags:
+        type: array
+        items:
+          type: string
+
+  # ===== Execution Stats =====
+  execution_stats:
+    type: object
+    properties:
+      total_time_ms:
+        type: integer
+      l1_time_ms:
+        type: integer
+      l2_time_ms:
+        type: integer
+      l3_time_ms:
+        type: integer
+      solver_iterations:
+        type: integer
+
+# ===== Shared Definitions =====
+$defs:
+  ScenarioResult:
+    type: object
+    required:
+      - probability
+      - per_share_value
+    properties:
+      probability:
+        type: number
+        minimum: 0
+        maximum: 1
+      enterprise_value:
+        type: number
+      equity_value:
+        type: number
+      per_share_value:
+        type: number
+      key_assumptions:
+        type: object
+        properties:
+          rev_cagr:
+            type: number
+          target_margin:
+            type: number
+          wacc:
+            type: number
+          terminal_g:
+            type: number
+          fade_years:
+            type: number
+      implied_multiples:
+        type: object
+        properties:
+          pe:
+            type: number
+          ev_ebitda:
+            type: number
+          ps:
+            type: number
+
+  CAPHypothesis:
+    type: object
+    required:
+      - id
+      - claim
+      - metric
+      - threshold
+      - time_window
+      - verification_sources
+      - disconfirmers
+    properties:
+      id:
+        type: string
+        pattern: "^CAP_H_[0-9]{3}$"
+      claim:
+        type: string
+        minLength: 20
+      metric:
+        type: string
+      threshold:
+        type: string
+      time_window:
+        type: string
+      verification_sources:
+        type: array
+        minItems: 1
+        items:
+          type: string
+      disconfirmers:
+        type: array
+        minItems: 1
+        items:
+          type: string
+
+  MonitoringTrigger:
+    type: object
+    required:
+      - id
+      - type
+      - metric_or_event
+      - threshold_or_date
+      - action_if_triggered
+    properties:
+      id:
+        type: string
+        pattern: "^MT_"
+      type:
+        type: string
+        enum: [CAP_HYPOTHESIS, RM_CATALYST]
+      metric_or_event:
+        type: string
+      threshold_or_date:
+        type: string
+      action_if_triggered:
+        type: string
+      verification_sources:
+        type: array
+        items:
+          type: string

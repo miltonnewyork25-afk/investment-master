@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- VE Router Skill v1.0 -->
+<!-- Position: L1 Entry Point | Purpose: 路由到正确的模型族 -->
+<!-- 核心: 8个model_families + 优先级路由 + 字段完整性检查 -->
+
+<skill name="ve_router_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>VE Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Company Classification - Damodaran</ref>
+      <ref>Valuation Model Selection - CFA Institute</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    根据公司profile和可用数据，路由到最匹配的估值模型族：
+    1. 识别公司类型（金融/周期/平台/REIT/多元化等）
+    2. 检查必需字段完整性
+    3. 输出selected_model + constraints + flags
+    4. 高杠杆作为overlay可叠加
+
+    不做估值计算，只做路由决策。
+  </purpose>
+
+  <inputs>
+    <input name="policy_ref" type="object" required="true">
+      {version, hash} from policy_pack_loader
+    </input>
+
+    <input name="profile" type="CompanyProfile" required="true">
+      <field name="is_financial" type="boolean"/>
+      <field name="is_reit" type="boolean"/>
+      <field name="cyclicality_score" type="float" range="[0,1]"/>
+      <field name="ecosystem_moat_score" type="float" range="[0,1]"/>
+      <field name="net_debt_to_ebitda" type="float"/>
+      <field name="capex_intensity" type="float"/>
+      <field name="segment_count" type="integer"/>
+    </input>
+
+    <input name="valuation_anchor" type="ValuationAnchor" required="true">
+      <field name="as_of" type="date"/>
+      <field name="mode" type="enum" values="EV,Equity"/>
+      <field name="ev_or_mktcap" type="float"/>
+    </input>
+
+    <input name="evidence" type="EvidencePackage" required="true">
+      <field name="ab_coverage" type="float"/>
+      <field name="freshness_days" type="integer"/>
+    </input>
+
+    <input name="normalized_metrics" type="NormalizedMetrics" required="false">
+      <field name="normalized_margin" type="float"/>
+      <field name="mid_cycle_revenue" type="float"/>
+      <field name="through_cycle_roic" type="float"/>
+    </input>
+
+    <input name="financial_core" type="FinancialCore" required="false">
+      <field name="roe" type="float"/>
+      <field name="coe" type="float"/>
+      <field name="book_value_per_share" type="float"/>
+      <field name="cet1_or_rbc" type="float"/>
+    </input>
+
+    <input name="growth_bounds" type="GrowthBounds" required="false">
+      <field name="tam_range" type="array"/>
+      <field name="penetration_cap" type="float"/>
+      <field name="current_penetration" type="float"/>
+    </input>
+
+    <input name="capex_decomposition" type="CapExDecomposition" required="false">
+      <field name="maintenance_capex" type="float"/>
+      <field name="growth_capex" type="float"/>
+      <field name="capex_cycle_phase" type="string"/>
+    </input>
+
+    <input name="leverage_schedule" type="LeverageSchedule" required="false">
+      <field name="maturities" type="array"/>
+      <field name="avg_rate" type="float"/>
+      <field name="total_debt" type="float"/>
+    </input>
+
+    <input name="segments" type="array" required="false">
+      <item_schema>
+        <field name="name" type="string"/>
+        <field name="revenue" type="float"/>
+        <field name="margin" type="float"/>
+        <field name="growth_rate" type="float"/>
+      </item_schema>
+    </input>
+
+    <input name="reit_core" type="REITCore" required="false">
+      <field name="noi" type="float"/>
+      <field name="cap_rate" type="float"/>
+      <field name="nav_per_share" type="float"/>
+      <field name="ffo_per_share" type="float"/>
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="LoadPolicyThresholds">
+      <action>
+        从policy_ref加载路由阈值：
+        - cyclicality_score_high: 0.70
+        - ecosystem_moat_score_high: 0.70
+        - net_debt_to_ebitda_high: 4.0
+        - capex_intensity_high: 0.15
+        - segment_count_multi: 3
+        - ab_coverage_min: 0.40
+        - freshness_days_max: 30
+      </action>
+    </step>
+
+    <step id="s2" name="EvaluateRulesInPriority">
+      <action>
+        按优先级依次评估规则（高优先级先匹配）：
+
+        R1 (Priority 100): Financial
+          IF profile.is_financial == true:
+            selected_model = VE_FINANCIAL_ROE_RESIDUAL_INCOME
+            add_flags: [ROUTED_FINANCIAL]
+            check_required: financial_core.{roe, coe, book_value_per_share, cet1_or_rbc}
+
+        R2 (Priority 95): REIT
+          IF profile.is_reit == true:
+            selected_model = VE_REIT_NAV_IMPLIED
+            add_flags: [ROUTED_REIT]
+            check_required: reit_core.{noi, cap_rate, nav_per_share, ffo_per_share}
+
+        R3 (Priority 90): Cyclical
+          IF profile.is_financial != true AND profile.cyclicality_score >= 0.70:
+            selected_model = VE_CYCLICAL_NORMALIZED_REVERSE_DCF
+            add_flags: [ROUTED_CYCLICAL]
+            check_required: normalized_metrics.{normalized_margin, mid_cycle_revenue, through_cycle_roic}
+            constraints_patch: terminal_method = value_driver
+
+        R4 (Priority 85): Multi-Segment
+          IF profile.segment_count >= 3 AND segments != null:
+            selected_model = VE_MULTI_SEGMENT_SOTP
+            add_flags: [ROUTED_MULTI_SEGMENT]
+            check_required: segments[].{name, revenue, margin, growth_rate}
+
+        R5 (Priority 80): CapEx Intensive
+          IF profile.capex_intensity >= 0.15 AND capex_decomposition != null:
+            selected_model = VE_CAPEX_INTENSIVE_NORMALIZED
+            add_flags: [ROUTED_CAPEX_INTENSIVE]
+            check_required: capex_decomposition.{maintenance_capex, growth_capex, capex_cycle_phase}
+
+        R6 (Priority 75): Platform/High Growth
+          IF profile.is_financial != true AND profile.ecosystem_moat_score >= 0.70:
+            selected_model = VE_PLATFORM_OPTIONALITY_ANNOTATED
+            add_flags: [ROUTED_PLATFORM]
+            check_required: growth_bounds.{tam_range, penetration_cap, current_penetration}
+            constraints_patch: fade_years_range = [5, 20]
+
+        R7 (Priority 70): High Leverage Overlay
+          IF profile.is_financial != true AND profile.net_debt_to_ebitda >= 4.0:
+            overlay_model = VE_HIGH_LEVERAGE_REFI_SENSITIVE
+            add_flags: [ROUTED_HIGH_LEVERAGE]
+            add_reason_codes: [VE_HIGH_LEVERAGE_REFI_SENSITIVE]
+            check_required: leverage_schedule.{maturities, avg_rate, total_debt}
+
+        R8 (Priority 0): Default
+          IF no_other_match:
+            selected_model = VE_CORP_FCFF_REVERSE_DCF
+            add_flags: [ROUTED_DEFAULT]
+      </action>
+    </step>
+
+    <step id="s3" name="CheckRequiredFields">
+      <action>
+        FOR selected_model:
+          LOOKUP model_families[selected_model].required_fields
+          FOR EACH field IN required_fields:
+            IF field IS NULL OR field IS EMPTY:
+              missing_fields.append(field)
+
+        IF missing_fields.length > 0:
+          IF model_has_fallback:
+            fallback_model = VE_CORP_FCFF_REVERSE_DCF
+            add_reason_codes: [model_specific_missing_code]
+            recommend = DEGRADE
+          ELSE:
+            recommend = DEGRADE
+      </action>
+      <on_missing>
+        <mapping model="VE_FINANCIAL_ROE_RESIDUAL_INCOME" code="VE_FINANCIAL_MODEL_REQUIRED"/>
+        <mapping model="VE_REIT_NAV_IMPLIED" code="VE_REIT_NAV_REQUIRED"/>
+        <mapping model="VE_CYCLICAL_NORMALIZED_REVERSE_DCF" code="VE_CYCLICAL_NOT_NORMALIZED"/>
+        <mapping model="VE_MULTI_SEGMENT_SOTP" code="VE_SEGMENT_DATA_MISSING"/>
+        <mapping model="VE_CAPEX_INTENSIVE_NORMALIZED" code="VE_CAPEX_NOT_DECOMPOSED"/>
+        <mapping model="VE_PLATFORM_OPTIONALITY_ANNOTATED" code="VE_GROWTH_BOUNDS_MISSING"/>
+        <mapping model="VE_HIGH_LEVERAGE_REFI_SENSITIVE" code="VE_LEVERAGE_SCHEDULE_MISSING"/>
+      </on_missing>
+    </step>
+
+    <step id="s4" name="CheckEvidenceQuality">
+      <action>
+        EV1: IF evidence.ab_coverage &lt; 0.40:
+          add_reason_codes: [VE_EVIDENCE_COVERAGE_LOW]
+          recommend = DEGRADE
+
+        EV2: IF evidence.freshness_days > 30:
+          add_reason_codes: [VE_FRESHNESS_TOO_OLD]
+          recommend = DEGRADE
+      </action>
+    </step>
+
+    <step id="s5" name="BuildConstraints">
+      <action>
+        从selected_model的model_family定义构建constraints：
+
+        base_constraints = model_families[selected_model].constraints
+
+        IF constraints_patch EXISTS:
+          MERGE constraints_patch INTO base_constraints
+
+        IF overlay_model == VE_HIGH_LEVERAGE_REFI_SENSITIVE:
+          constraints.add_refi_sensitivity = true
+          constraints.add_credit_spread_shock = true
+      </action>
+    </step>
+
+    <step id="s6" name="DetermineRecommend">
+      <action>
+        IF any_fail_condition:
+          recommend = FAIL
+        ELSE IF any_degrade_condition:
+          recommend = DEGRADE
+        ELSE IF any_warn_condition:
+          recommend = WARN
+        ELSE:
+          recommend = PASS
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="rule_match_confidence" range="[0,1]" weight="40">
+      <formula>1.0 if exact_match else 0.8 if fallback else 0.5</formula>
+      <description>路由匹配置信度</description>
+    </score>
+    <score name="field_completeness" range="[0,1]" weight="35">
+      <formula>available_required_fields / total_required_fields</formula>
+      <description>必需字段完整性</description>
+    </score>
+    <score name="evidence_quality" range="[0,1]" weight="25">
+      <formula>min(1.0, evidence.ab_coverage / 0.60) × freshness_factor</formula>
+      <description>证据质量评分</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="VE_FINANCIAL_MODEL_REQUIRED" severity="P1" action="DEGRADE">
+      金融公司缺少financial_core字段
+    </code>
+    <code id="VE_REIT_NAV_REQUIRED" severity="P1" action="DEGRADE">
+      REIT缺少reit_core字段
+    </code>
+    <code id="VE_CYCLICAL_NOT_NORMALIZED" severity="P1" action="DEGRADE">
+      周期股缺少normalized_metrics
+    </code>
+    <code id="VE_SEGMENT_DATA_MISSING" severity="P2" action="WARN">
+      多元化公司缺少分部数据
+    </code>
+    <code id="VE_CAPEX_NOT_DECOMPOSED" severity="P2" action="WARN">
+      资本密集公司缺少CapEx分解
+    </code>
+    <code id="VE_GROWTH_BOUNDS_MISSING" severity="P2" action="WARN">
+      平台公司缺少growth_bounds
+    </code>
+    <code id="VE_LEVERAGE_SCHEDULE_MISSING" severity="P2" action="WARN">
+      高杠杆公司缺少leverage_schedule
+    </code>
+    <code id="VE_EVIDENCE_COVERAGE_LOW" severity="P1" action="DEGRADE">
+      证据覆盖率不足(&lt;40%)
+    </code>
+    <code id="VE_FRESHNESS_TOO_OLD" severity="P1" action="DEGRADE">
+      数据过期(>30天)
+    </code>
+    <code id="VE_HIGH_LEVERAGE_REFI_SENSITIVE" severity="P2" action="WARN">
+      高杠杆需关注再融资风险
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>profile字段不完整导致误分类</item>
+    <item>cyclicality_score计算不准确导致周期股路由错误</item>
+    <item>ecosystem_moat_score主观性过强导致平台识别偏差</item>
+    <item>segment_count与实际业务复杂度不符</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="selected_model" type="string" required="true">
+      <enum>
+        VE_CORP_FCFF_REVERSE_DCF,
+        VE_CYCLICAL_NORMALIZED_REVERSE_DCF,
+        VE_PLATFORM_OPTIONALITY_ANNOTATED,
+        VE_FINANCIAL_ROE_RESIDUAL_INCOME,
+        VE_CAPEX_INTENSIVE_NORMALIZED,
+        VE_MULTI_SEGMENT_SOTP,
+        VE_REIT_NAV_IMPLIED
+      </enum>
+    </field>
+
+    <field name="overlay_model" type="string" required="false">
+      <enum>VE_HIGH_LEVERAGE_REFI_SENSITIVE</enum>
+    </field>
+
+    <field name="flags" type="array" required="true">
+      <item_enum>
+        ROUTED_FINANCIAL,
+        ROUTED_REIT,
+        ROUTED_CYCLICAL,
+        ROUTED_MULTI_SEGMENT,
+        ROUTED_CAPEX_INTENSIVE,
+        ROUTED_PLATFORM,
+        ROUTED_HIGH_LEVERAGE,
+        ROUTED_DEFAULT
+      </item_enum>
+    </field>
+
+    <field name="constraints" type="object" required="true">
+      <field name="terminal_method" type="string"/>
+      <field name="fade_years_range" type="array"/>
+      <field name="use_normalized_base" type="boolean"/>
+      <field name="use_residual_income" type="boolean"/>
+      <field name="require_tam_check" type="boolean"/>
+      <field name="add_refi_sensitivity" type="boolean"/>
+    </field>
+
+    <field name="reason_codes" type="array" required="true" items="string"/>
+
+    <field name="recommend" type="string" required="true">
+      <enum>PASS, WARN, DEGRADE, FAIL</enum>
+    </field>
+
+    <field name="forward_skill_ref" type="string" required="true">
+      模型族对应的Forward Valuation skill引用
+    </field>
+
+    <field name="stats" type="object" required="true">
+      <field name="rule_matched" type="string"/>
+      <field name="field_completeness" type="float"/>
+      <field name="evidence_score" type="float"/>
+    </field>
+  </output_contract>
+</skill>

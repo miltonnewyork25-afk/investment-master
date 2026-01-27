@@ -1,0 +1,276 @@
+# Implied Expectations Schema v1.0
+# L1 Reverse DCF Solver输出的隐含预期Schema
+# 遵循JSON Schema Draft-07
+
+$schema: "https://json-schema.org/draft-07/schema#"
+$id: "implied_expectations_schema_v1"
+title: "Implied Expectations"
+description: "从当前市场价格反解的市场隐含预期"
+version: "1.0.0"
+created: "2026-01-27"
+
+type: object
+required:
+  - rev_cagr
+  - target_margin
+  - fade_years_or_cap
+  - terminal_g
+  - solver_status
+  - confidence
+
+properties:
+  # ===== Core Implied Values =====
+  rev_cagr:
+    type: number
+    minimum: -0.50
+    maximum: 1.00
+    description: |
+      隐含收入复合年增长率
+      计算方式：反解使NPV=当前EV的增长率
+      取值范围：-50%到+100%（约束内）
+
+  target_margin:
+    type: number
+    minimum: -0.50
+    maximum: 0.80
+    description: |
+      隐含目标利润率（通常为EBIT margin或NOPAT margin）
+      fade期末达到的稳态margin
+
+  reinvestment_ratio:
+    type: number
+    minimum: 0
+    maximum: 1.5
+    description: |
+      隐含再投资率
+      Reinvestment / NOPAT
+      或 (CapEx - D&A + ΔWC) / NOPAT
+
+  fade_years_or_cap:
+    type: number
+    minimum: 0
+    maximum: 30
+    description: |
+      隐含CAP（Competitive Advantage Period）
+      超额回报持续年数，之后fade到cost of capital
+
+  terminal_g:
+    type: number
+    minimum: 0
+    maximum: 0.05
+    description: |
+      隐含永续增长率
+      通常受限于名义GDP增长（2-4%）
+
+  implied_roiic:
+    type: number
+    description: |
+      隐含增量投资回报率
+      ROIIC = g / Reinvestment_Rate
+      如果>WACC则创造价值
+
+  # ===== Model-Specific Implied Values =====
+  model_specific:
+    type: object
+    description: "根据model_family的特定隐含值"
+    properties:
+      # For VE_CYCLICAL_NORMALIZED_REVERSE_DCF
+      implied_normalized_margin:
+        type: number
+        description: "隐含正常化利润率"
+      implied_mid_cycle_revenue:
+        type: number
+        description: "隐含中周期收入"
+
+      # For VE_FINANCIAL_ROE_RESIDUAL_INCOME
+      implied_roe_spread:
+        type: number
+        description: "隐含ROE - COE超额回报"
+      implied_excess_return_fade:
+        type: number
+        description: "隐含超额回报衰减年数"
+
+      # For VE_PLATFORM_OPTIONALITY_ANNOTATED
+      implied_penetration_at_fade:
+        type: number
+        description: "隐含fade时渗透率"
+      implied_tam_capture_pct:
+        type: number
+        description: "隐含TAM占领比例"
+
+      # For VE_REIT_NAV_IMPLIED
+      implied_cap_rate:
+        type: number
+        description: "隐含资本化率"
+      implied_nav_premium:
+        type: number
+        description: "隐含NAV溢价"
+
+  # ===== Sensitivity Analysis =====
+  key_sensitivities:
+    type: array
+    description: "关键参数敏感性分析"
+    items:
+      type: object
+      required:
+        - param
+        - shock
+        - impact_on_value_pct
+      properties:
+        param:
+          type: string
+          enum: [wacc, terminal_g, rev_cagr, target_margin, fade_years]
+        shock:
+          type: number
+          description: "冲击幅度（如+0.01表示+1%）"
+        impact_on_value_pct:
+          type: number
+          description: "对隐含价值的影响百分比"
+        implied_value_at_shock:
+          type: number
+          description: "冲击后的隐含价值"
+
+  # ===== Solution Quality =====
+  solver_status:
+    type: string
+    enum: [OK, MULTI_SOLUTION, NO_SOLUTION, FRAGILE]
+    description: |
+      OK: 唯一解，收敛良好
+      MULTI_SOLUTION: 存在多个可行解
+      NO_SOLUTION: 约束内无可行解
+      FRAGILE: 解对输入敏感
+
+  solution_bounds:
+    type: object
+    description: "如果MULTI_SOLUTION，记录可行域边界"
+    properties:
+      rev_cagr_range:
+        type: array
+        items:
+          type: number
+        minItems: 2
+        maxItems: 2
+      margin_range:
+        type: array
+        items:
+          type: number
+        minItems: 2
+        maxItems: 2
+      fade_range:
+        type: array
+        items:
+          type: number
+        minItems: 2
+        maxItems: 2
+
+  solver_diagnostics:
+    type: object
+    properties:
+      iterations:
+        type: integer
+        description: "求解迭代次数"
+      convergence_error:
+        type: number
+        description: "收敛误差"
+      method_used:
+        type: string
+        description: "使用的数值方法"
+
+  # ===== Physical Limit Checks =====
+  physical_limit_checks:
+    type: object
+    properties:
+      rev_cagr_vs_industry_max:
+        type: object
+        properties:
+          implied:
+            type: number
+          industry_max:
+            type: number
+          exceeded:
+            type: boolean
+      margin_vs_industry_max:
+        type: object
+        properties:
+          implied:
+            type: number
+          industry_max:
+            type: number
+          exceeded:
+            type: boolean
+      penetration_vs_cap:
+        type: object
+        properties:
+          implied:
+            type: number
+          cap:
+            type: number
+          exceeded:
+            type: boolean
+
+  # ===== Confidence & Reason Codes =====
+  confidence:
+    type: number
+    minimum: 0
+    maximum: 1
+    description: |
+      L1层置信度
+      基于：evidence_coverage + solver_quality + physical_check
+
+  reason_codes:
+    type: array
+    items:
+      type: string
+    description: "L1层产生的reason codes"
+
+  # ===== Anchor Info =====
+  anchor_used:
+    type: object
+    description: "使用的估值锚点"
+    properties:
+      as_of:
+        type: string
+        format: date
+      mode:
+        type: string
+        enum: [EV, Equity]
+      value:
+        type: number
+      shares_diluted:
+        type: number
+
+  # ===== Metadata =====
+  model_family_used:
+    type: string
+    enum:
+      - VE_CORP_FCFF_REVERSE_DCF
+      - VE_CYCLICAL_NORMALIZED_REVERSE_DCF
+      - VE_PLATFORM_OPTIONALITY_ANNOTATED
+      - VE_FINANCIAL_ROE_RESIDUAL_INCOME
+      - VE_CAPEX_INTENSIVE_NORMALIZED
+      - VE_MULTI_SEGMENT_SOTP
+      - VE_REIT_NAV_IMPLIED
+
+  execution_time_ms:
+    type: integer
+
+# ===== Examples =====
+examples:
+  - description: "Tesla - Platform/High Growth"
+    rev_cagr: 0.18
+    target_margin: 0.14
+    reinvestment_ratio: 0.45
+    fade_years_or_cap: 12
+    terminal_g: 0.03
+    implied_roiic: 0.40
+    solver_status: "OK"
+    confidence: 0.72
+    model_family_used: "VE_PLATFORM_OPTIONALITY_ANNOTATED"
+
+  - description: "JPMorgan - Financial"
+    model_specific:
+      implied_roe_spread: 0.04
+      implied_excess_return_fade: 8
+    solver_status: "OK"
+    confidence: 0.78
+    model_family_used: "VE_FINANCIAL_ROE_RESIDUAL_INCOME"

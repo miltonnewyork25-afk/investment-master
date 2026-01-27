@@ -1,0 +1,297 @@
+# Reason Code Dictionary - VE Namespace v1.0
+# Valuation Engine所有reason codes的完整定义
+
+namespace: VE
+version: "1.0.0"
+created: "2026-01-27"
+description: |
+  VE (Valuation Engine) 命名空间的reason codes
+  用于标记估值过程中的问题、警告和状态
+
+---
+
+# Severity定义
+severity_definitions:
+  P0:
+    description: "致命错误，必须中止或标记FAIL"
+    action: "FAIL"
+    requires_human_review: true
+
+  P1:
+    description: "严重问题，触发DEGRADE"
+    action: "DEGRADE"
+    requires_human_review: false
+
+  P2:
+    description: "警告，标记但不降级"
+    action: "WARN"
+    requires_human_review: false
+
+  P3:
+    description: "信息性，仅记录"
+    action: "INFO"
+    requires_human_review: false
+
+---
+
+# Reason Codes - Router (L1a)
+router_codes:
+  - code: VE_FINANCIAL_MODEL_REQUIRED
+    severity: P1
+    action: DEGRADE
+    description: "金融公司缺少financial_core字段（ROE/COE/Book Value等）"
+    resolution: "补充financial_core数据或使用fallback模型"
+    fallback: VE_CORP_FCFF_REVERSE_DCF
+
+  - code: VE_REIT_NAV_REQUIRED
+    severity: P1
+    action: DEGRADE
+    description: "REIT缺少reit_core字段（NOI/Cap Rate/NAV等）"
+    resolution: "补充reit_core数据或使用fallback模型"
+    fallback: VE_CORP_FCFF_REVERSE_DCF
+
+  - code: VE_CYCLICAL_NOT_NORMALIZED
+    severity: P1
+    action: DEGRADE
+    description: "周期股(cyclicality>=0.70)缺少normalized_metrics"
+    resolution: "计算正常化指标（7年平均margin/volume）"
+    fallback: VE_CORP_FCFF_REVERSE_DCF
+
+  - code: VE_SEGMENT_DATA_MISSING
+    severity: P2
+    action: WARN
+    description: "多元化公司(segment_count>=3)缺少分部数据"
+    resolution: "补充分部收入/利润数据"
+    fallback: VE_CORP_FCFF_REVERSE_DCF
+
+  - code: VE_CAPEX_NOT_DECOMPOSED
+    severity: P2
+    action: WARN
+    description: "资本密集公司(capex_intensity>=0.15)缺少CapEx分解"
+    resolution: "区分maintenance vs growth capex"
+    fallback: VE_CORP_FCFF_REVERSE_DCF
+
+  - code: VE_GROWTH_BOUNDS_MISSING
+    severity: P2
+    action: WARN
+    description: "平台公司(ecosystem_moat>=0.70)缺少growth_bounds"
+    resolution: "补充TAM范围和渗透率数据"
+    fallback: VE_CORP_FCFF_REVERSE_DCF
+
+  - code: VE_LEVERAGE_SCHEDULE_MISSING
+    severity: P2
+    action: WARN
+    description: "高杠杆公司(net_debt/EBITDA>=4)缺少leverage_schedule"
+    resolution: "补充债务到期时间表和利率数据"
+
+  - code: VE_HIGH_LEVERAGE_REFI_SENSITIVE
+    severity: P2
+    action: WARN
+    description: "高杠杆公司需关注再融资风险"
+    resolution: "添加再融资敏感性分析"
+
+---
+
+# Reason Codes - Evidence (L1a)
+evidence_codes:
+  - code: VE_EVIDENCE_COVERAGE_LOW
+    severity: P1
+    action: DEGRADE
+    description: "A/B级证据覆盖率不足(<40%)"
+    resolution: "补充高质量数据源"
+    threshold: "ab_coverage < 0.40"
+
+  - code: VE_FRESHNESS_TOO_OLD
+    severity: P1
+    action: DEGRADE
+    description: "数据过期(>30天)"
+    resolution: "更新至最新数据"
+    threshold: "freshness_days > 30"
+
+---
+
+# Reason Codes - Solver (L1b)
+solver_codes:
+  - code: VE_INPUT_MISSING
+    severity: P1
+    action: DEGRADE
+    description: "Solver必需输入字段缺失"
+    resolution: "检查上游数据完整性"
+
+  - code: VE_UNIT_PERIOD_MISMATCH
+    severity: P1
+    action: DEGRADE
+    description: "单位或期间不匹配（如TTM/FY混用）"
+    resolution: "统一数据口径"
+
+  - code: VE_ANCHOR_INCONSISTENT
+    severity: P0
+    action: FAIL
+    description: "EV/Equity/Debt/Cash不一致（|EV - (Equity+Debt-Cash)|/EV > 1%）"
+    resolution: "核查估值锚点数据"
+
+  - code: VE_NO_FEASIBLE_SOLUTION
+    severity: P0
+    action: FAIL
+    description: "约束范围内无可行解"
+    resolution: "检查约束是否过严或输入数据异常"
+
+  - code: VE_MULTI_SOLUTION
+    severity: P2
+    action: WARN
+    description: "存在多个可行解，输出可行域边界"
+    resolution: "记录解的边界范围"
+
+  - code: VE_TERMINAL_ASSUMPTION_FRAGILE
+    severity: P1
+    action: DEGRADE
+    description: "Terminal假设对微扰敏感（WACC/g ±0.5%导致价值变化>30%）"
+    resolution: "标记脆弱性并扩大敏感性分析"
+
+  - code: VE_IMPLIED_EXCEEDS_PHYSICAL_LIMIT
+    severity: P0
+    action: DEGRADE
+    description: "隐含预期超出物理/行业上限（如增速>行业天花板）"
+    resolution: "检查market pricing是否合理"
+
+  - code: VE_CAP_HYPOTHESES_INCOMPLETE
+    severity: P2
+    action: WARN
+    description: "CAP假设少于3条或字段不完整"
+    resolution: "补充CAP假设"
+
+---
+
+# Reason Codes - Forward Bridge (L2)
+forward_codes:
+  - code: VE_FORWARD_SKILL_FALLBACK
+    severity: P2
+    action: WARN
+    description: "指定的forward skill不可用，使用fallback"
+    resolution: "检查forward skill可用性"
+
+  - code: VE_FORWARD_OUTPUT_IMPLAUSIBLE
+    severity: P1
+    action: WARN
+    description: "Forward估值输出不合理（如负EV、异常倍数）"
+    resolution: "检查forward skill输入和假设"
+
+  - code: VE_FORWARD_HIGH_UNCERTAINTY
+    severity: P2
+    action: WARN
+    description: "场景差异过大(>80%)，不确定性高"
+    resolution: "审视假设分布是否合理"
+
+  - code: VE_TERMINAL_VALUE_DOMINANT
+    severity: P2
+    action: WARN
+    description: "Terminal Value占比过高(>70%)"
+    resolution: "关注terminal假设敏感性"
+
+  - code: VE_FORWARD_EXECUTION_FAILED
+    severity: P0
+    action: DEGRADE
+    description: "Forward skill执行失败"
+    resolution: "检查skill输入和依赖"
+
+---
+
+# Reason Codes - Reconciler (L3)
+reconciler_codes:
+  - code: VE_FORWARD_REVERSE_GAP_EXTREME
+    severity: P0
+    action: DEGRADE
+    description: "Implied vs Forward差异超过50%"
+    resolution: "深入分析gap来源，可能市场定价异常"
+
+  - code: VE_FORWARD_REVERSE_GAP_ALERT
+    severity: P1
+    action: WARN
+    description: "Implied vs Forward差异30-50%"
+    resolution: "记录gap来源和top_gap_drivers"
+
+  - code: VE_IMPLIED_INCONSISTENT_WITH_RM
+    severity: P1
+    action: WARN
+    description: "VE隐含预期与RM机制信号不一致"
+    resolution: "交叉验证RM claim与VE assumption"
+
+  - code: VE_NO_RM_SIGNALS_FOR_VALIDATION
+    severity: P3
+    action: INFO
+    description: "无RM信号可用于交叉验证"
+    resolution: "可选：请求RM补充信号"
+
+  - code: VE_MARKET_PRICING_EXTENDED_CAP
+    severity: P2
+    action: WARN
+    description: "市场定价了过长的CAP(>15年)"
+    resolution: "审视fade假设是否过于乐观"
+
+  - code: VE_CONFIDENCE_TOO_LOW
+    severity: P0
+    action: DEGRADE
+    description: "VE置信度低于50%阈值"
+    resolution: "检查各置信度组件"
+
+  - code: VE_MONITORING_TRIGGERS_INSUFFICIENT
+    severity: P2
+    action: WARN
+    description: "监控触发器少于5个"
+    resolution: "补充monitoring_triggers"
+
+---
+
+# Code汇总
+code_summary:
+  total_codes: 28
+  by_severity:
+    P0: 6
+    P1: 9
+    P2: 11
+    P3: 2
+  by_layer:
+    router: 8
+    evidence: 2
+    solver: 8
+    forward: 5
+    reconciler: 7
+
+---
+
+# 与QG对接
+qg_mapping:
+  fail_if_present:
+    - VE_ANCHOR_INCONSISTENT
+    - VE_NO_FEASIBLE_SOLUTION
+
+  degrade_if_present:
+    - VE_FINANCIAL_MODEL_REQUIRED
+    - VE_REIT_NAV_REQUIRED
+    - VE_CYCLICAL_NOT_NORMALIZED
+    - VE_EVIDENCE_COVERAGE_LOW
+    - VE_FRESHNESS_TOO_OLD
+    - VE_INPUT_MISSING
+    - VE_UNIT_PERIOD_MISMATCH
+    - VE_TERMINAL_ASSUMPTION_FRAGILE
+    - VE_IMPLIED_EXCEEDS_PHYSICAL_LIMIT
+    - VE_FORWARD_REVERSE_GAP_EXTREME
+    - VE_CONFIDENCE_TOO_LOW
+    - VE_FORWARD_EXECUTION_FAILED
+
+  warn_if_present:
+    - VE_SEGMENT_DATA_MISSING
+    - VE_CAPEX_NOT_DECOMPOSED
+    - VE_GROWTH_BOUNDS_MISSING
+    - VE_LEVERAGE_SCHEDULE_MISSING
+    - VE_HIGH_LEVERAGE_REFI_SENSITIVE
+    - VE_MULTI_SOLUTION
+    - VE_CAP_HYPOTHESES_INCOMPLETE
+    - VE_FORWARD_SKILL_FALLBACK
+    - VE_FORWARD_OUTPUT_IMPLAUSIBLE
+    - VE_FORWARD_HIGH_UNCERTAINTY
+    - VE_TERMINAL_VALUE_DOMINANT
+    - VE_FORWARD_REVERSE_GAP_ALERT
+    - VE_IMPLIED_INCONSISTENT_WITH_RM
+    - VE_MARKET_PRICING_EXTENDED_CAP
+    - VE_MONITORING_TRIGGERS_INSUFFICIENT

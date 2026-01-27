@@ -1,0 +1,392 @@
+# Valuation Engine Agent v1.0
+# 估值引擎智能体 - Expectations Investing + 多模型族支持
+# 核心原则: 价格先行(Reverse DCF) + Forward验证 + Reconciliation洞察
+
+agent:
+  name: valuation_engine_agent
+  version: "1.0.0"
+  purpose: |
+    三层估值架构：
+    Layer 1: Reverse DCF - 从当前价格反解市场隐含预期
+    Layer 2: Forward Valuation - 正向估值(DCF/Comps/专用模型)
+    Layer 3: Reconciliation - 对比implied vs forward，识别expectation_gap
+
+    核心输出：implied_expectations + cap_hypotheses + expectation_gap
+    不输出投资结论，只输出可证伪假设与验证计划。
+  owner: "investment_super_agent"
+  timezone: "America/New_York"
+
+---
+
+# 理论基础
+theory_foundation:
+  expectations_investing:
+    - name: "Expectations Investing (Mauboussin & Rappaport)"
+      application: "从价格反推市场预期，而非从预测推价格"
+      concepts: [implied_expectations, price_implied_forecast, reverse_dcf]
+
+  value_drivers:
+    - name: "Value Driver Framework"
+      application: "ROIC + Growth + Reinvestment + Fade(CAP)"
+      concepts: [roic_spread, reinvestment_rate, competitive_advantage_period, fade_to_coc]
+
+  dcf_foundation:
+    - name: "DCF/FCFF Valuation"
+      application: "绝对估值主干"
+      concepts: [fcff, wacc, terminal_value, gordon_growth, value_driver_formula]
+
+  specialized_methods:
+    - name: "Residual Income / Excess Return"
+      application: "金融机构估值"
+      concepts: [roe_coe_spread, book_value_anchor, excess_return_fade]
+
+    - name: "Normalized Earnings"
+      application: "周期股估值"
+      concepts: [mid_cycle_margin, normalized_volume, through_cycle_roic]
+
+    - name: "NAV-based"
+      application: "REIT/资产重估值"
+      concepts: [nav_premium_discount, cap_rate, noi_yield]
+
+---
+
+# 输入输出契约
+contracts:
+  input_refs:
+    - name: run_id
+      type: "string"
+      required: true
+
+    - name: entity
+      type: "Entity"
+      required: true
+      schema:
+        ticker: string
+        company_name: string
+        sector: string
+        industry: string
+
+    - name: profile
+      type: "CompanyProfile"
+      required: true
+      from: "ecosystem_graph_agent"
+      schema:
+        is_financial: boolean
+        cyclicality_score: float  # 0-1
+        ecosystem_moat_score: float  # 0-1
+        net_debt_to_ebitda: float
+        capex_intensity: float  # capex/revenue
+        segment_count: integer
+        is_reit: boolean
+
+    - name: valuation_anchor
+      type: "ValuationAnchor"
+      required: true
+      schema:
+        as_of: date
+        mode: enum[EV, Equity]
+        ev_or_mktcap: float
+        cash_and_nonop: float
+        debt_and_like: float
+        shares_diluted: float
+
+    - name: base_metrics
+      type: "BaseMetrics"
+      required: true
+      schema:
+        revenue_ttm: float
+        ebit_margin_ttm: float
+        fcf_ttm: float
+        roic_ttm: float
+        reinvestment_ratio: float
+
+    - name: rm_signals
+      type: "RMSignals"
+      required: false
+      from: "research_mechanism_agent"
+
+    - name: eco_signals
+      type: "ECOSignals"
+      required: false
+      from: "ecosystem_graph_agent"
+
+    - name: evidence
+      type: "EvidencePackage"
+      required: true
+      from: "data_integrity_agent"
+
+  outputs:
+    - name: ve_output_package
+      type: "VEOutputPackage"
+      schema: "schemas/valuation_summary_schema_v1.yaml"
+
+    - name: to_quality_gate
+      type: "VEToQGContract"
+      schema: "contracts/ve_qg_interface_contract_v1.yaml"
+
+---
+
+# Policy Pack配置
+policy_pack:
+  path: "policies/ve_policy_pack_v1.yaml"
+  require_hash_freeze: true
+
+---
+
+# 执行配置
+execution:
+  max_retries: 2
+  timeout_ms_total: 240000
+  step_timeout_ms_default: 60000
+  deterministic_rules:
+    - "No investment conclusion output"
+    - "Implied expectations only - no target prices"
+    - "CAP hypotheses must be falsifiable"
+    - "Fragility must be explicitly flagged"
+  parallelism:
+    enabled: true
+    max_concurrency: 2
+
+---
+
+# Blackboard配置
+blackboard:
+  mode: "append_only"
+  required_keys:
+    - run_id
+    - policy_pack_version
+    - policy_pack_hash
+    - router_result
+    - implied_expectations
+    - cap_hypotheses
+    - forward_valuation
+    - expectation_gap
+    - fragility_assessment
+    - reason_codes_all
+    - ve_confidence_cap
+  write_rules:
+    - "Each step appends with step_id, inputs_ref, outputs_ref"
+    - "Confidence can only decrease"
+    - "reason_codes accumulate, never removed"
+
+---
+
+# Model Families (8个)
+model_families:
+  - id: VE_CORP_FCFF_REVERSE_DCF
+    description: "非金融公司FCFF主干 + fade(CAP)"
+    theory_ref: "DCF/FCFF Valuation"
+    required_fields: [base_metrics.revenue_ttm, base_metrics.ebit_margin_ttm, wacc_or_ke]
+    forward_skill: "generic_dcf_forward"
+
+  - id: VE_CYCLICAL_NORMALIZED_REVERSE_DCF
+    description: "周期/商品：normalized margin/volume + mid-cycle锚"
+    theory_ref: "Normalized Earnings"
+    required_fields: [normalized_metrics.normalized_margin, normalized_metrics.mid_cycle_revenue]
+    forward_skill: "cyclical_normalized_forward"
+    constraints_patch:
+      terminal_method: "value_driver"
+
+  - id: VE_PLATFORM_OPTIONALITY_ANNOTATED
+    description: "平台/高成长：FCFF + TAM/渗透率物理上限检查"
+    theory_ref: "Value Driver Framework"
+    required_fields: [growth_bounds.tam_range, growth_bounds.penetration_cap]
+    forward_skill: "high_growth_tech_valuation_framework_v1.2"
+    constraints_patch:
+      fade_years_range: "5,20"
+
+  - id: VE_FINANCIAL_ROE_RESIDUAL_INCOME
+    description: "金融：ROE/COE + residual income / excess return fade"
+    theory_ref: "Residual Income / Excess Return"
+    required_fields: [financial_core.roe, financial_core.cet1_or_rbc, wacc_or_ke]
+    forward_skill: "financial_roe_residual_forward"
+
+  - id: VE_HIGH_LEVERAGE_REFI_SENSITIVE
+    description: "高杠杆：FCFF + 再融资/债务成本敏感性"
+    theory_ref: "DCF/FCFF Valuation"
+    required_fields: [leverage_schedule.maturities, leverage_schedule.avg_rate]
+    forward_skill: "high_leverage_forward"
+
+  - id: VE_CAPEX_INTENSIVE_NORMALIZED
+    description: "资本密集：CapEx分解 + 正常化FCF"
+    theory_ref: "Value Driver Framework"
+    required_fields: [capex_decomposition.maintenance, capex_decomposition.growth]
+    forward_skill: "capex_intensive_valuation_v1.0"
+
+  - id: VE_MULTI_SEGMENT_SOTP
+    description: "多业务：分部反推汇总"
+    theory_ref: "DCF/FCFF Valuation"
+    required_fields: [segments[].revenue, segments[].margin]
+    forward_skill: "sotp_forward"
+
+  - id: VE_REIT_NAV_IMPLIED
+    description: "REIT：NAV隐含预期"
+    theory_ref: "NAV-based"
+    required_fields: [reit_core.noi, reit_core.cap_rate, reit_core.nav_per_share]
+    forward_skill: "reit_nav_forward"
+
+---
+
+# Pipeline (三层架构)
+pipeline:
+  # Layer 1: Reverse DCF
+  - step_id: "L1_router"
+    skill_ref: "skills_xml/ve_router_v1.skill.xml"
+    inputs:
+      profile: "{{inputs.profile}}"
+      valuation_anchor: "{{inputs.valuation_anchor}}"
+      evidence: "{{inputs.evidence}}"
+    outputs_to_blackboard:
+      - router_result
+      - selected_model_family
+      - router_flags
+      - router_reason_codes
+
+  - step_id: "L1_reverse_solver"
+    skill_ref: "skills_xml/ve_reverse_dcf_solver_v1.skill.xml"
+    inputs:
+      policy_ref: "{{blackboard.policy_ref}}"
+      router_result: "{{blackboard.router_result}}"
+      valuation_anchor: "{{inputs.valuation_anchor}}"
+      base_metrics: "{{inputs.base_metrics}}"
+      evidence: "{{inputs.evidence}}"
+    outputs_to_blackboard:
+      - implied_expectations
+      - cap_hypotheses
+      - solver_status
+      - fragility_assessment
+
+  # Layer 2: Forward Valuation
+  - step_id: "L2_forward_bridge"
+    skill_ref: "skills_xml/ve_forward_bridge_v1.skill.xml"
+    inputs:
+      selected_model_family: "{{blackboard.selected_model_family}}"
+      base_metrics: "{{inputs.base_metrics}}"
+      profile: "{{inputs.profile}}"
+      evidence: "{{inputs.evidence}}"
+    outputs_to_blackboard:
+      - forward_valuation
+      - forward_scenario_values
+
+  # Layer 3: Reconciliation
+  - step_id: "L3_reconciler"
+    skill_ref: "skills_xml/ve_reconciler_v1.skill.xml"
+    inputs:
+      implied_expectations: "{{blackboard.implied_expectations}}"
+      forward_valuation: "{{blackboard.forward_valuation}}"
+      cap_hypotheses: "{{blackboard.cap_hypotheses}}"
+      rm_signals: "{{inputs.rm_signals}}"
+    outputs_to_blackboard:
+      - expectation_gap
+      - reconciliation_flags
+      - ve_confidence_cap
+      - degrade_mode
+      - reason_codes_all
+
+---
+
+# 下游集成
+integration:
+  downstream_handoff:
+    to_quality_gate:
+      payload:
+        ve_confidence_cap: "{{blackboard.ve_confidence_cap}}"
+        implied_expectations: "{{blackboard.implied_expectations}}"
+        cap_hypotheses: "{{blackboard.cap_hypotheses}}"
+        forward_valuation_range: "{{blackboard.forward_valuation}}"
+        expectation_gap: "{{blackboard.expectation_gap}}"
+        fragility_assessment: "{{blackboard.fragility_assessment}}"
+        reason_codes_all: "{{blackboard.reason_codes_all}}"
+        degrade_mode: "{{blackboard.degrade_mode}}"
+      contract: "contracts/ve_qg_interface_contract_v1.yaml"
+
+    to_eval_agent:
+      payload:
+        implied_expectations: "{{blackboard.implied_expectations}}"
+        cap_hypotheses: "{{blackboard.cap_hypotheses}}"
+        decision_trace: "{{blackboard.decision_trace_fragment}}"
+      test_types:
+        - golden_outcome: "隐含预期结构快照"
+        - metamorphic: "输入扰动一致性"
+        - governance: "reason_codes正确性"
+
+  # Reason Code路由
+  routing_matrix:
+    - match_reason_codes: ["VE_EVIDENCE_COVERAGE_LOW", "VE_FRESHNESS_TOO_OLD"]
+      route_to: "data_integrity_agent"
+      action: "fetch_additional_sources"
+
+    - match_reason_codes: ["VE_CYCLICAL_NOT_NORMALIZED"]
+      route_to: "ecosystem_graph_agent"
+      action: "request_normalized_metrics"
+
+    - match_reason_codes: ["VE_IMPLIED_INCONSISTENT_WITH_RM"]
+      route_to: "research_mechanism_agent"
+      action: "validate_mechanism_claims"
+
+---
+
+# Artifacts输出
+artifacts:
+  root: "artifacts/runs/{{run_id}}/ve/"
+  files:
+    - name: "implied_expectations.json"
+      from: "{{blackboard.implied_expectations}}"
+      schema: "schemas/implied_expectations_schema_v1.yaml"
+
+    - name: "cap_hypotheses.json"
+      from: "{{blackboard.cap_hypotheses}}"
+      schema: "schemas/claim_registry_schema_v1.yaml"
+
+    - name: "valuation_summary.json"
+      from: "{{blackboard.ve_output_package}}"
+      schema: "schemas/valuation_summary_schema_v1.yaml"
+
+    - name: "ve_decision_trace.json"
+      from: "{{blackboard.decision_trace_fragment}}"
+
+---
+
+# 配置文件清单
+config_files:
+  P0_required:
+    - file: "policies/ve_policy_pack_v1.yaml"
+      purpose: "策略包（阈值、规则、配置）"
+
+    - file: "policies/ve_router_rules_v1.yaml"
+      purpose: "路由规则"
+
+    - file: "schemas/valuation_summary_schema_v1.yaml"
+      purpose: "估值汇总Schema"
+
+    - file: "contracts/ve_qg_interface_contract_v1.yaml"
+      purpose: "VE→QG接口契约"
+
+  P1_recommended:
+    - file: "reason_codes/reason_code_dictionary_VE.yaml"
+      purpose: "VE命名空间reason codes"
+
+    - file: "templates/cap_falsifiable_template_v1.yaml"
+      purpose: "CAP可证伪模板"
+
+    - file: "tests/ve_router_rules_tests_v1.yaml"
+      purpose: "路由规则单测"
+
+  skills_xml:
+    - file: "skills_xml/ve_router_v1.skill.xml"
+    - file: "skills_xml/ve_reverse_dcf_solver_v1.skill.xml"
+    - file: "skills_xml/ve_reconciler_v1.skill.xml"
+    - file: "skills_xml/ve_forward_bridge_v1.skill.xml"
+
+---
+
+# 版本历史
+version_history:
+  - version: "1.0.0"
+    date: "2026-01-27"
+    changes:
+      - "初始版本：三层估值架构"
+      - "8个model_families覆盖全类型公司"
+      - "Expectations Investing + CAP可证伪"
+      - "VE→QG标准接口契约"
+      - "与RM ClaimSpec对齐"

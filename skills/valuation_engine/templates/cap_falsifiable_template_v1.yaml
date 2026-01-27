@@ -1,0 +1,265 @@
+# CAP Falsifiable Hypothesis Template v1.0
+# 用于生成可证伪的CAP假设
+# 确保每个假设都有明确的验证路径
+
+template:
+  name: cap_falsifiable_template
+  version: "1.0.0"
+  created: "2026-01-27"
+  description: |
+    CAP (Competitive Advantage Period) 可证伪假设模板
+    确保每个假设包含：
+    - 明确的claim陈述
+    - 可量化的metric
+    - 清晰的threshold
+    - 有限的time_window
+    - 可执行的verification_sources
+    - 明确的disconfirmers
+
+---
+
+# 假设结构
+hypothesis_structure:
+  id:
+    format: "CAP_H_{NNN}"
+    description: "唯一标识符，NNN为3位数字"
+    example: "CAP_H_001"
+
+  claim:
+    description: |
+      假设陈述，描述维持CAP所需的条件
+      格式："{指标}需要{状态}以支撑{CAP年数}年的超额回报期"
+    min_length: 20
+    max_length: 200
+    examples:
+      - "FSD干预率需保持<5次/万英里以支撑12年CAP"
+      - "毛利率需维持>20%以验证8年fade假设"
+      - "ARR增速需>30% YoY以支撑15年高成长估值"
+
+  metric:
+    description: |
+      可观测、可量化的指标
+      必须是公开可获取或可合理估算的数据
+    requirements:
+      - 必须可量化
+      - 必须有明确来源
+      - 更新频率不低于季度
+    examples:
+      - "FSD intervention rate per 10,000 miles"
+      - "Gross margin %"
+      - "ARR YoY growth rate"
+      - "ROIC spread (ROIC - WACC)"
+      - "Net Retention Rate (NRR)"
+      - "Same-store NOI growth"
+
+  threshold:
+    description: |
+      触发条件，使用比较运算符
+      格式：{比较符} {数值} [{单位}]
+    operators: ["<", "<=", ">", ">=", "==", "between"]
+    examples:
+      - "< 5 per 10,000 miles"
+      - ">= 20%"
+      - "between 8% and 15%"
+      - "> WACC + 2%"
+
+  time_window:
+    description: |
+      验证时间窗口
+      必须是有限、可预期的时间范围
+    max_duration: "24 months"
+    formats:
+      - "next N quarters"
+      - "FY2026"
+      - "by Q2 2027"
+      - "within 12 months"
+    examples:
+      - "next 4 quarters"
+      - "FY2026 full year"
+      - "by Q4 2026"
+
+  verification_sources:
+    description: |
+      验证数据来源
+      优先使用Tier 1（官方）来源
+    min_count: 1
+    tier_preference: [Tier1, Tier2, Tier3]
+    examples:
+      - "Tesla Quarterly Safety Report"
+      - "10-K filing"
+      - "Earnings call transcript"
+      - "Industry association data"
+      - "Third-party research (specify)"
+
+  disconfirmers:
+    description: |
+      证伪条件
+      明确描述什么情况下假设被证伪
+    min_count: 1
+    format: "{条件}持续{时间}则假设失效"
+    examples:
+      - "干预率连续2季度>10次/万英里"
+      - "毛利率连续3季度<18%"
+      - "NRR连续2季度<100%"
+      - "ROIC spread转负超过2季度"
+
+---
+
+# 按公司类型的假设模板
+
+## Platform/High Growth
+platform_templates:
+  - id_prefix: "CAP_H_PLT_"
+    common_metrics:
+      - "Revenue CAGR vs TAM growth"
+      - "Net Retention Rate (NRR)"
+      - "Gross margin trajectory"
+      - "Customer acquisition cost (CAC) payback"
+      - "Market share in core segment"
+    sample_hypotheses:
+      - claim: "NRR需保持>120%以支撑15年高成长CAP"
+        metric: "Net Retention Rate"
+        threshold: "> 120%"
+        time_window: "next 4 quarters"
+        verification_sources: ["Earnings reports", "Management guidance"]
+        disconfirmers: ["NRR连续2季度<110%"]
+
+      - claim: "TAM渗透率需<30%以支撑增长空间假设"
+        metric: "TAM penetration rate"
+        threshold: "< 30%"
+        time_window: "FY2026"
+        verification_sources: ["Industry reports", "Company investor day"]
+        disconfirmers: ["渗透率单季度跳升>5%"]
+
+## Cyclical
+cyclical_templates:
+  - id_prefix: "CAP_H_CYC_"
+    common_metrics:
+      - "Normalized EBIT margin"
+      - "Through-cycle ROIC"
+      - "Capacity utilization"
+      - "Industry inventory levels"
+      - "Price realization vs cost inflation"
+    sample_hypotheses:
+      - claim: "正常化利润率需回归>12%以支撑mid-cycle估值"
+        metric: "Normalized EBIT margin"
+        threshold: ">= 12%"
+        time_window: "over next 2 years (full cycle)"
+        verification_sources: ["Historical 7-year average", "Industry margin benchmarks"]
+        disconfirmers: ["连续4季度margin<8%且无周期改善迹象"]
+
+## Financial
+financial_templates:
+  - id_prefix: "CAP_H_FIN_"
+    common_metrics:
+      - "ROE - COE spread"
+      - "Net Interest Margin (NIM)"
+      - "Credit cost ratio"
+      - "CET1 ratio"
+      - "Efficiency ratio"
+    sample_hypotheses:
+      - claim: "ROE需保持>COE+3%以支撑8年excess return fade"
+        metric: "ROE - COE spread"
+        threshold: "> 3%"
+        time_window: "next 8 quarters"
+        verification_sources: ["10-K/10-Q filings", "Fed stress test results"]
+        disconfirmers: ["ROE spread<2%持续4季度"]
+
+## REIT
+reit_templates:
+  - id_prefix: "CAP_H_REIT_"
+    common_metrics:
+      - "Same-store NOI growth"
+      - "Occupancy rate"
+      - "Cap rate vs market"
+      - "FFO per share growth"
+      - "Debt to EBITDA"
+    sample_hypotheses:
+      - claim: "同店NOI增速需>3%以支撑NAV溢价"
+        metric: "Same-store NOI growth"
+        threshold: "> 3%"
+        time_window: "next 4 quarters"
+        verification_sources: ["Quarterly supplemental", "NAREIT data"]
+        disconfirmers: ["同店NOI增速连续3季度<1%"]
+
+## CapEx Intensive
+capex_templates:
+  - id_prefix: "CAP_H_CAP_"
+    common_metrics:
+      - "Return on invested capital (ROIC)"
+      - "Maintenance capex / Depreciation"
+      - "Growth capex efficiency"
+      - "Capacity expansion IRR"
+    sample_hypotheses:
+      - claim: "新产能IRR需>15%以证明growth capex价值创造"
+        metric: "New capacity project IRR"
+        threshold: "> 15%"
+        time_window: "first full year of new capacity"
+        verification_sources: ["Management disclosure", "Analyst estimates"]
+        disconfirmers: ["新项目实际IRR<10%"]
+
+---
+
+# 质量检查清单
+quality_checklist:
+  - item: "claim陈述是否清晰无歧义？"
+    pass_if: "读者可以准确理解假设内容"
+
+  - item: "metric是否可量化？"
+    pass_if: "有明确的数值或百分比"
+
+  - item: "threshold是否明确？"
+    pass_if: "有比较运算符和具体数值"
+
+  - item: "time_window是否有限？"
+    pass_if: "<= 24个月"
+
+  - item: "verification_sources是否可执行？"
+    pass_if: "至少1个Tier 1或Tier 2来源"
+
+  - item: "disconfirmers是否明确？"
+    pass_if: "有具体的证伪条件和时间"
+
+---
+
+# 示例输出
+example_output:
+  company: "Tesla (TSLA)"
+  model_family: "VE_PLATFORM_OPTIONALITY_ANNOTATED"
+  cap_hypotheses:
+    - id: "CAP_H_001"
+      claim: "FSD干预率需保持<5次/万英里以支撑Robotaxi 12年CAP假设"
+      metric: "FSD intervention rate per 10,000 miles"
+      threshold: "< 5"
+      time_window: "next 4 quarters"
+      verification_sources:
+        - "Tesla Quarterly Vehicle Safety Report"
+        - "NHTSA Autopilot data"
+        - "Third-party FSD tracking (Teslascope)"
+      disconfirmers:
+        - "干预率连续2季度>10次/万英里"
+        - "重大FSD相关事故导致监管限制"
+
+    - id: "CAP_H_002"
+      claim: "汽车毛利率需回升至>18%以证明规模效应而非价格战"
+      metric: "Automotive gross margin (ex-credits)"
+      threshold: "> 18%"
+      time_window: "by Q4 2026"
+      verification_sources:
+        - "Tesla 10-Q/10-K"
+        - "Earnings call margin guidance"
+      disconfirmers:
+        - "毛利率连续3季度<15%"
+        - "ASP下降速度>成本下降速度持续2季度"
+
+    - id: "CAP_H_003"
+      claim: "储能部署量需保持>50% YoY增长以支撑业务转型叙事"
+      metric: "Energy storage deployment GWh YoY growth"
+      threshold: "> 50%"
+      time_window: "FY2026"
+      verification_sources:
+        - "Tesla quarterly deliveries report"
+        - "BNEF energy storage tracker"
+      disconfirmers:
+        - "部署量增速连续2季度<30%"
+        - "Megapack积压订单环比下降"
