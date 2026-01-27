@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- RM Counterfactual Compiler Skill v1.1 -->
+<!-- Position: S2 | Purpose: 生成do(x)反事实分析 -->
+
+<skill name="rm_counterfactual_compiler_v1_1" version="1.1.0" lang="zh">
+  <metadata>
+    <author>RM Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Judea Pearl - Causality: do(x) operator</ref>
+      <ref>Pearl - Counterfactual reasoning and identifiability</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    为CRITICAL/IMPORTANT claims生成counterfactual（do(x)）级别的可检验预测。
+
+    核心概念：
+    - do(X=x) 表示强制将X设为x（干预）
+    - 与条件概率P(Y|X=x)不同，do(x)切断X的所有上游因果
+    - 如果不可识别（non-identifiable），必须显式标注并触发降级建议
+  </purpose>
+
+  <inputs>
+    <input name="policy_ref" type="object" required="true">
+      {version, hash}
+    </input>
+    <input name="claim_registry" type="array" required="true">
+      ClaimSpec数组
+    </input>
+    <input name="rm_confidence_cap" type="float" required="true" range="[0,1]">
+      当前置信度上限
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="SelectTopKClaims">
+      <action>
+        1. 筛选CRITICAL和IMPORTANT级别的claims
+        2. 按DAG中心度（centrality）排序
+        3. 选取top-K（K由policy定义，默认10）
+      </action>
+    </step>
+
+    <step id="s2" name="GenerateIntervention">
+      <action>
+        FOR EACH selected_claim:
+          1. 识别关键因果变量X（通常是claim.cause）
+          2. 确定有意义的干预：
+             - 否定型: do(X = NOT current_value)
+             - 缺失型: do(X = never_happens)
+             - 替代型: do(X = alternative_value)
+          3. 格式化为 do(VARIABLE = VALUE) 形式
+      </action>
+      <examples>
+        <example>do(FSD_launch = never)</example>
+        <example>do(price_cut = 0%)</example>
+        <example>do(competitor_Waymo = aggressive_expansion)</example>
+      </examples>
+    </step>
+
+    <step id="s3" name="PredictExpectedEffect">
+      <action>
+        FOR EACH counterfactual:
+          1. 沿DAG追踪effect传播
+          2. 估计影响幅度
+          3. 记录expected_effect
+          4. 考虑二阶效应
+      </action>
+    </step>
+
+    <step id="s4" name="DefineObservablesAndTimeframe">
+      <action>
+        FOR EACH counterfactual:
+          1. 使用claim的observables，或添加反事实特定指标
+          2. 设定验证时间窗口（考虑干预到效果的时滞）
+          3. 生成falsify_if条件
+      </action>
+      <validation>
+        observables非空 AND timeframe非空
+      </validation>
+    </step>
+
+    <step id="s5" name="AssessIdentifiability">
+      <action>
+        FOR EACH counterfactual:
+          评估因果效应的可识别性：
+          1. 检查未观测混淆因素
+          2. 评估是否存在自然实验
+          3. 考虑工具变量可能性
+          4. 分类为：
+             - IDENTIFIED: 因果效应可唯一确定
+             - PARTIAL: 可建立边界
+             - UNKNOWN: 尚未评估
+             - NON_IDENTIFIABLE: 无法确定
+          5. 如果NON_IDENTIFIABLE，记录原因
+      </action>
+      <on_non_identifiable>
+        emit RM_CAUSAL_QUERY_NON_IDENTIFIABLE
+        要求显式标注限制，避免强因果语言
+      </on_non_identifiable>
+    </step>
+
+    <step id="s6" name="DocumentAssumptions">
+      <action>
+        FOR EACH counterfactual:
+          列出所需的因果假设：
+          - "X和Y之间无未观测混淆因素"
+          - "竞争对手行为独立于干预"
+          - "市场条件在观测期内稳定"
+          - "测量误差可忽略"
+      </action>
+    </step>
+
+    <step id="s7" name="ComputeCoverage">
+      <action>
+        counterfactual_coverage =
+          critical_claims_with_counterfactual / critical_claims_total
+
+        counterfactual_falsifiable =
+          counterfactuals_with(observables AND timeframe AND falsify_if) / counterfactuals_total
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="counterfactual_coverage" range="[0,1]">
+      <formula>critical_claims_with_counterfactual / critical_claims_total</formula>
+      <description>关键claims的反事实覆盖率</description>
+    </score>
+    <score name="counterfactual_falsifiable" range="[0,1]">
+      <formula>counterfactuals_with(observables AND timeframe AND falsify_if) / counterfactuals_total</formula>
+      <description>反事实的可证伪性比例</description>
+    </score>
+    <score name="identifiability_rate" range="[0,1]">
+      <formula>(IDENTIFIED + PARTIAL) / total_counterfactuals</formula>
+      <description>可识别或部分可识别的比例</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="RM_COUNTERFACTUAL_TIMEFRAME_MISSING" severity="P2" action="DEGRADE">
+      反事实缺少验证时间窗口
+    </code>
+    <code id="RM_CLAIM_MISSING_OBSERVABLE" severity="P1" action="DEGRADE">
+      反事实缺少可观测指标
+    </code>
+    <code id="RM_CAUSAL_QUERY_NON_IDENTIFIABLE" severity="P2" action="DEGRADE">
+      因果查询不可识别，必须显式标注UNKNOWN/NON_IDENTIFIABLE
+    </code>
+    <code id="RM_COUNTERFACTUAL_COVERAGE_LOW" severity="P1" action="DEGRADE">
+      关键claims的反事实覆盖率低于阈值
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>Counterfactual lacks observable or timeframe</item>
+    <item>Counterfactual asserts IDENTIFIED without valid justification</item>
+    <item>do(x) intervention poorly specified (no clear variable/value)</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="counterfactuals" type="array" required="true">
+      <item_schema>
+        <field name="claim_id" type="string" required="true"/>
+        <field name="intervention" type="string" required="true">do(X=value)格式</field>
+        <field name="expected_effect" type="string" required="true"/>
+        <field name="observables" type="array" items="string" min_items="1" required="true"/>
+        <field name="timeframe" type="string" required="true"/>
+        <field name="falsify_if" type="string" required="true"/>
+        <field name="identifiability" type="enum" values="IDENTIFIED,PARTIAL,UNKNOWN,NON_IDENTIFIABLE" required="true"/>
+        <field name="identifiability_notes" type="string"/>
+        <field name="assumptions" type="array" items="string"/>
+        <field name="reason_codes" type="array" items="string"/>
+      </item_schema>
+    </field>
+    <field name="stats" type="object" required="true">
+      {counterfactual_coverage, counterfactual_falsifiable, identifiability_rate}
+    </field>
+    <field name="degrade_recommended" type="boolean" required="true"/>
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

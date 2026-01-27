@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- RM Premortem Disconfirmers Skill v1.1 -->
+<!-- Position: S4 | Purpose: 执行Premortem并生成Disconfirmers -->
+
+<skill name="rm_premortem_disconfirmers_v1_1" version="1.1.0" lang="zh">
+  <metadata>
+    <author>RM Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Gary Klein - Performing a Project Premortem (HBR 2007)</ref>
+      <ref>Prospective Hindsight technique for risk identification</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    执行Premortem（假设论点已失败），并将failure modes强制映射到claim_id。
+
+    Premortem核心思想：
+    - 假设项目/论点已经失败
+    - 从未来回望，分析"是什么导致了失败"
+    - 比传统风险评估更有效地识别隐藏风险
+
+    生成可观测的disconfirmers与证据收集计划。
+  </purpose>
+
+  <inputs>
+    <input name="policy_ref" type="object" required="true">
+      {version, hash}
+    </input>
+    <input name="claim_registry" type="array" required="true">
+      ClaimSpec数组
+    </input>
+    <input name="counterfactuals_ref" type="array" required="true">
+      反事实分析结果
+    </input>
+    <input name="ecosystem_risks_ref" type="array" required="true">
+      Adner风险映射结果
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="InitiatePremortem">
+      <action>
+        设定Premortem场景：
+        "假设现在是18个月后，我们的投资论点完全失败了。
+         回顾这段时间，让我们分析是什么导致了失败。"
+
+        按5个类别生成failure modes：
+        1. INITIATIVE - 内部执行失败
+        2. CO_INNOVATION - 互补创新未达预期
+        3. ADOPTION_CHAIN - 采用链断裂
+        4. SUBSTITUTION - 被替代品颠覆
+        5. REGULATION_PLATFORM_RULES - 监管/平台规则变化
+      </action>
+    </step>
+
+    <step id="s2" name="GenerateInitiativeFailures">
+      <action>
+        基于initiative_risk claims生成失败模式：
+        - 技术开发未达规格
+        - 项目时间线延迟>6个月
+        - 成本超支>30%
+        - 关键技术人才流失
+        - 质量问题导致召回
+
+        每个failure_mode必须链接到具体claim_id
+      </action>
+    </step>
+
+    <step id="s3" name="GenerateCoInnovationFailures">
+      <action>
+        基于co_innovation_risk claims生成失败模式：
+        - 合作伙伴技术未达所需成熟度
+        - 关键供应商战略转向竞争对手
+        - 平台提供商更改API/条款
+        - 行业标准采用停滞
+        - 互补方资金链断裂
+
+        每个failure_mode必须链接到具体claim_id
+      </action>
+    </step>
+
+    <step id="s4" name="GenerateAdoptionChainFailures">
+      <action>
+        基于adoption_chain_risk claims生成失败模式：
+        - 渠道合作伙伴未完成认证
+        - 客户切换成本过高阻碍采用
+        - 网络效应未能规模激活
+        - 市场渗透速度落后预期50%
+        - 中间方利润不足导致退出
+
+        每个failure_mode必须链接到具体claim_id
+      </action>
+    </step>
+
+    <step id="s5" name="GenerateSubstitutionFailures">
+      <action>
+        基于substitute_analysis生成失败模式：
+        - 竞争对手推出优势替代品
+        - 价格/性能被颠覆
+        - 技术路线转向
+
+        链接到相关claims
+      </action>
+    </step>
+
+    <step id="s6" name="GenerateRegulationFailures">
+      <action>
+        基于监管依赖生成失败模式：
+        - 监管批准被拒绝/延迟
+        - 新法规增加合规成本
+        - 平台更改内容/访问政策
+        - 反垄断行动限制商业模式
+
+        链接到相关claims
+      </action>
+    </step>
+
+    <step id="s7" name="ValidateClaimLinking">
+      <action>
+        FOR EACH failure_mode:
+          IF LENGTH(linked_claim_ids) == 0:
+            1. 尝试基于关键词自动链接
+            2. 如果仍未链接，emit RM_PREMORTEM_NOT_LINKED_TO_CLAIMS
+      </action>
+      <on_unlinked reason_code="RM_PREMORTEM_NOT_LINKED_TO_CLAIMS">
+        Premortem失效模式未链接到任何claim → DEGRADE
+      </on_unlinked>
+    </step>
+
+    <step id="s8" name="CompileDisconfirmers">
+      <action>
+        FOR EACH failure_mode:
+          生成具体的disconfirmer：
+          - linked_claim_id: 关联的claim
+          - signal: 可观测信号/指标
+          - threshold_hint: 触发阈值提示（如 ">20%", "&lt;100"）
+          - timeframe: 观测时间窗口
+          - data_sources: 数据来源（至少1个）
+          - falsify_clause: 如果观测到X，则论点/claim需要重新评估
+
+        确保disconfirmers是具体的、可观测的、有时间限制的
+      </action>
+      <validation>
+        每个disconfirmer必须有: signal + timeframe + data_source
+        总数 >= policy.disconfirmers_min_count (默认6)
+      </validation>
+    </step>
+
+    <step id="s9" name="ComputeMetrics">
+      <action>
+        premortem_link_rate =
+          failure_modes_linked / failure_modes_total
+
+        disconfirmer_quality =
+          disconfirmers_with(signal AND timeframe AND data_source) / disconfirmers_total
+
+        category_coverage = 覆盖的类别数 / 5
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="premortem_link_rate" range="[0,1]">
+      <formula>failure_modes_linked / failure_modes_total</formula>
+      <description>失败模式链接率</description>
+    </score>
+    <score name="disconfirmer_quality" range="[0,1]">
+      <formula>disconfirmers_with(signal AND timeframe AND data_source) / disconfirmers_total</formula>
+      <description>Disconfirmer质量（具体性）</description>
+    </score>
+    <score name="category_coverage" range="[0,1]">
+      <formula>categories_covered / 5</formula>
+      <description>Premortem类别覆盖率</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="RM_PREMORTEM_NOT_LINKED_TO_CLAIMS" severity="P1" action="DEGRADE">
+      Premortem失败模式未链接到claim_id
+    </code>
+    <code id="RM_DISCONFIRMERS_TOO_FEW" severity="P2" action="DEGRADE">
+      Disconfirmers数量不足（无具体指标/时间/来源）
+    </code>
+    <code id="RM_PREMORTEM_CATEGORY_MISSING" severity="P2" action="WARN">
+      Premortem缺少必需的风险类别
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>Premortem failure mode not tied to any claim_id</item>
+    <item>Disconfirmers are generic (no metric/time/source)</item>
+    <item>Missing entire risk category in premortem</item>
+    <item>Failure mode probability estimates not provided</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="failure_modes" type="array" required="true">
+      <item_schema>
+        <field name="mode_id" type="string" required="true">FM_{TICKER}_{NNN}</field>
+        <field name="category" type="enum" values="INITIATIVE,CO_INNOVATION,ADOPTION_CHAIN,SUBSTITUTION,REGULATION_PLATFORM_RULES" required="true"/>
+        <field name="linked_claim_ids" type="array" items="string" min_items="1" required="true"/>
+        <field name="narrative" type="string" required="true">失败场景描述</field>
+        <field name="probability_estimate" type="float" range="[0,1]"/>
+        <field name="impact_severity" type="enum" values="low,medium,high,critical"/>
+      </item_schema>
+    </field>
+    <field name="disconfirmers" type="array" required="true" min_items="6">
+      <item_schema>
+        <field name="disconfirmer_id" type="string" required="true"/>
+        <field name="linked_claim_id" type="string" required="true"/>
+        <field name="signal" type="string" required="true">可观测信号</field>
+        <field name="threshold_hint" type="string" required="true">阈值提示</field>
+        <field name="timeframe" type="string" required="true">时间窗口</field>
+        <field name="data_sources" type="array" items="string" min_items="1" required="true"/>
+        <field name="falsify_clause" type="string" required="true">证伪逻辑</field>
+      </item_schema>
+    </field>
+    <field name="stats" type="object" required="true">
+      {premortem_link_rate, disconfirmer_quality, category_coverage}
+    </field>
+    <field name="degrade_recommended" type="boolean" required="true"/>
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

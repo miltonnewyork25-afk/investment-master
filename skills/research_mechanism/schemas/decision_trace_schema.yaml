@@ -1,0 +1,366 @@
+# Decision Trace Schema v1.1
+# Purpose: 记录RM Agent完整决策轨迹，支持审计和回放
+
+schema_version: "1.1.0"
+schema_type: "decision_trace"
+
+decision_trace:
+  type: object
+  required:
+    - run_id
+    - timestamp
+    - policy_pack_version
+    - policy_pack_hash
+    - skill_versions
+    - pipeline_execution
+    - confidence_chain
+    - degrade_decision
+    - artifacts_written
+  properties:
+    run_id:
+      type: string
+      pattern: "^RM_[A-Z]+_\\d{8}_\\d{6}_[a-f0-9]{8}$"
+      description: "唯一运行标识: RM_{TICKER}_{YYYYMMDD}_{HHMMSS}_{hash8}"
+      example: "RM_TSLA_20260127_143052_a1b2c3d4"
+
+    timestamp:
+      type: string
+      format: "date-time"
+      description: "ISO 8601格式时间戳"
+
+    policy_pack_version:
+      type: string
+      pattern: "^\\d+\\.\\d+\\.\\d+$"
+      description: "Policy Pack版本号"
+      example: "1.1.0"
+
+    policy_pack_hash:
+      type: string
+      pattern: "^[a-f0-9]{64}$"
+      description: "Policy Pack内容SHA-256哈希"
+
+    skill_versions:
+      type: object
+      description: "各skill版本快照"
+      properties:
+        rm_policy_pack_loader:
+          type: string
+        rm_claim_and_dag_builder:
+          type: string
+        rm_counterfactual_compiler:
+          type: string
+        rm_adner_risk_mapper:
+          type: string
+        rm_premortem_disconfirmers:
+          type: string
+        rm_trigger_and_memo_assembler:
+          type: string
+      additionalProperties:
+        type: string
+
+    upstream_packages:
+      type: object
+      description: "上游包版本和哈希"
+      properties:
+        ecosystem_package:
+          type: object
+          properties:
+            version:
+              type: string
+            hash:
+              type: string
+            received_at:
+              type: string
+              format: date-time
+        data_confidence_report:
+          type: object
+          properties:
+            version:
+              type: string
+            hash:
+              type: string
+            received_at:
+              type: string
+              format: date-time
+
+    pipeline_execution:
+      type: array
+      description: "Pipeline步骤执行记录"
+      items:
+        type: object
+        required:
+          - step_id
+          - skill_ref
+          - status
+          - started_at
+          - completed_at
+        properties:
+          step_id:
+            type: string
+            enum: ["S0", "S1", "S2", "S3", "S4", "S5"]
+          skill_ref:
+            type: string
+            description: "Skill文件引用"
+          status:
+            type: string
+            enum: ["SUCCESS", "PARTIAL", "FAILED", "SKIPPED"]
+          started_at:
+            type: string
+            format: date-time
+          completed_at:
+            type: string
+            format: date-time
+          latency_ms:
+            type: integer
+            minimum: 0
+          token_usage:
+            type: object
+            properties:
+              input_tokens:
+                type: integer
+              output_tokens:
+                type: integer
+              total_tokens:
+                type: integer
+          reason_codes_emitted:
+            type: array
+            items:
+              type: string
+          outputs_generated:
+            type: array
+            items:
+              type: string
+            description: "该步骤生成的输出artifact名称"
+
+    tool_calls:
+      type: array
+      description: "外部工具调用记录"
+      items:
+        type: object
+        required:
+          - tool_name
+          - called_at
+          - status
+        properties:
+          tool_name:
+            type: string
+          called_at:
+            type: string
+            format: date-time
+          parameters:
+            type: object
+            additionalProperties: true
+          status:
+            type: string
+            enum: ["SUCCESS", "FAILED", "TIMEOUT"]
+          latency_ms:
+            type: integer
+          error_message:
+            type: string
+
+    confidence_chain:
+      type: object
+      description: "置信度传递链"
+      required:
+        - upstream_confidence_cap
+        - rm_internal_confidence
+        - rm_confidence_cap
+      properties:
+        upstream_confidence_cap:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: "上游置信度上限"
+        rm_internal_confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: "RM内部计算置信度"
+        rm_confidence_cap:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: "最终置信度上限 = min(upstream, internal)"
+        confidence_breakdown:
+          type: object
+          properties:
+            evidence_coverage:
+              type: number
+              description: "A/B级证据覆盖率 (weight: 0.40)"
+            falsifiability:
+              type: number
+              description: "可证伪性比例 (weight: 0.35)"
+            invariant_pass_rate:
+              type: number
+              description: "不变量通过率 (weight: 0.15)"
+            baseline:
+              type: number
+              description: "基线分 (weight: 0.10, fixed: 0.5)"
+
+    degrade_decision:
+      type: object
+      description: "降级决策记录"
+      required:
+        - degrade_mode
+        - triggered_rules
+      properties:
+        degrade_mode:
+          type: boolean
+          description: "是否进入DEGRADE模式"
+        triggered_rules:
+          type: array
+          items:
+            type: object
+            properties:
+              rule_id:
+                type: string
+              condition:
+                type: string
+              actual_value:
+                type: string
+              threshold:
+                type: string
+          description: "触发降级的规则列表"
+        forbidden_content_detected:
+          type: array
+          items:
+            type: object
+            properties:
+              content_type:
+                type: string
+                enum: ["phrase", "section"]
+              original:
+                type: string
+              location:
+                type: string
+              action_taken:
+                type: string
+                enum: ["removed", "rewritten", "blocked"]
+          description: "检测到的禁止内容"
+
+    invariants_results:
+      type: array
+      description: "不变量检查结果"
+      items:
+        type: object
+        required:
+          - invariant_id
+          - status
+        properties:
+          invariant_id:
+            type: string
+          status:
+            type: string
+            enum: ["PASS", "FAIL", "SKIP"]
+          details:
+            type: string
+          affected_items:
+            type: array
+            items:
+              type: string
+
+    reason_codes_all:
+      type: array
+      description: "所有累积的reason codes"
+      items:
+        type: string
+        pattern: "^RM_[A-Z_]+$"
+
+    artifacts_written:
+      type: array
+      description: "写入的artifact列表"
+      items:
+        type: object
+        required:
+          - artifact_name
+          - path
+          - written_at
+        properties:
+          artifact_name:
+            type: string
+          path:
+            type: string
+          written_at:
+            type: string
+            format: date-time
+          size_bytes:
+            type: integer
+          hash:
+            type: string
+            pattern: "^[a-f0-9]{64}$"
+
+    metrics_summary:
+      type: object
+      description: "关键指标汇总"
+      properties:
+        total_claims:
+          type: integer
+        critical_claims:
+          type: integer
+        counterfactuals_generated:
+          type: integer
+        ecosystem_risks_mapped:
+          type: integer
+        failure_modes_identified:
+          type: integer
+        disconfirmers_generated:
+          type: integer
+        triggers_generated:
+          type: integer
+        uncertainty_matrix_rows:
+          type: integer
+
+    total_latency_ms:
+      type: integer
+      minimum: 0
+      description: "总执行时间（毫秒）"
+
+    total_token_usage:
+      type: object
+      properties:
+        input_tokens:
+          type: integer
+        output_tokens:
+          type: integer
+        total_tokens:
+          type: integer
+
+# 示例
+example:
+  run_id: "RM_TSLA_20260127_143052_a1b2c3d4"
+  timestamp: "2026-01-27T14:30:52Z"
+  policy_pack_version: "1.1.0"
+  policy_pack_hash: "abc123...def456"
+  skill_versions:
+    rm_policy_pack_loader: "1.1.0"
+    rm_claim_and_dag_builder: "1.1.0"
+    rm_counterfactual_compiler: "1.1.0"
+    rm_adner_risk_mapper: "1.1.0"
+    rm_premortem_disconfirmers: "1.1.0"
+    rm_trigger_and_memo_assembler: "1.1.0"
+  pipeline_execution:
+    - step_id: "S0"
+      skill_ref: "rm_policy_pack_loader_v1.1.skill.xml"
+      status: "SUCCESS"
+      started_at: "2026-01-27T14:30:52Z"
+      completed_at: "2026-01-27T14:30:53Z"
+      latency_ms: 1200
+      reason_codes_emitted: []
+  confidence_chain:
+    upstream_confidence_cap: 0.72
+    rm_internal_confidence: 0.68
+    rm_confidence_cap: 0.68
+    confidence_breakdown:
+      evidence_coverage: 0.65
+      falsifiability: 0.70
+      invariant_pass_rate: 0.95
+      baseline: 0.50
+  degrade_decision:
+    degrade_mode: false
+    triggered_rules: []
+  reason_codes_all: ["RM_COUNTERFACTUAL_COVERAGE_LOW"]
+  artifacts_written:
+    - artifact_name: "thesis_memo"
+      path: "rm_output/thesis_memo_TSLA_20260127.yaml"
+      written_at: "2026-01-27T14:35:20Z"
+  total_latency_ms: 268000

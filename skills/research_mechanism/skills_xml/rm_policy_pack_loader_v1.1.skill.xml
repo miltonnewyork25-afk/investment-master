@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- RM Policy Pack Loader Skill v1.1 -->
+<!-- Position: S0 | Purpose: 加载并冻结Policy Pack -->
+
+<skill name="rm_policy_pack_loader_v1_1" version="1.1.0" lang="zh">
+  <metadata>
+    <author>RM Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Deterministic configuration freeze for replayability</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    加载并冻结 RM Policy Pack（version+hash），保证同run_id内可重放；
+    输出policy_ref供后续技能引用。违反hash一致性时立即ABORT。
+  </purpose>
+
+  <inputs>
+    <input name="run_id" type="uuid" required="true">
+      本次运行的唯一标识符
+    </input>
+    <input name="policy_pack_path" type="string" required="true" default="policies/rm_policy_pack_v1.1.yaml">
+      Policy Pack文件路径
+    </input>
+    <input name="expected_hash" type="string" required="false">
+      预期hash（用于replay验证）
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="LoadPolicyFile">
+      <action>
+        1. 读取policy_pack_path指定的YAML文件
+        2. 解析为结构化对象
+        3. 验证必需字段存在：policy_pack.name, policy_pack.version, policy_pack.hash
+      </action>
+      <on_error reason_code="RM_POLICY_LOAD_FAILED">
+        文件不存在或解析失败 → ABORT
+      </on_error>
+    </step>
+
+    <step id="s2" name="ComputeAndValidateHash">
+      <action>
+        1. 序列化policy内容为canonical JSON
+        2. 计算SHA256哈希
+        3. 格式化为 "sha256:{64位hex}"
+        4. 如果提供了expected_hash，进行比对
+      </action>
+      <on_mismatch reason_code="RM_POLICY_HASH_MISMATCH">
+        哈希不匹配 → ABORT（违反可重放性）
+      </on_mismatch>
+    </step>
+
+    <step id="s3" name="FreezePolicy">
+      <action>
+        1. 绑定 (run_id, policy_hash) 到blackboard
+        2. 记录 frozen_at 时间戳
+        3. 标记policy为本次运行期间不可变
+      </action>
+      <invariant>
+        同一run_id内，任何后续skill看到的policy_hash必须与此处一致
+      </invariant>
+    </step>
+
+    <step id="s4" name="ValidateCompatibility">
+      <action>
+        1. 检查policy_pack.compatibility.qg_min_version
+        2. 检查policy_pack.compatibility.eval_min_version
+        3. 确保当前环境满足最低版本要求
+      </action>
+      <on_incompatible reason_code="RM_POLICY_VERSION_INCOMPATIBLE">
+        版本不兼容 → ABORT
+      </on_incompatible>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="policy_integrity" range="[0,1]">
+      <formula>1 if (loaded AND frozen AND hash_consistent) else 0</formula>
+      <description>策略完整性得分</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="RM_POLICY_LOAD_FAILED" severity="P0" action="ABORT">
+      Policy pack文件加载失败
+    </code>
+    <code id="RM_POLICY_HASH_MISMATCH" severity="P0" action="ABORT">
+      同run_id内policy_hash变化，违反可重放性
+    </code>
+    <code id="RM_POLICY_VERSION_INCOMPATIBLE" severity="P0" action="ABORT">
+      Policy版本与QG/Eval不兼容
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>policy_hash changes within same run_id</item>
+    <item>policy_pack missing required fields (name/version/hash)</item>
+    <item>policy_pack.compatibility version mismatch</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="policy_ref" type="object" required="true">
+      <property name="version" type="string"/>
+      <property name="hash" type="string"/>
+      <property name="frozen_at" type="datetime"/>
+    </field>
+    <field name="policy_pack_version" type="string" required="true"/>
+    <field name="policy_pack_hash" type="string" required="true"/>
+    <field name="verdict" type="enum" values="PASS,FAIL" required="true"/>
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

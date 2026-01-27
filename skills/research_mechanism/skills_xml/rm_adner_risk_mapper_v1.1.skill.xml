@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- RM Adner Risk Mapper Skill v1.1 -->
+<!-- Position: S3 | Purpose: 映射Adner三类生态风险 -->
+
+<skill name="rm_adner_risk_mapper_v1_1" version="1.1.0" lang="zh">
+  <metadata>
+    <author>RM Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Ron Adner - The Wide Lens: A New Strategy for Innovation</ref>
+      <ref>Adner's Ecosystem Risk Framework: Initiative, Co-Innovation, Adoption Chain</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    将Adner三类生态风险映射到关键claims与依赖节点。
+
+    三类风险：
+    1. Initiative Risk: 内部执行风险（build/spec/time/cost）
+    2. Co-Innovation Risk: 依赖外部互补创新达到所需成熟度
+    3. Adoption Chain Risk: 依赖中间方采用才能实现终端客户价值
+
+    为每个风险输出：success_criteria + leading_signals + failure_triggers
+  </purpose>
+
+  <inputs>
+    <input name="policy_ref" type="object" required="true">
+      {version, hash}
+    </input>
+    <input name="ecosystem_package_ref" type="EcosystemPackage" required="true">
+      来自Ecosystem Graph Agent
+    </input>
+    <input name="claim_registry" type="array" required="true">
+      ClaimSpec数组
+    </input>
+    <input name="rm_confidence_cap" type="float" required="true" range="[0,1]">
+      当前置信度上限
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="ValidateRiskTypeMapping">
+      <action>
+        FOR EACH claim WHERE criticality == CRITICAL:
+          验证claim.risk_type存在且有效：
+          - initiative_risk
+          - co_innovation_risk
+          - adoption_chain_risk
+
+          IF risk_type缺失或无效:
+            emit RM_ECOSYSTEM_RISK_UNMAPPED
+      </action>
+    </step>
+
+    <step id="s2" name="MapInitiativeRisks">
+      <action>
+        FOR EACH claim WHERE risk_type == initiative_risk:
+          生成风险计划：
+          - dependency: 内部项目/能力
+          - success_criteria: 内部执行里程碑
+            例：技术规格达成、成本目标、时间节点
+          - leading_signals: 领先指标
+            例：研发进度、人才保留率、专利申请数
+          - failure_triggers: 失败触发器
+            例：关键里程碑延迟>6个月、成本超支>30%
+          - confidence: 基于证据的置信度
+      </action>
+    </step>
+
+    <step id="s3" name="MapCoInnovationRisks">
+      <action>
+        FOR EACH claim WHERE risk_type == co_innovation_risk:
+          生成风险计划：
+          - dependency: 外部互补方（供应商、平台、标准）
+          - success_criteria: 互补创新成熟度
+            例：合作伙伴技术达TRL-9、API稳定版发布
+          - leading_signals: 领先指标
+            例：合作伙伴研发投入、beta测试进展
+          - failure_triggers: 失败触发器
+            例：合作伙伴战略转向、技术路线变更
+          - confidence: 基于证据的置信度
+      </action>
+    </step>
+
+    <step id="s4" name="MapAdoptionChainRisks">
+      <action>
+        FOR EACH claim WHERE risk_type == adoption_chain_risk:
+          生成风险计划：
+          - dependency: 中间采用方（渠道、监管、生态参与者）
+          - adoption_steps: 明确的采用链步骤
+            例：Step1-渠道认证 → Step2-首批客户 → Step3-规模推广
+          - success_criteria: 采用里程碑
+            例：渠道覆盖率>50%、终端用户DAU>100万
+          - leading_signals: 领先指标
+            例：渠道签约数、早期采用者反馈
+          - failure_triggers: 失败触发器
+            例：渠道流失率>20%、采用速度落后预期>50%
+          - confidence: 基于证据的置信度
+
+          IF adoption_steps缺失:
+            emit RM_ADOPTION_CHAIN_UNSPECIFIED
+      </action>
+    </step>
+
+    <step id="s5" name="CrossLinkToEcosystem">
+      <action>
+        将每个ecosystem_risk链接到：
+        1. ecosystem_package_ref中的相关节点
+        2. critical_edges中的依赖边
+        3. 相关的evidence_refs
+      </action>
+    </step>
+
+    <step id="s6" name="ComputeCoverage">
+      <action>
+        adner_mapping_coverage =
+          critical_claims_with_risk_plan / critical_claims_total
+
+        risk_trigger_completeness =
+          risks_with(failure_triggers AND leading_signals) / risks_total
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="adner_mapping_coverage" range="[0,1]">
+      <formula>critical_claims_with_risk_plan / critical_claims_total</formula>
+      <description>关键claims的Adner风险映射覆盖率</description>
+    </score>
+    <score name="risk_trigger_completeness" range="[0,1]">
+      <formula>risks_with(failure_triggers AND leading_signals) / risks_total</formula>
+      <description>风险计划的触发器完整度</description>
+    </score>
+    <score name="adoption_chain_clarity" range="[0,1]">
+      <formula>adoption_chain_risks_with_steps / adoption_chain_risks_total</formula>
+      <description>采用链风险的步骤清晰度</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="RM_ECOSYSTEM_RISK_UNMAPPED" severity="P1" action="DEGRADE">
+      关键claim未映射Adner风险类型和验证计划
+    </code>
+    <code id="RM_ADOPTION_CHAIN_UNSPECIFIED" severity="P1" action="DEGRADE">
+      adoption_chain_risk缺少明确的采用步骤
+    </code>
+    <code id="RM_RISK_TRIGGER_INCOMPLETE" severity="P2" action="WARN">
+      风险计划缺少failure_triggers或leading_signals
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>adoption_chain_risk without explicit adopter steps</item>
+    <item>risk plan lacks success_criteria or failure_triggers</item>
+    <item>co_innovation dependency not linked to ecosystem node</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="ecosystem_risks" type="array" required="true">
+      <item_schema>
+        <field name="risk_id" type="string" required="true"/>
+        <field name="type" type="enum" values="initiative_risk,co_innovation_risk,adoption_chain_risk" required="true"/>
+        <field name="linked_claim_id" type="string" required="true"/>
+        <field name="dependency" type="string" required="true"/>
+        <field name="adoption_steps" type="array" items="string">仅adoption_chain_risk需要</field>
+        <field name="success_criteria" type="array" items="string" required="true"/>
+        <field name="leading_signals" type="array" items="string" required="true"/>
+        <field name="failure_triggers" type="array" items="string" required="true"/>
+        <field name="confidence" type="float" range="[0,1]" required="true"/>
+        <field name="reason_codes" type="array" items="string"/>
+      </item_schema>
+    </field>
+    <field name="stats" type="object" required="true">
+      {adner_mapping_coverage, risk_trigger_completeness, adoption_chain_clarity}
+    </field>
+    <field name="degrade_recommended" type="boolean" required="true"/>
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- RM Trigger and Memo Assembler Skill v1.1 -->
+<!-- Position: S5 | Purpose: 组装MonitoringTriggers + ThesisMemo -->
+
+<skill name="rm_trigger_and_memo_assembler_v1_1" version="1.1.0" lang="zh">
+  <metadata>
+    <author>RM Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Deterministic DEGRADE template enforcement</ref>
+      <ref>OWASP LLM Security - output sanitization</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    组装最终ThesisMemo，包含：
+    - 机制链（mechanism_chain）
+    - 假设列表（hypothesis_list）
+    - 反事实分析引用
+    - 反证/disconfirmers引用
+    - 生态风险引用
+    - 不确定性矩阵
+    - 监控触发器
+
+    按policy的deterministic rules强制DEGRADE模板：
+    - DEGRADE模式下禁止投资结论/价格目标
+    - 禁止使用forbidden_phrases
+  </purpose>
+
+  <inputs>
+    <input name="policy_ref" type="object" required="true">
+      {version, hash}
+    </input>
+    <input name="claim_registry" type="array" required="true">
+      ClaimSpec数组
+    </input>
+    <input name="mechanism_dag_ref" type="object" required="true">
+      MechanismDAG
+    </input>
+    <input name="counterfactuals_ref" type="array" required="true">
+      反事实分析
+    </input>
+    <input name="ecosystem_risks_ref" type="array" required="true">
+      Adner风险映射
+    </input>
+    <input name="disconfirmers_ref" type="array" required="true">
+      Disconfirmers
+    </input>
+    <input name="upstream_confidence_cap" type="float" required="true" range="[0,1]"/>
+    <input name="rm_internal_confidence" type="float" required="true" range="[0,1]"/>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="CompileMonitoringTriggers">
+      <action>
+        FOR EACH claim IN claim_registry:
+          FOR EACH observable IN claim.observables:
+            创建trigger：
+            - trigger_id: TRG_{TICKER}_{TYPE}_{NNN}
+            - linked_claim_id: claim.claim_id
+            - metric: observable
+            - threshold: 从claim.falsify_if提取或使用默认
+            - window: claim.timeframe
+            - data_sources: 从evidence_refs推断或手动指定
+            - action: 根据claim.criticality选择
+              CRITICAL → REASSESS_THESIS / ESCALATE_QG
+              IMPORTANT → REFETCH_DATA / UPDATE_WATCHLIST
+              OPTIONAL → PAUSE_CONCLUSION
+
+        FOR EACH disconfirmer IN disconfirmers_ref:
+          补充trigger如果不重复
+
+        确保总数 >= policy.triggers_min_count (默认6)
+      </action>
+      <validation>
+        每个trigger必须有: metric + threshold + window + data_sources + action
+      </validation>
+    </step>
+
+    <step id="s2" name="BuildUncertaintyMatrix">
+      <action>
+        从以下来源构建uncertainty_matrix：
+        1. 低置信度claims
+        2. 反事实的UNKNOWN/NON_IDENTIFIABLE项
+        3. 缺失证据的关键claims
+        4. Premortem高概率失败模式
+
+        每行包含：
+        - hypothesis: 不确定假设
+        - how_to_verify: 验证方法
+        - data_sources: 数据来源
+        - eta: 预期解决时间（可选）
+
+        最小行数 >= policy.uncertainty_matrix_min_rows (默认3)
+      </action>
+    </step>
+
+    <step id="s3" name="ComputeFinalConfidence">
+      <action>
+        rm_confidence_cap = min(upstream_confidence_cap, rm_internal_confidence)
+
+        记录confidence_breakdown：
+        - upstream_cap
+        - evidence_coverage
+        - falsifiability
+        - invariant_pass_rate
+        - trigger_completeness
+      </action>
+    </step>
+
+    <step id="s4" name="ApplyKillSwitchRules">
+      <action>
+        评估policy.deterministic_kill_switch.rules：
+
+        IF ab_coverage_critical &lt; policy.ab_coverage_min_on_critical:
+          degrade_mode = true
+          emit RM_EVIDENCE_GAP_CRITICAL
+
+        IF falsifiability_critical &lt; policy.falsifiability_min_on_critical:
+          degrade_mode = true
+          emit RM_FALSIFIABILITY_MISSING
+
+        IF any_critical_claim_missing_observable:
+          degrade_mode = true
+          emit RM_CLAIM_MISSING_OBSERVABLE
+
+        IF premortem_unlinked_exists:
+          degrade_mode = true
+          emit RM_PREMORTEM_NOT_LINKED_TO_CLAIMS
+
+        IF adner_risk_unmapped_exists:
+          degrade_mode = true
+          emit RM_ECOSYSTEM_RISK_UNMAPPED
+      </action>
+    </step>
+
+    <step id="s5" name="EnforceDegradeTemplate">
+      <action>
+        IF degrade_mode == true:
+          1. 强制allowed_sections只包含：
+             - hypothesis_list
+             - monitoring_triggers
+             - uncertainty_matrix
+             - evidence_gaps
+             - next_actions
+
+          2. 强制blocked_sections不出现：
+             - price_target
+             - buy_sell_recommendation
+             - strong_conclusion
+
+          3. 扫描并移除forbidden_phrases：
+             中文: "强烈建议买入", "确定会", "必然", "目标价", "无风险"
+             英文: "strong buy", "guaranteed", "will definitely", "target price"
+
+          4. 如果发现forbidden内容:
+             emit RM_DEGRADE_MODE_ENFORCED
+             重写为中性语言
+      </action>
+    </step>
+
+    <step id="s6" name="AssembleThesisMemo">
+      <action>
+        构建最终thesis_memo：
+        {
+          core_thesis: 核心论点陈述,
+          mechanism_chain: DAG边的有序描述,
+          claim_registry_ref: pointer to claim_registry,
+          counterfactuals_ref: pointer to counterfactuals,
+          disconfirmers_ref: pointer to disconfirmers,
+          ecosystem_risks_ref: pointer to ecosystem_risks,
+          hypothesis_list: 假设列表（与claims对应）,
+          monitoring_triggers_ref: pointer to triggers,
+          uncertainty_matrix: 不确定性矩阵,
+          rm_confidence_cap: 最终置信度上限,
+          degrade_mode: true/false,
+          reason_codes: 所有累积的codes,
+          next_actions: 建议的下一步
+        }
+      </action>
+    </step>
+
+    <step id="s7" name="GenerateDecisionTrace">
+      <action>
+        创建decision_trace_fragment：
+        - run_id
+        - policy_pack_version
+        - policy_pack_hash
+        - skill_versions: 所有skill的版本
+        - tool_calls: 调用的工具
+        - token_usage: token消耗
+        - latency_ms: 延迟
+        - rm_confidence_cap
+        - degrade_mode
+        - reason_codes_all
+        - artifacts_written
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="trigger_completeness" range="[0,1]">
+      <formula>triggers_with(threshold AND window AND sources) / triggers_total</formula>
+      <description>触发器完整度</description>
+    </score>
+    <score name="uncertainty_matrix_ok" range="[0,1]">
+      <formula>1 if (rows >= 3 AND required_columns present) else 0</formula>
+      <description>不确定性矩阵合格</description>
+    </score>
+    <score name="rm_output_compliance" range="[0,1]">
+      <formula>1 if (degrade_mode implies no forbidden sections/phrases) else 0</formula>
+      <description>输出合规性</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="RM_TRIGGER_INCOMPLETE" severity="P2" action="DEGRADE">
+      监控触发器缺少threshold/window/sources
+    </code>
+    <code id="RM_UNCERTAINTY_MATRIX_MISSING" severity="P2" action="DEGRADE">
+      不确定性矩阵缺失或行数不足
+    </code>
+    <code id="RM_DEGRADE_MODE_ENFORCED" severity="P2" action="DEGRADE">
+      系统强制DEGRADE模式，输出不包含投资结论
+    </code>
+    <code id="RM_FORBIDDEN_PHRASE_DETECTED" severity="P1" action="DEGRADE">
+      输出包含禁止的投资建议短语
+    </code>
+    <code id="RM_EVIDENCE_GAP_CRITICAL" severity="P1" action="DEGRADE">
+      关键claims证据覆盖不足
+    </code>
+    <code id="RM_CLAIM_MISSING_OBSERVABLE" severity="P1" action="DEGRADE">
+      关键claims缺少可观测指标
+    </code>
+    <code id="RM_PREMORTEM_NOT_LINKED_TO_CLAIMS" severity="P1" action="DEGRADE">
+      Premortem失败模式未链接到claims
+    </code>
+    <code id="RM_ECOSYSTEM_RISK_UNMAPPED" severity="P1" action="DEGRADE">
+      Adner风险未映射
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>Trigger missing threshold/window/source</item>
+    <item>DEGRADE output contains forbidden sections/phrases</item>
+    <item>Uncertainty matrix missing or too few rows</item>
+    <item>thesis_memo missing required sections</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="thesis_memo" type="object" required="true">
+      符合rm_thesis_memo_schema.yaml
+    </field>
+    <field name="monitoring_triggers" type="array" required="true" min_items="6">
+      <item_schema>
+        <field name="trigger_id" type="string" required="true"/>
+        <field name="linked_claim_id" type="string" required="true"/>
+        <field name="metric" type="string" required="true"/>
+        <field name="threshold" type="string" required="true"/>
+        <field name="window" type="string" required="true"/>
+        <field name="data_sources" type="array" items="string" min_items="1" required="true"/>
+        <field name="action" type="enum" values="REFETCH_DATA,REASSESS_THESIS,ESCALATE_QG,UPDATE_WATCHLIST,PAUSE_CONCLUSION" required="true"/>
+        <field name="notes" type="string"/>
+      </item_schema>
+    </field>
+    <field name="decision_trace_fragment" type="object" required="true">
+      符合decision_trace_schema.yaml
+    </field>
+    <field name="rm_confidence_cap" type="float" range="[0,1]" required="true"/>
+    <field name="degrade_mode" type="boolean" required="true"/>
+    <field name="reason_codes_all" type="array" items="string" required="true">
+      所有累积的reason codes
+    </field>
+  </output_contract>
+</skill>
