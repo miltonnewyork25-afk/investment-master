@@ -1,0 +1,281 @@
+# Ecosystem Graph Agent v2.3
+# 生态系统图谱分析智能体
+
+agent:
+  id: ecosystem_graph_agent
+  version: "2.3"
+  name: "Ecosystem Graph Agent"
+  description: "构建完整的生态系统图谱：玩家、流动、规则、竞争、替代、颠覆、邻接"
+  format: "XML"
+
+---
+
+# 理论基础
+theory_foundation:
+  primary:
+    - name: "Value Net + PARTS"
+      author: "Brandenburger & Nalebuff"
+      application: "Skill1-2: 角色识别、流动映射、规则执行字段"
+      ref: "https://www.mindtools.com/abqnjon/the-value-net-model/"
+
+    - name: "Five Forces"
+      author: "Porter"
+      application: "Skill3-4: 竞争表面、替代分析(动态6因素)"
+      ref: "https://www.isc.hbs.edu/strategy/business-strategy/Pages/the-five-forces.aspx"
+
+    - name: "Disruptive Innovation"
+      author: "Christensen"
+      application: "Skill5: 颠覆资格判定(foothold+upmarket+disqualifiers)"
+      ref: "https://www.christenseninstitute.org/theory/disruptive-innovation/"
+
+  secondary:
+    - "Platform Economics"
+    - "Jobs-to-be-Done (Christensen/Ulwick)"
+    - "Constraint-Based Strategy"
+    - "GDPR Data Rights (Art.20)"
+
+---
+
+# v2.2 → v2.3 核心升级
+version_upgrades:
+  time_dimension:
+    description: "时间成为一等公民"
+    implementation:
+      - "所有inputs必填asof(YYYY-MM-DD)"
+      - "关键边/判断支持valid_from/valid_to"
+      - "过期数据触发ECO_STALE reason_code"
+
+  rules_parts_compliance:
+    description: "规则边符合PARTS框架"
+    required_fields:
+      - owner: "谁制定规则"
+      - enforcer: "谁执行规则"
+      - mechanism: "如何约束(技术/合同/法律/社会)"
+      - reversibility: "易逆/难逆/不可逆"
+      - rights_scope: "适用于data_rights(portability/access/reuse/exclusivity)"
+      - impact_surface: "适用于pricing_rules(ceiling/channel/margin)"
+
+  substitute_dynamic_factors:
+    description: "替代从静态4因子→动态6因子"
+    factors:
+      gate: "same_job (≥2为门槛)"
+      core: ["price_performance", "switching_cost", "ceiling_effect"]
+      dynamic: ["trajectory", "trigger_events"]
+    enforcement: "trajectory/trigger无数据→reason_code+降级(不硬编)"
+
+  disruption_strict_qualification:
+    description: "颠覆更严格"
+    requirements:
+      - foothold: "必须验证low_end或new_market"
+      - upmarket: "必须有向上攻击证据"
+    disqualifiers:
+      - DQ1: "sustaining_innovation"
+      - DQ2: "high_end_entry"
+      - DQ3: "feature_addition"
+      - DQ4: "horizontal_move"
+      - DQ5: "incumbent_can_respond"
+      - DQ6: "regulatory_protection"
+    enforcement: "任一DQ命中→NOT_DISRUPTION"
+
+  confidence_propagation:
+    description: "置信度传播内置"
+    rule: "downstream_confidence ≤ min(upstream_confidences)"
+    implementation: "每个skill输出confidence + confidence_cap"
+
+  invariants_as_tests:
+    description: "一致性检查作为自动测试规则"
+    implementation: "每个skill含<invariants>节，可直接作为验证规则"
+
+---
+
+# Skill 依赖图
+skill_dependency:
+  graph: |
+    Skill1 (Role Map)
+       ↓
+    Skill2 (Flow & Rules)
+       ↓
+    Skill3 (Competition Surface)
+       ↓
+    Skill4 (Substitute Classifier)
+       ↓
+    Skill5 (Disruption Qualification)
+       ↓
+    Skill6 (Adjacency by Shared Constraint)
+
+  execution_order: [1, 2, 3, 4, 5, 6]
+
+  confidence_flow: "每层confidence_cap ≤ min(上游)"
+
+---
+
+# 6 Core Skills (v2.3 XML)
+skills:
+  - id: eco_role_map_v2_3
+    file: "eco_role_map_v2.3.skill.xml"
+    position: 1
+    purpose: "玩家分区(Value Net) + PARTS的Added Value假设"
+    key_outputs: ["entities", "roles", "added_value_hypotheses", "claims"]
+    invariants: ["每个canonical_id必须有≥1个role", "每个role必须有evidence_ref"]
+
+  - id: eco_flow_rules_graph_v2_3
+    file: "eco_flow_rules_graph_v2.3.skill.xml"
+    position: 2
+    purpose: "4类流动边 + 11类规则边(PARTS执行字段) + 咽喉点"
+    key_outputs: ["graph", "rule_owners", "chokepoints"]
+    invariants: ["Role Map每个entity在此≥1条边", "rule边必须有owner+enforcer+mechanism"]
+
+  - id: eco_competition_surface_v2_3
+    file: "eco_competition_surface_v2.3.skill.xml"
+    position: 3
+    purpose: "5维度竞争表面(budget/workflow/distribution/talent/attention)"
+    key_outputs: ["competition_surface", "ci_score", "hotspots"]
+    invariants: ["Competitor角色必须出现在matrix", "overlap>0.5必须有≥2条evidence"]
+
+  - id: eco_substitute_classifier_v2_3
+    file: "eco_substitute_classifier_v2.3.skill.xml"
+    position: 4
+    purpose: "6因素替代判定(same_job硬门禁 + 动态trajectory/trigger)"
+    key_outputs: ["competitors", "substitutes", "false_positives"]
+    invariants: ["same_job<2不可判为substitute", "SS>0.6必须有trajectory或trigger数据"]
+
+  - id: eco_disruption_qualification_v2_3
+    file: "eco_disruption_qualification_v2.3.skill.xml"
+    position: 5
+    purpose: "颠覆资格审查(foothold+upmarket+6个disqualifiers)"
+    key_outputs: ["disruption_assessment", "true_disruptors", "false_alarms", "watch_list"]
+    invariants: ["无foothold不可判为disruption", "触发DQ不可判为QUALIFIED"]
+
+  - id: eco_adjacency_shared_constraint_v2_3
+    file: "eco_adjacency_shared_constraint_v2.3.skill.xml"
+    position: 6
+    purpose: "共享约束邻接(signal_path + falsifier必填)"
+    key_outputs: ["adjacency_watchlist", "monitoring_triggers", "strategic_map"]
+    invariants: ["每个watchlist项必须有signal_path", "每个watchlist项必须有falsifier"]
+
+---
+
+# 全局Reason Codes
+global_reason_codes:
+  entity:
+    - ECO_PLAYER_MISSING
+    - ECO_ENTITY_AMBIGUOUS
+  role:
+    - ECO_ROLE_UNCERTAIN
+    - ECO_ORPHAN_NODE
+  rule:
+    - ECO_RULE_INCOMPLETE
+    - ECO_MECHANISM_UNKNOWN
+  competition:
+    - ECO_OVERLAP_UNPROVEN
+    - ECO_DECISION_UNIT_UNKNOWN
+  substitute:
+    - ECO_SAME_JOB_FAIL
+    - ECO_PRICE_PERF_UNKNOWN
+    - ECO_TRAJECTORY_UNKNOWN
+    - ECO_TRIGGER_UNKNOWN
+  disruption:
+    - ECO_FOOTHOLD_MISSING
+    - ECO_UPMARKET_WEAK
+    - ECO_DISQUALIFIER_HIT
+    - ECO_REG_DEPENDENCY
+  adjacency:
+    - ECO_CONSTRAINT_WEAK
+    - ECO_FALSIFIER_MISSING
+    - ECO_SIGNAL_PATH_UNCLEAR
+  general:
+    - ECO_SOURCE_CONFLICT
+    - ECO_STALE
+
+---
+
+# 跨Skill一致性检查
+cross_skill_invariants:
+  - id: "XCHK-01"
+    name: "role_flow_coverage"
+    rule: "Role Map中每个player必须在Flow Graph至少出现1条edge"
+    on_fail: "ORPHAN_NODE warning → 返回补充或删除"
+
+  - id: "XCHK-02"
+    name: "substitute_same_job"
+    rule: "same_job<2不可判为替代"
+    on_fail: "FAIL（逻辑错误）"
+
+  - id: "XCHK-03"
+    name: "disruption_requires_foothold"
+    rule: "无foothold不可判为颠覆"
+    on_fail: "FAIL（逻辑错误）"
+
+  - id: "XCHK-04"
+    name: "chokepoint_in_constraints"
+    rule: "Skill2的chokepoints必须出现在Skill6的constraints"
+    on_fail: "返回Skill6补充"
+
+  - id: "XCHK-05"
+    name: "confidence_propagation"
+    rule: "downstream_confidence ≤ min(upstream_confidences)"
+    on_fail: "自动cap到上游最小值"
+
+---
+
+# 输入输出规范
+io_spec:
+  input:
+    required:
+      - target: "目标公司/产品/平台"
+      - scope: "分析边界(行业/地区/价值链段)"
+      - asof: "数据截止日期(YYYY-MM-DD)"
+    optional:
+      - known_players: "已知玩家列表"
+      - focus_areas: "重点关注领域"
+      - sources: "指定数据来源"
+
+  output:
+    ecosystem_graph:
+      role_map: "玩家角色图(含entities+claims)"
+      flow_rules_graph: "流动与规则图(PARTS字段)"
+      competition_surface: "竞争表面分析(CI_Score)"
+      substitutes: "替代品分析(6因素+SS)"
+      disruption: "颠覆者分析(foothold+upmarket+DQ)"
+      adjacency: "战略邻接机会(signal_path+falsifier)"
+
+    scores:
+      ci_score: "竞争强度评分"
+      substitute_scores: "替代威胁评分"
+      disruption_scores: "颠覆威胁评分"
+      sa_scores: "战略邻接评分"
+
+    metadata:
+      confidence: "整体置信度"
+      confidence_cap: "置信度上限(来自上游)"
+      reason_codes: "触发的reason codes"
+      asof: "数据截止日期"
+      evidence_refs: "证据来源汇总"
+
+---
+
+# 版本历史
+version_history:
+  - version: "2.3"
+    date: "2026-01-27"
+    changes:
+      - "时间维度一等公民(asof+valid_from/to)"
+      - "规则边PARTS化(owner/enforcer/mechanism/reversibility)"
+      - "替代6因素(+trajectory+trigger_events为强约束)"
+      - "颠覆6个disqualifiers"
+      - "置信度传播机制内置"
+      - "invariants作为自动测试规则"
+      - "XML格式统一"
+
+  - version: "2.2"
+    date: "2026-01-27"
+    changes:
+      - "规则边11类taxonomy"
+      - "替代6因素模型(初版)"
+      - "颠覆5个disqualifiers"
+      - "4个一致性检查"
+
+  - version: "2.0"
+    date: "2026-01-25"
+    changes:
+      - "初始6-skill架构"

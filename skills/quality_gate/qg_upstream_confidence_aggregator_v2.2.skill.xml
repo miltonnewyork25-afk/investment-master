@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="qg_upstream_confidence_aggregator_v2_2" lang="zh" version="2.2">
+  <metadata>
+    <id>quality_gate.upstream_confidence_aggregator</id>
+    <position>0.5/7</position>
+    <upstream>qg_policy_pack_loader</upstream>
+    <downstream>qg_ingress_partition, qg_verdict_router</downstream>
+    <theory>Confidence Propagation (downstream ≤ min(upstreams))</theory>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>聚合上游skills的confidence，计算upstream_confidence_cap并检测异常下降，为verdict提供硬输入。</purpose>
+
+  <inputs>
+    <upstream_outputs type="required">
+      <schema>[{
+        skill_id: string,
+        skill_version: string,
+        confidence: float,
+        reason_codes: [],
+        asof: date
+      }]</schema>
+    </upstream_outputs>
+    <policy type="required">{from qg_policy_pack_loader}</policy>
+  </inputs>
+
+  <workflow>
+    <s1 name="Confidence_Aggregation">
+      计算 upstream_confidence_cap = min(all upstream confidences)。
+      <output>upstream_confidence_cap: float</output>
+    </s1>
+    <s2 name="Anomaly_Detection">
+      检测异常：
+      - any confidence &lt; 0.5 → flag as LOW_CONFIDENCE
+      - reason_codes_count &gt; 3 → flag as HIGH_ISSUE_COUNT
+      - confidence下降 &gt; 0.2 (与前次run对比) → flag as CONFIDENCE_DROP
+    </s2>
+    <s3 name="Version_Collection">
+      收集所有上游skill_versions用于DecisionTrace。
+    </s3>
+    <s4 name="Threshold_Check">
+      对比 upstream_confidence_cap 与 policy.thresholds.upstream_confidence_min。
+      若低于阈值，预设 reason_code = TRUTH_LOW_UPSTREAM_CONFIDENCE。
+    </s4>
+  </workflow>
+
+  <scoring>
+    <dimension name="coverage" weight="0.50">上游skill覆盖率(期望skill都有输出)</dimension>
+    <dimension name="anomaly_free" weight="0.50">无异常flag</dimension>
+    <formula>confidence = min(coverage, anomaly_free ? 1.0 : 0.7)</formula>
+  </scoring>
+
+  <reason_codes>
+    <code id="TRUTH_LOW_UPSTREAM_CONFIDENCE">
+      上游confidence_cap低于阈值(default: 0.60)
+    </code>
+    <code id="PROC_UPSTREAM_MISSING">
+      期望的上游skill输出缺失
+    </code>
+    <code id="PROC_UPSTREAM_VERSION_MISMATCH">
+      上游skill版本与期望不匹配
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="上游修复后confidence提升">
+      若cap &gt;= threshold，自动解除 TRUTH_LOW_UPSTREAM_CONFIDENCE。
+    </item>
+    <item trigger="缺失的上游skill补齐">
+      解除 PROC_UPSTREAM_MISSING。
+    </item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-UCA-01">upstream_confidence_cap必须在0-1范围</check>
+    <check id="INV-UCA-02">upstream_skill_versions非空</check>
+  </invariants>
+
+  <output_contract>
+    <field name="upstream_confidence_cap">0.0-1.0</field>
+    <field name="confidence_anomalies">[{
+      skill_id: string,
+      issue: "LOW_CONFIDENCE|HIGH_ISSUE_COUNT|CONFIDENCE_DROP",
+      details: string
+    }]</field>
+    <field name="upstream_skill_versions">[{skill_id, version}]</field>
+    <field name="threshold_breach">boolean</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="reason_codes">[]</field>
+  </output_contract>
+</skill>

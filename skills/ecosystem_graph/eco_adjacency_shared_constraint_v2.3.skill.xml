@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="eco_adjacency_shared_constraint_v2_3" lang="zh" version="2.3">
+  <metadata>
+    <id>ecosystem_graph.adjacency_shared_constraint</id>
+    <position>6/6</position>
+    <upstream>All previous skills</upstream>
+    <downstream>Final output</downstream>
+    <theory>Constraint-Based Strategy + Analogical Reasoning</theory>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>邻接扩散：从共享约束/瓶颈/规则/入口生成watchlist；每项必须含signal_path(信号链)与falsifier(反证)。</purpose>
+
+  <inputs>
+    <target type="required">{company|product}</target>
+    <graph type="required">{from eco_flow_rules_graph_v2_3}</graph>
+    <rule_owners type="required">{from eco_flow_rules_graph_v2_3}</rule_owners>
+    <chokepoints type="required">{from eco_flow_rules_graph_v2_3}</chokepoints>
+    <sources type="required">{peer_universe|market_map|supply_constraints|platform_changes|notes}</sources>
+    <asof type="required">{YYYY-MM-DD}</asof>
+    <limits max_watchlist="20"/>
+  </inputs>
+
+  <constraint_types>
+    <category name="resource">
+      <type>talent - 争夺同一人才池(AI研究员/芯片工程师)</type>
+      <type>capital - 受制于同一资本来源(VC/产业资本)</type>
+      <type>supply - 依赖同一供应商(台积电/NVIDIA)</type>
+      <type>infrastructure - 共用基础设施(云平台/支付通道)</type>
+    </category>
+    <category name="rule">
+      <type>regulation - 受同一监管机构约束(FDA/GDPR/SEC)</type>
+      <type>platform - 受同一平台规则约束(App Store/AWS政策)</type>
+      <type>standard - 受同一技术标准约束(USB-IF/3GPP)</type>
+    </category>
+    <category name="market">
+      <type>customer - 服务同一客户群(企业IT买家/Z世代)</type>
+      <type>distribution - 共用分销渠道(运营商/零售商)</type>
+      <type>attention - 竞争同一注意力池(社交媒体时间)</type>
+    </category>
+  </constraint_types>
+
+  <signal_path_requirement>
+    <definition>事件→中介变量→财务/订单/份额的因果链路</definition>
+    <structure>
+      <step name="trigger">触发事件(可观测)</step>
+      <step name="mechanism">传导机制</step>
+      <step name="intermediate">中介变量(可测量)</step>
+      <step name="outcome">最终影响(财务/订单/份额)</step>
+    </structure>
+    <example>芯片短缺(trigger)→产能受限(mechanism)→交付周期延长(intermediate)→收入推迟(outcome)</example>
+  </signal_path_requirement>
+
+  <falsifier_requirement>
+    <definition>一条可观测的反证条件，出现即否定该邻接假设</definition>
+    <criteria>
+      <item>必须可观测(有公开数据源)</item>
+      <item>必须有时效(何时检验)</item>
+      <item>必须足够具体(非"市场变化")</item>
+    </criteria>
+    <example>如果Q2产能利用率>90%且无短缺报道，则供应约束假设不成立</example>
+  </falsifier_requirement>
+
+  <workflow>
+    <s1 name="Seed">
+      以rule_owners/chokepoints抽取共享约束(标准/接口/认证/数据权/定价条款/关键资源)。
+    </s1>
+    <s2 name="Expand">
+      找同约束/同瓶颈/同入口的候选集合(max_watchlist限制)。
+    </s2>
+    <s3 name="Analogy_Construction">
+      写清shared_constraint + analogy_basis + why_now(触发器)。
+    </s3>
+    <s4 name="Signal_Path">
+      形成"事件→中介变量→财务/订单/份额"链路(必填)。
+    </s4>
+    <s5 name="Falsifier">
+      明确一条可观测反证(出现即否定)。无falsifier则reason_code。
+    </s5>
+    <s6 name="Next_Checks">
+      3-7项最小验证 + monitoring_triggers。
+    </s6>
+  </workflow>
+
+  <scoring>
+    <dimension name="constraint_strength" weight="0.35">约束共享度+严重度</dimension>
+    <dimension name="testability" weight="0.35">next_checks+falsifier可观测性</dimension>
+    <dimension name="signal_path_clarity" weight="0.30">因果链路清晰度</dimension>
+    <formula>confidence = min(constraint_strength, testability, signal_path_clarity)</formula>
+    <confidence_cap>≤ min(upstream_confidences)</confidence_cap>
+  </scoring>
+
+  <sa_score comment="Strategic Adjacency Score">
+    <dimension name="constraint_sharing" weight="0.30">共享≥3个关键约束(+2) vs 无共享(-2)</dimension>
+    <dimension name="constraint_severity" weight="0.25">critical(+2) vs low(-2)</dimension>
+    <dimension name="complementarity" weight="0.25">能力高度互补(+2) vs 重叠冲突(-2)</dimension>
+    <dimension name="executability" weight="0.20">文化/规模匹配(+2) vs 严重不匹配(-2)</dimension>
+    <formula>SA_Score = Σ(维度分数×权重)×25+50</formula>
+  </sa_score>
+
+  <reason_codes>
+    <code id="ECO_CONSTRAINT_WEAK">约束强度不足</code>
+    <code id="ECO_UNIVERSE_MISSING">候选集合不完整</code>
+    <code id="ECO_ANALOGY_UNTESTABLE">类比无法验证</code>
+    <code id="ECO_FALSIFIER_MISSING">无反证条件</code>
+    <code id="ECO_SIGNAL_PATH_UNCLEAR">信号链路不清</code>
+    <code id="ECO_TRIGGER_UNCLEAR">触发器不明确</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="关键约束解除/平台规则逆转">相关watchlist项降级或移除</item>
+    <item trigger="证据显示共享约束不成立(不同标准/不同入口)">移除该项</item>
+    <item trigger="falsifier条件出现">标记为FALSIFIED，移除</item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-SA-01">chokepoints(Skill2)必须出现在constraints</check>
+    <check id="INV-SA-02">每个watchlist项必须有signal_path</check>
+    <check id="INV-SA-03">每个watchlist项必须有falsifier</check>
+    <check id="INV-SA-04">SA_Score>70必须有execution_path</check>
+  </invariants>
+
+  <output_contract>
+    <field name="constraints_faced">[{type, source, severity, shared_with[]}]</field>
+    <field name="adjacency_watchlist">[{
+      name, shared_constraint, analogy_basis, why_now,
+      signal_path: [{step, description, observable?, metric?}],
+      falsifier: {condition, observable_by, data_source},
+      sa_score, confidence,
+      failure_conditions[],
+      next_checks[],
+      evidence_refs[]
+    }]</field>
+    <field name="monitoring_triggers">[{trigger, event_type, threshold?, linked_items[]}]</field>
+    <field name="strategic_map">{
+      high_priority: [SA_Score>70],
+      emerging: [SA_Score 50-70],
+      monitor: [SA_Score&lt;50但有潜力]
+    }</field>
+    <field name="investment_implications">[{insight, action}]</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="confidence_cap">0.0-1.0</field>
+    <field name="reason_codes">[]</field>
+    <field name="asof">YYYY-MM-DD</field>
+  </output_contract>
+
+  <cross_skill_validation comment="最终一致性校验">
+    <check>所有players在≥2个skill中出现</check>
+    <check>confidence传递：downstream ≤ min(upstreams)</check>
+    <check>chokepoints全部被约束分析覆盖</check>
+    <check>rule_owners全部被约束分析覆盖</check>
+  </cross_skill_validation>
+</skill>

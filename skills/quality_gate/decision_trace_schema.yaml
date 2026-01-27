@@ -1,0 +1,375 @@
+# Decision Trace Schema v1.0
+# 用于回归测试和审计的append-only记录格式
+# 对齐Anthropic Agent Eval Harness思路
+
+version: "1.0"
+created: "2026-01-27"
+
+---
+
+# Schema定义
+schema:
+  type: object
+  required:
+    - run_id
+    - policy_pack_version
+    - policy_hash
+    - verdict
+    - stats
+    - invariants_summary
+    - flags
+    - reason_codes
+    - actions_taken
+    - retries
+    - tool_permission_level
+    - token_usage
+    - latency_ms
+    - tool_calls
+    - upstream_skill_versions
+    - created_at
+
+  properties:
+    # 运行标识
+    run_id:
+      type: string
+      format: uuid
+      description: "本次运行的唯一标识"
+      example: "550e8400-e29b-41d4-a716-446655440000"
+
+    # Policy信息
+    policy_pack_version:
+      type: string
+      description: "使用的policy pack版本"
+      example: "qg-2.2.0"
+
+    policy_hash:
+      type: string
+      pattern: "^sha256:[a-f0-9]{64}$"
+      description: "policy pack内容哈希"
+      example: "sha256:a1b2c3d4e5f6..."
+
+    # 裁决结果
+    verdict:
+      type: object
+      required:
+        - status
+        - triggered_rule
+        - reason_codes
+        - tool_permission_level
+        - confidence_cap
+      properties:
+        status:
+          type: string
+          enum: ["PASS", "DEGRADE", "FAIL", "FAIL_UNTIL_RESOLVED"]
+        triggered_rule:
+          type: string
+          description: "触发的verdict规则名称"
+        reason_codes:
+          type: array
+          items:
+            type: string
+        tool_permission_level:
+          type: string
+          enum: ["FULL", "READ_ONLY", "FROZEN"]
+        confidence_cap:
+          type: number
+          minimum: 0
+          maximum: 1
+
+    # 统计数据
+    stats:
+      type: object
+      required:
+        - ab_coverage
+        - unsupported_ratio
+        - conflict_count
+        - staleness_days
+      properties:
+        ab_coverage:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: "A/B证据覆盖率"
+        unsupported_ratio:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: "无证据支持的claims占比(加权)"
+        conflict_count:
+          type: integer
+          minimum: 0
+          description: "口径/数据冲突数量"
+        staleness_days:
+          type: integer
+          minimum: 0
+          description: "最旧关键证据的天数"
+        critical_unsupported_count:
+          type: integer
+          minimum: 0
+          description: "无证据的CRITICAL claims数量"
+        upstream_confidence_cap:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: "上游confidence最小值"
+
+    # 不变量检查结果
+    invariants_summary:
+      type: object
+      required:
+        - total_checked
+        - passed
+        - failed
+      properties:
+        total_checked:
+          type: integer
+          minimum: 0
+        passed:
+          type: integer
+          minimum: 0
+        failed:
+          type: integer
+          minimum: 0
+        pass_rate:
+          type: number
+          minimum: 0
+          maximum: 1
+        failed_invariants:
+          type: array
+          items:
+            type: object
+            properties:
+              invariant_id:
+                type: string
+              name:
+                type: string
+              affected_items:
+                type: array
+                items:
+                  type: string
+
+    # 安全标志
+    flags:
+      type: array
+      items:
+        type: object
+        properties:
+          flag_id:
+            type: string
+          severity:
+            type: string
+            enum: ["LOW", "MEDIUM", "HIGH"]
+          pattern_matched:
+            type: string
+          affected_content_hash:
+            type: string
+
+    # 原因代码
+    reason_codes:
+      type: array
+      items:
+        type: string
+        pattern: "^(TRUTH_|SAFE_|PROC_|TOOL_)"
+
+    # 执行的操作
+    actions_taken:
+      type: array
+      items:
+        type: object
+        properties:
+          action_id:
+            type: string
+          reason_code:
+            type: string
+          agent:
+            type: string
+          action:
+            type: string
+          status:
+            type: string
+            enum: ["SUCCESS", "FAILED", "SKIPPED"]
+          duration_ms:
+            type: integer
+
+    # 重试信息
+    retries:
+      type: object
+      properties:
+        total_attempts:
+          type: integer
+          minimum: 1
+        by_reason_code:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              attempts:
+                type: integer
+              budget:
+                type: integer
+              exhausted:
+                type: boolean
+
+    # 工具权限级别
+    tool_permission_level:
+      type: string
+      enum: ["FULL", "READ_ONLY", "FROZEN"]
+
+    # 资源消耗 (v2.2扩展)
+    token_usage:
+      type: integer
+      minimum: 0
+      description: "本次运行总token消耗"
+
+    latency_ms:
+      type: integer
+      minimum: 0
+      description: "本次运行总延迟(毫秒)"
+
+    # 工具调用序列 (v2.2扩展)
+    tool_calls:
+      type: array
+      items:
+        type: object
+        properties:
+          tool_name:
+            type: string
+          input:
+            type: object
+          output:
+            type: object
+          latency_ms:
+            type: integer
+          success:
+            type: boolean
+          error:
+            type: string
+
+    # 上游skill版本 (v2.2扩展)
+    upstream_skill_versions:
+      type: array
+      items:
+        type: object
+        properties:
+          skill_id:
+            type: string
+          version:
+            type: string
+          confidence:
+            type: number
+
+    # 时间戳
+    created_at:
+      type: string
+      format: date-time
+      description: "ISO8601格式的创建时间"
+
+---
+
+# 使用说明
+usage:
+  purpose: |
+    DecisionTrace是append-only的审计工件，用于：
+    1. 回归测试：验证同输入产生同verdict
+    2. Eval分析：分析DEGRADE/FAIL模式
+    3. 成本追踪：监控token/latency消耗
+    4. 工具效率：分析工具调用模式
+
+  storage:
+    format: "JSON Lines (.jsonl)"
+    retention: "永久保留"
+    indexing:
+      - run_id
+      - verdict.status
+      - created_at
+      - policy_pack_version
+
+  replay:
+    description: "使用DecisionTrace可重放任意历史run"
+    steps:
+      - "1. 加载相同的policy_pack(验证hash匹配)"
+      - "2. 重放输入数据"
+      - "3. 比较verdict与历史记录"
+      - "4. 验证确定性(必须相同)"
+
+---
+
+# 示例
+example:
+  run_id: "550e8400-e29b-41d4-a716-446655440000"
+  policy_pack_version: "qg-2.2.0"
+  policy_hash: "sha256:a1b2c3d4e5f6789..."
+  verdict:
+    status: "DEGRADE"
+    triggered_rule: "low_upstream_confidence"
+    reason_codes: ["TRUTH_LOW_UPSTREAM_CONFIDENCE", "TRUTH_STALE_EVIDENCE"]
+    tool_permission_level: "READ_ONLY"
+    confidence_cap: 0.55
+  stats:
+    ab_coverage: 0.65
+    unsupported_ratio: 0.12
+    conflict_count: 1
+    staleness_days: 45
+    upstream_confidence_cap: 0.55
+  invariants_summary:
+    total_checked: 5
+    passed: 4
+    failed: 1
+    pass_rate: 0.80
+    failed_invariants:
+      - invariant_id: "XCHK-01"
+        name: "role_flow_coverage"
+        affected_items: ["player_xyz"]
+  flags: []
+  reason_codes: ["TRUTH_LOW_UPSTREAM_CONFIDENCE", "TRUTH_STALE_EVIDENCE"]
+  actions_taken:
+    - action_id: "act_001"
+      reason_code: "TRUTH_STALE_EVIDENCE"
+      agent: "DataIntegrity"
+      action: "refresh_stale_evidence"
+      status: "SUCCESS"
+      duration_ms: 1200
+  retries:
+    total_attempts: 2
+    by_reason_code:
+      TRUTH_STALE_EVIDENCE:
+        attempts: 1
+        budget: 1
+        exhausted: true
+  tool_permission_level: "READ_ONLY"
+  token_usage: 8500
+  latency_ms: 45000
+  tool_calls:
+    - tool_name: "fetch_sec_filing"
+      input: {"ticker": "TSLA", "form": "10-K"}
+      output: {"status": "success", "file_size": 1500000}
+      latency_ms: 2500
+      success: true
+  upstream_skill_versions:
+    - skill_id: "ecosystem_graph.role_map"
+      version: "2.3"
+      confidence: 0.55
+    - skill_id: "ecosystem_graph.flow_rules_graph"
+      version: "2.3"
+      confidence: 0.70
+  created_at: "2026-01-27T10:30:00Z"
+
+---
+
+# 验证规则
+validation_rules:
+  - name: "hash_consistency"
+    rule: "policy_hash必须与加载时一致"
+    on_fail: "PROC_POLICY_HASH_MISMATCH"
+
+  - name: "deterministic_check"
+    rule: "同输入重放必须产生同verdict.status"
+    on_fail: "PROC_VERDICT_NONDETERMINISTIC"
+
+  - name: "confidence_propagation"
+    rule: "verdict.confidence_cap ≤ stats.upstream_confidence_cap"
+    on_fail: "auto-correct"
+
+  - name: "reason_codes_complete"
+    rule: "verdict.status != PASS时reason_codes非空"
+    on_fail: "validation_error"

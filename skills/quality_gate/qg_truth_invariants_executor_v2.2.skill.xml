@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="qg_truth_invariants_executor_v2_2" lang="zh" version="2.2">
+  <metadata>
+    <id>quality_gate.truth_invariants_executor</id>
+    <position>3/7</position>
+    <upstream>upstream skills (ecosystem_graph, etc.)</upstream>
+    <downstream>qg_verdict_router</downstream>
+    <theory>Cross-Skill Consistency Invariants (Option B: Read + Execute)</theory>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>读取上游skills的invariants_manifest并执行deterministic检查，聚合结果为invariant_report。不重复定义，避免漂移。</purpose>
+
+  <inputs>
+    <invariants_manifest type="required">
+      <description>上游skills定义的invariants列表</description>
+      <schema>[{
+        invariant_id: string,
+        source_skill: string,
+        check_expression: string,
+        on_fail_action: "DEGRADE|FAIL",
+        on_fail_reason_code: string
+      }]</schema>
+    </invariants_manifest>
+    <artifacts type="required">
+      <description>需要检查的工件</description>
+      <schema>{
+        role_map: {...},
+        flow_graph: {...},
+        substitutes: [...],
+        disruption_assessment: [...],
+        other_artifacts: {...}
+      }</schema>
+    </artifacts>
+    <policy type="required">{from qg_policy_pack_loader}</policy>
+  </inputs>
+
+  <builtin_invariants comment="兜底：若上游未定义，使用内置">
+    <invariant id="XCHK-01" name="role_flow_coverage">
+      <check>Role Map中每个player在Flow Graph至少有1条edge</check>
+      <on_fail>DEGRADE with TRUTH_ROLE_FLOW_MISMATCH</on_fail>
+    </invariant>
+    <invariant id="XCHK-02" name="substitute_same_job">
+      <check>substitutes必须same_job≥2</check>
+      <on_fail>FAIL with TRUTH_SUBSTITUTE_SAMEJOB_FAIL</on_fail>
+    </invariant>
+    <invariant id="XCHK-03" name="disruption_foothold">
+      <check>disruption判定必须有foothold证据</check>
+      <on_fail>FAIL with TRUTH_DISRUPTION_FOOTHOLD_MISSING</on_fail>
+    </invariant>
+    <invariant id="XCHK-04" name="confidence_propagation">
+      <check>downstream confidence ≤ min(upstream confidences)</check>
+      <on_fail>DEGRADE with auto-cap</on_fail>
+    </invariant>
+  </builtin_invariants>
+
+  <workflow>
+    <s1 name="Load_Invariants">
+      合并invariants_manifest + builtin_invariants(去重，优先使用上游定义)。
+    </s1>
+    <s2 name="Execute_Checks">
+      对每个invariant执行deterministic检查。
+      <execution_mode>纯计算，不调用LLM</execution_mode>
+    </s2>
+    <s3 name="Collect_Failures">
+      收集所有失败的invariants及affected_items。
+    </s3>
+    <s4 name="Aggregate_Report">
+      生成invariant_report，计算pass_rate。
+    </s4>
+  </workflow>
+
+  <scoring>
+    <dimension name="pass_rate" weight="1.0">通过的invariants占比</dimension>
+    <formula>confidence = pass_rate</formula>
+  </scoring>
+
+  <reason_codes>
+    <code id="TRUTH_ROLE_FLOW_MISMATCH">
+      Role Map中player在Flow Graph无边(ORPHAN)
+    </code>
+    <code id="TRUTH_SUBSTITUTE_SAMEJOB_FAIL">
+      substitute判定违反same_job门禁
+    </code>
+    <code id="TRUTH_DISRUPTION_FOOTHOLD_MISSING">
+      disruption判定缺少foothold证据
+    </code>
+    <code id="TRUTH_INVARIANT_CHECK_ERROR">
+      invariant检查执行出错
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="修复缺边/补证据后重跑">
+      应通过检查，否则维持DEGRADE/FAIL。
+    </item>
+    <item trigger="上游skill重新输出">
+      重新执行检查，更新报告。
+    </item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-TIE-01">每个执行的invariant必须有结果(passed/failed)</check>
+    <check id="INV-TIE-02">失败的invariant必须有affected_items</check>
+  </invariants>
+
+  <output_contract>
+    <field name="invariant_report">[{
+      invariant_id: string,
+      source_skill: string,
+      name: string,
+      passed: boolean,
+      details: string,
+      affected_items: [string],
+      suggested_fix: string
+    }]</field>
+    <field name="summary">{
+      total_checked: int,
+      passed: int,
+      failed: int,
+      pass_rate: float
+    }</field>
+    <field name="confidence">0.0-1.0 (= pass_rate)</field>
+    <field name="reason_codes">[]</field>
+  </output_contract>
+</skill>

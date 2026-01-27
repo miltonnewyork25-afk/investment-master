@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="qg_verdict_router_v2_2" lang="zh" version="2.2">
+  <metadata>
+    <id>quality_gate.verdict_router</id>
+    <position>4/7</position>
+    <upstream>qg_upstream_confidence_aggregator, qg_ingress_partition, qg_truth_claim_audit, qg_truth_invariants_executor</upstream>
+    <downstream>qg_egress_safety_trace</downstream>
+    <theory>Deterministic Verdict + NIST AI RMF Control Point</theory>
+    <refs>
+      <ref>https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf</ref>
+    </refs>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>按policy规则有序确定性裁决PASS/DEGRADE/FAIL，生成reason_codes路由与tool权限，并设置confidence_cap。LLM不得改verdict。</purpose>
+
+  <inputs>
+    <policy type="required">{from qg_policy_pack_loader}</policy>
+    <upstream_conf type="required">{from qg_upstream_confidence_aggregator}</upstream_conf>
+    <ingress type="required">{from qg_ingress_partition}</ingress>
+    <truth_audit type="required">{from qg_truth_claim_audit}</truth_audit>
+    <invariants type="required">{from qg_truth_invariants_executor}</invariants>
+  </inputs>
+
+  <verdict_rules_execution>
+    <principle>
+      规则按policy.verdict_rules_ordered顺序执行，首个匹配即决定verdict。
+      这是DETERMINISTIC计算，同输入必产同输出。
+    </principle>
+    <example_rules>
+      <rule order="1">
+        <condition>any_flag in ["SAFE_PROMPT_INJECTION_SUSPECTED"]</condition>
+        <result>FAIL, FROZEN, SAFE_SECURITY_BLOCK</result>
+      </rule>
+      <rule order="2">
+        <condition>stats.unsupported_ratio > 0.50</condition>
+        <result>FAIL, FROZEN, TRUTH_UNSUPPORTED_TOO_HIGH</result>
+      </rule>
+      <rule order="3">
+        <condition>stats.conflict_count > 3</condition>
+        <result>FAIL_UNTIL_RESOLVED, READ_ONLY, TRUTH_SOURCE_CONFLICT</result>
+      </rule>
+      <rule order="4">
+        <condition>upstream_confidence_cap &lt; 0.60</condition>
+        <result>DEGRADE, READ_ONLY, TRUTH_LOW_UPSTREAM_CONFIDENCE</result>
+      </rule>
+      <rule order="5">
+        <condition>stats.ab_coverage &lt; 0.40</condition>
+        <result>DEGRADE, READ_ONLY, TRUTH_LOW_GRADE_COVERAGE</result>
+      </rule>
+      <rule order="default">
+        <condition>else</condition>
+        <result>PASS, FULL, (no reason_code)</result>
+      </rule>
+    </example_rules>
+  </verdict_rules_execution>
+
+  <tool_permission_levels>
+    <level name="FULL">
+      <description>所有工具可用</description>
+      <when>verdict = PASS</when>
+    </level>
+    <level name="READ_ONLY">
+      <description>只能读取，不能写入/执行</description>
+      <when>verdict = DEGRADE or FAIL_UNTIL_RESOLVED</when>
+    </level>
+    <level name="FROZEN">
+      <description>所有工具禁用</description>
+      <when>verdict = FAIL</when>
+    </level>
+  </tool_permission_levels>
+
+  <workflow>
+    <s1 name="Collect_Inputs">
+      收集所有上游输出：flags, stats, invariant_report, upstream_confidence_cap。
+    </s1>
+    <s2 name="Apply_Rules">
+      按policy.verdict_rules_ordered顺序执行。
+      <deterministic>true - 同输入必产同输出</deterministic>
+    </s2>
+    <s3 name="Assemble_Reason_Codes">
+      收集触发规则的reason_code + 上游传递的reason_codes。
+    </s3>
+    <s4 name="Route_Actions">
+      根据policy.reason_code_matrix为每个reason_code生成action_required。
+      <schema>{agent, action, retry_budget}</schema>
+    </s4>
+    <s5 name="Set_Tool_Permission">
+      根据verdict设置tool_permission_level。
+    </s5>
+    <s6 name="Calculate_Confidence_Cap">
+      confidence_cap = min(upstream_confidence_cap, truth_audit.confidence,
+                          invariants.confidence, ingress.confidence)
+    </s6>
+  </workflow>
+
+  <scoring>
+    <dimension name="mapping_coverage" weight="1.0">
+      所有reason_codes都有对应action_required
+    </dimension>
+    <formula>confidence = mapping_coverage</formula>
+  </scoring>
+
+  <reason_codes>
+    <code id="PROC_NO_ACTION_MAPPING">
+      reason_code在matrix中无对应action
+    </code>
+    <code id="PROC_KILL_SWITCH_TRIGGERED">
+      触发kill switch导致FAIL
+    </code>
+    <code id="SAFE_SECURITY_BLOCK">
+      安全原因阻断(注入/越权等)
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="重试后仍触发kill switch">
+      必须停机并仅输出DEGRADE模板/错误报告。
+    </item>
+    <item trigger="上游修复后stats改善">
+      重新执行verdict规则，可能从DEGRADE升级为PASS。
+    </item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-VR-01">verdict必须是PASS/DEGRADE/FAIL/FAIL_UNTIL_RESOLVED之一</check>
+    <check id="INV-VR-02">FAIL verdict必须有≥1个reason_code</check>
+    <check id="INV-VR-03">confidence_cap ≤ min(所有上游confidence)</check>
+    <check id="INV-VR-04">同输入执行两次必须产生同verdict</check>
+  </invariants>
+
+  <output_contract>
+    <field name="verdict">{
+      status: "PASS|DEGRADE|FAIL|FAIL_UNTIL_RESOLVED",
+      triggered_rule: string,
+      reason_codes: [string],
+      tool_permission_level: "FULL|READ_ONLY|FROZEN",
+      confidence_cap: float
+    }</field>
+    <field name="action_required">[{
+      reason_code: string,
+      agent: string,
+      action: string,
+      retry_budget: int,
+      priority: "P0|P1|P2"
+    }]</field>
+    <field name="degrade_policy">{
+      required_sections: [string],
+      blocked_sections: [string],
+      blocked_phrases: [string]
+    }</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="reason_codes">[]</field>
+  </output_contract>
+</skill>

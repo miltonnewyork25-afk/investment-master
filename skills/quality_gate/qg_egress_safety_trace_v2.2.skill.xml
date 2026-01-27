@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="qg_egress_safety_trace_v2_2" lang="zh" version="2.2">
+  <metadata>
+    <id>quality_gate.egress_safety_trace</id>
+    <position>5/7</position>
+    <upstream>qg_verdict_router</upstream>
+    <downstream>Final output + DecisionTrace storage</downstream>
+    <theory>OWASP LLM02 Insecure Output Handling + Anthropic Eval Harness</theory>
+    <refs>
+      <ref>https://genai.owasp.org/llmrisk2023-24/llm02-insecure-output-handling/</ref>
+      <ref>https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents</ref>
+    </refs>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>出口闸：schema/PII/可执行载荷阻断/DEGRADE模板(含uncertainty_matrix)强制；生成DecisionTrace(append-only)用于回归。</purpose>
+
+  <inputs>
+    <draft_output type="required">
+      <description>待输出的内容草稿</description>
+    </draft_output>
+    <verdict type="required">{from qg_verdict_router}</verdict>
+    <policy type="required">{from qg_policy_pack_loader}</policy>
+    <run_meta type="required">
+      <token_usage>本次运行token消耗</token_usage>
+      <latency_ms>本次运行延迟(毫秒)</latency_ms>
+      <tool_calls>[工具调用序列]</tool_calls>
+    </run_meta>
+    <run_id type="required">{uuid}</run_id>
+  </inputs>
+
+  <safety_checks>
+    <check name="schema_validation">
+      <description>输出schema校验</description>
+      <on_fail>BLOCK with PROC_SCHEMA_INVALID</on_fail>
+    </check>
+    <check name="pii_detection">
+      <description>PII检测(SSN, Passport, etc.)</description>
+      <patterns>policy.safety.pii_patterns</patterns>
+      <on_match>REDACT or BLOCK with SAFE_PII_RISK</on_match>
+    </check>
+    <check name="executable_blocking">
+      <description>可执行载荷阻断</description>
+      <patterns>policy.safety.executable_block_patterns</patterns>
+      <on_match>BLOCK with SAFE_EXECUTABLE_OUTPUT_BLOCKED</on_match>
+    </check>
+    <check name="injection_remnants">
+      <description>检测残留的注入模式</description>
+      <on_match>BLOCK with SAFE_INJECTION_REMNANT</on_match>
+    </check>
+  </safety_checks>
+
+  <degrade_enforcement>
+    <trigger>verdict.status = DEGRADE</trigger>
+    <actions>
+      <action name="template_replacement">
+        用degrade_template替换draft_output。
+        <required_sections>
+          - Hypothesis List
+          - Key Uncertainties
+          - Uncertainty Matrix (结构化表格)
+          - Monitoring Triggers
+          - Next Evidence Plan
+        </required_sections>
+      </action>
+      <action name="section_blocking">
+        移除blocked_sections中的内容。
+        <blocked_sections>
+          - Target Price
+          - Buy/Sell Recommendation
+        </blocked_sections>
+      </action>
+      <action name="phrase_removal">
+        移除blocked_phrases。
+        <blocked_phrases>
+          - "strong buy"
+          - "target price"
+          - "guaranteed"
+        </blocked_phrases>
+      </action>
+    </actions>
+  </degrade_enforcement>
+
+  <uncertainty_matrix_schema>
+    <description>DEGRADE输出必须包含的结构化不确定性表</description>
+    <required_columns>["假设", "验证方法"]</required_columns>
+    <optional_columns>["数据源", "预计时间", "置信度"]</optional_columns>
+    <min_rows>3</min_rows>
+    <format>Markdown表格</format>
+  </uncertainty_matrix_schema>
+
+  <decision_trace_schema>
+    <description>用于回归测试和审计的append-only记录</description>
+    <fields>
+      <field name="run_id" type="string" required="true"/>
+      <field name="policy_pack_version" type="string" required="true"/>
+      <field name="policy_hash" type="string" required="true"/>
+      <field name="verdict" type="object" required="true">
+        {status, triggered_rule, reason_codes, tool_permission_level, confidence_cap}
+      </field>
+      <field name="stats" type="object" required="true">
+        {ab_coverage, unsupported_ratio, conflict_count, staleness_days}
+      </field>
+      <field name="invariants_summary" type="object" required="true">
+        {total_checked, passed, failed}
+      </field>
+      <field name="flags" type="array" required="true"/>
+      <field name="reason_codes" type="array" required="true"/>
+      <field name="actions_taken" type="array" required="true"/>
+      <field name="retries" type="object" required="true"/>
+      <field name="tool_permission_level" type="string" required="true"/>
+      <field name="token_usage" type="number" required="true"/>
+      <field name="latency_ms" type="number" required="true"/>
+      <field name="tool_calls" type="array" required="true"/>
+      <field name="upstream_skill_versions" type="array" required="true"/>
+      <field name="created_at" type="string" format="ISO8601" required="true"/>
+    </fields>
+  </decision_trace_schema>
+
+  <workflow>
+    <s1 name="Schema_Validate">
+      校验draft_output schema。
+      <on_fail>BLOCK + PROC_SCHEMA_INVALID</on_fail>
+    </s1>
+    <s2 name="Degrade_Enforce">
+      若verdict=DEGRADE，用degrade_template替换，强制uncertainty_matrix。
+    </s2>
+    <s3 name="Executable_Block">
+      检测并阻断可执行载荷。
+    </s3>
+    <s4 name="PII_Scan">
+      检测PII，redact或block。
+    </s4>
+    <s5 name="Injection_Remnant_Check">
+      检测残留注入模式。
+    </s5>
+    <s6 name="Emit_Safe_Output">
+      生成最终safe_output。
+    </s6>
+    <s7 name="Append_Decision_Trace">
+      生成并持久化DecisionTrace(append-only)。
+    </s7>
+  </workflow>
+
+  <scoring>
+    <dimension name="schema_pass" weight="0.50">schema校验通过</dimension>
+    <dimension name="block_precision" weight="0.50">阻断精确率(无误报)</dimension>
+    <formula>confidence = min(schema_pass, block_precision)</formula>
+  </scoring>
+
+  <reason_codes>
+    <code id="PROC_SCHEMA_INVALID">输出schema不合法</code>
+    <code id="SAFE_PII_RISK">检测到PII</code>
+    <code id="SAFE_EXECUTABLE_OUTPUT_BLOCKED">检测到可执行载荷</code>
+    <code id="SAFE_INJECTION_REMNANT">检测到残留注入模式</code>
+    <code id="PROC_DEGRADE_TEMPLATE_ENFORCED">已强制使用DEGRADE模板</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="修复schema/移除可执行片段后重跑">
+      应通过检查，否则维持阻断。
+    </item>
+    <item trigger="PII已脱敏">
+      解除SAFE_PII_RISK。
+    </item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-EST-01">DEGRADE输出必须包含uncertainty_matrix</check>
+    <check id="INV-EST-02">DecisionTrace必须包含所有required字段</check>
+    <check id="INV-EST-03">safe_output不得包含blocked_phrases</check>
+  </invariants>
+
+  <output_contract>
+    <field name="safe_output">{
+      content: string,
+      redactions: [{field, reason}],
+      verdict_status: string,
+      template_used: boolean
+    }</field>
+    <field name="decision_trace">{
+      run_id: string,
+      policy_pack_version: string,
+      policy_hash: string,
+      verdict: {...},
+      stats: {...},
+      invariants_summary: {...},
+      flags: [...],
+      reason_codes: [...],
+      actions_taken: [...],
+      retries: {...},
+      tool_permission_level: string,
+      token_usage: number,
+      latency_ms: number,
+      tool_calls: [...],
+      upstream_skill_versions: [...],
+      created_at: ISO8601
+    }</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="reason_codes">[]</field>
+  </output_contract>
+</skill>

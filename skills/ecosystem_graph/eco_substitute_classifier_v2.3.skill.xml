@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="eco_substitute_classifier_v2_3" lang="zh" version="2.3">
+  <metadata>
+    <id>ecosystem_graph.substitute_classifier</id>
+    <position>4/6</position>
+    <upstream>eco_role_map, eco_flow_rules_graph, eco_competition_surface</upstream>
+    <downstream>eco_disruption_qualification</downstream>
+    <theory>Porter Substitutes + Jobs-to-be-Done + Dynamic Analysis</theory>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>替代判别=Porter substitutes(同需不同法)+动态(trajectory/trigger)；输出competitors/substitutes并内置SameJob硬门禁。</purpose>
+
+  <inputs>
+    <target type="required">{company|product}</target>
+    <graph type="required">{from eco_flow_rules_graph_v2_3}</graph>
+    <competition_surface type="required">{from eco_competition_surface_v2_3}</competition_surface>
+    <candidates type="required">{players[]}</candidates>
+    <sources type="required">{features|pricing|adoption|share|policies|notes}</sources>
+    <asof type="required">{YYYY-MM-DD}</asof>
+  </inputs>
+
+  <substitute_6_factors>
+    <factor name="same_job" gate="true" comment="硬门禁：不满足则不是替代品">
+      <functional>功能性任务(做什么)</functional>
+      <emotional>情感性任务(感受如何)</emotional>
+      <social>社会性任务(如何被看待)</social>
+      <scoring>3=三层匹配, 2=functional+部分, 1=仅functional, 0=不同</scoring>
+      <threshold>≥2才算同job，&lt;2自动判定为非替代</threshold>
+    </factor>
+
+    <factor name="price_performance">
+      <metric>单位价值价格 / TCO / 每美元价值</metric>
+      <scoring>+2=显著更优(>30%), +1=略优(10-30%), 0=持平, -1=略差, -2=显著差</scoring>
+    </factor>
+
+    <factor name="switching_cost">
+      <types>financial, time, learning, data_migration, relationship</types>
+      <scoring>+2=几乎无, +1=低(&lt;1周), 0=中(1周-1月), -1=高(1-6月), -2=极高(>6月)</scoring>
+    </factor>
+
+    <factor name="ceiling_effect">
+      <indicators>performance_plateau, diminishing_returns, overserving</indicators>
+      <scoring>+2=明显触顶, +1=接近, 0=仍有空间, -1=快速迭代, -2=远未触顶</scoring>
+    </factor>
+
+    <factor name="trajectory" comment="动态维度1">
+      <status>stable | rising | accelerating</status>
+      <metric>年改进率 / 差距变化</metric>
+      <slope>定量斜率(如可得)</slope>
+      <crossover_timeline>预计追上时间</crossover_timeline>
+      <scoring>+2=2年内crossover, +1=5年内, 0=相当, -1=更慢, -2=差距扩大</scoring>
+    </factor>
+
+    <factor name="trigger_events" comment="动态维度2">
+      <event_classes>tech | reg | price | distribution | data_rights</event_classes>
+      <events>具体触发事件列表</events>
+      <scoring>+2=已发生/即将, +1=可预见(1-3年), 0=存在但不确定, -1=遥远(>5年), -2=无可见</scoring>
+    </factor>
+  </substitute_6_factors>
+
+  <workflow>
+    <s1 name="SameJob_Gate">
+      不满足同一底层需求(score&lt;2) → 禁止判定为substitute，仅可为adjacent_competitor。
+      <fail_action>设置reason_code=ECO_SAME_JOB_FAIL，终止替代判定</fail_action>
+    </s1>
+    <s2 name="4_Core_Score">
+      price_performance + switching_cost + ceiling_effect + same_job_strength。
+    </s2>
+    <s3 name="Dynamic_Assessment">
+      trajectory(状态/斜率) + trigger_events(触发器清单+class)。
+      <note>无数据则reason_code + 降级，不硬编</note>
+    </s3>
+    <s4 name="Incumbent_Response_Hint">
+      标注incumbent_response={fast | slow | blocked_by_rules}，供颠覆判定使用。
+    </s4>
+    <s5 name="Substitute_Score_Calculation">
+      SS = (same_job≥2 ? 1 : 0) × (其他5因素加权平均)
+    </s5>
+  </workflow>
+
+  <scoring>
+    <dimension name="factor_score" weight="0.50">6要素加权(same_job为hard gate)</dimension>
+    <dimension name="evidence_quality" weight="0.30">价格/采用/份额/政策可追溯</dimension>
+    <dimension name="dynamic_coverage" weight="0.20">trajectory/trigger是否有数据</dimension>
+    <formula>confidence = min(factor_score, evidence_quality, dynamic_coverage)</formula>
+    <confidence_cap>≤ min(upstream_confidences)</confidence_cap>
+  </scoring>
+
+  <substitute_score>
+    <formula>SS = gate(same_job≥2) × avg(price_perf, switch_cost, ceiling, trajectory, trigger)</formula>
+    <interpretation>
+      <range min="0.6" max="1.0">强替代威胁</range>
+      <range min="0.3" max="0.6">中等替代可能</range>
+      <range min="0.0" max="0.3">弱替代/非真正替代</range>
+      <special>same_job&lt;2 → 自动归零</special>
+    </interpretation>
+  </substitute_score>
+
+  <reason_codes>
+    <code id="ECO_SAME_JOB_FAIL">same_job&lt;2，不构成替代</code>
+    <code id="ECO_PRICE_PERF_UNKNOWN">价格-性能数据缺失</code>
+    <code id="ECO_SWITCHING_UNKNOWN">切换成本不明</code>
+    <code id="ECO_CEILING_UNKNOWN">天花板效应不明</code>
+    <code id="ECO_TRAJECTORY_UNKNOWN">改进轨迹无数据</code>
+    <code id="ECO_TRIGGER_UNKNOWN">触发事件不明</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="价格-性能优势消失或监管禁止关键路径">trajectory降级</item>
+    <item trigger="数据可移植性/标准化显著降低切换成本">替代威胁上调</item>
+    <item trigger="incumbent快速响应消除差距">替代威胁下调</item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-SC-01">same_job&lt;2不可判为substitute</check>
+    <check id="INV-SC-02">substitute_score>0.6必须有trajectory或trigger_events数据</check>
+    <check id="INV-SC-03">每个判定必须有≥1条evidence_ref</check>
+  </invariants>
+
+  <output_contract>
+    <field name="competitors">[{name, tier, why_compete, confidence, evidence_refs[]}]</field>
+    <field name="substitutes">[{
+      name, job_description, same_job_score,
+      price_performance, switching_cost, ceiling_effect,
+      trajectory: {status, metric?, slope?, crossover_timeline?},
+      trigger_events: {events[], class},
+      incumbent_response?,
+      substitute_score, classification(strong|medium|weak|not_substitute),
+      confidence, evidence_refs[]
+    }]</field>
+    <field name="false_positives">[常被误认为替代但实际不是]</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="confidence_cap">0.0-1.0</field>
+    <field name="reason_codes">[]</field>
+    <field name="asof">YYYY-MM-DD</field>
+  </output_contract>
+</skill>

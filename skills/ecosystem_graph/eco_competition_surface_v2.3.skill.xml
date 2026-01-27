@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="eco_competition_surface_v2_3" lang="zh" version="2.3">
+  <metadata>
+    <id>ecosystem_graph.competition_surface</id>
+    <position>3/6</position>
+    <upstream>eco_role_map, eco_flow_rules_graph</upstream>
+    <downstream>eco_substitute_classifier</downstream>
+    <theory>Porter Five Forces (Rivalry) + Resource Competition</theory>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>竞争面=争稀缺资源：BudgetPool/Workflow/Distribution；输出"冲突发生在哪+为何可迁移/不可迁移"。</purpose>
+
+  <inputs>
+    <target type="required">{company|product}</target>
+    <graph type="required">{from eco_flow_rules_graph_v2_3}</graph>
+    <candidates type="required">{players_to_compare[]}</candidates>
+    <sources type="required">{pricing|persona|channel|integration|notes}</sources>
+    <asof type="required">{YYYY-MM-DD}</asof>
+  </inputs>
+
+  <resource_types>
+    <type name="budget_pool">争夺同一预算池(IT预算/营销预算/个人娱乐预算)</type>
+    <type name="workflow">争夺同一工作流位置(输入/处理/输出)</type>
+    <type name="distribution">争夺同一分销渠道(运营商/零售商/App Store)</type>
+    <type name="talent">争夺同一人才池(AI研究员/芯片工程师)</type>
+    <type name="attention">争夺同一注意力池(社交媒体时间/屏幕时间)</type>
+  </resource_types>
+
+  <decision_unit>
+    <role name="buyer">付款方</role>
+    <role name="decider">决策者(可与buyer不同)</role>
+    <role name="influencer">影响者(技术评估/用户口碑)</role>
+    <note>任一角色不明确则触发reason_code</note>
+  </decision_unit>
+
+  <workflow>
+    <s1 name="Surface_Identification">
+      resource_types={budget_pool, workflow, distribution, talent, attention} + where(stage/entry)。
+    </s1>
+    <s2 name="Decision_Unit_Mapping">
+      标注buyer/decider/influencer；空则reason_code=ECO_DECISION_UNIT_UNKNOWN。
+    </s2>
+    <s3 name="Switching_Map">
+      switching_cost: primary/secondary主因 + mitigation(迁移工具/标准/可移植性)。
+    </s3>
+    <s4 name="Overlap_Scoring">
+      overlap_score + top_reasons必须指回graph边/来源(可审计)。
+    </s4>
+    <s5 name="Intensity_Assessment">
+      market_concentration(CR4/HHI) + growth_rate + differentiation + exit_barriers。
+    </s5>
+  </workflow>
+
+  <scoring>
+    <dimension name="linkage" weight="0.40">解释是否可回链(到边/证据)</dimension>
+    <dimension name="decision_clarity" weight="0.35">决策单元清晰度</dimension>
+    <dimension name="evidence_quality" weight="0.25">来源等级+时效</dimension>
+    <formula>confidence = min(linkage, decision_clarity, evidence_quality)</formula>
+    <confidence_cap>≤ min(upstream_confidences)</confidence_cap>
+  </scoring>
+
+  <ci_score comment="Competition Intensity Score">
+    <dimension name="market_concentration" weight="0.25">CR4>80%(+2) vs CR4&lt;40%(-2)</dimension>
+    <dimension name="market_growth" weight="0.25">>20%CAGR(+2) vs &lt;5%(-2)</dimension>
+    <dimension name="differentiation" weight="0.20">高度差异化(+2) vs 同质化(-2)</dimension>
+    <dimension name="exit_barriers" weight="0.15">低退出壁垒(+2) vs 高退出壁垒(-2)</dimension>
+    <dimension name="strategic_stakes" weight="0.15">非核心(+2) vs 必争之地(-2)</dimension>
+    <formula>CI_Score = Σ(维度分数×权重)×25+50</formula>
+    <interpretation>
+      <range min="70" max="100">竞争环境友好</range>
+      <range min="50" max="70">中等竞争</range>
+      <range min="0" max="50">激烈竞争</range>
+    </interpretation>
+  </ci_score>
+
+  <reason_codes>
+    <code id="ECO_OVERLAP_UNPROVEN">overlap_score无证据支撑</code>
+    <code id="ECO_DECISION_UNIT_UNKNOWN">buyer/decider/influencer不明</code>
+    <code id="ECO_WORKFLOW_UNKNOWN">工作流位置不明</code>
+    <code id="ECO_CHANNEL_UNKNOWN">分销渠道不明</code>
+    <code id="ECO_STALE">数据过期</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="证据显示预算池/购买者/渠道不同">竞争面降级为弱相关</item>
+    <item trigger="新迁移工具/标准显著降低切换成本">重算overlap与替代威胁</item>
+    <item trigger="市场结构变化(并购/退出)">重评concentration</item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-CS-01">Competitor角色players必须出现在competition_matrix</check>
+    <check id="INV-CS-02">overlap_score>0.5必须有≥2条evidence_refs</check>
+    <check id="INV-CS-03">top_reasons必须可追溯到graph边</check>
+  </invariants>
+
+  <output_contract>
+    <field name="competition_surface">[{
+      candidate, resource_types[], where,
+      decision_unit: {buyer?, decider?, influencer?},
+      overlap_score, top_reasons[],
+      switching_cost: {primary, secondary, mitigation?},
+      evidence_refs[]
+    }]</field>
+    <field name="competition_matrix">维度×竞争者矩阵</field>
+    <field name="ci_score">{total, breakdown[]}</field>
+    <field name="hotspots">[最激烈竞争点]</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="confidence_cap">0.0-1.0</field>
+    <field name="reason_codes">[]</field>
+    <field name="asof">YYYY-MM-DD</field>
+  </output_contract>
+</skill>

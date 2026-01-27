@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="eco_disruption_qualification_v2_3" lang="zh" version="2.3">
+  <metadata>
+    <id>ecosystem_graph.disruption_qualification</id>
+    <position>5/6</position>
+    <upstream>eco_substitute_classifier</upstream>
+    <downstream>eco_adjacency_shared_constraint</downstream>
+    <theory>Christensen Disruptive Innovation (严格定义)</theory>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>颠覆资格审查：必须foothold+上移；并用disqualifiers严格排除"sustaining/高端切入/功能堆叠/水平扩张"。</purpose>
+
+  <inputs>
+    <target type="required">{company|product}</target>
+    <substitutes type="required">{from eco_substitute_classifier_v2_3}</substitutes>
+    <sources type="required">{segment|performance|pricing_history|share|regulatory|notes}</sources>
+    <asof type="required">{YYYY-MM-DD}</asof>
+  </inputs>
+
+  <foothold_requirement comment="必须满足其一">
+    <type name="low_end">
+      <definition>服务被现有龙头过度服务(overserved)的低端客户</definition>
+      <criteria>
+        <item>overserved_segment: 存在"功能过剩、价格敏感"的客户群</item>
+        <item>lower_price: 价格显著低于incumbent(>30%)</item>
+        <item>acceptable_performance: 性能"够用"但不领先</item>
+      </criteria>
+      <evidence_required>客户群定义, 价格对比, 性能对比</evidence_required>
+    </type>
+    <type name="new_market">
+      <definition>服务之前完全没被服务的客户群(non-consumption)</definition>
+      <criteria>
+        <item>non_consumers: 之前不使用任何类似产品的群体</item>
+        <item>new_context: 新使用场景(时间/地点/方式)</item>
+        <item>lower_barrier: 使用门槛大幅降低</item>
+      </criteria>
+      <evidence_required>非消费群体定义, 新场景描述, 门槛对比</evidence_required>
+    </type>
+    <fail_action>无foothold → verdict=NOT_DISRUPTION</fail_action>
+  </foothold_requirement>
+
+  <upmarket_requirement comment="必须满足">
+    <definition>正在或有能力向高端市场渗透</definition>
+    <criteria>
+      <item>performance_trajectory: 性能改进速度>incumbent</item>
+      <item>margin_expansion: 利润率有提升空间</item>
+      <item>customer_migration: 已有incumbent客户开始转向</item>
+      <item>incumbent_response: incumbent无法/不愿响应</item>
+    </criteria>
+    <evidence_levels>
+      <level name="strong">已观察到向上渗透(客户迁移数据)</level>
+      <level name="moderate">技术轨迹支持，尚未大规模发生</level>
+      <level name="weak">理论可能，缺乏证据</level>
+    </evidence_levels>
+    <velocity>量化上移速度(份额变化/客户tier变化)</velocity>
+    <fail_action>仅weak证据 → verdict=POTENTIAL(非QUALIFIED)</fail_action>
+  </upmarket_requirement>
+
+  <disruption_disqualifiers comment="任一命中则NOT_DISRUPTION">
+    <dq id="DQ1" name="sustaining_innovation">
+      <condition>从第一天就瞄准主流市场+高性能</condition>
+      <example>Tesla Model S瞄准豪车市场，非低端/新市场</example>
+      <result>不是颠覆，是持续性创新</result>
+    </dq>
+    <dq id="DQ2" name="high_end_entry">
+      <condition>从高端切入向下扩展</condition>
+      <example>苹果进入新品类时通常从高端开始</example>
+      <result>不是颠覆，是高端延伸</result>
+    </dq>
+    <dq id="DQ3" name="feature_addition">
+      <condition>仅在现有产品上叠加功能</condition>
+      <example>软件增加AI功能但未改变价值网络</example>
+      <result>不是颠覆，是功能迭代</result>
+    </dq>
+    <dq id="DQ4" name="horizontal_move">
+      <condition>进入相邻市场但未从底层切入</condition>
+      <example>Google进入云计算直接对标AWS</example>
+      <result>不是颠覆，是水平扩张</result>
+    </dq>
+    <dq id="DQ5" name="incumbent_can_respond">
+      <condition>incumbent有能力且有意愿快速响应</condition>
+      <example>微软收购Skype应对VoIP</example>
+      <result>颠覆威胁可能被化解</result>
+    </dq>
+    <dq id="DQ6" name="regulatory_protection">
+      <condition>监管保护incumbent，阻止新进入者</condition>
+      <example>银行牌照壁垒、电信牌照</example>
+      <result>颠覆路径受阻</result>
+    </dq>
+  </disruption_disqualifiers>
+
+  <workflow>
+    <s1 name="Foothold_Verification">
+      low_end或new_market必须验证；无→NOT_DISRUPTION。
+    </s1>
+    <s2 name="Upmarket_Verification">
+      客户上移/性能追平/份额侵蚀；输出velocity。
+    </s2>
+    <s3 name="Disqualifier_Check">
+      遍历6个DQ；任一命中→NOT_DISRUPTION并解释。
+    </s3>
+    <s4 name="Segmented_Verdict">
+      可输出"对incumbent_A是disruption"但"对peer_B是sustaining"。
+    </s4>
+    <s5 name="Reg_Dependency">
+      若受监管强约束→reason_code=ECO_REG_DEPENDENCY，限制confidence。
+    </s5>
+    <s6 name="Score_Calculation">
+      DS = foothold_strength × upmarket_velocity × disqualifier_penalty(hit→0)。
+    </s6>
+  </workflow>
+
+  <scoring>
+    <dimension name="foothold_strength" weight="0.40">立足点强度(evidence+clarity)</dimension>
+    <dimension name="upmarket_velocity" weight="0.40">向上攻击速度(evidence level)</dimension>
+    <dimension name="disqualifier_penalty">任一DQ命中→乘0</dimension>
+    <formula>confidence = foothold_strength × upmarket_velocity × disqualifier_penalty</formula>
+    <confidence_cap>≤ min(upstream_confidences)</confidence_cap>
+  </scoring>
+
+  <disruption_score>
+    <formula>DS = (foothold_pass ? foothold_strength : 0) × (upmarket_pass ? upmarket_velocity : 0) × (no_dq ? 1 : 0)</formula>
+    <interpretation>
+      <range min="0.7" max="1.0">高度颠覆威胁(QUALIFIED)</range>
+      <range min="0.4" max="0.7">中等颠覆可能(POTENTIAL)</range>
+      <range min="0.1" max="0.4">早期颠覆信号(EARLY_SIGNAL)</range>
+      <special>DS=0 → NOT_DISRUPTION</special>
+    </interpretation>
+  </disruption_score>
+
+  <reason_codes>
+    <code id="ECO_FOOTHOLD_MISSING">无low_end或new_market立足点</code>
+    <code id="ECO_UPMARKET_WEAK">向上攻击证据不足</code>
+    <code id="ECO_DISQUALIFIER_HIT">触发disqualifier(附DQ编号)</code>
+    <code id="ECO_REG_DEPENDENCY">受监管强约束</code>
+    <code id="ECO_SOURCE_CONFLICT">来源矛盾</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="持续出现主流客户赢单/份额侵蚀">POTENTIAL→QUALIFIED</item>
+    <item trigger="证据表明incumbent可快速复制且未改变价值网络">→NOT_DISRUPTION</item>
+    <item trigger="监管变化打开路径">重评regulatory_protection</item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-DQ-01">无foothold不可判为disruption</check>
+    <check id="INV-DQ-02">触发disqualifier不可判为QUALIFIED</check>
+    <check id="INV-DQ-03">upmarket=weak不可DS>0.5</check>
+    <check id="INV-DQ-04">每个verdict必须有evidence_refs</check>
+  </invariants>
+
+  <output_contract>
+    <field name="disruption_assessment">[{
+      candidate,
+      foothold: {type(low_end|new_market|none), strength, description, evidence_refs[]},
+      upmarket: {status(strong|moderate|weak|none), velocity, evidence_refs[]},
+      disqualifiers_hit: [{dq_id, dq_name, explanation}],
+      segmented_impact: [{incumbent, verdict, rationale}],
+      disruption_score,
+      verdict(QUALIFIED|POTENTIAL|EARLY_SIGNAL|NOT_DISRUPTION),
+      key_uncertainty,
+      timeline
+    }]</field>
+    <field name="true_disruptors">[QUALIFIED判定者]</field>
+    <field name="false_alarms">[常被误判为颠覆但实际不是]</field>
+    <field name="watch_list">[POTENTIAL/EARLY_SIGNAL，需监控]</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="confidence_cap">0.0-1.0</field>
+    <field name="reason_codes">[]</field>
+    <field name="asof">YYYY-MM-DD</field>
+  </output_contract>
+</skill>

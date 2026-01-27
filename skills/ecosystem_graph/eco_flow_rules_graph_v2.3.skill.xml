@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="eco_flow_rules_graph_v2_3" lang="zh" version="2.3">
+  <metadata>
+    <id>ecosystem_graph.flow_rules_graph</id>
+    <position>2/6</position>
+    <upstream>eco_role_map</upstream>
+    <downstream>eco_competition_surface, eco_substitute_classifier</downstream>
+    <theory>Value Network + Platform Economics + PARTS Rules</theory>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>构建flow+rule图谱；把"规则"固化为可执行字段：owner/enforcer/mechanism/reversibility/rights_scope。</purpose>
+
+  <inputs>
+    <target type="required">{company|product}</target>
+    <roles type="required">{from eco_role_map_v2_3}</roles>
+    <sources type="required">{docs|contracts|policies|pricing|filings|news|api|notes}</sources>
+    <asof type="required">{YYYY-MM-DD}</asof>
+    <limits max_edges="140"/>
+  </inputs>
+
+  <flow_types>
+    <type name="money">资金流向(付费/投资/补贴)</type>
+    <type name="service">产品/服务/原材料流向</type>
+    <type name="info">数据/信息流向</type>
+    <type name="attention">影响力/注意力/决策权流向</type>
+  </flow_types>
+
+  <rule_edge_types>
+    <category name="formal_rules">
+      <type>standards - 技术/行业标准(USB-C, 5G NR)</type>
+      <type>apis_protocols - API/协议规范(OAuth, gRPC)</type>
+      <type>contracts_terms - 合同条款(独家供应, MFN)</type>
+      <type>certifications - 认证/资质(FDA, ISO)</type>
+      <type>regulations - 政府法规(GDPR, 反垄断)</type>
+      <type>ip_patents - 知识产权/专利(SEP, 交叉授权)</type>
+    </category>
+    <category name="platform_rules">
+      <type>platform_policies - 平台政策(App Store审核, 30%抽成)</type>
+      <type>pricing_rules - 定价规则(MFN, 最低价保证)</type>
+      <type>data_rights - 数据权限(可携带GDPR Art.20, API访问限制)</type>
+    </category>
+    <category name="implicit_rules">
+      <type>network_lock_in - 网络效应锁定(社交图谱, 内容生态)</type>
+      <type>habit_lock_in - 习惯/学习曲线锁定(快捷键, 工作流)</type>
+    </category>
+  </rule_edge_types>
+
+  <rule_required_fields comment="PARTS Rules核心字段">
+    <field name="owner">谁制定规则</field>
+    <field name="enforcer">谁执行规则(可与owner不同)</field>
+    <field name="mechanism">如何约束(技术/合同/法律/社会)</field>
+    <field name="reversibility">易逆(easy)/难逆(hard)/不可逆(irreversible)</field>
+    <field name="rights_scope" optional="true">适用于data_rights: {portability?, access?, reuse?, exclusivity?}</field>
+    <field name="impact_surface" optional="true">适用于pricing_rules: {ceiling?, channel?, margin?}</field>
+  </rule_required_fields>
+
+  <workflow>
+    <s1 name="Flow_Edges">
+      flow_type + direction + value_capture_hint(optional) + valid_from/to。
+    </s1>
+    <s2 name="Rule_Edges">
+      rule_type必填；owner/enforcer/mechanism/reversibility必填。
+    </s2>
+    <s3 name="Rights_Scope">
+      data_rights需填portability/access/reuse/exclusivity(例：GDPR Art.20)。
+    </s3>
+    <s4 name="Pricing_Impact">
+      pricing_rules需填impact_surface={ceiling, channel, margin}。
+    </s4>
+    <s5 name="Chokepoints">
+      bottleneck_type={standard, default, capacity, data, license}；
+      criticality评分 + mitigation_options。
+    </s5>
+    <s6 name="Edge_Confidence">
+      证据等级 + 一致性 + 时效 → edge_confidence。
+    </s6>
+  </workflow>
+
+  <scoring>
+    <dimension name="coverage" weight="0.40">角色覆盖(每实体≥1边)</dimension>
+    <dimension name="rule_executability" weight="0.35">rule字段完整(owner/enforcer/mechanism)</dimension>
+    <dimension name="evidence_quality" weight="0.25">来源等级 + 时效</dimension>
+    <formula>confidence = min(coverage, rule_executability, evidence_quality)</formula>
+    <confidence_cap>downstream ≤ min(upstream_confidences)</confidence_cap>
+  </scoring>
+
+  <reason_codes>
+    <code id="ECO_ORPHAN_NODE">Role Map中player无任何边</code>
+    <code id="ECO_RULE_INCOMPLETE">规则边缺少owner/enforcer/mechanism</code>
+    <code id="ECO_MECHANISM_UNKNOWN">约束机制不明</code>
+    <code id="ECO_SOURCE_CONFLICT">来源矛盾</code>
+    <code id="ECO_STALE">边的valid_to已过期</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="平台政策/合同条款更新">旧rule边设valid_to，新建边</item>
+    <item trigger="数据可移植性/监管判例改变">重估data_rights与lock_in</item>
+    <item trigger="新技术标准发布">重估standards边</item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-FR-01">Role Map每个canonical_id在此≥1条边，否则ORPHAN_NODE</check>
+    <check id="INV-FR-02">rule边必须有owner+enforcer+mechanism</check>
+    <check id="INV-FR-03">chokepoint criticality>0.8必须有mitigation_options</check>
+  </invariants>
+
+  <output_contract>
+    <field name="graph">{
+      nodes: [{id, canonical_id, type, label}],
+      edges: [{src, dst, edge_kind(flow|rule), flow_type?, rule_type?,
+               owner?, enforcer?, mechanism?, rights_scope?, impact_surface?,
+               reversibility?, bottleneck_type?, valid_from?, valid_to?,
+               evidence_refs[], edge_confidence}]
+    }</field>
+    <field name="rule_owners">[{canonical_id, rules_owned[], power_score}]</field>
+    <field name="chokepoints">[{id, type, controlled_by, criticality, mitigation_options[]}]</field>
+    <field name="orphan_warnings">[canonical_ids无边连接]</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="confidence_cap">0.0-1.0</field>
+    <field name="reason_codes">[]</field>
+    <field name="asof">YYYY-MM-DD</field>
+  </output_contract>
+</skill>

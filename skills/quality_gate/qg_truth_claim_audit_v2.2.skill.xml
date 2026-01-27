@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="qg_truth_claim_audit_v2_2" lang="zh" version="2.2">
+  <metadata>
+    <id>quality_gate.truth_claim_audit</id>
+    <position>2/7</position>
+    <upstream>qg_policy_pack_loader</upstream>
+    <downstream>qg_verdict_router</downstream>
+    <theory>Evidence-Based Verification + Definition Consistency</theory>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>确定性审计claims：A/B证据覆盖、口径/单位一致、时效、冲突；输出stats供verdict decision。</purpose>
+
+  <inputs>
+    <claim_registry type="required">
+      <schema>[{
+        claim_id: string,
+        type: "FACT|CAUSAL|FORECAST|VALUATION|ACTION",
+        statement: string,
+        criticality: "CRITICAL|MAJOR|MINOR",
+        confidence: float,
+        evidence_refs: [string],
+        falsifier: string
+      }]</schema>
+    </claim_registry>
+    <evidence_registry type="required">
+      <schema>[{
+        evidence_id: string,
+        grade: "A|B|C",
+        source_type: string,
+        source_name: string,
+        retrieved_at: date,
+        excerpt: string,
+        definition_context: string
+      }]</schema>
+    </evidence_registry>
+    <policy type="required">{from qg_policy_pack_loader}</policy>
+  </inputs>
+
+  <audit_dimensions>
+    <dimension name="ab_coverage">
+      <definition>被A/B级证据支持的claims占比</definition>
+      <calculation>(claims with A/B evidence) / (total claims)</calculation>
+      <threshold>policy.thresholds.ab_coverage_min (default: 0.40)</threshold>
+    </dimension>
+    <dimension name="unsupported_ratio">
+      <definition>无任何证据支持的claims占比(加权)</definition>
+      <calculation>Σ(unsupported × weight) / Σ(weight)</calculation>
+      <weights>CRITICAL=3.0, MAJOR=1.5, MINOR=1.0</weights>
+      <threshold>policy.thresholds.unsupported_ratio_block (default: 0.50)</threshold>
+    </dimension>
+    <dimension name="conflict_count">
+      <definition>口径/数据冲突的数量</definition>
+      <detection>同一指标不同来源数值差异>10%或定义不一致</detection>
+      <threshold>policy.thresholds.conflicts_block (default: 3)</threshold>
+    </dimension>
+    <dimension name="staleness_days">
+      <definition>最旧关键证据的天数</definition>
+      <calculation>max(today - retrieved_at) for CRITICAL claims</calculation>
+      <threshold>policy.thresholds.staleness_days_max (default: 30)</threshold>
+    </dimension>
+  </audit_dimensions>
+
+  <definition_checks>
+    <check name="ttm_vs_fy">
+      <description>TTM vs 财年数据混用</description>
+      <detection>同一指标同时引用TTM和FY数据</detection>
+    </check>
+    <check name="diluted_shares">
+      <description>稀释股数 vs 基本股数</description>
+      <detection>EPS计算使用不一致的股数基数</detection>
+    </check>
+    <check name="segment_basis">
+      <description>分部口径一致性</description>
+      <detection>收入分部加总与总收入不符</detection>
+    </check>
+    <check name="currency">
+      <description>货币单位一致性</description>
+      <detection>混用不同货币未注明</detection>
+    </check>
+  </definition_checks>
+
+  <workflow>
+    <s1 name="Compute_Stats">
+      计算ab_coverage, unsupported_ratio, conflict_count, staleness_days,
+      critical_unsupported_count(加权)。
+    </s1>
+    <s2 name="Definition_Audit">
+      对每个claim执行definition_checks，标记不一致。
+    </s2>
+    <s3 name="Per_Claim_Review">
+      为每个claim生成status(PASS|DEGRADE|FAIL)和issues列表。
+    </s3>
+    <s4 name="Suggested_Actions">
+      根据issues生成suggested_actions(fetch/reconcile/clarify)。
+    </s4>
+  </workflow>
+
+  <scoring>
+    <dimension name="ab_coverage" weight="0.35">A/B证据覆盖率</dimension>
+    <dimension name="definition_consistency" weight="0.35">口径一致性</dimension>
+    <dimension name="freshness" weight="0.30">证据时效性</dimension>
+    <formula>confidence = min(ab_coverage, definition_consistency, freshness)</formula>
+  </scoring>
+
+  <reason_codes>
+    <code id="TRUTH_EVIDENCE_GAP">claim缺少任何证据支持</code>
+    <code id="TRUTH_LOW_GRADE_COVERAGE">A/B证据覆盖率低于阈值</code>
+    <code id="TRUTH_DEFINITION_MISMATCH">口径/单位定义不一致</code>
+    <code id="TRUTH_STALE_EVIDENCE">关键证据过期(>30天)</code>
+    <code id="TRUTH_SOURCE_CONFLICT">同一指标不同来源冲突</code>
+    <code id="TRUTH_CRITICAL_UNSUPPORTED">CRITICAL级claim无证据</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="补齐A/B证据">
+      ab_coverage提升，若超过阈值则解除TRUTH_LOW_GRADE_COVERAGE。
+    </item>
+    <item trigger="完成口径桥表">
+      conflict_count下降，若≤阈值则解除TRUTH_SOURCE_CONFLICT。
+    </item>
+    <item trigger="更新过期证据">
+      staleness_days下降，若≤阈值则解除TRUTH_STALE_EVIDENCE。
+    </item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-TCA-01">CRITICAL claim必须有≥1条证据</check>
+    <check id="INV-TCA-02">所有stats值必须在合理范围(0-1或正整数)</check>
+    <check id="INV-TCA-03">每个claim_review必须有status</check>
+  </invariants>
+
+  <output_contract>
+    <field name="claim_review">[{
+      claim_id: string,
+      status: "PASS|DEGRADE|FAIL",
+      issues: [{type, description, severity}],
+      suggested_actions: [{action, target, priority}]
+    }]</field>
+    <field name="stats">{
+      ab_coverage: float,
+      unsupported_ratio: float,
+      conflict_count: int,
+      staleness_days: int,
+      critical_unsupported_count: int
+    }</field>
+    <field name="definition_issues">[{
+      claim_id: string,
+      check_name: string,
+      description: string
+    }]</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="reason_codes">[]</field>
+  </output_contract>
+</skill>

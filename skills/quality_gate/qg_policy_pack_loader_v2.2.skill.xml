@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="qg_policy_pack_loader_v2_2" lang="zh" version="2.2">
+  <metadata>
+    <id>quality_gate.policy_pack_loader</id>
+    <position>0/7</position>
+    <downstream>qg_upstream_confidence_aggregator</downstream>
+    <theory>Deterministic Policy + Immutable Snapshot</theory>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>加载policy_pack并冻结；校验version+hash，保证同run可重放可回归。</purpose>
+
+  <inputs>
+    <policy_pack type="required">
+      <version>语义版本号(如qg-2.2.0)</version>
+      <hash>sha256内容哈希</hash>
+      <blob>完整policy内容</blob>
+    </policy_pack>
+    <run_id type="required">{uuid}</run_id>
+  </inputs>
+
+  <workflow>
+    <s1 name="Schema_Validation">
+      校验policy_pack必填字段：thresholds, weights, verdict_rules_ordered,
+      reason_code_matrix, degrade_template, safety。
+      <on_fail>FAIL with PROC_POLICY_SCHEMA_INVALID</on_fail>
+    </s1>
+    <s2 name="Hash_Verification">
+      计算blob的sha256，与声明的hash对比。
+      <on_mismatch>FAIL with PROC_POLICY_HASH_MISMATCH</on_mismatch>
+    </s2>
+    <s3 name="Freeze_Snapshot">
+      将(run_id, policy_pack_version, policy_hash)绑定，同run_id内不可变。
+      <invariant>同run_id再次加载必须hash一致，否则FAIL</invariant>
+    </s3>
+    <s4 name="Extract_Components">
+      提取thresholds, weights, verdict_rules, reason_code_matrix,
+      degrade_template, safety供下游使用。
+    </s4>
+  </workflow>
+
+  <scoring>
+    <dimension name="schema_valid" weight="0.50">policy schema完整性</dimension>
+    <dimension name="hash_verified" weight="0.50">hash校验通过</dimension>
+    <formula>confidence = min(schema_valid, hash_verified)</formula>
+  </scoring>
+
+  <reason_codes>
+    <code id="PROC_POLICY_MISSING">policy_pack未提供</code>
+    <code id="PROC_POLICY_SCHEMA_INVALID">policy_pack缺少必填字段</code>
+    <code id="PROC_POLICY_HASH_MISMATCH">policy_hash与内容不匹配</code>
+    <code id="PROC_POLICY_HOT_RELOAD_BLOCKED">同run_id内尝试更换policy</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="同run_id内policy_hash变化">
+      必须FAIL，防热加载污染。不可自动修复，需重新run。
+    </item>
+    <item trigger="schema缺失字段">
+      FAIL并返回缺失字段列表。
+    </item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-PPL-01">同run_id内policy_hash必须一致</check>
+    <check id="INV-PPL-02">policy_pack_version必须非空</check>
+    <check id="INV-PPL-03">verdict_rules_ordered必须有≥1条规则</check>
+  </invariants>
+
+  <output_contract>
+    <field name="policy">{
+      version: string,
+      hash: string,
+      thresholds: {...},
+      weights: {...},
+      verdict_rules_ordered: [...],
+      reason_code_matrix: {...},
+      degrade_template: {...},
+      safety: {...}
+    }</field>
+    <field name="frozen_at">ISO8601 timestamp</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="reason_codes">[]</field>
+  </output_contract>
+</skill>

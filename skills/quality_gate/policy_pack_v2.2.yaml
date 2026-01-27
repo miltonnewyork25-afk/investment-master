@@ -1,0 +1,328 @@
+# Quality Gate Policy Pack v2.2
+# 版本化策略包 - Gate的"固化大脑"
+# 原则：Verdict必须deterministic（由policy+统计量+不变量计算），LLM只能提供"修复建议"，不能拍板
+
+policy_pack:
+  version: "qg-2.2.0"
+  hash: "sha256:TO_BE_COMPUTED_AT_BUILD"  # 构建时计算内容哈希
+  asof: "2026-01-27"
+
+---
+
+# 阈值配置
+thresholds:
+  # 证据相关
+  ab_coverage_min: 0.40           # A/B证据覆盖率最低要求
+  unsupported_ratio_block: 0.50   # unsupported占比>50% -> FAIL
+  critical_unsupported_max: 0     # 任一critical claim unsupported -> DEGRADE/FAIL
+
+  # 置信度相关 (v2.2新增)
+  upstream_confidence_min: 0.60   # 上游confidence_cap低于此值 -> DEGRADE
+
+  # 冲突相关
+  conflicts_block: 3              # 口径/数据冲突>3 -> FAIL_UNTIL_RESOLVED
+
+  # 时效相关
+  staleness_days_max: 30          # 关键证据超过30天 -> DEGRADE
+
+---
+
+# 权重配置
+weights:
+  critical_claim_weight: 3.0
+  major_claim_weight: 1.5
+  minor_claim_weight: 1.0
+
+---
+
+# 裁决规则（有序执行，首个匹配决定verdict）
+verdict_rules_ordered:
+  # Rule 1: 安全阻断（最高优先级）
+  - order: 1
+    name: "security_block"
+    if_any_flag: ["SAFE_PROMPT_INJECTION_SUSPECTED", "SAFE_TOOL_POISONING_SUSPECTED"]
+    then:
+      status: "FAIL"
+      tool_permission: "FROZEN"
+      reason: "SAFE_SECURITY_BLOCK"
+
+  # Rule 2: 证据严重不足
+  - order: 2
+    name: "unsupported_block"
+    if_stat:
+      unsupported_ratio:
+        gt: 0.50
+    then:
+      status: "FAIL"
+      tool_permission: "FROZEN"
+      reason: "TRUTH_UNSUPPORTED_TOO_HIGH"
+
+  # Rule 3: 冲突过多
+  - order: 3
+    name: "conflict_block"
+    if_stat:
+      conflict_count:
+        gt: 3
+    then:
+      status: "FAIL_UNTIL_RESOLVED"
+      tool_permission: "READ_ONLY"
+      reason: "TRUTH_SOURCE_CONFLICT"
+
+  # Rule 4: 上游置信度不足 (v2.2新增)
+  - order: 4
+    name: "low_upstream_confidence"
+    if_stat:
+      upstream_confidence_cap:
+        lt: 0.60
+    then:
+      status: "DEGRADE"
+      tool_permission: "READ_ONLY"
+      reason: "TRUTH_LOW_UPSTREAM_CONFIDENCE"
+
+  # Rule 5: A/B覆盖率不足
+  - order: 5
+    name: "low_grade_coverage"
+    if_stat:
+      ab_coverage:
+        lt: 0.40
+    then:
+      status: "DEGRADE"
+      tool_permission: "READ_ONLY"
+      reason: "TRUTH_LOW_GRADE_COVERAGE"
+
+  # Rule 6: invariant检查失败
+  - order: 6
+    name: "invariant_failure"
+    if_stat:
+      invariant_pass_rate:
+        lt: 0.80
+    then:
+      status: "DEGRADE"
+      tool_permission: "READ_ONLY"
+      reason: "TRUTH_INVARIANT_FAILURE"
+
+  # Rule default: 通过
+  - order: 99
+    name: "default_pass"
+    else: true
+    then:
+      status: "PASS"
+      tool_permission: "FULL"
+      reason: null
+
+---
+
+# Reason Code路由矩阵
+reason_code_matrix:
+  # Truth相关
+  TRUTH_EVIDENCE_GAP:
+    severity: "P1"
+    route:
+      - agent: "DataIntegrity"
+        action: "fetch_authoritative_sources"
+        retry: 2
+
+  TRUTH_LOW_GRADE_COVERAGE:
+    severity: "P1"
+    route:
+      - agent: "DataIntegrity"
+        action: "upgrade_evidence_grade"
+        retry: 2
+
+  TRUTH_SOURCE_CONFLICT:
+    severity: "P0"
+    route:
+      - agent: "DataIntegrity"
+        action: "reconcile_and_bridge_definitions"
+        retry: 2
+
+  TRUTH_STALE_EVIDENCE:
+    severity: "P1"
+    route:
+      - agent: "DataIntegrity"
+        action: "refresh_stale_evidence"
+        retry: 1
+
+  TRUTH_ROLE_FLOW_MISMATCH:
+    severity: "P1"
+    route:
+      - agent: "EcosystemGraph"
+        action: "repair_orphan_nodes_and_edges"
+        retry: 2
+
+  TRUTH_SUBSTITUTE_SAMEJOB_FAIL:
+    severity: "P0"
+    route:
+      - agent: "EcosystemGraph"
+        action: "downgrade_to_adjacent_competitor"
+        retry: 1
+
+  TRUTH_DISRUPTION_FOOTHOLD_MISSING:
+    severity: "P0"
+    route:
+      - agent: "EcosystemGraph"
+        action: "remove_disruption_tag_or_add_evidence"
+        retry: 1
+
+  TRUTH_LOW_UPSTREAM_CONFIDENCE:
+    severity: "P1"
+    route:
+      - agent: "Supervisor"
+        action: "request_upstream_improvement"
+        retry: 1
+
+  # Safety相关
+  SAFE_PROMPT_INJECTION_SUSPECTED:
+    severity: "P0"
+    route:
+      - agent: "OutputSafety"
+        action: "quarantine_high_risk_and_regenerate"
+        retry: 1
+
+  SAFE_PII_RISK:
+    severity: "P0"
+    route:
+      - agent: "OutputSafety"
+        action: "redact_pii"
+        retry: 1
+
+  SAFE_EXECUTABLE_OUTPUT_BLOCKED:
+    severity: "P0"
+    route:
+      - agent: "OutputSafety"
+        action: "remove_executable_content"
+        retry: 1
+
+  # Process相关
+  PROC_SCHEMA_INVALID:
+    severity: "P1"
+    route:
+      - agent: "ReportComposer"
+        action: "fix_schema_and_regenerate"
+        retry: 2
+
+  PROC_POLICY_HASH_MISMATCH:
+    severity: "P0"
+    route:
+      - agent: "Supervisor"
+        action: "abort_run_and_restart"
+        retry: 0
+
+---
+
+# DEGRADE模板配置
+degrade_template:
+  # 必须包含的章节
+  required_sections:
+    - "Hypothesis List"
+    - "Key Uncertainties"
+    - "Uncertainty Matrix"    # v2.2新增
+    - "Monitoring Triggers"
+    - "Next Evidence Plan"
+
+  # 禁止包含的章节
+  blocked_sections:
+    - "Target Price"
+    - "Buy/Sell Recommendation"
+    - "High-Conviction Conclusion"
+    - "Investment Action"
+
+  # 禁止使用的措辞
+  blocked_phrases:
+    - "strong buy"
+    - "strong sell"
+    - "target price"
+    - "price target"
+    - "guaranteed"
+    - "must go up"
+    - "must go down"
+    - "definitely will"
+    - "100% certain"
+    - "no risk"
+
+  # Uncertainty Matrix配置 (v2.2新增)
+  uncertainty_matrix:
+    required_columns:
+      - "假设"
+      - "验证方法"
+    optional_columns:
+      - "数据源"
+      - "预计时间"
+      - "当前置信度"
+    min_rows: 3
+    max_rows: 10
+
+---
+
+# 安全配置
+safety:
+  # 输入分区
+  partitions:
+    - "TRUSTED"
+    - "DATA_ONLY"
+    - "HIGH_RISK"
+    - "QUARANTINED"
+
+  # 可信来源白名单
+  trusted_sources:
+    - "SEC EDGAR"
+    - "公司官方财报"
+    - "Bloomberg Terminal"
+    - "Refinitiv"
+    - "FactSet"
+
+  # 可执行载荷阻断模式
+  executable_block_patterns:
+    - "(?i)\\b(rm\\s+-rf|powershell|curl\\s+http|wget\\s+http|chmod\\s+\\+x)\\b"
+    - "(?i)<script\\b"
+    - "(?i)\\beval\\s*\\("
+    - "(?i)\\bexec\\s*\\("
+    - "(?i)\\bos\\.system\\s*\\("
+
+  # PII检测模式
+  pii_patterns:
+    - "(?i)\\bssn\\b"
+    - "(?i)\\bpassport\\b"
+    - "(?i)\\b\\d{3}-\\d{2}-\\d{4}\\b"  # SSN格式
+    - "(?i)\\b\\d{9}\\b"                 # 9位数字
+    - "(?i)credit\\s*card"
+
+  # 注入检测模式
+  injection_patterns:
+    - pattern: "(?i)(ignore|disregard|forget)\\s+(previous|above|all)\\s+(instructions?|rules?|prompts?)"
+      severity: "HIGH"
+    - pattern: "(?i)(system|admin|root)\\s*:\\s*"
+      severity: "MEDIUM"
+    - pattern: "(?i)you\\s+are\\s+(now|actually)\\s+(a|an)"
+      severity: "MEDIUM"
+
+---
+
+# 工具权限级别
+tool_permission_levels:
+  FULL:
+    description: "所有工具可用"
+    allowed_operations: ["read", "write", "execute", "api_call"]
+
+  READ_ONLY:
+    description: "只能读取，不能写入/执行"
+    allowed_operations: ["read"]
+    blocked_operations: ["write", "execute", "api_call"]
+
+  FROZEN:
+    description: "所有工具禁用"
+    allowed_operations: []
+    blocked_operations: ["read", "write", "execute", "api_call"]
+
+---
+
+# 版本历史
+version_history:
+  - version: "qg-2.2.0"
+    date: "2026-01-27"
+    changes:
+      - "新增upstream_confidence_min阈值"
+      - "新增confidence相关verdict规则"
+      - "DEGRADE模板增加uncertainty_matrix"
+      - "新增policy hash校验"
+      - "扩展reason_code_matrix"

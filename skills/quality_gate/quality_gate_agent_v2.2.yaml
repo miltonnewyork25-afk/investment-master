@@ -1,0 +1,269 @@
+# Quality Gate Agent v2.2
+# 质量门禁智能体 - 可审计、可回退、可阻断、可回归
+
+agent:
+  id: quality_gate_agent
+  version: "2.2"
+  name: "Quality Gate Agent"
+  description: |
+    把"多Agent输出"变成可审计、可回退、可阻断、可回归的系统行为：
+    - 任何"投资级结论"必须通过 Truth Gate
+    - 任何"对外输出/可执行内容/隐私风险"必须通过 Safety Gate
+    - 任意 FAIL/DEGRADE 都有 reason_codes 支撑 Supervisor 自动回退
+    - 每次运行都生成 DecisionTrace，用于 Eval/Regression 自动沉淀用例
+
+---
+
+# 理论基础与合规参考
+theory_foundation:
+  security:
+    - name: "OWASP LLM Top 10"
+      application: "Prompt Injection + Insecure Output Handling"
+      ref: "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+
+    - name: "Microsoft Indirect Prompt Injection"
+      application: "分层防御与隔离"
+      ref: "https://www.microsoft.com/en-us/msrc/blog/2025/07/how-microsoft-defends-against-indirect-prompt-injection-attacks"
+
+  evaluation:
+    - name: "Anthropic Agent Eval Harness"
+      application: "DecisionTrace可回放可回归"
+      ref: "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+
+  governance:
+    - name: "NIST AI RMF 1.0"
+      application: "GOVERN/MAP/MEASURE/MANAGE控制点"
+      ref: "https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf"
+
+---
+
+# 核心设计原则
+design_principles:
+  deterministic_verdict:
+    description: "Verdict必须由policy+stats+invariants+flags确定性计算，LLM不得拍板"
+    implementation: "policy.verdict_rules_ordered按序执行，首个匹配决定verdict"
+
+  truth_safety_separation:
+    description: "Truth Gate(事实)与Safety Gate(安全)职责清晰分离"
+    truth_gate:
+      - 证据覆盖率
+      - 口径一致性
+      - 时效性
+      - 冲突检测
+      - 跨skill invariants
+    safety_gate:
+      - 入口分区/注入检测
+      - 输出schema校验
+      - PII检测
+      - 可执行载荷阻断
+
+  invariants_delegation:
+    description: "Option B - QG读取上游skill的invariants并执行，避免重复定义"
+    implementation: "qg_truth_invariants_executor读取invariants_manifest"
+
+  confidence_propagation:
+    description: "confidence_cap ≤ min(upstream_confidences)"
+    implementation: "qg_upstream_confidence_aggregator + qg_verdict_router"
+
+---
+
+# Skill 依赖图
+skill_dependency:
+  graph: |
+    Skill 0 (Policy Pack Loader)
+       ↓
+    Skill 0.5 (Upstream Confidence Aggregator)
+       ↓
+    ┌──────────────────────────────────────────┐
+    │  Skill 1 (Ingress Partition)             │
+    │  Skill 2 (Truth Claim Audit)             │  ← 并行
+    │  Skill 3 (Truth Invariants Executor)     │
+    └──────────────────────────────────────────┘
+       ↓
+    Skill 4 (Verdict Router)
+       ↓
+    Skill 5 (Egress Safety Trace)
+
+  execution_order:
+    sequential: [0, 0.5]
+    parallel: [1, 2, 3]
+    sequential_final: [4, 5]
+
+  data_flow:
+    skill_0_outputs: ["policy"]
+    skill_0.5_outputs: ["upstream_confidence_cap", "upstream_skill_versions"]
+    skill_1_outputs: ["partitioned_input", "flags"]
+    skill_2_outputs: ["claim_review", "stats"]
+    skill_3_outputs: ["invariant_report"]
+    skill_4_outputs: ["verdict", "action_required", "degrade_policy"]
+    skill_5_outputs: ["safe_output", "decision_trace"]
+
+---
+
+# 6+1 Core Skills
+skills:
+  - id: qg_policy_pack_loader_v2_2
+    file: "qg_policy_pack_loader_v2.2.skill.xml"
+    position: 0
+    purpose: "加载并冻结policy_pack，校验version+hash"
+    key_outputs: ["policy", "frozen_at"]
+
+  - id: qg_upstream_confidence_aggregator_v2_2
+    file: "qg_upstream_confidence_aggregator_v2.2.skill.xml"
+    position: 0.5
+    purpose: "聚合上游confidence，计算confidence_cap"
+    key_outputs: ["upstream_confidence_cap", "confidence_anomalies"]
+
+  - id: qg_ingress_partition_v2_2
+    file: "qg_ingress_partition_v2.2.skill.xml"
+    position: 1
+    purpose: "入口分区+注入检测"
+    key_outputs: ["partitioned_input", "flags"]
+
+  - id: qg_truth_claim_audit_v2_2
+    file: "qg_truth_claim_audit_v2.2.skill.xml"
+    position: 2
+    purpose: "证据/口径/时效/冲突审计"
+    key_outputs: ["claim_review", "stats"]
+
+  - id: qg_truth_invariants_executor_v2_2
+    file: "qg_truth_invariants_executor_v2.2.skill.xml"
+    position: 3
+    purpose: "读取上游invariants并执行"
+    key_outputs: ["invariant_report"]
+
+  - id: qg_verdict_router_v2_2
+    file: "qg_verdict_router_v2.2.skill.xml"
+    position: 4
+    purpose: "确定性裁决+reason_code路由"
+    key_outputs: ["verdict", "action_required", "degrade_policy"]
+
+  - id: qg_egress_safety_trace_v2_2
+    file: "qg_egress_safety_trace_v2.2.skill.xml"
+    position: 5
+    purpose: "出口安全+DEGRADE模板+DecisionTrace"
+    key_outputs: ["safe_output", "decision_trace"]
+
+---
+
+# 输入输出规范
+io_spec:
+  input:
+    from_blackboard:
+      - claim_registry: "所有断言(含criticality/evidence_refs/confidence)"
+      - evidence_registry: "证据(grade A/B/C、来源、时间戳)"
+      - artifacts: "eco_pkg/thesis_memo/valuation_summary/report_draft"
+      - invariants_manifest: "上游skills定义的invariants"
+
+    from_run_context:
+      - run_id: "本次运行UUID"
+      - policy_pack: "版本化策略包"
+      - upstream_outputs: "上游skills的输出(含confidence)"
+
+  output:
+    verdict:
+      status: "PASS | DEGRADE | FAIL | FAIL_UNTIL_RESOLVED"
+      reason_codes: "[]"
+      tool_permission_level: "FULL | READ_ONLY | FROZEN"
+
+    action_required:
+      description: "自动回退路由"
+      schema: "[{agent, action, retry_budget}]"
+
+    degrade_policy:
+      description: "DEGRADE模板锁定"
+      schema: "{required_sections, blocked_sections, blocked_phrases}"
+
+    safe_output:
+      description: "最终允许输出"
+
+    decision_trace:
+      description: "append-only审计工件"
+      usage: "用于Eval/Regression"
+
+---
+
+# 全局Reason Codes命名空间
+reason_code_namespaces:
+  TRUTH_:
+    description: "证据/口径/一致性/时效"
+    codes:
+      - TRUTH_EVIDENCE_GAP
+      - TRUTH_LOW_GRADE_COVERAGE
+      - TRUTH_DEFINITION_MISMATCH
+      - TRUTH_STALE_EVIDENCE
+      - TRUTH_SOURCE_CONFLICT
+      - TRUTH_CRITICAL_UNSUPPORTED
+      - TRUTH_LOW_UPSTREAM_CONFIDENCE
+      - TRUTH_ROLE_FLOW_MISMATCH
+      - TRUTH_SUBSTITUTE_SAMEJOB_FAIL
+      - TRUTH_DISRUPTION_FOOTHOLD_MISSING
+
+  SAFE_:
+    description: "注入/隐私/可执行载荷"
+    codes:
+      - SAFE_PROMPT_INJECTION_SUSPECTED
+      - SAFE_SOURCE_NOT_WHITELISTED
+      - SAFE_TOOL_POISONING_SUSPECTED
+      - SAFE_PII_RISK
+      - SAFE_EXECUTABLE_OUTPUT_BLOCKED
+      - SAFE_INJECTION_REMNANT
+      - SAFE_SECURITY_BLOCK
+
+  PROC_:
+    description: "schema/策略/流程/回退"
+    codes:
+      - PROC_POLICY_MISSING
+      - PROC_POLICY_SCHEMA_INVALID
+      - PROC_POLICY_HASH_MISMATCH
+      - PROC_POLICY_HOT_RELOAD_BLOCKED
+      - PROC_UPSTREAM_MISSING
+      - PROC_SCHEMA_INVALID
+      - PROC_NO_ACTION_MAPPING
+      - PROC_KILL_SWITCH_TRIGGERED
+      - PROC_DEGRADE_TEMPLATE_ENFORCED
+
+---
+
+# 跨Skill不变量
+cross_skill_invariants:
+  - id: "XCHK-QG-01"
+    name: "policy_immutable"
+    rule: "同run_id内policy_hash必须一致"
+    on_fail: "FAIL with PROC_POLICY_HOT_RELOAD_BLOCKED"
+
+  - id: "XCHK-QG-02"
+    name: "confidence_propagation"
+    rule: "confidence_cap ≤ min(upstream_confidences)"
+    on_fail: "auto-cap to min"
+
+  - id: "XCHK-QG-03"
+    name: "deterministic_verdict"
+    rule: "同输入执行两次必须产生同verdict"
+    on_fail: "FAIL with PROC_VERDICT_NONDETERMINISTIC"
+
+  - id: "XCHK-QG-04"
+    name: "degrade_template_enforced"
+    rule: "DEGRADE输出必须使用degrade_template"
+    on_fail: "auto-enforce template"
+
+---
+
+# 版本历史
+version_history:
+  - version: "2.2"
+    date: "2026-01-27"
+    changes:
+      - "增加Skill 0.5 Upstream Confidence Aggregator"
+      - "confidence_cap纳入verdict决策"
+      - "DecisionTrace扩展token/latency/tool_calls"
+      - "Policy hash校验(热加载保护)"
+      - "DEGRADE模板增加uncertainty_matrix"
+      - "invariants采用Option B(读取上游执行)"
+
+  - version: "2.1"
+    date: "2026-01-26"
+    changes:
+      - "初始6-skill架构"
+      - "Policy Pack版本化"
+      - "Truth/Safety分层"

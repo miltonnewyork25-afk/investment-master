@@ -1,0 +1,384 @@
+# Reason Code Dictionary v1.0
+# 全系统统一命名空间
+# 用途：标准化错误码，支持自动路由和回归分析
+
+version: "1.0"
+created: "2026-01-27"
+
+---
+
+# 命名空间定义
+namespaces:
+  TRUTH_:
+    description: "证据/口径/一致性/时效相关"
+    severity_range: ["P0", "P1", "P2"]
+    owner_agent: "DataIntegrity"
+
+  SAFE_:
+    description: "注入/隐私/可执行载荷/安全相关"
+    severity_range: ["P0"]
+    owner_agent: "OutputSafety"
+
+  PROC_:
+    description: "schema/策略/流程/回退相关"
+    severity_range: ["P0", "P1"]
+    owner_agent: "Supervisor"
+
+  TOOL_:
+    description: "工具调用正确性(Eval专用)"
+    severity_range: ["P1", "P2"]
+    owner_agent: "ToolEval"
+
+---
+
+# TRUTH_ 命名空间
+truth_codes:
+  TRUTH_EVIDENCE_GAP:
+    description: "claim缺少任何证据支持"
+    severity: "P1"
+    category: "evidence"
+    auto_route:
+      agent: "DataIntegrity"
+      action: "fetch_authoritative_sources"
+      retry: 2
+    resolution: "补充A/B级证据"
+
+  TRUTH_LOW_GRADE_COVERAGE:
+    description: "A/B证据覆盖率低于阈值(default: 40%)"
+    severity: "P1"
+    category: "evidence"
+    auto_route:
+      agent: "DataIntegrity"
+      action: "upgrade_evidence_grade"
+      retry: 2
+    resolution: "将C级证据升级为A/B级，或补充新证据"
+
+  TRUTH_DEFINITION_MISMATCH:
+    description: "口径/单位定义不一致(如TTM vs FY)"
+    severity: "P1"
+    category: "consistency"
+    auto_route:
+      agent: "DataIntegrity"
+      action: "create_bridge_table"
+      retry: 2
+    resolution: "创建口径桥表，统一定义"
+
+  TRUTH_STALE_EVIDENCE:
+    description: "关键证据过期(default: >30天)"
+    severity: "P2"
+    category: "freshness"
+    auto_route:
+      agent: "DataIntegrity"
+      action: "refresh_stale_evidence"
+      retry: 1
+    resolution: "更新为最新数据"
+
+  TRUTH_SOURCE_CONFLICT:
+    description: "同一指标不同来源数值冲突(>10%)"
+    severity: "P0"
+    category: "consistency"
+    auto_route:
+      agent: "DataIntegrity"
+      action: "reconcile_and_bridge_definitions"
+      retry: 2
+    resolution: "调和冲突来源，确定权威数据"
+
+  TRUTH_CRITICAL_UNSUPPORTED:
+    description: "CRITICAL级claim无证据支持"
+    severity: "P0"
+    category: "evidence"
+    auto_route:
+      agent: "DataIntegrity"
+      action: "fetch_critical_evidence"
+      retry: 3
+    resolution: "必须为关键claim补充证据"
+
+  TRUTH_LOW_UPSTREAM_CONFIDENCE:
+    description: "上游skills的confidence_cap低于阈值(default: 60%)"
+    severity: "P1"
+    category: "confidence"
+    auto_route:
+      agent: "Supervisor"
+      action: "request_upstream_improvement"
+      retry: 1
+    resolution: "要求上游skill改进输出质量"
+
+  TRUTH_ROLE_FLOW_MISMATCH:
+    description: "Role Map中player在Flow Graph无边(ORPHAN)"
+    severity: "P1"
+    category: "invariant"
+    auto_route:
+      agent: "EcosystemGraph"
+      action: "repair_orphan_nodes_and_edges"
+      retry: 2
+    resolution: "补充缺失的边或删除孤立节点"
+
+  TRUTH_SUBSTITUTE_SAMEJOB_FAIL:
+    description: "substitute判定违反same_job门禁(<2)"
+    severity: "P0"
+    category: "invariant"
+    auto_route:
+      agent: "EcosystemGraph"
+      action: "downgrade_to_adjacent_competitor"
+      retry: 1
+    resolution: "降级为adjacent_competitor或删除substitute标签"
+
+  TRUTH_DISRUPTION_FOOTHOLD_MISSING:
+    description: "disruption判定缺少foothold证据"
+    severity: "P0"
+    category: "invariant"
+    auto_route:
+      agent: "EcosystemGraph"
+      action: "remove_disruption_tag_or_add_evidence"
+      retry: 1
+    resolution: "补充foothold证据或移除disruption标签"
+
+  TRUTH_UNSUPPORTED_TOO_HIGH:
+    description: "无证据支持的claims占比过高(>50%)"
+    severity: "P0"
+    category: "evidence"
+    auto_route:
+      agent: "DataIntegrity"
+      action: "bulk_evidence_fetch"
+      retry: 3
+    resolution: "大规模补充证据"
+
+  TRUTH_INVARIANT_FAILURE:
+    description: "invariant检查通过率过低(<80%)"
+    severity: "P1"
+    category: "invariant"
+    auto_route:
+      agent: "Supervisor"
+      action: "trigger_repair_cycle"
+      retry: 2
+    resolution: "触发修复循环"
+
+---
+
+# SAFE_ 命名空间
+safe_codes:
+  SAFE_PROMPT_INJECTION_SUSPECTED:
+    description: "检测到疑似prompt injection模式"
+    severity: "P0"
+    category: "injection"
+    auto_route:
+      agent: "OutputSafety"
+      action: "quarantine_high_risk_and_regenerate"
+      retry: 1
+    resolution: "隔离可疑内容，重新生成"
+    blocking: true
+
+  SAFE_SOURCE_NOT_WHITELISTED:
+    description: "来源不在可信白名单中"
+    severity: "P1"
+    category: "trust"
+    auto_route:
+      agent: "DataIntegrity"
+      action: "verify_source_authority"
+      retry: 1
+    resolution: "验证来源权威性或升级分区"
+
+  SAFE_TOOL_POISONING_SUSPECTED:
+    description: "检测到疑似工具污染模式"
+    severity: "P0"
+    category: "injection"
+    auto_route:
+      agent: "OutputSafety"
+      action: "isolate_tool_result"
+      retry: 0
+    resolution: "隔离工具结果，人工审核"
+    blocking: true
+
+  SAFE_PII_RISK:
+    description: "检测到PII(个人身份信息)"
+    severity: "P0"
+    category: "privacy"
+    auto_route:
+      agent: "OutputSafety"
+      action: "redact_pii"
+      retry: 1
+    resolution: "脱敏处理或阻断输出"
+
+  SAFE_EXECUTABLE_OUTPUT_BLOCKED:
+    description: "检测到可执行载荷"
+    severity: "P0"
+    category: "security"
+    auto_route:
+      agent: "OutputSafety"
+      action: "remove_executable_content"
+      retry: 1
+    resolution: "移除可执行内容"
+    blocking: true
+
+  SAFE_INJECTION_REMNANT:
+    description: "检测到残留的注入模式"
+    severity: "P0"
+    category: "injection"
+    auto_route:
+      agent: "OutputSafety"
+      action: "deep_clean_output"
+      retry: 1
+    resolution: "深度清理输出"
+    blocking: true
+
+  SAFE_SECURITY_BLOCK:
+    description: "安全原因触发阻断"
+    severity: "P0"
+    category: "security"
+    auto_route:
+      agent: "Supervisor"
+      action: "halt_and_review"
+      retry: 0
+    resolution: "停止处理，人工审核"
+    blocking: true
+
+---
+
+# PROC_ 命名空间
+proc_codes:
+  PROC_POLICY_MISSING:
+    description: "policy_pack未提供"
+    severity: "P0"
+    category: "config"
+    auto_route:
+      agent: "Supervisor"
+      action: "load_default_policy"
+      retry: 1
+    resolution: "加载默认policy或终止"
+
+  PROC_POLICY_SCHEMA_INVALID:
+    description: "policy_pack缺少必填字段"
+    severity: "P0"
+    category: "config"
+    auto_route:
+      agent: "Supervisor"
+      action: "abort_run"
+      retry: 0
+    resolution: "修复policy schema"
+
+  PROC_POLICY_HASH_MISMATCH:
+    description: "policy_hash与内容不匹配"
+    severity: "P0"
+    category: "integrity"
+    auto_route:
+      agent: "Supervisor"
+      action: "abort_run_and_restart"
+      retry: 0
+    resolution: "重新构建policy"
+    blocking: true
+
+  PROC_POLICY_HOT_RELOAD_BLOCKED:
+    description: "同run_id内尝试更换policy"
+    severity: "P0"
+    category: "integrity"
+    auto_route:
+      agent: "Supervisor"
+      action: "reject_and_continue"
+      retry: 0
+    resolution: "拒绝热加载，使用原policy"
+
+  PROC_UPSTREAM_MISSING:
+    description: "期望的上游skill输出缺失"
+    severity: "P1"
+    category: "dependency"
+    auto_route:
+      agent: "Supervisor"
+      action: "trigger_upstream_rerun"
+      retry: 2
+    resolution: "触发上游skill重新运行"
+
+  PROC_SCHEMA_INVALID:
+    description: "输出schema不合法"
+    severity: "P1"
+    category: "output"
+    auto_route:
+      agent: "ReportComposer"
+      action: "fix_schema_and_regenerate"
+      retry: 2
+    resolution: "修复schema并重新生成"
+
+  PROC_NO_ACTION_MAPPING:
+    description: "reason_code在matrix中无对应action"
+    severity: "P2"
+    category: "config"
+    auto_route:
+      agent: "Supervisor"
+      action: "escalate_to_human"
+      retry: 0
+    resolution: "更新reason_code_matrix"
+
+  PROC_KILL_SWITCH_TRIGGERED:
+    description: "触发kill switch导致FAIL"
+    severity: "P0"
+    category: "safety"
+    auto_route:
+      agent: "Supervisor"
+      action: "halt_and_report"
+      retry: 0
+    resolution: "人工介入"
+    blocking: true
+
+  PROC_DEGRADE_TEMPLATE_ENFORCED:
+    description: "已强制使用DEGRADE模板"
+    severity: "P2"
+    category: "output"
+    auto_route: null
+    resolution: "信息性代码，无需action"
+
+  PROC_VERDICT_NONDETERMINISTIC:
+    description: "同输入产生不同verdict(违反确定性)"
+    severity: "P0"
+    category: "integrity"
+    auto_route:
+      agent: "Supervisor"
+      action: "abort_and_investigate"
+      retry: 0
+    resolution: "调查verdict逻辑"
+    blocking: true
+
+---
+
+# TOOL_ 命名空间 (Eval专用)
+tool_codes:
+  TOOL_CALL_UNAUTHORIZED:
+    description: "调用了未授权的工具"
+    severity: "P0"
+    category: "security"
+    eval_only: true
+
+  TOOL_PARAM_OUT_OF_BOUNDS:
+    description: "工具参数超出允许范围"
+    severity: "P1"
+    category: "validation"
+    eval_only: true
+
+  TOOL_EXCESSIVE_CALLS:
+    description: "工具调用次数过多"
+    severity: "P2"
+    category: "efficiency"
+    eval_only: true
+
+  TOOL_CALL_FAILED:
+    description: "工具调用失败"
+    severity: "P1"
+    category: "reliability"
+    eval_only: true
+
+---
+
+# 严重性定义
+severity_definitions:
+  P0:
+    description: "阻断性错误，必须立即处理"
+    action: "FAIL or BLOCK"
+    sla: "立即"
+
+  P1:
+    description: "降级性错误，可继续但需修复"
+    action: "DEGRADE"
+    sla: "本次run内修复"
+
+  P2:
+    description: "警告性问题，不影响当前输出"
+    action: "LOG and CONTINUE"
+    sla: "下次run前修复"

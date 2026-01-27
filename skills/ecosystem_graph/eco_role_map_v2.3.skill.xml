@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skill name="eco_role_map_v2_3" lang="zh" version="2.3">
+  <metadata>
+    <id>ecosystem_graph.role_map</id>
+    <position>1/6</position>
+    <downstream>eco_flow_rules_graph</downstream>
+    <theory>Brandenburger-Nalebuff Value Net + PARTS</theory>
+    <created>2026-01-27</created>
+  </metadata>
+
+  <purpose>玩家分区(Value Net) + PARTS的Added Value假设；输出可审计角色断言与实体规范化。</purpose>
+
+  <inputs>
+    <target type="required">{company|product|platform}</target>
+    <scope type="required">{industry|use_case|geo}</scope>
+    <sources type="required">{filings|site|transcript|news|api|notes}</sources>
+    <asof type="required">{YYYY-MM-DD}</asof>
+    <known_players type="optional">[]</known_players>
+    <limits max_players="30"/>
+  </inputs>
+
+  <role_taxonomy>
+    <role name="Customers">向目标付费获取价值</role>
+    <role name="Suppliers">向目标提供输入</role>
+    <role name="Competitors">争夺同一客户的同类供给</role>
+    <role name="Complementors">产品与目标共同提升客户价值</role>
+    <role name="Platforms">提供基础设施/分发/规则</role>
+    <role name="Regulators">制定/执行行业规则</role>
+    <note>一个玩家可有多角色</note>
+  </role_taxonomy>
+
+  <added_value_drivers>
+    <driver>scarce_resource - 稀缺资源控制</driver>
+    <driver>rule_control - 规则制定权</driver>
+    <driver>complement_amplify - 互补放大效应</driver>
+    <driver>cost_advantage - 成本结构优势</driver>
+  </added_value_drivers>
+
+  <workflow>
+    <s1 name="Canonicalize">
+      生成canonical_id；合并别名/母子公司；记录normalization_notes。
+      <output>entities[{canonical_id, name, aliases[], type, normalization_notes}]</output>
+    </s1>
+    <s2 name="Role_Assign">
+      分配角色(可多选) + role_rationale(必须可引用evidence_ref)。
+      <output>roles[{canonical_id, roles[], rationale, evidence_refs[]}]</output>
+    </s2>
+    <s3 name="Added_Value_Hypothesis">
+      标注added_value_driver + why + confidence。
+      <output>hypotheses[{canonical_id, driver, why, confidence, validation_needed[]}]</output>
+    </s3>
+    <s4 name="Claims_Separation">
+      FACT/INFERENCE分离；每条claim挂evidence_refs + valid_from/valid_to。
+      <output>claims[{claim_id, type(FACT|INFERENCE), text, valid_from?, valid_to?, evidence_refs[], confidence}]</output>
+    </s4>
+  </workflow>
+
+  <scoring>
+    <dimension name="role_coverage" weight="0.35">关键玩家覆盖率(市场份额>10%是否识别)</dimension>
+    <dimension name="entity_precision" weight="0.30">消歧正确性(冲突/别名未合并扣分)</dimension>
+    <dimension name="evidence_quality" weight="0.35">A/B/C等级 + 一致性 + 时效</dimension>
+    <formula>confidence = min(role_coverage, entity_precision, evidence_quality)</formula>
+    <confidence_cap>可选：来自上游的最小值</confidence_cap>
+  </scoring>
+
+  <reason_codes>
+    <code id="ECO_PLAYER_MISSING">关键玩家未识别(份额>10%)</code>
+    <code id="ECO_ENTITY_AMBIGUOUS">实体消歧失败(别名/母子未合并)</code>
+    <code id="ECO_ROLE_UNCERTAIN">角色分配无rationale</code>
+    <code id="ECO_SOURCE_CONFLICT">来源间信息矛盾</code>
+    <code id="ECO_STALE">数据过期(>6个月)</code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item trigger="权威材料否认关键关系">移除该角色或降confidence</item>
+    <item trigger="并购/改名/分拆">重跑Canonicalize</item>
+    <item trigger="valid_to已过期">标记STALE，降confidence</item>
+  </disconfirmers>
+
+  <invariants>
+    <check id="INV-RM-01">每个canonical_id必须有≥1个role</check>
+    <check id="INV-RM-02">每个role必须有evidence_ref支撑</check>
+    <check id="INV-RM-03">INFERENCE类claim必须标注confidence</check>
+  </invariants>
+
+  <output_contract>
+    <field name="entities">[{canonical_id, name, aliases[], type, normalization_notes}]</field>
+    <field name="roles">{customers[], suppliers[], competitors[], complementors[], platforms[], regulators[]}</field>
+    <field name="multi_role_players">[{canonical_id, roles[], rationale}]</field>
+    <field name="added_value_hypotheses">[{canonical_id, driver, why, confidence, validation_needed[]}]</field>
+    <field name="claims">[{claim_id, type, criticality, text, valid_from?, valid_to?, evidence_refs[], confidence}]</field>
+    <field name="evidence_refs">[{ref_id, source, asof, grade(A|B|C), excerpt}]</field>
+    <field name="confidence">0.0-1.0</field>
+    <field name="confidence_cap">0.0-1.0 (optional)</field>
+    <field name="reason_codes">[]</field>
+    <field name="asof">YYYY-MM-DD</field>
+  </output_contract>
+</skill>
