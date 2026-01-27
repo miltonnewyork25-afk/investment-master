@@ -16,6 +16,11 @@
 | `platform_portfolio_matrix` | v1.0 | ✅ 已创建 | 替代BCG矩阵的平台分析 |
 | `data_moat_quantifier` | v1.0 | ✅ 已创建 | 数据护城河量化(DM_Score) |
 | `network_effect_evaluator` | v1.1 | ✅ 已升级 | 新增M10数据网效+M11 AI飞轮 |
+| `ai_competitive_landscape` | v1.0 | ✅ 已创建 | AI竞争格局系统追踪 |
+| `zero_click_impact_model` | v1.0 | ✅ 已创建 | 零点击率收入影响模型 |
+| `robotaxi_valuation` | v1.0 | ✅ 已创建 | Robotaxi估值框架(TAM+DCF+期权) |
+| `moat_evaluation_framework` | v1.3 | ✅ 已升级 | 新增AI/基础设施/监管护城河 |
+| `competitive_analysis_framework` | v1.3 | ✅ 已升级 | 新增AI能力+芯片战略对比模块 |
 
 ---
 
@@ -113,9 +118,9 @@ outputs:
 
 ---
 
-### 2.2 中优先级（P1）
+### 2.2 中优先级（P1）- ✅ 全部完成
 
-#### Skill 4: `ai_competitive_landscape`
+#### Skill 4: `ai_competitive_landscape` ✅ 已创建
 **问题**: AI竞争格局变化快，缺乏系统追踪框架
 
 **核心功能**:

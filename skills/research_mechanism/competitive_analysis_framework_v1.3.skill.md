@@ -1,6 +1,6 @@
-# 竞争力分析框架 v1.0
+# 竞争力分析框架 v1.3
 
-> **Skill ID**: `research_mechanism.competitive_analysis_v1.0`
+> **Skill ID**: `research_mechanism.competitive_analysis_v1.3`
 > **主路由**: Research Mechanism (80%)
 > **辅助路由**: Ecosystem Graph (竞争生态映射)
 > **来源**: 竞争力分析框架skill.docx
@@ -420,6 +420,128 @@ conclusion_card:
 
 ---
 
+## 科技平台专用模块 [v1.3新增]
+
+### S12. AI能力对比分析 (AI Capability Comparison)
+
+**适用于**: Google/Microsoft/Meta/Amazon/OpenAI/Anthropic等AI相关公司
+
+```yaml
+ai_capability_comparison:
+  model_benchmarks:
+    metrics:
+      - benchmark: "MMLU"
+        description: "多任务语言理解"
+        leader: "[公司]"
+        scores: {company_a: X, company_b: X}
+
+      - benchmark: "HumanEval"
+        description: "代码生成"
+        leader: "[公司]"
+        scores: {company_a: X, company_b: X}
+
+      - benchmark: "Arena ELO"
+        description: "人类偏好排名"
+        leader: "[公司]"
+        scores: {company_a: X, company_b: X}
+
+  enterprise_adoption:
+    metrics:
+      - ai_arr: "AI相关ARR"
+      - enterprise_customers: "企业客户数"
+      - api_volume: "API调用量"
+    comparison_table: |
+      | 公司 | AI ARR | 企业客户 | YoY增速 |
+      |------|--------|----------|---------|
+      | ... | ... | ... | ... |
+
+  developer_ecosystem:
+    metrics:
+      - github_stars: "开源项目Star"
+      - sdk_downloads: "SDK下载量"
+      - mindshare: "开发者心智份额"
+
+  scoring:
+    "+2": "全面领先（≥3维度领先）"
+    "+1": "部分领先（1-2维度领先）"
+    "0": "竞争持平"
+    "-1": "部分落后"
+    "-2": "全面落后"
+```
+
+### S13. 芯片战略对比分析 (Chip Strategy Comparison)
+
+**适用于**: 有自研芯片或重度依赖AI芯片的公司
+
+```yaml
+chip_strategy_comparison:
+  self_developed:
+    chips:
+      - name: "芯片名称"
+        company: "公司"
+        purpose: "训练/推理/通用"
+        performance: "性能指标"
+        cost_advantage: "成本优势vs NVIDIA"
+
+    examples:
+      - {chip: "TPU v5p", company: "Google", purpose: "训练+推理", advantage: "44% TCO"}
+      - {chip: "Trainium", company: "AWS", purpose: "训练", advantage: "30% TCO"}
+      - {chip: "Dojo", company: "Tesla", purpose: "FSD训练", advantage: "TBD"}
+
+  nvidia_dependency:
+    metrics:
+      - gpu_procurement: "年GPU采购量"
+      - supply_priority: "供应优先级"
+      - cost_exposure: "成本敞口"
+
+    comparison: |
+      | 公司 | NVIDIA依赖度 | 自研进度 | 供应安全 |
+      |------|-------------|---------|---------|
+      | Google | 低(TPU主导) | 领先 | 高 |
+      | Microsoft | 高 | 起步(Maia) | 中 |
+      | Meta | 高 | 开发中 | 中 |
+      | OpenAI | 极高 | 无 | 低 |
+
+  scoring:
+    "+2": "自研芯片成熟，NVIDIA依赖低"
+    "+1": "自研进行中，部分成本优势"
+    "0": "依赖NVIDIA但供应安全"
+    "-1": "高度依赖NVIDIA"
+    "-2": "供应链风险高"
+
+  investment_implications:
+    - "自研芯片公司：长期成本优势，毛利率提升潜力"
+    - "NVIDIA依赖公司：关注供应协议和成本转嫁能力"
+    - "芯片供应商：关注客户自研进度对需求的影响"
+```
+
+### 科技平台竞争分析模板
+
+```yaml
+tech_platform_template:
+  required_modules:
+    - "S1-S11: 通用竞争分析"
+    - "S12: AI能力对比"
+    - "S13: 芯片战略对比"
+    - "network_effect_evaluator: 网络效应评估"
+    - "data_moat_quantifier: 数据护城河量化"
+    - "platform_portfolio_matrix: 平台组合分析"
+
+  output_format:
+    competitive_scorecard: |
+      | 维度 | 公司A | 公司B | 公司C | 领先者 |
+      |------|-------|-------|-------|--------|
+      | AI模型能力 | X | X | X | ... |
+      | 企业AI采用 | X | X | X | ... |
+      | 开发者生态 | X | X | X | ... |
+      | 芯片战略 | X | X | X | ... |
+      | 数据护城河 | X | X | X | ... |
+      | 网络效应 | X | X | X | ... |
+      | 综合竞争力 | X | X | X | ... |
+```
+
+---
+
 ## 与Agent架构整合
 
 ### Research Mechanism 整合
@@ -592,7 +714,7 @@ evaluation_alignment:
 blackboard_outputs:
   core_fields:
     run_id: "string"
-    skill_id: "research_mechanism.competitive_analysis_v1.2"
+    skill_id: "research_mechanism.competitive_analysis_v1.3"
     verdict: "PASS | DEGRADE | FAIL"
     key_claims: ["竞争格局评估"]
 
@@ -606,8 +728,18 @@ blackboard_outputs:
 
 ---
 
-**版本**: v1.2
+**版本**: v1.3
 **合约版本**: skill_design_standard_v2.0
 **代码字典版本**: code_dictionary_v1.0
 **归档位置**: `skills/research_mechanism/`
 **状态**: 已升级到v2.0合规
+
+---
+
+## 版本历史
+
+| 版本 | 日期 | 变更 |
+|------|------|------|
+| v1.0 | 2026-01-27 | 初始版本 |
+| v1.2 | 2026-01-27 | 升级到v2.0合约合规 |
+| v1.3 | 2026-01-27 | 新增S12 AI能力对比、S13芯片战略对比、科技平台专用模板 |
