@@ -1,0 +1,321 @@
+# Scoring Rules v1.0
+# Novelty + Feasibility + Composite 评分规则
+# 基于 Hybrid 方法: Embedding Distance + Information Gain + Human Calibration
+
+scoring_rules:
+  version: "1.0.0"
+  created: "2026-01-27"
+  description: |
+    创新假设的评分规则。
+    Novelty: 衡量想法的新颖程度
+    Feasibility: 衡量想法的可执行性
+    Composite: 综合评分用于过滤和排序
+
+---
+
+# Novelty 评分规则
+novelty:
+  description: |
+    新颖性评分 = 语义距离 + 信息增益 + 人工校准调整
+    范围: 0.0 - 1.0
+
+  # 组件权重
+  weights:
+    embedding_distance: 0.40
+    information_gain: 0.35
+    human_calibration: 0.25
+
+  # 1. Embedding Distance 计算
+  embedding_distance:
+    method: "cosine_distance"
+    formula: |
+      1. 计算 candidate_idea 的 embedding
+      2. 计算与 historical_registry 中所有 ideas 的 cosine 距离
+      3. novelty_embed = min_distance (与最近邻的距离)
+      4. 如果 min_distance > 0.65 → HIGH
+         如果 min_distance in [0.45, 0.65] → MEDIUM
+         如果 min_distance < 0.45 → LOW
+
+    score_mapping:
+      - range: [0.65, 1.0]
+        score: [0.8, 1.0]
+        label: "HIGH"
+      - range: [0.45, 0.65)
+        score: [0.5, 0.8)
+        label: "MEDIUM"
+      - range: [0.0, 0.45)
+        score: [0.0, 0.5)
+        label: "LOW"
+
+    edge_cases:
+      - case: "historical_registry is empty"
+        action: "default novelty_embed = 0.7 (assume moderate novelty)"
+      - case: "embedding API failure"
+        action: "fallback to keyword-based Jaccard distance"
+
+  # 2. Information Gain 计算
+  information_gain:
+    method: "negative_log_probability"
+    formula: |
+      1. 提取 candidate_idea 的关键词/概念
+      2. 计算每个概念在 historical_corpus 中的频率 P(concept)
+      3. info_gain = -mean(log(P(concept) + epsilon))
+      4. 归一化到 [0, 1]
+
+    smoothing:
+      method: "laplace"
+      alpha: 1.0  # Laplace 平滑参数
+
+    normalization:
+      method: "min_max"
+      corpus_min: 0.0
+      corpus_max: 10.0  # 经验上限
+
+    score_mapping:
+      - range: [0.70, 1.0]
+        label: "HIGH_SURPRISE"
+      - range: [0.40, 0.70)
+        label: "MEDIUM_SURPRISE"
+      - range: [0.0, 0.40)
+        label: "LOW_SURPRISE"
+
+  # 3. Human Calibration 调整
+  human_calibration:
+    method: "regression_adjustment"
+    description: |
+      基于历史人工评分样本，训练一个校准模型。
+      用于修正 embedding 和 info_gain 可能的系统性偏差。
+
+    sample_collection:
+      rate: 0.05  # 5% 抽样
+      min_samples: 50
+      labels: [1, 2, 3, 4, 5]  # 人工新颖性评分
+
+    model:
+      type: "linear_regression"
+      features: [embedding_score, info_gain_score]
+      target: human_label_normalized
+      retrain_frequency: 100  # 每100个样本重训
+
+    adjustment_formula: |
+      calibration_factor = model.predict([embedding_score, info_gain_score])
+      adjusted_novelty = base_novelty * (1 + (calibration_factor - 0.5) * 0.2)
+      # calibration_factor 在 [0, 1]，0.5 表示无调整
+
+  # 综合 Novelty 计算
+  final_novelty:
+    formula: |
+      base_novelty = 0.40 * embedding_score + 0.35 * info_gain_score
+      if human_calibration.enabled:
+        final_novelty = apply_calibration(base_novelty)
+      else:
+        final_novelty = base_novelty + 0.25 * default_calibration
+      final_novelty = clip(final_novelty, 0.0, 1.0)
+
+---
+
+# Feasibility 评分规则
+feasibility:
+  description: |
+    可行性评分 = 验证来源可用性 + 时间窗合理性 + 指标可观测性 + 资源需求
+    范围: 0.0 - 1.0
+
+  # 组件权重
+  weights:
+    verification_sources: 0.30
+    time_window: 0.25
+    metric_observability: 0.25
+    resource_requirement: 0.20
+
+  # 1. 验证来源可用性
+  verification_sources:
+    scoring:
+      - condition: "tier1_sources >= 2"
+        score: 1.0
+      - condition: "tier1_sources >= 1 AND tier2_sources >= 1"
+        score: 0.85
+      - condition: "tier2_sources >= 2"
+        score: 0.70
+      - condition: "tier2_sources >= 1"
+        score: 0.50
+      - condition: "only tier3_sources"
+        score: 0.30
+      - condition: "no sources"
+        score: 0.0
+
+    source_tiers:
+      tier1: ["10-K", "10-Q", "Earnings Call", "Company Press Release", "SEC Filing"]
+      tier2: ["Industry Report", "Analyst Report", "Trade Publication", "Government Data"]
+      tier3: ["News Article", "Social Media", "Blog", "Forum"]
+
+  # 2. 时间窗合理性
+  time_window:
+    scoring:
+      - range: [0, 3]  # months
+        score: 1.0
+        label: "immediate"
+      - range: (3, 6]
+        score: 0.85
+        label: "short_term"
+      - range: (6, 12]
+        score: 0.70
+        label: "medium_term"
+      - range: (12, 24]
+        score: 0.50
+        label: "long_term"
+      - range: (24, infinity)
+        score: 0.20
+        label: "too_long"
+
+  # 3. 指标可观测性
+  metric_observability:
+    scoring:
+      - condition: "metric is directly reported in financials"
+        score: 1.0
+      - condition: "metric is disclosed in earnings call/guidance"
+        score: 0.85
+      - condition: "metric can be calculated from public data"
+        score: 0.70
+      - condition: "metric requires estimation/modeling"
+        score: 0.50
+      - condition: "metric requires proprietary data"
+        score: 0.30
+      - condition: "metric is unobservable"
+        score: 0.0
+
+    observable_metrics:
+      - "Revenue", "EPS", "Margin", "Growth Rate"
+      - "Market Share", "User Count", "ARR", "NRR"
+      - "ROE", "ROIC", "FCF", "Debt Ratio"
+      - "Guidance", "Backlog", "Order Book"
+
+  # 4. 资源需求评估
+  resource_requirement:
+    scoring:
+      - condition: "can verify with existing data/tools"
+        score: 1.0
+      - condition: "requires additional data subscription"
+        score: 0.75
+      - condition: "requires new data collection effort"
+        score: 0.50
+      - condition: "requires significant research investment"
+        score: 0.30
+      - condition: "impractical to verify"
+        score: 0.0
+
+  # 综合 Feasibility 计算
+  final_feasibility:
+    formula: |
+      feasibility = (
+        0.30 * verification_sources_score +
+        0.25 * time_window_score +
+        0.25 * metric_observability_score +
+        0.20 * resource_requirement_score
+      )
+
+---
+
+# Composite 评分规则
+composite:
+  description: |
+    综合评分用于最终排序和过滤。
+    平衡新颖性和可行性。
+
+  formula: |
+    composite = 0.6 * novelty + 0.4 * feasibility
+
+  # 可配置权重（根据阶段调整）
+  weight_profiles:
+    exploration:  # 探索阶段，偏重新颖性
+      novelty: 0.70
+      feasibility: 0.30
+
+    validation:  # 验证阶段，偏重可行性
+      novelty: 0.40
+      feasibility: 0.60
+
+    balanced:  # 默认平衡
+      novelty: 0.60
+      feasibility: 0.40
+
+  current_profile: "balanced"
+
+---
+
+# 评分阈值
+thresholds:
+  novelty:
+    excellent: 0.80
+    good: 0.60
+    acceptable: 0.40
+    poor: 0.20
+
+  feasibility:
+    excellent: 0.80
+    good: 0.60
+    acceptable: 0.50
+    poor: 0.30
+
+  composite:
+    pass: 0.45
+    high_priority: 0.65
+    exceptional: 0.80
+
+---
+
+# 评分校准机制
+calibration:
+  enabled: true
+
+  # 定期校准触发
+  triggers:
+    - condition: "accumulated_samples >= 100"
+    - condition: "human_model_divergence > 0.15"
+    - condition: "weekly_scheduled"
+
+  # 校准指标
+  metrics:
+    - name: "human_model_correlation"
+      target: "> 0.70"
+      action_if_below: "retrain calibration model"
+
+    - name: "downstream_acceptance_rate"
+      target: "> 0.40"
+      action_if_below: "increase composite threshold"
+
+    - name: "novelty_score_distribution"
+      target: "normal-like, mean ~0.50"
+      action_if_skewed: "adjust score mapping"
+
+  # 校准日志
+  logging:
+    log_every_scoring: false
+    log_calibration_events: true
+    log_threshold_changes: true
+
+---
+
+# 特殊评分规则
+special_rules:
+  # 重复检测
+  duplicate_detection:
+    method: "embedding_similarity"
+    threshold: 0.90  # cosine similarity > 0.90 视为重复
+    action: "reject with INNOV_DUPLICATE"
+
+  # 相似度合并
+  similarity_merge:
+    threshold: 0.80  # 0.80-0.90 之间的相似假设可合并
+    merge_strategy: "keep_higher_score"
+
+  # 类比质量加分
+  analogy_bonus:
+    condition: "structural_mapping_score > 0.7"
+    bonus: 0.05  # 加5%
+    max_total_bonus: 0.10
+
+  # 时效性加分
+  timeliness_bonus:
+    condition: "relates_to_recent_event (< 7 days)"
+    bonus: 0.03
+    max_total_bonus: 0.05

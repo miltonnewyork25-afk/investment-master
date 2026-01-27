@@ -1,0 +1,298 @@
+# Event Trigger Rules v1.0
+# 定义触发Innovation Agent的事件类型、优先级和防护机制
+
+event_trigger_rules:
+  version: "1.0.0"
+  created: "2026-01-27"
+  description: |
+    事件触发规则库
+    定义哪些事件触发创新循环、优先级、冷却期等
+
+---
+
+# 事件类型定义
+event_types:
+  # P0 - 最高优先级（立即触发）
+  - id: EARNINGS_SURPRISE
+    name: "财报重大意外"
+    priority: P0
+    conditions:
+      - "EPS surprise > 20% OR < -20%"
+      - "Revenue surprise > 15% OR < -15%"
+      - "Guidance change > 10%"
+    cooldown_hours: 24
+    max_triggers_per_event: 1
+
+  - id: MAJOR_REGULATION
+    name: "重大监管变化"
+    priority: P0
+    conditions:
+      - "新法规直接影响核心业务"
+      - "监管罚款 > 年收入5%"
+      - "牌照/许可变更"
+    cooldown_hours: 12
+    max_triggers_per_event: 1
+
+  # P1 - 高优先级
+  - id: COMPETITIVE_DISRUPT
+    name: "竞争格局重大变化"
+    priority: P1
+    conditions:
+      - "主要竞争对手发布颠覆性产品"
+      - "新进入者获得显著市场份额"
+      - "行业整合（M&A）公告"
+    cooldown_hours: 6
+    max_triggers_per_event: 2
+
+  - id: MANAGEMENT_CHANGE
+    name: "管理层重大变动"
+    priority: P1
+    conditions:
+      - "CEO/CFO离职或更换"
+      - "董事会重大变动"
+      - "关键高管离职"
+    cooldown_hours: 12
+    max_triggers_per_event: 1
+
+  - id: MACRO_SHOCK
+    name: "宏观冲击"
+    priority: P1
+    conditions:
+      - "Fed rate change > 50bps"
+      - "CPI surprise > 0.5%"
+      - "GDP growth surprise > 1%"
+      - "重大地缘政治事件"
+    cooldown_hours: 6
+    max_triggers_per_event: 2
+
+  # P2 - 中等优先级
+  - id: ANALYST_REVISION
+    name: "分析师重大调整"
+    priority: P2
+    conditions:
+      - "目标价调整 > 20%"
+      - "评级升/降级"
+      - "多位分析师同向调整"
+    cooldown_hours: 4
+    max_triggers_per_event: 3
+
+  - id: PRODUCT_LAUNCH
+    name: "产品发布/更新"
+    priority: P2
+    conditions:
+      - "新产品线发布"
+      - "重大产品更新"
+      - "定价策略变化"
+    cooldown_hours: 6
+    max_triggers_per_event: 2
+
+  - id: SUPPLY_CHAIN_EVENT
+    name: "供应链事件"
+    priority: P2
+    conditions:
+      - "关键供应商问题"
+      - "原材料价格剧变 > 15%"
+      - "物流/产能中断"
+    cooldown_hours: 4
+    max_triggers_per_event: 2
+
+  # P3 - 低优先级（可聚合）
+  - id: MEDIA_COVERAGE
+    name: "媒体报道"
+    priority: P3
+    conditions:
+      - "主流媒体深度报道"
+      - "负面新闻爆发"
+    cooldown_hours: 2
+    max_triggers_per_event: 5
+    aggregate_threshold: 3  # 需3+条才触发
+
+  - id: SOCIAL_SENTIMENT
+    name: "社交媒体情绪"
+    priority: P3
+    conditions:
+      - "情绪指数剧变 > 2σ"
+      - "提及量暴增 > 5x"
+    cooldown_hours: 2
+    max_triggers_per_event: 5
+    aggregate_threshold: 5  # 需5+信号才触发
+
+  - id: INSIDER_ACTIVITY
+    name: "内部人交易"
+    priority: P3
+    conditions:
+      - "大额内部人买入/卖出"
+      - "多位高管同向交易"
+    cooldown_hours: 4
+    max_triggers_per_event: 3
+
+---
+
+# 行业特定触发映射
+industry_specific_triggers:
+  tech_ecosystem:
+    name: "科技生态公司"
+    additional_triggers:
+      - event: "用户净留存下降 > 5%"
+        priority_override: P1
+        innovation_direction: "平台效应衰退/网络效应替代"
+      - event: "数据隐私法规变化"
+        priority_override: P1
+        innovation_direction: "合规成本/商业模式调整"
+      - event: "关键专利被挑战"
+        priority_override: P2
+        innovation_direction: "IP壁垒/技术替代"
+      - event: "API定价变更"
+        priority_override: P2
+        innovation_direction: "生态系统经济学"
+
+  high_growth_saas:
+    name: "高成长SaaS"
+    additional_triggers:
+      - event: "ARR增速放缓"
+        priority_override: P1
+        innovation_direction: "规模效应vs成本压力"
+      - event: "NRR下降"
+        priority_override: P1
+        innovation_direction: "产品粘性/竞争威胁"
+      - event: "Rule of 40恶化"
+        priority_override: P2
+        innovation_direction: "增长vs效率平衡"
+
+  cyclical:
+    name: "周期性公司"
+    additional_triggers:
+      - event: "订单滑坡 / 库存积压"
+        priority_override: P1
+        innovation_direction: "周期重置/资本结构敏感性"
+      - event: "原材料价格剧变"
+        priority_override: P1
+        innovation_direction: "成本传导/利润率压力"
+      - event: "产能利用率大幅变化"
+        priority_override: P2
+        innovation_direction: "供需平衡/定价权"
+
+  financial:
+    name: "金融公司"
+    additional_triggers:
+      - event: "ROE/ROA异常波动"
+        priority_override: P1
+        innovation_direction: "盈利能力/风险暴露"
+      - event: "监管资本要求改变"
+        priority_override: P0
+        innovation_direction: "资本约束/业务调整"
+      - event: "信贷损失率上升"
+        priority_override: P1
+        innovation_direction: "资产质量/拨备压力"
+
+  reit:
+    name: "REIT"
+    additional_triggers:
+      - event: "出租率显著变化"
+        priority_override: P1
+        innovation_direction: "资产质量/市场需求"
+      - event: "Cap rate剧变"
+        priority_override: P1
+        innovation_direction: "估值重估/利率敏感性"
+      - event: "大宗交易/处置"
+        priority_override: P2
+        innovation_direction: "组合优化/资本配置"
+
+  biotech:
+    name: "生物医药"
+    additional_triggers:
+      - event: "临床试验结果"
+        priority_override: P0
+        innovation_direction: "管线价值重估"
+      - event: "FDA审批决定"
+        priority_override: P0
+        innovation_direction: "商业化前景"
+      - event: "专利到期/挑战"
+        priority_override: P1
+        innovation_direction: "护城河/仿制药竞争"
+
+---
+
+# 触发防护机制
+trigger_guards:
+  # 全局冷却
+  global_cooldown:
+    min_interval_between_runs_ms: 300000  # 5分钟
+
+  # 按类型冷却
+  type_cooldown:
+    P0: 3600000   # 1小时
+    P1: 7200000   # 2小时
+    P2: 14400000  # 4小时
+    P3: 28800000  # 8小时
+
+  # 聚合窗口
+  aggregation:
+    window_ms: 1800000  # 30分钟
+    min_events_to_trigger: 2
+    same_type_only: false  # 可跨类型聚合
+
+  # 每日限制
+  daily_limits:
+    max_triggers_total: 10
+    max_triggers_per_type:
+      P0: 3
+      P1: 4
+      P2: 5
+      P3: 8  # P3可聚合所以限制宽松
+
+  # 噪声过滤
+  noise_filter:
+    min_source_credibility: 0.6  # 来源可信度阈值
+    require_confirmation: true   # 需要多来源确认
+    confirmation_threshold: 2    # 至少2个来源
+
+---
+
+# 事件优先级队列配置
+priority_queue:
+  max_queue_size: 20
+  timeout_ms: 60000
+  processing_order: "priority_then_timestamp"
+
+  priority_weights:
+    P0: 100
+    P1: 50
+    P2: 20
+    P3: 5
+
+  dequeue_strategy:
+    - "Process all P0 first"
+    - "Then P1 in timestamp order"
+    - "P2/P3 may be batched if queue is long"
+
+---
+
+# 事件来源配置
+event_sources:
+  tier1:  # 最高可信度
+    - name: "SEC Filings"
+      credibility: 1.0
+    - name: "Company Press Release"
+      credibility: 0.95
+    - name: "Fed Announcements"
+      credibility: 1.0
+
+  tier2:  # 高可信度
+    - name: "Bloomberg"
+      credibility: 0.90
+    - name: "Reuters"
+      credibility: 0.90
+    - name: "Wall Street Journal"
+      credibility: 0.85
+
+  tier3:  # 需要确认
+    - name: "Twitter/X"
+      credibility: 0.50
+      require_confirmation: true
+    - name: "Reddit"
+      credibility: 0.40
+      require_confirmation: true
+    - name: "Other Media"
+      credibility: 0.60
+      require_confirmation: true

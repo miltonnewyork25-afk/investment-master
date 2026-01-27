@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Idea Seed Generator Skill v1.0 -->
+<!-- Position: D1 (Diverge Phase 1) | Purpose: 生成初始创新想法种子 -->
+<!-- 核心: 痛点提取 + 初始想法生成 + 去重 -->
+
+<skill name="idea_seed_generator_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>Innovation Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Design Thinking - Diverge Phase</ref>
+      <ref>Problem Framing</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    从触发事件和上下文中生成初始创新想法种子（Idea Seeds）：
+    1. 解析触发事件，提取关键信号和痛点
+    2. 结合当前投研上下文，识别机会空间
+    3. 生成 candidate idea seeds（发散阶段，数量优先）
+    4. 初步去重，避免与历史想法重复
+
+    这是发散阶段的第一步，追求数量和多样性。
+  </purpose>
+
+  <inputs>
+    <input name="trigger_flags" type="object" required="true">
+      来自 Event Trigger Dispatcher 的触发信息
+      <field name="trigger_event" type="object"/>
+      <field name="priority" type="string"/>
+      <field name="innovation_direction" type="string"/>
+    </input>
+
+    <input name="context_snapshot" type="ContextSnapshot" required="true">
+      当前投研上下文快照
+      <field name="company" type="object"/>
+      <field name="recent_analysis" type="object"/>
+      <field name="key_metrics" type="object"/>
+      <field name="market_sentiment" type="object"/>
+      <field name="competitive_landscape" type="object"/>
+    </input>
+
+    <input name="historical_registry" type="array" required="true">
+      历史 Idea/Hypotheses 注册表
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="ParseTriggerEvent">
+      <action>
+        从 trigger_event 提取关键信息：
+
+        event_signals = {
+          event_type: trigger_flags.trigger_event.event_type,
+          event_data: trigger_flags.trigger_event.event_data,
+          priority: trigger_flags.priority,
+          innovation_direction: trigger_flags.innovation_direction
+        }
+
+        关键词提取:
+        - 数值变化（如 "EPS -15%", "margin +3%"）
+        - 实体（公司、产品、人物）
+        - 动作（发布、调整、退出）
+        - 时间信号（季度、年度、预期）
+      </action>
+      <output>
+        parsed_signals: object
+      </output>
+    </step>
+
+    <step id="s2" name="IdentifyPainPoints">
+      <action>
+        从事件和上下文中识别痛点/机会：
+
+        痛点类型：
+        1. 预期偏离: 实际 vs 预期的差异
+        2. 趋势变化: 指标方向性转变
+        3. 竞争威胁: 竞争格局变化
+        4. 结构性变化: 商业模式/行业结构变化
+        5. 信息不对称: 市场可能未充分认知的信息
+
+        FOR EACH signal IN parsed_signals:
+          MATCH to pain_point_type
+          ASSESS severity (1-5)
+          IDENTIFY affected_area (revenue, margin, growth, risk...)
+
+        pain_points = [
+          {type, severity, affected_area, description}
+        ]
+      </action>
+      <output>
+        pain_points: array
+      </output>
+    </step>
+
+    <step id="s3" name="GenerateCandidateSeeds">
+      <action>
+        基于痛点生成 candidate idea seeds：
+
+        生成策略（每个痛点至少2个seed）：
+
+        1. 直接推断: 痛点的直接后果/影响
+           - 例: "margin下降" → "成本压力假设"
+
+        2. 因果链延伸: 沿因果链向前/向后推演
+           - 例: "margin下降" → "可能导致降价策略" → "可能引发价格战"
+
+        3. 反事实推理: 如果痛点不存在会怎样
+           - 例: "如果竞品没发布，市场会怎么定价"
+
+        4. 时间维度: 短期 vs 长期影响
+           - 例: "短期利空，长期可能迫使转型"
+
+        5. 利益相关者视角: 不同角色的反应
+           - 例: 投资者、客户、供应商、监管者
+
+        FOR EACH pain_point IN pain_points:
+          FOR EACH strategy IN generation_strategies:
+            seed = generate_seed(pain_point, strategy)
+            candidate_seeds.append(seed)
+
+        目标: 每次触发生成 10-20 个 candidate seeds
+      </action>
+      <output>
+        candidate_seeds: array of {
+          seed_id,
+          pain_point_ref,
+          strategy_used,
+          seed_statement,
+          affected_area,
+          initial_relevance_score
+        }
+      </output>
+    </step>
+
+    <step id="s4" name="DeduplicateSeeds">
+      <action>
+        与历史注册表对比去重：
+
+        FOR EACH seed IN candidate_seeds:
+          # 计算与历史想法的相似度
+          FOR EACH historical IN historical_registry:
+            similarity = compute_similarity(seed, historical)
+
+            IF similarity > 0.90:
+              mark seed as DUPLICATE
+              add_reason_code: INNOV_SEED_DUPLICATE
+            ELIF similarity > 0.75:
+              mark seed as SIMILAR
+              note: "similar to {historical.id}"
+
+        # 内部去重（candidate_seeds 之间）
+        deduplicated = remove_internal_duplicates(candidate_seeds, threshold=0.85)
+      </action>
+      <output>
+        deduplicated_seeds: array
+        duplicate_count: integer
+        similar_count: integer
+      </output>
+    </step>
+
+    <step id="s5" name="RankAndFilter">
+      <action>
+        初步排序和过滤：
+
+        FOR EACH seed IN deduplicated_seeds:
+          relevance_score = compute_relevance(
+            seed,
+            trigger_event,
+            context_snapshot
+          )
+
+          diversity_score = compute_diversity(
+            seed,
+            already_selected_seeds
+          )
+
+          combined_score = 0.6 * relevance_score + 0.4 * diversity_score
+
+        # 保留 top N seeds（追求多样性）
+        top_seeds = select_top_diverse(
+          deduplicated_seeds,
+          max_count=15,
+          diversity_weight=0.4
+        )
+
+        # 确保覆盖多个痛点
+        ENSURE each pain_point has at least 1 seed in top_seeds
+      </action>
+      <output>
+        ranked_seeds: array
+      </output>
+    </step>
+
+    <step id="s6" name="PrepareOutput">
+      <action>
+        准备输出的 idea_seeds：
+
+        FOR EACH seed IN ranked_seeds:
+          idea_seed = {
+            id: generate_id("SEED"),
+            statement: seed.seed_statement,
+            origin: {
+              trigger_event: trigger_flags.trigger_event.event_id,
+              pain_point: seed.pain_point_ref,
+              generation_strategy: seed.strategy_used
+            },
+            relevance_score: seed.relevance_score,
+            diversity_score: seed.diversity_score,
+            status: "PENDING_ANALOGY"
+          }
+
+        seed_generation_stats = {
+          total_generated: candidate_seeds.length,
+          duplicates_removed: duplicate_count,
+          internal_dedup: internal_dedup_count,
+          final_count: ranked_seeds.length,
+          pain_points_covered: unique_pain_points.length
+        }
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="seed_diversity" range="[0,1]" weight="35">
+      <formula>unique_strategies_used / total_strategies</formula>
+      <description>生成策略多样性</description>
+    </score>
+    <score name="pain_point_coverage" range="[0,1]" weight="30">
+      <formula>pain_points_with_seeds / total_pain_points</formula>
+      <description>痛点覆盖率</description>
+    </score>
+    <score name="dedup_efficiency" range="[0,1]" weight="20">
+      <formula>1 - (duplicates / total_generated)</formula>
+      <description>去重效率（重复率低=好）</description>
+    </score>
+    <score name="relevance_avg" range="[0,1]" weight="15">
+      <formula>mean(relevance_scores)</formula>
+      <description>平均相关性</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="INNOV_SEED_DUPLICATE" severity="P3" action="INFO">
+      Idea seed 与历史想法高度重复
+    </code>
+    <code id="INNOV_SEED_SIMILAR" severity="P3" action="INFO">
+      Idea seed 与历史想法相似，需注意差异化
+    </code>
+    <code id="INNOV_LOW_DIVERSITY" severity="P2" action="WARN">
+      生成的 seeds 多样性不足
+    </code>
+    <code id="INNOV_PAIN_POINT_UNCOVERED" severity="P2" action="WARN">
+      某些痛点未能生成 seeds
+    </code>
+  </reason_codes>
+
+  <output_contract>
+    <field name="idea_seeds" type="array" required="true" min_items="5">
+      <item_schema>
+        <field name="id" type="string" required="true"/>
+        <field name="statement" type="string" required="true"/>
+        <field name="origin" type="object" required="true">
+          <field name="trigger_event" type="string"/>
+          <field name="pain_point" type="string"/>
+          <field name="generation_strategy" type="string"/>
+        </field>
+        <field name="relevance_score" type="float"/>
+        <field name="diversity_score" type="float"/>
+        <field name="status" type="string"/>
+      </item_schema>
+    </field>
+
+    <field name="pain_points_identified" type="array" required="true">
+      识别出的痛点列表
+    </field>
+
+    <field name="seed_generation_stats" type="object" required="true">
+      <field name="total_generated" type="integer"/>
+      <field name="duplicates_removed" type="integer"/>
+      <field name="final_count" type="integer"/>
+      <field name="pain_points_covered" type="integer"/>
+      <field name="strategies_used" type="array"/>
+    </field>
+
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

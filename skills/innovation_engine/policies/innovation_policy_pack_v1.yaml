@@ -1,0 +1,384 @@
+# Innovation Policy Pack v1.0
+# 运行时由Supervisor计算hash并冻结；同run_id内不可变
+# 核心原则: Structure-Mapping + TRIZ + Design Thinking + Hybrid Novelty
+
+policy_pack:
+  name: innovation_policy_pack
+  version: "innov-1.0.0"
+  hash: "sha256:__COMPUTED_AT_RUNTIME__"
+  created_at: "2026-01-27"
+  compatibility:
+    qg_min_version: "qg-2.2.0"
+    rm_min_version: "rm-1.2.0"
+    ve_min_version: "ve-1.0.0"
+    eco_min_version: "eco-2.4.0"
+
+---
+
+# 理论锚点
+theoretical_anchors:
+  analogy:
+    name: "Structure-Mapping Theory"
+    author: "Dedre Gentner (1983)"
+    source: "Gentner, D. (1983). Structure-mapping: A theoretical framework for analogy. Cognitive Science, 7(2), 155-170."
+    principles:
+      - "Analogy preserves relational structure, not surface attributes"
+      - "Systematicity Principle: deeper relational systems are preferred"
+      - "Higher-order relations (relations between relations) take precedence"
+    engineering_implication: |
+      Analogizer must prioritize structural/relational mapping over keyword similarity.
+      Use graph-based or relational embedding matching.
+
+  invention_patterns:
+    name: "TRIZ - Theory of Inventive Problem Solving"
+    author: "Genrich Altshuller"
+    source: "Altshuller, G. (1984). Creativity as an Exact Science. Gordon and Breach."
+    principles:
+      - "Inventions follow abstracted, repeatable patterns"
+      - "40 Inventive Principles + Contradiction Matrix"
+      - "Technical evolution follows predictable trends"
+    engineering_implication: |
+      Use TRIZ principles as analogy domain templates.
+      Map business problems to TRIZ contradiction patterns.
+
+  creative_process:
+    name: "Design Thinking - Double Diamond"
+    author: "IDEO / British Design Council"
+    source: "Brown, T. (2009). Change by Design. HarperBusiness."
+    principles:
+      - "Diverge: Generate many possibilities without judgment"
+      - "Converge: Filter and refine to actionable solutions"
+      - "Iterate: Feedback loops drive improvement"
+    engineering_implication: |
+      Pipeline structure: Diverge (Seeds→Analogies→Hypotheses) then Converge (Score→Filter→Route)
+
+  novelty_measurement:
+    name: "Hybrid Novelty Scoring"
+    sources:
+      - "Embedding-based semantic distance (NLP literature)"
+      - "Information-theoretic surprise/novelty (Baldi & Itti, 2010)"
+      - "Human-in-the-loop calibration"
+    principles:
+      - "Semantic distance measures conceptual novelty"
+      - "Information gain measures statistical rarity"
+      - "Human calibration prevents model drift"
+
+---
+
+# 核心原则
+principles:
+  - id: P1
+    name: "Structure Over Surface"
+    description: "类比必须保留关系结构，而非表面相似性"
+    reference: "Gentner Structure-Mapping Theory"
+
+  - id: P2
+    name: "Diverge Before Converge"
+    description: "先广泛发散，再聚合筛选，避免过早收敛"
+    reference: "Design Thinking Double Diamond"
+
+  - id: P3
+    name: "Quantified Novelty"
+    description: "新颖性必须可量化，混合多种度量方法"
+    reference: "Hybrid Novelty Scoring"
+
+  - id: P4
+    name: "Falsifiable Hypotheses"
+    description: "每个假设必须有明确的可证伪条件"
+    reference: "Scientific Method / RM ClaimSpec"
+
+  - id: P5
+    name: "Feedback-Driven Adaptation"
+    description: "系统通过反馈持续自我优化"
+    reference: "Adaptive Systems Theory"
+
+---
+
+# 类比约束配置
+analogy_constraints:
+  # 结构映射要求（Gentner）
+  require_structural_mapping: true
+  min_relational_similarity: 0.6
+  prefer_higher_order_relations: true
+
+  # 领域距离控制
+  domain_distance:
+    min: 0.3   # 太近=无新意
+    max: 0.8   # 太远=不相关
+    optimal_range: [0.4, 0.7]
+
+  # 类比质量阈值
+  quality_thresholds:
+    min_mapping_completeness: 0.5  # 映射完整度
+    max_unmapped_elements: 3       # 最多未映射元素
+
+---
+
+# 假设结构模板
+hypothesis_template:
+  id_pattern: "INNOV_H_{NNN}"
+  required_fields:
+    - claim_type
+    - statement
+    - origin
+    - falsifiability
+    - scores
+    - routing
+  claim_types:
+    - INNOVATION       # 一般创新洞察
+    - MECHANISM        # 机制假设（→RM）
+    - VALUATION        # 估值假设（→VE）
+    - ECOSYSTEM        # 生态假设（→ECO）
+    - DATA_GAP         # 数据缺口（→DI）
+
+---
+
+# Novelty评分配置
+novelty_scoring:
+  # 权重配置
+  weights:
+    embedding_distance: 0.40
+    information_gain: 0.35
+    human_calibration_adjustment: 0.25
+
+  # Embedding距离计算
+  embedding:
+    model: "text-embedding-3-large"  # 可配置为本地模型
+    model_fallback: "text-embedding-ada-002"
+    distance_metric: "cosine"
+    batch_size: 50
+    cache_embeddings: true
+    thresholds:
+      novelty_high: 0.65
+      novelty_medium: 0.45
+      novelty_low: 0.35
+
+  # Information Gain计算
+  information_gain:
+    method: "negative_log_probability"
+    corpus_source: "historical_innovation_registry"
+    smoothing: "laplace"  # 避免零概率
+    normalization: true
+    thresholds:
+      surprise_high: 0.70
+      surprise_medium: 0.50
+      surprise_low: 0.30
+
+  # 人工校准
+  human_calibration:
+    enabled: true
+    sample_rate: 0.05  # 5%抽样
+    label_scale: [1, 2, 3, 4, 5]
+    min_samples_for_calibration: 50
+    retrain_after_n_samples: 100
+    decay_factor: 0.95  # 老数据权重衰减
+
+  # 可行性评分
+  feasibility:
+    components:
+      - verification_source_availability: 0.30
+      - time_window_reasonableness: 0.25
+      - metric_observability: 0.25
+      - resource_requirement: 0.20
+    thresholds:
+      high: 0.70
+      medium: 0.50
+      low: 0.30
+
+  # 综合评分
+  composite_score:
+    formula: "0.6 * novelty + 0.4 * feasibility"
+    min_for_pass: 0.45
+
+---
+
+# Innovation Quality Gate配置
+innovation_quality_gate:
+  # 最低准入
+  min_scores:
+    novelty: 0.40
+    feasibility: 0.50
+    composite: 0.45
+
+  # 必需字段检查
+  required_fields:
+    - statement
+    - claim_type
+    - falsifiability.metric
+    - falsifiability.threshold
+    - falsifiability.time_window
+    - falsifiability.verification_sources
+
+  # DEGRADE条件
+  degrade_if:
+    - condition: "novelty < 0.30 AND feasibility < 0.40"
+      reason_code: "INNOV_QUALITY_TOO_LOW"
+    - condition: "verification_sources.length == 0"
+      reason_code: "INNOV_NO_VERIFICATION_SOURCES"
+    - condition: "time_window > 24_months"
+      reason_code: "INNOV_TIME_WINDOW_TOO_LONG"
+    - condition: "structural_mapping_score < 0.4"
+      reason_code: "INNOV_WEAK_ANALOGY"
+
+  # REJECT条件（不进入下游）
+  reject_if:
+    - condition: "novelty < 0.20"
+      reason_code: "INNOV_NOT_NOVEL"
+    - condition: "duplicate_detected == true"
+      reason_code: "INNOV_DUPLICATE"
+    - condition: "claim_type == null"
+      reason_code: "INNOV_UNCLASSIFIED"
+
+  # 输出限流
+  limits:
+    max_proposals_per_trigger: 5
+    max_proposals_per_day: 20
+    max_hypotheses_in_registry: 1000  # 超出则淘汰低分
+
+---
+
+# 输出路由配置
+output_routing:
+  routes:
+    - match_type: VALUATION
+      target_agent: valuation_engine_agent
+      output_format: cap_hypothesis_addendum
+      priority_boost_if: "trigger_event contains '财报'"
+
+    - match_type: MECHANISM
+      target_agent: research_mechanism_agent
+      output_format: claim_spec_v1
+      priority_boost_if: "trigger_event contains '竞品' OR '技术'"
+
+    - match_type: ECOSYSTEM
+      target_agent: ecosystem_graph_agent
+      output_format: eco_signal
+      priority_boost_if: "trigger_event contains '供应链' OR '合作'"
+
+    - match_type: DATA_GAP
+      target_agent: data_integrity_agent
+      output_format: data_request
+      always_route: true
+
+  confirmation:
+    require_ack: true
+    timeout_ms: 30000
+    retry_on_timeout: 2
+
+---
+
+# 自适应调整配置
+adaptation_targets:
+  # 1. 阈值调整
+  threshold_tuning:
+    - param: "novelty_scoring.embedding.thresholds.novelty_high"
+      adjust_if: "high_novelty_rejection_rate > 0.30"
+      direction: "increase"
+      step: 0.05
+      bounds: [0.50, 0.85]
+
+    - param: "analogy_constraints.domain_distance.max"
+      adjust_if: "analogy_irrelevance_rate > 0.20"
+      direction: "decrease"
+      step: 0.05
+      bounds: [0.60, 0.90]
+
+    - param: "innovation_quality_gate.min_scores.composite"
+      adjust_if: "downstream_rejection_rate > 0.40"
+      direction: "increase"
+      step: 0.03
+      bounds: [0.40, 0.70]
+
+  # 2. 领域权重调整
+  domain_weight_tuning:
+    - domain: "biological_systems"
+      boost_if: "acceptance_rate > average + 0.1"
+      boost_factor: 1.2
+      penalty_if: "rejection_rate > average + 0.15"
+      penalty_factor: 0.8
+
+    - domain: "physics_principles"
+      boost_if: "acceptance_rate > average + 0.1"
+      boost_factor: 1.2
+      penalty_if: "rejection_rate > average + 0.15"
+      penalty_factor: 0.8
+
+  # 3. 事件优先级调整
+  event_priority_tuning:
+    - event_type: "CompetitiveDisrupt"
+      promote_to_P0_if: "hypothesis_acceptance_rate > 0.50"
+      demote_to_P2_if: "hypothesis_acceptance_rate < 0.20"
+
+  # 4. Scorer权重调整
+  scorer_weight_tuning:
+    - condition: "embedding_high_but_human_low"
+      action: "decrease embedding_weight by 0.05, increase human_weight by 0.05"
+    - condition: "info_gain_high_but_actual_novelty_low"
+      action: "decrease info_gain_weight by 0.05"
+
+  # 调整频率
+  tuning_frequency: "weekly"
+  min_samples_for_adjustment: 30
+  max_adjustment_per_cycle: 0.10
+
+---
+
+# 置信度计算
+confidence_policy:
+  components:
+    - name: "analogy_quality"
+      weight: 0.30
+      description: "类比结构映射质量"
+
+    - name: "novelty_confidence"
+      weight: 0.30
+      description: "新颖性评分置信度"
+
+    - name: "feasibility_confidence"
+      weight: 0.25
+      description: "可行性评估置信度"
+
+    - name: "evidence_support"
+      weight: 0.15
+      description: "支撑证据强度"
+
+  cap_rule: "innov_confidence = min(0.85, weighted_sum)"  # 上限0.85，承认创新固有不确定性
+
+---
+
+# Kill Switch规则
+kill_switch_rules:
+  - id: "INNOV_KS_001"
+    name: "Registry Overflow"
+    if: "historical_registry.count > 2000"
+    then:
+      action: "PAUSE_AND_CLEANUP"
+      reason_code: "INNOV_REGISTRY_OVERFLOW"
+
+  - id: "INNOV_KS_002"
+    name: "Cascade Failure"
+    if: "consecutive_downstream_failures > 5"
+    then:
+      action: "PAUSE_ROUTING"
+      reason_code: "INNOV_DOWNSTREAM_FAILURE"
+
+  - id: "INNOV_KS_003"
+    name: "Quality Collapse"
+    if: "average_composite_score < 0.30 for 20 consecutive hypotheses"
+    then:
+      action: "PAUSE_AND_REVIEW"
+      reason_code: "INNOV_QUALITY_COLLAPSE"
+
+---
+
+# 版本历史
+version_history:
+  - version: "innov-1.0.0"
+    date: "2026-01-27"
+    changes:
+      - "初始版本"
+      - "Structure-Mapping + TRIZ + Design Thinking理论锚点"
+      - "Hybrid Novelty Scoring配置"
+      - "Innovation Quality Gate规则"
+      - "自适应调整机制"
+      - "Kill Switch规则"

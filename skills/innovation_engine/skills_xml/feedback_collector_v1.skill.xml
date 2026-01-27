@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Feedback Collector Skill v1.0 -->
+<!-- Position: F1 (Feedback Phase 1) | Purpose: 收集下游反馈 -->
+<!-- 核心: 多源反馈聚合 + 接受率计算 + 拒绝原因分析 -->
+
+<skill name="feedback_collector_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>Innovation Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Feedback Loop in Adaptive Systems</ref>
+      <ref>Reinforcement Learning from Human Feedback</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    收集创新提案的下游反馈，为 Adaptation Engine 提供数据：
+    1. 收集来自 QG/RM/VE/ECO/DI 的处理结果
+    2. 收集人工审核反馈
+    3. 计算接受率、拒绝率、使用率
+    4. 分析拒绝原因
+    5. 输出结构化反馈批次
+
+    这是自适应循环的关键环节。
+  </purpose>
+
+  <inputs>
+    <input name="routing_results" type="array" required="true">
+      来自 Output Router 的路由结果
+    </input>
+
+    <input name="downstream_responses" type="array" required="false">
+      下游 Agent 的处理响应
+      <item_schema>
+        <field name="proposal_id" type="string"/>
+        <field name="agent" type="string"/>
+        <field name="action" type="string">accept/reject/defer/modify</field>
+        <field name="reason" type="string"/>
+        <field name="timestamp" type="datetime"/>
+      </item_schema>
+    </input>
+
+    <input name="human_feedback" type="array" required="false">
+      人工审核反馈
+      <item_schema>
+        <field name="proposal_id" type="string"/>
+        <field name="reviewer" type="string"/>
+        <field name="rating" type="integer" range="[1,5]"/>
+        <field name="comments" type="string"/>
+        <field name="useful_for_calibration" type="boolean"/>
+      </item_schema>
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="AggregateResponses">
+      <action>
+        # 聚合所有反馈来源
+        all_feedback = []
+
+        # 1. 来自路由结果的初始反馈
+        FOR EACH result IN routing_results:
+          feedback_entry = {
+            proposal_id: result.proposal_id,
+            source: result.target_agent,
+            source_type: "ROUTING",
+            status: result.status,
+            timestamp: result.timestamp
+          }
+          all_feedback.append(feedback_entry)
+
+        # 2. 来自下游 Agent 的后续响应
+        IF downstream_responses:
+          FOR EACH response IN downstream_responses:
+            feedback_entry = {
+              proposal_id: response.proposal_id,
+              source: response.agent,
+              source_type: "DOWNSTREAM_PROCESSING",
+              action: response.action,
+              reason: response.reason,
+              timestamp: response.timestamp
+            }
+            all_feedback.append(feedback_entry)
+
+        # 3. 人工反馈
+        IF human_feedback:
+          FOR EACH feedback IN human_feedback:
+            feedback_entry = {
+              proposal_id: feedback.proposal_id,
+              source: "human_reviewer",
+              source_type: "HUMAN",
+              rating: feedback.rating,
+              comments: feedback.comments,
+              useful_for_calibration: feedback.useful_for_calibration,
+              timestamp: now()
+            }
+            all_feedback.append(feedback_entry)
+      </action>
+      <output>
+        aggregated_feedback: array
+      </output>
+    </step>
+
+    <step id="s2" name="ComputeAcceptanceMetrics">
+      <action>
+        # 按 proposal 汇总
+        proposal_outcomes = {}
+
+        FOR EACH feedback IN aggregated_feedback:
+          pid = feedback.proposal_id
+          IF pid NOT IN proposal_outcomes:
+            proposal_outcomes[pid] = {
+              routing_status: null,
+              downstream_action: null,
+              human_rating: null,
+              final_outcome: null
+            }
+
+          IF feedback.source_type == "ROUTING":
+            proposal_outcomes[pid].routing_status = feedback.status
+
+          ELIF feedback.source_type == "DOWNSTREAM_PROCESSING":
+            proposal_outcomes[pid].downstream_action = feedback.action
+            proposal_outcomes[pid].downstream_reason = feedback.reason
+
+          ELIF feedback.source_type == "HUMAN":
+            proposal_outcomes[pid].human_rating = feedback.rating
+
+        # 确定最终结果
+        FOR pid, outcome IN proposal_outcomes:
+          IF outcome.downstream_action == "accept":
+            outcome.final_outcome = "ACCEPTED"
+          ELIF outcome.downstream_action == "reject":
+            outcome.final_outcome = "REJECTED"
+          ELIF outcome.downstream_action == "modify":
+            outcome.final_outcome = "MODIFIED"
+          ELIF outcome.routing_status == "DELIVERED":
+            outcome.final_outcome = "PENDING"
+          ELSE:
+            outcome.final_outcome = "FAILED_DELIVERY"
+
+        # 计算指标
+        total = len(proposal_outcomes)
+        accepted = count(proposal_outcomes, final_outcome="ACCEPTED")
+        rejected = count(proposal_outcomes, final_outcome="REJECTED")
+        modified = count(proposal_outcomes, final_outcome="MODIFIED")
+        pending = count(proposal_outcomes, final_outcome="PENDING")
+
+        acceptance_rate = accepted / total IF total > 0 ELSE 0
+        rejection_rate = rejected / total IF total > 0 ELSE 0
+      </action>
+      <output>
+        proposal_outcomes: object
+        acceptance_rate: float
+        rejection_rate: float
+      </output>
+    </step>
+
+    <step id="s3" name="AnalyzeRejectionReasons">
+      <action>
+        rejection_reasons = []
+
+        FOR pid, outcome IN proposal_outcomes:
+          IF outcome.final_outcome == "REJECTED":
+            rejection_reasons.append({
+              proposal_id: pid,
+              reason: outcome.downstream_reason,
+              agent: outcome.source
+            })
+
+        # 分类拒绝原因
+        reason_categories = {
+          "NOT_NOVEL": 0,
+          "NOT_ACTIONABLE": 0,
+          "ALREADY_COVERED": 0,
+          "LOW_QUALITY": 0,
+          "IRRELEVANT": 0,
+          "OTHER": 0
+        }
+
+        FOR rejection IN rejection_reasons:
+          category = categorize_rejection(rejection.reason)
+          reason_categories[category] += 1
+
+        # 找出主要拒绝原因
+        top_rejection_reasons = sort_by_value(reason_categories, desc=True)[:3]
+      </action>
+      <output>
+        rejection_analysis: object
+        top_rejection_reasons: array
+      </output>
+    </step>
+
+    <step id="s4" name="CollectHumanCalibrationData">
+      <action>
+        calibration_samples = []
+
+        FOR EACH feedback IN aggregated_feedback:
+          IF feedback.source_type == "HUMAN" AND feedback.useful_for_calibration:
+            # 获取原始假设的评分
+            original_hypothesis = get_hypothesis(feedback.proposal_id)
+
+            calibration_sample = {
+              proposal_id: feedback.proposal_id,
+              embedding_score: original_hypothesis.scores.novelty_embedding,
+              info_gain_score: original_hypothesis.scores.info_gain,
+              model_composite: original_hypothesis.scores.composite,
+              human_rating: feedback.rating,
+              human_rating_normalized: (feedback.rating - 1) / 4,  # 归一化到 [0,1]
+              comments: feedback.comments
+            }
+
+            calibration_samples.append(calibration_sample)
+
+        calibration_stats = {
+          samples_collected: len(calibration_samples),
+          avg_human_rating: mean([s.human_rating for s in calibration_samples]),
+          human_model_correlation: compute_correlation(
+            [s.model_composite for s in calibration_samples],
+            [s.human_rating_normalized for s in calibration_samples]
+          )
+        }
+      </action>
+      <output>
+        calibration_samples: array
+        calibration_stats: object
+      </output>
+    </step>
+
+    <step id="s5" name="BuildFeedbackBatch">
+      <action>
+        feedback_batch = {
+          batch_id: generate_id("FB"),
+          timestamp: now(),
+          period: "current_trigger",
+
+          metrics: {
+            acceptance_rate: acceptance_rate,
+            rejection_rate: rejection_rate,
+            modification_rate: modified / total,
+            delivery_success_rate: (total - count(proposal_outcomes, final_outcome="FAILED_DELIVERY")) / total
+          },
+
+          rejection_analysis: {
+            total_rejected: rejected,
+            top_reasons: top_rejection_reasons,
+            by_category: reason_categories
+          },
+
+          calibration: {
+            new_samples: calibration_samples,
+            stats: calibration_stats
+          },
+
+          raw_feedback: aggregated_feedback
+        }
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="feedback_coverage" range="[0,1]" weight="40">
+      <formula>proposals_with_feedback / total_routed</formula>
+      <description>反馈覆盖率</description>
+    </score>
+    <score name="calibration_sample_rate" range="[0,1]" weight="30">
+      <formula>calibration_samples / total_proposals</formula>
+      <description>校准样本率</description>
+    </score>
+    <score name="rejection_analysis_quality" range="[0,1]" weight="30">
+      <formula>categorized_rejections / total_rejections</formula>
+      <description>拒绝原因分析完整度</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="INNOV_LOW_ACCEPTANCE_RATE" severity="P1" action="WARN">
+      接受率过低（&lt;30%）
+    </code>
+    <code id="INNOV_NO_HUMAN_FEEDBACK" severity="P2" action="INFO">
+      本轮无人工反馈
+    </code>
+    <code id="INNOV_CALIBRATION_DIVERGENCE" severity="P1" action="WARN">
+      人工评分与模型评分相关性低（&lt;0.5）
+    </code>
+  </reason_codes>
+
+  <output_contract>
+    <field name="feedback_batch" type="object" required="true">
+      <field name="batch_id" type="string"/>
+      <field name="timestamp" type="datetime"/>
+      <field name="metrics" type="object"/>
+      <field name="rejection_analysis" type="object"/>
+      <field name="calibration" type="object"/>
+    </field>
+
+    <field name="acceptance_rate" type="float" required="true"/>
+
+    <field name="rejection_reasons" type="array" required="true">
+      拒绝原因列表
+    </field>
+
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

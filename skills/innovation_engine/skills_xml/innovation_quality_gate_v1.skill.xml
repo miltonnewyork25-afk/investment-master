@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Innovation Quality Gate Skill v1.0 -->
+<!-- Position: C2 (Converge Phase 2) | Purpose: 创新输出质量门控 -->
+<!-- 核心: 准入控制 + 限流 + DEGRADE/REJECT判定 -->
+
+<skill name="innovation_quality_gate_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>Innovation Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Quality Gate Pattern (Software Engineering)</ref>
+      <ref>Innovation Funnel (Stage-Gate)</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    Innovation Quality Gate (IQG) - 创新输出的最终质量门控：
+    1. 检查假设完整性（必需字段）
+    2. 应用评分阈值（novelty/feasibility/composite）
+    3. 执行 DEGRADE/REJECT 判定
+    4. 实施输出限流（防止低质量泛滥）
+    5. 输出过滤后的高质量提案
+
+    确保只有高质量假设进入下游 Agent。
+  </purpose>
+
+  <inputs>
+    <input name="scored_hypotheses" type="array" required="true">
+      来自 Novelty Scorer 的带评分假设
+    </input>
+
+    <input name="iqg_config" type="object" required="true">
+      IQG 配置（from innovation_policy_pack_v1.yaml）
+    </input>
+
+    <input name="daily_proposal_count" type="integer" required="false">
+      当日已输出提案数
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="CheckRequiredFields">
+      <action>
+        FOR EACH hypothesis IN scored_hypotheses:
+          required_fields = [
+            "statement",
+            "claim_type",
+            "falsifiability.metric",
+            "falsifiability.threshold",
+            "falsifiability.time_window",
+            "falsifiability.verification_sources"
+          ]
+
+          missing_fields = []
+          FOR EACH field IN required_fields:
+            IF NOT exists(hypothesis, field):
+              missing_fields.append(field)
+
+          IF missing_fields.length > 0:
+            hypothesis.iqg_status = "INCOMPLETE"
+            hypothesis.iqg_reason = f"Missing: {missing_fields}"
+            add_reason_code: INNOV_HYPOTHESIS_INCOMPLETE
+          ELSE:
+            hypothesis.iqg_status = "FIELD_CHECK_PASSED"
+      </action>
+      <output>
+        field_checked_hypotheses: array
+      </output>
+    </step>
+
+    <step id="s2" name="ApplyScoreThresholds">
+      <action>
+        FOR EACH hypothesis IN field_checked_hypotheses:
+          IF hypothesis.iqg_status == "INCOMPLETE":
+            continue  # 已被标记
+
+          # 检查评分阈值
+          min_novelty = iqg_config.min_scores.novelty  # 0.40
+          min_feasibility = iqg_config.min_scores.feasibility  # 0.50
+          min_composite = iqg_config.min_scores.composite  # 0.45
+
+          # REJECT 条件（不进入下游）
+          IF hypothesis.scores.novelty &lt; 0.20:
+            hypothesis.iqg_status = "REJECTED"
+            hypothesis.iqg_reason = "Novelty too low (<0.20)"
+            add_reason_code: INNOV_NOT_NOVEL
+
+          ELIF hypothesis.duplicate_detected:
+            hypothesis.iqg_status = "REJECTED"
+            hypothesis.iqg_reason = "Duplicate detected"
+            add_reason_code: INNOV_DUPLICATE
+
+          ELIF hypothesis.claim_type == null:
+            hypothesis.iqg_status = "REJECTED"
+            hypothesis.iqg_reason = "Unclassified claim type"
+            add_reason_code: INNOV_UNCLASSIFIED
+
+          # DEGRADE 条件（进入下游但标记警告）
+          ELIF hypothesis.scores.novelty &lt; min_novelty AND hypothesis.scores.feasibility &lt; min_feasibility - 0.1:
+            hypothesis.iqg_status = "DEGRADED"
+            hypothesis.iqg_reason = "Both novelty and feasibility below threshold"
+            add_reason_code: INNOV_QUALITY_TOO_LOW
+
+          ELIF hypothesis.falsifiability.verification_sources.length == 0:
+            hypothesis.iqg_status = "DEGRADED"
+            hypothesis.iqg_reason = "No verification sources"
+            add_reason_code: INNOV_NO_VERIFICATION_SOURCES
+
+          ELIF parse_time_window(hypothesis.falsifiability.time_window) > 24:
+            hypothesis.iqg_status = "DEGRADED"
+            hypothesis.iqg_reason = "Time window too long (>24 months)"
+            add_reason_code: INNOV_TIME_WINDOW_TOO_LONG
+
+          # PASS 条件
+          ELIF hypothesis.scores.composite >= min_composite:
+            hypothesis.iqg_status = "PASSED"
+            hypothesis.iqg_reason = null
+
+          # WARN 条件（边缘情况）
+          ELSE:
+            hypothesis.iqg_status = "WARNED"
+            hypothesis.iqg_reason = "Composite score below threshold but not rejected"
+            add_reason_code: INNOV_BORDERLINE_QUALITY
+      </action>
+      <output>
+        threshold_checked_hypotheses: array
+      </output>
+    </step>
+
+    <step id="s3" name="ApplyOutputLimits">
+      <action>
+        # 分离通过/降级/警告的假设
+        passed = filter(threshold_checked_hypotheses, status="PASSED")
+        degraded = filter(threshold_checked_hypotheses, status="DEGRADED")
+        warned = filter(threshold_checked_hypotheses, status="WARNED")
+        rejected = filter(threshold_checked_hypotheses, status="REJECTED")
+
+        # 计算剩余配额
+        remaining_daily = iqg_config.limits.max_proposals_per_day - daily_proposal_count
+        per_trigger_limit = iqg_config.limits.max_proposals_per_trigger  # 5
+
+        # 按 composite score 排序
+        sorted_passed = sort_by(passed, "scores.composite", desc=True)
+        sorted_degraded = sort_by(degraded, "scores.composite", desc=True)
+
+        # 选择输出
+        selected_proposals = []
+
+        # 1. 优先选择 PASSED
+        for hyp in sorted_passed[:per_trigger_limit]:
+          if len(selected_proposals) &lt; remaining_daily:
+            selected_proposals.append(hyp)
+
+        # 2. 如果配额有余，选择部分 DEGRADED（标记警告）
+        remaining_slots = min(
+          per_trigger_limit - len(selected_proposals),
+          remaining_daily - len(selected_proposals),
+          2  # 最多2个degraded
+        )
+        for hyp in sorted_degraded[:remaining_slots]:
+          selected_proposals.append(hyp)
+
+        # 3. WARNED 不进入输出，记录供反馈
+
+        IF len(selected_proposals) == 0:
+          add_reason_code: INNOV_NO_PROPOSALS_PASSED
+      </action>
+      <output>
+        selected_proposals: array
+        rejected_hypotheses: array
+        warned_hypotheses: array
+      </output>
+    </step>
+
+    <step id="s4" name="PrepareFilteredOutput">
+      <action>
+        filtered_proposals = []
+
+        FOR EACH proposal IN selected_proposals:
+          # 添加 IQG 元数据
+          proposal.iqg_metadata = {
+            iqg_status: proposal.iqg_status,
+            iqg_reason: proposal.iqg_reason,
+            iqg_timestamp: now(),
+            iqg_version: "1.0.0"
+          }
+
+          # 如果是 DEGRADED，添加警告标记
+          IF proposal.iqg_status == "DEGRADED":
+            proposal.warnings = proposal.warnings or []
+            proposal.warnings.append({
+              code: proposal.iqg_reason_code,
+              message: proposal.iqg_reason,
+              severity: "WARN"
+            })
+
+          filtered_proposals.append(proposal)
+
+        # 统计
+        iqg_stats = {
+          total_input: scored_hypotheses.length,
+          passed: passed.length,
+          degraded: degraded.length,
+          warned: warned.length,
+          rejected: rejected.length,
+          selected_for_output: filtered_proposals.length,
+          daily_remaining: remaining_daily - filtered_proposals.length
+        }
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="pass_rate" range="[0,1]" weight="40">
+      <formula>passed / total_input</formula>
+      <description>通过率</description>
+    </score>
+    <score name="rejection_appropriateness" range="[0,1]" weight="35">
+      <formula>appropriate_rejections / total_rejections</formula>
+      <description>拒绝恰当性（基于后续验证）</description>
+    </score>
+    <score name="output_quality" range="[0,1]" weight="25">
+      <formula>mean(selected.composite_scores)</formula>
+      <description>输出质量（选中提案平均分）</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="INNOV_NOT_NOVEL" severity="P1" action="REJECT">
+      新颖性过低（&lt;0.20）
+    </code>
+    <code id="INNOV_DUPLICATE" severity="P1" action="REJECT">
+      与历史假设重复
+    </code>
+    <code id="INNOV_UNCLASSIFIED" severity="P1" action="REJECT">
+      假设类型未分类
+    </code>
+    <code id="INNOV_QUALITY_TOO_LOW" severity="P1" action="DEGRADE">
+      新颖性和可行性都低于阈值
+    </code>
+    <code id="INNOV_NO_VERIFICATION_SOURCES" severity="P1" action="DEGRADE">
+      缺少验证来源
+    </code>
+    <code id="INNOV_TIME_WINDOW_TOO_LONG" severity="P2" action="DEGRADE">
+      时间窗口过长（>24月）
+    </code>
+    <code id="INNOV_BORDERLINE_QUALITY" severity="P2" action="WARN">
+      质量边缘（未拒绝但需关注）
+    </code>
+    <code id="INNOV_NO_PROPOSALS_PASSED" severity="P1" action="INFO">
+      本轮无提案通过质量门控
+    </code>
+    <code id="INNOV_DAILY_LIMIT_APPLIED" severity="P3" action="INFO">
+      每日配额限制已应用
+    </code>
+  </reason_codes>
+
+  <output_contract>
+    <field name="filtered_proposals" type="array" required="true">
+      通过质量门控的提案
+      <item_schema>
+        所有 structured_hypothesis 字段 + iqg_metadata
+      </item_schema>
+    </field>
+
+    <field name="rejected_hypotheses" type="array" required="true">
+      被拒绝的假设（用于反馈学习）
+    </field>
+
+    <field name="warned_hypotheses" type="array" required="false">
+      警告状态的假设（边缘情况）
+    </field>
+
+    <field name="iqg_stats" type="object" required="true">
+      <field name="total_input" type="integer"/>
+      <field name="passed" type="integer"/>
+      <field name="degraded" type="integer"/>
+      <field name="warned" type="integer"/>
+      <field name="rejected" type="integer"/>
+      <field name="selected_for_output" type="integer"/>
+      <field name="daily_remaining" type="integer"/>
+    </field>
+
+    <field name="iqg_reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hypothesis Structurer Skill v1.0 -->
+<!-- Position: D3 (Diverge Phase 3) | Purpose: 结构化假设生成 -->
+<!-- 核心: ClaimSpec格式 + 可证伪设计 + 与RM/VE对齐 -->
+
+<skill name="hypothesis_structurer_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>Innovation Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Scientific Method - Falsifiability (Popper)</ref>
+      <ref>RM ClaimSpec Standard</ref>
+      <ref>VE CAP Hypothesis Format</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    将 analogized ideas 转换为结构化、可证伪的 Hypotheses：
+    1. 提取核心声明（claim statement）
+    2. 分类假设类型（MECHANISM/VALUATION/ECOSYSTEM/DATA_GAP）
+    3. 设计可证伪条件（metric + threshold + time_window）
+    4. 指定验证来源和证伪条件
+    5. 输出与 RM ClaimSpec / VE CAP Hypothesis 兼容的格式
+
+    确保每个假设都是可测试、可验证、可证伪的。
+  </purpose>
+
+  <inputs>
+    <input name="analogized_ideas" type="array" required="true">
+      来自 Cross-Domain Analogizer 的类比洞察
+    </input>
+
+    <input name="context_evidence" type="object" required="true">
+      当前上下文中可用的证据和数据
+    </input>
+
+    <input name="claim_spec_template" type="object" required="true">
+      假设结构模板（from innovation_policy_pack_v1.yaml）
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="ExtractClaimStatements">
+      <action>
+        FOR EACH idea IN analogized_ideas:
+          # 从 insight 中提取核心声明
+          claim_statement = extract_testable_claim(idea.insight)
+
+          规则：
+          - 声明必须是具体的、可测量的
+          - 避免模糊表述（"可能会"→"将会"或"不会"）
+          - 包含因果关系或预测性陈述
+
+          例如:
+          insight: "margin压力可能触发价格战螺旋"
+          claim: "如果毛利率持续低于18%超过2个季度，公司将被迫降价5%+"
+
+          extracted_claims.append({
+            idea_id: idea.id,
+            claim_statement: claim_statement,
+            confidence_in_extraction: score
+          })
+      </action>
+      <output>
+        extracted_claims: array
+      </output>
+    </step>
+
+    <step id="s2" name="ClassifyClaimType">
+      <action>
+        FOR EACH claim IN extracted_claims:
+          # 根据内容分类假设类型
+          claim_type = classify(claim.claim_statement)
+
+          分类规则:
+          MECHANISM: 涉及因果机制、飞轮、反馈环路
+            - 关键词: "导致", "驱动", "因为", "影响"
+            - 目标: RM Agent
+
+          VALUATION: 涉及估值假设、隐含预期、CAP
+            - 关键词: "隐含", "定价", "估值", "fade", "增长率"
+            - 目标: VE Agent
+
+          ECOSYSTEM: 涉及生态关系、竞争格局、供应链
+            - 关键词: "竞争", "供应商", "客户", "合作", "替代"
+            - 目标: ECO Agent
+
+          DATA_GAP: 识别数据缺口或信息不对称
+            - 关键词: "缺乏数据", "未披露", "需要验证"
+            - 目标: DI Agent
+
+          INNOVATION: 一般性创新洞察（无明确目标Agent）
+            - 默认类型
+
+          claim.claim_type = claim_type
+          claim.target_agent = get_target_agent(claim_type)
+      </action>
+      <output>
+        classified_claims: array
+      </output>
+    </step>
+
+    <step id="s3" name="DesignFalsifiability">
+      <action>
+        FOR EACH claim IN classified_claims:
+          # 设计可证伪条件 - 这是核心步骤
+          falsifiability = {}
+
+          # 1. 确定可测量的指标
+          falsifiability.metric = identify_metric(
+            claim.claim_statement,
+            context_evidence.available_metrics
+          )
+
+          指标选择优先级:
+          1. 直接财务指标（Revenue, Margin, EPS）
+          2. 运营指标（MAU, ARR, NRR, Market Share）
+          3. 可计算指标（YoY Growth, Ratio）
+          4. 定性指标（需要评分标准）
+
+          # 2. 设定阈值条件
+          falsifiability.threshold = determine_threshold(
+            claim.claim_statement,
+            context_evidence.current_values,
+            context_evidence.historical_trends
+          )
+
+          阈值类型:
+          - 绝对值: "> 20%", "< $50B"
+          - 相对变化: "+10% YoY", "-5% QoQ"
+          - 比较: "> industry_avg", "< peer_median"
+
+          # 3. 设定时间窗口
+          falsifiability.time_window = determine_time_window(
+            claim.claim_type,
+            claim.urgency
+          )
+
+          时间窗口指南:
+          - 短期 (1-3个月): 财报驱动、事件驱动
+          - 中期 (3-12个月): 策略执行、市场趋势
+          - 长期 (12-24个月): 结构性变化、技术周期
+
+          # 4. 指定验证来源
+          falsifiability.verification_sources = identify_sources(
+            falsifiability.metric,
+            context_evidence.available_sources
+          )
+
+          来源分层:
+          Tier1: 10-K, 10-Q, Earnings Call, Company PR
+          Tier2: Industry Report, Analyst Report, Gov Data
+          Tier3: News, Social Media (需要确认)
+
+          # 5. 定义证伪条件
+          falsifiability.disconfirmers = define_disconfirmers(
+            claim.claim_statement,
+            falsifiability.metric,
+            falsifiability.threshold
+          )
+
+          证伪条件格式: "{condition}持续{duration}则假设失效"
+
+          claim.falsifiability = falsifiability
+      </action>
+      <output>
+        claims_with_falsifiability: array
+      </output>
+    </step>
+
+    <step id="s4" name="ValidateCompleteness">
+      <action>
+        FOR EACH claim IN claims_with_falsifiability:
+          completeness_check = {
+            has_claim_type: claim.claim_type != null,
+            has_metric: claim.falsifiability.metric != null,
+            has_threshold: claim.falsifiability.threshold != null,
+            has_time_window: claim.falsifiability.time_window != null,
+            has_sources: claim.falsifiability.verification_sources.length >= 1,
+            has_disconfirmers: claim.falsifiability.disconfirmers.length >= 1
+          }
+
+          completeness_score = sum(values) / 6
+
+          IF completeness_score &lt; 0.8:
+            add_reason_code: INNOV_HYPOTHESIS_INCOMPLETE
+            attempt_to_fill_gaps()
+
+          claim.completeness_score = completeness_score
+      </action>
+      <output>
+        validated_claims: array
+      </output>
+    </step>
+
+    <step id="s5" name="FormatAsHypothesis">
+      <action>
+        FOR EACH claim IN validated_claims:
+          # 格式化为标准 hypothesis 结构
+          hypothesis = {
+            id: generate_id("INNOV_H"),
+            claim_type: claim.claim_type,
+            statement: claim.claim_statement,
+
+            origin: {
+              trigger_event: get_trigger_event(claim.idea_id),
+              analogy_source: get_analogy_source(claim.idea_id),
+              analogy_mapping: get_mapping_description(claim.idea_id)
+            },
+
+            falsifiability: {
+              metric: claim.falsifiability.metric,
+              threshold: claim.falsifiability.threshold,
+              time_window: claim.falsifiability.time_window,
+              verification_sources: claim.falsifiability.verification_sources,
+              disconfirmers: claim.falsifiability.disconfirmers
+            },
+
+            scores: {
+              novelty: null,  # 待 Novelty Scorer 填充
+              feasibility: null,
+              composite: null
+            },
+
+            routing: {
+              target_agent: claim.target_agent,
+              output_format: get_output_format(claim.claim_type),
+              priority: null  # 待评分后确定
+            },
+
+            metadata: {
+              created_at: now(),
+              completeness_score: claim.completeness_score,
+              original_idea_id: claim.idea_id
+            }
+          }
+
+          structured_hypotheses.append(hypothesis)
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="claim_clarity" range="[0,1]" weight="25">
+      <formula>specific_claims / total_claims</formula>
+      <description>声明清晰度（具体vs模糊）</description>
+    </score>
+    <score name="falsifiability_completeness" range="[0,1]" weight="35">
+      <formula>mean(completeness_scores)</formula>
+      <description>可证伪设计完整度</description>
+    </score>
+    <score name="metric_observability" range="[0,1]" weight="25">
+      <formula>observable_metrics / total_metrics</formula>
+      <description>指标可观测性</description>
+    </score>
+    <score name="source_quality" range="[0,1]" weight="15">
+      <formula>tier1_sources / total_sources</formula>
+      <description>验证来源质量</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="INNOV_HYPOTHESIS_INCOMPLETE" severity="P2" action="WARN">
+      假设缺少必需字段
+    </code>
+    <code id="INNOV_METRIC_NOT_OBSERVABLE" severity="P2" action="WARN">
+      指定的指标难以观测
+    </code>
+    <code id="INNOV_NO_TIER1_SOURCE" severity="P2" action="WARN">
+      缺少Tier1验证来源
+    </code>
+    <code id="INNOV_TIME_WINDOW_TOO_LONG" severity="P2" action="WARN">
+      时间窗口超过24个月
+    </code>
+    <code id="INNOV_CLAIM_TOO_VAGUE" severity="P2" action="WARN">
+      声明过于模糊，无法测试
+    </code>
+  </reason_codes>
+
+  <output_contract>
+    <field name="structured_hypotheses" type="array" required="true" min_items="3">
+      <item_schema>
+        <field name="id" type="string" pattern="^INNOV_H_[0-9]{3}$" required="true"/>
+        <field name="claim_type" type="string" required="true">
+          <enum>INNOVATION, MECHANISM, VALUATION, ECOSYSTEM, DATA_GAP</enum>
+        </field>
+        <field name="statement" type="string" required="true" min_length="20"/>
+        <field name="origin" type="object" required="true"/>
+        <field name="falsifiability" type="object" required="true">
+          <field name="metric" type="string" required="true"/>
+          <field name="threshold" type="string" required="true"/>
+          <field name="time_window" type="string" required="true"/>
+          <field name="verification_sources" type="array" min_items="1" required="true"/>
+          <field name="disconfirmers" type="array" min_items="1" required="true"/>
+        </field>
+        <field name="scores" type="object"/>
+        <field name="routing" type="object" required="true"/>
+        <field name="metadata" type="object" required="true"/>
+      </item_schema>
+    </field>
+
+    <field name="structuring_stats" type="object" required="true">
+      <field name="ideas_processed" type="integer"/>
+      <field name="hypotheses_generated" type="integer"/>
+      <field name="claim_types_distribution" type="object"/>
+      <field name="avg_completeness_score" type="float"/>
+      <field name="incomplete_count" type="integer"/>
+    </field>
+
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

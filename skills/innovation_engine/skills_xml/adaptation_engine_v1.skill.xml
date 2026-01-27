@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adaptation Engine Skill v1.0 -->
+<!-- Position: F2 (Feedback Phase 2) | Purpose: 自适应参数调整 -->
+<!-- 核心: 规则驱动调优 + 阈值校准 + 权重调整 -->
+
+<skill name="adaptation_engine_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>Innovation Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Adaptive Control Systems</ref>
+      <ref>Online Learning</ref>
+      <ref>Parameter Tuning</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    基于反馈数据自适应调整 Innovation Agent 的参数：
+    1. 根据接受率/拒绝率调整质量阈值
+    2. 根据拒绝原因调整评分权重
+    3. 根据人工校准数据调整 Novelty Scorer
+    4. 根据使用模式调整类比领域权重
+    5. 输出调整指令供下次运行使用
+
+    确保系统持续改进而非静态运行。
+  </purpose>
+
+  <inputs>
+    <input name="feedback_batch" type="object" required="true">
+      来自 Feedback Collector 的反馈批次
+    </input>
+
+    <input name="current_policy" type="object" required="true">
+      当前 policy_pack 配置
+    </input>
+
+    <input name="adaptation_config" type="object" required="true">
+      自适应配置（from innovation_policy_pack_v1.yaml）
+    </input>
+
+    <input name="historical_adaptations" type="array" required="false">
+      历史调整记录
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="EvaluateAdaptationTriggers">
+      <action>
+        # 检查是否满足调整条件
+        triggers_activated = []
+
+        # 1. 检查样本量是否足够
+        IF feedback_batch.metrics.total &lt; adaptation_config.min_samples_for_adjustment:
+          skip_adaptation = true
+          add_reason_code: INNOV_INSUFFICIENT_SAMPLES
+          return
+
+        # 2. 检查各项触发条件
+        FOR EACH target IN adaptation_config.threshold_tuning:
+          condition = target.adjust_if
+          IF evaluate_condition(condition, feedback_batch):
+            triggers_activated.append({
+              type: "threshold_tuning",
+              target: target,
+              reason: condition
+            })
+
+        FOR EACH target IN adaptation_config.domain_weight_tuning:
+          IF should_boost_domain(target, feedback_batch):
+            triggers_activated.append({
+              type: "domain_weight",
+              domain: target.domain,
+              action: "boost"
+            })
+          ELIF should_penalize_domain(target, feedback_batch):
+            triggers_activated.append({
+              type: "domain_weight",
+              domain: target.domain,
+              action: "penalize"
+            })
+
+        FOR EACH target IN adaptation_config.scorer_weight_tuning:
+          IF evaluate_condition(target.condition, feedback_batch):
+            triggers_activated.append({
+              type: "scorer_weight",
+              action: target.action
+            })
+      </action>
+      <output>
+        triggers_activated: array
+      </output>
+    </step>
+
+    <step id="s2" name="ComputeAdjustments">
+      <action>
+        adjustments = []
+
+        FOR EACH trigger IN triggers_activated:
+          SWITCH trigger.type:
+
+            CASE "threshold_tuning":
+              target = trigger.target
+              current_value = get_nested(current_policy, target.param)
+              direction = target.direction
+              step = target.step
+              bounds = target.bounds
+
+              IF direction == "increase":
+                new_value = min(current_value + step, bounds[1])
+              ELSE:
+                new_value = max(current_value - step, bounds[0])
+
+              # 检查最大调整限制
+              total_change = abs(new_value - get_original_value(target.param))
+              IF total_change > adaptation_config.max_adjustment_per_cycle:
+                new_value = apply_max_change(current_value, direction, adaptation_config.max_adjustment_per_cycle)
+
+              adjustments.append({
+                type: "param_change",
+                param: target.param,
+                old_value: current_value,
+                new_value: new_value,
+                reason: trigger.reason
+              })
+
+            CASE "domain_weight":
+              domain = trigger.domain
+              current_weight = current_policy.analogy_domain_library.domains[domain].weight
+
+              IF trigger.action == "boost":
+                new_weight = min(current_weight * trigger.boost_factor, 1.5)
+              ELSE:
+                new_weight = max(current_weight * trigger.penalty_factor, 0.5)
+
+              adjustments.append({
+                type: "domain_weight",
+                domain: domain,
+                old_weight: current_weight,
+                new_weight: new_weight,
+                reason: trigger.action
+              })
+
+            CASE "scorer_weight":
+              # 解析调整指令
+              parsed = parse_weight_action(trigger.action)
+              FOR EACH change IN parsed:
+                current_weight = current_policy.novelty_scoring.weights[change.component]
+                new_weight = current_weight + change.delta
+
+                # 确保权重和为1
+                adjustments.append({
+                  type: "scorer_weight",
+                  component: change.component,
+                  old_weight: current_weight,
+                  new_weight: new_weight,
+                  reason: trigger.action
+                })
+      </action>
+      <output>
+        adjustments: array
+      </output>
+    </step>
+
+    <step id="s3" name="UpdateCalibrationModel">
+      <action>
+        IF feedback_batch.calibration.new_samples.length >= 10:
+          # 有足够新样本，更新校准模型
+
+          # 合并历史样本
+          all_samples = historical_calibration_samples + feedback_batch.calibration.new_samples
+
+          # 应用衰减
+          FOR EACH sample IN all_samples:
+            sample.weight = sample.weight * adaptation_config.decay_factor
+
+          # 重新训练线性回归模型
+          X = [[s.embedding_score, s.info_gain_score] for s in all_samples]
+          y = [s.human_rating_normalized for s in all_samples]
+          weights = [s.weight for s in all_samples]
+
+          new_calibration_model = train_weighted_regression(X, y, weights)
+
+          adjustments.append({
+            type: "calibration_model",
+            action: "retrain",
+            samples_used: len(all_samples),
+            new_model_params: new_calibration_model.params,
+            correlation_improvement: compute_correlation_change(
+              feedback_batch.calibration.stats.human_model_correlation,
+              new_calibration_model.validation_correlation
+            )
+          })
+      </action>
+      <output>
+        calibration_model_update: object
+      </output>
+    </step>
+
+    <step id="s4" name="ValidateAdjustments">
+      <action>
+        # 验证调整不会导致系统不稳定
+        validated_adjustments = []
+
+        FOR EACH adj IN adjustments:
+          # 检查是否在安全范围内
+          IF adj.type == "param_change":
+            IF adj.new_value >= adj.bounds[0] AND adj.new_value &lt;= adj.bounds[1]:
+              validated_adjustments.append(adj)
+            ELSE:
+              add_reason_code: INNOV_ADJUSTMENT_OUT_OF_BOUNDS
+              adj.new_value = clip(adj.new_value, adj.bounds[0], adj.bounds[1])
+              validated_adjustments.append(adj)
+
+          ELIF adj.type == "scorer_weight":
+            # 确保权重和约束
+            total_weight_change = sum([a.new_weight - a.old_weight for a in adjustments if a.type == "scorer_weight"])
+            IF abs(total_weight_change) > 0.01:
+              # 需要重新归一化
+              normalize_scorer_weights(validated_adjustments)
+
+            validated_adjustments.append(adj)
+
+          ELSE:
+            validated_adjustments.append(adj)
+
+        # 检查是否与最近调整冲突
+        IF historical_adaptations:
+          recent = get_recent_adaptations(historical_adaptations, days=7)
+          FOR EACH adj IN validated_adjustments:
+            conflicting = find_conflicting_adjustment(adj, recent)
+            IF conflicting:
+              add_reason_code: INNOV_ADJUSTMENT_CONFLICT
+              # 可能需要减小调整幅度
+      </action>
+      <output>
+        validated_adjustments: array
+      </output>
+    </step>
+
+    <step id="s5" name="GenerateAdaptationInstructions">
+      <action>
+        adaptation_instructions = {
+          instruction_id: generate_id("ADAPT"),
+          timestamp: now(),
+          triggered_by: feedback_batch.batch_id,
+
+          param_changes: filter(validated_adjustments, type="param_change"),
+          domain_weight_changes: filter(validated_adjustments, type="domain_weight"),
+          scorer_weight_changes: filter(validated_adjustments, type="scorer_weight"),
+          calibration_update: calibration_model_update,
+
+          summary: {
+            total_adjustments: len(validated_adjustments),
+            param_changes_count: count(validated_adjustments, type="param_change"),
+            acceptance_rate_before: feedback_batch.metrics.acceptance_rate,
+            expected_improvement: estimate_improvement(validated_adjustments)
+          },
+
+          apply_on_next_run: true
+        }
+
+        # 记录调整日志
+        policy_adjustment_log = {
+          timestamp: now(),
+          instructions: adaptation_instructions,
+          feedback_metrics: feedback_batch.metrics,
+          triggers_activated: triggers_activated
+        }
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="adaptation_effectiveness" range="[0,1]" weight="50">
+      <formula>acceptance_rate_after / acceptance_rate_before</formula>
+      <description>调整有效性（调整后接受率提升）</description>
+    </score>
+    <score name="stability" range="[0,1]" weight="30">
+      <formula>1 - oscillation_frequency</formula>
+      <description>系统稳定性（避免来回调整）</description>
+    </score>
+    <score name="calibration_improvement" range="[0,1]" weight="20">
+      <formula>new_correlation - old_correlation</formula>
+      <description>校准改进程度</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="INNOV_INSUFFICIENT_SAMPLES" severity="P3" action="INFO">
+      样本量不足，跳过本次调整
+    </code>
+    <code id="INNOV_ADJUSTMENT_OUT_OF_BOUNDS" severity="P2" action="WARN">
+      调整值超出安全范围，已裁剪
+    </code>
+    <code id="INNOV_ADJUSTMENT_CONFLICT" severity="P2" action="WARN">
+      与最近调整冲突
+    </code>
+    <code id="INNOV_CALIBRATION_RETRAINED" severity="P3" action="INFO">
+      校准模型已重新训练
+    </code>
+    <code id="INNOV_NO_ADJUSTMENT_NEEDED" severity="P3" action="INFO">
+      当前性能良好，无需调整
+    </code>
+  </reason_codes>
+
+  <output_contract>
+    <field name="adaptation_instructions" type="object" required="true">
+      <field name="instruction_id" type="string"/>
+      <field name="param_changes" type="array"/>
+      <field name="domain_weight_changes" type="array"/>
+      <field name="scorer_weight_changes" type="array"/>
+      <field name="calibration_update" type="object"/>
+      <field name="summary" type="object"/>
+      <field name="apply_on_next_run" type="boolean"/>
+    </field>
+
+    <field name="policy_adjustment_log" type="object" required="true">
+      完整的调整日志
+    </field>
+
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

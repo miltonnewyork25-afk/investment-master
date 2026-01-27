@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cross-Domain Analogizer Skill v1.0 -->
+<!-- Position: D2 (Diverge Phase 2) | Purpose: 跨域类比生成 -->
+<!-- 核心: Structure-Mapping Theory + Domain Library + 类比约束 -->
+
+<skill name="cross_domain_analogizer_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>Innovation Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Structure-Mapping Theory (Gentner, 1983)</ref>
+      <ref>TRIZ Inventive Principles (Altshuller)</ref>
+      <ref>Design-by-Analogy (Holyoak &amp; Thagard)</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    基于跨域类比扩展 idea seeds，生成更深层的洞察：
+    1. 从 Analogy Domain Library 选择合适的类比领域
+    2. 应用 Structure-Mapping Theory 进行关系结构映射
+    3. 确保类比保留关系结构而非表面相似性
+    4. 生成 analogized ideas 作为 hypothesis 的前体
+
+    核心约束: 优先映射高阶关系，避免乱类比。
+  </purpose>
+
+  <inputs>
+    <input name="idea_seeds" type="array" required="true">
+      来自 Idea Seed Generator 的初始想法
+    </input>
+
+    <input name="domain_library" type="object" required="true">
+      类比领域库（from analogy_domain_library_v1.yaml）
+    </input>
+
+    <input name="analogy_constraints" type="object" required="true">
+      类比约束配置（from innovation_policy_pack_v1.yaml）
+      <field name="require_structural_mapping" type="boolean"/>
+      <field name="min_relational_similarity" type="float"/>
+      <field name="domain_distance" type="object"/>
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="SelectAnalogyDomains">
+      <action>
+        FOR EACH seed IN idea_seeds:
+          1. 分析 seed 的问题类型 (growth_slowdown, competitive_threat, etc.)
+          2. 从 domain_library.domain_selection.problem_domain_mapping 获取推荐领域
+          3. 选择 2 个领域：1 primary + 1 auxiliary
+
+          domain_selection_criteria:
+            - problem_type 匹配度
+            - 领域间距离在 [0.4, 0.7] 范围（最佳类比距离）
+            - 避免与最近使用的领域重复（增加多样性）
+
+          selected_domains = {
+            seed_id: seed.id,
+            primary_domain: domain_1,
+            auxiliary_domain: domain_2,
+            combined_distance: domain_distance_matrix[d1][d2]
+          }
+      </action>
+      <output>
+        domain_selections: array
+      </output>
+    </step>
+
+    <step id="s2" name="ExtractSeedRelations">
+      <action>
+        FOR EACH seed IN idea_seeds:
+          提取 seed 中的关系结构（而非表面属性）：
+
+          关系类型：
+          - 因果关系: A causes B
+          - 依赖关系: A depends on B
+          - 抑制关系: A inhibits B
+          - 增强关系: A enhances B
+          - 时序关系: A precedes B
+          - 组成关系: A is part of B
+          - 竞争关系: A competes with B
+
+          seed_relations = extract_relations(seed.statement)
+
+          例如：
+          seed: "margin下降可能导致降价策略"
+          relations: [
+            {type: "causes", subject: "margin下降", object: "降价策略"}
+          ]
+      </action>
+      <output>
+        seed_relations_map: map[seed_id] -> relations[]
+      </output>
+    </step>
+
+    <step id="s3" name="FindStructuralMappings">
+      <action>
+        FOR EACH seed, selected_domains IN domain_selections:
+          FOR EACH domain IN [primary_domain, auxiliary_domain]:
+            # 查找 domain 中的 relational_structures
+            domain_structures = domain_library.domains[domain].relational_structures
+
+            # 尝试结构映射（Gentner的核心）
+            FOR EACH seed_relation IN seed_relations_map[seed.id]:
+              FOR EACH domain_structure IN domain_structures:
+                mapping_score = compute_structural_similarity(
+                  seed_relation,
+                  domain_structure
+                )
+
+                IF mapping_score >= min_relational_similarity (0.6):
+                  valid_mapping = {
+                    seed_id: seed.id,
+                    seed_relation: seed_relation,
+                    domain: domain,
+                    domain_structure: domain_structure,
+                    mapping_score: mapping_score,
+                    is_higher_order: check_higher_order(domain_structure)
+                  }
+                  valid_mappings.append(valid_mapping)
+
+            # Systematicity Principle: 优先选择高阶关系映射
+            prioritize_mappings_by_systematicity(valid_mappings)
+      </action>
+      <validation>
+        每个 seed 至少有 1 个 valid_mapping，否则 emit INNOV_NO_VALID_MAPPING
+      </validation>
+      <output>
+        structural_mappings: array
+      </output>
+    </step>
+
+    <step id="s4" name="GenerateAnalogizedIdeas">
+      <action>
+        FOR EACH mapping IN structural_mappings:
+          # 应用类比生成新想法
+          analogized_idea = {
+            id: generate_id("ANALOG"),
+            original_seed_id: mapping.seed_id,
+            analogy_source: {
+              domain: mapping.domain,
+              structure: mapping.domain_structure.relation,
+              business_analog: mapping.domain_structure.business_analog
+            },
+            mapping_description: describe_mapping(mapping),
+            insight: generate_insight(
+              mapping.seed_relation,
+              mapping.domain_structure
+            ),
+            structural_mapping_score: mapping.mapping_score,
+            is_higher_order: mapping.is_higher_order
+          }
+
+          # 生成 insight 的方法：
+          # 1. 将 domain 的关系模式应用到 business context
+          # 2. 识别模式的含义和预测
+          # 3. 形成可测试的陈述
+
+          例如:
+          seed_relation: "margin下降 causes 降价策略"
+          domain_structure: "捕食者-猎物动态"
+          insight: "类似生态系统中的捕食者-猎物动态，margin压力可能触发
+                    价格战螺旋（降价→对手跟进→进一步降价），直到达到新均衡"
+      </action>
+      <output>
+        analogized_ideas: array
+      </output>
+    </step>
+
+    <step id="s5" name="ValidateAnalogyQuality">
+      <action>
+        FOR EACH idea IN analogized_ideas:
+          quality_checks:
+
+          1. Structural Completeness:
+             - 映射是否完整（无大量未映射元素）
+             - completeness_score = mapped_elements / total_elements
+
+          2. Relevance Check:
+             - 类比是否与原始问题相关
+             - relevance_score = semantic_similarity(idea.insight, seed.statement)
+
+          3. Domain Distance Check:
+             - 领域距离是否在最佳范围
+             - IF distance &lt; 0.3: add_reason_code INNOV_ANALOGY_TOO_CLOSE
+             - IF distance > 0.8: add_reason_code INNOV_ANALOGY_TOO_FAR
+
+          4. Non-triviality Check:
+             - 类比是否提供新见解（不是简单重述）
+             - IF insight similar to seed.statement: trivial
+
+          overall_analogy_quality = weighted_avg(
+            completeness_score,
+            relevance_score,
+            distance_appropriateness,
+            non_triviality
+          )
+
+          IF overall_analogy_quality &lt; 0.5:
+            mark as LOW_QUALITY
+            add_reason_code: INNOV_WEAK_ANALOGY
+      </action>
+      <output>
+        validated_ideas: array with quality_scores
+      </output>
+    </step>
+
+    <step id="s6" name="RankAndSelect">
+      <action>
+        排序标准：
+        1. structural_mapping_score (权重 0.35)
+        2. is_higher_order bonus (权重 0.20)
+        3. overall_analogy_quality (权重 0.30)
+        4. diversity (权重 0.15)
+
+        # 确保多样性：来自不同领域的类比
+        selected_ideas = select_diverse_top(
+          validated_ideas,
+          max_per_domain=3,
+          total_max=12
+        )
+
+        # 记录类比映射详情（用于后续解释）
+        FOR EACH selected IN selected_ideas:
+          analogy_mappings.append({
+            idea_id: selected.id,
+            seed_id: selected.original_seed_id,
+            domain: selected.analogy_source.domain,
+            structure_mapped: selected.analogy_source.structure,
+            mapping_explanation: selected.mapping_description
+          })
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="mapping_quality" range="[0,1]" weight="35">
+      <formula>mean(structural_mapping_scores)</formula>
+      <description>结构映射质量平均分</description>
+    </score>
+    <score name="higher_order_ratio" range="[0,1]" weight="25">
+      <formula>higher_order_mappings / total_mappings</formula>
+      <description>高阶关系映射比例</description>
+    </score>
+    <score name="domain_diversity" range="[0,1]" weight="25">
+      <formula>unique_domains_used / available_domains</formula>
+      <description>领域多样性</description>
+    </score>
+    <score name="analogy_non_triviality" range="[0,1]" weight="15">
+      <formula>non_trivial_insights / total_insights</formula>
+      <description>非平凡洞察比例</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="INNOV_NO_VALID_MAPPING" severity="P1" action="WARN">
+      Seed 无法找到有效的结构映射
+    </code>
+    <code id="INNOV_ANALOGY_TOO_CLOSE" severity="P2" action="WARN">
+      类比领域距离太近（&lt;0.3），缺乏新意
+    </code>
+    <code id="INNOV_ANALOGY_TOO_FAR" severity="P2" action="WARN">
+      类比领域距离太远（>0.8），难以映射
+    </code>
+    <code id="INNOV_WEAK_ANALOGY" severity="P2" action="WARN">
+      类比质量不足（结构映射不完整或不相关）
+    </code>
+    <code id="INNOV_TRIVIAL_INSIGHT" severity="P3" action="INFO">
+      类比产生的洞察过于trivial
+    </code>
+  </reason_codes>
+
+  <disconfirmers>
+    <item>表面相似性被误判为结构映射</item>
+    <item>领域选择不当导致类比无法落地</item>
+    <item>高阶关系识别错误</item>
+    <item>类比过于抽象无法转化为可测试假设</item>
+  </disconfirmers>
+
+  <output_contract>
+    <field name="analogized_ideas" type="array" required="true" min_items="3">
+      <item_schema>
+        <field name="id" type="string" required="true"/>
+        <field name="original_seed_id" type="string" required="true"/>
+        <field name="analogy_source" type="object" required="true">
+          <field name="domain" type="string"/>
+          <field name="structure" type="string"/>
+          <field name="business_analog" type="string"/>
+        </field>
+        <field name="mapping_description" type="string" required="true"/>
+        <field name="insight" type="string" required="true"/>
+        <field name="structural_mapping_score" type="float" required="true"/>
+        <field name="is_higher_order" type="boolean"/>
+        <field name="overall_quality" type="float"/>
+      </item_schema>
+    </field>
+
+    <field name="analogy_mappings" type="array" required="true">
+      详细的类比映射记录
+    </field>
+
+    <field name="analogy_stats" type="object" required="true">
+      <field name="seeds_processed" type="integer"/>
+      <field name="mappings_attempted" type="integer"/>
+      <field name="valid_mappings" type="integer"/>
+      <field name="ideas_generated" type="integer"/>
+      <field name="domains_used" type="array"/>
+      <field name="higher_order_count" type="integer"/>
+    </field>
+
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

@@ -1,0 +1,261 @@
+# Innovation Agent → Valuation Engine Agent Interface Contract v1.0
+# 定义 Innovation Agent 向 VE Agent 推送假设的接口规范
+
+interface_name: "INNOV_VE_Interface"
+version: "1.0.0"
+created: "2026-01-27"
+
+description: |
+  Innovation Agent 向 Valuation Engine Agent 推送 VALUATION 类型假设的接口。
+  VE Agent 负责将假设纳入 CAP (Competitive Advantage Period) 估值框架。
+
+# ===== 协议 =====
+protocol:
+  type: "PUSH_CONFIRM"
+  timeout_ms: 5000
+  retry_policy:
+    max_retries: 2
+    backoff_ms: 1000
+
+# ===== 输入格式（Innovation → VE）=====
+request_format:
+  name: "InnovationToVERequest"
+  content_type: "application/json"
+
+  required_fields:
+    - name: "proposal_id"
+      type: "string"
+      pattern: "^INNOV_H_[0-9]{3}$"
+      description: "创新假设唯一ID"
+
+    - name: "claim_type"
+      type: "string"
+      value: "VALUATION"
+      description: "必须为VALUATION类型"
+
+    - name: "statement"
+      type: "string"
+      min_length: 20
+      max_length: 500
+      description: "估值假设陈述"
+
+    - name: "cap_impact"
+      type: "object"
+      description: "对CAP估值的影响"
+      required_subfields:
+        - affected_component
+        - direction
+        - magnitude_estimate
+
+    - name: "falsifiability"
+      type: "object"
+      description: "可证伪设计"
+      required_subfields:
+        - metric
+        - threshold
+        - time_window
+        - verification_sources
+        - disconfirmers
+
+    - name: "scores"
+      type: "object"
+      description: "评分信息"
+      required_subfields:
+        - novelty
+        - feasibility
+        - composite
+
+    - name: "priority"
+      type: "string"
+      enum: ["HIGH", "MEDIUM", "LOW"]
+      description: "推送优先级"
+
+  optional_fields:
+    - name: "scenario_relevance"
+      type: "array"
+      items:
+        type: "string"
+        enum: ["BULL", "BASE", "BEAR"]
+      description: "与哪些场景相关"
+
+    - name: "value_driver_affected"
+      type: "string"
+      enum:
+        - "SALES_GROWTH"
+        - "OPERATING_MARGIN"
+        - "CAPITAL_INTENSITY"
+        - "CAP_DURATION"
+        - "DISCOUNT_RATE"
+      description: "影响的价值驱动因素"
+
+    - name: "quantitative_impact"
+      type: "object"
+      description: "定量影响估计"
+      fields:
+        - name: "value_per_share_delta"
+          type: "number"
+        - name: "confidence"
+          type: "number"
+          minimum: 0
+          maximum: 1
+
+# ===== 输出格式（VE → Innovation）=====
+response_format:
+  name: "VEToInnovationResponse"
+  content_type: "application/json"
+
+  required_fields:
+    - name: "status"
+      type: "string"
+      enum: ["ACCEPTED", "REJECTED", "DEFERRED", "MODIFIED"]
+      description: "处理状态"
+
+    - name: "proposal_id"
+      type: "string"
+      description: "原始proposal_id回显"
+
+    - name: "timestamp"
+      type: "string"
+      format: "date-time"
+      description: "响应时间"
+
+  conditional_fields:
+    - name: "cap_hypothesis_id"
+      type: "string"
+      condition: "status == ACCEPTED or status == MODIFIED"
+      description: "VE分配的CAP假设ID"
+
+    - name: "integrated_into_scenario"
+      type: "array"
+      items: "string"
+      condition: "status == ACCEPTED"
+      description: "已整合到哪些场景"
+
+    - name: "rejection_reason"
+      type: "string"
+      condition: "status == REJECTED"
+      enum:
+        - "NOT_QUANTIFIABLE"
+        - "ALREADY_PRICED_IN"
+        - "TOO_SPECULATIVE"
+        - "IRRELEVANT_TO_VALUATION"
+        - "INCOMPLETE"
+      description: "拒绝原因"
+
+    - name: "estimated_impact"
+      type: "object"
+      condition: "status == ACCEPTED"
+      description: "VE估算的价值影响"
+      fields:
+        - name: "value_per_share_delta"
+          type: "number"
+        - name: "probability_weighted_delta"
+          type: "number"
+
+# ===== 转换规则 =====
+transformation:
+  from_innovation_hypothesis:
+    mapping:
+      - source: "id"
+        target: "proposal_id"
+      - source: "claim_type"
+        target: "claim_type"
+        validation: "must equal VALUATION"
+      - source: "statement"
+        target: "statement"
+      - source: "falsifiability"
+        target: "falsifiability"
+      - source: "scores"
+        target: "scores"
+      - source: "routing.priority"
+        target: "priority"
+
+    derived_fields:
+      cap_impact:
+        description: "从statement中提取CAP影响"
+        extraction_rules:
+          - pattern: "margin|利润率|毛利"
+            affected_component: "OPERATING_MARGIN"
+          - pattern: "growth|增长|增速"
+            affected_component: "SALES_GROWTH"
+          - pattern: "capex|投资|资本"
+            affected_component: "CAPITAL_INTENSITY"
+          - pattern: "竞争优势|护城河|CAP"
+            affected_component: "CAP_DURATION"
+          - pattern: "风险|折现|WACC"
+            affected_component: "DISCOUNT_RATE"
+
+  to_cap_hypothesis_addendum:
+    description: "VE接收后转换为CAP假设补充格式"
+    output_format:
+      hypothesis_id: "string"
+      linked_innovation_id: "string"
+      affected_cap_component: "string"
+      impact_direction: "string"
+      impact_magnitude: "number"
+      confidence_level: "number"
+      time_horizon: "string"
+      scenario_applicability: "array"
+
+# ===== 示例 =====
+examples:
+  request:
+    proposal_id: "INNOV_H_005"
+    claim_type: "VALUATION"
+    statement: "Robotaxi服务如果在2026年规模化，将为Tesla带来额外$50-80/股的期权价值"
+    cap_impact:
+      affected_component: "SALES_GROWTH"
+      direction: "POSITIVE"
+      magnitude_estimate: "HIGH"
+    falsifiability:
+      metric: "Robotaxi commercial deployment cities"
+      threshold: ">= 3 cities with >1000 active vehicles"
+      time_window: "by Q4 2026"
+      verification_sources:
+        - "Tesla official announcements"
+        - "State DMV registrations"
+        - "Industry tracking services"
+      disconfirmers:
+        - "No commercial deployment by Q2 2027"
+        - "Regulatory rejection in target markets"
+    scores:
+      novelty: 0.65
+      feasibility: 0.55
+      composite: 0.61
+    priority: "HIGH"
+    scenario_relevance: ["BULL"]
+    value_driver_affected: "SALES_GROWTH"
+    quantitative_impact:
+      value_per_share_delta: 65
+      confidence: 0.35
+
+  response_accepted:
+    status: "ACCEPTED"
+    proposal_id: "INNOV_H_005"
+    cap_hypothesis_id: "VE_CAP_H_2026_015"
+    integrated_into_scenario: ["BULL"]
+    estimated_impact:
+      value_per_share_delta: 58
+      probability_weighted_delta: 20.3
+    timestamp: "2026-01-27T11:00:00Z"
+
+  response_rejected:
+    status: "REJECTED"
+    proposal_id: "INNOV_H_005"
+    rejection_reason: "TOO_SPECULATIVE"
+    timestamp: "2026-01-27T11:00:00Z"
+
+# ===== 错误处理 =====
+error_handling:
+  timeout:
+    action: "RETRY"
+    max_retries: 2
+    fallback: "QUEUE_FOR_LATER"
+
+  validation_error:
+    action: "REJECT_WITH_REASON"
+    log_level: "WARN"
+
+  ve_unavailable:
+    action: "QUEUE_FOR_LATER"
+    retry_interval_ms: 60000

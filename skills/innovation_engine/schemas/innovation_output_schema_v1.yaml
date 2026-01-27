@@ -1,0 +1,310 @@
+# Innovation Output Schema v1.0
+# Innovation Agent 完整输出Schema
+# 包含所有提案、统计、路由结果
+
+$schema: "https://json-schema.org/draft-07/schema#"
+$id: "innovation_output_schema_v1"
+title: "Innovation Agent Output"
+description: "Innovation Agent单次运行的完整输出"
+version: "1.0.0"
+created: "2026-01-27"
+
+type: object
+required:
+  - run_id
+  - trigger_info
+  - innovation_proposals
+  - pipeline_stats
+  - reason_codes_all
+
+properties:
+  run_id:
+    type: string
+    description: "执行ID，全局唯一"
+
+  policy_ref:
+    type: object
+    required: [version, hash]
+    properties:
+      version:
+        type: string
+        pattern: "^innov-[0-9]+\\.[0-9]+\\.[0-9]+$"
+      hash:
+        type: string
+        pattern: "^sha256:[a-f0-9]{64}$"
+
+  # ===== Trigger Info =====
+  trigger_info:
+    type: object
+    required: [trigger_event, priority]
+    properties:
+      trigger_event:
+        type: object
+        properties:
+          event_id:
+            type: string
+          event_type:
+            type: string
+          event_data:
+            type: object
+          timestamp:
+            type: string
+            format: date-time
+          source:
+            type: string
+      priority:
+        type: string
+        enum: [P0, P1, P2, P3]
+      aggregated_count:
+        type: integer
+        description: "聚合事件数"
+      innovation_direction:
+        type: string
+        description: "建议的创新方向"
+
+  # ===== Innovation Proposals =====
+  innovation_proposals:
+    type: array
+    description: "通过质量门控的创新提案"
+    items:
+      $ref: "innovation_hypothesis_schema_v1.yaml"
+
+  # ===== Scored Hypotheses (all) =====
+  all_hypotheses:
+    type: array
+    description: "所有生成的假设（含未通过的）"
+    items:
+      $ref: "innovation_hypothesis_schema_v1.yaml"
+
+  # ===== Pipeline Stats =====
+  pipeline_stats:
+    type: object
+    required:
+      - trigger_stats
+      - seed_stats
+      - analogy_stats
+      - structuring_stats
+      - scoring_stats
+      - iqg_stats
+      - routing_stats
+    properties:
+      trigger_stats:
+        type: object
+        properties:
+          events_received:
+            type: integer
+          events_filtered:
+            type: integer
+          events_aggregated:
+            type: integer
+          final_trigger_count:
+            type: integer
+
+      seed_stats:
+        type: object
+        properties:
+          pain_points_identified:
+            type: integer
+          seeds_generated:
+            type: integer
+          duplicates_removed:
+            type: integer
+          final_seed_count:
+            type: integer
+          strategies_used:
+            type: array
+            items:
+              type: string
+
+      analogy_stats:
+        type: object
+        properties:
+          seeds_processed:
+            type: integer
+          mappings_attempted:
+            type: integer
+          valid_mappings:
+            type: integer
+          ideas_generated:
+            type: integer
+          domains_used:
+            type: array
+            items:
+              type: string
+          higher_order_count:
+            type: integer
+          avg_mapping_score:
+            type: number
+
+      structuring_stats:
+        type: object
+        properties:
+          ideas_processed:
+            type: integer
+          hypotheses_generated:
+            type: integer
+          claim_types_distribution:
+            type: object
+            additionalProperties:
+              type: integer
+          avg_completeness_score:
+            type: number
+          incomplete_count:
+            type: integer
+
+      scoring_stats:
+        type: object
+        properties:
+          total_scored:
+            type: integer
+          novelty_distribution:
+            type: object
+            properties:
+              mean:
+                type: number
+              std:
+                type: number
+              min:
+                type: number
+              max:
+                type: number
+          high_novelty_count:
+            type: integer
+          low_novelty_count:
+            type: integer
+          duplicates_detected:
+            type: integer
+          calibration_applied:
+            type: boolean
+
+      iqg_stats:
+        type: object
+        properties:
+          total_input:
+            type: integer
+          passed:
+            type: integer
+          degraded:
+            type: integer
+          warned:
+            type: integer
+          rejected:
+            type: integer
+          selected_for_output:
+            type: integer
+
+      routing_stats:
+        type: object
+        properties:
+          total_sent:
+            type: integer
+          delivered:
+            type: integer
+          rejected:
+            type: integer
+          failed:
+            type: integer
+          by_target_agent:
+            type: object
+            additionalProperties:
+              type: integer
+
+  # ===== Analogy Mappings =====
+  analogy_mappings:
+    type: array
+    description: "详细的类比映射记录"
+    items:
+      type: object
+      properties:
+        idea_id:
+          type: string
+        seed_id:
+          type: string
+        domain:
+          type: string
+        structure_mapped:
+          type: string
+        mapping_explanation:
+          type: string
+        mapping_score:
+          type: number
+
+  # ===== Routing Results =====
+  routing_results:
+    type: array
+    description: "路由结果详情"
+    items:
+      type: object
+      properties:
+        proposal_id:
+          type: string
+        target_agent:
+          type: string
+        status:
+          type: string
+          enum: [DELIVERED, DELIVERED_AFTER_RETRY, REJECTED_BY_TARGET, DELIVERY_FAILED]
+        reason:
+          type: string
+        retry_count:
+          type: integer
+
+  # ===== Feedback (if available) =====
+  feedback_summary:
+    type: object
+    properties:
+      acceptance_rate:
+        type: number
+      rejection_rate:
+        type: number
+      top_rejection_reasons:
+        type: array
+        items:
+          type: string
+      calibration_samples_collected:
+        type: integer
+
+  # ===== Adaptation (if triggered) =====
+  adaptation_summary:
+    type: object
+    properties:
+      adjustments_made:
+        type: integer
+      param_changes:
+        type: array
+        items:
+          type: object
+      calibration_retrained:
+        type: boolean
+
+  # ===== Reason Codes =====
+  reason_codes_all:
+    type: array
+    items:
+      type: string
+    description: "全流程reason codes汇总"
+
+  # ===== Execution Metadata =====
+  execution_metadata:
+    type: object
+    properties:
+      start_time:
+        type: string
+        format: date-time
+      end_time:
+        type: string
+        format: date-time
+      total_duration_ms:
+        type: integer
+      phase_durations:
+        type: object
+        properties:
+          trigger:
+            type: integer
+          diverge:
+            type: integer
+          converge:
+            type: integer
+          route:
+            type: integer
+          feedback:
+            type: integer

@@ -1,0 +1,268 @@
+# Innovation Hypothesis Schema v1.0
+# 创新假设的完整结构定义
+# 与 RM ClaimSpec / VE CAP Hypothesis 兼容
+
+$schema: "https://json-schema.org/draft-07/schema#"
+$id: "innovation_hypothesis_schema_v1"
+title: "Innovation Hypothesis"
+description: "Innovation Agent 生成的结构化、可证伪假设"
+version: "1.0.0"
+created: "2026-01-27"
+
+type: object
+required:
+  - id
+  - claim_type
+  - statement
+  - origin
+  - falsifiability
+  - scores
+  - routing
+  - metadata
+
+properties:
+  id:
+    type: string
+    pattern: "^INNOV_H_[0-9]{3}$"
+    description: "唯一标识符"
+
+  claim_type:
+    type: string
+    enum: [INNOVATION, MECHANISM, VALUATION, ECOSYSTEM, DATA_GAP]
+    description: |
+      假设类型：
+      - INNOVATION: 一般性创新洞察
+      - MECHANISM: 机制假设（→RM Agent）
+      - VALUATION: 估值假设（→VE Agent）
+      - ECOSYSTEM: 生态假设（→ECO Agent）
+      - DATA_GAP: 数据缺口（→DI Agent）
+
+  statement:
+    type: string
+    minLength: 20
+    maxLength: 500
+    description: "假设陈述，具体、可测量、可证伪"
+
+  # ===== Origin: 追溯来源 =====
+  origin:
+    type: object
+    required: [trigger_event]
+    properties:
+      trigger_event:
+        type: string
+        description: "触发事件ID"
+      pain_point:
+        type: string
+        description: "识别的痛点"
+      generation_strategy:
+        type: string
+        description: "生成策略（直接推断/因果链/反事实等）"
+      analogy_source:
+        type: object
+        properties:
+          domain:
+            type: string
+            description: "类比领域"
+          structure:
+            type: string
+            description: "映射的关系结构"
+          business_analog:
+            type: string
+            description: "商业类比描述"
+          insight:
+            type: string
+            description: "类比产生的洞察"
+      analogy_mapping:
+        type: string
+        description: "结构映射详细描述"
+
+  # ===== Falsifiability: 可证伪设计 =====
+  falsifiability:
+    type: object
+    required:
+      - metric
+      - threshold
+      - time_window
+      - verification_sources
+      - disconfirmers
+    properties:
+      metric:
+        type: string
+        description: "可测量的指标"
+        examples:
+          - "Gross margin %"
+          - "ARR YoY growth"
+          - "FSD intervention rate"
+          - "NRR (Net Retention Rate)"
+      threshold:
+        type: string
+        description: "阈值条件"
+        examples:
+          - "> 20%"
+          - "< 5 per 10,000 miles"
+          - "between 100% and 120%"
+      time_window:
+        type: string
+        description: "验证时间窗口"
+        examples:
+          - "next 4 quarters"
+          - "by Q4 2026"
+          - "within 12 months"
+      verification_sources:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: "验证数据来源"
+        examples:
+          - ["10-K filing", "Earnings call"]
+          - ["Industry report", "Company guidance"]
+      disconfirmers:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: "证伪条件"
+        examples:
+          - ["Margin < 15% for 3 consecutive quarters"]
+          - ["NRR < 100% for 2 quarters"]
+
+  # ===== Scores: 评分 =====
+  scores:
+    type: object
+    properties:
+      novelty:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "新颖性评分"
+      feasibility:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "可行性评分"
+      composite:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "综合评分 (0.6*novelty + 0.4*feasibility)"
+      novelty_components:
+        type: object
+        properties:
+          embedding_distance:
+            type: number
+          information_gain:
+            type: number
+          calibration_adjustment:
+            type: number
+      feasibility_components:
+        type: object
+        properties:
+          source_score:
+            type: number
+          time_score:
+            type: number
+          metric_score:
+            type: number
+          resource_score:
+            type: number
+
+  # ===== Routing: 路由信息 =====
+  routing:
+    type: object
+    required: [target_agent, output_format]
+    properties:
+      target_agent:
+        type: string
+        enum:
+          - valuation_engine_agent
+          - research_mechanism_agent
+          - ecosystem_graph_agent
+          - data_integrity_agent
+          - innovation_registry
+      output_format:
+        type: string
+        enum:
+          - cap_hypothesis_addendum
+          - claim_spec_v1
+          - eco_signal
+          - data_request
+          - standard
+      priority:
+        type: string
+        enum: [HIGH, MEDIUM, LOW]
+
+  # ===== Metadata =====
+  metadata:
+    type: object
+    required: [created_at, completeness_score]
+    properties:
+      created_at:
+        type: string
+        format: date-time
+      completeness_score:
+        type: number
+        minimum: 0
+        maximum: 1
+      original_idea_id:
+        type: string
+      original_seed_id:
+        type: string
+      analogy_quality_score:
+        type: number
+      iqg_status:
+        type: string
+        enum: [PASSED, DEGRADED, WARNED, REJECTED, INCOMPLETE]
+      iqg_reason:
+        type: string
+
+  # ===== Warnings (if any) =====
+  warnings:
+    type: array
+    items:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        severity:
+          type: string
+          enum: [INFO, WARN, ERROR]
+
+# ===== Examples =====
+examples:
+  - id: "INNOV_H_001"
+    claim_type: "MECHANISM"
+    statement: "如果毛利率持续低于18%超过2个季度，Tesla将被迫实施5%+的降价策略"
+    origin:
+      trigger_event: "EARNINGS_SURPRISE_001"
+      pain_point: "Margin pressure from price cuts"
+      generation_strategy: "causal_chain_extension"
+      analogy_source:
+        domain: "biological_systems"
+        structure: "predator-prey dynamics"
+        business_analog: "价格战螺旋"
+        insight: "类似生态系统中的捕食者-猎物动态，margin压力可能触发价格战螺旋"
+    falsifiability:
+      metric: "Automotive gross margin (ex-credits)"
+      threshold: "< 18% for 2 consecutive quarters"
+      time_window: "next 4 quarters"
+      verification_sources:
+        - "Tesla 10-Q filing"
+        - "Earnings call guidance"
+      disconfirmers:
+        - "Margin recovers to >20% within 2 quarters"
+        - "Pricing strategy announcement contradicts prediction"
+    scores:
+      novelty: 0.72
+      feasibility: 0.85
+      composite: 0.77
+    routing:
+      target_agent: "research_mechanism_agent"
+      output_format: "claim_spec_v1"
+      priority: "HIGH"
+    metadata:
+      created_at: "2026-01-27T10:30:00Z"
+      completeness_score: 1.0
+      iqg_status: "PASSED"

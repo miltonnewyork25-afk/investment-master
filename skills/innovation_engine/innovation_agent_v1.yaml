@@ -1,0 +1,374 @@
+# Innovation Agent v1.0
+# 动态创新引擎 - 事件驱动的结构化假设生成系统
+# 核心: Structure-Mapping + TRIZ + Design Thinking + Hybrid Novelty Scoring
+
+agent:
+  name: innovation_agent_v1
+  version: "1.0.0"
+  purpose: |
+    Innovation Agent 是一个长期运行的动态创新引擎：
+    1. 监控事件信号，自动触发创新循环
+    2. 基于跨域类比（Structure-Mapping Theory）生成结构化假设
+    3. 通过混合评分（Embedding + Info Gain + Human Calibration）评估新颖性
+    4. 与 RM/VE/ECO/DI Agents 协同推进新见解
+    5. 通过反馈机制自我迭代与优化
+
+    核心流程: Event → Diverge(Seeds→Analogies) → Converge(Score→Filter) → Route → Feedback
+  owner: "investment_super_agent"
+  timezone: "America/New_York"
+
+---
+
+# 理论基础
+theory_foundation:
+  analogy:
+    name: "Structure-Mapping Theory"
+    author: "Dedre Gentner (1983)"
+    principle: |
+      类比推理优先保留"关系结构映射"而非表面特征相似。
+      Systematicity Principle: 更深层系统间的关系匹配更有意义。
+    application: "Cross-Domain Analogizer 的核心约束"
+    reference: "Gentner, D. (1983). Structure-mapping: A theoretical framework for analogy. Cognitive Science."
+
+  invention_patterns:
+    name: "TRIZ - Theory of Inventive Problem Solving"
+    author: "Genrich Altshuller"
+    principle: |
+      发明与突破遵循可抽象化的模式与工具。
+      40个发明原理 + 矛盾矩阵可用于预测创新方向。
+    application: "Analogy Domain Library 的模板基础"
+    reference: "Altshuller, G. (1984). Creativity as an Exact Science."
+
+  creative_process:
+    name: "Design Thinking - Double Diamond"
+    author: "IDEO / British Design Council"
+    principle: |
+      Diverge → Converge 双钻石模式。
+      先广泛发散，再聚合筛选。
+    application: "Pipeline 的发散/聚合结构"
+    reference: "Brown, T. (2009). Change by Design."
+
+  novelty_measurement:
+    name: "Hybrid Novelty Scoring"
+    components:
+      - "Embedding Semantic Distance - 语义空间距离"
+      - "Information Gain / Surprise - 稀有性度量"
+      - "Human Calibration - 专家校准"
+    application: "Novelty Scorer 的混合评分公式"
+    reference: "Multiple sources - NLP novelty detection literature"
+
+---
+
+# 输入输出契约
+contracts:
+  inputs:
+    - name: event_signals
+      type: "array"
+      required: true
+      description: "触发事件（财报/新闻/数据更新/监管/竞品）"
+      schema:
+        event_type: string
+        event_data: object
+        timestamp: datetime
+        source: string
+        priority: enum[P0, P1, P2, P3]
+
+    - name: context_snapshot
+      type: "ContextSnapshot"
+      required: true
+      description: "当前投研/估值/生态语境快照"
+      from: "blackboard"
+
+    - name: historical_innovation_registry
+      type: "array"
+      required: true
+      description: "历史 Idea/Hypotheses 注册表（用于去重和novelty计算）"
+
+    - name: blackboard_state
+      type: "object"
+      required: false
+      description: "全局黑板历史状态"
+
+  outputs:
+    - name: innovation_proposals
+      type: "array"
+      schema: "schemas/innovation_output_schema_v1.yaml"
+      description: "经过质量门控的创新提案"
+
+    - name: scored_hypotheses
+      type: "array"
+      schema: "schemas/innovation_hypothesis_schema_v1.yaml"
+      description: "带评分的结构化假设"
+
+    - name: routing_actions
+      type: "array"
+      description: "推送到下游Agent的动作记录"
+
+---
+
+# Policy Pack配置
+policy_pack:
+  path: "policies/innovation_policy_pack_v1.yaml"
+  require_hash_freeze: true
+
+---
+
+# 执行配置
+execution:
+  mode: "event_driven"  # 事件驱动启动
+  max_retries: 2
+  timeout_ms_total: 180000
+  step_timeout_ms_default: 30000
+
+  trigger_guards:
+    cooldown_by_event_type:
+      EarningsAnnouncement: 86400000  # 24h in ms
+      MacroShock: 21600000  # 6h
+      NewsAlert: 7200000  # 2h
+      CompetitiveDisrupt: 14400000  # 4h
+      RegulationUpdate: 43200000  # 12h
+    aggregation_window_ms: 1800000  # 30min
+    min_events_to_aggregate: 2
+    max_triggers_per_day: 10
+
+  parallelism:
+    enabled: false  # 串行执行保证一致性
+
+---
+
+# Blackboard配置
+blackboard:
+  mode: "append_only"
+  required_keys:
+    - run_id
+    - policy_pack_version
+    - trigger_event
+    - idea_seeds
+    - analogized_ideas
+    - structured_hypotheses
+    - scored_hypotheses
+    - filtered_proposals
+    - routing_results
+    - feedback_received
+  write_rules:
+    - "Each step appends with step_id, inputs_ref, outputs_ref"
+    - "Scores can only be updated by Novelty Scorer"
+    - "reason_codes accumulate, never removed"
+
+---
+
+# Pipeline（双钻石: Diverge → Converge）
+pipeline:
+  # ===== Phase 0: Event Detection =====
+  - step_id: "P0_event_dispatcher"
+    skill_ref: "skills_xml/event_trigger_dispatcher_v1.skill.xml"
+    phase: "trigger"
+    inputs:
+      event_signals: "{{inputs.event_signals}}"
+      config_triggers: "{{policy.event_trigger_rules}}"
+    outputs_to_blackboard:
+      - trigger_flags
+      - aggregated_events
+      - trigger_priority
+
+  # ===== Phase 1: DIVERGE - Idea Generation =====
+  - step_id: "D1_seed_generator"
+    skill_ref: "skills_xml/idea_seed_generator_v1.skill.xml"
+    phase: "diverge"
+    depends_on: ["P0_event_dispatcher"]
+    inputs:
+      trigger_flags: "{{blackboard.trigger_flags}}"
+      context_snapshot: "{{inputs.context_snapshot}}"
+      historical_registry: "{{inputs.historical_innovation_registry}}"
+    outputs_to_blackboard:
+      - idea_seeds
+      - seed_generation_stats
+
+  - step_id: "D2_analogizer"
+    skill_ref: "skills_xml/cross_domain_analogizer_v1.skill.xml"
+    phase: "diverge"
+    depends_on: ["D1_seed_generator"]
+    inputs:
+      idea_seeds: "{{blackboard.idea_seeds}}"
+      domain_library: "{{policy.analogy_domain_library}}"
+      analogy_constraints: "{{policy.analogy_constraints}}"
+    outputs_to_blackboard:
+      - analogized_ideas
+      - analogy_mappings
+      - analogy_stats
+
+  - step_id: "D3_hypothesis_structurer"
+    skill_ref: "skills_xml/hypothesis_structurer_v1.skill.xml"
+    phase: "diverge"
+    depends_on: ["D2_analogizer"]
+    inputs:
+      analogized_ideas: "{{blackboard.analogized_ideas}}"
+      context_evidence: "{{inputs.context_snapshot}}"
+      claim_spec_template: "{{policy.hypothesis_template}}"
+    outputs_to_blackboard:
+      - structured_hypotheses
+      - structuring_stats
+
+  # ===== Phase 2: CONVERGE - Scoring & Filtering =====
+  - step_id: "C1_novelty_scorer"
+    skill_ref: "skills_xml/novelty_scorer_v1.skill.xml"
+    phase: "converge"
+    depends_on: ["D3_hypothesis_structurer"]
+    inputs:
+      structured_hypotheses: "{{blackboard.structured_hypotheses}}"
+      historical_registry: "{{inputs.historical_innovation_registry}}"
+      scoring_config: "{{policy.novelty_scoring}}"
+    outputs_to_blackboard:
+      - scored_hypotheses
+      - novelty_distribution
+      - scoring_stats
+
+  - step_id: "C2_quality_gate"
+    skill_ref: "skills_xml/innovation_quality_gate_v1.skill.xml"
+    phase: "converge"
+    depends_on: ["C1_novelty_scorer"]
+    inputs:
+      scored_hypotheses: "{{blackboard.scored_hypotheses}}"
+      iqg_config: "{{policy.innovation_quality_gate}}"
+    outputs_to_blackboard:
+      - filtered_proposals
+      - rejected_hypotheses
+      - iqg_reason_codes
+      - iqg_stats
+
+  # ===== Phase 3: ROUTE - Downstream Handoff =====
+  - step_id: "R1_output_router"
+    skill_ref: "skills_xml/output_router_v1.skill.xml"
+    phase: "route"
+    depends_on: ["C2_quality_gate"]
+    inputs:
+      filtered_proposals: "{{blackboard.filtered_proposals}}"
+      routing_config: "{{policy.output_routing}}"
+    outputs_to_blackboard:
+      - routing_results
+      - downstream_confirmations
+
+  # ===== Phase 4: FEEDBACK - Adaptation =====
+  - step_id: "F1_feedback_collector"
+    skill_ref: "skills_xml/feedback_collector_v1.skill.xml"
+    phase: "feedback"
+    depends_on: ["R1_output_router"]
+    inputs:
+      routing_results: "{{blackboard.routing_results}}"
+      downstream_responses: "{{external.downstream_feedback}}"
+    outputs_to_blackboard:
+      - feedback_batch
+      - acceptance_rate
+      - rejection_reasons
+
+  - step_id: "F2_adaptation_engine"
+    skill_ref: "skills_xml/adaptation_engine_v1.skill.xml"
+    phase: "feedback"
+    depends_on: ["F1_feedback_collector"]
+    inputs:
+      feedback_batch: "{{blackboard.feedback_batch}}"
+      current_policy: "{{policy}}"
+      adaptation_config: "{{policy.adaptation_targets}}"
+    outputs_to_blackboard:
+      - adaptation_instructions
+      - policy_adjustment_log
+
+---
+
+# 下游集成
+integration:
+  downstream_routing:
+    - match_type: VALUATION_HYPOTHESIS
+      route_to: valuation_engine_agent
+      output_format: cap_hypothesis_addendum
+      contract: "contracts/innov_ve_interface_v1.yaml"
+
+    - match_type: MECHANISM_HYPOTHESIS
+      route_to: research_mechanism_agent
+      output_format: claim_spec_v1
+      contract: "contracts/innov_rm_interface_v1.yaml"
+
+    - match_type: ECOSYSTEM_HYPOTHESIS
+      route_to: ecosystem_graph_agent
+      output_format: eco_signal
+      contract: "contracts/innov_eco_interface_v1.yaml"
+
+    - match_type: DATA_GAP_IDENTIFIED
+      route_to: data_integrity_agent
+      output_format: data_request
+      contract: "contracts/innov_di_interface_v1.yaml"
+
+  feedback_sources:
+    - source: quality_gate_agent
+      signal_type: acceptance_rejection
+    - source: research_mechanism_agent
+      signal_type: claim_validation
+    - source: human_reviewer
+      signal_type: expert_rating
+
+---
+
+# Artifacts输出
+artifacts:
+  root: "artifacts/runs/{{run_id}}/innovation/"
+  files:
+    - name: "innovation_proposals.json"
+      from: "{{blackboard.filtered_proposals}}"
+      schema: "schemas/innovation_output_schema_v1.yaml"
+
+    - name: "all_hypotheses.json"
+      from: "{{blackboard.scored_hypotheses}}"
+      schema: "schemas/innovation_hypothesis_schema_v1.yaml"
+
+    - name: "analogy_mappings.json"
+      from: "{{blackboard.analogy_mappings}}"
+
+    - name: "innovation_decision_trace.json"
+      from: "{{blackboard.decision_trace_fragment}}"
+
+---
+
+# 配置文件清单
+config_files:
+  P0_required:
+    - file: "policies/innovation_policy_pack_v1.yaml"
+      purpose: "策略包（阈值、规则、理论锚点）"
+    - file: "policies/event_trigger_rules_v1.yaml"
+      purpose: "事件触发规则"
+    - file: "policies/analogy_domain_library_v1.yaml"
+      purpose: "类比领域库"
+    - file: "policies/scoring_rules_v1.yaml"
+      purpose: "评分规则"
+
+  P1_recommended:
+    - file: "schemas/innovation_hypothesis_schema_v1.yaml"
+      purpose: "假设输出Schema"
+    - file: "schemas/innovation_output_schema_v1.yaml"
+      purpose: "提案输出Schema"
+    - file: "reason_codes/reason_code_dictionary_INNOV.yaml"
+      purpose: "INNOV命名空间reason codes"
+
+  skills_xml:
+    - file: "skills_xml/event_trigger_dispatcher_v1.skill.xml"
+    - file: "skills_xml/idea_seed_generator_v1.skill.xml"
+    - file: "skills_xml/cross_domain_analogizer_v1.skill.xml"
+    - file: "skills_xml/hypothesis_structurer_v1.skill.xml"
+    - file: "skills_xml/novelty_scorer_v1.skill.xml"
+    - file: "skills_xml/innovation_quality_gate_v1.skill.xml"
+    - file: "skills_xml/output_router_v1.skill.xml"
+    - file: "skills_xml/feedback_collector_v1.skill.xml"
+    - file: "skills_xml/adaptation_engine_v1.skill.xml"
+
+---
+
+# 版本历史
+version_history:
+  - version: "1.0.0"
+    date: "2026-01-27"
+    changes:
+      - "初始版本：事件驱动创新引擎"
+      - "Structure-Mapping Theory + TRIZ + Design Thinking理论支撑"
+      - "Hybrid Novelty Scoring (Embedding + Info Gain + Human Calibration)"
+      - "9个核心Skills覆盖完整流程"
+      - "与VE/RM/ECO/DI标准接口"
+      - "自适应反馈机制"

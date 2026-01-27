@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Novelty Scorer Skill v1.0 -->
+<!-- Position: C1 (Converge Phase 1) | Purpose: 新颖性与可行性评分 -->
+<!-- 核心: Hybrid Scoring = Embedding Distance + Information Gain + Human Calibration -->
+
+<skill name="novelty_scorer_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>Innovation Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Embedding-based Semantic Distance (NLP)</ref>
+      <ref>Information Gain / Surprise Theory</ref>
+      <ref>Human-in-the-Loop Calibration</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    对结构化假设进行 Novelty 和 Feasibility 评分：
+    1. 计算 Embedding Distance（语义新颖性）
+    2. 计算 Information Gain（统计稀有性）
+    3. 应用 Human Calibration 调整
+    4. 计算 Feasibility（可行性）
+    5. 输出 Composite Score 用于过滤
+
+    这是收敛阶段的第一步，从数量转向质量。
+  </purpose>
+
+  <inputs>
+    <input name="structured_hypotheses" type="array" required="true">
+      来自 Hypothesis Structurer 的结构化假设
+    </input>
+
+    <input name="historical_registry" type="array" required="true">
+      历史 Idea/Hypotheses 注册表
+    </input>
+
+    <input name="scoring_config" type="object" required="true">
+      评分配置（from scoring_rules_v1.yaml）
+    </input>
+
+    <input name="human_calibration_model" type="object" required="false">
+      人工校准模型（如果可用）
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="ComputeEmbeddings">
+      <action>
+        # 批量计算假设的 embedding
+        hypothesis_embeddings = []
+
+        FOR EACH hypothesis IN structured_hypotheses:
+          text_to_embed = combine_fields(
+            hypothesis.statement,
+            hypothesis.falsifiability.metric,
+            hypothesis.origin.analogy_source.insight
+          )
+
+          embedding = embedding_model.encode(text_to_embed)
+          hypothesis_embeddings.append({
+            hypothesis_id: hypothesis.id,
+            embedding: embedding
+          })
+
+        # 加载历史 embeddings（如已缓存）
+        historical_embeddings = load_or_compute(
+          historical_registry,
+          cache_key="historical_embeddings"
+        )
+      </action>
+      <output>
+        hypothesis_embeddings: array
+        historical_embeddings: array
+      </output>
+    </step>
+
+    <step id="s2" name="ComputeEmbeddingDistance">
+      <action>
+        FOR EACH hyp_embed IN hypothesis_embeddings:
+          # 计算与所有历史embedding的cosine距离
+          distances = []
+          FOR EACH hist_embed IN historical_embeddings:
+            dist = cosine_distance(hyp_embed.embedding, hist_embed.embedding)
+            distances.append(dist)
+
+          # 取最小距离（与最近邻的距离）
+          IF distances.length > 0:
+            min_distance = min(distances)
+          ELSE:
+            min_distance = 0.7  # 空库默认值
+
+          # 映射到novelty score
+          IF min_distance >= 0.65:
+            embedding_novelty = scale_to_range(min_distance, [0.65, 1.0], [0.8, 1.0])
+            label = "HIGH"
+          ELIF min_distance >= 0.45:
+            embedding_novelty = scale_to_range(min_distance, [0.45, 0.65], [0.5, 0.8])
+            label = "MEDIUM"
+          ELSE:
+            embedding_novelty = scale_to_range(min_distance, [0.0, 0.45], [0.0, 0.5])
+            label = "LOW"
+
+          hyp_embed.embedding_novelty = embedding_novelty
+          hyp_embed.novelty_label = label
+          hyp_embed.nearest_historical_id = find_nearest_id(distances)
+      </action>
+      <output>
+        embedding_scores: array
+      </output>
+    </step>
+
+    <step id="s3" name="ComputeInformationGain">
+      <action>
+        # 构建历史语料库的词频分布
+        corpus_word_freq = build_word_frequency(historical_registry)
+        total_words = sum(corpus_word_freq.values())
+
+        FOR EACH hypothesis IN structured_hypotheses:
+          # 提取关键概念
+          concepts = extract_key_concepts(hypothesis.statement)
+
+          # 计算每个概念的信息增益
+          info_gains = []
+          FOR EACH concept IN concepts:
+            freq = corpus_word_freq.get(concept, 0) + 1  # Laplace smoothing
+            prob = freq / (total_words + vocab_size)
+            info_gain = -log(prob)
+            info_gains.append(info_gain)
+
+          # 归一化
+          avg_info_gain = mean(info_gains)
+          normalized_info_gain = min(1.0, avg_info_gain / max_info_gain)
+
+          hypothesis.info_gain_score = normalized_info_gain
+      </action>
+      <output>
+        info_gain_scores: array
+      </output>
+    </step>
+
+    <step id="s4" name="ApplyHumanCalibration">
+      <action>
+        IF human_calibration_model IS AVAILABLE:
+          FOR EACH hypothesis IN structured_hypotheses:
+            # 使用校准模型预测调整因子
+            features = [
+              hypothesis.embedding_novelty,
+              hypothesis.info_gain_score
+            ]
+            calibration_factor = human_calibration_model.predict(features)
+
+            # 应用调整
+            # calibration_factor 在 [0, 1]，0.5 表示无调整
+            adjustment = (calibration_factor - 0.5) * 0.2
+            hypothesis.calibration_adjustment = adjustment
+        ELSE:
+          # 无校准模型时使用默认值
+          FOR EACH hypothesis IN structured_hypotheses:
+            hypothesis.calibration_adjustment = 0.0
+      </action>
+      <output>
+        calibration_adjustments: array
+      </output>
+    </step>
+
+    <step id="s5" name="ComputeFinalNovelty">
+      <action>
+        FOR EACH hypothesis IN structured_hypotheses:
+          # 加权组合
+          base_novelty = (
+            scoring_config.weights.embedding_distance * hypothesis.embedding_novelty +
+            scoring_config.weights.information_gain * hypothesis.info_gain_score
+          )
+
+          # 应用校准调整
+          final_novelty = base_novelty * (1 + hypothesis.calibration_adjustment)
+
+          # 确保在[0, 1]范围内
+          hypothesis.scores.novelty = clip(final_novelty, 0.0, 1.0)
+
+          # 确定等级
+          IF hypothesis.scores.novelty >= 0.8:
+            hypothesis.novelty_grade = "EXCELLENT"
+          ELIF hypothesis.scores.novelty >= 0.6:
+            hypothesis.novelty_grade = "GOOD"
+          ELIF hypothesis.scores.novelty >= 0.4:
+            hypothesis.novelty_grade = "ACCEPTABLE"
+          ELSE:
+            hypothesis.novelty_grade = "POOR"
+            add_reason_code: INNOV_LOW_NOVELTY
+      </action>
+    </step>
+
+    <step id="s6" name="ComputeFeasibility">
+      <action>
+        FOR EACH hypothesis IN structured_hypotheses:
+          feasibility_components = {}
+
+          # 1. 验证来源可用性 (30%)
+          tier1_count = count_tier1_sources(hypothesis.falsifiability.verification_sources)
+          tier2_count = count_tier2_sources(hypothesis.falsifiability.verification_sources)
+
+          IF tier1_count >= 2:
+            source_score = 1.0
+          ELIF tier1_count >= 1 AND tier2_count >= 1:
+            source_score = 0.85
+          ELIF tier2_count >= 2:
+            source_score = 0.70
+          ELIF tier2_count >= 1:
+            source_score = 0.50
+          ELSE:
+            source_score = 0.30
+            add_reason_code: INNOV_WEAK_SOURCES
+
+          feasibility_components.source_score = source_score
+
+          # 2. 时间窗口合理性 (25%)
+          time_months = parse_time_window(hypothesis.falsifiability.time_window)
+          IF time_months &lt;= 3:
+            time_score = 1.0
+          ELIF time_months &lt;= 6:
+            time_score = 0.85
+          ELIF time_months &lt;= 12:
+            time_score = 0.70
+          ELIF time_months &lt;= 24:
+            time_score = 0.50
+          ELSE:
+            time_score = 0.20
+            add_reason_code: INNOV_TIME_WINDOW_TOO_LONG
+
+          feasibility_components.time_score = time_score
+
+          # 3. 指标可观测性 (25%)
+          metric_type = classify_metric(hypothesis.falsifiability.metric)
+          observability_scores = {
+            "direct_financial": 1.0,
+            "disclosed_operational": 0.85,
+            "calculable": 0.70,
+            "estimated": 0.50,
+            "proprietary": 0.30,
+            "unobservable": 0.0
+          }
+          metric_score = observability_scores.get(metric_type, 0.50)
+          feasibility_components.metric_score = metric_score
+
+          # 4. 资源需求 (20%)
+          resource_requirement = assess_resource_requirement(hypothesis)
+          feasibility_components.resource_score = resource_requirement
+
+          # 综合可行性
+          hypothesis.scores.feasibility = (
+            0.30 * feasibility_components.source_score +
+            0.25 * feasibility_components.time_score +
+            0.25 * feasibility_components.metric_score +
+            0.20 * feasibility_components.resource_score
+          )
+      </action>
+    </step>
+
+    <step id="s7" name="ComputeCompositeScore">
+      <action>
+        FOR EACH hypothesis IN structured_hypotheses:
+          # 综合评分
+          hypothesis.scores.composite = (
+            0.6 * hypothesis.scores.novelty +
+            0.4 * hypothesis.scores.feasibility
+          )
+
+          # 确定优先级
+          IF hypothesis.scores.composite >= 0.65:
+            hypothesis.routing.priority = "HIGH"
+          ELIF hypothesis.scores.composite >= 0.45:
+            hypothesis.routing.priority = "MEDIUM"
+          ELSE:
+            hypothesis.routing.priority = "LOW"
+
+        # 收集分布统计
+        novelty_distribution = compute_distribution(
+          [h.scores.novelty for h in structured_hypotheses]
+        )
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="scoring_consistency" range="[0,1]" weight="40">
+      <formula>1 - std(composite_scores) / mean(composite_scores)</formula>
+      <description>评分一致性（标准差小=好）</description>
+    </score>
+    <score name="calibration_coverage" range="[0,1]" weight="30">
+      <formula>hypotheses_with_calibration / total_hypotheses</formula>
+      <description>校准覆盖率</description>
+    </score>
+    <score name="distribution_health" range="[0,1]" weight="30">
+      <formula>normal_distribution_fit</formula>
+      <description>评分分布健康度（接近正态=好）</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="INNOV_LOW_NOVELTY" severity="P2" action="WARN">
+      假设新颖性不足（&lt;0.4）
+    </code>
+    <code id="INNOV_WEAK_SOURCES" severity="P2" action="WARN">
+      验证来源不足（无Tier1/Tier2）
+    </code>
+    <code id="INNOV_LOW_FEASIBILITY" severity="P2" action="WARN">
+      可行性不足（&lt;0.5）
+    </code>
+    <code id="INNOV_DUPLICATE_DETECTED" severity="P1" action="REJECT">
+      与历史假设高度重复（similarity>0.9）
+    </code>
+  </reason_codes>
+
+  <output_contract>
+    <field name="scored_hypotheses" type="array" required="true">
+      带评分的假设列表
+      <item_schema>
+        <field name="id" type="string"/>
+        <field name="scores" type="object" required="true">
+          <field name="novelty" type="float" range="[0,1]"/>
+          <field name="feasibility" type="float" range="[0,1]"/>
+          <field name="composite" type="float" range="[0,1]"/>
+        </field>
+        <field name="novelty_grade" type="string"/>
+        <field name="routing.priority" type="string"/>
+      </item_schema>
+    </field>
+
+    <field name="novelty_distribution" type="object" required="true">
+      <field name="mean" type="float"/>
+      <field name="std" type="float"/>
+      <field name="min" type="float"/>
+      <field name="max" type="float"/>
+      <field name="quartiles" type="array"/>
+    </field>
+
+    <field name="scoring_stats" type="object" required="true">
+      <field name="total_scored" type="integer"/>
+      <field name="high_novelty_count" type="integer"/>
+      <field name="low_novelty_count" type="integer"/>
+      <field name="duplicates_detected" type="integer"/>
+      <field name="calibration_applied" type="boolean"/>
+    </field>
+
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

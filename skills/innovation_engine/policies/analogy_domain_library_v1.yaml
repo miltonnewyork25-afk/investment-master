@@ -1,0 +1,297 @@
+# Analogy Domain Library v1.0
+# 跨域类比的领域模板库
+# 基于Structure-Mapping Theory + TRIZ原理
+
+analogy_domain_library:
+  version: "1.0.0"
+  created: "2026-01-27"
+  description: |
+    预定义的类比领域库，用于Cross-Domain Analogizer。
+    每个领域包含：关键概念、关系结构、常见映射模式。
+    基于Gentner的Structure-Mapping Theory，优先映射关系而非属性。
+
+---
+
+# 核心类比领域
+domains:
+  # 1. 生物系统
+  - id: biological_systems
+    name: "生物系统"
+    description: "从生物学原理类比商业生态"
+    weight: 1.0
+
+    key_concepts:
+      - concept: "生态系统"
+        business_mapping: "商业生态/平台生态"
+      - concept: "共生关系"
+        business_mapping: "合作伙伴关系/互利合作"
+      - concept: "竞争排斥"
+        business_mapping: "市场竞争/细分市场"
+      - concept: "适应性进化"
+        business_mapping: "战略调整/商业模式演化"
+      - concept: "免疫系统"
+        business_mapping: "风险防御/合规体系"
+      - concept: "代谢效率"
+        business_mapping: "运营效率/资本效率"
+      - concept: "种群动态"
+        business_mapping: "市场份额变化/客户基数"
+
+    relational_structures:
+      - relation: "捕食者-猎物动态"
+        structure: "A的增长导致B的增长，B的增长抑制A"
+        business_analog: "平台-商户关系、定价权博弈"
+      - relation: "共生网络"
+        structure: "多方互利依赖，单方退出影响整体"
+        business_analog: "生态系统锁定、网络效应"
+      - relation: "资源竞争"
+        structure: "有限资源下的份额争夺"
+        business_analog: "市场份额、人才竞争"
+
+    sample_mappings:
+      - source: "蜜蜂与花的共生"
+        target: "平台与商户的互利关系"
+        insight: "双边价值创造，移除一方生态崩溃"
+
+  # 2. 物理原理
+  - id: physics_principles
+    name: "物理原理"
+    description: "从物理定律类比市场动力学"
+    weight: 0.9
+
+    key_concepts:
+      - concept: "惯性"
+        business_mapping: "市场惯性/用户习惯"
+      - concept: "摩擦力"
+        business_mapping: "转换成本/阻力"
+      - concept: "临界质量"
+        business_mapping: "网络效应临界点"
+      - concept: "势能与动能"
+        business_mapping: "潜在价值与实现价值"
+      - concept: "熵增"
+        business_mapping: "组织熵/效率衰减"
+      - concept: "共振"
+        business_mapping: "市场共振/情绪传染"
+      - concept: "相变"
+        business_mapping: "市场状态突变/临界点"
+
+    relational_structures:
+      - relation: "F=ma"
+        structure: "力导致加速度，质量越大加速越难"
+        business_analog: "资源投入与增长加速，规模越大变革越难"
+      - relation: "能量守恒"
+        structure: "总能量不变，形式可转换"
+        business_analog: "价值链总价值分配、利润转移"
+      - relation: "临界点相变"
+        structure: "渐变累积到临界点发生质变"
+        business_analog: "市场份额临界、技术采用S曲线"
+
+    sample_mappings:
+      - source: "物体惯性"
+        target: "大公司转型困难"
+        insight: "组织规模越大，战略调整所需'力'越大"
+
+  # 3. 历史模式
+  - id: historical_patterns
+    name: "历史模式"
+    description: "从历史事件类比当前市场"
+    weight: 0.85
+
+    key_concepts:
+      - concept: "技术周期"
+        business_mapping: "创新S曲线/技术采用周期"
+      - concept: "帝国兴衰"
+        business_mapping: "行业龙头更替/竞争格局演变"
+      - concept: "金融危机"
+        business_mapping: "市场周期/风险累积"
+      - concept: "颠覆性创新"
+        business_mapping: "行业颠覆/新进入者"
+      - concept: "政策周期"
+        business_mapping: "监管周期/政策影响"
+
+    relational_structures:
+      - relation: "技术S曲线"
+        structure: "缓慢起步→快速增长→成熟饱和"
+        business_analog: "产品生命周期、市场渗透"
+      - relation: "Gartner炒作周期"
+        structure: "触发→膨胀期望→幻灭→启蒙→成熟"
+        business_analog: "新技术估值周期"
+      - relation: "创造性破坏"
+        structure: "旧技术被新技术取代"
+        business_analog: "行业颠覆、护城河侵蚀"
+
+    sample_mappings:
+      - source: "柯达与数码相机"
+        target: "传统车企与电动车"
+        insight: "颠覆往往来自看不起的边缘"
+
+  # 4. 相邻行业
+  - id: adjacent_industries
+    name: "相邻行业"
+    description: "从相邻行业经验类比目标行业"
+    weight: 0.95
+
+    key_concepts:
+      - concept: "定价策略"
+        business_mapping: "跨行业定价借鉴"
+      - concept: "渠道模式"
+        business_mapping: "分销策略迁移"
+      - concept: "商业模式"
+        business_mapping: "模式跨界应用"
+      - concept: "竞争策略"
+        business_mapping: "竞争手段借鉴"
+
+    relational_structures:
+      - relation: "订阅模式扩散"
+        structure: "从软件→媒体→实物→服务"
+        business_analog: "商业模式在行业间的传播"
+      - relation: "平台化趋势"
+        structure: "从单一产品到平台生态"
+        business_analog: "行业平台化演进"
+
+    sample_mappings:
+      - source: "Netflix订阅模式"
+        target: "汽车订阅服务"
+        insight: "所有权向使用权转变的普适性"
+
+  # 5. 系统动力学
+  - id: system_dynamics
+    name: "系统动力学"
+    description: "从系统反馈环路类比商业动态"
+    weight: 0.88
+
+    key_concepts:
+      - concept: "正反馈环路"
+        business_mapping: "增长飞轮/马太效应"
+      - concept: "负反馈环路"
+        business_mapping: "稳定机制/均衡回归"
+      - concept: "延迟效应"
+        business_mapping: "滞后指标/延迟反应"
+      - concept: "非线性"
+        business_mapping: "临界点/突变"
+      - concept: "涌现"
+        business_mapping: "系统层面的新特性"
+
+    relational_structures:
+      - relation: "增强回路"
+        structure: "A增加→B增加→A进一步增加"
+        business_analog: "网络效应、品牌效应"
+      - relation: "平衡回路"
+        structure: "偏离目标→修正力→回归目标"
+        business_analog: "市场均衡、价格调节"
+      - relation: "延迟反馈"
+        structure: "行动→延迟→结果"
+        business_analog: "投资回报周期、政策效果滞后"
+
+    sample_mappings:
+      - source: "恒温器负反馈"
+        target: "库存管理系统"
+        insight: "目标设定→偏差检测→修正行动"
+
+  # 6. TRIZ发明原理（简化版）
+  - id: triz_principles
+    name: "TRIZ发明原理"
+    description: "基于TRIZ的系统性创新模式"
+    weight: 0.80
+
+    key_concepts:
+      - concept: "分割原理"
+        business_mapping: "业务拆分/模块化"
+      - concept: "抽取原理"
+        business_mapping: "核心能力提取/外包非核心"
+      - concept: "局部质量"
+        business_mapping: "差异化/细分市场"
+      - concept: "不对称"
+        business_mapping: "差异化竞争/不对称战略"
+      - concept: "合并原理"
+        business_mapping: "整合/协同效应"
+      - concept: "嵌套原理"
+        business_mapping: "平台嵌套/生态层级"
+      - concept: "预先反作用"
+        business_mapping: "风险对冲/预防措施"
+      - concept: "预先作用"
+        business_mapping: "先发优势/布局"
+      - concept: "动态化"
+        business_mapping: "灵活定价/动态调整"
+      - concept: "反向思维"
+        business_mapping: "逆向创新/反直觉策略"
+
+    sample_mappings:
+      - source: "分割原理"
+        target: "微服务架构"
+        insight: "将单一系统分解为独立模块，提高灵活性"
+      - source: "合并原理"
+        target: "捆绑销售"
+        insight: "将多个产品/服务合并提供，增加价值"
+
+---
+
+# 领域距离矩阵
+domain_distance_matrix:
+  description: |
+    领域间的"概念距离"矩阵。
+    距离0.3-0.8为最佳类比范围。
+    距离<0.3太近，缺乏新意。
+    距离>0.8太远，难以映射。
+
+  matrix:
+    #                      bio   phys  hist  adj   sys   triz
+    biological_systems:   [0.0,  0.5,  0.6,  0.4,  0.35, 0.55]
+    physics_principles:   [0.5,  0.0,  0.55, 0.5,  0.3,  0.4]
+    historical_patterns:  [0.6,  0.55, 0.0,  0.35, 0.5,  0.6]
+    adjacent_industries:  [0.4,  0.5,  0.35, 0.0,  0.45, 0.5]
+    system_dynamics:      [0.35, 0.3,  0.5,  0.45, 0.0,  0.35]
+    triz_principles:      [0.55, 0.4,  0.6,  0.5,  0.35, 0.0]
+
+---
+
+# 领域选择规则
+domain_selection:
+  # 根据问题类型选择最佳类比领域
+  problem_domain_mapping:
+    - problem_type: "growth_slowdown"
+      preferred_domains: [biological_systems, system_dynamics, historical_patterns]
+      rationale: "增长放缓类似生态系统饱和或反馈环路弱化"
+
+    - problem_type: "competitive_threat"
+      preferred_domains: [historical_patterns, adjacent_industries, triz_principles]
+      rationale: "竞争威胁可从历史案例和相邻行业找类比"
+
+    - problem_type: "margin_pressure"
+      preferred_domains: [physics_principles, system_dynamics, adjacent_industries]
+      rationale: "利润率压力涉及力学平衡和系统动态"
+
+    - problem_type: "technology_disruption"
+      preferred_domains: [historical_patterns, triz_principles, physics_principles]
+      rationale: "技术颠覆有历史模式可循，TRIZ提供解决框架"
+
+    - problem_type: "ecosystem_shift"
+      preferred_domains: [biological_systems, system_dynamics]
+      rationale: "生态变化最适合用生物系统类比"
+
+  # 领域组合规则
+  combination_rules:
+    - "每次类比至少选择2个领域"
+    - "主领域+辅助领域的距离应在0.4-0.6"
+    - "避免选择距离<0.3的领域组合（太相似）"
+
+---
+
+# 扩展机制
+extension_mechanism:
+  description: |
+    允许在预定义领域基础上有限扩展。
+    新领域需要满足质量要求才能加入。
+
+  requirements:
+    - "新领域必须有明确的relational_structures"
+    - "新领域与现有领域距离在0.35-0.75之间"
+    - "新领域需要至少3个sample_mappings验证"
+    - "需要人工审核才能正式加入库"
+
+  max_extension_domains: 2  # 每次运行最多扩展2个临时领域
+
+  temporary_domain_template:
+    id: "temp_{domain_name}"
+    status: "experimental"
+    validation_required: true
+    expiry_runs: 10  # 10次运行后如未验证则移除

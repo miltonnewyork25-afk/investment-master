@@ -1,0 +1,375 @@
+# Reason Code Dictionary - INNOV Namespace v1.0
+# Innovation Agent所有reason codes的完整定义
+
+namespace: INNOV
+version: "1.0.0"
+created: "2026-01-27"
+description: |
+  INNOV (Innovation Agent) 命名空间的reason codes
+  用于标记创新生成过程中的问题、警告和状态
+
+---
+
+# Severity定义
+severity_definitions:
+  P0:
+    description: "致命错误，流程中断"
+    action: "FAIL"
+    requires_human_review: true
+
+  P1:
+    description: "严重问题，可能影响输出质量"
+    action: "DEGRADE_OR_REJECT"
+    requires_human_review: false
+
+  P2:
+    description: "警告，需要关注但不阻塞"
+    action: "WARN"
+    requires_human_review: false
+
+  P3:
+    description: "信息性，仅记录"
+    action: "INFO"
+    requires_human_review: false
+
+---
+
+# Reason Codes - Event Trigger Dispatcher (P0)
+trigger_codes:
+  - code: INNOV_EVENT_UNCONFIRMED
+    severity: P3
+    action: INFO
+    description: "事件来源可信度不足，需要多来源确认"
+    resolution: "等待更多来源确认或提升来源可信度"
+
+  - code: INNOV_EVENT_IN_COOLDOWN
+    severity: P3
+    action: INFO
+    description: "同类事件在冷却期内，暂不触发"
+    resolution: "等待冷却期结束"
+
+  - code: INNOV_DAILY_LIMIT_REACHED
+    severity: P2
+    action: WARN
+    description: "已达每日触发上限"
+    resolution: "等待次日或提升事件优先级"
+
+  - code: INNOV_NO_QUALIFIED_EVENTS
+    severity: P3
+    action: INFO
+    description: "当前无符合条件的触发事件"
+    resolution: "正常状态，无需处理"
+
+  - code: INNOV_P3_DEFERRED
+    severity: P3
+    action: INFO
+    description: "P3事件数量不足，延迟触发"
+    resolution: "等待更多P3事件聚合"
+
+---
+
+# Reason Codes - Idea Seed Generator (D1)
+seed_codes:
+  - code: INNOV_SEED_DUPLICATE
+    severity: P3
+    action: INFO
+    description: "Idea seed与历史想法高度重复"
+    resolution: "已自动过滤"
+
+  - code: INNOV_SEED_SIMILAR
+    severity: P3
+    action: INFO
+    description: "Idea seed与历史想法相似，需注意差异化"
+    resolution: "继续处理但标记"
+
+  - code: INNOV_LOW_DIVERSITY
+    severity: P2
+    action: WARN
+    description: "生成的seeds多样性不足"
+    resolution: "尝试更多生成策略"
+
+  - code: INNOV_PAIN_POINT_UNCOVERED
+    severity: P2
+    action: WARN
+    description: "某些痛点未能生成seeds"
+    resolution: "检查痛点识别和生成策略"
+
+---
+
+# Reason Codes - Cross-Domain Analogizer (D2)
+analogy_codes:
+  - code: INNOV_NO_VALID_MAPPING
+    severity: P1
+    action: WARN
+    description: "Seed无法找到有效的结构映射"
+    resolution: "尝试其他类比领域或降级处理"
+
+  - code: INNOV_ANALOGY_TOO_CLOSE
+    severity: P2
+    action: WARN
+    description: "类比领域距离太近(<0.3)，缺乏新意"
+    resolution: "选择更远的类比领域"
+
+  - code: INNOV_ANALOGY_TOO_FAR
+    severity: P2
+    action: WARN
+    description: "类比领域距离太远(>0.8)，难以映射"
+    resolution: "选择更近的类比领域"
+
+  - code: INNOV_WEAK_ANALOGY
+    severity: P2
+    action: WARN
+    description: "类比质量不足（结构映射不完整或不相关）"
+    resolution: "标记为低质量，后续评分降权"
+
+  - code: INNOV_TRIVIAL_INSIGHT
+    severity: P3
+    action: INFO
+    description: "类比产生的洞察过于trivial"
+    resolution: "继续处理但标记"
+
+---
+
+# Reason Codes - Hypothesis Structurer (D3)
+structurer_codes:
+  - code: INNOV_HYPOTHESIS_INCOMPLETE
+    severity: P2
+    action: WARN
+    description: "假设缺少必需字段"
+    resolution: "尝试补充或降级"
+
+  - code: INNOV_METRIC_NOT_OBSERVABLE
+    severity: P2
+    action: WARN
+    description: "指定的指标难以观测"
+    resolution: "选择替代指标"
+
+  - code: INNOV_NO_TIER1_SOURCE
+    severity: P2
+    action: WARN
+    description: "缺少Tier1验证来源"
+    resolution: "补充或接受Tier2来源"
+
+  - code: INNOV_TIME_WINDOW_TOO_LONG
+    severity: P2
+    action: WARN
+    description: "时间窗口超过24个月"
+    resolution: "缩短时间窗口或标记为长期假设"
+
+  - code: INNOV_CLAIM_TOO_VAGUE
+    severity: P2
+    action: WARN
+    description: "声明过于模糊，无法测试"
+    resolution: "细化声明内容"
+
+---
+
+# Reason Codes - Novelty Scorer (C1)
+scorer_codes:
+  - code: INNOV_LOW_NOVELTY
+    severity: P2
+    action: WARN
+    description: "假设新颖性不足(<0.4)"
+    resolution: "继续处理但优先级降低"
+
+  - code: INNOV_WEAK_SOURCES
+    severity: P2
+    action: WARN
+    description: "验证来源不足（无Tier1/Tier2）"
+    resolution: "补充来源或标记"
+
+  - code: INNOV_LOW_FEASIBILITY
+    severity: P2
+    action: WARN
+    description: "可行性不足(<0.5)"
+    resolution: "检查验证条件"
+
+  - code: INNOV_DUPLICATE_DETECTED
+    severity: P1
+    action: REJECT
+    description: "与历史假设高度重复(similarity>0.9)"
+    resolution: "拒绝该假设"
+
+---
+
+# Reason Codes - Innovation Quality Gate (C2)
+iqg_codes:
+  - code: INNOV_NOT_NOVEL
+    severity: P1
+    action: REJECT
+    description: "新颖性过低(<0.20)"
+    resolution: "拒绝该假设"
+
+  - code: INNOV_DUPLICATE
+    severity: P1
+    action: REJECT
+    description: "与历史假设重复"
+    resolution: "拒绝该假设"
+
+  - code: INNOV_UNCLASSIFIED
+    severity: P1
+    action: REJECT
+    description: "假设类型未分类"
+    resolution: "拒绝该假设"
+
+  - code: INNOV_QUALITY_TOO_LOW
+    severity: P1
+    action: DEGRADE
+    description: "新颖性和可行性都低于阈值"
+    resolution: "降级处理，标记警告"
+
+  - code: INNOV_NO_VERIFICATION_SOURCES
+    severity: P1
+    action: DEGRADE
+    description: "缺少验证来源"
+    resolution: "降级处理"
+
+  - code: INNOV_BORDERLINE_QUALITY
+    severity: P2
+    action: WARN
+    description: "质量边缘（未拒绝但需关注）"
+    resolution: "继续处理但标记"
+
+  - code: INNOV_NO_PROPOSALS_PASSED
+    severity: P1
+    action: INFO
+    description: "本轮无提案通过质量门控"
+    resolution: "检查输入质量或调整阈值"
+
+  - code: INNOV_DAILY_LIMIT_APPLIED
+    severity: P3
+    action: INFO
+    description: "每日配额限制已应用"
+    resolution: "正常限流"
+
+---
+
+# Reason Codes - Output Router (R1)
+router_codes:
+  - code: INNOV_NO_SPECIFIC_ROUTE
+    severity: P3
+    action: INFO
+    description: "无特定路由目标，使用默认"
+    resolution: "路由到通用注册表"
+
+  - code: INNOV_TARGET_REJECTED
+    severity: P2
+    action: WARN
+    description: "目标Agent拒绝接收"
+    resolution: "检查格式或目标Agent状态"
+
+  - code: INNOV_DELIVERY_FAILED
+    severity: P1
+    action: WARN
+    description: "交付失败（超时后重试仍失败）"
+    resolution: "记录失败，后续重试"
+
+  - code: INNOV_FORMAT_TRANSFORM_ERROR
+    severity: P1
+    action: WARN
+    description: "格式转换错误"
+    resolution: "检查转换逻辑"
+
+---
+
+# Reason Codes - Feedback Collector (F1)
+feedback_codes:
+  - code: INNOV_LOW_ACCEPTANCE_RATE
+    severity: P1
+    action: WARN
+    description: "接受率过低(<30%)"
+    resolution: "触发自适应调整"
+
+  - code: INNOV_NO_HUMAN_FEEDBACK
+    severity: P2
+    action: INFO
+    description: "本轮无人工反馈"
+    resolution: "继续使用自动校准"
+
+  - code: INNOV_CALIBRATION_DIVERGENCE
+    severity: P1
+    action: WARN
+    description: "人工评分与模型评分相关性低(<0.5)"
+    resolution: "重新训练校准模型"
+
+---
+
+# Reason Codes - Adaptation Engine (F2)
+adaptation_codes:
+  - code: INNOV_INSUFFICIENT_SAMPLES
+    severity: P3
+    action: INFO
+    description: "样本量不足，跳过本次调整"
+    resolution: "等待更多数据"
+
+  - code: INNOV_ADJUSTMENT_OUT_OF_BOUNDS
+    severity: P2
+    action: WARN
+    description: "调整值超出安全范围，已裁剪"
+    resolution: "使用裁剪后的值"
+
+  - code: INNOV_ADJUSTMENT_CONFLICT
+    severity: P2
+    action: WARN
+    description: "与最近调整冲突"
+    resolution: "减小调整幅度"
+
+  - code: INNOV_CALIBRATION_RETRAINED
+    severity: P3
+    action: INFO
+    description: "校准模型已重新训练"
+    resolution: "正常更新"
+
+  - code: INNOV_NO_ADJUSTMENT_NEEDED
+    severity: P3
+    action: INFO
+    description: "当前性能良好，无需调整"
+    resolution: "保持当前配置"
+
+---
+
+# Code汇总
+code_summary:
+  total_codes: 38
+  by_severity:
+    P0: 0
+    P1: 12
+    P2: 16
+    P3: 10
+  by_phase:
+    trigger: 5
+    seed: 4
+    analogy: 5
+    structurer: 5
+    scorer: 4
+    iqg: 8
+    router: 4
+    feedback: 3
+    adaptation: 5
+
+---
+
+# 与QG对接
+qg_mapping:
+  reject_if_present:
+    - INNOV_NOT_NOVEL
+    - INNOV_DUPLICATE
+    - INNOV_UNCLASSIFIED
+    - INNOV_DUPLICATE_DETECTED
+
+  degrade_if_present:
+    - INNOV_QUALITY_TOO_LOW
+    - INNOV_NO_VERIFICATION_SOURCES
+    - INNOV_LOW_ACCEPTANCE_RATE
+    - INNOV_CALIBRATION_DIVERGENCE
+    - INNOV_DELIVERY_FAILED
+    - INNOV_NO_VALID_MAPPING
+
+  warn_if_present:
+    - INNOV_LOW_DIVERSITY
+    - INNOV_WEAK_ANALOGY
+    - INNOV_HYPOTHESIS_INCOMPLETE
+    - INNOV_LOW_NOVELTY
+    - INNOV_LOW_FEASIBILITY
+    - INNOV_BORDERLINE_QUALITY
+    - INNOV_TARGET_REJECTED

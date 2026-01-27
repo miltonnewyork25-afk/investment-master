@@ -1,0 +1,297 @@
+# Innovation Agent Sample Output v1.0
+# 完整的单次运行输出示例
+
+run_id: "INNOV_RUN_2026012710"
+policy_ref:
+  version: "innov-1.0.0"
+  hash: "sha256:a1b2c3d4e5f6789012345678901234567890123456789012345678901234abcd"
+
+# ===== Trigger Info =====
+trigger_info:
+  trigger_event:
+    event_id: "EVT_TSLA_2026012701"
+    event_type: "EARNINGS_SURPRISE"
+    event_data:
+      ticker: "TSLA"
+      quarter: "Q4 2025"
+      actual_eps: 0.52
+      expected_eps: 0.75
+      surprise: -0.23
+      automotive_margin: 0.165
+      energy_margin: 0.28
+    timestamp: "2026-01-27T08:30:00Z"
+    source: "SEC_FILINGS"
+  priority: "P0"
+  aggregated_count: 1
+  innovation_direction: "探索利润率压力下的战略选择和竞争动态"
+
+# ===== Innovation Proposals (通过IQG) =====
+innovation_proposals:
+  - id: "INNOV_H_001"
+    claim_type: "MECHANISM"
+    statement: "如果毛利率持续低于18%超过2个季度，Tesla将被迫实施5%+的降价策略，触发行业价格战螺旋"
+    origin:
+      trigger_event: "EVT_TSLA_2026012701"
+      pain_point: "Margin pressure from price cuts eroding profitability"
+      generation_strategy: "causal_chain_extension"
+      analogy_source:
+        domain: "biological_systems"
+        structure: "predator-prey population dynamics"
+        business_analog: "价格战中的竞争博弈"
+        insight: "类似捕食者-猎物动态，一方的激进行为会触发系统性响应"
+      analogy_mapping: |
+        源域: 生态系统中捕食者-猎物关系
+        - 捕食者增加 → 猎物减少 → 捕食者食物不足 → 捕食者减少
+
+        目标域: 汽车行业价格竞争
+        - 降价（捕食）→ 竞争对手利润受损（猎物）→ 竞争对手被迫跟进降价 →
+          全行业利润率下降 → 弱势玩家出局 → 市场份额重新分配
+
+        关键洞察: 降价策略存在负反馈机制，短期获取份额可能导致长期利润损失
+    falsifiability:
+      metric: "Automotive gross margin (ex-credits)"
+      threshold: "< 18% for 2 consecutive quarters"
+      time_window: "next 4 quarters (Q1-Q4 2026)"
+      verification_sources:
+        - "Tesla 10-Q/10-K filings"
+        - "Earnings call management commentary"
+        - "Competitor quarterly reports"
+      disconfirmers:
+        - "Margin recovers to >20% within 2 quarters"
+        - "Tesla announces premium model focus strategy"
+        - "Competitor exits market reducing competitive pressure"
+    scores:
+      novelty: 0.72
+      feasibility: 0.85
+      composite: 0.77
+      novelty_components:
+        embedding_distance: 0.68
+        information_gain: 0.78
+        calibration_adjustment: 0.02
+      feasibility_components:
+        source_score: 0.90
+        time_score: 0.85
+        metric_score: 0.80
+        resource_score: 0.85
+    routing:
+      target_agent: "research_mechanism_agent"
+      output_format: "claim_spec_v1"
+      priority: "HIGH"
+    metadata:
+      created_at: "2026-01-27T10:30:00Z"
+      completeness_score: 1.0
+      original_idea_id: "IDEA_2026012701"
+      original_seed_id: "SEED_2026012703"
+      analogy_quality_score: 0.75
+      iqg_status: "PASSED"
+
+  - id: "INNOV_H_002"
+    claim_type: "VALUATION"
+    statement: "能源业务毛利率(28%)已超越汽车业务(16.5%)，未来SOTP估值应提升能源业务权重至30%以上"
+    origin:
+      trigger_event: "EVT_TSLA_2026012701"
+      pain_point: "Market undervalues energy segment contribution"
+      generation_strategy: "data_anomaly_exploration"
+      analogy_source:
+        domain: "historical_patterns"
+        structure: "business model transition (IBM mainframe→services)"
+        business_analog: "硬件公司向高margin服务转型"
+        insight: "类似IBM从硬件转向服务，高margin业务最终成为估值主体"
+    falsifiability:
+      metric: "Energy segment as % of total gross profit"
+      threshold: "> 35% of total gross profit"
+      time_window: "by Q4 2026"
+      verification_sources:
+        - "Tesla segment disclosures"
+        - "Quarterly earnings reports"
+      disconfirmers:
+        - "Energy margin compression to < 20%"
+        - "Automotive margin recovery to > 22%"
+    scores:
+      novelty: 0.65
+      feasibility: 0.78
+      composite: 0.70
+    routing:
+      target_agent: "valuation_engine_agent"
+      output_format: "cap_hypothesis_addendum"
+      priority: "MEDIUM"
+    metadata:
+      created_at: "2026-01-27T10:32:00Z"
+      completeness_score: 0.95
+      iqg_status: "PASSED"
+
+  - id: "INNOV_H_003"
+    claim_type: "ECOSYSTEM"
+    statement: "Tesla充电网络开放将创造正向网络效应：更多非Tesla用户→更高网络利用率→更多充电收入→更多充电站投资→更广网络覆盖"
+    origin:
+      trigger_event: "EVT_TSLA_2026012701"
+      pain_point: "Supercharger network underutilized in off-peak hours"
+      generation_strategy: "system_dynamics_extension"
+      analogy_source:
+        domain: "system_dynamics"
+        structure: "positive feedback loop (network effects)"
+        business_analog: "平台网络效应"
+    falsifiability:
+      metric: "Non-Tesla vehicles as % of Supercharger sessions"
+      threshold: "> 25%"
+      time_window: "by Q2 2027"
+      verification_sources:
+        - "Tesla quarterly updates"
+        - "Third-party charging data"
+      disconfirmers:
+        - "Non-Tesla adoption < 10% after 12 months"
+        - "Major competitor builds rival network"
+    scores:
+      novelty: 0.58
+      feasibility: 0.82
+      composite: 0.68
+    routing:
+      target_agent: "ecosystem_graph_agent"
+      output_format: "eco_signal"
+      priority: "MEDIUM"
+    metadata:
+      created_at: "2026-01-27T10:35:00Z"
+      completeness_score: 1.0
+      iqg_status: "PASSED"
+
+# ===== Pipeline Stats =====
+pipeline_stats:
+  trigger_stats:
+    events_received: 1
+    events_filtered: 0
+    events_aggregated: 0
+    final_trigger_count: 1
+
+  seed_stats:
+    pain_points_identified: 5
+    seeds_generated: 12
+    duplicates_removed: 2
+    final_seed_count: 10
+    strategies_used:
+      - "direct_inference"
+      - "causal_chain_extension"
+      - "counterfactual"
+      - "data_anomaly_exploration"
+
+  analogy_stats:
+    seeds_processed: 10
+    mappings_attempted: 30
+    valid_mappings: 18
+    ideas_generated: 18
+    domains_used:
+      - "biological_systems"
+      - "historical_patterns"
+      - "system_dynamics"
+      - "physics_principles"
+    higher_order_count: 3
+    avg_mapping_score: 0.68
+
+  structuring_stats:
+    ideas_processed: 18
+    hypotheses_generated: 15
+    claim_types_distribution:
+      MECHANISM: 6
+      VALUATION: 4
+      ECOSYSTEM: 3
+      DATA_GAP: 2
+    avg_completeness_score: 0.92
+    incomplete_count: 1
+
+  scoring_stats:
+    total_scored: 15
+    novelty_distribution:
+      mean: 0.55
+      std: 0.18
+      min: 0.22
+      max: 0.78
+    high_novelty_count: 5
+    low_novelty_count: 3
+    duplicates_detected: 1
+    calibration_applied: true
+
+  iqg_stats:
+    total_input: 15
+    passed: 3
+    degraded: 4
+    warned: 5
+    rejected: 3
+    selected_for_output: 3
+
+  routing_stats:
+    total_sent: 3
+    delivered: 3
+    rejected: 0
+    failed: 0
+    by_target_agent:
+      research_mechanism_agent: 1
+      valuation_engine_agent: 1
+      ecosystem_graph_agent: 1
+
+# ===== Analogy Mappings Detail =====
+analogy_mappings:
+  - idea_id: "IDEA_2026012701"
+    seed_id: "SEED_2026012703"
+    domain: "biological_systems"
+    structure_mapped: "predator-prey dynamics"
+    mapping_explanation: |
+      结构映射:
+      - 捕食者数量 ↔ 降价力度
+      - 猎物数量 ↔ 竞争对手利润
+      - 系统平衡 ↔ 行业价格均衡
+
+      关系保持:
+      - 负反馈机制保持（降价→对手降价→全输）
+      - 周期性波动保持（价格战周期）
+    mapping_score: 0.75
+
+  - idea_id: "IDEA_2026012702"
+    seed_id: "SEED_2026012705"
+    domain: "historical_patterns"
+    structure_mapped: "business model transition"
+    mapping_explanation: |
+      历史类比: IBM mainframe → services transition
+      - 传统业务margin压缩 ↔ Tesla汽车margin下降
+      - 新业务高margin ↔ Tesla能源28% margin
+      - 估值重心转移 ↔ SOTP权重调整需求
+    mapping_score: 0.70
+
+# ===== Routing Results =====
+routing_results:
+  - proposal_id: "INNOV_H_001"
+    target_agent: "research_mechanism_agent"
+    status: "DELIVERED"
+    reason: "Push+Confirm successful"
+    retry_count: 0
+
+  - proposal_id: "INNOV_H_002"
+    target_agent: "valuation_engine_agent"
+    status: "DELIVERED"
+    reason: "Push+Confirm successful"
+    retry_count: 0
+
+  - proposal_id: "INNOV_H_003"
+    target_agent: "ecosystem_graph_agent"
+    status: "DELIVERED"
+    reason: "Push+Confirm successful"
+    retry_count: 0
+
+# ===== Reason Codes (全流程) =====
+reason_codes_all:
+  - "INNOV_SEED_DUPLICATE"
+  - "INNOV_SEED_SIMILAR"
+  - "INNOV_WEAK_ANALOGY"
+  - "INNOV_LOW_NOVELTY"
+  - "INNOV_NOT_NOVEL"
+  - "INNOV_BORDERLINE_QUALITY"
+
+# ===== Execution Metadata =====
+execution_metadata:
+  start_time: "2026-01-27T10:00:00Z"
+  end_time: "2026-01-27T10:45:00Z"
+  total_duration_ms: 2700000
+  phase_durations:
+    trigger: 5000
+    diverge: 1800000
+    converge: 600000
+    route: 180000
+    feedback: 115000

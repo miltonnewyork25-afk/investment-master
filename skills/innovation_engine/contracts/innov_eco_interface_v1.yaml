@@ -1,0 +1,316 @@
+# Innovation Agent → Ecosystem Graph Agent Interface Contract v1.0
+# 定义 Innovation Agent 向 ECO Agent 推送假设的接口规范
+
+interface_name: "INNOV_ECO_Interface"
+version: "1.0.0"
+created: "2026-01-27"
+
+description: |
+  Innovation Agent 向 Ecosystem Graph Agent 推送 ECOSYSTEM 类型假设的接口。
+  ECO Agent 负责将假设纳入生态系统图谱，识别网络效应和飞轮动态。
+
+# ===== 协议 =====
+protocol:
+  type: "PUSH_CONFIRM"
+  timeout_ms: 5000
+  retry_policy:
+    max_retries: 2
+    backoff_ms: 1000
+
+# ===== 输入格式（Innovation → ECO）=====
+request_format:
+  name: "InnovationToECORequest"
+  content_type: "application/json"
+
+  required_fields:
+    - name: "proposal_id"
+      type: "string"
+      pattern: "^INNOV_H_[0-9]{3}$"
+      description: "创新假设唯一ID"
+
+    - name: "claim_type"
+      type: "string"
+      value: "ECOSYSTEM"
+      description: "必须为ECOSYSTEM类型"
+
+    - name: "statement"
+      type: "string"
+      min_length: 20
+      max_length: 500
+      description: "生态假设陈述"
+
+    - name: "ecosystem_element"
+      type: "object"
+      description: "生态系统元素"
+      required_subfields:
+        - element_type
+        - entities_involved
+        - relationship_type
+
+    - name: "falsifiability"
+      type: "object"
+      description: "可证伪设计"
+      required_subfields:
+        - metric
+        - threshold
+        - time_window
+        - verification_sources
+        - disconfirmers
+
+    - name: "scores"
+      type: "object"
+      description: "评分信息"
+      required_subfields:
+        - novelty
+        - feasibility
+        - composite
+
+    - name: "priority"
+      type: "string"
+      enum: ["HIGH", "MEDIUM", "LOW"]
+      description: "推送优先级"
+
+  optional_fields:
+    - name: "flywheel_impact"
+      type: "object"
+      description: "对飞轮的影响"
+      fields:
+        - name: "flywheel_name"
+          type: "string"
+        - name: "acceleration_or_deceleration"
+          type: "string"
+          enum: ["ACCELERATE", "DECELERATE", "NEUTRAL"]
+        - name: "magnitude"
+          type: "string"
+          enum: ["HIGH", "MEDIUM", "LOW"]
+
+    - name: "network_effect_type"
+      type: "string"
+      enum:
+        - "DIRECT"
+        - "INDIRECT"
+        - "TWO_SIDED"
+        - "LOCAL"
+        - "DATA"
+      description: "网络效应类型"
+
+    - name: "competitive_moat_impact"
+      type: "object"
+      description: "对护城河的影响"
+      fields:
+        - name: "moat_type"
+          type: "string"
+        - name: "strengthening_or_weakening"
+          type: "string"
+          enum: ["STRENGTHEN", "WEAKEN", "NEUTRAL"]
+
+# ===== 输出格式（ECO → Innovation）=====
+response_format:
+  name: "ECOToInnovationResponse"
+  content_type: "application/json"
+
+  required_fields:
+    - name: "status"
+      type: "string"
+      enum: ["ACCEPTED", "REJECTED", "DEFERRED", "MODIFIED"]
+      description: "处理状态"
+
+    - name: "proposal_id"
+      type: "string"
+      description: "原始proposal_id回显"
+
+    - name: "timestamp"
+      type: "string"
+      format: "date-time"
+      description: "响应时间"
+
+  conditional_fields:
+    - name: "eco_signal_id"
+      type: "string"
+      condition: "status == ACCEPTED or status == MODIFIED"
+      description: "ECO分配的信号ID"
+
+    - name: "graph_integration"
+      type: "object"
+      condition: "status == ACCEPTED"
+      description: "图谱整合信息"
+      fields:
+        - name: "nodes_affected"
+          type: "array"
+          items: "string"
+        - name: "edges_created"
+          type: "array"
+          items: "object"
+        - name: "flywheel_updated"
+          type: "string"
+
+    - name: "rejection_reason"
+      type: "string"
+      condition: "status == REJECTED"
+      enum:
+        - "NOT_ECOSYSTEM_RELEVANT"
+        - "ALREADY_IN_GRAPH"
+        - "RELATIONSHIP_NOT_VALID"
+        - "ENTITIES_NOT_FOUND"
+        - "INCOMPLETE"
+      description: "拒绝原因"
+
+# ===== 生态系统元素类型 =====
+ecosystem_element_types:
+  - type: "NODE"
+    description: "新的生态系统节点（公司、产品、用户群）"
+    required_fields:
+      - node_id
+      - node_type
+      - attributes
+
+  - type: "EDGE"
+    description: "节点间的新关系"
+    required_fields:
+      - source_node
+      - target_node
+      - relationship_type
+      - strength
+
+  - type: "FLYWHEEL_COMPONENT"
+    description: "飞轮的新组件或阶段"
+    required_fields:
+      - flywheel_name
+      - component_name
+      - position_in_cycle
+
+  - type: "FEEDBACK_LOOP"
+    description: "正/负反馈回路"
+    required_fields:
+      - loop_type
+      - nodes_in_loop
+      - direction
+
+# ===== 关系类型 =====
+relationship_types:
+  - "SUPPLIES_TO"
+  - "COMPETES_WITH"
+  - "PARTNERS_WITH"
+  - "DEPENDS_ON"
+  - "COMPLEMENTS"
+  - "SUBSTITUTES"
+  - "DATA_FLOWS_TO"
+  - "VALUE_FLOWS_TO"
+  - "ENABLES"
+  - "CONSTRAINS"
+
+# ===== 转换规则 =====
+transformation:
+  from_innovation_hypothesis:
+    mapping:
+      - source: "id"
+        target: "proposal_id"
+      - source: "claim_type"
+        target: "claim_type"
+        validation: "must equal ECOSYSTEM"
+      - source: "statement"
+        target: "statement"
+      - source: "falsifiability"
+        target: "falsifiability"
+      - source: "scores"
+        target: "scores"
+      - source: "routing.priority"
+        target: "priority"
+
+    derived_fields:
+      ecosystem_element:
+        description: "从statement中提取生态系统元素"
+        extraction_rules:
+          - pattern: "网络效应|用户增长|平台"
+            element_type: "FEEDBACK_LOOP"
+            loop_type: "POSITIVE"
+          - pattern: "飞轮|良性循环"
+            element_type: "FLYWHEEL_COMPONENT"
+          - pattern: "供应链|供应商|客户"
+            element_type: "EDGE"
+            relationship_type: "SUPPLIES_TO"
+          - pattern: "竞争|对手|份额"
+            element_type: "EDGE"
+            relationship_type: "COMPETES_WITH"
+
+  to_eco_signal:
+    description: "ECO接收后转换为生态信号格式"
+    output_format:
+      signal_id: "string"
+      signal_type: "string"
+      source_innovation_id: "string"
+      graph_operation: "ADD_NODE | ADD_EDGE | UPDATE_WEIGHT | ADD_LOOP"
+      affected_entities: "array"
+      confidence: "number"
+      time_relevance: "string"
+
+# ===== 示例 =====
+examples:
+  request:
+    proposal_id: "INNOV_H_010"
+    claim_type: "ECOSYSTEM"
+    statement: "Tesla的超充网络开放将加速电动车整体渗透率，间接扩大Tesla的潜在用户池"
+    ecosystem_element:
+      element_type: "FEEDBACK_LOOP"
+      entities_involved:
+        - "Tesla Supercharger Network"
+        - "Non-Tesla EV Owners"
+        - "EV Adoption Rate"
+        - "Tesla Market Share"
+      relationship_type: "ENABLES"
+    falsifiability:
+      metric: "Non-Tesla vehicles using Supercharger network"
+      threshold: "> 20% of Supercharger sessions from non-Tesla vehicles"
+      time_window: "by Q4 2026"
+      verification_sources:
+        - "Tesla quarterly reports"
+        - "Industry charging data"
+      disconfirmers:
+        - "Non-Tesla usage remains < 5% after 12 months"
+    scores:
+      novelty: 0.58
+      feasibility: 0.80
+      composite: 0.67
+    priority: "MEDIUM"
+    flywheel_impact:
+      flywheel_name: "EV_ADOPTION_FLYWHEEL"
+      acceleration_or_deceleration: "ACCELERATE"
+      magnitude: "MEDIUM"
+    network_effect_type: "INDIRECT"
+
+  response_accepted:
+    status: "ACCEPTED"
+    proposal_id: "INNOV_H_010"
+    eco_signal_id: "ECO_SIG_2026_042"
+    graph_integration:
+      nodes_affected:
+        - "Tesla_Supercharger"
+        - "Non_Tesla_EV_Pool"
+      edges_created:
+        - source: "Tesla_Supercharger"
+          target: "Non_Tesla_EV_Pool"
+          type: "ENABLES"
+          weight: 0.6
+      flywheel_updated: "EV_ADOPTION_FLYWHEEL"
+    timestamp: "2026-01-27T11:30:00Z"
+
+  response_rejected:
+    status: "REJECTED"
+    proposal_id: "INNOV_H_010"
+    rejection_reason: "ALREADY_IN_GRAPH"
+    timestamp: "2026-01-27T11:30:00Z"
+
+# ===== 错误处理 =====
+error_handling:
+  timeout:
+    action: "RETRY"
+    max_retries: 2
+    fallback: "QUEUE_FOR_LATER"
+
+  validation_error:
+    action: "REJECT_WITH_REASON"
+    log_level: "WARN"
+
+  eco_unavailable:
+    action: "QUEUE_FOR_LATER"
+    retry_interval_ms: 60000

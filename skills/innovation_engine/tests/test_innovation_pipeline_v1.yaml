@@ -1,0 +1,568 @@
+# Innovation Agent Pipeline Test Suite v1.0
+# 完整端到端测试用例
+
+test_suite_name: "Innovation_Pipeline_Tests_v1"
+version: "1.0.0"
+created: "2026-01-27"
+
+# ===== Test Categories =====
+categories:
+  - name: "EVENT_TRIGGER"
+    description: "事件触发测试"
+  - name: "DIVERGE"
+    description: "发散阶段测试"
+  - name: "CONVERGE"
+    description: "收敛阶段测试"
+  - name: "ROUTE"
+    description: "路由阶段测试"
+  - name: "FEEDBACK"
+    description: "反馈阶段测试"
+  - name: "END_TO_END"
+    description: "端到端集成测试"
+
+---
+
+# ===== Event Trigger Tests (P0) =====
+test_cases:
+  # --- P0 Event Trigger Dispatcher ---
+  - id: "ET_001"
+    name: "P0 Event Triggers Immediate Processing"
+    category: "EVENT_TRIGGER"
+    description: "P0级事件应立即触发流程"
+    input:
+      event:
+        event_id: "TEST_EVT_001"
+        event_type: "EARNINGS_MISS"
+        priority: "P0"
+        data:
+          ticker: "TSLA"
+          actual_eps: 0.52
+          expected_eps: 0.75
+          magnitude: -0.23
+    expected:
+      trigger_decision: "TRIGGER_NOW"
+      cooldown_applied: false
+      aggregation_applied: false
+    assertions:
+      - "output.trigger_decision == 'TRIGGER_NOW'"
+      - "output.priority == 'P0'"
+
+  - id: "ET_002"
+    name: "P3 Event Aggregates Until Threshold"
+    category: "EVENT_TRIGGER"
+    description: "P3级事件应聚合直到达到阈值"
+    input:
+      events:
+        - event_id: "TEST_EVT_002a"
+          event_type: "ANALYST_REVISION"
+          priority: "P3"
+        - event_id: "TEST_EVT_002b"
+          event_type: "PATENT_FILED"
+          priority: "P3"
+    expected:
+      trigger_decision: "DEFER"
+      reason_code: "INNOV_P3_DEFERRED"
+      aggregated_count: 2
+    assertions:
+      - "output.trigger_decision == 'DEFER'"
+      - "'INNOV_P3_DEFERRED' in output.reason_codes"
+
+  - id: "ET_003"
+    name: "Cooldown Prevents Duplicate Triggers"
+    category: "EVENT_TRIGGER"
+    description: "冷却期内相同类型事件不应重复触发"
+    setup:
+      recent_trigger:
+        event_type: "EARNINGS_RELEASE"
+        triggered_at: "2026-01-27T08:00:00Z"
+    input:
+      event:
+        event_id: "TEST_EVT_003"
+        event_type: "EARNINGS_RELEASE"
+        timestamp: "2026-01-27T08:30:00Z"  # 30min later
+    expected:
+      trigger_decision: "DEFER"
+      reason_code: "INNOV_EVENT_IN_COOLDOWN"
+    assertions:
+      - "output.trigger_decision == 'DEFER'"
+      - "'INNOV_EVENT_IN_COOLDOWN' in output.reason_codes"
+
+  - id: "ET_004"
+    name: "Daily Limit Enforcement"
+    category: "EVENT_TRIGGER"
+    description: "达到每日触发上限后应阻止新触发"
+    setup:
+      daily_trigger_count: 10
+      max_triggers_per_day: 10
+    input:
+      event:
+        event_id: "TEST_EVT_004"
+        event_type: "PRODUCT_LAUNCH"
+        priority: "P1"
+    expected:
+      trigger_decision: "DEFER"
+      reason_code: "INNOV_DAILY_LIMIT_REACHED"
+    assertions:
+      - "output.trigger_decision == 'DEFER'"
+      - "'INNOV_DAILY_LIMIT_REACHED' in output.reason_codes"
+
+  # --- D1 Idea Seed Generator ---
+  - id: "SD_001"
+    name: "Pain Point Extraction Completeness"
+    category: "DIVERGE"
+    description: "痛点提取应覆盖所有关键维度"
+    input:
+      trigger_context:
+        event_type: "EARNINGS_MISS"
+        ticker: "TSLA"
+        event_data:
+          margin_compression: true
+          delivery_miss: false
+          guidance_cut: true
+    expected:
+      pain_points_count: ">= 3"
+      strategies_used: ">= 2"
+    assertions:
+      - "len(output.pain_points) >= 3"
+      - "len(output.strategies_used) >= 2"
+
+  - id: "SD_002"
+    name: "Duplicate Seed Removal"
+    category: "DIVERGE"
+    description: "高度重复的seeds应被过滤"
+    input:
+      generated_seeds:
+        - id: "SEED_001"
+          content: "Tesla利润率下降可能触发价格战"
+        - id: "SEED_002"
+          content: "特斯拉毛利率下跌或引发降价竞争"  # 高度相似
+        - id: "SEED_003"
+          content: "Robotaxi可能改变出行市场格局"
+    expected:
+      final_seed_count: 2
+      duplicates_removed: 1
+      reason_code: "INNOV_SEED_DUPLICATE"
+    assertions:
+      - "output.final_seed_count == 2"
+      - "output.duplicates_removed == 1"
+
+  # --- D2 Cross-Domain Analogizer ---
+  - id: "AN_001"
+    name: "Valid Structural Mapping"
+    category: "DIVERGE"
+    description: "类比应产生有效的结构映射"
+    input:
+      seed:
+        id: "SEED_TEST_001"
+        content: "大规模价格战导致行业利润率集体下滑"
+      target_domain: "biological_systems"
+    expected:
+      mapping_found: true
+      mapping_score: ">= 0.5"
+      structure_preserved: true
+    assertions:
+      - "output.mapping_found == true"
+      - "output.mapping_score >= 0.5"
+      - "output.analogy.structure is not None"
+
+  - id: "AN_002"
+    name: "Domain Distance Constraint"
+    category: "DIVERGE"
+    description: "类比领域距离应在合理范围内"
+    input:
+      seed:
+        id: "SEED_TEST_002"
+        content: "供应链瓶颈限制产能扩张"
+      selected_domain: "physics_principles"
+    expected:
+      domain_distance: "between 0.3 and 0.8"
+    assertions:
+      - "0.3 <= output.domain_distance <= 0.8"
+
+  - id: "AN_003"
+    name: "Reject Too Close Analogy"
+    category: "DIVERGE"
+    description: "距离过近的类比应被标记警告"
+    input:
+      seed:
+        id: "SEED_TEST_003"
+        content: "汽车行业竞争加剧"
+      selected_domain: "adjacent_industries"  # 距离可能过近
+      domain_distance: 0.25
+    expected:
+      reason_code: "INNOV_ANALOGY_TOO_CLOSE"
+    assertions:
+      - "'INNOV_ANALOGY_TOO_CLOSE' in output.reason_codes"
+
+  # --- D3 Hypothesis Structurer ---
+  - id: "HS_001"
+    name: "Complete Hypothesis Generation"
+    category: "DIVERGE"
+    description: "假设应包含所有必需字段"
+    input:
+      enriched_idea:
+        id: "IDEA_TEST_001"
+        content: "Margin压力触发价格战螺旋"
+        analogy:
+          domain: "biological_systems"
+          structure: "predator-prey dynamics"
+    expected:
+      hypothesis_complete: true
+      required_fields_present:
+        - id
+        - claim_type
+        - statement
+        - falsifiability
+        - scores
+        - routing
+    assertions:
+      - "all(f in output.hypothesis for f in expected.required_fields_present)"
+
+  - id: "HS_002"
+    name: "Falsifiability Design Quality"
+    category: "DIVERGE"
+    description: "可证伪设计应具体且可测量"
+    input:
+      enriched_idea:
+        id: "IDEA_TEST_002"
+        content: "FSD订阅率将因v14改进而提升"
+    expected:
+      falsifiability:
+        metric_specific: true
+        threshold_quantified: true
+        time_window_defined: true
+        sources_tier1_present: true
+    assertions:
+      - "output.falsifiability.metric is not None"
+      - "output.falsifiability.threshold contains number"
+      - "output.falsifiability.time_window is not None"
+
+  # --- C1 Novelty Scorer ---
+  - id: "NS_001"
+    name: "Novelty Score Computation"
+    category: "CONVERGE"
+    description: "新颖性评分应正确计算"
+    input:
+      hypothesis:
+        id: "INNOV_H_TEST_001"
+        statement: "完全新颖的假设内容"
+      historical_hypotheses: []  # 无历史记录
+    expected:
+      novelty_score: ">= 0.7"
+      embedding_component: ">= 0.8"
+    assertions:
+      - "output.scores.novelty >= 0.7"
+
+  - id: "NS_002"
+    name: "Duplicate Detection"
+    category: "CONVERGE"
+    description: "与历史高度重复的假设应被检测"
+    input:
+      hypothesis:
+        id: "INNOV_H_TEST_002"
+        statement: "Tesla汽车毛利率Q1将下降到17%"
+      historical_hypotheses:
+        - id: "HIST_H_001"
+          statement: "Tesla汽车毛利率Q1预计降至17%"
+          embedding: [0.82, 0.15, 0.33, ...]  # 高度相似
+    expected:
+      duplicate_detected: true
+      similarity_score: ">= 0.9"
+      reason_code: "INNOV_DUPLICATE_DETECTED"
+    assertions:
+      - "output.duplicate_detected == true"
+      - "'INNOV_DUPLICATE_DETECTED' in output.reason_codes"
+
+  - id: "NS_003"
+    name: "Feasibility Score Components"
+    category: "CONVERGE"
+    description: "可行性评分应包含所有组件"
+    input:
+      hypothesis:
+        id: "INNOV_H_TEST_003"
+        falsifiability:
+          metric: "Gross margin %"
+          threshold: "< 18%"
+          time_window: "next 2 quarters"
+          verification_sources: ["10-Q filing"]
+    expected:
+      feasibility_components:
+        source_score: ">= 0"
+        time_score: ">= 0"
+        metric_score: ">= 0"
+    assertions:
+      - "all(c >= 0 for c in output.feasibility_components.values())"
+
+  # --- C2 Innovation Quality Gate ---
+  - id: "QG_001"
+    name: "Pass High Quality Hypothesis"
+    category: "CONVERGE"
+    description: "高质量假设应通过质量门控"
+    input:
+      hypothesis:
+        id: "INNOV_H_TEST_004"
+        scores:
+          novelty: 0.75
+          feasibility: 0.80
+          composite: 0.77
+        claim_type: "MECHANISM"
+    expected:
+      iqg_status: "PASSED"
+    assertions:
+      - "output.iqg_status == 'PASSED'"
+
+  - id: "QG_002"
+    name: "Reject Low Novelty Hypothesis"
+    category: "CONVERGE"
+    description: "新颖性过低的假设应被拒绝"
+    input:
+      hypothesis:
+        id: "INNOV_H_TEST_005"
+        scores:
+          novelty: 0.15
+          feasibility: 0.80
+          composite: 0.41
+        claim_type: "MECHANISM"
+    expected:
+      iqg_status: "REJECTED"
+      reason_code: "INNOV_NOT_NOVEL"
+    assertions:
+      - "output.iqg_status == 'REJECTED'"
+      - "'INNOV_NOT_NOVEL' in output.reason_codes"
+
+  - id: "QG_003"
+    name: "Degrade Borderline Hypothesis"
+    category: "CONVERGE"
+    description: "边缘质量假设应被降级"
+    input:
+      hypothesis:
+        id: "INNOV_H_TEST_006"
+        scores:
+          novelty: 0.35
+          feasibility: 0.45
+          composite: 0.39
+        claim_type: "VALUATION"
+    expected:
+      iqg_status: "DEGRADED"
+      reason_code: "INNOV_QUALITY_TOO_LOW"
+    assertions:
+      - "output.iqg_status == 'DEGRADED'"
+
+  # --- R1 Output Router ---
+  - id: "RT_001"
+    name: "Route MECHANISM to RM Agent"
+    category: "ROUTE"
+    description: "MECHANISM类型应路由到RM Agent"
+    input:
+      proposal:
+        id: "INNOV_H_TEST_007"
+        claim_type: "MECHANISM"
+        iqg_status: "PASSED"
+    expected:
+      target_agent: "research_mechanism_agent"
+      output_format: "claim_spec_v1"
+    assertions:
+      - "output.routing.target_agent == 'research_mechanism_agent'"
+
+  - id: "RT_002"
+    name: "Route VALUATION to VE Agent"
+    category: "ROUTE"
+    description: "VALUATION类型应路由到VE Agent"
+    input:
+      proposal:
+        id: "INNOV_H_TEST_008"
+        claim_type: "VALUATION"
+        iqg_status: "PASSED"
+    expected:
+      target_agent: "valuation_engine_agent"
+      output_format: "cap_hypothesis_addendum"
+    assertions:
+      - "output.routing.target_agent == 'valuation_engine_agent'"
+
+  - id: "RT_003"
+    name: "Handle Delivery Failure with Retry"
+    category: "ROUTE"
+    description: "交付失败应触发重试"
+    input:
+      proposal:
+        id: "INNOV_H_TEST_009"
+        claim_type: "ECOSYSTEM"
+      mock_response:
+        status: "TIMEOUT"
+        attempt: 1
+    expected:
+      retry_triggered: true
+      max_retries: 2
+    assertions:
+      - "output.retry_count >= 1"
+
+  # --- F1 Feedback Collector ---
+  - id: "FB_001"
+    name: "Aggregate Multi-Source Feedback"
+    category: "FEEDBACK"
+    description: "应正确聚合多源反馈"
+    input:
+      routing_results:
+        - proposal_id: "INNOV_H_001"
+          target_agent: "research_mechanism_agent"
+          status: "DELIVERED"
+      downstream_responses:
+        - proposal_id: "INNOV_H_001"
+          agent: "research_mechanism_agent"
+          action: "accept"
+      human_feedback:
+        - proposal_id: "INNOV_H_001"
+          rating: 4
+          comments: "Good insight"
+    expected:
+      acceptance_rate: 1.0
+      feedback_sources_count: 3
+    assertions:
+      - "output.acceptance_rate == 1.0"
+
+  - id: "FB_002"
+    name: "Calculate Rejection Analysis"
+    category: "FEEDBACK"
+    description: "应正确分析拒绝原因"
+    input:
+      downstream_responses:
+        - proposal_id: "INNOV_H_002"
+          action: "reject"
+          reason: "NOT_NOVEL"
+        - proposal_id: "INNOV_H_003"
+          action: "reject"
+          reason: "NOT_NOVEL"
+        - proposal_id: "INNOV_H_004"
+          action: "reject"
+          reason: "ALREADY_COVERED"
+    expected:
+      rejection_rate: 1.0
+      top_rejection_reason: "NOT_NOVEL"
+    assertions:
+      - "output.rejection_analysis.top_reasons[0] == 'NOT_NOVEL'"
+
+  # --- F2 Adaptation Engine ---
+  - id: "AD_001"
+    name: "Trigger Threshold Adjustment"
+    category: "FEEDBACK"
+    description: "低接受率应触发阈值调整"
+    input:
+      feedback_batch:
+        metrics:
+          acceptance_rate: 0.25
+          total: 20
+      current_policy:
+        iqg:
+          novelty_threshold: 0.20
+    expected:
+      adjustment_triggered: true
+      param_changes:
+        - param: "iqg.novelty_threshold"
+          direction: "increase"
+    assertions:
+      - "len(output.adjustments) > 0"
+
+  - id: "AD_002"
+    name: "Skip Adjustment for Insufficient Samples"
+    category: "FEEDBACK"
+    description: "样本量不足时应跳过调整"
+    input:
+      feedback_batch:
+        metrics:
+          acceptance_rate: 0.25
+          total: 5  # 低于min_samples
+      adaptation_config:
+        min_samples_for_adjustment: 10
+    expected:
+      adjustment_triggered: false
+      reason_code: "INNOV_INSUFFICIENT_SAMPLES"
+    assertions:
+      - "output.skip_adaptation == true"
+      - "'INNOV_INSUFFICIENT_SAMPLES' in output.reason_codes"
+
+  # --- End-to-End Tests ---
+  - id: "E2E_001"
+    name: "Full Pipeline - P0 Event to Delivered Proposal"
+    category: "END_TO_END"
+    description: "完整流程：P0事件到成功交付提案"
+    input:
+      event:
+        event_id: "E2E_EVT_001"
+        event_type: "EARNINGS_SURPRISE"
+        priority: "P0"
+        data:
+          ticker: "TSLA"
+          surprise_magnitude: -0.15
+    expected:
+      pipeline_completed: true
+      proposals_generated: ">= 1"
+      proposals_delivered: ">= 1"
+      all_phases_passed: true
+    assertions:
+      - "output.pipeline_stats.trigger_stats.final_trigger_count >= 1"
+      - "output.pipeline_stats.routing_stats.delivered >= 1"
+
+  - id: "E2E_002"
+    name: "Full Pipeline - All Proposals Rejected"
+    category: "END_TO_END"
+    description: "完整流程：所有提案被质量门控拒绝"
+    input:
+      event:
+        event_id: "E2E_EVT_002"
+        event_type: "MINOR_NEWS"
+        priority: "P3"
+        data:
+          ticker: "TSLA"
+          content: "Minor executive interview"
+      mock_novelty_scores:
+        all_below_threshold: true
+    expected:
+      pipeline_completed: true
+      proposals_generated: ">= 1"
+      proposals_passed_iqg: 0
+      reason_code: "INNOV_NO_PROPOSALS_PASSED"
+    assertions:
+      - "output.pipeline_stats.iqg_stats.passed == 0"
+      - "'INNOV_NO_PROPOSALS_PASSED' in output.reason_codes_all"
+
+  - id: "E2E_003"
+    name: "Feedback Loop Triggers Adaptation"
+    category: "END_TO_END"
+    description: "完整流程：反馈触发自适应调整"
+    setup:
+      historical_runs:
+        - acceptance_rate: 0.20
+        - acceptance_rate: 0.22
+        - acceptance_rate: 0.18
+      total_samples: 50
+    input:
+      current_run_feedback:
+        acceptance_rate: 0.19
+        rejection_reasons:
+          NOT_NOVEL: 15
+          OTHER: 5
+    expected:
+      adaptation_triggered: true
+      threshold_adjusted: true
+    assertions:
+      - "output.adaptation_summary.adjustments_made > 0"
+
+# ===== Test Execution Config =====
+execution_config:
+  parallel_execution: true
+  timeout_per_test_ms: 30000
+  retry_failed_tests: 1
+
+  environment:
+    mock_external_apis: true
+    use_test_database: true
+    log_level: "DEBUG"
+
+  coverage_requirements:
+    min_line_coverage: 0.80
+    min_branch_coverage: 0.70
+    critical_paths_covered:
+      - "Event Trigger → Seed Generation"
+      - "Seed → Analogy → Hypothesis"
+      - "Hypothesis → Score → QG → Route"
+      - "Route → Feedback → Adaptation"

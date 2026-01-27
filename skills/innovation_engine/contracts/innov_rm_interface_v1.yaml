@@ -1,0 +1,218 @@
+# Innovation Agent → Research Mechanism Agent Interface Contract v1.0
+# 定义 Innovation Agent 向 RM Agent 推送假设的接口规范
+
+interface_name: "INNOV_RM_Interface"
+version: "1.0.0"
+created: "2026-01-27"
+
+description: |
+  Innovation Agent 向 Research Mechanism Agent 推送 MECHANISM 类型假设的接口。
+  RM Agent 负责验证机制假设，将其纳入 ClaimSpec 体系。
+
+# ===== 协议 =====
+protocol:
+  type: "PUSH_CONFIRM"
+  timeout_ms: 5000
+  retry_policy:
+    max_retries: 2
+    backoff_ms: 1000
+
+# ===== 输入格式（Innovation → RM）=====
+request_format:
+  name: "InnovationToRMRequest"
+  content_type: "application/json"
+
+  required_fields:
+    - name: "proposal_id"
+      type: "string"
+      pattern: "^INNOV_H_[0-9]{3}$"
+      description: "创新假设唯一ID"
+
+    - name: "claim_type"
+      type: "string"
+      value: "MECHANISM"
+      description: "必须为MECHANISM类型"
+
+    - name: "statement"
+      type: "string"
+      min_length: 20
+      max_length: 500
+      description: "机制假设陈述"
+
+    - name: "falsifiability"
+      type: "object"
+      description: "可证伪设计"
+      required_subfields:
+        - metric
+        - threshold
+        - time_window
+        - verification_sources
+        - disconfirmers
+
+    - name: "origin"
+      type: "object"
+      description: "假设来源追溯"
+      required_subfields:
+        - trigger_event
+
+    - name: "scores"
+      type: "object"
+      description: "评分信息"
+      required_subfields:
+        - novelty
+        - feasibility
+        - composite
+
+    - name: "priority"
+      type: "string"
+      enum: ["HIGH", "MEDIUM", "LOW"]
+      description: "推送优先级"
+
+  optional_fields:
+    - name: "analogy_mapping"
+      type: "string"
+      description: "类比映射描述"
+
+    - name: "related_claims"
+      type: "array"
+      items: "string"
+      description: "相关的现有ClaimSpec IDs"
+
+    - name: "suggested_tests"
+      type: "array"
+      items: "string"
+      description: "建议的验证测试"
+
+# ===== 输出格式（RM → Innovation）=====
+response_format:
+  name: "RMToInnovationResponse"
+  content_type: "application/json"
+
+  required_fields:
+    - name: "status"
+      type: "string"
+      enum: ["ACCEPTED", "REJECTED", "DEFERRED", "MODIFIED"]
+      description: "处理状态"
+
+    - name: "proposal_id"
+      type: "string"
+      description: "原始proposal_id回显"
+
+    - name: "timestamp"
+      type: "string"
+      format: "date-time"
+      description: "响应时间"
+
+  conditional_fields:
+    - name: "claim_spec_id"
+      type: "string"
+      condition: "status == ACCEPTED or status == MODIFIED"
+      description: "RM分配的ClaimSpec ID"
+
+    - name: "rejection_reason"
+      type: "string"
+      condition: "status == REJECTED"
+      enum:
+        - "NOT_NOVEL"
+        - "NOT_ACTIONABLE"
+        - "ALREADY_COVERED"
+        - "LOW_QUALITY"
+        - "IRRELEVANT"
+        - "INCOMPLETE"
+      description: "拒绝原因"
+
+    - name: "defer_until"
+      type: "string"
+      format: "date-time"
+      condition: "status == DEFERRED"
+      description: "延迟处理至何时"
+
+    - name: "modifications"
+      type: "object"
+      condition: "status == MODIFIED"
+      description: "RM对假设的修改内容"
+
+# ===== 转换规则 =====
+transformation:
+  from_innovation_hypothesis:
+    mapping:
+      - source: "id"
+        target: "proposal_id"
+      - source: "claim_type"
+        target: "claim_type"
+        validation: "must equal MECHANISM"
+      - source: "statement"
+        target: "statement"
+      - source: "falsifiability"
+        target: "falsifiability"
+      - source: "origin"
+        target: "origin"
+      - source: "scores"
+        target: "scores"
+      - source: "routing.priority"
+        target: "priority"
+      - source: "origin.analogy_mapping"
+        target: "analogy_mapping"
+        optional: true
+
+  to_claim_spec_v1:
+    description: "RM接收后转换为ClaimSpec格式"
+    notes:
+      - "RM负责分配claim_id"
+      - "RM负责关联到现有claim图谱"
+      - "RM负责设定验证优先级"
+
+# ===== 示例 =====
+examples:
+  request:
+    proposal_id: "INNOV_H_001"
+    claim_type: "MECHANISM"
+    statement: "如果毛利率持续低于18%超过2个季度，Tesla将被迫实施5%+的降价策略"
+    falsifiability:
+      metric: "Automotive gross margin (ex-credits)"
+      threshold: "< 18% for 2 consecutive quarters"
+      time_window: "next 4 quarters"
+      verification_sources:
+        - "Tesla 10-Q filing"
+        - "Earnings call guidance"
+      disconfirmers:
+        - "Margin recovers to >20% within 2 quarters"
+    origin:
+      trigger_event: "EARNINGS_SURPRISE_001"
+      pain_point: "Margin pressure from price cuts"
+      analogy_source:
+        domain: "biological_systems"
+        structure: "predator-prey dynamics"
+    scores:
+      novelty: 0.72
+      feasibility: 0.85
+      composite: 0.77
+    priority: "HIGH"
+    analogy_mapping: "类似生态系统中的捕食者-猎物动态，margin压力可能触发价格战螺旋"
+
+  response_accepted:
+    status: "ACCEPTED"
+    proposal_id: "INNOV_H_001"
+    claim_spec_id: "RM_CLAIM_2026_001"
+    timestamp: "2026-01-27T10:35:00Z"
+
+  response_rejected:
+    status: "REJECTED"
+    proposal_id: "INNOV_H_001"
+    rejection_reason: "ALREADY_COVERED"
+    timestamp: "2026-01-27T10:35:00Z"
+
+# ===== 错误处理 =====
+error_handling:
+  timeout:
+    action: "RETRY"
+    max_retries: 2
+    fallback: "QUEUE_FOR_LATER"
+
+  validation_error:
+    action: "REJECT_WITH_REASON"
+    log_level: "WARN"
+
+  rm_unavailable:
+    action: "QUEUE_FOR_LATER"
+    retry_interval_ms: 60000

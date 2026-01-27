@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Event Trigger Dispatcher Skill v1.0 -->
+<!-- Position: P0 | Purpose: 监控事件并触发创新循环 -->
+<!-- 核心: 事件分类 + 优先级队列 + 防护机制 -->
+
+<skill name="event_trigger_dispatcher_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>Innovation Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Event-Driven Architecture</ref>
+      <ref>Priority Queue Processing</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    监控外部事件信号并决定是否触发创新循环：
+    1. 接收事件信号（财报/新闻/数据/监管/竞品等）
+    2. 分类事件类型和优先级
+    3. 应用防护机制（冷却期、聚合、限流）
+    4. 输出 trigger_flags 决定是否启动创新流程
+
+    不生成创新内容，只做触发决策。
+  </purpose>
+
+  <inputs>
+    <input name="event_signals" type="array" required="true">
+      <item_schema>
+        <field name="event_id" type="string"/>
+        <field name="event_type" type="string"/>
+        <field name="event_data" type="object"/>
+        <field name="timestamp" type="datetime"/>
+        <field name="source" type="string"/>
+        <field name="source_credibility" type="float"/>
+        <field name="company_ticker" type="string"/>
+        <field name="industry" type="string"/>
+      </item_schema>
+    </input>
+
+    <input name="config_triggers" type="object" required="true">
+      事件触发规则配置（from event_trigger_rules_v1.yaml）
+    </input>
+
+    <input name="trigger_history" type="array" required="false">
+      最近触发历史（用于冷却期检查）
+    </input>
+
+    <input name="daily_trigger_count" type="integer" required="false">
+      当日已触发次数
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="ClassifyEvents">
+      <action>
+        FOR EACH event IN event_signals:
+          1. 匹配 event_type 到 config_triggers.event_types
+          2. 确定 priority (P0/P1/P2/P3)
+          3. 检查是否匹配 industry_specific_triggers
+          4. 如果匹配特定行业，可能 override priority
+
+          classified_events.append({
+            event_id: event.event_id,
+            event_type: matched_type,
+            priority: determined_priority,
+            innovation_direction: if industry_specific
+          })
+      </action>
+      <output>
+        classified_events: array
+      </output>
+    </step>
+
+    <step id="s2" name="ApplyNoiseFilter">
+      <action>
+        FOR EACH event IN classified_events:
+          1. 检查 source_credibility >= min_source_credibility (0.6)
+          2. 如果 credibility < threshold AND tier3_source:
+             检查是否有 confirmation (多来源验证)
+          3. 过滤掉不可信事件
+
+        IF require_confirmation AND confirmation_count < threshold:
+          add_reason_code: INNOV_EVENT_UNCONFIRMED
+          filter_out event
+      </action>
+      <output>
+        filtered_events: array
+      </output>
+    </step>
+
+    <step id="s3" name="CheckCooldown">
+      <action>
+        FOR EACH event IN filtered_events:
+          last_trigger = find_last_trigger(event.event_type, trigger_history)
+
+          IF last_trigger EXISTS:
+            cooldown_period = get_cooldown(event.event_type)
+            time_since_last = now - last_trigger.timestamp
+
+            IF time_since_last &lt; cooldown_period:
+              mark event as COOLDOWN_BLOCKED
+              add_reason_code: INNOV_EVENT_IN_COOLDOWN
+              remove from active_events
+            ELSE:
+              keep in active_events
+          ELSE:
+            keep in active_events (first trigger for this type)
+      </action>
+      <output>
+        cooldown_checked_events: array
+      </output>
+    </step>
+
+    <step id="s4" name="AggregateEvents">
+      <action>
+        1. 按 aggregation_window (30min) 分组事件
+        2. 相似事件（同公司、同类型）聚合为单个触发
+
+        IF events_in_window.count >= min_events_to_aggregate (2):
+          aggregated_event = {
+            event_ids: [all_ids],
+            event_type: primary_type,
+            priority: max(priorities),
+            aggregated_count: count
+          }
+        ELSE:
+          keep events separate
+
+        FOR P3 events:
+          IF count &lt; aggregate_threshold:
+            defer (不触发，等待更多信号)
+      </action>
+      <output>
+        aggregated_events: array
+      </output>
+    </step>
+
+    <step id="s5" name="CheckDailyLimit">
+      <action>
+        IF daily_trigger_count >= max_triggers_per_day (10):
+          FOR EACH event IN aggregated_events:
+            IF event.priority != P0:
+              defer to next day
+              add_reason_code: INNOV_DAILY_LIMIT_REACHED
+            ELSE:
+              allow (P0 always passes)
+      </action>
+      <output>
+        limit_checked_events: array
+      </output>
+    </step>
+
+    <step id="s6" name="BuildPriorityQueue">
+      <action>
+        priority_queue = PriorityQueue()
+
+        FOR EACH event IN limit_checked_events:
+          score = priority_weights[event.priority] + timestamp_recency_bonus
+          priority_queue.enqueue(event, score)
+
+        排序: P0 first, then P1/P2/P3 by timestamp
+      </action>
+      <output>
+        priority_queue: array (ordered)
+      </output>
+    </step>
+
+    <step id="s7" name="GenerateTriggerFlags">
+      <action>
+        IF priority_queue.is_empty():
+          trigger_flags = {
+            should_trigger: false,
+            reason: "no_qualified_events"
+          }
+        ELSE:
+          top_event = priority_queue.peek()
+          trigger_flags = {
+            should_trigger: true,
+            trigger_event: top_event,
+            priority: top_event.priority,
+            aggregated_count: top_event.aggregated_count,
+            innovation_direction: top_event.innovation_direction
+          }
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="event_classification_accuracy" range="[0,1]" weight="30">
+      <formula>correctly_classified / total_events</formula>
+      <description>事件分类准确率</description>
+    </score>
+    <score name="filter_effectiveness" range="[0,1]" weight="30">
+      <formula>1 - (false_positives / total_passed)</formula>
+      <description>过滤有效性</description>
+    </score>
+    <score name="queue_efficiency" range="[0,1]" weight="40">
+      <formula>high_value_events_triggered / total_triggered</formula>
+      <description>高价值事件触发率</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="INNOV_EVENT_UNCONFIRMED" severity="P3" action="INFO">
+      事件来源可信度不足，需要多来源确认
+    </code>
+    <code id="INNOV_EVENT_IN_COOLDOWN" severity="P3" action="INFO">
+      同类事件在冷却期内，暂不触发
+    </code>
+    <code id="INNOV_DAILY_LIMIT_REACHED" severity="P2" action="WARN">
+      已达每日触发上限
+    </code>
+    <code id="INNOV_NO_QUALIFIED_EVENTS" severity="P3" action="INFO">
+      当前无符合条件的触发事件
+    </code>
+    <code id="INNOV_P3_DEFERRED" severity="P3" action="INFO">
+      P3事件数量不足，延迟触发
+    </code>
+  </reason_codes>
+
+  <output_contract>
+    <field name="trigger_flags" type="object" required="true">
+      <field name="should_trigger" type="boolean" required="true"/>
+      <field name="trigger_event" type="object" required="false"/>
+      <field name="priority" type="string" required="false"/>
+      <field name="aggregated_count" type="integer" required="false"/>
+      <field name="innovation_direction" type="string" required="false"/>
+    </field>
+
+    <field name="aggregated_events" type="array" required="true">
+      聚合后的事件列表
+    </field>
+
+    <field name="priority_queue" type="array" required="true">
+      优先级排序后的事件队列
+    </field>
+
+    <field name="trigger_stats" type="object" required="true">
+      <field name="events_received" type="integer"/>
+      <field name="events_filtered" type="integer"/>
+      <field name="events_cooldown_blocked" type="integer"/>
+      <field name="events_aggregated" type="integer"/>
+      <field name="events_limit_blocked" type="integer"/>
+      <field name="events_queued" type="integer"/>
+    </field>
+
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>

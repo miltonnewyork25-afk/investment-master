@@ -1,0 +1,324 @@
+# Innovation Agent → Data Integrity Agent Interface Contract v1.0
+# 定义 Innovation Agent 向 DI Agent 推送数据缺口的接口规范
+
+interface_name: "INNOV_DI_Interface"
+version: "1.0.0"
+created: "2026-01-27"
+
+description: |
+  Innovation Agent 向 Data Integrity Agent 推送 DATA_GAP 类型假设的接口。
+  DI Agent 负责跟踪数据缺口，协调数据采集优先级。
+
+# ===== 协议 =====
+protocol:
+  type: "PUSH_CONFIRM"
+  timeout_ms: 5000
+  retry_policy:
+    max_retries: 2
+    backoff_ms: 1000
+
+# ===== 输入格式（Innovation → DI）=====
+request_format:
+  name: "InnovationToDIRequest"
+  content_type: "application/json"
+
+  required_fields:
+    - name: "proposal_id"
+      type: "string"
+      pattern: "^INNOV_H_[0-9]{3}$"
+      description: "创新假设唯一ID"
+
+    - name: "claim_type"
+      type: "string"
+      value: "DATA_GAP"
+      description: "必须为DATA_GAP类型"
+
+    - name: "statement"
+      type: "string"
+      min_length: 20
+      max_length: 500
+      description: "数据缺口描述"
+
+    - name: "data_requirement"
+      type: "object"
+      description: "数据需求详情"
+      required_subfields:
+        - data_type
+        - data_source_candidates
+        - granularity_needed
+        - frequency_needed
+        - urgency
+
+    - name: "impact_if_filled"
+      type: "object"
+      description: "数据补充后的影响"
+      required_subfields:
+        - hypotheses_enabled
+        - analysis_improved
+
+    - name: "scores"
+      type: "object"
+      description: "评分信息"
+      required_subfields:
+        - novelty
+        - feasibility
+        - composite
+
+    - name: "priority"
+      type: "string"
+      enum: ["HIGH", "MEDIUM", "LOW"]
+      description: "推送优先级"
+
+  optional_fields:
+    - name: "current_workaround"
+      type: "string"
+      description: "当前替代方案（如有）"
+
+    - name: "estimated_acquisition_effort"
+      type: "string"
+      enum: ["LOW", "MEDIUM", "HIGH", "VERY_HIGH"]
+      description: "预估数据获取难度"
+
+    - name: "related_data_gaps"
+      type: "array"
+      items: "string"
+      description: "相关的其他数据缺口ID"
+
+# ===== 输出格式（DI → Innovation）=====
+response_format:
+  name: "DIToInnovationResponse"
+  content_type: "application/json"
+
+  required_fields:
+    - name: "status"
+      type: "string"
+      enum: ["ACCEPTED", "REJECTED", "DEFERRED", "ALREADY_TRACKED"]
+      description: "处理状态"
+
+    - name: "proposal_id"
+      type: "string"
+      description: "原始proposal_id回显"
+
+    - name: "timestamp"
+      type: "string"
+      format: "date-time"
+      description: "响应时间"
+
+  conditional_fields:
+    - name: "data_request_id"
+      type: "string"
+      condition: "status == ACCEPTED"
+      description: "DI分配的数据请求ID"
+
+    - name: "existing_request_id"
+      type: "string"
+      condition: "status == ALREADY_TRACKED"
+      description: "已存在的相关请求ID"
+
+    - name: "priority_assigned"
+      type: "string"
+      enum: ["P0", "P1", "P2", "P3"]
+      condition: "status == ACCEPTED"
+      description: "DI分配的优先级"
+
+    - name: "estimated_resolution_date"
+      type: "string"
+      format: "date"
+      condition: "status == ACCEPTED"
+      description: "预计解决日期"
+
+    - name: "rejection_reason"
+      type: "string"
+      condition: "status == REJECTED"
+      enum:
+        - "DATA_NOT_OBTAINABLE"
+        - "COST_PROHIBITIVE"
+        - "NOT_ACTIONABLE"
+        - "TOO_VAGUE"
+        - "OUTSIDE_SCOPE"
+      description: "拒绝原因"
+
+# ===== 数据类型分类 =====
+data_types:
+  - type: "FINANCIAL"
+    description: "财务数据"
+    examples:
+      - "Segment revenue breakdown"
+      - "Cost structure details"
+      - "Working capital components"
+
+  - type: "OPERATIONAL"
+    description: "运营数据"
+    examples:
+      - "Production volumes"
+      - "Capacity utilization"
+      - "Delivery metrics"
+
+  - type: "MARKET"
+    description: "市场数据"
+    examples:
+      - "Market share by geography"
+      - "Competitive pricing"
+      - "Customer churn rates"
+
+  - type: "ALTERNATIVE"
+    description: "另类数据"
+    examples:
+      - "Satellite imagery"
+      - "Web traffic"
+      - "Job postings"
+      - "Patent filings"
+
+  - type: "SENTIMENT"
+    description: "情绪数据"
+    examples:
+      - "Social media sentiment"
+      - "Employee reviews"
+      - "Customer satisfaction"
+
+# ===== 数据来源分级 =====
+data_source_tiers:
+  tier_1:
+    description: "高可信度来源"
+    sources:
+      - "Company filings (10-K, 10-Q, 8-K)"
+      - "Official company statements"
+      - "Regulatory filings"
+
+  tier_2:
+    description: "中等可信度来源"
+    sources:
+      - "Industry reports (Gartner, IDC)"
+      - "Analyst estimates (consensus)"
+      - "Trade association data"
+
+  tier_3:
+    description: "需验证来源"
+    sources:
+      - "News articles"
+      - "Expert interviews"
+      - "Alternative data providers"
+
+# ===== 转换规则 =====
+transformation:
+  from_innovation_hypothesis:
+    mapping:
+      - source: "id"
+        target: "proposal_id"
+      - source: "claim_type"
+        target: "claim_type"
+        validation: "must equal DATA_GAP"
+      - source: "statement"
+        target: "statement"
+      - source: "scores"
+        target: "scores"
+      - source: "routing.priority"
+        target: "priority"
+
+    derived_fields:
+      data_requirement:
+        description: "从statement中提取数据需求"
+        extraction_rules:
+          - pattern: "收入|营收|销售额"
+            data_type: "FINANCIAL"
+          - pattern: "产量|产能|交付"
+            data_type: "OPERATIONAL"
+          - pattern: "份额|渗透率|用户数"
+            data_type: "MARKET"
+          - pattern: "卫星|网络流量|专利"
+            data_type: "ALTERNATIVE"
+
+  to_data_request:
+    description: "DI接收后转换为数据请求格式"
+    output_format:
+      request_id: "string"
+      source_innovation_id: "string"
+      data_type: "string"
+      description: "string"
+      sources_to_check: "array"
+      priority: "string"
+      deadline: "date"
+      status: "OPEN | IN_PROGRESS | RESOLVED | CANCELLED"
+      resolution: "object"
+
+# ===== 示例 =====
+examples:
+  request:
+    proposal_id: "INNOV_H_015"
+    claim_type: "DATA_GAP"
+    statement: "缺少Tesla能源业务的毛利率按产品线拆分数据，无法准确评估Megapack vs Powerwall的盈利贡献"
+    data_requirement:
+      data_type: "FINANCIAL"
+      data_source_candidates:
+        - "Tesla 10-K segment disclosures"
+        - "Earnings call color"
+        - "Industry analyst estimates"
+      granularity_needed: "By product (Megapack, Powerwall, Solar)"
+      frequency_needed: "Quarterly"
+      urgency: "HIGH"
+    impact_if_filled:
+      hypotheses_enabled:
+        - "能源业务利润率是否已超越汽车业务"
+        - "Megapack规模经济是否已实现"
+      analysis_improved:
+        - "SOTP估值准确性"
+        - "业务mix预测"
+    scores:
+      novelty: 0.45
+      feasibility: 0.70
+      composite: 0.55
+    priority: "HIGH"
+    current_workaround: "使用整体能源部门利润率假设相同毛利"
+    estimated_acquisition_effort: "MEDIUM"
+
+  response_accepted:
+    status: "ACCEPTED"
+    proposal_id: "INNOV_H_015"
+    data_request_id: "DI_REQ_2026_088"
+    priority_assigned: "P1"
+    estimated_resolution_date: "2026-02-15"
+    timestamp: "2026-01-27T12:00:00Z"
+
+  response_already_tracked:
+    status: "ALREADY_TRACKED"
+    proposal_id: "INNOV_H_015"
+    existing_request_id: "DI_REQ_2026_045"
+    timestamp: "2026-01-27T12:00:00Z"
+
+  response_rejected:
+    status: "REJECTED"
+    proposal_id: "INNOV_H_015"
+    rejection_reason: "DATA_NOT_OBTAINABLE"
+    timestamp: "2026-01-27T12:00:00Z"
+
+# ===== 反馈机制 =====
+feedback_loop:
+  on_data_resolved:
+    description: "数据填补后通知Innovation Agent"
+    notification:
+      type: "DATA_GAP_RESOLVED"
+      fields:
+        - original_request_id
+        - resolution_summary
+        - data_location
+        - confidence_level
+
+    innovation_action:
+      - "Re-evaluate related hypotheses"
+      - "Generate new hypotheses using new data"
+      - "Update feasibility scores"
+
+# ===== 错误处理 =====
+error_handling:
+  timeout:
+    action: "RETRY"
+    max_retries: 2
+    fallback: "QUEUE_FOR_LATER"
+
+  validation_error:
+    action: "REJECT_WITH_REASON"
+    log_level: "WARN"
+
+  di_unavailable:
+    action: "QUEUE_FOR_LATER"
+    retry_interval_ms: 60000

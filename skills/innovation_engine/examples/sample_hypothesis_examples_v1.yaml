@@ -1,0 +1,413 @@
+# Innovation Hypothesis Examples v1.0
+# 各类型假设的详细示例
+
+version: "1.0.0"
+created: "2026-01-27"
+
+description: |
+  展示 Innovation Agent 生成的各类型假设示例
+  包括 MECHANISM, VALUATION, ECOSYSTEM, INNOVATION, DATA_GAP 五种类型
+
+---
+
+# ===== MECHANISM 类型示例 =====
+mechanism_examples:
+  - id: "INNOV_H_MECH_001"
+    claim_type: "MECHANISM"
+    statement: "当FSD订阅率超过10%时，边际成本接近零的特性将使FSD成为利润率最高的业务线(>80% gross margin)"
+
+    origin:
+      trigger_event: "EVT_TSLA_FSD_V14"
+      pain_point: "FSD monetization uncertainty"
+      generation_strategy: "causal_chain_extension"
+      analogy_source:
+        domain: "adjacent_industries"
+        structure: "software margin dynamics (Microsoft Office 365)"
+        business_analog: "订阅软件的边际成本结构"
+        insight: "软件订阅一旦达到规模，边际成本趋零，利润率急剧提升"
+      analogy_mapping: |
+        Microsoft Office 365 → Tesla FSD
+        - 开发成本固定 ↔ AI训练成本固定
+        - 分发成本趋零 ↔ OTA更新成本趋零
+        - 用户越多边际利润越高 ↔ 订阅越多边际利润越高
+
+    falsifiability:
+      metric: "FSD subscription rate & FSD segment gross margin"
+      threshold: "Subscription rate > 10% AND gross margin > 80%"
+      time_window: "by Q4 2026"
+      verification_sources:
+        - "Tesla 10-K segment disclosure"
+        - "Earnings call disclosure"
+      disconfirmers:
+        - "Subscription rate plateaus at < 8%"
+        - "Margin disclosure shows < 60%"
+        - "Regulatory restrictions limit FSD deployment"
+
+    scores:
+      novelty: 0.68
+      feasibility: 0.72
+      composite: 0.70
+
+    routing:
+      target_agent: "research_mechanism_agent"
+      output_format: "claim_spec_v1"
+      priority: "HIGH"
+
+  - id: "INNOV_H_MECH_002"
+    claim_type: "MECHANISM"
+    statement: "Cybertruck的不锈钢车身设计将导致比传统车身高15-20%的维修成本，可能影响保险定价和二手残值"
+
+    origin:
+      trigger_event: "EVT_CYBERTRUCK_RECALL"
+      pain_point: "Unconventional design serviceability concerns"
+      generation_strategy: "counterfactual"
+      analogy_source:
+        domain: "historical_patterns"
+        structure: "DeLorean stainless steel body issues"
+        business_analog: "非标材料的长期维护挑战"
+
+    falsifiability:
+      metric: "Average Cybertruck repair cost vs Model Y"
+      threshold: "> 15% higher repair cost"
+      time_window: "within 18 months of mass production"
+      verification_sources:
+        - "Insurance industry repair cost data"
+        - "Tesla service center pricing"
+        - "Third-party repair shop surveys"
+      disconfirmers:
+        - "Repair cost differential < 10%"
+        - "Tesla demonstrates efficient repair methods"
+
+    scores:
+      novelty: 0.62
+      feasibility: 0.80
+      composite: 0.69
+
+---
+
+# ===== VALUATION 类型示例 =====
+valuation_examples:
+  - id: "INNOV_H_VAL_001"
+    claim_type: "VALUATION"
+    statement: "当前$450股价隐含Robotaxi在2028年贡献$80B+收入，但基于监管和技术现实，合理估值应为概率加权$15-25B"
+
+    origin:
+      trigger_event: "EVT_TSLA_VALUATION_DEBATE"
+      pain_point: "Market may be overestimating Robotaxi optionality"
+      generation_strategy: "data_anomaly_exploration"
+      analogy_source:
+        domain: "historical_patterns"
+        structure: "technology hype cycle valuation (Cisco 2000)"
+        business_analog: "泡沫期对新技术的过度定价"
+
+    cap_impact:
+      affected_component: "SALES_GROWTH"
+      direction: "NEGATIVE_ADJUSTMENT"
+      magnitude_estimate: "HIGH"
+
+    falsifiability:
+      metric: "Robotaxi commercial deployment scale by 2028"
+      threshold: "< 100K active vehicles generating < $5B revenue"
+      time_window: "by Q4 2028"
+      verification_sources:
+        - "Tesla official announcements"
+        - "State DMV registrations"
+        - "Regulatory approval status"
+      disconfirmers:
+        - "Successful deployment in 10+ cities by 2027"
+        - "Revenue run rate exceeds $20B by 2028"
+
+    scores:
+      novelty: 0.55
+      feasibility: 0.75
+      composite: 0.63
+
+    routing:
+      target_agent: "valuation_engine_agent"
+      output_format: "cap_hypothesis_addendum"
+      priority: "HIGH"
+
+    quantitative_impact:
+      value_per_share_delta: -80
+      confidence: 0.45
+
+  - id: "INNOV_H_VAL_002"
+    claim_type: "VALUATION"
+    statement: "Megapack业务如果保持当前增长轨迹(100%+ YoY)，到2027年将贡献$200+/股价值，目前被低估"
+
+    origin:
+      trigger_event: "EVT_MEGAPACK_BACKLOG"
+      pain_point: "Energy storage contribution underappreciated"
+      generation_strategy: "direct_inference"
+
+    cap_impact:
+      affected_component: "SALES_GROWTH"
+      direction: "POSITIVE"
+      magnitude_estimate: "MEDIUM"
+
+    falsifiability:
+      metric: "Megapack deployment GWh & revenue"
+      threshold: "40+ GWh deployed, $15B+ revenue by 2027"
+      time_window: "by Q4 2027"
+      verification_sources:
+        - "Tesla energy segment disclosures"
+        - "Utility-scale storage project tracking"
+      disconfirmers:
+        - "Growth decelerates to < 50% YoY"
+        - "Margin compression to < 20%"
+        - "Supply chain constraints limit deployment"
+
+    scores:
+      novelty: 0.48
+      feasibility: 0.82
+      composite: 0.62
+
+---
+
+# ===== ECOSYSTEM 类型示例 =====
+ecosystem_examples:
+  - id: "INNOV_H_ECO_001"
+    claim_type: "ECOSYSTEM"
+    statement: "Tesla-SpaceX-Boring Company-xAI的Musk生态系统存在隐性协同：卫星通信(Starlink)→车联网、AI算力共享、隧道交通+自动驾驶"
+
+    origin:
+      trigger_event: "EVT_XAI_FUNDING"
+      pain_point: "Market evaluates Musk companies in silos"
+      generation_strategy: "system_dynamics_extension"
+      analogy_source:
+        domain: "system_dynamics"
+        structure: "conglomerate synergy effects"
+        business_analog: "生态系统协同效应"
+
+    ecosystem_element:
+      element_type: "FEEDBACK_LOOP"
+      entities_involved:
+        - "Tesla"
+        - "SpaceX/Starlink"
+        - "xAI"
+        - "Boring Company"
+      relationship_type: "ENABLES"
+
+    flywheel_impact:
+      flywheel_name: "MUSK_ECOSYSTEM_FLYWHEEL"
+      acceleration_or_deceleration: "ACCELERATE"
+      magnitude: "MEDIUM"
+
+    falsifiability:
+      metric: "Cross-company integration announcements/products"
+      threshold: "2+ major cross-company products launched"
+      time_window: "by Q4 2027"
+      verification_sources:
+        - "Company announcements"
+        - "Product launches"
+        - "Patent filings"
+      disconfirmers:
+        - "No integration products after 24 months"
+        - "Antitrust concerns force separation"
+
+    scores:
+      novelty: 0.75
+      feasibility: 0.55
+      composite: 0.67
+
+    routing:
+      target_agent: "ecosystem_graph_agent"
+      output_format: "eco_signal"
+      priority: "MEDIUM"
+
+  - id: "INNOV_H_ECO_002"
+    claim_type: "ECOSYSTEM"
+    statement: "中国本土电池供应商(CATL, BYD)的崛起正在削弱Tesla对Panasonic的议价能力，可能导致电池成本优势从±5%变为-10%劣势"
+
+    origin:
+      trigger_event: "EVT_CHINA_EV_MARKET"
+      pain_point: "Supply chain power shift in battery industry"
+      generation_strategy: "competitive_dynamics"
+
+    ecosystem_element:
+      element_type: "EDGE"
+      entities_involved:
+        - "Tesla"
+        - "Panasonic"
+        - "CATL"
+        - "BYD"
+      relationship_type: "COMPETES_WITH"
+
+    falsifiability:
+      metric: "Battery cost per kWh: Tesla vs BYD/Chinese OEMs"
+      threshold: "Tesla cost > BYD cost by 10%+"
+      time_window: "by Q2 2027"
+      verification_sources:
+        - "Industry teardown reports"
+        - "Battery cost benchmarks"
+      disconfirmers:
+        - "Tesla 4680 achieves cost parity"
+        - "Tesla secures long-term favorable contracts"
+
+    scores:
+      novelty: 0.58
+      feasibility: 0.78
+      composite: 0.66
+
+---
+
+# ===== INNOVATION 类型示例 =====
+innovation_examples:
+  - id: "INNOV_H_INN_001"
+    claim_type: "INNOVATION"
+    statement: "Optimus机器人如果实现工厂内部署，可能先于外部销售创造价值：通过降低Tesla自身制造人工成本10-15%"
+
+    origin:
+      trigger_event: "EVT_OPTIMUS_DEMO"
+      pain_point: "Optimus value realization path unclear"
+      generation_strategy: "counterfactual"
+      analogy_source:
+        domain: "historical_patterns"
+        structure: "Amazon fulfillment robotics (Kiva)"
+        business_analog: "内部机器人部署先于外部销售"
+        insight: "Amazon先用Kiva提升自身效率，再考虑外部化"
+
+    falsifiability:
+      metric: "Optimus units deployed in Tesla factories & labor cost impact"
+      threshold: "100+ units deployed, measurable cost reduction"
+      time_window: "by Q4 2027"
+      verification_sources:
+        - "Tesla factory tours/reports"
+        - "Earnings call disclosure"
+        - "Labor efficiency metrics"
+      disconfirmers:
+        - "No factory deployment after 24 months"
+        - "Deployment but no measurable cost impact"
+
+    scores:
+      novelty: 0.72
+      feasibility: 0.50
+      composite: 0.63
+
+    routing:
+      target_agent: "innovation_registry"
+      output_format: "standard"
+      priority: "MEDIUM"
+
+---
+
+# ===== DATA_GAP 类型示例 =====
+data_gap_examples:
+  - id: "INNOV_H_DG_001"
+    claim_type: "DATA_GAP"
+    statement: "缺少FSD安全里程的第三方独立验证数据，当前仅有Tesla自报数据，可能存在选择性报告偏差"
+
+    origin:
+      trigger_event: "EVT_FSD_SAFETY_CLAIM"
+      pain_point: "FSD safety claims unverifiable"
+      generation_strategy: "data_quality_assessment"
+
+    data_requirement:
+      data_type: "OPERATIONAL"
+      data_source_candidates:
+        - "NHTSA crash investigation reports"
+        - "Insurance industry claims data"
+        - "Independent safety testing (IIHS)"
+      granularity_needed: "Per million miles, by FSD version"
+      frequency_needed: "Quarterly"
+      urgency: "HIGH"
+
+    impact_if_filled:
+      hypotheses_enabled:
+        - "FSD真实安全性是否支持Robotaxi部署"
+        - "监管批准概率评估"
+      analysis_improved:
+        - "Robotaxi估值准确性"
+        - "风险评估"
+
+    falsifiability:
+      metric: "Third-party FSD safety data availability"
+      threshold: "Independent dataset with 100M+ miles"
+      time_window: "by Q4 2026"
+      verification_sources:
+        - "NHTSA public database"
+        - "Academic research publications"
+      disconfirmers:
+        - "Third-party data confirms Tesla claims within ±10%"
+
+    scores:
+      novelty: 0.52
+      feasibility: 0.65
+      composite: 0.57
+
+    routing:
+      target_agent: "data_integrity_agent"
+      output_format: "data_request"
+      priority: "HIGH"
+
+  - id: "INNOV_H_DG_002"
+    claim_type: "DATA_GAP"
+    statement: "Tesla中国工厂的实际产能利用率数据不透明，仅能通过出口+国内销量倒推，误差可能达±15%"
+
+    origin:
+      trigger_event: "EVT_CHINA_PRODUCTION"
+      pain_point: "China factory utilization uncertainty"
+
+    data_requirement:
+      data_type: "OPERATIONAL"
+      data_source_candidates:
+        - "China Passenger Car Association (CPCA)"
+        - "Customs export data"
+        - "Satellite imagery analysis"
+      granularity_needed: "Monthly, by model"
+      frequency_needed: "Monthly"
+      urgency: "MEDIUM"
+
+    impact_if_filled:
+      hypotheses_enabled:
+        - "中国市场是否真的供过于求"
+        - "产能扩张决策合理性评估"
+      analysis_improved:
+        - "分地区收入预测"
+        - "产能投资回报分析"
+
+    scores:
+      novelty: 0.45
+      feasibility: 0.70
+      composite: 0.55
+
+---
+
+# ===== 类比质量对比示例 =====
+analogy_quality_comparison:
+  high_quality_example:
+    score: 0.85
+    seed: "大规模降价导致利润率下滑"
+    domain: "biological_systems"
+    structure: "predator-prey dynamics"
+    quality_factors:
+      - "关系结构完整映射（负反馈循环）"
+      - "核心机制保持（竞争→响应→均衡）"
+      - "产生非显而易见的洞察"
+      - "可生成具体可测量的预测"
+
+  medium_quality_example:
+    score: 0.60
+    seed: "电池技术进步降低成本"
+    domain: "physics_principles"
+    structure: "learning curve / Wright's Law"
+    quality_factors:
+      - "关系映射部分完整"
+      - "洞察较为常见（已被广泛讨论）"
+      - "预测仍可量化"
+    limitations:
+      - "类比缺乏新意"
+      - "市场已有类似观点"
+
+  low_quality_example:
+    score: 0.30
+    seed: "Musk的领导力影响公司表现"
+    domain: "biological_systems"
+    structure: "alpha wolf leadership"
+    quality_factors:
+      - "表面相似性而非结构映射"
+      - "过于依赖表象（领导者角色）"
+    limitations:
+      - "无法产生可测量的预测"
+      - "类比过于牵强"
+      - "触发 INNOV_WEAK_ANALOGY 警告"

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Output Router Skill v1.0 -->
+<!-- Position: R1 (Route Phase) | Purpose: 创新输出路由到下游Agent -->
+<!-- 核心: Push+Confirm + 格式转换 + 路由矩阵 -->
+
+<skill name="output_router_v1" version="1.0.0" lang="zh">
+  <metadata>
+    <author>Innovation Agent System</author>
+    <created>2026-01-27</created>
+    <theory_refs>
+      <ref>Message Routing Pattern</ref>
+      <ref>Push+Confirm Protocol</ref>
+    </theory_refs>
+  </metadata>
+
+  <purpose>
+    将过滤后的创新提案路由到正确的下游 Agent：
+    1. 根据 claim_type 确定目标 Agent
+    2. 转换为目标 Agent 期望的格式
+    3. 推送并等待确认（Push+Confirm）
+    4. 记录路由结果
+
+    确保创新假设被正确的 Agent 消费。
+  </purpose>
+
+  <inputs>
+    <input name="filtered_proposals" type="array" required="true">
+      来自 Innovation Quality Gate 的过滤提案
+    </input>
+
+    <input name="routing_config" type="object" required="true">
+      路由配置（from innovation_policy_pack_v1.yaml）
+    </input>
+  </inputs>
+
+  <workflow>
+    <step id="s1" name="DetermineRoutes">
+      <action>
+        FOR EACH proposal IN filtered_proposals:
+          # 根据 claim_type 确定路由
+          route = routing_config.routes.find(r => r.match_type == proposal.claim_type)
+
+          IF route:
+            proposal.routing.target_agent = route.target_agent
+            proposal.routing.output_format = route.output_format
+
+            # 检查优先级提升条件
+            IF route.priority_boost_if AND evaluate(route.priority_boost_if, proposal):
+              proposal.routing.priority = boost_priority(proposal.routing.priority)
+          ELSE:
+            # 默认路由（无特定目标）
+            proposal.routing.target_agent = "innovation_registry"
+            proposal.routing.output_format = "standard"
+            add_reason_code: INNOV_NO_SPECIFIC_ROUTE
+
+          routing_decisions.append({
+            proposal_id: proposal.id,
+            target_agent: proposal.routing.target_agent,
+            output_format: proposal.routing.output_format,
+            priority: proposal.routing.priority
+          })
+      </action>
+      <output>
+        routing_decisions: array
+      </output>
+    </step>
+
+    <step id="s2" name="TransformToTargetFormat">
+      <action>
+        FOR EACH proposal IN filtered_proposals:
+          target_format = proposal.routing.output_format
+
+          SWITCH target_format:
+            CASE "cap_hypothesis_addendum":
+              # 转换为 VE CAP Hypothesis 格式
+              transformed = {
+                id: proposal.id,
+                claim: proposal.statement,
+                metric: proposal.falsifiability.metric,
+                threshold: proposal.falsifiability.threshold,
+                time_window: proposal.falsifiability.time_window,
+                verification_sources: proposal.falsifiability.verification_sources,
+                disconfirmers: proposal.falsifiability.disconfirmers,
+                origin: "innovation_agent",
+                innovation_metadata: {
+                  analogy_source: proposal.origin.analogy_source,
+                  novelty_score: proposal.scores.novelty
+                }
+              }
+
+            CASE "claim_spec_v1":
+              # 转换为 RM ClaimSpec 格式
+              transformed = {
+                claim_id: proposal.id,
+                claim_type: "INNOVATION_HYPOTHESIS",
+                statement: proposal.statement,
+                confidence: proposal.scores.composite,
+                source_chain: [{
+                  source_type: "innovation_agent",
+                  source_id: proposal.origin.trigger_event
+                }],
+                falsifiability: proposal.falsifiability,
+                metadata: {
+                  analogy_domain: proposal.origin.analogy_source.domain,
+                  novelty_score: proposal.scores.novelty,
+                  feasibility_score: proposal.scores.feasibility
+                }
+              }
+
+            CASE "eco_signal":
+              # 转换为 ECO Signal 格式
+              transformed = {
+                signal_id: proposal.id,
+                signal_type: "INNOVATION_HYPOTHESIS",
+                description: proposal.statement,
+                impact_assessment: proposal.falsifiability,
+                confidence: proposal.scores.composite,
+                source: "innovation_agent"
+              }
+
+            CASE "data_request":
+              # 转换为 DI Data Request 格式
+              transformed = {
+                request_id: proposal.id,
+                request_type: "DATA_GAP",
+                description: proposal.statement,
+                required_data: extract_required_data(proposal),
+                priority: proposal.routing.priority,
+                requester: "innovation_agent"
+              }
+
+            DEFAULT:
+              transformed = proposal  # 保持原格式
+
+          proposal.transformed_payload = transformed
+      </action>
+      <output>
+        transformed_proposals: array
+      </output>
+    </step>
+
+    <step id="s3" name="PushToTargetAgents">
+      <action>
+        routing_results = []
+
+        FOR EACH proposal IN transformed_proposals:
+          target = proposal.routing.target_agent
+
+          # 推送到目标 Agent
+          push_result = push_to_agent(
+            target_agent=target,
+            payload=proposal.transformed_payload,
+            timeout=routing_config.confirmation.timeout_ms,
+            require_ack=routing_config.confirmation.require_ack
+          )
+
+          IF push_result.status == "ACK":
+            result = {
+              proposal_id: proposal.id,
+              target_agent: target,
+              status: "DELIVERED",
+              ack_timestamp: push_result.timestamp,
+              ack_message: push_result.message
+            }
+          ELIF push_result.status == "NACK":
+            result = {
+              proposal_id: proposal.id,
+              target_agent: target,
+              status: "REJECTED_BY_TARGET",
+              reason: push_result.reason
+            }
+            add_reason_code: INNOV_TARGET_REJECTED
+          ELIF push_result.status == "TIMEOUT":
+            # 重试
+            retry_result = retry_push(
+              target_agent=target,
+              payload=proposal.transformed_payload,
+              max_retries=routing_config.confirmation.retry_on_timeout
+            )
+
+            IF retry_result.status == "ACK":
+              result = {
+                proposal_id: proposal.id,
+                target_agent: target,
+                status: "DELIVERED_AFTER_RETRY",
+                retry_count: retry_result.attempts
+              }
+            ELSE:
+              result = {
+                proposal_id: proposal.id,
+                target_agent: target,
+                status: "DELIVERY_FAILED",
+                reason: "Timeout after retries"
+              }
+              add_reason_code: INNOV_DELIVERY_FAILED
+
+          routing_results.append(result)
+      </action>
+      <output>
+        routing_results: array
+      </output>
+    </step>
+
+    <step id="s4" name="RecordConfirmations">
+      <action>
+        # 汇总路由结果
+        downstream_confirmations = {
+          total_sent: routing_results.length,
+          delivered: count(routing_results, status="DELIVERED" OR status="DELIVERED_AFTER_RETRY"),
+          rejected: count(routing_results, status="REJECTED_BY_TARGET"),
+          failed: count(routing_results, status="DELIVERY_FAILED"),
+          by_agent: group_by(routing_results, "target_agent")
+        }
+
+        # 记录成功/失败详情（用于反馈）
+        FOR EACH result IN routing_results:
+          append_to_routing_log({
+            timestamp: now(),
+            proposal_id: result.proposal_id,
+            target_agent: result.target_agent,
+            status: result.status,
+            reason: result.reason
+          })
+      </action>
+    </step>
+  </workflow>
+
+  <scoring>
+    <score name="delivery_rate" range="[0,1]" weight="50">
+      <formula>delivered / total_sent</formula>
+      <description>交付成功率</description>
+    </score>
+    <score name="format_correctness" range="[0,1]" weight="30">
+      <formula>1 - format_errors / total_transformed</formula>
+      <description>格式转换正确率</description>
+    </score>
+    <score name="routing_accuracy" range="[0,1]" weight="20">
+      <formula>correct_routes / total_routes</formula>
+      <description>路由准确率</description>
+    </score>
+  </scoring>
+
+  <reason_codes>
+    <code id="INNOV_NO_SPECIFIC_ROUTE" severity="P3" action="INFO">
+      无特定路由目标，使用默认
+    </code>
+    <code id="INNOV_TARGET_REJECTED" severity="P2" action="WARN">
+      目标 Agent 拒绝接收
+    </code>
+    <code id="INNOV_DELIVERY_FAILED" severity="P1" action="WARN">
+      交付失败（超时后重试仍失败）
+    </code>
+    <code id="INNOV_FORMAT_TRANSFORM_ERROR" severity="P1" action="WARN">
+      格式转换错误
+    </code>
+  </reason_codes>
+
+  <output_contract>
+    <field name="routing_results" type="array" required="true">
+      路由结果列表
+      <item_schema>
+        <field name="proposal_id" type="string"/>
+        <field name="target_agent" type="string"/>
+        <field name="status" type="string">
+          <enum>DELIVERED, DELIVERED_AFTER_RETRY, REJECTED_BY_TARGET, DELIVERY_FAILED</enum>
+        </field>
+        <field name="reason" type="string" required="false"/>
+        <field name="retry_count" type="integer" required="false"/>
+      </item_schema>
+    </field>
+
+    <field name="downstream_confirmations" type="object" required="true">
+      <field name="total_sent" type="integer"/>
+      <field name="delivered" type="integer"/>
+      <field name="rejected" type="integer"/>
+      <field name="failed" type="integer"/>
+      <field name="by_agent" type="object"/>
+    </field>
+
+    <field name="reason_codes" type="array" items="string"/>
+  </output_contract>
+</skill>
