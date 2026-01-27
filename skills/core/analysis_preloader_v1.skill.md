@@ -116,17 +116,53 @@ ecosystem_element:
 
 ### 7. 数据源清单 (必须调用)
 
-| 数据源 | 端点 | 用途 |
-|--------|------|------|
-| **FMP API** | `/stable/profile` | 公司概况、Beta |
-| **FMP API** | `/api/v3/quote` | 实时行情、52周高低 |
-| **FMP API** | `/stable/income-statement-ttm` | TTM损益表 |
-| **FMP API** | `/stable/balance-sheet-statement-ttm` | TTM资产负债表 |
-| **FMP API** | `/stable/cash-flow-statement-ttm` | TTM现金流 |
-| **FMP API** | `/stable/financial-scores` | Z-Score, F-Score |
-| **FMP API** | `/stable/analyst-estimates` | 分析师预期 |
-| **FMP API** | `/stable/insider-trading/statistics` | 内部人交易 |
-| **FMP API** | `/stable/sector-pe-snapshot` | 行业PE |
+#### 7a. FMP API
+
+| 端点 | 用途 |
+|------|------|
+| `/stable/profile` | 公司概况、Beta |
+| `/api/v3/quote` | 实时行情、52周高低 |
+| `/stable/income-statement-ttm` | TTM损益表 |
+| `/stable/balance-sheet-statement-ttm` | TTM资产负债表 |
+| `/stable/cash-flow-statement-ttm` | TTM现金流 |
+| `/stable/financial-scores` | Z-Score, F-Score |
+| `/stable/analyst-estimates` | 分析师预期 |
+| `/stable/insider-trading/statistics` | 内部人交易 |
+| `/stable/sector-pe-snapshot` | 行业PE |
+
+**FMP API Key**: `fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb`
+
+#### 7b. 100baggers.club API ⚠️ 必须使用
+
+| 端点 | 方法 | 认证 | 用途 |
+|------|------|------|------|
+| `/api/search?q=XXX` | GET | ❌ | 股票搜索 |
+| `/api/generate-summary` | POST | ✅ | **财报摘要（7维度评分+杜邦分析）** |
+| `/api/compare-companies` | POST | ✅ | 多股票对比（最多10个） |
+| `/api/get-strategy-report` | GET | ✅ | 策略报告 |
+
+**100baggers API Key**: `zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=`
+
+**调用示例**:
+```bash
+# 获取财报摘要（必须调用）
+curl -X POST "https://www.100baggers.club/api/generate-summary" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=" \
+  -d '{"symbol":"TSLA"}'
+
+# 多股票对比
+curl -X POST "https://www.100baggers.club/api/compare-companies" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=" \
+  -d '{"symbols":["TSLA","F","GM"]}'
+```
+
+**返回内容**:
+- 雷达图评分（估值/增长/盈利/资本效率/现金质量/财务韧性/股东回报）
+- 领先指标（正面/负面信号触发）
+- 杜邦分析（ROE/ROIC/ROA 三级拆解）
+- 三张报表摘要
 
 ---
 
