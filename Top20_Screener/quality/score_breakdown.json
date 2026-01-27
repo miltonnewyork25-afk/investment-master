@@ -1,0 +1,346 @@
+{
+  "AAPL": {
+    "ticker": "AAPL",
+    "company_name": "Apple Inc.",
+    "total_score": 92,
+    "grade": "A+",
+    "profitability_quality": 25,
+    "capital_efficiency": 19,
+    "moat_strength": 25,
+    "balance_sheet": 15,
+    "growth_sustainability": 8,
+    "sub_scores": {
+      "ocf_quality": 12,
+      "working_capital": 8,
+      "profitability_consistency": 5,
+      "roic_score": 10,
+      "roe_score": 6,
+      "asset_turnover_score": 3,
+      "moat_total": 25,
+      "original_moat_score": 70,
+      "leverage": 10,
+      "interest_coverage": 5,
+      "liquidity": 0,
+      "growth_quality": 4,
+      "growth_sustainability": 4
+    },
+    "evidence": {
+      "profitability": {
+        "ocf_ni_ratio": "1.19",
+        "fcf_ni_ratio": "1.06",
+        "dso_quality": "DSO=38.0 days, trend=stable",
+        "dio_quality": "DIO=8.0 days, trend=stable",
+        "ccc": "-45.0 days - excellent",
+        "eps_volatility": "5Y std dev 8.0% - very stable",
+        "profit_track_record": "20 consecutive profitable years"
+      },
+      "capital_efficiency": {
+        "roic": "52.0% (WACC 9.0%, spread 43.0%)",
+        "roic_trend": "stable",
+        "roe_source": "ROE boosted by high leverage (6.2x) - risk",
+        "roe_trend": "increasing over 5 years",
+        "roe": "147.0%",
+        "asset_turnover": "1.08 (industry +20%)"
+      },
+      "moat": {
+        "moat_rating": "Wide Moat",
+        "pricing_power": "强定价能力，但受AI竞争威胁",
+        "switching_costs": "云服务高，搜索低",
+        "network_effects": "9/10 - 衰减中",
+        "cost_advantage": "规模经济8/10",
+        "intangible_assets": "品牌、数据、专利"
+      },
+      "balance_sheet": {
+        "leverage": "Net cash $60.0B - fortress balance sheet",
+        "interest_coverage": "125.0x - no concern",
+        "current_ratio": "0.96 - concern",
+        "quick_ratio": "0.88 - watch"
+      },
+      "growth": {
+        "revenue_growth": "5Y CAGR 8.0% - moderate",
+        "operating_leverage": "Profit growth (12.0%) > Revenue - positive leverage",
+        "market_position": "Industry leader/top 3",
+        "market_share": "Maintaining share",
+        "tam": "TAM growing 5.0% - structural tailwind"
+      }
+    },
+    "sector": "Technology",
+    "industry_adjustment": "high_growth_threshold, rule_of_40, use_revenue_growth_bonus",
+    "evaluation_date": "2026-01-25"
+  },
+  "GOOGL": {
+    "ticker": "GOOGL",
+    "company_name": "Alphabet Inc.",
+    "total_score": 97,
+    "grade": "A+",
+    "profitability_quality": 25,
+    "capital_efficiency": 19,
+    "moat_strength": 25,
+    "balance_sheet": 19,
+    "growth_sustainability": 9,
+    "sub_scores": {
+      "ocf_quality": 12,
+      "working_capital": 8,
+      "profitability_consistency": 5,
+      "roic_score": 10,
+      "roe_score": 7,
+      "asset_turnover_score": 2,
+      "moat_total": 25,
+      "original_moat_score": 70,
+      "leverage": 10,
+      "interest_coverage": 5,
+      "liquidity": 4,
+      "growth_quality": 5,
+      "growth_sustainability": 4
+    },
+    "evidence": {
+      "profitability": {
+        "ocf_ni_ratio": "1.22",
+        "fcf_ni_ratio": "0.59",
+        "dso_quality": "DSO=35.0 days, trend=stable",
+        "dio_quality": "DIO=0.0 days, trend=stable",
+        "ccc": "25.0 days - excellent",
+        "eps_volatility": "5Y std dev 12.0% - very stable",
+        "profit_track_record": "10 consecutive profitable years"
+      },
+      "capital_efficiency": {
+        "roic": "28.0% (WACC 9.0%, spread 19.0%)",
+        "roic_trend": "stable",
+        "roe_source": "Quality ROE from margin (31.0%), leverage moderate (1.4x)",
+        "roe_trend": "stable over 5 years",
+        "roe": "32.0%",
+        "asset_turnover": "0.65 (above industry)"
+      },
+      "moat": {
+        "moat_rating": "Wide Moat",
+        "pricing_power": "强定价能力，但受AI竞争威胁",
+        "switching_costs": "云服务高，搜索低",
+        "network_effects": "9/10 - 衰减中",
+        "cost_advantage": "规模经济8/10",
+        "intangible_assets": "品牌、数据、专利"
+      },
+      "balance_sheet": {
+        "leverage": "Net cash $64.8B - fortress balance sheet",
+        "interest_coverage": "140.0x - no concern",
+        "current_ratio": "1.75 - adequate",
+        "quick_ratio": "1.65 - excellent"
+      },
+      "growth": {
+        "revenue_growth": "5Y CAGR 14.0% - strong",
+        "operating_leverage": "Profit growth (16.0%) > Revenue - positive leverage",
+        "market_position": "Industry leader/top 3",
+        "tam": "TAM growing 8.0% - structural tailwind"
+      }
+    },
+    "sector": "Technology",
+    "industry_adjustment": "high_growth_threshold, rule_of_40, use_revenue_growth_bonus",
+    "evaluation_date": "2026-01-25"
+  },
+  "MSFT": {
+    "ticker": "MSFT",
+    "company_name": "Microsoft Corporation",
+    "total_score": 96,
+    "grade": "A+",
+    "profitability_quality": 24,
+    "capital_efficiency": 19,
+    "moat_strength": 25,
+    "balance_sheet": 19,
+    "growth_sustainability": 9,
+    "sub_scores": {
+      "ocf_quality": 12,
+      "working_capital": 7,
+      "profitability_consistency": 5,
+      "roic_score": 10,
+      "roe_score": 7,
+      "asset_turnover_score": 2,
+      "moat_total": 25,
+      "original_moat_score": 70,
+      "leverage": 10,
+      "interest_coverage": 5,
+      "liquidity": 4,
+      "growth_quality": 5,
+      "growth_sustainability": 4
+    },
+    "evidence": {
+      "profitability": {
+        "ocf_ni_ratio": "1.27",
+        "fcf_ni_ratio": "0.87",
+        "dso_quality": "DSO=42.0 days, trend=stable",
+        "dio_quality": "DIO=0.0 days, trend=stable",
+        "ccc": "35.0 days - good",
+        "eps_volatility": "5Y std dev 10.0% - very stable",
+        "profit_track_record": "20 consecutive profitable years"
+      },
+      "capital_efficiency": {
+        "roic": "31.0% (WACC 9.0%, spread 22.0%)",
+        "roic_trend": "increasing",
+        "roe_source": "Quality ROE from margin (36.0%), leverage moderate (2.1x)",
+        "roe_trend": "increasing over 5 years",
+        "roe": "42.0%",
+        "asset_turnover": "0.58 (above industry)"
+      },
+      "moat": {
+        "moat_rating": "Wide Moat",
+        "pricing_power": "强定价能力，但受AI竞争威胁",
+        "switching_costs": "云服务高，搜索低",
+        "network_effects": "9/10 - 衰减中",
+        "cost_advantage": "规模经济8/10",
+        "intangible_assets": "品牌、数据、专利"
+      },
+      "balance_sheet": {
+        "leverage": "Net cash $20.0B - fortress balance sheet",
+        "interest_coverage": "67.5x - no concern",
+        "current_ratio": "1.85 - adequate",
+        "quick_ratio": "1.75 - excellent"
+      },
+      "growth": {
+        "revenue_growth": "5Y CAGR 13.0% - strong",
+        "operating_leverage": "Profit growth (15.0%) > Revenue - positive leverage",
+        "market_position": "Industry leader/top 3",
+        "market_share": "Gaining share",
+        "tam": "TAM growing 12.0% - structural tailwind"
+      }
+    },
+    "sector": "Technology",
+    "industry_adjustment": "high_growth_threshold, rule_of_40, use_revenue_growth_bonus",
+    "evaluation_date": "2026-01-25"
+  },
+  "JNJ": {
+    "ticker": "JNJ",
+    "company_name": "Johnson & Johnson",
+    "total_score": 85,
+    "grade": "A",
+    "profitability_quality": 22,
+    "capital_efficiency": 17,
+    "moat_strength": 25,
+    "balance_sheet": 16,
+    "growth_sustainability": 5,
+    "sub_scores": {
+      "ocf_quality": 12,
+      "working_capital": 6,
+      "profitability_consistency": 4,
+      "roic_score": 8,
+      "roe_score": 7,
+      "asset_turnover_score": 2,
+      "moat_total": 25,
+      "original_moat_score": 70,
+      "leverage": 10,
+      "interest_coverage": 5,
+      "liquidity": 1,
+      "growth_quality": 1,
+      "growth_sustainability": 4
+    },
+    "evidence": {
+      "profitability": {
+        "ocf_ni_ratio": "1.40",
+        "fcf_ni_ratio": "1.09",
+        "dso_quality": "DSO=48.0 days, trend=stable",
+        "dio_quality": "DIO=55.0 days, trend=stable",
+        "ccc": "70.0 days - watch",
+        "eps_volatility": "5Y std dev 18.0% - stable",
+        "profit_track_record": "30 consecutive profitable years"
+      },
+      "capital_efficiency": {
+        "roic": "15.0% (WACC 8.0%, spread 7.0%)",
+        "roic_trend": "stable",
+        "roe_source": "Quality ROE from margin (16.0%), leverage moderate (1.8x)",
+        "roe_trend": "stable over 5 years",
+        "roe": "22.0%",
+        "asset_turnover": "0.48 (above industry)"
+      },
+      "moat": {
+        "moat_rating": "Wide Moat",
+        "pricing_power": "强定价能力，但受AI竞争威胁",
+        "switching_costs": "云服务高，搜索低",
+        "network_effects": "9/10 - 衰减中",
+        "cost_advantage": "规模经济8/10",
+        "intangible_assets": "品牌、数据、专利"
+      },
+      "balance_sheet": {
+        "leverage": "Net Debt/EBITDA = 0.43x",
+        "interest_coverage": "20.0x - no concern",
+        "current_ratio": "1.25 - watch",
+        "quick_ratio": "0.95 - watch"
+      },
+      "growth": {
+        "revenue_growth": "5Y CAGR 4.0% - weak",
+        "operating_leverage": "Profit ≈ Revenue growth - stable margins",
+        "market_position": "Industry leader/top 3",
+        "market_share": "Maintaining share",
+        "tam": "TAM growing 4.0% - structural tailwind"
+      }
+    },
+    "sector": "Healthcare",
+    "industry_adjustment": "None",
+    "evaluation_date": "2026-01-25"
+  },
+  "WMT": {
+    "ticker": "WMT",
+    "company_name": "Walmart Inc.",
+    "total_score": 82,
+    "grade": "A",
+    "profitability_quality": 24,
+    "capital_efficiency": 14,
+    "moat_strength": 25,
+    "balance_sheet": 12,
+    "growth_sustainability": 7,
+    "sub_scores": {
+      "ocf_quality": 12,
+      "working_capital": 8,
+      "profitability_consistency": 4,
+      "roic_score": 5,
+      "roe_score": 7,
+      "asset_turnover_score": 2,
+      "moat_total": 25,
+      "original_moat_score": 70,
+      "leverage": 7,
+      "interest_coverage": 5,
+      "liquidity": 0,
+      "growth_quality": 3,
+      "growth_sustainability": 4
+    },
+    "evidence": {
+      "profitability": {
+        "ocf_ni_ratio": "1.79",
+        "fcf_ni_ratio": "1.14",
+        "dso_quality": "DSO=5.0 days, trend=stable",
+        "dio_quality": "DIO=42.0 days, trend=decreasing",
+        "ccc": "8.0 days - excellent",
+        "eps_volatility": "5Y std dev 22.0% - stable",
+        "profit_track_record": "20 consecutive profitable years"
+      },
+      "capital_efficiency": {
+        "roic": "12.0% (WACC 7.0%, spread 5.0%)",
+        "roic_trend": "stable",
+        "roe_source": "Moderate quality, margin 2.5%",
+        "roe_trend": "stable over 5 years",
+        "roe": "18.0%",
+        "asset_turnover": "2.35 (above industry)"
+      },
+      "moat": {
+        "moat_rating": "Wide Moat",
+        "pricing_power": "强定价能力，但受AI竞争威胁",
+        "switching_costs": "云服务高，搜索低",
+        "network_effects": "9/10 - 衰减中",
+        "cost_advantage": "规模经济8/10",
+        "intangible_assets": "品牌、数据、专利"
+      },
+      "balance_sheet": {
+        "leverage": "Net Debt/EBITDA = 1.07x",
+        "interest_coverage": "12.5x - no concern",
+        "current_ratio": "0.85 - concern",
+        "quick_ratio": "0.22 - watch"
+      },
+      "growth": {
+        "revenue_growth": "5Y CAGR 5.0% - moderate",
+        "operating_leverage": "Profit ≈ Revenue growth - stable margins",
+        "market_position": "Industry leader/top 3",
+        "market_share": "Maintaining share",
+        "tam": "TAM growing 3.0% - GDP-like"
+      }
+    },
+    "sector": "Consumer",
+    "industry_adjustment": "inventory_turnover_critical, same_store_sales_required",
+    "evaluation_date": "2026-01-25"
+  }
+}

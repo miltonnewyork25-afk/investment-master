@@ -1,0 +1,2 @@
+ticker,company,excluded,reason,details,warnings,data_quality_score,check_timestamp
+EXAMPLE_TICKER,Example Company Inc,True,行业排除:生物制药,Biotechnology行业:临床试验二元事件风险,[],100,2026-01-26T00:00:00

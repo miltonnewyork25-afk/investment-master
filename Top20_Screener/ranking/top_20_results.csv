@@ -1,0 +1,21 @@
+Rank,Ticker,Company,Sector,Market_Cap_B,Composite_Score,Sharpe_3Y,MDD,Fundamental_Score,Valuation_Score,SEC_Signal_Score
+1,HWM,Howmet Aerospace Inc.,Industrials,86.5,76.04,2.42,-23.2%,80.0,50.0,50.0
+2,APH,Amphenol Corporation,Technology,184.8,73.21,1.9,-28.7%,80.0,50.0,50.0
+3,CAH,"Cardinal Health, Inc.",Healthcare,49.5,72.98,1.66,-24.7%,70.0,70.0,50.0
+4,CBOE,"Cboe Global Markets, Inc.",Financial Services,28.9,70.33,1.41,-21.8%,80.0,55.0,50.0
+5,EME,"EMCOR Group, Inc.",Industrials,31.1,69.58,1.81,-36.2%,75.0,55.0,50.0
+6,FIX,"Comfort Systems USA, Inc.",Industrials,39.6,69.19,2.28,-46.0%,80.0,50.0,50.0
+7,HIG,"The Hartford Financial Services Group, Inc.",Financial Services,35.8,68.8,0.86,-18.6%,80.0,80.0,50.0
+8,RSG,"Republic Services, Inc.",Industrials,67.9,68.07,1.14,-20.5%,70.0,70.0,50.0
+9,MO,"Altria Group, Inc.",Consumer Defensive,103.9,66.43,0.89,-25.8%,85.0,70.0,50.0
+10,IBKR,"Interactive Brokers Group, Inc.",Financial Services,134.0,66.41,1.56,-38.7%,65.0,70.0,50.0
+11,NRG,"NRG Energy, Inc.",Utilities,28.6,66.31,1.67,-32.6%,60.0,60.0,50.0
+12,GOOG,Alphabet Inc.,Technology,3963.4,66.0,1.59,-44.6%,85.0,50.0,50.0
+13,MCK,McKesson Corporation,Healthcare,102.0,65.86,1.11,-23.9%,75.0,60.0,50.0
+14,PM,Philip Morris International Inc.,Consumer Defensive,269.3,65.76,0.96,-22.8%,85.0,55.0,50.0
+15,COR,"Cencora, Inc.",Healthcare,68.6,65.66,1.33,-17.8%,60.0,55.0,50.0
+16,FOXA,Fox Corporation,Communication Services,32.9,65.62,1.2,-35.2%,75.0,70.0,50.0
+17,FOX,Fox Corporation,Communication Services,29.6,65.09,1.14,-34.5%,75.0,70.0,50.0
+18,ORLY,"O'Reilly Automotive, Inc.",Consumer Cyclical,84.0,64.96,0.94,-23.0%,80.0,60.0,50.0
+19,TJX,"The TJX Companies, Inc.",Consumer Cyclical,170.5,64.91,1.29,-27.7%,75.0,50.0,50.0
+20,BSX,Boston Scientific Corporation,Healthcare,137.2,64.88,1.08,-25.2%,70.0,65.0,50.0

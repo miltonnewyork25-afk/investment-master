@@ -1,0 +1,115 @@
+
+================================================================================
+ TOP 20 STOCK SCREENING RESULTS
+================================================================================
+
+## Summary Statistics
+
+Total Selected: 20 stocks
+Average Market Cap: $1047.58B
+Average Sharpe Ratio: 0.898
+Average ROE: 148.72%
+Average Composite Score: 61.2
+
+## Sector Distribution
+
+  Technology: 11
+  Energy: 3
+  Industrials: 2
+  Healthcare: 2
+  Consumer Cyclical: 1
+  Consumer Defensive: 1
+
+## Top 10 by Composite Score
+
+Rank  Symbol   Name                      Score    Sharpe   Sector              
+--------------------------------------------------------------------------------
+1     NVDA     NVIDIA Corporation          79.4    1.20  Technology          
+2     ANET     Arista Networks, Inc.       70.4    1.01  Technology          
+3     WMB      The Williams Companies,     68.9    1.10  Energy              
+4     AVGO     Broadcom Inc.               66.4    1.08  Technology          
+5     GE       GE Aerospace                65.0    1.11  Industrials         
+6     APH      Amphenol Corporation        63.6    1.15  Technology          
+7     MU       Micron Technology, Inc.     62.8    0.83  Technology          
+8     GOOGL    Alphabet Inc.               62.1    0.83  Technology          
+9     GOOG     Alphabet Inc.               62.0    0.83  Technology          
+10    WDC      Western Digital Corpora     61.6    0.92  Technology          
+
+
+## Best Risk-Adjusted Returns
+
+  NVDA - NVIDIA Corporation
+    Sharpe: 1.198, Volatility: 52.06%, Max DD: -66.33%
+  APH - Amphenol Corporation
+    Sharpe: 1.148, Volatility: 27.42%, Max DD: -28.72%
+  GE - GE Aerospace
+    Sharpe: 1.114, Volatility: 30.87%, Max DD: -46.53%
+  WMB - The Williams Companies, Inc.
+    Sharpe: 1.096, Volatility: 23.67%, Max DD: -23.00%
+  AVGO - Broadcom Inc.
+    Sharpe: 1.077, Volatility: 42.46%, Max DD: -41.15%
+
+## Complete Top 20 List
+
+ 1. NVDA   - NVIDIA Corporation                 
+    Score: 79.4, Sharpe: 1.198, ROE N/A, P/E N/A
+    Sector: Technology, MCap: $4569.2B
+ 2. ANET   - Arista Networks, Inc.              
+    Score: 70.4, Sharpe: 1.009, ROE 31.3%, P/E N/A
+    Sector: Technology, MCap: $171.7B
+ 3. WMB    - The Williams Companies, Inc.       
+    Score: 68.9, Sharpe: 1.096, ROE N/A, P/E N/A
+    Sector: Energy, MCap: $79.3B
+ 4. AVGO   - Broadcom Inc.                      
+    Score: 66.4, Sharpe: 1.077, ROE 31.5%, P/E N/A
+    Sector: Technology, MCap: $1517.4B
+ 5. GE     - GE Aerospace                       
+    Score: 65.0, Sharpe: 1.114, ROE N/A, P/E N/A
+    Sector: Industrials, MCap: $310.0B
+ 6. APH    - Amphenol Corporation               
+    Score: 63.6, Sharpe: 1.148, ROE 34.6%, P/E N/A
+    Sector: Technology, MCap: $184.8B
+ 7. MU     - Micron Technology, Inc.            
+    Score: 62.8, Sharpe: 0.833, ROE N/A, P/E N/A
+    Sector: Technology, MCap: $449.8B
+ 8. GOOGL  - Alphabet Inc.                      
+    Score: 62.1, Sharpe: 0.827, ROE N/A, P/E N/A
+    Sector: Technology, MCap: $3957.3B
+ 9. GOOG   - Alphabet Inc.                      
+    Score: 62.0, Sharpe: 0.828, ROE N/A, P/E N/A
+    Sector: Technology, MCap: $3963.4B
+10. WDC    - Western Digital Corporation        
+    Score: 61.6, Sharpe: 0.924, ROE N/A, P/E N/A
+    Sector: Technology, MCap: $81.0B
+11. XOM    - Exxon Mobil Corporation            
+    Score: 60.4, Sharpe: 0.940, ROE N/A, P/E N/A
+    Sector: Energy, MCap: $569.2B
+12. ORLY   - O'Reilly Automotive, Inc.          
+    Score: 60.2, Sharpe: 1.001, ROE N/A, P/E N/A
+    Sector: Consumer Cyclical, MCap: $84.0B
+13. PM     - Philip Morris International Inc.   
+    Score: 58.1, Sharpe: 0.838, ROE N/A, P/E N/A
+    Sector: Consumer Defensive, MCap: $269.3B
+14. ABBV   - AbbVie Inc.                        
+    Score: 57.9, Sharpe: 0.725, ROE 497.5%, P/E N/A
+    Sector: Healthcare, MCap: $387.5B
+15. LRCX   - Lam Research Corporation           
+    Score: 57.7, Sharpe: 0.767, ROE N/A, P/E N/A
+    Sector: Technology, MCap: $273.7B
+16. RTX    - RTX Corporation                    
+    Score: 57.0, Sharpe: 0.949, ROE N/A, P/E N/A
+    Sector: Industrials, MCap: $262.7B
+17. GILD   - Gilead Sciences, Inc.              
+    Score: 55.0, Sharpe: 0.711, ROE N/A, P/E N/A
+    Sector: Healthcare, MCap: $168.6B
+18. KMI    - Kinder Morgan, Inc.                
+    Score: 54.0, Sharpe: 0.771, ROE N/A, P/E N/A
+    Sector: Energy, MCap: $65.8B
+19. PANW   - Palo Alto Networks, Inc.           
+    Score: 51.3, Sharpe: 0.658, ROE N/A, P/E N/A
+    Sector: Technology, MCap: $123.2B
+20. MSFT   - Microsoft Corporation              
+    Score: 50.9, Sharpe: 0.545, ROE N/A, P/E N/A
+    Sector: Technology, MCap: $3463.5B
+
+================================================================================

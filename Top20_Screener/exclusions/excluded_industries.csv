@@ -1,0 +1,22 @@
+Industry,Category,Exclusion_Reason,Risk_Level,Notes
+Biotechnology,生物制药,临床试验二元事件风险,Critical,FDA批准结果不可预测,临床III期失败率约50%
+Pharmaceuticals - Development,生物制药,药物审批不确定性,Critical,单一药物依赖,时间和结果高度不确定
+Pharmaceutical Services,生物制药,依赖单一大客户风险,High,CRO/CMO收入集中度高
+Drug Manufacturers - Specialty & Generic,生物制药,专利悬崖风险,High,仿制药竞争突然性强
+Shell Companies,高度投机,SPAC无运营历史,Critical,无法评估管理层执行力
+Cannabis,高度投机,监管极不确定,Critical,联邦/州法律冲突,银行服务受限
+Cryptocurrency,高度投机,无内在价值锚定,Critical,估值方法论缺失,监管风险极高
+Oil & Gas E&P,无法审计,储量估计主观性高,High,PV-10估计依赖假设,油价敏感性极强
+Uranium,无法审计,勘探结果二元性,High,资源量不可审计
+Gold,无法审计,大宗商品价格驱动,Medium,无竞争优势可言
+Silver,无法审计,投机性强,Medium,工业需求波动
+Other Precious Metals & Mining,无法审计,勘探风险,High,无法审计储量
+Banks - Regional,特殊风险,流动性风险高,High,参见SVB/FRC崩盘,市值<$10B更危险
+Banks - Diversified,特殊风险,系统性风险,Medium,监管变化敏感
+REIT - Office,特殊风险,结构性下行,High,远程办公永久性冲击
+REIT - Retail,特殊风险,电商冲击持续,High,租户破产风险
+Gambling,其他高风险,监管风险+周期性强,Medium,消费者信心敏感
+Tobacco,其他高风险,ESG排斥+结构性下滑,Medium,长期收缩行业
+Coal,其他高风险,能源转型淘汰,High,ESG排斥,政策风险
+Airlines,其他高风险,高固定成本+周期性极强,High,油价敏感,低利润率
+Cruise Lines,其他高风险,疫情风险+高负债,High,极端事件脆弱性,消费者信心敏感

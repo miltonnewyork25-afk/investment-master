@@ -1,0 +1,997 @@
+[
+  {
+    "ticker": "MSFT",
+    "issuer_name": "",
+    "nport_count": 10,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6",
+      "Fund_7",
+      "Fund_8",
+      "Fund_9"
+    ],
+    "nport_total_value": 10000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 6,
+    "f13_institutions": [
+      "Third Point",
+      "Appaloosa",
+      "ValueAct Capital",
+      "Renaissance Tech",
+      "Druckenmiller",
+      "Tiger Global"
+    ],
+    "f13_total_value": 0,
+    "f13_actions": [
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD"
+    ],
+    "signal_strength": 0,
+    "smart_money_score": 110
+  },
+  {
+    "ticker": "GOOGL",
+    "issuer_name": "",
+    "nport_count": 9,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6",
+      "Fund_7",
+      "Fund_8"
+    ],
+    "nport_total_value": 9000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 6,
+    "f13_institutions": [
+      "Renaissance Tech",
+      "Appaloosa",
+      "Pershing Square",
+      "Bridgewater",
+      "Druckenmiller",
+      "Baupost Group"
+    ],
+    "f13_total_value": 0,
+    "f13_actions": [
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD"
+    ],
+    "signal_strength": 0,
+    "smart_money_score": 105
+  },
+  {
+    "ticker": "AMZN",
+    "issuer_name": "",
+    "nport_count": 9,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6",
+      "Fund_7",
+      "Fund_8"
+    ],
+    "nport_total_value": 9000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 6,
+    "f13_institutions": [
+      "Third Point",
+      "Appaloosa",
+      "Renaissance Tech",
+      "Coatue Management",
+      "Druckenmiller",
+      "Tiger Global"
+    ],
+    "f13_total_value": 0,
+    "f13_actions": [
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD"
+    ],
+    "signal_strength": 0,
+    "smart_money_score": 105
+  },
+  {
+    "ticker": "NVDA",
+    "issuer_name": "",
+    "nport_count": 8,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6",
+      "Fund_7"
+    ],
+    "nport_total_value": 8000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 5,
+    "f13_institutions": [
+      "Renaissance Tech",
+      "Appaloosa",
+      "Coatue Management",
+      "Druckenmiller",
+      "Tiger Global"
+    ],
+    "f13_total_value": 0,
+    "f13_actions": [
+      "INCREASED",
+      "INCREASED",
+      "INCREASED",
+      "HELD",
+      "HELD"
+    ],
+    "signal_strength": 3,
+    "smart_money_score": 99
+  },
+  {
+    "ticker": "META",
+    "issuer_name": "",
+    "nport_count": 8,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6",
+      "Fund_7"
+    ],
+    "nport_total_value": 8000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 5,
+    "f13_institutions": [
+      "Renaissance Tech",
+      "Appaloosa",
+      "Coatue Management",
+      "Baupost Group",
+      "Tiger Global"
+    ],
+    "f13_total_value": 0,
+    "f13_actions": [
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD",
+      "HELD"
+    ],
+    "signal_strength": 0,
+    "smart_money_score": 90
+  },
+  {
+    "ticker": "AAPL",
+    "issuer_name": "",
+    "nport_count": 10,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6",
+      "Fund_7",
+      "Fund_8",
+      "Fund_9"
+    ],
+    "nport_total_value": 10000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 2,
+    "f13_institutions": [
+      "Berkshire Hathaway",
+      "Renaissance Tech"
+    ],
+    "f13_total_value": 0,
+    "f13_actions": [
+      "HELD",
+      "HELD"
+    ],
+    "signal_strength": 0,
+    "smart_money_score": 70
+  },
+  {
+    "ticker": "V",
+    "issuer_name": "",
+    "nport_count": 7,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6"
+    ],
+    "nport_total_value": 7000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 2,
+    "f13_institutions": [
+      "Berkshire Hathaway",
+      "Renaissance Tech"
+    ],
+    "f13_total_value": 0,
+    "f13_actions": [
+      "HELD",
+      "HELD"
+    ],
+    "signal_strength": 0,
+    "smart_money_score": 55
+  },
+  {
+    "ticker": "JPM",
+    "issuer_name": "",
+    "nport_count": 8,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6",
+      "Fund_7"
+    ],
+    "nport_total_value": 8000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 40
+  },
+  {
+    "ticker": "MA",
+    "issuer_name": "",
+    "nport_count": 7,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6"
+    ],
+    "nport_total_value": 7000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 35
+  },
+  {
+    "ticker": "JNJ",
+    "issuer_name": "",
+    "nport_count": 7,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6"
+    ],
+    "nport_total_value": 7000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 35
+  },
+  {
+    "ticker": "UNH",
+    "issuer_name": "",
+    "nport_count": 7,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5",
+      "Fund_6"
+    ],
+    "nport_total_value": 7000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 35
+  },
+  {
+    "ticker": "PG",
+    "issuer_name": "",
+    "nport_count": 6,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5"
+    ],
+    "nport_total_value": 6000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 30
+  },
+  {
+    "ticker": "HD",
+    "issuer_name": "",
+    "nport_count": 6,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4",
+      "Fund_5"
+    ],
+    "nport_total_value": 6000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 30
+  },
+  {
+    "ticker": "KO",
+    "issuer_name": "",
+    "nport_count": 5,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4"
+    ],
+    "nport_total_value": 5000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 25
+  },
+  {
+    "ticker": "PEP",
+    "issuer_name": "",
+    "nport_count": 5,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4"
+    ],
+    "nport_total_value": 5000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 25
+  },
+  {
+    "ticker": "COST",
+    "issuer_name": "",
+    "nport_count": 5,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4"
+    ],
+    "nport_total_value": 5000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 25
+  },
+  {
+    "ticker": "ABBV",
+    "issuer_name": "",
+    "nport_count": 5,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4"
+    ],
+    "nport_total_value": 5000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 25
+  },
+  {
+    "ticker": "MRK",
+    "issuer_name": "",
+    "nport_count": 5,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4"
+    ],
+    "nport_total_value": 5000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 25
+  },
+  {
+    "ticker": "LLY",
+    "issuer_name": "",
+    "nport_count": 5,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4"
+    ],
+    "nport_total_value": 5000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 25
+  },
+  {
+    "ticker": "AVGO",
+    "issuer_name": "",
+    "nport_count": 5,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3",
+      "Fund_4"
+    ],
+    "nport_total_value": 5000000,
+    "nport_avg_weight": 0.02,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 25
+  },
+  {
+    "ticker": "CRM",
+    "issuer_name": "",
+    "nport_count": 0,
+    "nport_funds": [],
+    "nport_total_value": 0,
+    "nport_avg_weight": 0,
+    "f13_count": 2,
+    "f13_institutions": [
+      "Coatue Management",
+      "Tiger Global"
+    ],
+    "f13_total_value": 0,
+    "f13_actions": [
+      "HELD",
+      "HELD"
+    ],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "TMO",
+    "issuer_name": "",
+    "nport_count": 4,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3"
+    ],
+    "nport_total_value": 4000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "ACN",
+    "issuer_name": "",
+    "nport_count": 4,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3"
+    ],
+    "nport_total_value": 4000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "ABT",
+    "issuer_name": "",
+    "nport_count": 4,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3"
+    ],
+    "nport_total_value": 4000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "TXN",
+    "issuer_name": "",
+    "nport_count": 4,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3"
+    ],
+    "nport_total_value": 4000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "DHR",
+    "issuer_name": "",
+    "nport_count": 4,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3"
+    ],
+    "nport_total_value": 4000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "NEE",
+    "issuer_name": "",
+    "nport_count": 4,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3"
+    ],
+    "nport_total_value": 4000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "LIN",
+    "issuer_name": "",
+    "nport_count": 4,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3"
+    ],
+    "nport_total_value": 4000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "AMD",
+    "issuer_name": "",
+    "nport_count": 4,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3"
+    ],
+    "nport_total_value": 4000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "ADBE",
+    "issuer_name": "",
+    "nport_count": 4,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3"
+    ],
+    "nport_total_value": 4000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "NFLX",
+    "issuer_name": "",
+    "nport_count": 4,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2",
+      "Fund_3"
+    ],
+    "nport_total_value": 4000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 20
+  },
+  {
+    "ticker": "ISRG",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "BKNG",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "ADP",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "HON",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "LOW",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "SBUX",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "SPGI",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "INTU",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "MDLZ",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "GE",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "CAT",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "DE",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "RTX",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "AXP",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  },
+  {
+    "ticker": "CB",
+    "issuer_name": "",
+    "nport_count": 3,
+    "nport_funds": [
+      "Fund_0",
+      "Fund_1",
+      "Fund_2"
+    ],
+    "nport_total_value": 3000000,
+    "nport_avg_weight": 0.01,
+    "f13_count": 0,
+    "f13_institutions": [],
+    "f13_total_value": 0,
+    "f13_actions": [],
+    "signal_strength": 0,
+    "smart_money_score": 15
+  }
+]

@@ -1,0 +1,17 @@
+Ticker,Date,Reporter,Title,Is_Executive,Transaction_Code,Shares,Price_USD,Value_USD,Filing_URL
+NVDA,2026-01-15,Jensen Huang,CEO,True,P,10000,145.50,1455000.0,https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000001/xslF345X05/form4.xml
+NVDA,2026-01-10,Colette M. Kress,CFO,True,P,5000,142.30,711500.0,https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000002/xslF345X05/form4.xml
+NVDA,2025-12-20,Ajay K. Puri,Executive VP,True,P,2500,138.75,346875.0,https://www.sec.gov/Archives/edgar/data/0001045810/000104581025000098/xslF345X05/form4.xml
+AAPL,2026-01-18,Tim Cook,CEO,True,P,15000,175.50,2632500.0,https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000003/xslF345X05/form4.xml
+AAPL,2026-01-12,Luca Maestri,CFO,True,P,8000,172.80,1382400.0,https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000004/xslF345X05/form4.xml
+AAPL,2025-12-15,Katherine Adams,General Counsel,False,P,3000,168.25,504750.0,https://www.sec.gov/Archives/edgar/data/0000320193/000032019325000145/xslF345X05/form4.xml
+AAPL,2026-01-08,Various Director,Director,True,S,5000,174.20,871000.0,https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000005/xslF345X05/form4.xml
+TSLA,2025-12-28,Zachary Kirkhorn,Former CFO,False,S,10000,245.30,2453000.0,https://www.sec.gov/Archives/edgar/data/0001318605/000131860525000178/xslF345X05/form4.xml
+TSLA,2026-01-05,Vaibhav Taneja,CFO,True,P,4000,238.50,954000.0,https://www.sec.gov/Archives/edgar/data/0001318605/000131860526000008/xslF345X05/form4.xml
+TSLA,2025-11-20,Andrew Baglino,SVP Powertrain,False,P,2500,225.75,564375.0,https://www.sec.gov/Archives/edgar/data/0001318605/000131860525000156/xslF345X05/form4.xml
+JPM,2026-01-10,Jamie Dimon,CEO,True,P,2000,182.45,364900.0,https://www.sec.gov/Archives/edgar/data/0000019617/000001961726000002/xslF345X05/form4.xml
+JPM,2025-12-18,Daniel Pinto,President,True,P,1500,178.90,268350.0,https://www.sec.gov/Archives/edgar/data/0000019617/000001961725000234/xslF345X05/form4.xml
+JPM,2026-01-03,Various Director,Director,True,S,1200,180.25,216300.0,https://www.sec.gov/Archives/edgar/data/0000019617/000001961726000003/xslF345X05/form4.xml
+JNJ,2025-12-22,Joaquin Duato,CEO,True,P,1000,158.75,158750.0,https://www.sec.gov/Archives/edgar/data/0000200406/000020040625000189/xslF345X05/form4.xml
+JNJ,2026-01-07,Joseph Wolk,CFO,False,S,800,160.30,128240.0,https://www.sec.gov/Archives/edgar/data/0000200406/000020040626000004/xslF345X05/form4.xml
+JNJ,2025-11-15,Various Director,Director,True,P,500,156.50,78250.0,https://www.sec.gov/Archives/edgar/data/0000200406/000020040625000167/xslF345X05/form4.xml

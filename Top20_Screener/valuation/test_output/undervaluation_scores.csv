@@ -1,0 +1,3 @@
+﻿Ticker,Company,Sector,Price,Undervaluation_Score,Grade,Signal,Relative_Score,Historical_Score,FCF_Yield_Score,DCF_Score,PE_TTM,PE_vs_Industry,PE_Percentile_5Y,FCF_Yield,DCF_Upside,Red_Flags,Confidence,Date
+MSFT,Microsoft Corporation,Technology,465.95,26.2,D,avoid,14.0,58.0,30.0,0,33.012489991612014,0.15833298216182506,70.0,0.02252558397045947,-0.6215061838435234,1,high,2026-01-26
+AAPL,Apple Inc.,Technology,248.04,24.4,D,avoid,8.0,52.0,35.9,0,33.10263315775377,0.16149590027206218,80.0,0.02694777390907283,-0.6353109753275467,1,high,2026-01-26

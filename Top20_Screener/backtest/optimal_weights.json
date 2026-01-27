@@ -1,0 +1,211 @@
+{
+  "generated_at": "2026-01-26T11:28:13.797853",
+  "description": "基于历史回测的最优因子权重",
+  "methodology": "Sharpe Ratio加权",
+  "weights": {
+    "pe_ratio": 0.0,
+    "pb_ratio": 0.0,
+    "fcf_yield": 0.038890519518638096,
+    "ev_ebitda": 0.0,
+    "earnings_yield": 0.02876430877604931,
+    "dividend_yield": 0.03874376284120928,
+    "roe": 0.0625183445846786,
+    "roic": 0.07866157910184914,
+    "gross_margin": 0.07000293513354856,
+    "operating_margin": 0.06031699442324626,
+    "net_margin": 0.07807455239213384,
+    "debt_to_equity": 0.0,
+    "current_ratio": 0.04901673026122688,
+    "interest_coverage": 0.0587026709715292,
+    "ocf_to_net_income": 0.07352509539184032,
+    "revenue_growth": 0.03874376284120928,
+    "eps_growth": 0.024361608453184618,
+    "fcf_growth": 0.02876430877604931,
+    "price_momentum_12m": 0.033900792486058116,
+    "price_momentum_6m": 0.03977105958321103,
+    "earnings_momentum": 0.045641326680363956,
+    "piotroski_f_score": 0.0739653654241268,
+    "institutional_ownership": 0.04461402993836219,
+    "insider_buying": 0.03302025242148518,
+    "short_interest": 0.0
+  },
+  "factor_details": {
+    "pe_ratio": {
+      "weight": 0.0,
+      "category": "value",
+      "sharpe": -3.04,
+      "alpha": -0.0809,
+      "effectiveness": "*"
+    },
+    "pb_ratio": {
+      "weight": 0.0,
+      "category": "value",
+      "sharpe": -1.9,
+      "alpha": -0.1132,
+      "effectiveness": "*"
+    },
+    "fcf_yield": {
+      "weight": 0.038890519518638096,
+      "category": "value",
+      "sharpe": 2.65,
+      "alpha": -0.088,
+      "effectiveness": "***"
+    },
+    "ev_ebitda": {
+      "weight": 0.0,
+      "category": "value",
+      "sharpe": -3.43,
+      "alpha": -0.1671,
+      "effectiveness": "*"
+    },
+    "earnings_yield": {
+      "weight": 0.02876430877604931,
+      "category": "value",
+      "sharpe": 1.96,
+      "alpha": -0.0098,
+      "effectiveness": "***"
+    },
+    "dividend_yield": {
+      "weight": 0.03874376284120928,
+      "category": "value",
+      "sharpe": 2.64,
+      "alpha": -0.0182,
+      "effectiveness": "***"
+    },
+    "roe": {
+      "weight": 0.0625183445846786,
+      "category": "quality",
+      "sharpe": 4.26,
+      "alpha": 0.0272,
+      "effectiveness": "***"
+    },
+    "roic": {
+      "weight": 0.07866157910184914,
+      "category": "quality",
+      "sharpe": 5.36,
+      "alpha": -0.0174,
+      "effectiveness": "***"
+    },
+    "gross_margin": {
+      "weight": 0.07000293513354856,
+      "category": "quality",
+      "sharpe": 4.77,
+      "alpha": -0.1485,
+      "effectiveness": "***"
+    },
+    "operating_margin": {
+      "weight": 0.06031699442324626,
+      "category": "quality",
+      "sharpe": 4.11,
+      "alpha": -0.0779,
+      "effectiveness": "***"
+    },
+    "net_margin": {
+      "weight": 0.07807455239213384,
+      "category": "quality",
+      "sharpe": 5.32,
+      "alpha": -0.0585,
+      "effectiveness": "***"
+    },
+    "debt_to_equity": {
+      "weight": 0.0,
+      "category": "quality",
+      "sharpe": -4.96,
+      "alpha": -0.1612,
+      "effectiveness": "*"
+    },
+    "current_ratio": {
+      "weight": 0.04901673026122688,
+      "category": "quality",
+      "sharpe": 3.34,
+      "alpha": -0.019,
+      "effectiveness": "***"
+    },
+    "interest_coverage": {
+      "weight": 0.0587026709715292,
+      "category": "quality",
+      "sharpe": 4.0,
+      "alpha": -0.0383,
+      "effectiveness": "***"
+    },
+    "ocf_to_net_income": {
+      "weight": 0.07352509539184032,
+      "category": "quality",
+      "sharpe": 5.01,
+      "alpha": -0.1445,
+      "effectiveness": "***"
+    },
+    "revenue_growth": {
+      "weight": 0.03874376284120928,
+      "category": "growth",
+      "sharpe": 2.64,
+      "alpha": -0.1074,
+      "effectiveness": "***"
+    },
+    "eps_growth": {
+      "weight": 0.024361608453184618,
+      "category": "growth",
+      "sharpe": 1.66,
+      "alpha": -0.0201,
+      "effectiveness": "***"
+    },
+    "fcf_growth": {
+      "weight": 0.02876430877604931,
+      "category": "growth",
+      "sharpe": 1.96,
+      "alpha": -0.1136,
+      "effectiveness": "***"
+    },
+    "price_momentum_12m": {
+      "weight": 0.033900792486058116,
+      "category": "momentum",
+      "sharpe": 2.31,
+      "alpha": -0.1034,
+      "effectiveness": "***"
+    },
+    "price_momentum_6m": {
+      "weight": 0.03977105958321103,
+      "category": "momentum",
+      "sharpe": 2.71,
+      "alpha": -0.068,
+      "effectiveness": "***"
+    },
+    "earnings_momentum": {
+      "weight": 0.045641326680363956,
+      "category": "momentum",
+      "sharpe": 3.11,
+      "alpha": -0.0651,
+      "effectiveness": "***"
+    },
+    "piotroski_f_score": {
+      "weight": 0.0739653654241268,
+      "category": "composite",
+      "sharpe": 5.04,
+      "alpha": -0.1612,
+      "effectiveness": "***"
+    },
+    "institutional_ownership": {
+      "weight": 0.04461402993836219,
+      "category": "smart_money",
+      "sharpe": 3.04,
+      "alpha": 0.0468,
+      "effectiveness": "***"
+    },
+    "insider_buying": {
+      "weight": 0.03302025242148518,
+      "category": "smart_money",
+      "sharpe": 2.25,
+      "alpha": -0.1448,
+      "effectiveness": "***"
+    },
+    "short_interest": {
+      "weight": 0.0,
+      "category": "smart_money",
+      "sharpe": -2.32,
+      "alpha": -0.062,
+      "effectiveness": "*"
+    }
+  },
+  "recommended_rebalance": "Monthly",
+  "recommended_top_n": 20
+}

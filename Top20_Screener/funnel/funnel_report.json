@@ -1,0 +1,435 @@
+{
+  "generated_at": "2026-01-26T11:04:24.503125",
+  "methodology": "Three-Stage Funnel",
+  "stages": {
+    "stage_1": {
+      "name": "Candidate Pool",
+      "input": "Smart Money Holdings (N-PORT + 13F)",
+      "filters": [
+        "Sharpe >= 0.3",
+        "MDD >= -50%",
+        "Industry Exclusions"
+      ],
+      "passed_count": 22
+    },
+    "stage_2": {
+      "name": "Ranking",
+      "method": "Composite Score",
+      "weights": {
+        "Sharpe": "30%",
+        "Tail_Risk": "15%",
+        "Fundamental": "25%",
+        "Valuation": "20%",
+        "SEC_Signal": "10%"
+      },
+      "top_count": 22
+    },
+    "stage_3": {
+      "name": "Evidence Verification",
+      "final_count": 20
+    }
+  },
+  "top_20": [
+    {
+      "ticker": "AXP",
+      "company_name": "American Express Company",
+      "sector": "Financial Services",
+      "smart_money_score": 15,
+      "sharpe_3y": 1.1797,
+      "mdd_3y": -0.3154771366502411,
+      "fundamental_score": 70,
+      "valuation_score": 60,
+      "sec_signal_score": 50,
+      "composite_score": 63.19208590049277,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 2/5",
+      "data_sources": [
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 1
+    },
+    {
+      "ticker": "AVGO",
+      "company_name": "Broadcom Inc.",
+      "sector": "Technology",
+      "smart_money_score": 25,
+      "sharpe_3y": 1.2330914185847104,
+      "mdd_3y": -0.4114967470745902,
+      "fundamental_score": 85,
+      "valuation_score": 50,
+      "sec_signal_score": 50,
+      "composite_score": 62.70219461077882,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 3/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 2
+    },
+    {
+      "ticker": "LLY",
+      "company_name": "Eli Lilly and Company",
+      "sector": "Healthcare",
+      "smart_money_score": 25,
+      "sharpe_3y": 1.142754675095087,
+      "mdd_3y": -0.3447500311483468,
+      "fundamental_score": 80,
+      "valuation_score": 50,
+      "sec_signal_score": 50,
+      "composite_score": 62.37055516669064,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 3/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 3
+    },
+    {
+      "ticker": "BKNG",
+      "company_name": "Booking Holdings Inc.",
+      "sector": "Consumer Cyclical",
+      "smart_money_score": 15,
+      "sharpe_3y": 0.9925,
+      "mdd_3y": -0.3953205952461518,
+      "fundamental_score": 80,
+      "valuation_score": 60,
+      "sec_signal_score": 50,
+      "composite_score": 61.005382142615446,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 2/5",
+      "data_sources": [
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 4
+    },
+    {
+      "ticker": "CB",
+      "company_name": "Chubb Limited",
+      "sector": "Financial Services",
+      "smart_money_score": 15,
+      "sharpe_3y": 0.4282,
+      "mdd_3y": -0.1926170251219953,
+      "fundamental_score": 80,
+      "valuation_score": 70,
+      "sec_signal_score": 50,
+      "composite_score": 58.92908924634014,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 2/5",
+      "data_sources": [
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 5
+    },
+    {
+      "ticker": "ABBV",
+      "company_name": "AbbVie Inc.",
+      "sector": "Healthcare",
+      "smart_money_score": 25,
+      "sharpe_3y": 0.7607147959757673,
+      "mdd_3y": -0.2191546946062614,
+      "fundamental_score": 65,
+      "valuation_score": 60,
+      "sec_signal_score": 50,
+      "composite_score": 58.368225489375966,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 3/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 6
+    },
+    {
+      "ticker": "COST",
+      "company_name": "Costco Wholesale Corporation",
+      "sector": "Consumer Defensive",
+      "smart_money_score": 25,
+      "sharpe_3y": 0.8352659528074223,
+      "mdd_3y": -0.3140243005022078,
+      "fundamental_score": 75,
+      "valuation_score": 50,
+      "sec_signal_score": 50,
+      "composite_score": 57.36405813546737,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 3/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 7
+    },
+    {
+      "ticker": "CAT",
+      "company_name": "Caterpillar Inc.",
+      "sector": "Industrials",
+      "smart_money_score": 15,
+      "sharpe_3y": 0.7601599575766483,
+      "mdd_3y": -0.3404713871423416,
+      "fundamental_score": 70,
+      "valuation_score": 55,
+      "sec_signal_score": 50,
+      "composite_score": 54.96873762210942,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 3/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 8
+    },
+    {
+      "ticker": "LIN",
+      "company_name": "Linde plc",
+      "sector": "Basic Materials",
+      "smart_money_score": 20,
+      "sharpe_3y": 0.4895,
+      "mdd_3y": -0.228149864341676,
+      "fundamental_score": 75,
+      "valuation_score": 50,
+      "sec_signal_score": 50,
+      "composite_score": 53.71650406974972,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 2/5",
+      "data_sources": [
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 9
+    },
+    {
+      "ticker": "MA",
+      "company_name": "Mastercard Incorporated",
+      "sector": "Financial Services",
+      "smart_money_score": 35,
+      "sharpe_3y": 0.3279871818053966,
+      "mdd_3y": -0.2825034664746264,
+      "fundamental_score": 80,
+      "valuation_score": 55,
+      "sec_signal_score": 50,
+      "composite_score": 51.42866527825835,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 3/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 10
+    },
+    {
+      "ticker": "SPGI",
+      "company_name": "S&P Global Inc.",
+      "sector": "Financial Services",
+      "smart_money_score": 15,
+      "sharpe_3y": 0.4924,
+      "mdd_3y": -0.3975942642422148,
+      "fundamental_score": 75,
+      "valuation_score": 55,
+      "sec_signal_score": 50,
+      "composite_score": 49.68537207273356,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 2/5",
+      "data_sources": [
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 11
+    },
+    {
+      "ticker": "LOW",
+      "company_name": "Lowe's Companies, Inc.",
+      "sector": "Consumer Cyclical",
+      "smart_money_score": 15,
+      "sharpe_3y": 0.3436698532692693,
+      "mdd_3y": -0.3386158780077307,
+      "fundamental_score": 75,
+      "valuation_score": 55,
+      "sec_signal_score": 50,
+      "composite_score": 48.777581018614924,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 3/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 12
+    },
+    {
+      "ticker": "MSFT",
+      "company_name": "Microsoft Corporation",
+      "sector": "Technology",
+      "smart_money_score": 110,
+      "sharpe_3y": 0.5231989608855904,
+      "mdd_3y": -0.3714849680527687,
+      "fundamental_score": 85,
+      "valuation_score": 26.0,
+      "sec_signal_score": 50,
+      "composite_score": 47.72303225435757,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 4/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Valuation Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 13
+    },
+    {
+      "ticker": "KO",
+      "company_name": "The Coca-Cola Company",
+      "sector": "Consumer Defensive",
+      "smart_money_score": 25,
+      "sharpe_3y": 0.4898207511903411,
+      "mdd_3y": -0.172747429122485,
+      "fundamental_score": 70,
+      "valuation_score": 15.0,
+      "sec_signal_score": 50,
+      "composite_score": 47.13435064775159,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 4/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Valuation Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 14
+    },
+    {
+      "ticker": "GOOGL",
+      "company_name": "Alphabet Inc.",
+      "sector": "Technology",
+      "smart_money_score": 105,
+      "sharpe_3y": 0.8956563610985337,
+      "mdd_3y": -0.4432004980003954,
+      "fundamental_score": 85,
+      "valuation_score": 0.0,
+      "sec_signal_score": 50,
+      "composite_score": 47.07579955976175,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 4/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Valuation Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 15
+    },
+    {
+      "ticker": "MRK",
+      "company_name": "Merck & Co., Inc.",
+      "sector": "Healthcare",
+      "smart_money_score": 25,
+      "sharpe_3y": 0.3144783879616764,
+      "mdd_3y": -0.4344339033866194,
+      "fundamental_score": 80,
+      "valuation_score": 55,
+      "sec_signal_score": 50,
+      "composite_score": 46.62759388171159,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 3/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 16
+    },
+    {
+      "ticker": "JPM",
+      "company_name": "JPMorgan Chase & Co.",
+      "sector": "Financial Services",
+      "smart_money_score": 40,
+      "sharpe_3y": 0.7042469378055567,
+      "mdd_3y": -0.3877158297034872,
+      "fundamental_score": 60,
+      "valuation_score": 33.0,
+      "sec_signal_score": 45.8,
+      "composite_score": 45.2249699893954,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 5/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Valuation Data",
+        "SEC Signal Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 17
+    },
+    {
+      "ticker": "DE",
+      "company_name": "Deere & Company",
+      "sector": "Industrials",
+      "smart_money_score": 15,
+      "sharpe_3y": 0.3385631828370377,
+      "mdd_3y": -0.3381213481367252,
+      "fundamental_score": 65,
+      "valuation_score": 50,
+      "sec_signal_score": 50,
+      "composite_score": 45.200496846964924,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 3/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 18
+    },
+    {
+      "ticker": "V",
+      "company_name": "Visa Inc.",
+      "sector": "Financial Services",
+      "smart_money_score": 55,
+      "sharpe_3y": 0.3845587226129766,
+      "mdd_3y": -0.2860443110468822,
+      "fundamental_score": 85,
+      "valuation_score": 8.0,
+      "sec_signal_score": 50,
+      "composite_score": 44.19072767562711,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 4/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Valuation Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 19
+    },
+    {
+      "ticker": "ISRG",
+      "company_name": "Intuitive Surgical, Inc.",
+      "sector": "Healthcare",
+      "smart_money_score": 15,
+      "sharpe_3y": 0.3369558816227909,
+      "mdd_3y": -0.4990422231080242,
+      "fundamental_score": 80,
+      "valuation_score": 50,
+      "sec_signal_score": 50,
+      "composite_score": 44.09393917596951,
+      "evidence_validated": true,
+      "evidence_summary": "数据来源: 3/5",
+      "data_sources": [
+        "Risk Metrics (Sharpe/MDD)",
+        "Fundamental Data",
+        "Smart Money (N-PORT/13F)"
+      ],
+      "final_rank": 20
+    }
+  ]
+}

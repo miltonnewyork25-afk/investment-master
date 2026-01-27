@@ -1,0 +1,21 @@
+Rank,Ticker,Company,Sector,Market_Cap_B,Composite_Score,Moat_Score,Valuation_Score,Quality_Score,Smart_Money_Score,Catalyst_Score,Risk_Adjusted_Score,Alpha_Potential,ROIC,FCF_Yield,Institutions,Catalysts
+1,MSFT,Microsoft Corporation,Technology,3463.5,81.75,100,50,100,95,80,45,40.0,21.9%,2.3%,6,2
+2,GOOGL,Alphabet Inc.,Technology,3957.3,78.5,95,40,100,95,60,65,24.0,23.2%,1.9%,6,1
+3,META,"Meta Platforms, Inc.",Technology,1660.5,77.75,100,50,100,85,40,60,20.0,21.2%,2.7%,5,0
+4,NVDA,NVIDIA Corporation,Technology,4569.2,76.75,100,40,95,85,40,80,16.0,68.9%,1.7%,5,0
+5,V,Visa Inc.,Financial Services,632.9,70.25,100,50,85,65,40,45,20.0,28.4%,3.4%,2,0
+6,TPL,Texas Pacific Land Corporation,Energy,23.9,68.5,100,50,95,30,60,40,30.0,31.6%,2.2%,0,2
+7,AMZN,"Amazon.com, Inc.",Consumer Cyclical,2556.7,67.75,70,40,85,95,60,50,24.0,11.8%,0.4%,6,1
+8,MO,"Altria Group, Inc.",Consumer Defensive,103.9,66.0,100,65,70,30,50,45,32.5,32.8%,8.8%,0,1
+9,NFLX,"Netflix, Inc.",Communication Services,393.5,65.75,95,50,85,30,55,50,27.5,25.2%,2.4%,0,1
+10,DECK,Deckers Outdoor Corporation,Consumer Cyclical,14.8,65.0,90,55,90,30,55,35,30.2,33.3%,6.6%,0,1
+11,MA,Mastercard Incorporated,Financial Services,474.4,65.0,100,50,90,30,40,35,20.0,44.5%,3.6%,0,0
+12,HIG,"The Hartford Financial Services Group, Inc.",Financial Services,35.8,64.75,75,75,80,30,55,50,41.2,25.9%,16.4%,0,2
+13,L,Loews Corporation,Financial Services,21.1,64.25,85,75,65,30,55,50,41.2,152.5%,15.7%,0,2
+14,GILD,"Gilead Sciences, Inc.",Healthcare,168.6,64.25,95,55,80,30,40,50,22.0,17.5%,5.4%,0,0
+15,ABNB,"Airbnb, Inc.",Consumer Cyclical,81.7,64.25,85,55,100,30,40,35,22.0,19.1%,5.6%,0,0
+16,VRTX,Vertex Pharmaceuticals Incorporated,Healthcare,120.1,63.75,95,50,90,30,40,35,20.0,16.2%,2.8%,0,0
+17,INCY,Incyte Corporation,Healthcare,20.0,63.5,90,55,90,30,40,35,22.0,20.7%,6.0%,0,0
+18,PM,Philip Morris International Inc.,Consumer Defensive,269.3,63.5,100,50,75,30,40,50,20.0,25.8%,3.8%,0,0
+19,FAST,Fastenal Company,Industrials,50.4,63.5,90,50,90,30,40,45,20.0,28.2%,2.1%,0,0
+20,LLY,Eli Lilly and Company,Healthcare,954.1,63.5,100,40,80,30,40,60,16.0,27.9%,0.9%,0,0

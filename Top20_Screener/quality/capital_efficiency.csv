@@ -1,0 +1,7 @@
+Ticker,Company,Sector,ROIC_%,ROIC_Rating,NOPAT,Invested_Capital,ROE_%,Profit_Margin_%,Asset_Turnover,Equity_Multiplier,Asset_Turnover_Standalone,Asset_Turnover_Rating,Data_Date
+TSLA,Tesla Inc,Consumer Cyclical,16.5,Excellent,9206.35,55808,23.91,15.47,0.908,1.7,0.908,Acceptable,2023-12-31
+MSFT,Microsoft Corporation,Technology,33.48,Excellent,75244.55,224720,30.37,34.15,0.514,1.73,0.514,Acceptable,2023-06-30
+AAPL,Apple Inc,Technology,67.81,Excellent,97155.85,143269,156.08,25.31,1.087,5.68,1.087,Good,2023-09-30
+AMZN,Amazon.com Inc,Consumer Cyclical,11.21,Good,32798.28,292596,15.07,5.29,1.089,2.61,1.089,Good,2023-12-31
+NVDA,NVIDIA Corporation,Technology,109.82,Excellent,29345.08,26720,69.23,48.85,0.927,1.53,0.927,Acceptable,2024-01-28
+META,Meta Platforms Inc,Communication Services,22.88,Excellent,39272.52,171631,22.18,28.98,0.587,1.3,0.587,Acceptable,2023-12-31

@@ -1,0 +1,38 @@
+{
+  "ticker": "GOOGL",
+  "evaluation_date": "2026-01-25",
+  "moat_total_score": 70,
+  "moat_rating": "Wide Moat",
+  "dimensions": {
+    "network_effects": {
+      "score": 9,
+      "max_score": 10,
+      "evidence": "极强的网络效应，用户规模带来数据优势"
+    },
+    "switching_costs": {
+      "score": 7,
+      "max_score": 10,
+      "evidence": "生态系统锁定，迁移成本高"
+    },
+    "cost_advantage": {
+      "score": 8,
+      "max_score": 10,
+      "evidence": "规模经济，单位成本显著低于竞争对手"
+    },
+    "intangible_assets": {
+      "score": 8,
+      "max_score": 10,
+      "evidence": "强大品牌、专利组合、数据资产"
+    },
+    "regulatory_barriers": {
+      "score": 5,
+      "max_score": 10,
+      "evidence": "监管成为反向护城河"
+    }
+  },
+  "pricing_power": "强定价能力，但受AI竞争威胁",
+  "switching_costs": "云服务高，搜索低",
+  "network_effects": "9/10 - 衰减中",
+  "cost_advantage": "规模经济8/10",
+  "intangible_assets": "品牌、数据、专利"
+}

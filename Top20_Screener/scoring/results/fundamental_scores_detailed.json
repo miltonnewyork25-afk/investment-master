@@ -1,0 +1,1227 @@
+{
+  "MSFT": {
+    "ticker": "MSFT",
+    "company_name": "Microsoft Corporation",
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "total_score": 74,
+    "grade": "B+",
+    "dimensions": {
+      "cash_flow_quality": {
+        "dimension": "Cash Flow Quality",
+        "score": 21,
+        "max_score": 25,
+        "percentage": 84.0,
+        "sub_scores": {
+          "ocf_ni_ratio": 10,
+          "fcf_ratio": 3,
+          "fcf_consistency": 4,
+          "working_capital": 4
+        },
+        "evidence": {
+          "ocf_ni_ratio": {
+            "value": 1.402,
+            "ocf": 147039000000,
+            "net_income": 104912000000,
+            "quality": "Excellent",
+            "threshold": "OCF/NI >= 1.0 为优秀"
+          },
+          "fcf_ni_ratio": 0.744,
+          "fcf_consistency": {
+            "positive_years": 5,
+            "out_of": 5,
+            "interpretation": "5/5年FCF为正"
+          },
+          "working_capital": {
+            "revenue_growth": 0.149,
+            "ar_growth": 0.228,
+            "inventory_growth": -0.247,
+            "ap_growth": 0.26,
+            "deductions": 3
+          }
+        },
+        "red_flags": [
+          "应收账款增速(22.8%)超过营收增速(14.9%)"
+        ],
+        "data_sources": [
+          "Cash Flow Statement TTM",
+          "Balance Sheet YoY Comparison"
+        ]
+      },
+      "profit_structure": {
+        "dimension": "Profit Structure",
+        "score": 20,
+        "max_score": 20,
+        "percentage": 100.0,
+        "sub_scores": {
+          "gross_margin_stability": 6,
+          "operating_margin_trend": 6,
+          "expense_control": 4,
+          "operating_leverage": 4
+        },
+        "evidence": {
+          "gross_margin": {
+            "current": 0.688,
+            "mean_5y": 0.69,
+            "std_5y": 0.004,
+            "trend": "Stable",
+            "stability": "Very Stable"
+          },
+          "operating_margin": {
+            "current": 0.456,
+            "prior": 0.416,
+            "change": 0.04,
+            "trend": "Strong Improvement"
+          },
+          "expense_control": {
+            "sga_ratio": 0.117,
+            "rd_ratio": 0.115,
+            "total_opex_ratio": 0.232
+          },
+          "operating_leverage": {
+            "value": 1.17,
+            "revenue_change": 0.149,
+            "op_income_change": 0.174,
+            "note": "Healthy operating leverage"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Income Statement 5-Year History"
+        ]
+      },
+      "capital_efficiency": {
+        "dimension": "Capital Efficiency",
+        "score": 17,
+        "max_score": 20,
+        "percentage": 85.0,
+        "sub_scores": {
+          "roic_vs_wacc": 8,
+          "roe_quality": 4,
+          "leverage_health": 4,
+          "debt_maturity": 1
+        },
+        "evidence": {
+          "roic": {
+            "roic": 0.2194,
+            "estimated_wacc": 0.0859,
+            "spread": 0.1335,
+            "quality": "Exceptional Value Creation",
+            "beta": 1.07
+          },
+          "roe": {
+            "roe": 0.3153,
+            "net_margin": 0.3571,
+            "equity_multiplier": 1.8,
+            "source_quality": "High margin, low leverage - Quality"
+          },
+          "leverage": {
+            "net_debt": 31707000000,
+            "net_debt_ebitda": 0.19,
+            "quality": "Very Low Leverage"
+          },
+          "interest_coverage": 54.35,
+          "debt_maturity": {
+            "current_ratio": 1.4,
+            "liquidity_assessment": "Tight",
+            "note": "Simplified analysis based on current ratio"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Key Metrics TTM"
+        ]
+      },
+      "moat_strength": {
+        "dimension": "Moat Strength",
+        "score": 8,
+        "max_score": 25,
+        "percentage": 32.0,
+        "sub_scores": {
+          "network_effect": 0,
+          "switching_costs": 0,
+          "cost_advantage": 3,
+          "intangible_assets": 0,
+          "scale_advantage": 5
+        },
+        "evidence": {
+          "network_effect": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear network effect evidence"
+            ],
+            "industry": "Software - Infrastructure"
+          },
+          "switching_costs": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear switching cost evidence"
+            ]
+          },
+          "cost_advantage": {
+            "score": 3,
+            "max_score": 5,
+            "evidence": [
+              "毛利率高于行业中位数(+13.8%)"
+            ],
+            "gross_margin": 0.688,
+            "industry_median": 0.55
+          },
+          "intangible_assets": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear intangible asset evidence"
+            ]
+          },
+          "scale_advantage": {
+            "score": 5,
+            "max_score": 5,
+            "evidence": [
+              "大型公司，可能具有规模优势",
+              "利润率提升暗示规模效应"
+            ],
+            "market_cap": 3463484014546
+          },
+          "moat_rating": "No Moat",
+          "primary_moat_type": "Efficient Scale"
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Financial Statements",
+          "Company Profile",
+          "Industry Analysis"
+        ]
+      },
+      "earnings_visibility": {
+        "dimension": "Earnings Visibility",
+        "score": 8,
+        "max_score": 10,
+        "percentage": 80.0,
+        "sub_scores": {
+          "analyst_consensus": 3,
+          "guidance_accuracy": 3,
+          "revenue_structure": 1,
+          "cyclicality": 1
+        },
+        "evidence": {
+          "analyst_consensus": {
+            "eps_high": 37.41485,
+            "eps_low": 34.03614,
+            "eps_avg": 35.86,
+            "dispersion": 0.047,
+            "assessment": "Strong Consensus"
+          },
+          "earnings_stability": {
+            "eps_cv": 0.148,
+            "assessment": "Very Stable",
+            "note": "Using EPS stability as proxy for guidance accuracy"
+          },
+          "revenue_structure": {
+            "type": "Mixed",
+            "industry": "Software - Infrastructure",
+            "visibility": "Medium"
+          },
+          "cyclicality": {
+            "sector": "Technology",
+            "assessment": "Moderate",
+            "visibility_impact": "Lower"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Analyst Estimates"
+        ]
+      }
+    },
+    "exclusion_check": {
+      "is_excluded": false,
+      "reasons": [],
+      "severity": "soft"
+    },
+    "evaluation_date": "2026-01-26",
+    "data_as_of": "2026-01-26",
+    "confidence_level": "high"
+  },
+  "GOOGL": {
+    "ticker": "GOOGL",
+    "company_name": "Alphabet Inc.",
+    "sector": "Technology",
+    "industry": "Internet Content & Information",
+    "total_score": 78,
+    "grade": "A",
+    "dimensions": {
+      "cash_flow_quality": {
+        "dimension": "Cash Flow Quality",
+        "score": 23,
+        "max_score": 25,
+        "percentage": 92.0,
+        "sub_scores": {
+          "ocf_ni_ratio": 10,
+          "fcf_ratio": 2,
+          "fcf_consistency": 4,
+          "working_capital": 7
+        },
+        "evidence": {
+          "ocf_ni_ratio": {
+            "value": 1.219,
+            "ocf": 151424000000,
+            "net_income": 124251000000,
+            "quality": "Excellent",
+            "threshold": "OCF/NI >= 1.0 为优秀"
+          },
+          "fcf_ni_ratio": 0.592,
+          "fcf_consistency": {
+            "positive_years": 5,
+            "out_of": 5,
+            "interpretation": "5/5年FCF为正"
+          },
+          "working_capital": {
+            "revenue_growth": 0.139,
+            "ar_growth": 0.091,
+            "inventory_growth": 0,
+            "ap_growth": 0.066,
+            "deductions": 0
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Cash Flow Statement TTM",
+          "Balance Sheet YoY Comparison"
+        ]
+      },
+      "profit_structure": {
+        "dimension": "Profit Structure",
+        "score": 20,
+        "max_score": 20,
+        "percentage": 100.0,
+        "sub_scores": {
+          "gross_margin_stability": 6,
+          "operating_margin_trend": 6,
+          "expense_control": 4,
+          "operating_leverage": 4
+        },
+        "evidence": {
+          "gross_margin": {
+            "current": 0.582,
+            "mean_5y": 0.561,
+            "std_5y": 0.016,
+            "trend": "Rising",
+            "stability": "Very Stable"
+          },
+          "operating_margin": {
+            "current": 0.321,
+            "prior": 0.226,
+            "change": 0.095,
+            "trend": "Strong Improvement"
+          },
+          "expense_control": {
+            "sga_ratio": 0.12,
+            "rd_ratio": 0.141,
+            "total_opex_ratio": 0.261
+          },
+          "operating_leverage": {
+            "value": 2.4,
+            "revenue_change": 0.139,
+            "op_income_change": 0.333,
+            "note": "Healthy operating leverage"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Income Statement 5-Year History"
+        ]
+      },
+      "capital_efficiency": {
+        "dimension": "Capital Efficiency",
+        "score": 18,
+        "max_score": 20,
+        "percentage": 90.0,
+        "sub_scores": {
+          "roic_vs_wacc": 8,
+          "roe_quality": 4,
+          "leverage_health": 4,
+          "debt_maturity": 2
+        },
+        "evidence": {
+          "roic": {
+            "roic": 0.2322,
+            "estimated_wacc": 0.0899,
+            "spread": 0.1423,
+            "quality": "Exceptional Value Creation",
+            "beta": 1.09
+          },
+          "roe": {
+            "roe": 0.35,
+            "net_margin": 0.3223,
+            "equity_multiplier": 1.39,
+            "source_quality": "High margin, low leverage - Quality"
+          },
+          "leverage": {
+            "net_debt": 10623000000,
+            "net_debt_ebitda": 0.06,
+            "quality": "Very Low Leverage"
+          },
+          "interest_coverage": 252.7,
+          "debt_maturity": {
+            "current_ratio": 1.75,
+            "liquidity_assessment": "Adequate",
+            "note": "Simplified analysis based on current ratio"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Key Metrics TTM"
+        ]
+      },
+      "moat_strength": {
+        "dimension": "Moat Strength",
+        "score": 10,
+        "max_score": 25,
+        "percentage": 40.0,
+        "sub_scores": {
+          "network_effect": 4,
+          "switching_costs": 0,
+          "cost_advantage": 1,
+          "intangible_assets": 0,
+          "scale_advantage": 5
+        },
+        "evidence": {
+          "network_effect": {
+            "score": 4,
+            "max_score": 5,
+            "evidence": [
+              "高增长+利润率提升暗示网络效应"
+            ],
+            "industry": "Internet Content & Information"
+          },
+          "switching_costs": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear switching cost evidence"
+            ]
+          },
+          "cost_advantage": {
+            "score": 1,
+            "max_score": 5,
+            "evidence": [
+              "毛利率略高于行业中位数(+4.2%)"
+            ],
+            "gross_margin": 0.592,
+            "industry_median": 0.55
+          },
+          "intangible_assets": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear intangible asset evidence"
+            ]
+          },
+          "scale_advantage": {
+            "score": 5,
+            "max_score": 5,
+            "evidence": [
+              "大型公司，可能具有规模优势",
+              "利润率提升暗示规模效应"
+            ],
+            "market_cap": 3957398566738
+          },
+          "moat_rating": "No Moat",
+          "primary_moat_type": "Efficient Scale"
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Financial Statements",
+          "Company Profile",
+          "Industry Analysis"
+        ]
+      },
+      "earnings_visibility": {
+        "dimension": "Earnings Visibility",
+        "score": 7,
+        "max_score": 10,
+        "percentage": 70.0,
+        "sub_scores": {
+          "analyst_consensus": 3,
+          "guidance_accuracy": 2,
+          "revenue_structure": 1,
+          "cyclicality": 1
+        },
+        "evidence": {
+          "analyst_consensus": {
+            "eps_high": 18.39995,
+            "eps_low": 16.10952,
+            "eps_avg": 17.14,
+            "dispersion": 0.067,
+            "assessment": "Strong Consensus"
+          },
+          "earnings_stability": {
+            "eps_cv": 0.212,
+            "assessment": "Stable",
+            "note": "Using EPS stability as proxy for guidance accuracy"
+          },
+          "revenue_structure": {
+            "type": "Mixed",
+            "industry": "Internet Content & Information",
+            "visibility": "Medium"
+          },
+          "cyclicality": {
+            "sector": "Technology",
+            "assessment": "Moderate",
+            "visibility_impact": "Lower"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Analyst Estimates"
+        ]
+      }
+    },
+    "exclusion_check": {
+      "is_excluded": false,
+      "reasons": [],
+      "severity": "soft"
+    },
+    "evaluation_date": "2026-01-26",
+    "data_as_of": "2026-01-26",
+    "confidence_level": "high"
+  },
+  "JNJ": {
+    "ticker": "JNJ",
+    "company_name": "Johnson & Johnson",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers - General",
+    "total_score": 64.5,
+    "grade": "B",
+    "dimensions": {
+      "cash_flow_quality": {
+        "dimension": "Cash Flow Quality",
+        "score": 19,
+        "max_score": 25,
+        "percentage": 76.0,
+        "sub_scores": {
+          "ocf_ni_ratio": 8,
+          "fcf_ratio": 3,
+          "fcf_consistency": 4,
+          "working_capital": 4
+        },
+        "evidence": {
+          "ocf_ni_ratio": {
+            "value": 0.903,
+            "ocf": 24204000000,
+            "net_income": 26804000000,
+            "quality": "Good",
+            "threshold": "OCF/NI >= 1.0 为优秀"
+          },
+          "fcf_ni_ratio": 0.711,
+          "fcf_consistency": {
+            "positive_years": 5,
+            "out_of": 5,
+            "interpretation": "5/5年FCF为正"
+          },
+          "working_capital": {
+            "revenue_growth": 0.06,
+            "ar_growth": 0.273,
+            "inventory_growth": 0.113,
+            "ap_growth": 0.07,
+            "deductions": 3
+          }
+        },
+        "red_flags": [
+          "应收账款增速(27.3%)超过营收增速(6.0%)"
+        ],
+        "data_sources": [
+          "Cash Flow Statement TTM",
+          "Balance Sheet YoY Comparison"
+        ]
+      },
+      "profit_structure": {
+        "dimension": "Profit Structure",
+        "score": 16,
+        "max_score": 20,
+        "percentage": 80.0,
+        "sub_scores": {
+          "gross_margin_stability": 6,
+          "operating_margin_trend": 4,
+          "expense_control": 2,
+          "operating_leverage": 4
+        },
+        "evidence": {
+          "gross_margin": {
+            "current": 0.728,
+            "mean_5y": 0.7,
+            "std_5y": 0.015,
+            "trend": "Rising",
+            "stability": "Very Stable"
+          },
+          "operating_margin": {
+            "current": 0.272,
+            "prior": 0.266,
+            "change": 0.006,
+            "trend": "Stable"
+          },
+          "expense_control": {
+            "sga_ratio": 0.251,
+            "rd_ratio": 0.156,
+            "total_opex_ratio": 0.407
+          },
+          "operating_leverage": {
+            "value": 2.57,
+            "revenue_change": 0.06,
+            "op_income_change": 0.156,
+            "note": "Healthy operating leverage"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Income Statement 5-Year History"
+        ]
+      },
+      "capital_efficiency": {
+        "dimension": "Capital Efficiency",
+        "score": 15,
+        "max_score": 20,
+        "percentage": 75.0,
+        "sub_scores": {
+          "roic_vs_wacc": 6,
+          "roe_quality": 4,
+          "leverage_health": 4,
+          "debt_maturity": 1
+        },
+        "evidence": {
+          "roic": {
+            "roic": 0.142,
+            "estimated_wacc": 0.0504,
+            "spread": 0.0916,
+            "quality": "Strong Value Creation",
+            "beta": 0.33
+          },
+          "roe": {
+            "roe": 0.3488,
+            "net_margin": 0.2846,
+            "equity_multiplier": 2.52,
+            "source_quality": "High margin, low leverage - Quality"
+          },
+          "leverage": {
+            "net_debt": 27564000000,
+            "net_debt_ebitda": 0.72,
+            "quality": "Very Low Leverage"
+          },
+          "interest_coverage": 48.29,
+          "debt_maturity": {
+            "current_ratio": 1.07,
+            "liquidity_assessment": "Tight",
+            "note": "Simplified analysis based on current ratio"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Key Metrics TTM"
+        ]
+      },
+      "moat_strength": {
+        "dimension": "Moat Strength",
+        "score": 8,
+        "max_score": 25,
+        "percentage": 32.0,
+        "sub_scores": {
+          "network_effect": 0,
+          "switching_costs": 0,
+          "cost_advantage": 3,
+          "intangible_assets": 2,
+          "scale_advantage": 3
+        },
+        "evidence": {
+          "network_effect": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear network effect evidence"
+            ],
+            "industry": "Drug Manufacturers - General"
+          },
+          "switching_costs": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear switching cost evidence"
+            ]
+          },
+          "cost_advantage": {
+            "score": 3,
+            "max_score": 5,
+            "evidence": [
+              "毛利率高于行业中位数(+12.8%)"
+            ],
+            "gross_margin": 0.728,
+            "industry_median": 0.6
+          },
+          "intangible_assets": {
+            "score": 2,
+            "max_score": 5,
+            "evidence": [
+              "受监管行业，存在进入壁垒"
+            ]
+          },
+          "scale_advantage": {
+            "score": 3,
+            "max_score": 5,
+            "evidence": [
+              "大型公司，可能具有规模优势"
+            ],
+            "market_cap": 530382223754
+          },
+          "moat_rating": "No Moat",
+          "primary_moat_type": "Cost Advantage"
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Financial Statements",
+          "Company Profile",
+          "Industry Analysis"
+        ]
+      },
+      "earnings_visibility": {
+        "dimension": "Earnings Visibility",
+        "score": 6.5,
+        "max_score": 10,
+        "percentage": 65.0,
+        "sub_scores": {
+          "analyst_consensus": 3,
+          "guidance_accuracy": 1,
+          "revenue_structure": 0.5,
+          "cyclicality": 2
+        },
+        "evidence": {
+          "analyst_consensus": {
+            "eps_high": 17.75703,
+            "eps_low": 16.79475,
+            "eps_avg": 17.2275,
+            "dispersion": 0.028,
+            "assessment": "Strong Consensus"
+          },
+          "earnings_stability": "Inconsistent profitability",
+          "revenue_structure": {
+            "type": "Transaction-based likely",
+            "industry": "Drug Manufacturers - General",
+            "visibility": "Lower"
+          },
+          "cyclicality": {
+            "sector": "Healthcare",
+            "assessment": "Defensive",
+            "visibility_impact": "Higher"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Analyst Estimates"
+        ]
+      }
+    },
+    "exclusion_check": {
+      "is_excluded": false,
+      "reasons": [],
+      "severity": "soft"
+    },
+    "evaluation_date": "2026-01-26",
+    "data_as_of": "2026-01-26",
+    "confidence_level": "high"
+  },
+  "V": {
+    "ticker": "V",
+    "company_name": "Visa Inc.",
+    "sector": "Financial Services",
+    "industry": "Financial - Credit Services",
+    "total_score": 71.5,
+    "grade": "B+",
+    "dimensions": {
+      "cash_flow_quality": {
+        "dimension": "Cash Flow Quality",
+        "score": 25,
+        "max_score": 25,
+        "percentage": 100.0,
+        "sub_scores": {
+          "ocf_ni_ratio": 10,
+          "fcf_ratio": 4,
+          "fcf_consistency": 4,
+          "working_capital": 7
+        },
+        "evidence": {
+          "ocf_ni_ratio": {
+            "value": 1.15,
+            "ocf": 23059000000,
+            "net_income": 20058000000,
+            "quality": "Excellent",
+            "threshold": "OCF/NI >= 1.0 为优秀"
+          },
+          "fcf_ni_ratio": 1.076,
+          "fcf_consistency": {
+            "positive_years": 5,
+            "out_of": 5,
+            "interpretation": "5/5年FCF为正"
+          },
+          "working_capital": {
+            "revenue_growth": 0.113,
+            "ar_growth": 0.043,
+            "inventory_growth": 0,
+            "ap_growth": 0.159,
+            "deductions": 0
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Cash Flow Statement TTM",
+          "Balance Sheet YoY Comparison"
+        ]
+      },
+      "profit_structure": {
+        "dimension": "Profit Structure",
+        "score": 11,
+        "max_score": 20,
+        "percentage": 55.0,
+        "sub_scores": {
+          "gross_margin_stability": 6,
+          "operating_margin_trend": 0,
+          "expense_control": 4,
+          "operating_leverage": 1
+        },
+        "evidence": {
+          "gross_margin": {
+            "current": 0.804,
+            "mean_5y": 0.801,
+            "std_5y": 0.004,
+            "trend": "Stable",
+            "stability": "Very Stable"
+          },
+          "operating_margin": {
+            "current": 0.6,
+            "prior": 0.656,
+            "change": -0.056,
+            "trend": "Sharp Decline"
+          },
+          "expense_control": {
+            "sga_ratio": 0.109,
+            "rd_ratio": 0.0,
+            "total_opex_ratio": 0.109
+          },
+          "operating_leverage": {
+            "value": 0.15,
+            "revenue_change": 0.113,
+            "op_income_change": 0.017,
+            "note": "Negative leverage or unusual"
+          }
+        },
+        "red_flags": [
+          "营业利润率大幅下降(-5.6%)"
+        ],
+        "data_sources": [
+          "Income Statement 5-Year History"
+        ]
+      },
+      "capital_efficiency": {
+        "dimension": "Capital Efficiency",
+        "score": 17,
+        "max_score": 20,
+        "percentage": 85.0,
+        "sub_scores": {
+          "roic_vs_wacc": 8,
+          "roe_quality": 4,
+          "leverage_health": 4,
+          "debt_maturity": 1
+        },
+        "evidence": {
+          "roic": {
+            "roic": 0.2836,
+            "estimated_wacc": 0.0643,
+            "spread": 0.2193,
+            "quality": "Exceptional Value Creation",
+            "beta": 0.81
+          },
+          "roe": {
+            "roe": 0.5247,
+            "net_margin": 0.5014,
+            "equity_multiplier": 2.63,
+            "source_quality": "High margin, low leverage - Quality"
+          },
+          "leverage": {
+            "net_debt": 8007000000,
+            "net_debt_ebitda": 0.31,
+            "quality": "Very Low Leverage"
+          },
+          "interest_coverage": 40.74,
+          "debt_maturity": {
+            "current_ratio": 1.08,
+            "liquidity_assessment": "Tight",
+            "note": "Simplified analysis based on current ratio"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Key Metrics TTM"
+        ]
+      },
+      "moat_strength": {
+        "dimension": "Moat Strength",
+        "score": 11,
+        "max_score": 25,
+        "percentage": 44.0,
+        "sub_scores": {
+          "network_effect": 0,
+          "switching_costs": 0,
+          "cost_advantage": 5,
+          "intangible_assets": 3,
+          "scale_advantage": 3
+        },
+        "evidence": {
+          "network_effect": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear network effect evidence"
+            ],
+            "industry": "Financial - Credit Services"
+          },
+          "switching_costs": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear switching cost evidence"
+            ]
+          },
+          "cost_advantage": {
+            "score": 5,
+            "max_score": 5,
+            "evidence": [
+              "毛利率显著高于行业中位数(+50.4%)"
+            ],
+            "gross_margin": 0.804,
+            "industry_median": 0.3
+          },
+          "intangible_assets": {
+            "score": 3,
+            "max_score": 5,
+            "evidence": [
+              "高毛利率+低研发支出暗示品牌溢价"
+            ]
+          },
+          "scale_advantage": {
+            "score": 3,
+            "max_score": 5,
+            "evidence": [
+              "大型公司，可能具有规模优势"
+            ],
+            "market_cap": 632929077074
+          },
+          "moat_rating": "No Moat",
+          "primary_moat_type": "Cost Advantage"
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Financial Statements",
+          "Company Profile",
+          "Industry Analysis"
+        ]
+      },
+      "earnings_visibility": {
+        "dimension": "Earnings Visibility",
+        "score": 7.5,
+        "max_score": 10,
+        "percentage": 75.0,
+        "sub_scores": {
+          "analyst_consensus": 3,
+          "guidance_accuracy": 3,
+          "revenue_structure": 0.5,
+          "cyclicality": 1
+        },
+        "evidence": {
+          "analyst_consensus": {
+            "eps_high": 19.53555,
+            "eps_low": 18.4166,
+            "eps_avg": 19.06,
+            "dispersion": 0.029,
+            "assessment": "Strong Consensus"
+          },
+          "earnings_stability": {
+            "eps_cv": 0.143,
+            "assessment": "Very Stable",
+            "note": "Using EPS stability as proxy for guidance accuracy"
+          },
+          "revenue_structure": {
+            "type": "Transaction-based likely",
+            "industry": "Financial - Credit Services",
+            "visibility": "Lower"
+          },
+          "cyclicality": {
+            "sector": "Financial Services",
+            "assessment": "Moderate",
+            "visibility_impact": "Lower"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Analyst Estimates"
+        ]
+      }
+    },
+    "exclusion_check": {
+      "is_excluded": false,
+      "reasons": [],
+      "severity": "soft"
+    },
+    "evaluation_date": "2026-01-26",
+    "data_as_of": "2026-01-26",
+    "confidence_level": "high"
+  },
+  "WMT": {
+    "ticker": "WMT",
+    "company_name": "Walmart Inc.",
+    "sector": "Consumer Defensive",
+    "industry": "Discount Stores",
+    "total_score": 61.5,
+    "grade": "B",
+    "dimensions": {
+      "cash_flow_quality": {
+        "dimension": "Cash Flow Quality",
+        "score": 22,
+        "max_score": 25,
+        "percentage": 88.0,
+        "sub_scores": {
+          "ocf_ni_ratio": 10,
+          "fcf_ratio": 4,
+          "fcf_consistency": 4,
+          "working_capital": 4
+        },
+        "evidence": {
+          "ocf_ni_ratio": {
+            "value": 1.789,
+            "ocf": 40977000000,
+            "net_income": 22910000000,
+            "quality": "Excellent",
+            "threshold": "OCF/NI >= 1.0 为优秀"
+          },
+          "fcf_ni_ratio": 1.417,
+          "fcf_consistency": {
+            "positive_years": 5,
+            "out_of": 5,
+            "interpretation": "5/5年FCF为正"
+          },
+          "working_capital": {
+            "revenue_growth": 0.051,
+            "ar_growth": 0.134,
+            "inventory_growth": 0.028,
+            "ap_growth": 0.033,
+            "deductions": 3
+          }
+        },
+        "red_flags": [
+          "应收账款增速(13.4%)超过营收增速(5.1%)"
+        ],
+        "data_sources": [
+          "Cash Flow Statement TTM",
+          "Balance Sheet YoY Comparison"
+        ]
+      },
+      "profit_structure": {
+        "dimension": "Profit Structure",
+        "score": 17,
+        "max_score": 20,
+        "percentage": 85.0,
+        "sub_scores": {
+          "gross_margin_stability": 6,
+          "operating_margin_trend": 4,
+          "expense_control": 3,
+          "operating_leverage": 4
+        },
+        "evidence": {
+          "gross_margin": {
+            "current": 0.249,
+            "mean_5y": 0.247,
+            "std_5y": 0.003,
+            "trend": "Stable",
+            "stability": "Very Stable"
+          },
+          "operating_margin": {
+            "current": 0.043,
+            "prior": 0.04,
+            "change": 0.003,
+            "trend": "Stable"
+          },
+          "expense_control": {
+            "sga_ratio": 0.205,
+            "rd_ratio": 0.0,
+            "total_opex_ratio": 0.205
+          },
+          "operating_leverage": {
+            "value": 1.71,
+            "revenue_change": 0.051,
+            "op_income_change": 0.086,
+            "note": "Healthy operating leverage"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Income Statement 5-Year History"
+        ]
+      },
+      "capital_efficiency": {
+        "dimension": "Capital Efficiency",
+        "score": 12,
+        "max_score": 20,
+        "percentage": 60.0,
+        "sub_scores": {
+          "roic_vs_wacc": 6,
+          "roe_quality": 3,
+          "leverage_health": 3,
+          "debt_maturity": 0
+        },
+        "evidence": {
+          "roic": {
+            "roic": 0.1206,
+            "estimated_wacc": 0.0595,
+            "spread": 0.0611,
+            "quality": "Strong Value Creation",
+            "beta": 0.66
+          },
+          "roe": {
+            "roe": 0.2538,
+            "net_margin": 0.0326,
+            "equity_multiplier": 2.87,
+            "source_quality": "Balanced"
+          },
+          "leverage": {
+            "net_debt": 54319000000,
+            "net_debt_ebitda": 1.15,
+            "quality": "Low Leverage"
+          },
+          "interest_coverage": 10.32,
+          "debt_maturity": {
+            "current_ratio": 0.8,
+            "liquidity_assessment": "Concern",
+            "note": "Simplified analysis based on current ratio"
+          }
+        },
+        "red_flags": [
+          "流动比率过低(0.80)"
+        ],
+        "data_sources": [
+          "Key Metrics TTM"
+        ]
+      },
+      "moat_strength": {
+        "dimension": "Moat Strength",
+        "score": 3,
+        "max_score": 25,
+        "percentage": 12.0,
+        "sub_scores": {
+          "network_effect": 0,
+          "switching_costs": 0,
+          "cost_advantage": 0,
+          "intangible_assets": 0,
+          "scale_advantage": 3
+        },
+        "evidence": {
+          "network_effect": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear network effect evidence"
+            ],
+            "industry": "Discount Stores"
+          },
+          "switching_costs": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear switching cost evidence"
+            ]
+          },
+          "cost_advantage": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear cost advantage evidence"
+            ],
+            "gross_margin": 0.249,
+            "industry_median": 0.35
+          },
+          "intangible_assets": {
+            "score": 0,
+            "max_score": 5,
+            "evidence": [
+              "No clear intangible asset evidence"
+            ]
+          },
+          "scale_advantage": {
+            "score": 3,
+            "max_score": 5,
+            "evidence": [
+              "大型公司，可能具有规模优势"
+            ],
+            "market_cap": 938643816396
+          },
+          "moat_rating": "No Moat",
+          "primary_moat_type": "Efficient Scale"
+        },
+        "red_flags": [
+          "护城河证据不足，竞争优势可能有限"
+        ],
+        "data_sources": [
+          "Financial Statements",
+          "Company Profile",
+          "Industry Analysis"
+        ]
+      },
+      "earnings_visibility": {
+        "dimension": "Earnings Visibility",
+        "score": 7.5,
+        "max_score": 10,
+        "percentage": 75.0,
+        "sub_scores": {
+          "analyst_consensus": 3,
+          "guidance_accuracy": 2,
+          "revenue_structure": 0.5,
+          "cyclicality": 2
+        },
+        "evidence": {
+          "analyst_consensus": {
+            "eps_high": 3.67602,
+            "eps_low": 3.58737,
+            "eps_avg": 3.635,
+            "dispersion": 0.012,
+            "assessment": "Strong Consensus"
+          },
+          "earnings_stability": {
+            "eps_cv": 0.201,
+            "assessment": "Stable",
+            "note": "Using EPS stability as proxy for guidance accuracy"
+          },
+          "revenue_structure": {
+            "type": "Transaction-based likely",
+            "industry": "Discount Stores",
+            "visibility": "Lower"
+          },
+          "cyclicality": {
+            "sector": "Consumer Defensive",
+            "assessment": "Defensive",
+            "visibility_impact": "Higher"
+          }
+        },
+        "red_flags": [],
+        "data_sources": [
+          "Analyst Estimates"
+        ]
+      }
+    },
+    "exclusion_check": {
+      "is_excluded": false,
+      "reasons": [],
+      "severity": "soft"
+    },
+    "evaluation_date": "2026-01-26",
+    "data_as_of": "2026-01-26",
+    "confidence_level": "high"
+  }
+}

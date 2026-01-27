@@ -1,0 +1,286 @@
+{
+  "AAPL": {
+    "ticker": "AAPL",
+    "company_name": "Apple Inc.",
+    "sector": "Technology",
+    "industry": "Consumer Electronics",
+    "current_price": 248.04,
+    "undervaluation_score": 24.4,
+    "undervaluation_grade": "D",
+    "investment_signal": "avoid",
+    "key_metrics": {
+      "pe_ttm": 33.10263315775377,
+      "pe_vs_industry": 0.16149590027206218,
+      "pe_percentile_5y": 80.0,
+      "fcf_yield": 0.02694777390907283,
+      "dcf_upside": -0.6353109753275467,
+      "ev_ebitda": 25.79820492661499
+    },
+    "red_flags": [
+      "DCF suggests significant overvaluation (-64%)"
+    ],
+    "confidence_level": "high",
+    "evaluation_date": "2026-01-26",
+    "relative_valuation": {
+      "pe_ttm": 33.10263315775377,
+      "pe_forward": null,
+      "ev_ebitda": 25.79820492661499,
+      "p_fcf": 37.10881660853322,
+      "pb": 50.28719759130918,
+      "peg": 2.4826974868315306,
+      "pe_vs_industry": 0.16149590027206218,
+      "ev_ebitda_vs_industry": 0.39449756360081023,
+      "p_fcf_vs_industry": 0.3253148788761863,
+      "pb_vs_industry": 6.736491937124489,
+      "peers": [],
+      "peer_pe_median": null,
+      "relative_score": 8.0,
+      "evidence": {
+        "pe_vs_industry": {
+          "current_pe": 33.10263315775377,
+          "industry_median": 28.5,
+          "discount_premium": 16.1,
+          "interpretation": "Moderate Premium (10-20% above)",
+          "score": 20
+        },
+        "ev_ebitda_vs_industry": {
+          "discount_premium": 39.4,
+          "score": 0
+        },
+        "p_fcf_vs_industry": {
+          "discount_premium": 32.5,
+          "score": 0
+        },
+        "pb_vs_industry": {
+          "discount_premium": 673.6,
+          "score": 0
+        },
+        "final_score": 8.0,
+        "sector": "Technology",
+        "benchmark_used": 28.5
+      }
+    },
+    "historical_valuation": {
+      "pe_current": 33.10263315775377,
+      "pe_5y_median": 28.758400262915405,
+      "pe_5y_min": 17.208993094456297,
+      "pe_5y_max": 58.63239010077361,
+      "pe_percentile": 80.0,
+      "ev_ebitda_current": 25.79820492661499,
+      "ev_ebitda_5y_median": 86.11704557278318,
+      "ev_ebitda_percentile": 0.0,
+      "historical_score": 52.0,
+      "evidence": {
+        "pe_analysis": {
+          "current": 33.1,
+          "median_5y": 28.76,
+          "min_5y": 17.21,
+          "max_5y": 58.63,
+          "percentile": 80.0,
+          "data_points": 20
+        },
+        "ev_ebitda_analysis": {
+          "current": 25.8,
+          "median_5y": 86.12,
+          "percentile": 0.0
+        },
+        "pe_percentile_interpretation": "Near Historical High",
+        "final_score": 52.0
+      }
+    },
+    "fcf_yield_valuation": {
+      "fcf_ttm": 98767000000,
+      "market_cap": 3665126489975.0005,
+      "fcf_yield": 0.02694777390907283,
+      "fcf_per_share": 6.684125840407228,
+      "current_price": 248.04,
+      "fcf_yield_vs_10y_treasury": -0.01805222609092717,
+      "fcf_yield_vs_sp500_avg": -0.015052226090927174,
+      "fcf_yield_score": 35.9,
+      "evidence": {
+        "fcf_yield": 2.69,
+        "fcf_yield_pct": "2.69%",
+        "interpretation": "Unattractive (<3%)",
+        "vs_risk_free": -1.81,
+        "vs_sp500": -1.51,
+        "required_return": "Risk-free (4.5%) + Premium (5.0%) = 9.5%",
+        "fcf_ttm": 98767000000,
+        "market_cap": 3665126489975.0005,
+        "final_score": 35.9
+      }
+    },
+    "dcf_valuation": {
+      "intrinsic_value": 90.45746567975533,
+      "current_price": 248.04,
+      "upside_potential": -0.6353109753275467,
+      "margin_of_safety": -0.6353109753275467,
+      "base_case": 90.45746567975533,
+      "bull_case": 117.65979259751808,
+      "bear_case": 74.87409326544275,
+      "assumptions": {
+        "growth_rate": 0.02,
+        "discount_rate": 0.095,
+        "terminal_growth": 0.025,
+        "projection_years": 5
+      },
+      "dcf_score": 0,
+      "status": "valid",
+      "evidence": {
+        "intrinsic_value": 90.46,
+        "current_price": 248.04,
+        "upside_pct": -63.5,
+        "interpretation": "Significantly Overvalued (>20% downside)",
+        "final_score": 0,
+        "fcf_current": 98767000000,
+        "growth_rate_used": 2.0,
+        "wacc_used": 9.5,
+        "terminal_growth": 2.5,
+        "historical_growth": 1.5,
+        "analyst_growth": 12.2,
+        "sector": "Technology"
+      }
+    }
+  },
+  "MSFT": {
+    "ticker": "MSFT",
+    "company_name": "Microsoft Corporation",
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "current_price": 465.95,
+    "undervaluation_score": 26.2,
+    "undervaluation_grade": "D",
+    "investment_signal": "avoid",
+    "key_metrics": {
+      "pe_ttm": 33.012489991612014,
+      "pe_vs_industry": 0.15833298216182506,
+      "pe_percentile_5y": 70.0,
+      "fcf_yield": 0.02252558397045947,
+      "dcf_upside": -0.6215061838435234,
+      "ev_ebitda": 20.56103566980605
+    },
+    "red_flags": [
+      "DCF suggests significant overvaluation (-62%)"
+    ],
+    "confidence_level": "high",
+    "evaluation_date": "2026-01-26",
+    "relative_valuation": {
+      "pe_ttm": 33.012489991612014,
+      "pe_forward": null,
+      "ev_ebitda": 20.56103566980605,
+      "p_fcf": 44.3939656042401,
+      "pb": 9.539067165001267,
+      "peg": 11.02295092646752,
+      "pe_vs_industry": 0.15833298216182506,
+      "ev_ebitda_vs_industry": 0.11140733350302968,
+      "p_fcf_vs_industry": 0.5854987715800036,
+      "pb_vs_industry": 0.4675487946155795,
+      "peers": [],
+      "peer_pe_median": null,
+      "relative_score": 14.0,
+      "evidence": {
+        "pe_vs_industry": {
+          "current_pe": 33.012489991612014,
+          "industry_median": 28.5,
+          "discount_premium": 15.8,
+          "interpretation": "Moderate Premium (10-20% above)",
+          "score": 20
+        },
+        "ev_ebitda_vs_industry": {
+          "discount_premium": 11.1,
+          "score": 20
+        },
+        "p_fcf_vs_industry": {
+          "discount_premium": 58.5,
+          "score": 0
+        },
+        "pb_vs_industry": {
+          "discount_premium": 46.8,
+          "score": 0
+        },
+        "final_score": 14.0,
+        "sector": "Technology",
+        "benchmark_used": 28.5
+      }
+    },
+    "historical_valuation": {
+      "pe_current": 33.012489991612014,
+      "pe_5y_median": 31.245395715185253,
+      "pe_5y_min": 24.731363921166555,
+      "pe_5y_max": 38.51508996641859,
+      "pe_percentile": 70.0,
+      "ev_ebitda_current": 20.56103566980605,
+      "ev_ebitda_5y_median": 84.71668933410054,
+      "ev_ebitda_percentile": 0.0,
+      "historical_score": 58.0,
+      "evidence": {
+        "pe_analysis": {
+          "current": 33.01,
+          "median_5y": 31.25,
+          "min_5y": 24.73,
+          "max_5y": 38.52,
+          "percentile": 70.0,
+          "data_points": 20
+        },
+        "ev_ebitda_analysis": {
+          "current": 20.56,
+          "median_5y": 84.72,
+          "percentile": 0.0
+        },
+        "pe_percentile_interpretation": "Above Historical Median",
+        "final_score": 58.0
+      }
+    },
+    "fcf_yield_valuation": {
+      "fcf_ttm": 78017000000,
+      "market_cap": 3463484014546,
+      "fcf_yield": 0.02252558397045947,
+      "fcf_per_share": 10.495795851035592,
+      "current_price": 465.95,
+      "fcf_yield_vs_10y_treasury": -0.022474416029540527,
+      "fcf_yield_vs_sp500_avg": -0.01947441602954053,
+      "fcf_yield_score": 30.0,
+      "evidence": {
+        "fcf_yield": 2.25,
+        "fcf_yield_pct": "2.25%",
+        "interpretation": "Unattractive (<3%)",
+        "vs_risk_free": -2.25,
+        "vs_sp500": -1.95,
+        "required_return": "Risk-free (4.5%) + Premium (5.0%) = 9.5%",
+        "fcf_ttm": 78017000000,
+        "market_cap": 3463484014546,
+        "final_score": 30.0
+      }
+    },
+    "dcf_valuation": {
+      "intrinsic_value": 176.35919363811024,
+      "current_price": 465.95,
+      "upside_potential": -0.6215061838435234,
+      "margin_of_safety": -0.6215061838435234,
+      "base_case": 176.35919363811024,
+      "bull_case": 241.50283626551413,
+      "bear_case": 131.5460077239202,
+      "assumptions": {
+        "growth_rate": 0.06284366527955654,
+        "discount_rate": 0.095,
+        "terminal_growth": 0.025,
+        "projection_years": 5
+      },
+      "dcf_score": 0,
+      "status": "valid",
+      "evidence": {
+        "intrinsic_value": 176.36,
+        "current_price": 465.95,
+        "upside_pct": -62.2,
+        "interpretation": "Significantly Overvalued (>20% downside)",
+        "final_score": 0,
+        "fcf_current": 78017000000,
+        "growth_rate_used": 6.3,
+        "wacc_used": 9.5,
+        "terminal_growth": 2.5,
+        "historical_growth": 6.3,
+        "analyst_growth": 37.6,
+        "sector": "Technology"
+      }
+    }
+  }
+}

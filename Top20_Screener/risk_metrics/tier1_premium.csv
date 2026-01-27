@@ -1,0 +1,1 @@
+ticker,data_quality,data_start,data_end,months_analyzed,sharpe,sortino,mdd,mdd_peak_date,mdd_trough_date,calmar,var_95,cvar_95,cagr,annual_vol,rolling_sharpe_mean,rolling_sharpe_std,rolling_sharpe_min,sharpe_consistency,sharpe_score,sortino_score,calmar_score,mdd_score,var_cvar_score,risk_adjusted_score,tier

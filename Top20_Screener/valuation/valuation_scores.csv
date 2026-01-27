@@ -1,0 +1,20 @@
+Ticker,Total_Score,Historical_Score,Peer_Score,DCF_Score,Safety_Score,Classification
+DIS,82,15,25,30,12,Deep Undervalued
+UNH,37,15,10,0,12,Fair Value
+CVX,34,0,0,30,4,Fair Value
+AMZN,33,25,0,0,8,Fair Value
+META,33,15,10,8,0,Fair Value
+JPM,33,0,25,0,8,Fair Value
+MSFT,26,8,10,0,8,Overvalued
+PG,26,8,10,0,8,Overvalued
+HD,25,0,25,0,0,Overvalued
+KO,15,15,0,0,0,Overvalued
+NFLX,15,15,0,0,0,Overvalued
+XOM,10,0,10,0,0,Overvalued
+NVDA,8,8,0,0,0,Overvalued
+V,8,8,0,0,0,Overvalued
+JNJ,8,8,0,0,0,Overvalued
+AAPL,0,0,0,0,0,Overvalued
+GOOGL,0,0,0,0,0,Overvalued
+TSLA,0,0,0,0,0,Overvalued
+WMT,0,0,0,0,0,Overvalued

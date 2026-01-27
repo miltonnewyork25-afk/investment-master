@@ -1,0 +1,21 @@
+Rank,Ticker,Company,Sector,Composite_Score,Sharpe_3Y,MDD,Fundamental,Valuation,SEC_Signal,Smart_Money,Validated
+1,AXP,American Express Company,Financial Services,63.2,1.18,-31.5%,70,60.0,50.0,15,True
+2,AVGO,Broadcom Inc.,Technology,62.7,1.23,-41.1%,85,50.0,50.0,25,True
+3,LLY,Eli Lilly and Company,Healthcare,62.4,1.14,-34.5%,80,50.0,50.0,25,True
+4,BKNG,Booking Holdings Inc.,Consumer Cyclical,61.0,0.99,-39.5%,80,60.0,50.0,15,True
+5,CB,Chubb Limited,Financial Services,58.9,0.43,-19.3%,80,70.0,50.0,15,True
+6,ABBV,AbbVie Inc.,Healthcare,58.4,0.76,-21.9%,65,60.0,50.0,25,True
+7,COST,Costco Wholesale Corporation,Consumer Defensive,57.4,0.84,-31.4%,75,50.0,50.0,25,True
+8,CAT,Caterpillar Inc.,Industrials,55.0,0.76,-34.0%,70,55.0,50.0,15,True
+9,LIN,Linde plc,Basic Materials,53.7,0.49,-22.8%,75,50.0,50.0,20,True
+10,MA,Mastercard Incorporated,Financial Services,51.4,0.33,-28.3%,80,55.0,50.0,35,True
+11,SPGI,S&P Global Inc.,Financial Services,49.7,0.49,-39.8%,75,55.0,50.0,15,True
+12,LOW,"Lowe's Companies, Inc.",Consumer Cyclical,48.8,0.34,-33.9%,75,55.0,50.0,15,True
+13,MSFT,Microsoft Corporation,Technology,47.7,0.52,-37.1%,85,26.0,50.0,110,True
+14,KO,The Coca-Cola Company,Consumer Defensive,47.1,0.49,-17.3%,70,15.0,50.0,25,True
+15,GOOGL,Alphabet Inc.,Technology,47.1,0.9,-44.3%,85,0.0,50.0,105,True
+16,MRK,"Merck & Co., Inc.",Healthcare,46.6,0.31,-43.4%,80,55.0,50.0,25,True
+17,JPM,JPMorgan Chase & Co.,Financial Services,45.2,0.7,-38.8%,60,33.0,45.8,40,True
+18,DE,Deere & Company,Industrials,45.2,0.34,-33.8%,65,50.0,50.0,15,True
+19,V,Visa Inc.,Financial Services,44.2,0.38,-28.6%,85,8.0,50.0,55,True
+20,ISRG,"Intuitive Surgical, Inc.",Healthcare,44.1,0.34,-49.9%,80,50.0,50.0,15,True

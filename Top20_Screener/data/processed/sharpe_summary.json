@@ -1,0 +1,16 @@
+{
+  "calculation_date": "2026-01-26T10:31:29.792651",
+  "total_symbols": 504,
+  "valid_calculations": 499,
+  "coverage_rate": 0.9900793650793651,
+  "sharpe_3y_mean": 0.3650366733466934,
+  "sharpe_3y_median": 0.2677,
+  "sharpe_3y_std": 0.6494222256640909,
+  "sharpe_3y_min": -1.0497,
+  "sharpe_3y_max": 3.7192,
+  "sharpe_3y_p10": -0.39164,
+  "sharpe_3y_p25": -0.08145,
+  "sharpe_3y_p50": 0.2677,
+  "sharpe_3y_p75": 0.74405,
+  "sharpe_3y_p90": 1.18392
+}

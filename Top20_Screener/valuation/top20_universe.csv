@@ -1,0 +1,21 @@
+Ticker,Company_Name,Sector,Industry
+AAPL,Apple Inc.,Technology,Consumer Electronics
+MSFT,Microsoft Corporation,Technology,Software
+NVDA,NVIDIA Corporation,Technology,Semiconductors
+GOOGL,Alphabet Inc.,Communication Services,Internet Services
+AMZN,Amazon.com Inc.,Consumer Discretionary,E-commerce
+META,Meta Platforms Inc.,Communication Services,Social Media
+TSLA,Tesla Inc.,Consumer Discretionary,Automobiles
+BRK.B,Berkshire Hathaway Inc.,Financials,Diversified Financials
+JPM,JPMorgan Chase & Co.,Financials,Banks
+V,Visa Inc.,Financials,Payment Systems
+JNJ,Johnson & Johnson,Healthcare,Pharmaceuticals
+UNH,UnitedHealth Group Inc.,Healthcare,Health Insurance
+XOM,Exxon Mobil Corporation,Energy,Oil & Gas
+CVX,Chevron Corporation,Energy,Oil & Gas
+PG,Procter & Gamble Co.,Consumer Staples,Consumer Goods
+KO,The Coca-Cola Company,Consumer Staples,Beverages
+WMT,Walmart Inc.,Consumer Staples,Retail
+HD,The Home Depot Inc.,Consumer Discretionary,Retail
+DIS,The Walt Disney Company,Communication Services,Entertainment
+NFLX,Netflix Inc.,Communication Services,Streaming

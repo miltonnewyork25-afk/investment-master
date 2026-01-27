@@ -1,0 +1,53 @@
+ticker,company_name,sector,fund_investor,fund_type,portfolio_weight,market_cap_bn,latest_filing_date,investment_thesis,data_source
+AAPL,Apple Inc,Technology,Berkshire Hathaway,Value Conglomerate,22.69,3000,2025-09-30,Brand moat + services transformation + massive buybacks,SEC 13F
+AXP,American Express,Financial Services,Berkshire Hathaway,Value Conglomerate,18.84,190,2025-09-30,Payment network effects + high-end customer base,SEC 13F
+BAC,Bank of America,Financial Services,Berkshire Hathaway,Value Conglomerate,10.96,320,2025-09-30,Undervalued bank + high dividend yield,SEC 13F
+KO,Coca-Cola,Consumer Staples,Berkshire Hathaway,Value Conglomerate,9.92,280,2025-09-30,Perpetual brand + global distribution,SEC 13F
+CVX,Chevron,Energy,Berkshire Hathaway,Value Conglomerate,7.09,280,2025-09-30,Energy value + high dividend,SEC 13F
+OXY,Occidental Petroleum,Energy,Berkshire Hathaway,Value Conglomerate,4.68,50,2025-09-30,Energy arbitrage opportunity,SEC 13F
+MCO,Moody's Corp,Financial Services,Berkshire Hathaway,Value Conglomerate,4.40,85,2025-09-30,Rating duopoly + high barriers,SEC 13F
+CB,Chubb Ltd,Financial Services,Berkshire Hathaway,Value Conglomerate,3.31,115,2025-09-30,Insurance float value,SEC 13F
+KHC,Kraft Heinz,Consumer Staples,Berkshire Hathaway,Value Conglomerate,3.17,38,2025-09-30,Consumer brands (underperformer),SEC 13F
+GOOGL,Alphabet Inc,Technology,Berkshire Hathaway,Value Conglomerate,1.62,2100,2025-09-30,Search monopoly + AI opportunity,SEC 13F
+UBER,Uber Technologies,Technology,Pershing Square,Activist Hedge Fund,20.25,155,2025-09-30,Platform dominance + rate tailwind,SEC 13F
+BN,Brookfield Corp,Financial Services,Pershing Square,Activist Hedge Fund,19.21,85,2025-09-30,Alternative asset management leader,SEC 13F
+HHH,Howard Hughes Holdings,Real Estate,Pershing Square,Activist Hedge Fund,10.58,4,2025-09-30,Long-term land development,SEC 13F
+GOOGL,Alphabet Inc,Technology,Pershing Square,Activist Hedge Fund,10.52,2100,2025-09-30,Search + AI moat,SEC 13F
+QSR,Restaurant Brands Intl,Consumer Discretionary,Pershing Square,Activist Hedge Fund,10.04,32,2025-09-30,Global QSR franchise model,SEC 13F
+CMG,Chipotle Mexican Grill,Consumer Discretionary,Pershing Square,Activist Hedge Fund,8.50,75,2025-09-30,Brand recovery + digital transformation,SEC 13F
+QSR,Restaurant Brands Intl,Consumer Discretionary,Baupost Group,Deep Value,17.20,32,2025-09-30,QSR value opportunity,SEC 13F
+GOOGL,Alphabet Inc,Technology,Baupost Group,Deep Value,12.50,2100,2025-09-30,Tech giant discount,SEC 13F
+ELV,Elevance Health,Healthcare,Baupost Group,Deep Value,10.80,95,2025-09-30,Healthcare insurance value,SEC 13F
+LBTYA,Liberty Global,Communication Services,Baupost Group,Deep Value,9.50,8,2025-09-30,Telecom consolidation play,SEC 13F
+WTW,Willis Towers Watson,Financial Services,Baupost Group,Deep Value,8.20,32,2025-09-30,Insurance brokerage undervalued,SEC 13F
+GRBK,Green Brick Partners,Consumer Discretionary,Greenlight Capital,Value Hedge Fund,27.51,3,2025-09-30,Homebuilder value play,SEC 13F
+FLR,Fluor Corp,Industrials,Greenlight Capital,Value Hedge Fund,9.13,6,2025-09-30,Engineering/construction,SEC 13F
+CNR,Core Natural Resources,Energy,Greenlight Capital,Value Hedge Fund,7.08,8,2025-09-30,Coal resources,SEC 13F
+BHF,Brighthouse Financial,Financial Services,Greenlight Capital,Value Hedge Fund,5.83,3,2025-09-30,Insurance undervalued,SEC 13F
+KD,Kyndryl Holdings,Technology,Greenlight Capital,Value Hedge Fund,5.13,5,2025-09-30,IBM spinoff IT services,SEC 13F
+BABA,Alibaba Group,Consumer Discretionary,Appaloosa Management,Event-Driven,15.61,210,2025-09-30,China tech contrarian bet,SEC 13F
+AMZN,Amazon.com,Consumer Discretionary,Appaloosa Management,Event-Driven,7.43,2200,2025-09-30,E-commerce + AWS dominance,SEC 13F
+WHR,Whirlpool Corp,Consumer Discretionary,Appaloosa Management,Event-Driven,5.85,5,2025-09-30,Cyclical turnaround,SEC 13F
+NVDA,NVIDIA Corp,Technology,Appaloosa Management,Event-Driven,4.80,3400,2025-09-30,AI compute leader,SEC 13F
+GOOGL,Alphabet Inc,Technology,Appaloosa Management,Event-Driven,4.58,2100,2025-09-30,Tech value,SEC 13F
+PCG,PG&E Corp,Utilities,Third Point,Event-Driven,9.02,50,2025-09-30,Utility restructuring,SEC 13F
+AMZN,Amazon.com,Consumer Discretionary,Third Point,Event-Driven,7.37,2200,2025-09-30,Tech giant,SEC 13F
+MSFT,Microsoft Corp,Technology,Third Point,Event-Driven,6.81,3100,2025-09-30,Cloud + AI leader,SEC 13F
+NVDA,NVIDIA Corp,Technology,Third Point,Event-Driven,6.35,3400,2025-09-30,AI infrastructure,SEC 13F
+NSC,Norfolk Southern,Industrials,Third Point,Event-Driven,5.92,60,2025-09-30,Railroad value,SEC 13F
+AMZN,Amazon.com,Consumer Discretionary,ValueAct Capital,Activist,18.00,2200,2025-09-30,Platform + AWS,SEC 13F
+CRM,Salesforce Inc,Technology,ValueAct Capital,Activist,15.00,280,2025-09-30,Cloud software leader,SEC 13F
+RBLX,Roblox Corp,Technology,ValueAct Capital,Activist,14.00,35,2025-09-30,Metaverse platform,SEC 13F
+META,Meta Platforms,Technology,ValueAct Capital,Activist,12.00,1500,2025-09-30,Social media + AI,SEC 13F
+V,Visa Inc,Financial Services,ValueAct Capital,Activist,10.00,550,2025-09-30,Payment network,SEC 13F
+VIG,Vanguard Dividend Appreciation,Multi-Sector,Dividend Growth ETF,Passive ETF,N/A,90,2025-12-31,10-year dividend growth companies,Fund Prospectus
+SCHD,Schwab US Dividend Equity,Multi-Sector,Dividend Growth ETF,Passive ETF,N/A,60,2025-12-31,Dow Jones Dividend 100,Fund Prospectus
+VTV,Vanguard Value,Multi-Sector,Large Cap Value ETF,Passive ETF,N/A,62,2025-12-31,Broad large cap value,Fund Prospectus
+DODGX,Dodge & Cox Stock Fund,Multi-Sector,Active Value Fund,Active Mutual Fund,N/A,119,2025-12-31,Deep value long-term,Fund Holdings
+FCNTX,Fidelity Contrafund,Multi-Sector,Active Growth Fund,Active Mutual Fund,N/A,136,2025-12-31,Best-of-breed undervalued,Fund Holdings
+AWSHX,American Funds Washington Mutual,Multi-Sector,Quality Value Fund,Active Mutual Fund,N/A,210,2025-12-31,Quality dividend companies,Fund Holdings
+AMZN,Amazon.com,Consumer Discretionary,Multiple Top Funds,Consensus,varies,2200,2025-09-30,Held by 4+ top investors,Multiple Sources
+GOOGL,Alphabet Inc,Technology,Multiple Top Funds,Consensus,varies,2100,2025-09-30,Held by 5+ top investors,Multiple Sources
+META,Meta Platforms,Technology,Multiple Top Funds,Consensus,varies,1500,2025-09-30,Held by 3+ top investors,Multiple Sources
+NVDA,NVIDIA Corp,Technology,Multiple Top Funds,Consensus,varies,3400,2025-09-30,Held by 3+ top investors,Multiple Sources
+QSR,Restaurant Brands Intl,Consumer Discretionary,Multiple Top Funds,Consensus,varies,32,2025-09-30,Held by 2+ top investors,Multiple Sources

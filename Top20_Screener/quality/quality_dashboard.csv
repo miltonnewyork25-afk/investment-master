@@ -1,0 +1,7 @@
+Ticker,Company,Sector,Industry,OCF/NI,FCF/NI,CCC_Days,ROIC_%,ROE_%,D/E,Net_Debt/EBITDA,Interest_Coverage,OCF_Rating,ROIC_Rating,Leverage_Rating,Data_Date
+TSLA,Tesla Inc,Consumer Cyclical,Auto Manufacturers,0.885,0.291,9.5,16.5,23.91,0.15,-0.63,69.43,Acceptable,Excellent,Conservative,2023-12-31
+MSFT,Microsoft Corporation,Technology,Software - Infrastructure,1.21,0.822,-2.6,33.48,30.37,0.41,-0.15,44.98,Excellent,Excellent,Conservative,2023-06-30
+AAPL,Apple Inc,Technology,Consumer Electronics,1.14,1.027,-67.8,67.81,156.08,1.79,0.71,29.06,Good,Excellent,Elevated,2023-09-30
+AMZN,Amazon.com Inc,Consumer Cyclical,Internet Retail,2.792,1.209,-26.2,11.21,15.07,0.81,2.46,11.57,Excellent,Good,Moderate,2023-12-31
+NVDA,NVIDIA Corporation,Technology,Semiconductors,0.956,0.921,119.4,109.82,69.23,0.23,-0.49,128.3,Acceptable,Excellent,Conservative,2024-01-28
+META,Meta Platforms Inc,Communication Services,Internet Content & Information,1.819,1.122,-46.7,22.88,22.18,0.21,-0.1,64.49,Excellent,Excellent,Conservative,2023-12-31

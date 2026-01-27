@@ -1,0 +1,7 @@
+Ticker,Company,Sector,Debt_to_Equity,DE_Rating,Net_Debt_to_EBITDA,ND_EBITDA_Rating,Interest_Coverage,Interest_Cov_Rating,Current_Ratio,Current_Ratio_Rating,Quick_Ratio,Quick_Ratio_Rating,Cash_to_STD,Data_Date
+TSLA,Tesla Inc,Consumer Cyclical,0.15,Conservative,-0.63,Excellent,69.43,Excellent,1.69,Good,1.22,Good,9.09,2023-12-31
+MSFT,Microsoft Corporation,Technology,0.41,Conservative,-0.15,Excellent,44.98,Excellent,1.94,Good,1.91,Good,21.2,2023-06-30
+AAPL,Apple Inc,Technology,1.79,Elevated,0.71,Excellent,29.06,Excellent,0.99,Warning,0.94,Acceptable,1.9,2023-09-30
+AMZN,Amazon.com Inc,Consumer Cyclical,0.81,Moderate,2.46,Good,11.57,Excellent,1.06,Acceptable,0.84,Acceptable,1.08,2023-12-31
+NVDA,NVIDIA Corporation,Technology,0.23,Conservative,-0.49,Excellent,128.3,Excellent,2.71,Excellent,2.42,Good,20.79,2024-01-28
+META,Meta Platforms Inc,Communication Services,0.21,Conservative,-0.1,Excellent,64.49,Excellent,2.15,Excellent,2.15,Good,inf,2023-12-31

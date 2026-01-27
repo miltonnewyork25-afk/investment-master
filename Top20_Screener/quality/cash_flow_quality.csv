@@ -1,0 +1,7 @@
+Ticker,Company,Sector,OCF_to_NI,OCF_NI_Rating,FCF_to_NI,FCF_NI_Rating,DSO_Days,DIO_Days,DPO_Days,CCC_Days,CCC_Rating,CapEx_Intensity,Data_Date
+TSLA,Tesla Inc,Consumer Cyclical,0.885,Acceptable,0.291,Warning,13.2,62.9,66.6,9.5,Excellent,0.092,2023-12-31
+MSFT,Microsoft Corporation,Technology,1.21,Excellent,0.822,Good,83.9,13.9,100.3,-2.6,Excellent,0.1326,2023-06-30
+AAPL,Apple Inc,Technology,1.14,Good,1.027,Excellent,28.1,10.8,106.7,-67.8,Excellent,0.0286,2023-09-30
+AMZN,Amazon.com Inc,Consumer Cyclical,2.792,Excellent,1.209,Excellent,26.9,35.8,88.9,-26.2,Excellent,0.0838,2023-12-31
+NVDA,NVIDIA Corporation,Technology,0.956,Acceptable,0.921,Excellent,59.9,121.6,62.1,119.4,Warning,0.0175,2024-01-28
+META,Meta Platforms Inc,Communication Services,1.819,Excellent,1.122,Excellent,36.4,0.0,83.1,-46.7,Excellent,0.2021,2023-12-31

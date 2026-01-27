@@ -1,0 +1,6 @@
+﻿Ticker,Company,Sector,Industry,Total_Score,Grade,Cash_Flow_Quality,Profit_Structure,Capital_Efficiency,Moat_Strength,Earnings_Visibility,Is_Excluded,Exclusion_Reasons,Confidence,Evaluation_Date
+GOOGL,Alphabet Inc.,Technology,Internet Content & Information,78.0,A,23,20,18,10,7.0,False,,high,2026-01-26
+MSFT,Microsoft Corporation,Technology,Software - Infrastructure,74.0,B+,21,20,17,8,8.0,False,,high,2026-01-26
+V,Visa Inc.,Financial Services,Financial - Credit Services,71.5,B+,25,11,17,11,7.5,False,,high,2026-01-26
+JNJ,Johnson & Johnson,Healthcare,Drug Manufacturers - General,64.5,B,19,16,15,8,6.5,False,,high,2026-01-26
+WMT,Walmart Inc.,Consumer Defensive,Discount Stores,61.5,B,22,17,12,3,7.5,False,,high,2026-01-26

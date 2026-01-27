@@ -1,0 +1,72 @@
+Sector,Industry,PE_Median,PE_25P,PE_75P,EV_EBITDA_Median,P_FCF_Median,PB_Median,PEG_Median,FCF_Yield_Threshold,WACC,Notes
+Technology,Software—Application,32.5,25.0,42.0,22.0,30.0,8.0,2.0,0.030,0.095,High growth justified premium
+Technology,Software—Infrastructure,35.0,28.0,48.0,24.0,35.0,10.0,2.2,0.028,0.095,Mission-critical high margin
+Technology,Semiconductors,25.0,18.0,35.0,16.0,22.0,5.5,1.5,0.040,0.095,Cyclical chip industry
+Technology,Computer Hardware,22.0,16.0,30.0,14.0,20.0,5.0,1.3,0.045,0.095,Hardware lower margins
+Technology,IT Services,24.0,18.0,32.0,15.0,22.0,5.5,1.6,0.042,0.095,Consulting and outsourcing
+Technology,Electronic Components,20.0,14.0,28.0,12.0,18.0,4.0,1.2,0.050,0.095,Industrial tech
+Communication Services,Internet Content & Information,28.0,20.0,38.0,16.0,24.0,5.0,1.8,0.038,0.090,Ad-driven platforms
+Communication Services,Entertainment,22.0,15.0,32.0,12.0,20.0,3.5,1.5,0.045,0.090,Media and streaming
+Communication Services,Telecom Services,14.0,10.0,18.0,7.0,12.0,2.0,1.2,0.060,0.090,Mature utilities-like
+Communication Services,Gaming,25.0,18.0,35.0,15.0,22.0,4.5,1.6,0.042,0.090,Interactive entertainment
+Consumer Cyclical,Internet Retail,45.0,30.0,70.0,20.0,40.0,10.0,2.5,0.025,0.100,High growth e-commerce
+Consumer Cyclical,Auto Manufacturers,12.0,8.0,18.0,6.0,10.0,1.5,0.8,0.065,0.100,Cyclical OEMs
+Consumer Cyclical,Auto Parts,14.0,10.0,20.0,7.0,12.0,2.0,1.0,0.060,0.100,Supplier network
+Consumer Cyclical,Restaurants,22.0,16.0,30.0,12.0,18.0,6.0,1.5,0.045,0.100,Franchise models
+Consumer Cyclical,Specialty Retail,18.0,12.0,26.0,10.0,16.0,4.0,1.2,0.052,0.100,Brick and mortar
+Consumer Cyclical,Home Improvement Retail,22.0,16.0,28.0,14.0,20.0,8.0,1.6,0.045,0.100,Housing related
+Consumer Cyclical,Apparel Retail,16.0,10.0,24.0,8.0,14.0,3.5,1.0,0.058,0.100,Fashion cycles
+Consumer Cyclical,Leisure,20.0,14.0,28.0,11.0,18.0,4.0,1.3,0.050,0.100,Travel and entertainment
+Consumer Cyclical,Luxury Goods,28.0,20.0,38.0,16.0,26.0,6.0,1.8,0.035,0.100,Brand premium
+Consumer Defensive,Beverages—Non-Alcoholic,26.0,20.0,32.0,18.0,28.0,12.0,2.8,0.032,0.082,Coca-Cola Pepsi type
+Consumer Defensive,Beverages—Alcoholic,20.0,15.0,26.0,14.0,22.0,6.0,2.2,0.040,0.082,Beer wine spirits
+Consumer Defensive,Household & Personal Products,24.0,18.0,30.0,16.0,24.0,8.0,2.5,0.038,0.082,Staple brands
+Consumer Defensive,Packaged Foods,18.0,14.0,24.0,12.0,18.0,4.0,2.0,0.048,0.082,Food manufacturing
+Consumer Defensive,Tobacco,10.0,7.0,14.0,8.0,10.0,5.0,1.0,0.075,0.082,Declining industry
+Consumer Defensive,Discount Stores,22.0,16.0,28.0,12.0,20.0,6.0,1.8,0.045,0.082,Walmart Dollar General
+Consumer Defensive,Grocery Stores,14.0,10.0,18.0,8.0,12.0,2.5,1.5,0.060,0.082,Low margin grocery
+Healthcare,Drug Manufacturers—General,18.0,12.0,26.0,12.0,18.0,4.0,1.4,0.048,0.088,Big pharma
+Healthcare,Biotechnology,N/A,N/A,N/A,N/A,N/A,5.0,N/A,N/A,0.100,Often pre-profit use rNPV
+Healthcare,Medical Devices,28.0,20.0,38.0,18.0,26.0,5.0,2.0,0.035,0.088,Innovation premium
+Healthcare,Healthcare Plans,16.0,12.0,22.0,10.0,14.0,2.5,1.2,0.055,0.088,Insurance managed care
+Healthcare,Medical Distribution,18.0,14.0,24.0,12.0,16.0,3.0,1.4,0.050,0.088,Distribution networks
+Healthcare,Medical Instruments,30.0,22.0,40.0,20.0,28.0,6.0,2.2,0.032,0.088,Diagnostic equipment
+Financial Services,Banks—Diversified,11.0,8.0,14.0,N/A,N/A,1.1,1.0,N/A,0.085,Use P/B primarily
+Financial Services,Banks—Regional,10.0,7.0,13.0,N/A,N/A,1.0,0.9,N/A,0.085,Smaller banks
+Financial Services,Asset Management,14.0,10.0,18.0,N/A,N/A,2.5,1.3,N/A,0.085,AUM based
+Financial Services,Insurance—Life,9.0,6.0,12.0,N/A,N/A,0.9,0.8,N/A,0.085,Book value focus
+Financial Services,Insurance—Property & Casualty,12.0,9.0,16.0,N/A,N/A,1.2,1.0,N/A,0.085,Underwriting cycle
+Financial Services,Credit Services,15.0,11.0,20.0,N/A,N/A,3.0,1.2,N/A,0.085,Visa Mastercard type
+Financial Services,Capital Markets,14.0,10.0,18.0,N/A,N/A,2.0,1.2,N/A,0.085,Investment banks
+Industrials,Aerospace & Defense,22.0,16.0,30.0,14.0,20.0,4.5,1.6,0.045,0.092,Defense contractors
+Industrials,Railroads,18.0,14.0,24.0,10.0,16.0,3.5,1.8,0.050,0.092,Transport infrastructure
+Industrials,Airlines,8.0,5.0,12.0,5.0,8.0,1.5,0.6,0.080,0.100,Highly cyclical low margin
+Industrials,Trucking,14.0,10.0,20.0,7.0,12.0,2.5,1.0,0.060,0.092,Logistics
+Industrials,Industrial Distribution,18.0,14.0,24.0,12.0,16.0,4.0,1.4,0.050,0.092,B2B distribution
+Industrials,Machinery,18.0,14.0,26.0,11.0,16.0,3.5,1.3,0.050,0.092,Industrial equipment
+Industrials,Electrical Equipment,22.0,16.0,30.0,14.0,20.0,4.5,1.5,0.045,0.092,Power electronics
+Industrials,Building Products,16.0,12.0,22.0,10.0,14.0,3.0,1.2,0.055,0.092,Construction materials
+Energy,Oil & Gas Integrated,10.0,7.0,14.0,5.0,7.0,1.4,0.7,0.090,0.092,Majors
+Energy,Oil & Gas E&P,8.0,5.0,12.0,4.0,6.0,1.2,0.6,0.100,0.092,Exploration production
+Energy,Oil & Gas Midstream,10.0,7.0,14.0,8.0,10.0,2.0,1.0,0.075,0.092,Pipelines MLPs
+Energy,Oil & Gas Refining & Marketing,8.0,5.0,12.0,5.0,7.0,1.3,0.7,0.090,0.092,Refiners
+Energy,Oil & Gas Equipment & Services,12.0,8.0,18.0,6.0,10.0,1.5,0.8,0.070,0.092,Service companies
+Basic Materials,Specialty Chemicals,18.0,14.0,24.0,11.0,16.0,3.5,1.4,0.050,0.090,Value-added chemicals
+Basic Materials,Commodity Chemicals,12.0,8.0,18.0,7.0,10.0,2.0,0.9,0.065,0.090,Bulk chemicals
+Basic Materials,Steel,10.0,6.0,16.0,5.0,8.0,1.2,0.7,0.080,0.090,Highly cyclical
+Basic Materials,Copper,14.0,8.0,20.0,6.0,10.0,2.0,0.9,0.070,0.090,Industrial metal
+Basic Materials,Gold,20.0,12.0,30.0,10.0,16.0,2.5,1.2,0.050,0.090,Precious metal miners
+Basic Materials,Building Materials,14.0,10.0,20.0,8.0,12.0,2.5,1.0,0.058,0.090,Cement aggregates
+Utilities,Utilities—Regulated Electric,18.0,14.0,22.0,11.0,N/A,1.8,2.5,N/A,0.070,Rate base growth
+Utilities,Utilities—Regulated Gas,16.0,12.0,20.0,10.0,N/A,1.6,2.3,N/A,0.070,Gas distribution
+Utilities,Utilities—Diversified,17.0,13.0,21.0,10.5,N/A,1.7,2.4,N/A,0.070,Multi-utility
+Utilities,Utilities—Renewable,22.0,16.0,30.0,12.0,N/A,2.2,2.0,N/A,0.072,Clean energy premium
+Utilities,Independent Power Producers,12.0,8.0,18.0,7.0,N/A,1.4,1.5,N/A,0.075,Merchant power
+Real Estate,REIT—Retail,14.0,10.0,20.0,12.0,N/A,1.5,N/A,N/A,0.075,Shopping centers
+Real Estate,REIT—Office,12.0,8.0,18.0,11.0,N/A,1.3,N/A,N/A,0.075,Office buildings
+Real Estate,REIT—Residential,18.0,14.0,24.0,14.0,N/A,2.0,N/A,N/A,0.075,Apartments
+Real Estate,REIT—Industrial,22.0,16.0,30.0,16.0,N/A,2.5,N/A,N/A,0.075,Warehouses logistics
+Real Estate,REIT—Healthcare Facilities,16.0,12.0,22.0,13.0,N/A,1.6,N/A,N/A,0.075,Medical properties
+Real Estate,REIT—Diversified,14.0,10.0,20.0,12.0,N/A,1.4,N/A,N/A,0.075,Mixed portfolio
+Real Estate,REIT—Data Centers,28.0,20.0,38.0,18.0,N/A,4.0,N/A,N/A,0.075,Digital infrastructure premium
+Real Estate,REIT—Cell Towers,30.0,22.0,40.0,20.0,N/A,6.0,N/A,N/A,0.075,Wireless infrastructure

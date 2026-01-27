@@ -1,0 +1,6 @@
+﻿Ticker,Company,Total_Score,Grade,Profitability_Quality,Capital_Efficiency,Moat_Strength,Balance_Sheet,Growth_Sustainability,Sector,Evaluation_Date
+GOOGL,Alphabet Inc.,97,A+,25,19,25,19,9,Technology,2026-01-25
+MSFT,Microsoft Corporation,96,A+,24,19,25,19,9,Technology,2026-01-25
+AAPL,Apple Inc.,92,A+,25,19,25,15,8,Technology,2026-01-25
+JNJ,Johnson & Johnson,85,A,22,17,25,16,5,Healthcare,2026-01-25
+WMT,Walmart Inc.,82,A,24,14,25,12,7,Consumer,2026-01-25

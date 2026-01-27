@@ -1,0 +1,28 @@
+{
+  "calculation_date": "2026-01-26T10:31:36.527254",
+  "total_symbols": 504,
+  "complete_data": 502,
+  "qualified_mdd": 99,
+  "excluded_mdd": 403,
+  "mdd_threshold": -0.3,
+  "statistics": {
+    "max_drawdown": {
+      "mean": -0.44268987316328073,
+      "median": -0.41950765331782036,
+      "worst": -0.9899486625236422,
+      "best": -0.17223305704534378
+    },
+    "sortino": {
+      "mean": 0.9158954183266932,
+      "median": 0.89195
+    },
+    "calmar": {
+      "mean": 0.6270908366533866,
+      "median": 0.5517000000000001
+    },
+    "beta": {
+      "mean": 0.9162529880478087,
+      "median": 0.892
+    }
+  }
+}

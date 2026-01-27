@@ -1,0 +1,164 @@
+{
+  "version": "1.0",
+  "description": "Agent 7 排除规则配置文件 - 可自定义阈值",
+  "last_updated": "2026-01-25",
+
+  "industry_exclusion": {
+    "biotech": {
+      "enabled": true,
+      "description": "排除生物制药/临床试验主导公司",
+      "rules": {
+        "market_cap_to_revenue_ratio": {
+          "threshold": 20,
+          "description": "市值/收入 > 20x视为赌未来管线"
+        },
+        "min_revenue": {
+          "threshold": 50000000,
+          "description": "最低收入门槛 ($50M)"
+        }
+      }
+    },
+    "spac": {
+      "enabled": true,
+      "description": "排除SPAC公司",
+      "keywords": ["acquisition corp", "spac"]
+    },
+    "penny_stock": {
+      "enabled": true,
+      "description": "排除Penny Stocks",
+      "rules": {
+        "max_price": 5,
+        "max_market_cap": 500000000
+      }
+    },
+    "pre_revenue": {
+      "enabled": true,
+      "description": "排除零收入公司"
+    }
+  },
+
+  "data_quality": {
+    "enabled": true,
+    "description": "数据质量检查",
+    "required_data": {
+      "annual_income_years": 5,
+      "cashflow_years": 3,
+      "price_history_days": 250
+    },
+    "max_missing_percentage": 0.2
+  },
+
+  "data_anomaly": {
+    "enabled": true,
+    "description": "数据异常检查",
+    "rules": {
+      "revenue_spike_ratio": {
+        "threshold": 10,
+        "description": "收入暴增倍数阈值"
+      },
+      "ar_growth_vs_revenue": {
+        "multiplier": 2,
+        "min_ar_growth": 0.5,
+        "description": "应收账款增速 vs 收入增速"
+      },
+      "goodwill_ratio": {
+        "threshold": 0.5,
+        "description": "商誉占总资产比例上限"
+      }
+    }
+  },
+
+  "financial_risk": {
+    "altman_z_score": {
+      "enabled": true,
+      "description": "Altman Z-Score破产风险",
+      "thresholds": {
+        "danger_zone": 1.8,
+        "grey_zone": 3.0,
+        "safe_zone": 3.0
+      }
+    },
+    "debt_risk": {
+      "enabled": true,
+      "description": "债务风险检查",
+      "rules": {
+        "short_term_debt_to_cash_ratio": 2,
+        "min_interest_coverage_ratio": 1.5
+      }
+    }
+  },
+
+  "governance_risk": {
+    "enabled": true,
+    "description": "治理与合规风险",
+    "fraud_keywords": [
+      "investigation",
+      "fraud",
+      "sec",
+      "lawsuit",
+      "class action",
+      "restatement"
+    ],
+    "insider_selling": {
+      "enabled": true,
+      "rules": {
+        "lookback_days": 180,
+        "min_net_selling_amount": 10000000,
+        "min_sell_ratio": 0.8,
+        "min_executive_selling": 5000000
+      }
+    }
+  },
+
+  "liquidity_risk": {
+    "enabled": true,
+    "description": "流动性风险检查",
+    "rules": {
+      "min_daily_dollar_volume": 5000000,
+      "max_bid_ask_spread": 0.01,
+      "min_float_percentage": 0.3
+    }
+  },
+
+  "special_situations": {
+    "recent_ipo": {
+      "enabled": true,
+      "min_years_since_ipo": 2,
+      "grey_zone_years": 3
+    },
+    "restructuring": {
+      "enabled": true,
+      "description": "排除重大重组中的公司"
+    },
+    "chinese_adr": {
+      "enabled": true,
+      "description": "排除中国ADR (审计风险)",
+      "excluded_countries": ["cn", "china", "hk", "hong kong"],
+      "exceptions": ["TSM", "BABA", "JD"]
+    }
+  },
+
+  "api_settings": {
+    "request_delay_seconds": 0.3,
+    "timeout_seconds": 10,
+    "max_retries": 3
+  },
+
+  "output_settings": {
+    "generate_excel": false,
+    "generate_visualizations": false,
+    "detailed_logging": true
+  },
+
+  "custom_rules": {
+    "high_short_interest": {
+      "enabled": false,
+      "threshold": 0.3,
+      "description": "做空比例 > 30% (可选规则)"
+    },
+    "crypto_exposure": {
+      "enabled": false,
+      "description": "加密货币主导业务 (可选)"
+    }
+  }
+}

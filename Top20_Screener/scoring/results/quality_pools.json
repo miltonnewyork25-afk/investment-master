@@ -1,0 +1,33 @@
+{
+  "high_quality": [
+    {
+      "ticker": "GOOGL",
+      "score": 78,
+      "grade": "A"
+    },
+    {
+      "ticker": "MSFT",
+      "score": 74,
+      "grade": "B+"
+    },
+    {
+      "ticker": "V",
+      "score": 71.5,
+      "grade": "B+"
+    }
+  ],
+  "medium_quality": [
+    {
+      "ticker": "JNJ",
+      "score": 64.5,
+      "grade": "B"
+    },
+    {
+      "ticker": "WMT",
+      "score": 61.5,
+      "grade": "B"
+    }
+  ],
+  "low_quality": [],
+  "excluded": []
+}

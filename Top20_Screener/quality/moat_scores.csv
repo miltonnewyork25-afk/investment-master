@@ -1,0 +1,8 @@
+Ticker,Company,Sector,Industry,Pricing_Power,Switching_Costs,Cost_Advantage,Network_Effects,Regulatory_Barriers,Total_Score,Moat_Rating,Notes
+AAPL,Apple Inc,Technology,Consumer Electronics,18,25,20,8,0,71,Wide Moat,强品牌+生态系统锁定+规模优势
+MSFT,Microsoft Corporation,Technology,Software - Infrastructure,20,25,15,7,0,67,Narrow Moat,企业软件深度嵌入+云计算规模
+NVDA,NVIDIA Corporation,Technology,Semiconductors,22,18,23,5,0,68,Narrow Moat,CUDA生态+技术领先+AI芯片垄断
+GOOGL,Alphabet Inc,Communication Services,Internet Content & Information,20,15,18,10,0,63,Narrow Moat,搜索网络效应+数据优势+规模
+META,Meta Platforms Inc,Communication Services,Social Media,15,20,15,12,0,62,Narrow Moat,社交网络效应+用户粘性
+AMZN,Amazon.com Inc,Consumer Cyclical,Internet Retail,10,18,25,8,0,61,Narrow Moat,物流成本优势+Prime会员锁定
+TSLA,Tesla Inc,Consumer Cyclical,Auto Manufacturers,12,15,10,3,0,40,No Moat,品牌溢价有限+转换成本低+竞争加剧

@@ -1,0 +1,21 @@
+Ticker,Company,Institutions_Holding,Holding_Institutions,Avg_Portfolio_Weight,Signal_Strength,Q3_2025_Action,Notes
+GOOGL,Alphabet Inc,7,Berkshire|Ackman|Klarman|Tepper|Loeb|Laffont|Druckenmiller,5.8%,Extreme,New+Add,Buffett新建仓$4.3B极强信号
+AMZN,Amazon.com,6,Ackman|Tepper|Loeb|ValueAct|Laffont|Druckenmiller,7.2%,Extreme,Add,多家新建或增持
+META,Meta Platforms,5,Loeb|ValueAct|Laffont|Viking|Druckenmiller,4.5%,Strong,Add,AI广告受益
+MSFT,Microsoft,4,Loeb|Laffont|Viking|Coatue,5.1%,Strong,Add,Loeb加仓175%
+NVDA,NVIDIA,3,Tepper|Loeb|Laffont,5.3%,Medium-Strong,Hold/Trim,部分获利了结
+TSM,Taiwan Semiconductor,3,Loeb|Druckenmiller|Laffont,6.1%,Medium-Strong,Trim,再平衡减持
+QSR,Restaurant Brands,2,Ackman|Klarman,10.6%,Medium,Add,价值派共识
+TEVA,Teva Pharma,2,Einhorn|Druckenmiller,6.2%,Medium,Add,医疗价值股
+V,Visa,2,ValueAct|Viking,6.5%,Medium,Hold,支付网络
+DIS,Disney,2,ValueAct|Viking,5.2%,Medium,Mixed,分歧存在
+COF,Capital One,2,Loeb|Viking,4.8%,Medium,Mixed,金融板块分歧
+AAPL,Apple Inc,1,Berkshire,22.7%,Warning,Sell,连续被减持
+BABA,Alibaba,1,Tepper,15.6%,Tepper_Only,Hold,高风险押注
+UBER,Uber Technologies,1,Ackman,20.3%,Ackman_Only,Hold,Ackman第一大仓位
+GRBK,Green Brick Partners,1,Einhorn,27.5%,Einhorn_Only,Hold,Einhorn集中持仓
+PNC,PNC Financial,1,Viking,4.2%,Viking_Only,Add,Viking金融布局
+JPM,JPMorgan Chase,1,Viking,4.1%,Viking_Only,Add,Viking金融布局
+SCHW,Charles Schwab,1,Viking,4.1%,Viking_Only,Add,Viking金融布局
+NTRA,Natera Inc,1,Druckenmiller,12.8%,Druckenmiller_Only,Add,医疗科技
+PCG,PG&E Corp,1,Loeb,9.0%,Loeb_Only,Hold,公用事业

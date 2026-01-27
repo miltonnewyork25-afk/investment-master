@@ -1,0 +1,20 @@
+Ticker,Sector,Current_PE,Peer_Median_PE,Discount_Premium_Pct,Current_PB,Peer_Median_PB,Peer_Score
+AAPL,Technology,33.2,33.2,0.0,50.29,38.4,0
+MSFT,Technology,33.12,33.2,-0.24,9.54,38.4,10
+NVDA,Technology,46.57,33.2,40.27,38.4,38.4,0
+GOOGL,Communication,32.37,30.76,5.23,10.24,9.39,0
+AMZN,Consumer Discretionary,33.78,33.78,0.0,6.91,18.12,0
+META,Communication,29.15,30.76,-5.23,8.54,9.39,10
+TSLA,Consumer Discretionary,236.35,33.78,599.67,18.12,18.12,0
+JPM,Financials,14.88,23.41,-36.45,2.29,9.42,25
+V,Financials,31.95,23.41,36.45,16.55,9.42,0
+JNJ,Healthcare,19.8,19.18,3.23,6.74,5.06,0
+UNH,Healthcare,18.56,19.18,-3.23,3.38,5.06,10
+XOM,Energy,19.62,21.55,-8.96,2.24,1.91,10
+CVX,Energy,23.48,21.55,8.96,1.58,1.91,0
+PG,Consumer Staples,22.21,24.13,-7.96,6.83,9.77,10
+KO,Consumer Staples,24.13,24.13,0.0,10.04,9.77,0
+WMT,Consumer Staples,41.16,24.13,70.58,9.77,9.77,0
+HD,Consumer Discretionary,26.18,33.78,-22.5,31.42,18.12,25
+DIS,Communication,16.2,30.76,-47.33,1.82,9.39,25
+NFLX,Communication,34.04,30.76,10.66,13.68,9.39,0

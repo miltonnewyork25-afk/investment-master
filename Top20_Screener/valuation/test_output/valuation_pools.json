@@ -1,0 +1,9 @@
+{
+  "strong_buy": [],
+  "buy": [],
+  "hold": [],
+  "avoid": [
+    "AAPL",
+    "MSFT"
+  ]
+}
