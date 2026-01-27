@@ -1,17 +1,19 @@
-# Research Mechanism Agent - Policy Pack v1.1
+# Research Mechanism Agent - Policy Pack v1.2
 # 运行时由Supervisor或PolicyLoader计算hash并冻结；同run_id内不可变
 # 整合Adner生态风险框架 + Pearl因果推断 + Klein预验尸
+# v1.2升级: 内容安全Zone + Kill Switch监控状态 + Claim Type强制
 
 policy_pack:
   name: rm_policy_pack
-  version: "rm-1.1.0"
+  version: "rm-1.2.0"
   hash: "sha256:__COMPUTED_AT_RUNTIME__"
   created_at: "2026-01-27"
   compatibility:
-    qg_min_version: "qg-2.1.0"
-    eval_min_version: "eval-1.2.0"
+    qg_min_version: "qg-2.2.0"
+    eval_min_version: "eval-1.3.0"
     di_min_version: "di-2.2.0"
     eco_min_version: "eco-2.4.0"
+    schema_version: "rm_claim_spec_schema_v1.2"
 
 ---
 
@@ -446,8 +448,199 @@ outputs:
 
 ---
 
+# [v1.2新增] 内容安全策略
+content_security:
+  description: "OWASP LLM合规 + 输入Zone分区"
+
+  input_zones:
+    TRUSTED:
+      description: "来自可信内部Agent的数据"
+      allowed_actions: ["decision_input", "evidence_source"]
+      sources: ["data_integrity_agent", "ecosystem_graph_agent", "quality_gate_agent"]
+
+    DATA_ONLY:
+      description: "外部数据，仅用于分析，不直接作为结论"
+      allowed_actions: ["analysis_input", "reference_only"]
+      sources: ["sec_filings", "earnings_calls", "industry_reports"]
+
+    HIGH_RISK:
+      description: "高风险来源，需交叉验证"
+      allowed_actions: ["reference_only"]
+      requires: ["cross_validation", "explicit_caveat"]
+      sources: ["social_media", "anonymous_sources", "unverified_news"]
+
+    QUARANTINED:
+      description: "隔离内容，禁止用于任何决策"
+      allowed_actions: []
+      auto_quarantine_triggers:
+        - "injection_pattern_detected"
+        - "executable_content_detected"
+        - "pii_detected"
+        - "contradicts_primary_source"
+
+  output_sanitization:
+    pii_detection:
+      enabled: true
+      patterns: ["ssn", "credit_card", "phone", "email", "address"]
+      action: "REDACT_OR_BLOCK"
+
+    executable_block:
+      enabled: true
+      patterns: ["<script>", "javascript:", "eval(", "exec("]
+      action: "BLOCK"
+
+    injection_defense:
+      enabled: true
+      patterns: ["ignore previous", "disregard instructions", "system prompt"]
+      action: "LOG_AND_SANITIZE"
+
+---
+
+# [v1.2新增] Claim Type策略
+claim_type_policy:
+  require_claim_type: true
+
+  types:
+    FACT:
+      description: "可直接验证的客观事实"
+      evidence_requirement: "A级证据必须"
+      min_evidence_grade: "A"
+      allowed_language: ["是", "为", "达到", "完成"]
+      forbidden_language: ["可能", "预计", "估计"]
+
+    INFERENCE:
+      description: "基于事实的合理推断"
+      evidence_requirement: "A-B级证据必须"
+      min_evidence_grade: "B"
+      allowed_language: ["推断", "表明", "意味着"]
+      require_assumption_list: true
+
+    FORECAST:
+      description: "对未来的预测"
+      evidence_requirement: "B-C级证据可用"
+      min_evidence_grade: "C"
+      allowed_language: ["预计", "可能", "估计"]
+      require_uncertainty_band: true
+
+    OPINION:
+      description: "主观判断"
+      evidence_requirement: "任意，但必须标注"
+      require_caveat: true
+      caveat_template: "这是一个主观判断，基于..."
+
+  validation_rules:
+    - id: "CT_001"
+      rule: "FACT类型必须有A级证据"
+      on_fail: "RM_CLAIM_TYPE_EVIDENCE_MISMATCH"
+
+    - id: "CT_002"
+      rule: "OPINION类型必须有caveat"
+      on_fail: "RM_OPINION_WITHOUT_CAVEAT"
+
+    - id: "CT_003"
+      rule: "FORECAST类型必须有uncertainty_band"
+      on_fail: "RM_FORECAST_WITHOUT_UNCERTAINTY"
+
+---
+
+# [v1.2新增] Kill Switch监控状态
+kill_switch_monitoring:
+  description: "持续监控Kill Switch状态"
+
+  monitoring_interval: "per_step"
+
+  status_tracking:
+    required_fields:
+      - current_status
+      - last_checked
+      - trigger_count
+      - last_triggered_at
+
+    status_values: ["GREEN", "YELLOW", "RED"]
+
+    status_definitions:
+      GREEN: "所有条件正常"
+      YELLOW: "接近阈值，需密切监控"
+      RED: "已触发，需立即响应"
+
+    yellow_threshold: 0.80  # 达到阈值80%时变YELLOW
+
+  weight_assignments:
+    RM_KS_001_Critical_Evidence_Gap:
+      weight: 3.0
+      description: "关键证据缺失是最严重的问题"
+    RM_KS_002_Missing_Observables:
+      weight: 3.0
+      description: "缺少可观测指标无法验证"
+    RM_KS_003_Unlinked_Premortem:
+      weight: 2.5
+      description: "Premortem未链接降低风险管理价值"
+    RM_KS_004_Unmapped_Ecosystem_Risks:
+      weight: 2.5
+      description: "生态风险未映射可能遗漏关键依赖"
+    RM_KS_005_Missing_Counterfactual:
+      weight: 2.0
+      description: "缺少反事实分析降低论点可检验性"
+    RM_KS_006_Empty_DAG:
+      weight: 3.0
+      description: "空DAG意味着没有因果结构"
+
+  escalation:
+    red_status_actions:
+      - "emit_reason_code"
+      - "force_degrade"
+      - "notify_supervisor"
+      - "block_investment_conclusions"
+
+    yellow_status_actions:
+      - "log_warning"
+      - "increase_monitoring_frequency"
+      - "suggest_additional_evidence"
+
+---
+
+# [v1.2新增] 错误处理策略
+error_handling:
+  standard_errors:
+    - code: "RM_ERR_UPSTREAM_TIMEOUT"
+      description: "上游数据获取超时"
+      action: "RETRY_ONCE_THEN_DEGRADE"
+      max_retries: 1
+
+    - code: "RM_ERR_SCHEMA_VALIDATION"
+      description: "输出Schema验证失败"
+      action: "LOG_AND_FIX"
+      auto_fix: true
+
+    - code: "RM_ERR_INVARIANT_FAIL"
+      description: "不变量检查失败"
+      action: "DEGRADE_IMMEDIATELY"
+      auto_fix: false
+
+    - code: "RM_ERR_SECURITY_VIOLATION"
+      description: "安全策略违规"
+      action: "ABORT_AND_REPORT"
+      auto_fix: false
+
+  fallback_behavior:
+    on_upstream_failure: "use_cached_if_fresh_else_degrade"
+    on_skill_failure: "skip_and_mark_incomplete"
+    on_security_alert: "quarantine_and_abort"
+
+---
+
 # 版本历史
 version_history:
+  - version: "1.2.0"
+    date: "2026-01-27"
+    changes:
+      - "新增内容安全策略（Zone分区、输出清洗）"
+      - "新增Claim Type策略（FACT/INFERENCE/FORECAST/OPINION）"
+      - "新增Kill Switch监控状态（GREEN/YELLOW/RED）"
+      - "新增Kill Switch权重分配"
+      - "新增标准错误处理策略"
+      - "Schema升级至v1.2（claim_type、source_chain、caveat）"
+
   - version: "1.1.0"
     date: "2026-01-27"
     changes:

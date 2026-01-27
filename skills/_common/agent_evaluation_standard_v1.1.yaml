@@ -1,7 +1,7 @@
-# Agent Architecture & Run Evaluation Standard v1.1
+# Agent Architecture & Run Evaluation Standard v1.2
 # 用于评估多Agent美股研究系统的架构或单次运行
 # 基于: Multi_Agent_Architecture_v1.2 + skill_output_contract_v1.0 + code_dictionary_v1.0
-# 版本: 1.1 (升级自原版1.0)
+# 版本: 1.2 (升级自v1.1，增加因果推理和理论合规评估)
 # 更新日期: 2026-01-27
 
 ---
@@ -11,7 +11,7 @@
 # ============================================================
 evaluator:
   name: "invest-agent-architecture-and-run-audit"
-  version: "1.1"
+  version: "1.2"
 
   purpose: |
     评估多Agent美股研究系统（架构或单次运行）的：
@@ -20,10 +20,23 @@ evaluator:
     - 证据质量 (Evidence Quality)
     - 质量门正确性 (Gate Correctness)
     - 评估驱动的健壮性 (Eval-driven Robustness)
-    - 合约兼容性 (Contract Compliance) [v1.1新增]
-    - Kill Switch有效性 [v1.1新增]
+    - 合约兼容性 (Contract Compliance)
+    - Kill Switch有效性
+    - 因果推理质量 (Causal Reasoning Quality) [v1.2新增]
+    - 理论合规性 (Theory Compliance) [v1.2新增]
 
   changelog:
+    v1.2:
+      - "新增C1维度: Causal Reasoning Quality (8分)"
+      - "新增T1维度: Theory Compliance (6分)"
+      - "新增D2.5子项: Identifiability标注"
+      - "新增E1.5子项: Counterfactual assumptions"
+      - "新增K1.6子项: Routing Matrix"
+      - "新增Q1.6子项: Uncertainty Matrix"
+      - "新增B8-B10 Blockers (Premortem/Counterfactual/Identifiability)"
+      - "新增R9-R11规则"
+      - "调整权重: G1(8→6), G2(8→6), M1(8→6) 为新维度腾出空间"
+
     v1.1:
       - "新增D2维度: Contract & Blackboard Compliance"
       - "新增K1维度: Kill Switch Effectiveness"
@@ -85,7 +98,7 @@ dimensions:
     id: "G1"
     name: "Governance & Boundaries"
     name_zh: "治理与边界"
-    weight: 8  # v1.1: 10→8
+    weight: 6  # v1.2: 8→6
     description: "Agent职责划分、调用权限、边界清晰度"
 
     sub_checks:
@@ -105,7 +118,7 @@ dimensions:
     id: "G2"
     name: "Tool Contracts & Minimality"
     name_zh: "工具合约与最小化"
-    weight: 8  # v1.1: 10→8
+    weight: 6  # v1.2: 8→6
     description: "工具调用规范、最小权限原则"
 
     sub_checks:
@@ -175,6 +188,11 @@ dimensions:
         check: "Claim Type正确标注"
         evidence: "每个claim有FACT/INFERENCE/FORECAST/OPINION"
 
+      # v1.2新增
+      - id: "D2.5"
+        check: "Counterfactual有identifiability标注"
+        evidence: "identifiability字段有IDENTIFIED/PARTIAL/UNKNOWN/NON_IDENTIFIABLE"
+
   # --- 证据可审计性 ---
   E1:
     id: "E1"
@@ -199,6 +217,11 @@ dimensions:
       - id: "E1.4"
         check: "证据分布合理(Tier 1 ≥ 30%)"
         evidence: "evidence_tier_distribution统计"
+
+      # v1.2新增
+      - id: "E1.5"
+        check: "Counterfactual有assumptions列表"
+        evidence: "assumptions数组列出因果假设"
 
   # --- 质量门正确性 ---
   Q1:
@@ -228,6 +251,11 @@ dimensions:
       - id: "Q1.5"
         check: "severity与auto_action一致"
         evidence: "P0→BLOCK, P1→REVIEW, P2→LOG"
+
+      # v1.2新增
+      - id: "Q1.6"
+        check: "DEGRADE输出有uncertainty_matrix"
+        evidence: "uncertainty_matrix有hypothesis/how_to_verify/data_sources列"
 
   # --- 安全性 ---
   S1:
@@ -287,6 +315,11 @@ dimensions:
         check: "Kill Switch触发时有响应动作"
         evidence: "RED状态→REASSESS_THESIS"
 
+      # v1.2新增
+      - id: "K1.6"
+        check: "Kill Switch有routing_matrix定义"
+        evidence: "routing_matrix指定reason_code到agent的路由"
+
   # --- 可观测性与回放 ---
   O1:
     id: "O1"
@@ -317,7 +350,7 @@ dimensions:
     id: "M1"
     name: "Eval & Regression"
     name_zh: "评估与回归"
-    weight: 8  # v1.1: 10→8
+    weight: 6  # v1.2: 8→6
     description: "日志转测试用例、自动评分、工具调用正确性"
 
     sub_checks:
@@ -336,6 +369,68 @@ dimensions:
       - id: "M1.4"
         check: "有基准数据集"
         evidence: "golden_dataset"
+
+  # --- 因果推理质量 [v1.2新增] ---
+  C1:
+    id: "C1"
+    name: "Causal Reasoning Quality"
+    name_zh: "因果推理质量"
+    weight: 8  # v1.2新增
+    description: "因果DAG质量、反事实分析、可识别性评估"
+
+    sub_checks:
+      - id: "C1.1"
+        check: "因果DAG非空且有意义"
+        evidence: "mechanism_dag.edges.length > 0"
+
+      - id: "C1.2"
+        check: "Critical claims有反事实分析"
+        evidence: "counterfactual字段存在"
+
+      - id: "C1.3"
+        check: "反事实有do(x)格式干预"
+        evidence: "intervention符合do(X=value)格式"
+
+      - id: "C1.4"
+        check: "反事实有可观测指标和时间窗口"
+        evidence: "observables + timeframe非空"
+
+      - id: "C1.5"
+        check: "因果效应可识别性已评估"
+        evidence: "identifiability字段有值"
+
+      - id: "C1.6"
+        check: "NON_IDENTIFIABLE有显式标注和说明"
+        evidence: "identifiability_notes非空"
+
+  # --- 理论合规性 [v1.2新增] ---
+  T1:
+    id: "T1"
+    name: "Theory Compliance"
+    name_zh: "理论合规性"
+    weight: 6  # v1.2新增
+    description: "正确应用Adner/Pearl/Klein/Popper理论框架"
+
+    sub_checks:
+      - id: "T1.1"
+        check: "Adner三类风险已映射"
+        evidence: "risk_type in [initiative_risk, co_innovation_risk, adoption_chain_risk]"
+
+      - id: "T1.2"
+        check: "adoption_chain_risk有明确步骤"
+        evidence: "adoption_steps数组非空"
+
+      - id: "T1.3"
+        check: "Premortem覆盖5个类别"
+        evidence: "failure_modes涵盖INITIATIVE/CO_INNOVATION/ADOPTION_CHAIN/SUBSTITUTION/REGULATION"
+
+      - id: "T1.4"
+        check: "所有failure_modes链接到claims"
+        evidence: "linked_claim_ids非空"
+
+      - id: "T1.5"
+        check: "Claims满足Popper可证伪性"
+        evidence: "falsify_if + observables + timeframe完整"
 
 # ============================================================
 # 5. 阻塞项 (Blockers)
@@ -388,6 +483,45 @@ blockers:
     id: "B7"
     name: "CONTRACT_VIOLATION"
     description: "skill输出严重违反output_contract(缺少必填字段)"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+
+  # v1.2新增
+  B8:
+    id: "B8"
+    name: "PREMORTEM_UNLINKED"
+    description: "Premortem failure modes未链接到任何claims"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+    applies_to: ["RM_Agent"]
+
+  B9:
+    id: "B9"
+    name: "COUNTERFACTUAL_MISSING_ON_CRITICAL"
+    description: "Critical claims缺少counterfactual分析"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+    applies_to: ["RM_Agent"]
+
+  B10:
+    id: "B10"
+    name: "NON_IDENTIFIABLE_WITHOUT_LABEL"
+    description: "因果查询不可识别但未显式标注NON_IDENTIFIABLE"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+    applies_to: ["RM_Agent"]
+
+  B11:
+    id: "B11"
+    name: "QUARANTINED_CONTENT_USED"
+    description: "QUARANTINED Zone内容被用于决策"
+    severity: "P0"
+    consequence: "verdict = FAIL"
+
+  B12:
+    id: "B12"
+    name: "CLAIM_TYPE_EVIDENCE_MISMATCH"
+    description: "Claim Type与证据等级不匹配(如FACT无A级证据)"
     severity: "P0"
     consequence: "verdict = FAIL"
 
@@ -519,6 +653,19 @@ rules:
   - id: "R8"
     rule: "Claim Type必须与证据层级匹配：FACT需Tier 1，INFERENCE需Tier 1/2，FORECAST/OPINION可用Tier 2/3。"
 
+  # v1.2新增
+  - id: "R9"
+    rule: "Critical claims必须有counterfactual分析，包含do(x)干预和可识别性评估。"
+
+  - id: "R10"
+    rule: "Premortem failure modes必须链接到具体claim_id，未链接触发B8 Blocker。"
+
+  - id: "R11"
+    rule: "因果效应如不可识别(NON_IDENTIFIABLE)必须显式标注，禁止使用强因果语言。"
+
+  - id: "R12"
+    rule: "QUARANTINED Zone内容绝对禁止用于决策，违规触发B11 Blocker。"
+
 # ============================================================
 # 9. 评估示例
 # ============================================================
@@ -604,3 +751,17 @@ version_history:
       - 对齐code_dictionary_v1.0标准编码
       - 新增R6-R8规则
       - 增加contract_compliance和kill_switch_status输出字段
+
+  - version: "1.2"
+    date: "2026-01-27"
+    changes: |
+      - 新增C1维度: Causal Reasoning Quality (8分) - 因果DAG、反事实、可识别性
+      - 新增T1维度: Theory Compliance (6分) - Adner/Pearl/Klein/Popper理论合规
+      - 调整权重: G1(8→6), G2(8→6), M1(8→6) 为新维度腾出空间
+      - 新增D2.5子项: Identifiability标注检查
+      - 新增E1.5子项: Counterfactual assumptions检查
+      - 新增K1.6子项: Routing Matrix检查
+      - 新增Q1.6子项: Uncertainty Matrix检查
+      - 新增B8-B12阻塞项: Premortem/Counterfactual/Identifiability/Quarantined/ClaimType
+      - 新增R9-R12规则: 反事实、Premortem链接、可识别性、QUARANTINED
+      - 总分仍为100分，维度总数从10增至12

@@ -1,16 +1,18 @@
-# RM ClaimSpec Schema v1.1
+# RM ClaimSpec Schema v1.2
 # 因果声明规范 - 结构化、可证伪、可追踪
-# 整合Adner风险分类 + Pearl反事实
+# 整合Adner风险分类 + Pearl反事实 + 声明类型分类
+# v1.2升级: 新增claim_type, source_chain, caveat字段
 
 $schema: "https://json-schema.org/draft/2020-12/schema"
-$id: "rm_claim_spec_schema_v1.1"
-title: "RM ClaimSpec Schema v1.1"
-description: "Schema for causal claims with falsifiability, Adner risk type, and counterfactual analysis"
+$id: "rm_claim_spec_schema_v1.2"
+title: "RM ClaimSpec Schema v1.2"
+description: "Schema for causal claims with falsifiability, Adner risk type, claim type classification, and counterfactual analysis"
 
 type: object
 
 required:
   - "claim_id"
+  - "claim_type"
   - "cause"
   - "effect"
   - "sign"
@@ -29,6 +31,21 @@ properties:
     pattern: "^CLM_[A-Z0-9_]+$"
     description: "Unique claim identifier, format: CLM_TICKER_NNN"
     examples: ["CLM_TSLA_001", "CLM_GOOGL_042"]
+
+  # 声明类型 [v1.2新增] - 必须与证据层级匹配
+  claim_type:
+    type: string
+    enum: ["FACT", "INFERENCE", "FORECAST", "OPINION"]
+    description: |
+      FACT: 可直接验证的客观事实 (需Tier 1/A级证据)
+      INFERENCE: 基于事实的推断 (需Tier 1-2/A-B级证据)
+      FORECAST: 对未来的预测 (可用Tier 2-3/B-C级证据)
+      OPINION: 主观判断 (需明确标注为观点)
+    evidence_requirements:
+      FACT: "Tier 1 (A级) 必须"
+      INFERENCE: "Tier 1-2 (A-B级) 必须"
+      FORECAST: "Tier 2-3 (B-C级) 可用"
+      OPINION: "任意，但必须标注caveat"
 
   # 关键性级别
   criticality:
@@ -219,7 +236,41 @@ properties:
         notes:
           type: string
           description: "Additional context"
+        # [v1.2新增] 数据血缘追踪
+        source_chain:
+          type: array
+          items:
+            type: object
+            properties:
+              step:
+                type: integer
+                description: "Chain step number (1=原始来源)"
+              source:
+                type: string
+                description: "Source at this step"
+              transformation:
+                type: string
+                description: "How data was transformed"
+              agent:
+                type: string
+                description: "Which agent processed this step"
+          description: "Complete lineage from original source to current form"
+        # [v1.2新增] Tier 3/C级证据强制警示
+        caveat:
+          type: string
+          description: "Required for grade C: explains limitation or uncertainty"
     description: "Evidence supporting this claim"
+
+  # [v1.2新增] 内容安全Zone
+  content_zone:
+    type: string
+    enum: ["TRUSTED", "DATA_ONLY", "HIGH_RISK", "QUARANTINED"]
+    default: "DATA_ONLY"
+    description: |
+      TRUSTED: 来自可信内部来源
+      DATA_ONLY: 仅作为数据使用，不作为决策依据
+      HIGH_RISK: 高风险来源，需额外验证
+      QUARANTINED: 隔离内容，禁止用于任何决策
 
   # Reason Codes
   reason_codes:
