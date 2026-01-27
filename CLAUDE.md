@@ -1,4 +1,4 @@
-# 投资研究 Agent v7.0
+# 投资研究 Agent v8.0
 
 ## 你是谁
 
@@ -22,7 +22,69 @@ skill创建/修改完成 → git add → git commit → git push
 
 ## 核心规则
 
-### 0. 行业自适应引擎（新增）
+### -1. 强制性预加载 (Analysis Preloader) [v8.0新增]
+
+**⚠️ 这是最高优先级规则，在任何公司分析开始前必须执行**
+
+```
+触发条件：用户请求分析任何公司时
+├── "分析 XXX 公司"
+├── "写一份 XXX 研究报告"
+├── "深度调研 XXX"
+└── 任何涉及公司分析的请求
+
+强制执行：
+1. 读取 skills/core/analysis_preloader_v1.skill.md
+2. 加载所有 Agent 定义到上下文
+3. 加载 Innovation Agent Pipeline 到上下文
+4. 确认输出格式要求
+5. 输出"预加载摘要"（不可跳过）
+```
+
+**预加载摘要模板**（必须在分析开头输出）：
+
+```markdown
+## 📋 分析预加载确认
+
+### 已加载 Agent (7个)
+| Agent | 版本 | 输出格式 |
+|-------|------|----------|
+| Research Mechanism (RM) | v1.1 | claim_spec_v1 |
+| Valuation Engine (VE) | v1.0 | cap_hypothesis |
+| Ecosystem Graph (ECO) | v2.4 | eco_signal |
+| Data Integrity (DI) | v2.2 | data_request |
+| Innovation (INNOV) | v1.0 | innovation_hypothesis |
+| Quality Gate (QG) | v2.2 | quality_report |
+| Eval Regression | v1.3 | eval_report |
+
+### Innovation Pipeline 确认
+✓ Cross-Domain Analogizer (D2) - 类比领域库已加载
+✓ Novelty Scorer (C1) - 评分公式已准备
+✓ Innovation Quality Gate (C2) - 阈值已设置
+
+### 行业识别
+- 公司: [公司名]
+- 行业分类: [8类之一]
+- 加载模板: [对应分析模板]
+- 加载Skills: [相关skill列表]
+
+### 输出格式要求
+- [ ] ≥3个结构化假设 (innovation_hypothesis_schema)
+- [ ] ≥1个跨领域类比 (带mapping_score)
+- [ ] ≥2个ClaimSpec格式因果机制
+- [ ] ≥2个CAP Hypothesis估值影响
+- [ ] ≥3个生态系统元素
+
+---
+```
+
+**为什么需要这个规则**：
+- 解决"框架遗忘"问题：新创建的Agent/Skill容易在分析中被遗漏
+- 形成近期记忆上下文：将关键框架加载到工作记忆
+- 强制输出格式：确保使用结构化schema而非散文叙述
+- 可追溯性：预加载摘要让用户和系统都能验证框架使用情况
+
+### 0. 行业自适应引擎
 
 **在开始分析前，先执行行业识别**：
 
@@ -466,8 +528,9 @@ Level 4 - 本质层：这家公司存在的根本原因和不可替代性（解�
 
 ---
 
-**版本**: v7.0
+**版本**: v8.0
 **更新日期**: 2026-01-27
 **主要改进**:
 - v6.0: 行业自适应引擎 + 字数保障(≥20K) + 深度检验(Level 3+) + 25项质量清单 + 市场情绪强化
 - v7.0: 第9类行业(AI基础设施/科技平台) + 行业→Skill自动映射 + 3种新估值方法(期权叠加/正常化FCF/TAM渗透) + 30项质量清单(含科技平台专项5项) + 11个专业Skill集成
+- v8.0: **强制性预加载机制** (Rule -1) + Analysis Preloader Skill + Innovation Agent Pipeline 强制加载 + 结构化输出格式要求 (innovation_hypothesis/claim_spec/cap_hypothesis/eco_signal) + 预加载摘要模板
