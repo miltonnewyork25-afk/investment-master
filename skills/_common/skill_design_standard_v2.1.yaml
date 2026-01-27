@@ -1,8 +1,128 @@
-# Skill Design Standard v2.0
+# Skill Design Standard v2.1
 # 顶级Skill的设计标准 - 可评测的产品合约
-# 版本: 2.0
+# 版本: 2.1
 # 创建日期: 2026-01-27
-# 核心原则: Contract-first | Eval-first | SRE-first
+# 更新日期: 2026-01-27
+# 核心原则: Contract-first | Eval-first | SRE-first | Compact-first
+
+---
+
+# ============================================================
+# 〇〇、v2.1 长度标准与压缩原则 (NEW)
+# ============================================================
+length_standard:
+  purpose: |
+    控制skill文件长度，在不损失深度的前提下提高可读性和加载效率。
+    原则：用抽象通用的语言替代冗长示例，保留核心逻辑骨架。
+
+  # 长度标准（按复杂度分级）
+  length_tiers:
+    compact:
+      target_lines: "150-250"
+      target_chars: "3000-5000"
+      applicable: "单一功能skill（如评分器、转换器）"
+
+    standard:
+      target_lines: "250-350"
+      target_chars: "5000-7000"
+      applicable: "标准分析skill（如竞争分析、估值框架）"
+
+    complex:
+      target_lines: "350-450"
+      target_chars: "7000-9000"
+      applicable: "多模块综合skill（如完整研究框架）"
+
+  # 超长警告
+  length_alerts:
+    warning: ">450 lines"
+    critical: ">600 lines"
+    action: "必须压缩，否则不合规"
+
+  # 压缩原则（不损失深度的前提下）
+  compression_principles:
+
+    P1_table_over_prose:
+      description: "用表格替代段落描述"
+      before: |
+        当评分为+2时，表示渗透率上升且结构健康。
+        当评分为+1时，表示渗透率稳定。
+        当评分为0时，表示重度依赖加重。
+      after: |
+        | 分数 | 条件 |
+        |------|------|
+        | +2 | 渗透↑+结构健康 |
+        | +1 | 渗透稳定 |
+        | 0 | 重度依赖加重 |
+
+    P2_yaml_compact:
+      description: "YAML代码块只保留核心字段，去除解释性注释"
+      before: |
+        scoring:
+          market_structure:
+            weight: 20%  # 市场结构占总分的20%
+            description: "评估市场结构健康度"
+            scoring_guide:
+              "+2": "渗透率上升且结构健康"
+      after: |
+        scoring:
+          market_structure: {weight: 20%, "+2": "渗透↑+结构健康"}
+
+    P3_single_example:
+      description: "每个概念只保留1个典型示例，删除重复说明"
+      rule: "示例≤3个/模块"
+
+    P4_inline_definition:
+      description: "定义内嵌到使用处，不单独列定义章节"
+      before: |
+        ## 术语定义
+        CEP: Category Entry Point
+        ## CEP分析
+        CEP是指...
+      after: |
+        ## CEP分析
+        CEP(Category Entry Point)是指...
+
+    P5_output_contract_minimal:
+      description: "Output Contract只列字段名和类型，不重复解释"
+      template: |
+        output_contract:
+          field_name: {type, required, description_if_nonobvious}
+
+    P6_merge_similar_sections:
+      description: "合并相似章节"
+      example: "Kill Switches和Red Flags可合并为'风险预警'一节"
+
+  # 必须保留的内容（不可压缩）
+  non_compressible:
+    - "Scoring System（评分维度+权重+分数标准）"
+    - "Kill Switches（触发条件+动作）"
+    - "Red Flags（信号+含义）"
+    - "Output Contract（字段定义）"
+    - "Core Workflow（步骤骨架）"
+    - "Theoretical Foundation（理论引用）"
+
+  # 可压缩的内容
+  compressible:
+    - "详细示例（保留1个典型即可）"
+    - "解释性段落（用表格替代）"
+    - "重复定义（内嵌到使用处）"
+    - "冗长YAML注释"
+    - "模板填充说明"
+
+  # 深度评分不受压缩影响的保障
+  depth_guarantee:
+    rule: |
+      压缩只减少"字数"，不减少"信息密度"。
+      评估深度的标准是：
+      1. 评分系统是否完整（维度+权重+标准）
+      2. 工作流是否有逻辑闭环
+      3. 证伪机制是否存在
+      4. 风险预警是否明确
+    checklist:
+      - "评分系统完整度: 5维度以上 + 权重 + 分数标准"
+      - "工作流完整度: 输入→处理→输出→验证"
+      - "证伪机制: Kill Switches + Red Flags"
+      - "可执行性: Output Contract明确"
 
 ---
 
