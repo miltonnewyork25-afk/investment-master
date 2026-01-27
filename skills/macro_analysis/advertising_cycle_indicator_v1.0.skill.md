@@ -1,309 +1,98 @@
 # Advertising Cycle Indicator v1.0
 
 ## Skill Metadata
-- **Name**: advertising-cycle-indicator
-- **Version**: 1.0
-- **Category**: macro_analysis
-- **Language**: zh/en
-- **Last Updated**: 2026-01-27
-- **Origin**: Google分析中广告周期与宏观经济关系的追踪需求
+- **ID**: macro_analysis.advertising_cycle_indicator_v1.0
+- **适用**: Google/Meta/Snap/Pinterest/Trade Desk等广告驱动公司
 
 ---
 
 ## Purpose
 
-追踪广告支出周期与宏观经济的关系，为广告驱动公司（Google/Meta/Amazon/Snap等）提供周期定位和预测框架。
+追踪广告支出周期与宏观经济的关系，提供周期定位和预测。
 
-**核心问题**：
-- 广告支出是经济的领先/同步/滞后指标？
-- 广告支出与GDP/消费者信心的弹性是多少？
-- 当前处于广告周期的哪个阶段？
+**核心问题**: 广告支出与GDP/消费者信心的弹性、当前周期阶段
 
-**适用公司**：
+**适用公司**:
 | 公司 | 广告收入占比 | 周期敏感度 |
-|------|------------|-----------|
+|------|-------------|-----------|
 | Google | 77% | 中 |
 | Meta | 97% | 高 |
 | Snap | 99% | 极高 |
-| Pinterest | 95% | 高 |
-| Trade Desk | 100% | 高 |
-| Amazon Ads | 15% | 中 |
 
 ---
 
-## When to Use
+## 广告-经济弹性
 
-| 适用场景 | 说明 |
-|---------|------|
-| 广告公司估值 | 周期调整后的收入预测 |
-| 宏观敏感度分析 | 经济下行对广告的影响 |
-| 行业对标 | 广告 vs GDP/消费增速对比 |
-
----
-
-## Theoretical Foundation
-
-### 广告-经济关系
-
-| 指标 | 与广告支出关系 | 领先/滞后 | 弹性 |
-|------|---------------|----------|------|
+| 指标 | 与广告关系 | 领先/滞后 | 弹性 |
+|------|-----------|----------|------|
 | GDP增速 | 正相关 | 同步 | 1.5-2.0x |
 | 消费者信心 | 正相关 | 领先2-3月 | 0.8-1.2x |
 | 企业利润 | 正相关 | 同步 | 1.0-1.5x |
 | 失业率 | 负相关 | 滞后3-6月 | -1.0x |
-| 利率 | 复杂 | 滞后 | 非线性 |
-
-### 参考研究
-
-- Deleersnyder et al. (2009): "The Role of National Culture in Advertising's Sensitivity to Business Cycles"
-- Graham & Frankenberger (2011): "The Earnings Effects of Marketing Communication Expenditures"
-- IAB: 季度广告支出报告
 
 ---
 
-## Framework Components
+## 4阶段周期模型
 
-### Component 1: 广告周期阶段识别
+| 阶段 | 特征 | 指标 |
+|------|------|------|
+| **扩张** | 广告↑>GDP↑、CPM/CPC↑、库存紧张 | 增速vs GDP >1.5x |
+| **峰值** | 增速放缓、定价见顶、预算收紧 | 增速vs GDP 1.0-1.5x |
+| **收缩** | 广告↑<GDP↑、CPM/CPC↓、效果>品牌 | 增速vs GDP <1.0x |
+| **谷底** | 负增长、定价见底、清库存 | 增速为负 |
 
-```yaml
-ad_cycle_stages:
+---
 
-  expansion:
-    characteristics:
-      - "广告支出增速>GDP增速"
-      - "CPM/CPC持续上涨"
-      - "广告库存紧张"
-      - "新广告主涌入"
-    indicators:
-      growth_vs_gdp: ">1.5x"
-      pricing_trend: "上涨"
-      inventory_utilization: ">85%"
+## 渠道敏感度
 
-  peak:
-    characteristics:
-      - "广告支出增速放缓"
-      - "定价增速见顶"
-      - "预算审批收紧信号"
-    indicators:
-      growth_vs_gdp: "1.0-1.5x"
-      pricing_trend: "持平/微涨"
-      budget_sentiment: "谨慎"
+| 渠道 | 敏感度 | 衰退影响 |
+|------|--------|---------|
+| 搜索 | 中 | -5~10% |
+| 社交 | 高 | -10~20% |
+| 展示 | 高 | -15~25% |
+| 视频 | 中高 | -10~20% |
+| 零售媒体 | 低 | -0~5% |
 
-  contraction:
-    characteristics:
-      - "广告支出增速<GDP增速"
-      - "CPM/CPC下跌"
-      - "广告主削减预算"
-      - "效果广告>品牌广告"
-    indicators:
-      growth_vs_gdp: "<1.0x"
-      pricing_trend: "下跌"
-      performance_vs_brand: "效果占比上升"
+| 广告主类型 | 敏感度 | 行为 |
+|-----------|--------|------|
+| 小企业 | 极高 | 现金流紧张即削减 |
+| 中端市场 | 高 | 按季度调整 |
+| 企业 | 中 | 年度预算有惯性 |
+| 效果导向 | 低 | ROI正就继续投 |
 
-  trough:
-    characteristics:
-      - "广告支出负增长"
-      - "定价见底"
-      - "清理库存"
-    indicators:
-      growth_vs_gdp: "负"
-      pricing_trend: "见底"
-      inventory_utilization: "<70%"
+---
 
-  current_stage_assessment:
-    methodology:
-      1. "收集最新广告支出数据"
-      2. "对比GDP/消费增速"
-      3. "追踪定价趋势"
-      4. "评估广告主预算情绪"
-    output: "当前阶段 + 证据"
-```
-
-### Component 2: 宏观-广告弹性模型
+## 领先指标监测
 
 ```yaml
-elasticity_model:
+ad_specific:
+  - {indicator: "广告主预算调查", source: "IAB/CMO Survey", lead: "1-2季度"}
+  - {indicator: "广告招聘趋势", source: "LinkedIn/Indeed", lead: "2-3个月"}
+  - {indicator: "广告科技公司指引", source: "TTD/MGNI/PUBM", lead: "1季度"}
 
-  gdp_elasticity:
-    formula: "%Δ广告支出 / %ΔGDP"
-    historical_average: 1.7
-    range: "1.2-2.5（取决于周期阶段）"
-    current_estimate: "需要计算"
+macro:
+  - {indicator: "消费者信心", source: "Conference Board", lead: "2-3个月"}
+  - {indicator: "PMI", source: "ISM", lead: "1-2个月"}
 
-  consumer_confidence_elasticity:
-    formula: "%Δ广告支出 / %Δ消费者信心"
-    historical_average: 0.9
-    lead_time: "2-3个月"
-
-  corporate_profit_elasticity:
-    formula: "%Δ广告支出 / %Δ企业利润"
-    historical_average: 1.2
-
-  application:
-    scenario_analysis:
-      - scenario: "GDP增速2%→1%"
-        ad_impact: "-1.7%（弹性1.7x）"
-
-      - scenario: "消费者信心下降10%"
-        ad_impact: "-9%（弹性0.9x）"
-
-      - scenario: "经济衰退（GDP -2%）"
-        ad_impact: "-10%至-15%"
-```
-
-### Component 3: 广告渠道周期敏感度
-
-```yaml
-channel_sensitivity:
-
-  by_channel:
-    search:
-      sensitivity: "中"
-      rationale: "效果可衡量，预算最后削减"
-      recession_impact: "-5%至-10%"
-
-    social:
-      sensitivity: "高"
-      rationale: "品牌+效果混合"
-      recession_impact: "-10%至-20%"
-
-    display:
-      sensitivity: "高"
-      rationale: "品牌导向，首先削减"
-      recession_impact: "-15%至-25%"
-
-    video:
-      sensitivity: "中高"
-      rationale: "品牌导向但粘性强"
-      recession_impact: "-10%至-20%"
-
-    retail_media:
-      sensitivity: "低"
-      rationale: "接近购买点，ROI明确"
-      recession_impact: "-0%至-5%"
-
-  by_advertiser_type:
-    small_business:
-      sensitivity: "极高"
-      behavior: "现金流紧张时立即削减"
-
-    mid_market:
-      sensitivity: "高"
-      behavior: "按季度调整预算"
-
-    enterprise:
-      sensitivity: "中"
-      behavior: "年度预算有惯性"
-
-    brand:
-      sensitivity: "高"
-      behavior: "品牌广告首先削减"
-
-    performance:
-      sensitivity: "低"
-      behavior: "ROI正就继续投"
-```
-
-### Component 4: 领先指标监测
-
-```yaml
-leading_indicators:
-
-  ad_specific:
-    - indicator: "广告主预算调查"
-      source: "IAB/CMO Survey"
-      lead_time: "1-2季度"
-      current_reading: "待更新"
-
-    - indicator: "广告招聘趋势"
-      source: "LinkedIn/Indeed"
-      lead_time: "2-3个月"
-      current_reading: "待更新"
-
-    - indicator: "广告科技公司指引"
-      source: "TTD/MGNI/PUBM"
-      lead_time: "1季度"
-      current_reading: "待更新"
-
-  macro:
-    - indicator: "消费者信心指数"
-      source: "Conference Board/Michigan"
-      lead_time: "2-3个月"
-      current_reading: "待更新"
-
-    - indicator: "PMI"
-      source: "ISM"
-      lead_time: "1-2个月"
-      current_reading: "待更新"
-
-    - indicator: "企业利润预期"
-      source: "FactSet/Bloomberg"
-      lead_time: "1季度"
-      current_reading: "待更新"
-
-  composite_indicator:
-    formula: "加权平均(广告指标×0.6 + 宏观指标×0.4)"
-    interpretation:
-      ">60": "扩张期"
-      "40-60": "稳定/过渡"
-      "<40": "收缩期"
+composite:
+  formula: "加权平均(广告×0.6 + 宏观×0.4)"
+  interpretation: {">60": "扩张", "40-60": "稳定", "<40": "收缩"}
 ```
 
 ---
 
-## Scoring System: Ad Cycle Score (AC_Score)
+## Scoring System: AC_Score (0-100)
 
-```yaml
-ac_score_calculation:
+| 维度 | 权重 | +2 | -2 |
+|------|------|----|----|
+| 周期阶段 | 30% | 扩张早期 | 收缩/谷底 |
+| 定价趋势 | 25% | CPM/CPC强劲↑ | 大幅↓ |
+| 广告主情绪 | 25% | 预算增加意愿强 | 大幅削减 |
+| 宏观背景 | 20% | GDP加速+信心↑ | 衰退风险高 |
 
-  dimensions:
-    cycle_stage:
-      weight: 30%
-      scoring:
-        "+2": "扩张早期"
-        "+1": "扩张晚期/峰值"
-        "0": "过渡期"
-        "-1": "收缩早期"
-        "-2": "收缩/谷底"
+**公式**: `AC_Score = Σ(维度分数×权重)×25+50`
 
-    pricing_trend:
-      weight: 25%
-      scoring:
-        "+2": "CPM/CPC强劲上涨"
-        "+1": "温和上涨"
-        "0": "持平"
-        "-1": "温和下跌"
-        "-2": "大幅下跌"
-
-    advertiser_sentiment:
-      weight: 25%
-      scoring:
-        "+2": "预算增加意愿强"
-        "+1": "预算温和增长"
-        "0": "预算持平"
-        "-1": "预算谨慎/削减"
-        "-2": "预算大幅削减"
-
-    macro_backdrop:
-      weight: 20%
-      scoring:
-        "+2": "GDP加速+信心上升"
-        "+1": "GDP稳定+信心稳定"
-        "0": "混合信号"
-        "-1": "GDP放缓+信心下降"
-        "-2": "衰退风险高"
-
-  formula: |
-    AC_Score = Σ(维度得分 × 权重) × 25 + 50
-    范围: 0-100
-
-  interpretation:
-    80-100: "广告繁荣期，增持广告股"
-    60-79: "广告扩张期，持有"
-    40-59: "广告稳定/过渡期，观望"
-    20-39: "广告收缩期，减持"
-    0-19: "广告低谷期，等待反转信号"
-```
+**解读**: 80-100繁荣期 | 60-79扩张期 | 40-59稳定期 | 20-39收缩期 | 0-19低谷期
 
 ---
 
@@ -311,84 +100,24 @@ ac_score_calculation:
 
 ```yaml
 ad_cycle_output:
-
-  # 1. 周期定位
-  cycle_position:
-    current_stage: "扩张/峰值/收缩/谷底"
-    evidence:
-      - "证据1"
-      - "证据2"
-    months_in_stage: "X个月"
-    expected_duration: "还有X个月"
-
-  # 2. 宏观-广告关系
-  macro_ad_relationship:
-    gdp_elasticity:
-      current: X
-      historical_avg: 1.7
-    consumer_confidence_correlation:
-      current: X
-      lag: "X个月"
-
-  # 3. 渠道敏感度
-  channel_sensitivity:
-    search: "低/中/高"
-    social: "低/中/高"
-    display: "低/中/高"
-    video: "低/中/高"
-    retail_media: "低/中/高"
-
-  # 4. 领先指标仪表板
-  leading_indicators:
-    ad_specific:
-      - {indicator: "名称", value: X, trend: "↑/↓/→"}
-    macro:
-      - {indicator: "名称", value: X, trend: "↑/↓/→"}
-    composite: X
-
-  # 5. AC评分
-  ac_score:
-    total: 0-100
-    breakdown:
-      cycle_stage: X
-      pricing_trend: X
-      advertiser_sentiment: X
-      macro_backdrop: X
-    interpretation: "描述"
-
-  # 6. 情景分析
-  scenarios:
-    base:
-      macro_assumption: "GDP X%"
-      ad_growth_forecast: "X%"
-      probability: "X%"
-    bear:
-      macro_assumption: "衰退"
-      ad_growth_forecast: "-X%"
-      probability: "X%"
-    bull:
-      macro_assumption: "加速"
-      ad_growth_forecast: "+X%"
-      probability: "X%"
-
-  # 7. 投资含义
-  investment_implications:
-    overall_stance: "增持/持有/减持"
-    channel_preference: ["渠道1", "渠道2"]
-    stock_implications:
-      - {company: "Google", sensitivity: "中", recommendation: "..."}
-      - {company: "Meta", sensitivity: "高", recommendation: "..."}
+  cycle_position: {stage, evidence, duration}
+  macro_ad_relationship: {gdp_elasticity, confidence_correlation}
+  channel_sensitivity: {search, social, display, video, retail_media}
+  leading_indicators: {ad_specific, macro, composite}
+  ac_score: {total, breakdown}
+  scenarios: {base, bear, bull}
+  investment_implications: {stance, channel_preference, stock_implications}
 ```
 
 ---
 
 ## Kill Switches
 
-| ID | 条件 | 触发动作 |
-|----|------|----------|
-| **KS-AC-001** | 经济衰退确认(NBER) | 下调所有广告股 |
-| **KS-AC-002** | 广告支出连续2季度负增长 | 进入收缩模式 |
-| **KS-AC-003** | 大型广告主大规模削减预算 | 重估周期位置 |
+| ID | 条件 | 动作 |
+|----|------|------|
+| KS-AC-01 | 经济衰退确认(NBER) | 下调所有广告股 |
+| KS-AC-02 | 广告支出连续2季度负增长 | 进入收缩模式 |
+| KS-AC-03 | 大型广告主大规模削减 | 重估周期位置 |
 
 ---
 
@@ -402,20 +131,8 @@ ad_cycle_output:
 
 ---
 
-## v2.0 Contract Compliance
-
-| 模块 | 状态 |
-|------|------|
-| Core Principles | ✅ |
-| Scoring System | ✅ |
-| Kill Switches | ✅ |
-| Red Flags | ✅ |
-| Output Contract | ✅ |
-
----
-
 ## Version History
 
 | 版本 | 日期 | 变更 |
 |------|------|------|
-| 1.0 | 2026-01-27 | 初始版本 |
+| 1.0 | 2026-01-27 | 初始版本，压缩至~200行 |
