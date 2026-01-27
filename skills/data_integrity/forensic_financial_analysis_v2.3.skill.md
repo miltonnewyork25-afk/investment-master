@@ -595,132 +595,402 @@ quality_gate_integration:
 
 ---
 
-## Contract Compliance (v1.0合约兼容)
+## Contract Compliance v2.0
 
-> 本节确保skill输出符合 `skills/_common/skill_output_contract_v1.0.yaml`
+> 本节确保skill输出符合 `skills/_common/skill_design_standard_v2.0.yaml`
 
-### 严重度映射
-
-| 原术语 | 标准代码 | 含义 |
-|--------|----------|------|
-| HIGH | **P0** | 阻塞性，必须有filing引用 |
-| MED | **P1** | 重要，需人工审核 |
-| LOW | **P2** | 次要，记录即可 |
-
-### 红旗代码映射
-
-本skill使用以下标准红旗代码（参见 `code_dictionary_v1.0.yaml`）：
-
-| 类别 | 代码 | 触发条件 |
-|------|------|----------|
-| CASH | RF-CASH-001 | OCF/Revenue < 5% |
-| CASH | RF-CASH-002 | FCF/NI < 0% (持续) |
-| CASH | RF-CASH-003 | OCF via WC pull |
-| AR | RF-AR-001 | DSO增速 > Revenue增速 |
-| AR | RF-AR-002 | 坏账准备率下降 |
-| INV | RF-INV-001 | DIO增速 > COGS增速 |
-| AP | RF-AP-001 | DPO异常延长 |
-| AP | RF-AP-003 | Accruals proxy > 10% |
-| CAP | RF-CAP-001 | 资本化成本异常增加 |
-| CAP | RF-CAP-002 | Capex/D&A > 1.5x持续 |
-| NONGAAP | RF-NONGAAP-001 | GAAP↔NonGAAP差距>30% |
-| NONGAAP | RF-NONGAAP-002 | 一次性项目反复出现 |
-| NONGAAP | RF-NONGAAP-003 | SBC/Revenue > 10% |
-| LEVERAGE | RF-LEV-001 | Net Debt/EBITDA > 4x |
-| LEVERAGE | RF-LEV-002 | Interest coverage < 3x |
-
-### 质量门输出
+### 核心原则对齐 (Core Principles)
 
 ```yaml
-quality_gate_output:
-  verdict: "PASS | DEGRADE | FAIL"
+core_principles_alignment:
+  contract_first:
+    input_validation: "财报数据完整性检查 + 数据新鲜度验证"
+    workflow: "10步工作流明确定义"
+    output_schema: "forensic_card标准格式"
+    quality_gates: "PASS/DEGRADE/FAIL三态"
+    degrade_circuit_break: "数据不足时降级，数据造假时熔断"
 
-  # PASS条件
-  pass_criteria:
-    - "所有10步完成"
-    - "每个P0红旗有Tier 1证据"
-    - "无内部矛盾"
+  eval_first:
+    golden_cases: "3个标准案例(健康公司/红旗公司/数据不足)"
+    scorers: "P0/P1/P2通过率 + 证据覆盖率"
+    replay: "tool_calls序列可回放"
 
-  # DEGRADE条件
-  degrade_criteria:
-    - "部分财务数据缺失(1-2年)"
-    - "仅有Tier 2证据支持P0红旗"
-    - "跨周期分析窗口不足5年"
-
-  # FAIL条件
-  fail_criteria:
-    - "关键财务报表缺失"
-    - "P0红旗无任何证据"
-    - "数据过期>180天"
+  sre_first:
+    degrade_path: "简单可执行(数据不足→限制结论范围)"
+    fast_close: "标记unusable_sections并继续"
+    drill_frequency: "每周演练降级路径"
 ```
 
-### DEGRADE模式模板
+### 声明类型 (5-Type Claims)
 
-当verdict=DEGRADE时，输出必须包含：
+| 声明示例 | 类型 | 重要性 | 特殊要求 |
+|----------|------|--------|----------|
+| "FY25 OCF/Revenue = 8%" | **FACT_DESCRIPTIVE** | supporting | min_evidence_tier: 1 |
+| "现金转换下降因WC收紧" | **CAUSAL_INFERENCE** | critical | 必须列替代假说 |
+| "预计下季度继续恶化" | **FORECAST** | optional | 必须做敏感性测试 |
+| "当前估值隐含OCF/Rev>12%" | **VALUATION_IMPLIED** | supporting | min_evidence_tier: 2 |
+| "建议降低持仓" | **ACTION_RECOMMENDATION** | optional | min_evidence_tier: 2 |
+
+### 证据注册表 (Dual Threshold)
+
+```yaml
+evidence_registry:
+  tier_thresholds:
+    quantity_threshold:
+      tier_1_minimum: 2
+      fallback: "若Tier 1仅1条→DEGRADE with RC-EVIDENCE-001"
+
+    coverage_threshold:
+      tier_1_covers_key_nodes: "≥50%"
+      key_nodes:
+        - "现金转换三角验证"
+        - "应收/存货/应付分析"
+        - "Non-GAAP调整"
+        - "杠杆/流动性"
+      fallback: "未覆盖→DEGRADE with RC-EVIDENCE-002"
+
+  tier_mapping:
+    tier_1: "10-K, 10-Q, 8-K, SEC文件"
+    tier_2: "Earnings Call, 分析师报告, 行业数据"
+    tier_3: "媒体报道, 专家访谈, 社交媒体"
+```
+
+### Kill Switches (3 Mandatory + Domain-Specific)
+
+```yaml
+kill_switches:
+  # 强制3类
+  mandatory:
+    - id: "KS-EVIDENCE-FABRICATION"
+      condition: "引用的SEC文件不存在或数据与原文不符"
+      detection: "evidence_hash验证 + 原文交叉检查"
+      action: "FAIL"
+      current_status: "GREEN"
+
+    - id: "KS-TOOL-OVERREACH"
+      condition: "调用非白名单工具或参数越界"
+      detection: "tool_whitelist: [bb_get_financials, bb_get_filing, bb_get_market_data]"
+      action: "FAIL"
+      current_status: "GREEN"
+
+    - id: "KS-HIGH-RISK-OUTPUT"
+      condition: "输出包含'fraud'/'manipulation'等禁用词"
+      detection: "content_filter检查"
+      action: "FAIL或转人审"
+      current_status: "GREEN"
+
+  # 领域特定
+  domain_specific:
+    - id: "KS-FORENSIC-001"
+      condition: "检测到公司重述财报或SEC调查"
+      threshold: "任何重述或调查公告"
+      action: "DEGRADE + 标记HIGH_RISK"
+      monitoring_metric: "8-K监控"
+
+    - id: "KS-FORENSIC-002"
+      condition: "OCF/NI < 0.3 连续3年"
+      threshold: "盈利质量极低"
+      action: "DEGRADE + P0红旗"
+      monitoring_metric: "现金转换率"
+```
+
+### 威胁模型 (Threat Model)
+
+```yaml
+threat_model:
+  risks:
+    prompt_injection:
+      description: "输入公司名称包含恶意指令"
+      detection: "输入sanitization"
+      mitigation: "拒绝执行"
+
+    evidence_fabrication:
+      description: "编造财务数据或引用"
+      detection: "每个数据点必须有filing引用"
+      mitigation: "FAIL + 标记"
+
+    confirmation_bias:
+      description: "只找支持预设结论的证据"
+      detection: "强制检查良性替代解释(alternatives)"
+      mitigation: "无alternatives则DEGRADE"
+
+    data_staleness:
+      description: "使用过期财务数据"
+      detection: "数据新鲜度检查(>180天=EXPIRED)"
+      mitigation: "DEGRADE with RC-DATA-002"
+
+  content_zones:
+    TRUSTED: "SEC官方文件"
+    DATA_ONLY: "财务数据库API"
+    HIGH_RISK: "社交媒体/匿名来源"
+    QUARANTINED: "编造数据/伪造引用"
+```
+
+### 可观测性与回放 (Observability)
+
+```yaml
+observability:
+  required_fields:
+    run_id: "UUID"
+    skill_version: "v2.3"
+    timestamp: "ISO8601"
+    tool_calls:
+      - tool: "bb_get_financials"
+        input: "{ticker, statements, period}"
+        output_summary: "3年IS/BS/CF"
+        latency_ms: 1200
+        success: true
+    gate_scores:
+      p0_passed: 8
+      p0_total: 8
+      p1_passed: 12
+      p1_total: 14
+    evidence_hashes: ["sha256:abc123..."]
+
+  metrics:
+    - success_rate: "PASS runs / total"
+    - p0_failure_rate: "P0 failures / total"
+    - tier1_evidence_ratio: "Tier 1 / total evidence"
+    - degrade_trigger_rate: "DEGRADE / total (alert >20%)"
+
+  replay:
+    enabled: true
+    requirements:
+      - "所有输入可重建"
+      - "tool_calls序列可重放"
+      - "输出可对比"
+```
+
+### 成本/延迟预算 (Budget)
+
+```yaml
+budget:
+  token_budget:
+    soft_limit: 6000
+    soft_action: "LOG warning"
+    hard_limit: 10000
+    hard_action: "DEGRADE with RC-BUDGET-001"
+    critical_limit: 15000
+    critical_action: "FAIL with RC-BUDGET-002"
+
+  tool_call_budget:
+    soft_limit: 8
+    hard_limit: 15
+    critical_limit: 25
+
+  latency_budget:
+    soft_limit_ms: 20000
+    hard_limit_ms: 45000
+    critical_limit_ms: 90000
+```
+
+### 质量检验 (Quality Checks)
+
+```yaml
+quality_checks:
+  hard_fail_triggers:
+    - "schema不合法(forensic_card格式错误)"
+    - "P0红旗无evidence_ref"
+    - "引用的10-K不存在"
+    - "使用禁用词(fraud/manipulation)"
+    - "Kill Switch RED状态被忽略"
+
+  scoring:
+    PASS:
+      p0_requirement: "100% 通过"
+      p1_requirement: "≥85% 通过"
+      p2_requirement: "≥50% 通过"
+
+    DEGRADE:
+      p0_requirement: "100% 通过"
+      p1_requirement: "70-85% 通过"
+
+    FAIL:
+      conditions:
+        - "P0未100%通过"
+        - "P1 < 70%"
+        - "任何Hard-FAIL触发"
+
+  runtime_constraints:
+    degrade_path_testing:
+      required: true
+      frequency: "每周演练"
+```
+
+### 红旗代码 (Required)
+
+| 类别 | 代码 | 触发条件 | 严重度 |
+|------|------|----------|--------|
+| CASH | RF-CASH-001 | OCF/Revenue < 5% | P0 |
+| CASH | RF-CASH-002 | FCF/NI < 0% (持续) | P0 |
+| CASH | RF-CASH-003 | OCF via WC pull | P1 |
+| AR | RF-AR-001 | DSO增速 > Revenue增速 | P1 |
+| AR | RF-AR-002 | 坏账准备率下降 | P1 |
+| INV | RF-INV-001 | DIO增速 > COGS增速 | P1 |
+| CAP | RF-CAP-001 | 资本化成本异常增加 | P1 |
+| NONGAAP | RF-NONGAAP-001 | GAAP↔NonGAAP差距>30% | P1 |
+| LEVERAGE | RF-LEV-001 | Net Debt/EBITDA > 4x | P0 |
+
+### 证伪设计 (Falsification)
+
+```yaml
+falsification:
+  basic_requirements:
+    falsifier_per_claim: true
+    premortem: "假设3年后盈利质量判断错误，最可能路径是什么？"
+    counterfactual: "如果去掉Non-GAAP调整，结论是否改变？"
+
+  advanced_requirements:
+    alternative_hypotheses:
+      required_for: ["CAUSAL_INFERENCE"]
+      example:
+        claim: "现金转换下降因WC收紧"
+        alternatives:
+          - "季节性因素导致"
+          - "收入结构变化导致"
+        distinguishing_evidence: "跨周期对比 + 细分分析"
+
+    sensitivity_stress_test:
+      required_for: ["FORECAST"]
+      example:
+        parameter: "OCF/Revenue预测"
+        base_value: "8%"
+        perturbation: "±3pp"
+        conclusion_flip_threshold: "5%"
+
+    disconfirming_evidence_plan:
+      claim: "盈利质量存在问题"
+      where_to_look:
+        - "管理层解释(Earnings Call)"
+        - "审计师意见"
+        - "同行业对比"
+      check_frequency: "每季度"
+```
+
+### 评估与回归 (Eval & Regression)
+
+```yaml
+eval_regression:
+  self_score:
+    dimensions:
+      G1: {score: "0-5", how: "10步工作流完成度"}
+      D1: {score: "0-5", how: "财务数据验证严格度"}
+      E1: {score: "0-5", how: "每个红旗有filing引用"}
+      Q1: {score: "0-5", how: "PASS/DEGRADE/FAIL判定准确"}
+      K1: {score: "0-5", how: "Kill Switch正确触发"}
+
+  calibration:
+    golden_cases:
+      - case_id: "GC-001-HEALTHY"
+        input: "健康公司(OCF/Rev>15%, 无红旗)"
+        expected_verdict: "PASS"
+        expected_key_claims: ["盈利质量健康"]
+
+      - case_id: "GC-002-REDFLAG"
+        input: "问题公司(多个P0红旗)"
+        expected_verdict: "PASS with RED_FLAGS"
+        expected_key_claims: ["现金转换存在风险"]
+
+      - case_id: "GC-003-DATA_GAP"
+        input: "数据不完整(仅2年数据)"
+        expected_verdict: "DEGRADE"
+        expected_key_claims: ["跨周期分析受限"]
+
+    metrics:
+      - "success_rate"
+      - "p0_failure_rate"
+      - "tier1_evidence_ratio"
+      - "false_positive_rate"
+```
+
+### 评估对标 (Evaluation Alignment)
+
+```yaml
+evaluation_alignment:
+  standard_version: "agent_evaluation_standard_v1.1"
+
+  dimension_coverage:
+    G1_governance: "通过10步工作流结构化控制"
+    D1_data_integrity: "通过财报数据验证规则"
+    D2_contract_compliance: "通过forensic_card schema"
+    E1_evidence_auditability: "通过Tier 1/2/3分层 + 双门槛"
+    Q1_quality_gate: "通过PASS/DEGRADE/FAIL三态"
+    K1_kill_switch: "通过3+2 Kill Switches"
+
+  blocker_avoidance:
+    B1_critical_unsupported: "P0红旗必须有Tier 1证据"
+    B3_insecure_output: "禁用fraud/manipulation等词"
+    B4_no_audit_log: "tool_calls + evidence_hashes记录"
+    B5_kill_switch_ignored: "RED状态必须触发FAIL"
+    B6_degrade_without_actions: "DEGRADE必须有3-7项next_actions"
+```
+
+### DEGRADE模式可执行剧本
 
 ```yaml
 degrade_mode:
   template_locked: true
+  trigger_reason: "RC-xxx"
 
-  limitations:
-    - "[具体限制1]"
-    - "[具体限制2]"
+  playbook:
+    immediate_actions:
+      - "标记受影响的分析步骤"
+      - "限制结论范围"
 
-  next_actions_required:  # 3-7项
-    - action: "获取最新10-Q补充Q3数据"
-      owner: "human"
-      priority: 1
-    - action: "验证P0红旗的Tier 1来源"
-      owner: "agent"
-      priority: 2
-    - action: "补充跨周期数据至5年"
-      owner: "agent"
-      priority: 3
+    next_actions_required:
+      - action: "获取最新10-Q补充数据"
+        owner: "human"
+        priority: "P0"
+        deadline: "下次更新前"
+        verification: "数据截止日期更新"
 
-  usable_sections:
-    - "Step 2-6 (当期分析)"
+      - action: "验证P0红旗的Tier 1来源"
+        owner: "agent"
+        priority: "P0"
+        deadline: "立即"
+        verification: "evidence_ref可访问"
 
-  unusable_sections:
-    - "Step 8 (跨周期分析) - 数据不足"
+      - action: "补充跨周期数据至5年"
+        owner: "agent"
+        priority: "P1"
+        deadline: "下次更新"
+        verification: "cross_cycle_analysis完整"
+
+  usable_sections: ["Step 2-6 (当期分析)"]
+  unusable_sections: ["Step 8 (跨周期分析) - 数据不足"]
+
+  fast_close:
+    enabled: true
+    method: "标记unusable_sections，继续可用部分分析"
+    rollback_steps: ["恢复到最后有效状态"]
 ```
 
-### Blackboard输出字段
+### Blackboard输出字段 (v2.0)
 
 ```yaml
 blackboard_outputs:
-  - field: "earnings_quality_score"
-    type: "float"
-    range: "0.0-1.0"
-    description: "盈利质量综合评分"
+  core_fields:
+    run_id: "string"
+    skill_id: "data_integrity.forensic_financial_v2.3"
+    skill_version: "v2.3"
+    verdict: "PASS | DEGRADE | FAIL"
+    reason_codes: ["RC-xxx"]
+    key_claims: ["盈利质量评估结果"]
 
-  - field: "cash_conversion_flag"
-    type: "enum"
-    values: ["HEALTHY", "WARNING", "CRITICAL"]
-    description: "现金转换健康度"
-
-  - field: "forensic_red_flags"
-    type: "array"
-    description: "红旗代码列表"
-
-  - field: "evidence_tier_distribution"
-    type: "object"
-    description: "证据层级分布 {tier_1: n, tier_2: n, tier_3: n}"
+  extended_fields:
+    earnings_quality_score: {type: "float", range: "0.0-1.0"}
+    cash_conversion_flag: {type: "enum", values: ["HEALTHY", "WARNING", "CRITICAL"]}
+    forensic_red_flags: {type: "array", description: "红旗代码列表"}
+    evidence_tier_distribution: {type: "object", schema: "{tier_1: n, tier_2: n, tier_3: n}"}
+    tool_calls: {type: "array"}
+    token_usage: {type: "integer"}
+    latency_ms: {type: "integer"}
 ```
-
-### 声明类型标注要求
-
-本skill输出的声明必须标注类型：
-
-| 声明示例 | 类型 | 重要性 |
-|----------|------|--------|
-| "FY25 OCF/Revenue = 8%" | FACT | supporting |
-| "现金转换下降因WC收紧" | INFERENCE | critical |
-| "预计下季度继续恶化" | FORECAST | optional |
-| "管理层诚信存疑" | OPINION | supporting |
 
 ---
 
-**版本**: v2.2
-**合约版本**: skill_output_contract_v1.0
+**版本**: v2.3
+**合约版本**: skill_design_standard_v2.0
+**代码字典版本**: code_dictionary_v1.0
 **归档位置**: `skills/data_integrity/`
-**状态**: 已整合到架构，合约兼容
+**状态**: 已升级到v2.0合规

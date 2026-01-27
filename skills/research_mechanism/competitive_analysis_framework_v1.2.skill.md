@@ -464,73 +464,150 @@ ecosystem_graph_integration:
 
 ---
 
-## Contract Compliance (v1.0合约兼容)
+## Contract Compliance v2.0
 
-### 严重度映射
+> 本节确保skill输出符合 `skills/_common/skill_design_standard_v2.0.yaml`
 
-| 评分(0-5) | 标准代码 | 含义 |
-|-----------|----------|------|
-| 4-5 | **P0** | 强竞争优势，核心论点 |
-| 2-3 | **P1** | 中等优势，需持续监控 |
-| 0-1 | **P2** | 弱/无优势 |
-
-### 质量门条件
+### 核心原则对齐 (Core Principles)
 
 ```yaml
-quality_gate:
-  pass_criteria:
-    - "11步工作流完成"
-    - "结论卡5维度评分完成"
-    - "监控项≥10(加剧+缓和各≥5)"
-    - "每条结论有可推翻条件"
+core_principles_alignment:
+  contract_first:
+    input_validation: "行业定义(I) + 地域(G) + 时间(T) + 玩家(P) + 数据(D)"
+    workflow: "11步工作流(S1-S11)"
+    output_schema: "结论卡 + 证据清单 + 监控项"
+    quality_gates: "PASS/DEGRADE/FAIL三态"
 
-  degrade_criteria:
-    - "部分步骤数据不足"
-    - "评分依据不完整"
+  eval_first:
+    golden_cases: "3个案例(高集中/低集中/数据不足)"
+    scorers: "5维度评分准确率 + EWS触发准确率"
 
-  fail_criteria:
-    - "无法完成核心步骤(S1-S4)"
-    - "市场边界无法定义"
+  sre_first:
+    degrade_path: "标记不完整步骤"
+    fast_close: "限制到S1-S4核心步骤"
 ```
 
-### Blackboard输出字段
+### 声明类型 (5-Type Claims)
+
+| 输出组件 | 类型 | 重要性 | 特殊要求 |
+|----------|------|--------|----------|
+| HHI/CR4 | **FACT_DESCRIPTIVE** | supporting | min_evidence_tier: 1 |
+| 五力评分 | **CAUSAL_INFERENCE** | critical | 必须列替代解释 |
+| 护城河断言 | **CAUSAL_INFERENCE** | critical | 必须有可推翻条件 |
+| EWS预警 | **FORECAST** | supporting | 必须有阈值 |
+| 终局情景 | **FORECAST** | optional | 必须做敏感性测试 |
+| 投资建议 | **ACTION_RECOMMENDATION** | optional | min_evidence_tier: 2 |
+
+### 证据注册表 (Dual Threshold)
+
+```yaml
+evidence_registry:
+  tier_thresholds:
+    quantity_threshold: {tier_1_minimum: 2}
+    coverage_threshold:
+      tier_1_covers_key_nodes: "≥50%"
+      key_nodes: ["市场边界", "五力评估", "护城河断言", "EWS"]
+```
+
+### Kill Switches (3 Mandatory + Domain-Specific)
+
+```yaml
+kill_switches:
+  mandatory:
+    - id: "KS-EVIDENCE-FABRICATION"
+      condition: "编造市场数据"
+      action: "FAIL"
+    - id: "KS-TOOL-OVERREACH"
+      action: "FAIL"
+    - id: "KS-HIGH-RISK-OUTPUT"
+      condition: "结论无可推翻条件"
+      action: "FAIL"
+
+  domain_specific:
+    - id: "KS-COMP-001"
+      condition: "市场边界无法定义"
+      action: "FAIL"
+    - id: "KS-COMP-002"
+      condition: "EWS触发阈值突破"
+      action: "DEGRADE + 重新评估"
+```
+
+### 威胁模型 + 可观测性 + 预算
+
+```yaml
+threat_model:
+  risks:
+    boundary_manipulation: "操纵市场边界以支持结论"
+    detection: "SSNIP测试验证"
+
+observability:
+  required_fields: [run_id, skill_version, gate_scores]
+  metrics: [five_forces_accuracy, ews_trigger_rate]
+
+budget:
+  token_budget: {soft: 8000, hard: 12000, critical: 18000}
+  tool_call_budget: {soft: 10, hard: 15, critical: 25}
+```
+
+### 质量检验 + 证伪设计
+
+```yaml
+quality_checks:
+  hard_fail_triggers:
+    - "市场边界无法定义"
+    - "结论无可推翻条件"
+    - "监控项<10"
+  scoring:
+    PASS: {p0: "100%", p1: "≥85%"}
+
+falsification:
+  basic_requirements:
+    falsifier_per_claim: true
+    premortem: "假设3年后竞争判断错误，最可能路径？"
+  advanced_requirements:
+    alternative_hypotheses:
+      required_for: ["CAUSAL_INFERENCE"]
+    disconfirming_evidence_plan:
+      where_to_look: ["竞品动态", "监管变化", "技术替代"]
+```
+
+### 评估与回归 + 评估对标
+
+```yaml
+eval_regression:
+  self_score:
+    dimensions: {G1: "11步完成度", E1: "证据质量", K1: "EWS定义"}
+  calibration:
+    golden_cases:
+      - {case_id: "GC-COMP-001", input: "高集中行业", expected: "HHI>2500"}
+
+evaluation_alignment:
+  standard_version: "agent_evaluation_standard_v1.1"
+  dimension_coverage: {G1: "11步工作流", E1: "取证手段S11", K1: "可推翻条件"}
+```
+
+### Blackboard输出字段 (v2.0)
 
 ```yaml
 blackboard_outputs:
-  - field: "market_structure"
-    type: "object"
-    schema: "{hhi, cr4, concentration_level}"
+  core_fields:
+    run_id: "string"
+    skill_id: "research_mechanism.competitive_analysis_v1.2"
+    verdict: "PASS | DEGRADE | FAIL"
+    key_claims: ["竞争格局评估"]
 
-  - field: "five_forces_scores"
-    type: "object"
-    schema: "{entry, substitute, supplier, buyer, rivalry}"
-
-  - field: "moat_assertions"
-    type: "array"
-    schema: "[{assertion, sources[], kpi_thresholds[]}]"
-
-  - field: "ews_dashboard"
-    type: "object"
-    schema: "{leading[], lagging[]}"
-
-  - field: "competitive_verdict"
-    type: "object"
-    schema: "{structure, power, dynamic, high_dim, moat, total}"
+  extended_fields:
+    market_structure: {type: "object", schema: "{hhi, cr4}"}
+    five_forces_scores: {type: "object"}
+    moat_assertions: {type: "array"}
+    ews_dashboard: {type: "object", schema: "{leading[], lagging[]}"}
+    competitive_verdict: {type: "object", schema: "{structure, power, dynamic, high_dim, moat, total}"}
 ```
-
-### 声明类型标注
-
-| 输出组件 | 声明类型 | 重要性 |
-|----------|----------|--------|
-| HHI/CR4 | FACT | supporting |
-| 五力评分 | INFERENCE | critical |
-| 护城河断言 | INFERENCE | critical |
-| EWS信号 | FACT/INFERENCE | supporting |
-| 终局情景 | FORECAST | optional |
 
 ---
 
-**版本**: v1.1
-**合约版本**: skill_output_contract_v1.0
+**版本**: v1.2
+**合约版本**: skill_design_standard_v2.0
+**代码字典版本**: code_dictionary_v1.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构，合约兼容
+**状态**: 已升级到v2.0合规

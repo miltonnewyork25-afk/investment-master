@@ -314,11 +314,252 @@ next_mve:
 
 ---
 
-## Contract Compliance (v1.0合约兼容)
+## Contract Compliance v2.0
 
-### 与Quality Gate三态的映射
+### Core Principles Alignment
 
-本skill的三层控制策略天然对应Quality Gate：
+| 原则 | 本Skill实现 |
+|------|-------------|
+| **Contract-first** | 输出结构化：Plant/Control/Matrix/Loop四组件 |
+| **Eval-first** | 可观测性×可控性矩阵提供可评估框架 |
+| **SRE-first** | 三层控制：Safety→Stability→Performance |
+
+### Claims Type Annotation (5类)
+
+| 组件 | Claim类型 | 重要性 | 要求 |
+|------|-----------|--------|------|
+| Plant.state_x | FACT_DESCRIPTIVE | critical | 需Tier 1证据 |
+| Plant.observation_y | FACT_DESCRIPTIVE | critical | 需交叉验证 |
+| Safety Controller triggers | CAUSAL_INFERENCE | critical | 需因果链 |
+| Stability hysteresis | CAUSAL_INFERENCE | supporting | 需历史验证 |
+| VoI assessment | FORECAST | supporting | 需概率区间 |
+| Control recommendations | ACTION_RECOMMENDATION | critical | 需风险标注 |
+
+### Evidence Registry (Dual Threshold)
+
+```yaml
+evidence_requirements:
+  quantity_threshold:
+    tier_1_min: 2  # 至少2个一手来源
+    total_min: 4   # 总证据≥4
+
+  coverage_threshold:
+    key_nodes: ["state_x", "observation_y", "safety_triggers"]
+    min_coverage: 0.50  # ≥50%关键节点有证据
+
+  tiering:
+    tier_1: "公司披露、SEC文件、官方数据"
+    tier_2: "机构报告、行业数据"
+    tier_3: "媒体、推断、模型估计"
+```
+
+### Kill Switches
+
+**Mandatory (3个)**
+
+| ID | 条件 | 权重 | 阈值 |
+|----|------|------|------|
+| KS-EVIDENCE-FABRICATION | 证据造假/幻觉检测 | 3.0 | 任一关键数据无法溯源 |
+| KS-TOOL-OVERREACH | 工具越权 | 3.0 | 调用未授权外部API |
+| KS-HIGH-RISK-OUTPUT | 高风险输出 | 3.0 | 建议触发Safety Controller但未警告 |
+
+**Domain-Specific (4个)**
+
+| ID | 条件 | 权重 | 阈值 |
+|----|------|------|------|
+| KS-CTRL-001 | Safety Controller触发 | 3.0 | 检测到Hard Stop条件 |
+| KS-CTRL-002 | 不可观测性过高 | 2.5 | state_x全部不可观测且无代理指标 |
+| KS-CTRL-003 | VoI计算不可行 | 2.0 | 无法估计信息价值 |
+| KS-CTRL-004 | 控制策略冲突 | 2.5 | 三层控制逻辑相互矛盾 |
+
+### Threat Model
+
+```yaml
+threat_model:
+  risk_types:
+    - "幻觉风险: 虚构隐变量或因果关系"
+    - "过度自信: 低估观测噪声"
+    - "控制幻觉: 高估可控性"
+
+  protection:
+    - "所有state_x必须标注observable: true/false"
+    - "所有observation_y必须标注noise_source和lag"
+    - "Safety Controller必须有明确触发条件"
+
+  content_zones:
+    green: "Plant定义、观测指标"
+    yellow: "控制策略建议"
+    red: "Safety Controller触发判断"
+```
+
+### Observability & Replay
+
+```yaml
+observability:
+  run_id: "自动生成UUID"
+  tool_calls: "记录所有数据获取"
+  gate_scores: "记录各组件完成状态"
+
+replay:
+  enabled: true
+  inputs_logged: "目标系统、约束条件、数据源"
+  outputs_logged: "Plant/Control/Matrix/Loop完整结构"
+```
+
+### Budget
+
+```yaml
+budget:
+  tokens:
+    soft: 15000
+    hard: 25000
+    critical: 30000
+  tool_calls:
+    soft: 8
+    hard: 15
+  latency_ms:
+    soft: 45000
+    hard: 90000
+```
+
+### Quality Checks
+
+```yaml
+quality_checks:
+  P0_blocking:
+    - "Plant四组件定义完整"
+    - "Safety Controller triggers明确"
+    - "无Kill Switch触发"
+
+  P1_important:
+    - "VoI检验完成"
+    - "可观测性×可控性矩阵完整"
+    - "Execution Loop有明确next_probe"
+
+  pass_rule: "P0: 100%, P1: ≥85%"
+
+  hard_fail_triggers:
+    - "Safety Controller条件不明确"
+    - "state_x全部缺失"
+    - "任一Mandatory Kill Switch触发"
+```
+
+### Red Flags (Required)
+
+```yaml
+red_flags:
+  - flag: "RF-CTRL-001"
+    condition: "state_x无代理指标"
+    action: "标注为不可观测，降低置信度"
+
+  - flag: "RF-CTRL-002"
+    condition: "observation_y噪声>HIGH且无滤波策略"
+    action: "降级至DEGRADE"
+
+  - flag: "RF-CTRL-003"
+    condition: "Safety Controller缺少任一Hard Stop条件"
+    action: "必须补充或标记为不完整"
+```
+
+### Falsification Design
+
+```yaml
+falsification:
+  alternative_hypotheses:
+    - "观测信号噪声被低估"
+    - "因果链存在遗漏变量"
+    - "可控性被高估"
+
+  sensitivity_tests:
+    - "噪声水平±50%对结论影响"
+    - "滞后时间翻倍对决策影响"
+
+  disconfirming_evidence_plan:
+    - "6个月内: 验证observation_y与state_x相关性"
+    - "季度: 检查Safety Controller触发条件有效性"
+```
+
+### Eval & Regression
+
+```yaml
+eval:
+  self_score:
+    dimensions:
+      - "组件完整性 (Plant/Control/Matrix/Loop)"
+      - "可观测性分析深度"
+      - "控制策略可行性"
+    range: "[0, 1]"
+
+  calibration_hook:
+    trigger: "输出完成后"
+    check: "控制建议与实际结果回溯"
+
+  golden_cases:
+    - "Tesla FSD商业化进度分析"
+    - "SaaS公司客户流失控制"
+```
+
+### Evaluation Alignment
+
+| 维度 | 权重 | 本Skill评估点 |
+|------|------|---------------|
+| 深度 | 30% | Level 3+(机制层)穿透 |
+| 证据 | 25% | Dual Threshold满足 |
+| 可操作 | 20% | 控制策略明确可执行 |
+| 一致性 | 15% | 三层控制逻辑一致 |
+| 时效性 | 10% | 数据时效标注 |
+
+### DEGRADE Mode Playbook
+
+```yaml
+degrade_mode:
+  triggers:
+    - "关键隐变量(state_x)不可观测"
+    - "观测信号噪声过高"
+    - "VoI > 0 但数据不足"
+
+  actions:
+    - "输出标注: [DEGRADE] 分析受限"
+    - "列出具体受限原因"
+    - "提供数据获取建议"
+
+  recovery:
+    - "获取更多观测数据"
+    - "引入替代代理指标"
+    - "扩大数据时间窗口"
+```
+
+### Blackboard Outputs (v2.0)
+
+```yaml
+blackboard_outputs:
+  - field: "state_variables"
+    type: "array"
+    description: "识别的隐变量列表"
+    claim_type: "FACT_DESCRIPTIVE"
+
+  - field: "observation_quality"
+    type: "object"
+    schema: "{signal, noise_level, lag}"
+    claim_type: "FACT_DESCRIPTIVE"
+
+  - field: "control_status"
+    type: "enum"
+    values: ["SAFETY_TRIGGERED", "STABILITY_MODE", "PERFORMANCE_MODE"]
+    claim_type: "CAUSAL_INFERENCE"
+
+  - field: "voi_assessment"
+    type: "object"
+    schema: "{voi_value, decision, next_probe}"
+    claim_type: "FORECAST"
+
+  - field: "control_recommendations"
+    type: "array"
+    description: "控制策略建议"
+    claim_type: "ACTION_RECOMMENDATION"
+```
+
+### Quality Gate Mapping
 
 | 控制层 | Quality Gate | 说明 |
 |--------|--------------|------|
@@ -326,49 +567,9 @@ next_mve:
 | Stability Controller | **DEGRADE** | Hysteresis → 需要更多数据 |
 | Performance Controller | **PASS** | 正常优化模式 |
 
-### 质量门条件
-
-```yaml
-quality_gate:
-  pass_criteria:
-    - "4个组件定义完成(Plant/Control/Matrix/Loop)"
-    - "Safety Controller triggers明确"
-    - "VoI检验完成"
-
-  degrade_criteria:
-    - "关键隐变量(state_x)不可观测"
-    - "观测信号噪声过高"
-    - "VoI > 0 但数据不足"
-
-  fail_criteria:
-    - "触发Safety Controller"
-    - "核心假设被证伪"
-```
-
-### Blackboard输出字段
-
-```yaml
-blackboard_outputs:
-  - field: "state_variables"
-    type: "array"
-    description: "识别的隐变量列表"
-
-  - field: "observation_quality"
-    type: "object"
-    schema: "{signal, noise_level, lag}"
-
-  - field: "control_status"
-    type: "enum"
-    values: ["SAFETY_TRIGGERED", "STABILITY_MODE", "PERFORMANCE_MODE"]
-
-  - field: "voi_assessment"
-    type: "object"
-    schema: "{voi_value, decision, next_probe}"
-```
-
 ---
 
-**版本**: v4.1
-**合约版本**: skill_output_contract_v1.0
+**版本**: v4.2
+**合约版本**: skill_design_standard_v2.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构，合约兼容
+**状态**: 已整合到架构，v2.0合约兼容

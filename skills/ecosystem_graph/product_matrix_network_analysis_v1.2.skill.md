@@ -512,138 +512,324 @@ flywheel:
 
 ---
 
-## Contract Compliance (v1.0合约兼容)
+## Contract Compliance v2.0
 
-> 本节确保skill输出符合 `skills/_common/skill_output_contract_v1.0.yaml`
+> 本节确保skill输出符合 `skills/_common/skill_design_standard_v2.0.yaml`
 
-### 质量门条件
+### 核心原则对齐 (Core Principles)
 
 ```yaml
-quality_gate:
-  pass_criteria:
-    - "10步工作流全部完成"
-    - "A0 Executive Map 7项必答完成"
-    - "节点覆盖scope所有维度"
-    - "强边≥20条"
-    - "飞轮≥3个"
-    - "Kill Switch + 证伪项≥5"
+core_principles_alignment:
+  contract_first:
+    input_validation: "target_company + scope覆盖检查"
+    workflow: "10步工作流(S1-S10)"
+    output_schema: "A0-A9产物标准格式"
+    quality_gates: "PASS/DEGRADE/FAIL三态"
 
-  degrade_criteria:
-    - "部分scope维度缺失(如开发者生态数据不足)"
-    - "强边<20条"
-    - "飞轮<3个"
+  eval_first:
+    golden_cases: "3个案例(平台型/非平台型/数据不足)"
+    scorers: "节点覆盖率 + 飞轮质量 + 证伪完整度"
+    replay: "工作流步骤可回放"
 
-  fail_criteria:
-    - "无法识别Hub节点"
-    - "核心边类型(Identity/Payments/Data)完全缺失"
-    - "无法完成分层网络图"
+  sre_first:
+    degrade_path: "限制scope范围，继续可用部分"
+    fast_close: "标记数据缺失维度"
+    drill_frequency: "每周演练"
 ```
 
-### DEGRADE模式模板
+### 声明类型 (5-Type Claims)
+
+| 输出组件 | 类型 | 重要性 | 特殊要求 |
+|----------|------|--------|----------|
+| 节点存在性 | **FACT_DESCRIPTIVE** | supporting | min_evidence_tier: 1 |
+| 节点角色标注 | **CAUSAL_INFERENCE** | critical | 必须列替代假说 |
+| 飞轮路径 | **CAUSAL_INFERENCE** | critical | 必须有break_points |
+| 利润池迁移 | **FORECAST** | optional | 必须做敏感性测试 |
+| 战略建议 | **ACTION_RECOMMENDATION** | optional | min_evidence_tier: 2 |
+
+### 证据注册表 (Dual Threshold)
+
+```yaml
+evidence_registry:
+  tier_thresholds:
+    quantity_threshold:
+      tier_1_minimum: 2
+      fallback: "若Tier 1仅1条→DEGRADE"
+
+    coverage_threshold:
+      tier_1_covers_key_nodes: "≥50%"
+      key_nodes:
+        - "Hub节点识别"
+        - "核心飞轮验证"
+        - "利润池归因"
+        - "Identity/Payments边"
+      fallback: "未覆盖→DEGRADE"
+
+  tier_mapping:
+    tier_1: "10-K, IR演示, SDK文档"
+    tier_2: "分析师报告, 行业研究"
+    tier_3: "媒体报道, 开发者社区"
+```
+
+### Kill Switches (3 Mandatory + Domain-Specific)
+
+```yaml
+kill_switches:
+  mandatory:
+    - id: "KS-EVIDENCE-FABRICATION"
+      condition: "编造节点或边的数据"
+      action: "FAIL"
+      current_status: "GREEN"
+
+    - id: "KS-TOOL-OVERREACH"
+      condition: "调用非白名单工具"
+      action: "FAIL"
+      current_status: "GREEN"
+
+    - id: "KS-HIGH-RISK-OUTPUT"
+      condition: "输出无证据支持的战略建议"
+      action: "FAIL"
+      current_status: "GREEN"
+
+  domain_specific:
+    - id: "KS-ECO-001"
+      condition: "Hub节点被替代或拆分"
+      threshold: "监管强制拆分"
+      action: "FAIL + 整体论点失效"
+
+    - id: "KS-ECO-002"
+      condition: "核心飞轮断裂"
+      threshold: "用户→数据→体验循环逆转"
+      action: "FAIL + 飞轮论点失效"
+
+    - id: "KS-ECO-003"
+      condition: "Identity/Payments层被绕过"
+      threshold: "第三方支付绕过抽成"
+      action: "DEGRADE + 重估利润池"
+
+    - id: "KS-ECO-004"
+      condition: "开发者大规模离开"
+      threshold: "开发者数量下降>30%"
+      action: "DEGRADE"
+```
+
+### 威胁模型 (Threat Model)
+
+```yaml
+threat_model:
+  risks:
+    evidence_fabrication:
+      description: "编造节点/边数据"
+      detection: "每条边必须有evidence字段"
+      mitigation: "FAIL"
+
+    scope_incomplete:
+      description: "遗漏关键维度(如Identity/Payments)"
+      detection: "强制覆盖检查"
+      mitigation: "DEGRADE"
+
+    flywheel_overfit:
+      description: "过度拟合飞轮模式"
+      detection: "必须有break_points"
+      mitigation: "无break_points则DEGRADE"
+
+  content_zones:
+    TRUSTED: "公司官方文档"
+    DATA_ONLY: "API/SDK文档"
+    HIGH_RISK: "推断/预测"
+```
+
+### 可观测性与回放 (Observability)
+
+```yaml
+observability:
+  required_fields:
+    run_id: "UUID"
+    skill_version: "v1.2"
+    timestamp: "ISO8601"
+    workflow_steps_completed: [1,2,3,4,5,6,7,8,9,10]
+    gate_scores: {p0_passed, p0_total, p1_passed, p1_total}
+
+  metrics:
+    - scope_coverage_rate: "覆盖维度/总维度"
+    - edge_evidence_rate: "有证据的边/总边数"
+    - flywheel_quality_score: "飞轮完整度"
+
+  replay:
+    enabled: true
+```
+
+### 成本/延迟预算 (Budget)
+
+```yaml
+budget:
+  token_budget:
+    soft_limit: 10000
+    hard_limit: 15000
+    critical_limit: 25000
+
+  tool_call_budget:
+    soft_limit: 12
+    hard_limit: 20
+    critical_limit: 35
+
+  latency_budget:
+    soft_limit_ms: 30000
+    hard_limit_ms: 60000
+    critical_limit_ms: 120000
+```
+
+### 质量检验 (Quality Checks)
+
+```yaml
+quality_checks:
+  hard_fail_triggers:
+    - "无法识别Hub节点"
+    - "核心边类型(Identity/Payments/Data)完全缺失"
+    - "无Kill Switch"
+    - "飞轮无break_points"
+
+  scoring:
+    PASS:
+      p0_requirement: "100% 通过"
+      p1_requirement: "≥85% 通过"
+    DEGRADE:
+      p0_requirement: "100% 通过"
+      p1_requirement: "70-85% 通过"
+    FAIL:
+      conditions: ["P0未100%通过", "P1 < 70%"]
+```
+
+### 证伪设计 (Falsification)
+
+```yaml
+falsification:
+  basic_requirements:
+    falsifier_per_claim: true
+    premortem: "假设3年后生态系统崩溃，最可能路径是什么？"
+    counterfactual: "如果去掉网络效应，仅靠捆绑，判断是否改变？"
+
+  advanced_requirements:
+    alternative_hypotheses:
+      required_for: ["CAUSAL_INFERENCE"]
+      example:
+        claim: "iPhone是Entry节点驱动飞轮"
+        alternatives:
+          - "服务本身驱动留存"
+          - "生态锁定而非产品驱动"
+
+    sensitivity_stress_test:
+      required_for: ["FORECAST"]
+      example:
+        parameter: "利润池迁移速度"
+        base_value: "5年"
+        perturbation: "±2年"
+
+    disconfirming_evidence_plan:
+      claim: "平台化程度=5"
+      where_to_look:
+        - "竞品生态数据"
+        - "开发者流失数据"
+        - "监管动态"
+      check_frequency: "每季度"
+```
+
+### 评估与回归 (Eval & Regression)
+
+```yaml
+eval_regression:
+  self_score:
+    dimensions:
+      G1: {score: "0-5", how: "10步工作流完成度"}
+      E1: {score: "0-5", how: "边有evidence引用"}
+      Q1: {score: "0-5", how: "A0 7项必答完成"}
+      K1: {score: "0-5", how: "Kill Switch定义完整"}
+
+  calibration:
+    golden_cases:
+      - case_id: "GC-ECO-001"
+        input: "Apple (强平台化)"
+        expected_verdict: "PASS"
+        expected_platform_score: 5
+
+      - case_id: "GC-ECO-002"
+        input: "传统制造业公司"
+        expected_verdict: "PASS"
+        expected_platform_score: 1-2
+
+      - case_id: "GC-ECO-003"
+        input: "数据不完整公司"
+        expected_verdict: "DEGRADE"
+```
+
+### 评估对标 (Evaluation Alignment)
+
+```yaml
+evaluation_alignment:
+  standard_version: "agent_evaluation_standard_v1.1"
+
+  dimension_coverage:
+    G1_governance: "通过10步工作流"
+    E1_evidence_auditability: "通过edge.evidence字段"
+    Q1_quality_gate: "通过A0必答项检查"
+    K1_kill_switch: "通过3+4 Kill Switches"
+
+  blocker_avoidance:
+    B1_critical_unsupported: "Hub节点必须有Tier 1证据"
+    B5_kill_switch_ignored: "证伪项≥5"
+    B6_degrade_without_actions: "DEGRADE必须有next_actions"
+```
+
+### DEGRADE模式可执行剧本
 
 ```yaml
 degrade_mode:
   template_locked: true
+  playbook:
+    immediate_actions:
+      - "标记缺失的scope维度"
+    next_actions_required:
+      - action: "补充开发者生态数据"
+        owner: "agent"
+        priority: "P0"
+      - action: "获取分部财务验证利润池"
+        owner: "human"
+        priority: "P1"
+      - action: "验证边强度量化指标"
+        owner: "agent"
+        priority: "P1"
 
-  common_limitations:
-    - "开发者生态数据不完整"
-    - "部分边的量化指标缺失"
-    - "利润池归因存在估算"
-
-  next_actions_required:
-    - action: "补充开发者API调用量数据"
-      owner: "agent"
-      priority: 1
-    - action: "获取分部财务数据验证利润池"
-      owner: "human"
-      priority: 2
-    - action: "验证边强度的量化指标"
-      owner: "agent"
-      priority: 3
+  fast_close:
+    enabled: true
+    method: "限制分析范围到已有数据"
 ```
 
-### Blackboard输出字段
+### Blackboard输出字段 (v2.0)
 
 ```yaml
 blackboard_outputs:
-  # 核心图结构
-  - field: "ecosystem_nodes"
-    type: "array"
-    schema: "[{id, name, roles[], layer, metrics{}}]"
+  core_fields:
+    run_id: "string"
+    skill_id: "ecosystem_graph.product_matrix_network_v1.2"
+    skill_version: "v1.2"
+    verdict: "PASS | DEGRADE | FAIL"
+    reason_codes: ["RC-xxx"]
+    key_claims: ["平台化评估结论"]
 
-  - field: "ecosystem_edges"
-    type: "array"
-    schema: "[{from, to, edge_type, mechanism, strength, evidence}]"
-
-  - field: "hub_nodes"
-    type: "array"
-    description: "网络中心节点列表"
-
-  - field: "bridge_nodes"
-    type: "array"
-    description: "结构洞节点列表"
-
-  # 飞轮
-  - field: "flywheels"
-    type: "array"
-    schema: "[{id, name, loop_path, accelerators, break_points, kpis[]}]"
-
-  # 利润池
-  - field: "profit_pools"
-    type: "object"
-    schema: "{current[], emerging[], future[], migration_direction}"
-
-  # 判断
-  - field: "platform_score"
-    type: "integer"
-    range: "1-5"
-    description: "平台化程度评分"
-
-  - field: "ecosystem_kill_switch"
-    type: "string"
-    description: "生态系统级Kill Switch"
-```
-
-### 声明类型标注
-
-| 输出组件 | 声明类型 | 重要性 |
-|----------|----------|--------|
-| 节点存在性 | FACT | supporting |
-| 节点角色标注 | INFERENCE | critical |
-| 边机制描述 | INFERENCE | critical |
-| 飞轮路径 | INFERENCE | critical |
-| 飞轮KPI | FACT | supporting |
-| 利润池归因 | INFERENCE | supporting |
-| 情景推演 | FORECAST | optional |
-
-### Kill Switch定义
-
-```yaml
-kill_switches:
-  - id: "KS-ECO-001"
-    condition: "Hub节点被替代或拆分"
-    weight: 3.0
-    example: "监管强制拆分App Store"
-
-  - id: "KS-ECO-002"
-    condition: "核心飞轮断裂"
-    weight: 3.0
-    example: "用户增长→数据→体验循环逆转"
-
-  - id: "KS-ECO-003"
-    condition: "Identity/Payments层被绕过"
-    weight: 3.0
-    example: "第三方支付绕过平台抽成"
-
-  - id: "KS-ECO-004"
-    condition: "开发者大规模离开"
-    weight: 1.5
-    example: "开发者转向竞争平台"
+  extended_fields:
+    ecosystem_nodes: {type: "array", schema: "[{id, name, roles[], layer}]"}
+    ecosystem_edges: {type: "array", schema: "[{from, to, edge_type, mechanism}]"}
+    hub_nodes: {type: "array"}
+    flywheels: {type: "array"}
+    profit_pools: {type: "object"}
+    platform_score: {type: "integer", range: "1-5"}
+    ecosystem_kill_switch: {type: "string"}
 ```
 
 ---
 
-**版本**: v1.1
-**合约版本**: skill_output_contract_v1.0
+**版本**: v1.2
+**合约版本**: skill_design_standard_v2.0
+**代码字典版本**: code_dictionary_v1.0
 **归档位置**: `skills/ecosystem_graph/`
-**状态**: 已整合到架构，合约兼容
+**状态**: 已升级到v2.0合规

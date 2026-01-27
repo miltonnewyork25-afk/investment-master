@@ -554,186 +554,322 @@ market_is_pricing:
 
 ---
 
-## Contract Compliance (v1.0合约兼容)
+## Contract Compliance v2.0
 
-> 本节确保skill输出符合 `skills/_common/skill_output_contract_v1.0.yaml`
+> 本节确保skill输出符合 `skills/_common/skill_design_standard_v2.0.yaml`
 
-### 质量门条件
+### 核心原则对齐 (Core Principles)
 
 ```yaml
-quality_gate:
-  # PASS条件
-  pass_criteria:
-    - "5步工作流全部完成"
-    - "Base Value有P25/P50/P75区间"
-    - "Options Table每个期权有Kill-Switch"
-    - "所有假设有Tier 1/2证据"
-    - "Sanity Anchor通过"
+core_principles_alignment:
+  contract_first:
+    input_validation: "业务拆分 + 财务数据完整性检查"
+    workflow: "5步工作流(AB+RO Framework)"
+    output_schema: "base_value + options_table + market_is_pricing"
+    quality_gates: "PASS/DEGRADE/FAIL三态"
+    degrade_circuit_break: "数据不足时降级，假设矛盾时熔断"
 
-  # DEGRADE条件 - 常见场景
-  degrade_scenarios:
-    - scenario: "财务数据不完整"
-      reason_code: "RC-DATA-001"
-      limitations:
-        - "R&D资本化使用估算值"
-        - "历史数据不足5年"
-      usable: ["Base估值(宽区间)", "Options定性分析"]
-      unusable: ["精确ROIC计算", "跨周期验证"]
+  eval_first:
+    golden_cases: "3个案例(高成长/成熟/数据不足)"
+    scorers: "估值准确率 + Sanity Anchor通过率"
+    replay: "tool_calls序列可回放"
 
-    - scenario: "期权信息不足"
-      reason_code: "RC-DATA-002"
-      limitations:
-        - "某期权TAM无可靠来源"
-        - "成功概率为主观判断"
-      usable: ["Base估值", "已知期权分析"]
-      unusable: ["该期权定量估值"]
-
-    - scenario: "Sanity Anchor未通过"
-      reason_code: "RC-CONSISTENCY-002"
-      limitations:
-        - "隐含增长与再投资不一致"
-      usable: ["定性分析"]
-      unusable: ["定量估值结论"]
-
-  # FAIL条件
-  fail_criteria:
-    - "Base业务定义不清"
-    - "无法区分Base vs Options"
-    - "关键财务数据完全缺失"
-    - "核心假设相互矛盾"
+  sre_first:
+    degrade_path: "宽区间替代精确估值"
+    fast_close: "Options改为定性分析"
+    drill_frequency: "每周演练"
 ```
 
-### DEGRADE模式模板
+### 声明类型 (5-Type Claims)
+
+| 估值组件 | 类型 | 重要性 | 特殊要求 |
+|----------|------|--------|----------|
+| 历史财务数据 | **FACT_DESCRIPTIVE** | supporting | min_evidence_tier: 1 |
+| R&D资本化金额 | **CAUSAL_INFERENCE** | critical | 必须列替代假设 |
+| Base Value | **VALUATION_IMPLIED** | critical | 必须做敏感性测试 |
+| Options Payoff | **FORECAST** | critical | 必须做敏感性测试 |
+| 成功概率p | **FORECAST** | critical | 必须列替代假设 |
+| 投资建议 | **ACTION_RECOMMENDATION** | optional | min_evidence_tier: 2 |
+
+### 证据注册表 (Dual Threshold)
+
+```yaml
+evidence_registry:
+  tier_thresholds:
+    quantity_threshold:
+      tier_1_minimum: 2
+      fallback: "若Tier 1仅1条→DEGRADE with RC-EVIDENCE-001"
+
+    coverage_threshold:
+      tier_1_covers_key_nodes: "≥50%"
+      key_nodes:
+        - "Base业务定义"
+        - "R&D资本化"
+        - "期权识别"
+        - "Sanity Anchor"
+      fallback: "未覆盖→DEGRADE with RC-EVIDENCE-002"
+
+  tier_mapping:
+    tier_1: "10-K, 10-Q, Earnings Call, IR材料"
+    tier_2: "分析师报告, 行业研究"
+    tier_3: "媒体报道, 专家访谈"
+```
+
+### Kill Switches (3 Mandatory + Domain-Specific)
+
+```yaml
+kill_switches:
+  mandatory:
+    - id: "KS-EVIDENCE-FABRICATION"
+      condition: "引用财务数据与原文不符"
+      detection: "evidence_hash验证"
+      action: "FAIL"
+      current_status: "GREEN"
+
+    - id: "KS-TOOL-OVERREACH"
+      condition: "调用非白名单工具"
+      action: "FAIL"
+      current_status: "GREEN"
+
+    - id: "KS-HIGH-RISK-OUTPUT"
+      condition: "给出单点目标价(违反护栏规则)"
+      detection: "输出格式检查"
+      action: "FAIL"
+      current_status: "GREEN"
+
+  domain_specific:
+    - id: "KS-VAL-001"
+      condition: "Base业务毛利率跌破盈亏平衡"
+      threshold: "毛利率 < 10%"
+      action: "FAIL + Base估值归零"
+      monitoring_metric: "季度毛利率"
+
+    - id: "KS-VAL-002"
+      condition: "核心业务市场份额崩塌"
+      threshold: "份额下降>10pp/年"
+      action: "DEGRADE + 重估Base"
+
+    - id: "KS-VAL-003"
+      condition: "期权业务监管永久禁止"
+      threshold: "主要市场立法禁止"
+      action: "FAIL + 该期权归零"
+
+    - id: "KS-VAL-004"
+      condition: "Sanity Anchor持续失败"
+      threshold: "Growth/ROIC/Reinvest连续3季不一致"
+      action: "DEGRADE + 限制定量结论"
+```
+
+### 威胁模型 (Threat Model)
+
+```yaml
+threat_model:
+  risks:
+    evidence_fabrication:
+      description: "编造财务数据或期权假设"
+      detection: "财报交叉验证"
+      mitigation: "FAIL"
+
+    overconfidence:
+      description: "对期权概率过度乐观"
+      detection: "强制列替代假设 + 联合概率计算"
+      mitigation: "隐含p与analyst_p对比"
+
+    single_point_fallacy:
+      description: "给出单点估值而非区间"
+      detection: "输出格式检查"
+      mitigation: "强制P25/P50/P75"
+
+  content_zones:
+    TRUSTED: "SEC文件"
+    DATA_ONLY: "财务数据API"
+    HIGH_RISK: "预测/假设"
+```
+
+### 可观测性与回放 (Observability)
+
+```yaml
+observability:
+  required_fields:
+    run_id: "UUID"
+    skill_version: "v1.2"
+    timestamp: "ISO8601"
+    tool_calls: [{tool, input, output_summary, latency_ms, success}]
+    gate_scores: {p0_passed, p0_total, p1_passed, p1_total}
+
+  metrics:
+    - sanity_anchor_pass_rate: "Anchor通过率"
+    - option_probability_calibration: "期权概率校准度"
+    - tier1_evidence_ratio: "Tier 1证据占比"
+
+  replay:
+    enabled: true
+```
+
+### 成本/延迟预算 (Budget)
+
+```yaml
+budget:
+  token_budget:
+    soft_limit: 8000
+    hard_limit: 12000
+    critical_limit: 18000
+
+  tool_call_budget:
+    soft_limit: 10
+    hard_limit: 18
+    critical_limit: 30
+
+  latency_budget:
+    soft_limit_ms: 25000
+    hard_limit_ms: 50000
+    critical_limit_ms: 100000
+```
+
+### 质量检验 (Quality Checks)
+
+```yaml
+quality_checks:
+  hard_fail_triggers:
+    - "Base/Options拆分不清"
+    - "给出单点估值"
+    - "期权无Kill-Switch"
+    - "Sanity Anchor完全失败"
+
+  scoring:
+    PASS:
+      p0_requirement: "100% 通过"
+      p1_requirement: "≥85% 通过"
+    DEGRADE:
+      p0_requirement: "100% 通过"
+      p1_requirement: "70-85% 通过"
+    FAIL:
+      conditions: ["P0未100%通过", "P1 < 70%"]
+```
+
+### 证伪设计 (Falsification)
+
+```yaml
+falsification:
+  basic_requirements:
+    falsifier_per_claim: true
+    premortem: "假设3年后估值判断错误，最可能路径是什么？"
+    counterfactual: "如果去掉最大期权，估值结论是否改变？"
+
+  advanced_requirements:
+    alternative_hypotheses:
+      required_for: ["CAUSAL_INFERENCE", "FORECAST"]
+      example:
+        claim: "Robotaxi成功概率30%"
+        alternatives:
+          - "技术瓶颈导致概率仅10%"
+          - "监管加速导致概率50%"
+        distinguishing_evidence: "干预率数据 + 监管动态"
+
+    sensitivity_stress_test:
+      required_for: ["FORECAST", "VALUATION_IMPLIED"]
+      example:
+        parameter: "Robotaxi概率"
+        base_value: "30%"
+        perturbation: "±20pp"
+        conclusion_flip_threshold: "50%"
+
+    disconfirming_evidence_plan:
+      claim: "Base Value = $180B"
+      where_to_look:
+        - "毛利率恶化趋势"
+        - "竞争加剧证据"
+        - "市场份额变化"
+      check_frequency: "每季度"
+```
+
+### 评估与回归 (Eval & Regression)
+
+```yaml
+eval_regression:
+  self_score:
+    dimensions:
+      G1: {score: "0-5", how: "5步工作流完成度"}
+      E1: {score: "0-5", how: "估值假设有证据支持"}
+      Q1: {score: "0-5", how: "Sanity Anchor通过"}
+      K1: {score: "0-5", how: "Kill Switch正确设置"}
+
+  calibration:
+    golden_cases:
+      - case_id: "GC-VAL-001"
+        input: "Tesla (高成长+期权)"
+        expected_verdict: "PASS"
+        expected_key_outputs: ["Base + Options分拆"]
+
+      - case_id: "GC-VAL-002"
+        input: "成熟科技公司(无期权)"
+        expected_verdict: "PASS"
+        expected_key_outputs: ["仅Base估值"]
+
+      - case_id: "GC-VAL-003"
+        input: "数据不完整公司"
+        expected_verdict: "DEGRADE"
+```
+
+### 评估对标 (Evaluation Alignment)
+
+```yaml
+evaluation_alignment:
+  standard_version: "agent_evaluation_standard_v1.1"
+
+  dimension_coverage:
+    G1_governance: "通过5步工作流 + 护栏规则"
+    E1_evidence_auditability: "通过Tier分层 + Sanity Anchor"
+    Q1_quality_gate: "通过PASS/DEGRADE/FAIL"
+    K1_kill_switch: "通过3+4 Kill Switches"
+
+  blocker_avoidance:
+    B1_critical_unsupported: "核心假设必须有Tier 1/2证据"
+    B5_kill_switch_ignored: "期权必须有Kill Switch"
+    B7_contract_violation: "不给单点估值"
+```
+
+### DEGRADE模式可执行剧本
 
 ```yaml
 degrade_mode:
   template_locked: true
-
-  # 示例：数据不完整时的DEGRADE输出
-  example_output:
-    verdict: "DEGRADE"
-    reason_code: "RC-DATA-001"
-    severity: "P1"
-    confidence: 0.6
-
-    limitations:
-      - "仅有3年历史数据，R&D资本化估算不精确"
-      - "储能业务单独财务数据不可得"
-
+  playbook:
+    immediate_actions:
+      - "扩大估值区间(P25-P75→P10-P90)"
+      - "期权改为定性描述"
     next_actions_required:
-      - action: "获取完整5年历史R&D数据"
+      - action: "获取完整5年历史数据"
         owner: "human"
-        priority: 1
-        deadline: "下次更新前"
-
-      - action: "寻找储能业务分部报告"
+        priority: "P0"
+      - action: "验证业务拆分口径"
         owner: "agent"
-        priority: 2
+        priority: "P1"
 
-      - action: "用同业对比验证R&D寿命假设"
-        owner: "agent"
-        priority: 3
-
-      - action: "与IR确认业务拆分口径"
-        owner: "human"
-        priority: 4
-
-    usable_sections:
-      - "Base Value (宽区间: P25-P75)"
-      - "Options Table (定性)"
-      - "Market is Pricing"
-
-    unusable_sections:
-      - "精确ROIC计算"
-      - "再投资效率量化"
-
-    # DEGRADE时的输出格式
-    base_value_degrade:
-      range: "P10-P90 (非P25-P75)"
-      caveat: "区间因数据限制而扩大"
-
-    options_degrade:
-      format: "定性描述 + 概率范围(如20-40%)"
-      caveat: "不提供单点概率估计"
+  fast_close:
+    enabled: true
+    method: "限制为定性分析"
 ```
 
-### 声明类型标注
-
-| 估值组件 | 声明类型 | 重要性 |
-|----------|----------|--------|
-| 历史财务数据 | FACT | supporting |
-| R&D资本化金额 | INFERENCE | critical |
-| Base Value | INFERENCE | critical |
-| Options Payoff | FORECAST | critical |
-| 成功概率p | FORECAST | critical |
-| Market is Pricing | INFERENCE | supporting |
-| 护城河→fade映射 | INFERENCE | supporting |
-
-### Kill Switch加权
-
-```yaml
-kill_switches:
-  # Base相关
-  - id: "KS-VAL-001"
-    condition: "Base业务毛利率跌破盈亏平衡"
-    weight: 3.0  # critical
-    threshold: "毛利率 < 10%"
-    monitoring_metric: "季度毛利率"
-
-  - id: "KS-VAL-002"
-    condition: "核心业务市场份额崩塌"
-    weight: 3.0
-    threshold: "份额下降>10pp/年"
-    monitoring_metric: "市场份额"
-
-  # Options相关
-  - id: "KS-VAL-003"
-    condition: "期权业务监管永久禁止"
-    weight: 3.0
-    threshold: "主要市场立法禁止"
-    monitoring_metric: "监管动态"
-
-  - id: "KS-VAL-004"
-    condition: "技术路线被证伪"
-    weight: 3.0
-    threshold: "物理/工程极限证明不可行"
-    monitoring_metric: "技术进展"
-
-  # 估值逻辑相关
-  - id: "KS-VAL-005"
-    condition: "Sanity Anchor持续失败"
-    weight: 1.5  # supporting
-    threshold: "Growth/ROIC/Reinvest连续3季不一致"
-    monitoring_metric: "季度校验"
-```
-
-### Blackboard输出字段
+### Blackboard输出字段 (v2.0)
 
 ```yaml
 blackboard_outputs:
-  - field: "base_value_range"
-    type: "object"
-    schema: "{p25: float, p50: float, p75: float, currency: string}"
+  core_fields:
+    run_id: "string"
+    skill_id: "valuation_engine.high_growth_tech_v1.2"
+    skill_version: "v1.2"
+    verdict: "PASS | DEGRADE | FAIL"
+    reason_codes: ["RC-xxx"]
+    key_claims: ["估值结论"]
 
-  - field: "options_table"
-    type: "array"
-    schema: "[{name, payoff, T, implied_p, analyst_p, kill_switch}]"
-
-  - field: "total_equity_value_range"
-    type: "object"
-    schema: "{low: float, mid: float, high: float}"
-
-  - field: "market_implied_assumptions"
-    type: "array"
-    description: "市场隐含假设列表"
-
-  - field: "valuation_confidence"
-    type: "float"
-    range: "0.0-1.0"
-
-  - field: "valuation_verdict"
-    type: "enum"
-    values: ["UNDERVALUED", "FAIR", "OVERVALUED", "UNCERTAIN"]
+  extended_fields:
+    base_value_range: {type: "object", schema: "{p25, p50, p75}"}
+    options_table: {type: "array"}
+    total_equity_value_range: {type: "object"}
+    market_implied_assumptions: {type: "array"}
+    valuation_confidence: {type: "float"}
+    valuation_verdict: {type: "enum", values: ["UNDERVALUED", "FAIR", "OVERVALUED", "UNCERTAIN"]}
 ```
 
 ### 下游依赖提示
@@ -744,25 +880,19 @@ downstream_hints:
     - skill: "forensic_financial"
       reason: "验证Base业务盈利质量"
       priority: 1
-
     - skill: "moat_evaluation"
       reason: "验证fade假设的护城河基础"
       priority: 2
 
   data_for_downstream:
-    report_composer:
-      - "base_value_range"
-      - "options_table"
-      - "market_implied_assumptions"
-
-    ecosystem_graph:
-      - "业务拆分(Base vs Options)"
-      - "期权依赖关系"
+    report_composer: ["base_value_range", "options_table"]
+    ecosystem_graph: ["业务拆分", "期权依赖关系"]
 ```
 
 ---
 
-**版本**: v1.1
-**合约版本**: skill_output_contract_v1.0
+**版本**: v1.2
+**合约版本**: skill_design_standard_v2.0
+**代码字典版本**: code_dictionary_v1.0
 **归档位置**: `skills/valuation_engine/`
-**状态**: 已整合到架构，合约兼容
+**状态**: 已升级到v2.0合规

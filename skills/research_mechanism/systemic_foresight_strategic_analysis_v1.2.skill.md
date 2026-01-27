@@ -674,9 +674,278 @@ systemic_foresight_output:
 
 ---
 
-## Contract Compliance (v1.0合约兼容)
+## Contract Compliance v2.0
 
-### 监控触发器与Quality Gate映射
+### Core Principles Alignment
+
+| 原则 | 本Skill实现 |
+|------|-------------|
+| **Contract-first** | 4层结构化输出(L1-L3) |
+| **Eval-first** | 里程碑账本提供可验证节点 |
+| **SRE-first** | 三级触发器(upgrade/downgrade/kill) |
+
+### Claims Type Annotation (5类)
+
+| 组件 | Claim类型 | 重要性 | 要求 |
+|------|-----------|--------|------|
+| Flywheel Map | CAUSAL_INFERENCE | critical | 需A_tier证据 |
+| Product System Graph | FACT_DESCRIPTIVE | critical | 需可验证节点 |
+| Capability Audit | FACT_DESCRIPTIVE | critical | 需竞争对比 |
+| Real Options | FORECAST | critical | 需概率区间 |
+| Dependency Kill List | CAUSAL_INFERENCE | critical | 需联合概率 |
+| Chasm Analysis | FORECAST | supporting | 需市场验证 |
+| Cost Curve | CAUSAL_INFERENCE | critical | 需学习率验证 |
+| Milestone Ledger | FORECAST | critical | 需可量化指标 |
+| Monitoring Triggers | ACTION_RECOMMENDATION | critical | 需可观测阈值 |
+| Thesis Valuation | VALUATION_IMPLIED | supporting | 需多方法交叉 |
+
+### Evidence Registry (Dual Threshold)
+
+```yaml
+evidence_requirements:
+  quantity_threshold:
+    tier_1_min: 10  # A_tier ≥ 10
+    total_min: 25   # 总证据≥25
+
+  coverage_threshold:
+    key_nodes: ["Flywheel", "Real Options", "Cost Curve", "Milestones"]
+    min_coverage: 0.75  # ≥75%关键节点有A/B证据
+
+  tiering:
+    tier_A: "SEC文件、创始人信、Master Plan、工程文档、10-K"
+    tier_B: "财报电话会、供应商披露、监管文件"
+    tier_C: "招聘信息、网站、论坛、开发者社区"
+
+  evidence_id_format: "[A|B|C][0-9]+"
+```
+
+### Kill Switches
+
+**Mandatory (3个)**
+
+| ID | 条件 | 权重 | 阈值 |
+|----|------|------|------|
+| KS-EVIDENCE-FABRICATION | 证据造假/幻觉检测 | 3.0 | 任一关键论点无EvidenceID |
+| KS-TOOL-OVERREACH | 工具越权 | 3.0 | 调用未授权外部API |
+| KS-HIGH-RISK-OUTPUT | 高风险输出 | 3.0 | 期权估值无概率区间 |
+
+**Domain-Specific (5个)**
+
+| ID | 条件 | 权重 | 阈值 |
+|----|------|------|------|
+| KS-SF-001 | Kill触发器激活 | 3.0 | monitoring_triggers.kill满足 |
+| KS-SF-002 | 核心战略引擎证伪 | 3.0 | Flywheel核心节点失效 |
+| KS-SF-003 | 联合概率<5% | 2.5 | P_success计算结果过低 |
+| KS-SF-004 | 成本曲线停滞 | 2.5 | 学习率连续2年未实现 |
+| KS-SF-005 | 关键依赖失败 | 3.0 | dependency_kill_list Top3项失败 |
+
+### Threat Model
+
+```yaml
+threat_model:
+  risk_types:
+    - "幻觉风险: 虚构飞轮节点或因果链"
+    - "过度乐观: 期权概率高估"
+    - "依赖盲区: 遗漏关键外部依赖"
+
+  protection:
+    - "每个断言必须有EvidenceID+Mechanism+ProxyMetric"
+    - "每个期权必须有disconfirmers+validation_signals"
+    - "联合概率计算强制执行"
+
+  content_zones:
+    green: "数据收集、证据分类"
+    yellow: "飞轮映射、能力审计"
+    red: "期权估值、投资建议"
+```
+
+### Observability & Replay
+
+```yaml
+observability:
+  run_id: "自动生成UUID"
+  tool_calls: "记录所有数据获取"
+  gate_scores: "记录4层分析完成状态"
+  evidence_log: "完整证据来源日志"
+
+replay:
+  enabled: true
+  inputs_logged: "目标公司、分析范围、数据源"
+  outputs_logged: "完整Systemic Foresight结构"
+```
+
+### Budget
+
+```yaml
+budget:
+  tokens:
+    soft: 25000
+    hard: 40000
+    critical: 50000
+  tool_calls:
+    soft: 15
+    hard: 30
+  latency_ms:
+    soft: 90000
+    hard: 180000
+```
+
+### Quality Checks
+
+```yaml
+quality_checks:
+  P0_blocking:
+    - "4层分析完成(L1-L3)"
+    - "证据A_tier ≥ 10"
+    - "Milestones定义(6m/12-18m/24-36m)"
+    - "RedTeam disconfirmers ≥ 3"
+
+  P1_important:
+    - "Flywheel节点均有ProxyMetric"
+    - "Real Options有概率区间"
+    - "联合概率计算完成"
+    - "成本曲线有falsifiers"
+
+  pass_rule: "P0: 100%, P1: ≥85%"
+
+  hard_fail_triggers:
+    - "kill触发器激活"
+    - "核心战略引擎证伪"
+    - "任一Mandatory Kill Switch触发"
+```
+
+### Red Flags (Required)
+
+```yaml
+red_flags:
+  - flag: "RF-SF-001"
+    condition: "证据gaps > 5"
+    action: "列出缺失证据，降低相关论点置信度"
+
+  - flag: "RF-SF-002"
+    condition: "关键里程碑无A_tier证据"
+    action: "标注证据不足，触发DEGRADE"
+
+  - flag: "RF-SF-003"
+    condition: "dependency_kill_list存在P<0.5项"
+    action: "强调联合概率风险"
+
+  - flag: "RF-SF-004"
+    condition: "Flywheel节点缺少ProxyMetric"
+    action: "补充代理指标或标注不可观测"
+```
+
+### Falsification Design
+
+```yaml
+falsification:
+  alternative_hypotheses:
+    - "飞轮可能已减速或逆转"
+    - "期权价值被高估，实际概率更低"
+    - "关键依赖可能无法满足"
+
+  sensitivity_tests:
+    - "期权概率±20%对估值影响"
+    - "学习率±5%对成本曲线影响"
+    - "依赖概率最差情景测试"
+
+  disconfirming_evidence_plan:
+    - "6m: 验证短期里程碑"
+    - "12-18m: 检查飞轮转速变化"
+    - "24-36m: 验证期权行权进度"
+```
+
+### Eval & Regression
+
+```yaml
+eval:
+  self_score:
+    dimensions:
+      - "战略洞察深度 (L3穿透)"
+      - "证据质量 (A/B tier占比)"
+      - "预测可验证性"
+    range: "[0, 1]"
+
+  calibration_hook:
+    trigger: "输出完成后"
+    check: "里程碑达成率回溯"
+
+  golden_cases:
+    - "Tesla战略远见分析"
+    - "平台型公司生态分析"
+```
+
+### Evaluation Alignment
+
+| 维度 | 权重 | 本Skill评估点 |
+|------|------|---------------|
+| 深度 | 30% | L3机制层穿透+飞轮因果链 |
+| 证据 | 25% | A_tier≥10, 总证据≥25 |
+| 可操作 | 20% | 里程碑可量化可监控 |
+| 一致性 | 15% | 4层分析逻辑一致 |
+| 时效性 | 10% | 证据时效标注 |
+
+### DEGRADE Mode Playbook
+
+```yaml
+degrade_mode:
+  triggers:
+    - "证据gaps > 5"
+    - "关键里程碑无A_tier证据"
+    - "dependency_kill_list存在高风险项"
+
+  actions:
+    - "输出标注: [DEGRADE] 战略分析受限"
+    - "列出具体证据缺口"
+    - "标注高风险依赖项"
+
+  recovery:
+    - "补充缺失A_tier证据"
+    - "深入调研高风险依赖"
+    - "缩窄分析范围至可验证部分"
+```
+
+### Blackboard Outputs (v2.0)
+
+```yaml
+blackboard_outputs:
+  - field: "strategic_engines"
+    type: "array"
+    schema: "[{name, status, value_potential, dependencies}]"
+    claim_type: "CAUSAL_INFERENCE"
+
+  - field: "real_options"
+    type: "array"
+    schema: "[{name, stage, estimated_value, kill_switch}]"
+    claim_type: "FORECAST"
+
+  - field: "dependency_kill_list"
+    type: "array"
+    schema: "[{critical_item, risk_level, P_dependency}]"
+    claim_type: "CAUSAL_INFERENCE"
+
+  - field: "thesis_milestones"
+    type: "object"
+    schema: "{6m[], 12_18m[], 24_36m[]}"
+    claim_type: "FORECAST"
+
+  - field: "monitoring_triggers"
+    type: "object"
+    schema: "{upgrade, downgrade, kill}"
+    claim_type: "ACTION_RECOMMENDATION"
+
+  - field: "evidence_distribution"
+    type: "object"
+    schema: "{A_tier, B_tier, C_tier, gaps}"
+    claim_type: "FACT_DESCRIPTIVE"
+
+  - field: "thesis_valuation"
+    type: "object"
+    description: "论点估值含义"
+    claim_type: "VALUATION_IMPLIED"
+```
+
+### Quality Gate Mapping
 
 | 触发类型 | Quality Gate | 说明 |
 |----------|--------------|------|
@@ -685,68 +954,19 @@ systemic_foresight_output:
 | upgrade | **PASS** | 论点强化 |
 | (无触发) | **PASS** | 维持当前判断 |
 
-### 质量门条件
-
-```yaml
-quality_gate:
-  pass_criteria:
-    - "4层分析完成(L0-L3)"
-    - "证据A_tier ≥ 10"
-    - "Milestones定义(6m/12-18m/24-36m)"
-    - "RedTeam disconfirmers ≥ 3"
-
-  degrade_criteria:
-    - "证据gaps > 5"
-    - "关键里程碑无A_tier证据"
-    - "依赖kill_list存在高风险项"
-
-  fail_criteria:
-    - "kill触发器激活"
-    - "核心战略引擎证伪"
-```
-
-### Blackboard输出字段
-
-```yaml
-blackboard_outputs:
-  - field: "strategic_engines"
-    type: "array"
-    schema: "[{name, status, value_potential, dependencies}]"
-
-  - field: "real_options"
-    type: "array"
-    schema: "[{name, stage, estimated_value, kill_switch}]"
-
-  - field: "dependency_kill_list"
-    type: "array"
-    schema: "[{critical_item, risk_level}]"
-
-  - field: "thesis_milestones"
-    type: "object"
-    schema: "{6m[], 12_18m[], 24_36m[]}"
-
-  - field: "monitoring_triggers"
-    type: "object"
-    schema: "{upgrade, downgrade, kill}"
-
-  - field: "evidence_distribution"
-    type: "object"
-    schema: "{A_tier, B_tier, C_tier, gaps}"
-```
-
 ### 证据层级要求
 
 | 论点类型 | 最低证据要求 |
 |----------|--------------|
 | 战略引擎存在性 | A_tier |
-| 期权价值估算 | B_tier |
+| 期权价值估算 | B_tier + 概率区间 |
 | 里程碑时间表 | A_tier (公司发布) 或 B_tier (分析师) |
 | 竞争力判断 | B_tier |
 | 终局情景 | B/C_tier |
 
 ---
 
-**版本**: v1.1
-**合约版本**: skill_output_contract_v1.0
+**版本**: v1.2
+**合约版本**: skill_design_standard_v2.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构，合约兼容
+**状态**: 已整合到架构，v2.0合约兼容

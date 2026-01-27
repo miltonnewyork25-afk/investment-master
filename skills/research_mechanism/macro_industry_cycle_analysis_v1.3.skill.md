@@ -419,9 +419,265 @@ triggers:
 
 ---
 
-## Contract Compliance (v1.0合约兼容)
+## Contract Compliance v2.0
 
-### 相位与Quality Gate映射
+### Core Principles Alignment
+
+| 原则 | 本Skill实现 |
+|------|-------------|
+| **Contract-first** | 五维打分结构化输出 |
+| **Eval-first** | 相位判定有量化条件 |
+| **SRE-first** | RATES_GATE作为环境门槛 |
+
+### Claims Type Annotation (5类)
+
+| 组件 | Claim类型 | 重要性 | 要求 |
+|------|-----------|--------|------|
+| 五维评分 | FACT_DESCRIPTIVE | critical | 需Tier 1数据源 |
+| 相位判定 | CAUSAL_INFERENCE | critical | 需confluence验证 |
+| 触发器 | CAUSAL_INFERENCE | critical | 需历史回测 |
+| 监控计划 | FACT_DESCRIPTIVE | supporting | 需数据源明确 |
+| 证伪条件 | ACTION_RECOMMENDATION | critical | 需可观测阈值 |
+| 投资含义 | VALUATION_IMPLIED | supporting | 需风险标注 |
+
+### Evidence Registry (Dual Threshold)
+
+```yaml
+evidence_requirements:
+  quantity_threshold:
+    tier_1_min: 3  # FRED/官方数据至少3个
+    total_min: 5   # 总证据≥5
+
+  coverage_threshold:
+    key_nodes: ["SUPPLY", "INV_PRICE", "CREDIT", "RATES_GATE"]
+    min_coverage: 0.75  # ≥75%关键维度有数据
+
+  tiering:
+    tier_1: "FRED、NYFed、SEC文件、财报"
+    tier_2: "机构报告、行业协会数据"
+    tier_3: "媒体、社交媒体情绪"
+
+  data_freshness:
+    daily: ["OAS", "VIX", "T10Y3M"]
+    monthly: ["TCU", "SLOOS"]
+    quarterly: ["公司Capex指引"]
+```
+
+### Kill Switches
+
+**Mandatory (3个)**
+
+| ID | 条件 | 权重 | 阈值 |
+|----|------|------|------|
+| KS-EVIDENCE-FABRICATION | 证据造假/幻觉检测 | 3.0 | 任一维度数据无法溯源 |
+| KS-TOOL-OVERREACH | 工具越权 | 3.0 | 调用未授权外部API |
+| KS-HIGH-RISK-OUTPUT | 高风险输出 | 3.0 | 投资建议未标注周期风险 |
+
+**Domain-Specific (4个)**
+
+| ID | 条件 | 权重 | 阈值 |
+|----|------|------|------|
+| KS-CYCLE-001 | RATES_GATE触发RISK_HIGH | 3.0 | T10Y3M≤0 OR NYFED_PROB>50% |
+| KS-CYCLE-002 | 信用市场冻结 | 3.0 | OAS>500bp OR 信用事件 |
+| KS-CYCLE-003 | 假底检测 | 2.5 | 库存改善但OAS继续走阔 |
+| KS-CYCLE-004 | 数据严重滞后 | 2.0 | 关键数据>60天未更新 |
+
+### Threat Model
+
+```yaml
+threat_model:
+  risk_types:
+    - "幻觉风险: 虚构宏观数据"
+    - "假底陷阱: 过早判断周期拐点"
+    - "数据滞后: 使用过时数据做判断"
+
+  protection:
+    - "所有宏观数据必须标注数据源和日期"
+    - "假底警告机制强制检查"
+    - "RATES_GATE作为环境前置检查"
+
+  content_zones:
+    green: "数据收集、维度评分"
+    yellow: "相位判定、触发器设定"
+    red: "投资建议"
+```
+
+### Observability & Replay
+
+```yaml
+observability:
+  run_id: "自动生成UUID"
+  tool_calls: "记录所有FRED/数据API调用"
+  gate_scores: "记录五维评分和confluence"
+
+replay:
+  enabled: true
+  inputs_logged: "目标行业、时间窗口、数据源"
+  outputs_logged: "完整周期分析结构"
+```
+
+### Budget
+
+```yaml
+budget:
+  tokens:
+    soft: 12000
+    hard: 20000
+    critical: 25000
+  tool_calls:
+    soft: 8
+    hard: 15
+  latency_ms:
+    soft: 30000
+    hard: 60000
+```
+
+### Quality Checks
+
+```yaml
+quality_checks:
+  P0_blocking:
+    - "5维度评分完成"
+    - "相位判定明确"
+    - "RATES_GATE检查完成"
+    - "无Kill Switch触发"
+
+  P1_important:
+    - "触发器(upgrade/downgrade)定义"
+    - "证伪条件(disconfirmers)明确"
+    - "监控计划完整"
+
+  pass_rule: "P0: 100%, P1: ≥85%"
+
+  hard_fail_triggers:
+    - "RATES_GATE = RISK_HIGH"
+    - "关键数据缺失无法评分"
+    - "任一Mandatory Kill Switch触发"
+```
+
+### Red Flags (Required)
+
+```yaml
+red_flags:
+  - flag: "RF-CYCLE-001"
+    condition: "SUPPLY与INV_PRICE评分方向相反"
+    action: "标注分歧，降低置信度"
+
+  - flag: "RF-CYCLE-002"
+    condition: "部分维度数据滞后>30天"
+    action: "标注数据时效风险"
+
+  - flag: "RF-CYCLE-003"
+    condition: "假底信号 (库存改善但信用仍紧)"
+    action: "强制降置信度至Low"
+```
+
+### Falsification Design
+
+```yaml
+falsification:
+  alternative_hypotheses:
+    - "当前判断为Bottom，但可能是Down的反弹"
+    - "信用改善可能是短期技术因素"
+    - "供给收缩可能不足以抵消需求下滑"
+
+  sensitivity_tests:
+    - "confluence条件从3个改为4个"
+    - "RATES_GATE阈值调整±10bp"
+    - "OAS阈值调整±50bp"
+
+  disconfirming_evidence_plan:
+    - "周度: 监控OAS和VIX变化"
+    - "月度: 检查库存和订单趋势"
+    - "季度: 验证Capex指引变化"
+```
+
+### Eval & Regression
+
+```yaml
+eval:
+  self_score:
+    dimensions:
+      - "数据完整性 (5维覆盖)"
+      - "相位判定准确性"
+      - "触发器可操作性"
+    range: "[0, 1]"
+
+  calibration_hook:
+    trigger: "输出完成后"
+    check: "历史相位判定vs实际周期回溯"
+
+  golden_cases:
+    - "半导体设备行业周期分析"
+    - "房地产行业周期分析"
+```
+
+### Evaluation Alignment
+
+| 维度 | 权重 | 本Skill评估点 |
+|------|------|---------------|
+| 深度 | 25% | 五维穿透至机制层 |
+| 证据 | 30% | FRED/官方数据占比 |
+| 可操作 | 20% | 触发器可监控可执行 |
+| 一致性 | 15% | 五维评分逻辑一致 |
+| 时效性 | 10% | 数据时效符合频率要求 |
+
+### DEGRADE Mode Playbook
+
+```yaml
+degrade_mode:
+  triggers:
+    - "部分维度数据滞后>30天"
+    - "评分分歧大(如SUPPLY vs INV_PRICE矛盾)"
+    - "置信度Medium"
+
+  actions:
+    - "输出标注: [DEGRADE] 周期判断受限"
+    - "列出具体数据缺口"
+    - "提供数据更新时间表"
+
+  recovery:
+    - "更新滞后数据"
+    - "解决评分分歧"
+    - "获取更多交叉验证数据"
+```
+
+### Blackboard Outputs (v2.0)
+
+```yaml
+blackboard_outputs:
+  - field: "cycle_phase"
+    type: "enum"
+    values: ["Top", "Down", "Bottom", "Recovery"]
+    claim_type: "CAUSAL_INFERENCE"
+
+  - field: "cycle_scores"
+    type: "object"
+    schema: "{supply, inv_price, credit, rates_gate, sentiment}"
+    claim_type: "FACT_DESCRIPTIVE"
+
+  - field: "cycle_confidence"
+    type: "enum"
+    values: ["High", "Medium", "Low"]
+    claim_type: "CAUSAL_INFERENCE"
+
+  - field: "cycle_triggers"
+    type: "object"
+    schema: "{upgrade, downgrade}"
+    claim_type: "ACTION_RECOMMENDATION"
+
+  - field: "monitoring_plan"
+    type: "object"
+    schema: "{daily[], weekly[], monthly[], quarterly[]}"
+    claim_type: "FACT_DESCRIPTIVE"
+
+  - field: "investment_implication"
+    type: "string"
+    description: "投资含义"
+    claim_type: "VALUATION_IMPLIED"
+```
+
+### Quality Gate Mapping
 
 | 周期相位 | Quality Gate | 投资含义 |
 |----------|--------------|----------|
@@ -431,69 +687,9 @@ triggers:
 | Down | **DEGRADE** | 观望/减仓 |
 | (Gate=RISK_HIGH) | **FAIL** | 不参与周期判断 |
 
-### 质量门条件
-
-```yaml
-quality_gate:
-  pass_criteria:
-    - "5维度评分完成"
-    - "相位判定明确"
-    - "RATES_GATE ≠ RISK_HIGH"
-    - "触发器(upgrade/downgrade)定义"
-
-  degrade_criteria:
-    - "部分维度数据滞后>30天"
-    - "评分分歧大(如SUPPLY vs INV_PRICE矛盾)"
-    - "置信度Medium"
-
-  fail_criteria:
-    - "RATES_GATE = RISK_HIGH"
-    - "关键数据缺失无法评分"
-```
-
-### Blackboard输出字段
-
-```yaml
-blackboard_outputs:
-  - field: "cycle_phase"
-    type: "enum"
-    values: ["Top", "Down", "Bottom", "Recovery"]
-
-  - field: "cycle_scores"
-    type: "object"
-    schema: "{supply, inv_price, credit, rates_gate, sentiment}"
-
-  - field: "cycle_confidence"
-    type: "enum"
-    values: ["High", "Medium", "Low"]
-
-  - field: "cycle_triggers"
-    type: "object"
-    schema: "{upgrade, downgrade}"
-
-  - field: "monitoring_plan"
-    type: "object"
-    schema: "{daily[], weekly[], monthly[], quarterly[]}"
-```
-
-### Kill Switch定义
-
-```yaml
-kill_switches:
-  - id: "KS-CYCLE-001"
-    condition: "RATES_GATE触发RISK_HIGH"
-    weight: 3.0
-    threshold: "10Y-2Y反转深度>50bp OR 衰退概率>50%"
-
-  - id: "KS-CYCLE-002"
-    condition: "信用市场冻结"
-    weight: 3.0
-    threshold: "OAS>500bp OR 信用事件"
-```
-
 ---
 
-**版本**: v1.2
-**合约版本**: skill_output_contract_v1.0
+**版本**: v1.3
+**合约版本**: skill_design_standard_v2.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构，合约兼容
+**状态**: 已整合到架构，v2.0合约兼容

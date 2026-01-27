@@ -604,11 +604,263 @@ quality_gate_enhancement:
 
 ---
 
-## Contract Compliance (v1.0合约兼容)
+## Contract Compliance v2.0
 
-### Kill Criteria与Quality Gate映射
+### Core Principles Alignment
 
-FPAC的KillCriteria直接映射到Quality Gate：
+| 原则 | 本Skill实现 |
+|------|-------------|
+| **Contract-first** | FPAC 9步结构化输出 |
+| **Eval-first** | Model_v0敏感性分析提供可评估基础 |
+| **SRE-first** | KillCriteria定义硬/软约束 |
+
+### Claims Type Annotation (5类)
+
+| FPAC组件 | Claim类型 | 重要性 | 要求 |
+|----------|-----------|--------|------|
+| Objective | FACT_DESCRIPTIVE | critical | 需Tier 1证据 |
+| Boundary | CAUSAL_INFERENCE | critical | 需因果链验证 |
+| DominantTerms | CAUSAL_INFERENCE | critical | 需80/20量化证据 |
+| Constraints | FACT_DESCRIPTIVE | critical | 需可验证条件 |
+| PiGroups | FACT_DESCRIPTIVE | supporting | 需历史数据验证 |
+| Model_v0 | FORECAST | critical | 需敏感性分析 |
+| TOC_Bottleneck | CAUSAL_INFERENCE | critical | 需瓶颈验证 |
+| Paths | FORECAST | supporting | 需概率区间 |
+| KillCriteria | ACTION_RECOMMENDATION | critical | 需可观测阈值 |
+
+### Evidence Registry (Dual Threshold)
+
+```yaml
+evidence_requirements:
+  quantity_threshold:
+    tier_1_min: 2  # 至少2个一手来源
+    total_min: 5   # 总证据≥5
+
+  coverage_threshold:
+    key_nodes: ["Objective", "DominantTerms", "Model_v0", "KillCriteria"]
+    min_coverage: 0.50  # ≥50%关键节点有证据
+
+  tiering:
+    tier_1: "SEC文件、公司披露、官方数据"
+    tier_2: "机构报告、行业数据、专家访谈"
+    tier_3: "媒体、推断、模型估计"
+```
+
+### Kill Switches
+
+**Mandatory (3个)**
+
+| ID | 条件 | 权重 | 阈值 |
+|----|------|------|------|
+| KS-EVIDENCE-FABRICATION | 证据造假/幻觉检测 | 3.0 | 任一DominantTerm无法溯源 |
+| KS-TOOL-OVERREACH | 工具越权 | 3.0 | 调用未授权外部API |
+| KS-HIGH-RISK-OUTPUT | 高风险输出 | 3.0 | 建议未标注风险等级 |
+
+**Domain-Specific (4个)**
+
+| ID | 条件 | 权重 | 阈值 |
+|----|------|------|------|
+| KS-FPAC-001 | KillCriteria触发 | 3.0 | 任一KILL级信号满足 |
+| KS-FPAC-002 | Objective无法定义 | 3.0 | 目标函数不可量化 |
+| KS-FPAC-003 | Hard约束违反 | 3.0 | 违反任一Hard constraint |
+| KS-FPAC-004 | Model_v0不可构建 | 2.5 | 关键变量全部无法估计 |
+
+### Threat Model
+
+```yaml
+threat_model:
+  risk_types:
+    - "幻觉风险: 虚构约束条件或主导项"
+    - "过拟合: Model_v0对历史数据过度依赖"
+    - "遗漏变量: DominantTerms缺失关键因素"
+
+  protection:
+    - "DominantTerms必须有evidence_grade"
+    - "Model_v0必须有unknowns范围"
+    - "Paths必须有risk标注"
+
+  content_zones:
+    green: "Objective、Boundary定义"
+    yellow: "Model_v0参数、Paths预测"
+    red: "KillCriteria触发判断"
+```
+
+### Observability & Replay
+
+```yaml
+observability:
+  run_id: "自动生成UUID"
+  tool_calls: "记录所有数据获取"
+  gate_scores: "记录FPAC各步完成状态"
+
+replay:
+  enabled: true
+  inputs_logged: "目标、约束、数据源"
+  outputs_logged: "完整FPAC Protocol结构"
+```
+
+### Budget
+
+```yaml
+budget:
+  tokens:
+    soft: 18000
+    hard: 30000
+    critical: 40000
+  tool_calls:
+    soft: 10
+    hard: 20
+  latency_ms:
+    soft: 60000
+    hard: 120000
+```
+
+### Quality Checks
+
+```yaml
+quality_checks:
+  P0_blocking:
+    - "FPAC 9步完成"
+    - "DominantTerms(80/20)识别完成"
+    - "Model_v0可量化"
+    - "KillCriteria明确"
+
+  P1_important:
+    - "Paths(Bull/Base/Bear)定义完整"
+    - "PiGroups无量纲分析完成"
+    - "TOC瓶颈识别清晰"
+
+  pass_rule: "P0: 100%, P1: ≥85%"
+
+  hard_fail_triggers:
+    - "KillCriteria触发KILL"
+    - "Objective无法定义"
+    - "任一Mandatory Kill Switch触发"
+```
+
+### Red Flags (Required)
+
+```yaml
+red_flags:
+  - flag: "RF-FPAC-001"
+    condition: "DominantTerms evidence_grade = C"
+    action: "标注为低置信度，需交叉验证"
+
+  - flag: "RF-FPAC-002"
+    condition: "Unknown变量范围过宽 (>3x)"
+    action: "触发敏感性分析"
+
+  - flag: "RF-FPAC-003"
+    condition: "TOC瓶颈与DominantTerms不一致"
+    action: "重新审视因果链"
+```
+
+### Falsification Design
+
+```yaml
+falsification:
+  alternative_hypotheses:
+    - "DominantTerms排序可能错误"
+    - "Model_v0结构可能遗漏关键变量"
+    - "TOC瓶颈可能已转移"
+
+  sensitivity_tests:
+    - "DominantTerms权重±20%"
+    - "Model_v0关键变量边界值测试"
+    - "KillCriteria阈值±30%"
+
+  disconfirming_evidence_plan:
+    - "季度: 验证DominantTerms排序"
+    - "6个月: 检查Model_v0预测准确度"
+    - "年度: 回溯KillCriteria有效性"
+```
+
+### Eval & Regression
+
+```yaml
+eval:
+  self_score:
+    dimensions:
+      - "第一性原理穿透深度"
+      - "主导项识别准确性"
+      - "模型可量化程度"
+    range: "[0, 1]"
+
+  calibration_hook:
+    trigger: "输出完成后"
+    check: "Model_v0预测vs实际结果回溯"
+
+  golden_cases:
+    - "Tesla投资机会FPAC分析"
+    - "SaaS公司估值FPAC分析"
+```
+
+### Evaluation Alignment
+
+| 维度 | 权重 | 本Skill评估点 |
+|------|------|---------------|
+| 深度 | 30% | 第一性原理穿透至物理/经济约束 |
+| 证据 | 25% | DominantTerms有A/B级证据 |
+| 可操作 | 20% | KillCriteria可监控可执行 |
+| 一致性 | 15% | 9步逻辑一致无矛盾 |
+| 时效性 | 10% | 数据时效标注 |
+
+### DEGRADE Mode Playbook
+
+```yaml
+degrade_mode:
+  triggers:
+    - "Unknown变量范围过宽"
+    - "TOC瓶颈不明确"
+    - "部分Path缺少Step"
+
+  actions:
+    - "输出标注: [DEGRADE] 分析受限"
+    - "列出具体受限原因"
+    - "提供数据获取建议"
+
+  recovery:
+    - "缩窄Unknown变量范围"
+    - "深入调研瓶颈约束"
+    - "补充Path里程碑"
+```
+
+### Blackboard Outputs (v2.0)
+
+```yaml
+blackboard_outputs:
+  - field: "fpac_objective"
+    type: "string"
+    description: "分析目标"
+    claim_type: "FACT_DESCRIPTIVE"
+
+  - field: "dominant_terms"
+    type: "array"
+    description: "80/20主导因素"
+    claim_type: "CAUSAL_INFERENCE"
+
+  - field: "model_unknowns"
+    type: "array"
+    schema: "[{var, range}]"
+    claim_type: "FORECAST"
+
+  - field: "toc_bottleneck"
+    type: "object"
+    schema: "{constraint, throughput_metric}"
+    claim_type: "CAUSAL_INFERENCE"
+
+  - field: "scenario_paths"
+    type: "array"
+    schema: "[{type, hypothesis, conditions, risks, steps}]"
+    claim_type: "FORECAST"
+
+  - field: "kill_criteria"
+    type: "array"
+    schema: "[{signal, threshold, action}]"
+    claim_type: "ACTION_RECOMMENDATION"
+```
+
+### Quality Gate Mapping
 
 | FPAC Action | Quality Gate | 说明 |
 |-------------|--------------|------|
@@ -616,71 +868,9 @@ FPAC的KillCriteria直接映射到Quality Gate：
 | DEGRADE | **DEGRADE** | 关键指标触发警告 |
 | (无触发) | **PASS** | 正常继续分析 |
 
-### 质量门条件
-
-```yaml
-quality_gate:
-  pass_criteria:
-    - "FPAC 9步完成"
-    - "DominantTerms(80/20)识别完成"
-    - "Model_v0可量化"
-    - "Paths(Bull/Base/Bear)定义完整"
-    - "KillCriteria明确"
-
-  degrade_criteria:
-    - "Unknown变量范围过宽"
-    - "TOC瓶颈不明确"
-    - "部分Path缺少Step"
-
-  fail_criteria:
-    - "KillCriteria触发"
-    - "Objective无法定义"
-    - "Boundary无法划定"
-```
-
-### Blackboard输出字段
-
-```yaml
-blackboard_outputs:
-  - field: "fpac_objective"
-    type: "string"
-    description: "分析目标"
-
-  - field: "dominant_terms"
-    type: "array"
-    description: "80/20主导因素"
-
-  - field: "model_unknowns"
-    type: "array"
-    schema: "[{var, range}]"
-
-  - field: "toc_bottleneck"
-    type: "object"
-    schema: "{constraint, throughput_metric}"
-
-  - field: "scenario_paths"
-    type: "array"
-    schema: "[{type, hypothesis, conditions, risks, steps}]"
-
-  - field: "kill_criteria"
-    type: "array"
-    schema: "[{signal, threshold, action}]"
-```
-
-### 声明类型标注
-
-| FPAC组件 | 声明类型 | 重要性 |
-|----------|----------|--------|
-| Objective | FACT | critical |
-| Boundary | INFERENCE | critical |
-| DominantTerms | INFERENCE | critical |
-| Model_v0 | INFERENCE | critical |
-| Paths | FORECAST | supporting |
-| KillCriteria | INFERENCE | critical |
-
 ---
 
-**版本**: v1.1
-**合约版本**: skill_output_contract_v1.0
+**版本**: v1.2
+**合约版本**: skill_design_standard_v2.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构，合约兼容
+**状态**: 已整合到架构，v2.0合约兼容

@@ -467,25 +467,201 @@ verdict:
 
 ---
 
-## Contract Compliance (v1.0合约兼容)
+## Contract Compliance v2.0
 
-> 本节确保skill输出符合 `skills/_common/skill_output_contract_v1.0.yaml`
+> 本节确保skill输出符合 `skills/_common/skill_design_standard_v2.0.yaml`
 
-### 严重度映射
+### 核心原则对齐 (Core Principles)
 
-| 原术语 | 标准代码 | 含义 |
-|--------|----------|------|
-| Strong (护城河) | 对应 verdict=**PASS** | 护城河确立，可信赖 |
-| Medium (护城河) | 对应 verdict=**DEGRADE** | 护城河存疑，需监控 |
-| Weak/None | 对应 verdict=**FAIL** | 护城河不存在或极弱 |
+```yaml
+core_principles_alignment:
+  contract_first:
+    input_validation: "公司信息 + 时间窗口验证"
+    workflow: "7步工作流明确定义"
+    output_schema: "moat_card标准格式"
+    quality_gates: "PASS/DEGRADE/FAIL三态"
+    degrade_circuit_break: "数据不足时降级，证据造假时熔断"
 
-| 原信号严重度 | 标准代码 |
-|--------------|----------|
-| 高 | **P0** |
-| 中 | **P1** |
-| 低 | **P2** |
+  eval_first:
+    golden_cases: "3个标准案例(强护城河/弱护城河/数据不足)"
+    scorers: "护城河评级准确率 + 证据覆盖率"
+    replay: "tool_calls序列可回放"
 
-### 红旗代码映射
+  sre_first:
+    degrade_path: "简单可执行(数据不足→限制判决范围)"
+    fast_close: "标记unusable_sections并继续"
+    drill_frequency: "每周演练降级路径"
+```
+
+### 声明类型 (5-Type Claims)
+
+| 声明示例 | 类型 | 重要性 | 特殊要求 |
+|----------|------|--------|----------|
+| "NRR = 115%" | **FACT_DESCRIPTIVE** | supporting | min_evidence_tier: 1 |
+| "高NRR说明存在转换成本" | **CAUSAL_INFERENCE** | critical | 必须列替代假说 |
+| "NRR将继续下滑" | **FORECAST** | optional | 必须做敏感性测试 |
+| "当前估值隐含NRR>120%" | **VALUATION_IMPLIED** | supporting | min_evidence_tier: 2 |
+| "建议关注竞品动态" | **ACTION_RECOMMENDATION** | optional | min_evidence_tier: 2 |
+
+### 证据注册表 (Dual Threshold)
+
+```yaml
+evidence_registry:
+  tier_thresholds:
+    quantity_threshold:
+      tier_1_minimum: 2
+      fallback: "若Tier 1仅1条→DEGRADE with RC-EVIDENCE-001"
+
+    coverage_threshold:
+      tier_1_covers_key_nodes: "≥50%"
+      key_nodes:
+        - "护城河类型识别"
+        - "领先信号验证"
+        - "滞后确认验证"
+        - "关键指标"
+      fallback: "未覆盖→DEGRADE with RC-EVIDENCE-002"
+
+  tier_mapping:
+    tier_1: "10-K, 10-Q, Earnings Call, IR演示"
+    tier_2: "分析师报告, 行业研究"
+    tier_3: "媒体报道, 专家访谈"
+```
+
+### Kill Switches (3 Mandatory + Domain-Specific)
+
+```yaml
+kill_switches:
+  mandatory:
+    - id: "KS-EVIDENCE-FABRICATION"
+      condition: "引用的公司数据不存在或与原文不符"
+      detection: "evidence_hash验证 + 原文交叉检查"
+      action: "FAIL"
+      current_status: "GREEN"
+
+    - id: "KS-TOOL-OVERREACH"
+      condition: "调用非白名单工具"
+      detection: "tool_whitelist检查"
+      action: "FAIL"
+      current_status: "GREEN"
+
+    - id: "KS-HIGH-RISK-OUTPUT"
+      condition: "输出未经证据支持的极端判断"
+      detection: "claims without evidence_refs检查"
+      action: "FAIL或转人审"
+      current_status: "GREEN"
+
+  domain_specific:
+    - id: "KS-MOAT-001"
+      condition: "大客户(>20%收入)宣布转向竞品"
+      threshold: "单一客户>20%收入流失"
+      action: "FAIL + 护城河判断失效"
+      monitoring_metric: "Top 5客户续约状态"
+
+    - id: "KS-MOAT-002"
+      condition: "NRR跌破100%"
+      threshold: "NRR < 100%"
+      action: "DEGRADE + 重新评估"
+      monitoring_metric: "季度NRR"
+
+    - id: "KS-MOAT-003"
+      condition: "网络效应逆转"
+      threshold: "留存率与规模负相关"
+      action: "FAIL + 网络效应论点失效"
+      monitoring_metric: "留存率 vs MAU相关性"
+```
+
+### 威胁模型 (Threat Model)
+
+```yaml
+threat_model:
+  risks:
+    evidence_fabrication:
+      description: "编造NRR/留存等关键指标"
+      detection: "必须引用官方来源"
+      mitigation: "FAIL + 标记"
+
+    confirmation_bias:
+      description: "只找支持强护城河的证据"
+      detection: "强制检查反证(disconfirmers)"
+      mitigation: "无disconfirmers则DEGRADE"
+
+    false_positive:
+      description: "误判假护城河(无替代品/补贴驱动等)"
+      detection: "强制假阳性检验"
+      mitigation: "未检验则DEGRADE"
+
+  content_zones:
+    TRUSTED: "公司官方披露"
+    DATA_ONLY: "第三方数据服务"
+    HIGH_RISK: "社交媒体/论坛"
+    QUARANTINED: "编造数据"
+```
+
+### 可观测性与回放 (Observability)
+
+```yaml
+observability:
+  required_fields:
+    run_id: "UUID"
+    skill_version: "v1.2"
+    timestamp: "ISO8601"
+    tool_calls: [{tool, input, output_summary, latency_ms, success}]
+    gate_scores: {p0_passed, p0_total, p1_passed, p1_total}
+    evidence_hashes: ["sha256:..."]
+
+  metrics:
+    - success_rate: "PASS runs / total"
+    - moat_accuracy: "判断准确率(vs 后续验证)"
+    - tier1_evidence_ratio: "Tier 1 / total evidence"
+    - degrade_trigger_rate: "DEGRADE / total (alert >20%)"
+
+  replay:
+    enabled: true
+```
+
+### 成本/延迟预算 (Budget)
+
+```yaml
+budget:
+  token_budget:
+    soft_limit: 5000
+    hard_limit: 8000
+    critical_limit: 12000
+
+  tool_call_budget:
+    soft_limit: 6
+    hard_limit: 12
+    critical_limit: 20
+
+  latency_budget:
+    soft_limit_ms: 15000
+    hard_limit_ms: 30000
+    critical_limit_ms: 60000
+```
+
+### 质量检验 (Quality Checks)
+
+```yaml
+quality_checks:
+  hard_fail_triggers:
+    - "moat_card格式错误"
+    - "护城河判断无evidence_ref"
+    - "disconfirmers部分为空"
+    - "false_positives未检验"
+    - "Kill Switch RED被忽略"
+
+  scoring:
+    PASS:
+      p0_requirement: "100% 通过"
+      p1_requirement: "≥85% 通过"
+    DEGRADE:
+      p0_requirement: "100% 通过"
+      p1_requirement: "70-85% 通过"
+    FAIL:
+      conditions: ["P0未100%通过", "P1 < 70%"]
+```
+
+### 红旗代码 (Required)
 
 | 代码 | 触发条件 | 严重度 |
 |------|----------|--------|
@@ -494,135 +670,139 @@ verdict:
 | RF-MOAT-003 | 需大幅折扣才能续约 | P1 |
 | RF-MOAT-004 | 多归属比例上升>20% | P1 |
 | RF-MOAT-005 | 竞品获得大量用户 | P1 |
-| RF-MOAT-006 | 定价权丧失(被迫降价) | P0 |
+| RF-MOAT-006 | 定价权丧失 | P0 |
 
-### 证据层级映射
-
-| 原术语 | 标准层级 |
-|--------|----------|
-| A类(一手) | **Tier 1** |
-| B类(二手) | **Tier 2** |
-| C类(参考) | **Tier 3** |
-
-### 质量门输出
+### 证伪设计 (Falsification)
 
 ```yaml
-quality_gate_output:
-  # verdict映射
-  verdict_mapping:
-    "Strong + High Confidence": "PASS"
-    "Strong + Low Confidence": "DEGRADE"
-    "Medium + Any Confidence": "DEGRADE"
-    "Weak/None": "FAIL"
+falsification:
+  basic_requirements:
+    falsifier_per_claim: true
+    premortem: "假设3年后护城河消失，最可能路径是什么？"
+    counterfactual: "如果去掉网络效应，仅靠转换成本，判断是否改变？"
 
-  # PASS条件
-  pass_criteria:
-    - "评级Strong"
-    - "置信度High"
-    - "至少1个Tier 1证据"
-    - "无P0级反证"
+  advanced_requirements:
+    alternative_hypotheses:
+      required_for: ["CAUSAL_INFERENCE"]
+      example:
+        claim: "高NRR说明存在转换成本"
+        alternatives:
+          - "高NRR因产品持续升级而非锁定"
+          - "高NRR因竞品不成熟"
+        distinguishing_evidence: "竞品成熟后NRR变化"
 
-  # DEGRADE条件
-  degrade_criteria:
-    - "评级Medium"
-    - "或评级Strong但置信度Low"
-    - "或存在P1级反证"
+    sensitivity_stress_test:
+      required_for: ["FORECAST"]
+      example:
+        parameter: "NRR预测"
+        base_value: "115%"
+        perturbation: "±10pp"
+        conclusion_flip_threshold: "100%"
 
-  # FAIL条件
-  fail_criteria:
-    - "评级Weak或None"
-    - "或存在未解释的P0级反证"
+    disconfirming_evidence_plan:
+      claim: "存在强护城河"
+      where_to_look:
+        - "竞品用户增长数据"
+        - "客户流失原因分析"
+        - "行业多归属趋势"
+      check_frequency: "每季度"
 ```
 
-### DEGRADE模式模板
+### 评估与回归 (Eval & Regression)
+
+```yaml
+eval_regression:
+  self_score:
+    dimensions:
+      G1: {score: "0-5", how: "7步工作流完成度"}
+      E1: {score: "0-5", how: "证据分层和引用质量"}
+      Q1: {score: "0-5", how: "护城河判断准确性"}
+      K1: {score: "0-5", how: "Kill Switch正确触发"}
+
+  calibration:
+    golden_cases:
+      - case_id: "GC-MOAT-001"
+        input: "Salesforce (强转换成本)"
+        expected_verdict: "PASS"
+        expected_moat_strength: "Strong"
+
+      - case_id: "GC-MOAT-002"
+        input: "弱护城河SaaS公司"
+        expected_verdict: "DEGRADE"
+        expected_moat_strength: "Weak"
+
+      - case_id: "GC-MOAT-003"
+        input: "数据不完整公司"
+        expected_verdict: "DEGRADE"
+```
+
+### 评估对标 (Evaluation Alignment)
+
+```yaml
+evaluation_alignment:
+  standard_version: "agent_evaluation_standard_v1.1"
+
+  dimension_coverage:
+    G1_governance: "通过7步工作流"
+    E1_evidence_auditability: "通过Tier分层 + 双门槛"
+    Q1_quality_gate: "通过护城河评级→verdict映射"
+    K1_kill_switch: "通过3+3 Kill Switches"
+
+  blocker_avoidance:
+    B1_critical_unsupported: "护城河判断必须有Tier 1证据"
+    B5_kill_switch_ignored: "RED状态必须触发FAIL"
+    B6_degrade_without_actions: "DEGRADE必须有next_actions"
+```
+
+### DEGRADE模式可执行剧本
 
 ```yaml
 degrade_mode:
   template_locked: true
+  playbook:
+    immediate_actions:
+      - "标记受影响的分析步骤"
+    next_actions_required:
+      - action: "获取最新NRR/Churn数据"
+        owner: "human"
+        priority: "P0"
+        verification: "数据源确认"
+      - action: "验证竞品多归属比例"
+        owner: "agent"
+        priority: "P1"
+      - action: "追踪大客户续约情况"
+        owner: "human"
+        priority: "P1"
 
-  limitations:
-    - "[护城河类型识别不确定]"
-    - "[关键指标数据不完整]"
-
-  next_actions_required:
-    - action: "获取最新NRR/Churn数据"
-      owner: "human"
-      priority: 1
-    - action: "验证竞品多归属比例"
-      owner: "agent"
-      priority: 2
-    - action: "追踪大客户续约情况"
-      owner: "human"
-      priority: 3
-
-  usable_sections:
-    - "领先信号分析"
-    - "关键指标"
-
-  unusable_sections:
-    - "最终判决 - 需补充数据"
+  fast_close:
+    enabled: true
+    method: "限制判决范围，标记confidence=Low"
 ```
 
-### Blackboard输出字段
+### Blackboard输出字段 (v2.0)
 
 ```yaml
 blackboard_outputs:
-  - field: "moat_type"
-    type: "enum"
-    values: ["switching_costs", "network_effects", "both", "none"]
+  core_fields:
+    run_id: "string"
+    skill_id: "research_mechanism.moat_evaluation_v1.2"
+    skill_version: "v1.2"
+    verdict: "PASS | DEGRADE | FAIL"
+    reason_codes: ["RC-xxx"]
+    key_claims: ["护城河评估结果"]
 
-  - field: "moat_strength"
-    type: "enum"
-    values: ["strong", "medium", "weak", "none"]
-
-  - field: "moat_confidence"
-    type: "float"
-    range: "0.0-1.0"
-
-  - field: "moat_watch_items"
-    type: "array"
-    description: "下季度观察清单"
-
-  - field: "moat_red_flags"
-    type: "array"
-    description: "红旗代码列表"
-```
-
-### 声明类型标注
-
-| 声明示例 | 类型 | 重要性 |
-|----------|------|--------|
-| "NRR = 115%" | FACT | supporting |
-| "高NRR说明存在转换成本" | INFERENCE | critical |
-| "NRR将继续下滑" | FORECAST | optional |
-| "管理层对留存重视不足" | OPINION | optional |
-
-### Kill Switch定义
-
-```yaml
-kill_switches:
-  - id: "KS-MOAT-001"
-    condition: "大客户(>20%收入)宣布转向竞品"
-    weight: 3.0
-    threshold: "单一客户>20%收入流失"
-    monitoring_metric: "Top 5客户续约状态"
-
-  - id: "KS-MOAT-002"
-    condition: "NRR跌破100%"
-    weight: 3.0
-    threshold: "NRR < 100%"
-    monitoring_metric: "季度NRR"
-
-  - id: "KS-MOAT-003"
-    condition: "网络效应逆转(用户因规模大而离开)"
-    weight: 3.0
-    threshold: "留存率与规模负相关"
-    monitoring_metric: "留存率 vs MAU相关性"
+  extended_fields:
+    moat_type: {type: "enum", values: ["switching_costs", "network_effects", "both", "none"]}
+    moat_strength: {type: "enum", values: ["strong", "medium", "weak", "none"]}
+    moat_confidence: {type: "float", range: "0.0-1.0"}
+    moat_watch_items: {type: "array"}
+    moat_red_flags: {type: "array"}
 ```
 
 ---
 
-**版本**: v1.1
-**合约版本**: skill_output_contract_v1.0
+**版本**: v1.2
+**合约版本**: skill_design_standard_v2.0
+**代码字典版本**: code_dictionary_v1.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构，合约兼容
+**状态**: 已升级到v2.0合规

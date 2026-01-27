@@ -541,69 +541,145 @@ quality_gate_integration:
 
 ---
 
-## Contract Compliance (v1.0合约兼容)
+## Contract Compliance v2.0
 
-### 严重度映射
+> 本节确保skill输出符合 `skills/_common/skill_design_standard_v2.0.yaml`
 
-| 模型命中强度 | 标准代码 |
-|--------------|----------|
-| High | **P0** - 该模型是核心护城河来源 |
-| Med | **P1** - 该模型有贡献但非核心 |
-| Low | **P2** - 该模型边际贡献 |
-
-### 质量门条件
+### 核心原则对齐 (Core Principles)
 
 ```yaml
-quality_gate:
-  pass_criteria:
-    - "4步工作流完成"
-    - "每个命中模型有falsifier"
-    - "至少命中1个模型(strength≥Med)"
-    - "Top 3 falsifiers定义完整"
+core_principles_alignment:
+  contract_first:
+    input_validation: "公司上下文 + 证据完整性检查"
+    workflow: "4步工作流(结构→机制→兑现→反证)"
+    output_schema: "models_hit + signals + falsifiers"
+    quality_gates: "PASS/DEGRADE/FAIL三态"
 
-  degrade_criteria:
-    - "部分模型无法评估(数据不足)"
-    - "falsifier阈值不明确"
+  eval_first:
+    golden_cases: "3个案例(强护城河/弱护城河/数据不足)"
+    scorers: "模型命中准确率 + falsifier质量"
 
-  fail_criteria:
-    - "无法判断任何模型"
-    - "关键数据完全缺失"
+  sre_first:
+    degrade_path: "标记无法评估的模型"
+    fast_close: "限制到可评估模型"
 ```
 
-### Blackboard输出字段
+### 声明类型 (5-Type Claims)
+
+| 输出组件 | 类型 | 重要性 | 特殊要求 |
+|----------|------|--------|----------|
+| 领先信号观测 | **FACT_DESCRIPTIVE** | supporting | min_evidence_tier: 1 |
+| 模型命中判断 | **CAUSAL_INFERENCE** | critical | 必须列替代假说 |
+| 可持续性判断 | **FORECAST** | critical | 必须做敏感性测试 |
+| Falsifier | **CAUSAL_INFERENCE** | critical | 必须有阈值 |
+| 投资建议 | **ACTION_RECOMMENDATION** | optional | min_evidence_tier: 2 |
+
+### 证据注册表 (Dual Threshold)
+
+```yaml
+evidence_registry:
+  tier_thresholds:
+    quantity_threshold:
+      tier_1_minimum: 2
+    coverage_threshold:
+      tier_1_covers_key_nodes: "≥50%"
+      key_nodes: ["模型命中判断", "领先信号", "滞后确认", "falsifier"]
+```
+
+### Kill Switches (3 Mandatory + Domain-Specific)
+
+```yaml
+kill_switches:
+  mandatory:
+    - id: "KS-EVIDENCE-FABRICATION"
+      condition: "编造证据数据"
+      action: "FAIL"
+    - id: "KS-TOOL-OVERREACH"
+      action: "FAIL"
+    - id: "KS-HIGH-RISK-OUTPUT"
+      condition: "无falsifier的强断言"
+      action: "FAIL"
+
+  domain_specific:
+    - id: "KS-MODEL-001"
+      condition: "任一falsifier连续化证据出现"
+      action: "DEGRADE + 下调结论"
+```
+
+### 威胁模型 + 可观测性 + 预算
+
+```yaml
+threat_model:
+  risks:
+    confirmation_bias: "只找支持模型的证据"
+    detection: "强制双证(支持+反证)"
+
+observability:
+  required_fields: [run_id, skill_version, gate_scores]
+  metrics: [model_accuracy, falsifier_quality]
+
+budget:
+  token_budget: {soft: 4000, hard: 7000, critical: 10000}
+  tool_call_budget: {soft: 5, hard: 10, critical: 15}
+```
+
+### 质量检验 + 证伪设计
+
+```yaml
+quality_checks:
+  hard_fail_triggers:
+    - "模型命中无falsifier"
+    - "无双证(支持+反证)"
+  scoring:
+    PASS: {p0: "100%", p1: "≥85%"}
+
+falsification:
+  basic_requirements:
+    falsifier_per_claim: true
+    premortem: "假设3年后判断错误，最可能路径？"
+  advanced_requirements:
+    alternative_hypotheses:
+      required_for: ["CAUSAL_INFERENCE"]
+    disconfirming_evidence_plan:
+      where_to_look: ["竞品数据", "渠道反馈", "财务变化"]
+```
+
+### 评估与回归 + 评估对标
+
+```yaml
+eval_regression:
+  self_score:
+    dimensions: {G1: "4步完成度", E1: "双证质量", K1: "falsifier定义"}
+  calibration:
+    golden_cases:
+      - {case_id: "GC-MODEL-001", input: "网络效应公司", expected: "M3命中"}
+
+evaluation_alignment:
+  standard_version: "agent_evaluation_standard_v1.1"
+  dimension_coverage: {G1: "4步工作流", E1: "双证规则", K1: "falsifier"}
+```
+
+### Blackboard输出字段 (v2.0)
 
 ```yaml
 blackboard_outputs:
-  - field: "models_hit"
-    type: "array"
-    schema: "[{model_id, strength, evidence, falsifier}]"
+  core_fields:
+    run_id: "string"
+    skill_id: "research_mechanism.competitive_advantage_models_v1.2"
+    verdict: "PASS | DEGRADE | FAIL"
+    key_claims: ["模型命中结果"]
 
-  - field: "primary_moat_source"
-    type: "string"
-    description: "主要护城河来源(M1-M10)"
-
-  - field: "moat_sustainability"
-    type: "enum"
-    values: ["High", "Med", "Low"]
-
-  - field: "top_falsifiers"
-    type: "array"
-    schema: "[{path, threshold, status}]"
+  extended_fields:
+    models_hit: {type: "array", schema: "[{model_id, strength, evidence, falsifier}]"}
+    primary_moat_source: {type: "string"}
+    moat_sustainability: {type: "enum", values: ["High", "Med", "Low"]}
+    top_falsifiers: {type: "array"}
 ```
-
-### 声明类型标注
-
-| 输出组件 | 声明类型 | 重要性 |
-|----------|----------|--------|
-| 模型命中判断 | INFERENCE | critical |
-| 领先信号 | FACT/INFERENCE | supporting |
-| 滞后确认 | FACT | supporting |
-| Falsifier | INFERENCE | critical |
-| 可持续性判断 | INFERENCE | critical |
 
 ---
 
-**版本**: v1.1
-**合约版本**: skill_output_contract_v1.0
+**版本**: v1.2
+**合约版本**: skill_design_standard_v2.0
+**代码字典版本**: code_dictionary_v1.0
 **归档位置**: `skills/research_mechanism/`
-**状态**: 已整合到架构，合约兼容
+**状态**: 已升级到v2.0合规
