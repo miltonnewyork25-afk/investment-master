@@ -84,6 +84,88 @@ skill创建/修改完成 → git add → git commit → git push
 - 强制输出格式：确保使用结构化schema而非散文叙述
 - 可追溯性：预加载摘要让用户和系统都能验证框架使用情况
 
+### -0.5. Skill 路由 (Skill Router) [v8.0新增]
+
+**在预加载完成后、正式分析前必须执行**
+
+```
+预加载完成
+    │
+    ▼
+┌─────────────────────────────────────┐
+│  Skill Router 三层路由               │
+│  ├─ Layer 1: 行业路由 → T1必选Skill │
+│  ├─ Layer 2: 公司特性 → T2必选Skill │
+│  └─ Layer 3: 市场环境 → T3可选Skill │
+└─────────────────────────────────────┘
+    │
+    ▼
+生成临时执行计划文件
+    │
+    ▼
+输出"路由摘要"
+    │
+    ▼
+正式分析开始
+```
+
+**路由决策矩阵**（简化版）：
+
+| 层级 | 触发条件 | 示例 Skill |
+|------|---------|-----------|
+| **T1 行业** | 制造/硬件 | pvm_analysis, supply_chain_risk |
+| **T1 行业** | AI/科技平台 | data_moat_quantifier, ai_competitive_landscape |
+| **T2 特性** | CapEx/Revenue >15% | capex_intensive_valuation |
+| **T2 特性** | CEO依赖型 | key_person_risk_analysis |
+| **T2 特性** | 3+业务线 | sotp_valuation |
+| **T2 特性** | AI核心业务 | ai_option_valuation |
+| **T3 环境** | P/E >50 | valuation_sanity_check |
+| **T3 环境** | 分析师目标价差异>50% | consensus_divergence_analysis |
+
+**临时执行计划文件**：
+- 路径: `.analysis_temp/{ticker}_{timestamp}_execution_plan.yaml`
+- 内容: 选中的Skill列表 + Agent激活计划 + 输出checklist
+- 生命周期: 报告完成后自动删除
+- 不提交git: 已在 .gitignore 中排除
+
+**路由摘要模板**（必须在预加载摘要后输出）：
+
+```markdown
+## 🎯 Skill 路由结果
+
+### 公司识别
+- **Ticker**: XXX
+- **行业**: [识别的行业]
+- **关键特性**: [识别的特性标签]
+
+### 选中的 Skill 组合
+
+| 层级 | Skill | 选择原因 |
+|------|-------|----------|
+| T1必选 | xxx | [原因] |
+| T2必选 | xxx | [原因] |
+| T3可选 | xxx | [原因] |
+
+### Agent 激活计划
+
+| Agent | 输出要求 |
+|-------|---------|
+| RM Agent | ≥3 ClaimSpec |
+| VE Agent | ≥2 CAP Hypothesis |
+| ECO Agent | ≥3 生态系统元素 |
+| INNOV Agent | ≥3 创新假设 |
+
+### 临时执行计划
+📄 已生成: `.analysis_temp/XXX_YYYYMMDD_HHMMSS_execution_plan.yaml`
+
+---
+```
+
+**清理机制**：
+- 报告通过 Quality Gate → 自动删除
+- 用户确认完成 → 自动删除
+- 超过72小时 → 强制删除
+
 ### 0. 行业自适应引擎
 
 **在开始分析前，先执行行业识别**：

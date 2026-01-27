@@ -28,3 +28,7 @@ __pycache__/
 # IDE
 .vscode/
 .idea/
+
+# Analysis temp files (auto-cleanup)
+.analysis_temp/*.yaml
+.analysis_temp/*_execution_plan.yaml
