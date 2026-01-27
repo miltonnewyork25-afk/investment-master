@@ -21,6 +21,8 @@
 | `robotaxi_valuation` | v1.0 | ✅ 已创建 | Robotaxi估值框架(TAM+DCF+期权) |
 | `moat_evaluation_framework` | v1.3 | ✅ 已升级 | 新增AI/基础设施/监管护城河 |
 | `competitive_analysis_framework` | v1.3 | ✅ 已升级 | 新增AI能力+芯片战略对比模块 |
+| `advertising_cycle_indicator` | v1.0 | ✅ 已创建 | 广告周期与宏观经济关系追踪 |
+| `cloud_competitive_tracker` | v1.0 | ✅ 已创建 | AWS/Azure/GCP竞争格局追踪 |
 
 ---
 
@@ -212,7 +214,7 @@ outputs:
 
 ---
 
-### 2.3 低优先级（P2）
+### 2.3 低优先级（P2）- ✅ 全部完成
 
 #### Skill 7: `advertising_cycle_indicator`
 **问题**: 广告周期与宏观经济的关系需要专门追踪
