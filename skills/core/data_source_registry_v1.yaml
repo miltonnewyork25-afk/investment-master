@@ -1,0 +1,282 @@
+# Data Source Registry v1.0
+# 所有可用数据源的强制调用清单
+# 分析前必须加载此文件，确保正确调用每个 API
+
+version: "1.0.0"
+created: "2026-01-27"
+
+# ============================================================
+# 数据源优先级
+# P0: 必须调用，缺失则报告不完整
+# P1: 强烈建议，提供独特价值
+# P2: 可选，增强分析深度
+# ============================================================
+
+data_sources:
+
+  # ============================================================
+  # 100baggers.club API
+  # ============================================================
+  100baggers:
+    base_url: "https://www.100baggers.club"
+    auth:
+      type: "header"
+      header_name: "x-api-key"
+      api_key: "zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc="
+
+    endpoints:
+      search:
+        path: "/api/search"
+        method: "GET"
+        auth_required: false
+        params:
+          q: "{query}"
+        example: 'curl "https://www.100baggers.club/api/search?q=TSLA"'
+        priority: P2
+
+      generate_summary:
+        path: "/api/generate-summary"
+        method: "POST"
+        auth_required: true
+        priority: P0  # 必须调用
+        unique_value:
+          - "7维度雷达图评分"
+          - "领先指标触发检测"
+          - "杜邦三级拆解"
+          - "ROIC深度分析"
+        request:
+          headers:
+            Content-Type: "application/json"
+            x-api-key: "{api_key}"
+          body:
+            symbol: "{TICKER}"
+        example: |
+          curl -X POST "https://www.100baggers.club/api/generate-summary" \
+            -H "Content-Type: application/json" \
+            -H "x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=" \
+            -d '{"symbol":"TSLA"}'
+
+      compare_companies:
+        path: "/api/compare-companies"
+        method: "POST"
+        auth_required: true
+        priority: P1
+        max_symbols: 10
+        unique_value:
+          - "多股票横向对比"
+          - "同业竞争者分析"
+        request:
+          headers:
+            Content-Type: "application/json"
+            x-api-key: "{api_key}"
+          body:
+            symbols: ["{TICKER1}", "{TICKER2}", "..."]
+        example: |
+          curl -X POST "https://www.100baggers.club/api/compare-companies" \
+            -H "Content-Type: application/json" \
+            -H "x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=" \
+            -d '{"symbols":["TSLA","F","GM","RIVN"]}'
+
+      get_strategy_report:
+        path: "/api/get-strategy-report"
+        method: "GET"
+        auth_required: true
+        priority: P1
+        params:
+          symbol: "{TICKER}"
+          locale: "zh"  # or "en"
+        request:
+          headers:
+            x-api-key: "{api_key}"
+        example: |
+          curl "https://www.100baggers.club/api/get-strategy-report?symbol=TSLA&locale=zh" \
+            -H "x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc="
+
+  # ============================================================
+  # FMP (Financial Modeling Prep) API
+  # ============================================================
+  fmp:
+    base_url: "https://financialmodelingprep.com"
+    auth:
+      type: "query_param"
+      param_name: "apikey"
+      api_key: "fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"
+
+    endpoints:
+      profile:
+        path: "/stable/profile"
+        method: "GET"
+        priority: P0
+        params:
+          symbol: "{TICKER}"
+          apikey: "{api_key}"
+        provides:
+          - "公司概况"
+          - "Beta"
+          - "市值"
+          - "行业分类"
+        example: 'curl "https://financialmodelingprep.com/stable/profile?symbol=TSLA&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+      quote:
+        path: "/api/v3/quote/{TICKER}"
+        method: "GET"
+        priority: P0
+        params:
+          apikey: "{api_key}"
+        provides:
+          - "实时价格"
+          - "52周高低"
+          - "PE/EPS"
+        example: 'curl "https://financialmodelingprep.com/api/v3/quote/TSLA?apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+      income_statement_ttm:
+        path: "/stable/income-statement-ttm"
+        method: "GET"
+        priority: P0
+        params:
+          symbol: "{TICKER}"
+          apikey: "{api_key}"
+        provides:
+          - "TTM收入"
+          - "TTM利润"
+          - "TTM毛利率"
+        example: 'curl "https://financialmodelingprep.com/stable/income-statement-ttm?symbol=TSLA&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+      balance_sheet_ttm:
+        path: "/stable/balance-sheet-statement-ttm"
+        method: "GET"
+        priority: P0
+        params:
+          symbol: "{TICKER}"
+          apikey: "{api_key}"
+        example: 'curl "https://financialmodelingprep.com/stable/balance-sheet-statement-ttm?symbol=TSLA&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+      cash_flow_ttm:
+        path: "/stable/cash-flow-statement-ttm"
+        method: "GET"
+        priority: P0
+        params:
+          symbol: "{TICKER}"
+          apikey: "{api_key}"
+        example: 'curl "https://financialmodelingprep.com/stable/cash-flow-statement-ttm?symbol=TSLA&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+      financial_scores:
+        path: "/stable/financial-scores"
+        method: "GET"
+        priority: P1
+        params:
+          symbol: "{TICKER}"
+          apikey: "{api_key}"
+        provides:
+          - "Altman Z-Score"
+          - "Piotroski F-Score"
+        example: 'curl "https://financialmodelingprep.com/stable/financial-scores?symbol=TSLA&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+      analyst_estimates:
+        path: "/stable/analyst-estimates"
+        method: "GET"
+        priority: P1
+        params:
+          symbol: "{TICKER}"
+          apikey: "{api_key}"
+        provides:
+          - "分析师预期EPS"
+          - "分析师预期收入"
+        example: 'curl "https://financialmodelingprep.com/stable/analyst-estimates?symbol=TSLA&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+      insider_trading:
+        path: "/stable/insider-trading/statistics"
+        method: "GET"
+        priority: P1
+        params:
+          symbol: "{TICKER}"
+          apikey: "{api_key}"
+        provides:
+          - "内部人买入/卖出"
+        example: 'curl "https://financialmodelingprep.com/stable/insider-trading/statistics?symbol=TSLA&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+      sector_pe:
+        path: "/stable/sector-pe-snapshot"
+        method: "GET"
+        priority: P2
+        params:
+          date: "{YYYY-MM-DD}"
+          apikey: "{api_key}"
+        example: 'curl "https://financialmodelingprep.com/stable/sector-pe-snapshot?date=2026-01-27&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+      key_metrics_ttm:
+        path: "/stable/key-metrics-ttm"
+        method: "GET"
+        priority: P1
+        params:
+          symbol: "{TICKER}"
+          apikey: "{api_key}"
+        provides:
+          - "ROE/ROA/ROIC"
+          - "关键估值指标"
+        example: 'curl "https://financialmodelingprep.com/stable/key-metrics-ttm?symbol=TSLA&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+# ============================================================
+# 强制调用清单 (P0 级别)
+# 每次分析必须确认这些端点已调用
+# ============================================================
+mandatory_calls:
+  - source: "100baggers"
+    endpoint: "generate_summary"
+    reason: "独特的7维度评分和杜邦分析，FMP不提供"
+
+  - source: "fmp"
+    endpoint: "profile"
+    reason: "公司基础信息和行业分类"
+
+  - source: "fmp"
+    endpoint: "quote"
+    reason: "实时价格和估值指标"
+
+  - source: "fmp"
+    endpoint: "income_statement_ttm"
+    reason: "TTM财务数据"
+
+  - source: "fmp"
+    endpoint: "balance_sheet_ttm"
+    reason: "资产负债结构"
+
+  - source: "fmp"
+    endpoint: "cash_flow_ttm"
+    reason: "现金流质量"
+
+# ============================================================
+# 调用验证检查点
+# ============================================================
+validation:
+  pre_analysis:
+    - "确认 API Key 有效"
+    - "确认网络可访问"
+
+  during_analysis:
+    - "每个 P0 端点必须调用"
+    - "调用失败必须重试或报告"
+
+  post_analysis:
+    - "检查所有 P0 数据是否已获取"
+    - "如有缺失，在报告中标注"
+
+# ============================================================
+# 错误处理
+# ============================================================
+error_handling:
+  401_unauthorized:
+    cause: "API Key 无效或未传递"
+    fix: "检查 x-api-key header (100baggers) 或 apikey param (FMP)"
+
+  404_not_found:
+    cause: "端点 URL 错误或股票代码不存在"
+    fix: "检查 URL 路径和股票代码拼写"
+
+  429_rate_limit:
+    cause: "请求过于频繁"
+    fix: "等待后重试，FMP 限制 3000/分钟"
+
+  500_server_error:
+    cause: "服务器内部错误"
+    fix: "等待后重试"
