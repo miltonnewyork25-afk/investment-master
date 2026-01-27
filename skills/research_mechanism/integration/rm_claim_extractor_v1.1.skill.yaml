@@ -1,0 +1,220 @@
+# RM Claim Extractor Skill v1.1
+# Position: Skill 9
+# Purpose: 从各分析引擎提取claims并规范化
+
+skill:
+  id: rm_claim_extractor_v1_1
+  version: "1.1"
+  name: "RM Claim Extractor"
+  position: 9
+  purpose: "Extract causal claims from analysis engines and normalize to ClaimSpec format"
+  depends_on: [1, 2, 3, 4, 5, 6, 7, 8]  # All analysis engines
+
+---
+
+# 输入
+input:
+  from_analysis_engines:
+    - source: "competitive_analysis_framework"
+      extracts: ["competition_surface", "ews_signals", "five_forces_assessment"]
+
+    - source: "competitive_advantage_models"
+      extracts: ["models_hit", "leading_signals", "falsifiers"]
+
+    - source: "moat_evaluation_framework"
+      extracts: ["moat_claims", "erosion_risks", "strength_assessment"]
+
+    - source: "first_principles_analysis"
+      extracts: ["dominant_terms", "constraints", "scenario_paths"]
+
+    - source: "controller_spec_analysis"
+      extracts: ["observability_claims", "control_logic_claims"]
+
+    - source: "macro_industry_cycle"
+      extracts: ["cycle_position_claims", "phase_triggers"]
+
+    - source: "systemic_foresight_strategic"
+      extracts: ["flywheel_claims", "dependency_claims", "milestone_claims"]
+
+    - source: "brand_experience_analysis"
+      extracts: ["brand_moat_claims", "mental_availability_claims"]
+
+  from_upstream:
+    - evidence_registry: "DI evidence registry for claim linking"
+    - ecosystem_graph: "ECO graph for entity references"
+
+  from_policy:
+    - claim_policy: "Required fields and validation rules"
+
+---
+
+# 输出
+output:
+  claims:
+    type: array
+    items:
+      $ref: "schemas/rm_claim_spec_schema.yaml"
+    description: "Normalized claims in ClaimSpec format"
+
+  claim_evidence_map:
+    type: object
+    description: "Mapping from claim_id to evidence_refs"
+
+  extraction_report:
+    type: object
+    properties:
+      total_extracted:
+        type: integer
+      by_source:
+        type: object
+      by_criticality:
+        type: object
+      validation_errors:
+        type: array
+
+  reason_codes:
+    type: array
+    items:
+      type: string
+      pattern: "^RM_"
+
+---
+
+# 执行步骤
+steps:
+  - step: 1
+    name: "Collect Raw Claims"
+    action: |
+      FOR EACH analysis_engine IN analysis_engines:
+        1. Read engine outputs
+        2. Identify claim-like statements
+        3. Extract cause-effect relationships
+        4. Record source for attribution
+    output: raw_claims_list
+
+  - step: 2
+    name: "Normalize to ClaimSpec"
+    action: |
+      FOR EACH raw_claim IN raw_claims_list:
+        1. Generate claim_id (CLM_{TICKER}_{NNN})
+        2. Parse cause and effect
+        3. Infer sign (POS/NEG/NON_MONOTONIC)
+        4. Extract or generate observables
+        5. Set default timeframe if missing
+        6. Create falsify_if from negation
+        7. Initialize confidence from evidence quality
+    output: normalized_claims
+
+  - step: 3
+    name: "Link Evidence"
+    action: |
+      FOR EACH claim IN normalized_claims:
+        1. Search evidence_registry for supporting evidence
+        2. Match by entity, concept, time period
+        3. Attach evidence_refs with grades
+        4. Calculate ab_coverage
+    output: claims_with_evidence
+
+  - step: 4
+    name: "Assign Criticality"
+    action: |
+      FOR EACH claim IN claims_with_evidence:
+        1. Score impact on thesis (1-10)
+        2. Score evidence strength (1-10)
+        3. Classify:
+           - CRITICAL: Impact >= 8 AND affects thesis validity
+           - IMPORTANT: Impact >= 5 OR affects valuation materially
+           - OPTIONAL: Others
+    output: claims_with_criticality
+
+  - step: 5
+    name: "Validate Required Fields"
+    action: |
+      FOR EACH claim IN claims_with_criticality:
+        FOR EACH field IN policy.claim_policy.required_fields:
+          IF field IS NULL OR EMPTY:
+            emit reason_code
+            mark claim as incomplete
+    on_missing:
+      reason_code: "RM_CLAIM_MISSING_OBSERVABLE" (or appropriate code)
+
+  - step: 6
+    name: "Deduplicate"
+    action: |
+      1. Group claims by (cause, effect, sign)
+      2. Merge duplicates, keeping highest confidence
+      3. Combine evidence_refs
+    output: deduplicated_claims
+
+  - step: 7
+    name: "Generate Report"
+    action: |
+      1. Count by source
+      2. Count by criticality
+      3. List validation errors
+      4. Calculate coverage metrics
+    output: extraction_report
+
+---
+
+# Claim提取规则
+extraction_rules:
+  from_competitive_analysis:
+    pattern: "X gives company competitive advantage because Y"
+    cause: "Y"
+    effect: "competitive advantage in X"
+    sign: "POS"
+
+  from_moat_evaluation:
+    pattern: "Moat type X has strength Y because Z"
+    cause: "Z"
+    effect: "moat strength in X"
+    sign: "derived from strength direction"
+
+  from_first_principles:
+    pattern: "Dominant term X drives Y% of outcome"
+    cause: "X"
+    effect: "outcome contribution"
+    sign: "POS"
+
+  from_cycle_analysis:
+    pattern: "Cycle indicator X signals phase Y"
+    cause: "X movement"
+    effect: "cycle phase transition"
+    sign: "depends on indicator direction"
+
+  from_flywheel:
+    pattern: "A → B → C reinforcing loop"
+    cause: "each node"
+    effect: "next node"
+    sign: "POS (reinforcing)"
+
+---
+
+# 验证规则
+validation:
+  minimum_claims:
+    total: 10
+    critical: 3
+    on_fail: "RM_INSUFFICIENT_CRITICAL_CLAIMS"
+
+  required_coverage:
+    observables: "at least 1 per claim"
+    timeframe: "must be specified"
+    falsify_if: "must be non-empty"
+
+---
+
+# 错误处理
+error_handling:
+  no_claims_extracted:
+    reason_code: "RM_DAG_EMPTY"
+    action: "DEGRADE"
+
+  missing_evidence:
+    reason_code: "RM_CLAIM_NO_EVIDENCE"
+    action: "WARN"
+
+  missing_observable:
+    reason_code: "RM_CLAIM_MISSING_OBSERVABLE"
+    action: "DEGRADE for CRITICAL"

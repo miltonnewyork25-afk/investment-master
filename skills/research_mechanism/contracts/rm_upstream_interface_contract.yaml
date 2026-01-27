@@ -1,0 +1,271 @@
+# RM Upstream Interface Contract v1.1
+# RM从DI/ECO接收的输入契约
+# 定义RM依赖的上游数据结构
+
+version: "1.1"
+asof: "2026-01-27"
+description: "Contract defining what RM receives from upstream agents (DI, ECO)"
+
+---
+
+# 契约目的
+purpose: |
+  确保RM能够：
+  1. 从Data Integrity Agent获取规范化数据点和证据
+  2. 从Ecosystem Graph Agent获取生态系统结构和竞争分析
+  3. 正确传播上游置信度上限
+  4. 处理上游reason codes
+
+---
+
+# 从Data Integrity Agent接收
+from_data_integrity:
+  description: "DI提供的规范化数据和证据"
+  min_version: "di-2.2.0"
+
+  required_fields:
+    canonical_datapoints:
+      type: array
+      description: "规范化数据点列表"
+      items:
+        type: object
+        required: ["datapoint_id", "factkey", "selected_value", "confidence"]
+        properties:
+          datapoint_id:
+            type: string
+          factkey:
+            type: object
+            description: "FactKey结构"
+          selected_value:
+            type: ["number", "string"]
+          unit:
+            type: string
+          confidence:
+            type: number
+          evidence_refs:
+            type: array
+          reason_codes:
+            type: array
+
+    evidence_registry:
+      type: object
+      description: "证据注册表"
+      required: ["total_evidence", "by_grade"]
+      properties:
+        total_evidence:
+          type: integer
+        by_grade:
+          type: object
+          properties:
+            A: { type: integer }
+            B: { type: integer }
+            C: { type: integer }
+        ab_coverage:
+          type: number
+
+    confidence_cap:
+      type: number
+      minimum: 0
+      maximum: 1
+      description: "DI置信度上限，RM不可超过"
+
+    reason_codes:
+      type: array
+      items:
+        type: string
+        pattern: "^DI_"
+      description: "DI发出的reason codes"
+
+  optional_fields:
+    lineage_events:
+      type: array
+      description: "数据血缘事件（用于审计）"
+
+    conflicts_summary:
+      type: object
+      description: "数据冲突摘要"
+
+    freshness_report:
+      type: object
+      description: "数据时效性报告"
+
+---
+
+# 从Ecosystem Graph Agent接收
+from_ecosystem_graph:
+  description: "ECO提供的生态系统图谱和分析"
+  min_version: "eco-2.4.0"
+
+  required_fields:
+    ecosystem_graph:
+      type: object
+      description: "Property Graph格式的生态系统图谱"
+      required: ["nodes", "edges"]
+      properties:
+        nodes:
+          type: array
+        edges:
+          type: array
+        metadata:
+          type: object
+
+    role_map:
+      type: object
+      description: "角色映射（players及其roles）"
+      required: ["players"]
+      properties:
+        players:
+          type: array
+          items:
+            type: object
+            properties:
+              player_id:
+                type: string
+              name:
+                type: string
+              role_type:
+                type: string
+              relationship_to_target:
+                type: string
+
+    competition_analysis:
+      type: object
+      description: "竞争分析"
+      properties:
+        competition_surface:
+          type: object
+        competitive_intensity:
+          type: number
+
+    substitute_analysis:
+      type: object
+      description: "替代品分析"
+      properties:
+        substitutes:
+          type: array
+        same_job_scores:
+          type: object
+
+    disruption_analysis:
+      type: object
+      description: "颠覆分析"
+      properties:
+        disruption_threats:
+          type: array
+        disqualifier_results:
+          type: object
+
+    edge_confidence_cap:
+      type: number
+      minimum: 0
+      maximum: 1
+      description: "ECO边置信度上限"
+
+    critical_edges:
+      type: array
+      description: "关键边列表"
+      items:
+        type: object
+        properties:
+          edge_id:
+            type: string
+          criticality:
+            type: string
+          confidence:
+            type: number
+
+    reason_codes:
+      type: array
+      items:
+        type: string
+        pattern: "^ECO_"
+      description: "ECO发出的reason codes"
+
+  optional_fields:
+    adjacency_analysis:
+      type: object
+      description: "相邻市场分析"
+
+    shared_constraints:
+      type: object
+      description: "共享约束分析"
+
+    invariants_results:
+      type: object
+      description: "ECO不变量检查结果"
+
+---
+
+# 上游数据使用规则
+usage_rules:
+  confidence_cap_propagation:
+    rule: |
+      rm_confidence_cap = min(
+        di_confidence_cap,
+        eco_edge_confidence_cap,
+        rm_internal_confidence
+      )
+    description: "RM置信度不得超过上游最小值"
+
+  evidence_passthrough:
+    rule: |
+      RM引用的evidence_refs必须存在于DI的evidence_registry中
+    description: "RM不创造证据，只引用上游"
+
+  reason_code_aggregation:
+    rule: |
+      RM输出的reason_codes包含：
+      1. 上游传递的DI_/ECO_ codes
+      2. RM自己生成的RM_ codes
+    description: "Reason codes聚合传递"
+
+  graph_consumption:
+    rule: |
+      RM从ECO ecosystem_graph中提取因果结构种子
+      但RM可以添加更细粒度的因果边
+    description: "图谱消费与扩展"
+
+---
+
+# 缺失数据处理
+missing_data_handling:
+  di_unavailable:
+    action: "FORCE_DEGRADE"
+    reason_code: "RM_UPSTREAM_DI_UNAVAILABLE"
+    fallback: "Use cached data if available, mark staleness"
+
+  eco_unavailable:
+    action: "FORCE_DEGRADE"
+    reason_code: "RM_UPSTREAM_ECO_UNAVAILABLE"
+    fallback: "Generate minimal ecosystem structure from company filings"
+
+  partial_data:
+    action: "WARN and continue"
+    reason_code: "RM_UPSTREAM_DATA_PARTIAL"
+    handling: "Document which fields are missing"
+
+---
+
+# 版本兼容性
+compatibility:
+  min_di_version: "di-2.2.0"
+  min_eco_version: "eco-2.4.0"
+
+  breaking_changes:
+    - version: "1.1"
+      date: "2026-01-27"
+      changes: "Initial version"
+
+---
+
+# 验证规则
+validation:
+  on_receive:
+    - "验证DI confidence_cap存在且在有效范围"
+    - "验证ECO edge_confidence_cap存在且在有效范围"
+    - "验证evidence_registry结构完整"
+    - "验证ecosystem_graph有nodes和edges"
+
+  on_missing_required:
+    - "发出对应的RM_UPSTREAM_*_MISSING reason code"
+    - "进入DEGRADE模式"

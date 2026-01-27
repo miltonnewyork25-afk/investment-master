@@ -1,0 +1,417 @@
+# RM MechanismDAG Schema v1.1
+# 因果机制有向无环图
+# 节点=因素，边=因果关系（链接到ClaimSpec）
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "rm_mechanism_dag_schema_v1.1"
+title: "RM MechanismDAG Schema v1.1"
+description: "Directed Acyclic Graph representing causal mechanisms, with edges linked to claims"
+
+type: object
+
+required:
+  - "dag_id"
+  - "entity"
+  - "nodes"
+  - "edges"
+
+properties:
+  # 图谱标识
+  dag_id:
+    type: string
+    format: uuid
+    description: "Unique DAG identifier"
+
+  # 目标实体
+  entity:
+    type: object
+    required: ["ticker"]
+    properties:
+      ticker:
+        type: string
+        description: "Stock ticker"
+      company_name:
+        type: string
+        description: "Company name"
+      cik:
+        type: string
+        description: "SEC CIK number"
+    description: "Entity this DAG analyzes"
+
+  # 元数据
+  metadata:
+    type: object
+    properties:
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+      policy_pack_version:
+        type: string
+      policy_pack_hash:
+        type: string
+      run_id:
+        type: string
+        format: uuid
+    description: "DAG metadata for traceability"
+
+  # 节点定义
+  nodes:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required: ["node_id", "node_type", "label"]
+      properties:
+        node_id:
+          type: string
+          minLength: 1
+          pattern: "^N_[A-Z0-9_]+$"
+          description: "Unique node identifier"
+          examples: ["N_FSD_TECH", "N_ROBOTAXI_REV"]
+
+        node_type:
+          type: string
+          enum:
+            - "driver"        # 驱动因素
+            - "constraint"    # 约束因素
+            - "intermediate"  # 中间变量
+            - "outcome"       # 结果变量
+            - "actor"         # 参与者
+            - "dependency"    # 外部依赖
+            - "risk_factor"   # 风险因素
+          description: "Type of node in causal structure"
+
+        label:
+          type: string
+          minLength: 1
+          description: "Human-readable label"
+
+        description:
+          type: string
+          description: "Detailed description of this factor"
+
+        category:
+          type: string
+          enum:
+            - "technology"
+            - "market"
+            - "financial"
+            - "operational"
+            - "regulatory"
+            - "competitive"
+            - "macro"
+            - "organizational"
+          description: "Category of factor"
+
+        adner_risk_type:
+          type: string
+          enum: ["initiative_risk", "co_innovation_risk", "adoption_chain_risk", "none"]
+          description: "Adner risk classification if applicable"
+
+        observables:
+          type: array
+          items:
+            type: string
+          description: "Observable metrics for this node"
+
+        current_state:
+          type: object
+          properties:
+            value:
+              type: ["number", "string", "boolean"]
+            asof:
+              type: string
+              format: date
+            confidence:
+              type: number
+              minimum: 0
+              maximum: 1
+          description: "Current observed state"
+
+        tags:
+          type: array
+          items:
+            type: string
+          description: "Free-form tags for filtering"
+
+    description: "Nodes representing factors in the causal structure"
+
+  # 边定义
+  edges:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required: ["edge_id", "from", "to", "claim_id", "confidence"]
+      properties:
+        edge_id:
+          type: string
+          minLength: 1
+          pattern: "^E_[A-Z0-9_]+$"
+          description: "Unique edge identifier"
+
+        from:
+          type: string
+          minLength: 1
+          description: "Source node_id"
+
+        to:
+          type: string
+          minLength: 1
+          description: "Target node_id"
+
+        claim_id:
+          type: string
+          minLength: 1
+          description: "Reference to ClaimSpec that justifies this edge"
+
+        edge_type:
+          type: string
+          enum:
+            - "direct_cause"      # A直接导致B
+            - "enabling"          # A使B成为可能
+            - "blocking"          # A阻止B
+            - "moderating"        # A调节B与C的关系
+            - "mediating"         # A通过B影响C
+            - "feedback"          # 反馈循环
+          default: "direct_cause"
+          description: "Type of causal relationship"
+
+        sign:
+          type: string
+          enum: ["POS", "NEG", "NON_MONOTONIC", "UNKNOWN"]
+          description: "Direction of effect"
+
+        strength:
+          type: string
+          enum: ["strong", "moderate", "weak", "unknown"]
+          description: "Estimated strength of relationship"
+
+        confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: "Confidence in this edge"
+
+        confidence_cap:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: "Confidence cap from upstream"
+
+        lag:
+          type: object
+          properties:
+            value:
+              type: number
+            unit:
+              type: string
+              enum: ["days", "weeks", "months", "quarters", "years"]
+          description: "Time lag for effect propagation"
+
+        evidence_refs:
+          type: array
+          items:
+            type: string
+          description: "Evidence reference IDs supporting this edge"
+
+        reason_codes:
+          type: array
+          items:
+            type: string
+            pattern: "^RM_"
+          description: "Reason codes attached to this edge"
+
+    description: "Edges representing causal relationships"
+
+  # 关键边
+  critical_edges:
+    type: array
+    items:
+      type: string
+    description: "Edge IDs that are critical to the thesis"
+
+  # 子图分组
+  subgraphs:
+    type: array
+    items:
+      type: object
+      required: ["subgraph_id", "name", "node_ids"]
+      properties:
+        subgraph_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        node_ids:
+          type: array
+          items:
+            type: string
+        edge_ids:
+          type: array
+          items:
+            type: string
+    description: "Logical groupings of nodes/edges"
+
+  # 反馈循环
+  feedback_loops:
+    type: array
+    items:
+      type: object
+      required: ["loop_id", "edge_ids", "loop_type"]
+      properties:
+        loop_id:
+          type: string
+        name:
+          type: string
+        edge_ids:
+          type: array
+          items:
+            type: string
+        loop_type:
+          type: string
+          enum: ["reinforcing", "balancing"]
+          description: |
+            reinforcing: Positive feedback (amplifying)
+            balancing: Negative feedback (stabilizing)
+        current_state:
+          type: string
+          enum: ["accelerating", "steady", "decelerating", "dormant"]
+    description: "Identified feedback loops in the mechanism"
+
+  # 不变量检查结果
+  invariants_results:
+    type: array
+    items:
+      type: object
+      required: ["invariant_id", "status"]
+      properties:
+        invariant_id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+          enum: ["PASS", "FAIL"]
+        details:
+          type: string
+        affected_items:
+          type: array
+          items:
+            type: string
+        reason_codes:
+          type: array
+          items:
+            type: string
+    description: "Results of invariant checks on this DAG"
+
+  # DAG验证状态
+  validation:
+    type: object
+    properties:
+      is_acyclic:
+        type: boolean
+        description: "True if DAG has no cycles"
+      is_connected:
+        type: boolean
+        description: "True if DAG is connected (single component)"
+      orphan_nodes:
+        type: array
+        items:
+          type: string
+        description: "Nodes with no edges"
+      missing_claims:
+        type: array
+        items:
+          type: string
+        description: "Edges without valid claim references"
+    description: "Structural validation results"
+
+  # 统计摘要
+  statistics:
+    type: object
+    properties:
+      node_count:
+        type: integer
+      edge_count:
+        type: integer
+      critical_edge_count:
+        type: integer
+      avg_confidence:
+        type: number
+      min_confidence:
+        type: number
+      feedback_loop_count:
+        type: integer
+      subgraph_count:
+        type: integer
+    description: "DAG statistics for QG interface"
+
+additionalProperties: false
+
+# 示例
+examples:
+  - dag_id: "550e8400-e29b-41d4-a716-446655440000"
+    entity:
+      ticker: "TSLA"
+      company_name: "Tesla Inc."
+    metadata:
+      created_at: "2026-01-27T10:00:00Z"
+      policy_pack_version: "rm-1.1.0"
+      run_id: "660e8400-e29b-41d4-a716-446655440001"
+    nodes:
+      - node_id: "N_FSD_TECH"
+        node_type: "driver"
+        label: "FSD技术成熟度"
+        category: "technology"
+        adner_risk_type: "initiative_risk"
+        observables: ["干预率", "ODD覆盖度"]
+      - node_id: "N_ROBOTAXI_REV"
+        node_type: "outcome"
+        label: "Robotaxi服务收入"
+        category: "financial"
+        adner_risk_type: "adoption_chain_risk"
+        observables: ["季度收入", "城市数量", "活跃用户"]
+      - node_id: "N_REGULATORY"
+        node_type: "constraint"
+        label: "监管批准"
+        category: "regulatory"
+        adner_risk_type: "co_innovation_risk"
+    edges:
+      - edge_id: "E_FSD_TO_ROBOTAXI"
+        from: "N_FSD_TECH"
+        to: "N_ROBOTAXI_REV"
+        claim_id: "CLM_TSLA_001"
+        edge_type: "enabling"
+        sign: "POS"
+        strength: "strong"
+        confidence: 0.55
+        lag:
+          value: 2
+          unit: "quarters"
+      - edge_id: "E_REG_TO_ROBOTAXI"
+        from: "N_REGULATORY"
+        to: "N_ROBOTAXI_REV"
+        claim_id: "CLM_TSLA_002"
+        edge_type: "enabling"
+        sign: "POS"
+        strength: "strong"
+        confidence: 0.40
+    critical_edges:
+      - "E_FSD_TO_ROBOTAXI"
+    validation:
+      is_acyclic: true
+      is_connected: true
+      orphan_nodes: []
+      missing_claims: []
+    statistics:
+      node_count: 3
+      edge_count: 2
+      critical_edge_count: 1
+      avg_confidence: 0.475
+      min_confidence: 0.40
+      feedback_loop_count: 0

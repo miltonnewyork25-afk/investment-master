@@ -1,0 +1,314 @@
+# RM QG Interface Exporter Skill v1.1
+# Position: Skill 16
+# Purpose: 导出QG接口字段
+
+skill:
+  id: rm_qg_interface_exporter_v1_1
+  version: "1.1"
+  name: "RM QG Interface Exporter"
+  position: 16
+  purpose: "Export QG interface payload according to contract"
+  depends_on: [15]  # Thesis Assembler
+
+---
+
+# 输入
+input:
+  required:
+    - name: thesis_memo
+      type: object
+      description: "Complete thesis memo from Thesis Assembler"
+
+    - name: qg_contract
+      type: object
+      description: "rm_qg_interface_contract.yaml"
+
+---
+
+# 输出
+output:
+  qg_interface_payload:
+    type: object
+    description: "Payload conforming to QG interface contract"
+    properties:
+      invariants_results:
+        type: object
+      thesis_confidence_cap:
+        type: number
+      evidence_coverage:
+        type: object
+      critical_claims_status:
+        type: object
+      premortem_coverage:
+        type: object
+      reason_codes:
+        type: array
+
+  validation_result:
+    type: object
+    properties:
+      is_valid:
+        type: boolean
+      missing_fields:
+        type: array
+      type_errors:
+        type: array
+
+  reason_codes:
+    type: array
+
+---
+
+# 执行步骤
+steps:
+  - step: 1
+    name: "Extract Invariants Results"
+    action: |
+      invariants_results = {
+        total_checked: thesis_memo.invariants_results.total_checked,
+        passed: thesis_memo.invariants_results.passed,
+        failed: thesis_memo.invariants_results.failed,
+        pass_rate: thesis_memo.invariants_results.pass_rate,
+        failed_invariants: thesis_memo.invariants_results.failed_invariants.map(inv => ({
+          invariant_id: inv.invariant_id,
+          name: inv.name,
+          severity: inv.severity,
+          affected_items: inv.affected_items,
+          reason_code: inv.reason_code
+        }))
+      }
+    output: invariants_results
+
+  - step: 2
+    name: "Extract Confidence Cap"
+    action: |
+      thesis_confidence_cap = thesis_memo.confidence_cap
+      Validate: 0 <= thesis_confidence_cap <= 1
+    output: thesis_confidence_cap
+
+  - step: 3
+    name: "Extract Evidence Coverage"
+    action: |
+      claims = thesis_memo.core_claims
+      evidence_coverage = {
+        total_claims: claims.length,
+        critical_claims: count(claims, c => c.criticality == "CRITICAL"),
+        critical_ab_coverage: calculate_ab_coverage(
+          claims.filter(c => c.criticality == "CRITICAL")
+        ),
+        important_ab_coverage: calculate_ab_coverage(
+          claims.filter(c => c.criticality == "IMPORTANT")
+        ),
+        overall_ab_coverage: calculate_ab_coverage(claims)
+      }
+    helper_function: |
+      calculate_ab_coverage(claims):
+        total_evidence = sum(claims.map(c => c.evidence_refs.length))
+        ab_evidence = sum(claims.map(c =>
+          c.evidence_refs.filter(e => e.grade in ["A", "B"]).length
+        ))
+        return ab_evidence / total_evidence if total_evidence > 0 else 0
+    output: evidence_coverage
+
+  - step: 4
+    name: "Extract Critical Claims Status"
+    action: |
+      critical_claims = thesis_memo.core_claims.filter(c => c.criticality == "CRITICAL")
+      critical_claims_status = {
+        total_critical: critical_claims.length,
+        with_counterfactual: count(critical_claims, c => c.counterfactual != null),
+        with_observables: count(critical_claims, c => c.observables?.length > 0),
+        with_falsifier: count(critical_claims, c => c.falsify_if != null),
+        with_adner_risk: count(critical_claims, c => c.risk_type != null),
+        completeness_rate: calculate_completeness_rate(critical_claims),
+        claims_list: critical_claims.map(c => ({
+          claim_id: c.claim_id,
+          confidence: c.confidence,
+          is_complete: is_claim_complete(c),
+          missing_fields: get_missing_fields(c),
+          reason_codes: c.reason_codes || []
+        }))
+      }
+    helper_function: |
+      is_claim_complete(claim):
+        required = ["cause", "effect", "sign", "observables", "timeframe", "falsify_if", "risk_type"]
+        return required.every(f => claim[f] != null)
+
+      calculate_completeness_rate(claims):
+        complete = claims.filter(c => is_claim_complete(c)).length
+        return complete / claims.length if claims.length > 0 else 0
+    output: critical_claims_status
+
+  - step: 5
+    name: "Extract Premortem Coverage"
+    action: |
+      premortem = thesis_memo.premortem
+      premortem_coverage = {
+        total_failure_modes: premortem.failure_modes.length,
+        linked_failure_modes: count(premortem.failure_modes,
+          m => m.linked_claim_ids?.length > 0
+        ),
+        linking_rate: linked / total if total > 0 else 0,
+        category_coverage: premortem.category_coverage,
+        categories_missing: find_missing_categories(premortem)
+      }
+    helper_function: |
+      find_missing_categories(premortem):
+        required = ["INITIATIVE", "CO_INNOVATION", "ADOPTION_CHAIN",
+                   "SUBSTITUTION", "REGULATION_PLATFORM_RULES"]
+        covered = premortem.failure_modes.map(m => m.category)
+        return required.filter(c => !covered.includes(c))
+    output: premortem_coverage
+
+  - step: 6
+    name: "Collect Reason Codes"
+    action: |
+      reason_codes = thesis_memo.reason_codes
+        .filter(code => code.startsWith("RM_"))
+        .unique()
+    output: reason_codes
+
+  - step: 7
+    name: "Validate Against Contract"
+    action: |
+      FOR EACH required_field IN qg_contract.required_exports:
+        1. Check field exists in payload
+        2. Check field type matches schema
+        3. Check values in valid range
+      Collect validation errors
+    output: validation_result
+
+  - step: 8
+    name: "Handle Validation Errors"
+    action: |
+      IF validation_result.missing_fields.length > 0:
+        emit reason_code for each
+      IF validation_result.type_errors.length > 0:
+        attempt type coercion
+        if fails, emit reason_code
+    on_error:
+      reason_code: "RM_QG_INTERFACE_INVALID"
+      action: "WARN and export partial"
+
+  - step: 9
+    name: "Add Optional Fields"
+    action: |
+      IF thesis_memo contains optional data:
+        Add thesis_metadata
+        Add mechanism_dag_stats
+        Add trigger_summary
+        Add uncertainty_summary
+    output: optional_fields
+
+  - step: 10
+    name: "Assemble Payload"
+    action: |
+      qg_interface_payload = {
+        # Required
+        invariants_results,
+        thesis_confidence_cap,
+        evidence_coverage,
+        critical_claims_status,
+        premortem_coverage,
+        reason_codes,
+        # Optional
+        ...optional_fields
+      }
+    output: qg_interface_payload
+
+  - step: 11
+    name: "Final Validation"
+    action: |
+      1. Verify all required fields present
+      2. Verify pass_rate calculation correct
+      3. Verify coverage calculations correct
+      4. Log export summary
+    output: final_validation_result
+
+---
+
+# 字段映射
+field_mapping:
+  invariants_results:
+    source: "thesis_memo.invariants_results"
+    transform: "Select required subfields"
+
+  thesis_confidence_cap:
+    source: "thesis_memo.confidence_cap"
+    transform: "Direct copy"
+
+  evidence_coverage:
+    source: "thesis_memo.core_claims + thesis_memo.claims_summary"
+    transform: "Aggregate calculations"
+
+  critical_claims_status:
+    source: "thesis_memo.core_claims (filtered)"
+    transform: "Extract status fields"
+
+  premortem_coverage:
+    source: "thesis_memo.premortem"
+    transform: "Calculate coverage metrics"
+
+  reason_codes:
+    source: "thesis_memo.reason_codes"
+    transform: "Filter RM_ prefix"
+
+---
+
+# QG阈值参考
+qg_thresholds:
+  invariants_pass_rate:
+    pass: ">= 0.80"
+    degrade: "0.50 - 0.80"
+    fail: "< 0.50"
+
+  critical_ab_coverage:
+    pass: ">= 0.40"
+    degrade: "0.20 - 0.40"
+    fail: "< 0.20"
+
+  completeness_rate:
+    pass: ">= 0.90"
+    degrade: "0.70 - 0.90"
+    fail: "< 0.70"
+
+  premortem_linking_rate:
+    pass: ">= 0.80 AND no missing categories"
+    degrade: ">= 0.50 OR <= 2 missing"
+    fail: "< 0.50 AND > 2 missing"
+
+---
+
+# 验证规则
+validation:
+  required_fields:
+    - invariants_results
+    - thesis_confidence_cap
+    - evidence_coverage
+    - critical_claims_status
+    - premortem_coverage
+    - reason_codes
+
+  type_checks:
+    thesis_confidence_cap: "number in [0, 1]"
+    invariants_results.pass_rate: "number in [0, 1]"
+    evidence_coverage.critical_ab_coverage: "number in [0, 1]"
+
+  pattern_checks:
+    reason_codes: "all items start with RM_"
+
+---
+
+# 错误处理
+error_handling:
+  missing_required:
+    reason_code: "RM_QG_INTERFACE_INCOMPLETE"
+    action: "WARN, export available fields"
+
+  type_mismatch:
+    reason_code: "RM_QG_INTERFACE_TYPE_ERROR"
+    action: "Attempt coercion, else WARN"
+
+  contract_violation:
+    reason_code: "RM_QG_INTERFACE_INVALID"
+    action: "WARN, document violations"

@@ -1,0 +1,290 @@
+# RM Premortem Linker Skill v1.1
+# Position: Skill 12
+# Purpose: Premortem失败模式与claims链接
+
+skill:
+  id: rm_premortem_linker_v1_1
+  version: "1.1"
+  name: "RM Premortem Linker"
+  position: 12
+  purpose: "Generate premortem failure modes and link to specific claims"
+  depends_on: [9, 10]  # Claim Extractor, DAG Builder
+  parallel_with: [11, 13]  # Adner Risk Mapper, Counterfactual Generator
+
+---
+
+# 理论基础
+theory:
+  source: "Gary Klein - Performing a Project Premortem (HBR 2007)"
+  method: |
+    Prospective hindsight technique:
+    1. Imagine the thesis has failed
+    2. Work backward to identify what went wrong
+    3. Map each failure mode to specific claims
+    4. Generate disconfirmers and early warning signals
+
+---
+
+# 输入
+input:
+  required:
+    - name: claims
+      type: array
+      description: "Claims to link failure modes to"
+
+    - name: mechanism_dag
+      type: object
+      description: "DAG for relationship analysis"
+
+    - name: policy
+      type: object
+      description: "premortem_policy from policy_pack"
+
+  optional:
+    - name: premortem_template
+      type: object
+      description: "Pre-filled failure modes to validate"
+
+    - name: ecosystem_graph
+      type: object
+      description: "ECO graph for ecosystem risks"
+
+---
+
+# 输出
+output:
+  premortem:
+    type: object
+    properties:
+      failure_modes:
+        type: array
+        items:
+          type: object
+          required: ["mode_id", "category", "description", "linked_claim_ids", "probability_estimate"]
+      category_coverage:
+        type: object
+
+  failure_claim_mapping:
+    type: object
+    description: "Mapping from failure_mode_id to claim_ids"
+
+  coverage_report:
+    type: object
+    properties:
+      total_modes:
+        type: integer
+      linked_modes:
+        type: integer
+      linking_rate:
+        type: number
+      categories_missing:
+        type: array
+
+  reason_codes:
+    type: array
+
+---
+
+# 执行步骤
+steps:
+  - step: 1
+    name: "Initialize Failure Mode Template"
+    action: |
+      FOR EACH category IN required_categories:
+        Initialize at least 1 failure mode placeholder:
+        - INITIATIVE
+        - CO_INNOVATION
+        - ADOPTION_CHAIN
+        - SUBSTITUTION
+        - REGULATION_PLATFORM_RULES
+    output: failure_mode_template
+
+  - step: 2
+    name: "Generate Initiative Failure Modes"
+    action: |
+      Using claims tagged as initiative_risk:
+        1. Identify key execution milestones
+        2. Generate failure scenarios:
+           - Technology development fails
+           - Cost overruns
+           - Timeline delays
+           - Key personnel loss
+           - Quality issues
+        3. Link to specific claims
+    output: initiative_failures
+
+  - step: 3
+    name: "Generate Co-Innovation Failure Modes"
+    action: |
+      Using claims tagged as co_innovation_risk:
+        1. Identify external dependencies
+        2. Generate failure scenarios:
+           - Partner technology delayed
+           - Complementor pivots
+           - Platform changes unfavorably
+           - Standard not adopted
+           - API deprecated
+        3. Link to specific claims
+    output: coinnovation_failures
+
+  - step: 4
+    name: "Generate Adoption Chain Failure Modes"
+    action: |
+      Using claims tagged as adoption_chain_risk:
+        1. Identify channel/adoption dependencies
+        2. Generate failure scenarios:
+           - Channel partners don't adopt
+           - Customer switching costs too high
+           - Network effects don't activate
+           - Market penetration slower than expected
+        3. Link to specific claims
+    output: adoption_failures
+
+  - step: 5
+    name: "Generate Substitution Failure Modes"
+    action: |
+      Using ecosystem_graph substitute_analysis:
+        1. Identify viable substitutes
+        2. Generate failure scenarios:
+           - Substitute captures market
+           - Price/performance disruption
+           - Technology shift
+        3. Link to relevant claims
+    output: substitution_failures
+
+  - step: 6
+    name: "Generate Regulation/Platform Failure Modes"
+    action: |
+      1. Identify regulatory dependencies
+      2. Identify platform dependencies
+      3. Generate failure scenarios:
+         - Regulatory denial/delay
+         - Platform policy change
+         - Antitrust action
+         - New regulations
+      4. Link to relevant claims
+    output: regulation_failures
+
+  - step: 7
+    name: "Validate Claim Linking"
+    action: |
+      FOR EACH failure_mode:
+        IF LENGTH(linked_claim_ids) == 0:
+          1. Attempt auto-linking based on keywords
+          2. If still unlinked, emit reason_code
+    on_unlinked:
+      reason_code: "RM_PREMORTEM_NOT_LINKED_TO_CLAIMS"
+      action: "DEGRADE"
+
+  - step: 8
+    name: "Estimate Probabilities"
+    action: |
+      FOR EACH failure_mode:
+        1. Consider base rates for category
+        2. Adjust for company-specific factors
+        3. Assign probability_estimate (0-1)
+        4. Optionally assign probability_range
+    guidelines:
+      initiative: "Base 15-30%, adjust for track record"
+      co_innovation: "Base 20-40%, adjust for partner maturity"
+      adoption_chain: "Base 25-50%, adjust for market dynamics"
+      substitution: "Base 10-30%, adjust for substitute maturity"
+      regulation: "Base 5-20%, adjust for regulatory environment"
+
+  - step: 9
+    name: "Generate Disconfirmers"
+    action: |
+      FOR EACH failure_mode:
+        1. Identify evidence that would disprove this failure
+        2. Add to disconfirmers array
+    output: failure_modes_with_disconfirmers
+
+  - step: 10
+    name: "Generate Early Warning Signals"
+    action: |
+      FOR EACH failure_mode:
+        1. Identify leading indicators of this failure
+        2. Add to early_warning_signals array
+    output: complete_failure_modes
+
+  - step: 11
+    name: "Validate Category Coverage"
+    action: |
+      1. Check all 5 categories have at least 1 mode
+      2. Check total >= 5 modes
+      3. Calculate coverage metrics
+    on_missing:
+      reason_code: "RM_PREMORTEM_CATEGORY_MISSING"
+      action: "WARN"
+
+  - step: 12
+    name: "Assemble Premortem"
+    action: |
+      1. Combine all failure modes
+      2. Calculate category_coverage
+      3. Generate failure_claim_mapping
+      4. Generate coverage_report
+    output: premortem
+
+---
+
+# 失败模式模板
+failure_mode_templates:
+  INITIATIVE:
+    examples:
+      - "Technology development doesn't meet specifications"
+      - "Project timeline slips by >6 months"
+      - "Development costs exceed budget by >30%"
+      - "Key technical talent leaves"
+
+  CO_INNOVATION:
+    examples:
+      - "Partner's technology doesn't reach required maturity"
+      - "Critical supplier pivots to competitor"
+      - "Platform provider changes API/terms"
+      - "Industry standard adoption stalls"
+
+  ADOPTION_CHAIN:
+    examples:
+      - "Channel partners don't achieve required certification"
+      - "Customer switching costs prevent adoption"
+      - "Network effects fail to activate at scale"
+      - "Market penetration 50% below projection"
+
+  SUBSTITUTION:
+    examples:
+      - "Competitor launches superior substitute"
+      - "Alternative technology achieves price parity"
+      - "Market shifts to different solution category"
+
+  REGULATION_PLATFORM_RULES:
+    examples:
+      - "Regulatory approval denied/delayed"
+      - "New regulations increase compliance cost"
+      - "Platform changes content/access policies"
+      - "Antitrust action limits business model"
+
+---
+
+# 验证规则
+validation:
+  minimum_modes: 5
+  minimum_per_category: 1
+  linking_required: true
+  linking_threshold: 0.80
+
+---
+
+# 错误处理
+error_handling:
+  unlinked_mode:
+    reason_code: "RM_PREMORTEM_NOT_LINKED_TO_CLAIMS"
+    action: "DEGRADE"
+
+  missing_category:
+    reason_code: "RM_PREMORTEM_CATEGORY_MISSING"
+    action: "WARN"
+
+  shallow_premortem:
+    reason_code: "RM_PREMORTEM_SHALLOW"
+    action: "WARN"

@@ -1,0 +1,341 @@
+# RM - Quality Gate Interface Contract v1.1
+# 与QG的硬接口字段锁死
+# QG不需要理解RM细节，只需要读取固定字段
+
+version: "1.1"
+asof: "2026-01-27"
+description: "RM与QG之间的硬接口契约，字段锁死不可变"
+
+---
+
+# 接口目的
+purpose: |
+  让Quality Gate Agent能够：
+  1. 评估论点的可信度（confidence_cap）
+  2. 检查不变量结果（invariants_results）
+  3. 获取证据覆盖率（evidence_coverage）
+  4. 识别关键claims状态（critical_claims_status）
+  5. 检查premortem覆盖率（premortem_coverage）
+  6. 路由reason_codes进行回退
+
+  QG不需要理解RM的内部逻辑（如Adner风险分类、counterfactual等），
+  只需要读取标准化的输出字段。
+
+---
+
+# 必需导出字段（RM必须提供）
+required_exports:
+
+  # 1. 不变量检查结果
+  invariants_results:
+    type: object
+    description: "不变量检查结果摘要"
+    required: true
+    schema:
+      total_checked:
+        type: integer
+        description: "检查的不变量总数"
+      passed:
+        type: integer
+        description: "通过的不变量数"
+      failed:
+        type: integer
+        description: "失败的不变量数"
+      pass_rate:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "通过率"
+      failed_invariants:
+        type: array
+        items:
+          type: object
+          properties:
+            invariant_id:
+              type: string
+            name:
+              type: string
+            severity:
+              type: string
+              enum: ["INFO", "WARN", "HIGH", "CRITICAL"]
+            affected_items:
+              type: array
+              items:
+                type: string
+            reason_code:
+              type: string
+              pattern: "^RM_"
+
+  # 2. 论点置信度上限
+  thesis_confidence_cap:
+    type: number
+    description: "论点置信度上限，供QG计算整体confidence_cap"
+    required: true
+    minimum: 0
+    maximum: 1
+    computation: "min(upstream_cap, rm_internal_confidence)"
+
+  # 3. 证据覆盖率
+  evidence_coverage:
+    type: object
+    description: "证据覆盖率统计"
+    required: true
+    schema:
+      total_claims:
+        type: integer
+        description: "总claim数"
+      critical_claims:
+        type: integer
+        description: "CRITICAL级别claim数"
+      critical_ab_coverage:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "CRITICAL claims的A/B证据覆盖率"
+      important_ab_coverage:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "IMPORTANT claims的A/B证据覆盖率"
+      overall_ab_coverage:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "所有claims的A/B证据覆盖率"
+
+  # 4. 关键Claims状态
+  critical_claims_status:
+    type: object
+    description: "关键claims的状态摘要"
+    required: true
+    schema:
+      total_critical:
+        type: integer
+      with_counterfactual:
+        type: integer
+        description: "有counterfactual的CRITICAL claims数"
+      with_observables:
+        type: integer
+        description: "有observables的CRITICAL claims数"
+      with_falsifier:
+        type: integer
+        description: "有falsify_if的CRITICAL claims数"
+      with_adner_risk:
+        type: integer
+        description: "有Adner风险标签的CRITICAL claims数"
+      completeness_rate:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "完整度（所有required字段齐全的比例）"
+      claims_list:
+        type: array
+        items:
+          type: object
+          properties:
+            claim_id:
+              type: string
+            confidence:
+              type: number
+            is_complete:
+              type: boolean
+            missing_fields:
+              type: array
+              items:
+                type: string
+            reason_codes:
+              type: array
+              items:
+                type: string
+
+  # 5. Premortem覆盖率
+  premortem_coverage:
+    type: object
+    description: "Premortem分析覆盖率"
+    required: true
+    schema:
+      total_failure_modes:
+        type: integer
+      linked_failure_modes:
+        type: integer
+        description: "已链接到claim的failure modes数"
+      linking_rate:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "链接率"
+      category_coverage:
+        type: object
+        description: "各Adner风险类别覆盖情况"
+        properties:
+          INITIATIVE:
+            type: integer
+          CO_INNOVATION:
+            type: integer
+          ADOPTION_CHAIN:
+            type: integer
+          SUBSTITUTION:
+            type: integer
+          REGULATION_PLATFORM_RULES:
+            type: integer
+      categories_missing:
+        type: array
+        items:
+          type: string
+        description: "缺失的风险类别"
+
+  # 6. Reason Codes
+  reason_codes:
+    type: array
+    description: "RM命名空间的reason codes"
+    required: true
+    items:
+      type: string
+      pattern: "^RM_"
+
+---
+
+# 可选导出字段
+optional_exports:
+
+  # 论点元数据
+  thesis_metadata:
+    type: object
+    description: "论点基本信息"
+    schema:
+      memo_id:
+        type: string
+        format: uuid
+      entity:
+        type: object
+        properties:
+          ticker: { type: string }
+          company_name: { type: string }
+      thesis_statement:
+        type: string
+      core_contradiction:
+        type: string
+      kill_switch_condition:
+        type: string
+      created_at:
+        type: string
+        format: date-time
+      policy_pack_version:
+        type: string
+
+  # DAG统计
+  mechanism_dag_stats:
+    type: object
+    description: "机制DAG统计"
+    schema:
+      node_count:
+        type: integer
+      edge_count:
+        type: integer
+      critical_edge_count:
+        type: integer
+      is_acyclic:
+        type: boolean
+      is_connected:
+        type: boolean
+      avg_edge_confidence:
+        type: number
+      feedback_loop_count:
+        type: integer
+
+  # 监控触发器摘要
+  trigger_summary:
+    type: object
+    description: "监控触发器摘要"
+    schema:
+      total_triggers:
+        type: integer
+      active_triggers:
+        type: integer
+      fired_triggers:
+        type: integer
+      incomplete_triggers:
+        type: integer
+
+  # 不确定性矩阵摘要
+  uncertainty_summary:
+    type: object
+    description: "不确定性矩阵摘要"
+    schema:
+      total_uncertainties:
+        type: integer
+      high_priority:
+        type: integer
+      avg_confidence:
+        type: number
+
+---
+
+# QG读取规则
+qg_reading_rules:
+
+  confidence_cap_calculation:
+    description: "QG计算整体confidence_cap时使用thesis_confidence_cap"
+    rule: "overall_cap = min(di_confidence_cap, eco_edge_confidence_cap, rm_thesis_confidence_cap, ...)"
+
+  invariants_check:
+    description: "QG检查invariants_results.pass_rate"
+    thresholds:
+      pass: "pass_rate >= 0.80"
+      degrade: "0.50 <= pass_rate < 0.80"
+      fail: "pass_rate < 0.50"
+
+  evidence_check:
+    description: "QG检查evidence_coverage.critical_ab_coverage"
+    thresholds:
+      pass: "critical_ab_coverage >= 0.40"
+      degrade: "0.20 <= critical_ab_coverage < 0.40"
+      fail: "critical_ab_coverage < 0.20"
+
+  critical_claims_check:
+    description: "QG检查critical_claims_status.completeness_rate"
+    thresholds:
+      pass: "completeness_rate >= 0.90"
+      degrade: "0.70 <= completeness_rate < 0.90"
+      fail: "completeness_rate < 0.70"
+
+  premortem_check:
+    description: "QG检查premortem_coverage.linking_rate"
+    thresholds:
+      pass: "linking_rate >= 0.80 AND len(categories_missing) == 0"
+      degrade: "linking_rate >= 0.50 OR len(categories_missing) <= 2"
+      fail: "linking_rate < 0.50 AND len(categories_missing) > 2"
+
+  reason_code_routing:
+    description: "QG根据reason_codes进行回退路由"
+    routing:
+      RM_*_BLOCK: "触发FAIL verdict（RM当前无BLOCK codes，保留扩展性）"
+      RM_*_DEGRADE: "触发DEGRADE verdict"
+      RM_*_WARN: "记录但不影响verdict"
+
+---
+
+# 接口版本兼容性
+compatibility:
+  min_rm_version: "rm-1.1.0"
+  min_qg_version: "qg-2.2.0"
+
+  breaking_changes:
+    - version: "1.1"
+      date: "2026-01-27"
+      changes: "初始版本，字段锁定"
+
+---
+
+# 验证规则
+validation:
+  on_export:
+    - "所有required_exports字段必须存在"
+    - "字段类型必须匹配schema"
+    - "reason_codes必须以RM_开头"
+    - "数值必须在有效范围内"
+
+  on_import_by_qg:
+    - "验证接口版本兼容性"
+    - "验证必需字段存在"
+    - "验证数值在有效范围内"

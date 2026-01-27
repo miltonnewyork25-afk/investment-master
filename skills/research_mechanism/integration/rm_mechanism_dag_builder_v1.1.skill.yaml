@@ -1,0 +1,244 @@
+# RM Mechanism DAG Builder Skill v1.1
+# Position: Skill 10
+# Purpose: 构建因果机制DAG
+
+skill:
+  id: rm_mechanism_dag_builder_v1_1
+  version: "1.1"
+  name: "RM Mechanism DAG Builder"
+  position: 10
+  purpose: "Build causal mechanism DAG from normalized claims"
+  depends_on: [9]  # Claim Extractor
+
+---
+
+# 输入
+input:
+  required:
+    - name: claims
+      type: array
+      description: "Normalized claims from Claim Extractor"
+
+    - name: entity
+      type: object
+      description: "Target entity {ticker, company_name}"
+
+  optional:
+    - name: ecosystem_graph
+      type: object
+      description: "ECO graph for node seeding"
+
+    - name: existing_dag
+      type: object
+      description: "Previous DAG for incremental update"
+
+---
+
+# 输出
+output:
+  mechanism_dag:
+    $ref: "schemas/rm_mechanism_dag_schema.yaml"
+    description: "Complete mechanism DAG"
+
+  dag_validation:
+    type: object
+    properties:
+      is_acyclic:
+        type: boolean
+      is_connected:
+        type: boolean
+      orphan_nodes:
+        type: array
+      orphan_claims:
+        type: array
+      cycle_paths:
+        type: array
+
+  reason_codes:
+    type: array
+
+---
+
+# 执行步骤
+steps:
+  - step: 1
+    name: "Extract Unique Factors"
+    action: |
+      1. Parse all causes and effects from claims
+      2. Normalize factor names (canonicalize)
+      3. Remove duplicates
+      4. Create node for each unique factor
+    output: node_list
+
+  - step: 2
+    name: "Classify Nodes"
+    action: |
+      FOR EACH node IN node_list:
+        1. Analyze incoming/outgoing edges
+        2. Classify node_type:
+           - driver: Only outgoing edges
+           - outcome: Only incoming edges
+           - intermediate: Both incoming and outgoing
+           - constraint: Blocks or limits
+           - dependency: External factor
+           - actor: Person/org/entity
+        3. Assign category (technology/market/financial/etc.)
+    output: classified_nodes
+
+  - step: 3
+    name: "Build Edges"
+    action: |
+      FOR EACH claim IN claims:
+        1. Find from_node matching claim.cause
+        2. Find to_node matching claim.effect
+        3. Create edge with:
+           - edge_id: E_{TICKER}_{NNN}
+           - from: from_node.node_id
+           - to: to_node.node_id
+           - claim_id: claim.claim_id
+           - sign: claim.sign
+           - confidence: claim.confidence
+           - evidence_refs: claim.evidence_refs
+    output: edge_list
+
+  - step: 4
+    name: "Detect Feedback Loops"
+    action: |
+      1. Run cycle detection algorithm
+      2. For each cycle found:
+         - Classify as reinforcing or balancing
+         - Record edge_ids in loop
+         - Assess current state (accelerating/steady/etc.)
+      3. Note: Cycles in feedback_loops are allowed
+         but DAG structure must be acyclic for main edges
+    output: feedback_loops
+
+  - step: 5
+    name: "Validate DAG Structure"
+    action: |
+      1. Check acyclicity (excluding feedback annotations)
+      2. Check connectivity
+      3. Identify orphan nodes (no edges)
+      4. Identify orphan claims (not in DAG)
+    on_cycle:
+      reason_code: "RM_DAG_CYCLE_DETECTED"
+      action: "attempt to break cycle, else DEGRADE"
+
+  - step: 6
+    name: "Mark Critical Edges"
+    action: |
+      FOR EACH edge IN edge_list:
+        IF edge.claim_id references CRITICAL claim:
+          Add edge_id to critical_edges
+    output: critical_edges
+
+  - step: 7
+    name: "Create Subgraphs"
+    action: |
+      1. Group nodes by category
+      2. Identify natural clusters
+      3. Create subgraph for each cluster
+      4. Name subgraphs meaningfully
+    output: subgraphs
+
+  - step: 8
+    name: "Compute Statistics"
+    action: |
+      1. Count nodes, edges
+      2. Calculate avg/min confidence
+      3. Count feedback loops
+      4. Count subgraphs
+    output: statistics
+
+  - step: 9
+    name: "Assemble DAG"
+    action: |
+      1. Combine all components into mechanism_dag
+      2. Add metadata (created_at, run_id, etc.)
+      3. Include validation results
+    output: mechanism_dag
+
+---
+
+# Node类型推断规则
+node_type_rules:
+  driver:
+    condition: "in_degree == 0 AND out_degree > 0"
+    typical: "External forces, macro factors, technology breakthroughs"
+
+  outcome:
+    condition: "in_degree > 0 AND out_degree == 0"
+    typical: "Revenue, profit, market share, stock price"
+
+  intermediate:
+    condition: "in_degree > 0 AND out_degree > 0"
+    typical: "Operating metrics, capabilities, market position"
+
+  constraint:
+    condition: "Has blocking/limiting relationship"
+    typical: "Regulations, resource limits, capacity constraints"
+
+  dependency:
+    condition: "External to company control"
+    typical: "Complementor progress, market adoption, partner actions"
+
+  risk_factor:
+    condition: "Negative impact potential"
+    typical: "Competition, disruption, execution risks"
+
+---
+
+# Edge类型推断规则
+edge_type_rules:
+  direct_cause:
+    condition: "A directly causes B"
+    sign: "Usually POS"
+
+  enabling:
+    condition: "A makes B possible"
+    sign: "POS"
+
+  blocking:
+    condition: "A prevents B"
+    sign: "NEG"
+
+  moderating:
+    condition: "A affects strength of B→C"
+    sign: "NON_MONOTONIC"
+
+  feedback:
+    condition: "Part of identified loop"
+    special: "Annotated separately"
+
+---
+
+# 验证规则
+validation:
+  structural:
+    - "DAG must be acyclic (feedback loops annotated separately)"
+    - "All edges must reference valid nodes"
+    - "All edges must reference valid claims"
+
+  coverage:
+    - "All CRITICAL claims must appear in DAG"
+    - "At least 5 edges required"
+
+---
+
+# 错误处理
+error_handling:
+  empty_dag:
+    reason_code: "RM_DAG_EMPTY"
+    action: "DEGRADE"
+
+  cycle_detected:
+    reason_code: "RM_DAG_CYCLE_DETECTED"
+    action: "Try to break, else DEGRADE"
+
+  disconnected:
+    reason_code: "RM_DAG_DISCONNECTED"
+    action: "WARN"
+
+  orphan_claims:
+    reason_code: "RM_CLAIM_NOT_IN_DAG"
+    action: "WARN"

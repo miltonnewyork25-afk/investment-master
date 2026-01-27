@@ -1,0 +1,300 @@
+# RM Counterfactual Generator Skill v1.1
+# Position: Skill 13
+# Purpose: 生成do(x)反事实分析
+
+skill:
+  id: rm_counterfactual_generator_v1_1
+  version: "1.1"
+  name: "RM Counterfactual Generator"
+  position: 13
+  purpose: "Generate do(x) counterfactual analysis for critical claims"
+  depends_on: [9, 10]  # Claim Extractor, DAG Builder
+  parallel_with: [11, 12]  # Adner Risk Mapper, Premortem Linker
+
+---
+
+# 理论基础
+theory:
+  source: "Judea Pearl - Causality: Models, Reasoning, and Inference"
+  method: |
+    do(x) operator for intervention analysis:
+    - do(X=x) represents forcing X to value x
+    - Different from conditioning P(Y|X=x)
+    - Enables causal (not just correlational) reasoning
+    - Requires explicit identifiability assessment
+
+---
+
+# 输入
+input:
+  required:
+    - name: claims
+      type: array
+      description: "Claims needing counterfactual analysis"
+
+    - name: mechanism_dag
+      type: object
+      description: "DAG for causal structure"
+
+    - name: policy
+      type: object
+      description: "counterfactual_policy from policy_pack"
+
+  optional:
+    - name: evidence_registry
+      type: object
+      description: "For assessing identifiability"
+
+---
+
+# 输出
+output:
+  claims_with_counterfactual:
+    type: array
+    description: "Claims with counterfactual field populated"
+
+  identifiability_assessment:
+    type: object
+    properties:
+      identified:
+        type: integer
+      partial:
+        type: integer
+      unknown:
+        type: integer
+      non_identifiable:
+        type: integer
+
+  counterfactual_report:
+    type: object
+    properties:
+      total_critical:
+        type: integer
+      with_counterfactual:
+        type: integer
+      coverage_rate:
+        type: number
+
+  reason_codes:
+    type: array
+
+---
+
+# 执行步骤
+steps:
+  - step: 1
+    name: "Filter Critical Claims"
+    action: |
+      1. Select claims where criticality == "CRITICAL"
+      2. These are required to have counterfactuals
+      3. IMPORTANT claims are optional
+    output: critical_claims
+
+  - step: 2
+    name: "Analyze Causal Structure"
+    action: |
+      FOR EACH claim IN critical_claims:
+        1. Find claim in mechanism_dag
+        2. Identify upstream causes
+        3. Identify downstream effects
+        4. Identify potential confounders
+    output: causal_context_map
+
+  - step: 3
+    name: "Generate Intervention"
+    action: |
+      FOR EACH claim IN critical_claims:
+        1. Identify the key causal variable (X)
+        2. Determine meaningful intervention:
+           - Negation: do(X = NOT current)
+           - Absence: do(X = never happens)
+           - Alternative: do(X = alternative value)
+        3. Format as do(VARIABLE = VALUE)
+    intervention_types:
+      negation:
+        pattern: "do({cause} = NOT {current})"
+        example: "do(FSD_launch = never)"
+      absence:
+        pattern: "do({cause} = absent)"
+        example: "do(Robotaxi = never_launched)"
+      alternative:
+        pattern: "do({cause} = {alternative})"
+        example: "do(price_strategy = premium_only)"
+    output: interventions
+
+  - step: 4
+    name: "Predict Expected Effect"
+    action: |
+      FOR EACH claim with intervention:
+        1. Trace effect through DAG
+        2. Estimate impact magnitude
+        3. Document expected changes
+        4. Consider second-order effects
+    output: expected_effects
+
+  - step: 5
+    name: "Define Observables"
+    action: |
+      FOR EACH counterfactual:
+        1. Identify measurable proxies
+        2. Use claim's observables where applicable
+        3. Add counterfactual-specific metrics
+    output: cf_observables
+
+  - step: 6
+    name: "Set Timeframe"
+    action: |
+      FOR EACH counterfactual:
+        1. Determine verification window
+        2. Consider lag from intervention to effect
+        3. Document in human-readable format
+    output: cf_timeframes
+
+  - step: 7
+    name: "Generate Falsification Condition"
+    action: |
+      FOR EACH counterfactual:
+        1. Define what would falsify the counterfactual reasoning
+        2. Make it specific and observable
+    output: cf_falsifiers
+
+  - step: 8
+    name: "Assess Identifiability"
+    action: |
+      FOR EACH counterfactual:
+        1. Check for unobserved confounders
+        2. Assess if natural experiment possible
+        3. Consider instrumental variables
+        4. Classify:
+           - IDENTIFIED: Causal effect determinable
+           - PARTIAL: Bounds can be established
+           - UNKNOWN: Not yet assessed
+           - NON_IDENTIFIABLE: Cannot determine
+        5. If NON_IDENTIFIABLE, document why
+    on_non_identifiable:
+      reason_code: "RM_CAUSAL_QUERY_NON_IDENTIFIABLE"
+      action: "Document limitations, continue"
+    output: identifiability_results
+
+  - step: 9
+    name: "Document Assumptions"
+    action: |
+      FOR EACH counterfactual:
+        1. List required causal assumptions
+        2. Note potential violations
+        3. Suggest robustness checks
+    typical_assumptions:
+      - "No unobserved confounders between X and Y"
+      - "Competitor behavior independent of intervention"
+      - "Market conditions stable during observation"
+      - "Measurement error negligible"
+    output: cf_assumptions
+
+  - step: 10
+    name: "Assemble Counterfactuals"
+    action: |
+      FOR EACH claim IN critical_claims:
+        claim.counterfactual = {
+          intervention: intervention,
+          expected_effect: expected_effect,
+          observables: cf_observables,
+          timeframe: cf_timeframe,
+          falsify_if: cf_falsifier,
+          identifiability: identifiability,
+          identifiability_notes: notes,
+          assumptions: assumptions
+        }
+    output: claims_with_counterfactual
+
+  - step: 11
+    name: "Validate Coverage"
+    action: |
+      1. Check all CRITICAL claims have counterfactual
+      2. Calculate coverage rate
+      3. Emit reason_code for missing
+    on_missing:
+      reason_code: "RM_COUNTERFACTUAL_MISSING"
+      action: "DEGRADE"
+
+  - step: 12
+    name: "Generate Reports"
+    action: |
+      1. Summarize identifiability distribution
+      2. Calculate coverage rate
+      3. List claims missing counterfactual
+    output: counterfactual_report, identifiability_assessment
+
+---
+
+# 干预类型示例
+intervention_examples:
+  technology_claim:
+    claim: "FSD reaching L4 enables Robotaxi"
+    intervention: "do(FSD_maturity = never_reaches_L4)"
+    expected_effect: "Robotaxi revenue = 0, valuation drops $200B+"
+    observables: ["Robotaxi revenue", "FSD capability level"]
+    identifiability: "PARTIAL - can estimate bounds from no-FSD scenarios"
+
+  market_claim:
+    claim: "Price cuts increase volume"
+    intervention: "do(price_cut = 0%)"
+    expected_effect: "Volume flat or declining vs. competitors"
+    observables: ["Unit sales", "Market share"]
+    identifiability: "PARTIAL - confounded by other factors"
+
+  competitive_claim:
+    claim: "Waymo competition limits growth"
+    intervention: "do(Waymo_expansion = aggressive)"
+    expected_effect: "Tesla Robotaxi market share capped at X%"
+    observables: ["Market share by city", "Pricing power"]
+    identifiability: "UNKNOWN - no natural experiment available"
+
+---
+
+# 可识别性评估规则
+identifiability_rules:
+  IDENTIFIED:
+    conditions:
+      - "Natural experiment available"
+      - "Instrumental variable valid"
+      - "Randomization possible"
+
+  PARTIAL:
+    conditions:
+      - "Bounds can be established"
+      - "Sensitivity analysis meaningful"
+      - "Some confounders measured"
+
+  UNKNOWN:
+    conditions:
+      - "Not yet analyzed"
+      - "Requires more data"
+
+  NON_IDENTIFIABLE:
+    conditions:
+      - "Unobserved confounders likely"
+      - "No valid instruments"
+      - "Selection bias unavoidable"
+
+---
+
+# 验证规则
+validation:
+  critical_coverage: 1.0  # 100% of critical claims
+  important_coverage: 0.0  # Optional for important
+
+---
+
+# 错误处理
+error_handling:
+  missing_counterfactual:
+    reason_code: "RM_COUNTERFACTUAL_MISSING"
+    action: "DEGRADE"
+
+  missing_timeframe:
+    reason_code: "RM_COUNTERFACTUAL_TIMEFRAME_MISSING"
+    action: "DEGRADE"
+
+  non_identifiable:
+    reason_code: "RM_CAUSAL_QUERY_NON_IDENTIFIABLE"
+    action: "WARN, document limitations"

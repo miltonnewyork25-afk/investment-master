@@ -1,0 +1,365 @@
+# RM ClaimSpec Schema v1.1
+# 因果声明规范 - 结构化、可证伪、可追踪
+# 整合Adner风险分类 + Pearl反事实
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "rm_claim_spec_schema_v1.1"
+title: "RM ClaimSpec Schema v1.1"
+description: "Schema for causal claims with falsifiability, Adner risk type, and counterfactual analysis"
+
+type: object
+
+required:
+  - "claim_id"
+  - "cause"
+  - "effect"
+  - "sign"
+  - "risk_type"
+  - "observables"
+  - "timeframe"
+  - "falsify_if"
+  - "confidence"
+  - "evidence_refs"
+
+properties:
+  # 唯一标识
+  claim_id:
+    type: string
+    minLength: 1
+    pattern: "^CLM_[A-Z0-9_]+$"
+    description: "Unique claim identifier, format: CLM_TICKER_NNN"
+    examples: ["CLM_TSLA_001", "CLM_GOOGL_042"]
+
+  # 关键性级别
+  criticality:
+    type: string
+    enum: ["CRITICAL", "IMPORTANT", "OPTIONAL"]
+    default: "IMPORTANT"
+    description: |
+      CRITICAL: If false, invalidates entire thesis
+      IMPORTANT: Materially affects valuation
+      OPTIONAL: Supporting but not essential
+
+  # Adner风险类型
+  risk_type:
+    type: string
+    enum: ["initiative_risk", "co_innovation_risk", "adoption_chain_risk"]
+    description: |
+      initiative_risk: Internal execution risk
+      co_innovation_risk: Depends on external complementary innovations
+      adoption_chain_risk: Depends on intermediary adoption
+
+  # 因果结构
+  cause:
+    type: string
+    minLength: 1
+    description: "The causal factor or driver"
+    examples: ["FSD技术成熟度提升", "储能成本下降"]
+
+  effect:
+    type: string
+    minLength: 1
+    description: "The expected outcome or effect"
+    examples: ["Robotaxi服务收入增长", "能源业务利润率提升"]
+
+  sign:
+    type: string
+    enum: ["POS", "NEG", "NON_MONOTONIC", "UNKNOWN"]
+    description: |
+      POS: Cause↑ → Effect↑
+      NEG: Cause↑ → Effect↓
+      NON_MONOTONIC: Non-linear relationship
+      UNKNOWN: Direction unclear
+
+  # 时滞
+  lag:
+    type: object
+    required: ["value", "unit"]
+    properties:
+      value:
+        type: number
+        minimum: 0
+        description: "Lag duration"
+      unit:
+        type: string
+        enum: ["days", "weeks", "months", "quarters", "years"]
+    description: "Time lag between cause and effect"
+    examples:
+      - value: 2
+        unit: "quarters"
+
+  # 条件/前置
+  conditions:
+    type: array
+    items:
+      type: string
+    description: "Conditions that must hold for the causal relationship"
+    examples:
+      - ["监管批准Robotaxi运营", "竞争对手未大规模进入"]
+
+  # 可观测指标
+  observables:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required: ["name"]
+      properties:
+        name:
+          type: string
+          minLength: 1
+          description: "Observable metric name"
+        definition:
+          type: string
+          description: "Precise definition of the metric"
+        unit:
+          type: string
+          description: "Unit of measurement"
+        data_sources:
+          type: array
+          items:
+            type: string
+          description: "Where to obtain this metric"
+        current_value:
+          type: ["number", "string", "null"]
+          description: "Most recent observed value"
+        asof:
+          type: string
+          format: date
+          description: "Date of current value"
+    description: "Measurable indicators for verification"
+    examples:
+      - name: "FSD干预率"
+        definition: "每1万英里人工干预次数"
+        unit: "次/万英里"
+        data_sources: ["Tesla安全报告", "第三方测试"]
+        current_value: 15
+        asof: "2026-01-15"
+
+  # 验证时间窗口
+  timeframe:
+    type: object
+    required: ["window", "unit"]
+    properties:
+      window:
+        type: number
+        minimum: 0
+        description: "Verification window duration"
+      unit:
+        type: string
+        enum: ["days", "weeks", "months", "quarters", "years"]
+      start_date:
+        type: string
+        format: date
+        description: "When verification window starts"
+      end_date:
+        type: string
+        format: date
+        description: "When verification window ends"
+    description: "Timeframe for claim verification"
+
+  # 证伪条件
+  falsify_if:
+    type: string
+    minLength: 1
+    description: "Explicit condition that would falsify this claim"
+    examples:
+      - "如果2026Q4 FSD干预率仍>10次/万英里，此claim失败"
+      - "如果储能毛利率<25%持续2个季度，此claim失败"
+
+  # 置信度
+  confidence:
+    type: number
+    minimum: 0
+    maximum: 1
+    description: "Confidence level (0-1), capped by upstream"
+
+  confidence_components:
+    type: object
+    properties:
+      evidence_coverage:
+        type: number
+        minimum: 0
+        maximum: 1
+      falsifiability_score:
+        type: number
+        minimum: 0
+        maximum: 1
+      consistency_score:
+        type: number
+        minimum: 0
+        maximum: 1
+    description: "Breakdown of confidence components"
+
+  # 证据引用
+  evidence_refs:
+    type: array
+    items:
+      type: object
+      required: ["ref_id", "grade", "timestamp"]
+      properties:
+        ref_id:
+          type: string
+          minLength: 1
+          description: "Reference to evidence in DI evidence registry"
+        grade:
+          type: string
+          enum: ["A", "B", "C", "UNSUPPORTED"]
+          description: "Evidence grade"
+        timestamp:
+          type: string
+          format: date-time
+          description: "When evidence was collected"
+        source_type:
+          type: string
+          description: "Type of source (SEC filing, earnings call, etc.)"
+        excerpt:
+          type: string
+          description: "Relevant excerpt from source"
+        notes:
+          type: string
+          description: "Additional context"
+    description: "Evidence supporting this claim"
+
+  # Reason Codes
+  reason_codes:
+    type: array
+    items:
+      type: string
+      pattern: "^RM_"
+    description: "RM reason codes attached to this claim"
+
+  # 反事实分析 (Pearl do(x))
+  counterfactual:
+    type: object
+    required: ["intervention", "expected_effect", "observables", "timeframe", "falsify_if"]
+    properties:
+      intervention:
+        type: string
+        minLength: 1
+        description: "Intervention in do(X=value) format"
+        examples:
+          - "do(FSD_launch = never)"
+          - "do(price_cut = 0%)"
+          - "do(competitor_Waymo = aggressive_expansion)"
+
+      expected_effect:
+        type: string
+        minLength: 1
+        description: "Expected effect under intervention"
+        examples:
+          - "Robotaxi收入归零，估值回落$200B"
+
+      observables:
+        type: array
+        minItems: 1
+        items:
+          type: string
+        description: "Metrics to track counterfactual effect"
+
+      timeframe:
+        type: string
+        minLength: 1
+        description: "Timeframe for counterfactual effect"
+
+      falsify_if:
+        type: string
+        minLength: 1
+        description: "What would falsify the counterfactual reasoning"
+
+      identifiability:
+        type: string
+        enum: ["IDENTIFIED", "PARTIAL", "UNKNOWN", "NON_IDENTIFIABLE"]
+        default: "UNKNOWN"
+        description: |
+          IDENTIFIED: Causal effect uniquely determined
+          PARTIAL: Bounds can be established
+          UNKNOWN: Not yet assessed
+          NON_IDENTIFIABLE: Cannot determine without experiments
+
+      identifiability_notes:
+        type: string
+        description: "Notes on identifiability limitations"
+
+      assumptions:
+        type: array
+        items:
+          type: string
+        description: "Causal assumptions required"
+        examples:
+          - "No unobserved confounders between FSD and revenue"
+          - "Competitor behavior independent of Tesla's pricing"
+
+    description: "Counterfactual/intervention analysis for this claim"
+
+  # 元数据
+  created_at:
+    type: string
+    format: date-time
+    description: "When claim was created"
+
+  updated_at:
+    type: string
+    format: date-time
+    description: "When claim was last updated"
+
+  author:
+    type: string
+    description: "Who created this claim"
+
+  source_skill:
+    type: string
+    description: "Which RM skill generated this claim"
+
+# 额外验证
+additionalProperties: false
+
+# 示例
+examples:
+  - claim_id: "CLM_TSLA_001"
+    criticality: "CRITICAL"
+    risk_type: "initiative_risk"
+    cause: "FSD技术成熟度达到L4级别"
+    effect: "Robotaxi服务在2026年实现商业化运营"
+    sign: "POS"
+    lag:
+      value: 2
+      unit: "quarters"
+    conditions:
+      - "监管机构批准无人驾驶运营"
+      - "保险解决方案就位"
+    observables:
+      - name: "FSD干预率"
+        definition: "每1万英里人工干预次数"
+        unit: "次/万英里"
+        data_sources: ["Tesla安全报告"]
+        current_value: 15
+        asof: "2026-01-15"
+      - name: "Robotaxi城市数量"
+        definition: "已开通Robotaxi服务的城市"
+        unit: "个"
+        data_sources: ["Tesla官方公告"]
+    timeframe:
+      window: 4
+      unit: "quarters"
+      start_date: "2026-01-01"
+      end_date: "2026-12-31"
+    falsify_if: "如果2026Q4 FSD干预率>5次/万英里或Robotaxi城市数<5，此claim失败"
+    confidence: 0.55
+    evidence_refs:
+      - ref_id: "EV_TSLA_2025Q4_CALL"
+        grade: "A"
+        timestamp: "2026-01-25T18:00:00Z"
+        source_type: "earnings_call"
+        excerpt: "We expect to launch robotaxi in 2-3 cities by end of 2026"
+    reason_codes: []
+    counterfactual:
+      intervention: "do(FSD_maturity = never_reaches_L4)"
+      expected_effect: "Robotaxi收入为零，汽车业务回归传统车企估值"
+      observables: ["Robotaxi收入", "汽车销量"]
+      timeframe: "2026全年"
+      falsify_if: "如果FSD不成熟但Robotaxi仍然成功（人工远程辅助模式）"
+      identifiability: "PARTIAL"
+      identifiability_notes: "FSD与Robotaxi收入的因果关系受竞争对手行为混淆"
+      assumptions:
+        - "竞争对手技术进展不会显著改变市场格局"

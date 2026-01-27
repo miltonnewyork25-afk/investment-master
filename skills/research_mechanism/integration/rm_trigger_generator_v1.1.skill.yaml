@@ -1,0 +1,279 @@
+# RM Trigger Generator Skill v1.1
+# Position: Skill 14
+# Purpose: 生成监控触发器
+
+skill:
+  id: rm_trigger_generator_v1_1
+  version: "1.1"
+  name: "RM Trigger Generator"
+  position: 14
+  purpose: "Generate monitoring triggers for claim verification"
+  depends_on: [9, 11, 12, 13]  # After claim extraction and enrichment
+
+---
+
+# 输入
+input:
+  required:
+    - name: claims
+      type: array
+      description: "Claims with observables and timeframes"
+
+    - name: premortem
+      type: object
+      description: "Premortem with early warning signals"
+
+    - name: policy
+      type: object
+      description: "Policy pack for trigger configuration"
+
+  optional:
+    - name: evidence_registry
+      type: object
+      description: "For data source identification"
+
+---
+
+# 输出
+output:
+  monitoring_triggers:
+    type: array
+    items:
+      $ref: "schemas/rm_trigger_schema.yaml"
+    description: "Complete trigger specifications"
+
+  trigger_claim_mapping:
+    type: object
+    description: "Mapping from trigger_id to claim_id"
+
+  trigger_report:
+    type: object
+    properties:
+      total_triggers:
+        type: integer
+      complete_triggers:
+        type: integer
+      incomplete_triggers:
+        type: integer
+      by_action:
+        type: object
+
+  reason_codes:
+    type: array
+
+---
+
+# 执行步骤
+steps:
+  - step: 1
+    name: "Extract Trigger Candidates"
+    action: |
+      FOR EACH claim IN claims:
+        FOR EACH observable IN claim.observables:
+          Create trigger candidate:
+            - metric: observable.name
+            - linked_claim_id: claim.claim_id
+            - timeframe: claim.timeframe
+            - potential_threshold: derive from falsify_if
+    output: trigger_candidates
+
+  - step: 2
+    name: "Add Premortem Signals"
+    action: |
+      FOR EACH failure_mode IN premortem.failure_modes:
+        FOR EACH signal IN failure_mode.early_warning_signals:
+          Create trigger candidate:
+            - metric: signal
+            - linked_claim_id: failure_mode.linked_claim_ids[0]
+            - type: "early_warning"
+    output: combined_candidates
+
+  - step: 3
+    name: "Identify Data Sources"
+    action: |
+      FOR EACH candidate IN combined_candidates:
+        1. Search evidence_registry for matching sources
+        2. Classify source reliability
+        3. Determine update frequency
+        4. If no source found, mark as manual_review
+    source_types:
+      - SEC_FILING: "10-K, 10-Q, 8-K"
+      - EARNINGS_CALL: "Quarterly earnings transcripts"
+      - COMPANY_REPORT: "Press releases, investor presentations"
+      - INDUSTRY_REPORT: "IDC, Gartner, etc."
+      - GOVERNMENT_DATA: "BLS, Census, FRED"
+      - MARKET_DATA: "Bloomberg, FactSet"
+    output: candidates_with_sources
+
+  - step: 4
+    name: "Define Thresholds"
+    action: |
+      FOR EACH candidate IN candidates_with_sources:
+        1. Parse claim.falsify_if for threshold hints
+        2. If not specified, use category defaults
+        3. Set operator (<, >, <=, >=, ==, !=)
+        4. Set value
+    threshold_defaults:
+      growth_rate: { operator: "<", value: 0, description: "Negative growth" }
+      margin: { operator: "<", value: 0.10, description: "Below 10%" }
+      market_share: { operator: "<", value: 0.05, description: "Below 5%" }
+    output: candidates_with_thresholds
+
+  - step: 5
+    name: "Set Evaluation Windows"
+    action: |
+      FOR EACH candidate IN candidates_with_thresholds:
+        1. Use claim.timeframe as basis
+        2. Determine evaluation_frequency:
+           - quarterly: for financial metrics
+           - monthly: for operational metrics
+           - on_data_release: for event-based
+        3. Set lookback if needed
+    output: candidates_with_windows
+
+  - step: 6
+    name: "Assign Actions"
+    action: |
+      FOR EACH candidate:
+        Based on claim criticality and metric type:
+          CRITICAL claim + falsification:
+            action: "falsify_claim"
+          CRITICAL claim + confirmation:
+            action: "confirm_claim"
+          Early warning signal:
+            action: "collect_more_evidence"
+          Evidence gap:
+            action: "route_to_data_integrity"
+          Ecosystem change:
+            action: "route_to_ecosystem_graph"
+          Ambiguous:
+            action: "manual_review"
+    output: candidates_with_actions
+
+  - step: 7
+    name: "Generate Trigger IDs"
+    action: |
+      FOR EACH candidate:
+        trigger_id = TRG_{TICKER}_{TYPE}_{NNN}
+        Example: TRG_TSLA_FSD_001
+    output: triggers_with_ids
+
+  - step: 8
+    name: "Validate Completeness"
+    action: |
+      FOR EACH trigger:
+        Check required fields:
+          - trigger_id: must exist
+          - linked_claim_id: must exist and be valid
+          - metric: must have name
+          - threshold: must have operator and value
+          - window: must have value and unit
+          - data_sources: must have at least 1
+          - action: must be valid enum value
+        If incomplete, emit reason_code
+    on_incomplete:
+      reason_code: "RM_TRIGGER_INCOMPLETE"
+      action: "WARN"
+
+  - step: 9
+    name: "Deduplicate"
+    action: |
+      1. Group triggers by (metric, threshold, linked_claim_id)
+      2. Merge duplicates
+      3. Keep most specific
+    output: deduplicated_triggers
+
+  - step: 10
+    name: "Set Initial Status"
+    action: |
+      FOR EACH trigger:
+        trigger.status = "active"
+        trigger.created_at = NOW()
+        trigger.history = [{
+          timestamp: NOW(),
+          event: "created"
+        }]
+    output: monitoring_triggers
+
+  - step: 11
+    name: "Generate Mappings and Report"
+    action: |
+      1. Create trigger_claim_mapping
+      2. Count by completeness
+      3. Count by action type
+      4. Generate trigger_report
+    output: trigger_claim_mapping, trigger_report
+
+---
+
+# 触发器类型模板
+trigger_templates:
+  falsification_trigger:
+    purpose: "Detect when claim is falsified"
+    action: "falsify_claim"
+    example:
+      metric: "FSD干预率"
+      threshold: { operator: ">", value: 5 }
+      window: { value: 1, unit: "quarters" }
+
+  confirmation_trigger:
+    purpose: "Detect when claim is confirmed"
+    action: "confirm_claim"
+    example:
+      metric: "Robotaxi城市数"
+      threshold: { operator: ">=", value: 5 }
+      window: { value: 4, unit: "quarters" }
+
+  early_warning_trigger:
+    purpose: "Detect early signs of failure"
+    action: "collect_more_evidence"
+    example:
+      metric: "关键人才流失率"
+      threshold: { operator: ">", value: 0.15 }
+      window: { value: 1, unit: "quarters" }
+
+  data_gap_trigger:
+    purpose: "Flag when data is stale or missing"
+    action: "route_to_data_integrity"
+    example:
+      metric: "数据更新延迟"
+      threshold: { operator: ">", value: 90 }
+      window: { value: 1, unit: "days" }
+
+---
+
+# Action优先级
+action_priorities:
+  falsify_claim: "critical"
+  confirm_claim: "high"
+  update_claim_confidence: "medium"
+  collect_more_evidence: "medium"
+  route_to_data_integrity: "medium"
+  route_to_ecosystem_graph: "medium"
+  route_to_quality_gate_review: "high"
+  manual_review: "low"
+  alert_only: "low"
+
+---
+
+# 验证规则
+validation:
+  minimum_triggers_per_critical_claim: 1
+  require_data_source: true
+  require_threshold: true
+
+---
+
+# 错误处理
+error_handling:
+  incomplete_trigger:
+    reason_code: "RM_TRIGGER_INCOMPLETE"
+    action: "WARN"
+
+  no_data_source:
+    reason_code: "RM_TRIGGER_NO_DATA_SOURCE"
+    action: "WARN, set action to manual_review"
+
+  no_threshold:
+    reason_code: "RM_TRIGGER_THRESHOLD_UNDEFINED"
+    action: "WARN, use category default"

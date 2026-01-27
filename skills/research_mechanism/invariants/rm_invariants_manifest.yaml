@@ -1,0 +1,338 @@
+# Research Mechanism Invariants Manifest v1.1
+# 不变量清单 - 上游定义，QG执行
+# 独立可版本化，避免散落在各skill里
+
+version: "1.1"
+asof: "2026-01-27"
+description: "Research Mechanism Agent跨skill不变量清单，由QG读取并执行"
+
+---
+
+# 不变量执行策略
+execution_strategy:
+  executor: "quality_gate_agent"
+  timing: "after_all_rm_skills_complete"
+  fail_action: "emit_reason_codes_to_qg"
+
+---
+
+# Claim完整性不变量
+claim_invariants:
+  - id: "XCHK-RM-01"
+    name: "CriticalClaimHasFalsifier"
+    description: "Critical claims must include falsify_if and observable+timeframe"
+    severity: "HIGH"
+    rule: |
+      FOR EACH claim IN claims WHERE claim.criticality == "CRITICAL":
+        claim.falsify_if IS NOT NULL AND
+        LENGTH(claim.observables) >= 1 AND
+        claim.timeframe IS NOT NULL
+    on_fail:
+      reason_code: "RM_FALSIFIABILITY_MISSING"
+      action: "DEGRADE"
+      resolution: "Add explicit falsification conditions with observables and timeframe"
+
+  - id: "XCHK-RM-02"
+    name: "AdnerRiskTagged"
+    description: "Critical claims must specify risk_type in Adner taxonomy"
+    severity: "HIGH"
+    rule: |
+      FOR EACH claim IN claims WHERE claim.criticality == "CRITICAL":
+        claim.risk_type IN ["initiative_risk", "co_innovation_risk", "adoption_chain_risk"]
+    on_fail:
+      reason_code: "RM_ECOSYSTEM_RISK_UNMAPPED"
+      action: "DEGRADE"
+      resolution: "Classify claim using Adner risk taxonomy"
+
+  - id: "XCHK-RM-03"
+    name: "CriticalClaimHasCounterfactual"
+    description: "Critical claims must have counterfactual analysis"
+    severity: "HIGH"
+    rule: |
+      FOR EACH claim IN claims WHERE claim.criticality == "CRITICAL":
+        claim.counterfactual IS NOT NULL AND
+        claim.counterfactual.intervention IS NOT NULL AND
+        claim.counterfactual.expected_effect IS NOT NULL
+    on_fail:
+      reason_code: "RM_COUNTERFACTUAL_MISSING"
+      action: "DEGRADE"
+      resolution: "Add do(x) counterfactual analysis"
+
+  - id: "XCHK-RM-04"
+    name: "ClaimHasEvidence"
+    description: "All claims must have at least one evidence reference"
+    severity: "WARN"
+    rule: |
+      FOR EACH claim IN claims:
+        LENGTH(claim.evidence_refs) >= 1
+    on_fail:
+      reason_code: "RM_CLAIM_NO_EVIDENCE"
+      action: "WARN"
+      resolution: "Add evidence references from DI"
+
+  - id: "XCHK-RM-05"
+    name: "CriticalClaimABCoverage"
+    description: "Critical claims must have minimum A/B evidence coverage"
+    severity: "HIGH"
+    rule: |
+      FOR EACH claim IN claims WHERE claim.criticality == "CRITICAL":
+        ab_coverage(claim.evidence_refs) >= policy.critical_claim_min_ab_coverage
+    on_fail:
+      reason_code: "RM_EVIDENCE_GAP_CRITICAL"
+      action: "DEGRADE"
+      resolution: "Collect more A/B grade evidence for critical claims"
+
+---
+
+# Premortem不变量
+premortem_invariants:
+  - id: "XCHK-RM-06"
+    name: "PremortemLinked"
+    description: "All premortem failure modes must link to at least one claim"
+    severity: "HIGH"
+    rule: |
+      FOR EACH mode IN premortem.failure_modes:
+        LENGTH(mode.linked_claim_ids) >= 1
+    on_fail:
+      reason_code: "RM_PREMORTEM_NOT_LINKED_TO_CLAIMS"
+      action: "DEGRADE"
+      resolution: "Link each failure mode to affected claims"
+
+  - id: "XCHK-RM-07"
+    name: "PremortemCategoryComplete"
+    description: "Premortem must cover all 5 required risk categories"
+    severity: "WARN"
+    rule: |
+      FOR EACH category IN ["INITIATIVE", "CO_INNOVATION", "ADOPTION_CHAIN", "SUBSTITUTION", "REGULATION_PLATFORM_RULES"]:
+        EXISTS mode IN premortem.failure_modes WHERE mode.category == category
+    on_fail:
+      reason_code: "RM_PREMORTEM_CATEGORY_MISSING"
+      action: "WARN"
+      resolution: "Add failure modes for missing categories"
+
+  - id: "XCHK-RM-08"
+    name: "PremortemMinimumCount"
+    description: "Premortem must have at least 5 failure modes"
+    severity: "WARN"
+    rule: |
+      LENGTH(premortem.failure_modes) >= 5
+    on_fail:
+      reason_code: "RM_PREMORTEM_SHALLOW"
+      action: "WARN"
+      resolution: "Expand failure mode analysis"
+
+---
+
+# DAG不变量
+dag_invariants:
+  - id: "XCHK-RM-09"
+    name: "DAGIsAcyclic"
+    description: "Mechanism DAG must be acyclic"
+    severity: "HIGH"
+    rule: |
+      is_acyclic(mechanism_dag) == true
+    on_fail:
+      reason_code: "RM_DAG_CYCLE_DETECTED"
+      action: "DEGRADE"
+      resolution: "Break cycles in causal structure"
+
+  - id: "XCHK-RM-10"
+    name: "DAGNotEmpty"
+    description: "Mechanism DAG must have at least one edge"
+    severity: "CRITICAL"
+    rule: |
+      LENGTH(mechanism_dag.edges) >= 1
+    on_fail:
+      reason_code: "RM_DAG_EMPTY"
+      action: "DEGRADE"
+      resolution: "Add causal edges from claims"
+
+  - id: "XCHK-RM-11"
+    name: "DAGClaimsExist"
+    description: "All DAG edges must reference existing claims"
+    severity: "HIGH"
+    rule: |
+      FOR EACH edge IN mechanism_dag.edges:
+        EXISTS claim IN claims WHERE claim.claim_id == edge.claim_id
+    on_fail:
+      reason_code: "RM_DAG_CLAIM_REFERENCE_INVALID"
+      action: "DEGRADE"
+      resolution: "Fix invalid claim references in DAG"
+
+  - id: "XCHK-RM-12"
+    name: "ClaimsInDAG"
+    description: "All claims should appear in mechanism DAG"
+    severity: "WARN"
+    rule: |
+      FOR EACH claim IN claims:
+        EXISTS edge IN mechanism_dag.edges WHERE edge.claim_id == claim.claim_id
+    on_fail:
+      reason_code: "RM_CLAIM_NOT_IN_DAG"
+      action: "WARN"
+      resolution: "Add missing claims to DAG structure"
+
+---
+
+# Confidence不变量
+confidence_invariants:
+  - id: "XCHK-RM-13"
+    name: "ConfidenceCapRespected"
+    description: "RM confidence cannot exceed upstream cap"
+    severity: "HIGH"
+    rule: |
+      thesis_confidence_cap <= MIN(di_confidence_cap, eco_confidence_cap)
+    on_fail:
+      reason_code: "RM_CONFIDENCE_CAP_VIOLATED"
+      action: "auto-cap"
+      resolution: "Auto-cap to upstream minimum"
+
+  - id: "XCHK-RM-14"
+    name: "ClaimConfidenceInRange"
+    description: "All claim confidences must be in valid range"
+    severity: "WARN"
+    rule: |
+      FOR EACH claim IN claims:
+        claim.confidence >= 0 AND claim.confidence <= 1
+    on_fail:
+      reason_code: "RM_CONFIDENCE_INVALID"
+      action: "auto-fix"
+      resolution: "Clamp confidence to [0, 1]"
+
+---
+
+# Trigger不变量
+trigger_invariants:
+  - id: "XCHK-RM-15"
+    name: "TriggerComplete"
+    description: "All monitoring triggers must have threshold, window, and data_sources"
+    severity: "WARN"
+    rule: |
+      FOR EACH trigger IN monitoring_triggers:
+        trigger.threshold IS NOT NULL AND
+        trigger.window IS NOT NULL AND
+        LENGTH(trigger.data_sources) >= 1
+    on_fail:
+      reason_code: "RM_TRIGGER_INCOMPLETE"
+      action: "WARN"
+      resolution: "Complete trigger specification"
+
+  - id: "XCHK-RM-16"
+    name: "TriggerLinkedToClaim"
+    description: "All triggers must be linked to a valid claim"
+    severity: "WARN"
+    rule: |
+      FOR EACH trigger IN monitoring_triggers:
+        EXISTS claim IN claims WHERE claim.claim_id == trigger.linked_claim_id
+    on_fail:
+      reason_code: "RM_TRIGGER_CLAIM_INVALID"
+      action: "WARN"
+      resolution: "Fix invalid claim references in triggers"
+
+---
+
+# Thesis Memo不变量
+memo_invariants:
+  - id: "XCHK-RM-17"
+    name: "KillSwitchDefined"
+    description: "Thesis memo must have a kill switch"
+    severity: "HIGH"
+    rule: |
+      thesis_memo.kill_switch IS NOT NULL AND
+      thesis_memo.kill_switch.condition IS NOT NULL AND
+      thesis_memo.kill_switch.falsify_if IS NOT NULL
+    on_fail:
+      reason_code: "RM_KILL_SWITCH_MISSING"
+      action: "DEGRADE"
+      resolution: "Define kill switch condition"
+
+  - id: "XCHK-RM-18"
+    name: "CoreContradictionDefined"
+    description: "Thesis memo must identify core contradiction"
+    severity: "WARN"
+    rule: |
+      thesis_memo.core_contradiction IS NOT NULL AND
+      LENGTH(thesis_memo.core_contradiction) >= 20
+    on_fail:
+      reason_code: "RM_CORE_CONTRADICTION_MISSING"
+      action: "WARN"
+      resolution: "Identify the fundamental tension"
+
+  - id: "XCHK-RM-19"
+    name: "UncertaintyMatrixMinimum"
+    description: "Uncertainty matrix must have at least 3 entries"
+    severity: "WARN"
+    rule: |
+      LENGTH(thesis_memo.uncertainty_matrix) >= 3
+    on_fail:
+      reason_code: "RM_UNCERTAINTY_MATRIX_SHALLOW"
+      action: "WARN"
+      resolution: "Add more uncertainty dimensions"
+
+  - id: "XCHK-RM-20"
+    name: "MinimumCriticalClaims"
+    description: "Thesis must have at least 3 critical claims"
+    severity: "HIGH"
+    rule: |
+      COUNT(claims WHERE criticality == "CRITICAL") >= 3
+    on_fail:
+      reason_code: "RM_INSUFFICIENT_CRITICAL_CLAIMS"
+      action: "DEGRADE"
+      resolution: "Add more critical claims to support thesis"
+
+---
+
+# Output Mode不变量
+output_invariants:
+  - id: "XCHK-RM-21"
+    name: "DegradeModeNoInvestmentAdvice"
+    description: "In DEGRADE mode, output must not contain investment advice"
+    severity: "CRITICAL"
+    rule: |
+      IF output_mode == "DEGRADE":
+        NOT contains_forbidden_phrases(output, policy.degrade_mode.forbid_phrases_zh) AND
+        NOT contains_forbidden_phrases(output, policy.degrade_mode.forbid_phrases_en) AND
+        NOT contains_sections(output, policy.degrade_mode.forbid_sections)
+    on_fail:
+      reason_code: "RM_FORBIDDEN_PHRASE_DETECTED"
+      action: "DEGRADE"
+      resolution: "Remove forbidden phrases and sections"
+
+---
+
+# 不变量统计输出
+output_schema:
+  invariants_summary:
+    total_checked:
+      type: integer
+      description: "Total invariants checked"
+    passed:
+      type: integer
+      description: "Invariants passed"
+    failed:
+      type: integer
+      description: "Invariants failed"
+    pass_rate:
+      type: number
+      minimum: 0
+      maximum: 1
+      description: "Pass rate (0-1)"
+    failed_invariants:
+      type: array
+      items:
+        invariant_id: string
+        name: string
+        severity: string
+        affected_items: array
+        reason_code: string
+        action: string
+
+---
+
+# QG接口
+qg_interface:
+  export_fields:
+    - invariants_summary
+    - failed_invariants
+    - reason_codes
+  trigger_on_fail:
+    pass_rate_threshold: 0.80  # 低于80%触发DEGRADE

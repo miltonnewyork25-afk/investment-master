@@ -1,0 +1,363 @@
+# RM MonitoringTrigger Schema v1.1
+# 监控触发器规范
+# 定义何时、如何验证hypothesis
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "rm_trigger_schema_v1.1"
+title: "RM MonitoringTrigger Schema v1.1"
+description: "Schema for monitoring triggers that track hypothesis verification"
+
+type: object
+
+required:
+  - "trigger_id"
+  - "linked_claim_id"
+  - "metric"
+  - "threshold"
+  - "window"
+  - "data_sources"
+  - "action"
+
+properties:
+  # 触发器标识
+  trigger_id:
+    type: string
+    minLength: 1
+    pattern: "^TRG_[A-Z0-9_]+$"
+    description: "Unique trigger identifier"
+    examples: ["TRG_TSLA_FSD_001", "TRG_GOOGL_CLOUD_042"]
+
+  # 关联的Claim
+  linked_claim_id:
+    type: string
+    minLength: 1
+    description: "Reference to the claim this trigger monitors"
+
+  # 触发器名称
+  name:
+    type: string
+    description: "Human-readable trigger name"
+    examples: ["FSD干预率监控", "储能毛利率阈值"]
+
+  # 触发器描述
+  description:
+    type: string
+    description: "Detailed description of what this trigger monitors"
+
+  # 指标定义
+  metric:
+    type: object
+    required: ["name"]
+    properties:
+      name:
+        type: string
+        minLength: 1
+        description: "Metric name"
+      definition:
+        type: string
+        description: "Precise definition of the metric"
+      unit:
+        type: string
+        description: "Unit of measurement"
+      aggregation:
+        type: string
+        enum: ["point", "average", "sum", "min", "max", "median"]
+        default: "point"
+        description: "How to aggregate if multiple values"
+      frequency:
+        type: string
+        enum: ["realtime", "daily", "weekly", "monthly", "quarterly", "annually"]
+        description: "How often metric is updated"
+    description: "The metric being monitored"
+
+  # 阈值条件
+  threshold:
+    type: object
+    required: ["operator", "value"]
+    properties:
+      operator:
+        type: string
+        enum: ["<", "<=", ">", ">=", "==", "!=", "between", "outside"]
+        description: "Comparison operator"
+      value:
+        type: ["number", "array"]
+        description: "Threshold value (array for between/outside)"
+      value_upper:
+        type: number
+        description: "Upper bound for range operators"
+      is_relative:
+        type: boolean
+        default: false
+        description: "True if threshold is relative (e.g., % change)"
+      baseline:
+        type: number
+        description: "Baseline for relative thresholds"
+    description: "Threshold that triggers action"
+    examples:
+      - operator: ">"
+        value: 5
+      - operator: "between"
+        value: [10, 20]
+      - operator: "<"
+        value: -10
+        is_relative: true
+        baseline: 100
+
+  # 时间窗口
+  window:
+    type: object
+    required: ["value", "unit"]
+    properties:
+      value:
+        type: number
+        minimum: 0
+        description: "Window duration"
+      unit:
+        type: string
+        enum: ["days", "weeks", "months", "quarters", "years"]
+        description: "Window unit"
+      evaluation_frequency:
+        type: string
+        enum: ["continuous", "daily", "weekly", "monthly", "quarterly", "on_data_release"]
+        default: "on_data_release"
+        description: "How often to evaluate trigger"
+      lookback:
+        type: boolean
+        default: false
+        description: "Whether to look back from current date"
+    description: "Time window for evaluation"
+
+  # 数据源
+  data_sources:
+    type: array
+    minItems: 1
+    items:
+      type: object
+      required: ["source_id", "source_type"]
+      properties:
+        source_id:
+          type: string
+          description: "Unique source identifier"
+        source_type:
+          type: string
+          enum:
+            - "SEC_FILING"
+            - "EARNINGS_CALL"
+            - "COMPANY_REPORT"
+            - "INDUSTRY_REPORT"
+            - "GOVERNMENT_DATA"
+            - "MARKET_DATA"
+            - "SOCIAL_MEDIA"
+            - "SURVEY"
+            - "MANUAL_INPUT"
+          description: "Type of data source"
+        source_name:
+          type: string
+          description: "Human-readable source name"
+        url:
+          type: string
+          format: uri
+          description: "URL if applicable"
+        update_frequency:
+          type: string
+          description: "How often source is updated"
+        reliability:
+          type: string
+          enum: ["A", "B", "C"]
+          description: "Source reliability grade"
+    description: "Data sources for metric"
+
+  # 触发后动作
+  action:
+    type: string
+    enum:
+      - "collect_more_evidence"
+      - "route_to_data_integrity"
+      - "route_to_ecosystem_graph"
+      - "route_to_quality_gate_review"
+      - "update_claim_confidence"
+      - "falsify_claim"
+      - "confirm_claim"
+      - "manual_review"
+      - "alert_only"
+    description: "Action to take when trigger fires"
+
+  # 动作参数
+  action_params:
+    type: object
+    properties:
+      priority:
+        type: string
+        enum: ["low", "medium", "high", "critical"]
+        default: "medium"
+      notification_channels:
+        type: array
+        items:
+          type: string
+      escalation_after_days:
+        type: integer
+      auto_update_confidence:
+        type: boolean
+      confidence_adjustment:
+        type: number
+        minimum: -1
+        maximum: 1
+    description: "Parameters for the action"
+
+  # 触发条件逻辑
+  condition_logic:
+    type: string
+    enum: ["simple", "compound"]
+    default: "simple"
+    description: "Simple = single threshold, Compound = multiple conditions"
+
+  # 复合条件（当condition_logic=compound时）
+  compound_conditions:
+    type: object
+    properties:
+      operator:
+        type: string
+        enum: ["AND", "OR"]
+      conditions:
+        type: array
+        items:
+          type: object
+          properties:
+            metric_name:
+              type: string
+            operator:
+              type: string
+            value:
+              type: number
+    description: "Multiple conditions for compound triggers"
+
+  # 状态
+  status:
+    type: string
+    enum: ["active", "paused", "fired", "expired", "disabled"]
+    default: "active"
+    description: "Current trigger status"
+
+  # 历史
+  history:
+    type: array
+    items:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        event:
+          type: string
+          enum: ["created", "activated", "fired", "reset", "paused", "expired"]
+        observed_value:
+          type: number
+        action_taken:
+          type: string
+        notes:
+          type: string
+    description: "Trigger event history"
+
+  # 最近评估
+  last_evaluation:
+    type: object
+    properties:
+      timestamp:
+        type: string
+        format: date-time
+      observed_value:
+        type: number
+      threshold_met:
+        type: boolean
+      distance_to_threshold:
+        type: number
+        description: "How far from threshold (for early warning)"
+    description: "Most recent evaluation result"
+
+  # 元数据
+  created_at:
+    type: string
+    format: date-time
+
+  updated_at:
+    type: string
+    format: date-time
+
+  created_by:
+    type: string
+    description: "Who/what created this trigger"
+
+  notes:
+    type: string
+    description: "Additional notes"
+
+  reason_codes:
+    type: array
+    items:
+      type: string
+      pattern: "^RM_"
+    description: "Reason codes if trigger has issues"
+
+additionalProperties: false
+
+# 示例
+examples:
+  - trigger_id: "TRG_TSLA_FSD_001"
+    linked_claim_id: "CLM_TSLA_001"
+    name: "FSD干预率监控"
+    description: "监控FSD干预率是否达到Robotaxi商业化要求"
+    metric:
+      name: "FSD干预率"
+      definition: "每1万英里人工干预次数"
+      unit: "次/万英里"
+      frequency: "quarterly"
+    threshold:
+      operator: "<="
+      value: 5
+    window:
+      value: 1
+      unit: "quarters"
+      evaluation_frequency: "quarterly"
+    data_sources:
+      - source_id: "TESLA_SAFETY_REPORT"
+        source_type: "COMPANY_REPORT"
+        source_name: "Tesla Vehicle Safety Report"
+        update_frequency: "quarterly"
+        reliability: "A"
+    action: "update_claim_confidence"
+    action_params:
+      priority: "high"
+      auto_update_confidence: true
+      confidence_adjustment: 0.15
+    status: "active"
+    last_evaluation:
+      timestamp: "2026-01-15T00:00:00Z"
+      observed_value: 15
+      threshold_met: false
+      distance_to_threshold: 10
+
+  - trigger_id: "TRG_TSLA_ENERGY_001"
+    linked_claim_id: "CLM_TSLA_015"
+    name: "储能毛利率阈值"
+    description: "监控储能业务毛利率是否持续改善"
+    metric:
+      name: "储能业务毛利率"
+      definition: "储能收入减去成本除以收入"
+      unit: "%"
+      frequency: "quarterly"
+    threshold:
+      operator: ">="
+      value: 25
+    window:
+      value: 2
+      unit: "quarters"
+      evaluation_frequency: "quarterly"
+    data_sources:
+      - source_id: "TSLA_10Q"
+        source_type: "SEC_FILING"
+        source_name: "Tesla 10-Q Filing"
+        reliability: "A"
+    action: "confirm_claim"
+    action_params:
+      priority: "medium"
+    status: "active"

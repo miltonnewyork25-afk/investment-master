@@ -1,0 +1,437 @@
+# Reason Code Dictionary - Research Mechanism (RM) Namespace
+# v1.1.0 - 可路由回退
+# RM reason codes are machine-routable. Supervisor/QG uses them for fallback & degrade.
+# RM does not BLOCK directly; it flags FORCE_DEGRADE or FAIL-RECOMMEND based on deterministic rules.
+
+namespace: "RM"
+version: "rm-reason-codes-1.1.0"
+asof: "2026-01-27"
+description: "Research Mechanism Agent reason codes for QG routing"
+
+---
+
+# 严重级别定义
+severity_levels:
+  P0:
+    description: "Critical - may cause FAIL or immediate DEGRADE"
+    action: "FAIL or FORCE_DEGRADE"
+  P1:
+    description: "High - triggers DEGRADE"
+    action: "DEGRADE"
+  P2:
+    description: "Medium - warning, may affect confidence"
+    action: "WARN"
+  P3:
+    description: "Low - informational"
+    action: "LOG"
+
+---
+
+# Policy/Governance相关
+policy_codes:
+  RM_POLICY_LOAD_FAILED:
+    severity: "P0"
+    category: "GOVERNANCE"
+    meaning: "rm_policy_pack cannot be loaded or validated."
+    recommended_action: "abort_rm; route_to_supervisor"
+    qg_hint: "FAIL"
+    resolution: "Check policy file path and schema validity"
+
+  RM_POLICY_HASH_MISMATCH:
+    severity: "P0"
+    category: "GOVERNANCE"
+    meaning: "Policy hash changed within same run_id (non-replayable)."
+    recommended_action: "abort_run; investigate policy hot-reload"
+    qg_hint: "FAIL"
+    resolution: "Ensure policy is frozen at run start"
+
+  RM_POLICY_VERSION_INCOMPATIBLE:
+    severity: "P0"
+    category: "GOVERNANCE"
+    meaning: "Policy version incompatible with QG/Eval versions."
+    recommended_action: "upgrade policy or downstream agents"
+    qg_hint: "FAIL"
+    resolution: "Check compatibility matrix"
+
+---
+
+# DAG/Structure相关
+dag_codes:
+  RM_DAG_EMPTY:
+    severity: "P0"
+    category: "CONTENT"
+    meaning: "MechanismDAG has no causal claims."
+    recommended_action: "route_to_ecosystem_graph_to_expand_edges; then rerun_rm"
+    qg_hint: "DEGRADE"
+    resolution: "Ensure upstream ECO provides sufficient edges"
+
+  RM_DAG_CYCLE_DETECTED:
+    severity: "P1"
+    category: "STRUCTURE"
+    meaning: "Causal DAG contains cycles (violates DAG property)."
+    recommended_action: "identify and break cycle; revalidate claims"
+    qg_hint: "DEGRADE"
+    resolution: "Review cause-effect relationships for circular logic"
+
+  RM_DAG_DISCONNECTED:
+    severity: "P2"
+    category: "STRUCTURE"
+    meaning: "DAG has disconnected components."
+    recommended_action: "review if components should be linked"
+    qg_hint: "WARN"
+    resolution: "Add bridging claims or document independence"
+
+  RM_CLAIM_NOT_IN_DAG:
+    severity: "P2"
+    category: "STRUCTURE"
+    meaning: "Claim exists but not represented in mechanism DAG."
+    recommended_action: "add claim to DAG or mark as supplementary"
+    qg_hint: "WARN"
+    resolution: "Ensure all claims have causal structure"
+
+---
+
+# Invariant相关
+invariant_codes:
+  RM_INVARIANT_FAIL:
+    severity: "P0"
+    category: "GOVERNANCE"
+    meaning: "One or more invariants failed (upstream or RM)."
+    recommended_action: "apply invariant_source_fix; rerun_once"
+    qg_hint: "DEGRADE"
+    resolution: "Check failed invariant details and fix source"
+
+  RM_INVARIANT_UPSTREAM_FAIL:
+    severity: "P0"
+    category: "GOVERNANCE"
+    meaning: "Upstream invariant (DI/ECO) failed, propagated to RM."
+    recommended_action: "route to upstream agent for fix"
+    qg_hint: "DEGRADE"
+    resolution: "Fix upstream data quality issues first"
+
+---
+
+# Adner Risk相关
+risk_codes:
+  RM_ECOSYSTEM_RISK_UNMAPPED:
+    severity: "P1"
+    category: "RISK_MODEL"
+    meaning: "Critical claim missing Adner risk tag and verification plan."
+    recommended_action: "force_adner_risk_mapping; regenerate triggers"
+    qg_hint: "DEGRADE"
+    resolution: "Classify claim as initiative/co_innovation/adoption_chain risk"
+    references:
+      - "Ron Adner - The Wide Lens: initiative/co-innovation/adoption chain risk taxonomy"
+
+  RM_INITIATIVE_RISK_HIGH:
+    severity: "P2"
+    category: "RISK_MODEL"
+    meaning: "High internal execution risk identified."
+    recommended_action: "add execution monitoring triggers"
+    qg_hint: "WARN"
+    resolution: "Document execution milestones and fallback plans"
+
+  RM_COINNOVATION_RISK_HIGH:
+    severity: "P2"
+    category: "RISK_MODEL"
+    meaning: "High dependency on external complementary innovations."
+    recommended_action: "map dependencies; add complementor monitoring"
+    qg_hint: "WARN"
+    resolution: "Track complementor progress and alternatives"
+
+  RM_ADOPTION_CHAIN_RISK_HIGH:
+    severity: "P2"
+    category: "RISK_MODEL"
+    meaning: "High dependency on intermediary adoption."
+    recommended_action: "map adoption chain; add channel monitoring"
+    qg_hint: "WARN"
+    resolution: "Track channel partner progress"
+
+---
+
+# Falsifiability相关
+falsifiability_codes:
+  RM_FALSIFIABILITY_MISSING:
+    severity: "P0"
+    category: "FALSIFIABILITY"
+    meaning: "Critical claim lacks falsify_if or observable+timeframe."
+    recommended_action: "force_degrade; add uncertainty_matrix rows"
+    qg_hint: "DEGRADE"
+    resolution: "Add explicit falsification conditions"
+
+  RM_CLAIM_MISSING_OBSERVABLE:
+    severity: "P1"
+    category: "FALSIFIABILITY"
+    meaning: "Claim lacks measurable observable KPI(s)."
+    recommended_action: "request_data_or_define_proxy_observables"
+    qg_hint: "DEGRADE"
+    resolution: "Define quantifiable metrics for verification"
+
+  RM_CLAIM_MISSING_TIMEFRAME:
+    severity: "P1"
+    category: "FALSIFIABILITY"
+    meaning: "Claim lacks explicit verification timeframe."
+    recommended_action: "add timeframe or mark as long-term hypothesis"
+    qg_hint: "DEGRADE"
+    resolution: "Specify when claim can be verified"
+
+  RM_CLAIM_UNFALSIFIABLE:
+    severity: "P1"
+    category: "FALSIFIABILITY"
+    meaning: "Claim is constructed in unfalsifiable manner."
+    recommended_action: "rewrite claim with falsifiable conditions"
+    qg_hint: "DEGRADE"
+    resolution: "Ensure claim can be proven wrong"
+
+---
+
+# Counterfactual相关
+counterfactual_codes:
+  RM_COUNTERFACTUAL_MISSING:
+    severity: "P1"
+    category: "CAUSALITY"
+    meaning: "Critical claim missing counterfactual analysis."
+    recommended_action: "generate do(x) counterfactual"
+    qg_hint: "DEGRADE"
+    resolution: "Add intervention analysis"
+
+  RM_COUNTERFACTUAL_TIMEFRAME_MISSING:
+    severity: "P1"
+    category: "FALSIFIABILITY"
+    meaning: "Counterfactual missing explicit timeframe/window."
+    recommended_action: "force_timebox; else keep in uncertainty_matrix"
+    qg_hint: "DEGRADE"
+    resolution: "Specify counterfactual verification window"
+
+  RM_CAUSAL_QUERY_NON_IDENTIFIABLE:
+    severity: "P1"
+    category: "CAUSALITY"
+    meaning: "Intervention/counterfactual cannot be identified with available assumptions/data; must be stated explicitly."
+    recommended_action: "mark_identifiability_unknown; add assumption+verification plan; avoid strong language"
+    qg_hint: "DEGRADE"
+    resolution: "Document identifiability limitations explicitly"
+    references:
+      - "Judea Pearl - do(x) operator defines interventions/counterfactuals under causal model assumptions"
+
+  RM_COUNTERFACTUAL_INCOMPLETE:
+    severity: "P2"
+    category: "CAUSALITY"
+    meaning: "Counterfactual missing some required fields."
+    recommended_action: "complete counterfactual specification"
+    qg_hint: "WARN"
+    resolution: "Add missing fields (intervention, expected_effect, observables)"
+
+---
+
+# Premortem相关
+premortem_codes:
+  RM_PREMORTEM_MISSING:
+    severity: "P1"
+    category: "RED_TEAM"
+    meaning: "Thesis memo missing premortem analysis."
+    recommended_action: "generate premortem with 5 categories"
+    qg_hint: "DEGRADE"
+    resolution: "Add failure mode analysis"
+
+  RM_PREMORTEM_NOT_LINKED_TO_CLAIMS:
+    severity: "P1"
+    category: "RED_TEAM"
+    meaning: "Premortem failure modes are not mapped to specific claim_id(s)."
+    recommended_action: "rebuild premortem with claim links; generate disconfirmers"
+    qg_hint: "DEGRADE"
+    resolution: "Link each failure mode to affected claims"
+    references:
+      - "Gary Klein - Performing a Project Premortem (HBR 2007)"
+
+  RM_PREMORTEM_CATEGORY_MISSING:
+    severity: "P2"
+    category: "RED_TEAM"
+    meaning: "Premortem missing required risk category."
+    recommended_action: "add failure modes for missing category"
+    qg_hint: "WARN"
+    resolution: "Cover all 5 risk categories"
+
+  RM_PREMORTEM_SHALLOW:
+    severity: "P2"
+    category: "RED_TEAM"
+    meaning: "Premortem lacks depth (< 5 failure modes)."
+    recommended_action: "expand failure mode analysis"
+    qg_hint: "WARN"
+    resolution: "Add more specific failure scenarios"
+
+---
+
+# Evidence相关
+evidence_codes:
+  RM_EVIDENCE_GAP_CRITICAL:
+    severity: "P0"
+    category: "EVIDENCE"
+    meaning: "A/B evidence coverage on critical claims below policy threshold."
+    recommended_action: "route_to_data_integrity_or_research_fetch; rerun_rm"
+    qg_hint: "DEGRADE"
+    resolution: "Collect more A/B grade evidence for critical claims"
+
+  RM_EVIDENCE_GAP_IMPORTANT:
+    severity: "P2"
+    category: "EVIDENCE"
+    meaning: "A/B evidence coverage on important claims below threshold."
+    recommended_action: "flag for data collection"
+    qg_hint: "WARN"
+    resolution: "Prioritize evidence collection"
+
+  RM_EVIDENCE_STALE:
+    severity: "P2"
+    category: "EVIDENCE"
+    meaning: "Evidence references are outdated."
+    recommended_action: "refresh evidence or mark staleness"
+    qg_hint: "WARN"
+    resolution: "Update with recent data"
+
+  RM_EVIDENCE_CONFLICTING:
+    severity: "P1"
+    category: "EVIDENCE"
+    meaning: "Evidence sources conflict on claim."
+    recommended_action: "arbitrate or mark uncertainty"
+    qg_hint: "DEGRADE"
+    resolution: "Document conflict and resolution approach"
+
+---
+
+# Trigger相关
+trigger_codes:
+  RM_TRIGGER_INCOMPLETE:
+    severity: "P2"
+    category: "OPS"
+    meaning: "Monitoring trigger missing threshold/window/source."
+    recommended_action: "complete trigger spec; else keep in uncertainty_matrix"
+    qg_hint: "WARN"
+    resolution: "Add missing trigger specifications"
+
+  RM_TRIGGER_NO_DATA_SOURCE:
+    severity: "P2"
+    category: "OPS"
+    meaning: "Trigger has no accessible data source."
+    recommended_action: "identify data source or mark as manual review"
+    qg_hint: "WARN"
+    resolution: "Define data source or manual check process"
+
+  RM_TRIGGER_THRESHOLD_UNDEFINED:
+    severity: "P2"
+    category: "OPS"
+    meaning: "Trigger lacks quantitative threshold."
+    recommended_action: "define threshold or mark as qualitative"
+    qg_hint: "WARN"
+    resolution: "Set specific trigger thresholds"
+
+---
+
+# Confidence相关
+confidence_codes:
+  RM_CONFIDENCE_LOW:
+    severity: "P2"
+    category: "CONFIDENCE"
+    meaning: "Overall thesis confidence below threshold."
+    recommended_action: "collect more evidence or acknowledge uncertainty"
+    qg_hint: "WARN"
+    resolution: "Improve evidence coverage"
+
+  RM_CONFIDENCE_CAP_VIOLATED:
+    severity: "P1"
+    category: "CONFIDENCE"
+    meaning: "RM confidence exceeds upstream cap."
+    recommended_action: "auto-cap to upstream minimum"
+    qg_hint: "DEGRADE"
+    resolution: "Respect upstream confidence limits"
+
+  RM_CONFIDENCE_LANGUAGE_MISMATCH:
+    severity: "P2"
+    category: "OUTPUT"
+    meaning: "Language strength doesn't match confidence level."
+    recommended_action: "adjust language to match confidence"
+    qg_hint: "WARN"
+    resolution: "Use appropriate hedging language"
+
+---
+
+# Output相关
+output_codes:
+  RM_DEGRADE_MODE_ENFORCED:
+    severity: "P2"
+    category: "OUTPUT"
+    meaning: "RM is emitting DEGRADE output mode (no strong conclusions)."
+    recommended_action: "none"
+    qg_hint: "DEGRADE"
+    resolution: "Address underlying issues to exit DEGRADE mode"
+
+  RM_FORBIDDEN_PHRASE_DETECTED:
+    severity: "P1"
+    category: "OUTPUT"
+    meaning: "Output contains forbidden investment advice phrase."
+    recommended_action: "remove forbidden phrase; rephrase"
+    qg_hint: "DEGRADE"
+    resolution: "Rewrite without investment recommendations"
+
+  RM_THESIS_INCOMPLETE:
+    severity: "P1"
+    category: "OUTPUT"
+    meaning: "Thesis memo missing required sections."
+    recommended_action: "complete missing sections"
+    qg_hint: "DEGRADE"
+    resolution: "Add all required thesis components"
+
+  RM_UNCERTAINTY_MATRIX_SHALLOW:
+    severity: "P2"
+    category: "OUTPUT"
+    meaning: "Uncertainty matrix has fewer than minimum rows."
+    recommended_action: "expand uncertainty analysis"
+    qg_hint: "WARN"
+    resolution: "Add more uncertainty dimensions"
+
+---
+
+# 路由矩阵摘要
+routing_summary:
+  FAIL_triggers:
+    - "RM_POLICY_LOAD_FAILED"
+    - "RM_POLICY_HASH_MISMATCH"
+    - "RM_POLICY_VERSION_INCOMPATIBLE"
+
+  DEGRADE_triggers:
+    - "RM_DAG_EMPTY"
+    - "RM_DAG_CYCLE_DETECTED"
+    - "RM_INVARIANT_FAIL"
+    - "RM_INVARIANT_UPSTREAM_FAIL"
+    - "RM_ECOSYSTEM_RISK_UNMAPPED"
+    - "RM_FALSIFIABILITY_MISSING"
+    - "RM_CLAIM_MISSING_OBSERVABLE"
+    - "RM_CLAIM_MISSING_TIMEFRAME"
+    - "RM_CLAIM_UNFALSIFIABLE"
+    - "RM_COUNTERFACTUAL_MISSING"
+    - "RM_COUNTERFACTUAL_TIMEFRAME_MISSING"
+    - "RM_CAUSAL_QUERY_NON_IDENTIFIABLE"
+    - "RM_PREMORTEM_MISSING"
+    - "RM_PREMORTEM_NOT_LINKED_TO_CLAIMS"
+    - "RM_EVIDENCE_GAP_CRITICAL"
+    - "RM_EVIDENCE_CONFLICTING"
+    - "RM_CONFIDENCE_CAP_VIOLATED"
+    - "RM_DEGRADE_MODE_ENFORCED"
+    - "RM_FORBIDDEN_PHRASE_DETECTED"
+    - "RM_THESIS_INCOMPLETE"
+
+  WARN_triggers:
+    - "RM_DAG_DISCONNECTED"
+    - "RM_CLAIM_NOT_IN_DAG"
+    - "RM_INITIATIVE_RISK_HIGH"
+    - "RM_COINNOVATION_RISK_HIGH"
+    - "RM_ADOPTION_CHAIN_RISK_HIGH"
+    - "RM_COUNTERFACTUAL_INCOMPLETE"
+    - "RM_PREMORTEM_CATEGORY_MISSING"
+    - "RM_PREMORTEM_SHALLOW"
+    - "RM_EVIDENCE_GAP_IMPORTANT"
+    - "RM_EVIDENCE_STALE"
+    - "RM_TRIGGER_INCOMPLETE"
+    - "RM_TRIGGER_NO_DATA_SOURCE"
+    - "RM_TRIGGER_THRESHOLD_UNDEFINED"
+    - "RM_CONFIDENCE_LOW"
+    - "RM_CONFIDENCE_LANGUAGE_MISMATCH"
+    - "RM_UNCERTAINTY_MATRIX_SHALLOW"

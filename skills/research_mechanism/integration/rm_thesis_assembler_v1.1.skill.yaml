@@ -1,0 +1,310 @@
+# RM Thesis Assembler Skill v1.1
+# Position: Skill 15
+# Purpose: 组装ThesisMemo
+
+skill:
+  id: rm_thesis_assembler_v1_1
+  version: "1.1"
+  name: "RM Thesis Assembler"
+  position: 15
+  purpose: "Assemble complete ThesisMemo from all components"
+  depends_on: [9, 10, 11, 12, 13, 14]  # All upstream integration skills
+
+---
+
+# 输入
+input:
+  required:
+    - name: entity
+      type: object
+      description: "{ticker, company_name, sector?, industry?}"
+
+    - name: claims
+      type: array
+      description: "Enriched claims with risk_type, counterfactual"
+
+    - name: mechanism_dag
+      type: object
+      description: "Complete mechanism DAG"
+
+    - name: premortem
+      type: object
+      description: "Premortem with linked failure modes"
+
+    - name: monitoring_triggers
+      type: array
+      description: "Generated triggers"
+
+    - name: policy
+      type: object
+      description: "Policy pack"
+
+  from_upstream:
+    - di_confidence_cap: "DI confidence cap"
+    - eco_confidence_cap: "ECO confidence cap"
+    - evidence_registry: "Evidence registry"
+
+---
+
+# 输出
+output:
+  thesis_memo:
+    $ref: "schemas/rm_thesis_memo_schema.yaml"
+    description: "Complete thesis memo"
+
+  uncertainty_matrix:
+    type: array
+    description: "Extracted uncertainty matrix"
+
+  invariants_results:
+    type: object
+    description: "Results of all invariant checks"
+
+  reason_codes:
+    type: array
+
+---
+
+# 执行步骤
+steps:
+  - step: 1
+    name: "Generate Memo ID"
+    action: |
+      memo_id = UUID()
+    output: memo_id
+
+  - step: 2
+    name: "Compile Entity Info"
+    action: |
+      entity = {
+        ticker: input.entity.ticker,
+        company_name: input.entity.company_name,
+        cik: input.entity.cik,
+        sector: input.entity.sector,
+        industry: input.entity.industry
+      }
+    output: entity_info
+
+  - step: 3
+    name: "Generate Thesis Statement"
+    action: |
+      1. Analyze critical claims
+      2. Identify central thesis
+      3. Formulate 50+ character statement
+      4. Include key contingencies
+    guidelines:
+      - "State the core investment thesis"
+      - "Include key dependencies"
+      - "Note primary uncertainty"
+    output: thesis_statement
+
+  - step: 4
+    name: "Identify Core Contradiction"
+    action: |
+      1. Analyze tension in claims
+      2. Identify fundamental trade-off
+      3. Formulate in "X vs Y" format
+      4. Ensure 20+ characters
+    patterns:
+      - "{growth_driver} vs {profitability_pressure}"
+      - "{long_term_investment} vs {short_term_expectations}"
+      - "{market_expansion} vs {competitive_pressure}"
+    output: core_contradiction
+
+  - step: 5
+    name: "Define Kill Switch"
+    action: |
+      1. Find most critical falsification condition
+      2. Set condition description
+      3. Set specific falsify_if
+      4. Set timeframe
+      5. Link to relevant claims
+    output: kill_switch
+
+  - step: 6
+    name: "Identify Cognitive Traps"
+    action: |
+      1. Analyze company/sector for common biases
+      2. Generate 3-5 specific traps
+      3. Include mitigation strategies
+    common_traps:
+      - "Narrative seduction"
+      - "CEO anchoring"
+      - "Recency bias"
+      - "Survivor bias"
+      - "Confirmation bias"
+    output: cognitive_traps
+
+  - step: 7
+    name: "Compile Claims Summary"
+    action: |
+      claims_summary = {
+        total_count: claims.length,
+        critical_count: count where criticality == "CRITICAL",
+        important_count: count where criticality == "IMPORTANT",
+        optional_count: count where criticality == "OPTIONAL",
+        avg_confidence: mean(claims.confidence),
+        min_confidence: min(claims.confidence),
+        critical_ab_coverage: calculate from evidence_refs,
+        risk_type_distribution: {
+          initiative_risk: count,
+          co_innovation_risk: count,
+          adoption_chain_risk: count
+        }
+      }
+    output: claims_summary
+
+  - step: 8
+    name: "Build Uncertainty Matrix"
+    action: |
+      1. Extract from claims with low confidence
+      2. Add from premortem uncertainties
+      3. Ensure minimum 3 entries
+      4. Include verification methods
+    fields_per_entry:
+      - hypothesis
+      - how_to_verify
+      - data_sources
+      - current_confidence
+      - update_trigger
+      - linked_claim_ids
+      - priority
+    output: uncertainty_matrix
+
+  - step: 9
+    name: "Calculate Confidence Cap"
+    action: |
+      1. Get upstream caps (DI, ECO)
+      2. Calculate RM internal confidence:
+         - evidence_coverage: 0.40 weight
+         - falsifiability: 0.35 weight
+         - invariant_pass_rate: 0.15 weight
+         - trigger_completeness: 0.10 weight
+      3. Apply cap rule: min(all caps)
+    output: confidence_cap, confidence_breakdown
+
+  - step: 10
+    name: "Run Invariant Checks"
+    action: |
+      Load invariants from rm_invariants_manifest.yaml
+      FOR EACH invariant:
+        1. Execute check
+        2. Record PASS/FAIL
+        3. Collect reason_codes
+        4. Record affected items
+      Calculate pass_rate
+    output: invariants_results
+
+  - step: 11
+    name: "Determine Output Mode"
+    action: |
+      Check DEGRADE conditions:
+        - confidence_cap < 0.60
+        - critical_claim_ab_coverage < 0.40
+        - invariants pass_rate < 0.80
+        - premortem linking_rate < 0.80
+      IF any condition true:
+        output_mode = "DEGRADE"
+      ELSE:
+        output_mode = "FULL"
+    on_degrade:
+      reason_code: "RM_DEGRADE_MODE_ENFORCED"
+    output: output_mode
+
+  - step: 12
+    name: "Check Forbidden Content"
+    action: |
+      IF output_mode == "DEGRADE":
+        Scan all text for:
+          - policy.degrade_mode.forbid_phrases_zh
+          - policy.degrade_mode.forbid_phrases_en
+          - policy.degrade_mode.forbid_sections
+        IF found:
+          emit reason_code
+          remove or rewrite
+    on_found:
+      reason_code: "RM_FORBIDDEN_PHRASE_DETECTED"
+    output: sanitized_content
+
+  - step: 13
+    name: "Generate Data Priorities"
+    action: |
+      1. Identify evidence gaps
+      2. Rank by impact on confidence
+      3. List next data collection priorities
+    output: next_data_priorities
+
+  - step: 14
+    name: "Prepare QG Interface"
+    action: |
+      qg_interface = {
+        confidence_cap: confidence_cap,
+        invariants_results: invariants_results,
+        critical_claims_status: extract from claims,
+        premortem_coverage: extract from premortem,
+        reason_codes: all accumulated codes
+      }
+    output: qg_interface
+
+  - step: 15
+    name: "Assemble Thesis Memo"
+    action: |
+      thesis_memo = {
+        memo_id,
+        entity,
+        metadata: { created_at, policy_pack_version, run_id, ... },
+        thesis_statement,
+        core_contradiction,
+        kill_switch,
+        cognitive_traps,
+        core_claims: claims,
+        claims_summary,
+        premortem,
+        uncertainty_matrix,
+        monitoring_triggers,
+        mechanism_dag,
+        confidence_cap,
+        confidence_breakdown,
+        invariants_results,
+        reason_codes,
+        output_mode,
+        next_data_priorities,
+        qg_interface
+      }
+    output: thesis_memo
+
+---
+
+# 质量检查
+quality_checks:
+  - name: "MinimumCriticalClaims"
+    check: "claims_summary.critical_count >= 3"
+    on_fail: "RM_INSUFFICIENT_CRITICAL_CLAIMS"
+
+  - name: "KillSwitchDefined"
+    check: "kill_switch.condition IS NOT NULL"
+    on_fail: "RM_KILL_SWITCH_MISSING"
+
+  - name: "UncertaintyMatrixMinimum"
+    check: "uncertainty_matrix.length >= 3"
+    on_fail: "RM_UNCERTAINTY_MATRIX_SHALLOW"
+
+  - name: "CoreContradictionDefined"
+    check: "core_contradiction.length >= 20"
+    on_fail: "RM_CORE_CONTRADICTION_MISSING"
+
+---
+
+# 错误处理
+error_handling:
+  degrade_mode:
+    reason_code: "RM_DEGRADE_MODE_ENFORCED"
+    action: "Output DEGRADE mode memo"
+
+  forbidden_content:
+    reason_code: "RM_FORBIDDEN_PHRASE_DETECTED"
+    action: "Remove and DEGRADE"
+
+  incomplete_memo:
+    reason_code: "RM_THESIS_INCOMPLETE"
+    action: "DEGRADE"

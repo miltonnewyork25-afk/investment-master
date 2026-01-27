@@ -1,0 +1,459 @@
+# Research Mechanism Agent - Policy Pack v1.1
+# 运行时由Supervisor或PolicyLoader计算hash并冻结；同run_id内不可变
+# 整合Adner生态风险框架 + Pearl因果推断 + Klein预验尸
+
+policy_pack:
+  name: rm_policy_pack
+  version: "rm-1.1.0"
+  hash: "sha256:__COMPUTED_AT_RUNTIME__"
+  created_at: "2026-01-27"
+  compatibility:
+    qg_min_version: "qg-2.1.0"
+    eval_min_version: "eval-1.2.0"
+    di_min_version: "di-2.2.0"
+    eco_min_version: "eco-2.4.0"
+
+---
+
+# RM目标定义
+rm_objectives:
+  primary: "Compile structure → mechanism → falsifiable hypotheses/triggers (no investment advice)."
+  secondary:
+    - "Force Adner ecosystem risk mapping for critical claims."
+    - "Force counterfactual + disconfirmers for every critical claim."
+    - "Provide QG-machine-checkable artifacts (schemas + reason_codes)."
+  non_goals:
+    - "Generate target prices or buy/sell recommendations."
+    - "Provide position sizing or portfolio allocation."
+    - "Make definitive predictions without uncertainty quantification."
+
+---
+
+# Adner生态风险分类法
+# Reference: Ron Adner - The Wide Lens
+risk_taxonomy_adner:
+  initiative_risk:
+    description: "Internal execution risk (build/spec/time/cost)."
+    indicators:
+      - "Project delays vs. announced timeline"
+      - "Cost overruns vs. budget"
+      - "Technical milestones missed"
+      - "Key personnel turnover"
+    evidence_sources: ["earnings_calls", "SEC_filings", "project_announcements"]
+
+  co_innovation_risk:
+    description: "Depends on complementary innovations outside firm reaching required maturity."
+    indicators:
+      - "Dependency technology readiness level (TRL)"
+      - "Complementor financial health"
+      - "API/standard adoption rate"
+      - "Joint development milestone progress"
+    evidence_sources: ["partner_filings", "industry_reports", "technical_publications"]
+
+  adoption_chain_risk:
+    description: "Depends on intermediaries/partners adopting before end-customer value realized."
+    indicators:
+      - "Channel partner sign-up rate"
+      - "Intermediary certification progress"
+      - "Ecosystem participant growth"
+      - "End-user awareness/intent metrics"
+    evidence_sources: ["channel_data", "surveys", "app_store_metrics", "web_traffic"]
+
+---
+
+# Claim规则
+claim_policy:
+  criticality:
+    levels: ["CRITICAL", "IMPORTANT", "OPTIONAL"]
+    default: "IMPORTANT"
+    definitions:
+      CRITICAL: "Claim that if false, invalidates the entire investment thesis"
+      IMPORTANT: "Claim that materially affects valuation but doesn't invalidate thesis"
+      OPTIONAL: "Supporting claim that strengthens thesis but not essential"
+
+  required_fields:
+    # 缺少任何字段 → reason_code + degrade
+    - "cause"
+    - "effect"
+    - "sign"
+    - "observables"
+    - "timeframe"
+    - "falsify_if"
+    - "risk_type"
+
+  sign_enum: ["POS", "NEG", "NON_MONOTONIC", "UNKNOWN"]
+  sign_definitions:
+    POS: "Cause increases → Effect increases"
+    NEG: "Cause increases → Effect decreases"
+    NON_MONOTONIC: "Relationship is non-linear or context-dependent"
+    UNKNOWN: "Direction cannot be determined with available evidence"
+
+  lag_policy:
+    allowed_units: ["days", "weeks", "months", "quarters", "years"]
+    default_lag:
+      value: 1
+      unit: "quarters"
+    max_lag:
+      value: 5
+      unit: "years"
+
+  min_claims_per_thesis:
+    CRITICAL: 3
+    IMPORTANT: 5
+    total: 10
+
+---
+
+# 反事实规则 (Pearl do(x) operator)
+counterfactual_policy:
+  require_for_critical_claims: true
+  require_for_important_claims: false
+
+  fields_required:
+    - "intervention"      # do(X=0/1) 形式
+    - "expected_effect"   # 预期效果
+    - "observables"       # 可观测指标
+    - "timeframe"         # 时间窗口
+    - "falsify_if"        # 证伪条件
+
+  identifiability:
+    allow_unknown: true
+    levels: ["IDENTIFIED", "PARTIAL", "UNKNOWN", "NON_IDENTIFIABLE"]
+    definitions:
+      IDENTIFIED: "Causal effect can be uniquely determined from observational data under stated assumptions"
+      PARTIAL: "Bounds on causal effect can be established"
+      UNKNOWN: "Identifiability not yet assessed"
+      NON_IDENTIFIABLE: "Causal effect cannot be determined without additional assumptions or experiments"
+    non_identifiable_reason_code: "RM_CAUSAL_QUERY_NON_IDENTIFIABLE"
+    non_identifiable_action: "Mark explicitly and avoid strong causal language"
+
+  intervention_format:
+    pattern: "do(VARIABLE = VALUE)"
+    examples:
+      - "do(FSD_launch = 2026Q2)"
+      - "do(price_cut = 10%)"
+      - "do(competitor_entry = yes)"
+
+---
+
+# 预验尸规则 (Klein Premortem)
+# Reference: Gary Klein - Performing a Project Premortem (HBR 2007)
+premortem_policy:
+  require: true
+
+  categories_required:
+    - "INITIATIVE"                    # 内部执行风险
+    - "CO_INNOVATION"                 # 共创新风险
+    - "ADOPTION_CHAIN"                # 采用链风险
+    - "SUBSTITUTION"                  # 替代品风险
+    - "REGULATION_PLATFORM_RULES"     # 监管/平台规则风险
+
+  min_failure_modes_per_category: 1
+  min_total_failure_modes: 5
+
+  require_claim_linking: true
+  not_linked_reason_code: "RM_PREMORTEM_NOT_LINKED_TO_CLAIMS"
+
+  failure_mode_fields:
+    required:
+      - "mode_id"
+      - "category"
+      - "description"
+      - "linked_claim_ids"
+      - "probability_estimate"
+    optional:
+      - "disconfirmers"
+      - "early_warning_signals"
+      - "mitigation_actions"
+
+  probability_estimation:
+    method: "subjective_with_calibration"
+    require_confidence_interval: false
+    allow_range: true  # e.g., 0.1-0.3
+
+---
+
+# 证据规则
+evidence_policy:
+  # RM消费上游证据引用，不创造数据
+  source: "upstream_agents"  # DI/ECO
+
+  grades: ["A", "B", "C", "UNSUPPORTED"]
+  grade_definitions:
+    A: "Primary sources: SEC filings, company reports, official announcements"
+    B: "Secondary sources: Industry reports, analyst research, academic studies"
+    C: "Tertiary sources: News articles, social media, anonymous sources"
+    UNSUPPORTED: "No evidence provided"
+
+  grade_weights:
+    A: 1.0
+    B: 0.7
+    C: 0.4
+    UNSUPPORTED: 0.0
+
+  critical_claim_min_ab_coverage: 0.40
+  important_claim_min_ab_coverage: 0.20
+  missing_evidence_reason_code: "RM_EVIDENCE_GAP_CRITICAL"
+
+  staleness_thresholds:
+    A_grade_max_age_days: 180
+    B_grade_max_age_days: 365
+    C_grade_max_age_days: 90
+
+---
+
+# 置信度规则
+confidence_policy:
+  # RM置信度受上游(DI/ECO)置信度上限约束
+  upstream_cap_rule: "rm_confidence_cap = min(upstream_confidence_cap, rm_internal_confidence)"
+
+  rm_internal_components:
+    - name: "evidence_coverage"
+      weight: 0.40
+      description: "A/B级证据覆盖率"
+    - name: "falsifiability"
+      weight: 0.35
+      description: "claims的可证伪程度"
+    - name: "invariant_pass_rate"
+      weight: 0.15
+      description: "不变量通过率"
+    - name: "trigger_completeness"
+      weight: 0.10
+      description: "监控触发器完整度"
+
+  thresholds:
+    high_confidence: 0.80
+    medium_confidence: 0.60
+    low_confidence: 0.40
+    min_confidence_for_strong_language: 0.70
+    degrade_below_confidence: 0.60
+
+  language_constraints:
+    above_0.70: "Can use: 'likely', 'probable', 'strong evidence suggests'"
+    0.50_to_0.70: "Must use: 'may', 'possible', 'some evidence suggests'"
+    below_0.50: "Must use: 'uncertain', 'insufficient evidence', 'speculative'"
+
+---
+
+# DEGRADE模式规则
+degrade_mode:
+  enabled: true
+  enforce_no_investment_conclusions: true
+
+  trigger_conditions:
+    - "confidence_cap < 0.60"
+    - "critical_claim_ab_coverage < 0.40"
+    - "invariant_pass_rate < 0.80"
+    - "premortem_unlinked > 0"
+
+  forbid_sections:
+    - "target_price"
+    - "buy_sell_recommendation"
+    - "position_sizing"
+    - "portfolio_allocation"
+    - "conviction_level"
+
+  forbid_phrases_zh:
+    - "强烈买入"
+    - "强烈卖出"
+    - "目标价"
+    - "确定性上涨"
+    - "确定性下跌"
+    - "必然"
+    - "稳赢"
+    - "无风险"
+    - "保证收益"
+
+  forbid_phrases_en:
+    - "strong buy"
+    - "strong sell"
+    - "target price"
+    - "guaranteed"
+    - "certain to"
+    - "will definitely"
+    - "risk-free"
+
+  required_sections:
+    - "hypothesis_list"
+    - "monitoring_triggers"
+    - "uncertainty_matrix"
+    - "evidence_gaps"
+    - "next_data_collection_priorities"
+
+  uncertainty_matrix:
+    min_rows: 3
+    required_columns:
+      - "hypothesis"
+      - "how_to_verify"
+      - "data_sources"
+      - "current_confidence"
+      - "update_trigger"
+
+---
+
+# Kill Switch规则
+kill_switch_rules:
+  description: "Deterministic rules; RM flags, QG makes final verdict"
+
+  rules:
+    - id: "RM_KS_001"
+      name: "Critical Evidence Gap"
+      if_any:
+        - stat: {critical_claim_ab_coverage: {lt: 0.40}}
+      then:
+        action: "FORCE_DEGRADE"
+        reason_code: "RM_EVIDENCE_GAP_CRITICAL"
+        message: "Critical claims lack sufficient A/B evidence coverage"
+
+    - id: "RM_KS_002"
+      name: "Missing Observables"
+      if_any:
+        - stat: {critical_claim_missing_observables: {gt: 0}}
+      then:
+        action: "FORCE_DEGRADE"
+        reason_code: "RM_CLAIM_MISSING_OBSERVABLE"
+        message: "Critical claims lack measurable observables"
+
+    - id: "RM_KS_003"
+      name: "Unlinked Premortem"
+      if_any:
+        - stat: {premortem_unlinked_failure_modes: {gt: 0}}
+      then:
+        action: "FORCE_DEGRADE"
+        reason_code: "RM_PREMORTEM_NOT_LINKED_TO_CLAIMS"
+        message: "Premortem failure modes not linked to specific claims"
+
+    - id: "RM_KS_004"
+      name: "Unmapped Ecosystem Risks"
+      if_any:
+        - stat: {adner_risks_unmapped_on_critical_claims: {gt: 0}}
+      then:
+        action: "FORCE_DEGRADE"
+        reason_code: "RM_ECOSYSTEM_RISK_UNMAPPED"
+        message: "Critical claims missing Adner risk type classification"
+
+    - id: "RM_KS_005"
+      name: "Missing Counterfactual"
+      if_any:
+        - stat: {critical_claims_without_counterfactual: {gt: 0}}
+      then:
+        action: "FORCE_DEGRADE"
+        reason_code: "RM_COUNTERFACTUAL_MISSING"
+        message: "Critical claims missing counterfactual analysis"
+
+    - id: "RM_KS_006"
+      name: "Empty DAG"
+      if_any:
+        - stat: {mechanism_dag_edge_count: {eq: 0}}
+      then:
+        action: "FORCE_DEGRADE"
+        reason_code: "RM_DAG_EMPTY"
+        message: "Mechanism DAG has no causal claims"
+
+---
+
+# 不变量规则
+invariants:
+  upstream_invariants_mode: "READ_AND_EXECUTE"
+
+  rm_invariants:
+    - id: "RM_INV_001"
+      name: "CriticalClaimHasFalsifier"
+      description: "Critical claims must include falsify_if and observable+timeframe"
+      rule: |
+        FOR EACH claim IN claims WHERE claim.criticality == "CRITICAL":
+          claim.falsify_if IS NOT NULL AND
+          LENGTH(claim.observables) >= 1 AND
+          claim.timeframe IS NOT NULL
+      on_fail:
+        reason_code: "RM_FALSIFIABILITY_MISSING"
+        action: "DEGRADE"
+
+    - id: "RM_INV_002"
+      name: "AdnerRiskTagged"
+      description: "Critical claims must specify risk_type"
+      rule: |
+        FOR EACH claim IN claims WHERE claim.criticality == "CRITICAL":
+          claim.risk_type IN ["initiative_risk", "co_innovation_risk", "adoption_chain_risk"]
+      on_fail:
+        reason_code: "RM_ECOSYSTEM_RISK_UNMAPPED"
+        action: "DEGRADE"
+
+    - id: "RM_INV_003"
+      name: "CriticalClaimHasCounterfactual"
+      description: "Critical claims must have counterfactual analysis"
+      rule: |
+        FOR EACH claim IN claims WHERE claim.criticality == "CRITICAL":
+          claim.counterfactual IS NOT NULL AND
+          claim.counterfactual.intervention IS NOT NULL
+      on_fail:
+        reason_code: "RM_COUNTERFACTUAL_MISSING"
+        action: "DEGRADE"
+
+    - id: "RM_INV_004"
+      name: "PremortemLinked"
+      description: "All premortem failure modes must link to at least one claim"
+      rule: |
+        FOR EACH mode IN premortem.failure_modes:
+          LENGTH(mode.linked_claim_ids) >= 1
+      on_fail:
+        reason_code: "RM_PREMORTEM_NOT_LINKED_TO_CLAIMS"
+        action: "DEGRADE"
+
+    - id: "RM_INV_005"
+      name: "DAGNoOrphans"
+      description: "All claims must appear in mechanism DAG"
+      rule: |
+        FOR EACH claim IN claims:
+          EXISTS edge IN dag.edges WHERE edge.claim_id == claim.claim_id
+      on_fail:
+        reason_code: "RM_CLAIM_NOT_IN_DAG"
+        action: "WARN"
+
+    - id: "RM_INV_006"
+      name: "TriggerComplete"
+      description: "All monitoring triggers must have threshold, window, and data_sources"
+      rule: |
+        FOR EACH trigger IN triggers:
+          trigger.threshold IS NOT NULL AND
+          trigger.window IS NOT NULL AND
+          LENGTH(trigger.data_sources) >= 1
+      on_fail:
+        reason_code: "RM_TRIGGER_INCOMPLETE"
+        action: "WARN"
+
+    - id: "RM_INV_007"
+      name: "ConfidenceCapRespected"
+      description: "RM confidence cannot exceed upstream cap"
+      rule: |
+        rm_confidence_cap <= MIN(di_confidence_cap, eco_confidence_cap)
+      on_fail:
+        reason_code: "RM_CONFIDENCE_CAP_VIOLATED"
+        action: "auto-cap"
+
+---
+
+# 输出契约
+outputs:
+  contracts:
+    thesis_memo_schema: "schemas/rm_thesis_memo_schema.yaml"
+    claim_spec_schema: "schemas/rm_claim_spec_schema.yaml"
+    mechanism_dag_schema: "schemas/rm_mechanism_dag_schema.yaml"
+    trigger_schema: "schemas/rm_trigger_schema.yaml"
+
+  qg_interface: "contracts/rm_qg_interface_contract.yaml"
+  upstream_interface: "contracts/rm_upstream_interface_contract.yaml"
+
+---
+
+# 版本历史
+version_history:
+  - version: "1.1.0"
+    date: "2026-01-27"
+    changes:
+      - "Initial policy pack with Adner risk taxonomy"
+      - "Counterfactual/do(x) requirements"
+      - "Premortem linking requirements"
+      - "Kill switch rules"
+      - "DEGRADE mode enforcement"
+      - "7 invariants"

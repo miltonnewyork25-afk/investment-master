@@ -1,0 +1,480 @@
+# RM ThesisMemo Schema v1.1
+# 投资论点备忘录规范
+# 整合claims + premortem + uncertainty_matrix + triggers
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "rm_thesis_memo_schema_v1.1"
+title: "RM ThesisMemo Schema v1.1"
+description: "Complete investment thesis memo with claims, premortem, uncertainty matrix, and monitoring triggers"
+
+type: object
+
+required:
+  - "memo_id"
+  - "entity"
+  - "thesis_statement"
+  - "core_contradiction"
+  - "kill_switch"
+  - "core_claims"
+  - "premortem"
+  - "uncertainty_matrix"
+  - "monitoring_triggers"
+  - "mechanism_dag"
+  - "confidence_cap"
+
+properties:
+  # 备忘录标识
+  memo_id:
+    type: string
+    format: uuid
+    description: "Unique memo identifier"
+
+  # 目标实体
+  entity:
+    type: object
+    required: ["ticker", "company_name"]
+    properties:
+      ticker:
+        type: string
+        description: "Stock ticker"
+      company_name:
+        type: string
+        description: "Company name"
+      cik:
+        type: string
+        description: "SEC CIK number"
+      sector:
+        type: string
+        description: "GICS sector"
+      industry:
+        type: string
+        description: "GICS industry"
+    description: "Target entity for this thesis"
+
+  # 元数据
+  metadata:
+    type: object
+    properties:
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+      data_asof:
+        type: string
+        format: date
+        description: "Data freshness date"
+      policy_pack_version:
+        type: string
+      policy_pack_hash:
+        type: string
+      run_id:
+        type: string
+        format: uuid
+      author:
+        type: string
+      version:
+        type: string
+    description: "Memo metadata for traceability"
+
+  # 核心论点陈述
+  thesis_statement:
+    type: string
+    minLength: 50
+    description: "Core thesis statement (50+ characters)"
+    examples:
+      - "Tesla's Robotaxi business represents a $200B+ optionality that is underpriced by the market, contingent on FSD achieving L4 autonomy by 2027 and regulatory approval in key markets."
+
+  # 唯一核心矛盾
+  core_contradiction:
+    type: string
+    minLength: 20
+    description: "The fundamental tension driving the thesis uncertainty"
+    examples:
+      - "增长需要降价(量) vs 盈利需要溢价(利) → 量利不可兼得的结构性矛盾"
+      - "技术领先需要巨额研发投入 vs 投资者要求盈利改善 → 投资vs回报的时间错配"
+
+  # Kill Switch
+  kill_switch:
+    type: object
+    required: ["condition", "falsify_if", "timeframe"]
+    properties:
+      condition:
+        type: string
+        minLength: 1
+        description: "Condition that invalidates entire thesis"
+      falsify_if:
+        type: string
+        minLength: 1
+        description: "Specific observable that triggers kill switch"
+      timeframe:
+        type: string
+        minLength: 1
+        description: "When to evaluate"
+      severity:
+        type: string
+        enum: ["THESIS_INVALID", "MAJOR_REVISION_NEEDED", "REASSESS"]
+        default: "THESIS_INVALID"
+      linked_claim_ids:
+        type: array
+        items:
+          type: string
+        description: "Claims that if falsified trigger kill switch"
+    description: "Condition that invalidates the entire investment thesis"
+    examples:
+      - condition: "Robotaxi商业化彻底失败"
+        falsify_if: "2027年底仍无一城市实现商业化Robotaxi运营"
+        timeframe: "2027Q4"
+        severity: "THESIS_INVALID"
+        linked_claim_ids: ["CLM_TSLA_001", "CLM_TSLA_002"]
+
+  # 认知陷阱警示
+  cognitive_traps:
+    type: array
+    items:
+      type: object
+      required: ["trap_name", "description", "mitigation"]
+      properties:
+        trap_name:
+          type: string
+          description: "Name of cognitive bias"
+        description:
+          type: string
+          description: "How this trap manifests for this company"
+        mitigation:
+          type: string
+          description: "How to avoid falling into this trap"
+    description: "Cognitive biases to watch out for"
+    examples:
+      - trap_name: "叙事诱惑"
+        description: "Robotaxi/Optimus故事太引人入胜，容易忽视概率"
+        mitigation: "强制量化概率，对比历史交付记录"
+
+  # 核心Claims
+  core_claims:
+    type: array
+    minItems: 3
+    items:
+      $ref: "rm_claim_spec_schema.yaml"
+    description: "Core causal claims supporting the thesis"
+
+  # Claims统计摘要
+  claims_summary:
+    type: object
+    properties:
+      total_count:
+        type: integer
+      critical_count:
+        type: integer
+      important_count:
+        type: integer
+      optional_count:
+        type: integer
+      avg_confidence:
+        type: number
+      min_confidence:
+        type: number
+      critical_ab_coverage:
+        type: number
+        description: "A/B evidence coverage for critical claims"
+      risk_type_distribution:
+        type: object
+        properties:
+          initiative_risk:
+            type: integer
+          co_innovation_risk:
+            type: integer
+          adoption_chain_risk:
+            type: integer
+    description: "Summary statistics for claims"
+
+  # Premortem分析 (Klein方法)
+  premortem:
+    type: object
+    required: ["failure_modes"]
+    properties:
+      methodology_note:
+        type: string
+        default: "Based on Gary Klein's Premortem method (HBR 2007)"
+
+      failure_modes:
+        type: array
+        minItems: 5
+        items:
+          type: object
+          required: ["mode_id", "category", "description", "linked_claim_ids", "probability_estimate"]
+          properties:
+            mode_id:
+              type: string
+              pattern: "^FM_[A-Z0-9_]+$"
+              description: "Failure mode identifier"
+            category:
+              type: string
+              enum:
+                - "INITIATIVE"
+                - "CO_INNOVATION"
+                - "ADOPTION_CHAIN"
+                - "SUBSTITUTION"
+                - "REGULATION_PLATFORM_RULES"
+              description: "Adner risk category"
+            description:
+              type: string
+              minLength: 20
+              description: "Description of how thesis fails"
+            linked_claim_ids:
+              type: array
+              minItems: 1
+              items:
+                type: string
+              description: "Claims affected by this failure mode"
+            probability_estimate:
+              type: number
+              minimum: 0
+              maximum: 1
+              description: "Estimated probability (0-1)"
+            probability_range:
+              type: object
+              properties:
+                low:
+                  type: number
+                high:
+                  type: number
+              description: "Probability range if uncertain"
+            impact_severity:
+              type: string
+              enum: ["low", "medium", "high", "critical"]
+              description: "Severity if this failure occurs"
+            early_warning_signals:
+              type: array
+              items:
+                type: string
+              description: "Signals that this failure is materializing"
+            disconfirmers:
+              type: array
+              items:
+                type: string
+              description: "Evidence that would disprove this failure mode"
+            mitigation_actions:
+              type: array
+              items:
+                type: string
+              description: "Actions company could take to mitigate"
+
+      category_coverage:
+        type: object
+        properties:
+          INITIATIVE:
+            type: integer
+          CO_INNOVATION:
+            type: integer
+          ADOPTION_CHAIN:
+            type: integer
+          SUBSTITUTION:
+            type: integer
+          REGULATION_PLATFORM_RULES:
+            type: integer
+        description: "Count of failure modes per category"
+
+    description: "Premortem analysis of how thesis could fail"
+
+  # 不确定性矩阵
+  uncertainty_matrix:
+    type: array
+    minItems: 3
+    items:
+      type: object
+      required: ["hypothesis", "how_to_verify", "data_sources"]
+      properties:
+        hypothesis:
+          type: string
+          minLength: 1
+          description: "The uncertain hypothesis"
+        how_to_verify:
+          type: string
+          minLength: 1
+          description: "How to verify or falsify"
+        data_sources:
+          type: array
+          minItems: 1
+          items:
+            type: string
+          description: "Data sources for verification"
+        current_confidence:
+          type: number
+          minimum: 0
+          maximum: 1
+          description: "Current confidence level"
+        update_trigger:
+          type: string
+          description: "Event that would update confidence"
+        linked_claim_ids:
+          type: array
+          items:
+            type: string
+          description: "Related claims"
+        priority:
+          type: string
+          enum: ["high", "medium", "low"]
+          description: "Priority for resolution"
+    description: "Matrix of key uncertainties and how to resolve them"
+
+  # 监控触发器
+  monitoring_triggers:
+    type: array
+    minItems: 1
+    items:
+      $ref: "rm_trigger_schema.yaml"
+    description: "Triggers for ongoing monitoring"
+
+  # 机制DAG引用
+  mechanism_dag:
+    $ref: "rm_mechanism_dag_schema.yaml"
+    description: "Causal mechanism DAG"
+
+  # 置信度
+  confidence_cap:
+    type: number
+    minimum: 0
+    maximum: 1
+    description: "Overall thesis confidence cap"
+
+  confidence_breakdown:
+    type: object
+    properties:
+      upstream_cap:
+        type: number
+        description: "Cap from DI/ECO"
+      evidence_coverage:
+        type: number
+        description: "Evidence quality score"
+      falsifiability:
+        type: number
+        description: "Falsifiability score"
+      invariant_pass_rate:
+        type: number
+        description: "Invariant check pass rate"
+      trigger_completeness:
+        type: number
+        description: "Monitoring trigger completeness"
+    description: "Breakdown of confidence components"
+
+  # 不变量检查结果
+  invariants_results:
+    type: object
+    properties:
+      total_checked:
+        type: integer
+      passed:
+        type: integer
+      failed:
+        type: integer
+      pass_rate:
+        type: number
+      failed_invariants:
+        type: array
+        items:
+          type: object
+          properties:
+            invariant_id:
+              type: string
+            name:
+              type: string
+            reason_code:
+              type: string
+            affected_items:
+              type: array
+              items:
+                type: string
+    description: "Results of invariant checks"
+
+  # Reason Codes汇总
+  reason_codes:
+    type: array
+    items:
+      type: string
+      pattern: "^RM_"
+    description: "All RM reason codes for this memo"
+
+  # 输出模式
+  output_mode:
+    type: string
+    enum: ["FULL", "DEGRADE"]
+    default: "FULL"
+    description: "DEGRADE if policy conditions not met"
+
+  # 下一步数据收集优先级
+  next_data_priorities:
+    type: array
+    items:
+      type: object
+      properties:
+        priority:
+          type: integer
+          minimum: 1
+        description:
+          type: string
+        data_needed:
+          type: string
+        linked_uncertainty:
+          type: string
+        expected_source:
+          type: string
+        expected_date:
+          type: string
+          format: date
+    description: "Prioritized list of data to collect next"
+
+  # 与其他Agent的接口数据
+  qg_interface:
+    type: object
+    properties:
+      confidence_cap:
+        type: number
+      invariants_results:
+        type: object
+      critical_claims_status:
+        type: object
+      premortem_coverage:
+        type: object
+      reason_codes:
+        type: array
+        items:
+          type: string
+    description: "Data exported to Quality Gate"
+
+additionalProperties: false
+
+# 示例（简化版）
+examples:
+  - memo_id: "550e8400-e29b-41d4-a716-446655440000"
+    entity:
+      ticker: "TSLA"
+      company_name: "Tesla Inc."
+      sector: "Consumer Discretionary"
+      industry: "Automobiles"
+    thesis_statement: "Tesla's Robotaxi business represents a $200B+ optionality that is underpriced by the market, contingent on FSD achieving L4 autonomy by 2027."
+    core_contradiction: "技术投入需要时间验证 vs 市场要求短期业绩 → 长期愿景与短期盈利的结构性张力"
+    kill_switch:
+      condition: "Robotaxi商业化彻底失败"
+      falsify_if: "2027年底仍无一城市实现商业化Robotaxi运营"
+      timeframe: "2027Q4"
+      severity: "THESIS_INVALID"
+    core_claims: []  # 引用rm_claim_spec_schema
+    premortem:
+      failure_modes:
+        - mode_id: "FM_TSLA_001"
+          category: "INITIATIVE"
+          description: "FSD技术始终无法达到L4级别的安全标准"
+          linked_claim_ids: ["CLM_TSLA_001"]
+          probability_estimate: 0.35
+          impact_severity: "critical"
+    uncertainty_matrix:
+      - hypothesis: "FSD干预率能在2027年前降至1次/万英里以下"
+        how_to_verify: "跟踪Tesla季度安全报告"
+        data_sources: ["Tesla Safety Report", "第三方测试"]
+        current_confidence: 0.45
+    monitoring_triggers: []  # 引用rm_trigger_schema
+    mechanism_dag: {}  # 引用rm_mechanism_dag_schema
+    confidence_cap: 0.55
+    output_mode: "FULL"

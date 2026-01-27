@@ -1,0 +1,176 @@
+# RM Policy Pack Loader Skill v1.1
+# Position: Skill 0
+# Purpose: 加载并冻结policy_pack，校验version+hash
+
+skill:
+  id: rm_policy_pack_loader_v1_1
+  version: "1.1"
+  name: "RM Policy Pack Loader"
+  position: 0
+  purpose: "Load and freeze rm_policy_pack, validate version and compute hash"
+
+---
+
+# 输入
+input:
+  required:
+    - name: policy_pack_path
+      type: string
+      description: "Path to rm_policy_pack_v1.1.yaml"
+    - name: run_id
+      type: string
+      format: uuid
+      description: "Current run identifier"
+
+  optional:
+    - name: expected_hash
+      type: string
+      description: "Expected hash for validation (for replay)"
+
+---
+
+# 输出
+output:
+  policy:
+    type: object
+    description: "Loaded and validated policy pack"
+
+  policy_hash:
+    type: string
+    pattern: "^sha256:[a-f0-9]{64}$"
+    description: "SHA256 hash of policy pack content"
+
+  frozen_at:
+    type: string
+    format: date-time
+    description: "Timestamp when policy was frozen"
+
+  validation_result:
+    type: object
+    properties:
+      is_valid:
+        type: boolean
+      version:
+        type: string
+      errors:
+        type: array
+        items:
+          type: string
+
+  reason_codes:
+    type: array
+    items:
+      type: string
+      pattern: "^RM_"
+
+---
+
+# 执行步骤
+steps:
+  - step: 1
+    name: "Load Policy File"
+    action: |
+      1. Read policy_pack_path
+      2. Parse YAML content
+      3. Validate basic structure exists
+    on_error:
+      reason_code: "RM_POLICY_LOAD_FAILED"
+      action: "abort"
+
+  - step: 2
+    name: "Compute Hash"
+    action: |
+      1. Serialize policy to canonical form
+      2. Compute SHA256 hash
+      3. Format as "sha256:{hash}"
+    output: policy_hash
+
+  - step: 3
+    name: "Validate Hash (if expected)"
+    condition: "expected_hash is provided"
+    action: |
+      1. Compare computed hash with expected_hash
+      2. If mismatch, emit reason_code
+    on_mismatch:
+      reason_code: "RM_POLICY_HASH_MISMATCH"
+      action: "abort"
+
+  - step: 4
+    name: "Validate Schema"
+    action: |
+      1. Check required sections exist:
+         - policy_pack
+         - rm_objectives
+         - risk_taxonomy_adner
+         - claim_policy
+         - counterfactual_policy
+         - premortem_policy
+         - evidence_policy
+         - confidence_policy
+         - degrade_mode
+         - kill_switch_rules
+         - invariants
+         - outputs
+      2. Validate field types
+    on_error:
+      reason_code: "RM_POLICY_SCHEMA_INVALID"
+      action: "abort"
+
+  - step: 5
+    name: "Validate Version Compatibility"
+    action: |
+      1. Check policy_pack.compatibility.qg_min_version
+      2. Check policy_pack.compatibility.eval_min_version
+      3. Verify current environment meets minimums
+    on_incompatible:
+      reason_code: "RM_POLICY_VERSION_INCOMPATIBLE"
+      action: "abort"
+
+  - step: 6
+    name: "Freeze Policy"
+    action: |
+      1. Record frozen_at timestamp
+      2. Store policy_hash in run context
+      3. Make policy immutable for this run_id
+    output: frozen_at
+
+  - step: 7
+    name: "Return Results"
+    action: |
+      1. Return policy object
+      2. Return policy_hash
+      3. Return frozen_at
+      4. Return validation_result
+      5. Return any reason_codes
+
+---
+
+# 不变量
+invariants:
+  - name: "HashImmutable"
+    rule: "同一run_id内policy_hash不可变"
+    check_at: "every_skill_start"
+
+  - name: "SchemaValid"
+    rule: "policy必须包含所有required sections"
+    check_at: "load_time"
+
+---
+
+# 错误处理
+error_handling:
+  file_not_found:
+    reason_code: "RM_POLICY_LOAD_FAILED"
+    action: "abort_rm"
+
+  parse_error:
+    reason_code: "RM_POLICY_LOAD_FAILED"
+    action: "abort_rm"
+
+  hash_mismatch:
+    reason_code: "RM_POLICY_HASH_MISMATCH"
+    action: "abort_run"
+
+  schema_invalid:
+    reason_code: "RM_POLICY_SCHEMA_INVALID"
+    action: "abort_rm"

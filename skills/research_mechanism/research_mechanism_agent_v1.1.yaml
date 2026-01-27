@@ -1,0 +1,388 @@
+# Research Mechanism Agent v1.1
+# 研究机制智能体 - 因果推理与论点构建
+# 整合Adner生态风险 + Pearl因果推断 + Klein预验尸
+
+agent:
+  id: research_mechanism_agent
+  version: "1.1"
+  name: "Research Mechanism Agent"
+  description: |
+    构建可证伪、可追踪、可与QG集成的投资论点：
+    - Adner生态风险分类（initiative/co-innovation/adoption chain）
+    - Pearl do(x)反事实分析
+    - Klein预验尸方法
+    - 机制DAG因果结构
+    - 监控触发器系统
+    - DEGRADE模式强制（无投资建议）
+
+---
+
+# 理论基础
+theory_foundation:
+  causality:
+    - name: "Judea Pearl - Causality"
+      application: "do(x)反事实推断、因果图"
+      concepts:
+        - do_operator
+        - counterfactual_reasoning
+        - causal_dag
+        - identifiability
+
+  ecosystem_risk:
+    - name: "Ron Adner - The Wide Lens"
+      application: "生态系统风险分类"
+      concepts:
+        - initiative_risk
+        - co_innovation_risk
+        - adoption_chain_risk
+        - ecosystem_carryover
+
+  red_teaming:
+    - name: "Gary Klein - Premortem"
+      application: "前瞻性失败分析"
+      concepts:
+        - prospective_hindsight
+        - failure_mode_identification
+        - disconfirmers
+
+  falsifiability:
+    - name: "Karl Popper - Conjectures and Refutations"
+      application: "可证伪性要求"
+      concepts:
+        - falsifiability_criterion
+        - observable_predictions
+        - theory_testing
+
+---
+
+# 核心设计原则
+design_principles:
+  falsifiability_first:
+    description: "所有claims必须可证伪"
+    implementation: "required falsify_if + observables + timeframe"
+
+  causal_structure:
+    description: "因果关系结构化为DAG"
+    implementation: "mechanism_dag_schema with claim references"
+
+  risk_taxonomy:
+    description: "风险分类使用Adner框架"
+    implementation: "required risk_type field on critical claims"
+
+  counterfactual_rigor:
+    description: "关键claims必须有反事实分析"
+    implementation: "required counterfactual for CRITICAL claims"
+
+  premortem_linking:
+    description: "失败模式必须链接到具体claims"
+    implementation: "linked_claim_ids on failure modes"
+
+  degrade_mode:
+    description: "不确定时禁止投资建议"
+    implementation: "DEGRADE mode with forbidden phrases"
+
+---
+
+# Skill依赖图
+skill_dependency:
+  graph: |
+    Skill 0 (Policy Pack Loader)
+       ↓
+    ┌─────────────────────────────────────────────────────────────┐
+    │ 分析引擎层（现有skills，并行执行）                            │
+    │                                                             │
+    │ Skill 1: competitive_analysis_framework_v1.3                │
+    │ Skill 2: competitive_advantage_models_v1.2                  │
+    │ Skill 3: moat_evaluation_framework_v1.3                     │
+    │ Skill 4: first_principles_analysis_v1.2 (FPAC)              │
+    │ Skill 5: controller_spec_analysis_v4.2                      │
+    │ Skill 6: macro_industry_cycle_v1.3                          │
+    │ Skill 7: systemic_foresight_strategic_v1.2                  │
+    │ Skill 8: brand_experience_analysis_v1.0                     │
+    └─────────────────────────────────────────────────────────────┘
+       ↓
+    Skill 9 (Claim Extractor)
+       ↓
+    Skill 10 (Mechanism DAG Builder)
+       ↓
+    ┌───────────────────────────────────────┐
+    │ Skill 11 (Adner Risk Mapper)          │
+    │ Skill 12 (Premortem Linker)           │  ← 并行
+    │ Skill 13 (Counterfactual Generator)   │
+    └───────────────────────────────────────┘
+       ↓
+    Skill 14 (Trigger Generator)
+       ↓
+    Skill 15 (Thesis Assembler)
+       ↓
+    Skill 16 (QG Interface Exporter)
+
+---
+
+# Skills清单
+skills:
+  # Skill 0: Policy Pack Loader (新增)
+  - id: rm_policy_pack_loader_v1_1
+    file: "integration/rm_policy_pack_loader_v1.1.skill.yaml"
+    position: 0
+    purpose: "加载并冻结policy_pack，校验version+hash"
+    key_outputs: ["policy", "policy_hash", "frozen_at"]
+    new_in_v1_1: true
+
+  # 分析引擎层 (现有skills, 位置1-8)
+  - id: competitive_analysis_framework_v1_3
+    file: "competitive_analysis_framework_v1.3.skill.md"
+    position: 1
+    purpose: "五力2.0 + 竞争动态 + EWS"
+    key_outputs: ["competition_surface", "ews_dashboard", "evidence_list"]
+
+  - id: competitive_advantage_models_v1_2
+    file: "competitive_advantage_models_quickref_v1.2.skill.md"
+    position: 2
+    purpose: "10大竞争优势模型速查"
+    key_outputs: ["models_hit", "leading_signals", "falsifiers"]
+
+  - id: moat_evaluation_framework_v1_3
+    file: "moat_evaluation_framework_v1.3.skill.md"
+    position: 3
+    purpose: "6类护城河评估"
+    key_outputs: ["moat_score", "strength_rating", "erosion_risks"]
+
+  - id: first_principles_analysis_v1_2
+    file: "first_principles_analysis_protocol_v1.2.skill.md"
+    position: 4
+    purpose: "第一性原理分析 (FPAC)"
+    key_outputs: ["dominant_terms", "constraints", "scenario_paths"]
+
+  - id: controller_spec_analysis_v4_2
+    file: "controller_spec_analysis_framework_v4.2.skill.md"
+    position: 5
+    purpose: "可观测性/可控性矩阵"
+    key_outputs: ["observability_matrix", "safety_controller", "voi_assessment"]
+
+  - id: macro_industry_cycle_v1_3
+    file: "macro_industry_cycle_analysis_v1.3.skill.md"
+    position: 6
+    purpose: "5维周期打分"
+    key_outputs: ["cycle_phase", "confidence", "triggers"]
+
+  - id: systemic_foresight_strategic_v1_2
+    file: "systemic_foresight_strategic_analysis_v1.2.skill.md"
+    position: 7
+    purpose: "飞轮+实物期权+依赖风险"
+    key_outputs: ["flywheel_map", "options_tree", "dependency_kill_list"]
+
+  - id: brand_experience_analysis_v1_0
+    file: "brand_experience_analysis_v1.0.skill.md"
+    position: 8
+    purpose: "品牌体验+心智可得性"
+    key_outputs: ["brandexp_score", "mental_availability", "dba_register"]
+
+  # 整合层 Skills (新增, 位置9-16)
+  - id: rm_claim_extractor_v1_1
+    file: "integration/rm_claim_extractor_v1.1.skill.yaml"
+    position: 9
+    purpose: "从各分析引擎提取claims并规范化"
+    key_outputs: ["claims", "claim_evidence_map"]
+    new_in_v1_1: true
+
+  - id: rm_mechanism_dag_builder_v1_1
+    file: "integration/rm_mechanism_dag_builder_v1.1.skill.yaml"
+    position: 10
+    purpose: "构建因果机制DAG"
+    key_outputs: ["mechanism_dag", "dag_validation"]
+    new_in_v1_1: true
+
+  - id: rm_adner_risk_mapper_v1_1
+    file: "integration/rm_adner_risk_mapper_v1.1.skill.yaml"
+    position: 11
+    purpose: "标记Adner风险类型"
+    key_outputs: ["risk_tagged_claims", "risk_distribution"]
+    new_in_v1_1: true
+
+  - id: rm_premortem_linker_v1_1
+    file: "integration/rm_premortem_linker_v1.1.skill.yaml"
+    position: 12
+    purpose: "Premortem失败模式与claims链接"
+    key_outputs: ["premortem", "failure_claim_mapping"]
+    new_in_v1_1: true
+
+  - id: rm_counterfactual_generator_v1_1
+    file: "integration/rm_counterfactual_generator_v1.1.skill.yaml"
+    position: 13
+    purpose: "生成do(x)反事实分析"
+    key_outputs: ["claims_with_counterfactual", "identifiability_assessment"]
+    new_in_v1_1: true
+
+  - id: rm_trigger_generator_v1_1
+    file: "integration/rm_trigger_generator_v1.1.skill.yaml"
+    position: 14
+    purpose: "生成监控触发器"
+    key_outputs: ["monitoring_triggers", "trigger_claim_mapping"]
+    new_in_v1_1: true
+
+  - id: rm_thesis_assembler_v1_1
+    file: "integration/rm_thesis_assembler_v1.1.skill.yaml"
+    position: 15
+    purpose: "组装ThesisMemo"
+    key_outputs: ["thesis_memo", "uncertainty_matrix", "invariants_results"]
+    new_in_v1_1: true
+
+  - id: rm_qg_interface_exporter_v1_1
+    file: "integration/rm_qg_interface_exporter_v1.1.skill.yaml"
+    position: 16
+    purpose: "导出QG接口字段"
+    key_outputs: ["qg_interface_payload"]
+    new_in_v1_1: true
+
+---
+
+# 配置文件清单
+config_files:
+  - file: "policies/rm_policy_pack_v1.1.yaml"
+    purpose: "策略包（阈值、规则、配置）"
+    category: "P0"
+
+  - file: "reason_codes/reason_code_dictionary_RM.yaml"
+    purpose: "RM命名空间reason codes"
+    category: "P0"
+
+  - file: "schemas/rm_claim_spec_schema.yaml"
+    purpose: "Claim规范Schema"
+    category: "P0"
+
+  - file: "schemas/rm_mechanism_dag_schema.yaml"
+    purpose: "机制DAG Schema"
+    category: "P0"
+
+  - file: "schemas/rm_trigger_schema.yaml"
+    purpose: "监控触发器Schema"
+    category: "P0"
+
+  - file: "schemas/rm_thesis_memo_schema.yaml"
+    purpose: "ThesisMemo Schema"
+    category: "P0"
+
+  - file: "contracts/rm_upstream_interface_contract.yaml"
+    purpose: "上游接口契约"
+    category: "P1"
+
+  - file: "contracts/rm_qg_interface_contract.yaml"
+    purpose: "QG接口契约"
+    category: "P1"
+
+  - file: "invariants/rm_invariants_manifest.yaml"
+    purpose: "不变量清单"
+    category: "P1"
+
+---
+
+# 输入输出规范
+io_spec:
+  input:
+    from_run_context:
+      - run_id: "本次运行UUID"
+      - entity: "{ticker, cik?, company_name}"
+      - policy_pack: "rm_policy_pack_v1.1.yaml路径"
+
+    from_data_integrity:
+      - canonical_datapoints: "规范化数据点"
+      - evidence_registry: "证据注册表"
+      - confidence_cap: "DI置信度上限"
+
+    from_ecosystem_graph:
+      - ecosystem_graph: "生态系统图谱"
+      - role_map: "角色映射"
+      - competition_analysis: "竞争分析"
+      - substitute_analysis: "替代分析"
+      - disruption_analysis: "颠覆分析"
+      - edge_confidence_cap: "ECO边置信度上限"
+
+  output:
+    thesis_package:
+      description: "投资论点包"
+      components:
+        - thesis_memo: "完整ThesisMemo"
+        - mechanism_dag: "因果机制DAG"
+        - claims: "结构化claims列表"
+        - premortem: "预验尸分析"
+        - monitoring_triggers: "监控触发器"
+        - uncertainty_matrix: "不确定性矩阵"
+
+    qg_interface_payload:
+      description: "QG接口负载"
+      fields:
+        - invariants_results
+        - thesis_confidence_cap
+        - evidence_coverage
+        - critical_claims_status
+        - premortem_coverage
+        - reason_codes
+
+---
+
+# 与其他Agent的集成
+integration:
+  data_integrity:
+    receives:
+      - canonical_datapoints
+      - evidence_registry
+      - confidence_cap
+    contract: "contracts/rm_upstream_interface_contract.yaml"
+
+  ecosystem_graph:
+    receives:
+      - ecosystem_graph
+      - role_map
+      - competition_analysis
+      - substitute_analysis
+      - disruption_analysis
+      - edge_confidence_cap
+    contract: "contracts/rm_upstream_interface_contract.yaml"
+
+  quality_gate:
+    exports:
+      - invariants_results
+      - thesis_confidence_cap
+      - evidence_coverage
+      - critical_claims_status
+      - premortem_coverage
+      - reason_codes
+    contract: "contracts/rm_qg_interface_contract.yaml"
+
+  eval_agent:
+    exports:
+      - thesis_memo (for golden tests)
+      - mechanism_dag (for structure tests)
+      - claims (for completeness tests)
+      - invariants_results (for governance tests)
+    test_types:
+      - golden_outcome: "论点结构快照"
+      - metamorphic: "证据单调性、噪声鲁棒性"
+      - governance: "不变量必须pass"
+      - regression: "claims完整性不降级"
+
+---
+
+# 版本历史
+version_history:
+  - version: "1.1"
+    date: "2026-01-27"
+    changes:
+      - "新增rm_policy_pack_v1.1.yaml（策略包+Adner风险分类）"
+      - "新增reason_code_dictionary_RM.yaml（RM命名空间）"
+      - "新增4个Schema（claim/dag/trigger/thesis_memo）"
+      - "新增upstream/qg接口契约"
+      - "新增rm_invariants_manifest.yaml（21个不变量）"
+      - "新增8个整合层Skills（Skill 9-16）"
+      - "整合8个现有分析引擎Skills"
+      - "强制Adner风险标记"
+      - "强制counterfactual for CRITICAL claims"
+      - "强制premortem linking"
+      - "DEGRADE模式禁止投资建议"
+
+  - version: "1.0"
+    date: "2026-01-26"
+    changes:
+      - "初始8个分析引擎skills"
+      - "基础竞争/护城河/周期分析"

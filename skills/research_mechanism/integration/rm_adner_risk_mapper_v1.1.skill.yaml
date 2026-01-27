@@ -1,0 +1,273 @@
+# RM Adner Risk Mapper Skill v1.1
+# Position: Skill 11
+# Purpose: 标记Adner风险类型
+
+skill:
+  id: rm_adner_risk_mapper_v1_1
+  version: "1.1"
+  name: "RM Adner Risk Mapper"
+  position: 11
+  purpose: "Tag claims with Adner ecosystem risk types (initiative/co-innovation/adoption chain)"
+  depends_on: [9, 10]  # Claim Extractor, DAG Builder
+  parallel_with: [12, 13]  # Premortem Linker, Counterfactual Generator
+
+---
+
+# 理论基础
+theory:
+  source: "Ron Adner - The Wide Lens"
+  framework: |
+    Ecosystem risk taxonomy:
+    1. Initiative Risk: Internal execution challenges
+    2. Co-Innovation Risk: Dependencies on complementary innovations
+    3. Adoption Chain Risk: Dependencies on intermediary adoption
+
+---
+
+# 输入
+input:
+  required:
+    - name: claims
+      type: array
+      description: "Claims to tag with risk types"
+
+    - name: mechanism_dag
+      type: object
+      description: "DAG for relationship analysis"
+
+  optional:
+    - name: ecosystem_graph
+      type: object
+      description: "ECO graph for entity role analysis"
+
+    - name: disruption_analysis
+      type: object
+      description: "ECO disruption analysis"
+
+---
+
+# 输出
+output:
+  risk_tagged_claims:
+    type: array
+    description: "Claims with risk_type field populated"
+
+  risk_distribution:
+    type: object
+    properties:
+      initiative_risk:
+        type: integer
+      co_innovation_risk:
+        type: integer
+      adoption_chain_risk:
+        type: integer
+      untagged:
+        type: integer
+
+  risk_analysis:
+    type: object
+    properties:
+      highest_risk_type:
+        type: string
+      risk_concentration:
+        type: number
+      critical_claim_risks:
+        type: array
+
+  reason_codes:
+    type: array
+
+---
+
+# 执行步骤
+steps:
+  - step: 1
+    name: "Analyze Claim Dependencies"
+    action: |
+      FOR EACH claim IN claims:
+        1. Identify actors/entities in claim
+        2. Classify as internal vs external
+        3. Map to ECO ecosystem roles if available
+    output: claim_entity_map
+
+  - step: 2
+    name: "Classify Initiative Risks"
+    action: |
+      FOR EACH claim IN claims:
+        IF claim involves:
+          - Internal execution (build/spec/time/cost)
+          - Company-controlled resources
+          - Technical development milestones
+          - Operational capability building
+        THEN:
+          claim.risk_type = "initiative_risk"
+    indicators:
+      - "project timeline"
+      - "development milestone"
+      - "cost target"
+      - "technical specification"
+      - "internal capability"
+      - "manufacturing capacity"
+
+  - step: 3
+    name: "Classify Co-Innovation Risks"
+    action: |
+      FOR EACH claim IN claims:
+        IF claim involves:
+          - External technology dependencies
+          - Complementor development
+          - Third-party innovation requirements
+          - Technology platform evolution
+        THEN:
+          claim.risk_type = "co_innovation_risk"
+    indicators:
+      - "partner technology"
+      - "complementor"
+      - "platform provider"
+      - "infrastructure readiness"
+      - "API availability"
+      - "standard adoption"
+      - "supplier capability"
+
+  - step: 4
+    name: "Classify Adoption Chain Risks"
+    action: |
+      FOR EACH claim IN claims:
+        IF claim involves:
+          - Channel partner adoption
+          - Intermediary behavior
+          - Distribution network
+          - Customer ecosystem
+          - Market penetration path
+        THEN:
+          claim.risk_type = "adoption_chain_risk"
+    indicators:
+      - "channel partner"
+      - "distributor"
+      - "retailer adoption"
+      - "customer ecosystem"
+      - "market penetration"
+      - "user adoption"
+      - "network effect activation"
+
+  - step: 5
+    name: "Handle Ambiguous Cases"
+    action: |
+      FOR EACH claim WHERE risk_type is ambiguous:
+        1. Check DAG relationships
+        2. Analyze upstream/downstream
+        3. Use dominant signal
+        4. If still ambiguous, use heuristic:
+           - Company as subject → initiative
+           - Partner/supplier as subject → co_innovation
+           - Customer/channel as subject → adoption_chain
+    on_unresolved:
+      reason_code: "RM_ECOSYSTEM_RISK_UNMAPPED"
+      action: "WARN and require manual classification"
+
+  - step: 6
+    name: "Validate Critical Claims"
+    action: |
+      FOR EACH claim WHERE criticality == "CRITICAL":
+        IF claim.risk_type IS NULL:
+          emit reason_code
+          flag for manual review
+    on_missing:
+      reason_code: "RM_ECOSYSTEM_RISK_UNMAPPED"
+      action: "DEGRADE"
+
+  - step: 7
+    name: "Compute Risk Distribution"
+    action: |
+      1. Count claims by risk_type
+      2. Calculate concentration (max_count / total)
+      3. Identify dominant risk type
+      4. List critical claim risks
+    output: risk_distribution, risk_analysis
+
+---
+
+# 风险类型判断规则
+classification_rules:
+  initiative_risk:
+    keywords_zh:
+      - "内部"
+      - "研发"
+      - "技术开发"
+      - "产能"
+      - "成本控制"
+      - "执行"
+      - "团队"
+      - "项目"
+    keywords_en:
+      - "internal"
+      - "R&D"
+      - "development"
+      - "capacity"
+      - "cost"
+      - "execution"
+      - "team"
+      - "project"
+    subject_types: ["company", "management", "employees"]
+
+  co_innovation_risk:
+    keywords_zh:
+      - "合作伙伴"
+      - "供应商"
+      - "技术成熟度"
+      - "平台"
+      - "基础设施"
+      - "标准"
+      - "API"
+    keywords_en:
+      - "partner"
+      - "supplier"
+      - "technology readiness"
+      - "platform"
+      - "infrastructure"
+      - "standard"
+      - "API"
+      - "complementor"
+    subject_types: ["partner", "supplier", "platform_provider"]
+
+  adoption_chain_risk:
+    keywords_zh:
+      - "渠道"
+      - "经销商"
+      - "市场渗透"
+      - "用户采用"
+      - "网络效应"
+      - "客户"
+    keywords_en:
+      - "channel"
+      - "distributor"
+      - "market penetration"
+      - "user adoption"
+      - "network effect"
+      - "customer"
+      - "retailer"
+    subject_types: ["channel", "customer", "distributor", "retailer"]
+
+---
+
+# 验证规则
+validation:
+  critical_claim_coverage:
+    rule: "All CRITICAL claims must have risk_type"
+    on_fail: "RM_ECOSYSTEM_RISK_UNMAPPED"
+
+  distribution_balance:
+    rule: "Warning if > 70% concentration in single risk type"
+    on_fail: "WARN - review for blind spots"
+
+---
+
+# 错误处理
+error_handling:
+  untagged_critical:
+    reason_code: "RM_ECOSYSTEM_RISK_UNMAPPED"
+    action: "DEGRADE"
+
+  ambiguous_classification:
+    reason_code: "RM_ECOSYSTEM_RISK_AMBIGUOUS"
+    action: "WARN, use best guess"
