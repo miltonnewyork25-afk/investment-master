@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Eval Policy Pack Loader v1.3
+  评估策略包加载器 - 加载、冻结、校验hash
+  Position: Skill 0
+-->
+<skill id="eval_policy_pack_loader_v1_3" version="1.3">
+  <metadata>
+    <name>Eval Policy Pack Loader</name>
+    <description>加载评估策略包，冻结配置，校验版本和内容哈希</description>
+    <position>0</position>
+    <asof>2026-01-27</asof>
+    <owner>eval_regression_agent</owner>
+  </metadata>
+
+  <!-- 输入规范 -->
+  <input>
+    <param name="policy_pack_path" type="string" required="true">
+      <description>策略包文件路径</description>
+    </param>
+    <param name="expected_version" type="string" required="false">
+      <description>期望的策略包版本（可选校验）</description>
+    </param>
+    <param name="expected_hash" type="string" required="false">
+      <description>期望的内容哈希（可选校验）</description>
+    </param>
+  </input>
+
+  <!-- 输出规范 -->
+  <output>
+    <param name="eval_policy" type="object">
+      <description>已加载的策略包对象</description>
+    </param>
+    <param name="policy_version" type="string">
+      <description>策略包版本号</description>
+    </param>
+    <param name="policy_hash" type="string">
+      <description>策略包内容哈希</description>
+    </param>
+    <param name="frozen_at" type="datetime">
+      <description>冻结时间戳</description>
+    </param>
+    <param name="validation_result" type="object">
+      <description>验证结果</description>
+    </param>
+  </output>
+
+  <!-- 执行步骤 -->
+  <steps>
+    <step id="1" name="load_policy_file">
+      <action>读取策略包YAML文件</action>
+      <validation>
+        <check>文件存在且可读</check>
+        <check>YAML格式有效</check>
+        <on_fail>ABORT with EVAL_POLICY_NOT_FOUND</on_fail>
+      </validation>
+    </step>
+
+    <step id="2" name="compute_content_hash">
+      <action>计算策略包内容的SHA256哈希</action>
+      <algorithm>SHA256(canonical_yaml_content)</algorithm>
+      <output_format>sha256:hexdigest</output_format>
+    </step>
+
+    <step id="3" name="validate_version">
+      <action>验证策略包版本</action>
+      <conditions>
+        <if test="expected_version provided">
+          <check>policy.version == expected_version</check>
+          <on_fail>ABORT with EVAL_POLICY_VERSION_MISMATCH</on_fail>
+        </if>
+      </conditions>
+    </step>
+
+    <step id="4" name="validate_hash">
+      <action>验证内容哈希</action>
+      <conditions>
+        <if test="expected_hash provided">
+          <check>computed_hash == expected_hash</check>
+          <on_fail>ABORT with EVAL_POLICY_HASH_MISMATCH</on_fail>
+        </if>
+      </conditions>
+    </step>
+
+    <step id="5" name="validate_schema">
+      <action>验证策略包必需字段</action>
+      <required_fields>
+        <field>policy_pack.version</field>
+        <field>execution.strategy</field>
+        <field>execution.phases</field>
+        <field>graders.rules</field>
+        <field>thresholds.scorecard</field>
+        <field>release_rules</field>
+      </required_fields>
+      <on_missing>ABORT with EVAL_POLICY_SCHEMA_INVALID</on_missing>
+    </step>
+
+    <step id="6" name="freeze_policy">
+      <action>冻结策略包，记录时间戳</action>
+      <immutability>true</immutability>
+      <note>冻结后同一run_id内不可修改</note>
+    </step>
+
+    <step id="7" name="emit_output">
+      <action>输出加载结果</action>
+      <output>
+        <field name="eval_policy">frozen_policy_object</field>
+        <field name="policy_version">policy.version</field>
+        <field name="policy_hash">computed_hash</field>
+        <field name="frozen_at">current_timestamp</field>
+        <field name="validation_result">
+          <status>VALID</status>
+          <checks_passed>all</checks_passed>
+        </field>
+      </output>
+    </step>
+  </steps>
+
+  <!-- 错误码 -->
+  <error_codes>
+    <code id="EVAL_POLICY_NOT_FOUND" severity="P0">
+      <description>策略包文件不存在或不可读</description>
+      <action>ABORT</action>
+    </code>
+    <code id="EVAL_POLICY_VERSION_MISMATCH" severity="P0">
+      <description>策略包版本不匹配</description>
+      <action>ABORT</action>
+    </code>
+    <code id="EVAL_POLICY_HASH_MISMATCH" severity="P0">
+      <description>策略包内容哈希不匹配（可能被篡改）</description>
+      <action>ABORT</action>
+    </code>
+    <code id="EVAL_POLICY_SCHEMA_INVALID" severity="P0">
+      <description>策略包缺少必需字段</description>
+      <action>ABORT</action>
+    </code>
+  </error_codes>
+
+  <!-- 不变量 -->
+  <invariants>
+    <invariant id="INV-EPL-01" name="hash_consistency">
+      <rule>同一policy_pack_path的hash在整个run中不变</rule>
+      <check_point>每次引用policy时</check_point>
+    </invariant>
+    <invariant id="INV-EPL-02" name="no_hot_reload">
+      <rule>run_id确定后不可更换policy</rule>
+      <check_point>任何policy访问时</check_point>
+    </invariant>
+  </invariants>
+</skill>

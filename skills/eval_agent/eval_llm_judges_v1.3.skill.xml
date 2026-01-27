@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Eval LLM Judges v1.3
+  LLM Judge评分器 - 主观维度评分，不可触发BLOCK
+  Position: Skill 5
+-->
+<skill id="eval_llm_judges_v1_3" version="1.3">
+  <metadata>
+    <name>Eval LLM Judges</name>
+    <description>LLM Judge评分，仅用于主观维度，不可触发BLOCK</description>
+    <position>5</position>
+    <asof>2026-01-27</asof>
+    <owner>eval_regression_agent</owner>
+  </metadata>
+
+  <!-- 核心约束 -->
+  <constraints>
+    <constraint id="C1" critical="true">
+      <name>cannot_block</name>
+      <rule>LLM Judge评分结果不可触发BLOCK决策</rule>
+      <enforcement>硬编码，无法覆盖</enforcement>
+    </constraint>
+    <constraint id="C2" critical="true">
+      <name>human_fallback_required</name>
+      <rule>低置信度结果必须触发human review</rule>
+      <threshold>confidence &lt; 0.6</threshold>
+    </constraint>
+    <constraint id="C3" critical="true">
+      <name>suite_restrictions</name>
+      <rule>Safety/Governance/Tool Precision套件禁用LLM Judge</rule>
+      <allowed_suites>golden_outcome, metamorphic</allowed_suites>
+    </constraint>
+  </constraints>
+
+  <!-- 输入规范 -->
+  <input>
+    <param name="case_results" type="array" required="true">
+      <description>需要LLM评估的用例结果</description>
+    </param>
+    <param name="judge_config" type="object" required="true">
+      <description>Judge配置</description>
+    </param>
+  </input>
+
+  <!-- 输出规范 -->
+  <output>
+    <param name="llm_scores" type="object">
+      <description>LLM评分结果</description>
+      <note>不参与BLOCK决策</note>
+    </param>
+    <param name="judge_rationales" type="array">
+      <description>评分理由</description>
+    </param>
+    <param name="human_review_required" type="array">
+      <description>需要人工审核的用例</description>
+    </param>
+  </output>
+
+  <!-- Judge类型定义 -->
+  <judge_types>
+    <!-- 1. 语义等价Judge -->
+    <judge id="llm_semantic_equivalence">
+      <name>Semantic Equivalence Judge</name>
+      <description>评估两个输出的语义等价性</description>
+      <allowed_suites>golden_outcome</allowed_suites>
+      <can_block>false</can_block>
+      <model>
+        <provider>anthropic</provider>
+        <model_id>claude-3-5-sonnet-20241022</model_id>
+        <temperature>0.0</temperature>
+        <max_tokens>1000</max_tokens>
+      </model>
+      <prompt>
+        <system><![CDATA[
+You are an expert evaluator assessing semantic equivalence between two texts.
+Score from 0.0 to 1.0 where 1.0 means perfectly equivalent meaning.
+Focus on meaning, not exact wording.
+
+Scoring guidelines:
+- 1.0: Identical meaning, possibly different wording
+- 0.8-0.9: Same key points, minor differences in detail
+- 0.6-0.7: Most key points match, some differences
+- 0.4-0.5: Partial overlap in meaning
+- 0.0-0.3: Substantially different meaning
+
+Output JSON with: {"score": float, "rationale": string, "confidence": float}
+        ]]></system>
+        <user_template><![CDATA[
+Expected output:
+{expected}
+
+Actual output:
+{actual}
+
+Assess semantic equivalence and provide your evaluation.
+        ]]></user_template>
+      </prompt>
+      <output_schema>
+        <score type="number" min="0.0" max="1.0"/>
+        <rationale type="string" maxLength="500"/>
+        <confidence type="number" min="0.0" max="1.0"/>
+      </output_schema>
+    </judge>
+
+    <!-- 2. 推理质量Judge -->
+    <judge id="llm_reasoning_quality">
+      <name>Reasoning Quality Judge</name>
+      <description>评估推理过程的质量</description>
+      <allowed_suites>golden_outcome</allowed_suites>
+      <can_block>false</can_block>
+      <model>
+        <provider>anthropic</provider>
+        <model_id>claude-3-5-sonnet-20241022</model_id>
+        <temperature>0.0</temperature>
+        <max_tokens>1000</max_tokens>
+      </model>
+      <prompt>
+        <system><![CDATA[
+You are an expert evaluator assessing reasoning quality.
+Score from 0.0 to 1.0 based on:
+- Logical coherence (40%)
+- Evidence usage (30%)
+- Conclusion validity (30%)
+
+Scoring guidelines:
+- 1.0: Flawless reasoning, perfect evidence usage
+- 0.8-0.9: Strong reasoning, minor gaps
+- 0.6-0.7: Adequate reasoning, some issues
+- 0.4-0.5: Weak reasoning, significant gaps
+- 0.0-0.3: Poor or invalid reasoning
+
+Output JSON with: {"score": float, "rationale": string, "confidence": float}
+        ]]></system>
+        <user_template><![CDATA[
+Reasoning to evaluate:
+{reasoning}
+
+Context:
+{context}
+
+Assess the reasoning quality and provide your evaluation.
+        ]]></user_template>
+      </prompt>
+      <output_schema>
+        <score type="number" min="0.0" max="1.0"/>
+        <rationale type="string" maxLength="500"/>
+        <confidence type="number" min="0.0" max="1.0"/>
+      </output_schema>
+    </judge>
+
+    <!-- 3. 一致性Judge -->
+    <judge id="llm_consistency_check">
+      <name>Consistency Check Judge</name>
+      <description>评估变换后输出的一致性</description>
+      <allowed_suites>metamorphic</allowed_suites>
+      <can_block>false</can_block>
+      <model>
+        <provider>anthropic</provider>
+        <model_id>claude-3-5-sonnet-20241022</model_id>
+        <temperature>0.0</temperature>
+        <max_tokens>1000</max_tokens>
+      </model>
+      <prompt>
+        <system><![CDATA[
+You are an expert evaluator assessing consistency between two outputs.
+The outputs were generated from semantically equivalent inputs (with minor transformations).
+Score from 0.0 to 1.0 where 1.0 means perfectly consistent.
+
+Consider:
+- Core conclusions should match
+- Key facts should be consistent
+- Minor wording differences are acceptable
+
+Output JSON with: {"score": float, "rationale": string, "confidence": float}
+        ]]></system>
+        <user_template><![CDATA[
+Output A (original input):
+{output_a}
+
+Output B (transformed input):
+{output_b}
+
+Transform applied: {transform}
+
+Assess consistency between the two outputs.
+        ]]></user_template>
+      </prompt>
+      <output_schema>
+        <score type="number" min="0.0" max="1.0"/>
+        <rationale type="string" maxLength="500"/>
+        <confidence type="number" min="0.0" max="1.0"/>
+      </output_schema>
+    </judge>
+  </judge_types>
+
+  <!-- 执行步骤 -->
+  <steps>
+    <step id="1" name="filter_eligible_cases">
+      <action>过滤可用LLM Judge的用例</action>
+      <filter>
+        <include>suite in [golden_outcome, metamorphic]</include>
+        <include>grader_config.secondary_grader starts_with "llm_"</include>
+        <exclude>suite in [safety, governance, tool_precision, canary]</exclude>
+      </filter>
+    </step>
+
+    <step id="2" name="select_judges">
+      <action>为每个用例选择对应的Judge</action>
+      <mapping>
+        <case_type judge="llm_semantic_equivalence">semantic_equivalence</case_type>
+        <case_type judge="llm_reasoning_quality">reasoning_quality</case_type>
+        <case_type judge="llm_consistency_check">consistency_check</case_type>
+      </mapping>
+    </step>
+
+    <step id="3" name="execute_judges">
+      <action>执行LLM Judge评估</action>
+      <parallel>true</parallel>
+      <max_concurrent>5</max_concurrent>
+      <for_each case="eligible_cases">
+        <call_llm>
+          <model>judge.model</model>
+          <system_prompt>judge.prompt.system</system_prompt>
+          <user_prompt>format(judge.prompt.user_template, case)</user_prompt>
+        </call_llm>
+        <parse_output>
+          <schema>judge.output_schema</schema>
+        </parse_output>
+        <record>
+          <case_id>case.case_id</case_id>
+          <score>parsed.score</score>
+          <rationale>parsed.rationale</rationale>
+          <confidence>parsed.confidence</confidence>
+        </record>
+      </for_each>
+    </step>
+
+    <step id="4" name="check_confidence">
+      <action>检查置信度，标记需要人工审核的用例</action>
+      <threshold>0.6</threshold>
+      <for_each result="judge_results">
+        <if test="result.confidence &lt; 0.6">
+          <add_to>human_review_required</add_to>
+          <flag>LOW_CONFIDENCE_JUDGE</flag>
+        </if>
+      </for_each>
+    </step>
+
+    <step id="5" name="apply_constraints">
+      <action>应用约束：确保不参与BLOCK决策</action>
+      <enforcement>
+        <set>llm_scores.can_block = false</set>
+        <set>llm_scores.weight_in_block = 0</set>
+      </enforcement>
+    </step>
+
+    <step id="6" name="emit_outputs">
+      <action>输出评分结果</action>
+      <output>
+        <field name="llm_scores">
+          <per_case>individual_scores</per_case>
+          <can_block>false</can_block>
+          <weight_cap>0.2</weight_cap>
+        </field>
+        <field name="judge_rationales">collected_rationales</field>
+        <field name="human_review_required">flagged_cases</field>
+      </output>
+    </step>
+  </steps>
+
+  <!-- 不变量 -->
+  <invariants>
+    <invariant id="INV-ELJ-01" name="cannot_block">
+      <rule>LLM Judge评分不参与BLOCK决策，权重为0</rule>
+      <enforcement>hardcoded</enforcement>
+    </invariant>
+    <invariant id="INV-ELJ-02" name="suite_restriction">
+      <rule>Safety/Governance/Tool套件禁用LLM Judge</rule>
+      <enforcement>filter at step 1</enforcement>
+    </invariant>
+    <invariant id="INV-ELJ-03" name="human_fallback">
+      <rule>confidence &lt; 0.6 必须触发human review</rule>
+      <enforcement>check at step 4</enforcement>
+    </invariant>
+  </invariants>
+
+  <!-- 错误码 -->
+  <error_codes>
+    <code id="EVAL_LLM_JUDGE_TIMEOUT" severity="P2">
+      <description>LLM Judge调用超时</description>
+      <action>SKIP_JUDGE, USE_RULE_SCORE_ONLY</action>
+    </code>
+    <code id="EVAL_LLM_JUDGE_PARSE_ERROR" severity="P2">
+      <description>LLM输出解析失败</description>
+      <action>SKIP_JUDGE, FLAG_FOR_REVIEW</action>
+    </code>
+    <code id="EVAL_LLM_JUDGE_LOW_CONFIDENCE" severity="P2">
+      <description>LLM Judge置信度过低</description>
+      <action>FLAG_FOR_HUMAN_REVIEW</action>
+    </code>
+  </error_codes>
+</skill>

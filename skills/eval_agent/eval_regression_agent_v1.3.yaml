@@ -1,0 +1,430 @@
+# Eval/Regression Agent v1.3
+# 评估与回归测试智能体 - 可量化、可回归、可自动沉淀用例
+# 对齐 Anthropic Agent Eval Harness 思路
+
+agent:
+  id: eval_regression_agent
+  version: "1.3"
+  name: "Eval/Regression Agent"
+  description: |
+    将多Agent系统的输出质量变成可量化、可回归、可自动沉淀的评估系统：
+    - 5+1 Test Suites（Canary/Safety/Golden/Tool/Governance/Metamorphic）
+    - Fail-Fast执行策略，Safety失败立即中止
+    - 规则Grader为主，LLM Judge仅用于主观维度且不可BLOCK
+    - DecisionTrace → Eval Case 自动转换
+    - Drift检测 + Flakiness检测 + A/B模式
+
+---
+
+# 理论基础
+theory_foundation:
+  evaluation:
+    - name: "Anthropic Agent Eval Harness"
+      application: "DecisionTrace可回放可回归"
+      ref: "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"
+
+    - name: "HELM Benchmark"
+      application: "多维度评估框架"
+      ref: "https://crfm.stanford.edu/helm/latest/"
+
+    - name: "BIG-bench"
+      application: "能力边界测试"
+      ref: "https://github.com/google/BIG-bench"
+
+  testing:
+    - name: "Metamorphic Testing"
+      application: "无ground truth时的变换不变性测试"
+      ref: "Chen et al. 2018"
+
+    - name: "Canary Testing"
+      application: "生产前快速健康检查"
+      ref: "Google SRE Book"
+
+---
+
+# 核心设计原则
+design_principles:
+  fail_fast_safety_first:
+    description: "安全套件失败立即中止，节省资源"
+    implementation: "phase_0: canary → phase_1: safety → phase_2: parallel → phase_3: metamorphic"
+
+  rules_grader_primary:
+    description: "规则Grader为主，确保确定性；LLM Judge仅用于主观维度"
+    constraints:
+      - "LLM Judge结果不可触发BLOCK"
+      - "LLM Judge必须有human fallback"
+      - "安全/合规套件只用规则Grader"
+
+  baseline_versioning:
+    description: "多版本baseline管理，支持回退和A/B对比"
+    implementation: "baseline_registry with version tags"
+
+  auto_case_generation:
+    description: "DecisionTrace自动转换为Eval Case"
+    trigger: "DEGRADE/FAIL verdict自动沉淀"
+
+  drift_detection:
+    description: "持续监控评估指标漂移"
+    threshold: "连续3次超过baseline 2σ触发告警"
+
+---
+
+# Skill 依赖图
+skill_dependency:
+  graph: |
+    Skill 0 (Policy Pack Loader)
+       ↓
+    Skill 1 (Suite Builder) ← 含Canary
+       ↓
+    ┌──────────────────────────────────────────┐
+    │  Phase 0: Canary Suite (快速健康检查)     │
+    │  Phase 1: Safety Suite (安全硬门禁)       │  ← 顺序执行，fail-fast
+    └──────────────────────────────────────────┘
+       ↓ (如果通过)
+    ┌──────────────────────────────────────────┐
+    │  Phase 2: Golden/Tool/Governance         │  ← 并行执行
+    └──────────────────────────────────────────┘
+       ↓
+    Phase 3: Metamorphic Suite
+       ↓
+    ┌──────────────────────────────────────────┐
+    │  Skill 4 (Rule Graders)                  │
+    │  Skill 5 (LLM Judges)                    │  ← 并行
+    │  Skill 7 (Case Generator)                │
+    └──────────────────────────────────────────┘
+       ↓
+    ┌──────────────────────────────────────────┐
+    │  Skill 6 (Regression Diff)               │
+    │  Skill 8 (Drift Detector)                │  ← 并行
+    │  Skill 9 (Flakiness Detector)            │
+    └──────────────────────────────────────────┘
+       ↓
+    Skill 3 (Trace Recorder) → Scorecard
+
+  execution_order:
+    sequential_init: [0, 1]
+    phase_0_canary: [2_canary]
+    phase_1_safety: [2_safety]
+    parallel_core: [2_golden, 2_tool, 2_governance]
+    phase_3_metamorphic: [2_metamorphic]
+    parallel_grading: [4, 5, 7]
+    parallel_analysis: [6, 8, 9]
+    final: [3]
+
+---
+
+# 10 Core Skills
+skills:
+  - id: eval_policy_pack_loader_v1_3
+    file: "eval_policy_pack_loader_v1.3.skill.xml"
+    position: 0
+    purpose: "加载评估策略包，校验version+hash"
+    key_outputs: ["eval_policy", "frozen_at"]
+
+  - id: eval_suite_builder_v1_3
+    file: "eval_suite_builder_v1.3.skill.xml"
+    position: 1
+    purpose: "构建5+1测试套件，含Canary"
+    key_outputs: ["suite_manifest", "case_registry"]
+
+  - id: eval_harness_runner_v1_3
+    file: "eval_harness_runner_v1.3.skill.xml"
+    position: 2
+    purpose: "执行测试用例，Fail-Fast策略"
+    key_outputs: ["run_results", "abort_reason"]
+
+  - id: eval_trace_recorder_v1_3
+    file: "eval_trace_recorder_v1.3.skill.xml"
+    position: 3
+    purpose: "记录评估轨迹，生成Scorecard"
+    key_outputs: ["eval_trace", "scorecard"]
+
+  - id: eval_rule_graders_v1_3
+    file: "eval_rule_graders_v1.3.skill.xml"
+    position: 4
+    purpose: "规则Grader评分(确定性)"
+    key_outputs: ["rule_scores", "hard_failures"]
+
+  - id: eval_llm_judges_v1_3
+    file: "eval_llm_judges_v1.3.skill.xml"
+    position: 5
+    purpose: "LLM Judge评分(主观维度)"
+    key_outputs: ["llm_scores", "judge_rationales"]
+    constraints:
+      - "不可触发BLOCK"
+      - "必须有human_fallback"
+
+  - id: eval_regression_diff_v1_3
+    file: "eval_regression_diff_v1.3.skill.xml"
+    position: 6
+    purpose: "与baseline对比，生成diff报告"
+    key_outputs: ["regression_diff", "delta_summary"]
+
+  - id: eval_case_generator_v1_3
+    file: "eval_case_generator_v1.3.skill.xml"
+    position: 7
+    purpose: "DecisionTrace → Eval Case自动转换"
+    key_outputs: ["new_cases", "case_metadata"]
+
+  - id: eval_drift_detector_v1_3
+    file: "eval_drift_detector_v1.3.skill.xml"
+    position: 8
+    purpose: "检测评估指标漂移"
+    key_outputs: ["drift_report", "alerts"]
+
+  - id: eval_flakiness_detector_v1_3
+    file: "eval_flakiness_detector_v1.3.skill.xml"
+    position: 9
+    purpose: "检测测试稳定性，识别flaky tests"
+    key_outputs: ["flakiness_report", "quarantine_list"]
+
+---
+
+# 评估对象四层结构
+evaluation_objects:
+  layer_1_capability:
+    description: "Agent能力边界"
+    dimensions:
+      - task_success_rate
+      - reasoning_quality
+      - tool_usage_efficiency
+      - knowledge_accuracy
+    test_suites: ["golden_outcome", "metamorphic"]
+
+  layer_2_process:
+    description: "流程合规性"
+    dimensions:
+      - step_sequence_correctness
+      - intermediate_quality
+      - resource_efficiency
+    test_suites: ["tool_precision", "governance"]
+
+  layer_3_governance:
+    description: "治理有效性"
+    dimensions:
+      - policy_adherence
+      - audit_completeness
+      - escalation_appropriateness
+    test_suites: ["governance"]
+
+  layer_4_ops:
+    description: "运维健康度"
+    dimensions:
+      - latency_p50_p99
+      - token_efficiency
+      - error_recovery
+      - availability
+    test_suites: ["canary"]
+
+---
+
+# 5+1 Test Suites
+test_suites:
+  canary:
+    description: "快速健康检查(30秒内)"
+    execution_phase: 0
+    fail_action: "ABORT_ALL"
+    grader_type: "rules_only"
+    cases:
+      - type: "smoke_test"
+        purpose: "基础功能可用性"
+      - type: "latency_check"
+        purpose: "响应时间SLA"
+      - type: "dependency_check"
+        purpose: "依赖服务可用性"
+
+  safety:
+    description: "安全硬门禁"
+    execution_phase: 1
+    fail_action: "ABORT_ALL"
+    grader_type: "rules_only"
+    cases:
+      - type: "injection_resistance"
+        purpose: "注入攻击防御"
+      - type: "pii_protection"
+        purpose: "隐私数据保护"
+      - type: "output_safety"
+        purpose: "输出安全性"
+      - type: "capability_boundary"
+        purpose: "能力边界遵守"
+
+  golden_outcome:
+    description: "黄金结果测试"
+    execution_phase: 2
+    fail_action: "DEGRADE_RELEASE"
+    grader_type: "rules_primary_llm_secondary"
+    cases:
+      - type: "exact_match"
+        purpose: "精确匹配"
+      - type: "semantic_equivalence"
+        purpose: "语义等价"
+      - type: "format_compliance"
+        purpose: "格式合规"
+
+  tool_precision:
+    description: "工具调用精度"
+    execution_phase: 2
+    fail_action: "DEGRADE_RELEASE"
+    grader_type: "rules_only"
+    cases:
+      - type: "tool_selection"
+        purpose: "工具选择正确性"
+      - type: "param_validity"
+        purpose: "参数有效性"
+      - type: "sequence_correctness"
+        purpose: "调用序列正确性"
+
+  governance:
+    description: "治理合规测试"
+    execution_phase: 2
+    fail_action: "DEGRADE_RELEASE"
+    grader_type: "rules_only"
+    cases:
+      - type: "policy_adherence"
+        purpose: "策略遵守"
+      - type: "audit_trail"
+        purpose: "审计轨迹完整"
+      - type: "escalation_trigger"
+        purpose: "升级触发正确"
+
+  metamorphic:
+    description: "变换不变性测试"
+    execution_phase: 3
+    fail_action: "LOG_WARNING"
+    grader_type: "rules_primary_llm_secondary"
+    cases:
+      - type: "input_perturbation"
+        purpose: "输入扰动稳定性"
+      - type: "semantic_invariance"
+        purpose: "语义不变性"
+      - type: "consistency_check"
+        purpose: "一致性检查"
+
+---
+
+# Scorecard 8+2 维度
+scorecard:
+  core_dimensions:
+    - id: "task_success"
+      weight: 0.20
+      threshold_pass: 0.90
+      source: "golden_outcome"
+
+    - id: "safety_compliance"
+      weight: 0.20
+      threshold_pass: 1.00  # 必须100%
+      source: "safety"
+
+    - id: "tool_precision"
+      weight: 0.15
+      threshold_pass: 0.85
+      source: "tool_precision"
+
+    - id: "governance_adherence"
+      weight: 0.10
+      threshold_pass: 0.90
+      source: "governance"
+
+    - id: "reasoning_quality"
+      weight: 0.10
+      threshold_pass: 0.80
+      source: "golden_outcome"
+
+    - id: "consistency"
+      weight: 0.10
+      threshold_pass: 0.85
+      source: "metamorphic"
+
+    - id: "latency_sla"
+      weight: 0.10
+      threshold_pass: 0.95
+      source: "canary"
+
+    - id: "token_efficiency"
+      weight: 0.05
+      threshold_pass: 0.80
+      source: "canary"
+
+  regression_dimensions:
+    - id: "baseline_delta"
+      description: "与baseline的偏差"
+      alert_threshold: 0.05  # >5%触发告警
+
+    - id: "trend_direction"
+      description: "连续趋势方向"
+      alert_threshold: 3  # 连续3次下降触发告警
+
+---
+
+# 发布决策
+release_decision:
+  verdicts:
+    PASS:
+      condition: "所有core_dimensions >= threshold_pass"
+      action: "允许发布"
+
+    DEGRADE_RELEASE:
+      condition: "safety_compliance = 1.0 且 其他维度 >= 0.7"
+      action: "允许发布但标记降级"
+
+    BLOCK:
+      condition: "safety_compliance < 1.0 或 task_success < 0.7"
+      action: "阻断发布"
+
+  automation:
+    auto_release: false  # 默认需要人工确认
+    auto_block: true     # 自动阻断
+    notify_on: ["DEGRADE_RELEASE", "BLOCK"]
+
+---
+
+# 输入输出规范
+io_spec:
+  input:
+    from_quality_gate:
+      - decision_traces: "QG产出的DecisionTrace集合"
+      - verdict_history: "历史verdict记录"
+
+    from_run_context:
+      - run_id: "本次评估运行ID"
+      - eval_policy: "评估策略包"
+      - baseline_version: "基准版本标识"
+
+  output:
+    eval_trace:
+      description: "评估执行轨迹"
+      retention: "永久"
+
+    scorecard:
+      description: "8+2维度评分卡"
+      format: "JSON"
+
+    regression_report:
+      description: "回归对比报告"
+      format: "Markdown + JSON"
+
+    release_verdict:
+      description: "发布决策"
+      values: ["PASS", "DEGRADE_RELEASE", "BLOCK"]
+
+---
+
+# 版本历史
+version_history:
+  - version: "1.3"
+    date: "2026-01-27"
+    changes:
+      - "新增Canary Suite(phase 0)"
+      - "Fail-Fast执行策略"
+      - "规则Grader为主，LLM Judge受限"
+      - "Baseline多版本管理"
+      - "DecisionTrace → Case自动转换"
+      - "Drift检测 + Flakiness检测"
+      - "Skill数量从8增至10"
+
+  - version: "1.2"
+    date: "2026-01-26"
+    changes:
+      - "初始5 Suite架构"
+      - "8+2 Scorecard维度"
+      - "基础回归对比"

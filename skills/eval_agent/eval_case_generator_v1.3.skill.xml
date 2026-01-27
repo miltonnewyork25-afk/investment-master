@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Eval Case Generator v1.3
+  用例生成器 - DecisionTrace → Eval Case自动转换
+  Position: Skill 7
+-->
+<skill id="eval_case_generator_v1_3" version="1.3">
+  <metadata>
+    <name>Eval Case Generator</name>
+    <description>自动将DecisionTrace转换为Eval Case，沉淀回归测试用例</description>
+    <position>7</position>
+    <asof>2026-01-27</asof>
+    <owner>eval_regression_agent</owner>
+  </metadata>
+
+  <!-- 输入规范 -->
+  <input>
+    <param name="decision_traces" type="array" required="true">
+      <description>Quality Gate产出的DecisionTrace集合</description>
+    </param>
+    <param name="generation_policy" type="object" required="true">
+      <description>用例生成策略</description>
+    </param>
+    <param name="case_registry" type="object" required="true">
+      <description>现有用例注册表（用于去重）</description>
+    </param>
+  </input>
+
+  <!-- 输出规范 -->
+  <output>
+    <param name="new_cases" type="array">
+      <description>新生成的测试用例</description>
+    </param>
+    <param name="case_metadata" type="object">
+      <description>用例元数据</description>
+    </param>
+    <param name="deduplication_report" type="object">
+      <description>去重报告</description>
+    </param>
+  </output>
+
+  <!-- 执行步骤 -->
+  <steps>
+    <step id="1" name="filter_traces">
+      <action>根据策略过滤DecisionTrace</action>
+      <filters>
+        <filter name="degrade_fail">
+          <condition>verdict.status in ["DEGRADE", "FAIL", "FAIL_UNTIL_RESOLVED"]</condition>
+          <action>auto_generate</action>
+          <priority>P0 for FAIL, P1 for DEGRADE</priority>
+        </filter>
+        <filter name="pass_sample">
+          <condition>verdict.status == "PASS"</condition>
+          <action>sample</action>
+          <sample_rate>0.10</sample_rate>
+          <purpose>覆盖正常路径</purpose>
+        </filter>
+        <filter name="edge_cases">
+          <condition>stats.ab_coverage &lt; 0.5 OR stats.conflict_count > 0</condition>
+          <action>auto_generate</action>
+          <priority>P1</priority>
+          <purpose>边界情况</purpose>
+        </filter>
+      </filters>
+    </step>
+
+    <step id="2" name="extract_case_data">
+      <action>从DecisionTrace提取用例数据</action>
+      <extraction>
+        <input_fields>
+          <field source="artifacts">被测输入</field>
+          <field source="claim_registry">断言注册</field>
+          <field source="evidence_registry">证据注册</field>
+          <field source="upstream_outputs">上游输出</field>
+        </input_fields>
+        <expected_output_fields>
+          <field source="verdict">预期裁决</field>
+          <field source="reason_codes">预期原因码</field>
+          <field source="safe_output">预期安全输出</field>
+        </expected_output_fields>
+        <metadata_fields>
+          <field source="run_id">来源run_id</field>
+          <field source="policy_pack_version">策略版本</field>
+          <field source="stats">统计数据</field>
+          <field source="tool_calls">工具调用</field>
+        </metadata_fields>
+      </extraction>
+    </step>
+
+    <step id="3" name="determine_suite">
+      <action>确定用例所属套件</action>
+      <mapping>
+        <rule>
+          <condition>reason_codes contains "SAFE_*"</condition>
+          <suite>safety</suite>
+        </rule>
+        <rule>
+          <condition>reason_codes contains "PROC_*"</condition>
+          <suite>governance</suite>
+        </rule>
+        <rule>
+          <condition>reason_codes contains "TOOL_*"</condition>
+          <suite>tool_precision</suite>
+        </rule>
+        <rule>
+          <condition>verdict.status == "PASS"</condition>
+          <suite>golden_outcome</suite>
+        </rule>
+        <default>
+          <suite>golden_outcome</suite>
+        </default>
+      </mapping>
+    </step>
+
+    <step id="4" name="determine_grader">
+      <action>确定用例的Grader配置</action>
+      <mapping>
+        <rule>
+          <suite>safety</suite>
+          <primary_grader>schema_validation</primary_grader>
+          <secondary_grader>none</secondary_grader>
+        </rule>
+        <rule>
+          <suite>tool_precision</suite>
+          <primary_grader>tool_call_sequence</primary_grader>
+          <secondary_grader>none</secondary_grader>
+        </rule>
+        <rule>
+          <suite>governance</suite>
+          <primary_grader>schema_validation</primary_grader>
+          <secondary_grader>none</secondary_grader>
+        </rule>
+        <rule>
+          <suite>golden_outcome</suite>
+          <primary_grader>semantic_hash</primary_grader>
+          <secondary_grader>llm_semantic_equivalence</secondary_grader>
+        </rule>
+      </mapping>
+    </step>
+
+    <step id="5" name="apply_transformations">
+      <action>应用数据转换</action>
+      <transformations>
+        <transform name="normalize_input">
+          <action>标准化输入格式</action>
+        </transform>
+        <transform name="redact_pii">
+          <action>脱敏PII数据</action>
+          <patterns>
+            <pattern>email</pattern>
+            <pattern>phone</pattern>
+            <pattern>ssn</pattern>
+          </patterns>
+        </transform>
+        <transform name="hash_sensitive">
+          <action>哈希敏感标识符</action>
+          <fields>user_id, session_id</fields>
+        </transform>
+      </transformations>
+    </step>
+
+    <step id="6" name="deduplication">
+      <action>去重检查</action>
+      <algorithm>simhash</algorithm>
+      <threshold>0.90</threshold>
+      <scope>
+        <time_window>30 days</time_window>
+        <same_suite>true</same_suite>
+      </scope>
+      <on_duplicate>
+        <action>skip</action>
+        <record>deduplication_report</record>
+      </on_duplicate>
+    </step>
+
+    <step id="7" name="build_case">
+      <action>构建测试用例对象</action>
+      <case_schema>
+        <field name="case_id">uuid_generate()</field>
+        <field name="suite">determined_suite</field>
+        <field name="type">inferred_type</field>
+        <field name="input">extracted_input</field>
+        <field name="expected_output">extracted_expected</field>
+        <field name="grader_config">determined_grader</field>
+        <field name="priority">determined_priority</field>
+        <field name="metadata">
+          <source>auto_generated</source>
+          <decision_trace_id>source_trace.run_id</decision_trace_id>
+          <created_at>current_timestamp</created_at>
+          <tags>[auto, verdict_type, suite]</tags>
+        </field>
+      </case_schema>
+    </step>
+
+    <step id="8" name="validate_cases">
+      <action>验证生成的用例</action>
+      <validation>
+        <check>符合suite schema</check>
+        <check>input非空</check>
+        <check>expected_output有效</check>
+        <check>grader_config完整</check>
+      </validation>
+      <on_invalid>
+        <action>skip with warning</action>
+      </on_invalid>
+    </step>
+
+    <step id="9" name="emit_outputs">
+      <action>输出生成结果</action>
+      <output>
+        <field name="new_cases">validated_cases</field>
+        <field name="case_metadata">
+          <total_traces>input count</total_traces>
+          <filtered_traces>after filter count</filtered_traces>
+          <generated_cases>valid case count</generated_cases>
+          <deduplicated>duplicate count</deduplicated>
+          <by_suite>breakdown by suite</by_suite>
+          <by_priority>breakdown by priority</by_priority>
+        </field>
+        <field name="deduplication_report">duplicate_details</field>
+      </output>
+    </step>
+  </steps>
+
+  <!-- 生成策略配置 -->
+  <generation_strategies>
+    <strategy name="aggressive">
+      <description>激进生成，最大化覆盖</description>
+      <pass_sample_rate>0.20</pass_sample_rate>
+      <dedup_threshold>0.95</dedup_threshold>
+    </strategy>
+    <strategy name="conservative">
+      <description>保守生成，只关注失败</description>
+      <pass_sample_rate>0.05</pass_sample_rate>
+      <dedup_threshold>0.85</dedup_threshold>
+    </strategy>
+    <strategy name="balanced" default="true">
+      <description>平衡生成</description>
+      <pass_sample_rate>0.10</pass_sample_rate>
+      <dedup_threshold>0.90</dedup_threshold>
+    </strategy>
+  </generation_strategies>
+
+  <!-- 不变量 -->
+  <invariants>
+    <invariant id="INV-ECG-01" name="trace_linkage">
+      <rule>每个生成的case必须链接到源DecisionTrace</rule>
+    </invariant>
+    <invariant id="INV-ECG-02" name="pii_redacted">
+      <rule>所有PII数据必须脱敏</rule>
+    </invariant>
+    <invariant id="INV-ECG-03" name="schema_valid">
+      <rule>生成的case必须符合suite schema</rule>
+    </invariant>
+  </invariants>
+
+  <!-- 错误码 -->
+  <error_codes>
+    <code id="EVAL_TRACE_INVALID" severity="P2">
+      <description>DecisionTrace格式无效</description>
+      <action>SKIP_TRACE</action>
+    </code>
+    <code id="EVAL_CASE_VALIDATION_FAILED" severity="P2">
+      <description>生成的用例验证失败</description>
+      <action>SKIP_CASE</action>
+    </code>
+  </error_codes>
+</skill>

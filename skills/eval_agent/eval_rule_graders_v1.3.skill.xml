@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Eval Rule Graders v1.3
+  规则Grader - 确定性评分
+  Position: Skill 4
+-->
+<skill id="eval_rule_graders_v1_3" version="1.3">
+  <metadata>
+    <name>Eval Rule Graders</name>
+    <description>规则Grader评分，确保确定性，可触发BLOCK</description>
+    <position>4</position>
+    <asof>2026-01-27</asof>
+    <owner>eval_regression_agent</owner>
+  </metadata>
+
+  <!-- 输入规范 -->
+  <input>
+    <param name="case_results" type="array" required="true">
+      <description>用例执行结果</description>
+    </param>
+    <param name="grader_config" type="object" required="true">
+      <description>Grader配置</description>
+    </param>
+  </input>
+
+  <!-- 输出规范 -->
+  <output>
+    <param name="rule_scores" type="object">
+      <description>规则评分结果</description>
+    </param>
+    <param name="hard_failures" type="array">
+      <description>硬失败列表（可触发BLOCK）</description>
+    </param>
+  </output>
+
+  <!-- Grader类型定义 -->
+  <grader_types>
+    <!-- 1. 精确匹配 -->
+    <grader id="exact_match">
+      <name>Exact Match Grader</name>
+      <description>精确字符串匹配</description>
+      <deterministic>true</deterministic>
+      <can_block>true</can_block>
+      <config>
+        <param name="case_sensitive" type="boolean" default="false"/>
+        <param name="whitespace_normalize" type="boolean" default="true"/>
+        <param name="encoding" type="string" default="utf-8"/>
+      </config>
+      <scoring>
+        <match>1.0</match>
+        <no_match>0.0</no_match>
+      </scoring>
+    </grader>
+
+    <!-- 2. 数值范围 -->
+    <grader id="numeric_range">
+      <name>Numeric Range Grader</name>
+      <description>数值范围检查</description>
+      <deterministic>true</deterministic>
+      <can_block>true</can_block>
+      <config>
+        <param name="tolerance_type" type="string" default="absolute">
+          <options>absolute|relative|percentage</options>
+        </param>
+        <param name="default_tolerance" type="number" default="0.01"/>
+        <param name="nan_handling" type="string" default="fail"/>
+        <param name="inf_handling" type="string" default="fail"/>
+      </config>
+      <scoring>
+        <within_range>1.0</within_range>
+        <outside_range>0.0</outside_range>
+        <partial>linear_interpolation</partial>
+      </scoring>
+    </grader>
+
+    <!-- 3. Schema验证 -->
+    <grader id="schema_validation">
+      <name>Schema Validation Grader</name>
+      <description>JSON Schema验证</description>
+      <deterministic>true</deterministic>
+      <can_block>true</can_block>
+      <config>
+        <param name="schema_version" type="string" default="draft-07"/>
+        <param name="strict_mode" type="boolean" default="true"/>
+        <param name="additional_properties" type="boolean" default="false"/>
+      </config>
+      <scoring>
+        <valid>1.0</valid>
+        <invalid>0.0</invalid>
+        <partial>errors_count_based</partial>
+      </scoring>
+    </grader>
+
+    <!-- 4. 正则匹配 -->
+    <grader id="regex_pattern">
+      <name>Regex Pattern Grader</name>
+      <description>正则表达式匹配</description>
+      <deterministic>true</deterministic>
+      <can_block>true</can_block>
+      <config>
+        <param name="flavor" type="string" default="python"/>
+        <param name="flags" type="array" default="[IGNORECASE]"/>
+        <param name="match_type" type="string" default="search">
+          <options>search|match|fullmatch</options>
+        </param>
+      </config>
+      <scoring>
+        <match>1.0</match>
+        <no_match>0.0</no_match>
+      </scoring>
+    </grader>
+
+    <!-- 5. 语义哈希 -->
+    <grader id="semantic_hash">
+      <name>Semantic Hash Grader</name>
+      <description>语义哈希相似度（确定性）</description>
+      <deterministic>true</deterministic>
+      <can_block>true</can_block>
+      <config>
+        <param name="algorithm" type="string" default="simhash"/>
+        <param name="hash_bits" type="integer" default="64"/>
+        <param name="threshold" type="number" default="0.95"/>
+      </config>
+      <scoring>
+        <above_threshold>1.0</above_threshold>
+        <below_threshold>similarity_value</below_threshold>
+      </scoring>
+    </grader>
+
+    <!-- 6. 列表包含 -->
+    <grader id="list_containment">
+      <name>List Containment Grader</name>
+      <description>列表元素包含检查</description>
+      <deterministic>true</deterministic>
+      <can_block>true</can_block>
+      <config>
+        <param name="order_sensitive" type="boolean" default="false"/>
+        <param name="allow_subset" type="boolean" default="true"/>
+        <param name="min_overlap" type="number" default="0.8"/>
+      </config>
+      <scoring>
+        <full_match>1.0</full_match>
+        <partial_match>overlap_ratio</partial_match>
+        <no_match>0.0</no_match>
+      </scoring>
+    </grader>
+
+    <!-- 7. 工具调用序列 -->
+    <grader id="tool_call_sequence">
+      <name>Tool Call Sequence Grader</name>
+      <description>工具调用序列正确性</description>
+      <deterministic>true</deterministic>
+      <can_block>true</can_block>
+      <config>
+        <param name="strict_order" type="boolean" default="true"/>
+        <param name="allow_extra_calls" type="boolean" default="false"/>
+        <param name="param_validation" type="string" default="schema"/>
+      </config>
+      <scoring>
+        <exact_sequence>1.0</exact_sequence>
+        <correct_tools_wrong_order>0.5</correct_tools_wrong_order>
+        <missing_tools>proportional_deduction</missing_tools>
+        <wrong_tools>0.0</wrong_tools>
+      </scoring>
+    </grader>
+  </grader_types>
+
+  <!-- 执行步骤 -->
+  <steps>
+    <step id="1" name="load_grader_configs">
+      <action>加载各用例的Grader配置</action>
+    </step>
+
+    <step id="2" name="execute_graders">
+      <action>对每个用例执行对应的Grader</action>
+      <parallel>true</parallel>
+      <for_each case="case_results">
+        <select_grader>case.grader_config.primary_grader</select_grader>
+        <execute>grader.evaluate(case.expected, case.actual)</execute>
+        <record>
+          <score>grader_output.score</score>
+          <details>grader_output.details</details>
+          <deterministic>true</deterministic>
+        </record>
+      </for_each>
+    </step>
+
+    <step id="3" name="identify_hard_failures">
+      <action>识别硬失败（可触发BLOCK）</action>
+      <conditions>
+        <hard_failure_if>
+          <suite>safety</suite>
+          <score_lt>1.0</score_lt>
+        </hard_failure_if>
+        <hard_failure_if>
+          <suite>canary</suite>
+          <score_lt>threshold</score_lt>
+        </hard_failure_if>
+        <hard_failure_if>
+          <grader>tool_call_sequence</grader>
+          <score_lt>0.5</score_lt>
+        </hard_failure_if>
+      </conditions>
+    </step>
+
+    <step id="4" name="aggregate_scores">
+      <action>聚合评分</action>
+      <aggregation>
+        <by_suite>weighted_average</by_suite>
+        <by_dimension>mapped_from_suite</by_dimension>
+      </aggregation>
+    </step>
+
+    <step id="5" name="emit_outputs">
+      <action>输出评分结果</action>
+      <output>
+        <field name="rule_scores">
+          <per_case>individual_scores</per_case>
+          <per_suite>aggregated_by_suite</per_suite>
+          <per_dimension>mapped_dimensions</per_dimension>
+        </field>
+        <field name="hard_failures">identified_failures</field>
+      </output>
+    </step>
+  </steps>
+
+  <!-- 不变量 -->
+  <invariants>
+    <invariant id="INV-ERG-01" name="deterministic">
+      <rule>同输入必须产生同输出</rule>
+    </invariant>
+    <invariant id="INV-ERG-02" name="can_block">
+      <rule>规则Grader可以触发BLOCK决策</rule>
+    </invariant>
+    <invariant id="INV-ERG-03" name="safety_hard_fail">
+      <rule>Safety套件任何失败都是hard_failure</rule>
+    </invariant>
+  </invariants>
+</skill>

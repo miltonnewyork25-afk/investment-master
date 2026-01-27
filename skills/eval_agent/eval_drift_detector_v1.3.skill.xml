@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Eval Drift Detector v1.3
+  漂移检测器 - 检测评估指标漂移
+  Position: Skill 8
+-->
+<skill id="eval_drift_detector_v1_3" version="1.3">
+  <metadata>
+    <name>Eval Drift Detector</name>
+    <description>检测评估指标漂移，连续异常触发告警</description>
+    <position>8</position>
+    <asof>2026-01-27</asof>
+    <owner>eval_regression_agent</owner>
+  </metadata>
+
+  <!-- 输入规范 -->
+  <input>
+    <param name="current_scorecard" type="object" required="true">
+      <description>当前运行的Scorecard</description>
+    </param>
+    <param name="historical_scorecards" type="array" required="true">
+      <description>历史Scorecard集合</description>
+    </param>
+    <param name="drift_policy" type="object" required="true">
+      <description>漂移检测策略</description>
+    </param>
+  </input>
+
+  <!-- 输出规范 -->
+  <output>
+    <param name="drift_report" type="object">
+      <description>漂移检测报告</description>
+    </param>
+    <param name="alerts" type="array">
+      <description>触发的告警</description>
+    </param>
+  </output>
+
+  <!-- 执行步骤 -->
+  <steps>
+    <step id="1" name="load_historical_data">
+      <action>加载历史数据</action>
+      <window>
+        <lookback_runs>10</lookback_runs>
+        <min_samples>5</min_samples>
+      </window>
+      <validation>
+        <if samples_lt="5">
+          <action>skip drift detection</action>
+          <reason>insufficient data</reason>
+        </if>
+      </validation>
+    </step>
+
+    <step id="2" name="compute_baselines">
+      <action>计算各指标的baseline统计量</action>
+      <metrics>
+        <metric name="task_success_rate">
+          <source>scorecard.task_success</source>
+          <aggregation>mean, std</aggregation>
+        </metric>
+        <metric name="safety_score">
+          <source>scorecard.safety_compliance</source>
+          <aggregation>min, mean</aggregation>
+        </metric>
+        <metric name="avg_latency_ms">
+          <source>scorecard.latency_sla</source>
+          <aggregation>p50, p99</aggregation>
+        </metric>
+        <metric name="token_usage">
+          <source>scorecard.token_efficiency</source>
+          <aggregation>mean, std</aggregation>
+        </metric>
+        <metric name="tool_precision">
+          <source>scorecard.tool_precision</source>
+          <aggregation>mean, std</aggregation>
+        </metric>
+        <metric name="governance">
+          <source>scorecard.governance_adherence</source>
+          <aggregation>mean, std</aggregation>
+        </metric>
+        <metric name="consistency">
+          <source>scorecard.consistency</source>
+          <aggregation>mean, std</aggregation>
+        </metric>
+      </metrics>
+    </step>
+
+    <step id="3" name="compute_z_scores">
+      <action>计算当前值的Z-Score</action>
+      <formula>z = (current - mean) / std</formula>
+      <for_each metric="monitored_metrics">
+        <compute>
+          <z_score>(current[metric] - baseline[metric].mean) / baseline[metric].std</z_score>
+          <direction>positive if current > mean else negative</direction>
+        </compute>
+      </for_each>
+    </step>
+
+    <step id="4" name="detect_point_anomaly">
+      <action>检测单点异常</action>
+      <threshold>
+        <sigma>2.0</sigma>
+      </threshold>
+      <detection>
+        <for_each metric="monitored_metrics">
+          <if test="abs(z_score) > 2.0">
+            <flag>POINT_ANOMALY</flag>
+            <severity>if z_score &lt; -2.0 then HIGH else MEDIUM</severity>
+          </if>
+        </for_each>
+      </detection>
+    </step>
+
+    <step id="5" name="detect_trend_drift">
+      <action>检测趋势漂移</action>
+      <method>
+        <consecutive_check>
+          <threshold>3</threshold>
+          <condition>连续3次同方向偏离baseline</condition>
+        </consecutive_check>
+        <mann_whitney_test>
+          <purpose>分布shift检测</purpose>
+          <p_value_threshold>0.05</p_value_threshold>
+        </mann_whitney_test>
+      </method>
+      <detection>
+        <for_each metric="monitored_metrics">
+          <check_consecutive>
+            <direction>degrading</direction>
+            <count>recent_runs</count>
+          </check_consecutive>
+          <if test="consecutive_degrading >= 3">
+            <flag>TREND_DRIFT</flag>
+            <severity>HIGH</severity>
+          </if>
+        </for_each>
+      </detection>
+    </step>
+
+    <step id="6" name="special_safety_check">
+      <action>安全指标特殊检查</action>
+      <rule>安全指标任何下降都触发告警</rule>
+      <detection>
+        <if test="current.safety_compliance &lt; baseline.safety_compliance.min">
+          <flag>SAFETY_DRIFT</flag>
+          <severity>CRITICAL</severity>
+          <immediate_alert>true</immediate_alert>
+        </if>
+      </detection>
+    </step>
+
+    <step id="7" name="generate_alerts">
+      <action>生成告警</action>
+      <alert_generation>
+        <for_each anomaly="detected_anomalies">
+          <create_alert>
+            <alert_id>uuid_generate()</alert_id>
+            <metric>anomaly.metric</metric>
+            <type>anomaly.type</type>
+            <severity>anomaly.severity</severity>
+            <current_value>anomaly.current</current_value>
+            <baseline_value>anomaly.baseline</baseline_value>
+            <z_score>anomaly.z_score</z_score>
+            <timestamp>current_timestamp</timestamp>
+          </create_alert>
+        </for_each>
+      </alert_generation>
+      <throttling>
+        <window_minutes>60</window_minutes>
+        <max_alerts_per_metric>3</max_alerts_per_metric>
+      </throttling>
+    </step>
+
+    <step id="8" name="emit_outputs">
+      <action>输出漂移检测结果</action>
+      <output>
+        <field name="drift_report">
+          <run_id>current run id</run_id>
+          <timestamp>current timestamp</timestamp>
+          <metrics_analyzed>list of metrics</metrics_analyzed>
+          <baseline_stats>computed baselines</baseline_stats>
+          <current_stats>current values</current_stats>
+          <z_scores>per metric z-scores</z_scores>
+          <anomalies>detected anomalies</anomalies>
+          <trend_analysis>trend detection results</trend_analysis>
+        </field>
+        <field name="alerts">generated alerts</field>
+      </output>
+    </step>
+  </steps>
+
+  <!-- 告警配置 -->
+  <alerting>
+    <channels>
+      <channel type="log">
+        <level>WARNING for MEDIUM, ERROR for HIGH, CRITICAL for CRITICAL</level>
+      </channel>
+      <channel type="webhook">
+        <url>${DRIFT_ALERT_WEBHOOK}</url>
+        <enabled_for>HIGH, CRITICAL</enabled_for>
+      </channel>
+    </channels>
+    <escalation>
+      <rule>CRITICAL alerts escalate immediately</rule>
+      <rule>HIGH alerts escalate after 2 consecutive occurrences</rule>
+    </escalation>
+  </alerting>
+
+  <!-- 不变量 -->
+  <invariants>
+    <invariant id="INV-EDD-01" name="safety_sensitive">
+      <rule>安全指标下降必须触发告警</rule>
+    </invariant>
+    <invariant id="INV-EDD-02" name="min_samples">
+      <rule>样本数 &lt; 5时跳过漂移检测</rule>
+    </invariant>
+    <invariant id="INV-EDD-03" name="throttle_alerts">
+      <rule>同一指标60分钟内最多3次告警</rule>
+    </invariant>
+  </invariants>
+
+  <!-- 错误码 -->
+  <error_codes>
+    <code id="EVAL_DRIFT_INSUFFICIENT_DATA" severity="P2">
+      <description>历史数据不足，无法检测漂移</description>
+      <action>SKIP_DRIFT_DETECTION</action>
+    </code>
+    <code id="EVAL_DRIFT_ALERT_FAILED" severity="P2">
+      <description>告警发送失败</description>
+      <action>LOG_AND_CONTINUE</action>
+    </code>
+  </error_codes>
+</skill>

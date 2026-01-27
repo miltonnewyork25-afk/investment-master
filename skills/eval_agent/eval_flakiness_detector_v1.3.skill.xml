@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Eval Flakiness Detector v1.3
+  稳定性检测器 - 检测flaky tests
+  Position: Skill 9
+-->
+<skill id="eval_flakiness_detector_v1_3" version="1.3">
+  <metadata>
+    <name>Eval Flakiness Detector</name>
+    <description>检测测试稳定性，识别和隔离flaky tests</description>
+    <position>9</position>
+    <asof>2026-01-27</asof>
+    <owner>eval_regression_agent</owner>
+  </metadata>
+
+  <!-- 输入规范 -->
+  <input>
+    <param name="case_results" type="array" required="true">
+      <description>当前运行的用例结果</description>
+    </param>
+    <param name="historical_results" type="array" required="true">
+      <description>历史用例结果（按case_id分组）</description>
+    </param>
+    <param name="flakiness_policy" type="object" required="true">
+      <description>稳定性检测策略</description>
+    </param>
+  </input>
+
+  <!-- 输出规范 -->
+  <output>
+    <param name="flakiness_report" type="object">
+      <description>稳定性检测报告</description>
+    </param>
+    <param name="quarantine_list" type="array">
+      <description>需要隔离的flaky用例</description>
+    </param>
+    <param name="stability_scores" type="object">
+      <description>各用例的稳定性评分</description>
+    </param>
+  </output>
+
+  <!-- 执行步骤 -->
+  <steps>
+    <step id="1" name="aggregate_history">
+      <action>聚合历史结果</action>
+      <grouping>by case_id</grouping>
+      <window>
+        <min_runs>5</min_runs>
+        <max_runs>20</max_runs>
+        <time_window>30 days</time_window>
+      </window>
+      <filter>
+        <exclude>cases with fewer than min_runs</exclude>
+      </filter>
+    </step>
+
+    <step id="2" name="compute_variance_metrics">
+      <action>计算方差指标</action>
+      <for_each case="aggregated_cases">
+        <compute>
+          <!-- Pass/Fail方差 -->
+          <pass_fail_variance>
+            <formula>var(pass_fail_binary)</formula>
+            <note>0表示全通过或全失败，高值表示不稳定</note>
+          </pass_fail_variance>
+
+          <!-- 分数变异系数 -->
+          <score_cv>
+            <formula>std(scores) / mean(scores)</formula>
+            <note>变异系数，标准化的方差度量</note>
+          </score_cv>
+
+          <!-- 延迟方差 -->
+          <latency_variance>
+            <formula>var(latency_ms)</formula>
+            <note>执行时间的稳定性</note>
+          </latency_variance>
+
+          <!-- 不一致率 -->
+          <inconsistency_rate>
+            <formula>count(result != mode) / total_runs</formula>
+            <note>与众数不一致的比例</note>
+          </inconsistency_rate>
+        </compute>
+      </for_each>
+    </step>
+
+    <step id="3" name="classify_stability">
+      <action>分类稳定性级别</action>
+      <classification>
+        <class name="stable">
+          <condition>pass_fail_variance &lt; 0.05 AND score_cv &lt; 0.05</condition>
+          <action>none</action>
+        </class>
+        <class name="unstable">
+          <condition>0.05 &lt;= pass_fail_variance &lt; 0.15 OR 0.05 &lt;= score_cv &lt; 0.15</condition>
+          <action>flag_for_monitoring</action>
+        </class>
+        <class name="flaky">
+          <condition>0.15 &lt;= pass_fail_variance &lt; 0.25 OR 0.15 &lt;= score_cv &lt; 0.25</condition>
+          <action>consider_quarantine</action>
+        </class>
+        <class name="very_flaky">
+          <condition>pass_fail_variance >= 0.25 OR score_cv >= 0.25</condition>
+          <action>quarantine</action>
+        </class>
+      </classification>
+    </step>
+
+    <step id="4" name="determine_quarantine">
+      <action>确定需要隔离的用例</action>
+      <quarantine_rules>
+        <rule>
+          <condition>classification == "very_flaky"</condition>
+          <action>immediate_quarantine</action>
+          <duration>7 days</duration>
+        </rule>
+        <rule>
+          <condition>classification == "flaky" AND consecutive_flaky >= 3</condition>
+          <action>quarantine</action>
+          <duration>3 days</duration>
+        </rule>
+        <rule>
+          <condition>safety_suite AND classification in ["flaky", "very_flaky"]</condition>
+          <action>do_not_quarantine</action>
+          <reason>安全用例不能隔离，需要修复</reason>
+          <escalate>true</escalate>
+        </rule>
+      </quarantine_rules>
+    </step>
+
+    <step id="5" name="compute_stability_scores">
+      <action>计算稳定性评分</action>
+      <formula>
+        stability_score = 1 - (0.5 * pass_fail_variance + 0.3 * score_cv + 0.2 * normalized_latency_variance)
+      </formula>
+      <range>0.0 to 1.0, higher is more stable</range>
+    </step>
+
+    <step id="6" name="identify_patterns">
+      <action>识别不稳定模式</action>
+      <patterns>
+        <pattern name="time_sensitive">
+          <detection>failures clustered by time of day</detection>
+          <action>flag as time-sensitive</action>
+        </pattern>
+        <pattern name="resource_sensitive">
+          <detection>failures correlated with high resource usage</detection>
+          <action>flag as resource-sensitive</action>
+        </pattern>
+        <pattern name="order_sensitive">
+          <detection>failures depend on execution order</detection>
+          <action>flag as order-sensitive</action>
+        </pattern>
+        <pattern name="external_dependency">
+          <detection>failures correlated with external service issues</detection>
+          <action>flag as externally-dependent</action>
+        </pattern>
+      </patterns>
+    </step>
+
+    <step id="7" name="recommend_actions">
+      <action>生成修复建议</action>
+      <recommendations>
+        <for_each case="unstable_cases">
+          <recommend>
+            <if pattern="time_sensitive">
+              <action>Add time mocking or increase timeout</action>
+            </if>
+            <if pattern="resource_sensitive">
+              <action>Add resource isolation or increase limits</action>
+            </if>
+            <if pattern="order_sensitive">
+              <action>Add proper setup/teardown or isolation</action>
+            </if>
+            <if pattern="external_dependency">
+              <action>Add mocking or retry logic</action>
+            </if>
+          </recommend>
+        </for_each>
+      </recommendations>
+    </step>
+
+    <step id="8" name="emit_outputs">
+      <action>输出稳定性检测结果</action>
+      <output>
+        <field name="flakiness_report">
+          <run_id>current run id</run_id>
+          <timestamp>current timestamp</timestamp>
+          <total_cases_analyzed>count</total_cases_analyzed>
+          <classification_breakdown>
+            <stable>count</stable>
+            <unstable>count</unstable>
+            <flaky>count</flaky>
+            <very_flaky>count</very_flaky>
+          </classification_breakdown>
+          <patterns_detected>list of patterns</patterns_detected>
+          <recommendations>list of recommendations</recommendations>
+        </field>
+        <field name="quarantine_list">
+          <cases>list of case_ids</cases>
+          <durations>per case duration</durations>
+          <reasons>per case reason</reasons>
+        </field>
+        <field name="stability_scores">per case scores</field>
+      </output>
+    </step>
+  </steps>
+
+  <!-- 隔离管理 -->
+  <quarantine_management>
+    <auto_release>
+      <enabled>true</enabled>
+      <condition>after duration expires AND retest passes</condition>
+    </auto_release>
+    <manual_release>
+      <enabled>true</enabled>
+      <requires>explicit approval</requires>
+    </manual_release>
+    <permanent_quarantine>
+      <condition>quarantined 3 times in 30 days</condition>
+      <action>mark for deletion or major refactor</action>
+    </permanent_quarantine>
+  </quarantine_management>
+
+  <!-- 重试策略 -->
+  <retry_strategy>
+    <for_classification>unstable, flaky</for_classification>
+    <max_retries>3</max_retries>
+    <backoff>exponential</backoff>
+    <pass_condition>majority pass (2 of 3)</pass_condition>
+  </retry_strategy>
+
+  <!-- 不变量 -->
+  <invariants>
+    <invariant id="INV-EFD-01" name="min_runs_required">
+      <rule>至少5次运行才能评估稳定性</rule>
+    </invariant>
+    <invariant id="INV-EFD-02" name="safety_no_quarantine">
+      <rule>Safety套件用例不能隔离，必须修复</rule>
+    </invariant>
+    <invariant id="INV-EFD-03" name="quarantine_duration">
+      <rule>隔离最长7天，之后自动重测</rule>
+    </invariant>
+  </invariants>
+
+  <!-- 错误码 -->
+  <error_codes>
+    <code id="EVAL_FLAKY_INSUFFICIENT_HISTORY" severity="P2">
+      <description>历史数据不足，无法评估稳定性</description>
+      <action>SKIP_FLAKINESS_DETECTION</action>
+    </code>
+    <code id="EVAL_FLAKY_SAFETY_ALERT" severity="P0">
+      <description>安全用例检测为flaky</description>
+      <action>ESCALATE_IMMEDIATELY</action>
+    </code>
+  </error_codes>
+</skill>

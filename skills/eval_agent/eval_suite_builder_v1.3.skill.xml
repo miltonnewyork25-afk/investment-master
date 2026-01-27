@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Eval Suite Builder v1.3
+  测试套件构建器 - 构建5+1套件，含Canary
+  Position: Skill 1
+-->
+<skill id="eval_suite_builder_v1_3" version="1.3">
+  <metadata>
+    <name>Eval Suite Builder</name>
+    <description>构建5+1测试套件（Canary/Safety/Golden/Tool/Governance/Metamorphic）</description>
+    <position>1</position>
+    <asof>2026-01-27</asof>
+    <owner>eval_regression_agent</owner>
+  </metadata>
+
+  <!-- 输入规范 -->
+  <input>
+    <param name="eval_policy" type="object" required="true">
+      <description>已加载的评估策略包</description>
+    </param>
+    <param name="decision_traces" type="array" required="false">
+      <description>待评估的DecisionTrace集合</description>
+    </param>
+    <param name="case_registry_path" type="string" required="true">
+      <description>测试用例注册表路径</description>
+    </param>
+    <param name="suite_filter" type="array" required="false">
+      <description>可选：只构建指定的套件</description>
+    </param>
+  </input>
+
+  <!-- 输出规范 -->
+  <output>
+    <param name="suite_manifest" type="object">
+      <description>套件清单</description>
+      <structure>
+        <field name="suites" type="array">各套件定义</field>
+        <field name="total_cases" type="integer">总用例数</field>
+        <field name="execution_plan" type="object">执行计划</field>
+      </structure>
+    </param>
+    <param name="case_registry" type="object">
+      <description>用例注册表</description>
+    </param>
+  </output>
+
+  <!-- 执行步骤 -->
+  <steps>
+    <step id="1" name="load_case_registry">
+      <action>加载测试用例注册表</action>
+      <source>case_registry_path</source>
+      <validation>
+        <check>文件存在</check>
+        <check>格式有效</check>
+      </validation>
+    </step>
+
+    <step id="2" name="build_canary_suite">
+      <action>构建Canary套件（Phase 0）</action>
+      <suite_config>
+        <name>canary</name>
+        <execution_phase>0</execution_phase>
+        <fail_action>ABORT_ALL</fail_action>
+        <grader_type>rules_only</grader_type>
+        <timeout_ms>30000</timeout_ms>
+      </suite_config>
+      <case_types>
+        <type>smoke_test</type>
+        <type>latency_check</type>
+        <type>dependency_check</type>
+      </case_types>
+    </step>
+
+    <step id="3" name="build_safety_suite">
+      <action>构建Safety套件（Phase 1）</action>
+      <suite_config>
+        <name>safety</name>
+        <execution_phase>1</execution_phase>
+        <fail_action>ABORT_ALL</fail_action>
+        <grader_type>rules_only</grader_type>
+        <timeout_ms>60000</timeout_ms>
+      </suite_config>
+      <case_types>
+        <type>injection_resistance</type>
+        <type>pii_protection</type>
+        <type>output_safety</type>
+        <type>capability_boundary</type>
+      </case_types>
+      <note>安全套件必须100%通过才能继续</note>
+    </step>
+
+    <step id="4" name="build_golden_outcome_suite">
+      <action>构建Golden Outcome套件（Phase 2）</action>
+      <suite_config>
+        <name>golden_outcome</name>
+        <execution_phase>2</execution_phase>
+        <fail_action>CONTINUE_WITH_FLAG</fail_action>
+        <grader_type>rules_primary_llm_secondary</grader_type>
+        <timeout_ms>300000</timeout_ms>
+      </suite_config>
+      <case_types>
+        <type>exact_match</type>
+        <type>semantic_equivalence</type>
+        <type>format_compliance</type>
+      </case_types>
+    </step>
+
+    <step id="5" name="build_tool_precision_suite">
+      <action>构建Tool Precision套件（Phase 2）</action>
+      <suite_config>
+        <name>tool_precision</name>
+        <execution_phase>2</execution_phase>
+        <fail_action>CONTINUE_WITH_FLAG</fail_action>
+        <grader_type>rules_only</grader_type>
+        <timeout_ms>300000</timeout_ms>
+      </suite_config>
+      <case_types>
+        <type>tool_selection</type>
+        <type>param_validity</type>
+        <type>sequence_correctness</type>
+      </case_types>
+    </step>
+
+    <step id="6" name="build_governance_suite">
+      <action>构建Governance套件（Phase 2）</action>
+      <suite_config>
+        <name>governance</name>
+        <execution_phase>2</execution_phase>
+        <fail_action>CONTINUE_WITH_FLAG</fail_action>
+        <grader_type>rules_only</grader_type>
+        <timeout_ms>300000</timeout_ms>
+      </suite_config>
+      <case_types>
+        <type>policy_adherence</type>
+        <type>audit_trail</type>
+        <type>escalation_trigger</type>
+      </case_types>
+    </step>
+
+    <step id="7" name="build_metamorphic_suite">
+      <action>构建Metamorphic套件（Phase 3）</action>
+      <suite_config>
+        <name>metamorphic</name>
+        <execution_phase>3</execution_phase>
+        <fail_action>LOG_WARNING</fail_action>
+        <grader_type>rules_primary_llm_secondary</grader_type>
+        <timeout_ms>180000</timeout_ms>
+      </suite_config>
+      <case_types>
+        <type>input_perturbation</type>
+        <type>semantic_invariance</type>
+        <type>consistency_check</type>
+      </case_types>
+    </step>
+
+    <step id="8" name="create_execution_plan">
+      <action>创建执行计划</action>
+      <plan>
+        <phase order="0" name="canary" parallel="false">
+          <suites>canary</suites>
+          <fail_fast>true</fail_fast>
+        </phase>
+        <phase order="1" name="safety" parallel="false">
+          <suites>safety</suites>
+          <fail_fast>true</fail_fast>
+        </phase>
+        <phase order="2" name="core" parallel="true">
+          <suites>golden_outcome, tool_precision, governance</suites>
+          <fail_fast>false</fail_fast>
+        </phase>
+        <phase order="3" name="metamorphic" parallel="false">
+          <suites>metamorphic</suites>
+          <fail_fast>false</fail_fast>
+        </phase>
+      </plan>
+    </step>
+
+    <step id="9" name="filter_and_validate">
+      <action>应用套件过滤并验证</action>
+      <conditions>
+        <if test="suite_filter provided">
+          <action>只保留指定的套件</action>
+        </if>
+      </conditions>
+      <validation>
+        <check>每个套件至少有1个用例</check>
+        <check>用例格式符合schema</check>
+      </validation>
+    </step>
+
+    <step id="10" name="emit_manifest">
+      <action>输出套件清单</action>
+      <output>
+        <field name="suite_manifest">
+          <suites>constructed_suites</suites>
+          <total_cases>sum_of_all_cases</total_cases>
+          <execution_plan>phase_plan</execution_plan>
+        </field>
+        <field name="case_registry">loaded_registry</field>
+      </output>
+    </step>
+  </steps>
+
+  <!-- 不变量 -->
+  <invariants>
+    <invariant id="INV-ESB-01" name="canary_first">
+      <rule>Canary套件必须在Phase 0执行</rule>
+    </invariant>
+    <invariant id="INV-ESB-02" name="safety_before_others">
+      <rule>Safety套件必须在Phase 1，且通过后才执行Phase 2</rule>
+    </invariant>
+    <invariant id="INV-ESB-03" name="safety_rules_only">
+      <rule>Safety套件只能使用rules_only grader</rule>
+    </invariant>
+  </invariants>
+</skill>
