@@ -1,0 +1,432 @@
+# Druckenmiller Methodology v1.0
+# 从98分投资者身上提取的投资框架
+#
+# 触发原则：高价值信号必须深挖到极致
+# Druckenmiller业绩：30年30%年化，0亏损年
+
+version: "1.0"
+created: "2026-01-28"
+signal_quality: "S级 (98分)"
+data_sources:
+  - "[搜索] 多个投资者访谈、13F分析、传记研究"
+
+# =============================================================================
+# 为什么Druckenmiller是98分？
+# =============================================================================
+
+why_98_score:
+  track_record:
+    years: 30+
+    cagr: "30%"
+    losing_years: 0
+    losing_quarters: "5/120 (4%)"
+    notable: "2008年金融危机仍+11%"
+
+  comparison:
+    vs_buffett: "Buffett 20%年化60年，但Druckenmiller 30%年化30年"
+    vs_soros: "Soros的Quantum Fund主要是Druckenmiller管理的"
+    vs_others: "几乎无人能匹配30年30%无亏损"
+
+  key_insight: |
+    Druckenmiller不只是业绩好，而是风险调整后的业绩极好。
+    他的秘诀不是"更多正确"，而是"错了损失小，对了赚很多"。
+
+# =============================================================================
+# Druckenmiller核心投资哲学
+# =============================================================================
+
+core_philosophy:
+
+  # ---------------------------------------------------------------------------
+  # Principle 1: 流动性驱动市场
+  # ---------------------------------------------------------------------------
+  principle_1:
+    name: "流动性优先"
+    quote: |
+      "Earnings don't move the overall market; it's the Federal Reserve Board...
+      focus on the central banks, and focus on the movement of liquidity...
+      most people are looking for earnings. It's liquidity that moves markets."
+
+    translation: |
+      盈利不驱动市场，流动性才驱动。
+      大多数人看盈利，而Druckenmiller看央行和流动性。
+
+    application:
+      - "在分析任何股票之前，先判断流动性环境"
+      - "流动性收紧 → 减仓，无论基本面多好"
+      - "流动性扩张 → 可以更激进"
+
+    current_signal_2026:
+      druckenmiller_view: "做空债券（预期利率上升）"
+      implication: "他认为流动性可能收紧"
+
+  # ---------------------------------------------------------------------------
+  # Principle 2: 永远不投资现在
+  # ---------------------------------------------------------------------------
+  principle_2:
+    name: "前瞻性投资"
+    quote: "Never, ever invest in the present."
+
+    translation: |
+      永远不投资现在。
+      投资基于你认为18个月后价格会在哪里。
+
+    application:
+      - "不问'现在值多少'，问'18个月后值多少'"
+      - "当前价格反映的是过去，不是未来"
+      - "领先指标 > 滞后指标"
+
+    methodology:
+      step_1: "判断18个月后的宏观环境"
+      step_2: "判断18个月后的行业位置"
+      step_3: "判断18个月后的公司竞争地位"
+      step_4: "以此为锚进行估值"
+
+  # ---------------------------------------------------------------------------
+  # Principle 3: 集中下注
+  # ---------------------------------------------------------------------------
+  principle_3:
+    name: "像猪一样贪婪"
+    quote: |
+      "I strongly believe the only way to make long-term returns that are superior
+      is by being a pig. I think diversification is probably the most misguided
+      concept everywhere. The greatest investors make large concentrated bets."
+
+      "It takes courage to be a pig."
+
+    translation: |
+      真正卓越的长期回报来自于"像猪一样贪婪"。
+      分散投资是最被误解的概念。
+      伟大投资者做的是大额集中下注。
+
+    application:
+      - "高确信度投资 → 重仓（10%+）"
+      - "中确信度 → 正常仓位（3-5%）"
+      - "低确信度 → 不做"
+      - "不要为了分散而分散"
+
+    soros_lesson: |
+      当Druckenmiller说要做空100%仓位的英镑时，
+      Soros说："为什么只有100%？应该200%！"
+      这是一生一次的机会，就应该全力出击。
+
+  # ---------------------------------------------------------------------------
+  # Principle 4: 不对称风险回报
+  # ---------------------------------------------------------------------------
+  principle_4:
+    name: "非对称回报"
+    quote: |
+      "It's not whether you're right or wrong that's important,
+      but how much money you make when you're right
+      and how much you lose when you're wrong."
+
+    translation: |
+      重要的不是对错，而是：
+      - 对的时候赚多少
+      - 错的时候亏多少
+
+    application:
+      - "寻找凸性机会（错了亏一点，对了赚很多）"
+      - "避免凹性机会（对了赚一点，错了亏很多）"
+      - "期权思维：支付有限premium换取无限upside"
+
+    risk_management:
+      first_question: "我最多能亏多少？"
+      action: "在知道下行风险之前不行动"
+
+  # ---------------------------------------------------------------------------
+  # Principle 5: 灵活性和快速行动
+  # ---------------------------------------------------------------------------
+  principle_5:
+    name: "灵活适应"
+    quote: "Buy first, analyze later."
+
+    translation: |
+      当直觉和高确信度对齐时，先买入，后分析。
+      市场环境变化时，愿意快速改变立场。
+
+    evidence:
+      average_holding: "<7个月"
+      q3_2025: "清仓33只股票（超过一半），新建29个仓位"
+
+    application:
+      - "不要爱上任何持仓"
+      - "新信息出现时立即重新评估"
+      - "止损时不犹豫"
+
+    anti_pattern:
+      anchoring: "因为买入成本不愿止损"
+      stubbornness: "环境变化但拒绝改变观点"
+
+  # ---------------------------------------------------------------------------
+  # Principle 6: 直觉+分析结合
+  # ---------------------------------------------------------------------------
+  principle_6:
+    name: "直觉与分析"
+    quote: |
+      "You need a certain amount of intelligence, but it's wasted over a certain level.
+      After that, it's more intuition."
+
+    translation: |
+      智力在一定程度上是需要的，但超过某个水平就浪费了。
+      之后，更多靠的是直觉。
+
+    application:
+      - "分析提供框架和约束"
+      - "直觉在不确定中做决策"
+      - "当分析和直觉一致时 → 最高确信度"
+      - "当分析和直觉冲突时 → 需要更多信息"
+
+# =============================================================================
+# Druckenmiller当前操作分析（2024-2025）
+# =============================================================================
+
+current_moves_analysis:
+
+  ai_position:
+    original: "2022年早期买入NVDA，2024年Q1占组合14%"
+    exit: "2024年Q3全部清仓NVDA和AVGO"
+    reasoning: "AI短期过热，长期低估"
+    quote: "AI might be a little overhyped now, but underhyped long term."
+
+    his_prediction: |
+      "如果这是一个secular move，不可能只涨10个月。
+      即使dot-com泡沫也持续了2.5年，
+      对于Cisco/Sun Micro是4年。"
+
+    current_ai_exposure:
+      shifted_to: "消费者端AI受益者（AMZN、META、GOOGL）"
+      avoided: "AI基础设施（NVDA、AVGO、DELL、SMCI）"
+      logic: "他更看好AI应用层而非硬件层"
+
+  tsm_massive_increase:
+    action: "增持TSM 457%"
+    timing: "2025年中"
+    signal_strength: "极强"
+    interpretation: |
+      他承认卖NVDA太早是"大错误"
+      但他没有重新买NVDA，而是买TSM
+      这说明：
+      1. 他仍然看好AI半导体，但换了标的
+      2. TSM可能是更好的风险回报比
+      3. 制造层可能比设计层更安全
+
+  healthcare_rotation:
+    top_holdings: ["Natera", "Insmed", "Teva"]
+    weight: "~39%组合前5大持仓"
+    teva_buildup: "连续5个季度加仓，涨191%"
+    interpretation: |
+      从投机性AI基础设施转向创新驱动的高增长医药
+      这是风格转换：周期顶部卖热门，买被忽视的价值
+
+  airlines_call_options:
+    positions: ["Delta", "American Airlines", "United Airlines"]
+    type: "看涨期权"
+    interpretation: |
+      典型的Druckenmiller凸性交易：
+      - 下行有限（期权费）
+      - 上行无限（如果航空业复苏）
+      - 非共识观点（大多数人不看好航空）
+
+  bonds_short:
+    position: "做空债券"
+    interpretation: "预期利率上升，流动性收紧"
+    implication: |
+      如果他对利率的判断正确：
+      - 成长股估值压力
+      - 价值股可能跑赢
+      - 现金为王
+
+# =============================================================================
+# 从Druckenmiller学到的框架
+# =============================================================================
+
+extracted_frameworks:
+
+  framework_1:
+    name: "流动性优先决策框架"
+    steps:
+      1: "判断当前流动性环境（扩张/中性/收紧）"
+      2: "如果收紧 → 整体仓位降低，无论个股多好"
+      3: "如果扩张 → 可以更激进，重仓好机会"
+      4: "流动性环境变化时 → 重新评估所有持仓"
+
+    current_signal:
+      druckenmiller_doing: "做空债券 = 预期利率上升"
+      implication: "流动性可能收紧 → 谨慎"
+
+  framework_2:
+    name: "18个月前瞻估值框架"
+    steps:
+      1: "预测18个月后的宏观环境"
+      2: "预测18个月后的行业周期位置"
+      3: "预测18个月后的公司基本面"
+      4: "以此为基础估值，而非当前基本面"
+
+    application:
+      current_price: "反映过去"
+      your_estimate: "应该反映18个月后"
+      gap: "这就是alpha来源"
+
+  framework_3:
+    name: "凸性机会识别框架"
+    criteria:
+      - "下行有限（知道最大亏损）"
+      - "上行巨大（非线性回报潜力）"
+      - "非共识（大多数人不这么想）"
+      - "催化剂明确（什么会触发价值实现）"
+
+    examples:
+      good: "航空看涨期权（有限亏损，巨大上行）"
+      bad: "追高NVDA（估值已高，上行有限，下行巨大）"
+
+  framework_4:
+    name: "高确信度集中下注框架"
+    rules:
+      - "高确信度 → 10-20%仓位"
+      - "中确信度 → 3-5%"
+      - "低确信度 → 0%（不做）"
+      - "组合前5大 → 占40-60%"
+
+    anti_rule: "不为分散而分散"
+
+  framework_5:
+    name: "快速反应框架"
+    rules:
+      - "平均持仓<7个月"
+      - "新信息 → 立即重新评估"
+      - "错了 → 快速止损，不锚定成本"
+      - "对了 → 加仓而非获利了结"
+
+# =============================================================================
+# 如何应用到我们的投资分析
+# =============================================================================
+
+application_to_our_system:
+
+  immediate_actions:
+
+    action_1:
+      name: "每次分析前先判断流动性"
+      implementation: |
+        在unified_decision_framework的Layer 1之前，
+        增加Layer 0: 流动性环境判断
+        - 央行政策
+        - 利率趋势
+        - Druckenmiller当前债券仓位方向
+
+    action_2:
+      name: "估值时使用18个月前瞻"
+      implementation: |
+        在valuation_engine中，
+        核心估值基于18个月后预期基本面，
+        而非当前TTM数据
+
+    action_3:
+      name: "跟踪Druckenmiller操作作为领先指标"
+      implementation: |
+        - 每季度13F发布后分析其变化
+        - 大幅增减持 → 深入研究原因
+        - 他的行业轮动 → 可能预示趋势
+
+    action_4:
+      name: "凸性机会筛选"
+      implementation: |
+        每个投资机会问：
+        - 最大亏损是多少？
+        - 最大上行是多少？
+        - 比率是否有利？（至少3:1）
+
+  integration_with_existing:
+
+    with_cycle_temperature:
+      current: "温度64 = 炎热区间下沿"
+      druckenmiller_signal: "做空债券 = 预期收紧"
+      combined: "两个框架一致 → 谨慎，不追高"
+
+    with_investor_database:
+      action: "将Druckenmiller权重从98调整为100"
+      reasoning: "他是唯一30年30%无亏损的，应该给最高权重"
+
+    with_predictions:
+      his_implicit_prediction: "AI短期过热，长期低估"
+      tracking: "添加到predictions_tracker追踪"
+
+# =============================================================================
+# 新增经验教训
+# =============================================================================
+
+new_lessons:
+
+  - id: "LL_117"
+    category: "high_value_signal"
+    lesson: "98分投资者的信号价值 = 10000个低分投资者"
+    source: "Druckenmiller研究"
+    action: |
+      发现高价值信号时，必须立即深挖：
+      - 研究其方法论
+      - 分析其历史操作
+      - 提取可复用框架
+      - 跟踪其当前操作
+    generalization: |
+      不只是投资者，任何高价值信号（分析师、学者、框架）
+      都应该触发立即深挖机制
+
+  - id: "LL_118"
+    category: "investment_philosophy"
+    lesson: "流动性驱动市场，不是盈利"
+    source: "Druckenmiller"
+    application: "分析前先判断流动性环境"
+
+  - id: "LL_119"
+    category: "investment_philosophy"
+    lesson: "永远不投资现在，投资18个月后"
+    source: "Druckenmiller"
+    application: "估值基于18个月后预期基本面"
+
+  - id: "LL_120"
+    category: "investment_philosophy"
+    lesson: "重要的不是对错，是对了赚多少错了亏多少"
+    source: "Druckenmiller"
+    application: "寻找凸性机会，避免凹性机会"
+
+  - id: "LL_121"
+    category: "investment_philosophy"
+    lesson: "高确信度时像猪一样贪婪"
+    source: "Druckenmiller"
+    application: "真正高确信度时应重仓10-20%"
+
+# =============================================================================
+# 元原则：高价值信号敏感性
+# =============================================================================
+
+meta_principle:
+
+  id: "META_011"
+  name: "高价值信号敏感性"
+
+  description: |
+    一个高维度分析 > 10000个低维度分析
+    低质量分析会污染数据
+    必须对高价值信号保持最高敏感性
+
+  trigger_conditions:
+    - "发现业绩评分>90的投资者"
+    - "发现预测准确率>80%的分析师"
+    - "发现被验证有效的框架"
+    - "发现历史回测胜率>70%的策略"
+
+  immediate_actions:
+    - "立即深入研究其方法论"
+    - "分析历史操作/预测"
+    - "提取可复用框架"
+    - "建立跟踪机制"
+    - "集成到现有系统"
+
+  anti_pattern: |
+    发现高价值信号却与低价值信号平等对待
+    例：发现Druckenmiller 98分，却和Wood 45分放在一起列表
+
+  correct_pattern: |
+    高价值信号 → 立即深挖 → 提取框架 → 集成系统
+    低价值信号 → 标注低权重 → 可能作为反向指标

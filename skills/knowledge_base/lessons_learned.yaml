@@ -758,10 +758,61 @@ deep_thinking_framework:
       - "比我更聪明的人会如何设计？"
     action: "在用户问之前主动解决"
 
+# ============================================================
+# Druckenmiller方法论经验 (LL_117 - LL_121)
+# ============================================================
+
+druckenmiller_methodology:
+  id_range: "LL_117 到 LL_121"
+  date: "2026-01-28"
+  total_new: 5
+  trigger: "高价值信号敏感性 - 98分投资者必须深挖"
+  file_location: "skills/core/druckenmiller_methodology_v1.yaml"
+
+  lesson_117:
+    id: "LL_117"
+    category: "high_value_signal"
+    lesson: "98分投资者的信号价值 = 10000个低分投资者"
+    source: "Druckenmiller研究"
+    action: "发现高价值信号时，必须立即深挖"
+    generalization: "任何高价值信号（投资者、分析师、框架）都应触发立即深挖"
+
+  lesson_118:
+    id: "LL_118"
+    category: "investment_philosophy"
+    lesson: "流动性驱动市场，不是盈利"
+    source: "Druckenmiller"
+    quote: "Earnings don't move markets; it's the Federal Reserve... it's liquidity that moves markets."
+    application: "分析前先判断流动性环境"
+
+  lesson_119:
+    id: "LL_119"
+    category: "investment_philosophy"
+    lesson: "永远不投资现在，投资18个月后"
+    source: "Druckenmiller"
+    quote: "Never, ever invest in the present."
+    application: "估值基于18个月后预期基本面，不是当前TTM"
+
+  lesson_120:
+    id: "LL_120"
+    category: "investment_philosophy"
+    lesson: "重要的不是对错，是对了赚多少错了亏多少"
+    source: "Druckenmiller/Soros"
+    quote: "It's not whether you're right or wrong, but how much you make when right and lose when wrong."
+    application: "寻找凸性机会（错了亏一点，对了赚很多）"
+
+  lesson_121:
+    id: "LL_121"
+    category: "investment_philosophy"
+    lesson: "高确信度时像猪一样贪婪"
+    source: "Druckenmiller"
+    quote: "It takes courage to be a pig. The greatest investors make large concentrated bets."
+    application: "真正高确信度时应重仓10-20%，不为分散而分散"
+
 # 统计
 statistics:
-  total_lessons: 116  # +3 (LL_114-116 深度思考)
-  meta_insights: 9   # +1 新元洞察
+  total_lessons: 121  # +5 (LL_117-121 Druckenmiller)
+  meta_insights: 10   # +1 新元洞察 (META_011)
   predictions: 55
   predictions_validated: 27
   prediction_accuracy: "88%"
