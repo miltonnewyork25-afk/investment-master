@@ -1,0 +1,705 @@
+# 科技行业衰落检测框架 v2.0
+# Tech Industry Decline Detection Framework
+
+version: "2.0"
+created: "2026-01-28"
+validated_on: ["CRM", "ADBE", "GOOGL", "INTC", "NVDA", "AMD"]
+
+# ============================================================
+# 框架结构
+# ============================================================
+
+structure:
+  layer_1_universal:
+    name: "通用核心层"
+    weight: 40%
+    rationale: "任何公司都适用的衰落信号"
+
+  layer_2_tech_common:
+    name: "科技共性层"
+    weight: 30%
+    rationale: "科技行业共同的成功/失败因素"
+
+  layer_3_sub_industry:
+    name: "子行业特定层"
+    weight: 30%
+    rationale: "不同细分行业的关键差异"
+
+# ============================================================
+# Layer 1: 通用核心层 (40%)
+# ============================================================
+
+layer_1_universal:
+
+  U1_leadership:
+    id: "U1"
+    name: "领导层质量"
+    weight: 15%
+    is_root_cause: true  # 根因，权重×1.5
+
+    checks:
+      - id: "U1.1"
+        question: "CEO是否有技术背景？"
+        scoring:
+          green: "技术出身，理解产品和技术趋势"
+          yellow: "混合背景，有技术理解但非核心"
+          red: "纯财务/运营/营销背景"
+        examples:
+          green: ["Jensen Huang (NVDA)", "Satya Nadella (MSFT)", "Lisa Su (AMD)"]
+          red: ["Bob Swan (INTC)", "John Sculley (AAPL历史)"]
+
+      - id: "U1.2"
+        question: "战略是否连贯？"
+        scoring:
+          green: "3年以上战略一致性，清晰执行"
+          yellow: "战略调整有合理原因"
+          red: "频繁转向（每年换方向）"
+        examples:
+          red: ["CRM: Einstein→Data Cloud→Agentforce频繁转向"]
+
+      - id: "U1.3"
+        question: "继任深度？"
+        scoring:
+          green: "有明确继任者培养，关键岗位有backup"
+          yellow: "有二号人物但未明确"
+          red: "CEO不可替代，无继任计划"
+
+  U2_capital_allocation:
+    id: "U2"
+    name: "资本配置"
+    weight: 15%
+    is_root_cause: false
+
+    checks:
+      - id: "U2.1"
+        question: "研发强度是否维持？"
+        metric: "R&D/Revenue趋势"
+        scoring:
+          green: "稳定或上升，绝对额持续增长"
+          yellow: "略有下降但仍高于行业"
+          red: "连续下降，被削减"
+
+      - id: "U2.2"
+        question: "收购是否有效？"
+        metric: "过去5年收购整合成功率"
+        scoring:
+          green: ">50%整合成功，有协同效应"
+          yellow: "部分成功部分失败"
+          red: "多数失败或剥离"
+        examples:
+          red: ["INTC: Nervana vs Habana内斗", "CRM: Slack整合平庸"]
+
+      - id: "U2.3"
+        question: "回购时机是否合理？"
+        scoring:
+          green: "低估时回购，高估时融资"
+          yellow: "跟随节奏，无明显择时"
+          red: "高点回购，低点停止或发债"
+
+  U3_culture:
+    id: "U3"
+    name: "文化健康"
+    weight: 10%
+    is_root_cause: true  # 根因，权重×1.5
+
+    checks:
+      - id: "U3.1"
+        question: "人才流向？"
+        scoring:
+          green: "从竞争对手净流入，顶尖人才加入"
+          yellow: "流入流出平衡"
+          red: "核心人才流向创业公司/竞争对手"
+        signals:
+          - "关键高管离职（如CRM的Bret Taylor）"
+          - "技术leader去向"
+          - "Glassdoor评分趋势"
+
+      - id: "U3.2"
+        question: "创新氛围？"
+        scoring:
+          green: "内部创业成功案例，20%时间项目"
+          yellow: "有创新尝试但成功率低"
+          red: "创新被官僚扼杀，内部创业者离开"
+
+      - id: "U3.3"
+        question: "决策速度？"
+        scoring:
+          green: "能快速响应市场变化，敏捷"
+          yellow: "中等速度"
+          red: "层层审批，错过窗口"
+
+# ============================================================
+# Layer 2: 科技共性层 (30%)
+# ============================================================
+
+layer_2_tech_common:
+
+  T1_platform_transition:
+    id: "T1"
+    name: "平台转换能力"
+    weight: 12%
+    rationale: "科技公司最大风险是错过平台转换"
+
+    checks:
+      - id: "T1.1"
+        question: "历史转换记录？"
+        scoring:
+          green: "成功完成过至少1次平台转换"
+          yellow: "未经历过大转换，或正在进行中"
+          red: "有失败转换历史"
+        examples:
+          green: ["MSFT: PC→Cloud→AI两次成功", "NVDA: Gaming→AI成功"]
+          red: ["INTC: PC→Mobile失败, PC→AI失败"]
+
+      - id: "T1.2"
+        question: "当前AI转型进度？"
+        metrics:
+          - "AI相关收入占比"
+          - "AI产品用户增长"
+          - "AI人才占比"
+        scoring:
+          green: "AI收入>10%且快速增长"
+          yellow: "AI产品已发布，收入待验证"
+          red: "AI只是PPT，无实质进展"
+
+      - id: "T1.3"
+        question: "转型投资力度？"
+        scoring:
+          green: "资本开支明显向新平台倾斜"
+          yellow: "新旧业务平衡投资"
+          red: "仍在保护旧业务，新业务投资不足"
+
+  T2_ecosystem_health:
+    id: "T2"
+    name: "生态系统健康"
+    weight: 10%
+
+    checks:
+      - id: "T2.1"
+        question: "开发者生态？"
+        metrics:
+          - "开发者数量趋势"
+          - "第三方应用数量"
+          - "API调用量"
+        scoring:
+          green: "开发者数量年增>10%"
+          yellow: "开发者数量稳定"
+          red: "开发者流失"
+        quantification:
+          cuda_example: "CUDA 450万开发者 vs ROCm 10万 = 45倍差距"
+
+      - id: "T2.2"
+        question: "用户锁定？"
+        metrics:
+          - "转换成本量化"
+          - "用户留存率"
+          - "多产品使用率"
+        scoring:
+          green: "留存>90%，转换成本高"
+          yellow: "留存80-90%"
+          red: "留存下降，用户可轻松迁移"
+
+      - id: "T2.3"
+        question: "生态vs竞争对手？"
+        scoring:
+          green: "生态规模>2x竞争对手"
+          yellow: "生态规模与竞争对手相当"
+          red: "生态规模被追赶或超越"
+
+  T3_regulatory_risk:
+    id: "T3"
+    name: "监管风险"
+    weight: 8%
+
+    checks:
+      - id: "T3.1"
+        question: "反垄断风险？"
+        indicators:
+          - "是否面临拆分诉讼"
+          - "是否被强制开放API/平台"
+          - "是否被限制收购"
+        scoring:
+          green: "无重大反垄断诉讼"
+          yellow: "有调查但未起诉"
+          red: "面临拆分或重大限制"
+        examples:
+          red: ["GOOGL搜索垄断案", "AAPL App Store诉讼"]
+
+      - id: "T3.2"
+        question: "数据隐私风险？"
+        indicators:
+          - "GDPR/CCPA合规成本"
+          - "广告定向能力削弱"
+          - "AI训练数据合法性"
+        scoring:
+          green: "合规成本可控，业务模式不受影响"
+          yellow: "需要调整但可适应"
+          red: "核心业务模式受威胁"
+
+      - id: "T3.3"
+        question: "地缘政治风险？"
+        indicators:
+          - "中国收入占比"
+          - "供应链地理集中度"
+        scoring:
+          green: "中国<10%，供应链分散"
+          yellow: "中国10-20%，有备选供应商"
+          red: "中国>20%或供应链高度集中"
+
+# ============================================================
+# Layer 3: 子行业特定层 (30%)
+# ============================================================
+
+layer_3_sub_industry:
+
+  # ===== 半导体 =====
+  semiconductor:
+    applicable_tickers: ["INTC", "NVDA", "AMD", "QCOM", "AVGO", "MU", "LRCX", "AMAT", "ASML"]
+
+    S1_manufacturing_execution:
+      id: "S1"
+      name: "制造执行"
+      weight: 15%  # 半导体最高权重
+      only_for: "IDM (如Intel)"
+      note: "Fabless公司此维度改为'代工关系质量'"
+
+      checks:
+        - id: "S1.1"
+          question: "制程节点是否按计划推进？"
+          scoring:
+            green: "按计划或提前"
+            yellow: "延期<6个月"
+            red: "延期>1年"
+          red_flag_example: "Intel 10nm延期3年(2016-2019)"
+
+        - id: "S1.2"
+          question: "良率是否达标？"
+          scoring:
+            green: "良率>90%"
+            yellow: "良率70-90%"
+            red: "良率<70%"
+
+        - id: "S1.3"
+          question: "产能是否满足需求？"
+          scoring:
+            green: "供需平衡或略紧"
+            yellow: "轻微过剩或短缺"
+            red: "严重过剩或严重短缺"
+
+    S2_design_competitiveness:
+      id: "S2"
+      name: "设计竞争力"
+      weight: 10%
+
+      checks:
+        - id: "S2.1"
+          question: "性能功耗比vs竞争对手？"
+          scoring:
+            green: "领先或持平"
+            yellow: "略落后但差距缩小"
+            red: "明显落后且差距扩大"
+
+        - id: "S2.2"
+          question: "新架构创新？"
+          scoring:
+            green: "有突破性架构创新"
+            yellow: "渐进式改进"
+            red: "依赖旧架构，无创新"
+
+    S3_software_ecosystem:
+      id: "S3"
+      name: "软件生态"
+      weight: 10%
+      note: "NVIDIA案例证明软件生态是护城河核心"
+
+      checks:
+        - id: "S3.1"
+          question: "开发者工具成熟度？"
+          scoring:
+            green: "完整工具链，文档完善"
+            yellow: "基本工具可用"
+            red: "工具链不完整"
+
+        - id: "S3.2"
+          question: "开发者锁定强度？"
+          metric: "类似CUDA锁定指数"
+          scoring:
+            green: "锁定指数>80%"
+            yellow: "锁定指数50-80%"
+            red: "锁定指数<50%"
+          quantification:
+            formula: "(专有开发者 + 专有应用) / (总开发者 + 总应用)"
+
+  # ===== SaaS/企业软件 =====
+  saas:
+    applicable_tickers: ["CRM", "NOW", "ADBE", "WDAY", "TEAM", "ZM"]
+
+    SS1_business_model_resilience:
+      id: "SS1"
+      name: "商业模式韧性"
+      weight: 15%  # SaaS最高权重
+      rationale: "AI代理可能颠覆per-seat模式"
+
+      checks:
+        - id: "SS1.1"
+          question: "定价模式是否适应AI时代？"
+          scoring:
+            green: "已转向使用量/价值定价"
+            yellow: "正在探索新定价"
+            red: "仍依赖per-seat"
+          risk_explanation: |
+            问题：如果AI代理能做5个人的工作，per-seat收入砍5x
+            受影响：Salesforce, Atlassian, Workday
+
+        - id: "SS1.2"
+          question: "NDR (Net Dollar Retention)？"
+          scoring:
+            green: "NDR>120%"
+            yellow: "NDR 100-120%"
+            red: "NDR<100% (客户在缩减使用)"
+
+        - id: "SS1.3"
+          question: "ARR增长率？"
+          scoring:
+            green: ">25%"
+            yellow: "15-25%"
+            red: "<15%"
+
+    SS2_product_stickiness:
+      id: "SS2"
+      name: "产品粘性"
+      weight: 10%
+
+      checks:
+        - id: "SS2.1"
+          question: "工作流嵌入深度？"
+          scoring:
+            green: "是核心工作流，不可或缺"
+            yellow: "重要但可替代"
+            red: "边缘工具，易替换"
+
+        - id: "SS2.2"
+          question: "数据迁移成本？"
+          scoring:
+            green: "数据深度整合，迁移成本>6个月工作量"
+            yellow: "中等迁移成本"
+            red: "数据易导出，低迁移成本"
+
+    SS3_ai_integration:
+      id: "SS3"
+      name: "AI整合进度"
+      weight: 10%
+
+      checks:
+        - id: "SS3.1"
+          question: "AI功能是否转化为收入？"
+          scoring:
+            green: "AI明确带来增量收入"
+            yellow: "AI功能发布但收入待验证"
+            red: "AI只是功能点缀"
+
+        - id: "SS3.2"
+          question: "AI是差异化还是commodity？"
+          scoring:
+            green: "AI是差异化优势"
+            yellow: "AI与竞争对手相当"
+            red: "AI落后于竞争对手"
+
+  # ===== 平台/互联网 =====
+  platform:
+    applicable_tickers: ["GOOGL", "META", "AMZN", "NFLX", "UBER", "ABNB"]
+
+    P1_network_effect_strength:
+      id: "P1"
+      name: "网络效应强度"
+      weight: 15%  # 平台最高权重
+
+      checks:
+        - id: "P1.1"
+          question: "用户增长是否仍能提升用户价值？"
+          scoring:
+            green: "网络效应仍在增强"
+            yellow: "网络效应稳定"
+            red: "出现负向网络效应（如内容质量下降）"
+
+        - id: "P1.2"
+          question: "新用户获取成本趋势？"
+          scoring:
+            green: "CAC稳定或下降"
+            yellow: "CAC略有上升"
+            red: "CAC快速上升"
+
+    P2_attention_share:
+      id: "P2"
+      name: "注意力份额"
+      weight: 10%
+
+      checks:
+        - id: "P2.1"
+          question: "用户时长趋势？"
+          scoring:
+            green: "时长稳定或增长"
+            yellow: "时长略降"
+            red: "时长明显下降"
+
+        - id: "P2.2"
+          question: "vs新兴平台？"
+          scoring:
+            green: "领先新兴平台"
+            yellow: "与新平台竞争激烈"
+            red: "被新平台（如TikTok）抢夺份额"
+
+        - id: "P2.3"
+          question: "用户年龄结构？"
+          scoring:
+            green: "各年龄段均衡"
+            yellow: "年轻用户略少"
+            red: "年轻用户明显流失"
+
+    P3_monetization_efficiency:
+      id: "P3"
+      name: "变现效率"
+      weight: 10%
+
+      checks:
+        - id: "P3.1"
+          question: "ARPU趋势？"
+          scoring:
+            green: "ARPU上升"
+            yellow: "ARPU稳定"
+            red: "ARPU下降"
+
+        - id: "P3.2"
+          question: "广告定价权？"
+          scoring:
+            green: "CPM可提价"
+            yellow: "CPM稳定"
+            red: "CPM承压"
+
+  # ===== 消费硬件 =====
+  consumer_hardware:
+    applicable_tickers: ["AAPL", "SONY", "DELL", "HPQ"]
+
+    H1_product_cycle:
+      id: "H1"
+      name: "产品周期健康"
+      weight: 12%
+
+      checks:
+        - id: "H1.1"
+          question: "旗舰产品更新是否有意义升级？"
+          scoring:
+            green: "每代有显著创新"
+            yellow: "渐进升级"
+            red: "挤牙膏，用户无升级动力"
+
+        - id: "H1.2"
+          question: "换机周期趋势？"
+          scoring:
+            green: "换机周期稳定或缩短"
+            yellow: "换机周期略拉长"
+            red: "换机周期明显拉长"
+
+        - id: "H1.3"
+          question: "新品类是否成功？"
+          scoring:
+            green: "新品类成功（如AirPods）"
+            yellow: "新品类在尝试中"
+            red: "新品类失败或无新品类"
+
+    H2_services_transition:
+      id: "H2"
+      name: "服务转型"
+      weight: 10%
+
+      checks:
+        - id: "H2.1"
+          question: "服务收入占比？"
+          scoring:
+            green: ">25%"
+            yellow: "15-25%"
+            red: "<15%"
+
+        - id: "H2.2"
+          question: "服务毛利率？"
+          scoring:
+            green: ">60%"
+            yellow: "50-60%"
+            red: "<50%"
+
+    H3_supply_chain:
+      id: "H3"
+      name: "供应链控制"
+      weight: 8%
+
+      checks:
+        - id: "H3.1"
+          question: "关键零部件自主率？"
+          scoring:
+            green: "核心芯片自研（如Apple Silicon）"
+            yellow: "部分自研"
+            red: "完全依赖外部"
+
+        - id: "H3.2"
+          question: "供应链地缘分散？"
+          scoring:
+            green: "多地区分散"
+            yellow: "有备选但集中"
+            red: "高度集中于单一地区"
+
+# ============================================================
+# 评分系统
+# ============================================================
+
+scoring_system:
+
+  dimension_score:
+    green: 10
+    yellow: 5
+    red: 0
+
+  root_cause_multiplier:
+    description: "根因维度权重×1.5"
+    root_causes: ["U1_leadership", "U3_culture"]
+    multiplier: 1.5
+
+  total_score:
+    formula: "Σ(维度分数 × 维度权重 × 根因乘数)"
+    max: 100
+
+  risk_levels:
+    healthy:
+      score_range: [80, 100]
+      red_flags: [0, 1]
+      action: "持有/可增持"
+      color: "green"
+
+    watch:
+      score_range: [60, 79]
+      red_flags: [2, 3]
+      action: "密切关注，设止损"
+      color: "yellow"
+
+    warning:
+      score_range: [40, 59]
+      red_flags: [4, 5]
+      action: "考虑减持"
+      color: "orange"
+
+    danger:
+      score_range: [20, 39]
+      red_flags: [6, 7]
+      action: "卖出/做空"
+      color: "red"
+
+    critical:
+      score_range: [0, 19]
+      red_flags: [8, 99]
+      action: "立即清仓"
+      color: "darkred"
+
+# ============================================================
+# 信号解读规则
+# ============================================================
+
+signal_interpretation:
+
+  ambiguous_signals:
+
+    layoffs:
+      default: "neutral"
+      positive_if:
+        - "业绩好时主动裁员"
+        - "同时加码新方向投资"
+        - "核心人才保留"
+        - "6个月内新方向招聘"
+      negative_if:
+        - "业绩恶化后被迫裁员"
+        - "削减研发支出"
+        - "关键高管离职"
+        - "持续招聘冻结"
+      case_studies:
+        positive: "Meta 2023: 裁员11000 → 股价+150%"
+        negative: "Intel 2024: 裁员15000 → 股价-50%"
+
+    acquisition:
+      default: "neutral"
+      positive_if:
+        - "与核心战略一致"
+        - "有成功整合历史"
+        - "估值合理"
+      negative_if:
+        - "与核心业务无关"
+        - "整合历史差"
+        - "估值过高"
+
+    ceo_change:
+      default: "neutral"
+      positive_if:
+        - "新CEO有技术背景"
+        - "外部聘请打破内部惯性"
+        - "有明确变革计划"
+      negative_if:
+        - "内部财务派上位"
+        - "动荡信号（被迫离职）"
+        - "无明确方向"
+
+# ============================================================
+# 使用说明
+# ============================================================
+
+usage:
+
+  step_1:
+    action: "确定子行业"
+    instruction: "根据公司主营业务选择适用的子行业层"
+
+  step_2:
+    action: "逐维度评分"
+    instruction: "每个check给出green/yellow/red评分"
+
+  step_3:
+    action: "计算加权总分"
+    instruction: "Σ(分数 × 权重 × 根因乘数)"
+
+  step_4:
+    action: "确定风险等级"
+    instruction: "根据总分和红灯数确定级别"
+
+  step_5:
+    action: "记录观察点"
+    instruction: "标注关键观察维度和下次检查时间"
+
+# ============================================================
+# 验证案例
+# ============================================================
+
+validated_cases:
+
+  - ticker: "CRM"
+    sub_industry: "saas"
+    score: 49
+    risk_level: "warning"
+    red_flags: 2
+    core_issues: ["商业模式韧性", "文化健康"]
+
+  - ticker: "ADBE"
+    sub_industry: "saas"
+    score: 69
+    risk_level: "watch"
+    red_flags: 0
+    core_issues: ["AI整合进度待验证"]
+
+  - ticker: "GOOGL"
+    sub_industry: "platform"
+    score: 80
+    risk_level: "healthy"
+    red_flags: 1
+    core_issues: ["监管风险"]
+
+  - ticker: "INTC"
+    sub_industry: "semiconductor"
+    score: 25  # 估算
+    risk_level: "danger"
+    red_flags: 6
+    core_issues: ["制造执行", "平台转换", "领导层", "文化", "软件生态", "资本配置"]

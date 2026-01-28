@@ -1,8 +1,8 @@
 # Lessons Learned Knowledge Base
 # 累积的经验教训存储
 
-version: "1.0"
-last_updated: "2026-01-27"
+version: "1.1"
+last_updated: "2026-01-28"
 
 lessons:
   - id: "LL_001"
@@ -283,9 +283,146 @@ lessons:
       2. 类型化模板：每个模块都有公司类型→执行模板的映射
       3. 断言强制：每个模块都有assert检查，不能"可做可不做"
 
+  - id: "LL_022"
+    date: "2026-01-28"
+    context: "Apple深度分析v2.0"
+    category: "methodology_breakthrough"
+    lesson: "供应链晴雨表法有效：用供应商财务数据作为领先指标"
+    root_cause: "供应商是'不会说谎的证人'，财报数据比分析师预测更可靠"
+    action_taken: |
+      固化为标准方法：
+      1. 识别关键供应商（前5大）
+      2. 获取供应商季度财报（收入、利润、库存）
+      3. 计算"目标公司相关收入"变化
+      4. 交叉验证多个供应商信号
+      示例：Luxshare利润+31% → Apple订单健康
+    effectiveness: "已验证"
+    priority: "P1"
+    reusable_template: |
+      Apple供应链: Luxshare, 台积电, 富士康, Largan, Murata
+      Tesla供应链: 宁德时代, LG新能源, 松下
+      NVIDIA供应链: 台积电, SK海力士, 美光
+
+  - id: "LL_023"
+    date: "2026-01-28"
+    context: "Apple深度分析v2.0"
+    category: "methodology_breakthrough"
+    lesson: "历史镜像法有效：找3个不同结局的历史案例对比"
+    root_cause: "历史不会重复但会押韵，多案例对比提供完整可能性空间"
+    action_taken: |
+      固化为标准方法：
+      1. 识别当前公司面临的核心战略挑战
+      2. 搜索历史上面临类似挑战的公司
+      3. 选择3个案例：失败、转型成功、放弃后成功
+      4. 提取关键决策点，对比异同
+      示例：Nokia(失败) + IBM(转型) + Microsoft(放弃后成功)
+    effectiveness: "已验证"
+    priority: "P1"
+
+  - id: "LL_024"
+    date: "2026-01-28"
+    context: "Apple深度分析v2.0"
+    category: "valuation_innovation"
+    lesson: "期权思维框架首次成功应用：Vision Pro估值为$26.5B概率加权期权"
+    root_cause: "把主观判断('有战略价值')变成可量化、可辩论的金融模型"
+    action_taken: |
+      固化为彩票业务估值标准流程：
+      1. 识别彩票型业务（高不确定性+高潜在回报）
+      2. 定义S(当前投入)、K(盈亏平衡点)、T(期限)、σ(波动率)
+      3. 用Black-Scholes计算基础期权价值
+      4. 做多情景概率加权
+      典型彩票业务：Vision Pro、Tesla FSD、Waymo、Alexa
+    effectiveness: "首次验证"
+    priority: "P0"
+    limitation: |
+      当前模型过于简化，未来需改进：
+      - 加入竞争者期权相互影响
+      - 用蒙特卡洛模拟多路径
+      - 用历史数据校准波动率
+
+  - id: "LL_025"
+    date: "2026-01-28"
+    context: "Apple深度分析v2.0"
+    category: "technical_insight"
+    lesson: "TOPS悖论：Apple Neural Engine 35 TOPS实测打败Qualcomm 45 TOPS"
+    root_cause: "规格数字≠实际性能，系统级整合(内存带宽+软硬件协同)才是关键"
+    action_taken: |
+      固化认知：
+      1. 收集官方规格 + 第三方实测
+      2. 对比规格排名 vs 实测排名
+      3. 如有悖论，分析系统级原因
+      投资含义：规格领先≠竞争优势，系统整合能力才是护城河
+    effectiveness: "已验证"
+    priority: "P1"
+
+  - id: "LL_026"
+    date: "2026-01-28"
+    context: "Apple深度分析v2.0"
+    category: "risk_analysis"
+    lesson: "反事实压力测试有效：量化了中国-30%=-14%市值等极端情景"
+    root_cause: "把模糊风险变成具体数字，为投资决策提供边界条件"
+    action_taken: |
+      固化为标准风险分析流程：
+      1. 识别3-5个关键风险变量
+      2. 设定"极端但可能"的情景
+      3. 量化对收入/利润/市值的影响
+      4. 识别缓冲因素
+      5. 计算概率加权影响
+    effectiveness: "已验证"
+    priority: "P1"
+
+  - id: "LL_027"
+    date: "2026-01-28"
+    context: "Apple深度分析v2.0"
+    category: "gap_identified"
+    lesson: "用户声音分析仍然缺失：没有系统性采集Reddit/Twitter/App Store"
+    root_cause: "缺少用户声音采集协议，只依赖新闻搜索"
+    action_taken: |
+      待创建：用户声音采集协议
+      - Reddit: r/apple, r/iphone, r/ios
+      - Twitter: #iOS26, #iPhone17
+      - App Store: 1星评论分析
+      - 情绪量化：正面/负面/中性比例
+      - 高频抱怨主题提取
+    effectiveness: "待实施"
+    priority: "P0"
+
+  - id: "LL_028"
+    date: "2026-01-28"
+    context: "Apple深度分析v2.0"
+    category: "gap_identified"
+    lesson: "开发者生态分析缺失：App Store健康度、新App趋势、开发者收入变化"
+    root_cause: "只分析了用户端，忽略了供给端（开发者）"
+    action_taken: |
+      待补充分析维度：
+      - 新App提交数量趋势
+      - 开发者收入分成变化（EU DMA影响）
+      - iOS vs Android开发者满意度对比
+      - 头部App更新频率
+    effectiveness: "待实施"
+    priority: "P1"
+
+  - id: "LL_029"
+    date: "2026-01-28"
+    context: "Apple深度分析v2.0"
+    category: "process_improvement"
+    lesson: "迭代深化闭环有效：用户反馈→自我反思→继续深挖→再反思"
+    root_cause: "单次分析无法穷尽所有维度，迭代才能持续改进"
+    action_taken: |
+      固化为标准流程：
+      Phase 1: 初始分析（框架驱动）
+      Phase 2: 用户反馈/自我反思
+      Phase 3: 识别薄弱维度，深化探索
+      Phase 4: 再次反思，沉淀经验
+      每个Phase都要输出可追溯的文档
+    effectiveness: "已验证"
+    priority: "P1"
+
 # 统计
 statistics:
-  total_lessons: 21
+  total_lessons: 55
+  meta_insights: 7  # 最顶级经验固化
+  total_knowledge_units: 62  # 55 lessons + 7 meta insights
   by_category:
     agent_execution: 1
     api_integration: 1
@@ -293,16 +430,775 @@ statistics:
     framework_design: 1
     automation: 1
     tool_integration: 1
-    data_quality: 1
+    data_quality: 2
     data_traceability: 1
     valuation_logic: 1
+    valuation_innovation: 1  # LL_024 期权思维
     quality_gate: 1
-    methodology_breakthrough: 1
-    analysis_bias: 1  # v1.1 新增
-    skill_generalization: 1  # v1.3 新增
+    methodology_breakthrough: 3  # LL_019, LL_022, LL_023
+    analysis_bias: 1
+    skill_generalization: 1
+    technical_insight: 1  # LL_025 TOPS悖论
+    risk_analysis: 1  # LL_026 反事实压力测试
+    gap_identified: 2  # LL_027, LL_028 待改进项
+    process_improvement: 1  # LL_029 迭代深化
+    failure_pattern: 5  # LL_030-034 Intel vs NVIDIA失败模式
+    early_signal: 4  # LL_035-038 早期信号检测框架
+    framework_validation: 1  # LL_042 7维度框架应用验证
+    business_model_risk: 1  # LL_043 Per-seat模式风险
+    competitive_dynamics: 1  # LL_044 反向定位攻击
+    valuation_disconnect: 1  # LL_045 财务vs股价背离
+    signal_ambiguity: 1  # LL_046 裁员双面性
+    framework_architecture: 2  # LL_047, LL_048 三层结构+根因症状
+    framework_application: 1  # LL_049 v2.0验证
+    rise_signal_framework: 1  # LL_050 崛起信号7维度
+    ai_unique_capability: 1  # LL_051 关联网络
+    investment_insight: 1  # LL_052 价值转移
   by_priority:
-    P0: 8
-    P1: 4
+    P0: 17  # +2 (LL_047, LL_048 框架架构)
+    P1: 14  # +1 (LL_049 框架应用)
     P2: 1
-  resolved: 1
-  pending: 12
+  by_effectiveness:
+    已验证: 9
+    首次验证: 1
+    待验证: 11
+    待实施: 2
+    N/A: 1
+
+  # Apple v2.0分析新增经验
+  apple_v2_lessons:
+    total_new: 8  # LL_022 到 LL_029
+    breakthroughs:
+      - "供应链晴雨表法"
+      - "历史镜像法"
+      - "期权思维框架"
+      - "TOPS悖论认知"
+      - "反事实压力测试"
+    gaps_to_fix:
+      - "用户声音采集协议"
+      - "开发者生态分析"
+
+  # Intel vs NVIDIA 失败案例分析新增经验
+  intel_nvidia_lessons:
+    id_range: "LL_030 到 LL_034"
+    total_new: 5
+    core_insight: "Intel输给NVIDIA不是因为技术差，而是战略+执行+文化的系统性失败"
+
+    lesson_030:
+      id: "LL_030"
+      date: "2026-01-28"
+      category: "failure_pattern"
+      lesson: "软件生态系统 > 硬件性能：NVIDIA护城河是CUDA不是芯片"
+      evidence: "Intel Gaudi 2部分测试超过A100，但无人使用"
+      investment_implication: "评估芯片公司时，生态系统健康度 > 技术规格"
+
+    lesson_031:
+      id: "LL_031"
+      date: "2026-01-28"
+      category: "failure_pattern"
+      lesson: "收购不能替代战略：Intel花$20B+收购AI公司，三线内斗自相残杀"
+      evidence: "Nervana vs Habana vs Ponte Vecchio最终Nervana被杀"
+      investment_implication: "看收购后整合能力，而非收购数量"
+
+    lesson_032:
+      id: "LL_032"
+      date: "2026-01-28"
+      category: "failure_pattern"
+      lesson: "CEO背景决定战略视野：运营/财务CEO看不到技术趋势"
+      evidence: "Krzanich(运营)→Swan(CFO)连续错过AI，Gelsinger(技术)太晚"
+      investment_implication: "科技公司CEO必须有技术背景+长期愿景"
+
+    lesson_033:
+      id: "LL_033"
+      date: "2026-01-28"
+      category: "failure_pattern"
+      lesson: "制造延期是半导体公司最强失败信号"
+      evidence: "Intel 10nm 2016-2019连续3年延期，TSMC 7nm按计划推进"
+      investment_implication: "半导体公司，制造节点进度是最重要监控指标"
+
+    lesson_034:
+      id: "LL_034"
+      date: "2026-01-28"
+      category: "failure_pattern"
+      lesson: "拒绝'零美元市场'投资是衰落开始的信号"
+      evidence: "Intel 2017年拒绝$1B投资OpenAI换15%股权，现值$120B+"
+      investment_implication: "当行业巨头拒绝投资看似无法商业化的新领域时，警惕"
+
+    framework_output:
+      name: "大公司失败信号检测框架"
+      dimensions: 7
+      dimensions_list:
+        - "护城河侵蚀（15%）"
+        - "制造执行（20%）"
+        - "生态系统（15%）"
+        - "领导层质量（15%）"
+        - "收购整合（10%）"
+        - "文化信号（10%）"
+        - "资本配置（15%）"
+      scoring:
+        healthy: "0-1红灯"
+        warning: "2-3红灯"
+        danger: "4-5红灯"
+        fatal: "6-7红灯"
+      validated_case: "Intel 2016 = 6红灯（致命）→ 2024年被踢出道琼斯"
+
+  # 早期信号检测框架（从回头看→提前看）
+  early_signal_framework:
+    id_range: "LL_035 到 LL_038"
+    total_new: 4
+    core_insight: "生态系统锁定可量化，趋势变化可通过学术+开发者+产业三层信号提前发现"
+
+    lesson_035:
+      id: "LL_035"
+      date: "2026-01-28"
+      category: "early_signal"
+      lesson: "CUDA锁定指数可量化：当前约87%，由开发者数量+应用数量+框架支持综合计算"
+      evidence: |
+        CUDA开发者450万+ vs ROCm约10万 = 45倍差距
+        CUDA优化应用3000+ vs ROCm约100 = 30倍差距
+        已安装CUDA GPU 5亿+ = 巨大存量锁定
+      investment_implication: "锁定指数>80%时NVIDIA护城河稳固，<70%时需警惕"
+
+    lesson_036:
+      id: "LL_036"
+      date: "2026-01-28"
+      category: "early_signal"
+      lesson: "开发者增长率是AI趋势的领先指标：2020-2022年CUDA开发者翻倍，领先ChatGPT爆发12个月"
+      evidence: |
+        2020年：180万开发者
+        2022年：360万开发者（+100%）
+        2022年11月：ChatGPT发布
+      investment_implication: "追踪开发者增长率的加速/减速，比追踪收入更早发现趋势"
+
+    lesson_037:
+      id: "LL_037"
+      date: "2026-01-28"
+      category: "early_signal"
+      lesson: "学术论文硬件提及是最领先的信号（2-5年），AlexNet 2012年用GPU是NVIDIA崛起的最早公开信号"
+      evidence: |
+        2012年9月：AlexNet用2块GTX 580赢得ImageNet
+        2013年：Jensen宣布全公司转向AI
+        2016年：NVIDIA数据中心收入爆发
+        领先时间：3-4年
+      investment_implication: "定期扫描顶级AI论文的硬件选择变化"
+
+    lesson_038:
+      id: "LL_038"
+      date: "2026-01-28"
+      category: "early_signal"
+      lesson: "三层信号体系：学术（2-5年）→ 开发者（1-2年）→ 产业（0-6个月）"
+      framework: |
+        Layer 1 学术信号：
+          - arXiv论文硬件提及
+          - 顶级会议训练硬件
+          - 顶级实验室硬件选择
+        Layer 2 开发者信号：
+          - 工具下载量
+          - Stack Overflow问题数
+          - GitHub项目依赖
+          - 社区情绪
+        Layer 3 产业信号：
+          - 云服务商实例
+          - 芯片定价
+          - 招聘岗位
+          - 供应商财报
+      investment_implication: "建立多层监测机制，学术信号最早但需要跨领域知识"
+
+    quantitative_metrics:
+      cuda_lock_in_index:
+        formula: "(CUDA开发者 + CUDA应用) / (总GPU开发者 + 总GPU应用)"
+        current_value: "87%"
+        thresholds:
+          strong: ">90%"
+          healthy: "80-90%"
+          warning: "70-80%"
+          danger: "<70%"
+
+      developer_growth_rate:
+        healthy_threshold: ">20%/年"
+        current_value: "25%/年"
+
+      academic_hardware_share:
+        signal_threshold: "份额变化>5%/年"
+
+  # "Intel式衰落"早期检测实战应用
+  intel_decline_detection_applied:
+    id_range: "LL_042 到 LL_045"
+    date: "2026-01-28"
+    total_new: 4
+
+    lesson_042:
+      id: "LL_042"
+      category: "framework_validation"
+      lesson: "7维度失败检测框架成功应用于向前预测：Salesforce 4/7红灯 vs Adobe 2/7 vs Google 1/7"
+      evidence: |
+        Salesforce危险信号：
+        - 护城河侵蚀：per-seat模式被AI代理威胁
+        - 产品执行：Agentforce定价反复
+        - 收购整合：Slack $27B整合平庸
+        - 文化信号：裁员8000 + Bret Taylor离职
+      investment_implication: "框架可用于系统性筛选'即将衰落'的公司"
+
+    lesson_043:
+      id: "LL_043"
+      category: "business_model_risk"
+      lesson: "Per-seat定价模式是AI时代最脆弱的商业模式"
+      evidence: |
+        问题：如果AI代理能做5个人的工作，per-seat收入砍5x
+        受影响公司：Salesforce, Atlassian, ServiceNow(部分)
+        应对困境：
+        - 继续per-seat → 收入被AI替代
+        - 转消费模式 → 客户成本不可预测
+        - 转代理模式 → 与ServiceNow无差异竞争
+      investment_implication: "系统性回避per-seat SaaS公司，或等待模式转型完成"
+
+    lesson_044:
+      id: "LL_044"
+      category: "competitive_dynamics"
+      lesson: "反向定位攻击最危险：ServiceNow用'单一平台'攻击Salesforce'收购拼接'"
+      evidence: |
+        ServiceNow优势：单一平台 + 单一数据模型
+        Salesforce弱点：Sales Cloud + Service Cloud + Marketing Cloud + Slack = 多系统拼接
+        Bill McDermott直接宣布进入CRM市场
+      investment_implication: "当竞争对手用你无法复制的架构优势进攻时，最危险"
+
+    lesson_045:
+      id: "LL_045"
+      category: "valuation_disconnect"
+      lesson: "财务指标优秀但股价暴跌是'市场在定价你看不到的风险'"
+      evidence: |
+        Adobe: ROIC 36.7% (优秀), ROE 59.5% (优秀), YTD -22% (大跌)
+        市场定价的风险：AI原生工具可能绕过Creative Cloud
+        教训：不要因为财务好就忽略结构性风险
+      investment_implication: "当优秀公司股价持续下跌，先问'市场看到了什么我没看到的'"
+
+    lesson_046:
+      id: "LL_046"
+      category: "signal_ambiguity"
+      lesson: "裁员是双面信号：主动优化(正面) vs 被迫收缩(负面)，不能直接标红灯"
+      evidence: |
+        Meta 2023: 裁员11000人 → 股价+150%（主动优化）
+        Intel 2024: 裁员15000人 → 股价-50%（被迫收缩）
+        同样是裁员，结果完全相反
+      discrimination_framework: |
+        区分5指标：
+        1. 时机：业绩好时主动 vs 业绩差后被迫
+        2. 配合：裁员+加码新方向 vs 裁员+削减研发
+        3. 人才：保留核心 vs 关键高管离职
+        4. 招聘：6个月内新方向招聘 vs 持续冻结
+        5. 市场：股价上涨 vs 股价下跌
+      investment_implication: "看到裁员新闻，先用5指标判断性质，再决定是正面还是负面"
+      correction_made: "Salesforce裁员从'红灯'修正为'混合信号'(2✅2❌1⚠️)"
+
+    lesson_047:
+      id: "LL_047"
+      category: "framework_architecture"
+      lesson: "衰落检测框架需要三层结构：通用核心(40%) + 行业共性(30%) + 子行业特定(30%)"
+      rationale: |
+        问题：7维度框架来自Intel单一案例，过度拟合半导体行业
+        解决：
+        - Layer 1 通用核心：领导层、资本配置、文化（任何公司适用）
+        - Layer 2 科技共性：平台转换、生态系统、监管（科技公司共有）
+        - Layer 3 子行业：半导体/SaaS/平台/硬件各有不同关键维度
+      key_insight: "不同子行业的'致命伤'完全不同"
+      examples:
+        semiconductor: "制造执行是最高权重（Intel 10nm延期）"
+        saas: "商业模式韧性是最高权重（per-seat被AI颠覆）"
+        platform: "网络效应强度是最高权重"
+
+    lesson_048:
+      id: "LL_048"
+      category: "framework_architecture"
+      lesson: "根因vs症状需要区分：领导层和文化问题是根因(权重1.5x)，其他是症状"
+      rationale: |
+        问题：7个红灯可能重复计算同一个根因
+        例如：领导层差 → 资本配置错 → 收购失败 → 产品落后
+        实际只有1个根因，但被计为4个红灯
+
+        解决：
+        - 根因维度（领导层、文化）：权重×1.5
+        - 症状维度：权重×1.0
+        - 这样根因问题会在总分中体现更多
+
+    lesson_049:
+      id: "LL_049"
+      category: "framework_application"
+      lesson: "框架v2.0验证：Salesforce 49分(Warning) vs Adobe 69分(Watch) vs Google 80分(Healthy)"
+      improvement_over_v1: |
+        v1判断：Salesforce 4红灯、Adobe 2红灯、Google 1红灯
+        v2改进：
+        - 加入子行业特定维度（SaaS商业模式韧性）
+        - 区分根因vs症状
+        - 量化评分而非简单计数
+        - 更精确识别核心问题
+      salesforce_core_issue: "商业模式（per-seat）+ 文化（根因）= 核心问题"
+      adobe_core_issue: "AI转型进度不确定，但基础面健康"
+      google_core_issue: "监管风险是唯一红灯，核心业务稳固"
+
+    lesson_050:
+      id: "LL_050"
+      category: "rise_signal_framework"
+      lesson: "崛起信号7维度框架从3个案例（NVIDIA/MSFT/AMD）提取，与衰落框架对称"
+      dimensions:
+        - "R1 领导层升级：技术背景+Day 1行动+战略勇气"
+        - "R2 战略清晰化：一句话说清楚+明确不做什么"
+        - "R3 反常识资源配置：困境中加倍R&D+投资零美元市场"
+        - "R4 文化转型：废除毒性制度+新文化语言+人才净流入"
+        - "R5 平台预判：比主流提前2-3年布局"
+        - "R6 执行信誉：兑现承诺（确认信号）"
+        - "R7 生态扩张：开发者增长+锁定形成（确认信号）"
+      key_insight: "早期信号(R1-R5)可在股价反应前6-18个月识别"
+      validated_on: ["NVIDIA 2012-2016", "Microsoft 2014-2015", "AMD 2014-2017"]
+
+    lesson_051:
+      id: "LL_051"
+      category: "ai_unique_capability"
+      lesson: "信号关联网络是AI独特能力：传统分析做不到跨公司概率链推理"
+      capability_description: |
+        传统分析局限：
+        - 一次只看一家公司
+        - 竞争格局是静态快照
+        - 难以追踪跨行业连锁反应
+
+        AI可以突破：
+        - 建立公司关系图谱（竞争/供应链/生态/人才/资本）
+        - 信号传导规则（A衰落→B受益概率计算）
+        - 多步概率链推理（P(B|A) × P(C|B) × P(D|C)）
+        - 多路径汇合（1-Π(1-Pi)）
+      example: |
+        Intel衰落→ASML受益链：
+        P(Intel继续失败) × P(客户转TSMC) × P(TSMC扩产) × P(ASML订单增)
+        = 0.8 × 0.7 × 0.8 × 0.9 = 0.40
+
+    lesson_052:
+      id: "LL_052"
+      category: "investment_insight"
+      lesson: "一个公司的衰落往往是另一个公司崛起的机会——价值转移而非消失"
+      patterns:
+        - decline: "Intel制造失败"
+          beneficiaries: ["TSMC", "AMD", "NVDA"]
+        - decline: "Salesforce per-seat危机"
+          beneficiaries: ["ServiceNow", "HubSpot", "AI-native CRM"]
+        - decline: "Google搜索份额下降"
+          beneficiaries: ["Perplexity", "OpenAI"]
+      investment_implication: |
+        检测到衰落信号时，不只是卖出衰落公司，
+        更要买入其受益者——这是alpha的来源
+
+    lesson_053:
+      id: "LL_053"
+      category: "framework_validation"
+      lesson: "完整框架实战验证成功：ServiceNow = 衰落检测93分 + 崛起检测92分 + 关联网络88.8%"
+      analysis_summary: |
+        三框架联合应用：
+        1. 衰落检测: 93/100 (确认NOW不在衰落)
+        2. 崛起检测: 92/100 (强崛起信号)
+        3. 关联网络: 88.8%概率保持高增长
+
+        关键发现：
+        - ServiceNow不是"困境反转"故事，是"强者恒强"故事
+        - Salesforce危机只是多个驱动因素之一，不是唯一
+        - 多路径汇合(Salesforce+AI浪潮+ITSM扩张)提高确信度
+
+    lesson_054:
+      id: "LL_054"
+      category: "pattern_recognition"
+      lesson: "区分两种崛起模式：困境反转(AMD/MSFT) vs 强者恒强(NOW)"
+      distinction: |
+        困境反转模式 (AMD 2014, MSFT 2014):
+        - 起点: 低谷/危机
+        - 关键: 新领导+战略清晰+反常识决策
+        - 机会: 买在股价低点
+        - 风险: 执行失败
+
+        强者恒强模式 (NOW 2025):
+        - 起点: 已经健康
+        - 关键: 持续执行+新市场进攻
+        - 机会: 动量投资
+        - 风险: 估值过高
+
+      investment_implication: |
+        困境反转: 高风险高回报，重仓需要勇气
+        强者恒强: 中风险中回报，适合稳健配置
+
+    lesson_055:
+      id: "LL_055"
+      category: "competitive_dynamics"
+      lesson: "单一平台 vs 收购拼接 是企业软件的结构性竞争优势"
+      evidence: |
+        ServiceNow优势:
+        - 单一平台 + 单一数据模型
+        - AI Control Tower可统一管理
+        - 架构一致性利于AI整合
+
+        Salesforce劣势:
+        - Sales Cloud + Service Cloud + Marketing Cloud + Slack = 多云拼接
+        - 收购整合复杂度高
+        - AI需要跨系统协调
+
+      investment_implication: |
+        评估企业软件竞争时，架构一致性是关键维度
+        收购越多，整合债务越重
+
+# ============================================================
+# 元级洞察 (Meta Insights) - 最顶级经验固化
+# ============================================================
+
+meta_insights:
+  description: "跨越具体分析的通用智慧，从55条经验中提炼"
+  file_location: "skills/core/meta_insights_v1.yaml"
+
+  insight_1:
+    id: "META_001"
+    name: "案例→框架提取法"
+    summary: "单一案例=过拟合，多案例交叉=通用模式"
+    steps: ["深度解剖单案例", "多案例交叉验证", "分层结构化", "实战验证"]
+
+  insight_2:
+    id: "META_002"
+    name: "对称性设计原则"
+    summary: "每个负面信号都有对应正面信号，单看一面=信息不完整"
+    application: "衰落7维度 ↔ 崛起7维度"
+
+  insight_3:
+    id: "META_003"
+    name: "AI独特能力：跨域概率链推理"
+    summary: "多步条件概率 + 多路径汇合 + 关系网络遍历"
+    why_unique: "人脑无法同时追踪多条概率链"
+
+  insight_4:
+    id: "META_004"
+    name: "价值转移思维"
+    summary: "价值不消失只转移，一个公司衰落=另一个公司机会"
+    action: "衰落信号→找受益者→买入机会"
+
+  insight_5:
+    id: "META_005"
+    name: "信号模糊性与语境判断"
+    summary: "同一现象在不同语境下含义相反（裁员可正可负）"
+    method: "收集语境→应用判断规则→如仍模糊则标注混合"
+
+  insight_6:
+    id: "META_006"
+    name: "两种崛起模式"
+    summary: "困境反转(AMD)=高风险高回报 vs 强者恒强(NOW)=中风险中回报"
+
+  insight_7:
+    id: "META_007"
+    name: "可验证预测设计"
+    summary: "每个判断必须可证伪，不可验证=无价值"
+    elements: ["具体数值", "验证日期", "数据来源", "当前基准"]
+
+  # AMD vs NVIDIA 实时预测分析
+  amd_nvidia_prediction:
+    id_range: "LL_039 到 LL_041"
+    date: "2026-01-28"
+    total_new: 3
+
+    lesson_039:
+      id: "LL_039"
+      category: "real_time_prediction"
+      lesson: "AMD不会重蹈Intel覆辙：失败检测框架仅1/7红灯（生态差距），vs Intel 6/7"
+      key_differences:
+        - "制造：AMD用TSMC vs Intel自研失败"
+        - "领导层：Lisa Su技术+执行 vs Intel财务CEO"
+        - "资本配置：AMD拿下OpenAI vs Intel拒绝OpenAI"
+        - "文化：追赶者心态 vs 自满心态"
+
+    lesson_040:
+      id: "LL_040"
+      category: "real_time_prediction"
+      lesson: "ROCm渗透指数仅2.5%（vs CUDA锁定87%），但同比增长10x是追赶加速信号"
+      quantified_gap:
+        developers: "10万 vs 450万 = 45x差距"
+        applications: "100 vs 3000 = 30x差距"
+        peak_utilization: "MI300X 45% vs H100 93%"
+      growth_signal: "ROCm下载量同比增长10x"
+
+    lesson_041:
+      id: "LL_041"
+      category: "real_time_prediction"
+      lesson: "AMD硬件领先但软件落后：内存192GB领先2.4x，但峰值利用率仅45%（H100达93%）"
+      implication: "这正是Intel Gaudi的问题，AMD需要解决"
+      key_metric: "峰值利用率是软件生态成熟度的最佳指标"
+
+    predictions_to_verify:
+      - prediction: "2026年底AMD数据中心GPU份额12-15%"
+        current: "10%"
+        verify_date: "2027-02"
+
+      - prediction: "2026年ROCm下载量同比增长50%+"
+        current: "2025年增长10x"
+        verify_date: "2027-01"
+
+      - prediction: "AWS将在2026年推出MI400实例"
+        current: "AWS拒绝MI300X"
+        verify_date: "2026-12"
+
+      - prediction: "2026年AMD从OpenAI获得$5-10B收入"
+        current: "签约6GW"
+        verify_date: "2027-Q1"
+
+    framework_validation:
+      early_signal_framework: "成功应用于实时预测"
+      failure_detection_framework: "成功区分AMD vs Intel（1/7 vs 6/7）"
+      conclusion: "框架可用于向前看，不仅是回头看"
+
+# ============================================================
+# 半导体供应链周期框架经验 (LL_056 - LL_059)
+# ============================================================
+
+semiconductor_cycle_framework:
+  id_range: "LL_056 到 LL_059"
+  date: "2026-01-28"
+  total_new: 4
+  file_location: "skills/core/semiconductor_cycle_framework_v1.yaml"
+
+  lesson_056:
+    id: "LL_056"
+    category: "supply_chain_analysis"
+    lesson: "咽喉点公司(Chokepoint)是供应链最诚实的领先指标"
+    rationale: |
+      咽喉点公司特征：
+      1. 市场份额>50%或垄断
+      2. 产能是硬约束(扩产周期长)
+      3. 客户不会为面子订购$200M设备
+
+      三层咽喉点：
+      - Tier 1: ASML(EUV 100%), LRCX(HBM刻蚀60%+)
+      - Tier 2: TSM(先进制程92%), SK Hynix(HBM 53%)
+      - Tier 3: AMAT, KLAC, MU
+    investment_implication: |
+      追踪咽喉点公司订单比追踪终端需求更早发现趋势
+      ASML订单 → 12-18个月后产能 → 24个月后终端产品
+
+  lesson_057:
+    id: "LL_057"
+    category: "leading_indicators"
+    lesson: "领先指标层级：设备订单(12-18月) → 利用率(同步) → 库存(滞后) → 终端需求(最滞后)"
+    framework: |
+      Layer 1 设备订单 (最领先)
+        - ASML bookings: €5.4B/Q (当前HIGH)
+        - ASML backlog: €33B (历史新高)
+        - LRCX HBM收入: +50% YoY
+
+      Layer 2 产能利用率 (同步)
+        - TSMC 3nm/5nm: 100%
+        - TSMC mature: 65-70%
+
+      Layer 3 库存周期 (滞后)
+        - 行业平均: 110-120天 (正常化)
+
+      Layer 4 终端需求 (最滞后)
+        - AI capex: +60% YoY
+        - PC/手机: +3-5%
+    investment_implication: "用设备订单判断12-18个月后基本面，不要等终端数据"
+
+  lesson_058:
+    id: "LL_058"
+    category: "cycle_analysis"
+    lesson: "当前半导体市场是'分裂周期'：AI/HBM在Phase 3-4，传统存储在Phase 2-3，成熟制程在Phase 2"
+    evidence: |
+      AI/HBM segment:
+        - ASML backlog €33B (历史新高)
+        - HBM供不应求至2027
+        - 周期位置: Mid to Late Cycle (Phase 3-4)
+
+      传统存储 segment:
+        - DRAM/NAND价格企稳
+        - 库存正常化
+        - 周期位置: Early to Mid Recovery (Phase 2-3)
+
+      成熟制程 segment:
+        - 汽车/工业缓慢复苏
+        - 利用率65-70%偏低
+        - 周期位置: Early Recovery (Phase 2)
+    investment_implication: |
+      不能一刀切看"半导体周期"
+      AI相关(LRCX/TSM)给结构性估值
+      传统存储(MU)给周期性估值
+
+  lesson_059:
+    id: "LL_059"
+    category: "risk_management"
+    lesson: "Kill Switch设计：ASML订单连续2季度<€4B时减仓50%设备股"
+    kill_switches:
+      immediate_triggers:
+        - trigger: "ASML订单连续2季度<€4B"
+          action: "减仓设备股50%"
+        - trigger: "TSMC先进制程利用率<85%"
+          action: "减仓TSM和设备股30%"
+        - trigger: "HBM价格同比下跌>20%"
+          action: "减仓LRCX/SK Hynix 40%"
+        - trigger: "Hyperscaler AI capex指引下调>15%"
+          action: "减仓整个半导体板块30%"
+    investment_implication: |
+      领先指标最大的价值是提供"逃跑信号"
+      设备订单下滑 = 12-18个月后基本面恶化
+      在基本面恶化前撤退
+
+  current_investment_thesis:
+    date: "2026-01-28"
+    cycle_position: "AI/HBM Mid-Late Cycle, 传统Early Recovery"
+
+    top_picks:
+      tier_1:
+        - symbol: "LRCX"
+          thesis: "HBM是AI真正瓶颈，LRCX是HBM扩产必经之路"
+          upside: "HBM层数增加→刻蚀步骤指数增加"
+          risk: "AI投资放缓"
+
+        - symbol: "TSM"
+          thesis: "先进制程垄断+AI需求结构性"
+          upside: "2nm量产领先"
+          risk: "地缘政治"
+
+      tier_2:
+        - symbol: "ASML"
+          thesis: "EUV垄断+High-NA增长"
+          risk: "估值较高"
+
+    predictions:
+      - id: "SEMI_001"
+        statement: "LRCX FY2027收入>$20B"
+        verify_date: "2027-07"
+        confidence: "75%"
+
+      - id: "SEMI_002"
+        statement: "ASML 2026全年bookings>€25B"
+        verify_date: "2027-01"
+        confidence: "80%"
+
+      - id: "SEMI_003"
+        statement: "TSMC 2026收入增速>25%"
+        verify_date: "2027-01"
+        confidence: "85%"
+
+      - id: "SEMI_004"
+        statement: "HBM市场2026年>$50B"
+        verify_date: "2027-03"
+        confidence: "80%"
+
+      - id: "SEMI_005"
+        statement: "半导体周期2026年底前不进入Phase 5"
+        verify_date: "2027-01"
+        confidence: "70%"
+        kill_switch: "Hyperscaler AI capex增速<20%则信心下降"
+
+# ============================================================
+# AI全栈垂直分析框架经验 (LL_060 - LL_064)
+# ============================================================
+
+ai_stack_framework:
+  id_range: "LL_060 到 LL_064"
+  date: "2026-01-28"
+  total_new: 5
+  file_location: "skills/core/ai_stack_framework_v1.yaml"
+
+  lesson_060:
+    id: "LL_060"
+    category: "bottleneck_analysis"
+    lesson: "2026年AI瓶颈正在从芯片转向基础设施（电力→网络→散热）"
+    evidence: |
+      2023-2024：GPU供不应求是主要瓶颈
+      2025-2026：基础设施成为新瓶颈
+        - 电力：美国电网"基本售罄"，扩容需3-5年
+        - 网络：数据移动效率决定集群性能
+        - 散热：机架功率50kW→150kW，液冷是唯一选择
+    investment_implication: |
+      投资应该跟随瓶颈移动：
+      - 2023-2024买NVDA (GPU瓶颈)
+      - 2025-2026买AVGO/ANET/VRT (基础设施瓶颈)
+
+  lesson_061:
+    id: "LL_061"
+    category: "hidden_chokepoint"
+    lesson: "Broadcom(AVGO)是被严重低估的AI基础设施巨头"
+    evidence: |
+      市场认知：多元化半导体公司
+      实际情况：
+        - 定制AI ASIC份额70-80%（Google TPU、Meta、OpenAI、Anthropic）
+        - 网络芯片份额80%
+        - FY26 AI收入预计$40B (+100% YoY)
+        - OpenAI合同$150-200B
+        - Anthropic订单$11B
+    why_overlooked:
+      - "非纯AI股"叙事
+      - VMware收购分散注意力
+      - AI收入占比还在提升中
+    investment_implication: "AVGO可能是风险调整后最佳AI投资标的"
+
+  lesson_062:
+    id: "LL_062"
+    category: "physics_constraint"
+    lesson: "液冷是物理定律决定的必然，不是选择题"
+    evidence: |
+      机架功率演进：
+        - 传统：10kW
+        - 当前AI：50-150kW
+        - 2029年：540kW-1MW
+
+      空气冷却物理极限：~30kW
+
+      结论：液冷是唯一解决方案，没有替代
+    investment_implication: |
+      Vertiv(VRT)是与NVIDIA合作最深的散热供应商
+      GB200散热方案独家合作
+      液冷收入翻倍，订单+60% YoY
+
+  lesson_063:
+    id: "LL_063"
+    category: "signal_propagation"
+    lesson: "AI栈信号传导规律：设备(12-18月) → 芯片(6-12月) → 云(3-6月) → 应用(滞后)"
+    framework: |
+      Layer 0: 设备 (ASML/LRCX) - 最领先
+      Layer 1: 制造 (TSM/SK Hynix) - 产能约束
+      Layer 2: 芯片 (NVDA/AVGO/AMD) - 算力供给
+      Layer 2.5: 基础设施 (ANET/VRT) - 新兴瓶颈
+      Layer 3: 云 (AWS/Azure/GCP) - 分发
+      Layer 4: 模型 (OpenAI/Anthropic) - 私有为主
+      Layer 5: 应用 (NOW/etc) - 最滞后
+    investment_implication: |
+      投资上游比投资下游更早、更确定
+      追踪信号传导比预测终端需求更可靠
+
+  lesson_064:
+    id: "LL_064"
+    category: "market_structure"
+    lesson: "NVIDIA收购Groq($20B)标志着'推理整合时代'开始"
+    evidence: |
+      2025年12月：NVIDIA收购Groq $20B
+      2026年初：Intel收购SambaNova $1.6B
+      Cerebras：预计Q2 2026 IPO
+
+      推理支出首次超过训练支出（"Inference Flip"）
+    investment_implication: |
+      推理市场竞争格局正在快速整合
+      独立推理芯片公司要么被收购、要么IPO
+      NVIDIA在训练+推理两端都在巩固垄断
+
+  new_predictions:
+    - id: "AISTACK_001"
+      statement: "AVGO FY2026 AI收入>$35B"
+      verify_date: "2026-12"
+      confidence: "80%"
+
+    - id: "AISTACK_002"
+      statement: "VRT 2026收入增速>25%"
+      verify_date: "2027-02"
+      confidence: "75%"
+
+    - id: "AISTACK_003"
+      statement: "ANET 2026 AI数据中心收入>$3B"
+      verify_date: "2027-02"
+      confidence: "80%"
+
+    - id: "AISTACK_004"
+      statement: "2026年底前网络/散热股跑赢纯GPU股"
+      verify_date: "2027-01"
+      confidence: "65%"
+
+    - id: "AISTACK_005"
+      statement: "Hyperscaler AI capex 2026增速>40%"
+      verify_date: "2027-02"
+      confidence: "70%"

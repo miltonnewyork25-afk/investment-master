@@ -1,0 +1,577 @@
+# AI全栈垂直分析框架 v1.0
+# AI Infrastructure Stack Framework
+# 核心理念：追踪信号从底层到顶层的传导，发现每层咽喉点和投资机会
+
+version: "1.0"
+created: "2026-01-28"
+purpose: "识别AI栈各层瓶颈、咽喉点公司、投资机会和信号传导规则"
+
+# ============================================================
+# 第一部分：AI栈7层结构
+# ============================================================
+
+ai_stack_layers:
+
+  layer_0:
+    name: "半导体设备"
+    description: "制造芯片的设备，最上游"
+    position: "最领先指标层"
+    lead_time: "12-18个月"
+    chokepoint_companies:
+      - symbol: "ASML"
+        role: "EUV光刻机垄断"
+        market_share: "100%"
+        current_signal: "backlog €33B历史新高"
+      - symbol: "LRCX"
+        role: "HBM刻蚀主导"
+        market_share: "60%+ HBM刻蚀"
+        current_signal: "HBM设备收入+50% YoY"
+    covered_by: "semiconductor_cycle_framework_v1.yaml"
+
+  layer_1:
+    name: "芯片制造"
+    description: "代工厂和存储器厂商"
+    position: "产能约束层"
+    lead_time: "6-12个月"
+    chokepoint_companies:
+      - symbol: "TSM"
+        role: "先进制程垄断"
+        market_share: "92%先进制程"
+        current_signal: "3nm/5nm利用率100%"
+      - symbol: "SK Hynix"
+        role: "HBM领导者"
+        market_share: "53% HBM"
+        current_signal: "产能售罄至2027"
+    covered_by: "semiconductor_cycle_framework_v1.yaml"
+
+  layer_2:
+    name: "AI芯片"
+    description: "GPU、TPU、定制ASIC"
+    position: "算力供给层"
+    lead_time: "3-6个月"
+    chokepoint_companies:
+      - symbol: "NVDA"
+        role: "AI GPU垄断+推理整合"
+        market_share: "90%+ AI训练"
+        key_moat: "CUDA生态锁定87%"
+        recent_move: "收购Groq $20B进军推理"
+        current_signal: "数据中心收入+100%+ YoY"
+
+      - symbol: "AVGO"
+        role: "定制AI ASIC主导"
+        market_share: "70-80%定制ASIC"
+        key_customers: ["Google TPU", "Meta", "OpenAI Titan", "Anthropic"]
+        current_signal: |
+          - AI收入FY26预计$40B (+100% YoY)
+          - OpenAI合同$150-200B
+          - Anthropic订单$11B
+          - 总backlog $73B
+        why_overlooked: "被视为'非纯AI股'，估值折价"
+
+      - symbol: "AMD"
+        role: "挑战者"
+        market_share: "10%数据中心GPU"
+        current_signal: "MI300X拿下OpenAI 6GW订单"
+
+  layer_2_5:
+    name: "AI基础设施（网络+散热+电力）"
+    description: "数据中心物理基础设施"
+    position: "2026年新兴瓶颈层"
+    lead_time: "同步到滞后"
+    critical_insight: |
+      2026年AI瓶颈正在从芯片转向基础设施：
+      1. 电力：美国电网"基本售罄"，扩容需3-5年
+      2. 网络：数据移动效率决定集群性能
+      3. 散热：液冷已成必选项（机架功率50kW→150kW）
+
+    chokepoint_companies:
+      networking:
+        - symbol: "ANET"
+          role: "AI数据中心交换机领导者"
+          market_share: "#1 in 800GbE and data center Ethernet"
+          current_signal: |
+            - 2025收入增长27%
+            - AI数据中心收入$2.75B
+            - 2026目标增长60%+ (AI和Campus)
+          why_chokepoint: |
+            网络是AI集群效率的决定因素
+            即使微小的网络低效也会显著降低训练性能
+
+        - symbol: "AVGO"
+          role: "网络芯片+SerDes主导"
+          market_share: "80%高速以太网交换芯片"
+          products: ["Tomahawk 5", "Tomahawk 6 (102.4 Tbps)"]
+          current_signal: "网络收入YoY +170%"
+
+      cooling:
+        - symbol: "VRT"
+          role: "数据中心散热和电力管理"
+          market_position: "与NVIDIA合作GB200散热方案"
+          current_signal: |
+            - 收入+29% YoY
+            - 订单+60% YoY
+            - backlog $9.5B
+            - 液冷收入翻倍
+          why_chokepoint: |
+            机架功率从10kW→150kW，空气冷却物理上不可能
+            液冷是唯一选择，Vertiv与NVIDIA深度合作
+
+      power:
+        - companies: ["电网公司", "核电公司", "天然气发电"]
+          constraint: |
+            电力是2026年#1瓶颈
+            - 美国电网"基本售罄"
+            - 扩容需3-5年
+            - 北弗吉尼亚/乔治亚/俄亥俄已触及电网限制
+          investable_angle: |
+            电力公司受监管，投资难度大
+            替代方案：
+            - 核电相关(Constellation, Vistra)
+            - 天然气发电(Bloom Energy)
+            - 小型模块化核反应堆(NuScale)
+
+  layer_3:
+    name: "云基础设施"
+    description: "Hyperscaler云服务"
+    position: "算力分发层"
+    chokepoint_companies:
+      - symbol: "AMZN (AWS)"
+        market_share: "32%云市场"
+        ai_capex_2025: "$70B+"
+        proprietary_chips: ["Trainium", "Inferentia"]
+
+      - symbol: "MSFT (Azure)"
+        market_share: "23%云市场"
+        ai_capex_2025: "$80B+"
+        advantage: "OpenAI独家合作"
+
+      - symbol: "GOOGL (GCP)"
+        market_share: "11%云市场"
+        ai_capex_2025: "$75B+"
+        proprietary_chips: "TPU (Broadcom制造)"
+
+    investment_thesis: |
+      Hyperscaler是AI投资的"传导器"：
+      - 他们的capex = 上游设备商的收入
+      - 他们的capacity constraint = 下游AI公司的增长瓶颈
+      - 追踪他们的capex指引比追踪AI模型公司更可靠
+
+  layer_4:
+    name: "AI模型/平台"
+    description: "基础模型和AI平台"
+    position: "能力供给层"
+    companies:
+      - name: "OpenAI"
+        status: "私有，传估值$300B+"
+        revenue: "预计$12B+ (2025)"
+        infrastructure: "Azure + 自研Titan芯片(Broadcom)"
+
+      - name: "Anthropic"
+        status: "私有，传估值$60B+"
+        investors: ["Amazon", "Google"]
+        infrastructure: "多云 + Broadcom ASIC $11B订单"
+
+      - name: "Google DeepMind"
+        status: "Alphabet子公司"
+        products: "Gemini系列"
+
+      - name: "Meta AI"
+        status: "Meta子公司"
+        products: "Llama系列（开源）"
+        strategy: "开源模型 + 自研芯片"
+
+    investable_angle: |
+      大部分AI模型公司是私有的，公开市场投资有限
+      替代策略：
+      1. 投资他们的供应商(NVDA, AVGO, TSM)
+      2. 投资Hyperscaler母公司
+      3. 等待IPO(Cerebras预计Q2 2026)
+
+  layer_5:
+    name: "AI应用"
+    description: "企业和消费者AI应用"
+    position: "价值变现层"
+    lead_time: "最滞后"
+    chokepoint_companies:
+      enterprise:
+        - symbol: "NOW"
+          role: "企业AI工作流领导者"
+          current_signal: "崛起评分92/100"
+          covered_by: "tech_rise_framework_v1.yaml验证"
+
+        - symbol: "CRM"
+          role: "CRM领导者（面临挑战）"
+          current_signal: "衰落评分4/7红灯"
+          risk: "per-seat模式被AI威胁"
+
+      consumer:
+        - category: "AI原生应用"
+          examples: ["ChatGPT", "Claude", "Midjourney"]
+          status: "大部分私有"
+
+    investment_thesis: |
+      应用层是"滞后指标"：
+      - 收入增长滞后于基础设施建设
+      - 但也是最终价值变现层
+      - 当前阶段：基础设施 > 应用
+
+# ============================================================
+# 第二部分：层间信号传导规则
+# ============================================================
+
+signal_propagation:
+
+  rule_1:
+    name: "自下而上传导"
+    description: "设备订单 → 芯片产能 → 云capex → AI应用"
+    lag_times:
+      layer_0_to_1: "12-18个月"
+      layer_1_to_2: "6-12个月"
+      layer_2_to_3: "3-6个月"
+      layer_3_to_5: "6-12个月"
+    example: |
+      ASML订单增加(2024) → TSMC产能扩张(2025) →
+      NVIDIA供给增加(2025) → 云厂商capacity释放(2026) →
+      AI应用增长加速(2026-2027)
+
+  rule_2:
+    name: "自上而下需求信号"
+    description: "AI应用需求 → 云capex → 芯片订单 → 设备订单"
+    example: |
+      ChatGPT爆发(2022.11) → Hyperscaler capex暴增(2023) →
+      NVIDIA订单激增(2023-2024) → ASML/LRCX订单创新高(2024-2025)
+
+  rule_3:
+    name: "瓶颈转移规则"
+    description: "当一层瓶颈解决，下一层成为新瓶颈"
+    current_transition: |
+      2023-2024: GPU供给是瓶颈 (NVIDIA主导)
+      2025-2026: 基础设施成为瓶颈 (电力、网络、散热)
+      2027+: 可能转向应用层或人才层
+    investment_implication: |
+      投资应该跟随瓶颈移动：
+      - 2023-2024买NVDA (GPU瓶颈)
+      - 2025-2026买ANET/VRT/AVGO (基础设施瓶颈)
+      - 未来关注下一个瓶颈
+
+  rule_4:
+    name: "放大效应"
+    description: "上游信号在下游被放大"
+    example: |
+      设备订单+10% → 芯片产能+15% → 数据中心+20% → AI应用TAM+30%
+      这是牛鞭效应(Bullwhip Effect)的正向版本
+
+  rule_5:
+    name: "Kill Signal传导"
+    description: "负面信号从下游向上游传导"
+    warning_signs:
+      - source: "Hyperscaler capex指引下调"
+        propagation: "→ 芯片订单下滑 → 设备订单下滑"
+        lag: "3-6个月"
+      - source: "AI应用增长放缓"
+        propagation: "→ 云capex收缩 → 全栈下行"
+        lag: "6-12个月"
+
+# ============================================================
+# 第三部分：2026年投资机会热图
+# ============================================================
+
+investment_heatmap_2026:
+
+  layer_0_equipment:
+    opportunity_score: 85
+    rationale: "订单backlog创新高，但已被较充分定价"
+    top_picks: ["LRCX", "ASML"]
+    risk: "周期见顶担忧"
+
+  layer_1_manufacturing:
+    opportunity_score: 88
+    rationale: "先进制程供不应求，地缘风险已部分定价"
+    top_picks: ["TSM"]
+    risk: "台海风险"
+
+  layer_2_chips:
+    opportunity_score: 80
+    rationale: "NVDA估值高但护城河深，AVGO被低估"
+    top_picks: ["AVGO", "NVDA"]
+    key_insight: |
+      AVGO是隐藏的AI赢家：
+      - 70-80%定制ASIC份额
+      - 80%网络芯片份额
+      - OpenAI大单$150-200B
+      - 但仍被视为"多元化半导体公司"估值折价
+
+  layer_2_5_infrastructure:
+    opportunity_score: 92  # 最高机会
+    rationale: |
+      2026年新兴瓶颈层，市场尚未充分定价
+      - 电力是#1约束，但难以直接投资
+      - 网络和散热是可投资的咽喉点
+    top_picks:
+      networking: ["ANET", "AVGO"]
+      cooling: ["VRT"]
+    key_insight: |
+      Vertiv是2026年最被低估的AI基础设施股：
+      - 与NVIDIA深度合作(GB200散热方案)
+      - 订单+60% YoY
+      - 液冷是唯一选择，没有替代
+      - 但估值仍低于纯AI股
+
+  layer_3_cloud:
+    opportunity_score: 75
+    rationale: "已被充分研究，估值反映预期"
+    top_picks: ["AMZN", "MSFT", "GOOGL"]
+    risk: "AI capex回报不确定性"
+
+  layer_4_models:
+    opportunity_score: 60
+    rationale: "大部分私有，公开市场机会有限"
+    watch: "Cerebras IPO (预计Q2 2026)"
+
+  layer_5_applications:
+    opportunity_score: 70
+    rationale: "选股重要，非普涨"
+    top_picks: ["NOW"]
+    avoid: ["CRM"]
+
+# ============================================================
+# 第四部分：新发现的咽喉点
+# ============================================================
+
+newly_discovered_chokepoints:
+
+  chokepoint_1:
+    name: "Broadcom - 隐藏的AI基础设施巨头"
+    symbol: "AVGO"
+    why_overlooked: |
+      市场叙事：Broadcom是"多元化半导体公司"
+      实际情况：
+      - 70-80%定制AI ASIC份额
+      - 80%高速网络芯片份额
+      - Google TPU、Meta、OpenAI、Anthropic都是客户
+      - AI收入FY26预计$40B，超过AMD全部收入
+    investment_thesis: |
+      AVGO是"AI基础设施的基础设施"：
+      - 定制芯片：Google TPU, Meta, OpenAI Titan
+      - 网络芯片：Tomahawk系列主导
+      - 比NVDA估值更合理
+    catalyst:
+      - OpenAI Titan芯片量产(2026-2027)
+      - FY26 AI收入翻倍验证
+    risk: "客户集中度高(Google占比大)"
+
+  chokepoint_2:
+    name: "Vertiv - AI散热的唯一选择"
+    symbol: "VRT"
+    why_overlooked: |
+      市场叙事：Vertiv是"老旧的数据中心设备公司"
+      实际情况：
+      - 与NVIDIA合作开发GB200散热方案
+      - 液冷收入翻倍
+      - 机架功率150kW+时，液冷是物理上唯一选择
+    investment_thesis: |
+      AI功耗指数增长 → 散热需求指数增长
+      - 空气冷却物理极限~30kW
+      - 当前AI机架50-150kW
+      - 2029年预计540kW-1MW
+      唯一解决方案：液冷
+    catalyst:
+      - GB200量产带动液冷需求
+      - 更多Hyperscaler采用液冷
+    risk: "竞争加剧(Schneider Electric等)"
+
+  chokepoint_3:
+    name: "Arista - AI网络的瓶颈控制者"
+    symbol: "ANET"
+    why_overlooked: |
+      市场叙事：网络设备是"低增长行业"
+      实际情况：
+      - 800GbE市场份额#1
+      - AI网络收入增长60%+
+      - 网络效率决定AI集群性能
+    investment_thesis: |
+      GPU数量×网络效率 = 实际算力
+      即使GPU供给充足，网络低效也会浪费算力
+      Arista是唯一能解决大规模AI网络的供应商
+    catalyst:
+      - 800GbE向1.6TbE升级
+      - 百万GPU集群时代
+    risk: "Cisco反攻，Broadcom垂直整合"
+
+# ============================================================
+# 第五部分：可验证预测
+# ============================================================
+
+verifiable_predictions:
+
+  prediction_1:
+    id: "AISTACK_001"
+    statement: "AVGO FY2026 AI收入>$35B"
+    current_estimate: "$40B (分析师预期)"
+    verification_date: "2026-12"
+    confidence: "80%"
+    logic: "Google TPU + OpenAI + Anthropic订单支撑"
+
+  prediction_2:
+    id: "AISTACK_002"
+    statement: "VRT 2026收入增速>25%"
+    current_run_rate: "+29%"
+    verification_date: "2027-02"
+    confidence: "75%"
+    logic: "液冷需求加速，backlog强劲"
+
+  prediction_3:
+    id: "AISTACK_003"
+    statement: "ANET 2026 AI数据中心收入>$3B"
+    current_target: "$2.75B"
+    verification_date: "2027-02"
+    confidence: "80%"
+    logic: "AI网络需求持续增长"
+
+  prediction_4:
+    id: "AISTACK_004"
+    statement: "2026年底前网络/散热股跑赢纯GPU股"
+    benchmark: "VRT+ANET vs NVDA相对表现"
+    verification_date: "2027-01"
+    confidence: "65%"
+    logic: "瓶颈从芯片转向基础设施"
+
+  prediction_5:
+    id: "AISTACK_005"
+    statement: "Hyperscaler AI capex 2026增速>40%"
+    current_estimate: "MSFT/GOOGL/AMZN合计$280B+"
+    verification_date: "2027-02"
+    confidence: "70%"
+    logic: "AI投资持续强劲"
+    kill_switch: "如果任一大厂下调capex指引>20%，信心大幅下降"
+
+# ============================================================
+# 第六部分：投资组合建议
+# ============================================================
+
+portfolio_recommendation:
+
+  core_thesis: |
+    2026年AI投资主题：从芯片到基础设施
+    - 芯片层(NVDA)已被充分定价
+    - 基础设施层(AVGO/ANET/VRT)正在被重新定价
+    - 投资应该跟随瓶颈移动
+
+  tier_1_highest_conviction:
+    - symbol: "AVGO"
+      allocation: "核心仓位"
+      thesis: "AI基础设施的基础设施，估值折价"
+      target: "AI收入翻倍验证后估值重估"
+
+    - symbol: "TSM"
+      allocation: "核心仓位"
+      thesis: "先进制程垄断，AI需求结构性"
+
+    - symbol: "LRCX"
+      allocation: "核心仓位"
+      thesis: "HBM是AI真正瓶颈"
+
+  tier_2_high_conviction:
+    - symbol: "VRT"
+      allocation: "重要仓位"
+      thesis: "液冷是唯一选择，与NVIDIA深度绑定"
+
+    - symbol: "ANET"
+      allocation: "重要仓位"
+      thesis: "网络是AI集群效率瓶颈"
+
+    - symbol: "NVDA"
+      allocation: "标配仓位"
+      thesis: "护城河深但估值高，Groq收购加强推理"
+
+  tier_3_tactical:
+    - symbol: "NOW"
+      allocation: "战术仓位"
+      thesis: "AI应用层龙头"
+
+    - symbol: "AMD"
+      allocation: "观察仓位"
+      thesis: "OpenAI订单是转折点，但软件生态仍弱"
+
+  avoid:
+    - symbol: "CRM"
+      reason: "per-seat模式结构性风险"
+
+# ============================================================
+# 第七部分：Kill Switch
+# ============================================================
+
+kill_switches:
+
+  immediate_triggers:
+    - trigger: "Hyperscaler AI capex指引下调>15%"
+      action: "减仓整个AI栈30%"
+      logic: "需求端动摇，全栈下行"
+
+    - trigger: "AVGO AI收入增速<50%"
+      action: "减仓AVGO 40%"
+      logic: "定制芯片需求弱于预期"
+
+    - trigger: "VRT订单增速转负"
+      action: "减仓VRT 50%"
+      logic: "散热需求见顶"
+
+  warning_signals:
+    - signal: "AI应用公司普遍亏损加剧"
+      severity: "MEDIUM"
+      action: "密切监控capex指引"
+
+    - signal: "GPU库存天数显著上升"
+      severity: "HIGH"
+      action: "减少设备层仓位"
+
+# ============================================================
+# 第八部分：关键洞察
+# ============================================================
+
+key_insights:
+
+  insight_1:
+    name: "瓶颈正在从芯片转向基础设施"
+    content: |
+      2023-2024：GPU是瓶颈 → 投资NVDA
+      2025-2026：电力/网络/散热是瓶颈 → 投资AVGO/ANET/VRT
+
+      市场仍在定价GPU叙事，忽视基础设施叙事
+      这是信息套利机会
+
+  insight_2:
+    name: "AVGO是被严重低估的AI赢家"
+    content: |
+      市场认知：Broadcom是"多元化半导体公司"
+      实际情况：AI收入FY26预计$40B，接近NVDA数据中心收入
+
+      - 定制ASIC：70-80%份额
+      - 网络芯片：80%份额
+      - 客户：Google, Meta, OpenAI, Anthropic
+
+      为什么低估：
+      - 非"纯AI股"叙事
+      - VMware收购分散注意力
+      - AI收入占比还在提升中
+
+  insight_3:
+    name: "液冷是物理定律决定的必然"
+    content: |
+      机架功率50kW → 150kW → 540kW (2029)
+      空气冷却极限：~30kW
+
+      这不是"选择"，是物理定律
+      Vertiv是与NVIDIA合作最深的散热供应商
+
+  insight_4:
+    name: "信号传导的投资价值"
+    content: |
+      追踪信号传导比预测终端需求更可靠：
+
+      ASML订单↑ (已发生)
+      → TSMC产能↑ (正在发生)
+      → 基础设施需求↑ (正在发生)
+      → AI应用扩张 (即将发生)
+
+      投资上游比投资下游更早、更确定

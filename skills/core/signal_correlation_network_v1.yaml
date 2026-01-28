@@ -1,0 +1,459 @@
+# 信号关联网络框架 v1.0
+# Signal Correlation Network Framework
+# AI独特能力：传统分析做不到的跨公司关联推理
+
+version: "1.0"
+created: "2026-01-28"
+
+# ============================================================
+# 核心理念
+# ============================================================
+
+philosophy:
+
+  traditional_analysis_limitation: |
+    传统分析的局限：
+    - 一次只看一家公司
+    - 竞争格局是静态快照
+    - 难以追踪跨行业连锁反应
+    - 分析师各自为政，信息孤岛
+
+  ai_unique_capability: |
+    AI可以突破的边界：
+    1. 关联网络：公司之间的依赖/竞争图谱
+    2. 信号传导：衰落信号如何变成崛起信号
+    3. 概率链推理：P(B|A) × P(C|B) × P(D|C)
+    4. 跨域连接：半导体→SaaS→消费的连锁反应
+    5. 实时更新：当检测到新信号时自动推断影响
+
+  core_insight: |
+    一个公司的衰落往往是另一个公司崛起的机会。
+    价值不会消失，只是转移。
+    AI可以追踪这种价值转移。
+
+# ============================================================
+# 关系类型定义
+# ============================================================
+
+relationship_types:
+
+  competitive:
+    id: "COMP"
+    name: "直接竞争"
+    description: "同一市场的零和博弈"
+    signal_transfer_rule: |
+      A衰落 → B崛起概率++
+      A崛起 → B承压概率++
+    strength_factors:
+      - "市场重叠度"
+      - "产品替代性"
+      - "客户转换成本"
+
+  supply_chain_upstream:
+    id: "SC_UP"
+    name: "上游供应"
+    description: "A是B的供应商"
+    signal_transfer_rule: |
+      B需求增 → A收入增
+      B需求减 → A收入减
+      A产能问题 → B供应风险
+    strength_factors:
+      - "收入依赖度"
+      - "替代供应商数量"
+      - "产品定制程度"
+
+  supply_chain_downstream:
+    id: "SC_DOWN"
+    name: "下游客户"
+    description: "A是B的客户"
+    signal_transfer_rule: |
+      A需求变化 → B收入变化
+    strength_factors:
+      - "A占B收入比例"
+      - "合同锁定程度"
+
+  ecosystem_symbiosis:
+    id: "ECO"
+    name: "生态共生"
+    description: "生态系统中的互利关系"
+    signal_transfer_rule: |
+      A生态强 → B锁定强
+      A生态衰 → B迁移风险
+    strength_factors:
+      - "API依赖深度"
+      - "用户重叠度"
+      - "技术整合程度"
+
+  talent_flow:
+    id: "TALENT"
+    name: "人才流动"
+    description: "关键人才的流动方向"
+    signal_transfer_rule: |
+      A人才流出 → B能力增强
+      A高管跳槽B → B战略升级可能
+    strength_factors:
+      - "历史人才流动数据"
+      - "薪酬差异"
+      - "文化吸引力"
+
+  capital_flow:
+    id: "CAPITAL"
+    name: "资本转移"
+    description: "投资资金的流向"
+    signal_transfer_rule: |
+      A估值压缩 → 资金流向B
+      A板块热 → B板块资金流出
+    strength_factors:
+      - "投资者重叠"
+      - "板块相关性"
+      - "风险偏好变化"
+
+  technology_dependency:
+    id: "TECH"
+    name: "技术依赖"
+    description: "核心技术的依赖关系"
+    signal_transfer_rule: |
+      A技术突破 → B受益（如果依赖A）
+      A技术落后 → B风险（如果依赖A）
+    strength_factors:
+      - "技术替代难度"
+      - "专利/IP依赖"
+
+# ============================================================
+# 科技行业关联网络
+# ============================================================
+
+tech_industry_network:
+
+  # ===== 半导体供应链 =====
+  semiconductor_chain:
+    name: "半导体供应链网络"
+
+    nodes:
+      # 设备商
+      - {id: "ASML", type: "equipment", specialty: "光刻机"}
+      - {id: "LRCX", type: "equipment", specialty: "刻蚀"}
+      - {id: "AMAT", type: "equipment", specialty: "沉积"}
+      - {id: "KLAC", type: "equipment", specialty: "检测"}
+
+      # 代工厂
+      - {id: "TSM", type: "foundry"}
+      - {id: "INTC_foundry", type: "foundry"}
+      - {id: "Samsung_foundry", type: "foundry"}
+
+      # 芯片设计
+      - {id: "NVDA", type: "fabless", specialty: "GPU/AI"}
+      - {id: "AMD", type: "fabless", specialty: "CPU/GPU"}
+      - {id: "INTC", type: "IDM", specialty: "CPU"}
+      - {id: "QCOM", type: "fabless", specialty: "mobile"}
+      - {id: "AVGO", type: "fabless", specialty: "networking"}
+
+      # 存储
+      - {id: "MU", type: "memory"}
+      - {id: "SK_Hynix", type: "memory"}
+      - {id: "Samsung_memory", type: "memory"}
+
+    edges:
+      # 设备商 → 代工厂
+      - {from: "ASML", to: "TSM", type: "SC_UP", strength: 0.9}
+      - {from: "ASML", to: "INTC_foundry", type: "SC_UP", strength: 0.8}
+      - {from: "ASML", to: "Samsung_foundry", type: "SC_UP", strength: 0.8}
+      - {from: "LRCX", to: "TSM", type: "SC_UP", strength: 0.7}
+      - {from: "LRCX", to: "SK_Hynix", type: "SC_UP", strength: 0.6}
+
+      # 代工厂 → 芯片设计
+      - {from: "TSM", to: "NVDA", type: "SC_UP", strength: 0.95}
+      - {from: "TSM", to: "AMD", type: "SC_UP", strength: 0.9}
+      - {from: "TSM", to: "AAPL", type: "SC_UP", strength: 0.85}
+      - {from: "TSM", to: "QCOM", type: "SC_UP", strength: 0.8}
+
+      # 竞争关系
+      - {from: "NVDA", to: "AMD", type: "COMP", market: "data_center_GPU", strength: 0.8}
+      - {from: "NVDA", to: "INTC", type: "COMP", market: "AI_accelerator", strength: 0.6}
+      - {from: "AMD", to: "INTC", type: "COMP", market: "x86_server", strength: 0.9}
+      - {from: "TSM", to: "INTC_foundry", type: "COMP", market: "foundry", strength: 0.7}
+      - {from: "TSM", to: "Samsung_foundry", type: "COMP", market: "foundry", strength: 0.8}
+
+      # 存储 → GPU（HBM）
+      - {from: "SK_Hynix", to: "NVDA", type: "SC_UP", product: "HBM", strength: 0.8}
+      - {from: "MU", to: "NVDA", type: "SC_UP", product: "HBM", strength: 0.5}
+
+  # ===== SaaS竞争网络 =====
+  saas_competition:
+    name: "企业SaaS竞争网络"
+
+    nodes:
+      - {id: "CRM", type: "platform", specialty: "CRM"}
+      - {id: "NOW", type: "platform", specialty: "workflow"}
+      - {id: "WDAY", type: "application", specialty: "HCM"}
+      - {id: "TEAM", type: "application", specialty: "collaboration"}
+      - {id: "ZM", type: "application", specialty: "video"}
+      - {id: "ADBE", type: "platform", specialty: "creative"}
+      - {id: "MSFT_365", type: "platform", specialty: "productivity"}
+      - {id: "Canva", type: "challenger", specialty: "creative"}
+      - {id: "Figma", type: "challenger", specialty: "design"}
+      - {id: "HubSpot", type: "challenger", specialty: "CRM_SMB"}
+
+    edges:
+      # 直接竞争
+      - {from: "CRM", to: "NOW", type: "COMP", market: "enterprise_workflow", strength: 0.7}
+      - {from: "CRM", to: "HubSpot", type: "COMP", market: "CRM_SMB", strength: 0.5}
+      - {from: "ADBE", to: "Canva", type: "COMP", market: "design_prosumer", strength: 0.6}
+      - {from: "ADBE", to: "Figma", type: "COMP", market: "UI_design", strength: 0.8}
+      - {from: "TEAM", to: "MSFT_365", type: "COMP", market: "collaboration", strength: 0.7}
+      - {from: "ZM", to: "MSFT_365", type: "COMP", market: "video", strength: 0.8}
+
+      # 生态关系
+      - {from: "CRM", to: "TEAM", type: "ECO", integration: "Slack+Jira", strength: 0.4}
+
+  # ===== 平台竞争网络 =====
+  platform_competition:
+    name: "消费平台竞争网络"
+
+    nodes:
+      - {id: "GOOGL", type: "platform", specialty: "search/ads"}
+      - {id: "META", type: "platform", specialty: "social/ads"}
+      - {id: "AMZN", type: "platform", specialty: "ecommerce/cloud"}
+      - {id: "AAPL", type: "platform", specialty: "devices/services"}
+      - {id: "MSFT", type: "platform", specialty: "enterprise/cloud"}
+      - {id: "OpenAI", type: "challenger", specialty: "AI"}
+      - {id: "Perplexity", type: "challenger", specialty: "AI_search"}
+      - {id: "TikTok", type: "challenger", specialty: "short_video"}
+
+    edges:
+      # 搜索/AI竞争
+      - {from: "GOOGL", to: "OpenAI", type: "COMP", market: "AI_assistant", strength: 0.8}
+      - {from: "GOOGL", to: "Perplexity", type: "COMP", market: "search", strength: 0.5}
+      - {from: "GOOGL", to: "MSFT", type: "COMP", market: "enterprise_AI", strength: 0.6}
+
+      # 注意力竞争
+      - {from: "META", to: "TikTok", type: "COMP", market: "attention", strength: 0.9}
+      - {from: "GOOGL_YouTube", to: "TikTok", type: "COMP", market: "video", strength: 0.7}
+
+      # 云竞争
+      - {from: "AMZN_AWS", to: "MSFT_Azure", type: "COMP", market: "cloud", strength: 0.9}
+      - {from: "AMZN_AWS", to: "GOOGL_GCP", type: "COMP", market: "cloud", strength: 0.7}
+
+      # 生态系统
+      - {from: "AAPL", to: "GOOGL", type: "ECO", deal: "search_default", strength: 0.8}
+      - {from: "OpenAI", to: "MSFT", type: "ECO", investment: true, strength: 0.9}
+
+# ============================================================
+# 信号传导引擎
+# ============================================================
+
+signal_propagation_engine:
+
+  description: |
+    当检测到公司A的信号时，自动推断对关联公司的影响
+
+  propagation_rules:
+
+    rule_1_competitive_decline:
+      trigger: "公司A出现衰落信号"
+      action: |
+        1. 找到所有与A有COMP关系的公司B
+        2. 计算P(B受益) = A衰落严重度 × 关系强度 × 市场重叠度
+        3. 对每个B，生成"潜在受益者"标签
+      example:
+        trigger: "Intel制造执行失败(D2红灯)"
+        propagation:
+          - {company: "AMD", relation: "COMP", P_benefit: 0.72}
+          - {company: "TSM", relation: "SC_UP(获得Intel订单)", P_benefit: 0.6}
+
+    rule_2_supply_chain_cascade:
+      trigger: "公司A需求大幅变化"
+      action: |
+        1. 找到A的所有上游供应商
+        2. 计算收入影响 = A需求变化 × 供应商对A依赖度
+        3. 递归传导到更上游
+      example:
+        trigger: "NVIDIA数据中心需求+50%"
+        propagation:
+          - {company: "TSM", impact: "+代工收入", lag: "0-3个月"}
+          - {company: "ASML", impact: "+设备订单", lag: "6-12个月"}
+          - {company: "SK_Hynix", impact: "+HBM订单", lag: "0-3个月"}
+
+    rule_3_ecosystem_shift:
+      trigger: "公司A生态系统衰落"
+      action: |
+        1. 找到依赖A生态的公司
+        2. 评估迁移风险
+        3. 找到可能接收迁移的替代生态
+      example:
+        trigger: "CUDA锁定指数下降10%"
+        propagation:
+          - {company: "AMD_ROCm", signal: "追赶窗口打开"}
+          - {company: "NVDA依赖公司", signal: "迁移可能性上升"}
+
+    rule_4_talent_flow_signal:
+      trigger: "关键人才流动"
+      action: |
+        1. 识别流出公司的能力损失
+        2. 识别流入公司的能力增益
+        3. 更新两家公司的领导层评分
+      example:
+        trigger: "Google AI研究员流向OpenAI"
+        propagation:
+          - {company: "GOOGL", signal: "AI人才流失"}
+          - {company: "OpenAI", signal: "AI能力增强"}
+
+    rule_5_capital_reallocation:
+      trigger: "板块资金流向变化"
+      action: |
+        1. 识别资金流出板块
+        2. 识别资金流入板块
+        3. 更新相关公司的估值预期
+      example:
+        trigger: "资金从per-seat SaaS流向AI-native"
+        propagation:
+          - {sector: "传统SaaS", signal: "估值压缩"}
+          - {sector: "AI-native", signal: "估值扩张"}
+
+# ============================================================
+# 概率链推理
+# ============================================================
+
+probability_chain_reasoning:
+
+  description: |
+    AI独特能力：计算多步骤条件概率
+    传统分析难以做到的跨域推理
+
+  example_1:
+    name: "Intel衰落→ASML受益链"
+    chain:
+      - step: "P(Intel制造继续失败)"
+        probability: 0.8
+        evidence: "10nm延期历史"
+
+      - step: "P(客户转向TSMC | Intel失败)"
+        probability: 0.7
+        evidence: "AMD/NVDA已在TSMC"
+
+      - step: "P(TSMC扩产 | 获得更多订单)"
+        probability: 0.8
+        evidence: "产能利用率高"
+
+      - step: "P(ASML订单增 | TSMC扩产)"
+        probability: 0.9
+        evidence: "EUV独家供应"
+
+    joint_probability:
+      formula: "0.8 × 0.7 × 0.8 × 0.9"
+      result: 0.40
+      interpretation: "Intel衰落有40%概率传导为ASML订单增长"
+
+  example_2:
+    name: "Salesforce per-seat危机→ServiceNow受益链"
+    chain:
+      - step: "P(AI代理替代per-seat)"
+        probability: 0.6
+        evidence: "Agentforce采用缓慢"
+
+      - step: "P(企业寻找替代 | per-seat失效)"
+        probability: 0.7
+        evidence: "ServiceNow进攻CRM"
+
+      - step: "P(ServiceNow获客 | 企业寻找替代)"
+        probability: 0.5
+        evidence: "架构优势但需要验证"
+
+    joint_probability:
+      formula: "0.6 × 0.7 × 0.5"
+      result: 0.21
+      interpretation: "21%概率ServiceNow从Salesforce危机直接受益"
+
+  multi_path_reasoning:
+    description: |
+      当有多条路径时，计算汇合概率
+      P(结果) = 1 - Π(1 - P(路径i))
+
+    example:
+      result: "ASML订单增长"
+      paths:
+        - {name: "Intel衰落路径", P: 0.40}
+        - {name: "AI需求爆发路径", P: 0.70}
+        - {name: "中国替代路径", P: 0.30}
+      combined_probability:
+        formula: "1 - (1-0.40) × (1-0.70) × (1-0.30)"
+        result: 0.87
+        interpretation: "ASML订单增长的综合概率87%"
+
+# ============================================================
+# 机会识别引擎
+# ============================================================
+
+opportunity_detection:
+
+  trigger_conditions:
+    - "检测到衰落信号(decline_score < 50)"
+    - "检测到崛起信号(rise_score > 60)"
+    - "关键人才流动"
+    - "重大收购/合作公告"
+    - "产品发布超预期/低于预期"
+
+  output_format:
+    opportunity_alert:
+      source_signal: "触发信号"
+      source_company: "信号来源公司"
+      beneficiary_candidates:
+        - company: "受益公司"
+          relationship: "关系类型"
+          probability: "受益概率"
+          time_lag: "预期时间滞后"
+          action: "建议动作"
+
+  example_output:
+    source_signal: "Salesforce NDR跌破100%"
+    source_company: "CRM"
+    beneficiary_candidates:
+      - company: "NOW"
+        relationship: "COMP (enterprise workflow)"
+        probability: 0.65
+        time_lag: "6-12个月"
+        action: "加入观察名单，追踪NOW新客户公告"
+
+      - company: "HubSpot"
+        relationship: "COMP (CRM SMB)"
+        probability: 0.45
+        time_lag: "3-6个月"
+        action: "追踪SMB客户流向"
+
+      - company: "AI-native CRM startups"
+        relationship: "COMP (disruptor)"
+        probability: 0.30
+        time_lag: "12-24个月"
+        action: "追踪融资和客户案例"
+
+# ============================================================
+# 使用流程
+# ============================================================
+
+usage_workflow:
+
+  step_1_signal_detection:
+    description: "检测单公司信号"
+    tools:
+      - "tech_decline_framework_v2.yaml"
+      - "tech_rise_framework_v1.yaml"
+
+  step_2_network_lookup:
+    description: "查找关联公司"
+    action: "在network中找到所有与该公司有关系的节点"
+
+  step_3_propagation:
+    description: "计算信号传导"
+    action: "应用propagation_rules计算影响"
+
+  step_4_probability_chain:
+    description: "多步概率推理"
+    action: "计算联合概率和多路径汇合"
+
+  step_5_opportunity_output:
+    description: "生成机会列表"
+    action: "输出受益者/受损者排序列表"
+
+  step_6_verification_setup:
+    description: "设置验证点"
+    action: "为每个预测设置验证时间和指标"

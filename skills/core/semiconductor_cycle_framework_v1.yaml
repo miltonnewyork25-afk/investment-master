@@ -1,0 +1,476 @@
+# 半导体供应链周期框架 v1.0
+# Semiconductor Supply Chain Cycle Framework
+# 核心理念：通过上游"咽喉点"公司的领先指标预判下游需求和投资时机
+
+version: "1.0"
+created: "2026-01-28"
+purpose: "识别半导体周期位置，找到最佳投资时机"
+
+# ============================================================
+# 第一部分：咽喉点公司识别
+# ============================================================
+
+chokepoint_companies:
+  tier_1_absolute_monopoly:
+    description: "没有替代品，全行业必须通过"
+    companies:
+      - symbol: "ASML"
+        role: "EUV光刻机垄断"
+        market_share: "100% EUV"
+        why_chokepoint: |
+          全球唯一EUV供应商
+          每台机器$200M+，交付周期18个月
+          没有ASML = 没有先进制程
+        leading_indicator_value: "最高 - 订单=18个月后产能"
+
+      - symbol: "LRCX"
+        role: "高深宽比刻蚀垄断"
+        market_share: "45%刻蚀，HBM刻蚀>60%"
+        why_chokepoint: |
+          HBM堆叠层数增加 → 刻蚀难度指数上升
+          3D NAND和HBM的必经之路
+          技术壁垒极高，客户转换成本>$100M
+        leading_indicator_value: "极高 - HBM订单=AI需求直接映射"
+
+  tier_2_critical_bottleneck:
+    description: "有竞争者但份额极高，产能是硬约束"
+    companies:
+      - symbol: "TSM"
+        role: "先进制程代工垄断"
+        market_share: "92%先进制程(<7nm)"
+        why_chokepoint: |
+          NVIDIA、AMD、Apple、Qualcomm全依赖
+          产能利用率=全行业供需晴雨表
+          扩产周期2-3年
+        leading_indicator_value: "极高 - 利用率=需求强度"
+
+      - symbol: "SK Hynix"
+        role: "HBM领导者"
+        market_share: "HBM市场53%"
+        why_chokepoint: |
+          HBM是AI GPU的性能瓶颈
+          技术领先Samsung 1-2代
+          产能已售罄至2027年
+        leading_indicator_value: "高 - HBM价格/供需=AI投资强度"
+
+  tier_3_important_players:
+    description: "重要但有替代或份额较低"
+    companies:
+      - {symbol: "AMAT", role: "沉积设备", market_share: "CVD/PVD领先"}
+      - {symbol: "KLAC", role: "检测设备", market_share: "检测52%"}
+      - {symbol: "MU", role: "存储器", market_share: "HBM第三"}
+
+# ============================================================
+# 第二部分：领先指标体系
+# ============================================================
+
+leading_indicators:
+
+  level_1_equipment_orders:
+    description: "最领先指标，领先实际需求12-18个月"
+    metrics:
+      asml_bookings:
+        source: "ASML季报"
+        current_value: "€5.4B (Q3 2025)"
+        historical_range: "€2B-7B"
+        interpretation:
+          high: ">€5B = 扩产周期，12-18个月后产能释放"
+          medium: "€3-5B = 正常更新需求"
+          low: "<€3B = 周期下行信号"
+        current_signal: "HIGH - 扩产周期确认"
+
+      asml_backlog:
+        source: "ASML季报"
+        current_value: "€33B"
+        interpretation:
+          high: ">€30B = 产能紧张，供不应求"
+          medium: "€20-30B = 供需平衡"
+          low: "<€20B = 需求疲软"
+        current_signal: "HIGH - 历史高位"
+
+      lrcx_hbm_revenue:
+        source: "LRCX财报+估算"
+        current_value: "$4.5B (FY2026E)"
+        yoy_growth: "+50%"
+        interpretation: "HBM设备收入=AI投资最直接指标"
+        current_signal: "VERY HIGH - 爆发增长"
+
+  level_2_capacity_utilization:
+    description: "同步指标，反映当前供需状态"
+    metrics:
+      tsmc_utilization:
+        source: "TSMC财报+分析师"
+        current_values:
+          3nm: "100% (H1 2026)"
+          5nm: "100%"
+          7nm: "85-90%"
+          mature_nodes: "65-70%"
+        interpretation:
+          above_90: "供不应求，涨价可能"
+          80_90: "健康平衡"
+          below_80: "需求疲软，降价压力"
+        current_signal: "VERY HIGH for advanced, MODERATE for legacy"
+
+      memory_utilization:
+        source: "SK Hynix/Samsung"
+        current_value: "HBM 100%+ (超额预订)"
+        dram_utilization: "85%"
+        nand_utilization: "75%"
+        current_signal: "HBM极度紧张，传统存储温和复苏"
+
+  level_3_inventory_cycle:
+    description: "滞后指标，但预示拐点"
+    metrics:
+      days_of_inventory:
+        current_industry_average: "110-120天"
+        healthy_range: "90-110天"
+        interpretation:
+          high: ">130天 = 去库存压力"
+          normal: "90-110天 = 健康"
+          low: "<90天 = 补库存需求"
+        current_signal: "NORMALIZING - 库存已从2023高点下降"
+
+      channel_inventory:
+        source: "分销商数据"
+        status: "PC/手机库存正常化，数据中心补库存"
+
+  level_4_end_demand:
+    description: "最滞后但最真实"
+    metrics:
+      ai_capex:
+        source: "Hyperscaler财报"
+        current_trend: "2026 AI capex +60% YoY"
+        major_players:
+          - {company: "Microsoft", ai_capex: "$80B+"}
+          - {company: "Google", ai_capex: "$75B+"}
+          - {company: "Amazon", ai_capex: "$70B+"}
+          - {company: "Meta", ai_capex: "$65B+"}
+        current_signal: "VERY HIGH - 历史性投资"
+
+      pc_smartphone:
+        source: "IDC/Gartner"
+        pc_growth: "+3-5% (AI PC换机)"
+        smartphone_growth: "+5-7% (5G/AI手机)"
+        current_signal: "MODERATE - 温和复苏"
+
+# ============================================================
+# 第三部分：周期位置判断
+# ============================================================
+
+cycle_position_framework:
+
+  phases:
+    phase_1_bottom:
+      characteristics:
+        - "设备订单大幅下滑(YoY -30%+)"
+        - "利用率<70%"
+        - "库存天数>130"
+        - "裁员/资本支出削减"
+      investment_strategy: "开始建仓周期股，等待复苏"
+      historical_examples: ["2023 Q1-Q2"]
+
+    phase_2_early_recovery:
+      characteristics:
+        - "设备订单企稳回升"
+        - "利用率触底回升"
+        - "库存开始下降"
+        - "先进制程需求率先恢复"
+      investment_strategy: "重仓周期股，尤其是设备商"
+      historical_examples: ["2023 Q3-Q4"]
+
+    phase_3_mid_cycle:
+      characteristics:
+        - "设备订单持续增长"
+        - "利用率>85%"
+        - "库存正常化"
+        - "扩产计划启动"
+      investment_strategy: "持有，但开始关注过热信号"
+      historical_examples: ["2024 Q1-Q4"]
+
+    phase_4_late_cycle_peak:
+      characteristics:
+        - "设备订单创新高但增速放缓"
+        - "利用率>95%"
+        - "产能大规模扩张中"
+        - "估值处于历史高位"
+      investment_strategy: "开始减仓周期股，转向防御"
+      warning_signs:
+        - "订单增速从+30%降至+10%"
+        - "客户开始取消或推迟订单"
+        - "新产能即将投产"
+
+    phase_5_downturn:
+      characteristics:
+        - "设备订单下滑"
+        - "利用率快速下降"
+        - "库存堆积"
+        - "价格战"
+      investment_strategy: "避开周期股，等待底部"
+
+  current_assessment:
+    date: "2026-01-28"
+
+    segment_positions:
+      ai_hbm:
+        phase: "Phase 3-4 (Mid to Late Cycle)"
+        confidence: "85%"
+        evidence:
+          - "ASML backlog €33B创历史新高"
+          - "TSMC先进制程100%利用率"
+          - "HBM供不应求到2027"
+          - "AI capex持续爆发"
+        risk: "如果AI投资放缓，可能快速进入Phase 5"
+
+      traditional_memory:
+        phase: "Phase 2-3 (Early to Mid Recovery)"
+        confidence: "75%"
+        evidence:
+          - "DRAM/NAND价格企稳回升"
+          - "库存正常化"
+          - "PC/手机需求温和复苏"
+
+      mature_nodes:
+        phase: "Phase 2 (Early Recovery)"
+        confidence: "70%"
+        evidence:
+          - "汽车/工业需求缓慢复苏"
+          - "利用率65-70%仍偏低"
+          - "中国成熟制程扩张压力"
+
+# ============================================================
+# 第四部分：投资策略映射
+# ============================================================
+
+investment_strategy:
+
+  current_recommendation:
+    date: "2026-01-28"
+
+    tier_1_highest_conviction:
+      - symbol: "LRCX"
+        thesis: |
+          HBM是AI基础设施最被低估的咽喉点
+          刻蚀设备受益于HBM层数增加(从8层到12层到16层)
+          每一代HBM → 刻蚀步骤指数增加
+          估值仍被当作"传统周期股"对待
+        catalyst:
+          - "HBM产能持续紧张"
+          - "HBM4技术节点带来设备升级"
+          - "AI capex持续超预期"
+        risk: "AI投资放缓、HBM价格战"
+        position_size: "核心仓位"
+
+      - symbol: "TSM"
+        thesis: |
+          先进制程垄断地位无可替代
+          AI芯片需求是结构性而非周期性
+          地缘政治风险已在估值中反映
+        catalyst:
+          - "Intel代工持续落后"
+          - "2nm量产领先"
+          - "Arizona/Japan产能释放"
+        risk: "台海风险、客户分散化"
+        position_size: "核心仓位"
+
+    tier_2_high_conviction:
+      - symbol: "ASML"
+        thesis: |
+          EUV/High-NA EUV是唯一供应商
+          订单积压确保未来2年收入可见性
+          High-NA EUV是下一个增长引擎
+        catalyst:
+          - "High-NA EUV订单增加"
+          - "China限制不影响长期需求"
+        risk: "已经充分定价、估值较高"
+        position_size: "标配仓位"
+
+    tier_3_tactical:
+      - symbol: "MU"
+        thesis: |
+          HBM市场份额正在扩大(#3→#2可能)
+          传统存储周期复苏
+          估值相对SK Hynix有折价
+        catalyst:
+          - "HBM3E量产爬坡"
+          - "DRAM价格持续上涨"
+        risk: "HBM技术仍落后、周期见顶"
+        position_size: "战术仓位"
+
+  cycle_timing_rules:
+    rule_1:
+      name: "设备订单领先买入"
+      logic: "当ASML订单同比转正时，买入设备股"
+      lag: "股价通常领先基本面3-6个月"
+
+    rule_2:
+      name: "利用率确认加仓"
+      logic: "当TSMC先进制程利用率>90%时，加仓"
+
+    rule_3:
+      name: "订单增速拐点卖出"
+      logic: "当ASML订单增速从峰值下降>20%时，开始减仓"
+
+    rule_4:
+      name: "分歧信号等待"
+      logic: "如果设备订单强但利用率弱，等待确认"
+
+# ============================================================
+# 第五部分：可验证预测
+# ============================================================
+
+verifiable_predictions:
+
+  prediction_1:
+    id: "SEMI_001"
+    statement: "LRCX FY2027收入>$20B"
+    current_baseline: "$16.8B (FY2026E)"
+    implied_growth: ">19%"
+    verification_date: "2027-07"
+    data_source: "LRCX财报"
+    confidence: "75%"
+    logic: "HBM设备需求+GAA adoption"
+
+  prediction_2:
+    id: "SEMI_002"
+    statement: "ASML 2026全年bookings>€25B"
+    current_run_rate: "€5.4B/quarter"
+    verification_date: "2027-01"
+    data_source: "ASML财报"
+    confidence: "80%"
+    logic: "扩产周期延续"
+
+  prediction_3:
+    id: "SEMI_003"
+    statement: "TSMC 2026收入增速>25%"
+    current_estimate: "+28-30%"
+    verification_date: "2027-01"
+    data_source: "TSMC财报"
+    confidence: "85%"
+    logic: "AI需求+Apple升级周期"
+
+  prediction_4:
+    id: "SEMI_004"
+    statement: "HBM市场2026年>$50B"
+    current_estimate: "$54.6B"
+    verification_date: "2027-03"
+    data_source: "行业报告"
+    confidence: "80%"
+    logic: "AI训练需求爆发"
+
+  prediction_5:
+    id: "SEMI_005"
+    statement: "半导体周期在2026年底前不会进入Phase 5(下行)"
+    verification_date: "2027-01"
+    confidence: "70%"
+    logic: "AI投资持续强劲，但需监控"
+    kill_switch: "如果Hyperscaler AI capex增速<20%，则信心下降"
+
+# ============================================================
+# 第六部分：Kill Switch 监控
+# ============================================================
+
+kill_switches:
+
+  immediate_action_triggers:
+    - trigger: "ASML订单连续2季度<€4B"
+      action: "减仓设备股50%"
+      logic: "订单下滑=12-18个月后需求疲软"
+
+    - trigger: "TSMC先进制程利用率<85%"
+      action: "减仓TSM和设备股30%"
+      logic: "需求放缓信号"
+
+    - trigger: "HBM价格同比下跌>20%"
+      action: "减仓LRCX/SK Hynix 40%"
+      logic: "供需反转"
+
+    - trigger: "Hyperscaler AI capex指引下调>15%"
+      action: "减仓整个半导体板块30%"
+      logic: "需求端动摇"
+
+  warning_signals:
+    - signal: "半导体库存天数>120且上升"
+      severity: "MEDIUM"
+      action: "密切监控，准备减仓"
+
+    - signal: "设备订单增速转负"
+      severity: "HIGH"
+      action: "开始减仓"
+
+    - signal: "新产能集中投产(2027-2028)"
+      severity: "MEDIUM"
+      action: "关注供给过剩风险"
+
+# ============================================================
+# 第七部分：框架使用方法
+# ============================================================
+
+usage_guide:
+
+  monthly_checklist:
+    - "检查ASML/LRCX订单数据"
+    - "检查TSMC利用率和指引"
+    - "检查HBM价格和供需"
+    - "检查Hyperscaler capex指引"
+    - "更新周期位置判断"
+    - "检查Kill Switch是否触发"
+
+  quarterly_deep_dive:
+    - "分析设备商财报细节"
+    - "更新segment周期位置"
+    - "验证预测是否符合预期"
+    - "调整投资组合"
+
+  integration_with_other_frameworks:
+    - framework: "tech_decline_framework_v2.yaml"
+      usage: "检测设备商是否有衰落信号"
+
+    - framework: "tech_rise_framework_v1.yaml"
+      usage: "检测是否有公司处于崛起早期"
+
+    - framework: "signal_correlation_network_v1.yaml"
+      usage: "追踪供应链信号传导"
+
+# ============================================================
+# 第八部分：关键洞察
+# ============================================================
+
+key_insights:
+
+  insight_1:
+    name: "HBM是AI的真正瓶颈"
+    content: |
+      市场关注GPU(NVIDIA)，但真正的瓶颈在HBM
+      - GPU算力提升50% → 需要HBM带宽提升100%
+      - HBM产能是硬约束(SK Hynix产能已售罄至2027)
+      - LRCX是HBM扩产的必经之路
+    implication: "LRCX可能比NVIDIA更具确定性"
+
+  insight_2:
+    name: "设备订单是最诚实的领先指标"
+    content: |
+      - 客户不会为了面子订购$200M的设备
+      - 订单=真金白银的capex承诺
+      - 领先实际需求12-18个月
+    implication: "跟踪ASML/LRCX订单比分析师预测更可靠"
+
+  insight_3:
+    name: "周期叠加结构性"
+    content: |
+      当前半导体市场有两个力量：
+      1. 传统周期：PC/手机/汽车 - 温和复苏
+      2. 结构性增长：AI/HBM - 超级周期
+
+      分析时必须分segment看，不能一刀切
+    implication: "AI相关公司应给予结构性估值，而非周期性估值"
+
+  insight_4:
+    name: "中国变量的非线性影响"
+    content: |
+      - 短期：设备限制 → 中国客户抢购 → 订单暴增
+      - 中期：国产替代 → 部分订单流失
+      - 长期：不确定性
+
+      ASML 2024年中国收入占比曾达49%，现在受限
+      但非中国订单强劲弥补
+    implication: "中国因素增加波动性，但不改变基本面"

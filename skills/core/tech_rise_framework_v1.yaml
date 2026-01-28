@@ -1,0 +1,492 @@
+# 科技行业崛起信号检测框架 v1.0
+# Tech Industry Rise Signal Detection Framework
+
+version: "1.0"
+created: "2026-01-28"
+derived_from:
+  - "NVIDIA 2012-2016 AI pivot"
+  - "Microsoft 2014-2015 cloud transformation"
+  - "AMD 2014-2017 turnaround"
+
+# ============================================================
+# 核心理念
+# ============================================================
+
+philosophy:
+  key_insight: |
+    崛起信号往往出现在市场最悲观的时候。
+    需要区分"便宜有原因"vs"被低估的拐点"。
+
+  vs_decline_signals: |
+    衰落信号：护城河正在被侵蚀，但公司可能还没意识到
+    崛起信号：公司正在建立新优势，但市场可能还没认可
+
+  timing_insight: |
+    早期信号（R1-R5）：可在股价反应前识别
+    确认信号（R6-R7）：股价可能已经开始反应
+
+    最佳投资时机：早期信号出现 + 确认信号初现
+
+# ============================================================
+# 框架结构：与衰落框架对称
+# ============================================================
+
+structure:
+  layer_1_leadership_and_culture:
+    name: "领导与文化层"
+    weight: 35%
+    dimensions: ["R1", "R4"]
+    rationale: "崛起几乎总是从领导层变化开始"
+
+  layer_2_strategy_and_resource:
+    name: "战略与资源层"
+    weight: 35%
+    dimensions: ["R2", "R3", "R5"]
+    rationale: "战略清晰+反常识配置+平台预判"
+
+  layer_3_execution_and_ecosystem:
+    name: "执行与生态层"
+    weight: 30%
+    dimensions: ["R6", "R7"]
+    rationale: "执行兑现+生态扩张是确认信号"
+
+# ============================================================
+# 7个崛起信号维度
+# ============================================================
+
+dimensions:
+
+  R1_leadership_upgrade:
+    id: "R1"
+    name: "领导层升级"
+    weight: 20%
+    is_leading_indicator: true
+    maps_to_decline: "U1"
+
+    core_question: "是否有新领导者带来质变？"
+
+    checks:
+      - id: "R1.1"
+        question: "新领导是否有技术背景+执行track record？"
+        scoring:
+          strong: "技术出身 + 有成功执行历史"
+          moderate: "有一项但非两项"
+          weak: "纯管理背景，无技术理解"
+        examples:
+          strong:
+            - "Lisa Su: MIT PhD + IBM/TI执行经验"
+            - "Satya Nadella: 技术背景 + Azure成功经验"
+          weak:
+            - "Bob Swan: CFO背景，无技术直觉"
+
+      - id: "R1.2"
+        question: "Day 1是否有清晰战略表达？"
+        scoring:
+          strong: "上任立即发布清晰战略（如Nadella的cloud-first邮件）"
+          moderate: "100天内逐渐明确"
+          weak: "6个月后仍在'学习'"
+
+      - id: "R1.3"
+        question: "是否立即采取行动（不只是说）？"
+        scoring:
+          strong: "上任30天内有实质性决策"
+          moderate: "100天内开始执行"
+          weak: "只有PPT没有行动"
+        examples:
+          strong:
+            - "Nadella: 立即废除stack ranking"
+            - "Lisa Su: 立即启动Zen架构项目"
+
+      - id: "R1.4"
+        question: "是否愿意挑战现有核心业务？"
+        scoring:
+          strong: "主动颠覆现金牛业务"
+          moderate: "新旧业务并行"
+          weak: "保护旧业务，新业务边缘化"
+        examples:
+          strong:
+            - "Nadella: 挑战Windows-centric模式"
+            - "Netflix: DVD→Streaming自我颠覆"
+
+  R2_strategic_clarity:
+    id: "R2"
+    name: "战略清晰化"
+    weight: 15%
+    is_leading_indicator: true
+
+    core_question: "是否从混乱走向聚焦？"
+
+    checks:
+      - id: "R2.1"
+        question: "战略是否可以用一句话说清楚？"
+        scoring:
+          strong: "简洁、可执行的战略表达"
+          moderate: "有方向但表达复杂"
+          weak: "战略模糊或频繁变化"
+        examples:
+          strong:
+            - "Microsoft: 'Mobile-first, cloud-first'"
+            - "Apple 1997: 'Think Different' + 4象限产品"
+            - "AMD: '聚焦高性能计算'"
+
+      - id: "R2.2"
+        question: "是否明确'不做什么'？"
+        scoring:
+          strong: "主动剥离非核心业务"
+          moderate: "停止新投入但未剥离"
+          weak: "什么都想做"
+        examples:
+          strong:
+            - "AMD: 剥离移动芯片业务"
+            - "Apple: 砍掉Newton, 打印机等"
+
+      - id: "R2.3"
+        question: "资源是否向核心能力集中？"
+        scoring:
+          strong: "可量化的资源重新分配"
+          moderate: "有倾斜但不明显"
+          weak: "资源分散"
+
+  R3_contrarian_resource_allocation:
+    id: "R3"
+    name: "反常识资源配置"
+    weight: 15%
+    is_leading_indicator: true
+    maps_to_decline: "U2"
+
+    core_question: "是否在压力下做反常识决策？"
+
+    checks:
+      - id: "R3.1"
+        question: "困境中是否加倍R&D（而非削减）？"
+        scoring:
+          strong: "R&D投入逆势增长"
+          moderate: "R&D保持稳定"
+          weak: "R&D被削减"
+        examples:
+          strong:
+            - "AMD 2014-2016: 濒临破产时R&D占收入25%+"
+            - "Amazon: 持续亏损仍投入AWS"
+        warning: "需要判断是'有战略眼光'还是'乱花钱'"
+
+      - id: "R3.2"
+        question: "是否投资'零美元市场'？"
+        scoring:
+          strong: "投资当前无收入但有潜力的领域"
+          moderate: "小规模试水"
+          weak: "只投资现有市场"
+        examples:
+          strong:
+            - "NVIDIA 2013: AI当时无商业化收入"
+            - "Amazon 2006: AWS内部阻力巨大"
+
+      - id: "R3.3"
+        question: "是否在低点收购（而非高点）？"
+        scoring:
+          strong: "在行业低迷期进行战略收购"
+          moderate: "收购时机中性"
+          weak: "在泡沫期高价收购"
+
+  R4_culture_transformation:
+    id: "R4"
+    name: "文化转型"
+    weight: 15%
+    is_leading_indicator: true
+    maps_to_decline: "U3"
+
+    core_question: "是否从僵化走向活力？"
+
+    checks:
+      - id: "R4.1"
+        question: "是否废除毒性制度？"
+        scoring:
+          strong: "立即废除阻碍协作的制度"
+          moderate: "逐步改革"
+          weak: "制度不变"
+        examples:
+          strong:
+            - "Microsoft: 废除stack ranking"
+
+      - id: "R4.2"
+        question: "是否有新的文化语言？"
+        scoring:
+          strong: "新的、被广泛采用的文化表达"
+          moderate: "有尝试但未深入"
+          weak: "沿用旧语言"
+        examples:
+          strong:
+            - "Microsoft: 'Learn-it-all' vs 'Know-it-all'"
+            - "AMD: '5%法则' 持续改进"
+            - "Netflix: 'Freedom & Responsibility'"
+
+      - id: "R4.3"
+        question: "人才是否净流入？"
+        scoring:
+          strong: "从竞争对手挖到关键人才"
+          moderate: "人才流动平衡"
+          weak: "人才流失"
+        signals:
+          - "关键技术leader加入"
+          - "竞争对手高管跳槽来"
+          - "Glassdoor评分上升"
+
+      - id: "R4.4"
+        question: "决策速度是否提升？"
+        scoring:
+          strong: "明显提速，能快速响应市场"
+          moderate: "有改善"
+          weak: "依然缓慢官僚"
+
+  R5_platform_anticipation:
+    id: "R5"
+    name: "平台预判"
+    weight: 10%
+    is_leading_indicator: true
+    maps_to_decline: "T1"
+
+    core_question: "是否提前布局下一个平台？"
+
+    checks:
+      - id: "R5.1"
+        question: "是否在主流认可前投入新平台？"
+        scoring:
+          strong: "在技术成熟前2-3年投入"
+          moderate: "与主流同步"
+          weak: "落后于主流"
+        examples:
+          strong:
+            - "NVIDIA 2013: AI还是'科学项目'时all-in"
+            - "Amazon 2006: 云计算概念刚出现"
+
+      - id: "R5.2"
+        question: "CEO是否展现'看到拐角后面'的能力？"
+        scoring:
+          strong: "公开言论显示前瞻性判断"
+          moderate: "有一些前瞻性观点"
+          weak: "只关注当前"
+        examples:
+          strong:
+            - "Jensen Huang: 'AI will revolutionize society'"
+            - "Bezos: '我们的工作是看10年后'"
+
+      - id: "R5.3"
+        question: "是否愿意自我颠覆？"
+        scoring:
+          strong: "主动颠覆现有业务模式"
+          moderate: "新旧业务并行"
+          weak: "保护旧业务阻止新业务"
+
+  R6_execution_credibility:
+    id: "R6"
+    name: "执行信誉建立"
+    weight: 15%
+    is_leading_indicator: false  # 确认信号
+    maps_to_decline: "产品执行"
+
+    core_question: "是否开始兑现承诺？"
+
+    checks:
+      - id: "R6.1"
+        question: "承诺的产品是否按时发布？"
+        scoring:
+          strong: "按时或提前发布"
+          moderate: "略有延期但在可接受范围"
+          weak: "严重延期"
+        examples:
+          strong:
+            - "AMD Zen: 2017年按计划发布"
+
+      - id: "R6.2"
+        question: "产品质量是否超预期？"
+        scoring:
+          strong: "超越承诺指标"
+          moderate: "达到承诺"
+          weak: "低于预期"
+        examples:
+          strong:
+            - "AMD Zen: 承诺IPC+40%，实际交付+52%"
+
+      - id: "R6.3"
+        question: "是否开始从竞争对手夺取份额？"
+        scoring:
+          strong: "市场份额明显提升"
+          moderate: "份额稳定"
+          weak: "份额继续下降"
+
+  R7_ecosystem_expansion:
+    id: "R7"
+    name: "生态扩张"
+    weight: 10%
+    is_leading_indicator: false  # 确认信号
+    maps_to_decline: "T2"
+
+    core_question: "是否在构建新护城河？"
+
+    checks:
+      - id: "R7.1"
+        question: "开发者生态是否快速增长？"
+        metrics:
+          - "开发者数量增长率"
+          - "第三方应用增长"
+          - "API调用量增长"
+        scoring:
+          strong: "开发者年增>20%"
+          moderate: "开发者年增10-20%"
+          weak: "开发者增长<10%或下降"
+
+      - id: "R7.2"
+        question: "是否开始形成锁定效应？"
+        scoring:
+          strong: "用户/开发者转换成本明显上升"
+          moderate: "有一定粘性"
+          weak: "易于迁移"
+
+      - id: "R7.3"
+        question: "是否出现网络效应？"
+        scoring:
+          strong: "用户增长加速用户价值"
+          moderate: "有轻微网络效应"
+          weak: "无网络效应"
+
+# ============================================================
+# 评分系统
+# ============================================================
+
+scoring_system:
+
+  dimension_score:
+    strong: 10
+    moderate: 5
+    weak: 0
+
+  total_score:
+    formula: "Σ(维度分数 × 维度权重)"
+    max: 100
+
+  rise_potential_levels:
+
+    strong_rise:
+      score_range: [80, 100]
+      description: "强崛起信号，早期信号+确认信号都强"
+      action: "积极买入"
+      historical_examples: ["NVDA 2016", "MSFT 2015", "AMD 2017"]
+
+    emerging_rise:
+      score_range: [60, 79]
+      description: "新兴崛起，早期信号强但确认待验证"
+      action: "建立初始仓位，等待确认"
+      note: "最佳风险收益比窗口"
+
+    potential_turnaround:
+      score_range: [40, 59]
+      description: "潜在转机，有变化但不确定"
+      action: "观察名单，等待更多信号"
+
+    no_signal:
+      score_range: [0, 39]
+      description: "无崛起信号"
+      action: "不关注"
+
+# ============================================================
+# 信号时序：早期 vs 确认
+# ============================================================
+
+signal_timing:
+
+  early_signals:
+    dimensions: ["R1", "R2", "R3", "R4", "R5"]
+    timing: "可在股价反应前6-18个月识别"
+    value: "最高alpha来源"
+    risk: "可能是false positive"
+
+  confirmation_signals:
+    dimensions: ["R6", "R7"]
+    timing: "股价可能已开始反应"
+    value: "降低false positive风险"
+    risk: "部分收益已被price in"
+
+  optimal_entry:
+    description: |
+      最佳入场时机：
+      - 早期信号得分 > 60（R1-R5）
+      - 确认信号开始出现（R6或R7有一个strong）
+      - 市场仍持怀疑态度（估值未膨胀）
+
+# ============================================================
+# 与衰落框架的关联
+# ============================================================
+
+decline_rise_correlation:
+
+  principle: |
+    一个公司的衰落往往是另一个公司崛起的机会。
+    检测到衰落信号时，应自动搜索潜在受益者。
+
+  correlation_patterns:
+    - decline_signal: "Intel制造执行失败"
+      rise_beneficiaries: ["TSMC", "AMD", "NVDA"]
+      correlation_strength: "strong"
+
+    - decline_signal: "Salesforce per-seat模式危机"
+      rise_beneficiaries: ["ServiceNow", "HubSpot", "AI-native CRM"]
+      correlation_strength: "strong"
+
+    - decline_signal: "Google搜索份额下降"
+      rise_beneficiaries: ["Perplexity", "OpenAI", "垂直搜索"]
+      correlation_strength: "moderate"
+
+# ============================================================
+# 使用说明
+# ============================================================
+
+usage:
+
+  when_to_use:
+    - "公司刚更换CEO"
+    - "公司宣布战略转型"
+    - "行业出现技术变革"
+    - "检测到竞争对手衰落信号"
+    - "股价大跌后寻找拐点"
+
+  step_by_step:
+    step_1: "检查R1（领导层升级）是否有变化"
+    step_2: "评估R2-R5（早期战略信号）"
+    step_3: "如早期信号>60分，追踪R6-R7（确认信号）"
+    step_4: "结合估值判断入场时机"
+    step_5: "设置验证里程碑（如首个产品发布）"
+
+# ============================================================
+# 验证案例
+# ============================================================
+
+validated_cases:
+
+  - company: "NVIDIA"
+    period: "2012-2016"
+    early_signals_score: 85
+    confirmation_by: "2016"
+    stock_performance: "+500% (2016-2020)"
+    key_signals:
+      - "R1: Jensen all-in承诺"
+      - "R3: 投资零美元AI市场"
+      - "R5: 比主流提前3年布局"
+
+  - company: "Microsoft"
+    period: "2014-2015"
+    early_signals_score: 80
+    confirmation_by: "2016"
+    stock_performance: "+400% (2014-2020)"
+    key_signals:
+      - "R1: Nadella Day 1行动"
+      - "R4: 废除stack ranking"
+      - "R2: cloud-first清晰战略"
+
+  - company: "AMD"
+    period: "2014-2017"
+    early_signals_score: 75
+    confirmation_by: "2017"
+    stock_performance: "+2000% (2014-2020)"
+    key_signals:
+      - "R1: Lisa Su技术+执行背景"
+      - "R3: 濒临破产时加倍R&D"
+      - "R6: Zen超预期交付"
