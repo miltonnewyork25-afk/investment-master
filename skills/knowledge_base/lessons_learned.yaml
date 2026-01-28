@@ -420,9 +420,9 @@ lessons:
 
 # 统计
 statistics:
-  total_lessons: 55
+  total_lessons: 86
   meta_insights: 7  # 最顶级经验固化
-  total_knowledge_units: 62  # 55 lessons + 7 meta insights
+  total_knowledge_units: 93  # 86 lessons + 7 meta insights
   by_category:
     agent_execution: 1
     api_integration: 1
@@ -454,14 +454,40 @@ statistics:
     rise_signal_framework: 1  # LL_050 崛起信号7维度
     ai_unique_capability: 1  # LL_051 关联网络
     investment_insight: 1  # LL_052 价值转移
+    supply_chain_analysis: 1  # LL_056 咽喉点
+    leading_indicators: 1  # LL_057 领先指标层级
+    cycle_analysis: 2  # LL_058, LL_065 分裂周期+二阶导
+    risk_management: 1  # LL_059 Kill Switch
+    bottleneck_analysis: 1  # LL_060 瓶颈转移
+    hidden_chokepoint: 1  # LL_061 AVGO
+    physics_constraint: 1  # LL_062 液冷必然
+    signal_propagation: 1  # LL_063 AI栈信号传导
+    market_structure: 1  # LL_064 推理整合时代
+    leading_indicator: 1  # LL_066 CEO语气
+    valuation_signal: 1  # LL_067 Capex/GDP
+    cycle_methodology: 1  # LL_068 多指标交叉
+    current_assessment: 1  # LL_069 温度64
+    historical_analog: 1  # LL_070 2018年类比
+    higher_dimension: 5  # LL_071-075 五大高维思维
+    meta_synthesis: 1  # LL_076 五维透镜
+    ecosystem_analysis: 1  # LL_077 生态系统信号
+    flow_analysis: 1  # LL_078 Backlog指数
+    divergence_detection: 1  # LL_079 Capex-设备差
+    ecosystem_health: 1  # LL_080 健康分+36
+    ultimate_validation: 1  # LL_081 AI ROI验证
+    roi_measurement: 1  # LL_082 ROI测量困难
+    bubble_indicators: 1  # LL_083 泡沫7/10
+    kill_switch: 1  # LL_084 Kill Switch设计
+    timeline_analysis: 1  # LL_085 三阶段时间表
+    strategic_insight: 1  # LL_086 框架整合
   by_priority:
-    P0: 17  # +2 (LL_047, LL_048 框架架构)
-    P1: 14  # +1 (LL_049 框架应用)
+    P0: 22  # 核心框架经验
+    P1: 18  # 重要方法论
     P2: 1
   by_effectiveness:
-    已验证: 9
-    首次验证: 1
-    待验证: 11
+    已验证: 15
+    首次验证: 5
+    待验证: 35
     待实施: 2
     N/A: 1
 
@@ -1502,3 +1528,149 @@ cycle_temperature_gauge:
     investment_implication: |
       准备30-40%回调的可能性
       但AI结构性需求可能缓冲下跌幅度
+
+# ============================================================
+# AI ROI验证框架经验 (LL_082 - LL_086)
+# ============================================================
+
+ai_roi_verification_framework:
+  id_range: "LL_082 到 LL_086"
+  date: "2026-01-28"
+  total_new: 5
+  file_location: "skills/core/ai_roi_verification_framework_v1.yaml"
+
+  lesson_082:
+    id: "LL_082"
+    category: "roi_measurement"
+    lesson: "AI ROI存在严重测量困难：直接收入只占10%，95%是间接效益"
+    framework: |
+      ROI测量四层次：
+      1. 直接收入（最易量化但占比最小）
+         - AI产品收入：~$25B vs $600B投入 = 10%直接ROI
+      2. 生产力提升（大但难量化）
+         - Microsoft: 内部编码效率+40%
+         - 但如何换算成美元？
+      3. 采纳率（滞后但可追踪）
+         - 95%的GenAI试点失败
+         - 只有6%企业看到EBIT影响>5%
+      4. 公司盈利（最终验证）
+         - OpenAI: 2030年盈利目标
+         - Anthropic: 2028年盈利目标
+    investment_implication: |
+      不能只看$600B capex，要看ROI验证时间表
+      2026年是关键验证年：pilot → production转化率
+
+  lesson_083:
+    id: "LL_083"
+    category: "bubble_indicators"
+    lesson: "AI泡沫警告指标7/10触发：处于泡沫区间但非顶点"
+    triggered_indicators: |
+      1. ✅ P/E >40 (NVDA 52x)
+      2. ✅ AI板块涨幅>50%
+      3. ✅ AI提及次数财报峰值
+      4. ✅ 50%+投资者认为有泡沫 (53%认为)
+      5. ✅ 零经验公司估值$1B+
+      6. ✅ 市场集中度>25% (MAG7=30%+)
+      7. ✅ Capex增速>50% (Hyperscaler +60%)
+      8. ❌ 散户交易占比<30% (未到狂热)
+      9. ❌ IPO数量>100/年 (市场冷清)
+      10. ❌ 批评者被嘲笑 (仍有理性声音)
+    investment_implication: |
+      7/10 = 泡沫区间但非极端
+      关键分歧：AI是否"这次不一样"
+
+  lesson_084:
+    id: "LL_084"
+    category: "kill_switch"
+    lesson: "AI投资Kill Switch设计：7个具体触发条件+预设行动"
+    kill_switches: |
+      KS1: Hyperscaler capex指引<+20% → 减仓AI 30%
+      KS2: NVDA数据中心连续2季度下滑 → 减仓GPU股50%
+      KS3: AI公司裁员潮(>3家>15%) → 减仓AI应用层50%
+      KS4: GPT-5发布无明显性能突破 → 减仓全AI 20%
+      KS5: OpenAI估值下调>30% → 减仓私有AI敞口
+      KS6: AWS/Azure AI服务定价战(降价>25%) → 减仓AI云30%
+      KS7: 中国AI芯片突破制裁(自研达H100水平) → 重新评估NVDA
+    investment_implication: |
+      Kill Switch最大价值：把模糊担忧变成明确行动
+      避免"煮青蛙"式的渐进损失
+
+  lesson_085:
+    id: "LL_085"
+    category: "timeline_analysis"
+    lesson: "AI ROI三阶段时间表：信仰期(2023-2025) → 验证期(2026) → 结果期(2027+)"
+    framework: |
+      Phase 1 信仰期 (2023-2025):
+        - 特征：故事>数据，估值靠叙事
+        - 表现：NVDA +1200%
+        - 风险：无锚估值，回调剧烈
+
+      Phase 2 验证期 (2026): ← 当前
+        - 特征：pilot→production转化
+        - 关键指标：企业AI支出增速、AI公司ARR
+        - 决定性：如果ROI不兑现，叙事崩塌
+
+      Phase 3 结果期 (2027+):
+        - 场景A：ROI兑现 → 新增长周期
+        - 场景B：ROI不及预期 → 30-50%回调
+        - 场景C：部分兑现 → 分化行情
+    investment_implication: |
+      2026年是观察窗口
+      不要在验证期过度押注
+      等数据确认后再加仓
+
+  lesson_086:
+    id: "LL_086"
+    category: "strategic_insight"
+    lesson: "AI ROI验证框架与其他框架的整合：温度64 + 泡沫7/10 + 健康+36 = 一致信号"
+    synthesis: |
+      三个框架交叉验证：
+      1. 周期温度计: 64/100 (炎热区间下沿)
+      2. 泡沫警告: 7/10 (泡沫区间非极端)
+      3. 生态健康: +36 (健康区间下沿)
+      4. AI ROI: 验证期，数据不足
+
+      一致结论：
+      - 不是顶部，但已进入危险区
+      - 持有但不追高
+      - 设置止损
+      - 关注验证信号
+    investment_implication: |
+      多框架一致=高确信度信号
+      当前策略：Watchful Holding
+
+  new_predictions:
+    - id: "ROI_001"
+      statement: "2026Q4企业AI软件支出增速>30%"
+      verify_date: "2027-01"
+      confidence: "60%"
+      kill_switch: "增速<20%则信心下降30%"
+
+    - id: "ROI_002"
+      statement: "OpenAI 2026年收入>$25B"
+      verify_date: "2027-01"
+      confidence: "70%"
+      current_base: "$13B ARR (2025)"
+
+    - id: "ROI_003"
+      statement: "Anthropic 2027年实现运营盈利"
+      verify_date: "2028-01"
+      confidence: "55%"
+      current_base: "亏损中"
+
+    - id: "ROI_004"
+      statement: "2026年底GenAI pilot→production转化率>25%"
+      verify_date: "2027-01"
+      confidence: "50%"
+      current_base: "5% (2025)"
+
+    - id: "ROI_005"
+      statement: "2026年至少1家AI公司估值下调>50%"
+      verify_date: "2027-01"
+      confidence: "65%"
+
+    - id: "ROI_006"
+      statement: "Microsoft Copilot付费用户2026年底>50M"
+      verify_date: "2027-01"
+      confidence: "55%"
+      current_base: "~1M (2025)"
