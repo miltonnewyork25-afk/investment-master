@@ -418,11 +418,88 @@ lessons:
     effectiveness: "已验证"
     priority: "P1"
 
+# ============================================================
+# 多公司对比分析经验 (LL_096 - LL_099)
+# ============================================================
+
+comparative_analysis_batch:
+  id_range: "LL_096 到 LL_099"
+  date: "2026-01-28"
+  total_new: 4
+  companies_analyzed: ["MRVL", "ANET", "TSM"]
+
+  lesson_096:
+    id: "LL_096"
+    category: "competitive_analysis"
+    lesson: "竞争格局分析必须量化份额差距，'#2'不够，要说'15% vs 70%'"
+    example: |
+      MRVL vs AVGO: 15% vs 70% = 差距4.7x
+      这种差距意味着议价力、规模效应、客户关系都处于劣势
+      不是简单的#2，而是结构性劣势
+    investment_implication: "份额差距>2x时，#2很难追上#1除非发生颠覆性变化"
+
+  lesson_097:
+    id: "LL_097"
+    category: "customer_concentration"
+    lesson: "客户集中度高不一定是风险，关键是客户是否有替代选择"
+    contrast: |
+      MRVL: AWS>35%, 有替代(Alchip, 自研) → 高风险
+      ANET: MSFT+Meta 40%, 有替代(Cisco) → 中风险
+      TSM: Apple 25%+Nvidia 15%, 无替代 → 低风险
+    investment_implication: "评估客户风险要看切换成本，不只是占比"
+
+  lesson_098:
+    id: "LL_098"
+    category: "geopolitical_risk"
+    lesson: "地缘政治风险可能被过度定价：TSM 24x PE vs 大科技30x，暗含15%冲突概率"
+    analysis: |
+      - 市场定价了~15%严重冲突概率
+      - 但"Silicon Shield"论点意味着美中都有动机避免
+      - Warren Buffett卖出影响了散户情绪但非基本面
+      - 如果达成和平协议，P/E可能+2-4倍重估
+    investment_implication: "别人恐惧时可能是机会，但要理解风险"
+
+  lesson_099:
+    id: "LL_099"
+    category: "framework_validation"
+    lesson: "多公司对比分析是框架压力测试的最佳方式：同一框架应用3次暴露漏洞"
+    validation_results: |
+      - mandatory_micro_analysis v1.1执行良好（每家6维度全覆盖）
+      - 4层决策框架层次清晰
+      - 冲突解决规则有效（TSM地缘vs基本面）
+      - 输出模板标准化成功
+    areas_for_improvement: |
+      - 估值SOTP可以更标准化
+      - 情景概率设定较主观
+      - Kill Switch定义需要更量化
+    investment_implication: "定期用多公司批量分析验证和改进框架"
+
+# 新预测
+new_predictions_20260128:
+  - id: "PROP_004"
+    statement: "TSM 2026年收入增长>25%"
+    verify_date: "2027-02"
+    confidence: "80%"
+    source: "AI_infrastructure_comparative_20260128.md"
+
+  - id: "PROP_005"
+    statement: "ANET 2026年AI数据中心收入>$3B"
+    verify_date: "2027-02"
+    confidence: "70%"
+    source: "AI_infrastructure_comparative_20260128.md"
+
+  - id: "PROP_006"
+    statement: "MRVL不会成为AWS Trainium3主供应商"
+    verify_date: "2026-12"
+    confidence: "55%"
+    source: "AI_infrastructure_comparative_20260128.md"
+
 # 统计
 statistics:
-  total_lessons: 95  # +1 LL_095 AVGO执行失败
+  total_lessons: 99  # +4 (LL_096-099 多公司对比分析)
   meta_insights: 8
-  total_knowledge_units: 103  # 95 lessons + 8 meta insights
+  predictions: 47  # +6 新预测 (41+6)
+  total_knowledge_units: 107  # 99 lessons + 8 meta insights
   by_category:
     agent_execution: 1
     api_integration: 1
