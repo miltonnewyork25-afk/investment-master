@@ -233,6 +233,7 @@ knowledge_architecture:
       - "meta_cognitive_framework_v1.yaml - 高维思维"
       - "meta_insights_v1.yaml - 元级洞察"
       - "agent_operating_principles_v1.yaml - 运营原则（本文件）"
+      - "unified_decision_framework_v1.yaml - 统一决策框架"
 
   layer_5_memory:
     name: "经验记忆层"
@@ -365,10 +366,10 @@ current_state:
   date: "2026-01-28"
 
   assets:
-    frameworks: 11  # +1 产业链信号传导框架
-    lessons: 91  # +5 传导框架经验
-    predictions: 41  # +3 传导框架预测
-    meta_insights: 8  # +1 时间维度盲区反思
+    frameworks: 12  # +1 统一决策框架
+    lessons: 94  # +3 决策框架经验
+    predictions: 41
+    meta_insights: 8
 
   coverage:
     tech_sector: "深度覆盖"

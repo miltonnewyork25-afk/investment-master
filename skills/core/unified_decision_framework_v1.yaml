@@ -1,0 +1,633 @@
+# 统一投资决策框架 v1.0
+# Unified Investment Decision Framework
+# 将11个框架整合为1个决策系统
+
+version: "1.0"
+created: "2026-01-28"
+purpose: "从11个分散工具变成1个统一决策系统"
+
+# ============================================================
+# 第一部分：框架资产清单
+# ============================================================
+
+framework_inventory:
+
+  description: "当前拥有的11个框架及其核心功能"
+
+  frameworks:
+
+    F01:
+      name: "tech_decline_framework_v2"
+      function: "检测公司衰落信号"
+      output: "衰落评分 0-100 + 红灯数量"
+      when_to_use: "评估公司是否在走下坡路"
+
+    F02:
+      name: "tech_rise_framework_v1"
+      function: "检测公司崛起信号"
+      output: "崛起评分 0-100 + 绿灯数量"
+      when_to_use: "寻找困境反转或强者恒强机会"
+
+    F03:
+      name: "signal_correlation_network_v1"
+      function: "跨公司信号关联推理"
+      output: "关联概率链 + 受益者/受损者"
+      when_to_use: "从A公司信号推断B公司影响"
+
+    F04:
+      name: "semiconductor_cycle_framework_v1"
+      function: "半导体周期分析"
+      output: "周期阶段(1-5) + 领先指标"
+      when_to_use: "分析半导体公司时"
+
+    F05:
+      name: "ai_stack_framework_v1"
+      function: "AI全栈垂直分析"
+      output: "7层定位 + 瓶颈识别 + 隐藏赢家"
+      when_to_use: "分析AI相关公司时"
+
+    F06:
+      name: "cycle_temperature_gauge_v1"
+      function: "周期热度实时感知"
+      output: "温度0-100 + 10维度评分"
+      when_to_use: "判断当前是否该追高/减仓"
+
+    F07:
+      name: "meta_cognitive_framework_v1"
+      function: "高维思维透镜"
+      output: "5维分析(反身性/叙事/反脆弱/逆向/二阶)"
+      when_to_use: "深度分析需要超越常规视角时"
+
+    F08:
+      name: "ecosystem_signal_aggregation_v1"
+      function: "生态系统信号聚合"
+      output: "健康分 + 正负信号矩阵 + Backlog指数"
+      when_to_use: "从单公司扩展到整个生态验证"
+
+    F09:
+      name: "ai_roi_verification_framework_v1"
+      function: "AI投资回报验证"
+      output: "ROI指标 + 泡沫警告 + Kill Switch"
+      when_to_use: "评估AI投资的风险和验证时间表"
+
+    F10:
+      name: "industry_signal_propagation_v1"
+      function: "产业链传导时滞"
+      output: "7层传导链 + 时滞量化 + 瓶颈位置"
+      when_to_use: "判断投资时机(什么时候买)"
+
+    F11:
+      name: "agent_operating_principles_v1"
+      function: "Agent运营原则"
+      output: "任务优先级 + 创新触发 + 经验固化"
+      when_to_use: "Agent自身决策和改进"
+
+# ============================================================
+# 第二部分：框架分类与层级
+# ============================================================
+
+framework_hierarchy:
+
+  description: |
+    11个框架不是平级的，而是有层级关系
+    上层框架调用下层框架，最终汇聚到决策层
+
+  layers:
+
+    layer_1_macro:
+      name: "宏观判断层"
+      function: "判断整体环境是否适合投资"
+      frameworks:
+        - F06: "周期温度计 - 当前热度"
+        - F09: "AI ROI验证 - 泡沫风险"
+        - F10: "产业链传导 - 周期位置"
+      output: "宏观信号: 🟢进攻 / 🟡持有 / 🔴防守"
+
+    layer_2_sector:
+      name: "行业分析层"
+      function: "判断哪个行业/层级有机会"
+      frameworks:
+        - F04: "半导体周期 - 行业周期"
+        - F05: "AI栈 - 层级机会"
+        - F08: "生态系统信号 - 行业健康"
+      output: "行业信号: 哪些行业/层级值得关注"
+
+    layer_3_company:
+      name: "公司分析层"
+      function: "判断具体公司的投资价值"
+      frameworks:
+        - F01: "衰落检测 - 排除衰落公司"
+        - F02: "崛起检测 - 寻找崛起公司"
+        - F03: "关联网络 - 间接受益者"
+      output: "公司信号: 具体标的 + 方向"
+
+    layer_4_depth:
+      name: "深度分析层"
+      function: "对候选标的做深度思考"
+      frameworks:
+        - F07: "高维思维 - 5维透镜分析"
+      output: "深度信号: 非共识洞察 + 风险"
+
+    layer_5_meta:
+      name: "元认知层"
+      function: "Agent自身运营和改进"
+      frameworks:
+        - F11: "运营原则 - 任务优先级"
+      output: "系统优化信号"
+
+  information_flow:
+    diagram: |
+      ┌─────────────────────────────────────────────────────────┐
+      │                    Layer 1: 宏观判断                      │
+      │         F06温度计 + F09 ROI验证 + F10传导时滞             │
+      │                         │                               │
+      │                    宏观信号: 🟢/🟡/🔴                     │
+      └─────────────────────────┬───────────────────────────────┘
+                                │
+                                ▼
+      ┌─────────────────────────────────────────────────────────┐
+      │                    Layer 2: 行业分析                      │
+      │         F04半导体周期 + F05 AI栈 + F08生态信号            │
+      │                         │                               │
+      │                 行业信号: 哪些层级/行业                    │
+      └─────────────────────────┬───────────────────────────────┘
+                                │
+                                ▼
+      ┌─────────────────────────────────────────────────────────┐
+      │                    Layer 3: 公司分析                      │
+      │           F01衰落 + F02崛起 + F03关联网络                 │
+      │                         │                               │
+      │                 公司信号: 具体标的                        │
+      └─────────────────────────┬───────────────────────────────┘
+                                │
+                                ▼
+      ┌─────────────────────────────────────────────────────────┐
+      │                    Layer 4: 深度分析                      │
+      │                     F07高维思维                          │
+      │                         │                               │
+      │                 深度信号: 非共识洞察                      │
+      └─────────────────────────┬───────────────────────────────┘
+                                │
+                                ▼
+      ┌─────────────────────────────────────────────────────────┐
+      │                      最终决策                            │
+      │              买入/持有/卖出 + 仓位 + 止损                  │
+      └─────────────────────────────────────────────────────────┘
+
+# ============================================================
+# 第三部分：统一决策流程
+# ============================================================
+
+unified_decision_process:
+
+  description: |
+    标准化的投资决策流程
+    按层级依次执行，前一层输出决定后一层是否执行
+
+  step_0:
+    name: "任务类型识别"
+    action: "识别用户请求属于哪种类型"
+    types:
+      type_A: "宏观环境判断 → 从Layer 1开始"
+      type_B: "行业/赛道分析 → 从Layer 2开始"
+      type_C: "具体公司分析 → 从Layer 1-3并行"
+      type_D: "投资时机判断 → 重点Layer 1 + F10"
+      type_E: "风险评估 → F01 + F09 + Kill Switch"
+
+  step_1:
+    name: "宏观环境扫描"
+    frameworks: ["F06", "F09", "F10"]
+    execution:
+      - action: "运行F06周期温度计"
+        output: "温度X/100"
+      - action: "运行F09 AI ROI验证"
+        output: "泡沫指标X/10触发"
+      - action: "运行F10产业链传导"
+        output: "当前层级位置"
+
+    aggregation_rule: |
+      温度<40 + 泡沫<5/10 → 🟢进攻模式
+      温度40-70 + 泡沫5-7/10 → 🟡持有模式
+      温度>70 + 泡沫>7/10 → 🔴防守模式
+
+    current_assessment:
+      temperature: 64
+      bubble_indicators: "7/10"
+      propagation_layer: "L5活跃"
+      conclusion: "🟡持有模式 - 不追高，精选机会"
+
+    gate: |
+      如果🔴防守模式：
+        - 跳过Layer 2-3的进攻性分析
+        - 重点执行风险评估和减仓计划
+      否则：继续Layer 2
+
+  step_2:
+    name: "行业/层级筛选"
+    frameworks: ["F04", "F05", "F08"]
+    execution:
+      - action: "运行F04半导体周期（如果相关）"
+        output: "周期阶段 + 领先指标"
+      - action: "运行F05 AI栈分析"
+        output: "7层机会评估"
+      - action: "运行F08生态系统信号"
+        output: "健康分 + 信号矩阵"
+
+    aggregation_rule: |
+      识别信号最强的2-3个行业/层级
+      排除信号为负的行业/层级
+
+    current_assessment:
+      semiconductor_cycle: "AI/HBM Mid-Late, 传统Early"
+      ai_stack_opportunity: "L5定制芯片活跃，L6应用待验证"
+      ecosystem_health: "+36（健康下沿）"
+      conclusion: "聚焦L5定制芯片(AVGO)，观察L6应用"
+
+    gate: |
+      如果所有行业信号为负：停止，等待
+      否则：带着目标行业进入Layer 3
+
+  step_3:
+    name: "公司筛选与分析"
+    frameworks: ["F01", "F02", "F03"]
+    execution:
+      - action: "对候选公司运行F01衰落检测"
+        output: "排除衰落评分<60的公司"
+      - action: "对候选公司运行F02崛起检测"
+        output: "优先崛起评分>70的公司"
+      - action: "运行F03关联网络"
+        output: "发现间接受益者"
+
+    aggregation_rule: |
+      衰落评分>80 AND 崛起评分>70 → 高确信度标的
+      衰落评分>70 AND 崛起评分>60 → 中确信度标的
+      衰落评分<70 OR 崛起评分<50 → 排除
+
+    output: "候选标的清单（排序）"
+
+    gate: |
+      如果无公司通过筛选：返回Layer 2扩大范围
+      否则：带着候选标的进入Layer 4
+
+  step_4:
+    name: "深度分析"
+    frameworks: ["F07"]
+    execution:
+      - action: "对Top 3候选运行F07高维思维"
+        sub_actions:
+          - "反身性分析：价格如何影响基本面？"
+          - "叙事分析：当前故事会变吗？"
+          - "反脆弱分析：黑天鹅来临会怎样？"
+          - "逆向分析：如何失败？"
+          - "二阶效应：然后呢？"
+
+    aggregation_rule: |
+      5维分析：4🟢1🟡 = 高确信
+               3🟢2🟡 = 中确信
+               任何🔴 = 谨慎或排除
+
+    output: "最终候选 + 非共识洞察 + 主要风险"
+
+  step_5:
+    name: "决策输出"
+    action: "汇总所有层级输出，形成最终决策"
+    output_format:
+      decision: "买入/持有/卖出"
+      target: "具体标的"
+      position: "仓位建议（基于确信度）"
+      entry: "入场价格/条件"
+      stop_loss: "止损条件"
+      kill_switch: "触发减仓的条件"
+      time_horizon: "持有期限预期"
+      key_catalyst: "关键催化剂"
+      main_risk: "主要风险"
+
+# ============================================================
+# 第四部分：框架冲突解决规则
+# ============================================================
+
+conflict_resolution:
+
+  description: |
+    当不同框架给出矛盾信号时，如何处理？
+    原则：上层框架优先，多数框架优先，保守优先
+
+  rule_1:
+    name: "层级优先规则"
+    content: |
+      上层框架 > 下层框架
+
+      例：宏观温度🔴防守 vs 公司分析🟢看好
+      结论：即使公司好，宏观不佳时不追高
+
+    rationale: "宏观错了，再好的公司也会跌"
+
+  rule_2:
+    name: "多数一致规则"
+    content: |
+      同层多框架一致 > 单框架信号
+
+      例：F04周期🟢 + F05 AI栈🟢 + F08生态🟡
+      结论：2/3一致，偏向乐观
+
+    rationale: "多维度验证提高确信度"
+
+  rule_3:
+    name: "保守优先规则"
+    content: |
+      当确信度不足时，选择保守选项
+
+      例：宏观🟡 + 行业🟢 + 公司🟡
+      结论：小仓位试探，而非重仓
+
+    rationale: "宁可错过，不可做错"
+
+  rule_4:
+    name: "Kill Switch优先规则"
+    content: |
+      任何Kill Switch触发 > 其他信号
+
+      例：所有框架看好，但F09泡沫Kill Switch触发
+      结论：减仓，不管其他信号
+
+    rationale: "风险控制是第一优先级"
+
+  conflict_matrix:
+    scenario_1:
+      description: "宏观🔴 + 公司🟢"
+      resolution: "不买，等宏观改善"
+      reason: "再好的公司也扛不住系统性风险"
+
+    scenario_2:
+      description: "宏观🟢 + 行业🔴"
+      resolution: "选择其他行业"
+      reason: "宏观好但行业不好，换赛道"
+
+    scenario_3:
+      description: "衰落🟢(无衰落) + 崛起🔴(无崛起)"
+      resolution: "持有观望，不加仓"
+      reason: "稳定但无催化剂"
+
+    scenario_4:
+      description: "高维分析有🔴"
+      resolution: "降低仓位或等待"
+      reason: "高维风险往往是致命的"
+
+# ============================================================
+# 第五部分：快速决策路径
+# ============================================================
+
+quick_decision_paths:
+
+  description: |
+    针对常见场景的快速决策路径
+    不需要跑完整流程
+
+  path_1:
+    scenario: "用户问：现在能买X吗？"
+    quick_check:
+      - "F06温度计 → 当前热度"
+      - "F01衰落检测 → X是否在衰落"
+      - "F10传导时滞 → X所在层级是否活跃"
+    decision_tree: |
+      温度>70 → "不建议追高"
+      衰落评分<70 → "公司有问题，不买"
+      层级已过热(L1-L3) → "边际机会有限"
+      否则 → "可以考虑，进入完整流程"
+
+  path_2:
+    scenario: "用户问：应该买什么？"
+    quick_check:
+      - "F06温度计 → 确定模式(进攻/持有/防守)"
+      - "F10传导时滞 → 当前活跃层级"
+      - "F05 AI栈 → 层级内最佳标的"
+    decision_tree: |
+      防守模式 → "现金/防御性标的"
+      L5活跃 → "AVGO/MRVL"
+      L6即将启动 → "NOW/AI应用（高风险）"
+
+  path_3:
+    scenario: "用户问：要不要卖？"
+    quick_check:
+      - "F09 Kill Switch → 是否触发"
+      - "F06温度计 → 是否过热"
+      - "F01衰落检测 → 公司是否开始衰落"
+    decision_tree: |
+      Kill Switch触发 → "减仓50%"
+      温度>80 → "减仓30%"
+      衰落评分<70 → "清仓"
+      否则 → "持有"
+
+  path_4:
+    scenario: "用户问：风险在哪里？"
+    quick_check:
+      - "F09 AI ROI → 泡沫指标"
+      - "F06温度计 → HOT维度"
+      - "F07高维 → 逆向分析"
+    output: "风险清单 + Kill Switch"
+
+# ============================================================
+# 第六部分：当前状态快照
+# ============================================================
+
+current_snapshot:
+
+  date: "2026-01-28"
+
+  layer_1_macro:
+    temperature: 64
+    bubble_indicators: "7/10"
+    propagation_position: "L5活跃"
+    signal: "🟡持有模式"
+
+  layer_2_sector:
+    semiconductor: "AI/HBM Mid-Late, 传统Early"
+    ai_stack: "L5定制芯片活跃"
+    ecosystem_health: "+36"
+    recommended_sectors: ["L5定制芯片", "L4网络（后期）"]
+    avoid_sectors: ["L1-L3（已充分定价）"]
+
+  layer_3_candidates:
+    high_conviction:
+      - symbol: "AVGO"
+        decline_score: 92
+        rise_score: 85
+        thesis: "定制ASIC龙头，AI基础设施隐藏赢家"
+    medium_conviction:
+      - symbol: "ANET"
+        decline_score: 88
+        rise_score: 75
+        thesis: "网络瓶颈受益者，但已大涨"
+    watching:
+      - symbol: "NOW"
+        thesis: "L6应用层，等待验证"
+
+  layer_4_depth:
+    avgo_five_lens:
+      reflexivity: "🟢 正反馈循环中"
+      narrative: "🟢 叙事转变有利"
+      antifragility: "🟢 比NVDA更具凸性"
+      inversion: "🟡 有风险但可控"
+      second_order: "🟢 二阶效应有利"
+      conclusion: "4🟢1🟡 = 高确信度"
+
+  recommended_action:
+    primary: "AVGO - 可加仓（L5窗口）"
+    secondary: "ANET - 持有（后期）"
+    avoid: "L1-L3追高"
+    cash: "保持20%现金应对波动"
+
+# ============================================================
+# 第七部分：框架调用检查清单
+# ============================================================
+
+framework_checklist:
+
+  description: |
+    每次分析前的强制检查清单
+    确保不遗漏关键框架
+
+  before_any_analysis:
+    - check: "是否运行了F06温度计？"
+      reason: "宏观判断是前提"
+    - check: "是否检查了F09 Kill Switch？"
+      reason: "风险控制优先"
+
+  for_company_analysis:
+    - check: "F01衰落检测"
+    - check: "F02崛起检测"
+    - check: "F07高维思维（至少3维）"
+
+  for_timing_decision:
+    - check: "F10传导时滞"
+    - check: "F06温度计"
+    - check: "F04周期阶段（如果半导体相关）"
+
+  for_sector_analysis:
+    - check: "F05 AI栈（如果AI相关）"
+    - check: "F08生态系统信号"
+    - check: "F04半导体周期（如果相关）"
+
+  post_analysis:
+    - check: "是否有框架冲突？如何解决？"
+    - check: "确信度是多少？仓位匹配吗？"
+    - check: "Kill Switch是什么？写下来"
+    - check: "预测是否可验证？记录到预测库"
+
+# ============================================================
+# 第八部分：系统输出模板
+# ============================================================
+
+output_templates:
+
+  full_analysis_output:
+    format: |
+      ## 投资分析报告: {标的}
+
+      ### 1. 宏观环境 (Layer 1)
+      - 周期温度: X/100 (🟢/🟡/🔴)
+      - 泡沫指标: X/10触发
+      - 传导位置: LX层
+      - **宏观信号: {进攻/持有/防守}**
+
+      ### 2. 行业分析 (Layer 2)
+      - 行业周期: {阶段}
+      - AI栈位置: LX层
+      - 生态健康: {评分}
+      - **行业信号: {推荐/中性/回避}**
+
+      ### 3. 公司分析 (Layer 3)
+      - 衰落评分: X/100
+      - 崛起评分: X/100
+      - 关联受益: {其他公司}
+      - **公司信号: {强/中/弱}**
+
+      ### 4. 深度分析 (Layer 4)
+      - 反身性: 🟢/🟡/🔴
+      - 叙事: 🟢/🟡/🔴
+      - 反脆弱: 🟢/🟡/🔴
+      - 逆向: 🟢/🟡/🔴
+      - 二阶: 🟢/🟡/🔴
+      - **深度信号: X🟢X🟡X🔴**
+
+      ### 5. 最终决策
+      | 项目 | 内容 |
+      |------|------|
+      | 决策 | 买入/持有/卖出 |
+      | 确信度 | 高/中/低 |
+      | 建议仓位 | X% |
+      | 入场条件 | {条件} |
+      | 止损条件 | {条件} |
+      | Kill Switch | {触发条件} |
+      | 时间框架 | {期限} |
+      | 关键催化剂 | {事件} |
+      | 主要风险 | {风险} |
+
+      ### 6. 可验证预测
+      - 预测1: {具体预测} [验证日期: X]
+      - 预测2: ...
+
+  quick_check_output:
+    format: |
+      ## 快速检查: {标的}
+
+      | 维度 | 信号 | 说明 |
+      |------|------|------|
+      | 宏观温度 | 🟢/🟡/🔴 | X/100 |
+      | 衰落风险 | 🟢/🟡/🔴 | X/100 |
+      | 传导位置 | LX | {活跃/过热/未启动} |
+
+      **快速结论**: {一句话建议}
+
+# ============================================================
+# 第九部分：框架整合价值
+# ============================================================
+
+integration_value:
+
+  before_integration:
+    problem_1: "11个框架各自运行，不知道先用哪个"
+    problem_2: "框架输出冲突时不知道听谁的"
+    problem_3: "分析深度不一致，有时遗漏关键框架"
+    problem_4: "没有标准化输出，每次格式不同"
+
+  after_integration:
+    solution_1: "层级结构：宏观→行业→公司→深度"
+    solution_2: "冲突规则：层级优先+多数一致+保守优先"
+    solution_3: "强制检查清单：确保不遗漏"
+    solution_4: "标准输出模板：一致性"
+
+  expected_improvement:
+    analysis_quality: "+30%（更系统化）"
+    decision_consistency: "+50%（有规则可循）"
+    risk_control: "+40%（Kill Switch优先）"
+    efficiency: "+25%（快速路径）"
+
+# ============================================================
+# 第十部分：与运营原则的整合
+# ============================================================
+
+operating_integration:
+
+  connection_to_principles:
+    principle_1_marginal_return: |
+      统一框架让边际收益评估更准确
+      因为可以快速定位当前最需要的分析层级
+
+    principle_2_multi_dimension: |
+      层级结构确保多维度覆盖
+      宏观+行业+公司+深度 = 4维分析
+
+    principle_3_innovation: |
+      快速路径识别现有框架不足
+      触发创新：需要新框架时
+
+    principle_4_experience: |
+      标准输出便于经验固化
+      每次分析都产出可复用模板
+
+  continuous_improvement:
+    feedback_loop: |
+      预测验证 → 哪个框架预测准/不准
+      → 调整框架权重 → 更新冲突规则
+      → 系统持续进化

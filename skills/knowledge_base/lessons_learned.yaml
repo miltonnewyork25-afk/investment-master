@@ -420,9 +420,9 @@ lessons:
 
 # 统计
 statistics:
-  total_lessons: 91
-  meta_insights: 8  # +1 META_000 时间维度盲区反思
-  total_knowledge_units: 99  # 91 lessons + 8 meta insights
+  total_lessons: 94  # +3 统一决策框架
+  meta_insights: 8
+  total_knowledge_units: 102  # 94 lessons + 8 meta insights
   by_category:
     agent_execution: 1
     api_integration: 1
@@ -1783,3 +1783,46 @@ industry_signal_propagation:
       statement: "L1-L3合计2026年收益<2025年"
       verify_date: "2027-01"
       confidence: "60%"
+
+# ============================================================
+# 统一决策框架经验 (LL_092 - LL_094)
+# ============================================================
+
+unified_decision_framework:
+  id_range: "LL_092 到 LL_094"
+  date: "2026-01-28"
+  total_new: 3
+  file_location: "skills/core/unified_decision_framework_v1.yaml"
+
+  lesson_092:
+    id: "LL_092"
+    category: "system_integration"
+    lesson: "11个框架必须有层级结构：宏观→行业→公司→深度，否则不知道先用哪个"
+    framework: |
+      Layer 1 宏观判断: F06温度+F09 ROI+F10传导 → 🟢/🟡/🔴
+      Layer 2 行业分析: F04周期+F05 AI栈+F08生态 → 行业选择
+      Layer 3 公司分析: F01衰落+F02崛起+F03关联 → 标的筛选
+      Layer 4 深度分析: F07高维思维 → 非共识洞察
+    investment_implication: "先判断宏观，再选行业，再选公司，最后深挖"
+
+  lesson_093:
+    id: "LL_093"
+    category: "conflict_resolution"
+    lesson: "框架冲突解决四规则：层级优先、多数一致、保守优先、Kill Switch优先"
+    rules: |
+      1. 层级优先：宏观🔴 > 公司🟢（不追高）
+      2. 多数一致：2/3框架一致 > 单框架
+      3. 保守优先：确信度不足时选择保守
+      4. Kill Switch：任何触发 > 其他所有信号
+    investment_implication: "有规则可循，决策一致性提升50%"
+
+  lesson_094:
+    id: "LL_094"
+    category: "decision_efficiency"
+    lesson: "快速决策路径可处理80%常见问题：能不能买/该买什么/要不要卖/风险在哪"
+    quick_paths: |
+      Q: 能买X吗? → 温度+衰落+传导位置
+      Q: 该买什么? → 温度→传导层级→层级内标的
+      Q: 要不要卖? → Kill Switch+温度+衰落
+      Q: 风险在哪? → ROI泡沫+温度HOT+逆向分析
+    investment_implication: "不需要每次跑完整流程，快速路径提升效率25%"
