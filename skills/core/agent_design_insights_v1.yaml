@@ -1,0 +1,500 @@
+# Agent Design Insights v1.0
+# 从顶级论文中提取的Agent设计方法论
+# 用于改进投资研究Agent架构
+
+version: "1.0"
+created: "2026-01-28"
+purpose: "将学术界Agent设计最佳实践应用于投资研究系统"
+
+# =============================================================================
+# 核心反思：为什么我没有主动想到学习Agent设计？
+# =============================================================================
+
+meta_reflection:
+  failure_mode: "执行者心态 vs 架构师心态"
+  root_causes:
+    - "107条经验都是投资分析方法，0条是Agent设计方法"
+    - "专注于'做任务'而非'如何更好地做任务'"
+    - "确定性偏好：用已知框架而非探索新范式"
+    - "元认知盲区：没有问'我的方法论是否最优'"
+  lesson_id: "LL_108"
+  investment_implication: "学习一次Agent设计 → 永久提升所有分析质量"
+
+# =============================================================================
+# TOP 5 论文/框架 精选
+# =============================================================================
+
+top_5_papers:
+
+  # ---------------------------------------------------------------------------
+  # Paper 1: Reflexion - 最直接适用于预测验证
+  # ---------------------------------------------------------------------------
+  paper_1:
+    name: "Reflexion: Language Agents with Verbal Reinforcement Learning"
+    authors: "Noah Shinn, Federico Cassano, et al."
+    venue: "NeurIPS 2023"
+    arxiv: "https://arxiv.org/abs/2303.11366"
+    github: "https://github.com/noahshinn/reflexion"
+
+    core_idea: |
+      不通过梯度更新训练Agent，而是通过**语言反馈**强化。
+      Agent对任务反馈进行**语言反思**，并将反思存储在**情景记忆**中，
+      用于指导后续决策。
+
+    mechanism:
+      step_1: "执行任务，获取结果"
+      step_2: "评估结果（成功/失败）"
+      step_3: "Reflector模型生成语言反思"
+      step_4: "反思存入情景记忆"
+      step_5: "下次执行时，反思作为上下文输入"
+
+    results: |
+      - AlfWorld: 97% vs baseline 75%
+      - HotPotQA: 91% vs baseline 78%
+      - 关键：不需要微调，纯语言层面的学习
+
+    application_to_investment_agent:
+      current_gap: |
+        我们的predictions验证循环（LL_100-103）是对的方向，
+        但缺少**结构化的语言反思存储和检索机制**。
+
+        当前：验证预测 → 写入lessons_learned.yaml
+        问题：反思是零散的，没有直接影响下次预测
+
+      improvement_design:
+        name: "Prediction Reflexion Loop"
+        components:
+          - component: "Prediction Memory"
+            description: "每个预测的完整生命周期记录"
+            fields: ["prediction_id", "statement", "confidence", "result", "reflection", "pattern_tag"]
+
+          - component: "Reflector Prompt"
+            template: |
+              预测: {prediction}
+              置信度: {confidence}
+              实际结果: {actual}
+
+              反思问题：
+              1. 为什么预测错误/正确？
+              2. 哪些信号被忽略？
+              3. 置信度校准是否准确？
+              4. 这个模式之前出现过吗？
+              5. 下次如何改进？
+
+          - component: "Pattern Retrieval"
+            mechanism: "做新预测时，检索相似历史预测的反思"
+
+      expected_improvement: "预测准确率 88% → 92%+"
+
+  # ---------------------------------------------------------------------------
+  # Paper 2: MetaGPT - SOP思维最适合多框架编排
+  # ---------------------------------------------------------------------------
+  paper_2:
+    name: "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework"
+    authors: "Sirui Hong, Mingchen Zhuge, et al."
+    venue: "ICLR 2024 (Oral)"
+    arxiv: "https://arxiv.org/abs/2308.00352"
+    github: "https://github.com/FoundationAgents/MetaGPT"
+
+    core_idea: |
+      将人类工作流程的**标准操作程序(SOP)**编码到LLM Agent中。
+      核心哲学："Code = SOP(Team)"
+
+      像软件公司一样组织Agent：
+      产品经理 → 架构师 → 项目经理 → 工程师
+      每个角色有明确职责和交接标准。
+
+    mechanism:
+      step_1: "定义角色（Role）及其职责边界"
+      step_2: "定义标准操作程序（SOP）"
+      step_3: "定义角色间的交接物（Artifact）"
+      step_4: "流水线执行，每步验证交接物质量"
+
+    results: |
+      - 软件开发基准：3.9分 vs ChatDev 2.1分
+      - 关键：减少cascading hallucination
+
+    application_to_investment_agent:
+      current_gap: |
+        我们有11个框架，但没有明确的：
+        - 框架间的执行顺序（4层结构只是粗分）
+        - 每个框架的输入/输出规范
+        - 框架间的交接验证机制
+
+        问题：框架执行是"跳跃式"而非"流水线式"
+
+      improvement_design:
+        name: "Investment SOP Framework"
+        roles:
+          - role: "Macro Analyst"
+            responsibility: "宏观环境判断"
+            input: "市场数据、周期指标"
+            output: "宏观信号(🟢/🟡/🔴) + 行业倾向"
+            frameworks_used: ["F06温度计", "F09 ROI验证", "F10传导"]
+
+          - role: "Sector Analyst"
+            responsibility: "行业分析和标的筛选"
+            input: "宏观信号 + 行业数据"
+            output: "行业评级 + 标的候选列表"
+            frameworks_used: ["F04周期", "F05 AI栈", "F08生态"]
+
+          - role: "Company Analyst"
+            responsibility: "公司深度分析"
+            input: "标的候选列表 + 公司数据"
+            output: "公司评分 + 投资论点"
+            frameworks_used: ["F01衰落", "F02崛起", "F03关联"]
+            mandatory_dimensions: 6  # 产品/五力/竞争/客户/技术/用户
+
+          - role: "Risk Manager"
+            responsibility: "风险评估和Kill Switch"
+            input: "投资论点 + 风险数据"
+            output: "风险评级 + Kill Switch清单"
+            frameworks_used: ["F07高维思维"]
+
+          - role: "Quality Gate"
+            responsibility: "输出质量验证"
+            input: "完整报告"
+            output: "通过/不通过 + 修正建议"
+            checklist: "CLAUDE.md质量门控"
+
+        sop_sequence: |
+          1. Macro Analyst执行 → 输出宏观判断
+          2. 如果宏观🔴 → 直接输出"不建议新增仓位"
+          3. Sector Analyst执行 → 输出行业倾向
+          4. Company Analyst执行 → 输出公司论点
+          5. Risk Manager执行 → 附加风险层
+          6. Quality Gate验证 → 通过则输出
+
+      expected_improvement: "减少遗漏微观分析的问题（LL_095）"
+
+  # ---------------------------------------------------------------------------
+  # Paper 3: Tree of Thoughts - 投资决策需要多路径探索
+  # ---------------------------------------------------------------------------
+  paper_3:
+    name: "Tree of Thoughts: Deliberate Problem Solving with Large Language Models"
+    authors: "Shunyu Yao, Dian Yu, Jeffrey Zhao, et al."
+    venue: "NeurIPS 2023"
+    arxiv: "https://arxiv.org/abs/2305.10601"
+    github: "https://github.com/princeton-nlp/tree-of-thought-llm"
+
+    core_idea: |
+      传统Chain-of-Thought是线性推理，无法回溯。
+      Tree of Thoughts允许：
+      - 探索多条推理路径
+      - 自我评估每条路径
+      - 必要时回溯
+      - 全局最优选择
+
+    mechanism:
+      step_1: "将问题分解为可评估的'思维单元'"
+      step_2: "对每个节点生成多个候选"
+      step_3: "评估候选的可行性"
+      step_4: "使用BFS/DFS搜索最优路径"
+      step_5: "回溯和修正"
+
+    results: |
+      - Game of 24: 74% vs CoT 4%
+      - 关键：需要战略性前瞻的任务提升巨大
+
+    application_to_investment_agent:
+      current_gap: |
+        当前投资分析是线性的：
+        数据 → 分析 → 结论
+
+        问题：
+        - 没有探索多个投资论点
+        - 没有系统性比较不同观点
+        - 没有回溯修正机制
+
+      improvement_design:
+        name: "Investment Tree of Thoughts"
+        thought_unit: "投资论点"
+
+        example_tree:
+          root: "是否应该投资TSM?"
+          branches:
+            - branch: "看多论点"
+              thoughts:
+                - "AI制造垄断"
+                - "2nm领先"
+                - "大师共识（Druckenmiller+Tepper）"
+              evaluation: "强度80%"
+
+            - branch: "看空论点"
+              thoughts:
+                - "地缘政治风险"
+                - "估值已反映增长"
+                - "周期性风险"
+              evaluation: "强度40%"
+
+            - branch: "中性/差异化论点"
+              thoughts:
+                - "被低估的地缘政治对冲（Arizona厂）"
+                - "HBM可能是隐藏催化剂"
+              evaluation: "alpha来源"
+
+          synthesis: |
+            多空权衡后：看多60% + 差异化洞察
+            vs 线性分析可能只输出一个结论
+
+        application_points:
+          - "估值分析：探索多个估值方法树"
+          - "风险评估：构建风险情景树"
+          - "催化剂分析：时间线分支探索"
+
+      expected_improvement: "减少单一视角偏见，提高论点完整性"
+
+  # ---------------------------------------------------------------------------
+  # Paper 4: LLM-Modulo - 外部验证器解决自我验证问题
+  # ---------------------------------------------------------------------------
+  paper_4:
+    name: "LLMs Can't Plan, But Can Help Planning in LLM-Modulo Frameworks"
+    authors: "Subbarao Kambhampati, et al."
+    venue: "ICML 2024 (Spotlight)"
+    arxiv: "https://arxiv.org/abs/2402.01817"
+
+    core_idea: |
+      **关键发现：LLM无法可靠地自我验证计划的正确性**
+
+      GPT-4生成的计划只有~12%无错误可执行。
+
+      解决方案：LLM-Modulo框架
+      - LLM生成候选方案
+      - 外部验证器（Critics）检验正确性
+      - 迭代修正直到通过验证
+
+    mechanism:
+      step_1: "LLM生成候选计划/答案"
+      step_2: "外部Critics验证（基于规则/模型/事实）"
+      step_3: "如果验证失败，反馈给LLM修正"
+      step_4: "迭代直到通过或达到上限"
+
+    results: |
+      - 旅行规划任务：性能提升6倍
+      - 关键：外部验证保证输出可执行性
+
+    application_to_investment_agent:
+      current_gap: |
+        我们的质量门控（Quality Gate）是自我检查，
+        但LLM自我验证不可靠（Kambhampati论点）。
+
+        问题：
+        - 估值计算可能有数学错误
+        - 数据来源可能hallucination
+        - 逻辑推理可能有漏洞
+
+      improvement_design:
+        name: "Investment Modulo Framework"
+        critics:
+          - critic: "Data Verifier"
+            function: "验证每个数据点的来源和准确性"
+            method: "检查[API]标注是否对应真实API调用"
+
+          - critic: "Math Verifier"
+            function: "验证所有计算的正确性"
+            method: "重新计算关键指标（PE、EV/EBITDA、SOTP）"
+
+          - critic: "Logic Verifier"
+            function: "检查推理链的逻辑一致性"
+            method: "前提→结论的必然性检查"
+
+          - critic: "Consistency Verifier"
+            function: "检查报告内部的一致性"
+            method: "SOTP目标价 vs 最终目标价差距"
+
+          - critic: "Kill Switch Verifier"
+            function: "验证Kill Switch是否可操作"
+            method: "每个触发条件必须可量化、可监控"
+
+        workflow: |
+          1. Agent生成分析报告
+          2. 5个Critics并行验证
+          3. 汇总验证结果
+          4. 如有失败，反馈修正
+          5. 迭代直到全部通过
+
+      expected_improvement: "减少数据错误和逻辑不一致"
+
+  # ---------------------------------------------------------------------------
+  # Paper 5: Agentic RAG Survey - 知识检索的Agent化
+  # ---------------------------------------------------------------------------
+  paper_5:
+    name: "Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG"
+    authors: "Various"
+    venue: "arXiv 2025"
+    arxiv: "https://arxiv.org/abs/2501.09136"
+
+    core_idea: |
+      将传统RAG升级为Agentic RAG：
+      - 自主决定何时检索、检索什么
+      - 多轮检索和推理交织
+      - 反思检索结果的质量
+      - 动态调整检索策略
+
+    mechanism:
+      patterns:
+        - pattern: "Planning"
+          description: "规划检索顺序和策略"
+        - pattern: "Reflection"
+          description: "评估检索结果是否足够"
+        - pattern: "Tool Use"
+          description: "调用多种检索工具"
+        - pattern: "Multi-Agent"
+          description: "多Agent协作检索和整合"
+
+    application_to_investment_agent:
+      current_gap: |
+        我们的知识库（lessons_learned.yaml, top_investor_database等）
+        是被动的——只在需要时手动读取。
+
+        问题：
+        - 不会主动检索相关历史教训
+        - 不会根据当前任务动态组合知识
+        - 知识利用率低
+
+      improvement_design:
+        name: "Investment Agentic RAG"
+        components:
+          - component: "Knowledge Router"
+            function: "根据任务类型路由到相关知识库"
+            routing_rules:
+              - "分析半导体 → semiconductor_cycle_framework"
+              - "分析公司 → failure/rise_detection_frameworks"
+              - "验证预测 → predictions + lessons_learned"
+              - "投资决策 → top_investor_database + all frameworks"
+
+          - component: "Relevance Scorer"
+            function: "评估检索结果与当前任务的相关性"
+            threshold: 0.7
+
+          - component: "Knowledge Synthesizer"
+            function: "整合多源知识为coherent context"
+
+          - component: "Gap Detector"
+            function: "识别知识库中的空白"
+            action: "触发WebSearch补充"
+
+      expected_improvement: "知识利用率从~30%提升到>70%"
+
+# =============================================================================
+# 综合架构升级方案
+# =============================================================================
+
+integrated_upgrade:
+  name: "Investment Agent v2.0 Architecture"
+
+  core_changes:
+    - change: "从线性分析到Tree of Thoughts"
+      before: "数据 → 分析 → 结论"
+      after: "数据 → 多论点探索 → 评估 → 综合"
+
+    - change: "从自我检查到外部验证"
+      before: "生成报告 → 自我检查质量门控"
+      after: "生成报告 → 5个外部Critics验证 → 迭代修正"
+
+    - change: "从被动知识到Agentic RAG"
+      before: "手动读取知识库"
+      after: "自动路由、检索、评分、综合"
+
+    - change: "从零散反思到Reflexion Loop"
+      before: "验证预测 → 写lessons_learned"
+      after: "验证 → 结构化反思 → 存入情景记忆 → 检索复用"
+
+    - change: "从隐式流程到显式SOP"
+      before: "11个框架隐式调用"
+      after: "5个角色、明确交接物、流水线执行"
+
+  implementation_priority:
+    p0_immediate:
+      - "实现LLM-Modulo的5个Critics"
+      - "定义SOP角色和交接物"
+    p1_short_term:
+      - "实现Reflexion预测循环"
+      - "构建Knowledge Router"
+    p2_medium_term:
+      - "实现Tree of Thoughts投资分析"
+      - "完整Agentic RAG系统"
+
+# =============================================================================
+# 新增经验教训
+# =============================================================================
+
+new_lessons:
+  - id: "LL_108"
+    date: "2026-01-28"
+    category: "meta_learning"
+    lesson: "元认知盲区：107条投资分析经验，0条Agent设计经验"
+    root_cause: "执行者心态 vs 架构师心态"
+    action_taken: "创建agent_design_insights_v1.yaml"
+    investment_implication: "定期学习最新Agent研究，边际收益极大"
+
+  - id: "LL_109"
+    date: "2026-01-28"
+    category: "agent_design"
+    lesson: "Reflexion框架：语言反思 > 梯度更新"
+    source: "Shinn et al., NeurIPS 2023"
+    application: "预测验证循环需要结构化反思存储和检索"
+
+  - id: "LL_110"
+    date: "2026-01-28"
+    category: "agent_design"
+    lesson: "MetaGPT SOP思维：Code = SOP(Team)"
+    source: "Hong et al., ICLR 2024"
+    application: "11个框架需要明确角色、交接物、流水线"
+
+  - id: "LL_111"
+    date: "2026-01-28"
+    category: "agent_design"
+    lesson: "Tree of Thoughts：多路径探索 > 线性推理"
+    source: "Yao et al., NeurIPS 2023"
+    application: "投资论点需要多空分支探索和综合"
+
+  - id: "LL_112"
+    date: "2026-01-28"
+    category: "agent_design"
+    lesson: "LLM-Modulo：LLM无法可靠自我验证，需外部Critics"
+    source: "Kambhampati et al., ICML 2024"
+    application: "质量门控需要外部验证器而非自我检查"
+    key_stat: "GPT-4生成的计划只有12%可执行"
+
+  - id: "LL_113"
+    date: "2026-01-28"
+    category: "agent_design"
+    lesson: "Agentic RAG：知识检索需要Agent化"
+    source: "arXiv 2025 Survey"
+    application: "知识库需要主动路由、评分、综合机制"
+
+# =============================================================================
+# 资源链接
+# =============================================================================
+
+resources:
+  papers:
+    - title: "Reflexion: Language Agents with Verbal Reinforcement Learning"
+      url: "https://arxiv.org/abs/2303.11366"
+
+    - title: "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework"
+      url: "https://arxiv.org/abs/2308.00352"
+
+    - title: "Tree of Thoughts: Deliberate Problem Solving with Large Language Models"
+      url: "https://arxiv.org/abs/2305.10601"
+
+    - title: "LLMs Can't Plan, But Can Help Planning in LLM-Modulo Frameworks"
+      url: "https://arxiv.org/abs/2402.01817"
+
+    - title: "Agentic RAG Survey"
+      url: "https://arxiv.org/abs/2501.09136"
+
+  github_repos:
+    - name: "Awesome-Agent-Papers"
+      url: "https://github.com/luo-junyu/Awesome-Agent-Papers"
+
+    - name: "LLM-Agents-Papers"
+      url: "https://github.com/AGI-Edgerunners/LLM-Agents-Papers"
+
+  surveys:
+    - title: "The Landscape of Emerging AI Agent Architectures"
+      url: "https://arxiv.org/html/2404.11584v1"
+
+    - title: "Multi-Agent Collaboration Mechanisms Survey"
+      url: "https://arxiv.org/html/2501.06322v1"

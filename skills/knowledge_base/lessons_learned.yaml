@@ -654,14 +654,67 @@ investor_pattern_predictions:
     rationale: "Loeb新建仓SK Hynix信号"
     source: "top_investor_database_v1.yaml"
 
+# ============================================================
+# Agent设计方法论经验 (LL_108 - LL_113)
+# ============================================================
+
+agent_design_methodology:
+  id_range: "LL_108 到 LL_113"
+  date: "2026-01-28"
+  total_new: 6
+  source: "顶级Agent设计论文研究"
+  file_location: "skills/core/agent_design_insights_v1.yaml"
+
+  lesson_108:
+    id: "LL_108"
+    category: "meta_learning"
+    lesson: "元认知盲区：107条投资分析经验，0条Agent设计经验"
+    root_cause: "执行者心态 vs 架构师心态"
+    investment_implication: "学习一次Agent设计 → 永久提升所有分析质量"
+
+  lesson_109:
+    id: "LL_109"
+    category: "agent_design"
+    lesson: "Reflexion框架：语言反思 > 零散经验"
+    source: "Shinn et al., NeurIPS 2023"
+    application: "预测验证需要结构化反思存储和检索"
+
+  lesson_110:
+    id: "LL_110"
+    category: "agent_design"
+    lesson: "MetaGPT SOP思维：Code = SOP(Team)"
+    source: "Hong et al., ICLR 2024"
+    application: "11个框架需要明确角色、交接物、流水线"
+
+  lesson_111:
+    id: "LL_111"
+    category: "agent_design"
+    lesson: "Tree of Thoughts：多路径探索 > 线性推理"
+    source: "Yao et al., NeurIPS 2023"
+    evidence: "Game of 24: ToT 74% vs CoT 4%"
+
+  lesson_112:
+    id: "LL_112"
+    category: "agent_design"
+    lesson: "LLM-Modulo：LLM无法可靠自我验证，需外部Critics"
+    source: "Kambhampati et al., ICML 2024"
+    key_finding: "GPT-4计划只有12%可执行"
+
+  lesson_113:
+    id: "LL_113"
+    category: "agent_design"
+    lesson: "Agentic RAG：知识检索需要Agent化"
+    source: "arXiv 2025 Survey"
+    application: "知识利用率从30%提升到70%+"
+
 # 统计
 statistics:
-  total_lessons: 107  # +4 (LL_104-107 投资者行为模式)
+  total_lessons: 113  # +6 (LL_108-113 Agent设计)
   meta_insights: 8
-  predictions: 55  # +4 新预测 (51+4)
+  predictions: 55
   predictions_validated: 27
   prediction_accuracy: "88%"
-  total_knowledge_units: 115  # 107 lessons + 8 meta insights
+  total_knowledge_units: 121  # 113 lessons + 8 meta insights
   by_category:
     agent_execution: 1
     api_integration: 1
