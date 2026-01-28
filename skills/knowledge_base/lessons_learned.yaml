@@ -145,9 +145,48 @@ lessons:
     effectiveness: "已验证"
     priority: "P0"
 
+  - id: "LL_015"
+    date: "2026-01-28"
+    context: "AAPL v1.0 用户反馈"
+    category: "system_architecture"
+    lesson: "经验无法沉淀的根本原因：lessons_learned是静态记录，不是强制执行机制"
+    root_cause: "定义了'什么是深度'，但没有强制'如何产生深度'的过程控制"
+    action_taken: "创建deep_thinking_protocol_v1.md，强制在数据收集前完成第一性原理思考"
+    effectiveness: "待验证"
+    priority: "P0"
+
+  - id: "LL_016"
+    date: "2026-01-28"
+    context: "AAPL v1.0 用户反馈"
+    category: "depth_failure"
+    lesson: "AAPL报告只有数据罗列，缺少：护城河分析、产品矩阵、竞争格局、第一性原理"
+    root_cause: "深度思考不是事后检查能保证的，必须是过程强制"
+    action_taken: "深度思考协议设为工作流第一步，在API调用之前执行"
+    effectiveness: "待验证"
+    priority: "P0"
+
+  - id: "LL_017"
+    date: "2026-01-28"
+    context: "AAPL v1.0 用户反馈"
+    lesson: "分析师学习流于形式：只罗列观点，没有解构框架、找盲区、超越"
+    root_cause: "没有强制要求'理解框架+找盲区+超越'"
+    action_taken: "协议要求：每个分析师必须回答4个问题（框架、假设、失效条件、盲区）"
+    effectiveness: "待验证"
+    priority: "P0"
+
+  - id: "LL_018"
+    date: "2026-01-28"
+    context: "AAPL v1.0 用户反馈"
+    category: "innovation_failure"
+    lesson: "AAPL报告毫无创新尝试，Tesla报告中的创新方法（充电桩、期权估值）完全消失"
+    root_cause: "没有强制要求创新尝试"
+    action_taken: "协议要求：必须尝试至少3种非常规分析方法，即使失败也要记录"
+    effectiveness: "待验证"
+    priority: "P0"
+
 # 统计
 statistics:
-  total_lessons: 14
+  total_lessons: 18
   by_category:
     agent_execution: 1
     api_integration: 1
