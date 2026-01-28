@@ -1,4 +1,4 @@
-# Druckenmiller Decision Engine v1.0
+# Druckenmiller Decision Engine v1.1
 # 基于逆向工程的决策预测引擎
 #
 # 核心功能：
@@ -6,32 +6,61 @@
 #   2. 识别"Druckenmiller类型"的股票
 #   3. 预测他何时会卖出当前持仓
 #   4. 实时信号监控
+#
+# ⚠️ 重要更新 (2026-01-28):
+#   原加权评分模型已被层级决策框架取代
+#   参考: hierarchical_investment_decision_framework_v1.yaml
+#   原因: 加权评分无法捕捉"压倒性因素"（如TSM的绝对垄断）
 
-version: "1.0"
+version: "1.1"
 created: "2026-01-28"
+updated: "2026-01-28"
 data_sources: "[搜索] 13F分析、投资者访谈、历史交易模式"
 
 # =============================================================================
-# 决策函数还原
+# 框架引用
+# =============================================================================
+
+framework_references:
+  primary_decision_framework: "hierarchical_investment_decision_framework_v1.yaml"
+  valuation_engine: "valuation_engine/valuation_engine_agent_v1.yaml"
+  fallen_angel_framework: "fallen_angel_identification_framework_v1.yaml"
+
+# =============================================================================
+# 决策函数还原（层级版本）
 # =============================================================================
 
 decision_function:
 
-  formula: |
+  # 旧版本（已废弃）
+  deprecated_weighted_formula: |
+    ⚠️ 以下加权公式已废弃，仅保留供参考：
     Druckenmiller_Decision = f(
       Liquidity_Signal,        # 40%权重
       Company_Vector_Score,    # 30%权重
       Technical_Confirmation,  # 15%权重
       Timing_Catalyst,         # 10%权重
-      Conviction_State         # 5%权重 (他是否处于"热手"状态)
+      Conviction_State         # 5%权重
+    )
+
+    问题：加权平均假设维度可相互补偿，但实际投资决策是层级的。
+
+  # 新版本（层级决策）
+  hierarchical_decision: |
+    Druckenmiller_Decision = Hierarchical_Filter(
+      Level_0: 硬性排除 → 结构性颠覆/二元事件/欺诈
+      Level_1: 必要条件 → 问题可解决/护城河完好/有催化剂/估值合理
+      Level_2: 例外触发 → 绝对垄断+顺风/多重修复信号/极端低估
+      Level_3: 情景分类 → 增长/Turnaround/周期/防御
+      Level_4: 情景评估 → 情景特定维度评分
     )
 
   decision_outcomes:
-    strong_buy: "Score > 85 且 Liquidity_Signal = Positive"
-    buy: "Score > 70 且 Liquidity_Signal ≠ Negative"
-    hold: "60 < Score < 70 或等待催化剂"
-    avoid: "Score < 60 或 Liquidity_Signal = Negative"
-    sell: "论点改变 或 产能扩张信号 或 估值过度扩张"
+    strong_buy: "Level 2例外触发（绝对垄断+宏观顺风 或 多重修复信号）"
+    buy: "通过Level 0-1 + Level 4评分>70"
+    watch: "通过Level 0但Level 1某gate未通过"
+    avoid: "Level 0排除 或 估值过高"
+    sell: "论点改变 或 产能扩张信号 或 估值透支"
 
 # =============================================================================
 # 实时信号监控面板

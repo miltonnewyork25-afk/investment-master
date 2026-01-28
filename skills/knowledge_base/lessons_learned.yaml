@@ -2586,3 +2586,106 @@ top_investor_patterns:
     action_taken: "将新模型作为默认筛选模型"
     effectiveness: "回测验证有效"
     priority: "P0"
+
+  # ==========================================================================
+  # 2026-01-28: 层级决策框架 + 估值整合
+  # ==========================================================================
+
+  lesson_116:
+    id: "LL_116"
+    date: "2026-01-28"
+    category: "decision_framework"
+    lesson: "层级决策框架优于加权评分"
+    evidence: |
+      加权评分问题：
+      1. 假设维度可相互补偿（护城河85 + 问题类型40 = 还行？）
+      2. 无法捕捉"压倒性因素"（TSM绝对垄断不是"95分"）
+      3. 分数没有直觉意义（85分意味着什么？）
+
+      层级框架优势：
+      1. 硬性排除不可补偿（结构性问题=直接排除）
+      2. 例外触发器捕捉压倒性因素
+      3. 决策逻辑清晰可解释
+    action_taken: "创建hierarchical_investment_decision_framework_v1.yaml"
+    effectiveness: "逻辑更清晰"
+    priority: "P0"
+
+  lesson_117:
+    id: "LL_117"
+    date: "2026-01-28"
+    category: "decision_framework"
+    lesson: "例外触发器捕捉'显而易见'的机会"
+    evidence: |
+      Druckenmiller的大部分利润来自"显而易见"的机会：
+
+      1. 绝对垄断 + 宏观顺风 (TSM 2024)
+         不是"护城河分数高"，而是"全球唯一先进制程"
+
+      2. 多重修复信号确认 (Teva 2024)
+         5个修复信号同时确认 → 高置信度turnaround
+
+      3. 极端估值 + 业务完好 (DocuSign 2024)
+         从高点跌84%但市场份额不变
+
+      这些机会应该在Level 2直接决策，不需要评分
+    action_taken: "在框架中定义4个例外触发器"
+    investment_implication: "大多数决策应该在Level 0-2完成"
+    priority: "P0"
+
+  lesson_118:
+    id: "LL_118"
+    date: "2026-01-28"
+    category: "valuation"
+    lesson: "好公司 + 好价格 = 好投资"
+    evidence: |
+      即使是"绝对垄断 + 宏观顺风"，估值过高也会损害回报。
+
+      估值整合到层级框架：
+      - Level 1: 估值门（隐含预期是否合理？）
+      - Level 2: 极端估值可触发例外
+      - Level 4: 正向估值用于情景评估
+
+      核心方法：Expectations Investing
+      - 先从价格反推市场预期 (Reverse DCF)
+      - 检查预期是否超过物理上限
+      - 计算expectation_gap
+    action_taken: "整合valuation_engine到hierarchical_framework"
+    investment_implication: "即使最好的机会也需要合理估值"
+    priority: "P0"
+
+  lesson_119:
+    id: "LL_119"
+    date: "2026-01-28"
+    category: "valuation"
+    lesson: "Druckenmiller看的是expectation_gap，不只是'便宜不便宜'"
+    evidence: |
+      TSM 2024:
+      - 市场隐含：收入增长12-15%
+      - Druckenmiller预期：AI需求爆发，增长20-25%
+      - 差异 = 未被price in的增量 → 这就是他+450%的原因
+
+      Teva 2024:
+      - 市场隐含：持续困境，低增长
+      - Druckenmiller预期：诉讼解决+债务下降+Austedo增长
+      - 差异 = 市场没有充分反映turnaround进度
+    action_taken: "将expectation_gap作为估值门的核心检查"
+    investment_implication: "不是'便宜就买'，而是'市场预期什么，我预期什么不同'"
+    priority: "P0"
+
+  lesson_120:
+    id: "LL_120"
+    date: "2026-01-28"
+    category: "framework_design"
+    lesson: "框架之间需要保持同步引用"
+    evidence: |
+      今日更新链：
+      - hierarchical_framework → 主框架
+      - druckenmiller_decision_engine → 引用hierarchical_framework
+      - fallen_angel_framework → 标注评分模型已废弃
+      - valuation_engine → 整合到hierarchical_framework
+      - lessons_learned → 记录所有更新
+
+      如果不同步，会出现框架冲突
+    action_taken: "更新所有相关框架的引用关系"
+    effectiveness: "框架保持一致性"
+    priority: "P1"

@@ -377,15 +377,28 @@ industry_specific_price_drivers:
       buy_signal: "新品类渗透加速 + 估值便宜"
 
 # =============================================================================
-# 综合评分模型 v2.0
+# 综合评分模型 v2.0 [已废弃]
 # =============================================================================
 
 scoring_model_v2:
 
-  description: |
+  # ⚠️ 重要：此评分模型已被层级决策框架取代
+  deprecation_notice: |
+    此加权评分模型已废弃，原因：
+    1. 加权平均假设维度可相互补偿，但投资决策是层级的
+    2. 无法捕捉"压倒性因素"（如TSM的绝对垄断）
+    3. 分数没有直觉意义（85分意味着什么？）
+
+    请使用: hierarchical_investment_decision_framework_v1.yaml
+    该框架使用层级过滤 + 例外触发，而非加权评分
+
+  use_instead: "hierarchical_investment_decision_framework_v1.yaml"
+
+  # 以下保留供参考，不再使用
+  legacy_description: |
     改进后的评分模型，融入Druckenmiller的Turnaround思维
 
-  dimensions:
+  legacy_dimensions:
 
     # 原有维度（调整权重）
     macro_alignment:
