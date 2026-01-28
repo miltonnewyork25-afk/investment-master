@@ -420,9 +420,9 @@ lessons:
 
 # 统计
 statistics:
-  total_lessons: 86
-  meta_insights: 7  # 最顶级经验固化
-  total_knowledge_units: 93  # 86 lessons + 7 meta insights
+  total_lessons: 91
+  meta_insights: 8  # +1 META_000 时间维度盲区反思
+  total_knowledge_units: 99  # 91 lessons + 8 meta insights
   by_category:
     agent_execution: 1
     api_integration: 1
@@ -871,8 +871,34 @@ statistics:
 # ============================================================
 
 meta_insights:
-  description: "跨越具体分析的通用智慧，从55条经验中提炼"
+  description: "跨越具体分析的通用智慧，从86条经验中提炼"
   file_location: "skills/core/meta_insights_v1.yaml"
+
+  insight_0:
+    id: "META_000"
+    name: "时间维度盲区反思"
+    date: "2026-01-28"
+    summary: "空间维度框架完备，但时间维度严重缺失"
+    failure_analysis: |
+      问题：用户问"先发动后发动"，我没有主动构建时序框架
+      根因：
+      1. 维度盲区：框架都是空间维度（跨公司），缺乏时间维度（先后顺序）
+      2. 确定性偏好：时滞是模糊的，我倾向分析确定的东西
+      3. 组合惰性：有AI栈+信号传导+二阶导，但没整合成时序图谱
+      4. 第一性原理缺失：投资=正确时间+正确标的，我只关注后者
+
+    corrective_action: |
+      1. 新增维度检查清单（空间/时间/因果/主体）
+      2. 新增框架组合矩阵
+      3. 新增第一性原理检查（买什么+什么时候+多少+卖点）
+      4. 新增时间词触发器（先/后/顺序/什么时候）
+
+    generalization: |
+      AI的创新失败模式：
+      - 有原材料但不组装
+      - 有框架但不跃迁维度
+      - 回答问题但不发现问题
+      - 响应式思维而非探索式思维
 
   insight_1:
     id: "META_001"
@@ -1674,3 +1700,86 @@ ai_roi_verification_framework:
       verify_date: "2027-01"
       confidence: "55%"
       current_base: "~1M (2025)"
+
+# ============================================================
+# 产业链信号传导框架经验 (LL_087 - LL_091)
+# ============================================================
+
+industry_signal_propagation:
+  id_range: "LL_087 到 LL_091"
+  date: "2026-01-28"
+  total_new: 5
+  file_location: "skills/core/industry_signal_propagation_v1.yaml"
+
+  lesson_087:
+    id: "LL_087"
+    category: "temporal_analysis"
+    lesson: "产业链传导有量化的时滞规律：L1→L2约6个月，L2→L3约9个月，以此类推"
+    framework: |
+      7层传导链：
+      L0 需求原点 (ChatGPT)
+      L1 算力层 (0-6个月) - NVDA
+      L2 制造层 (6-12个月) - ASML/TSM
+      L3 存储层 (9-18个月) - SK Hynix
+      L4 基础设施 (15-24个月) - VRT/ANET
+      L5 定制芯片 (24-36个月) - AVGO
+      L6 应用层 (30-48个月) - NOW
+      L7 AI盈利 (48-72个月) - OpenAI
+    investment_implication: |
+      时滞是alpha来源
+      当L1启动时，布局L2-L3
+      永远领先市场一步
+
+  lesson_088:
+    id: "LL_088"
+    category: "bottleneck_dynamics"
+    lesson: "瓶颈沿供应链迁移：GPU→HBM→电力→网络→应用"
+    evidence: |
+      2023: GPU瓶颈 → NVDA暴涨
+      2024: HBM瓶颈 → SK Hynix暴涨
+      2025: 电力瓶颈 → VRT暴涨
+      2026: 网络瓶颈 → ANET/AVGO
+    investment_implication: |
+      瓶颈迁移 = 资金迁移
+      追踪瓶颈位置 = 追踪投资机会
+
+  lesson_089:
+    id: "LL_089"
+    category: "cross_layer_validation"
+    lesson: "多层信号一致性决定确信度：单层50%、双层70%、三层+90%"
+    investment_implication: "不要只看NVDA收入，要验证ASML订单+HBM价格+电力合同"
+
+  lesson_090:
+    id: "LL_090"
+    category: "reverse_propagation"
+    lesson: "反向传导是风险信号：L7不盈利→L1-L6估值基础动摇"
+    investment_implication: "AI原生公司盈利是整个链条的锚"
+
+  lesson_091:
+    id: "LL_091"
+    category: "meta_innovation"
+    lesson: "创新失败反思：有AI栈+信号传导+二阶导原材料，但未组装成时序图谱"
+    root_cause: |
+      1. 维度盲区：只有空间维度框架，缺乏时间维度
+      2. 确定性偏好：时滞模糊，倾向分析确定事物
+      3. 组合惰性：有框架但不整合
+      4. 响应式而非探索式思维
+    corrective_action: |
+      新增：维度检查清单、框架组合矩阵、第一性原理检查
+    investment_implication: "创新往往来自现有框架的意外组合"
+
+  new_predictions:
+    - id: "PROP_001"
+      statement: "L5定制芯片层2026年跑赢L1算力层"
+      verify_date: "2027-01"
+      confidence: "65%"
+
+    - id: "PROP_002"
+      statement: "2026年底前至少一个瓶颈迁移发生"
+      verify_date: "2027-01"
+      confidence: "75%"
+
+    - id: "PROP_003"
+      statement: "L1-L3合计2026年收益<2025年"
+      verify_date: "2027-01"
+      confidence: "60%"

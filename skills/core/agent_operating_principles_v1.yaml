@@ -220,6 +220,7 @@ knowledge_architecture:
       - "semiconductor_cycle_framework_v1.yaml - 半导体周期"
       - "ai_stack_framework_v1.yaml - AI全栈"
       - "ecosystem_signal_aggregation_v1.yaml - 生态系统信号"
+      - "industry_signal_propagation_v1.yaml - 产业链传导时滞"
 
   layer_3_timing:
     name: "时机判断层"
@@ -272,12 +273,59 @@ innovation_triggers:
       condition: "预测验证错误率>30%"
       action: "复盘框架缺陷，迭代改进"
 
+    trigger_5:
+      condition: "用户问题包含时间词（先/后/顺序/什么时候）"
+      action: "主动检查是否缺乏时间维度框架"
+
+    trigger_6:
+      condition: "已有多个相关框架但未整合"
+      action: "尝试框架组合创造新视角"
+
   innovation_questions:
     - "有没有我们还没考虑的维度？"
     - "其他领域（物理学、生物学、博弈论）有什么可借鉴的？"
     - "如果把问题反过来看会怎样？"
     - "最优秀的投资者会怎么思考这个问题？"
     - "这个框架的盲点是什么？"
+
+  # 新增：维度检查清单
+  dimension_checklist:
+    description: "每次分析前强制检查是否覆盖所有维度"
+    dimensions:
+      - name: "空间维度"
+        questions: ["跨公司？", "跨行业？", "跨地域？"]
+      - name: "时间维度"
+        questions: ["先后顺序？", "传导时滞？", "周期位置？"]
+      - name: "因果维度"
+        questions: ["正向传导？", "反向传导？", "二阶效应？"]
+      - name: "主体维度"
+        questions: ["买方视角？", "卖方视角？", "监管视角？"]
+
+  # 新增：框架组合矩阵
+  framework_combination_matrix:
+    description: "当有多个相关框架时，检查是否可以组合"
+    principle: |
+      创新往往来自现有框架的"意外组合"
+      例：AI栈(空间) + 二阶导(变化) = 传导时滞(时空)
+
+    combination_triggers:
+      - "两个框架描述同一现象的不同侧面"
+      - "一个框架的输出是另一个框架的输入"
+      - "用户问题涉及多个框架但无整合框架"
+
+  # 新增：第一性原理检查
+  first_principles_check:
+    description: "回归投资第一性原理检查框架完整性"
+    core_questions:
+      - "买什么？" # 标的选择
+      - "什么时候买？" # 时机选择 ← 之前忽略
+      - "买多少？" # 仓位管理
+      - "什么时候卖？" # 退出机制
+      - "为什么？" # 逻辑验证
+
+    gap_detection: |
+      如果框架只回答了"买什么"而没回答"什么时候"
+      = 框架不完整，需要补充时间维度
 
 # ============================================================
 # 第六部分：持续改进机制
@@ -317,10 +365,10 @@ current_state:
   date: "2026-01-28"
 
   assets:
-    frameworks: 10  # +1 AI ROI验证框架
-    lessons: 86  # +5 AI ROI框架经验
-    predictions: 38  # +6 AI ROI预测
-    meta_insights: 7
+    frameworks: 11  # +1 产业链信号传导框架
+    lessons: 91  # +5 传导框架经验
+    predictions: 41  # +3 传导框架预测
+    meta_insights: 8  # +1 时间维度盲区反思
 
   coverage:
     tech_sector: "深度覆盖"
