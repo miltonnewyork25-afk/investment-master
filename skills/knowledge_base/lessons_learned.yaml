@@ -420,9 +420,9 @@ lessons:
 
 # 统计
 statistics:
-  total_lessons: 94  # +3 统一决策框架
+  total_lessons: 95  # +1 LL_095 AVGO执行失败
   meta_insights: 8
-  total_knowledge_units: 102  # 94 lessons + 8 meta insights
+  total_knowledge_units: 103  # 95 lessons + 8 meta insights
   by_category:
     agent_execution: 1
     api_integration: 1
@@ -1826,3 +1826,34 @@ unified_decision_framework:
       Q: 要不要卖? → Kill Switch+温度+衰落
       Q: 风险在哪? → ROI泡沫+温度HOT+逆向分析
     investment_implication: "不需要每次跑完整流程，快速路径提升效率25%"
+
+  lesson_095:
+    id: "LL_095"
+    category: "execution_failure"
+    date: "2026-01-28"
+    lesson: "AVGO分析执行失败：4层宏观流程完整，但6个微观分析维度全部遗漏"
+    missing_dimensions:
+      - "产品矩阵分析 - 完全遗漏"
+      - "波特五力分析 - 完全遗漏"
+      - "竞争格局深度 - 只提一句Marvell"
+      - "客户依赖分析 - 未识别Google 2027风险"
+      - "学术/技术视角 - 完全遗漏"
+      - "用户/投资者声音 - 完全遗漏"
+    root_cause: |
+      1. 统一决策框架v1.0只定义了4层宏观流程
+      2. 没有定义微观分析的强制维度
+      3. 有经验教训(LL_017/027/037)但执行时未应用
+      4. 框架执行检查清单不够细致
+    corrective_action: |
+      更新unified_decision_framework到v1.1：
+      - 新增"强制微观分析维度"章节
+      - 定义6个必选维度(产品/五力/竞争/客户/技术/用户)
+      - 设置执行门槛：缺少任何强制维度=报告不合格
+    key_discovery: |
+      Google正在考虑2027年减少对Broadcom依赖
+      与MediaTek合作开发TPU I/O部分
+      这是原分析完全遗漏的最大风险
+    investment_implication: |
+      微观分析比宏观分析更容易遗漏
+      需要强制检查清单而非依赖记忆
+      框架必须同时定义"做什么"和"怎么做"
