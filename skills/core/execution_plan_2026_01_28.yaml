@@ -1,0 +1,507 @@
+# 深度执行计划 v1.0
+# 5大任务 + 反思循环 + 框架升级
+#
+# 设计原则：
+#   1. 先验证后扩展（先确保框架有效）
+#   2. 深度优先于广度（宁可少做，不可浅做）
+#   3. 每个阶段完成后强制反思+升级
+#   4. 复利学习（后一阶段建立在前一阶段洞察之上）
+
+version: "1.0"
+created: "2026-01-28"
+total_phases: 5
+estimated_depth_level: "机构级"
+
+# =============================================================================
+# 执行架构
+# =============================================================================
+
+execution_architecture:
+
+  principle: |
+    每个Phase遵循：
+
+    执行 → 验证 → 反思 → 升级 → 下一Phase
+
+    不是"做完就走"，而是"做完、想透、升级、再走"
+
+  depth_guarantee: |
+    每个Phase必须达到以下深度标准：
+    - 有具体数据支撑（不是泛泛而谈）
+    - 有反证/风险分析（不是一边倒）
+    - 有可证伪假设（可以被验证）
+    - 有框架升级输出（学到了什么）
+
+  compound_learning: |
+    Phase 1的输出 → Phase 2的输入
+    Phase 2的洞察 → Phase 3的改进
+    ...
+    最终：5个Phase的知识互相强化
+
+# =============================================================================
+# Phase 1: 框架验证（用层级框架重新筛选）
+# =============================================================================
+
+phase_1:
+  name: "框架实战验证"
+  priority: "🥇 最高"
+
+  why_first: |
+    框架刚建好，还没实战测试。
+    如果框架有问题，越早发现越好。
+    后续所有工作都依赖框架有效性。
+
+  scope:
+    candidates: ["AMAT", "ASML", "NOW", "KLAC", "CRM", "MU"]
+    framework: "hierarchical_investment_decision_framework_v1.yaml"
+    valuation: "valuation_engine_agent_v1.yaml"
+
+  execution_steps:
+
+    step_1_level_0_screening:
+      action: "对每个候选股运行Level 0硬性排除"
+      output: "排除列表 + 通过列表"
+      depth_requirement: |
+        不只是"通过/不通过"
+        要记录每个检查的具体判断依据
+
+    step_2_level_1_gates:
+      action: "对通过Level 0的股票运行Level 1必要条件门"
+      gates:
+        - "问题可解决？"
+        - "护城河完好？"
+        - "有催化剂？"
+        - "估值合理？（Reverse DCF）"
+        - "风险回报OK？"
+      output: "每个gate的通过/失败 + 具体原因"
+      depth_requirement: |
+        估值门必须运行Reverse DCF：
+        - 提取implied_expectations
+        - 检查是否超过物理上限
+        - 计算expectation_gap
+
+    step_3_level_2_exception:
+      action: "检查是否触发例外"
+      triggers:
+        - "绝对垄断 + 宏观顺风？"
+        - "多重修复信号？"
+        - "极端估值 + 业务完好？"
+      output: "例外触发结果"
+
+    step_4_final_ranking:
+      action: "输出最终排序和决策"
+      output: |
+        对每只股票：
+        - Level 0结果
+        - Level 1各gate结果
+        - Level 2例外检查
+        - 最终决策：强买/买入/观察/避开
+        - 决策理由（一句话）
+
+  reflection_requirements:
+    must_answer:
+      - "层级框架在实际应用中有什么问题？"
+      - "哪些gate判断困难？需要更清晰的标准？"
+      - "Reverse DCF在实操中遇到什么障碍？"
+      - "例外触发器是否太松/太紧？"
+
+    must_output:
+      - "lessons_learned更新（至少2条）"
+      - "框架改进建议（如有）"
+      - "Phase 2的输入（最佳候选股）"
+
+  success_criteria:
+    - "6只候选股全部完成层级评估"
+    - "每只股票有完整的决策链路记录"
+    - "至少识别出1只'强买'或'买入'"
+    - "反思部分不少于500字"
+
+# =============================================================================
+# Phase 2: 深度分析（单只股票完整研究）
+# =============================================================================
+
+phase_2:
+  name: "单股深度研究"
+  priority: "🥈"
+
+  why_second: |
+    Phase 1产出最佳候选后，对其进行完整v11级别分析。
+    这测试的是"整个系统能否产出机构级报告"。
+    深度优先于广度。
+
+  input_from_phase_1: "最佳候选股（预计AMAT或ASML）"
+
+  execution_steps:
+
+    step_1_analyst_landscape:
+      action: "搜索并整理10+位顶级分析师观点"
+      output: |
+        | 分析师 | 机构 | 评级 | 目标价 | 核心论点 | 盲区 |
+      depth_requirement: |
+        不只是罗列观点
+        要识别：
+        - 共识是什么
+        - 分歧在哪里
+        - 谁的框架最好
+        - 市场忽略了什么
+
+    step_2_market_debate:
+      action: "识别市场核心分歧"
+      output: |
+        3-5个核心争议点：
+        - 争议1：[描述] - 多方观点 vs 空方观点
+        - 争议2：...
+      depth_requirement: |
+        每个争议必须：
+        - 有具体数据支撑双方
+        - 有可证伪的验证条件
+        - 有时间节点
+
+    step_3_mechanism_analysis:
+      action: "业务机制深度分析"
+      output: |
+        - 收入驱动因素拆解
+        - 利润率驱动因素
+        - 竞争格局详解
+        - 供应链位置
+        - 周期敏感性
+      depth_requirement: |
+        必须到达Level 3+深度：
+        - 不只说"增长快"，要说"为什么增长"
+        - 不只说"护城河强"，要说"护城河的具体机制"
+
+    step_4_valuation:
+      action: "完整估值分析"
+      components:
+        - "Reverse DCF：市场隐含预期"
+        - "Forward DCF：合理价值区间"
+        - "Expectation Gap分析"
+        - "敏感性分析"
+        - "SOTP（如适用）"
+      output: |
+        - 隐含预期 vs 合理预期对比
+        - 目标价区间 + 概率
+        - 关键假设敏感性
+
+    step_5_investment_thesis:
+      action: "形成投资论点"
+      output: |
+        一页纸论点：
+        - 核心论点（一句话）
+        - 3个支撑证据
+        - 3个风险因素
+        - Kill Switch（什么情况下论点失效）
+        - 时间框架
+
+    step_6_quality_gate:
+      action: "执行质量门控"
+      checklist:
+        - "每个数字有来源标注？"
+        - "分析师全景表完成？"
+        - "市场分歧表完成？"
+        - "SOTP/估值逻辑自洽？"
+        - "有Kill Switch？"
+        - "字数>25000？"
+
+  reflection_requirements:
+    must_answer:
+      - "v11框架在实际应用中哪里最难执行？"
+      - "分析师观点搜索效率如何提升？"
+      - "估值引擎哪里需要改进？"
+      - "报告的哪些部分最有价值？哪些是填充？"
+
+    must_output:
+      - "完整研究报告"
+      - "lessons_learned更新（至少3条）"
+      - "v11框架改进建议"
+      - "估值引擎改进建议"
+
+  success_criteria:
+    - "报告字数>25000"
+    - "质量门控全部通过"
+    - "有明确的投资决策和理由"
+    - "反思部分不少于800字"
+
+# =============================================================================
+# Phase 3: 系统化扫描（Expectation Gap Scanner）
+# =============================================================================
+
+phase_3:
+  name: "Expectation Gap系统化扫描"
+  priority: "🥉"
+
+  why_third: |
+    Phase 1-2验证了框架可以产出高质量分析。
+    现在将其系统化，批量发现机会。
+    从"手动分析"到"半自动化扫描"。
+
+  input_from_phase_2: "验证过的估值方法论"
+
+  execution_steps:
+
+    step_1_define_universe:
+      action: "定义扫描范围"
+      criteria:
+        - "市值>$10B（流动性）"
+        - "非生物制药（第一原则）"
+        - "从52周高点跌幅>30%（有潜在机会）"
+      output: "候选股票池（预计30-50只）"
+
+    step_2_batch_reverse_dcf:
+      action: "批量运行Reverse DCF"
+      for_each_stock:
+        - "提取implied_rev_cagr"
+        - "提取implied_margin"
+        - "与行业上限对比"
+      output: "implied_expectations表"
+
+    step_3_gap_identification:
+      action: "识别expectation gap"
+      method: |
+        对比：
+        - implied_expectations（市场预期）
+        - reasonable_expectations（合理预期）
+
+        如果 reasonable > implied → 潜在低估
+      output: "Gap排序表"
+
+    step_4_hierarchical_filter:
+      action: "对Gap最大的股票运行层级框架"
+      depth: "Level 0-2快速检查"
+      output: "最终机会清单"
+
+    step_5_pattern_analysis:
+      action: "分析哪类股票最容易出现Gap"
+      questions:
+        - "行业分布？"
+        - "下跌原因分类？"
+        - "什么特征的股票Gap最大？"
+      output: "Gap模式洞察"
+
+  reflection_requirements:
+    must_answer:
+      - "批量Reverse DCF的准确率如何？"
+      - "Gap最大的股票有什么共同特征？"
+      - "扫描器漏掉了什么类型的机会？"
+      - "如何提高扫描效率？"
+
+    must_output:
+      - "Expectation Gap扫描结果表"
+      - "Gap模式分析报告"
+      - "lessons_learned更新（至少2条）"
+      - "扫描器改进建议"
+
+  success_criteria:
+    - "扫描30+只股票"
+    - "识别出5+只Gap显著的候选"
+    - "对Top 3运行完整层级框架"
+    - "有模式分析输出"
+
+# =============================================================================
+# Phase 4: 跨投资者验证（逆向工程另一位投资者）
+# =============================================================================
+
+phase_4:
+  name: "跨投资者信号汇合"
+  priority: "4️⃣"
+
+  why_fourth: |
+    Druckenmiller是一个视角。
+    多投资者信号汇合 = 更高置信度。
+    且可以发现"通用规律" vs "个人风格"。
+
+  target_investor: "David Tepper（建议）或 Howard Marks"
+
+  why_tepper: |
+    - 风格与Druckenmiller不同（更激进）
+    - 同样有优秀业绩
+    - 持仓数据公开
+    - 互补视角
+
+  execution_steps:
+
+    step_1_research:
+      action: "深度研究Tepper的投资风格"
+      topics:
+        - "他的信号体系是什么？"
+        - "他的持仓有什么特征？"
+        - "他的买入/卖出时机？"
+        - "他与Druckenmiller的差异？"
+
+    step_2_reverse_engineer:
+      action: "逆向工程Tepper决策函数"
+      using_framework: "investor_reverse_engineering_framework_v1.yaml"
+      output: |
+        Tepper的6维度分析：
+        - D1: 信号检测
+        - D2: 公司向量空间
+        - D3: 时机引擎
+        - D4: 仓位管理
+        - D5: 板块轮动
+        - D6: 风险管理
+
+    step_3_cross_reference:
+      action: "交叉验证"
+      questions:
+        - "Druckenmiller和Tepper同时持有的股票？"
+        - "他们对同一只股票的判断是否一致？"
+        - "信号汇合的股票是否表现更好？"
+
+    step_4_universal_vs_personal:
+      action: "区分通用规律vs个人风格"
+      output: |
+        通用规律（两人都遵循）：
+        - ...
+
+        个人风格（各自独特）：
+        - Druckenmiller: ...
+        - Tepper: ...
+
+  reflection_requirements:
+    must_answer:
+      - "Tepper的核心差异化是什么？"
+      - "什么规律是通用的（跨投资者一致）？"
+      - "什么是个人风格（不可复制）？"
+      - "信号汇合是否提高了准确率？"
+
+    must_output:
+      - "Tepper逆向工程报告"
+      - "跨投资者对比表"
+      - "通用规律提炼"
+      - "lessons_learned更新"
+
+  success_criteria:
+    - "Tepper 6维度分析完成"
+    - "至少找到3只两人共同持有/看好的股票"
+    - "有通用vs个人风格的明确区分"
+
+# =============================================================================
+# Phase 5: 监控系统（被动追踪）
+# =============================================================================
+
+phase_5:
+  name: "实时监控系统"
+  priority: "5️⃣"
+
+  why_last: |
+    前4个Phase产出了分析和决策。
+    Phase 5确保这些分析能持续跟踪验证。
+    从"一次性分析"到"持续监控"。
+
+  execution_steps:
+
+    step_1_signal_dashboard:
+      action: "更新信号监控面板"
+      signals:
+        - "流动性信号（Fed、债券、美元）"
+        - "市场内部信号（广度、领先行业）"
+        - "Druckenmiller持仓变化"
+        - "Tepper持仓变化"
+
+    step_2_prediction_tracker:
+      action: "设置预测验证机制"
+      predictions_to_track:
+        - "DRUCK_PRED_001-007"
+        - "Phase 1-4产出的投资决策"
+      verification_schedule:
+        - "Q2 2026 13F发布时"
+        - "每季度财报后"
+
+    step_3_alert_system:
+      action: "定义触发提醒的条件"
+      alerts:
+        - "流动性信号从CAUTIOUS转POSITIVE"
+        - "目标股票跌幅>10%（加仓机会？）"
+        - "Kill Switch触发条件出现"
+        - "13F披露新持仓"
+
+    step_4_documentation:
+      action: "整理所有输出文档"
+      outputs:
+        - "框架使用指南"
+        - "投资决策记录"
+        - "预测追踪表"
+        - "经验教训汇总"
+
+  reflection_requirements:
+    must_answer:
+      - "整个5 Phase过程中最大的收获是什么？"
+      - "框架的哪些部分最有效？哪些需要改进？"
+      - "如果重做，会怎么做不同？"
+      - "下一步最高价值的工作是什么？"
+
+    must_output:
+      - "监控面板更新"
+      - "预测追踪表"
+      - "5 Phase总结报告"
+      - "框架最终版本"
+
+  success_criteria:
+    - "监控面板包含所有关键信号"
+    - "所有预测都有验证计划"
+    - "有完整的5 Phase总结"
+
+# =============================================================================
+# 执行纪律
+# =============================================================================
+
+execution_discipline:
+
+  between_phases:
+    mandatory_steps:
+      - "更新lessons_learned.yaml"
+      - "检查框架是否需要升级"
+      - "确认下一Phase的输入已准备好"
+      - "记录Phase耗时和产出"
+
+  quality_checkpoints:
+    - checkpoint: "Phase 1完成后"
+      verify: "层级框架是否有效？候选股是否识别？"
+
+    - checkpoint: "Phase 2完成后"
+      verify: "报告是否达到机构级？质量门控是否通过？"
+
+    - checkpoint: "Phase 3完成后"
+      verify: "扫描器是否可复用？Gap分析是否有洞察？"
+
+    - checkpoint: "Phase 4完成后"
+      verify: "跨投资者验证是否增加了信心？"
+
+    - checkpoint: "Phase 5完成后"
+      verify: "监控系统是否可持续运行？"
+
+  anti_patterns:
+    avoid:
+      - "跳过反思直接进入下一Phase"
+      - "为了完成而降低深度标准"
+      - "忽略框架升级机会"
+      - "数据罗列替代分析"
+
+# =============================================================================
+# 预期总产出
+# =============================================================================
+
+expected_total_outputs:
+
+  research_outputs:
+    - "6只候选股的层级评估报告"
+    - "1份机构级深度研究报告（>25000字）"
+    - "Expectation Gap扫描结果（30+只股票）"
+    - "Tepper逆向工程报告"
+    - "监控面板更新"
+
+  framework_outputs:
+    - "层级框架实战验证反馈"
+    - "估值引擎改进建议"
+    - "扫描器工具"
+    - "跨投资者通用规律"
+
+  knowledge_outputs:
+    - "lessons_learned更新（预计10+条）"
+    - "框架版本升级（如需要）"
+    - "5 Phase总结报告"
+
+  investment_outputs:
+    - "可执行的投资决策清单"
+    - "预测追踪计划"
+    - "监控告警设置"
