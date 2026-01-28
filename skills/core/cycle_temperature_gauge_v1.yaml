@@ -1,0 +1,533 @@
+# 周期温度计框架 v1.0
+# Cycle Temperature Gauge Framework
+# 核心理念：通过多维度信号的"二阶导数"实时感知周期水温
+
+version: "1.0"
+created: "2026-01-28"
+purpose: "实时感知AI/半导体周期位置，提供可执行的买卖信号"
+
+# ============================================================
+# 核心洞察：为什么传统方法失败
+# ============================================================
+
+why_traditional_fails:
+  problem_1:
+    name: "滞后性陷阱"
+    description: |
+      传统指标（收入、利润）告诉你"在哪里"
+      但投资需要知道"去哪里"
+
+      示例：
+      - 2000年Q3：半导体收入创新高 → 6个月后暴跌
+      - 2021年Q1：NVDA收入加速 → 已是股价高点
+
+  problem_2:
+    name: "绝对值误导"
+    description: |
+      "ASML backlog €33B创新高" 听起来很好
+      但"backlog覆盖率3年新低"才是真相
+
+      绝对值 vs 相对值 vs 变化率
+
+  problem_3:
+    name: "单一指标盲区"
+    description: |
+      任何单一指标都可能被噪音干扰
+      需要多维度交叉验证
+
+# ============================================================
+# 第一部分：三阶导数分析框架
+# ============================================================
+
+derivative_analysis:
+
+  concept: |
+    位置（Where）: 收入、利润、订单绝对值
+    速度（Velocity）: 同比增速
+    加速度（Acceleration）: 增速的变化 ← 这才是关键
+
+    投资回报 = f(加速度变化方向)
+
+  levels:
+    level_0_position:
+      description: "绝对值，告诉你现在在哪"
+      example: "ASML backlog €33B"
+      investment_value: "低 - 滞后指标"
+
+    level_1_velocity:
+      description: "一阶导数，告诉你增长还是下降"
+      example: "ASML收入+23.8% YoY"
+      investment_value: "中 - 但容易误判"
+
+    level_2_acceleration:
+      description: "二阶导数，告诉你增速在加快还是减慢"
+      example: "ASML收入增速从+35%降至+23.8%（减速）"
+      investment_value: "高 - 拐点早期信号"
+      key_insight: |
+        正一阶 + 负二阶 = 增长在减速 = 周期见顶信号
+        负一阶 + 正二阶 = 下跌在减速 = 周期见底信号
+
+    level_3_jerk:
+      description: "三阶导数，加速度本身在加快还是减慢"
+      example: "减速幅度在加大（-10%→-15%→-25%）"
+      investment_value: "极高 - 最早期信号"
+
+  application_to_current_cycle:
+    asml_example:
+      position: "Backlog €33B（绝对值高）"
+      velocity: "收入增速+23.8%（正，但...）"
+      acceleration: "增速从+35%降至+23.8%（负，减速中）"
+      jerk: "CEO '无法确认2026增长'（加速度可能继续恶化）"
+      signal: "⚠️ CAUTION - 正一阶+负二阶=经典见顶形态"
+
+# ============================================================
+# 第二部分：周期温度计指标体系
+# ============================================================
+
+temperature_gauge:
+
+  reading_scale:
+    0_20:
+      name: "冰冻 (Ice Cold)"
+      phase: "底部/恐慌"
+      characteristics: ["订单暴跌", "利用率<60%", "裁员", "破产传闻"]
+      action: "激进买入"
+
+    20_40:
+      name: "寒冷 (Cold)"
+      phase: "早期复苏"
+      characteristics: ["订单企稳", "利用率回升", "库存下降"]
+      action: "建仓"
+
+    40_60:
+      name: "温和 (Warm)"
+      phase: "中期扩张"
+      characteristics: ["订单增长", "利用率>80%", "扩产计划"]
+      action: "持有"
+
+    60_80:
+      name: "炎热 (Hot)"
+      phase: "晚期繁荣"
+      characteristics: ["订单增速放缓但仍正", "利用率>95%", "产能紧张"]
+      action: "开始减仓"
+
+    80_100:
+      name: "过热 (Overheating)"
+      phase: "峰值/泡沫"
+      characteristics: ["增速二阶导转负", "P/B>8x", "市场极度乐观"]
+      action: "大幅减仓/做空"
+
+  current_reading:
+    date: "2026-01-28"
+    ai_semiconductor_segment:
+      temperature: 68
+      assessment: "炎热区间下沿"
+      key_signals:
+        positive:
+          - "ASML backlog €33B（绝对值高）"
+          - "TSMC先进制程100%利用率"
+          - "Hyperscaler capex仍在增长"
+        warning:
+          - "ASML '无法确认2026增长'"
+          - "收入增速从+35%降至+23.8%（二阶导负）"
+          - "Backlog覆盖率3年新低"
+          - "Capex增速从+73%降至+36%（减速）"
+          - "科技投资/GDP达4.4%（近泡沫峰值）"
+
+# ============================================================
+# 第三部分：10维度温度计指标
+# ============================================================
+
+ten_indicators:
+
+  # === 领先指标组（权重50%）===
+  leading_indicators:
+
+    indicator_1:
+      name: "设备订单增速二阶导"
+      source: "ASML/LRCX季报"
+      calculation: "(本季增速 - 上季增速)"
+      thresholds:
+        hot: "<-5% (增速减慢超过5个百分点)"
+        warm: "-5% to +5%"
+        cold: ">+5% (增速加快超过5个百分点)"
+      current_value: "-11.2% (从+35%到+23.8%)"
+      signal: "🔴 HOT - 显著减速"
+      weight: 15
+
+    indicator_2:
+      name: "Backlog覆盖率变化"
+      source: "ASML季报"
+      calculation: "Backlog / 明年预期收入"
+      thresholds:
+        hot: "<1.0x 且下降"
+        warm: "1.0-1.2x"
+        cold: ">1.2x 且上升"
+      current_value: "约1.0x，3年新低"
+      signal: "🔴 HOT - 覆盖率下降"
+      weight: 10
+
+    indicator_3:
+      name: "管理层语气变化"
+      source: "财报电话会"
+      method: "NLP情绪分析 + 关键词捕捉"
+      key_phrases:
+        bearish: ["cannot confirm", "uncertainty", "cautious", "challenging"]
+        bullish: ["strong demand", "raising guidance", "ahead of expectations"]
+      current_value: "ASML CEO: 'cannot confirm 2026 growth'"
+      signal: "🔴 HOT - 罕见谨慎表态"
+      weight: 10
+
+    indicator_4:
+      name: "Hyperscaler Capex增速二阶导"
+      source: "MSFT/GOOGL/AMZN/META财报"
+      calculation: "(本年capex增速 - 上年capex增速)"
+      thresholds:
+        hot: "<-20% (增速大幅放缓)"
+        warm: "-20% to +10%"
+        cold: ">+10% (增速加快)"
+      current_value: "-37% (从+73%到+36%)"
+      signal: "🔴 HOT - 显著减速"
+      weight: 15
+
+  # === 同步指标组（权重30%）===
+  concurrent_indicators:
+
+    indicator_5:
+      name: "产能利用率"
+      source: "TSM/SK Hynix"
+      thresholds:
+        hot: ">95%（供不应求但接近极限）"
+        warm: "80-95%"
+        cold: "<80%"
+      current_value: "先进制程100%"
+      signal: "🟡 WARM - 高但未过热"
+      weight: 10
+
+    indicator_6:
+      name: "ASP/定价趋势"
+      source: "DRAMeXchange, 行业报告"
+      thresholds:
+        hot: "价格见顶回落"
+        warm: "价格稳定或温和上涨"
+        cold: "价格暴跌"
+      current_value: "HBM供不应求价格坚挺，DRAM预计Q3 2026跌14%"
+      signal: "🟡 WARM - 分化"
+      weight: 10
+
+    indicator_7:
+      name: "库存天数趋势"
+      source: "公司财报"
+      thresholds:
+        hot: "<90天且下降（供不应求）"
+        warm: "90-110天"
+        cold: ">130天且上升（积压）"
+      current_value: "110-120天，正常化"
+      signal: "🟢 COLD - 健康"
+      weight: 10
+
+  # === 估值/情绪指标组（权重20%）===
+  sentiment_indicators:
+
+    indicator_8:
+      name: "半导体P/B比率"
+      source: "SOX Index"
+      thresholds:
+        hot: ">8x（历史泡沫区）"
+        warm: "5-8x"
+        cold: "<5x"
+      historical_peaks: ["2000: 8.8x", "2021: 8.2x"]
+      current_value: "约6.5x"
+      signal: "🟡 WARM - 升高但未到极端"
+      weight: 7
+
+    indicator_9:
+      name: "科技Capex/GDP比率"
+      source: "宏观数据"
+      thresholds:
+        hot: ">4.5%（超过泡沫峰值）"
+        warm: "3.5-4.5%"
+        cold: "<3.5%"
+      dotcom_peak: "4.5%"
+      current_value: "4.4%"
+      signal: "🔴 HOT - 接近泡沫水平"
+      weight: 7
+
+    indicator_10:
+      name: "分析师情绪极端度"
+      source: "卖方报告汇总"
+      method: "Buy/Sell评级分布"
+      thresholds:
+        hot: ">90% Buy评级（极度乐观）"
+        warm: "70-90%"
+        cold: "<70%"
+      current_value: "NVDA约88% Buy"
+      signal: "🟡 WARM - 偏乐观但未极端"
+      weight: 6
+
+# ============================================================
+# 第四部分：温度计算与当前读数
+# ============================================================
+
+temperature_calculation:
+
+  formula: |
+    温度 = Σ(指标信号值 × 权重)
+
+    其中：
+    - 🔴 HOT = 80分
+    - 🟡 WARM = 50分
+    - 🟢 COLD = 20分
+
+  current_calculation:
+    leading_group:
+      - {indicator: "设备订单增速二阶导", signal: "HOT", score: 80, weight: 15, contribution: 12.0}
+      - {indicator: "Backlog覆盖率变化", signal: "HOT", score: 80, weight: 10, contribution: 8.0}
+      - {indicator: "管理层语气变化", signal: "HOT", score: 80, weight: 10, contribution: 8.0}
+      - {indicator: "Hyperscaler Capex二阶导", signal: "HOT", score: 80, weight: 15, contribution: 12.0}
+
+    concurrent_group:
+      - {indicator: "产能利用率", signal: "WARM", score: 50, weight: 10, contribution: 5.0}
+      - {indicator: "ASP/定价趋势", signal: "WARM", score: 50, weight: 10, contribution: 5.0}
+      - {indicator: "库存天数趋势", signal: "COLD", score: 20, weight: 10, contribution: 2.0}
+
+    sentiment_group:
+      - {indicator: "半导体P/B比率", signal: "WARM", score: 50, weight: 7, contribution: 3.5}
+      - {indicator: "科技Capex/GDP比率", signal: "HOT", score: 80, weight: 7, contribution: 5.6}
+      - {indicator: "分析师情绪极端度", signal: "WARM", score: 50, weight: 6, contribution: 3.0}
+
+    total_temperature: 64.1
+    zone: "炎热区间下沿 (60-80)"
+
+# ============================================================
+# 第五部分：信号优先级与行动矩阵
+# ============================================================
+
+signal_priority:
+
+  hierarchy: |
+    1. 二阶导信号 > 一阶导信号 > 绝对值
+    2. 领先指标 > 同步指标 > 滞后指标
+    3. 多指标一致 > 单指标
+
+  divergence_rules:
+    rule_1:
+      name: "绝对值强但增速放缓"
+      interpretation: "经典见顶形态"
+      example: "Backlog €33B高 + 增速-11% = 顶部信号"
+      action: "开始减仓"
+
+    rule_2:
+      name: "增速负但加速度转正"
+      interpretation: "底部形成中"
+      example: "收入-20% + 降幅收窄(-25%→-20%→-15%) = 见底信号"
+      action: "开始建仓"
+
+    rule_3:
+      name: "领先指标与同步指标背离"
+      interpretation: "等待确认"
+      example: "设备订单减速 vs 利用率仍高 = 需要更多数据"
+      action: "观望，不加仓"
+
+  action_matrix:
+    temperature_above_70:
+      action: "减仓至标配以下"
+      specific: |
+        - 周期股（LRCX, AMAT）减仓30-50%
+        - 保留结构性增长股（TSM, AVGO部分仓位）
+        - 增加现金比例
+
+    temperature_60_70:
+      action: "停止加仓，开始防御"
+      specific: |
+        - 不追高
+        - 设置止损
+        - 关注Kill Switch
+
+    temperature_40_60:
+      action: "正常持仓"
+      specific: |
+        - 按计划投资
+        - 定期复查温度
+
+    temperature_below_40:
+      action: "积极加仓"
+      specific: |
+        - 周期股是重点
+        - 恐慌时贪婪
+
+# ============================================================
+# 第六部分：实时监控清单
+# ============================================================
+
+monitoring_checklist:
+
+  weekly:
+    - item: "半导体库存数据"
+      source: "行业报告"
+    - item: "DRAM/NAND价格"
+      source: "DRAMeXchange"
+    - item: "卖方评级变化"
+      source: "Bloomberg"
+
+  monthly:
+    - item: "设备商订单数据"
+      source: "ASML/LRCX月度更新（如有）"
+    - item: "TSMC月度收入"
+      source: "TSM月度公告"
+    - item: "Hyperscaler招聘数据"
+      source: "LinkedIn分析"
+
+  quarterly:
+    - item: "完整温度计计算"
+      action: "更新所有10个指标"
+    - item: "管理层语气分析"
+      action: "财报电话会NLP"
+    - item: "二阶导趋势"
+      action: "更新增速变化"
+
+  trigger_events:
+    - event: "ASML订单公布"
+      action: "立即更新指标1-3"
+    - event: "Hyperscaler财报"
+      action: "立即更新指标4"
+    - event: "CEO发出警告"
+      action: "触发紧急评估"
+
+# ============================================================
+# 第七部分：历史周期对比
+# ============================================================
+
+historical_analogs:
+
+  cycle_2000:
+    peak_signals:
+      - "订单创新高后增速放缓"
+      - "估值P/B达8.8x"
+      - "科技投资/GDP创新高"
+    outcome: "暴跌70%+"
+    current_similarity: "60%（capex/GDP接近，但P/B未到极端）"
+
+  cycle_2018:
+    peak_signals:
+      - "设备订单5月见顶"
+      - "中美贸易战担忧"
+      - "Memory价格见顶"
+    outcome: "跌30-40%"
+    current_similarity: "70%（地缘政治类似，Memory分化）"
+
+  cycle_2021:
+    peak_signals:
+      - "P/B达8.2x"
+      - "芯片短缺但已开始缓解"
+      - "通胀担忧升温"
+    outcome: "跌30-50%"
+    current_similarity: "65%（AI需求是新变量）"
+
+  current_unique_factors:
+    bullish:
+      - "AI是结构性而非周期性需求"
+      - "HBM供不应求持续到2027"
+      - "没有明显的外部冲击"
+    bearish:
+      - "增速二阶导已转负"
+      - "Capex/GDP接近泡沫水平"
+      - "ASML CEO罕见发出警告"
+
+# ============================================================
+# 第八部分：关键洞察与行动建议
+# ============================================================
+
+key_insights:
+
+  insight_1:
+    name: "二阶导是最重要的信号"
+    content: |
+      绝对值高 ≠ 安全
+      增速正 ≠ 安全
+      增速在加快 = 安全（暂时）
+      增速在放缓 = 危险信号
+
+      当前状态：多个关键指标增速放缓
+      - ASML收入增速：+35% → +23.8%（二阶导-11%）
+      - Hyperscaler capex增速：+73% → +36%（二阶导-37%）
+
+  insight_2:
+    name: "CEO语气是最诚实的领先指标"
+    content: |
+      CEO有激励乐观（推高股价）
+      当CEO主动发出警告时，情况比表面更严重
+
+      ASML CEO Fouquet: "我们仍在为2026增长做准备，
+      但在此阶段我们无法确认"
+
+      这是"金丝雀进入矿井"信号
+
+  insight_3:
+    name: "当前温度64，处于关键转折区"
+    content: |
+      - 不是见顶（还没到80+）
+      - 也不是安全区（已超过60）
+      - 最危险的是"温水煮青蛙"
+
+      行动：
+      - 停止追加仓位
+      - 设置止损
+      - 密切监控二阶导变化
+
+  insight_4:
+    name: "分化将加剧"
+    content: |
+      不是所有AI股都一样：
+      - 周期性强（LRCX, AMAT）→ 更早感受压力
+      - 结构性强（TSM, AVGO）→ 更有韧性
+      - 基础设施（VRT, ANET）→ 滞后于芯片
+
+current_action_recommendation:
+  date: "2026-01-28"
+  temperature: 64
+  zone: "炎热区间下沿"
+
+  immediate_actions:
+    - "停止追高任何AI/半导体股"
+    - "设置10-15%止损位"
+    - "将周期股仓位降至标配"
+    - "保留结构性增长股（TSM, AVGO）"
+
+  watch_for:
+    escalation_triggers:
+      - "ASML下季订单<€4B → 温度+10"
+      - "任一Hyperscaler下调capex指引 → 温度+5"
+      - "Memory价格提前下跌 → 温度+5"
+
+    de_escalation_triggers:
+      - "ASML确认2026增长 → 温度-10"
+      - "Hyperscaler提高capex指引 → 温度-5"
+      - "新AI应用爆发（Agent等）→ 温度-5"
+
+# ============================================================
+# 第九部分：可验证预测
+# ============================================================
+
+verifiable_predictions:
+
+  prediction_1:
+    id: "TEMP_001"
+    statement: "周期温度计将在2026 Q2-Q3达到70+（炎热区间）"
+    verification_date: "2026-09"
+    confidence: "60%"
+    logic: "二阶导趋势延续"
+
+  prediction_2:
+    id: "TEMP_002"
+    statement: "ASML 2026全年订单增速<2025年"
+    verification_date: "2027-01"
+    confidence: "70%"
+    logic: "CEO警告+backlog覆盖率下降"
+
+  prediction_3:
+    id: "TEMP_003"
+    statement: "周期股（LRCX, AMAT）2026表现弱于结构股（TSM, AVGO）"
+    verification_date: "2027-01"
+    confidence: "65%"
+    logic: "周期敏感度差异"

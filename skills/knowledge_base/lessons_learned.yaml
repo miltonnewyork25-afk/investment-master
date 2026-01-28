@@ -1202,3 +1202,128 @@ ai_stack_framework:
       statement: "Hyperscaler AI capex 2026增速>40%"
       verify_date: "2027-02"
       confidence: "70%"
+
+# ============================================================
+# 周期温度计框架经验 (LL_065 - LL_070)
+# ============================================================
+
+cycle_temperature_gauge:
+  id_range: "LL_065 到 LL_070"
+  date: "2026-01-28"
+  total_new: 6
+  file_location: "skills/core/cycle_temperature_gauge_v1.yaml"
+
+  lesson_065:
+    id: "LL_065"
+    category: "cycle_analysis"
+    lesson: "二阶导数是周期分析最重要的信号：增速放缓比增速转负更早预警"
+    evidence: |
+      传统方法失败原因：
+      - 绝对值滞后
+      - 一阶导(增速)仍可误导
+
+      二阶导真相：
+      - ASML收入增速：+35% → +23.8%（二阶导-11%）
+      - Hyperscaler capex增速：+73% → +36%（二阶导-37%）
+
+      正一阶 + 负二阶 = 经典见顶形态
+    investment_implication: |
+      监控增速的变化，而非增速本身
+      当增速开始放缓（即使仍为正），是减仓信号
+
+  lesson_066:
+    id: "LL_066"
+    category: "leading_indicator"
+    lesson: "CEO语气是最诚实的领先指标：当CEO主动发出警告，情况比表面更严重"
+    evidence: |
+      ASML CEO Fouquet (2025.07):
+      "我们仍在为2026增长做准备，但在此阶段我们无法确认"
+
+      CEO有激励乐观（推高股价）
+      主动发出警告 = 信号极强
+      被称为"金丝雀进入矿井"
+    investment_implication: |
+      建立管理层语气追踪机制
+      关键词："cannot confirm", "uncertainty", "cautious"
+      出现即触发警戒
+
+  lesson_067:
+    id: "LL_067"
+    category: "valuation_signal"
+    lesson: "Capex/GDP比率4.4%接近泡沫峰值（2000年为4.5%），是宏观过热信号"
+    evidence: |
+      历史对比：
+      - 2000年科技泡沫：4.5%
+      - 2008年：3.2%
+      - 当前2026年：4.4%
+
+      同时：Hyperscaler折旧$400B > 合计利润
+    investment_implication: |
+      宏观估值指标已发出警告
+      不是说立即崩盘，但上涨空间有限
+
+  lesson_068:
+    id: "LL_068"
+    category: "cycle_methodology"
+    lesson: "多指标交叉验证：10维度温度计比单一指标更可靠"
+    framework: |
+      领先指标组（50%权重）：
+      1. 设备订单增速二阶导
+      2. Backlog覆盖率变化
+      3. 管理层语气变化
+      4. Hyperscaler Capex二阶导
+
+      同步指标组（30%权重）：
+      5. 产能利用率
+      6. ASP/定价趋势
+      7. 库存天数趋势
+
+      情绪指标组（20%权重）：
+      8. 半导体P/B比率
+      9. 科技Capex/GDP比率
+      10. 分析师情绪极端度
+    investment_implication: |
+      单一指标可能噪音大
+      多指标一致才行动
+
+  lesson_069:
+    id: "LL_069"
+    category: "current_assessment"
+    lesson: "当前周期温度64（炎热区间下沿）：不是顶部但已进入危险区"
+    assessment: |
+      温度64意味着：
+      - 不是见顶（还没到80+）
+      - 也不是安全区（已超过60）
+      - 最危险的是"温水煮青蛙"
+
+      4个HOT信号：
+      - 设备订单增速二阶导
+      - Backlog覆盖率下降
+      - 管理层语气谨慎
+      - Hyperscaler capex增速二阶导
+    investment_implication: |
+      立即行动：
+      - 停止追高
+      - 设置止损
+      - 周期股减至标配
+      - 保留结构性增长股
+
+  lesson_070:
+    id: "LL_070"
+    category: "historical_analog"
+    lesson: "当前与2018年周期相似度70%：地缘政治风险+Memory分化"
+    comparison: |
+      2018年相似点：
+      - 设备订单见顶后回落
+      - 中美贸易战担忧（现为关税威胁）
+      - Memory价格分化
+
+      2018年结果：跌30-40%
+
+      当前不同点：
+      - AI是结构性需求（非周期性）
+      - HBM供不应求持续
+      - 没有明显外部冲击
+    investment_implication: |
+      准备30-40%回调的可能性
+      但AI结构性需求可能缓冲下跌幅度
