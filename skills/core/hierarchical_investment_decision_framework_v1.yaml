@@ -132,7 +132,45 @@ hierarchical_decision_framework:
         fail_condition: "无可见催化剂"
         fail_action: "移至观察名单（时间陷阱风险）"
 
-      gate_4_risk_reward:
+      gate_4_valuation_gate:
+        question: "估值是否提供足够安全边际？"
+        integration: "valuation_engine_agent_v1.yaml"
+
+        sub_checks:
+          implied_expectations_reasonable:
+            question: "市场隐含预期是否合理？"
+            method: "Reverse DCF提取implied_expectations"
+            check_items:
+              - "implied_rev_cagr vs 行业增速上限"
+              - "implied_margin vs 行业利润率上限"
+              - "implied_fade_years vs 合理CAP"
+            fail_if: "隐含预期超过物理上限"
+            example: |
+              如果市场隐含预期是：
+              - 收入年增长30%持续15年
+              - 利润率达到50%
+              这可能超过物理可能性 → 估值过高
+
+          expectation_gap_favorable:
+            question: "expectation gap是否有利？"
+            method: "比较implied vs forward valuation"
+            pass_if: "implied < forward (市场预期低于合理价值)"
+            fail_if: "implied > forward (市场预期过高)"
+            example: |
+              TSM 2024:
+              - 市场隐含：收入增长15%，利润率25%
+              - 合理预期：收入增长25%（AI需求），利润率30%
+              - Gap = 正向 → 低估
+
+          sensitivity_acceptable:
+            question: "估值对假设是否过于敏感？"
+            method: "敏感性分析"
+            pass_if: "WACC/terminal_g小变化不导致巨大价值波动"
+            fail_if: "fragile = true（小扰动导致>30%价值变化）"
+
+        fail_action: "估值过高 → 观察名单，等待更好价格"
+
+      gate_5_risk_reward:
         question: "风险回报是否有吸引力？"
         pass_condition: "上行空间 > 下行风险 × 2"
         fail_condition: "风险回报不对称不足"
@@ -211,13 +249,27 @@ hierarchical_decision_framework:
           - "市场份额/竞争地位无变化"
           - "问题是情绪性/短期性的"
 
+        valuation_engine_integration:
+          method: "用Reverse DCF验证是否真的低估"
+          check: |
+            运行valuation_engine:
+            1. 提取implied_expectations
+            2. 检查隐含预期是否过于悲观
+            3. 如果市场隐含"收入负增长"但业务实际稳定 → 真低估
+            4. 如果市场隐含"正常增长"且已经反映 → 不是极端低估
+
         docusign_example:
           situation: "2024年的DocuSign"
-          analysis: |
+          price_analysis: |
             - 从$314跌到$50（-84%）
             - 市场份额仍然~2/3（领导地位不变）
             - 净利率36.5%（业务很健康）
             - 跌的原因是"增长放缓"，不是"被颠覆"
+          valuation_analysis: |
+            Reverse DCF隐含预期：
+            - 隐含收入增长：5-7%（vs实际10%+）
+            - 隐含利润率：30%（vs实际36.5%）
+            - 市场过于悲观 → expectation_gap有利
 
         decision: "买入"
 
@@ -368,6 +420,8 @@ decision_flowchart:
     │  ├─ 问题可解决？ ───── 否 ─────────────────────────→ 观察名单   │
     │  ├─ 护城河完好？ ───── 否 ─────────────────────────→ 观察名单   │
     │  ├─ 有催化剂？ ─────── 否 ─────────────────────────→ 观察名单   │
+    │  ├─ 估值合理？ ─────── 否 ─────────────────────────→ 等待更好价格│
+    │  │    (Reverse DCF: 隐含预期是否合理？)                          │
     │  └─ 风险回报OK？ ──── 否 ─────────────────────────→ 观察名单    │
     └───────────────────────────────┬─────────────────────────────────┘
                                     │ 全部通过
@@ -441,6 +495,22 @@ tsm_2024_case_study:
       problem_solvability: "无问题需要解决"
       moat_intact: "绝对完好"
       catalyst_exists: "AI需求爆发"
+      valuation_gate:
+        reverse_dcf_analysis: |
+          2024年Q2 TSM股价约$150，PE 25x
+
+          Reverse DCF隐含预期：
+          - 隐含收入增长: 12-15% (5年)
+          - 隐含利润率: 40%
+          - 隐含CAP: 10年
+
+          合理预期（考虑AI需求）：
+          - 实际收入增长: 20-25%（AI芯片爆发）
+          - 实际利润率: 45%+（先进制程议价能力）
+          - 合理CAP: 15年（技术领先3年+）
+
+          Expectation Gap: 正向（市场低估AI增量）
+        result: "估值合理，隐含预期保守 ✅"
       risk_reward: "极佳"
       result: "通过 ✅"
 
@@ -549,3 +619,138 @@ operational_guide:
     - TSM的绝对垄断（Level 2触发）
     - Teva的多重修复信号（Level 2触发）
     - 流动性体制转变（Level 2触发）
+
+# =============================================================================
+# 估值引擎整合
+# =============================================================================
+
+valuation_integration:
+
+  reference: "skills/valuation_engine/valuation_engine_agent_v1.yaml"
+
+  core_principle: |
+    即使是"绝对垄断+宏观顺风"的公司，估值过高也会损害回报。
+    好公司 ≠ 好投资
+    好公司 + 好价格 = 好投资
+
+  how_valuation_fits_in_hierarchy:
+
+    level_1_valuation_gate:
+      role: "必要条件门之一"
+      question: "市场隐含预期是否合理？"
+      method: |
+        1. 运行Reverse DCF提取implied_expectations
+        2. 检查隐含预期vs物理上限
+        3. 计算expectation_gap (implied vs forward)
+        4. 评估敏感性/脆弱性
+      pass_if:
+        - "隐含预期 ≤ 物理上限"
+        - "expectation_gap ≥ 0 (市场低估或合理估)"
+        - "非fragile（小扰动不导致大波动）"
+      fail_if:
+        - "隐含预期 > 物理上限（需要奇迹才能justify当前价格）"
+        - "expectation_gap < -30%（市场过度乐观）"
+      fail_action: "等待更好价格"
+
+    level_2_valuation_exception:
+      role: "例外触发器之一"
+      trigger_name: "极端估值 + 业务完好"
+      check_method: |
+        如果股票从高点跌70%+，运行Reverse DCF：
+        - 市场隐含预期是否过于悲观？
+        - 隐含的是负增长或极低增长？
+        - 但业务实际表现正常或良好？
+        如果是 → 真正的低估，触发例外
+
+    level_4_valuation_scoring:
+      role: "情景内评估的一部分"
+      note: "只有在没有例外触发时才到这里"
+      method: "使用forward valuation计算合理价值区间"
+
+  expectations_investing_framework:
+
+    step_1_price_first:
+      description: "先读价格，后讲故事"
+      action: "用Reverse DCF从当前价格反推市场隐含预期"
+      output:
+        - implied_rev_cagr
+        - implied_target_margin
+        - implied_fade_years (CAP)
+        - implied_terminal_g
+
+    step_2_reality_check:
+      description: "隐含预期是否现实？"
+      checks:
+        - "implied_rev_cagr vs 行业历史增速上限"
+        - "implied_margin vs 行业利润率上限"
+        - "implied_fade_years vs 合理竞争优势期"
+      if_exceeded: "市场预期过高，估值不合理"
+
+    step_3_forward_valuation:
+      description: "正向计算公司应值多少"
+      methods:
+        - "DCF/FCFF（非金融公司）"
+        - "Residual Income（金融公司）"
+        - "Normalized Earnings（周期股）"
+        - "SOTP（多业务）"
+
+    step_4_reconciliation:
+      description: "对比implied vs forward"
+      output: "expectation_gap"
+      interpretation:
+        positive_gap: "市场低估 → 潜在机会"
+        zero_gap: "市场合理定价"
+        negative_gap: "市场高估 → 等待"
+
+  valuation_red_flags:
+    - flag: "隐含增长率 > 行业历史最高"
+      interpretation: "市场预期奇迹"
+      action: "避开或等待"
+
+    - flag: "隐含CAP > 20年"
+      interpretation: "市场假设永久竞争优势"
+      action: "质疑假设是否合理"
+
+    - flag: "fragile = true"
+      interpretation: "估值对假设极度敏感"
+      action: "降低置信度，减小仓位"
+
+    - flag: "expectation_gap < -30%"
+      interpretation: "市场过度乐观"
+      action: "等待更好价格"
+
+  valuation_green_lights:
+    - signal: "隐含预期 < 保守估计"
+      interpretation: "市场过于悲观"
+      action: "潜在买入机会"
+
+    - signal: "implied_roiic < WACC 但业务实际ROIC > WACC"
+      interpretation: "市场低估盈利能力"
+      action: "潜在买入机会"
+
+    - signal: "跌幅70%+ 但隐含的是正常业务"
+      interpretation: "情绪驱动下跌，非基本面"
+      action: "Fallen Angel机会"
+
+  integration_with_druckenmiller_framework:
+
+    key_insight: |
+      Druckenmiller不只看"便宜不便宜"。
+      他看的是"市场预期什么，而我预期什么不同"。
+
+      如果市场已经price in了所有好消息 → 不买
+      如果市场没有price in我看到的增量 → 买入
+
+    tsm_example: |
+      2024年Q2 TSM:
+      - 市场隐含：收入增长12-15%
+      - Druckenmiller预期：AI需求爆发，增长20-25%
+      - 差异 = 未被price in的增量
+      - 这就是他+450%的原因
+
+    teva_example: |
+      2024年Q3 Teva:
+      - 市场隐含：持续困境，低增长
+      - Druckenmiller预期：诉讼解决+债务下降+Austedo增长
+      - 差异 = 市场没有充分反映turnaround进度
+      - PE 5x提供了极大的安全边际
