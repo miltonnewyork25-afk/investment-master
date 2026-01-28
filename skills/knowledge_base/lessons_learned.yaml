@@ -624,14 +624,44 @@ new_predictions_20260128_v2:
     confidence: "60%"
     rationale: "内部目标H2 2026，但可能延迟"
 
+# 投资者行为模式预测 (PROP_011-014)
+investor_pattern_predictions:
+  - id: "PROP_011"
+    statement: "TSM 2026年跑赢NVDA（价格回报）"
+    verify_date: "2027-01"
+    confidence: "65%"
+    rationale: "Druckenmiller+Tepper+Wood共识信号"
+    source: "top_investor_database_v1.yaml"
+
+  - id: "PROP_012"
+    statement: "AVGO在2026年经历>20%回调"
+    verify_date: "2027-01"
+    confidence: "55%"
+    rationale: "Tepper清仓+Druckenmiller减持信号"
+    source: "top_investor_database_v1.yaml"
+
+  - id: "PROP_013"
+    statement: "Buffett继续减持AAPL至<25%仓位"
+    verify_date: "2026-06"
+    confidence: "60%"
+    rationale: "已从50%降至30%，趋势延续"
+    source: "top_investor_database_v1.yaml"
+
+  - id: "PROP_014"
+    statement: "HBM主题股（SK Hynix、LRCX）2026年H1跑赢大盘"
+    verify_date: "2026-07"
+    confidence: "70%"
+    rationale: "Loeb新建仓SK Hynix信号"
+    source: "top_investor_database_v1.yaml"
+
 # 统计
 statistics:
-  total_lessons: 103  # +4 (LL_100-103 预测验证)
+  total_lessons: 107  # +4 (LL_104-107 投资者行为模式)
   meta_insights: 8
-  predictions: 51  # +4 新预测 (47+4)
+  predictions: 55  # +4 新预测 (51+4)
   predictions_validated: 27
   prediction_accuracy: "88%"
-  total_knowledge_units: 111  # 103 lessons + 8 meta insights
+  total_knowledge_units: 115  # 107 lessons + 8 meta insights
   by_category:
     agent_execution: 1
     api_integration: 1
@@ -2066,3 +2096,81 @@ unified_decision_framework:
       微观分析比宏观分析更容易遗漏
       需要强制检查清单而非依赖记忆
       框架必须同时定义"做什么"和"怎么做"
+
+# ============================================================
+# 顶级投资者行为模式经验 (LL_104 - LL_107)
+# ============================================================
+
+top_investor_patterns:
+  id_range: "LL_104 到 LL_107"
+  date: "2026-01-28"
+  total_new: 4
+  data_source: "top_investor_database_v1.yaml"
+
+  lesson_104:
+    id: "LL_104"
+    category: "investor_consensus"
+    lesson: "TSM是顶级投资者的最大公约数：Druckenmiller+450%、Tepper+280%、Wood新建仓"
+    evidence: |
+      三位风格迥异的投资者同时增持TSM：
+      - Druckenmiller (Macro): +450%增持
+      - Tepper (Event-driven): +280%增持
+      - Wood (Disruptive Innovation): 新建仓$6M
+
+      风格差异极大却达成共识，信号强度极高
+    investment_implication: |
+      当不同风格投资者达成共识时，信号可信度显著提升
+      TSM可能是当前风险调整后最佳AI基础设施标的
+      地缘政治风险可能被市场过度定价
+
+  lesson_105:
+    id: "LL_105"
+    category: "investor_divergence"
+    lesson: "NVDA和AVGO的顶级投资者分歧是重要信号：Tepper增持6x vs Druckenmiller清仓"
+    evidence: |
+      NVDA分歧：
+      - Bulls: Tepper 6x增持至190万股, Loeb $442M
+      - Bears: Druckenmiller全部清仓, Howard Marks警告
+
+      AVGO分歧：
+      - Bulls: Wood买入$50M
+      - Bears: Tepper清仓, Druckenmiller减持
+    investment_implication: |
+      顶级投资者分歧 = 高波动预期
+      分歧大的标的适合交易而非持仓
+      NVDA可能是高beta交易标的而非核心持仓
+
+  lesson_106:
+    id: "LL_106"
+    category: "contrarian_signal"
+    lesson: "Buffett $320B现金仓位是市场估值的逆向指标"
+    evidence: |
+      历史上Buffett高现金仓位的timing：
+      - 1999年：高现金 → 2000年科技泡沫破裂
+      - 2007年：高现金 → 2008年金融危机
+      - 2025年：$320B+ (历史最高)
+
+      同时：持续减持AAPL从50%降至~30%
+    investment_implication: |
+      Buffett现金仓位是宏观警示信号
+      不是立即卖出信号，但需要提高警惕
+      考虑保持10-15%现金防守
+
+  lesson_107:
+    id: "LL_107"
+    category: "investment_style_insight"
+    lesson: "平台层 vs 硬件层的选择反映风险偏好：机构偏好通过MSFT/GOOGL间接投资AI"
+    evidence: |
+      平台派（避开芯片）：
+      - Ackman: 48%在Mag 7，不直接买芯片
+      - Coleman: 40%在Mag 7，MSFT 10.5%
+      - Buffett: 买GOOGL $4.3B，不碰芯片
+
+      硬件派（直接买芯片）：
+      - Tepper: NVDA第一大持仓
+      - Wood: AVGO $50M
+      - Druckenmiller: TSM +450%
+    investment_implication: |
+      平台层=间接暴露+低波动+可能错过最大涨幅
+      硬件层=直接暴露+高波动+周期风险
+      风险偏好决定选择，没有绝对对错
