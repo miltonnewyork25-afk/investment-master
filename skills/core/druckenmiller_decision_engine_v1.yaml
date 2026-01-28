@@ -411,9 +411,81 @@ predictions_tracking:
       confidence: "75%"
       reasoning: "他的核心逻辑是流动性驱动"
 
+    # 2026-01-28 筛选引擎新增预测
+    - id: "DRUCK_PRED_005"
+      date: "2026-01-28"
+      prediction: "Druckenmiller会新建REGN仓位"
+      confidence: "65%"
+      verify_date: "2026-Q2 13F"
+      reasoning: |
+        筛选引擎得分83.8（第2名）
+        - 医疗创新是当前重点主题（30%+医疗敞口）
+        - PE 18.5x是医疗大盘股最低估值之一
+        - 与Natera类似的技术驱动逻辑
+      screening_data:
+        score: 83.8
+        pe: 18.5
+        roe: "15.3%"
+        roic: "9.2%"
+
+    - id: "DRUCK_PRED_006"
+      date: "2026-01-28"
+      prediction: "Druckenmiller会新建AMAT仓位"
+      confidence: "55%"
+      verify_date: "2026-Q2 13F"
+      reasoning: |
+        筛选引擎得分83.0（第3名）
+        - 半导体设备是AI基础设施核心
+        - 比ASML估值更合理
+        - GAA/先进封装是新增长引擎
+      screening_data:
+        score: 83.0
+        pe: 38.4
+        roe: "36.1%"
+        roic: "22.0%"
+
+    - id: "DRUCK_PRED_007"
+      date: "2026-01-28"
+      prediction: "Druckenmiller会新建VRTX仓位"
+      confidence: "50%"
+      verify_date: "2026-Q2 13F"
+      reasoning: |
+        筛选引擎得分82.3（第4名）
+        - CF治疗垄断地位
+        - 类似Natera：技术壁垒+医保依赖
+        - 稳定增长，非周期性
+      screening_data:
+        score: 82.3
+        pe: 33.3
+        roe: "21.8%"
+        roic: "16.2%"
+
   prediction_validation_log:
-    total: 4
+    total: 7
     verified: 0
     correct: 0
-    pending: 4
+    pending: 7
     accuracy: "待验证"
+
+  # 筛选引擎运行记录
+  screening_runs:
+    - date: "2026-01-28"
+      candidates_screened: 12
+      top_picks:
+        - symbol: "ASML"
+          score: 87.9
+          action: "回调买入"
+        - symbol: "REGN"
+          score: 83.8
+          action: "强买"
+        - symbol: "AMAT"
+          score: 83.0
+          action: "买入"
+        - symbol: "VRTX"
+          score: 82.3
+          action: "买入"
+        - symbol: "NOW"
+          score: 81.5
+          action: "回调买入"
+      liquidity_signal: "CAUTIOUS (45/100)"
+      recommendation: "不追高，分批建仓，优先低估值标的"
