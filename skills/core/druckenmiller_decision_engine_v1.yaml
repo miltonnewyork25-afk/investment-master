@@ -1,0 +1,419 @@
+# Druckenmiller Decision Engine v1.0
+# 基于逆向工程的决策预测引擎
+#
+# 核心功能：
+#   1. 预测Druckenmiller下一步会买什么
+#   2. 识别"Druckenmiller类型"的股票
+#   3. 预测他何时会卖出当前持仓
+#   4. 实时信号监控
+
+version: "1.0"
+created: "2026-01-28"
+data_sources: "[搜索] 13F分析、投资者访谈、历史交易模式"
+
+# =============================================================================
+# 决策函数还原
+# =============================================================================
+
+decision_function:
+
+  formula: |
+    Druckenmiller_Decision = f(
+      Liquidity_Signal,        # 40%权重
+      Company_Vector_Score,    # 30%权重
+      Technical_Confirmation,  # 15%权重
+      Timing_Catalyst,         # 10%权重
+      Conviction_State         # 5%权重 (他是否处于"热手"状态)
+    )
+
+  decision_outcomes:
+    strong_buy: "Score > 85 且 Liquidity_Signal = Positive"
+    buy: "Score > 70 且 Liquidity_Signal ≠ Negative"
+    hold: "60 < Score < 70 或等待催化剂"
+    avoid: "Score < 60 或 Liquidity_Signal = Negative"
+    sell: "论点改变 或 产能扩张信号 或 估值过度扩张"
+
+# =============================================================================
+# 实时信号监控面板
+# =============================================================================
+
+current_signals_dashboard:
+
+  last_updated: "2026-01-28"
+
+  # ---------------------------------------------------------------------------
+  # 流动性信号（最重要）
+  # ---------------------------------------------------------------------------
+  liquidity_signals:
+    overall_status: "CAUTIOUS"  # POSITIVE / NEUTRAL / CAUTIOUS / NEGATIVE
+
+    indicators:
+      - name: "Druckenmiller债券仓位"
+        current: "做空债券"
+        signal: "预期利率上升 = 流动性收紧"
+        implication: "🔴 谨慎"
+
+      - name: "Fed政策方向"
+        current: "暂停降息"
+        signal: "中性偏紧"
+        implication: "🟡 中性"
+
+      - name: "美元指数"
+        current: "强势"
+        signal: "全球流动性收紧"
+        implication: "🔴 谨慎"
+
+      - name: "信用利差"
+        current: "偏窄"
+        signal: "风险偏好尚可"
+        implication: "🟢 正常"
+
+    aggregate_score: 45  # 0-100, <50 = cautious
+    recommendation: |
+      流动性信号整体偏谨慎。
+      这意味着即使公司基本面好，也不应该追高。
+      等待更好的流动性环境再加仓。
+
+  # ---------------------------------------------------------------------------
+  # 市场内部信号
+  # ---------------------------------------------------------------------------
+  market_internal_signals:
+    overall_status: "NEUTRAL"
+
+    indicators:
+      - name: "市场广度"
+        current: "集中在大盘科技"
+        signal: "广度不足"
+        historical_parallel: "类似1987年崩盘前"
+        implication: "🟡 警告"
+
+      - name: "领先行业"
+        housing: "低迷"
+        trucking: "平稳"
+        banks: "分化"
+        implication: "🟡 混合信号"
+
+      - name: "债券市场"
+        yield_curve: "正常化中"
+        signal: "比去年好"
+        implication: "🟢 改善"
+
+    aggregate_score: 55
+
+  # ---------------------------------------------------------------------------
+  # 当前宏观主题
+  # ---------------------------------------------------------------------------
+  current_macro_themes:
+
+    active_themes:
+      - theme: "AI基础设施需求"
+        status: "继续但增速放缓"
+        druckenmiller_exposure: "TSM (增持450%)"
+        phase: "后期"
+
+      - theme: "医疗创新/基因检测"
+        status: "稳定增长"
+        druckenmiller_exposure: "Natera, Teva, Insmed (30%+)"
+        phase: "中期"
+
+      - theme: "企业软件效率"
+        status: "恢复"
+        druckenmiller_exposure: "新增DocuSign, Twilio"
+        phase: "早期"
+
+    emerging_themes:
+      - theme: "制造业回流"
+        status: "政策支持"
+        potential_plays: ["Woodward", "工业股"]
+
+      - theme: "能源转型"
+        status: "波动"
+        druckenmiller_stance: "未见明显敞口"
+
+# =============================================================================
+# 公司筛选引擎
+# =============================================================================
+
+company_screening_engine:
+
+  description: |
+    基于Druckenmiller向量空间模型筛选符合条件的股票
+
+  screening_criteria:
+
+    must_pass:
+      - criterion: "宏观对齐"
+        threshold: ">60分"
+        definition: "受益于当前活跃宏观主题"
+
+      - criterion: "流动性"
+        threshold: "日均交易量>200万股"
+        definition: "Druckenmiller规模要求"
+
+      - criterion: "图表"
+        threshold: "技术趋势不是下降"
+        definition: "他不买图表差的股票"
+
+    scoring_model:
+      - factor: "宏观对齐度"
+        weight: 30%
+        scoring_guide:
+          95_100: "受益于多个活跃宏观主题"
+          80_94: "受益于一个主要宏观主题"
+          60_79: "宏观中性"
+          below_60: "面临宏观逆风"
+
+      - factor: "护城河强度"
+        weight: 20%
+        scoring_guide:
+          95_100: "垄断/寡头地位"
+          80_94: "强竞争优势"
+          60_79: "一定优势"
+          below_60: "竞争激烈"
+
+      - factor: "估值吸引力"
+        weight: 15%
+        scoring_guide:
+          95_100: "显著低估"
+          80_94: "合理估值"
+          60_79: "略贵但增长支撑"
+          below_60: "明显高估"
+
+      - factor: "盈利质量"
+        weight: 15%
+        scoring_guide:
+          95_100: "持续超预期+加速增长"
+          80_94: "超预期"
+          60_79: "符合预期"
+          below_60: "低于预期"
+
+      - factor: "催化剂"
+        weight: 10%
+        scoring_guide:
+          95_100: "多个明确近期催化剂"
+          80_94: "一个明确催化剂"
+          60_79: "催化剂模糊"
+          below_60: "无明显催化剂"
+
+      - factor: "管理层质量"
+        weight: 10%
+        scoring_guide:
+          95_100: "顶级执行力+清晰愿景"
+          80_94: "良好执行力"
+          60_79: "一般"
+          below_60: "有问题"
+
+  current_screened_candidates:
+
+    high_probability_buys:
+      description: "Score>80且符合当前宏观主题"
+
+      - candidate: "Regeneron (REGN)"
+        composite_score: 82
+        breakdown:
+          macro_alignment: 85  # GLP-1竞争+免疫疗法
+          moat: 90             # 技术领先
+          valuation: 75        # 合理
+          earnings: 85         # 强劲
+          catalyst: 80         # 新药管线
+          management: 85
+        why_druckenmiller_might_buy: |
+          - 医疗创新主题（他当前重点）
+          - 技术护城河强
+          - 估值相对REGN历史不贵
+          - 多个产品催化剂
+        risk: "GLP-1竞争激烈"
+
+      - candidate: "ASML Holding (ASML)"
+        composite_score: 78
+        breakdown:
+          macro_alignment: 90  # AI/半导体核心
+          moat: 98             # EUV垄断
+          valuation: 55        # 较贵
+          earnings: 90         # 强劲
+          catalyst: 80         # High-NA
+          management: 90
+        why_druckenmiller_might_buy: |
+          - 他已经增持TSM，ASML是自然延伸
+          - 绝对垄断地位
+          - AI需求的纯正受益者
+        risk: "估值是主要障碍"
+        note: "如果估值回调15%，概率大增"
+
+      - candidate: "ServiceNow (NOW)"
+        composite_score: 77
+        breakdown:
+          macro_alignment: 80  # 企业效率+AI
+          moat: 85             # 高转换成本
+          valuation: 65        # 较贵
+          earnings: 90         # 超预期
+          catalyst: 75         # AI整合
+          management: 88
+        why_druckenmiller_might_buy: |
+          - 他新增了DocuSign和Twilio，企业软件是主题
+          - NOW是企业软件最强标的
+          - AI整合是催化剂
+        risk: "估值偏贵"
+
+    medium_probability_buys:
+      description: "Score 70-80"
+
+      - candidate: "Micron (MU)"
+        composite_score: 74
+        breakdown:
+          macro_alignment: 85  # HBM需求
+          moat: 70             # 周期性行业
+          valuation: 80        # 便宜
+          earnings: 70         # 周期复苏中
+          catalyst: 75         # HBM产能
+          management: 75
+        why_might_buy: "HBM需求+估值便宜"
+        why_might_not: "传统存储周期性风险"
+
+      - candidate: "AMD"
+        composite_score: 72
+        breakdown:
+          macro_alignment: 80  # AI需求
+          moat: 65             # CUDA差距
+          valuation: 70        # 合理
+          earnings: 70         # OpenAI合作待验证
+          catalyst: 75         # MI400
+          management: 85
+        why_might_buy: "AI第二供应商+OpenAI合作"
+        why_might_not: "CUDA生态差距巨大"
+
+# =============================================================================
+# 卖出信号预警系统
+# =============================================================================
+
+sell_signal_alerts:
+
+  current_holdings_monitoring:
+
+    - holding: "TSM"
+      current_weight: "~10%"
+      sell_triggers:
+        - trigger: "地缘政治急剧恶化"
+          probability: "中"
+          monitoring: "关注台海局势"
+
+        - trigger: "先进制程利用率<85%"
+          probability: "低"
+          monitoring: "季度电话会"
+
+        - trigger: "ASML订单大幅下滑"
+          probability: "低"
+          monitoring: "ASML季报"
+
+      current_status: "无卖出信号"
+
+    - holding: "Natera"
+      current_weight: "15.7%"
+      sell_triggers:
+        - trigger: "竞争加剧导致定价压力"
+          probability: "中"
+          monitoring: "竞争对手动态"
+
+        - trigger: "医保报销政策变化"
+          probability: "低-中"
+          monitoring: "政策新闻"
+
+      current_status: "无卖出信号"
+
+    - holding: "Teva"
+      current_weight: "~8%"
+      sell_triggers:
+        - trigger: "新药获批"
+          note: "可能是获利了结信号"
+          probability: "中"
+
+        - trigger: "债务重组完成"
+          note: "turnaround完成可能卖出"
+
+      current_status: "继续turnaround中"
+
+  macro_sell_triggers:
+
+    - trigger: "Fed急剧转向加息"
+      action: "整体减仓"
+      probability: "低"
+      monitoring: "FOMC声明"
+
+    - trigger: "Hyperscaler AI capex指引大幅下调"
+      action: "减持科技/半导体"
+      probability: "低-中"
+      monitoring: "MSFT/GOOGL/AMZN财报"
+
+    - trigger: "信用利差急剧扩大"
+      action: "风险偏好下降"
+      probability: "低"
+      monitoring: "高收益债利差"
+
+# =============================================================================
+# 每周检查清单
+# =============================================================================
+
+weekly_checklist:
+
+  monday:
+    - "检查Fed相关新闻和流动性指标"
+    - "检查Druckenmiller公开发言（如有）"
+
+  wednesday:
+    - "检查市场广度指标"
+    - "检查领先行业表现"
+
+  friday:
+    - "更新候选股票得分"
+    - "检查是否有新的卖出信号"
+
+  quarterly_13f:
+    - "对比预测vs实际买入"
+    - "分析新买入的向量特征"
+    - "分析卖出的触发原因"
+    - "更新模型参数"
+
+# =============================================================================
+# 预测追踪
+# =============================================================================
+
+predictions_tracking:
+
+  active_predictions:
+
+    - id: "DRUCK_PRED_001"
+      date: "2026-01-28"
+      prediction: "Druckenmiller会增持或新建ASML仓位"
+      condition: "如果ASML股价回调10-15%"
+      confidence: "60%"
+      verify_date: "2026-Q2 13F"
+      reasoning: "TSM增持是信号，ASML是自然延伸"
+
+    - id: "DRUCK_PRED_002"
+      date: "2026-01-28"
+      prediction: "Druckenmiller会新建企业软件仓位"
+      candidates: ["ServiceNow", "Workday", "Salesforce"]
+      confidence: "55%"
+      verify_date: "2026-Q2 13F"
+      reasoning: "DocuSign/Twilio是信号，企业软件是主题"
+
+    - id: "DRUCK_PRED_003"
+      date: "2026-01-28"
+      prediction: "Druckenmiller不会重新买入NVDA"
+      confidence: "70%"
+      verify_date: "2026全年"
+      reasoning: "他选TSM而非NVDA说明他认为制造层更安全"
+
+    - id: "DRUCK_PRED_004"
+      date: "2026-01-28"
+      prediction: "如果流动性转正，Druckenmiller会增加科技敞口"
+      trigger: "Fed转向宽松"
+      confidence: "75%"
+      reasoning: "他的核心逻辑是流动性驱动"
+
+  prediction_validation_log:
+    total: 4
+    verified: 0
+    correct: 0
+    pending: 4
+    accuracy: "待验证"

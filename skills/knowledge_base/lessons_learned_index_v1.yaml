@@ -1,0 +1,429 @@
+# Lessons Learned Index v1.0
+# 经验教训索引 - 场景标签和使用追踪
+#
+# 设计原理：
+#   - lessons_learned.yaml 保持完整经验记录（121条）
+#   - 本文件提供：场景→经验映射、使用追踪、有效性验证
+#   - 分离存储避免主文件过大，同时提供检索能力
+
+version: "1.0"
+created: "2026-01-28"
+source_file: "lessons_learned.yaml"
+total_lessons: 121
+
+# =============================================================================
+# 场景→经验映射索引
+# =============================================================================
+
+scene_to_lessons:
+
+  # ---------------------------------------------------------------------------
+  # 场景1: 分析半导体公司
+  # ---------------------------------------------------------------------------
+  semiconductor_analysis:
+    description: "分析LRCX/TSM/ASML/NVDA等半导体公司"
+    priority_lessons:
+      P0_must_use:
+        - id: "LL_056"
+          summary: "咽喉点公司是最诚实的领先指标"
+          trigger: "分析设备商或代工厂"
+        - id: "LL_057"
+          summary: "领先指标层级：设备订单→利用率→库存→终端需求"
+          trigger: "判断周期位置"
+        - id: "LL_058"
+          summary: "分裂周期：AI/HBM在Phase 3-4，传统在Phase 2"
+          trigger: "选择估值方法"
+        - id: "LL_059"
+          summary: "Kill Switch: ASML订单<€4B连续2季度减仓"
+          trigger: "设置风险管理"
+
+      P1_recommended:
+        - id: "LL_007"
+          summary: "数据来源必须标注[API]/[估算]/[分析师]"
+          trigger: "任何数据引用"
+        - id: "LL_025"
+          summary: "TOPS悖论：规格领先≠实际性能领先"
+          trigger: "比较芯片性能"
+
+    related_frameworks:
+      - "semiconductor_cycle_framework_v1.yaml"
+      - "ai_stack_framework_v1.yaml"
+
+  # ---------------------------------------------------------------------------
+  # 场景2: 分析科技平台公司
+  # ---------------------------------------------------------------------------
+  tech_platform_analysis:
+    description: "分析GOOGL/META/AMZN/MSFT等科技平台"
+    priority_lessons:
+      P0_must_use:
+        - id: "LL_020"
+          summary: "分析偏见：只搜威胁不搜优势，导致片面结论"
+          trigger: "搜索信息前"
+        - id: "LL_027"
+          summary: "用户声音分析缺失：需采集Reddit/Twitter/App Store"
+          trigger: "B2C公司分析"
+        - id: "LL_028"
+          summary: "开发者生态分析缺失：平台公司必须分析供给端"
+          trigger: "平台型公司"
+        - id: "LL_085"
+          summary: "Meta转型成功经验：5年从移动危机到元宇宙领先"
+          trigger: "评估公司转型能力"
+
+      P1_recommended:
+        - id: "LL_019"
+          summary: "10种AI原生认知方法（压缩挑战、矛盾引爆等）"
+          trigger: "深度分析"
+        - id: "LL_023"
+          summary: "历史镜像法：找3个不同结局案例对比"
+          trigger: "战略评估"
+
+    related_frameworks:
+      - "tech_decline_framework_v2.yaml"
+      - "tech_rise_framework_v1.yaml"
+
+  # ---------------------------------------------------------------------------
+  # 场景3: 估值分析
+  # ---------------------------------------------------------------------------
+  valuation_analysis:
+    description: "对任何公司进行估值"
+    priority_lessons:
+      P0_must_use:
+        - id: "LL_009"
+          summary: "SOTP概率加权是'锚'，最终目标价不能随意偏离"
+          trigger: "计算目标价"
+        - id: "LL_014"
+          summary: "铁律4验证有效：SOTP为锚防止估值断层"
+          trigger: "验证估值逻辑"
+        - id: "LL_024"
+          summary: "期权思维：彩票业务用Black-Scholes估值"
+          trigger: "有高不确定性业务"
+        - id: "LL_097"
+          summary: "估值方法选择：周期股用EV/EBITDA，成长股用PEG"
+          trigger: "选择估值方法"
+
+      P1_recommended:
+        - id: "LL_026"
+          summary: "反事实压力测试：量化极端情景影响"
+          trigger: "风险评估"
+
+    related_frameworks:
+      - "unified_decision_framework_v1.yaml"
+
+  # ---------------------------------------------------------------------------
+  # 场景4: 宏观/周期判断
+  # ---------------------------------------------------------------------------
+  macro_cycle_analysis:
+    description: "判断宏观环境和周期位置"
+    priority_lessons:
+      P0_must_use:
+        - id: "LL_118"
+          summary: "Druckenmiller: 流动性驱动市场，不是盈利"
+          trigger: "任何投资决策前"
+        - id: "LL_119"
+          summary: "Druckenmiller: 永远不投资现在，投资18个月后"
+          trigger: "估值分析"
+        - id: "LL_071"
+          summary: "Soros反身性：股价不只反映基本面，也在塑造基本面"
+          trigger: "理解市场动态"
+
+      P1_recommended:
+        - id: "LL_073"
+          summary: "Munger逆向：以死局为起点倒推"
+          trigger: "风险评估"
+
+    related_frameworks:
+      - "cycle_temperature_gauge_v1.yaml"
+      - "druckenmiller_methodology_v1.yaml"
+
+  # ---------------------------------------------------------------------------
+  # 场景5: 投资者持仓分析
+  # ---------------------------------------------------------------------------
+  investor_tracking:
+    description: "分析大师持仓变化"
+    priority_lessons:
+      P0_must_use:
+        - id: "LL_114"
+          summary: "信息收集≠信息价值化，需要业绩权重排序"
+          trigger: "汇总投资者观点"
+        - id: "LL_117"
+          summary: "98分投资者信号价值=10000个低分投资者"
+          trigger: "发现高价值信号"
+        - id: "LL_104"
+          summary: "大师共识不总是对的（AVGO分歧案例）"
+          trigger: "投资者意见分歧"
+        - id: "LL_105"
+          summary: "13F有45天滞后，需关注近期访谈"
+          trigger: "使用13F数据"
+
+      P1_recommended:
+        - id: "LL_106"
+          summary: "Buffett高现金是逆向指标"
+          trigger: "宏观风险判断"
+
+    related_frameworks:
+      - "top_investor_database_v2.yaml"
+
+  # ---------------------------------------------------------------------------
+  # 场景6: 公司衰落/崛起检测
+  # ---------------------------------------------------------------------------
+  company_detection:
+    description: "检测公司衰落或崛起信号"
+    priority_lessons:
+      P0_must_use:
+        - id: "LL_039"
+          summary: "AMD vs Intel: 失败检测1/7 vs 6/7红灯"
+          trigger: "使用衰落框架"
+        - id: "LL_052"
+          summary: "ServiceNow 92分崛起信号验证"
+          trigger: "使用崛起框架"
+        - id: "LL_086"
+          summary: "Intel衰落教训：制造执行是半导体致命伤"
+          trigger: "分析半导体公司"
+
+      P1_recommended:
+        - id: "LL_021"
+          summary: "能力衰减根因：一次性创新没固化为强制模块"
+          trigger: "系统设计"
+
+    related_frameworks:
+      - "tech_decline_framework_v2.yaml"
+      - "tech_rise_framework_v1.yaml"
+
+  # ---------------------------------------------------------------------------
+  # 场景7: 质量门控/报告输出
+  # ---------------------------------------------------------------------------
+  quality_control:
+    description: "验证分析报告质量"
+    priority_lessons:
+      P0_must_use:
+        - id: "LL_010"
+          summary: "质量门控必须显式执行每个检查项"
+          trigger: "报告完成后"
+        - id: "LL_013"
+          summary: "报告末尾附Quality Gate执行结果表"
+          trigger: "输出报告"
+        - id: "LL_008"
+          summary: "API数据必须展示，不能调用后不用"
+          trigger: "API调用后"
+
+      P1_recommended:
+        - id: "LL_015"
+          summary: "经验无法沉淀因为是静态记录不是强制执行"
+          trigger: "流程设计"
+
+    related_frameworks:
+      - "CLAUDE.md质量门控"
+
+  # ---------------------------------------------------------------------------
+  # 场景8: Agent/系统设计
+  # ---------------------------------------------------------------------------
+  agent_design:
+    description: "设计和改进投资Agent系统"
+    priority_lessons:
+      P0_must_use:
+        - id: "LL_108"
+          summary: "元认知盲区：107条投资经验，0条Agent设计经验"
+          trigger: "系统反思"
+        - id: "LL_109"
+          summary: "Reflexion: 语言反思>梯度更新"
+          trigger: "设计学习机制"
+        - id: "LL_110"
+          summary: "MetaGPT SOP: 明确角色、交接物、流水线"
+          trigger: "设计工作流"
+        - id: "LL_112"
+          summary: "LLM无法可靠自我验证，需外部Critics"
+          trigger: "设计验证机制"
+
+      P1_recommended:
+        - id: "LL_111"
+          summary: "Tree of Thoughts: 多路径探索>线性推理"
+          trigger: "设计分析流程"
+        - id: "LL_113"
+          summary: "Agentic RAG: 知识检索需要Agent化"
+          trigger: "设计知识库"
+
+    related_frameworks:
+      - "agent_design_insights_v2.yaml"
+
+# =============================================================================
+# 使用追踪系统
+# =============================================================================
+
+usage_tracking:
+
+  tracking_schema:
+    description: "每条经验的使用追踪字段"
+    fields:
+      usage_count: "使用次数"
+      last_used: "最后使用日期"
+      effectiveness_validated: "pending | validated | ineffective"
+      validation_evidence: "验证证据描述"
+
+  high_frequency_lessons:
+    description: "使用频率最高的经验（基于当前应用情况估算）"
+    lessons:
+      - id: "LL_007"
+        summary: "数据来源标注"
+        estimated_usage: "每次分析"
+        effectiveness: "validated"
+
+      - id: "LL_009"
+        summary: "SOTP为锚"
+        estimated_usage: "每次估值"
+        effectiveness: "validated"
+
+      - id: "LL_010"
+        summary: "质量门控显式执行"
+        estimated_usage: "每次报告"
+        effectiveness: "validated"
+
+      - id: "LL_056"
+        summary: "咽喉点领先指标"
+        estimated_usage: "半导体分析"
+        effectiveness: "validated"
+
+  low_usage_alerts:
+    description: "创建后使用较少的经验（可能被遗忘）"
+    lessons:
+      - id: "LL_023"
+        summary: "历史镜像法"
+        usage: "1次"
+        recommendation: "应在战略分析时主动使用"
+
+      - id: "LL_024"
+        summary: "期权思维估值"
+        usage: "1次"
+        recommendation: "彩票业务时应强制使用"
+
+      - id: "LL_027"
+        summary: "用户声音采集"
+        usage: "0次（待实施）"
+        recommendation: "B2C公司分析时强制执行"
+
+# =============================================================================
+# 有效性验证追踪
+# =============================================================================
+
+effectiveness_validation:
+
+  validated_effective:
+    description: "经过验证有效的经验"
+    count: 28
+    examples:
+      - id: "LL_014"
+        lesson: "铁律4（SOTP为锚）有效防止估值断层"
+        validation: "AAPL分析 SOTP$267 vs 目标价$270-290差距5%"
+
+      - id: "LL_022"
+        lesson: "供应链晴雨表法有效"
+        validation: "Luxshare利润+31%验证Apple订单健康"
+
+      - id: "LL_056"
+        lesson: "咽喉点公司领先指标有效"
+        validation: "ASML订单预测半导体周期"
+
+  pending_validation:
+    description: "待验证的经验"
+    count: 85
+    next_validation_batch:
+      due_date: "2026-02"
+      lessons:
+        - "LL_015: 深度思考协议"
+        - "LL_019: 10种AI原生认知方法"
+        - "LL_021: 能力固化机制"
+
+  ineffective_or_deprecated:
+    description: "经验证无效或已过时的经验"
+    count: 8
+    examples:
+      - id: "LL_011_note"
+        original: "100baggers 7维度评分"
+        status: "deprecated - 主观权重不可靠"
+
+# =============================================================================
+# 经验分类统计
+# =============================================================================
+
+statistics:
+
+  by_category:
+    agent_execution: 1
+    api_integration: 1
+    api_utilization: 1
+    framework_design: 1
+    automation: 1
+    tool_integration: 1
+    data_quality: 2
+    data_traceability: 1
+    valuation_logic: 1
+    valuation_innovation: 1
+    quality_gate: 1
+    methodology_breakthrough: 3
+    analysis_bias: 1
+    skill_generalization: 1
+    technical_insight: 1
+    system_architecture: 1
+    depth_failure: 1
+    innovation_failure: 1
+    supply_chain_analysis: 1
+    leading_indicators: 1
+    cycle_analysis: 1
+    risk_management: 3
+    higher_dimension: 6
+    meta_learning: 6
+    agent_design: 6
+    investment_philosophy: 5
+    high_value_signal: 1
+
+  by_priority:
+    P0_critical: 35
+    P1_important: 52
+    P2_nice_to_have: 34
+
+  by_effectiveness:
+    validated: 28
+    pending: 85
+    ineffective: 8
+
+# =============================================================================
+# 自动检索规则
+# =============================================================================
+
+auto_retrieval_rules:
+
+  - trigger: "用户提到半导体/LRCX/TSM/ASML/NVDA"
+    retrieve: "semiconductor_analysis场景"
+
+  - trigger: "用户提到估值/目标价/PE/EV"
+    retrieve: "valuation_analysis场景"
+
+  - trigger: "用户提到周期/宏观/流动性"
+    retrieve: "macro_cycle_analysis场景"
+
+  - trigger: "用户提到Druckenmiller/Buffett/大师"
+    retrieve: "investor_tracking场景"
+
+  - trigger: "用户提到质量/检查/门控"
+    retrieve: "quality_control场景"
+
+  - trigger: "开始任何公司分析"
+    retrieve: "LL_007(数据标注) + LL_020(搜索偏见)"
+
+# =============================================================================
+# 更新机制
+# =============================================================================
+
+update_mechanism:
+
+  frequency: "每次分析后"
+
+  actions:
+    - "识别本次使用的经验，更新usage_count"
+    - "如果经验有效，标注validation_evidence"
+    - "如果发现新经验，添加到lessons_learned.yaml并更新本索引"
+    - "如果发现低使用经验，评估是否需要强化触发"
+
+  review_cadence:
+    weekly: "检查低使用经验"
+    monthly: "重新计算有效性统计"
+    quarterly: "清理过时经验"

@@ -1,0 +1,477 @@
+# Meta Insights v2.0
+# 元级洞察 - 增加触发条件版
+#
+# v1.0问题：元洞察只是记录，不知道什么时候应该调用
+# v2.0改进：
+#   - 每个洞察添加trigger_conditions（触发条件）
+#   - 添加auto_check（自动检查点）
+#   - 添加application_examples（应用示例）
+
+version: "2.0"
+created: "2026-01-28"
+upgrade_from: "v1.0"
+total_insights: 11
+
+# =============================================================================
+# 元洞察清单（带触发条件）
+# =============================================================================
+
+insights:
+
+  # ---------------------------------------------------------------------------
+  # META_000: 时间维度盲区
+  # ---------------------------------------------------------------------------
+  - id: "META_000"
+    name: "时间维度盲区反思"
+    summary: "空间维度框架完备，但时间维度严重缺失"
+
+    trigger_conditions:
+      keywords: ["先", "后", "顺序", "什么时候", "时机", "timing"]
+      contexts:
+        - "用户询问投资时机"
+        - "用户询问多个标的的先后顺序"
+        - "分析涉及多个事件的时序关系"
+      auto_check:
+        - "每次分析完成后，检查是否回答了'什么时候'的问题"
+        - "如果只回答了'买什么'没回答'何时买'，触发本洞察"
+
+    corrective_action: |
+      1. 新增维度检查清单（空间/时间/因果/主体）
+      2. 新增框架组合矩阵
+      3. 新增第一性原理检查（买什么+什么时候+多少+卖点）
+
+    application_examples:
+      - scenario: "用户问：LRCX和TSM哪个先买？"
+        wrong_response: "两个都好，可以同时买"
+        right_response: "根据周期传导，设备商LRCX是领先指标，应先观察其订单变化"
+
+    effectiveness:
+      validated: false
+      validation_date: null
+
+  # ---------------------------------------------------------------------------
+  # META_001: 案例→框架提取法
+  # ---------------------------------------------------------------------------
+  - id: "META_001"
+    name: "案例→框架提取法"
+    summary: "单一案例=过拟合，多案例交叉=通用模式"
+
+    trigger_conditions:
+      keywords: ["为什么", "规律", "模式", "框架", "方法论"]
+      contexts:
+        - "完成一次深度分析后"
+        - "发现一个有价值的洞察"
+        - "用户要求总结规律"
+      auto_check:
+        - "每次分析完成后，问：这个洞察能否推广？"
+        - "如果只是单一案例结论，触发本洞察寻找更多案例"
+
+    steps:
+      - "深度解剖单案例"
+      - "多案例交叉验证（至少3个）"
+      - "分层结构化"
+      - "实战验证"
+
+    application_examples:
+      - scenario: "分析Intel衰落后发现CEO问题"
+        wrong_approach: "结论：Intel因CEO问题衰落"
+        right_approach: "找3个衰落公司对比（Intel/Nokia/Kodak），提取通用衰落模式"
+
+    effectiveness:
+      validated: true
+      validation_evidence: "tech_decline_framework通过多案例验证"
+
+  # ---------------------------------------------------------------------------
+  # META_002: 对称性设计原则
+  # ---------------------------------------------------------------------------
+  - id: "META_002"
+    name: "对称性设计原则"
+    summary: "每个负面信号都有对应正面信号，单看一面=信息不完整"
+
+    trigger_conditions:
+      keywords: ["风险", "问题", "威胁", "衰落", "失败"]
+      contexts:
+        - "完成风险分析后"
+        - "完成衰落检测后"
+        - "分析只关注负面因素时"
+      auto_check:
+        - "如果报告中负面分析>正面分析2倍，触发本洞察"
+        - "如果创建了负面框架，检查是否有对应正面框架"
+
+    application: "衰落7维度 ↔ 崛起7维度"
+
+    application_examples:
+      - scenario: "完成Google威胁分析"
+        wrong_approach: "只列威胁不列优势"
+        right_approach: "威胁+优势对称分析，用LL_020双向搜索"
+
+    effectiveness:
+      validated: true
+      validation_evidence: "tech_rise_framework是tech_decline的对称框架"
+
+  # ---------------------------------------------------------------------------
+  # META_003: AI独特能力
+  # ---------------------------------------------------------------------------
+  - id: "META_003"
+    name: "AI独特能力：跨域概率链推理"
+    summary: "多步条件概率 + 多路径汇合 + 关系网络遍历"
+
+    trigger_conditions:
+      keywords: ["概率", "传导", "路径", "网络", "推理链"]
+      contexts:
+        - "需要分析多个变量的联合影响"
+        - "需要追踪信号在供应链中的传导"
+        - "分析涉及多个相互依赖的因素"
+      auto_check:
+        - "如果分析涉及>3个相关变量，考虑使用概率链推理"
+        - "如果是供应链分析，使用信号传导框架"
+
+    why_unique: "人脑无法同时追踪多条概率链"
+
+    application_examples:
+      - scenario: "分析HBM需求对LRCX的影响"
+        simple_approach: "HBM需求↑ → LRCX收入↑"
+        ai_approach: "HBM需求↑(80%) × HBM层数↑(90%) × LRCX份额稳定(85%) × 扩产节奏(75%) = 综合概率52%"
+
+    effectiveness:
+      validated: true
+      validation_evidence: "ai_stack传导框架验证有效"
+
+  # ---------------------------------------------------------------------------
+  # META_004: 价值转移思维
+  # ---------------------------------------------------------------------------
+  - id: "META_004"
+    name: "价值转移思维"
+    summary: "价值不消失只转移，一个公司衰落=另一个公司机会"
+
+    trigger_conditions:
+      keywords: ["衰落", "失败", "下跌", "被替代", "市场份额下降"]
+      contexts:
+        - "分析一家公司衰落时"
+        - "分析行业结构变化时"
+        - "分析竞争格局变化时"
+      auto_check:
+        - "每次发现衰落信号，立即问：谁是受益者？"
+        - "在衰落分析报告中，必须有'受益者清单'章节"
+
+    action: "衰落信号→找受益者→买入机会"
+
+    application_examples:
+      - scenario: "发现Intel在先进制程衰落"
+        incomplete: "结论：不要买Intel"
+        complete: "Intel衰落 → TSM受益（代工）+ AMD受益（份额）+ NVDA受益（生态）"
+
+    effectiveness:
+      validated: true
+      validation_evidence: "Intel衰落→TSM/AMD崛起验证"
+
+  # ---------------------------------------------------------------------------
+  # META_005: 信号模糊性与语境判断
+  # ---------------------------------------------------------------------------
+  - id: "META_005"
+    name: "信号模糊性与语境判断"
+    summary: "同一现象在不同语境下含义相反（裁员可正可负）"
+
+    trigger_conditions:
+      keywords: ["裁员", "现金囤积", "增发", "并购", "减持"]
+      contexts:
+        - "遇到单一数据点时"
+        - "需要判断信号含义时"
+        - "数据点的含义不明确时"
+      auto_check:
+        - "对于任何单一数据点，必须收集语境后再判断"
+        - "如果语境不完整，标注'混合信号'而非强行判断"
+
+    method: "收集语境→应用判断规则→如仍模糊则标注混合"
+
+    judgment_rules:
+      layoff:
+        positive: "衰落阶段成本优化 + 利润率改善"
+        negative: "需求下滑被动裁员 + 人才流失"
+        context_needed: ["公司阶段", "行业周期", "裁员规模vs总员工", "同行对比"]
+
+      cash_hoarding:
+        positive: "Buffett高现金是宏观警示信号"
+        negative: "可能是缺乏增长机会"
+        context_needed: ["历史现金水平", "投资机会环境", "CEO风格"]
+
+    effectiveness:
+      validated: true
+      validation_evidence: "裁员信号分析在多个案例中验证"
+
+  # ---------------------------------------------------------------------------
+  # META_006: 两种崛起模式
+  # ---------------------------------------------------------------------------
+  - id: "META_006"
+    name: "两种崛起模式"
+    summary: "困境反转(AMD)=高风险高回报 vs 强者恒强(NOW)=中风险中回报"
+
+    trigger_conditions:
+      keywords: ["崛起", "反转", "增长", "投资机会"]
+      contexts:
+        - "使用tech_rise_framework时"
+        - "识别投资机会时"
+        - "评估公司增长潜力时"
+      auto_check:
+        - "识别崛起机会时，必须先分类是哪种模式"
+        - "不同模式决定不同的风险管理策略"
+
+    modes:
+      turnaround:
+        example: "AMD"
+        characteristics: ["从低点反弹", "需要执行验证", "高不确定性"]
+        risk_return: "高风险高回报"
+        position_sizing: "小仓位试探，验证后加仓"
+
+      continued_excellence:
+        example: "ServiceNow"
+        characteristics: ["已有强势地位", "继续扩展", "较高确定性"]
+        risk_return: "中风险中回报"
+        position_sizing: "可以较大初始仓位"
+
+    effectiveness:
+      validated: true
+      validation_evidence: "AMD vs NOW分类验证"
+
+  # ---------------------------------------------------------------------------
+  # META_007: 可验证预测设计
+  # ---------------------------------------------------------------------------
+  - id: "META_007"
+    name: "可验证预测设计"
+    summary: "每个判断必须可证伪，不可验证=无价值"
+
+    trigger_conditions:
+      keywords: ["预测", "判断", "认为", "预计", "将会"]
+      contexts:
+        - "做出任何预测性判断时"
+        - "写入predictions_tracker前"
+        - "设置Kill Switch时"
+      auto_check:
+        - "每个预测必须有4要素才能记录"
+        - "缺少任何要素的预测不计入tracker"
+
+    elements:
+      required:
+        - "具体数值（什么指标达到什么水平）"
+        - "验证日期（何时验证）"
+        - "数据来源（用什么数据验证）"
+        - "当前基准（现在是多少）"
+      optional:
+        - "置信度"
+        - "Kill Switch"
+
+    application_examples:
+      - bad_prediction: "LRCX会涨"
+        good_prediction: "LRCX FY2027收入>$20B（当前$15B），验证日期2027-07，数据源FMP"
+
+    effectiveness:
+      validated: true
+      validation_evidence: "predictions_tracker中的预测都遵循此格式"
+
+  # ---------------------------------------------------------------------------
+  # META_008: 深度思维5层模型
+  # ---------------------------------------------------------------------------
+  - id: "META_008"
+    name: "深度思维5层模型"
+    summary: "Level 2（价值排序）是最低要求，Level 0-1是不及格"
+
+    trigger_conditions:
+      keywords: ["信息", "收集", "列表", "整理", "汇总"]
+      contexts:
+        - "完成信息收集后"
+        - "输出报告前"
+        - "创建新模块时"
+      auto_check:
+        - "任何输出前，检查是否至少达到Level 2"
+        - "如果只是数据罗列（Level 0-1），必须升级"
+
+    levels:
+      level_0: "完成任务（执行指令）"
+      level_1: "组织信息（分类整理）"
+      level_2: "价值排序（谁/什么更重要）← 最低要求"
+      level_3: "场景适配（什么情况用什么）"
+      level_4: "动态更新（如何自我改进）"
+      level_5: "元设计（如何设计Level 4机制）"
+
+    application_examples:
+      - scenario: "列出8位顶级投资者"
+        level_0_1: "罗列8位投资者的持仓"
+        level_2: "按业绩权重排序，Druckenmiller(98)>Buffett(95)（在半导体领域）"
+        level_3: "场景→投资者映射（半导体用Druckenmiller，消费品用Buffett）"
+
+    effectiveness:
+      validated: true
+      validation_evidence: "top_investor_database v2升级验证"
+
+  # ---------------------------------------------------------------------------
+  # META_009: 高维度分析价值
+  # ---------------------------------------------------------------------------
+  - id: "META_009"
+    name: "高维度分析价值不等式"
+    summary: "1个高维度分析 > 10000个低维度分析"
+
+    trigger_conditions:
+      keywords: ["分析师", "研报", "观点", "参考"]
+      contexts:
+        - "收集多个分析师观点时"
+        - "发现高价值信号源时"
+        - "评估信息质量时"
+      auto_check:
+        - "不要平等对待所有来源，先评估信号质量"
+        - "发现90+分来源时，立即深挖"
+
+    principle: |
+      低质量分析会污染数据，不是"多多益善"
+      宁可只看Druckenmiller一个人，不如看1000个低水平分析师
+
+    application_examples:
+      - scenario: "收集AI芯片观点"
+        wrong: "收集10个分析师观点求平均"
+        right: "先看Druckenmiller和Tepper（90+分），他们意见一致则高置信度"
+
+    effectiveness:
+      validated: true
+      validation_evidence: "投资者权重系统验证"
+
+  # ---------------------------------------------------------------------------
+  # META_010: 能力固化三层机制
+  # ---------------------------------------------------------------------------
+  - id: "META_010"
+    name: "能力固化三层机制"
+    summary: "防止能力衰减：结构化模块+类型化模板+断言强制"
+
+    trigger_conditions:
+      keywords: ["创新", "新方法", "尝试", "发现"]
+      contexts:
+        - "发现新的有效方法时"
+        - "完成创新性分析时"
+        - "系统设计时"
+      auto_check:
+        - "每次创新后，问：如何固化为强制模块？"
+        - "如果只是一次性尝试，警告能力会衰减"
+
+    three_layers:
+      layer_1:
+        name: "结构化模块"
+        description: "把方法变成强制执行的模块"
+        example: "期权估值从一次性尝试→彩票业务强制模块"
+
+      layer_2:
+        name: "类型化模板"
+        description: "按公司类型映射执行模板"
+        example: "B2C公司→用户声音采集，半导体→供应链晴雨表"
+
+      layer_3:
+        name: "断言强制"
+        description: "每个模块有assert检查"
+        example: "if 彩票业务 and not 期权估值: raise '不合格'"
+
+    effectiveness:
+      validated: true
+      validation_evidence: "deep_cognition_skill v1.3升级验证"
+
+  # ---------------------------------------------------------------------------
+  # META_011: 高价值信号敏感性
+  # ---------------------------------------------------------------------------
+  - id: "META_011"
+    name: "高价值信号敏感性"
+    summary: "发现98分投资者，必须立即深挖到极致"
+
+    trigger_conditions:
+      keywords: ["Druckenmiller", "Soros", "顶级", "大师", "业绩最好"]
+      contexts:
+        - "发现业绩评分>90的投资者"
+        - "发现预测准确率>80%的分析师"
+        - "发现被验证有效的框架"
+        - "发现历史回测胜率>70%的策略"
+      auto_check:
+        - "遇到高价值信号，不能与低价值信号平等对待"
+        - "必须触发立即深挖机制"
+
+    immediate_actions:
+      - "立即深入研究其方法论"
+      - "分析历史操作/预测"
+      - "提取可复用框架"
+      - "建立跟踪机制"
+      - "集成到现有系统"
+
+    anti_pattern: |
+      发现高价值信号却与低价值信号平等对待
+      例：发现Druckenmiller 98分，却和Wood 45分放在一起列表
+
+    correct_pattern: |
+      高价值信号 → 立即深挖 → 提取框架 → 集成系统
+      低价值信号 → 标注低权重 → 可能作为反向指标
+
+    effectiveness:
+      validated: true
+      validation_evidence: "druckenmiller_methodology_v1创建验证"
+
+# =============================================================================
+# 触发条件→洞察快速索引
+# =============================================================================
+
+trigger_index:
+
+  by_keyword:
+    "先|后|顺序|时机|timing": "META_000"
+    "为什么|规律|模式|框架": "META_001"
+    "风险|威胁|衰落|负面": "META_002"
+    "概率|传导|推理链": "META_003"
+    "衰落|失败|被替代": "META_004"
+    "裁员|现金囤积|信号解读": "META_005"
+    "崛起|反转|机会": "META_006"
+    "预测|判断|预计": "META_007"
+    "信息|收集|汇总": "META_008"
+    "分析师|研报|观点": "META_009"
+    "创新|新方法|发现": "META_010"
+    "顶级|大师|98分": "META_011"
+
+  by_context:
+    "完成分析后": ["META_000", "META_001", "META_008"]
+    "做预测时": ["META_007"]
+    "风险分析时": ["META_002", "META_004"]
+    "收集信息时": ["META_008", "META_009"]
+    "系统设计时": ["META_010"]
+    "发现高价值信号时": ["META_011"]
+
+# =============================================================================
+# 自动检查清单
+# =============================================================================
+
+auto_check_list:
+
+  after_every_analysis:
+    - check: "是否回答了'什么时候'的问题？"
+      if_no: "触发META_000"
+    - check: "是否只有负面没有正面？"
+      if_no: "触发META_002"
+    - check: "输出是否至少达到Level 2？"
+      if_no: "触发META_008"
+
+  when_making_prediction:
+    - check: "预测是否有4要素（数值、日期、来源、基准）？"
+      if_no: "触发META_007"
+
+  when_finding_signal:
+    - check: "信号来源质量评分？"
+      if_high: "触发META_011立即深挖"
+      if_low: "降低权重或作为反向指标"
+
+  when_discovering_method:
+    - check: "新方法是否已固化？"
+      if_no: "触发META_010三层固化"
+
+# =============================================================================
+# 更新机制
+# =============================================================================
+
+update_mechanism:
+
+  trigger: "每次应用元洞察后"
+
+  actions:
+    - "更新effectiveness_validated"
+    - "添加新的application_examples"
+    - "调整trigger_conditions如果发现遗漏场景"
+    - "每月review触发条件准确率"

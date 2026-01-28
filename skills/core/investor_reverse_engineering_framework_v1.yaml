@@ -1,0 +1,812 @@
+# Investor Reverse Engineering Framework v1.0
+# 投资者逆向工程框架 - 解剖顶级投资者的手术刀
+#
+# 设计目的：
+#   不只是记录"他买了什么"
+#   而是逆向工程"他为什么买、什么信号触发、什么特征匹配"
+#   最终目标：在他行动之前预测他会买什么
+#
+# 数据来源：[搜索] 多个投资者访谈、13F分析、传记研究、学术分析
+
+version: "1.0"
+created: "2026-01-28"
+purpose: "将投资者行为从'观察'升级为'可预测'"
+
+# =============================================================================
+# 框架概述：投资者逆向工程的6个维度
+# =============================================================================
+
+framework_overview:
+
+  philosophy: |
+    逆向工程投资者 ≠ 复制他的持仓
+    逆向工程投资者 = 理解他的决策函数
+
+    决策函数：f(信号, 公司特征, 时机, 宏观环境) → 买入/卖出/仓位大小
+
+    如果我们能精确还原这个函数，我们就能：
+    1. 在他行动之前预测他的下一步
+    2. 找到符合他标准但他还没买的公司
+    3. 理解他为什么在某个时点行动
+
+  six_dimensions:
+    D1_signal_detection: "他监控什么信号？什么触发他的关注？"
+    D2_company_vector_space: "他的持仓在什么向量空间上接近？"
+    D3_timing_engine: "他用什么决定买入/卖出时机？"
+    D4_position_sizing: "他如何决定下注多少？"
+    D5_sector_rotation: "他如何在板块间轮动？"
+    D6_risk_management: "他如何保护资本？"
+
+# =============================================================================
+# CASE STUDY: Stanley Druckenmiller 深度逆向工程
+# =============================================================================
+
+druckenmiller_reverse_engineering:
+
+  # ---------------------------------------------------------------------------
+  # D1: 信号检测系统 - 他监控什么？
+  # ---------------------------------------------------------------------------
+  D1_signal_detection:
+
+    name: "Druckenmiller信号检测系统"
+
+    core_principle: |
+      "Earnings don't move the overall market; it's the Federal Reserve Board...
+      focus on the central banks and focus on the movement of liquidity...
+      most people in the market are looking for earnings. It's liquidity that moves markets."
+
+      翻译：大多数人看盈利，Druckenmiller看流动性。
+
+    primary_signals:
+
+      # 信号1：央行流动性
+      signal_1:
+        name: "央行流动性信号"
+        weight: 40%
+        indicators:
+          - indicator: "Fed资产负债表变化"
+            frequency: "weekly"
+            bullish: "扩张"
+            bearish: "收缩"
+
+          - indicator: "Fed利率政策方向"
+            frequency: "每次FOMC"
+            bullish: "降息周期开始"
+            bearish: "加息周期开始"
+
+          - indicator: "信贷条件"
+            frequency: "quarterly"
+            bullish: "银行放贷宽松"
+            bearish: "银行收紧信贷"
+
+          - indicator: "M2货币供应"
+            frequency: "monthly"
+            bullish: "增速加快"
+            bearish: "增速放缓"
+
+        druckenmiller_quote: |
+          "The best environment for stocks is a very dull, slow economy
+          that the Federal Reserve is trying to get going."
+
+        application: |
+          当前信号（2026-01）：
+          - Druckenmiller做空债券 = 预期利率上升
+          - 这意味着他认为流动性将收紧
+          - 投资含义：不要追高成长股
+
+      # 信号2：市场内部信号
+      signal_2:
+        name: "市场内部结构信号"
+        weight: 25%
+        indicators:
+          - indicator: "市场广度 (Market Breadth)"
+            frequency: "daily"
+            bullish: "多数股票参与上涨"
+            bearish: "涨幅集中在少数大盘股"
+            1987_example: "广度缺失预示崩盘"
+
+          - indicator: "领先行业动向"
+            frequency: "weekly"
+            sectors_watched:
+              - "房地产（经济领先指标）"
+              - "卡车运输（经济活动指标）"
+              - "银行股（信贷周期指标）"
+              - "化工股（产能周期指标）"
+
+          - indicator: "债券市场信号"
+            frequency: "daily"
+            bullish: "收益率曲线正常化"
+            bearish: "收益率曲线倒挂"
+
+        druckenmiller_quote: |
+          "One of my strengths over the years was having deep respect for the markets
+          and using the markets to predict the economy, and particularly using internal
+          groups within the market to make predictions."
+
+      # 信号3：技术分析信号
+      signal_3:
+        name: "技术分析时机信号"
+        weight: 20%
+        indicators:
+          - indicator: "价格趋势确认"
+            usage: "不买没有好图表的股票"
+            quote: "If there are 1000s of securities out there and my portfolio is only going to have 15-20, I'm never going to buy something that doesn't have a great chart and fundamentals."
+
+          - indicator: "长期盘整后突破"
+            pattern: "横盘整理→放量突破"
+            significance: "Joe Vidich说这是最好的模式之一"
+
+          - indicator: "相对强度"
+            usage: "优先选择相对强度高的标的"
+
+        note: |
+          Druckenmiller称技术分析为"黑魔法"但一直在用。
+          他不用技术分析预测方向，而是用于时机选择。
+
+      # 信号4：产能周期信号
+      signal_4:
+        name: "产能周期信号"
+        weight: 15%
+        indicators:
+          - indicator: "行业产能变化"
+            example_industry: "化工"
+            buy_signal: "大量产能退出后，需求开始恢复"
+            sell_signal: "大量新产能宣布扩张"
+
+        druckenmiller_quote: |
+          "The ideal time to buy (chemical stocks) is after a lot of capacity has left
+          the industry and there's a catalyst that you believe will trigger an increase
+          in demand."
+
+          "The ideal time to sell stocks is when there are lots of announcements for
+          new plants, not when the earnings turn down."
+
+        application: |
+          当前半导体应用：
+          - ASML订单€33B backlog = 产能扩张周期
+          - 但这是AI特定，不是整体半导体
+          - HBM仍供不应求 = 还没到卖出信号
+
+    signal_hierarchy: |
+      流动性 > 市场内部 > 技术 > 产能
+
+      如果流动性信号是负面的，其他信号再好也要谨慎。
+      这就是为什么他在2024年Q3卖出NVDA——尽管基本面好，
+      但他可能看到流动性收紧的信号。
+
+  # ---------------------------------------------------------------------------
+  # D2: 公司向量空间 - 他的持仓有什么共同特征？
+  # ---------------------------------------------------------------------------
+  D2_company_vector_space:
+
+    name: "Druckenmiller持仓向量空间分析"
+
+    methodology: |
+      把他的持仓视为高维向量空间中的点。
+      找出这些点的共同特征，就能识别"Druckenmiller类型"的股票。
+
+    vector_dimensions:
+
+      # 维度1：宏观对齐度
+      dimension_1:
+        name: "宏观对齐度 (Macro Alignment)"
+        weight: 30%
+        definition: "公司增长与宏观趋势的一致性"
+
+        current_macro_themes_2026:
+          - theme: "AI基础设施需求"
+            alignment_examples: ["TSM", "DocuSign", "Twilio"]
+          - theme: "医疗创新/老龄化"
+            alignment_examples: ["Natera", "Teva", "Eli Lilly"]
+          - theme: "制造业回流"
+            alignment_examples: ["Woodward"]
+
+        scoring: |
+          高分：公司受益于多个宏观趋势
+          低分：公司面临宏观逆风
+
+      # 维度2：竞争地位
+      dimension_2:
+        name: "护城河强度 (Moat Strength)"
+        weight: 20%
+        definition: "可持续竞争优势"
+
+        moat_types_druckenmiller_likes:
+          - type: "技术领先"
+            examples: ["TSM 2nm领先", "Natera基因检测"]
+          - type: "网络效应"
+            examples: ["早期NVDA CUDA生态"]
+          - type: "规模经济"
+            examples: ["Teva仿制药规模"]
+          - type: "品牌/IP"
+            examples: ["较少关注"]
+
+        note: |
+          Druckenmiller更看重"结构性增长"而非传统护城河。
+          他愿意为增长支付溢价，前提是增长是结构性的。
+
+      # 维度3：估值相对性
+      dimension_3:
+        name: "估值吸引力 (Valuation Attractiveness)"
+        weight: 15%
+        definition: "不是绝对便宜，而是相对于增长潜力的合理性"
+
+        druckenmiller_approach: |
+          "I never use valuation to time the market."
+          但他选股时确实考虑估值——不是绝对估值，
+          而是"如果我的宏观判断正确，这个价格有多大上行空间"
+
+        current_examples:
+          - stock: "Teva"
+            entry_reason: "PE 5x，turnaround潜力"
+            valuation_type: "绝对便宜"
+          - stock: "TSM"
+            entry_reason: "AI需求结构性，地缘风险被过度定价"
+            valuation_type: "相对合理"
+          - stock: "Natera"
+            entry_reason: "高增长，愿意支付溢价"
+            valuation_type: "增长溢价"
+
+      # 维度4：盈利质量
+      dimension_4:
+        name: "盈利质量 (Earnings Quality)"
+        weight: 15%
+        definition: "超预期的能力和持续性"
+
+        what_druckenmiller_looks_for:
+          - "加速增长或持续强劲盈利"
+          - "超越华尔街预期"
+          - "管理层执行力验证"
+
+        screening_criteria:
+          - "最近4季度有3季度beat"
+          - "收入增速加速或稳定高位"
+          - "管理层guidance上调"
+
+      # 维度5：流动性
+      dimension_5:
+        name: "交易流动性 (Trading Liquidity)"
+        weight: 10%
+        definition: "能否大规模进出"
+
+        requirement: |
+          "Nearly 90% of his equity positions are in stocks with
+          average daily volumes exceeding 2 million shares."
+
+          这是实际约束，不是选股偏好。
+          他的规模决定了他只能买大中盘股。
+
+      # 维度6：催化剂
+      dimension_6:
+        name: "催化剂存在 (Catalyst Presence)"
+        weight: 10%
+        definition: "能触发价值实现的事件"
+
+        catalyst_types:
+          - type: "宏观催化剂"
+            example: "Fed降息→成长股估值扩张"
+          - type: "公司催化剂"
+            example: "Teva新药获批"
+          - type: "行业催化剂"
+            example: "AI capex继续增长→TSM受益"
+          - type: "估值修复催化剂"
+            example: "市场重新认识到价值"
+
+    composite_score_formula: |
+      Druckenmiller_Score =
+        0.30 × Macro_Alignment +
+        0.20 × Moat_Strength +
+        0.15 × Valuation_Attractiveness +
+        0.15 × Earnings_Quality +
+        0.10 × Trading_Liquidity +
+        0.10 × Catalyst_Presence
+
+      阈值：
+      - >80分：高概率Druckenmiller会买入
+      - 60-80：可能买入
+      - <60：不太可能买入
+
+    current_holdings_analysis:
+
+      - holding: "Natera (NTRA)"
+        portfolio_weight: "15.7%"
+        vector_analysis:
+          macro_alignment: 95  # 基因检测+医疗创新
+          moat_strength: 85    # 技术领先
+          valuation: 60        # 高估值但高增长
+          earnings_quality: 90 # 持续超预期
+          liquidity: 85        # 充足
+          catalyst: 80         # 多个产品线扩展
+        composite_score: 84
+
+      - holding: "Taiwan Semi (TSM)"
+        portfolio_weight: "增持450%"
+        vector_analysis:
+          macro_alignment: 95  # AI制造核心
+          moat_strength: 95    # 先进制程垄断
+          valuation: 75        # 合理
+          earnings_quality: 90 # 强劲
+          liquidity: 95        # 极高
+          catalyst: 85         # 2nm量产+AI需求
+        composite_score: 90
+
+      - holding: "Teva (TEVA)"
+        portfolio_weight: "连续加仓"
+        vector_analysis:
+          macro_alignment: 70  # 医药+成本控制
+          moat_strength: 60    # 仿制药规模
+          valuation: 95        # 极度便宜
+          earnings_quality: 70 # turnaround中
+          liquidity: 90        # 充足
+          catalyst: 80         # 新药+债务重组
+        composite_score: 76
+
+    predictive_application: |
+      用这个向量空间模型，我们可以预测Druckenmiller可能感兴趣的下一批股票：
+
+      候选标的筛选：
+      1. 宏观对齐：受益于AI/医疗创新/制造回流
+      2. 护城河：技术领先或规模经济
+      3. 估值：合理或便宜
+      4. 盈利：超预期或加速
+      5. 流动性：日均交易量>200万股
+      6. 催化剂：近期有明确催化剂
+
+      可能的下一批目标（推测）：
+      - Regeneron (REGN): 医药创新+护城河
+      - ASML: 设备垄断（但估值高）
+      - Micron (MU): 如果他转向存储复苏
+      - ServiceNow (NOW): 企业软件+AI
+
+  # ---------------------------------------------------------------------------
+  # D3: 时机引擎 - 他何时买入/卖出？
+  # ---------------------------------------------------------------------------
+  D3_timing_engine:
+
+    name: "Druckenmiller时机决策引擎"
+
+    core_principle: |
+      "I never use valuation to time the market.
+      I use liquidity considerations and technical analysis for timing.
+      Valuation only tells me how far the market can go once a catalyst
+      enters the picture to change the market direction."
+
+      翻译：估值告诉你能涨多少，不告诉你什么时候涨。
+      时机由流动性和技术分析决定。
+
+    buy_timing_signals:
+
+      primary_trigger: "流动性+技术+基本面三重确认"
+
+      signal_1_liquidity:
+        condition: "Fed从收紧转向宽松"
+        example: "2022年科技股抄底"
+        quote: "The best environment for stocks is a very dull, slow economy that the Federal Reserve is trying to get going."
+
+      signal_2_technical:
+        condition: "图表确认趋势"
+        requirement: "不买没有好图表的股票"
+        pattern: "长期盘整后放量突破最佳"
+
+      signal_3_fundamental:
+        condition: "基本面催化剂出现"
+        example: "产能退出后需求恢复"
+
+      timing_formula: |
+        买入时机 =
+          流动性转正 ∧
+          技术确认 ∧
+          催化剂出现
+
+        三个条件必须同时满足。
+        少一个就等待。
+
+    sell_timing_signals:
+
+      primary_trigger: "论点改变"
+
+      druckenmiller_rule: |
+        "If the reason you bought a security changes, then you should sell."
+        不使用机械止损。
+        卖出的唯一原因是买入论点不再成立。
+
+      specific_sell_signals:
+
+        - signal: "产能扩张信号"
+          description: "大量新产能宣布时卖出，不要等盈利下降"
+          example: "化工行业新工厂宣布"
+          lead_time: "领先盈利下降2-3年"
+
+        - signal: "流动性转负"
+          description: "Fed开始收紧时减仓"
+          current_status: "他在做空债券 = 预期收紧"
+
+        - signal: "估值过度扩张"
+          description: "不是因为贵就卖，而是因为上行空间有限"
+          NVDA_example: "2024年Q3清仓，可能因为估值已充分反映增长"
+
+        - signal: "论点失效"
+          description: "原来买入的理由不再成立"
+
+    holding_period:
+      average: "<7个月"
+      implication: "非常活跃的交易者，不是长期持有"
+      q3_2025_example: "清仓33只股票（超过一半），新建29个仓位"
+
+    timing_anti_patterns:
+      - pattern: "锚定成本"
+        mistake: "因为买入成本不愿止损"
+        druckenmiller_approach: "错了立即认错"
+
+      - pattern: "等待均值回归"
+        mistake: "跌了就等反弹"
+        druckenmiller_approach: "论点变了就走，不管成本"
+
+      - pattern: "追涨杀跌"
+        mistake: "涨了才买，跌了就卖"
+        druckenmiller_approach: "提前布局，论点驱动"
+
+  # ---------------------------------------------------------------------------
+  # D4: 仓位管理 - 他如何决定下注多少？
+  # ---------------------------------------------------------------------------
+  D4_position_sizing:
+
+    name: "Druckenmiller仓位管理系统"
+
+    core_philosophy: |
+      "What I learned [from George Soros] was sizing is 70 or 80% of the equation.
+      It's not whether you're right or wrong. It's about how much you make when
+      you're right and how much you lose when you're wrong."
+
+      翻译：仓位占成功的70-80%。
+      重要的不是对错，而是对了赚多少，错了亏多少。
+
+    concentration_principle:
+
+      philosophy: |
+        "I strongly believe the only way to make long-term returns that are superior
+        is by being a pig. I think diversification is probably the most misguided
+        concept everywhere."
+
+      current_concentration:
+        top_5_weight: "42%"
+        top_10_weight: "60%"
+        total_holdings: "52"
+
+      insight: |
+        集中投资反而降低风险，因为：
+        1. 大仓位会得到你全部的注意力
+        2. 35-40只股票会分散注意力
+        3. 高确信度时应该重仓
+
+    sizing_rules:
+
+      rule_1_conviction_based:
+        name: "确信度决定仓位"
+        logic: |
+          只有一年一两次真正让你兴奋的机会。
+          在这些机会上，应该重仓。
+
+        soros_lesson: |
+          1992年英镑交易：
+          Druckenmiller想做空100%仓位
+          Soros说：为什么只有100%？应该200%！
+
+      rule_2_streak_awareness:
+        name: "知道自己的状态"
+        logic: |
+          "I believe in streaks. Like in baseball. Sometimes you're seeing the ball,
+          sometimes you're not. And my number one job is to know when I'm hot and
+          when I'm not."
+
+        when_hot: "把刻度盘调到最大"
+        when_cold: "把刻度盘调到最小，不要试图扳回来"
+
+      rule_3_odds_based:
+        name: "概率有利时加仓"
+        logic: |
+          "Druckenmiller never sized up because a trade looked exciting.
+          He sized up when the odds were stacked in his favor."
+
+    position_sizing_matrix:
+
+      - conviction_level: "极高 (一年一两次)"
+        characteristics:
+          - "流动性+技术+基本面三重确认"
+          - "宏观完全对齐"
+          - "催化剂明确"
+        sizing: "15-25%"
+        example: "TSM增持450%"
+
+      - conviction_level: "高"
+        characteristics:
+          - "两个条件满足"
+          - "宏观基本对齐"
+        sizing: "8-15%"
+        example: "Natera 15.7%"
+
+      - conviction_level: "中"
+        characteristics:
+          - "一个条件满足"
+          - "看好但有疑虑"
+        sizing: "3-8%"
+
+      - conviction_level: "低/试探"
+        characteristics:
+          - "想法还在验证中"
+        sizing: "1-3%"
+
+      - conviction_level: "无"
+        sizing: "0% - 不做"
+        logic: "低确信度的交易不做"
+
+  # ---------------------------------------------------------------------------
+  # D5: 板块轮动 - 他如何在板块间移动？
+  # ---------------------------------------------------------------------------
+  D5_sector_rotation:
+
+    name: "Druckenmiller板块轮动模式"
+
+    rotation_philosophy: |
+      "Markets go through cycles. When one sector becomes overheated,
+      rotation into undervalued areas may offer better risk-reward opportunities."
+
+      平均持仓<7个月意味着他是活跃的轮动者，不是买入持有。
+
+    recent_rotation_2024_2025:
+
+      from_sector: "AI基础设施"
+      to_sector: "医疗/生物科技"
+
+      timeline:
+        - date: "2022-早期"
+          action: "买入NVDA"
+          reasoning: "AI早期，估值合理"
+
+        - date: "2024-Q1"
+          status: "NVDA占组合14%"
+          reasoning: "持续看好"
+
+        - date: "2024-Q3"
+          action: "清仓NVDA和AVGO"
+          reasoning: "AI短期过热，长期低估"
+          quote: "AI might be a little overhyped now, but underhyped long term."
+
+        - date: "2025"
+          action: "医疗/生物科技增至30%"
+          top_holdings: ["Natera", "Teva", "Insmed"]
+
+        - date: "2025-Q3"
+          action: "增持TSM 450%"
+          reasoning: "回归半导体，但选不同标的"
+          insight: "他承认卖NVDA太早是'大错误'，但选择TSM而非重新买NVDA"
+
+    rotation_pattern_analysis:
+
+      pattern_1:
+        name: "热门→冷门轮动"
+        description: "当某个板块变得过热，轮动到被忽视的板块"
+        example: "2024 AI→医疗"
+
+      pattern_2:
+        name: "周期顶部先于基本面卖出"
+        description: "产能扩张宣布时卖，不等盈利下降"
+        timing: "领先2-3年"
+
+      pattern_3:
+        name: "危机底部大举买入"
+        description: "在恐慌中看到价值"
+        examples:
+          - "2008年金融危机"
+          - "2020年疫情底部"
+          - "2022年科技股低点"
+
+    rotation_signals:
+
+      when_to_rotate_out:
+        - "估值已充分反映增长"
+        - "大量产能扩张宣布"
+        - "流动性环境转负"
+        - "市场共识过度乐观"
+
+      when_to_rotate_in:
+        - "产能退出后需求恢复"
+        - "估值便宜但催化剂出现"
+        - "市场忽视但基本面改善"
+        - "流动性环境转正"
+
+    current_sector_allocation_2025:
+      healthcare_biotech: "30%"
+      technology: "25%"
+      semiconductors: "15%"
+      consumer: "10%"
+      industrials: "10%"
+      other: "10%"
+
+  # ---------------------------------------------------------------------------
+  # D6: 风险管理 - 他如何保护资本？
+  # ---------------------------------------------------------------------------
+  D6_risk_management:
+
+    name: "Druckenmiller风险管理系统"
+
+    core_principle: |
+      "关键是限制回撤。"
+      30年30%年化，0亏损年。
+      这个记录说明风险管理极其重要。
+
+    risk_rules:
+
+      rule_1_no_mechanical_stops:
+        description: "不使用机械止损"
+        logic: |
+          "Just because a stock falls a certain percentage, it doesn't mean
+          you have to sell if the thesis remains."
+
+          论点不变，不因价格下跌而卖出。
+          论点改变，立即卖出。
+
+      rule_2_quick_exit_when_wrong:
+        description: "错了快速止损"
+        example_1987: |
+          1987年崩盘前一天，Druckenmiller从净空仓转为130%做多。
+          当他意识到错误，第二天立即翻空，在崩盘中反而赚钱。
+
+        lesson: "心理灵活性是关键，不要为了面子坚持错误"
+
+      rule_3_size_down_when_cold:
+        description: "状态不好时减小仓位"
+        quote: |
+          "When you're cold the last thing you should do is make big bets to get even.
+          You need to turn yourself down."
+
+        anti_pattern: "用大注试图扳回亏损"
+
+      rule_4_concentration_as_risk_control:
+        description: "集中是风险控制"
+        logic: |
+          "Where you tend to be in trouble is if you have 35 or 40 names.
+          If you start paying attention to one. If you have a big massive position,
+          it has your attention."
+
+        counterintuitive: "集中投资反而比分散更安全，因为你会全神贯注"
+
+      rule_5_macro_override:
+        description: "宏观否决微观"
+        logic: |
+          如果宏观信号是负面的（流动性收紧），
+          无论个股基本面多好，都要谨慎。
+
+        current_application: |
+          Druckenmiller做空债券 = 预期收紧
+          这是一个警告信号，不要追高
+
+    drawdown_management:
+
+      historical_record:
+        losing_years: 0
+        losing_quarters: "5/120 (4%)"
+        2008_crisis_return: "+11%"
+
+      how_achieved:
+        - "论点驱动的止损，不是机械止损"
+        - "状态不好时减小规模"
+        - "宏观否决权"
+        - "快速认错的心理准备"
+
+# =============================================================================
+# 通用投资者逆向工程模板
+# =============================================================================
+
+generic_reverse_engineering_template:
+
+  description: |
+    这个模板可以应用于任何投资者的逆向工程。
+    通过填写6个维度，可以还原任何投资者的决策函数。
+
+  template:
+
+    investor_name: "{NAME}"
+    performance_score: "{SCORE}"
+
+    D1_signals:
+      primary_signal: "{什么是他最重要的信号？}"
+      secondary_signals: []
+      signal_hierarchy: "{信号的优先级是什么？}"
+
+    D2_company_characteristics:
+      must_have: []
+      nice_to_have: []
+      avoid: []
+      vector_dimensions: []
+
+    D3_timing:
+      buy_triggers: []
+      sell_triggers: []
+      average_holding_period: "{}"
+
+    D4_sizing:
+      concentration_style: "{集中/分散}"
+      conviction_to_size_mapping: {}
+
+    D5_rotation:
+      typical_patterns: []
+      current_sector_preferences: []
+
+    D6_risk:
+      stop_loss_style: "{机械/论点驱动}"
+      max_position_size: "{}"
+      drawdown_tolerance: "{}"
+
+# =============================================================================
+# 投资者预测引擎
+# =============================================================================
+
+prediction_engine:
+
+  description: |
+    基于逆向工程的结果，我们可以预测：
+    1. 投资者下一步可能买什么
+    2. 投资者何时可能卖出当前持仓
+    3. 投资者对特定股票的态度
+
+  druckenmiller_predictions:
+
+    likely_next_buys:
+      criteria_applied:
+        - "宏观对齐：AI/医疗/制造回流"
+        - "护城河强"
+        - "估值合理或便宜"
+        - "有催化剂"
+        - "流动性充足"
+
+      candidates:
+        - stock: "Regeneron (REGN)"
+          score: 78
+          reasoning: "医药创新+GLP-1竞争者"
+
+        - stock: "ServiceNow (NOW)"
+          score: 75
+          reasoning: "企业软件+AI整合"
+
+        - stock: "ASML"
+          score: 72
+          reasoning: "设备垄断，但估值可能是障碍"
+
+        - stock: "Micron (MU)"
+          score: 70
+          reasoning: "存储复苏+HBM增长，但周期性风险"
+
+    likely_sell_signals:
+
+      - holding: "如果TSM遇到严重地缘政治事件"
+        sell_probability: "高"
+        reasoning: "论点改变"
+
+      - holding: "如果Fed激进降息+通胀恢复"
+        action: "可能增加风险资产仓位"
+
+      - holding: "如果AI capex增速显著放缓"
+        action: "可能进一步减少科技敞口"
+
+# =============================================================================
+# 更新机制
+# =============================================================================
+
+update_mechanism:
+
+  trigger: "每季度13F发布后"
+
+  actions:
+    - "分析新买入：是否符合向量空间预测？"
+    - "分析卖出：什么信号触发了卖出？"
+    - "更新信号优先级：哪些信号被验证有效？"
+    - "更新向量空间权重：哪些特征更重要？"
+    - "更新预测准确率"
+
+  learning_loop: |
+    每次13F发布后：
+    1. 对比预测 vs 实际
+    2. 如果预测正确，强化模型
+    3. 如果预测错误，分析遗漏了什么信号
+    4. 更新模型参数

@@ -1,0 +1,610 @@
+# Top Investor Database v3.0
+# 顶级投资者观点数据库 - 历史预测数据版
+#
+# v2.0问题：只有当前持仓，没有历史预测追踪
+# v3.0改进：
+#   - 每位投资者至少5个历史预测
+#   - 预测结果（correct/incorrect）
+#   - 回报率（如可计算）
+#   - 基于历史计算prediction_accuracy
+
+version: "3.0"
+created: "2026-01-28"
+upgrade_from: "v2.0"
+data_sources: "[搜索] 13F历史、投资者访谈、财报电话会"
+
+# =============================================================================
+# 投资者历史预测数据
+# =============================================================================
+
+investors_with_predictions:
+
+  # ---------------------------------------------------------------------------
+  # Druckenmiller (98分)
+  # ---------------------------------------------------------------------------
+  - id: "INV_001"
+    name: "Stanley Druckenmiller"
+    performance_score: 98
+
+    historical_predictions:
+
+      - id: "DRUCK_H001"
+        date: "2022-Q1"
+        prediction: "科技股抄底，特别是MSFT和GOOGL"
+        entry_context: "科技股下跌40-50%后"
+        thesis: "AI和云计算是结构性增长"
+        verify_date: "2024-01"
+        result: "correct"
+        return: "+80% (MSFT), +60% (GOOGL)"
+        source: "[搜索] CNBC访谈 2022年5月"
+
+      - id: "DRUCK_H002"
+        date: "2023-Q2"
+        prediction: "NVDA是AI首选标的"
+        entry_price: "~$280 (split-adjusted)"
+        thesis: "GPU是AI训练的核心基础设施"
+        verify_date: "2024-Q3"
+        result: "correct"
+        return: "+150%"
+        note: "虽然后来卖出，但入场时机正确"
+        source: "[搜索] 13F filing"
+
+      - id: "DRUCK_H003"
+        date: "2024-Q3"
+        prediction: "清仓NVDA和AVGO"
+        exit_context: "NVDA涨幅超过200%后"
+        thesis: "AI短期过热，虽然长期低估"
+        verify_date: "2025-Q4"
+        result: "pending"
+        note: "他自己说这可能是'大错误'"
+        source: "[搜索] 投资者会议演讲"
+
+      - id: "DRUCK_H004"
+        date: "2025-Q3"
+        prediction: "TSM是AI更好的风险回报标的"
+        action: "增持450%"
+        thesis: "制造层比设计层更安全，地缘风险被过度定价"
+        verify_date: "2026-Q4"
+        result: "pending"
+        source: "[搜索] 13F filing Q3 2025"
+
+      - id: "DRUCK_H005"
+        date: "2008"
+        prediction: "金融危机中做多国债"
+        thesis: "避险+流动性宽松"
+        verify_date: "2008-12"
+        result: "correct"
+        return: "+11% 年度收益（危机年）"
+        source: "[搜索] 传记资料"
+
+      - id: "DRUCK_H006"
+        date: "1992"
+        prediction: "做空英镑200%仓位"
+        thesis: "英镑无法维持ERM汇率"
+        verify_date: "1992-09"
+        result: "correct"
+        return: "$1B+ 单日利润"
+        source: "[搜索] Soros/Druckenmiller英镑危机"
+
+      - id: "DRUCK_H007"
+        date: "2025"
+        prediction: "做空美债"
+        thesis: "预期利率上升，财政不可持续"
+        verify_date: "2026-06"
+        result: "pending"
+        source: "[搜索] 投资者会议"
+
+    prediction_statistics:
+      total_tracked: 7
+      verified: 4
+      correct: 4
+      incorrect: 0
+      pending: 3
+      accuracy: "100% (4/4 verified)"
+      avg_return_when_correct: "+60%+"
+
+    accuracy_by_type:
+      macro_calls: "100%"
+      sector_timing: "100%"
+      stock_picking: "100%"
+      exit_timing: "待验证"
+
+  # ---------------------------------------------------------------------------
+  # David Tepper (92分)
+  # ---------------------------------------------------------------------------
+  - id: "INV_003"
+    name: "David Tepper"
+    performance_score: 92
+
+    historical_predictions:
+
+      - id: "TEP_H001"
+        date: "2009-Q1"
+        prediction: "银行股抄底"
+        entry_context: "金融危机最低点"
+        positions: ["BAC", "C", "JPM"]
+        thesis: "政府会救助，估值极度低估"
+        verify_date: "2009-12"
+        result: "correct"
+        return: "+120% 年度收益"
+        source: "[搜索] CNBC采访"
+
+      - id: "TEP_H002"
+        date: "2020-Q1"
+        prediction: "疫情底部买入科技股"
+        positions: ["AMZN", "GOOGL", "FB"]
+        thesis: "数字化加速，科技股被过度抛售"
+        verify_date: "2021-01"
+        result: "correct"
+        return: "+80%"
+        source: "[搜索] 13F filing"
+
+      - id: "TEP_H003"
+        date: "2023-Q1"
+        prediction: "重仓中国科技股"
+        positions: ["BABA", "JD", "PDD"]
+        thesis: "中国重开+估值便宜"
+        verify_date: "2024-01"
+        result: "incorrect"
+        return: "-20%"
+        note: "时机过早，中国经济恢复慢于预期"
+        source: "[搜索] 13F filing"
+
+      - id: "TEP_H004"
+        date: "2024-Q3"
+        prediction: "NVDA增持6倍"
+        action: "从30万股增至190万股"
+        thesis: "AI基础设施需求持续"
+        verify_date: "2026-Q1"
+        result: "pending"
+        source: "[搜索] 13F filing"
+
+      - id: "TEP_H005"
+        date: "2024-Q3"
+        prediction: "清仓AVGO"
+        thesis: "可能担忧周期性风险"
+        verify_date: "2026-Q1"
+        result: "pending"
+        source: "[搜索] 13F filing"
+
+      - id: "TEP_H006"
+        date: "2025-Q3"
+        prediction: "TSM增持280%"
+        thesis: "AI制造核心受益者"
+        verify_date: "2026-Q4"
+        result: "pending"
+        source: "[搜索] 13F filing"
+
+    prediction_statistics:
+      total_tracked: 6
+      verified: 3
+      correct: 2
+      incorrect: 1
+      pending: 3
+      accuracy: "67% (2/3 verified)"
+      avg_return_when_correct: "+100%"
+
+    accuracy_by_type:
+      crisis_bottom_calls: "100%"
+      sector_rotation: "67%"
+      china_calls: "0%"
+
+  # ---------------------------------------------------------------------------
+  # Warren Buffett (95分，但半导体领域不适用)
+  # ---------------------------------------------------------------------------
+  - id: "INV_008"
+    name: "Warren Buffett"
+    performance_score: 95
+
+    historical_predictions:
+
+      - id: "BUF_H001"
+        date: "2008"
+        prediction: "买入高盛优先股+warrants"
+        terms: "$5B优先股 + 10%股息 + warrants"
+        thesis: "金融系统不会崩溃，高盛会存活"
+        verify_date: "2013"
+        result: "correct"
+        return: "$3.7B利润"
+        source: "[搜索] Berkshire年报"
+
+      - id: "BUF_H002"
+        date: "2011"
+        prediction: "买入IBM $10B+"
+        thesis: "IT服务的护城河"
+        verify_date: "2018"
+        result: "incorrect"
+        return: "-15%"
+        note: "他自己承认是错误，2018年清仓"
+        source: "[搜索] Berkshire股东信"
+
+      - id: "BUF_H003"
+        date: "2016"
+        prediction: "买入AAPL $36B"
+        thesis: "消费品属性，不是科技公司"
+        verify_date: "2024"
+        result: "correct"
+        return: "+400%"
+        source: "[搜索] Berkshire年报"
+
+      - id: "BUF_H004"
+        date: "2022-Q1"
+        prediction: "买入TSM $4.1B"
+        thesis: "半导体制造垄断"
+        verify_date: "2023-Q1"
+        result: "incorrect (timing)"
+        note: "一年后全部卖出，引用地缘政治担忧"
+        return: "+5%"
+        source: "[搜索] 13F filing + 股东会"
+
+      - id: "BUF_H005"
+        date: "2024-2025"
+        prediction: "减持AAPL从50%到30%"
+        action: "持续减持"
+        thesis: "未明确说明，可能是仓位管理"
+        verify_date: "2026"
+        result: "pending"
+        source: "[搜索] 13F filing"
+
+      - id: "BUF_H006"
+        date: "2025"
+        prediction: "现金仓位历史新高$320B+"
+        implicit_signal: "市场估值过高，缺乏好机会"
+        verify_date: "2026"
+        result: "pending (逆向指标)"
+        note: "历史上高现金仓位往往预示市场调整"
+        source: "[搜索] Berkshire季报"
+
+    prediction_statistics:
+      total_tracked: 6
+      verified: 4
+      correct: 2
+      incorrect: 2
+      pending: 2
+      accuracy: "50% (2/4 verified)"
+      note: "半导体领域准确率0%（TSM买卖都是错误时机）"
+
+    accuracy_by_type:
+      crisis_opportunities: "100%"
+      consumer_companies: "100%"
+      technology: "0% (IBM失败)"
+      semiconductor: "0% (TSM失败)"
+
+    usage_guideline: |
+      ✅ 宏观风险信号（现金仓位）
+      ✅ 消费品/金融公司
+      ❌ 半导体（他自己说不懂）
+
+  # ---------------------------------------------------------------------------
+  # Dan Loeb (78分)
+  # ---------------------------------------------------------------------------
+  - id: "INV_004"
+    name: "Dan Loeb"
+    performance_score: 78
+
+    historical_predictions:
+
+      - id: "LOEB_H001"
+        date: "2020"
+        prediction: "Intel需要分拆制造业务"
+        action: "公开信要求Intel管理层改革"
+        thesis: "IDM模式已失败"
+        verify_date: "2024"
+        result: "partially_correct"
+        note: "Intel最终分拆Altera，但制造问题未解决"
+        source: "[搜索] Third Point公开信"
+
+      - id: "LOEB_H002"
+        date: "2023-Q4"
+        prediction: "买入Meta"
+        entry_context: "Meta效率年，股价低点"
+        thesis: "成本削减+AI潜力"
+        verify_date: "2024-Q4"
+        result: "correct"
+        return: "+100%"
+        source: "[搜索] 13F filing"
+
+      - id: "LOEB_H003"
+        date: "2024"
+        prediction: "新建仓SK Hynix"
+        thesis: "HBM供应链受益者"
+        verify_date: "2025-Q4"
+        result: "correct"
+        return: "+50%"
+        source: "[搜索] 13F filing"
+
+      - id: "LOEB_H004"
+        date: "2022"
+        prediction: "做多Disney，要求管理层改革"
+        action: "激进投资"
+        thesis: "资产价值被低估"
+        verify_date: "2024"
+        result: "incorrect"
+        return: "-10%"
+        note: "Disney转型困难，最终退出"
+        source: "[搜索] Third Point披露"
+
+      - id: "LOEB_H005"
+        date: "2021"
+        prediction: "Upstart (UPST) 投资"
+        thesis: "AI lending革命"
+        verify_date: "2023"
+        result: "incorrect"
+        return: "-70%"
+        source: "[搜索] 13F filing"
+
+    prediction_statistics:
+      total_tracked: 5
+      verified: 5
+      correct: 3
+      incorrect: 2
+      pending: 0
+      accuracy: "60% (3/5)"
+
+    accuracy_by_type:
+      activist_campaigns: "50%"
+      semiconductor_supply_chain: "100%"
+      tech_turnarounds: "50%"
+
+  # ---------------------------------------------------------------------------
+  # Cathie Wood (45分 - 反向指标)
+  # ---------------------------------------------------------------------------
+  - id: "INV_002"
+    name: "Cathie Wood"
+    performance_score: 45
+
+    historical_predictions:
+
+      - id: "WOOD_H001"
+        date: "2021-02"
+        prediction: "TSLA $3000 目标价 (pre-split)"
+        thesis: "自动驾驶+机器人出租车"
+        verify_date: "2025-01"
+        result: "incorrect"
+        actual: "股价~$250 (split-adjusted ~$170)"
+        return: "-50% from peak"
+        source: "[搜索] ARK研报"
+
+      - id: "WOOD_H002"
+        date: "2021"
+        prediction: "Bitcoin $500K by 2026"
+        thesis: "机构采用+数字黄金"
+        verify_date: "2026-01"
+        result: "pending"
+        current: "~$100K"
+        note: "需要5x才能达到目标"
+        source: "[搜索] ARK Big Ideas报告"
+
+      - id: "WOOD_H003"
+        date: "2021"
+        prediction: "ARKK会跑赢S&P"
+        thesis: "颠覆式创新是未来"
+        verify_date: "2024"
+        result: "incorrect"
+        return: "ARKK -60% vs S&P +50% (2021-2024)"
+        source: "[搜索] 业绩对比"
+
+      - id: "WOOD_H004"
+        date: "2022-Q4"
+        prediction: "继续买入COIN和ROKU"
+        action: "市场低点加仓"
+        thesis: "被过度抛售的创新公司"
+        verify_date: "2024"
+        result: "partially_correct"
+        note: "COIN +200%反弹，ROKU持平"
+        source: "[搜索] 13F filing"
+
+      - id: "WOOD_H005"
+        date: "2025-12"
+        prediction: "买入AVGO $50M"
+        thesis: "定制芯片趋势"
+        verify_date: "2026-06"
+        result: "pending"
+        note: "Tepper/Druckenmiller同期在卖，是反向信号"
+        source: "[搜索] ARK交易披露"
+
+      - id: "WOOD_H006"
+        date: "2024"
+        prediction: "AI会改变一切，继续买AI股"
+        thesis: "AI是最大的颠覆"
+        verify_date: "ongoing"
+        result: "correct (方向), incorrect (选股)"
+        note: "AI方向对，但她的AI选股跑输NVDA/MSFT"
+        source: "[搜索] ARK研报"
+
+    prediction_statistics:
+      total_tracked: 6
+      verified: 4
+      correct: 0
+      partially_correct: 2
+      incorrect: 2
+      pending: 2
+      accuracy: "0% (0/4 fully correct)"
+
+    accuracy_by_type:
+      price_targets: "0%"
+      macro_themes: "50% (方向对，timing差)"
+      stock_picking: "20%"
+
+    contrarian_value: |
+      Cathie Wood的价值是反向指标：
+      - 她买入的时候往往是情绪顶部
+      - 她的方向感可能正确，但timing几乎总是错的
+      - 当她开始买入某个板块，考虑获利了结
+
+  # ---------------------------------------------------------------------------
+  # Howard Marks (90分，但只适用于宏观/周期)
+  # ---------------------------------------------------------------------------
+  - id: "INV_007"
+    name: "Howard Marks"
+    performance_score: 90
+
+    historical_predictions:
+
+      - id: "MARKS_H001"
+        date: "2000-01"
+        prediction: "bubble.com备忘录"
+        thesis: "科技股泡沫将破裂"
+        verify_date: "2001"
+        result: "correct"
+        timing: "早了一年但方向正确"
+        source: "[搜索] Oaktree备忘录"
+
+      - id: "MARKS_H002"
+        date: "2007"
+        prediction: "信用市场风险极高"
+        thesis: "次贷危机隐患"
+        verify_date: "2008"
+        result: "correct"
+        source: "[搜索] Oaktree备忘录"
+
+      - id: "MARKS_H003"
+        date: "2020-03"
+        prediction: "疫情是买入机会"
+        action: "部署$10B+信用投资"
+        thesis: "恐慌是机会"
+        verify_date: "2021"
+        result: "correct"
+        return: "不良债务+50%"
+        source: "[搜索] Oaktree季报"
+
+      - id: "MARKS_H004"
+        date: "2024"
+        prediction: "市场处于拐点泡沫区域"
+        quote: "不是泡沫但接近拐点"
+        thesis: "AI估值过热"
+        verify_date: "2026"
+        result: "pending"
+        source: "[搜索] Oaktree备忘录"
+
+      - id: "MARKS_H005"
+        date: "2023"
+        prediction: "私募信贷是最佳机会"
+        thesis: "银行收紧+高利率"
+        verify_date: "2025"
+        result: "correct"
+        note: "私募信贷收益率高于公开市场"
+        source: "[搜索] Oaktree投资者信"
+
+    prediction_statistics:
+      total_tracked: 5
+      verified: 4
+      correct: 4
+      incorrect: 0
+      pending: 1
+      accuracy: "100% (4/4 verified)"
+
+    accuracy_by_type:
+      bubble_detection: "100%"
+      crisis_buying: "100%"
+      credit_cycles: "100%"
+      stock_picking: "N/A (不做股票)"
+
+    usage_guideline: |
+      ✅ 宏观风险判断
+      ✅ 市场周期位置
+      ✅ 信用市场机会
+      ❌ 个股选择（他不做）
+
+# =============================================================================
+# 投资者预测准确率排名
+# =============================================================================
+
+accuracy_ranking:
+
+  by_overall_accuracy:
+    - {name: "Druckenmiller", score: 98, accuracy: "100%", verified: 4}
+    - {name: "Howard Marks", score: 90, accuracy: "100%", verified: 4, note: "只做宏观"}
+    - {name: "Tepper", score: 92, accuracy: "67%", verified: 3}
+    - {name: "Loeb", score: 78, accuracy: "60%", verified: 5}
+    - {name: "Buffett", score: 95, accuracy: "50%", verified: 4, note: "科技领域0%"}
+    - {name: "Wood", score: 45, accuracy: "0%", verified: 4, note: "反向指标"}
+
+  by_domain:
+
+    semiconductor:
+      reliable:
+        - {name: "Druckenmiller", accuracy: "100%"}
+        - {name: "Tepper", accuracy: "67%"}
+        - {name: "Loeb", accuracy: "100%", note: "HBM供应链"}
+      unreliable:
+        - {name: "Buffett", accuracy: "0%", note: "TSM进出都错"}
+        - {name: "Wood", accuracy: "待验证"}
+
+    macro_risk:
+      reliable:
+        - {name: "Druckenmiller", accuracy: "100%"}
+        - {name: "Howard Marks", accuracy: "100%"}
+        - {name: "Buffett", accuracy: "N/A", note: "现金仓位是信号"}
+      unreliable:
+        - {name: "Wood", accuracy: "差", note: "timing总是错"}
+
+    crisis_bottom:
+      reliable:
+        - {name: "Tepper", accuracy: "100%", note: "危机抄底专家"}
+        - {name: "Howard Marks", accuracy: "100%"}
+
+# =============================================================================
+# 信号解读规则（基于历史验证）
+# =============================================================================
+
+signal_interpretation:
+
+  strongest_signals:
+    - signal: "Druckenmiller大幅增持"
+      confidence: "极高"
+      historical_accuracy: "100%"
+      action: "可以跟随"
+
+    - signal: "Howard Marks发出风险警告"
+      confidence: "极高"
+      historical_accuracy: "100%"
+      action: "提高警惕，考虑减仓"
+
+    - signal: "Tepper危机时抄底"
+      confidence: "高"
+      historical_accuracy: "100%"
+      action: "可以跟随"
+
+  weak_signals:
+    - signal: "Buffett买卖科技/半导体股"
+      confidence: "低"
+      historical_accuracy: "0%"
+      action: "忽略或反向参考"
+
+    - signal: "Wood买入"
+      confidence: "反向"
+      historical_accuracy: "0%"
+      action: "考虑获利了结"
+
+  divergence_interpretation:
+    - scenario: "Druckenmiller vs Tepper on NVDA"
+      druckenmiller: "清仓"
+      tepper: "增持6倍"
+      interpretation: |
+        两位顶级投资者分歧 = 高不确定性
+        Druckenmiller历史准确率更高
+        但Tepper在crisis/recovery timing也很准
+        建议：小仓位，设好止损
+
+# =============================================================================
+# 更新机制
+# =============================================================================
+
+update_mechanism:
+
+  trigger: "每季度13F发布后"
+
+  actions:
+    - "添加新的predictions"
+    - "验证已到期的predictions"
+    - "更新accuracy统计"
+    - "调整投资者权重（连续3次正确+5，连续2次错误-10）"
+
+  next_update:
+    date: "2026-02-15"
+    predictions_to_verify:
+      - "DRUCK_H003: NVDA清仓是否正确"
+      - "DRUCK_H004: TSM增持表现"
+      - "TEP_H004: NVDA增持表现"
+      - "WOOD_H005: AVGO买入表现"

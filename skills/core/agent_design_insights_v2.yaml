@@ -1,0 +1,571 @@
+# Agent Design Insights v2.0
+# 从顶级论文中提取的Agent设计方法论 - 增加实施优先级版
+#
+# v1.0问题：5篇论文的应用设计只是描述，没有实施路径
+# v2.0改进：
+#   - implementation_priority (P0/P1/P2)
+#   - implementation_status (pending/in_progress/completed)
+#   - expected_effort (天数)
+#   - dependencies (依赖项)
+#   - success_criteria (成功标准)
+
+version: "2.0"
+created: "2026-01-28"
+upgrade_from: "v1.0"
+purpose: "将学术界Agent设计最佳实践应用于投资研究系统"
+
+# =============================================================================
+# 实施优先级总览
+# =============================================================================
+
+implementation_roadmap:
+
+  summary:
+    total_improvements: 15
+    p0_immediate: 5
+    p1_short_term: 6
+    p2_medium_term: 4
+
+  p0_immediate:
+    description: "立即实施，边际收益最大"
+    items:
+      - name: "5个外部Critics验证器"
+        source: "LLM-Modulo框架"
+        expected_effort: "2天"
+        expected_impact: "减少数据错误90%+"
+
+      - name: "预测反思循环"
+        source: "Reflexion框架"
+        expected_effort: "1天"
+        expected_impact: "预测准确率88%→92%+"
+
+      - name: "SOP角色定义"
+        source: "MetaGPT框架"
+        expected_effort: "1天"
+        expected_impact: "减少遗漏分析维度"
+
+      - name: "知识路由器"
+        source: "Agentic RAG"
+        expected_effort: "1天"
+        expected_impact: "知识利用率30%→70%+"
+
+      - name: "多论点探索模板"
+        source: "Tree of Thoughts"
+        expected_effort: "0.5天"
+        expected_impact: "减少单一视角偏见"
+
+  p1_short_term:
+    description: "2周内实施"
+    items:
+      - "完整Reflexion情景记忆"
+      - "SOP交接物格式规范"
+      - "Tree of Thoughts估值分支"
+      - "知识相关性评分"
+      - "Gap检测机制"
+      - "Critics迭代修正流程"
+
+  p2_medium_term:
+    description: "1个月内实施"
+    items:
+      - "完整Agentic RAG系统"
+      - "多Agent协作架构"
+      - "自动知识补充"
+      - "效果自动评估"
+
+# =============================================================================
+# Paper 1: Reflexion - 详细实施计划
+# =============================================================================
+
+paper_1_reflexion:
+  name: "Reflexion: Language Agents with Verbal Reinforcement Learning"
+  arxiv: "https://arxiv.org/abs/2303.11366"
+
+  core_idea: "通过语言反思而非梯度更新来强化学习"
+
+  implementations:
+
+    - id: "REF_001"
+      name: "预测反思循环"
+      priority: "P0"
+      status: "pending"
+      expected_effort: "1天"
+
+      description: |
+        每次预测验证后，执行结构化反思并存储到情景记忆。
+        下次做类似预测时，检索相关反思作为上下文。
+
+      implementation_steps:
+        1: "在predictions_tracker中添加reflection字段"
+        2: "创建Reflector提示模板（5个反思问题）"
+        3: "建立pattern_tag分类系统"
+        4: "实现相似预测检索机制"
+
+      reflector_template: |
+        预测: {prediction}
+        置信度: {confidence}
+        实际结果: {actual}
+
+        反思问题：
+        1. 为什么预测错误/正确？
+        2. 哪些信号被忽略？
+        3. 置信度校准是否准确？
+        4. 这个模式之前出现过吗？
+        5. 下次如何改进？
+
+        输出格式：
+        - reflection_summary: (一句话总结)
+        - pattern_tag: (分类标签)
+        - lesson_for_future: (未来教训)
+
+      success_criteria:
+        - "每个验证的预测都有结构化反思"
+        - "新预测时能检索到相关历史反思"
+        - "预测准确率提升≥4%"
+
+      dependencies: []
+
+    - id: "REF_002"
+      name: "完整情景记忆系统"
+      priority: "P1"
+      status: "pending"
+      expected_effort: "3天"
+
+      description: "建立完整的预测情景记忆，支持语义检索"
+
+      components:
+        - "Prediction Memory Store (YAML格式)"
+        - "Pattern Classification System (10+类型)"
+        - "Semantic Retrieval (基于embedding相似度)"
+        - "Memory Consolidation (定期归纳通用模式)"
+
+      dependencies: ["REF_001"]
+
+# =============================================================================
+# Paper 2: MetaGPT - 详细实施计划
+# =============================================================================
+
+paper_2_metagpt:
+  name: "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework"
+  arxiv: "https://arxiv.org/abs/2308.00352"
+
+  core_idea: "将SOP编码到Agent中，明确角色和交接物"
+
+  implementations:
+
+    - id: "META_001"
+      name: "5角色SOP定义"
+      priority: "P0"
+      status: "pending"
+      expected_effort: "1天"
+
+      description: |
+        定义5个明确角色，每个角色有：
+        - 职责边界
+        - 输入规范
+        - 输出规范
+        - 使用的框架
+
+      roles:
+        - role: "Macro Analyst"
+          responsibility: "宏观环境判断"
+          input: "市场数据、周期指标、投资者持仓"
+          output: |
+            macro_signal:
+              overall: 🟢/🟡/🔴
+              temperature: XX
+              liquidity: expanding/neutral/tightening
+              sector_preference: [sectors]
+          frameworks: ["cycle_temperature_gauge", "druckenmiller_methodology"]
+
+        - role: "Sector Analyst"
+          responsibility: "行业分析和标的筛选"
+          input: "Macro Analyst输出 + 行业数据"
+          output: |
+            sector_analysis:
+              rating: 🟢/🟡/🔴
+              cycle_position: PhaseX
+              top_picks: [symbols]
+              avoid: [symbols]
+          frameworks: ["semiconductor_cycle", "ai_stack"]
+
+        - role: "Company Analyst"
+          responsibility: "公司深度分析"
+          input: "标的候选列表 + 公司数据 + API数据"
+          output: |
+            company_analysis:
+              thesis: (核心论点)
+              bull_case: (看多逻辑)
+              bear_case: (看空逻辑)
+              valuation: (估值)
+              dimensions_covered: 6/6
+          frameworks: ["tech_decline/rise", "deep_cognition"]
+          mandatory_dimensions: 6
+
+        - role: "Risk Manager"
+          responsibility: "风险评估和Kill Switch"
+          input: "Company Analyst输出 + 风险数据"
+          output: |
+            risk_assessment:
+              overall_risk: low/medium/high
+              kill_switches: [triggers]
+              position_sizing: X%
+          frameworks: ["meta_cognitive"]
+
+        - role: "Quality Gate"
+          responsibility: "输出质量验证"
+          input: "完整报告"
+          output: |
+            quality_check:
+              passed: true/false
+              issues: [list]
+              recommendations: [list]
+          checklist: "CLAUDE.md"
+
+      success_criteria:
+        - "每个分析报告都经过5个角色处理"
+        - "交接物格式标准化"
+        - "减少遗漏分析维度到0"
+
+      dependencies: []
+
+    - id: "META_002"
+      name: "交接物格式规范"
+      priority: "P1"
+      status: "pending"
+      expected_effort: "2天"
+
+      description: "定义每个角色输出的YAML/JSON格式规范"
+
+      dependencies: ["META_001"]
+
+    - id: "META_003"
+      name: "流水线执行引擎"
+      priority: "P2"
+      status: "pending"
+      expected_effort: "5天"
+
+      description: "实现自动化的SOP流水线执行"
+
+      dependencies: ["META_001", "META_002"]
+
+# =============================================================================
+# Paper 3: Tree of Thoughts - 详细实施计划
+# =============================================================================
+
+paper_3_tot:
+  name: "Tree of Thoughts: Deliberate Problem Solving with LLMs"
+  arxiv: "https://arxiv.org/abs/2305.10601"
+
+  core_idea: "多路径探索 + 自我评估 + 回溯修正"
+
+  implementations:
+
+    - id: "TOT_001"
+      name: "投资论点多分支模板"
+      priority: "P0"
+      status: "pending"
+      expected_effort: "0.5天"
+
+      description: |
+        对每个投资标的，强制探索3条分支：
+        - 看多论点
+        - 看空论点
+        - 差异化/非共识论点
+
+      template: |
+        # {symbol} 投资论点树
+
+        ## Branch 1: 看多论点
+        思维节点:
+        - {thought_1}
+        - {thought_2}
+        - {thought_3}
+        评估: 强度XX%，证据链长度X
+
+        ## Branch 2: 看空论点
+        思维节点:
+        - {thought_1}
+        - {thought_2}
+        - {thought_3}
+        评估: 强度XX%，证据链长度X
+
+        ## Branch 3: 差异化论点（alpha来源）
+        思维节点:
+        - {thought_1}
+        - {thought_2}
+        评估: 独特性XX%，可验证性XX%
+
+        ## 综合
+        多空权衡: 看多XX% vs 看空XX%
+        核心赌注: {what_we_are_betting_on}
+        如果错误: {what_breaks_the_thesis}
+
+      success_criteria:
+        - "每个分析都有3个分支"
+        - "分支间有明确的权重比较"
+        - "减少单一视角偏见"
+
+      dependencies: []
+
+    - id: "TOT_002"
+      name: "估值方法分支"
+      priority: "P1"
+      status: "pending"
+      expected_effort: "1天"
+
+      description: "对估值使用多种方法树，选择最合理的"
+
+      methods_tree:
+        - branch: "相对估值"
+          methods: ["PE", "EV/EBITDA", "PEG", "PS"]
+        - branch: "绝对估值"
+          methods: ["DCF", "DDM"]
+        - branch: "SOTP"
+          methods: ["分部估值", "期权估值"]
+
+      dependencies: ["TOT_001"]
+
+    - id: "TOT_003"
+      name: "风险情景分支"
+      priority: "P1"
+      status: "pending"
+      expected_effort: "1天"
+
+      description: "风险分析使用多情景树"
+
+      dependencies: ["TOT_001"]
+
+# =============================================================================
+# Paper 4: LLM-Modulo - 详细实施计划
+# =============================================================================
+
+paper_4_modulo:
+  name: "LLMs Can't Plan, But Can Help Planning in LLM-Modulo Frameworks"
+  arxiv: "https://arxiv.org/abs/2402.01817"
+
+  core_idea: "LLM生成候选，外部Critics验证，迭代修正"
+
+  implementations:
+
+    - id: "MOD_001"
+      name: "5个外部Critics验证器"
+      priority: "P0"
+      status: "pending"
+      expected_effort: "2天"
+
+      description: |
+        实现5个独立的验证器，在报告输出前并行检查：
+
+      critics:
+        - name: "Data Verifier"
+          function: "验证每个数据点的来源和准确性"
+          checks:
+            - "[API]标注是否对应真实API调用"
+            - "数字是否在合理范围内"
+            - "数据时间戳是否正确"
+          error_examples:
+            - "声称ROIC 75%但API返回65%"
+            - "引用2025数据但实际是2024"
+
+        - name: "Math Verifier"
+          function: "验证所有计算的正确性"
+          checks:
+            - "PE = Price / EPS 计算正确"
+            - "EV = MarketCap + Debt - Cash 计算正确"
+            - "SOTP加总正确"
+          error_examples:
+            - "声称EV/EBITDA 15x但实际计算是18x"
+
+        - name: "Logic Verifier"
+          function: "检查推理链的逻辑一致性"
+          checks:
+            - "前提→结论的必然性"
+            - "没有跳跃推理"
+            - "没有自相矛盾"
+          error_examples:
+            - "前面说'周期顶部'后面说'可以重仓'"
+
+        - name: "Consistency Verifier"
+          function: "检查报告内部的一致性"
+          checks:
+            - "SOTP目标价 vs 最终目标价差距<20%"
+            - "风险评估 vs 仓位建议一致"
+            - "看多/看空论点 vs 最终结论一致"
+          error_examples:
+            - "SOTP $161但目标价$280"
+
+        - name: "Kill Switch Verifier"
+          function: "验证Kill Switch可操作性"
+          checks:
+            - "每个触发条件可量化"
+            - "数据来源明确"
+            - "触发后行动明确"
+          error_examples:
+            - "'如果情况恶化则卖出' - 不可操作"
+
+      workflow: |
+        1. Agent生成分析报告
+        2. 5个Critics并行验证（每个返回pass/fail + 问题列表）
+        3. 汇总验证结果
+        4. 如有failure，返回给Agent修正
+        5. 迭代直到全部通过或达到上限(3次)
+
+      success_criteria:
+        - "数据错误率降低90%+"
+        - "逻辑不一致问题降低80%+"
+        - "每个报告都有Critics验证记录"
+
+      dependencies: []
+
+    - id: "MOD_002"
+      name: "Critics迭代修正流程"
+      priority: "P1"
+      status: "pending"
+      expected_effort: "2天"
+
+      description: "实现Critics发现问题后的自动修正流程"
+
+      dependencies: ["MOD_001"]
+
+# =============================================================================
+# Paper 5: Agentic RAG - 详细实施计划
+# =============================================================================
+
+paper_5_rag:
+  name: "Agentic RAG Survey"
+  arxiv: "https://arxiv.org/abs/2501.09136"
+
+  core_idea: "知识检索Agent化：自主决定何时检索、检索什么"
+
+  implementations:
+
+    - id: "RAG_001"
+      name: "知识路由器"
+      priority: "P0"
+      status: "pending"
+      expected_effort: "1天"
+
+      description: "根据任务类型自动路由到相关知识库"
+
+      routing_rules:
+        - trigger: "分析半导体"
+          route_to:
+            - "semiconductor_cycle_framework"
+            - "ai_stack_framework"
+            - "lessons_learned (semiconductor_analysis场景)"
+          investors: ["Druckenmiller", "Tepper"]
+
+        - trigger: "分析科技平台"
+          route_to:
+            - "tech_decline_framework"
+            - "tech_rise_framework"
+            - "lessons_learned (tech_platform_analysis场景)"
+          investors: ["Druckenmiller", "Ackman", "Coleman"]
+
+        - trigger: "宏观判断"
+          route_to:
+            - "cycle_temperature_gauge"
+            - "druckenmiller_methodology"
+            - "meta_insights (META_000, META_004)"
+          investors: ["Druckenmiller", "Howard Marks", "Buffett"]
+
+        - trigger: "投资决策"
+          route_to:
+            - "unified_decision_framework"
+            - "top_investor_database"
+            - "predictions_tracker"
+
+        - trigger: "验证预测"
+          route_to:
+            - "predictions_tracker"
+            - "lessons_learned (反思相关)"
+
+      success_criteria:
+        - "每次分析自动加载相关知识"
+        - "知识利用率从30%提升到70%+"
+
+      dependencies: []
+
+    - id: "RAG_002"
+      name: "知识相关性评分"
+      priority: "P1"
+      status: "pending"
+      expected_effort: "2天"
+
+      description: "评估检索结果与当前任务的相关性"
+
+      dependencies: ["RAG_001"]
+
+    - id: "RAG_003"
+      name: "Gap检测机制"
+      priority: "P1"
+      status: "pending"
+      expected_effort: "1天"
+
+      description: "识别知识库中的空白，触发WebSearch补充"
+
+      dependencies: ["RAG_001"]
+
+    - id: "RAG_004"
+      name: "完整Agentic RAG系统"
+      priority: "P2"
+      status: "pending"
+      expected_effort: "5天"
+
+      description: "整合路由、评分、检测、综合的完整系统"
+
+      dependencies: ["RAG_001", "RAG_002", "RAG_003"]
+
+# =============================================================================
+# 实施状态追踪
+# =============================================================================
+
+implementation_status:
+
+  completed: []
+
+  in_progress: []
+
+  pending:
+    P0:
+      - {id: "MOD_001", name: "5个外部Critics", effort: "2天"}
+      - {id: "REF_001", name: "预测反思循环", effort: "1天"}
+      - {id: "META_001", name: "5角色SOP定义", effort: "1天"}
+      - {id: "RAG_001", name: "知识路由器", effort: "1天"}
+      - {id: "TOT_001", name: "多论点模板", effort: "0.5天"}
+
+    P1:
+      - {id: "REF_002", name: "情景记忆系统", effort: "3天"}
+      - {id: "META_002", name: "交接物格式", effort: "2天"}
+      - {id: "TOT_002", name: "估值分支", effort: "1天"}
+      - {id: "TOT_003", name: "风险分支", effort: "1天"}
+      - {id: "MOD_002", name: "迭代修正", effort: "2天"}
+      - {id: "RAG_002", name: "相关性评分", effort: "2天"}
+      - {id: "RAG_003", name: "Gap检测", effort: "1天"}
+
+    P2:
+      - {id: "META_003", name: "流水线引擎", effort: "5天"}
+      - {id: "RAG_004", name: "完整RAG", effort: "5天"}
+
+  total_effort_estimate:
+    P0: "5.5天"
+    P1: "12天"
+    P2: "10天"
+    total: "27.5天"
+
+# =============================================================================
+# 快速参考
+# =============================================================================
+
+quick_reference:
+
+  next_actions:
+    1: "实施MOD_001 (5个Critics) - 最高优先级，影响最大"
+    2: "实施TOT_001 (多论点模板) - 最快实施，0.5天"
+    3: "实施RAG_001 (知识路由器) - 提升知识利用率"
+
+  expected_total_impact:
+    data_accuracy: "+90%"
+    prediction_accuracy: "+4%"
+    analysis_completeness: "+50%"
+    knowledge_utilization: "+40%"

@@ -809,9 +809,126 @@ druckenmiller_methodology:
     quote: "It takes courage to be a pig. The greatest investors make large concentrated bets."
     application: "真正高确信度时应重仓10-20%，不为分散而分散"
 
+# =============================================================================
+# 投资者逆向工程方法论经验 (LL_122 - LL_130)
+# =============================================================================
+
+investor_reverse_engineering:
+  id_range: "LL_122 到 LL_130"
+  date: "2026-01-28"
+  total_new: 9
+  trigger: "用户反馈：只记录动向不是深度分析，需要逆向工程投资风格"
+
+  lesson_122:
+    id: "LL_122"
+    category: "reverse_engineering"
+    lesson: "观察投资者≠逆向工程投资者；需要还原决策函数f(信号,特征,时机,宏观)→行动"
+    root_cause: "我只记录'他买了什么'，没有分析'他为什么买、看到什么信号'"
+    framework_created: "investor_reverse_engineering_framework_v1.yaml"
+    generalization: |
+      对任何高价值信息源，都要从"观察"升级到"逆向工程"：
+      - 分析师报告：不只是记录结论，要逆向其分析框架
+      - 学术论文：不只是记录发现，要逆向其方法论
+      - 成功公司：不只是记录做法，要逆向其决策逻辑
+
+  lesson_123:
+    id: "LL_123"
+    category: "signal_detection"
+    lesson: "Druckenmiller信号层级：流动性(40%) > 市场内部(25%) > 技术(20%) > 产能(15%)"
+    source: "[搜索] Druckenmiller访谈"
+    key_insight: |
+      大多数投资者看盈利，Druckenmiller看流动性。
+      如果流动性信号是负面的，其他信号再好也要谨慎。
+    application: "在任何投资决策前，先判断流动性环境"
+    current_signal: "他做空债券 = 预期利率上升 = 谨慎信号"
+
+  lesson_124:
+    id: "LL_124"
+    category: "timing_methodology"
+    lesson: "Druckenmiller时机决策：不用估值择时，用流动性+技术分析择时"
+    source: "[搜索] Druckenmiller访谈"
+    quote: "I never use valuation to time the market. I use liquidity considerations and technical analysis for timing."
+    application: |
+      估值告诉你能涨多少，不告诉你什么时候涨。
+      买入时机 = 流动性转正 ∧ 技术确认 ∧ 催化剂出现
+
+  lesson_125:
+    id: "LL_125"
+    category: "sell_discipline"
+    lesson: "Druckenmiller卖出信号：论点改变立即卖，不用机械止损"
+    source: "[搜索] Druckenmiller访谈"
+    key_rules:
+      - "产能扩张宣布时卖出，不等盈利下降（领先2-3年）"
+      - "论点不变不因价格下跌卖出"
+      - "论点改变立即卖出，不管成本"
+    anti_pattern: "因为买入成本不愿止损 = 锚定效应"
+
+  lesson_126:
+    id: "LL_126"
+    category: "position_sizing"
+    lesson: "仓位占成功的70-80%，不是对错，而是对了赚多少错了亏多少"
+    source: "Soros教导Druckenmiller"
+    quote: "Sizing is 70-80% of the equation. It's not whether you're right or wrong."
+    application: |
+      确信度→仓位映射：
+      - 极高（一年一两次）：15-25%
+      - 高：8-15%
+      - 中：3-8%
+      - 低/试探：1-3%
+      - 无：0%（不做）
+
+  lesson_127:
+    id: "LL_127"
+    category: "company_vector_space"
+    lesson: "Druckenmiller持仓向量空间：宏观对齐(30%)+护城河(20%)+估值(15%)+盈利(15%)+流动性(10%)+催化剂(10%)"
+    application: |
+      用向量空间模型可以预测他会买什么：
+      1. 计算候选股票的各维度得分
+      2. 加权计算综合得分
+      3. >80分高概率买入
+      4. 60-80可能买入
+      5. <60不太可能
+
+  lesson_128:
+    id: "LL_128"
+    category: "sector_rotation"
+    lesson: "Druckenmiller板块轮动模式：热门→冷门，周期顶部先于基本面卖出，危机底部大举买入"
+    evidence:
+      - "2024 AI→医疗轮动"
+      - "2022科技股抄底"
+      - "平均持仓<7个月"
+    rotation_signals:
+      rotate_out: ["估值充分反映", "产能扩张宣布", "流动性转负", "共识过度乐观"]
+      rotate_in: ["产能退出后", "估值便宜+催化剂", "市场忽视但基本面改善"]
+
+  lesson_129:
+    id: "LL_129"
+    category: "meta_learning"
+    lesson: "逆向工程投资者的6个维度：信号检测、向量空间、时机引擎、仓位管理、板块轮动、风险管理"
+    framework: "investor_reverse_engineering_framework_v1.yaml"
+    application: |
+      这个模板可以应用于任何投资者：
+      D1: 他监控什么信号？
+      D2: 他的持仓有什么共同特征？
+      D3: 他用什么决定买入/卖出时机？
+      D4: 他如何决定下注多少？
+      D5: 他如何在板块间轮动？
+      D6: 他如何保护资本？
+
+  lesson_130:
+    id: "LL_130"
+    category: "prediction_engine"
+    lesson: "基于逆向工程，可以预测投资者下一步行动"
+    application: |
+      Druckenmiller预测引擎输出：
+      - 高概率下一个买入：REGN(82分), ASML(78分如果回调), NOW(77分)
+      - 他不会重新买NVDA（选TSM说明偏好制造层）
+      - 如果流动性转正，会增加科技敞口
+    validation: "每季度13F验证预测准确率"
+
 # 统计
 statistics:
-  total_lessons: 121  # +5 (LL_117-121 Druckenmiller)
+  total_lessons: 130  # +9 (LL_122-130 投资者逆向工程)
   meta_insights: 10   # +1 新元洞察 (META_011)
   predictions: 55
   predictions_validated: 27
