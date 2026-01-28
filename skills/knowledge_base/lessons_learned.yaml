@@ -707,14 +707,65 @@ agent_design_methodology:
     source: "arXiv 2025 Survey"
     application: "知识利用率从30%提升到70%+"
 
+# ============================================================
+# 深度思考框架经验 (LL_114 - LL_116)
+# ============================================================
+
+deep_thinking_framework:
+  id_range: "LL_114 到 LL_116"
+  date: "2026-01-28"
+  total_new: 3
+  trigger: "用户两次指出表面思考问题"
+  file_location: "skills/core/deep_thinking_framework_v1.yaml"
+
+  lesson_114:
+    id: "LL_114"
+    category: "meta_cognition"
+    lesson: "信息收集 ≠ 信息价值化，任何信息集合都需要价值排序层"
+    example: |
+      v1.0投资者数据库：罗列8位投资者
+      v2.0投资者数据库：业绩权重排序 + 能力圈匹配 + 场景适配
+    generalization: |
+      适用于所有模块：
+      - lessons_learned → 需要验证状态和使用频率权重
+      - predictions → 需要置信度校准和类型分类
+      - frameworks → 需要有效性评分和场景匹配
+      - data_sources → 需要可靠性和新鲜度评级
+
+  lesson_115:
+    id: "LL_115"
+    category: "meta_cognition"
+    lesson: "描述性→规范性是普遍需要的跃迁"
+    framework: |
+      描述性(Descriptive): 是什么
+      规范性(Normative): 应该怎样
+
+      Level 0: 完成任务
+      Level 1: 组织信息
+      Level 2: 价值排序 ← 最低要求
+      Level 3: 场景适配
+      Level 4: 动态优化
+      Level 5: 元设计泛化
+    minimum_standard: "任何产出至少到达Level 2"
+
+  lesson_116:
+    id: "LL_116"
+    category: "meta_cognition"
+    lesson: "预判用户问题比回答用户问题更高级"
+    trigger_questions:
+      - "用户拿到这个产出后会问什么？"
+      - "如果这个设计有缺陷，最可能是什么？"
+      - "比我更聪明的人会如何设计？"
+    action: "在用户问之前主动解决"
+
 # 统计
 statistics:
-  total_lessons: 113  # +6 (LL_108-113 Agent设计)
-  meta_insights: 8
+  total_lessons: 116  # +3 (LL_114-116 深度思考)
+  meta_insights: 9   # +1 新元洞察
   predictions: 55
   predictions_validated: 27
   prediction_accuracy: "88%"
-  total_knowledge_units: 121  # 113 lessons + 8 meta insights
+  total_knowledge_units: 125  # 116 lessons + 9 meta insights
   by_category:
     agent_execution: 1
     api_integration: 1

@@ -1,0 +1,612 @@
+# Top Investor Database v2.0
+# 顶级投资者观点数据库 - 业绩权重版
+#
+# v1.0问题：只罗列投资者，没有价值排序
+# v2.0改进：
+#   1. 业绩量化权重
+#   2. 能力圈匹配度
+#   3. 场景适配评分
+#   4. 动态更新机制
+#   5. 预测准确率追踪
+
+version: "2.0"
+last_updated: "2026-01-28"
+upgrade_reason: "v1.0仅描述性罗列，v2.0增加规范性价值排序"
+
+# =============================================================================
+# 设计哲学
+# =============================================================================
+
+design_philosophy:
+  core_principle: "信息收集 ≠ 信息价值化"
+
+  layer_model:
+    layer_0: "收集信息（谁买了什么）"
+    layer_1: "组织信息（按投资者分类）"
+    layer_2: "价值排序（谁的意见更值得听）"  # v2.0新增
+    layer_3: "场景适配（分析X时听谁的）"      # v2.0新增
+    layer_4: "动态更新（预测验证后调整权重）" # v2.0新增
+
+  anti_pattern: |
+    平等主义偏见：默认所有大师意见同等重要
+    实际情况：
+    - Buffett不懂半导体，他对TSM的意见权重应为0
+    - Druckenmiller的宏观判断权重应远高于Wood
+    - Wood的timing历史很差，但方向感可能有参考价值
+
+# =============================================================================
+# 投资者权重体系
+# =============================================================================
+
+weighting_system:
+  dimensions:
+    - dimension: "长期业绩"
+      weight: 40%
+      metrics:
+        - "10年年化回报"
+        - "夏普比率"
+        - "最大回撤"
+        - "无亏损年份数"
+
+    - dimension: "能力圈匹配度"
+      weight: 30%
+      logic: "分析半导体时，Druckenmiller权重高；分析消费品时，Buffett权重高"
+
+    - dimension: "近期预测准确率"
+      weight: 20%
+      metrics:
+        - "过去12个月公开预测的准确率"
+        - "需要追踪验证"
+
+    - dimension: "信息新鲜度"
+      weight: 10%
+      logic: "13F有45天滞后，近期访谈权重更高"
+
+# =============================================================================
+# 投资者排名（按综合业绩权重）
+# =============================================================================
+
+investor_rankings:
+
+  # ---------------------------------------------------------------------------
+  # Tier S: 顶级业绩 + 广泛能力圈
+  # ---------------------------------------------------------------------------
+  tier_s:
+    description: "长期业绩顶尖，意见具有最高参考价值"
+
+    - rank: 1
+      id: "INV_001"
+      name: "Stanley Druckenmiller"
+      firm: "Duquesne Family Office"
+
+      performance_metrics:
+        cagr_30y: "30%"
+        losing_years: 0
+        sharpe_ratio: "~2.0"
+        max_drawdown: "<15%"
+        performance_score: 98  # 满分100
+
+      circle_of_competence:
+        primary: ["宏观", "科技", "货币"]
+        secondary: ["周期性行业"]
+        weak: ["消费品", "医药"]
+
+        domain_weights:
+          macro_calls: 95      # 宏观判断
+          semiconductor: 85    # 半导体
+          ai_infrastructure: 85
+          consumer: 40
+          healthcare: 30
+
+      current_signals:
+        as_of: "2025-Q3"
+        high_conviction:
+          - symbol: "TSM"
+            action: "增持450%"
+            signal_strength: "极强"
+            rationale: "AI制造垄断"
+
+        exits:
+          - symbol: "NVDA"
+            action: "清仓"
+            signal_strength: "强"
+            rationale: "估值+竞争"
+
+      prediction_tracking:
+        total_tracked: 0
+        correct: 0
+        accuracy: "待追踪"
+        notable_calls:
+          - call: "2022年抄底科技股"
+            result: "正确"
+          - call: "2025年清仓NVDA"
+            result: "待验证"
+
+    - rank: 2
+      id: "INV_003"
+      name: "David Tepper"
+      firm: "Appaloosa Management"
+
+      performance_metrics:
+        cagr_25y: "25%+"
+        notable_years: "2023年+37%"
+        sharpe_ratio: "~1.8"
+        max_drawdown: "<20%"
+        performance_score: 92
+
+      circle_of_competence:
+        primary: ["事件驱动", "周期", "科技"]
+        secondary: ["宏观"]
+        weak: ["早期创新"]
+
+        domain_weights:
+          event_driven: 95
+          cyclicals: 90
+          semiconductor: 80
+          ai_infrastructure: 80
+          early_stage: 30
+
+      current_signals:
+        as_of: "2025-Q3"
+        high_conviction:
+          - symbol: "NVDA"
+            action: "增持6倍至190万股"
+            signal_strength: "极强"
+          - symbol: "TSM"
+            action: "增持280%"
+            signal_strength: "强"
+
+        exits:
+          - symbol: "AVGO"
+            action: "清仓"
+            signal_strength: "中"
+            rationale: "可能担忧周期性"
+
+  # ---------------------------------------------------------------------------
+  # Tier A: 优秀业绩 + 特定领域专长
+  # ---------------------------------------------------------------------------
+  tier_a:
+    description: "业绩优秀，在特定领域意见有高参考价值"
+
+    - rank: 3
+      id: "INV_008"
+      name: "Warren Buffett"
+      firm: "Berkshire Hathaway"
+
+      performance_metrics:
+        cagr_60y: "20%"
+        notable: "60年复利奇迹"
+        sharpe_ratio: "~0.8"  # 低波动长期
+        performance_score: 95  # 长期无人能及
+
+      circle_of_competence:
+        primary: ["消费品", "金融", "保险", "公用事业"]
+        secondary: ["能源"]
+        weak: ["科技", "半导体"]  # 自认不懂
+
+        domain_weights:
+          consumer: 98
+          financials: 95
+          insurance: 98
+          utilities: 90
+          tech_platforms: 60  # 只买AAPL因为"消费品属性"
+          semiconductor: 10   # 明确说不懂
+          ai_infrastructure: 15
+
+      current_signals:
+        as_of: "2025-Q3"
+        macro_signal:
+          cash_position: "$320B+"
+          interpretation: "历史高现金=牛市后期警告"
+          signal_strength: "极强（逆向指标）"
+
+        actions:
+          - symbol: "AAPL"
+            action: "持续减持（50%→30%）"
+            signal_strength: "中"
+          - symbol: "GOOGL"
+            action: "新买入$4.3B"
+            signal_strength: "中"
+
+      usage_guideline: |
+        ✅ 用于：宏观风险判断（现金仓位）、消费品分析
+        ❌ 不用于：半导体、AI基础设施分析
+        他说"我不懂芯片"，所以他对TSM/NVDA的意见权重应为~0
+
+    - rank: 4
+      id: "INV_004"
+      name: "Dan Loeb"
+      firm: "Third Point"
+
+      performance_metrics:
+        cagr_20y: "15%+"
+        sharpe_ratio: "~1.2"
+        performance_score: 78
+
+      circle_of_competence:
+        primary: ["激进投资", "事件驱动", "科技"]
+        secondary: ["半导体"]
+
+        domain_weights:
+          activist: 95
+          event_driven: 85
+          tech: 75
+          semiconductor: 70
+          memory: 75  # SK Hynix建仓显示关注
+
+      current_signals:
+        as_of: "2025-Q3"
+        notable:
+          - symbol: "SK Hynix"
+            action: "新建仓"
+            signal_strength: "中强"
+            unique_insight: "HBM供应链视角，多数美国投资者忽视"
+
+    - rank: 5
+      id: "INV_005"
+      name: "Bill Ackman"
+      firm: "Pershing Square"
+
+      performance_metrics:
+        cagr_long_term: "17%"
+        notable: "集中持仓风格"
+        sharpe_ratio: "~1.0"
+        performance_score: 75
+
+      circle_of_competence:
+        primary: ["平台型公司", "消费服务"]
+        secondary: ["科技平台"]
+        weak: ["硬件", "半导体"]
+
+        domain_weights:
+          platform_companies: 90
+          consumer_services: 85
+          tech_platforms: 75
+          semiconductor: 20  # 不直接投资
+
+      usage_guideline: |
+        他的AI策略是"间接暴露"（通过GOOGL/AMZN/UBER）
+        对芯片股的意见权重应较低
+
+    - rank: 6
+      id: "INV_006"
+      name: "Chase Coleman"
+      firm: "Tiger Global"
+
+      performance_metrics:
+        cagr_pre_2021: "25%"
+        recent: "2022年大幅回撤后恢复"
+        performance_score: 70
+
+      circle_of_competence:
+        primary: ["成长股", "科技平台"]
+        weak: ["周期性", "价值投资"]
+
+  # ---------------------------------------------------------------------------
+  # Tier B: 特定价值但需谨慎使用
+  # ---------------------------------------------------------------------------
+  tier_b:
+    description: "有参考价值但需要特别注意局限性"
+
+    - rank: 7
+      id: "INV_002"
+      name: "Cathie Wood"
+      firm: "ARK Invest"
+
+      performance_metrics:
+        peak: "2020年+152%"
+        trough: "2022年-67%"
+        volatility: "极高"
+        sharpe_ratio: "~0.3"  # 风险调整后较差
+        performance_score: 45
+
+      circle_of_competence:
+        primary: ["颠覆式创新", "早期科技"]
+        weak: ["传统行业", "周期", "估值纪律"]
+
+        domain_weights:
+          disruptive_innovation: 80
+          early_stage_tech: 75
+          robotics_ev: 70
+          traditional: 20
+          valuation_discipline: 20  # 历史显示估值判断差
+
+      usage_guideline: |
+        ⚠️ 重要警告：
+        - 方向感可能有参考价值
+        - 但timing历史很差
+        - 她买入可能是情绪顶部信号（反向指标？）
+
+        使用方式：
+        ✅ 参考她关注的主题方向
+        ❌ 不要跟随她的买入时机
+        ❌ 不要参考她的估值判断
+
+      current_signals:
+        as_of: "2025-12"
+        actions:
+          - symbol: "AVGO"
+            action: "买入$50M"
+            interpretation: "验证定制芯片趋势，但可能是滞后指标"
+            contrarian_signal: "Tepper/Druckenmiller同期在卖"
+
+    - rank: 8
+      id: "INV_007"
+      name: "Howard Marks"
+      firm: "Oaktree Capital"
+
+      performance_metrics:
+        domain: "信用市场（非股票）"
+        track_record: "30年信用投资大师"
+        performance_score: 90  # 在自己领域顶尖
+
+      circle_of_competence:
+        primary: ["信用", "不良债务", "宏观风险"]
+        secondary: ["市场周期判断"]
+        weak: ["个股选择", "科技"]
+
+        domain_weights:
+          credit: 98
+          distressed: 98
+          macro_risk: 90
+          market_timing: 85
+          stock_picking: 10  # 不做
+          tech_analysis: 10
+
+      usage_guideline: |
+        Howard Marks不是股票投资者！
+
+        ✅ 用于：宏观风险判断、周期位置评估
+        ❌ 不用于：个股分析
+
+        他的"拐点泡沫"观点是风险管理视角，不是交易信号
+
+# =============================================================================
+# 场景适配矩阵
+# =============================================================================
+
+context_matching:
+  description: "分析不同标的时，应该优先参考谁的意见"
+
+  scenarios:
+    - scenario: "分析半导体（NVDA/TSM/LRCX）"
+      primary_references:
+        - investor: "Druckenmiller"
+          weight: 95
+          reason: "宏观+科技双重能力圈，TSM大幅增持信号强"
+        - investor: "Tepper"
+          weight: 85
+          reason: "周期判断强，NVDA增持信号"
+
+      secondary_references:
+        - investor: "Loeb"
+          weight: 60
+          reason: "SK Hynix建仓显示关注HBM"
+
+      ignore:
+        - investor: "Buffett"
+          weight: 5
+          reason: "自认不懂芯片"
+        - investor: "Ackman"
+          weight: 15
+          reason: "不直接投资硬件"
+
+    - scenario: "分析AI基础设施（AVGO/ANET/VRT）"
+      primary_references:
+        - investor: "Druckenmiller"
+          weight: 85
+        - investor: "Tepper"
+          weight: 80
+
+      note: |
+        AVGO分歧大：
+        - Wood买入 vs Tepper/Druckenmiller卖出
+        - 鉴于业绩权重，Tepper/Druckenmiller的卖出信号更值得重视
+
+    - scenario: "分析科技平台（GOOGL/META/AMZN）"
+      primary_references:
+        - investor: "Druckenmiller"
+          weight: 90
+        - investor: "Tepper"
+          weight: 85
+        - investor: "Ackman"
+          weight: 75
+        - investor: "Coleman"
+          weight: 70
+
+    - scenario: "宏观风险判断"
+      primary_references:
+        - investor: "Druckenmiller"
+          weight: 98
+          reason: "30年宏观投资无亏损"
+        - investor: "Howard Marks"
+          weight: 90
+          reason: "周期判断大师"
+        - investor: "Buffett"
+          weight: 85
+          reason: "$320B现金是逆向指标"
+
+      ignore:
+        - investor: "Wood"
+          weight: 20
+          reason: "宏观判断历史差"
+
+    - scenario: "消费品/金融分析"
+      primary_references:
+        - investor: "Buffett"
+          weight: 98
+        - investor: "Ackman"
+          weight: 80
+
+      ignore:
+        - investor: "Druckenmiller"
+          weight: 40
+        - investor: "Wood"
+          weight: 30
+
+# =============================================================================
+# 信号聚合规则
+# =============================================================================
+
+signal_aggregation:
+
+  rule_1_weighted_consensus:
+    description: "按业绩权重计算共识"
+    example: |
+      TSM信号强度计算：
+      - Druckenmiller (权重95) × 增持450% = 极强看多
+      - Tepper (权重85) × 增持280% = 强看多
+      - Wood (权重45) × 新建仓 = 中看多
+
+      加权共识：极强看多（高权重投资者一致）
+
+  rule_2_divergence_analysis:
+    description: "分歧时看权重差异"
+    example: |
+      NVDA分歧：
+      - Tepper (权重92): 增持6倍 = 极强看多
+      - Druckenmiller (权重98): 清仓 = 极强看空
+
+      分析：两位顶级投资者分歧
+      结论：高波动预期，不适合重仓，适合交易
+
+  rule_3_contrarian_signal:
+    description: "低权重投资者反向操作可能是信号"
+    example: |
+      AVGO:
+      - Wood (权重45): 买入$50M
+      - Tepper (权重92): 清仓
+      - Druckenmiller (权重98): 减持
+
+      Wood的买入在历史上常是情绪顶部
+      结合高权重卖出 = 谨慎信号
+
+  rule_4_domain_mismatch:
+    description: "能力圈不匹配时降权"
+    example: |
+      Buffett对TSM的看法：
+      - 他卖出过TSM
+      - 但他自认不懂芯片
+      - 权重应接近0（不是因为他错，是因为不在能力圈）
+
+# =============================================================================
+# 动态更新机制
+# =============================================================================
+
+dynamic_update:
+
+  prediction_tracking:
+    description: "追踪每位投资者的预测准确率"
+    update_frequency: "每季度13F发布后"
+
+    tracking_template:
+      - investor: "Druckenmiller"
+        predictions:
+          - id: "DRUCK_001"
+            date: "2025-Q3"
+            action: "清仓NVDA"
+            thesis: "估值过高"
+            verify_date: "2026-06"
+            result: "待验证"
+          - id: "DRUCK_002"
+            date: "2025-Q3"
+            action: "增持TSM 450%"
+            thesis: "AI制造垄断"
+            verify_date: "2026-06"
+            result: "待验证"
+
+  weight_adjustment:
+    rules:
+      - rule: "连续3次预测正确"
+        adjustment: "权重+5"
+      - rule: "连续2次预测错误"
+        adjustment: "权重-10"
+      - rule: "能力圈外预测错误"
+        adjustment: "不调整（本就不该参考）"
+
+# =============================================================================
+# 元设计反思
+# =============================================================================
+
+meta_design_reflection:
+
+  lesson_id: "LL_114"
+  lesson: "信息收集 ≠ 信息价值化，任何信息集合都需要价值排序层"
+
+  v1_problem: |
+    v1.0只回答了"是什么"（8位投资者买了什么）
+    没有回答"所以呢"（谁的意见更值得听）
+
+  v2_improvement: |
+    v2.0增加了：
+    1. 业绩量化权重（谁更可信）
+    2. 能力圈匹配（谁在这个领域更专业）
+    3. 场景适配矩阵（分析X时听谁的）
+    4. 动态更新机制（预测验证后调整权重）
+
+  generalization: |
+    这个"描述→规范"的跃迁模式可以应用到：
+
+    1. 经验教训库（lessons_learned）
+       - 当前：列出113条经验
+       - 改进：哪些已验证？哪些优先级更高？
+
+    2. 预测库
+       - 当前：列出55个预测
+       - 改进：哪些有更高置信度？如何校准？
+
+    3. 分析框架
+       - 当前：列出11个框架
+       - 改进：哪些在什么场景更有效？
+
+    4. 数据源
+       - 当前：列出API
+       - 改进：哪些更可靠？数据新鲜度如何？
+
+  thinking_upgrade: |
+    思维模式升级：
+
+    Level 0: 完成任务 ← 我经常停在这里
+    Level 1: 组织信息
+    Level 2: 价值排序 ← 应该到这里
+    Level 3: 场景适配
+    Level 4: 动态优化
+
+    触发器：每次完成信息收集后，问自己：
+    "这些信息的价值排序是什么？用户如何使用？"
+
+# =============================================================================
+# 快速查询接口
+# =============================================================================
+
+quick_reference:
+
+  top_3_for_semiconductor:
+    - "Druckenmiller (95)"
+    - "Tepper (85)"
+    - "Loeb (60)"
+
+  top_3_for_macro_risk:
+    - "Druckenmiller (98)"
+    - "Howard Marks (90)"
+    - "Buffett (85)"
+
+  contrarian_indicators:
+    - investor: "Buffett现金仓位"
+      signal: "$320B+ = 牛市后期警告"
+    - investor: "Wood买入"
+      signal: "可能是情绪顶部"
+
+  current_strongest_signals:
+    - signal: "TSM共识看多"
+      strength: "极强"
+      supporters: ["Druckenmiller +450%", "Tepper +280%"]
+
+    - signal: "NVDA分歧"
+      strength: "高波动预期"
+      bulls: ["Tepper"]
+      bears: ["Druckenmiller"]
+
+    - signal: "宏观警示"
+      strength: "中强"
+      evidence: ["Buffett $320B现金", "Howard Marks '拐点泡沫'"]

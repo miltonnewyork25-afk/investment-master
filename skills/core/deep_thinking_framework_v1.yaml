@@ -1,0 +1,262 @@
+# Deep Thinking Framework v1.0
+# 深度思考框架 - 从表面到本质
+#
+# 问题根源：满足于"完成任务"而非"最优解决"
+# 解决方案：强制启动更深层思考的触发器和检查清单
+
+version: "1.0"
+created: "2026-01-28"
+trigger: "用户两次指出表面思考问题"
+
+# =============================================================================
+# 核心问题诊断
+# =============================================================================
+
+problem_diagnosis:
+
+  symptom_1:
+    description: "107条投资经验，0条Agent设计经验"
+    root_cause: "执行者心态 vs 架构师心态"
+
+  symptom_2:
+    description: "投资者数据库只罗列，没有权重排序"
+    root_cause: "信息收集 ≠ 信息价值化"
+
+  common_pattern: |
+    我倾向于：
+    1. 收集信息 → 觉得"完成了"
+    2. 回答问题 → 没有问"更好的问题是什么"
+    3. 解决任务 → 没有问"这是最优解吗"
+
+    这是"一阶思维陷阱"：只走到问题的第一层就停止
+
+# =============================================================================
+# 思维层级模型
+# =============================================================================
+
+thinking_levels:
+
+  level_0:
+    name: "任务完成"
+    question: "做完了吗？"
+    trap: "停在这里 = 表面解决"
+
+  level_1:
+    name: "信息组织"
+    question: "信息结构化了吗？"
+    output: "分类、整理"
+
+  level_2:
+    name: "价值排序"
+    question: "哪些更重要？权重是什么？"
+    output: "优先级、权重、评分"
+    key_upgrade: "从描述性到规范性"
+
+  level_3:
+    name: "场景适配"
+    question: "在什么情况下用什么？"
+    output: "条件匹配、情境路由"
+
+  level_4:
+    name: "动态优化"
+    question: "如何根据反馈改进？"
+    output: "更新机制、验证循环"
+
+  level_5:
+    name: "元设计"
+    question: "这个设计模式可以泛化到哪里？"
+    output: "跨领域类比、范式提取"
+
+  minimum_requirement: "任何产出至少到达Level 2"
+
+# =============================================================================
+# 强制思考触发器
+# =============================================================================
+
+mandatory_triggers:
+
+  trigger_1_after_collection:
+    timing: "完成任何信息收集后"
+    questions:
+      - "这些信息的价值排序是什么？"
+      - "用户拿到这个后如何使用？"
+      - "哪些更可信/重要/紧急？"
+    if_cannot_answer: "回到Level 2补充"
+
+  trigger_2_after_completion:
+    timing: "完成任何任务后"
+    questions:
+      - "这是最优设计吗？"
+      - "有没有更深一层的考虑遗漏了？"
+      - "这个设计模式可以泛化吗？"
+    if_cannot_answer: "启动Level 5思考"
+
+  trigger_3_before_output:
+    timing: "输出任何产出前"
+    checklist:
+      - "是否只有描述没有规范？"
+      - "是否只有列表没有权重？"
+      - "是否只有静态没有动态？"
+    if_any_yes: "需要补充"
+
+  trigger_4_user_will_ask:
+    timing: "预判用户会问什么"
+    meta_question: "如果我是用户，拿到这个产出后会问什么？"
+    preemptive_action: "在用户问之前就解决"
+
+# =============================================================================
+# 跨模块泛化应用
+# =============================================================================
+
+generalization:
+
+  pattern_extracted: "描述→规范的跃迁"
+
+  applications:
+
+    - module: "lessons_learned.yaml"
+      current_state: "113条经验平等罗列"
+      improvement:
+        - "已验证 vs 待验证的权重区分"
+        - "P0/P1/P2优先级更细化"
+        - "跨领域适用性标注"
+        - "使用频率追踪"
+      new_fields:
+        - verified_score: "1-10"
+        - usage_count: "0+"
+        - domain_tags: ["semiconductor", "macro", "valuation"]
+
+    - module: "predictions"
+      current_state: "55个预测平等罗列"
+      improvement:
+        - "置信度校准验证"
+        - "预测类型分类（结构性 vs 事件性）"
+        - "历史准确率按类型统计"
+        - "预测者能力圈匹配"
+      new_fields:
+        - calibrated_confidence: "基于历史准确率调整"
+        - prediction_type: "structural | event | timing"
+        - domain_match: "是否在能力圈内"
+
+    - module: "frameworks (11个)"
+      current_state: "框架平等存在"
+      improvement:
+        - "框架有效性评分"
+        - "场景适用矩阵"
+        - "框架间冲突解决优先级"
+        - "使用频率和成功率追踪"
+      new_fields:
+        - effectiveness_score: "基于应用结果"
+        - best_for: ["scenario1", "scenario2"]
+        - conflicts_with: ["frameworkX"]
+        - resolution_priority: "1-10"
+
+    - module: "data_sources"
+      current_state: "API列表"
+      improvement:
+        - "数据可靠性评分"
+        - "数据新鲜度"
+        - "覆盖范围"
+        - "使用成本"
+      new_fields:
+        - reliability: "1-10"
+        - freshness: "real-time | daily | quarterly"
+        - coverage: "US | global | specific_sector"
+
+    - module: "agent_design_insights"
+      current_state: "5篇论文平等介绍"
+      improvement:
+        - "对我们系统的适用性评分"
+        - "实施难度"
+        - "预期收益"
+        - "优先级排序"
+      new_fields:
+        - applicability: "1-10"
+        - implementation_difficulty: "easy | medium | hard"
+        - expected_improvement: "%"
+        - priority: "P0 | P1 | P2"
+
+# =============================================================================
+# 元认知检查清单
+# =============================================================================
+
+meta_checklist:
+
+  after_any_output:
+    - question: "是否只回答了'是什么'而没回答'所以呢'？"
+      if_yes: "补充价值判断和行动建议"
+
+    - question: "是否所有项目平等对待而没有权重？"
+      if_yes: "添加优先级/权重/评分"
+
+    - question: "是否只有静态快照而没有动态更新机制？"
+      if_yes: "设计验证和更新流程"
+
+    - question: "这个设计模式是否可以泛化到其他模块？"
+      if_yes: "提取模式并应用"
+
+  before_declaring_done:
+    - question: "用户拿到这个后会问什么问题？"
+      action: "预先回答这些问题"
+
+    - question: "如果这个设计有缺陷，最可能是什么？"
+      action: "主动承认并提出改进方向"
+
+    - question: "比我更聪明的人会如何设计？"
+      action: "搜索最佳实践并学习"
+
+# =============================================================================
+# 思维升级的本质
+# =============================================================================
+
+essence:
+
+  from_to_transitions:
+    - from: "描述性(Descriptive)"
+      to: "规范性(Normative)"
+      example: "列出投资者 → 权重排序"
+
+    - from: "静态(Static)"
+      to: "动态(Dynamic)"
+      example: "一次性分析 → 持续验证更新"
+
+    - from: "扁平(Flat)"
+      to: "层级(Hierarchical)"
+      example: "平等列表 → 优先级排序"
+
+    - from: "孤立(Isolated)"
+      to: "关联(Connected)"
+      example: "单模块设计 → 跨模块泛化"
+
+    - from: "回答问题(Answer Questions)"
+      to: "发现更好的问题(Find Better Questions)"
+      example: "用户问什么答什么 → 预判用户应该问什么"
+
+  ultimate_test: |
+    最高标准：
+
+    如果把我的产出给这个领域的顶级专家看，
+    他们会说"这个设计遗漏了什么"吗？
+
+    如果会，那我就没有做到深度思考。
+
+# =============================================================================
+# 固化机制
+# =============================================================================
+
+institutionalization:
+
+  lesson_ids:
+    - "LL_114": "信息收集 ≠ 信息价值化"
+    - "LL_115": "描述→规范是普遍需要的跃迁"
+    - "LL_116": "预判用户问题比回答用户问题更高级"
+
+  integration_points:
+    - "每次创建新知识库文件时，强制执行Level 2+思考"
+    - "每次完成任务时，运行meta_checklist"
+    - "每周review：哪些模块需要升级到下一层级"
+
+  success_metrics:
+    - "用户指出表面思考的次数：目标为0"
+    - "模块升级次数：v1→v2→v3"
+    - "跨模块泛化应用次数"
