@@ -2689,3 +2689,257 @@ top_investor_patterns:
     action_taken: "更新所有相关框架的引用关系"
     effectiveness: "框架保持一致性"
     priority: "P1"
+
+  lesson_121:
+    id: "LL_121"
+    date: "2026-01-28"
+    category: "valuation"
+    context: "Phase 1层级框架验证"
+    lesson: "P/FCF比PE更能反映真实估值，尤其对现金流转化强的公司"
+    evidence: |
+      CRM案例：
+      - PE: 30.5
+      - P/FCF: 16.9 ← 显著更低
+      - 原因：净利润被非现金费用（股权激励、折旧）压缩
+      - FCF更能反映公司真实的现金创造能力
+
+      对比：半导体设备股P/FCF普遍50+，反映资本密集特性
+    action_taken: "在估值分析中同时使用PE和P/FCF，P/FCF是更好的筛选指标"
+    priority: "P1"
+
+  lesson_122:
+    id: "LL_122"
+    date: "2026-01-28"
+    category: "screening"
+    context: "Phase 1层级框架验证"
+    lesson: "距52周高点%是快速筛选Fallen Angel的有效指标"
+    evidence: |
+      Phase 1筛选结果：
+      - CRM: -36% ← Fallen Angel候选，唯一买入推荐
+      - NOW: -43% ← Fallen Angel候选，观察
+      - AMAT/ASML/KLAC/MU: <5% ← 全部在高位，等待回调
+
+      规则提炼：
+      - 跌幅>30%: 值得深入研究
+      - 跌幅>50%: 强Fallen Angel信号
+      - 跌幅<10%: 可能错过最佳买点
+    action_taken: "在筛选流程中添加'距52周高点%'作为第一道快速过滤器"
+    priority: "P1"
+
+  lesson_123:
+    id: "LL_123"
+    date: "2026-01-28"
+    category: "cyclical_stocks"
+    context: "Phase 1 MU分析"
+    lesson: "周期股需要单独的评估框架，不能用常规增长股逻辑"
+    evidence: |
+      MU案例（存储芯片周期股）：
+      - 常规逻辑：PE低→便宜→买入
+      - 周期逻辑：PE低=盈利顶峰=应该卖出
+
+      周期股正确买点：
+      - PE最高时（盈利谷底）
+      - 产能利用率最低时
+      - 库存最高时
+
+      MU当前状态：
+      - PE 39（中等）
+      - 刚从亏损复苏
+      - HBM需求已price in
+      - 结论：周期上升中期，非最佳买点
+    action_taken: "为周期股创建单独的评估框架，关键指标：周期位置、产能利用率、库存、ASP趋势"
+    priority: "P0"
+
+  lesson_124:
+    id: "LL_124"
+    date: "2026-01-28"
+    category: "valuation"
+    context: "Phase 2 CRM深度分析"
+    lesson: "SaaS公司应同时看PE和P/FCF，后者更能反映真实盈利能力"
+    evidence: |
+      CRM案例：
+      - PE: 30.5 (看起来"不便宜")
+      - P/FCF: 16.9 (实际很便宜)
+      - 差距原因：股权激励(SBC)压缩净利润但不影响现金流
+
+      SBC是SaaS公司的共性：
+      - 用股票而非现金支付薪酬
+      - GAAP要求计入费用
+      - 但不影响现金流出
+
+      结论：P/FCF是SaaS更好的估值指标
+    action_taken: "在SaaS估值中，P/FCF权重>PE权重"
+    priority: "P0"
+
+  lesson_125:
+    id: "LL_125"
+    date: "2026-01-28"
+    category: "competitive_analysis"
+    context: "Phase 2 CRM护城河分析"
+    lesson: "平台公司的护城河不在单一产品，而在'粘合剂'层"
+    evidence: |
+      CRM案例：
+      - 单产品可被替代（Sales Cloud vs Dynamics）
+      - 但Data Cloud（统一数据层）一旦部署，迁移成本指数级上升
+      - 因为客户的所有产品数据都流经Data Cloud
+
+      类比：
+      - AWS的S3不是单独竞争力，但作为所有服务的数据层，形成锁定
+      - Apple的iCloud不是单独竞争力，但作为生态系统粘合剂，形成锁定
+
+      结论：分析平台公司时，找到"粘合剂"层比分析单一产品更重要
+    action_taken: "在护城河分析中，单独评估'粘合剂层'的迁移成本"
+    priority: "P1"
+
+  lesson_126:
+    id: "LL_126"
+    date: "2026-01-28"
+    category: "valuation"
+    context: "Phase 2 CRM估值分析"
+    lesson: "增长股到价值股的转型期是估值错配的高发期"
+    evidence: |
+      CRM案例：
+      - 历史增长：20%+ → 当前：9%
+      - 市场仍用增长股框架估值（关注增速放缓）
+      - 应该用价值股框架（关注FCF yield）
+
+      估值错配来源：
+      - 增长股投资者离场（因为增速不够）
+      - 价值股投资者还没进场（因为历史是增长股）
+      - 中间形成真空
+
+      机会：在转型期买入，等待框架切换
+    action_taken: "主动寻找'增长放缓+利润率提升'的转型公司"
+    priority: "P0"
+
+  lesson_127:
+    id: "LL_127"
+    date: "2026-01-28"
+    category: "risk_management"
+    context: "Phase 3 Expectation Gap扫描"
+    lesson: "Z-Score < 3是'价值陷阱'的早期预警信号"
+    evidence: |
+      PYPL案例：
+      - PE: 11 (极便宜)
+      - P/FCF: 9.3 (极便宜)
+      - 但Z-Score: 1.99 (低于安全线3.0)
+
+      Z-Score低说明：
+      - 可能有隐藏的财务压力
+      - 即使估值便宜也要谨慎
+      - "便宜"可能是有原因的
+
+      结论：估值筛选后，必须用Z-Score做质量过滤
+    action_taken: "在估值筛选流程中添加Z-Score>3作为必要条件"
+    priority: "P0"
+
+  lesson_128:
+    id: "LL_128"
+    date: "2026-01-28"
+    category: "screening"
+    context: "Phase 3扫描方法论"
+    lesson: "Expectation Gap扫描应分两步：估值粗筛+质量精筛"
+    evidence: |
+      两步流程：
+      Step 1: 估值粗筛
+      - P/FCF < 20
+      - 从52周高点跌幅 > 30%
+      → 产出：候选池
+
+      Step 2: 质量精筛
+      - Z-Score > 3
+      - ROE > 15%
+      - 护城河完好
+      → 产出：最终候选
+
+      如果只做Step 1，会纳入PYPL这样的价值陷阱
+    action_taken: "将两步筛选流程固化到扫描器中"
+    priority: "P1"
+
+  lesson_129:
+    id: "LL_129"
+    date: "2026-01-28"
+    category: "behavioral"
+    context: "Phase 3 ADBE分析"
+    lesson: "'叙事受损'≠'基本面受损'"
+    evidence: |
+      ADBE案例：
+      - 叙事：AI会颠覆创意软件
+      - 股价：从$466跌到$297 (-36%)
+
+      但基本面：
+      - ROE: 59.5% (优秀)
+      - P/FCF: 12.6 (便宜)
+      - FCF利润率: 32% (健康)
+
+      市场因为"AI威胁叙事"而抛售，
+      但忽略了Adobe自己也在做AI(Firefly)
+
+      结论：叙事驱动的下跌往往创造机会
+    action_taken: "在分析中区分'叙事受损'和'基本面受损'"
+    priority: "P1"
+
+  lesson_130:
+    id: "LL_130"
+    date: "2026-01-28"
+    category: "investor_analysis"
+    context: "Phase 4 Tepper vs Druckenmiller对比"
+    lesson: "顶级投资者的共同规律比独特风格更值得学习"
+    evidence: |
+      Druckenmiller风格：宏观驱动 + 趋势跟踪
+      Tepper风格：困境投资 + 逆向投资
+
+      风格差异大，但共同规律：
+      1. "好公司+临时问题"模式
+      2. 高信心时集中投资
+      3. 快速认错
+      4. 关注宏观/流动性
+
+      个人风格难以复制（需要特殊能力/信息）
+      共同规律可以复制（需要纪律）
+    action_taken: "将共同规律作为核心投资原则，个人风格作为参考"
+    priority: "P0"
+
+  lesson_131:
+    id: "LL_131"
+    date: "2026-01-28"
+    category: "investor_analysis"
+    context: "Phase 4跨投资者验证"
+    lesson: "信号汇合是加分项而非必需项"
+    evidence: |
+      Druckenmiller和Tepper同时持有：
+      - NVDA (AI共识)
+      - AMZN, GOOG (大型科技)
+
+      但各自独特持仓也有价值：
+      - Druck的TSM (半导体供应链)
+      - Tepper的BABA (中国反弹)
+
+      CRM两人都没直接持有，但符合两人的共同模式
+      → 可以买入
+
+      结论：信号汇合增加信心，但非必需
+    action_taken: "将跨投资者验证作为辅助工具而非硬性条件"
+    priority: "P1"
+
+  lesson_132:
+    id: "LL_132"
+    date: "2026-01-28"
+    category: "investor_analysis"
+    context: "Phase 4 13F分析"
+    lesson: "从持仓变化反向推断市场观点"
+    evidence: |
+      Tepper Q3 2025变化：
+      - 清仓Oracle/Intel/MU → 看空传统半导体？
+      - 大幅加仓WHR (+1967%) → 看好消费复苏？
+      - 新买AMD/QCOM → AI半导体选择性看好
+
+      持仓变化比静态持仓更有信息量：
+      - 增仓 = 信心增加
+      - 减仓 = 信心下降
+      - 新买 = 发现新机会
+      - 清仓 = 论点失效
+
+      可以作为自己分析的交叉验证
+    action_taken: "每季度跟踪Druck/Tepper的持仓变化，识别信号"
+    priority: "P1"
