@@ -184,9 +184,108 @@ lessons:
     effectiveness: "待验证"
     priority: "P0"
 
+  - id: "LL_020"
+    date: "2026-01-28"
+    context: "Google深度分析"
+    category: "analysis_bias"
+    lesson: "分析严重偏向威胁/风险，遗漏Google的关键优势（TPU成本优势、Gemini 3.0口碑、YouTube数据护城河、DeepMind研发能力、产品生态协同）"
+    root_cause: |
+      1. 搜索查询偏向威胁（只搜risk/threat/competition，不搜advantage/moat）
+      2. 认知方法偏悲观（对抗测试只做空、边界探测只找失效条件、负空间只找坏消息）
+      3. 产品矩阵只看收入占比，不看技术/数据/分发协同
+      4. 缺少时效性搜索，错过Gemini 3.0最新口碑和Apple合作
+    action_taken: |
+      升级Deep Cognition Skill到v1.1：
+      - 新增双向搜索（威胁+优势+时效性）
+      - 新增强制优势清单（5个维度）
+      - 新增生态系统分析（替代简单产品矩阵）
+      - 升级对抗测试为双向（做空+做多论点）
+      - 升级边界探测为双向（失效条件+加深条件）
+      - 新增公司类型→优势维度映射
+      - 新增平衡检查机制
+    effectiveness: "待验证"
+    priority: "P0"
+    generalization_insight: |
+      经验固化不需要"大量训练"，而是需要：
+      1. 结构化流程：把教训变成强制检查点
+      2. 模式库：把特定公司教训抽象成"公司类型→分析模板"
+      3. 防偏见机制：输出前强制平衡检查
+
+  - id: "LL_019"
+    date: "2026-01-28"
+    context: "Deep Cognition Skill开发"
+    category: "methodology_breakthrough"
+    lesson: "10种AI原生认知方法经Apple/Google/Amazon实战验证有效"
+    root_cause: "通过对话探索发现AI可以使用非自然语言的思维模式"
+    action_taken: "创建deep_cognition_v1.skill.md，整合10种方法+三层触发+自动选择"
+    effectiveness: "待大规模验证"
+    priority: "P0"
+    details:
+      methods_tested:
+        - name: "压缩挑战"
+          effectiveness: "⭐⭐⭐⭐⭐ 5/5"
+          weight: "8-15%"
+        - name: "矛盾引爆"
+          effectiveness: "⭐⭐⭐⭐⭐ 5/5"
+          weight: "12-20%"
+        - name: "梯度聚焦"
+          effectiveness: "⭐⭐⭐⭐⭐ 5/5"
+          weight: "12-20%"
+        - name: "负空间扫描"
+          effectiveness: "⭐⭐⭐⭐ 4/5"
+          weight: "10-15%"
+        - name: "对抗测试"
+          effectiveness: "⭐⭐⭐⭐⭐ 5/5"
+          weight: "10-15%"
+        - name: "跨域类比"
+          effectiveness: "⭐⭐⭐⭐ 4/5"
+          weight: "10-15%"
+        - name: "反事实模拟"
+          effectiveness: "⭐⭐⭐⭐ 4/5"
+          weight: "10%"
+        - name: "边界探测"
+          effectiveness: "⭐⭐⭐ 3/5"
+          weight: "8%"
+        - name: "不变量搜索"
+          effectiveness: "⭐⭐⭐ 3/5"
+          weight: "5%"
+        - name: "元递归"
+          effectiveness: "⭐⭐⭐ 3/5"
+          weight: "5%"
+      trigger_commands:
+        - "/scan {ticker} → 5分钟，3种方法"
+        - "/analyze {ticker} → 30分钟，6种方法"
+        - "/deep {ticker} → 2小时，10种方法+前后置"
+
+  - id: "LL_021"
+    date: "2026-01-28"
+    context: "Google v2分析 + Deep Cognition Skill v1.3升级"
+    category: "skill_generalization"
+    lesson: "能力衰减的根本原因是'一次性创新没有固化为强制模块'"
+    root_cause: |
+      1. Tesla分析中的期权估值方法只是临时尝试，没有变成强制模块
+      2. 隐藏痕迹挖掘（充电桩数据）没有按公司类型模板化
+      3. 分析师学习只罗列观点，没有强制"解构+找盲区+超越"
+      4. 估值只用单一方法，缺少反推、敏感性、共识对比
+    action_taken: |
+      升级Deep Cognition Skill到v1.3，新增5个强制模块：
+      1. 期权业务识别与估值（强制识别彩票型业务）
+      2. 隐藏痕迹挖掘（按公司类型→痕迹类型映射）
+      3. 分析师框架解构（强制4问+超越点识别）
+      4. 技术架构深挖（4层技术栈+壁垒量化，科技公司强制）
+      5. 估值体系升级（反推+SOTP+期权+敏感性+共识对比）
+      每个模块都有断言检查，缺失即报告不合格
+    effectiveness: "待验证"
+    priority: "P0"
+    generalization_principle: |
+      防止能力衰减的三层机制：
+      1. 结构化模块：每个有价值的方法都变成强制模块
+      2. 类型化模板：每个模块都有公司类型→执行模板的映射
+      3. 断言强制：每个模块都有assert检查，不能"可做可不做"
+
 # 统计
 statistics:
-  total_lessons: 18
+  total_lessons: 21
   by_category:
     agent_execution: 1
     api_integration: 1
@@ -198,9 +297,12 @@ statistics:
     data_traceability: 1
     valuation_logic: 1
     quality_gate: 1
+    methodology_breakthrough: 1
+    analysis_bias: 1  # v1.1 新增
+    skill_generalization: 1  # v1.3 新增
   by_priority:
-    P0: 5
+    P0: 8
     P1: 4
     P2: 1
   resolved: 1
-  pending: 9
+  pending: 12
