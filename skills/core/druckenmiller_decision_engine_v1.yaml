@@ -141,7 +141,35 @@ company_screening_engine:
 
   screening_criteria:
 
+    # =========================================================================
+    # 第一原则（硬性排除）
+    # =========================================================================
+    first_principles:
+      - principle: "排除生物制药"
+        rationale: |
+          生物制药公司的价值高度依赖二元事件：
+          - FDA批准/拒绝
+          - 临床试验成功/失败
+          - 专利诉讼结果
+          这些事件本质上不可预测，违背"可分析→可预测"的投资逻辑。
+          即使公司基本面优秀，一次试验失败可能导致50%+跌幅。
+        excluded_sectors:
+          - "Biotechnology"
+          - "Drug Manufacturers"
+          - "Pharmaceuticals"
+        exceptions:
+          - "医疗器械（可预测的设备销售周期）"
+          - "医疗服务（非药物依赖）"
+          - "诊断检测（Natera类型，但需单独评估）"
+
+    # =========================================================================
+    # 必须通过条件
+    # =========================================================================
     must_pass:
+      - criterion: "非排除行业"
+        threshold: "不在first_principles排除名单"
+        definition: "第一原则优先于一切评分"
+
       - criterion: "宏观对齐"
         threshold: ">60分"
         definition: "受益于当前活跃宏观主题"
@@ -411,30 +439,14 @@ predictions_tracking:
       confidence: "75%"
       reasoning: "他的核心逻辑是流动性驱动"
 
-    # 2026-01-28 筛选引擎新增预测
+    # 2026-01-28 筛选引擎新增预测（已排除生物制药）
     - id: "DRUCK_PRED_005"
-      date: "2026-01-28"
-      prediction: "Druckenmiller会新建REGN仓位"
-      confidence: "65%"
-      verify_date: "2026-Q2 13F"
-      reasoning: |
-        筛选引擎得分83.8（第2名）
-        - 医疗创新是当前重点主题（30%+医疗敞口）
-        - PE 18.5x是医疗大盘股最低估值之一
-        - 与Natera类似的技术驱动逻辑
-      screening_data:
-        score: 83.8
-        pe: 18.5
-        roe: "15.3%"
-        roic: "9.2%"
-
-    - id: "DRUCK_PRED_006"
       date: "2026-01-28"
       prediction: "Druckenmiller会新建AMAT仓位"
       confidence: "55%"
       verify_date: "2026-Q2 13F"
       reasoning: |
-        筛选引擎得分83.0（第3名）
+        筛选引擎得分83.0（排除生物制药后第2名）
         - 半导体设备是AI基础设施核心
         - 比ASML估值更合理
         - GAA/先进封装是新增长引擎
@@ -444,48 +456,64 @@ predictions_tracking:
         roe: "36.1%"
         roic: "22.0%"
 
-    - id: "DRUCK_PRED_007"
+    - id: "DRUCK_PRED_006"
       date: "2026-01-28"
-      prediction: "Druckenmiller会新建VRTX仓位"
-      confidence: "50%"
+      prediction: "Druckenmiller会新建KLAC仓位"
+      confidence: "45%"
       verify_date: "2026-Q2 13F"
       reasoning: |
-        筛选引擎得分82.3（第4名）
-        - CF治疗垄断地位
-        - 类似Natera：技术壁垒+医保依赖
-        - 稳定增长，非周期性
+        筛选引擎得分81.0（排除生物制药后第4名）
+        - 半导体检测设备寡头
+        - 先进制程良率要求提升检测需求
+        - 与AMAT互补
       screening_data:
-        score: 82.3
-        pe: 33.3
-        roe: "21.8%"
-        roic: "16.2%"
+        score: 81.0
+        pe: 50.8
+        roe: "98.1%"
+        roic: "37.3%"
 
   prediction_validation_log:
-    total: 7
+    total: 6
     verified: 0
     correct: 0
-    pending: 7
+    pending: 6
     accuracy: "待验证"
 
   # 筛选引擎运行记录
   screening_runs:
     - date: "2026-01-28"
       candidates_screened: 12
-      top_picks:
+      excluded_by_first_principle:
+        - symbol: "REGN"
+          reason: "生物制药"
+          original_score: 83.8
+        - symbol: "VRTX"
+          reason: "生物制药"
+          original_score: 82.3
+        - symbol: "GH"
+          reason: "生物制药/诊断（二元事件依赖）"
+          original_score: 73.8
+        - symbol: "CRSP"
+          reason: "生物制药/基因编辑"
+          original_score: 70.5
+      top_picks_after_filter:
         - symbol: "ASML"
           score: 87.9
           action: "回调买入"
-        - symbol: "REGN"
-          score: 83.8
-          action: "强买"
         - symbol: "AMAT"
           score: 83.0
-          action: "买入"
-        - symbol: "VRTX"
-          score: 82.3
           action: "买入"
         - symbol: "NOW"
           score: 81.5
           action: "回调买入"
+        - symbol: "KLAC"
+          score: 81.0
+          action: "买入"
+        - symbol: "CRM"
+          score: 79.3
+          action: "累积"
+        - symbol: "MU"
+          score: 77.8
+          action: "累积"
       liquidity_signal: "CAUTIOUS (45/100)"
-      recommendation: "不追高，分批建仓，优先低估值标的"
+      recommendation: "聚焦半导体设备+企业软件，不追高"
