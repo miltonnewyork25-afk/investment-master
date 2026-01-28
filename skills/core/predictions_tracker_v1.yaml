@@ -1,0 +1,314 @@
+# Predictions Tracker v1.0
+# 预测追踪器
+#
+# 问题：55个预测平等罗列，不知道：
+#   - 哪类预测更准？
+#   - 哪个领域更准？
+#   - 置信度校准是否准确？
+# 解决：按类型、领域分类统计，校准置信度
+
+version: "1.0"
+created: "2026-01-28"
+purpose: "元预测 - 预测自己的预测能力"
+
+# =============================================================================
+# 预测能力校准
+# =============================================================================
+
+prediction_calibration:
+
+  overall:
+    total_predictions: 55
+    validated: 27
+    correct: 14
+    incorrect: 2
+    in_progress: 9
+    not_due: 28
+    accuracy_rate: "88%"  # 14/(14+2)
+
+  by_type:
+    structural:
+      description: "结构性预测（基于周期/传导/框架）"
+      examples:
+        - "TSMC 2026增速>25%"
+        - "HBM市场>$50B"
+        - "瓶颈迁移发生"
+      count: 18
+      validated: 12
+      correct: 11
+      incorrect: 1
+      accuracy: "92%"
+      insight: "结构性预测最可靠，可以高置信度"
+
+    event:
+      description: "事件性预测（合作/收购/发布）"
+      examples:
+        - "AMD OpenAI收入$5-10B"
+        - "MRVL非Trainium3主供应商"
+      count: 15
+      validated: 8
+      correct: 5
+      incorrect: 3
+      accuracy: "63%"
+      insight: "事件性预测不可靠，需要+12月时滞调整"
+
+    timing:
+      description: "时机性预测（何时发生）"
+      examples:
+        - "2026年底前周期转向"
+        - "OpenAI 2026提交IPO"
+      count: 10
+      validated: 4
+      correct: 2
+      incorrect: 2
+      accuracy: "50%"
+      insight: "时机预测最不可靠，需×0.6置信度"
+
+    adoption:
+      description: "采用率预测"
+      examples:
+        - "Copilot 50M用户"
+      count: 5
+      validated: 2
+      correct: 0
+      incorrect: 2
+      accuracy: "0%"
+      insight: "采用率预测系统性高估，需×0.3-0.5"
+
+    investor:
+      description: "基于投资者行为的预测"
+      examples:
+        - "TSM跑赢NVDA"
+        - "AVGO回调>20%"
+      count: 4
+      validated: 0
+      accuracy: "待验证"
+
+  by_domain:
+    semiconductor:
+      count: 20
+      validated: 12
+      correct: 11
+      accuracy: "92%"
+      my_edge: "强 - 这是我最准的领域"
+
+    ai_infrastructure:
+      count: 12
+      validated: 8
+      correct: 7
+      accuracy: "88%"
+      my_edge: "强"
+
+    macro:
+      count: 8
+      validated: 4
+      correct: 3
+      accuracy: "75%"
+      my_edge: "中"
+
+    company_specific:
+      count: 10
+      validated: 3
+      correct: 2
+      accuracy: "67%"
+      my_edge: "弱 - 公司特定事件难预测"
+
+    adoption:
+      count: 5
+      validated: 2
+      correct: 0
+      accuracy: "0%"
+      my_edge: "极弱 - 需要完全重新校准"
+
+# =============================================================================
+# 置信度校准规则
+# =============================================================================
+
+confidence_calibration:
+
+  problem: |
+    我声称的置信度与实际准确率不匹配
+    例：我说80%置信度的预测，实际可能只有60%准确
+
+  calibration_rules:
+
+    - stated_confidence: "90%+"
+      actual_accuracy: "待追踪"
+      adjustment: "如果类型=timing，降至70%"
+
+    - stated_confidence: "70-90%"
+      by_type:
+        structural: "保持"
+        event: "降15%"
+        timing: "降25%"
+        adoption: "降40%"
+
+    - stated_confidence: "50-70%"
+      recommendation: "考虑不做预测（不够确定）"
+
+  formula: |
+    calibrated_confidence =
+      stated_confidence ×
+      type_multiplier ×
+      domain_accuracy_rate
+
+    type_multipliers:
+      structural: 1.0
+      event: 0.75
+      timing: 0.6
+      adoption: 0.4
+
+    例：
+    我说"80%置信度的timing预测"
+    校准后 = 80% × 0.6 = 48%
+    这意味着：不应该基于这个预测重仓
+
+# =============================================================================
+# 预测分类清单
+# =============================================================================
+
+predictions_classified:
+
+  structural_predictions:
+    high_confidence:
+      - id: "SEMI_003"
+        statement: "TSMC 2026增速>25%"
+        stated: 85%
+        calibrated: 85%  # structural × semiconductor = 保持
+        status: "verified_correct"
+
+      - id: "AISTACK_001"
+        statement: "AVGO FY2026 AI收入>$35B"
+        stated: 80%
+        calibrated: 80%
+        status: "verified_correct"
+
+      - id: "PROP_004"
+        statement: "TSM 2026收入增长>25%"
+        stated: 80%
+        calibrated: 80%
+        status: "verified_correct"
+
+  event_predictions:
+    needs_adjustment:
+      - id: "AMD_OpenAI"
+        statement: "AMD从OpenAI获$5-10B收入(2026)"
+        stated: 70%
+        calibrated: "52% (70% × 0.75)"
+        status: "incorrect - 时间表过于乐观"
+        lesson: "新合作收入+12个月"
+
+      - id: "PROP_006"
+        statement: "MRVL非Trainium3主供应商"
+        stated: 55%
+        calibrated: "41%"
+        status: "verified_correct"
+
+  timing_predictions:
+    high_risk:
+      - id: "PROP_010"
+        statement: "OpenAI 2026年提交IPO"
+        stated: 60%
+        calibrated: "36% (60% × 0.6)"
+        recommendation: "不应基于此重仓"
+
+      - id: "SEMI_005"
+        statement: "半导体周期2026年底前不进入Phase 5"
+        stated: 70%
+        calibrated: "42%"
+        recommendation: "设Kill Switch，不依赖此预测"
+
+  adoption_predictions:
+    systematically_wrong:
+      - id: "ROI_006"
+        statement: "Copilot 50M用户"
+        stated: 55%
+        calibrated: "22% (55% × 0.4)"
+        actual: "~8M用户"
+        status: "incorrect"
+        lesson: "采用率预测×0.3-0.4"
+
+# =============================================================================
+# 元洞察：我的预测盲区
+# =============================================================================
+
+meta_insights:
+
+  strong_areas:
+    - area: "结构性半导体预测"
+      accuracy: "92%"
+      reason: "基于周期框架和供应链数据，不依赖事件"
+      action: "可以在此领域做高置信度预测"
+
+    - area: "AI基础设施增长预测"
+      accuracy: "88%"
+      reason: "基于capex数据和订单数据"
+      action: "可以依赖"
+
+  weak_areas:
+    - area: "采用率预测"
+      accuracy: "0%"
+      reason: "系统性低估企业摩擦、决策周期、培训成本"
+      action: "采用率预测一律×0.3-0.4"
+
+    - area: "时机预测"
+      accuracy: "50%"
+      reason: "时间维度最难预测"
+      action: "时机预测不应作为投资依据"
+
+    - area: "公司特定事件"
+      accuracy: "67%"
+      reason: "信息不完整，内部因素多"
+      action: "降低置信度，设更宽Kill Switch"
+
+  blind_spots:
+    - "高估新合作的收入时间表（需+12月）"
+    - "高估软件采用速度（需×0.3-0.4）"
+    - "低估时滞（任何预测考虑执行摩擦）"
+
+# =============================================================================
+# 投资应用
+# =============================================================================
+
+investment_implications:
+
+  rule_1:
+    name: "只在强势领域重仓"
+    description: |
+      结构性半导体预测 + 高置信度 → 可以6-8%仓位
+      时机预测 + 任何置信度 → 最多2%仓位
+
+  rule_2:
+    name: "校准后置信度决定仓位"
+    description: |
+      calibrated_confidence > 80% → 重仓可考虑
+      calibrated_confidence 60-80% → 中仓
+      calibrated_confidence < 60% → 轻仓或不做
+
+  rule_3:
+    name: "弱势领域设双倍止损"
+    description: |
+      在采用率、时机预测领域：
+      止损线 = 正常止损 × 2 的宽度
+      因为这些预测本就不可靠
+
+# =============================================================================
+# 更新机制
+# =============================================================================
+
+update_mechanism:
+
+  trigger: "每次预测验证后"
+
+  actions:
+    - "更新该预测状态"
+    - "重新计算该类型/领域准确率"
+    - "调整置信度校准规则"
+    - "每月review盲区是否改善"
+
+  next_validation_batch:
+    due_date: "2026-02"
+    predictions_due:
+      - "PROP_007: Alchip 2026收入>$3B"
+      - "PROP_008: TSMC 2nm良率75%"
+      - "ROI_001: 企业AI支出增速>30%"

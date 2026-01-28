@@ -1,0 +1,263 @@
+# Data Source Registry v2.0
+# 数据源注册表 - 增加价值排序版
+#
+# v1.0问题：只列出API，用户不知道该用哪个
+# v2.0改进：
+#   - 可靠性评分 (1-10)
+#   - 数据新鲜度
+#   - 覆盖范围
+#   - 最佳使用场景
+#   - 已知问题
+
+version: "2.0"
+created: "2026-01-28"
+upgrade_from: "v1.0"
+
+# =============================================================================
+# 数据源排名（按可靠性）
+# =============================================================================
+
+data_sources_ranked:
+
+  # ---------------------------------------------------------------------------
+  # Tier S: 高可靠性 (9-10)
+  # ---------------------------------------------------------------------------
+  tier_s:
+    description: "最可靠数据源，可作为分析基础"
+
+    - rank: 1
+      name: "FMP (Financial Modeling Prep)"
+      type: "Financial Data API"
+      reliability: 9
+      freshness: "quarterly + TTM"
+      coverage: "US + Major Global"
+
+      best_for:
+        - "财务报表数据"
+        - "估值指标（PE, EV/EBITDA）"
+        - "公司概况"
+        - "财务健康度（Z-Score, F-Score）"
+
+      not_for:
+        - "实时价格（有延迟）"
+        - "非上市公司"
+        - "另类数据"
+
+      known_issues:
+        - "analyst-estimates需要period参数"
+        - "部分endpoint对免费用户有限制"
+
+      endpoints_priority:
+        P0_must_call:
+          - "profile: 公司概况"
+          - "quote: 实时报价"
+          - "income-statement-ttm: TTM财务"
+          - "key-metrics-ttm: 关键指标"
+          - "financial-scores: 健康度评分"
+        P1_recommended:
+          - "analyst-estimates: 分析师预测"
+          - "ratios-ttm: 财务比率"
+          - "cash-flow-statement-ttm: 现金流"
+
+      base_url: "https://financialmodelingprep.com"
+      api_key: "fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"
+
+  # ---------------------------------------------------------------------------
+  # Tier A: 中高可靠性 (7-8)
+  # ---------------------------------------------------------------------------
+  tier_a:
+    description: "可靠但需验证，某些领域独特价值"
+
+    - rank: 2
+      name: "100baggers.club"
+      type: "Investment Analysis API"
+      reliability: 7
+      freshness: "daily update"
+      coverage: "US stocks"
+
+      best_for:
+        - "领先指标触发检测"
+        - "杜邦分析拆解"
+        - "ROIC深度分析"
+        - "多股票横向对比"
+
+      not_for:
+        - "7维度雷达图评分（主观权重，已禁用）"
+        - "原始财务数据（用FMP）"
+
+      known_issues:
+        - "7维度评分算法不透明，权重主观"
+        - "某些股票覆盖不全"
+
+      usage_guideline: |
+        ✅ 使用：领先指标、杜邦拆解、ROIC
+        ❌ 禁止使用：7维度雷达图评分（见CLAUDE.md）
+
+      endpoints_priority:
+        P0_must_call:
+          - "generate-summary: 核心分析（忽略雷达图部分）"
+        P1_recommended:
+          - "compare-companies: 多股对比"
+          - "get-strategy-report: 策略报告"
+        P2_optional:
+          - "search: 搜索"
+
+      base_url: "https://www.100baggers.club"
+      api_key: "zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc="
+
+  # ---------------------------------------------------------------------------
+  # Tier B: 中等可靠性 (5-6)
+  # ---------------------------------------------------------------------------
+  tier_b:
+    description: "有价值但需要交叉验证"
+
+    - rank: 3
+      name: "WebSearch"
+      type: "Real-time Information"
+      reliability: 6
+      freshness: "real-time"
+      coverage: "global"
+
+      best_for:
+        - "最新新闻和事件"
+        - "分析师观点收集"
+        - "投资者持仓变化"
+        - "行业动态"
+
+      not_for:
+        - "财务数据（用API）"
+        - "需要精确数字的场景"
+
+      known_issues:
+        - "搜索结果质量不稳定"
+        - "可能包含过时信息"
+        - "需要多源交叉验证"
+
+      usage_guideline: |
+        必须标注[搜索]来源
+        重要数据需多源验证
+        不能作为唯一依据
+
+    - rank: 4
+      name: "公司官方来源"
+      type: "Primary Sources"
+      reliability: 9  # 但需要自行解读
+      freshness: "quarterly"
+      coverage: "specific company"
+
+      best_for:
+        - "财报原文"
+        - "管理层guidance"
+        - "10-K/10-Q细节"
+
+      not_for:
+        - "跨公司比较（格式不统一）"
+        - "实时数据"
+
+      known_issues:
+        - "需要自行访问和解读"
+        - "格式不统一"
+
+# =============================================================================
+# 场景→数据源推荐
+# =============================================================================
+
+scene_source_matrix:
+
+  - scene: "公司基础财务分析"
+    primary: "FMP"
+    secondary: "100baggers (杜邦拆解)"
+    reliability: 9
+
+  - scene: "估值分析"
+    primary: "FMP (key-metrics-ttm)"
+    secondary: "100baggers (ROIC)"
+    reliability: 9
+
+  - scene: "领先指标检测"
+    primary: "100baggers (generate-summary)"
+    secondary: "WebSearch (最新动态)"
+    reliability: 7
+
+  - scene: "投资者持仓追踪"
+    primary: "WebSearch (13F分析)"
+    secondary: "无API来源"
+    reliability: 6
+    note: "需要多源验证"
+
+  - scene: "行业周期判断"
+    primary: "WebSearch (设备商订单、利用率)"
+    secondary: "FMP (行业数据)"
+    reliability: 6
+
+  - scene: "竞争格局分析"
+    primary: "100baggers (compare-companies)"
+    secondary: "WebSearch (市场份额)"
+    reliability: 7
+
+# =============================================================================
+# 数据质量检查清单
+# =============================================================================
+
+data_quality_checklist:
+
+  before_using:
+    - "来源是否明确标注？[API]/[搜索]/[财报]"
+    - "数据是否在有效期内？"
+    - "关键数据是否有交叉验证？"
+
+  red_flags:
+    - "数字与常识不符"
+    - "只有单一来源"
+    - "数据时间不明确"
+    - "来源可靠性<6"
+
+  must_verify:
+    - "任何来自WebSearch的关键数字"
+    - "任何异常值（偏离均值>2σ）"
+    - "任何与其他来源冲突的数据"
+
+# =============================================================================
+# 快速参考
+# =============================================================================
+
+quick_reference:
+
+  for_financials: "FMP (reliability 9)"
+  for_leading_indicators: "100baggers (reliability 7)"
+  for_latest_news: "WebSearch (reliability 6, needs verification)"
+
+  data_freshness_ranking:
+    real_time: "WebSearch"
+    daily: "100baggers"
+    quarterly: "FMP"
+
+  coverage_ranking:
+    us_focus: "FMP, 100baggers"
+    global: "WebSearch"
+
+# =============================================================================
+# API调用模板
+# =============================================================================
+
+api_templates:
+
+  fmp:
+    profile: 'curl "https://financialmodelingprep.com/stable/profile?symbol={TICKER}&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+    quote: 'curl "https://financialmodelingprep.com/api/v3/quote/{TICKER}?apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+    income_ttm: 'curl "https://financialmodelingprep.com/stable/income-statement-ttm?symbol={TICKER}&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+    key_metrics: 'curl "https://financialmodelingprep.com/stable/key-metrics-ttm?symbol={TICKER}&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+    financial_scores: 'curl "https://financialmodelingprep.com/stable/financial-scores?symbol={TICKER}&apikey=fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"'
+
+  100baggers:
+    generate_summary: |
+      curl -X POST "https://www.100baggers.club/api/generate-summary" \
+        -H "Content-Type: application/json" \
+        -H "x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=" \
+        -d '{"symbol":"{TICKER}"}'
+
+    compare_companies: |
+      curl -X POST "https://www.100baggers.club/api/compare-companies" \
+        -H "Content-Type: application/json" \
+        -H "x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=" \
+        -d '{"symbols":["{TICKER1}","{TICKER2}"]}'

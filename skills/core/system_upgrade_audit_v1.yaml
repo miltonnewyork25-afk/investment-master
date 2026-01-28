@@ -1,0 +1,449 @@
+# System Upgrade Audit v1.0
+# 系统全面升级审计
+#
+# 触发原则：用户提供新思路时，必须最大化、泛化、深化、迭代
+# 本次触发：信息需要价值排序 + 预判用户问题
+
+version: "1.0"
+created: "2026-01-28"
+trigger: "用户元指令 - 最大化利用每个新思路"
+
+# =============================================================================
+# 核心升级原则（从用户反馈提炼）
+# =============================================================================
+
+upgrade_principles:
+
+  principle_1:
+    name: "信息价值化原则"
+    description: "任何信息集合都需要价值排序层"
+    check_question: "有没有权重/评分/优先级？"
+    violation_example: "平等罗列8位投资者"
+    fix: "业绩权重 + 能力圈匹配 + 场景适配"
+
+  principle_2:
+    name: "描述→规范跃迁"
+    description: "不只说'是什么'，还要说'应该怎样'"
+    check_question: "只是描述还是有规范性指导？"
+    violation_example: "列出11个框架但不说何时用哪个"
+    fix: "场景路由 + 冲突解决规则"
+
+  principle_3:
+    name: "预判用户原则"
+    description: "在用户问之前就回答他会问的问题"
+    check_question: "用户拿到这个后第一个问题会是什么？"
+    violation_example: "给出投资者列表，用户要问'谁更可信'"
+    fix: "预先排序并解释为什么"
+
+  principle_4:
+    name: "动态更新原则"
+    description: "不能只有静态快照，要有验证和更新机制"
+    check_question: "如何知道这个信息是否仍然正确？"
+    violation_example: "预测列表但不追踪验证"
+    fix: "验证日期 + 结果追踪 + 权重调整"
+
+  principle_5:
+    name: "最大化利用原则"
+    description: "每个新思路都要推到极致并泛化"
+    check_question: "这个思路还能用在哪里？"
+    violation_example: "只升级投资者数据库，不泛化到其他模块"
+    fix: "系统性审计所有模块"
+
+# =============================================================================
+# 全模块审计结果
+# =============================================================================
+
+module_audit:
+
+  # ---------------------------------------------------------------------------
+  # Category 1: 知识库 (Knowledge Bases)
+  # ---------------------------------------------------------------------------
+  knowledge_bases:
+
+    - module: "lessons_learned.yaml"
+      current_version: "v1.x"
+      file_path: "skills/knowledge_base/lessons_learned.yaml"
+      current_state:
+        lessons_count: 116
+        has_value_ranking: "部分 (P0/P1/P2)"
+        has_scene_matching: "无"
+        has_dynamic_update: "部分 (effectiveness字段)"
+        has_usage_tracking: "无"
+      gaps:
+        - "116条经验没有使用频率追踪"
+        - "没有'这条经验在什么场景最有用'标注"
+        - "已验证vs待验证的权重区分不够"
+        - "缺少跨领域适用性标注"
+      upgrade_plan:
+        priority: "P0"
+        new_fields:
+          - "usage_count: 被引用次数"
+          - "scene_tags: [semiconductor, macro, valuation]"
+          - "verification_score: 1-10"
+          - "last_applied: 上次应用日期"
+        new_views:
+          - "按场景筛选"
+          - "按验证状态排序"
+          - "按使用频率排序"
+
+    - module: "top_investor_database"
+      current_version: "v2.0"
+      file_path: "skills/knowledge_base/top_investor_database_v2.yaml"
+      current_state:
+        has_value_ranking: "是 (performance score)"
+        has_scene_matching: "是 (能力圈×场景矩阵)"
+        has_dynamic_update: "设计了但未执行"
+        has_usage_tracking: "无"
+      gaps:
+        - "预测追踪机制设计了但没有实际数据"
+        - "缺少历史预测回测"
+      upgrade_plan:
+        priority: "P1"
+        actions:
+          - "回填历史著名预测（如Druckenmiller 2022抄底）"
+          - "开始追踪当前预测"
+      status: "v2.0已完成核心升级"
+
+    - module: "meta_insights"
+      current_version: "v1.0"
+      file_path: "skills/core/meta_insights_v1.yaml"
+      current_state:
+        insights_count: 9
+        has_value_ranking: "无"
+        has_scene_matching: "部分"
+        has_dynamic_update: "无"
+      gaps:
+        - "9条元洞察没有优先级"
+        - "没有'何时应用这条洞察'的触发器"
+      upgrade_plan:
+        priority: "P1"
+        new_structure:
+          - "importance_score: 1-10"
+          - "trigger_conditions: 何时应用"
+          - "application_examples: 实际案例"
+
+  # ---------------------------------------------------------------------------
+  # Category 2: 分析框架 (Analytical Frameworks)
+  # ---------------------------------------------------------------------------
+  frameworks:
+
+    - module: "unified_decision_framework"
+      current_version: "v1.1"
+      file_path: "skills/core/unified_decision_framework_v1.yaml"
+      current_state:
+        has_value_ranking: "是 (4层结构)"
+        has_scene_matching: "是 (快速决策路径)"
+        has_conflict_resolution: "是"
+      gaps:
+        - "框架有效性没有追踪"
+        - "哪个框架在哪个场景更准确没有数据支撑"
+      upgrade_plan:
+        priority: "P1"
+        new_fields:
+          - "framework_accuracy_by_scene: 按场景统计准确率"
+          - "last_successful_application: 上次成功应用"
+      status: "v1.1已有良好结构，需要添加验证层"
+
+    - module: "11个分析框架"
+      frameworks_list:
+        - name: "tech_decline_framework_v2"
+          has_effectiveness_score: "无"
+          has_scene_matching: "部分"
+
+        - name: "tech_rise_framework_v1"
+          has_effectiveness_score: "无"
+          has_scene_matching: "部分"
+
+        - name: "semiconductor_cycle_framework_v1"
+          has_effectiveness_score: "无"
+          has_scene_matching: "无"
+
+        - name: "ai_stack_framework_v1"
+          has_effectiveness_score: "无"
+          has_scene_matching: "无"
+
+        - name: "cycle_temperature_gauge_v1"
+          has_effectiveness_score: "无"
+          has_scene_matching: "是"
+
+        - name: "ai_roi_verification_framework_v1"
+          has_effectiveness_score: "无"
+
+        - name: "industry_signal_propagation_v1"
+          has_effectiveness_score: "无"
+
+      common_gaps:
+        - "所有框架都没有有效性评分"
+        - "没有'这个框架上次用得对不对'的追踪"
+        - "没有框架间的比较"
+      upgrade_plan:
+        priority: "P0"
+        solution: "创建frameworks_effectiveness_tracker.yaml"
+        new_fields_per_framework:
+          - "applications_count: 应用次数"
+          - "success_rate: 成功率"
+          - "best_for_scenes: 最适合场景"
+          - "not_recommended_for: 不建议场景"
+
+  # ---------------------------------------------------------------------------
+  # Category 3: 预测系统 (Prediction System)
+  # ---------------------------------------------------------------------------
+  predictions:
+
+    - module: "predictions (在lessons_learned中)"
+      current_state:
+        predictions_count: 55
+        validated: 27
+        accuracy: "88%"
+        has_type_classification: "无"
+        has_calibration: "部分"
+      gaps:
+        - "没有区分预测类型（结构性 vs 事件性 vs 时机性）"
+        - "置信度校准不够精细"
+        - "没有按领域统计准确率"
+        - "没有'我在什么类型预测上更准'的分析"
+      upgrade_plan:
+        priority: "P0"
+        solution: "创建独立的predictions_tracker.yaml"
+        new_fields:
+          - "prediction_type: structural | event | timing"
+          - "domain: semiconductor | macro | company"
+          - "calibrated_confidence: 基于历史校准"
+          - "my_accuracy_in_this_domain: 该领域历史准确率"
+
+  # ---------------------------------------------------------------------------
+  # Category 4: 数据源 (Data Sources)
+  # ---------------------------------------------------------------------------
+  data_sources:
+
+    - module: "data_source_registry"
+      current_version: "v1.0"
+      file_path: "skills/core/data_source_registry_v1.yaml"
+      current_state:
+        has_reliability_rating: "无"
+        has_freshness_info: "无"
+        has_coverage_info: "无"
+      gaps:
+        - "没有数据源可靠性评分"
+        - "没有数据新鲜度信息"
+        - "没有覆盖范围说明"
+        - "用户不知道'该用哪个API'"
+      upgrade_plan:
+        priority: "P1"
+        new_fields:
+          - "reliability: 1-10"
+          - "freshness: real-time | daily | quarterly"
+          - "coverage: US | global | specific_sector"
+          - "cost: free | paid | rate_limited"
+          - "best_for: [use_case1, use_case2]"
+
+  # ---------------------------------------------------------------------------
+  # Category 5: Agent设计 (Agent Design)
+  # ---------------------------------------------------------------------------
+  agent_design:
+
+    - module: "agent_design_insights"
+      current_version: "v1.0"
+      file_path: "skills/core/agent_design_insights_v1.yaml"
+      current_state:
+        papers_count: 5
+        has_applicability_score: "无"
+        has_implementation_priority: "无"
+      gaps:
+        - "5篇论文没有'对我们最有用是哪篇'的排序"
+        - "没有实施难度评估"
+        - "没有预期收益量化"
+      upgrade_plan:
+        priority: "P1"
+        new_fields:
+          - "applicability_to_us: 1-10"
+          - "implementation_difficulty: easy | medium | hard"
+          - "expected_improvement: 预期提升%"
+          - "implementation_status: not_started | in_progress | done"
+
+  # ---------------------------------------------------------------------------
+  # Category 6: Skills (30+ skill files)
+  # ---------------------------------------------------------------------------
+  skills:
+
+    - module: "30+ skill files"
+      current_state:
+        has_effectiveness_tracking: "无"
+        has_usage_tracking: "无"
+        has_priority_ranking: "无"
+      gaps:
+        - "不知道哪些skill最常用"
+        - "不知道哪些skill效果最好"
+        - "用户不知道'该用哪个skill'"
+      upgrade_plan:
+        priority: "P2"
+        solution: "创建skills_registry.yaml"
+        new_fields:
+          - "usage_count"
+          - "effectiveness_score"
+          - "best_for_scene"
+          - "dependencies"
+
+# =============================================================================
+# 立即执行的升级 (P0)
+# =============================================================================
+
+immediate_upgrades:
+
+  upgrade_1:
+    name: "创建框架有效性追踪器"
+    file: "frameworks_effectiveness_tracker.yaml"
+    purpose: "追踪每个框架的应用次数和成功率"
+    priority: "P0"
+    status: "待创建"
+
+  upgrade_2:
+    name: "创建独立预测追踪器"
+    file: "predictions_tracker.yaml"
+    purpose: "按类型和领域追踪预测准确率"
+    priority: "P0"
+    status: "待创建"
+
+  upgrade_3:
+    name: "升级lessons_learned添加场景标签"
+    file: "lessons_learned.yaml"
+    purpose: "让每条经验可以按场景检索"
+    priority: "P0"
+    status: "待执行"
+
+# =============================================================================
+# 用户会问的问题（预判）
+# =============================================================================
+
+anticipated_user_questions:
+
+  - question: "我现在分析半导体，应该用哪些框架？"
+    current_answer: "需要手动查找"
+    improved_answer: "自动推荐：semiconductor_cycle > ai_stack > decline/rise"
+    action: "创建框架推荐引擎"
+
+  - question: "哪些经验教训最可靠？"
+    current_answer: "都差不多"
+    improved_answer: "按验证状态 + 使用频率排序"
+    action: "添加验证评分和使用追踪"
+
+  - question: "我的预测在哪个领域最准？"
+    current_answer: "不知道"
+    improved_answer: "半导体88%，宏观75%，时机60%"
+    action: "按领域统计准确率"
+
+  - question: "该用FMP还是100baggers的数据？"
+    current_answer: "不确定"
+    improved_answer: "财务数据用FMP (可靠性9)，领先指标用100baggers (可靠性7)"
+    action: "添加数据源评分"
+
+  - question: "这5篇Agent论文，我应该先实施哪个？"
+    current_answer: "都列出来了"
+    improved_answer: "LLM-Modulo优先 (适用性9，难度medium，预期提升30%)"
+    action: "添加实施优先级评分"
+
+# =============================================================================
+# 深化思考：更本质的问题
+# =============================================================================
+
+deeper_thinking:
+
+  question_1:
+    surface: "投资者数据库需要权重"
+    deeper: "任何专家意见都需要能力圈匹配"
+    deepest: "权威本身不是真理，领域匹配才是"
+    generalization: |
+      这不只适用于投资者，还适用于：
+      - 分析师报告（谁在这个领域更专业？）
+      - 学术论文（这个作者的领域是什么？）
+      - 我自己的判断（我在什么领域更准？）
+
+  question_2:
+    surface: "预测需要分类"
+    deeper: "不同类型预测有不同准确率模式"
+    deepest: "元预测：预测自己的预测能力"
+    generalization: |
+      建立"预测能力校准"：
+      - 我在结构性预测上准确率90%
+      - 我在事件性预测上准确率70%
+      - 我在时机预测上准确率50%
+
+      因此：高置信度结构性预测可以重仓
+            低置信度时机预测只能小仓位
+
+  question_3:
+    surface: "框架需要有效性评分"
+    deeper: "框架有其适用边界"
+    deepest: "没有万能框架，只有场景匹配"
+    generalization: |
+      建立"框架适用性矩阵"：
+      - 周期分析 → semiconductor_cycle_framework
+      - 公司衰落检测 → tech_decline_framework
+      - 宏观判断 → cycle_temperature_gauge
+
+      并追踪：每个框架在其"主场"的准确率
+
+  question_4:
+    surface: "信息需要价值排序"
+    deeper: "价值是场景依赖的"
+    deepest: "同一信息在不同场景价值不同"
+    generalization: |
+      建立"场景×信息价值矩阵"：
+      - 分析TSM时：Druckenmiller意见价值95
+      - 分析消费品时：Druckenmiller意见价值40
+
+      这意味着：价值排序不是静态的，是动态的
+
+# =============================================================================
+# 元原则固化
+# =============================================================================
+
+meta_principle:
+
+  id: "META_010"
+  name: "新思路最大化原则"
+  description: |
+    每当用户（或任何来源）提供一个新思路：
+    1. 最大化 - 把这个思路推到极致
+    2. 泛化 - 找到所有可以应用的地方
+    3. 深化 - 追问更深层的本质
+    4. 迭代 - 用这个新视角审视所有已有工作
+    5. 固化 - 形成可复用的原则/框架
+
+  execution_checklist:
+    - "这个思路的本质是什么？"
+    - "还能用在哪里？（至少3个其他模块）"
+    - "更深一层是什么？（至少问3次'为什么'）"
+    - "我之前的工作有哪些违反了这个原则？"
+    - "如何固化成可复用的机制？"
+
+  anti_pattern: |
+    只解决用户指出的具体问题，不泛化应用
+    例：只升级投资者数据库，不审计其他模块
+
+# =============================================================================
+# 执行计划
+# =============================================================================
+
+execution_plan:
+
+  phase_1_immediate:
+    duration: "现在"
+    actions:
+      - "创建frameworks_effectiveness_tracker.yaml"
+      - "创建predictions_tracker.yaml"
+      - "升级data_source_registry到v2"
+
+  phase_2_short_term:
+    duration: "本周"
+    actions:
+      - "为lessons_learned添加场景标签"
+      - "为meta_insights添加触发条件"
+      - "为agent_design_insights添加实施优先级"
+
+  phase_3_medium_term:
+    duration: "本月"
+    actions:
+      - "创建skills_registry.yaml"
+      - "回填投资者历史预测数据"
+      - "建立自动化追踪机制"
