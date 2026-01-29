@@ -1,3 +1,25 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Ecosystem Graph Agent / 生态图谱智能体
+# 版本: 2.4
+#
+# 一句话: 构建公司生态依赖图谱，识别隐藏风险与机会
+#
+# 何时用:
+#   - 当需要理解公司在产业链中的位置时
+#   - 当需要识别co-innovation risk或adoption chain risk时
+#   - 当需要分析竞争格局和互补者关系时
+#
+# 输入: 公司基础信息 + 行业数据
+# 输出: Property Graph + 生态风险评分 + 竞争格局分析
+#
+# 依赖: data_integrity_agent (数据验证)
+# 被依赖: research_mechanism_agent, quality_gate_agent, valuation_engine_agent
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
 # Ecosystem Graph Agent v2.4
 # 生态图谱智能体 - Policy Pack体系对齐版本
 # 升级自v2.3：增加策略包、reason codes、schema、接口契约

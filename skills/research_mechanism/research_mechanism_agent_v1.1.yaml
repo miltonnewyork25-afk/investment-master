@@ -1,3 +1,25 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Research Mechanism Agent / 研究机制智能体
+# 版本: 1.1
+#
+# 一句话: 构建因果推理DAG，生成可证伪的投资论点
+#
+# 何时用:
+#   - 当需要将定性判断转化为因果假设时
+#   - 当需要做预验尸(Premortem)分析时
+#   - 当需要识别生态系统风险(co-innovation/adoption chain)时
+#
+# 输入: 公司信息 + 初步研究发现 + 生态图谱
+# 输出: ThesisMemo + Mechanism DAG + 监控触发器 + 不确定性矩阵
+#
+# 依赖: ecosystem_graph_agent, data_integrity_agent
+# 被依赖: quality_gate_agent, valuation_engine_agent
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
 # Research Mechanism Agent v1.1 (Merged & Optimized)
 # 研究机制智能体 - 因果推理与论点构建
 # 整合：Adner生态风险 + Pearl因果推断 + Klein预验尸 + OWASP LLM安全门禁
