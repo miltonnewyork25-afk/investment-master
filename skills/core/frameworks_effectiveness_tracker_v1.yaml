@@ -1,12 +1,45 @@
-# Frameworks Effectiveness Tracker v1.0
-# 框架有效性追踪器
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Frameworks Effectiveness Tracker / 框架有效性追踪器
+# 版本: 1.1
 #
-# 问题：11个框架平等存在，不知道哪个更有效
-# 解决：追踪每个框架的应用次数、成功率、最佳场景
+# 一句话: 追踪框架实际应用效果，用数据指导框架选择
+#
+# ⚠️ 数据可信度警告:
+#   当前effectiveness数据为【初始估算】而非【验证数据】
+#   success_rate和effectiveness_score需要6个月+实际应用才能可信
+#
+# 何时用:
+#   - 选择分析框架时
+#   - 评估框架效果时
+#   - 记录框架应用日志时
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
 
-version: "1.0"
+version: "1.1"
 created: "2026-01-28"
+updated: "2026-01-29"
 purpose: "让框架从'描述性存在'变成'规范性指导'"
+
+# =============================================================================
+# ⚠️ 数据可信度声明
+# =============================================================================
+data_credibility:
+  warning: |
+    以下effectiveness数据为【初始估算】，不是验证数据！
+    - applications_count: 基于设计意图估算，非实际应用次数
+    - success_rate: 基于框架理论完备性估算，非实际验证
+    - effectiveness_score: 基于上述估算计算，继承不确定性
+
+    这些数据仅供框架选择参考，不应作为框架质量的可靠指标。
+
+  required_for_validation:
+    min_applications: 10  # 至少10次应用才有统计意义
+    min_time_span: "6 months"  # 至少6个月验证周期
+
+  current_status: "INSUFFICIENT_DATA"
 
 # =============================================================================
 # 框架有效性排名
@@ -15,20 +48,22 @@ purpose: "让框架从'描述性存在'变成'规范性指导'"
 frameworks_ranked:
 
   # ---------------------------------------------------------------------------
-  # Tier S: 核心框架 (验证次数多，成功率高)
+  # Tier S: 核心框架 (理论完备，推荐优先使用)
   # ---------------------------------------------------------------------------
   tier_s:
-    description: "最高效框架，应优先使用"
+    description: "理论最完备框架，推荐优先使用（但有效性待验证）"
 
     - rank: 1
-      name: "unified_decision_framework"
+      name: "hierarchical_investment_decision_framework"
       version: "v1.1"
-      file: "skills/core/unified_decision_framework_v1.yaml"
+      file: "skills/core/hierarchical_investment_decision_framework_v1.yaml"
+      note: "⭐ 唯一决策入口（替代unified_decision_framework）"
 
       effectiveness:
-        applications_count: 12
-        success_rate: "85%"
-        effectiveness_score: 92
+        applications_count: "[估算] 5"
+        success_rate: "[待验证]"
+        effectiveness_score: "[待计算]"
+        data_credibility: "LOW - 需要更多实际应用验证"
 
       best_for:
         - "多框架冲突解决"
@@ -38,7 +73,7 @@ frameworks_ranked:
       not_for:
         - "单一深度分析"
 
-      key_insight: "4层结构 + 冲突解决规则是核心价值"
+      key_insight: "层级结构 + 压倒性因素识别是核心价值"
 
     - rank: 2
       name: "cycle_temperature_gauge"
@@ -46,9 +81,10 @@ frameworks_ranked:
       file: "skills/core/cycle_temperature_gauge_v1.yaml"
 
       effectiveness:
-        applications_count: 8
-        success_rate: "80%"
-        effectiveness_score: 88
+        applications_count: "[估算] 3"
+        success_rate: "[待验证]"
+        effectiveness_score: "[待计算]"
+        data_credibility: "LOW"
 
       best_for:
         - "周期位置判断"
@@ -59,10 +95,10 @@ frameworks_ranked:
       validated_prediction: "2026年处于炎热区间下沿 - 待验证"
 
   # ---------------------------------------------------------------------------
-  # Tier A: 高效框架 (特定场景验证有效)
+  # Tier A: 领域专用框架 (理论上适合特定场景)
   # ---------------------------------------------------------------------------
   tier_a:
-    description: "特定场景下高效，需匹配使用"
+    description: "领域专用框架，需匹配使用场景（有效性待验证）"
 
     - rank: 3
       name: "semiconductor_cycle_framework"
@@ -70,9 +106,10 @@ frameworks_ranked:
       file: "skills/core/semiconductor_cycle_framework_v1.yaml"
 
       effectiveness:
-        applications_count: 6
-        success_rate: "83%"
-        effectiveness_score: 85
+        applications_count: "[估算] 2"
+        success_rate: "[待验证]"
+        effectiveness_score: "[待计算]"
+        data_credibility: "LOW"
 
       best_for:
         - "半导体行业分析"
@@ -91,18 +128,20 @@ frameworks_ranked:
       file: "skills/core/tech_decline_framework_v2.yaml"
 
       effectiveness:
-        applications_count: 5
-        success_rate: "80%"
-        effectiveness_score: 82
+        applications_count: "[估算] 2"
+        success_rate: "[待验证]"
+        effectiveness_score: "[待计算]"
+        data_credibility: "LOW"
 
       best_for:
         - "科技公司衰落检测"
         - "风险预警"
         - "竞争对手分析"
 
-      validated_on:
+      anecdotal_validation:  # 非系统性验证
         - company: "Intel"
-          result: "6/7红灯 → 2年后被踢出道琼斯 ✅"
+          claim: "6/7红灯 → 被踢出道琼斯"
+          note: "回测结果，非实时预测"
         - company: "Salesforce"
           result: "4/7红灯 → 待验证"
 
@@ -112,19 +151,19 @@ frameworks_ranked:
       file: "skills/core/tech_rise_framework_v1.yaml"
 
       effectiveness:
-        applications_count: 4
-        success_rate: "75%"
-        effectiveness_score: 78
+        applications_count: "[估算] 1"
+        success_rate: "[待验证]"
+        effectiveness_score: "[待计算]"
+        data_credibility: "LOW"
 
       best_for:
         - "崛起公司识别"
         - "反转机会发现"
 
-      validated_on:
+      anecdotal_validation:
         - company: "NVIDIA 2012-2016"
-          result: "早期信号识别 ✅"
-        - company: "ServiceNow"
-          result: "92分 → 待验证"
+          claim: "早期信号识别"
+          note: "回测结果，非实时预测"
 
     - rank: 6
       name: "ai_stack_framework"
@@ -132,9 +171,10 @@ frameworks_ranked:
       file: "skills/core/ai_stack_framework_v1.yaml"
 
       effectiveness:
-        applications_count: 5
-        success_rate: "75%"
-        effectiveness_score: 77
+        applications_count: "[估算] 2"
+        success_rate: "[待验证]"
+        effectiveness_score: "[待计算]"
+        data_credibility: "LOW"
 
       best_for:
         - "AI产业链分析"
@@ -144,42 +184,47 @@ frameworks_ranked:
       key_insight: "7层传导 + 瓶颈迁移是核心概念"
 
   # ---------------------------------------------------------------------------
-  # Tier B: 有效但使用较少
+  # Tier B: 辅助框架 (应用场景较窄)
   # ---------------------------------------------------------------------------
   tier_b:
-    description: "有效但应用场景较窄"
+    description: "辅助框架，应用场景较窄（有效性待验证）"
 
     - rank: 7
       name: "industry_signal_propagation"
       version: "v1.0"
-      effectiveness_score: 75
-      applications_count: 3
+      effectiveness_score: "[待计算]"
+      applications_count: "[估算] 1"
+      data_credibility: "LOW"
 
     - rank: 8
       name: "ai_roi_verification_framework"
       version: "v1.0"
-      effectiveness_score: 72
-      applications_count: 2
+      effectiveness_score: "[待计算]"
+      applications_count: "[估算] 1"
+      data_credibility: "LOW"
 
     - rank: 9
       name: "ecosystem_signal_aggregation"
       version: "v1.0"
-      effectiveness_score: 70
-      applications_count: 2
+      effectiveness_score: "[待计算]"
+      applications_count: "[估算] 0"
+      data_credibility: "LOW"
 
     - rank: 10
       name: "meta_cognitive_framework"
       version: "v1.0"
-      effectiveness_score: 68
-      applications_count: 2
+      effectiveness_score: "[待计算]"
+      applications_count: "[估算] 1"
+      data_credibility: "LOW"
       note: "更多是思维工具而非分析框架"
 
     - rank: 11
-      name: "signal_correlation_network"
-      version: "v1.0"
-      effectiveness_score: 65
-      applications_count: 1
-      note: "概念好但实际应用较少"
+      name: "druckenmiller_decision_engine"
+      version: "v1.2"
+      effectiveness_score: "[待计算]"
+      applications_count: "[估算] 0"
+      data_credibility: "LOW"
+      note: "已降级为工具框架，被hierarchical框架调用"
 
 # =============================================================================
 # 场景→框架推荐矩阵
@@ -187,35 +232,39 @@ frameworks_ranked:
 
 scene_framework_matrix:
 
+  note: |
+    ⚠️ 所有场景的决策入口都是hierarchical_investment_decision_framework
+    下列primary框架作为工具被hierarchical框架调用
+
   - scene: "分析半导体公司"
-    primary: ["semiconductor_cycle_framework", "ai_stack_framework"]
-    secondary: ["tech_decline_framework", "unified_decision_framework"]
-    confidence: 90%
+    entry_point: "hierarchical_investment_decision_framework"
+    tool_frameworks: ["semiconductor_cycle_framework", "ai_stack_framework"]
+    confidence: "[待验证]"
 
   - scene: "宏观周期判断"
-    primary: ["cycle_temperature_gauge"]
-    secondary: ["industry_signal_propagation"]
-    confidence: 85%
+    entry_point: "hierarchical_investment_decision_framework"
+    tool_frameworks: ["cycle_temperature_gauge"]
+    confidence: "[待验证]"
 
   - scene: "公司衰落/崛起检测"
-    primary: ["tech_decline_framework", "tech_rise_framework"]
-    secondary: ["signal_correlation_network"]
-    confidence: 80%
+    entry_point: "hierarchical_investment_decision_framework"
+    tool_frameworks: ["tech_decline_framework", "tech_rise_framework"]
+    confidence: "[待验证]"
 
   - scene: "AI产业链分析"
-    primary: ["ai_stack_framework", "industry_signal_propagation"]
-    secondary: ["semiconductor_cycle_framework"]
-    confidence: 85%
+    entry_point: "hierarchical_investment_decision_framework"
+    tool_frameworks: ["ai_stack_framework", "industry_signal_propagation"]
+    confidence: "[待验证]"
 
   - scene: "投资决策综合"
-    primary: ["unified_decision_framework"]
-    secondary: ["cycle_temperature_gauge", "ai_roi_verification_framework"]
-    confidence: 90%
+    entry_point: "hierarchical_investment_decision_framework"
+    tool_frameworks: ["cycle_temperature_gauge", "ai_roi_verification_framework"]
+    confidence: "[待验证]"
 
   - scene: "风险评估"
-    primary: ["cycle_temperature_gauge", "ai_roi_verification_framework"]
-    secondary: ["tech_decline_framework"]
-    confidence: 75%
+    entry_point: "hierarchical_investment_decision_framework"
+    tool_frameworks: ["cycle_temperature_gauge", "ai_roi_verification_framework", "tech_decline_framework"]
+    confidence: "[待验证]"
 
 # =============================================================================
 # 框架应用日志（用于追踪）
@@ -275,11 +324,16 @@ update_mechanism:
 
 quick_lookup:
 
-  for_semiconductor: "semiconductor_cycle + ai_stack"
-  for_macro: "cycle_temperature_gauge"
-  for_company_risk: "tech_decline_framework"
-  for_decision: "unified_decision_framework"
+  decision_entry: "hierarchical_investment_decision_framework (唯一入口)"
 
-  most_reliable: "unified_decision_framework (92分)"
-  most_used: "unified_decision_framework (12次)"
-  newest: "deep_thinking_framework (刚创建)"
+  for_semiconductor: "semiconductor_cycle + ai_stack (作为工具)"
+  for_macro: "cycle_temperature_gauge (作为工具)"
+  for_company_risk: "tech_decline_framework (作为工具)"
+
+  # ⚠️ 以下数据待验证
+  most_reliable: "[待验证] - 需要至少10次应用和6个月数据"
+  most_used: "[待验证] - 需要真实应用日志"
+
+  deprecated_frameworks:
+    - "unified_decision_framework → 已合并入hierarchical"
+    - "druckenmiller_decision_engine → 降级为工具"

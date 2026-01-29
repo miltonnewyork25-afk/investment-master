@@ -1,0 +1,439 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Schema Registry / Schema注册表
+# 版本: 1.0
+#
+# 一句话: 所有Schema的单一真相源，消除重复和drift
+#
+# 何时用:
+#   - 创建新Schema前先查此注册表
+#   - 需要引用Schema时从此处获取
+#   - 检查Schema是否已存在
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
+version: "1.0"
+created: "2026-01-29"
+purpose: "整合50+个分散Schema为统一注册表，消除重复和drift"
+
+# =============================================================================
+# 第一部分：Schema分类与整合策略
+# =============================================================================
+
+consolidation_strategy:
+
+  before_state:
+    total_files: 33
+    breakdown:
+      schema_files: 14
+      contract_files: 5
+      policy_files: 8
+      reason_code_files: 6
+    problems:
+      - "decision_trace_schema存在两个版本(QG和RM)"
+      - "reason_code分散在6个文件中"
+      - "相似Schema没有共享基础定义"
+
+  after_state:
+    approach: "层级整合 + 共享基础 + Agent扩展"
+    structure:
+      common_schemas: 5  # 共享基础schema
+      agent_extensions: 6  # Agent特定扩展
+      unified_reason_codes: 1  # 统一reason code
+      unified_contracts: 1  # 统一contract模板
+
+# =============================================================================
+# 第二部分：核心Schema注册表
+# =============================================================================
+
+core_schemas:
+
+  # ---------------------------------------------------------------------------
+  # 1. Decision Trace (统一基础)
+  # ---------------------------------------------------------------------------
+  decision_trace_base:
+    id: "SCHEMA_001"
+    name: "Decision Trace Base Schema"
+    version: "2.0"
+    description: "所有Agent共享的决策追踪基础结构"
+
+    base_fields:
+      - name: "run_id"
+        type: "string"
+        required: true
+        description: "唯一运行标识"
+
+      - name: "timestamp"
+        type: "datetime"
+        required: true
+        description: "ISO 8601时间戳"
+
+      - name: "policy_pack_version"
+        type: "string"
+        required: true
+        description: "策略包版本"
+
+      - name: "policy_pack_hash"
+        type: "string"
+        required: true
+        description: "策略包SHA-256哈希"
+
+      - name: "verdict"
+        type: "object"
+        required: true
+        sub_fields:
+          - status: "enum[PASS, DEGRADE, FAIL]"
+          - triggered_rule: "string"
+          - reason_codes: "array[string]"
+          - confidence_cap: "number[0-1]"
+
+      - name: "reason_codes_all"
+        type: "array[string]"
+        required: true
+        description: "累积的所有reason codes"
+
+      - name: "latency_ms"
+        type: "integer"
+        required: true
+        description: "总执行时间"
+
+      - name: "token_usage"
+        type: "object"
+        required: false
+        sub_fields:
+          - input_tokens: "integer"
+          - output_tokens: "integer"
+          - total_tokens: "integer"
+
+    agent_extensions:
+      QG:
+        file: "skills/quality_gate/decision_trace_schema.yaml"
+        additional_fields: ["stats", "invariants_summary", "flags", "tool_permission_level"]
+
+      RM:
+        file: "skills/research_mechanism/schemas/decision_trace_schema.yaml"
+        additional_fields: ["pipeline_execution", "confidence_chain", "metrics_summary"]
+
+      VE:
+        file: "skills/valuation_engine/schemas/valuation_trace_schema.yaml"
+        additional_fields: ["model_family_used", "implied_expectations", "forward_valuation"]
+
+  # ---------------------------------------------------------------------------
+  # 2. Claim Spec (统一)
+  # ---------------------------------------------------------------------------
+  claim_spec:
+    id: "SCHEMA_002"
+    name: "Claim Specification Schema"
+    version: "1.0"
+    canonical_file: "skills/research_mechanism/schemas/rm_claim_spec_schema.yaml"
+    description: "可证伪命题的标准结构"
+
+    fields:
+      - name: "claim_id"
+        type: "string"
+        required: true
+
+      - name: "claim_text"
+        type: "string"
+        required: true
+
+      - name: "criticality"
+        type: "enum[CRITICAL, SUPPORTING, CONTEXTUAL]"
+        required: true
+
+      - name: "evidence_links"
+        type: "array[object]"
+        required: true
+        sub_fields:
+          - evidence_id: "string"
+          - grade: "enum[A, B, C, D]"
+          - source_type: "string"
+
+      - name: "falsifiable"
+        type: "boolean"
+        required: true
+
+      - name: "verification_method"
+        type: "string"
+        required: false
+
+  # ---------------------------------------------------------------------------
+  # 3. Canonical Datapoint (统一)
+  # ---------------------------------------------------------------------------
+  canonical_datapoint:
+    id: "SCHEMA_003"
+    name: "Canonical Datapoint Schema"
+    version: "1.0"
+    canonical_file: "skills/data_integrity/schemas/canonical_datapoint_schema.yaml"
+    description: "规范化数据点结构"
+
+    fields:
+      - name: "fact_key"
+        type: "string"
+        required: true
+        description: "唯一标识，格式: {entity}:{metric}:{period}"
+
+      - name: "selected_value"
+        type: "number"
+        required: true
+
+      - name: "unit"
+        type: "string"
+        required: true
+
+      - name: "source_reconciliation"
+        type: "object"
+        required: true
+        sub_fields:
+          - sources: "array[object]"
+          - arbitration_rule: "string"
+          - confidence: "number[0-1]"
+
+      - name: "staleness_days"
+        type: "integer"
+        required: true
+
+  # ---------------------------------------------------------------------------
+  # 4. Thesis Memo (统一)
+  # ---------------------------------------------------------------------------
+  thesis_memo:
+    id: "SCHEMA_004"
+    name: "Thesis Memo Schema"
+    version: "1.0"
+    canonical_file: "skills/research_mechanism/schemas/rm_thesis_memo_schema.yaml"
+    description: "投资论点备忘录结构"
+
+    fields:
+      - name: "ticker"
+        type: "string"
+        required: true
+
+      - name: "thesis_summary"
+        type: "string"
+        required: true
+
+      - name: "mechanism_dag"
+        type: "object"
+        required: true
+
+      - name: "ecosystem_risks"
+        type: "array[object]"
+        required: true
+
+      - name: "failure_modes"
+        type: "array[object]"
+        required: true
+
+      - name: "kill_switches"
+        type: "array[object]"
+        required: true
+
+      - name: "confidence"
+        type: "number[0-1]"
+        required: true
+
+  # ---------------------------------------------------------------------------
+  # 5. Valuation Summary (统一)
+  # ---------------------------------------------------------------------------
+  valuation_summary:
+    id: "SCHEMA_005"
+    name: "Valuation Summary Schema"
+    version: "1.0"
+    canonical_file: "skills/valuation_engine/schemas/valuation_summary_schema_v1.yaml"
+    description: "估值汇总结构"
+
+    fields:
+      - name: "ticker"
+        type: "string"
+        required: true
+
+      - name: "model_family"
+        type: "string"
+        required: true
+
+      - name: "implied_expectations"
+        type: "object"
+        required: true
+        sub_fields:
+          - implied_rev_cagr: "number"
+          - implied_margin: "number"
+          - implied_fade_years: "integer"
+
+      - name: "forward_valuation"
+        type: "object"
+        required: true
+
+      - name: "expectation_gap"
+        type: "number"
+        required: true
+
+      - name: "fragility"
+        type: "boolean"
+        required: true
+
+# =============================================================================
+# 第三部分：统一Reason Code注册表
+# =============================================================================
+
+unified_reason_codes:
+
+  description: |
+    所有Agent的reason codes统一注册，使用命名空间前缀区分。
+    这替代了6个分散的reason_code_dictionary文件。
+
+  namespaces:
+    QG: "Quality Gate相关"
+    DI: "Data Integrity相关"
+    ECO: "Ecosystem Graph相关"
+    RM: "Research Mechanism相关"
+    VE: "Valuation Engine相关"
+    INNOV: "Innovation Engine相关"
+    PROC: "流程控制相关"
+    TOOL: "工具调用相关"
+
+  categories:
+    TRUTH: "真实性/证据相关"
+    SAFE: "安全性相关"
+    CONF: "置信度相关"
+    DATA: "数据质量相关"
+    EXEC: "执行相关"
+
+  high_frequency_codes:
+    - code: "QG_TRUTH_LOW_COVERAGE"
+      meaning: "证据覆盖率低于阈值"
+      threshold: "ab_coverage < 0.70"
+      action: "DEGRADE或请求补充数据"
+
+    - code: "QG_TRUTH_STALE_EVIDENCE"
+      meaning: "关键证据过旧"
+      threshold: "staleness_days > 90"
+      action: "DEGRADE或刷新数据"
+
+    - code: "DI_CONFLICT_UNRESOLVED"
+      meaning: "数据源冲突未解决"
+      action: "仲裁或标记不确定性"
+
+    - code: "RM_CLAIM_NOT_FALSIFIABLE"
+      meaning: "命题不可证伪"
+      action: "重写为可证伪形式"
+
+    - code: "VE_IMPLIED_EXCEEDS_PHYSICAL"
+      meaning: "隐含预期超过物理上限"
+      action: "估值过高警告"
+
+    - code: "VE_EXPECTATION_GAP_NEGATIVE"
+      meaning: "市场预期高于合理价值"
+      action: "等待更好价格"
+
+  canonical_file: "skills/_common/unified_reason_codes_v1.yaml"
+  status: "TO_BE_CREATED"
+
+# =============================================================================
+# 第四部分：Contract模板整合
+# =============================================================================
+
+contract_templates:
+
+  description: |
+    Agent间接口契约的标准模板，避免重复定义。
+
+  standard_contract_structure:
+    - section: "metadata"
+      fields: ["contract_id", "version", "parties", "created_date"]
+
+    - section: "input_spec"
+      fields: ["required_fields", "optional_fields", "validation_rules"]
+
+    - section: "output_spec"
+      fields: ["guaranteed_fields", "conditional_fields", "format"]
+
+    - section: "error_handling"
+      fields: ["error_codes", "fallback_behavior", "retry_policy"]
+
+    - section: "sla"
+      fields: ["latency_budget_ms", "token_budget", "reliability_target"]
+
+  existing_contracts:
+    - file: "skills/_common/skill_output_contract_v1.0.yaml"
+      status: "canonical"
+
+    - file: "skills/ecosystem_graph/eco_qg_interface_contract.yaml"
+      status: "agent-specific"
+
+    - file: "skills/research_mechanism/contracts/rm_qg_interface_contract.yaml"
+      status: "agent-specific"
+
+    - file: "skills/valuation_engine/contracts/ve_qg_interface_contract_v1.yaml"
+      status: "agent-specific"
+
+# =============================================================================
+# 第五部分：Schema使用指南
+# =============================================================================
+
+usage_guide:
+
+  before_creating_new_schema:
+    - step: "检查此注册表是否已有相似Schema"
+    - step: "如果有，评估是否可以扩展现有Schema"
+    - step: "如果需要新Schema，在此注册表中先注册"
+    - step: "使用标准命名: {agent}_{purpose}_schema_v{version}.yaml"
+
+  referencing_schemas:
+    method: |
+      在Agent定义中使用schema_ref引用：
+
+      schema_ref:
+        base: "schema_registry_v1.yaml#core_schemas/decision_trace_base"
+        extensions: "local_extensions.yaml"
+
+  versioning:
+    rule: "Schema变更必须递增版本号"
+    breaking_change: "新增required字段 = major版本"
+    non_breaking: "新增optional字段 = minor版本"
+
+# =============================================================================
+# 第六部分：迁移计划
+# =============================================================================
+
+migration_plan:
+
+  phase_1:
+    name: "创建统一Reason Code"
+    action: "将6个reason_code_dictionary合并为1个"
+    status: "PENDING"
+
+  phase_2:
+    name: "标记重复Schema"
+    action: "在重复Schema文件头添加deprecated标记并指向canonical"
+    status: "PENDING"
+
+  phase_3:
+    name: "更新Agent引用"
+    action: "更新各Agent使用schema_ref而非直接嵌入"
+    status: "FUTURE"
+
+# =============================================================================
+# 第七部分：Schema文件索引
+# =============================================================================
+
+file_index:
+
+  canonical_schemas:
+    - "skills/_common/schema_registry_v1.yaml (本文件)"
+    - "skills/research_mechanism/schemas/rm_claim_spec_schema.yaml"
+    - "skills/data_integrity/schemas/canonical_datapoint_schema.yaml"
+    - "skills/research_mechanism/schemas/rm_thesis_memo_schema.yaml"
+    - "skills/valuation_engine/schemas/valuation_summary_schema_v1.yaml"
+
+  agent_specific_extensions:
+    - "skills/quality_gate/decision_trace_schema.yaml → QG扩展"
+    - "skills/research_mechanism/schemas/decision_trace_schema.yaml → RM扩展"
+    - "skills/ecosystem_graph/ecosystem_graph_schema.yaml → ECO专用"
+    - "skills/innovation_engine/schemas/innovation_hypothesis_schema_v1.yaml → INNOV专用"
+
+  deprecated_or_redundant:
+    note: "以下文件与其他文件有重叠，应考虑整合"
+    files:
+      - "decision_trace_schema存在于QG和RM两处 → 应统一基础+扩展"

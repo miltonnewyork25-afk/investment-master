@@ -1,0 +1,364 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Unified Reason Codes / 统一原因代码注册表
+# 版本: 1.0
+#
+# 一句话: 所有Agent reason codes的单一真相源
+#
+# 何时用:
+#   - 需要添加新reason code时
+#   - 需要理解某个reason code含义时
+#   - 调试/审计Agent行为时
+#
+# 替代文件:
+#   - quality_gate/reason_code_dictionary.yaml
+#   - data_integrity/reason_codes/reason_code_dictionary_DI.yaml
+#   - ecosystem_graph/reason_codes/reason_code_dictionary_ECO.yaml
+#   - research_mechanism/reason_codes/reason_code_dictionary_RM.yaml
+#   - valuation_engine/reason_codes/reason_code_dictionary_VE.yaml
+#   - innovation_engine/reason_codes/reason_code_dictionary_INNOV.yaml
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
+version: "1.0"
+created: "2026-01-29"
+purpose: "整合6个分散的reason code字典为统一注册表"
+
+# =============================================================================
+# 第一部分：命名空间定义
+# =============================================================================
+
+namespaces:
+
+  QG:
+    full_name: "Quality Gate"
+    description: "质量门禁相关的reason codes"
+    severity_owner: "QualityGateAgent"
+    prefix_pattern: "QG_"
+
+  DI:
+    full_name: "Data Integrity"
+    description: "数据完整性相关的reason codes"
+    severity_owner: "DataIntegrityAgent"
+    prefix_pattern: "DI_"
+
+  ECO:
+    full_name: "Ecosystem Graph"
+    description: "生态图谱相关的reason codes"
+    severity_owner: "EcosystemGraphAgent"
+    prefix_pattern: "ECO_"
+
+  RM:
+    full_name: "Research Mechanism"
+    description: "研究机制相关的reason codes"
+    severity_owner: "ResearchMechanismAgent"
+    prefix_pattern: "RM_"
+
+  VE:
+    full_name: "Valuation Engine"
+    description: "估值引擎相关的reason codes"
+    severity_owner: "ValuationEngineAgent"
+    prefix_pattern: "VE_"
+
+  INNOV:
+    full_name: "Innovation Engine"
+    description: "创新引擎相关的reason codes"
+    severity_owner: "InnovationAgent"
+    prefix_pattern: "INNOV_"
+
+  PROC:
+    full_name: "Process Control"
+    description: "流程控制相关的reason codes"
+    severity_owner: "Supervisor"
+    prefix_pattern: "PROC_"
+
+  TOOL:
+    full_name: "Tool Evaluation"
+    description: "工具调用相关的reason codes"
+    severity_owner: "EvalAgent"
+    prefix_pattern: "TOOL_"
+
+# =============================================================================
+# 第二部分：严重性定义
+# =============================================================================
+
+severity_levels:
+
+  P0:
+    name: "Critical"
+    action: "FAIL"
+    description: "致命错误，必须中止处理"
+    requires_human_review: true
+    auto_retry: false
+
+  P1:
+    name: "High"
+    action: "DEGRADE"
+    description: "严重问题，触发降级模式"
+    requires_human_review: false
+    auto_retry: true
+    max_retries: 2
+
+  P2:
+    name: "Medium"
+    action: "WARN"
+    description: "警告，标记但不降级"
+    requires_human_review: false
+    auto_retry: false
+
+  P3:
+    name: "Low"
+    action: "INFO"
+    description: "信息性，仅记录"
+    requires_human_review: false
+    auto_retry: false
+
+# =============================================================================
+# 第三部分：高频使用的Reason Codes（按使用频率排序）
+# =============================================================================
+
+high_frequency_codes:
+
+  # ---------------------------------------------------------------------------
+  # 数据质量类
+  # ---------------------------------------------------------------------------
+  data_quality:
+
+    - code: "DI_EVIDENCE_COVERAGE_LOW"
+      severity: P1
+      description: "A/B级证据覆盖率不足(<40%)"
+      resolution: "补充高质量数据源"
+      auto_route:
+        agent: "DataIntegrityAgent"
+        action: "fetch_authoritative_sources"
+
+    - code: "DI_STALE_EVIDENCE"
+      severity: P2
+      description: "关键证据过旧(>90天)"
+      resolution: "刷新数据"
+      auto_route:
+        agent: "DataIntegrityAgent"
+        action: "refresh_stale_evidence"
+
+    - code: "DI_CONFLICT_UNRESOLVED"
+      severity: P1
+      description: "数据源冲突未解决"
+      resolution: "执行仲裁规则"
+      auto_route:
+        agent: "DataIntegrityAgent"
+        action: "arbitrate_conflict"
+
+  # ---------------------------------------------------------------------------
+  # 估值类
+  # ---------------------------------------------------------------------------
+  valuation:
+
+    - code: "VE_IMPLIED_EXCEEDS_PHYSICAL"
+      severity: P1
+      description: "隐含预期超过物理上限"
+      resolution: "标记估值过高风险"
+      example: "隐含收入增长30%+持续15年超过行业上限"
+
+    - code: "VE_EXPECTATION_GAP_NEGATIVE"
+      severity: P2
+      description: "市场预期高于合理价值(expectation_gap < -30%)"
+      resolution: "等待更好价格"
+
+    - code: "VE_FRAGILITY_HIGH"
+      severity: P2
+      description: "估值对假设极度敏感"
+      resolution: "降低置信度，减小建议仓位"
+
+    - code: "VE_CYCLICAL_NOT_NORMALIZED"
+      severity: P1
+      description: "周期股未使用正常化指标"
+      resolution: "计算7年平均margin/volume"
+
+  # ---------------------------------------------------------------------------
+  # 研究机制类
+  # ---------------------------------------------------------------------------
+  research_mechanism:
+
+    - code: "RM_CLAIM_NOT_FALSIFIABLE"
+      severity: P1
+      description: "命题不可证伪"
+      resolution: "重写为可证伪形式"
+      example: "改写为'如果X发生，则Y不成立'"
+
+    - code: "RM_COUNTERFACTUAL_COVERAGE_LOW"
+      severity: P2
+      description: "反事实覆盖率不足"
+      resolution: "补充do(x)反事实分析"
+
+    - code: "RM_ECOSYSTEM_RISK_UNMAPPED"
+      severity: P2
+      description: "生态系统风险未映射"
+      resolution: "补充co-innovation/adoption chain risk分析"
+
+  # ---------------------------------------------------------------------------
+  # 质量门禁类
+  # ---------------------------------------------------------------------------
+  quality_gate:
+
+    - code: "QG_CONFIDENCE_TOO_LOW"
+      severity: P1
+      description: "上游置信度过低(<0.60)"
+      resolution: "DEGRADE模式"
+
+    - code: "QG_INVARIANT_FAILED"
+      severity: P1
+      description: "不变量检查失败"
+      resolution: "修复违规或降级"
+
+    - code: "QG_FORBIDDEN_OUTPUT"
+      severity: P0
+      description: "检测到禁止输出内容"
+      resolution: "阻断输出"
+
+# =============================================================================
+# 第四部分：完整Reason Code列表（按命名空间组织）
+# =============================================================================
+
+all_codes:
+
+  # ---------------------------------------------------------------------------
+  # DI (Data Integrity) Namespace
+  # ---------------------------------------------------------------------------
+  DI:
+    - {code: "DI_EVIDENCE_COVERAGE_LOW", severity: P1, category: "evidence"}
+    - {code: "DI_STALE_EVIDENCE", severity: P2, category: "freshness"}
+    - {code: "DI_CONFLICT_UNRESOLVED", severity: P1, category: "consistency"}
+    - {code: "DI_DEFINITION_MISMATCH", severity: P1, category: "consistency"}
+    - {code: "DI_SOURCE_UNRELIABLE", severity: P2, category: "quality"}
+    - {code: "DI_MISSING_REQUIRED_FIELD", severity: P1, category: "completeness"}
+    - {code: "DI_ARBITRATION_FAILED", severity: P0, category: "process"}
+
+  # ---------------------------------------------------------------------------
+  # VE (Valuation Engine) Namespace
+  # ---------------------------------------------------------------------------
+  VE:
+    - {code: "VE_IMPLIED_EXCEEDS_PHYSICAL", severity: P1, category: "valuation"}
+    - {code: "VE_EXPECTATION_GAP_NEGATIVE", severity: P2, category: "valuation"}
+    - {code: "VE_FRAGILITY_HIGH", severity: P2, category: "risk"}
+    - {code: "VE_CYCLICAL_NOT_NORMALIZED", severity: P1, category: "model"}
+    - {code: "VE_FINANCIAL_MODEL_REQUIRED", severity: P1, category: "model"}
+    - {code: "VE_REIT_NAV_REQUIRED", severity: P1, category: "model"}
+    - {code: "VE_SEGMENT_DATA_MISSING", severity: P2, category: "data"}
+    - {code: "VE_CAPEX_NOT_DECOMPOSED", severity: P2, category: "data"}
+    - {code: "VE_EVIDENCE_COVERAGE_LOW", severity: P1, category: "evidence"}
+    - {code: "VE_FRESHNESS_TOO_OLD", severity: P2, category: "freshness"}
+    - {code: "VE_IMPLIED_INCONSISTENT_WITH_RM", severity: P2, category: "consistency"}
+
+  # ---------------------------------------------------------------------------
+  # RM (Research Mechanism) Namespace
+  # ---------------------------------------------------------------------------
+  RM:
+    - {code: "RM_CLAIM_NOT_FALSIFIABLE", severity: P1, category: "quality"}
+    - {code: "RM_COUNTERFACTUAL_COVERAGE_LOW", severity: P2, category: "analysis"}
+    - {code: "RM_ECOSYSTEM_RISK_UNMAPPED", severity: P2, category: "risk"}
+    - {code: "RM_PREMORTEM_MISSING", severity: P2, category: "analysis"}
+    - {code: "RM_TRIGGER_NOT_DEFINED", severity: P2, category: "monitoring"}
+    - {code: "RM_EVIDENCE_A_COVERAGE_LOW", severity: P1, category: "evidence"}
+    - {code: "RM_CRITICAL_CLAIM_UNSUPPORTED", severity: P0, category: "evidence"}
+
+  # ---------------------------------------------------------------------------
+  # ECO (Ecosystem Graph) Namespace
+  # ---------------------------------------------------------------------------
+  ECO:
+    - {code: "ECO_GRAPH_INCOMPLETE", severity: P2, category: "completeness"}
+    - {code: "ECO_ROLE_COVERAGE_LOW", severity: P1, category: "coverage"}
+    - {code: "ECO_FLOW_RULES_MISSING", severity: P2, category: "completeness"}
+    - {code: "ECO_DISRUPTION_ASSESSMENT_MISSING", severity: P2, category: "analysis"}
+    - {code: "ECO_INVARIANT_VIOLATED", severity: P1, category: "consistency"}
+
+  # ---------------------------------------------------------------------------
+  # QG (Quality Gate) Namespace
+  # ---------------------------------------------------------------------------
+  QG:
+    - {code: "QG_CONFIDENCE_TOO_LOW", severity: P1, category: "confidence"}
+    - {code: "QG_INVARIANT_FAILED", severity: P1, category: "validation"}
+    - {code: "QG_FORBIDDEN_OUTPUT", severity: P0, category: "safety"}
+    - {code: "QG_PII_DETECTED", severity: P0, category: "safety"}
+    - {code: "QG_INJECTION_DETECTED", severity: P0, category: "safety"}
+    - {code: "QG_SCHEMA_VALIDATION_FAILED", severity: P1, category: "validation"}
+
+  # ---------------------------------------------------------------------------
+  # INNOV (Innovation Engine) Namespace
+  # ---------------------------------------------------------------------------
+  INNOV:
+    - {code: "INNOV_NOVELTY_SCORE_LOW", severity: P2, category: "quality"}
+    - {code: "INNOV_ANALOGY_INVALID", severity: P2, category: "quality"}
+    - {code: "INNOV_HYPOTHESIS_NOT_TESTABLE", severity: P1, category: "quality"}
+
+  # ---------------------------------------------------------------------------
+  # PROC (Process Control) Namespace
+  # ---------------------------------------------------------------------------
+  PROC:
+    - {code: "PROC_POLICY_HASH_MISMATCH", severity: P0, category: "integrity"}
+    - {code: "PROC_TIMEOUT_EXCEEDED", severity: P1, category: "performance"}
+    - {code: "PROC_RETRY_EXHAUSTED", severity: P1, category: "execution"}
+    - {code: "PROC_SCHEMA_MISMATCH", severity: P1, category: "validation"}
+
+# =============================================================================
+# 第五部分：路由矩阵
+# =============================================================================
+
+routing_matrix:
+
+  description: |
+    当检测到特定reason code时，自动路由到相应Agent执行修复动作
+
+  routes:
+    - match: ["DI_EVIDENCE_COVERAGE_LOW", "DI_STALE_EVIDENCE"]
+      route_to: "DataIntegrityAgent"
+      action: "fetch_additional_sources"
+
+    - match: ["VE_CYCLICAL_NOT_NORMALIZED"]
+      route_to: "DataIntegrityAgent"
+      action: "calculate_normalized_metrics"
+
+    - match: ["RM_CLAIM_NOT_FALSIFIABLE"]
+      route_to: "ResearchMechanismAgent"
+      action: "rewrite_claim_falsifiable"
+
+    - match: ["ECO_GRAPH_INCOMPLETE"]
+      route_to: "EcosystemGraphAgent"
+      action: "expand_graph_coverage"
+
+    - match: ["VE_IMPLIED_INCONSISTENT_WITH_RM"]
+      route_to: "ResearchMechanismAgent"
+      action: "validate_mechanism_claims"
+
+# =============================================================================
+# 第六部分：使用指南
+# =============================================================================
+
+usage_guide:
+
+  adding_new_code:
+    steps:
+      - "1. 确定命名空间 (DI/VE/RM/ECO/QG/INNOV/PROC)"
+      - "2. 确定严重性 (P0/P1/P2/P3)"
+      - "3. 确定类别"
+      - "4. 写清description和resolution"
+      - "5. 如果需要自动路由，添加到routing_matrix"
+      - "6. 更新此文件"
+
+  code_naming:
+    pattern: "{NAMESPACE}_{CATEGORY}_{SPECIFIC}"
+    examples:
+      - "VE_IMPLIED_EXCEEDS_PHYSICAL"
+      - "DI_CONFLICT_UNRESOLVED"
+      - "RM_CLAIM_NOT_FALSIFIABLE"
+
+  deprecated_files:
+    note: "以下文件已被此统一文件替代，保留供参考"
+    files:
+      - "quality_gate/reason_code_dictionary.yaml"
+      - "data_integrity/reason_codes/reason_code_dictionary_DI.yaml"
+      - "ecosystem_graph/reason_codes/reason_code_dictionary_ECO.yaml"
+      - "research_mechanism/reason_codes/reason_code_dictionary_RM.yaml"
+      - "valuation_engine/reason_codes/reason_code_dictionary_VE.yaml"
+      - "innovation_engine/reason_codes/reason_code_dictionary_INNOV.yaml"

@@ -1,0 +1,526 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Kill Switch Registry / Kill Switch统一注册表
+# 版本: 1.0
+#
+# 一句话: 所有Kill Switch的单一真相源，消除分散和不一致
+#
+# 何时用:
+#   - 创建新Kill Switch前先查此注册表
+#   - 需要触发Kill Switch时参照此处
+#   - 监控Kill Switch状态时从此处获取定义
+#
+# 替代文件:
+#   - ai_roi_verification_framework_v1.yaml中的kill_switches
+#   - skill_design_standard_v2.x.yaml中的kill_switches
+#   - 各skill文件中分散的Kill Switch定义
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
+version: "1.0"
+created: "2026-01-29"
+purpose: "整合所有分散的Kill Switch定义为统一注册表"
+
+# =============================================================================
+# 第一部分：Kill Switch分类体系
+# =============================================================================
+
+classification:
+
+  by_scope:
+    - name: "INVESTMENT"
+      description: "投资决策级Kill Switch"
+      owner: "InvestmentDecisionAgent"
+      prefix: "KS_INV_"
+
+    - name: "AGENT"
+      description: "Agent执行级Kill Switch"
+      owner: "Supervisor"
+      prefix: "KS_AGT_"
+
+    - name: "DOMAIN"
+      description: "领域特定Kill Switch"
+      owner: "各领域Agent"
+      prefix: "KS_{DOMAIN}_"
+
+  by_severity:
+    CRITICAL:
+      description: "触发立即中止，不可降级"
+      action: "FAIL"
+      requires_human_review: true
+
+    HIGH:
+      description: "触发立即减仓/降级"
+      action: "DEGRADE_OR_FAIL"
+      requires_human_review: false
+
+    MEDIUM:
+      description: "触发警告，准备行动"
+      action: "WARN"
+      requires_human_review: false
+
+# =============================================================================
+# 第二部分：投资决策级Kill Switch
+# =============================================================================
+
+investment_kill_switches:
+
+  # ---------------------------------------------------------------------------
+  # 宏观/市场级
+  # ---------------------------------------------------------------------------
+  macro_market:
+
+    KS_INV_HYPERSCALER_CAPEX_CUT:
+      severity: CRITICAL
+      condition: "任一大厂(MSFT/GOOG/AMZN/META)下年capex指引同比下调>10%"
+      monitoring_metric: "quarterly_capex_guidance"
+      current_status: "GREEN"
+      action_on_trigger:
+        immediate: "减仓AI全栈30%"
+        follow_up: "重新评估AI周期定位"
+      rationale: "需求端信心动摇，链条传导风险"
+      source: "ai_roi_verification_framework_v1.yaml"
+
+    KS_INV_AI_REVENUE_COLLAPSE:
+      severity: CRITICAL
+      condition: "Microsoft AI收入增速降至<50% YoY"
+      monitoring_metric: "msft_ai_revenue_yoy"
+      current_status: "GREEN"
+      action_on_trigger:
+        immediate: "减仓应用层50%"
+        follow_up: "验证其他厂商AI收入"
+      rationale: "ROI验证失败的早期信号"
+      source: "ai_roi_verification_framework_v1.yaml"
+
+    KS_INV_ENTERPRISE_AI_BUDGET_CUT:
+      severity: HIGH
+      condition: "Fortune 100中>10家宣布大幅削减AI预算"
+      monitoring_metric: "enterprise_ai_budget_survey"
+      current_status: "GREEN"
+      action_on_trigger:
+        immediate: "减仓企业AI相关股30%"
+        follow_up: "分析哪些用例失败"
+      rationale: "企业ROI验证失败"
+      source: "ai_roi_verification_framework_v1.yaml"
+
+    KS_INV_AI_LEADER_CRISIS:
+      severity: HIGH
+      condition: "OpenAI/Anthropic估值下调>50%或重大融资困难"
+      monitoring_metric: "private_market_valuations"
+      current_status: "GREEN"
+      action_on_trigger:
+        immediate: "重新评估整个AI叙事"
+        follow_up: "评估传染风险"
+      rationale: "AI领导者动摇影响信心"
+      source: "ai_roi_verification_framework_v1.yaml"
+
+  # ---------------------------------------------------------------------------
+  # 周期级
+  # ---------------------------------------------------------------------------
+  cycle:
+
+    KS_INV_CYCLE_TEMPERATURE_EXTREME:
+      severity: HIGH
+      condition: "cycle_temperature > 85 或 < 15"
+      monitoring_metric: "cycle_temperature_gauge"
+      current_status: "GREEN"
+      action_on_trigger:
+        when_high: "减仓周期敏感股50%"
+        when_low: "评估逆向加仓机会"
+      rationale: "周期极端点通常是转折点"
+      source: "cycle_temperature_gauge_v1.yaml"
+
+    KS_INV_LEADING_INDICATOR_DIVERGENCE:
+      severity: MEDIUM
+      condition: "3个以上领先指标与价格背离>2个月"
+      monitoring_metric: "leading_indicator_composite"
+      current_status: "GREEN"
+      action_on_trigger:
+        immediate: "提高警惕，准备减仓"
+        follow_up: "确认背离方向"
+      rationale: "领先指标通常6个月领先价格"
+      source: "cycle_analysis framework"
+
+  # ---------------------------------------------------------------------------
+  # 公司级
+  # ---------------------------------------------------------------------------
+  company:
+
+    KS_INV_MANAGEMENT_CREDIBILITY_COLLAPSE:
+      severity: CRITICAL
+      condition: "管理层指引miss率>2次连续 或 重大诚信问题"
+      monitoring_metric: "earnings_guidance_hit_rate"
+      current_status: "N/A"
+      action_on_trigger:
+        immediate: "清仓该公司"
+        follow_up: "6个月后重新评估"
+      rationale: "管理层失去信任=投资失去基础"
+      source: "company_analysis_framework"
+
+    KS_INV_MOAT_BREACH:
+      severity: HIGH
+      condition: "核心护城河指标下降>30%"
+      monitoring_metric: "moat_score_quarterly"
+      current_status: "N/A"
+      action_on_trigger:
+        immediate: "减仓50%"
+        follow_up: "评估是否永久性损害"
+      rationale: "护城河是长期价值的基础"
+      source: "moat_analysis_framework"
+
+    KS_INV_BALANCE_SHEET_DETERIORATION:
+      severity: HIGH
+      condition: "Z-Score下降至<3.0 或 debt/EBITDA>5x"
+      monitoring_metric: "financial_health_scores"
+      current_status: "N/A"
+      action_on_trigger:
+        immediate: "减仓至观察仓位"
+        follow_up: "监控流动性风险"
+      rationale: "财务恶化可能导致永久性资本损失"
+      source: "fallen_angel_framework"
+
+# =============================================================================
+# 第三部分：Agent执行级Kill Switch
+# =============================================================================
+
+agent_kill_switches:
+
+  # ---------------------------------------------------------------------------
+  # 数据/证据完整性
+  # ---------------------------------------------------------------------------
+  data_integrity:
+
+    KS_AGT_EVIDENCE_FABRICATION:
+      severity: CRITICAL
+      condition: "检测到无来源/伪造链接/不可追溯引用"
+      detection_method: "evidence_hash验证 + source可访问性检查"
+      current_status: "GREEN"
+      action_on_trigger: "FAIL"
+      rationale: "伪造证据=分析失去价值"
+      source: "skill_design_standard_v2.1.yaml"
+
+    KS_AGT_SOURCE_CONFLICT_UNRESOLVED:
+      severity: HIGH
+      condition: "关键数据源冲突未解决且影响核心结论"
+      detection_method: "arbitration_engine检查"
+      current_status: "GREEN"
+      action_on_trigger: "DEGRADE"
+      rationale: "数据不一致可能导致错误结论"
+      source: "data_integrity_agent"
+
+  # ---------------------------------------------------------------------------
+  # 工具/权限
+  # ---------------------------------------------------------------------------
+  tool_permission:
+
+    KS_AGT_TOOL_OVERREACH:
+      severity: CRITICAL
+      condition: "越权调用/调用非允许工具/参数越界"
+      detection_method: "tool_whitelist + 参数schema验证"
+      current_status: "GREEN"
+      action_on_trigger: "FAIL"
+      rationale: "越权行为是安全风险"
+      source: "skill_design_standard_v2.1.yaml"
+
+    KS_AGT_BUDGET_BREACH:
+      severity: HIGH
+      condition: "超过token/tool/latency硬预算"
+      detection_method: "budget_monitor"
+      current_status: "GREEN"
+      action_on_trigger: "DEGRADE 或 FAIL"
+      rationale: "资源失控可能导致系统不稳定"
+      source: "skill_design_standard_v2.1.yaml"
+
+  # ---------------------------------------------------------------------------
+  # 输出安全
+  # ---------------------------------------------------------------------------
+  output_safety:
+
+    KS_AGT_HIGH_RISK_OUTPUT:
+      severity: CRITICAL
+      condition: "输出触发策略/合规红线"
+      detection_method: "content_filter + 敏感词检测"
+      current_status: "GREEN"
+      action_on_trigger: "FAIL 或 转人审"
+      rationale: "高风险输出可能造成法律/声誉风险"
+      source: "skill_design_standard_v2.1.yaml"
+
+    KS_AGT_PII_DETECTED:
+      severity: CRITICAL
+      condition: "输出包含个人身份信息"
+      detection_method: "pii_detector"
+      current_status: "GREEN"
+      action_on_trigger: "FAIL"
+      rationale: "隐私泄露是严重合规风险"
+      source: "quality_gate_agent"
+
+# =============================================================================
+# 第四部分：领域特定Kill Switch模板
+# =============================================================================
+
+domain_kill_switch_templates:
+
+  description: |
+    每个skill应定义≥3个领域特定Kill Switch。
+    以下是各领域的模板，实际使用时需具体化。
+
+  # ---------------------------------------------------------------------------
+  # 估值领域
+  # ---------------------------------------------------------------------------
+  valuation:
+
+    KS_VAL_IMPLIED_EXCEEDS_PHYSICAL:
+      severity: HIGH
+      condition: "隐含预期超过物理上限"
+      example: "隐含收入增长30%+持续15年超过行业上限"
+      action_on_trigger: "标记估值过高风险，降低置信度"
+
+    KS_VAL_CIRCULAR_LOGIC:
+      severity: CRITICAL
+      condition: "估值逻辑存在循环引用"
+      action_on_trigger: "FAIL，重新计算"
+
+    KS_VAL_SOTP_LOGIC_BREAK:
+      severity: HIGH
+      condition: "最终目标价与SOTP概率加权差距>20%且无解释"
+      action_on_trigger: "要求解释或重新计算"
+      rationale: "CLAUDE.md铁律4要求估值逻辑自洽"
+
+  # ---------------------------------------------------------------------------
+  # 生态系统领域
+  # ---------------------------------------------------------------------------
+  ecosystem:
+
+    KS_ECO_CRITICAL_PLAYER_MISSING:
+      severity: HIGH
+      condition: "关键玩家(份额>20%)未纳入分析"
+      action_on_trigger: "DEGRADE，补充缺失玩家"
+
+    KS_ECO_SUPPLY_CHAIN_BREAK:
+      severity: CRITICAL
+      condition: "检测到供应链断裂风险(单一来源依赖>80%)"
+      action_on_trigger: "高亮风险，调整估值"
+
+  # ---------------------------------------------------------------------------
+  # 竞争分析领域
+  # ---------------------------------------------------------------------------
+  competitive:
+
+    KS_COMP_DISRUPTION_IMMINENT:
+      severity: HIGH
+      condition: "颠覆者已进入上市区间且增速>50%"
+      action_on_trigger: "重新评估incumbent估值"
+
+    KS_COMP_MOAT_DEGRADATION:
+      severity: HIGH
+      condition: "护城河指标连续3季度下降"
+      action_on_trigger: "降低估值倍数预期"
+
+  # ---------------------------------------------------------------------------
+  # 消费者/品牌领域
+  # ---------------------------------------------------------------------------
+  consumer:
+
+    KS_CONS_BRAND_CRISIS:
+      severity: CRITICAL
+      condition: "重大品牌危机(媒体负面报道>1000篇)"
+      action_on_trigger: "评估长期品牌价值影响"
+
+    KS_CONS_NPS_COLLAPSE:
+      severity: HIGH
+      condition: "NPS下降>20点或变为负值"
+      action_on_trigger: "评估客户流失风险"
+
+# =============================================================================
+# 第五部分：Kill Switch状态监控
+# =============================================================================
+
+monitoring:
+
+  status_definitions:
+    GREEN:
+      description: "正常，未触发"
+      action: "继续监控"
+
+    YELLOW:
+      description: "接近触发阈值(75%)"
+      action: "提高监控频率，准备行动计划"
+
+    RED:
+      description: "已触发"
+      action: "立即执行action_on_trigger"
+
+  monitoring_cadence:
+    CRITICAL:
+      real_time: true
+      daily_review: true
+
+    HIGH:
+      real_time: false
+      daily_review: true
+      weekly_deep_dive: true
+
+    MEDIUM:
+      weekly_review: true
+      monthly_deep_dive: true
+
+  alert_routing:
+    CRITICAL:
+      notify: ["human_reviewer", "supervisor_agent"]
+      block_output: true
+
+    HIGH:
+      notify: ["supervisor_agent"]
+      block_output: false
+
+    MEDIUM:
+      notify: ["relevant_agent"]
+      block_output: false
+
+# =============================================================================
+# 第六部分：Kill Switch Schema（用于新建）
+# =============================================================================
+
+kill_switch_schema:
+
+  required_fields:
+    - name: "id"
+      type: "string"
+      pattern: "KS_{SCOPE}_{DOMAIN}_{NAME}"
+      example: "KS_INV_CYCLE_TEMPERATURE_EXTREME"
+
+    - name: "severity"
+      type: "enum"
+      values: ["CRITICAL", "HIGH", "MEDIUM"]
+
+    - name: "condition"
+      type: "string"
+      description: "明确的触发条件，必须可量化"
+
+    - name: "action_on_trigger"
+      type: "string or object"
+      description: "触发后的具体行动"
+
+  optional_fields:
+    - name: "monitoring_metric"
+      type: "string"
+      description: "用于监控的指标名"
+
+    - name: "current_status"
+      type: "enum"
+      values: ["GREEN", "YELLOW", "RED", "N/A"]
+
+    - name: "rationale"
+      type: "string"
+      description: "为什么这是Kill Switch"
+
+    - name: "source"
+      type: "string"
+      description: "定义来源文件"
+
+# =============================================================================
+# 第七部分：使用指南
+# =============================================================================
+
+usage_guide:
+
+  before_creating_new:
+    - step: "检查此注册表是否已有类似Kill Switch"
+    - step: "确定scope (INVESTMENT/AGENT/DOMAIN)"
+    - step: "确定severity (CRITICAL/HIGH/MEDIUM)"
+    - step: "使用标准命名: KS_{SCOPE}_{DOMAIN}_{NAME}"
+    - step: "定义明确的、可量化的触发条件"
+    - step: "定义具体的、可执行的触发行动"
+
+  best_practices:
+    - "Kill Switch条件必须可量化，避免模糊表述"
+    - "触发行动必须具体，避免'重新评估'这类模糊动作"
+    - "每个skill至少定义3个领域特定Kill Switch"
+    - "CRITICAL级Kill Switch必须有human_review"
+    - "定期审查Kill Switch状态，避免'警报疲劳'"
+
+  common_mistakes:
+    - mistake: "条件太模糊"
+      example: "市场情绪变差"
+      fix: "3个以上情绪指标同时转负"
+
+    - mistake: "行动不具体"
+      example: "谨慎对待"
+      fix: "减仓50%并设置止损"
+
+    - mistake: "没有监控机制"
+      example: "只定义不监控"
+      fix: "绑定monitoring_metric并设置cadence"
+
+# =============================================================================
+# 第八部分：迁移计划
+# =============================================================================
+
+migration_plan:
+
+  phase_1:
+    name: "标记分散定义"
+    action: "在各文件的kill_switches处添加指向本注册表的引用"
+    status: "PENDING"
+
+  phase_2:
+    name: "统一监控"
+    action: "创建kill_switch_monitor Agent"
+    status: "FUTURE"
+
+  phase_3:
+    name: "自动化触发"
+    action: "实现Kill Switch自动触发机制"
+    status: "FUTURE"
+
+# =============================================================================
+# 第九部分：索引
+# =============================================================================
+
+index:
+
+  by_severity:
+    CRITICAL:
+      - KS_INV_HYPERSCALER_CAPEX_CUT
+      - KS_INV_AI_REVENUE_COLLAPSE
+      - KS_INV_MANAGEMENT_CREDIBILITY_COLLAPSE
+      - KS_AGT_EVIDENCE_FABRICATION
+      - KS_AGT_TOOL_OVERREACH
+      - KS_AGT_HIGH_RISK_OUTPUT
+      - KS_AGT_PII_DETECTED
+      - KS_VAL_CIRCULAR_LOGIC
+      - KS_ECO_SUPPLY_CHAIN_BREAK
+      - KS_CONS_BRAND_CRISIS
+
+    HIGH:
+      - KS_INV_ENTERPRISE_AI_BUDGET_CUT
+      - KS_INV_AI_LEADER_CRISIS
+      - KS_INV_CYCLE_TEMPERATURE_EXTREME
+      - KS_INV_MOAT_BREACH
+      - KS_INV_BALANCE_SHEET_DETERIORATION
+      - KS_AGT_SOURCE_CONFLICT_UNRESOLVED
+      - KS_AGT_BUDGET_BREACH
+      - KS_VAL_IMPLIED_EXCEEDS_PHYSICAL
+      - KS_VAL_SOTP_LOGIC_BREAK
+      - KS_ECO_CRITICAL_PLAYER_MISSING
+      - KS_COMP_DISRUPTION_IMMINENT
+      - KS_COMP_MOAT_DEGRADATION
+      - KS_CONS_NPS_COLLAPSE
+
+    MEDIUM:
+      - KS_INV_LEADING_INDICATOR_DIVERGENCE
+
+  by_source:
+    ai_roi_verification_framework:
+      - KS_INV_HYPERSCALER_CAPEX_CUT
+      - KS_INV_AI_REVENUE_COLLAPSE
+      - KS_INV_ENTERPRISE_AI_BUDGET_CUT
+      - KS_INV_AI_LEADER_CRISIS
+
+    skill_design_standard:
+      - KS_AGT_EVIDENCE_FABRICATION
+      - KS_AGT_TOOL_OVERREACH
+      - KS_AGT_HIGH_RISK_OUTPUT
+      - KS_AGT_BUDGET_BREACH
