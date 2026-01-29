@@ -1,0 +1,628 @@
+# Master Investment Framework v1.0
+# 投资分析主控框架 - 统一所有子框架的唯一入口
+# 创建日期: 2026-01-29
+# 目的: 解决框架分散、执行跳跃、检查点缺失等问题
+
+meta:
+  version: "1.0"
+  created: "2026-01-29"
+  status: "active"
+  replaces:
+    - "分散的框架调用"
+    - "手动检查点验证"
+  integrated_frameworks:
+    - hierarchical_investment_decision_framework_v1
+    - deep_research_protocol_v1
+    - report_module_framework_v1
+    - execution_enforcer_v1
+    - agent_operating_principles_v1
+
+# ============================================================
+# 一、触发机制（自动识别深度分析需求）
+# ============================================================
+
+triggers:
+  deep_mode_auto_activate:
+    keywords:
+      - "深度调研"
+      - "深度分析"
+      - "完整报告"
+      - "全面分析"
+      - "投资研究"
+
+    patterns:
+      - regex: "(分析|研究|调研).*(公司|股票|标的)"
+      - regex: "[A-Z]{2,5}" # 股票代码
+      - regex: "(AAPL|TSLA|NVDA|LRCX|ASML|...)"
+
+    action:
+      - activate: deep_research_mode
+      - display_message: "⚡ 触发深度研究模式，执行4阶段协议"
+      - block_shallow_analysis: true
+
+# ============================================================
+# 二、执行流程（4阶段阻断式）
+# ============================================================
+
+execution_flow:
+
+  # --------------------------------------------------------
+  # Phase 1: 定位与框架选择（10分钟）
+  # --------------------------------------------------------
+  phase_1:
+    name: "定位与框架选择"
+    time_budget: "10分钟"
+
+    must_complete:
+      step_1:
+        task: "识别公司类型和行业"
+        output: "公司类型: [B2C/B2B/平台/设备商/...]"
+        validation: "必须明确标注"
+
+      step_2:
+        task: "选择必须使用的框架"
+        requirement: "≥3个框架"
+        framework_library:
+          - hierarchical_decision_framework
+          - moat_analysis (6类+7Powers+5维度)
+          - product_matrix (节点+边+飞轮+利润池)
+          - cycle_analysis (如适用)
+          - ai_chain_positioning (如适用)
+          - druckenmiller_6dimensions
+          - buffett_4questions
+        output: "选定框架: [框架1, 框架2, 框架3+]"
+
+      step_3:
+        task: "检索相关历史lessons"
+        requirement: "≥3条"
+        search_scope:
+          - lessons_learned.yaml
+          - by_company: 该公司历史分析
+          - by_industry: 同行业公司
+          - by_framework: 使用相同框架的案例
+        output: "相关教训: LL_XXX, LL_YYY, LL_ZZZ"
+
+      step_4:
+        task: "AI产业链定位"
+        condition: "如果公司与AI相关"
+        use_module: ai_7layer_v1
+        output: "位于Layer X, 信号传导时间线"
+
+    checkpoint_1:
+      blocking: true
+      display: |
+        ╔══════════════════════════════════════════════╗
+        ║  ⛔ Checkpoint 1: Phase 1 完成验证           ║
+        ╠══════════════════════════════════════════════╣
+        ║  ✅ 公司类型识别: [已完成/未完成]            ║
+        ║  ✅ 框架选择(≥3): [已完成/未完成]            ║
+        ║  ✅ Lessons检索(≥3): [已完成/未完成]         ║
+        ║  ✅ AI定位(如适用): [已完成/未完成/不适用]   ║
+        ╠══════════════════════════════════════════════╣
+        ║  通过条件: 4项全部✅                         ║
+        ║  ❌ 如有未完成项，不能进入Phase 2            ║
+        ╚══════════════════════════════════════════════╝
+
+      pass_condition:
+        all_completed: true
+
+      fail_action:
+        stop: true
+        message: "Phase 1未通过，停止分析，返回完成缺失项"
+
+  # --------------------------------------------------------
+  # Phase 2: 数据收集与分析师学习（20分钟）
+  # --------------------------------------------------------
+  phase_2:
+    name: "数据收集与分析师学习"
+    time_budget: "20分钟"
+
+    must_complete:
+      step_1:
+        task: "调用FMP API"
+        apis:
+          - company-profile
+          - quote
+          - key-metrics-ttm
+          - financial-scores
+          - income-statement-ttm
+          - balance-sheet-ttm
+          - cash-flow-statement-ttm
+        validation: "至少调用5个API"
+
+      step_2:
+        task: "调用100baggers API"
+        apis:
+          - leading-indicators
+          - dupont-analysis
+          - roic-analysis
+        note: "禁止使用7维度雷达图评分（主观性太强）"
+
+      step_3:
+        task: "搜索顶级分析师观点"
+        requirement: "5-10位"
+        search_keywords: [公司名称 + "analyst report", "target price", "thesis"]
+        extract:
+          - 分析师姓名/机构
+          - 目标价
+          - 核心论点
+          - 使用的框架/方法论
+        output: "分析师全景表"
+
+      step_4:
+        task: "识别市场核心分歧"
+        requirement: "≥3个"
+        method: "对比不同分析师观点，找出争议点"
+        output: |
+          分歧1: [多头观点] vs [空头观点]
+          分歧2: ...
+          分歧3: ...
+
+      step_5:
+        task: "收集竞争格局数据"
+        data_points:
+          - 市场份额排名
+          - 主要竞争对手财务数据
+          - 技术对比
+          - 客户重叠度
+
+    checkpoint_2:
+      blocking: true
+      display: |
+        ╔══════════════════════════════════════════════╗
+        ║  ⛔ Checkpoint 2: Phase 2 完成验证           ║
+        ╠══════════════════════════════════════════════╣
+        ║  ✅ FMP API调用: [已完成/未完成]             ║
+        ║  ✅ 100baggers API: [已完成/未完成]          ║
+        ║  ✅ 分析师搜索(5-10): [已完成/未完成]        ║
+        ║  ✅ 分歧识别(≥3): [已完成/未完成]            ║
+        ║  ✅ 竞争数据: [已完成/未完成]                ║
+        ╠══════════════════════════════════════════════╣
+        ║  通过条件: 5项全部✅                         ║
+        ║  ❌ 如有未完成项，不能进入Phase 3            ║
+        ╚══════════════════════════════════════════════╝
+
+  # --------------------------------------------------------
+  # Phase 3: 深度分析执行（40分钟）⭐ 最重要
+  # --------------------------------------------------------
+  phase_3:
+    name: "深度分析执行"
+    time_budget: "40分钟"
+    importance: "最重要阶段"
+
+    must_complete:
+
+      module_1:
+        name: "层级决策框架"
+        use_module: hierarchical_decision_framework
+        required_levels: [Level 0, Level 1, Level 2, Level 3, Level 4]
+        output: "5层决策结构图"
+
+      module_2:
+        name: "护城河深度分析"
+        use_module: moat_deep_analysis_v1
+        required_components:
+          - 六类护城河分析: [技术壁垒, 品牌力, 网络效应, 成本优势, 转换成本, 监管许可]
+          - 七大权力评估: [Scale, Network, Counter-Positioning, Switching, Branding, Cornered Resource, Process]
+          - 五维评分: [宽度, 深度, 扩张速度, 防御力, 可持续性]
+        output:
+          - 护城河雷达图
+          - 每个维度评分+证据
+          - 与竞争对手对比
+          - 反证句
+
+      module_3:
+        name: "产品矩阵分析"
+        use_module: product_matrix_v1
+        required_components:
+          - 节点识别: "每个产品的属性[收入, 增长, 生命周期, 战略重要性]"
+          - 边识别: "产品间的协同效应、交叉销售、技术共享"
+          - 飞轮分析: "产品A增长→加速产品B→反馈到A的闭环"
+          - 利润池分布: "各产品利润率对比+未来迁移"
+        output:
+          - BCG矩阵
+          - 飞轮效应图
+          - 利润池饼图
+
+      module_4:
+        name: "AI产业链分析"
+        condition: "如果公司与AI相关"
+        use_module: ai_7layer_v1
+        required_components:
+          - 7层定位: "公司位于哪一层（Layer 0-6）"
+          - 信号传导时间线: "从该层向上下游传导的时间"
+          - 议价能力分析: "向上下游的议价能力"
+        output:
+          - 产业链位置图
+          - 信号传导时间轴
+          - LRCX vs NVIDIA对比矩阵（如适用）
+
+      module_5:
+        name: "核心命题深度分析"
+        requirement: "≥3个核心命题"
+        each_thesis_must_have:
+          - 论点陈述: "一句话核心论点"
+          - 证据链: "≥2条证据支撑"
+          - 机制分析: "为什么这是真的（Level 3+）"
+          - 反证句: "但如果___则论点不成立"
+          - 可验证预测: "具体的、可验证的预测"
+          - 置信度: "0-100%"
+        output: "核心命题卡片×3+"
+
+      module_6:
+        name: "投资者多视角"
+        required_perspectives:
+          druckenmiller:
+            framework: "Druckenmiller 6维决策"
+            dimensions:
+              - 宏观背景: "顺风/逆风"
+              - 行业动能: "加速/减速"
+              - 竞争格局: "强化/弱化"
+              - 管理层质量: "优秀/平庸"
+              - 估值吸引力: "便宜/贵"
+              - 催化剂: "近期催化剂"
+
+          buffett:
+            framework: "Buffett 4问"
+            questions:
+              - "这门生意我能理解吗？"
+              - "这门生意有长期竞争优势吗？"
+              - "管理层值得信赖且有能力吗？"
+              - "价格合理吗？"
+
+        output: "多视角评分矩阵"
+
+    checkpoint_3:
+      blocking: true
+      display: |
+        ╔══════════════════════════════════════════════╗
+        ║  ⛔ Checkpoint 3: Phase 3 完成验证 (最重要)  ║
+        ╠══════════════════════════════════════════════╣
+        ║  ✅ 层级决策框架: [已完成/未完成]            ║
+        ║  ✅ 护城河分析(6+7+5): [已完成/未完成]       ║
+        ║  ✅ 产品矩阵(节点+边+飞轮+利润池): [已完成/未完成] ║
+        ║  ✅ AI产业链(如适用): [已完成/未完成/不适用] ║
+        ║  ✅ 核心命题(≥3个): [已完成/未完成]          ║
+        ║  ✅ 投资者视角(Druckenmiller+Buffett): [已完成/未完成] ║
+        ╠══════════════════════════════════════════════╣
+        ║  通过条件: 所有适用项✅                      ║
+        ║  ❌ 如有未完成项，不能进入Phase 4            ║
+        ╚══════════════════════════════════════════════╝
+
+  # --------------------------------------------------------
+  # Phase 4: 估值与输出（20分钟）
+  # --------------------------------------------------------
+  phase_4:
+    name: "估值与输出"
+    time_budget: "20分钟"
+
+    must_complete:
+      step_1:
+        task: "Reverse DCF（隐含预期提取）"
+        method: "从当前股价倒推市场隐含的增长/利润率假设"
+        output: "隐含增长率、隐含利润率、隐含ROIC"
+
+      step_2:
+        task: "Forward DCF/SOTP三场景"
+        scenarios:
+          - 悲观场景: "概率20-30%"
+          - 基准场景: "概率50-60%"
+          - 乐观场景: "概率20-30%"
+        each_scenario:
+          - 收入预测
+          - 利润率假设
+          - 估值倍数
+          - 场景价值
+        output: "SOTP概率加权目标价"
+
+      step_3:
+        task: "估值逻辑自洽检查"
+        validation:
+          - "SOTP加权目标价 vs 最终目标价差距 <20%"
+          - "如果差距>20%，必须详细解释原因"
+          - "不能因为分析师共识而随意调整目标价"
+        output: "估值逻辑链条验证"
+
+      step_4:
+        task: "定义Kill Switches"
+        requirement: "≥3个"
+        template: |
+          Kill Switch 1: [触发条件] → [行动]
+          Kill Switch 2: [触发条件] → [行动]
+          Kill Switch 3: [触发条件] → [行动]
+
+        levels:
+          - 一级触发（立即卖出）
+          - 二级触发（减仓50%）
+          - 三级触发（密切观察）
+
+      step_5:
+        task: "质量门控表"
+        use_module: quality_gate_v1
+        checks:
+          - 数据来源标注: "每个数字有[来源]"
+          - API数据展示: "FMP/100baggers数据已展示"
+          - 分析师全景表: "5-10位分析师"
+          - 市场分歧表: "3-5个争议点"
+          - 证据链完整: "每个命题≥2条证据"
+          - 机制分析深度: "平均Level 3+"
+          - 反证句: "核心命题有反证"
+          - Kill Switch: "≥3个"
+          - SOTP估值: "概率加权目标价"
+          - 目标价逻辑: "与SOTP差距<20%"
+          - 字数: "≥25,000字符"
+          - 反常识洞察: "≥3个"
+          - 可验证预测: "≥5个"
+
+        pass_threshold: "≥14/16项"
+
+        output: |
+          附在报告末尾:
+
+          ## 质量门控执行结果
+
+          | 检查项 | 状态 | 备注 |
+          |--------|------|------|
+          | ... | ✅/❌ | ... |
+
+          **总体评估**: 通过/不通过
+          **需改进项**: [列出]
+
+    checkpoint_4:
+      blocking: true
+      display: |
+        ╔══════════════════════════════════════════════╗
+        ║  ⛔ Checkpoint 4: Phase 4 完成验证           ║
+        ╠══════════════════════════════════════════════╣
+        ║  ✅ Reverse DCF: [已完成/未完成]             ║
+        ║  ✅ SOTP三场景: [已完成/未完成]              ║
+        ║  ✅ 估值自洽检查: [已完成/未完成]            ║
+        ║  ✅ Kill Switches(≥3): [已完成/未完成]       ║
+        ║  ✅ 质量门控(≥14/16): [已完成/未完成]        ║
+        ╠══════════════════════════════════════════════╣
+        ║  通过条件: 5项全部✅ + 质量门控≥14/16        ║
+        ║  ❌ 如未通过，报告标记为【不合格】           ║
+        ╚══════════════════════════════════════════════╝
+
+# ============================================================
+# 三、输出规范（符合CLAUDE.md v17.0）
+# ============================================================
+
+output_specification:
+
+  rating_system:
+    levels:
+      5: "强烈关注 - 投资价值显著，建议深入研究"
+      4: "关注 - 具有投资潜力，值得纳入观察名单"
+      3: "观察 - 等待更好时机或更多信息"
+      2: "谨慎 - 风险上升，需重新评估"
+      1: "规避 - 重大风险，不建议介入"
+
+    forbidden_terms:
+      - "买入"
+      - "卖出"
+      - "强烈推荐"
+      - "强烈买入"
+      - "强烈卖出"
+
+  data_source_tagging:
+    mandatory: true
+    levels:
+      - "[API:FMP/100baggers] - API直接返回"
+      - "[财报:具体期间] - 公司财报"
+      - "[分析师:姓名/机构] - 分析师报告"
+      - "[估算:基于XX假设] - 本报告估算"
+      - "[搜索:URL] - 网络搜索结果"
+
+    enforcement:
+      - "所有具体数字必须标注来源"
+      - "估算数据必须说明方法"
+      - "禁止'凭印象'的数据"
+
+  format:
+    website_friendly:
+      - "禁止YAML/JSON代码块"
+      - "禁止特殊Unicode符号（箭头→改为短横线-）"
+      - "禁止ASCII艺术框（╔══╗等）- 仅在本地版使用"
+      - "使用标准markdown表格"
+
+    dual_version_output:
+      local_version:
+        name: "本地深度版"
+        features:
+          - "精美ASCII艺术可视化"
+          - "复杂仪表盘、雷达图"
+          - "适合专业投资者深度研究"
+          - "文件名后缀: _Complete_v{version}.md"
+
+      forwarding_version:
+        name: "转发友好版"
+        features:
+          - "简洁markdown表格"
+          - "移除所有ASCII艺术框"
+          - "适合微信/邮件/移动端"
+          - "格式不会变形"
+          - "文件名后缀: _转发版_v{version}.md"
+
+      auto_generate: true
+
+  disclaimer:
+    mandatory: true
+    text: |
+      > 免责声明：以上分析仅为研究观点分享，不构成任何投资建议。投资有风险，入市需谨慎。请根据自身情况独立判断。
+
+# ============================================================
+# 四、复利学习机制
+# ============================================================
+
+learning_loop:
+
+  after_each_analysis:
+
+    step_1:
+      task: "提取Lessons Learned"
+      auto_extract: true
+      categories:
+        - 估值方法
+        - 周期判断
+        - 竞争分析
+        - 数据来源
+        - 框架应用
+        - 预测准确率
+
+      template: |
+        lesson_id: LL_{number}
+        date: YYYY-MM-DD
+        company: {ticker}
+        category: {category}
+        context: "在分析XX时..."
+        lesson: "发现/学到..."
+        action: "今后应该..."
+        severity: [critical/high/medium/low]
+
+      save_to: "lessons_learned.yaml"
+
+    step_2:
+      task: "记录可验证预测"
+      requirement: "每个报告≥5个预测"
+      template: |
+        prediction_id: PRED_{company}_{number}
+        date: YYYY-MM-DD
+        company: {ticker}
+        prediction: "具体预测"
+        rationale: "原因"
+        verification:
+          data_source: "验证数据源"
+          date: "验证日期"
+          threshold: "通过阈值"
+        confidence: 0-100%
+
+      save_to: "predictions_tracker.yaml"
+
+    step_3:
+      task: "更新框架（如适用）"
+      triggers:
+        - "发现框架缺陷"
+        - "预测准确率<60%"
+        - "重复遇到同类问题"
+
+      action:
+        - "记录改进建议"
+        - "季度review框架"
+        - "版本迭代"
+
+  before_each_analysis:
+
+    step_1:
+      task: "检索相关lessons"
+      search_by:
+        - company: "该公司历史分析"
+        - industry: "同行业公司"
+        - framework: "使用相同框架"
+
+      display: |
+        ## 相关历史教训
+
+        - LL_XXX: [教训内容]
+        - LL_YYY: [教训内容]
+        - LL_ZZZ: [教训内容]
+
+      action: "在分析开头列出，避免重复错误"
+
+    step_2:
+      task: "检查历史预测准确率"
+      if_low_accuracy: "调整置信度"
+      if_high_accuracy: "强化该分析方法"
+
+# ============================================================
+# 五、违规后果与执行保障
+# ============================================================
+
+enforcement:
+
+  violation_levels:
+    critical:
+      examples:
+        - "跳过整个Phase"
+        - "编造数据"
+        - "检查点显示虚假通过"
+      consequence: "报告【不合格】，必须返工"
+
+    high:
+      examples:
+        - "跳过≥2个必须模块"
+        - "质量门控<12/16"
+        - "SOTP vs目标价差距>30%无解释"
+      consequence: "报告【待完善】，列出缺失项"
+
+    medium:
+      examples:
+        - "部分数据未标注来源"
+        - "可验证预测<3个"
+        - "Kill Switch<3个"
+      consequence: "报告【可用但有缺陷】，标注问题"
+
+  remediation:
+    - "每个违规记录到lessons_learned"
+    - "连续3次critical违规 → 框架重大修订"
+    - "月度review执行纪律"
+
+# ============================================================
+# 六、集成的子框架（引用）
+# ============================================================
+
+sub_frameworks:
+
+  hierarchical_decision:
+    file: "hierarchical_investment_decision_framework_v1.yaml"
+    purpose: "层级决策（Level 0-4）"
+    when_to_use: "Phase 1, Phase 3"
+
+  moat_analysis:
+    file: "analysis_modules_library_v1.yaml#moat_deep_analysis_v1"
+    purpose: "护城河分析（6类+7Powers+5维度）"
+    when_to_use: "Phase 3 - 必须模块"
+
+  product_matrix:
+    file: "analysis_modules_library_v1.yaml#product_matrix_v1"
+    purpose: "产品矩阵（节点+边+飞轮+利润池）"
+    when_to_use: "Phase 3 - 必须模块"
+
+  ai_7layer:
+    file: "analysis_modules_library_v1.yaml#ai_7layer_v1"
+    purpose: "AI产业链7层定位"
+    when_to_use: "Phase 1, Phase 3 - 如适用"
+
+  cycle_analysis:
+    file: "analysis_modules_library_v1.yaml#cycle_analysis_engine_v1"
+    purpose: "周期分析（5阶段）"
+    when_to_use: "Phase 2, Phase 3 - 如适用"
+
+  quality_gate:
+    file: "execution_enforcer_v1.yaml#quality_gate"
+    purpose: "质量门控表"
+    when_to_use: "Phase 4 - 必须执行"
+
+# ============================================================
+# 七、版本历史
+# ============================================================
+
+version_history:
+  v1.0:
+    date: "2026-01-29"
+    changes:
+      - "初始版本，统一所有分散的框架"
+      - "创建4阶段阻断式执行流程"
+      - "强制显示检查点通过状态"
+      - "集成数据可信度分级系统"
+      - "集成可验证预测追踪"
+      - "双版本输出（本地+转发）"
+
+    lessons_from: "LRCX v6.1分析复盘"
+
+    improvements:
+      - "解决框架执行跳跃问题"
+      - "解决检查点缺失问题"
+      - "解决数据标注不清问题"
+      - "解决框架重复问题"
+      - "建立复利学习闭环"

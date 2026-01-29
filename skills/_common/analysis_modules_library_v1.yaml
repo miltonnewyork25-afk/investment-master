@@ -1,0 +1,607 @@
+# Analysis Modules Library v1.0
+# 统一分析模块库 - 避免框架重复定义
+# 创建日期: 2026-01-29
+# 目的: 将重复出现的分析模块抽取为可复用组件
+
+meta:
+  version: "1.0"
+  created: "2026-01-29"
+  purpose: "统一分析模块，避免重复定义"
+  usage: "被master_framework和其他框架引用"
+
+# ============================================================
+# 模块1: 护城河深度分析（统一版本）
+# ============================================================
+
+moat_deep_analysis_v1:
+
+  framework: "[6类护城河] + [7 Powers] + [5维度评分]"
+
+  六类护城河:
+    技术壁垒:
+      indicators:
+        - 专利数量及质量
+        - 技术差距年数（vs竞争对手）
+        - R&D投入占比
+        - 核心技术人员数量
+      scoring: "0-10分"
+      evidence_required: "≥2条"
+
+    品牌力:
+      indicators:
+        - NPS评分
+        - 品牌溢价率
+        - 客户粘性（留存率）
+        - 品牌认知度
+      scoring: "0-10分"
+      evidence_required: "≥2条"
+
+    网络效应:
+      indicators:
+        - 用户规模
+        - 网络增长率
+        - 多边市场参与方
+        - 网络密度
+      scoring: "0-10分"
+      evidence_required: "≥2条"
+
+    成本优势:
+      indicators:
+        - 规模效应（成本曲线）
+        - 独特资源获取
+        - 流程优势（精益生产）
+        - 单位成本vs竞争对手
+      scoring: "0-10分"
+      evidence_required: "≥2条"
+
+    转换成本:
+      indicators:
+        - 切换成本量化（金额/时间）
+        - 锁定机制（技术/合同）
+        - 生态系统依赖
+        - 数据/习惯绑定
+      scoring: "0-10分"
+      evidence_required: "≥2条"
+
+    监管许可:
+      indicators:
+        - 牌照壁垒
+        - 合规成本
+        - 政策保护
+        - 新进入者监管难度
+      scoring: "0-10分"
+      evidence_required: "≥2条"
+
+  七大权力_7_Powers:
+    scale_economics:
+      name: "规模经济"
+      definition: "单位成本随规模增加而下降"
+      measurement: "成本优势vs第二名"
+
+    network_effects:
+      name: "网络效应"
+      definition: "用户越多，价值越大"
+      measurement: "用户增长vs价值增长曲线"
+
+    counter_positioning:
+      name: "逆向定位"
+      definition: "采用在位者不敢模仿的商业模式"
+      measurement: "在位者模仿成本"
+
+    switching_costs:
+      name: "转换成本"
+      definition: "客户切换供应商的成本"
+      measurement: "转换成本量化"
+
+    branding:
+      name: "品牌"
+      definition: "客户愿意为品牌支付溢价"
+      measurement: "品牌溢价率"
+
+    cornered_resource:
+      name: "独占资源"
+      definition: "独家控制关键资源"
+      measurement: "资源稀缺性+控制度"
+
+    process_power:
+      name: "流程优势"
+      definition: "嵌入在组织中的优越流程"
+      measurement: "流程效率vs竞争对手"
+
+  五维评分:
+    护城河宽度:
+      definition: "竞争对手需要多久才能赶上"
+      scoring: "0-10分（0=无护城河，10=10年+）"
+
+    护城河深度:
+      definition: "护城河被攻破的难度"
+      scoring: "0-10分（0=易攻破，10=几乎不可能）"
+
+    护城河扩张速度:
+      definition: "护城河是在加宽还是缩窄"
+      scoring: "0-10分（0=快速缩窄，5=稳定，10=快速扩张）"
+
+    护城河防御力:
+      definition: "抵御颠覆性创新的能力"
+      scoring: "0-10分（0=易被颠覆，10=几乎不可能被颠覆）"
+
+    护城河可持续性:
+      definition: "护城河能持续多久"
+      scoring: "0-10分（0=1-2年，10=永久）"
+
+  output_format:
+    visualization:
+      - 护城河雷达图（6类）
+      - 7 Powers评估矩阵
+      - 5维评分柱状图
+
+    text_analysis:
+      - 每个维度的详细分析
+      - 证据支撑（≥2条/维度）
+      - 与竞争对手对比
+      - 反证句: "但如果___则护城河失效"
+
+    scoring_summary: |
+      | 护城河类型 | 评分 | 证据 | vs竞争对手 |
+      |-----------|------|------|-----------|
+      | 技术壁垒 | X/10 | ... | ... |
+      | ... | ... | ... | ... |
+
+# ============================================================
+# 模块2: 产品矩阵分析
+# ============================================================
+
+product_matrix_v1:
+
+  framework: "[节点] + [边] + [飞轮] + [利润池]"
+
+  step_1_节点识别:
+    definition: "每个产品是一个节点"
+    node_attributes:
+      - 产品名称
+      - 收入贡献: "$XX亿（占比XX%）"
+      - 增长率: "YoY%"
+      - 生命周期阶段: "[导入/成长/成熟/衰退]"
+      - 战略重要性: "[核心/重要/辅助]"
+      - 毛利率
+      - 客户群体
+
+    minimum_nodes: "≥5个主要产品"
+
+  step_2_边识别:
+    definition: "产品间的关系和协同"
+    edge_types:
+      协同效应:
+        - 产品A如何帮助产品B销售
+        - 共享销售渠道
+        - 品牌光环效应
+
+      交叉销售:
+        - 买A的客户会买B吗
+        - 交叉销售率
+        - 捆绑销售策略
+
+      技术共享:
+        - 底层技术平台共享
+        - 研发协同
+        - 成本分摊
+
+    visualization: "节点+边的关系图"
+
+  step_3_飞轮分析:
+    definition: "自我强化的增长循环"
+    framework:
+      - 识别闭环: "A → B → C → A"
+      - 量化飞轮速度: "每转一圈增长多少"
+      - 飞轮加速器: "什么让飞轮转得更快"
+      - 飞轮减速器: "什么让飞轮慢下来"
+
+    example_template: |
+      产品A销量增长
+      → 规模效应降低成本
+      → 降价吸引更多客户
+      → 产品A销量增长（闭环）
+
+    output: "飞轮效应图（循环箭头）"
+
+  step_4_利润池分布:
+    definition: "各产品的利润贡献"
+    analysis:
+      - 绝对利润: "各产品贡献的利润额"
+      - 利润率: "各产品的利润率对比"
+      - 利润池迁移: "未来利润重心向哪里转移"
+      - ROIC分配: "资本如何在产品间分配"
+
+    visualization:
+      - 利润池饼图
+      - 利润率对比条形图
+      - 未来利润池迁移预测
+
+  BCG_matrix:
+    明星产品:
+      definition: "高增长+高市场份额"
+      strategy: "大力投资，保持领先"
+
+    现金牛产品:
+      definition: "低增长+高市场份额"
+      strategy: "榨取现金流，支持明星产品"
+
+    问题产品:
+      definition: "高增长+低市场份额"
+      strategy: "选择性投资，或退出"
+
+    瘦狗产品:
+      definition: "低增长+低市场份额"
+      strategy: "收割或剥离"
+
+  output_format:
+    - BCG矩阵图
+    - 产品关系网络图（节点+边）
+    - 飞轮效应循环图
+    - 利润池分布图
+    - 文字分析（每个产品的战略定位）
+
+# ============================================================
+# 模块3: AI产业链7层分析
+# ============================================================
+
+ai_7layer_v1:
+
+  七层定位:
+    layer_6_终端应用:
+      examples: ["ChatGPT", "Midjourney", "Copilot"]
+      特征: "直接面向终端用户"
+
+    layer_5_大模型:
+      examples: ["GPT-4", "Claude", "Llama"]
+      特征: "基础模型提供商"
+
+    layer_4_云服务:
+      examples: ["AWS", "Azure", "GCP"]
+      特征: "算力基础设施"
+
+    layer_3_算力芯片:
+      examples: ["NVIDIA GPU", "Google TPU", "AMD MI300"]
+      特征: "AI训练/推理芯片"
+
+    layer_2_半导体设计:
+      examples: ["ARM", "Synopsys", "Cadence"]
+      特征: "芯片设计工具/IP"
+
+    layer_1_半导体制造:
+      examples: ["TSMC", "Samsung Foundry", "Intel"]
+      特征: "晶圆代工"
+
+    layer_0_半导体设备:
+      examples: ["ASML", "LRCX", "AMAT"]
+      特征: "设备层，最上游"
+
+  信号传导时间线:
+    向下传导_需求传导:
+      - Layer 6需求 → 6-12月 → Layer 3订单
+      - Layer 3订单 → 3-6月 → Layer 1扩产
+      - Layer 1扩产 → 12-18月 → Layer 0设备订单
+
+      结论: "Layer 0领先Layer 6约18-24个月"
+
+    向上传导_供给传导:
+      - Layer 0设备交付 → 6-12月 → Layer 1产能释放
+      - Layer 1产能 → 3-6月 → Layer 3芯片出货
+      - Layer 3芯片 → 1-3月 → Layer 6应用上线
+
+      结论: "Layer 0是最早的信号"
+
+  议价能力分析:
+    向上游议价能力:
+      - 设备商对供应商: "中等（真空泵等有垄断）"
+      - 晶圆厂对设备商: "中等（互相依赖）"
+
+    向下游议价能力:
+      - 设备商对晶圆厂: "较强（寡头垄断）"
+      - 晶圆厂对芯片设计: "强（产能稀缺）"
+
+  LRCX_vs_NVIDIA对比:
+    | 维度 | LRCX (Layer 0) | NVIDIA (Layer 3) |
+    |------|----------------|------------------|
+    | 信号领先度 | 领先18-24月 | 同步或滞后 |
+    | 周期波动 | 大（设备投资） | 中（芯片需求） |
+    | 议价能力 | 中高 | 高 |
+    | 成长性 | 稳定 | 高 |
+    | 估值 | PE 49x | PE 60x |
+
+  output_format:
+    - AI产业链7层结构图
+    - 信号传导时间轴
+    - 公司在产业链的定位
+    - LRCX vs NVIDIA对比矩阵
+
+# ============================================================
+# 模块4: 周期分析引擎（统一版本）
+# ============================================================
+
+cycle_analysis_engine_v1:
+
+  五阶段模型:
+    P1_底部:
+      characteristics:
+        - 订单触底
+        - 收入下滑20-30%
+        - 股价低迷
+        - 悲观情绪
+
+      duration: "6-12个月"
+      investor_action: "开始建仓"
+
+    P2_早期复苏:
+      characteristics:
+        - 订单回升
+        - 收入企稳
+        - 股价开始上涨
+        - 情绪转暖
+
+      duration: "6-12个月"
+      investor_action: "加仓黄金期"
+
+    P3_加速增长:
+      characteristics:
+        - 订单高位
+        - 收入快速增长
+        - 股价强劲上涨
+        - 乐观情绪
+
+      duration: "12-18个月"
+      investor_action: "持有享受"
+
+    P4_后期繁荣:
+      characteristics:
+        - 订单见顶迹象
+        - 收入高位平台
+        - 估值高位
+        - 过度乐观
+
+      duration: "6-12个月"
+      investor_action: "考虑减仓"
+
+    P5_下行:
+      characteristics:
+        - 订单下滑
+        - 收入下降
+        - 股价调整
+        - 情绪转冷
+
+      duration: "12-18个月"
+      investor_action: "逐步离场"
+
+  领先指标_6个:
+    indicator_1:
+      name: "ASML订单积压"
+      threshold:
+        - 健康: ">300亿欧元"
+        - 警戒: "<200亿欧元"
+      lead_time: "领先12-18个月"
+
+    indicator_2:
+      name: "台积电产能利用率"
+      threshold:
+        - 健康: ">85%"
+        - 警戒: "<80%"
+      lead_time: "领先6-12个月"
+
+    indicator_3:
+      name: "存储器价格指数"
+      threshold:
+        - 健康: "上涨趋势"
+        - 警戒: "下跌>20%"
+      lead_time: "领先3-6个月"
+
+    indicator_4:
+      name: "设备订单/出货比"
+      threshold:
+        - 健康: ">1.0"
+        - 见顶: ">1.2"
+        - 触底: "<0.8"
+      lead_time: "领先3-6个月"
+
+    indicator_5:
+      name: "HBM供需平衡"
+      threshold:
+        - 健康: "供不应求"
+        - 警戒: "供需平衡"
+        - 危险: "供应过剩"
+      lead_time: "领先6-12个月"
+
+    indicator_6:
+      name: "中国收入占比"
+      threshold:
+        - 健康: "<30%"
+        - 警戒: "30-40%"
+        - 危险: ">40%"
+      lead_time: "地缘风险指标"
+
+  周期定位方法:
+    step_1: "收集6个领先指标数据"
+    step_2: "每个指标评分（绿色/黄色/红色）"
+    step_3: "综合评分 = 绿色×3 + 黄色×1 + 红色×0"
+    step_4: |
+      周期位置判断:
+      - 综合评分 0-6: P1底部
+      - 综合评分 7-10: P2早期复苏
+      - 综合评分 11-14: P3加速增长
+      - 综合评分 15-16: P4后期繁荣
+      - 综合评分 17-18: P4顶部（警戒）
+
+  周期温度计:
+    scale: "0-100度"
+    calculation: "综合评分 / 18 × 100"
+    interpretation:
+      - "0-30度: 底部区域（买入）"
+      - "30-60度: 上升区域（持有）"
+      - "60-80度: 过热区域（警惕）"
+      - "80-100度: 顶部区域（减仓）"
+
+  output_format:
+    - 当前周期位置图
+    - 周期预警仪表盘（6个指标状态）
+    - 周期温度计（0-100度）
+    - 见顶/触底概率
+    - 历史周期对比
+
+# ============================================================
+# 模块5: 投资者多视角分析
+# ============================================================
+
+investor_perspectives_v1:
+
+  druckenmiller_6dimensions:
+    name: "Druckenmiller 6维决策框架"
+    source: "Stanley Druckenmiller投资哲学"
+
+    dimension_1_宏观背景:
+      question: "当前宏观环境是顺风还是逆风？"
+      factors:
+        - GDP增长趋势
+        - 利率环境
+        - 流动性
+        - 地缘政治
+      scoring: "顺风/中性/逆风"
+
+    dimension_2_行业动能:
+      question: "行业趋势是加速还是减速？"
+      factors:
+        - 行业增长率
+        - 渗透率
+        - 技术变革
+        - 监管变化
+      scoring: "加速/稳定/减速"
+
+    dimension_3_竞争格局:
+      question: "公司竞争地位是强化还是弱化？"
+      factors:
+        - 市场份额变化
+        - 护城河深度
+        - 新进入者威胁
+        - 定价权
+      scoring: "强化/稳定/弱化"
+
+    dimension_4_管理层质量:
+      question: "管理层是优秀还是平庸？"
+      factors:
+        - 战略清晰度
+        - 执行力
+        - 资本配置能力
+        - 诚信度
+      scoring: "优秀/良好/平庸"
+
+    dimension_5_估值吸引力:
+      question: "当前估值是便宜还是贵？"
+      factors:
+        - PE/PEG
+        - 相对估值
+        - 绝对估值
+        - 估值vs历史
+      scoring: "便宜/合理/贵"
+
+    dimension_6_催化剂:
+      question: "是否有近期催化剂？"
+      factors:
+        - 新产品发布
+        - 财报超预期
+        - 政策变化
+        - 行业拐点
+      scoring: "强催化剂/弱催化剂/无"
+
+    decision_matrix: |
+      理想投资: 6维都是正面
+      避免投资: ≥3维是负面
+      边际投资: 2-3维负面但有强催化剂
+
+  buffett_4questions:
+    name: "Buffett 4问"
+    source: "Warren Buffett投资哲学"
+
+    question_1:
+      question: "这门生意我能理解吗？"
+      sub_questions:
+        - 商业模式清晰吗？
+        - 收入来源明确吗？
+        - 护城河可解释吗？
+        - 竞争格局简单吗？
+      answer: "[能理解/部分理解/不理解]"
+
+    question_2:
+      question: "这门生意有长期竞争优势吗？"
+      sub_questions:
+        - 护城河宽度≥5年吗？
+        - 护城河在加宽吗？
+        - 能抵御颠覆性创新吗？
+        - ROIC持续>15%吗？
+      answer: "[有/部分有/没有]"
+
+    question_3:
+      question: "管理层值得信赖且有能力吗？"
+      sub_questions:
+        - 管理层诚信吗？
+        - 资本配置理性吗？
+        - 股东利益优先吗？
+        - 执行力强吗？
+      answer: "[值得信赖/一般/不信赖]"
+
+    question_4:
+      question: "价格合理吗？"
+      sub_questions:
+        - PE<行业平均吗？
+        - 安全边际≥30%吗？
+        - DCF隐含回报>10%吗？
+        - 相对估值便宜吗？
+      answer: "[便宜/合理/贵]"
+
+    decision: |
+      只有4问都是正面，才考虑投资
+      任何一问是负面，需要有极强的理由才能投资
+
+  output_format:
+    druckenmiller_scorecard: |
+      | 维度 | 评分 | 说明 |
+      |------|------|------|
+      | 宏观背景 | 顺风/中性/逆风 | ... |
+      | 行业动能 | 加速/稳定/减速 | ... |
+      | 竞争格局 | 强化/稳定/弱化 | ... |
+      | 管理层 | 优秀/良好/平庸 | ... |
+      | 估值 | 便宜/合理/贵 | ... |
+      | 催化剂 | 强/弱/无 | ... |
+
+    buffett_checklist: |
+      | 问题 | 答案 | 理由 |
+      |------|------|------|
+      | 能理解吗 | 是/否 | ... |
+      | 有护城河吗 | 是/否 | ... |
+      | 管理层可信吗 | 是/否 | ... |
+      | 价格合理吗 | 是/否 | ... |
+
+# ============================================================
+# 使用指南
+# ============================================================
+
+usage:
+  how_to_reference:
+    example_1: |
+      # 在master_framework中引用
+      phase_3:
+        moat_analysis:
+          use_module: analysis_modules_library_v1#moat_deep_analysis_v1
+          required: [6类, 7Powers, 5维度评分]
+
+    example_2: |
+      # 在报告中直接使用
+      "使用product_matrix_v1分析产品矩阵..."
+
+  benefits:
+    - "避免重复定义"
+    - "维护成本降低（改一处，所有引用自动更新）"
+    - "质量一致性（所有报告用同样标准）"
+    - "版本控制集中"
+
+  versioning:
+    - "模块独立版本号"
+    - "向后兼容原则"
+    - "废弃模块标记deprecated"

@@ -1,0 +1,941 @@
+# =============================================================================
+# 投资研究报告模块化框架 v1.0
+# Report Module Framework - "乐高模块"设计
+# =============================================================================
+#
+# 目的: 将投资研究报告标准化为可组合的模块
+# 适用: 面向终端用户的网站发布
+#
+# 设计原则:
+#   1. 每个模块独立完整，可单独使用
+#   2. 通用模块适用所有行业
+#   3. 行业模块按需组合
+#   4. 输出格式网站友好（无代码块、无特殊符号）
+#   5. 数据来源统一放在文末
+# =============================================================================
+
+version: "1.0"
+created: "2026-01-29"
+author: "投资研究Agent v11.0"
+
+# =============================================================================
+# 第一部分：评级体系（免责设计）
+# =============================================================================
+
+rating_system:
+
+  description: |
+    采用"关注"系列用语，避免直接投资建议
+    所有评级均附免责声明
+
+  levels:
+    - level: 5
+      name: "强烈关注"
+      description: "投资价值显著，建议深入研究和持续跟踪"
+      color: "#00AA00"  # 深绿
+
+    - level: 4
+      name: "关注"
+      description: "具有投资潜力，值得纳入观察名单"
+      color: "#66CC66"  # 浅绿
+
+    - level: 3
+      name: "观察"
+      description: "等待更好时机或更多信息确认"
+      color: "#FFAA00"  # 橙色
+
+    - level: 2
+      name: "谨慎"
+      description: "风险上升，需重新评估持仓逻辑"
+      color: "#FF6666"  # 浅红
+
+    - level: 1
+      name: "规避"
+      description: "重大风险存在，不建议介入"
+      color: "#CC0000"  # 深红
+
+  disclaimer: |
+    免责声明：以上分析仅为研究观点分享，不构成任何投资建议。
+    投资有风险，入市需谨慎。请根据自身情况独立判断。
+
+# =============================================================================
+# 第二部分：通用模块定义（适用所有行业）
+# =============================================================================
+
+universal_modules:
+
+  M01_company_profile:
+    id: "M01"
+    name: "公司画像"
+    description: "一页纸了解公司核心定位"
+    format: "卡片式"
+    required: true
+
+    content:
+      - field: "一句话定位"
+        type: "text"
+        example: "全球刻蚀设备龙头，AI算力扩张的'镐和铲'"
+
+      - field: "行业地位"
+        type: "text"
+        example: "刻蚀份额45%全球第一"
+
+      - field: "核心数据"
+        type: "key_metrics"
+        metrics:
+          - "市值"
+          - "PE (TTM)"
+          - "收入增速"
+          - "净利率"
+
+      - field: "核心客户"
+        type: "list"
+        example: ["台积电", "三星", "SK海力士"]
+
+      - field: "主要竞争对手"
+        type: "list"
+        example: ["应用材料", "东京电子"]
+
+  M02_investment_rating:
+    id: "M02"
+    name: "投资评级卡"
+    description: "一眼看清关注等级和目标价"
+    format: "评级卡片"
+    required: true
+
+    content:
+      - field: "关注等级"
+        type: "rating"
+        options: ["强烈关注", "关注", "观察", "谨慎", "规避"]
+
+      - field: "目标价区间"
+        type: "price_range"
+        example: "210-230美元"
+
+      - field: "当前股价"
+        type: "price"
+
+      - field: "潜在空间"
+        type: "percentage"
+
+      - field: "适合人群"
+        type: "text"
+        example: "愿意承受周期波动的长期投资者"
+
+      - field: "建仓建议"
+        type: "text"
+        example: "等待回调至200-210美元区间"
+
+  M03_financial_health:
+    id: "M03"
+    name: "财务健康度"
+    description: "快速判断公司财务风险"
+    format: "仪表盘/评分卡"
+    required: true
+
+    content:
+      scores:
+        - name: "Altman Z-Score"
+          threshold: ">3.0=安全, 1.8-3.0=灰色, <1.8=危险"
+          display: "数值+状态灯"
+
+        - name: "Piotroski F-Score"
+          threshold: ">6=优质, 4-6=一般, <4=较弱"
+          display: "X/9评分"
+
+      ratios:
+        - name: "流动比率"
+          threshold: ">1.5"
+
+        - name: "负债率"
+          threshold: "<60%"
+
+        - name: "利息保障倍数"
+          threshold: ">5"
+
+    interpretation:
+      green: "财务健康，无明显风险"
+      yellow: "需关注特定指标"
+      red: "存在财务风险，需深入分析"
+
+  M04_profitability:
+    id: "M04"
+    name: "盈利能力分析"
+    description: "评估公司赚钱能力和趋势"
+    format: "趋势图+对比表"
+    required: true
+
+    content:
+      metrics:
+        - name: "毛利率"
+          trend: "3年趋势"
+          peer_comparison: true
+
+        - name: "净利率"
+          trend: "3年趋势"
+          peer_comparison: true
+
+        - name: "ROE"
+          trend: "3年趋势"
+          dupont_breakdown: true  # 杜邦分解
+
+        - name: "ROIC"
+          trend: "3年趋势"
+          vs_wacc: true  # 与资本成本对比
+
+    dupont_display:
+      format: "ROE = 净利率 × 资产周转率 × 权益乘数"
+      show_each_component: true
+
+  M05_moat_assessment:
+    id: "M05"
+    name: "护城河评估"
+    description: "评估公司竞争优势的强度和持久性"
+    format: "评分卡+说明"
+    required: true
+
+    content:
+      overall_score:
+        range: "0-100"
+        levels:
+          - "90-100: 极强护城河"
+          - "75-89: 强护城河"
+          - "60-74: 中等护城河"
+          - "40-59: 弱护城河"
+          - "0-39: 无明显护城河"
+
+      moat_types:
+        - type: "技术壁垒"
+          indicator: "研发投入、专利数、技术领先代差"
+
+        - type: "转换成本"
+          indicator: "客户流失率、NRR、合同期限"
+
+        - type: "网络效应"
+          indicator: "用户增速、平台活跃度"
+
+        - type: "规模经济"
+          indicator: "市场份额、成本优势"
+
+        - type: "品牌溢价"
+          indicator: "定价权、品牌认知度"
+
+        - type: "监管壁垒"
+          indicator: "牌照、准入门槛"
+
+      durability:
+        field: "持久性评估"
+        options: ["10年+", "5-10年", "3-5年", "1-3年", "<1年"]
+
+      erosion_risks:
+        field: "侵蚀风险"
+        type: "list"
+        example: ["竞争对手技术追赶", "监管政策变化"]
+
+  M06_product_matrix:
+    id: "M06"
+    name: "产品矩阵"
+    description: "理解公司产品线结构和利润来源"
+    format: "矩阵图/表格"
+    required: true
+
+    content:
+      products:
+        fields:
+          - "产品/业务线"
+          - "收入占比"
+          - "增长率"
+          - "毛利率"
+          - "战略定位"  # 现金牛/明星/问号/瘦狗
+
+      profit_pools:
+        current: "当前主要利润来源"
+        emerging: "新兴增长点"
+        future: "未来潜在机会"
+
+      flywheel:
+        description: "核心业务飞轮"
+        format: "A → B → C → A 循环说明"
+
+  M07_management:
+    id: "M07"
+    name: "管理层档案"
+    description: "评估管理层能力和诚信度"
+    format: "人物卡片"
+    required: false
+
+    content:
+      ceo_profile:
+        - "姓名和任期"
+        - "背景履历"
+        - "执行记录（承诺vs实际）"
+        - "薪酬结构（与业绩挂钩程度）"
+
+      governance:
+        - "董事会独立性"
+        - "内部人持股比例"
+        - "近期内部人交易"
+
+      track_record:
+        - "战略决策质量"
+        - "资本配置能力"
+        - "危机应对记录"
+
+  M08_valuation:
+    id: "M08"
+    name: "估值分析"
+    description: "判断当前价格是否合理"
+    format: "对比图表"
+    required: true
+
+    content:
+      current_valuation:
+        metrics:
+          - "PE (TTM)"
+          - "PE (Forward)"
+          - "EV/EBITDA"
+          - "P/FCF"
+          - "P/S"
+
+      comparison:
+        - type: "历史对比"
+          description: "当前vs过去5年均值/中位数"
+
+        - type: "同业对比"
+          description: "vs主要竞争对手"
+
+        - type: "隐含假设"
+          description: "当前股价隐含的增长预期"
+
+      target_price:
+        method: "SOTP概率加权"
+        scenarios:
+          - scenario: "悲观"
+            probability: "20-25%"
+
+          - scenario: "基准"
+            probability: "50-55%"
+
+          - scenario: "乐观"
+            probability: "20-25%"
+
+  M09_risk_matrix:
+    id: "M09"
+    name: "风险矩阵"
+    description: "识别和量化主要风险"
+    format: "风险矩阵图"
+    required: true
+
+    content:
+      risk_categories:
+        - category: "业务风险"
+          examples: ["客户集中、技术替代、竞争加剧"]
+
+        - category: "财务风险"
+          examples: ["债务负担、现金流、汇率"]
+
+        - category: "宏观风险"
+          examples: ["经济周期、利率、地缘政治"]
+
+        - category: "监管风险"
+          examples: ["政策变化、出口管制、反垄断"]
+
+      risk_assessment:
+        fields:
+          - "风险描述"
+          - "可能性（高/中/低）"
+          - "影响程度（高/中/低）"
+          - "监控指标"
+
+  M10_core_thesis:
+    id: "M10"
+    name: "核心论点"
+    description: "投资逻辑的核心支撑"
+    format: "论点卡片组"
+    required: true
+
+    content:
+      thesis_format:
+        - field: "论点陈述"
+          type: "一句话核心观点"
+
+        - field: "支撑证据"
+          type: "2-3条关键证据"
+
+        - field: "反面观点"
+          type: "如果___则论点不成立"
+
+        - field: "置信度"
+          type: "高/中/低"
+
+      thesis_count: "3-5个核心论点"
+
+  M11_analyst_views:
+    id: "M11"
+    name: "市场观点对比"
+    description: "多头vs空头观点及我们的判断"
+    format: "对比表"
+    required: true
+
+    content:
+      bull_case:
+        - "多头核心论点"
+        - "代表分析师/机构"
+        - "目标价"
+
+      bear_case:
+        - "空头核心论点"
+        - "代表分析师/机构"
+        - "目标价"
+
+      our_view:
+        - "我们的判断"
+        - "与共识的差异点"
+        - "我们的超越/独特视角"
+
+  M12_kill_switch:
+    id: "M12"
+    name: "监控指标"
+    description: "需要持续监控的关键触发条件"
+    format: "状态监控板"
+    required: true
+
+    content:
+      triggers:
+        format:
+          - "触发条件"
+          - "当前状态"
+          - "建议行动"
+          - "检查频率"
+
+      example:
+        - condition: "ASML订单连续2季度下降超过20%"
+          status: "正常"
+          action: "减少仓位50%"
+          frequency: "每季度"
+
+# =============================================================================
+# 第三部分：行业特定模块
+# =============================================================================
+
+industry_modules:
+
+  # ---------------------------------------------------------------------------
+  # 半导体设备行业
+  # ---------------------------------------------------------------------------
+  semiconductor_equipment:
+    industry_id: "SEMI"
+    industry_name: "半导体设备"
+    applicable_to: ["LRCX", "AMAT", "ASML", "KLAC", "TEL"]
+
+    modules:
+
+      S01_cycle_position:
+        id: "S01"
+        name: "半导体周期定位"
+        description: "判断当前处于周期哪个阶段"
+        format: "周期图+位置标记"
+
+        content:
+          cycle_phases:
+            - phase: "Phase 1 - 底部复苏"
+              indicators: ["订单触底回升", "库存去化完成", "利用率开始上升"]
+
+            - phase: "Phase 2 - 早期扩张"
+              indicators: ["订单持续增长", "产能开始扩张", "价格企稳"]
+
+            - phase: "Phase 3 - 中期繁荣"
+              indicators: ["订单高位", "产能大幅扩张", "价格上涨"]
+
+            - phase: "Phase 4 - 后期过热"
+              indicators: ["订单见顶", "产能过剩迹象", "价格压力"]
+
+            - phase: "Phase 5 - 下行调整"
+              indicators: ["订单下滑", "库存积压", "价格下跌"]
+
+          current_assessment:
+            - "当前周期位置"
+            - "关键判断依据"
+            - "vs历史周期对比"
+
+      S02_ai_stack_position:
+        id: "S02"
+        name: "AI产业链定位"
+        description: "公司在AI基础设施中的位置"
+        format: "七层结构图"
+
+        content:
+          layers:
+            - layer: "Layer 5 - 应用层"
+              lead_time: "最滞后"
+              examples: ["AI应用公司"]
+
+            - layer: "Layer 4 - 模型层"
+              lead_time: "-"
+              examples: ["OpenAI, Anthropic"]
+
+            - layer: "Layer 3 - 云基础设施"
+              lead_time: "3-6个月"
+              examples: ["AWS, Azure, GCP"]
+
+            - layer: "Layer 2.5 - 基础设施"
+              lead_time: "同步"
+              examples: ["网络、散热、电力"]
+
+            - layer: "Layer 2 - AI芯片"
+              lead_time: "6-12个月"
+              examples: ["NVIDIA, Broadcom"]
+
+            - layer: "Layer 1 - 芯片制造"
+              lead_time: "6-12个月"
+              examples: ["台积电, SK海力士"]
+
+            - layer: "Layer 0 - 设备"
+              lead_time: "12-18个月（最领先）"
+              examples: ["ASML, LRCX, AMAT"]
+
+          company_position:
+            - "公司所在层级"
+            - "信号领先时间"
+            - "投资含义"
+
+      S03_market_share:
+        id: "S03"
+        name: "设备份额地图"
+        description: "各设备领域的市场份额"
+        format: "份额饼图组"
+
+        content:
+          segments:
+            - segment: "刻蚀设备"
+              company_share: "XX%"
+              rank: "#X"
+              trend: "上升/稳定/下降"
+
+            - segment: "沉积设备"
+              company_share: "XX%"
+              rank: "#X"
+
+            - segment: "检测设备"
+              company_share: "XX%"
+              rank: "#X"
+
+          sub_segments:
+            - "HBM相关份额"
+            - "先进制程份额"
+            - "成熟制程份额"
+
+      S04_customer_concentration:
+        id: "S04"
+        name: "客户集中度"
+        description: "分析客户依赖风险"
+        format: "客户结构图"
+
+        content:
+          top_customers:
+            - "前5大客户占收入比例"
+            - "第一大客户占比"
+            - "客户变化趋势"
+
+          geographic:
+            - "中国收入占比"
+            - "台湾收入占比"
+            - "韩国收入占比"
+            - "其他地区"
+
+          risk_assessment:
+            - "客户集中度风险等级"
+            - "地缘政治风险评估"
+
+      S05_technology_roadmap:
+        id: "S05"
+        name: "技术路线图"
+        description: "关键技术演进和公司定位"
+        format: "时间线图"
+
+        content:
+          key_technologies:
+            - tech: "GAA (Gate-All-Around)"
+              timeline: "2nm量产2025-2026"
+              company_position: "领先/跟随/落后"
+
+            - tech: "HBM堆叠"
+              timeline: "HBM3E→HBM4→HBM4E"
+              company_position: "领先/跟随/落后"
+
+            - tech: "先进封装"
+              timeline: "TSV/CoWoS演进"
+              company_position: "领先/跟随/落后"
+
+          disruption_risks:
+            - "可能颠覆现有技术的新方向"
+            - "对公司的潜在影响"
+
+      S06_china_risk:
+        id: "S06"
+        name: "中国风险评估"
+        description: "出口管制和地缘政治风险"
+        format: "风险评估卡"
+
+        content:
+          exposure:
+            - "中国收入占比"
+            - "受管制产品占比"
+            - "替代市场能力"
+
+          regulatory:
+            - "当前出口管制状态"
+            - "潜在升级风险"
+            - "公司应对策略"
+
+          scenarios:
+            - scenario: "管制维持现状"
+              probability: "XX%"
+              impact: "XX"
+
+            - scenario: "管制进一步收紧"
+              probability: "XX%"
+              impact: "XX"
+
+  # ---------------------------------------------------------------------------
+  # SaaS行业
+  # ---------------------------------------------------------------------------
+  saas:
+    industry_id: "SAAS"
+    industry_name: "SaaS软件"
+    applicable_to: ["CRM", "NOW", "WDAY", "SNOW", "DDOG"]
+
+    modules:
+
+      SS01_saas_metrics:
+        id: "SS01"
+        name: "SaaS健康度"
+        format: "仪表盘"
+
+        content:
+          key_metrics:
+            - name: "ARR (年度经常性收入)"
+              trend: "YoY增速"
+
+            - name: "NRR (净收入留存率)"
+              threshold: ">110%=优秀, 100-110%=良好, <100%=警示"
+
+            - name: "Gross Retention"
+              threshold: ">90%=优秀"
+
+            - name: "客户流失率"
+              threshold: "<5%=优秀"
+
+      SS02_rule_of_40:
+        id: "SS02"
+        name: "Rule of 40分析"
+        format: "散点图"
+
+        content:
+          formula: "收入增速 + FCF利润率 > 40%"
+          current_score: "XX%"
+          trend: "改善/恶化"
+          peer_comparison: true
+
+      SS03_unit_economics:
+        id: "SS03"
+        name: "单元经济学"
+        format: "漏斗图"
+
+        content:
+          metrics:
+            - "CAC (获客成本)"
+            - "LTV (客户生命周期价值)"
+            - "LTV/CAC比率"
+            - "CAC回收期"
+            - "扩展收入占比"
+
+      SS04_ai_disruption:
+        id: "SS04"
+        name: "AI颠覆风险"
+        format: "风险评估"
+
+        content:
+          risk_factors:
+            - "Per-seat模式被AI威胁程度"
+            - "AI原生竞争对手威胁"
+            - "公司AI战略评估"
+          risk_level: "高/中/低"
+
+  # ---------------------------------------------------------------------------
+  # 消费品行业
+  # ---------------------------------------------------------------------------
+  consumer:
+    industry_id: "CONS"
+    industry_name: "消费品"
+    applicable_to: ["AAPL", "NKE", "SBUX", "MCD", "PG"]
+
+    modules:
+
+      C01_brand_power:
+        id: "C01"
+        name: "品牌力评估"
+        format: "评分卡"
+
+        content:
+          metrics:
+            - "定价权（能否提价不失客户）"
+            - "品牌认知度"
+            - "NPS (净推荐值)"
+            - "品牌价值排名"
+
+      C02_channel_structure:
+        id: "C02"
+        name: "渠道结构"
+        format: "渠道占比图"
+
+        content:
+          channels:
+            - "线上直销占比"
+            - "线下零售占比"
+            - "经销商占比"
+          trends:
+            - "DTC战略进展"
+            - "渠道利润率差异"
+
+      C03_consumer_profile:
+        id: "C03"
+        name: "消费者画像"
+        format: "人群分析"
+
+        content:
+          segments:
+            - "核心客群特征"
+            - "客群年龄/收入分布"
+            - "复购率"
+            - "钱包份额"
+
+# =============================================================================
+# 第四部分：数据源整合
+# =============================================================================
+
+data_sources:
+
+  # FMP API - 基础财务数据
+  fmp_api:
+    name: "Financial Modeling Prep"
+    base_url: "https://financialmodelingprep.com"
+    api_key: "fzqJUYdwZSlnkHpPKTSTUJqJw7h1FVfb"
+
+    endpoints:
+      profile: "/stable/profile?symbol={TICKER}"
+      quote: "/api/v3/quote/{TICKER}"
+      income_ttm: "/stable/income-statement-ttm?symbol={TICKER}"
+      key_metrics: "/stable/key-metrics-ttm?symbol={TICKER}"
+      financial_scores: "/stable/financial-scores?symbol={TICKER}"
+      ratios_ttm: "/stable/ratios-ttm?symbol={TICKER}"
+
+    usage_in_report:
+      - "M03 财务健康度"
+      - "M04 盈利能力"
+      - "M08 估值分析"
+
+  # 100baggers API - 投资分析数据
+  baggers_api:
+    name: "100baggers Club"
+    base_url: "https://www.100baggers.club/api"
+    api_key: "zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc="
+
+    endpoints:
+      summary: "/generate-summary"
+      method: "POST"
+      body: '{"symbol":"{TICKER}"}'
+
+    usage_in_report:
+      - "M04 盈利能力（杜邦分解）"
+      - "领先指标触发状态"
+
+  # SEC Filings API - 一手财报数据
+  sec_api:
+    name: "SEC Filings"
+    base_url: "https://www.100baggers.club/api/get-sec-filings"
+    api_key: "zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc="
+
+    endpoints:
+      filings: "?symbols={TICKER}&types=10-K,10-Q&limit=5"
+
+    usage_in_report:
+      - "一手财报链接"
+      - "管理层讨论与分析(MD&A)引用"
+      - "风险因素披露"
+
+    note: |
+      SEC文件是一手来源，优先级最高
+      10-K年报包含完整风险因素披露
+      10-Q季报包含最新业务进展
+
+  # Web Search - 补充信息
+  web_search:
+    name: "网络搜索"
+    usage:
+      - "分析师观点"
+      - "行业新闻"
+      - "竞争对手信息"
+    citation: "放在文末'参考来源'部分"
+
+# =============================================================================
+# 第五部分：输出格式标准
+# =============================================================================
+
+output_format:
+
+  # 网站发布友好的格式要求
+  website_friendly:
+
+    allowed:
+      - "Markdown表格"
+      - "层级标题(H1-H4)"
+      - "加粗/斜体"
+      - "有序/无序列表"
+      - "引用块(>)"
+
+    prohibited:
+      - "YAML/JSON代码块"
+      - "ASCII艺术图"
+      - "特殊Unicode符号（→✅❌★等）"
+      - "内联数据源标注如[API:FMP]"
+
+    symbol_replacement:
+      "→": " - "
+      "✅": "[通过]"
+      "❌": "[未通过]"
+      "★": "[重点]"
+      "⚠️": "[注意]"
+      "↑": "上升"
+      "↓": "下降"
+
+  # 数据来源处理
+  data_citation:
+    rule: "所有数据来源统一放在文末'数据说明'部分"
+
+    format: |
+      ---
+      数据说明
+
+      本报告数据截止日期：YYYY-MM-DD
+
+      主要数据来源：
+      - 财务数据：公司财报、第三方金融数据平台
+      - 分析师观点：公开研究报告、财经媒体
+      - 行业数据：行业研究机构、公司公告
+
+      SEC文件参考：
+      - 最新10-K年报：[链接]
+      - 最新10-Q季报：[链接]
+
+  # 报告结构模板
+  report_structure:
+
+    sections:
+      - name: "投资概览"
+        modules: ["M01", "M02"]
+        word_count: "500-800字"
+        purpose: "30秒快速了解"
+
+      - name: "为什么值得关注"
+        modules: ["M10"]
+        word_count: "1500-2000字"
+        purpose: "核心投资逻辑"
+
+      - name: "财务健康度"
+        modules: ["M03", "M04"]
+        word_count: "1000-1500字"
+        purpose: "财务风险筛查"
+
+      - name: "竞争优势分析"
+        modules: ["M05", "M06"]
+        word_count: "2000-2500字"
+        purpose: "护城河和产品矩阵"
+
+      - name: "行业特定分析"
+        modules: "[根据行业选择]"
+        word_count: "1500-2000字"
+        purpose: "行业专属视角"
+
+      - name: "风险与监控"
+        modules: ["M09", "M12"]
+        word_count: "1000-1500字"
+        purpose: "风险识别和监控"
+
+      - name: "估值分析"
+        modules: ["M08"]
+        word_count: "1500-2000字"
+        purpose: "价格合理性判断"
+
+      - name: "市场观点对比"
+        modules: ["M11"]
+        word_count: "1000-1500字"
+        purpose: "多空观点和我们的超越"
+
+      - name: "投资建议"
+        word_count: "300-500字"
+        purpose: "结论和行动建议"
+
+      - name: "数据说明"
+        purpose: "数据来源和免责声明"
+
+# =============================================================================
+# 第六部分：行业模板组合
+# =============================================================================
+
+industry_templates:
+
+  semiconductor_equipment:
+    name: "半导体设备行业模板"
+    universal_modules: ["M01", "M02", "M03", "M04", "M05", "M06", "M08", "M09", "M10", "M11", "M12"]
+    industry_modules: ["S01", "S02", "S03", "S04", "S05", "S06"]
+    optional_modules: ["M07"]
+
+  saas:
+    name: "SaaS软件行业模板"
+    universal_modules: ["M01", "M02", "M03", "M04", "M05", "M06", "M08", "M09", "M10", "M11", "M12"]
+    industry_modules: ["SS01", "SS02", "SS03", "SS04"]
+    optional_modules: ["M07"]
+
+  consumer:
+    name: "消费品行业模板"
+    universal_modules: ["M01", "M02", "M03", "M04", "M05", "M06", "M08", "M09", "M10", "M11", "M12"]
+    industry_modules: ["C01", "C02", "C03"]
+    optional_modules: ["M07"]
+
+# =============================================================================
+# 第七部分：质量检查清单
+# =============================================================================
+
+quality_checklist:
+
+  content_quality:
+    - "每个核心论点有2-3条证据支撑"
+    - "每个论点有反面观点说明"
+    - "估值目标价与SOTP差距<20%或有解释"
+    - "至少3个差异化洞察"
+
+  format_quality:
+    - "无代码块"
+    - "无特殊符号"
+    - "数据来源在文末统一说明"
+    - "免责声明已添加"
+
+  data_quality:
+    - "关键财务数据已验证"
+    - "SEC文件已查阅"
+    - "分析师观点已整理"
+
+# =============================================================================
+# 版本历史
+# =============================================================================
+
+version_history:
+  - version: "1.0"
+    date: "2026-01-29"
+    changes:
+      - "初始版本"
+      - "12个通用模块"
+      - "3个行业模块组（半导体、SaaS、消费品）"
+      - "SEC API整合"
+      - "网站友好输出格式"

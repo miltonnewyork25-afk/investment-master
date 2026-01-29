@@ -1,0 +1,338 @@
+# Data Credibility System v1.0
+# 数据可信度分级系统
+# 创建日期: 2026-01-29
+# 目的: 解决数据来源标注不清、估算数据混淆等问题
+
+meta:
+  version: "1.0"
+  created: "2026-01-29"
+  purpose: "统一数据来源标注规范，防止可信度混淆"
+  enforcement: "强制执行"
+
+# ============================================================
+# 五级可信度体系
+# ============================================================
+
+levels:
+
+  Level_A:
+    name: "API直接返回"
+    credibility: "95%+"
+    description: "直接从API返回的数据，未经人工处理"
+
+    sources:
+      - FMP API
+      - 100baggers API
+      - SEC Filings API
+      - Bloomberg API
+      - FactSet API
+
+    tagging_format: "[API:源名称 端点]"
+
+    examples:
+      - "ROIC 36.1% [API:FMP key-metrics-ttm]"
+      - "市值$3009亿 [API:FMP quote]"
+      - "Piotroski F-Score 8/9 [API:FMP financial-scores]"
+      - "杜邦ROE 60.6% [API:100baggers dupont-analysis]"
+
+    validation:
+      - 必须能够重现（可以再次调用API验证）
+      - API调用时间在报告日期前后3天内
+      - 如API调用失败，必须标注"API不可用"
+
+  Level_B:
+    name: "公开财报/公告"
+    credibility: "90%+"
+    description: "来自公司官方发布的财报、公告、投资者演示等一手资料"
+
+    sources:
+      - 10-K年报
+      - 10-Q季报
+      - 8-K重大事件
+      - 财报电话会
+      - 投资者演示文稿
+      - 公司官网披露
+
+    tagging_format: "[财报:具体期间/文档类型]"
+
+    examples:
+      - "GAA+先进封装收入>$30亿 [财报:FY2025 10-K]"
+      - "管理层指引：FY2026收入$200-210亿 [财报:FY2026 Q1财报电话会]"
+      - "研发费用$21.8亿 [财报:FY2025 10-K]"
+      - "CEO Tim Archer承诺... [财报:2025年投资者日演示]"
+
+    validation:
+      - 必须能够提供具体页码/章节
+      - 引用必须准确，不能断章取义
+      - 如果是财报电话会，最好有transcript链接
+
+  Level_C:
+    name: "第三方数据库"
+    credibility: "70-85%"
+    description: "来自专业第三方数据库，但未实际调用API验证"
+
+    sources:
+      - Glassdoor（员工评分）
+      - Levels.fyi（薪酬数据）
+      - SimilarWeb（流量数据）
+      - TrustRadius（客户评价）
+      - G2 Crowd（软件评分）
+      - LinkedIn（员工数据）
+      - Crunchbase（融资数据）
+
+    tagging_format: "[第三方:源名称]"
+
+    examples:
+      - "Glassdoor评分4.1/5.0 [第三方:Glassdoor]"
+      - "资深工程师年薪$168K [第三方:Levels.fyi]"
+      - "月访问量500万 [第三方:SimilarWeb]"
+      - "NPS评分8.5/10 [第三方:TrustRadius]"
+
+    must_verify: true
+    verification_method: "实际登录网站查看，或调用API"
+
+    降级规则:
+      - 如果未实际验证，降级为Level E
+      - 必须标注: "[估算:基于第三方XX数据]"
+
+  Level_D:
+    name: "分析师报告引用"
+    credibility: "60-80%"
+    description: "来自卖方分析师报告的数据或观点"
+
+    sources:
+      - JPM分析师报告
+      - UBS分析师报告
+      - BofA分析师报告
+      - Goldman Sachs
+      - Morgan Stanley
+      - 其他主流券商
+
+    tagging_format: "[分析师:姓名/机构]"
+
+    examples:
+      - "目标价$265 [分析师:Harlan Sur/JPM]"
+      - "2026年WFE市场规模$1400亿 [分析师:Mark Lipacis/Jefferies]"
+      - "刻蚀份额预计提升至42% [分析师:Vivek Arya/BofA]"
+
+    注意事项:
+      - 分析师可能有偏见（服务对象是投行客户）
+      - 预测准确率差异大（需要track历史准确率）
+      - 引用时必须注明分析师姓名和机构
+      - 如果多位分析师有共识，可标注"共识预期"
+
+  Level_E:
+    name: "本报告估算"
+    credibility: "40-70%"
+    description: "基于公开数据推算，但未直接获取原始数据"
+
+    sources:
+      - 基于公开财报的推算
+      - 基于行业数据的估算
+      - 基于第三方未验证数据的推断
+      - 基于逻辑推理的估计
+
+    tagging_format: "[估算:基于XX假设]"
+
+    must_explain_method: true
+
+    examples:
+      good_examples:
+        - example_1:
+            text: "HBM相关收入$45亿"
+            tagging: "[估算:基于SK海力士HBM产能×LRCX份额40%]"
+            explanation: "SK海力士2025年HBM产能约100亿美元（来源：公司公告），LRCX在HBM TSV刻蚀设备份额约40%（来源：Yole报告），因此LRCX HBM相关收入约为100×0.4×1.125（设备占HBM成本比）=$45亿"
+
+        - example_2:
+            text: "员工离职率12.1%"
+            tagging: "[估算:基于Glassdoor评论频率变化推测]"
+            explanation: "Glassdoor 2024年新增评论中提到'已离职'的比例为12.1%，假设离职员工更倾向发表评论（修正系数0.8），实际离职率可能为9.7-14.5%"
+
+        - example_3:
+            text: "中国收入FY2026全年将降至30%"
+            tagging: "[估算:基于管理层指引+Q1实际数据推算]"
+            explanation: "管理层在Q1电话会指引'中国收入全年占比将低于历史均值25-30%'，Q1实际为43%（异常高峰），假设Q2-Q4回归正常，全年预计30%"
+
+      bad_examples:
+        - "员工离职率12.1%" ← 无标注，禁止
+        - "HBM收入约$45亿 [估算]" ← 未说明方法，禁止
+        - "中国收入将降至30% [分析师]" ← 来源虚假，禁止
+
+    强制要求:
+      - 必须明确标注[估算]
+      - 必须说明估算方法和假设
+      - 如果有不确定性，给出范围而非点估计
+      - 如果假设改变，结论如何变化（敏感性）
+
+# ============================================================
+# 强制执行规则
+# ============================================================
+
+enforcement:
+
+  mandatory_tagging:
+    rule: "所有具体数字必须标注Level"
+    scope: "收入、利润、市值、增长率、估值倍数等所有量化数据"
+    exceptions: "公认的常识性数据（如'地球有24小时'）"
+
+  Level_E_special_requirement:
+    rule: "Level E数据必须说明估算方法"
+    format: "[估算:基于XX假设，方法是YY]"
+    violation_consequence: "报告【不合格】"
+
+  Level_C_verification:
+    rule: "Level C数据如未实际验证，降级为Level E"
+    example: |
+      错误: "Glassdoor 4.1/5.0 [第三方:Glassdoor]" ← 未实际登录查看
+      正确: "Glassdoor 4.1/5.0 [估算:基于公开评论推测]"
+
+  report_summary:
+    requirement: "报告末尾必须附数据可信度声明表"
+    template: |
+      ## 数据可信度声明
+
+      | Level | 类型 | 数量 | 比例 |
+      |-------|------|------|------|
+      | A - API直接返回 | XX | XX% |
+      | B - 公开财报 | XX | XX% |
+      | C - 第三方数据库 | XX | XX% |
+      | D - 分析师引用 | XX | XX% |
+      | E - 本报告估算 | XX | XX% |
+
+      **总体可信度**: XX%（加权平均）
+
+      **Level E数据清单**（必须列出所有估算数据）:
+      1. HBM收入$45亿 [估算:基于XX] - 不确定性范围: $40-50亿
+      2. 员工离职率12.1% [估算:基于XX] - 不确定性范围: 10-15%
+      ...
+
+# ============================================================
+# 可信度计算方法
+# ============================================================
+
+credibility_calculation:
+
+  weights:
+    Level_A: 1.00
+    Level_B: 0.95
+    Level_C: 0.75
+    Level_D: 0.65
+    Level_E: 0.50
+
+  formula: |
+    总体可信度 = Σ(数据点数量i × weighti) / Σ(数据点数量i)
+
+  interpretation:
+    - "90%+: 数据质量极高"
+    - "80-90%: 数据质量优秀"
+    - "70-80%: 数据质量良好"
+    - "60-70%: 数据质量中等（需改进）"
+    - "<60%: 数据质量较差（报告不合格）"
+
+  target:
+    minimum: 70%
+    recommended: 80%+
+
+# ============================================================
+# 质量门控集成
+# ============================================================
+
+quality_gate_integration:
+
+  checklist_items:
+    - name: "数据Level标注完整性"
+      requirement: "所有量化数据有Level标注"
+      pass_threshold: "100%"
+
+    - name: "Level E说明方法"
+      requirement: "所有Level E数据说明了估算方法"
+      pass_threshold: "100%"
+
+    - name: "Level C验证"
+      requirement: "Level C数据已实际验证，或降级为Level E"
+      pass_threshold: "100%"
+
+    - name: "总体可信度"
+      requirement: "加权可信度≥70%"
+      pass_threshold: "≥70%"
+
+    - name: "数据可信度声明表"
+      requirement: "报告末尾附有完整的可信度声明"
+      pass_threshold: "是"
+
+# ============================================================
+# 学习与改进
+# ============================================================
+
+learning:
+
+  track_accuracy:
+    - 对于Level E估算数据，当真实数据发布后，计算误差
+    - 如果误差>30%，记录到lessons_learned
+    - 改进估算方法
+
+  improve_methods:
+    - 如果某类估算经常准确，提升为"经验证的估算方法"
+    - 如果某类估算经常错误，标记为"高风险估算"
+
+  transparency:
+    - 在下一份报告中披露上一份报告的估算准确率
+    - 建立信任和问责
+
+# ============================================================
+# 示例报告片段
+# ============================================================
+
+example_report_section:
+
+  good_example: |
+    ## 财务数据分析
+
+    **收入情况**:
+    - FY2026 Q1收入$195.9亿 [API:FMP income-statement TTM]
+    - 同比增长34.5% [计算:基于API数据]
+    - 其中HBM相关收入约$45亿 [估算:基于SK海力士HBM产能$100亿×LRCX TSV份额40%×设备占比1.125]
+      - 不确定性: ±$5亿（假设份额范围35-45%）
+      - 验证方式: 等待公司FY2026 Q2分部披露
+
+    **管理层指引**:
+    - FY2026全年收入$200-210亿 [财报:FY2026 Q1财报电话会]
+    - 隐含Q2-Q4季度收入$195-200亿
+
+    **分析师预期**:
+    - 平均目标价$207 [分析师:综合7位分析师，见附表]
+    - 最高$265 [分析师:Harlan Sur/JPM]
+    - 最低$158 [分析师:Morgan Stanley]
+
+  bad_example: |
+    ## 财务数据分析
+
+    **收入情况**:
+    - FY2026 Q1收入约$196亿 ← Level不明，禁止
+    - 增长强劲 ← 未量化，禁止
+    - HBM业务贡献显著 ← 未量化，禁止
+
+    **分析师预期**:
+    - 目标价$207 ← 来源不明，禁止
+
+# ============================================================
+# 版本历史
+# ============================================================
+
+version_history:
+  v1.0:
+    date: "2026-01-29"
+    changes:
+      - "创建5级可信度体系（Level A-E）"
+      - "强制标注规则"
+      - "Level E必须说明方法"
+      - "报告末尾可信度声明表"
+      - "集成到质量门控"
+
+    lessons_from: "LRCX v6.1分析复盘 - 数据标注不清问题"
+
+    improvements:
+      - "解决估算数据标注不清"
+      - "提升报告可信度透明度"
+      - "建立数据质量问责机制"
+      - "为预测验证提供基础"
