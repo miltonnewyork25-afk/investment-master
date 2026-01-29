@@ -6,6 +6,25 @@
 
 ---
 
+## 架构设计原则
+
+投资大师Agent基于以下设计洞见构建（源自Clawdbot Gateway架构学习）：
+
+1. **单点协调**：Master Framework统一管理数据获取和AI调用
+2. **文件即状态**：报告Markdown、历史JSONL、框架YAML，无需数据库
+3. **Context管理**：三层策略（Pruning→Compaction→Memory Flush），关键数据优先、历史摘要、洞见持久化
+4. **分析Loop**：需求→上下文→推理→数据→报告→归档，6阶段标准流程
+5. **Hook扩展**：分析完成通知、自动归档、质量告警，生命周期钩子
+6. **Skill模块化**：投资方法论YAML化、可迭代升级，按需加载
+
+**详细架构文档**：`docs/architecture/`
+- `agent_design_principles_v1.md` - 7大设计洞见
+- `analysis_loop_v1.md` - 6阶段分析循环
+- `analysis_hooks_v1.md` - Hook扩展点
+- `context_management_v1.md` - Context管理策略
+
+---
+
 ## ⭐ 核心架构变革（v18.0）
 
 ### 唯一执行入口：Master Framework
