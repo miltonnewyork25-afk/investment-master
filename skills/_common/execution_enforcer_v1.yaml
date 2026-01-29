@@ -1,0 +1,330 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Execution Enforcer / 执行保障机制
+# 版本: 1.0
+#
+# 一句话: 强制执行关键步骤，让设计不再被跳过
+#
+# 何时用:
+#   - 【强制】每次公司分析前/中/后
+#   - 【强制】每次投资决策前
+#
+# 核心理念:
+#   系统最大问题不是"设计不够"，而是"执行不到位"
+#   这个文件的目的是让已有设计真正运行
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
+version: "1.0"
+created: "2026-01-29"
+purpose: "强制执行关键步骤，消除设计-执行gap"
+
+# =============================================================================
+# 第一部分：分析前检查单（BEFORE）
+# =============================================================================
+
+before_analysis:
+
+  trigger: "检测到'分析XX公司'或股票代码"
+
+  mandatory_steps:
+
+    step_1_lessons_retrieval:
+      action: "检索相关历史经验"
+      how: "调用 lessons_retrieval_engine_v1.yaml"
+      output_required: |
+        ## 相关历史教训（本次分析必读）
+        - [LL_XXX]: [教训摘要]
+        - [LL_XXX]: [教训摘要]
+        - [LL_XXX]: [教训摘要]
+      skip_consequence: "分析可能重复已知错误"
+
+    step_2_framework_entry:
+      action: "确认从唯一入口开始"
+      how: "hierarchical_investment_decision_framework_v1.yaml"
+      output_required: "明确本次分析的决策路径"
+      skip_consequence: "框架选择混乱，可能遗漏关键维度"
+
+    step_3_analyst_learning:
+      action: "搜索学习顶级分析师观点"
+      how: "WebSearch 5-10位分析师"
+      output_required: |
+        ## 顶级分析师观点全景
+        | 分析师 | 机构 | 核心观点 | 目标价 |
+        |--------|------|----------|--------|
+      min_count: 5
+      skip_consequence: "【铁律3违反】分析不合格"
+
+    step_4_api_data_ready:
+      action: "准备API数据"
+      how: "调用FMP + 100baggers API"
+      output_required: |
+        ## API数据摘要
+        - FMP: PE=X, EV/EBITDA=X, Z-Score=X
+        - 100baggers: 领先指标状态
+      skip_consequence: "数据基础薄弱，可能编造数据"
+
+  enforcement:
+    method: "分析开头必须显示4个step的输出"
+    violation_action: "标记为'执行不合规'，降低报告可信度"
+
+# =============================================================================
+# 第二部分：分析中规则（DURING）
+# =============================================================================
+
+during_analysis:
+
+  rule_1_data_sourcing:
+    description: "每个数字必须有来源标注"
+    format: "[API] / [财报] / [分析师] / [估算] / [搜索]"
+    check_method: "扫描报告中的数字，验证来源标注"
+    violation: "【铁律1违反】整个报告失去可信度"
+
+  rule_2_depth_level:
+    description: "核心判断必须到达Level 3+"
+    levels:
+      level_1: "只有结论 → 不合格"
+      level_2: "有数据支撑 → 勉强"
+      level_3: "有机制分析（为什么）→ 合格"
+      level_4: "有洞察价值 → 优秀"
+    check_method: "每个核心判断标注深度层级"
+    min_average: 3.0
+
+  rule_3_falsification:
+    description: "每个核心命题必须有反证句"
+    format: "但如果___则不成立"
+    check_method: "计算有反证句的命题比例"
+    min_ratio: 0.8
+
+  rule_4_kill_switch:
+    description: "必须定义Kill Switch"
+    how: "参考 kill_switch_registry_v1.yaml"
+    min_count: 3
+    format: |
+      ## Kill Switches
+      1. 如果[条件]，则[行动]
+      2. 如果[条件]，则[行动]
+      3. 如果[条件]，则[行动]
+
+# =============================================================================
+# 第三部分：分析后检查单（AFTER）
+# =============================================================================
+
+after_analysis:
+
+  mandatory_outputs:
+
+    output_1_quality_gate:
+      description: "质量门控执行结果表"
+      format: |
+        ## 质量门控执行结果
+        | 检查项 | 状态 | 备注 |
+        |--------|------|------|
+        | 数据来源标注 | ✅/❌ | |
+        | API数据展示 | ✅/❌ | |
+        | 分析师全景表 | ✅/❌ | X位 |
+        | 机制分析深度 | ✅/❌ | 平均Level X |
+        | 反证句覆盖 | ✅/❌ | X% |
+        | Kill Switch | ✅/❌ | X个 |
+        | SOTP估值 | ✅/❌ | $XXX |
+        | 字数 | ✅/❌ | XXX |
+      required: true
+
+    output_2_new_lessons:
+      description: "本次分析产生的新经验"
+      format: |
+        ## 新增经验（如有）
+        - 经验ID: LL_XXX
+        - 类别: [category]
+        - 教训: [lesson]
+        - 行动: [action]
+      required: "if applicable"
+      how: "反思分析过程，提取可复用经验"
+
+    output_3_predictions:
+      description: "可验证预测列表"
+      format: |
+        ## 可验证预测
+        | ID | 预测内容 | 置信度 | 验证日期 |
+        |----|----------|--------|----------|
+      min_count: 1
+      how: "每个投资判断转化为可验证预测"
+
+    output_4_sotp_check:
+      description: "估值逻辑自洽检查"
+      format: |
+        ## 估值逻辑检查
+        - SOTP概率加权: $XXX
+        - 最终目标价: $XXX
+        - 差距: X%
+        - 差距解释: [如果>20%必须解释]
+      required: true
+      violation: "【铁律4违反】估值逻辑断层"
+
+# =============================================================================
+# 第四部分：快速检查清单（打印版）
+# =============================================================================
+
+quick_checklist:
+
+  description: "每次分析可以直接复制使用的检查清单"
+
+  template: |
+    # 执行检查清单
+
+    ## 分析前 ✓
+    - [ ] 检索相关lessons（至少3条）
+    - [ ] 确认使用hierarchical框架
+    - [ ] 搜索5+位顶级分析师观点
+    - [ ] 调用FMP/100baggers API
+
+    ## 分析中 ✓
+    - [ ] 每个数字有[来源]标注
+    - [ ] 核心判断有机制分析（Level 3+）
+    - [ ] 核心命题有反证句（80%+）
+    - [ ] 定义3+个Kill Switch
+
+    ## 分析后 ✓
+    - [ ] 质量门控表已填写
+    - [ ] SOTP与目标价差距<20%或有解释
+    - [ ] 提取新lessons（如有）
+    - [ ] 记录可验证预测
+
+    ## 执行结果
+    - 通过项: X/12
+    - 不通过项: [列出]
+    - 总体评估: 合格/不合格
+
+# =============================================================================
+# 第五部分：违规后果
+# =============================================================================
+
+violation_consequences:
+
+  severity_levels:
+
+    critical:
+      triggers:
+        - "铁律1违反（编造数据）"
+        - "铁律3违反（跳过分析师学习）"
+        - "铁律4违反（估值逻辑断层）"
+      consequence: "报告标记为【不合格】，不可用于投资决策"
+
+    high:
+      triggers:
+        - "分析前步骤跳过≥2项"
+        - "机制分析平均<Level 2.5"
+        - "无Kill Switch"
+      consequence: "报告标记为【待完善】，需要补充后才可使用"
+
+    medium:
+      triggers:
+        - "反证句覆盖<60%"
+        - "可验证预测<1个"
+        - "未提取新lessons"
+      consequence: "报告标记为【可用但有缺陷】"
+
+# =============================================================================
+# 第六部分：与其他组件的集成
+# =============================================================================
+
+integration:
+
+  lessons_retrieval:
+    file: "skills/knowledge_base/lessons_retrieval_engine_v1.yaml"
+    when: "step_1_lessons_retrieval"
+
+  hierarchical_framework:
+    file: "skills/core/hierarchical_investment_decision_framework_v1.yaml"
+    when: "step_2_framework_entry"
+
+  kill_switch_registry:
+    file: "skills/_common/kill_switch_registry_v1.yaml"
+    when: "rule_4_kill_switch"
+
+  quality_gate:
+    file: "CLAUDE.md 质量门控章节"
+    when: "output_1_quality_gate"
+
+  predictions_tracker:
+    file: "skills/core/predictions_tracker_v1.yaml"
+    when: "output_3_predictions"
+
+  lessons_learned:
+    file: "skills/knowledge_base/lessons_learned.yaml"
+    when: "output_2_new_lessons"
+
+# =============================================================================
+# 第七部分：执行示例
+# =============================================================================
+
+execution_example:
+
+  scenario: "用户请求分析LRCX"
+
+  correct_execution: |
+    ## 相关历史教训（本次分析必读）
+    - [LL_055]: 半导体周期5阶段模型
+    - [LL_058]: AI/HBM vs 传统周期分裂
+    - [LL_007]: 数字来源必须标注
+
+    ## 决策路径
+    入口: hierarchical_investment_decision_framework
+    → 行业: 半导体设备
+    → 工具框架: semiconductor_cycle_framework + ai_stack_framework
+
+    ## 顶级分析师观点全景
+    | 分析师 | 机构 | 核心观点 | 目标价 |
+    |--------|------|----------|--------|
+    | John Pitzer | First Boston | AI刻蚀龙头 | $95 |
+    | ... | ... | ... | ... |
+
+    ## API数据摘要
+    - FMP: PE=24.5 [API], EV/EBITDA=18.2 [API], Z-Score=4.8 [API]
+    - 100baggers: 领先指标2/5触发
+
+    [分析正文...]
+
+    ## Kill Switches
+    1. 如果HBM价格下跌>30%，则减仓50%
+    2. 如果TSMC先进制程capex下调>20%，则重新评估
+    3. 如果中国收入占比降至<15%，则调整估值
+
+    ## 质量门控执行结果
+    | 检查项 | 状态 | 备注 |
+    |--------|------|------|
+    | 数据来源标注 | ✅ | 100% |
+    | API数据展示 | ✅ | FMP+100baggers |
+    | 分析师全景表 | ✅ | 7位 |
+    | 机制分析深度 | ✅ | 平均Level 3.2 |
+    | 反证句覆盖 | ✅ | 85% |
+    | Kill Switch | ✅ | 3个 |
+    | SOTP估值 | ✅ | $85 |
+    | 字数 | ✅ | 28,500 |
+
+    **总体评估**: 合格
+
+  incorrect_execution: |
+    [直接开始分析LRCX...]
+
+    LRCX是全球领先的半导体设备公司，市占率约45%...
+    [没有lessons检索]
+    [没有分析师全景]
+    [没有API数据]
+    [数字没有来源标注]
+
+    目标价：$100
+    [没有SOTP支撑]
+    [没有Kill Switch]
+    [没有质量门控表]
+
+    **问题**:
+    - 违反铁律1（数据无来源）
+    - 违反铁律3（跳过分析师学习）
+    - 违反铁律4（估值无逻辑）
+    - 分析前4步全部跳过
+    - 分析后4项输出全部缺失
+
+    **结果**: 报告【不合格】

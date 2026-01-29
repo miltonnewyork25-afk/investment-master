@@ -1,0 +1,346 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Skill Priority Map / 技能调用优先级地图
+# 版本: 1.0
+#
+# 一句话: 96个skill太多，这里告诉你何时调用什么
+#
+# 何时用:
+#   - 开始分析前确定调用哪些skill
+#   - 避免遗漏关键skill
+#   - 避免调用不相关skill
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
+version: "1.0"
+created: "2026-01-29"
+purpose: "简化skill选择，消除决策疲劳"
+
+# =============================================================================
+# 第一部分：Skill分层架构
+# =============================================================================
+
+skill_hierarchy:
+
+  layer_0_entry:
+    description: "决策入口（永远从这里开始）"
+    skills:
+      - name: "hierarchical_investment_decision_framework"
+        file: "skills/core/hierarchical_investment_decision_framework_v1.yaml"
+        always_use: true
+
+  layer_1_core:
+    description: "核心分析框架（几乎每次都用）"
+    skills:
+      - name: "execution_enforcer"
+        file: "skills/_common/execution_enforcer_v1.yaml"
+        purpose: "执行保障"
+        always_use: true
+
+      - name: "lessons_retrieval_engine"
+        file: "skills/knowledge_base/lessons_retrieval_engine_v1.yaml"
+        purpose: "历史经验检索"
+        always_use: true
+
+      - name: "deep_cognition"
+        file: "skills/core/deep_cognition_v1.skill.md"
+        purpose: "10种认知方法"
+        when: "深度分析"
+
+  layer_2_domain:
+    description: "领域专用框架（按行业选择）"
+    categories:
+      semiconductor:
+        - "semiconductor_cycle_framework_v1.yaml"
+        - "ai_stack_framework_v1.yaml"
+
+      saas:
+        - "tech_decline_framework_v2.yaml"
+        - "tech_rise_framework_v1.yaml"
+
+      consumer:
+        - "consumer_behavior_analyst_v3.0.skill.md"
+        - "brand_emotion_control_system_v1.0.skill.md"
+
+      macro:
+        - "cycle_temperature_gauge_v1.yaml"
+        - "macro_liquidity_regime_v1.0.skill.md"
+
+  layer_3_specialized:
+    description: "专项分析技能（按需调用）"
+    categories:
+      valuation:
+        - "valuation_engine skills"
+        - "ai_option_valuation_v1.0.skill.md"
+        - "capex_intensive_valuation_v1.0.skill.md"
+
+      ecosystem:
+        - "ecosystem_graph skills"
+        - "platform_portfolio_matrix_v1.0.skill.md"
+
+      competitive:
+        - "competitive_analysis_framework_v1.3.skill.md"
+        - "ai_competitive_landscape_v1.0.skill.md"
+
+  layer_4_support:
+    description: "支持类技能（质量保证）"
+    skills:
+      - "quality_gate skills"
+      - "data_integrity skills"
+      - "kill_switch_registry"
+
+# =============================================================================
+# 第二部分：场景→Skill映射
+# =============================================================================
+
+scenario_skill_map:
+
+  # ---------------------------------------------------------------------------
+  # 半导体公司分析
+  # ---------------------------------------------------------------------------
+  semiconductor_analysis:
+    trigger_keywords: ["LRCX", "AMAT", "ASML", "TSM", "KLAC", "半导体", "设备", "晶圆"]
+
+    must_use:
+      - skill: "hierarchical_investment_decision_framework"
+        reason: "决策入口"
+      - skill: "execution_enforcer"
+        reason: "执行保障"
+      - skill: "lessons_retrieval_engine"
+        reason: "检索半导体相关lessons"
+      - skill: "semiconductor_cycle_framework"
+        reason: "周期定位"
+      - skill: "ai_stack_framework"
+        reason: "AI产业链定位"
+
+    should_use:
+      - skill: "cycle_temperature_gauge"
+        reason: "宏观周期温度"
+      - skill: "deep_cognition"
+        reason: "深度认知方法"
+
+    optional:
+      - skill: "ecosystem_graph skills"
+        when: "需要分析供应链关系"
+      - skill: "competitive_analysis"
+        when: "需要对比竞争对手"
+
+    avoid:
+      - skill: "consumer_behavior_analyst"
+        reason: "不适用于B2B设备商"
+      - skill: "brand_emotion_control_system"
+        reason: "不适用于B2B"
+
+  # ---------------------------------------------------------------------------
+  # SaaS/软件公司分析
+  # ---------------------------------------------------------------------------
+  saas_analysis:
+    trigger_keywords: ["CRM", "NOW", "ADBE", "SaaS", "订阅", "软件"]
+
+    must_use:
+      - skill: "hierarchical_investment_decision_framework"
+      - skill: "execution_enforcer"
+      - skill: "lessons_retrieval_engine"
+      - skill: "tech_decline_framework"
+        reason: "检测衰落信号"
+      - skill: "tech_rise_framework"
+        reason: "检测崛起信号"
+
+    should_use:
+      - skill: "deep_cognition"
+      - skill: "moat_evaluation_framework"
+      - skill: "platform_portfolio_matrix"
+        reason: "平台生态分析"
+
+    optional:
+      - skill: "data_moat_quantifier"
+        when: "数据是核心护城河"
+
+    valuation_note: "用P/FCF而非PE (LL_121)"
+
+  # ---------------------------------------------------------------------------
+  # AI基础设施分析
+  # ---------------------------------------------------------------------------
+  ai_infrastructure_analysis:
+    trigger_keywords: ["NVDA", "AMD", "AVGO", "MRVL", "AI芯片", "GPU", "数据中心"]
+
+    must_use:
+      - skill: "hierarchical_investment_decision_framework"
+      - skill: "execution_enforcer"
+      - skill: "lessons_retrieval_engine"
+      - skill: "ai_stack_framework"
+        reason: "7层AI产业链定位"
+      - skill: "ai_roi_verification_framework"
+        reason: "ROI验证状态"
+
+    should_use:
+      - skill: "semiconductor_cycle_framework"
+      - skill: "cycle_temperature_gauge"
+      - skill: "ai_competitive_landscape"
+
+    key_lessons:
+      - "LL_065: 瓶颈迁移(算力→内存→网络)"
+      - "LL_058: AI/HBM vs 传统周期分裂"
+
+  # ---------------------------------------------------------------------------
+  # 消费品/品牌公司分析
+  # ---------------------------------------------------------------------------
+  consumer_analysis:
+    trigger_keywords: ["AAPL", "NKE", "SBUX", "消费", "品牌", "零售"]
+
+    must_use:
+      - skill: "hierarchical_investment_decision_framework"
+      - skill: "execution_enforcer"
+      - skill: "lessons_retrieval_engine"
+      - skill: "consumer_behavior_analyst"
+      - skill: "brand_emotion_control_system"
+
+    should_use:
+      - skill: "moat_evaluation_framework"
+      - skill: "deep_cognition"
+
+    avoid:
+      - skill: "semiconductor_cycle_framework"
+        reason: "不适用"
+      - skill: "ai_stack_framework"
+        reason: "不适用（除非AI是核心业务）"
+
+  # ---------------------------------------------------------------------------
+  # 宏观/周期判断
+  # ---------------------------------------------------------------------------
+  macro_analysis:
+    trigger_keywords: ["周期", "宏观", "利率", "GDP", "通胀"]
+
+    must_use:
+      - skill: "cycle_temperature_gauge"
+      - skill: "macro_liquidity_regime"
+
+    should_use:
+      - skill: "industry_signal_propagation"
+      - skill: "advertising_cycle_indicator"
+        when: "分析广告敏感行业"
+
+  # ---------------------------------------------------------------------------
+  # Fallen Angel / 困境反转
+  # ---------------------------------------------------------------------------
+  fallen_angel_analysis:
+    trigger_keywords: ["困境反转", "价值陷阱", "便宜股", "低估"]
+
+    must_use:
+      - skill: "hierarchical_investment_decision_framework"
+      - skill: "fallen_angel_identification_framework"
+      - skill: "forensic_financial_analysis"
+        reason: "财务造假检测"
+
+    key_lessons:
+      - "LL_122: Z-Score<3是value trap警告"
+      - "LL_124: 多重修复信号确认"
+
+# =============================================================================
+# 第三部分：快速查找表
+# =============================================================================
+
+quick_lookup:
+
+  by_ticker:
+    # 半导体
+    LRCX: ["semiconductor_cycle", "ai_stack"]
+    AMAT: ["semiconductor_cycle", "ai_stack"]
+    ASML: ["semiconductor_cycle", "ai_stack"]
+    TSM: ["semiconductor_cycle", "ai_stack"]
+
+    # AI基础设施
+    NVDA: ["ai_stack", "ai_roi_verification", "semiconductor_cycle"]
+    AMD: ["ai_stack", "ai_competitive_landscape"]
+    AVGO: ["ai_stack", "semiconductor_cycle"]
+
+    # SaaS
+    CRM: ["tech_decline", "platform_portfolio", "data_moat"]
+    NOW: ["tech_rise", "platform_portfolio"]
+
+    # 消费
+    AAPL: ["consumer_behavior", "platform_portfolio", "brand_emotion"]
+    TSLA: ["ai_stack", "robotaxi_valuation", "consumer_behavior"]
+
+  by_question:
+    "周期在哪里": ["cycle_temperature_gauge"]
+    "会不会衰落": ["tech_decline_framework"]
+    "护城河如何": ["moat_evaluation_framework", "data_moat_quantifier"]
+    "估值合理吗": ["valuation_engine skills"]
+    "竞争格局": ["competitive_analysis_framework", "ai_competitive_landscape"]
+    "AI受益程度": ["ai_stack_framework", "ai_roi_verification"]
+
+# =============================================================================
+# 第四部分：Skill使用规则
+# =============================================================================
+
+usage_rules:
+
+  rule_1:
+    name: "入口唯一"
+    description: "永远从hierarchical_investment_decision_framework开始"
+    violation: "框架混乱，可能遗漏关键维度"
+
+  rule_2:
+    name: "执行保障优先"
+    description: "execution_enforcer是第二个必调skill"
+    violation: "分析前/中/后检查被跳过"
+
+  rule_3:
+    name: "lessons必检索"
+    description: "任何分析前必须检索相关历史经验"
+    violation: "重复已知错误"
+
+  rule_4:
+    name: "领域匹配"
+    description: "按行业选择layer_2领域框架"
+    violation: "用错框架导致分析偏差"
+
+  rule_5:
+    name: "避免过度"
+    description: "不要调用所有skill，只调用相关的"
+    violation: "信息过载，核心被稀释"
+
+# =============================================================================
+# 第五部分：Deprecated Skills（避免使用）
+# =============================================================================
+
+deprecated_skills:
+
+  - skill: "unified_decision_framework"
+    reason: "已合并入hierarchical_investment_decision_framework"
+    redirect_to: "hierarchical_investment_decision_framework"
+
+  - skill: "quality_gate_v1.skill.md"
+    reason: "已升级到v2"
+    redirect_to: "quality_gate_v2.skill.md"
+
+  - skill: "重复的ecosystem_graph skills (v2.2 md vs v2.3 xml)"
+    reason: "选择xml版本"
+    redirect_to: "eco_*_v2.3.skill.xml"
+
+# =============================================================================
+# 第六部分：Skill数量统计
+# =============================================================================
+
+skill_statistics:
+
+  total_skill_files: 96
+
+  by_category:
+    core: 15
+    ecosystem_graph: 12
+    quality_gate: 7
+    eval_agent: 10
+    data_integrity: 9
+    research_mechanism: 18
+    valuation: 8
+    innovation_engine: 9
+    other: 8
+
+  actually_needed_per_analysis:
+    typical: "5-8个skill"
+    max: "12-15个skill"
+    note: "大多数skill是支持性的，不需要主动调用"

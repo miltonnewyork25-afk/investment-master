@@ -1,0 +1,295 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Verification Ritual / 验证仪式
+# 版本: 1.0
+#
+# 一句话: 定期验证预测，让复利学习机制真正运转
+#
+# 何时用:
+#   - 每周：检查到期预测
+#   - 每月：更新校准参数
+#   - 每季：框架有效性审计
+#
+# 问题: predictions_tracker有55个预测，但没有定期验证
+# 解决: 创建强制验证仪式
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
+version: "1.0"
+created: "2026-01-29"
+purpose: "建立预测→验证→学习的闭环"
+
+# =============================================================================
+# 第一部分：验证频率矩阵
+# =============================================================================
+
+verification_cadence:
+
+  weekly:
+    name: "每周验证"
+    when: "每周五"
+    duration: "15-30分钟"
+    focus: "到期预测验证"
+
+    checklist:
+      - step: "检查本周到期的预测"
+        how: "查看predictions_tracker中verify_date在本周的条目"
+        output: "更新status为correct/incorrect"
+
+      - step: "记录验证结果"
+        how: "更新predictions_tracker相应字段"
+        output: "accuracy数据更新"
+
+      - step: "提取lessons"
+        how: "如果预测错误，分析原因"
+        output: "新lesson添加到lessons_learned.yaml"
+
+  monthly:
+    name: "每月校准"
+    when: "每月最后一个工作日"
+    duration: "1-2小时"
+    focus: "校准参数更新 + lessons整理"
+
+    checklist:
+      - step: "重新计算各类型预测准确率"
+        how: "按type和domain分组统计"
+        output: "更新calibration_rules"
+
+      - step: "识别新的盲区"
+        how: "哪类预测系统性偏差？"
+        output: "更新meta_insights.blind_spots"
+
+      - step: "整理本月新lessons"
+        how: "检查新增lessons的分类和可检索性"
+        output: "更新lessons_learned_index"
+
+      - step: "检查框架应用日志"
+        how: "本月用了哪些框架，效果如何"
+        output: "更新frameworks_effectiveness_tracker"
+
+  quarterly:
+    name: "季度审计"
+    when: "每季度末"
+    duration: "半天"
+    focus: "系统级反思"
+
+    checklist:
+      - step: "框架有效性排名更新"
+        how: "基于真实应用数据重新排名"
+        output: "更新frameworks_effectiveness_tracker排名"
+
+      - step: "Kill Switch状态审计"
+        how: "检查所有Kill Switch当前状态"
+        output: "更新kill_switch_registry状态"
+
+      - step: "系统架构反思"
+        how: "什么设计被跳过？为什么？"
+        output: "架构简化建议"
+
+      - step: "CLAUDE.md版本评估"
+        how: "当前版本是否需要升级"
+        output: "升级计划或确认维持"
+
+# =============================================================================
+# 第二部分：本周待验证预测
+# =============================================================================
+
+this_week_predictions:
+
+  description: |
+    此部分由每周验证仪式更新
+    列出本周到期的预测
+
+  template:
+    - id: "PRED_XXX"
+      statement: "预测内容"
+      stated_confidence: "XX%"
+      verify_date: "2026-XX-XX"
+      actual_result: "[待填写]"
+      status: "pending → correct/incorrect"
+      lesson_extracted: "[如果错误，提取教训]"
+
+  # 当前待验证（示例，需要从predictions_tracker填充）
+  current_pending:
+    - note: "需要从predictions_tracker_v1.yaml中提取verify_date在近期的预测"
+
+# =============================================================================
+# 第三部分：验证记录模板
+# =============================================================================
+
+verification_record_template:
+
+  weekly_record:
+    date: "YYYY-MM-DD"
+    predictions_checked: 0
+    correct: 0
+    incorrect: 0
+    accuracy_this_week: "XX%"
+    lessons_extracted:
+      - id: "LL_XXX"
+        from_prediction: "PRED_XXX"
+        lesson: "教训内容"
+    notes: ""
+
+  monthly_record:
+    month: "YYYY-MM"
+    total_predictions_verified: 0
+    accuracy_by_type:
+      structural: "XX%"
+      event: "XX%"
+      timing: "XX%"
+      adoption: "XX%"
+    calibration_adjustments:
+      - type: "XXX"
+        old_multiplier: 0.0
+        new_multiplier: 0.0
+        reason: ""
+    new_blind_spots_identified: []
+    lessons_count_added: 0
+
+  quarterly_record:
+    quarter: "2026-QX"
+    framework_rankings_changed: false
+    kill_switches_triggered: []
+    architecture_simplifications: []
+    claude_md_version: "vXX.X"
+
+# =============================================================================
+# 第四部分：验证仪式执行协议
+# =============================================================================
+
+execution_protocol:
+
+  weekly_protocol:
+    name: "周五验证仪式"
+
+    step_1:
+      action: "打开predictions_tracker_v1.yaml"
+      command: "Read skills/core/predictions_tracker_v1.yaml"
+
+    step_2:
+      action: "筛选本周到期预测"
+      criteria: "verify_date在本周范围内"
+
+    step_3:
+      action: "逐一验证"
+      for_each_prediction:
+        - "搜索验证数据（财报、新闻、API）"
+        - "判断correct/incorrect"
+        - "如果incorrect，分析原因"
+
+    step_4:
+      action: "更新文件"
+      files_to_update:
+        - "predictions_tracker_v1.yaml (status字段)"
+        - "lessons_learned.yaml (如果有新教训)"
+
+    step_5:
+      action: "记录本周验证结果"
+      output: "添加到verification_records"
+
+  monthly_protocol:
+    name: "月末校准仪式"
+
+    step_1:
+      action: "汇总本月验证数据"
+      source: "weekly records"
+
+    step_2:
+      action: "重新计算校准参数"
+      formula: |
+        new_multiplier = actual_accuracy / stated_accuracy
+        例：如果timing预测声称70%置信度，实际准确率40%
+        new_multiplier = 40/70 = 0.57
+
+    step_3:
+      action: "更新predictions_tracker校准规则"
+
+    step_4:
+      action: "整理新lessons"
+      check: "分类是否正确？是否可检索？"
+
+    step_5:
+      action: "更新frameworks_effectiveness_tracker"
+      data: "本月框架使用记录"
+
+# =============================================================================
+# 第五部分：自动提醒机制
+# =============================================================================
+
+reminder_mechanism:
+
+  description: |
+    在CLAUDE.md或对话开始时提醒执行验证仪式
+
+  weekly_reminder:
+    trigger: "当前日期是周五"
+    message: |
+      ## 验证仪式提醒
+      今天是周五，请执行每周验证仪式：
+      1. 检查本周到期预测
+      2. 更新验证结果
+      3. 提取新lessons
+
+      参考: skills/_common/verification_ritual_v1.yaml
+
+  monthly_reminder:
+    trigger: "当前日期是月末最后工作日"
+    message: |
+      ## 月度校准提醒
+      今天是月末，请执行月度校准仪式：
+      1. 重新计算准确率
+      2. 更新校准参数
+      3. 整理本月lessons
+
+  quarterly_reminder:
+    trigger: "当前日期是季度末"
+    message: |
+      ## 季度审计提醒
+      本季度末，请执行季度审计：
+      1. 框架有效性评估
+      2. Kill Switch状态检查
+      3. 系统架构反思
+
+# =============================================================================
+# 第六部分：验证历史记录
+# =============================================================================
+
+verification_history:
+
+  description: |
+    记录每次验证仪式的结果
+    用于追踪系统改进趋势
+
+  records:
+    # 初始记录（示例）
+    - date: "2026-01-29"
+      type: "initial_setup"
+      note: "验证仪式机制创建，尚无历史验证数据"
+      predictions_count: 55
+      verified_count: 0
+      accuracy: "N/A"
+
+# =============================================================================
+# 第七部分：集成点
+# =============================================================================
+
+integration:
+
+  predictions_tracker:
+    file: "skills/core/predictions_tracker_v1.yaml"
+    interaction: "读取待验证预测，更新验证结果"
+
+  lessons_learned:
+    file: "skills/knowledge_base/lessons_learned.yaml"
+    interaction: "添加从验证中提取的新lessons"
+
+  frameworks_effectiveness:
+    file: "skills/core/frameworks_effectiveness_tracker_v1.yaml"
+    interaction: "月度更新框架应用数据"
+
+  kill_switch_registry:
+    file: "skills/_common/kill_switch_registry_v1.yaml"
+    interaction: "季度检查Kill Switch状态"
