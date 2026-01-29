@@ -1,0 +1,154 @@
+# Skill Header 标准化规范 v1.0
+#
+# 目的：让任何skill在开头5秒内就能被理解
+# 适用：所有skills/*.yaml和skills/*.md文件
+
+version: "1.0"
+created: "2026-01-28"
+
+# =============================================================================
+# 标准Header格式
+# =============================================================================
+
+standard_header_template: |
+  # ═══════════════════════════════════════════════════════════════════════════
+  # QUICK INDEX
+  # ═══════════════════════════════════════════════════════════════════════════
+  # 名称: [英文名] / [中文名]
+  # 版本: [x.x]
+  #
+  # 一句话: [≤25字，说明这个skill是干什么的]
+  #
+  # 何时用:
+  #   - [触发条件1]
+  #   - [触发条件2]
+  #
+  # 输入: [期望输入格式/内容]
+  # 输出: [期望输出格式/内容]
+  #
+  # 依赖: [依赖的其他skill，或"无"]
+  # 被依赖: [哪些skill依赖这个，或"无"]
+  #
+  # 状态: [active/deprecated/experimental]
+  # ═══════════════════════════════════════════════════════════════════════════
+
+# =============================================================================
+# 字段说明
+# =============================================================================
+
+field_definitions:
+
+  名称:
+    required: true
+    format: "[英文名] / [中文名]"
+    example: "Hierarchical Investment Decision Framework / 层级投资决策框架"
+
+  一句话:
+    required: true
+    max_length: 25
+    purpose: "让读者在5秒内知道这是什么"
+    good_example: "用层级过滤替代加权评分做投资决策"
+    bad_example: "一个用于投资决策的框架，它使用层级结构来..."
+
+  何时用:
+    required: true
+    format: "触发条件列表"
+    purpose: "让读者知道什么情况下应该调用这个skill"
+    example:
+      - "当需要对候选股票做买入/卖出决策时"
+      - "当需要排除不适合的投资标的时"
+      - "当普通加权评分无法捕捉'压倒性因素'时"
+
+  输入:
+    required: true
+    format: "简洁描述期望输入"
+    example: "候选股票列表 + 基础财务数据"
+
+  输出:
+    required: true
+    format: "简洁描述期望输出"
+    example: "每只股票的决策(买入/观察/排除) + 决策链路"
+
+  依赖:
+    required: true
+    format: "依赖的skill列表，或'无'"
+    example: "valuation_engine_agent_v1.yaml (用于估值门)"
+
+  被依赖:
+    required: false
+    format: "依赖此skill的其他skill列表"
+    example: "druckenmiller_decision_engine_v1.yaml"
+
+  状态:
+    required: true
+    values:
+      - "active: 当前使用的版本"
+      - "deprecated: 已废弃，有新版本替代"
+      - "experimental: 实验中，未经验证"
+
+# =============================================================================
+# 优先级：哪些skill最需要先优化
+# =============================================================================
+
+optimization_priority:
+
+  tier_1_critical:
+    description: "每次分析都会用到，必须最清晰"
+    files:
+      - "core/hierarchical_investment_decision_framework_v1.yaml"
+      - "core/druckenmiller_decision_engine_v1.yaml"
+      - "core/fallen_angel_identification_framework_v1.yaml"
+      - "valuation_engine/valuation_engine_agent_v1.yaml"
+      - "quality_gate/quality_gate_agent_v2.2.yaml"
+      - "knowledge_base/effective_instruction_patterns.yaml"
+      - "knowledge_base/lessons_learned.yaml"
+
+  tier_2_important:
+    description: "特定场景会用到"
+    files:
+      - "ecosystem_graph/ecosystem_graph_agent_v2.4.yaml"
+      - "macro_analysis/*.yaml"
+      - "competitive_analysis/*.yaml"
+
+  tier_3_reference:
+    description: "参考性文件，schema/config等"
+    files:
+      - "*/schema*.yaml"
+      - "*/config*.yaml"
+      - "*/policy*.yaml"
+
+# =============================================================================
+# 迁移计划
+# =============================================================================
+
+migration_plan:
+
+  phase_1:
+    scope: "tier_1_critical (7个文件)"
+    action: "添加标准化QUICK INDEX header"
+    deadline: "本次对话完成"
+
+  phase_2:
+    scope: "tier_2_important"
+    action: "后续对话中逐步优化"
+    trigger: "当使用到某个skill时，顺便优化其header"
+
+  phase_3:
+    scope: "tier_3_reference"
+    action: "低优先级，有空再做"
+
+# =============================================================================
+# 自动检查规则
+# =============================================================================
+
+auto_check_rules:
+
+  on_skill_read:
+    check: "是否有QUICK INDEX header"
+    if_missing: "标记为需要优化"
+
+  on_skill_create:
+    enforce: "必须包含标准化header"
+
+  on_skill_update:
+    check: "header是否需要更新"

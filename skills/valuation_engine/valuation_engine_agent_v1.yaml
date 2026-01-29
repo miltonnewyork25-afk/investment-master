@@ -1,3 +1,25 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Valuation Engine Agent / 估值引擎
+# 版本: 1.0
+#
+# 一句话: 用Reverse DCF提取市场隐含预期，识别expectation gap
+#
+# 何时用:
+#   - 当需要判断股票估值是否合理时
+#   - 当需要理解"市场在price in什么"时
+#   - 当hierarchical框架需要估值门检查时
+#
+# 输入: 股票代码 + 当前价格 + 财务数据
+# 输出: implied_expectations + expectation_gap + 敏感性分析
+#
+# 依赖: 无
+# 被依赖: hierarchical_investment_decision_framework_v1.yaml (Level 1估值门)
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
 # Valuation Engine Agent v1.0
 # 估值引擎智能体 - Expectations Investing + 多模型族支持
 # 核心原则: 价格先行(Reverse DCF) + Forward验证 + Reconciliation洞察
@@ -12,7 +34,7 @@ agent:
     Layer 3: Reconciliation - 对比implied vs forward，识别expectation_gap
 
     核心输出：implied_expectations + cap_hypotheses + expectation_gap
-    不输出投资结论，只输出可证伪假设与验证计划。
+    不输出投资结论，只输出可证伪假设与验证计划.
   owner: "investment_super_agent"
   timezone: "America/New_York"
 
