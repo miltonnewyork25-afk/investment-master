@@ -2,22 +2,26 @@
 # QUICK INDEX
 # ═══════════════════════════════════════════════════════════════════════════
 # 名称: Druckenmiller Decision Engine / Druckenmiller决策引擎
-# 版本: 1.1
+# 版本: 1.2
+#
+# ⭐ 地位: 【工具框架】- 被hierarchical_investment_decision_framework调用
+#    - 这不是决策入口，是辅助工具
+#    - 主决策入口: hierarchical_investment_decision_framework_v1.yaml
 #
 # 一句话: 逆向工程Druckenmiller的选股逻辑，预测他会买什么
 #
 # 何时用:
-#   - 当需要寻找"Druckenmiller类型"的投资机会时
-#   - 当需要理解顶级投资者的决策模式时
+#   - 当hierarchical框架需要评估"是否符合Druckenmiller风格"时
+#   - 当需要追踪Druckenmiller 13F变动时
 #   - 当需要验证某只股票是否符合大师风格时
 #
 # 输入: 候选股票 + 宏观环境信号 + 13F持仓数据
-# 输出: 预测持仓 + 信号匹配度 + 决策理由
+# 输出: Druckenmiller风格匹配度 + 预测持仓变动 + 决策理由
 #
-# 依赖: hierarchical_investment_decision_framework_v1.yaml (主决策框架)
-# 被依赖: 无
+# 被调用者: hierarchical_investment_decision_framework_v1.yaml
+# 依赖: fallen_angel_identification_framework_v1.yaml
 #
-# 状态: active
+# 状态: active (TOOL FRAMEWORK)
 # ═══════════════════════════════════════════════════════════════════════════
 
 # Druckenmiller Decision Engine v1.1

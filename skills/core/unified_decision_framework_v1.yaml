@@ -1,10 +1,28 @@
-# 统一投资决策框架 v1.0
+# ═══════════════════════════════════════════════════════════════════════════
+# ⚠️ DEPRECATED - 已合并入 hierarchical_investment_decision_framework_v1.yaml
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# 本文件已废弃。所有决策流程请使用:
+#   → skills/core/hierarchical_investment_decision_framework_v1.yaml
+#
+# 废弃原因:
+#   - 本文件与hierarchical框架功能重复
+#   - 造成"三重决策入口"混乱
+#   - 2026-01-29整合后，hierarchical为唯一入口
+#
+# 本文件保留供参考，但不再作为决策入口使用
+# ═══════════════════════════════════════════════════════════════════════════
+
+# 统一投资决策框架 v1.0 [DEPRECATED]
 # Unified Investment Decision Framework
 # 将11个框架整合为1个决策系统
 
 version: "1.0"
+status: "deprecated"
+redirect_to: "hierarchical_investment_decision_framework_v1.yaml"
 created: "2026-01-28"
-purpose: "从11个分散工具变成1个统一决策系统"
+deprecated_date: "2026-01-29"
+purpose: "从11个分散工具变成1个统一决策系统 [已合并入hierarchical框架]"
 
 # ============================================================
 # 第一部分：框架资产清单

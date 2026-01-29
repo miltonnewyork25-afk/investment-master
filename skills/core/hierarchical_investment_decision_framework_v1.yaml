@@ -2,11 +2,16 @@
 # QUICK INDEX
 # ═══════════════════════════════════════════════════════════════════════════
 # 名称: Hierarchical Investment Decision Framework / 层级投资决策框架
-# 版本: 1.0
+# 版本: 1.1
+#
+# ⭐ 地位: 这是系统的【唯一决策入口】
+#    - unified_decision_framework → 已合并入本框架
+#    - druckenmiller_decision_engine → 降级为本框架的"工具"
 #
 # 一句话: 用层级过滤+例外触发做投资决策，替代加权评分
 #
 # 何时用:
+#   - 【所有投资决策都从这里开始】
 #   - 当需要对候选股票做买入/卖出决策时
 #   - 当需要排除不适合的投资标的时
 #   - 当需要识别"压倒性因素"(如绝对垄断)时
@@ -14,10 +19,15 @@
 # 输入: 候选股票列表 + 基础财务数据(PE/P_FCF/ROE/Z-Score)
 # 输出: 每只股票的决策(强买/买入/观察/排除) + 完整决策链路
 #
-# 依赖: valuation_engine_agent_v1.yaml (Level 1估值门)
-# 被依赖: druckenmiller_decision_engine_v1.yaml
+# 可调用的工具框架:
+#   - druckenmiller_decision_engine_v1.yaml (识别Druckenmiller风格机会)
+#   - fallen_angel_identification_framework_v1.yaml (Fallen Angel筛选)
+#   - valuation_engine_agent_v1.yaml (估值门检查)
+#   - cycle_temperature_gauge_v1.yaml (周期温度)
+#   - tech_decline_framework_v2.yaml (衰落检测)
+#   - tech_rise_framework_v1.yaml (崛起检测)
 #
-# 状态: active
+# 状态: active (MASTER FRAMEWORK)
 # ═══════════════════════════════════════════════════════════════════════════
 
 # Hierarchical Investment Decision Framework v1.0

@@ -1,0 +1,316 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Lessons Retrieval Engine / 经验检索引擎
+# 版本: 1.0
+#
+# 一句话: 分析开始前自动检索相关历史经验，避免重复错误
+#
+# 何时用:
+#   - 【强制】分析任何公司前
+#   - 【强制】使用任何框架前
+#   - 遇到特定问题时
+#
+# 输入: 分析主题(公司/行业/框架)
+# 输出: top-5相关经验列表
+#
+# 依赖: lessons_learned.yaml
+# 被依赖: CLAUDE.md (主流程)
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
+version: "1.0"
+created: "2026-01-29"
+purpose: "让130+条经验被有效检索和应用，而非仅仅存储"
+
+# =============================================================================
+# 第一部分：分类索引
+# =============================================================================
+
+category_index:
+
+  # ---------------------------------------------------------------------------
+  # 高优先级类别（P0）- 每次分析必查
+  # ---------------------------------------------------------------------------
+  p0_always_check:
+    - category: "data_traceability"
+      description: "数据来源标注"
+      key_lessons: ["LL_007"]
+
+    - category: "valuation_logic"
+      description: "估值逻辑自洽"
+      key_lessons: ["LL_009", "LL_014"]
+
+    - category: "depth_failure"
+      description: "深度不足的失败模式"
+      key_lessons: ["LL_016", "LL_017"]
+
+    - category: "execution_failure"
+      description: "执行遗漏"
+      key_lessons: ["LL_095"]
+
+  # ---------------------------------------------------------------------------
+  # 公司/行业特定类别
+  # ---------------------------------------------------------------------------
+  company_industry:
+    - category: "semiconductor"
+      related_categories:
+        - "cycle_analysis"
+        - "supply_chain_analysis"
+        - "leading_indicators"
+      key_lessons: ["LL_055", "LL_056", "LL_057", "LL_058"]
+
+    - category: "saas"
+      related_categories:
+        - "valuation"
+        - "screening"
+      key_lessons: ["LL_121", "LL_123"]
+      insight: "P/FCF比PE更适合SaaS估值"
+
+    - category: "ai_infrastructure"
+      related_categories:
+        - "bottleneck_analysis"
+        - "signal_propagation"
+      key_lessons: ["LL_065", "LL_066", "LL_067", "LL_068", "LL_069"]
+
+  # ---------------------------------------------------------------------------
+  # 框架特定类别
+  # ---------------------------------------------------------------------------
+  framework_specific:
+    - framework: "hierarchical_investment_decision_framework"
+      categories:
+        - "decision_framework"
+        - "screening_model"
+      key_lessons: ["LL_119", "LL_120"]
+
+    - framework: "druckenmiller_decision_engine"
+      categories:
+        - "investor_analysis"
+        - "screening_model"
+      key_lessons: ["LL_105", "LL_106", "LL_107", "LL_108", "LL_109", "LL_110", "LL_111"]
+
+    - framework: "fallen_angel_framework"
+      categories:
+        - "valuation"
+        - "turnaround"
+      key_lessons: ["LL_122", "LL_124", "LL_125"]
+
+  # ---------------------------------------------------------------------------
+  # 方法论类别
+  # ---------------------------------------------------------------------------
+  methodology:
+    - category: "methodology_breakthrough"
+      description: "方法论突破"
+      key_lessons: ["LL_019", "LL_023", "LL_024"]
+
+    - category: "meta_learning"
+      description: "元学习经验"
+      key_lessons: ["LL_027", "LL_045", "LL_046", "LL_047", "LL_048", "LL_049"]
+
+    - category: "higher_dimension"
+      description: "高维思维经验"
+      key_lessons: ["LL_059", "LL_060", "LL_061", "LL_062", "LL_063"]
+
+# =============================================================================
+# 第二部分：检索协议
+# =============================================================================
+
+retrieval_protocol:
+
+  # ---------------------------------------------------------------------------
+  # 强制检索时机
+  # ---------------------------------------------------------------------------
+  mandatory_triggers:
+
+    before_company_analysis:
+      trigger: "检测到'分析XX公司'或股票代码"
+      retrieve:
+        - "p0_always_check (全部)"
+        - "company_industry (匹配的行业)"
+        - "最近5条lessons (按date排序)"
+      output_format: |
+        ## 相关历史教训（开始分析前必读）
+
+        **数据规范类**:
+        - [ID]: [lesson摘要]
+
+        **行业相关**:
+        - [ID]: [lesson摘要]
+
+        **最近经验**:
+        - [ID]: [lesson摘要]
+
+    before_framework_use:
+      trigger: "检测到使用特定框架"
+      retrieve:
+        - "framework_specific (匹配的框架)"
+        - "该框架相关的失败案例"
+      output_format: |
+        ## 框架使用经验
+
+        **成功经验**:
+        - [ID]: [lesson摘要]
+
+        **失败教训**:
+        - [ID]: [lesson摘要]
+
+    when_encountering_issue:
+      trigger: "遇到问题或错误"
+      retrieve:
+        - "匹配category的lessons"
+        - "匹配root_cause的lessons"
+      output_format: |
+        ## 相关历史问题
+
+        - [ID]: [lesson] → [action_taken]
+
+  # ---------------------------------------------------------------------------
+  # 检索匹配规则
+  # ---------------------------------------------------------------------------
+  matching_rules:
+
+    company_match:
+      method: "context字段包含公司名/代码"
+      examples:
+        - "TSLA" → 匹配 context包含"Tesla"的lessons
+        - "LRCX" → 匹配 context包含"LRCX"的lessons
+
+    industry_match:
+      method: "context或category包含行业关键词"
+      keywords:
+        semiconductor: ["semiconductor", "chip", "fab", "LRCX", "AMAT", "ASML", "TSM"]
+        saas: ["SaaS", "software", "CRM", "NOW", "subscription"]
+        ai: ["AI", "artificial intelligence", "GPU", "LLM", "NVDA"]
+
+    category_match:
+      method: "category字段精确匹配"
+      fuzzy_match: "也支持category包含关键词"
+
+  # ---------------------------------------------------------------------------
+  # 输出优先级
+  # ---------------------------------------------------------------------------
+  output_priority:
+    rank_1: "P0优先级lessons"
+    rank_2: "完全匹配(公司/框架)的lessons"
+    rank_3: "部分匹配(行业/category)的lessons"
+    rank_4: "最近的lessons (date排序)"
+    max_output: 5  # 最多输出5条
+
+# =============================================================================
+# 第三部分：快速检索指南
+# =============================================================================
+
+quick_retrieval_guide:
+
+  # ---------------------------------------------------------------------------
+  # 场景 → 检索内容
+  # ---------------------------------------------------------------------------
+  scenarios:
+
+    analyze_semiconductor:
+      input: "分析半导体公司"
+      retrieve_categories:
+        - "cycle_analysis"
+        - "supply_chain_analysis"
+        - "leading_indicators"
+        - "bottleneck_analysis"
+      key_lessons_summary:
+        - "LL_055: 半导体周期5阶段模型"
+        - "LL_058: AI/HBM vs 传统周期分裂"
+        - "LL_065: 瓶颈迁移(算力→内存→网络)"
+
+    analyze_saas:
+      input: "分析SaaS公司"
+      retrieve_categories:
+        - "valuation"
+        - "screening"
+      key_lessons_summary:
+        - "LL_121: P/FCF比PE更适合SaaS(CRM案例)"
+        - "LL_123: 平台'胶水层'才是真护城河"
+
+    use_hierarchical_framework:
+      input: "使用层级决策框架"
+      retrieve_categories:
+        - "decision_framework"
+        - "screening_model"
+      key_lessons_summary:
+        - "LL_119: 层级框架替代加权评分"
+        - "LL_120: Level 2例外触发器识别'压倒性因素'"
+
+    evaluate_turnaround:
+      input: "评估困境反转股"
+      retrieve_categories:
+        - "valuation"
+        - "screening"
+        - "fallen_angel"
+      key_lessons_summary:
+        - "LL_122: Z-Score<3是value trap警告"
+        - "LL_124: 多重修复信号确认提高置信度"
+        - "LL_125: 增长到价值转型存在预期gap"
+
+# =============================================================================
+# 第四部分：高频引用lessons摘要
+# =============================================================================
+
+frequently_cited_lessons:
+
+  data_quality:
+    - id: "LL_007"
+      summary: "数字来源必须标注[API]/[财报]/[估算]/[搜索]"
+      action: "检查每个数字是否有来源标注"
+
+  valuation:
+    - id: "LL_121"
+      summary: "P/FCF比PE更适合SaaS(CRM PE 30 vs P/FCF 17)"
+      action: "SaaS估值用P/FCF而非PE"
+
+    - id: "LL_122"
+      summary: "Z-Score<3是value trap警告(PYPL案例)"
+      action: "检查Z-Score，<3则额外谨慎"
+
+  framework:
+    - id: "LL_095"
+      summary: "AVGO分析遗漏微观分析(产品矩阵/五力/竞争格局)"
+      action: "公司分析必须包含强制微观维度"
+
+    - id: "LL_119"
+      summary: "层级框架替代加权评分，捕捉'压倒性因素'"
+      action: "使用hierarchical框架而非简单加权"
+
+  methodology:
+    - id: "LL_127"
+      summary: "破坏性指令打破AI惯性"
+      action: "遇到瓶颈时使用'请问题挑战'类指令"
+
+    - id: "LL_131"
+      summary: "元指令(反思指令本身)杠杆最高"
+      action: "定期反思对话方式本身"
+
+# =============================================================================
+# 第五部分：执行检查
+# =============================================================================
+
+execution_checklist:
+
+  before_analysis:
+    - step: "检索相关lessons"
+      method: "运行检索协议"
+      required: true
+
+    - step: "列出top-5相关lessons"
+      method: "输出到分析开头"
+      required: true
+
+    - step: "确认已读取关键教训"
+      method: "在分析中体现"
+      required: true
+
+  after_analysis:
+    - step: "检查是否产生新lesson"
+      method: "反思是否有新经验"
+      required: true
+
+    - step: "如有新lesson，添加到lessons_learned.yaml"
+      method: "按标准格式添加"
+      required: "if applicable"

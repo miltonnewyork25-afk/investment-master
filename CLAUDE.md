@@ -29,15 +29,29 @@
 4. 如果不是，启动创新思维寻找新方向
 ```
 
-### 知识体系架构（9个核心框架）
+### 知识体系架构
 
 ```
-基础框架层：衰落检测 | 崛起检测 | 信号关联
-领域框架层：半导体周期 | AI全栈 | 生态系统信号
-时机判断层：周期温度计
-元认知层：高维思维 | 元洞察 | 运营原则
-经验记忆层：81条经验 | 32个预测
+┌─────────────────────────────────────────────────────────────┐
+│  ⭐ 唯一决策入口                                              │
+│  hierarchical_investment_decision_framework_v1.yaml         │
+│  （所有投资决策从这里开始）                                    │
+└────────────────────────────┬────────────────────────────────┘
+                             │ 调用
+┌────────────────────────────▼────────────────────────────────┐
+│  工具框架层                                                   │
+│  ├─ druckenmiller_decision_engine (Druckenmiller风格筛选)    │
+│  ├─ fallen_angel_framework (Fallen Angel识别)                │
+│  ├─ valuation_engine (估值门)                                 │
+│  ├─ tech_decline_framework (衰落检测)                         │
+│  ├─ tech_rise_framework (崛起检测)                            │
+│  └─ cycle_temperature_gauge (周期温度)                        │
+└─────────────────────────────────────────────────────────────┘
 ```
+
+**⚠️ 架构清理 (v15.0)**:
+- `unified_decision_framework` → 已废弃，合并入hierarchical
+- `druckenmiller_decision_engine` → 降级为工具，不再是决策入口
 
 ---
 
@@ -392,16 +406,41 @@ curl -X POST "https://www.100baggers.club/api/generate-summary" \
 
 ---
 
-**版本**: v14.0
-**更新日期**: 2026-01-28
+## 经验自动检索（v15.0新增）
+
+**强制步骤**：分析任何公司前，必须先检索相关历史经验
+
+```
+检索触发条件：
+- 分析特定公司 → 检索该公司/行业的历史lessons
+- 使用特定框架 → 检索该框架的应用经验
+- 遇到特定问题 → 检索category匹配的lessons
+
+检索方法：
+1. 读取 lessons_learned.yaml
+2. 按 context/category/company 匹配
+3. 提取 top-5 相关经验
+4. 在分析开头列出"相关历史教训"
+
+示例输出：
+## 相关历史教训
+- LL_007: 报告中数字来源不清晰 → 强制标注
+- LL_095: AVGO分析遗漏微观分析 → 检查产品矩阵
+- LL_121: P/FCF比PE更适合SaaS → 注意指标选择
+```
+
+---
+
+**版本**: v15.0
+**更新日期**: 2026-01-29
 **核心改进**:
-- Deep Cognition Skill（10种AI原生认知方法）
-- 三层触发命令（/scan, /analyze, /deep）
-- 方法权重经Apple/Google/Amazon实战验证
-- 自动领域选择（平台→生物学，转型→相变，多业务→飞轮）
-- 防偷懒机制强化
+- 统一决策入口（hierarchical为唯一入口）
+- 废弃unified_decision_framework，降级druckenmiller为工具
+- 经验自动检索机制
+- 架构清理和简化
 
 **版本历史**:
+- v15.0: 架构统一+经验自动检索+框架层级化
 - v14.0: Deep Cognition Skill（10种认知方法+三层触发）
 - v13.0: 三层深度强制系统+深度指数计算器
 - v12.0: 深度思考协议（过程控制）
