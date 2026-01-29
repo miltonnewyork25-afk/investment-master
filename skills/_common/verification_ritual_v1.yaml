@@ -111,9 +111,51 @@ this_week_predictions:
       status: "pending → correct/incorrect"
       lesson_extracted: "[如果错误，提取教训]"
 
-  # 当前待验证（示例，需要从predictions_tracker填充）
+  # 当前待验证（2026-01-30 周五验证仪式）
   current_pending:
-    - note: "需要从predictions_tracker_v1.yaml中提取verify_date在近期的预测"
+
+    # 2026年2月到期批次（提前准备）
+    - id: "PROP_007"
+      statement: "Alchip 2026收入>$3B"
+      type: "structural"
+      stated_confidence: "待查"
+      verify_date: "2026-02"
+      data_needed: "Alchip财报或指引"
+      status: "pending"
+
+    - id: "PROP_008"
+      statement: "TSMC 2nm良率75%"
+      type: "structural"
+      stated_confidence: "待查"
+      verify_date: "2026-02"
+      data_needed: "TSMC技术披露或供应链消息"
+      status: "pending"
+
+    - id: "ROI_001"
+      statement: "企业AI支出增速>30%"
+      type: "structural"
+      stated_confidence: "待查"
+      verify_date: "2026-02"
+      data_needed: "Gartner/IDC企业IT支出报告"
+      status: "pending"
+
+    # 已有验证结果的预测（需确认状态更新）
+    - id: "AMD_OpenAI"
+      statement: "AMD从OpenAI获$5-10B收入(2026)"
+      type: "event"
+      stated_confidence: "70%"
+      status: "已标记incorrect"
+      lesson_extracted: "LL_XXX: 新合作收入时间表需+12个月"
+      action: "确认lesson已添加到lessons_learned.yaml"
+
+    - id: "ROI_006"
+      statement: "Copilot 50M用户"
+      type: "adoption"
+      stated_confidence: "55%"
+      actual: "~8M用户"
+      status: "已标记incorrect"
+      lesson_extracted: "采用率预测×0.3-0.4"
+      action: "确认校准规则已更新"
 
 # =============================================================================
 # 第三部分：验证记录模板
