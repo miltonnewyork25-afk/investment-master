@@ -2991,3 +2991,205 @@ top_investor_patterns:
       可以作为自己分析的交叉验证
     action_taken: "每季度跟踪Druck/Tepper的持仓变化，识别信号"
     priority: "P1"
+
+  lesson_133:
+    id: "LL_133"
+    date: "2026-01-30"
+    category: "methodology"
+    context: "TSM Ultimate Analysis v2.0"
+    lesson: "Yield-Learning模型是制造业估值的核心工具"
+    evidence: |
+      Wright's Law (1936): C(x) = C₁ · x^(-b)
+      应用到TSM N2制程：
+      - 学习率k=0.14（TSMC）vs k<0.10（Samsung）
+      - N2 Base场景良率75%、Bull 82%、Bear 68%
+      - 通过累积产量预测成本下降和毛利率提升
+
+      为什么重要：
+      1. 量化了"制程爬坡"的财务影响
+      2. 区分了技术领先者vs追赶者（k值差异）
+      3. 可用于敏感性分析（良率±5%对估值影响）
+
+      通用性：适用所有制造业（汽车、电池、飞机）
+    action_taken: "建议固化为yield_learning_calculator_v1.yaml"
+    priority: "P0"
+
+  lesson_134:
+    id: "LL_134"
+    date: "2026-01-30"
+    category: "data_quality"
+    context: "TSM分析数据可信度85.2%"
+    lesson: "数据可信度<90%时必须调用100baggers API补强"
+    evidence: |
+      本次TSM分析：
+      - 总数据点：180个
+      - [A]级（API直接）：45个 (25%)
+      - [E]级（估算）：62个 (34%) ← 问题所在
+
+      关键估算数据：
+      - N2制程良率：[E] 估算
+      - HBM ASP溢价：[E] 估算基于行业数据
+      - 地缘风险概率：[E] 主观判断
+
+      如果调用100baggers API：
+      - ROIC实际值（替代估算的ROIC拆解）
+      - 领先指标触发状态（验证周期判断）
+      - 杜邦分解（交叉验证毛利率预测）
+
+      结论：API调用失败不是理由，必须尝试
+    action_taken: "下次分析半导体股必调用100baggers API"
+    priority: "P1"
+
+  lesson_135:
+    id: "LL_135"
+    date: "2026-01-30"
+    category: "valuation"
+    context: "Reverse DCF vs Forward DCF的gap"
+    lesson: "当Reverse DCF显示低估7%但目标价upside>100%时需要解释"
+    evidence: |
+      TSM案例：
+      - 当前股价：$342
+      - Reverse DCF隐含GM：55.8%
+      - 实际GM：59.9%
+      - 理论低估：7.4%
+      - 但Forward DCF目标价：$708（+107%）
+
+      Gap原因：
+      1. Reverse DCF只反映静态预期
+      2. Forward DCF包含动态成长（N2/N1.4/A16等）
+      3. 市场可能低估AI基础设施的结构性价值
+
+      教训：必须在报告中显式解释这个gap
+      否则估值逻辑显得不自洽
+    action_taken: "在估值章节增加'Reverse vs Forward对比'小节"
+    priority: "P1"
+
+  lesson_136:
+    id: "LL_136"
+    date: "2026-01-30"
+    category: "framework"
+    context: "模块化框架v17.0未完全应用"
+    lesson: "新框架推出后需要'强制执行期'避免惯性"
+    evidence: |
+      v17.0引入模块化框架（M01-M12通用模块）
+      但TSM v2.0分析仍使用旧范式：
+      - 未按M01公司画像卡片输出
+      - 未用M05护城河评估卡
+      - 未用M09风险矩阵热力图
+
+      原因：
+      - 新框架学习成本高
+      - 旧范式已形成肌肉记忆
+      - 没有"强制检查点"
+
+      解决方案：
+      - 创建强制执行检查单
+      - 每个模块有"必过关卡"
+      - 违反=报告无效
+    action_taken: "v18.0将增加模块化框架强制执行检查点"
+    priority: "P0"
+
+  lesson_137:
+    id: "LL_137"
+    date: "2026-01-30"
+    category: "innovation"
+    context: "5个创新方法vs v14.0的10种认知方法"
+    lesson: "领域特定创新方法>通用认知方法"
+    evidence: |
+      v14.0引入10种认知方法（压缩挑战、矛盾引爆等）
+      TSM v2.0引入5个领域创新方法：
+      1. Yield-Learning模型（制造业专用）
+      2. EUV风险评分（半导体专用）
+      3. SCRES网络（供应链专用）
+      4. Reverse DCF（估值通用）
+      5. 投行级视觉系统（展示通用）
+
+      效果对比：
+      - 10种认知方法：提升思维深度
+      - 5个领域方法：提供可量化工具
+
+      结论：两者结合最佳
+      - Phase 0-1用认知方法打开思路
+      - Phase 2-3用领域方法精确分析
+    action_taken: "更新deep_research_protocol强调两者结合"
+    priority: "P1"
+
+  lesson_138:
+    id: "LL_138"
+    date: "2026-01-30"
+    category: "execution"
+    context: "MCP Server优化的token节省"
+    lesson: "API优化的边际收益>新功能开发"
+    evidence: |
+      MCP优化成果：
+      - Token消耗：-75% (8000→2000)
+      - 缓存性能：+2500x (2.5s→0.001s)
+      - 参数简化：-60% (5个→2个)
+
+      投入产出比：
+      - 开发时间：2小时
+      - 每月节省：$12.30（token cost）
+      - 每月节省：62.5分钟（time cost）
+
+      启示：
+      - 优化基础设施>添加新功能
+      - 简化参数>增加参数
+      - 智能默认值>强制输入
+
+      适用场景：
+      - 所有高频调用的API工具
+      - 所有需要用户配置的系统
+    action_taken: "将'优化优先于新增'作为开发原则"
+    priority: "P1"
+
+  lesson_139:
+    id: "LL_139"
+    date: "2026-01-30"
+    category: "analyst_learning"
+    context: "TSM分析中的分析师观点学习不足"
+    lesson: "搜索分析师观点≠学习分析师方法论"
+    evidence: |
+      TSM报告中搜索了顶级分析师观点：
+      - 高盛/摩根士丹利/富国银行等
+      - 收集了目标价和评级
+      - 但未深入分析其方法论
+
+      遗漏的价值：
+      - 为什么高盛用45x P/E？（估值框架）
+      - 为什么摩根士丹利强调地缘风险？（风险权重）
+      - 为什么富国看好N2爬坡？（技术判断依据）
+
+      正确做法：
+      每位分析师至少提取：
+      1. 核心假设（如HBM渗透率预期）
+      2. 估值方法（SOTP vs DCF vs P/E）
+      3. 风险权重（地缘/周期/竞争）
+      4. 1个独特洞察
+    action_taken: "更新铁律3：分析师学习必须到方法论层"
+    priority: "P0"
+
+  lesson_140:
+    id: "LL_140"
+    date: "2026-01-30"
+    category: "risk_management"
+    context: "6个Kill Switches的实时监控"
+    lesson: "Kill Switches必须可量化+自动化监控"
+    evidence: |
+      TSM设置6个Kill Switches：
+      1. 地缘冲突升级（台湾局势指数>70）
+      2. N2良率<60%（低于行业标准）
+      3. DRAM价格暴跌>30% YoY
+      4. 毛利率<50%连续2季度
+      5. 客户集中度恶化（Apple>30%）
+      6. 竞争份额流失（先进制程<50%）
+
+      优点：
+      - 每个都有明确阈值
+      - 可通过API自动监控
+
+      改进空间：
+      - 应创建自动化监控脚本
+      - 触发时自动发送警报
+      - 与仓位管理联动（触发=减仓）
+    action_taken: "建议创建kill_switch_monitor_v1.py自动化工具"
+    priority: "P1"

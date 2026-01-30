@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "investment-master": {
+      "command": "python3",
+      "args": [
+        "/Users/milton/投资大师/mcp_server/main.py"
+      ],
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      }
+    }
+  },
+  "globalShortcut": "CommandOrControl+Shift+Space",
+  "theme": "dark"
+}
