@@ -1,0 +1,492 @@
+# Universal Supply Chain v1.0
+# 通用供应链分析框架 - 风险评估与议价权分析
+# 创建日期: 2026-01-31
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-01-31"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "universal.supply_chain_v1.0"
+  name: "通用供应链分析框架"
+  purpose: "评估供应链风险、韧性和议价权动态"
+  applicable_industries:
+    - "消费品"
+    - "零售"
+    - "制造业"
+    - "半导体"
+    - "汽车"
+
+  upstream_dependencies:
+    - "ecosystem_graph"
+  downstream_consumers:
+    - "moat_assessment"
+    - "risk_assessment"
+
+# ═══════════════════════════════════════════════════════════════
+# 核心概念
+# ═══════════════════════════════════════════════════════════════
+
+core_concept:
+  description: |
+    供应链是企业的血管系统。供应链问题直接影响：
+    - 成本结构（采购成本）
+    - 运营效率（库存周转）
+    - 风险暴露（供应中断）
+    - 竞争力（速度、灵活性）
+
+  covid_lesson: |
+    2020-2022年供应链危机教训：
+    - 过度依赖单一地区（中国）风险显现
+    - Just-in-time变Just-in-case
+    - 供应链韧性成为投资新维度
+
+# ═══════════════════════════════════════════════════════════════
+# 4层供应链结构
+# ═══════════════════════════════════════════════════════════════
+
+four_layer_structure:
+
+  L1_raw_materials:
+    name: "原材料层"
+    description: "最上游的原材料/零部件供应"
+
+    analysis_dimensions:
+      - name: "原材料成本占比"
+        importance: "理解成本结构"
+        benchmark: "varies by industry"
+
+      - name: "供应商集中度"
+        importance: "评估议价权和风险"
+        metrics:
+          - "Top 3供应商占比"
+          - "单一来源原材料占比"
+        risk_threshold: "Top 3 > 50% 为高集中度"
+
+      - name: "价格波动性"
+        importance: "成本可预测性"
+        metrics:
+          - "年化价格波动率"
+          - "对冲覆盖率"
+
+      - name: "供应稳定性"
+        importance: "供应中断风险"
+        factors:
+          - "地理集中度"
+          - "政治风险"
+          - "自然灾害风险"
+
+    industry_examples:
+      consumer_goods: ["包装材料", "石化原料", "农产品"]
+      retail: ["进口商品", "生鲜原料"]
+      semiconductor: ["硅晶圆", "光阻剂", "化学气体"]
+
+  L2_manufacturing:
+    name: "生产制造层"
+    description: "生产/加工能力"
+
+    analysis_dimensions:
+      - name: "自有vs外包"
+        importance: "控制力和灵活性"
+        metrics:
+          - "自有产能占比"
+          - "代工厂数量"
+          - "备份产能"
+
+      - name: "产能利用率"
+        importance: "运营效率和扩张能力"
+        benchmark:
+          healthy: "70-85%"
+          tight: ">85%"
+          excess: "<70%"
+
+      - name: "地理分布"
+        importance: "风险分散"
+        metrics:
+          - "按地区产能分布"
+          - "关税暴露度"
+
+      - name: "制造成本"
+        importance: "竞争力"
+        metrics:
+          - "人工成本/单位"
+          - "能源成本/单位"
+          - "vs竞争对手对比"
+
+  L3_logistics:
+    name: "物流配送层"
+    description: "仓储和运输"
+
+    analysis_dimensions:
+      - name: "物流模式"
+        options:
+          - "自有物流"
+          - "第三方物流(3PL)"
+          - "混合模式"
+        trade_offs: "控制力 vs 灵活性 vs 成本"
+
+      - name: "仓储网络"
+        metrics:
+          - "仓库/DC数量"
+          - "覆盖范围"
+          - "自动化程度"
+
+      - name: "配送效率"
+        metrics:
+          - "订单履行时间"
+          - "准时交付率"
+          - "物流成本/收入"
+
+      - name: "运输风险"
+        factors:
+          - "海运依赖度"
+          - "港口拥堵风险"
+          - "燃油价格暴露"
+
+  L4_inventory:
+    name: "库存管理层"
+    description: "库存水平和周转"
+
+    analysis_dimensions:
+      - name: "库存周转"
+        metrics:
+          - "库存周转天数(DIO)"
+          - "vs行业对比"
+          - "趋势变化"
+        benchmark_by_industry:
+          grocery_retail: "15-25天"
+          general_retail: "50-80天"
+          consumer_goods: "60-90天"
+          semiconductor: "80-120天"
+
+      - name: "库存构成"
+        breakdown:
+          - "原材料库存"
+          - "在制品库存"
+          - "成品库存"
+        analysis: "哪部分增加？是主动还是被动？"
+
+      - name: "库存风险"
+        types:
+          obsolescence: "过时风险（电子/时尚）"
+          spoilage: "损耗风险（生鲜）"
+          markdown: "降价风险（季节性）"
+
+      - name: "安全库存"
+        description: "为应对不确定性的缓冲库存"
+        trade_off: "服务水平 vs 资金占用"
+
+# ═══════════════════════════════════════════════════════════════
+# 议价权分析
+# ═══════════════════════════════════════════════════════════════
+
+bargaining_power:
+
+  company_vs_suppliers:
+    power_sources:
+      scale:
+        description: "采购规模越大，议价权越强"
+        metric: "占供应商收入比例"
+        example: "Walmart占P&G收入15%+"
+
+      channel_control:
+        description: "控制消费者触达"
+        metric: "货架份额/流量控制"
+
+      substitutability:
+        description: "是否有替代供应商"
+        metric: "供应商集中度"
+
+      private_label:
+        description: "自有品牌是谈判筹码"
+        metric: "自有品牌在品类渗透率"
+
+      information:
+        description: "POS数据了解真实需求"
+        metric: "数据共享程度"
+
+  suppliers_vs_company:
+    power_sources:
+      brand_power:
+        description: "消费者指名购买"
+        example: "可口可乐、苹果"
+
+      uniqueness:
+        description: "无替代产品"
+        metric: "产品差异化程度"
+
+      scale:
+        description: "供应商自身规模"
+        example: "宝洁、联合利华"
+
+      alternative_channels:
+        description: "DTC等替代销售渠道"
+        trend: "品牌DTC增长"
+
+  commercial_terms:
+    payment_terms:
+      definition: "从收货到付款的天数"
+      company_advantage: "账期越长，现金流越好"
+      benchmark:
+        strong: "60-90天"
+        average: "30-45天"
+        weak: "15-30天或预付"
+
+    trade_allowances:
+      slotting_fee: "新产品上架费用"
+      promotional_allowance: "供应商支付促销折扣"
+      return_policy: "退货条款"
+      coop_advertising: "广告补贴"
+
+    volume_rebates:
+      definition: "达到采购量阈值后的返利"
+      structure: "阶梯式返点"
+
+# ═══════════════════════════════════════════════════════════════
+# 供应链风险评估
+# ═══════════════════════════════════════════════════════════════
+
+risk_assessment:
+
+  risk_categories:
+
+    concentration_risk:
+      description: "单一供应商/地区依赖"
+      indicators:
+        - "Top 3供应商占比"
+        - "单一国家采购占比"
+        - "单一产品线依赖"
+      mitigation: "培养备用供应商、多元化采购"
+
+    geographic_risk:
+      description: "地理集中风险"
+      factors:
+        - "中国制造依赖"
+        - "政治风险国家"
+        - "自然灾害高发区"
+      mitigation: "供应链多元化、近岸/友岸外包"
+
+    disruption_risk:
+      description: "供应中断风险"
+      causes:
+        - "疫情"
+        - "自然灾害"
+        - "地缘政治"
+        - "劳工罢工"
+      mitigation: "安全库存、多点供应、应急预案"
+
+    quality_risk:
+      description: "质量问题风险"
+      impacts:
+        - "召回成本"
+        - "品牌损害"
+        - "法律责任"
+      mitigation: "供应商审计、质量检测、追溯系统"
+
+    cost_volatility_risk:
+      description: "成本波动风险"
+      sources:
+        - "原材料价格"
+        - "能源价格"
+        - "汇率"
+        - "运费"
+      mitigation: "对冲、长期合同、成本转嫁能力"
+
+  risk_scoring:
+    dimensions:
+      - name: "供应商集中度风险"
+        weight: 0.25
+      - name: "地理集中度风险"
+        weight: 0.25
+      - name: "中断历史/可能性"
+        weight: 0.20
+      - name: "成本波动暴露"
+        weight: 0.15
+      - name: "质量风险记录"
+        weight: 0.15
+
+    scale: "1-5 (1=低风险, 5=高风险)"
+
+# ═══════════════════════════════════════════════════════════════
+# 供应链韧性评估
+# ═══════════════════════════════════════════════════════════════
+
+resilience_assessment:
+
+  resilience_dimensions:
+
+    visibility:
+      description: "对供应链的可见度"
+      levels:
+        high: "实时追踪到原材料层"
+        medium: "追踪到一级供应商"
+        low: "仅看到直接供应商"
+
+    flexibility:
+      description: "快速调整能力"
+      indicators:
+        - "供应商切换时间"
+        - "产能调整速度"
+        - "产品线切换能力"
+
+    redundancy:
+      description: "冗余/备份能力"
+      indicators:
+        - "备用供应商数量"
+        - "备用产能比例"
+        - "安全库存天数"
+
+    collaboration:
+      description: "与供应商协作深度"
+      levels:
+        strategic: "联合业务计划、数据共享"
+        collaborative: "定期沟通、需求预测共享"
+        transactional: "纯交易关系"
+
+  scres_framework:
+    name: "供应链韧性网络"
+    academic_ref: "Ramirez & Le (2024)"
+    dimensions:
+      - "敏捷性(Agility)"
+      - "适应性(Adaptability)"
+      - "对齐性(Alignment)"
+      - "恢复力(Recovery)"
+
+# ═══════════════════════════════════════════════════════════════
+# Kill Switches
+# ═══════════════════════════════════════════════════════════════
+
+kill_switches:
+
+  - id: "KS-SUPPLY-001"
+    name: "供应商高集中度"
+    trigger: "Top 3供应商占采购>50%"
+    action: "Soft Kill - 评估替代难度和风险"
+    severity: "soft"
+
+  - id: "KS-SUPPLY-002"
+    name: "关键供应商流失"
+    trigger: "Top 5供应商中有1家终止合作"
+    action: "Hard Kill - 立即评估影响和替代方案"
+    severity: "hard"
+
+  - id: "KS-SUPPLY-003"
+    name: "账期缩短"
+    trigger: "平均账期缩短>15天"
+    action: "Soft Kill - 议价权可能减弱"
+    severity: "soft"
+
+  - id: "KS-SUPPLY-004"
+    name: "供应中断"
+    trigger: "重大供应中断影响>2周"
+    action: "Hard Kill - 评估财务影响和恢复时间"
+    severity: "hard"
+
+  - id: "KS-SUPPLY-005"
+    name: "成本转嫁失败"
+    trigger: "原材料成本上涨>10%但未能提价"
+    action: "Soft Kill - 毛利率压力"
+    severity: "soft"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## 供应链分析
+
+  **公司**: [公司名]
+  **日期**: YYYY-MM-DD
+
+  ### 4层结构分析
+
+  | 层级 | 关键指标 | 状态 | 风险等级 |
+  |------|---------|------|---------|
+  | L1 原材料 | Top3供应商占比XX% | | 低/中/高 |
+  | L2 生产制造 | 自有产能XX% | | 低/中/高 |
+  | L3 物流配送 | 物流成本/收入XX% | | 低/中/高 |
+  | L4 库存管理 | 周转天数XX天 | | 低/中/高 |
+
+  ### 议价权评估
+
+  | 维度 | 公司议价权 | 供应商议价权 | 净位置 |
+  |------|-----------|-------------|--------|
+  | 采购规模 | [强/中/弱] | - | |
+  | 品牌力 | - | [强/中/弱] | |
+  | 替代性 | [强/中/弱] | [强/中/弱] | |
+  | 账期 | XX天 | - | vs行业 |
+
+  ### 供应链风险矩阵
+
+  | 风险类型 | 暴露度 | 影响 | 缓解措施 |
+  |---------|--------|------|---------|
+  | 集中度风险 | 高/中/低 | | |
+  | 地理风险 | 高/中/低 | | |
+  | 中断风险 | 高/中/低 | | |
+  | 成本波动 | 高/中/低 | | |
+
+  ### 韧性评分
+
+  | 维度 | 得分(1-5) | 说明 |
+  |------|----------|------|
+  | 可见性 | X.X | |
+  | 灵活性 | X.X | |
+  | 冗余性 | X.X | |
+  | 协作性 | X.X | |
+  | **总分** | **X.X** | |
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合约
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  required_outputs:
+    supply_chain_structure:
+      type: "object"
+      schema:
+        l1_raw_materials: "object"
+        l2_manufacturing: "object"
+        l3_logistics: "object"
+        l4_inventory: "object"
+
+    bargaining_power:
+      type: "object"
+      schema:
+        company_power: "float (1-5)"
+        supplier_power: "float (1-5)"
+        net_position: "enum(company_favored/balanced/supplier_favored)"
+
+    risk_assessment:
+      type: "object"
+      schema:
+        concentration_risk: "float (1-5)"
+        geographic_risk: "float (1-5)"
+        disruption_risk: "float (1-5)"
+        overall_risk: "float (1-5)"
+
+    resilience_score:
+      type: "float"
+      range: "1-5"
+
+  confidence: "float (0-1)"
+  asof: "date"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "4层供应链结构"
+      - "议价权分析框架"
+      - "风险评估矩阵"
+      - "韧性评估系统"

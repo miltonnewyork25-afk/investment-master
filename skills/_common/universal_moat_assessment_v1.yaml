@@ -1,0 +1,457 @@
+# Universal Moat Assessment v1.0
+# 通用护城河评估框架 - 7 Powers + 行业特定护城河
+# 创建日期: 2026-01-31
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-01-31"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "universal.moat_assessment_v1.0"
+  name: "通用护城河评估框架"
+  purpose: "系统性评估企业竞争优势的持久性"
+  applicable_industries: ["所有行业"]
+  academic_reference: "Hamilton Helmer - 7 Powers"
+
+  upstream_dependencies:
+    - "competitor_matrix"
+    - "pricing_power"
+  downstream_consumers:
+    - "valuation_engine"
+
+# ═══════════════════════════════════════════════════════════════
+# 核心概念
+# ═══════════════════════════════════════════════════════════════
+
+core_concept:
+  buffett_definition: |
+    "护城河是企业的持久竞争优势——阻止竞争对手侵蚀利润的结构性屏障。"
+
+  key_questions:
+    - "为什么竞争对手不能复制？"
+    - "这个优势能持续多久？"
+    - "什么会削弱这个护城河？"
+
+  moat_vs_momentum: |
+    护城河 ≠ 当前表现好
+    护城河 = 未来表现可持续的结构性原因
+
+# ═══════════════════════════════════════════════════════════════
+# 7 Powers 框架
+# ═══════════════════════════════════════════════════════════════
+
+seven_powers:
+
+  scale_economies:
+    name: "规模经济"
+    definition: "单位成本随产量增加而下降"
+    mechanism: |
+      - 固定成本分摊
+      - 采购议价权
+      - 研发效率
+    indicators:
+      - "市场份额vs竞争对手"
+      - "单位成本vs竞争对手"
+      - "毛利率差距"
+    scoring:
+      "5": "份额>40%，成本领先>20%"
+      "4": "份额>25%，成本领先>10%"
+      "3": "份额>15%，有规模效应"
+      "2": "有一定规模，但不突出"
+      "1": "规模劣势"
+    industry_examples:
+      strong: ["Costco", "Walmart", "Amazon", "TSMC"]
+      weak: ["小型零售商", "Boutique品牌"]
+
+  network_effects:
+    name: "网络效应"
+    definition: "产品价值随用户增加而增加"
+    mechanism: |
+      - 直接网络效应（用户-用户）
+      - 间接网络效应（用户-开发者）
+      - 数据网络效应
+    indicators:
+      - "用户增长的边际成本"
+      - "用户流失率"
+      - "生态系统规模"
+    scoring:
+      "5": "强双边网络，先行者优势明显"
+      "4": "单边网络效应强"
+      "3": "有网络效应但可被挑战"
+      "2": "弱网络效应"
+      "1": "无网络效应"
+    industry_examples:
+      strong: ["Facebook", "Apple生态", "Visa/Mastercard"]
+      weak: ["传统零售", "制造业"]
+
+  counter_positioning:
+    name: "反定位"
+    definition: "新商业模式让在位者难以响应"
+    mechanism: |
+      - 在位者响应会损害现有业务
+      - 组织惯性阻碍变革
+    indicators:
+      - "在位者的反应"
+      - "新模式的增长"
+      - "传统模式的衰退"
+    scoring:
+      "5": "在位者完全无法响应"
+      "4": "在位者响应困难"
+      "3": "有反定位但在位者在学习"
+      "2": "弱反定位"
+      "1": "无反定位"
+    industry_examples:
+      strong: ["Costco vs传统零售", "Netflix vs Blockbuster"]
+      weak: ["渐进式创新"]
+
+  switching_costs:
+    name: "转换成本"
+    definition: "客户更换供应商的成本"
+    mechanism: |
+      - 财务成本（合同、迁移）
+      - 时间成本（学习、适应）
+      - 心理成本（习惯、信任）
+      - 数据成本（历史数据、定制）
+    indicators:
+      - "客户流失率"
+      - "续约率"
+      - "价格弹性"
+    scoring:
+      "5": "极高转换成本，流失率<5%"
+      "4": "高转换成本，流失率<10%"
+      "3": "中等转换成本"
+      "2": "低转换成本"
+      "1": "几乎无转换成本"
+    industry_examples:
+      strong: ["企业软件", "半导体设备", "会员制零售"]
+      weak: ["大宗商品", "快消品"]
+
+  branding:
+    name: "品牌"
+    definition: "品牌带来的溢价和忠诚度"
+    mechanism: |
+      - 心理价值（身份、情感）
+      - 功能保证（质量、一致性）
+      - 搜索成本降低
+    indicators:
+      - "品牌溢价"
+      - "无提示品牌认知"
+      - "NPS"
+      - "品牌资产估值"
+    scoring:
+      "5": "全球顶级品牌，溢价>50%"
+      "4": "强品牌，溢价>30%"
+      "3": "中等品牌力"
+      "2": "弱品牌"
+      "1": "无品牌或负面品牌"
+    industry_examples:
+      strong: ["Apple", "Hermès", "Costco"]
+      weak: ["白牌", "大宗商品"]
+
+  cornered_resource:
+    name: "垄断资源"
+    definition: "独占的关键资源"
+    mechanism: |
+      - 专利/IP
+      - 独家许可
+      - 稀缺人才
+      - 独特数据
+      - 地理位置
+    indicators:
+      - "资源独占性"
+      - "法律保护"
+      - "替代可能性"
+    scoring:
+      "5": "完全垄断关键资源"
+      "4": "高度独占"
+      "3": "部分独占"
+      "2": "有限独占"
+      "1": "无垄断资源"
+    industry_examples:
+      strong: ["ARM架构", "ASML EUV", "核心专利持有者"]
+      weak: ["可复制技术"]
+
+  process_power:
+    name: "流程优势"
+    definition: "难以复制的运营流程"
+    mechanism: |
+      - 长期积累的know-how
+      - 组织能力
+      - 文化
+      - 隐性知识
+    indicators:
+      - "运营效率指标"
+      - "学习曲线
+      - "模仿失败案例"
+    scoring:
+      "5": "独特流程，竞争对手无法复制"
+      "4": "显著流程优势"
+      "3": "有流程优势但可学习"
+      "2": "轻微优势"
+      "1": "无流程优势"
+    industry_examples:
+      strong: ["Toyota生产系统", "Costco运营", "台积电良率"]
+      weak: ["标准化制造"]
+
+# ═══════════════════════════════════════════════════════════════
+# 行业特定护城河
+# ═══════════════════════════════════════════════════════════════
+
+industry_specific_moats:
+
+  consumer_goods:
+    behavioral_moats:
+      - name: "体验期待"
+        description: "多巴胺驱动的消费仪式"
+      - name: "地位信号"
+        description: "社会认同与身份表达"
+      - name: "习惯锁定"
+        description: "日常行为自动化"
+      - name: "感官签名"
+        description: "独特的视觉/听觉/触觉/嗅觉"
+
+  retail:
+    retail_moats:
+      - name: "规模采购"
+        description: "采购量带来的成本优势"
+      - name: "地理密度"
+        description: "门店网络的便利性"
+      - name: "会员锁定"
+        description: "会员费的沉没成本"
+      - name: "自有品牌"
+        description: "独家产品差异化"
+      - name: "全渠道"
+        description: "线上线下协同"
+
+  semiconductor:
+    tech_moats:
+      - name: "技术领先"
+        description: "制程/设计/材料领先"
+      - name: "客户锁定"
+        description: "设计-in周期"
+      - name: "产能壁垒"
+        description: "产能是护城河"
+      - name: "良率曲线"
+        description: "学习曲线累积"
+
+  saas:
+    saas_moats:
+      - name: "数据资产"
+        description: "用户数据累积"
+      - name: "工作流嵌入"
+        description: "成为工作流核心"
+      - name: "集成生态"
+        description: "API/插件生态"
+
+# ═══════════════════════════════════════════════════════════════
+# 护城河评分系统
+# ═══════════════════════════════════════════════════════════════
+
+scoring_system:
+
+  dimension_weights:
+    scale_economies: 0.15
+    network_effects: 0.15
+    counter_positioning: 0.10
+    switching_costs: 0.20
+    branding: 0.15
+    cornered_resource: 0.10
+    process_power: 0.15
+
+  composite_score:
+    formula: "护城河得分 = Σ(Power得分 × 权重)"
+    scale: "1-5"
+
+  interpretation:
+    "4.5-5.0": "宽护城河（Wide Moat）"
+    "3.5-4.5": "窄护城河（Narrow Moat）"
+    "2.5-3.5": "有限护城河"
+    "1.5-2.5": "无护城河"
+    "1.0-1.5": "竞争劣势"
+
+  moat_trend:
+    strengthening: "护城河加宽"
+    stable: "护城河稳定"
+    eroding: "护城河收窄"
+
+# ═══════════════════════════════════════════════════════════════
+# 护城河持久性评估
+# ═══════════════════════════════════════════════════════════════
+
+durability_assessment:
+
+  durability_factors:
+    - name: "技术变革风险"
+      question: "颠覆性技术会削弱护城河吗？"
+      examples: ["AI对传统软件", "电动车对燃油车"]
+
+    - name: "监管风险"
+      question: "监管变化会削弱护城河吗？"
+      examples: ["反垄断", "数据保护", "行业标准"]
+
+    - name: "竞争动态"
+      question: "新进入者/替代品威胁如何？"
+      examples: ["跨界竞争", "降维打击"]
+
+    - name: "客户偏好变化"
+      question: "消费者偏好会改变吗？"
+      examples: ["品牌老化", "新世代不同"]
+
+  durability_scoring:
+    "5": ">20年可持续"
+    "4": "10-20年可持续"
+    "3": "5-10年可持续"
+    "2": "2-5年可持续"
+    "1": "<2年（护城河正在被侵蚀）"
+
+# ═══════════════════════════════════════════════════════════════
+# Kill Switches
+# ═══════════════════════════════════════════════════════════════
+
+kill_switches:
+
+  - id: "KS-MOAT-001"
+    name: "份额流失"
+    trigger: "市场份额连续3年下降，累计>10pp"
+    action: "Hard Kill - 规模经济护城河可能崩塌"
+    severity: "hard"
+
+  - id: "KS-MOAT-002"
+    name: "溢价收窄"
+    trigger: "品牌溢价vs竞品下降>50%"
+    action: "Hard Kill - 品牌护城河崩塌"
+    severity: "hard"
+
+  - id: "KS-MOAT-003"
+    name: "技术落后"
+    trigger: "关键技术落后竞争对手一代以上"
+    action: "Soft Kill - 评估追赶可能"
+    severity: "soft"
+
+  - id: "KS-MOAT-004"
+    name: "客户流失加速"
+    trigger: "客户流失率YoY上升>50%"
+    action: "Soft Kill - 转换成本可能失效"
+    severity: "soft"
+
+  - id: "KS-MOAT-005"
+    name: "网络效应逆转"
+    trigger: "用户增长转负且持续2+季度"
+    action: "Hard Kill - 网络效应可能崩塌"
+    severity: "hard"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## 护城河评估
+
+  **公司**: [公司名]
+  **日期**: YYYY-MM-DD
+
+  ### 7 Powers 评估
+
+  | Power | 得分(1-5) | 权重 | 加权分 | 说明 |
+  |-------|----------|------|--------|------|
+  | 规模经济 | X.X | 15% | X.XX | |
+  | 网络效应 | X.X | 15% | X.XX | |
+  | 反定位 | X.X | 10% | X.XX | |
+  | 转换成本 | X.X | 20% | X.XX | |
+  | 品牌 | X.X | 15% | X.XX | |
+  | 垄断资源 | X.X | 10% | X.XX | |
+  | 流程优势 | X.X | 15% | X.XX | |
+  | **总分** | | 100% | **X.XX** | **[护城河等级]** |
+
+  ### 行业特定护城河
+
+  | 护城河 | 得分(1-5) | 说明 |
+  |--------|----------|------|
+  | [行业特定1] | X.X | |
+  | [行业特定2] | X.X | |
+  | [行业特定3] | X.X | |
+
+  ### 护城河雷达图
+
+  ```mermaid
+  %%{init: {'theme': 'default'}}%%
+  xychart-beta
+      title "7 Powers 评分"
+      x-axis [规模, 网络, 反定位, 转换, 品牌, 资源, 流程]
+      y-axis "得分" 0 --> 5
+      bar [X.X, X.X, X.X, X.X, X.X, X.X, X.X]
+  ```
+
+  ### 持久性评估
+
+  | 风险因素 | 影响程度 | 时间框架 | 缓解因素 |
+  |---------|---------|---------|---------|
+  | 技术变革 | 高/中/低 | | |
+  | 监管风险 | 高/中/低 | | |
+  | 竞争动态 | 高/中/低 | | |
+  | 客户偏好 | 高/中/低 | | |
+
+  **持久性评级**: X.X/5 ([>20年/>10年/>5年/>2年/<2年])
+
+  ### 护城河趋势
+
+  **趋势判断**: [加宽/稳定/收窄]
+  **关键证据**:
+  1. [证据1]
+  2. [证据2]
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合约
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  required_outputs:
+    seven_powers_scores:
+      type: "object"
+      schema:
+        scale_economies: "float (1-5)"
+        network_effects: "float (1-5)"
+        counter_positioning: "float (1-5)"
+        switching_costs: "float (1-5)"
+        branding: "float (1-5)"
+        cornered_resource: "float (1-5)"
+        process_power: "float (1-5)"
+        composite: "float (1-5)"
+
+    moat_grade:
+      type: "enum"
+      values: ["Wide", "Narrow", "Limited", "None", "Negative"]
+
+    durability:
+      type: "object"
+      schema:
+        score: "float (1-5)"
+        time_horizon: "string"
+        key_risks: "array"
+
+    trend:
+      type: "enum"
+      values: ["strengthening", "stable", "eroding"]
+
+  confidence: "float (0-1)"
+  asof: "date"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "7 Powers 完整框架"
+      - "行业特定护城河"
+      - "评分系统"
+      - "持久性评估"

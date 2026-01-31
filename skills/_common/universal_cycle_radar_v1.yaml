@@ -1,0 +1,394 @@
+# Universal Cycle Radar v1.0
+# 通用周期雷达系统 - 多层领先指标追踪框架
+# 创建日期: 2026-01-31
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-01-31"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "universal.cycle_radar_v1.0"
+  name: "通用周期雷达系统"
+  purpose: "提供可继承的多层领先指标追踪框架，适用于周期性行业"
+  applicable_industries:
+    - "半导体（Memory/Semicap/Foundry）"
+    - "零售（Warehouse/Discount/Grocery）"
+    - "汽车"
+    - "房地产"
+    - "大宗商品"
+    - "航运"
+
+  upstream_dependencies: []
+  downstream_consumers:
+    - "memory_cycle_intelligence_v1"
+    - "retail_cycle_radar_v1"
+
+# ═══════════════════════════════════════════════════════════════
+# 核心概念
+# ═══════════════════════════════════════════════════════════════
+
+core_concept:
+  description: |
+    周期雷达系统追踪从终端需求到财务确认的信号传导链。
+    核心洞察：越上游的信号领先时间越长，但噪音越大。
+
+    通用6层结构：
+    Layer -2: 宏观/终端需求（最早，最模糊）
+    Layer -1: 上游订单/产能计划
+    Layer  0: 中游运营指标
+    Layer  1: 下游渠道/库存
+    Layer  2: 价格/促销信号
+    Layer  3: 财务确认（最滞后，最确定）
+
+  value_proposition: |
+    - 提前6-24个月预判周期拐点
+    - 区分噪音和真正的趋势转变
+    - 量化信号强度和置信度
+    - 支持逆周期投资决策
+
+# ═══════════════════════════════════════════════════════════════
+# 6层雷达结构模板
+# ═══════════════════════════════════════════════════════════════
+
+radar_layers_template:
+
+  layer_minus_2:
+    name: "宏观/终端需求层"
+    lead_time: "18-24个月"
+    noise_level: "高"
+    confidence: "40-60%"
+
+    generic_signals:
+      - "GDP增长预期"
+      - "消费者信心指数"
+      - "行业终端需求预测"
+      - "人口/household趋势"
+
+    industry_specific_examples:
+      semiconductor: ["AI服务器需求", "智能手机出货预测", "PC换机周期"]
+      retail: ["可支配收入增长", "消费者信心", "住房starts"]
+      automotive: ["换车周期", "充电基础设施", "燃油价格"]
+
+  layer_minus_1:
+    name: "上游订单/产能层"
+    lead_time: "12-18个月"
+    noise_level: "中高"
+    confidence: "50-70%"
+
+    generic_signals:
+      - "设备/原材料订单"
+      - "产能扩张计划"
+      - "CapEx指引"
+      - "供应商订单backlog"
+
+    industry_specific_examples:
+      semiconductor: ["ASML/LRCX订单", "Fab建设计划", "wafer starts"]
+      retail: ["新店开业计划", "DC建设", "供应商订单"]
+      automotive: ["整车厂产能", "电池产能", "芯片供应"]
+
+  layer_0:
+    name: "中游运营层"
+    lead_time: "6-12个月"
+    noise_level: "中"
+    confidence: "60-75%"
+
+    generic_signals:
+      - "产能利用率"
+      - "生产效率指标"
+      - "供应链周转"
+      - "运营成本趋势"
+
+    industry_specific_examples:
+      semiconductor: ["Fab利用率", "良率趋势", "wafer产出"]
+      retail: ["门店流量", "转化率", "人效"]
+      automotive: ["产线利用率", "交付周期", "质量指标"]
+
+  layer_1:
+    name: "下游渠道/库存层"
+    lead_time: "3-6个月"
+    noise_level: "中低"
+    confidence: "70-85%"
+
+    generic_signals:
+      - "渠道库存水平"
+      - "库存周转天数"
+      - "sell-through vs sell-in"
+      - "渠道健康度"
+
+    industry_specific_examples:
+      semiconductor: ["OEM库存", "分销商库存", "end-market库存"]
+      retail: ["门店库存", "DC周转", "供应商库存"]
+      automotive: ["经销商库存", "在途库存", "订单backlog"]
+
+  layer_2:
+    name: "价格/促销信号层"
+    lead_time: "0-3个月"
+    noise_level: "低"
+    confidence: "80-90%"
+
+    generic_signals:
+      - "价格趋势（合约/现货）"
+      - "促销强度变化"
+      - "折扣深度"
+      - "毛利率压力"
+
+    industry_specific_examples:
+      semiconductor: ["DRAM/NAND合约价", "现货价", "ASP趋势"]
+      retail: ["促销频率", "markdown率", "价格弹性"]
+      automotive: ["终端折扣", "贷款利率", "残值"]
+
+  layer_3:
+    name: "财务确认层"
+    lead_time: "滞后0-3个月"
+    noise_level: "最低"
+    confidence: "90-95%"
+
+    generic_signals:
+      - "收入增长率"
+      - "毛利率"
+      - "运营利润率"
+      - "库存减值"
+
+    industry_specific_examples:
+      semiconductor: ["Revenue/GM确认", "库存减值", "指引变化"]
+      retail: ["同店销售", "毛利率", "运营杠杆"]
+      automotive: ["销量确认", "ASP实现", "利润率"]
+
+# ═══════════════════════════════════════════════════════════════
+# 周期阶段定义
+# ═══════════════════════════════════════════════════════════════
+
+cycle_stages:
+
+  P1_trough:
+    name: "谷底期"
+    characteristics:
+      - "需求极度低迷"
+      - "产能利用率<70%"
+      - "价格触底"
+      - "盈利负/微利"
+      - "悲观情绪弥漫"
+    investment_stance: "积极布局（最佳买点）"
+    typical_duration: "3-6个月"
+
+  P2_recovery:
+    name: "复苏期"
+    characteristics:
+      - "需求边际改善"
+      - "去库存接近尾声"
+      - "价格企稳/小幅上涨"
+      - "盈利改善预期"
+      - "分歧最大"
+    investment_stance: "加仓"
+    typical_duration: "6-12个月"
+
+  P3_expansion:
+    name: "扩张期"
+    characteristics:
+      - "需求强劲"
+      - "产能利用率>85%"
+      - "价格上涨"
+      - "盈利快速增长"
+      - "乐观情绪"
+    investment_stance: "持有/部分减仓"
+    typical_duration: "12-24个月"
+
+  P4_peak:
+    name: "顶峰期"
+    characteristics:
+      - "需求边际放缓"
+      - "产能扩张加速"
+      - "价格见顶"
+      - "盈利增速放缓"
+      - "过度乐观"
+    investment_stance: "减仓/清仓（卖出窗口）"
+    typical_duration: "3-6个月"
+
+  P5_contraction:
+    name: "收缩期"
+    characteristics:
+      - "需求下滑"
+      - "库存积压"
+      - "价格下跌"
+      - "盈利恶化"
+      - "悲观回归"
+    investment_stance: "观望/准备抄底"
+    typical_duration: "6-12个月"
+
+# ═══════════════════════════════════════════════════════════════
+# 信号评分系统
+# ═══════════════════════════════════════════════════════════════
+
+scoring_system:
+
+  signal_strength:
+    scale: "-2 to +2"
+    interpretation:
+      "+2": "强烈看多信号"
+      "+1": "温和看多信号"
+      "0": "中性/混合信号"
+      "-1": "温和看空信号"
+      "-2": "强烈看空信号"
+
+  layer_weights:
+    layer_minus_2: 0.10  # 太早，权重低
+    layer_minus_1: 0.15
+    layer_0: 0.20
+    layer_1: 0.25        # 库存是关键
+    layer_2: 0.20        # 价格最直接
+    layer_3: 0.10        # 滞后，确认用
+
+  composite_score_formula: |
+    综合得分 = Σ(层级得分 × 层级权重)
+    范围: -2.0 到 +2.0
+
+  score_interpretation:
+    strong_bullish: "> +1.2: 强烈看多，周期上行"
+    bullish: "+0.6 to +1.2: 看多，复苏中"
+    neutral: "-0.6 to +0.6: 中性，方向不明"
+    bearish: "-1.2 to -0.6: 看空，下行中"
+    strong_bearish: "< -1.2: 强烈看空，周期底部"
+
+# ═══════════════════════════════════════════════════════════════
+# 周期温度计
+# ═══════════════════════════════════════════════════════════════
+
+cycle_thermometer:
+
+  temperature_scale:
+    description: "0-100刻度，量化周期位置"
+
+    ranges:
+      "0-20": "严寒（P1谷底）- 最佳买点"
+      "20-40": "回暖（P2复苏早期）- 加仓窗口"
+      "40-60": "温和（P2复苏后期/P3扩张早期）"
+      "60-80": "炎热（P3扩张中后期）- 持有"
+      "80-100": "过热（P4顶峰）- 卖出窗口"
+
+  calculation_inputs:
+    - "产能利用率（相对历史）"
+    - "库存水平（相对正常）"
+    - "价格位置（相对周期）"
+    - "盈利位置（相对周期）"
+    - "情绪指标"
+
+# ═══════════════════════════════════════════════════════════════
+# 行业继承指南
+# ═══════════════════════════════════════════════════════════════
+
+inheritance_guide:
+
+  how_to_extend: |
+    行业专用雷达应继承此通用框架，然后：
+    1. 定义行业特定的6层信号（替换generic_signals）
+    2. 设定行业特定的阈值和基准
+    3. 添加行业特定的数据源
+    4. 调整层级权重（如适用）
+
+  extension_template: |
+    # Industry-Specific Cycle Radar
+    extends: universal_cycle_radar_v1
+
+    industry_signals:
+      layer_minus_2:
+        signals: [...]
+        data_sources: [...]
+        thresholds: {...}
+      # ... 其他层级
+
+  existing_implementations:
+    - file: "memory_cycle_intelligence_v1.yaml"
+      industry: "半导体Memory"
+      notes: "6层完整实现，含供需模型"
+
+    - file: "retail_cycle_radar_v1.yaml"
+      industry: "零售"
+      notes: "6层实现，含宏观敏感度"
+
+# ═══════════════════════════════════════════════════════════════
+# Kill Switches
+# ═══════════════════════════════════════════════════════════════
+
+kill_switches:
+
+  - id: "KS-RADAR-001"
+    name: "信号层级冲突"
+    trigger: "Layer 1-2看多但Layer -1看空，且持续>2个月"
+    action: "降低置信度，深入调查原因"
+    severity: "soft"
+
+  - id: "KS-RADAR-002"
+    name: "周期判断翻转"
+    trigger: "周期阶段判断在1个月内从Bullish翻转到Bearish"
+    action: "暂停交易，重新评估框架"
+    severity: "hard"
+
+  - id: "KS-RADAR-003"
+    name: "数据源失效"
+    trigger: "关键层级（Layer 1-2）数据缺失>2周"
+    action: "标记为DEGRADE，降低权重"
+    severity: "soft"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合约
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  required_outputs:
+    radar_snapshot:
+      type: "object"
+      schema:
+        asof: "date"
+        layers:
+          - layer_id: "string"
+            signal_score: "float (-2 to +2)"
+            key_signals: "array"
+            data_sources: "array"
+            confidence: "float (0-1)"
+        composite_score: "float"
+        cycle_stage: "enum(P1-P5)"
+        thermometer: "int (0-100)"
+
+    trend_assessment:
+      type: "object"
+      schema:
+        direction: "enum(improving/stable/deteriorating)"
+        momentum: "enum(accelerating/decelerating/stable)"
+        turning_point_probability: "float (0-1)"
+
+    investment_stance:
+      type: "object"
+      schema:
+        recommendation: "string"
+        confidence: "float"
+        key_risks: "array"
+
+  invariants:
+    - id: "INV-RADAR-01"
+      check: "composite_score 在 -2 到 +2 范围内"
+      on_fail: "FAIL with INVALID_SCORE"
+
+    - id: "INV-RADAR-02"
+      check: "cycle_stage 与 composite_score 方向一致"
+      on_fail: "WARN with STAGE_SCORE_MISMATCH"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "6层雷达结构模板"
+      - "周期阶段定义（P1-P5）"
+      - "信号评分系统"
+      - "周期温度计"
+      - "行业继承指南"

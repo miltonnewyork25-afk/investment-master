@@ -1,0 +1,460 @@
+# Universal Growth Quality v1.0
+# 通用增长质量分析框架 - 健康vs空心化增长诊断
+# 创建日期: 2026-01-31
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-01-31"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "universal.growth_quality_v1.0"
+  name: "通用增长质量分析框架"
+  purpose: "诊断增长的健康程度，区分可持续增长vs空心化增长"
+  applicable_industries: ["所有行业"]
+
+  upstream_dependencies:
+    - "financial_data"
+  downstream_consumers:
+    - "valuation_engine"
+    - "moat_assessment"
+
+# ═══════════════════════════════════════════════════════════════
+# 核心概念
+# ═══════════════════════════════════════════════════════════════
+
+core_concept:
+  description: |
+    增长数字只是表象，增长质量才是本质。
+    5%的有机健康增长 > 15%的促销/并购/价格空心化增长
+
+  warning: |
+    常见陷阱：
+    - 只看收入增长率
+    - 忽视增长来源分解
+    - 不区分有机vs非有机
+    - 忽视增长的代价（毛利率、促销强度）
+
+# ═══════════════════════════════════════════════════════════════
+# PVM 增长分解框架
+# ═══════════════════════════════════════════════════════════════
+
+pvm_decomposition:
+  name: "Price-Volume-Mix 分解"
+  description: "将收入增长分解为价格、销量、结构三个来源"
+
+  components:
+
+    price:
+      name: "价格贡献"
+      definition: "同产品提价带来的增长"
+      calculation: |
+        价格贡献 = Σ(Q_t-1 × ΔP) / Revenue_t-1
+        其中 Q_t-1 = 上期销量, ΔP = 价格变化
+      interpretation:
+        positive: "提价成功，定价权强"
+        zero: "价格稳定"
+        negative: "被迫降价，竞争压力大"
+      data_sources:
+        - "管理层披露"
+        - "分析师拆解"
+        - "行业数据"
+
+    volume:
+      name: "销量贡献"
+      definition: "同价格下销量变化带来的增长"
+      calculation: |
+        销量贡献 = Σ(ΔQ × P_t-1) / Revenue_t-1
+        其中 ΔQ = 销量变化, P_t-1 = 上期价格
+      interpretation:
+        positive: "市场扩张或份额提升"
+        zero: "销量稳定"
+        negative: "市场萎缩或份额流失"
+
+    mix:
+      name: "结构贡献"
+      definition: "产品组合变化（高端化/低端化）带来的增长"
+      calculation: |
+        Mix贡献 = 总增长 - 价格贡献 - 销量贡献
+        或
+        Mix贡献 = Σ(Δweight × margin_diff)
+      interpretation:
+        positive: "高端化成功，产品升级"
+        zero: "结构稳定"
+        negative: "被迫下沉，产品降级"
+
+  formula: |
+    收入增长 = Price + Volume + Mix + (外汇 + 并购)
+
+  industry_specific_variations:
+    retail: "同店销售(SSS) = 客流量 × 转化率 × 客单价"
+    saas: "ARR增长 = 新增 + 扩展 - 流失"
+    semiconductor: "收入增长 = ASP × Shipment Volume"
+
+# ═══════════════════════════════════════════════════════════════
+# 增长模式诊断
+# ═══════════════════════════════════════════════════════════════
+
+growth_patterns:
+
+  healthy_patterns:
+
+    price_led:
+      name: "价格驱动型"
+      characteristics:
+        - "Price贡献>0"
+        - "Volume稳定或正"
+        - "毛利率稳定或上升"
+        - "净价（扣促销）上升"
+      diagnosis: "定价权强，品牌健康"
+      sustainability: "高"
+      examples: ["Apple", "Hermès", "Costco会员费"]
+
+    volume_led:
+      name: "销量驱动型"
+      characteristics:
+        - "Volume贡献>0"
+        - "Price稳定"
+        - "市场份额上升"
+        - "不依赖促销"
+      diagnosis: "市场扩张或份额抢夺成功"
+      sustainability: "中高"
+      examples: ["市场渗透期的消费品"]
+
+    mix_led:
+      name: "结构驱动型"
+      characteristics:
+        - "Mix贡献>0"
+        - "高端产品占比上升"
+        - "毛利率上升"
+        - "单位经济改善"
+      diagnosis: "高端化成功，品牌升级"
+      sustainability: "高"
+      examples: ["消费升级中的品牌"]
+
+    balanced:
+      name: "均衡增长型"
+      characteristics:
+        - "Price、Volume、Mix均为正"
+        - "无单一依赖"
+        - "增长来源多元"
+      diagnosis: "最健康的增长模式"
+      sustainability: "最高"
+
+  unhealthy_patterns:
+
+    hollow_growth:
+      name: "空心化增长"
+      characteristics:
+        - "Price贡献>0（提价）"
+        - "Volume贡献<0（销量下降）"
+        - "净价可能下降（促销弥补）"
+      diagnosis: "表面提价实际失去客户，危险信号"
+      sustainability: "低"
+      kill_switch: true
+      threshold: "Price>0 AND Volume<-5% AND 净价YoY<0"
+
+    promo_dependent:
+      name: "促销依赖型"
+      characteristics:
+        - "促销销量占比>60%"
+        - "促销强度持续上升"
+        - "标价涨但净价不涨"
+      diagnosis: "增长依赖促销，品牌力被侵蚀"
+      sustainability: "低"
+      kill_switch: true
+      threshold: "促销销量>60% AND 促销强度YoY>5pp"
+
+    mix_down:
+      name: "结构下沉型"
+      characteristics:
+        - "Mix贡献<0"
+        - "低端产品占比上升"
+        - "毛利率下降"
+      diagnosis: "被迫下沉，高端市场失守"
+      sustainability: "低"
+
+    acquisition_driven:
+      name: "并购驱动型"
+      characteristics:
+        - "有机增长<总增长的50%"
+        - "频繁并购"
+        - "整合效果存疑"
+      diagnosis: "有机增长乏力，依赖外延"
+      sustainability: "中低"
+
+    margin_sacrificing:
+      name: "牺牲利润型"
+      characteristics:
+        - "收入增长但毛利率下降"
+        - "营销费用率上升"
+        - "价格战特征"
+      diagnosis: "买收入而非赚利润"
+      sustainability: "低"
+
+# ═══════════════════════════════════════════════════════════════
+# 促销健康度分析
+# ═══════════════════════════════════════════════════════════════
+
+promotional_health:
+
+  metrics:
+    promo_sales_ratio:
+      definition: "促销销量占总销量比例"
+      healthy: "<40%"
+      warning: "40-60%"
+      danger: ">60%"
+
+    promo_intensity:
+      definition: "平均促销折扣深度"
+      formula: "(标价 - 净价) / 标价"
+      healthy: "<20%"
+      warning: "20-30%"
+      danger: ">30%"
+
+    promo_frequency:
+      definition: "促销时间占比"
+      healthy: "<30%时间"
+      warning: "30-50%时间"
+      danger: ">50%时间（几乎永久促销）"
+
+    net_price_growth:
+      definition: "净价（扣促销后）增长"
+      formula: "净价 = 收入 / 销量（含促销影响）"
+      key_insight: "净价增长才是真正的定价权"
+
+    post_promo_dip:
+      definition: "促销后销量下降"
+      healthy: "<10%"
+      warning: "10-20%"
+      danger: ">20%（严重的促销依赖）"
+
+  diagnosis_matrix: |
+    | 促销销量占比 | 促销强度趋势 | 净价趋势 | 诊断 |
+    |-------------|-------------|---------|------|
+    | <40% | 稳定/下降 | 上升 | 健康 |
+    | <40% | 上升 | 稳定 | 关注 |
+    | 40-60% | 上升 | 下降 | 警告 |
+    | >60% | 上升 | 下降 | 危险 |
+
+# ═══════════════════════════════════════════════════════════════
+# 有机增长 vs 非有机增长
+# ═══════════════════════════════════════════════════════════════
+
+organic_vs_inorganic:
+
+  organic_growth:
+    definition: "排除并购、外汇、会计变更后的核心增长"
+    components:
+      - "现有业务增长"
+      - "新产品/服务"
+      - "新市场渗透"
+      - "份额抢夺"
+    quality: "最高质量增长"
+
+  inorganic_growth:
+    definition: "并购、外汇等非核心因素驱动的增长"
+    components:
+      - "并购收入"
+      - "外汇变动"
+      - "会计变更"
+      - "一次性因素"
+    quality: "需要调整看待"
+
+  adjustment_formula: |
+    有机增长 = 报告增长 - 并购贡献 - 外汇影响 - 其他非有机
+
+  quality_benchmark:
+    excellent: "有机增长 > 总增长的80%"
+    good: "有机增长 60-80%"
+    average: "有机增长 40-60%"
+    poor: "有机增长 < 40%"
+
+# ═══════════════════════════════════════════════════════════════
+# 增长质量评分系统
+# ═══════════════════════════════════════════════════════════════
+
+scoring_system:
+
+  dimensions:
+    pvm_balance:
+      weight: 0.25
+      scoring:
+        "5": "均衡增长，三驱动均正"
+        "4": "两驱动正，一个稳定"
+        "3": "一驱动正，其他稳定"
+        "2": "一驱动负"
+        "1": "多驱动负"
+
+    organic_percentage:
+      weight: 0.25
+      scoring:
+        "5": ">80% 有机"
+        "4": "60-80% 有机"
+        "3": "40-60% 有机"
+        "2": "20-40% 有机"
+        "1": "<20% 有机"
+
+    margin_trend:
+      weight: 0.25
+      scoring:
+        "5": "毛利率上升>1pp/年"
+        "4": "毛利率稳定±0.5pp"
+        "3": "毛利率下降0.5-1pp"
+        "2": "毛利率下降1-2pp"
+        "1": "毛利率下降>2pp"
+
+    promotional_health:
+      weight: 0.25
+      scoring:
+        "5": "促销比例<30%，稳定"
+        "4": "促销比例30-40%，稳定"
+        "3": "促销比例40-50%或上升"
+        "2": "促销比例50-60%，上升"
+        "1": "促销比例>60%，上升"
+
+  composite_score:
+    formula: "增长质量 = Σ(维度得分 × 权重)"
+    scale: "1-5"
+
+  interpretation:
+    "4.5-5.0": "卓越增长质量"
+    "3.5-4.5": "良好增长质量"
+    "2.5-3.5": "中等增长质量"
+    "1.5-2.5": "较差增长质量"
+    "1.0-1.5": "增长质量危机"
+
+# ═══════════════════════════════════════════════════════════════
+# Kill Switches
+# ═══════════════════════════════════════════════════════════════
+
+kill_switches:
+
+  - id: "KS-GROW-001"
+    name: "空心化增长"
+    trigger: "Price贡献>0 AND Volume贡献<-5% AND 净价YoY<0"
+    action: "Hard Kill - 增长质量严重问题"
+    severity: "hard"
+
+  - id: "KS-GROW-002"
+    name: "促销上瘾"
+    trigger: "促销销量>60% AND 促销强度YoY>5pp"
+    action: "Soft Kill - 品牌力被侵蚀"
+    severity: "soft"
+
+  - id: "KS-GROW-003"
+    name: "有机增长枯竭"
+    trigger: "有机增长<2% 连续4季度"
+    action: "Soft Kill - 核心业务增长乏力"
+    severity: "soft"
+
+  - id: "KS-GROW-004"
+    name: "增长换利润"
+    trigger: "收入增长>10% BUT 毛利率下降>2pp"
+    action: "Soft Kill - 增长代价过高"
+    severity: "soft"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## 增长质量分析
+
+  **公司**: [公司名]
+  **期间**: FY20XX
+
+  ### PVM 增长分解
+
+  | 期间 | 总增长 | Price | Volume | Mix | 外汇 | 并购 |
+  |------|--------|-------|--------|-----|------|------|
+  | FY24 | X.X% | X.X% | X.X% | X.X% | X.X% | X.X% |
+  | FY23 | X.X% | X.X% | X.X% | X.X% | X.X% | X.X% |
+  | FY22 | X.X% | X.X% | X.X% | X.X% | X.X% | X.X% |
+
+  ### 增长模式诊断
+
+  **当前模式**: [模式名称]
+  **健康程度**: [健康/关注/警告/危险]
+
+  ### 促销健康度
+
+  | 指标 | 当前值 | 趋势 | 状态 |
+  |------|--------|------|------|
+  | 促销销量占比 | XX% | [↑/↓/→] | [健康/警告/危险] |
+  | 促销强度 | XX% | [↑/↓/→] | [健康/警告/危险] |
+  | 净价增长 | XX% | [↑/↓/→] | [健康/警告/危险] |
+
+  ### 增长质量评分
+
+  | 维度 | 权重 | 得分 | 说明 |
+  |------|------|------|------|
+  | PVM平衡 | 25% | X.X | |
+  | 有机占比 | 25% | X.X | XX%有机 |
+  | 毛利趋势 | 25% | X.X | |
+  | 促销健康 | 25% | X.X | |
+  | **总分** | 100% | **X.X** | [评级] |
+
+  ### Kill Switch 状态
+
+  | 触发器 | 状态 | 备注 |
+  |--------|------|------|
+  | 空心化增长 | ✅/⚠️/❌ | |
+  | 促销上瘾 | ✅/⚠️/❌ | |
+  | 有机枯竭 | ✅/⚠️/❌ | |
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合约
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  required_outputs:
+    pvm_decomposition:
+      type: "object"
+      schema:
+        periods: "array"
+        price_contribution: "float"
+        volume_contribution: "float"
+        mix_contribution: "float"
+        fx_contribution: "float"
+        ma_contribution: "float"
+
+    growth_pattern:
+      type: "object"
+      schema:
+        pattern: "string"
+        health: "enum(healthy/watch/warning/danger)"
+        sustainability: "enum(high/medium/low)"
+
+    promotional_health:
+      type: "object"
+      schema:
+        promo_ratio: "float"
+        promo_intensity: "float"
+        net_price_trend: "enum(up/stable/down)"
+
+    quality_score:
+      type: "float"
+      range: "1-5"
+
+  confidence: "float (0-1)"
+  asof: "date"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "PVM分解框架"
+      - "增长模式诊断"
+      - "促销健康度分析"
+      - "评分系统"

@@ -1,0 +1,514 @@
+# Universal Customer Analysis v1.0
+# 通用客户分析框架 - 客户价值与行为洞察
+# 创建日期: 2026-01-31
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-01-31"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "universal.customer_analysis_v1.0"
+  name: "通用客户分析框架"
+  purpose: "系统性分析客户价值、行为和忠诚度"
+  applicable_industries:
+    - "零售（B2C）"
+    - "消费品"
+    - "SaaS/订阅"
+    - "金融服务"
+    - "电信"
+
+  upstream_dependencies: []
+  downstream_consumers:
+    - "moat_assessment"
+    - "valuation_engine"
+    - "sentinel_monitoring"
+
+# ═══════════════════════════════════════════════════════════════
+# 核心概念
+# ═══════════════════════════════════════════════════════════════
+
+core_concept:
+  description: |
+    客户是价值创造的核心。理解客户才能理解企业护城河。
+
+    关键问题：
+    - 谁是最有价值的客户？
+    - 为什么他们选择我们？
+    - 他们会留下还是离开？
+    - 如何获取更多类似客户？
+
+  peter_drucker_quote: |
+    "企业的目的是创造客户。"
+
+# ═══════════════════════════════════════════════════════════════
+# 客户旅程分析
+# ═══════════════════════════════════════════════════════════════
+
+customer_journey:
+
+  stages:
+    awareness:
+      name: "认知阶段"
+      description: "客户发现品牌/产品"
+      touchpoints:
+        - "广告"
+        - "口碑推荐"
+        - "搜索发现"
+        - "社交媒体"
+      metrics:
+        - "品牌认知度"
+        - "首选品牌率"
+        - "搜索份额"
+      analysis_questions:
+        - "客户如何发现我们？"
+        - "触达成本是多少？"
+
+    consideration:
+      name: "考虑阶段"
+      description: "客户评估选项"
+      touchpoints:
+        - "比价行为"
+        - "阅读评价"
+        - "询问朋友"
+        - "试用体验"
+      metrics:
+        - "考虑集合率"
+        - "vs竞品对比"
+        - "转化漏斗"
+      analysis_questions:
+        - "为什么进入考虑集合？"
+        - "为什么被排除？"
+
+    purchase:
+      name: "购买阶段"
+      description: "完成购买决策"
+      touchpoints:
+        - "门店购买"
+        - "线上购买"
+        - "订阅开始"
+      metrics:
+        - "转化率"
+        - "放弃率"
+        - "客单价"
+      analysis_questions:
+        - "转化的关键驱动是什么？"
+        - "放弃的原因是什么？"
+
+    experience:
+      name: "体验阶段"
+      description: "使用产品/服务"
+      touchpoints:
+        - "产品使用"
+        - "客服互动"
+        - "社区参与"
+      metrics:
+        - "满意度"
+        - "NPS"
+        - "使用频率"
+      analysis_questions:
+        - "体验是否符合预期？"
+        - "哪些痛点需解决？"
+
+    loyalty:
+      name: "忠诚阶段"
+      description: "持续购买和推荐"
+      touchpoints:
+        - "复购"
+        - "推荐他人"
+        - "升级会员"
+      metrics:
+        - "复购率"
+        - "生命周期价值"
+        - "推荐率"
+      analysis_questions:
+        - "为什么持续选择我们？"
+        - "流失的早期信号是什么？"
+
+# ═══════════════════════════════════════════════════════════════
+# RFM 客户分层
+# ═══════════════════════════════════════════════════════════════
+
+rfm_segmentation:
+
+  dimensions:
+    recency:
+      name: "最近购买（R）"
+      definition: "最近一次购买距今时间"
+      scoring:
+        "5": "<1个月"
+        "4": "1-3个月"
+        "3": "3-6个月"
+        "2": "6-12个月"
+        "1": ">12个月"
+
+    frequency:
+      name: "购买频次（F）"
+      definition: "一定周期内购买次数"
+      scoring:
+        "5": "Top 10%"
+        "4": "10-25%"
+        "3": "25-50%"
+        "2": "50-75%"
+        "1": "Bottom 25%"
+
+    monetary:
+      name: "消费金额（M）"
+      definition: "累计消费金额"
+      scoring:
+        "5": "Top 10%"
+        "4": "10-25%"
+        "3": "25-50%"
+        "2": "50-75%"
+        "1": "Bottom 25%"
+
+  segments:
+    champions:
+      rfm_pattern: "R高 F高 M高"
+      definition: "最近购买、频繁购买、高消费"
+      percentage: "~5%"
+      value_contribution: "~25%"
+      strategy: "维护关系，VIP待遇，不需促销"
+
+    loyal_customers:
+      rfm_pattern: "F高 M高"
+      definition: "频繁购买、高消费"
+      percentage: "~15%"
+      value_contribution: "~35%"
+      strategy: "交叉销售，升级会员等级"
+
+    potential_loyalists:
+      rfm_pattern: "R高 F中 M中"
+      definition: "最近购买，有潜力"
+      percentage: "~15%"
+      strategy: "培养忠诚度，推荐计划"
+
+    new_customers:
+      rfm_pattern: "R高 F低 M低"
+      definition: "新获客"
+      percentage: "~10%"
+      strategy: "转化为忠诚，首单体验优化"
+
+    at_risk:
+      rfm_pattern: "R下降 F高历史 M高历史"
+      definition: "曾经高价值但活跃度下降"
+      percentage: "~10%"
+      strategy: "激活，防止流失，了解原因"
+
+    hibernating:
+      rfm_pattern: "R低 F低历史 M高历史"
+      definition: "曾活跃但长期未购"
+      percentage: "~15%"
+      strategy: "评估挽回成本vs收益"
+
+    lost:
+      rfm_pattern: "R极低"
+      definition: "长期流失"
+      percentage: "~20%"
+      strategy: "低成本挽回或放弃"
+
+# ═══════════════════════════════════════════════════════════════
+# 客户生命周期价值（CLV/LTV）
+# ═══════════════════════════════════════════════════════════════
+
+customer_lifetime_value:
+
+  definition: "客户在整个关系周期内为企业创造的总价值"
+
+  calculation_methods:
+
+    historical_clv:
+      name: "历史CLV"
+      formula: "CLV = Σ(过去所有交易利润)"
+      use_case: "回顾性分析"
+
+    predictive_clv:
+      name: "预测CLV"
+      formula: |
+        CLV = Σ(M × r^t) / (1+d)^t
+        其中:
+        M = 每期边际利润
+        r = 留存率
+        d = 折现率
+        t = 时间周期
+      use_case: "前瞻性决策"
+
+    simplified_clv:
+      name: "简化CLV"
+      formula: |
+        CLV = ARPU × 毛利率 × 平均生命周期
+        或
+        CLV = ARPU × 毛利率 / 流失率
+      use_case: "快速估算"
+
+  key_metrics:
+    clv_cac_ratio:
+      definition: "CLV与获客成本比率"
+      benchmark:
+        excellent: ">5:1"
+        good: "3-5:1"
+        acceptable: "2-3:1"
+        warning: "<2:1"
+
+    payback_period:
+      definition: "获客成本回收周期"
+      benchmark:
+        excellent: "<6个月"
+        good: "6-12个月"
+        acceptable: "12-18个月"
+        warning: ">18个月"
+
+# ═══════════════════════════════════════════════════════════════
+# 流失预警系统
+# ═══════════════════════════════════════════════════════════════
+
+churn_prediction:
+
+  churn_signals:
+
+    behavioral_signals:
+      - signal: "购买频次下降"
+        threshold: ">30% vs 历史平均"
+        severity: "high"
+      - signal: "客单价下降"
+        threshold: ">20% vs 历史平均"
+        severity: "medium"
+      - signal: "品类收窄"
+        threshold: "购买品类减少>50%"
+        severity: "medium"
+      - signal: "促销依赖上升"
+        threshold: "促销购买占比>70%"
+        severity: "medium"
+      - signal: "App/网站使用下降"
+        threshold: "登录频次下降>50%"
+        severity: "high"
+      - signal: "投诉/退货增加"
+        threshold: "退货率>2x历史"
+        severity: "high"
+
+    external_signals:
+      - signal: "竞争对手开店/获客活动"
+        impact: "可能分流客户"
+      - signal: "搬家/生活变化"
+        impact: "地理便利性改变"
+      - signal: "经济环境恶化"
+        impact: "消费降级"
+
+  churn_model_inputs:
+    - "购买历史"
+    - "会员行为"
+    - "App/网站使用"
+    - "客服互动"
+    - "投诉/退货"
+    - "外部数据"
+
+  win_back_strategies:
+    personalized_offer: "针对流失品类的定向促销"
+    communication: "邮件/短信触达提醒"
+    membership_reminder: "强调未使用的会员权益"
+    urgency: "限时优惠制造紧迫感"
+    feedback_request: "询问离开原因"
+
+# ═══════════════════════════════════════════════════════════════
+# 客户满意度与忠诚度
+# ═══════════════════════════════════════════════════════════════
+
+satisfaction_loyalty:
+
+  nps:
+    name: "净推荐值（NPS）"
+    formula: "NPS = %Promoters - %Detractors"
+    scale:
+      promoters: "9-10分"
+      passives: "7-8分"
+      detractors: "0-6分"
+    benchmark:
+      excellent: ">50"
+      good: "30-50"
+      average: "0-30"
+      poor: "<0"
+
+  csat:
+    name: "客户满意度（CSAT）"
+    formula: "CSAT = 满意及以上数 / 总调研数"
+    benchmark:
+      excellent: ">90%"
+      good: "80-90%"
+      average: "70-80%"
+      poor: "<70%"
+
+  ces:
+    name: "客户费力度（CES）"
+    description: "完成任务的难易程度"
+    use_case: "评估服务/产品的易用性"
+
+  loyalty_indicators:
+    - "复购率"
+    - "会员续费率"
+    - "推荐他人数"
+    - "品牌忠诚度调研"
+    - "竞品转换意愿"
+
+# ═══════════════════════════════════════════════════════════════
+# 行业适配
+# ═══════════════════════════════════════════════════════════════
+
+industry_adaptation:
+
+  retail:
+    specific_metrics:
+      - "同店客户数变化"
+      - "会员渗透率"
+      - "篮子大小趋势"
+      - "跨品类渗透"
+    churn_definition: "12个月未购买"
+
+  saas:
+    specific_metrics:
+      - "NDR（净收入留存）"
+      - "Logo Retention"
+      - "扩展收入"
+      - "使用深度"
+    churn_definition: "取消订阅或降级"
+
+  consumer_goods:
+    specific_metrics:
+      - "品牌忠诚度"
+      - "钱包份额"
+      - "复购周期"
+      - "品牌切换率"
+    churn_definition: "品牌切换"
+
+  financial_services:
+    specific_metrics:
+      - "产品持有数"
+      - "钱包份额"
+      - "交叉销售率"
+      - "数字渠道采用"
+    churn_definition: "关闭账户或转移资产"
+
+# ═══════════════════════════════════════════════════════════════
+# Kill Switches
+# ═══════════════════════════════════════════════════════════════
+
+kill_switches:
+
+  - id: "KS-CUST-001"
+    name: "高价值客户流失"
+    trigger: "Top 20%客户流失率YoY上升>5pp"
+    action: "Hard Kill - 护城河可能崩塌"
+    severity: "hard"
+
+  - id: "KS-CUST-002"
+    name: "NPS崩塌"
+    trigger: "NPS下降>20点（季度）"
+    action: "Hard Kill - 客户满意度危机"
+    severity: "hard"
+
+  - id: "KS-CUST-003"
+    name: "CLV/CAC恶化"
+    trigger: "CLV/CAC<2:1"
+    action: "Soft Kill - 获客经济性存疑"
+    severity: "soft"
+
+  - id: "KS-CUST-004"
+    name: "新客获取放缓"
+    trigger: "新客户数YoY下降>20%"
+    action: "Soft Kill - 增长引擎可能失效"
+    severity: "soft"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## 客户分析报告
+
+  **公司**: [公司名]
+  **日期**: YYYY-MM-DD
+
+  ### 客户价值分布
+
+  | 客户分层 | 占比 | 收入贡献 | 利润贡献 | 策略 |
+  |---------|------|---------|---------|------|
+  | Champions | X% | X% | X% | 维护 |
+  | Loyal | X% | X% | X% | 升级 |
+  | At Risk | X% | X% | X% | 激活 |
+  | Lost | X% | X% | X% | 评估 |
+
+  ### 关键指标
+
+  | 指标 | 当前值 | 趋势 | 基准 |
+  |------|--------|------|------|
+  | NPS | XX | [↑/↓/→] | 行业XX |
+  | 复购率 | XX% | [↑/↓/→] | 行业XX% |
+  | CLV | $XXX | [↑/↓/→] | - |
+  | CLV/CAC | X.X | [↑/↓/→] | >3 |
+  | 流失率 | XX% | [↑/↓/→] | 行业XX% |
+
+  ### 流失预警
+
+  | 信号 | 状态 | 趋势 | 行动 |
+  |------|------|------|------|
+  | 购买频次 | [正常/预警] | [↑/↓/→] | |
+  | 品类收窄 | [正常/预警] | [↑/↓/→] | |
+  | 促销依赖 | [正常/预警] | [↑/↓/→] | |
+
+  ### 投资含义
+
+  1. [客户质量对估值的影响]
+  2. [增长可持续性评估]
+  3. [风险因素]
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合约
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  required_outputs:
+    customer_segmentation:
+      type: "array"
+      schema:
+        - segment: "string"
+          percentage: "float"
+          revenue_contribution: "float"
+          profit_contribution: "float"
+          clv: "float"
+
+    key_metrics:
+      type: "object"
+      schema:
+        nps: "int"
+        retention_rate: "float"
+        clv: "float"
+        clv_cac_ratio: "float"
+        churn_rate: "float"
+
+    churn_risk:
+      type: "object"
+      schema:
+        overall_risk: "enum(low/medium/high)"
+        warning_signals: "array"
+        at_risk_percentage: "float"
+
+  confidence: "float (0-1)"
+  asof: "date"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "客户旅程分析"
+      - "RFM分层"
+      - "CLV计算"
+      - "流失预警系统"

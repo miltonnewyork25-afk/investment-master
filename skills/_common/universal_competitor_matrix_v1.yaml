@@ -1,0 +1,376 @@
+# Universal Competitor Matrix v1.0
+# 通用竞争对手矩阵 - 系统化多维度对比框架
+# 创建日期: 2026-01-31
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-01-31"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "universal.competitor_matrix_v1.0"
+  name: "通用竞争对手矩阵"
+  purpose: "提供系统化的竞争对手对比框架，适用于所有行业"
+  applicable_industries: ["所有行业"]
+
+  upstream_dependencies:
+    - "ecosystem_graph_agent"
+  downstream_consumers:
+    - "moat_deep_analysis"
+    - "valuation_engine"
+
+# ═══════════════════════════════════════════════════════════════
+# 核心概念
+# ═══════════════════════════════════════════════════════════════
+
+core_concept:
+  description: |
+    竞争对手分析不是简单的指标罗列，而是系统性的多维度对比。
+    核心问题：为什么客户选择A而不是B？这个选择会改变吗？
+
+  value_proposition: |
+    - 识别真正的竞争优势vs表面差异
+    - 预判竞争格局变化
+    - 发现投资机会（被低估的竞争力）
+    - 发现投资风险（被高估的护城河）
+
+# ═══════════════════════════════════════════════════════════════
+# 6维度对比框架（通用）
+# ═══════════════════════════════════════════════════════════════
+
+six_dimensions:
+
+  D1_market_position:
+    name: "市场地位"
+    weight: 0.20
+    metrics:
+      - name: "市场份额"
+        type: "quantitative"
+        scoring: ">30%=5, 20-30%=4, 10-20%=3, 5-10%=2, <5%=1"
+      - name: "份额趋势"
+        type: "quantitative"
+        scoring: "3年CAGR: >3%=5, 1-3%=4, 0-1%=3, -2-0%=2, <-2%=1"
+      - name: "品牌认知度"
+        type: "qualitative"
+        scoring: "行业第一=5, Top3=4, Top5=3, Top10=2, 其他=1"
+      - name: "定价领导力"
+        type: "qualitative"
+        scoring: "价格制定者=5, 价格影响者=4, 价格跟随者=3, 价格接受者=2, 价格折扣者=1"
+
+  D2_product_capability:
+    name: "产品能力"
+    weight: 0.20
+    metrics:
+      - name: "产品广度"
+        type: "quantitative"
+        scoring: "品类覆盖率: >80%=5, 60-80%=4, 40-60%=3, 20-40%=2, <20%=1"
+      - name: "产品深度"
+        type: "qualitative"
+        scoring: "技术领先=5, 技术先进=4, 技术平均=3, 技术落后=2, 技术淘汰=1"
+      - name: "创新能力"
+        type: "quantitative"
+        scoring: "R&D/Revenue: >10%=5, 7-10%=4, 4-7%=3, 2-4%=2, <2%=1"
+      - name: "质量口碑"
+        type: "qualitative"
+        scoring: "行业标杆=5, 优秀=4, 良好=3, 一般=2, 问题多=1"
+
+  D3_operational_efficiency:
+    name: "运营效率"
+    weight: 0.15
+    metrics:
+      - name: "毛利率"
+        type: "quantitative"
+        scoring: "vs行业: >+10pp=5, +5-10pp=4, ±5pp=3, -5-10pp=2, <-10pp=1"
+      - name: "运营利润率"
+        type: "quantitative"
+        scoring: "vs行业: >+5pp=5, +2-5pp=4, ±2pp=3, -2-5pp=2, <-5pp=1"
+      - name: "资产周转率"
+        type: "quantitative"
+        scoring: "vs行业: >+30%=5, +15-30%=4, ±15%=3, -15-30%=2, <-30%=1"
+      - name: "ROIC"
+        type: "quantitative"
+        scoring: ">20%=5, 15-20%=4, 10-15%=3, 5-10%=2, <5%=1"
+
+  D4_financial_strength:
+    name: "财务实力"
+    weight: 0.15
+    metrics:
+      - name: "收入规模"
+        type: "quantitative"
+        scoring: "行业前3=5, 前5=4, 前10=3, 前20=2, 其他=1"
+      - name: "现金储备"
+        type: "quantitative"
+        scoring: "净现金/收入: >30%=5, 20-30%=4, 10-20%=3, 0-10%=2, 负=1"
+      - name: "负债水平"
+        type: "quantitative"
+        scoring: "D/E: <0.3=5, 0.3-0.5=4, 0.5-1.0=3, 1.0-2.0=2, >2.0=1"
+      - name: "自由现金流"
+        type: "quantitative"
+        scoring: "FCF/Revenue: >15%=5, 10-15%=4, 5-10%=3, 0-5%=2, 负=1"
+
+  D5_strategic_position:
+    name: "战略地位"
+    weight: 0.15
+    metrics:
+      - name: "客户集中度"
+        type: "quantitative"
+        scoring: "Top5客户<30%=5, 30-40%=4, 40-50%=3, 50-60%=2, >60%=1"
+      - name: "地理多元化"
+        type: "qualitative"
+        scoring: "全球均衡=5, 多区域=4, 双区域=3, 单区域主导=2, 单一市场=1"
+      - name: "垂直整合度"
+        type: "qualitative"
+        scoring: "全链条=5, 大部分=4, 中等=3, 有限=2, 纯组装=1"
+      - name: "生态系统位置"
+        type: "qualitative"
+        scoring: "平台核心=5, 关键节点=4, 重要参与=3, 一般参与=2, 边缘=1"
+
+  D6_growth_trajectory:
+    name: "增长轨迹"
+    weight: 0.15
+    metrics:
+      - name: "收入增长率"
+        type: "quantitative"
+        scoring: "3Y CAGR: >20%=5, 15-20%=4, 10-15%=3, 5-10%=2, <5%=1"
+      - name: "利润增长率"
+        type: "quantitative"
+        scoring: "3Y CAGR: >25%=5, 18-25%=4, 12-18%=3, 6-12%=2, <6%=1"
+      - name: "新市场渗透"
+        type: "qualitative"
+        scoring: "快速扩张=5, 稳步推进=4, 有选择进入=3, 防守为主=2, 收缩=1"
+      - name: "增长可持续性"
+        type: "qualitative"
+        scoring: "高度可持续=5, 可持续=4, 一般=3, 有压力=2, 不可持续=1"
+
+# ═══════════════════════════════════════════════════════════════
+# 行业特定维度（扩展）
+# ═══════════════════════════════════════════════════════════════
+
+industry_specific_dimensions:
+
+  semiconductor:
+    additional_metrics:
+      - "技术节点领先度"
+      - "客户锁定程度"
+      - "产能规模"
+      - "良率水平"
+    weight_adjustments:
+      D2_product_capability: 0.25  # 技术更重要
+      D6_growth_trajectory: 0.20
+
+  consumer_goods:
+    additional_metrics:
+      - "品牌资产价值"
+      - "渠道控制力"
+      - "定价权强度"
+      - "消费者忠诚度"
+    weight_adjustments:
+      D1_market_position: 0.25  # 品牌更重要
+      D2_product_capability: 0.15
+
+  retail:
+    additional_metrics:
+      - "门店网络"
+      - "会员渗透率"
+      - "自有品牌占比"
+      - "全渠道能力"
+    weight_adjustments:
+      D3_operational_efficiency: 0.25  # 效率是核心
+      D5_strategic_position: 0.20
+
+  saas:
+    additional_metrics:
+      - "NDR（净收入留存）"
+      - "CAC回收期"
+      - "产品粘性"
+      - "API生态"
+    weight_adjustments:
+      D6_growth_trajectory: 0.25
+      D2_product_capability: 0.25
+
+# ═══════════════════════════════════════════════════════════════
+# 综合评分系统
+# ═══════════════════════════════════════════════════════════════
+
+scoring_system:
+
+  dimension_score:
+    formula: "维度得分 = Σ(指标得分) / 指标数量"
+    scale: "1-5"
+
+  composite_score:
+    formula: "综合得分 = Σ(维度得分 × 维度权重)"
+    scale: "1-5"
+
+  interpretation:
+    excellent: "4.5-5.0: 行业领导者，强烈竞争优势"
+    strong: "4.0-4.5: 强竞争者，多维度优势"
+    average: "3.0-4.0: 中等竞争者，各有优劣"
+    weak: "2.0-3.0: 弱竞争者，需关注"
+    poor: "1.0-2.0: 竞争劣势明显"
+
+  relative_scoring:
+    description: "相对评分更有价值"
+    method: |
+      1. 计算每个维度的行业平均分
+      2. 计算相对得分 = (公司得分 - 行业平均) / 行业标准差
+      3. 识别显著优势（>+1σ）和劣势（<-1σ）
+
+# ═══════════════════════════════════════════════════════════════
+# 竞争动态分析
+# ═══════════════════════════════════════════════════════════════
+
+competitive_dynamics:
+
+  gap_analysis:
+    description: "识别与领导者的差距及追赶难度"
+    template: |
+      | 维度 | 公司得分 | 领导者得分 | 差距 | 追赶难度 |
+      |------|---------|-----------|------|---------|
+      | D1 市场地位 | X.X | X.X | X.X | 高/中/低 |
+      | D2 产品能力 | X.X | X.X | X.X | 高/中/低 |
+      | ... | ... | ... | ... | ... |
+
+  trajectory_analysis:
+    description: "分析竞争力变化趋势"
+    dimensions:
+      - "得分变化（YoY）"
+      - "份额变化"
+      - "相对位置变化"
+      - "战略举措影响"
+
+  threat_assessment:
+    description: "评估竞争威胁"
+    factors:
+      - "新进入者威胁"
+      - "现有竞争者攻势"
+      - "替代品威胁"
+      - "客户议价权变化"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template:
+
+  competitor_matrix: |
+    ## 竞争对手矩阵
+
+    **分析日期**: YYYY-MM-DD
+    **目标公司**: [公司名]
+    **竞争对手**: [竞争对手列表]
+
+    ### 6维度对比
+
+    | 维度 | 权重 | 公司A | 公司B | 公司C | 公司D |
+    |------|------|-------|-------|-------|-------|
+    | D1 市场地位 | 20% | X.X | X.X | X.X | X.X |
+    | D2 产品能力 | 20% | X.X | X.X | X.X | X.X |
+    | D3 运营效率 | 15% | X.X | X.X | X.X | X.X |
+    | D4 财务实力 | 15% | X.X | X.X | X.X | X.X |
+    | D5 战略地位 | 15% | X.X | X.X | X.X | X.X |
+    | D6 增长轨迹 | 15% | X.X | X.X | X.X | X.X |
+    | **综合得分** | 100% | **X.X** | **X.X** | **X.X** | **X.X** |
+
+    ### 竞争力雷达图 (Mermaid)
+
+    ```mermaid
+    %%{init: {'theme': 'default'}}%%
+    xychart-beta
+        title "竞争力对比"
+        x-axis [市场地位, 产品能力, 运营效率, 财务实力, 战略地位, 增长轨迹]
+        y-axis "得分" 0 --> 5
+        bar [X.X, X.X, X.X, X.X, X.X, X.X]
+    ```
+
+    ### 关键发现
+
+    **竞争优势**：
+    1. [优势1及证据]
+    2. [优势2及证据]
+
+    **竞争劣势**：
+    1. [劣势1及证据]
+    2. [劣势2及证据]
+
+    **竞争动态**：
+    - [格局变化趋势]
+    - [新进入/退出者]
+    - [整合可能性]
+
+# ═══════════════════════════════════════════════════════════════
+# Kill Switches
+# ═══════════════════════════════════════════════════════════════
+
+kill_switches:
+
+  - id: "KS-COMP-001"
+    name: "份额快速流失"
+    trigger: "市场份额YoY下降>3pp"
+    action: "深入分析流失原因，下调估值"
+    severity: "hard"
+
+  - id: "KS-COMP-002"
+    name: "技术代际落后"
+    trigger: "产品能力得分<竞争对手2分以上"
+    action: "评估追赶可能性和成本"
+    severity: "hard"
+
+  - id: "KS-COMP-003"
+    name: "成本劣势扩大"
+    trigger: "运营效率得分连续3年下降"
+    action: "分析结构性vs周期性原因"
+    severity: "soft"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合约
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  required_outputs:
+    competitor_scores:
+      type: "array"
+      schema:
+        - company: "string"
+          dimensions:
+            - dimension_id: "string"
+              score: "float (1-5)"
+              metrics: "array"
+          composite_score: "float"
+          rank: "int"
+
+    gap_analysis:
+      type: "object"
+      schema:
+        vs_leader: "object"
+        vs_average: "object"
+        improvement_priority: "array"
+
+    competitive_dynamics:
+      type: "object"
+      schema:
+        trend: "enum(improving/stable/deteriorating)"
+        threats: "array"
+        opportunities: "array"
+
+  confidence: "float (0-1)"
+  asof: "date"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "6维度对比框架"
+      - "行业特定扩展"
+      - "综合评分系统"
+      - "竞争动态分析"

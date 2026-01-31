@@ -1,0 +1,507 @@
+# Universal Macro Sensitivity v1.0
+# 通用宏观敏感度分析框架
+# 创建日期: 2026-01-31
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-01-31"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "universal.macro_sensitivity_v1.0"
+  name: "通用宏观敏感度分析框架"
+  purpose: "评估企业对宏观经济因素的敏感程度"
+  applicable_industries:
+    - "零售"
+    - "消费品"
+    - "金融服务"
+    - "房地产"
+    - "汽车"
+    - "周期性行业"
+
+  upstream_dependencies: []
+  downstream_consumers:
+    - "cycle_radar"
+    - "risk_assessment"
+    - "valuation_engine"
+
+# ═══════════════════════════════════════════════════════════════
+# 核心概念
+# ═══════════════════════════════════════════════════════════════
+
+core_concept:
+  description: |
+    不同企业对宏观经济的敏感度差异巨大：
+    - 必需消费品（防御性）vs 可选消费品（周期性）
+    - 高端消费（敏感）vs 价值消费（反周期）
+    - 劳动密集型（劳动力成本敏感）vs 资本密集型（利率敏感）
+
+  value_proposition: |
+    - 预判经济周期对业绩的影响
+    - 优化组合配置（周期vs防御）
+    - 设计情景分析
+    - 识别反周期机会
+
+# ═══════════════════════════════════════════════════════════════
+# 6大宏观因素
+# ═══════════════════════════════════════════════════════════════
+
+macro_factors:
+
+  unemployment:
+    name: "失业率"
+    description: "劳动力市场健康状况"
+    impact_mechanism:
+      direct: "消费能力下降"
+      indirect: "消费者信心下降"
+    sensitivity_by_segment:
+      highly_sensitive:
+        - "可选消费品"
+        - "高端零售"
+        - "旅游休闲"
+      moderately_sensitive:
+        - "大众消费品"
+        - "折扣零售"
+      low_sensitivity:
+        - "必需消费品"
+        - "医疗健康"
+        - "公用事业"
+    scoring:
+      "5": "高度敏感（弹性>1.5）"
+      "4": "较敏感（弹性1.0-1.5）"
+      "3": "中等敏感（弹性0.5-1.0）"
+      "2": "低敏感（弹性0.2-0.5）"
+      "1": "不敏感（弹性<0.2）"
+
+  consumer_confidence:
+    name: "消费者信心指数"
+    description: "消费者对经济前景的预期"
+    impact_mechanism:
+      direct: "影响大件消费决策"
+      indirect: "影响储蓄vs消费倾向"
+    sensitivity_by_segment:
+      highly_sensitive:
+        - "耐用消费品（汽车、家电）"
+        - "房地产"
+        - "奢侈品"
+      moderately_sensitive:
+        - "服装鞋帽"
+        - "餐饮娱乐"
+      low_sensitivity:
+        - "食品杂货"
+        - "日用必需品"
+    leading_indicator: true
+    lead_time: "3-6个月"
+
+  inflation:
+    name: "通货膨胀"
+    description: "物价总水平变化"
+    impact_mechanism:
+      cost_side: "原材料、劳动力成本上升"
+      revenue_side: "定价权决定能否转嫁"
+    sensitivity_by_segment:
+      hurt_by_inflation:
+        - "低毛利零售商（成本转嫁难）"
+        - "固定价格合同企业"
+        - "低收入消费群体依赖企业"
+      benefit_from_inflation:
+        - "强定价权品牌"
+        - "硬资产持有者"
+        - "价值零售商（消费降级受益）"
+    key_metric: "pass_through_rate"
+    definition: "成本上涨能转嫁给消费者的比例"
+
+  interest_rates:
+    name: "利率"
+    description: "资金成本"
+    impact_mechanism:
+      cost_of_capital: "融资成本变化"
+      consumer_credit: "消费贷款成本"
+      discount_rate: "估值折现率"
+    sensitivity_by_segment:
+      highly_sensitive:
+        - "高杠杆企业"
+        - "房地产"
+        - "耐用品（分期付款）"
+        - "成长股估值"
+      moderately_sensitive:
+        - "有杠杆的零售商"
+      low_sensitivity:
+        - "净现金企业"
+        - "低资本密度业务"
+    costco_example: |
+      Costco 净现金状态，利率上升反而受益：
+      - 负运营资本产生利息收入
+      - 竞争对手融资成本上升
+
+  housing_market:
+    name: "房地产市场"
+    description: "住房市场健康状况"
+    impact_mechanism:
+      wealth_effect: "房价上涨→财富效应→消费增加"
+      home_related: "装修、家具、家电需求"
+      relocations: "搬家相关消费"
+    sensitivity_by_segment:
+      highly_sensitive:
+        - "家具家居"
+        - "家电"
+        - "建材零售"
+        - "地产相关服务"
+      moderately_sensitive:
+        - "大众零售（财富效应）"
+    key_indicators:
+      - "Housing Starts"
+      - "Existing Home Sales"
+      - "Home Price Index"
+
+  gas_prices:
+    name: "油价/燃油价格"
+    description: "燃油成本"
+    impact_mechanism:
+      direct_cost: "物流成本、通勤成本"
+      consumer_budget: "挤压其他消费预算"
+      psychology: "影响消费信心"
+    sensitivity_by_segment:
+      hurt_by_high_gas:
+        - "远郊零售"
+        - "物流依赖企业"
+        - "低收入消费群体"
+      benefit_from_high_gas:
+        - "加油站运营商"
+        - "便利店（加油站附属）"
+        - "近郊/市区零售"
+    costco_example: |
+      Costco 加油站业务：
+      - 油价高→会员更珍视加油折扣
+      - 每加仑便宜$0.20+是续费理由
+
+# ═══════════════════════════════════════════════════════════════
+# 宏观敏感度矩阵
+# ═══════════════════════════════════════════════════════════════
+
+sensitivity_matrix:
+
+  template: |
+    | 宏观因素 | 影响方向 | 敏感度(1-5) | 传导机制 | 防护措施 |
+    |---------|---------|------------|---------|---------|
+    | 失业率上升 | 负面/正面/中性 | X | [机制] | [措施] |
+    | 消费者信心下降 | 负面/正面/中性 | X | [机制] | [措施] |
+    | 通胀上升 | 负面/正面/中性 | X | [机制] | [措施] |
+    | 利率上升 | 负面/正面/中性 | X | [机制] | [措施] |
+    | 房市下行 | 负面/正面/中性 | X | [机制] | [措施] |
+    | 油价上涨 | 负面/正面/中性 | X | [机制] | [措施] |
+
+  scoring_guide:
+    "5": "极高敏感度（收入弹性>1.5）"
+    "4": "高敏感度（弹性1.0-1.5）"
+    "3": "中等敏感度（弹性0.5-1.0）"
+    "2": "低敏感度（弹性0.2-0.5）"
+    "1": "不敏感（弹性<0.2）"
+
+  composite_sensitivity:
+    formula: "综合敏感度 = Σ(因素敏感度 × 因素权重)"
+    interpretation:
+      ">4.0": "高度周期性，经济下行显著影响"
+      "3.0-4.0": "中等周期性"
+      "2.0-3.0": "轻度周期性"
+      "<2.0": "防御性（经济周期影响小）"
+
+# ═══════════════════════════════════════════════════════════════
+# 衰退/复苏剧本
+# ═══════════════════════════════════════════════════════════════
+
+recession_playbook:
+
+  recession_phases:
+
+    early_recession:
+      name: "衰退早期"
+      characteristics:
+        - "消费者信心开始下降"
+        - "可选消费首先受冲击"
+        - "失业率开始上升"
+      winners:
+        - "折扣零售（消费降级）"
+        - "必需品"
+        - "价值定位企业"
+      losers:
+        - "高端消费"
+        - "可选消费品"
+        - "高杠杆企业"
+
+    mid_recession:
+      name: "衰退中期"
+      characteristics:
+        - "失业率达到峰值"
+        - "消费全面收缩"
+        - "库存调整"
+      survivors:
+        - "强现金流企业"
+        - "必需消费品"
+        - "市场份额抢夺者"
+      danger:
+        - "高负债企业"
+        - "需求弹性高企业"
+
+    late_recession:
+      name: "衰退末期"
+      characteristics:
+        - "见底信号出现"
+        - "库存处于低位"
+        - "成本已大幅削减"
+      opportunities:
+        - "估值便宜的优质周期股"
+        - "被错杀的强护城河企业"
+
+  recovery_phases:
+
+    early_recovery:
+      name: "复苏早期"
+      characteristics:
+        - "消费者信心触底回升"
+        - "被压抑需求释放"
+        - "库存开始补充"
+      winners:
+        - "周期性消费"
+        - "库存周转快企业"
+        - "运营杠杆高企业"
+
+    mid_recovery:
+      name: "复苏中期"
+      characteristics:
+        - "就业改善"
+        - "消费全面复苏"
+        - "通胀开始抬头"
+      considerations:
+        - "关注定价权（通胀转嫁）"
+        - "关注劳动力成本"
+
+  historical_case_studies:
+
+    2008_financial_crisis:
+      name: "2008年金融危机"
+      duration: "2007Q4-2009Q2"
+      impact:
+        retail_overall: "-10%至-15%销售下降"
+        winners: ["Walmart", "Costco", "Dollar Stores"]
+        losers: ["高端百货", "专卖店", "高负债零售"]
+      lessons:
+        - "价值定位在衰退中获得份额"
+        - "现金为王，高杠杆是风险"
+        - "必需品需求韧性强"
+
+    2020_covid:
+      name: "2020年新冠疫情"
+      duration: "2020Q1-2020Q2（短暂）"
+      impact:
+        unique_factors: ["供应链中断", "线上暴增", "必需品囤货"]
+        winners: ["必需品零售", "电商", "家居改善"]
+        losers: ["线下体验消费", "旅游", "服装"]
+      lessons:
+        - "全渠道能力关键"
+        - "供应链韧性重要"
+        - "衰退类型决定影响模式"
+
+# ═══════════════════════════════════════════════════════════════
+# 情景分析框架
+# ═══════════════════════════════════════════════════════════════
+
+scenario_analysis:
+
+  standard_scenarios:
+
+    base_case:
+      name: "基准情景"
+      assumptions:
+        gdp_growth: "2-3%"
+        unemployment: "稳定在当前水平"
+        inflation: "2-3%（温和）"
+        interest_rates: "稳定/小幅变动"
+      probability: "60%"
+
+    optimistic_case:
+      name: "乐观情景"
+      assumptions:
+        gdp_growth: ">3.5%"
+        unemployment: "下降"
+        consumer_confidence: "上升"
+        wage_growth: "超通胀"
+      probability: "20%"
+
+    pessimistic_case:
+      name: "悲观情景（衰退）"
+      assumptions:
+        gdp_growth: "负增长或<1%"
+        unemployment: "上升>1pp"
+        consumer_confidence: "大幅下降"
+        credit_tightening: "是"
+      probability: "20%"
+
+  company_specific_impact:
+    template: |
+      | 情景 | 概率 | 收入影响 | 利润影响 | 估值影响 |
+      |------|------|---------|---------|---------|
+      | 基准 | 60% | +X% | +X% | $XXX |
+      | 乐观 | 20% | +X% | +X% | $XXX |
+      | 悲观 | 20% | -X% | -X% | $XXX |
+      | 概率加权 | 100% | +X% | +X% | $XXX |
+
+# ═══════════════════════════════════════════════════════════════
+# 防御性评估
+# ═══════════════════════════════════════════════════════════════
+
+defensiveness_assessment:
+
+  defensive_characteristics:
+    - "必需品属性（食品、日用品）"
+    - "低价格弹性"
+    - "会员/订阅收入（可预测）"
+    - "强现金流"
+    - "净现金/低负债"
+    - "高定价权（成本转嫁）"
+    - "反周期定位（衰退受益）"
+
+  cyclical_characteristics:
+    - "可选消费属性"
+    - "高价格弹性"
+    - "高固定成本（运营杠杆）"
+    - "高负债"
+    - "弱定价权"
+    - "顺周期定位"
+
+  scoring:
+    "5": "高度防御性（必需品+强现金流+低负债）"
+    "4": "较防御性"
+    "3": "混合型"
+    "2": "较周期性"
+    "1": "高度周期性"
+
+# ═══════════════════════════════════════════════════════════════
+# Kill Switches
+# ═══════════════════════════════════════════════════════════════
+
+kill_switches:
+
+  - id: "KS-MACRO-001"
+    name: "衰退暴露"
+    trigger: "综合敏感度>4.0 且 衰退概率上升>30%"
+    action: "Hard Kill - 显著下行风险"
+    severity: "hard"
+
+  - id: "KS-MACRO-002"
+    name: "成本转嫁失败"
+    trigger: "通胀>5% 且 pass-through rate<50%"
+    action: "Soft Kill - 毛利率压力"
+    severity: "soft"
+
+  - id: "KS-MACRO-003"
+    name: "杠杆+利率双杀"
+    trigger: "D/E>1.5 且 利率上升>200bp"
+    action: "Hard Kill - 财务风险上升"
+    severity: "hard"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## 宏观敏感度分析
+
+  **公司**: [公司名]
+  **日期**: YYYY-MM-DD
+
+  ### 宏观敏感度矩阵
+
+  | 宏观因素 | 影响方向 | 敏感度 | 传导机制 |
+  |---------|---------|--------|---------|
+  | 失业率上升 | [负/正/中] | X/5 | |
+  | 消费者信心下降 | [负/正/中] | X/5 | |
+  | 通胀上升 | [负/正/中] | X/5 | |
+  | 利率上升 | [负/正/中] | X/5 | |
+  | 房市下行 | [负/正/中] | X/5 | |
+  | 油价上涨 | [负/正/中] | X/5 | |
+
+  **综合敏感度**: X.X/5 → [高度周期/中等周期/轻度周期/防御性]
+
+  ### 防御性评估
+
+  | 特征 | 状态 | 说明 |
+  |------|------|------|
+  | 必需品属性 | ✅/❌ | |
+  | 会员/订阅收入 | ✅/❌ | |
+  | 净现金 | ✅/❌ | |
+  | 定价权 | 强/中/弱 | |
+
+  **防御性评分**: X/5
+
+  ### 情景分析
+
+  | 情景 | 概率 | 收入影响 | 利润影响 |
+  |------|------|---------|---------|
+  | 基准 | 60% | +X% | +X% |
+  | 乐观 | 20% | +X% | +X% |
+  | 悲观 | 20% | -X% | -X% |
+
+  ### 历史衰退表现
+
+  | 衰退期 | 收入变化 | 相对表现 | 教训 |
+  |--------|---------|---------|------|
+  | 2008-09 | X% | vs行业X% | |
+  | 2020 | X% | vs行业X% | |
+
+  ### 投资含义
+
+  1. [宏观敏感度对估值的影响]
+  2. [组合配置建议]
+  3. [监控指标]
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合约
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  required_outputs:
+    sensitivity_matrix:
+      type: "object"
+      schema:
+        unemployment: "object"
+        consumer_confidence: "object"
+        inflation: "object"
+        interest_rates: "object"
+        housing: "object"
+        gas_prices: "object"
+        composite_sensitivity: "float (1-5)"
+
+    defensiveness_score:
+      type: "float"
+      range: "1-5"
+
+    scenario_analysis:
+      type: "object"
+      schema:
+        base_case: "object"
+        optimistic_case: "object"
+        pessimistic_case: "object"
+        probability_weighted: "object"
+
+  confidence: "float (0-1)"
+  asof: "date"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "6大宏观因素分析"
+      - "敏感度矩阵"
+      - "衰退/复苏剧本"
+      - "情景分析框架"

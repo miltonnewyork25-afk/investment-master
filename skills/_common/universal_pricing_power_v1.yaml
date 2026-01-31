@@ -1,0 +1,393 @@
+# Universal Pricing Power v1.0
+# 通用定价权分析框架
+# 创建日期: 2026-01-31
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-01-31"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "universal.pricing_power_v1.0"
+  name: "通用定价权分析框架"
+  purpose: "评估企业定价能力，是护城河的核心体现"
+  applicable_industries: ["所有行业"]
+
+  upstream_dependencies:
+    - "competitor_matrix"
+  downstream_consumers:
+    - "moat_assessment"
+    - "valuation_engine"
+
+# ═══════════════════════════════════════════════════════════════
+# 核心概念
+# ═══════════════════════════════════════════════════════════════
+
+core_concept:
+  warren_buffett_quote: |
+    "评估一个企业最重要的决定因素是定价权。
+    如果你有能力提价而不失去业务给竞争对手，
+    你就有一个非常好的企业。"
+
+  definition: |
+    定价权 = 在不显著损失销量的情况下提高价格的能力
+
+    定价权强的特征：
+    - 可以主动提价
+    - 提价后销量稳定
+    - 客户没有替代选择
+    - 品牌/技术/网络效应支撑
+
+# ═══════════════════════════════════════════════════════════════
+# 三维度分析框架
+# ═══════════════════════════════════════════════════════════════
+
+three_dimensions:
+
+  D1_price_premium:
+    name: "价格溢价能力"
+    weight: 0.40
+    description: "相对竞争对手的价格差异"
+
+    measurement:
+      formula: "溢价 = (公司价格 - 竞品均价) / 竞品均价 × 100%"
+
+      benchmarks:
+        excellent: ">30%: 强定价权"
+        good: "15-30%: 中等定价权"
+        average: "0-15%: 有限定价权"
+        weak: "<0%: 无定价权（折扣竞争）"
+
+    drivers:
+      brand_power: "品牌溢价"
+      quality_differentiation: "质量差异化"
+      innovation_lead: "技术/创新领先"
+      service_premium: "服务附加值"
+      scarcity: "稀缺性"
+
+    industry_examples:
+      luxury: "Hermès vs 普通包: >500% 溢价"
+      tech: "Apple vs Android: 30-50% 溢价"
+      consumer: "P&G vs 自有品牌: 20-40% 溢价"
+      retail: "Costco 会员费: 其他渠道无法复制"
+
+  D2_price_elasticity:
+    name: "需求弹性"
+    weight: 0.35
+    description: "价格变动对销量的影响程度"
+
+    measurement:
+      formula: "PED = -%ΔQ / %ΔP"
+      interpretation:
+        "|PED| < 1": "非弹性需求（定价权强）"
+        "|PED| = 1": "单位弹性"
+        "|PED| > 1": "弹性需求（定价权弱）"
+
+    estimation_methods:
+      historical_analysis: "分析历史提价后销量变化"
+      cross_section: "对比不同价格点的销量"
+      econometric_model: "回归分析"
+      management_guidance: "管理层披露"
+      analyst_estimates: "分析师估算"
+
+    benchmarks_by_industry:
+      luxury: "0.3-0.7（低弹性）"
+      branded_consumer: "0.8-1.5（中低弹性）"
+      commodity: "2.0-3.0+（高弹性）"
+      b2b_sticky: "0.5-1.0（低弹性）"
+
+  D3_price_trend:
+    name: "价格趋势"
+    weight: 0.25
+    description: "价格的长期变化方向"
+
+    measurement:
+      metrics:
+        - "ASP（平均售价）变化"
+        - "净价（扣促销）变化"
+        - "相对通胀的价格变化"
+        - "相对竞品的价格变化"
+
+      formula: "实际定价权 = 名义提价 - 促销强度增加 - 通胀"
+
+    interpretation:
+      positive_trend: "ASP持续上升，促销稳定 → 定价权在加强"
+      stable_trend: "ASP稳定，跟随通胀 → 定价权维持"
+      negative_trend: "ASP下降或促销加重 → 定价权在削弱"
+
+    warning_signs:
+      - "促销频率/深度上升"
+      - "净价低于标价增速"
+      - "被迫跟随竞品降价"
+      - "客户谈判力加强"
+
+# ═══════════════════════════════════════════════════════════════
+# 定价策略类型
+# ═══════════════════════════════════════════════════════════════
+
+pricing_strategies:
+
+  premium_pricing:
+    name: "溢价定价"
+    description: "高价高质量策略"
+    适用: "强品牌、差异化产品"
+    examples: ["Apple", "Hermès", "Costco Kirkland"]
+    定价权: "强"
+
+  value_pricing:
+    name: "价值定价"
+    description: "合理价格+高价值感知"
+    适用: "大众市场品牌"
+    examples: ["IKEA", "Trader Joe's", "Costco"]
+    定价权: "中强"
+
+  competitive_pricing:
+    name: "竞争定价"
+    description: "跟随市场价格"
+    适用: "同质化市场"
+    examples: ["航空", "电信", "大宗商品"]
+    定价权: "弱"
+
+  penetration_pricing:
+    name: "渗透定价"
+    description: "低价抢份额"
+    适用: "新进入者"
+    examples: ["新品牌", "新市场"]
+    定价权: "无（主动放弃）"
+
+  EDLP:
+    name: "每日低价"
+    description: "一致的低价，少促销"
+    适用: "大型零售"
+    examples: ["Walmart", "Costco"]
+    定价权: "中（通过规模实现）"
+
+  high_low:
+    name: "高低定价"
+    description: "标价高，频繁促销"
+    适用: "传统零售"
+    examples: ["百货", "超市"]
+    定价权: "弱（促销依赖）"
+
+# ═══════════════════════════════════════════════════════════════
+# 定价权评分系统
+# ═══════════════════════════════════════════════════════════════
+
+scoring_system:
+
+  dimension_scores:
+    D1_premium:
+      "5": "溢价>30%，稳定"
+      "4": "溢价15-30%"
+      "3": "溢价5-15%"
+      "2": "溢价0-5%"
+      "1": "无溢价或折扣竞争"
+
+    D2_elasticity:
+      "5": "PED<0.5（极低弹性）"
+      "4": "PED 0.5-0.8"
+      "3": "PED 0.8-1.2"
+      "2": "PED 1.2-2.0"
+      "1": "PED>2.0（高弹性）"
+
+    D3_trend:
+      "5": "ASP年化>通胀+3%，促销稳定"
+      "4": "ASP年化>通胀+1%"
+      "3": "ASP跟随通胀"
+      "2": "ASP低于通胀或促销加重"
+      "1": "ASP下降或被迫降价"
+
+  composite_score:
+    formula: "定价权得分 = D1×0.40 + D2×0.35 + D3×0.25"
+    scale: "1-5"
+
+  interpretation:
+    "4.5-5.0": "卓越定价权（如Hermès、Apple）"
+    "3.5-4.5": "强定价权（如P&G核心品牌、Costco）"
+    "2.5-3.5": "中等定价权（大部分消费品）"
+    "1.5-2.5": "弱定价权（同质化产品）"
+    "1.0-1.5": "无定价权（纯价格竞争）"
+
+# ═══════════════════════════════════════════════════════════════
+# 定价权驱动因素
+# ═══════════════════════════════════════════════════════════════
+
+pricing_power_drivers:
+
+  positive_drivers:
+    brand_equity:
+      description: "品牌价值和消费者忠诚"
+      measurement: "品牌认知、NPS、复购率"
+
+    differentiation:
+      description: "产品/服务差异化"
+      measurement: "独特功能、专利、技术领先"
+
+    switching_costs:
+      description: "客户转换成本"
+      measurement: "数据迁移成本、学习成本、合同锁定"
+
+    network_effects:
+      description: "网络效应"
+      measurement: "用户规模价值、生态系统粘性"
+
+    scarcity:
+      description: "稀缺性"
+      measurement: "供应限制、容量限制、独家授权"
+
+    regulatory_moat:
+      description: "监管壁垒"
+      measurement: "牌照、专利、认证要求"
+
+  negative_drivers:
+    commoditization:
+      description: "产品同质化"
+      impact: "削弱差异化，价格成为唯一竞争点"
+
+    new_entrants:
+      description: "新进入者"
+      impact: "增加供给，压低价格"
+
+    buyer_power:
+      description: "买方议价权"
+      impact: "大客户压价"
+
+    substitutes:
+      description: "替代品"
+      impact: "提供更便宜选择"
+
+    transparency:
+      description: "价格透明度"
+      impact: "比价更容易，压缩溢价"
+
+# ═══════════════════════════════════════════════════════════════
+# Kill Switches
+# ═══════════════════════════════════════════════════════════════
+
+kill_switches:
+
+  - id: "KS-PRICE-001"
+    name: "溢价崩塌"
+    trigger: "溢价YoY下降>15% 且 PED上升>0.3"
+    action: "Hard Kill - 护城河可能崩塌，重新评估估值"
+    severity: "hard"
+
+  - id: "KS-PRICE-002"
+    name: "促销螺旋"
+    trigger: "促销销量占比>60% 且 促销强度YoY上升>5pp"
+    action: "Soft Kill - 定价权削弱，关注品牌健康"
+    severity: "soft"
+
+  - id: "KS-PRICE-003"
+    name: "弹性恶化"
+    trigger: "PED连续3季度上升"
+    action: "Soft Kill - 警惕替代品/竞争加剧"
+    severity: "soft"
+
+  - id: "KS-PRICE-004"
+    name: "被迫降价"
+    trigger: "管理层确认因竞争压力主动降价>5%"
+    action: "Hard Kill - 定价权丧失信号"
+    severity: "hard"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## 定价权分析
+
+  **公司**: [公司名]
+  **日期**: YYYY-MM-DD
+
+  ### 三维度评估
+
+  | 维度 | 权重 | 得分 | 说明 |
+  |------|------|------|------|
+  | 价格溢价能力 | 40% | X.X | [溢价水平及来源] |
+  | 需求弹性 | 35% | X.X | PED≈X.X |
+  | 价格趋势 | 25% | X.X | [ASP/净价变化] |
+  | **综合得分** | 100% | **X.X** | [评级] |
+
+  ### 定价权等级
+
+  ```
+  [████████░░] X.X/5.0 - [等级名称]
+  ```
+
+  ### 驱动因素分析
+
+  **正向因素**:
+  1. [驱动因素1]
+  2. [驱动因素2]
+
+  **负向因素**:
+  1. [风险因素1]
+  2. [风险因素2]
+
+  ### 趋势判断
+
+  - 当前定价策略: [策略类型]
+  - 定价权变化趋势: [加强/稳定/削弱]
+  - 预测: [未来12个月定价能力展望]
+
+  ### Kill Switch 状态
+
+  | ID | 名称 | 触发状态 | 备注 |
+  |----|------|---------|------|
+  | KS-PRICE-001 | 溢价崩塌 | ✅ 安全 | |
+  | KS-PRICE-002 | 促销螺旋 | ⚠️ 关注 | |
+  | ... | ... | ... | ... |
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合约
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  required_outputs:
+    pricing_power_score:
+      type: "object"
+      schema:
+        d1_premium_score: "float (1-5)"
+        d2_elasticity_score: "float (1-5)"
+        d3_trend_score: "float (1-5)"
+        composite_score: "float (1-5)"
+        grade: "enum(Excellent/Strong/Moderate/Weak/None)"
+
+    pricing_strategy:
+      type: "string"
+      enum: ["premium", "value", "competitive", "penetration", "EDLP", "high_low"]
+
+    drivers:
+      type: "object"
+      schema:
+        positive: "array"
+        negative: "array"
+
+    trend:
+      type: "object"
+      schema:
+        direction: "enum(strengthening/stable/weakening)"
+        confidence: "float (0-1)"
+
+  confidence: "float (0-1)"
+  asof: "date"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "三维度分析框架"
+      - "定价策略类型"
+      - "评分系统"
+      - "驱动因素分析"

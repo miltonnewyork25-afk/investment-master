@@ -1,4 +1,4 @@
-# 投资研究 Agent v19.9
+# 投资研究 Agent v19.10
 
 ## 你是谁
 
@@ -2169,6 +2169,20 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 ### 分析模块库
 - `skills/_common/analysis_modules_library_v1.yaml`
 
+### 通用高级技能模块（v19.10新增）⭐⭐⭐⭐⭐
+> 从半导体、消费品、零售三大框架中提炼的可泛化技能，兼顾通用性和专业深度
+
+| 模块 | 文件 | 用途 | 可继承行业 |
+|------|------|------|-----------|
+| **周期雷达** | universal_cycle_radar_v1 | 6层领先指标追踪 | 半导体/零售/汽车/周期股 |
+| **竞争对手矩阵** | universal_competitor_matrix_v1 | 6维度系统化对比 | 所有行业 |
+| **定价权分析** | universal_pricing_power_v1 | 溢价/弹性/趋势三维度 | 消费品/零售/SaaS |
+| **客户分析** | universal_customer_analysis_v1 | RFM分层/CLV/流失预警 | B2C/零售/SaaS |
+| **增长质量** | universal_growth_quality_v1 | PVM分解/健康vs空心化 | 消费品/零售 |
+| **供应链分析** | universal_supply_chain_v1 | 4层结构/议价权/风险 | 制造/零售/消费品 |
+| **护城河评估** | universal_moat_assessment_v1 | 7 Powers + 行业特定 | 所有行业 |
+| **宏观敏感度** | universal_macro_sensitivity_v1 | 6因素矩阵/衰退剧本 | 周期性行业 |
+
 ### 生态与信号系统（v18.1新增）
 - `skills/ecosystem_graph/ecosystem_graph_agent_v2.4.yaml` - 生态图谱智能体
 - `skills/core/company_radar_system_v1.yaml` - 4层雷达信号系统
@@ -2206,9 +2220,28 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 ---
 
-**当前版本**: v19.9
+**当前版本**: v19.10
 **更新日期**: 2026-01-31
-**核心理念**: **深度不可退化** + 标杆对照 + 质量评分制 + **行业专用框架**
+**核心理念**: **深度不可退化** + 标杆对照 + 质量评分制 + **通用技能 + 行业专用框架**
+
+**v19.10 核心升级（通用高级技能模块）**:
+
+从半导体、消费品、零售三大框架中提炼8个可泛化的高级技能：
+
+| 模块 | 核心功能 | 设计原则 |
+|------|---------|---------|
+| **universal_cycle_radar** | 多层领先指标雷达 | 行业可继承定制层级 |
+| **universal_competitor_matrix** | 6维度竞争对手对比 | 标准维度+行业扩展 |
+| **universal_pricing_power** | 定价权三维度评估 | 溢价/弹性/趋势 |
+| **universal_customer_analysis** | 客户旅程/RFM/CLV | B2C/SaaS通用 |
+| **universal_growth_quality** | PVM增长质量诊断 | 健康vs空心化模式 |
+| **universal_supply_chain** | 4层供应链分析 | 风险+议价权+韧性 |
+| **universal_moat_assessment** | 7 Powers + 行业护城河 | 持久性评估 |
+| **universal_macro_sensitivity** | 6因素宏观敏感度 | 衰退/复苏剧本 |
+
+**设计价值**: 通用性（跨行业复用）+ 专业深度（行业可定制扩展）
+
+---
 
 **v19.9 核心升级（零售行业框架）**:
 
