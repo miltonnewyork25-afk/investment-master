@@ -1,0 +1,314 @@
+# Procedural Memory v1.0
+# 技能记忆：记录"如何做某事"的最佳实践
+# 受 ICLR 2026 MemAgents Workshop 启发
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  Procedural Memory 存储已学习的技能和操作模式。
+  区别于 Episodic Memory（发生了什么）和 Semantic Memory（知识是什么），
+  Procedural Memory 回答"如何做"的问题。
+
+# ============================================================
+# 技能索引
+# ============================================================
+skill_index:
+  by_domain:
+    memory_industry:
+      - SKILL_001
+      - SKILL_002
+      - SKILL_003
+    general_analysis:
+      - SKILL_004
+      - SKILL_005
+    data_collection:
+      - SKILL_006
+      - SKILL_007
+
+# ============================================================
+# 已学习技能库
+# ============================================================
+skills:
+
+  # ----------------------------------------------------------
+  # Memory 行业分析技能
+  # ----------------------------------------------------------
+  - skill_id: SKILL_001
+    name: "Memory 周期定位"
+    description: "判断 Memory 行业当前处于周期的哪个阶段（P1-P5）"
+    applicable_to:
+      - "MU 分析"
+      - "Samsung Memory 分析"
+      - "SK Hynix 分析"
+
+    steps:
+      - step: 1
+        action: "收集 6 层雷达信号"
+        details: |
+          L-1: 终端需求（AI服务器、手机、PC出货量）
+          L0: 设备订单（ASML EUV、LRCX刻蚀）
+          L0.5: Fab产能（Wafer Starts、利用率）
+          L1: CapEx计划
+          L2: 库存/价格
+          L3: 财务确认
+        tips:
+          - "L-1/L0 是最早信号，领先 12-18 个月"
+          - "L2 价格变化通常滞后于 L0.5 产能"
+
+      - step: 2
+        action: "判断信号一致性"
+        details: |
+          - 全部向上 = P3-P4 上升期
+          - 全部向下 = P1-P2 下降期
+          - 信号分化 = 转折点附近
+        tips:
+          - "领先信号和滞后信号分化时，关注领先信号"
+
+      - step: 3
+        action: "输出周期温度计"
+        details: "P1(冰点)→P2(复苏)→P3(扩张)→P4(过热)→P5(衰退)"
+        tips:
+          - "投资最佳时机是 P1-P2（逆周期）"
+          - "P4-P5 开始减仓"
+
+    learned_from: "MU Deep Dive v2.0 分析经验"
+    success_rate: 0.85
+    last_used: "2026-01-31"
+    lesson_refs:
+      - LL_142
+
+  # ----------------------------------------------------------
+  - skill_id: SKILL_002
+    name: "HBM 供需分析"
+    description: "分析 HBM 市场的供需平衡和价格走势"
+    applicable_to:
+      - "HBM 相关公司分析"
+      - "AI 半导体供应链"
+
+    steps:
+      - step: 1
+        action: "计算需求侧"
+        details: |
+          需求 = NVIDIA GPU 出货量 × 每 GPU HBM 容量
+          - H100: 80GB HBM3
+          - H200: 141GB HBM3e
+          - B200: 192GB HBM3e
+        tips:
+          - "NVIDIA 出货量是最关键变量"
+          - "每代 GPU 的 HBM 容量都在增加"
+
+      - step: 2
+        action: "计算供给侧"
+        details: |
+          供给 = (SK Hynix + Samsung + Micron) 产能
+          - 2026E: SK 50% + Samsung 40% + MU 10%
+        tips:
+          - "HBM 良率是关键约束"
+          - "HBM 占用 DRAM wafer，挤压传统 DRAM"
+
+      - step: 3
+        action: "判断供需平衡"
+        details: |
+          - 需求 > 供给 = 价格上涨
+          - 需求 < 供给 = 价格下跌
+          - 关注 ASP 变化趋势
+
+    learned_from: "MU/TSM 分析经验"
+    success_rate: 0.80
+    last_used: "2026-01-31"
+
+  # ----------------------------------------------------------
+  - skill_id: SKILL_003
+    name: "Memory 竞争对手对比"
+    description: "系统化对比 Memory 行业竞争对手"
+    applicable_to:
+      - "MU vs Samsung vs SK Hynix"
+
+    steps:
+      - step: 1
+        action: "收集 5 维度数据"
+        details: |
+          1. 市场份额（DRAM/NAND/HBM）
+          2. 技术节点（1α/1β/1γ）
+          3. 产品组合（HBM/DDR5/企业SSD）
+          4. 客户质量（NVIDIA/Apple认证）
+          5. 财务健康（毛利率/现金流）
+
+      - step: 2
+        action: "构建竞争对手矩阵"
+        details: "使用 memory_competitor_matrix_v1.yaml 模板"
+
+      - step: 3
+        action: "识别竞争优势/劣势"
+        details: |
+          - 优势: 得分 > 行业平均
+          - 劣势: 得分 < 行业平均
+
+    learned_from: "MU Deep Dive v2.0"
+    success_rate: 0.90
+    last_used: "2026-01-31"
+    lesson_refs:
+      - LL_143
+
+  # ----------------------------------------------------------
+  # 通用分析技能
+  # ----------------------------------------------------------
+  - skill_id: SKILL_004
+    name: "管理层 Track Record 评估"
+    description: "量化评估管理层执行力"
+    applicable_to:
+      - "所有公司分析"
+
+    steps:
+      - step: 1
+        action: "收集指引准确率数据"
+        details: "过去 8 个季度的指引 vs 实际，计算 MAPE"
+
+      - step: 2
+        action: "评估 CapEx 周期时机"
+        details: "底部是否敢投资？顶部是否克制？"
+
+      - step: 3
+        action: "检查诚信记录"
+        details: "会计重述、SEC 调查、内部人交易模式"
+
+      - step: 4
+        action: "综合评分"
+        details: |
+          总分 = 0.30×指引准确 + 0.20×CapEx时机 +
+                 0.20×资本配置 + 0.15×沟通质量 + 0.15×诚信
+
+    learned_from: "management_track_record_v1.yaml"
+    success_rate: 0.85
+    last_used: "2026-01-31"
+    lesson_refs:
+      - LL_144
+
+  # ----------------------------------------------------------
+  - skill_id: SKILL_005
+    name: "反常识洞察挖掘"
+    description: "发现挑战市场共识的独特洞察"
+    applicable_to:
+      - "所有深度分析"
+
+    steps:
+      - step: 1
+        action: "列出市场共识"
+        details: "从分析师报告、新闻、论坛收集主流观点"
+
+      - step: 2
+        action: "逐一挑战"
+        details: |
+          对每个共识问：
+          - 这个假设成立的前提是什么？
+          - 有没有反例？
+          - 如果颠倒会怎样？
+
+      - step: 3
+        action: "构建反常识洞察卡"
+        details: |
+          - 传统观点: XXX
+          - 反常识: YYY
+          - 机制: [因果链条]
+          - 证据: [数据支撑]
+          - 置信度: XX%
+
+    learned_from: "TSM v18.0 分析经验"
+    success_rate: 0.75
+    last_used: "2026-01-30"
+    lesson_refs:
+      - LL_146
+
+  # ----------------------------------------------------------
+  # 数据收集技能
+  # ----------------------------------------------------------
+  - skill_id: SKILL_006
+    name: "API 数据获取（带降级）"
+    description: "从 API 获取数据，失败时自动降级"
+    applicable_to:
+      - "所有需要 API 数据的分析"
+
+    steps:
+      - step: 1
+        action: "尝试主 API"
+        details: "FMP API 或 100baggers API"
+
+      - step: 2
+        action: "如果失败，尝试备用 API"
+        details: "FMP 失败 → 100baggers，反之亦然"
+
+      - step: 3
+        action: "如果都失败，降级到 WebSearch"
+        details: "搜索公开财务数据"
+
+      - step: 4
+        action: "标注数据 Level"
+        details: |
+          - API 成功: Level A
+          - WebSearch: Level B-C
+          - 估算: Level E（必须说明方法）
+
+    learned_from: "MU 分析 API 失败经验"
+    success_rate: 0.95
+    last_used: "2026-01-31"
+    lesson_refs:
+      - LL_141
+
+  # ----------------------------------------------------------
+  - skill_id: SKILL_007
+    name: "分析师观点收集"
+    description: "系统化收集顶级分析师观点"
+    applicable_to:
+      - "所有深度分析 Phase 2"
+
+    steps:
+      - step: 1
+        action: "WebSearch 分析师观点"
+        details: "搜索 '{TICKER} analyst rating 2026'"
+
+      - step: 2
+        action: "识别顶级分析师"
+        details: |
+          半导体:
+          - Harlan Sur (JPM)
+          - Joseph Moore (MS)
+          - Vivek Arya (BofA)
+          - Toshiya Hari (GS)
+          - CJ Muse (Cantor)
+
+      - step: 3
+        action: "提取核心观点"
+        details: |
+          对每位分析师记录：
+          - 评级
+          - 目标价
+          - 核心论点
+          - 风险提示
+
+      - step: 4
+        action: "识别分歧"
+        details: "分析师之间的观点差异 = 市场分歧"
+
+    learned_from: "框架强制要求"
+    success_rate: 0.90
+    last_used: "2026-01-31"
+
+# ============================================================
+# 技能调用统计
+# ============================================================
+usage_stats:
+  total_calls: 0
+  by_skill: {}
+  last_updated: "2026-01-31"
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "7 个核心技能"
+      - "基于 MU/TSM 分析经验提取"
+    inspired_by: "ICLR 2026 MemAgents Workshop"

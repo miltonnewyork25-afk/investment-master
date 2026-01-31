@@ -465,11 +465,58 @@ flowchart TB
 
 ---
 
+#### 🔄 Reflection 循环（v19.2 新增）⭐
+
+> "Without reflection, AI risks repeating errors instead of improving." — Andrew Ng
+
+**目的**: 在 Phase 3 完成后进行自我批评，识别弱点并改进
+
+**流程**: Generate → Critique → Improve
+
+```
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│  生成分析   │ →  │  自我批评   │ →  │  改进分析   │
+│  (7模块)    │    │  (识别弱点) │    │  (修补弱点) │
+└─────────────┘    └─────────────┘    └─────────────┘
+```
+
+**Reflection 模板**（Phase 3 完成后必须执行）:
+
+```markdown
+## 🔄 自我批评（Reflection）
+
+### 分析弱点识别
+1. **深度不足**: [哪部分分析停留在表面？]
+2. **数据缺失**: [哪些关键数据没有获取？]
+3. **逻辑漏洞**: [哪些推理链条有跳跃？]
+4. **盲区遗漏**: [哪些重要角度没有考虑？]
+
+### 改进措施
+| 弱点 | 改进 | 改进后深度 |
+|------|------|-----------|
+| [弱点1] | [改进内容] | L3→L4 |
+| [弱点2] | [改进内容] | L2→L3 |
+
+### 改进后总结
+[基于批评的关键改进点]
+```
+
+**Reflection 检查清单**:
+```
+□ 识别≥2个深度不足的部分
+□ 识别≥1个逻辑漏洞
+□ 对每个弱点提出改进
+□ 改进后深度≥L3
+```
+
+---
+
 **⛔ Checkpoint 3（阻断式）**：
 - 5个基础模块全部完成
 - **反常识洞察卡≥3张**（v18.3强制）
 - 每个核心命题必须有：机制分析 + 反证条件 + 可验证预测
 - 学术框架引用（推荐但非强制）
+- **🔄 Reflection 循环已执行**（v19.2新增）
 
 ---
 
@@ -1111,6 +1158,12 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 ## 版本历史与演进
 
+**v19.2 (2026-01-31)** - Reflection 循环 + Procedural Memory ⭐⭐⭐⭐⭐
+- **Reflection 循环**: Phase 3 新增 Generate→Critique→Improve 自我批评步骤
+- **Procedural Memory**: 新增技能记忆，记录"如何做某事"的最佳实践
+- **6组件记忆架构**: 对标 ICLR 2026 MemAgents Workshop 最佳实践
+- **来源**: 2026 AI Agent 最佳实践搜索 + 差距分析
+
 **v19.1 (2026-01-31)** - 记忆系统 + 自我升级 ⭐⭐⭐⭐⭐ (ClawdBot 启发)
 - **三层记忆架构**: 长期(MEMORY.md) + 中期(memory/daily) + 短期(会话)
 - **自动复利触发器**: 分析完成→提取lessons，上下文压缩→保存洞察
@@ -1206,10 +1259,11 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 - `skills/industry/memory_competitor_matrix_v1.yaml` - 竞争对手矩阵
 - `skills/core/management_track_record_v1.yaml` - 管理层评分系统
 
-### 记忆系统（v19.1新增）⭐⭐⭐
+### 记忆系统（v19.1/v19.2新增）⭐⭐⭐
 - `MEMORY.md` - 长期记忆（每次分析前自动加载）
 - `memory/YYYY-MM-DD.md` - 每日记忆
 - `skills/core/agent_self_upgrade_v1.yaml` - 自我升级机制 ⭐核心
+- `skills/knowledge_base/procedural_memory.yaml` - 技能记忆 ⭐v19.2新增
 
 ### 数据与学习
 - `skills/knowledge_base/lessons_learned.yaml`
@@ -1227,11 +1281,11 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 ---
 
-**当前版本**: v19.1
+**当前版本**: v19.2
 **更新日期**: 2026-01-31
-**核心理念**: 记忆驱动的自我进化 Agent
+**核心理念**: 反思驱动的自我进化 Agent
 
-**v19.1 核心升级（ClawdBot 启发）**:
+**v19.2 核心升级（2026 Agent 最佳实践）**:
 
 | 能力 | 实现 | 核心功能 |
 |------|------|---------|
@@ -1241,15 +1295,19 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 **框架架构总结**:
 ```
-v19.1 = 通用核心（4阶段/7 Powers/Kill Switch）
+v19.2 = 通用核心（4阶段/7 Powers/Kill Switch）
       + 行业专用（Memory 6层雷达/价格模型/竞争矩阵）
-      + 记忆系统（三层记忆 + 自动复利）⭐ NEW
-      + 自我升级（定期搜索 + 差距识别）⭐ NEW
+      + 记忆系统（三层记忆 + Procedural Memory）
+      + 自我升级（定期搜索 + 差距识别）
+      + Reflection 循环（Generate→Critique→Improve）⭐ NEW
 
-记忆系统:
-├─ 长期记忆 (MEMORY.md)      → 精炼核心，每周更新
-├─ 中期记忆 (memory/daily)   → 工作日志，每日更新
-└─ 短期记忆 (会话)           → 临时数据，会话结束清空
+记忆架构（6组件，对标 2026 最佳实践）:
+├─ Core Memory (MEMORY.md)          → 核心身份和能力
+├─ Episodic Memory (memory/daily)   → 时间戳事件记录
+├─ Semantic Memory (lessons)        → 通用知识
+├─ Procedural Memory (skills)       → 学习到的技能 ⭐ NEW
+├─ Resource Memory (分散)           → 外部资源索引
+└─ Knowledge Vault (knowledge_base) → 持久化知识库
 
 适用行业:
 ├─ Memory（MU/Samsung/SK）   ✅ 已完成
