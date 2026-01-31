@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>TSM 7 Powers 护城河雷达图</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            font-family: 'SF Pro Display', -apple-system, sans-serif;
+            color: #edf2f4;
+            padding: 40px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #00f5d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle {
+            text-align: center;
+            color: #8d99ae;
+            margin-bottom: 30px;
+        }
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .chart-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(0,212,255,0.2);
+        }
+        .chart-title {
+            color: #00d4ff;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 3px solid #00d4ff;
+        }
+        #radar { height: 500px; }
+        #bar { height: 400px; }
+        #comparison { height: 400px; }
+        #quadrant { height: 500px; }
+        .score-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #00f5d4, #00d4ff);
+            color: #1a1a2e;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .legend-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0,212,255,0.1);
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .legend-item:last-child { border-bottom: none; }
+    </style>
+</head>
+<body>
+    <h1>🏰 台积电 (TSM) 7 Powers 护城河分析</h1>
+    <p class="subtitle">基于 Hamilton Helmer 7 Powers 框架 | 数据截止 2025 Q4</p>
+    
+    <div class="charts-container">
+        <!-- 雷达图 -->
+        <div class="chart-box">
+            <div class="chart-title">7 Powers 护城河雷达图</div>
+            <div class="score-badge">总分: 21.75/25 (87%)</div>
+            <div id="radar"></div>
+        </div>
+        
+        <!-- 柱状图对比 -->
+        <div class="chart-box">
+            <div class="chart-title">7 Powers 详细评分</div>
+            <div id="bar"></div>
+            <div class="legend-box">
+                <div class="legend-item"><span>规模经济</span><span>Wright's Law k=0.14</span></div>
+                <div class="legend-item"><span>转换成本</span><span>Apple转换成本$135M+</span></div>
+                <div class="legend-item"><span>流程优势</span><span>良率爬坡快6个月</span></div>
+            </div>
+        </div>
+        
+        <!-- 竞争对比 -->
+        <div class="chart-box">
+            <div class="chart-title">TSM vs Samsung vs Intel 护城河对比</div>
+            <div id="comparison"></div>
+        </div>
+        
+        <!-- 四象限图 -->
+        <div class="chart-box">
+            <div class="chart-title">产品矩阵 (BCG Matrix)</div>
+            <div id="quadrant"></div>
+        </div>
+    </div>
+
+    <script>
+        // 7 Powers 雷达图
+        const radarChart = echarts.init(document.getElementById('radar'));
+        radarChart.setOption({
+            backgroundColor: 'transparent',
+            radar: {
+                indicator: [
+                    { name: '规模经济\nScale', max: 5 },
+                    { name: '网络效应\nNetwork', max: 5 },
+                    { name: '反定位\nCounter-Pos', max: 5 },
+                    { name: '转换成本\nSwitching', max: 5 },
+                    { name: '品牌\nBrand', max: 5 },
+                    { name: '独占资源\nCornered', max: 5 },
+                    { name: '流程优势\nProcess', max: 5 }
+                ],
+                shape: 'polygon',
+                splitNumber: 5,
+                axisName: {
+                    color: '#00d4ff',
+                    fontSize: 11
+                },
+                splitLine: {
+                    lineStyle: { color: 'rgba(0,212,255,0.3)' }
+                },
+                splitArea: {
+                    show: true,
+                    areaStyle: {
+                        color: ['rgba(0,212,255,0.05)', 'rgba(0,212,255,0.1)']
+                    }
+                },
+                axisLine: {
+                    lineStyle: { color: 'rgba(0,212,255,0.5)' }
+                }
+            },
+            series: [{
+                type: 'radar',
+                data: [{
+                    value: [5, 2.5, 1.5, 5, 3.75, 4, 5],
+                    name: 'TSM',
+                    symbol: 'circle',
+                    symbolSize: 8,
+                    lineStyle: {
+                        color: '#00f5d4',
+                        width: 3
+                    },
+                    areaStyle: {
+                        color: 'rgba(0,245,212,0.3)'
+                    },
+                    itemStyle: {
+                        color: '#00f5d4'
+                    }
+                }]
+            }]
+        });
+
+        // 柱状图
+        const barChart = echarts.init(document.getElementById('bar'));
+        barChart.setOption({
+            backgroundColor: 'transparent',
+            grid: { left: '15%', right: '10%', top: '10%', bottom: '15%' },
+            xAxis: {
+                type: 'value',
+                max: 5,
+                axisLine: { lineStyle: { color: '#8d99ae' } },
+                axisLabel: { color: '#8d99ae' },
+                splitLine: { lineStyle: { color: 'rgba(255,255,255,0.1)' } }
+            },
+            yAxis: {
+                type: 'category',
+                data: ['规模经济', '网络效应', '反定位', '转换成本', '品牌', '独占资源', '流程优势'],
+                axisLine: { lineStyle: { color: '#8d99ae' } },
+                axisLabel: { color: '#edf2f4' }
+            },
+            series: [{
+                type: 'bar',
+                data: [
+                    { value: 5, itemStyle: { color: '#00f5d4' } },
+                    { value: 2.5, itemStyle: { color: '#ffd93d' } },
+                    { value: 1.5, itemStyle: { color: '#ff6b6b' } },
+                    { value: 5, itemStyle: { color: '#00f5d4' } },
+                    { value: 3.75, itemStyle: { color: '#00d4ff' } },
+                    { value: 4, itemStyle: { color: '#00d4ff' } },
+                    { value: 5, itemStyle: { color: '#00f5d4' } }
+                ],
+                barWidth: '60%',
+                label: {
+                    show: true,
+                    position: 'right',
+                    color: '#edf2f4',
+                    formatter: '{c}/5'
+                }
+            }]
+        });
+
+        // 竞争对比雷达图
+        const compChart = echarts.init(document.getElementById('comparison'));
+        compChart.setOption({
+            backgroundColor: 'transparent',
+            legend: {
+                data: ['TSM', 'Samsung', 'Intel'],
+                textStyle: { color: '#edf2f4' },
+                top: 10
+            },
+            radar: {
+                indicator: [
+                    { name: '规模经济', max: 5 },
+                    { name: '转换成本', max: 5 },
+                    { name: '流程优势', max: 5 },
+                    { name: '独占资源', max: 5 },
+                    { name: '品牌', max: 5 }
+                ],
+                shape: 'polygon',
+                splitNumber: 5,
+                axisName: { color: '#8d99ae', fontSize: 10 },
+                splitLine: { lineStyle: { color: 'rgba(255,255,255,0.2)' } },
+                splitArea: { show: false },
+                axisLine: { lineStyle: { color: 'rgba(255,255,255,0.3)' } }
+            },
+            series: [{
+                type: 'radar',
+                data: [
+                    {
+                        value: [5, 5, 5, 4, 3.75],
+                        name: 'TSM',
+                        lineStyle: { color: '#00f5d4', width: 2 },
+                        areaStyle: { color: 'rgba(0,245,212,0.2)' },
+                        itemStyle: { color: '#00f5d4' }
+                    },
+                    {
+                        value: [3, 2.5, 2.5, 2, 2],
+                        name: 'Samsung',
+                        lineStyle: { color: '#ffd93d', width: 2 },
+                        areaStyle: { color: 'rgba(255,217,61,0.1)' },
+                        itemStyle: { color: '#ffd93d' }
+                    },
+                    {
+                        value: [2.5, 2, 1.5, 2.5, 2.5],
+                        name: 'Intel',
+                        lineStyle: { color: '#ff6b6b', width: 2 },
+                        areaStyle: { color: 'rgba(255,107,107,0.1)' },
+                        itemStyle: { color: '#ff6b6b' }
+                    }
+                ]
+            }]
+        });
+
+        // 四象限图 (BCG Matrix)
+        const quadChart = echarts.init(document.getElementById('quadrant'));
+        quadChart.setOption({
+            backgroundColor: 'transparent',
+            grid: { left: '12%', right: '12%', top: '15%', bottom: '15%' },
+            xAxis: {
+                type: 'value',
+                name: '市场份额',
+                nameLocation: 'middle',
+                nameGap: 30,
+                min: 0, max: 100,
+                axisLine: { lineStyle: { color: '#8d99ae' } },
+                axisLabel: { color: '#8d99ae', formatter: '{value}%' },
+                splitLine: { show: false }
+            },
+            yAxis: {
+                type: 'value',
+                name: '市场增长率',
+                nameLocation: 'middle',
+                nameGap: 40,
+                min: 0, max: 60,
+                axisLine: { lineStyle: { color: '#8d99ae' } },
+                axisLabel: { color: '#8d99ae', formatter: '{value}%' },
+                splitLine: { show: false }
+            },
+            // 四象限背景
+            graphic: [
+                // 明星 (右上)
+                { type: 'rect', left: '56%', top: '15%', shape: { width: 200, height: 150 },
+                  style: { fill: 'rgba(0,245,212,0.15)' } },
+                { type: 'text', left: '70%', top: '25%', style: { text: '⭐ 明星', fill: '#00f5d4', fontSize: 14 } },
+                // 问题 (左上)
+                { type: 'rect', left: '12%', top: '15%', shape: { width: 200, height: 150 },
+                  style: { fill: 'rgba(255,217,61,0.15)' } },
+                { type: 'text', left: '22%', top: '25%', style: { text: '❓ 问题', fill: '#ffd93d', fontSize: 14 } },
+                // 现金牛 (右下)
+                { type: 'rect', left: '56%', top: '50%', shape: { width: 200, height: 150 },
+                  style: { fill: 'rgba(0,212,255,0.15)' } },
+                { type: 'text', left: '68%', top: '75%', style: { text: '💰 现金牛', fill: '#00d4ff', fontSize: 14 } },
+                // 瘦狗 (左下)
+                { type: 'rect', left: '12%', top: '50%', shape: { width: 200, height: 150 },
+                  style: { fill: 'rgba(255,107,107,0.15)' } },
+                { type: 'text', left: '25%', top: '75%', style: { text: '🐕 瘦狗', fill: '#ff6b6b', fontSize: 14 } }
+            ],
+            // 分割线
+            markLine: {
+                silent: true,
+                lineStyle: { color: 'rgba(255,255,255,0.3)', type: 'dashed' },
+                data: [
+                    { xAxis: 50 },
+                    { yAxis: 25 }
+                ]
+            },
+            series: [{
+                type: 'scatter',
+                symbolSize: function(data) { return Math.sqrt(data[2]) * 3; },
+                data: [
+                    // [市场份额, 增长率, 收入规模, 产品名]
+                    { value: [93, 45, 400, 'N2制程'], itemStyle: { color: '#00f5d4' } },
+                    { value: [93, 35, 350, 'N3制程'], itemStyle: { color: '#00f5d4' } },
+                    { value: [85, 50, 300, 'CoWoS封装'], itemStyle: { color: '#00f5d4' } },
+                    { value: [71, 15, 500, 'N5制程'], itemStyle: { color: '#00d4ff' } },
+                    { value: [65, 8, 200, '成熟制程'], itemStyle: { color: '#00d4ff' } }
+                ],
+                label: {
+                    show: true,
+                    formatter: function(params) { return params.data.value[3]; },
+                    position: 'top',
+                    color: '#edf2f4',
+                    fontSize: 11
+                }
+            }]
+        });
+
+        // 响应式
+        window.addEventListener('resize', function() {
+            radarChart.resize();
+            barChart.resize();
+            compChart.resize();
+            quadChart.resize();
+        });
+    </script>
+</body>
+</html>

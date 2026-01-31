@@ -1,0 +1,1057 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# MU (Micron Technology) 深度调研模板
+# 基于 Master Investment Framework v18.2
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# 公司特征:
+#   - 类型: 周期股（Memory半导体）
+#   - 行业: 半导体 - 存储器
+#   - 周期敏感度: 极高（DRAM/NAND价格周期）
+#   - AI关联度: 高（HBM是核心增长驱动）
+#
+# 适用模块:
+#   - 生态图谱: 必须（上下游依赖复杂）
+#   - 雷达信号: 必须（周期股核心）
+#   - AI 7层: 适用（HBM与AI强相关）
+#   - 周期分析: 必须（Memory周期是核心）
+#
+# ═══════════════════════════════════════════════════════════════════════════
+
+research_target:
+  ticker: "MU"
+  company_name: "Micron Technology"
+  company_type: "周期股"
+  industry: "半导体 - 存储器"
+  market_cap_tier: "Large Cap ($100B+)"
+  ai_relevance: "高 - HBM是AI基础设施核心组件"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PHASE 1: WHERE（定位）- 公司在哪里？
+# 时间预算: 20分钟
+# 核心产出: 生态图谱 + 产业链定位
+# ═══════════════════════════════════════════════════════════════════════════
+
+phase_1_positioning:
+  time_budget: "20 minutes"
+  core_question: "MU在产业链和生态系统中处于什么位置？"
+
+  modules:
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块1.1: 产业链定位
+    # ─────────────────────────────────────────────────────────────────────
+    industry_positioning:
+      reference: "industry_signal_propagation_v1.yaml"
+      required: true
+
+      execution:
+        step_1_identify_layer:
+          action: "确定MU在7层AI产业链中的位置"
+          expected_output: "Layer 3 (Memory层)"
+          template: |
+            Layer 0: 设备 (ASML/LRCX/AMAT) - 领先12-18个月
+            Layer 1: EDA/IP (Synopsys/Cadence)
+            Layer 2: 先进封装 (TSM CoWoS)
+            Layer 3: Memory (MU/SK/Samsung) ← MU在此
+            Layer 4: 芯片 (NVIDIA/AMD)
+            Layer 5: 系统集成 (Dell/HPE)
+            Layer 6: 云平台 (AWS/Azure/GCP)
+            Layer 7: 应用 (OpenAI/企业)
+
+        step_2_signal_propagation:
+          action: "分析信号传导时间"
+          questions:
+            - "MU收到上游信号的时滞是多少？（设备订单→MU扩产）"
+            - "MU传导信号到下游的时滞是多少？（MU产能→芯片厂商供给）"
+          expected_output: |
+            上游信号: ASML/LRCX订单 → MU产能扩张（6-12个月）
+            下游信号: MU HBM供给 → NVIDIA GPU供给（3-6个月）
+
+        step_3_bottleneck_analysis:
+          action: "识别当前瓶颈位置"
+          questions:
+            - "当前AI产业链瓶颈在哪一层？"
+            - "瓶颈是否会迁移到Memory层？何时？"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块1.2: 生态图谱 ⭐ 核心模块
+    # ─────────────────────────────────────────────────────────────────────
+    ecosystem_graph:
+      reference: "ecosystem_graph_agent_v2.4.yaml"
+      required: true
+
+      execution:
+        step_1_upstream_mapping:
+          action: "绘制上游供应商网络"
+          node_list:
+            equipment:
+              - {name: "ASML", relation: "EUV设备", dependency: "极高", alternative: "无"}
+              - {name: "LRCX", relation: "刻蚀设备", dependency: "高", alternative: "困难"}
+              - {name: "AMAT", relation: "薄膜沉积", dependency: "高", alternative: "困难"}
+              - {name: "KLAC", relation: "检测设备", dependency: "中", alternative: "有"}
+            packaging:
+              - {name: "TSMC", relation: "HBM先进封装", dependency: "高", alternative: "困难"}
+              - {name: "ASE", relation: "后端封装", dependency: "中", alternative: "有"}
+            materials:
+              - {name: "信越化学", relation: "硅片", dependency: "中", alternative: "有"}
+              - {name: "住友电工", relation: "特气/材料", dependency: "中", alternative: "有"}
+
+          risk_assessment:
+            co_innovation_risk:
+              - "ASML EUV产能不足 → 直接限制MU扩产"
+              - "TSMC CoWoS产能紧张 → HBM封装瓶颈"
+            geopolitical_risk:
+              - "荷兰EUV出口管制"
+              - "日本材料出口限制"
+
+        step_2_downstream_mapping:
+          action: "绘制下游客户网络"
+          node_list:
+            ai_chips:
+              - {name: "NVIDIA", product: "HBM", revenue_share: "15-20%", dependency: "极高"}
+              - {name: "AMD", product: "HBM", revenue_share: "5-8%", dependency: "高"}
+              - {name: "Intel", product: "DRAM", revenue_share: "8-10%", dependency: "中"}
+            cloud:
+              - {name: "AWS/Azure/GCP", product: "服务器DRAM", revenue_share: "20-25%", dependency: "高"}
+            consumer:
+              - {name: "Apple", product: "DRAM+NAND", revenue_share: "10-12%", dependency: "高"}
+              - {name: "PC OEM", product: "DRAM+SSD", revenue_share: "15-20%", dependency: "中"}
+              - {name: "手机OEM", product: "DRAM+NAND", revenue_share: "15-18%", dependency: "中"}
+
+          risk_assessment:
+            adoption_chain_risk:
+              - "NVIDIA GPU需求波动 → HBM需求波动"
+              - "云CapEx周期 → 服务器DRAM需求波动"
+            concentration_risk:
+              - "NVIDIA占HBM收入比例过高"
+
+        step_3_competitor_mapping:
+          action: "绘制竞争格局网络"
+          node_list:
+            tier_1:
+              - {name: "SK Hynix", hbm_share: "62%", dram_share: "28%", position: "HBM领导者"}
+              - {name: "Samsung", hbm_share: "17%", dram_share: "40%", position: "综合龙头"}
+            tier_2_china:
+              - {name: "CXMT", capability: "DDR4量产，DDR5开发", threat_2026: "低", threat_2027: "中"}
+              - {name: "YMTC", capability: "NAND 232层，13%份额", threat_2026: "低-中", threat_2027: "中-高"}
+
+          competitive_dynamics:
+            hbm_race: "SK领先 > MU追赶 > Samsung落后"
+            china_threat: "2026年威胁有限，2027年后需重估"
+
+        step_4_complementor_mapping:
+          action: "绘制互补者网络"
+          node_list:
+            - {name: "NVIDIA", type: "GPU+HBM生态绑定", synergy: "极高"}
+            - {name: "AMD", type: "MI系列+HBM", synergy: "高"}
+            - {name: "Synopsys/Cadence", type: "Memory IP/EDA", synergy: "中"}
+
+        step_5_graph_output:
+          action: "输出Property Graph"
+          format: "YAML或可视化图"
+          required_elements:
+            - "节点表（所有玩家）"
+            - "边表（关系类型+强度）"
+            - "风险评估表（Co-Innovation + Adoption Chain）"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块1.3: AI 7层定位（MU适用）
+    # ─────────────────────────────────────────────────────────────────────
+    ai_7layer_positioning:
+      reference: "ai_7layer_v1.yaml"
+      required: true  # MU是AI相关公司，必须执行
+
+      execution:
+        step_1_layer_identification:
+          action: "确定MU在AI 7层中的精确位置"
+          expected_output: |
+            MU定位: Layer 3 (Memory层)
+            - 主要产品: HBM3E/HBM4 for AI训练
+            - 与Layer 4 (NVIDIA)的关系: 关键供应商
+            - 与Layer 0 (设备)的关系: 依赖ASML/LRCX
+
+        step_2_value_capture:
+          action: "分析AI价值链中MU的价值捕获"
+          questions:
+            - "HBM在AI训练成本中的占比？"
+            - "MU的议价能力如何？（供不应求 vs 供过于求）"
+            - "HBM毛利率 vs 传统DRAM毛利率？"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块1.4: 历史Lessons检索
+    # ─────────────────────────────────────────────────────────────────────
+    lessons_retrieval:
+      reference: "lessons_learned.yaml"
+      required: true
+
+      execution:
+        search_dimensions:
+          - "MU历史分析教训"
+          - "Memory周期分析教训"
+          - "周期股估值教训"
+          - "HBM/AI相关分析教训"
+
+        minimum_lessons: 3
+
+  # Phase 1 检查点
+  checkpoint_1:
+    blocking: true
+    criteria:
+      - "产业链Layer定位完成（Layer 3确认）"
+      - "生态图谱完成（上下游+竞争+互补）"
+      - "AI 7层定位完成"
+      - "≥3条历史lessons检索"
+      - "生态风险识别（Co-Innovation + Adoption Chain）"
+
+    required_outputs:
+      - "ecosystem_graph.yaml 或可视化图"
+      - "产业链定位表"
+      - "生态风险清单"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PHASE 2: WHAT DATA（数据）- 需要什么数据？
+# 时间预算: 25分钟
+# 核心产出: 雷达信号 + API数据 + 分析师观点
+# ═══════════════════════════════════════════════════════════════════════════
+
+phase_2_data_collection:
+  time_budget: "25 minutes"
+  core_question: "MU的领先指标说什么？市场分歧是什么？"
+
+  modules:
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块2.1: 雷达信号系统 ⭐ 周期股核心
+    # ─────────────────────────────────────────────────────────────────────
+    radar_signal_system:
+      reference: "company_radar_system_v1.yaml"
+      required: true  # 周期股必须执行
+
+      execution:
+        layer_0_upstream_orders:
+          name: "上游设备订单（领先12-18个月）"
+          data_points:
+            - signal: "ASML订单"
+              source: "ASML季度财报"
+              search_query: "ASML orders backlog Q4 2025 2026 EUV"
+              threshold:
+                bullish: "订单同比增长>50%"
+                bearish: "订单同比下降"
+
+            - signal: "LRCX订单/收入"
+              source: "LRCX季度财报"
+              search_query: "Lam Research LRCX orders revenue 2025 2026 HBM"
+              threshold:
+                bullish: "收入同比增长>20%"
+                bearish: "收入同比下降"
+
+            - signal: "AMAT订单"
+              source: "AMAT季度财报"
+              search_query: "Applied Materials AMAT orders 2025 2026"
+
+        layer_1_capacity_capex:
+          name: "产能/资本支出（领先6-12个月）"
+          data_points:
+            - signal: "MU CapEx"
+              source: "MU财报Guidance"
+              search_query: "Micron MU CapEx 2026 capital expenditure"
+              threshold:
+                bullish: "CapEx同比增长>30%"
+                bearish: "CapEx同比下降"
+
+            - signal: "Samsung HBM产能"
+              source: "公开报道/TrendForce"
+              search_query: "Samsung HBM capacity expansion 2026"
+
+            - signal: "SK Hynix HBM产能"
+              source: "公开报道/供应链"
+              search_query: "SK Hynix HBM capacity M15X 2026"
+
+        layer_2_inventory_price:
+          name: "库存/价格（领先3-6个月）"
+          data_points:
+            - signal: "DRAM现货价格"
+              source: "DRAMeXchange/TrendForce"
+              search_query: "DRAM spot price trend 2026"
+
+            - signal: "NAND现货价格"
+              source: "DRAMeXchange/TrendForce"
+              search_query: "NAND spot price trend 2026"
+
+            - signal: "HBM合约价格"
+              source: "供应链调研"
+              search_query: "HBM contract price 2026"
+
+            - signal: "OEM库存天数"
+              source: "Dell/HPE财报"
+              search_query: "Dell HPE inventory days 2025 2026"
+
+        layer_3_revenue_earnings:
+          name: "营收/盈利（同步/滞后）"
+          note: "仅作确认，不作为决策依据"
+          data_points:
+            - signal: "MU收入增速"
+            - signal: "MU毛利率"
+            - signal: "MU库存天数"
+
+        output_format:
+          radar_dashboard:
+            layer_0_score: "X/10"
+            layer_1_score: "X/10"
+            layer_2_score: "X/10"
+            layer_3_score: "X/10"
+            composite_score: "X/10"
+            cycle_position: "P1-P5"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块2.2: API数据收集
+    # ─────────────────────────────────────────────────────────────────────
+    api_data_collection:
+      required: true
+
+      fmp_api_calls:
+        - endpoint: "profile"
+          purpose: "公司概况"
+        - endpoint: "key-metrics-ttm"
+          purpose: "关键指标（ROIC/ROE/毛利率）"
+        - endpoint: "ratios-ttm"
+          purpose: "估值倍数"
+        - endpoint: "income-statement"
+          purpose: "收入/利润趋势"
+        - endpoint: "balance-sheet"
+          purpose: "资产负债结构"
+        - endpoint: "cash-flow-statement"
+          purpose: "自由现金流"
+        - endpoint: "enterprise-values"
+          purpose: "EV计算"
+
+      sec_filings:
+        - type: "10-K"
+          purpose: "年报深度阅读"
+          focus_sections:
+            - "Business Description"
+            - "Risk Factors"
+            - "MD&A"
+        - type: "10-Q"
+          purpose: "季报更新"
+        - type: "8-K"
+          purpose: "重大事件"
+
+      hundred_baggers_api:
+        - endpoint: "leading-indicators"
+          purpose: "领先指标触发"
+        - endpoint: "dupont-analysis"
+          purpose: "杜邦分解"
+        - endpoint: "roic-analysis"
+          purpose: "ROIC分析"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块2.3: 分析师观点收集
+    # ─────────────────────────────────────────────────────────────────────
+    analyst_perspectives:
+      required: true
+      minimum_analysts: 5
+
+      search_queries:
+        - "Micron MU analyst price target 2026"
+        - "Micron MU bull case bear case"
+        - "Micron HBM market share analysis"
+        - "Memory semiconductor cycle outlook 2026"
+        - "Micron vs SK Hynix HBM competition"
+
+      target_analysts:
+        - {name: "Harlan Sur", firm: "JPMorgan", specialty: "半导体设备"}
+        - {name: "Timothy Arcuri", firm: "UBS", specialty: "半导体"}
+        - {name: "C.J. Muse", firm: "Evercore", specialty: "半导体"}
+        - {name: "Vivek Arya", firm: "Bank of America", specialty: "半导体"}
+        - {name: "Stacy Rasgon", firm: "Bernstein", specialty: "半导体"}
+
+      output_format:
+        analyst_panorama_table:
+          columns:
+            - "分析师"
+            - "机构"
+            - "评级"
+            - "目标价"
+            - "核心逻辑"
+            - "主要担忧"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块2.4: 市场分歧识别
+    # ─────────────────────────────────────────────────────────────────────
+    market_divergence:
+      required: true
+      minimum_divergences: 3
+
+      likely_divergence_points:
+        - topic: "HBM价格可持续性"
+          bull_view: "供不应求持续到2027年"
+          bear_view: "2026年下半年见顶"
+
+        - topic: "周期位置"
+          bull_view: "超级周期，P3扩张阶段"
+          bear_view: "P4过热，2026年见顶"
+
+        - topic: "中国竞争威胁"
+          bull_view: "技术代差2-3代，威胁有限"
+          bear_view: "国家补贴+快速追赶"
+
+        - topic: "估值合理性"
+          bull_view: "HBM带来结构性重估"
+          bear_view: "周期顶部，估值已充分"
+
+      output_format:
+        divergence_matrix:
+          columns:
+            - "分歧点"
+            - "多方观点"
+            - "空方观点"
+            - "我方判断"
+            - "验证方法"
+
+  # Phase 2 检查点
+  checkpoint_2:
+    blocking: true
+    criteria:
+      - "雷达信号4层数据完整"
+      - "FMP API ≥5个端点调用"
+      - "分析师观点 ≥5位"
+      - "市场分歧 ≥3个"
+
+    required_outputs:
+      - "雷达信号仪表盘"
+      - "分析师全景表"
+      - "市场分歧矩阵"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PHASE 3: HOW（分析）- 如何分析？
+# 时间预算: 45分钟
+# 核心产出: 护城河 + 产品矩阵 + 周期定位 + 核心命题
+# ═══════════════════════════════════════════════════════════════════════════
+
+phase_3_deep_analysis:
+  time_budget: "45 minutes"
+  core_question: "MU的护城河如何？处于周期什么阶段？核心命题是什么？"
+
+  modules:
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块3.1: 护城河分析
+    # ─────────────────────────────────────────────────────────────────────
+    moat_analysis:
+      reference: "moat_deep_analysis_v1.yaml"
+      required: true
+
+      execution:
+        seven_powers_assessment:
+          - power: "Scale Economies"
+            mu_assessment: "中等 - 规模效应存在但不如Samsung"
+            evidence_required: 3
+
+          - power: "Network Effects"
+            mu_assessment: "弱 - Memory产品无网络效应"
+            evidence_required: 2
+
+          - power: "Counter-Positioning"
+            mu_assessment: "弱 - 与SK/Samsung正面竞争"
+            evidence_required: 2
+
+          - power: "Switching Costs"
+            mu_assessment: "中等 - HBM认证有切换成本"
+            evidence_required: 3
+
+          - power: "Branding"
+            mu_assessment: "弱 - B2B商品化产品"
+            evidence_required: 2
+
+          - power: "Cornered Resource"
+            mu_assessment: "弱 - 无独占资源"
+            evidence_required: 2
+
+          - power: "Process Power"
+            mu_assessment: "中等 - 先进制程能力"
+            evidence_required: 3
+
+        moat_dimensions:
+          - dimension: "宽度"
+            score: "?/10"
+            explanation: ""
+          - dimension: "深度"
+            score: "?/10"
+            explanation: ""
+          - dimension: "扩张速度"
+            score: "?/10"
+            explanation: ""
+          - dimension: "防御力"
+            score: "?/10"
+            explanation: ""
+          - dimension: "可持续性"
+            score: "?/10"
+            explanation: ""
+
+        output_format:
+          moat_score: "?/10"
+          moat_type: "技术壁垒 + 转换成本（HBM认证）"
+          key_insight: ""
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块3.2: 产品矩阵分析（内部视角）
+    # ─────────────────────────────────────────────────────────────────────
+    product_matrix:
+      reference: "product_matrix_v1.yaml"
+      required: true
+
+      execution:
+        step_1_node_identification:
+          action: "识别所有产品节点"
+          products:
+            - node: "HBM (HBM3E/HBM4)"
+              revenue_share: "~10-15%"
+              growth_rate: "+100% YoY"
+              margin: "高于公司平均"
+              lifecycle: "成长期"
+              strategic_importance: "极高"
+
+            - node: "Server DRAM"
+              revenue_share: "~25-30%"
+              growth_rate: "+30% YoY"
+              margin: "中等"
+              lifecycle: "成熟期"
+              strategic_importance: "高"
+
+            - node: "Mobile DRAM"
+              revenue_share: "~15-20%"
+              growth_rate: "+5% YoY"
+              margin: "低"
+              lifecycle: "成熟期"
+              strategic_importance: "中"
+
+            - node: "PC DRAM"
+              revenue_share: "~10-15%"
+              growth_rate: "0% YoY"
+              margin: "低"
+              lifecycle: "成熟期"
+              strategic_importance: "低"
+
+            - node: "Enterprise SSD"
+              revenue_share: "~15-20%"
+              growth_rate: "+20% YoY"
+              margin: "中等"
+              lifecycle: "成长期"
+              strategic_importance: "高"
+
+            - node: "Consumer SSD/NAND"
+              revenue_share: "~10-15%"
+              growth_rate: "+5% YoY"
+              margin: "低"
+              lifecycle: "成熟期"
+              strategic_importance: "低"
+
+        step_2_edge_identification:
+          action: "识别产品间的边（协同效应）"
+          edges:
+            - from: "HBM"
+              to: "Server DRAM"
+              type: "技术共享"
+              description: "先进DRAM工艺可复用"
+
+            - from: "Server DRAM"
+              to: "Mobile DRAM"
+              type: "产能调配"
+              description: "需求波动时产能可调配"
+
+            - from: "Enterprise SSD"
+              to: "Consumer SSD"
+              type: "技术下沉"
+              description: "企业级技术下沉到消费级"
+
+        step_3_flywheel_analysis:
+          action: "识别飞轮效应"
+          flywheels:
+            - name: "HBM技术飞轮"
+              loop: |
+                HBM技术领先 → NVIDIA认证 → 更多订单 →
+                更多研发投入 → 技术更领先 → 飞轮加速
+              strength: "中等（SK Hynix领先）"
+
+        step_4_profit_pool:
+          action: "分析利润池分布"
+          current_distribution:
+            - product: "HBM"
+              profit_share: "~25%"
+              trend: "上升"
+            - product: "Server DRAM"
+              profit_share: "~35%"
+              trend: "稳定"
+            - product: "Enterprise SSD"
+              profit_share: "~20%"
+              trend: "上升"
+            - product: "Other"
+              profit_share: "~20%"
+              trend: "下降"
+
+          future_migration: "利润池从传统DRAM/NAND向HBM和企业级SSD迁移"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块3.3: 周期定位分析 ⭐ 周期股核心
+    # ─────────────────────────────────────────────────────────────────────
+    cycle_positioning:
+      reference: "cycle_analysis_engine_v1.yaml"
+      required: true  # 周期股必须执行
+
+      execution:
+        step_1_phase_identification:
+          action: "确定当前周期阶段"
+          phases:
+            P1_BOTTOM:
+              characteristics: ["低利用率", "低库存", "低价格", "设备订单触底"]
+              probability: "0%"
+            P2_RECOVERY:
+              characteristics: ["利用率回升", "库存rebuild", "价格企稳"]
+              probability: "5%"
+            P3_EXPANSION:
+              characteristics: ["产能扩张", "设备订单激增", "价格上涨"]
+              probability: "40%"
+            P4_OVERHEAT:
+              characteristics: ["利用率见顶", "库存堆积开始", "价格松动"]
+              probability: "50%"
+            P5_CORRECTION:
+              characteristics: ["产能过剩", "库存高企", "价格下跌"]
+              probability: "5%"
+
+          current_assessment: "P3末期 - P4初期过渡"
+
+        step_2_temperature_gauge:
+          action: "计算周期温度计"
+          indicators:
+            - indicator: "ASML订单"
+              reading: "极高"
+              weight: 20
+            - indicator: "台积电利用率"
+              reading: "高"
+              weight: 15
+            - indicator: "存储器价格"
+              reading: "高"
+              weight: 20
+            - indicator: "OEM库存"
+              reading: "正常"
+              weight: 15
+            - indicator: "CapEx增速"
+              reading: "高"
+              weight: 15
+            - indicator: "投资者情绪"
+              reading: "乐观"
+              weight: 15
+
+          temperature_score: "?/100"
+          interpretation: |
+            0-30: P1底部区域
+            30-50: P2复苏区域
+            50-70: P3扩张区域
+            70-85: P4过热区域
+            85-100: P5顶部区域
+
+        step_3_turning_point_signals:
+          action: "识别拐点信号"
+          bearish_signals:
+            - "ASML订单边际减速"
+            - "HBM价格环比下跌"
+            - "OEM库存超过正常水平20%"
+            - "三大厂商同时大幅扩产"
+
+          bullish_signals:
+            - "设备订单触底回升"
+            - "存储器价格企稳"
+            - "库存去化完成"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块3.4: 核心命题构建
+    # ─────────────────────────────────────────────────────────────────────
+    core_propositions:
+      required: true
+      minimum_propositions: 3
+
+      template_per_proposition:
+        - element: "命题陈述"
+          description: "清晰的投资逻辑陈述"
+        - element: "机制分析"
+          description: "为什么这个命题成立（因果链）"
+        - element: "支撑证据"
+          description: "≥2条证据"
+        - element: "反证条件"
+          description: "什么情况下这个命题不成立"
+        - element: "可验证预测"
+          description: "将命题转化为可验证预测"
+
+      likely_propositions_for_mu:
+        - proposition_1:
+            title: "HBM是MU的结构性增长驱动"
+            mechanism: "AI训练对HBM需求爆发 → MU HBM收入高增长 → 公司整体增长质量提升"
+            evidence: ["HBM收入YoY+100%", "HBM毛利率高于公司平均"]
+            falsification: "若HBM价格2026年下跌>30%，则命题失效"
+            verifiable_prediction: "2026 Q2 HBM收入同比增长>80%"
+
+        - proposition_2:
+            title: "周期处于P3末期-P4初期，风险上升"
+            mechanism: "设备订单创新高 → 产能大幅扩张 → 2027年供给过剩风险"
+            evidence: ["ASML订单€13.2B创纪录", "三大厂HBM扩产40-50%"]
+            falsification: "若2026年HBM持续供不应求，则周期延长"
+            verifiable_prediction: "2026 Q3 ASML订单<€10B"
+
+        - proposition_3:
+            title: "MU估值合理但非低估"
+            mechanism: "股价隐含的增长预期已充分反映HBM机会"
+            evidence: ["Forward P/E vs 历史", "隐含预期 vs 指引"]
+            falsification: "若HBM市场规模超预期2倍，则低估"
+            verifiable_prediction: "未来12个月股价在$200-350区间震荡"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块3.5: 投资者视角检验
+    # ─────────────────────────────────────────────────────────────────────
+    investor_perspectives:
+      reference: "investor_perspectives_v1.yaml"
+      required: true
+
+      druckenmiller_6_dimensions:
+        - dimension: "宏观环境"
+          assessment: "AI需求强劲，但利率高企"
+          score: "?/10"
+
+        - dimension: "行业动能"
+          assessment: "Memory周期上升，但接近顶部"
+          score: "?/10"
+
+        - dimension: "竞争地位"
+          assessment: "HBM第三，追赶SK Hynix"
+          score: "?/10"
+
+        - dimension: "管理层质量"
+          assessment: "执行力强，资本配置合理"
+          score: "?/10"
+
+        - dimension: "估值吸引力"
+          assessment: "合理但非低估"
+          score: "?/10"
+
+        - dimension: "催化剂"
+          assessment: "HBM4量产、NVIDIA新一代GPU"
+          score: "?/10"
+
+      buffett_4_questions:
+        - question: "能理解这个生意吗？"
+          answer: "是 - Memory是相对简单的商业模式"
+
+        - question: "有持久的护城河吗？"
+          answer: "弱 - 技术壁垒存在但不持久"
+
+        - question: "管理层诚实可信吗？"
+          answer: "是 - 历史记录良好"
+
+        - question: "价格合理吗？"
+          answer: "合理 - 非低估"
+
+  # Phase 3 检查点
+  checkpoint_3:
+    blocking: true
+    criteria:
+      - "护城河评分完成（7 Powers + 5维度）"
+      - "产品矩阵完成（节点+边+飞轮+利润池）"
+      - "周期定位完成（P1-P5 + 温度计）"
+      - "核心命题≥3个，每个有机制+反证+预测"
+      - "投资者视角检验完成"
+
+    required_outputs:
+      - "护城河评分卡"
+      - "产品矩阵图"
+      - "周期温度计"
+      - "核心命题表"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# PHASE 4: WHAT TO DO（决策）- 应该怎么做？
+# 时间预算: 25分钟
+# 核心产出: 估值 + Kill Switch + 可验证预测 + 最终评级
+# ═══════════════════════════════════════════════════════════════════════════
+
+phase_4_valuation_decision:
+  time_budget: "25 minutes"
+  core_question: "MU值多少钱？什么情况下改变判断？"
+
+  modules:
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块4.1: Reverse DCF
+    # ─────────────────────────────────────────────────────────────────────
+    reverse_dcf:
+      required: true
+
+      execution:
+        step_1_extract_implied_expectations:
+          action: "从当前股价反推隐含预期"
+          inputs:
+            - current_price
+            - wacc
+            - terminal_growth
+          outputs:
+            - implied_revenue_growth
+            - implied_fcf_margin
+            - implied_multiple
+
+        step_2_compare_to_reality:
+          action: "对比隐含预期 vs 公司指引 vs 我方预测"
+          comparison_table:
+            metrics:
+              - metric: "收入增速"
+                implied: "?%"
+                guidance: "?%"
+                our_estimate: "?%"
+              - metric: "FCF Margin"
+                implied: "?%"
+                guidance: "?%"
+                our_estimate: "?%"
+
+        step_3_conclusion:
+          action: "判断股价隐含预期是否合理"
+          template: |
+            股价隐含预期: [具体数字]
+            公司实际能力: [具体数字]
+            结论: [高估/合理/低估]
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块4.2: Forward SOTP三场景
+    # ─────────────────────────────────────────────────────────────────────
+    forward_sotp:
+      required: true
+
+      execution:
+        scenarios:
+          bull_case:
+            probability: "25%"
+            assumptions:
+              - "HBM持续供不应求到2028年"
+              - "MU HBM份额提升至25%"
+              - "毛利率维持50%+"
+            valuation:
+              method: "SOTP"
+              target_price: "$?"
+
+          base_case:
+            probability: "50%"
+            assumptions:
+              - "HBM 2027年供需平衡"
+              - "MU HBM份额维持20%"
+              - "毛利率回归40-45%"
+            valuation:
+              method: "SOTP"
+              target_price: "$?"
+
+          bear_case:
+            probability: "25%"
+            assumptions:
+              - "2026年下半年周期见顶"
+              - "HBM价格大幅下跌"
+              - "毛利率跌至30%"
+            valuation:
+              method: "SOTP"
+              target_price: "$?"
+
+        probability_weighted_price:
+          formula: "Bull × 25% + Base × 50% + Bear × 25%"
+          result: "$?"
+
+        consistency_check:
+          action: "检查SOTP vs 最终目标价一致性"
+          threshold: "<20%差距"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块4.3: Kill Switches
+    # ─────────────────────────────────────────────────────────────────────
+    kill_switches:
+      required: true
+      minimum_switches: 5
+
+      template:
+        - switch_id: "KS_MU_001"
+          trigger: "具体触发条件"
+          threshold: "量化阈值"
+          data_source: "验证数据源"
+          action: "触发后的行动"
+
+      likely_switches_for_mu:
+        - switch_id: "KS_MU_001"
+          trigger: "HBM价格崩盘"
+          threshold: "HBM合约价格环比下跌>20%"
+          data_source: "TrendForce/供应链"
+          action: "下调评级至2-谨慎"
+
+        - switch_id: "KS_MU_002"
+          trigger: "周期见顶确认"
+          threshold: "ASML季度订单<€8B"
+          data_source: "ASML财报"
+          action: "下调评级至2-谨慎"
+
+        - switch_id: "KS_MU_003"
+          trigger: "中国竞争突破"
+          threshold: "CXMT宣布HBM3量产"
+          data_source: "公开报道"
+          action: "重新评估竞争格局"
+
+        - switch_id: "KS_MU_004"
+          trigger: "库存危机"
+          threshold: "MU库存天数>180天"
+          data_source: "MU财报"
+          action: "下调评级至2-谨慎"
+
+        - switch_id: "KS_MU_005"
+          trigger: "NVIDIA转单"
+          threshold: "SK Hynix HBM份额>75%"
+          data_source: "供应链/分析师"
+          action: "下调HBM增长预期"
+
+        - switch_id: "KS_MU_006"
+          trigger: "意外利好"
+          threshold: "MU HBM份额>30% 或 HBM价格持续上涨"
+          data_source: "MU财报/供应链"
+          action: "上调评级至4-关注"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块4.4: 可验证预测
+    # ─────────────────────────────────────────────────────────────────────
+    verifiable_predictions:
+      required: true
+      minimum_predictions: 5
+
+      template:
+        - prediction_id: "PRED_MU_XXX"
+          date: "2026-01-30"
+          prediction: "具体预测"
+          rationale: "预测依据"
+          verification:
+            data_source: "验证数据源"
+            verification_date: "验证日期"
+            threshold: "通过阈值"
+          confidence: "0-100%"
+
+    # ─────────────────────────────────────────────────────────────────────
+    # 模块4.5: 最终评级与输出
+    # ─────────────────────────────────────────────────────────────────────
+    final_rating:
+      rating_scale:
+        5: "强烈关注"
+        4: "关注"
+        3: "观察"
+        2: "谨慎"
+        1: "规避"
+
+      rating_criteria:
+        - factor: "护城河强度"
+          weight: 20%
+        - factor: "周期位置"
+          weight: 25%
+        - factor: "估值吸引力"
+          weight: 25%
+        - factor: "催化剂"
+          weight: 15%
+        - factor: "风险收益比"
+          weight: 15%
+
+  # Phase 4 检查点
+  checkpoint_4:
+    blocking: true
+    criteria:
+      - "Reverse DCF完成"
+      - "SOTP三场景完成"
+      - "SOTP vs 目标价差距<20%"
+      - "Kill Switches≥5个"
+      - "可验证预测≥5个"
+      - "质量门控≥14/16项通过"
+
+    required_outputs:
+      - "估值汇总表"
+      - "Kill Switch清单"
+      - "可验证预测清单"
+      - "最终评级及理由"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 输出规范
+# ═══════════════════════════════════════════════════════════════════════════
+
+output_specification:
+  report_structure:
+    - section: "执行摘要"
+      length: "500字"
+      content: ["评级", "目标价", "核心逻辑", "关键风险"]
+
+    - section: "Part 1: 定位与生态"
+      length: "3000字"
+      content: ["产业链定位", "生态图谱", "生态风险"]
+
+    - section: "Part 2: 数据与信号"
+      length: "2500字"
+      content: ["雷达信号仪表盘", "分析师全景", "市场分歧"]
+
+    - section: "Part 3: 深度分析"
+      length: "5000字"
+      content: ["护城河", "产品矩阵", "周期定位", "核心命题"]
+
+    - section: "Part 4: 估值与决策"
+      length: "3000字"
+      content: ["DCF", "SOTP", "Kill Switch", "预测", "评级"]
+
+    - section: "附录"
+      content: ["数据可信度声明", "质量门控表", "预测清单"]
+
+  total_length: "≥15,000字"
+
+  versions:
+    - type: "本地深度版"
+      format: "完整Markdown，含ASCII可视化"
+      filename: "MU_Complete_Analysis_v18.2.md"
+
+    - type: "转发友好版"
+      format: "简洁表格，无ASCII艺术"
+      filename: "MU_转发版_v18.2.md"
+
+# ═══════════════════════════════════════════════════════════════════════════
+# 执行清单（可打印）
+# ═══════════════════════════════════════════════════════════════════════════
+
+execution_checklist:
+  phase_1:
+    - "□ 产业链Layer定位（Layer 3确认）"
+    - "□ 生态图谱-上游供应商（ASML/LRCX/AMAT/TSMC）"
+    - "□ 生态图谱-下游客户（NVIDIA/AMD/云厂商）"
+    - "□ 生态图谱-竞争者（SK Hynix/Samsung/CXMT/YMTC）"
+    - "□ 生态风险评估（Co-Innovation + Adoption Chain）"
+    - "□ AI 7层定位"
+    - "□ 历史lessons检索（≥3条）"
+    - "□ ⛔ Checkpoint 1 通过"
+
+  phase_2:
+    - "□ 雷达Layer 0（ASML/LRCX订单）"
+    - "□ 雷达Layer 1（MU/Samsung/SK CapEx）"
+    - "□ 雷达Layer 2（DRAM/NAND/HBM价格）"
+    - "□ 雷达Layer 3（MU财务数据）"
+    - "□ FMP API调用（≥5端点）"
+    - "□ 分析师观点收集（≥5位）"
+    - "□ 市场分歧识别（≥3个）"
+    - "□ ⛔ Checkpoint 2 通过"
+
+  phase_3:
+    - "□ 护城河评分（7 Powers + 5维度）"
+    - "□ 产品矩阵（节点+边+飞轮+利润池）"
+    - "□ 周期定位（P1-P5 + 温度计）"
+    - "□ 核心命题（≥3个，机制+反证+预测）"
+    - "□ 投资者视角检验（Druckenmiller 6维）"
+    - "□ ⛔ Checkpoint 3 通过"
+
+  phase_4:
+    - "□ Reverse DCF（隐含预期）"
+    - "□ SOTP三场景（牛/基准/熊）"
+    - "□ 估值一致性检查（<20%差距）"
+    - "□ Kill Switches（≥5个）"
+    - "□ 可验证预测（≥5个）"
+    - "□ 质量门控（≥14/16通过）"
+    - "□ 最终评级"
+    - "□ ⛔ Checkpoint 4 通过"
+
+  final:
+    - "□ 本地深度版报告"
+    - "□ 转发友好版报告"
+    - "□ 更新lessons_learned"
+    - "□ 更新predictions_tracker"
