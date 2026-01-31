@@ -1,0 +1,241 @@
+# Consumer PVM Analysis Framework v1.0
+# 消费品增长质量分析: Price / Volume / Mix
+# 把增长拆解到原子层
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  PVM 桥接是消费品增长质量分析的核心工具。
+  目标: 区分"健康增长"和"空心化增长"
+
+  健康增长 = Price ↑ 或 Mix ↑ 驱动，Volume 稳定
+  空心化增长 = Price ↑ 但 Volume ↓，净价下降（促销加深）
+
+# ============================================================
+# PVM 基础框架
+# ============================================================
+pvm_framework:
+
+  components:
+    price:
+      name: "价格效应"
+      description: "同一产品的价格变化贡献"
+      formula: "Price Effect = (P_new - P_old) × V_old"
+      interpretation:
+        positive: "提价成功，有定价权"
+        negative: "降价或促销加深"
+
+    volume:
+      name: "销量效应"
+      description: "同一产品的销量变化贡献"
+      formula: "Volume Effect = (V_new - V_old) × P_old"
+      interpretation:
+        positive: "需求增长，市场扩大"
+        negative: "需求萎缩或份额丢失"
+
+    mix:
+      name: "结构效应"
+      description: "产品组合变化贡献"
+      formula: "Mix Effect = Σ(Share_new - Share_old) × Margin"
+      interpretation:
+        positive: "高端化成功，毛利更高产品占比上升"
+        negative: "下沉或低毛利产品占比上升"
+
+  growth_decomposition:
+    formula: |
+      总收入增长 = Price Effect + Volume Effect + Mix Effect + New Products
+
+    example: |
+      收入增长 +8%:
+      - Price: +3% (提价贡献)
+      - Volume: +2% (销量增长)
+      - Mix: +2% (高端化贡献)
+      - New: +1% (新品贡献)
+
+# ============================================================
+# 增长质量诊断
+# ============================================================
+growth_quality_diagnosis:
+
+  healthy_patterns:
+    - pattern: "Price-Led Growth"
+      description: "提价驱动增长"
+      signals:
+        - "Price 贡献 > 50%"
+        - "Volume 稳定或轻微上升"
+        - "净价（扣除促销）同步上升"
+      implication: "强定价权，护城河稳固"
+
+    - pattern: "Mix-Led Growth"
+      description: "高端化驱动增长"
+      signals:
+        - "Mix 贡献 > 30%"
+        - "高端 SKU 占比上升"
+        - "毛利率上升"
+      implication: "品牌升级成功，有向上空间"
+
+    - pattern: "Volume-Led Growth"
+      description: "销量驱动增长"
+      signals:
+        - "Volume 贡献 > 50%"
+        - "Price/Mix 稳定"
+        - "市场份额上升"
+      implication: "市场扩张期，需关注可持续性"
+
+  unhealthy_patterns:
+    - pattern: "Hollow Growth"
+      description: "空心化增长（最危险）"
+      signals:
+        - "Price ↑ 但 Volume ↓"
+        - "净价下降（促销加深）"
+        - "高端产品份额下降"
+      implication: "定价权丧失，靠提价掩盖销量下滑"
+      kill_switch: true
+
+    - pattern: "Promo-Dependent Growth"
+      description: "促销依赖型增长"
+      signals:
+        - "促销销量占比 > 50%"
+        - "标价与净价差距扩大"
+        - "非促销期销量断崖"
+      implication: "品牌价值被稀释，利润质量差"
+
+    - pattern: "Mix-Down Growth"
+      description: "下沉型增长"
+      signals:
+        - "低端 SKU 占比上升"
+        - "毛利率下降"
+        - "Volume ↑ 但 Mix ↓"
+      implication: "可能是主动下沉策略，也可能是被迫"
+
+# ============================================================
+# 净价分析
+# ============================================================
+net_price_analysis:
+
+  description: |
+    标价（List Price）vs 净价（Net Price）的差距揭示真实定价权。
+    净价 = 标价 - 促销折扣 - 返利 - 优惠券
+
+  metrics:
+    promo_intensity:
+      name: "促销强度"
+      formula: "(标价 - 净价) / 标价"
+      interpretation:
+        low: "< 15%: 低促销依赖"
+        medium: "15-30%: 中等促销"
+        high: "> 30%: 高促销依赖"
+
+    promo_sales_ratio:
+      name: "促销销量占比"
+      formula: "促销期间销量 / 总销量"
+      healthy: "< 40%"
+      warning: "> 60%"
+
+    net_price_trend:
+      name: "净价趋势"
+      formula: "YoY 净价变化率"
+      healthy: "与标价趋势一致"
+      warning: "标价上涨但净价下降"
+
+  output_format:
+    file_path: "analysis/promo_netprice.csv"
+    columns:
+      - "period"
+      - "list_price"
+      - "net_price"
+      - "discount_rate"
+      - "promo_volume_pct"
+      - "yoy_list_change"
+      - "yoy_net_change"
+      - "gap_trend"
+      - "evidence_path"
+
+# ============================================================
+# Kill-Switch: 增长质量
+# ============================================================
+kill_switches:
+
+  hollow_growth:
+    name: "空心化增长"
+    trigger: |
+      Price 贡献 > 0 AND Volume 贡献 < -5% AND 净价 YoY < 0
+    severity: "hard"
+    interpretation: "提价无法带动销量，促销加深，定价权丧失"
+    action: "降低估值，关注市场份额变化"
+
+  promo_addiction:
+    name: "促销上瘾"
+    trigger: |
+      促销销量占比 > 60% AND 促销强度上升 > 5pp YoY
+    severity: "soft"
+    interpretation: "品牌价值被稀释，需更多促销驱动销量"
+    action: "监控非促销期销量，关注毛利率"
+
+  mix_deterioration:
+    name: "结构恶化"
+    trigger: |
+      Mix 贡献 < -3% AND 高端 SKU 份额下降
+    severity: "soft"
+    interpretation: "可能是主动策略也可能是被迫下沉"
+    action: "验证是否有意为之，关注毛利率影响"
+
+# ============================================================
+# 输出格式
+# ============================================================
+output_format:
+  file_path: "analysis/pvm_bridge.csv"
+
+  columns:
+    - "period"               # 时间段
+    - "revenue_growth"       # 收入增长率
+    - "price_effect"         # 价格贡献
+    - "volume_effect"        # 销量贡献
+    - "mix_effect"           # 结构贡献
+    - "new_products_effect"  # 新品贡献
+    - "price_pct"            # 价格贡献占比
+    - "volume_pct"           # 销量贡献占比
+    - "mix_pct"              # 结构贡献占比
+    - "growth_pattern"       # 增长模式判断
+    - "quality_score"        # 增长质量评分 1-5
+    - "net_price_trend"      # 净价趋势
+    - "promo_intensity"      # 促销强度
+    - "evidence_paths"       # 证据路径
+    - "data_level"           # 数据可信度
+
+  example: |
+    period,revenue_growth,price_effect,volume_effect,mix_effect,growth_pattern,quality_score
+    2025Q4,8%,3%,2%,2%,healthy_price_mix,4
+    2025Q3,5%,4%,-1%,1%,watch_volume_decline,3
+    2025Q2,3%,5%,-3%,0%,hollow_growth_warning,2
+
+# ============================================================
+# 数据来源
+# ============================================================
+data_sources:
+  primary:
+    - "公司财报披露（按产品线/区域拆分）"
+    - "投资者日/分析师会议纪要"
+    - "管理层 guidance 中的定性描述"
+
+  secondary:
+    - "第三方市场数据（Nielsen/IRI/Euromonitor）"
+    - "渠道调研"
+    - "价格跟踪工具"
+
+  estimation:
+    - "如果公司不披露，需要估算并标注 Level E"
+    - "估算方法必须说明假设"
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "PVM 桥接框架"
+      - "健康/不健康增长模式"
+      - "净价分析"
+      - "Kill-Switch 定义"

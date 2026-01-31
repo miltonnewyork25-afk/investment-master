@@ -1,0 +1,413 @@
+# Consumer Sensory Marketing Framework v1.0
+# 消费品感官营销分析框架
+# 多感官签名: 视觉/听觉/触觉/味嗅 + 情绪 + 身份
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  把品牌的"感官-情绪-身份"变成结构化资产，并检测漂移。
+
+  核心洞察:
+  - 感官一致性 ↑ → 体验稳定、记忆更强 → 溢价更稳、PED 不恶化、复购更高
+  - 感官漂移或不协调 ↑ → 差评主题从"外部问题"转向"产品本体/品质/不适"
+
+# ============================================================
+# 感官签名组成
+# ============================================================
+sensory_components:
+
+  # ----------------------------------------------------------
+  visual:
+    name: "视觉签名"
+    description: "品牌的视觉识别系统和体验"
+
+    elements:
+      color_palette:
+        description: "主色调和辅色"
+        examples:
+          - "Tiffany Blue (#81D8D0)"
+          - "可口可乐红 (#F40009)"
+          - "Apple 极简白/太空灰"
+        assessment:
+          - "是否有标志性颜色？"
+          - "颜色是否在所有触点一致？"
+          - "颜色传递什么情绪？"
+
+      packaging_design:
+        description: "包装视觉语言"
+        elements:
+          - "材质 (磨砂/光面/纸/金属)"
+          - "形状 (经典/创新/人体工学)"
+          - "图案 (极简/复杂/插画/摄影)"
+          - "字体 (serif/sans-serif/手写)"
+
+      retail_visual:
+        description: "门店/页面视觉风格"
+        elements:
+          - "陈列方式"
+          - "空间设计"
+          - "灯光氛围"
+          - "视觉密度"
+
+    proxy_metrics:
+      - name: "视觉一致性评分"
+        method: "跨触点对比 (包装/门店/网站/广告)"
+        scale: "0-1"
+
+      - name: "视觉差异化评分"
+        method: "与竞品视觉对比"
+        scale: "0-1"
+
+      - name: "视觉相关 VoC"
+        keywords: ["好看", "丑", "包装", "设计", "颜值"]
+
+  # ----------------------------------------------------------
+  sound:
+    name: "听觉签名"
+    description: "品牌的声音识别系统"
+
+    elements:
+      sonic_logo:
+        description: "声标/音频 logo"
+        examples:
+          - "Intel bong"
+          - "Netflix 'tudum'"
+          - "Apple 开机音"
+
+      background_music:
+        description: "背景音乐风格"
+        attributes:
+          - "节奏 (快/慢/中)"
+          - "风格 (古典/电子/流行/自然音)"
+          - "情绪 (激昂/放松/神秘/欢快)"
+
+      voice_tone:
+        description: "语音语气"
+        attributes:
+          - "正式/随意"
+          - "温暖/专业"
+          - "年轻/成熟"
+
+      product_sound:
+        description: "产品使用声音"
+        examples:
+          - "汽车关门声"
+          - "薯片咔嚓声"
+          - "香槟开瓶声"
+
+    proxy_metrics:
+      - name: "声音一致性评分"
+        method: "跨触点对比"
+
+      - name: "声音相关 VoC"
+        keywords: ["声音", "音乐", "吵", "安静", "好听"]
+
+  # ----------------------------------------------------------
+  touch:
+    name: "触觉签名"
+    description: "产品触感体验"
+
+    elements:
+      material_feel:
+        description: "材质触感"
+        attributes:
+          - "温度感 (冷/暖)"
+          - "质感 (光滑/磨砂/柔软/硬挺)"
+          - "重量感 (轻盈/厚重/扎实)"
+
+      interaction_feel:
+        description: "交互触感"
+        attributes:
+          - "按键/开关反馈"
+          - "握持舒适度"
+          - "穿着/使用体验"
+
+      packaging_feel:
+        description: "包装触感"
+        attributes:
+          - "开箱体验"
+          - "材质品质感"
+
+    proxy_metrics:
+      - name: "触感相关 VoC"
+        keywords: ["手感", "质感", "摸起来", "穿着", "舒适"]
+
+      - name: "触感差评占比"
+        formula: "触感负面评论 / 总差评"
+
+    applicable_categories:
+      - "服装鞋履"
+      - "消费电子"
+      - "美妆护肤"
+      - "家居用品"
+
+  # ----------------------------------------------------------
+  taste_smell:
+    name: "味嗅觉签名"
+    description: "风味和香气体验"
+
+    elements:
+      taste_profile:
+        description: "风味特征"
+        attributes:
+          - "甜/咸/酸/苦/鲜"
+          - "浓郁度"
+          - "层次感"
+          - "回味"
+
+      smell_profile:
+        description: "香气特征"
+        attributes:
+          - "前调/中调/后调"
+          - "香型分类"
+          - "持久度"
+          - "扩散性"
+
+      signature_element:
+        description: "标志性味道/香气"
+        examples:
+          - "星巴克烘焙香"
+          - "Abercrombie 店铺香氛"
+          - "可口可乐秘方味"
+
+    proxy_metrics:
+      - name: "味嗅相关 VoC"
+        keywords: ["味道", "口感", "香", "臭", "好吃", "难吃"]
+
+      - name: "口味/香味一致性"
+        method: "批次/时间对比"
+
+    applicable_categories:
+      - "食品饮料"
+      - "美妆香水"
+      - "个护产品"
+      - "零售门店"
+
+# ============================================================
+# 情绪与身份映射
+# ============================================================
+emotion_identity_mapping:
+
+  emotion_map:
+    name: "感官触发的情绪"
+    categories:
+      positive:
+        - "安心 (Comfort)"
+        - "兴奋 (Excitement)"
+        - "荣耀 (Pride)"
+        - "愉悦 (Joy)"
+        - "放松 (Relaxation)"
+        - "掌控 (Control)"
+        - "期待 (Anticipation)"
+        - "归属 (Belonging)"
+
+      negative:
+        - "焦虑 (Anxiety)"
+        - "失望 (Disappointment)"
+        - "困惑 (Confusion)"
+        - "不适 (Discomfort)"
+
+    assessment: |
+      分析品牌感官元素触发的主要情绪:
+      1. 官方营销传递什么情绪？
+      2. 用户 VoC 反映什么情绪？
+      3. 两者是否一致？
+
+  identity_roles:
+    name: "感官触发的身份认同"
+    categories:
+      - "自律者 (Disciplined)"
+      - "探索者 (Explorer)"
+      - "精英 (Elite)"
+      - "家庭照护者 (Caregiver)"
+      - "创造者 (Creator)"
+      - "反叛者 (Rebel)"
+      - "智者 (Sage)"
+      - "普通人 (Everyman)"
+
+    assessment: |
+      分析用户通过该品牌想要表达的身份:
+      1. 品牌定位的目标身份是什么？
+      2. 实际用户是谁？认同什么身份？
+      3. 是否存在身份错配？
+
+# ============================================================
+# 一致性评估
+# ============================================================
+consistency_assessment:
+
+  cross_touchpoint:
+    name: "跨触点一致性"
+    touchpoints:
+      - "产品本体"
+      - "包装"
+      - "门店/零售"
+      - "官网/App"
+      - "广告/内容"
+      - "客服/售后"
+      - "社交媒体"
+
+    scoring:
+      method: |
+        对每对触点比较感官元素:
+        - 完全一致: 1.0
+        - 基本一致: 0.7
+        - 有差异: 0.4
+        - 不一致: 0.0
+
+      formula: "一致性得分 = Σ(触点对得分) / 触点对数量"
+
+      interpretation:
+        excellent: "> 0.8: 强一致性，品牌资产稳固"
+        good: "0.6-0.8: 良好，有小幅改进空间"
+        concerning: "0.4-0.6: 需要关注，可能影响体验"
+        poor: "< 0.4: 严重不一致，品牌资产受损"
+
+  temporal:
+    name: "时间一致性"
+    description: "品牌感官签名是否随时间保持稳定"
+
+    assessment:
+      - "与 1 年前对比"
+      - "与 3 年前对比"
+      - "重大变化是否有意为之（品牌升级）还是漂移"
+
+# ============================================================
+# 漂移检测
+# ============================================================
+drift_detection:
+
+  description: |
+    感官漂移通常领先于财务表现恶化。
+    早期发现漂移可以提前预警。
+
+  drift_signals:
+    - signal: "VoC 主题漂移"
+      description: "差评从'服务/物流'转向'产品本身/品质'"
+      detection: "差评主题分类占比变化"
+      threshold: "品质相关差评占比上升 > 10%"
+
+    - signal: "一致性下降"
+      description: "新触点与品牌核心签名不匹配"
+      detection: "新渠道/新产品的感官评价"
+      threshold: "一致性得分下降 > 0.1"
+
+    - signal: "广告素材变化"
+      description: "营销素材风格偏离品牌核心"
+      detection: "广告视觉/音频/文案分析"
+
+    - signal: "体验口碑变化"
+      description: "感官相关正面词减少，负面词增加"
+      detection: "VoC 情感分析"
+
+  response_actions:
+    - drift_level: "轻微 (< 10%)"
+      action: "监控，下周确认"
+
+    - drift_level: "中等 (10-20%)"
+      action: "深入取证，识别原因"
+
+    - drift_level: "严重 (> 20%)"
+      action: "列为风险，评估对护城河影响"
+
+# ============================================================
+# 输出格式
+# ============================================================
+output_format:
+  file_path: "analysis/sensory_signature.json"
+
+  schema: |
+    {
+      "company": "string",
+      "analysis_date": "date",
+
+      "visual": {
+        "primary_colors": ["#hex"],
+        "packaging_style": "string",
+        "retail_style": "string",
+        "consistency_score": 0.0-1.0,
+        "voc_sentiment": "positive/neutral/negative"
+      },
+
+      "sound": {
+        "has_sonic_logo": true/false,
+        "music_style": "string",
+        "voice_tone": "string",
+        "consistency_score": 0.0-1.0
+      },
+
+      "touch": {
+        "material_quality": "string",
+        "interaction_feel": "string",
+        "voc_sentiment": "positive/neutral/negative"
+      },
+
+      "taste_smell": {
+        "applicable": true/false,
+        "signature_element": "string",
+        "consistency_score": 0.0-1.0,
+        "voc_sentiment": "positive/neutral/negative"
+      },
+
+      "emotion_map": {
+        "intended_emotions": ["string"],
+        "actual_emotions": ["string"],
+        "alignment_score": 0.0-1.0
+      },
+
+      "identity_roles": {
+        "target_identity": "string",
+        "perceived_identity": "string",
+        "alignment_score": 0.0-1.0
+      },
+
+      "overall_consistency_score": 0.0-1.0,
+
+      "drift_signals": [
+        {
+          "signal": "string",
+          "evidence": "string",
+          "severity": "low/medium/high",
+          "date_detected": "date"
+        }
+      ],
+
+      "evidence_paths": ["string"],
+      "confidence": "high/medium/low"
+    }
+
+# ============================================================
+# 与护城河的连接
+# ============================================================
+moat_connection:
+
+  sensory_to_financial:
+    - sensory: "高一致性 (> 0.8)"
+      moat_impact: "品牌资产强，记忆清晰"
+      financial_impact: "溢价稳定，PED 低，复购高"
+
+    - sensory: "中等一致性 (0.5-0.8)"
+      moat_impact: "品牌有识别度，但不够鲜明"
+      financial_impact: "溢价一般，需要营销支持"
+
+    - sensory: "低一致性 (< 0.5)"
+      moat_impact: "品牌模糊，容易被替代"
+      financial_impact: "折扣依赖高，复购低"
+
+  drift_to_financial:
+    - drift: "感官漂移"
+      leads_to: "用户体验不一致 → 信任下降"
+      financial_lag: "3-6 个月后反映在复购/差评"
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "4 感官维度 (视/听/触/味嗅)"
+      - "情绪-身份映射"
+      - "一致性评估"
+      - "漂移检测"

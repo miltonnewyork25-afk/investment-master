@@ -1,0 +1,294 @@
+# Consumer Channel Economics Framework v1.0
+# 消费品渠道经济学分析
+# 渠道毛利池: 毛利 - 履约 - 退货 - 平台费 - 投放
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  渠道经济学揭示品牌的真实盈利能力和渠道控制力。
+
+  核心公式:
+  渠道利润 = 销售收入 × 毛利率 - 履约成本 - 退货成本 - 平台费用 - 营销投放
+
+# ============================================================
+# 渠道类型与经济模型
+# ============================================================
+channel_types:
+
+  dtc_ecommerce:
+    name: "DTC 电商 (自有官网/App)"
+    economics:
+      revenue: "100%"
+      gross_margin: "60-75%"
+      fulfillment: "-8-15%"
+      returns: "-3-10%"
+      payment: "-2-3%"
+      marketing: "-15-30%"
+      net_margin: "10-25%"
+    control: "高"
+    data_ownership: "完全"
+    advantages:
+      - "完整用户数据"
+      - "品牌体验控制"
+      - "直接关系"
+    disadvantages:
+      - "获客成本高"
+      - "需自建履约"
+
+  marketplace:
+    name: "电商平台 (Amazon/天猫/京东)"
+    economics:
+      revenue: "100%"
+      gross_margin: "50-65%"
+      platform_fee: "-15-25%"  # 佣金 + 广告
+      fulfillment: "-5-12%"    # FBA/平台仓
+      returns: "-3-8%"
+      marketing: "-10-20%"
+      net_margin: "5-15%"
+    control: "中低"
+    data_ownership: "有限"
+    advantages:
+      - "流量大"
+      - "信任度高"
+      - "履约便捷"
+    disadvantages:
+      - "平台费用高"
+      - "价格竞争激烈"
+      - "数据不完整"
+
+  wholesale_retail:
+    name: "批发/零售 (超市/百货/专卖店)"
+    economics:
+      revenue: "批发价 (零售价的 40-60%)"
+      gross_margin: "35-50%"
+      trade_spend: "-5-15%"   # 进场费/陈列费
+      returns: "-2-5%"
+      net_margin: "15-30%"
+    control: "中"
+    data_ownership: "极少"
+    advantages:
+      - "规模大"
+      - "品牌曝光"
+    disadvantages:
+      - "渠道商议价权"
+      - "数据缺失"
+
+  owned_retail:
+    name: "自营门店"
+    economics:
+      revenue: "100%"
+      gross_margin: "60-75%"
+      rent: "-10-20%"
+      labor: "-15-25%"
+      marketing: "-5-10%"
+      net_margin: "10-25%"
+    control: "最高"
+    data_ownership: "完全"
+    advantages:
+      - "品牌体验最佳"
+      - "完整数据"
+      - "高客单"
+    disadvantages:
+      - "高固定成本"
+      - "扩展慢"
+
+# ============================================================
+# 渠道利润池分析
+# ============================================================
+profit_pool_analysis:
+
+  components:
+    gross_profit:
+      name: "毛利"
+      formula: "收入 × 毛利率"
+      drivers:
+        - "产品定价"
+        - "成本控制"
+        - "产品结构 (Mix)"
+
+    fulfillment_cost:
+      name: "履约成本"
+      components:
+        - "仓储"
+        - "拣货包装"
+        - "物流运输"
+        - "最后一公里"
+      benchmark: "5-15% of revenue"
+      optimization: "规模效应、仓网优化"
+
+    return_cost:
+      name: "退货成本"
+      components:
+        - "逆向物流"
+        - "质检重新上架"
+        - "损耗报废"
+      benchmark: "2-10% of revenue"
+      drivers:
+        - "品类特性 (服装 > 食品)"
+        - "产品质量"
+        - "描述准确性"
+
+    platform_fee:
+      name: "平台费用"
+      components:
+        - "销售佣金"
+        - "支付手续费"
+        - "平台广告"
+        - "促销分摊"
+      benchmark: "15-25% for marketplace"
+      trend: "平台费用普遍上涨"
+
+    marketing_spend:
+      name: "营销投放"
+      components:
+        - "站内广告"
+        - "站外引流"
+        - "KOL/达人"
+        - "促销折扣"
+      metric: "Marketing as % of revenue"
+      benchmark: "10-30%"
+
+  net_channel_margin:
+    formula: |
+      Net Channel Margin =
+        Gross Margin
+        - Fulfillment %
+        - Return %
+        - Platform Fee %
+        - Marketing %
+
+    interpretation:
+      healthy: "> 15%: 渠道经济健康"
+      acceptable: "10-15%: 可接受"
+      concerning: "5-10%: 需要关注"
+      unsustainable: "< 5%: 不可持续"
+
+# ============================================================
+# 渠道控制力评估
+# ============================================================
+channel_control:
+
+  dimensions:
+    pricing_control:
+      description: "能否控制终端售价"
+      indicators:
+        - "MAP (最低广告价格) 执行率"
+        - "跨渠道价格一致性"
+        - "促销决策权"
+
+    shelf_presence:
+      description: "货架位置和份额"
+      indicators:
+        - "货架份额 vs 市场份额"
+        - "陈列位置质量"
+        - "SKU 铺货率"
+
+    data_access:
+      description: "用户数据获取"
+      indicators:
+        - "会员数据完整度"
+        - "购买行为数据"
+        - "竞品对比数据"
+
+    negotiation_power:
+      description: "与渠道商议价能力"
+      indicators:
+        - "账期"
+        - "退货政策"
+        - "费用谈判结果"
+
+  scoring:
+    scale: "1-5"
+    rubric:
+      5: "完全控制 - DTC 为主"
+      4: "强控制 - 多渠道但品牌主导"
+      3: "中等 - 品牌与渠道平衡"
+      2: "弱控制 - 渠道商主导"
+      1: "失控 - 价格混乱/窜货严重"
+
+# ============================================================
+# 渠道健康度 Kill-Switch
+# ============================================================
+kill_switches:
+
+  margin_erosion:
+    name: "渠道利润侵蚀"
+    trigger: "Net Channel Margin 下降 > 5pp YoY 且无明显投入期解释"
+    severity: "soft"
+    interpretation: "渠道经济恶化，可能是竞争加剧或渠道费用上涨"
+
+  platform_dependency:
+    name: "平台过度依赖"
+    trigger: "单一平台收入占比 > 50% 且上升趋势"
+    severity: "soft"
+    interpretation: "议价能力弱，平台风险集中"
+
+  pricing_chaos:
+    name: "价格体系崩塌"
+    trigger: "跨渠道价差 > 20% 且窜货投诉上升"
+    severity: "hard"
+    interpretation: "价格体系失控，品牌价值受损"
+
+  return_surge:
+    name: "退货率飙升"
+    trigger: "退货率上升 > 3pp 且从'物流问题'转向'产品问题'"
+    severity: "hard"
+    interpretation: "可能是产品质量或描述问题"
+
+# ============================================================
+# 输出格式
+# ============================================================
+output_format:
+  file_path: "analysis/channel_econ.csv"
+
+  columns:
+    - "period"
+    - "channel_type"
+    - "revenue_share"
+    - "gross_margin"
+    - "fulfillment_pct"
+    - "return_pct"
+    - "platform_fee_pct"
+    - "marketing_pct"
+    - "net_channel_margin"
+    - "yoy_change"
+    - "control_score"
+    - "risk_flags"
+    - "evidence_paths"
+
+  channel_map:
+    file_path: "analysis/channel_map.json"
+    schema: |
+      {
+        "total_revenue": X,
+        "channels": [
+          {
+            "name": "string",
+            "type": "dtc/marketplace/wholesale/retail",
+            "revenue": X,
+            "revenue_share": "%",
+            "gross_margin": "%",
+            "net_margin": "%",
+            "control_score": 1-5,
+            "key_partners": ["string"],
+            "risks": ["string"]
+          }
+        ],
+        "concentration": {
+          "top_channel_share": "%",
+          "hhi": X
+        }
+      }
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "4 种渠道类型经济模型"
+      - "渠道利润池分析"
+      - "渠道控制力评估"
+      - "Kill-Switch 定义"

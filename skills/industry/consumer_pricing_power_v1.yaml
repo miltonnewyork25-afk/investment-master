@@ -1,0 +1,274 @@
+# Consumer Pricing Power Framework v1.0
+# 消费品定价权量化分析
+# 相对溢价 + 价格弹性 (PED) + 变化率
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  定价权是消费品护城河的核心指标。
+
+  三个维度:
+  1. 相对溢价 - 能卖多贵？
+  2. 价格弹性 (PED) - 涨价后销量掉多少？
+  3. 变化率 - 定价权在加强还是削弱？
+
+# ============================================================
+# 相对溢价分析
+# ============================================================
+relative_premium:
+
+  definition: |
+    相对溢价 = 品牌产品均价 / 品类均价
+    或
+    相对溢价 = 品牌产品均价 / 最大竞品均价
+
+  calculation_methods:
+    method_1:
+      name: "品类均价对比"
+      formula: "Premium = Brand ASP / Category ASP"
+      pros: "简单直观"
+      cons: "品类定义可能模糊"
+
+    method_2:
+      name: "竞品对比"
+      formula: "Premium = Brand ASP / Competitor ASP"
+      pros: "更精准的竞争对比"
+      cons: "需要选择可比竞品"
+
+    method_3:
+      name: "私牌/白牌对比"
+      formula: "Premium = Brand ASP / Private Label ASP"
+      pros: "最能体现品牌价值"
+      cons: "私牌定位可能不同"
+
+  interpretation:
+    premium_ranges:
+      - range: "> 2.0x"
+        meaning: "强溢价 - 奢侈品或超高端定位"
+        examples: ["爱马仕", "茅台", "戴森"]
+
+      - range: "1.5-2.0x"
+        meaning: "高溢价 - 强品牌力"
+        examples: ["苹果", "lululemon", "雅诗兰黛"]
+
+      - range: "1.2-1.5x"
+        meaning: "中等溢价 - 有品牌但不突出"
+        examples: ["普通消费品牌"]
+
+      - range: "1.0-1.2x"
+        meaning: "低溢价 - 主要靠规模和渠道"
+        examples: ["大众消费品"]
+
+      - range: "< 1.0x"
+        meaning: "负溢价 - 需要靠低价竞争"
+        warning: "可能是护城河弱的信号"
+
+  trend_analysis:
+    - direction: "溢价扩大"
+      meaning: "定价权增强，品牌升级成功"
+      check: "同时验证 PED 没有恶化"
+
+    - direction: "溢价稳定"
+      meaning: "定价权稳固"
+
+    - direction: "溢价收窄"
+      meaning: "定价权削弱，可能是竞争加剧或品牌老化"
+
+# ============================================================
+# 价格弹性 (PED) 分析
+# ============================================================
+price_elasticity:
+
+  definition: |
+    PED = % 销量变化 / % 价格变化
+
+    PED < 1: 需求缺乏弹性（刚需/强品牌）
+    PED = 1: 单位弹性
+    PED > 1: 需求富有弹性（可替代性强）
+
+  estimation_methods:
+    method_1:
+      name: "历史事件法"
+      description: "利用历史提价事件估算"
+      steps:
+        - "找到明确的提价事件"
+        - "对比提价前后的销量变化"
+        - "控制其他变量（季节性、促销、竞品）"
+      accuracy: "中高"
+
+    method_2:
+      name: "促销弹性法"
+      description: "利用促销期间的价格变化"
+      steps:
+        - "对比促销期和非促销期"
+        - "计算价格变化对销量的影响"
+      accuracy: "中"
+      caveat: "促销弹性可能不等于提价弹性"
+
+    method_3:
+      name: "管理层指引法"
+      description: "从管理层披露中推断"
+      sources:
+        - "财报电话会议中关于定价的讨论"
+        - "分析师报告中的敏感性分析"
+      accuracy: "低-中"
+
+  interpretation:
+    ped_ranges:
+      - range: "< 0.5"
+        meaning: "极度刚需或强品牌"
+        examples: ["茅台", "苹果核心产品"]
+        implication: "极强定价权"
+
+      - range: "0.5-1.0"
+        meaning: "较强品牌或弱替代"
+        examples: ["优质消费品牌"]
+        implication: "有定价权，可以温和提价"
+
+      - range: "1.0-1.5"
+        meaning: "一般弹性"
+        examples: ["普通品牌消费品"]
+        implication: "提价需谨慎"
+
+      - range: "> 1.5"
+        meaning: "高度可替代"
+        examples: ["大宗商品化产品"]
+        implication: "定价权弱，靠成本和效率"
+
+  ped_changes:
+    improving:
+      meaning: "PED 下降 - 需求变刚性"
+      possible_causes:
+        - "品牌力增强"
+        - "产品差异化成功"
+        - "替代品减少"
+
+    deteriorating:
+      meaning: "PED 上升 - 需求变弹性"
+      possible_causes:
+        - "竞争加剧"
+        - "私牌/白牌崛起"
+        - "品牌老化"
+      warning: "这是定价权削弱的早期信号"
+
+# ============================================================
+# 综合定价权评分
+# ============================================================
+pricing_power_score:
+
+  dimensions:
+    - dimension: "相对溢价"
+      weight: 0.35
+      scoring:
+        5: "> 2.0x"
+        4: "1.5-2.0x"
+        3: "1.2-1.5x"
+        2: "1.0-1.2x"
+        1: "< 1.0x"
+
+    - dimension: "价格弹性 (PED)"
+      weight: 0.35
+      scoring:
+        5: "< 0.5"
+        4: "0.5-0.8"
+        3: "0.8-1.2"
+        2: "1.2-1.5"
+        1: "> 1.5"
+
+    - dimension: "溢价趋势"
+      weight: 0.15
+      scoring:
+        5: "扩大 > 5%"
+        4: "扩大 0-5%"
+        3: "稳定"
+        2: "收窄 0-5%"
+        1: "收窄 > 5%"
+
+    - dimension: "PED 趋势"
+      weight: 0.15
+      scoring:
+        5: "下降 > 0.2"
+        4: "下降 0-0.2"
+        3: "稳定"
+        2: "上升 0-0.2"
+        1: "上升 > 0.2"
+
+  composite_score:
+    formula: "加权平均"
+    interpretation:
+      excellent: "> 4.0: 强定价权，给予估值溢价"
+      good: "3.0-4.0: 良好定价权"
+      average: "2.0-3.0: 一般定价权"
+      weak: "< 2.0: 弱定价权，给予估值折价"
+
+# ============================================================
+# Kill-Switch
+# ============================================================
+kill_switches:
+
+  premium_collapse:
+    name: "溢价崩塌"
+    trigger: "相对溢价下降 > 15% AND PED 上升 > 0.3"
+    severity: "hard"
+    interpretation: "定价权严重削弱"
+
+  ped_spiral:
+    name: "弹性螺旋"
+    trigger: "PED 连续 3 个季度上升 AND VoC '太贵/不值'主题上升"
+    severity: "soft"
+    interpretation: "消费者价格敏感度上升"
+
+  private_label_pressure:
+    name: "私牌压力"
+    trigger: "vs 私牌溢价收窄 > 20% AND 私牌份额上升"
+    severity: "soft"
+    interpretation: "品牌价值被侵蚀"
+
+# ============================================================
+# 输出格式
+# ============================================================
+output_format:
+  file_path: "analysis/brand_premium.csv"
+
+  columns:
+    - "period"
+    - "brand_asp"
+    - "category_asp"
+    - "competitor_asp"
+    - "private_label_asp"
+    - "premium_vs_category"
+    - "premium_vs_competitor"
+    - "premium_vs_private_label"
+    - "premium_trend"
+    - "ped_estimate"
+    - "ped_method"
+    - "ped_trend"
+    - "pricing_power_score"
+    - "evidence_paths"
+    - "confidence_level"
+
+  ped_output:
+    file_path: "analysis/ped_estimates.csv"
+    columns:
+      - "period"
+      - "price_change_pct"
+      - "volume_change_pct"
+      - "ped_calculated"
+      - "ped_range_low"
+      - "ped_range_high"
+      - "estimation_method"
+      - "confounding_factors"
+      - "confidence"
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "相对溢价分析"
+      - "PED 估算方法"
+      - "综合定价权评分"
+      - "Kill-Switch 定义"

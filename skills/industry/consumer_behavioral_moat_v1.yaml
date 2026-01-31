@@ -1,0 +1,424 @@
+# Consumer Behavioral Moat Framework v1.0
+# 消费品行为护城河分析框架
+# 8 个人性驱动因子 → 可量化评分卡
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  把"产品与人性"从软描述变成可评分、可反证、可监控的系统。
+  连接到: 溢价、PED、复购、VoC 漂移。
+
+  核心洞察: 消费品的护城河不仅是品牌，更是对人性的理解和利用。
+
+# ============================================================
+# 8 个行为驱动因子
+# ============================================================
+behavioral_drivers:
+
+  # ----------------------------------------------------------
+  driver_1:
+    id: "BM_001"
+    name: "产品吸引力与用户体验"
+    description: "产品本身的功能完成度、使用摩擦、满意度"
+
+    what_it_promises: "解决问题、减少摩擦、提升效率"
+
+    proxy_metrics:
+      primary:
+        - name: "差评摩擦占比"
+          formula: "差评中'麻烦/复杂/不方便'主题 / 总差评"
+          good_range: "< 15%"
+          bad_range: "> 30%"
+
+        - name: "退货原因分析"
+          formula: "'不符合预期/难用'退货 / 总退货"
+          good_range: "< 20%"
+
+        - name: "NPS 或满意度评分"
+          source: "调研或第三方数据"
+
+      secondary:
+        - "首次使用到核心功能时间"
+        - "客服负面主题占比"
+        - "重复问题发生率"
+
+    evidence_sources:
+      - "Amazon/电商评论分析"
+      - "App Store 评论（如适用）"
+      - "客服工单分析"
+      - "退货原因数据"
+
+    falsifiers:
+      - "差评摩擦占比 > 30% 且持续 3 个月"
+      - "退货率上升 + 原因从'物流'转向'产品本身'"
+
+    watch_triggers:
+      - "差评主题从'外部问题'迁移到'产品本体'"
+      - "新品上市后摩擦类差评激增"
+
+  # ----------------------------------------------------------
+  driver_2:
+    id: "BM_002"
+    name: "地位与影响力"
+    description: "产品作为身份信号、圈层归属、可炫耀性"
+
+    what_it_promises: "社会认同、身份表达、圈层归属"
+
+    proxy_metrics:
+      primary:
+        - name: "相对溢价"
+          formula: "品牌均价 / 品类均价"
+          good_range: "> 1.3x"
+          interpretation: "高溢价 = 强身份信号"
+
+        - name: "折扣依赖度"
+          formula: "促销销量 / 总销量"
+          good_range: "< 40%"
+          interpretation: "低依赖 = 品牌价值独立于价格"
+
+        - name: "VoC 地位词簇趋势"
+          keywords: ["体面", "档次", "圈层", "象征", "面子", "送礼"]
+          source: "评论/社交媒体"
+
+      secondary:
+        - "社交媒体自发分享率"
+        - "礼品场景占比"
+        - "高净值人群渗透率"
+
+    evidence_sources:
+      - "定价数据（品牌 vs 品类）"
+      - "促销日历与销量数据"
+      - "社交媒体提及分析"
+      - "消费者调研"
+
+    falsifiers:
+      - "溢价维持但 VoC 地位词簇下降 > 20%"
+      - "折扣依赖度 > 60% 且上升趋势"
+
+    watch_triggers:
+      - "竞品或私牌进入相同圈层叙事"
+      - "核心用户群体形象变化"
+
+  # ----------------------------------------------------------
+  driver_3:
+    id: "BM_003"
+    name: "英雄之旅"
+    description: "用户是英雄，品牌是导师；蜕变/成就/挑战叙事"
+
+    what_it_promises: "个人成长、挑战克服、成为更好的自己"
+
+    proxy_metrics:
+      primary:
+        - name: "UGC 英雄词簇密度"
+          keywords: ["蜕变", "挑战", "坚持", "成就", "before/after", "改变"]
+          formula: "英雄词簇 UGC / 总 UGC"
+
+        - name: "品牌叙事一致性"
+          assessment: "官方内容 vs UGC 是否呼应"
+
+      secondary:
+        - "用户故事分享率"
+        - "挑战/打卡活动参与率"
+        - "品牌社区活跃度"
+
+    applicable_categories:
+      - "运动健身 (NKE, LULU, PTON)"
+      - "美妆护肤 (护肤疗程)"
+      - "教育学习"
+      - "健康管理"
+
+    evidence_sources:
+      - "社交媒体 UGC 分析"
+      - "品牌官方内容"
+      - "用户社区/论坛"
+
+    falsifiers:
+      - "UGC 从'成就分享'转为'吐槽抱怨'"
+      - "挑战活动参与率连续下降 > 30%"
+
+    watch_triggers:
+      - "品牌叙事与用户实际体验脱节"
+      - "核心用户群放弃挑战/流失"
+
+  # ----------------------------------------------------------
+  driver_4:
+    id: "BM_004"
+    name: "随机奖励机制"
+    description: "变动奖励、惊喜、抽取、盲盒、掉落机制"
+
+    what_it_promises: "惊喜感、期待感、多巴胺刺激"
+
+    proxy_metrics:
+      primary:
+        - name: "复访间隔缩短"
+          formula: "平均复访天数变化"
+          good_sign: "缩短 = 粘性增强"
+
+        - name: "抽取/任务参与率"
+          formula: "参与人数 / 活跃用户"
+
+        - name: "反噬指标"
+          metrics: ["退款率", "投诉率", "负面叙事占比"]
+          warning: "同步上升 = 毒性粘性"
+
+      secondary:
+        - "盲盒/抽取 GMV 占比"
+        - "重复购买频次"
+        - "会员活跃度"
+
+    applicable_categories:
+      - "潮玩盲盒 (POP MART)"
+      - "游戏内购"
+      - "会员惊喜礼"
+      - "限量发售"
+
+    evidence_sources:
+      - "销售数据分析"
+      - "退款/投诉数据"
+      - "用户行为数据"
+
+    falsifiers:
+      - "参与率上升但退款/投诉同步上升 > 50%"
+      - "监管风险预警（赌博性质投诉）"
+
+    watch_triggers:
+      - "媒体/监管关注随机机制"
+      - "用户投诉'上瘾/后悔/被坑'"
+      - "复访增加但满意度下降"
+
+    risk_warning: |
+      ⚠️ 随机奖励是双刃剑:
+      - 正向: 提高复访、增加粘性、创造期待
+      - 负向: 可能造成"毒性粘性"，引发监管、声誉风险
+      必须同时监控正向指标和反噬指标
+
+  # ----------------------------------------------------------
+  driver_5:
+    id: "BM_005"
+    name: "恐惧心理"
+    description: "损失规避、失去更痛、FOMO"
+
+    what_it_promises: "避免损失、不落后、不错过"
+
+    proxy_metrics:
+      primary:
+        - name: "VoC 恐惧词簇"
+          keywords: ["担心", "后悔", "不敢不用", "怕", "万一"]
+          formula: "恐惧词簇 / 总 VoC"
+
+        - name: "事件冲击后需求弹性"
+          assessment: "负面事件后需求恢复速度"
+          interpretation: "快速恢复 = 需求刚性/恐惧驱动"
+
+      secondary:
+        - "续费/续订率"
+        - "停用后回归率"
+        - "竞品切换成本感知"
+
+    applicable_categories:
+      - "保险类产品"
+      - "安全/健康类"
+      - "专业工具（怕落后）"
+      - "奢侈品（怕掉档次）"
+
+    evidence_sources:
+      - "评论情感分析"
+      - "流失用户调研"
+      - "事件影响分析"
+
+    falsifiers:
+      - "恐惧驱动购买后退货率 > 平均"
+      - "替代品出现后恐惧词簇下降"
+
+    watch_triggers:
+      - "竞品降低切换成本"
+      - "用户开始质疑'是否真的需要'"
+
+  # ----------------------------------------------------------
+  driver_6:
+    id: "BM_006"
+    name: "奖赏机制"
+    description: "社会奖赏、自我奖赏、等级与徽章"
+
+    what_it_promises: "成就感、认可、进步可视化"
+
+    proxy_metrics:
+      primary:
+        - name: "互动率"
+          formula: "互动人数 / 曝光人数"
+
+        - name: "分享率"
+          formula: "分享人数 / 购买人数"
+
+        - name: "会员等级渗透"
+          formula: "高等级会员 / 总会员"
+
+        - name: "打卡/徽章参与"
+          formula: "参与人数 / 活跃用户"
+
+      secondary:
+        - "用户生成内容量"
+        - "推荐/口碑转化率"
+        - "社区活跃度"
+
+    evidence_sources:
+      - "会员数据"
+      - "社交媒体互动数据"
+      - "UGC 数量"
+
+    falsifiers:
+      - "高等级会员占比下降 + 活跃度下降"
+      - "分享率持续下降 > 30%"
+
+    watch_triggers:
+      - "会员权益贬值"
+      - "竞品推出更强奖赏系统"
+
+  # ----------------------------------------------------------
+  driver_7:
+    id: "BM_007"
+    name: "确定性与安全感"
+    description: "透明进度、可预期交付、可靠承诺"
+
+    what_it_promises: "掌控感、可预期、不焦虑"
+
+    proxy_metrics:
+      primary:
+        - name: "到货准时率"
+          formula: "准时到达订单 / 总订单"
+          good_range: "> 95%"
+
+        - name: "延迟投诉率"
+          formula: "延迟相关投诉 / 总投诉"
+          good_range: "< 10%"
+
+        - name: "追踪透明度差评"
+          keywords: ["不知道在哪", "没有物流", "失联"]
+          good_range: "< 5%"
+
+      secondary:
+        - "承诺兑现率"
+        - "退款处理时效"
+        - "客服响应时间"
+
+    evidence_sources:
+      - "物流数据"
+      - "客服投诉分析"
+      - "评论分析"
+
+    falsifiers:
+      - "准时率 < 90% 持续 2 个月"
+      - "延迟/失联差评占比 > 15%"
+
+    watch_triggers:
+      - "供应链/物流合作伙伴变更"
+      - "差评主题向'不确定性'漂移"
+
+  # ----------------------------------------------------------
+  driver_8:
+    id: "BM_008"
+    name: "稀缺与互惠"
+    description: "限量/限时/等待；试用/赠品/推荐奖励"
+
+    what_it_promises: "独特性、被重视、占便宜"
+
+    sub_factors:
+      scarcity:
+        name: "稀缺性"
+        proxy_metrics:
+          - name: "限时转化峰值"
+            formula: "限时活动转化率 / 日常转化率"
+          - name: "等待名单长度"
+            source: "预约/排队数据"
+          - name: "二手溢价"
+            formula: "二手价 / 原价"
+            interpretation: "> 1 = 真稀缺"
+
+      reciprocity:
+        name: "互惠性"
+        proxy_metrics:
+          - name: "试用转正率"
+            formula: "试用后购买 / 试用总数"
+          - name: "推荐扩散系数"
+            formula: "被推荐购买 / 推荐人数"
+          - name: "赠品带动率"
+            formula: "赠品活动 GMV / 日常 GMV"
+
+    evidence_sources:
+      - "营销活动数据"
+      - "转化漏斗数据"
+      - "二手市场价格"
+      - "推荐系统数据"
+
+    falsifiers:
+      - "限时活动转化率下降 + 折扣加深"
+      - "试用转正率 < 10%"
+      - "推荐奖励成本 > 新客 LTV"
+
+    watch_triggers:
+      - "稀缺策略被用户识破（假稀缺）"
+      - "互惠成本上升但转化率下降"
+
+# ============================================================
+# 评分卡输出格式
+# ============================================================
+scorecard_output:
+  file_path: "analysis/motive_scorecard.csv"
+  columns:
+    - "driver_id"
+    - "driver_name"
+    - "what_it_promises"
+    - "evidence_paths"
+    - "proxy_metrics"
+    - "current_value"
+    - "benchmark"
+    - "score"          # 1-5
+    - "direction"      # 强化/弱化/不变
+    - "risks"
+    - "falsifiers"
+    - "watch_triggers"
+    - "data_date"
+    - "confidence"     # 高/中/低
+
+  scoring_rubric:
+    5: "极强 - 多个指标显著优于基准，无负面信号"
+    4: "强 - 主要指标优于基准，轻微负面信号"
+    3: "中等 - 指标接近基准，有改进空间"
+    2: "弱 - 主要指标低于基准，有风险信号"
+    1: "极弱 - 多个指标显著低于基准，需要警惕"
+
+# ============================================================
+# 与财务指标的连接
+# ============================================================
+financial_linkage:
+  description: "行为护城河如何反映到财务表现"
+
+  linkages:
+    - behavioral: "体验满意度高"
+      leads_to: "复购率高、退货率低、口碑好"
+      financial: "营销费用率低、毛利率稳定"
+
+    - behavioral: "地位信号强"
+      leads_to: "溢价能力强、折扣依赖低"
+      financial: "定价权强、毛利率高"
+
+    - behavioral: "英雄叙事成功"
+      leads_to: "用户粘性高、口碑传播"
+      financial: "获客成本低、LTV 高"
+
+    - behavioral: "确定性体验好"
+      leads_to: "投诉少、信任度高"
+      financial: "客服成本低、退款率低"
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "8 个行为驱动因子"
+      - "每个因子: 指标 + 证据 + 反证 + 触发器"
+      - "评分卡输出格式"
+      - "与财务指标连接"

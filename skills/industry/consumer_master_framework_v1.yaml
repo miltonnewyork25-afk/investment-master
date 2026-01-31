@@ -1,0 +1,377 @@
+# Consumer Goods Master Framework v1.0
+# 消费品投资研究主框架
+# 目标: L4-L5 级别的可验证研究系统
+
+version: "1.0"
+created: "2026-01-31"
+applicable_to:
+  - "食品饮料 (PEP, KO, MNST, CELH)"
+  - "美妆个护 (EL, ULTA, e.l.f.)"
+  - "服装鞋履 (NKE, LULU, DECK)"
+  - "家居用品 (PG, CL, CHD)"
+  - "奢侈品 (LVMH, RMS, Kering)"
+  - "消费电子 (AAPL consumer)"
+  - "零售渠道 (COST, WMT, TGT)"
+
+# ============================================================
+# 核心设计哲学
+# ============================================================
+design_philosophy: |
+  消费品研究 = 可验证系统，而非写文章
+
+  研究回路:
+  Evidence → Metrics → Hypotheses → Disproof → Kill-Switch → Memo → Monitoring
+
+  硬规则:
+  1. Evidence-First: 没有计算指标或可追溯证据，不得下结论
+  2. 每条关键主张必须带证据路径 + 日期
+  3. 必须产出固定工件集合（见 artifacts 节）
+  4. 反证优先: 每个 Thesis 必须写清楚"什么数据会打脸"
+  5. 监控默认开启: 研究完成后必须生成"周度哨兵计划"
+
+# ============================================================
+# L1-L5 深度等级定义
+# ============================================================
+depth_levels:
+
+  L1_information:
+    name: "信息收集"
+    goal: "建立事实底座，不做评价"
+    minimum_output:
+      - "公司/品牌做什么、卖什么、谁买、在哪买"
+      - "核心产品线、价格带、渠道结构"
+      - "收入拆分、毛利/费用结构、指引要点"
+      - "关键事件: 并购、召回、诉讼、监管、管理层变动"
+    gate: "所有事实必须能回溯到证据路径；不能证明就写 UNKNOWN"
+
+  L2_structure:
+    name: "结构化框架"
+    goal: "把战场画对"
+    minimum_output:
+      - "产品矩阵: SKU × 价位 × 人群 × 场景 × 频次"
+      - "渠道地图: 触达路径、库存/履约链、渠道控制力"
+      - "品牌定位: 功能价值 / 情绪价值 / 身份价值"
+      - "竞争与替代: 同类对手 + 跨品类替代 + 私牌/白牌"
+      - "风险清单: 运营/合规/供应链/声誉/渠道依赖"
+    gate: "每个模块必须明确'需要哪些数据才能继续'"
+
+  L3_modeling:
+    name: "模型化解释"
+    goal: "从叙述进入计算"
+    minimum_output:
+      - "PVM 桥接: Price / Volume / Mix"
+      - "渠道经济学: 毛利池、履约/退货/平台费、促销强度"
+      - "VoC 结构化: 评论主题、差评驱动、关键词漂移"
+    gate: "不允许出现'品牌强/提价权强/复购高'这类无指标结论"
+
+  L4_institutional:
+    name: "机构级深度"
+    goal: "可证伪系统 + 领先指标"
+    six_hard_features:
+      - "增长质量原子化: PVM + Promo/Net-Price"
+      - "护城河量化: 相对溢价 + PED + 变化率"
+      - "行为护城河: 人性驱动评分卡 (8因子)"
+      - "感官签名: 多触点一致性与漂移"
+      - "另类数据领先: 渠道信号/消费者声音/叙事声量"
+      - "可复现工件: raw→derived→analysis→memo 分层"
+    gate: |
+      每条 Thesis 必须同时满足:
+      - 有指标 (PVM/PED/溢价/渠道/VoC 等)
+      - 有反证 (Kill-Switch)
+      - 有监控触发器 (leading signals)
+
+  L5_continuous:
+    name: "顶级: 持续监控 + 自检"
+    goal: "系统长期跑，不被噪音/操纵带偏"
+    requirements:
+      - "持续哨兵: 每周自动更新面板与摘要"
+      - "一致性自检: 叙事 ↔ 数据对账"
+      - "流程门控: 缺工件不能写最终 Memo"
+
+# ============================================================
+# 研究模块架构
+# ============================================================
+module_architecture:
+
+  phase_1_evidence:
+    name: "证据收集 (L1)"
+    modules:
+      - module: "company_profile"
+        output: "data/raw/company_profile.json"
+      - module: "product_catalog"
+        output: "data/raw/product_catalog.csv"
+      - module: "financial_structure"
+        output: "data/derived/financial_structure.csv"
+      - module: "event_timeline"
+        output: "data/raw/event_timeline.md"
+
+  phase_2_structure:
+    name: "结构化 (L2)"
+    modules:
+      - module: "product_matrix"
+        description: "SKU × 价位 × 人群 × 场景 × 频次"
+        output: "analysis/product_matrix.csv"
+        framework_ref: "consumer_product_matrix_v1.yaml"
+
+      - module: "channel_map"
+        description: "渠道地图与控制力"
+        output: "analysis/channel_map.json"
+        framework_ref: "consumer_channel_economics_v1.yaml"
+
+      - module: "brand_positioning"
+        description: "功能/情绪/身份价值定位"
+        output: "analysis/brand_positioning.md"
+
+      - module: "competitive_landscape"
+        description: "竞争与替代地图"
+        output: "analysis/competitive_landscape.md"
+
+      - module: "risk_registry"
+        description: "风险清单"
+        output: "analysis/risk_registry.csv"
+
+  phase_3_modeling:
+    name: "模型化 (L3)"
+    modules:
+      - module: "pvm_bridge"
+        description: "Price/Volume/Mix 增长桥"
+        output: "analysis/pvm_bridge.csv"
+        framework_ref: "consumer_pvm_analysis_v1.yaml"
+
+      - module: "promo_netprice"
+        description: "标价 vs 净价分析"
+        output: "analysis/promo_netprice.csv"
+
+      - module: "channel_economics"
+        description: "渠道毛利池分析"
+        output: "analysis/channel_econ.csv"
+
+      - module: "voc_analysis"
+        description: "消费者声音结构化"
+        output: "analysis/voc_themes.json"
+        framework_ref: "consumer_voc_analysis_v1.yaml"
+
+  phase_4_institutional:
+    name: "机构级深度 (L4)"
+    modules:
+      - module: "brand_premium"
+        description: "相对溢价与定价权"
+        output: "analysis/brand_premium.csv"
+        framework_ref: "consumer_pricing_power_v1.yaml"
+
+      - module: "price_elasticity"
+        description: "PED 估算与变化"
+        output: "analysis/ped_estimates.csv"
+
+      - module: "behavioral_moat"
+        description: "行为护城河 8 因子评分卡"
+        output: "analysis/motive_scorecard.csv"
+        framework_ref: "consumer_behavioral_moat_v1.yaml"
+
+      - module: "sensory_signature"
+        description: "感官营销签名"
+        output: "analysis/sensory_signature.json"
+        framework_ref: "consumer_sensory_marketing_v1.yaml"
+
+      - module: "strategy_radar"
+        description: "战略变化雷达"
+        output: "analysis/strategy_radar.md"
+
+  phase_5_synthesis:
+    name: "综合与监控 (L5)"
+    modules:
+      - module: "thesis_formation"
+        description: "可证伪假设清单"
+        output: "analysis/thesis_list.md"
+
+      - module: "kill_switches"
+        description: "硬/软触发器"
+        output: "analysis/kill_switches.csv"
+
+      - module: "final_memo"
+        description: "最终研究备忘录"
+        output: "memo/final_memo.md"
+
+      - module: "sentinel_plan"
+        description: "周度哨兵计划"
+        output: "monitoring/weekly_digest.md"
+
+# ============================================================
+# 标准工件清单 (Gate: 缺任何一个禁止写 Final Memo)
+# ============================================================
+required_artifacts:
+
+  core_artifacts:
+    description: "每次研究必出"
+    files:
+      - path: "analysis/pvm_bridge.csv"
+        description: "Price/Volume/Mix 与解释字段"
+        required: true
+
+      - path: "analysis/promo_netprice.csv"
+        description: "标价 vs 净价、折扣/返利/促销强度"
+        required: true
+
+      - path: "analysis/brand_premium.csv"
+        description: "相对溢价、价位迁移、高端化/下沉"
+        required: true
+
+      - path: "analysis/ped_estimates.csv"
+        description: "PED 与变化率/区间"
+        required: true
+
+      - path: "analysis/channel_econ.csv"
+        description: "渠道毛利池: 毛利-履约-退货-平台费-投放"
+        required: true
+
+      - path: "analysis/voc_themes.json"
+        description: "主题、情绪、漂移、价格敏感词频"
+        required: true
+
+      - path: "analysis/motive_scorecard.csv"
+        description: "8 因子行为评分卡"
+        required: true
+
+      - path: "analysis/sensory_signature.json"
+        description: "多感官签名 + 一致性 + 漂移"
+        required: true
+
+      - path: "analysis/strategy_radar.md"
+        description: "新品/SKU/定价/组织/渠道策略变化"
+        required: true
+
+      - path: "monitoring/weekly_digest.md"
+        description: "周度哨兵摘要"
+        required: true
+
+  optional_artifacts:
+    description: "看品类与数据可得性"
+    files:
+      - path: "analysis/13f_changes.csv"
+        description: "机构持仓变动"
+
+      - path: "analysis/substitution_map.md"
+        description: "高维替代与私牌压力地图"
+
+      - path: "analysis/repeat_purchase_curve.csv"
+        description: "30/90/180 复购曲线"
+
+# ============================================================
+# 研究回路 (必须按顺序执行)
+# ============================================================
+research_loop:
+  steps:
+    - step: 1
+      name: "Gather Evidence"
+      action: "收集并归档原始证据（带时间戳）"
+      output_dir: "data/raw/"
+
+    - step: 2
+      name: "Compute Metrics"
+      action: "计算派生指标并落地工件"
+      output_dir: "data/derived/ + analysis/"
+
+    - step: 3
+      name: "Form Hypotheses"
+      action: "把观点写成可证伪假设（变量化）"
+      output: "analysis/thesis_list.md"
+
+    - step: 4
+      name: "Generate Disproof"
+      action: "生成反证测试与数据需求清单"
+      output: "analysis/disproof_tests.md"
+
+    - step: 5
+      name: "Define Kill-Switches"
+      action: "写清楚哪些信号出现就推翻"
+      output: "analysis/kill_switches.csv"
+
+    - step: 6
+      name: "Write Memo"
+      action: "所有关键句绑定工件字段 + 证据路径"
+      output: "memo/final_memo.md"
+      gate: "必须完成所有 required_artifacts"
+
+    - step: 7
+      name: "Activate Monitoring"
+      action: "生成周度哨兵 + TOP3 需人工确认事项"
+      output: "monitoring/weekly_digest.md"
+
+# ============================================================
+# Final Memo 固定结构
+# ============================================================
+memo_structure:
+  sections:
+    - section: "本次结论"
+      description: "仅 5-10 句，每句绑定工件字段"
+      max_sentences: 10
+
+    - section: "Thesis 清单"
+      description: "增长/溢价/PED/渠道/行为护城河分别是什么假设"
+      format: "可证伪假设"
+
+    - section: "证据对账"
+      description: "PVM、净价、渠道利润池、VoC 漂移、行为评分卡、感官签名一致性"
+      format: "数据 vs 叙事对照表"
+
+    - section: "反证与 Kill-Switch"
+      description: "硬/软条件清单"
+      format: "触发条件 + 后果"
+
+    - section: "监控计划"
+      description: "每周看哪 10 个信号；触发后如何动作"
+      format: "信号 + 阈值 + 动作"
+
+    - section: "未知与下一步取证"
+      description: "UNKNOWN 项与优先级"
+      format: "待解决清单"
+
+# ============================================================
+# 目录结构
+# ============================================================
+directory_structure:
+  project_root:
+    - "data/raw/"          # 原始证据（不改）
+    - "data/derived/"      # 清洗结构化
+    - "analysis/"          # CSV/JSON/MD 工件
+    - "memo/"              # 最终 memo
+    - "monitoring/"        # 哨兵周报
+    - "prompts/"           # 模块化提示词
+
+# ============================================================
+# 执行顺序建议
+# ============================================================
+execution_order:
+  - phase: 1
+    action: "先跑 L1（事实表）"
+    checkpoint: "所有事实有证据路径"
+
+  - phase: 2
+    action: "再跑 L2（模块地图）"
+    checkpoint: "每个模块明确数据需求"
+
+  - phase: 3
+    action: "产出 L3 核心工件（PVM/渠道/VoC）"
+    checkpoint: "无定性无指标结论"
+
+  - phase: 4
+    action: "补齐 L4（溢价+PED、行为评分卡、感官签名）"
+    checkpoint: "每条 Thesis 有指标+反证+触发器"
+
+  - phase: 5
+    action: "写 Memo + 生成周度哨兵"
+    checkpoint: "所有工件完成才能写 Memo"
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "L1-L5 深度等级定义"
+      - "5 阶段研究模块架构"
+      - "10 个核心工件要求"
+      - "7 步研究回路"
+    design_source: "用户提供的消费品研究框架设计"

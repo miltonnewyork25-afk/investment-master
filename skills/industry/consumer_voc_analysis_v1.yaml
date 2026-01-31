@@ -1,0 +1,317 @@
+# Consumer VoC (Voice of Customer) Analysis Framework v1.0
+# 消费品消费者声音分析框架
+# 评论主题、情绪、漂移、价格敏感词频
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  VoC 是消费品研究的"领先指标"。
+  评论变化通常领先于财务表现 3-6 个月。
+
+  核心价值:
+  - 早期预警品质问题
+  - 监控品牌认知变化
+  - 追踪价格敏感度
+  - 发现竞品威胁
+
+# ============================================================
+# 数据来源
+# ============================================================
+data_sources:
+
+  primary:
+    - source: "Amazon 评论"
+      coverage: "最大的消费品评论库"
+      api: "可通过第三方工具获取"
+
+    - source: "电商平台评论"
+      platforms: ["天猫", "京东", "拼多多"]
+      coverage: "中国市场"
+
+    - source: "App Store / Google Play"
+      coverage: "有 App 的品牌"
+
+  secondary:
+    - source: "社交媒体"
+      platforms: ["小红书", "微博", "Twitter", "Reddit"]
+      type: "UGC 内容"
+
+    - source: "消费者调研"
+      type: "NPS, 满意度, 品牌追踪"
+
+    - source: "客服工单"
+      type: "投诉和咨询主题"
+
+# ============================================================
+# 主题分类体系
+# ============================================================
+theme_taxonomy:
+
+  product_related:
+    category: "产品相关"
+    themes:
+      quality:
+        name: "产品质量"
+        keywords_positive: ["质量好", "耐用", "做工精细", "品质"]
+        keywords_negative: ["质量差", "坏了", "不耐用", "做工粗糙"]
+        severity: "high"
+        implication: "核心护城河指标"
+
+      functionality:
+        name: "功能/性能"
+        keywords_positive: ["好用", "效果好", "功能强", "性能好"]
+        keywords_negative: ["难用", "没效果", "功能少", "性能差"]
+
+      design:
+        name: "设计/外观"
+        keywords_positive: ["好看", "设计好", "颜值高", "时尚"]
+        keywords_negative: ["丑", "设计差", "老气", "不好看"]
+
+      safety:
+        name: "安全性"
+        keywords_negative: ["过敏", "刺激", "不安全", "有害"]
+        severity: "critical"
+        implication: "红线问题"
+
+  value_related:
+    category: "价值相关"
+    themes:
+      price_value:
+        name: "性价比"
+        keywords_positive: ["值", "划算", "性价比高", "便宜"]
+        keywords_negative: ["贵", "不值", "太贵", "坑"]
+        implication: "定价权信号"
+
+      vs_competitors:
+        name: "竞品对比"
+        keywords: ["比XX好", "不如XX", "换成XX", "从XX转来"]
+        implication: "竞争格局信号"
+
+      vs_private_label:
+        name: "私牌对比"
+        keywords: ["和XX差不多", "还不如拼多多", "白牌也行"]
+        severity: "high"
+        implication: "品牌价值受威胁"
+
+  experience_related:
+    category: "体验相关"
+    themes:
+      service:
+        name: "服务"
+        keywords_positive: ["服务好", "态度好", "解决问题"]
+        keywords_negative: ["服务差", "态度差", "不解决"]
+
+      delivery:
+        name: "物流/配送"
+        keywords_positive: ["快", "准时", "包装好"]
+        keywords_negative: ["慢", "延迟", "包装破损"]
+
+      return_experience:
+        name: "退换货"
+        keywords_positive: ["退货方便", "售后好"]
+        keywords_negative: ["退货难", "不给退", "售后差"]
+
+  emotion_related:
+    category: "情绪相关"
+    themes:
+      satisfaction:
+        keywords: ["满意", "失望", "惊喜", "后悔"]
+
+      recommendation:
+        keywords: ["推荐", "回购", "再也不买", "拉黑"]
+        implication: "NPS 代理指标"
+
+      brand_feeling:
+        keywords: ["喜欢", "讨厌", "信任", "坑人"]
+
+# ============================================================
+# 情绪分析
+# ============================================================
+sentiment_analysis:
+
+  scoring:
+    positive: "> 0.3"
+    neutral: "-0.3 to 0.3"
+    negative: "< -0.3"
+
+  metrics:
+    overall_sentiment:
+      formula: "(正面评论 - 负面评论) / 总评论"
+      benchmark: "> 0.5 为健康"
+
+    sentiment_trend:
+      formula: "本期情绪得分 - 上期情绪得分"
+      warning: "连续下降 > 0.1"
+
+    negative_ratio:
+      formula: "负面评论 / 总评论"
+      benchmark: "< 15% 为健康"
+      warning: "> 25%"
+
+# ============================================================
+# 漂移检测
+# ============================================================
+drift_detection:
+
+  description: |
+    VoC 漂移 = 评论主题结构的变化
+    漂移通常是问题的早期信号
+
+  drift_types:
+    theme_drift:
+      name: "主题漂移"
+      detection: "主题占比的显著变化"
+      example: "差评从'物流'转向'质量'"
+      severity_mapping:
+        external_to_external: "低"
+        external_to_product: "高"
+        product_to_safety: "极高"
+
+    keyword_drift:
+      name: "关键词漂移"
+      detection: "新出现的高频词"
+      action: "识别并分类新词"
+
+    competitor_mention_drift:
+      name: "竞品提及漂移"
+      detection: "竞品提及频率和情绪变化"
+      warning: "正面竞品提及上升"
+
+  monitoring_rules:
+    - rule: "质量相关差评占比上升 > 5pp"
+      action: "升级为产品风险"
+
+    - rule: "'太贵/不值'主题上升 > 10pp"
+      action: "定价权预警"
+
+    - rule: "安全相关提及出现且上升"
+      action: "红线预警，立即深入"
+
+# ============================================================
+# 价格敏感度追踪
+# ============================================================
+price_sensitivity:
+
+  keywords:
+    high_sensitivity:
+      - "太贵"
+      - "不值"
+      - "降价再买"
+      - "等促销"
+      - "比XX贵"
+
+    low_sensitivity:
+      - "值"
+      - "物有所值"
+      - "贵但好"
+      - "愿意付"
+
+  metrics:
+    price_sensitivity_index:
+      formula: "高敏感词频 / (高敏感词频 + 低敏感词频)"
+      interpretation:
+        low: "< 0.3: 低敏感，强定价权"
+        medium: "0.3-0.5: 中等敏感"
+        high: "> 0.5: 高敏感，定价权弱"
+
+    sensitivity_trend:
+      formula: "本期指数 - 上期指数"
+      warning: "持续上升"
+
+# ============================================================
+# Kill-Switch
+# ============================================================
+kill_switches:
+
+  quality_crisis:
+    name: "质量危机"
+    trigger: "质量/安全差评占比 > 20% 且持续 4 周"
+    severity: "hard"
+    action: "立即深入产品线，评估召回风险"
+
+  price_rebellion:
+    name: "价格反叛"
+    trigger: "'太贵/不值'主题占比上升 > 15pp 且 VoC 情绪恶化"
+    severity: "soft"
+    action: "定价策略评估"
+
+  competitor_surge:
+    name: "竞品崛起"
+    trigger: "正面竞品提及上升 > 50% 且伴随负面本品对比"
+    severity: "soft"
+    action: "竞争格局再评估"
+
+# ============================================================
+# 输出格式
+# ============================================================
+output_format:
+  file_path: "analysis/voc_themes.json"
+
+  schema: |
+    {
+      "analysis_period": "date_range",
+      "total_reviews": N,
+      "data_sources": ["string"],
+
+      "sentiment": {
+        "overall_score": -1 to 1,
+        "positive_ratio": "%",
+        "neutral_ratio": "%",
+        "negative_ratio": "%",
+        "trend": "improving/stable/deteriorating"
+      },
+
+      "themes": {
+        "product_quality": {
+          "mention_count": N,
+          "share": "%",
+          "sentiment": -1 to 1,
+          "trend": "%",
+          "top_keywords": ["string"]
+        },
+        // ... 其他主题
+      },
+
+      "price_sensitivity": {
+        "index": 0-1,
+        "trend": "improving/stable/deteriorating",
+        "top_concerns": ["string"]
+      },
+
+      "drift_signals": [
+        {
+          "type": "string",
+          "description": "string",
+          "evidence": "string",
+          "severity": "low/medium/high",
+          "date_detected": "date"
+        }
+      ],
+
+      "competitor_mentions": {
+        "total": N,
+        "by_competitor": {
+          "competitor_name": {
+            "count": N,
+            "sentiment": -1 to 1
+          }
+        }
+      },
+
+      "alerts": ["string"],
+      "evidence_paths": ["string"]
+    }
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "主题分类体系"
+      - "情绪分析"
+      - "漂移检测"
+      - "价格敏感度追踪"
+      - "Kill-Switch 定义"
