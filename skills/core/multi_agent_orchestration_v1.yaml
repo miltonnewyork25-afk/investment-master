@@ -1,0 +1,448 @@
+# Multi-Agent Orchestration Framework v1.0
+# 专业化 Agent 团队编排系统
+# 来源: OpenAI Agents SDK, Google ADK, Gartner 2026
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  从单一全能 Agent 转向专业化 Agent 团队。
+
+  核心洞察:
+  "正如单体应用被分布式服务架构取代，单一全能 Agent 正在被
+  编排的专业化 Agent 团队取代。" — Gartner 2026
+
+  优势:
+  - 每个 Agent 专注一个任务，质量更高
+  - 可并行执行，速度更快
+  - 更容易调试和优化
+  - API 调用减少 61%（多 Agent RAG 研究）
+
+# ============================================================
+# 架构概览
+# ============================================================
+architecture:
+  overview: |
+    ┌─────────────────────────────────────────────────────────────┐
+    │                      用户请求                                │
+    └──────────────────────────┬──────────────────────────────────┘
+                               │
+                               ▼
+    ┌─────────────────────────────────────────────────────────────┐
+    │  🎭 COORDINATOR (编排器)                                    │
+    │  ├─ 分析用户意图                                            │
+    │  ├─ 分解任务                                                │
+    │  ├─ 分配给专业 Agent                                        │
+    │  └─ 整合结果                                                │
+    └──────────────────────────┬──────────────────────────────────┘
+                               │
+           ┌───────────────────┼───────────────────┐
+           │                   │                   │
+           ▼                   ▼                   ▼
+    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+    │ 📊 数据Agent │    │ 🔍 分析Agent │    │ 💰 估值Agent │
+    │  获取数据    │    │  深度分析    │    │  估值计算    │
+    └──────┬──────┘    └──────┬──────┘    └──────┬──────┘
+           │                   │                   │
+           └───────────────────┼───────────────────┘
+                               │
+                               ▼
+    ┌─────────────────────────────────────────────────────────────┐
+    │  📝 SYNTHESIZER (综合器)                                    │
+    │  └─ 整合各 Agent 输出，生成最终报告                         │
+    └─────────────────────────────────────────────────────────────┘
+
+# ============================================================
+# 专业化 Agent 定义
+# ============================================================
+specialized_agents:
+
+  # ----------------------------------------------------------
+  coordinator:
+    name: "编排器"
+    role: "中央调度，任务分配"
+    model: "opus"
+
+    responsibilities:
+      - "解析用户请求"
+      - "分解为子任务"
+      - "分配给合适的 Agent"
+      - "监控执行进度"
+      - "处理 Agent 间依赖"
+      - "异常处理和重试"
+
+    handoff_rules:
+      - condition: "需要获取数据"
+        target: "data_agent"
+      - condition: "需要深度分析"
+        target: "analysis_agent"
+      - condition: "需要估值计算"
+        target: "valuation_agent"
+      - condition: "需要行业知识"
+        target: "industry_agent"
+
+  # ----------------------------------------------------------
+  data_agent:
+    name: "数据收集 Agent"
+    role: "获取和处理各类数据"
+    model: "haiku"
+
+    capabilities:
+      - "调用 FMP API"
+      - "调用 100baggers API"
+      - "执行 WebSearch"
+      - "解析 SEC Filings"
+      - "提取结构化数据"
+
+    tools:
+      - "fmp_api"
+      - "100baggers_api"
+      - "web_search"
+      - "sec_filings"
+
+    output_format:
+      type: "structured_data"
+      schema: |
+        {
+          "source": "api/web/filing",
+          "data_level": "A/B/C/D/E",
+          "timestamp": "ISO8601",
+          "data": {...}
+        }
+
+  # ----------------------------------------------------------
+  analysis_agent:
+    name: "深度分析 Agent"
+    role: "执行各类分析框架"
+    model: "sonnet"  # 需要推理但不是最复杂
+
+    capabilities:
+      - "护城河分析"
+      - "产品矩阵分析"
+      - "周期定位"
+      - "竞争对手对比"
+      - "管理层评估"
+
+    frameworks:
+      - "moat_deep_analysis_v1"
+      - "product_matrix_v1"
+      - "cycle_analysis_engine_v1"
+      - "memory_competitor_matrix_v1"
+      - "management_track_record_v1"
+
+    output_format:
+      type: "analysis_report"
+      sections:
+        - "summary"
+        - "key_findings"
+        - "evidence"
+        - "confidence_level"
+
+  # ----------------------------------------------------------
+  valuation_agent:
+    name: "估值计算 Agent"
+    role: "估值模型和计算"
+    model: "haiku"  # 主要是计算
+
+    capabilities:
+      - "Reverse DCF"
+      - "Forward SOTP"
+      - "敏感性分析"
+      - "情景分析"
+      - "估值桥梁"
+
+    tools:
+      - "dcf_calculator"
+      - "sotp_calculator"
+      - "sensitivity_matrix"
+
+    output_format:
+      type: "valuation_result"
+      schema: |
+        {
+          "methodology": "DCF/SOTP/Comps",
+          "scenarios": {
+            "bull": {"value": X, "probability": Y},
+            "base": {"value": X, "probability": Y},
+            "bear": {"value": X, "probability": Y}
+          },
+          "target_price": X,
+          "upside": "X%"
+        }
+
+  # ----------------------------------------------------------
+  industry_agent:
+    name: "行业专家 Agent"
+    role: "行业特定知识和框架"
+    model: "sonnet"
+
+    specializations:
+      memory:
+        frameworks:
+          - "memory_cycle_intelligence_v1"
+          - "memory_pricing_model_v1"
+          - "memory_competitor_matrix_v1"
+        key_metrics:
+          - "HBM 份额"
+          - "DRAM/NAND 价格"
+          - "Fab 利用率"
+
+      semicap:
+        frameworks:
+          - "semicap_analysis"
+        key_metrics:
+          - "Book-to-Bill"
+          - "China 收入占比"
+          - "订单 Backlog"
+
+      foundry:
+        key_metrics:
+          - "产能利用率"
+          - "先进制程占比"
+          - "客户集中度"
+
+  # ----------------------------------------------------------
+  insight_agent:
+    name: "洞察生成 Agent"
+    role: "生成独特洞察和反常识观点"
+    model: "opus"  # 需要创意
+
+    capabilities:
+      - "反常识洞察卡生成"
+      - "学术框架应用"
+      - "Reflection 自我批评"
+      - "预测生成"
+
+    output_format:
+      type: "insight_cards"
+      min_count: 3
+
+  # ----------------------------------------------------------
+  synthesizer:
+    name: "综合器"
+    role: "整合各 Agent 输出"
+    model: "opus"
+
+    responsibilities:
+      - "整合各 Agent 输出"
+      - "检查一致性"
+      - "填补遗漏"
+      - "生成最终报告"
+      - "质量门控检查"
+
+# ============================================================
+# 编排模式
+# ============================================================
+orchestration_patterns:
+
+  sequential:
+    name: "顺序编排"
+    description: "线性流程，适合有依赖的任务"
+    flow: |
+      Coordinator → Data Agent → Analysis Agent → Valuation Agent → Synthesizer
+
+    use_when:
+      - "标准深度分析"
+      - "数据依赖明确"
+
+  parallel:
+    name: "并行编排"
+    description: "无依赖任务并行执行"
+    flow: |
+      Coordinator
+          ├─→ Data Agent (财务数据)
+          ├─→ Data Agent (分析师观点)
+          └─→ Industry Agent (行业数据)
+              │
+              ▼
+          Analysis Agent
+              │
+              ▼
+          Synthesizer
+
+    use_when:
+      - "数据收集阶段"
+      - "多源信息整合"
+
+  hierarchical:
+    name: "层级编排"
+    description: "多层级管理，适合复杂任务"
+    flow: |
+      Coordinator (L1)
+          │
+          ├─→ Data Manager (L2)
+          │       ├─→ FMP Agent
+          │       └─→ Web Agent
+          │
+          └─→ Analysis Manager (L2)
+                  ├─→ Moat Agent
+                  └─→ Cycle Agent
+
+    use_when:
+      - "超大规模分析"
+      - "多公司对比"
+
+# ============================================================
+# 投资分析任务分配
+# ============================================================
+investment_analysis_allocation:
+
+  phase_1_positioning:
+    coordinator: "分解定位任务"
+    data_agent:
+      - "获取公司基础信息"
+      - "收集竞争对手列表"
+      - "获取供应链信息"
+    industry_agent:
+      - "确定行业分类"
+      - "提供行业背景"
+    synthesizer: "生成生态图谱"
+
+  phase_2_data:
+    coordinator: "分配数据收集任务"
+    data_agent:
+      parallel_tasks:
+        - "FMP 财务数据"
+        - "100baggers 指标"
+        - "分析师观点搜索"
+        - "SEC Filings 提取"
+    industry_agent:
+      - "行业特定数据（雷达信号）"
+
+  phase_3_analysis:
+    coordinator: "分配分析任务"
+    analysis_agent:
+      - "护城河分析"
+      - "产品矩阵"
+      - "周期定位"
+    industry_agent:
+      - "行业专用分析"
+    insight_agent:
+      - "反常识洞察"
+      - "Reflection"
+    synthesizer: "整合分析结果"
+
+  phase_4_decision:
+    coordinator: "分配估值任务"
+    valuation_agent:
+      - "Reverse DCF"
+      - "SOTP 三场景"
+      - "敏感性分析"
+    insight_agent:
+      - "Kill Switch 设计"
+      - "预测生成"
+    synthesizer: "生成最终报告"
+
+# ============================================================
+# 成本和效率对比
+# ============================================================
+efficiency_comparison:
+
+  single_agent:
+    description: "单一 Opus Agent"
+    api_calls: 100
+    total_tokens: 250000
+    estimated_cost: 6.75  # USD
+    execution_time: "30 min"
+
+  multi_agent:
+    description: "Multi-Agent 编排"
+    breakdown:
+      coordinator:
+        model: "opus"
+        calls: 10
+        tokens: 30000
+      data_agent:
+        model: "haiku"
+        calls: 40
+        tokens: 80000
+      analysis_agent:
+        model: "sonnet"
+        calls: 20
+        tokens: 60000
+      valuation_agent:
+        model: "haiku"
+        calls: 15
+        tokens: 40000
+      insight_agent:
+        model: "opus"
+        calls: 10
+        tokens: 25000
+      synthesizer:
+        model: "opus"
+        calls: 5
+        tokens: 15000
+
+    total_cost: 2.10  # USD
+    execution_time: "20 min"  # 并行加速
+
+    improvement:
+      cost_reduction: "69%"
+      time_reduction: "33%"
+
+# ============================================================
+# Agent 间通信
+# ============================================================
+inter_agent_communication:
+
+  message_format:
+    from: "agent_id"
+    to: "agent_id"
+    type: "[request/response/status/error]"
+    content:
+      task: "任务描述"
+      data: "数据/结果"
+      status: "[pending/running/completed/failed]"
+
+  handoff_protocol:
+    - step: 1
+      action: "Coordinator 发送任务请求"
+    - step: 2
+      action: "Target Agent 确认接收"
+    - step: 3
+      action: "Target Agent 执行任务"
+    - step: 4
+      action: "Target Agent 返回结果"
+    - step: 5
+      action: "Coordinator 验证结果"
+
+  error_handling:
+    on_timeout:
+      - "重试 1 次"
+      - "降级到更强模型"
+      - "通知 Coordinator"
+
+    on_failure:
+      - "记录错误到 attempt_tracker"
+      - "尝试备用方案"
+      - "必要时人工干预"
+
+# ============================================================
+# 命令
+# ============================================================
+commands:
+
+  multi_analyze:
+    description: "使用 Multi-Agent 进行深度分析"
+    usage: "/multi-analyze {TICKER}"
+    output: "完整深度报告"
+
+  agent_status:
+    description: "查看 Agent 执行状态"
+    usage: "/agent-status"
+    output: "各 Agent 状态面板"
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "6 个专业化 Agent"
+      - "3 种编排模式"
+      - "投资分析任务分配"
+    references:
+      - "OpenAI: Orchestrating Multiple Agents"
+      - "Google ADK: Multi-Agent Systems"
+      - "Gartner: 1445% Multi-Agent Inquiry Surge"
