@@ -1,0 +1,255 @@
+# Memory Consolidation System v1.0
+# 记忆整合系统: Episodic → Semantic 转化
+# 来源: ICLR 2026 MemAgents Workshop, SYNAPSE, TiMem
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  将具体的事件记忆（Episodic）转化为通用知识（Semantic）。
+
+  核心洞察:
+  "智能系统的标志是能够用更少做更多——这依赖于从'发生了什么'
+  到'事物如何运作'的转化。"
+
+  类比人类学习:
+  - 第一次做某事: 记住具体步骤（Episodic）
+  - 做了很多次后: 形成通用技能（Semantic/Procedural）
+  - 具体记忆逐渐消退，抽象知识保留
+
+# ============================================================
+# 整合触发条件
+# ============================================================
+consolidation_triggers:
+
+  frequency_based:
+    description: "当某类事件出现足够多次时触发"
+    threshold: 3
+    example: "3次 API 失败 → 抽象为'API 可靠性规则'"
+
+  pattern_based:
+    description: "当检测到重复模式时触发"
+    detection_method: "相似度分析"
+    example: "多次相似的分析流程 → 抽象为'行业分析模板'"
+
+  scheduled:
+    description: "定期触发整合"
+    frequency: "每周日"
+    action: "回顾本周 episodic 记忆，提取 semantic 知识"
+
+  context_pressure:
+    description: "当存储压力大时触发"
+    trigger: "memory/ 目录文件 > 30 个"
+    action: "压缩旧的 episodic 记忆为 semantic 摘要"
+
+# ============================================================
+# 整合流程
+# ============================================================
+consolidation_workflow:
+
+  phase_1_collection:
+    name: "收集 Episodic 记忆"
+    sources:
+      - "memory/*.md (每日记忆)"
+      - "skills/knowledge_base/attempt_tracker.yaml (尝试历史)"
+      - "当前会话中的事件"
+
+    collection_query: |
+      找出过去 {timeframe} 内的：
+      1. 重复出现的问题
+      2. 成功的解决方案
+      3. 失败的尝试
+      4. 意外的发现
+
+  phase_2_pattern_detection:
+    name: "模式检测"
+    methods:
+
+      frequency_analysis:
+        description: "统计事件出现频率"
+        output: "高频事件列表"
+
+      similarity_clustering:
+        description: "聚类相似事件"
+        output: "事件簇"
+
+      causal_chain_extraction:
+        description: "提取因果链"
+        output: "如果-那么规则"
+
+  phase_3_abstraction:
+    name: "抽象提取"
+    abstraction_types:
+
+      rule_extraction:
+        description: "从具体事件提取通用规则"
+        template: |
+          **Episodic 事件**:
+          - 事件1: {event_1}
+          - 事件2: {event_2}
+          - 事件3: {event_3}
+
+          **抽象规则**:
+          当 {condition} 时，应该 {action}，因为 {reason}
+
+      skill_formation:
+        description: "从重复操作形成技能"
+        template: |
+          **重复操作**:
+          - 操作1: {operation_1}
+          - 操作2: {operation_2}
+
+          **形成技能**:
+          SKILL_XXX: {skill_name}
+          步骤: {steps}
+
+      knowledge_compression:
+        description: "压缩详细记忆为紧凑表示"
+        template: |
+          **详细记忆 (100 words)**:
+          {detailed_memory}
+
+          **压缩知识 (20 words)**:
+          {compressed_knowledge}
+
+  phase_4_storage:
+    name: "存储更新"
+    destinations:
+
+      semantic_knowledge:
+        file: "lessons_learned.yaml"
+        format: "lesson 记录"
+
+      procedural_skills:
+        file: "procedural_memory.yaml"
+        format: "skill 记录"
+
+      long_term_memory:
+        file: "MEMORY.md"
+        condition: "仅重大发现"
+        format: "精炼条目"
+
+  phase_5_pruning:
+    name: "旧记忆修剪"
+    rules:
+      - condition: "episodic 已转化为 semantic"
+        action: "保留摘要，删除详细内容"
+
+      - condition: "记忆 > 30 天且未被引用"
+        action: "归档到 archive/"
+
+      - condition: "记忆包含敏感数据"
+        action: "匿名化处理"
+
+# ============================================================
+# 整合模板
+# ============================================================
+consolidation_templates:
+
+  weekly_consolidation:
+    name: "每周整合"
+    trigger: "每周日"
+
+    prompt: |
+      ## 每周记忆整合
+
+      回顾 memory/ 目录中本周的每日记忆。
+
+      ### 1. 高频事件
+      哪些事件/问题重复出现？
+      - {event_1}: 出现 {count} 次
+      - {event_2}: 出现 {count} 次
+
+      ### 2. 抽象规则
+      从高频事件提取通用规则:
+      - 规则1: 当 {condition} 时，{action}
+      - 规则2: ...
+
+      ### 3. 新技能
+      是否形成了新的操作技能？
+      - SKILL_XXX: {skill_description}
+
+      ### 4. 更新目标
+      | 源 | 目标 | 内容 |
+      |----|------|------|
+      | memory/*.md | lessons_learned.yaml | 新 lesson |
+      | memory/*.md | procedural_memory.yaml | 新 skill |
+      | 重大发现 | MEMORY.md | 精炼条目 |
+
+  event_consolidation:
+    name: "事件整合"
+    trigger: "同类事件出现 3 次"
+
+    prompt: |
+      ## 事件整合
+
+      **同类事件**:
+      1. {event_1} ({date_1})
+      2. {event_2} ({date_2})
+      3. {event_3} ({date_3})
+
+      **共同模式**:
+      - 触发条件: {common_trigger}
+      - 解决方法: {common_solution}
+      - 成功因素: {success_factors}
+
+      **抽象为**:
+      - [ ] 新 Lesson (LL_XXX)
+      - [ ] 新 Skill (SKILL_XXX)
+      - [ ] 更新 MEMORY.md
+
+# ============================================================
+# 整合质量检查
+# ============================================================
+quality_checks:
+
+  abstraction_validity:
+    description: "抽象是否有效"
+    criteria:
+      - "抽象规则是否适用于所有源事件？"
+      - "是否丢失了重要的上下文？"
+      - "是否过度泛化？"
+
+  compression_ratio:
+    description: "压缩比是否合理"
+    target: "5:1 到 10:1"
+    warning: "压缩比 > 20:1 可能丢失信息"
+
+  retrieval_test:
+    description: "整合后的知识是否可检索"
+    test: "能否用关键词找到相关知识？"
+
+# ============================================================
+# 自动整合命令
+# ============================================================
+commands:
+
+  consolidate_now:
+    description: "立即执行整合"
+    usage: "/consolidate-memory"
+    steps:
+      1. "收集最近 7 天的 episodic 记忆"
+      2. "检测模式和高频事件"
+      3. "抽象提取规则和技能"
+      4. "更新 semantic 存储"
+      5. "可选: 修剪旧记忆"
+
+  consolidate_event:
+    description: "整合特定事件类型"
+    usage: "/consolidate-event {event_type}"
+    example: "/consolidate-event API失败"
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "5 阶段整合流程"
+      - "3 种抽象类型"
+      - "每周自动整合"
+    references:
+      - "ICLR 2026: MemAgents Workshop"
+      - "SYNAPSE: Episodic-Semantic Memory"
+      - "TiMem: Temporal-Hierarchical Memory"

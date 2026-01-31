@@ -1,0 +1,269 @@
+# Attempt Tracker v1.0
+# 失败历史追踪系统
+# 来源: Anthropic Evals + Caltech EnCompass 框架
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  追踪每个任务的尝试历史，避免重复犯同样的错误。
+  核心洞察: "一个早期错误会级联传播到后续决策，复合成更大的失败。"
+
+  设计原则:
+  1. 记录每次尝试的方法、结果、失败原因
+  2. 下次尝试前检索相关历史
+  3. 支持回滚到之前的成功状态
+
+# ============================================================
+# 尝试记录格式
+# ============================================================
+attempt_schema:
+  attempt_id: "ATT_{task_type}_{date}_{seq}"
+  task_type: "[分析/数据获取/估值/预测/框架修改]"
+  task_description: "任务描述"
+
+  attempts:
+    - attempt_number: 1
+      timestamp: "YYYY-MM-DD HH:MM"
+      method: "尝试的方法"
+      result: "[成功/部分成功/失败]"
+
+      # 如果失败
+      failure_reason: "失败原因"
+      failure_category: "[数据缺失/逻辑错误/工具失败/外部依赖/假设错误]"
+      error_propagation: "这个错误如何影响后续步骤"
+
+      # 如果成功
+      success_factors: "成功的关键因素"
+
+      # 下一步
+      next_action: "下一次尝试的改进方向"
+
+  final_outcome: "[解决/放弃/待续]"
+  lessons_extracted: ["LL_XXX"]
+  skills_updated: ["SKILL_XXX"]
+
+# ============================================================
+# 失败类别定义
+# ============================================================
+failure_categories:
+
+  data_missing:
+    name: "数据缺失"
+    description: "所需数据不可用或无法获取"
+    common_causes:
+      - "API 失败"
+      - "数据源不存在"
+      - "权限不足"
+    recovery_strategies:
+      - "尝试备用数据源"
+      - "使用代理数据"
+      - "标注为 Level E 估算"
+
+  logic_error:
+    name: "逻辑错误"
+    description: "推理或计算错误"
+    common_causes:
+      - "假设错误"
+      - "公式错误"
+      - "边界条件未考虑"
+    recovery_strategies:
+      - "重新检查假设"
+      - "分步验证计算"
+      - "寻找反例"
+
+  tool_failure:
+    name: "工具失败"
+    description: "使用的工具或 API 出错"
+    common_causes:
+      - "网络问题"
+      - "API 限流"
+      - "格式变化"
+    recovery_strategies:
+      - "重试"
+      - "切换备用工具"
+      - "手动获取"
+
+  external_dependency:
+    name: "外部依赖"
+    description: "依赖的外部系统或数据不可用"
+    common_causes:
+      - "第三方服务宕机"
+      - "数据延迟"
+      - "格式变更"
+    recovery_strategies:
+      - "使用缓存数据"
+      - "降级处理"
+      - "等待恢复"
+
+  assumption_wrong:
+    name: "假设错误"
+    description: "基础假设被证明错误"
+    common_causes:
+      - "市场环境变化"
+      - "信息不完整"
+      - "模型局限性"
+    recovery_strategies:
+      - "更新假设"
+      - "增加条件分支"
+      - "记录为 lesson"
+
+# ============================================================
+# 错误传播追踪
+# ============================================================
+error_propagation_tracking:
+  description: |
+    追踪一个错误如何传播到后续步骤。
+    目的: 识别高风险决策点，在那里的错误会造成最大影响。
+
+  template: |
+    ## 错误传播分析
+
+    **初始错误**: {initial_error}
+    **发生阶段**: {phase}
+
+    **传播链**:
+    1. {error} → 导致 → {consequence_1}
+    2. {consequence_1} → 导致 → {consequence_2}
+    3. ...
+
+    **最终影响**: {final_impact}
+
+    **阻断点**: 如果在 {breakpoint} 发现错误，可以避免 {avoided_impact}
+
+# ============================================================
+# 回滚机制
+# ============================================================
+rollback_mechanism:
+  description: |
+    当发现错误时，能够回滚到之前的成功状态。
+    参考: Caltech EnCompass 框架
+
+  checkpoints:
+    - name: "Phase 1 完成"
+      state: "生态图谱和定位完成"
+      can_rollback_to: true
+
+    - name: "Phase 2 完成"
+      state: "数据收集完成"
+      can_rollback_to: true
+
+    - name: "Phase 3 完成"
+      state: "深度分析完成"
+      can_rollback_to: true
+
+    - name: "Phase 4 完成"
+      state: "估值和决策完成"
+      can_rollback_to: true
+
+  rollback_procedure:
+    - step: 1
+      action: "识别错误发生的阶段"
+    - step: 2
+      action: "确定最近的有效检查点"
+    - step: 3
+      action: "保存当前错误状态用于分析"
+    - step: 4
+      action: "回滚到检查点状态"
+    - step: 5
+      action: "记录错误原因和改进方向"
+    - step: 6
+      action: "使用改进方法重新执行"
+
+# ============================================================
+# 尝试历史库
+# ============================================================
+attempt_history:
+
+  # 示例记录
+  - attempt_id: ATT_API_20260131_001
+    task_type: "数据获取"
+    task_description: "获取 MU 财务数据"
+
+    attempts:
+      - attempt_number: 1
+        timestamp: "2026-01-31 10:00"
+        method: "FMP API 直接调用"
+        result: "失败"
+        failure_reason: "API 返回 500 错误"
+        failure_category: "tool_failure"
+        error_propagation: "无法计算 ROIC，影响估值分析"
+        next_action: "尝试 100baggers API"
+
+      - attempt_number: 2
+        timestamp: "2026-01-31 10:05"
+        method: "100baggers API"
+        result: "失败"
+        failure_reason: "同样返回错误"
+        failure_category: "external_dependency"
+        error_propagation: "继续无法获取数据"
+        next_action: "降级到 WebSearch"
+
+      - attempt_number: 3
+        timestamp: "2026-01-31 10:10"
+        method: "WebSearch 公开财务数据"
+        result: "成功"
+        success_factors: "公开财报数据可用，标注为 Level B"
+
+    final_outcome: "解决"
+    lessons_extracted: ["LL_141"]
+    skills_updated: ["SKILL_006"]
+
+# ============================================================
+# 统计与分析
+# ============================================================
+statistics:
+  total_attempts: 0
+  success_rate: 0.0
+
+  by_failure_category:
+    data_missing: 0
+    logic_error: 0
+    tool_failure: 0
+    external_dependency: 0
+    assumption_wrong: 0
+
+  most_common_failures: []
+
+  avg_attempts_to_success: 0.0
+
+# ============================================================
+# 自动触发规则
+# ============================================================
+auto_triggers:
+
+  before_task:
+    action: "检索相关尝试历史"
+    query: "task_type={current_task_type} AND final_outcome=解决"
+    purpose: "学习之前成功的方法"
+
+  on_failure:
+    action: "记录失败尝试"
+    required_fields:
+      - method
+      - failure_reason
+      - failure_category
+    auto_suggest: "基于 failure_category 推荐 recovery_strategy"
+
+  on_success:
+    action: "记录成功尝试"
+    extract: "成功因素 → 可能的新 skill"
+
+  on_task_complete:
+    action: "分析尝试历史"
+    if_attempts_gt_2: "提取 lesson"
+    update_statistics: true
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "5 类失败分类"
+      - "错误传播追踪"
+      - "回滚机制"
+    references:
+      - "Anthropic: Demystifying Evals for AI Agents"
+      - "Caltech: EnCompass Framework"

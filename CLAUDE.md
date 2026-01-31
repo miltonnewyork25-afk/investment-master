@@ -201,6 +201,55 @@ MU v18.2 贡献:               TSM v18.0 贡献:
 | `/search-agent-practices` | 快速搜索最新 Agent 最佳实践 |
 | `/compound-now` | 立即执行复利（提取 lessons + 更新记忆） |
 
+### 失败历史追踪（v19.3 新增）⭐
+
+> "一个早期错误会级联传播到后续决策，复合成更大的失败。" — Anthropic Evals
+
+详见：`skills/knowledge_base/attempt_tracker.yaml`
+
+**失败分类**:
+| 类别 | 描述 | 恢复策略 |
+|------|------|---------|
+| 数据缺失 | 所需数据不可用 | 备用数据源/降级 |
+| 逻辑错误 | 推理或计算错误 | 重新检查假设 |
+| 工具失败 | API 或工具出错 | 重试/切换工具 |
+| 外部依赖 | 第三方服务不可用 | 缓存/降级 |
+| 假设错误 | 基础假设被证伪 | 更新假设 |
+
+**强制执行**:
+```
+⛔ 任务失败时必须记录: method + failure_reason + failure_category
+⛔ 重新尝试前必须检索相关历史
+⛔ 同一任务尝试 >3 次时必须提取 lesson
+```
+
+### 记忆整合（v19.3 新增）⭐
+
+> "智能系统的标志是能够用更少做更多——这依赖于从'发生了什么'到'事物如何运作'的转化。"
+
+详见：`skills/core/memory_consolidation_v1.yaml`
+
+**整合流程**:
+```
+Episodic (具体事件)  →  Semantic (通用知识)
+memory/daily.md      →  lessons_learned.yaml
+重复操作            →  procedural_memory.yaml
+重大发现            →  MEMORY.md
+```
+
+**触发条件**:
+| 触发器 | 条件 | 动作 |
+|--------|------|------|
+| 频率触发 | 同类事件 ≥3 次 | 抽象为规则 |
+| 定期触发 | 每周日 | 整合本周记忆 |
+| 压力触发 | memory/ 文件 >30 | 压缩旧记忆 |
+
+**命令**:
+| 命令 | 用途 |
+|------|------|
+| `/consolidate-memory` | 立即执行记忆整合 |
+| `/consolidate-event {type}` | 整合特定事件类型 |
+
 ---
 
 ## ⭐ 核心架构变革（v18.3）
@@ -1158,6 +1207,13 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 ## 版本历史与演进
 
+**v19.3 (2026-01-31)** - 失败追踪 + 记忆整合 ⭐⭐⭐⭐⭐
+- **失败历史追踪**: 记录尝试-失败历史，避免重复犯错
+- **错误传播分析**: 追踪一个错误如何级联影响后续步骤
+- **记忆整合系统**: Episodic → Semantic 自动转化
+- **回滚机制**: 支持回滚到之前的成功检查点
+- **来源**: Anthropic Evals, Caltech EnCompass, ICLR 2026 MemAgents
+
 **v19.2 (2026-01-31)** - Reflection 循环 + Procedural Memory ⭐⭐⭐⭐⭐
 - **Reflection 循环**: Phase 3 新增 Generate→Critique→Improve 自我批评步骤
 - **Procedural Memory**: 新增技能记忆，记录"如何做某事"的最佳实践
@@ -1259,11 +1315,13 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 - `skills/industry/memory_competitor_matrix_v1.yaml` - 竞争对手矩阵
 - `skills/core/management_track_record_v1.yaml` - 管理层评分系统
 
-### 记忆系统（v19.1/v19.2新增）⭐⭐⭐
+### 记忆系统（v19.1-v19.3）⭐⭐⭐
 - `MEMORY.md` - 长期记忆（每次分析前自动加载）
 - `memory/YYYY-MM-DD.md` - 每日记忆
 - `skills/core/agent_self_upgrade_v1.yaml` - 自我升级机制 ⭐核心
-- `skills/knowledge_base/procedural_memory.yaml` - 技能记忆 ⭐v19.2新增
+- `skills/knowledge_base/procedural_memory.yaml` - 技能记忆 ⭐v19.2
+- `skills/knowledge_base/attempt_tracker.yaml` - 失败历史追踪 ⭐v19.3新增
+- `skills/core/memory_consolidation_v1.yaml` - 记忆整合机制 ⭐v19.3新增
 
 ### 数据与学习
 - `skills/knowledge_base/lessons_learned.yaml`
@@ -1281,11 +1339,11 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 ---
 
-**当前版本**: v19.2
+**当前版本**: v19.3
 **更新日期**: 2026-01-31
-**核心理念**: 反思驱动的自我进化 Agent
+**核心理念**: 从错误中学习、自动知识整合的进化 Agent
 
-**v19.2 核心升级（2026 Agent 最佳实践）**:
+**v19.3 核心升级（失败追踪 + 记忆整合）**:
 
 | 能力 | 实现 | 核心功能 |
 |------|------|---------|
@@ -1295,19 +1353,22 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 **框架架构总结**:
 ```
-v19.2 = 通用核心（4阶段/7 Powers/Kill Switch）
+v19.3 = 通用核心（4阶段/7 Powers/Kill Switch）
       + 行业专用（Memory 6层雷达/价格模型/竞争矩阵）
-      + 记忆系统（三层记忆 + Procedural Memory）
+      + 记忆系统（6组件 + 整合机制）
       + 自我升级（定期搜索 + 差距识别）
-      + Reflection 循环（Generate→Critique→Improve）⭐ NEW
+      + Reflection 循环（Generate→Critique→Improve）
+      + 失败追踪（尝试历史 + 错误传播分析）⭐ NEW
+      + 记忆整合（Episodic → Semantic 自动转化）⭐ NEW
 
-记忆架构（6组件，对标 2026 最佳实践）:
+记忆架构（6组件 + 整合）:
 ├─ Core Memory (MEMORY.md)          → 核心身份和能力
 ├─ Episodic Memory (memory/daily)   → 时间戳事件记录
 ├─ Semantic Memory (lessons)        → 通用知识
-├─ Procedural Memory (skills)       → 学习到的技能 ⭐ NEW
+├─ Procedural Memory (skills)       → 学习到的技能
 ├─ Resource Memory (分散)           → 外部资源索引
-└─ Knowledge Vault (knowledge_base) → 持久化知识库
+├─ Knowledge Vault (knowledge_base) → 持久化知识库
+└─ Consolidation (memory_consolidation) → 整合机制 ⭐ NEW
 
 适用行业:
 ├─ Memory（MU/Samsung/SK）   ✅ 已完成
