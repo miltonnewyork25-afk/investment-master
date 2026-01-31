@@ -1,0 +1,309 @@
+# Memory Pricing Model v1.0
+# 存储芯片价格预测模型
+# 适用于: DRAM (DDR4/DDR5/HBM), NAND
+
+version: "1.0"
+created: "2026-01-31"
+applicable_products:
+  - DDR4
+  - DDR5
+  - LPDDR5
+  - HBM3E
+  - HBM4
+  - NAND_3D
+
+# ============================================================
+# 核心设计理念
+# ============================================================
+design_philosophy: |
+  Memory 价格由供需平衡决定，但传统供需分析过于粗糙。
+  本模型构建量化框架，预测价格拐点和变化幅度。
+
+  关键洞察:
+  1. 供给弹性低（扩产需要 2-3 年）
+  2. 需求预测误差大（终端市场波动）
+  3. 库存是供需失衡的缓冲器
+  4. 寡头定价存在隐性协调
+
+# ============================================================
+# 供给侧模型
+# ============================================================
+supply_model:
+
+  capacity_forecast:
+    description: "全球产能预测（等效 8Gb 产能）"
+
+    inputs:
+      - name: "existing_capacity"
+        description: "现有产能（K WPM）"
+        data_source: "TrendForce, 公司财报"
+
+      - name: "new_fab_capacity"
+        description: "新 Fab 贡献产能"
+        lead_time: "24-36 个月"
+        data_source: "公司公告, 设备进厂跟踪"
+
+      - name: "node_migration_gain"
+        description: "制程迁移带来的 bit 增长"
+        typical_value: "30-40% per node"
+        data_source: "技术路线图"
+
+      - name: "utilization_rate"
+        description: "产能利用率"
+        range: "60-100%"
+        data_source: "TrendForce, 公司财报"
+
+    formula: |
+      Effective_Supply(t) = Σ(Capacity_i × Utilization_i × Node_Efficiency_i)
+
+      其中 Node_Efficiency 反映不同节点的 bit 产出效率
+
+  yield_adjustment:
+    description: "良率调整"
+
+    model: "Yield-Learning Curve"
+    formula: |
+      Y(t) = Y₀ + (Y∞ - Y₀) × (1 - e^(-λt))
+
+      Y₀: 初始良率（通常 30-50%）
+      Y∞: 成熟良率（通常 85-95%）
+      λ: 学习速率
+
+    product_specific:
+      DDR5:
+        Y_infinity: 0.92
+        lambda: 0.15
+      HBM3E:
+        Y_infinity: 0.85
+        lambda: 0.10
+      HBM4:
+        Y_infinity: 0.80
+        lambda: 0.08
+
+# ============================================================
+# 需求侧模型
+# ============================================================
+demand_model:
+
+  end_market_segments:
+    - name: "datacenter_ai"
+      description: "数据中心 AI 训练/推理"
+      weight: 0.35
+      growth_driver: "AI 模型参数增长、训练需求"
+      key_metric: "云厂商 AI CapEx"
+      demand_elasticity: -0.3  # 价格不敏感
+
+    - name: "datacenter_general"
+      description: "数据中心通用服务器"
+      weight: 0.20
+      growth_driver: "数据增长、云迁移"
+      key_metric: "服务器出货量"
+      demand_elasticity: -0.8
+
+    - name: "smartphone"
+      description: "智能手机"
+      weight: 0.20
+      growth_driver: "出货量 × 内容增长"
+      key_metric: "手机出货量 × 平均内存"
+      demand_elasticity: -1.2  # 价格敏感
+
+    - name: "pc"
+      description: "PC/笔记本"
+      weight: 0.15
+      growth_driver: "出货量 × 内容增长"
+      key_metric: "PC 出货量 × 平均内存"
+      demand_elasticity: -1.0
+
+    - name: "automotive"
+      description: "汽车电子"
+      weight: 0.05
+      growth_driver: "ADAS 渗透率"
+      key_metric: "汽车出货量 × ADAS 内存"
+      demand_elasticity: -0.5
+
+    - name: "industrial_iot"
+      description: "工业/IoT"
+      weight: 0.05
+      growth_driver: "IoT 设备渗透"
+      key_metric: "IoT 设备出货量"
+      demand_elasticity: -0.7
+
+  content_growth:
+    description: "单设备内存容量增长"
+    typical_rates:
+      smartphone: "15-20% CAGR"
+      pc: "10-15% CAGR"
+      server: "20-25% CAGR"
+      ai_server: "50-100% CAGR"
+
+  formula: |
+    Total_Demand(t) = Σ(Segment_Units × Content_per_Unit × (1 + Price_Elasticity × ΔP))
+
+# ============================================================
+# 供需平衡与价格模型
+# ============================================================
+price_model:
+
+  equilibrium_model:
+    description: "供需平衡决定价格"
+
+    formula: |
+      ΔP = α × (Demand_Growth - Supply_Growth) + β × ΔInventory_Days + ε
+
+      其中:
+      - α: 供需失衡弹性系数
+      - β: 库存影响系数（负值，库存增加→价格下跌）
+      - ε: 随机扰动项
+
+    parameter_estimates:
+      alpha:
+        DRAM: 2.5  # 供需差 1%→价格变化 2.5%
+        HBM: 1.5   # HBM 价格更稳定（长协）
+        NAND: 3.0  # NAND 价格更波动
+
+      beta:
+        DRAM: -0.5  # 库存天数增加 1 天→价格下降 0.5%
+        HBM: -0.2   # HBM 库存影响小
+        NAND: -0.8  # NAND 库存影响大
+
+  inventory_model:
+    description: "库存是供需缓冲器"
+
+    healthy_range:
+      DRAM: "35-50 天"
+      HBM: "20-30 天"
+      NAND: "40-60 天"
+
+    signals:
+      inventory_low: "价格上涨信号"
+      inventory_high: "价格下跌信号"
+      inventory_neutral: "价格稳定"
+
+  contract_vs_spot:
+    description: "合约价 vs 现货价关系"
+
+    interpretation:
+      spot_premium: "供不应求，合约价将上涨"
+      spot_discount: "供过于求，合约价将下跌"
+
+    typical_lag: "现货领先合约 1-2 个月"
+
+# ============================================================
+# HBM 特殊定价模型
+# ============================================================
+hbm_pricing:
+  description: "HBM 定价与 DRAM 不同"
+
+  characteristics:
+    - "长协为主（6-12 个月）"
+    - "客户集中（NVIDIA 占比高）"
+    - "供给紧张（良率限制）"
+    - "寡头定价（隐性协调）"
+
+  pricing_factors:
+    - name: "technology_premium"
+      description: "相比 DDR5 的技术溢价"
+      typical_range: "3-5x $/GB"
+
+    - name: "yield_discount"
+      description: "良率问题导致的成本加成"
+      typical_range: "20-40%"
+
+    - name: "supply_tightness"
+      description: "供给紧张溢价"
+      measurement: "订单 vs 产能比"
+
+    - name: "customer_lock_in"
+      description: "客户锁定溢价"
+      mechanism: "认证周期 18 个月"
+
+  hbm_price_formula: |
+    HBM_Price = DDR5_Price × Tech_Multiple × (1 + Yield_Discount) × Supply_Premium
+
+    典型值:
+    Tech_Multiple = 3.5x
+    Yield_Discount = 25%
+    Supply_Premium = 1.0-1.3x（取决于供需）
+
+# ============================================================
+# 价格拐点预测
+# ============================================================
+turning_point_detection:
+
+  leading_indicators:
+    - name: "inventory_days_change"
+      description: "库存天数变化率"
+      threshold: "连续 2 季度变化 >10 天"
+      lead_time: "3-6 个月"
+
+    - name: "spot_contract_spread"
+      description: "现货-合约价差变化"
+      threshold: "价差从负转正（或反之）"
+      lead_time: "1-2 个月"
+
+    - name: "wafer_starts_momentum"
+      description: "晶圆投片量动量"
+      threshold: "环比变化方向改变"
+      lead_time: "9-12 个月"
+
+    - name: "utilization_threshold"
+      description: "产能利用率阈值"
+      bullish_threshold: ">90%"
+      bearish_threshold: "<80%"
+      lead_time: "6-9 个月"
+
+  composite_signal:
+    formula: |
+      Turning_Point_Prob = f(Inventory, Spot_Spread, Wafer_Starts, Utilization)
+
+      概率 >70% 时发出拐点预警
+
+# ============================================================
+# 输出模板
+# ============================================================
+output_template: |
+  ## Memory 价格预测报告
+
+  **更新日期**: YYYY-MM-DD
+  **预测周期**: 未来 4 个季度
+
+  ### 价格预测
+
+  | 产品 | 当前价格 | Q+1 预测 | Q+2 预测 | Q+3 预测 | Q+4 预测 |
+  |------|---------|---------|---------|---------|---------|
+  | DDR5 8Gb | $X.XX | $X.XX (±X%) | ... | ... | ... |
+  | HBM3E/GB | $X.XX | $X.XX (±X%) | ... | ... | ... |
+  | NAND 256Gb | $X.XX | $X.XX (±X%) | ... | ... | ... |
+
+  ### 供需平衡
+
+  | 指标 | 当前 | Q+1 | Q+2 | 趋势 |
+  |------|-----|-----|-----|------|
+  | 供给增速 | X% | X% | X% | ↑/↓/→ |
+  | 需求增速 | X% | X% | X% | ↑/↓/→ |
+  | 库存天数 | X天 | X天 | X天 | ↑/↓/→ |
+
+  ### 拐点预警
+
+  - 上行拐点概率: XX%
+  - 下行拐点概率: XX%
+  - 关键观察点: [具体指标]
+
+  ### 敏感性分析
+
+  | 场景 | 假设 | 价格影响 |
+  |------|------|---------|
+  | Bull | 需求 +10% | 价格 +XX% |
+  | Bear | 供给 +10% | 价格 -XX% |
+
+# ============================================================
+# 版本历史
+# ============================================================
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "供需平衡模型"
+      - "HBM 特殊定价"
+      - "拐点预测系统"

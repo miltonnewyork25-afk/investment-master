@@ -1,0 +1,592 @@
+# Memory Cycle Intelligence System v1.0
+# 存储行业周期智能系统 - 6层信号雷达
+# 适用于: MU, Samsung Memory, SK Hynix, Kioxia, WDC
+
+version: "1.0"
+created: "2026-01-31"
+applicable_companies:
+  - MU
+  - Samsung_Memory
+  - SK_Hynix
+  - Kioxia
+  - WDC
+
+# ============================================================
+# 核心设计理念
+# ============================================================
+design_philosophy: |
+  Memory 行业是典型的强周期行业，价格波动可达 50%+。
+  传统 4 层雷达系统（v18.x）缺少两个关键层：
+  1. Layer -1: 终端需求信号（最早，18-24个月领先）
+  2. Layer 0.5: Fab 产能信号（供给端核心，9-15个月领先）
+
+  v19.0 升级为 6 层系统，实现从终端需求到财务确认的完整信号链。
+
+# ============================================================
+# 6 层信号系统
+# ============================================================
+signal_layers:
+
+  layer_minus_1:
+    name: "终端需求信号"
+    chinese_name: "终端需求层"
+    lead_time_months: "18-24"
+    description: "下游终端市场需求变化，是最早的需求端信号"
+
+    indicators:
+      ai_demand:
+        name: "AI 训练芯片出货量"
+        proxy_metrics:
+          - "NVIDIA 数据中心收入增速"
+          - "NVIDIA GPU 出货量"
+          - "云厂商 AI CapEx 指引"
+        data_sources:
+          - "NVIDIA 财报"
+          - "IDC/Gartner"
+          - "云厂商财报（MSFT/GOOGL/AMZN/META）"
+        signal_interpretation:
+          bullish: "增速 >30% YoY"
+          neutral: "增速 10-30% YoY"
+          bearish: "增速 <10% YoY 或负增长"
+
+      datacenter_servers:
+        name: "数据中心服务器出货量"
+        proxy_metrics:
+          - "全球服务器出货量"
+          - "AI 服务器占比"
+        data_sources:
+          - "IDC"
+          - "Gartner"
+          - "TrendForce"
+        signal_interpretation:
+          bullish: "增速 >15% YoY"
+          neutral: "增速 5-15% YoY"
+          bearish: "增速 <5% YoY"
+
+      smartphone_units:
+        name: "智能手机出货量"
+        proxy_metrics:
+          - "全球智能手机出货量"
+          - "高端机型占比"
+          - "平均内存容量"
+        data_sources:
+          - "IDC"
+          - "Counterpoint"
+          - "Strategy Analytics"
+        signal_interpretation:
+          bullish: "增速 >5% YoY + 内存容量增长 >20%"
+          neutral: "增速 0-5% YoY"
+          bearish: "负增长"
+
+      pc_units:
+        name: "PC 出货量"
+        proxy_metrics:
+          - "全球 PC 出货量"
+          - "AI PC 占比"
+        data_sources:
+          - "IDC"
+          - "Gartner"
+        signal_interpretation:
+          bullish: "增速 >5% YoY"
+          neutral: "增速 -5% 至 5% YoY"
+          bearish: "增速 <-5% YoY"
+
+      automotive_adas:
+        name: "汽车 ADAS 渗透率"
+        proxy_metrics:
+          - "L2+ ADAS 渗透率"
+          - "汽车 Memory 内容增长"
+        data_sources:
+          - "IHS Markit"
+          - "S&P Global Mobility"
+        signal_interpretation:
+          bullish: "渗透率增速 >10ppt YoY"
+          neutral: "渗透率增速 5-10ppt YoY"
+          bearish: "渗透率增速 <5ppt YoY"
+
+    composite_signal:
+      calculation: |
+        Layer -1 Score = 0.4 × AI_Demand + 0.25 × Datacenter +
+                        0.15 × Smartphone + 0.1 × PC + 0.1 × Auto
+      interpretation:
+        bullish: "Score > 0.7"
+        neutral: "Score 0.4-0.7"
+        bearish: "Score < 0.4"
+
+  # --------------------------------------------------------
+  layer_0:
+    name: "设备订单/交期信号"
+    chinese_name: "设备订单层"
+    lead_time_months: "12-18"
+    description: "半导体设备订单和交期变化，反映未来产能投资意愿"
+
+    indicators:
+      asml_euv_backlog:
+        name: "ASML EUV 订单积压"
+        unit: "台"
+        data_sources:
+          - "ASML 财报"
+          - "分析师报告"
+        signal_interpretation:
+          bullish: "积压 >50 台，交期 >18 个月"
+          neutral: "积压 30-50 台，交期 12-18 个月"
+          bearish: "积压 <30 台，交期 <12 个月"
+
+      lrcx_orders:
+        name: "LRCX 刻蚀设备订单"
+        proxy_metrics:
+          - "Book-to-Bill 比率"
+          - "Memory 订单占比"
+        data_sources:
+          - "LRCX 财报"
+        signal_interpretation:
+          bullish: "B2B >1.1，Memory 占比上升"
+          neutral: "B2B 0.9-1.1"
+          bearish: "B2B <0.9，Memory 占比下降"
+
+      equipment_lead_time:
+        name: "设备交期变化"
+        proxy_metrics:
+          - "主要设备商交期（月）"
+        data_sources:
+          - "设备商财报"
+          - "产业链调研"
+        signal_interpretation:
+          bullish: "交期延长 >3 个月"
+          neutral: "交期稳定"
+          bearish: "交期缩短 >3 个月"
+
+      semicap_revenue_growth:
+        name: "设备商收入增速"
+        proxy_metrics:
+          - "LRCX/AMAT/KLAC Memory 收入增速"
+        data_sources:
+          - "设备商财报"
+        signal_interpretation:
+          bullish: "增速 >20% YoY"
+          neutral: "增速 0-20% YoY"
+          bearish: "负增长"
+
+    composite_signal:
+      calculation: |
+        Layer 0 Score = 0.3 × ASML_EUV + 0.3 × LRCX +
+                       0.2 × Lead_Time + 0.2 × Semicap_Rev
+      interpretation:
+        bullish: "Score > 0.7"
+        neutral: "Score 0.4-0.7"
+        bearish: "Score < 0.4"
+
+  # --------------------------------------------------------
+  layer_0_5:
+    name: "Fab 产能信号"
+    chinese_name: "Fab 产能层"
+    lead_time_months: "9-15"
+    description: "晶圆厂产能利用率和投片量，供给端核心指标"
+
+    indicators:
+      wafer_starts:
+        name: "晶圆投片量"
+        unit: "K WPM (千片/月)"
+        data_sources:
+          - "TrendForce"
+          - "公司财报"
+          - "SEMI"
+        signal_interpretation:
+          bullish: "环比增长 >5%"
+          neutral: "环比变化 -5% 至 5%"
+          bearish: "环比下降 >5%"
+
+      fab_utilization:
+        name: "Fab 产能利用率"
+        unit: "%"
+        data_sources:
+          - "TrendForce"
+          - "公司财报"
+          - "分析师报告"
+        signal_interpretation:
+          bullish: ">90%"
+          neutral: "80-90%"
+          bearish: "<80%"
+
+      node_migration:
+        name: "制程节点迁移进度"
+        proxy_metrics:
+          - "先进节点产能占比"
+          - "新节点良率爬坡进度"
+        data_sources:
+          - "公司财报"
+          - "分析师报告"
+        signal_interpretation:
+          bullish: "先进节点占比提升 >10ppt YoY"
+          neutral: "占比提升 5-10ppt YoY"
+          bearish: "占比提升 <5ppt YoY 或下降"
+
+      new_fab_construction:
+        name: "新 Fab 建设进度"
+        proxy_metrics:
+          - "在建 Fab 数量"
+          - "设备进厂时间表"
+        data_sources:
+          - "公司公告"
+          - "产业链新闻"
+        signal_interpretation:
+          bullish: "建设延迟或暂停"
+          neutral: "按计划进行"
+          bearish: "建设加速"
+
+    composite_signal:
+      calculation: |
+        Layer 0.5 Score = 0.35 × Wafer_Starts + 0.35 × Fab_Util +
+                         0.15 × Node_Migration + 0.15 × New_Fab
+      interpretation:
+        bullish: "Score > 0.7 (供给紧张)"
+        neutral: "Score 0.4-0.7"
+        bearish: "Score < 0.4 (供给过剩)"
+
+  # --------------------------------------------------------
+  layer_1:
+    name: "CapEx/产能计划信号"
+    chinese_name: "资本开支层"
+    lead_time_months: "6-12"
+    description: "公司资本开支计划和产能规划，反映管理层对周期的判断"
+
+    indicators:
+      capex_guidance:
+        name: "CapEx 指引变化"
+        proxy_metrics:
+          - "CapEx 指引同比变化"
+          - "CapEx 指引上修/下修"
+        data_sources:
+          - "公司财报"
+          - "分析师报告"
+        signal_interpretation:
+          bullish: "指引上修 >15%"
+          neutral: "指引变化 -15% 至 15%"
+          bearish: "指引下修 >15%"
+
+      hbm_capacity_plan:
+        name: "HBM 产能规划"
+        proxy_metrics:
+          - "HBM 产能目标（K WPM）"
+          - "HBM 产能增速"
+        data_sources:
+          - "公司财报"
+          - "产业链调研"
+        signal_interpretation:
+          bullish: "产能增速 >50% YoY"
+          neutral: "产能增速 20-50% YoY"
+          bearish: "产能增速 <20% YoY"
+
+      tech_transition_timeline:
+        name: "技术转换时间表"
+        proxy_metrics:
+          - "DDR5 产能占比目标"
+          - "1β/1γ 节点转换进度"
+        data_sources:
+          - "公司财报"
+          - "分析师报告"
+        signal_interpretation:
+          bullish: "转换加速（成本下降预期）"
+          neutral: "按计划进行"
+          bearish: "转换延迟（良率问题）"
+
+    composite_signal:
+      calculation: |
+        Layer 1 Score = 0.4 × CapEx + 0.4 × HBM_Capacity + 0.2 × Tech_Transition
+      interpretation:
+        bullish: "Score > 0.7"
+        neutral: "Score 0.4-0.7"
+        bearish: "Score < 0.4"
+
+  # --------------------------------------------------------
+  layer_2:
+    name: "库存/价格信号"
+    chinese_name: "库存价格层"
+    lead_time_months: "0-6"
+    description: "渠道库存和价格变化，最接近实时的供需信号"
+
+    indicators:
+      channel_inventory:
+        name: "渠道库存天数"
+        unit: "天"
+        data_sources:
+          - "公司财报"
+          - "TrendForce"
+          - "渠道调研"
+        signal_interpretation:
+          bullish: "<40 天"
+          neutral: "40-60 天"
+          bearish: ">60 天"
+
+      contract_price_ddr5:
+        name: "DDR5 合约价"
+        unit: "$/8Gb"
+        data_sources:
+          - "DRAMeXchange"
+          - "TrendForce"
+        signal_interpretation:
+          bullish: "环比上涨 >5%"
+          neutral: "环比变化 -5% 至 5%"
+          bearish: "环比下跌 >5%"
+
+      contract_price_hbm:
+        name: "HBM 合约价"
+        unit: "$/GB"
+        data_sources:
+          - "分析师报告"
+          - "产业链调研"
+        signal_interpretation:
+          bullish: "稳定或上涨"
+          neutral: "小幅下跌 <10%"
+          bearish: "下跌 >10%"
+
+      spot_premium:
+        name: "现货溢价"
+        proxy_metrics:
+          - "现货价 vs 合约价"
+        data_sources:
+          - "DRAMeXchange"
+        signal_interpretation:
+          bullish: "现货溢价 >10%"
+          neutral: "现货溢价 0-10%"
+          bearish: "现货折价"
+
+      inventory_writedown:
+        name: "库存减值"
+        data_sources:
+          - "公司财报"
+        signal_interpretation:
+          bullish: "无减值或冲回"
+          neutral: "小额减值"
+          bearish: "大额减值（>$500M）"
+
+    composite_signal:
+      calculation: |
+        Layer 2 Score = 0.25 × Inventory + 0.25 × DDR5_Price +
+                       0.25 × HBM_Price + 0.15 × Spot + 0.1 × Writedown
+      interpretation:
+        bullish: "Score > 0.7"
+        neutral: "Score 0.4-0.7"
+        bearish: "Score < 0.4"
+
+  # --------------------------------------------------------
+  layer_3:
+    name: "财务确认信号"
+    chinese_name: "财务确认层"
+    lead_time_months: "滞后"
+    description: "财务报表确认，是滞后指标但提供最终验证"
+
+    indicators:
+      revenue_growth:
+        name: "收入增速"
+        data_sources:
+          - "公司财报"
+        signal_interpretation:
+          bullish: "增速 >30% YoY"
+          neutral: "增速 0-30% YoY"
+          bearish: "负增长"
+
+      gross_margin:
+        name: "毛利率"
+        data_sources:
+          - "公司财报"
+        signal_interpretation:
+          bullish: ">45%"
+          neutral: "35-45%"
+          bearish: "<35%"
+
+      asp_change:
+        name: "ASP 变化"
+        data_sources:
+          - "公司财报"
+          - "分析师拆分"
+        signal_interpretation:
+          bullish: "环比上涨 >5%"
+          neutral: "环比变化 -5% 至 5%"
+          bearish: "环比下跌 >5%"
+
+      bit_growth:
+        name: "Bit 出货增速"
+        data_sources:
+          - "公司财报"
+        signal_interpretation:
+          bullish: "增速 <ASP 增速（价升量稳）"
+          neutral: "增速 ≈ ASP 增速"
+          bearish: "增速 >ASP 增速（量增价跌）"
+
+    composite_signal:
+      calculation: |
+        Layer 3 Score = 0.3 × Revenue + 0.3 × Margin + 0.2 × ASP + 0.2 × Bit
+      interpretation:
+        bullish: "Score > 0.7"
+        neutral: "Score 0.4-0.7"
+        bearish: "Score < 0.4"
+
+# ============================================================
+# 周期温度计
+# ============================================================
+cycle_thermometer:
+  description: "基于 6 层信号的综合周期温度"
+
+  calculation: |
+    Temperature = 0.10 × Layer_-1 + 0.15 × Layer_0 + 0.20 × Layer_0.5 +
+                  0.20 × Layer_1 + 0.25 × Layer_2 + 0.10 × Layer_3
+
+    温度范围: 0-100
+
+  phase_mapping:
+    P1_trough:
+      temperature_range: "0-20"
+      characteristics:
+        - "Fab 利用率 <70%"
+        - "价格持续下跌"
+        - "大额库存减值"
+        - "CapEx 大幅削减"
+      action: "逆周期建仓"
+
+    P2_early_recovery:
+      temperature_range: "20-40"
+      characteristics:
+        - "价格止跌企稳"
+        - "库存天数下降"
+        - "设备订单回暖"
+      action: "加仓"
+
+    P3_recovery:
+      temperature_range: "40-60"
+      characteristics:
+        - "价格上涨"
+        - "Fab 利用率回升至 85%+"
+        - "CapEx 指引上修"
+      action: "持有"
+
+    P4_boom:
+      temperature_range: "60-80"
+      characteristics:
+        - "供不应求"
+        - "价格大幅上涨"
+        - "Fab 利用率 >95%"
+        - "设备交期延长"
+      action: "设止盈，准备减仓"
+
+    P5_peak:
+      temperature_range: "80-100"
+      characteristics:
+        - "价格见顶"
+        - "库存开始累积"
+        - "CapEx 达峰值"
+        - "新产能即将释放"
+      action: "逐步减仓，等待下一周期"
+
+# ============================================================
+# 信号传导时间表
+# ============================================================
+signal_propagation:
+  timeline: |
+    Layer -1 (终端需求) ──18-24月──> Layer 0 (设备订单)
+           │
+           ▼ 12-18月
+    Layer 0 (设备订单) ──6-12月───> Layer 0.5 (Fab产能)
+           │
+           ▼ 6-9月
+    Layer 0.5 (Fab产能) ──3-6月───> Layer 1 (CapEx)
+           │
+           ▼ 3-6月
+    Layer 1 (CapEx) ──3-6月──────> Layer 2 (库存/价格)
+           │
+           ▼ 0-3月
+    Layer 2 (库存/价格) ──1-2季度─> Layer 3 (财务确认)
+
+  leading_indicator_matrix:
+    most_leading: "Layer -1: 终端需求"
+    supply_leading: "Layer 0.5: Fab 产能"
+    actionable: "Layer 2: 库存/价格"
+    confirmation: "Layer 3: 财务"
+
+# ============================================================
+# Kill Switch 集成
+# ============================================================
+kill_switches:
+  layer_based:
+    - id: "KS_L-1_001"
+      layer: "Layer -1"
+      trigger: "AI CapEx 指引下调 >20%"
+      lead_time: "18-24 个月"
+      action: "审视整体持仓，准备对冲"
+
+    - id: "KS_L0_001"
+      layer: "Layer 0"
+      trigger: "设备订单增速转负"
+      lead_time: "12-18 个月"
+      action: "减少 Memory 敞口"
+
+    - id: "KS_L05_001"
+      layer: "Layer 0.5"
+      trigger: "Wafer Starts 环比下降 >10%"
+      lead_time: "9-15 个月"
+      action: "密切监测，准备减仓"
+
+    - id: "KS_L05_002"
+      layer: "Layer 0.5"
+      trigger: "Fab 利用率降至 <80%"
+      lead_time: "6-12 个月"
+      action: "减仓 50%"
+
+    - id: "KS_L2_001"
+      layer: "Layer 2"
+      trigger: "渠道库存 >60 天"
+      lead_time: "3-6 个月"
+      action: "设止损，准备退出"
+
+    - id: "KS_L2_002"
+      layer: "Layer 2"
+      trigger: "HBM 价格单季下跌 >15%"
+      lead_time: "即时"
+      action: "立即减仓，重新评估"
+
+# ============================================================
+# 输出模板
+# ============================================================
+output_template: |
+  ## Memory 周期雷达仪表盘
+
+  **更新日期**: YYYY-MM-DD
+  **周期温度**: XX/100
+  **周期阶段**: PX (阶段名称)
+
+  ### 6 层信号状态
+
+  | 层级 | 名称 | 领先时间 | 信号 | 评分 | 关键指标 |
+  |------|------|---------|------|------|---------|
+  | L-1 | 终端需求 | 18-24月 | 🟢/🟡/🔴 | X/10 | AI CapEx +XX% |
+  | L0 | 设备订单 | 12-18月 | 🟢/🟡/🔴 | X/10 | B2B X.XX |
+  | L0.5 | Fab产能 | 9-15月 | 🟢/🟡/🔴 | X/10 | 利用率 XX% |
+  | L1 | CapEx | 6-12月 | 🟢/🟡/🔴 | X/10 | 指引 +XX% |
+  | L2 | 库存/价格 | 0-6月 | 🟢/🟡/🔴 | X/10 | DDR5 +XX% QoQ |
+  | L3 | 财务确认 | 滞后 | 🟢/🟡/🔴 | X/10 | 毛利率 XX% |
+
+  ### Kill Switch 状态
+
+  | ID | 触发条件 | 当前值 | 状态 |
+  |----|---------|-------|------|
+  | KS_L-1_001 | AI CapEx 下调 >20% | +XX% | 🟢 |
+  | ... | ... | ... | ... |
+
+  ### 建议行动
+
+  - 当前位置: [周期阶段描述]
+  - 建议: [持有/加仓/减仓/观望]
+  - 下一关注点: [关键指标及时间]
+
+# ============================================================
+# 版本历史
+# ============================================================
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "基于 v18.3 4层雷达升级为6层"
+      - "新增 Layer -1 终端需求层"
+      - "新增 Layer 0.5 Fab产能层"
+      - "集成 Kill Switch 系统"

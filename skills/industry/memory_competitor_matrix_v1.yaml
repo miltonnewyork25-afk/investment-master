@@ -1,0 +1,293 @@
+# Memory Competitor Matrix v1.0
+# 存储行业竞争对手对比矩阵
+# 适用于: MU, Samsung Memory, SK Hynix
+
+version: "1.0"
+created: "2026-01-31"
+applicable_companies:
+  primary:
+    - MU
+    - Samsung_Memory
+    - SK_Hynix
+  secondary:
+    - Kioxia
+    - WDC
+    - YMTC  # 中国：长江存储
+    - CXMT  # 中国：长鑫存储
+
+# ============================================================
+# 核心设计理念
+# ============================================================
+design_philosophy: |
+  Memory 行业是典型的寡头格局，三家公司（MU/Samsung/SK Hynix）
+  占据 DRAM 95%+ 市场份额。
+
+  竞争分析需要系统化对比，而非单独分析每家公司。
+  本模块提供标准化的竞争对比框架。
+
+# ============================================================
+# 对比维度
+# ============================================================
+comparison_dimensions:
+
+  # --------------------------------------------------------
+  technology:
+    name: "技术能力"
+    weight: 0.25
+
+    metrics:
+      leading_node:
+        name: "最先进制程节点"
+        unit: "nm"
+        better: "lower"
+        example:
+          MU: "1β (13nm pitch)"
+          Samsung: "1β (14nm pitch)"
+          SK_Hynix: "1β (12nm pitch)"
+
+      hbm_stack:
+        name: "HBM 堆叠层数"
+        unit: "层"
+        better: "higher"
+        current_gen: "HBM3E: 8-12层"
+        next_gen: "HBM4: 12-16层"
+
+      hbm_yield:
+        name: "HBM 良率"
+        unit: "%"
+        better: "higher"
+        benchmark: "85% = 行业领先"
+
+      patent_count:
+        name: "专利数量"
+        better: "higher"
+        focus_areas:
+          - "TSV 技术"
+          - "堆叠封装"
+          - "低功耗设计"
+
+      rd_intensity:
+        name: "研发强度"
+        unit: "R&D/Revenue %"
+        better: "higher"
+        benchmark: "8-12%"
+
+  # --------------------------------------------------------
+  capacity:
+    name: "产能规模"
+    weight: 0.20
+
+    metrics:
+      total_capacity:
+        name: "总产能"
+        unit: "K WPM"
+        better: "context-dependent"
+
+      hbm_capacity_share:
+        name: "HBM 产能占比"
+        unit: "%"
+        better: "higher"
+        benchmark: "15-25%"
+
+      expansion_plan:
+        name: "扩产计划"
+        unit: "K WPM 增量"
+        timeline: "未来 3 年"
+
+      fab_locations:
+        name: "Fab 地理分布"
+        risk_factor: "地缘集中度"
+
+  # --------------------------------------------------------
+  financial:
+    name: "财务实力"
+    weight: 0.20
+
+    metrics:
+      gross_margin:
+        name: "毛利率"
+        unit: "%"
+        better: "higher"
+        cycle_adjusted: true  # 需要周期调整
+
+      roic:
+        name: "ROIC"
+        unit: "%"
+        better: "higher"
+        benchmark: "15%+"
+
+      net_cash:
+        name: "净现金/负债"
+        unit: "$B"
+        better: "positive"
+
+      capex_intensity:
+        name: "CapEx 强度"
+        unit: "CapEx/Revenue %"
+        optimal_range: "30-40%"
+
+      fcf_generation:
+        name: "自由现金流"
+        unit: "$B"
+        better: "positive"
+
+  # --------------------------------------------------------
+  customer:
+    name: "客户关系"
+    weight: 0.20
+
+    metrics:
+      customer_concentration:
+        name: "Top 5 客户集中度"
+        unit: "%"
+        risk: "higher = more concentrated"
+
+      nvidia_share:
+        name: "NVIDIA HBM 份额"
+        unit: "%"
+        better: "higher"
+        strategic_importance: "critical"
+
+      long_term_agreement:
+        name: "长协覆盖率"
+        unit: "%"
+        better: "higher"
+        provides: "收入可见性"
+
+      customer_qualification:
+        name: "客户认证数量"
+        better: "higher"
+        switching_cost_proxy: true
+
+  # --------------------------------------------------------
+  execution:
+    name: "执行能力"
+    weight: 0.15
+
+    metrics:
+      guidance_accuracy:
+        name: "指引准确率"
+        measurement: "MAPE of guidance vs actual"
+        better: "lower"
+
+      capex_timing:
+        name: "CapEx 周期时机"
+        measurement: "逆周期 vs 顺周期"
+        better: "逆周期"
+
+      yield_ramp_speed:
+        name: "良率爬坡速度"
+        unit: "月到成熟良率"
+        better: "lower"
+
+      management_tenure:
+        name: "管理层任期"
+        unit: "年"
+        stability_indicator: true
+
+# ============================================================
+# 竞争格局分析
+# ============================================================
+competitive_landscape:
+
+  market_share:
+    dram_overall:
+      SK_Hynix: "45%"
+      Samsung: "40%"
+      MU: "15%"
+      source: "TrendForce"
+
+    hbm:
+      SK_Hynix: "53%"
+      Samsung: "25%"
+      MU: "22%"
+      source: "TrendForce, 2025"
+
+    ddr5:
+      Samsung: "42%"
+      SK_Hynix: "35%"
+      MU: "23%"
+      source: "估算"
+
+  competitive_dynamics:
+    price_war_risk:
+      assessment: "低"
+      reason: "寡头格局 + 产能纪律"
+
+    technology_gap:
+      hbm: "SK Hynix 领先 6-12 个月"
+      dram_node: "三家基本同步"
+
+    china_threat:
+      cxmt:
+        current: "DDR4 量产，DDR5 追赶"
+        hbm_timeline: "2028-2030 可能"
+        market_impact: "中低端价格压力"
+
+# ============================================================
+# 输出模板
+# ============================================================
+output_template: |
+  ## Memory 竞争对手对比矩阵
+
+  **更新日期**: YYYY-MM-DD
+
+  ### 综合评分
+
+  | 维度 | 权重 | MU | Samsung | SK Hynix | 备注 |
+  |------|------|-----|---------|----------|------|
+  | 技术能力 | 25% | X/10 | X/10 | X/10 | |
+  | 产能规模 | 20% | X/10 | X/10 | X/10 | |
+  | 财务实力 | 20% | X/10 | X/10 | X/10 | |
+  | 客户关系 | 20% | X/10 | X/10 | X/10 | |
+  | 执行能力 | 15% | X/10 | X/10 | X/10 | |
+  | **加权总分** | 100% | **X/10** | **X/10** | **X/10** | |
+
+  ### 关键指标对比
+
+  | 指标 | MU | Samsung | SK Hynix | 领先者 |
+  |------|-----|---------|----------|--------|
+  | HBM 良率 | XX% | XX% | XX% | SK |
+  | HBM 份额 | XX% | XX% | XX% | SK |
+  | NVIDIA 份额 | XX% | XX% | XX% | SK |
+  | 毛利率 | XX% | XX% | XX% | ? |
+  | 净现金 | $XB | $XB | $XB | ? |
+  | 指引准确率 | XX% | XX% | XX% | ? |
+
+  ### 竞争优劣势分析
+
+  **MU**
+  - 优势: [列出]
+  - 劣势: [列出]
+  - 机会: [列出]
+  - 威胁: [列出]
+
+  **Samsung**
+  - 优势: [列出]
+  - 劣势: [列出]
+  - 机会: [列出]
+  - 威胁: [列出]
+
+  **SK Hynix**
+  - 优势: [列出]
+  - 劣势: [列出]
+  - 机会: [列出]
+  - 威胁: [列出]
+
+  ### 投资含义
+
+  - 最具投资价值: [公司名称及原因]
+  - 风险最高: [公司名称及原因]
+  - 边际改善最大: [公司名称及原因]
+
+# ============================================================
+# 版本历史
+# ============================================================
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "5大维度对比框架"
+      - "竞争格局分析"
+      - "中国威胁评估"

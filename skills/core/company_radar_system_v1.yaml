@@ -1,0 +1,406 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# QUICK INDEX
+# ═══════════════════════════════════════════════════════════════════════════
+# 名称: Company Radar System / 公司雷达信号系统
+# 版本: 1.0
+#
+# 一句话: 通过领先指标追踪系统，在股价变动前捕捉信号
+#
+# 何时用:
+#   - 分析周期性行业公司时（半导体、Memory、设备）
+#   - 需要建立领先信号追踪体系时
+#   - 需要区分"信号"vs"噪声"时
+#
+# 输入: 公司ticker + 行业定位 + 上下游关系
+# 输出: 4层雷达信号表 + 历史回测验证 + 信号时间线
+#
+# 依赖: ecosystem_graph_agent (生态图谱), data_integrity_agent (数据验证)
+# 被依赖: research_mechanism_agent, quality_gate_agent
+#
+# 状态: active
+# ═══════════════════════════════════════════════════════════════════════════
+
+agent:
+  id: company_radar_system
+  version: "1.0"
+  name: "Company Radar System"
+  description: |
+    4层雷达信号追踪系统：
+    - Layer 0: 上游设备订单（领先12-18个月）
+    - Layer 1: 产能利用率/资本支出（领先6-12个月）
+    - Layer 2: 库存/价格/ASP（领先3-6个月）
+    - Layer 3: 营收/盈利（同步/滞后指标）
+
+    核心理念：股价是最后知道消息的人
+
+---
+
+# 理论基础
+theory_foundation:
+  signal_propagation:
+    - name: "Industry Signal Propagation Model"
+      application: "信号从上游设备商传导至下游终端厂商"
+      key_insight: |
+        ASML/LRCX订单 → 产能扩张 → 库存变化 → 价格变化 → 营收变化
+        领先时间：12-18个月 → 6-12个月 → 3-6个月 → 同步
+
+  cycle_indicators:
+    - name: "Semiconductor Cycle Framework"
+      application: "周期定位与拐点识别"
+      phases:
+        - P1_BOTTOM: "低利用率、低库存、低价格、设备订单触底"
+        - P2_RECOVERY: "利用率回升、库存开始rebuild、价格企稳"
+        - P3_EXPANSION: "产能扩张、设备订单激增、价格上涨"
+        - P4_OVERHEAT: "利用率见顶、库存堆积、价格松动"
+        - P5_CORRECTION: "产能过剩、库存高企、价格下跌"
+
+---
+
+# 4层雷达系统定义
+radar_layers:
+  layer_0_upstream_orders:
+    name: "上游设备订单层"
+    lead_time: "12-18 months"
+    description: "设备商订单是产能周期的最领先指标"
+    signals:
+      - signal_id: "RADAR_L0_001"
+        name: "ASML EUV订单"
+        data_source: "ASML财报/电话会"
+        frequency: "Quarterly"
+        threshold:
+          bullish: "订单同比增长>50% 或 backlog>1.5年收入"
+          neutral: "订单同比增长0-50%"
+          bearish: "订单同比下降"
+        current_reading:
+          date: "2026-01-29"
+          value: "Q4 2025订单€13.2B (vs 预期€6.85B，近2倍)"
+          backlog: "€38.8B = 1.2x 2025收入"
+          signal: "EXTREME_BULLISH"
+          note: "Memory订单56%首超Logic，HBM/DDR驱动"
+
+      - signal_id: "RADAR_L0_002"
+        name: "LRCX订单/收入增速"
+        data_source: "LRCX财报"
+        frequency: "Quarterly"
+        threshold:
+          bullish: "收入同比增长>20%"
+          neutral: "收入同比增长0-20%"
+          bearish: "收入同比下降"
+        current_reading:
+          date: "2026-01-29"
+          value: "FY Q1 2026收入同比增长28%"
+          note: "HBM/GAA驱动，SAM占比扩至mid-30s%"
+          signal: "BULLISH"
+
+      - signal_id: "RADAR_L0_003"
+        name: "AMAT/KLAC订单趋势"
+        data_source: "AMAT/KLAC财报"
+        frequency: "Quarterly"
+        threshold:
+          bullish: "订单同比增长>15%"
+          bearish: "订单同比下降"
+
+  layer_1_capacity_capex:
+    name: "产能/资本支出层"
+    lead_time: "6-12 months"
+    description: "Memory厂商CapEx计划反映对需求的预期"
+    signals:
+      - signal_id: "RADAR_L1_001"
+        name: "Micron CapEx计划"
+        data_source: "MU财报/Guidance"
+        frequency: "Quarterly"
+        threshold:
+          bullish: "CapEx同比增长>30%"
+          neutral: "CapEx同比增长0-30%"
+          bearish: "CapEx同比下降"
+        current_reading:
+          date: "2026-01-29"
+          value: "FY2026 CapEx $20B (vs FY2025 $14B，+45%)"
+          signal: "BULLISH"
+          note: "主要用于HBM产能扩张"
+
+      - signal_id: "RADAR_L1_002"
+        name: "Samsung HBM产能计划"
+        data_source: "公开报道/供应链调研"
+        frequency: "Quarterly"
+        threshold:
+          bullish: "产能同比增长>30%"
+        current_reading:
+          date: "2026-01-29"
+          value: "2026年HBM产能目标25万片/月 (vs当前17万，+47%)"
+          signal: "BULLISH"
+
+      - signal_id: "RADAR_L1_003"
+        name: "SK Hynix HBM产能计划"
+        data_source: "公开报道/供应链调研"
+        frequency: "Quarterly"
+        current_reading:
+          date: "2026-01-29"
+          value: "M15X fab提前4个月量产，1b DRAM for HBM4"
+          signal: "BULLISH"
+
+      - signal_id: "RADAR_L1_004"
+        name: "台积电利用率"
+        data_source: "TSM财报/供应链"
+        frequency: "Monthly"
+        threshold:
+          bullish: ">90%"
+          neutral: "75-90%"
+          bearish: "<75%"
+
+  layer_2_inventory_price:
+    name: "库存/价格层"
+    lead_time: "3-6 months"
+    description: "库存和价格变化是营收的近期预兆"
+    signals:
+      - signal_id: "RADAR_L2_001"
+        name: "DRAM现货价格趋势"
+        data_source: "DRAMeXchange/TrendForce"
+        frequency: "Weekly"
+        threshold:
+          bullish: "价格同比上涨>20%"
+          neutral: "价格同比变化±20%"
+          bearish: "价格同比下跌>20%"
+
+      - signal_id: "RADAR_L2_002"
+        name: "NAND现货价格趋势"
+        data_source: "DRAMeXchange/TrendForce"
+        frequency: "Weekly"
+        threshold:
+          bullish: "价格同比上涨>20%"
+          bearish: "价格同比下跌>20%"
+
+      - signal_id: "RADAR_L2_003"
+        name: "OEM/云厂商库存天数"
+        data_source: "公司财报/供应链调研"
+        frequency: "Quarterly"
+        threshold:
+          bullish: "库存天数<正常水平20%"
+          neutral: "库存天数在正常范围"
+          bearish: "库存天数>正常水平20%"
+
+      - signal_id: "RADAR_L2_004"
+        name: "HBM合约价格趋势"
+        data_source: "供应链调研"
+        frequency: "Quarterly"
+        threshold:
+          bullish: "合约价格环比上涨"
+          bearish: "合约价格环比下跌"
+
+  layer_3_revenue_earnings:
+    name: "营收/盈利层"
+    lead_time: "0 months (同步/滞后)"
+    description: "财报数据是确认信号，不是预测信号"
+    signals:
+      - signal_id: "RADAR_L3_001"
+        name: "MU收入增速"
+        data_source: "MU财报"
+        frequency: "Quarterly"
+        threshold:
+          bullish: "收入同比增长>30%"
+          neutral: "收入同比增长0-30%"
+          bearish: "收入同比下降"
+
+      - signal_id: "RADAR_L3_002"
+        name: "MU毛利率趋势"
+        data_source: "MU财报"
+        frequency: "Quarterly"
+        threshold:
+          bullish: "毛利率>40%且环比改善"
+          neutral: "毛利率30-40%"
+          bearish: "毛利率<30%或环比恶化"
+
+      - signal_id: "RADAR_L3_003"
+        name: "MU库存天数"
+        data_source: "MU财报"
+        frequency: "Quarterly"
+        threshold:
+          bullish: "<120天且环比下降"
+          neutral: "120-150天"
+          bearish: ">150天或环比快速上升"
+
+---
+
+# 信号传导时间线模型
+signal_propagation_timeline:
+  description: |
+    信号从Layer 0传导至股价的典型时间线
+
+  memory_cycle_example:
+    trigger: "AI需求爆发"
+    timeline:
+      - month_0: "NVIDIA订单激增，传导至HBM需求"
+      - month_3_6: "SK Hynix/Samsung/Micron HBM订单积压"
+      - month_6_9: "Memory厂商上调CapEx"
+      - month_9_12: "ASML/LRCX/AMAT订单激增"
+      - month_12_18: "新产能投产"
+      - month_18_24: "供给增加，价格见顶风险"
+
+  current_position:
+    date: "2026-01"
+    analysis: |
+      - Layer 0: ASML订单创纪录（€13.2B），LRCX增长28% → EXTREME_BULLISH
+      - Layer 1: MU CapEx+45%，Samsung/SK HBM扩产40-50% → BULLISH
+      - Layer 2: 价格仍在上涨通道，库存可控 → BULLISH
+      - Layer 3: MU收入增长强劲，毛利率恢复 → BULLISH
+
+      综合判断：处于周期P3-P4过渡期，上游设备订单已见顶信号
+      关键监测：2026 Q2-Q3 ASML订单是否能持续，HBM价格是否企稳
+
+---
+
+# 历史回测验证
+historical_backtest:
+  cycle_2018:
+    description: "2017-2019年Memory周期"
+    timeline:
+      - "2017 Q1-Q2: ASML/LRCX订单创新高 → Layer 0 BULLISH"
+      - "2017 Q3-Q4: Memory厂商CapEx激增 → Layer 1 BULLISH"
+      - "2018 Q1: DRAM价格见顶 → Layer 2 TURNING"
+      - "2018 Q2-Q3: MU股价见顶，营收仍强 → Layer 3滞后"
+      - "2018 Q4: ASML订单开始下滑 → Layer 0 BEARISH（领先信号）"
+      - "2019 H1: Memory价格暴跌，MU亏损 → Layer 2-3 BEARISH"
+    lessons:
+      - "Layer 0（设备订单）领先股价约12-18个月"
+      - "Layer 3（营收）是滞后指标，不能作为卖出信号"
+      - "价格拐点出现在营收见顶之前"
+
+  cycle_2022:
+    description: "2021-2023年Memory周期"
+    timeline:
+      - "2021 H2: 设备订单激增 → Layer 0 BULLISH"
+      - "2022 Q1: MU股价见顶 → 市场开始担忧"
+      - "2022 Q2-Q3: DRAM价格下跌 → Layer 2 BEARISH"
+      - "2022 Q4: 设备订单大幅下滑 → Layer 0 BEARISH"
+      - "2023 H1: Memory价格触底 → Layer 2 BOTTOMING"
+    lessons:
+      - "股价往往在Layer 0开始转弱前6个月见顶"
+      - "情绪拐点早于基本面拐点"
+
+---
+
+# 使用方法
+usage:
+  step_1_identify_layer_0:
+    action: "获取ASML/LRCX/AMAT最新订单数据"
+    sources:
+      - "ASML季度财报 investor.asml.com"
+      - "LRCX季度财报 ir.lamresearch.com"
+      - "AMAT季度财报"
+    frequency: "每季度财报后更新"
+
+  step_2_track_layer_1:
+    action: "追踪Memory厂商CapEx和产能计划"
+    sources:
+      - "MU/Samsung/SK Hynix财报"
+      - "TrendForce/Counterpoint产能报告"
+    frequency: "每季度更新"
+
+  step_3_monitor_layer_2:
+    action: "监控现货价格和库存变化"
+    sources:
+      - "DRAMeXchange周报"
+      - "TrendForce价格追踪"
+    frequency: "每周更新"
+
+  step_4_confirm_layer_3:
+    action: "确认财报数据，但不作为领先指标"
+    sources:
+      - "MU季度财报"
+    frequency: "每季度"
+
+  step_5_synthesize_signal:
+    action: "综合4层信号，判断周期位置"
+    methodology: |
+      - 4层全BULLISH: P2-P3阶段，可持仓
+      - Layer 0开始转弱但Layer 2-3仍强: P4阶段，警惕见顶
+      - Layer 0 BEARISH + Layer 2-3仍强: 典型顶部信号，考虑减仓
+      - 4层全BEARISH: P5阶段，等待底部
+      - Layer 0开始转强但Layer 2-3仍弱: P1-P2，逆周期布局时机
+
+---
+
+# 当前信号汇总（2026-01-30）
+current_signal_summary:
+  company: "MU"
+  date: "2026-01-30"
+
+  layer_0_summary:
+    overall_signal: "EXTREME_BULLISH"
+    details:
+      - "ASML Q4订单€13.2B，近2倍预期，backlog创纪录€38.8B"
+      - "LRCX收入同比增长28%，HBM/GAA驱动"
+      - "Memory订单首超Logic（56%）"
+    concern: "订单已在极高水平，边际增长空间有限"
+
+  layer_1_summary:
+    overall_signal: "BULLISH"
+    details:
+      - "MU FY2026 CapEx $20B (+45% YoY)"
+      - "Samsung HBM产能目标+47%"
+      - "SK Hynix M15X fab提前投产"
+    concern: "产能大幅扩张，2027年可能供过于求"
+
+  layer_2_summary:
+    overall_signal: "BULLISH"
+    details:
+      - "HBM价格持续强劲"
+      - "DRAM/NAND价格企稳"
+    concern: "价格已从底部大幅反弹，上涨空间收窄"
+
+  layer_3_summary:
+    overall_signal: "BULLISH"
+    details:
+      - "MU收入增长强劲"
+      - "毛利率恢复"
+    note: "财报是滞后指标，不作为决策依据"
+
+  composite_assessment:
+    cycle_position: "P3末期-P4初期（扩张见顶期）"
+    signal_divergence: "Layer 0极度乐观 vs 产能扩张风险"
+    risk_level: "ELEVATED"
+    recommendation: |
+      - 短期（0-6个月）: 基本面仍强，持仓
+      - 中期（6-12个月）: 关注ASML订单边际变化
+      - 长期（12-24个月）: 产能过剩风险上升
+
+  key_monitoring_points:
+    - "2026 Q1 ASML订单是否能维持€10B+水平"
+    - "2026 H1 HBM价格是否企稳"
+    - "2026 H2 OEM库存是否正常化"
+    - "2027年新产能投放对价格的冲击"
+
+---
+
+# 与其他Agent的集成
+integration:
+  ecosystem_graph_agent:
+    receives:
+      - "上下游玩家识别"
+      - "供应链依赖关系"
+    provides:
+      - "信号传导路径"
+
+  research_mechanism_agent:
+    receives:
+      - "核心命题"
+    provides:
+      - "信号追踪支持命题验证"
+
+  quality_gate_agent:
+    exports:
+      - "radar_signal_summary"
+      - "cycle_position"
+      - "risk_assessment"
+
+---
+
+# 版本历史
+version_history:
+  - version: "1.0"
+    date: "2026-01-30"
+    changes:
+      - "初始版本"
+      - "4层雷达信号系统定义"
+      - "2018/2022周期回测验证"
+      - "当前信号汇总（MU）"
