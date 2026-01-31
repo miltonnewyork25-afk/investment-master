@@ -1,0 +1,479 @@
+# Tech Community Voice Analysis v1.0
+# 技术社区声音分析框架
+# GitHub/StackOverflow/开发者社区情绪分析
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  技术社区声音 = 开发者/用户对技术产品的真实反馈。
+  类似消费品的 VoC，但数据源和分析维度不同。
+
+  核心价值:
+  - 早期预警产品问题
+  - 监控开发者生态健康
+  - 追踪技术采用趋势
+  - 发现竞品威胁
+
+# ============================================================
+# 数据来源
+# ============================================================
+data_sources:
+
+  primary:
+    github:
+      name: "GitHub"
+      metrics:
+        - "Stars (关注度)"
+        - "Forks (采用意愿)"
+        - "Issues (问题数量和解决率)"
+        - "Pull Requests (社区贡献)"
+        - "Contributors (贡献者增长)"
+        - "Commit Activity (开发活跃度)"
+      for: "开源项目/SDK/工具"
+
+    stackoverflow:
+      name: "Stack Overflow"
+      metrics:
+        - "问题数量（采用量代理）"
+        - "回答率（社区支持度）"
+        - "问题情绪（正/负）"
+        - "标签趋势"
+      for: "技术栈/框架/工具"
+
+    developer_surveys:
+      name: "开发者调研"
+      sources:
+        - "Stack Overflow Developer Survey"
+        - "JetBrains Developer Survey"
+        - "State of JS/CSS/etc."
+      metrics:
+        - "技术满意度"
+        - "使用率"
+        - "想要学习/想要放弃"
+
+  secondary:
+    hacker_news:
+      name: "Hacker News"
+      metrics:
+        - "提及频率"
+        - "讨论情绪"
+        - "投票趋势"
+      for: "技术公司/产品曝光"
+
+    reddit:
+      name: "Reddit 技术社区"
+      subreddits:
+        - "r/programming"
+        - "r/webdev"
+        - "r/MachineLearning"
+        - "r/[specific_tech]"
+      metrics:
+        - "提及频率"
+        - "情绪分析"
+
+    twitter_x:
+      name: "Twitter/X 技术圈"
+      metrics:
+        - "技术领袖提及"
+        - "技术话题趋势"
+        - "情绪分析"
+
+    product_hunt:
+      name: "Product Hunt"
+      metrics:
+        - "投票数"
+        - "评论情绪"
+      for: "新产品发布"
+
+  specialized:
+    npm_pypi:
+      name: "包管理器"
+      sources: ["npm", "PyPI", "Maven", "NuGet"]
+      metrics:
+        - "下载量"
+        - "依赖数量"
+        - "版本更新频率"
+      for: "库/框架采用"
+
+    docker_hub:
+      name: "Docker Hub"
+      metrics:
+        - "拉取次数"
+        - "Star 数"
+      for: "容器化产品"
+
+# ============================================================
+# 分析维度
+# ============================================================
+analysis_dimensions:
+
+  # --------------------------------------------------------
+  adoption_metrics:
+    name: "采用指标"
+    description: "产品/技术被采用的广度和深度"
+
+    metrics:
+      user_growth:
+        name: "用户增长"
+        proxies:
+          - "GitHub Stars 增长率"
+          - "npm/PyPI 下载增长率"
+          - "Stack Overflow 问题增长率"
+        interpretation:
+          accelerating: "采用加速，正向信号"
+          decelerating: "采用放缓，关注原因"
+          declining: "采用下降，可能过气"
+
+      enterprise_adoption:
+        name: "企业采用"
+        proxies:
+          - "财报提及的客户数/ARR"
+          - "案例研究数量"
+          - "企业版功能使用"
+        interpretation: "企业采用 = 收入可预测性"
+
+      developer_mindshare:
+        name: "开发者心智份额"
+        proxies:
+          - "开发者调研排名"
+          - "招聘需求（Indeed/LinkedIn）"
+          - "培训课程数量（Udemy/Coursera）"
+
+  # --------------------------------------------------------
+  sentiment_analysis:
+    name: "情绪分析"
+    description: "开发者对产品/技术的情绪倾向"
+
+    categories:
+      product_quality:
+        name: "产品质量"
+        keywords_positive: ["solid", "reliable", "well-designed", "love it"]
+        keywords_negative: ["buggy", "unstable", "broken", "hate it"]
+        severity: "high"
+
+      documentation:
+        name: "文档质量"
+        keywords_positive: ["great docs", "well-documented", "clear"]
+        keywords_negative: ["poor docs", "no documentation", "confusing"]
+        severity: "medium"
+
+      developer_experience:
+        name: "开发者体验 (DX)"
+        keywords_positive: ["easy to use", "intuitive", "great DX"]
+        keywords_negative: ["painful", "frustrating", "steep learning curve"]
+        severity: "high"
+
+      performance:
+        name: "性能"
+        keywords_positive: ["fast", "efficient", "optimized"]
+        keywords_negative: ["slow", "memory hog", "laggy"]
+        severity: "medium"
+
+      support:
+        name: "支持"
+        keywords_positive: ["responsive", "helpful", "great support"]
+        keywords_negative: ["no response", "poor support", "abandoned"]
+        severity: "medium"
+
+    scoring:
+      positive: "> 0.3"
+      neutral: "-0.3 to 0.3"
+      negative: "< -0.3"
+
+  # --------------------------------------------------------
+  ecosystem_health:
+    name: "生态健康度"
+    description: "围绕产品的生态系统健康程度"
+
+    metrics:
+      contributor_diversity:
+        name: "贡献者多样性"
+        formula: "非核心团队贡献占比"
+        healthy: "> 30%"
+        risk: "< 10% (过度依赖核心团队)"
+
+      issue_resolution:
+        name: "问题解决率"
+        formula: "已关闭 Issues / 总 Issues"
+        healthy: "> 80%"
+        warning: "< 60%"
+
+      pr_merge_rate:
+        name: "PR 合并率"
+        formula: "已合并 PR / 总 PR"
+        healthy: "> 70%"
+        warning: "< 50%"
+
+      release_cadence:
+        name: "发布节奏"
+        measurement: "版本发布频率"
+        interpretation:
+          regular: "健康的开发节奏"
+          sporadic: "可能资源紧张"
+          stalled: "可能被放弃"
+
+      third_party_integrations:
+        name: "第三方集成"
+        measurement: "官方/社区集成数量"
+        more_is_better: true
+
+  # --------------------------------------------------------
+  competitive_position:
+    name: "竞争地位"
+    description: "在技术选型中的竞争地位"
+
+    metrics:
+      vs_alternatives:
+        name: "vs 替代方案"
+        measurement: "在技术选型讨论中的提及和推荐"
+        sources:
+          - "Reddit 技术选型帖"
+          - "Stack Overflow 比较问题"
+          - "技术博客评测"
+
+      migration_patterns:
+        name: "迁移模式"
+        watch_for:
+          inbound: "从竞品迁移过来"
+          outbound: "迁移到竞品"
+        sources:
+          - "迁移指南搜索量"
+          - "社区讨论"
+
+      recommendation_rate:
+        name: "推荐率"
+        proxy: "Would you recommend?" 在开发者调研中的比例
+
+# ============================================================
+# 漂移检测
+# ============================================================
+drift_detection:
+
+  description: |
+    技术社区漂移 = 开发者讨论主题和情绪的变化
+    漂移通常是问题或机会的早期信号
+
+  drift_types:
+    sentiment_drift:
+      name: "情绪漂移"
+      detection: "情绪分布的显著变化"
+      example: "从正面为主转向负面为主"
+      severity_mapping:
+        gradual: "中"
+        sudden: "高"
+
+    topic_drift:
+      name: "话题漂移"
+      detection: "讨论主题的变化"
+      examples:
+        - "从功能讨论转向稳定性抱怨"
+        - "从使用问题转向迁移讨论"
+
+    competitor_mention_drift:
+      name: "竞品提及漂移"
+      detection: "竞品在讨论中的提及频率变化"
+      warning: "竞品正面提及上升"
+
+  monitoring_rules:
+    - rule: "负面情绪占比上升 > 10pp"
+      action: "产品风险预警"
+
+    - rule: "'替代方案/迁移'话题上升 > 20%"
+      action: "竞争风险预警"
+
+    - rule: "Issue 解决率下降 > 15pp"
+      action: "生态健康预警"
+
+# ============================================================
+# Kill-Switch 触发器
+# ============================================================
+kill_switches:
+
+  ecosystem_collapse:
+    name: "生态崩塌"
+    trigger: |
+      贡献者数量下降 > 30% YoY
+      AND Issue 解决率 < 50%
+      AND 发布频率显著下降
+    severity: "hard"
+    action: "评估产品是否被放弃"
+
+  sentiment_crisis:
+    name: "情绪危机"
+    trigger: "负面情绪突增 > 30pp 或 重大公关事件"
+    severity: "hard"
+    action: "评估声誉损害和修复能力"
+
+  adoption_stall:
+    name: "采用停滞"
+    trigger: |
+      用户增长 < 10% YoY
+      AND 竞品增长 > 30%
+    severity: "soft"
+    action: "评估竞争地位和增长策略"
+
+  developer_exodus:
+    name: "开发者流失"
+    trigger: |
+      开发者调研满意度大幅下降
+      OR "迁移到X"讨论显著上升
+    severity: "soft"
+    action: "评估锁定效应是否足够"
+
+# ============================================================
+# 输出格式
+# ============================================================
+output_format:
+  file_path: "analysis/tech_community_voice.json"
+
+  schema: |
+    {
+      "analysis_period": "date_range",
+      "company": "string",
+      "products_analyzed": ["string"],
+
+      "adoption_metrics": {
+        "github_stats": {
+          "stars": N,
+          "stars_growth": "%",
+          "forks": N,
+          "contributors": N,
+          "contributor_growth": "%"
+        },
+        "package_downloads": {
+          "monthly": N,
+          "growth": "%"
+        },
+        "stackoverflow_questions": {
+          "count": N,
+          "growth": "%"
+        }
+      },
+
+      "sentiment": {
+        "overall_score": -1 to 1,
+        "positive_ratio": "%",
+        "negative_ratio": "%",
+        "trend": "improving/stable/deteriorating",
+        "by_category": {
+          "product_quality": X,
+          "documentation": X,
+          "developer_experience": X,
+          "performance": X,
+          "support": X
+        }
+      },
+
+      "ecosystem_health": {
+        "contributor_diversity": "%",
+        "issue_resolution_rate": "%",
+        "pr_merge_rate": "%",
+        "release_cadence": "regular/sporadic/stalled",
+        "health_score": 1-10
+      },
+
+      "competitive_position": {
+        "vs_alternatives": {
+          "competitor_1": "winning/neutral/losing",
+          "competitor_2": "winning/neutral/losing"
+        },
+        "migration_patterns": {
+          "inbound": ["from_X"],
+          "outbound": ["to_Y"]
+        }
+      },
+
+      "drift_signals": [
+        {
+          "type": "string",
+          "description": "string",
+          "severity": "low/medium/high",
+          "date_detected": "date"
+        }
+      ],
+
+      "alerts": ["string"],
+      "evidence_paths": ["string"]
+    }
+
+# ============================================================
+# 输出报告模板
+# ============================================================
+report_template: |
+  ## 技术社区声音分析报告
+
+  **公司/产品**: [名称]
+  **分析期间**: YYYY-MM-DD to YYYY-MM-DD
+
+  ### 一、采用指标
+
+  | 指标 | 当前值 | 变化 | 趋势 |
+  |------|--------|------|------|
+  | GitHub Stars | XX,XXX | +XX% MoM | ↑/↓/→ |
+  | 贡献者数量 | XXX | +XX% YoY | ↑/↓/→ |
+  | 包下载量 | XXM/月 | +XX% MoM | ↑/↓/→ |
+  | SO 问题数 | XXX/月 | +XX% MoM | ↑/↓/→ |
+
+  ### 二、情绪分析
+
+  **整体情绪得分**: X.XX (-1 到 +1)
+
+  | 维度 | 得分 | 趋势 | 关键反馈 |
+  |------|------|------|---------|
+  | 产品质量 | X.XX | ↑/↓ | "[典型评论]" |
+  | 文档质量 | X.XX | ↑/↓ | "[典型评论]" |
+  | 开发者体验 | X.XX | ↑/↓ | "[典型评论]" |
+  | 性能 | X.XX | ↑/↓ | "[典型评论]" |
+  | 支持 | X.XX | ↑/↓ | "[典型评论]" |
+
+  ### 三、生态健康度
+
+  | 指标 | 数值 | 基准 | 评估 |
+  |------|------|------|------|
+  | 贡献者多样性 | XX% | >30% | 🟢/🟡/🔴 |
+  | Issue 解决率 | XX% | >80% | 🟢/🟡/🔴 |
+  | PR 合并率 | XX% | >70% | 🟢/🟡/🔴 |
+  | 发布节奏 | X/季 | 稳定 | 🟢/🟡/🔴 |
+
+  **生态健康评分**: X/10
+
+  ### 四、竞争地位
+
+  **vs 主要替代方案**:
+
+  | 竞品 | 相对地位 | 关键差异 | 迁移趋势 |
+  |------|---------|---------|---------|
+  | [竞品A] | 领先/平手/落后 | [差异] | 流入/流出 |
+  | [竞品B] | 领先/平手/落后 | [差异] | 流入/流出 |
+
+  ### 五、漂移信号
+
+  | 信号 | 严重度 | 描述 | 检测日期 |
+  |------|--------|------|---------|
+  | [信号1] | 高/中/低 | [描述] | YYYY-MM-DD |
+
+  ### 六、投资含义
+
+  **技术社区声音总评**: [正面/中性/负面]
+
+  **关键洞察**:
+  - [洞察1]
+  - [洞察2]
+
+  **监控要点**:
+  - [ ] [监控点1]
+  - [ ] [监控点2]
+
+# ============================================================
+# 版本历史
+# ============================================================
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "多数据源整合（GitHub/SO/调研等）"
+      - "4大分析维度"
+      - "漂移检测"
+      - "Kill-Switch 触发器"
+      - "对标消费品 VoC 框架设计"

@@ -1,0 +1,485 @@
+# Consumer Supply Chain Analysis v1.0
+# 消费品供应链风险分析框架
+# 原材料 → 生产 → 物流 → 库存 全链条评估
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  消费品供应链是隐藏的风险源和竞争优势来源。
+
+  核心问题：
+  - 原材料成本波动如何影响毛利？
+  - 生产集中度带来什么风险？
+  - 物流效率是护城河还是短板？
+  - 库存管理能力如何？
+
+# ============================================================
+# 供应链四层分析
+# ============================================================
+supply_chain_layers:
+
+  # --------------------------------------------------------
+  layer_1_raw_materials:
+    name: "原材料层"
+    description: "原材料采购和成本管理"
+
+    analysis_dimensions:
+      commodity_exposure:
+        name: "大宗商品敞口"
+        categories:
+          agricultural:
+            examples: ["咖啡", "可可", "棕榈油", "糖", "小麦"]
+            volatility: "高"
+            hedge_ability: "中"
+
+          petrochemical:
+            examples: ["塑料", "包装材料", "运输燃料"]
+            volatility: "高"
+            hedge_ability: "中高"
+
+          metals:
+            examples: ["铝（易拉罐）", "钢（包装）"]
+            volatility: "中"
+            hedge_ability: "高"
+
+        metrics:
+          - "原材料成本占 COGS 比例"
+          - "主要原材料价格波动率"
+          - "对冲覆盖率"
+          - "长协比例"
+
+      supplier_concentration:
+        name: "供应商集中度"
+        metrics:
+          top_supplier_share:
+            name: "最大供应商占比"
+            warning: "> 30%"
+            critical: "> 50%"
+
+          supplier_count:
+            name: "关键原材料供应商数量"
+            healthy: "> 3 个合格供应商"
+
+          geographic_concentration:
+            name: "供应商地理集中"
+            risk_factors:
+              - "单一国家依赖"
+              - "地缘政治风险区域"
+              - "自然灾害高发区"
+
+      sustainability_sourcing:
+        name: "可持续采购"
+        importance: "ESG 和消费者关注度上升"
+        metrics:
+          - "认证原材料比例（Fair Trade/Organic/FSC）"
+          - "可追溯供应链比例"
+          - "碳足迹披露"
+
+  # --------------------------------------------------------
+  layer_2_manufacturing:
+    name: "生产制造层"
+    description: "生产能力和灵活性"
+
+    analysis_dimensions:
+      production_model:
+        name: "生产模式"
+        types:
+          in_house:
+            description: "自有工厂生产"
+            pros: ["质量控制", "IP 保护", "灵活性"]
+            cons: ["资本密集", "固定成本高"]
+
+          contract_manufacturing:
+            description: "代工生产"
+            pros: ["轻资产", "弹性产能"]
+            cons: ["质量风险", "供应链可见性低"]
+
+          hybrid:
+            description: "核心自产 + 外包"
+            common_for: "多品类消费品公司"
+
+      capacity_metrics:
+        utilization_rate:
+          name: "产能利用率"
+          optimal: "75-85%"
+          warning_low: "< 60%（固定成本摊薄）"
+          warning_high: "> 90%（缺乏弹性）"
+
+        capacity_buffer:
+          name: "产能余量"
+          question: "能否应对需求峰值？"
+
+        capex_intensity:
+          name: "CapEx 强度"
+          formula: "CapEx / Revenue"
+          benchmark: "品类差异大"
+
+      geographic_footprint:
+        name: "生产地理布局"
+        risk_assessment:
+          single_country:
+            risk: "高"
+            examples: "中国集中生产"
+
+          regional_diversification:
+            risk: "中"
+            examples: "亚洲 + 北美 + 欧洲"
+
+          near_shoring:
+            trend: "供应链韧性驱动"
+            examples: "墨西哥/东欧"
+
+      quality_control:
+        name: "质量控制"
+        metrics:
+          - "质量投诉率"
+          - "召回历史"
+          - "认证（ISO/GMP等）"
+          - "供应商审核频率"
+
+  # --------------------------------------------------------
+  layer_3_logistics:
+    name: "物流配送层"
+    description: "从工厂到消费者的效率"
+
+    analysis_dimensions:
+      distribution_network:
+        name: "配送网络"
+        components:
+          warehouse_count:
+            name: "仓库数量"
+            coverage: "市场覆盖率"
+
+          dc_locations:
+            name: "配送中心位置"
+            optimization: "距离消费者距离"
+
+          last_mile:
+            name: "最后一公里"
+            models:
+              - "自有配送"
+              - "第三方物流"
+              - "众包配送"
+
+      logistics_efficiency:
+        metrics:
+          order_to_delivery:
+            name: "订单到交付时间"
+            unit: "天"
+            benchmark: "品类差异"
+
+          fill_rate:
+            name: "订单满足率"
+            formula: "完整交付订单 / 总订单"
+            benchmark: "> 95%"
+
+          logistics_cost_ratio:
+            name: "物流成本占比"
+            formula: "物流成本 / 收入"
+            benchmark: "5-15%（品类差异）"
+
+          on_time_delivery:
+            name: "准时交付率"
+            benchmark: "> 95%"
+
+      fulfillment_model:
+        name: "履约模式"
+        types:
+          traditional:
+            description: "工厂 → 区域仓 → 零售商"
+            lead_time: "长"
+            flexibility: "低"
+
+          direct_to_consumer:
+            description: "工厂/仓库 → 消费者"
+            lead_time: "短"
+            flexibility: "高"
+            cost: "高"
+
+          omnichannel:
+            description: "线上线下融合"
+            complexity: "高"
+            trend: "主流方向"
+
+  # --------------------------------------------------------
+  layer_4_inventory:
+    name: "库存管理层"
+    description: "库存效率和风险"
+
+    analysis_dimensions:
+      inventory_metrics:
+        days_inventory:
+          name: "库存天数 (DIO)"
+          formula: "库存 / COGS × 365"
+          interpretation:
+            too_low: "可能断货风险"
+            too_high: "资金占用/过时风险"
+          benchmark: "品类差异大"
+
+        inventory_turnover:
+          name: "库存周转率"
+          formula: "COGS / 平均库存"
+          better: "higher"
+
+        obsolescence_rate:
+          name: "库存过时率"
+          formula: "报废库存 / 总库存"
+          warning: "> 5%"
+
+      inventory_health:
+        fresh_inventory_ratio:
+          name: "新鲜库存比例"
+          for: "有保质期产品"
+          healthy: "> 80% 在保质期 50% 以上"
+
+        slow_moving_inventory:
+          name: "滞销库存占比"
+          definition: "周转 < 品类平均一半"
+          warning: "> 15%"
+
+        channel_inventory:
+          name: "渠道库存"
+          risk: "渠道去库存影响出货"
+          monitoring: "sell-in vs sell-through"
+
+      demand_planning:
+        forecast_accuracy:
+          name: "需求预测准确率"
+          formula: "1 - |实际 - 预测| / 实际"
+          benchmark: "> 80%"
+
+        bullwhip_effect:
+          name: "牛鞭效应"
+          description: "需求信号放大"
+          mitigation:
+            - "信息共享"
+            - "VMI（供应商管理库存）"
+            - "需求感知技术"
+
+# ============================================================
+# 供应链风险评估
+# ============================================================
+risk_assessment:
+
+  risk_categories:
+    concentration_risk:
+      name: "集中风险"
+      triggers:
+        - "单一供应商 > 30%"
+        - "单一工厂 > 40% 产能"
+        - "单一国家 > 50% 采购"
+
+    commodity_risk:
+      name: "大宗商品风险"
+      triggers:
+        - "原材料成本占 COGS > 40%"
+        - "关键原材料价格波动 > 30%"
+        - "对冲覆盖 < 50%"
+
+    disruption_risk:
+      name: "中断风险"
+      scenarios:
+        - "自然灾害"
+        - "地缘政治"
+        - "疫情/公共卫生"
+        - "劳工纠纷"
+        - "网络安全"
+
+    quality_risk:
+      name: "质量风险"
+      triggers:
+        - "召回历史"
+        - "质量投诉上升"
+        - "供应商审核失败"
+
+    sustainability_risk:
+      name: "可持续性风险"
+      triggers:
+        - "ESG 评级下降"
+        - "供应链丑闻（童工/环境）"
+        - "监管收紧"
+
+  risk_scoring:
+    scale: "1-5"
+    rubric:
+      1: "极低风险 - 高度分散、本地化、可替代"
+      2: "低风险 - 多元化供应、有备选方案"
+      3: "中等风险 - 存在集中但可管理"
+      4: "高风险 - 显著集中或暴露"
+      5: "极高风险 - 单点故障可能性大"
+
+# ============================================================
+# 供应链竞争优势评估
+# ============================================================
+competitive_advantage:
+
+  dimensions:
+    cost_advantage:
+      name: "成本优势"
+      sources:
+        - "规模采购议价"
+        - "生产效率"
+        - "物流优化"
+        - "低成本地区生产"
+
+    speed_advantage:
+      name: "速度优势"
+      sources:
+        - "快速响应能力"
+        - "短交付周期"
+        - "敏捷供应链"
+
+    flexibility_advantage:
+      name: "灵活性优势"
+      sources:
+        - "产能弹性"
+        - "多供应商策略"
+        - "模块化生产"
+
+    visibility_advantage:
+      name: "可见性优势"
+      sources:
+        - "端到端追踪"
+        - "实时库存"
+        - "需求感知"
+
+    sustainability_advantage:
+      name: "可持续性优势"
+      sources:
+        - "绿色供应链"
+        - "循环经济"
+        - "ESG 领先"
+
+# ============================================================
+# Kill-Switch 触发器
+# ============================================================
+kill_switches:
+
+  supply_disruption:
+    name: "供应中断"
+    trigger: "关键供应商停产 > 2 周 或 关键原材料断供"
+    severity: "hard"
+    action: "评估替代方案和收入影响"
+
+  commodity_spike:
+    name: "原材料暴涨"
+    trigger: "关键原材料价格上涨 > 50% 且无对冲"
+    severity: "hard"
+    action: "评估毛利影响和转嫁能力"
+
+  quality_crisis:
+    name: "质量危机"
+    trigger: "重大产品召回 或 质量丑闻"
+    severity: "hard"
+    action: "评估品牌影响和诉讼风险"
+
+  inventory_crisis:
+    name: "库存危机"
+    trigger: "库存天数上升 > 50% 或 大规模断货"
+    severity: "soft"
+    action: "评估需求问题还是供应问题"
+
+  logistics_breakdown:
+    name: "物流崩溃"
+    trigger: "准时交付率 < 80% 持续 4 周"
+    severity: "soft"
+    action: "评估渠道关系和客户流失"
+
+# ============================================================
+# 输出模板
+# ============================================================
+output_template: |
+  ## 供应链分析报告
+
+  **公司**: [公司名称]
+  **更新日期**: YYYY-MM-DD
+
+  ### 一、供应链概览
+
+  ```
+  原材料 ──→ 生产 ──→ 物流 ──→ 库存 ──→ 消费者
+     │         │        │        │
+  [评分]    [评分]    [评分]   [评分]
+  ```
+
+  ### 二、四层分析
+
+  #### 2.1 原材料层
+
+  | 原材料 | 占COGS | 供应商数 | 地理分布 | 价格波动 | 风险评分 |
+  |--------|--------|---------|---------|---------|---------|
+  | XX | XX% | X | [地区] | XX% | X/5 |
+
+  对冲策略: [描述]
+  可持续采购: [比例]
+
+  #### 2.2 生产制造层
+
+  | 指标 | 数值 | 基准 | 评估 |
+  |------|------|------|------|
+  | 产能利用率 | XX% | 75-85% | |
+  | 自产比例 | XX% | - | |
+  | 工厂数量 | X | - | |
+  | 地理分布 | [地区] | - | |
+
+  质量记录: [描述]
+
+  #### 2.3 物流配送层
+
+  | 指标 | 数值 | 基准 | 评估 |
+  |------|------|------|------|
+  | 配送中心数量 | X | - | |
+  | 订单满足率 | XX% | >95% | |
+  | 物流成本占比 | XX% | 5-15% | |
+  | 准时交付率 | XX% | >95% | |
+
+  #### 2.4 库存管理层
+
+  | 指标 | 数值 | 基准 | 趋势 |
+  |------|------|------|------|
+  | 库存天数 | XX天 | XX天(行业) | ↑/↓ |
+  | 库存周转率 | X.Xx | X.Xx(行业) | ↑/↓ |
+  | 过时库存率 | XX% | <5% | |
+
+  ### 三、风险评估
+
+  | 风险类别 | 评分(1-5) | 关键暴露 | 缓解措施 |
+  |---------|----------|---------|---------|
+  | 集中风险 | X | [描述] | [描述] |
+  | 大宗商品风险 | X | [描述] | [描述] |
+  | 中断风险 | X | [描述] | [描述] |
+  | 质量风险 | X | [描述] | [描述] |
+  | 可持续性风险 | X | [描述] | [描述] |
+
+  **总体供应链风险评分**: X/5
+
+  ### 四、竞争优势评估
+
+  | 维度 | 评分(1-5) | 证据 |
+  |------|----------|------|
+  | 成本优势 | X | |
+  | 速度优势 | X | |
+  | 灵活性优势 | X | |
+  | 可见性优势 | X | |
+  | 可持续性优势 | X | |
+
+  **供应链是护城河吗？**: [是/否/部分] - [原因]
+
+  ### 五、监控要点
+
+  - [ ] [监控点1]
+  - [ ] [监控点2]
+  - [ ] [监控点3]
+
+# ============================================================
+# 版本历史
+# ============================================================
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "四层供应链分析框架"
+      - "风险评估矩阵"
+      - "竞争优势评估"
+      - "Kill-Switch 触发器"

@@ -1,0 +1,436 @@
+# Universal Sentinel Monitoring System v1.0
+# 通用哨兵监控系统模板
+# 适用于所有行业框架，提供持续监控能力
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  研究完成不是终点，而是监控的起点。
+
+  哨兵系统目标:
+  - 持续追踪关键信号
+  - 检测触发器状态变化
+  - 自动生成风险/机会摘要
+  - 标记需要人工确认的事项
+
+  本模板定义通用结构，各行业框架可继承并扩展。
+
+# ============================================================
+# 信号分类体系（通用）
+# ============================================================
+signal_categories:
+
+  # --------------------------------------------------------
+  financial_signals:
+    name: "财务信号"
+    description: "基于财务数据的监控信号"
+    frequency: "quarterly (财报) + monthly (估算)"
+
+    generic_signals:
+      revenue_growth:
+        name: "收入增长"
+        source: "财报 + 卖方估算"
+        threshold:
+          warning: "低于预期 > 5%"
+          alert: "低于预期 > 10% 或 YoY 转负"
+
+      margin_trend:
+        name: "利润率趋势"
+        source: "财报"
+        metrics: ["毛利率", "营业利润率", "净利率"]
+        threshold:
+          warning: "下降 > 100bps YoY"
+          alert: "下降 > 200bps YoY"
+
+      guidance_change:
+        name: "指引变化"
+        source: "财报 + 业绩会"
+        threshold:
+          warning: "下调 > 5%"
+          alert: "下调 > 10%"
+
+      cash_flow_health:
+        name: "现金流健康度"
+        source: "财报"
+        metrics: ["FCF", "FCF 转化率", "现金周期"]
+        threshold:
+          warning: "FCF 转化率 < 70%"
+          alert: "FCF 转负"
+
+  # --------------------------------------------------------
+  market_signals:
+    name: "市场信号"
+    description: "基于市场数据的监控信号"
+    frequency: "daily/weekly"
+
+    generic_signals:
+      price_action:
+        name: "股价走势"
+        source: "市场数据"
+        threshold:
+          warning: "跑输大盘 > 10% 月度"
+          alert: "跑输大盘 > 20% 月度"
+
+      analyst_revision:
+        name: "分析师修正"
+        source: "卖方报告"
+        threshold:
+          warning: "下调数量 > 上调数量"
+          alert: "集体下调目标价"
+
+      insider_activity:
+        name: "内部人交易"
+        source: "SEC filings"
+        threshold:
+          warning: "高管卖出 > $1M"
+          alert: "多位高管同时卖出"
+
+      short_interest:
+        name: "做空利息"
+        source: "市场数据"
+        threshold:
+          warning: "上升 > 50% MoM"
+          alert: "做空比例 > 10%"
+
+  # --------------------------------------------------------
+  operational_signals:
+    name: "运营信号"
+    description: "基于运营数据的监控信号"
+    frequency: "varies by industry"
+
+    generic_signals:
+      management_change:
+        name: "管理层变动"
+        source: "公告"
+        threshold:
+          alert: "CEO/CFO 离职"
+          warning: "其他 C-suite 变动"
+
+      strategic_change:
+        name: "战略变化"
+        source: "公告 + 业绩会"
+        watch_for:
+          - "重大收购/剥离"
+          - "业务方向调整"
+          - "资本分配变化"
+
+      employee_sentiment:
+        name: "员工情绪"
+        source: "Glassdoor"
+        threshold:
+          warning: "评分下降 > 0.3"
+          alert: "评分 < 3.5 或 CEO 支持率 < 60%"
+
+  # --------------------------------------------------------
+  competitive_signals:
+    name: "竞争信号"
+    description: "基于竞争环境的监控信号"
+    frequency: "monthly/quarterly"
+
+    generic_signals:
+      market_share:
+        name: "市场份额"
+        source: "第三方数据"
+        threshold:
+          warning: "份额下降 > 1pp"
+          alert: "份额下降 > 2pp"
+
+      competitor_action:
+        name: "竞品动作"
+        source: "新闻监控"
+        watch_for:
+          - "新产品发布"
+          - "价格战"
+          - "重大并购"
+          - "进入新市场"
+
+      new_entrant:
+        name: "新进入者"
+        source: "行业监控"
+        threshold:
+          warning: "有实力的新进入者出现"
+          alert: "颠覆性进入者获得牵引力"
+
+  # --------------------------------------------------------
+  external_signals:
+    name: "外部信号"
+    description: "基于外部环境的监控信号"
+    frequency: "varies"
+
+    generic_signals:
+      regulatory:
+        name: "监管动态"
+        source: "政府/监管机构"
+        watch_for:
+          - "新法规"
+          - "调查"
+          - "处罚"
+
+      macro:
+        name: "宏观环境"
+        source: "经济数据"
+        watch_for:
+          - "利率变化"
+          - "汇率波动"
+          - "通胀趋势"
+
+      geopolitical:
+        name: "地缘政治"
+        source: "新闻"
+        watch_for:
+          - "贸易政策"
+          - "制裁"
+          - "地区冲突"
+
+# ============================================================
+# 触发器状态系统（通用）
+# ============================================================
+trigger_status_system:
+
+  description: |
+    将所有 Kill-Switch 和预警触发器的状态可视化追踪。
+
+  status_levels:
+    green:
+      name: "安全"
+      definition: "远离触发阈值 (> 30%)"
+      color_code: "#00FF00"
+
+    yellow:
+      name: "关注"
+      definition: "接近触发阈值 (20-30%)"
+      color_code: "#FFFF00"
+
+    orange:
+      name: "警告"
+      definition: "非常接近 (10-20%)"
+      color_code: "#FFA500"
+
+    red:
+      name: "触发"
+      definition: "已触发 (< 10% 或已超过)"
+      color_code: "#FF0000"
+
+  status_table_template: |
+    ## 触发器状态监控
+
+    **更新日期**: YYYY-MM-DD
+
+    | 触发器 | 类型 | 当前值 | 阈值 | 距离触发 | 状态 |
+    |--------|------|--------|------|---------|------|
+    | [名称] | Hard/Soft | XX | XX | XX% | 🟢/🟡/🟠/🔴 |
+
+  escalation_rules:
+    green_to_yellow: "开始密切关注"
+    yellow_to_orange: "列入人工确认清单"
+    orange_to_red: "触发 Kill-Switch 响应"
+    red: "立即行动 + 重新评估投资论点"
+
+# ============================================================
+# 周度摘要模板（通用）
+# ============================================================
+weekly_digest_template:
+
+  file_name_pattern: "monitoring/{TICKER}_weekly_{YYYY-MM-DD}.md"
+
+  structure: |
+    # 周度哨兵摘要 - {TICKER}
+
+    **周期**: {start_date} - {end_date}
+    **生成时间**: {timestamp}
+    **上周评级**: [X] / **本周评级**: [X]
+
+    ---
+
+    ## 1. 本周新增事实
+
+    ### 公司动态
+    - [ ] [事实1]
+    - [ ] [事实2]
+
+    ### 竞争动态
+    - [ ] [事实1]
+
+    ### 行业/宏观动态
+    - [ ] [事实1]
+
+    ---
+
+    ## 2. 信号变化摘要
+
+    | 信号类别 | 信号 | 本周 | 上周 | 变化 | 状态 |
+    |---------|------|------|------|------|------|
+    | 财务 | 收入预期 | X | X | X% | 🟢/🟡/🔴 |
+    | 市场 | 股价vs大盘 | X% | X% | X% | 🟢/🟡/🔴 |
+    | 运营 | [指标] | X | X | X | 🟢/🟡/🔴 |
+    | 竞争 | 份额 | X% | X% | Xpp | 🟢/🟡/🔴 |
+
+    ---
+
+    ## 3. 触发器状态
+
+    | 触发器 | 当前值 | 阈值 | 状态 | 距离触发 | 变化 |
+    |--------|--------|------|------|---------|------|
+    | [Kill-Switch 1] | X | X | 🟢/🟡/🟠/🔴 | X% | ↑/↓/→ |
+    | [Kill-Switch 2] | X | X | 🟢/🟡/🟠/🔴 | X% | ↑/↓/→ |
+
+    **状态汇总**: X🟢 X🟡 X🟠 X🔴
+
+    ---
+
+    ## 4. 风险 (TOP 3)
+
+    1. **[风险名称]**
+       - 描述: [简述]
+       - 证据: [数据/来源]
+       - 严重度: 高/中/低
+       - 建议动作: [行动]
+
+    2. ...
+    3. ...
+
+    ---
+
+    ## 5. 机会 (TOP 3)
+
+    1. **[机会名称]**
+       - 描述: [简述]
+       - 证据: [数据/来源]
+       - 置信度: 高/中/低
+
+    2. ...
+    3. ...
+
+    ---
+
+    ## 6. 需要人工确认
+
+    > 以下事项需要人类介入核查
+
+    - [ ] **[事项1]**: [描述]
+      - 为什么需要人工: [原因]
+      - 建议核查方式: [方法]
+
+    - [ ] **[事项2]**: ...
+
+    ---
+
+    ## 7. 下周关注重点
+
+    - [ ] [关注点1]: [原因]
+    - [ ] [关注点2]: [原因]
+    - [ ] [关注点3]: [原因]
+
+    ---
+
+    ## 8. 预测验证检查
+
+    | 预测ID | 预测内容 | 验证日期 | 状态 | 备注 |
+    |--------|---------|---------|------|------|
+    | PRED_XXX_001 | [内容] | YYYY-MM-DD | 待验证/已验证 | |
+
+    ---
+
+    **数据更新时间**: {data_timestamp}
+    **自动生成**: 是
+    **需要人工审核**: 是
+
+# ============================================================
+# 行业扩展指南
+# ============================================================
+industry_extension_guide:
+
+  description: |
+    各行业框架应继承此通用系统，并添加行业特定信号。
+
+  extension_example:
+    consumer:
+      additional_signals:
+        - "VoC 情绪"
+        - "价格敏感度"
+        - "渠道销售数据"
+        - "促销强度"
+        - "竞品提及"
+      additional_triggers:
+        - "空心化增长"
+        - "品牌危机"
+        - "渠道价格崩塌"
+
+    tech_semicap:
+      additional_signals:
+        - "设备订单"
+        - "Fab 产能利用率"
+        - "库存天数"
+        - "合约价格"
+      additional_triggers:
+        - "周期反转信号"
+        - "产能过剩"
+        - "技术路线变化"
+
+    saas:
+      additional_signals:
+        - "ARR 增长"
+        - "NDR"
+        - "客户流失"
+        - "使用趋势"
+      additional_triggers:
+        - "NDR < 100%"
+        - "大客户流失"
+        - "增长放缓"
+
+  integration_pattern: |
+    行业框架应:
+    1. 导入此通用系统
+    2. 继承通用信号类别
+    3. 添加行业特定信号
+    4. 添加行业特定触发器
+    5. 定制周度摘要模板
+
+# ============================================================
+# 自动化规则
+# ============================================================
+automation_rules:
+
+  data_refresh:
+    - type: "财务数据"
+      frequency: "quarterly"
+      source: "API (FMP/财报)"
+
+    - type: "市场数据"
+      frequency: "daily"
+      source: "市场数据 API"
+
+    - type: "分析师观点"
+      frequency: "weekly"
+      source: "新闻/报告搜索"
+
+    - type: "竞争动态"
+      frequency: "weekly"
+      source: "新闻监控"
+
+  alert_rules:
+    - condition: "任何硬 Kill-Switch 触发"
+      action: "立即通知 + 标红 + 重新评估"
+
+    - condition: "软触发器状态变为 orange"
+      action: "列入人工确认清单"
+
+    - condition: "连续 2 周同向变化"
+      action: "升级关注度"
+
+    - condition: "预测验证日期到达"
+      action: "触发验证流程"
+
+# ============================================================
+# 版本历史
+# ============================================================
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "4大信号类别（财务/市场/运营/外部）"
+      - "触发器状态系统"
+      - "周度摘要模板"
+      - "行业扩展指南"
+      - "自动化规则"

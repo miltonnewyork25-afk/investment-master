@@ -1,0 +1,451 @@
+# Consumer Brand Valuation Framework v1.0
+# 消费品品牌资产估值框架
+# 品牌价值量化与投资含义
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  品牌是消费品公司最重要的无形资产。
+  品牌价值变化是投资回报的领先指标。
+
+  核心问题：
+  - 品牌值多少钱？
+  - 品牌价值在增加还是减少？
+  - 品牌价值如何转化为投资回报？
+
+# ============================================================
+# 品牌估值方法论
+# ============================================================
+valuation_methodologies:
+
+  # --------------------------------------------------------
+  interbrand_method:
+    name: "Interbrand 方法"
+    description: "全球最广泛使用的品牌估值方法"
+    source: "Interbrand Best Global Brands"
+
+    formula: |
+      品牌价值 = 品牌收益 × 品牌强度倍数
+
+      品牌收益 = 经济利润 × 品牌贡献率 (Role of Brand)
+      品牌强度 = 10因素评分 → 折现率
+
+    components:
+      economic_profit:
+        name: "经济利润"
+        formula: "NOPAT - (资本 × WACC)"
+        purpose: "衡量真实价值创造"
+
+      role_of_brand:
+        name: "品牌贡献率"
+        range: "0-100%"
+        factors:
+          - "品牌在购买决策中的权重"
+          - "品牌 vs 产品/价格/渠道"
+        examples:
+          luxury: "70-90%"
+          fmcg: "40-60%"
+          technology: "30-50%"
+          b2b: "10-30%"
+
+      brand_strength:
+        name: "品牌强度"
+        scale: "0-100"
+        factors:
+          internal:
+            - "Clarity (品牌愿景清晰度)"
+            - "Commitment (组织承诺)"
+            - "Governance (品牌管理)"
+            - "Responsiveness (响应能力)"
+          external:
+            - "Authenticity (真实性)"
+            - "Relevance (相关性)"
+            - "Differentiation (差异化)"
+            - "Consistency (一致性)"
+            - "Presence (存在感)"
+            - "Engagement (参与度)"
+
+        strength_to_discount_rate:
+          mapping: |
+            强度 100 → 折现率 ~5%
+            强度 50  → 折现率 ~12%
+            强度 0   → 折现率 ~20%
+
+  # --------------------------------------------------------
+  brand_finance_method:
+    name: "Brand Finance 方法"
+    description: "基于特许权费用的品牌估值"
+    source: "Brand Finance Global 500"
+
+    formula: |
+      品牌价值 = 预测收入 × 品牌特许权费率 × 品牌强度系数
+
+    components:
+      royalty_rate:
+        name: "特许权费率"
+        source: "可比交易/行业基准"
+        typical_ranges:
+          luxury: "8-15%"
+          apparel: "5-10%"
+          food_beverage: "2-5%"
+          technology: "3-8%"
+
+      brand_strength_index:
+        name: "品牌强度指数 (BSI)"
+        scale: "0-100"
+        dimensions:
+          - "Brand Investment (投入)"
+          - "Brand Equity (资产)"
+          - "Brand Performance (表现)"
+
+  # --------------------------------------------------------
+  market_based_method:
+    name: "市场法"
+    description: "基于市场交易的品牌估值"
+
+    approaches:
+      comparable_transactions:
+        name: "可比交易法"
+        formula: "参考品牌收购的 EV/Sales 或 EV/Brand Revenue"
+        limitation: "交易数据有限"
+
+      premium_method:
+        name: "溢价法"
+        formula: "品牌产品价格溢价 × 销量 × 倍数"
+        limitation: "难以分离品牌 vs 产品贡献"
+
+      stock_price_decomposition:
+        name: "股价分解法"
+        formula: "市值 - 有形资产价值 - 其他无形资产 = 品牌价值"
+        limitation: "分离困难"
+
+# ============================================================
+# 品牌资产模型 (Aaker Model)
+# ============================================================
+brand_equity_model:
+  name: "Aaker 品牌资产模型"
+  source: "David Aaker (1991)"
+  description: "品牌资产的五个维度"
+
+  dimensions:
+    brand_awareness:
+      name: "品牌知名度"
+      definition: "消费者识别和回忆品牌的能力"
+      levels:
+        - "无知名度 (Unaware)"
+        - "品牌认知 (Recognition)"
+        - "品牌回忆 (Recall)"
+        - "心智首位 (Top of Mind)"
+        - "品类代名词 (Dominant)"
+      measurement:
+        - "辅助知名度 %"
+        - "非辅助知名度 %"
+        - "品类首选提及 %"
+      investment_implication: "知名度是品牌的基础，但不是充分条件"
+
+    perceived_quality:
+      name: "感知质量"
+      definition: "消费者对产品整体质量的主观判断"
+      drivers:
+        - "产品性能"
+        - "可靠性"
+        - "服务质量"
+        - "工艺感"
+      measurement:
+        - "质量评分 (vs 竞品)"
+        - "VoC 质量主题情绪"
+        - "J.D. Power 排名"
+      investment_implication: "感知质量支撑溢价定价"
+
+    brand_associations:
+      name: "品牌联想"
+      definition: "消费者脑中与品牌相关的一切"
+      types:
+        - "属性联想 (功能/情感)"
+        - "利益联想 (能为我做什么)"
+        - "态度联想 (我对品牌的感觉)"
+      measurement:
+        - "品牌属性关联度"
+        - "品牌人格测量"
+        - "品牌原型分析"
+      investment_implication: "独特且积极的联想 = 差异化护城河"
+
+    brand_loyalty:
+      name: "品牌忠诚度"
+      definition: "消费者对品牌的持续偏好和承诺"
+      levels:
+        - "无忠诚 (Switchers)"
+        - "习惯购买者 (Habitual)"
+        - "满意购买者 (Satisfied)"
+        - "喜爱购买者 (Likes the Brand)"
+        - "承诺购买者 (Committed)"
+      measurement:
+        - "复购率"
+        - "NPS"
+        - "钱包份额"
+        - "转换成本感知"
+      investment_implication: "高忠诚度 = 可预测现金流 + 低获客成本"
+
+    proprietary_assets:
+      name: "专属资产"
+      definition: "品牌的法律和竞争保护"
+      types:
+        - "商标"
+        - "专利"
+        - "渠道关系"
+        - "专有技术"
+      measurement:
+        - "商标注册数量"
+        - "专利组合"
+        - "独家分销协议"
+      investment_implication: "法律保护 = 可持续竞争优势"
+
+# ============================================================
+# 品牌价值驱动因素
+# ============================================================
+value_drivers:
+
+  revenue_drivers:
+    price_premium:
+      name: "价格溢价"
+      mechanism: "品牌支撑更高售价"
+      measurement: "vs 品类均价 / vs 私牌"
+
+    volume_premium:
+      name: "销量优势"
+      mechanism: "品牌知名度驱动更高销量"
+      measurement: "市场份额"
+
+    category_expansion:
+      name: "品类延伸"
+      mechanism: "品牌资产支持进入新品类"
+      examples: "Virgin (航空→电信→金融)"
+
+    geographic_expansion:
+      name: "地理扩展"
+      mechanism: "品牌声誉支持国际化"
+      measurement: "国际收入占比"
+
+  cost_drivers:
+    marketing_efficiency:
+      name: "营销效率"
+      mechanism: "强品牌需要更少营销支出维持"
+      measurement: "营销/收入比"
+
+    customer_acquisition:
+      name: "获客成本"
+      mechanism: "强品牌降低获客成本"
+      measurement: "CAC"
+
+    supplier_leverage:
+      name: "供应商议价"
+      mechanism: "强品牌对供应商有议价力"
+      measurement: "采购成本 vs 行业"
+
+  risk_drivers:
+    earnings_stability:
+      name: "盈利稳定性"
+      mechanism: "强品牌提供需求稳定性"
+      measurement: "收入波动率"
+
+    crisis_resilience:
+      name: "危机韧性"
+      mechanism: "强品牌更能承受危机"
+      examples: "Tylenol 召回后恢复"
+
+# ============================================================
+# 品牌价值变化监控
+# ============================================================
+brand_value_monitoring:
+
+  leading_indicators:
+    brand_search_trend:
+      name: "品牌搜索趋势"
+      source: "Google Trends"
+      lead_time: "3-6 个月"
+
+    social_sentiment:
+      name: "社交情绪"
+      source: "社交媒体监控"
+      lead_time: "1-3 个月"
+
+    nps_trend:
+      name: "NPS 趋势"
+      source: "品牌追踪"
+      lead_time: "6-12 个月"
+
+    employee_glassdoor:
+      name: "员工口碑"
+      source: "Glassdoor"
+      lead_time: "6-12 个月"
+      rationale: "员工满意度影响品牌交付"
+
+  lagging_indicators:
+    market_share:
+      name: "市场份额"
+      lag_time: "即时"
+
+    price_premium_change:
+      name: "溢价变化"
+      lag_time: "1-2 个季度"
+
+    third_party_ranking:
+      name: "第三方排名"
+      sources:
+        - "Interbrand Best Global Brands"
+        - "Brand Finance Global 500"
+        - "Kantar BrandZ"
+      lag_time: "年度"
+
+# ============================================================
+# Kill-Switch 触发器
+# ============================================================
+kill_switches:
+
+  brand_value_collapse:
+    name: "品牌价值崩塌"
+    trigger: "第三方品牌排名大幅下降（> 20 名）或估值下降 > 30%"
+    severity: "hard"
+    action: "深入分析原因，评估可恢复性"
+
+  reputation_crisis:
+    name: "声誉危机"
+    trigger: "重大公关危机（丑闻/召回/高管问题）"
+    severity: "hard"
+    action: "评估品牌损伤和修复成本"
+
+  relevance_decline:
+    name: "相关性下降"
+    trigger: "目标客群中品牌知名度或偏好持续下降"
+    severity: "soft"
+    action: "评估品牌老化和年轻化策略"
+
+  brand_dilution:
+    name: "品牌稀释"
+    trigger: "过度品类延伸导致核心联想模糊"
+    severity: "soft"
+    action: "评估品牌架构和组合策略"
+
+  private_label_erosion:
+    name: "私牌侵蚀"
+    trigger: "品牌 vs 私牌溢价收窄 > 20%"
+    severity: "soft"
+    action: "评估品牌价值差异化是否足够"
+
+# ============================================================
+# 输出模板
+# ============================================================
+output_template: |
+  ## 品牌资产估值报告
+
+  **公司/品牌**: [名称]
+  **更新日期**: YYYY-MM-DD
+
+  ### 一、品牌价值估算
+
+  #### 1.1 Interbrand 方法
+
+  | 组件 | 数值 | 来源 |
+  |------|------|------|
+  | 经济利润 | $XXM | 财报计算 |
+  | 品牌贡献率 | XX% | 行业基准/估算 |
+  | 品牌收益 | $XXM | 计算 |
+  | 品牌强度得分 | XX/100 | 10因素评估 |
+  | 品牌强度倍数 | X.Xx | 映射 |
+  | **品牌价值** | **$XXM** | |
+
+  #### 1.2 特许权费率法
+
+  | 组件 | 数值 | 来源 |
+  |------|------|------|
+  | 预测收入 (5年NPV) | $XXM | 预测 |
+  | 特许权费率 | X.X% | 行业基准 |
+  | 品牌强度系数 | X.XX | BSI评分 |
+  | **品牌价值** | **$XXM** | |
+
+  #### 1.3 估值汇总
+
+  | 方法 | 估值 | 权重 | 加权值 |
+  |------|------|------|--------|
+  | Interbrand | $XXM | 50% | $XXM |
+  | 特许权费率 | $XXM | 50% | $XXM |
+  | **综合估值** | | | **$XXM** |
+
+  品牌价值 / 市值: XX%
+  品牌价值 / 收入: X.Xx
+
+  ### 二、品牌资产评估 (Aaker 模型)
+
+  | 维度 | 评分(1-5) | 趋势 | 关键证据 |
+  |------|----------|------|---------|
+  | 品牌知名度 | X | ↑/↓/→ | |
+  | 感知质量 | X | ↑/↓/→ | |
+  | 品牌联想 | X | ↑/↓/→ | |
+  | 品牌忠诚度 | X | ↑/↓/→ | |
+  | 专属资产 | X | ↑/↓/→ | |
+  | **综合评分** | **X/5** | | |
+
+  ### 三、品牌价值驱动分析
+
+  #### 收入驱动
+
+  | 驱动因素 | 当前状态 | 趋势 | 影响 |
+  |---------|---------|------|------|
+  | 价格溢价 | X.Xx vs 品类 | ↑/↓ | |
+  | 市场份额 | XX% | ↑/↓ | |
+  | 品类延伸潜力 | 高/中/低 | | |
+
+  #### 成本驱动
+
+  | 驱动因素 | 当前状态 | vs 竞品 | 趋势 |
+  |---------|---------|--------|------|
+  | 营销效率 | XX% 营销/收入 | | ↑/↓ |
+  | 获客成本 | $XX | | ↑/↓ |
+
+  ### 四、品牌健康监控
+
+  #### 领先指标
+
+  | 指标 | 当前值 | 变化 | 信号 |
+  |------|--------|------|------|
+  | 品牌搜索趋势 | XX | XX% YoY | 🟢/🟡/🔴 |
+  | 社交情绪 | X.XX | XX | 🟢/🟡/🔴 |
+  | NPS | XX | XX pts | 🟢/🟡/🔴 |
+
+  #### 滞后指标
+
+  | 指标 | 当前值 | 变化 | 评估 |
+  |------|--------|------|------|
+  | 市场份额 | XX% | XX pp | |
+  | 第三方排名 | #XX | XX位 | |
+
+  ### 五、投资含义
+
+  **品牌价值评估**: [被低估/合理/被高估]
+
+  **理由**:
+  - [关键论点1]
+  - [关键论点2]
+  - [关键论点3]
+
+  **风险因素**:
+  - [风险1]
+  - [风险2]
+
+  **监控要点**:
+  - [ ] [监控点1]
+  - [ ] [监控点2]
+
+# ============================================================
+# 版本历史
+# ============================================================
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "Interbrand + Brand Finance 估值方法"
+      - "Aaker 品牌资产模型"
+      - "品牌价值驱动分析"
+      - "品牌健康监控指标"
+      - "Kill-Switch 触发器"

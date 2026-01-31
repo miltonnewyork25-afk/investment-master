@@ -1,0 +1,424 @@
+# Consumer Competitor Matrix v1.0
+# 消费品行业竞争对手对比矩阵
+# 适用于: 品牌消费品公司系统化对比
+
+version: "1.0"
+created: "2026-01-31"
+description: |
+  消费品行业竞争分析需要多维度系统化对比。
+  本模块提供标准化的竞争对比框架，支持品类内和跨品类对比。
+
+# ============================================================
+# 核心设计理念
+# ============================================================
+design_philosophy: |
+  消费品竞争的本质是：
+  1. 心智占领 - 谁在消费者脑中占据优势位置
+  2. 货架占领 - 谁在渠道中占据优势位置
+  3. 钱包占领 - 谁能获取更高的消费者支付意愿
+
+  竞争分析不仅是对比数据，更是理解竞争动态和未来趋势。
+
+# ============================================================
+# 对比维度（6大维度）
+# ============================================================
+comparison_dimensions:
+
+  # --------------------------------------------------------
+  brand_power:
+    name: "品牌力"
+    weight: 0.25
+    description: "品牌在消费者心智中的地位"
+
+    metrics:
+      brand_awareness:
+        name: "品牌知名度"
+        measurement: "辅助/非辅助认知率"
+        unit: "%"
+        better: "higher"
+        data_source: "品牌追踪调研"
+
+      brand_perception:
+        name: "品牌认知"
+        measurement: "关键属性关联度"
+        attributes:
+          - "品质"
+          - "创新"
+          - "信任"
+          - "价值"
+        better: "higher association with positive attributes"
+
+      brand_nps:
+        name: "品牌 NPS"
+        unit: "分数 (-100 to +100)"
+        better: "higher"
+        benchmark:
+          excellent: "> 50"
+          good: "30-50"
+          average: "0-30"
+          poor: "< 0"
+
+      brand_search_index:
+        name: "品牌搜索指数"
+        source: "Google Trends / 百度指数"
+        better: "higher relative to competitors"
+
+      social_share_of_voice:
+        name: "社交媒体声量占比"
+        unit: "%"
+        better: "higher"
+
+  # --------------------------------------------------------
+  product_innovation:
+    name: "产品与创新"
+    weight: 0.20
+    description: "产品组合竞争力和创新能力"
+
+    metrics:
+      portfolio_breadth:
+        name: "产品组合广度"
+        measurement: "SKU 数量 / 品类覆盖"
+        interpretation: "需结合聚焦度评估"
+
+      new_product_vitality:
+        name: "新品活力指数"
+        formula: "近 3 年新品收入占比"
+        unit: "%"
+        benchmark:
+          healthy: "> 20%"
+          average: "10-20%"
+          stagnant: "< 10%"
+
+      innovation_success_rate:
+        name: "新品成功率"
+        formula: "存活 > 2 年的新品 / 总上市新品"
+        unit: "%"
+        benchmark: "> 50%"
+
+      patent_trademark:
+        name: "专利/商标数量"
+        categories:
+          - "配方专利"
+          - "设计专利"
+          - "商标注册"
+        better: "higher"
+
+      rd_investment:
+        name: "研发投入"
+        unit: "R&D/Revenue %"
+        benchmark: "行业差异大"
+
+  # --------------------------------------------------------
+  distribution_channel:
+    name: "渠道与分销"
+    weight: 0.20
+    description: "渠道覆盖和控制力"
+
+    metrics:
+      channel_coverage:
+        name: "渠道覆盖率"
+        measurement: "加权铺货率"
+        unit: "%"
+        better: "higher"
+
+      shelf_share:
+        name: "货架份额"
+        formula: "货架份额 / 市场份额"
+        interpretation:
+          above_1: "货架优势"
+          below_1: "货架劣势"
+
+      dtc_ratio:
+        name: "DTC 占比"
+        unit: "%"
+        interpretation: "高 = 更强数据控制，更高利润"
+
+      channel_diversity:
+        name: "渠道多元化"
+        measurement: "Top 3 渠道收入占比"
+        risk: "higher = 更集中"
+
+      ecommerce_penetration:
+        name: "电商渗透率"
+        unit: "%"
+        trend: "大多数品类上升"
+
+      geographic_coverage:
+        name: "地理覆盖"
+        metrics:
+          - "国家/地区数量"
+          - "国际收入占比"
+          - "新兴市场占比"
+
+  # --------------------------------------------------------
+  marketing_consumer:
+    name: "营销与消费者"
+    weight: 0.15
+    description: "营销效率和消费者关系"
+
+    metrics:
+      marketing_efficiency:
+        name: "营销效率"
+        formula: "收入增长 / 营销支出增长"
+        better: "higher"
+
+      marketing_roi:
+        name: "营销 ROI"
+        measurement: "每 $1 营销支出的边际收入"
+        better: "higher"
+
+      customer_acquisition_cost:
+        name: "获客成本 (CAC)"
+        unit: "$"
+        better: "lower"
+
+      customer_retention:
+        name: "客户留存率"
+        unit: "%"
+        better: "higher"
+
+      voc_sentiment:
+        name: "VoC 情绪得分"
+        scale: "-1 to +1"
+        better: "higher"
+        source: "评论分析"
+
+      repeat_purchase_rate:
+        name: "复购率"
+        unit: "%"
+        better: "higher"
+        proxy_for: "品牌忠诚度"
+
+  # --------------------------------------------------------
+  pricing_power:
+    name: "定价能力"
+    weight: 0.10
+    description: "价格控制力和溢价能力"
+
+    metrics:
+      price_premium:
+        name: "价格溢价"
+        formula: "品牌 ASP / 品类 ASP"
+        better: "higher"
+
+      price_elasticity:
+        name: "价格弹性 (PED)"
+        better: "lower (更刚性)"
+        benchmark:
+          strong: "< 1.0"
+          average: "1.0-1.5"
+          weak: "> 1.5"
+
+      promo_intensity:
+        name: "促销强度"
+        formula: "(标价 - 净价) / 标价"
+        better: "lower"
+        warning: "> 30%"
+
+      price_consistency:
+        name: "价格一致性"
+        measurement: "跨渠道价差"
+        better: "lower variance"
+
+  # --------------------------------------------------------
+  financial_strength:
+    name: "财务实力"
+    weight: 0.10
+    description: "财务健康度和盈利能力"
+
+    metrics:
+      revenue_growth:
+        name: "收入增长"
+        unit: "% YoY"
+        better: "higher"
+
+      gross_margin:
+        name: "毛利率"
+        unit: "%"
+        better: "higher"
+        benchmark: "品类差异大"
+
+      operating_margin:
+        name: "营业利润率"
+        unit: "%"
+        better: "higher"
+
+      roic:
+        name: "ROIC"
+        unit: "%"
+        better: "higher"
+        benchmark: "> 15%"
+
+      fcf_conversion:
+        name: "FCF 转化率"
+        formula: "FCF / Net Income"
+        better: "higher"
+        benchmark: "> 80%"
+
+      balance_sheet:
+        name: "资产负债表强度"
+        metrics:
+          - "Net Debt / EBITDA"
+          - "Current Ratio"
+          - "Interest Coverage"
+
+# ============================================================
+# 竞争格局分析模板
+# ============================================================
+competitive_landscape_template:
+
+  market_structure:
+    concentration:
+      hhi_calculation: "Σ(市场份额%)²"
+      interpretation:
+        below_1500: "分散市场"
+        1500_2500: "中等集中"
+        above_2500: "高度集中"
+
+    leader_challenger_dynamics:
+      questions:
+        - "市场领导者是谁？份额多少？"
+        - "挑战者是谁？战略是什么？"
+        - "利基玩家如何生存？"
+
+  competitive_dynamics:
+    rivalry_intensity:
+      drivers:
+        - "竞争者数量和均衡度"
+        - "行业增长率"
+        - "固定成本结构"
+        - "产品差异化程度"
+        - "退出壁垒"
+
+    substitution_threat:
+      questions:
+        - "替代品是什么？"
+        - "替代品价格/性能比如何？"
+        - "消费者转换成本如何？"
+
+    private_label_pressure:
+      metrics:
+        - "私牌市场份额"
+        - "私牌份额趋势"
+        - "私牌 vs 品牌价差"
+
+# ============================================================
+# 输出模板
+# ============================================================
+output_template: |
+  ## 消费品竞争对手对比矩阵
+
+  **品类**: [品类名称]
+  **更新日期**: YYYY-MM-DD
+  **分析师**: [姓名]
+
+  ### 一、市场格局
+
+  | 公司 | 市场份额 | 份额趋势 | 定位 |
+  |------|---------|---------|------|
+  | 公司A | XX% | ↑/↓/→ | 领导者/挑战者/利基 |
+  | 公司B | XX% | ↑/↓/→ | |
+  | 公司C | XX% | ↑/↓/→ | |
+  | 私牌 | XX% | ↑/↓/→ | |
+
+  HHI 指数: XXXX ([分散/中等/集中])
+
+  ### 二、综合评分
+
+  | 维度 | 权重 | 公司A | 公司B | 公司C | 领先者 |
+  |------|------|-------|-------|-------|--------|
+  | 品牌力 | 25% | X/10 | X/10 | X/10 | |
+  | 产品创新 | 20% | X/10 | X/10 | X/10 | |
+  | 渠道分销 | 20% | X/10 | X/10 | X/10 | |
+  | 营销消费者 | 15% | X/10 | X/10 | X/10 | |
+  | 定价能力 | 10% | X/10 | X/10 | X/10 | |
+  | 财务实力 | 10% | X/10 | X/10 | X/10 | |
+  | **加权总分** | 100% | **X/10** | **X/10** | **X/10** | |
+
+  ### 三、关键指标对比
+
+  | 指标 | 公司A | 公司B | 公司C | 行业平均 |
+  |------|-------|-------|-------|---------|
+  | 品牌 NPS | XX | XX | XX | XX |
+  | 新品活力指数 | XX% | XX% | XX% | XX% |
+  | 货架份额/市场份额 | X.X | X.X | X.X | 1.0 |
+  | 价格溢价 | X.Xx | X.Xx | X.Xx | 1.0x |
+  | VoC 情绪 | X.XX | X.XX | X.XX | X.XX |
+  | 毛利率 | XX% | XX% | XX% | XX% |
+  | ROIC | XX% | XX% | XX% | XX% |
+
+  ### 四、SWOT 分析
+
+  **公司A**
+  | 优势 (S) | 劣势 (W) |
+  |---------|---------|
+  | - [列出] | - [列出] |
+
+  | 机会 (O) | 威胁 (T) |
+  |---------|---------|
+  | - [列出] | - [列出] |
+
+  (其他公司类似)
+
+  ### 五、竞争动态趋势
+
+  | 趋势 | 描述 | 受益者 | 受损者 |
+  |------|------|--------|--------|
+  | 趋势1 | | | |
+  | 趋势2 | | | |
+  | 趋势3 | | | |
+
+  ### 六、投资含义
+
+  - **最具投资价值**: [公司] - [原因]
+  - **边际改善最大**: [公司] - [原因]
+  - **风险最高**: [公司] - [原因]
+  - **被低估可能**: [公司] - [原因]
+
+  ### 七、监控要点
+
+  - [ ] 监控点1: [描述]
+  - [ ] 监控点2: [描述]
+  - [ ] 监控点3: [描述]
+
+# ============================================================
+# Kill-Switch 触发器
+# ============================================================
+kill_switches:
+
+  market_share_collapse:
+    name: "份额崩塌"
+    trigger: "市场份额下降 > 3pp 在单季度"
+    severity: "hard"
+    action: "重新评估竞争地位"
+
+  brand_perception_crisis:
+    name: "品牌认知危机"
+    trigger: "品牌 NPS 下降 > 20 分 或 负面社交爆发"
+    severity: "hard"
+    action: "评估品牌修复成本"
+
+  private_label_surge:
+    name: "私牌崛起"
+    trigger: "私牌份额上升 > 5pp 在目标品类"
+    severity: "soft"
+    action: "评估品牌价值侵蚀"
+
+  competitor_breakthrough:
+    name: "竞品突破"
+    trigger: "竞品推出颠覆性产品或获得重大渠道"
+    severity: "soft"
+    action: "评估竞争响应策略"
+
+# ============================================================
+# 版本历史
+# ============================================================
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "6大维度对比框架"
+      - "竞争格局分析模板"
+      - "SWOT 和投资含义输出"
+      - "Kill-Switch 触发器"
