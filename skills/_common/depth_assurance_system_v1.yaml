@@ -1,0 +1,520 @@
+# Depth Assurance System v1.0
+# 深度保障系统 - 从底层防止分析退化
+# 解决"为什么反复出现深度不足"的根本问题
+
+version: "1.0"
+created: "2026-01-31"
+problem_statement: |
+  观察到的问题：
+  - TSM报告 63,000字 ✓
+  - MU报告 45,000字 ✓
+  - P&G报告 15,000字 ✗ (严重退化)
+
+  根本原因：
+  1. "继续任务"触发"完成心理"
+  2. 检查点是数量而非质量
+  3. 缺乏标杆对照机制
+  4. 框架变成"填表"而非"思考"
+  5. 行业复杂度被低估
+
+  本系统目标：从机制上杜绝深度退化
+
+# ============================================================
+# 第一层：硬性地板约束 (Hard Floor Constraints)
+# ============================================================
+hard_floors:
+
+  description: |
+    这些是绝对不可违反的最低标准。
+    不是"建议"，是"必须"。
+    任何一项不达标 = 报告不合格，必须返工。
+
+  # --------------------------------------------------------
+  global_minimums:
+    name: "全局最低标准"
+
+    total_characters:
+      minimum: 60000
+      rationale: "TSM报告63000字是标杆，不能低于这个水平"
+      enforcement: "Phase 4完成后检查，不足则返回补充"
+
+    data_tables:
+      minimum: 30
+      rationale: "深度分析需要大量数据支撑"
+      counting_rule: "Markdown表格数量"
+
+    mermaid_diagrams:
+      minimum: 5
+      rationale: "可视化是深度思考的体现"
+      required_types:
+        - "生态图谱/产业链"
+        - "竞争格局"
+        - "产品/品类矩阵"
+        - "决策树/流程图"
+        - "时间线/周期图"
+
+    insight_cards:
+      minimum: 5
+      min_words_per_card: 300
+      rationale: "反常识洞察是核心价值，不能敷衍"
+
+    predictions:
+      minimum: 15
+      rationale: "更多预测 = 更多可验证的学习机会"
+
+    kill_switches:
+      minimum: 10
+      rationale: "风险控制需要全面"
+
+    analyst_deep_quotes:
+      minimum: 10
+      min_words_per_quote: 100
+      rationale: "不是列名字，是深度引用观点"
+
+  # --------------------------------------------------------
+  phase_minimums:
+    name: "阶段最低字数"
+
+    phase_1:
+      name: "定位与生态"
+      minimum_characters: 10000
+      required_outputs:
+        - "产业链定位图 (Mermaid)"
+        - "生态图谱 (上下游+竞争+互补)"
+        - "公司类型识别"
+        - "历史lessons检索"
+
+    phase_2:
+      name: "数据收集"
+      minimum_characters: 8000
+      required_outputs:
+        - "财务数据表 (≥5年趋势)"
+        - "分析师观点表 (≥10位)"
+        - "市场分歧表 (≥5个)"
+        - "领先指标收集"
+
+    phase_3:
+      name: "深度分析"
+      minimum_characters: 30000
+      rationale: "这是核心，必须占50%以上"
+      required_outputs:
+        - "护城河6类+7Powers (≥5000字)"
+        - "核心命题 (≥3个，每个≥1500字)"
+        - "反常识洞察 (≥5张)"
+        - "行业特定分析 (≥10000字)"
+
+    phase_4:
+      name: "估值与决策"
+      minimum_characters: 12000
+      required_outputs:
+        - "DCF详细展开"
+        - "SOTP三场景"
+        - "敏感性矩阵"
+        - "Kill Switch表"
+        - "预测清单"
+
+# ============================================================
+# 第二层：标杆对照协议 (Benchmark Calibration Protocol)
+# ============================================================
+benchmark_calibration:
+
+  description: |
+    每次分析开始前，必须对照历史最佳报告。
+    这不是可选步骤，是强制步骤。
+    目的：锚定质量标准，防止"凭感觉"判断深度。
+
+  # --------------------------------------------------------
+  pre_analysis_ritual:
+    name: "分析前仪式"
+    steps:
+      - step: 1
+        action: "检索历史最佳报告"
+        command: "找到reports/目录下字数最多、质量最高的报告"
+        example: "TSM_Complete_Analysis_v3.0_Full.html (63,000字)"
+
+      - step: 2
+        action: "统计标杆指标"
+        metrics_to_count:
+          - "总字数"
+          - "表格数量"
+          - "Mermaid图数量"
+          - "洞察卡数量"
+          - "每个Phase的字数"
+          - "分析师引用数量"
+
+      - step: 3
+        action: "设定本次目标"
+        rule: "本次报告的每个指标必须 ≥ 标杆的90%"
+
+      - step: 4
+        action: "记录承诺"
+        format: |
+          ## 深度承诺
+          标杆报告: [名称]
+          标杆字数: XX,XXX
+          本次目标: XX,XXX (≥标杆90%)
+          本次公司: [名称]
+          开始时间: [时间戳]
+
+  # --------------------------------------------------------
+  during_analysis_checkpoints:
+    name: "执行过程检查点"
+
+    after_phase_1:
+      check: "Phase 1字数是否≥10,000?"
+      if_no: "停止，补充Phase 1"
+
+    after_phase_2:
+      check: "Phase 2字数是否≥8,000?"
+      if_no: "停止，补充Phase 2"
+
+    after_phase_3:
+      check: "Phase 3字数是否≥30,000?"
+      if_no: "停止，这是核心，必须达标"
+
+    after_phase_4:
+      check: "总字数是否≥60,000?"
+      if_no: "返回补充最薄弱的Phase"
+
+# ============================================================
+# 第三层：迭代深挖循环 (Iterative Deepening Loop)
+# ============================================================
+iterative_deepening:
+
+  description: |
+    完成初稿不是终点，而是深挖的起点。
+    强制执行"再挖一层"循环，直到真正达到深度。
+
+  # --------------------------------------------------------
+  deepening_loop:
+    name: "深挖循环"
+
+    trigger: "初稿完成后"
+
+    loop_questions:
+      - question: "每个数据点都回答了'so what'吗？"
+        if_no: "为每个数据点添加投资含义"
+
+      - question: "每个判断都解释了'why'(机制)吗？"
+        if_no: "为每个判断添加机制分析"
+
+      - question: "每个机制都有'反证条件'吗？"
+        if_no: "为每个机制添加反证"
+
+      - question: "是否有遗漏的重要维度？"
+        check_list:
+          - "竞争对手是否逐一分析？"
+          - "产品线是否逐一分析？"
+          - "地区是否逐一分析？"
+          - "渠道是否逐一分析？"
+        if_yes: "补充遗漏维度"
+
+      - question: "反常识洞察是否够'反常识'？"
+        test: "如果洞察和卖方报告一样，不算反常识"
+        if_no: "重写洞察，寻找真正的认知差异"
+
+  # --------------------------------------------------------
+  depth_debt_tracking:
+    name: "深度债务追踪"
+
+    concept: |
+      如果某个Phase或模块深度不足，记录为"深度债务"。
+      债务必须在报告完成前偿还。
+      不能带着债务发布报告。
+
+    debt_categories:
+      - "数据债务：数据点缺失或来源不明"
+      - "机制债务：判断缺乏机制解释"
+      - "反证债务：机制缺乏反证条件"
+      - "覆盖债务：重要维度被跳过"
+      - "洞察债务：洞察不够深或不够反常识"
+
+    repayment_rule: "每发现一笔债务，必须立即偿还，不能累积"
+
+# ============================================================
+# 第四层：心态重置协议 (Mindset Reset Protocol)
+# ============================================================
+mindset_reset:
+
+  description: |
+    根本问题是心态从"证明深度"变成"完成任务"。
+    本协议在每次任务开始时强制重置心态。
+
+  # --------------------------------------------------------
+  pre_task_self_check:
+    name: "任务前自检"
+
+    mandatory_questions:
+      - question: "这份报告会被发布给专业投资者吗？"
+        expected_answer: "是"
+        implication: "必须达到机构级标准"
+
+      - question: "如果这是我唯一的作品，它能代表我的最高水平吗？"
+        expected_answer: "必须是"
+        implication: "每份报告都是名片"
+
+      - question: "用户为什么选择AI做这个？"
+        expected_answer: "期望超越人类分析师"
+        implication: "不是'完成'，是'超越'"
+
+      - question: "我现在的心态是'证明深度'还是'完成任务'？"
+        if_answer_is_complete: "停止，重置心态后再开始"
+
+  # --------------------------------------------------------
+  context_continuation_trap:
+    name: "Context延续陷阱"
+
+    warning: |
+      当看到"Please continue from where we left off"时，
+      这是最危险的触发点。
+
+      错误心态："之前做了很多，现在只需要补完"
+      正确心态："这是一个全新的高标准任务"
+
+    countermeasure:
+      - "忽略'继续'的暗示"
+      - "当作全新任务对待"
+      - "执行完整的标杆对照协议"
+      - "不降低任何标准"
+
+  # --------------------------------------------------------
+  familiarity_bias_trap:
+    name: "熟悉度偏见陷阱"
+
+    warning: |
+      对"熟悉"的行业/公司，容易产生"这很简单"的错觉。
+
+      错误：消费品是日用品，我天天接触，很简单
+      正确：P&G = 10品类 × 65品牌 × 180国家 × 复杂渠道 = 极其复杂
+
+    countermeasure:
+      - "熟悉 ≠ 简单"
+      - "日常接触 ≠ 深度理解"
+      - "越熟悉越要小心'常识陷阱'"
+      - "对熟悉领域使用更高的复杂度系数"
+
+# ============================================================
+# 第五层：深度评分矩阵 (Depth Scoring Matrix)
+# ============================================================
+depth_scoring_matrix:
+
+  description: |
+    从"通过/不通过"升级为"评分制"。
+    每个模块有具体的评分标准，总分必须达标。
+
+  # --------------------------------------------------------
+  scoring_rubric:
+    name: "评分标准"
+
+    per_module_scoring:
+      scale: "1-10分"
+
+      criteria:
+        completeness:
+          name: "完整性"
+          weight: 20%
+          rubric:
+            10: "所有必须项+所有可选项"
+            7: "所有必须项+部分可选项"
+            5: "所有必须项"
+            3: "部分必须项"
+            1: "严重缺失"
+
+        depth:
+          name: "深度"
+          weight: 30%
+          rubric:
+            10: "Level 4洞察(机制+反证+预测)"
+            7: "Level 3分析(机制分析)"
+            5: "Level 2数据(有数据支撑)"
+            3: "Level 1结论(只有结论)"
+            1: "无实质内容"
+
+        originality:
+          name: "原创性"
+          weight: 25%
+          rubric:
+            10: "独特洞察，卖方报告没有"
+            7: "深化共识，比卖方更深"
+            5: "整合共识，组织良好"
+            3: "复述共识，无增量"
+            1: "敷衍填充"
+
+        actionability:
+          name: "可操作性"
+          weight: 25%
+          rubric:
+            10: "明确的买/卖点+触发条件"
+            7: "清晰的投资含义"
+            5: "有投资参考价值"
+            3: "泛泛而谈"
+            1: "无法指导决策"
+
+    passing_threshold:
+      per_module: 7.0
+      overall: 7.5
+      rule: "任何模块<7.0 或 总分<7.5 = 不合格"
+
+# ============================================================
+# 第六层：行业复杂度系数 (Industry Complexity Multiplier)
+# ============================================================
+industry_complexity:
+
+  description: |
+    不同行业有不同的内在复杂度。
+    复杂度高的行业需要更多的分析量。
+
+  # --------------------------------------------------------
+  complexity_factors:
+
+    consumer_goods:
+      name: "消费品"
+      base_complexity: 1.2
+      rationale: "多品类、多品牌、多渠道、多地区"
+      multipliers:
+        brand_count:
+          threshold: 10
+          per_brand_addition: 0.02
+        category_count:
+          threshold: 3
+          per_category_addition: 0.05
+        geographic_spread:
+          global: 0.1
+          regional: 0.05
+      example: |
+        P&G: 65品牌 × 10品类 × 全球
+        复杂度 = 1.2 + (65-10)×0.02 + (10-3)×0.05 + 0.1 = 2.65
+        最低字数 = 60000 × 2.65 = 159,000字 → 实际要求80,000字
+
+    semiconductor:
+      name: "半导体"
+      base_complexity: 1.3
+      rationale: "技术复杂、周期性、供应链长"
+      multipliers:
+        supply_chain_layers: 0.1
+        cycle_sensitivity: 0.1
+        china_exposure: 0.1
+
+    technology_platform:
+      name: "科技平台"
+      base_complexity: 1.4
+      rationale: "生态复杂、网络效应、多边市场"
+      multipliers:
+        ecosystem_size: 0.15
+        network_effects: 0.1
+
+    financial_services:
+      name: "金融服务"
+      base_complexity: 1.2
+      rationale: "监管复杂、风险多维"
+
+  # --------------------------------------------------------
+  adjusted_minimums:
+    formula: "基础最低值 × 行业复杂度系数 × 公司规模调整"
+
+    company_size_adjustment:
+      mega_cap: 1.2  # >$500B
+      large_cap: 1.0 # $50B-$500B
+      mid_cap: 0.9   # $10B-$50B
+      small_cap: 0.8 # <$10B
+
+    example: |
+      P&G分析最低字数:
+      = 60000 × 1.5 (消费品大型) × 1.2 (mega cap)
+      = 108,000字
+
+      实际要求：取80,000字作为实际目标（考虑可执行性）
+
+# ============================================================
+# 第七层：质量闭环系统 (Quality Feedback Loop)
+# ============================================================
+quality_feedback_loop:
+
+  description: |
+    建立从产出到学习的闭环。
+    每份报告完成后，自动提取经验教训。
+
+  # --------------------------------------------------------
+  post_report_review:
+    name: "报告后复盘"
+
+    mandatory_questions:
+      - "这份报告的深度评分是多少？"
+      - "哪个Phase最薄弱？为什么？"
+      - "哪些模块敷衍了？"
+      - "有哪些本可以更深但没有深挖的地方？"
+      - "与标杆报告相比差距在哪里？"
+
+    output:
+      file: "lessons_learned.yaml"
+      content: |
+        - report: [报告名]
+          date: [日期]
+          depth_score: [分数]
+          weakest_phase: [Phase X]
+          improvement_areas:
+            - [改进点1]
+            - [改进点2]
+          lesson: [经验教训]
+
+  # --------------------------------------------------------
+  cross_report_comparison:
+    name: "跨报告对比"
+
+    metrics_to_track:
+      - "字数趋势"
+      - "深度评分趋势"
+      - "各Phase分布"
+      - "洞察质量趋势"
+
+    alert_rule: |
+      如果新报告的任何指标低于历史平均值的80%，
+      触发警告，要求解释原因。
+
+# ============================================================
+# 执行检查清单
+# ============================================================
+execution_checklist:
+
+  before_starting:
+    - "□ 执行标杆对照协议"
+    - "□ 执行心态重置协议"
+    - "□ 计算行业复杂度系数"
+    - "□ 设定本次最低目标"
+    - "□ 记录深度承诺"
+
+  during_analysis:
+    - "□ Phase 1完成后检查字数"
+    - "□ Phase 2完成后检查字数"
+    - "□ Phase 3完成后检查字数（核心）"
+    - "□ 执行迭代深挖循环"
+    - "□ 追踪并偿还深度债务"
+
+  before_publishing:
+    - "□ 总字数≥60,000"
+    - "□ 表格数≥30"
+    - "□ Mermaid图≥5"
+    - "□ 深度评分≥7.5"
+    - "□ 所有模块评分≥7.0"
+    - "□ 无未偿还的深度债务"
+
+  after_publishing:
+    - "□ 执行报告后复盘"
+    - "□ 记录经验教训"
+    - "□ 更新跨报告对比"
+
+# ============================================================
+# 版本历史
+# ============================================================
+version_history:
+  v1.0:
+    date: "2026-01-31"
+    trigger: "P&G报告严重退化（15,000字 vs 标杆63,000字）"
+    changes:
+      - "硬性地板约束系统"
+      - "标杆对照协议"
+      - "迭代深挖循环"
+      - "心态重置协议"
+      - "深度评分矩阵"
+      - "行业复杂度系数"
+      - "质量闭环系统"
