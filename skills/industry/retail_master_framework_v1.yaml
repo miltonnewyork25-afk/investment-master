@@ -705,16 +705,102 @@ retail_module_library:
         - "会员费经济学"
         - "会员行为分析"
 
+  补充模块_v2.0:
+    - module: "retail_cycle_radar_v1"
+      name: "零售周期雷达"
+      importance: "领先指标系统"
+      content:
+        - "6层信号雷达"
+        - "周期阶段判断"
+        - "预测性分析"
+
+    - module: "retail_macro_sensitivity_v1"
+      name: "宏观敏感度分析"
+      importance: "周期定位"
+      content:
+        - "失业率/消费信心影响"
+        - "衰退期表现分析"
+        - "情景敏感度"
+
+    - module: "retail_labor_economics_v1"
+      name: "劳动力经济学"
+      importance: "成本结构关键"
+      content:
+        - "薪酬策略分析"
+        - "高薪策略ROI"
+        - "流失率与成本"
+        - "劳动力风险"
+
+    - module: "retail_promotional_economics_v1"
+      name: "促销经济学"
+      importance: "增长质量"
+      content:
+        - "促销效率分析"
+        - "促销依赖度"
+        - "增长质量诊断"
+
+    - module: "retail_real_estate_v1"
+      name: "房地产与选址"
+      importance: "长期竞争力"
+      content:
+        - "物业策略分析"
+        - "租约分析"
+        - "选址模型"
+        - "新店Pipeline"
+
+    - module: "retail_category_management_v1"
+      name: "品类角色分析"
+      importance: "利润池理解"
+      content:
+        - "品类四象限"
+        - "引流vs利润品类"
+        - "非零售收入"
+        - "SKU策略"
+
+    - module: "retail_shrinkage_v1"
+      name: "损耗分析"
+      importance: "利润保护"
+      content:
+        - "损耗构成"
+        - "防损策略"
+        - "会员制防损优势"
+
+    - module: "retail_supplier_dynamics_v1"
+      name: "供应商关系"
+      importance: "采购成本"
+      content:
+        - "议价权分析"
+        - "商业条款"
+        - "供应链风险"
+
+    - module: "retail_consumer_behavior_v1"
+      name: "消费者行为"
+      importance: "需求洞察"
+      content:
+        - "购物旅程"
+        - "篮子分析"
+        - "价格感知"
+        - "流失预警"
+
   执行顺序:
     Phase_1_定位:
       - "retail_competitive_landscape_v1 → 竞争格局"
     Phase_2_数据:
       - "retail_comp_sales_analysis_v1 → 同店拆解"
       - "retail_store_economics_v1 → 门店经济"
+      - "retail_cycle_radar_v1 → 周期雷达 ⭐新增"
     Phase_3_分析:
       - "retail_private_label_strategy_v1 → 自有品牌"
       - "retail_omnichannel_v1 → 全渠道"
       - "retail_membership_economics_v1 → 会员经济(如适用)"
+      - "retail_macro_sensitivity_v1 → 宏观敏感度 ⭐新增"
+      - "retail_labor_economics_v1 → 劳动力 ⭐新增"
+      - "retail_promotional_economics_v1 → 促销 ⭐新增"
+      - "retail_real_estate_v1 → 房地产 ⭐新增"
+      - "retail_category_management_v1 → 品类 ⭐新增"
+      - "retail_shrinkage_v1 → 损耗 ⭐新增"
+      - "retail_supplier_dynamics_v1 → 供应商 ⭐新增"
+      - "retail_consumer_behavior_v1 → 消费者 ⭐新增"
     Phase_4_决策:
       - "继承通用估值框架"
       - "使用零售专用Kill Switch"
@@ -724,6 +810,21 @@ retail_module_library:
 # ═══════════════════════════════════════════════════════════════
 
 version_history:
+  v2.0:
+    date: "2026-01-31"
+    changes:
+      - "新增9个补充模块（共16个模块）"
+      - "retail_cycle_radar_v1 - 6层周期雷达"
+      - "retail_macro_sensitivity_v1 - 宏观敏感度"
+      - "retail_labor_economics_v1 - 劳动力经济学"
+      - "retail_promotional_economics_v1 - 促销经济学"
+      - "retail_real_estate_v1 - 房地产与选址"
+      - "retail_category_management_v1 - 品类管理"
+      - "retail_shrinkage_v1 - 损耗分析"
+      - "retail_supplier_dynamics_v1 - 供应商关系"
+      - "retail_consumer_behavior_v1 - 消费者行为"
+      - "预估报告字数：100,000+"
+
   v1.0:
     date: "2026-01-31"
     changes:
@@ -732,5 +833,5 @@ version_history:
       - "定义零售6大护城河"
       - "创建行业特定模块"
       - "整合通用框架"
-      - "新增6个专用模块"
+      - "新增7个专用模块"
       - "创建模块库索引"

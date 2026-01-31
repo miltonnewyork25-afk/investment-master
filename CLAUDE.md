@@ -2009,14 +2009,10 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 **v19.9 (2026-01-31)** - 零售行业分析框架 ⭐⭐⭐⭐⭐
 - **框架定位**: 专为Walmart、Costco、Target等零售渠道公司设计
 - **6大零售护城河**: 规模采购、成本领先、地理密度、会员锁定、自有品牌、全渠道
-- **7个专用模块**:
-  - `retail_master_framework_v1.yaml` - 5阶段主控框架
-  - `retail_comp_sales_analysis_v1.yaml` - 同店销售拆解
-  - `retail_store_economics_v1.yaml` - 门店经济学
-  - `retail_membership_economics_v1.yaml` - 会员制经济学
-  - `retail_private_label_strategy_v1.yaml` - 自有品牌战略
-  - `retail_omnichannel_v1.yaml` - 全渠道能力
-  - `retail_competitive_landscape_v1.yaml` - 竞争格局分析
+- **16个专用模块**（v2.0完整版）:
+  - 核心模块(7个): 主控框架、同店拆解、门店经济、会员经济、自有品牌、全渠道、竞争格局
+  - 补充模块(9个): 周期雷达、宏观敏感度、劳动力经济学、促销经济学、房地产选址、品类管理、损耗分析、供应商关系、消费者行为
+- **预估报告字数**: 100,000+（完整执行所有模块）
 - **8个Kill Switch**: 同店恶化、客流崩塌、会员流失、毛利压缩等
 - **架构扩展**: 在v19.0架构图中新增Retail列
 
