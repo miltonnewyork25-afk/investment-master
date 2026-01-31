@@ -1,0 +1,323 @@
+# Agent 自我升级系统 v1.0
+# 定期搜索最佳实践，自动识别升级机会
+
+version: "1.0"
+created: "2026-01-31"
+inspired_by: "ClawdBot 记忆分层设计"
+
+# ============================================================
+# 设计理念
+# ============================================================
+design_philosophy: |
+  Agent 应该能够自我进化，而非仅被动执行。
+
+  核心原则:
+  1. 主动学习 - 定期搜索外部最佳实践
+  2. 内部反思 - 分析自身执行中的问题
+  3. 增量升级 - 每次小步改进，持续复利
+  4. 版本追踪 - 记录每次升级的原因和效果
+
+# ============================================================
+# 升级触发条件
+# ============================================================
+upgrade_triggers:
+
+  scheduled:
+    description: "定期触发"
+    conditions:
+      - weekly_reflection: "每周日执行"
+      - monthly_review: "每月最后一天执行"
+      - quarterly_audit: "每季度末执行"
+
+  event_driven:
+    description: "事件触发"
+    conditions:
+      - analysis_completed: "深度分析完成后"
+      - error_occurred: "遇到重大错误后"
+      - user_feedback: "收到用户反馈后"
+      - new_insight: "发现重要洞察后"
+
+  manual:
+    description: "手动触发"
+    command: "/upgrade-agent"
+
+# ============================================================
+# 升级流程
+# ============================================================
+upgrade_workflow:
+
+  phase_1_search:
+    name: "外部搜索"
+    description: "搜索最新的 Agent 设计最佳实践"
+
+    search_queries:
+      - "AI agent architecture best practices 2026"
+      - "LLM agent memory system design"
+      - "autonomous agent self-improvement"
+      - "agent framework comparison 2026"
+      - "Claude agent design patterns"
+      - "investment research agent architecture"
+
+    search_sources:
+      - type: "web_search"
+        focus: "学术论文、技术博客、开源项目"
+      - type: "github_trending"
+        focus: "agent 相关项目"
+      - type: "arxiv"
+        focus: "LLM agent 论文"
+
+    output: "external_insights.md"
+
+  phase_2_internal_analysis:
+    name: "内部分析"
+    description: "分析自身执行中的问题和模式"
+
+    analyze_sources:
+      - lessons_learned: "提取高频问题"
+      - predictions_tracker: "计算预测准确率"
+      - quality_gates: "统计通过率变化"
+      - user_feedback: "整理反馈主题"
+
+    metrics_to_track:
+      - lesson_repeat_rate: "同类问题重复率"
+      - prediction_accuracy: "预测准确率"
+      - depth_score_trend: "深度评分趋势"
+      - execution_efficiency: "执行效率变化"
+
+    output: "internal_analysis.md"
+
+  phase_3_gap_identification:
+    name: "差距识别"
+    description: "对比外部最佳实践与内部现状"
+
+    comparison_dimensions:
+      - memory_system: "记忆系统成熟度"
+      - tool_usage: "工具使用效率"
+      - reasoning_depth: "推理深度"
+      - self_correction: "自我纠错能力"
+      - knowledge_retention: "知识保留率"
+
+    gap_template: |
+      ## 差距 #{n}: {title}
+
+      **外部最佳实践**: {description}
+      **我们的现状**: {current_state}
+      **差距程度**: {gap_level: low/medium/high}
+      **升级优先级**: {priority: P0/P1/P2}
+      **实现复杂度**: {complexity: low/medium/high}
+      **预期收益**: {benefit}
+
+    output: "upgrade_gaps.md"
+
+  phase_4_upgrade_plan:
+    name: "升级计划"
+    description: "制定具体升级方案"
+
+    plan_template: |
+      ## 升级计划 v{version}
+
+      ### 本次升级范围
+      - {upgrade_item_1}
+      - {upgrade_item_2}
+
+      ### 实现步骤
+      1. {step_1}
+      2. {step_2}
+
+      ### 预期效果
+      - {expected_outcome}
+
+      ### 验证方法
+      - {verification_method}
+
+      ### 回滚方案
+      - {rollback_plan}
+
+    output: "upgrade_plan.md"
+
+  phase_5_execution:
+    name: "执行升级"
+    description: "实施升级并验证"
+
+    execution_steps:
+      - create_backup: "备份当前框架"
+      - implement_changes: "实施修改"
+      - run_validation: "运行验证测试"
+      - update_version: "更新版本号"
+      - document_changes: "记录变更"
+
+    validation_criteria:
+      - no_regression: "无功能退化"
+      - improvement_measurable: "改进可测量"
+      - user_experience: "用户体验不下降"
+
+  phase_6_learning:
+    name: "学习记录"
+    description: "记录升级效果，形成闭环"
+
+    record_items:
+      - upgrade_effectiveness: "升级效果评估"
+      - unexpected_issues: "意外问题"
+      - lessons_for_next: "下次升级参考"
+
+    output: "upgrade_retrospective.md"
+
+# ============================================================
+# 自动复利触发器
+# ============================================================
+auto_compound_triggers:
+
+  after_deep_analysis:
+    trigger: "深度分析完成后"
+    actions:
+      - extract_lessons: "提取 2-3 条新 lessons"
+      - update_predictions: "更新预测追踪"
+      - update_memory: "更新每日记忆"
+
+    lesson_extraction_prompt: |
+      刚完成 {company} 深度分析。请反思:
+
+      1. 这次分析中遇到了什么问题？
+      2. 哪个框架模块最有用？
+      3. 哪里可以改进？
+      4. 有什么新发现值得记录？
+
+      输出 2-3 条新 lessons，格式:
+      - id: LL_NEW_XXX
+      - category: [选择类别]
+      - lesson: [一句话教训]
+      - action_taken: [改进措施]
+
+  weekly_reflection:
+    trigger: "每周日"
+    actions:
+      - summarize_week: "总结本周工作"
+      - update_memory_md: "更新 MEMORY.md"
+      - plan_next_week: "规划下周"
+
+    reflection_prompt: |
+      本周工作反思:
+
+      1. 完成了哪些分析？
+      2. 框架有哪些升级？
+      3. 提取了多少条 lessons？
+      4. 下周应该关注什么？
+
+  context_compression:
+    trigger: "上下文接近压缩阈值"
+    actions:
+      - save_key_insights: "保存关键洞察"
+      - update_daily_memory: "更新每日记忆"
+      - prepare_summary: "准备压缩摘要"
+
+    compression_prompt: |
+      上下文即将压缩。请整理:
+
+      1. 本次对话的关键决策
+      2. 重要的数据点
+      3. 待完成的任务
+      4. 需要记住的上下文
+
+      写入 memory/{today}.md
+
+# ============================================================
+# 搜索模板
+# ============================================================
+search_templates:
+
+  agent_best_practices:
+    query: "AI agent best practices {year}"
+    extract:
+      - design_patterns: "设计模式"
+      - memory_systems: "记忆系统"
+      - tool_usage: "工具使用"
+      - self_improvement: "自我改进"
+
+  investment_agent:
+    query: "investment research AI agent architecture"
+    extract:
+      - data_integration: "数据整合"
+      - analysis_depth: "分析深度"
+      - prediction_tracking: "预测追踪"
+
+  memory_systems:
+    query: "LLM agent memory architecture {year}"
+    extract:
+      - short_term: "短期记忆"
+      - long_term: "长期记忆"
+      - retrieval: "检索机制"
+      - consolidation: "记忆整合"
+
+# ============================================================
+# 版本升级历史模板
+# ============================================================
+version_history_template: |
+  ## v{version} ({date})
+
+  **触发原因**: {trigger}
+  **外部参考**: {external_reference}
+
+  **升级内容**:
+  - {change_1}
+  - {change_2}
+
+  **效果验证**:
+  - {metric_1}: {before} → {after}
+
+  **新增 Lessons**:
+  - {lesson_id}: {lesson_summary}
+
+# ============================================================
+# 执行命令
+# ============================================================
+commands:
+
+  manual_upgrade:
+    description: "手动触发升级流程"
+    usage: "/upgrade-agent"
+    steps:
+      1. "执行外部搜索 (Phase 1)"
+      2. "执行内部分析 (Phase 2)"
+      3. "识别差距 (Phase 3)"
+      4. "制定计划 (Phase 4)"
+      5. "请求用户确认"
+      6. "执行升级 (Phase 5)"
+      7. "记录学习 (Phase 6)"
+
+  quick_search:
+    description: "快速搜索最佳实践"
+    usage: "/search-agent-practices"
+    output: "最新 agent 设计趋势摘要"
+
+  compound_now:
+    description: "立即执行复利"
+    usage: "/compound-now"
+    steps:
+      1. "提取本次对话 lessons"
+      2. "更新每日记忆"
+      3. "更新 MEMORY.md (如有重大发现)"
+
+# ============================================================
+# 输出文件结构
+# ============================================================
+output_structure:
+  directory: "skills/knowledge_base/upgrades/"
+  files:
+    - "external_insights_{date}.md"
+    - "internal_analysis_{date}.md"
+    - "upgrade_gaps_{date}.md"
+    - "upgrade_plan_{date}.md"
+    - "upgrade_retrospective_{date}.md"
+
+# ============================================================
+# 版本历史
+# ============================================================
+changelog:
+  v1.0:
+    date: "2026-01-31"
+    changes:
+      - "初始版本"
+      - "6阶段升级流程"
+      - "自动复利触发器"
+      - "搜索模板"
+    inspired_by: "ClawdBot 记忆分层设计"

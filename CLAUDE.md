@@ -134,6 +134,75 @@ MU v18.2 贡献:               TSM v18.0 贡献:
 
 ---
 
+## 🧠 记忆系统（v19.1 新增，ClawdBot 启发）
+
+> 设计理念：Agent 应该能够**记住**过去的经验，而不是每次从零开始。
+
+### 三层记忆架构
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  长期记忆 (MEMORY.md)                                           │
+│  ├─ 核心身份和能力                                              │
+│  ├─ Top 10 关键教训（每周更新）                                 │
+│  ├─ 成功/失败模式                                               │
+│  ├─ 行业快速索引                                                │
+│  └─ 高优先级预测追踪                                            │
+│  更新频率: 每周 / 重大发现时                                    │
+├─────────────────────────────────────────────────────────────────┤
+│  中期记忆 (memory/YYYY-MM-DD.md)                                │
+│  ├─ 当日完成的任务                                              │
+│  ├─ 关键洞察和决策                                              │
+│  ├─ 待解决问题                                                  │
+│  └─ 明日计划                                                    │
+│  更新频率: 每日 / 上下文压缩前                                  │
+├─────────────────────────────────────────────────────────────────┤
+│  短期记忆 (当前会话)                                            │
+│  ├─ 当前对话上下文                                              │
+│  ├─ 工作状态                                                    │
+│  └─ 临时数据                                                    │
+│  生命周期: 会话结束即清空                                       │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 记忆文件
+
+| 文件 | 用途 | 加载时机 |
+|------|------|---------|
+| `MEMORY.md` | 长期记忆，精炼的核心知识 | **每次分析前自动加载** |
+| `memory/YYYY-MM-DD.md` | 每日记忆，详细工作日志 | 按需检索 |
+| `skills/knowledge_base/lessons_learned.yaml` | 完整教训库 | 按需检索 |
+| `skills/knowledge_base/predictions_tracker.yaml` | 预测追踪 | 验证时加载 |
+
+### 强制执行
+
+```
+⛔ 深度分析前必须加载 MEMORY.md
+⛔ 上下文压缩前必须更新 memory/{today}.md
+⛔ 每次分析完成后必须提取 lessons
+```
+
+### 自动复利触发器
+
+| 触发时机 | 动作 | 输出 |
+|---------|------|------|
+| 深度分析完成后 | 提取 2-3 条新 lessons | lessons_learned.yaml |
+| 深度分析完成后 | 更新预测追踪 | predictions_tracker.yaml |
+| 上下文压缩前 | 保存关键洞察 | memory/{today}.md |
+| 每周日 | 反思总结 + 更新 MEMORY.md | Weekly_Reflection.md |
+
+### 自我升级机制
+
+详见：`skills/core/agent_self_upgrade_v1.yaml`
+
+| 命令 | 用途 |
+|------|------|
+| `/upgrade-agent` | 手动触发升级流程（搜索→分析→计划→执行） |
+| `/search-agent-practices` | 快速搜索最新 Agent 最佳实践 |
+| `/compound-now` | 立即执行复利（提取 lessons + 更新记忆） |
+
+---
+
 ## ⭐ 核心架构变革（v18.3）
 
 ### 唯一执行入口：Master Framework
@@ -1042,6 +1111,13 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 ## 版本历史与演进
 
+**v19.1 (2026-01-31)** - 记忆系统 + 自我升级 ⭐⭐⭐⭐⭐ (ClawdBot 启发)
+- **三层记忆架构**: 长期(MEMORY.md) + 中期(memory/daily) + 短期(会话)
+- **自动复利触发器**: 分析完成→提取lessons，上下文压缩→保存洞察
+- **自我升级机制**: 6阶段升级流程（搜索→分析→差距→计划→执行→学习）
+- **新增命令**: `/upgrade-agent`, `/compound-now`, `/search-agent-practices`
+- **强制执行**: 深度分析前必须加载 MEMORY.md
+
 **v19.0 (2026-01-31)** - 行业专用框架 ⭐⭐⭐⭐⭐
 - **行业分层架构**: 通用核心 + Memory/Semicap/Foundry 专用模块
 - **6层周期雷达**: 新增 Layer -1（终端需求）和 Layer 0.5（Fab产能）
@@ -1130,6 +1206,11 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 - `skills/industry/memory_competitor_matrix_v1.yaml` - 竞争对手矩阵
 - `skills/core/management_track_record_v1.yaml` - 管理层评分系统
 
+### 记忆系统（v19.1新增）⭐⭐⭐
+- `MEMORY.md` - 长期记忆（每次分析前自动加载）
+- `memory/YYYY-MM-DD.md` - 每日记忆
+- `skills/core/agent_self_upgrade_v1.yaml` - 自我升级机制 ⭐核心
+
 ### 数据与学习
 - `skills/knowledge_base/lessons_learned.yaml`
 - `skills/knowledge_base/predictions_tracker.yaml`
@@ -1146,24 +1227,29 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 ---
 
-**当前版本**: v19.0
+**当前版本**: v19.1
 **更新日期**: 2026-01-31
-**核心理念**: 通用核心框架 + 行业专用模块 = 精准深度分析
+**核心理念**: 记忆驱动的自我进化 Agent
 
-**v19.0 核心升级**:
+**v19.1 核心升级（ClawdBot 启发）**:
 
-| 模块 | 文件 | 核心功能 |
+| 能力 | 实现 | 核心功能 |
 |------|------|---------|
-| 6层周期雷达 | `memory_cycle_intelligence_v1.yaml` | 新增终端需求层、Fab产能层 |
-| 价格预测 | `memory_pricing_model_v1.yaml` | 供需平衡→价格拐点 |
-| 竞争矩阵 | `memory_competitor_matrix_v1.yaml` | 5维度跨公司对比 |
-| 管理层评分 | `management_track_record_v1.yaml` | 指引准确率、CapEx时机 |
+| 三层记忆 | MEMORY.md + memory/ | 长期/中期/短期记忆分层 |
+| 自动复利 | agent_self_upgrade_v1.yaml | 分析后自动提取 lessons |
+| 自我升级 | `/upgrade-agent` 命令 | 搜索最佳实践→识别差距→升级框架 |
 
 **框架架构总结**:
 ```
-v19.0 = 通用核心（4阶段/7 Powers/Kill Switch）
+v19.1 = 通用核心（4阶段/7 Powers/Kill Switch）
       + 行业专用（Memory 6层雷达/价格模型/竞争矩阵）
-      + 公司定制（可选）
+      + 记忆系统（三层记忆 + 自动复利）⭐ NEW
+      + 自我升级（定期搜索 + 差距识别）⭐ NEW
+
+记忆系统:
+├─ 长期记忆 (MEMORY.md)      → 精炼核心，每周更新
+├─ 中期记忆 (memory/daily)   → 工作日志，每日更新
+└─ 短期记忆 (会话)           → 临时数据，会话结束清空
 
 适用行业:
 ├─ Memory（MU/Samsung/SK）   ✅ 已完成
