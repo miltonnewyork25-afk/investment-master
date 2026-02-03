@@ -1,0 +1,323 @@
+# AI Ecosystem Position v1.0
+# AI生态位置与价值流向分析
+# 创建日期: 2026-02-02
+
+version: "1.0"
+created: "2026-02-02"
+
+metadata:
+  skill_id: "ai_assessment.ecosystem_position_v1.0"
+  name: "AI生态位置分析"
+  purpose: "分析公司在AI价值链中的位置和价值流向"
+
+# ═══════════════════════════════════════════════════════════════
+# AI价值链层级
+# ═══════════════════════════════════════════════════════════════
+
+ai_value_chain:
+
+  L0_infrastructure:
+    name: "基础设施层"
+    description: "AI计算的底层硬件和基础设施"
+
+    segments:
+      compute_hardware:
+        description: "AI芯片/GPU/TPU"
+        examples: ["NVIDIA", "AMD", "Intel", "Cerebras", "Groq"]
+        value_capture: "极高——目前供不应求"
+        moat_type: "技术+规模+生态锁定"
+
+      cloud_infrastructure:
+        description: "云计算/数据中心"
+        examples: ["AWS", "Azure", "GCP", "CoreWeave"]
+        value_capture: "高——AI基础设施需求爆发"
+        moat_type: "规模+资本密集"
+
+      networking:
+        description: "AI网络设备/互联"
+        examples: ["Arista", "Cisco", "Juniper"]
+        value_capture: "中高——受益于AI数据中心"
+        moat_type: "技术+客户关系"
+
+    ai_tax_position: "Collector——所有AI应用都需要基础设施"
+
+  L1_platform:
+    name: "平台层"
+    description: "AI开发和部署平台"
+
+    segments:
+      foundation_models:
+        description: "大模型/基础模型"
+        examples: ["OpenAI", "Anthropic", "Google DeepMind", "Meta AI"]
+        value_capture: "极高但竞争加剧"
+        moat_type: "数据+人才+资本"
+
+      ml_platforms:
+        description: "ML开发平台"
+        examples: ["Databricks", "Snowflake", "DataRobot"]
+        value_capture: "高——企业AI开发必经之路"
+        moat_type: "生态+切换成本"
+
+      inference_platforms:
+        description: "推理优化平台"
+        examples: ["Together AI", "Anyscale", "Modal"]
+        value_capture: "中等——竞争激烈"
+        moat_type: "技术+成本效率"
+
+    ai_tax_position: "Collector——控制AI能力的分发"
+
+  L2_middleware:
+    name: "中间件层"
+    description: "AI应用开发工具和服务"
+
+    segments:
+      vector_databases:
+        description: "向量数据库/RAG"
+        examples: ["Pinecone", "Weaviate", "Milvus"]
+        value_capture: "中等——commoditization风险"
+        moat_type: "性能+集成"
+
+      ai_frameworks:
+        description: "AI开发框架"
+        examples: ["LangChain", "LlamaIndex", "Haystack"]
+        value_capture: "低——开源为主"
+        moat_type: "社区+开发者生态"
+
+      ai_security:
+        description: "AI安全/治理工具"
+        examples: ["Robust Intelligence", "Arthur AI"]
+        value_capture: "中等——需求增长"
+        moat_type: "合规know-how"
+
+    ai_tax_position: "Mixed——部分收税，部分被commoditize"
+
+  L3_application:
+    name: "应用层"
+    description: "面向最终用户的AI应用"
+
+    segments:
+      horizontal_apps:
+        description: "通用AI应用"
+        examples: ["ChatGPT", "Perplexity", "Notion AI"]
+        value_capture: "高但竞争激烈"
+        moat_type: "品牌+用户习惯"
+
+      vertical_apps:
+        description: "垂直AI应用"
+        examples: ["Harvey(法律)", "Abridge(医疗)", "Cursor(编程)"]
+        value_capture: "中高——领域专业化"
+        moat_type: "领域数据+专业知识"
+
+      ai_agents:
+        description: "AI代理/自动化"
+        examples: ["Cognition(Devin)", "Adept", "Inflection"]
+        value_capture: "未定——早期阶段"
+        moat_type: "技术+用例"
+
+    ai_tax_position: "Payer——需要向上游付费，但有终端定价权"
+
+  L4_end_user:
+    name: "终端用户层"
+    description: "使用AI的企业/消费者"
+
+    characteristics:
+      - "AI的价值消费者"
+      - "为AI功能付费"
+      - "AI可提升其效率/体验"
+
+    value_flow: "主要是Payer，但可通过效率提升获取间接收益"
+
+# ═══════════════════════════════════════════════════════════════
+# 价值流向分析
+# ═══════════════════════════════════════════════════════════════
+
+value_flow_analysis:
+
+  capturing:
+    name: "价值捕获"
+    description: "AI为公司创造价值，利润池流入"
+
+    indicators:
+      - "AI相关收入快速增长"
+      - "毛利率因AI扩张"
+      - "客户因AI付费更多"
+      - "市场份额因AI增加"
+
+    typical_positions:
+      - "L0基础设施（当前）"
+      - "L1平台层（当前）"
+      - "垂直AI应用（早期赢家）"
+
+  neutral:
+    name: "价值中性"
+    description: "AI是效率工具，不改变利润池分配"
+
+    indicators:
+      - "AI降低成本但不增加收入"
+      - "竞争对手有类似AI能力"
+      - "AI成本与收益大致抵消"
+
+    typical_positions:
+      - "传统企业使用AI工具"
+      - "AI是内部效率工具"
+
+  leaking:
+    name: "价值流出"
+    description: "AI导致价值流向其他玩家"
+
+    indicators:
+      - "收入被AI竞争者蚕食"
+      - "被迫降价应对AI竞争"
+      - "AI成本上升但收入不增"
+      - "客户流向AI原生竞争者"
+
+    typical_positions:
+      - "被AI去中介化的中间商"
+      - "被AI自动化替代的服务商"
+      - "无法建立AI能力的传统企业"
+
+# ═══════════════════════════════════════════════════════════════
+# AI税收位置
+# ═══════════════════════════════════════════════════════════════
+
+ai_tax_position:
+
+  collector:
+    name: "AI税收征收者"
+    description: "其他公司必须向其付费才能获得AI能力"
+
+    characteristics:
+      - "控制AI关键资源"
+      - "有定价权"
+      - "客户依赖度高"
+      - "替代成本高"
+
+    examples:
+      strong_collector:
+        - "NVIDIA——AI芯片垄断"
+        - "OpenAI——GPT API"
+        - "Microsoft——企业AI平台"
+
+      moderate_collector:
+        - "Databricks——企业ML平台"
+        - "Snowflake——数据平台"
+
+    investment_signal: "强正面——AI浪潮的直接受益者"
+
+  payer:
+    name: "AI税收支付者"
+    description: "必须向上游付费获取AI能力"
+
+    characteristics:
+      - "依赖第三方AI能力"
+      - "AI成本占比上升"
+      - "有被替代风险"
+
+    examples:
+      heavy_payer:
+        - "依赖OpenAI API的创业公司"
+        - "使用NVIDIA GPU的云厂商"
+
+      moderate_payer:
+        - "采购AI SaaS的企业"
+
+    investment_signal: "需评估——看能否将成本转嫁给客户"
+
+  neutral:
+    name: "AI税收中性"
+    description: "AI对价值链位置影响有限"
+
+    characteristics:
+      - "AI是内部工具"
+      - "不依赖特定AI供应商"
+      - "AI成本占比低"
+
+    examples:
+      - "使用开源AI的企业"
+      - "AI影响有限的行业"
+
+    investment_signal: "中性——关注未来变化"
+
+# ═══════════════════════════════════════════════════════════════
+# 生态位置评估框架
+# ═══════════════════════════════════════════════════════════════
+
+assessment_framework:
+
+  step_1_identify_layer:
+    description: "识别公司在AI价值链的层级"
+    questions:
+      - "公司主要在哪一层提供价值？"
+      - "是基础设施/平台/中间件/应用/终端用户？"
+      - "有没有跨层的业务？"
+
+  step_2_assess_value_flow:
+    description: "评估价值流向"
+    questions:
+      - "AI是增加还是减少公司的利润池？"
+      - "客户是否愿意为AI付更多钱？"
+      - "竞争对手的AI能力如何？"
+      - "有没有价值被AI平台抽走？"
+
+  step_3_determine_tax_position:
+    description: "判断AI税收位置"
+    questions:
+      - "公司是否控制AI关键资源？"
+      - "其他公司是否依赖其AI能力？"
+      - "公司是否依赖其他AI供应商？"
+      - "AI成本占比多少？"
+
+  step_4_project_evolution:
+    description: "预测位置演变"
+    questions:
+      - "公司的AI位置是在强化还是弱化？"
+      - "有没有向更有利位置移动的策略？"
+      - "竞争格局如何演变？"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## AI生态位置分析
+
+  ### 价值链位置
+
+  **主要层级**: L[X]_[层级名]
+  **具体定位**: [描述]
+  **跨层业务**: [如有]
+
+  ### 价值流向评估
+
+  | 维度 | 评估 | 证据 |
+  |------|------|------|
+  | 收入影响 | 正向/中性/负向 | |
+  | 利润率影响 | 正向/中性/负向 | |
+  | 市场份额 | 增加/不变/减少 | |
+  | **综合判断** | Capturing/Neutral/Leaking | |
+
+  ### AI税收位置
+
+  **位置**: Collector / Payer / Neutral
+  **强度**: 强 / 中 / 弱
+  **依据**: [说明]
+
+  ### 位置演变预测
+
+  **当前位置**: [描述]
+  **预期演变**: [描述]
+  **关键驱动**: [因素]
+
+output_contract:
+  ai_value_chain_layer:
+    type: "enum"
+    values: ["L0_infra", "L1_platform", "L2_middleware", "L3_application", "L4_end_user"]
+  value_flow_direction:
+    type: "enum"
+    values: ["capturing", "neutral", "leaking"]
+  ai_tax_position:
+    type: "enum"
+    values: ["collector", "payer", "neutral"]
+  position_strength:
+    type: "enum"
+    values: ["strong", "moderate", "weak"]

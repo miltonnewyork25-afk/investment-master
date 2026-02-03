@@ -1,0 +1,881 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# Compound Moat Assessment Framework v1.0
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Purpose: 评估复合业务公司的护城河如何相互强化或削弱，判断护城河持久性
+#
+# Design Philosophy:
+#   - 1+1可能>2（护城河复合增强）或<2（护城河相互削弱）
+#   - 护城河强度 ≠ 护城河持久性
+#   - 多业务公司的护城河评估需考虑跨业务协同
+#   - 必须量化护城河对ROIC和定价权的贡献
+#
+# Inheritance:
+#   - 依赖 moat_deep_analysis_v1.yaml（单业务护城河分析）
+#   - 依赖 business_decomposition_protocol_v1.yaml（业务拆分）
+#   - 被 weighted_valuation_engine_v1.yaml 调用（估值溢价）
+#
+# Examples:
+#   - Tesla: 数据护城河+品牌护城河+制造规模 复合→FSD加速/溢价提升
+#   - Apple: 生态系统+品牌+规模 复合→转换成本指数级增长
+#   - Amazon: 网络效应+规模+数据 复合→飞轮加速
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+skill_metadata:
+  name: "Compound Moat Assessment Framework"
+  version: "1.0"
+  category: "universal"
+  author: "Investment Master Agent v19.12"
+  created: "2026-02-02"
+
+  dependencies:
+    - skill: "moat_deep_analysis_v1.yaml"
+      reason: "需要先评估各业务的独立护城河"
+    - skill: "business_decomposition_protocol_v1.yaml"
+      reason: "需要业务拆分结果"
+    - skill: "7_powers_v1.yaml"
+      reason: "继承7 Powers框架"
+
+  used_by:
+    - "weighted_valuation_engine_v1.yaml"
+    - "hybrid_business_master_framework_v1.yaml"
+
+  applicable_companies:
+    - type: "multi_business_strong_moat"
+      examples: ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA"]
+    - type: "platform_ecosystem"
+      examples: ["META", "UBER", "SHOP"]
+    - type: "industrial_conglomerate"
+      examples: ["HON", "DHR", "ITW"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 1: 护城河复合理论
+# ═══════════════════════════════════════════════════════════════════════════════
+
+compound_moat_theory:
+
+  definition:
+    single_moat: "单一业务护城河 - 竞争对手难以跨越的壁垒"
+    compound_moat: "复合业务护城河 - 多个护城河相互强化，使整体防御力>各部分之和"
+
+  mathematical_analogy:
+    linear: "护城河A + 护城河B = 总防御力"
+    compound: "护城河A × 护城河B ^ 协同系数 = 总防御力"
+
+  compound_types:
+
+    type_1_reinforcing:
+      description: "护城河A的存在使护城河B更强大"
+      mechanism: "正反馈循环 - A增强B，B增强A"
+
+      examples:
+        apple_ecosystem_brand:
+          moat_a: "生态系统锁定（转换成本）"
+          moat_b: "品牌护城河（定价权）"
+          reinforcement: |
+            生态系统 → 用户体验优越 → 品牌溢价提升
+            品牌溢价 → 更多用户加入 → 生态系统价值↑
+            复合效果: 转换成本从$500（仅硬件）→$5,000（生态锁定）
+
+        amazon_network_scale:
+          moat_a: "网络效应（买家-卖家）"
+          moat_b: "规模经济（物流成本）"
+          reinforcement: |
+            更多买家 → 吸引更多卖家 → 商品丰富度↑
+            商品丰富度↑ → 订单密度↑ → 物流成本↓
+            物流成本↓ → 价格更低 → 吸引更多买家
+            复合效果: 毛利率提升5pp + 市场份额↑10pp
+
+        tesla_data_brand_scale:
+          moat_a: "FSD数据护城河（10亿英里）"
+          moat_b: "品牌护城河（Tesla=创新）"
+          moat_c: "制造规模（180万辆/年）"
+          reinforcement: |
+            数据领先 → FSD体验领先 → 品牌认知为'最智能'
+            品牌溢价 → 销量↑ → 数据积累加速
+            规模↑ → 成本↓ → 价格竞争力 → 销量↑ → 数据↑
+            复合效果: FSD订阅率40%（竞品<10%），溢价$3K/辆
+
+    type_2_independent:
+      description: "护城河A和B独立存在，无相互影响"
+      mechanism: "简单加法 - 总防御力 = A + B"
+
+      examples:
+        berkshire_insurance_railroad:
+          moat_a: "保险Float（低成本资本）"
+          moat_b: "铁路网络效应（区域垄断）"
+          independence: |
+            Float不影响铁路业务
+            铁路不影响保险业务
+            总防御力 = 保险护城河 + 铁路护城河（无复合）
+
+    type_3_diluting:
+      description: "⚠️ 护城河A的存在削弱护城河B"
+      mechanism: "负反馈 - A扩张损害B的核心竞争力"
+
+      examples:
+        google_search_youtube:
+          moat_a: "搜索网络效应"
+          moat_b: "YouTube内容网络效应"
+          dilution: |
+            YouTube视频搜索分流Google搜索流量
+            YouTube需要内容成本，侵蚀搜索高毛利
+            轻微削弱: 搜索毛利率从65%→60%
+
+        tesla_robotaxi_automotive:
+          moat_a: "Robotaxi网络效应（未来）"
+          moat_b: "汽车品牌护城河"
+          dilution: |
+            Robotaxi成功 → '为什么要买车？'
+            汽车需求↓ → 规模护城河削弱
+            严重削弱: 汽车销量-30%（假设Robotaxi渗透20%）
+
+  durability_vs_strength:
+    concept: "护城河强度≠护城河持久性"
+
+    strength:
+      definition: "当前竞争对手跨越难度"
+      measurement: "ROIC vs WACC, 定价权, 市场份额稳定性"
+      example: "Tesla FSD数据护城河强度9/10（10亿英里领先）"
+
+    durability:
+      definition: "护城河能维持多久？未来会被技术/模式颠覆吗？"
+      measurement: "技术变革风险，新进入者威胁，护城河衰减速度"
+      example: "Tesla FSD数据护城河持久性6/10（AI模型进步可能降低数据优势）"
+
+    framework:
+      high_strength_high_durability:
+        examples: ["AAPL生态系统", "MSFT企业软件锁定"]
+        investment_implication: "长期持有，溢价合理"
+
+      high_strength_low_durability:
+        examples: ["TSLA FSD数据", "NVDA CUDA"]
+        investment_implication: "短期强势，长期需验证"
+
+      low_strength_high_durability:
+        examples: ["公用事业监管护城河"]
+        investment_implication: "稳定但增长有限"
+
+      low_strength_low_durability:
+        examples: ["商品化制造业"]
+        investment_implication: "避免"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 2: 护城河交互矩阵
+# ═══════════════════════════════════════════════════════════════════════════════
+
+moat_interaction_matrix:
+
+  description: "分析每对护城河之间的交互关系"
+
+  interaction_types:
+    synergy_strong: "+2 - 强烈增强"
+    synergy_moderate: "+1 - 中等增强"
+    independent: "0 - 无交互"
+    dilution_moderate: "-1 - 中等削弱"
+    dilution_strong: "-2 - 强烈削弱"
+
+  matrix_template:
+    description: "N×N矩阵，N=护城河数量"
+    format: |
+      |           | 品牌 | 规模 | 网络 | 数据 | 转换 |
+      |-----------|------|------|------|------|------|
+      | **品牌**  |  -   |  +1  |  +2  |  +1  |  +2  |
+      | **规模**  |  +1  |  -   |  +1  |  0   |  0   |
+      | **网络**  |  +2  |  +1  |  -   |  +2  |  +2  |
+      | **数据**  |  +1  |  0   |  +2  |  -   |  +1  |
+      | **转换**  |  +2  |  0   |  +2  |  +1  |  -   |
+
+  tesla_example:
+    moats:
+      moat_1:
+        name: "FSD数据护城河"
+        type: "Cornered Resource (数据)"
+        strength: "9/10（10亿英里真实世界数据）"
+        durability: "6/10（AI进步可能降低数据优势）"
+
+      moat_2:
+        name: "品牌护城河"
+        type: "Brand"
+        strength: "8/10（创新领导者认知）"
+        durability: "7/10（依赖持续创新）"
+
+      moat_3:
+        name: "制造规模"
+        type: "Scale Economies"
+        strength: "7/10（180万辆/年，成本优势）"
+        durability: "8/10（产能扩张持续）"
+
+      moat_4:
+        name: "垂直整合"
+        type: "Process Power"
+        strength: "7/10（电池/芯片自产）"
+        durability: "8/10（供应链韧性）"
+
+      moat_5:
+        name: "充电网络"
+        type: "Network Effect"
+        strength: "9/10（北美最大）"
+        durability: "6/10（开放给竞品削弱独占优势）"
+
+    interaction_matrix:
+      format: |
+        |           | FSD数据 | 品牌 | 规模 | 垂直 | 充电 |
+        |-----------|---------|------|------|------|------|
+        | **FSD数据** |   -   | +2   | +1   | +1   | +1   |
+        | **品牌**    | +2    |  -   | +1   | +1   | +2   |
+        | **规模**    | +1    | +1   |  -   | +1   | 0    |
+        | **垂直**    | +1    | +1   | +1   |  -   | 0    |
+        | **充电**    | +1    | +2   | 0    | 0    |  -   |
+
+      key_interactions:
+        fsd_brand:
+          interaction: "+2 (强烈增强)"
+          mechanism: |
+            FSD数据领先 → 自动驾驶体验最佳 → 品牌认知为'最智能汽车'
+            品牌溢价 → 销量↑ → 更多数据积累 → FSD改进加速
+          quantification: "FSD订阅率40% (vs 竞品<10%), 归因品牌溢价50%"
+
+        brand_network:
+          interaction: "+2 (强烈增强)"
+          mechanism: |
+            品牌溢价 → 保有量↑ → 充电网络价值↑（更多车充电）
+            充电网络优越 → 购车决策中的关键因素 → 品牌价值↑
+          quantification: "充电便利性在购车决策权重25%, 提升品牌溢价$2K/辆"
+
+        scale_vertical:
+          interaction: "+1 (中等增强)"
+          mechanism: |
+            规模扩大 → 自产电池/芯片经济性提升
+            垂直整合 → 成本控制能力 → 价格竞争力 → 规模扩张
+          quantification: "4680电池自产节约$2K/辆, 规模>200万时盈亏平衡"
+
+        charging_open:
+          interaction: "-1 (中等削弱)"
+          mechanism: |
+            充电网络对竞品开放（NACS标准）→ 独占优势削弱
+            短期: 收入增加（充电费）
+            长期: 购车决策差异化因素消失
+          quantification: "估计削弱品牌溢价$500/辆（长期）"
+
+      aggregate_score:
+        calculation: |
+          交互总分 = Σ(所有正交互) - Σ(所有负交互)
+          = (+2+2+1+1+1 + 2+1+1+2 + 1+1+1 + 1+1+1) - (-1)
+          = +18 - (-1) = +19
+
+        interpretation:
+          baseline: "5个独立护城河，总分 = 5 × 8（平均强度）= 40"
+          synergy: "交互增强 = +19"
+          final: "复合护城河总分 = 40 + 19 = 59"
+          multiplier: "复合增强系数 = 59 / 40 = 1.48x"
+
+        business_implication: |
+          Tesla护城河不是5个独立壁垒的简单相加
+          而是1.48倍放大效应
+          → ROIC应高于单一护城河公司
+          → 估值倍数应享受复合溢价15-25%
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 3: 护城河持久性评估
+# ═══════════════════════════════════════════════════════════════════════════════
+
+durability_assessment:
+
+  framework:
+    dimension_1_tech_disruption:
+      description: "技术变革风险 - 新技术是否会绕过护城河？"
+
+      risk_levels:
+        low: "护城河基于人性/行为（品牌/转换成本），技术难撼动"
+        medium: "护城河基于当前技术代差，未来可能被新技术平衡"
+        high: "护城河基于过时技术，正在被颠覆"
+
+      examples:
+        apple_ecosystem_low:
+          moat: "生态系统锁定"
+          risk: "低 - 基于用户习惯和投资，技术进步难改变"
+          durability: "9/10"
+
+        tesla_fsd_data_medium:
+          moat: "FSD数据护城河"
+          risk: "中 - AI模型进步（如GPT-style transformer）可能降低数据优势"
+          threat: "竞争对手用更少数据达到同等性能"
+          durability: "6/10"
+          timeline: "3-5年可能被缩小差距"
+
+        nokia_hardware_high:
+          moat: "硬件制造经验（历史案例）"
+          risk: "高 - 智能手机时代，硬件护城河被软件颠覆"
+          outcome: "护城河完全消失"
+
+    dimension_2_new_entrant:
+      description: "新进入者威胁 - 创业公司/科技巨头能否绕过？"
+
+      threat_sources:
+        vertical_entrant: "垂直领域专家（如AI原生公司）"
+        tech_giant: "科技巨头（Apple/Google/Amazon）"
+        chinese_competitor: "中国竞争对手（BYD/Huawei）"
+        disruptive_model: "商业模式创新（如Robotaxi颠覆私家车）"
+
+      examples:
+        tesla_vs_waymo:
+          tesla_moat: "FSD数据（10亿英里）"
+          waymo_approach: "高精地图+激光雷达绕过数据需求"
+          threat_level: "中 - 路径不同，各有优劣"
+          durability_impact: "FSD数据护城河持久性从8→6"
+
+        tesla_vs_byd:
+          tesla_moat: "品牌+技术领先"
+          byd_approach: "低成本+垂直整合+政府支持"
+          threat_level: "高 - 中国市场份额快速流失"
+          durability_impact: "品牌护城河持久性从8→6（中国市场）"
+
+        tesla_vs_apple_car:
+          tesla_moat: "FSD+品牌+规模"
+          apple_approach: "生态系统+软件+供应链控制"
+          threat_level: "低（项目已取消）→ 无威胁"
+
+    dimension_3_moat_decay_rate:
+      description: "护城河衰减速度 - 不投资维护，护城河多久消失？"
+
+      decay_types:
+        slow_decay:
+          description: "10+ years - 护城河基于网络效应/转换成本"
+          examples: ["AAPL生态", "MSFT企业软件"]
+          maintenance_cost: "低（自我强化）"
+
+        medium_decay:
+          description: "5-10 years - 护城河需持续投资维护"
+          examples: ["TSLA FSD数据", "GOOGL搜索算法"]
+          maintenance_cost: "中（需持续R&D）"
+
+        fast_decay:
+          description: "2-5 years - 护城河快速贬值"
+          examples: ["时尚品牌", "社交媒体热度"]
+          maintenance_cost: "高（需持续营销/创新）"
+
+      tesla_example:
+        fsd_data_moat:
+          decay_rate: "Medium（5-7年）"
+          reason: |
+            如果Tesla停止FSD开发:
+            Year 0: 数据领先10亿英里
+            Year 2: 竞争对手追赶至5亿英里，差距缩小50%
+            Year 5: 竞争对手追平，护城河消失
+          maintenance: "需年投$2-3B R&D维持数据收集和算法优化"
+
+        brand_moat:
+          decay_rate: "Medium（7-10年）"
+          reason: |
+            如果Tesla停止创新:
+            Year 0: 品牌认知为'创新领导者'
+            Year 3: 竞品追上，品牌溢价↓50%
+            Year 7: 品牌商品化，溢价消失
+          maintenance: "需持续产品创新（新车型/FSD/Optimus）维持创新形象"
+
+    dimension_4_regulatory_risk:
+      description: "监管风险 - 政府政策是否会削弱护城河？"
+
+      examples:
+        eu_data_privacy:
+          impact: "GDPR限制数据收集 → 数据护城河难建立"
+          affected: ["META", "GOOGL"]
+
+        china_localization:
+          impact: "数据本地化+技术转让 → 外企护城河削弱"
+          affected: ["TSLA在中国", "AAPL供应链"]
+
+        antitrust:
+          impact: "反垄断拆分 → 网络效应护城河削弱"
+          affected: ["GOOGL", "META", "AMZN"]
+
+      tesla_specific:
+        fsd_regulation:
+          risk: "各国FSD监管标准不统一"
+          impact: "数据护城河价值打折（需每国重新认证）"
+          durability: "从6→5"
+
+        china_data_law:
+          risk: "中国要求数据本地存储"
+          impact: "中国FSD数据无法与全球数据池共享"
+          durability: "中国市场护城河独立评估"
+
+  durability_scoring:
+    formula: |
+      护城河持久性 = 10 - (技术风险×0.3 + 新进入威胁×0.3 + 衰减速度×0.2 + 监管风险×0.2)
+
+    scale:
+      9-10: "极高持久性 - 20+年"
+      7-8: "高持久性 - 10-20年"
+      5-6: "中等持久性 - 5-10年"
+      3-4: "低持久性 - 2-5年"
+      1-2: "极低持久性 - <2年"
+
+    tesla_fsd_data_example:
+      calculation: |
+        技术风险: 6/10（AI进步可能降低数据优势）
+        新进入威胁: 5/10（Waymo/BYD等路径不同）
+        衰减速度: 5/10（Medium decay, 5-7年）
+        监管风险: 4/10（各国标准不一，中国数据隔离）
+
+        持久性 = 10 - (6×0.3 + 5×0.3 + 5×0.2 + 4×0.2)
+              = 10 - (1.8 + 1.5 + 1.0 + 0.8)
+              = 10 - 5.1
+              = 4.9/10 → 中等持久性（5-7年）
+
+      interpretation: |
+        Tesla FSD数据护城河强度9/10，但持久性仅5/10
+        → 短期（3-5年）强势，长期需验证
+        → 投资策略: 重视但不应给予"永续护城河"估值
+        → DCF中terminal value不应假设护城河永续
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 4: 护城河对财务指标的贡献
+# ═══════════════════════════════════════════════════════════════════════════════
+
+moat_financial_contribution:
+
+  roic_attribution:
+    concept: "将ROIC分解为各护城河的贡献"
+
+    formula: |
+      ROIC = NOPAT / Invested Capital
+      超额ROIC = ROIC - WACC
+      护城河贡献 = 超额ROIC × 资本 = 经济利润
+
+    methodology:
+      step_1: "计算当前ROIC和超额ROIC"
+      step_2: "建立无护城河baseline ROIC（行业平均或WACC）"
+      step_3: "分析各护城河对ROIC的增量贡献"
+      step_4: "量化各护城河的经济价值"
+
+    tesla_example:
+      current_roic: "28.7% [API:FMP]"
+      wacc: "10%"
+      excess_roic: "18.7%"
+      invested_capital: "$50B（2025估计）"
+      economic_profit: "$9.35B/年"
+
+      moat_contribution:
+        brand_moat:
+          contribution: "+8% ROIC"
+          mechanism: "品牌溢价$3K/辆 × 180万辆 = $5.4B增量GP"
+          economic_value: "$4B/年（$5.4B × 75% attribution）"
+
+        scale_moat:
+          contribution: "+4% ROIC"
+          mechanism: "规模效应降低单位成本$1.5K/辆"
+          economic_value: "$2B/年"
+
+        fsd_data_moat:
+          contribution: "+3% ROIC"
+          mechanism: "FSD订阅$1.5B/年，毛利90%"
+          economic_value: "$1.35B/年"
+
+        vertical_integration:
+          contribution: "+2% ROIC"
+          mechanism: "自产电池/芯片节约成本"
+          economic_value: "$1B/年"
+
+        charging_network:
+          contribution: "+1.7% ROIC"
+          mechanism: "充电网络提升保有量+充电收入"
+          economic_value: "$0.85B/年"
+
+        total_moat_contribution: "+18.7% ROIC = $9.35B经济利润/年"
+
+      valuation_implication: |
+        经济利润$9.35B × 15倍（永续增长假设）= $140B护城河价值
+        vs 当前EV $227B: 护城河贡献62%
+        → 如果护城河消失，Tesla价值↓60%
+
+  pricing_power_attribution:
+    concept: "各护城河对定价权的贡献"
+
+    tesla_example:
+      asp: "$48,000（平均售价）"
+      baseline_price: "$38,000（无护城河的EV价格，如Nissan Leaf）"
+      total_premium: "$10,000"
+
+      moat_contribution:
+        brand: "$3,000（30%）- 创新/地位象征"
+        fsd_capability: "$2,500（25%）- 自动驾驶能力"
+        charging_network: "$1,500（15%）- 充电便利性"
+        performance: "$1,500（15%）- 加速/操控"
+        design: "$1,000（10%）- 极简设计"
+        vertical_integration: "$500（5%）- OTA升级/持续改进"
+
+      interpretation: |
+        品牌+FSD = 55%定价权 → 核心护城河
+        如果FSD竞品追上，溢价-$2,500 → ASP $45,500
+        如果品牌商品化，溢价-$3,000 → ASP $45,000
+        → 护城河削弱情景: ASP ↓ $5,500（11%）
+
+  market_share_stability:
+    concept: "护城河对市场份额防御的贡献"
+
+    measurement:
+      share_volatility: "市场份额标准差（越低越稳定）"
+      customer_retention: "客户复购率/流失率"
+      competitive_immunity: "竞品降价对销量影响"
+
+    tesla_example:
+      us_market_share:
+        2022: "65%（EV市场）"
+        2023: "55%"
+        2024: "50%"
+        trend: "下降，但仍领先"
+
+      retention_rate:
+        repeat_purchase: "70%（下一辆车仍选Tesla）"
+        vs_industry: "60%（行业平均）"
+        moat_contribution: "+10pp归因生态系统（充电+软件）"
+
+      price_elasticity:
+        tesla: "PED -1.2（价格↓10% → 销量↑12%）"
+        commodity_ev: "PED -2.0（价格↓10% → 销量↑20%）"
+        interpretation: "护城河使Tesla对价格战更有韧性"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 5: 执行协议
+# ═══════════════════════════════════════════════════════════════════════════════
+
+execution_protocol:
+
+  phase_1_identify_moats:
+    duration: "15 minutes"
+
+    step_1_load_single_moat_analysis:
+      action: "读取moat_deep_analysis输出"
+      input: "各业务的6类护城河+7 Powers评估"
+      output: "护城河清单（每个护城河：类型/强度/证据）"
+
+    step_2_filter_significant_moats:
+      criteria:
+        - "强度≥7/10"
+        - "对ROIC贡献≥2%"
+        - "有明确证据支撑（非管理层空谈）"
+
+      output: "核心护城河清单（通常3-7个）"
+
+  phase_2_interaction_analysis:
+    duration: "20 minutes"
+
+    step_1_draw_matrix:
+      tool: "N×N矩阵（N=护城河数量）"
+      for_each_pair:
+        question: "护城河A的存在如何影响护城河B？"
+        options:
+          - "+2: 强烈增强（正反馈循环）"
+          - "+1: 中等增强"
+          - "0: 无交互"
+          - "-1: 中等削弱"
+          - "-2: 强烈削弱（负反馈）"
+
+      output: "护城河交互矩阵"
+
+    step_2_identify_key_interactions:
+      focus: "找出≥+2或≤-2的强交互"
+
+      for_each_strong_interaction:
+        describe_mechanism:
+          - "护城河A的哪个特性？"
+          - "通过什么渠道影响护城河B？"
+          - "护城河B的哪个指标被改变？"
+          - "反向影响是否存在？（A→B vs B→A）"
+
+        quantify_if_possible:
+          - "增强: 护城河B强度从X→Y"
+          - "削弱: 护城河B强度从X→Y"
+
+      output: "关键交互描述（每个≥200字）"
+
+    step_3_calculate_compound_score:
+      formula: |
+        基准分 = Σ(各护城河强度)
+        交互分 = Σ(正交互) - Σ(负交互)
+        复合分 = 基准分 + 交互分
+        复合系数 = 复合分 / 基准分
+
+      interpretation:
+        >1.5: "强复合增强 - 护城河高度协同"
+        1.2-1.5: "中等复合增强"
+        1.0-1.2: "弱复合增强"
+        <1.0: "负复合（护城河相互削弱）"
+
+      output: "复合护城河评分表"
+
+  phase_3_durability_assessment:
+    duration: "20 minutes"
+
+    for_each_moat:
+      step_1_tech_disruption:
+        question: "新技术会绕过这个护城河吗？"
+        evidence:
+          - "搜索竞品技术路线"
+          - "学术前沿（论文/会议）"
+          - "创业公司动态"
+        score: "1-10（10=几乎无法颠覆）"
+
+      step_2_new_entrant_threat:
+        question: "谁最可能攻破这个护城河？"
+        categories:
+          - "垂直专家（如AI原生公司）"
+          - "科技巨头（资源优势）"
+          - "中国竞争对手（政府支持+低成本）"
+          - "商业模式创新"
+        score: "1-10（10=几乎无威胁）"
+
+      step_3_decay_rate:
+        question: "不投资维护，护城河多久消失？"
+        estimate: "X年"
+        maintenance_cost: "$YB/年"
+        score: "1-10（10=自我强化，无需维护）"
+
+      step_4_regulatory_risk:
+        question: "政策会削弱护城河吗？"
+        scenarios:
+          - "数据隐私法规"
+          - "反垄断"
+          - "技术转让要求"
+          - "地缘政治"
+        score: "1-10（10=几乎无监管风险）"
+
+      aggregate_durability:
+        formula: |
+          持久性 = 10 - (技术风险×0.3 + 新进入威胁×0.3 + 衰减速度×0.2 + 监管风险×0.2)
+
+      output: "护城河持久性评分表"
+
+  phase_4_financial_quantification:
+    duration: "25 minutes"
+
+    step_1_roic_attribution:
+      baseline: "无护城河ROIC = 行业平均 或 WACC"
+      current: "实际ROIC [API:FMP]"
+      excess: "当前ROIC - Baseline"
+
+      for_each_moat:
+        estimate_contribution:
+          method_a: "增量毛利法"
+          method_b: "可比公司法（有/无该护城河的公司对比）"
+          method_c: "管理层披露（如有）"
+
+        output: "护城河X贡献+Y% ROIC"
+
+      validation: "Σ(各护城河贡献) ≈ 实际超额ROIC"
+
+    step_2_pricing_power_attribution:
+      baseline_price: "无护城河的可比产品价格"
+      current_price: "实际价格"
+      total_premium: "当前价格 - Baseline"
+
+      for_each_moat:
+        estimate_contribution:
+          method: "消费者调研（哪个因素最愿意付费）"
+          allocation: "% of total premium"
+
+        output: "护城河X贡献$Y溢价"
+
+      validation: "Σ(各护城河溢价) = Total Premium"
+
+    step_3_economic_profit:
+      formula: |
+        经济利润 = 超额ROIC × Invested Capital
+        护城河价值 = 经济利润 × 永续倍数（10-20x）
+
+      output: "各护城河的经济价值"
+
+  phase_5_investment_implications:
+    duration: "15 minutes"
+
+    step_1_valuation_premium:
+      question: "复合护城河应享受多少估值溢价？"
+
+      framework:
+        baseline: "无护城河公司: 1.0x P/B, 15x P/E"
+
+        adjustments:
+          high_compound_strong_durable:
+            condition: "复合系数>1.5, 持久性>7"
+            premium: "+100-150%（2.0-2.5x baseline）"
+            examples: ["AAPL", "MSFT"]
+
+          high_compound_medium_durable:
+            condition: "复合系数>1.5, 持久性5-7"
+            premium: "+50-100%（1.5-2.0x baseline）"
+            examples: ["TSLA", "NVDA"]
+
+          medium_compound_high_durable:
+            condition: "复合系数1.2-1.5, 持久性>7"
+            premium: "+30-50%（1.3-1.5x baseline）"
+            examples: ["HON", "DHR"]
+
+      output: "推荐估值倍数区间"
+
+    step_2_risk_scenarios:
+      bull_case:
+        assumption: "护城河持续强化"
+        triggers:
+          - "数据优势扩大"
+          - "网络效应加速"
+          - "新护城河建立"
+
+      base_case:
+        assumption: "护城河维持当前水平"
+        requirement: "持续R&D投资"
+
+      bear_case:
+        assumption: "护城河削弱"
+        triggers:
+          - "技术颠覆"
+          - "竞品追赶"
+          - "监管打击"
+          - "管理层失误"
+
+      output: "护城河情景分析表"
+
+    step_3_monitoring_metrics:
+      leading_indicators:
+        - "市场份额趋势"
+        - "定价权（ASP变化）"
+        - "客户留存率"
+        - "R&D投入 vs 收入"
+
+      kill_switches:
+        example: |
+          Kill Switch: FSD数据护城河消失
+          触发: 竞品FSD性能追平Tesla（盲测无差异）
+          验证: 第三方测试报告
+          后果: 估值倍数从60x→40x P/E
+
+      output: "护城河监控仪表盘"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 6: 输出模板
+# ═══════════════════════════════════════════════════════════════════════════════
+
+output_templates:
+
+  compound_moat_summary:
+    format: |
+      ## 复合护城河评估
+
+      ### 核心护城河清单
+      | 护城河 | 类型 | 强度 | 持久性 | ROIC贡献 | 定价权贡献 |
+      |--------|------|------|--------|---------|-----------|
+      | FSD数据 | Cornered Resource | 9/10 | 5/10 | +3% | $2,500 |
+      | 品牌 | Brand | 8/10 | 7/10 | +8% | $3,000 |
+      | 规模 | Scale | 7/10 | 8/10 | +4% | - |
+      | 垂直整合 | Process | 7/10 | 8/10 | +2% | $500 |
+      | 充电网络 | Network | 9/10 | 6/10 | +1.7% | $1,500 |
+
+      ### 护城河交互矩阵
+      |         | FSD | 品牌 | 规模 | 垂直 | 充电 |
+      |---------|-----|------|------|------|------|
+      | FSD     | -   | +2   | +1   | +1   | +1   |
+      | 品牌    | +2  | -    | +1   | +1   | +2   |
+      | 规模    | +1  | +1   | -    | +1   | 0    |
+      | 垂直    | +1  | +1   | +1   | -    | 0    |
+      | 充电    | +1  | +2   | 0    | 0    | -    |
+
+      **交互总分**: +19
+      **基准分**: 40（5个护城河×平均强度8）
+      **复合分**: 59
+      **复合系数**: 1.48x → 护城河强烈协同
+
+      ### 关键交互机制
+      1. **FSD数据 ↔ 品牌** (+2↔+2，最强协同)
+         - 数据领先 → FSD体验最佳 → 品牌认知为"最智能"
+         - 品牌溢价 → 销量↑ → 数据积累加速
+         - 量化: FSD订阅率40% vs 竞品<10%
+
+      2. **品牌 ↔ 充电网络** (+2↔+2)
+         - 品牌溢价 → 保有量↑ → 充电网络价值↑
+         - 充电便利性 → 购车决策关键因素 → 品牌价值↑
+         - 量化: 充电在决策权重25%, 贡献$1,500溢价
+
+      ### 财务贡献
+      - **超额ROIC**: 18.7%（vs WACC 10%）
+      - **经济利润**: $9.35B/年
+      - **护城河价值**: $140B（$9.35B × 15x）
+      - **占当前EV**: 62%
+
+      ### 持久性评估
+      - **高持久性护城河**: 规模(8)、垂直整合(8)、品牌(7)
+      - **中持久性护城河**: FSD数据(5)、充电网络(6)
+      - **风险**: AI进步可能削弱数据优势，充电开放削弱独占性
+
+      ### 估值含义
+      - **推荐溢价**: +50-100%（vs 无护城河baseline）
+      - **理由**: 复合系数1.48x + 部分高持久性护城河
+      - **对应倍数**: 50-60x P/E（vs 行业15x）
+
+  moat_decay_scenario:
+    format: |
+      ## 护城河衰减情景
+
+      ### 场景1: FSD数据护城河消失
+      - **触发**: 竞品用更少数据达到同等性能
+      - **时间**: 3-5年
+      - **财务影响**:
+        - ROIC: 28.7% → 25.7%（-3%）
+        - 定价权: ASP $48K → $45.5K（-$2.5K）
+        - 估值倍数: 60x → 50x P/E
+        - 市值影响: -$38B
+
+      ### 场景2: 品牌护城河削弱
+      - **触发**: 竞品追上，Tesla不再是"创新领导者"
+      - **时间**: 5-7年
+      - **财务影响**:
+        - ROIC: 28.7% → 20.7%（-8%）
+        - 定价权: ASP $48K → $45K（-$3K）
+        - 估值倍数: 60x → 40x P/E
+        - 市值影响: -$76B
+
+      ### 场景3: 复合护城河全面削弱
+      - **触发**: FSD+品牌同时商品化
+      - **时间**: 7-10年
+      - **财务影响**:
+        - ROIC: 28.7% → 15%（接近行业平均）
+        - 定价权: ASP $48K → $40K（-$8K）
+        - 估值倍数: 60x → 25x P/E
+        - 市值影响: -$170B（-75%）
+
+      ### 防御策略
+      - **持续R&D**: 年$3-5B维持FSD领先
+      - **产品创新**: 新车型/Optimus维持创新形象
+      - **新护城河**: 建立能源生态/机器人网络效应
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 7: 质量检查
+# ═══════════════════════════════════════════════════════════════════════════════
+
+quality_checks:
+
+  completeness:
+    - "所有≥7/10强度的护城河都纳入分析"
+    - "护城河交互矩阵N×N完整填充"
+    - "持久性4个维度全部评估"
+    - "财务贡献（ROIC+定价权）已量化"
+
+  depth:
+    - "每个强交互（≥+2或≤-2）有机制解释≥200字"
+    - "持久性评分有证据支撑，非主观臆断"
+    - "财务贡献有计算过程，数据Level标注"
+
+  conservatism:
+    - "护城河持久性不高估（AI时代技术变革快）"
+    - "负交互未被忽视"
+    - "衰减速度保守估计"
+
+  consistency:
+    - "复合分 = 基准分 + 交互分（数学一致）"
+    - "各护城河ROIC贡献之和 ≈ 实际超额ROIC"
+    - "定价权贡献之和 = Total Premium"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# End of Framework
+# ═══════════════════════════════════════════════════════════════════════════════

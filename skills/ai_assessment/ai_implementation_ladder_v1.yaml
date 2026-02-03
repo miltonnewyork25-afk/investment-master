@@ -1,0 +1,275 @@
+# AI Implementation Ladder v1.0
+# AI实施级别阶梯 (L轴)
+# 创建日期: 2026-02-02
+
+version: "1.0"
+created: "2026-02-02"
+
+# ═══════════════════════════════════════════════════════════════
+# L轴定义：AI实施深度
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "ai_assessment.implementation_ladder_v1.0"
+  name: "AI实施级别阶梯"
+  purpose: "评估公司AI实施的技术深度和生产化程度"
+
+implementation_ladder:
+
+  L0_observation:
+    name: "观察级"
+    code: "L0"
+    description: "AI仅用于报表/预测/洞察，不影响任何动作"
+
+    characteristics:
+      - "AI输出供人类参考"
+      - "不改变任何业务流程"
+      - "无生产系统集成"
+      - "试验/POC阶段"
+
+    typical_use_cases:
+      - "BI报表中的AI洞察"
+      - "预测分析仪表板"
+      - "趋势预警（仅通知）"
+      - "内部数据分析工具"
+
+    evidence_requirements:
+      must_have:
+        - "有AI相关工具/系统存在"
+      nice_to_have:
+        - "有使用案例描述"
+
+    investment_signal: "弱——仅表明公司有AI意识"
+
+  L1_decision_support:
+    name: "决策支持级"
+    code: "L1"
+    description: "AI提供建议，但由人类确认执行(Human-in-the-loop)"
+
+    characteristics:
+      - "AI输出建议/推荐"
+      - "人类必须确认/批准"
+      - "有审批工作流"
+      - "AI不能直接执行动作"
+
+    typical_use_cases:
+      - "AI辅助的贷款审批建议"
+      - "AI推荐的定价建议（人工确认）"
+      - "AI生成的内容（人工审核后发布）"
+      - "AI辅助的医疗诊断建议"
+
+    evidence_requirements:
+      must_have:
+        - "有明确的human-in-the-loop流程"
+        - "AI建议采纳率数据"
+      nice_to_have:
+        - "效率提升量化数据"
+
+    investment_signal: "中性——表明公司正在实质性使用AI"
+
+  L2_controlled_automation:
+    name: "受控自动化级"
+    code: "L2"
+    description: "AI可局部自动执行，但有规则/人工拦截"
+
+    characteristics:
+      - "AI在限定范围内自动执行"
+      - "有规则引擎/阈值控制"
+      - "异常情况升级到人工"
+      - "有监控和回滚机制"
+
+    typical_use_cases:
+      - "自动回复常见客服问题（复杂问题升级）"
+      - "自动审批小额贷款（大额人工）"
+      - "自动化测试/代码审查"
+      - "自动库存补货（异常人工确认）"
+
+    evidence_requirements:
+      must_have:
+        - "自动化覆盖率数据"
+        - "异常升级机制说明"
+        - "有监控/告警系统"
+      nice_to_have:
+        - "自动化后的效率/成本数据"
+
+    investment_signal: "中等正面——表明AI已进入生产系统"
+
+  L3_closed_loop_control:
+    name: "闭环控制级"
+    code: "L3"
+    description: "AI形成反馈→决策→执行的闭环，持续影响生产/运营"
+
+    characteristics:
+      - "AI实时感知环境变化"
+      - "AI自主做出决策"
+      - "AI直接执行动作"
+      - "结果反馈给AI优化"
+      - "人类监督但不介入每个决策"
+
+    typical_use_cases:
+      - "实时动态定价"
+      - "自动化交易系统"
+      - "预测性维护（自动调度维修）"
+      - "自动化供应链优化"
+      - "AI驱动的内容推荐（全自动）"
+
+    evidence_requirements:
+      must_have:
+        - "闭环流程架构图/说明"
+        - "AI决策量化指标"
+        - "治理/审计机制"
+        - "回滚/应急预案"
+      nice_to_have:
+        - "AI vs 人工对比数据"
+        - "持续优化效果数据"
+
+    special_requirements_for_OT:
+      description: "制造/OT行业L3需要额外证据"
+      must_have:
+        - "OT安全架构说明"
+        - "变更管理流程"
+        - "zones & conduits设计"
+        - "安全认证（如IEC 62443）"
+
+    investment_signal: "强正面——AI已成为核心运营能力"
+
+  L4_autonomous_operation:
+    name: "自主运行级"
+    code: "L4"
+    description: "AI跨场景自主调度与自恢复，需体系化安全论证与审计"
+
+    characteristics:
+      - "AI管理多个相互依赖的系统"
+      - "AI可自主处理异常情况"
+      - "AI可自我优化和演进"
+      - "人类角色是设定目标和监督"
+      - "需要完整的AI治理体系"
+
+    typical_use_cases:
+      - "全自动化工厂"
+      - "自动驾驶车队管理"
+      - "AI驱动的业务流程外包"
+      - "AI代理自主完成复杂任务"
+
+    evidence_requirements:
+      must_have:
+        - "完整AI治理体系文档"
+        - "安全与合规认证"
+        - "审计与可解释性机制"
+        - "持续监控与优化数据"
+        - "异常处理与恢复能力"
+      nice_to_have:
+        - "第三方审计报告"
+        - "保险/责任安排"
+
+    investment_signal: "非常强——可能代表竞争优势的护城河"
+    note: "目前极少有公司真正达到L4"
+
+# ═══════════════════════════════════════════════════════════════
+# L轴评估方法
+# ═══════════════════════════════════════════════════════════════
+
+assessment_methodology:
+
+  step_1_identify_ai_systems:
+    description: "识别公司所有AI相关系统/应用"
+    questions:
+      - "公司有哪些AI产品/功能？"
+      - "AI用在哪些业务流程？"
+      - "AI是内部工具还是面向客户？"
+
+  step_2_assess_each_system:
+    description: "对每个AI系统评估其L级别"
+    for_each_system:
+      - question: "AI输出是否直接影响动作？"
+        if_no: "L0"
+        if_yes: "继续"
+
+      - question: "是否有人类确认环节？"
+        if_yes: "L1"
+        if_no: "继续"
+
+      - question: "是否有规则/阈值控制？"
+        if_yes: "L2"
+        if_no: "继续"
+
+      - question: "是否形成完整闭环？"
+        if_yes: "L3"
+        if_no: "回退检查"
+
+      - question: "是否跨系统自主运行？"
+        if_yes: "L4"
+        if_no: "L3"
+
+  step_3_determine_overall_L:
+    description: "确定公司整体L级别"
+    method: |
+      整体L = 最高L级别AI系统的级别
+      但需要加权考虑：
+      - 该系统的业务重要性
+      - 该系统的收入/成本影响
+      - 该系统的覆盖范围
+
+    example: |
+      公司有L0-L3多个系统：
+      - L3系统：动态定价（核心业务，收入影响20%）
+      - L2系统：客服自动化（边缘业务，成本影响5%）
+      - L0系统：BI报表（内部工具）
+
+      整体L = L3（因为核心业务达到L3）
+
+  step_4_evidence_verification:
+    description: "验证L级别判断的证据"
+    must_verify:
+      - "声称的L级别有对应证据支撑"
+      - "证据等级≥B"
+      - "制造/OT行业L3需要额外验证"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## L轴评估（AI实施级别）
+
+  ### AI系统清单
+
+  | AI系统 | 业务领域 | L级别 | 业务重要性 | 证据等级 |
+  |--------|---------|------|-----------|---------|
+  | [系统1] | [领域] | LX | 高/中/低 | A/B/C |
+  | [系统2] | [领域] | LX | 高/中/低 | A/B/C |
+
+  ### 整体L级别判定
+
+  **整体L级别**: L[X]
+  **置信度**: XX%
+  **关键证据**: [列出]
+
+  ### 证据详情
+
+  | 证据 | 来源 | 等级 | 支撑判断 |
+  |------|------|------|---------|
+  | [证据1] | [来源] | A/B/C | [说明] |
+
+  ### 升级路径
+
+  **当前**: L[X]
+  **下一级**: L[X+1]
+  **升级所需**: [具体条件]
+
+output_contract:
+  L_level:
+    type: "enum"
+    values: ["L0", "L1", "L2", "L3", "L4", "unknown"]
+  confidence:
+    type: "float"
+    range: "0-1"
+  evidence_grade:
+    type: "enum"
+    values: ["A", "B", "C", "unknown"]
+  ai_systems:
+    type: "array"
+    items:
+      system_name: "string"
+      L_level: "string"
+      business_importance: "enum[high|medium|low]"

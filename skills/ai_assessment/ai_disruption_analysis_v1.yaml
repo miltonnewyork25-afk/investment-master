@@ -1,0 +1,741 @@
+# AI Disruption Analysis Framework v1.0
+# AI颠覆分析框架 - 受益者 vs 被颠覆者
+# 创建日期: 2026-02-02
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-02-02"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "ai_assessment.disruption_analysis_v1.0"
+  name: "AI颠覆分析框架"
+  purpose: |
+    判断公司在AI浪潮中的角色定位：
+    1. 是AI的受益者还是被颠覆者？
+    2. 谁在用AI威胁这家公司？
+    3. 这家公司的传统护城河是否被AI削弱？
+    4. 新进入者能否用AI打破现有格局？
+
+  core_question: |
+    "这家公司在AI时代是猎人还是猎物？"
+
+# ═══════════════════════════════════════════════════════════════
+# 颠覆角色分类
+# ═══════════════════════════════════════════════════════════════
+
+disruption_roles:
+
+  beneficiary:
+    name: "AI受益者"
+    definition: |
+      AI增强了公司的核心竞争力，或为公司创造了新的增长机会。
+      公司能够利用AI扩大市场份额、提高利润率或建立新护城河。
+
+    characteristics:
+      - "AI强化了现有护城河"
+      - "AI创造了新的收入来源"
+      - "AI显著降低了成本结构"
+      - "公司拥有AI发展所需的关键资产（数据/分发/用户）"
+      - "竞争对手难以复制AI能力"
+
+    examples:
+      strong_beneficiary:
+        - company: "NVIDIA"
+          reason: "AI训练/推理芯片垄断，受益于AI基础设施需求爆发"
+        - company: "Microsoft"
+          reason: "OpenAI合作+Azure AI+Copilot，企业AI入口"
+        - company: "Palantir"
+          reason: "政府+企业AI平台，数据整合+决策AI"
+
+      moderate_beneficiary:
+        - company: "Adobe"
+          reason: "生成式AI增强创意工具，但面临Canva等挑战"
+        - company: "Salesforce"
+          reason: "Einstein AI增强CRM，但AI原生CRM可能威胁"
+
+  at_risk:
+    name: "AI风险敞口"
+    definition: |
+      AI可能削弱公司的核心业务模式或竞争优势。
+      新进入者或现有竞争者可能利用AI蚕食市场份额。
+
+    characteristics:
+      - "核心业务可被AI自动化替代"
+      - "传统护城河被AI削弱"
+      - "价值链位置面临被去中介化"
+      - "AI原生竞争者正在崛起"
+      - "缺乏AI转型所需的关键资产"
+
+    examples:
+      strong_at_risk:
+        - company: "传统调研公司"
+          reason: "AI可以直接生成报告，去中介化调研服务"
+        - company: "法律服务(LegalZoom)"
+          reason: "AI合同审查、法律文档生成"
+        - company: "客服外包(Teleperformance)"
+          reason: "AI客服可替代大量人工"
+
+      moderate_at_risk:
+        - company: "传统ERP厂商"
+          reason: "AI可能简化企业软件，降低切换成本"
+        - company: "内容农场/SEO公司"
+          reason: "AI直接回答问题，减少搜索流量"
+
+  disruptor:
+    name: "AI颠覆者"
+    definition: |
+      公司利用AI颠覆现有行业格局，挑战传统玩家。
+      通常是新进入者或转型成功的科技公司。
+
+    characteristics:
+      - "AI原生商业模式"
+      - "用AI重新定义行业价值创造"
+      - "正在蚕食传统玩家市场份额"
+      - "单位经济因AI显著优于传统模式"
+      - "具有网络效应或数据飞轮"
+
+    examples:
+      - company: "OpenAI/Anthropic"
+        reason: "AI基础模型，可能颠覆搜索、软件开发、内容创作"
+      - company: "Perplexity"
+        reason: "AI搜索，威胁Google搜索广告模式"
+      - company: "Cursor/Replit"
+        reason: "AI编程，可能改变软件开发行业"
+
+  neutral:
+    name: "AI中性"
+    definition: |
+      AI对公司影响有限，或正负影响相互抵消。
+      通常是受监管保护、物理世界依赖或技术难以渗透的行业。
+
+    characteristics:
+      - "业务主要在物理世界"
+      - "强监管保护"
+      - "AI影响路径不清晰"
+      - "尚处于早期观察阶段"
+
+    examples:
+      - company: "公用事业(Utilities)"
+        reason: "监管保护+物理资产依赖，AI影响有限"
+      - company: "房地产REIT"
+        reason: "物理资产为主，AI主要用于运营优化"
+
+# ═══════════════════════════════════════════════════════════════
+# 颠覆评估矩阵
+# ═══════════════════════════════════════════════════════════════
+
+disruption_assessment_matrix:
+
+  dimension_1_threat_intensity:
+    name: "威胁强度"
+    question: "AI对核心业务的威胁有多大？"
+
+    levels:
+      critical:
+        score: 4
+        description: "核心业务可被AI完全替代"
+        indicators:
+          - "主要收入来源可被AI自动化"
+          - "已有AI替代方案上市"
+          - "客户已开始流向AI方案"
+        examples: ["传统翻译服务", "基础数据录入"]
+
+      high:
+        score: 3
+        description: "核心业务面临重大AI威胁"
+        indicators:
+          - "部分收入来源可被AI替代"
+          - "AI替代方案正在开发中"
+          - "价格压力来自AI竞争"
+        examples: ["法律文档服务", "初级代码开发"]
+
+      medium:
+        score: 2
+        description: "部分业务面临AI威胁"
+        indicators:
+          - "边缘业务可被AI影响"
+          - "效率提升压力增加"
+          - "需要AI转型投资"
+        examples: ["传统SaaS", "咨询服务"]
+
+      low:
+        score: 1
+        description: "AI威胁有限或不明确"
+        indicators:
+          - "业务依赖物理世界"
+          - "监管保护"
+          - "AI渗透路径不清晰"
+        examples: ["公用事业", "建筑施工"]
+
+  dimension_2_defense_capability:
+    name: "防御能力"
+    question: "公司能否有效应对AI威胁？"
+
+    levels:
+      strong:
+        score: 4
+        description: "具备强大AI防御/反击能力"
+        indicators:
+          - "已建立AI能力"
+          - "拥有独特数据资产"
+          - "具备AI人才储备"
+          - "正在积极AI转型"
+
+      moderate:
+        score: 3
+        description: "具备一定AI应对能力"
+        indicators:
+          - "正在建设AI能力"
+          - "有可利用的数据资产"
+          - "有AI转型计划"
+
+      weak:
+        score: 2
+        description: "AI应对能力不足"
+        indicators:
+          - "AI投入有限"
+          - "缺乏数据资产"
+          - "人才储备不足"
+
+      none:
+        score: 1
+        description: "几乎无AI应对能力"
+        indicators:
+          - "无AI投入"
+          - "无数据资产"
+          - "无AI人才"
+          - "否认AI威胁"
+
+  dimension_3_time_horizon:
+    name: "威胁时间"
+    question: "AI威胁何时到达？"
+
+    levels:
+      imminent:
+        timeframe: "<1年"
+        score: 4
+        indicators:
+          - "AI替代方案已上市"
+          - "客户已开始切换"
+          - "收入已受影响"
+
+      near_term:
+        timeframe: "1-2年"
+        score: 3
+        indicators:
+          - "AI方案进入试点"
+          - "早期采用者开始尝试"
+          - "媒体关注度上升"
+
+      medium_term:
+        timeframe: "2-5年"
+        score: 2
+        indicators:
+          - "技术路线明确"
+          - "研发投入增加"
+          - "用例验证中"
+
+      long_term:
+        timeframe: ">5年"
+        score: 1
+        indicators:
+          - "技术尚不成熟"
+          - "监管障碍"
+          - "用例不清晰"
+
+  scoring_formula: |
+    颠覆风险分数 = 威胁强度 × (5 - 防御能力) × 时间紧迫度 / 16
+
+    解读：
+    - 0-0.25: 低风险（neutral或beneficiary）
+    - 0.25-0.50: 中等风险（需关注）
+    - 0.50-0.75: 高风险（at_risk）
+    - 0.75-1.00: 极高风险（strong at_risk）
+
+# ═══════════════════════════════════════════════════════════════
+# 威胁来源分析
+# ═══════════════════════════════════════════════════════════════
+
+threat_source_analysis:
+
+  threat_categories:
+
+    ai_native_startups:
+      name: "AI原生创业公司"
+      description: "从零开始用AI构建的新公司"
+
+      characteristics:
+        - "无历史包袱"
+        - "AI原生架构"
+        - "单位经济优势"
+        - "快速迭代能力"
+
+      detection_signals:
+        - "该领域VC投资热度"
+        - "YC/顶级孵化器项目"
+        - "技术博客/论文活跃度"
+        - "开源项目星数"
+
+      example_mapping:
+        search: ["Perplexity", "You.com"]
+        coding: ["Cursor", "Replit", "Codeium"]
+        design: ["Figma AI", "Framer AI"]
+        legal: ["Harvey", "Spellbook"]
+        sales: ["Gong", "Outreach AI"]
+
+    big_tech_expansion:
+      name: "大厂AI扩张"
+      description: "科技巨头利用AI进入新领域"
+
+      characteristics:
+        - "资源充足"
+        - "AI人才密集"
+        - "分发渠道强"
+        - "可亏损获客"
+
+      detection_signals:
+        - "产品发布/收购公告"
+        - "招聘动态（特定领域）"
+        - "专利申请方向"
+        - "高管公开表态"
+
+      example_mapping:
+        productivity: ["Microsoft Copilot", "Google Workspace AI"]
+        creative: ["Adobe Firefly", "Canva AI"]
+        enterprise: ["Salesforce Einstein", "Oracle AI"]
+
+    existing_competitor_pivot:
+      name: "现有竞争者AI转型"
+      description: "同行业公司成功AI转型后形成的威胁"
+
+      characteristics:
+        - "行业know-how"
+        - "现有客户基础"
+        - "渠道网络"
+        - "品牌信任"
+
+      detection_signals:
+        - "AI投资/收购公告"
+        - "产品AI功能上线"
+        - "管理层AI战略表态"
+        - "AI相关招聘"
+
+    value_chain_squeeze:
+      name: "价值链挤压"
+      description: "上下游利用AI侵入公司业务领域"
+
+      patterns:
+        downstream_backward_integration:
+          description: "下游客户用AI自己做"
+          example: "企业自建AI团队，减少外包"
+
+        upstream_forward_integration:
+          description: "上游供应商用AI直达终端"
+          example: "云厂商直接提供AI应用"
+
+        platform_disintermediation:
+          description: "平台用AI去中介化"
+          example: "AI直接回答问题，不导流到网站"
+
+  threat_mapping_template: |
+    威胁来源评估表：
+
+    | 威胁来源 | 具体公司/项目 | 威胁程度 | 时间框架 | 应对策略 |
+    |---------|-------------|---------|---------|---------|
+    | AI原生创业 | | 低/中/高/极高 | | |
+    | 大厂扩张 | | 低/中/高/极高 | | |
+    | 竞争者转型 | | 低/中/高/极高 | | |
+    | 价值链挤压 | | 低/中/高/极高 | | |
+
+# ═══════════════════════════════════════════════════════════════
+# 护城河脆弱性评估
+# ═══════════════════════════════════════════════════════════════
+
+moat_vulnerability_assessment:
+
+  traditional_moats:
+
+    brand_moat:
+      name: "品牌护城河"
+      ai_impact: "中等脆弱"
+
+      vulnerability_factors:
+        weakening:
+          - "AI可以快速生成同等质量内容"
+          - "AI推荐可能绕过品牌认知"
+          - "新品牌可以用AI快速建立信任"
+
+        resilient:
+          - "高情感连接品牌更安全"
+          - "体验型品牌难被替代"
+          - "B2B信任需要时间积累"
+
+      vulnerability_score_factors:
+        - "品牌依赖信息不对称 → 高脆弱"
+        - "品牌依赖情感连接 → 低脆弱"
+        - "品牌依赖体验一致性 → 中脆弱"
+
+    network_effects:
+      name: "网络效应"
+      ai_impact: "两极分化"
+
+      vulnerability_factors:
+        weakening:
+          - "AI可以模拟网络价值（合成数据/内容）"
+          - "AI可以降低切换成本"
+          - "单边网络效应更脆弱"
+
+        amplified:
+          - "数据网络效应可能增强"
+          - "AI+网络效应形成双重护城河"
+          - "大规模用户数据是AI训练优势"
+
+      assessment_guide: |
+        如果网络效应依赖于：
+        - 用户生成内容 → 中等脆弱（AI可生成）
+        - 交易数据 → 低脆弱（难合成）
+        - 社交关系 → 低脆弱（不可替代）
+
+    switching_costs:
+      name: "切换成本"
+      ai_impact: "可能降低"
+
+      vulnerability_factors:
+        weakening:
+          - "AI可以自动化数据迁移"
+          - "AI可以快速学习新系统"
+          - "AI可以提供集成层（减少锁定）"
+
+        resilient:
+          - "深度集成仍然困难"
+          - "合规/审计需求增加切换成本"
+          - "AI本身可能创造新切换成本"
+
+    scale_economies:
+      name: "规模经济"
+      ai_impact: "可能被削弱"
+
+      vulnerability_factors:
+        weakening:
+          - "AI降低边际成本（小公司也能低成本）"
+          - "AI降低最小有效规模"
+          - "云+AI让小公司获得大公司能力"
+
+        resilient:
+          - "训练大模型仍需规模"
+          - "数据规模优势在特定领域重要"
+          - "分发规模仍然重要"
+
+    regulatory_moat:
+      name: "监管护城河"
+      ai_impact: "相对安全"
+
+      vulnerability_factors:
+        resilient:
+          - "监管审批流程不会因AI加速"
+          - "AI可能带来新监管要求"
+          - "合规能力仍是竞争优势"
+
+        emerging_risks:
+          - "AI监管可能改变游戏规则"
+          - "AI可能简化合规流程"
+
+    proprietary_technology:
+      name: "专有技术"
+      ai_impact: "高度行业相关"
+
+      vulnerability_factors:
+        weakening:
+          - "AI可能快速追赶技术差距"
+          - "开源AI降低技术门槛"
+          - "AI可能发现新技术路线"
+
+        resilient:
+          - "硬件专有技术相对安全"
+          - "长周期R&D仍有优势"
+          - "know-how难被AI完全复制"
+
+  moat_vulnerability_scorecard: |
+    护城河脆弱性评分卡：
+
+    | 护城河类型 | 当前强度 | AI脆弱性 | 调整后强度 | 证据 |
+    |-----------|---------|---------|-----------|------|
+    | 品牌 | 1-5 | 低/中/高 | 1-5 | |
+    | 网络效应 | 1-5 | 低/中/高 | 1-5 | |
+    | 切换成本 | 1-5 | 低/中/高 | 1-5 | |
+    | 规模经济 | 1-5 | 低/中/高 | 1-5 | |
+    | 监管 | 1-5 | 低/中/高 | 1-5 | |
+    | 专有技术 | 1-5 | 低/中/高 | 1-5 | |
+
+    综合护城河脆弱性分数 = Σ(调整后强度 - 当前强度) / 6
+
+# ═══════════════════════════════════════════════════════════════
+# 受益/受损路径分析
+# ═══════════════════════════════════════════════════════════════
+
+impact_pathway_analysis:
+
+  beneficiary_pathways:
+
+    cost_reduction:
+      name: "成本削减路径"
+      mechanism: "AI自动化降低运营成本"
+
+      indicators:
+        - "人员效率提升（收入/员工）"
+        - "SG&A占收入比下降"
+        - "毛利率扩张"
+
+      verification_method: |
+        - 财报中披露AI相关成本节约
+        - 员工人数vs收入增长对比
+        - 与同行成本结构比较
+
+    revenue_enhancement:
+      name: "收入增强路径"
+      mechanism: "AI创造新收入或提升现有收入"
+
+      sub_pathways:
+        new_products:
+          description: "AI驱动的新产品/服务"
+          indicators: ["新产品收入占比", "AI功能付费率"]
+
+        pricing_power:
+          description: "AI增强定价能力"
+          indicators: ["ASP变化", "价格弹性变化"]
+
+        cross_sell:
+          description: "AI驱动的交叉销售"
+          indicators: ["客户ARPU", "产品渗透率"]
+
+    moat_strengthening:
+      name: "护城河强化路径"
+      mechanism: "AI加深现有竞争优势"
+
+      patterns:
+        data_flywheel: "更多用户→更多数据→更好AI→更多用户"
+        personalization: "AI个性化提升用户粘性"
+        efficiency_gap: "AI效率拉大与竞争者差距"
+
+  at_risk_pathways:
+
+    revenue_erosion:
+      name: "收入侵蚀路径"
+      mechanism: "AI替代方案蚕食市场份额"
+
+      warning_signs:
+        early:
+          - "AI替代方案开始获得VC关注"
+          - "行业会议AI话题增加"
+          - "早期采用者开始尝试AI替代"
+
+        middle:
+          - "AI替代方案进入企业试点"
+          - "价格竞争加剧"
+          - "客户询问AI方案"
+
+        late:
+          - "收入增长放缓"
+          - "客户流失率上升"
+          - "被迫降价应对"
+
+    margin_compression:
+      name: "利润压缩路径"
+      mechanism: "被迫加大AI投入但回报不确定"
+
+      warning_signs:
+        - "AI研发支出快速增长"
+        - "利润率下降"
+        - "竞争者AI功能领先"
+
+    disintermediation:
+      name: "去中介化路径"
+      mechanism: "AI直接连接供需两端，中间商被绕过"
+
+      high_risk_positions:
+        - "信息中介（搜索、目录、比价）"
+        - "交易中介（经纪、代理）"
+        - "服务中介（外包、咨询）"
+
+      warning_signs:
+        - "上游开始直接触达终端"
+        - "平台流量下降"
+        - "佣金率被压缩"
+
+# ═══════════════════════════════════════════════════════════════
+# Kill Switches
+# ═══════════════════════════════════════════════════════════════
+
+kill_switches:
+
+  beneficiary_to_neutral:
+    - id: "KS-DIS-001"
+      name: "AI优势未兑现"
+      trigger: "宣称的AI收入增长/成本节约未在财报体现"
+      check: "连续2个季度AI相关指标未达预期"
+      action: "降级为neutral，重新评估"
+
+    - id: "KS-DIS-002"
+      name: "AI竞争者追赶"
+      trigger: "主要竞争者推出同等AI能力"
+      check: "差异化优势消失"
+      action: "重新评估护城河"
+
+  neutral_to_at_risk:
+    - id: "KS-DIS-003"
+      name: "AI替代方案上市"
+      trigger: "有资金支持的AI替代方案进入市场"
+      check: "替代方案获得早期客户"
+      action: "升级威胁评估"
+
+    - id: "KS-DIS-004"
+      name: "大厂进入"
+      trigger: "FAANG/科技巨头宣布进入该领域"
+      check: "产品发布或重大收购"
+      action: "立即评估竞争影响"
+
+  at_risk_acceleration:
+    - id: "KS-DIS-005"
+      name: "客户流失加速"
+      trigger: "客户流失率同比上升>50%"
+      check: "与AI竞争相关的流失"
+      action: "考虑strong_at_risk评级"
+
+    - id: "KS-DIS-006"
+      name: "价格战爆发"
+      trigger: "被迫降价>20%以应对AI竞争"
+      check: "定价权丧失"
+      action: "重估长期盈利能力"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+
+  ## AI颠覆分析
+
+  **公司**: [公司名] ([代码])
+  **评估日期**: YYYY-MM-DD
+
+  ### 颠覆角色判定
+
+  | 维度 | 评估 | 证据等级 |
+  |------|------|---------|
+  | **颠覆角色** | beneficiary/at_risk/disruptor/neutral | A/B/C |
+  | **置信度** | XX% | |
+  | **时间框架** | 短期/中期/长期 | |
+
+  ### 威胁来源分析
+
+  | 威胁来源 | 具体威胁者 | 威胁程度 | 时间框架 |
+  |---------|-----------|---------|---------|
+  | AI原生创业 | | 低/中/高 | |
+  | 大厂扩张 | | 低/中/高 | |
+  | 竞争者转型 | | 低/中/高 | |
+  | 价值链挤压 | | 低/中/高 | |
+
+  ### 护城河脆弱性评估
+
+  | 护城河类型 | 当前强度 | AI脆弱性 | 调整后强度 |
+  |-----------|---------|---------|-----------|
+  | [类型1] | X/5 | 低/中/高 | X/5 |
+  | [类型2] | X/5 | 低/中/高 | X/5 |
+
+  **综合护城河脆弱性分数**: X.X/10
+
+  ### 影响路径分析
+
+  **主要影响路径**: [成本削减/收入增强/护城河强化/收入侵蚀/利润压缩/去中介化]
+
+  **具体机制**:
+  - [描述AI如何影响公司]
+
+  **验证指标**:
+  - [指标1]: [当前值] → [预期变化方向]
+  - [指标2]: [当前值] → [预期变化方向]
+
+  ### Kill Switches
+
+  1. [触发条件1] → [动作]
+  2. [触发条件2] → [动作]
+  3. [触发条件3] → [动作]
+
+  ### 证据清单
+
+  | 证据类型 | 来源 | 日期 | 要点 |
+  |---------|------|------|------|
+  | [类型] | [来源] | [日期] | [要点] |
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合约
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  required_outputs:
+    disruption_role:
+      type: "enum"
+      values: ["beneficiary", "at_risk", "disruptor", "neutral"]
+      required: true
+
+    confidence:
+      type: "float"
+      range: "0-1"
+      required: true
+
+    threat_sources:
+      type: "array"
+      items:
+        source_type: "string"
+        specific_threats: "array"
+        threat_level: "enum[low|medium|high|critical]"
+        time_horizon: "string"
+
+    moat_vulnerability:
+      type: "object"
+      schema:
+        moats_assessed: "array"
+        vulnerability_score: "float (0-10)"
+        most_vulnerable: "string"
+        most_resilient: "string"
+
+    impact_pathway:
+      type: "object"
+      schema:
+        primary_pathway: "string"
+        mechanism: "string"
+        verification_metrics: "array"
+
+    kill_switches:
+      type: "array"
+      min_items: 3
+      items:
+        trigger: "string"
+        action: "string"
+
+  evidence_requirements:
+    - "颠覆角色判定需要A/B级证据"
+    - "威胁来源需要具体公司/项目名称"
+    - "护城河评估需要量化支撑"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-02-02"
+    changes:
+      - "初始版本"
+      - "四类颠覆角色定义"
+      - "三维颠覆评估矩阵"
+      - "四类威胁来源分析"
+      - "六类护城河脆弱性评估"
+      - "受益/受损路径分析"
+      - "Kill Switches定义"

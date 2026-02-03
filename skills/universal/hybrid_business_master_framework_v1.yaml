@@ -1,0 +1,564 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# Hybrid Business Master Framework v1.0
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Purpose: 复合业务公司分析的主控框架，协调所有子框架执行
+#
+# Design Philosophy:
+#   - 这是"指挥家"，协调7个专业框架
+#   - 按固定顺序执行：拆解 → 协同 → 护城河 → 风险 → 估值
+#   - 每步有质量门控，不通过无法进入下一步
+#   - 适用所有多业务公司（Tesla/Amazon/Alphabet/Berkshire等）
+#
+# When to Use:
+#   - 公司有≥2个独立业务单元
+#   - 业务间有潜在协同/负协同
+#   - 业务属性差异大（成熟vs期权，周期vs成长）
+#
+# When NOT to Use:
+#   - 单一业务公司 → 用master_investment_framework
+#   - 纯holding company无运营（如BRK）→ 简化版
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+skill_metadata:
+  name: "Hybrid Business Master Framework"
+  version: "1.0"
+  category: "universal"
+  author: "Investment Master Agent v19.12"
+  created: "2026-02-02"
+
+  orchestrates:
+    - skill: "business_decomposition_protocol_v1.yaml"
+      sequence: 1
+      purpose: "拆解业务，确立分析单元"
+
+    - skill: "option_business_valuation_v1.yaml"
+      sequence: 2
+      purpose: "估值期权型业务"
+
+    - skill: "business_synergy_analysis_v1.yaml"
+      sequence: 3
+      purpose: "识别和量化协同"
+
+    - skill: "compound_moat_assessment_v1.yaml"
+      sequence: 4
+      purpose: "评估护城河复合效应"
+
+    - skill: "conglomerate_risk_framework_v1.yaml"
+      sequence: 5
+      purpose: "识别复杂度风险和折价"
+
+    - skill: "weighted_valuation_engine_v1.yaml"
+      sequence: 6
+      purpose: "整合所有输出，产出估值"
+
+  output:
+    - "完整SOTP估值（含所有调整）"
+    - "12个月目标价"
+    - "投资评级与建议"
+    - "核心风险和Kill Switches"
+    - "可验证预测（≥10个）"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 1: 适用性判断
+# ═══════════════════════════════════════════════════════════════════════════════
+
+applicability_check:
+
+  decision_tree:
+    question_1_business_count:
+      if_1: → 使用master_investment_framework（单业务）
+      if_2_plus: → 继续判断
+
+    question_2_business_independence:
+      question: "各业务能否独立运营（有独立P&L能力）？"
+      if_yes: → 使用本框架（真·多业务）
+      if_no: → 使用master_investment_framework（单业务多产品线）
+
+    question_3_reporting_structure:
+      question: "财报是否披露segment数据？"
+      if_yes: → 优先使用本框架（数据支持拆解）
+      if_no: → 本框架仍可用，但估算成分↑（Level E多）
+
+  examples:
+
+    适用:
+      tesla:
+        businesses: ["汽车", "能源", "服务", "FSD", "Robotaxi", "Optimus"]
+        independence: "高（能源可独立，FSD可独立，Robotaxi未来独立）"
+        segment_reporting: "部分（汽车+能源有披露，AI业务无）"
+        decision: "强烈适用 ✓"
+
+      amazon:
+        businesses: ["北美零售", "国际零售", "AWS", "广告", "订阅"]
+        independence: "高"
+        segment_reporting: "优秀（详细披露）"
+        decision: "强烈适用 ✓"
+
+      alphabet:
+        businesses: ["搜索", "YouTube", "Cloud", "Other Bets"]
+        independence: "中（搜索/YouTube高度关联）"
+        segment_reporting: "良好"
+        decision: "适用 ✓"
+
+    不适用:
+      apple_iphone_only:
+        businesses: ["iPhone", "Mac", "iPad"（视为产品线，非业务）]
+        independence: "低（共享生态/渠道/品牌）"
+        decision: "不适用，用master_investment_framework"
+
+      nike:
+        businesses: ["运动鞋", "运动服", "配件"（产品线）]
+        independence: "低（同一品牌/渠道/供应链）"
+        decision: "不适用"
+
+  edge_cases:
+    berkshire_hathaway:
+      structure: "纯holding company，10+业务完全独立"
+      special_handling: |
+        简化版框架:
+        - 跳过协同分析（Buffett刻意不追求协同）
+        - 跳过护城河复合（各业务独立护城河）
+        - 重点: conglomerate折价（15% holding structure discount）
+        - 核心: 资本配置能力评估
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 2: 执行序列（六阶段）
+# ═══════════════════════════════════════════════════════════════════════════════
+
+execution_sequence:
+
+  phase_0_preparation:
+    duration: "10 minutes"
+
+    step_1_company_identification:
+      input: "股票代码（如TSLA）或公司名"
+      actions:
+        - "调用FMP API获取基础数据"
+        - "识别行业（用于加载行业特定框架）"
+        - "读取最近10-K/10-Q（segment reporting）"
+
+    step_2_initial_assessment:
+      questions:
+        - "有多少个业务单元？"
+        - "财报segment披露质量如何？"
+        - "是否有期权型业务（pre-revenue）？"
+
+    output:
+      - "公司基本信息卡"
+      - "业务单元初步清单"
+      - "数据可得性评估"
+
+  phase_1_decomposition:
+    duration: "30-40 minutes"
+    framework: "business_decomposition_protocol_v1.yaml"
+
+    inputs:
+      - "10-K segment reporting"
+      - "管理层业务描述"
+      - "分析师报告"
+
+    execution_steps:
+      step_1: "识别业务单元（经济实质判断）"
+      step_2: "拆分财务数据（Tier 1/2/3）"
+      step_3: "标注业务属性（行业/成熟度/周期性/margin）"
+      step_4: "识别哪些是期权型业务"
+
+    outputs:
+      - "业务清单表（N个业务×属性）"
+      - "财务拆分表（各业务Revenue/EBITDA/Assets）"
+      - "期权业务标记（需后续特殊估值）"
+
+    quality_gate:
+      checklist:
+        - "所有业务独立性≥3/5（5维度检验）"
+        - "财务拆分完整性: Σ业务 = 公司总体"
+        - "数据Level标注清晰"
+
+      pass_criteria: "3项全部✓"
+      if_fail: "返工Phase 1"
+
+  phase_2_business_valuation:
+    duration: "60-90 minutes"
+    frameworks:
+      - "valuation_engine（成熟业务）"
+      - "option_business_valuation_v1（期权业务）"
+
+    for_each_business:
+      step_1_select_method:
+        decision_tree: "根据业务属性选估值方法"
+        mature_profitable: → DCF
+        mature_cyclical: → Multiples (EV/EBITDA)
+        growth_unprofitable: → P/S倍数
+        pre_revenue: → rNPV或Black-Scholes
+
+      step_2_gather_inputs:
+        financial_data: "从Phase 1拆分结果"
+        comparable_companies: "识别pureplay对标"
+        assumptions: "增长率/margin/WACC"
+
+      step_3_calculate_value:
+        output: "业务X价值 = $YB"
+        sensitivity: "关键假设±20%影响"
+        confidence: "高/中/低"
+
+    outputs:
+      - "各业务standalone估值表"
+      - "SOTP基准 = Σ(各业务价值)"
+      - "关键假设清单（每业务top 3假设）"
+
+    quality_gate:
+      checklist:
+        - "每个业务估值方法有充分理由"
+        - "假设合理性检验（vs行业/历史）"
+        - "数据Level标注"
+        - "置信度诚实标注"
+
+      pass_criteria: "4项全部✓"
+
+  phase_3_synergy_analysis:
+    duration: "40-60 minutes"
+    framework: "business_synergy_analysis_v1.yaml"
+
+    step_1_identify_synergies:
+      action: "绘制N×N业务关系图（Mermaid）"
+      classify: "收入协同/成本协同/负协同/无协同"
+      prioritize: "重点分析强协同（+2或-2）"
+
+    step_2_quantify_synergies:
+      for_each_synergy:
+        select_method:
+          revenue_synergy: → 增量收入法
+          cost_synergy: → 成本节约法
+          negative_synergy: → 机会成本法/折价法
+          option_synergy: → 期权价值法
+
+        calculate_npv:
+          output: "协同X NPV = $YB"
+          confidence: "置信度%"
+
+    step_3_aggregate:
+      positive_synergies: "Σ正协同NPV"
+      negative_synergies: "Σ负协同NPV"
+      net_synergy: "正 - 负"
+
+    outputs:
+      - "协同关系图（Mermaid）"
+      - "协同价值表（每个协同×NPV×置信度）"
+      - "净协同价值（Base/Bull/Bear）"
+
+    quality_gate:
+      checklist:
+        - "负协同未被忽视（≥2个）"
+        - "量化方法清晰可复现"
+        - "置信度保守标注"
+
+      pass_criteria: "3项全部✓"
+
+  phase_4_moat_assessment:
+    duration: "40-60 minutes"
+    framework: "compound_moat_assessment_v1.yaml"
+
+    step_1_identify_moats:
+      input: "从Phase 2各业务的护城河分析"
+      filter: "强度≥7/10的核心护城河"
+
+    step_2_interaction_matrix:
+      action: "N×N护城河交互矩阵"
+      score: "+2/+1/0/-1/-2"
+
+    step_3_durability_assessment:
+      for_each_moat:
+        dimensions:
+          - "技术颠覆风险"
+          - "新进入者威胁"
+          - "衰减速度"
+          - "监管风险"
+        output: "持久性评分1-10"
+
+    step_4_financial_contribution:
+      roic_attribution: "各护城河对ROIC贡献"
+      pricing_power: "各护城河对溢价贡献"
+      economic_profit: "护城河创造的经济利润"
+
+    outputs:
+      - "护城河交互矩阵"
+      - "复合系数（如1.48x）"
+      - "护城河价值（通常不单独加，DCF中已含）"
+      - "持久性评估表"
+
+    quality_gate:
+      checklist:
+        - "交互机制有因果解释"
+        - "持久性评估有证据"
+        - "避免重复计价（DCF中已含）"
+
+      pass_criteria: "3项全部✓"
+
+  phase_5_risk_and_discount:
+    duration: "30-40 minutes"
+    framework: "conglomerate_risk_framework_v1.yaml"
+
+    step_1_identify_risks:
+      for_each_risk_type:
+        - "管理注意力分散"
+        - "运营复杂度"
+        - "资本错配"
+        - "信息不透明"
+        - "战略漂移"
+      assess: "严重度（高/中/低）"
+      estimate: "折价贡献%"
+
+    step_2_calculate_discount:
+      method_1_implied:
+        sotp: "从Phase 2+3"
+        market_cap: "实时市值"
+        implied_discount: "(市值 - SOTP) / SOTP"
+
+      method_2_bottom_up:
+        sum_risk_discounts: "Σ各风险折价%"
+
+      reconcile: "两种方法结果对比"
+
+    step_3_benchmark:
+      compare: "vs 类似conglomerate折价"
+      validate: "折价合理性"
+
+    outputs:
+      - "风险清单（5类×严重度×折价%）"
+      - "总折价%（Base/Bull/Bear）"
+      - "折价分解表"
+
+    quality_gate:
+      checklist:
+        - "5类风险全部评估"
+        - "折价有对标参考"
+        - "不高估/低估风险"
+
+      pass_criteria: "3项全部✓"
+
+  phase_6_integrated_valuation:
+    duration: "50-70 minutes"
+    framework: "weighted_valuation_engine_v1.yaml"
+
+    step_1_assemble_sotp:
+      standalone_sum: "Phase 2输出"
+      synergy_adjustment: "Phase 3输出"
+      moat_premium: "Phase 4输出（通常0）"
+      conglomerate_discount: "Phase 5输出"
+
+      formula: |
+        调整后企业价值 = (Standalone + 协同) × (1 - 折价)
+
+    step_2_three_scenarios:
+      bull:
+        assumptions: "协同乐观+折价最小"
+        probability: "20%"
+
+      base:
+        assumptions: "协同保守+折价中等"
+        probability: "60%"
+
+      bear:
+        assumptions: "协同失败+折价最大"
+        probability: "20%"
+
+      weighted: "Bull×20% + Base×60% + Bear×20%"
+
+    step_3_target_price:
+      sotp_per_share: "加权SOTP / 股数"
+      adjustments:
+        - "时间价值（12个月增长）"
+        - "催化剂溢价（如适用）"
+      target: "12个月目标价"
+
+      valuation_bridge:
+        validate: "目标价 vs SOTP差距<20%或有解释"
+
+    step_4_sensitivity:
+      one_way: "5-7个关键假设±20%"
+      scenario_matrix: "2×2或3×3"
+      monte_carlo: "如时间允许"
+
+    step_5_investment_rating:
+      upside: "目标价 vs 当前价%"
+      rating: "1-5 Star"
+      thesis: "Bull/Base/Bear论点"
+      strategy: "建仓/止损/目标建议"
+
+    outputs:
+      - "完整估值模型"
+      - "三场景估值表"
+      - "目标价与估值桥梁"
+      - "敏感性分析"
+      - "投资评级与建议"
+
+    quality_gate:
+      checklist:
+        - "SOTP计算逻辑一致"
+        - "估值桥梁清晰"
+        - "敏感性分析完整"
+        - "投资建议可操作"
+
+      pass_criteria: "4项全部✓"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 3: Tesla完整示例（端到端）
+# ═══════════════════════════════════════════════════════════════════════════════
+
+tesla_complete_example:
+
+  phase_0_output:
+    company: "Tesla Inc (TSLA)"
+    industry: "汽车/能源/AI"
+    business_count: "6个（初步识别）"
+    complexity: "极高（跨度大）"
+
+  phase_1_output:
+    businesses:
+      - name: "汽车制造"
+        revenue_2025: "$79B (82%)"
+        attributes: "成熟/周期/大规模"
+        independence: "5/5"
+
+      - name: "能源存储"
+        revenue_2025: "$10.5B (11%)"
+        attributes: "成长/周期/中规模"
+        independence: "4/5"
+
+      - name: "服务+软件"
+        revenue_2025: "$6.7B (7%)"
+        attributes: "成长/非周期/高毛利"
+        independence: "3/5"
+
+      - name: "FSD（Full Self-Driving）"
+        revenue_2025: "$1.5B订阅"
+        attributes: "期权型/AI"
+        independence: "4/5"
+
+      - name: "Robotaxi"
+        revenue_2025: "$0（未商业化）"
+        attributes: "期权型/颠覆性"
+        independence: "5/5（未来独立）"
+
+      - name: "Optimus机器人"
+        revenue_2025: "$0（研发中）"
+        attributes: "期权型/极高不确定"
+        independence: "5/5（未来独立）"
+
+    sotp_baseline: "$503.6B"
+
+  phase_2_output:
+    valuations:
+      automotive: "$300B（DCF, 8% WACC）"
+      energy: "$40B（15x P/E）"
+      services: "$25B（5x P/S）"
+      fsd: "$50B（rNPV, 60%成功概率）"
+      robotaxi: "$0.87B（rNPV, 8.4%成功）"
+      optimus: "$87.7B（Black-Scholes）"
+
+  phase_3_output:
+    synergies:
+      positive: "+$85.94B（乐观）/+$13.74B（保守）"
+      negative: "-$160-260B（管理注意力+蚕食）"
+
+  phase_4_output:
+    moats:
+      interaction_score: "+19"
+      compound_multiplier: "1.48x"
+      moat_value: "$140B（已在DCF中）"
+
+  phase_5_output:
+    risks:
+      management_attention: "20%折价"
+      complexity: "5%"
+      capital_misallocation: "5%"
+      opacity: "5%"
+      total_discount: "35%（最大）/15%（最小）"
+
+  phase_6_output:
+    final_valuation:
+      bull: "$530B（折价10%）"
+      base: "$440B（折价15%）"
+      bear: "$334B（折价25%）"
+      weighted: "$437B = $137/股"
+
+    target_price:
+      12_month: "$158/股（+时间价值+催化剂）"
+      upside: "+123% vs $71当前价"
+
+    rating: "4 Star - 关注"
+
+  total_time: "~5-6 hours（深度分析）"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 4: 质量保障
+# ═══════════════════════════════════════════════════════════════════════════════
+
+quality_assurance:
+
+  cross_framework_consistency:
+    check_1_财务一致性:
+      rule: "Phase 1拆分的收入之和 = 公司总收入"
+      validation: "自动求和检验"
+
+    check_2_估值逻辑:
+      rule: "SOTP = Σ业务价值，不能跳跃"
+      validation: "每步调整有依据"
+
+    check_3_折价合理:
+      rule: "折价% vs 对标公司±10pp内"
+      validation: "异常值需解释"
+
+  depth_validation:
+    每个框架最低要求:
+      decomposition: "≥L3（机制分析）"
+      synergy: "≥L3（量化方法）"
+      moat: "≥L3（交互机制）"
+      risk: "≥L3（证据支撑）"
+      valuation: "≥L4（敏感性分析）"
+
+  output_completeness:
+    必须产出:
+      - "SOTP估值表"
+      - "三场景估值"
+      - "目标价与估值桥梁"
+      - "敏感性分析"
+      - "投资评级"
+      - "Kill Switches（≥5个）"
+      - "可验证预测（≥10个）"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 5: 使用建议
+# ═══════════════════════════════════════════════════════════════════════════════
+
+usage_guidelines:
+
+  when_to_use_full_framework:
+    - "首次深度分析某公司"
+    - "公司业务结构重大变化（并购/拆分）"
+    - "年度全面review"
+
+  when_to_use_simplified:
+    - "季度更新（仅Phase 2+6）"
+    - "快速估值（跳过协同/护城河细节）"
+    - "BRK类纯holding（跳过协同/护城河）"
+
+  time_allocation_guide:
+    total: "5-6小时（深度分析）"
+    breakdown:
+      phase_1: "30-40 min（拆解）"
+      phase_2: "60-90 min（估值）"
+      phase_3: "40-60 min（协同）"
+      phase_4: "40-60 min（护城河）"
+      phase_5: "30-40 min（风险）"
+      phase_6: "50-70 min（整合）"
+
+  team_collaboration:
+    if_solo: "按序执行"
+    if_team: "Phase 2-5可并行，Phase 6整合"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# End of Framework
+# ═══════════════════════════════════════════════════════════════════════════════

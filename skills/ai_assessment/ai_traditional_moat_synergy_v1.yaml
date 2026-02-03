@@ -1,0 +1,360 @@
+# AI Traditional Moat Synergy v1.0
+# 传统护城河与AI协同分析
+# 创建日期: 2026-02-02
+
+version: "1.0"
+created: "2026-02-02"
+
+metadata:
+  skill_id: "ai_assessment.traditional_moat_synergy_v1.0"
+  name: "传统护城河与AI协同分析"
+  purpose: "评估传统公司护城河与AI的协同/冲突关系"
+
+# ═══════════════════════════════════════════════════════════════
+# 护城河+AI协同矩阵
+# ═══════════════════════════════════════════════════════════════
+
+moat_ai_synergy_matrix:
+
+  # ────────────────────────────────────────────────────────────
+  # 可被AI放大的护城河
+  # ────────────────────────────────────────────────────────────
+
+  amplified_moats:
+
+    proprietary_data:
+      name: "专有数据"
+      synergy_level: "极高"
+      mechanism: |
+        独特数据 + AI = 更强的洞察/产品
+        数据飞轮：更多用户→更多数据→更好AI→更多用户
+
+      amplification_patterns:
+        - pattern: "数据网络效应"
+          description: "AI让数据规模优势更明显"
+          example: "Google搜索数据训练更好的AI搜索"
+
+        - pattern: "数据护城河"
+          description: "独特数据无法被AI生成替代"
+          example: "Bloomberg金融数据+AI=金融终端"
+
+        - pattern: "数据飞轮加速"
+          description: "AI加速数据价值转化"
+          example: "Tesla行驶数据+AI=自动驾驶领先"
+
+      key_questions:
+        - "公司拥有什么独特数据？"
+        - "这些数据能否训练/优化AI？"
+        - "数据是否持续产生？"
+
+      investment_signal: "强正面——数据是AI时代的新石油"
+
+    installed_base:
+      name: "装机量/用户基础"
+      synergy_level: "高"
+      mechanism: |
+        大规模装机量/用户 + AI = 更多AI数据 + 更易分发AI功能
+
+      amplification_patterns:
+        - pattern: "AI功能快速渗透"
+          description: "现有用户基础让AI功能快速规模化"
+          example: "Microsoft 365用户一夜间获得Copilot"
+
+        - pattern: "用户数据训练"
+          description: "用户行为数据优化AI"
+          example: "Spotify用户数据训练推荐AI"
+
+        - pattern: "AI增强粘性"
+          description: "AI个性化增加用户粘性"
+          example: "Netflix推荐让用户更难离开"
+
+      investment_signal: "正面——但需要AI产品化能力"
+
+    regulatory_moat:
+      name: "监管壁垒"
+      synergy_level: "中高"
+      mechanism: |
+        监管壁垒 + AI合规能力 = 双重护城河
+        新进入者既要满足原有监管，又要AI合规
+
+      amplification_patterns:
+        - pattern: "合规门槛提高"
+          description: "AI带来新监管要求，增加进入壁垒"
+          example: "银行AI需要满足SR 11-7"
+
+        - pattern: "AI合规能力"
+          description: "在合规框架内使用AI的能力"
+          example: "医疗AI需要FDA批准"
+
+      investment_signal: "正面——监管是AI时代的新护城河"
+
+    hardware_moat:
+      name: "硬件/物理资产"
+      synergy_level: "中高"
+      mechanism: |
+        硬件资产 + AI = 智能硬件
+        硬件提供数据采集和AI执行能力
+
+      amplification_patterns:
+        - pattern: "边缘AI"
+          description: "硬件成为AI执行点"
+          example: "iPhone的神经引擎"
+
+        - pattern: "传感器网络"
+          description: "硬件采集AI所需数据"
+          example: "工业设备IoT+AI预测维护"
+
+        - pattern: "物理世界控制"
+          description: "AI控制物理世界需要硬件"
+          example: "机器人+AI"
+
+      investment_signal: "正面——硬件+AI是独特组合"
+
+  # ────────────────────────────────────────────────────────────
+  # 可能被AI削弱的护城河
+  # ────────────────────────────────────────────────────────────
+
+  weakened_moats:
+
+    information_asymmetry:
+      name: "信息不对称"
+      vulnerability_level: "极高"
+      mechanism: |
+        AI大幅降低信息获取成本
+        传统依赖信息优势的业务面临颠覆
+
+      weakening_patterns:
+        - pattern: "信息民主化"
+          description: "AI让普通人获得专家级信息"
+          example: "AI法律助手削弱律师信息优势"
+
+        - pattern: "中介去除"
+          description: "AI直接连接供需"
+          example: "AI搜索直接回答，不导流"
+
+      at_risk_businesses:
+        - "研究/咨询服务"
+        - "中介/经纪服务"
+        - "基础专业服务"
+
+      investment_signal: "负面——需要转型或被替代"
+
+    human_expertise:
+      name: "人力专业知识"
+      vulnerability_level: "高"
+      mechanism: |
+        AI可以学习并复制很多人类专业知识
+        依赖人力规模的业务面临压力
+
+      weakening_patterns:
+        - pattern: "知识自动化"
+          description: "AI学习专业知识"
+          example: "AI可以通过律师考试"
+
+        - pattern: "效率碾压"
+          description: "AI效率远超人工"
+          example: "AI编程比人快10倍"
+
+      still_protected:
+        - "需要人际信任的领域"
+        - "高度复杂/创造性工作"
+        - "监管要求人工的领域"
+
+      investment_signal: "谨慎——评估具体领域的替代风险"
+
+    traditional_switching_costs:
+      name: "传统切换成本"
+      vulnerability_level: "中等"
+      mechanism: |
+        AI可能降低某些切换成本
+        但AI也可能创造新的切换成本
+
+      weakening_patterns:
+        - pattern: "数据迁移自动化"
+          description: "AI帮助客户迁移"
+          example: "AI辅助ERP迁移"
+
+        - pattern: "学习曲线降低"
+          description: "AI让新产品更易上手"
+          example: "AI助手降低软件学习成本"
+
+      new_switching_costs:
+        - "AI定制化（需要重新训练）"
+        - "AI数据积累（历史数据价值）"
+        - "AI工作流集成"
+
+      investment_signal: "中性——看具体情况"
+
+  # ────────────────────────────────────────────────────────────
+  # AI创造的新护城河
+  # ────────────────────────────────────────────────────────────
+
+  new_ai_moats:
+
+    ai_data_flywheel:
+      name: "AI数据飞轮"
+      description: "用户使用→产生数据→优化AI→更好体验→更多用户"
+
+      characteristics:
+        - "自我强化循环"
+        - "后来者难以追赶"
+        - "规模带来质量优势"
+
+      examples:
+        - "Tesla自动驾驶数据飞轮"
+        - "TikTok推荐算法飞轮"
+        - "Google搜索数据飞轮"
+
+      assessment_questions:
+        - "有没有数据→AI→用户的循环？"
+        - "数据规模是否带来AI质量优势？"
+        - "竞争对手能否复制这个飞轮？"
+
+    ai_network_effects:
+      name: "AI网络效应"
+      description: "更多用户让AI对所有用户都更有价值"
+
+      patterns:
+        - pattern: "AI越用越好"
+          description: "用户反馈优化AI"
+
+        - pattern: "AI创造内容/价值"
+          description: "AI生成的内容吸引更多用户"
+
+      examples:
+        - "GitHub Copilot——代码学习网络效应"
+        - "Midjourney——社区分享提升AI"
+
+    ai_talent_moat:
+      name: "AI人才护城河"
+      description: "顶尖AI人才聚集创造竞争优势"
+
+      characteristics:
+        - "AI人才稀缺"
+        - "人才吸引人才"
+        - "研究能力积累"
+
+      examples:
+        - "OpenAI/DeepMind的人才密度"
+        - "NVIDIA的CUDA生态人才"
+
+    ai_ecosystem_lock_in:
+      name: "AI生态锁定"
+      description: "围绕AI能力建立的生态系统形成锁定"
+
+      patterns:
+        - "开发者生态"
+        - "插件/扩展生态"
+        - "数据/模型生态"
+
+      examples:
+        - "NVIDIA CUDA生态"
+        - "OpenAI API生态"
+        - "Hugging Face模型生态"
+
+# ═══════════════════════════════════════════════════════════════
+# 硬件+AI协同分析
+# ═══════════════════════════════════════════════════════════════
+
+hardware_ai_synergy:
+
+  synergy_types:
+
+    edge_intelligence:
+      name: "边缘智能"
+      description: "在终端设备上运行AI"
+      value: "低延迟/隐私/离线能力"
+      examples:
+        - "iPhone神经引擎"
+        - "Tesla FSD芯片"
+        - "工业边缘AI"
+
+    sensor_ai_loop:
+      name: "传感器-AI循环"
+      description: "硬件采集数据，AI处理，硬件执行"
+      value: "闭环控制/自动化"
+      examples:
+        - "自动驾驶传感器+AI"
+        - "机器人视觉+AI"
+        - "工业IoT+AI"
+
+    hardware_differentiation:
+      name: "硬件差异化"
+      description: "AI优化的专用硬件"
+      value: "性能/效率优势"
+      examples:
+        - "NVIDIA GPU"
+        - "Apple Silicon"
+        - "TPU"
+
+  assessment_questions:
+    - "硬件是否能采集独特数据？"
+    - "硬件是否是AI执行的必要载体？"
+    - "AI是否能让硬件更有价值？"
+    - "硬件+AI组合是否难以复制？"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## 传统护城河+AI协同分析
+
+  ### 护城河清单与AI影响
+
+  | 护城河类型 | 当前强度 | AI影响 | 调整后强度 | 关键因素 |
+  |-----------|---------|--------|-----------|---------|
+  | [类型1] | X/5 | 放大/削弱/中性 | X/5 | [因素] |
+  | [类型2] | X/5 | 放大/削弱/中性 | X/5 | [因素] |
+
+  ### 被放大的护城河
+
+  [详细分析]
+
+  ### 被削弱的护城河
+
+  [详细分析]
+
+  ### AI创造的新护城河
+
+  | 新护城河 | 存在性 | 强度 | 证据 |
+  |---------|--------|------|------|
+  | 数据飞轮 | 是/否 | 强/中/弱 | |
+  | AI网络效应 | 是/否 | 强/中/弱 | |
+  | AI人才 | 是/否 | 强/中/弱 | |
+  | AI生态锁定 | 是/否 | 强/中/弱 | |
+
+  ### 硬件+AI协同
+
+  **协同类型**: [类型]
+  **协同强度**: 强/中/弱
+  **具体表现**: [描述]
+
+  ### 综合评估
+
+  **护城河净变化**: 增强/减弱/不变
+  **AI护城河评分**: X/10
+
+output_contract:
+  amplified_moats:
+    type: "array"
+    items:
+      moat_type: "string"
+      synergy_level: "enum[high|medium|low]"
+      mechanism: "string"
+  weakened_moats:
+    type: "array"
+    items:
+      moat_type: "string"
+      vulnerability_level: "enum[high|medium|low]"
+      mechanism: "string"
+  new_ai_moats:
+    type: "array"
+    items:
+      moat_type: "string"
+      strength: "enum[strong|moderate|weak|none]"
+  hardware_ai_synergy:
+    type: "string"
+  net_moat_change:
+    type: "enum"
+    values: ["strengthened", "weakened", "unchanged"]

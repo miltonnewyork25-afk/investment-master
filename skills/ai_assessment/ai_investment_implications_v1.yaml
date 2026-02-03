@@ -1,0 +1,460 @@
+# AI Investment Implications v1.0
+# AI投资含义转化框架
+# 创建日期: 2026-02-02
+
+version: "1.0"
+created: "2026-02-02"
+
+metadata:
+  skill_id: "ai_assessment.investment_implications_v1.0"
+  name: "AI投资含义转化框架"
+  purpose: "将AI评估结果转化为可操作的投资决策"
+
+# ═══════════════════════════════════════════════════════════════
+# 投资评级矩阵
+# ═══════════════════════════════════════════════════════════════
+
+investment_rating_matrix:
+
+  rating_factors:
+
+    primary_factors:
+      - factor: "L+S组合"
+        weight: 0.25
+        scoring:
+          excellent: "L≥3 且 S≥4"
+          good: "L≥2 且 S≥3"
+          neutral: "L=1 且 S=1-2"
+          poor: "L=0 且 S=0-1"
+
+      - factor: "颠覆角色"
+        weight: 0.25
+        scoring:
+          excellent: "disruptor"
+          good: "beneficiary"
+          neutral: "neutral"
+          poor: "at_risk"
+
+      - factor: "范式类型"
+        weight: 0.20
+        scoring:
+          excellent: "paradigm_shift (正向)"
+          good: "transformational"
+          neutral: "incremental"
+          poor: "paradigm_shift (负向)"
+
+      - factor: "五不变量总分"
+        weight: 0.15
+        scoring:
+          excellent: "≥8/10"
+          good: "6-7/10"
+          neutral: "4-5/10"
+          poor: "<4/10"
+
+      - factor: "新进入威胁"
+        weight: 0.15
+        scoring:
+          excellent: "low"
+          good: "medium"
+          neutral: "high"
+          poor: "critical"
+
+  rating_calculation: |
+    综合评分 = Σ(因子评分 × 权重)
+
+    因子评分：excellent=4, good=3, neutral=2, poor=1
+
+    评级判定：
+    - 3.5-4.0: Strong_Beneficiary
+    - 2.8-3.5: Beneficiary
+    - 2.2-2.8: Neutral
+    - 1.5-2.2: At_Risk
+    - 1.0-1.5: Strong_At_Risk
+
+# ═══════════════════════════════════════════════════════════════
+# 估值影响评估
+# ═══════════════════════════════════════════════════════════════
+
+valuation_impact:
+
+  ai_premium_framework:
+    description: "AI因素对估值倍数的影响"
+
+    premium_scenarios:
+
+      strong_beneficiary:
+        base_premium: "+20% to +50%"
+        conditions:
+          - "AI收入快速增长且可预见"
+          - "AI创造新护城河"
+          - "领先竞争对手"
+        risk_factors:
+          - "执行风险"
+          - "竞争加剧"
+
+      beneficiary:
+        base_premium: "+10% to +20%"
+        conditions:
+          - "AI有正面财务影响"
+          - "差异化可持续"
+        risk_factors:
+          - "竞争追赶"
+          - "技术变化"
+
+      neutral:
+        base_premium: "0%"
+        rationale: "AI影响不明确，不应给予溢价或折价"
+
+      at_risk:
+        base_discount: "-10% to -20%"
+        conditions:
+          - "面临AI竞争威胁"
+          - "转型路径不清晰"
+        risk_factors:
+          - "收入侵蚀"
+          - "利润压缩"
+
+      strong_at_risk:
+        base_discount: "-20% to -40%"
+        conditions:
+          - "核心业务被AI威胁"
+          - "无有效应对策略"
+        risk_factors:
+          - "结构性衰退"
+          - "估值de-rating"
+
+  valuation_adjustment_factors:
+
+    time_horizon:
+      short_term: "较小调整（不确定性高）"
+      medium_term: "中等调整"
+      long_term: "较大调整（但需折现）"
+
+    evidence_quality:
+      A_grade: "可给予完整估值调整"
+      B_grade: "给予50-75%调整"
+      C_grade: "给予25-50%调整或不调整"
+
+    competitive_position:
+      leader: "额外+5-10%"
+      follower: "维持基础调整"
+      laggard: "额外-5-10%"
+
+# ═══════════════════════════════════════════════════════════════
+# 投资策略建议
+# ═══════════════════════════════════════════════════════════════
+
+investment_strategies:
+
+  by_rating:
+
+    strong_beneficiary:
+      position_guidance: "积极配置"
+      position_size: "可超配"
+      time_horizon: "长期持有"
+      entry_strategy: "可接受较高估值入场"
+      exit_triggers:
+        - "AI优势被竞争者追平"
+        - "AI收入增长大幅放缓"
+        - "估值极度泡沫化"
+
+    beneficiary:
+      position_guidance: "适度配置"
+      position_size: "标配或略超配"
+      time_horizon: "中长期"
+      entry_strategy: "寻找合理估值入场点"
+      exit_triggers:
+        - "AI竞争加剧"
+        - "财务表现不及预期"
+
+    neutral:
+      position_guidance: "观望为主"
+      position_size: "标配或低配"
+      time_horizon: "等待更多信息"
+      entry_strategy: "等待AI定位清晰后决策"
+      watch_points:
+        - "AI战略进展"
+        - "竞争对手动态"
+
+    at_risk:
+      position_guidance: "谨慎/考虑减仓"
+      position_size: "低配或回避"
+      time_horizon: "短期关注"
+      action_triggers:
+        - "减仓：AI威胁加剧"
+        - "观望：有转型迹象"
+
+    strong_at_risk:
+      position_guidance: "回避或做空"
+      position_size: "零配置或空头"
+      time_horizon: "避免长期持有"
+      rationale: "结构性风险，可能面临估值和盈利双杀"
+
+# ═══════════════════════════════════════════════════════════════
+# 影响向量分析
+# ═══════════════════════════════════════════════════════════════
+
+impact_vectors:
+
+  revenue_impact:
+    description: "AI对收入的影响"
+
+    positive_scenarios:
+      - scenario: "AI新产品收入"
+        mechanism: "AI功能溢价/新产品"
+        metrics: ["AI相关ARR", "AI功能渗透率"]
+
+      - scenario: "AI驱动的市场扩张"
+        mechanism: "AI降低客户获取成本"
+        metrics: ["CAC变化", "市场份额"]
+
+    negative_scenarios:
+      - scenario: "AI竞争导致收入流失"
+        mechanism: "客户流向AI竞争者"
+        metrics: ["客户流失率", "市场份额"]
+
+  cost_impact:
+    description: "AI对成本的影响"
+
+    positive_scenarios:
+      - scenario: "AI自动化降低运营成本"
+        mechanism: "人工替代/效率提升"
+        metrics: ["人效比", "SG&A率"]
+
+      - scenario: "AI优化供应链"
+        mechanism: "预测/库存优化"
+        metrics: ["库存周转", "COGS"]
+
+    negative_scenarios:
+      - scenario: "AI投入成本"
+        mechanism: "AI基础设施/人才成本"
+        metrics: ["R&D支出", "AI CapEx"]
+
+  risk_impact:
+    description: "AI对风险的影响"
+
+    risk_reduction:
+      - "AI预测/预警降低运营风险"
+      - "AI自动化减少人为错误"
+
+    risk_increase:
+      - "AI技术风险"
+      - "AI合规/监管风险"
+      - "AI竞争风险"
+
+  moat_impact:
+    description: "AI对护城河的影响"
+
+    moat_strengthening:
+      - "AI数据飞轮强化护城河"
+      - "AI创造新的切换成本"
+      - "AI扩大效率差距"
+
+    moat_weakening:
+      - "AI降低信息壁垒"
+      - "AI削弱人力优势"
+      - "AI新进入者威胁"
+
+# ═══════════════════════════════════════════════════════════════
+# Next Gate 与 Kill Switches
+# ═══════════════════════════════════════════════════════════════
+
+next_gate_framework:
+
+  definition: |
+    Next Gate = "升级到下一阶段/评级必须出现的可观测事实"
+    不是口号，是具体、可量化、可验证的条件
+
+  good_examples:
+    - "2026Q2财报披露AI收入占比≥10%"
+    - "AI客户数量突破1000家"
+    - "AI产品NPS≥50"
+    - "AI相关毛利率≥60%"
+
+  bad_examples:
+    - "继续推进AI战略"  # 太模糊
+    - "加强AI投入"      # 无法量化
+    - "AI能力持续提升"  # 不可验证
+
+  by_rating_upgrade:
+    neutral_to_beneficiary:
+      required_gates:
+        - "AI收入占比≥5% 或 AI成本节约≥10%"
+        - "至少1个核心AI产品上线"
+        - "AI相关客户案例≥3个"
+
+    beneficiary_to_strong_beneficiary:
+      required_gates:
+        - "AI收入占比≥15% 且 增速>整体"
+        - "AI创造明显竞争差异"
+        - "五不变量总分≥8/10"
+
+kill_switches_framework:
+
+  definition: |
+    Kill Switch = "出现即应推翻或降级判断的指标/事件"
+    必须是真正能改变结论的重大变化
+
+  categories:
+
+    financial_kill_switches:
+      - trigger: "AI相关收入连续2季度负增长"
+        action: "降级评级"
+      - trigger: "AI投入ROI持续为负（>4季度）"
+        action: "重新评估AI战略有效性"
+
+    competitive_kill_switches:
+      - trigger: "主要竞争者推出同等AI产品"
+        action: "重新评估差异化"
+      - trigger: "AI原生竞争者获得>10%市场份额"
+        action: "升级威胁评估"
+
+    operational_kill_switches:
+      - trigger: "AI系统重大故障/安全事件"
+        action: "降级治理评分"
+      - trigger: "关键AI人才大规模流失"
+        action: "重新评估执行能力"
+
+    strategic_kill_switches:
+      - trigger: "管理层放弃AI战略"
+        action: "根本性重新评估"
+      - trigger: "AI监管重大变化影响业务"
+        action: "重新评估合规风险"
+
+  validation_rules:
+    - "kill switch必须是可观测的"
+    - "kill switch必须真的能改变结论"
+    - "伪kill switch（发生了也不影响结论）应删除"
+
+# ═══════════════════════════════════════════════════════════════
+# 监控计划
+# ═══════════════════════════════════════════════════════════════
+
+monitoring_plan:
+
+  monitoring_categories:
+
+    quarterly_monitoring:
+      frequency: "季度（随财报）"
+      metrics:
+        - "AI收入/收入占比"
+        - "AI成本/成本节约"
+        - "AI相关KPI披露"
+        - "管理层AI commentary"
+
+    monthly_monitoring:
+      frequency: "月度"
+      metrics:
+        - "AI产品更新/发布"
+        - "AI相关新闻/公告"
+        - "竞争对手AI动态"
+        - "行业AI趋势"
+
+    continuous_monitoring:
+      frequency: "持续"
+      events:
+        - "AI相关收购/合作"
+        - "关键人才变动"
+        - "AI安全/合规事件"
+        - "监管变化"
+
+  alert_thresholds:
+    upgrade_alert:
+      - "AI收入增速连续2季度>50%"
+      - "AI客户数快速增长"
+      - "AI产品获得行业认可"
+
+    downgrade_alert:
+      - "AI收入增速放缓"
+      - "AI竞争加剧"
+      - "AI相关负面事件"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## AI投资含义
+
+  ### 投资评级
+
+  | 因子 | 评分 | 权重 | 加权分 |
+  |------|------|------|--------|
+  | L+S组合 | X/4 | 25% | X.XX |
+  | 颠覆角色 | X/4 | 25% | X.XX |
+  | 范式类型 | X/4 | 20% | X.XX |
+  | 五不变量 | X/4 | 15% | X.XX |
+  | 新进入威胁 | X/4 | 15% | X.XX |
+  | **综合评分** | | | **X.XX/4** |
+
+  **投资评级**: Strong_Beneficiary / Beneficiary / Neutral / At_Risk / Strong_At_Risk
+
+  ### 影响向量
+
+  | 向量 | 影响方向 | 量化影响 | 证据等级 |
+  |------|---------|---------|---------|
+  | Revenue | 正向/负向/中性 | | A/B/C |
+  | Cost | 正向/负向/中性 | | A/B/C |
+  | Risk | 增加/降低/中性 | | A/B/C |
+  | Moat | 强化/弱化/中性 | | A/B/C |
+
+  **主要影响向量（≤2个）**: [向量1], [向量2]
+
+  ### 估值影响
+
+  **AI估值调整**: +/-XX%
+  **调整依据**: [说明]
+  **证据质量折扣**: [如适用]
+
+  ### 投资策略
+
+  **仓位建议**: [建议]
+  **时间框架**: [短期/中期/长期]
+  **入场策略**: [描述]
+
+  ### Next Gate
+
+  [可观测的升级条件]
+
+  ### Kill Switches
+
+  1. [触发条件1] → [动作]
+  2. [触发条件2] → [动作]
+  3. [触发条件3] → [动作]
+
+  ### 监控计划
+
+  | 指标 | 当前值 | 阈值 | 频率 |
+  |------|--------|------|------|
+  | [指标1] | | | 季度 |
+  | [指标2] | | | 月度 |
+
+output_contract:
+  rating:
+    type: "enum"
+    values: ["Strong_Beneficiary", "Beneficiary", "Neutral", "At_Risk", "Strong_At_Risk"]
+  rating_score:
+    type: "float"
+    range: "1.0-4.0"
+  impact_vectors:
+    type: "array"
+    max_items: 2
+    values: ["Revenue", "Cost", "Risk", "Moat"]
+  valuation_impact:
+    type: "string"
+    pattern: "+/-XX%"
+  next_gate:
+    type: "string"
+    requirement: "must be specific and observable"
+  kill_switches:
+    type: "array"
+    min_items: 3
+    items:
+      trigger: "string"
+      action: "string"
+  monitoring_metrics:
+    type: "array"
+    items:
+      metric: "string"
+      threshold: "string"
+      frequency: "string"

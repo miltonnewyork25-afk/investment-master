@@ -1,0 +1,987 @@
+# Business Decomposition Protocol v1.0
+# 复合业务拆解协议 - 通用框架
+#
+# 创建日期: 2026-02-02
+# 用途: 将复合业务公司（如Tesla/Amazon/Alphabet）拆解为独立评估单元
+# 适用: 任何跨多业务/多行业的上市公司
+# 依赖: master_investment_framework_v1.yaml
+
+---
+metadata:
+  name: business_decomposition_protocol
+  version: "1.0"
+  created: "2026-02-02"
+  category: "universal"
+  description: "复合业务公司的标准化拆解与评估协议"
+  dependencies:
+    - "skills/_common/master_investment_framework_v1.yaml"
+
+design_philosophy: |
+  复合业务公司的估值困境：
+  - 问题: 不同业务处于不同生命周期，适用不同估值方法
+  - 问题: 整体估值倍数掩盖了业务间的价值差异
+  - 问题: 协同效应难以量化，容易高估或低估
+
+  本协议提供：
+  - 标准化的业务识别与拆解流程
+  - 财务数据的合理分配方法
+  - 不同业务特征的量化评估框架
+  - SOTP估值的输入准备
+
+---
+# ==========================================
+# 第一部分：业务识别协议
+# ==========================================
+
+business_identification:
+  description: "第一步：从财报和实质分析中识别独立业务单元"
+
+  phase_1_segment_reporting:
+    name: "财报披露分析"
+    data_source: "10-K Segment Reporting"
+
+    steps:
+      step_1:
+        name: "读取Segment Reporting"
+        action: "查找10-K中的'Segment Information'或'Business Segments'章节"
+        output: "公司正式披露的业务分部清单"
+
+      step_2:
+        name: "提取财务数据"
+        action: "收集每个分部的收入/营业利润/资产/CapEx"
+        output_format: |
+          | Segment | Revenue | Op Income | Assets | CapEx |
+          |---------|---------|-----------|--------|-------|
+          | Segment 1 | $XXX | $XXX | $XXX | $XXX |
+
+      step_3:
+        name: "识别未分配项"
+        action: "关注'Corporate'/'Other'/'Unallocated'项目"
+        warning: "这些项目可能隐藏重要业务或包含共同成本"
+
+    limitations:
+      - "公司可自由选择披露粒度（如Tesla只披露2个分部）"
+      - "新业务可能隐藏在'Other'中"
+      - "管理层可能操纵分部划分以美化某些业务"
+
+    example_tesla:
+      disclosed_segments:
+        - name: "Automotive"
+          revenue_share: "82%"
+          detail: "包含汽车销售+租赁"
+        - name: "Energy & Services"
+          revenue_share: "18%"
+          detail: "能源存储+太阳能+服务+其他"
+      problem: "Robotaxi/FSD订阅/保险等业务被合并在'Services'中，难以单独评估"
+
+  phase_2_economic_substance:
+    name: "经济实质分析"
+    description: "超越财报披露，按经济实质拆解业务"
+
+    criteria_for_independent_business:
+      criterion_1:
+        name: "独立P&L能力"
+        question: "这个业务能否单独运营并产生收入/利润？"
+        examples:
+          - "✅ Tesla能源存储：可以作为独立公司运营"
+          - "❌ Tesla Supercharger：依赖汽车业务，难以独立"
+
+      criterion_2:
+        name: "不同增长驱动"
+        question: "这个业务的增长驱动因素是否独立？"
+        examples:
+          - "✅ AWS（Amazon）：企业云需求 vs 零售消费需求"
+          - "✅ Tesla能源：公用事业采购 vs 个人购车"
+
+      criterion_3:
+        name: "不同竞争格局"
+        question: "这个业务是否面对不同的竞争对手？"
+        examples:
+          - "✅ Tesla汽车（vs BYD/VW） vs 能源（vs Enphase/SolarEdge）"
+          - "❌ FSD vs Robotaxi：竞争对手重叠（Waymo）"
+
+      criterion_4:
+        name: "不同估值倍数"
+        question: "市场对这个业务的估值方法是否不同？"
+        examples:
+          - "✅ 汽车制造（8-12x P/E）vs SaaS（20-40x P/S）"
+          - "✅ 成熟业务（DCF）vs 早期业务（期权定价）"
+
+      criterion_5:
+        name: "不同监管环境"
+        question: "这个业务是否受不同监管约束？"
+        examples:
+          - "✅ 能源存储（公用事业监管）vs 汽车（交通监管）"
+          - "✅ Robotaxi（自动驾驶法规）vs 汽车销售"
+
+    decision_tree: |
+      业务拆解决策树：
+
+      收入来源X → 是否满足5个标准中≥3个？
+                  ├─ 是 → 独立业务
+                  └─ 否 → 合并到主业务
+
+    example_tesla_economic_decomposition:
+      business_1:
+        name: "汽车制造"
+        rationale: "满足5/5标准，核心业务"
+        revenue_share: "82%"
+      business_2:
+        name: "能源存储"
+        rationale: "满足5/5标准，独立增长引擎"
+        revenue_share: "11%"
+      business_3:
+        name: "服务/软件（FSD订阅+保险）"
+        rationale: "满足4/5标准（独立P&L/增长/估值/监管）"
+        revenue_share: "7%"
+      business_4:
+        name: "Robotaxi（期权）"
+        rationale: "满足3/5标准，0收入但独立业务模式"
+        revenue_share: "0%"
+      business_5:
+        name: "Optimus（期权）"
+        rationale: "满足3/5标准，0收入但独立TAM"
+        revenue_share: "0%"
+      merged_into_automotive:
+        - "Supercharger收入（依赖汽车）"
+        - "汽车租赁（与销售一起估值）"
+
+  phase_3_attribute_tagging:
+    name: "业务属性标注"
+    description: "为每个业务打标签，指导后续估值"
+
+    attributes:
+      industry:
+        description: "所属行业"
+        examples: ["汽车制造", "能源存储", "SaaS", "零售", "云计算"]
+
+      maturity:
+        description: "业务成熟度"
+        levels:
+          - name: "成熟期"
+            characteristics: "收入稳定，毛利率稳定，可预测现金流"
+            valuation_method: "DCF（WACC折现）"
+            examples: ["Tesla汽车", "Amazon零售"]
+          - name: "成长期"
+            characteristics: "收入高增长（30%+），毛利率改善中"
+            valuation_method: "收入倍数法"
+            examples: ["Tesla能源", "AWS早期"]
+          - name: "早期/Pre-revenue"
+            characteristics: "0收入或微量收入，高度不确定"
+            valuation_method: "期权定价（rNPV/Black-Scholes）"
+            examples: ["Tesla Robotaxi", "Optimus"]
+
+      cyclicality:
+        description: "周期性强度"
+        levels:
+          - "高周期（汽车/半导体）"
+          - "中周期（能源存储）"
+          - "低周期/反周期（SaaS/云计算）"
+
+      margin_profile:
+        description: "毛利率特征"
+        levels:
+          - "低毛利高周转（零售15-25%）"
+          - "中毛利（汽车制造18-25%）"
+          - "高毛利（SaaS 70-90%）"
+
+      capital_intensity:
+        description: "资本强度"
+        metric: "CapEx / Revenue"
+        levels:
+          - "高强度（>15%）：制造业/能源"
+          - "中强度（5-15%）：零售/物流"
+          - "低强度（<5%）：SaaS/平台"
+
+      synergy_type:
+        description: "与其他业务的协同类型"
+        types:
+          - name: "正协同"
+            examples: "Tesla汽车+能源（品牌共享）"
+          - name: "负协同/冲突"
+            examples: "Tesla Robotaxi（蚕食汽车销售）"
+          - name: "无协同"
+            examples: "Amazon零售 vs AWS（独立业务）"
+
+    output_template: |
+      | 业务 | 行业 | 成熟度 | 周期性 | 毛利率 | 资本强度 | 协同类型 | 估值方法 |
+      |------|------|--------|--------|--------|---------|---------|---------|
+      | Tesla汽车 | 汽车制造 | 成熟期 | 高周期 | 18% | 15% | 基础业务 | DCF |
+      | Tesla能源 | 能源存储 | 成长期 | 中周期 | 31% | 10% | 正协同 | 倍数法 |
+      | FSD订阅 | SaaS | 成长期 | 低周期 | 90% | <1% | 正协同 | SaaS倍数 |
+      | Robotaxi | Mobility | 早期 | 低周期 | 未知 | 未知 | 负协同 | rNPV |
+
+---
+# ==========================================
+# 第二部分：财务拆分协议
+# ==========================================
+
+financial_decomposition:
+  description: "第二步：将公司整体财务拆分到各业务"
+
+  tier_system:
+    description: "数据质量分层系统"
+
+    tier_1_directly_disclosed:
+      name: "Tier 1 - 直接披露"
+      data_quality: "Level A"
+      description: "财报直接披露的分部数据"
+      items:
+        - "收入（按分部）"
+        - "营业利润（按分部）"
+        - "资产（按分部，部分公司披露）"
+        - "CapEx（按分部，部分公司披露）"
+      example: |
+        Tesla 10-K披露：
+        - Automotive revenue: $78.5B
+        - Energy & Services revenue: $17.2B
+
+    tier_2_calculable:
+      name: "Tier 2 - 可推算"
+      data_quality: "Level B-C"
+      description: "通过单位经济学或已知数据推算"
+      methods:
+        method_1:
+          name: "单位经济学法"
+          formula: "业务收入 = 单价 × 数量"
+          examples:
+            - "Tesla FSD订阅 = $99/月 × 订阅用户数"
+            - "AWS收入 = ARPU × 客户数"
+          data_source: "业绩会、产品定价页面、第三方估算"
+
+        method_2:
+          name: "已知比例推算"
+          formula: "业务X = 分部总收入 × 业务X占比"
+          examples:
+            - "能源存储 = Energy总收入 × 85%（管理层披露）"
+            - "Solar = Energy总收入 × 15%"
+          data_source: "业绩会问答、分析师电话会"
+
+        method_3:
+          name: "增量分析法"
+          formula: "业务X收入(Q2) = 分部总收入(Q2) - 分部总收入(Q1) - 其他已知业务增量"
+          examples:
+            - "新业务贡献 = 总收入增长 - 已有业务增长"
+          limitation: "误差累积，仅适用于新业务"
+
+      example_tesla_fsd:
+        known_data:
+          - "FSD订阅价格: $99/月"
+          - "FSD买断价格: $12,000"
+          - "Tesla车队规模: 6M辆"
+        estimation:
+          - "订阅渗透率: 10-15%（第三方估算）[Level C]"
+          - "订阅用户: 600K-900K"
+          - "订阅收入: $713M-1,069M/年"
+          - "买断收入: 假设5%车主买断 → $3.6B（一次性，分摊到多年）"
+        confidence: "中等（±30%误差）"
+
+    tier_3_allocation:
+      name: "Tier 3 - 分配法"
+      data_quality: "Level E（估算）"
+      description: "无法推算时，按合理假设分配共同成本"
+      warning: "⚠️ 误差最大，必须明确标注Level E + 说明假设"
+
+      methods:
+        method_1:
+          name: "收入比例分配"
+          formula: "业务X成本 = 总成本 × (业务X收入 / 总收入)"
+          适用: "共同费用（R&D、SG&A、公司总部）"
+          limitation: "假设成本结构一致（通常不成立）"
+
+        method_2:
+          name: "员工数比例"
+          formula: "业务X R&D = 总R&D × (业务X员工数 / 总员工数)"
+          适用: "人力成本密集型费用"
+          limitation: "需要员工数数据（通常不公开）"
+
+        method_3:
+          name: "行业基准法"
+          formula: "业务X毛利率 = 同类公司平均毛利率"
+          适用: "新业务或无历史数据业务"
+          limitation: "可比公司选择主观性强"
+
+      mandatory_disclosure:
+        required_in_report: |
+          所有Tier 3数据必须在报告中明确说明：
+
+          **示例**：
+          "Tesla Robotaxi成本估算 [Level E: 估算 - 基于以下假设]
+          - 假设1: Cybercab单车成本$30K（vs Model 3 $35K -15%）
+          - 假设2: 车队运营成本$0.30/mile（参考Waymo $0.50/mile）
+          - 假设3: 软件/监控成本分摊$500M/年（公司总R&D的5%）
+          - 置信度: 低（±50%误差）
+          - 验证方式: 等待公司正式披露"
+
+  common_pitfalls:
+    pitfall_1:
+      name: "忽略内部转移定价"
+      description: "业务间内部交易可能扭曲真实盈利能力"
+      example: "Tesla能源部门使用汽车部门的电池，内部定价可能高于/低于市场价"
+      solution: "使用市场价重新计算，或在分析中说明影响"
+
+    pitfall_2:
+      name: "共同成本分配不合理"
+      description: "R&D/SG&A在不同业务间的分配主观性强"
+      example: "Tesla FSD R&D既服务汽车又服务Robotaxi，如何分配？"
+      solution: "提供多种分配假设的敏感性分析"
+
+    pitfall_3:
+      name: "忽略税务影响"
+      description: "不同业务可能有不同税率"
+      example: "AWS（美国）vs 零售（全球多税区）"
+      solution: "使用有效税率（Effective Tax Rate）而非法定税率"
+
+    pitfall_4:
+      name: "混淆会计收入与经济收入"
+      description: "递延收入、摊销等会计处理扭曲真实表现"
+      example: "SaaS订阅（预收款）vs 硬件销售（即时确认）"
+      solution: "使用现金流或调整后收入"
+
+  output_template:
+    business_financial_profile: |
+      ## [业务名称] 财务拆解
+
+      ### 收入
+      | 年份 | 收入 | YoY | 占比 | 数据质量 |
+      |------|------|-----|------|---------|
+      | 2024 | $XX | +XX% | XX% | Tier 1/2/3 |
+      | 2025E | $XX | +XX% | XX% | Tier 2/3 |
+
+      ### 成本结构
+      | 项目 | 金额 | 占收入% | 分配方法 | 数据质量 |
+      |------|------|---------|---------|---------|
+      | COGS | $XX | XX% | 直接披露/推算 | Tier X |
+      | R&D | $XX | XX% | 员工数比例 | Tier 3 |
+      | SG&A | $XX | XX% | 收入比例 | Tier 3 |
+
+      ### 盈利能力
+      | 指标 | 值 | 说明 |
+      |------|---|------|
+      | 毛利率 | XX% | [Tier X数据] |
+      | 营业利润率 | XX% | [Tier X数据] |
+      | EBITDA率 | XX% | [估算] |
+
+      ### 资本需求
+      | 指标 | 值 | 说明 |
+      |------|---|------|
+      | CapEx | $XX | [Tier X数据] |
+      | CapEx/Revenue | XX% | 资本强度 |
+      | Working Capital | $XX | [估算] |
+
+      ### 数据可信度声明
+      - Tier 1数据占比: XX%
+      - Tier 2数据占比: XX%
+      - Tier 3数据占比: XX%
+      - 总体置信度: 高/中/低
+
+---
+# ==========================================
+# 第三部分：增长特征识别
+# ==========================================
+
+growth_characterization:
+  description: "第三步：识别每个业务的增长驱动与约束"
+
+  growth_drivers:
+    description: "识别业务增长的核心驱动因素"
+
+    framework:
+      dimension_1:
+        name: "TAM扩张"
+        question: "市场总规模是否在扩大？"
+        metrics:
+          - "行业增速（CAGR）"
+          - "渗透率（当前vs潜在）"
+          - "新客户群体涌现"
+        examples:
+          - "✅ EV: 渗透率18%→50%（2030E）"
+          - "✅ 云计算: 企业IT支出上云率30%→60%"
+
+      dimension_2:
+        name: "份额获取"
+        question: "公司是否在抢占份额？"
+        metrics:
+          - "市场份额变化"
+          - "vs竞争对手增速对比"
+          - "客户流失率vs获取率"
+        examples:
+          - "⚠️ Tesla EV份额: 全球12%→预期持平（竞争加剧）"
+          - "✅ AWS云份额: 32%→稳定（防守成功）"
+
+      dimension_3:
+        name: "ARPU提升"
+        question: "单客户价值是否提升？"
+        metrics:
+          - "Average Revenue Per User"
+          - "Upsell/Cross-sell成功率"
+          - "产品组合向高端迁移"
+        examples:
+          - "✅ Tesla FSD订阅: $0→$99/月（渗透率提升）"
+          - "✅ AWS: 新服务推出→ARPU +10%/年"
+
+      dimension_4:
+        name: "运营杠杆"
+        question: "规模效应是否带来利润率提升？"
+        metrics:
+          - "毛利率趋势"
+          - "SG&A占收入比下降"
+          - "固定成本摊薄"
+        examples:
+          - "✅ Tesla能源: 毛利率25%→31%（规模效应）"
+          - "❌ Tesla汽车: 毛利率18%（价格战压制）"
+
+  growth_stage_classification:
+    description: "判断业务所处生命周期阶段"
+
+    stages:
+      stage_1:
+        name: "导入期（Introduction）"
+        characteristics:
+          - "收入小且波动大"
+          - "烧钱（负FCF）"
+          - "产品/市场适配探索中"
+        valuation_method: "期权定价/风险调整折现"
+        examples: ["Tesla Optimus", "Apple Vision Pro"]
+
+      stage_2:
+        name: "成长期（Growth）"
+        characteristics:
+          - "收入CAGR 30-100%"
+          - "毛利率快速改善"
+          - "开始产生正FCF"
+        valuation_method: "收入倍数/PEG"
+        examples: ["Tesla能源", "AWS 2015-2020"]
+
+      stage_3:
+        name: "成熟期（Maturity）"
+        characteristics:
+          - "收入CAGR 5-15%"
+          - "毛利率稳定"
+          - "稳定FCF，可派息"
+        valuation_method: "DCF/P/E"
+        examples: ["Tesla汽车", "Amazon零售"]
+
+      stage_4:
+        name: "衰退期（Decline）"
+        characteristics:
+          - "收入负增长"
+          - "毛利率下滑"
+          - "市场份额流失"
+        valuation_method: "清算价值/资产价值"
+        examples: ["传统燃油车业务", "DVD租赁"]
+
+  growth_constraints:
+    description: "识别限制业务增长的瓶颈"
+
+    constraints:
+      constraint_1:
+        name: "产能约束"
+        indicators:
+          - "产能利用率>90%"
+          - "订单积压增加"
+          - "交付周期延长"
+        solution: "CapEx投资扩产"
+        examples: "Tesla 2021（产能不足限制交付）"
+
+      constraint_2:
+        name: "供应链约束"
+        indicators:
+          - "关键物料短缺"
+          - "供应商集中度高"
+          - "长订货周期"
+        solution: "垂直整合/多元化供应商"
+        examples: "Tesla 4680电池产能（制约汽车成本下降）"
+
+      constraint_3:
+        name: "监管约束"
+        indicators:
+          - "需要政府批准才能扩张"
+          - "合规成本上升"
+          - "市场准入限制"
+        solution: "游说/合作/等待政策变化"
+        examples: "Robotaxi（等待L4批准）"
+
+      constraint_4:
+        name: "竞争约束"
+        indicators:
+          - "市场份额持续下滑"
+          - "价格战压缩利润率"
+          - "客户流失率上升"
+        solution: "产品差异化/成本领先"
+        examples: "Tesla中国（BYD竞争）"
+
+      constraint_5:
+        name: "组织能力约束"
+        indicators:
+          - "管理层频繁变动"
+          - "员工流失率高"
+          - "执行力下降"
+        solution: "文化建设/人才引进"
+        examples: "传统OEM转型EV（文化冲突）"
+
+  output_template:
+    growth_profile: |
+      ## [业务名称] 增长特征
+
+      ### 增长驱动分解
+      | 驱动因素 | 贡献 | 2024-2026E | 2027-2030E |
+      |---------|------|-----------|-----------|
+      | TAM扩张 | XX% | +XXpp | +XXpp |
+      | 份额获取 | XX% | +XXpp | -XXpp |
+      | ARPU提升 | XX% | +XXpp | +XXpp |
+      | 运营杠杆 | XX% | +XXpp | +XXpp |
+      | **总增长** | 100% | +XX% | +XX% |
+
+      ### 生命周期阶段
+      - 当前阶段: [成长期]
+      - 预期进入下一阶段: [20XX年]
+      - 阶段特征: [描述]
+
+      ### 增长约束
+      | 约束类型 | 严重度 | 缓解措施 | 时间线 |
+      |---------|--------|---------|--------|
+      | 产能 | 🟡 中 | 新工厂建设 | 2026 |
+      | 供应链 | 🔴 高 | 4680内部化 | 2027 |
+
+      ### 增长情景
+      | 情景 | 假设 | 2030E收入 | CAGR |
+      |------|------|-----------|------|
+      | Bull | [描述] | $XXB | XX% |
+      | Base | [描述] | $XXB | XX% |
+      | Bear | [描述] | $XXB | XX% |
+
+---
+# ==========================================
+# 第四部分：协同效应分析
+# ==========================================
+
+synergy_analysis:
+  description: "第四步：量化业务间的协同效应或冲突"
+
+  synergy_types:
+    type_1:
+      name: "收入协同（Revenue Synergy）"
+      description: "一个业务帮助另一个业务获取客户或提升ARPU"
+
+      mechanisms:
+        - name: "交叉销售"
+          example: "Tesla汽车客户购买Powerwall（转化率5-10%）"
+          quantification: "增量收入 = 汽车客户数 × 转化率 × Powerwall ASP"
+
+        - name: "品牌溢出"
+          example: "Tesla汽车品牌提升能源产品认知度"
+          quantification: "品牌溢价 = 能源产品价格 - 可比产品价格"
+
+        - name: "数据共享"
+          example: "Tesla汽车行驶数据改进FSD算法"
+          quantification: "难以直接量化，但可用竞争对手差距衡量"
+
+      valuation_impact: "正协同增加SOTP总和 5-20%"
+
+    type_2:
+      name: "成本协同（Cost Synergy）"
+      description: "共享资源降低总成本"
+
+      mechanisms:
+        - name: "共享制造产能"
+          example: "Tesla 4680电池用于汽车+能源存储"
+          quantification: "产能利用率提升 → 固定成本摊薄"
+
+        - name: "共享R&D"
+          example: "FSD算法用于汽车+Robotaxi"
+          quantification: "R&D复用率 = 共享R&D / 总R&D"
+
+        - name: "共享销售渠道"
+          example: "Tesla直营店销售汽车+能源产品"
+          quantification: "SG&A占收入比下降"
+
+      valuation_impact: "正协同增加SOTP总和 3-10%"
+
+    type_3:
+      name: "负协同/蚕食（Cannibalization）"
+      description: "一个业务侵蚀另一个业务的收入/利润"
+
+      mechanisms:
+        - name: "产品替代"
+          example: "Robotaxi蚕食Tesla汽车销售（UberX vs 私家车）"
+          quantification: "蚕食率 = 减少的汽车销量 / Robotaxi订单"
+
+        - name: "资源争夺"
+          example: "Optimus与FSD争夺AI人才和GPU资源"
+          quantification: "机会成本 = FSD进展延迟导致的收入损失"
+
+        - name: "管理层注意力"
+          example: "Musk分心X/SpaceX/xAI影响Tesla执行"
+          quantification: "主观评估，无精确量化"
+
+      valuation_impact: "负协同减少SOTP总和 5-15%"
+
+    type_4:
+      name: "无协同（No Synergy）"
+      description: "业务完全独立，分拆不损失价值"
+      examples:
+        - "Amazon零售 vs AWS"
+        - "Alphabet搜索 vs Waymo"
+      valuation_impact: "SOTP = 各业务估值简单相加"
+
+  quantification_framework:
+    description: "协同效应的量化方法"
+
+    step_1:
+      name: "识别协同机制"
+      output: "列出所有可能的协同效应"
+
+    step_2:
+      name: "评估协同强度"
+      scoring:
+        strong: "9-10分 - 核心竞争力，难以复制"
+        moderate: "5-8分 - 有帮助但非必需"
+        weak: "1-4分 - 边际效应"
+
+    step_3:
+      name: "量化协同价值"
+      methods:
+        method_1:
+          name: "增量收入法"
+          formula: "协同价值 = 因协同产生的增量收入 × 净利率 × P/E"
+          example: "Tesla品牌协同 = 能源增量收入$500M × 15% × 30x = $2.25B"
+
+        method_2:
+          name: "成本节约法"
+          formula: "协同价值 = 年度成本节约 × (1-税率) × P/E"
+          example: "共享R&D = $200M节约 × 75% × 30x = $4.5B"
+
+        method_3:
+          name: "可比公司折价法"
+          formula: "协同价值 = (整合公司倍数 - 纯业务倍数) × 收入"
+          example: "Tesla vs 纯汽车OEM = (12x - 8x) × $100B = $400B"
+
+    step_4:
+      name: "敏感性分析"
+      description: "协同假设的合理范围"
+      output: "Bull/Base/Bear三种协同情景"
+
+  output_template:
+    synergy_matrix: |
+      ## 业务协同矩阵
+
+      |  | 汽车 | 能源 | FSD | Robotaxi | Optimus |
+      |--|------|------|-----|----------|---------|
+      | **汽车** | - | +品牌 | +数据 | -蚕食 | 0 |
+      | **能源** | +客户 | - | 0 | 0 | 0 |
+      | **FSD** | +功能 | 0 | - | +技术 | +AI |
+      | **Robotaxi** | -替代 | 0 | +数据 | - | 0 |
+      | **Optimus** | +工厂 | +安装 | +AI | 0 | - |
+
+      图例: + 正协同, - 负协同, 0 无协同
+
+      ## 协同量化
+
+      | 协同类型 | 机制 | 年化价值 | PV估值贡献 | 置信度 |
+      |---------|------|---------|-----------|--------|
+      | 品牌溢出 | 汽车→能源 | $500M | $2.25B | 中 |
+      | 数据飞轮 | 汽车→FSD | 难量化 | $5-20B | 低-中 |
+      | 蚕食效应 | Robotaxi→汽车 | -$1B | -$5B | 低 |
+      | **净协同** | - | - | **$2-17B** | - |
+
+      ## SOTP调整
+      - SOTP基础（无协同）: $XXX/股
+      - 协同调整: +$XX-XX/股（+X-X%）
+      - **SOTP调整后**: $XXX-XXX/股
+
+---
+# ==========================================
+# 第五部分：质量控制
+# ==========================================
+
+quality_checks:
+  description: "拆解完成后的自检清单"
+
+  mandatory_checks:
+    check_1:
+      name: "完整性检查"
+      rule: "所有业务的收入之和 = 公司总收入"
+      tolerance: "±5%（允许舍入误差）"
+      action_if_fail: "重新检查拆分逻辑，找出遗漏业务"
+
+    check_2:
+      name: "数据质量标注"
+      rule: "每个数据点必须标注Tier 1/2/3"
+      action_if_fail: "补充数据来源说明"
+
+    check_3:
+      name: "估值方法匹配"
+      rule: "业务属性与估值方法一致"
+      examples:
+        - "✅ 成熟业务 → DCF"
+        - "✅ 早期业务 → 期权定价"
+        - "❌ SaaS业务 → P/E（错误，应用P/S）"
+      action_if_fail: "重新选择估值方法"
+
+    check_4:
+      name: "协同合理性"
+      rule: "协同价值 < 单独业务价值总和的30%"
+      rationale: "避免过度高估协同"
+      action_if_fail: "降低协同假设或说明特殊理由"
+
+    check_5:
+      name: "可验证性"
+      rule: "关键假设可以在未来验证"
+      examples:
+        - "✅ '2026年能源收入$20B' → 可验证"
+        - "❌ '品牌协同价值$5B' → 难验证"
+      action_if_fail: "提供可验证的代理指标"
+
+  common_errors:
+    error_1:
+      name: "循环拆分"
+      description: "业务A依赖业务B，业务B又依赖业务A"
+      example: "Supercharger（依赖汽车）vs 汽车（依赖Supercharger）"
+      solution: "选择一个作为主业务，另一个作为附属"
+
+    error_2:
+      name: "重复计数"
+      description: "同一收入在多个业务中被计算"
+      example: "FSD订阅既算在汽车收入又算在软件收入"
+      solution: "明确主归属，其他业务只计协同贡献"
+
+    error_3:
+      name: "忽略内部交易"
+      description: "业务间内部交易未消除"
+      example: "能源部门向汽车部门销售电池"
+      solution: "使用合并报表口径，消除内部交易"
+
+---
+# ==========================================
+# 第六部分：输出标准
+# ==========================================
+
+output_specification:
+  description: "拆解完成后应产出的标准化文件"
+
+  required_outputs:
+    output_1:
+      name: "业务拆解摘要表"
+      format: "Markdown表格"
+      content: |
+        | 业务 | 收入 | 占比 | 成熟度 | 估值方法 | 数据质量 |
+        |------|------|------|--------|---------|---------|
+        | 业务1 | $XXB | XX% | 成熟期 | DCF | Tier 1 |
+        | 业务2 | $XXB | XX% | 成长期 | 倍数法 | Tier 2 |
+
+    output_2:
+      name: "业务详细P&L"
+      format: "CSV文件"
+      location: "analysis/business_decomposition.csv"
+      columns:
+        - "Business_Name"
+        - "Year"
+        - "Revenue"
+        - "COGS"
+        - "Gross_Profit"
+        - "R&D"
+        - "SG&A"
+        - "Operating_Income"
+        - "CapEx"
+        - "Data_Tier"
+
+    output_3:
+      name: "协同效应矩阵"
+      format: "YAML文件"
+      location: "analysis/synergy_matrix.yaml"
+      structure: |
+        synergies:
+          - from: "Business_A"
+            to: "Business_B"
+            type: "revenue"
+            mechanism: "cross-sell"
+            annual_value: $XXM
+            pv_contribution: $XXM
+            confidence: "medium"
+
+    output_4:
+      name: "增长驱动分析"
+      format: "Markdown报告"
+      sections:
+        - "各业务增长驱动拆解"
+        - "增长约束识别"
+        - "增长情景预测"
+
+    output_5:
+      name: "数据质量报告"
+      format: "Markdown表格"
+      content: |
+        | 指标 | Tier 1 | Tier 2 | Tier 3 |
+        |------|--------|--------|--------|
+        | 收入 | XX% | XX% | XX% |
+        | 成本 | XX% | XX% | XX% |
+        | 总体置信度 | 高/中/低 |
+
+---
+# ==========================================
+# 第七部分：实战案例
+# ==========================================
+
+examples:
+  tesla:
+    description: "Tesla五维度拆解示例"
+
+    business_list:
+      business_1:
+        name: "汽车制造"
+        revenue_2025: "$78.5B"
+        revenue_share: "82%"
+        maturity: "成熟期"
+        growth_drivers: "TAM扩张（EV渗透率）+产能释放"
+        valuation_method: "DCF"
+        data_tier: "Tier 1（财报直接披露）"
+
+      business_2:
+        name: "能源存储"
+        revenue_2025: "$10.5B"
+        revenue_share: "11%"
+        maturity: "成长期"
+        growth_drivers: "公用事业需求+IRA补贴"
+        valuation_method: "收入倍数（6-8x P/S）"
+        data_tier: "Tier 1（财报直接披露）"
+
+      business_3:
+        name: "服务/软件（FSD订阅+保险）"
+        revenue_2025: "$6.7B"
+        revenue_share: "7%"
+        maturity: "成长期"
+        growth_drivers: "FSD订阅渗透率提升"
+        valuation_method: "SaaS倍数（10-15x P/S）"
+        data_tier: "Tier 2（可推算）"
+        calculation: |
+          FSD订阅收入 = $99/月 × 600K用户 × 12月 = $713M/年
+          保险收入 = 估算$1.5B（第三方数据）[Level C]
+          其他服务 = $6.7B - $0.7B - $1.5B = $4.5B
+
+      business_4:
+        name: "Robotaxi（期权）"
+        revenue_2025: "$0"
+        revenue_share: "0%"
+        maturity: "早期/Pre-revenue"
+        growth_drivers: "FSD L4实现 + 监管批准"
+        valuation_method: "rNPV（概率加权折现）"
+        data_tier: "Tier 3（完全估算）"
+        calculation: |
+          Milestone 1: FSD v15实现L4（2027，概率40%）
+          Milestone 2: 获得首城市批准（2028，概率60%）
+          Milestone 3: Cybercab量产（2028，概率70%）
+          Milestone 4: 100K车队部署（2030，概率50%）
+          综合成功概率: 40% × 60% × 70% × 50% = 8.4%
+          2030E收入（成功情景）: $10B
+          rNPV = $10B × 8.4% / (1+15%)^5 = $418M
+
+      business_5:
+        name: "Optimus（期权）"
+        revenue_2025: "$0"
+        revenue_share: "0%"
+        maturity: "早期/Pre-revenue"
+        growth_drivers: "技术突破 + 制造规模化"
+        valuation_method: "Black-Scholes期权定价"
+        data_tier: "Tier 3（完全估算）"
+        calculation: |
+          TAM（人形机器人）: $10T（Musk估算）[Level D]
+          Tesla潜在份额: 5-10%（假设）
+          时间线: 2030年商业化
+          成功概率: <10%（技术+商业双重不确定）
+          期权价值: $5-20B（波动率极高）
+
+    synergies:
+      synergy_1:
+        from: "汽车"
+        to: "能源"
+        type: "品牌溢出"
+        mechanism: "Tesla汽车品牌提升能源产品认知度和溢价能力"
+        quantification: "能源产品溢价10% vs 竞品 = $1B收入 × 10% × 30% NI率 × 30x P/E = $900M"
+
+      synergy_2:
+        from: "汽车"
+        to: "FSD"
+        type: "数据飞轮"
+        mechanism: "6M+车队行驶数据训练FSD算法"
+        quantification: "难以精确量化，但体现为vs竞争对手的技术差距"
+        value_range: "$5-20B（基于竞争优势估算）"
+
+      synergy_3:
+        from: "Robotaxi"
+        to: "汽车"
+        type: "蚕食效应"
+        mechanism: "Robotaxi降低私家车保有需求"
+        quantification: "每部署1辆Robotaxi替代5辆私家车需求 → 负$10B（长期）"
+        confidence: "低（时间线不确定）"
+
+    sotp_summary:
+      base_sotp_no_synergy: "$227/股"
+      synergy_adjustment: "+$5-15/股（品牌+数据 - 蚁食）"
+      sotp_with_synergy: "$232-242/股"
+
+  amazon:
+    description: "Amazon三大业务拆解（预留）"
+    note: "阶段3中用于验证框架通用性"
+
+    business_preview:
+      - name: "零售（North America + International）"
+        maturity: "成熟期"
+        valuation: "DCF"
+      - name: "AWS"
+        maturity: "成长期"
+        valuation: "收入倍数（8-12x）"
+      - name: "广告"
+        maturity: "高成长期"
+        valuation: "收入倍数（15-25x）"
+      - name: "Prime订阅"
+        maturity: "成熟期"
+        valuation: "SaaS倍数"
+      - name: "物流服务（3P卖家）"
+        maturity: "成长期"
+        valuation: "EBITDA倍数"
+
+---
+# ==========================================
+# 第八部分：使用指南
+# ==========================================
+
+usage_guide:
+  when_to_use:
+    scenario_1: "公司有多个独立业务分部（如Tesla、Amazon、Alphabet）"
+    scenario_2: "财报合并披露掩盖了关键业务表现（如FSD隐藏在Services中）"
+    scenario_3: "不同业务处于不同生命周期，整体P/E不合理"
+    scenario_4: "需要SOTP估值来识别被低估/高估的业务"
+
+  when_not_to_use:
+    scenario_1: "单一业务公司（如纯SaaS公司、单一产品公司）"
+    scenario_2: "业务高度整合且难以拆分（如品牌消费品的不同SKU）"
+    scenario_3: "缺乏基础财务数据（未上市公司、数据不透明）"
+
+  workflow:
+    step_1: "执行Phase 1: 业务识别（读取10-K + 经济实质分析）"
+    step_2: "执行Phase 2: 财务拆分（Tier 1→2→3逐层处理）"
+    step_3: "执行Phase 3: 增长特征识别（驱动因素+约束）"
+    step_4: "执行Phase 4: 协同效应分析（正负协同量化）"
+    step_5: "执行Phase 5: 质量检查（5项强制检查）"
+    step_6: "输出标准化文件（表格+CSV+YAML+报告）"
+    step_7: "进入估值阶段（调用weighted_valuation_engine_v1）"
+
+---
+# ==========================================
+# 版本历史
+# ==========================================
+
+version_history:
+  v1_0:
+    date: "2026-02-02"
+    changes:
+      - "初始版本"
+      - "三阶段业务识别协议（财报→经济实质→属性标注）"
+      - "Tier 1-3财务拆分系统"
+      - "增长特征识别框架"
+      - "协同效应量化方法"
+      - "质量控制清单"
+      - "Tesla完整案例"
+      - "Amazon案例预留"
+    design_source: "Tesla报告实战经验 + 框架泛化需求"

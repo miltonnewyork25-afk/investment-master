@@ -1,0 +1,378 @@
+# AI New Entrant Threat v1.0
+# AI新进入者威胁分析
+# 创建日期: 2026-02-02
+
+version: "1.0"
+created: "2026-02-02"
+
+metadata:
+  skill_id: "ai_assessment.new_entrant_threat_v1.0"
+  name: "AI新进入者威胁分析"
+  purpose: "识别和评估AI原生竞争者对传统公司的威胁"
+
+# ═══════════════════════════════════════════════════════════════
+# 新进入者类型
+# ═══════════════════════════════════════════════════════════════
+
+new_entrant_types:
+
+  ai_native_startups:
+    name: "AI原生创业公司"
+    description: "从零开始用AI构建的新公司"
+
+    characteristics:
+      advantages:
+        - "无历史包袱/技术债务"
+        - "AI原生架构设计"
+        - "快速迭代能力"
+        - "单位经济可能更优"
+        - "吸引AI人才"
+
+      disadvantages:
+        - "缺乏客户基础"
+        - "缺乏品牌信任"
+        - "资金有限"
+        - "销售渠道弱"
+        - "可能不盈利"
+
+    threat_assessment:
+      high_threat_when:
+        - "获得大额融资（>$50M）"
+        - "有知名AI团队"
+        - "增长速度快"
+        - "产品差异化明显"
+        - "已获得知名客户"
+
+      low_threat_when:
+        - "融资有限"
+        - "增长缓慢"
+        - "差异化不明显"
+        - "团队背景一般"
+
+    tracking_sources:
+      - "Crunchbase融资数据"
+      - "PitchBook估值"
+      - "YC/a16z/Sequoia投资组合"
+      - "Product Hunt热度"
+      - "LinkedIn团队变化"
+
+  big_tech_expansion:
+    name: "科技巨头扩张"
+    description: "FAANG等巨头利用AI进入新领域"
+
+    characteristics:
+      advantages:
+        - "资源充足"
+        - "AI人才密集"
+        - "分发渠道强"
+        - "可亏损获客"
+        - "品牌信任"
+        - "数据优势"
+
+      disadvantages:
+        - "组织惯性"
+        - "聚焦度低"
+        - "监管审查"
+        - "内部政治"
+
+    threat_assessment:
+      high_threat_when:
+        - "明确宣布进入该领域"
+        - "有相关收购"
+        - "有专门团队"
+        - "有产品发布"
+
+      low_threat_when:
+        - "只是试探性投入"
+        - "非核心战略"
+        - "历史上该领域失败"
+
+    key_players:
+      microsoft:
+        ai_strategy: "OpenAI合作+Copilot全面渗透"
+        expansion_areas: ["企业软件", "开发工具", "搜索"]
+
+      google:
+        ai_strategy: "Gemini+全产品AI化"
+        expansion_areas: ["搜索", "云服务", "消费应用"]
+
+      amazon:
+        ai_strategy: "Bedrock+AWS AI服务"
+        expansion_areas: ["云服务", "电商", "Alexa"]
+
+      meta:
+        ai_strategy: "Llama开源+产品AI化"
+        expansion_areas: ["社交", "广告", "元宇宙"]
+
+      apple:
+        ai_strategy: "设备端AI+Apple Intelligence"
+        expansion_areas: ["设备体验", "服务"]
+
+  incumbent_pivot:
+    name: "传统竞争者AI转型"
+    description: "同行业的传统公司成功AI转型"
+
+    characteristics:
+      advantages:
+        - "行业know-how"
+        - "现有客户关系"
+        - "销售渠道"
+        - "品牌信任"
+        - "合规经验"
+
+      disadvantages:
+        - "技术债务"
+        - "组织惯性"
+        - "AI人才不足"
+        - "思维模式旧"
+
+    threat_assessment:
+      high_threat_when:
+        - "AI投入大幅增加"
+        - "关键AI人才加入"
+        - "AI产品获得认可"
+        - "AI收入快速增长"
+
+# ═══════════════════════════════════════════════════════════════
+# 威胁程度评估
+# ═══════════════════════════════════════════════════════════════
+
+threat_level_assessment:
+
+  dimensions:
+
+    product_differentiation:
+      name: "产品差异化"
+      weight: 0.25
+      question: "新进入者的AI产品与incumbent有多大差异？"
+
+      scoring:
+        4_critical: "完全颠覆性产品，重新定义品类"
+        3_high: "显著优于incumbent，明显差异化"
+        2_medium: "略有优势，但差异不大"
+        1_low: "与incumbent类似或更差"
+
+    growth_velocity:
+      name: "增长速度"
+      weight: 0.20
+      question: "新进入者增长有多快？"
+
+      scoring:
+        4_critical: "爆发式增长（>200% YoY）"
+        3_high: "快速增长（100-200% YoY）"
+        2_medium: "稳定增长（50-100% YoY）"
+        1_low: "缓慢增长（<50% YoY）"
+
+    funding_runway:
+      name: "资金实力"
+      weight: 0.15
+      question: "新进入者有多少资金支撑？"
+
+      scoring:
+        4_critical: ">$500M融资或大厂支持"
+        3_high: "$100-500M融资"
+        2_medium: "$20-100M融资"
+        1_low: "<$20M融资"
+
+    team_quality:
+      name: "团队质量"
+      weight: 0.15
+      question: "创始/核心团队背景如何？"
+
+      scoring:
+        4_critical: "顶级AI研究员+成功创业者"
+        3_high: "知名AI公司背景"
+        2_medium: "相关行业经验"
+        1_low: "背景一般"
+
+    customer_traction:
+      name: "客户牵引力"
+      weight: 0.15
+      question: "新进入者获得了什么客户？"
+
+      scoring:
+        4_critical: "获得Fortune 500大客户"
+        3_high: "有付费客户且快速增长"
+        2_medium: "有早期客户/试点"
+        1_low: "无实质客户"
+
+    market_timing:
+      name: "市场时机"
+      weight: 0.10
+      question: "市场准备好接受AI方案了吗？"
+
+      scoring:
+        4_critical: "市场需求爆发"
+        3_high: "早期采用者活跃"
+        2_medium: "市场开始关注"
+        1_low: "市场尚未准备好"
+
+  threat_level_formula: |
+    威胁分数 = Σ(维度分数 × 权重) / 4
+
+    威胁等级判定：
+    - 0.75-1.00: Critical（极高威胁）
+    - 0.50-0.75: High（高威胁）
+    - 0.25-0.50: Medium（中等威胁）
+    - 0.00-0.25: Low（低威胁）
+
+# ═══════════════════════════════════════════════════════════════
+# 威胁到达时间评估
+# ═══════════════════════════════════════════════════════════════
+
+time_to_threat:
+
+  imminent:
+    timeframe: "<1年"
+    indicators:
+      - "新进入者产品已上市"
+      - "已有客户流失到竞争者"
+      - "定价战已开始"
+      - "媒体广泛报道竞争"
+
+  near_term:
+    timeframe: "1-2年"
+    indicators:
+      - "新进入者产品即将上市"
+      - "早期采用者开始尝试"
+      - "行业会议热议新方案"
+      - "分析师开始覆盖"
+
+  medium_term:
+    timeframe: "2-5年"
+    indicators:
+      - "技术路线明确但产品未成熟"
+      - "融资活跃但商业化早期"
+      - "用例验证中"
+
+  long_term:
+    timeframe: ">5年"
+    indicators:
+      - "技术尚不成熟"
+      - "用例不清晰"
+      - "监管障碍"
+      - "市场接受度低"
+
+# ═══════════════════════════════════════════════════════════════
+# 传统公司应对策略
+# ═══════════════════════════════════════════════════════════════
+
+response_strategies:
+
+  build:
+    name: "自建AI能力"
+    description: "投资建设内部AI能力"
+    suitable_when:
+      - "有资源/人才基础"
+      - "AI与核心业务深度相关"
+      - "时间窗口足够"
+    examples:
+      - "Salesforce建设Einstein"
+      - "Adobe建设Firefly"
+
+  buy:
+    name: "收购AI公司"
+    description: "通过并购获得AI能力"
+    suitable_when:
+      - "需要快速获得能力"
+      - "有收购资金"
+      - "有整合能力"
+    examples:
+      - "Microsoft收购Nuance"
+      - "ServiceNow收购Element AI"
+
+  partner:
+    name: "战略合作"
+    description: "与AI公司建立合作"
+    suitable_when:
+      - "无法自建或收购"
+      - "需要快速响应"
+      - "AI非核心竞争力"
+    examples:
+      - "Bain与OpenAI合作"
+      - "Morgan Stanley与OpenAI合作"
+
+  defend:
+    name: "防御策略"
+    description: "利用现有优势防御"
+    suitable_when:
+      - "有强大现有护城河"
+      - "AI威胁尚未成熟"
+      - "监管保护"
+    tactics:
+      - "强化客户关系"
+      - "提高切换成本"
+      - "利用监管优势"
+
+  pivot:
+    name: "战略转型"
+    description: "根本性业务转型"
+    suitable_when:
+      - "原有业务面临结构性威胁"
+      - "有转型资源"
+      - "有新的增长路径"
+    examples:
+      - "IBM从硬件到云服务"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## AI新进入者威胁分析
+
+  ### 威胁来源清单
+
+  | 类型 | 具体威胁者 | 威胁等级 | 时间框架 |
+  |------|-----------|---------|---------|
+  | AI创业公司 | [公司名] | Critical/High/Medium/Low | |
+  | 科技巨头 | [公司名] | Critical/High/Medium/Low | |
+  | 竞争者转型 | [公司名] | Critical/High/Medium/Low | |
+
+  ### 主要威胁详细分析
+
+  **威胁者**: [公司名]
+  **威胁类型**: [类型]
+
+  | 评估维度 | 评分(1-4) | 说明 |
+  |---------|----------|------|
+  | 产品差异化 | X | |
+  | 增长速度 | X | |
+  | 资金实力 | X | |
+  | 团队质量 | X | |
+  | 客户牵引 | X | |
+  | 市场时机 | X | |
+  | **威胁分数** | **X.XX** | |
+
+  **威胁等级**: [等级]
+  **威胁到达时间**: [时间框架]
+
+  ### 传统公司应对策略评估
+
+  | 策略 | 可行性 | 建议优先级 |
+  |------|--------|-----------|
+  | 自建 | 高/中/低 | P0/P1/P2 |
+  | 收购 | 高/中/低 | P0/P1/P2 |
+  | 合作 | 高/中/低 | P0/P1/P2 |
+  | 防御 | 高/中/低 | P0/P1/P2 |
+
+  **建议策略**: [策略]
+  **理由**: [说明]
+
+output_contract:
+  ai_native_threats:
+    type: "array"
+    items:
+      company: "string"
+      threat_level: "enum[critical|high|medium|low]"
+      threat_score: "float 0-1"
+      time_to_threat: "string"
+  threat_level:
+    type: "enum"
+    values: ["critical", "high", "medium", "low"]
+  time_to_threat:
+    type: "enum"
+    values: ["imminent", "near_term", "medium_term", "long_term"]
+  recommended_response:
+    type: "enum"
+    values: ["build", "buy", "partner", "defend", "pivot"]

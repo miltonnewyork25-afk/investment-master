@@ -1,0 +1,301 @@
+# AI Commercial Stage v1.0
+# AI商业兑现阶段 (S轴)
+# 创建日期: 2026-02-02
+
+version: "1.0"
+created: "2026-02-02"
+
+# ═══════════════════════════════════════════════════════════════
+# S轴定义：商业兑现阶段
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "ai_assessment.commercial_stage_v1.0"
+  name: "AI商业兑现阶段"
+  purpose: "评估公司AI从叙事到财务兑现的进展"
+
+commercial_stages:
+
+  S0_narrative_optionality:
+    name: "叙事期权期"
+    code: "S0"
+    description: "AI宣传与试验多，生产化证据弱"
+
+    characteristics:
+      - "管理层频繁提及AI战略"
+      - "有POC/试点项目"
+      - "无法量化AI贡献"
+      - "AI投入被视为'战略投资'"
+
+    financial_indicators:
+      revenue: "无AI相关收入"
+      cost: "AI成本被归入研发"
+      margin_impact: "无可观测影响"
+
+    typical_company_behavior:
+      - "在业绩会上讨论AI愿景"
+      - "宣布AI合作伙伴关系"
+      - "展示AI demo"
+      - "无具体财务承诺"
+
+    evidence_indicators:
+      positive:
+        - "有AI团队/投入"
+        - "有试点项目"
+      negative:
+        - "无生产化证据"
+        - "无财务影响"
+
+    investment_signal: "警惕——可能是AI炒作"
+
+  S1_pilot_diffusion:
+    name: "试点扩散期"
+    code: "S1"
+    description: "多个POC项目，但缺乏统一治理与规模化指标"
+
+    characteristics:
+      - "多个部门有AI试点"
+      - "缺乏统一AI治理"
+      - "无统一的成功指标"
+      - "规模化路径不清晰"
+
+    financial_indicators:
+      revenue: "极少或无"
+      cost: "分散的AI投入"
+      margin_impact: "不可量化"
+
+    typical_company_behavior:
+      - "各部门自行探索AI"
+      - "有多个AI供应商"
+      - "AI成功案例零散"
+      - "开始讨论AI治理"
+
+    evidence_indicators:
+      positive:
+        - "多个试点项目"
+        - "有一些成功案例"
+      negative:
+        - "缺乏规模化路径"
+        - "治理不统一"
+
+    investment_signal: "中性——正在探索但未证明"
+
+  S2_production_embedding:
+    name: "生产嵌入期"
+    code: "S2"
+    description: "AI进入关键流程/产品，但影响有限或不可稳定验收"
+
+    characteristics:
+      - "AI进入生产系统"
+      - "有初步效率提升"
+      - "影响范围有限"
+      - "开始建立AI治理"
+
+    financial_indicators:
+      revenue: "AI相关收入<5%"
+      cost: "开始看到效率改善"
+      margin_impact: "小幅积极但不稳定"
+
+    typical_company_behavior:
+      - "发布AI产品功能"
+      - "披露早期AI指标"
+      - "建立AI卓越中心"
+      - "开始AI相关招聘"
+
+    evidence_indicators:
+      positive:
+        - "AI功能已上线"
+        - "有用户/客户使用"
+        - "初步效率数据"
+      negative:
+        - "收入贡献有限"
+        - "可复制性未证明"
+
+    investment_signal: "弱正面——进入实质阶段"
+
+  S3_system_restructuring:
+    name: "系统重构期"
+    code: "S3"
+    description: "工作流/系统架构被AI改写，治理/验证成体系"
+
+    characteristics:
+      - "AI重构核心流程"
+      - "有完整AI治理体系"
+      - "效率提升可量化"
+      - "AI成为竞争优势"
+
+    financial_indicators:
+      revenue: "AI相关收入5-15%"
+      cost: "明确的成本节约"
+      margin_impact: "可观测的正向影响"
+
+    typical_company_behavior:
+      - "披露AI财务影响"
+      - "AI成为产品差异化"
+      - "有AI相关KPI"
+      - "AI治理成熟"
+
+    evidence_indicators:
+      positive:
+        - "财报披露AI影响"
+        - "有系统性的AI效率数据"
+        - "客户因AI选择产品"
+      negative:
+        - "竞争对手快速追赶"
+
+    investment_signal: "正面——AI进入价值创造"
+
+  S4_financial_realization:
+    name: "财务兑现期"
+    code: "S4"
+    description: "AI对收入/毛利/效率/成本的影响在财报与运营指标上可见"
+
+    characteristics:
+      - "AI收入贡献显著"
+      - "AI成本节约可量化"
+      - "利润率因AI改善"
+      - "AI成为核心竞争力"
+
+    financial_indicators:
+      revenue: "AI相关收入>15%或增量收入>10%"
+      cost: "运营成本因AI下降>5%"
+      margin_impact: "毛利率/营业利润率因AI提升"
+
+    typical_company_behavior:
+      - "单独披露AI收入"
+      - "给出AI相关guidance"
+      - "AI是投资者关注焦点"
+      - "分析师覆盖AI贡献"
+
+    evidence_indicators:
+      positive:
+        - "财报有AI分部数据"
+        - "管理层给AI guidance"
+        - "第三方分析师认可"
+      negative:
+        - "AI增长放缓"
+        - "竞争加剧"
+
+    investment_signal: "强正面——AI已证明价值"
+
+  S5_boundary_rewriting:
+    name: "边界重写期"
+    code: "S5"
+    description: "平台化收税、标准制定、生态锁定，或相反被去中介化"
+
+    characteristics:
+      positive_case:
+        - "成为AI平台/基础设施"
+        - "其他公司依赖其AI能力"
+        - "制定行业AI标准"
+        - "形成AI生态锁定"
+
+      negative_case:
+        - "被AI平台去中介化"
+        - "价值链位置被重新定义"
+        - "利润池向AI平台转移"
+
+    financial_indicators:
+      positive:
+        revenue: "AI平台收入快速增长"
+        margin: "平台型高毛利"
+        moat: "网络效应/数据飞轮形成"
+
+      negative:
+        revenue: "核心收入被侵蚀"
+        margin: "毛利率被压缩"
+        moat: "传统护城河被绕过"
+
+    evidence_indicators:
+      positive:
+        - "第三方开发者/客户依赖"
+        - "API收入快速增长"
+        - "竞争对手被迫合作"
+      negative:
+        - "收入被新进入者蚕食"
+        - "客户流向AI原生竞争者"
+
+    investment_signal: |
+      S5+: 极强正面——可能是长期赢家
+      S5-: 极强负面——面临结构性风险
+
+# ═══════════════════════════════════════════════════════════════
+# S轴评估方法
+# ═══════════════════════════════════════════════════════════════
+
+assessment_methodology:
+
+  step_1_revenue_check:
+    question: "AI是否产生可追踪的收入贡献？"
+    if_no: "S0或S1"
+    if_yes: "S2+"
+
+  step_2_production_check:
+    question: "AI是否进入生产系统？"
+    if_no: "S0"
+    if_yes: "S1+"
+
+  step_3_scale_check:
+    question: "AI影响是否规模化？"
+    if_no: "S1或S2"
+    if_yes: "S3+"
+
+  step_4_financial_check:
+    question: "AI影响是否反映在财报？"
+    if_no: "S3或以下"
+    if_yes: "S4或S5"
+
+  step_5_boundary_check:
+    question: "AI是否改变了价值链位置？"
+    if_positive: "S5+"
+    if_negative: "S5-"
+    if_neither: "S4"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## S轴评估（商业兑现阶段）
+
+  ### 财务指标检查
+
+  | 指标 | 当前状态 | AI贡献 | 证据等级 |
+  |------|---------|--------|---------|
+  | AI相关收入 | $XX / XX% | 可追踪/不可追踪 | A/B/C |
+  | 成本节约 | $XX / XX% | 可量化/不可量化 | A/B/C |
+  | 利润率影响 | +/-XXbps | AI相关/不相关 | A/B/C |
+
+  ### S阶段判定
+
+  **S阶段**: S[X]
+  **置信度**: XX%
+  **关键证据**: [列出]
+
+  ### 边界变化评估
+
+  **价值链位置变化**: 正向/负向/无变化
+  **具体表现**: [描述]
+
+  ### 升级路径
+
+  **当前**: S[X]
+  **下一级**: S[X+1]
+  **升级所需**: [具体条件]
+
+output_contract:
+  S_stage:
+    type: "enum"
+    values: ["S0", "S1", "S2", "S3", "S4", "S5+", "S5-", "unknown"]
+  confidence:
+    type: "float"
+    range: "0-1"
+  evidence_grade:
+    type: "enum"
+    values: ["A", "B", "C", "unknown"]
+  financial_indicators:
+    type: "object"
+    schema:
+      ai_revenue_pct: "float"
+      cost_savings_pct: "float"
+      margin_impact_bps: "int"

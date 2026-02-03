@@ -1,0 +1,671 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# Conglomerate Risk Framework v1.0
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Purpose: 识别和量化复合业务公司特有的风险，评估conglomerate discount合理性
+#
+# Design Philosophy:
+#   - Conglomerate ≠ 简单的业务组合，有系统性风险
+#   - 市场对多元化的折价是有理性基础的
+#   - 风险来源: 复杂度成本 + 资本错配 + 信息不对称 + 管理注意力
+#   - 有些conglomerate成功（BRK），有些失败（GE），需要区分
+#
+# Inheritance:
+#   - 依赖 business_decomposition_protocol_v1.yaml
+#   - 与 business_synergy_analysis_v1.yaml 互补（正vs负）
+#   - 被 weighted_valuation_engine_v1.yaml 调用（折价计算）
+#
+# Examples:
+#   - Tesla: 5业务跨度大，管理注意力分散，15-25%折价
+#   - GE (历史): 金融+工业混合，复杂度失控，40%折价
+#   - Berkshire: 最小复杂度，资本配置优秀，15%折价（仅holding structure）
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+skill_metadata:
+  name: "Conglomerate Risk Framework"
+  version: "1.0"
+  category: "universal"
+  author: "Investment Master Agent v19.12"
+  created: "2026-02-02"
+
+  dependencies:
+    - skill: "business_decomposition_protocol_v1.yaml"
+      reason: "需要业务拆分结果"
+    - skill: "business_synergy_analysis_v1.yaml"
+      reason: "互补分析（正协同 vs 风险）"
+
+  used_by:
+    - "weighted_valuation_engine_v1.yaml"
+    - "hybrid_business_master_framework_v1.yaml"
+
+  applicable_companies:
+    - type: "multi_business_unrelated"
+      examples: ["GE（历史）", "3M", "HON"]
+    - type: "multi_business_related"
+      examples: ["AAPL", "GOOGL", "AMZN", "TSLA"]
+    - type: "pure_conglomerate"
+      examples: ["BRK.A", "Leucadia"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 1: Conglomerate风险分类
+# ═══════════════════════════════════════════════════════════════════════════════
+
+risk_taxonomy:
+
+  risk_1_management_attention:
+    description: "管理注意力分散 - CEO/高管时间被多业务稀释"
+
+    mechanism:
+      single_business: "CEO 100%时间专注一个业务，深度理解每个细节"
+      conglomerate: "CEO时间被N个业务瓜分，每个业务仅X%时间"
+
+    evidence_of_distraction:
+      ceo_time_allocation:
+        measurement: "财报电话会议中各业务讨论时间占比"
+        red_flag: "没有业务占比>50%（注意力高度分散）"
+
+      strategic_inconsistency:
+        measurement: "战略优先级频繁变化"
+        red_flag: "每年重点业务改变，前一年重点本年被边缘化"
+
+      execution_delay:
+        measurement: "产品/项目时间线滑坡"
+        red_flag: "多个业务同时出现延迟（资源/注意力不足）"
+
+      key_person_risk:
+        measurement: "CEO离开后业务表现"
+        red_flag: "CEO=唯一战略家，无业务单元自主权"
+
+    examples:
+      tesla_musk:
+        distraction_level: "极高"
+        evidence:
+          - "Musk同时管理Tesla/SpaceX/X/Neuralink/xAI"
+          - "Tesla有效时间估计40%（vs 100%专注CEO）"
+          - "FSD时间线滑坡3年（2017承诺→2020→2023→2026仍L4）"
+          - "Semi延迟4年（2019承诺→2023开始交付）"
+          - "Cybertruck延迟3年"
+        quantification: |
+          对比: Jeff Bezos在Amazon专注期（1994-2020）
+          → Amazon执行高效，时间线准确
+          估算Tesla管理注意力折价: 15-25%
+
+      ge_immelt:
+        distraction_level: "高"
+        evidence:
+          - "GE金融+航空+医疗+能源+塑料+家电等>10业务"
+          - "CEO无法深入理解所有业务细节"
+          - "资本配置错误（2008金融危机暴露）"
+        outcome: "2000-2017股价-30%，最终拆分"
+
+      berkshire_buffett:
+        distraction_level: "低"
+        mitigation:
+          - "子公司充分授权，CEO不干预日常运营"
+          - "Buffett专注资本配置，不管运营"
+          - "各业务有专业管理团队"
+        result: "管理注意力风险最小化"
+
+    quantification:
+      formula: |
+        管理注意力折价 = f(CEO并行业务数, 业务相关度, 执行延迟)
+
+        基准:
+        - 1个业务: 0%折价
+        - 2-3个相关业务: 5-10%折价
+        - 4-5个跨度大业务: 15-25%折价
+        - >5个不相关业务: 25-40%折价
+
+      adjustments:
+        授权程度高: "折价-5pp（如BRK）"
+        CEO超人类精力: "折价-5pp（极少见）"
+        执行持续延迟: "折价+10pp"
+
+  risk_2_operational_complexity:
+    description: "运营复杂度 - 多业务管理成本超过线性增长"
+
+    mechanism:
+      economies_of_scale: "单业务: 规模↑ → 单位成本↓"
+      diseconomies_of_scope: "多业务: 业务数↑ → 管理成本↑（超线性）"
+
+    cost_components:
+      corporate_overhead:
+        description: "总部管理成本"
+        typical_range: "1-3% of revenue（单业务）, 2-5%（conglomerate）"
+        examples:
+          ge: "SG&A 18% of revenue（vs 纯play平均12%）"
+          berkshire: "0.1% of revenue（最低，极简总部）"
+
+      coordination_cost:
+        description: "跨业务协调成本"
+        manifestation:
+          - "会议增加（跨部门对齐）"
+          - "决策周期延长（需要总部审批）"
+          - "内部摩擦（资源争夺）"
+
+      information_asymmetry:
+        description: "信息传递损耗"
+        mechanism: |
+          业务单元 → 中层管理 → 高管 → CEO
+          每层信息过滤/美化，CEO难以获得真实情况
+
+      compliance_complexity:
+        description: "跨行业合规成本"
+        example: "GE金融+工业 → 同时受金融监管+工业监管，成本高昂"
+
+    measurement:
+      sga_ratio:
+        formula: "SG&A / Revenue"
+        benchmark: "纯play竞争对手平均"
+        red_flag: ">纯play +3pp"
+
+      decision_velocity:
+        measurement: "战略决策到执行时间"
+        benchmark: "纯play公司"
+        red_flag: "决策周期>2×纯play"
+
+      organizational_layers:
+        measurement: "CEO到一线员工层级数"
+        benchmark: "纯play通常≤5层"
+        red_flag: ">7层（信息损耗严重）"
+
+    quantification:
+      formula: |
+        复杂度成本 = (实际SG&A% - 纯play平均%) × Revenue
+
+      example_ge:
+        actual_sga: "18%"
+        pureplay_avg: "12%"
+        revenue: "$120B"
+        complexity_cost: "6% × $120B = $7.2B/年"
+        npv_cost: "$7.2B × 10 = $72B（复杂度价值损失）"
+
+  risk_3_capital_misallocation:
+    description: "资本错配 - 将资金浪费在低回报业务"
+
+    mechanism:
+      optimal: "资本流向ROIC最高的业务"
+      reality: "资本被'公平'分配，或流向CEO偏好的业务"
+
+    manifestation:
+      cross_subsidy:
+        description: "高利润业务补贴低利润业务"
+        problem: "低回报业务本应被淘汰，但因内部补贴存活"
+        example: |
+          GE金融(高ROIC) → 补贴 → GE家电(低ROIC)
+          结果: 家电业务长期亏损，拖累整体ROIC
+
+      empire_building:
+        description: "管理层为扩大权力而收购"
+        problem: "收购不是为了协同，而是为了做大规模"
+        example: |
+          GE在Immelt时期多次并购
+          → 并购溢价高
+          → 整合失败
+          → 价值摧毁
+
+      pet_project:
+        description: "CEO情怀项目吸走资金"
+        problem: "CEO个人喜好>股东回报"
+        examples:
+          google_other_bets: "Waymo/Verily等年亏损$5-10B，ROI不明"
+          tesla_optimus: "年投$3-5B，成功概率20%，机会成本高"
+
+      sunk_cost_fallacy:
+        description: "对失败业务追加投资"
+        problem: "已投入大量资金，不愿认输"
+        example: "GE在石油/天然气业务亏损后继续投入"
+
+    detection_methods:
+      roic_dispersion:
+        metric: "各业务ROIC标准差"
+        red_flag: "有业务ROIC<WACC但仍获得资本投入"
+        interpretation: "资本未优化配置"
+
+      capex_allocation_vs_growth:
+        metric: "CapEx占比 vs 业务增长率"
+        optimal: "高增长业务获得更多CapEx"
+        red_flag: "低增长业务获得不成比例的CapEx"
+
+      acquisition_track_record:
+        metric: "并购ROIC vs 有机投资ROIC"
+        red_flag: "并购ROIC<10%，但仍持续并购"
+
+    quantification:
+      formula: |
+        资本错配成本 = Σ[(错配业务投入资本) × (WACC - 业务ROIC)]
+
+      example_ge:
+        ge_financial_crisis:
+          capital_in_finance: "$500B"
+          finance_roic: "-10%（2008危机）"
+          wacc: "8%"
+          misallocation_cost: "$500B × (8% - (-10%)) = $90B/年损失"
+
+  risk_4_information_opacity:
+    description: "信息不透明 - 投资者难以理解多业务组合"
+
+    mechanism:
+      single_business: "财务清晰，投资者易建模"
+      conglomerate: "业务混杂，segment披露有限，估值困难"
+
+    consequences:
+      valuation_uncertainty:
+        description: "估值区间大 → 风险溢价↑"
+        example: |
+          纯play EV公司: 估值争议±20%
+          Tesla（5业务）: 估值争议±100%（$200-800/股）
+
+      analyst_coverage:
+        description: "分析师难以覆盖所有业务"
+        consequence: "覆盖度↓ → 流动性↓ → 折价↑"
+
+      hidden_problems:
+        description: "亏损业务可被隐藏"
+        mechanism: "合并报表掩盖单业务问题"
+        example: "GE金融风险在2008前被工业业务掩盖"
+
+    measurement:
+      segment_disclosure_quality:
+        best: "每业务披露P&L/Balance Sheet/ROIC"
+        good: "每业务披露Revenue/Gross Margin"
+        poor: "只有合并报表，无segment detail"
+
+      analyst_coverage_ratio:
+        formula: "覆盖分析师数 / 业务数"
+        benchmark: "纯play平均10分析师/业务"
+        red_flag: "<5分析师/业务"
+
+      valuation_dispersion:
+        metric: "分析师目标价标准差 / 平均价"
+        benchmark: "纯play通常<30%"
+        red_flag: ">50%（高度不确定）"
+
+    quantification:
+      illiquidity_discount: "5-10%（分析师覆盖不足）"
+      complexity_discount: "5-15%（估值难度高）"
+
+  risk_5_strategy_drift:
+    description: "战略漂移 - 失去核心focus，追逐热点"
+
+    mechanism:
+      focused_company: "明确的核心业务，战略连续性"
+      conglomerate: "容易被新热点分心，战略摇摆"
+
+    examples:
+      ge_strategy_drift:
+        2000s: "重点金融业务（高增长）"
+        2008: "金融危机，战略转向工业"
+        2010s: "数字化/工业互联网（失败）"
+        2015: "剥离金融，回归工业"
+        2017: "拆分重组"
+        result: "战略不连续，执行力低下"
+
+      tesla_focus_question:
+        core: "汽车制造？能源？AI？机器人？"
+        risk: "每个都做 = 每个都不精？"
+        counter_argument: "第一性原理整合（可持续能源）"
+
+    detection:
+      acquisition_frequency:
+        red_flag: ">2次/年非核心业务并购"
+
+      narrative_change:
+        red_flag: "年报战略重点每年变化"
+
+      r&d_dispersion:
+        metric: "R&D分散度（不同业务R&D占比）"
+        red_flag: "无业务R&D占比>40%（高度分散）"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 2: Conglomerate折价方法论
+# ═══════════════════════════════════════════════════════════════════════════════
+
+conglomerate_discount_methodology:
+
+  academic_foundation:
+    paper: "The Diversification Discount: Evidence from Multiple Measures"
+    authors: "Berger & Ofek (1995)"
+    finding: "多元化公司平均折价13-15%"
+
+    mechanism:
+      - "资本错配（低ROIC业务获得过多资本）"
+      - "代理成本（管理层追求规模而非回报）"
+      - "信息不对称（投资者无法准确估值）"
+
+  discount_calculation_methods:
+
+    method_1_comparable_valuation:
+      description: "对比纯play公司估值倍数"
+
+      steps:
+        step_1: "识别各业务的纯play对标公司"
+        step_2: "计算纯play平均估值倍数（P/E, P/S, EV/EBITDA）"
+        step_3: "对各业务应用纯play倍数 → SOTP价值"
+        step_4: "对比实际市值与SOTP"
+        step_5: "折价% = (实际市值 - SOTP) / SOTP"
+
+      example_tesla:
+        sotp_calculation:
+          automotive: "$300B (DCF, 纯EV公司8% WACC)"
+          energy: "$40B (纯储能公司15x P/E)"
+          services: "$25B (5x P/S)"
+          fsd: "$50B (rNPV)"
+          robotaxi: "$0.87B (rNPV)"
+          optimus: "$87.7B (Black-Scholes)"
+          sotp_sum: "$503.6B"
+
+        actual_market_cap: "$227B（2026-02-02）"
+
+        discount_calculation: |
+          折价 = ($227B - $503.6B) / $503.6B = -55%
+
+        interpretation: |
+          市场对Tesla应用55%折价，原因:
+          - 管理注意力分散（Musk跨5家公司）: -20%
+          - 期权业务不确定性（Robotaxi/Optimus）: -20%
+          - Conglomerate复杂度: -15%
+
+    method_2_excess_value:
+      description: "Berger & Ofek (1995)方法"
+
+      formula: |
+        Excess Value = ln(实际市值 / Imputed Value)
+
+        Imputed Value = Σ[业务i资产 × (行业平均市值/资产比)]
+
+      interpretation:
+        >0: "溢价（少见）"
+        0: "无折价/溢价"
+        <0: "折价（常见）"
+
+    method_3_parts_premium:
+      description: "拆分后价值提升"
+
+      historical_evidence:
+        jnj_spinoff_2023:
+          pre_spinoff: "$450B（医药+器械+消费品）"
+          post_spinoff: "$425B（JNJ医药/器械$380B + Kenvue消费品$45B）"
+          initial_loss: "-5.5%"
+          long_term: "+15%（拆分后各自专注，估值提升）"
+
+        ge_breakup:
+          peak_2000: "$600B（多业务）"
+          trough_2018: "$80B（-87%）"
+          post_breakup: "$300B合计（GE Aviation/GE Healthcare/GE Vernova）"
+          implication: "复杂度拖累极大"
+
+  discount_framework:
+    description: "根据公司特征估算合理折价"
+
+    variables:
+      business_relatedness:
+        high_relatedness: "业务协同明显（如AAPL生态）→ 折价5-10%"
+        medium_relatedness: "部分协同（如GOOGL）→ 折价10-20%"
+        low_relatedness: "无协同（如BRK）→ 折价15-25%"
+
+      information_transparency:
+        high: "详细segment披露 → 折价-5pp"
+        medium: "基本segment数据 → 折价0pp"
+        low: "合并报表为主 → 折价+5pp"
+
+      management_quality:
+        excellent: "资本配置优秀（如Buffett）→ 折价-10pp"
+        good: "执行可靠 → 折价0pp"
+        poor: "历史失误多 → 折价+10pp"
+
+      complexity_level:
+        low: "2-3业务，子公司自主 → 折价5-10%"
+        medium: "4-5业务，部分集权 → 折价15-20%"
+        high: ">5业务，高度集权 → 折价25-40%"
+
+    formula: |
+      总折价 = 基础折价(业务相关度)
+             + 信息不透明调整
+             + 管理质量调整
+             + 复杂度调整
+
+    examples:
+      berkshire:
+        business_relatedness: "低（保险/铁路/能源独立）"
+        base_discount: "20%"
+        adjustments:
+          transparency: "+0pp（子公司财务清晰）"
+          management: "-10pp（Buffett资本配置大师）"
+          complexity: "-5pp（充分授权，低复杂度）"
+        final_discount: "5-15%"
+        justification: "仅因holding structure，无运营复杂度"
+
+      tesla:
+        business_relatedness: "中（可持续能源主题串联）"
+        base_discount: "15%"
+        adjustments:
+          transparency: "+5pp（Robotaxi/Optimus无披露）"
+          management: "+10pp（Musk注意力分散）"
+          complexity: "+5pp（5业务，跨度大）"
+        final_discount: "35%"
+        actual_discount: "55%（市场更悲观）"
+        gap: "20pp = 期权业务极度不确定性溢价"
+
+      alphabet:
+        business_relatedness: "高（搜索/YouTube/Cloud数据协同）"
+        base_discount: "10%"
+        adjustments:
+          transparency: "+3pp（Other Bets不透明）"
+          management: "+0pp（执行稳定）"
+          complexity: "+2pp（Other Bets拖累）"
+        final_discount: "15%"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 3: 风险缓解策略
+# ═══════════════════════════════════════════════════════════════════════════════
+
+mitigation_strategies:
+
+  strategy_1_decentralization:
+    description: "充分授权子公司，降低管理复杂度"
+
+    best_practice:
+      berkshire_model:
+        - "总部仅20人，零官僚"
+        - "子公司CEO完全自主决策"
+        - "总部只负责资本配置+并购"
+        - "不设跨业务'协同'目标"
+
+    benefits:
+      - "管理注意力风险↓"
+      - "决策速度快"
+      - "创业者文化保留"
+
+    cost:
+      - "难以实现跨业务协同"
+      - "需要极高信任度"
+
+  strategy_2_transparent_disclosure:
+    description: "详细披露各业务财务，降低信息不对称"
+
+    best_practice:
+      amazon_model:
+        - "AWS/Advertising单独披露P&L"
+        - "North America/International retail分开"
+        - "每业务增长驱动因素说明"
+
+    benefits:
+      - "估值不确定性↓"
+      - "分析师覆盖度↑"
+      - "Conglomerate折价-5-10pp"
+
+  strategy_3_portfolio_pruning:
+    description: "定期剥离低回报/非核心业务"
+
+    best_practice:
+      jnj_spinoff:
+        action: "拆分消费品业务（Kenvue）"
+        reason: "增长慢，协同少，拖累估值"
+        result: "专注高利润医药/器械，估值提升"
+
+      ge_breakup:
+        action: "拆分为Aviation/Healthcare/Vernova"
+        result: "各业务专注，管理复杂度↓"
+
+    criteria:
+      - "ROIC<WACC持续3年"
+      - "与核心业务无协同"
+      - "管理注意力占比>10%但贡献<5%收入"
+
+  strategy_4_capital_discipline:
+    description: "严格资本配置纪律，避免帝国建设"
+
+    principles:
+      - "ROIC>WACC+5%才投资"
+      - "定期review低回报业务"
+      - "并购遵循严格ROIC目标"
+      - "CEO薪酬与ROIC挂钩（非规模）"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 4: 执行协议
+# ═══════════════════════════════════════════════════════════════════════════════
+
+execution_protocol:
+
+  phase_1_risk_identification:
+    duration: "15 minutes"
+
+    for_each_risk_type:
+      assess_presence:
+        question: "公司是否存在该风险？"
+        evidence: "列出证据"
+        severity: "高/中/低"
+
+    output: "风险清单（5类风险×严重度）"
+
+  phase_2_discount_calculation:
+    duration: "20 minutes"
+
+    step_1_sotp_baseline:
+      action: "计算SOTP（各业务standalone价值之和）"
+      input: "从business_decomposition输出获取"
+
+    step_2_actual_market_cap:
+      source: "FMP API或实时行情"
+
+    step_3_implied_discount:
+      formula: "(市值 - SOTP) / SOTP"
+
+    step_4_decompose_discount:
+      estimate_components:
+        - "管理注意力: X%"
+        - "复杂度成本: Y%"
+        - "资本错配: Z%"
+        - "信息不透明: W%"
+        - "其他（期权不确定性等）: V%"
+
+      validation: "X+Y+Z+W+V ≈ 总折价"
+
+  phase_3_benchmark_comparison:
+    duration: "10 minutes"
+
+    action: "对比同类conglomerate的折价"
+
+    reference_points:
+      - "Berkshire: 15%折价"
+      - "GE（历史）: 40%折价"
+      - "Alphabet: 15%折价"
+      - "3M: 20%折价"
+
+    output: "公司折价在行业中的相对位置"
+
+  phase_4_scenario_analysis:
+    duration: "15 minutes"
+
+    scenario_1_focus:
+      action: "如果剥离非核心业务"
+      estimated_discount: "折价↓10-20pp"
+
+    scenario_2_complexity_reduce:
+      action: "如果充分授权子公司"
+      estimated_discount: "折价↓5-10pp"
+
+    scenario_3_information_improve:
+      action: "如果详细披露segment数据"
+      estimated_discount: "折价↓5pp"
+
+    output: "折价改善潜力"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 5: 输出模板
+# ═══════════════════════════════════════════════════════════════════════════════
+
+output_templates:
+
+  conglomerate_risk_summary:
+    format: |
+      ## Conglomerate风险评估
+
+      ### 风险清单
+      | 风险类型 | 严重度 | 证据 | 估计折价 |
+      |---------|--------|------|---------|
+      | 管理注意力分散 | 高 | Musk跨5公司，执行延迟 | 20% |
+      | 运营复杂度 | 中 | 5业务跨度大 | 5% |
+      | 资本错配 | 中 | Optimus年投$3-5B，ROI不明 | 5% |
+      | 信息不透明 | 高 | 期权业务无披露 | 5% |
+      | 战略漂移 | 低 | 可持续能源主题连贯 | 0% |
+      | **总计** | | | **35%** |
+
+      ### SOTP vs 市值
+      - **SOTP**: $503.6B
+      - **市值**: $227B
+      - **隐含折价**: 55%
+
+      ### 折价分解
+      - Conglomerate风险: 35%（如上）
+      - 期权不确定性: 20%（Robotaxi/Optimus）
+      - **合计**: 55% ✓
+
+      ### 对标公司
+      | 公司 | 业务数 | 相关度 | 折价 |
+      |------|--------|--------|------|
+      | Berkshire | 10+ | 低 | 15% |
+      | Alphabet | 5 | 高 | 15% |
+      | **Tesla** | **5** | **中** | **55%** |
+      | GE（历史）| 10+ | 低 | 40% |
+
+      **解读**: Tesla折价55%高于常规conglomerate（15-25%），
+      额外20pp来自期权业务极度不确定性
+
+      ### 改善潜力
+      | 行动 | 折价改善 | 可行性 |
+      |------|---------|--------|
+      | Musk专注Tesla（退出X/xAI）| -15pp | 低 |
+      | 剥离Robotaxi/Optimus为独立公司 | -10pp | 中 |
+      | 详细披露期权业务进展 | -5pp | 高 |
+
+      ### 投资含义
+      - 当前折价55%部分合理（管理风险+不确定性）
+      - 如果期权业务有重大进展，折价可能收窄至30-35%
+      - 上行空间: 折价从55%→35% = 市值+44%
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 6: 质量检查
+# ═══════════════════════════════════════════════════════════════════════════════
+
+quality_checks:
+
+  completeness:
+    - "5类风险全部评估"
+    - "SOTP vs 市值对比完成"
+    - "折价分解合理（各成分之和≈总折价）"
+
+  evidence_based:
+    - "每个风险有具体证据支撑"
+    - "折价估计有对标公司参考"
+    - "非纯主观臆断"
+
+  consistency:
+    - "折价估计与公司实际复杂度匹配"
+    - "不高估/低估conglomerate风险"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# End of Framework
+# ═══════════════════════════════════════════════════════════════════════════════

@@ -1,0 +1,440 @@
+# AI评估框架与主框架整合协议 v1.0
+# AI Assessment Integration Protocol
+#
+# 创建日期: 2026-02-02
+# 用途: 定义AI评估模块如何与主投资分析框架集成
+# 版本: v1.0
+
+---
+metadata:
+  name: ai_integration_protocol
+  version: "1.0"
+  created: "2026-02-02"
+  description: "AI评估框架与主框架的集成协议"
+
+---
+# ==========================================
+# 第一部分：集成架构
+# ==========================================
+
+integration_architecture:
+  description: |
+    AI评估不是独立分析，而是与传统投资分析深度融合。
+    本协议定义了AI评估模块在主框架各Phase的嵌入点。
+
+  embedding_map:
+    phase_1_positioning:
+      traditional_modules:
+        - 生态图谱
+        - 产业链定位
+        - 竞争格局
+      ai_integration:
+        - module: ai_ecosystem_position
+          integration_point: "产业链定位"
+          contribution: "补充AI价值链层级定位（L0-L4）"
+        - module: ai_disruption_analysis
+          integration_point: "竞争格局"
+          contribution: "识别AI原生竞争者威胁"
+      output_requirement: |
+        Phase 1 输出必须包含：
+        1. 传统产业链图谱 + AI价值链位置叠加
+        2. 竞争地图标注AI颠覆风险等级
+
+    phase_2_data:
+      traditional_modules:
+        - API数据收集
+        - 分析师观点
+        - 市场分歧
+      ai_integration:
+        - module: ai_implementation_ladder
+          integration_point: "数据收集"
+          contribution: "收集AI实施证据（L轴）"
+        - module: ai_commercial_stage
+          integration_point: "数据收集"
+          contribution: "收集AI商业化证据（S轴）"
+        - module: ai_five_invariants
+          integration_point: "分析师观点"
+          contribution: "补充AI五不变量评估"
+        - module: ai_leading_indicators
+          integration_point: "市场分歧"
+          contribution: "识别AI相关领先信号"
+      output_requirement: |
+        Phase 2 输出必须包含：
+        1. L轴+S轴评估结果
+        2. 五不变量评分
+        3. AI相关领先信号清单
+
+    phase_3_analysis:
+      traditional_modules:
+        - 护城河分析
+        - 产品矩阵
+        - 核心命题
+        - 反常识洞察
+      ai_integration:
+        - module: ai_traditional_moat_synergy
+          integration_point: "护城河分析"
+          contribution: "分析AI对传统护城河的放大/削弱"
+        - module: ai_new_entrant_threat
+          integration_point: "护城河分析"
+          contribution: "评估AI原生竞争者威胁"
+        - module: ai_disruption_analysis
+          integration_point: "核心命题"
+          contribution: "颠覆者vs被颠覆者判定"
+        - module: ai_paradigm_assessment
+          integration_point: "反常识洞察"
+          contribution: "范式判断（炒作vs真变革）"
+      output_requirement: |
+        Phase 3 输出必须包含：
+        1. 护城河分析增加"AI协同"维度
+        2. 核心命题包含AI颠覆判定
+        3. 反常识洞察包含AI范式视角
+
+    phase_4_valuation:
+      traditional_modules:
+        - DCF估值
+        - SOTP估值
+        - Kill Switches
+        - 可验证预测
+      ai_integration:
+        - module: ai_investment_implications
+          integration_point: "估值"
+          contribution: "AI溢价/折价调整机制"
+        - module: ai_investment_implications
+          integration_point: "Kill Switches"
+          contribution: "AI相关触发条件"
+      output_requirement: |
+        Phase 4 输出必须包含：
+        1. AI投资评级（Strong_Beneficiary → Strong_At_Risk）
+        2. AI相关估值调整因子
+        3. AI相关Kill Switches
+
+---
+# ==========================================
+# 第二部分：行业适配
+# ==========================================
+
+industry_adaptation:
+  description: |
+    不同行业对AI评估的权重和关注点不同。
+
+  industry_weights:
+    technology:
+      description: "科技公司 - AI原生或AI转型"
+      primary_focus:
+        - L轴评估（技术深度）
+        - 边界议价权（生态控制力）
+        - 颠覆分析（攻守转换）
+      weight_adjustment:
+        L_level: 1.5
+        boundary_bargaining: 1.5
+        disruption_analysis: 1.3
+
+    automotive_ev:
+      description: "汽车/EV - AI驱动的制造+自动驾驶"
+      primary_focus:
+        - L轴评估（自动驾驶级别）
+        - 可验证性（安全关键）
+        - 治理（责任边界）
+        - 数据飞轮（竞争优势）
+      weight_adjustment:
+        L_level: 1.5
+        verifiability: 1.5
+        governance: 1.3
+        complementary_assets: 1.3
+
+    manufacturing:
+      description: "传统制造 - OT系统AI改造"
+      primary_focus:
+        - L轴评估（OT安全边界）
+        - 可验证性（工业安全）
+        - 治理（人机责任）
+      weight_adjustment:
+        L_level: 1.5
+        verifiability: 1.3
+        governance: 1.3
+
+    financial:
+      description: "金融服务 - 模型风险+监管"
+      primary_focus:
+        - 治理（监管合规）
+        - 可验证性（模型审计）
+        - 边界议价权（中介价值）
+      weight_adjustment:
+        governance: 1.5
+        verifiability: 1.3
+        boundary_bargaining: 1.2
+
+    healthcare:
+      description: "医疗健康 - 临床决策支持"
+      primary_focus:
+        - 治理（医疗责任）
+        - 可验证性（临床验证）
+        - 监管路径
+      weight_adjustment:
+        governance: 1.5
+        verifiability: 1.5
+        regulatory_pathway: 1.3
+
+    consumer:
+      description: "消费品 - AI营销+供应链"
+      primary_focus:
+        - S轴评估（商业化程度）
+        - 单位经济（ROI）
+        - 领先信号（消费者行为）
+      weight_adjustment:
+        S_stage: 1.3
+        unit_economics: 1.3
+        leading_indicators: 1.2
+
+    retail:
+      description: "零售 - AI运营优化"
+      primary_focus:
+        - S轴评估（成本节约）
+        - 单位经济（人效提升）
+        - 互补资产（门店网络）
+      weight_adjustment:
+        S_stage: 1.3
+        unit_economics: 1.3
+        complementary_assets: 1.2
+
+---
+# ==========================================
+# 第三部分：复合行业处理
+# ==========================================
+
+compound_industry_handling:
+  description: |
+    某些公司跨越多个行业（如Tesla = 汽车+能源+AI+机器人）。
+    需要分业务板块分别评估，然后加权合并。
+
+  methodology:
+    step_1:
+      action: "业务板块拆分"
+      description: "识别公司各业务板块及其收入/利润占比"
+
+    step_2:
+      action: "分板块AI评估"
+      description: "每个板块独立进行L轴+S轴+五不变量评估"
+
+    step_3:
+      action: "行业权重应用"
+      description: "根据每个板块的行业属性应用权重调整"
+
+    step_4:
+      action: "加权合并"
+      description: "按业务重要性（不仅是收入占比）加权合并"
+      formula: |
+        composite_score = SUM(segment_score × segment_weight × industry_weight)
+
+    step_5:
+      action: "协同/冲突分析"
+      description: "分析各业务板块间AI能力的协同或冲突"
+
+  example_tesla:
+    segments:
+      - name: "汽车制造"
+        revenue_share: 82%
+        strategic_weight: 50%
+        industry: "automotive_ev"
+        ai_focus: ["FSD", "制造AI"]
+
+      - name: "能源存储"
+        revenue_share: 11%
+        strategic_weight: 15%
+        industry: "energy"
+        ai_focus: ["电网优化"]
+
+      - name: "服务/软件"
+        revenue_share: 7%
+        strategic_weight: 10%
+        industry: "technology"
+        ai_focus: ["FSD订阅", "Supercharger网络"]
+
+      - name: "Robotaxi(期权)"
+        revenue_share: 0%
+        strategic_weight: 15%
+        industry: "automotive_ev"
+        ai_focus: ["L4自动驾驶"]
+
+      - name: "Optimus(期权)"
+        revenue_share: 0%
+        strategic_weight: 10%
+        industry: "robotics"
+        ai_focus: ["通用AI", "具身智能"]
+
+---
+# ==========================================
+# 第四部分：输出整合规范
+# ==========================================
+
+output_integration:
+  description: |
+    AI评估结果如何整合到最终报告中。
+
+  mandatory_sections:
+    section_1:
+      name: "AI实施评估摘要"
+      location: "执行摘要后"
+      content:
+        - L轴+S轴评估结果
+        - 五不变量得分雷达图
+        - AI投资评级
+        - 关键发现（3-5条）
+
+    section_2:
+      name: "AI护城河协同分析"
+      location: "护城河分析章节内"
+      content:
+        - 传统护城河+AI协同矩阵
+        - 放大因素
+        - 削弱因素
+        - 新AI护城河
+
+    section_3:
+      name: "AI竞争威胁评估"
+      location: "竞争分析章节内"
+      content:
+        - 颠覆角色判定
+        - 新进入者威胁评分
+        - 应对策略评估
+
+    section_4:
+      name: "AI估值影响"
+      location: "估值章节内"
+      content:
+        - AI溢价/折价计算
+        - AI相关情景分析
+        - 期权价值（如适用）
+
+    section_5:
+      name: "AI Kill Switches"
+      location: "风险章节内"
+      content:
+        - AI相关触发条件（≥3个）
+        - 监控方法
+        - 触发后行动
+
+  integration_table_template: |
+    ## AI评估整合摘要
+
+    | 维度 | 评估 | 证据等级 | 投资含义 |
+    |------|------|---------|---------|
+    | L轴级别 | L{X} | A/B/C | {影响描述} |
+    | S轴阶段 | S{X} | A/B/C | {影响描述} |
+    | 可验证性 | {X}/5 | A/B/C | {影响描述} |
+    | 治理 | {X}/5 | A/B/C | {影响描述} |
+    | 互补资产 | {X}/5 | A/B/C | {影响描述} |
+    | 单位经济 | {X}/5 | A/B/C | {影响描述} |
+    | 边界议价权 | {X}/5 | A/B/C | {影响描述} |
+    | **综合评级** | {rating} | - | {总体建议} |
+
+---
+# ==========================================
+# 第五部分：触发条件
+# ==========================================
+
+trigger_conditions:
+  description: |
+    何时触发AI评估框架。
+
+  automatic_triggers:
+    - condition: "公司涉及AI技术开发或应用"
+      examples: ["TSLA", "NVDA", "GOOGL", "MSFT", "META"]
+      action: "完整执行AI评估框架"
+
+    - condition: "行业正在被AI颠覆"
+      examples: ["传统汽车", "客服", "内容创作", "编程"]
+      action: "重点执行颠覆分析+新进入威胁"
+
+    - condition: "公司声称AI是增长驱动"
+      examples: ["任何Earnings Call提及AI X次+"]
+      action: "执行S轴验证（叙事vs现实）"
+
+  optional_triggers:
+    - condition: "公司AI关联度低"
+      examples: ["公用事业", "REIT", "传统零售"]
+      action: "简化评估（仅L轴+S轴快速扫描）"
+
+  depth_levels:
+    full_assessment:
+      conditions:
+        - "AI是核心业务"
+        - "AI是重大投资论点"
+        - "行业正在AI颠覆"
+      modules:
+        - 全部11个AI评估模块
+
+    standard_assessment:
+      conditions:
+        - "AI是业务组成部分"
+        - "AI影响运营效率"
+      modules:
+        - L轴+S轴
+        - 五不变量
+        - 护城河协同
+        - Kill Switches
+
+    light_assessment:
+      conditions:
+        - "AI关联度低"
+        - "仅作为工具使用"
+      modules:
+        - L轴+S轴快速扫描
+        - 简化Kill Switch检查
+
+---
+# ==========================================
+# 第六部分：质量门控
+# ==========================================
+
+quality_gates:
+  ai_integration_checklist:
+    - id: "QG-AI-001"
+      check: "L轴评估有A/B级证据支撑"
+      severity: "必须"
+
+    - id: "QG-AI-002"
+      check: "S轴评估有A/B级证据支撑"
+      severity: "必须"
+
+    - id: "QG-AI-003"
+      check: "五不变量每项有评分+理由"
+      severity: "必须"
+
+    - id: "QG-AI-004"
+      check: "颠覆角色判定有明确理由"
+      severity: "必须"
+
+    - id: "QG-AI-005"
+      check: "AI Kill Switches ≥3个"
+      severity: "必须"
+
+    - id: "QG-AI-006"
+      check: "AI估值影响有量化描述"
+      severity: "推荐"
+
+    - id: "QG-AI-007"
+      check: "护城河协同分析完成"
+      severity: "推荐"
+
+---
+# ==========================================
+# 第七部分：版本演进
+# ==========================================
+
+version_history:
+  v1_0:
+    date: "2026-02-02"
+    changes:
+      - "初始版本"
+      - "定义四阶段嵌入点"
+      - "行业适配权重"
+      - "复合行业处理方法"
+      - "输出整合规范"
+      - "触发条件定义"
+      - "质量门控清单"
+
+future_enhancements:
+  - "跨公司AI能力比较模板"
+  - "AI投资组合构建指南"
+  - "行业AI成熟度基准数据库"

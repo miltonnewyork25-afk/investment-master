@@ -1,0 +1,731 @@
+# AI Implementation Assessment Master Framework v1.0
+# 美股上市公司AI实施评估主控框架
+# 创建日期: 2026-02-02
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-02-02"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "ai_assessment.master_v1.0"
+  name: "AI实施评估主控框架"
+  purpose: |
+    建立跨行业通用、对"AI叙事噪音"免疫的评估体系：
+    1. 评估公司AI实施深度（L轴）与商业兑现阶段（S轴）
+    2. 判断公司是AI受益者还是被颠覆者
+    3. 区分短期炒作vs长期范式转变
+    4. 识别新范式崛起的领先信号
+    5. 评估传统护城河与AI的协同/冲突
+    6. 识别新进入者威胁
+
+  core_philosophy: |
+    "你的任务不是写'AI很重要'的散文，而是把每家公司关于AI的真实进展
+    压缩成可审计、可比较、可证伪的结论。"
+
+    核心原则：
+    - 证据优先，叙事后置
+    - 可证伪输出（next_gate + kill_switches）
+    - Unknown显式化，不编造不软化
+    - 双锚点规则（业务锚+系统锚）
+
+  applicable_industries:
+    - "科技/软件"
+    - "半导体"
+    - "银行/金融"
+    - "制造/工业"
+    - "零售/消费"
+    - "医疗健康"
+    - "能源/公用事业"
+    - "房地产"
+    - "媒体/娱乐"
+    - "交通/物流"
+
+# ═══════════════════════════════════════════════════════════════
+# 三阶段评估架构
+# ═══════════════════════════════════════════════════════════════
+
+three_phase_architecture:
+
+  overview: |
+    ┌─────────────────────────────────────────────────────────────────────────┐
+    │  AI Implementation Assessment Framework v1.0                            │
+    │  "从实施评估到投资决策的完整闭环"                                       │
+    └──────────────────────────────┬──────────────────────────────────────────┘
+                                   │
+            ┌──────────────────────┼──────────────────────────────┐
+            │                      │                              │
+         Phase 1                Phase 2                       Phase 3
+       实施评估                战略定位                      投资转化
+            │                      │                              │
+       ┌────┴────┐          ┌──────┴──────┐              ┌────────┴────────┐
+       │ L轴评估 │          │颠覆者/被颠覆│              │ 投资评级        │
+       │ S轴评估 │          │范式判断     │              │ 估值影响        │
+       │五不变量 │          │生态位置     │              │ Kill Switches   │
+       │证据分级 │          │领先信号     │              │ 监控计划        │
+       └─────────┘          │护城河协同   │              └─────────────────┘
+                            │新进入威胁   │
+                            └─────────────┘
+
+  phase_1_implementation:
+    name: "实施评估"
+    duration: "30%工作量"
+    modules:
+      - ai_implementation_ladder_v1      # L轴：实施级别
+      - ai_commercial_stage_v1           # S轴：商业阶段
+      - ai_five_invariants_v1            # 五不变量
+      - ai_evidence_grading_v1           # 证据分级
+
+    outputs:
+      - L_level_with_evidence
+      - S_stage_with_evidence
+      - invariants_scores
+      - evidence_log
+
+    checkpoint:
+      required:
+        - "L轴评估完成，有A/B级证据支撑"
+        - "S轴评估完成，有A/B级证据支撑"
+        - "五不变量评分完成，每项有证据等级"
+      blocking: true
+
+  phase_2_strategic_position:
+    name: "战略定位"
+    duration: "40%工作量"
+    modules:
+      - ai_disruption_analysis_v1        # 颠覆者vs被颠覆者
+      - ai_paradigm_assessment_v1        # 短期vs长期范式
+      - ai_ecosystem_position_v1         # 生态位置与价值流向
+      - ai_leading_indicators_v1         # 领先信号体系
+      - ai_traditional_moat_synergy_v1   # 传统护城河+AI协同
+      - ai_new_entrant_threat_v1         # 新进入者威胁
+
+    outputs:
+      - disruption_role
+      - paradigm_type
+      - ecosystem_position
+      - leading_indicators
+      - moat_analysis
+      - competitive_threats
+
+    checkpoint:
+      required:
+        - "颠覆角色判定完成"
+        - "范式类型判定完成"
+        - "生态位置判定完成"
+        - "领先信号识别≥5个"
+      blocking: true
+
+  phase_3_investment_translation:
+    name: "投资转化"
+    duration: "30%工作量"
+    modules:
+      - ai_investment_implications_v1    # 投资含义转化
+      - ai_industry_weights_v1           # 行业权重调整
+
+    outputs:
+      - investment_rating
+      - valuation_impact
+      - next_gate
+      - kill_switches
+      - monitoring_plan
+
+    checkpoint:
+      required:
+        - "投资评级完成"
+        - "next_gate定义清晰可观测"
+        - "kill_switches≥3个可验证"
+        - "监控指标清单完成"
+      blocking: true
+
+# ═══════════════════════════════════════════════════════════════
+# 核心设计原则（抗幻觉机制）
+# ═══════════════════════════════════════════════════════════════
+
+anti_hallucination_mechanisms:
+
+  principle_A_stable_variables:
+    description: "只用跨行业稳定的变量做核心推理"
+    variables:
+      - "治理与责任"
+      - "可验证性"
+      - "互补资产"
+      - "单位经济"
+      - "边界议价权"
+    reference: "NIST AI RMF: GOVERN / MAP / MEASURE / MANAGE"
+
+  principle_B_evidence_first:
+    description: "证据优先，叙事后置"
+    rules:
+      - "每个分数必须绑定证据来源"
+      - "没有A/B级证据的关键字段必须标unknown"
+      - "不允许用语言软化unknown为'可能已经做到'"
+
+  principle_C_falsifiable_output:
+    description: "可证伪输出"
+    requirements:
+      - "每个结论必须有next_gate（升级条件）"
+      - "每个结论必须有kill_switches（推翻条件）"
+      - "结论必须能被未来数据验证或推翻"
+
+  double_anchor_rule:
+    description: "任何升级判定必须同时满足两个锚点"
+    anchors:
+      business_anchor:
+        description: "业务/财务锚点"
+        examples:
+          - "收入增长可归因于AI"
+          - "成本下降可量化"
+          - "效率提升有KPI支撑"
+          - "错误率/停机率下降"
+
+      system_anchor:
+        description: "系统/治理锚点"
+        examples:
+          - "日志/审计系统存在"
+          - "回滚机制已建立"
+          - "权限控制已实施"
+          - "验证流程已文档化"
+
+    application: |
+      例如：L2→L3升级需要同时满足：
+      - 业务锚：自动化流程覆盖率>50%，效率提升可量化
+      - 系统锚：有闭环控制日志，有异常回滚机制
+
+  unknown_rule:
+    description: "不确定性显式化"
+    rules:
+      - "不能证明就写unknown"
+      - "unknown必须给出'补证据计划'"
+      - "unknown不允许在结论中被语言软化"
+
+    补证据计划_template: |
+      字段: [字段名]
+      当前状态: unknown
+      补证据计划:
+        - 下一次10-Q发布时检查[具体指标]
+        - 下一次业绩会关注[具体问题]
+        - 监控[具体数据源]
+
+# ═══════════════════════════════════════════════════════════════
+# 证据分级系统
+# ═══════════════════════════════════════════════════════════════
+
+evidence_grading:
+
+  grade_A:
+    name: "监管/正式披露"
+    confidence: "95%+"
+    sources:
+      - "10-K/10-Q/8-K"
+      - "招股书(S-1/F-1)"
+      - "审计财务报表"
+      - "监管公告"
+      - "官方标准/认证"
+    usage: "关键判定的首选锚点"
+
+  grade_B:
+    name: "业绩会/官方材料"
+    confidence: "75-90%"
+    sources:
+      - "Earnings Call实录"
+      - "投资者演示文稿"
+      - "官方技术白皮书"
+      - "可核实客户案例"
+      - "官方新闻稿"
+    usage: "次选锚点，需与A级交叉验证"
+
+  grade_C:
+    name: "媒体/二手材料"
+    confidence: "40-70%"
+    sources:
+      - "新闻报道"
+      - "分析师报告"
+      - "行业研究"
+      - "社交媒体"
+    usage: "只能作为线索，不可作为关键判定锚点"
+
+  grading_rules:
+    - "关键升级判定必须有A级证据"
+    - "辅助判定可用B级证据"
+    - "C级证据只能提供调查线索"
+    - "无证据必须标unknown"
+
+# ═══════════════════════════════════════════════════════════════
+# 行业权重配置
+# ═══════════════════════════════════════════════════════════════
+
+industry_weights:
+
+  banking_finance:
+    name: "银行/金融"
+    priority_weights:
+      Governance: 1.5          # 最高权重
+      Verifiability: 1.3
+      UnitEconomics: 1.0
+      ComplementaryAssets: 0.8
+      BoundaryShift: 0.8
+
+    special_requirements:
+      - "必须覆盖模型风险管理(SR 11-7/OCC 2011-12)"
+      - "必须评估模型验证流程"
+      - "必须评估合规责任边界"
+
+    reference_standards:
+      - "SR 11-7: 银行模型风险管理"
+      - "OCC 2011-12: 模型风险管理审慎实践"
+
+  manufacturing_ot:
+    name: "制造/工业/OT"
+    priority_weights:
+      L_level: 1.5             # L轴权重最高
+      Verifiability: 1.3
+      Governance: 1.3
+      UnitEconomics: 1.0
+      ComplementaryAssets: 0.8
+      BoundaryShift: 0.8
+
+    special_requirements:
+      - "L≥L3必须有OT安全证据"
+      - "必须评估zones & conduits架构"
+      - "必须评估变更治理流程"
+
+    reference_standards:
+      - "NIST SP 800-82 Rev.3: OT/ICS安全"
+      - "ISA/IEC 62443: 工业网络安全"
+
+    hard_constraint: |
+      若公司宣称"已自动化/闭环控制"，但无法给出OT安全与变更治理的证据锚点，
+      则L不得高于L2。
+
+  real_estate_services:
+    name: "房地产/传统服务业"
+    priority_weights:
+      ComplementaryAssets: 1.5  # 最高权重
+      UnitEconomics: 1.3
+      Verifiability: 1.0
+      Governance: 0.8
+      BoundaryShift: 0.8
+
+    special_requirements:
+      - "重点评估AI对NOI的影响"
+      - "重点评估空置率、续租率改善"
+      - "重点评估维修与能耗优化"
+
+    note: "多数AI处于L0-L1，重点看运营指标可验证性"
+
+  technology_software:
+    name: "科技/软件"
+    priority_weights:
+      BoundaryShift: 1.5        # 最高权重
+      UnitEconomics: 1.3
+      ComplementaryAssets: 1.2
+      Verifiability: 1.0
+      Governance: 0.8
+
+    special_requirements:
+      - "重点评估平台化收税能力"
+      - "重点评估生态锁定程度"
+      - "重点评估被去中介化风险"
+
+  healthcare:
+    name: "医疗健康"
+    priority_weights:
+      Governance: 1.5           # 最高权重（FDA合规）
+      Verifiability: 1.5
+      UnitEconomics: 1.0
+      ComplementaryAssets: 0.8
+      BoundaryShift: 0.8
+
+    special_requirements:
+      - "必须评估FDA AI/ML医疗器械指南合规"
+      - "必须评估临床验证证据"
+      - "必须评估责任边界"
+
+# ═══════════════════════════════════════════════════════════════
+# 投资评级体系
+# ═══════════════════════════════════════════════════════════════
+
+investment_rating_system:
+
+  ratings:
+    strong_beneficiary:
+      score: 5
+      description: "AI强受益者"
+      criteria:
+        - "L≥L3 且 S≥S4"
+        - "disruption_role = beneficiary 或 disruptor"
+        - "paradigm_type = transformational 或 paradigm_shift"
+        - "value_flow = capturing"
+        - "五不变量总分≥8/10"
+
+      investment_implication: |
+        - 建议：积极配置
+        - 估值：可给予AI溢价20-50%
+        - 风险：主要关注执行风险
+
+    beneficiary:
+      score: 4
+      description: "AI受益者"
+      criteria:
+        - "L≥L2 且 S≥S3"
+        - "disruption_role = beneficiary"
+        - "paradigm_type = incremental 或 transformational"
+        - "五不变量总分≥6/10"
+
+      investment_implication: |
+        - 建议：适度配置
+        - 估值：可给予AI溢价10-20%
+        - 风险：关注竞争与执行
+
+    neutral:
+      score: 3
+      description: "AI中性"
+      criteria:
+        - "L=L1 且 S=S1-S2"
+        - "disruption_role = neutral"
+        - "paradigm_type = incremental"
+        - "五不变量总分4-6/10"
+
+      investment_implication: |
+        - 建议：观望，等待更多证据
+        - 估值：不给予AI溢价或折价
+        - 风险：关注行业变化
+
+    at_risk:
+      score: 2
+      description: "AI风险敞口"
+      criteria:
+        - "L≤L1 且 S≤S1"
+        - "disruption_role = at_risk"
+        - "有明确的AI威胁来源"
+        - "五不变量总分<4/10"
+
+      investment_implication: |
+        - 建议：谨慎，考虑减仓
+        - 估值：应给予AI风险折价10-20%
+        - 风险：关注被颠覆风险
+
+    strong_at_risk:
+      score: 1
+      description: "AI强风险敞口"
+      criteria:
+        - "L=L0 且 S=S0"
+        - "disruption_role = at_risk"
+        - "有多个AI威胁来源"
+        - "传统护城河被明显削弱"
+        - "五不变量总分<3/10"
+
+      investment_implication: |
+        - 建议：回避或做空
+        - 估值：应给予AI风险折价20-40%
+        - 风险：可能面临结构性衰退
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合同（必须输出的字段）
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  json_schema: |
+    {
+      "company": {
+        "name": "string",
+        "ticker": "string",
+        "asof_date": "YYYY-MM-DD",
+        "industry": "string"
+      },
+
+      "implementation_assessment": {
+        "L_level": "L0|L1|L2|L3|L4|unknown",
+        "L_confidence": "float 0-1",
+        "L_evidence": {
+          "grade": "A|B|C",
+          "sources": ["string"]
+        },
+        "S_stage": "S0|S1|S2|S3|S4|S5|unknown",
+        "S_confidence": "float 0-1",
+        "S_evidence": {
+          "grade": "A|B|C",
+          "sources": ["string"]
+        }
+      },
+
+      "strategic_position": {
+        "disruption_role": "beneficiary|at_risk|disruptor|neutral",
+        "disruption_confidence": "float 0-1",
+        "threat_sources": ["string"],
+        "moat_vulnerability_score": "int 0-10",
+
+        "paradigm_type": "incremental|transformational|paradigm_shift",
+        "time_horizon": "short_term|medium_term|long_term",
+        "paradigm_indicators": ["string"],
+
+        "ai_value_chain_layer": "L0_infra|L1_platform|L2_middleware|L3_application|L4_end_user",
+        "value_flow_direction": "capturing|neutral|leaking",
+        "ai_tax_position": "collector|payer|neutral"
+      },
+
+      "invariants": {
+        "Verifiability": {
+          "score": "0|1|2|unknown",
+          "evidence_grade": "A|B|C|unknown",
+          "evidence": "string (≤2句)"
+        },
+        "Governance": {
+          "score": "0|1|2|unknown",
+          "evidence_grade": "A|B|C|unknown",
+          "evidence": "string (≤2句)"
+        },
+        "ComplementaryAssets": {
+          "score": "0|1|2|unknown",
+          "evidence_grade": "A|B|C|unknown",
+          "evidence": "string (≤2句)"
+        },
+        "UnitEconomics": {
+          "score": "0|1|2|unknown",
+          "evidence_grade": "A|B|C|unknown",
+          "evidence": "string (≤2句)"
+        },
+        "BoundaryShift": {
+          "score": "0|1|2|unknown",
+          "evidence_grade": "A|B|C|unknown",
+          "evidence": "string (≤2句)"
+        }
+      },
+
+      "moat_analysis": {
+        "amplified_moats": ["string"],
+        "weakened_moats": ["string"],
+        "new_ai_moats": ["string"],
+        "hardware_ai_synergy": "string"
+      },
+
+      "competitive_dynamics": {
+        "ai_native_threats": ["string"],
+        "threat_level": "low|medium|high|critical",
+        "time_to_threat": "string",
+        "traditional_response": "string"
+      },
+
+      "leading_indicators": {
+        "technology_signals": ["string"],
+        "talent_signals": ["string"],
+        "ecosystem_signals": ["string"],
+        "customer_signals": ["string"],
+        "competitor_signals": ["string"],
+        "cross_validation_points": ["string"]
+      },
+
+      "investment_implications": {
+        "impact_vectors": ["Revenue|Cost|Risk|Moat"],
+        "rating": "Strong_Beneficiary|Beneficiary|Neutral|At_Risk|Strong_At_Risk",
+        "rating_score": "int 1-5",
+        "valuation_impact": "string",
+        "position_guidance": "string",
+        "next_gate": "string (可观测事实)",
+        "kill_switches": ["string (≥3个)"],
+        "monitoring_metrics": ["string"]
+      },
+
+      "evidence_log": [
+        {
+          "type": "10-K|10-Q|8-K|call|deck|policy|other",
+          "date": "YYYY-MM-DD",
+          "source": "string",
+          "notes": "string"
+        }
+      ]
+    }
+
+  validation_rules:
+    - "impact_vectors ≤ 2个"
+    - "每个invariant必须有evidence_grade"
+    - "kill_switches ≥ 3个"
+    - "next_gate必须是可观测事实"
+    - "L≥L3需要OT/安全证据（制造业）"
+    - "金融行业必须覆盖模型验证与治理"
+
+# ═══════════════════════════════════════════════════════════════
+# 质量门控
+# ═══════════════════════════════════════════════════════════════
+
+quality_gates:
+
+  seven_rules:
+    - id: "QG-01"
+      rule: "影响向量≤2"
+      check: "impact_vectors.length ≤ 2"
+      action: "超过则重写，聚焦最重要的2个"
+
+    - id: "QG-02"
+      rule: "每个分数都有证据等级"
+      check: "all invariants have evidence_grade"
+      action: "缺失则标unknown并给补证据计划"
+
+    - id: "QG-03"
+      rule: "无证据高分检查"
+      check: "score=2 requires evidence_grade A or B"
+      action: "发现则降为unknown"
+
+    - id: "QG-04"
+      rule: "L≥L3需要系统锚点"
+      check: "L≥L3 requires OT/security/governance evidence"
+      action: "否则降级到L2"
+
+    - id: "QG-05"
+      rule: "金融行业模型验证覆盖"
+      check: "banking/finance must cover model validation"
+      action: "未覆盖则报告不合格"
+
+    - id: "QG-06"
+      rule: "next_gate是可观测事实"
+      check: "next_gate is specific and observable"
+      action: "模糊则重写"
+
+    - id: "QG-07"
+      rule: "kill_switches真实有效"
+      check: "kill_switches can actually overturn conclusion"
+      action: "伪kill_switch则替换"
+
+  final_checklist: |
+    □ L轴评估有A/B级证据支撑
+    □ S轴评估有A/B级证据支撑
+    □ 五不变量每项都有证据等级
+    □ 颠覆角色判定有依据
+    □ 范式类型判定有依据
+    □ 生态位置判定有依据
+    □ 领先信号≥5个
+    □ 投资评级与证据一致
+    □ next_gate可观测
+    □ kill_switches≥3个且有效
+    □ 监控指标清单完整
+    □ 无幻觉填充（unknown已显式标注）
+
+# ═══════════════════════════════════════════════════════════════
+# 评估流程（标准工作流）
+# ═══════════════════════════════════════════════════════════════
+
+evaluation_workflow:
+
+  step_1_evidence_collection:
+    name: "证据收集"
+    priority: "A/B级为主"
+    sources:
+      primary:
+        - "10-K/10-Q/8-K"
+        - "业绩会实录"
+        - "投资者演示"
+        - "官方技术/治理文档"
+
+      industry_specific:
+        manufacturing: "OT/ICS架构、安全与变更治理文档"
+        banking: "模型风险管理政策、验证流程文档"
+        healthcare: "FDA批准文件、临床验证报告"
+
+    output: "evidence_log"
+
+  step_2_implementation_assessment:
+    name: "先定L，再定S"
+    sequence:
+      - "判断AI是否进入生产系统"
+      - "判断是否形成闭环控制"
+      - "判断商业兑现阶段"
+
+    warning: "不要先写'AI战略'，先判断实际实施程度"
+
+  step_3_invariants_scoring:
+    name: "五不变量评分"
+    rules:
+      - "每项分数后必须写Evidence Grade"
+      - "没有证据就写unknown"
+      - "给出补证据计划"
+
+  step_4_strategic_position:
+    name: "战略定位分析"
+    modules:
+      - "颠覆者vs被颠覆者"
+      - "范式判断"
+      - "生态位置"
+      - "领先信号"
+      - "护城河协同"
+      - "新进入威胁"
+
+  step_5_investment_translation:
+    name: "投资转化"
+    outputs:
+      next_gate:
+        requirement: "必须是可观测事实"
+        bad_example: "继续推进AI战略"
+        good_example: "2026Q2财报披露AI相关收入占比≥10%"
+
+      kill_switches:
+        requirement: "必须能在财报/运营/监管中观察到"
+        count: "≥3个"
+        bad_example: "AI项目进展不顺"
+        good_example: "AI相关CapEx削减>30%"
+
+  step_6_monitoring_plan:
+    name: "监控计划"
+    requirements:
+      - "每条kill_switch对应≥1个监控指标"
+      - "每条next_gate对应≥1个里程碑指标"
+      - "指定监控频率（季度/月度/周度）"
+
+# ═══════════════════════════════════════════════════════════════
+# 参考标准清单
+# ═══════════════════════════════════════════════════════════════
+
+reference_standards:
+
+  general:
+    - name: "NIST AI RMF 1.0"
+      url: "https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf"
+      usage: "通用AI风险管理框架"
+
+    - name: "NIST GenAI Profile (AI 600-1)"
+      url: "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf"
+      usage: "生成式AI风险补充"
+
+    - name: "ISO/IEC 42001"
+      url: "https://www.iso.org/standard/42001"
+      usage: "组织级AI管理系统标准"
+
+  manufacturing:
+    - name: "NIST SP 800-82 Rev.3"
+      url: "https://csrc.nist.gov/pubs/sp/800/82/r3/final"
+      usage: "OT/ICS安全与可靠性"
+
+    - name: "ISA/IEC 62443"
+      usage: "工业网络分区与风险评估"
+
+  banking:
+    - name: "SR 11-7"
+      url: "https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm"
+      usage: "银行模型风险管理"
+
+    - name: "OCC 2011-12"
+      url: "https://www.occ.treas.gov/news-issuances/bulletins/2011/bulletin-2011-12a.pdf"
+      usage: "模型风险管理审慎实践"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-02-02"
+    changes:
+      - "初始版本"
+      - "三阶段评估架构（实施评估→战略定位→投资转化）"
+      - "L+S双轴系统"
+      - "五不变量体系"
+      - "抗幻觉机制（双锚点、unknown规则）"
+      - "行业权重配置"
+      - "投资评级体系"
+      - "完整JSON Schema"
+      - "质量门控7条规则"

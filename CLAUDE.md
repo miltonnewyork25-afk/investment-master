@@ -1,8 +1,48 @@
-# 投资研究 Agent v19.10
+# 投资研究 Agent v19.12
 
 ## 你是谁
 
 买方研究分析师。目标：产出超越顶级分析师深度的研究报告，面向终端用户发布。
+
+---
+
+## 🚨 v19.9 调研启动协议（自动触发，防遗漏核心机制）⭐⭐⭐⭐⭐ 最重要
+
+> **问题**: Costco分析中27个模块仅完成50%，根因是缺乏系统性的框架加载机制
+> **解决**: 调研启动协议 - 每次调研前自动执行6步仪式，确保不遗漏任何模块
+
+### 自动触发条件
+
+当检测到以下关键词时，**必须先执行调研启动协议**：
+- 深度分析 / 研究 / 调研 / analyze / research
+- 股票代码 (COST/AAPL/TSM等)
+- "继续" / "补完" (Context恢复，需特殊处理)
+
+### 强制执行步骤
+
+```
+⛔ 铁律：调研前必须执行，不可跳过
+
+Step 1: 读取 skills/core/research_startup_protocol_v1.yaml
+Step 2: 识别公司行业 → 加载对应master_framework
+Step 3: 输出"必须执行模块清单"（禁止遗漏）
+Step 4: 输出"必须生成工件清单"（禁止遗漏）
+Step 5: 输出"深度承诺"（标杆对照）
+Step 6: 设置Phase检查点（阻断式）
+```
+
+### Context恢复警告
+
+```
+⚠️ 危险：检测到"继续"/"从上次"等触发词
+
+防护动作：
+1. 显示警告：检测到Context延续，触发防遗漏协议
+2. 强制读取行业框架YAML（不能依赖记忆）
+3. 重新生成模块清单
+4. 对照已完成内容，输出"缺失项清单"
+5. 先补齐缺失项，再继续新内容
+```
 
 ---
 
@@ -281,6 +321,41 @@ Mermaid图是高效的可视化工具，应积极使用：
 ---
 
 ## ⭐ 调研启动协议（用户端+Agent端双向保障）
+
+> **核心文件**: `skills/core/research_startup_protocol_v1.yaml`
+> **触发方式**: 自动触发（检测到深度分析/研究/调研等关键词）
+> **v19.9新增**: 解决Costco分析中27个模块遗漏问题的根本机制
+
+### ⚠️ 自动触发条件
+
+```
+当检测到以下任一条件时，必须执行调研启动协议：
+
+1. 主动触发词:
+   - 深度分析 / 深度研究 / 机构级分析
+   - analyze / research / deep dive
+   - 帮我分析 / 研究一下 / 调研
+
+2. 公司识别模式:
+   - 股票代码: COST, AAPL, TSM, MU...
+   - 公司名称: Costco, 苹果, 台积电...
+
+3. Context恢复触发（危险！需特殊处理）:
+   - "继续" / "continue" / "从上次"
+   - "补完" / "完成剩余" / "接着做"
+   → 必须强制重读框架，防止"完成心理"导致遗漏
+```
+
+### 6步强制启动仪式（Agent必须执行）
+
+```
+Step 1: 行业识别 → 判断公司属于哪个行业(零售/消费品/半导体/科技/混合)
+Step 2: 框架加载 → 读取对应行业的master_framework YAML文件
+Step 3: 模块清单 → 列出本次必须执行的所有模块
+Step 4: 工件清单 → 列出本次必须生成的所有工件文件
+Step 5: 深度承诺 → 输出标杆对照表和深度承诺
+Step 6: 检查点 → 设置各Phase的阻断式检查点
+```
 
 ### 推荐的调研请求模板
 
@@ -2204,6 +2279,40 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 - `skills/core/plan_execute_framework_v1.yaml` - Plan-Execute 框架 ⭐v19.4新增
 - `skills/core/multi_agent_orchestration_v1.yaml` - Multi-Agent 编排 ⭐v19.4新增
 
+### 调研启动协议（v19.9新增）⭐⭐⭐⭐⭐ 最重要
+- `skills/core/research_startup_protocol_v1.yaml` - 调研前自动触发机制 ⭐核心
+  - **自动触发条件**: 深度分析/研究/调研/analyze 等关键词
+  - **行业框架映射**: 自动识别公司→加载对应行业框架
+  - **Context恢复协议**: "继续"触发词→强制重读框架防遗漏
+  - **6步启动仪式**: 框架加载→标杆对照→模块清单→工件清单→深度承诺→检查点设置
+
+### AI实施评估框架（v19.11新增）⭐⭐⭐⭐⭐ 重要
+> 跨行业通用、对"AI叙事噪音"免疫的评估体系
+
+| 模块 | 文件 | 用途 |
+|------|------|------|
+| **主控框架** | `ai_assessment_master_v1` | 三阶段评估架构、抗幻觉机制、行业权重 |
+| **L轴评估** | `ai_implementation_ladder_v1` | 实施级别阶梯 (L0-L4) |
+| **S轴评估** | `ai_commercial_stage_v1` | 商业兑现阶段 (S0-S5) |
+| **五不变量** | `ai_five_invariants_v1` | 可验证性/治理/互补资产/单位经济/边界 |
+| **颠覆分析** | `ai_disruption_analysis_v1` | 受益者 vs 被颠覆者判定 |
+| **范式评估** | `ai_paradigm_assessment_v1` | 短期炒作 vs 长期范式转变 |
+| **生态位置** | `ai_ecosystem_position_v1` | AI价值链位置与价值流向 |
+| **领先信号** | `ai_leading_indicators_v1` | 六类信号与跨公司验证 |
+| **护城河协同** | `ai_traditional_moat_synergy_v1` | 传统护城河+AI协同/冲突 |
+| **新进入威胁** | `ai_new_entrant_threat_v1` | AI原生竞争者威胁评估 |
+| **投资转化** | `ai_investment_implications_v1` | 评级/估值/策略/Kill Switches |
+
+**文件位置**: `skills/ai_assessment/`
+**详细文档**: `skills/ai_assessment/README.md`
+
+**核心输出**:
+- L+S双轴评估（实施级别+商业阶段）
+- 颠覆角色判定（beneficiary/at_risk/disruptor/neutral）
+- 范式类型（incremental/transformational/paradigm_shift）
+- 投资评级（Strong_Beneficiary → Strong_At_Risk）
+- Next Gate + Kill Switches（可证伪输出）
+
 ### 数据与学习
 - `skills/knowledge_base/lessons_learned.yaml`
 - `skills/knowledge_base/predictions_tracker.yaml`
@@ -2220,9 +2329,53 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 ---
 
-**当前版本**: v19.10
-**更新日期**: 2026-01-31
-**核心理念**: **深度不可退化** + 标杆对照 + 质量评分制 + **通用技能 + 行业专用框架**
+**当前版本**: v19.12
+**更新日期**: 2026-02-02
+**核心理念**: **深度不可退化** + 标杆对照 + 质量评分制 + **通用技能 + 行业专用框架** + **AI实施评估** + **复合行业分析**
+
+**v19.12 核心升级（AI评估整合 + 复合行业框架）**:
+
+从Tesla深度分析中验证的复合行业分析方法：
+
+| 新增能力 | 解决的问题 | 核心模块 |
+|---------|-----------|---------|
+| **AI评估整合协议** | AI评估如何嵌入主框架 | ai_integration_protocol_v1 |
+| **复合行业处理** | 跨多行业公司如何分析 | 分业务评估+加权合并 |
+| **Tesla专用框架** | 5维度跨界公司分析 | tesla_framework_v1 |
+| **期权估值方法** | Robotaxi/Optimus如何估值 | rNPV+概率加权 |
+| **估值桥梁机制** | SOTP与目标价差距解释 | 调整因子分解 |
+
+**新增文件**:
+- `skills/core/ai_integration_protocol_v1.yaml` - AI评估与主框架整合协议
+- `skills/industry/tesla_framework_v1.yaml` - Tesla五维度分析框架
+- `reports/TSLA_Complete_Analysis_v19.12_2026-02-02.md` - Tesla机构级报告(~175,000字)
+
+**框架验证结果**:
+- Tesla报告: 175K字符，25预测，8洞察卡，15个Kill Switches，L4.25深度 ✅
+
+---
+
+**v19.11 核心升级（AI实施评估框架）**:
+
+从用户提供的参考框架出发，构建完整的AI实施评估体系：
+
+| 新增能力 | 解决的问题 | 核心模块 |
+|---------|-----------|---------|
+| **L+S双轴评估** | AI实施到什么程度？商业价值如何？ | L轴(L0-L4) + S轴(S0-S5) |
+| **颠覆分析** | 是AI受益者还是被颠覆者？ | 威胁来源+护城河脆弱性 |
+| **范式判断** | 短期炒作还是长期范式转变？ | 五维度范式评估+早期信号 |
+| **生态位置** | 在AI价值链中收税还是交税？ | 价值链层级+价值流向 |
+| **领先信号** | 如何早期识别AI机会/威胁？ | 六类信号+跨公司验证 |
+| **护城河协同** | 传统护城河被AI放大还是削弱？ | 放大/削弱/新护城河分析 |
+| **新进入威胁** | AI原生竞争者威胁多大？ | 威胁评估+应对策略 |
+| **投资转化** | 如何转化为投资决策？ | 评级/估值/Kill Switches |
+
+**抗幻觉机制**: 双锚点规则 + Unknown显式化 + 证据分级(A/B/C)
+
+**新增文件**: 11个YAML技能文件，5,434行代码
+**文件位置**: `skills/ai_assessment/`
+
+---
 
 **v19.10 核心升级（通用高级技能模块）**:
 
@@ -2243,7 +2396,20 @@ Header: x-api-key: zvvMFR4Sel9aNofGijx9D0rwCjiBZ/u99cyy2D1GbGc=
 
 ---
 
-**v19.9 核心升级（零售行业框架）**:
+**v19.9 核心升级（零售行业框架 + 调研启动协议）**:
+
+### 调研启动协议（防遗漏核心机制）⭐⭐⭐⭐⭐
+
+| 组件 | 功能 | 解决的问题 |
+|------|------|-----------|
+| **自动触发** | 检测关键词自动启动 | 防止忘记执行框架 |
+| **行业映射** | 公司→行业→框架 | 确保加载正确框架 |
+| **6步仪式** | 框架→清单→承诺→检查点 | 系统性防遗漏 |
+| **Context恢复** | "继续"触发重读框架 | 防止"完成心理"导致遗漏 |
+
+**新增文件**: `skills/core/research_startup_protocol_v1.yaml`
+
+### 零售行业框架
 
 | 模块 | 文件 | 用途 |
 |------|------|------|

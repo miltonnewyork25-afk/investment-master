@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": ["Bash", "Edit", "Write", "Read", "WebSearch", "WebFetch"],
+    "deny": []
+  },
+  "model": "claude-sonnet-4-20250514"
+}

@@ -1,0 +1,744 @@
+# AI Leading Indicators Framework v1.0
+# AI领先信号体系 - 早期识别与跨公司验证
+# 创建日期: 2026-02-02
+# 设计标准: skill_design_standard_v2.2
+
+version: "1.0"
+contract_version: "skill_design_standard_v2.2"
+created: "2026-02-02"
+
+# ═══════════════════════════════════════════════════════════════
+# 元信息
+# ═══════════════════════════════════════════════════════════════
+
+metadata:
+  skill_id: "ai_assessment.leading_indicators_v1.0"
+  name: "AI领先信号体系"
+  purpose: |
+    建立系统性的AI领先信号监控体系：
+    1. 识别AI机会/威胁的早期信号
+    2. 在多家公司间交叉验证信号
+    3. 预测AI影响的时间节点
+    4. 区分噪音和真实信号
+
+  core_principle: |
+    "最有价值的信号是那些领先于财务表现，且可被跨公司验证的信号。"
+
+# ═══════════════════════════════════════════════════════════════
+# 六类领先信号
+# ═══════════════════════════════════════════════════════════════
+
+signal_categories:
+
+  # ────────────────────────────────────────────────────────────
+  # 1. 技术信号
+  # ────────────────────────────────────────────────────────────
+
+  technology_signals:
+    name: "技术信号"
+    description: "AI技术能力和采用的早期指标"
+    leading_time: "12-24个月"
+
+    signals:
+
+      patent_activity:
+        name: "专利活动"
+        description: "AI相关专利申请数量和质量"
+
+        data_sources:
+          - "USPTO专利数据库"
+          - "Google Patents"
+          - "PatSnap/智慧芽"
+
+        metrics:
+          - metric: "AI专利申请数量(YoY)"
+            bullish: ">30%增长"
+            bearish: "下降或停滞"
+
+          - metric: "专利被引用次数"
+            bullish: "高于行业平均"
+            bearish: "低于行业平均"
+
+          - metric: "专利技术领域分布"
+            analysis: "是否覆盖核心AI技术"
+
+      github_activity:
+        name: "开源活动"
+        description: "公司在开源AI项目的参与度"
+
+        data_sources:
+          - "GitHub"
+          - "Hugging Face"
+          - "Papers with Code"
+
+        metrics:
+          - metric: "官方AI repo stars数"
+            bullish: "快速增长"
+            bearish: "停滞或下降"
+
+          - metric: "AI相关commit频率"
+            bullish: "持续活跃"
+            bearish: "活跃度下降"
+
+          - metric: "开源模型发布"
+            bullish: "有影响力的发布"
+            bearish: "无发布"
+
+      research_output:
+        name: "研究产出"
+        description: "AI研究论文和会议参与"
+
+        data_sources:
+          - "Google Scholar"
+          - "ArXiv"
+          - "NeurIPS/ICML/ICLR会议"
+          - "Semantic Scholar"
+
+        metrics:
+          - metric: "顶会论文数量"
+            bullish: "增加"
+            bearish: "减少"
+
+          - metric: "论文引用数"
+            bullish: "高引用"
+            bearish: "低引用"
+
+          - metric: "与学术机构合作"
+            bullish: "与顶尖AI实验室合作"
+            bearish: "无合作"
+
+      model_benchmarks:
+        name: "模型基准"
+        description: "AI模型在标准基准上的表现"
+
+        data_sources:
+          - "Hugging Face Open LLM Leaderboard"
+          - "HELM"
+          - "MMLU"
+          - "行业特定基准"
+
+        metrics:
+          - metric: "基准排名变化"
+            bullish: "排名上升"
+            bearish: "排名下降"
+
+          - metric: "vs竞争对手差距"
+            bullish: "差距扩大（领先）"
+            bearish: "差距缩小（落后）"
+
+  # ────────────────────────────────────────────────────────────
+  # 2. 人才信号
+  # ────────────────────────────────────────────────────────────
+
+  talent_signals:
+    name: "人才信号"
+    description: "AI人才招聘和流动的指标"
+    leading_time: "6-18个月"
+
+    signals:
+
+      ai_hiring:
+        name: "AI招聘动态"
+        description: "AI相关职位数量和质量"
+
+        data_sources:
+          - "LinkedIn Jobs"
+          - "Glassdoor"
+          - "Indeed"
+          - "公司招聘页面"
+
+        metrics:
+          - metric: "AI岗位数量(YoY)"
+            bullish: ">50%增长"
+            bearish: "下降"
+
+          - metric: "AI岗位/总岗位比例"
+            bullish: "比例上升"
+            bearish: "比例下降"
+
+          - metric: "招聘资历要求"
+            bullish: "招聘高级人才"
+            bearish: "只招初级"
+
+      key_hires:
+        name: "关键人才加入"
+        description: "AI领域关键人物加入"
+
+        data_sources:
+          - "LinkedIn"
+          - "新闻报道"
+          - "公司公告"
+
+        metrics:
+          - metric: "知名AI研究员加入"
+            bullish: "有重量级加入"
+            bearish: "无/有流失"
+
+          - metric: "AI团队规模"
+            bullish: "快速扩张"
+            bearish: "停滞或缩减"
+
+      talent_outflow:
+        name: "人才流出"
+        description: "关键AI人才离职"
+
+        data_sources:
+          - "LinkedIn"
+          - "新闻报道"
+          - "TechCrunch/The Information"
+
+        metrics:
+          - metric: "AI团队离职率"
+            bearish: "高离职率"
+            bullish: "低离职率"
+
+          - metric: "关键人物去向"
+            bearish: "去竞争对手"
+            bullish: "留任或内部晋升"
+
+      compensation_trends:
+        name: "薪酬趋势"
+        description: "AI人才薪酬竞争力"
+
+        data_sources:
+          - "Levels.fyi"
+          - "Glassdoor"
+          - "Blind"
+
+        metrics:
+          - metric: "AI岗位薪酬vs市场"
+            bullish: "高于市场"
+            bearish: "低于市场"
+
+  # ────────────────────────────────────────────────────────────
+  # 3. 生态系统信号
+  # ────────────────────────────────────────────────────────────
+
+  ecosystem_signals:
+    name: "生态系统信号"
+    description: "合作伙伴、生态和联盟的指标"
+    leading_time: "6-12个月"
+
+    signals:
+
+      partnership_announcements:
+        name: "合作伙伴公告"
+        description: "AI相关战略合作"
+
+        data_sources:
+          - "公司新闻稿"
+          - "8-K文件"
+          - "行业新闻"
+
+        metrics:
+          - metric: "AI合作伙伴数量"
+            bullish: "增加"
+            bearish: "减少"
+
+          - metric: "合作伙伴质量"
+            bullish: "与AI领导者合作"
+            bearish: "无重要合作"
+
+      developer_ecosystem:
+        name: "开发者生态"
+        description: "开发者采用和活跃度"
+
+        data_sources:
+          - "API调用量（如有披露）"
+          - "开发者社区活跃度"
+          - "Stack Overflow讨论"
+
+        metrics:
+          - metric: "API/SDK采用"
+            bullish: "快速增长"
+            bearish: "停滞"
+
+          - metric: "第三方集成数量"
+            bullish: "增加"
+            bearish: "减少"
+
+      industry_consortiums:
+        name: "行业联盟"
+        description: "AI标准和联盟参与"
+
+        data_sources:
+          - "行业协会"
+          - "标准组织"
+          - "AI安全联盟"
+
+        metrics:
+          - metric: "参与AI标准制定"
+            bullish: "领导角色"
+            bearish: "缺席"
+
+  # ────────────────────────────────────────────────────────────
+  # 4. 客户信号
+  # ────────────────────────────────────────────────────────────
+
+  customer_signals:
+    name: "客户信号"
+    description: "客户采用和反馈的指标"
+    leading_time: "3-9个月"
+
+    signals:
+
+      customer_announcements:
+        name: "客户案例公告"
+        description: "AI产品/服务客户采用"
+
+        data_sources:
+          - "公司案例研究"
+          - "客户证言"
+          - "新闻报道"
+
+        metrics:
+          - metric: "AI客户数量"
+            bullish: "快速增长"
+            bearish: "停滞"
+
+          - metric: "客户质量（Logo）"
+            bullish: "获得Fortune 500"
+            bearish: "只有小客户"
+
+      product_reviews:
+        name: "产品评价"
+        description: "AI功能的用户反馈"
+
+        data_sources:
+          - "G2/Capterra（B2B）"
+          - "App Store/Play Store（B2C）"
+          - "Reddit/Twitter"
+
+        metrics:
+          - metric: "AI功能满意度"
+            bullish: "正面为主"
+            bearish: "负面为主"
+
+          - metric: "AI功能使用率"
+            bullish: "高渗透率"
+            bearish: "低采用"
+
+      churn_analysis:
+        name: "流失分析"
+        description: "AI相关的客户流失/获取"
+
+        data_sources:
+          - "财报披露"
+          - "管理层commentary"
+          - "第三方数据"
+
+        metrics:
+          - metric: "AI功能对retention影响"
+            bullish: "降低流失"
+            bearish: "无影响或增加"
+
+          - metric: "因AI流失到竞争者"
+            bearish: "有明确案例"
+            bullish: "无此情况"
+
+  # ────────────────────────────────────────────────────────────
+  # 5. 竞争对手信号
+  # ────────────────────────────────────────────────────────────
+
+  competitor_signals:
+    name: "竞争对手信号"
+    description: "竞争对手AI动态的指标"
+    leading_time: "3-12个月"
+
+    signals:
+
+      competitor_launches:
+        name: "竞争者产品发布"
+        description: "竞争对手AI产品/功能"
+
+        data_sources:
+          - "竞争者公告"
+          - "行业新闻"
+          - "产品比较网站"
+
+        metrics:
+          - metric: "竞争者AI功能发布"
+            impact: "评估是否被追赶"
+
+          - metric: "功能差异化程度"
+            bullish: "保持领先"
+            bearish: "被追平或超越"
+
+      competitive_positioning:
+        name: "竞争定位"
+        description: "市场中的AI竞争定位"
+
+        data_sources:
+          - "Gartner Magic Quadrant"
+          - "Forrester Wave"
+          - "IDC报告"
+
+        metrics:
+          - metric: "AI能力评分变化"
+            bullish: "上升"
+            bearish: "下降"
+
+          - metric: "vs竞争者相对位置"
+            bullish: "领先"
+            bearish: "落后"
+
+      disruptor_tracking:
+        name: "颠覆者追踪"
+        description: "AI原生竞争者动态"
+
+        data_sources:
+          - "Crunchbase"
+          - "PitchBook"
+          - "YC/a16z portfolio"
+
+        metrics:
+          - metric: "AI创业公司融资"
+            bearish: "该领域大额融资"
+            analysis: "可能威胁incumbent"
+
+          - metric: "创业公司增长速度"
+            bearish: "快速增长"
+            analysis: "评估威胁程度"
+
+  # ────────────────────────────────────────────────────────────
+  # 6. 财务先行信号
+  # ────────────────────────────────────────────────────────────
+
+  financial_leading_signals:
+    name: "财务先行信号"
+    description: "财务数据中的AI早期指标"
+    leading_time: "0-6个月"
+
+    signals:
+
+      ai_capex:
+        name: "AI资本开支"
+        description: "AI相关投资支出"
+
+        data_sources:
+          - "10-K/10-Q"
+          - "业绩会"
+          - "管理层guidance"
+
+        metrics:
+          - metric: "AI CapEx / 总CapEx"
+            bullish: "占比上升"
+            bearish: "占比下降"
+
+          - metric: "AI CapEx YoY增长"
+            bullish: ">20%增长"
+            bearish: "下降"
+
+      ai_revenue:
+        name: "AI相关收入"
+        description: "AI产品/服务收入"
+
+        data_sources:
+          - "财报分部披露"
+          - "业绩会commentary"
+          - "管理层guidance"
+
+        metrics:
+          - metric: "AI收入占比"
+            bullish: "上升"
+            bearish: "停滞"
+
+          - metric: "AI收入增速vs整体"
+            bullish: "AI增速>整体"
+            bearish: "AI增速≤整体"
+
+      efficiency_metrics:
+        name: "效率指标"
+        description: "AI带来的效率改善"
+
+        data_sources:
+          - "财报"
+          - "Non-GAAP指标"
+          - "管理层commentary"
+
+        metrics:
+          - metric: "收入/员工变化"
+            bullish: "因AI提升"
+            bearish: "无变化"
+
+          - metric: "毛利率变化"
+            bullish: "因AI扩张"
+            bearish: "压缩"
+
+# ═══════════════════════════════════════════════════════════════
+# 跨公司验证机制
+# ═══════════════════════════════════════════════════════════════
+
+cross_validation_mechanism:
+
+  principle: |
+    "单一公司的信号可能是噪音，多公司一致的信号更可能是真实趋势。"
+
+  validation_methods:
+
+    industry_consistency:
+      name: "行业一致性验证"
+      description: "检查信号是否在行业内多家公司出现"
+
+      method: |
+        1. 识别目标公司的可比公司（3-5家）
+        2. 在可比公司中检查同一信号
+        3. 如果≥50%公司出现类似信号，信号可信度提升
+        4. 如果只有单一公司出现，降低权重
+
+      example: |
+        信号：AI招聘大幅增加
+        验证：检查同行业其他公司是否也在大力招聘AI人才
+        结论：如果是行业趋势，则可能是行业机会；如果是单一公司，可能是个股alpha
+
+    value_chain_confirmation:
+      name: "价值链确认"
+      description: "通过上下游公司验证信号"
+
+      method: |
+        1. 识别目标公司的上下游
+        2. 检查上下游是否有相关信号
+        3. 上下游一致的信号更可信
+
+      example: |
+        信号：软件公司AI收入快速增长
+        验证：检查其客户（企业IT支出）是否确实在增加AI预算
+        结论：如果客户端支出增加与供应商收入一致，信号可信
+
+    temporal_sequence:
+      name: "时间序列验证"
+      description: "检查信号的时间顺序是否合理"
+
+      method: |
+        1. 领先信号应在滞后信号之前出现
+        2. 检查信号出现的时间顺序
+        3. 不符合逻辑的时间序列降低可信度
+
+      expected_sequence:
+        - "技术信号（专利/研究）→ 人才信号（招聘）→ 产品信号（发布）→ 财务信号（收入）"
+
+    contradictory_evidence:
+      name: "矛盾证据检查"
+      description: "主动寻找与信号矛盾的证据"
+
+      method: |
+        1. 对每个看多信号，寻找看空证据
+        2. 对每个看空信号，寻找看多证据
+        3. 评估矛盾证据的强度
+
+      output: "列出支持和反对的证据，给出净评估"
+
+  validation_scorecard: |
+    信号验证记分卡：
+
+    | 验证维度 | 权重 | 得分 | 说明 |
+    |---------|------|------|------|
+    | 行业一致性 | 0.30 | X/5 | X/5家可比公司确认 |
+    | 价值链确认 | 0.25 | X/5 | 上下游是否一致 |
+    | 时间序列 | 0.20 | X/5 | 时间顺序是否合理 |
+    | 矛盾证据 | 0.25 | X/5 | 是否有强反证 |
+    | **总分** | 1.00 | X/5 | |
+
+    解读：
+    - ≥4.0: 高可信度信号
+    - 3.0-4.0: 中等可信度
+    - <3.0: 低可信度，需更多验证
+
+# ═══════════════════════════════════════════════════════════════
+# 信号强度评估
+# ═══════════════════════════════════════════════════════════════
+
+signal_strength_assessment:
+
+  strength_levels:
+    strong:
+      score: 5
+      description: "强信号"
+      criteria:
+        - "多个数据源确认"
+        - "跨公司验证通过"
+        - "时间序列合理"
+        - "无强烈矛盾证据"
+
+    moderate:
+      score: 3
+      description: "中等信号"
+      criteria:
+        - "单一数据源确认"
+        - "部分跨公司验证"
+        - "有轻微矛盾证据"
+
+    weak:
+      score: 1
+      description: "弱信号"
+      criteria:
+        - "数据源可信度低"
+        - "跨公司验证失败"
+        - "有强烈矛盾证据"
+
+  noise_filtering:
+    description: "过滤噪音信号的方法"
+
+    noise_indicators:
+      - "只有公司自己说，无第三方验证"
+      - "与财务数据不一致"
+      - "竞争对手无类似动作"
+      - "过于模糊或通用的表述"
+      - "缺乏具体数据支撑"
+
+    filter_rule: |
+      如果信号命中≥2个噪音指标，标记为"需进一步验证"
+      如果信号命中≥3个噪音指标，标记为"可能是噪音"
+
+# ═══════════════════════════════════════════════════════════════
+# 监控计划模板
+# ═══════════════════════════════════════════════════════════════
+
+monitoring_plan_template:
+
+  signal_monitoring_card: |
+    ## 信号监控卡
+
+    **公司**: [公司名]
+    **信号类型**: [类型]
+    **信号内容**: [描述]
+    **首次发现**: [日期]
+    **当前状态**: 新发现 / 追踪中 / 已确认 / 已失效
+
+    ### 监控指标
+
+    | 指标 | 当前值 | 目标值 | 下次检查 |
+    |------|--------|--------|---------|
+    | [指标1] | | | YYYY-MM-DD |
+    | [指标2] | | | YYYY-MM-DD |
+
+    ### 跨公司验证
+
+    | 可比公司 | 类似信号? | 强度 | 更新日期 |
+    |---------|----------|------|---------|
+    | [公司1] | 是/否 | 强/中/弱 | |
+    | [公司2] | 是/否 | 强/中/弱 | |
+
+    ### 触发条件
+
+    - **升级条件**: [描述什么情况下信号升级]
+    - **降级条件**: [描述什么情况下信号降级]
+    - **失效条件**: [描述什么情况下信号失效]
+
+  monitoring_frequency:
+    technology_signals: "季度"
+    talent_signals: "月度"
+    ecosystem_signals: "月度"
+    customer_signals: "季度"
+    competitor_signals: "月度"
+    financial_signals: "季度（随财报）"
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+
+  ## AI领先信号分析
+
+  **公司**: [公司名] ([代码])
+  **评估日期**: YYYY-MM-DD
+
+  ### 信号汇总
+
+  | 信号类别 | 关键信号 | 方向 | 强度 | 领先时间 |
+  |---------|---------|------|------|---------|
+  | 技术 | [信号] | 🟢/🔴 | 强/中/弱 | XX月 |
+  | 人才 | [信号] | 🟢/🔴 | 强/中/弱 | XX月 |
+  | 生态 | [信号] | 🟢/🔴 | 强/中/弱 | XX月 |
+  | 客户 | [信号] | 🟢/🔴 | 强/中/弱 | XX月 |
+  | 竞争 | [信号] | 🟢/🔴 | 强/中/弱 | XX月 |
+  | 财务 | [信号] | 🟢/🔴 | 强/中/弱 | XX月 |
+
+  ### 跨公司验证
+
+  | 验证维度 | 得分 | 说明 |
+  |---------|------|------|
+  | 行业一致性 | X/5 | |
+  | 价值链确认 | X/5 | |
+  | 时间序列 | X/5 | |
+  | 矛盾证据 | X/5 | |
+  | **验证总分** | **X/5** | |
+
+  ### 关键监控指标
+
+  | 指标 | 当前值 | 触发阈值 | 下次检查 |
+  |------|--------|---------|---------|
+  | [指标1] | | | |
+  | [指标2] | | | |
+
+  ### 信号强度评估
+
+  **整体信号方向**: 偏多 / 中性 / 偏空
+  **信号可信度**: 高 / 中 / 低
+  **建议行动**: [描述]
+
+# ═══════════════════════════════════════════════════════════════
+# 输出合约
+# ═══════════════════════════════════════════════════════════════
+
+output_contract:
+
+  required_outputs:
+    signals_by_category:
+      type: "object"
+      schema:
+        technology: "array of signal objects"
+        talent: "array of signal objects"
+        ecosystem: "array of signal objects"
+        customer: "array of signal objects"
+        competitor: "array of signal objects"
+        financial: "array of signal objects"
+
+    signal_object:
+      type: "object"
+      schema:
+        signal: "string"
+        direction: "enum[bullish|bearish|neutral]"
+        strength: "enum[strong|moderate|weak]"
+        leading_time: "string"
+        data_source: "string"
+
+    cross_validation:
+      type: "object"
+      schema:
+        industry_consistency: "float 0-5"
+        value_chain_confirmation: "float 0-5"
+        temporal_sequence: "float 0-5"
+        contradictory_evidence: "float 0-5"
+        total_score: "float 0-5"
+
+    monitoring_metrics:
+      type: "array"
+      items:
+        metric: "string"
+        current_value: "string"
+        trigger_threshold: "string"
+        next_check: "date"
+
+    overall_assessment:
+      type: "object"
+      schema:
+        signal_direction: "enum[bullish|neutral|bearish]"
+        confidence: "enum[high|medium|low]"
+        recommended_action: "string"
+
+# ═══════════════════════════════════════════════════════════════
+# 版本历史
+# ═══════════════════════════════════════════════════════════════
+
+version_history:
+  v1.0:
+    date: "2026-02-02"
+    changes:
+      - "初始版本"
+      - "六类领先信号定义"
+      - "跨公司验证机制"
+      - "信号强度评估"
+      - "噪音过滤规则"
+      - "监控计划模板"

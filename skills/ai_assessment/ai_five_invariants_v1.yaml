@@ -1,0 +1,413 @@
+# AI Five Invariants v1.0
+# AI五不变量评估体系
+# 创建日期: 2026-02-02
+
+version: "1.0"
+created: "2026-02-02"
+
+metadata:
+  skill_id: "ai_assessment.five_invariants_v1.0"
+  name: "AI五不变量评估体系"
+  purpose: "跨行业稳定的AI评估判据，确保评估一致性"
+
+# ═══════════════════════════════════════════════════════════════
+# 五不变量定义
+# ═══════════════════════════════════════════════════════════════
+
+invariants:
+
+  # ────────────────────────────────────────────────────────────
+  # 1. 可验证性
+  # ────────────────────────────────────────────────────────────
+
+  verifiability:
+    id: "INV-01"
+    name: "可验证性 (Verifiability)"
+    question: "AI系统的输出/决策是否可验证、可审计、可追溯？"
+
+    why_matters: |
+      可验证性决定了AI是否可信、可治理、可改进。
+      不可验证的AI系统是黑箱，风险不可控。
+
+    scoring:
+      score_0:
+        description: "不可验证"
+        criteria:
+          - "AI输出无法回放/审计"
+          - "决策过程不可追溯"
+          - "无日志/记录机制"
+        example: "销售员用ChatGPT生成邮件，无记录"
+
+      score_1:
+        description: "部分可验证"
+        criteria:
+          - "有日志但不完整"
+          - "可追溯但难以审计"
+          - "验证依赖人工"
+        example: "有AI决策日志，但需要技术人员解读"
+
+      score_2:
+        description: "完全可验证"
+        criteria:
+          - "完整的决策日志"
+          - "可自动化审计"
+          - "有验证/测试框架"
+          - "可解释性机制"
+        example: "贷款AI有完整审计追踪，可replay任何决策"
+
+    evidence_examples:
+      A_grade:
+        - "10-K披露AI治理/审计机制"
+        - "监管审计报告"
+        - "ISO/IEC 42001认证"
+      B_grade:
+        - "业绩会披露AI监控机制"
+        - "技术白皮书描述"
+      C_grade:
+        - "新闻报道"
+        - "第三方估计"
+
+  # ────────────────────────────────────────────────────────────
+  # 2. 治理与责任
+  # ────────────────────────────────────────────────────────────
+
+  governance:
+    id: "INV-02"
+    name: "治理与责任 (Governance/Liability)"
+    question: "AI系统有没有清晰的权限、回滚、事故响应和责任边界？"
+
+    why_matters: |
+      AI出错谁负责？能否快速回滚？有没有应急预案？
+      治理体系决定AI风险是否可控。
+
+    scoring:
+      score_0:
+        description: "无治理"
+        criteria:
+          - "无AI使用政策"
+          - "无权限控制"
+          - "无回滚机制"
+          - "无事故响应预案"
+        example: "员工自行使用AI工具，公司无政策"
+
+      score_1:
+        description: "基础治理"
+        criteria:
+          - "有基本AI使用政策"
+          - "有权限控制"
+          - "有手动回滚能力"
+          - "事故响应依赖临时决策"
+        example: "有AI使用指南，出问题手动处理"
+
+      score_2:
+        description: "成熟治理"
+        criteria:
+          - "完整的AI治理框架"
+          - "分层权限与审批"
+          - "自动化回滚机制"
+          - "有文档化的事故响应流程"
+          - "清晰的责任边界"
+        example: "对标NIST AI RMF的治理体系"
+
+    industry_specific:
+      banking_finance:
+        extra_requirements:
+          - "符合SR 11-7模型风险管理"
+          - "有模型验证流程"
+          - "有独立的模型验证团队"
+        reference: "SR 11-7, OCC 2011-12"
+
+      manufacturing_ot:
+        extra_requirements:
+          - "OT安全架构"
+          - "变更管理流程"
+          - "安全分区(zones & conduits)"
+        reference: "NIST SP 800-82, IEC 62443"
+
+      healthcare:
+        extra_requirements:
+          - "FDA AI/ML指南合规"
+          - "临床验证流程"
+          - "患者安全协议"
+
+  # ────────────────────────────────────────────────────────────
+  # 3. 互补资产
+  # ────────────────────────────────────────────────────────────
+
+  complementary_assets:
+    id: "INV-03"
+    name: "互补资产 (Complementary Assets)"
+    question: "公司是否拥有AI发挥价值所需的关键资产？"
+
+    why_matters: |
+      AI本身可能被commoditize，真正的护城河来自互补资产。
+      数据、分发渠道、客户关系、集成能力等决定AI能否转化为竞争优势。
+
+    key_assets:
+      data:
+        description: "独特的、规模化的、持续产生的数据"
+        scoring:
+          high: "拥有竞争对手无法获取的独特数据"
+          medium: "有大规模数据但非独家"
+          low: "数据有限或可被复制"
+
+      distribution:
+        description: "触达客户的渠道"
+        scoring:
+          high: "垄断或强势渠道位置"
+          medium: "有渠道但有竞争"
+          low: "渠道弱或依赖第三方"
+
+      customer_relationships:
+        description: "深度的客户关系和信任"
+        scoring:
+          high: "长期深度客户关系"
+          medium: "有客户基础但关系一般"
+          low: "客户关系薄弱"
+
+      integration_capability:
+        description: "将AI集成到业务流程的能力"
+        scoring:
+          high: "强大的系统集成能力"
+          medium: "有一定集成能力"
+          low: "集成能力弱"
+
+      installed_base:
+        description: "现有装机量/用户基础"
+        scoring:
+          high: "大规模装机量/用户"
+          medium: "中等规模"
+          low: "用户基础小"
+
+    scoring:
+      score_0: "无显著互补资产"
+      score_1: "有1-2项中等强度互补资产"
+      score_2: "有多项强互补资产形成协同"
+
+  # ────────────────────────────────────────────────────────────
+  # 4. 单位经济
+  # ────────────────────────────────────────────────────────────
+
+  unit_economics:
+    id: "INV-04"
+    name: "单位经济 (Unit Economics)"
+    question: "AI规模扩大是更赚钱还是更亏钱？"
+
+    why_matters: |
+      AI不是免费的。推理成本、集成成本、维护成本、合规成本、安全成本。
+      如果规模越大越亏，AI就是一种"税"而非资产。
+
+    cost_components:
+      inference_cost:
+        description: "AI推理/计算成本"
+        questions:
+          - "每次API调用成本多少？"
+          - "成本随规模如何变化？"
+          - "有没有成本优化路径？"
+
+      integration_cost:
+        description: "AI集成与定制成本"
+        questions:
+          - "将AI集成到业务需要多少投入？"
+          - "每新增一个用例的边际成本？"
+
+      maintenance_cost:
+        description: "AI系统维护成本"
+        questions:
+          - "模型更新/重训练频率和成本？"
+          - "数据管道维护成本？"
+
+      compliance_cost:
+        description: "合规与审计成本"
+        questions:
+          - "满足监管要求的成本？"
+          - "审计和认证成本？"
+
+      human_oversight_cost:
+        description: "人工监督成本"
+        questions:
+          - "需要多少人监督AI？"
+          - "人工复核的成本？"
+
+    scoring:
+      score_0:
+        description: "规模越大越亏"
+        criteria:
+          - "AI成本增长快于收益"
+          - "无法通过规模降低单位成本"
+          - "AI是成本中心"
+
+      score_1:
+        description: "大致持平"
+        criteria:
+          - "AI成本与收益大致匹配"
+          - "规模效应不明显"
+
+      score_2:
+        description: "规模越大越赚"
+        criteria:
+          - "AI成本有明显的规模效应"
+          - "边际成本递减"
+          - "AI创造的价值远超成本"
+
+    industry_benchmarks:
+      saas: "AI功能应提升ARPU或降低服务成本"
+      financial: "AI应降低风险成本或提升风险调整收益"
+      manufacturing: "AI应降低单位生产成本或提升良率"
+
+  # ────────────────────────────────────────────────────────────
+  # 5. 边界与议价权
+  # ────────────────────────────────────────────────────────────
+
+  boundary_shift:
+    id: "INV-05"
+    name: "边界与议价权 (Boundary Shift)"
+    question: "AI是让公司收税还是交税？价值链位置是强化还是弱化？"
+
+    why_matters: |
+      AI可能重新定义谁在价值链中占据有利位置。
+      有些公司会成为AI平台收税，有些公司会被去中介化。
+
+    scenarios:
+
+      collecting_ai_tax:
+        description: "成为AI平台/基础设施，向其他公司收税"
+        indicators:
+          - "其他公司必须使用其AI能力"
+          - "API/平台收入增长"
+          - "形成生态锁定"
+          - "有定价权"
+        examples:
+          - "NVIDIA的GPU垄断"
+          - "OpenAI的API定价权"
+          - "Microsoft的AI平台"
+
+      neutral:
+        description: "AI不改变价值链位置"
+        indicators:
+          - "AI是效率工具"
+          - "不改变与上下游关系"
+          - "竞争格局基本不变"
+
+      paying_ai_tax:
+        description: "被迫向AI平台付费或被去中介化"
+        indicators:
+          - "依赖第三方AI能力"
+          - "成本受AI供应商影响"
+          - "中间商角色被弱化"
+        examples:
+          - "内容网站被AI搜索绕过"
+          - "中间商被AI直连替代"
+          - "传统软件被AI Agent替代"
+
+    scoring:
+      score_0:
+        description: "交税/被去中介化"
+        criteria:
+          - "价值链位置被弱化"
+          - "利润池向其他玩家转移"
+          - "被AI平台依赖"
+
+      score_1:
+        description: "中性"
+        criteria:
+          - "价值链位置不变"
+          - "AI是内部工具"
+
+      score_2:
+        description: "收税/强化位置"
+        criteria:
+          - "成为AI平台/基础设施"
+          - "其他公司依赖"
+          - "有AI定价权"
+
+# ═══════════════════════════════════════════════════════════════
+# 综合评分
+# ═══════════════════════════════════════════════════════════════
+
+aggregate_scoring:
+  formula: |
+    总分 = Σ(各不变量分数) = 0-10分
+
+    解读：
+    - 8-10: 优秀的AI基础
+    - 6-7: 良好的AI基础
+    - 4-5: 一般的AI基础
+    - 0-3: 薄弱的AI基础或面临AI风险
+
+  industry_weights:
+    banking_finance:
+      governance: 1.5
+      verifiability: 1.3
+      default: 1.0
+
+    manufacturing_ot:
+      verifiability: 1.3
+      governance: 1.3
+      default: 1.0
+
+    real_estate:
+      complementary_assets: 1.5
+      unit_economics: 1.3
+      default: 1.0
+
+    technology:
+      boundary_shift: 1.5
+      unit_economics: 1.3
+      default: 1.0
+
+# ═══════════════════════════════════════════════════════════════
+# 输出模板
+# ═══════════════════════════════════════════════════════════════
+
+output_template: |
+  ## 五不变量评估
+
+  | 不变量 | 分数 | 证据等级 | 关键证据 |
+  |--------|------|---------|---------|
+  | 可验证性 | X/2 | A/B/C | [简述] |
+  | 治理与责任 | X/2 | A/B/C | [简述] |
+  | 互补资产 | X/2 | A/B/C | [简述] |
+  | 单位经济 | X/2 | A/B/C | [简述] |
+  | 边界议价权 | X/2 | A/B/C | [简述] |
+  | **总分** | **X/10** | | |
+
+  ### 行业权重调整
+
+  **行业**: [行业名]
+  **调整后总分**: X/10
+
+  ### 各项详细评估
+
+  [对每项不变量的详细分析]
+
+output_contract:
+  invariants:
+    type: "object"
+    schema:
+      Verifiability:
+        score: "int 0-2"
+        evidence_grade: "string"
+        evidence: "string"
+      Governance:
+        score: "int 0-2"
+        evidence_grade: "string"
+        evidence: "string"
+      ComplementaryAssets:
+        score: "int 0-2"
+        evidence_grade: "string"
+        evidence: "string"
+      UnitEconomics:
+        score: "int 0-2"
+        evidence_grade: "string"
+        evidence: "string"
+      BoundaryShift:
+        score: "int 0-2"
+        evidence_grade: "string"
+        evidence: "string"
+  total_score:
+    type: "int"
+    range: "0-10"
+  adjusted_score:
+    type: "float"
+    description: "行业权重调整后"

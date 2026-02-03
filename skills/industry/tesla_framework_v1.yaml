@@ -1,0 +1,939 @@
+# Tesla专用分析框架 v1.0
+# Tesla Analysis Framework
+#
+# 创建日期: 2026-02-02
+# 用途: Tesla多维度跨界分析专用框架
+# 版本: v1.0
+# 基础: master_investment_framework_v1 + ai_integration_protocol_v1
+
+---
+metadata:
+  name: tesla_framework
+  version: "1.0"
+  created: "2026-02-02"
+  description: "Tesla五维度跨界分析框架（汽车+能源+AI+机器人+充电网络）"
+  complexity_coefficient: 1.9
+  minimum_words: 114000
+
+---
+# ==========================================
+# 第一部分：Tesla公司定位
+# ==========================================
+
+company_positioning:
+  description: |
+    Tesla是全球最复杂的上市公司之一，跨越5个业务维度。
+    每个维度需要不同的分析框架和估值方法。
+
+  business_dimensions:
+    dimension_1:
+      name: "汽车制造"
+      current_revenue_share: 82%
+      strategic_weight: 50%
+      framework: "OT制造 + PVM拆解 + 产能分析"
+      valuation_method: "DCF（制造业倍数）"
+      key_metrics:
+        - 汽车毛利率
+        - 产能利用率
+        - 单车成本（COGS/车）
+        - 交付量增长
+        - 中国/欧洲/美国份额
+
+    dimension_2:
+      name: "能源存储"
+      current_revenue_share: 11%
+      strategic_weight: 15%
+      framework: "GWh部署 × ASP + 学习曲线"
+      valuation_method: "增长率×收入倍数"
+      key_metrics:
+        - GWh部署量
+        - 能源毛利率
+        - Megapack积压订单
+        - 公用事业客户增长
+
+    dimension_3:
+      name: "服务/软件"
+      current_revenue_share: 7%
+      strategic_weight: 10%
+      framework: "ARR思维 + 订阅转化"
+      valuation_method: "SaaS倍数"
+      key_metrics:
+        - FSD订阅渗透率
+        - FSD收入
+        - Supercharger网络收入
+        - 保险收入
+
+    dimension_4:
+      name: "Robotaxi(期权)"
+      current_revenue_share: 0%
+      strategic_weight: 15%
+      framework: "rNPV + 概率加权"
+      valuation_method: "期权定价"
+      key_metrics:
+        - FSD v13进展
+        - 无监督里程
+        - 监管批准进度
+        - Cybercab成本预测
+
+    dimension_5:
+      name: "Optimus(期权)"
+      current_revenue_share: 0%
+      strategic_weight: 10%
+      framework: "蒙特卡洛 + TAM渗透"
+      valuation_method: "期权定价"
+      key_metrics:
+        - 任务完成率
+        - 量产成本预测
+        - 工厂部署数量
+        - 竞争对手进展
+
+  complexity_analysis:
+    base_coefficient: 1.2
+    adjustments:
+      - factor: "AI自动驾驶"
+        adjustment: "+0.3"
+        reason: "FSD是核心竞争力，需深度AI评估"
+      - factor: "能源业务"
+        adjustment: "+0.1"
+        reason: "独立增长引擎，需单独估值"
+      - factor: "垂直整合"
+        adjustment: "+0.2"
+        reason: "电池→制造→软件→充电全链"
+      - factor: "地缘政治"
+        adjustment: "+0.1"
+        reason: "中国工厂+中国竞争"
+      - factor: "多工厂复杂度"
+        adjustment: "+0.1"
+        reason: "Fremont/上海/柏林/德州"
+      - factor: "单公司"
+        adjustment: "-0.1"
+        reason: "无需跨公司对比"
+    final_coefficient: 1.9
+    minimum_words: 114000
+
+---
+# ==========================================
+# 第二部分：5阶段分析框架
+# ==========================================
+
+five_phase_framework:
+  phase_1:
+    name: "多维度生态定位"
+    weight: 15%
+    target_words: 27000
+
+    modules:
+      module_1:
+        name: "5业态生态图谱"
+        source: "新增"
+        target_words: 8000
+        required: true
+        output:
+          - "5个Mermaid图（每业态一个）"
+          - "跨业态协同关系图"
+        content:
+          - 汽车生态（OEM+Tier1+零部件）
+          - 能源生态（公用事业+安装商+电网）
+          - AI生态（芯片+数据+算法）
+          - 充电生态（网络+支付+电力）
+          - 机器人生态（制造+应用）
+
+      module_2:
+        name: "EV竞争地图"
+        source: "通用竞争分析"
+        target_words: 6000
+        required: true
+        output:
+          - "竞争者分类矩阵"
+          - "威胁等级评估"
+        content:
+          - 传统OEM（VW/GM/Ford）
+          - 中国玩家（BYD/蔚小理）
+          - 新势力（Rivian/Lucid）
+          - 科技公司（Apple/Waymo）
+
+      module_3:
+        name: "AI产业链定位"
+        source: "ai_ecosystem_position"
+        target_words: 5000
+        required: true
+        output:
+          - "L0-L4价值链位置"
+          - "价值流向分析"
+        content:
+          - 数据层（行驶数据规模）
+          - 算法层（FSD神经网络）
+          - 计算层（Dojo+推理芯片）
+          - 应用层（FSD+Optimus）
+
+      module_4:
+        name: "供应链控制分析"
+        source: "OT制造框架"
+        target_words: 5000
+        required: true
+        output:
+          - "垂直整合深度评估"
+          - "关键供应商依赖"
+        content:
+          - 电池供应链（CATL/Panasonic/内部）
+          - 芯片供应链（NVIDIA/自研）
+          - 关键材料（锂/钴/稀土）
+
+      module_5:
+        name: "历史Lessons检索"
+        source: "通用"
+        target_words: 1000
+        required: true
+        output:
+          - "≥3条相关教训"
+        content:
+          - 过往Tesla分析经验
+          - EV行业分析经验
+          - AI评估经验
+
+    checkpoint:
+      name: "Phase 1 检查点"
+      blocking: true
+      criteria:
+        - "5业态生态图谱完成（5个Mermaid图）"
+        - "竞争地图标注AI威胁等级"
+        - "AI产业链位置明确"
+        - "供应链控制评分完成"
+        - "Lessons检索≥3条"
+
+  phase_2:
+    name: "多源信号追踪"
+    weight: 20%
+    target_words: 36000
+
+    modules:
+      module_6:
+        name: "EV周期雷达(6层)"
+        source: "memory_cycle改造"
+        target_words: 8000
+        required: true
+        output:
+          - "6层信号状态"
+          - "周期位置判断"
+        layers:
+          layer_minus_1:
+            name: "终端需求"
+            lead_time: "18-24月"
+            signals:
+              - EV渗透率趋势
+              - 消费者购买意向
+              - 补贴政策变化
+          layer_0:
+            name: "订单/积压"
+            lead_time: "12-18月"
+            signals:
+              - Tesla订单积压
+              - 竞争对手订单
+              - 等待时间
+          layer_0_5:
+            name: "产能建设"
+            lead_time: "9-15月"
+            signals:
+              - Gigafactory产能
+              - 竞争对手产能
+              - 设备订单
+          layer_1:
+            name: "CapEx计划"
+            lead_time: "6-12月"
+            signals:
+              - Tesla CapEx指引
+              - 工厂扩张计划
+          layer_2:
+            name: "库存/价格"
+            lead_time: "0-6月"
+            signals:
+              - Tesla库存天数
+              - 降价/促销频率
+              - 竞争对手价格
+          layer_3:
+            name: "财务确认"
+            lead_time: "滞后"
+            signals:
+              - 交付量
+              - 收入
+              - 毛利率
+
+      module_7:
+        name: "L轴评估"
+        source: "ai_implementation_ladder"
+        target_words: 5000
+        required: true
+        output:
+          - "FSD L轴级别"
+          - "制造AI L轴级别"
+          - "证据分级"
+        focus_areas:
+          - FSD自动驾驶级别
+          - 工厂AI自动化级别
+          - 能源AI优化级别
+
+      module_8:
+        name: "S轴评估"
+        source: "ai_commercial_stage"
+        target_words: 5000
+        required: true
+        output:
+          - "FSD S轴阶段"
+          - "商业化证据"
+        focus_areas:
+          - FSD收入贡献
+          - 订阅转化率
+          - 成本节约量化
+
+      module_9:
+        name: "五不变量评分"
+        source: "ai_five_invariants"
+        target_words: 6000
+        required: true
+        output:
+          - "5项评分(1-5)"
+          - "证据支撑"
+          - "雷达图"
+        invariants:
+          - 可验证性（FSD安全性）
+          - 治理（责任边界）
+          - 互补资产（数据+工厂+品牌）
+          - 单位经济（FSD边际成本）
+          - 边界议价权（生态控制力）
+
+      module_10:
+        name: "分析师全景表"
+        source: "通用"
+        target_words: 6000
+        required: true
+        output:
+          - "10-15位分析师观点"
+          - "评级分布"
+          - "目标价范围"
+        content:
+          - 多头代表（ARK/Wedbush）
+          - 空头代表（GLJ/Bernstein）
+          - 主流机构（Morgan Stanley/Goldman）
+
+      module_11:
+        name: "市场核心分歧"
+        source: "通用"
+        target_words: 4000
+        required: true
+        output:
+          - "≥5个核心争议点"
+        topics:
+          - FSD能否实现L4？
+          - Robotaxi何时商业化？
+          - 中国份额能否稳住？
+          - Optimus是噱头还是真机会？
+          - Musk注意力分散影响？
+
+      module_12:
+        name: "最新财报分析"
+        source: "新增"
+        target_words: 8000
+        required: true
+        output:
+          - "Q4 2025财报解读"
+          - "关键变化识别"
+          - "管理层指引对比"
+        content:
+          - 收入/毛利率趋势
+          - 分业务表现
+          - 现金流状况
+          - 管理层言论解读
+
+    checkpoint:
+      name: "Phase 2 检查点"
+      blocking: true
+      criteria:
+        - "6层EV周期信号完成"
+        - "L轴评估有A/B级证据"
+        - "S轴评估有A/B级证据"
+        - "五不变量全部评分"
+        - "分析师观点≥10位"
+        - "核心分歧≥5个"
+        - "最新财报分析完成"
+
+  phase_3:
+    name: "5维度深度分析"
+    weight: 35%
+    target_words: 63000
+
+    modules:
+      module_13:
+        name: "制造护城河评分"
+        source: "moat_deep_analysis + OT"
+        target_words: 12000
+        required: true
+        output:
+          - "制造护城河6维评分"
+          - "vs竞争对手对比"
+        dimensions:
+          - 成本领先（单车成本）
+          - 垂直整合（电池→软件）
+          - 产能规模（全球Gigafactory）
+          - 制造创新（一体压铸/Unboxed）
+          - 供应链控制
+          - 学习曲线
+
+      module_14:
+        name: "AI数据飞轮分析"
+        source: "ai_traditional_moat_synergy"
+        target_words: 15000
+        required: true
+        output:
+          - "数据飞轮机制图"
+          - "累积优势量化"
+        content:
+          - 数据规模（累计里程）
+          - 数据质量（边缘案例）
+          - 模型迭代速度
+          - 竞争对手差距
+          - 飞轮加速/减速判断
+
+      module_15:
+        name: "5维度协同矩阵"
+        source: "新增"
+        target_words: 10000
+        required: true
+        output:
+          - "5×5协同矩阵"
+          - "正协同/冲突识别"
+        matrix_dimensions:
+          - 汽车 × 能源
+          - 汽车 × FSD
+          - 汽车 × Robotaxi
+          - 汽车 × Optimus
+          - 能源 × FSD
+          - 能源 × Robotaxi
+          - FSD × Robotaxi
+          - FSD × Optimus
+          - Robotaxi × Optimus
+          - 能源 × Optimus
+
+      module_16:
+        name: "颠覆分析(威胁)"
+        source: "ai_disruption_analysis"
+        target_words: 12000
+        required: true
+        output:
+          - "颠覆角色判定"
+          - "威胁来源分析"
+        threats:
+          - Waymo（L4技术领先）
+          - BYD（成本+中国市场）
+          - 中国自动驾驶（华为/小鹏）
+          - 传统OEM联盟
+          - Apple（潜在进入）
+
+      module_17:
+        name: "新进入者威胁"
+        source: "ai_new_entrant_threat"
+        target_words: 8000
+        required: true
+        output:
+          - "威胁评分"
+          - "应对策略评估"
+        new_entrants:
+          - 中国EV新势力
+          - 科技公司
+          - 传统OEM转型
+
+      module_18:
+        name: "护城河演变路线图"
+        source: "新增"
+        target_words: 6000
+        required: true
+        output:
+          - "当前→中期→长期护城河变化"
+        timeline:
+          current:
+            primary: "制造成本领先"
+            secondary: "品牌+充电网络"
+          mid_term_3y:
+            primary: "FSD数据飞轮"
+            secondary: "能源规模"
+          long_term_5y_plus:
+            primary: "Robotaxi网络效应"
+            secondary: "Optimus+能源生态"
+
+      module_19:
+        name: "核心命题(5个)"
+        source: "通用"
+        target_words: 15000
+        required: true
+        output:
+          - "5个核心命题"
+          - "每个有机制+反证+预测"
+        thesis_template:
+          - 命题陈述
+          - 支撑机制（3层深挖）
+          - 反证条件
+          - 可验证预测
+
+      module_20:
+        name: "反常识洞察(8张)"
+        source: "通用+AI视角"
+        target_words: 8000
+        required: true
+        output:
+          - "≥8张反常识洞察卡"
+        insight_directions:
+          - FSD才是真护城河（不是汽车制造）
+          - Robotaxi是期权定价（不是确定价值）
+          - 能源是隐藏增长引擎
+          - 中国份额下降是结构性
+          - Musk注意力是最大风险
+          - FSD采用率是毛利率杠杆
+          - Cybercab成本经济学
+          - 能源补贴退坡影响
+
+      module_21:
+        name: "范式评估"
+        source: "ai_paradigm_assessment"
+        target_words: 6000
+        required: true
+        output:
+          - "范式类型判定"
+          - "时间线预测"
+        focus:
+          - 自动驾驶范式（渐进vs突破）
+          - 能源转型范式
+          - 制造范式（软件定义汽车）
+
+      module_22:
+        name: "领先信号识别"
+        source: "ai_leading_indicators"
+        target_words: 5000
+        required: true
+        output:
+          - "6类领先信号"
+          - "当前状态"
+        signal_categories:
+          - 技术信号（FSD版本/无干预里程）
+          - 商业信号（订阅渗透/价格变化）
+          - 竞争信号（Waymo进展/BYD份额）
+          - 监管信号（L4批准进度）
+          - 人才信号（AI团队变动）
+          - 资本信号（CapEx/R&D投入）
+
+    checkpoint:
+      name: "Phase 3 检查点"
+      blocking: true
+      criteria:
+        - "制造护城河6维评分完成"
+        - "AI数据飞轮分析完成"
+        - "5维度协同矩阵完成"
+        - "颠覆分析有明确判定"
+        - "核心命题≥5个"
+        - "反常识洞察≥8张"
+        - "Reflection循环已执行"
+
+    reflection:
+      name: "Phase 3 Reflection循环"
+      required: true
+      template: |
+        ## Reflection 自我批评
+
+        ### 分析弱点识别
+        1. **深度不足**: {哪部分停留表面？}
+        2. **数据缺失**: {哪些关键数据没获取？}
+        3. **逻辑漏洞**: {哪些推理有跳跃？}
+        4. **盲区遗漏**: {哪些角度没考虑？}
+
+        ### 改进措施
+        | 弱点 | 改进 | 改进后深度 |
+        |------|------|-----------|
+        | {弱点1} | {改进} | L{X}→L{Y} |
+
+        ### 改进后总结
+        {关键改进点}
+
+  phase_4:
+    name: "估值与决策"
+    weight: 20%
+    target_words: 36000
+
+    modules:
+      module_23:
+        name: "分部估值(4业务)"
+        source: "通用估值+行业适配"
+        target_words: 15000
+        required: true
+        output:
+          - "4业务独立估值"
+          - "估值方法论说明"
+        segments:
+          automotive:
+            method: "DCF"
+            key_assumptions:
+              - 交付量增长率
+              - 毛利率路径
+              - CapEx强度
+          energy:
+            method: "收入倍数"
+            key_assumptions:
+              - GWh增长率
+              - 毛利率
+              - 可比公司
+          services_software:
+            method: "ARR倍数"
+            key_assumptions:
+              - FSD订阅渗透率
+              - ARPU
+              - 订阅倍数
+          robotaxi_optimus:
+            method: "rNPV"
+            key_assumptions:
+              - 成功概率
+              - TAM渗透
+              - 时间线
+
+      module_24:
+        name: "SOTP三场景"
+        source: "通用"
+        target_words: 8000
+        required: true
+        output:
+          - "Bull/Base/Bear三场景"
+          - "概率加权目标价"
+        scenarios:
+          bull:
+            probability: "20-25%"
+            assumptions:
+              - FSD实现L4
+              - Robotaxi 2027商业化
+              - 能源增速50%+
+          base:
+            probability: "50-60%"
+            assumptions:
+              - FSD停留L2+
+              - Robotaxi延迟
+              - 能源增速30-40%
+          bear:
+            probability: "20-25%"
+            assumptions:
+              - FSD增长放缓
+              - 中国份额持续下滑
+              - 毛利率压缩
+
+      module_25:
+        name: "Kill Switches(15个)"
+        source: "混合"
+        target_words: 6000
+        required: true
+        output:
+          - "15个Kill Switches"
+          - "5维度分布"
+        categories:
+          manufacturing:
+            count: 4
+            switches:
+              - "汽车毛利率<15%连续3Q"
+              - "产能利用率<70%"
+              - "单车成本YoY上升>10%"
+              - "中国份额<3%单季"
+          ai_fsd:
+            count: 5
+            switches:
+              - "Robotaxi致命事故"
+              - "FSD订阅渗透率环比下降>10%"
+              - "L轴停留L2超过2年"
+              - "Waymo获得>5%份额"
+              - "行驶里程YoY下降"
+          energy:
+            count: 2
+            switches:
+              - "能源增速<30%连续2Q"
+              - "能源毛利率<20%"
+          governance:
+            count: 4
+            switches:
+              - "Musk离职（CEO变更）"
+              - "FCF<$2B单季"
+              - "重大诉讼赔偿>$5B"
+              - "FSD被监管禁止"
+
+      module_26:
+        name: "可验证预测(25个)"
+        source: "通用"
+        target_words: 5000
+        required: true
+        output:
+          - "≥25个可验证预测"
+          - "跨3年时间线"
+        prediction_template:
+          - prediction_id
+          - prediction
+          - verification_date
+          - verification_source
+          - confidence
+
+      module_27:
+        name: "投资评级&建议"
+        source: "ai_investment_implications"
+        target_words: 4000
+        required: true
+        output:
+          - "AI投资评级"
+          - "综合投资评级"
+          - "仓位建议"
+          - "入场点位"
+        content:
+          - AI评级（Strong_Beneficiary → Strong_At_Risk）
+          - 传统评级（1-5）
+          - 估值锚定检查
+          - 风险收益比
+
+    checkpoint:
+      name: "Phase 4 检查点"
+      blocking: true
+      criteria:
+        - "4业务分部估值完成"
+        - "SOTP三场景完成"
+        - "Kill Switches≥15个"
+        - "可验证预测≥25个"
+        - "AI投资评级有明确结论"
+        - "估值锚定检查通过"
+
+  phase_5:
+    name: "持续监控"
+    weight: 10%
+    target_words: 18000
+
+    modules:
+      module_28:
+        name: "周度KPI追踪"
+        source: "新增"
+        target_words: 6000
+        required: true
+        output:
+          - "10个周度KPI"
+          - "数据源+更新频率"
+        kpis:
+          - 周交付估算
+          - 库存天数
+          - 价格变化
+          - 订单积压变化
+          - 竞争对手动态
+
+      module_29:
+        name: "AI信号监控"
+        source: "ai_leading_indicators"
+        target_words: 4000
+        required: true
+        output:
+          - "AI相关监控信号"
+        signals:
+          - FSD版本发布
+          - 无干预里程报告
+          - 竞争对手AI进展
+          - 监管动态
+
+      module_30:
+        name: "制造KPI监控"
+        source: "新增"
+        target_words: 4000
+        required: true
+        output:
+          - "制造相关监控信号"
+        signals:
+          - 产能利用率
+          - 新工厂进度
+          - 供应链中断
+
+      module_31:
+        name: "能源动向监控"
+        source: "新增"
+        target_words: 2000
+        required: true
+        output:
+          - "能源业务监控信号"
+        signals:
+          - Megapack部署
+          - 公用事业合同
+          - 补贴政策变化
+
+      module_32:
+        name: "哨兵警报系统"
+        source: "通用"
+        target_words: 2000
+        required: true
+        output:
+          - "Kill Switch触发状态"
+          - "警报级别"
+
+    checkpoint:
+      name: "Phase 5 检查点"
+      blocking: false
+      criteria:
+        - "监控KPI清单完成"
+        - "数据源明确"
+        - "更新频率定义"
+
+---
+# ==========================================
+# 第三部分：质量门控
+# ==========================================
+
+quality_gates:
+  hard_requirements:
+    - id: "QG-001"
+      check: "总字数≥180,000"
+      severity: "必须"
+
+    - id: "QG-002"
+      check: "表格数≥40"
+      severity: "必须"
+
+    - id: "QG-003"
+      check: "Mermaid图≥8"
+      severity: "必须"
+
+    - id: "QG-004"
+      check: "反常识洞察≥8张"
+      severity: "必须"
+
+    - id: "QG-005"
+      check: "Kill Switches≥15个"
+      severity: "必须"
+
+    - id: "QG-006"
+      check: "可验证预测≥25个"
+      severity: "必须"
+
+    - id: "QG-007"
+      check: "L轴评估有A/B级证据"
+      severity: "必须"
+
+    - id: "QG-008"
+      check: "S轴评估有A/B级证据"
+      severity: "必须"
+
+    - id: "QG-009"
+      check: "五不变量全部评分"
+      severity: "必须"
+
+    - id: "QG-010"
+      check: "5维度协同矩阵完成"
+      severity: "必须"
+
+    - id: "QG-011"
+      check: "每个Phase检查点通过"
+      severity: "必须"
+
+    - id: "QG-012"
+      check: "深度评分≥L4.5"
+      severity: "必须"
+
+  depth_scoring:
+    formula: |
+      完整性(20%) + 深度(30%) + 原创性(25%) + 可操作(25%)
+    passing_threshold: 4.5
+
+    completeness:
+      weight: 20%
+      criteria:
+        - "32模块全部完成"
+        - "5阶段全部执行"
+
+    depth:
+      weight: 30%
+      criteria:
+        - "每个数据点有'so what'"
+        - "每个判断有机制分析"
+        - "每个机制有反证条件"
+
+    originality:
+      weight: 25%
+      criteria:
+        - "≥8个反常识洞察"
+        - "不同于卖方共识"
+
+    actionability:
+      weight: 25%
+      criteria:
+        - "明确投资评级"
+        - "明确仓位建议"
+        - "明确入场点位"
+
+---
+# ==========================================
+# 第四部分：输出规范
+# ==========================================
+
+output_specification:
+  file_naming: "TSLA_Complete_Analysis_v{version}_{date}.md"
+
+  mandatory_sections:
+    - name: "执行摘要"
+      position: 1
+      content:
+        - 投资评级
+        - AI评级
+        - 目标价范围
+        - 关键论点(3-5条)
+        - Kill Switches摘要
+
+    - name: "AI评估摘要"
+      position: 2
+      content:
+        - L轴+S轴结果
+        - 五不变量雷达图
+        - AI投资评级
+        - AI相关风险/机会
+
+    - name: "深度承诺表"
+      position: 3
+      content:
+        - 标杆对照
+        - 各指标目标vs实际
+
+    - name: "5维度分析正文"
+      position: 4
+      content:
+        - Phase 1-5完整内容
+
+    - name: "估值详情"
+      position: 5
+      content:
+        - 分部估值
+        - SOTP汇总
+        - 估值锚定检查
+
+    - name: "风险与监控"
+      position: 6
+      content:
+        - Kill Switches完整列表
+        - 监控KPI
+        - 哨兵系统
+
+    - name: "可验证预测"
+      position: 7
+      content:
+        - 25+预测完整列表
+
+    - name: "质量门控结果"
+      position: 8
+      content:
+        - 检查清单
+        - 深度评分
+
+---
+# ==========================================
+# 第五部分：版本历史
+# ==========================================
+
+version_history:
+  v1_0:
+    date: "2026-02-02"
+    changes:
+      - "初始版本"
+      - "5阶段32模块架构"
+      - "5业态分析框架"
+      - "AI评估深度整合"
+      - "15个Kill Switches"
+      - "25+可验证预测"
+      - "180,000字目标"

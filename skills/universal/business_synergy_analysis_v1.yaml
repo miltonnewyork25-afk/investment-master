@@ -1,0 +1,1269 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# Business Synergy Analysis Framework v1.0
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Purpose: 分析复合业务公司的业务协同效应，量化协同价值，调整SOTP估值
+#
+# Design Philosophy:
+#   - 协同效应是复合业务估值的核心调整项
+#   - 需要区分真实协同vs管理层叙事
+#   - 量化方法从保守到激进分级
+#   - 必须考虑负协同（蚕食/注意力分散）
+#
+# Inheritance:
+#   - 依赖 business_decomposition_protocol_v1.yaml（先拆分再分析协同）
+#   - 被 weighted_valuation_engine_v1.yaml 调用（SOTP调整）
+#
+# Examples:
+#   - Tesla: 品牌溢出($900M) + 数据飞轮($5-20B) - 蚕食效应(-$10B)
+#   - Amazon: AWS-电商数据协同 + Prime生态飞轮
+#   - Alphabet: 广告-AI数据协同 + 搜索-YouTube流量协同
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+skill_metadata:
+  name: "Business Synergy Analysis Framework"
+  version: "1.0"
+  category: "universal"
+  author: "Investment Master Agent v19.12"
+  created: "2026-02-02"
+
+  dependencies:
+    - skill: "business_decomposition_protocol_v1.yaml"
+      reason: "必须先拆解业务，才能分析业务间协同"
+    - skill: "master_investment_framework_v1.yaml"
+      reason: "继承通用分析方法论"
+
+  used_by:
+    - "weighted_valuation_engine_v1.yaml"
+    - "hybrid_business_master_framework_v1.yaml"
+
+  applicable_companies:
+    - type: "conglomerate"
+      examples: ["BRK.A", "JNJ", "3M"]
+    - type: "tech_ecosystem"
+      examples: ["AAPL", "GOOGL", "MSFT", "AMZN"]
+    - type: "multi_vertical"
+      examples: ["TSLA", "BA", "GE"]
+    - type: "platform"
+      examples: ["META", "UBER", "ABNB"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 1: 协同类型分类体系
+# ═══════════════════════════════════════════════════════════════════════════════
+
+synergy_classification:
+
+  type_1_revenue_synergies:
+    definition: "业务A的存在使业务B获得额外收入，或使整体收入>各业务收入之和"
+
+    subtypes:
+      cross_sell:
+        description: "交叉销售 - 客户购买A后更容易购买B"
+        identification_signals:
+          - "Bundle渗透率 vs 单独购买"
+          - "客户LTV提升（multi-product vs single-product）"
+          - "Attach rate（附加产品渗透率）"
+        quantification_method: "增量收入法"
+        evidence_level_required: "Level B - 需要分segment数据"
+
+        examples:
+          tesla_example:
+            synergy_pair: "汽车 → 能源产品（Powerwall/Solar）"
+            mechanism: "Model 3车主购买Powerwall比例25% vs 非车主5%"
+            quantification: |
+              年新增车主: 180万
+              Powerwall转化率提升: 25% - 5% = 20%
+              增量Powerwall销量: 180万 × 20% = 36万套
+              单套均价: $12,000
+              年增量收入: $4.32B
+              NPV(5年): $16.2B [Level E估算]
+            confidence: "40% - 转化率数据缺失，基于Powerwall安装数据推算"
+
+          amazon_example:
+            synergy_pair: "Prime会员 → AWS试用"
+            mechanism: "Prime会员创业者AWS试用转付费率70% vs 非会员40%"
+            quantification: "每年新增Prime创业者账户带来AWS增量收入$500M"
+
+      brand_spillover:
+        description: "品牌溢出 - 高端业务A提升低端业务B的品牌认知/溢价"
+        identification_signals:
+          - "品牌调研中的提及关联度"
+          - "业务B在业务A强势地区的溢价"
+          - "NPS分数相关性"
+        quantification_method: "溢价法 + 可比公司法"
+        evidence_level_required: "Level C-D - 需要品牌调研数据"
+
+        examples:
+          tesla_example:
+            synergy_pair: "Model S/X高端品牌 → Model 3/Y大众市场"
+            mechanism: "Tesla品牌溢价使Model 3可以售价$45K（竞品$35K）"
+            quantification: |
+              Model 3/Y年销量: 160万辆
+              溢价: $3,000/辆（vs 竞品均价）
+              归因于高端车型的溢价: 50%（另50%归因于FSD/OTA）
+              年增量收入: 160万 × $3,000 × 50% = $2.4B
+              NPV(10年): $18B [Level E估算]
+            confidence: "35% - 溢价归因高度主观"
+
+          apple_example:
+            synergy_pair: "iPhone → Apple Watch/AirPods"
+            mechanism: "iPhone生态使可穿戴设备溢价30-50%"
+            quantification: "$15B年增量收入"
+
+      network_effects:
+        description: "网络效应 - 业务A的用户增加使业务B价值提升"
+        identification_signals:
+          - "跨业务活跃用户重叠度"
+          - "Multi-homing成本"
+          - "平台参与度提升"
+        quantification_method: "用户价值提升法"
+        evidence_level_required: "Level B - 需要用户行为数据"
+
+        examples:
+          tesla_example:
+            synergy_pair: "FSD数据 → Optimus训练"
+            mechanism: "FSD积累的10亿英里真实世界数据加速Optimus视觉训练"
+            quantification: |
+              竞争对手达到同等数据量需要额外投入: $5B
+              时间领先优势: 2-3年
+              期权价值提升: $10-20B [Level E估算]
+            confidence: "25% - 数据迁移价值高度不确定"
+
+          meta_example:
+            synergy_pair: "Facebook用户 → Instagram广告主"
+            mechanism: "跨平台用户画像使广告ROAS提升40%"
+            quantification: "$8B年增量广告收入"
+
+      data_flywheel:
+        description: "数据飞轮 - 业务A产生数据增强业务B，B的改进又促进A"
+        identification_signals:
+          - "数据量增长 vs 产品迭代速度相关性"
+          - "ML模型准确率提升 vs 用户增长"
+          - "冷启动时间缩短"
+        quantification_method: "竞争对手替代成本法"
+        evidence_level_required: "Level D-E - 高度依赖估算"
+
+        examples:
+          tesla_example:
+            synergy_pair: "车队数据 → FSD → 车队扩张"
+            mechanism: |
+              更多车 → 更多Corner Cases → FSD改进 → 更多人买车
+              数据复合增长率: 35% YoY
+            quantification: |
+              FSD数据优势价值 = 竞争对手达到同等水平需要的投入
+              估算: $20-40B [Level E]
+            confidence: "20% - 数据价值高度不确定"
+
+  type_2_cost_synergies:
+    definition: "业务A和B共享资源，使成本<两业务独立运营成本之和"
+
+    subtypes:
+      shared_infrastructure:
+        description: "共享基础设施 - 工厂/数据中心/物流网络共用"
+        identification_signals:
+          - "资产利用率 vs 行业均值"
+          - "单位CapEx vs 竞争对手"
+          - "Fixed cost占比下降"
+        quantification_method: "成本节约法（实际 vs 独立运营情景）"
+        evidence_level_required: "Level B-C"
+
+        examples:
+          tesla_example:
+            synergy_pair: "Giga Texas生产汽车+储能"
+            mechanism: "同一工厂生产电池包，避免重复投资"
+            quantification: |
+              Tesla储能CapEx: $1B
+              如果独立建厂需要: $2.5B
+              节约: $1.5B（一次性）
+              年运营成本节约: $150M（维护/管理）
+              NPV: $2.7B [Level C - 基于CapEx披露推算]
+            confidence: "60% - CapEx节约相对可验证"
+
+          amazon_example:
+            synergy_pair: "AWS数据中心服务电商+外部客户"
+            mechanism: "规模效应摊薄固定成本"
+            quantification: "运营成本降低30%, 年节约$4B"
+
+      shared_rd:
+        description: "共享R&D - 技术/专利在多业务复用"
+        identification_signals:
+          - "R&D占收入比 vs 纯play竞争对手"
+          - "专利引用跨业务比例"
+          - "技术平台复用度"
+        quantification_method: "重复开发成本法"
+        evidence_level_required: "Level D - 需要估算"
+
+        examples:
+          tesla_example:
+            synergy_pair: "电池技术同时用于汽车+储能+Semi"
+            mechanism: "4680电池研发$5B，三业务共摊"
+            quantification: |
+              如果独立开发:
+                汽车电池: $5B
+                储能电池: $3B
+                Semi电池: $2B
+                总计: $10B
+              实际投入: $5B
+              节约: $5B（累计）
+              年R&D节约: $500M [Level E估算]
+            confidence: "40% - 技术迁移度假设"
+
+      purchasing_power:
+        description: "采购规模效应 - 多业务合并采购降低成本"
+        identification_signals:
+          - "原材料成本 vs 行业均值"
+          - "供应商依赖度"
+          - "采购折扣披露"
+        quantification_method: "成本曲线法"
+        evidence_level_required: "Level B-C"
+
+        examples:
+          apple_example:
+            synergy_pair: "iPhone+iPad+Mac采购芯片/屏幕"
+            mechanism: "年采购5亿片屏幕，议价权使成本-15%"
+            quantification: "$3B年成本节约"
+
+  type_3_negative_synergies:
+    definition: "⚠️ 业务A的存在损害业务B，或管理复杂度拖累整体"
+
+    subtypes:
+      cannibalization:
+        description: "蚕食 - 业务B的增长以业务A的下滑为代价"
+        identification_signals:
+          - "业务B增长时，业务A同步下滑"
+          - "客户从A迁移到B（而非新增）"
+          - "整体增长<各业务独立增长预期"
+        quantification_method: "机会成本法"
+        evidence_level_required: "Level B - 需要用户迁移数据"
+
+        examples:
+          tesla_example:
+            synergy_pair: "Robotaxi蚕食私家车销量"
+            mechanism: |
+              如果Robotaxi成功，客户无需买车
+              场景：Robotaxi渗透率20%，私家车需求↓30%
+            quantification: |
+              2030年汽车销量预期: 500万辆
+              Robotaxi导致流失: 500万 × 30% = 150万辆
+              每辆ASP: $45,000
+              年收入损失: $67.5B
+              NPV(2030-2035): $250B
+
+              净效果计算:
+              Robotaxi收入NPV: $240B（前述分析）
+              汽车蚕食损失NPV: -$250B
+              净蚕食: -$10B ⚠️
+
+              [Level E估算 - 高度不确定]
+            confidence: "15% - 渗透率和蚕食度高度推测"
+
+          amazon_example:
+            synergy_pair: "AWS竞争电商客户IT预算"
+            mechanism: "电商企业客户在IT支出有限下优先AWS，减少电商平台采购"
+            quantification: "轻微负向，<5% GMV影响"
+
+      management_attention:
+        description: "管理注意力分散 - CEO/高管时间被多业务稀释"
+        identification_signals:
+          - "CEO在财报电话会议中的时间分配"
+          - "各业务高管流失率"
+          - "战略优先级摇摆"
+        quantification_method: "执行效率折价法"
+        evidence_level_required: "Level D - 主观性强"
+
+        examples:
+          tesla_example:
+            synergy_pair: "Musk同时管理汽车/能源/AI/SpaceX/X"
+            mechanism: |
+              Tesla CEO有效时间占比: 40%（vs 专注CEO 100%）
+              执行延迟: FSD时间线滑坡3年，Semi延迟4年
+            quantification: |
+              执行折价 = 类比Amazon（Bezos专注）vs GE（杰克韦尔奇晚期）
+
+              Amazon在Bezos专注期: 估值溢价30%
+              GE在多元化晚期: 估值折价40%
+
+              Tesla管理注意力折价: 15-25%
+              对应估值影响: -$150-250B
+
+              [Level E估算 - 极度主观]
+            confidence: "10% - 因果关系难以证明"
+
+          alphabet_example:
+            synergy_pair: "Other Bets分散核心广告业务注意力"
+            mechanism: "Waymo/Verily等亏损项目拖累管理精力"
+            quantification: "市场给予15% conglomerate discount"
+
+      brand_dilution:
+        description: "品牌稀释 - 低端业务B损害高端业务A的品牌"
+        identification_signals:
+          - "品牌调研中的认知混淆"
+          - "高端产品溢价下降"
+          - "客户投诉关联分析"
+        quantification_method: "溢价侵蚀法"
+        evidence_level_required: "Level C-D"
+
+        examples:
+          porsche_example:
+            synergy_pair: "Macan/Cayenne SUV → 911跑车品牌纯粹性"
+            mechanism: "911买家认为品牌'不够纯粹'"
+            quantification: "轻微负向，但被销量增长抵消"
+
+      operational_complexity:
+        description: "运营复杂度 - 多业务管理成本超过线性增长"
+        identification_signals:
+          - "SG&A占收入比 vs 纯play"
+          - "决策周期延长"
+          - "跨部门协调成本"
+        quantification_method: "管理成本溢价法"
+        evidence_level_required: "Level C"
+
+        examples:
+          ge_example:
+            synergy_pair: "金融+航空+医疗+能源"
+            mechanism: "跨业务管理成本高昂，决策低效"
+            quantification: "SG&A占比18% vs 专注公司12%, 溢价$2B/年"
+
+  type_4_no_synergy:
+    definition: "业务A和B完全独立，无协同也无负协同（纯conglomerate）"
+
+    characteristics:
+      - "客户群体完全不重叠"
+      - "技术/供应链无共享"
+      - "品牌独立运营"
+      - "管理层分开（子公司制）"
+
+    valuation_approach: "SOTP无调整，但需应用conglomerate discount 10-30%"
+
+    examples:
+      berkshire_hathaway:
+        structure: "保险+铁路+能源+制造+零售"
+        synergy_level: "最小协同，主要是资本配置层面"
+        valuation: "SOTP - 15% holding company discount"
+
+      johnson_johnson:
+        structure: "医药+医疗器械+消费品（历史）"
+        synergy_level: "品牌和渠道协同有限"
+        valuation: "拆分后市值提升20%（2023年消费品拆分验证）"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 2: 协同量化方法论
+# ═══════════════════════════════════════════════════════════════════════════════
+
+quantification_framework:
+
+  step_1_identification:
+    description: "识别所有潜在协同（包括负协同）"
+
+    method:
+      - action: "绘制业务关系图（Mermaid）"
+        output: "节点=业务，边=潜在协同类型"
+
+      - action: "对每条边进行分类"
+        output: "收入协同/成本协同/负协同/无协同"
+
+      - action: "与管理层guidance交叉验证"
+        output: "管理层提及的协同 vs 分析师识别的协同"
+
+      - action: "寻找隐藏的负协同"
+        output: "特别关注管理层不提及的蚕食/注意力分散"
+
+    quality_checks:
+      - "每对业务都评估了协同可能性"
+      - "负协同未被忽视"
+      - "避免'协同幻觉'（管理层叙事但无证据）"
+
+  step_2_mechanism_analysis:
+    description: "解释协同的因果机制"
+
+    framework:
+      causal_chain:
+        - "业务A的哪个具体特征/资产？"
+        - "通过什么渠道影响业务B？"
+        - "业务B的哪个指标受影响？"
+        - "影响的量级和时间？"
+
+      counterfactual_test:
+        question: "如果业务A不存在，业务B会如何？"
+        purpose: "区分真实协同 vs 相关性"
+
+      reversibility_test:
+        question: "协同是否双向？A→B vs B→A"
+        purpose: "理解协同的对称性"
+
+    examples:
+      tesla_fsd_to_optimus:
+        causal_chain:
+          step_1: "FSD积累10亿英里真实世界视觉数据"
+          step_2: "数据用于训练通用视觉模型"
+          step_3: "Optimus复用该模型，减少训练时间/成本"
+          step_4: "竞争对手需额外2-3年达到同等水平"
+
+        counterfactual: "如果没有FSD，Optimus需要从零训练视觉，延迟3年上市"
+
+        reversibility: "单向 - Optimus数据不会显著增强FSD（场景差异大）"
+
+  step_3_quantification:
+    description: "将协同转化为财务数字"
+
+    method_a_incremental_revenue:
+      name: "增量收入法"
+      适用于: "Cross-sell, Brand Spillover, Network Effects"
+
+      formula: |
+        协同价值 = Σ [增量销量 × (Price - Variable Cost)]
+
+      步骤:
+        step_1: "建立baseline（无协同情景）"
+        step_2: "计算实际情景 vs baseline差异"
+        step_3: "隔离协同贡献（vs其他因素）"
+        step_4: "计算NPV"
+
+      evidence_hierarchy:
+        best: "A/B测试数据（不同地区有/无协同对比）"
+        good: "用户行为数据（购买关联分析）"
+        acceptable: "渗透率推算"
+        weak: "管理层guidance"
+
+      example_tesla_cross_sell:
+        calculation: |
+          Step 1: Baseline（无汽车业务）
+            - Powerwall年销量: 10万套（纯能源客户）
+            - 单套均价: $12,000
+            - Baseline收入: $1.2B
+
+          Step 2: 实际情景（有汽车业务）
+            - 车主购买Powerwall转化率: 25% [Level D推算]
+            - 非车主转化率: 5%
+            - 年新增车主: 180万
+            - 增量销量: 180万 × (25%-5%) = 36万套
+            - 实际总销量: 46万套
+            - 实际收入: $5.52B
+
+          Step 3: 隔离协同
+            - 协同增量收入: $5.52B - $1.2B = $4.32B
+            - Variable Cost: 60%
+            - 协同Gross Profit: $4.32B × 40% = $1.73B
+
+          Step 4: NPV计算
+            - 年协同GP: $1.73B
+            - 增长率: 15%（随车队扩张）
+            - 折现率: 12%
+            - NPV(10年): $16.2B
+
+          置信度: 40% - 转化率数据缺失
+          Data Level: E（基于安装数据推算）
+
+    method_b_cost_saving:
+      name: "成本节约法"
+      适用于: "Shared Infrastructure, Shared R&D, Purchasing Power"
+
+      formula: |
+        协同价值 = Σ [独立运营成本 - 实际成本]
+
+      步骤:
+        step_1: "建立独立运营成本模型"
+        step_2: "获取实际成本数据"
+        step_3: "计算差异并归因协同"
+        step_4: "扣除实现协同的成本"
+
+      evidence_hierarchy:
+        best: "财报segment数据（成本分配清晰）"
+        good: "CapEx对比（vs纯play竞争对手）"
+        acceptable: "成本曲线推算"
+        weak: "管理层声明"
+
+      example_tesla_shared_factory:
+        calculation: |
+          Step 1: 独立运营情景
+            - 汽车工厂CapEx: $5B（Giga Texas）
+            - 储能独立工厂CapEx: $2.5B
+            - 总计: $7.5B
+
+          Step 2: 实际共享情景
+            - Giga Texas总CapEx: $6B（汽车+储能）
+            - CapEx节约: $1.5B
+
+          Step 3: 年运营成本节约
+            - 独立工厂: 维护$50M + 管理$30M + 公用$40M = $120M/年
+            - 共享工厂: $70M/年
+            - 年节约: $50M
+
+          Step 4: 实现成本
+            - 工厂设计复杂度增加: $100M（一次性）
+            - 运营协调成本: $10M/年
+
+          Step 5: 净协同价值
+            - CapEx节约: $1.5B - $100M = $1.4B
+            - 年运营节约NPV: ($50M - $10M) × 8.5 = $340M
+            - 总协同NPV: $1.74B
+
+          置信度: 60% - CapEx数据相对透明
+          Data Level: C（基于CapEx披露推算）
+
+    method_c_comparable_discount:
+      name: "可比公司折价法"
+      适用于: "Negative Synergies（蚕食/复杂度）"
+
+      formula: |
+        负协同价值 = 纯play估值倍数 × Conglomerate discount %
+
+      步骤:
+        step_1: "识别纯play对标公司"
+        step_2: "计算估值倍数差异"
+        step_3: "隔离协同相关折价（vs其他因素）"
+        step_4: "应用到目标公司"
+
+      evidence_hierarchy:
+        best: "同公司拆分前后对比（JNJ 2023拆分）"
+        good: "跨公司对比（纯play vs conglomerate）"
+        acceptable: "学术研究（平均conglomerate discount）"
+        weak: "主观判断"
+
+      example_tesla_management_attention:
+        calculation: |
+          Step 1: 纯play对标
+            - 纯电动车公司: Rivian, Lucid
+            - 平均P/S: 2.5x
+            - Tesla汽车业务P/S: 8.0x（含溢价）
+
+          Step 2: Conglomerate参考
+            - GE多元化晚期: 估值折价40%
+            - 3M复杂度: 折价25%
+            - Amazon专注期: 溢价30%
+
+          Step 3: Tesla特定折价估算
+            - Musk管理5家公司 vs 1家
+            - CEO有效时间占比: 40% [Level E主观]
+            - 执行延迟证据: FSD延迟3年，Semi延迟4年
+            - 估算管理注意力折价: 15-25%
+
+          Step 4: 财务影响
+            - Tesla 2030 SOTP: $1,000B
+            - 折价: 15-25%
+            - 价值损失: $150-250B
+
+          置信度: 10% - 因果关系极难证明
+          Data Level: E（高度主观）
+
+    method_d_option_value:
+      name: "期权价值法"
+      适用于: "Data Flywheel, Platform Effects（长期不确定收益）"
+
+      说明: "某些协同价值体现为'未来选择权'而非当前现金流"
+
+      formula: |
+        协同价值 = Black-Scholes期权价值 或 rNPV
+
+      步骤:
+        step_1: "识别协同创造的未来机会"
+        step_2: "估算成功情景价值"
+        step_3: "估算实现概率"
+        step_4: "计算期权价值"
+
+      example_tesla_data_flywheel:
+        calculation: |
+          Step 1: 未来机会
+            - FSD数据使Optimus训练加速2-3年
+
+          Step 2: 成功情景价值
+            - Optimus 2030市值: $500B（如成功）
+
+          Step 3: 数据协同贡献
+            - 无FSD数据，Optimus成功概率: 5%
+            - 有FSD数据，Optimus成功概率: 15%
+            - 增量概率: 10%
+
+          Step 4: 期权价值
+            - 协同期权价值: $500B × 10% = $50B
+
+          置信度: 20% - 成功概率和价值高度不确定
+          Data Level: E
+
+  step_4_sotp_adjustment:
+    description: "将协同量化结果整合到SOTP估值"
+
+    formula: |
+      调整后企业价值 = Σ(各业务standalone价值) + 正协同NPV - 负协同NPV - Conglomerate discount
+
+    components:
+      positive_synergies:
+        - "收入协同NPV"
+        - "成本协同NPV"
+        - "期权型协同价值"
+
+      negative_synergies:
+        - "蚕食损失NPV"
+        - "管理复杂度折价"
+        - "品牌稀释影响"
+
+      conglomerate_discount:
+        description: "即使无明显负协同，市场也对多元化给予折价"
+        typical_range: "10-30%"
+        factors:
+          - "业务相关度（低相关度→高折价）"
+          - "管理复杂度"
+          - "信息透明度（低透明→高折价）"
+          - "拆分可能性（高可能→高折价）"
+
+      net_adjustment:
+        formula: |
+          净协同调整 = (正协同 - 负协同) × (1 - Conglomerate discount)
+
+    example_tesla_sotp:
+      standalone_values:
+        automotive: "$300B（DCF，8% WACC）"
+        energy: "$40B（15x P/E）"
+        services: "$25B（5x P/S）"
+        fsd_option: "$50B（rNPV）"
+        robotaxi_option: "$0.87B（rNPV）"
+        optimus_option: "$87.7B（Black-Scholes）"
+        sum: "$503.57B"
+
+      synergy_adjustments:
+        positive:
+          cross_sell_automotive_energy: "+$16.2B NPV"
+          brand_spillover: "+$18B NPV"
+          shared_infrastructure: "+$1.74B NPV"
+          data_flywheel_fsd_optimus: "+$50B（期权）"
+          total_positive: "+$85.94B"
+
+        negative:
+          robotaxi_cannibalize_auto: "-$10B NPV"
+          management_attention: "-$150-250B（15-25%折价）"
+          total_negative: "-$160-260B"
+
+        conglomerate_discount:
+          rate: "15%（5业务跨度大）"
+          applied_to: "$503.57B standalone"
+          discount_amount: "-$75.5B"
+
+      final_calculation: |
+        方法1: 净协同法
+        = $503.57B + $85.94B - $160B - $75.5B = $354B
+
+        方法2: 保守法（忽略难以量化的负协同）
+        = $503.57B + $36B（仅实物协同） - $75.5B = $464B
+
+        合理区间: $350-465B
+        vs 当前市值$227B: 被低估35-105%
+
+      sensitivity_analysis:
+        key_assumptions:
+          - "管理注意力折价: 10-30%（影响$100-300B）"
+          - "Robotaxi蚕食: 0-30%（影响$0-30B）"
+          - "数据飞轮价值: $20-80B"
+          - "Conglomerate discount: 10-20%"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 3: 执行协议
+# ═══════════════════════════════════════════════════════════════════════════════
+
+execution_protocol:
+
+  phase_1_pre_analysis:
+    duration: "10 minutes"
+
+    step_1_load_dependencies:
+      action: "读取 business_decomposition_protocol_v1.yaml 输出"
+      input: "各业务已拆解完毕，有独立财务数据"
+      validation: "确保各业务属性已标注（行业/成熟度/规模）"
+
+    step_2_identify_analysis_scope:
+      question: "需要分析哪些业务对之间的协同？"
+      method: "N个业务 → N×(N-1)/2 个业务对（排列组合）"
+      output: "业务对清单 + 优先级"
+
+      prioritization:
+        high_priority:
+          - "收入占比均>10%的业务对"
+          - "管理层多次提及的协同"
+          - "客户群体重叠度>30%"
+
+        medium_priority:
+          - "技术/供应链有潜在共享"
+          - "品牌关联度高"
+
+        low_priority:
+          - "完全独立的业务对"
+          - "收入占比<5%的小业务"
+
+  phase_2_synergy_mapping:
+    duration: "20 minutes"
+
+    step_1_draw_relationship_graph:
+      tool: "Mermaid flowchart"
+      structure: |
+        ```mermaid
+        graph LR
+          A[业务A] -->|协同类型| B[业务B]
+          A -->|协同类型| C[业务C]
+          B -.->|负协同| A
+        ```
+
+      edge_labeling:
+        positive_synergy: "实线箭头 + 绿色"
+        negative_synergy: "虚线箭头 + 红色"
+        no_synergy: "无连线"
+
+      output: "可视化业务关系图 + 每条边的协同类型标签"
+
+    step_2_classify_each_edge:
+      for_each_business_pair:
+        questions:
+          - "业务A的客户会购买业务B吗？→ Cross-sell"
+          - "业务A的品牌提升业务B的溢价吗？→ Brand Spillover"
+          - "业务A和B共享基础设施吗？→ Shared Infrastructure"
+          - "业务A和B共享技术吗？→ Shared R&D"
+          - "业务A产生数据增强业务B吗？→ Data Flywheel"
+          - "业务B蚕食业务A吗？→ Cannibalization"
+          - "管理注意力被分散吗？→ Management Attention"
+
+        output_format: |
+          业务对: A - B
+          协同类型: [Cross-sell, Brand Spillover]
+          协同方向: A → B (单向) / A ↔ B (双向)
+          强度: 强/中/弱
+          证据: [列出支持证据]
+
+    step_3_cross_validate_management:
+      action: "对比分析师识别的协同 vs 管理层提及的协同"
+
+      lookfor:
+        management_mentioned_but_weak:
+          description: "管理层强调但证据不足的协同"
+          interpretation: "可能是'协同幻觉'，谨慎对待"
+
+        analyst_identified_but_not_mentioned:
+          description: "管理层未提及但分析识别的协同"
+          interpretation: "可能是隐藏价值 或 管理层不愿承认的负协同"
+
+      output: "管理层vs分析师协同对比表"
+
+  phase_3_quantification:
+    duration: "40 minutes"
+
+    step_1_select_method:
+      decision_tree:
+        if_revenue_synergy: "使用增量收入法"
+        if_cost_synergy: "使用成本节约法"
+        if_negative_synergy: "使用可比公司折价法 或 机会成本法"
+        if_option_like: "使用期权价值法"
+
+    step_2_gather_data:
+      required_data:
+        for_incremental_revenue:
+          - "Baseline销量（无协同情景）"
+          - "实际销量 或 预测销量"
+          - "渗透率/转化率数据"
+          - "价格和Variable Cost"
+
+        for_cost_saving:
+          - "独立运营成本估算"
+          - "实际成本数据"
+          - "CapEx对比（vs竞争对手）"
+
+        for_comparable_discount:
+          - "纯play公司估值倍数"
+          - "Conglomerate公司估值倍数"
+          - "拆分案例数据"
+
+      data_sources:
+        level_a: "FMP API财务数据"
+        level_b: "10-K segment reporting"
+        level_c: "第三方数据（Gartner/IDC）"
+        level_d: "分析师报告"
+        level_e: "本报告估算（必须标注方法）"
+
+    step_3_calculate_npv:
+      for_each_synergy:
+        steps:
+          - "计算年度协同价值（收入或成本）"
+          - "预测未来5-10年趋势"
+          - "选择折现率（WACC或更高）"
+          - "计算NPV"
+          - "敏感性分析（关键假设±20%）"
+
+        output_format: |
+          协同名称: [Cross-sell: 汽车→能源]
+          年度协同价值: $1.73B Gross Profit
+          增长率: 15% YoY（随车队扩张）
+          折现率: 12%（高于WACC，反映不确定性）
+          NPV(10年): $16.2B
+
+          敏感性分析:
+            转化率 20% → NPV $13.0B
+            转化率 30% → NPV $19.5B
+
+          置信度: 40%
+          Data Level: E（转化率推算）
+
+          关键假设:
+            - 车主Powerwall转化率25% [最关键]
+            - Powerwall均价$12,000维持
+            - 车队年增180万持续
+
+    step_4_aggregate:
+      formula: |
+        总协同价值 = Σ(正协同NPV) - Σ(负协同NPV)
+
+      output: "协同价值汇总表"
+
+  phase_4_sotp_integration:
+    duration: "15 minutes"
+
+    step_1_calculate_standalone_sum:
+      input: "从business_decomposition输出获取各业务价值"
+      output: "SOTP基准值"
+
+    step_2_apply_synergies:
+      positive_synergies:
+        action: "加上正协同NPV"
+        note: "只加高置信度（>50%）和中置信度（30-50%）协同"
+
+      negative_synergies:
+        action: "减去负协同NPV"
+        note: "负协同即使低置信度也应保守体现"
+
+      conglomerate_discount:
+        action: "对调整后总值应用10-30%折价"
+        factors:
+          - "业务相关度（相关度高→折价低）"
+          - "管理复杂度（复杂度高→折价高）"
+          - "信息透明度（透明度高→折价低）"
+
+    step_3_sensitivity_scenarios:
+      bull_case:
+        assumptions:
+          - "正协同按高端估计"
+          - "负协同按低端估计"
+          - "Conglomerate discount 10%"
+
+      base_case:
+        assumptions:
+          - "正协同按中值"
+          - "负协同按中值"
+          - "Conglomerate discount 15-20%"
+
+      bear_case:
+        assumptions:
+          - "正协同按低端估计"
+          - "负协同按高端估计"
+          - "Conglomerate discount 25-30%"
+
+    step_4_output_final_valuation:
+      format: |
+        ## SOTP协同调整估值
+
+        ### Standalone业务价值
+        | 业务 | 估值方法 | 价值 |
+        |------|---------|------|
+        | A    | DCF     | $XXB |
+        | B    | 倍数法  | $XXB |
+        | ...  | ...     | ...  |
+        | **Sum** | | **$XXXB** |
+
+        ### 协同调整
+        | 协同类型 | NPV | 置信度 |
+        |---------|-----|--------|
+        | +Cross-sell A→B | +$XXB | 40% |
+        | +Shared Infra | +$XXB | 60% |
+        | -Cannibalization | -$XXB | 30% |
+        | -Mgmt Attention | -$XXB | 10% |
+        | **Net Synergy** | **+$XXB** | |
+
+        ### Conglomerate折价
+        - 折价率: 15%（5业务，中等复杂度）
+        - 折价金额: -$XXB
+
+        ### 最终估值
+        - Bull: $XXXB（协同乐观+折价10%）
+        - Base: $XXXB（协同中性+折价15%）
+        - Bear: $XXXB（协同悲观+折价25%）
+
+        vs 当前市值$XXXB: [被低估/溢价] XX%
+
+  phase_5_risk_and_monitoring:
+    duration: "10 minutes"
+
+    step_1_identify_kill_switches:
+      for_positive_synergies:
+        example: |
+          Kill Switch: Cross-sell失败
+          触发条件: 车主Powerwall转化率<15%（持续4季度）
+          验证方式: Tesla能源装机数据
+          后果: 协同价值-$10B
+
+      for_negative_synergies:
+        example: |
+          Kill Switch: 蚕食加速
+          触发条件: Robotaxi渗透率>30% AND 汽车销量YoY-15%
+          验证方式: 季度交付数据 + Robotaxi GMV
+          后果: 汽车业务价值-$50B
+
+    step_2_setup_monitoring:
+      quarterly_metrics:
+        - "跨业务客户比例"
+        - "Bundle渗透率"
+        - "成本协同实现进度"
+        - "蚕食证据（销量迁移）"
+
+      annual_review:
+        - "协同NPV vs 实际（回测）"
+        - "更新假设"
+        - "调整SOTP估值"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 4: 质量控制
+# ═══════════════════════════════════════════════════════════════════════════════
+
+quality_checks:
+
+  completeness:
+    - checklist: "每对业务都评估了协同可能性"
+      pass: "N×(N-1)/2 个业务对全覆盖"
+
+    - checklist: "负协同未被忽视"
+      pass: "至少识别2个潜在负协同"
+
+    - checklist: "管理层guidance已交叉验证"
+      pass: "对比表已输出"
+
+  depth:
+    - checklist: "每个协同有因果机制解释"
+      pass: "有'业务A通过X渠道影响业务B的Y指标'描述"
+
+    - checklist: "量化方法清晰可复现"
+      pass: "公式+假设+数据来源标注"
+
+    - checklist: "置信度诚实标注"
+      pass: "不高估低质量数据的协同价值"
+
+  consistency:
+    - checklist: "协同价值与独立业务价值无矛盾"
+      pass: "协同不能>standalone业务价值（除非有充分解释）"
+
+    - checklist: "与行业常识一致"
+      pass: "Cross-sell转化率在合理范围（通常<30%）"
+
+    - checklist: "Conglomerate discount合理"
+      pass: "10-30%区间，与复杂度匹配"
+
+  conservatism:
+    - principle: "协同价值宁可低估，不可高估"
+      reason: "管理层往往高估协同，分析师应保守"
+
+    - principle: "负协同即使低置信度也应体现"
+      reason: "市场往往低估蚕食和复杂度成本"
+
+    - principle: "期权型协同单独标注"
+      reason: "高度不确定的未来价值不应与确定性协同混为一谈"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 5: 常见陷阱与最佳实践
+# ═══════════════════════════════════════════════════════════════════════════════
+
+common_pitfalls:
+
+  pitfall_1_synergy_illusion:
+    description: "管理层声称的协同无实际证据"
+    example: "并购后宣称'1+1=3'，但从未披露具体机制"
+
+    detection:
+      - "管理层guidance vs 实际财务表现差异"
+      - "协同价值永远在'未来2-3年实现'"
+      - "无法给出具体客户/产品层面证据"
+
+    mitigation:
+      - "只相信有数据支撑的协同"
+      - "历史track record检验（过去并购是否实现过协同）"
+      - "保守估计或直接忽略"
+
+  pitfall_2_ignore_negative_synergies:
+    description: "只关注正协同，忽视蚕食和复杂度"
+    example: "Tesla分析只强调数据飞轮，不提Robotaxi蚕食汽车"
+
+    detection:
+      - "协同全是正向，无负向"
+      - "未考虑管理注意力分散"
+      - "未考虑品牌稀释"
+
+    mitigation:
+      - "强制至少识别2个潜在负协同"
+      - "参考GE/JNJ等拆分案例"
+      - "保守估计负协同（即使数据不足）"
+
+  pitfall_3_double_counting:
+    description: "协同价值被重复计算"
+    example: "既在业务A估值中体现协同，又单独加协同调整项"
+
+    detection:
+      - "SOTP协同调整后总值 >> 常识估值"
+      - "业务A的增长假设已隐含B的贡献"
+
+    mitigation:
+      - "明确standalone定义（不含协同）"
+      - "交叉检查各业务假设"
+      - "协同调整项仅计算增量价值"
+
+  pitfall_4_overestimate_data_synergy:
+    description: "高估数据飞轮等难以量化的协同"
+    example: "数据协同价值$100B，但无法解释机制"
+
+    detection:
+      - "协同价值>业务本身"
+      - "数据价值基于'竞争对手需要X年'的假设"
+      - "无法验证"
+
+    mitigation:
+      - "数据协同使用期权定价，体现不确定性"
+      - "敏感性分析（0-2×估值）"
+      - "置信度<30%时不纳入Base Case"
+
+best_practices:
+
+  practice_1_use_comparable:
+    description: "参考类似公司协同实现情况"
+    examples:
+      - "Amazon: Prime会员对电商GMV提升25-40%"
+      - "Apple: 生态系统使Services附加率70%"
+      - "Microsoft: Azure-Office-LinkedIn协同显著"
+
+    application: "用类比公司的实际数据校准假设"
+
+  practice_2_triangulation:
+    description: "多方法交叉验证"
+    approach:
+      - "自下而上（用户行为数据）"
+      - "自上而下（管理层guidance）"
+      - "类比法（可比公司）"
+      - "如果三种方法结果接近 → 置信度高"
+
+  practice_3_scenario_analysis:
+    description: "不要给单一协同价值，给区间"
+    framework:
+      bull: "协同充分实现"
+      base: "协同部分实现"
+      bear: "协同失败或负协同占主导"
+
+  practice_4_track_record:
+    description: "历史协同实现率检验"
+    method:
+      - "回顾公司过去并购/新业务协同承诺"
+      - "对比承诺vs实际"
+      - "管理层协同实现率<50% → 大幅折扣"
+
+  practice_5_transparency:
+    description: "清晰标注不确定性"
+    requirements:
+      - "每个协同标注置信度"
+      - "每个假设标注Data Level"
+      - "敏感性分析展示关键假设影响"
+      - "明确指出'这是推测'"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 6: 输出模板
+# ═══════════════════════════════════════════════════════════════════════════════
+
+output_templates:
+
+  synergy_map_table:
+    description: "业务协同关系汇总表"
+    format: |
+      | 业务对 | 协同类型 | 方向 | 强度 | 年度价值 | NPV | 置信度 | 证据Level |
+      |--------|---------|------|------|---------|-----|--------|-----------|
+      | 汽车→能源 | Cross-sell | 单向 | 强 | $1.73B GP | $16.2B | 40% | E |
+      | 汽车+能源 | Shared Infra | 双向 | 中 | $50M 节约 | $1.74B | 60% | C |
+      | FSD→Optimus | Data Flywheel | 单向 | 弱 | 期权 | $50B | 20% | E |
+      | Robotaxi蚕食汽车 | Cannibalization | 单向 | 强 | -$67.5B | -$10B | 15% | E |
+      | 多业务 | Mgmt Attention | N/A | 强 | 折价 | -$200B | 10% | E |
+
+  synergy_visualization:
+    description: "Mermaid业务关系图"
+    example: |
+      ```mermaid
+      graph TB
+        AUTO[汽车业务<br>$300B] -->|Cross-sell<br>+$16B| ENERGY[能源业务<br>$40B]
+        AUTO -->|品牌溢出<br>+$18B| AUTO
+        AUTO -.->|数据| FSD[FSD<br>$50B]
+        FSD -->|训练数据<br>+$50B| OPTIMUS[Optimus<br>$88B]
+        ROBOTAXI[Robotaxi<br>$0.87B] -.->|蚕食<br>-$10B| AUTO
+
+        MUSK[Musk注意力] -.->|分散<br>-$200B| AUTO
+        MUSK -.->|分散| ENERGY
+        MUSK -.->|分散| FSD
+
+        style AUTO fill:#90EE90
+        style ENERGY fill:#90EE90
+        style ROBOTAXI fill:#FFB6C6
+        style MUSK fill:#FFB6C6
+      ```
+
+  sotp_synergy_adjustment:
+    description: "SOTP协同调整计算"
+    format: |
+      ## SOTP协同调整估值
+
+      ### Step 1: Standalone业务价值（无协同）
+      | 业务 | 估值方法 | 假设WACC | 价值 | 占比 |
+      |------|---------|---------|------|------|
+      | 汽车 | DCF | 8% | $300B | 60% |
+      | 能源 | 倍数法 15x P/E | - | $40B | 8% |
+      | 服务 | 倍数法 5x P/S | - | $25B | 5% |
+      | FSD | rNPV | 15% | $50B | 10% |
+      | Robotaxi | rNPV | 20% | $0.87B | 0% |
+      | Optimus | Black-Scholes | 15% | $87.7B | 17% |
+      | **SOTP基准** | | | **$503.6B** | **100%** |
+
+      ### Step 2: 正协同调整
+      | 协同类型 | 机制 | NPV | 置信度 | 计入Base Case |
+      |---------|------|-----|--------|--------------|
+      | Cross-sell 汽车→能源 | 车主25%转化率 | +$16.2B | 40% | 50%权重→+$8B |
+      | 品牌溢出 | Model S/X→3/Y溢价 | +$18B | 35% | 50%权重→+$9B |
+      | Shared Infra | Giga共用 | +$1.74B | 60% | 100%→+$1.74B |
+      | Data Flywheel | FSD→Optimus | +$50B | 20% | 0%（太不确定）|
+      | **正协同合计** | | **+$85.94B** | | **+$18.74B** |
+
+      ### Step 3: 负协同调整
+      | 负协同类型 | 机制 | 影响 | 置信度 | 计入Base Case |
+      |-----------|------|------|--------|--------------|
+      | Robotaxi蚕食 | 渗透20%→汽车-30% | -$10B | 15% | 50%权重→-$5B |
+      | 管理注意力 | Musk分散精力 | -$200B | 10% | 保守计入10%→-$20B |
+      | **负协同合计** | | **-$210B** | | **-$25B** |
+
+      ### Step 4: Conglomerate折价
+      - 5个跨度大的业务（汽车/能源/AI/机器人）
+      - 信息透明度中等（部分业务无披露）
+      - 参考: GE多元化折价25-40%, Amazon专注溢价20-30%
+      - **折价率: 15%**
+      - 折价金额: ($503.6B + $18.74B - $25B) × 15% = **-$74.7B**
+
+      ### Step 5: 最终估值
+      | 场景 | 计算 | 结果 |
+      |------|------|------|
+      | **Bull** | $503.6B + $86B - $5B - 10%折价 = | **$526B** |
+      | **Base** | $503.6B + $18.74B - $25B - 15%折价 = | **$423B** |
+      | **Bear** | $503.6B + $0 - $50B - 25%折价 = | **$340B** |
+
+      vs 当前市值 $227B:
+      - Bull upside: +132%
+      - Base upside: +86%
+      - Bear upside: +50%
+
+      ### 关键敏感性
+      | 假设 | 影响 |
+      |------|------|
+      | 管理注意力折价 10%→30% | 估值 $470B→$370B |
+      | Robotaxi蚕食 0%→30% | 估值 $428B→$398B |
+      | Conglomerate折价 10%→25% | 估值 $448B→$398B |
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 7: 行业案例库
+# ═══════════════════════════════════════════════════════════════════════════════
+
+industry_examples:
+
+  case_1_tesla:
+    summary: "多业务（汽车/能源/AI/机器人）复杂协同网络"
+    key_synergies:
+      - "Cross-sell: 汽车→能源 +$16B"
+      - "Data Flywheel: FSD→Optimus +$50B（期权）"
+      - "Shared Infrastructure: +$1.74B"
+    key_negative_synergies:
+      - "Robotaxi蚕食汽车 -$10B"
+      - "管理注意力分散 -$200B（15-25%折价）"
+    lessons:
+      - "期权型协同（数据飞轮）需单独估值，不能线性加总"
+      - "蚕食效应即使概率低也必须考虑"
+      - "CEO跨多家公司的注意力成本难以量化但真实存在"
+
+  case_2_amazon:
+    summary: "电商+AWS+广告+Prime的生态飞轮"
+    key_synergies:
+      - "Prime会员提升电商GMV 30-40%"
+      - "AWS-电商数据协同（物流优化）"
+      - "广告基于购买数据，ROAS行业领先"
+    key_negative_synergies:
+      - "AWS与电商客户潜在利益冲突（轻微）"
+      - "Prime成本侵蚀零售毛利"
+    lessons:
+      - "会员制是最强协同锁定机制"
+      - "数据协同可量化（ROAS提升，物流成本降低）"
+      - "负协同轻微时可忽略"
+
+  case_3_alphabet:
+    summary: "搜索+YouTube+Cloud+Other Bets"
+    key_synergies:
+      - "搜索-YouTube流量协同"
+      - "广告技术跨平台复用"
+      - "AI训练数据跨业务共享"
+    key_negative_synergies:
+      - "Other Bets亏损+分散注意力"
+      - "YouTube蚕食搜索广告（轻微）"
+    lessons:
+      - "Other Bets造成15% conglomerate discount"
+      - "YouTube蚕食可能被夸大（移动广告整体增长）"
+
+  case_4_berkshire_hathaway:
+    summary: "纯Conglomerate，协同极少"
+    key_synergies:
+      - "保险Float为其他投资提供低成本资本"
+      - "品牌信任度降低保险获客成本"
+    key_negative_synergies:
+      - "Holding company结构导致15% discount"
+      - "业务间无运营协同"
+    lessons:
+      - "即使无负协同，市场也给conglomerate discount"
+      - "资本配置能力是唯一协同来源"
+
+  case_5_johnson_johnson_spinoff:
+    summary: "2023年拆分消费品业务（Kenvue）验证协同缺失"
+    pre_spinoff:
+      structure: "医药+器械+消费品"
+      market_cap: "$450B（2022）"
+      conglomerate_discount: "估计20-25%"
+
+    post_spinoff:
+      jnj_remaining: "医药+器械, 市值$380B"
+      kenvue: "消费品, 市值$45B"
+      total: "$425B"
+
+    result:
+      immediate_impact: "拆分宣布后JNJ股价+5%（折价缩小）"
+      long_term: "两家公司独立估值倍数提升"
+      lesson: "业务相关度低时，拆分>协同"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PART 8: 学术参考文献
+# ═══════════════════════════════════════════════════════════════════════════════
+
+academic_references:
+
+  conglomerate_discount:
+    paper: "The Diversification Discount: Evidence from Multiple Measures"
+    authors: "Berger & Ofek"
+    journal: "Journal of Finance, 1995"
+    finding: "多元化公司平均折价13-15%"
+
+  synergy_realization:
+    paper: "Takeover Synergies: Do Acquirers Overpay?"
+    authors: "Moeller et al."
+    journal: "Journal of Financial Economics, 2004"
+    finding: "60-70%并购未实现预期协同"
+
+  data_network_effects:
+    paper: "Data Network Effects: The Economics of Online Platforms"
+    authors: "Hagiu & Wright"
+    journal: "Management Science, 2020"
+    finding: "数据飞轮价值高度依赖网络结构"
+
+  management_attention:
+    paper: "CEO Attention and Corporate Performance"
+    authors: "Ocasio"
+    journal: "Organization Science, 1997"
+    finding: "CEO注意力分散与业绩负相关"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# End of Framework
+# ═══════════════════════════════════════════════════════════════════════════════

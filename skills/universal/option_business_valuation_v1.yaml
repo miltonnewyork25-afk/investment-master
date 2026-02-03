@@ -1,0 +1,979 @@
+# Option Business Valuation v1.0
+# 期权型业务估值框架 - 通用框架
+#
+# 创建日期: 2026-02-02
+# 用途: 对高度不确定的未来业务（Pre-revenue/早期）进行期权定价
+# 适用: Robotaxi、Optimus、新药研发、硬科技突破等
+# 依赖: business_decomposition_protocol_v1.yaml
+
+---
+metadata:
+  name: option_business_valuation
+  version: "1.0"
+  created: "2026-02-02"
+  category: "universal"
+  description: "期权型业务（不确定性高的未来业务）的估值框架"
+  dependencies:
+    - "skills/universal/business_decomposition_protocol_v1.yaml"
+
+design_philosophy: |
+  期权型业务的核心特征：
+  - 当前收入为0或微量
+  - 技术/监管/市场多重不确定性
+  - 成功vs失败是二元结果（非线性）
+  - 时间价值显著（越晚验证价值越低）
+
+  传统DCF的问题：
+  - 无法处理非线性结果（成功$100B vs 失败$0）
+  - 低估"等待观望"的价值
+  - 高折现率无法反映真实风险
+
+  期权定价的优势：
+  - 明确建模不确定性（概率树）
+  - 量化"失败"和"成功"的二元结果
+  - 捕捉时间价值（越早成功价值越高）
+  - 避免"精确的错误"
+
+---
+# ==========================================
+# 第一部分：期权型业务识别
+# ==========================================
+
+option_business_identification:
+  description: "判断业务是否适用期权定价"
+
+  identification_criteria:
+    criterion_1:
+      name: "收入状态"
+      threshold: "当前收入<$100M 或 无收入"
+      rationale: "成熟业务用DCF，早期业务用期权"
+
+    criterion_2:
+      name: "不确定性类型"
+      types:
+        - type: "技术不确定"
+          examples: ["FSD能否实现L4", "Optimus能否完成复杂任务"]
+        - type: "监管不确定"
+          examples: ["自动驾驶批准", "新药FDA批准"]
+        - type: "市场不确定"
+          examples: ["消费者是否接受", "B2B销售周期"]
+        - type: "规模化不确定"
+          examples: ["量产成本", "供应链建立"]
+      threshold: "至少2种不确定性"
+
+    criterion_3:
+      name: "结果二元性"
+      description: "成功vs失败的价值差异≥10x"
+      examples:
+        - "✅ Robotaxi: 成功$50-100B vs 失败$0（差异∞）"
+        - "✅ 新药: 成功$10B vs 失败-$2B（沉没成本）"
+        - "❌ 新款Model车型: 成功$5B vs 失败$3B（差异<2x，用DCF）"
+
+    criterion_4:
+      name: "时间敏感性"
+      description: "延迟实现显著降低价值"
+      examples:
+        - "✅ Robotaxi: 2027实现$50B vs 2030实现$30B（先发优势）"
+        - "❌ 能源存储扩产: 时间影响小（持续需求）"
+
+    criterion_5:
+      name: "里程碑可识别"
+      description: "有明确的技术/监管里程碑"
+      examples:
+        - "✅ FSD: v13→v14→v15→L4批准"
+        - "❌ '品牌价值提升': 难以定义里程碑"
+
+  decision_tree: |
+    业务估值方法决策树：
+
+    收入>$1B？
+    ├─ 是 → DCF（成熟业务）
+    └─ 否 → 不确定性≥2种？
+            ├─ 是 → 结果二元？
+            │       ├─ 是 → 期权定价 ⭐
+            │       └─ 否 → Scenario DCF
+            └─ 否 → DCF（高折现率）
+
+  examples:
+    option_businesses:
+      - name: "Tesla Robotaxi"
+        reason: "0收入 + 技术+监管不确定 + 二元结果 + 时间敏感 + 里程碑清晰"
+        method: "rNPV"
+
+      - name: "Tesla Optimus"
+        reason: "0收入 + 技术+市场+规模化不确定 + 二元结果 + 里程碑模糊"
+        method: "Black-Scholes（波动率极高）"
+
+      - name: "Novo Nordisk GLP-1新适应症"
+        reason: "FDA审批不确定 + 二元结果 + 里程碑清晰（Phase 3结果）"
+        method: "rNPV"
+
+    non_option_businesses:
+      - name: "Tesla Model Q低价车"
+        reason: "虽然未发布，但技术成熟，收入可预测"
+        method: "DCF"
+
+      - name: "Amazon Prime Video内容投资"
+        reason: "持续投资，非二元结果"
+        method: "DCF"
+
+---
+# ==========================================
+# 第二部分：方法1 - rNPV（风险调整净现值）
+# ==========================================
+
+method_1_rnpv:
+  name: "Risk-Adjusted Net Present Value"
+  best_for: "有明确里程碑的技术/监管驱动型业务"
+
+  适用条件:
+    - "可以识别3-5个关键里程碑"
+    - "每个里程碑的成功概率可估算"
+    - "有现金流预测（成功情景）"
+
+  核心公式: |
+    rNPV = Σ [ P(成功到此里程碑) × CF(t) / (1+r)^t ]
+
+    其中：
+    - P(成功到此里程碑) = P(M1) × P(M2|M1) × ... × P(Mn|M1...Mn-1)
+    - CF(t) = t年的现金流（成功情景）
+    - r = 折现率（通常用WACC，因为风险已在概率中反映）
+
+  执行步骤:
+    step_1:
+      name: "识别关键里程碑"
+      description: "找出业务从0到成功的关键节点"
+
+      guidelines:
+        - "每个里程碑应该是二元结果（通过/不通过）"
+        - "里程碑应该有明确时间线"
+        - "里程碑数量建议3-5个（不要太多）"
+
+      example_robotaxi:
+        milestone_1:
+          name: "FSD v15实现L4技术能力"
+          date: "2027 Q2"
+          success_criteria: "无监督城市驾驶>10,000 miles"
+          probability: "40%"
+          rationale: "基于FSD v13进展，但城市复杂场景仍是挑战"
+
+        milestone_2:
+          name: "获得首个城市Robotaxi运营批准"
+          date: "2027 Q4"
+          success_criteria: "加州/德州/亚利桑那任一州批准"
+          probability: "60%（条件概率，假设M1成功）"
+          rationale: "已有Waymo先例，但Tesla需证明安全性"
+
+        milestone_3:
+          name: "Cybercab量产并投入运营"
+          date: "2028 Q2"
+          success_criteria: "生产>10,000辆Cybercab，车队运营开始"
+          probability: "70%（条件概率）"
+          rationale: "制造风险低，主要是供应链和测试"
+
+        milestone_4:
+          name: "车队规模达到临界质量"
+          date: "2030 Q4"
+          success_criteria: "100,000+辆Cybercab运营，覆盖10+城市"
+          probability: "50%（条件概率）"
+          rationale: "监管扩张+单位经济验证是瓶颈"
+
+        cumulative_probability:
+          formula: "P(全部成功) = 40% × 60% × 70% × 50% = 8.4%"
+          interpretation: "从0到100K车队成功的总概率仅8.4%"
+
+    step_2:
+      name: "构建现金流预测（成功情景）"
+      description: "假设所有里程碑成功，预测2030-2040的现金流"
+
+      assumptions:
+        - "Robotaxi Revenue = Miles Driven × Price Per Mile"
+        - "Cost Per Mile = 车辆折旧 + 运营 + 监控 + 保险"
+        - "毛利率 = 1 - (Cost Per Mile / Price Per Mile)"
+
+      example_robotaxi_success_scenario:
+        key_assumptions:
+          fleet_size:
+            2028: "10K"
+            2030: "100K"
+            2035: "500K"
+            2040: "1M"
+
+          utilization:
+            2028: "30%（早期）"
+            2030: "50%"
+            2035: "60%"
+            2040: "65%"
+
+          price_per_mile:
+            2028: "$1.50"
+            2030: "$1.20（竞争降价）"
+            2035: "$1.00"
+            2040: "$0.80"
+
+          cost_per_mile:
+            2028: "$0.70（高运营成本）"
+            2030: "$0.50（规模效应）"
+            2035: "$0.40"
+            2040: "$0.35"
+
+          miles_per_vehicle_per_day:
+            formula: "24小时 × 平均速度20mph × 利用率"
+            2030: "24h × 20mph × 50% = 240 miles/天"
+
+        revenue_calculation:
+          year_2030:
+            fleet: "100,000辆"
+            miles_per_day: "240"
+            annual_miles: "100K × 240 × 365 = 8.76B miles"
+            price_per_mile: "$1.20"
+            revenue: "$10.5B"
+
+          year_2035:
+            fleet: "500,000辆"
+            miles_per_day: "288（60%利用率）"
+            annual_miles: "500K × 288 × 365 = 52.6B miles"
+            price_per_mile: "$1.00"
+            revenue: "$52.6B"
+
+        operating_income:
+          year_2030:
+            revenue: "$10.5B"
+            cost_per_mile: "$0.50"
+            cogs: "$0.50 × 8.76B = $4.38B"
+            gross_profit: "$6.12B"
+            gross_margin: "58%"
+            opex: "$2B（监控+保险+营销）"
+            operating_income: "$4.12B"
+
+          year_2035:
+            revenue: "$52.6B"
+            cost_per_mile: "$0.40"
+            cogs: "$0.40 × 52.6B = $21B"
+            gross_profit: "$31.6B"
+            gross_margin: "60%"
+            opex: "$8B"
+            operating_income: "$23.6B"
+
+        cash_flow:
+          note: "FCF = Operating Income - CapEx（车辆+充电桩）"
+          year_2030:
+            operating_income: "$4.12B"
+            capex: "$3B（100K × $30K/辆）"
+            fcf: "$1.12B"
+
+          year_2035:
+            operating_income: "$23.6B"
+            capex: "$12B（400K新增车辆）"
+            fcf: "$11.6B"
+
+    step_3:
+      name: "计算rNPV"
+      description: "概率加权折现"
+
+      calculation_table: |
+        | 年份 | 成功情景FCF | 累积成功概率 | 概率加权FCF | 折现因子(10%) | 现值 |
+        |------|------------|-------------|------------|--------------|------|
+        | 2028 | -$0.5B | 16.8%¹ | -$84M | 0.751 | -$63M |
+        | 2030 | $1.12B | 8.4%² | $94M | 0.621 | $58M |
+        | 2035 | $11.6B | 8.4% | $974M | 0.386 | $376M |
+        | 2040 | $25B | 8.4% | $2.1B | 0.239 | $502M |
+        | **总rNPV** | - | - | - | - | **$873M** |
+
+        注释：
+        ¹ 16.8% = 40% × 60% × 70%（通过前3个里程碑）
+        ² 8.4% = 全部里程碑成功
+
+      result:
+        rnpv_total: "$873M"
+        per_share: "$873M / 3.2B股 = $0.27/股"
+        interpretation: "即使Robotaxi TAM巨大，但8.4%成功率+长时间线导致当前价值很小"
+
+    step_4:
+      name: "敏感性分析"
+      description: "改变关键假设看rNPV变化"
+
+      sensitivity_table: |
+        | 假设变化 | 原值 | 变化后 | rNPV | 变化 |
+        |---------|------|--------|------|------|
+        | **Base情景** | - | - | $873M | - |
+        | M1成功率 | 40% | 60% | $1.31B | +50% |
+        | M4成功率 | 50% | 70% | $1.22B | +40% |
+        | 2035 Price/Mile | $1.00 | $1.20 | $1.51B | +73% |
+        | 2035 Cost/Mile | $0.40 | $0.30 | $2.87B | +229% |
+        | 折现率 | 10% | 15% | $612M | -30% |
+
+      tornado_chart: "成本控制>定价权>里程碑概率>折现率"
+
+  优点与局限:
+    优点:
+      - "✅ 明确建模每个里程碑的不确定性"
+      - "✅ 避免了DCF的'虚假精确'（整体折现率30%无法反映分阶段风险）"
+      - "✅ 便于识别关键风险点（哪个里程碑最critical）"
+      - "✅ 可验证（里程碑通过/失败可观察）"
+
+    局限:
+      - "❌ 需要估算概率（主观性强）"
+      - "❌ 假设里程碑独立（实际可能有依赖）"
+      - "❌ 对现金流假设敏感（成功情景可能过于乐观）"
+      - "❌ 忽略了'部分成功'情景（如只获得德州批准）"
+
+  best_practices:
+    practice_1: "概率估算要保守（成功偏见常见）"
+    practice_2: "现金流假设要realistic（不要用Bull情景）"
+    practice_3: "必须做敏感性分析（展示区间而非点值）"
+    practice_4: "明确标注'成功定义'（100K车队 vs 10K车队）"
+
+---
+# ==========================================
+# 第三部分：方法2 - Black-Scholes期权定价
+# ==========================================
+
+method_2_black_scholes:
+  name: "Black-Scholes Option Pricing"
+  best_for: "极度不确定、难以定义里程碑、长时间线的早期业务"
+
+  适用条件:
+    - "无法清晰定义里程碑（如Optimus）"
+    - "结果高度二元（成功$100B+ vs 失败$0）"
+    - "有长期时间价值（5-10年）"
+
+  核心公式: |
+    C = S × N(d1) - K × e^(-rT) × N(d2)
+
+    其中：
+    - S = 标的资产当前价值（成功情景下的PV）
+    - K = 执行价（需要投入的CapEx）
+    - T = 到期时间（到商业化的年数）
+    - σ = 波动率（不确定性程度）
+    - r = 无风险利率
+    - N(d) = 标准正态分布累积函数
+
+  参数估算:
+    parameter_S:
+      name: "标的资产价值（S）"
+      description: "如果业务100%成功，其现值是多少？"
+
+      estimation_method:
+        method_1:
+          name: "TAM × 份额 × 利润率"
+          example_optimus:
+            tam: "$10T（Musk估算）[Level D]"
+            share: "5-10%（乐观假设）"
+            addressable_market: "$500B-1T"
+            net_margin: "20%（硬件+服务）"
+            annual_profit: "$100B-200B"
+            pe_multiple: "30x（类似软件公司）"
+            market_value: "$3T-6T"
+            discounted_to_today: "$3T / (1+10%)^10 = $1.16T"
+            note: "这是'成功情景'的上限"
+
+        method_2:
+          name: "可比公司"
+          example_optimus:
+            comparable: "Boston Dynamics估值$1B（未盈利）"
+            adjustment: "Tesla规模×10 = $10B"
+            note: "这是'部分成功'情景"
+
+      recommended_approach: "取上下限几何平均"
+      example_optimus_S:
+        upper_bound: "$1.16T（完全成功）"
+        lower_bound: "$10B（部分成功）"
+        geometric_mean: "√($1.16T × $10B) = $107B"
+        chosen_S: "$100B（保守取整）"
+
+    parameter_K:
+      name: "执行价（K）"
+      description: "从现在到商业化需要投入多少CapEx/R&D？"
+
+      estimation:
+        components:
+          - item: "R&D投入（AI+机器人硬件）"
+            amount: "$3B/年 × 5年 = $15B"
+            note: "假设Tesla AI预算30%用于Optimus"
+          - item: "产线建设（假设德州工厂）"
+            amount: "$5B"
+            note: "类比汽车产线但更自动化"
+          - item: "量产爬坡损失"
+            amount: "$2B"
+            note: "早期低良率+高成本"
+        total_K: "$22B"
+
+    parameter_T:
+      name: "到期时间（T）"
+      description: "到商业化还有多少年？"
+
+      example_optimus:
+        milestones:
+          2026: "Gen 2原型机完善"
+          2027: "工厂内部部署（100台）"
+          2029: "外部客户试点（1,000台）"
+          2031: "规模化商业化（100,000+台）"
+        T: "5-7年，取T=6"
+
+    parameter_sigma:
+      name: "波动率（σ）"
+      description: "不确定性的程度（年化标准差）"
+
+      estimation_methods:
+        method_1:
+          name: "历史类比"
+          examples:
+            - "自动驾驶（FSD）: σ ≈ 60%"
+            - "新药研发: σ ≈ 70-100%"
+            - "消费电子新品: σ ≈ 40-50%"
+          example_optimus: "机器人硬件+AI+市场三重不确定 → σ ≈ 80-100%"
+
+        method_2:
+          name: "可比公司股价波动"
+          examples:
+            - "Boston Dynamics（未上市）: 无法获取"
+            - "特斯拉自身股价: σ ≈ 50%（但混合了所有业务）"
+          limitation: "Optimus风险高于Tesla整体"
+
+        method_3:
+          name: "管理层判断"
+          question: "如果Optimus是独立公司，估值会有多大波动？"
+          answer: "年波动±100%很正常（可能$0也可能$200B）"
+
+      recommended_sigma: "70-100%（取σ=85%）"
+
+    parameter_r:
+      name: "无风险利率（r）"
+      current_value: "4.5%（10年期美债）"
+
+  计算示例_optimus:
+    inputs:
+      S: "$100B"
+      K: "$22B"
+      T: "6年"
+      sigma: "85%"
+      r: "4.5%"
+
+    calculation_steps:
+      step_1:
+        formula: "d1 = [ln(S/K) + (r + σ²/2)T] / (σ√T)"
+        calculation: |
+          ln($100B/$22B) = ln(4.545) = 1.514
+          (r + σ²/2) = 0.045 + 0.85²/2 = 0.406
+          d1 = [1.514 + 0.406×6] / (0.85×√6) = 2.897 / 2.082 = 1.392
+
+      step_2:
+        formula: "d2 = d1 - σ√T"
+        calculation: "d2 = 1.392 - 0.85×√6 = 1.392 - 2.082 = -0.690"
+
+      step_3:
+        formula: "N(d1), N(d2)（查标准正态表）"
+        values:
+          N_d1: "N(1.392) = 0.918"
+          N_d2: "N(-0.690) = 0.245"
+
+      step_4:
+        formula: "C = S×N(d1) - K×e^(-rT)×N(d2)"
+        calculation: |
+          C = $100B × 0.918 - $22B × e^(-0.045×6) × 0.245
+          C = $91.8B - $22B × 0.766 × 0.245
+          C = $91.8B - $4.13B
+          C = $87.7B
+
+    result:
+      option_value: "$87.7B"
+      per_share: "$87.7B / 3.2B股 = $27.4/股"
+      interpretation: |
+        尽管Optimus极度不确定（σ=85%），但：
+        - 成功情景价值极大（$100B）
+        - 投入相对小（$22B）
+        - 时间足够长（6年）
+        → 期权时间价值显著
+
+  敏感性分析:
+    sensitivity_table: |
+      | 参数变化 | 原值 | 变化后 | 期权价值 | 变化 |
+      |---------|------|--------|---------|------|
+      | **Base** | - | - | $87.7B | - |
+      | S（成功价值） | $100B | $50B | $44.2B | -50% |
+      | S（成功价值） | $100B | $200B | $175B | +100% |
+      | σ（波动率） | 85% | 60% | $81.3B | -7% |
+      | σ（波动率） | 85% | 120% | $96.5B | +10% |
+      | T（时间） | 6年 | 4年 | $76.8B | -12% |
+      | T（时间） | 6年 | 8年 | $95.1B | +8% |
+
+    key_insights:
+      insight_1: "期权价值对S（成功价值）最敏感（线性关系）"
+      insight_2: "高波动率反而增加期权价值（非直觉！）"
+      insight_3: "时间越长价值越高（但边际递减）"
+
+  与rNPV对比:
+    comparison_table: |
+      | 维度 | Black-Scholes | rNPV |
+      |------|--------------|------|
+      | **适用场景** | 极度不确定、难定义里程碑 | 有明确里程碑 |
+      | **复杂度** | 中（5个参数） | 高（逐年现金流） |
+      | **主观性** | 高（σ估算主观） | 高（概率估算主观） |
+      | **可验证性** | 低（期权到期才知道） | 高（里程碑可观察） |
+      | **适合报告** | 学术/理论分析 | 实务投资分析 |
+
+    recommendation: |
+      对于Optimus类业务：
+      - 主力使用rNPV（投资者更易理解）
+      - Black-Scholes作为交叉验证
+      - 如果两种方法结果相差10x+ → 重新检查假设
+
+---
+# ==========================================
+# 第四部分：方法3 - 蒙特卡洛模拟
+# ==========================================
+
+method_3_monte_carlo:
+  name: "Monte Carlo Simulation"
+  best_for: "多变量不确定性、需要分布而非点值"
+
+  适用条件:
+    - "关键变量（如TAM渗透率）是区间而非点值"
+    - "需要置信区间（P10/P50/P90）"
+    - "变量间有相关性"
+
+  核心思路: |
+    对每个不确定变量定义概率分布，随机抽样10,000次，
+    得到业务价值的概率分布。
+
+  执行步骤:
+    step_1:
+      name: "定义不确定变量"
+      example_robotaxi:
+        variable_1:
+          name: "2030车队规模"
+          distribution: "正态分布"
+          mean: "100,000辆"
+          std_dev: "30,000辆"
+          rationale: "基于产能和监管不确定性"
+
+        variable_2:
+          name: "Price Per Mile（2030）"
+          distribution: "三角分布"
+          min: "$0.80"
+          mode: "$1.20"
+          max: "$1.80"
+          rationale: "竞争（Waymo）+ 成本下降"
+
+        variable_3:
+          name: "Cost Per Mile（2030）"
+          distribution: "对数正态分布"
+          median: "$0.50"
+          sigma: "0.3"
+          rationale: "规模效应+技术改进"
+
+        variable_4:
+          name: "利用率"
+          distribution: "Beta分布"
+          alpha: "5"
+          beta: "5"
+          range: "30-70%"
+          rationale: "需求波动+运营优化"
+
+    step_2:
+      name: "定义变量相关性"
+      correlations:
+        - pair: "Price Per Mile vs Cost Per Mile"
+          correlation: "+0.6"
+          rationale: "成本高时定价也需要高"
+
+        - pair: "车队规模 vs 利用率"
+          correlation: "-0.3"
+          rationale: "车队越大单车利用率可能下降"
+
+    step_3:
+      name: "运行10,000次模拟"
+      pseudo_code: |
+        for i in 1 to 10,000:
+          fleet = random_normal(mean=100K, std=30K)
+          price = random_triangular(min=0.8, mode=1.2, max=1.8)
+          cost = random_lognormal(median=0.5, sigma=0.3)
+          utilization = random_beta(alpha=5, beta=5, range=[0.3, 0.7])
+
+          annual_miles = fleet × utilization × 240miles/day × 365
+          revenue = annual_miles × price
+          cogs = annual_miles × cost
+          gross_profit = revenue - cogs
+
+          NPV[i] = DCF(gross_profit, growth_rate, years=10)
+
+    step_4:
+      name: "分析结果分布"
+      output_statistics:
+        mean: "$12.3B"
+        median: "$10.8B"
+        p10: "$3.2B（悲观）"
+        p50: "$10.8B（中位）"
+        p90: "$24.5B（乐观）"
+        std_dev: "$8.7B"
+
+      interpretation: |
+        - 中位数$10.8B（50%概率高于此值）
+        - 10%概率低于$3.2B（下行风险）
+        - 10%概率高于$24.5B（上行空间）
+        - 标准差大 → 高度不确定
+
+  优点与局限:
+    优点:
+      - "✅ 提供完整的概率分布（不只是点值）"
+      - "✅ 可以建模变量相关性"
+      - "✅ 可以识别'极端情景'（尾部风险）"
+      - "✅ 直观展示不确定性"
+
+    局限:
+      - "❌ 需要编程实现（Excel可用@RISK插件）"
+      - "❌ 概率分布假设主观性强"
+      - "❌ 结果对分布假设敏感"
+      - "❌ 投资者可能不熟悉概率表达"
+
+  使用建议:
+    when_to_use: "用于内部分析、敏感性检验"
+    when_not_to_use: "主报告中（投资者偏好单一目标价）"
+    best_practice: "结合rNPV使用：rNPV给点值，Monte Carlo给置信区间"
+
+---
+# ==========================================
+# 第五部分：方法选择指南
+# ==========================================
+
+method_selection_guide:
+  decision_matrix: |
+    | 业务特征 | 推荐方法 | 备选方法 |
+    |---------|---------|---------|
+    | **有明确里程碑** | rNPV ⭐ | Monte Carlo |
+    | **极度不确定** | Black-Scholes | Monte Carlo |
+    | **多变量不确定** | Monte Carlo | rNPV+敏感性 |
+    | **长时间线（>5年）** | Black-Scholes | rNPV |
+    | **需要概率区间** | Monte Carlo ⭐ | - |
+
+  practical_workflow:
+    step_1: "首先尝试rNPV（最直观，投资者易接受）"
+    step_2: "如果里程碑难定义 → 改用Black-Scholes"
+    step_3: "用Monte Carlo做交叉验证（内部分析）"
+    step_4: "报告中展示：主力方法+敏感性分析"
+
+  examples_mapping:
+    tesla_robotaxi:
+      primary: "rNPV（里程碑清晰）"
+      secondary: "Black-Scholes（交叉验证）"
+      result_comparison:
+        rnpv: "$873M（8.4%成功率）"
+        black_scholes: "$5-10B（σ=70%）"
+        reconciliation: "差异因Black-Scholes隐含更高'部分成功'价值"
+
+    tesla_optimus:
+      primary: "Black-Scholes（里程碑模糊）"
+      secondary: "rNPV（情景分析）"
+      result_comparison:
+        black_scholes: "$87.7B"
+        rnpv_low_prob: "$2-5B（成功率<5%）"
+        reconciliation: "巨大差异凸显不确定性，取几何平均$10-20B"
+
+---
+# ==========================================
+# 第六部分：避免常见错误
+# ==========================================
+
+common_pitfalls:
+  pitfall_1:
+    name: "用DCF估算期权型业务"
+    problem: "高折现率（如30%）无法反映二元风险"
+    example: |
+      错误：Robotaxi用30% WACC折现 → 价值接近$0
+      正确：用rNPV（8.4%成功率）→ 价值$873M
+    why_wrong: "折现率假设风险连续分布，但期权是二元的"
+
+  pitfall_2:
+    name: "概率过于乐观"
+    problem: "成功偏见（Optimism Bias）导致高估"
+    statistics: "创业公司5年存活率<20%，但创始人估算成功率>50%"
+    solution:
+      - "参考历史类比（FDA批准率、L4批准先例）"
+      - "寻求外部观点（分析师、行业专家）"
+      - "应用'参考类预测'（类似项目的成功率）"
+
+  pitfall_3:
+    name: "忽略'部分成功'情景"
+    problem: "不是100%成功或0%失败，而是有中间状态"
+    example: |
+      Robotaxi可能：
+      - 只在德州获批（而非全美）
+      - 只运营10K车队（而非100K）
+      - 只服务B2B（而非C2C）
+    solution: "建立3-5个情景（失败/小成功/大成功/超预期）"
+
+  pitfall_4:
+    name: "混淆'期权价值'与'预期价值'"
+    clarification: |
+      - 期权价值 = 今天买入这个不确定业务的合理价格
+      - 预期价值 = 成功价值 × 成功概率
+      例子：
+        成功价值$100B × 10%概率 = $10B预期价值
+        但期权价值可能$30B（因为时间价值+波动率）
+
+  pitfall_5:
+    name: "在SOTP中重复计数"
+    problem: "期权业务可能与基础业务有重叠"
+    example: |
+      错误：Tesla SOTP = 汽车$200B + Robotaxi$50B
+      问题：Robotaxi依赖汽车制造能力，有重叠
+    solution:
+      - 明确Robotaxi估值中是否包含Cybercab制造价值
+      - 如果是，从汽车业务中扣除相应部分
+
+  pitfall_6:
+    name: "忽略执行风险"
+    problem: "假设管理层能同时推进多个高风险项目"
+    example: "Tesla同时推进FSD/Robotaxi/Optimus/能源，注意力分散风险"
+    solution:
+      - 在概率中反映执行风险（降低条件概率）
+      - 或在SOTP中应用'复杂度折价'（-10-20%）
+
+---
+# ==========================================
+# 第七部分：报告呈现规范
+# ==========================================
+
+reporting_standards:
+  description: "期权型业务估值结果如何在报告中呈现"
+
+  mandatory_disclosures:
+    disclosure_1:
+      name: "方法选择说明"
+      template: |
+        **估值方法**: rNPV（风险调整净现值）
+
+        **选择理由**:
+        - Robotaxi有明确里程碑（FSD L4→监管批准→量产→规模化）
+        - 成功vs失败是二元结果（$50B+ vs $0）
+        - 时间敏感（先发优势显著）
+
+        **备选方法**: Black-Scholes期权定价交叉验证
+
+    disclosure_2:
+      name: "关键假设透明化"
+      template: |
+        **关键假设**:
+
+        | 假设 | 值 | 来源 | 置信度 |
+        |------|---|------|--------|
+        | M1: FSD L4成功率 | 40% | 基于FSD v13进展 [Level C] | 中 |
+        | M2: 监管批准概率 | 60% | 参考Waymo先例 [Level C] | 中 |
+        | 2030车队规模 | 100K | 管理层指引 [Level D] | 低 |
+        | Price Per Mile | $1.20 | 行业均价 [Level B] | 高 |
+        | Cost Per Mile | $0.50 | 单位经济估算 [Level E] | 低 |
+
+        **总体置信度**: 低-中
+
+    disclosure_3:
+      name: "敏感性分析"
+      template: |
+        **敏感性分析**:
+
+        | 假设变化 | rNPV变化 |
+        |---------|---------|
+        | M1成功率40%→60% | +50% |
+        | 2035 Cost/Mile $0.40→$0.30 | +229% |
+        | 折现率10%→15% | -30% |
+
+        **关键驱动**: 成本控制>里程碑概率>折现率
+
+    disclosure_4:
+      name: "风险提示"
+      template: |
+        **风险提示**:
+
+        - ⚠️ 本估值基于8.4%的低成功概率，实际可能更低
+        - ⚠️ 假设'成功'定义为100K车队，但部分成功（10K车队）也有价值（未计入）
+        - ⚠️ 监管环境快速变化可能使假设失效
+        - ⚠️ 竞争对手（Waymo/百度）进展可能压缩Tesla份额
+        - ⚠️ 成本假设基于有限数据，实际可能高50%+
+
+  visualization_best_practices:
+    chart_1:
+      name: "里程碑进展甘特图"
+      purpose: "展示时间线和当前进展"
+      example: |
+        2027 Q2 ▓▓▓▓░░ M1: FSD L4 [40% ✅待验证]
+        2027 Q4 ░░░░░░ M2: 监管批准 [60% 未开始]
+        2028 Q2 ░░░░░░ M3: Cybercab量产 [70% 未开始]
+        2030 Q4 ░░░░░░ M4: 100K车队 [50% 未开始]
+
+    chart_2:
+      name: "现金流概率锥"
+      purpose: "展示不确定性随时间增加"
+      description: "用逐年扩大的区间展示P10/P50/P90情景"
+
+    chart_3:
+      name: "Tornado图"
+      purpose: "展示敏感性分析结果"
+      description: "横轴为rNPV变化，按影响程度排序"
+
+  language_guidelines:
+    避免:
+      - "❌ 'Robotaxi将在2030年创造$50B收入'"
+      - "❌ 'Optimus估值$100B'"
+    推荐:
+      - "✅ 'Robotaxi的rNPV为$873M，假设8.4%成功概率'"
+      - "✅ 'Optimus的期权价值为$10-20B（几何平均，高度不确定）'"
+      - "✅ 'Tesla期权型业务合计贡献$5-15/股（置信度：低）'"
+
+---
+# ==========================================
+# 第八部分：与SOTP框架整合
+# ==========================================
+
+sotp_integration:
+  description: "期权型业务如何与SOTP估值整合"
+
+  step_1:
+    name: "分别估值各业务"
+    成熟业务: "用DCF"
+    成长业务: "用倍数法"
+    期权业务: "用本框架"
+
+  step_2:
+    name: "加总时注意"
+    check_1: "避免重复计数（Robotaxi vs 汽车制造）"
+    check_2: "协同效应单独处理（不在单业务估值中）"
+    check_3: "期权业务置信度低，可应用折价"
+
+  step_3:
+    name: "SOTP模板（含期权业务）"
+    template: |
+      ## SOTP估值（含期权业务）
+
+      | 业务 | 方法 | 估值 | 占比 | 置信度 |
+      |------|------|------|------|--------|
+      | 汽车制造 | DCF | $200B | 55% | 高 |
+      | 能源存储 | 倍数法（6x P/S） | $80B | 22% | 中 |
+      | FSD订阅 | SaaS倍数（12x P/S） | $40B | 11% | 中 |
+      | **Robotaxi** | **rNPV** | **$5B** | **1%** | **低** |
+      | **Optimus** | **B-S期权** | **$15B** | **4%** | **极低** |
+      | **小计** | - | **$340B** | **93%** | - |
+      | 协同效应 | 品牌+数据 | $20B | 5% | 低 |
+      | 现金-债务 | Net Cash | $8B | 2% | 高 |
+      | **总企业价值** | - | **$368B** | **100%** | - |
+      | 股数 | - | 3.2B | - | - |
+      | **每股价值** | - | **$115** | - | - |
+
+      **期权业务说明**:
+      - Robotaxi: rNPV $5B基于8.4%成功概率
+      - Optimus: 期权价值$15B（B-S模型，σ=85%）
+      - 合计期权贡献: $6.25/股（5%总价值）
+      - 如果剔除期权业务，保守估值$108/股
+
+  step_4:
+    name: "情景分析（含期权）"
+    scenarios:
+      bear:
+        assumption: "期权业务全部失败"
+        sotp: "$108/股（剔除Robotaxi+Optimus）"
+
+      base:
+        assumption: "期权业务rNPV/期权价值"
+        sotp: "$115/股（如上表）"
+
+      bull:
+        assumption: "Robotaxi实现L4，Optimus部分成功"
+        sotp: "$150-200/股（期权价值兑现25-50%）"
+
+---
+# ==========================================
+# 第九部分：实战案例
+# ==========================================
+
+case_studies:
+  case_1_tesla_robotaxi:
+    method: "rNPV"
+    result: "$873M（$0.27/股）"
+    key_learning: "即使TAM巨大，低成功率+长时间线导致当前价值小"
+
+  case_2_tesla_optimus:
+    method: "Black-Scholes"
+    result: "$87.7B（$27.4/股）"
+    key_learning: "极高波动率反而增加期权价值（反直觉）"
+    reconciliation: "与rNPV结果差异巨大 → 取几何平均$10-20B"
+
+  case_3_pharma_drug_pipeline:
+    company: "Novo Nordisk GLP-1新适应症"
+    method: "rNPV"
+    milestones:
+      - "Phase 2完成（80%）"
+      - "Phase 3完成（60%）"
+      - "FDA批准（85%）"
+      - "商业化成功（70%）"
+    cumulative_probability: "28.6%"
+    result: "$5.2B（显著高于Robotaxi因概率更高）"
+
+  case_4_alphabet_waymo:
+    method: "对比分析（Tesla vs Waymo）"
+    waymo_advantage:
+      - "已获批多个城市（监管里程碑通过）"
+      - "已运营商业车队（技术里程碑验证）"
+      - "风险更低 → 概率更高（40% vs 8.4%）"
+    implication: "Waymo独立估值应显著高于Tesla Robotaxi"
+
+---
+# ==========================================
+# 第十部分：质量控制
+# ==========================================
+
+quality_checks:
+  mandatory_checks:
+    check_1:
+      name: "方法适用性"
+      question: "业务是否真的适合期权定价？"
+      criteria:
+        - "收入<$100M或0收入"
+        - "不确定性≥2种"
+        - "结果二元性≥10x"
+      action_if_fail: "改用DCF或Scenario分析"
+
+    check_2:
+      name: "概率合理性"
+      question: "成功概率是否有历史类比支撑？"
+      red_flags:
+        - "单一里程碑概率>80%（过于乐观）"
+        - "累积概率<1%（几乎无价值，为何估值？）"
+      action_if_fail: "寻找可比案例，调整概率"
+
+    check_3:
+      name: "敏感性合理"
+      question: "关键假设变化是否导致估值巨变？"
+      threshold: "单一假设±20%变化 → 估值变化<50%"
+      action_if_fail: "标注'高度敏感'，警告投资者"
+
+    check_4:
+      name: "交叉验证"
+      question: "不同方法结果是否在同一数量级？"
+      example: "rNPV $1B vs B-S $100B → 相差100x，必须解释"
+      action: "取几何平均，或选择更保守的方法"
+
+    check_5:
+      name: "SOTP一致性"
+      question: "期权业务占SOTP比例是否合理？"
+      warning_threshold: "期权业务>20% SOTP → 风险过高"
+      action: "强调'期权业务高度不确定'，可应用折价"
+
+---
+# ==========================================
+# 第十一部分：版本历史
+# ==========================================
+
+version_history:
+  v1_0:
+    date: "2026-02-02"
+    changes:
+      - "初始版本"
+      - "rNPV方法（4步流程 + Tesla Robotaxi案例）"
+      - "Black-Scholes方法（5参数估算 + Tesla Optimus案例）"
+      - "Monte Carlo方法（概率分布 + 敏感性）"
+      - "方法选择指南（决策矩阵）"
+      - "6大常见错误与解决方案"
+      - "报告呈现规范（透明化+可视化）"
+      - "SOTP整合指南"
+      - "质量控制清单"
+    design_source: "Tesla报告实战经验（Robotaxi $873M + Optimus $87.7B案例）"
+    validation: "通过Tesla v19.12报告验证"
