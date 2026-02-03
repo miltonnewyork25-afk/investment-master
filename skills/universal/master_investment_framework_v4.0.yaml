@@ -1,0 +1,445 @@
+skill_metadata:
+  name: "统一投资分析框架 v4.0"
+  version: "4.0"
+  category: "universal"
+  purpose: "全行业通用投资分析框架，统一结构+AI评估+行业适配"
+  created_date: "2026-02-03"
+  applies_to: "所有上市公司投资分析"
+
+core_philosophy:
+  principle: "统一框架 + 行业适配 + AI全覆盖"
+  structure_consistency: "Phase命名、顺序、评分标准完全统一"
+  industry_flexibility: "核心框架一致，行业模块差异化"
+  ai_integration: "AI评估成为标准模块，按行业分层深度"
+
+standard_report_structure:
+
+  phase_0_executive_summary:
+    name: "Phase 0: 执行摘要"
+    purpose: "投资决策核心信息汇总"
+    required_components:
+      - 投资评级 (1-5级标准制)
+      - 目标价区间 (Bull/Base/Bear三场景)
+      - 核心投资逻辑 (5-8条)
+      - AI影响评级 (Strong/Medium/Weak Beneficiary/Neutral/Risk)
+      - 风险收益比分析
+      - Kill Switch预览
+    target_length: "2,000-3,000字符"
+    depth_target: "L3-L4"
+
+  phase_1_business_model_positioning:
+    name: "Phase 1: 商业模式与生态定位"
+    purpose: "公司业务本质和竞争地位分析"
+    required_components:
+      core_modules:
+        - 业务拆解分析 (SOTP方法)
+        - 生态系统定位图谱
+        - 竞争格局矩阵分析
+        - 商业模式护城河初评
+      industry_specific_modules:
+        technology:
+          - 技术路线图分析
+          - 平台生态系统分析
+        semiconductor:
+          - 产业链5层分析
+          - 供应链依赖关系图
+        consumer:
+          - 品类矩阵分析
+          - 渠道生态分析
+        automotive:
+          - 产业变革趋势
+          - 技术栈整合度
+    target_length: "15,000-20,000字符"
+    depth_target: "L4"
+
+  phase_2_ai_impact_assessment:
+    name: "Phase 2: AI影响深度评估"
+    purpose: "AI技术对公司业务的全维度影响分析"
+    tier_classification:
+      tier_1_ai_core:
+        applies_to: ["Meta", "NVIDIA", "Microsoft", "Alphabet"]
+        depth_level: "L5 (系统性框架)"
+        evaluation_dimensions: 10
+        analysis_components:
+          - AI技术路线图影响预测
+          - AI竞争地位与差异化
+          - AI商业化路径与时间线
+          - AI技术护城河深度
+          - AI替代威胁评估
+          - AI监管政策影响
+          - AI人才竞争格局
+          - AI算力需求与供给
+          - AI数据飞轮效应
+          - AI生态系统控制力
+        target_length: "8,000-12,000字符"
+
+      tier_2_ai_infrastructure:
+        applies_to: ["Micron", "AMD", "TSMC", "Salesforce"]
+        depth_level: "L4 (深度分析)"
+        evaluation_dimensions: 6
+        analysis_components:
+          - AI需求驱动机制分析
+          - AI技术依赖度评估
+          - AI受益程度量化建模
+          - AI供应链战略地位
+          - AI技术演进风险
+          - AI替代技术威胁
+        target_length: "6,000-8,000字符"
+
+      tier_3_ai_application:
+        applies_to: ["Tesla", "Costco", "Procter&Gamble"]
+        depth_level: "L3 (标准分析)"
+        evaluation_dimensions: 4
+        analysis_components:
+          - AI应用场景识别
+          - AI效率提升量化
+          - AI投资回报预测
+          - AI实施风险评估
+        target_length: "4,000-6,000字符"
+
+      tier_4_ai_minimal:
+        applies_to: ["传统零售", "公用事业", "房地产"]
+        depth_level: "L2 (概览分析)"
+        evaluation_dimensions: 2
+        analysis_components:
+          - AI成本效益分析
+          - AI运营优化潜力
+        target_length: "2,000-3,000字符"
+
+  phase_3_competitive_moats_growth:
+    name: "Phase 3: 护城河与增长动力"
+    purpose: "可持续竞争优势与增长机制分析"
+    required_components:
+      core_modules:
+        - 7Powers护城河评分 (Hamilton Helmer框架)
+        - 增长驱动因素分解
+        - 护城河持久性评估
+        - 增长质量评分体系
+      industry_specific_modules:
+        technology:
+          - 网络效应分析
+          - 开发者生态护城河
+        semiconductor:
+          - 周期定位分析 (P1-P5)
+          - 技术护城河深度
+        consumer:
+          - 品牌资产量化
+          - 消费者转换成本
+        automotive:
+          - 垂直整合优势
+          - 技术生态控制
+    target_length: "12,000-15,000字符"
+    depth_target: "L4-L5"
+
+  phase_4_financial_valuation:
+    name: "Phase 4: 财务分析与估值建模"
+    purpose: "财务质量评估与内在价值计算"
+    required_components:
+      - 财务质量诊断 (6维度评分)
+      - DCF估值建模 (三场景)
+      - 相对估值分析 (倍数法)
+      - SOTP概率加权估值
+      - 敏感性分析矩阵
+      - 估值桥梁解释 (如目标价vs SOTP差距>20%)
+    target_length: "10,000-12,000字符"
+    depth_target: "L4"
+
+  phase_5_risk_management_decisions:
+    name: "Phase 5: 风险管理与投资决策"
+    purpose: "风险控制体系与投资执行策略"
+    required_components:
+      - Kill Switch系统 (≥7个量化条件)
+      - 可验证预测清单 (≥15个)
+      - 投资策略建议 (分投资者类型)
+      - 监控指标体系
+      - 催化剂时间线
+      - 风险-收益权衡
+    target_length: "8,000-10,000字符"
+    depth_target: "L4"
+
+  supplementary_modules:
+    name: "补充专业模块"
+    purpose: "行业特异性深度分析"
+    modules:
+      supply_chain_analysis:
+        name: "供应链图谱分析"
+        applies_to: ["半导体", "汽车", "制造业"]
+        components:
+          - 供应链5层结构
+          - 关键节点依赖度
+          - 供应链风险地图
+          - 供应链控制力评估
+        target_length: "3,000-5,000字符"
+
+      technology_radar:
+        name: "技术雷达系统"
+        applies_to: ["科技", "半导体", "汽车"]
+        components:
+          - 技术成熟度评估
+          - 技术威胁时间线
+          - 技术投资追踪
+          - 技术护城河演化
+        target_length: "2,000-4,000字符"
+
+      sentiment_ecosystem:
+        name: "舆情生态分析"
+        applies_to: ["所有行业"]
+        components:
+          - 分析师观点全景
+          - 机构持仓变化
+          - 社交媒体情绪
+          - 管理层沟通分析
+        target_length: "2,000-3,000字符"
+
+quality_standards:
+
+  depth_requirements:
+    l5_systemic: "原创框架 + 可验证预测 + 超越市场共识"
+    l4_analytical: "机制分析 + 量化建模 + 反证条件"
+    l3_mechanistic: "因果机制 + 证据链条 + 投资含义"
+    l2_descriptive: "数据趋势 + 基础分析"
+    l1_surface: "表面描述"
+
+  confidence_annotation:
+    mandatory: true
+    coverage_target: "90%+ A+B级数据"
+    annotation_format:
+      a_level: "[A:95-99%源] - API直接返回/财报数据"
+      b_level: "[B:85-94%源] - 官方披露/公开文件"
+      c_level: "[C:70-84%源] - 第三方数据库"
+      d_level: "[D:50-69%概率] - 分析师报告/市场共识"
+      e_level: "[E:30-49%假设] - 本报告估算"
+
+  length_requirements:
+    minimum_total: "150,000字符"
+    phase_distribution:
+      phase_0: "2,000-3,000字符"
+      phase_1: "15,000-20,000字符"
+      phase_2: "4,000-12,000字符 (按AI Tier)"
+      phase_3: "12,000-15,000字符"
+      phase_4: "10,000-12,000字符"
+      phase_5: "8,000-10,000字符"
+      supplementary: "5,000-15,000字符"
+
+standardized_scoring:
+
+  moat_score:
+    framework: "7Powers (Hamilton Helmer)"
+    max_score: 35
+    weighting: "30%"
+
+  growth_quality_score:
+    dimensions: 5
+    max_score: 20
+    weighting: "25%"
+
+  financial_quality_score:
+    metrics: 6
+    max_score: 18
+    weighting: "20%"
+
+  ai_impact_score:
+    tier_1: 40  # AI核心公司
+    tier_2: 24  # AI基础设施
+    tier_3: 12  # AI应用
+    tier_4: 6   # AI最小影响
+    weighting: "25%"
+
+  composite_score:
+    calculation: "加权平均后标准化为100分制"
+    grade_boundaries:
+      excellent: "≥85"
+      good: "70-84"
+      fair: "50-69"
+      poor: "30-49"
+      very_poor: "<30"
+
+investment_rating_standard:
+
+  rating_scale: "1-5级制 (所有行业通用)"
+
+  level_5_strong_buy:
+    composite_score: "≥85"
+    ai_rating: "Strong Beneficiary+"
+    expected_return: "≥30%"
+    risk_level: "低-中等"
+
+  level_4_buy:
+    composite_score: "≥70"
+    ai_rating: "Medium Beneficiary+"
+    expected_return: "≥15%"
+    risk_level: "中等"
+
+  level_3_hold:
+    composite_score: "50-70"
+    expected_return: "-10% ~ +15%"
+    risk_level: "中等"
+
+  level_2_sell:
+    composite_score: "30-50"
+    ai_rating: "Weak/Risk"
+    expected_return: "≤-15%"
+    risk_level: "中-高"
+
+  level_1_strong_sell:
+    composite_score: "<30"
+    expected_return: "≤-30%"
+    risk_level: "高"
+
+industry_adaptations:
+
+  technology_companies:
+    additional_modules:
+      - 技术路线图分析 (详细)
+      - 开发者生态评估
+      - 平台效应量化
+      - 监管政策影响
+      - 人才竞争分析
+    ai_tier: "通常Tier 1或Tier 2"
+    unique_metrics:
+      - 开发者采用率
+      - API调用增长
+      - 平台交易量
+
+  semiconductor_companies:
+    additional_modules:
+      - 周期定位分析 (P1-P5详细)
+      - 供需平衡预测
+      - 地缘政治风险
+      - 制程技术演进
+      - 良率爬坡模型
+    ai_tier: "通常Tier 2 (基础设施)"
+    unique_metrics:
+      - 周期温度计
+      - 库存周转率
+      - CapEx/Sales比率
+
+  consumer_companies:
+    additional_modules:
+      - 品牌资产评估
+      - 渠道经济学分析
+      - 消费者行为变迁
+      - 供应链韧性评估
+      - ESG影响评估
+    ai_tier: "通常Tier 3或Tier 4"
+    unique_metrics:
+      - 品牌强度指数
+      - 渠道渗透率
+      - 客户生命周期价值
+
+  automotive_companies:
+    additional_modules:
+      - 电动化转型分析
+      - 自动驾驶技术评估
+      - 供应链垂直整合
+      - 监管政策影响
+      - 技术生态控制
+    ai_tier: "Tier 2或Tier 3 (取决于AI应用)"
+    unique_metrics:
+      - 软件收入占比
+      - 垂直整合度
+      - 技术开发投入比
+
+execution_guidelines:
+
+  mandatory_checklist:
+    framework_compliance:
+      - "✓ Phase 0-5结构完整"
+      - "✓ AI评估模块包含"
+      - "✓ 行业特定模块添加"
+      - "✓ 置信度标注≥90%覆盖"
+      - "✓ 总长度≥150,000字符"
+      - "✓ 深度评级≥L4平均"
+
+  quality_gates:
+    phase_completion:
+      - "每个Phase完成后自检清单"
+      - "深度评级验证"
+      - "字数要求验证"
+      - "置信度覆盖验证"
+
+  documentation_standards:
+    file_naming: "{Company}_{Version}_Unified_v4.0_{Date}.md"
+    header_format: "标准化报告头部信息"
+    section_numbering: "统一编号体系"
+
+continuous_improvement:
+
+  feedback_loop:
+    user_feedback: "投资者使用体验反馈"
+    market_validation: "预测准确性追踪"
+    framework_iteration: "季度框架优化"
+
+  version_control:
+    major_updates: "年度主要版本升级"
+    minor_updates: "季度小版本优化"
+    patch_updates: "月度bug修复"
+
+success_metrics:
+
+  framework_adoption:
+    target: "100%核心报告使用v4.0框架"
+    timeline: "2026 Q2完成"
+
+  quality_improvement:
+    depth_consistency: "所有报告平均深度≥L4.0"
+    ai_coverage: "100%公司包含AI评估"
+    cross_company_comparability: "90%+投资者认为可比性提升"
+
+  business_impact:
+    user_satisfaction: "投资者满意度≥4.5/5"
+    decision_efficiency: "投资决策时间缩短30%"
+    prediction_accuracy: "预测准确率≥75%"
+
+framework_advantages:
+
+  consistency: "跨行业跨公司结构统一"
+  comprehensiveness: "AI评估全覆盖"
+  scalability: "新公司/行业快速适配"
+  comparability: "横向对比分析可能"
+  professionalism: "机构级分析标准"
+
+implementation_priority:
+
+  immediate_phase_1:
+    - "创建MU v4.0作为首个完整案例"
+    - "验证半导体行业模板"
+    - "建立置信度标注标准"
+
+  phase_2_rollout:
+    - "升级Tesla到v4.0标准"
+    - "升级Meta到v4.0标准"
+    - "建立科技行业模板"
+
+  phase_3_expansion:
+    - "扩展到所有核心公司"
+    - "建立行业模板库"
+    - "投资者培训和反馈"
+
+---
+
+# 使用说明
+
+## 快速开始
+1. 确定公司所属行业和AI Tier
+2. 选择对应的行业模板
+3. 按Phase 0-5顺序执行
+4. 添加行业特定补充模块
+5. 执行质量门控检查
+
+## 关键成功因素
+- 严格遵循Phase结构
+- AI评估不可省略
+- 置信度标注必须达标
+- 深度要求不可降低
+- 行业特异性要保持
+
+## 框架演进
+本框架将根据使用反馈持续迭代优化，确保与投资实践需求保持一致。
+
+---
+
+**框架版本**: v4.0
+**创建日期**: 2026-02-03
+**适用范围**: 全球上市公司投资分析
+**维护责任**: Investment Master Agent系统

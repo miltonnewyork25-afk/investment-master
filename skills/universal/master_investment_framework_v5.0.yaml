@@ -1,0 +1,643 @@
+skill_metadata:
+  name: "顶级投资分析框架 v5.0"
+  version: "5.0"
+  category: "universal"
+  purpose: "融入缺失维度的完整投资分析框架，实现顶级分析水准"
+  created_date: "2026-02-03"
+  upgrade_reason: "基于美光v4.0反思，融入反常识洞察、学术框架、投资大师检验等缺失维度"
+
+framework_philosophy:
+  principle: "深度+洞察+权威性+完整性"
+  core_innovation: "系统性融入顶级分析要素，从框架填表升级为创造性分析"
+  quality_standard: "超越华尔街顶级分析师标准"
+  universality: "通用结构+行业特异模块+创新洞察空间"
+
+critical_improvements_v5:
+  major_additions:
+    - "反常识洞察卡系统 (每个Phase必需)"
+    - "学术框架系统化应用"
+    - "投资大师检验法 (Druckenmiller/Buffett/Lynch等)"
+    - "管理层深度画像分析"
+    - "情绪与心理维度分析"
+    - "高级量化模型库"
+    - "技术社区深度分析"
+    - "宏观环境系统评估"
+  structural_enhancements:
+    - "必需模块 vs 可选模块明确划分"
+    - "行业特异模块标准化"
+    - "质量门控多级验证"
+    - "创造性分析空间保障"
+
+enhanced_phase_structure:
+
+  phase_0_executive_summary:
+    name: "Phase 0: 执行摘要与核心洞察"
+    purpose: "投资决策核心信息 + 反常识洞察预览"
+    target_length: "3,000-4,000字符"
+    depth_target: "L3-L4"
+
+    mandatory_modules:
+      investment_rating:
+        - 投资评级 (1-5级标准制)
+        - 目标价区间 (Bull/Base/Bear三场景)
+        - AI影响评级 (6级制度)
+        - 风险收益比量化
+
+      core_insights_preview:
+        - 核心投资逻辑 (5-8条)
+        - 反常识洞察预览 (2-3个最强洞察)
+        - Kill Switch预览 (Top 3)
+        - 催化剂时间线
+
+      thesis_summary:
+        - 投资主题定位
+        - 与市场共识差异点
+        - 预期收益与风险评估
+
+    industry_specific_modules:
+      technology:
+        - 技术变革影响评估
+        - 平台效应预览
+      semiconductor:
+        - 周期定位判断
+        - 供应链地位预览
+      consumer:
+        - 品牌力与渠道力预览
+        - 消费趋势影响
+
+    quality_standards:
+      insight_originality: "至少2个反常识观点"
+      data_confidence: "核心数据90%+ A+B级"
+      logical_coherence: "投资逻辑自洽无矛盾"
+
+  phase_1_business_ecosystem_leadership:
+    name: "Phase 1: 商业生态与管理层深度"
+    purpose: "商业模式本质 + 生态定位 + 管理层画像 + 宏观环境"
+    target_length: "18,000-22,000字符"
+    depth_target: "L4-L5"
+
+    mandatory_modules:
+      business_model_analysis:
+        - SOTP业务拆解 (定量化)
+        - 生态系统定位图谱 (Mermaid复杂图)
+        - 价值链控制点分析
+        - 商业模式护城河初评
+
+      competitive_landscape:
+        - 竞争格局矩阵分析 (6维度评估)
+        - 主要竞争对手逐一深度分析 (每家≥1500字)
+        - 竞争优势量化评估
+        - 竞争态势演进预测
+
+      management_deep_dive:
+        - CEO深度画像分析 (≥2000字)
+        - 管理团队能力矩阵
+        - 资本配置历史与能力评估
+        - 治理结构与股东利益一致性
+        - 危机管理与执行力评估
+
+      macro_environment:
+        - 行业政策环境深度分析
+        - 地缘政治影响评估
+        - 宏观经济环境影响
+        - 监管环境变化趋势
+
+    industry_specific_modules:
+      technology:
+        - 技术路线图深度分析
+        - 开发者生态评估
+        - 平台效应量化
+      semiconductor:
+        - 产业链5层结构分析
+        - 供应链依赖关系图谱
+        - 设备供应商关系分析
+      consumer:
+        - 品类矩阵与渠道分析
+        - 消费者行为变迁
+        - 品牌资产量化评估
+      automotive:
+        - 产业变革趋势分析
+        - 技术栈整合度评估
+        - 供应链垂直整合分析
+
+    mandatory_insight_cards:
+      required_count: 2
+      topics:
+        - 商业模式独特性洞察
+        - 管理层能力超预期/低预期洞察
+      format: "每张300+字，挑战市场共识"
+
+    quality_standards:
+      management_analysis_depth: "≥L4深度，包含定量评估"
+      competitive_analysis_completeness: "主要竞争对手100%覆盖"
+      macro_relevance: "宏观因素与投资逻辑强关联"
+
+  phase_2_ai_impact_comprehensive:
+    name: "Phase 2: AI影响全维度评估"
+    purpose: "AI技术对公司业务的系统性影响分析"
+    target_length: "6,000-12,000字符 (按Tier分级)"
+    depth_target: "L4-L5"
+
+    ai_tier_classification:
+      tier_1_ai_native:
+        companies: ["Meta", "NVIDIA", "Microsoft", "Alphabet", "OpenAI"]
+        analysis_depth: "L5 系统性框架"
+        evaluation_dimensions: 12
+        target_length: "10,000-12,000字符"
+
+      tier_2_ai_infrastructure:
+        companies: ["Micron", "AMD", "TSMC", "Salesforce", "Oracle"]
+        analysis_depth: "L4 深度分析"
+        evaluation_dimensions: 8
+        target_length: "7,000-9,000字符"
+
+      tier_3_ai_application:
+        companies: ["Tesla", "Costco", "P&G", "Nike", "Disney"]
+        analysis_depth: "L3-L4 应用分析"
+        evaluation_dimensions: 6
+        target_length: "5,000-7,000字符"
+
+      tier_4_ai_minimal:
+        companies: ["传统零售", "公用事业", "房地产"]
+        analysis_depth: "L3 基础分析"
+        evaluation_dimensions: 4
+        target_length: "3,000-5,000字符"
+
+    mandatory_modules:
+      ai_dependency_analysis:
+        - AI技术依赖度评估 (0-10分制)
+        - AI受益传导机制分析
+        - AI技术演进影响预测
+        - AI替代威胁评估
+
+      ai_competitive_advantage:
+        - AI驱动的护城河分析
+        - AI数据飞轮效应评估
+        - AI技术栈控制力分析
+        - AI人才竞争优势
+
+      ai_business_transformation:
+        - AI商业模式变革分析
+        - AI驱动的收入增长建模
+        - AI成本结构优化评估
+        - AI新业务机会识别
+
+      ai_risk_assessment:
+        - AI技术变革风险
+        - AI监管政策风险
+        - AI投资回报不达预期风险
+        - AI人才流失风险
+
+    mandatory_insight_cards:
+      required_count: 1-2
+      topics:
+        - AI影响的反常识发现
+        - AI投资回报的独特视角
+      format: "挑战市场对AI影响的共识认知"
+
+    quality_standards:
+      quantitative_modeling: "AI影响必须有量化建模"
+      scenario_analysis: "Bull/Base/Bear三场景AI影响"
+      competitive_benchmarking: "AI能力与同行详细对比"
+
+  phase_3_moats_growth_academic:
+    name: "Phase 3: 护城河增长与学术框架"
+    purpose: "护城河深度 + 增长动力 + 学术框架系统应用 + 量化模型"
+    target_length: "15,000-18,000字符"
+    depth_target: "L4-L5"
+
+    mandatory_modules:
+      moat_analysis_enhanced:
+        - Hamilton Helmer 7Powers深度应用 (35分制评估)
+        - 护城河交互效应分析
+        - 护城河持久性评估 (3/5/10年)
+        - 护城河威胁因素识别
+
+      growth_dynamics:
+        - 增长驱动因素分解与量化
+        - 增长质量评估 (可持续性/盈利性/现金流转化)
+        - 增长饱和点分析
+        - 增长vs护城河协同分析
+
+      academic_frameworks_application:
+        - 必需学术框架 (每个行业≥3个)
+        - 学术理论实证应用
+        - 原创量化模型开发
+        - 学术框架交叉验证
+
+      quantitative_models:
+        - 行业特定量化模型 (≥2个原创模型)
+        - 敏感性分析矩阵
+        - 蒙特卡洛模拟 (关键不确定性)
+        - 情景分析量化建模
+
+    industry_specific_academic_frameworks:
+      technology:
+        required_frameworks:
+          - "Network Effects Theory (Metcalfe's Law变种)"
+          - "Platform Economics (Evans & Schmalensee)"
+          - "Innovation Diffusion Theory (Rogers)"
+        custom_models:
+          - 开发者采用率模型
+          - 平台价值创造模型
+
+      semiconductor:
+        required_frameworks:
+          - "Experience Curve Theory (BCG)"
+          - "Yield-Learning Curve Model"
+          - "Cournot Competition Model"
+        custom_models:
+          - 良率提升预测模型
+          - 周期定位温度计模型
+
+      consumer:
+        required_frameworks:
+          - "Brand Equity Theory (Aaker)"
+          - "Consumer Behavior Theory"
+          - "Channel Economics Theory"
+        custom_models:
+          - 品牌价值量化模型
+          - 渠道经济学模型
+
+    mandatory_insight_cards:
+      required_count: 2-3
+      topics:
+        - 护城河被高估/低估洞察
+        - 增长动力的反常识发现
+        - 学术理论应用的独特洞察
+
+    quality_standards:
+      academic_rigor: "学术框架应用必须严谨，有实证支撑"
+      model_originality: "至少1个原创量化模型"
+      cross_validation: "多个框架交叉验证一致性"
+
+  phase_4_financial_valuation_masters:
+    name: "Phase 4: 财务估值与投资大师检验"
+    purpose: "财务质量诊断 + 估值建模 + 投资大师检验法 + 权威性分析"
+    target_length: "12,000-15,000字符"
+    depth_target: "L4"
+
+    mandatory_modules:
+      financial_quality_diagnosis:
+        - 6维度财务质量评分 (18分制)
+        - 财务造假风险评估
+        - 现金流质量深度分析
+        - 资产负债表健康度诊断
+
+      valuation_modeling:
+        - DCF三场景建模
+        - 相对估值分析 (多重倍数)
+        - SOTP概率加权估值
+        - 估值桥梁分析 (如差距>20%)
+        - 敏感性分析矩阵
+
+      investment_masters_validation:
+        - Druckenmiller 6维度检验
+        - Buffett 4问检验
+        - Lynch PEG与成长性检验
+        - Munger逆向思维检验
+        - Klarman安全边际检验
+
+      valuation_reasonableness:
+        - 历史估值区间分析
+        - 同行估值对比
+        - 市场隐含预期分析
+        - 估值合理性多角度验证
+
+    investment_masters_frameworks:
+      druckenmiller_6_dimensions:
+        - 变化的本质 (行业/公司变革深度)
+        - 市场预期 (当前预期是否合理)
+        - 催化剂 (6-18个月催化事件)
+        - 风险收益比 (当前价位风险收益)
+        - 时间框架 (投资期限匹配度)
+        - 流动性环境 (宏观流动性影响)
+
+      buffett_4_questions:
+        - 这是门好生意吗？(ROIC/护城河/现金流)
+        - 护城河在拓宽吗？(竞争优势演进)
+        - 管理层值得信赖吗？(治理/资本配置/诚信)
+        - 价格有吸引力吗？(安全边际/内在价值)
+
+      lynch_peg_analysis:
+        - PEG合理性分析
+        - 成长性可持续评估
+        - 估值与增长匹配度
+        - "10倍股"潜力评估
+
+      munger_inversion:
+        - 逆向思维分析 (什么情况下投资失败)
+        - 反证条件识别
+        - 认知偏差识别
+        - 多元思维模型应用
+
+    mandatory_insight_cards:
+      required_count: 1-2
+      topics:
+        - 估值的反常识发现
+        - 投资大师检验的独特结论
+      format: "基于权威框架的独特洞察"
+
+    quality_standards:
+      masters_validation_completeness: "至少3位投资大师框架完整应用"
+      valuation_method_diversity: "至少3种估值方法交叉验证"
+      reasonableness_check: "估值合理性必须多角度验证"
+
+  phase_5_risk_sentiment_ecosystem:
+    name: "Phase 5: 风险管理与情绪生态分析"
+    purpose: "风险控制 + 情绪分析 + 技术社区 + 投资决策执行"
+    target_length: "10,000-12,000字符"
+    depth_target: "L4"
+
+    mandatory_modules:
+      quantitative_risk_control:
+        - Kill Switch系统 (≥8个量化条件)
+        - 风险分级响应机制
+        - 历史回测验证
+        - 组合风险管理
+
+      sentiment_ecosystem_analysis:
+        - 分析师观点全景雷达
+        - 机构投资者情绪分析
+        - 散户投资者情绪追踪
+        - 社交媒体情绪监控
+        - 管理层沟通效果分析
+
+      technical_community_analysis:
+        - 技术社区声音深度分析
+        - 学术研究影响力评估
+        - 工程师社区品牌分析
+        - 专利引用网络分析
+        - 行业专家观点汇总
+
+      predictive_tracking_system:
+        - 可验证预测清单 (≥15个)
+        - 预测置信度量化
+        - 预测验证时间线
+        - 预测准确率追踪机制
+
+      investment_execution_strategy:
+        - 分类型投资者策略
+        - 仓位管理建议
+        - 催化剂监控体系
+        - 退出策略设计
+
+    emotion_analysis_dimensions:
+      analyst_sentiment:
+        - 评级分布变化趋势
+        - 目标价调整动因分析
+        - 分析师分歧度量化
+        - 关键分析师观点权重
+
+      institutional_behavior:
+        - 机构持仓变化心理分析
+        - 资金流向情绪指标
+        - 期权活动情绪分析
+        - 内部交易信号分析
+
+      retail_sentiment:
+        - Reddit/Twitter情绪挖掘
+        - 散户持仓行为分析
+        - 社交媒体热度分析
+        - 散户与机构情绪分歧
+
+      management_communication:
+        - 财报电话会议情绪分析
+        - 管理层前瞻指引分析
+        - 投资者关系质量评估
+        - 危机沟通能力评估
+
+    mandatory_insight_cards:
+      required_count: 1-2
+      topics:
+        - 风险的反常识洞察
+        - 情绪分析的独特发现
+      format: "基于数据的情绪洞察"
+
+    quality_standards:
+      risk_quantification: "所有重要风险必须量化评估"
+      sentiment_data_driven: "情绪分析必须有数据支撑"
+      execution_practicality: "投资策略必须具备可操作性"
+
+supplementary_specialized_modules:
+
+  industry_deep_dive_modules:
+    technology_companies:
+      developer_ecosystem_analysis:
+        - 开发者采用率分析
+        - API使用增长分析
+        - 开源社区贡献分析
+        - 技术文档质量评估
+
+      platform_economics:
+        - 网络效应量化模型
+        - 平台价值创造分析
+        - 生态系统控制力评估
+        - 多边市场动态分析
+
+    semiconductor_companies:
+      cycle_positioning_analysis:
+        - P1-P5周期定位 (温度计模型)
+        - 领先指标追踪系统
+        - 库存周期分析
+        - 价格弹性模型
+
+      supply_chain_deep_dive:
+        - 5层供应链结构分析
+        - 关键供应商依赖度评估
+        - 地缘政治供应链风险
+        - 供应链韧性评估
+
+    consumer_companies:
+      brand_equity_analysis:
+        - 品牌强度量化评估
+        - 品牌溢价能力分析
+        - 品牌忠诚度测量
+        - 品牌价值驱动因素
+
+      channel_economics:
+        - 渠道经济学建模
+        - 渠道伙伴关系分析
+        - 直销vs分销效率
+        - 全渠道整合能力
+
+    automotive_companies:
+      electrification_transition:
+        - 电动化转型进度评估
+        - 技术路线选择分析
+        - 充电基础设施策略
+        - 电池供应链控制
+
+      autonomous_driving:
+        - 自动驾驶技术评估
+        - 数据收集与学习能力
+        - L1-L5分级进展分析
+        - 监管环境影响评估
+
+mandatory_insight_card_system:
+
+  total_requirement_per_report: "8-12张洞察卡"
+
+  distribution_by_phase:
+    phase_0: "2-3张 (核心洞察预览)"
+    phase_1: "2张 (商业模式/管理层洞察)"
+    phase_2: "1-2张 (AI影响洞察)"
+    phase_3: "2-3张 (护城河/增长/学术洞察)"
+    phase_4: "1-2张 (估值/投资大师洞察)"
+    phase_5: "1-2张 (风险/情绪洞察)"
+
+  insight_card_standards:
+    length_requirement: "每张300-500字"
+    depth_requirement: "L4-L5深度，超越表面现象"
+    originality_requirement: "挑战市场共识，提供独特视角"
+    evidence_requirement: "必须有数据或逻辑支撑"
+    investment_relevance: "必须与投资决策直接相关"
+
+  common_insight_themes:
+    market_consensus_challenges:
+      - "市场高估/低估的要素"
+      - "被忽视的风险/机会"
+      - "错误的类比或框架"
+
+    business_model_discoveries:
+      - "商业模式的反直觉优势"
+      - "护城河的意外薄弱环节"
+      - "增长动力的隐藏限制"
+
+    valuation_insights:
+      - "传统估值方法的局限"
+      - "价值来源的重新定义"
+      - "估值框架的转换时机"
+
+quality_assurance_system:
+
+  multi_level_quality_gates:
+    phase_completion_gates:
+      depth_verification: "每个Phase平均深度≥L4.0"
+      completeness_check: "必需模块100%完成"
+      insight_originality: "反常识洞察通过原创性检验"
+      data_confidence: "置信度标注≥90% A+B级覆盖"
+
+    overall_quality_gates:
+      academic_rigor: "学术框架应用严谨性验证"
+      investment_masters_validation: "投资大师框架完整性验证"
+      sentiment_analysis_depth: "情绪分析数据支撑验证"
+      model_sophistication: "量化模型复杂度验证"
+
+  benchmark_comparison_requirements:
+    industry_best_practice: "必须对标行业最佳分析报告"
+    historical_top_reports: "质量不低于历史顶级报告"
+    cross_industry_learning: "吸收其他行业分析最佳实践"
+
+  continuous_improvement_mechanism:
+    feedback_incorporation: "基于使用反馈持续迭代"
+    framework_evolution: "每季度框架微调优化"
+    best_practice_sharing: "跨报告最佳实践共享"
+
+execution_guidelines:
+
+  preparation_phase:
+    industry_classification: "确定公司所属行业和特殊性"
+    ai_tier_determination: "确定AI影响Tier级别"
+    benchmark_selection: "选择对标的顶级报告"
+    resource_planning: "规划所需时间和资源"
+
+  execution_phase:
+    mandatory_sequence: "Phase 0-5顺序执行不可跳跃"
+    quality_gate_compliance: "每个Phase完成后质量验证"
+    insight_card_real_time: "洞察卡随分析同步生成"
+    academic_framework_integration: "学术框架有机融入分析"
+
+  validation_phase:
+    self_assessment: "对照质量标准自我评估"
+    peer_review: "与顶级报告对比验证"
+    user_feedback: "获取投资者使用反馈"
+    iteration_planning: "基于反馈规划改进"
+
+success_metrics:
+
+  quantitative_metrics:
+    report_length: "≥150,000字符"
+    insight_card_count: "≥8张原创洞察卡"
+    academic_framework_count: "≥6个学术框架应用"
+    quantitative_model_count: "≥3个原创量化模型"
+    confidence_annotation: "≥90% A+B级数据覆盖"
+
+  qualitative_metrics:
+    depth_rating: "平均深度≥L4.2"
+    originality_rating: "洞察原创性≥8/10"
+    investment_utility: "投资实用性≥8/10"
+    academic_rigor: "学术严谨性≥8/10"
+    emotional_intelligence: "情绪分析深度≥7/10"
+
+  comparative_metrics:
+    vs_wallstreet_analysts: "深度和洞察超越华尔街分析师"
+    vs_historical_best: "质量不低于历史最佳报告"
+    vs_cross_industry: "适应性和通用性行业领先"
+
+framework_advantages:
+
+  depth_and_breadth_balance:
+    - "系统性深度分析 + 创造性洞察发现"
+    - "通用框架结构 + 行业特异模块"
+    - "量化建模严谨性 + 定性判断灵活性"
+
+  authority_and_credibility:
+    - "投资大师框架验证增强权威性"
+    - "学术框架应用提升专业性"
+    - "多维度交叉验证确保可信度"
+
+  practicality_and_usability:
+    - "分类投资者策略提升实用性"
+    - "情绪分析增强市场时机判断"
+    - "量化风险控制提供可操作指导"
+
+implementation_roadmap:
+
+  immediate_application:
+    target: "美光MU v5.0升级版"
+    focus: "补充缺失维度，验证框架完整性"
+    timeline: "1-2天完成重点模块补充"
+
+  systematic_rollout:
+    phase_1: "Tesla/Meta v5.0框架升级应用"
+    phase_2: "其他核心公司批量升级"
+    phase_3: "跨行业框架适配性验证"
+
+  continuous_evolution:
+    quarterly_review: "每季度框架适用性评估"
+    annual_upgrade: "每年框架主要版本升级"
+    feedback_integration: "持续集成用户反馈改进"
+
+---
+
+# 框架使用指南
+
+## 快速入门
+1. 根据公司特点确定行业分类和AI Tier级别
+2. 按Phase 0-5顺序执行，严格执行质量门控
+3. 每个Phase完成≥2张反常识洞察卡
+4. 系统应用≥6个学术框架
+5. 完整执行投资大师检验法
+
+## 关键成功要素
+- **深度优先**: 宁可少做模块，绝不降低深度标准
+- **洞察驱动**: 每个Phase必须产出独特洞察
+- **权威验证**: 投资大师框架验证是权威性保证
+- **情绪智能**: 情绪和心理分析是差异化优势
+- **学术严谨**: 学术框架应用提升专业性
+
+## 质量控制要点
+- 每个Phase执行质量门控验证
+- 反常识洞察必须挑战市场共识
+- 学术框架应用必须严谨有据
+- 量化模型必须具备原创性
+- 情绪分析必须有数据支撑
+
+---
+
+**框架版本**: v5.0
+**创建日期**: 2026-02-03
+**适用范围**: 全球上市公司顶级投资分析
+**质量目标**: 超越华尔街顶级分析师标准
+**持续改进**: 基于实践反馈持续迭代优化

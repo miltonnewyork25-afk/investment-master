@@ -1,0 +1,341 @@
+skill_metadata:
+  name: "三维卓越分析框架 v3.0"
+  version: "3.0"
+  category: "universal"
+  purpose: "平衡深度+置信度+生态演绎三维度，解决框架升级中的质量丢失问题"
+  created_date: "2026-02-03"
+
+core_philosophy:
+  principle: "三维并行，而非维度互斥"
+  old_approach: "深度 → 置信度（丢失深度）或 置信度 → 深度（丢失置信度）"
+  new_approach: "深度 + 置信度 + 生态演绎 = 三维并行构建"
+
+problem_diagnosis:
+  current_issues:
+    - "升级置信度后模块数从55+降到20左右"
+    - "深度评级从L4.5+降到L3.5"
+    - "字数从20万降到8万（Tesla案例）"
+    - "丢失生态演绎等重要分析视角"
+  root_cause: "过度简化分析以追求置信度标注"
+
+three_dimensions:
+
+  dimension_1_depth:
+    name: "DEPTH 深度维度"
+    target: "保持55+模块，L4.5+深度，目标字数"
+    strategy: "恢复原有所有分析模块，不简化任何维度"
+    implementation: "读取原始深度报告，完整保留所有模块"
+    standards:
+      modules: "≥55个完整模块"
+      depth_rating: "≥L4.5评级"
+      word_count:
+        tesla: "≥200,000字符"
+        meta: "≥150,000字符"
+        others: "根据公司重要性调整"
+    components:
+      core_modules: "35个核心分析模块（Phase 1-4）"
+      industry_modules: "15个行业专用模块"
+      advanced_modules: "5个高级洞察模块"
+
+  dimension_2_confidence:
+    name: "CONFIDENCE 置信度维度"
+    target: "90%+ A+B级数据覆盖"
+    strategy: "为每个数据点添加置信度标注，不影响分析内容"
+    implementation: "在深度分析基础上，叠加置信度标注系统"
+    annotation_system:
+      a_level: "[A:95-99%] API直接返回/财报数据"
+      b_level: "[B:85-94%] 官方披露/公开文件"
+      c_level: "[C:70-84%] 第三方数据库"
+      d_level: "[D:50-69%] 分析师报告/市场共识"
+      e_level: "[E:30-49%概率] 本报告估算"
+    coverage_target: "A+B级数据占比≥90%"
+
+  dimension_3_evolution:
+    name: "EVOLUTION 演绎维度"
+    target: "完整应用生态演绎框架"
+    strategy: "作为独立模块添加，而非替代现有分析"
+    implementation: "在深度+置信度基础上，增加生态视角"
+    components:
+      super_ecosystem: "超级生态演绎框架v2.0应用"
+      cross_synergy: "跨业务协同效应量化建模"
+      boundary_control: "生态边界控制分析"
+      evolution_paths: "演化路径概率预测"
+
+batch_execution_strategy:
+
+  overview:
+    principle: "分批渐进，质量门控"
+    total_time: "13-19小时/公司，分4个批次"
+    risk_mitigation: "每批次独立验证，失败可重做单个批次"
+
+  batch_a_depth_recovery:
+    name: "Batch A: 深度恢复"
+    duration: "6-8小时"
+    objectives:
+      - "恢复55+模块完整分析"
+      - "保持L4.5+深度评级"
+      - "达到目标字数要求"
+    deliverable: "深度完整版（保持原有所有分析维度）"
+    approach:
+      - "读取原始深度文件（如Tesla v19.12/v19.14）"
+      - "完整恢复所有分析模块，不简化"
+      - "保持现有的置信度标注（如有）"
+    checkpoint:
+      modules: "≥55模块 ✓/✗"
+      word_count: "≥目标字数 ✓/✗"
+      depth_rating: "≥L4.5 ✓/✗"
+      analysis_completeness: "所有核心维度 ✓/✗"
+
+  batch_b_confidence_annotation:
+    name: "Batch B: 置信度标注"
+    duration: "2-3小时"
+    objectives:
+      - "为每个数据点添加[A:95%]格式标注"
+      - "保持深度分析内容不变"
+      - "达到90%+ A+B级覆盖"
+    deliverable: "深度+置信度版"
+    approach:
+      - "逐段添加置信度标注，不修改分析内容"
+      - "统计A+B级数据覆盖率"
+      - "补充高质量数据源"
+    checkpoint:
+      coverage: "A+B级覆盖≥90% ✓/✗"
+      annotation_completeness: "100%数据点标注 ✓/✗"
+      depth_preservation: "深度无下降 ✓/✗"
+
+  batch_c_evolution_integration:
+    name: "Batch C: 生态演绎整合"
+    duration: "3-4小时"
+    objectives:
+      - "应用超级生态演绎框架v2.0"
+      - "添加跨业务协同分析"
+      - "保持前两个维度不变"
+    deliverable: "三维完整版"
+    approach:
+      - "独立模块形式添加生态分析"
+      - "量化协同效应建模"
+      - "生态边界控制分析"
+    checkpoint:
+      framework_application: "生态框架完整应用 ✓/✗"
+      synergy_modeling: "协同分析量化建模 ✓/✗"
+      dimensions_preservation: "前两维度无影响 ✓/✗"
+
+  batch_d_quality_optimization:
+    name: "Batch D: 质量验证优化"
+    duration: "2小时"
+    objectives:
+      - "三维质量门控检查"
+      - "最终优化和验证"
+    deliverable: "发布级版本"
+    checkpoint:
+      three_dimensional_excellence: "三维全部达标 ✓/✗"
+      overall_quality: "L4.5+深度 ✓/✗"
+      publication_ready: "发布准备就绪 ✓/✗"
+
+company_execution_plan:
+
+  tier_1_immediate:
+
+    tesla:
+      current_status:
+        file: "TSLA_v19.15_HighConfidence"
+        confidence: "91% A+B级 ✓"
+        depth: "~80,000字，约20模块 ✗"
+        evolution: "缺失 ✗"
+      target_status:
+        file: "TSLA_v20.0_ThreeDimensional"
+        confidence: "90%+ A+B级 ✓"
+        depth: "200,000字，55+模块 ✓"
+        evolution: "完整生态演绎 ✓"
+      execution_plan:
+        week_1_day_1_2: "Batch A (8小时) - 恢复完整深度"
+        week_1_day_3: "Batch B (2小时) - 验证置信度"
+        week_1_day_4: "Batch C (4小时) - 添加生态演绎"
+        week_1_day_5: "Batch D (2小时) - 质量验证"
+
+    meta:
+      current_status:
+        file: "META_v2.2_HighConfidence"
+        confidence: "90%+ A+B级 ✓"
+        depth: "~100,000字，部分模块 △"
+        evolution: "有生态分析 ✓"
+      target_status:
+        file: "META_v3.0_ThreeDimensional"
+        confidence: "90%+ A+B级 ✓"
+        depth: "150,000字，55+模块 ✓"
+        evolution: "优化生态演绎 ✓"
+      execution_plan:
+        week_2_day_1_2: "Batch A (6小时) - 补充缺失深度模块"
+
+  tier_2_subsequent:
+
+    micron:
+      current_status: "多个Phase文件分散，需要整合+升级"
+      target_status: "MU_v3.0_ThreeDimensional 完整报告"
+      execution_plan:
+        week_3: "完整执行Batch A+B+C+D (14小时)"
+
+    costco:
+      current_status: "v19.9_Final，深度有一定基础"
+      target_status: "COST_v20.0_ThreeDimensional"
+      execution_plan:
+        week_4: "Batch B+C (6小时) - 在现有深度基础上添加"
+
+    tsm:
+      current_status: "Elite_Analysis_v2.0，需要全面升级"
+      target_status: "TSM_v3.0_ThreeDimensional"
+      execution_plan:
+        week_5: "完整执行Batch A+B+C+D (16小时)"
+
+quality_assurance:
+
+  checkpoint_system:
+    checkpoint_1:
+      trigger: "Post Batch A"
+      name: "深度验证"
+      criteria:
+        - "模块数量: ≥55 ✓/✗"
+        - "字数要求: ≥目标字数 ✓/✗"
+        - "深度评级: ≥L4.5 ✓/✗"
+        - "分析完整性: 所有核心维度 ✓/✗"
+      action: "不通过 = 重做Batch A"
+
+    checkpoint_2:
+      trigger: "Post Batch B"
+      name: "置信度验证"
+      criteria:
+        - "A+B级覆盖: ≥90% ✓/✗"
+        - "标注完整性: 100% ✓/✗"
+        - "深度保持: 无下降 ✓/✗"
+      action: "不通过 = 重做Batch B"
+
+    checkpoint_3:
+      trigger: "Post Batch C"
+      name: "生态验证"
+      criteria:
+        - "生态框架: 完整应用 ✓/✗"
+        - "协同分析: 量化建模 ✓/✗"
+        - "前两维保持: 无影响 ✓/✗"
+      action: "不通过 = 重做Batch C"
+
+    checkpoint_4:
+      trigger: "Final"
+      name: "三维卓越验证"
+      criteria:
+        - "深度维度: 完全达标 ✓/✗"
+        - "置信度维度: 完全达标 ✓/✗"
+        - "演绎维度: 完全达标 ✓/✗"
+        - "整体质量: L4.5+深度 ✓/✗"
+      action: "最终发布准备就绪"
+
+success_metrics:
+
+  three_dimensional_standards:
+    depth_dimension:
+      tesla: "≥200,000字符，≥55模块，≥L4.5评级"
+      meta: "≥150,000字符，≥55模块，≥L4.5评级"
+      others: "根据重要性调整字数，保持模块数和评级标准"
+    confidence_dimension:
+      all_companies: "≥90% A+B级数据覆盖"
+    evolution_dimension:
+      all_companies: "完整生态演绎框架应用"
+
+  overall_success:
+    tesla_v20: "三维全达标 + 用户高度认可"
+    meta_v3: "三维全达标 + 深度模块补全"
+    others: "根据各自基础，实现三维提升"
+
+risk_mitigation:
+
+  main_risks:
+    time_overrun:
+      risk: "Batch时间超支"
+      mitigation: "严格Batch时间控制，不超时进入下一步"
+      contingency: "可分更多批次，降低单次工作量"
+
+    quality_degradation:
+      risk: "质量下降"
+      mitigation: "强制质量门控，不达标必须重做"
+      contingency: "预留20%缓冲时间用于返工"
+
+    dimension_conflict:
+      risk: "维度间冲突"
+      mitigation: "明确三维并行策略，不互斥"
+      contingency: "独立Batch处理，互不影响"
+
+    user_satisfaction:
+      risk: "用户满意度"
+      mitigation: "分批交付，及时获得反馈"
+      contingency: "灵活调整优先级和执行顺序"
+
+resource_allocation:
+
+  time_planning:
+    total_timeline: "7周，88小时，平均每周12.6小时"
+    daily_work_mode: "每日3-4小时专注时间"
+    batch_completion: "连续2天完成一个Batch"
+
+  priority_sequence:
+    week_1: "Tesla (16小时) - 最高优先级"
+    week_2: "Meta (8小时) - 高优先级"
+    week_3: "美光 (14小时) - 中优先级"
+    week_4: "Costco (6小时) - 中优先级"
+    week_5: "台积电 (16小时) - 中优先级"
+    week_6: "P&G (14小时) - 低优先级"
+    week_7: "LRCX (14小时) - 低优先级"
+
+technical_implementation:
+
+  file_organization:
+    reports_folder:
+      - "TSLA_v20.0_ThreeDimensional_Final.md"
+      - "META_v3.0_ThreeDimensional_Final.md"
+      - "MU_v3.0_ThreeDimensional_Final.md"
+      - "其他公司相应文件"
+    artifacts_folder:
+      - "depth_modules_{company}.yaml"
+      - "confidence_annotations_{company}.json"
+      - "evolution_analysis_{company}.yaml"
+      - "quality_checkpoints_{company}.md"
+
+  automated_verification:
+    tools:
+      - "字数统计验证器"
+      - "模块数量检查器"
+      - "置信度覆盖分析器"
+      - "深度评级计算器"
+    manual_verification:
+      - "分析逻辑完整性"
+      - "数据来源可靠性"
+      - "生态框架应用质量"
+      - "整体可读性"
+
+framework_advantages:
+
+  three_dimensional_parallel:
+    advantage: "不牺牲任何维度"
+    explanation: "深度、置信度、生态演绎三者并行构建，而非互斥选择"
+
+  risk_controlled:
+    advantage: "风险可控"
+    explanation: "分Batch执行，每步都有质量检查，失败可单独重做"
+
+  scalable_standardized:
+    advantage: "可扩展标准化"
+    explanation: "标准化模板可应用到所有公司，保证一致性"
+
+  user_friendly:
+    advantage: "用户友好"
+    explanation: "分批交付，可以边做边反馈，灵活调整"
+
+next_steps:
+
+  immediate_action:
+    step_1: "用户确认三维框架设计"
+    step_2: "开始Tesla v20.0 Batch A执行"
+    step_3: "建立质量检查点机制"
+
+  long_term_execution:
+    step_1: "按优先级序列完成所有公司升级"
+    step_2: "建立三维卓越标准作为长期质量基准"
+    step_3: "持续优化和迭代框架"
