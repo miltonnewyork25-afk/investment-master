@@ -32,3 +32,6 @@ __pycache__/
 # Analysis temp files (auto-cleanup)
 .analysis_temp/*.yaml
 .analysis_temp/*_execution_plan.yaml
+
+# Git worktrees
+.worktrees/
