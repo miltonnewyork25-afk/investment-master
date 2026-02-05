@@ -1,0 +1,165 @@
+# v10.0预测市场增强框架 - 半导体行业配置
+# Semiconductor Industry - Prediction Market Enhanced Framework v10.0
+
+framework:
+  name: "v10.0-prediction-market-enhanced"
+  version: "10.0.0"
+  industry: "semiconductor"
+  created: "2026-02-05"
+  description: "全球首个预测市场驱动的半导体投资分析框架"
+
+# 核心引擎配置
+core_engines:
+  industry_cycle_analyzer:
+    weight: 0.25
+    focus: "AI/半导体4阶段周期+五级预警信号"
+    stage_mapping:
+      current_stage: "Stage 2后期"
+      transition_probability: 0.784
+      target_stage: "Stage 3应用普及期"
+      timeframe: "6-9个月"
+
+  equity_structure_analyzer:
+    weight: 0.20
+    focus: "稀缺性溢价+技术重置成本"
+    key_metrics:
+      tech_replacement_cost: "$144.4B"
+      supply_chain_value: "$155.0B"
+      scarcity_multiplier: 2.18
+
+  smart_money_tracker:
+    weight: 0.20
+    focus: "顶级投资者逻辑+机构共识"
+    tracking_targets:
+      - "Berkshire Hathaway持仓逻辑"
+      - "主权基金配置变化"
+      - "对冲基金流向"
+      - "产业资本动向"
+
+  signal_monitoring_system:
+    weight: 0.20
+    focus: "多层级信号+拐点预测"
+    signal_levels: 5
+    accuracy_target: 0.90
+    early_warning_days: 18
+
+  polymarket_prediction_analyzer:
+    weight: 0.15
+    focus: "预测市场概率+背离分析"
+    key_events:
+      - "台海冲突风险"
+      - "技术制裁概率"
+      - "AI需求持续性"
+      - "竞争威胁评估"
+
+# 半导体行业特定配置
+industry_specifics:
+  complexity_coefficient: 1.6
+  minimum_characters: 96000
+  depth_target: "L4.5"
+
+  risk_factors:
+    geopolitical: 0.40  # 地缘政治权重最高
+    technology: 0.25    # 技术竞争
+    cycle: 0.20         # 行业周期
+    demand: 0.15        # 需求变化
+
+  key_metrics:
+    - "产能利用率"
+    - "技术节点市占率"
+    - "客户集中度"
+    - "资本支出强度"
+    - "良率改善速度"
+
+# 预测市场集成配置
+polymarket_config:
+  api_endpoint: "https://api.polymarket.com/v2"
+  update_frequency: "real-time"
+  confidence_threshold: 0.85
+
+  monitored_events:
+    taiwan_conflict:
+      event_type: "geopolitical"
+      impact_coefficient: -0.6
+      current_probability: 0.183
+
+    tech_sanctions:
+      event_type: "trade"
+      impact_coefficient: -0.35
+      current_probability: 0.342
+
+    ai_demand_growth:
+      event_type: "industry"
+      impact_coefficient: 0.8
+      current_probability: 0.734
+
+# 输出配置
+output_config:
+  report_template: "semiconductor_v10_template.md"
+  quality_standards:
+    minimum_score: 85
+    depth_requirement: "L4+"
+    innovation_requirement: "A级"
+
+  sections:
+    - "预测市场概率矩阵"
+    - "概率-价格背离分析"
+    - "PMSI情绪指数计算"
+    - "五引擎协同分析"
+    - "动态风险管理"
+    - "统一投资评分"
+
+# Kill Switch配置
+kill_switch_config:
+  tier1_fatal:
+    - name: "台海冲突爆发"
+      threshold: 0.25
+      action: "immediate_exit"
+    - name: "全面技术禁运"
+      threshold: 0.45
+      action: "immediate_exit"
+
+  tier2_severe:
+    - name: "AI需求见顶"
+      threshold: 0.35
+      action: "reduce_50pct"
+    - name: "竞争威胁升级"
+      threshold: 0.40
+      action: "reduce_50pct"
+
+  tier3_warning:
+    - name: "地缘紧张升级"
+      threshold: 0.42
+      action: "reduce_25pct"
+    - name: "估值过热"
+      threshold: 32.0  # PE倍数
+      action: "reduce_25pct"
+
+# 适用公司列表
+applicable_companies:
+  tier1_foundries:
+    - "TSM" # 台积电
+    - "UMC" # 联电
+
+  tier1_equipment:
+    - "ASML" # 阿斯麦
+    - "LRCX" # 拉姆研究
+    - "AMAT" # 应用材料
+
+  tier1_design:
+    - "NVDA" # 英伟达
+    - "AMD" # 超微
+    - "QCOM" # 高通
+
+# 版本兼容性
+compatibility:
+  requires_v9_features: true
+  backward_compatible: false
+  migration_from: "v9.0-strategic-ecosystem"
+
+upgrade_path:
+  - "安装预测市场API接入"
+  - "配置概率-价格背离算法"
+  - "集成PMSI情绪指数"
+  - "部署动态Kill Switch系统"
+  - "验证五引擎协同功能"
