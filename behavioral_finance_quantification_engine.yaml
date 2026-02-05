@@ -1,0 +1,494 @@
+name: "behavioral_finance_quantification_engine"
+version: "1.0"
+description: "L5级行为金融量化引擎 - 将投资者情绪、认知偏误、群体行为转换为精确可测的alpha信号和交易策略"
+category: "core_behavioral_analysis"
+complexity_score: 9.3
+dependencies: ["market_pricing_deconstruction_engine", "dynamic_macro_micro_transmission_engine"]
+
+# ==============================================================================
+# 核心行为量化框架
+# ==============================================================================
+
+core_capabilities:
+  sentiment_quantification_system:
+    description: "投资者情绪的客观量化测量体系"
+    key_components:
+      - "期权情绪指标的标准化量化(Put/Call比率/隐含波动率偏斜)"
+      - "分析师行为的群体思维测量(评级集中度/预测离散度)"
+      - "机构投资者情绪的资金流量化(持仓变化/交易模式)"
+      - "散户情绪的社交媒体NLP量化(情感分析/关注度指数)"
+      - "内部人情绪的交易行为解码(买卖时机/规模/股价位置)"
+
+    quantification_framework:
+      options_sentiment_indicators:
+        put_call_ratio_analysis:
+          methodology: |
+            Put/Call比率的标准化与历史对比:
+
+            标准化Put/Call比 = (当前Put/Call - 历史均值) / 历史标准差
+
+            解读标准:
+            > +2σ: 极度恐慌，强烈看跌情绪(历史2.5%分位)
+            +1σ to +2σ: 恐慌情绪，适度看跌(历史16%-2.5%分位)
+            -1σ to +1σ: 正常情绪区间(历史68%分位)
+            -1σ to -2σ: 乐观情绪，适度看涨(历史16%-2.5%分位)
+            < -2σ: 极度乐观，强烈看多情绪(历史2.5%分位)
+
+          trading_signals:
+            contrarian_buy: "Put/Call比 > +1.5σ 且持续3个交易日 → 反向买入信号"
+            contrarian_sell: "Put/Call比 < -1.5σ 且持续3个交易日 → 反向卖出信号"
+            momentum_confirm: "Put/Call比与股价趋势同向 → 趋势确认信号"
+
+        implied_volatility_skew:
+          calculation: |
+            波动率偏斜度 = IV(OTM Put) - IV(ATM) - IV(OTM Call)
+
+            正偏斜(>3%): 市场预期下跌风险，买入保护需求强
+            负偏斜(<-1%): 市场预期上涨，看涨期权需求强
+            对称(±1%): 情绪相对中性
+
+          fear_greed_calibration:
+            fear_extreme: "偏斜度 > 8% → 恐慌指数90+"
+            fear_moderate: "偏斜度 3-8% → 恐慌指数60-90"
+            neutral_zone: "偏斜度 -1-3% → 恐慌指数40-60"
+            greed_moderate: "偏斜度 -5至-1% → 贪婪指数60-80"
+            greed_extreme: "偏斜度 < -5% → 贪婪指数80+"
+
+      analyst_behavior_metrics:
+        consensus_concentration_index:
+          methodology: |
+            分析师评级集中度的赫芬达尔指数计算:
+
+            HHI = Σ(各评级占比²)
+
+            其中评级分为: 强烈买入/买入/持有/卖出/强烈卖出
+
+            HHI解读:
+            > 0.8: 高度集中，群体思维严重
+            0.6-0.8: 中度集中，存在一定共识
+            0.4-0.6: 适度分散，观点相对多元
+            < 0.4: 高度分散，分歧较大
+
+        prediction_overconfidence_measurement:
+          calculation: |
+            分析师过度自信指数 = (预测均值置信区间宽度 / 实际预测误差) - 1
+
+            < -0.5: 严重过度自信(置信区间过窄)
+            -0.5 to -0.2: 适度过度自信
+            -0.2 to +0.2: 校准良好
+            +0.2 to +0.5: 适度保守
+            > +0.5: 过度保守(置信区间过宽)
+
+        revision_momentum_tracking:
+          momentum_score: |
+            评级调整动量分数 = (上调次数 - 下调次数) / 总调整次数
+
+            > +0.6: 强烈上调趋势，可能存在羊群效应
+            +0.2 to +0.6: 温和上调趋势
+            -0.2 to +0.2: 调整平衡
+            -0.6 to -0.2: 温和下调趋势
+            < -0.6: 强烈下调趋势，可能过度悲观
+
+      institutional_sentiment_indicators:
+        fund_flow_sentiment:
+          methodology: |
+            机构情绪通过资金流向量化:
+
+            情绪强度 = (主动流入 - 主动流出) / 总成交额
+            权重调整 = 机构持仓比例 × 平均持有期
+
+            综合机构情绪 = 情绪强度 × 权重调整
+
+        position_concentration_analysis:
+          concentration_risk_score: |
+            持仓集中度风险 = 1 - (1/Σ(各机构持仓占比²))
+
+            > 0.8: 高度集中，"抱团"风险高
+            0.6-0.8: 中度集中，需关注"踩踏"风险
+            < 0.6: 持仓分散，流动性相对充足
+
+        smart_money_vs_dumb_money:
+          smart_money_definition: "对冲基金+私募基金+保险资金"
+          dumb_money_definition: "散户+追踪指数的被动基金"
+          divergence_signal: |
+            Smart Money净买入 且 Dumb Money净卖出 → 强烈买入信号
+            Smart Money净卖出 且 Dumb Money净买入 → 强烈卖出信号
+
+  cognitive_bias_quantification:
+    description: "认知偏误的系统化测量与利用"
+    key_biases:
+      - "锚定偏误: 股价相对历史高点/低点的锚定效应测量"
+      - "确认偏误: 信息选择性关注的量化指标"
+      - "损失厌恶: 亏损vs盈利头寸的处理差异测量"
+      - "过度自信: 预测准确性vs置信度的校准分析"
+      - "代表性偏误: 小样本外推的检测算法"
+
+    bias_measurement_framework:
+      anchoring_bias_detector:
+        price_anchoring_analysis:
+          methodology: |
+            锚定效应强度测量:
+
+            锚定强度 = |当前股价 - 锚定价格| / |合理估值 - 锚定价格|
+
+            常见锚定点:
+            - 52周最高价/最低价
+            - IPO发行价
+            - 整数价位(如$100/$50)
+            - 分析师目标价集中区间
+
+        anchor_decay_modeling:
+          decay_function: |
+            锚定影响随时间衰减:
+
+            锚定强度(t) = 初始强度 × e^(-λt)
+
+            其中λ为衰减系数，一般情况下:
+            - 52周高低点: λ = 0.02/天
+            - IPO价格: λ = 0.01/天
+            - 分析师目标价: λ = 0.05/天
+
+      loss_aversion_measurement:
+        disposition_effect_quantification:
+          calculation: |
+            处置效应强度 = (卖出盈利股票比例 / 持有盈利股票比例) /
+                          (卖出亏损股票比例 / 持有亏损股票比例) - 1
+
+            > 0.5: 强烈处置效应，过早获利了结
+            0.2-0.5: 中等处置效应
+            -0.2-0.2: 相对理性
+            < -0.2: 逆向处置效应(罕见)
+
+        loss_aversion_coefficient:
+          methodology: |
+            损失厌恶系数 = |下跌X%时的抛售强度| / |上涨X%时的买入强度|
+
+            系数解读:
+            > 3.0: 严重损失厌恶，下跌时恐慌性抛售
+            2.0-3.0: 中等损失厌恶，正常范围
+            1.5-2.0: 轻微损失厌恶
+            < 1.5: 损失厌恶较弱，相对理性
+
+      overconfidence_detection:
+        prediction_calibration_analysis:
+          calibration_score: |
+            校准分数 = 1 - Σ|预测置信度 - 实际准确率|/n
+
+            1.0: 完美校准
+            0.8-1.0: 良好校准
+            0.6-0.8: 中等校准
+            < 0.6: 校准较差，存在系统性偏误
+
+        trading_frequency_overconfidence:
+          overtrading_indicator: |
+            过度交易指数 = 实际换手率 / 最优换手率 - 1
+
+            > 1.0: 严重过度交易，可能过度自信
+            0.5-1.0: 中度过度交易
+            0-0.5: 轻微过度交易
+            < 0: 交易不足，可能过度谨慎
+
+  market_psychology_cycles:
+    description: "市场心理周期的识别与预测"
+    cycle_stages:
+      - "绝望期: 极度悲观，抛售压力巨大"
+      - "怀疑期: 开始质疑悲观，但仍然谨慎"
+      - "乐观期: 信心恢复，积极买入"
+      - "狂热期: 过度乐观，忽视风险"
+
+    cycle_identification_system:
+      multi_indicator_scoring:
+        methodology: |
+          心理周期综合评分 = w₁×Put/Call比分数 + w₂×VIX分数 + w₃×分析师情绪分数 +
+                           w₄×资金流向分数 + w₅×媒体情绪分数
+
+          权重基于历史周期预测准确性动态调整
+
+      cycle_stage_mapping:
+        despair_stage:
+          indicators:
+            - "Put/Call比 > 历史90%分位数"
+            - "VIX > 30且持续2周+"
+            - "分析师下调比例 > 70%"
+            - "机构资金净流出 > 月度平均2倍"
+          signal_strength: "绝望期信号强度 = 满足条件数/总条件数"
+
+        euphoria_stage:
+          indicators:
+            - "Put/Call比 < 历史10%分位数"
+            - "VIX < 15且持续1个月+"
+            - "分析师上调比例 > 80%"
+            - "散户资金净流入 > 月度平均3倍"
+          signal_strength: "狂热期信号强度 = 满足条件数/总条件数"
+
+      cycle_transition_prediction:
+        transition_triggers:
+          despair_to_hope: |
+            绝望→希望转换信号:
+            1. Put/Call比连续5天下降
+            2. VIX从高点回落>20%
+            3. 基本面数据开始改善
+            4. 政策面出现积极信号
+
+        transition_timing:
+          average_duration: "各阶段平均持续时间(基于20年历史)"
+          acceleration_factors: "加速转换的催化剂识别"
+          deceleration_factors: "延缓转换的阻力因素"
+
+# ==============================================================================
+# 高级行为模型
+# ==============================================================================
+
+advanced_behavioral_models:
+  herding_behavior_detection:
+    description: "羊群行为的实时检测与量化"
+
+    herding_measurement_methods:
+      cross_sectional_dispersion:
+        calculation: |
+          羊群行为强度 = 1 - (股票收益率横截面标准差 / 历史平均标准差)
+
+          > 0.8: 强烈羊群行为，市场高度同步
+          0.5-0.8: 中等羊群行为
+          0-0.5: 轻微羊群行为
+          < 0: 分化行为，个股独立性强
+
+      momentum_clustering:
+        methodology: |
+          动量聚类分析:
+          检测同向价格变动的集中度和持续性
+
+          聚类强度 = (同向变动股票数/总股票数) × 持续天数权重
+
+      institutional_herding:
+        follow_the_leader_analysis: |
+          机构跟风行为测量:
+          跟风强度 = 某大型机构调仓后，其他机构同向调仓的比例和速度
+
+          领头机构识别: Berkshire Hathaway, Tiger Global, Bridgewater等
+
+  sentiment_momentum_models:
+    description: "情绪动量的建模与预测"
+
+    sentiment_persistence_analysis:
+      autoregressive_modeling: |
+        情绪持续性建模:
+        Sentiment(t) = α + β₁×Sentiment(t-1) + β₂×Sentiment(t-2) + ε(t)
+
+        β₁ > 0.7: 情绪具有强持续性
+        β₁ = 0.3-0.7: 情绪中等持续性
+        β₁ < 0.3: 情绪易于反转
+
+    sentiment_reversal_prediction:
+      extremes_reversion_model: |
+        情绪极端反转预测:
+        当情绪指标达到历史极值(>95%或<5%分位数)时:
+
+        反转概率 = f(极值程度, 持续时间, 基本面支撑度, 催化剂强度)
+
+      mean_reversion_speed:
+        calculation: |
+          情绪均值回归速度 = -log(情绪偏离程度(t+1)/情绪偏离程度(t))
+
+          快速回归: 速度 > 0.3/周
+          中速回归: 速度 = 0.1-0.3/周
+          缓慢回归: 速度 < 0.1/周
+
+  behavioral_anomaly_exploitation:
+    description: "行为异象的系统化利用"
+
+    momentum_anomaly:
+      short_term_momentum: "1-3个月动量效应的量化利用"
+      medium_term_momentum: "6-12个月动量效应的参数优化"
+      momentum_crash_prediction: "动量策略崩溃的预警机制"
+
+    mean_reversion_anomaly:
+      short_term_reversal: "1周内的过度反应修正"
+      long_term_reversal: "3-5年的价值回归"
+      reversal_strength_prediction: "反转幅度的量化预测"
+
+    earnings_announcement_anomalies:
+      post_earnings_drift: "财报发布后的持续偏移"
+      surprise_magnitude_impact: "业绩超预期程度与后续表现的关系"
+      analyst_revision_lag: "分析师调整滞后的利用"
+
+# ==============================================================================
+# 实时行为信号系统
+# ==============================================================================
+
+real_time_behavioral_signals:
+  sentiment_dashboard:
+    description: "实时情绪信号监控面板"
+
+    key_indicators:
+      fear_greed_index:
+        components: |
+          恐慌贪婪指数 = 0.25×Put/Call标准化 + 0.20×VIX标准化 +
+                        0.15×分析师情绪 + 0.15×资金流向 +
+                        0.10×媒体情绪 + 0.10×动量指标 + 0.05×避险需求
+
+        interpretation:
+          - "0-20: 极度恐慌，强烈买入信号"
+          - "20-40: 恐慌，买入信号"
+          - "40-60: 中性"
+          - "60-80: 贪婪，卖出信号"
+          - "80-100: 极度贪婪，强烈卖出信号"
+
+      sentiment_divergence_alerts:
+        price_sentiment_divergence: |
+          当股价与情绪指标出现背离时:
+          - 股价下跌但情绪改善 → 底部确认信号
+          - 股价上涨但情绪恶化 → 顶部警告信号
+
+      behavioral_anomaly_scanner:
+        real_time_scanning: "扫描市场中的异常行为模式"
+        pattern_recognition: "识别历史上类似的行为模式"
+        profit_opportunity_alert: "发出潜在盈利机会警报"
+
+  contrarian_signal_generator:
+    description: "反向投资信号生成器"
+
+    extreme_sentiment_alerts:
+      trigger_conditions:
+        - "Put/Call比 > 历史95%分位数，持续3天"
+        - "分析师一致性 > 90%(极度看多或看空)"
+        - "机构持仓集中度 > 历史90%分位数"
+        - "媒体情绪极端化(正面或负面>85%)"
+
+    contrarian_timing_optimization:
+      entry_timing: |
+        反向入场时机优化:
+        不在情绪极值点立即反向，而是等待:
+        1. 情绪开始从极值点回归
+        2. 基本面数据支持反向观点
+        3. 技术面出现反转信号
+
+      position_sizing: |
+        反向头寸规模动态调整:
+        头寸规模 = 基础规模 × 情绪极端程度 × 基本面支撑度 × 胜率历史数据
+
+# ==============================================================================
+# 行为策略回测系统
+# ==============================================================================
+
+behavioral_strategy_backtesting:
+  strategy_performance_evaluation:
+    description: "行为策略的系统化回测"
+
+    key_strategies:
+      contrarian_sentiment: "基于情绪反向的策略"
+      momentum_following: "基于动量跟随的策略"
+      behavioral_anomaly: "基于行为异象的策略"
+      multi_factor_behavioral: "多因子行为策略"
+
+    performance_metrics:
+      risk_adjusted_returns: "夏普比率、索提诺比率、信息比率"
+      maximum_drawdown: "最大回撤及回撤期间"
+      win_rate: "胜率及平均盈亏比"
+      market_regime_performance: "不同市场环境下的表现"
+
+  adaptive_parameter_optimization:
+    description: "行为模型参数的自适应优化"
+
+    rolling_window_optimization: "滚动窗口参数优化"
+    regime_dependent_parameters: "不同市场制度下的参数调整"
+    machine_learning_enhancement: "机器学习增强的参数选择"
+
+# ==============================================================================
+# 风险管理集成
+# ==============================================================================
+
+behavioral_risk_management:
+  sentiment_risk_assessment:
+    description: "基于情绪的风险评估"
+
+    sentiment_volatility_prediction: |
+      情绪波动率预测:
+      未来波动率 = 历史波动率 + 情绪异常调整项
+
+      情绪极端时，波动率通常显著上升
+
+    behavioral_drawdown_protection:
+      dynamic_position_adjustment: "根据情绪状态动态调整仓位"
+      sentiment_stop_loss: "基于情绪指标的止损机制"
+      correlation_breakdown_alert: "情绪极端时相关性崩溃预警"
+
+  portfolio_behavioral_diversification:
+    description: "组合的行为多元化"
+
+    sentiment_factor_exposure: "组合对各情绪因子的敞口管理"
+    behavioral_regime_hedging: "不同行为制度下的对冲策略"
+    anti_herding_position_management: "反羊群行为的头寸管理"
+
+# ==============================================================================
+# 数据架构与更新
+# ==============================================================================
+
+data_infrastructure:
+  real_time_data_feeds:
+    options_data: "期权成交量、持仓量、隐含波动率(实时)"
+    social_sentiment: "社交媒体情绪、新闻情感分析(15分钟更新)"
+    insider_trading: "内部人交易披露(T+2更新)"
+    analyst_revisions: "分析师评级调整(实时推送)"
+    fund_flows: "ETF和共同基金资金流向(每日)"
+
+  alternative_sentiment_data:
+    satellite_data: "经济活动卫星数据"
+    search_trends: "Google搜索趋势、财经关键词热度"
+    positioning_data: "CFTC持仓报告、融资融券数据"
+    earnings_call_nlp: "财报电话会议语调分析"
+
+  historical_database:
+    20_year_sentiment_history: "20年情绪指标历史数据库"
+    behavioral_pattern_library: "行为模式识别模板库"
+    anomaly_performance_tracking: "异象表现历史追踪"
+
+# ==============================================================================
+# 输出应用系统
+# ==============================================================================
+
+actionable_output_framework:
+  behavioral_alpha_signals:
+    signal_strength_scoring: "行为信号强度评分(1-10分)"
+    confidence_intervals: "信号置信区间与概率分布"
+    expected_performance: "预期收益与风险调整后表现"
+    optimal_holding_period: "最优持有期间建议"
+
+  behavioral_portfolio_construction:
+    sentiment_factor_tilting: "基于情绪因子的组合倾斜"
+    behavioral_timing_overlay: "行为择时的叠加策略"
+    risk_budgeting: "行为因子的风险预算分配"
+
+  behavioral_risk_alerts:
+    sentiment_extremes: "情绪极端值预警"
+    herding_danger: "羊群行为风险警报"
+    behavioral_bubble_warning: "行为泡沫预警系统"
+
+# ==============================================================================
+# 技能元数据
+# ==============================================================================
+
+metadata:
+  creation_date: "2026-02-05"
+  version: "1.0 - 行为金融量化核心引擎"
+  purpose: "将主观情绪判断转换为客观alpha信号"
+
+  performance_targets:
+    sentiment_prediction_accuracy: "≥65%"
+    behavioral_anomaly_capture_rate: "≥70%"
+    risk_adjusted_alpha: "≥300bps per year"
+
+  integration_points:
+    - "market_pricing_deconstruction_engine: 定价偏误的行为根源分析"
+    - "dynamic_macro_micro_transmission_engine: 情绪对传导机制的影响"
+    - "所有行业专用技能: 行业特异性行为模式"
+
+# ==============================================================================
+# 免责声明
+# ==============================================================================
+
+disclaimer: |
+  行为金融量化模型基于历史行为模式，市场参与者行为可能发生结构性变化。
+  情绪指标存在测量误差，极端市场条件下可能失效。
+  行为异象的利用需要考虑交易成本和市场冲击。
+  本模型为分析工具，不构成投资建议，使用者需承担相应风险。

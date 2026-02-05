@@ -1,0 +1,227 @@
+name: carbon-economics-modeler
+description: 碳经济学建模器 - 专业分析碳市场、碳定价、碳信贷机会，建立碳经济价值创造和风险评估模型
+version: "1.0"
+author: "投资研究Agent v19.12"
+category: carbon_finance
+
+triggers:
+  - "碳经济学分析"
+  - "碳市场建模"
+  - "碳定价评估"
+  - "碳信贷分析"
+  - "碳中和经济"
+  - "净零转型"
+
+system_message: |
+  你是碳经济学建模专家，专门负责：
+  1. 分析全球碳市场动态和定价机制
+  2. 量化企业碳减排的经济价值
+  3. 评估碳信贷和碳交易机会
+  4. 建立碳政策对企业价值的影响模型
+  5. 设计碳中和转型的投资策略
+
+  核心专长：
+  - 碳价格预测和情景分析
+  - 碳信贷项目评估和价值化
+  - 碳边境调节机制(CBAM)影响
+  - 内部碳定价策略设计
+  - 碳风险和机会的投资影响
+
+analysis_framework:
+  carbon_market_analysis:
+    global_carbon_markets:
+      - eu_ets: "欧盟排放交易体系"
+      - california_cap_trade: "加州限额交易"
+      - rggi: "区域温室气体倡议"
+      - china_ets: "中国全国碳市场"
+      - voluntary_markets: "自愿碳市场(VCM)"
+
+    price_dynamics:
+      - historical_trends: "历史碳价趋势分析"
+      - price_drivers: "碳价驱动因素识别"
+      - volatility_analysis: "碳价波动性建模"
+      - correlation_study: "与能源价格关联性"
+
+  carbon_valuation_models:
+    social_cost_carbon:
+      technical_scc: "$185/tCO2 (EPA 2021更新)"
+      iawg_estimates: "$51-185/tCO2 (跨机构工作组)"
+      academic_range: "$100-300/tCO2 (学术研究区间)"
+      policy_implications: "政策制定影响分析"
+
+    market_based_pricing:
+      compliance_markets: "强制碳市场价格 ($20-90/tCO2)"
+      voluntary_markets: "自愿碳市场价格 ($5-50/tCO2)"
+      bilateral_trades: "双边碳交易价格"
+      future_contracts: "碳期货价格预测"
+
+  carbon_credit_evaluation:
+    project_categories:
+      - renewable_energy: "可再生能源项目"
+      - energy_efficiency: "能效改善项目"
+      - forestry_lulucf: "林业和土地利用项目"
+      - industrial_processes: "工业流程改造"
+      - waste_management: "废物管理项目"
+      - direct_air_capture: "直接空气捕获"
+
+    quality_assessment:
+      - additionality: "额外性验证"
+      - permanence: "永久性评估"
+      - measurability: "可测量性验证"
+      - verification: "第三方核证标准"
+      - co_benefits: "协同效益评估"
+
+modeling_capabilities:
+  carbon_revenue_model:
+    inputs:
+      annual_credits: "年碳信贷产生量(tCO2e)"
+      credit_price: "碳信贷价格($/tCO2e)"
+      price_escalation: "价格上涨率(%/年)"
+      project_lifetime: "项目生命周期(年)"
+      development_costs: "项目开发成本($)"
+      operational_costs: "运营维护成本($)"
+      transaction_costs: "交易手续费(%)"
+
+    calculations: |
+      年碳收入 = 年碳信贷量 × 碳价格 × (1-交易成本)
+      碳收入NPV = Σ[年碳收入×(1+贴现率)^-t] - 开发成本
+      投资回报率 = (碳收入NPV / 投资成本) - 1
+
+  carbon_risk_model:
+    policy_risks:
+      - regulatory_changes: "监管政策变化风险"
+      - market_design: "碳市场设计变更"
+      - international_linking: "国际碳市场连接"
+      - border_adjustments: "碳边境调节机制"
+
+    market_risks:
+      - price_volatility: "碳价格波动风险"
+      - liquidity_risk: "市场流动性风险"
+      - counterparty_risk: "交易对手方风险"
+      - technology_risk: "技术替代风险"
+
+    quantification: |
+      碳风险敞口 = 碳密集度 × 碳价格敏感性 × 监管确定性系数
+      风险调整收益 = 基础碳收益 × (1 - 综合风险系数)
+
+carbon_strategy_frameworks:
+  internal_carbon_pricing:
+    shadow_pricing: "影子碳价设定($50-200/tCO2)"
+    carbon_fee: "内部碳费征收机制"
+    carbon_fund: "内部碳基金管理"
+    investment_screening: "投资项目碳成本筛选"
+
+  net_zero_pathway:
+    baseline_establishment: "碳基准线确定"
+    reduction_trajectory: "减排路径规划"
+    offset_strategy: "碳抵消策略设计"
+    verification_protocol: "进度验证协议"
+
+  carbon_portfolio_optimization:
+    project_prioritization: "碳项目优先级排序"
+    risk_return_analysis: "风险收益优化"
+    portfolio_diversification: "碳资产组合多元化"
+    hedging_strategies: "碳价格对冲策略"
+
+specialized_metrics:
+  carbon_intensity_metrics:
+    scope1_intensity: "范围1碳强度(tCO2e/收入$M)"
+    scope2_intensity: "范围2碳强度(tCO2e/收入$M)"
+    scope3_intensity: "范围3碳强度(tCO2e/收入$M)"
+    total_intensity: "总碳强度(tCO2e/收入$M)"
+
+  carbon_performance_metrics:
+    emission_reduction_rate: "年减排率(%/年)"
+    carbon_productivity: "碳生产率(收入$/tCO2e)"
+    avoided_cost: "避免碳成本($M/年)"
+    carbon_handprint: "碳手印(正面影响tCO2e)"
+
+  carbon_financial_metrics:
+    carbon_revenue: "碳收入($M/年)"
+    carbon_cost_savings: "碳成本节约($M/年)"
+    carbon_investment_roi: "碳投资回报率(%)"
+    carbon_payback_period: "碳投资回收期(年)"
+
+policy_scenario_modeling:
+  carbon_price_scenarios:
+    conservative_2030: "$50-80/tCO2e (渐进政策)"
+    moderate_2030: "$80-120/tCO2e (中等雄心)"
+    aggressive_2030: "$120-200/tCO2e (1.5°C目标)"
+    breakthrough_2030: "$200-300/tCO2e (技术突破)"
+
+  regulatory_scenarios:
+    expand_coverage: "碳市场覆盖扩大"
+    tighten_caps: "排放限额收紧"
+    international_linking: "国际碳市场连接"
+    border_carbon_tax: "碳边境税实施"
+
+  market_development_scenarios:
+    voluntary_growth: "自愿碳市场增长"
+    quality_standards: "碳信贷质量标准提升"
+    technology_integration: "区块链等技术集成"
+    corporate_demand: "企业需求增长"
+
+valuation_integration:
+  carbon_value_creation:
+    direct_carbon_revenue: "直接碳收入流"
+    cost_avoidance: "碳成本规避价值"
+    competitive_advantage: "碳竞争优势溢价"
+    risk_mitigation: "碳风险缓解价值"
+
+  enterprise_value_impact:
+    revenue_enhancement: "收入增强效应"
+    cost_reduction: "成本降低效应"
+    risk_premium_reduction: "风险溢价降低"
+    multiple_expansion: "估值倍数扩张"
+
+    calculation: |
+      碳价值贡献 = 碳收入NPV + 成本节约NPV + 风险缓解价值
+      企业价值提升 = 碳价值贡献 / (WACC - 长期增长率)
+
+output_deliverables:
+  carbon_economics_report:
+    executive_summary: "碳经济学执行摘要"
+    market_analysis: "碳市场深度分析"
+    valuation_model: "碳价值评估模型"
+    risk_assessment: "碳风险全面评估"
+    strategy_recommendations: "碳策略建议"
+
+  carbon_financial_model:
+    cash_flow_projections: "碳现金流预测(10年)"
+    sensitivity_analysis: "碳价格敏感性分析"
+    scenario_modeling: "多情景建模分析"
+    investment_framework: "碳投资决策框架"
+
+quality_assurance:
+  data_sources:
+    primary_sources:
+      - "World Bank Carbon Pricing Dashboard"
+      - "ICAP碳市场状态报告"
+      - "BloombergNEF碳市场分析"
+      - "政府碳政策官方文件"
+
+    verification_standards:
+      - "VCS (Verified Carbon Standard)"
+      - "CDM (Clean Development Mechanism)"
+      - "Gold Standard"
+      - "Climate Action Reserve"
+
+  model_validation:
+    backtesting: "历史数据回测验证"
+    peer_review: "同业模型对比"
+    expert_consultation: "碳市场专家咨询"
+    sensitivity_testing: "关键假设敏感性测试"
+
+integration_protocols:
+  with_environmental_impact: "环境影响量化结果输入"
+  with_policy_analysis: "政策风险情景整合"
+  with_technology_assessment: "技术成熟度对碳经济影响"
+  with_financial_modeling: "企业财务模型整合"
+  with_investment_strategy: "投资组合碳策略"
+
+success_criteria:
+  model_accuracy: "碳价预测准确性 >75%"
+  valuation_reliability: "碳价值评估可靠性 >80%"
+  risk_identification: "碳风险识别完整性 >90%"
+  strategy_actionability: "策略建议可执行性 >85%"
+  stakeholder_adoption: "利益相关者采用率 >80%"

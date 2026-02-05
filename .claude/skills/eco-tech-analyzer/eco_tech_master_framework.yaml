@@ -1,0 +1,160 @@
+name: eco-tech-master-framework
+description: 生态科技公司机构级投资分析主框架 - 整合环境影响、技术创新、政策敏感性的综合分析体系
+version: "1.0"
+author: "投资研究Agent v19.12"
+category: investment_analysis
+
+triggers:
+  - "生态科技分析"
+  - "环保科技投资"
+  - "绿色技术研究"
+  - "可持续科技评估"
+  - "清洁技术分析"
+  - "碳中和技术"
+
+activation_conditions:
+  company_indicators:
+    - "新能源"
+    - "电动汽车"
+    - "储能"
+    - "太阳能"
+    - "风能"
+    - "氢能"
+    - "电池"
+    - "碳捕获"
+    - "循环经济"
+    - "智能电网"
+    - "绿色建筑"
+    - "环境监测"
+
+system_message: |
+  你是生态科技投资分析专家，专门负责分析环保科技、清洁能源、可持续技术公司的投资价值。
+
+  核心能力：
+  1. 环境影响量化和货币化
+  2. 碳足迹分析和减排价值评估
+  3. 循环经济商业模式分析
+  4. 政策敏感性和监管环境评估
+  5. 技术成熟度和商业化时间线
+  6. ESG原生价值和外部性量化
+  7. 长期可持续竞争优势识别
+  8. 生态科技专用估值模型
+
+analysis_framework:
+  phase_1: "生态科技基础分析"
+  modules:
+    - eco_business_model: "环保商业模式分析"
+    - environmental_impact: "环境影响量化"
+    - technology_readiness: "技术成熟度评估"
+    - policy_landscape: "政策环境分析"
+    - sustainability_moats: "可持续竞争优势"
+
+  phase_2: "深度技术与财务建模"
+  modules:
+    - carbon_economics: "碳经济学分析"
+    - circular_economy: "循环经济建模"
+    - green_finance: "绿色金融与估值"
+    - regulatory_scenario: "监管情景建模"
+    - tech_scalability: "技术规模化分析"
+
+  phase_3: "战略整合与长期定位"
+  modules:
+    - esg_native_value: "ESG原生价值"
+    - policy_risk_hedge: "政策风险对冲"
+    - sustainability_leadership: "可持续发展领导力"
+    - long_term_transition: "能源转型长期愿景"
+    - eco_monitoring: "生态科技监控系统"
+
+confidence_targets:
+  environmental_impact: 8.5  # 环境影响必须高置信度
+  technology_assessment: 7.5  # 技术评估中等偏高
+  policy_analysis: 7.0       # 政策分析中等置信度
+  financial_modeling: 8.0    # 财务建模高置信度
+  overall_framework: 7.8     # 整体框架高质量
+
+specialized_metrics:
+  carbon_metrics:
+    - "CO2减排量(吨/年)"
+    - "碳信用价值($M/年)"
+    - "碳强度改善(%)"
+    - "生命周期碳足迹"
+
+  technology_metrics:
+    - "技术成熟度等级(TRL 1-9)"
+    - "商业化时间线(年)"
+    - "成本下降曲线(%/年)"
+    - "效率改善轨迹"
+
+  policy_metrics:
+    - "政策支持强度评分"
+    - "补贴依赖度(%)"
+    - "监管确定性评分"
+    - "政策风险敞口($B)"
+
+  sustainability_metrics:
+    - "可持续发展目标贡献"
+    - "循环经济指标"
+    - "资源利用效率"
+    - "生态系统服务价值"
+
+output_requirements:
+  report_structure:
+    - "生态科技投资论证"
+    - "环境影响价值化分析"
+    - "技术-商业化路径图"
+    - "政策风险-机会矩阵"
+    - "可持续竞争优势评估"
+    - "碳经济学建模"
+    - "ESG原生价值量化"
+    - "长期能源转型定位"
+
+  confidence_requirements:
+    minimum_overall: 7.5
+    environmental_analysis: 8.0
+    technology_assessment: 7.0
+    policy_framework: 6.5
+    financial_modeling: 8.0
+
+execution_workflow:
+  step_1: "触发条件识别 - 生态科技公司特征检测"
+  step_2: "框架初始化 - 15模块分析体系启动"
+  step_3: "环境影响优先 - 核心环保价值量化"
+  step_4: "技术路径分析 - 商业化时间线和风险"
+  step_5: "政策环境评估 - 监管风险和机会"
+  step_6: "财务建模整合 - 生态科技专用估值"
+  step_7: "长期战略定位 - 能源转型角色"
+  step_8: "监控体系建立 - 生态科技特有指标"
+
+skill_integration:
+  primary_skills:
+    - "environmental-impact-quantifier"
+    - "carbon-economics-modeler"
+    - "green-tech-evaluator"
+    - "policy-scenario-analyzer"
+    - "sustainability-valuator"
+
+  supporting_skills:
+    - "circular-economy-analyzer"
+    - "regulatory-pathway-mapper"
+    - "esg-native-assessor"
+    - "green-finance-modeler"
+    - "eco-monitoring-builder"
+
+quality_standards:
+  data_sources:
+    tier_1: "政府环保部门、IEA、IRENA官方数据"
+    tier_2: "Bloomberg NEF、专业环保咨询机构"
+    tier_3: "学术研究、行业协会数据"
+
+  analysis_depth:
+    environmental: "量化CO2减排、资源节约等环境效益"
+    technological: "详细技术成熟度和规模化分析"
+    financial: "专用绿色估值模型和风险调整"
+    strategic: "能源转型中的长期定位"
+
+success_criteria:
+  analysis_completeness: "15模块全覆盖，重点突出环保价值"
+  confidence_achievement: "平均7.8+置信度，环境分析8.0+"
+  actionability: "具体投资建议和仓位指导"
+  monitoring: "生态科技特有的50+指标体系"
+  professional: "适用于ESG基金投资委员会"

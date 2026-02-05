@@ -1,0 +1,471 @@
+# 金融监管政策雷达系统
+# Financial Regulatory Radar System v1.0
+# 实时监管政策变化追踪与影响评估系统
+
+name: "financial_regulatory_radar"
+version: "1.0"
+description: "实时监管政策变化追踪与影响评估系统，为金融机构提供政策风险预警和合规指导"
+
+# 技能元数据
+metadata:
+  category: "financial_analysis"
+  subcategory: "regulatory_monitoring"
+  target_analysis_depth: "L4-L5"
+  required_data_quality: "≥85% A+B级监管数据"
+  complexity_coefficient: 1.4
+  estimated_execution_time: "20-30分钟"
+
+# 核心监管覆盖范围
+regulatory_coverage:
+  china:
+    central_bank: "中国人民银行"
+    banking_regulator: "国家金融监督管理总局(金融监管总局)"
+    securities_regulator: "中国证监会"
+    key_policies:
+      - "货币政策执行报告"
+      - "LPR(贷款市场报价利率)调整"
+      - "MPA(宏观审慎评估)框架"
+      - "资本充足率要求变化"
+      - "理财新规与资管新规"
+
+  united_states:
+    federal_reserve: "美联储(Fed)"
+    fdic: "联邦存款保险公司"
+    occ: "货币监理署"
+    cftc: "商品期货交易委员会"
+    key_policies:
+      - "联邦基金利率决议"
+      - "银行压力测试(CCAR/DFAST)"
+      - "沃尔克规则修订"
+      - "巴塞尔III实施进展"
+      - "系统重要性银行规定"
+
+  international:
+    bis: "国际清算银行"
+    fsb: "金融稳定理事会"
+    iosco: "国际证监会组织"
+    key_standards:
+      - "巴塞尔IV最终框架"
+      - "总损失吸收能力(TLAC)"
+      - "全球系统重要性银行(G-SIB)"
+      - "气候相关金融披露(TCFD)"
+      - "数字货币监管指引"
+
+# 监管雷达分析框架
+analysis_framework:
+  layer_1_real_time_monitoring:
+    duration: "持续监控"
+    objectives:
+      - "监管公告实时抓取与解析"
+      - "政策文件语义分析与分类"
+      - "监管变化的紧急程度评估"
+    data_sources:
+      - "官方网站RSS feeds"
+      - "监管机构新闻发布"
+      - "行业监管通讯"
+      - "法律法规数据库"
+
+  layer_2_policy_analysis:
+    duration: "5分钟"
+    objectives:
+      - "政策内容深度解析"
+      - "影响范围与程度评估"
+      - "合规要求变化识别"
+    deliverables:
+      - "政策变化摘要"
+      - "影响评估矩阵"
+      - "合规时间表"
+
+  layer_3_impact_modeling:
+    duration: "10分钟"
+    objectives:
+      - "财务影响量化建模"
+      - "合规成本估算"
+      - "业务模式调整需求分析"
+    deliverables:
+      - "财务影响测算"
+      - "成本效益分析"
+      - "业务调整建议"
+
+  layer_4_transmission_analysis:
+    duration: "10分钟"
+    objectives:
+      - "政策传导机制分析"
+      - "行业间联动效应评估"
+      - "时滞效应与反馈回路识别"
+    deliverables:
+      - "传导路径图(Mermaid)"
+      - "联动效应矩阵"
+      - "时序响应分析"
+
+  layer_5_predictive_intelligence:
+    duration: "5分钟"
+    objectives:
+      - "监管趋势预测"
+      - "政策窗口期识别"
+      - "前瞻性合规准备建议"
+    deliverables:
+      - "监管趋势报告"
+      - "政策预警清单"
+      - "合规路线图"
+
+# 关键监管指标追踪
+key_indicators:
+  monetary_policy:
+    china:
+      - name: "LPR一年期"
+        current_level: "3.1%"
+        monitoring_frequency: "每月20日"
+        impact_assessment: "银行净息差直接影响"
+        threshold_alerts:
+          major_change: "±25bps单次调整"
+          trend_change: "连续3次同向调整"
+
+      - name: "存款准备金率"
+        current_level: "大型银行10.5%"
+        monitoring_frequency: "不定期"
+        impact_assessment: "银行流动性与盈利能力"
+        threshold_alerts:
+          major_change: "±50bps调整"
+          trend_signal: "货币政策转向指标"
+
+    us:
+      - name: "联邦基金利率"
+        current_level: "5.25-5.50%"
+        monitoring_frequency: "FOMC会议(每6-8周)"
+        impact_assessment: "全球资金成本基准"
+        threshold_alerts:
+          major_change: "±50bps单次调整"
+          cycle_change: "政策周期转向"
+
+  prudential_regulation:
+    capital_requirements:
+      - name: "CET1资本充足率要求"
+        minimum_requirement: "4.5% + 缓冲资本"
+        china_current: "11.5%(实际水平)"
+        us_current: "12.0%(实际水平)"
+        monitoring_focus: "缓冲资本要求变化"
+
+      - name: "杠杆率要求"
+        minimum_requirement: "4%(巴塞尔III)"
+        enhanced_requirement: "5%(G-SIB附加要求)"
+        monitoring_focus: "分母计算方法调整"
+
+    liquidity_requirements:
+      - name: "流动性覆盖率(LCR)"
+        minimum_requirement: "100%"
+        typical_level: "120-150%"
+        monitoring_focus: "高质量流动性资产定义"
+
+      - name: "净稳定资金比例(NSFR)"
+        minimum_requirement: "100%"
+        implementation_status: "已全面实施"
+        monitoring_focus: "稳定资金定义调整"
+
+# 政策影响评估模型
+impact_assessment_models:
+  quantitative_impact:
+    capital_impact:
+      calculation_method: "RWA变化 × 资本充足率要求 × 资本成本"
+      sensitivity_factors:
+        - "风险权重调整幅度"
+        - "资本缓冲要求变化"
+        - "内部模型使用限制"
+
+    liquidity_impact:
+      calculation_method: "合格流动性资产缺口 × 融资成本差异"
+      sensitivity_factors:
+        - "HQLA定义变化"
+        - "流出率假设调整"
+        - "操作要求变化"
+
+    profitability_impact:
+      calculation_method: "收入影响 - 成本影响 - 合规成本增加"
+      revenue_factors:
+        - "业务范围限制"
+        - "定价能力变化"
+        - "市场准入影响"
+      cost_factors:
+        - "合规人员增加"
+        - "系统升级投入"
+        - "报告成本增加"
+
+  qualitative_assessment:
+    business_model_impact:
+      assessment_dimensions:
+        - "产品结构调整需求"
+        - "客户群体影响程度"
+        - "盈利模式可持续性"
+        - "竞争地位变化"
+
+    strategic_implications:
+      evaluation_criteria:
+        - "长期发展战略调整"
+        - "并购重组影响"
+        - "国际业务布局"
+        - "创新业务限制"
+
+# 政策传导机制分析
+transmission_mechanisms:
+  direct_transmission:
+    regulatory_compliance:
+      path: "监管要求 → 合规成本 → 利润影响"
+      timeframe: "即时到6个月"
+      impact_magnitude: "直接可量化"
+
+    capital_requirements:
+      path: "资本要求提高 → 资本筹集 → 股本稀释/债务增加"
+      timeframe: "6-18个月"
+      impact_magnitude: "中等到重大"
+
+  indirect_transmission:
+    market_dynamics:
+      path: "监管变化 → 竞争格局调整 → 市场份额变化"
+      timeframe: "12-36个月"
+      impact_magnitude: "中等"
+
+    systemic_effects:
+      path: "行业监管趋严 → 金融供给收缩 → 实体经济影响"
+      timeframe: "24-60个月"
+      impact_magnitude: "系统性影响"
+
+# 预警系统配置
+alert_system:
+  severity_levels:
+    critical: "立即影响业务运营，需紧急应对"
+    high: "重大影响，需要在30天内制定应对方案"
+    medium: "中等影响，需要在90天内评估对策"
+    low: "轻微影响，纳入常规监控"
+
+  alert_triggers:
+    monetary_policy:
+      interest_rate_change: "基准利率变化≥25bps"
+      reserve_ratio_change: "准备金率变化≥50bps"
+      quantitative_measures: "QE/QT政策变化"
+
+    prudential_regulation:
+      capital_requirement_change: "最低资本要求变化≥50bps"
+      liquidity_standard_change: "流动性标准调整>10%"
+      leverage_ratio_change: "杠杆率要求变化≥50bps"
+
+    market_regulation:
+      trading_restriction: "交易业务范围限制"
+      product_approval: "新产品审批流程变化"
+      fee_structure: "收费标准调整"
+
+# 合规管理框架
+compliance_management:
+  timeline_tracking:
+    implementation_phases:
+      - name: "征求意见稿"
+        typical_duration: "30-60天"
+        action_required: "评估影响，准备反馈意见"
+
+      - name: "最终规则发布"
+        typical_duration: "即时"
+        action_required: "制定实施计划，资源分配"
+
+      - name: "实施准备期"
+        typical_duration: "6-24个月"
+        action_required: "系统改造，流程优化"
+
+      - name: "正式实施"
+        typical_duration: "持续"
+        action_required: "监控合规，定期报告"
+
+  compliance_gaps:
+    identification_method: "现状对标新要求，识别差距"
+    prioritization_criteria:
+      - "合规风险等级"
+      - "实施成本大小"
+      - "时间紧迫程度"
+      - "业务影响范围"
+
+    remediation_planning:
+      - "技术改造计划"
+      - "流程优化方案"
+      - "人员培训安排"
+      - "成本预算分配"
+
+# 国际比较分析
+international_benchmarking:
+  regulatory_convergence:
+    assessment_areas:
+      - "巴塞尔框架本土化程度"
+      - "国际标准实施时间表"
+      - "监管协调机制"
+
+  competitive_implications:
+    analysis_dimensions:
+      - "监管成本国际比较"
+      - "监管套利机会识别"
+      - "跨境业务影响评估"
+
+  best_practices:
+    identification_criteria:
+      - "监管有效性评估"
+      - "成本效益分析"
+      - "国际经验借鉴"
+
+# 行业影响差异化分析
+sector_specific_impact:
+  banking:
+    focus_areas:
+      - "资本与流动性监管"
+      - "信贷业务限制"
+      - "数字化转型要求"
+    key_metrics:
+      - "资本充足率影响"
+      - "净息差敏感性"
+      - "ROE目标调整"
+
+  insurance:
+    focus_areas:
+      - "偿付能力监管"
+      - "产品监管政策"
+      - "投资范围限制"
+    key_metrics:
+      - "偿付能力充足率"
+      - "准备金覆盖率"
+      - "投资收益率影响"
+
+  securities:
+    focus_areas:
+      - "资本市场改革"
+      - "投资者保护"
+      - "交易制度优化"
+    key_metrics:
+      - "净资本要求"
+      - "客户保护基金"
+      - "交易佣金率"
+
+# 预测模型
+predictive_models:
+  policy_trend_analysis:
+    methodology:
+      - "历史政策周期分析"
+      - "监管官员讲话情感分析"
+      - "国际监管趋势跟踪"
+    prediction_horizon: "6-18个月"
+    accuracy_target: "75%"
+
+  timing_prediction:
+    factors_considered:
+      - "政治周期影响"
+      - "经济环境变化"
+      - "金融稳定状况"
+      - "国际协调需要"
+    prediction_methods:
+      - "机器学习分类模型"
+      - "专家权重法"
+      - "情景分析法"
+
+# 输出规范
+output_specifications:
+  daily_monitoring_report:
+    format: "结构化摘要 + 详细分析"
+    content:
+      - "当日监管动态"
+      - "重要政策解读"
+      - "影响评估矩阵"
+      - "应对建议"
+
+  policy_impact_assessment:
+    format: "专题分析报告"
+    content:
+      - "政策背景与目标"
+      - "具体条款解读"
+      - "量化影响测算"
+      - "实施时间表"
+      - "应对策略建议"
+
+  regulatory_outlook:
+    format: "前瞻性研究报告"
+    content:
+      - "监管趋势预测"
+      - "政策窗口期分析"
+      - "风险机会识别"
+      - "战略布局建议"
+
+# 数据源与更新机制
+data_sources:
+  primary_sources:
+    - "监管机构官方网站"
+    - "政策法规数据库"
+    - "监管官员公开讲话"
+    - "行业监管通讯"
+
+  secondary_sources:
+    - "法律事务所政策解读"
+    - "行业协会政策分析"
+    - "学术研究报告"
+    - "媒体政策报道"
+
+  update_frequency:
+    real_time: "重大政策变化即时推送"
+    daily: "日常监管动态汇总"
+    weekly: "周度趋势分析"
+    monthly: "月度深度评估"
+
+# 质量保证
+quality_assurance:
+  accuracy_verification:
+    - "多源信息交叉验证"
+    - "专家人工审核"
+    - "历史预测准确率跟踪"
+
+  bias_control:
+    - "信息源多样性保证"
+    - "分析方法标准化"
+    - "定期方法论审查"
+
+# 使用示例
+usage_examples:
+  scenario_1:
+    event: "央行宣布降准50bps"
+    analysis_process:
+      - "影响银行流动性和成本"
+      - "估算对净息差的影响"
+      - "评估信贷投放能力变化"
+      - "预测股价短期反应"
+    expected_output:
+      - "量化影响评估：NIM+2-3bps"
+      - "信贷投放能力提升15-20%"
+      - "银行股价正面催化剂"
+
+  scenario_2:
+    event: "银保监发布理财新规修订"
+    analysis_process:
+      - "条款变化详细对比"
+      - "影响业务范围评估"
+      - "合规成本估算"
+      - "竞争格局变化分析"
+    expected_output:
+      - "合规时间表与里程碑"
+      - "预期合规成本$XX万"
+      - "市场份额影响预测"
+
+# 风险控制
+risk_management:
+  information_risk:
+    - "信息来源真实性验证"
+    - "误读政策意图的风险控制"
+    - "时效性保证机制"
+
+  model_risk:
+    - "预测模型定期校准"
+    - "假阳性/假阴性控制"
+    - "不确定性量化"
+
+# 版本历史与更新
+version_history:
+  v1_0:
+    release_date: "2026-02-05"
+    features:
+      - "基础监管监控功能"
+      - "政策影响评估模型"
+      - "预警系统"
+    coverage:
+      - "中美主要监管机构"
+      - "银行保险证券行业"
+      - "重点政策工具"

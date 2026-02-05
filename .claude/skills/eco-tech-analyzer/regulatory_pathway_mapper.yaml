@@ -1,0 +1,378 @@
+name: regulatory-pathway-mapper
+description: 监管路径映射器 - 专门分析生态科技公司面临的监管环境、合规要求、审批流程，绘制监管路径和时间线
+version: "1.0"
+author: "投资研究Agent v19.12"
+category: regulatory_analysis
+
+triggers:
+  - "监管路径分析"
+  - "合规要求评估"
+  - "审批流程研究"
+  - "监管环境分析"
+  - "许可证管理"
+  - "法规合规评价"
+
+system_message: |
+  你是监管路径映射专家，专门负责：
+  1. 分析生态科技行业的监管框架和要求
+  2. 绘制产品上市和业务扩展的监管路径
+  3. 评估合规成本和监管风险
+  4. 预测监管政策变化和影响
+  5. 设计合规策略和风险缓解方案
+
+  核心专长：
+  - 多司法管辖区监管比较分析
+  - 审批流程时间线和里程碑规划
+  - 监管成本建模和预算规划
+  - 合规风险评估和管理策略
+  - 监管政策趋势分析和预测
+
+analysis_framework:
+  regulatory_landscape_mapping:
+    jurisdictional_analysis:
+      - federal_regulations: "联邦层面法规框架"
+      - state_provincial: "州/省级监管要求"
+      - local_municipal: "地方政府规定"
+      - international_standards: "国际标准和协议"
+
+    regulatory_bodies:
+      environmental_agencies:
+        - epa_us: "美国环保署(EPA)"
+        - environment_canada: "加拿大环境部"
+        - european_environment_agency: "欧洲环境署"
+        - ministry_ecology_china: "中国生态环境部"
+
+      sector_specific_regulators:
+        - energy_regulators: "能源监管机构"
+        - transportation_authorities: "交通运输管理部门"
+        - health_safety_agencies: "健康安全监管机构"
+        - financial_regulators: "金融监管部门"
+
+  regulatory_pathway_analysis:
+    product_approval_process:
+      pre_market_phase:
+        - research_permits: "研发许可证申请"
+        - safety_testing: "安全性测试要求"
+        - environmental_assessment: "环境影响评估"
+        - public_consultation: "公众咨询程序"
+
+      market_entry_phase:
+        - product_certification: "产品认证要求"
+        - manufacturing_permits: "生产许可证"
+        - distribution_licenses: "分销许可证"
+        - operational_permits: "运营许可证"
+
+      post_market_phase:
+        - ongoing_monitoring: "持续监管监控"
+        - periodic_renewal: "定期许可更新"
+        - adverse_event_reporting: "不良事件报告"
+        - compliance_audits: "合规审计要求"
+
+    business_expansion_pathway:
+      geographic_expansion:
+        - market_entry_requirements: "市场准入要求"
+        - local_partnership_mandates: "本地合作要求"
+        - technology_transfer_restrictions: "技术转让限制"
+        - data_localization_requirements: "数据本地化要求"
+
+      capacity_expansion:
+        - scaling_permits: "扩产许可证"
+        - environmental_impact_updates: "环境影响更新"
+        - community_impact_assessment: "社区影响评估"
+        - infrastructure_approvals: "基础设施审批"
+
+sector_specific_regulations:
+  renewable_energy:
+    solar_wind_regulations:
+      development_phase:
+        - land_use_permits: "土地使用许可"
+        - environmental_clearance: "环境许可证"
+        - grid_connection_approval: "电网接入批准"
+        - construction_permits: "建设施工许可"
+
+      operational_phase:
+        - feed_in_tariff_registration: "上网电价注册"
+        - renewable_certificate_tracking: "可再生能源证书"
+        - grid_code_compliance: "电网规程合规"
+        - decommissioning_bonds: "退役保证金"
+
+    energy_storage:
+      battery_safety_regulations:
+        - fire_safety_standards: "消防安全标准"
+        - thermal_runaway_protection: "热失控保护"
+        - transportation_safety: "运输安全要求"
+        - end_of_life_management: "生命周期末端管理"
+
+      grid_integration:
+        - interconnection_studies: "并网研究要求"
+        - frequency_response_capability: "频率响应能力"
+        - voltage_support_requirements: "电压支撑要求"
+        - cybersecurity_standards: "网络安全标准"
+
+  electric_vehicles:
+    vehicle_certification:
+      safety_standards:
+        - crash_test_requirements: "碰撞测试要求"
+        - battery_safety_certification: "电池安全认证"
+        - electromagnetic_compatibility: "电磁兼容性"
+        - functional_safety: "功能安全标准"
+
+      performance_standards:
+        - range_efficiency_testing: "续航效率测试"
+        - charging_compatibility: "充电兼容性"
+        - emissions_certification: "排放认证"
+        - noise_vibration_standards: "噪声振动标准"
+
+    charging_infrastructure:
+      installation_permits:
+        - electrical_permits: "电气安装许可"
+        - building_code_compliance: "建筑规范合规"
+        - accessibility_requirements: "无障碍设施要求"
+        - utility_interconnection: "公用事业连接"
+
+      operational_requirements:
+        - payment_system_standards: "支付系统标准"
+        - data_privacy_protection: "数据隐私保护"
+        - interoperability_standards: "互操作性标准"
+        - maintenance_certification: "维护认证要求"
+
+  waste_management_recycling:
+    facility_licensing:
+      waste_handling_permits:
+        - collection_transport_license: "收集运输许可"
+        - treatment_facility_permit: "处理设施许可"
+        - disposal_site_authorization: "处置场地授权"
+        - hazardous_waste_management: "危险废物管理"
+
+      environmental_compliance:
+        - emission_monitoring: "排放监控要求"
+        - groundwater_protection: "地下水保护"
+        - noise_dust_control: "噪声粉尘控制"
+        - community_notification: "社区通知义务"
+
+    product_regulations:
+      recycled_content_standards:
+        - minimum_recycled_content: "最低回收内容要求"
+        - quality_specifications: "质量规格标准"
+        - labeling_requirements: "标签标识要求"
+        - traceability_documentation: "可追溯性文档"
+
+compliance_cost_modeling:
+  direct_compliance_costs:
+    regulatory_fees:
+      - application_fees: "申请费用"
+      - inspection_fees: "检查费用"
+      - certification_costs: "认证成本"
+      - renewal_fees: "更新费用"
+
+    testing_certification:
+      - third_party_testing: "第三方测试成本"
+      - laboratory_accreditation: "实验室认证"
+      - documentation_preparation: "文档准备费用"
+      - expert_consultation: "专家咨询费用"
+
+    ongoing_compliance:
+      - monitoring_systems: "监控系统投资"
+      - reporting_software: "报告软件成本"
+      - training_programs: "培训项目费用"
+      - audit_preparation: "审计准备成本"
+
+  indirect_compliance_costs:
+    time_delays:
+      - approval_timeline_delays: "审批时间延误成本"
+      - market_entry_postponement: "市场进入推迟"
+      - revenue_recognition_delay: "收入确认延迟"
+      - competitive_disadvantage: "竞争劣势成本"
+
+    design_modifications:
+      - regulatory_design_changes: "监管设计变更"
+      - over_engineering_costs: "过度工程成本"
+      - flexibility_limitations: "灵活性限制"
+      - innovation_constraints: "创新约束成本"
+
+  compliance_cost_calculation: |
+    总合规成本 = 直接成本 + 间接成本 + 机会成本
+    年化合规成本 = (一次性成本/资产生命周期) + 年度经常性成本
+    合规成本占比 = 总合规成本 / 年收入 × 100%
+
+regulatory_risk_assessment:
+  compliance_risks:
+    regulatory_violations:
+      severity_levels:
+        - minor_violations: "轻微违规(警告、小额罚款)"
+        - moderate_violations: "中等违规(停产整改、中额罚款)"
+        - major_violations: "重大违规(吊销许可、大额罚款)"
+        - criminal_violations: "刑事违规(刑事责任、监禁风险)"
+
+      financial_impact:
+        - fines_penalties: "罚款和处罚金额"
+        - remediation_costs: "整改修复成本"
+        - legal_defense_costs: "法律抗辩费用"
+        - business_disruption: "业务中断损失"
+
+    regulatory_uncertainty:
+      policy_change_risks:
+        - retroactive_requirements: "溯及既往要求"
+        - grandfather_clause_expiry: "祖父条款到期"
+        - standard_tightening: "标准收紧趋势"
+        - enforcement_intensification: "执法力度加强"
+
+      jurisdictional_differences:
+        - conflicting_requirements: "冲突性要求"
+        - extraterritorial_application: "治外法权适用"
+        - trade_barrier_potential: "贸易壁垒可能"
+        - regulatory_arbitrage: "监管套利机会"
+
+  regulatory_opportunity_identification:
+    first_mover_advantages:
+      - early_compliance_benefits: "早期合规优势"
+      - standard_setting_influence: "标准制定影响力"
+      - regulatory_expertise_moat: "监管专业护城河"
+      - stakeholder_relationship: "利益相关者关系"
+
+    regulatory_incentives:
+      - fast_track_procedures: "快速通道程序"
+      - reduced_compliance_burden: "减少合规负担"
+      - financial_incentives: "财务激励措施"
+      - market_access_preferences: "市场准入优惠"
+
+timeline_modeling:
+  approval_timeline_estimation:
+    phase_based_modeling:
+      phase_1_preparation: "准备阶段(3-6个月)"
+      phase_2_submission: "提交阶段(1-2个月)"
+      phase_3_review: "审查阶段(6-18个月)"
+      phase_4_approval: "批准阶段(1-3个月)"
+      phase_5_implementation: "实施阶段(3-6个月)"
+
+    timeline_risk_factors:
+      - regulatory_backlog: "监管积压情况"
+      - seasonal_variations: "季节性变化"
+      - political_cycles: "政治周期影响"
+      - resource_constraints: "资源限制因素"
+
+  milestone_tracking:
+    critical_path_analysis:
+      - prerequisite_approvals: "前置审批要求"
+      - parallel_track_opportunities: "并行轨道机会"
+      - bottleneck_identification: "瓶颈识别"
+      - contingency_planning: "应急计划制定"
+
+    progress_monitoring:
+      - submission_status_tracking: "提交状态跟踪"
+      - regulator_feedback_loops: "监管反馈循环"
+      - stakeholder_engagement: "利益相关者参与"
+      - public_comment_periods: "公众评议期间"
+
+regulatory_strategy_development:
+  proactive_compliance:
+    regulatory_intelligence:
+      - policy_development_monitoring: "政策发展监控"
+      - stakeholder_mapping: "利益相关者映射"
+      - industry_consultation_participation: "行业咨询参与"
+      - regulatory_relationship_building: "监管关系建设"
+
+    compliance_planning:
+      - gap_analysis: "合规差距分析"
+      - implementation_roadmap: "实施路线图"
+      - resource_allocation: "资源配置计划"
+      - timeline_management: "时间表管理"
+
+  risk_mitigation_strategies:
+    diversification_approaches:
+      - geographic_diversification: "地理多元化"
+      - technology_pathway_options: "技术路径选择"
+      - market_segment_spread: "市场细分分散"
+      - regulatory_jurisdiction_mix: "监管管辖区组合"
+
+    contingency_planning:
+      - regulatory_change_scenarios: "监管变化情景"
+      - alternative_pathways: "替代路径规划"
+      - rapid_response_protocols: "快速响应协议"
+      - stakeholder_communication: "利益相关者沟通"
+
+international_considerations:
+  cross_border_compliance:
+    regulatory_harmonization:
+      - mutual_recognition_agreements: "相互承认协议"
+      - international_standards_adoption: "国际标准采用"
+      - bilateral_cooperation_frameworks: "双边合作框架"
+      - multilateral_treaty_obligations: "多边条约义务"
+
+    trade_implications:
+      - technical_barriers_to_trade: "技术性贸易壁垒"
+      - regulatory_compliance_costs: "监管合规成本影响"
+      - market_access_restrictions: "市场准入限制"
+      - competitive_disadvantage_risks: "竞争劣势风险"
+
+  emerging_market_strategies:
+    regulatory_capacity_building:
+      - local_expertise_development: "本地专业能力建设"
+      - regulator_training_support: "监管培训支持"
+      - standard_development_participation: "标准制定参与"
+      - technology_transfer_facilitation: "技术转让便利化"
+
+monitoring_reporting_systems:
+  compliance_monitoring:
+    automated_tracking:
+      - regulatory_calendar_management: "监管日历管理"
+      - deadline_alert_systems: "截止日期提醒系统"
+      - document_version_control: "文档版本控制"
+      - audit_trail_maintenance: "审计轨迹维护"
+
+    performance_metrics:
+      - compliance_rate_tracking: "合规率跟踪"
+      - cost_effectiveness_measurement: "成本效益测量"
+      - timeline_adherence_monitoring: "时间表遵守监控"
+      - stakeholder_satisfaction: "利益相关者满意度"
+
+  regulatory_intelligence_system:
+    policy_development_tracking:
+      - legislative_pipeline_monitoring: "立法管道监控"
+      - regulatory_consultation_tracking: "监管咨询跟踪"
+      - industry_position_analysis: "行业立场分析"
+      - expert_opinion_synthesis: "专家意见综合"
+
+output_deliverables:
+  regulatory_pathway_map:
+    executive_summary: "监管路径执行摘要"
+    jurisdiction_analysis: "管辖区分析"
+    approval_timeline: "审批时间线"
+    compliance_cost_model: "合规成本模型"
+    risk_mitigation_strategy: "风险缓解策略"
+    monitoring_framework: "监控框架"
+
+  compliance_strategy_guide:
+    regulatory_requirements_matrix: "监管要求矩阵"
+    implementation_roadmap: "实施路线图"
+    resource_planning: "资源规划"
+    stakeholder_engagement_plan: "利益相关者参与计划"
+    contingency_procedures: "应急程序"
+
+quality_standards:
+  data_verification:
+    regulatory_source_authentication:
+      - official_government_publications: "政府官方出版物"
+      - regulatory_agency_websites: "监管机构网站"
+      - legal_database_access: "法律数据库访问"
+      - industry_association_guidance: "行业协会指导"
+
+    expert_validation:
+      - regulatory_attorney_review: "监管律师审查"
+      - compliance_officer_consultation: "合规官员咨询"
+      - industry_expert_interviews: "行业专家访谈"
+      - peer_company_benchmarking: "同业公司基准"
+
+integration_protocols:
+  with_policy_analysis: "政策分析深度整合"
+  with_risk_assessment: "风险评估监管维度"
+  with_financial_modeling: "财务建模合规成本"
+  with_technology_assessment: "技术评估监管要求"
+  with_investment_strategy: "投资策略监管考量"
+
+success_criteria:
+  pathway_accuracy: "监管路径准确性 >90%"
+  timeline_reliability: "时间线预测可靠性 >80%"
+  cost_estimation_precision: "成本估算精准性 >85%"
+  risk_identification_completeness: "风险识别完整性 >95%"
+  strategic_actionability: "策略建议可执行性 >85%"

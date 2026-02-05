@@ -1,0 +1,433 @@
+name: eco-monitoring-builder
+description: 生态科技监控系统构建器 - 专门设计和构建生态科技公司专用的实时监控体系、预警机制和绩效跟踪系统
+version: "1.0"
+author: "投资研究Agent v19.12"
+category: monitoring_systems
+
+triggers:
+  - "生态科技监控"
+  - "实时监控系统"
+  - "环保公司跟踪"
+  - "可持续发展监控"
+  - "ESG监控体系"
+  - "绿色投资监控"
+
+system_message: |
+  你是生态科技监控系统构建专家，专门负责：
+  1. 设计生态科技公司专用的监控指标体系
+  2. 建立实时数据采集和分析系统
+  3. 构建预警机制和风险提示系统
+  4. 开发绩效跟踪和趋势分析工具
+  5. 创建投资决策支持监控平台
+
+  核心专长：
+  - 多维度监控指标设计和权重分配
+  - 实时数据流处理和异常检测
+  - 可视化仪表板和报告自动化
+  - 预测模型和趋势分析算法
+  - 风险预警和投资信号生成
+
+system_architecture:
+  monitoring_framework_design:
+    data_layer:
+      real_time_data_sources:
+        - financial_market_feeds: "金融市场实时数据流"
+        - company_operational_metrics: "公司运营指标数据"
+        - esg_performance_indicators: "ESG绩效指标"
+        - regulatory_policy_updates: "法规政策更新"
+        - environmental_market_signals: "环境市场信号"
+
+      batch_data_integration:
+        - quarterly_financial_reports: "季度财务报告"
+        - annual_sustainability_reports: "年度可持续发展报告"
+        - third_party_esg_ratings: "第三方ESG评级"
+        - industry_benchmark_data: "行业基准数据"
+        - academic_research_findings: "学术研究发现"
+
+    processing_layer:
+      data_preprocessing:
+        - data_cleaning_normalization: "数据清洗标准化"
+        - missing_value_imputation: "缺失值填补"
+        - outlier_detection_handling: "异常值检测处理"
+        - data_quality_scoring: "数据质量评分"
+
+      analytics_engine:
+        - statistical_analysis: "统计分析引擎"
+        - machine_learning_models: "机器学习模型"
+        - time_series_forecasting: "时间序列预测"
+        - sentiment_analysis: "情感分析算法"
+
+    application_layer:
+      dashboard_interface:
+        - executive_summary_view: "高管摘要视图"
+        - detailed_analytics_panels: "详细分析面板"
+        - customizable_widgets: "可定制组件"
+        - mobile_responsive_design: "移动响应设计"
+
+      alert_notification_system:
+        - threshold_based_alerts: "阈值基础预警"
+        - anomaly_detection_alerts: "异常检测警报"
+        - trend_change_notifications: "趋势变化通知"
+        - regulatory_update_alerts: "法规更新提醒"
+
+monitoring_indicator_framework:
+  core_performance_indicators:
+    financial_performance_tier:
+      revenue_growth_metrics:
+        - quarterly_revenue_growth: "季度收入增长率"
+        - green_revenue_percentage: "绿色收入占比"
+        - subscription_recurring_revenue: "订阅收入稳定性"
+        - geographic_revenue_diversification: "地理收入多元化"
+
+      profitability_efficiency:
+        - gross_margin_trends: "毛利率趋势"
+        - operating_margin_sustainability: "营业利润率可持续性"
+        - free_cash_flow_generation: "自由现金流生成"
+        - capital_efficiency_ratios: "资本效率比率"
+
+    technology_innovation_tier:
+      rd_investment_tracking:
+        - rd_intensity_ratio: "研发强度比例"
+        - green_tech_rd_allocation: "绿色技术研发分配"
+        - patent_application_velocity: "专利申请速度"
+        - technology_commercialization_rate: "技术商业化率"
+
+      product_development_metrics:
+        - new_product_launch_frequency: "新产品发布频率"
+        - product_performance_benchmarks: "产品性能基准"
+        - customer_adoption_rates: "客户采用率"
+        - technology_readiness_advancement: "技术成熟度进展"
+
+    market_competitive_tier:
+      market_positioning:
+        - market_share_evolution: "市场份额演变"
+        - competitive_win_loss_ratio: "竞争胜负比"
+        - customer_satisfaction_scores: "客户满意度评分"
+        - brand_sentiment_tracking: "品牌情感跟踪"
+
+      competitive_dynamics:
+        - competitor_activity_monitoring: "竞争对手活动监控"
+        - pricing_pressure_indicators: "定价压力指标"
+        - technology_gap_analysis: "技术差距分析"
+        - partnership_ecosystem_strength: "合作伙伴生态强度"
+
+    environmental_impact_tier:
+      carbon_footprint_monitoring:
+        - scope_1_2_3_emissions: "范围1、2、3排放"
+        - carbon_intensity_trends: "碳强度趋势"
+        - carbon_neutrality_progress: "碳中和进展"
+        - renewable_energy_adoption: "可再生能源采用"
+
+      resource_efficiency_metrics:
+        - energy_efficiency_improvements: "能效改善"
+        - water_usage_optimization: "水资源利用优化"
+        - waste_reduction_achievements: "废物减少成就"
+        - circular_economy_indicators: "循环经济指标"
+
+    social_governance_tier:
+      stakeholder_relations:
+        - employee_satisfaction_index: "员工满意度指数"
+        - customer_loyalty_metrics: "客户忠诚度指标"
+        - community_impact_assessment: "社区影响评估"
+        - supplier_relationship_quality: "供应商关系质量"
+
+      governance_effectiveness:
+        - board_diversity_metrics: "董事会多元化指标"
+        - executive_compensation_alignment: "高管薪酬对齐"
+        - transparency_disclosure_quality: "透明度披露质量"
+        - risk_management_effectiveness: "风险管理有效性"
+
+real_time_monitoring_systems:
+  market_surveillance:
+    stock_performance_tracking:
+      price_movement_analysis:
+        - intraday_volatility_patterns: "日内波动模式"
+        - volume_weighted_price_trends: "成交量加权价格趋势"
+        - relative_performance_vs_benchmarks: "相对基准表现"
+        - technical_indicator_signals: "技术指标信号"
+
+      institutional_activity_monitoring:
+        - large_block_transaction_detection: "大宗交易检测"
+        - institutional_ownership_changes: "机构持股变化"
+        - insider_trading_activity: "内部交易活动"
+        - options_activity_analysis: "期权活动分析"
+
+    news_sentiment_monitoring:
+      news_flow_analysis:
+        - media_mention_frequency: "媒体提及频率"
+        - sentiment_score_calculation: "情感评分计算"
+        - news_impact_correlation: "新闻影响关联"
+        - regulatory_announcement_tracking: "监管公告跟踪"
+
+      social_media_listening:
+        - twitter_sentiment_analysis: "Twitter情感分析"
+        - reddit_discussion_monitoring: "Reddit讨论监控"
+        - linkedin_professional_sentiment: "LinkedIn专业情感"
+        - youtube_engagement_tracking: "YouTube参与度跟踪"
+
+  operational_performance_monitoring:
+    production_metrics_tracking:
+      capacity_utilization:
+        - manufacturing_capacity_usage: "制造产能利用率"
+        - seasonal_production_patterns: "季节性生产模式"
+        - supply_chain_efficiency: "供应链效率"
+        - quality_control_indicators: "质量控制指标"
+
+      technology_performance:
+        - system_uptime_availability: "系统运行时间可用性"
+        - energy_conversion_efficiency: "能量转换效率"
+        - predictive_maintenance_alerts: "预测性维护警报"
+        - innovation_pipeline_progress: "创新管道进展"
+
+    customer_engagement_metrics:
+      user_adoption_tracking:
+        - new_customer_acquisition: "新客户获取"
+        - customer_churn_analysis: "客户流失分析"
+        - usage_pattern_evolution: "使用模式演变"
+        - customer_lifetime_value: "客户生命周期价值"
+
+      satisfaction_feedback:
+        - net_promoter_score_tracking: "净推荐值跟踪"
+        - support_ticket_resolution: "支持工单解决"
+        - product_review_sentiment: "产品评论情感"
+        - customer_success_metrics: "客户成功指标"
+
+predictive_analytics_system:
+  trend_forecasting_models:
+    financial_performance_prediction:
+      revenue_forecasting:
+        - time_series_analysis: "时间序列分析"
+        - seasonal_decomposition: "季节性分解"
+        - external_factor_integration: "外部因素整合"
+        - confidence_interval_estimation: "置信区间估计"
+
+      earnings_prediction:
+        - analyst_consensus_modeling: "分析师共识建模"
+        - management_guidance_tracking: "管理层指引跟踪"
+        - macro_factor_adjustment: "宏观因子调整"
+        - earnings_surprise_probability: "盈利意外概率"
+
+    market_opportunity_forecasting:
+      addressable_market_evolution:
+        - total_addressable_market_growth: "总可及市场增长"
+        - market_penetration_modeling: "市场渗透建模"
+        - competitive_landscape_shifts: "竞争格局变化"
+        - regulatory_impact_scenarios: "监管影响情景"
+
+      technology_adoption_curves:
+        - s_curve_adoption_modeling: "S曲线采用建模"
+        - network_effect_amplification: "网络效应放大"
+        - substitution_threat_analysis: "替代威胁分析"
+        - tipping_point_identification: "临界点识别"
+
+  risk_prediction_models:
+    esg_risk_forecasting:
+      regulatory_risk_prediction:
+        - policy_change_probability: "政策变化概率"
+        - compliance_cost_evolution: "合规成本演变"
+        - regulatory_penalty_risk: "监管处罚风险"
+        - market_access_restrictions: "市场准入限制"
+
+      environmental_risk_assessment:
+        - climate_physical_risk_exposure: "气候物理风险敞口"
+        - resource_scarcity_impact: "资源稀缺性影响"
+        - environmental_liability_risk: "环境责任风险"
+        - ecosystem_service_dependencies: "生态系统服务依赖"
+
+    operational_risk_monitoring:
+      supply_chain_disruption:
+        - supplier_financial_health: "供应商财务健康"
+        - geographic_concentration_risk: "地理集中度风险"
+        - critical_material_availability: "关键材料可用性"
+        - transportation_vulnerability: "运输脆弱性"
+
+      technology_obsolescence_risk:
+        - innovation_cycle_tracking: "创新周期跟踪"
+        - patent_expiration_timeline: "专利到期时间表"
+        - disruptive_technology_emergence: "颠覆性技术出现"
+        - competitive_technology_advancement: "竞争技术进展"
+
+alert_notification_framework:
+  threshold_based_alerts:
+    performance_deviation_alerts:
+      financial_threshold_breaches:
+        - revenue_growth_below_target: "收入增长低于目标"
+        - margin_compression_alert: "利润率压缩警报"
+        - cash_flow_deterioration: "现金流恶化"
+        - debt_ratio_increase: "债务比率增加"
+
+      esg_performance_deterioration:
+        - carbon_emissions_increase: "碳排放增加"
+        - esg_score_decline: "ESG评分下降"
+        - regulatory_compliance_issues: "监管合规问题"
+        - stakeholder_satisfaction_drop: "利益相关者满意度下降"
+
+    market_condition_alerts:
+      competitive_threat_detection:
+        - market_share_loss_acceleration: "市场份额快速流失"
+        - new_competitor_entry: "新竞争者进入"
+        - pricing_pressure_intensification: "定价压力加剧"
+        - technology_disruption_signals: "技术颠覆信号"
+
+      regulatory_environment_changes:
+        - policy_announcement_impact: "政策公告影响"
+        - subsidy_reduction_risk: "补贴减少风险"
+        - environmental_standard_tightening: "环境标准收紧"
+        - trade_barrier_implementation: "贸易壁垒实施"
+
+  predictive_early_warning:
+    anomaly_detection_system:
+      statistical_anomaly_identification:
+        - time_series_outlier_detection: "时间序列异常值检测"
+        - multivariate_anomaly_analysis: "多元变量异常分析"
+        - pattern_break_identification: "模式断裂识别"
+        - correlation_shift_detection: "相关性转变检测"
+
+      behavioral_pattern_changes:
+        - customer_behavior_shifts: "客户行为转变"
+        - operational_efficiency_decline: "运营效率下降"
+        - innovation_pace_slowdown: "创新步伐放缓"
+        - stakeholder_engagement_reduction: "利益相关者参与减少"
+
+    leading_indicator_monitoring:
+      macro_economic_indicators:
+        - green_investment_flow_trends: "绿色投资流向趋势"
+        - carbon_price_volatility: "碳价格波动"
+        - renewable_energy_adoption_pace: "可再生能源采用步伐"
+        - esg_regulation_development: "ESG法规发展"
+
+      industry_specific_signals:
+        - technology_patent_activity: "技术专利活动"
+        - venture_capital_funding_patterns: "风险投资资金模式"
+        - government_procurement_trends: "政府采购趋势"
+        - academic_research_breakthroughs: "学术研究突破"
+
+dashboard_visualization_system:
+  executive_dashboard_design:
+    high_level_kpi_overview:
+      financial_performance_summary:
+        - revenue_growth_trajectory: "收入增长轨迹"
+        - profitability_trend_analysis: "盈利能力趋势分析"
+        - cash_position_evolution: "现金状况演变"
+        - valuation_multiple_comparison: "估值倍数比较"
+
+      esg_performance_scorecard:
+        - comprehensive_esg_score: "综合ESG评分"
+        - environmental_impact_metrics: "环境影响指标"
+        - social_responsibility_indicators: "社会责任指标"
+        - governance_quality_assessment: "治理质量评估"
+
+    strategic_positioning_view:
+      market_competitive_landscape:
+        - market_share_dynamics: "市场份额动态"
+        - competitive_positioning_map: "竞争定位图"
+        - technology_leadership_index: "技术领先指数"
+        - brand_strength_measurement: "品牌强度测量"
+
+      growth_opportunity_pipeline:
+        - addressable_market_expansion: "可及市场扩张"
+        - new_product_development: "新产品开发"
+        - geographic_expansion_potential: "地理扩张潜力"
+        - partnership_opportunity_tracking: "合作机会跟踪"
+
+  operational_dashboard_design:
+    detailed_performance_analytics:
+      operational_efficiency_metrics:
+        - production_capacity_utilization: "生产产能利用"
+        - supply_chain_optimization: "供应链优化"
+        - energy_efficiency_trends: "能效趋势"
+        - quality_control_performance: "质量控制绩效"
+
+      innovation_development_tracking:
+        - rd_project_pipeline: "研发项目管道"
+        - patent_portfolio_evolution: "专利组合演变"
+        - technology_commercialization: "技术商业化"
+        - collaboration_partnership_activity: "合作伙伴关系活动"
+
+    risk_management_monitoring:
+      comprehensive_risk_exposure:
+        - financial_risk_indicators: "财务风险指标"
+        - operational_risk_assessment: "运营风险评估"
+        - regulatory_compliance_status: "监管合规状态"
+        - reputational_risk_tracking: "声誉风险跟踪"
+
+      mitigation_strategy_effectiveness:
+        - risk_control_implementation: "风险控制实施"
+        - contingency_plan_readiness: "应急计划就绪"
+        - insurance_coverage_adequacy: "保险覆盖充分性"
+        - crisis_management_capability: "危机管理能力"
+
+automated_reporting_system:
+  periodic_report_generation:
+    daily_performance_briefs:
+      - market_performance_summary: "市场表现摘要"
+      - operational_metrics_update: "运营指标更新"
+      - news_sentiment_digest: "新闻情感摘要"
+      - regulatory_development_alerts: "监管发展警报"
+
+    weekly_analysis_reports:
+      - financial_performance_review: "财务绩效回顾"
+      - competitive_intelligence_update: "竞争情报更新"
+      - esg_progress_assessment: "ESG进展评估"
+      - risk_exposure_analysis: "风险敞口分析"
+
+    monthly_comprehensive_reviews:
+      - strategic_objective_progress: "战略目标进展"
+      - market_opportunity_evaluation: "市场机会评估"
+      - stakeholder_value_creation: "利益相关者价值创造"
+      - long_term_trend_analysis: "长期趋势分析"
+
+  ad_hoc_analysis_capabilities:
+    custom_query_system:
+      - flexible_data_exploration: "灵活数据探索"
+      - hypothesis_testing_framework: "假设检验框架"
+      - scenario_analysis_tools: "情景分析工具"
+      - benchmarking_comparison_engine: "基准比较引擎"
+
+    event_driven_analysis:
+      - earnings_announcement_impact: "盈利公告影响"
+      - merger_acquisition_evaluation: "并购评估"
+      - regulatory_change_assessment: "监管变化评估"
+      - crisis_event_response_analysis: "危机事件响应分析"
+
+output_deliverables:
+  monitoring_system_architecture:
+    system_design_document: "系统设计文档"
+    technical_implementation_guide: "技术实施指南"
+    data_integration_specifications: "数据集成规范"
+    user_interface_wireframes: "用户界面线框图"
+    security_privacy_protocols: "安全隐私协议"
+
+  operational_procedures:
+    monitoring_workflow_procedures: "监控工作流程"
+    alert_response_protocols: "警报响应协议"
+    data_quality_assurance_processes: "数据质量保证流程"
+    system_maintenance_schedules: "系统维护计划"
+    user_training_materials: "用户培训材料"
+
+quality_assurance_standards:
+  data_accuracy_validation:
+    source_verification_procedures: "数据源验证程序"
+    cross_reference_checking: "交叉参考检查"
+    temporal_consistency_validation: "时间一致性验证"
+    outlier_investigation_protocols: "异常值调查协议"
+
+  system_reliability_requirements:
+    uptime_availability_targets: "运行时间可用性目标(99.9%)"
+    response_time_benchmarks: "响应时间基准(<2秒)"
+    data_refresh_frequency: "数据刷新频率(实时-日度)"
+    backup_recovery_procedures: "备份恢复程序"
+
+integration_protocols:
+  with_investment_platforms: "与投资平台集成"
+  with_risk_management_systems: "与风险管理系统集成"
+  with_portfolio_management_tools: "与组合管理工具集成"
+  with_external_data_providers: "与外部数据供应商集成"
+  with_regulatory_reporting_systems: "与监管报告系统集成"
+
+success_criteria:
+  monitoring_coverage_completeness: "监控覆盖完整性 >95%"
+  alert_accuracy_rate: "警报准确率 >90%"
+  system_uptime_reliability: "系统运行时间可靠性 >99.9%"
+  user_satisfaction_score: "用户满意度评分 >8.5/10"
+  decision_support_effectiveness: "决策支持有效性 >85%"

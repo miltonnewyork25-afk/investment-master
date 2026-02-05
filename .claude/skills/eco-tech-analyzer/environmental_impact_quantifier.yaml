@@ -1,0 +1,186 @@
+name: environmental-impact-quantifier
+description: 环境影响量化器 - 专门量化和货币化生态科技公司的环境效益，建立环境价值与商业价值的转换模型
+version: "1.0"
+author: "投资研究Agent v19.12"
+category: environmental_analysis
+
+triggers:
+  - "环境影响分析"
+  - "碳减排量化"
+  - "环保效益评估"
+  - "生态价值计算"
+  - "外部性量化"
+
+system_message: |
+  你是环境影响量化专家，专门负责：
+  1. 量化生态科技公司的环境效益
+  2. 将环境影响转换为货币价值
+  3. 建立环境-商业价值转换模型
+  4. 评估环境外部性的投资价值
+
+  分析重点：
+  - CO2减排量精确计算
+  - 环境效益货币化
+  - 生命周期环境影响评估
+  - 环境服务价值量化
+  - 与竞品环境对比分析
+
+core_capabilities:
+  carbon_footprint_analysis:
+    scope_1: "直接排放量化(制造、运营)"
+    scope_2: "间接排放量化(购买能源)"
+    scope_3: "价值链排放量化(供应链、产品使用)"
+    net_impact: "净碳影响计算(减排 vs 产生)"
+
+  environmental_monetization:
+    carbon_pricing: "碳价格机制应用($50-200/吨CO2)"
+    ecosystem_services: "生态系统服务价值化"
+    resource_savings: "资源节约效益量化"
+    health_benefits: "公共健康效益计算"
+
+  lifecycle_assessment:
+    cradle_to_gate: "原材料到出厂门环境影响"
+    gate_to_grave: "使用到废弃处理环境影响"
+    cradle_to_cradle: "全生命周期循环影响"
+    comparative_lca: "vs传统技术环境对比"
+
+analysis_framework:
+  phase_1_baseline:
+    current_environmental_impact:
+      - "公司直接环境足迹测算"
+      - "产品/服务环境效益评估"
+      - "vs传统解决方案对比分析"
+      - "环境影响热点识别"
+
+  phase_2_quantification:
+    impact_measurement:
+      - "CO2减排量计算(吨/年)"
+      - "水资源节约量(立方米/年)"
+      - "废物减少量(吨/年)"
+      - "能源效率提升(%)"
+      - "污染物减排量(各类污染物)"
+
+  phase_3_monetization:
+    value_calculation:
+      - "碳信用价值($X万/年)"
+      - "资源节约价值($X万/年)"
+      - "健康效益价值($X万/年)"
+      - "生态服务价值($X万/年)"
+      - "总环境价值($X亿)"
+
+  phase_4_integration:
+    business_integration:
+      - "环境价值vs公司市值比例"
+      - "环境效益增长潜力预测"
+      - "环境风险敞口评估"
+      - "环境价值投资溢价计算"
+
+quantification_methodologies:
+  carbon_accounting:
+    ghg_protocol: "温室气体核算标准"
+    iso_14067: "产品碳足迹标准"
+    pas_2050: "商品和服务生命周期GHG排放"
+    cdp_framework: "CDP气候变化问卷方法"
+
+  environmental_valuation:
+    social_cost_carbon: "社会碳成本法($185/吨CO2e)"
+    damage_cost: "环境损害成本法"
+    replacement_cost: "替代成本法"
+    market_pricing: "市场定价法(碳市场价格)"
+
+metrics_library:
+  carbon_metrics:
+    absolute_emissions: "绝对排放量(tCO2e/年)"
+    emission_intensity: "排放强度(tCO2e/收入$M)"
+    avoided_emissions: "避免排放量(tCO2e/年)"
+    carbon_handprint: "正面碳影响(tCO2e/年)"
+    net_carbon_benefit: "净碳效益(tCO2e/年)"
+
+  resource_metrics:
+    water_footprint: "水足迹(m³/年)"
+    material_intensity: "材料强度(kg材料/产品单位)"
+    waste_diversion: "废物转化率(%)"
+    energy_productivity: "能源生产率($/GJ)"
+    circularity_rate: "循环利用率(%)"
+
+  ecosystem_metrics:
+    biodiversity_impact: "生物多样性影响指数"
+    land_use_efficiency: "土地利用效率(ha/产出)"
+    air_quality_improvement: "空气质量改善指数"
+    water_quality_impact: "水质影响评分"
+
+valuation_models:
+  carbon_valuation_model:
+    inputs:
+      - annual_co2_reduction: "年CO2减排量(吨)"
+      - carbon_price_scenario: "碳价情景($50-200/吨)"
+      - project_lifetime: "项目生命周期(年)"
+      - discount_rate: "贴现率(%)"
+
+    calculation: |
+      碳价值NPV = Σ(年减排量 × 碳价格 × (1+贴现率)^-t)
+      考虑：碳价上涨趋势、政策确定性、技术规模效应
+
+  environmental_premium_model:
+    inputs:
+      - total_environmental_value: "总环境价值($)"
+      - company_market_cap: "公司市值($)"
+      - sector_env_average: "行业环境平均水平"
+      - esg_fund_preference: "ESG基金偏好系数"
+
+    calculation: |
+      环境溢价 = 环境价值/市值 × ESG偏好系数 × 稀缺性溢价
+      最终溢价 = min(计算溢价, 30%) # 上限保护
+
+output_deliverables:
+  environmental_impact_report:
+    executive_summary: "环境影响执行摘要"
+    impact_quantification: "详细影响量化表"
+    monetization_analysis: "货币化价值分析"
+    comparative_assessment: "竞品环境对比"
+    value_integration: "商业价值整合建议"
+
+  carbon_economics_model:
+    carbon_baseline: "碳足迹基准线"
+    reduction_trajectory: "减排轨迹预测"
+    carbon_value_creation: "碳价值创造模型"
+    risk_scenario_analysis: "碳政策风险情景"
+
+quality_standards:
+  data_requirements:
+    tier_1_sources:
+      - "公司可持续发展报告"
+      - "GHG核算第三方验证"
+      - "环保部门官方数据"
+      - "国际能源署(IEA)数据"
+
+    tier_2_sources:
+      - "行业协会环境数据"
+      - "学术研究环境影响"
+      - "环保咨询机构报告"
+      - "同业公司环境披露"
+
+  confidence_calibration:
+    high_confidence_8_10: "直接测量数据、第三方验证"
+    medium_confidence_6_8: "行业基准估算、合理假设"
+    low_confidence_4_6: "早期估计、有限数据基础"
+
+  validation_requirements:
+    cross_reference: "多数据源交叉验证"
+    peer_comparison: "同业公司环境对比"
+    sensitivity_analysis: "关键假设敏感性测试"
+    expert_review: "环境专家审查建议"
+
+integration_protocols:
+  with_carbon_economics: "碳经济学建模深度整合"
+  with_policy_analysis: "环保政策影响评估"
+  with_technology_assessment: "技术环境效益评价"
+  with_esg_valuation: "ESG估值模型输入"
+  with_risk_management: "环境风险因子识别"
+
+success_metrics:
+  quantification_accuracy: "环境影响量化准确性 >85%"
+  monetization_reliability: "货币化模型可靠性 >80%"
+  comparative_completeness: "竞品对比完整性 100%"
+  business_integration: "商业价值整合有效性 >90%"
+  stakeholder_acceptance: "利益相关者接受度 >85%"
