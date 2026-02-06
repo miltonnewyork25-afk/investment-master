@@ -24,14 +24,15 @@ description: 投资分析框架编排器。识别公司行业，组装通用模�
 | 金融 | `modules/financial.md` | JPM, GS, BRK, V, MA | 1.6 |
 | 其他 | 仅用通用模块 | - | 1.0 |
 
-### Step 2: 数据预取
+### Step 2: 数据预取（v2.0 — 11个文件）
 
 触发 `/data-prefetch` 技能（参见 `.claude/skills/data-prefetch/SKILL.md`）：
 
-1. 调用 MCP 工具获取实时数据（analyze_stock, compare_stocks, get_market_overview）
-2. 运行 Python 估值模型（DCF计算器, 可比公司分析）
-3. 缓存到 `data/research/{TICKER}/`
-4. 检查缓存有效性（<24h新鲜, 24h-7天警告, >7天强制刷新）
+1. 调用 MCP 工具获取实时数据（analyze_stock, compare_stocks, get_market_overview）→ 3个文件
+2. 启动 5个并行 WebSearch Task Agent 预取分析师共识、预测市场、新闻催化剂、业务竞争、管理层数据 → 6个文件
+3. 运行 Python 估值模型（DCF计算器, 可比公司分析）→ 2个文件
+4. 缓存到 `data/research/{TICKER}/`（共11个数据文件 + 1个元数据文件）
+5. 分类检查缓存有效性（不同数据类型有不同的过期规则，详见 data-prefetch SKILL.md）
 
 ### Step 3: 加载模块
 

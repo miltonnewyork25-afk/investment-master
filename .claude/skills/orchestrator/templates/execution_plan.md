@@ -23,6 +23,12 @@
 | market_context.json | MCP:get_market_overview | □ |
 | dcf_valuation.json | Python:dcf_calculator | □ |
 | comparable_analysis.json | Python:comparable_companies | □ |
+| analyst_consensus.json | WebSearch:Agent-A | □ |
+| prediction_market.json | WebSearch:Agent-B | □ |
+| recent_news.json | WebSearch:Agent-C | □ |
+| business_overview.json | WebSearch:Agent-D | □ |
+| competitive_landscape.json | WebSearch:Agent-D | □ |
+| management_team.json | WebSearch:Agent-E | □ |
 
 ## 五引擎状态
 
