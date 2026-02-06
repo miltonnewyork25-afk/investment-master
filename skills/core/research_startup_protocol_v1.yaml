@@ -1,10 +1,12 @@
-# Research Startup Protocol v1.0
-# 调研启动协议 - 防遗漏自动触发系统
+# Research Startup Protocol v1.1
+# 调研启动协议 - 防遗漏自动触发系统 + Polymarket预测市场集成
 # 创建日期: 2026-01-31
-# 设计目的: 在每次深度调研开始时自动执行，确保不遗漏任何框架模块
+# 更新日期: 2026-02-05
+# 设计目的: 在每次深度调研开始时自动执行，确保不遗漏任何框架模块，并自动集成强相关预测市场分析
 
-version: "1.0"
+version: "1.1"
 created: "2026-01-31"
+updated: "2026-02-05"
 trigger_priority: "HIGHEST"
 
 # ═══════════════════════════════════════════════════════════════
@@ -229,6 +231,70 @@ industry_framework_mapping:
       - path: "skills/industry/tech_community_voice_v1.yaml"
         priority: "P1"
 
+  eco_tech:
+    识别关键词:
+      - "生态科技"
+      - "绿色科技"
+      - "清洁技术"
+      - "新能源"
+      - "可再生能源"
+      - "电动车"
+      - "特斯拉"
+      - "Tesla"
+      - "TSLA"
+      - "太阳能"
+      - "风能"
+      - "储能"
+      - "电池"
+      - "氢能"
+      - "碳捕获"
+      - "循环经济"
+      - "ESG"
+      - "可持续发展"
+      - "环保"
+      - "碳中和"
+      - "净零排放"
+
+    必须加载框架:
+      - path: "skills/eco-tech-analyzer/eco_tech_master_framework.yaml"
+        priority: "P0"
+      - path: "skills/eco-tech-analyzer/environmental_impact_quantifier.yaml"
+        priority: "P0"
+      - path: "skills/eco-tech-analyzer/carbon_economics_modeler.yaml"
+        priority: "P0"
+      - path: "skills/eco-tech-analyzer/green_tech_evaluator.yaml"
+        priority: "P0"
+      - path: "skills/eco-tech-analyzer/policy_scenario_analyzer.yaml"
+        priority: "P0"
+      - path: "skills/eco-tech-analyzer/sustainability_valuator.yaml"
+        priority: "P0"
+      - path: "skills/prediction-market-analyzer/polymarket_predictor_analyzer.yaml"
+        priority: "P0"
+        condition: "存在强相关预测市场"
+      - path: "skills/eco-tech-analyzer/circular_economy_analyzer.yaml"
+        priority: "P1"
+      - path: "skills/eco-tech-analyzer/regulatory_pathway_mapper.yaml"
+        priority: "P1"
+      - path: "skills/eco-tech-analyzer/esg_native_assessor.yaml"
+        priority: "P1"
+      - path: "skills/eco-tech-analyzer/green_finance_modeler.yaml"
+        priority: "P1"
+      - path: "skills/eco-tech-analyzer/eco_monitoring_builder.yaml"
+        priority: "P1"
+
+    必须工件:
+      - "analysis/environmental_impact_matrix.csv"
+      - "analysis/carbon_economics_model.xlsx"
+      - "analysis/technology_trl_assessment.csv"
+      - "analysis/policy_scenario_matrix.csv"
+      - "analysis/sustainability_scorecard.csv"
+      - "analysis/polymarket_predictions.json"
+      - "analysis/circular_economy_metrics.csv"
+      - "analysis/regulatory_pathway_map.xlsx"
+      - "analysis/esg_native_assessment.csv"
+      - "analysis/green_finance_model.xlsx"
+      - "monitoring/eco_tech_dashboard.json"
+
   # 混合型公司（如Costco = 零售 + 消费品）
   hybrid:
     description: "当公司同时具有多个行业属性时，加载所有适用框架"
@@ -242,6 +308,14 @@ industry_framework_mapping:
       - company: "Apple"
         industries: ["tech", "consumer"]
         reason: "科技公司 + 消费电子品牌"
+      - company: "Tesla"
+        industries: ["eco_tech", "tech", "consumer"]
+        reason: "电动车生态科技 + 自动驾驶技术 + 消费品牌"
+        polymarket_relevance: "高度相关 - 自动驾驶、交付量、股价预测"
+      - company: "BYD"
+        industries: ["eco_tech", "tech"]
+        reason: "电动车生态科技 + 电池技术"
+        polymarket_relevance: "中等相关 - 中国EV市场、电池技术预测"
 
 # ═══════════════════════════════════════════════════════════════
 # 调研启动协议（6步强制执行）
@@ -274,23 +348,36 @@ startup_protocol:
       gate: "必须明确识别行业类型才能继续"
 
     - step: 2
-      name: "加载适用框架"
+      name: "加载适用框架与Polymarket检查"
       action: |
         1. 根据行业类型，从 industry_framework_mapping 获取框架列表
-        2. 读取所有P0优先级框架的master文件
-        3. 提取 required_modules 清单
-        4. 提取 required_artifacts 清单
+        2. **Polymarket相关性检查**：
+           - 检查公司是否存在强相关预测市场
+           - 对于Tesla: 自动驾驶、交付量、股价预测
+           - 对于其他生态科技: 技术突破、政策变化、市场渗透预测
+           - 相关性评分: 高/中/低/无
+        3. 读取所有P0优先级框架的master文件
+        4. 如检测到Polymarket相关性，加载prediction-market-analyzer
+        5. 提取 required_modules 清单
+        6. 提取 required_artifacts 清单
       output_format: |
         ## 框架加载
         已读取框架:
-        - [x] retail_master_framework_v1.yaml
-        - [x] consumer_master_framework_v1.yaml
+        - [x] eco_tech_master_framework.yaml
+        - [x] environmental_impact_quantifier.yaml
+        - [x] polymarket_predictor_analyzer.yaml (⚡ 强相关)
         - [ ] ...
 
-        P0模块数: X个
+        **Polymarket相关性**: 高度相关
+        **强相关预测事件**:
+        - Tesla自动驾驶L4实现 (概率: XX%)
+        - Tesla Q4交付量目标达成 (概率: XX%)
+        - 美国EV税收抵免延续 (概率: XX%)
+
+        P0模块数: X个 (+1 Polymarket)
         P1模块数: X个
         P2模块数: X个
-      gate: "所有P0框架必须读取成功"
+      gate: "所有P0框架必须读取成功，Polymarket相关性确认"
 
     - step: 3
       name: "生成必须执行清单"
@@ -515,6 +602,8 @@ phase_checkpoints:
       - "分析师观点（≥10位）"
       - "市场核心分歧（≥3个）"
       - "行业雷达信号（如适用）"
+      - "Polymarket预测概率分析（如相关）"
+      - "强相关预测事件识别（≥3个）"
     最低字数: 15000
     gate: "所有项完成才能进入Phase 3"
 
@@ -525,6 +614,8 @@ phase_checkpoints:
       - "增长质量分析（PVM）"
       - "定价权分析"
       - "行业特定模块（按框架）"
+      - "Polymarket概率权重分析（如相关）"
+      - "预测概率对基本面影响评估"
       - "反常识洞察卡（≥5张）"
       - "Reflection自我批评"
     最低字数: 30000
@@ -534,9 +625,11 @@ phase_checkpoints:
     name: "Phase 4: 估值与决策"
     必须完成:
       - "DCF估值（三场景）"
+      - "Polymarket概率调整估值（如相关）"
+      - "预测市场敏感性分析"
       - "SOTP估值"
       - "估值桥梁分析"
-      - "Kill Switch（≥10个）"
+      - "Kill Switch（≥10个，含预测风险）"
       - "可验证预测（≥15个）"
       - "质量门控表"
     最低字数: 10000
@@ -620,3 +713,13 @@ version_history:
       - "Phase检查点系统"
       - "报告末尾自检表"
     design_source: "Costco调研遗漏反思"
+
+  v1.1:
+    date: "2026-02-05"
+    changes:
+      - "添加生态科技行业框架映射"
+      - "集成Polymarket预测市场分析"
+      - "增加预测相关性自动检测"
+      - "在各Phase中集成概率权重分析"
+      - "为Tesla等生态科技公司添加专用混合框架"
+    design_source: "生态科技分析技能体系集成需求"

@@ -147,7 +147,7 @@ description: 生态科技行业自动编排器。识别子行业（光伏/风电
   | 用途 | 筛选/排除 | 投资决策 |
 ```
 
-## Step 6: 完整执行流水线（v1.1集成）
+## Step 6: 完整执行流水线（v1.2 全11 Skill集成）
 
 ```yaml
 完整流水线:
@@ -157,20 +157,54 @@ description: 生态科技行业自动编排器。识别子行业（光伏/风电
     输出: 标准化数据包(data_package)
     参考: docs/parallel_agent_prompts.md
 
-  Phase 1 - 5 Skill分析:
-    模式A(串行): Step 2执行顺序
-    模式B(并行): docs/parallel_agent_prompts.md Wave1→Wave2
-    输出: 5份skill分析报告
+  Phase 1 - 基础分析（5 Skill + 供应链）:
+    核心5 Skill:
+      模式A(串行): Step 2执行顺序
+      模式B(并行): docs/parallel_agent_prompts.md Wave1→Wave2
+    增强Skill:
+      supply-chain-mapper: 与Wave 1并行，供应链韧性评分
+    输出: 5份skill报告 + 1份供应链报告
 
-  Phase 2 - 报告组装:
+  Phase 2 - 深度验证（压力测试+历史类比）:
+    stress-tester: 基于Phase 1投资论点执行5层压力测试
+    historical-analogy: 匹配历史先例验证投资判断
+    输出: 压力测试报告 + 历史类比报告
+
+  Phase 3 - 报告组装:
     skill: report-assembler
-    说明: 交叉验证+冲突标记+章节编排+质量门控
+    说明: 整合8份skill输出→交叉验证+质量门控
     输出: 完整投资分析报告
 
 执行命令:
-  深度分析: "分析{公司名}" → Phase 0→1→2 全流程
+  深度分析: "分析{公司名}" → Phase 0→1→2→3 全流程
+  标准分析: "标准分析{公司名}" → Phase 0→1→3（跳过深度验证）
   快速扫描: "/quick-scan {公司名}" → 仅Layer1数据+2核心skills+1页摘要
   单skill: "用lcoe分析{公司名}" → 仅数据采集+指定skill
+```
+
+## Skill全景图（11个）
+
+```yaml
+编排层:
+  eco-tech-orchestrator: 总编排，子行业识别+流水线管理
+
+数据层:
+  data-collector: WebSearch实时数据采集
+
+分析层（核心5）:
+  lcoe-analyzer: 成本竞争力
+  tech-maturity-assessor: 技术成熟度
+  carbon-footprint-calculator: 碳足迹
+  policy-impact-assessor: 政策影响
+  green-finance-evaluator: 绿色金融
+
+深度层（增强3）:
+  supply-chain-mapper: 供应链韧性 ←→ lcoe/stress-tester
+  stress-tester: 逆向压力测试 ←→ report-assembler/Kill Switch
+  historical-analogy: 历史类比验证 ←→ tech-maturity/policy
+
+输出层:
+  report-assembler: 报告组装+质量门控
 ```
 
 ## 重要规则
@@ -181,4 +215,5 @@ description: 生态科技行业自动编排器。识别子行业（光伏/风电
 - 每个Skill输出必须标注数据质量等级
 - 跨Skill数据冲突时→标记冲突点+两种结论并列
 - 数据采集(data-collector)必须在skills执行前完成
+- 压力测试+历史类比必须在基础分析完成后执行
 - 报告组装(report-assembler)必须在所有skills完成后执行

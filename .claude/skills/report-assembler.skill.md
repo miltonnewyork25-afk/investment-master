@@ -46,6 +46,18 @@ description: 投资分析报告自动组装器。将5个eco-tech skills的输出
     检查: "TRL评估是否支持LCOE预测的成本路径？"
     冲突处理: 以技术实际参数为准
 
+  供应链 vs LCOE:
+    检查: "供应链瓶颈是否纳入成本预测？"
+    冲突处理: 供应链mapper的材料价格优先
+
+  压力测试 vs 投资建议:
+    检查: "压力测试发现的脆弱性是否已反映在Kill Switch中？"
+    冲突处理: 压力测试结果强制更新Kill Switch
+
+  历史类比 vs 增长预期:
+    检查: "历史S曲线/政策周期是否支持增长假设？"
+    冲突处理: 标注"历史先例建议谨慎"
+
 冲突标记格式:
   "⚠️ 数据分歧: [Skill A]认为X，[Skill B]认为Y。
    分析: [分歧原因]
@@ -56,7 +68,7 @@ description: 投资分析报告自动组装器。将5个eco-tech skills的输出
 
 ```markdown
 # {公司名} 生态科技投资分析报告
-> 生成日期: {日期} | 分析框架: eco-tech v19.14 | 5-Skill联合分析
+> 生成日期: {日期} | 分析框架: eco-tech v19.16 | 8-Skill联合分析
 
 ---
 
@@ -82,20 +94,35 @@ description: 投资分析报告自动组装器。将5个eco-tech skills的输出
 > 来源: policy-impact-assessor
 [整合政策评估输出]
 
-## 第五章: 绿色金融与ESG评估
+## 第五章: 供应链韧性分析
+> 来源: supply-chain-mapper
+[供应链图谱+韧性评分+瓶颈预警+价格传导分析]
+
+## 第六章: 绿色金融与ESG评估
 > 来源: green-finance-evaluator
 [整合绿色金融输出]
 
-## 第六章: 综合投资分析（报告组装器生成）
+## 第七章: 逆向压力测试
+> 来源: stress-tester
+[投资论点脆弱性评级+熊市情景+敏感性TOP5+反向DCF+Pre-Mortem]
 
-### 6.1 五维雷达图
+## 第八章: 历史类比验证
+> 来源: historical-analogy
+[S曲线定位+政策周期定位+泡沫评分+公司路径匹配+"这次不一样"检验]
+
+## 第九章: 综合投资分析（报告组装器生成）
+
+### 9.1 八维雷达图
 | 维度 | 评级 | 得分(1-10) | 权重 | 加权分 |
 |------|------|-----------|------|-------|
-| LCOE竞争力 | {rating} | {score} | 25% | {w_score} |
-| 技术成熟度 | {rating} | {score} | 25% | {w_score} |
-| 碳风险控制 | {rating} | {score} | 15% | {w_score} |
-| 政策环境 | {rating} | {score} | 20% | {w_score} |
-| 绿色金融 | {rating} | {score} | 15% | {w_score} |
+| LCOE竞争力 | {rating} | {score} | 18% | {w_score} |
+| 技术成熟度 | {rating} | {score} | 18% | {w_score} |
+| 碳风险控制 | {rating} | {score} | 10% | {w_score} |
+| 政策环境 | {rating} | {score} | 14% | {w_score} |
+| 供应链韧性 | {rating} | {score} | 12% | {w_score} |
+| 绿色金融 | {rating} | {score} | 8% | {w_score} |
+| 压力测试韧性 | {rating} | {score} | 12% | {w_score} |
+| 历史类比吻合 | {rating} | {score} | 8% | {w_score} |
 | **综合** | **{rating}** | **{total}** | 100% | **{final}** |
 
 ### 6.2 交叉验证结果

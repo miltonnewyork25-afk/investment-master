@@ -1,0 +1,357 @@
+# 生态科技投资研究框架配置文件 v1.0
+# 创建日期: 2026-02-04
+# 说明: 生态科技worktree专用配置参数
+
+version: "1.0"
+framework_name: "生态科技投资研究框架"
+created_date: "2026-02-04"
+
+# ═══════════════════════════════════════════════════════════════
+# 框架基础配置
+# ═══════════════════════════════════════════════════════════════
+
+framework_config:
+  industry_complexity_factor: 1.4
+  minimum_word_count: 84000
+  minimum_tables: 35
+  minimum_charts: 7
+  minimum_insight_cards: 7
+  minimum_kill_switches: 12
+  minimum_predictions: 18
+  ab_grade_data_ratio: 0.90
+
+# ═══════════════════════════════════════════════════════════════
+# 行业分类定义
+# ═══════════════════════════════════════════════════════════════
+
+industry_taxonomy:
+  renewable_energy:
+    solar:
+      - "光伏发电"
+      - "太阳能热发电"
+      - "分布式光伏"
+    wind:
+      - "陆上风电"
+      - "海上风电"
+      - "分散式风电"
+    hydro:
+      - "大型水电"
+      - "小水电"
+      - "抽水蓄能"
+    other:
+      - "地热发电"
+      - "生物质发电"
+      - "潮汐发电"
+
+  energy_storage:
+    electrochemical:
+      - "锂离子电池"
+      - "钠离子电池"
+      - "固态电池"
+    mechanical:
+      - "压缩空气储能"
+      - "重力储能"
+      - "飞轮储能"
+    chemical:
+      - "氢储能"
+      - "合成燃料"
+
+  clean_transportation:
+    electric_vehicles:
+      - "纯电动汽车"
+      - "插电式混动"
+      - "燃料电池汽车"
+    infrastructure:
+      - "充电桩"
+      - "换电站"
+      - "加氢站"
+
+  green_building:
+    efficiency:
+      - "节能建材"
+      - "智能建筑"
+      - "绿色照明"
+    renewable_integration:
+      - "建筑光伏"
+      - "地源热泵"
+      - "智能电网"
+
+  environmental_tech:
+    water_treatment:
+      - "污水处理"
+      - "海水淡化"
+      - "膜技术"
+    waste_management:
+      - "垃圾焚烧发电"
+      - "生物质处理"
+      - "循环回收"
+    air_quality:
+      - "脱硫脱硝"
+      - "碳捕集"
+      - "空气净化"
+
+# ═══════════════════════════════════════════════════════════════
+# Skills工具配置
+# ═══════════════════════════════════════════════════════════════
+
+skills_config:
+  mandatory_skills:
+    carbon_footprint_calculator:
+      priority: "P0"
+      required_phases: ["P2", "P3"]
+      output_requirements:
+        - "scope123_breakdown.csv"
+        - "carbon_footprint_report.pdf"
+        - "benchmark_comparison.png"
+      data_quality_standard: "A+B级≥90%"
+
+    policy_impact_assessor:
+      priority: "P0"
+      required_phases: ["P2", "P4"]
+      output_requirements:
+        - "policy_scenarios.xlsx"
+        - "policy_impact_report.pdf"
+        - "sensitivity_analysis.json"
+      scenario_requirement: "≥3个政策情景"
+
+    green_finance_evaluator:
+      priority: "P0"
+      required_phases: ["P2", "P4"]
+      output_requirements:
+        - "green_finance_report.pdf"
+        - "cost_analysis.xlsx"
+        - "esg_scorecard.csv"
+      esg_rating_requirement: "必须包含主流评级"
+
+    tech_maturity_assessor:
+      priority: "P1"
+      required_phases: ["P1", "P3"]
+      output_requirements:
+        - "trl_assessment.xlsx"
+        - "tech_maturity_report.pdf"
+        - "risk_analysis.json"
+      trl_requirement: "TRL 1-9详细评级"
+
+    lcoe_analyzer:
+      priority: "P1"
+      required_phases: ["P3", "P4"]
+      output_requirements:
+        - "lcoe_analysis_report.pdf"
+        - "lcoe_calculations.xlsx"
+        - "technology_comparison.csv"
+      comparison_requirement: "≥3种技术对比"
+
+# ═══════════════════════════════════════════════════════════════
+# 数据源配置
+# ═══════════════════════════════════════════════════════════════
+
+data_sources:
+  policy_data:
+    china:
+      primary:
+        - "国家发改委"
+        - "国家能源局"
+        - "生态环境部"
+        - "财政部"
+      secondary:
+        - "中国可再生能源学会"
+        - "中国光伏行业协会"
+        - "中国风能协会"
+
+    international:
+      - "IEA (国际能源署)"
+      - "IRENA (国际可再生能源署)"
+      - "BloombergNEF"
+      - "Wood Mackenzie"
+
+  esg_ratings:
+    - "MSCI ESG"
+    - "Sustainalytics"
+    - "FTSE Russell ESG"
+    - "中证ESG评级"
+    - "华证ESG评级"
+
+  financial_data:
+    - "Wind万得"
+    - "Bloomberg"
+    - "Thomson Reuters"
+    - "公司财报"
+    - "券商研报"
+
+  technology_data:
+    - "专利数据库"
+    - "科技文献"
+    - "行业协会报告"
+    - "设备厂商数据"
+
+# ═══════════════════════════════════════════════════════════════
+# 风险管理配置
+# ═══════════════════════════════════════════════════════════════
+
+risk_management:
+  kill_switches:
+    policy_risks:
+      - trigger: "关键补贴政策取消"
+        condition: "补贴影响>30%净利润"
+        severity: "Hard"
+        action: "降级2档"
+
+      - trigger: "碳价大幅下跌"
+        condition: "碳价<¥30/吨持续6月"
+        severity: "Soft"
+        action: "重估碳价值"
+
+    technology_risks:
+      - trigger: "颠覆性技术突破"
+        condition: "竞争技术效率领先>20%"
+        severity: "Hard"
+        action: "重新评估护城河"
+
+      - trigger: "技术进步停滞"
+        condition: "R&D回报率下降>50%"
+        severity: "Soft"
+        action: "关注管理层变化"
+
+    market_risks:
+      - trigger: "平价时点大幅延后"
+        condition: "LCOE平价推迟>3年"
+        severity: "Soft"
+        action: "调整增长预期"
+
+    supply_chain_risks:
+      - trigger: "关键材料断供"
+        condition: "单一供应商>70%+供应中断"
+        severity: "Hard"
+        action: "暂停覆盖"
+
+  risk_monitoring:
+    frequency:
+      policy_changes: "实时"
+      technology_trends: "月度"
+      market_dynamics: "周度"
+      financial_metrics: "季度"
+
+# ═══════════════════════════════════════════════════════════════
+# 估值框架配置
+# ═══════════════════════════════════════════════════════════════
+
+valuation_framework:
+  discount_rates:
+    mature_renewable: 0.08    # 成熟可再生能源
+    emerging_tech: 0.12       # 新兴技术
+    early_stage: 0.15         # 早期阶段
+    policy_dependent: 0.10    # 政策依赖型
+
+  multiple_ranges:
+    solar_manufacturing:
+      pe_range: [8, 15]
+      pb_range: [1.2, 2.5]
+      ev_ebitda: [6, 12]
+
+    wind_development:
+      pe_range: [12, 20]
+      pb_range: [1.5, 3.0]
+      ev_ebitda: [8, 15]
+
+    battery_storage:
+      pe_range: [15, 30]
+      pb_range: [2.0, 4.0]
+      ev_ebitda: [10, 20]
+
+  esg_premium:
+    aa_rating: -0.25%         # 基点调整
+    a_rating: -0.10%
+    bbb_rating: 0.00%         # 基准
+    bb_rating: 0.15%
+    b_rating: 0.30%
+
+# ═══════════════════════════════════════════════════════════════
+# 报告模板配置
+# ═══════════════════════════════════════════════════════════════
+
+report_templates:
+  executive_summary:
+    required_sections:
+      - "投资评级与目标价"
+      - "核心投资逻辑"
+      - "关键风险因素"
+      - "ESG亮点"
+      - "政策影响评估"
+
+  phase_structure:
+    phase_1:
+      - "绿色价值链定位"
+      - "政策依赖度分析"
+      - "技术演进路线图"
+      - "国际竞争对比"
+
+    phase_2:
+      - "碳足迹核算"
+      - "ESG评估矩阵"
+      - "关键材料风险"
+      - "政策影响建模"
+
+    phase_3:
+      - "技术成熟度评估"
+      - "LCOE平价分析"
+      - "碳中和经济学"
+      - "绿色竞争生态"
+
+    phase_4:
+      - "绿色金融评估"
+      - "政策情景建模"
+      - "长期需求预测"
+      - "投资评级建议"
+
+# ═══════════════════════════════════════════════════════════════
+# 质量控制配置
+# ═══════════════════════════════════════════════════════════════
+
+quality_control:
+  mandatory_checks:
+    data_quality:
+      - "A+B级数据占比≥90%"
+      - "所有关键数据有来源标注"
+      - "政策数据时效性<3个月"
+
+    analysis_depth:
+      - "平均深度≥L3.5"
+      - "核心模块≥L4"
+      - "技术分析≥L4"
+
+    skills_utilization:
+      - "5个核心Skills全部使用"
+      - "Skills输出全部集成"
+      - "计算过程可追溯"
+
+    completeness:
+      - "15个生态科技模块完成"
+      - "23个通用模块完成"
+      - "所有工件产出"
+
+  checkpoint_gates:
+    phase_1: "生态图谱+政策分析完成"
+    phase_2: "ESG评估+数据收集完成"
+    phase_3: "技术评估+LCOE分析完成"
+    phase_4: "投资建议+风险评估完成"
+
+# ═══════════════════════════════════════════════════════════════
+# 更新维护配置
+# ═══════════════════════════════════════════════════════════════
+
+maintenance_config:
+  update_schedule:
+    framework_review: "季度"
+    skills_optimization: "月度"
+    data_refresh: "周度"
+    policy_tracking: "实时"
+
+  version_control:
+    current_version: "1.0"
+    last_update: "2026-02-04"
+    next_review: "2026-05-04"
+
+  feedback_integration:
+    user_feedback: "持续收集"
+    performance_metrics: "月度统计"
+    improvement_suggestions: "季度评估"
