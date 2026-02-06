@@ -2,6 +2,32 @@
 
 本文件追踪生态科技worktree的所有框架变更。
 
+## [v19.15] - 2026-02-06
+
+### Added
+- **Phase 2: 并行Agent执行框架完成**
+- **data-collector.skill.md v1.0**: 实时数据采集器
+  - 4层数据采集矩阵（基本面/行业/政策碳价/ESG金融）
+  - WebSearch查询模板 + 标准化数据包输出
+  - 数据质量分级(A-E) + 缺失数据处理策略
+  - 与5个分析skills的数据分发映射
+- **report-assembler.skill.md v1.0**: 报告自动组装器
+  - 5 Skill输出→完整报告的自动编排
+  - 交叉验证矩阵（LCOE-技术/碳-政策/政策-金融/技术-LCOE）
+  - 五维雷达图加权评分系统
+  - Kill Switch汇总 + 可验证预测整合
+  - 质量门控4维检查（字数/深度/完整性/一致性）
+- **docs/parallel_agent_prompts.md**: 并行Agent执行模板
+  - 5个skill的具体Task tool prompt模板
+  - Wave 1(3并行) + Wave 2(2并行)执行方案
+  - Quick-Scan单agent快速模式
+  - 标准化输入/输出格式规范
+
+### Changed
+- eco-tech-orchestrator升级到v1.1: 新增Step 6完整执行流水线
+  - 集成data-collector + report-assembler
+  - 支持深度分析/快速扫描/单skill三种执行命令
+
 ## [v19.14] - 2026-02-06
 
 ### Added

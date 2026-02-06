@@ -147,6 +147,32 @@ description: 生态科技行业自动编排器。识别子行业（光伏/风电
   | 用途 | 筛选/排除 | 投资决策 |
 ```
 
+## Step 6: 完整执行流水线（v1.1集成）
+
+```yaml
+完整流水线:
+  Phase 0 - 数据采集:
+    skill: data-collector
+    说明: WebSearch获取公司+行业+政策+碳价实时数据
+    输出: 标准化数据包(data_package)
+    参考: docs/parallel_agent_prompts.md
+
+  Phase 1 - 5 Skill分析:
+    模式A(串行): Step 2执行顺序
+    模式B(并行): docs/parallel_agent_prompts.md Wave1→Wave2
+    输出: 5份skill分析报告
+
+  Phase 2 - 报告组装:
+    skill: report-assembler
+    说明: 交叉验证+冲突标记+章节编排+质量门控
+    输出: 完整投资分析报告
+
+执行命令:
+  深度分析: "分析{公司名}" → Phase 0→1→2 全流程
+  快速扫描: "/quick-scan {公司名}" → 仅Layer1数据+2核心skills+1页摘要
+  单skill: "用lcoe分析{公司名}" → 仅数据采集+指定skill
+```
+
 ## 重要规则
 
 - 子行业识别不确定时→询问用户确认
@@ -154,3 +180,5 @@ description: 生态科技行业自动编排器。识别子行业（光伏/风电
 - 快速扫描结果不作为投资建议，仅用于筛选
 - 每个Skill输出必须标注数据质量等级
 - 跨Skill数据冲突时→标记冲突点+两种结论并列
+- 数据采集(data-collector)必须在skills执行前完成
+- 报告组装(report-assembler)必须在所有skills完成后执行
