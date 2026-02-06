@@ -60,12 +60,13 @@
 - 无数据 → 标注"该事件预测市场无覆盖"
 - 禁止虚构概率数字
 
-**铁律3: 数据源强制标注**
-- `[A: 来源, 日期]` — 一级数据（财报/SEC/官方）
-- `[B: 来源, 日期]` — 二级数据（第三方数据库/权威平台）
-- `[P: 来源, 日期]` — 预测市场数据（Polymarket/Kalshi等）
-- `[E: 推导说明]` — 分析师估算/推导
-- **密度要求**: Tier 3报告≥15个标注/万字符
+**铁律3: 三层置信度标注（v21.0升级）**
+- `[硬数据: 来源, 日期]` — 可验证事实（财报/SEC/权威数据库/预测市场概率）
+- `[合理推断: 推理链]` — 基于硬数据的逻辑推导，必须标注推理链
+- `[主观判断: 依据]` — 分析师观点/定性评估，标注判断依据
+- **旧标注兼容**: `[A:]`/`[B:]`/`[P:]` → `[硬数据:]`，`[E:]` → `[合理推断:]`，`[置信度: XX%]` → 废弃
+- **密度要求**: Tier 3报告≥15个标注/万字符，硬数据≥40%
+- **详见**: `docs/confidence_system.md`
 
 **禁止事项**:
 - 不做无数据支撑的判断
@@ -159,6 +160,11 @@
 | `docs/behavioral_finance.md` | Tier 3 Phase 4对抗审查时 |
 | `docs/sotp_methodology.md` | Tier 2/3估值分析时 |
 | `docs/market_debate_scanner.md` | Tier 2/3 Phase 0自动执行 |
+| `docs/core_questions_methodology.md` | Phase 0.5 CQ提取时 |
+| `docs/confidence_system.md` | 写报告标注数据时 |
+| `docs/differentiated_insight_standard.md` | 模块质量检查时 |
+| `docs/bear_case_methodology.md` | Phase 4看空分析时 |
+| `docs/v21_migration_guide.md` | v20→v21迁移参考 |
 | `CHANGELOG.md` | 查看变更历史时 |
 
 ---

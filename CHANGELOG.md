@@ -6,6 +6,46 @@
 
 ---
 
+## [v21.0] - 2026-02-06
+
+### MAJOR - 争议驱动框架升级（从模板填空到Core Questions驱动）
+
+基于COST v20.0报告反思，修复7个结构性问题（洞察密度低/置信度虚假/模板填空/装饰性反证/零差异化/非活文档/五引擎非独立）。
+
+**变更1: 争议驱动报告结构（核心变更）**
+- **新增** `docs/core_questions_methodology.md` — CQ提取算法+模块相关性评分+报告结构模板
+- **升级** `docs/market_attention_radar.md` v1.0→v2.0: 新增Step 2.5(CQ提取)+Step 3.5(模块评分)+Step 5.5(报告结构生成)
+- **升级** `docs/deep_dive_protocol.md` v4.0→v5.0: Phase 0.5增加CQ提取步骤，Phase 1-3以CQ为组织轴心
+- **升级** `.claude/skills/orchestrator/SKILL.md` v20.0→v21.0: Step 5改为争议驱动执行计划
+
+**变更2: 三层置信度系统**
+- **新增** `docs/confidence_system.md` — [硬数据]/[合理推断]/[主观判断]三层定义+20个示例+校准规则
+- **废弃** `[置信度: XX%]` 旧格式
+- **升级** `CLAUDE.md` 数据诚信规则: 铁律3改为三层标注
+
+**变更3: 差异化洞察标准**
+- **新增** `docs/differentiated_insight_standard.md` — "So What?"评分(0-10)+压缩模板
+- **升级** `.claude/skills/orchestrator/modules/universal.md` v20.0→v21.0: 29模块新增So What阈值/压缩条件/时效性三列
+- **升级** `.claude/skills/orchestrator/modules/consumer.md` v20.0→v21.0: 10模块新增三列
+- **升级** `docs/depth_assurance.md`: 第5层从字数评分改为洞察密度评分，第3层深挖循环整合So What
+
+**变更4: 五引擎依赖标注**
+- **升级** `docs/deep_dive_protocol.md`: 五引擎部分新增数据依赖矩阵，E2+E3一致只算1票
+
+**变更5: 看空分析等权重**
+- **新增** `docs/bear_case_methodology.md` — 看空≥30%篇幅+四要素+钢人论证
+- **升级** `docs/deep_dive_protocol.md` Phase 4: 新增看空等权重要求+So What抽查
+
+**变更6: 时效性标注**
+- **升级** `modules/universal.md` + `modules/consumer.md`: 每模块新增时效性列(实时/季度/年度/永久)
+
+**其他**
+- **升级** 铁律从9条扩展到12条(新增三层标注+看空等权+模块So What)
+- **新增** `docs/v21_migration_guide.md` — v20→v21迁移指南
+- **更新** `CLAUDE.md` 文档索引: 新增5个文档条目
+
+---
+
 ## [v3.1-debate-scanner] - 2026-02-06
 
 ### MINOR - Market Debate Scanner 模块
