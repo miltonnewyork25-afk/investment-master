@@ -3,5 +3,45 @@
     "allow": ["Bash", "Edit", "Write", "Read", "WebSearch", "WebFetch"],
     "deny": []
   },
-  "model": "claude-sonnet-4-20250514"
+  "model": "claude-sonnet-4-20250514",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": {
+          "tool_name": "Edit",
+          "file_paths": ["*.md", "docs/*.md", "CLAUDE.md"]
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "grep -oE '`(docs/[^`]+|[A-Z]+\\.md|\\.claude/skills/[^`]+)`' \"$CLAUDE_FILE_PATH\" 2>/dev/null | tr -d '`' | while read ref; do [ ! -f \"$ref\" ] && echo \"WARNING: 断链引用 $ref 在 $CLAUDE_FILE_PATH 中\"; done; true"
+          }
+        ]
+      },
+      {
+        "matcher": {
+          "tool_name": "Write",
+          "file_paths": ["CLAUDE.md", "**/CLAUDE.md"]
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "lines=$(wc -l < \"$CLAUDE_FILE_PATH\" 2>/dev/null); if [ \"$lines\" -gt 400 ]; then echo \"CRITICAL: CLAUDE.md ${lines}行 (上限400)。提取到docs/\"; elif [ \"$lines\" -gt 250 ]; then echo \"WARNING: CLAUDE.md ${lines}行 (目标<250)\"; fi; true"
+          }
+        ]
+      },
+      {
+        "matcher": {
+          "tool_name": "Write",
+          "file_paths": ["*.md", "*.yaml", "*.yml"]
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "lines=$(wc -l < \"$CLAUDE_FILE_PATH\" 2>/dev/null); [ \"$lines\" -gt 500 ] && echo \"WARNING: $CLAUDE_FILE_PATH 有 ${lines} 行，考虑拆分以避免 File Too Large 错误\" ; true"
+          }
+        ]
+      }
+    ]
+  }
 }
