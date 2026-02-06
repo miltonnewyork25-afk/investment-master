@@ -2,6 +2,25 @@
 
 本文件追踪生态科技worktree的所有框架变更。
 
+## [v19.14] - 2026-02-06
+
+### Added
+- **eco-tech-orchestrator.skill.md v1.0**: 生态科技自动编排器
+  - 子行业自动识别（光伏/风电/储能/氢能/综合清洁能源）
+  - 5 skills智能链式执行（数据流自动串联）
+  - 并行Agent模式支持（3+2方案和全并行方案）
+  - 快速扫描模式（/quick-scan, 15分钟Go/No-Go决策）
+- `docs/session_efficiency_details.md`: 会话效率模板（从CLAUDE.md分离）
+- `docs/worktree_rules_details.md`: Worktree详细协议（从CLAUDE.md分离）
+
+### Changed
+- **CLAUDE.md Context压缩77%**: 602行→140行
+  - 会话效率规则: 190行→7条核心规则（详细模板移至docs/）
+  - Worktree规则: 200行→5条核心规则（详细协议移至docs/）
+  - Git工作流: 80行→3条核心规则
+- 版本从 v19.13 升级到 v19.14 (Context-Optimized)
+- 文档索引新增2个docs文件引用
+
 ## [v19.13] - 2026-02-06
 
 ### Added
