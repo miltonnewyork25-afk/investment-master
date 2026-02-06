@@ -1,0 +1,379 @@
+name: "financial_banking_credit_risk"
+version: "1.0"
+description: "L4级银行信贷风险深度分析 - 涵盖资产质量、拨备覆盖、信贷迁移、行业集中度的全方位风险评估"
+category: "banking_specialized"
+complexity_score: 8.5
+dependencies: ["financial_digital_twin_core", "financial_regulatory_radar"]
+
+# ==============================================================================
+# 核心功能模块
+# ==============================================================================
+
+core_capabilities:
+  asset_quality_analysis:
+    description: "资产质量深度剖析"
+    key_metrics:
+      - "不良贷款率(NPL Ratio)分解分析"
+      - "关注类贷款趋势与预警信号"
+      - "逾期贷款结构(30/60/90天)分析"
+      - "重组贷款质量与可持续性评估"
+      - "核销政策与实际损失率对比"
+
+    analysis_framework:
+      npl_decomposition:
+        personal_loans: "个人贷款NPL细分(房贷/车贷/消费贷/信用卡)"
+        corporate_loans: "企业贷款NPL细分(大企业/中小企业/房地产/制造业)"
+        geographic_breakdown: "地域分布分析与区域风险评估"
+        vintage_analysis: "放贷年份队列分析，识别风险累积周期"
+
+      early_warning_indicators:
+        portfolio_quality: "组合质量指标(加权平均信用评级/行业集中度)"
+        macro_sensitivity: "宏观经济敏感性分析"
+        management_quality: "风险管理能力评估"
+
+  provision_coverage_analysis:
+    description: "拨备覆盖率与前瞻性风险评估"
+    key_metrics:
+      - "拨备覆盖率充足性分析"
+      - "前瞻性拨备vs实际损失对比"
+      - "预期信用损失(ECL)模型有效性"
+      - "监管要求vs银行实际拨备水平"
+      - "拨备逆周期缓冲作用评估"
+
+    analysis_framework:
+      provision_adequacy:
+        coverage_ratio: "拨备覆盖率与同业对比"
+        provision_expense: "拨备费用占净收入比例趋势"
+        forward_looking: "前瞻性拨备与历史损失的偏差分析"
+        stress_testing: "压力情景下的拨备充足性测试"
+
+      ecl_model_validation:
+        pd_calibration: "违约概率(PD)校准准确性"
+        lgd_estimation: "违约损失率(LGD)估算合理性"
+        ead_modeling: "违约风险暴露(EAD)建模有效性"
+        macro_integration: "宏观经济变量集成度与预测力"
+
+  credit_migration_analysis:
+    description: "信贷迁移矩阵与动态风险建模"
+    key_metrics:
+      - "信贷评级迁移矩阵构建"
+      - "正常→关注→不良迁移速度"
+      - "违约恢复率与核销时间分析"
+      - "信贷周期位置判断"
+      - "同业迁移模式对比"
+
+    analysis_framework:
+      migration_matrix:
+        transition_probabilities: "各评级间迁移概率计算"
+        time_horizon: "1年/3年/5年不同时间窗口分析"
+        economic_cycle: "经济周期对迁移概率的影响"
+        portfolio_drift: "组合质量漂移趋势预测"
+
+      recovery_analysis:
+        recovery_rates: "不同担保类型的回收率分析"
+        resolution_time: "不良资产处置时间与效率"
+        collection_effectiveness: "催收能力与成本效益"
+
+  industry_concentration_analysis:
+    description: "行业集中度风险与相关性分析"
+    key_metrics:
+      - "行业贷款集中度(HHI指数)"
+      - "系统性风险行业识别"
+      - "行业轮动对资产质量影响"
+      - "相关性风险与组合优化"
+      - "监管行业集中度限制遵循"
+
+    analysis_framework:
+      concentration_metrics:
+        hhi_index: "赫芬达尔指数计算与同业对比"
+        top_exposures: "前十大行业敞口分析"
+        correlation_analysis: "行业间违约相关性建模"
+        diversification_benefit: "分散化收益量化评估"
+
+      systemic_risk:
+        cyclical_industries: "周期性行业敞口与经济周期关联"
+        vulnerable_sectors: "脆弱行业识别与监控"
+        contagion_risk: "行业间传染风险评估"
+
+# ==============================================================================
+# L4级深度分析方法
+# ==============================================================================
+
+advanced_methodologies:
+  dynamic_provisioning_model:
+    description: "动态拨备需求建模"
+    methodology: |
+      构建基于宏观经济变量的动态拨备模型:
+      拨备需求 = β₀ + β₁×GDP增长 + β₂×失业率 + β₃×房价指数 +
+               β₄×利率水平 + β₅×行业景气度 + ε
+
+    key_variables:
+      macro_factors: ["GDP增长率", "失业率", "通胀率", "利率水平"]
+      industry_factors: ["房地产价格指数", "制造业PMI", "消费者信心指数"]
+      bank_specific: ["贷款增长率", "风险偏好变化", "业务结构调整"]
+
+    output:
+      provision_forecast: "未来12个月拨备需求预测"
+      stress_scenario: "压力情景下拨备充足性评估"
+      early_warning: "拨备不足的前瞻性预警"
+
+  credit_cycle_positioning:
+    description: "信贷周期定位分析"
+    methodology: |
+      利用多维指标构建信贷周期指数:
+      - 信贷增长率相对GDP增长的偏离度
+      - 风险定价(利差)的历史分位数
+      - 资产质量指标的变化趋势
+      - 拨备释放/计提的周期性特征
+
+    cycle_indicators:
+      expansion_phase: "放贷标准宽松/利差收窄/资产质量改善"
+      peak_phase: "放贷增速见顶/风险累积/拨备开始增加"
+      contraction_phase: "收紧标准/利差扩大/不良暴露"
+      trough_phase: "严格审批/高拨备覆盖/为复苏蓄力"
+
+    positioning_strategy:
+      expansion: "关注快速扩张银行的风险控制能力"
+      peak: "预警拨备不足/关注资产质量拐点"
+      contraction: "评估拨备充足性/寻找防守性银行"
+      trough: "识别资产质量见底信号/关注反弹弹性"
+
+  peer_comparison_framework:
+    description: "同业对标分析框架"
+    methodology: |
+      构建多维度同业比较体系:
+      1. 业务模式相似性匹配
+      2. 风险调整后的绩效对比
+      3. 资产质量管理能力评估
+      4. 拨备政策保守性对比
+
+    comparison_dimensions:
+      asset_quality:
+        - "NPL率同业排名与历史趋势"
+        - "资产质量改善/恶化速度"
+        - "不良生成率vs同业均值"
+
+      risk_management:
+        - "拨备覆盖率保守程度"
+        - "前瞻性拨备采用程度"
+        - "压力测试结果对比"
+
+      operational_efficiency:
+        - "不良资产处置效率"
+        - "风险成本控制能力"
+        - "资产收益率维持能力"
+
+# ==============================================================================
+# 风险预警系统(Kill Switch)
+# ==============================================================================
+
+risk_warning_system:
+  tier_1_critical_alerts:
+    npl_spike:
+      trigger: "NPL率环比增长>50bps且连续2季度"
+      severity: "CRITICAL"
+      implication: "资产质量恶化，可能存在系统性风险"
+      action: "立即减仓/避免新增投资"
+
+    provision_inadequate:
+      trigger: "拨备覆盖率<120%且ECL模型预测损失上升"
+      severity: "CRITICAL"
+      implication: "拨备严重不足，未来业绩面临重大冲击"
+      action: "立即减仓/重新评估投资逻辑"
+
+    concentration_breach:
+      trigger: "单一行业敞口>30%且该行业出现系统性风险"
+      severity: "CRITICAL"
+      implication: "集中度风险过高，传染性风险显著"
+      action: "严格控制仓位/考虑退出"
+
+  tier_2_warning_alerts:
+    early_deterioration:
+      trigger: "关注类贷款占比连续2季度上升且增幅>20%"
+      severity: "WARNING"
+      implication: "资产质量预警信号，需密切关注"
+      action: "降低仓位/加强监控"
+
+    provision_lag:
+      trigger: "拨备费用/净收入比例低于同业50分位数"
+      severity: "WARNING"
+      implication: "拨备计提可能不够前瞻"
+      action: "谨慎评估/要求管理层说明"
+
+    migration_acceleration:
+      trigger: "正常→关注→不良迁移速度较历史均值加快30%"
+      severity: "WARNING"
+      implication: "资产质量恶化速度加快"
+      action: "密切监控/准备调整仓位"
+
+  tier_3_monitoring_alerts:
+    industry_stress:
+      trigger: "主要敞口行业PMI<45且持续3个月"
+      severity: "MONITOR"
+      implication: "行业下行压力增大，需关注传导效应"
+      action: "持续监控/情景分析"
+
+    peer_underperformance:
+      trigger: "资产质量指标连续2季度低于同业中位数"
+      severity: "MONITOR"
+      implication: "相对竞争力下降"
+      action: "深入分析原因/评估管理层能力"
+
+# ==============================================================================
+# 数据需求与质量标准
+# ==============================================================================
+
+data_requirements:
+  regulatory_filings:
+    - source: "10-K/10-Q财报"
+      frequency: "季度"
+      confidence: "A级(95-99%)"
+      key_data: ["贷款分类", "拨备计提", "资产质量指标"]
+
+    - source: "FR Y-9C监管报表"
+      frequency: "季度"
+      confidence: "A级(95-99%)"
+      key_data: ["详细贷款分类", "行业敞口", "地域分布"]
+
+    - source: "CCAR/DFAST压力测试结果"
+      frequency: "年度"
+      confidence: "A级(95-99%)"
+      key_data: ["压力情景下损失预测", "拨备充足性"]
+
+  market_data:
+    - source: "信贷利差数据(Bloomberg/Refinitiv)"
+      frequency: "日度"
+      confidence: "B级(85-94%)"
+      key_data: ["行业信用利差", "违约概率指标"]
+
+    - source: "同业对比数据(SNL Financial)"
+      frequency: "季度"
+      confidence: "B级(85-94%)"
+      key_data: ["同业资产质量对比", "拨备覆盖率对比"]
+
+  alternative_data:
+    - source: "宏观经济数据(FRED)"
+      frequency: "月度"
+      confidence: "A级(95-99%)"
+      key_data: ["GDP", "失业率", "房价指数", "行业景气指标"]
+
+    - source: "卫星数据/网络爬虫(消费活动)"
+      frequency: "周度"
+      confidence: "C级(70-84%)"
+      key_data: ["经济活动强度", "消费者行为变化"]
+
+data_quality_standards:
+  completeness: "关键指标数据完整性≥95%"
+  timeliness: "数据更新滞后≤5个工作日"
+  accuracy: "A+B级数据占比≥85%"
+  consistency: "跨数据源一致性校验通过率≥90%"
+
+# ==============================================================================
+# 输出规范与报告模板
+# ==============================================================================
+
+output_specifications:
+  analysis_report:
+    structure:
+      executive_summary: "核心风险判断与投资建议(200字)"
+      asset_quality_assessment: "资产质量深度分析(800字)"
+      provision_adequacy_evaluation: "拨备充足性评估(600字)"
+      peer_comparison: "同业对标分析(500字)"
+      risk_warning_alerts: "风险预警与Kill Switch(300字)"
+      investment_recommendation: "具体投资建议与仓位建议(200字)"
+
+    minimum_length: 2400
+    required_elements:
+      - "≥15个量化指标分析"
+      - "≥3个同业对比维度"
+      - "≥5个风险预警指标"
+      - "≥2个情景分析"
+      - "具体投资建议+仓位建议+时间框架"
+
+  quantitative_outputs:
+    risk_score: "信贷风险综合评分(1-10分)"
+    asset_quality_trend: "资产质量趋势预测(改善/稳定/恶化)"
+    provision_adequacy: "拨备充足性评估(充足/基本充足/不足)"
+    peer_ranking: "同业排名(前25%/中位数/后25%)"
+    investment_rating: "投资评级(强烈推荐/推荐/中性/回避/强烈回避)"
+
+# ==============================================================================
+# 技能调用示例
+# ==============================================================================
+
+usage_examples:
+  jpmorgan_credit_analysis:
+    input: "分析JPMorgan Chase的信贷风险状况"
+    process: |
+      1. 提取Q3财报信贷数据，计算NPL率、拨备覆盖率
+      2. 构建信贷迁移矩阵，分析资产质量趋势
+      3. 对比同业(BAC, WFC, C)资产质量管理能力
+      4. 评估商业地产敞口的系统性风险
+      5. 基于宏观情景预测未来拨备需求
+    output: "L4级信贷风险分析报告+具体投资建议"
+
+  regional_bank_stress_test:
+    input: "评估区域银行在经济衰退情景下的信贷风险"
+    process: |
+      1. 识别区域银行的地域和行业集中度风险
+      2. 构建衰退情景下的违约率预测模型
+      3. 评估当前拨备覆盖率的充足性
+      4. 对比不同区域银行的风险抵御能力
+      5. 提供投资排序和仓位建议
+    output: "区域银行压力测试结果+防守性投资策略"
+
+# ==============================================================================
+# 持续优化机制
+# ==============================================================================
+
+continuous_improvement:
+  model_validation:
+    frequency: "季度"
+    methodology: "回测预测准确性，优化风险模型参数"
+    success_metrics: "NPL预测准确率≥75%, 拨备需求预测误差≤20%"
+
+  peer_learning:
+    frequency: "半年度"
+    methodology: "同业最佳实践学习，风险管理创新跟踪"
+    focus_areas: ["新兴风险识别", "数字化风控", "ESG信贷风险"]
+
+  regulatory_updates:
+    frequency: "实时"
+    methodology: "监管政策变化跟踪，合规要求更新"
+    adaptation: "及时调整分析框架和评估标准"
+
+# ==============================================================================
+# 技能元数据
+# ==============================================================================
+
+metadata:
+  creation_date: "2026-02-05"
+  last_updated: "2026-02-05"
+  version_history:
+    - "1.0: 初始版本，完整L4级银行信贷风险分析能力"
+
+  performance_metrics:
+    accuracy_target: "信贷风险预测准确率≥75%"
+    coverage_target: "适用银行类型≥95%"
+    efficiency_target: "分析完成时间≤2小时"
+
+  integration_points:
+    - "financial_digital_twin_core: 数据融合与风险建模"
+    - "financial_regulatory_radar: 监管环境分析"
+    - "financial_banking_capital_adequacy: 资本充足率影响"
+
+  skill_classification:
+    domain: "banking"
+    complexity: "L4_advanced"
+    specialization: "credit_risk"
+    user_level: "professional_analyst"
+
+# ==============================================================================
+# 免责声明
+# ==============================================================================
+
+disclaimer: |
+  本技能模块提供的分析结果仅供参考，不构成投资建议。
+  信贷风险分析涉及复杂的宏观经济、行业周期、公司治理等多重因素，
+  实际投资决策应结合其他分析维度和风险评估。
+  使用者应具备相应的金融专业知识和风险承受能力。

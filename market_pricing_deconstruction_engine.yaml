@@ -1,0 +1,380 @@
+name: "market_pricing_deconstruction_engine"
+version: "1.0"
+description: "L5级市场定价拆解引擎 - 精确分析市场定价机制，识别定价错误，预测价格发现时点，创造真正的投资alpha"
+category: "core_contrarian_analysis"
+complexity_score: 9.5
+dependencies: ["financial_digital_twin_core"]
+
+# ==============================================================================
+# 核心定价拆解框架
+# ==============================================================================
+
+core_capabilities:
+  market_pricing_anatomy:
+    description: "市场定价机制解剖 - 追溯当前价格形成的真正原因"
+    key_components:
+      - "分析师共识形成追溯(信息来源/假设链条/群体思维)"
+      - "机构投资者定价模型反推(DCF假设/估值倍数/风险溢价)"
+      - "技术面定价因子识别(资金流向/情绪指标/图形模式)"
+      - "宏观资产配置影响(利率环境/流动性/风险偏好)"
+      - "结构性供需失衡(被动资金/ESG约束/监管限制)"
+
+    analysis_framework:
+      analyst_consensus_archaeology:
+        methodology: |
+          分析师共识不是"自然形成"的，而是有具体的信息传播链条:
+          卖方研究员A → 引用数据源X → 建立假设Y → 影响研究员B,C,D →
+          形成"行业共识" → 影响买方 → 形成股价预期
+
+          关键问题:
+          1. 最初的假设Y来自哪里？是管理层指引？还是历史外推？
+          2. 数据源X是否存在系统性偏误？
+          3. 从A到B,C,D的传播过程中，假设是否被放大/扭曲？
+          4. "共识"形成的时间节点？是否存在信息级联？
+
+        execution_steps:
+          step_1: "追踪分析师评级变化的时间序列(谁最先改变观点？)"
+          step_2: "分析核心假设的数据来源(管理层指引/第三方数据/历史推断)"
+          step_3: "量化共识集中度(HHI指数计算分析师预测分布)"
+          step_4: "识别异议者观点与主流差异的精确原因"
+
+        quantified_outputs:
+          consensus_concentration: "分析师评级HHI指数(>0.8高度集中，<0.5分歧较大)"
+          information_lag: "共识形成相对基本面变化的滞后时间"
+          contrarian_opportunity: "当前共识vs基本面真实状况的偏差幅度"
+
+      institutional_model_reverse_engineering:
+        methodology: |
+          机构投资者的股价目标不是"黑盒子"，可以通过持仓行为反推:
+
+          大型机构的估值模型参数推断:
+          - DCF模型: 通过交易行为反推隐含的WACC假设/增长率假设
+          - 相对估值: 通过行业配置看重视的倍数指标
+          - 风险溢价: 通过与债券的配置比例反推权益风险溢价
+
+        reverse_engineering_process:
+          dcf_assumptions_inference:
+            method: |
+              通过期权隐含波动率 + 股价 + 分红收益率，反推市场隐含的增长率:
+              当前股价 = Σ(预期现金流/(1+WACC)^t)
+
+              已知: 股价P, 分红率d, 无风险利率rf, Beta β
+              求解: 市场隐含增长率g, 风险溢价rp
+
+            data_sources:
+              - "期权隐含波动率 → Beta校正"
+              - "CDS价格 → 信用风险溢价"
+              - "分析师现金流预测 → 增长率基准"
+              - "同业估值倍数 → 相对价值锚定"
+
+          behavioral_bias_detection:
+            anchoring_bias: "股价相对52周高点/IPO价格的锚定效应测量"
+            momentum_bias: "机构增减仓与股价趋势的相关性(追涨杀跌程度)"
+            herding_bias: "机构同向交易的集中度(羊群效应强度)"
+            loss_aversion: "机构对亏损头寸vs盈利头寸的持有期差异"
+
+  mispricing_identification:
+    description: "定价错误识别引擎 - 发现市场定价与内在价值的偏差"
+    key_methods:
+      - "信息效率失效点检测(信息传播滞后/理解偏差/加工错误)"
+      - "情绪驱动定价vs基本面定价分离度测量"
+      - "结构性资金流影响量化(被动投资/程序化交易/监管约束)"
+      - "跨时间/跨市场/跨资产的相对定价套利机会"
+      - "认知偏误的定量化测量(过度反应/反应不足/代表性偏误)"
+
+    mispricing_taxonomy:
+      information_processing_failures:
+        delayed_incorporation:
+          description: "重要信息已披露但股价反应滞后"
+          detection_method: |
+            监控关键信息发布后的价格调整速度:
+            - 财报超预期 → 股价应在1-3个交易日内调整完毕
+            - 管理层指引变化 → 通常2-5个交易日反应完全
+            - 监管政策变化 → 可能需要1-2周完全反应
+
+            如果调整时间显著超过历史均值，说明市场存在信息处理滞后
+
+        misinterpretation_errors:
+          description: "市场对信息的理解存在系统性偏差"
+          common_patterns:
+            - "非经常性损益被当作经常性(高估负面影响)"
+            - "一次性收益被外推到未来(高估正面影响)"
+            - "管理层保守指引被当作悲观信号(低估实际前景)"
+            - "短期噪音被误读为长期趋势(过度外推)"
+
+      emotional_mispricing:
+        fear_premium_quantification:
+          methodology: |
+            恐慌情绪的定量化测量:
+            恐慌溢价 = 当前估值倍数 - 历史"平静期"估值倍数
+
+            平静期定义: Put/Call比 < 0.4, VIX < 20, 分析师评级分歧度 < 30%
+
+        euphoria_discount_measurement:
+          methodology: |
+            过度乐观的定量化:
+            乐观折价 = 历史"狂热期"估值倍数 - 合理估值倍数
+
+            狂热期定义: 分析师上调比例 > 80%, 机构增持比例 > 70%, 媒体正面报道 > 90%
+
+      structural_flow_distortions:
+        passive_fund_effects:
+          description: "被动资金对个股定价的机械性影响"
+          measurement: |
+            被动资金影响 = ETF净流入 × 个股在指数中权重 / 个股日均成交额
+
+            当比值 > 20% 时，股价受被动资金影响显著
+            当比值 > 50% 时，基本面定价机制可能失效
+
+        regulatory_constraint_pricing:
+          description: "监管约束导致的结构性供需失衡"
+          examples:
+            - "银行股受资本充足率监管约束，机构被迫减仓"
+            - "中概股受地缘政治影响，ESG基金被迫清仓"
+            - "小盘股受流动性要求限制，大型机构无法配置"
+
+  price_discovery_timing:
+    description: "价格发现时点预测 - 何时市场会纠正定价错误"
+    key_factors:
+      - "催化剂事件概率与时间分布(财报/监管决定/行业会议)"
+      - "信息传播路径与关键节点(分析师/媒体/KOL/机构)"
+      - "资金流动模式变化(季度重平衡/年度配置/突发事件)"
+      - "市场结构变化(交易量/持仓集中度/做空比例)"
+      - "情绪周期定位(恐慌→怀疑→乐观→狂热的阶段判断)"
+
+    catalyst_mapping_framework:
+      event_probability_modeling:
+        methodology: |
+          对每个潜在催化剂事件建立概率模型:
+          P(事件发生) × P(市场反应|事件发生) × 预期股价影响幅度
+
+          例如:
+          P(财报超预期) = 40% × P(股价上涨>5%|财报超预期) = 85% × 预期涨幅 = 12%
+          → 综合催化剂价值 = 40% × 85% × 12% = 4.08%
+
+      information_cascade_analysis:
+        description: "信息传播的关键节点与时间路径"
+        cascade_pattern:
+          stage_1: "内部人/一线分析师 → 信息最先获得"
+          stage_2: "卖方研究 → 信息标准化/专业化处理"
+          stage_3: "财经媒体 → 信息大众化传播"
+          stage_4: "买方机构 → 资金配置决策"
+          stage_5: "散户投资者 → 最终价格发现完成"
+
+        timing_prediction:
+          normal_speed: "Stage 1→5: 2-4周完成"
+          accelerated_speed: "重大事件: 3-7天完成(如突发监管/重组)"
+          delayed_speed: "复杂信息: 1-3个月完成(如新商业模式理解)"
+
+# ==============================================================================
+# L5级对比分析引擎
+# ==============================================================================
+
+advanced_methodologies:
+  cross_temporal_mispricing_detection:
+    description: "跨时间定价错误检测"
+    methodology: |
+      比较同一公司在相似基本面情况下的历史估值:
+
+      寻找"相似情境":
+      - 相似的财务指标组合(ROE/增长率/负债率的相似区间)
+      - 相似的行业环境(景气度/竞争格局/监管环境)
+      - 相似的宏观背景(利率水平/经济增长/风险偏好)
+
+      计算"估值异常":
+      当前估值倍数 vs 历史相似情境下估值倍数的偏差
+      如果偏差 > 2个标准差，可能存在定价错误
+
+  cross_market_arbitrage_opportunities:
+    description: "跨市场定价差异套利"
+    analysis_dimensions:
+      adr_vs_local_shares: "ADR与本地股票的定价差异"
+      different_listing_venues: "不同交易所上市的同一公司定价差"
+      etf_vs_constituent_mismatch: "ETF价格与成分股加权价格的偏差"
+
+  behavioral_finance_quantification:
+    description: "行为金融学偏误的精确量化"
+
+    loss_aversion_coefficient:
+      calculation: |
+        损失厌恶系数 = |股价下跌X%时的成交量增加| / |股价上涨X%时的成交量增加|
+
+        系数 > 2.0: 强烈损失厌恶，下跌时抛售压力大
+        系数 < 1.5: 损失厌恶较弱，情绪相对理性
+
+    overconfidence_measurement:
+      methodology: |
+        通过分析师预测准确性衡量过度自信:
+        过度自信指数 = (分析师置信区间宽度 / 实际预测误差) - 1
+
+        指数 < 0: 过度自信(置信区间过窄)
+        指数 > 0: 保守谨慎(置信区间过宽)
+
+    representativeness_bias_detection:
+      pattern_recognition: |
+        检测"代表性偏误"模式:
+        1. 短期趋势被过度外推到长期
+        2. 小样本被当作总体代表
+        3. 基础概率被忽视，过度关注新信息
+
+# ==============================================================================
+# 动态价格发现预测引擎
+# ==============================================================================
+
+price_discovery_prediction_engine:
+  market_efficiency_regime_analysis:
+    description: "市场效率状态的动态评估"
+
+    efficiency_indicators:
+      information_processing_speed:
+        measurement: "重大信息发布后价格调整完成的时间分布"
+        benchmark: "历史同类事件的价格发现时间"
+        current_regime: "高效率/中等效率/低效率状态判断"
+
+      arbitrage_opportunity_persistence:
+        measurement: "无风险套利机会的平均存续时间"
+        interpretation: "存续时间长 → 市场效率低 → 定价错误持续时间长"
+
+      cross_sectional_anomaly_strength:
+        measurement: "价值/动量/质量因子的超额收益稳定性"
+        interpretation: "异常强度高 → 市场系统性偏误严重"
+
+  catalyst_event_simulation:
+    description: "催化剂事件的概率模拟与影响预测"
+
+    simulation_framework:
+      earnings_surprise_probability:
+        model: |
+          基于历史财报超预期概率 + 当期业务指标变化 + 管理层指引变化
+          构建财报结果概率分布:
+
+          P(EPS超预期>10%) = f(历史概率, 业务领先指标, 指引保守度)
+
+        output: "未来4个季度每季度超预期概率分布"
+
+      regulatory_decision_timeline:
+        tracking_system: "监管决策的关键时间节点监控"
+        probability_updates: "基于政策信号实时更新决策概率"
+
+      management_guidance_pattern:
+        analysis: "管理层指引的历史模式(保守/准确/乐观)识别"
+        prediction: "基于模式预测下次指引的可靠性"
+
+# ==============================================================================
+# 实战应用输出系统
+# ==============================================================================
+
+actionable_output_framework:
+  mispricing_opportunity_scoring:
+    description: "定价错误机会的综合评分系统"
+
+    scoring_components:
+      magnitude: "定价偏差幅度(预期收益率)"
+      conviction: "分析确信度(基于数据质量/逻辑严密性)"
+      time_horizon: "价格发现预期时间"
+      risk_adjustment: "风险调整后的期望收益"
+      position_sizing: "基于Kelly公式的最优仓位建议"
+
+    output_format: |
+      股票: XYZ
+      定价错误类型: 信息处理滞后
+      错误原因: 财报非经常性损益被过度权重
+      预期纠正幅度: +15-25%
+      纠正时间预期: 2-6周(下次财报发布)
+      风险调整收益: +12%
+      建议仓位: 8%(基于Kelly公式)
+      止损条件: 如果管理层下调指引>10%
+
+  contrarian_signal_dashboard:
+    description: "反向指标监控仪表板"
+
+    real_time_signals:
+      sentiment_extremes:
+        put_call_ratio: "Put/Call比值: 0.65(历史80%分位数) → 悲观情绪极端"
+        analyst_rating_distribution: "看多比例: 15%(历史20%分位数) → 共识悲观"
+        insider_trading_ratio: "内部人买入/卖出比: 3.2(历史90%分位数) → 内部人乐观"
+
+      technical_divergences:
+        price_vs_fundamentals: "股价相对基本面指标的偏离度"
+        volume_price_relationship: "价格下跌但成交量萎缩 → 抛售压力减弱信号"
+
+      institutional_behavior_anomalies:
+        flow_vs_performance: "机构资金流出但业绩改善 → 错杀机会"
+        valuation_vs_allocation: "估值便宜但机构低配 → 配置修正空间"
+
+# ==============================================================================
+# 风险管理与验证系统
+# ==============================================================================
+
+risk_management_framework:
+  mispricing_thesis_validation:
+    description: "定价错误论点的持续验证"
+
+    validation_checkpoints:
+      weekly_assumption_review: "关键假设是否仍然成立？"
+      monthly_catalyst_progress: "预期催化剂是否按计划进展？"
+      quarterly_model_performance: "预测准确性回测与模型调整"
+
+  position_risk_monitoring:
+    max_single_position: "单一定价错误机会仓位上限: 10%"
+    correlation_limits: "相关定价错误头寸总和上限: 25%"
+    stop_loss_triggers: "论点失效的明确触发条件"
+
+  performance_attribution:
+    alpha_sources:
+      mispricing_identification: "来自发现定价错误的收益"
+      timing_accuracy: "来自准确预测纠正时点的收益"
+      risk_management: "来自有效风险控制的收益保护"
+
+# ==============================================================================
+# 数据需求与更新机制
+# ==============================================================================
+
+data_infrastructure:
+  real_time_feeds:
+    - "期权成交量与隐含波动率(实时)"
+    - "机构持仓变化(每日更新)"
+    - "分析师评级调整(实时推送)"
+    - "内部人交易披露(T+2更新)"
+    - "ETF资金流向(每日收盘后)"
+
+  alternative_data_sources:
+    - "社交媒体情绪分析(Twitter/Reddit/雪球)"
+    - "新闻情感分析与关键词追踪"
+    - "卫星数据与经济活动指标"
+    - "搜索指数与关注度变化"
+
+  historical_database:
+    - "20年历史估值倍数数据库"
+    - "重大事件后价格反应模式库"
+    - "分析师预测准确性历史记录"
+    - "机构投资者行为模式数据库"
+
+# ==============================================================================
+# 技能元数据
+# ==============================================================================
+
+metadata:
+  creation_date: "2026-02-05"
+  version: "1.0 - 市场定价拆解核心引擎"
+  purpose: "将投资分析从共识重述升级到alpha创造"
+
+  performance_targets:
+    mispricing_identification_accuracy: "≥70%"
+    timing_prediction_accuracy: "≥60%"
+    risk_adjusted_alpha_generation: "≥500bps per year"
+
+  integration_points:
+    - "financial_digital_twin_core: 基础数据融合"
+    - "所有行业专用技能: 提供反向验证视角"
+    - "宏观传导引擎: 结构性定价因子分析"
+
+# ==============================================================================
+# 免责声明
+# ==============================================================================
+
+disclaimer: |
+  本定价拆解引擎提供的分析结果用于识别潜在的市场定价错误机会。
+  所有投资决策应基于独立判断，并充分考虑风险承受能力。
+  市场定价机制复杂多变，定价"错误"可能长期持续或进一步偏离。
+  过往分析准确性不代表未来表现，请谨慎使用。
