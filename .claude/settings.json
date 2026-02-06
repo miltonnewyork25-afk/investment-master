@@ -7,38 +7,20 @@
   "hooks": {
     "PostToolUse": [
       {
-        "matcher": {
-          "tool_name": "Edit",
-          "file_paths": ["*.md", "docs/*.md", "CLAUDE.md"]
-        },
+        "matcher": "Edit",
         "hooks": [
           {
             "type": "command",
-            "command": "grep -oE '`(docs/[^`]+|[A-Z]+\\.md|\\.claude/skills/[^`]+)`' \"$CLAUDE_FILE_PATH\" 2>/dev/null | tr -d '`' | while read ref; do [ ! -f \"$ref\" ] && echo \"WARNING: 断链引用 $ref 在 $CLAUDE_FILE_PATH 中\"; done; true"
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty'); case \"$FP\" in *.md) grep -oE '`(docs/[^`]+|[A-Z]+\\.md|\\.claude/skills/[^`]+)`' \"$FP\" 2>/dev/null | tr -d '`' | while read ref; do [ ! -f \"$ref\" ] && echo \"WARNING: 断链引用 $ref 在 $FP 中\"; done ;; esac; true"
           }
         ]
       },
       {
-        "matcher": {
-          "tool_name": "Write",
-          "file_paths": ["CLAUDE.md", "**/CLAUDE.md"]
-        },
+        "matcher": "Write",
         "hooks": [
           {
             "type": "command",
-            "command": "lines=$(wc -l < \"$CLAUDE_FILE_PATH\" 2>/dev/null); if [ \"$lines\" -gt 400 ]; then echo \"CRITICAL: CLAUDE.md ${lines}行 (上限400)。提取到docs/\"; elif [ \"$lines\" -gt 250 ]; then echo \"WARNING: CLAUDE.md ${lines}行 (目标<250)\"; fi; true"
-          }
-        ]
-      },
-      {
-        "matcher": {
-          "tool_name": "Write",
-          "file_paths": ["*.md", "*.yaml", "*.yml"]
-        },
-        "hooks": [
-          {
-            "type": "command",
-            "command": "lines=$(wc -l < \"$CLAUDE_FILE_PATH\" 2>/dev/null); [ \"$lines\" -gt 500 ] && echo \"WARNING: $CLAUDE_FILE_PATH 有 ${lines} 行，考虑拆分以避免 File Too Large 错误\" ; true"
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty'); case \"$FP\" in */CLAUDE.md|CLAUDE.md) lines=$(wc -l < \"$FP\" 2>/dev/null); if [ \"$lines\" -gt 400 ]; then echo \"CRITICAL: CLAUDE.md ${lines}行 (上限400)。提取到docs/\"; elif [ \"$lines\" -gt 250 ]; then echo \"WARNING: CLAUDE.md ${lines}行 (目标<250)\"; fi ;; */reports/*Deep_Research*|*/reports/*Analysis*) chars=$(wc -m < \"$FP\" 2>/dev/null); tags=$(grep -coE '\\[A:|\\[B:|\\[P:|\\[E:' \"$FP\" 2>/dev/null || echo 0); if [ \"$chars\" -gt 10000 ] && [ \"$tags\" -lt 15 ]; then echo \"WARNING: 数据标注不足 — ${tags}个标注/${chars}字符 (要求≥15/万字)\"; fi ;; *.md|*.yaml|*.yml) lines=$(wc -l < \"$FP\" 2>/dev/null); [ \"$lines\" -gt 500 ] && echo \"WARNING: $FP 有 ${lines} 行，考虑拆分以避免 File Too Large 错误\" ;; esac; true"
           }
         ]
       }

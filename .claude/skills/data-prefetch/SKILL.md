@@ -1,9 +1,9 @@
 ---
 name: data-prefetch
-description: 数据自动预取 v2.0。分析启动时自动调用MCP工具+Python估值模型+5个并行WebSearch Agent，将11个结构化数据文件缓存到 data/research/[TICKER]/，消除分析中的inline搜索。
+description: 数据自动预取 v3.0。分析启动时自动调用MCP工具+Python估值模型+7个并行WebSearch Agent，将14个结构化数据文件缓存到 data/research/[TICKER]/，消除分析中的inline搜索。v3.0新增3层容错+3个新数据源。
 ---
 
-# 数据自动预取技能 v2.0
+# 数据自动预取技能 v3.0
 
 ## 触发条件
 
@@ -15,6 +15,13 @@ description: 数据自动预取 v2.0。分析启动时自动调用MCP工具+Pyth
 |------|-----------|--------|-----------------|
 | v1.0 | 5 | MCP + Python | 30-45次 |
 | v2.0 | 11 | MCP + Python + 5个WebSearch Agent | 0-5次 |
+| v3.0 | 14 | MCP + Python + 7个WebSearch Agent | 0-3次 |
+
+## v3.0 关键升级
+
+1. **3层容错**: Layer 1必须成功(MCP), Layer 2自动回退(Python), Layer 3优雅降级(WebSearch Agent)
+2. **3个新数据源**: Smart Money 13F, 期权情绪, 做空数据
+3. **新鲜度检查**: 每个文件独立过期检查，过期文件自动单独刷新
 
 ---
 
@@ -260,6 +267,83 @@ mkdir -p data/research/{TICKER}
 
 ---
 
+#### Agent F: Smart Money 13F → `smart_money_13f.json`
+
+**查询模板（5-7次WebSearch）**:
+
+1. `{TICKER} 13F institutional holders top {YEAR}`
+2. `{TICKER} hedge fund holdings changes {CURRENT_QUARTER}`
+3. `Warren Buffett {TICKER} position {YEAR}` OR `Berkshire Hathaway {TICKER}`
+4. `{TICKER} institutional ownership percentage trend`
+5. `{TICKER} insider buying selling {YEAR}`
+
+行业追加查询:
+- 半导体: `ARK invest {TICKER}`, `Soros {TICKER} semiconductor`
+- 金融: `Berkshire Hathaway {TICKER}`, `{TICKER} bank stock hedge fund`
+- 科技平台: `Tiger Global {TICKER}`, `Coatue {TICKER}`
+
+**输出Schema**:
+```json
+{
+  "ticker": "",
+  "fetched_at": "",
+  "institutional_summary": {
+    "total_institutions": 0,
+    "total_shares_held": 0,
+    "ownership_pct": 0,
+    "qoq_change_institutions": 0,
+    "qoq_change_shares": 0
+  },
+  "top_holders": [
+    { "name": "", "shares": 0, "value_usd": 0, "change_pct": 0, "new_position": false }
+  ],
+  "notable_moves": [
+    { "investor": "", "action": "", "shares": 0, "quarter": "", "thesis": "" }
+  ],
+  "insider_activity": {
+    "net_insider_sentiment": "",
+    "recent_transactions": []
+  },
+  "sources": []
+}
+```
+
+---
+
+#### Agent G: 期权与做空数据 → `options_short_interest.json`
+
+**查询模板（5-6次WebSearch）**:
+
+1. `{TICKER} short interest percentage float {YEAR}`
+2. `{TICKER} options put call ratio`
+3. `{TICKER} unusual options activity {MONTH} {YEAR}`
+4. `{TICKER} short squeeze potential`
+5. `{TICKER} options implied volatility vs historical`
+
+**输出Schema**:
+```json
+{
+  "ticker": "",
+  "fetched_at": "",
+  "short_interest": {
+    "shares_short": 0,
+    "short_pct_float": 0,
+    "days_to_cover": 0,
+    "vs_sector_avg": 0,
+    "trend": ""
+  },
+  "options_sentiment": {
+    "put_call_ratio": 0,
+    "implied_volatility": 0,
+    "iv_rank": 0,
+    "unusual_activity": []
+  },
+  "sources": []
+}
+```
+
+---
+
 ### Step 3: Python估值模型（顺序执行）
 
 依赖 Step 2 的 stock_full.json 数据：
@@ -274,11 +358,11 @@ python3 tools/valuation_models/comparable_companies.py {TICKER} {PEERS} > data/r
 
 ### Step 4: 生成元数据
 
-写入 `data/research/{TICKER}/prefetch_metadata.json`（v2.0 schema）:
+写入 `data/research/{TICKER}/prefetch_metadata.json`（v3.0 schema）:
 
 ```json
 {
-  "version": "2.0",
+  "version": "3.0",
   "ticker": "{TICKER}",
   "company": "{COMPANY}",
   "industry": "{INDUSTRY}",
@@ -294,7 +378,9 @@ python3 tools/valuation_models/comparable_companies.py {TICKER} {PEERS} > data/r
     "recent_news": { "status": "ok|error|stale", "source": "WebSearch:Agent-C", "fetched_at": "", "expires_at": "" },
     "business_overview": { "status": "ok|error|stale", "source": "WebSearch:Agent-D", "fetched_at": "", "expires_at": "" },
     "competitive_landscape": { "status": "ok|error|stale", "source": "WebSearch:Agent-D", "fetched_at": "", "expires_at": "" },
-    "management_team": { "status": "ok|error|stale", "source": "WebSearch:Agent-E", "fetched_at": "", "expires_at": "" }
+    "management_team": { "status": "ok|error|stale", "source": "WebSearch:Agent-E", "fetched_at": "", "expires_at": "" },
+    "smart_money_13f": { "status": "ok|error|stale", "source": "WebSearch:Agent-F", "fetched_at": "", "expires_at": "" },
+    "options_short_interest": { "status": "ok|error|stale", "source": "WebSearch:Agent-G", "fetched_at": "", "expires_at": "" }
   },
   "quality": {
     "complete_fields": 0,
@@ -302,7 +388,12 @@ python3 tools/valuation_models/comparable_companies.py {TICKER} {PEERS} > data/r
     "completeness_pct": 0,
     "files_ok": 0,
     "files_error": 0,
-    "files_total": 11
+    "files_total": 14
+  },
+  "layer_status": {
+    "layer1_mcp": "ok|partial|fail",
+    "layer2_python": "ok|partial|fail",
+    "layer3_websearch": "ok|partial|fail"
   }
 }
 ```
@@ -313,18 +404,20 @@ python3 tools/valuation_models/comparable_companies.py {TICKER} {PEERS} > data/r
 
 ```
 data/research/{TICKER}/
-├── stock_full.json          # MCP: 价格+基本面+技术指标(2年)
-├── peer_comparison.json     # MCP: 同行对比(含SPY基准)
-├── market_context.json      # MCP: S&P500/道琼斯/纳斯达克/VIX
-├── dcf_valuation.json       # Python: DCF模型输出
-├── comparable_analysis.json # Python: 可比公司分析
-├── analyst_consensus.json   # WebSearch:Agent-A: 评级+目标价+EPS预期
-├── prediction_market.json   # WebSearch:Agent-B: Polymarket/Kalshi概率
-├── recent_news.json         # WebSearch:Agent-C: 新闻+催化剂+内部交易
-├── business_overview.json   # WebSearch:Agent-D: 业务分部+地理+供应链
+├── stock_full.json            # MCP: 价格+基本面+技术指标(2年)
+├── peer_comparison.json       # MCP: 同行对比(含SPY基准)
+├── market_context.json        # MCP: S&P500/道琼斯/纳斯达克/VIX
+├── dcf_valuation.json         # Python: DCF模型输出
+├── comparable_analysis.json   # Python: 可比公司分析
+├── analyst_consensus.json     # WebSearch:Agent-A: 评级+目标价+EPS预期
+├── prediction_market.json     # WebSearch:Agent-B: Polymarket/Kalshi概率
+├── recent_news.json           # WebSearch:Agent-C: 新闻+催化剂+内部交易
+├── business_overview.json     # WebSearch:Agent-D: 业务分部+地理+供应链
 ├── competitive_landscape.json # WebSearch:Agent-D: 竞争格局+市场份额
-├── management_team.json     # WebSearch:Agent-E: 高管+治理+持股
-└── prefetch_metadata.json   # v2.0: 时间戳+数据质量+来源+过期时间
+├── management_team.json       # WebSearch:Agent-E: 高管+治理+持股
+├── smart_money_13f.json       # WebSearch:Agent-F: 机构13F+大师持仓+内部交易
+├── options_short_interest.json # WebSearch:Agent-G: 期权情绪+做空数据
+└── prefetch_metadata.json     # v3.0: 时间戳+数据质量+来源+过期时间+3层状态
 ```
 
 ## 行业同行映射
@@ -356,6 +449,8 @@ data/research/{TICKER}/
 | business_overview | <30d | 30-90d | >90d | 业务模型变化慢 |
 | competitive_landscape | <7d | 7-30d | >30d | 竞争格局中频变化 |
 | management_team | <30d | 30-90d | >90d | 高管变动不频繁 |
+| smart_money_13f | <7d | 7-30d | >30d | 13F季度更新，中频变化 |
+| options_short_interest | <12h | 12-48h | >48h | 期权/做空数据高频变化 |
 
 **特殊触发**: 财报发布前1天 → 强制刷新所有文件
 
@@ -365,7 +460,7 @@ data/research/{TICKER}/
 # 检查缓存是否存在且有效（v2.0 分类检查）
 if data/research/{TICKER}/prefetch_metadata.json 存在:
     读取 metadata.version
-    if version < "2.0" → 自动升级，补充缺失的WebSearch文件
+    if version < "3.0" → 自动升级，补充缺失的Agent-F/G文件
 
     对每个 data_file:
         读取 fetched_at 和对应的过期规则
@@ -388,6 +483,30 @@ else:
 - `[新闻数据 | WebSearch:Agent-C | {日期}]` — 来自新闻预取
 - `[业务数据 | WebSearch:Agent-D | {日期}]` — 来自业务/竞争预取
 - `[管理层数据 | WebSearch:Agent-E | {日期}]` — 来自管理层预取
+- `[机构持仓 | WebSearch:Agent-F | {日期}]` — 来自Smart Money 13F预取
+- `[期权/做空 | WebSearch:Agent-G | {日期}]` — 来自期权与做空数据预取
+
+## 3层容错机制（v3.0新增）
+
+```yaml
+Layer 1 — MCP数据（必须成功）:
+  文件: stock_full, peer_comparison, market_context
+  失败处理: 重试1次 → 仍失败则回退WebSearch手动获取
+  阻断条件: 3个文件全部失败 → 终止预取，提示用户检查MCP连接
+
+Layer 2 — Python模型（自动回退）:
+  文件: dcf_valuation, comparable_analysis
+  失败处理: 标注"[需手动估值]"，不阻断后续分析
+  回退方案: 分析中使用WebSearch获取分析师目标价替代
+
+Layer 3 — WebSearch Agent（优雅降级）:
+  文件: 7个Agent产出的9个文件
+  失败处理: 单个Agent失败不影响其他Agent
+  最低标准: ≥5/9文件成功即可继续分析
+  全部失败: 分析可继续，但标注"[数据预取不完整，将在分析中补充]"
+```
+
+---
 
 ## 错误处理
 
