@@ -2,11 +2,12 @@
 # Semiconductor Industry - Prediction Market Enhanced Framework v10.0
 
 framework:
-  name: "v10.0-prediction-market-enhanced"
-  version: "10.0.0"
+  name: "v20.0-prediction-market-enhanced"
+  version: "20.0.0"
   industry: "semiconductor"
   created: "2026-02-05"
-  description: "全球首个预测市场驱动的半导体投资分析框架"
+  updated: "2026-02-06"
+  description: "全球首个预测市场驱动的半导体投资分析框架 v20.0"
 
 # 核心引擎配置
 core_engines:
@@ -52,11 +53,20 @@ core_engines:
       - "AI需求持续性"
       - "竞争威胁评估"
 
-# 半导体行业特定配置
+# 半导体行业特定配置 (v20.0升级)
 industry_specifics:
-  complexity_coefficient: 1.6
-  minimum_characters: 96000
-  depth_target: "L4.5"
+  complexity_coefficient: 2.0      # v20.0: 1.6→2.0
+  base_characters: 120000           # v20.0基础字数
+  minimum_characters: 240000        # 120K × 2.0 = 240K
+  depth_target: "L4.5+"
+  evidence_standard: 0.95           # A+B级≥95%
+
+  # PMSI权重 (半导体特化)
+  pmsi_weights:
+    geopolitical: 0.40  # 地缘政治权重40%
+    technology: 0.30    # 技术竞争权重30%
+    demand: 0.20        # 需求周期权重20%
+    supply_chain: 0.10  # 供应链权重10%
 
   risk_factors:
     geopolitical: 0.40  # 地缘政治权重最高
@@ -70,6 +80,8 @@ industry_specifics:
     - "客户集中度"
     - "资本支出强度"
     - "良率改善速度"
+    - "AI曝光度"          # v20.0新增
+    - "地缘风险敏感度"    # v20.0新增
 
 # 预测市场集成配置
 polymarket_config:
@@ -93,13 +105,14 @@ polymarket_config:
       impact_coefficient: 0.8
       current_probability: 0.734
 
-# 输出配置
+# 输出配置 (v20.0升级)
 output_config:
-  report_template: "semiconductor_v10_template.md"
+  report_template: "semiconductor_v20_template.md"
   quality_standards:
-    minimum_score: 85
-    depth_requirement: "L4+"
+    minimum_score: 87       # v20.0: 85→87 (TSM基准87.4)
+    depth_requirement: "L4.5+"
     innovation_requirement: "A级"
+    evidence_ab_ratio: 0.95  # A+B级占比≥95%
 
   sections:
     - "预测市场概率矩阵"
@@ -151,15 +164,29 @@ applicable_companies:
     - "AMD" # 超微
     - "QCOM" # 高通
 
+# TSM验证基准 (v20.0新增)
+tsm_calibration:
+  report_characters: 120847
+  overall_score: 87.4
+  taiwan_divergence: 0.913       # 91.3%背离
+  arbitrage_alpha: "15-25%"      # 年化Alpha
+  pmsi_value: 76.4
+  pmsi_correlation: 0.847
+  pmsi_accuracy: 0.842
+  buffett_confidence: 0.91       # A级91%信心
+  scarcity_multiplier: 2.18
+
 # 版本兼容性
 compatibility:
-  requires_v9_features: true
+  requires_v10_features: true
   backward_compatible: false
-  migration_from: "v9.0-strategic-ecosystem"
+  migration_from: "v10.0-prediction-market"
+  current_version: "v20.0-semiconductor"
 
 upgrade_path:
-  - "安装预测市场API接入"
-  - "配置概率-价格背离算法"
-  - "集成PMSI情绪指数"
-  - "部署动态Kill Switch系统"
-  - "验证五引擎协同功能"
+  - "v10.0预测市场框架基础"
+  - "v20.0系数升级 (1.6→2.0, 96K→240K)"
+  - "并行Agent五引擎加速"
+  - "七条铁律 (含规则6概率背离+规则7情绪验证)"
+  - "TSM校准参数集成"
+  - "阶段管理系统部署"

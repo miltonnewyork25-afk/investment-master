@@ -42,9 +42,10 @@ ls skills/v10.0-engines/
 2. 加载`configs/semiconductor_companies.yaml`中的TSM配置:
    ```yaml
    TSM:
-     complexity_coefficient: 1.6
+     complexity_coefficient: 2.0    # v20.0: 1.6→2.0
      geopolitical_sensitivity: 10.0
      polymarket_coverage: "high"
+     ai_exposure: 0.85
      key_risks: [taiwan_conflict: 0.6, tech_sanctions: 0.4]
    ```
 

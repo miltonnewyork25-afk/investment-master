@@ -118,9 +118,10 @@ new_company:
     name: "示例公司"
     symbol: "EXAMPLE"
     category: "新类别"
-    complexity_coefficient: 1.3
+    complexity_coefficient: 2.0    # v20.0半导体统一系数
     geopolitical_sensitivity: 5.0
     polymarket_coverage: "medium"
+    ai_exposure: 0.50
 ```
 
 #### 自定义预测市场事件
