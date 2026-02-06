@@ -9,12 +9,24 @@
       {
         "matcher": {
           "tool_name": "Edit",
-          "file_paths": ["*.md", "docs/*.md"]
+          "file_paths": ["*.md", "docs/*.md", "CLAUDE.md"]
         },
         "hooks": [
           {
             "type": "command",
-            "command": "grep -oP '`docs/[^`]+`|`[A-Z]+\\.md`' \"$CLAUDE_FILE_PATH\" 2>/dev/null | tr -d '`' | while read ref; do [ ! -f \"$ref\" ] && echo \"WARNING: 断链引用 $ref 在 $CLAUDE_FILE_PATH 中\"; done; true"
+            "command": "grep -oE '`(docs/[^`]+|[A-Z]+\\.md|\\.claude/skills/[^`]+)`' \"$CLAUDE_FILE_PATH\" 2>/dev/null | tr -d '`' | while read ref; do [ ! -f \"$ref\" ] && echo \"WARNING: 断链引用 $ref 在 $CLAUDE_FILE_PATH 中\"; done; true"
+          }
+        ]
+      },
+      {
+        "matcher": {
+          "tool_name": "Write",
+          "file_paths": ["*.md", "*.yaml", "*.yml"]
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "lines=$(wc -l < \"$CLAUDE_FILE_PATH\" 2>/dev/null); [ \"$lines\" -gt 500 ] && echo \"WARNING: $CLAUDE_FILE_PATH 有 ${lines} 行，考虑拆分以避免 File Too Large 错误\" ; true"
           }
         ]
       }
