@@ -122,6 +122,18 @@
 - 修改CLAUDE.md/框架文件: 确认影响范围（当前worktree vs 全局）
 - 用户说"我在哪": 给出完整状态报告
 
+### 会话效率规则（7条核心）
+
+> 详细模板见 `docs/time_management.md`
+
+**规则1 单目标会话** — 每会话只接受1个主目标。多目标→拆分+用户选优先级
+**规则2 范围预检** — 任务前估算步骤数+复杂度。>20步必须分Phase
+**规则3 文件防错** — 读取前Glob确认存在，始终绝对路径
+**规则4 Edit防错** — Edit前必须Read，old_string完全精确匹配
+**规则5 大文件分段** — >2000行分段读取，报告按Phase分文件
+**规则6 CHANGELOG** — 修改核心文件必须同步更新CHANGELOG.md
+**规则7 完成度量化** — 每Phase结束输出完成度报告
+
 ---
 
 ## 文档索引（按需加载）
@@ -139,6 +151,8 @@
 | `docs/industry_frameworks.md` | 需要行业框架细节时 |
 | `docs/readability_spec.md` | 写报告前 |
 | `docs/execution_details.md` | 需要执行流程细节时 |
+| `docs/time_management.md` | Tier 2/3项目启动时 |
+| `docs/parallel_execution.md` | 识别到可并行任务时 |
 | `CHANGELOG.md` | 查看变更历史时 |
 
 ---

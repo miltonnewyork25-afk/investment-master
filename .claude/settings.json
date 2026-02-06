@@ -21,6 +21,18 @@
       {
         "matcher": {
           "tool_name": "Write",
+          "file_paths": ["CLAUDE.md", "**/CLAUDE.md"]
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "lines=$(wc -l < \"$CLAUDE_FILE_PATH\" 2>/dev/null); if [ \"$lines\" -gt 400 ]; then echo \"CRITICAL: CLAUDE.md ${lines}行 (上限400)。提取到docs/\"; elif [ \"$lines\" -gt 250 ]; then echo \"WARNING: CLAUDE.md ${lines}行 (目标<250)\"; fi; true"
+          }
+        ]
+      },
+      {
+        "matcher": {
+          "tool_name": "Write",
           "file_paths": ["*.md", "*.yaml", "*.yml"]
         },
         "hooks": [
