@@ -6,6 +6,16 @@
 
 ---
 
+## [v3.1-debate-scanner] - 2026-02-06
+
+### MINOR - Market Debate Scanner 模块
+
+- **新增** `docs/market_debate_scanner.md` — 市场争论扫描器，自动搜索投资者最关心的争论话题
+- **核心机制**: Phase 0 自动执行 → 提炼8-12个争论 → 与标准模块交叉比对 → 未覆盖争论自动注入为Ad-hoc模块
+- **升级** `docs/deep_dive_protocol.md` v3.0→v3.1: Phase 0新增争论扫描步骤，Phase 1新增争论图谱展示
+- **更新** `CLAUDE.md` 文档索引新增 market_debate_scanner.md
+- **设计动机**: TSM v2.0反思发现标准模板可能遗漏市场当下最关心的话题（如AMD的OpenAI大单股权稀释、H1产品空窗期等）
+
 ## [v3.0-framework] - 2026-02-06
 
 ### MAJOR - Deep-Dive协议v3.0 + 行为金融 + SOTP方法论

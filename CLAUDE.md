@@ -158,6 +158,7 @@
 | `docs/parallel_execution.md` | 识别到可并行任务时 |
 | `docs/behavioral_finance.md` | Tier 3 Phase 4对抗审查时 |
 | `docs/sotp_methodology.md` | Tier 2/3估值分析时 |
+| `docs/market_debate_scanner.md` | Tier 2/3 Phase 0自动执行 |
 | `CHANGELOG.md` | 查看变更历史时 |
 
 ---
