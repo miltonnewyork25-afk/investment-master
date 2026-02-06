@@ -3,5 +3,21 @@
     "allow": ["Bash", "Edit", "Write", "Read", "WebSearch", "WebFetch"],
     "deny": []
   },
-  "model": "claude-sonnet-4-20250514"
+  "model": "claude-sonnet-4-20250514",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": {
+          "tool_name": "Edit",
+          "file_paths": ["*.md", "docs/*.md"]
+        },
+        "hooks": [
+          {
+            "type": "command",
+            "command": "grep -oP '`docs/[^`]+`|`[A-Z]+\\.md`' \"$CLAUDE_FILE_PATH\" 2>/dev/null | tr -d '`' | while read ref; do [ ! -f \"$ref\" ] && echo \"WARNING: 断链引用 $ref 在 $CLAUDE_FILE_PATH 中\"; done; true"
+          }
+        ]
+      }
+    ]
+  }
 }

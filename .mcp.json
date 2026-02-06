@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "investment-master": {
+      "command": "/Users/milton/.local/bin/uv",
+      "args": [
+        "run",
+        "--with", "mcp>=0.9.0",
+        "--with", "yfinance>=0.2.36",
+        "--with", "pandas>=2.0.0",
+        "--with", "numpy>=1.24.0",
+        "python",
+        "mcp_server/main.py"
+      ],
+      "cwd": "/Users/milton/投资大师"
+    }
+  }
+}
