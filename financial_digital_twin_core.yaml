@@ -1,0 +1,339 @@
+# L5级金融数字孪生核心引擎
+# Financial Digital Twin Core Engine v1.0
+# 集成多风险建模、蒙特卡洛仿真、因果推断的综合分析系统
+
+name: "financial_digital_twin_core"
+version: "1.0"
+description: "L5级金融数字孪生核心引擎，提供实时多风险建模、因果推断、预测验证的全栈金融分析能力"
+
+# 技能元数据
+metadata:
+  category: "financial_analysis"
+  subcategory: "digital_twin_core"
+  target_analysis_depth: "L5"
+  required_data_quality: "≥90% A+B级数据"
+  complexity_coefficient: 1.6  # 最高复杂度
+  estimated_execution_time: "30-60分钟"
+
+# 核心能力定义
+capabilities:
+  data_fusion:
+    - "实时数据融合(监管+市场+另类数据)"
+    - "A-E五级数据质量评估与标注"
+    - "数据血缘追踪与异常检测"
+    - "多源数据交叉验证机制"
+
+  risk_modeling:
+    - "多风险集成建模(信用+市场+流动性+监管)"
+    - "风险传导路径分析与相关性建模"
+    - "极值理论与尾部风险评估"
+    - "动态风险权重调整机制"
+
+  simulation_engine:
+    - "100,000+次蒙特卡洛仿真"
+    - "GPU加速并行计算"
+    - "多时间尺度情景生成"
+    - "反向压力测试与临界条件识别"
+
+  causal_inference:
+    - "因果发现与因果图构建"
+    - "反事实分析与干预效应评估"
+    - "机制识别与传导路径分析"
+    - "政策干预影响预测"
+
+  prediction_validation:
+    - "实时预测准确率跟踪"
+    - "模型漂移检测与自动重训"
+    - "预测偏差归因分析"
+    - "自适应学习与模型优化"
+
+# 分析框架结构
+analysis_framework:
+  phase_1_data_foundation:
+    duration: "10分钟"
+    objectives:
+      - "多源数据质量评估与清洗"
+      - "数据置信度分级与标注"
+      - "异常检测与数据完整性验证"
+    deliverables:
+      - "数据质量报告(A+B级占比)"
+      - "数据血缘图谱"
+      - "异常数据标记清单"
+
+  phase_2_risk_modeling:
+    duration: "15分钟"
+    objectives:
+      - "多维风险建模与校准"
+      - "风险因子识别与权重分配"
+      - "相关性矩阵与传导路径分析"
+    deliverables:
+      - "风险模型参数表"
+      - "风险传导网络图(Mermaid)"
+      - "模型验证结果报告"
+
+  phase_3_simulation_analysis:
+    duration: "20分钟"
+    objectives:
+      - "大规模蒙特卡洛仿真执行"
+      - "极端情景压力测试"
+      - "敏感性分析与弹性评估"
+    deliverables:
+      - "仿真结果统计摘要"
+      - "风险分布图与置信区间"
+      - "压力测试结果矩阵"
+
+  phase_4_causal_inference:
+    duration: "10分钟"
+    objectives:
+      - "因果关系识别与验证"
+      - "反事实分析与政策模拟"
+      - "机制解释与投资含义提取"
+    deliverables:
+      - "因果关系图(DAG)"
+      - "反事实分析报告"
+      - "投资决策建议"
+
+  phase_5_prediction_system:
+    duration: "5分钟"
+    objectives:
+      - "可验证预测生成"
+      - "预测置信度评估"
+      - "预测跟踪系统激活"
+    deliverables:
+      - "30个可验证预测清单"
+      - "预测置信度矩阵"
+      - "跟踪验证时间表"
+
+# 数据需求规范
+data_requirements:
+  mandatory_sources:
+    regulatory_data:
+      - "10-K/10-Q SEC filings [A级:99%]"
+      - "央行货币政策报告 [A级:95%]"
+      - "监管机构处罚信息 [A级:98%]"
+      - "FDIC/银保监会统计数据 [A级:96%]"
+
+    market_data:
+      - "实时股价与成交量 [B级:90%]"
+      - "债券收益率曲线 [A级:98%]"
+      - "CDS价格与信用利差 [B级:85%]"
+      - "期权隐含波动率 [B级:88%]"
+
+    alternative_data:
+      - "社交媒体情绪指数 [C级:75%]"
+      - "卫星图像数据 [C级:70%]"
+      - "专利申请统计 [B级:85%]"
+      - "高管变动信息 [B级:90%]"
+
+  quality_thresholds:
+    minimum_a_b_ratio: 0.90  # A+B级数据占比≥90%
+    maximum_missing_rate: 0.05  # 关键数据缺失率<5%
+    update_frequency: "实时到日度"
+    historical_depth: "≥5年历史数据"
+
+# 风险建模配置
+risk_modeling_config:
+  credit_risk:
+    models:
+      - "改进Merton模型 + 机器学习增强"
+      - "CreditMetrics + 迁移矩阵"
+      - "KMV-Moody's违约距离模型"
+    parameters:
+      pd_horizon: "1年期违约概率"
+      lgd_recovery: "45-85%回收率区间"
+      correlation_structure: "copula相关性建模"
+
+  market_risk:
+    models:
+      - "参数VaR + 历史模拟VaR"
+      - "极值理论(EVT)尾部风险"
+      - "GARCH波动率聚类"
+    parameters:
+      confidence_levels: [95%, 99%, 99.9%]
+      holding_periods: [1天, 10天, 250天]
+      stress_scenarios: ["2008金融危机", "2020疫情", "自定义"]
+
+  liquidity_risk:
+    models:
+      - "流动性调整VaR (L-VaR)"
+      - "市场微观结构分析"
+      - "资金缺口分析"
+    parameters:
+      liquidation_horizons: [1天, 1周, 1月]
+      market_impact_models: "平方根模型"
+      funding_stress: "存款流失情景"
+
+  regulatory_risk:
+    models:
+      - "政策文本挖掘NLP"
+      - "监管变化预测模型"
+      - "合规成本评估框架"
+    parameters:
+      policy_update_frequency: "月度监控"
+      compliance_cost_ratio: "收入占比"
+      regulatory_uncertainty: "政策稳定性评分"
+
+# 蒙特卡洛仿真配置
+monte_carlo_config:
+  simulation_parameters:
+    num_scenarios: 100000  # 10万次模拟
+    time_horizon: 252  # 1年交易日
+    time_steps: 1260  # 5年周度
+    confidence_levels: [90%, 95%, 99%, 99.9%]
+
+  scenario_generation:
+    methods:
+      - "历史Bootstrap重抽样"
+      - "参数化随机过程"
+      - "主成分分析(PCA)降维"
+      - "copula多变量相关性"
+
+  acceleration:
+    gpu_computing: true
+    parallel_workers: 16
+    batch_size: 10000
+    memory_optimization: "streaming计算"
+
+# 因果推断配置
+causal_inference_config:
+  discovery_algorithms:
+    - "PC算法(约束导向)"
+    - "GES算法(评分导向)"
+    - "FCI算法(处理隐变量)"
+    - "MMHC混合算法"
+
+  identification_methods:
+    - "do-calculus Pearl因果计算"
+    - "后门准则(back-door)"
+    - "前门准则(front-door)"
+    - "工具变量方法"
+
+  estimation_techniques:
+    - "结构方程模型(SEM)"
+    - "双重差分(DID)"
+    - "合成控制法"
+    - "倾向性评分匹配"
+
+# L5级深度保障
+depth_assurance:
+  l5_requirements:
+    mechanism_analysis:
+      min_causal_chains: 5  # 至少5条因果链
+      mechanism_depth: "三层递归(相关→机制→因果)"
+      verification_methods: "多重验证(历史+理论+实证)"
+
+    counterfactual_analysis:
+      scenarios_required: 3  # 基准/乐观/悲观情景
+      intervention_modeling: "政策干预效应评估"
+      uncertainty_quantification: "贝叶斯置信区间"
+
+    prediction_validation:
+      min_predictions: 30  # 至少30个可验证预测
+      time_horizons: ["1月", "1季度", "1年"]
+      accuracy_threshold: 0.70  # 70%准确率目标
+      tracking_system: "自动化预测追踪"
+
+# 输出规范
+output_specifications:
+  executive_summary:
+    max_length: 500  # 执行摘要≤500字
+    key_insights: 5  # 5个核心洞察
+    investment_implications: 3  # 3条投资建议
+    confidence_score: "overall置信度评分"
+
+  detailed_analysis:
+    min_length: 5000  # 详细分析≥5000字
+    sections:
+      - "数据质量评估报告"
+      - "多风险建模结果"
+      - "蒙特卡洛仿真分析"
+      - "因果推断发现"
+      - "预测验证系统"
+
+  risk_monitoring:
+    kill_switches: 15  # 至少15个Kill Switch
+    monitoring_frequency: "实时到日度"
+    alert_thresholds: "动态阈值调整"
+    escalation_procedures: "分级预警机制"
+
+  predictions:
+    format: "[指标] 在 [时间] 达到 [数值] 的概率为 [置信度]%"
+    verification_dates: "明确验证时间点"
+    tracking_methodology: "预测追踪方法论"
+    accuracy_reporting: "定期准确率报告"
+
+# 质量控制
+quality_control:
+  model_validation:
+    backtesting_period: "5年历史回测"
+    cross_validation: "5折交叉验证"
+    stress_testing: "极端情景测试"
+    sensitivity_analysis: "关键参数敏感性"
+
+  peer_review:
+    internal_review: "同业最佳实践对比"
+    external_validation: "学术研究验证"
+    regulatory_compliance: "监管标准符合性"
+    industry_benchmarking: "行业标杆对照"
+
+  continuous_improvement:
+    model_monitoring: "模型性能实时监控"
+    feedback_integration: "用户反馈整合"
+    research_updates: "最新研究成果整合"
+    version_control: "系统版本管理"
+
+# 使用示例
+usage_examples:
+  bank_analysis:
+    company: "JPMorgan Chase (JPM)"
+    focus_areas:
+      - "信贷风险建模与压力测试"
+      - "NIM敏感性与利率风险管理"
+      - "监管资本充足率动态评估"
+    expected_output:
+      - "L5级风险评估报告"
+      - "30个可验证预测"
+      - "15个Kill Switch预警"
+
+  insurance_analysis:
+    company: "Berkshire Hathaway (BRK)"
+    focus_areas:
+      - "内含价值敏感性分析"
+      - "巨灾风险与再保险建模"
+      - "投资组合风险评估"
+    expected_output:
+      - "精算假设审计报告"
+      - "承保盈利能力预测"
+      - "偿付能力压力测试"
+
+# 错误处理与容错
+error_handling:
+  data_quality_issues:
+    missing_data: "插值法+置信度降级"
+    outlier_detection: "统计检测+人工审核"
+    source_conflicts: "多源验证+权重分配"
+
+  model_failures:
+    convergence_issues: "参数调整+算法切换"
+    overfitting_detection: "正则化+早停"
+    numerical_instability: "数值稳定化技术"
+
+  system_resilience:
+    computational_limits: "分布式计算+云弹性"
+    memory_constraints: "流式处理+增量计算"
+    network_failures: "本地缓存+离线模式"
+
+# 版本历史
+version_history:
+  v1_0:
+    release_date: "2026-02-05"
+    changes:
+      - "初始版本发布"
+      - "核心L5级功能实现"
+      - "多风险建模集成"
+      - "因果推断引擎"
+    known_issues: []
+    future_enhancements:
+      - "新兴风险类型扩展"
+      - "实时流处理优化"
+      - "多语言支持"

@@ -1,28 +1,28 @@
 ---
 name: smart-money-tracking-system
-description: Use when analyzing institutional investor positions, hedge fund moves, or need to track "smart money" flows for semiconductor investment decisions. Apply when facing pressure to provide definitive institutional sentiment or when data quality varies significantly.
+description: Use when analyzing institutional investor positions, hedge fund moves, or need to track "smart money" flows for investment decisions. Apply when facing pressure to provide definitive institutional sentiment or when data quality varies significantly.
 ---
 
-# Smart Money Tracking System - 半导体特化版
+# Smart Money Tracking System
 
 ## Overview
 
-Systematic framework for analyzing institutional investor behavior and "smart money" flows in semiconductor stocks. Prevents overconfident analysis of incomplete data and establishes rigorous methodology for evaluating institutional positioning.
+Systematic framework for analyzing institutional investor behavior and "smart money" flows. Prevents overconfident analysis of incomplete data and establishes rigorous methodology for evaluating institutional positioning.
 
 **Core principle:** Data quality determines conclusion strength - never exceed your data's reliability level.
 
 ## When to Use
 
-- Analyzing institutional holdings changes in semiconductor stocks (13F filings)
-- Tracking hedge fund or sovereign wealth fund semiconductor positions
-- Evaluating "smart money" sentiment on specific semiconductor stocks
-- Decoding Buffett/Berkshire semiconductor investment logic (TSM验证)
+- Analyzing institutional holdings changes (13F filings)
+- Tracking hedge fund or sovereign wealth fund positions
+- Evaluating "smart money" sentiment on specific stocks
+- Under pressure to provide binary bullish/bearish calls
 - When multiple data sources have varying quality levels
-- Analyzing sovereign fund strategic semiconductor allocation patterns
+- Client requests specific institutional investor analysis
 
 **When NOT to use:**
 - Technical analysis or chart patterns
-- Individual stock fundamental analysis (use other engines)
+- Individual stock fundamental analysis
 - Options flow analysis (separate methodology)
 - Real-time trading decisions (13F data has 45-day lag)
 
@@ -37,91 +37,121 @@ Systematic framework for analyzing institutional investor behavior and "smart mo
 | **C-Grade (60-79%)** | Analyst estimates, industry reports, market rumors | Medium | Real-time | Supporting evidence only |
 | **D-Grade (<60%)** | Social media, unverified sources | Low | Variable | Background context |
 
-### Smart Money Hierarchy - 半导体特化
+### Smart Money Hierarchy (by Signal Quality)
 
 ```markdown
-【Tier 1: 传奇投资者 + 半导体战略资本】
-- Warren Buffett/Berkshire Hathaway (TSM验证: A级91%信心)
-- 主权财富基金战略配置 (挪威/新加坡/阿布扎比)
+【Tier 1: Legendary Investors】
+- Warren Buffett/Berkshire Hathaway
 - Charlie Munger positions
 - Seth Klarman/Baupost Group
 Weight: 40% of analysis
 
-【Tier 2: 精密机构 + 科技专业基金】
-- 半导体专业对冲基金 (Coatue, Tiger Global)
+【Tier 2: Sophisticated Institutions】
+- Major sovereign wealth funds (Norway, Singapore)
 - Elite hedge funds (Bridgewater, Renaissance, Citadel)
-- 大型科技公司产业投资 (Google/Microsoft/Amazon芯片投资)
 - University endowments (Harvard, Yale)
 Weight: 35% of analysis
 
-【Tier 3: 优质管理者】
-- Established mutual fund managers (T. Rowe Price, Fidelity)
+【Tier 3: Quality Managers】
+- Established mutual fund managers
 - Pension funds with long track records
-- 半导体行业ETF资金流 (SOXX, SMH)
+- Family offices of successful investors
 Weight: 20% of analysis
 
-【Tier 4: 标准机构】
+【Tier 4: Standard Institutions】
 - Index funds (passive flows)
 - Standard institutional holdings
 - ETF creations/redemptions
 Weight: 5% of analysis
 ```
 
-## 半导体特化分析方法
+## Analysis Methodology
 
-### 1. 产业资本追踪（半导体独有）
+### 1. Position Change Analysis
 
+**Required Data Points:**
 ```markdown
-监控维度:
-  - 芯片大厂CapEx变化 (投资意愿)
-  - 设备厂商订单积压 (需求验证)
-  - 库存渠道投资 (备货信号)
-  - 晶圆厂建设投资 (长期押注)
+Previous Quarter Holdings: [shares, % of portfolio, rank in holdings]
+Current Quarter Holdings: [shares, % of portfolio, rank in holdings]
+Price Change During Period: [% change, absolute $]
+Net Flow Calculation: [shares × average price]
 
-产业资本信号:
-  ✅ 强看多: 多家代工厂同时扩产 + 设备订单积压创新高
-  ✅ 看多: CapEx超预期 + 库存主动补货
-  ⚠️ 中性: CapEx持平 + 库存去化
-  ❌ 看空: CapEx削减 + 设备订单取消
+⚠️ CRITICAL: Always note 13F filing lag (45-90 days)
 ```
 
-### 2. 巴菲特半导体逻辑解码（TSM验证基准）
+**Significance Thresholds:**
+- New position: >0.5% of investor's total portfolio
+- Meaningful increase: >25% position size change
+- Meaningful decrease: >25% position size reduction
+- Major exit: >75% position reduction
 
-```markdown
-TSM案例关键发现:
-  投资逻辑: AI基础设施必选 + 技术垄断 + 现金流可预测
-  持仓信心: A级 91%
-  退出逻辑: 地缘风险权重调整（非基本面否定）
+### 2. Signal Interpretation Framework
 
-可复制模式:
-  代工厂: 技术垄断 + 客户粘性 → 巴菲特风格投资标的
-  设计公司: AI平台生态 → 成长型投资逻辑
-  设备厂商: 产业垄断 + 周期敏感 → 周期投资逻辑
-```
+**Strong Bullish Signals:**
+- Tier 1 investor initiates new position >1% of portfolio
+- Multiple Tier 2 institutions increase positions simultaneously
+- Contrarian buying during market stress
+- Long-term holder (>3 years) increases allocation
 
-### 3. Signal Interpretation Framework
-
-**Strong Bullish Signals (半导体特化):**
-- Tier 1 investor initiates new semiconductor position >1% of portfolio
-- Multiple sovereign funds increase semiconductor allocation
-- Buffett-style value investors买入周期低位半导体
-- 产业资本和金融资本同时加仓
-
-**Strong Bearish Signals (半导体特化):**
-- Tier 1 investor exits long-held semiconductor position
-- 半导体专业基金大幅减仓
-- 主权基金战略性减少半导体配置
-- 产业资本削减CapEx + 机构卖出
+**Strong Bearish Signals:**
+- Tier 1 investor exits long-held position (>2 years)
+- Broad institutional selling across tiers
+- Smart money exits before negative news breaks
+- Quality growth managers reduce tech/growth allocations
 
 **Neutral/Mixed Signals:**
-- 半导体ETF被动流入/流出
-- 单一机构在半导体行业内部调仓
-- 周期性再平衡操作
+- Index fund flows (passive, not predictive)
+- Single institution moves without context
+- Conflicting signals across tiers
+- Moves consistent with rebalancing/style drift
+
+### 3. Context Integration
+
+**Always Consider:**
+```markdown
+Market Environment: Bull/bear/volatile market context
+Sector Rotation: Is this stock/sector rotation or specific view?
+Portfolio Construction: Is this sizing/risk management vs conviction?
+Timing Context: Relative to earnings, news, market events?
+Historical Pattern: Consistent with investor's past behavior?
+```
+
+## Red Flags - Stop and Reassess
+
+- **Making up data** when information unavailable
+- **Providing false precision** (scores like 73.2/100)
+- **Claiming "proprietary access"** to institutional data
+- **Ignoring data quality grades** in conclusions
+- **Binary calls** when data is mixed/incomplete
+- **Extrapolating beyond timeframe** of available data
+
+## Common Mistakes and Fixes
+
+### Mistake: Overconfident Analysis
+```markdown
+❌ "Smart money is definitively bullish with 85% confidence"
+✅ "Based on available 13F data (45-day lag), Tier 1 institutions
+   show net buying, but data quality is B-grade. Confidence: Medium"
+```
+
+### Mistake: Mixing Data Timeframes
+```markdown
+❌ "Q3 13F shows buying, plus this week's rumors of more purchases"
+✅ "Q3 13F (A-grade) shows buying. Recent rumors (D-grade) suggest
+   continuation, but cannot be weighted equally"
+```
+
+### Mistake: Ignoring Passive Flows
+```markdown
+❌ "Institutions increased holdings by $2B - very bullish!"
+✅ "Holdings increased $2B, but $1.5B was Vanguard/BlackRock index
+   flows (neutral). Active increase was $500M (moderately bullish)"
+```
 
 ## Analysis Output Template
 
 ```markdown
-# Smart Money Analysis: [TICKER] - 半导体
+# Smart Money Analysis: [TICKER]
 
 ## Data Quality Summary
 - A-Grade Sources: [list, with lag times]
@@ -129,24 +159,18 @@ TSM案例关键发现:
 - C/D-Grade Sources: [list, note as supporting only]
 
 ## Tier 1 Investor Activity
-[巴菲特/传奇投资者 - 详细分析 + 逻辑解码]
-
-## 产业资本流向
-[CapEx + 设备订单 + 库存动态]
+[Buffett, legendary investors - detailed analysis]
 
 ## Tier 2 Institution Patterns
-[精密机构 + 科技专业基金 - 持仓变化]
+[Sophisticated institutions - position changes]
 
 ## Tier 3 Quality Manager Moves
-[优质管理者 - 趋势分析]
+[Established managers - trend analysis]
 
 ## Signal Interpretation
 **Bullish Indicators:** [specific evidence + confidence level]
 **Bearish Indicators:** [specific evidence + confidence level]
 **Mixed/Neutral:** [conflicting or unclear signals]
-
-## 与预测市场交叉验证
-[机构持仓逻辑 vs Polymarket概率 一致性分析]
 
 ## Conclusion
 **Overall Signal:** [Bullish/Bearish/Mixed]
@@ -155,6 +179,44 @@ TSM案例关键发现:
 **Next Review:** [when new data becomes available]
 ```
 
-## 版本
-v1.0-半导体 - 2026-02-06
-TSM验证基准: 巴菲特逻辑完整解码, A级91%信心
+## Data Sources Reference
+
+**Primary (A-Grade):**
+- SEC EDGAR 13F filings
+- Investor earnings call transcripts
+- Annual reports and proxy filings
+
+**Secondary (B-Grade):**
+- Bloomberg/FactSet institutional data
+- Morningstar institutional holdings
+- Company investor relations updates
+
+**Supporting (C-Grade):**
+- Financial news institutional coverage
+- Hedge fund strategy reports
+- Conference presentations
+
+**Context Only (D-Grade):**
+- Social media institutional rumors
+- Unverified industry gossip
+- Speculation on positions
+
+## Quick Reference: Decision Matrix
+
+| Data Quality | Signal Strength | Confidence Level | Action |
+|-------------|-----------------|------------------|---------|
+| A-Grade | Strong | High | Clear recommendation |
+| A-Grade | Weak | Medium | Note limitations |
+| B-Grade | Strong | Medium | Qualified recommendation |
+| B-Grade | Weak | Low | "Monitoring" status |
+| C-Grade | Any | Low | Supporting evidence only |
+
+## Implementation Notes
+
+- **Always start with data quality assessment**
+- **Weight conclusions by source reliability**
+- **Acknowledge limitations explicitly**
+- **Update when new A-grade data becomes available**
+- **Track prediction accuracy** for continuous improvement
+
+Remember: Smart money analysis is about pattern recognition from high-quality data, not creating false certainty from incomplete information.

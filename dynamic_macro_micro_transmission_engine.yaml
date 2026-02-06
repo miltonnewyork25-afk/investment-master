@@ -1,0 +1,380 @@
+name: "dynamic_macro_micro_transmission_engine"
+version: "1.0"
+description: "L5级动态宏观-微观传导引擎 - 建立时间序列反馈环路模型，精确量化宏观冲击到个股盈利的传导机制与时间路径"
+category: "core_transmission_modeling"
+complexity_score: 9.7
+dependencies: ["market_pricing_deconstruction_engine", "financial_digital_twin_core"]
+
+# ==============================================================================
+# 核心传导建模框架
+# ==============================================================================
+
+core_capabilities:
+  macro_shock_propagation:
+    description: "宏观冲击传导路径精确建模"
+    key_components:
+      - "货币政策传导链条时间序列建模"
+      - "财政政策→产业链影响的多步传导"
+      - "地缘政治事件→资本流动→资产价格的联动"
+      - "监管政策变化→行业竞争格局→个股影响"
+      - "技术周期→供需平衡→定价权变化的动态建模"
+
+    transmission_architecture:
+      monetary_policy_cascade:
+        methodology: |
+          美联储政策决策 → 多层次传导建模
+
+          Layer 1: 直接金融市场冲击 (T+0 到 T+1周)
+          Fed Rate Change → Treasury Yield → Corporate Bond Spread → Equity Risk Premium
+
+          参数化模型:
+          ΔTreasury_10Y = α₁ × ΔFed_Rate + β₁ × Market_Surprise + ε₁
+          ΔCredit_Spread = α₂ × ΔTreasury_10Y + β₂ × Credit_Cycle + ε₂
+          ΔEquity_Risk_Premium = α₃ × ΔCredit_Spread + β₃ × VIX + ε₃
+
+        time_series_parameters:
+          immediate_impact: "Fed决策后24小时内的市场反应系数"
+          short_term_adjustment: "1-4周的价格发现过程参数"
+          medium_term_equilibrium: "1-6个月的新均衡到达时间"
+          feedback_strength: "市场反应对Fed后续决策的反馈系数"
+
+      real_economy_transmission:
+        methodology: |
+          金融条件变化 → 实体经济影响 → 企业盈利传导
+
+          Layer 2: 企业融资成本传导 (T+1月 到 T+6月)
+          Credit_Spread_Change → Corporate_Borrowing_Cost → CAPEX_Decision →
+          Employment_Change → Consumer_Spending → Industry_Demand
+
+          参数化模型:
+          ΔCAPEX_Growth = α₄ × ΔBorrowing_Cost(-3m) + β₄ × Capacity_Utilization + ε₄
+          ΔEmployment = α₅ × ΔCAPEX_Growth(-2m) + β₅ × Labor_Market_Tightness + ε₅
+          ΔConsumer_Spending = α₆ × ΔEmployment(-1m) + β₆ × Consumer_Confidence + ε₆
+
+        industry_specific_multipliers:
+          cyclical_industries: "制造业/房地产对利率敏感性: β系数1.5-2.0"
+          defensive_industries: "必需消费品/公用事业敏感性: β系数0.3-0.7"
+          growth_industries: "科技/医疗对流动性敏感性: β系数1.2-1.8"
+
+      individual_stock_impact:
+        methodology: |
+          行业层面冲击 → 个股差异化影响建模
+
+          Layer 3: 个股传导异质性 (T+3月 到 T+12月)
+          Industry_Shock → Company_Specific_Impact 基于:
+          - 杠杆率差异(高杠杆公司对利率更敏感)
+          - 周期性差异(周期股对宏观波动放大)
+          - 定价权差异(垄断企业更能抵抗成本压力)
+          - 资产负债表健康度差异
+
+          个股传导系数:
+          Company_Beta_Macro = Base_Industry_Beta ×
+                             (1 + Leverage_Premium × Debt/EBITDA) ×
+                             (1 + Cyclicality_Factor) ×
+                             (1 - Pricing_Power_Discount)
+
+  feedback_loop_modeling:
+    description: "多层次反馈环路动态建模"
+    key_feedback_mechanisms:
+      - "股价变化→企业融资能力→投资决策→未来盈利→股价"
+      - "失业率上升→消费下降→企业收入下降→裁员增加→失业率进一步上升"
+      - "信贷紧缩→违约率上升→银行惜贷→信贷进一步紧缩"
+      - "资产价格下跌→财富效应→消费投资减少→经济衰退→资产价格继续下跌"
+
+    dynamic_system_equations:
+      corporate_investment_feedback:
+        equation_system: |
+          股价指数变化影响企业CAPEX决策的反馈环路:
+
+          CAPEX(t) = α × CAPEX(t-1) + β₁ × Stock_Price(t-2) + β₂ × Credit_Conditions(t-1) +
+                     β₃ × Expected_Demand(t+1) + ε₁(t)
+
+          Stock_Price(t) = γ₁ × Earnings(t-1) + γ₂ × CAPEX(t) + γ₃ × Market_Sentiment(t) + ε₂(t)
+
+          Expected_Demand(t+1) = δ₁ × Current_Orders(t) + δ₂ × Macro_Indicators(t) +
+                                  δ₃ × Stock_Price(t) + ε₃(t)
+
+        parameter_estimation:
+          data_sources: "30年历史数据: 股价/CAPEX/订单/宏观指标"
+          estimation_method: "Vector Autoregression (VAR) + Kalman Filter动态参数"
+          validation_method: "Out-of-sample预测准确性验证"
+
+      systemic_risk_amplification:
+        description: "系统性风险的自我强化机制建模"
+        amplification_channels:
+          credit_crunch_spiral:
+            equation: |
+              银行惜贷 → 企业融资困难 → 违约率上升 → 银行进一步惜贷
+
+              Credit_Supply(t) = α × Credit_Supply(t-1) + β × Default_Rate(t-1) + γ × Bank_Capital(t)
+              Default_Rate(t) = δ × Credit_Supply(t-2) + ε × Economic_Growth(t) + ζ × Interest_Rate(t)
+              Bank_Capital(t) = η × Bank_Capital(t-1) - λ × Default_Rate(t-1) + μ × Earnings(t)
+
+          asset_price_feedback:
+            equation: |
+              资产价格下跌 → 抵押品价值下降 → 信贷收紧 → 经济收缩 → 资产价格进一步下跌
+
+              Asset_Price(t) = φ₁ × Asset_Price(t-1) + φ₂ × Credit_Growth(t) + φ₃ × Economic_Activity(t)
+              Credit_Growth(t) = ψ₁ × Credit_Growth(t-1) + ψ₂ × Asset_Price(t-1) + ψ₃ × Regulatory_Policy(t)
+
+  regime_dependent_transmission:
+    description: "不同经济状态下的传导机制差异"
+    regime_identification:
+      - "扩张期: GDP增长>2%, 失业率下降, 通胀温和"
+      - "收缩期: GDP增长<0%, 失业率上升, 通胀下降"
+      - "滞胀期: GDP增长<1%, 通胀>4%"
+      - "流动性危机期: 信用利差>400bp, VIX>30"
+
+    regime_specific_parameters:
+      expansion_regime:
+        monetary_policy_effectiveness: "较低(经济自然增长动力强)"
+        fiscal_policy_multiplier: "0.8-1.2(挤出效应存在)"
+        credit_transmission_strength: "中等(银行风险偏好正常)"
+        asset_price_sensitivity: "较高(流动性充裕)"
+
+      recession_regime:
+        monetary_policy_effectiveness: "较高(企业对资金成本敏感)"
+        fiscal_policy_multiplier: "1.5-2.0(乘数效应放大)"
+        credit_transmission_strength: "极强(银行风险厌恶)"
+        asset_price_sensitivity: "极高(去杠杆压力)"
+
+      stagflation_regime:
+        monetary_policy_effectiveness: "冲突状态(抗通胀vs促增长)"
+        fiscal_policy_multiplier: "0.5-0.8(通胀抵消作用)"
+        credit_transmission_strength: "扭曲状态(名义利率vs实际利率)"
+        asset_price_sensitivity: "结构性分化(实物资产vs金融资产)"
+
+# ==============================================================================
+# 高频传导监控系统
+# ==============================================================================
+
+real_time_transmission_tracking:
+  leading_indicators_dashboard:
+    description: "传导过程的领先指标实时监控"
+
+    tier_1_immediate_signals:
+      financial_conditions_index: |
+        综合金融条件指数 = w₁×Treasury_Spread + w₂×Credit_Spread + w₃×Stock_Volatility + w₄×Dollar_Index
+        权重基于历史传导强度校准
+        更新频率: 每小时
+
+      high_frequency_gdp_nowcasting:
+        methodology: "基于日度/周度数据的GDP增长率实时估算"
+        data_sources:
+          - "日度: 股市表现/利差变化/大宗商品价格"
+          - "周度: 失业金申请/电力消耗/交通流量"
+          - "月度: 制造业PMI/就业数据/零售销售"
+
+    tier_2_transmission_signals:
+      corporate_stress_indicators:
+        bond_issuance_difficulty: "企业债发行成功率/定价利差变化"
+        refinancing_pressure: "即将到期债务vs当前融资能力"
+        capex_guidance_changes: "上市公司资本支出指引调整频率"
+
+      consumer_behavior_shifts:
+        spending_pattern_changes: "信用卡消费/储蓄率实时变化"
+        sentiment_vs_fundamentals: "消费者信心vs实际收入的背离度"
+        discretionary_vs_necessity: "可选消费vs必需消费的相对表现"
+
+  transmission_velocity_measurement:
+    description: "传导速度的精确测量与预测"
+
+    speed_metrics:
+      policy_to_market: "政策宣布→金融市场反应的时间(通常<24小时)"
+      market_to_corporate: "金融条件变化→企业融资成本反应(通常1-4周)"
+      corporate_to_employment: "企业决策→就业市场反应(通常2-6个月)"
+      employment_to_consumption: "就业变化→消费模式变化(通常1-3个月)"
+
+    velocity_prediction_model:
+      historical_pattern_analysis: "基于过去20年传导速度分布建模"
+      current_regime_adjustment: "当前经济状态对传导速度的影响"
+      market_structure_factors: "算法交易/ETF等对传导速度的影响"
+
+# ==============================================================================
+# 行业特异性传导模型
+# ==============================================================================
+
+industry_specific_transmission:
+  semiconductor_industry_model:
+    description: "半导体行业的专用传导机制"
+
+    unique_transmission_channels:
+      inventory_cycle_amplification:
+        mechanism: |
+          宏观需求变化 → 库存调整 → 订单波动放大
+          需求下降1% → 库存去化 → 订单下降5-10% (牛鞭效应)
+
+        dynamic_model: |
+          Semiconductor_Orders(t) = α × End_Demand(t) + β × Inventory_Gap(t-1) + γ × Lead_Time(t)
+          Inventory_Gap(t) = Target_Inventory(t) - Actual_Inventory(t)
+          Target_Inventory(t) = δ × Expected_Demand(t+2) + ε × Lead_Time_Uncertainty(t)
+
+      technology_capex_correlation:
+        description: "科技公司CAPEX与半导体需求的强关联"
+        correlation_coefficient: "0.85+ (历史20年数据)"
+        transmission_lag: "科技公司CAPEX决策领先半导体需求3-6个月"
+
+  financial_services_model:
+    description: "金融服务行业的传导特性"
+
+    unique_channels:
+      net_interest_margin_sensitivity:
+        yield_curve_impact: |
+          收益率曲线变化对银行NIM的影响:
+          ΔNIM = α × Δ(10Y-2Y) + β × Δ(Fed_Rate) + γ × Δ(Credit_Spread)
+          其中α通常为正(曲线陡峭化有利)，β取决于资产负债久期匹配
+
+      credit_cycle_amplification:
+        description: "信贷周期的自我强化特性"
+        model: |
+          Credit_Growth(t) = α × Credit_Growth(t-1) + β × Asset_Quality(t) + γ × Economic_Growth(t)
+          Asset_Quality(t) = δ × Asset_Quality(t-1) - ε × Credit_Growth(t-2) + ζ × Macro_Conditions(t)
+
+  consumer_discretionary_model:
+    description: "可选消费品的传导机制"
+
+    wealth_effect_transmission:
+      equation: |
+        Consumer_Spending(t) = α × Disposable_Income(t) + β × Wealth_Effect(t) + γ × Consumer_Confidence(t)
+        Wealth_Effect(t) = δ₁ × Stock_Market_Wealth(t) + δ₂ × Real_Estate_Wealth(t)
+
+      sensitivity_parameters:
+        stock_wealth_elasticity: "0.03-0.07 (每$1股市财富变化→$0.03-0.07消费变化)"
+        real_estate_wealth_elasticity: "0.05-0.15 (房地产财富效应更强)"
+
+# ==============================================================================
+# 传导中断与异常检测
+# ==============================================================================
+
+transmission_break_detection:
+  structural_break_identification:
+    description: "传导关系结构性变化的识别"
+
+    break_detection_methods:
+      chow_test: "检验参数在特定时点是否发生结构性变化"
+      recursive_estimation: "滚动窗口参数估计，识别参数漂移"
+      regime_switching_model: "马尔科夫转换模型识别状态切换"
+
+    common_break_sources:
+      regulatory_changes: "监管政策重大变化改变传导机制"
+      technological_disruption: "技术进步改变行业传导特性"
+      market_structure_evolution: "交易机制变化影响价格传导"
+      behavioral_shifts: "投资者行为模式长期演化"
+
+  transmission_anomaly_alerts:
+    description: "传导异常的实时预警系统"
+
+    anomaly_types:
+      transmission_failure: "预期传导未发生(如政策无效)"
+      reverse_transmission: "传导方向与历史相反"
+      amplification_anomaly: "传导幅度异常(过强或过弱)"
+      timing_anomaly: "传导时间显著偏离历史模式"
+
+    alert_system:
+      real_time_monitoring: "关键传导参数的实时监控"
+      threshold_based_alerts: "参数偏离历史分布2个标准差时预警"
+      machine_learning_detection: "基于ML的异常模式识别"
+
+# ==============================================================================
+# 预测性传导建模
+# ==============================================================================
+
+forward_looking_transmission:
+  scenario_based_transmission:
+    description: "基于情景分析的传导路径预测"
+
+    scenario_construction:
+      baseline_scenario: "延续当前趋势的传导路径"
+      stress_scenario: "不利冲击下的传导放大效应"
+      positive_scenario: "有利因素的传导增强效应"
+
+    transmission_forecasting:
+      point_estimates: "各情景下的传导参数点估计"
+      confidence_intervals: "考虑参数不确定性的置信区间"
+      tail_risk_assessment: "极端情景下的传导风险评估"
+
+  adaptive_parameter_updating:
+    description: "参数的自适应更新机制"
+
+    bayesian_updating: |
+      随着新数据到达，贝叶斯更新传导参数:
+      Posterior = Prior × Likelihood / Evidence
+
+      允许参数根据最新信息动态调整，避免模型僵化
+
+    online_learning: "在线学习算法实时调整模型参数"
+    model_averaging: "多模型加权平均提高预测稳健性"
+
+# ==============================================================================
+# 实战应用输出
+# ==============================================================================
+
+actionable_output_system:
+  transmission_timing_alerts:
+    description: "传导过程关键时点的预警"
+
+    alert_categories:
+      policy_transmission_window: "政策效果开始显现的时间窗口提醒"
+      industry_impact_timeline: "行业层面冲击到达的时间预测"
+      company_earnings_impact: "个股盈利受影响的时间和幅度预测"
+
+  dynamic_portfolio_allocation:
+    description: "基于传导分析的动态配置建议"
+
+    transmission_based_rotation: |
+      根据传导进展调整行业配置:
+
+      传导初期: 配置传导链条前端行业(如金融/地产)
+      传导中期: 配置传导受益行业(如必需消费品)
+      传导后期: 配置防御性行业(如公用事业)
+
+  risk_management_integration:
+    description: "传导分析与风险管理的整合"
+
+    dynamic_hedging: "基于传导预测的动态对冲策略"
+    correlation_adjustment: "传导状态变化时的相关性调整"
+    tail_risk_monitoring: "传导放大效应的尾部风险监控"
+
+# ==============================================================================
+# 数据架构与计算要求
+# ==============================================================================
+
+data_infrastructure:
+  high_frequency_data:
+    financial_markets: "股价/债券/汇率/大宗商品(分钟级)"
+    macro_indicators: "就业/通胀/GDP等高频代理指标(日/周级)"
+    corporate_indicators: "企业债发行/评级变化/指引调整(实时)"
+
+  computational_requirements:
+    model_estimation: "VAR模型需要大规模矩阵计算"
+    simulation_capacity: "蒙特卡洛模拟需要并行计算能力"
+    real_time_processing: "实时数据处理需要低延迟架构"
+
+# ==============================================================================
+# 技能元数据
+# ==============================================================================
+
+metadata:
+  creation_date: "2026-02-05"
+  version: "1.0 - 动态传导建模核心引擎"
+  purpose: "替代静态链条分析，实现真正的动态传导建模"
+
+  performance_targets:
+    transmission_prediction_accuracy: "≥65%"
+    timing_precision: "±2周内预测准确率≥55%"
+    parameter_stability: "滚动窗口参数变化<20%"
+
+  integration_points:
+    - "market_pricing_deconstruction_engine: 传导效果的定价反映分析"
+    - "所有行业专用技能: 行业特异性传导机制"
+    - "behavioral_finance_modules: 传导过程的行为偏误影响"
+
+# ==============================================================================
+# 免责声明
+# ==============================================================================
+
+disclaimer: |
+  动态传导模型基于历史数据和统计关系，未来传导机制可能发生结构性变化。
+  模型参数存在估计不确定性，传导时间和幅度预测应审慎使用。
+  极端市场条件下传导关系可能失效，需结合定性分析综合判断。
+  本模型为分析工具，不构成投资建议，使用者需承担相应风险。

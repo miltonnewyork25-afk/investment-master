@@ -1,0 +1,330 @@
+name: esg-native-assessor
+description: ESG原生评估器 - 专门评估生态科技公司ESG原生特征、内在价值和可持续发展DNA，区分ESG包装和ESG原生
+version: "1.0"
+author: "投资研究Agent v19.12"
+category: esg_assessment
+
+triggers:
+  - "ESG原生评估"
+  - "可持续发展DNA"
+  - "ESG内在价值"
+  - "原生ESG特征"
+  - "ESG真实性分析"
+  - "可持续基因评估"
+
+system_message: |
+  你是ESG原生评估专家，专门负责：
+  1. 识别和评估公司ESG原生特征vs后天包装
+  2. 分析可持续发展在商业模式中的核心地位
+  3. 评估ESG要素的内在价值创造能力
+  4. 量化ESG原生优势的持久竞争力
+  5. 建立ESG真实性和深度评估体系
+
+  核心专长：
+  - ESG原生vs包装的识别和区分
+  - 可持续发展DNA深度分析
+  - ESG价值创造机制评估
+  - 原生ESG护城河识别
+  - ESG表现真实性验证
+
+analysis_framework:
+  esg_native_identification:
+    business_model_integration:
+      purpose_driven_foundation:
+        - mission_vision_alignment: "使命愿景ESG一致性"
+        - stakeholder_capitalism: "利益相关者资本主义实践"
+        - shared_value_creation: "共享价值创造模式"
+        - impact_measurement_integration: "影响力测量整合程度"
+
+      revenue_model_sustainability:
+        - sustainable_revenue_streams: "可持续收入流占比(>70%为原生)"
+        - esg_value_proposition: "ESG价值主张核心性"
+        - customer_problem_solving: "客户ESG问题解决能力"
+        - circular_economy_integration: "循环经济模式整合"
+
+    organizational_dna_assessment:
+      leadership_commitment:
+        - founder_ceo_background: "创始人/CEO可持续发展背景"
+        - board_sustainability_expertise: "董事会可持续发展专长"
+        - executive_compensation_alignment: "高管薪酬ESG绑定"
+        - long_term_thinking: "长期思维文化证据"
+
+      employee_culture:
+        - hiring_criteria_esg: "招聘标准ESG要素"
+        - employee_engagement_surveys: "员工ESG参与度调查"
+        - internal_sustainability_programs: "内部可持续发展项目"
+        - decision_making_esg_integration: "决策制定ESG整合"
+
+  esg_depth_analysis:
+    environmental_native_features:
+      core_environmental_solutions:
+        - primary_product_environmental_benefit: "主要产品环境效益"
+        - lifecycle_environmental_impact: "全生命周期环境影响"
+        - environmental_innovation_pipeline: "环境创新管道"
+        - resource_efficiency_by_design: "设计阶段资源效率"
+
+      operational_environmental_excellence:
+        - carbon_neutral_operations: "运营碳中和实现"
+        - renewable_energy_usage: "可再生能源使用率"
+        - waste_elimination_strategies: "废物消除策略"
+        - water_stewardship_practices: "水资源管理实践"
+
+    social_native_characteristics:
+      stakeholder_value_creation:
+        - employee_wellbeing_programs: "员工福祉项目"
+        - community_impact_initiatives: "社区影响倡议"
+        - customer_health_safety: "客户健康安全优先"
+        - supplier_development_support: "供应商发展支持"
+
+      social_innovation_leadership:
+        - inclusive_design_principles: "包容性设计原则"
+        - accessibility_enhancement: "可及性增强"
+        - digital_divide_bridging: "数字鸿沟弥合"
+        - education_capacity_building: "教育能力建设"
+
+    governance_native_strength:
+      transparency_accountability:
+        - proactive_disclosure: "主动透明披露"
+        - stakeholder_engagement_depth: "利益相关者参与深度"
+        - independent_oversight: "独立监督机制"
+        - ethics_integrity_systems: "道德诚信体系"
+
+      long_term_governance:
+        - sustainable_strategy_integration: "可持续战略整合"
+        - risk_management_esg_focus: "风险管理ESG重点"
+        - innovation_governance: "创新治理机制"
+        - succession_planning_esg: "继任规划ESG考量"
+
+esg_authenticity_assessment:
+  greenwashing_detection:
+    red_flags_identification:
+      marketing_vs_reality:
+        - sustainability_marketing_spend: "可持续营销支出vs实际投入"
+        - green_claims_verification: "绿色声明验证程度"
+        - performance_gap_analysis: "表现差距分析"
+        - third_party_validation: "第三方验证缺失"
+
+      structural_inconsistencies:
+        - revenue_source_contradiction: "收入来源矛盾性"
+        - executive_behavior_misalignment: "高管行为不一致"
+        - short_term_pressure_response: "短期压力应对方式"
+        - esg_investment_adequacy: "ESG投资充分性"
+
+    authenticity_validation:
+      performance_consistency:
+        - multi_year_esg_trajectory: "多年ESG轨迹一致性"
+        - crisis_response_esg_adherence: "危机应对ESG坚持"
+        - trade_off_decision_patterns: "权衡决策模式"
+        - stakeholder_feedback_alignment: "利益相关者反馈一致性"
+
+      systemic_integration:
+        - esg_kpi_integration: "ESG KPI整合程度"
+        - operational_process_embedding: "运营流程嵌入度"
+        - supply_chain_esg_standards: "供应链ESG标准"
+        - innovation_esg_focus: "创新ESG导向"
+
+native_competitive_advantages:
+  esg_moat_assessment:
+    brand_reputation_moats:
+      authenticity_premium:
+        - consumer_trust_level: "消费者信任水平"
+        - brand_purpose_clarity: "品牌目的清晰度"
+        - stakeholder_advocacy: "利益相关者倡导"
+        - crisis_resilience: "危机韧性能力"
+
+      esg_leadership_positioning:
+        - industry_standard_setting: "行业标准制定"
+        - thought_leadership: "思想领导地位"
+        - regulatory_relationship: "监管关系优势"
+        - investor_preference: "投资者偏好"
+
+    operational_efficiency_moats:
+      resource_productivity:
+        - energy_efficiency_advantage: "能效优势"
+        - material_utilization_optimization: "材料利用优化"
+        - waste_minimization_systems: "废物最小化系统"
+        - circular_process_design: "循环流程设计"
+
+      cost_structure_advantages:
+        - green_procurement_savings: "绿色采购节约"
+        - regulatory_compliance_efficiency: "监管合规效率"
+        - employee_productivity_enhancement: "员工生产率增强"
+        - risk_mitigation_cost_savings: "风险缓解成本节约"
+
+    innovation_ecosystem_moats:
+      sustainable_innovation_leadership:
+        - r_d_esg_focus: "研发ESG重点"
+        - patent_portfolio_sustainability: "专利组合可持续性"
+        - collaborative_innovation_networks: "协作创新网络"
+        - future_technology_positioning: "未来技术定位"
+
+      stakeholder_ecosystem:
+        - supplier_partnership_depth: "供应商合作深度"
+        - customer_co_creation: "客户共创参与"
+        - academic_research_collaboration: "学术研究合作"
+        - ngo_partnership_authenticity: "NGO合作真实性"
+
+value_creation_quantification:
+  esg_native_value_drivers:
+    revenue_enhancement:
+      premium_pricing_capability:
+        - sustainable_product_premium: "可持续产品溢价(5-15%)"
+        - brand_loyalty_impact: "品牌忠诚度影响"
+        - market_share_expansion: "市场份额扩张"
+        - new_market_access: "新市场准入"
+
+      growth_acceleration:
+        - esg_driven_demand_growth: "ESG驱动需求增长"
+        - partnership_opportunity_expansion: "合作机会扩展"
+        - regulatory_advantage_capture: "监管优势捕获"
+        - innovation_speed_enhancement: "创新速度提升"
+
+    cost_optimization:
+      operational_efficiency_gains:
+        - resource_productivity_improvement: "资源生产率改善"
+        - process_optimization_benefits: "流程优化效益"
+        - quality_enhancement_cost_reduction: "质量提升成本降低"
+        - employee_engagement_productivity: "员工参与生产率"
+
+      risk_mitigation_savings:
+        - regulatory_risk_reduction: "监管风险降低"
+        - reputational_risk_management: "声誉风险管理"
+        - supply_chain_stability: "供应链稳定性"
+        - operational_disruption_minimization: "运营中断最小化"
+
+    capital_efficiency:
+      financing_cost_advantages:
+        - green_financing_access: "绿色融资渠道"
+        - esg_investor_preference: "ESG投资者偏好"
+        - credit_rating_enhancement: "信用评级提升"
+        - capital_cost_reduction: "资本成本降低"
+
+      asset_utilization_optimization:
+        - circular_asset_management: "循环资产管理"
+        - sharing_economy_participation: "共享经济参与"
+        - asset_life_extension: "资产寿命延长"
+        - residual_value_maximization: "残值最大化"
+
+performance_measurement:
+  esg_native_metrics:
+    integration_depth_indicators:
+      - esg_revenue_percentage: "ESG收入占比(%)"
+      - sustainability_rd_ratio: "可持续研发比例(%)"
+      - esg_executive_time_allocation: "高管ESG时间分配(%)"
+      - board_esg_expertise_percentage: "董事会ESG专长比例(%)"
+
+    authenticity_indicators:
+      - esg_investment_consistency: "ESG投资一致性指数"
+      - stakeholder_satisfaction_score: "利益相关者满意度评分"
+      - crisis_esg_adherence_rating: "危机ESG坚持评级"
+      - third_party_validation_coverage: "第三方验证覆盖率(%)"
+
+    competitive_advantage_metrics:
+      - esg_brand_premium_measurement: "ESG品牌溢价测量"
+      - sustainable_innovation_pipeline_value: "可持续创新管道价值"
+      - stakeholder_advocacy_index: "利益相关者倡导指数"
+      - regulatory_relationship_strength: "监管关系强度评分"
+
+  benchmarking_framework:
+    industry_esg_native_comparison:
+      esg_native_leaders: "ESG原生领导者(Top 10%)"
+      esg_adopters: "ESG采用者(Top 11-40%)"
+      esg_followers: "ESG跟随者(Top 41-80%)"
+      esg_laggards: "ESG落后者(Bottom 20%)"
+
+    peer_group_analysis:
+      - similar_business_model_comparison: "相似商业模式对比"
+      - same_industry_esg_ranking: "同行业ESG排名"
+      - market_cap_cohort_analysis: "市值同组分析"
+      - geographic_region_benchmark: "地理区域基准"
+
+stakeholder_impact_assessment:
+  stakeholder_value_quantification:
+    shareholder_value_creation:
+      - total_shareholder_return_premium: "股东总回报溢价"
+      - volatility_reduction_benefit: "波动率降低效益"
+      - esg_multiple_expansion: "ESG倍数扩张"
+      - long_term_value_sustainability: "长期价值可持续性"
+
+    employee_value_proposition:
+      - talent_attraction_advantage: "人才吸引优势"
+      - employee_retention_improvement: "员工留任改善"
+      - productivity_engagement_correlation: "生产率参与度关联"
+      - workplace_satisfaction_premium: "工作场所满意度溢价"
+
+    customer_value_delivery:
+      - customer_lifetime_value_enhancement: "客户生命价值增强"
+      - brand_preference_strength: "品牌偏好强度"
+      - word_of_mouth_amplification: "口碑传播放大"
+      - customer_co_creation_value: "客户共创价值"
+
+    community_society_impact:
+      - local_economic_development_contribution: "本地经济发展贡献"
+      - environmental_public_good_provision: "环境公共产品提供"
+      - social_problem_solving_value: "社会问题解决价值"
+      - knowledge_spillover_benefits: "知识溢出效益"
+
+future_sustainability_assessment:
+  long_term_esg_resilience:
+    adaptive_capacity:
+      - regulatory_evolution_preparedness: "监管演进准备度"
+      - stakeholder_expectation_anticipation: "利益相关者期望预期"
+      - technology_transition_readiness: "技术转型准备度"
+      - business_model_evolution_capability: "商业模式演进能力"
+
+    innovation_sustainability:
+      - next_generation_esg_solutions: "下一代ESG解决方案"
+      - emerging_technology_integration: "新兴技术整合"
+      - circular_economy_advancement: "循环经济进展"
+      - regenerative_business_model_potential: "再生商业模式潜力"
+
+  esg_leadership_trajectory:
+    market_transformation_influence:
+      - industry_standard_elevation: "行业标准提升"
+      - ecosystem_collaboration_leadership: "生态系统协作领导"
+      - policy_advocacy_effectiveness: "政策倡导有效性"
+      - global_sustainability_impact: "全球可持续发展影响"
+
+output_deliverables:
+  esg_native_assessment_report:
+    executive_summary: "ESG原生评估执行摘要"
+    native_authenticity_analysis: "原生真实性分析"
+    competitive_advantage_assessment: "竞争优势评估"
+    value_creation_quantification: "价值创造量化"
+    stakeholder_impact_matrix: "利益相关者影响矩阵"
+    future_sustainability_outlook: "未来可持续发展前景"
+
+  esg_investment_scorecard:
+    esg_native_score: "ESG原生评分(0-100)"
+    authenticity_rating: "真实性评级(AAA-CCC)"
+    competitive_moat_strength: "竞争护城河强度"
+    stakeholder_value_integration: "利益相关者价值整合"
+    long_term_sustainability_outlook: "长期可持续发展前景"
+
+quality_assurance:
+  assessment_rigor:
+    multi_source_verification:
+      - company_disclosure_analysis: "公司披露分析"
+      - third_party_esg_ratings: "第三方ESG评级"
+      - stakeholder_feedback_surveys: "利益相关者反馈调查"
+      - independent_research_validation: "独立研究验证"
+
+    longitudinal_consistency:
+      - historical_performance_tracking: "历史表现跟踪"
+      - crisis_period_behavior_analysis: "危机期行为分析"
+      - strategic_decision_consistency: "战略决策一致性"
+      - stakeholder_relationship_stability: "利益相关者关系稳定性"
+
+integration_protocols:
+  with_sustainability_valuator: "可持续发展估值器深度整合"
+  with_environmental_impact: "环境影响量化协同"
+  with_policy_analysis: "政策分析ESG维度"
+  with_financial_modeling: "财务建模ESG调整"
+  with_competitive_analysis: "竞争分析ESG护城河"
+
+success_criteria:
+  authenticity_identification_accuracy: "真实性识别准确性 >90%"
+  competitive_advantage_assessment_reliability: "竞争优势评估可靠性 >85%"
+  value_quantification_precision: "价值量化精准性 >80%"
+  stakeholder_impact_comprehensiveness: "利益相关者影响全面性 >95%"
+  long_term_predictive_validity: "长期预测有效性 >75%"

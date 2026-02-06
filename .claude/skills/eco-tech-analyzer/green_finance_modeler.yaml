@@ -1,0 +1,353 @@
+name: green-finance-modeler
+description: 绿色金融建模器 - 专门分析绿色金融工具、可持续投资策略、ESG融资成本优势，建立绿色金融价值模型
+version: "1.0"
+author: "投资研究Agent v19.12"
+category: green_finance
+
+triggers:
+  - "绿色金融分析"
+  - "可持续投资建模"
+  - "ESG融资成本"
+  - "绿色债券分析"
+  - "影响力投资"
+  - "绿色资本市场"
+
+system_message: |
+  你是绿色金融建模专家，专门负责：
+  1. 分析绿色金融工具和市场机制
+  2. 建立ESG因素对融资成本的影响模型
+  3. 评估可持续投资策略和回报特征
+  4. 量化绿色金融溢价和折价机制
+  5. 设计绿色投资组合和风险管理策略
+
+  核心专长：
+  - 绿色债券和可持续债券定价分析
+  - ESG评级对融资成本的影响建模
+  - 影响力投资回报测量和归因
+  - 绿色分类标准和合规评估
+  - 气候风险金融建模
+
+analysis_framework:
+  green_finance_market_analysis:
+    market_size_growth:
+      global_green_bond_market:
+        - market_size_2023: "$500B+ 年发行量"
+        - growth_projection_2030: "$2T+ 预期市场规模"
+        - regional_distribution: "欧洲40%、亚太35%、北美20%"
+        - sector_allocation: "能源30%、建筑25%、交通20%"
+
+      sustainable_investment_flows:
+        - esg_aum_global: "$35T+ ESG管理资产"
+        - annual_growth_rate: "15-25% 年增长率"
+        - institutional_allocation: "机构投资者65%占比"
+        - retail_participation: "零售投资者增长35%"
+
+    market_mechanisms:
+      pricing_dynamics:
+        - greenium_measurement: "绿色溢价(-5到-50bps)"
+        - liquidity_premium_analysis: "流动性溢价分析"
+        - credit_spread_comparison: "信用利差对比"
+        - maturity_structure_impact: "期限结构影响"
+
+      investor_demand_drivers:
+        - regulatory_mandates: "监管强制要求"
+        - fiduciary_duty_evolution: "信托义务演变"
+        - client_preference_shift: "客户偏好转变"
+        - risk_return_optimization: "风险收益优化"
+
+green_financing_instruments:
+  debt_instruments:
+    green_bonds:
+      use_of_proceeds_verification:
+        - eligible_green_projects: "合格绿色项目清单"
+        - proceeds_tracking_systems: "资金用途跟踪系统"
+        - impact_reporting_requirements: "影响报告要求"
+        - third_party_verification: "第三方验证机制"
+
+      pricing_advantages:
+        - issuance_cost_reduction: "发行成本降低(5-15bps)"
+        - investor_base_expansion: "投资者基础扩大"
+        - refinancing_flexibility: "再融资灵活性"
+        - reputation_enhancement: "声誉增强效应"
+
+    sustainability_linked_bonds:
+      performance_targets:
+        - key_performance_indicators: "关键绩效指标设定"
+        - sustainability_targets: "可持续发展目标"
+        - step_up_mechanisms: "票面利率上调机制"
+        - verification_protocols: "验证协议要求"
+
+      risk_return_profile:
+        - target_achievement_probability: "目标达成概率"
+        - coupon_adjustment_impact: "票面调整影响"
+        - investor_risk_assessment: "投资者风险评估"
+        - market_acceptance_factors: "市场接受度因素"
+
+  equity_instruments:
+    green_equity_funds:
+      fund_strategies:
+        - thematic_investing: "主题投资策略"
+        - best_in_class_selection: "同类最佳选择"
+        - esg_integration: "ESG整合策略"
+        - impact_investing: "影响力投资"
+
+      performance_characteristics:
+        - risk_adjusted_returns: "风险调整收益"
+        - tracking_error_analysis: "跟踪误差分析"
+        - factor_exposure_profile: "因子暴露特征"
+        - downside_protection: "下行保护能力"
+
+    green_ipo_market:
+      valuation_premium:
+        - esg_ipo_premium: "ESG IPO溢价(10-30%)"
+        - long_term_performance: "长期表现分析"
+        - institutional_participation: "机构参与度"
+        - retail_investor_interest: "零售投资者兴趣"
+
+cost_of_capital_modeling:
+  esg_impact_on_cost_of_debt:
+    credit_rating_enhancement:
+      rating_agency_methodology:
+        - environmental_risk_factors: "环境风险因素"
+        - social_governance_assessment: "社会治理评估"
+        - esg_score_integration: "ESG评分整合"
+        - sector_specific_adjustments: "行业特定调整"
+
+      credit_spread_impact:
+        calculation: |
+          ESG信用利差影响 = 基础利差 × (1 - ESG改善系数)
+          ESG改善系数 = (ESG评分/100) × 行业ESG敏感度 × 市场ESG偏好
+          年化融资成本节约 = 债务余额 × ESG利差改善
+
+    green_bond_pricing_model:
+      greenium_quantification:
+        factors_analysis:
+          - supply_demand_imbalance: "供需失衡影响"
+          - esg_investor_mandate: "ESG投资者约束"
+          - liquidity_considerations: "流动性考量"
+          - regulatory_incentives: "监管激励措施"
+
+        pricing_formula: |
+          绿色债券价格 = 基础债券价格 × (1 + 绿色溢价)
+          绿色溢价 = ESG需求溢价 - 合规成本 - 流动性折价
+          净融资成本节约 = 绿色溢价 × 债务本金
+
+  esg_impact_on_cost_of_equity:
+    systematic_risk_adjustment:
+      esg_beta_modeling:
+        - environmental_systematic_risk: "环境系统风险"
+        - social_systematic_risk: "社会系统风险"
+        - governance_systematic_risk: "治理系统风险"
+        - integrated_esg_beta: "综合ESG Beta"
+
+      capm_adjustment:
+        calculation: |
+          ESG调整权益成本 = Rf + Beta_ESG × (Rm - Rf) + ESG风险溢价
+          Beta_ESG = 传统Beta × (1 + ESG风险调整系数)
+          ESG风险调整系数 = f(ESG评分, 行业ESG敏感度, 市场ESG偏好)
+
+    esg_multiple_impact:
+      valuation_multiple_analysis:
+        - pe_multiple_enhancement: "PE倍数提升(5-25%)"
+        - ev_ebitda_premium: "EV/EBITDA溢价"
+        - price_to_book_adjustment: "PB倍数调整"
+        - sector_specific_multiples: "行业特定倍数"
+
+      multiple_sustainability:
+        - esg_quality_consistency: "ESG质量一致性"
+        - performance_stability: "绩效稳定性"
+        - growth_sustainability: "增长可持续性"
+        - risk_profile_improvement: "风险特征改善"
+
+sustainable_investment_strategies:
+  portfolio_construction:
+    esg_integration_approaches:
+      negative_screening:
+        - exclusionary_criteria: "排除标准设定"
+        - sector_exclusions: "行业排除清单"
+        - controversial_business_practices: "争议商业实践"
+        - impact_on_portfolio_universe: "对投资组合范围影响"
+
+      positive_screening:
+        - best_in_class_selection: "同类最佳筛选"
+        - esg_momentum_strategies: "ESG动量策略"
+        - thematic_opportunities: "主题投资机会"
+        - impact_threshold_setting: "影响阈值设定"
+
+      esg_integration:
+        - fundamental_analysis_integration: "基本面分析整合"
+        - risk_adjusted_return_optimization: "风险调整收益优化"
+        - factor_model_enhancement: "因子模型增强"
+        - active_ownership_engagement: "积极所有权参与"
+
+  performance_attribution:
+    esg_factor_returns:
+      factor_decomposition:
+        - environmental_factor_return: "环境因子收益"
+        - social_factor_return: "社会因子收益"
+        - governance_factor_return: "治理因子收益"
+        - integrated_esg_factor: "综合ESG因子"
+
+      attribution_methodology:
+        calculation: |
+          ESG归因收益 = Σ(权重i × ESG因子暴露i × ESG因子收益)
+          超额收益分解 = 选股效应 + 行业配置 + ESG因子效应 + 其他
+          ESG价值贡献 = ESG归因收益 / 组合总收益
+
+    risk_adjusted_performance:
+      sharpe_ratio_enhancement:
+        - esg_risk_reduction_impact: "ESG风险降低影响"
+        - return_volatility_trade_off: "收益波动率权衡"
+        - downside_risk_mitigation: "下行风险缓解"
+        - maximum_drawdown_improvement: "最大回撤改善"
+
+climate_risk_modeling:
+  physical_risk_assessment:
+    transition_risk_quantification:
+      carbon_transition_scenarios:
+        - orderly_transition_2c: "有序转型2°C情景"
+        - disorderly_transition_1_5c: "无序转型1.5°C情景"
+        - hot_house_world: "温室世界情景"
+        - net_zero_by_2050: "2050年净零情景"
+
+      financial_impact_modeling:
+        calculation: |
+          转型风险价值影响 = Σ(资产价值i × 转型风险敞口i × 情景概率i)
+          碳资产搁浅价值 = 化石燃料资产 × 搁浅概率 × 剩余价值比例
+          适应投资需求 = 当前资产价值 × 气候适应系数
+
+    physical_risk_modeling:
+      acute_chronic_risk_separation:
+        - extreme_weather_impact: "极端天气影响"
+        - sea_level_rise_exposure: "海平面上升敞口"
+        - temperature_change_effects: "温度变化效应"
+        - precipitation_pattern_shifts: "降水模式变化"
+
+      geographic_risk_mapping:
+        - asset_location_vulnerability: "资产位置脆弱性"
+        - supply_chain_disruption_risk: "供应链中断风险"
+        - operational_continuity_impact: "运营连续性影响"
+        - insurance_cost_implications: "保险成本影响"
+
+green_taxonomy_compliance:
+  regulatory_framework_analysis:
+    eu_taxonomy_alignment:
+      substantial_contribution:
+        - climate_change_mitigation: "气候变化减缓实质贡献"
+        - climate_change_adaptation: "气候变化适应实质贡献"
+        - water_marine_resources: "水和海洋资源保护"
+        - circular_economy: "循环经济转型"
+        - pollution_prevention: "污染预防和控制"
+        - biodiversity_ecosystems: "生物多样性和生态系统"
+
+      do_no_significant_harm:
+        - dnsh_assessment_criteria: "不造成重大损害评估"
+        - technical_screening_criteria: "技术筛选标准"
+        - minimum_safeguards_compliance: "最低保障措施合规"
+        - taxonomy_eligibility_assessment: "分类法合格性评估"
+
+    other_taxonomies:
+      china_green_taxonomy:
+        - energy_efficiency_projects: "节能项目标准"
+        - pollution_control_criteria: "污染控制标准"
+        - resource_conservation_requirements: "资源保护要求"
+        - ecological_protection_guidelines: "生态保护指南"
+
+      us_sustainable_finance_initiatives:
+        - sec_climate_disclosure: "SEC气候披露要求"
+        - federal_sustainability_standards: "联邦可持续标准"
+        - state_level_green_requirements: "州级绿色要求"
+        - industry_specific_guidelines: "行业特定指导"
+
+impact_measurement_valuation:
+  impact_quantification_frameworks:
+    theory_of_change_modeling:
+      inputs_activities_mapping:
+        - financial_capital_inputs: "金融资本投入"
+        - human_capital_deployment: "人力资本部署"
+        - technology_knowledge_transfer: "技术知识转移"
+        - institutional_capacity_building: "机构能力建设"
+
+      outcomes_impact_assessment:
+        - short_term_outcomes: "短期成果测量"
+        - medium_term_impacts: "中期影响评估"
+        - long_term_systemic_change: "长期系统变革"
+        - unintended_consequences: "意外后果评估"
+
+    impact_valuation_methodologies:
+      monetization_approaches:
+        - social_return_on_investment: "社会投资回报(SROI)"
+        - cost_benefit_analysis: "成本效益分析"
+        - willingness_to_pay_studies: "支付意愿研究"
+        - avoided_cost_methodology: "避免成本方法论"
+
+      impact_financial_integration:
+        calculation: |
+          影响调整回报 = 财务回报 + (影响价值/投资金额)
+          综合价值创造 = 经济价值 + 社会价值 + 环境价值
+          影响效率比 = 影响价值 / 投资成本
+
+portfolio_risk_management:
+  esg_risk_monitoring:
+    esg_risk_metrics:
+      - portfolio_esg_score: "组合ESG评分"
+      - carbon_footprint_tracking: "碳足迹跟踪"
+      - water_stress_exposure: "水资源紧张敞口"
+      - controversial_business_exposure: "争议业务敞口"
+
+    stress_testing_scenarios:
+      - esg_regulatory_tightening: "ESG监管收紧"
+      - carbon_price_shock: "碳价格冲击"
+      - esg_preference_reversal: "ESG偏好逆转"
+      - green_bubble_burst: "绿色泡沫破裂"
+
+  dynamic_hedging_strategies:
+    esg_factor_hedging:
+      - esg_factor_neutral_construction: "ESG因子中性构建"
+      - green_brown_pair_trading: "绿色-棕色配对交易"
+      - carbon_futures_hedging: "碳期货对冲"
+      - esg_options_strategies: "ESG期权策略"
+
+output_deliverables:
+  green_finance_analysis_report:
+    executive_summary: "绿色金融分析执行摘要"
+    market_opportunity_assessment: "市场机会评估"
+    financing_cost_impact_model: "融资成本影响模型"
+    sustainable_investment_strategy: "可持续投资策略"
+    climate_risk_stress_testing: "气候风险压力测试"
+    portfolio_optimization_recommendations: "组合优化建议"
+
+  green_investment_framework:
+    esg_integration_methodology: "ESG整合方法论"
+    impact_measurement_system: "影响测量系统"
+    risk_management_protocols: "风险管理协议"
+    performance_attribution_model: "绩效归因模型"
+    regulatory_compliance_checklist: "监管合规检查清单"
+
+quality_standards:
+  data_integrity_verification:
+    esg_data_quality_assessment:
+      - data_source_reliability: "数据来源可靠性"
+      - methodology_consistency: "方法论一致性"
+      - temporal_data_alignment: "时间数据对齐"
+      - cross_reference_validation: "交叉参考验证"
+
+    model_validation_procedures:
+      - backtesting_performance: "回测绩效验证"
+      - out_of_sample_testing: "样本外测试"
+      - sensitivity_analysis: "敏感性分析"
+      - peer_model_comparison: "同业模型对比"
+
+integration_protocols:
+  with_carbon_economics: "碳经济学深度整合"
+  with_esg_valuation: "ESG估值协同分析"
+  with_policy_analysis: "政策分析绿色金融影响"
+  with_risk_assessment: "风险评估气候因子"
+  with_portfolio_optimization: "组合优化ESG约束"
+
+success_criteria:
+  model_accuracy: "建模准确性 >85%"
+  risk_prediction_reliability: "风险预测可靠性 >80%"
+  performance_attribution_precision: "绩效归因精准性 >90%"
+  regulatory_compliance_completeness: "监管合规完整性 >95%"
+  investment_actionability: "投资建议可执行性 >85%"
