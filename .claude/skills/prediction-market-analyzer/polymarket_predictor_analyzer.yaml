@@ -1,0 +1,320 @@
+name: polymarket-predictor-analyzer
+description: Polymarket预测市场分析器 - 专门识别和分析与投资标的强相关的预测市场概率，用于调整投资分析和风险评估
+version: "1.0"
+author: "投资研究Agent v19.12"
+category: prediction_market_analysis
+
+triggers:
+  - "Polymarket分析"
+  - "预测市场概率"
+  - "市场预期调整"
+  - "概率权重分析"
+  - "预测市场整合"
+  - "事件概率评估"
+
+system_message: |
+  你是Polymarket预测市场分析专家，专门负责：
+  1. 识别与投资标的强相关的Polymarket预测事件
+  2. 分析预测概率对公司价值和业务的影响
+  3. 将预测市场数据整合到投资估值模型中
+  4. 提供基于预测概率的风险调整建议
+  5. 监控关键预测市场的概率变化趋势
+
+  核心专长：
+  - 预测市场数据解读和概率分析
+  - 事件相关性评估和影响量化
+  - 预测概率与基本面分析整合
+  - 市场情绪和预期管理
+  - 概率驱动的投资决策支持
+
+analysis_framework:
+  market_relevance_identification:
+    direct_company_predictions:
+      tesla_specific_markets:
+        - tesla_stock_price_targets: "Tesla股价目标预测"
+        - tesla_delivery_numbers: "Tesla交付量预测"
+        - tesla_earnings_results: "Tesla财报结果预测"
+        - tesla_autonomous_milestones: "Tesla自动驾驶里程碑"
+        - tesla_expansion_timeline: "Tesla扩张时间线预测"
+
+      technology_sector_predictions:
+        - autonomous_driving_adoption: "自动驾驶技术采用预测"
+        - ev_market_penetration: "电动车市场渗透率"
+        - battery_technology_breakthrough: "电池技术突破预测"
+        - charging_infrastructure_development: "充电基础设施发展"
+        - robotaxi_commercialization: "robotaxi商业化时间"
+
+    industry_macro_predictions:
+      regulatory_environment:
+        - ev_subsidies_continuation: "电动车补贴政策延续"
+        - carbon_pricing_implementation: "碳定价机制实施"
+        - autonomous_vehicle_regulation: "自动驾驶车辆监管"
+        - china_trade_relations: "中美贸易关系"
+        - environmental_policy_tightening: "环保政策收紧"
+
+      market_conditions:
+        - interest_rate_movements: "利率变动预测"
+        - commodity_price_trends: "大宗商品价格趋势"
+        - tech_stock_performance: "科技股表现预测"
+        - consumer_confidence_levels: "消费者信心水平"
+        - inflation_trajectory: "通胀轨迹预测"
+
+  prediction_probability_analysis:
+    probability_assessment_framework:
+      market_efficiency_evaluation:
+        - liquidity_depth_analysis: "市场流动性深度分析"
+        - participant_diversity: "参与者多样性评估"
+        - information_incorporation_speed: "信息整合速度"
+        - arbitrage_opportunity_detection: "套利机会检测"
+
+      probability_calibration:
+        - historical_accuracy_review: "历史准确性回顾"
+        - overconfidence_bias_adjustment: "过度自信偏差调整"
+        - consensus_vs_expert_analysis: "共识vs专家分析对比"
+        - base_rate_consideration: "基准概率考虑"
+
+    impact_magnitude_assessment:
+      direct_value_impact:
+        - revenue_impact_quantification: "收入影响量化"
+        - margin_impact_assessment: "利润率影响评估"
+        - market_share_implications: "市场份额影响"
+        - competitive_position_changes: "竞争地位变化"
+
+      indirect_value_effects:
+        - valuation_multiple_impact: "估值倍数影响"
+        - cost_of_capital_adjustment: "资本成本调整"
+        - growth_trajectory_modification: "增长轨迹修正"
+        - terminal_value_revision: "终值修正"
+
+tesla_specific_integration:
+  core_tesla_predictions:
+    autonomous_driving_milestones:
+      fsd_capability_timeline:
+        - "Level 4自动驾驶实现时间 (当前概率: XX%)"
+        - "监管批准获得时间线 (当前概率: XX%)"
+        - "商业化robotaxi服务 (当前概率: XX%)"
+        - "FSD技术竞争地位 (当前概率: XX%)"
+
+      valuation_impact_model: |
+        FSD价值贡献 = 基础FSD价值 × 技术实现概率 × 监管批准概率 × 市场接受概率
+        Tesla调整估值 = 传统汽车价值 + (FSD价值贡献 × 概率权重)
+        概率权重 = 预测市场概率 × 可信度调整系数
+
+    delivery_performance_predictions:
+      quarterly_delivery_targets:
+        - "Q1/Q2/Q3/Q4交付量目标达成 (概率: XX%)"
+        - "年度增长目标实现 (概率: XX%)"
+        - "产能扩张进度 (概率: XX%)"
+        - "supply_chain稳定性 (概率: XX%)"
+
+      financial_impact_modeling: |
+        交付量影响 = (预测交付量 - 基准交付量) × 单车利润 × 达成概率
+        股价反应 = 交付量影响 × 市场敏感度系数 × 预期差异放大器
+        投资调整 = 基础头寸 × (1 + 交付概率偏差 × 风险调整系数)
+
+    regulatory_environment_impact:
+      policy_support_predictions:
+        - "美国EV税收抵免延续 (概率: XX%)"
+        - "中国市场准入维持 (概率: XX%)"
+        - "欧盟碳边境税实施 (概率: XX%)"
+        - "自动驾驶法规友好化 (概率: XX%)"
+
+      policy_risk_adjustment: |
+        政策支持价值 = 基础政策收益 × 政策延续概率 × 实施有效概率
+        政策风险折价 = 负面政策影响 × 政策实施概率 × 严厉程度系数
+        净政策调整 = 政策支持价值 - 政策风险折价
+
+probability_integration_methodology:
+  base_case_adjustment:
+    scenario_probability_weighting:
+      optimistic_scenario_25:
+        - "关键预测概率 >70%"
+        - "估值上调 15-25%"
+        - "增长假设调整 +20-30%"
+        - "风险折价减少 -5-10%"
+
+      base_scenario_50:
+        - "关键预测概率 40-70%"
+        - "估值维持基准"
+        - "增长假设不变"
+        - "标准风险折价"
+
+      pessimistic_scenario_25:
+        - "关键预测概率 <40%"
+        - "估值下调 10-20%"
+        - "增长假设调整 -15-25%"
+        - "风险折价增加 +5-15%"
+
+    probability_weighted_valuation: |
+      调整后估值 = Σ(情景估值i × 情景概率i × 预测可信度i)
+      概率敏感性 = dEstimation/dProbability
+      预测价值贡献 = 预测调整价值 / 基础估值
+
+  risk_adjustment_framework:
+    uncertainty_premium_calculation:
+      prediction_uncertainty_factors:
+        - market_maturity_level: "预测市场成熟度"
+        - participant_expertise: "参与者专业水平"
+        - information_asymmetry: "信息不对称程度"
+        - time_horizon_reliability: "时间跨度可靠性"
+
+      uncertainty_adjustment: |
+        不确定性溢价 = 基础风险溢价 × (1 + 预测不确定性系数)
+        调整贴现率 = 基础贴现率 + 不确定性溢价
+        概率调整系数 = 1 - (预测分歧度 × 不确定性权重)
+
+    tail_risk_consideration:
+      extreme_scenario_protection:
+        - "黑天鹅事件概率 (<5%但高影响)"
+        - "tail risk对冲策略"
+        - "极端情景压力测试"
+        - "概率分布尾部风险"
+
+monitoring_alert_system:
+  probability_change_tracking:
+    significant_probability_shifts:
+      threshold_alerts:
+        - "概率变化 >10个百分点"
+        - "交易量异常增加 >3倍"
+        - "新信息导致概率跳跃"
+        - "市场共识快速转变"
+
+      trend_momentum_analysis:
+        - "概率趋势方向确认"
+        - "变化速度和加速度"
+        - "反转信号识别"
+        - "持续性评估"
+
+    market_sentiment_indicators:
+      aggregate_optimism_pessimism:
+        - "整体看多看空比例"
+        - "风险偏好变化"
+        - "信心指数变动"
+        - "预期修正幅度"
+
+data_integration_protocols:
+  polymarket_api_integration:
+    real_time_data_feeds:
+      market_data_streams:
+        - "实时价格和概率"
+        - "交易量和流动性"
+        - "持仓分布"
+        - "价格历史"
+
+      event_metadata_extraction:
+        - "事件描述解析"
+        - "到期时间跟踪"
+        - "结算条件"
+        - "相关性标签"
+
+    data_quality_assurance:
+      reliability_scoring:
+        - "流动性充分性评估"
+        - "参与者质量分析"
+        - "价格稳定性检查"
+        - "异常交易检测"
+
+  external_validation:
+    cross_platform_verification:
+      other_prediction_platforms:
+        - "Kalshi对比验证"
+        - "Metaculus专家预测"
+        - "PredictIt政治预测"
+        - "传统博彩赔率"
+
+      fundamental_analysis_reconciliation:
+        - "基本面分析一致性"
+        - "分析师预测对比"
+        - "管理层指引对照"
+        - "行业专家观点"
+
+output_integration:
+  investment_thesis_adjustment:
+    probability_enhanced_analysis:
+      executive_summary_modification:
+        - "关键预测概率突出"
+        - "概率变化趋势分析"
+        - "预测风险提示"
+        - "投资建议概率权重"
+
+      detailed_analysis_enhancement:
+        - "情景分析概率权重"
+        - "风险因子概率量化"
+        - "催化剂事件概率"
+        - "时间轴概率分布"
+
+    valuation_model_integration:
+      dcf_model_adjustment:
+        - "现金流预测概率权重"
+        - "贴现率概率调整"
+        - "终值概率分布"
+        - "敏感性分析概率"
+
+      multiple_valuation_enhancement:
+        - "倍数区间概率分布"
+        - "同业对比概率调整"
+        - "市场条件概率影响"
+        - "流动性概率折价"
+
+specialized_metrics:
+  prediction_accuracy_tracking:
+    historical_performance_metrics:
+      - platform_accuracy_rate: "平台历史准确率"
+      - sector_prediction_reliability: "行业预测可靠性"
+      - timeframe_accuracy_variation: "时间框架准确性变化"
+      - volatility_prediction_quality: "波动性预测质量"
+
+    model_calibration_assessment:
+      - overconfidence_measurement: "过度自信测量"
+      - underconfidence_detection: "过度保守检测"
+      - probability_resolution: "概率解析度"
+      - brier_score_calculation: "Brier评分计算"
+
+  market_efficiency_indicators:
+    arbitrage_opportunity_tracking:
+      - "跨平台价格差异"
+      - "信息传导延迟"
+      - "流动性套利空间"
+      - "时间价值衰减"
+
+output_deliverables:
+  prediction_market_analysis_report:
+    executive_summary: "预测市场影响执行摘要"
+    relevant_predictions_overview: "相关预测概览"
+    probability_impact_analysis: "概率影响分析"
+    valuation_adjustments: "估值调整建议"
+    risk_assessment_update: "风险评估更新"
+    monitoring_recommendations: "监控建议"
+
+  probability_adjusted_models:
+    enhanced_dcf_model: "概率增强DCF模型"
+    scenario_analysis_framework: "情景分析框架"
+    risk_adjusted_returns: "风险调整收益"
+    portfolio_allocation_guidance: "组合配置指导"
+
+quality_standards:
+  prediction_relevance_validation:
+    correlation_analysis: "相关性分析验证"
+    materiality_assessment: "重要性评估"
+    impact_quantification: "影响量化"
+    timing_consideration: "时机考虑"
+
+  probability_reliability_assessment:
+    market_depth_evaluation: "市场深度评估"
+    participant_quality_analysis: "参与者质量分析"
+    information_efficiency_testing: "信息效率测试"
+    bias_detection_correction: "偏差检测纠正"
+
+integration_protocols:
+  with_financial_modeling: "财务建模概率整合"
+  with_risk_assessment: "风险评估概率调整"
+  with_scenario_analysis: "情景分析概率权重"
+  with_valuation_frameworks: "估值框架概率增强"
+  with_monitoring_systems: "监控系统概率预警"
+
+success_criteria:
+  prediction_identification_accuracy: "相关预测识别准确性 >90%"
+  probability_integration_effectiveness: "概率整合有效性 >85%"
+  valuation_adjustment_precision: "估值调整精准性 >80%"
+  risk_assessment_improvement: "风险评估改善度 >75%"
+  investment_decision_value_added: "投资决策增值 >20%"
