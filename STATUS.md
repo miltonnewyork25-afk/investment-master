@@ -67,13 +67,24 @@
 
 ---
 
+## 框架升级记录
+
+| 日期 | 升级内容 | 影响范围 |
+|------|---------|---------|
+| 2026-02-07 | deep_dive_protocol v5.0→v5.1 | 全局: Fast Gate强制, KS≥15, 预测≥20, 铁律13条 |
+| 2026-02-07 | research_fast.sh v1.0 创建 | 全局: 7门控自动检查 |
+| 2026-02-07 | Agent Prompt模板 v1.0 | 全局: SubAgent标准化prompt |
+| 2026-02-07 | TSM v4.0 升级规划 | TSM专属: 4Phase, 130K目标, 7 Agent Team |
+
+---
+
 ## 下一步最重要的 1-3 件事
 
-1. **运行 research_fast.sh** 对已有报告做基线检查，建立质量基准
-2. **下一个Tier 3分析** 时启用 current_tasks/ 任务锁 + research_fast.sh 门控
-3. **验证并行写作模式** — 选一个Tier 2分析试验多Agent独立写不同章节
+1. **TSM v4.0 Phase 0** — 启动7个并行Agent数据预取 + 市场辩论扫描 (下个Session)
+2. **TSM v4.0 Phase 1** — 定位+生态+市场图谱 (≥25K字符, Fast Gate通过)
+3. **验证Agent Team模式** — Phase 0是首次7-Agent并行，需记录效率+质量数据
 
 ---
 
 **最后更新**: 2026-02-07
-**更新者**: 主Agent (框架升级)
+**更新者**: 主Agent (TSM v4.0规划+框架升级v5.1)
