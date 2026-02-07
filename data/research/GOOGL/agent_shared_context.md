@@ -47,7 +47,7 @@
 | ChatGPT chatbot份额 | 45.3% | SimilarWeb 2026-01 |
 | GCP市场份额 | 12-13% (#3) | emma Blog 2025 |
 | GCP利润率(Q4) | 30.1% | SEC Q4 2025 |
-| Cloud backlog | $155B | business_overview.json |
+| Cloud backlog | $240B (Q4更新; 原Q3 $155B) | Alphabet Q4 Earnings, CNBC 2026-02-04 |
 | Gemini MAU | 750M | Alphabet Earnings |
 | Android设备 | 3.9B | DemandSage 2026 |
 | Chrome用户 | 3.83B | DemandSage 2026 |
