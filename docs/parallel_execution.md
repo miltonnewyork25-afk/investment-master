@@ -1,7 +1,8 @@
-# 并行Agent加速系统
+# 并行Agent加速系统 v4.0
 
 > **设计目的**：利用Task Agent能力并行执行独立分析任务，大幅缩短分析时间
 > **验证基准**：TSM五引擎并行执行节省约70%时间（从70分钟降至20分钟）
+> **v4.0变化**: Agent Prompt反幻觉注入、DM引用规范、Quality Gate v2.0集成
 
 ---
 
@@ -111,9 +112,21 @@ Agent 3 [维度C]   █████░░░░░ 50%  数据收集中...
 
 > 详见 `docs/agent_collaboration_protocol.md`
 
-**解决的5个痛点**:
-1. 重复I/O → **共享上下文** (`shared_context.md`)
-2. 无质量预检 → **双层质量门控** (`tests/research_fast.sh`)
+**解决的5+3个痛点**:
+1. 重复I/O → **共享上下文** (`shared_context.md`, Data Master格式)
+2. 无质量预检 → **双维度质量门控** P-G(Fast Gate) + R-G(结果检查)
 3. 无session恢复 → **任务锁** (`current_tasks/Agent{X}.lock.md`)
 4. 无失败记录 → **Agent执行日志** (`agent_logs/`)
 5. 批量commit → **增量提交** (每Agent完成即commit)
+6. Agent幻觉 (v4.0) → **反幻觉5条禁令**注入每个SubAgent prompt
+7. 数据版本混乱 (v4.0) → **DM引用规范** Agent必须用 `[DM-xxx vN.N]` 引用数据
+8. 假设不一致 (v4.0) → **KAL引用规范** Agent必须用 `[KA-xxx]` 引用假设
+
+### Agent Prompt v6.0 必须注入项 (v4.0新增)
+
+每个SubAgent dispatch时，prompt中除现有要求外，还必须包含:
+
+1. **反幻觉5条禁令** — 完整文本见 `docs/anti_hallucination_protocol.md` "Agent Prompt 反幻觉5条禁令"
+2. **DM引用指令** — "引用数据时必须附带 [DM-xxx vN.N] 标注"
+3. **KAL引用指令** — "引用假设时必须附带 [KA-xxx] 标注"
+4. **自检清单** — "完成后统计无源数字数量，补充来源或标注'数据待获取'"

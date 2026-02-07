@@ -68,6 +68,11 @@
 - **密度要求**: Tier 3报告≥15个标注/万字符，硬数据≥40%
 - **详见**: `docs/confidence_system.md`
 
+**铁律4: 无源数字禁止写入（v22.0新增）**
+- 报告中每个数字必须来自: DM锚点`[DM-xxx vN.N]` / 外部来源`[硬数据:]` / 明确公式`[合理推断:]`
+- 无源数字 = 幻觉 = 禁止写入
+- **详见**: `docs/anti_hallucination_protocol.md`
+
 **禁止事项**:
 - 不做无数据支撑的判断
 - 不写"众所周知"等模糊表述
@@ -193,7 +198,14 @@ reports/
 | `docs/bear_case_methodology.md` | Phase 4看空分析时 |
 | `docs/agent_collaboration_protocol.md` | 多Agent并行执行时 |
 | `tests/research_fast.sh` | Agent完成后质量门控 |
+| `docs/data_version_control.md` | Tier 3 Phase 0 DM初始化时 |
+| `docs/anti_hallucination_protocol.md` | 并行Agent dispatch时 |
+| `docs/key_assumptions_list.md` | Tier 3 Phase 1-4 假设管理时 |
+| `docs/kill_switch_registry.md` | Tier 3 Phase 5 KS注册时 |
+| `docs/valuation_correction_hierarchy.md` | Phase 4 估值修正时 |
+| `docs/quality_gate_v2.md` | Phase 4/5 质量门控时 |
 | `docs/v21_migration_guide.md` | v20→v21迁移参考 |
+| `docs/v22_migration_guide.md` | v21→v22迁移参考 |
 | `CHANGELOG.md` | 查看变更历史时 |
 
 ---

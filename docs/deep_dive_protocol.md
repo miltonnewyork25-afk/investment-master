@@ -1,6 +1,7 @@
-# Deep-Dive 分析协议 v5.1 (Tier 3)
+# Deep-Dive 分析协议 v6.0 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
+> **v6.0变化**: Data Master版本控制(M1)、反幻觉协议(M2)、关键假设主表KAL(M3)、Kill Switch注册表(M4)、估值修正层级(M5)、双维度质量门控P-G+R-G(M6)。解决GOOGL"高形式分低实质分"问题。
 > **v5.1变化**: Fast Gate强制门控(每Phase必须通过research_fast.sh)、Kill Switch≥15、可验证预测≥20、Phase 4标注密度阈值8/万、并行Agent prompt规范、AMD v3.1验证基准固化
 > **v5.0变化**: 争议驱动报告结构(CQ)、三层置信度系统、看空等权重、五引擎依赖标注、洞察密度标准
 > **v4.0变化**: 6→8Phase（新增Phase 0.5市场注意力雷达 + Phase 3.5 AI深度评估），Phase 4升级为强制，新增M13/M14通用模块+TP01-06科技平台模块
@@ -16,8 +17,10 @@
 3. **数据质量检查** — 读取 `prefetch_metadata.json`，确认关键数据可用
 4. **预测市场可用性** — 检查 `prediction_market.json` 覆盖度
 5. **框架加载** — 读取行业特化配置 + 行业框架文档
+6. **Data Master初始化 (v6.0)** — 创建 `reports/{TICKER}/data/shared_context.md` 为DM格式(v1.0)，写入财务/市场基础数据锚点。详见 `docs/data_version_control.md`
+7. **KAL初始化 (v6.0)** — 创建 `reports/{TICKER}/data/key_assumptions.md` 空模板。详见 `docs/key_assumptions_list.md`
 
-**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥8/14文件可用
+**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥8/14文件可用 + DM v1.0已创建 + KAL模板已创建
 
 ### Phase 0.5: 市场注意力雷达 + Core Questions（自动执行，与Phase 0并行）
 
@@ -32,7 +35,7 @@
 7. **CQ驱动报告结构** — 报告按CQ分章，模块成为回答问题的素材 (v5.0新增)
 8. **输出执行清单** — 标准模块 + Hot-Patch模块合并，输出Phase 1-5完整执行清单
 
-**Phase 0.5 完成标准**: Top 10维度 + 5-8个CQ + CQ-模块矩阵 + 覆盖率≥80% + 报告大纲
+**Phase 0.5 完成标准**: Top 10维度 + 5-8个CQ + CQ-模块矩阵 + 覆盖率≥80% + 报告大纲 + CQ关联的初始假设已预注册到KAL
 
 ---
 
@@ -63,6 +66,24 @@ bash tests/research_fast.sh reports/{TICKER}/{TICKER}_Phase{N}_v{版本}_{YYYY-M
 **Phase 4 标注密度例外** (v5.1): Phase 4以分析判断为主（行为金融偏差检查、事实核查、反证挑战），数据标注密度天然低于Phase 1-3。G2阈值对Phase 4单独设为 **8/万字符**（非15/万）。AMD Phase 4实测密度7.0，属预期行为。
 
 **标注格式双兼容**: 旧格式`[A:]`/`[B:]`/`[P:]`/`[E:]`和新格式`[硬数据:]`/`[合理推断:]`/`[主观判断:]`均被 Fast Gate 识别。AMD v3.1 用旧格式达到16.3/万字符密度。
+
+### 双维度质量门控 (v6.0新增)
+
+> Fast Gate 升级为 P-G（过程门控）的自动化基础，新增 R-G（结果门控）检查数据一致性。详见 `docs/quality_gate_v2.md`
+
+**P-G (过程门控)**: 10项 — 继承Fast Gate 7项 + CQ覆盖 + 标注比例 + 看空篇幅
+**R-G (结果门控)**: 12项 — SOTP一致性 + KS一致性 + KAL一致性 + DM一致性 + 估值可追溯 + 数字一致性
+
+**通过标准**: P-G ≥ 8/10 **且** R-G ≥ 7/10
+**Phase 4/5强制**: 必须通过全部12项R-G检查
+
+```bash
+# Phase完成后执行:
+# Step 1: 自动P-G (Fast Gate)
+bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
+# Step 2: Agent R-G检查 (Phase 4/5用模板)
+# 详见 docs/quality_gate_v2.md R-G检查执行模板
+```
 
 ---
 
@@ -372,7 +393,7 @@ Step 5: 五引擎协同 → 统一投资建议+置信度
 
 ---
 
-## 铁律（Deep-Dive强制，十三条）
+## 铁律（Deep-Dive强制，十五条）
 
 1. **数据必有源**: 每个关键数字标注来源，≥15标注/万字
 2. **判断必有据**: 每个核心判断≥2条证据链
@@ -387,6 +408,8 @@ Step 5: 五引擎协同 → 统一投资建议+置信度
 11. **看空必等权** (v5.0): 看空相关内容≥总篇幅30%，≥8个看空论点含四要素
 12. **模块必So What** (v5.0): 每个模块通过"So What?"检验，无洞察的模块压缩
 13. **Phase必Fast Gate** (v5.1): 每Phase完成→运行research_fast.sh→通过后才能git commit
+14. **无源数字禁写入** (v6.0): 报告中每个数字必须来自DM锚点/外部来源/明确公式，无源数字=幻觉=禁止。详见 `docs/anti_hallucination_protocol.md`
+15. **估值修正必审计** (v6.0): 每次估值调整走修正管道(L1-L5)，单层≤±15%，记审计日志。详见 `docs/valuation_correction_hierarchy.md`
 
 ---
 
@@ -405,32 +428,26 @@ Step 5: 五引擎协同 → 统一投资建议+置信度
 
 **每个Phase并行执行时必须遵循**:
 
-1. **共享上下文**: dispatch前编写 `reports/{TICKER}/data/shared_context.md`，Agent只读此文件
+1. **共享上下文**: dispatch前编写 `reports/{TICKER}/data/shared_context.md` (Data Master格式)，Agent只读此文件
 2. **任务锁**: dispatch前创建 `reports/{TICKER}/data/current_tasks/Agent{X}.lock.md`，完成+QG通过后删锁
-3. **质量门控**: Agent返回后运行 `bash tests/research_fast.sh {file} {min_chars} 3`
+3. **质量门控**: Agent返回后运行 P-G (Fast Gate) + R-G (结果检查)。详见 `docs/quality_gate_v2.md`
 4. **增量提交**: 每个Agent通过QG → 立即 `git commit`
 5. **状态仪表盘**: 每个Agent完成时更新 `STATUS.md`
 6. **Session恢复**: 新session检测到锁文件 → 执行恢复协议（检查output→判断状态→报告用户）
+7. **反幻觉注入 (v6.0)**: 每个SubAgent prompt必须包含反幻觉5条禁令。详见 `docs/anti_hallucination_protocol.md`
+8. **DM引用规范 (v6.0)**: Agent引用数据必须附带 `[DM-xxx vN.N]` 版本号。详见 `docs/data_version_control.md`
 
-### 并行Agent Prompt规范 (v5.1新增, AMD验证)
+### 并行Agent Prompt规范 (v5.1+v6.0)
 
-> **教训来源**: AMD Phase 0 用 9 个并行Agent效果优秀(每个返回5K-15K字符有效数据)，
-> 因为prompt包含了充分的上下文。简短prompt → 泛泛数据，详细prompt → 精准数据。
-
-**每个SubAgent prompt必须包含**:
-1. **具体数据需求列表**: 明确列出需要的每个数据点/指标（不是"查一下财务数据"，而是"查2024-2025年季度收入/毛利率/R&D支出/自由现金流"）
-2. **Phase前序发现**: 提供已完成Phase的关键结论摘要，避免Agent重复或矛盾
-3. **CQ关联**: 说明此Agent任务与哪个Core Question相关，聚焦回答
-4. **字符目标**: 明确期望返回的字符数范围（如"5,000-10,000字符"）
-5. **输出格式要求**: 指定标注格式([A:]/[B:]等)、表格格式、Mermaid图需求
-6. **验证要求**: 要求Agent标注数据来源和获取时间
-
-**AMD验证基准**:
-| Agent类型 | 推荐数量 | 期望产出 | AMD实际 |
-|-----------|---------|---------|---------|
-| Phase 0 数据预取 | 5-9个 | 各5K-15K字符 | 9个Agent, 平均8K字符 |
-| Phase 3 分析模块 | 3-5个 | 各8K-20K字符 | — |
-| Phase 4 事实核查 | 1-2个 | 各10K-20K字符 | 1个Agent, 12项核查全通过 |
+**每个SubAgent prompt必须包含** (v5.1):
+1. **具体数据需求列表**: 列出每个数据点/指标（非泛泛描述）
+2. **Phase前序发现**: 已完成Phase关键结论摘要
+3. **CQ关联**: 与哪个Core Question相关
+4. **字符目标**: 期望返回字符数范围
+5. **输出格式要求**: 标注格式+表格+Mermaid图需求
+6. **验证要求**: 标注数据来源和获取时间
+7. **反幻觉5条禁令 (v6.0)**: 详见 `docs/anti_hallucination_protocol.md`
+8. **DM/KAL引用指令 (v6.0)**: 详见 `docs/parallel_execution.md` v4.0
 
 ---
 
@@ -440,39 +457,30 @@ Step 5: 五引擎协同 → 统一投资建议+置信度
 
 | Phase | 完成标准 |
 |-------|---------|
-| 0+0.5 | 数据≥8/14文件OK + Top 10维度+覆盖率≥80%+补丁规格 |
-| 1 | 公司画像+产业链+概率矩阵+维度覆盖计划 |
-| 2 | 周期定位+SOTP+三情景+资本配置 |
-| 3 | 五引擎+PPDA≥3背离+PMSI+热点补丁 |
-| 3.5 | AI冲击矩阵(≥90%营收)+L×S定位+AI调整估值 |
-| 4 | 偏差检查+核查≥10点+反证≥3条+维度回应100%+Fast Gate通过(G2≥8) |
-| 5 | Kill Switch≥15条+预测≥20个+铁律十二条全满足+Fast Gate通过 |
+| 0+0.5 | 数据≥8/14文件OK + DM v1.0已创建 + KAL模板已创建 + Top 10维度+覆盖率≥80%+补丁规格 |
+| 1 | 公司画像+产业链+概率矩阵+维度覆盖计划 + KAL增长/竞争假设已注册 |
+| 2 | 周期定位+SOTP(含工作底稿)+三情景+资本配置 + DM-VAL写入 + KAL估值假设已注册 |
+| 3 | 五引擎+PPDA≥3背离+PMSI+热点补丁 + KAL AI/风险假设已注册 |
+| 3.5 | AI冲击矩阵(≥90%营收)+L×S定位+AI调整估值 + DM-AI写入 |
+| 4 | 偏差检查+核查≥10点+反证≥3条+维度回应100%+P-G≥8+R-G≥7+DM冻结+KAL全部A级已验证 |
+| 5 | Kill Switch注册表≥15条+预测≥20个+铁律十五条全满足+P-G≥8+R-G≥7+估值修正审计日志完整 |
 
 ---
 
 ## AMD v3.1 验证基准 (v5.1新增)
 
-> AMD Deep Research v3.1 (2026-02-06) 是第一个全部通过 Fast Gate 7门控的报告。
-> 以下数据作为后续分析的质量参考基准。
-
-### 核心指标
+> AMD v3.1 (2026-02-06): 首个全部通过 Fast Gate 7门控的报告。质量参考基准。
 
 | 指标 | AMD v3.1实际 | 协议目标 | 达成率 |
 |------|-------------|---------|--------|
-| 总字符数 | 90,413 | ≥127,500(半导体) | 71% (4Phase简化版) |
+| 总字符数 | 90,413 | ≥127,500(半导体) | 71% (4Phase简化) |
 | 标注密度 | 16.3/万字符 | ≥15/万字符 | 109% ✅ |
-| 数据标注总数 | 147个 | — | — |
 | Mermaid图表 | 15个 | ≥10个 | 150% ✅ |
 | Kill Switch | 17个 | ≥15个 | 113% ✅ |
 | 看空论点 | 8个(结构化) | ≥8个 | 100% ✅ |
 | Fast Gate | 7/7通过 | 7/7通过 | 100% ✅ |
 
-### 简化Phase路径 (适用条件)
-
-AMD v3.1 将8Phase合并为4Phase仍达到高质量。适用条件:
-- 该公司已有先前版本报告可参考
-- 分析师对行业有充分了解（非首次覆盖）
-- 时间约束需要加速产出
+### 简化Phase路径 (适用条件: 非首次覆盖+分析师熟悉行业+时间约束)
 
 | 简化Phase | 对应标准Phase | 字符目标 | AMD实际 |
 |-----------|-------------|---------|---------|
@@ -481,12 +489,11 @@ AMD v3.1 将8Phase合并为4Phase仍达到高质量。适用条件:
 | P3: 战略+引擎 | Phase 3+3.5 | ≥20,000 | 20,010 |
 | P4: 对抗+决策 | Phase 4+5 | ≥25,000 | 30,000 |
 
-**注意**: 简化路径不降低质量标准（标注密度、Kill Switch数量等均不变），只合并Phase减少会话数。
+**注意**: 简化路径不降低质量标准，只合并Phase减少会话数。
 
-### 关键教训清单
+### 关键教训
 
-1. **SubAgent prompt质量决定输出质量**: 9个详细prompt的Agent全部返回有效数据；简短prompt的Agent返回泛泛内容
-2. **标注密度是最敏感的质量指标**: TSM旧版仅0.1/万 vs AMD 16.3/万，差163倍
-3. **Phase 4标注密度天然较低**: 分析判断为主的章节，G2阈值应降到8/万
-4. **Fast Gate在commit前拦截问题**: 比写完后人工审核效率高10倍
-5. **Mermaid图表提升结构清晰度**: 15张图使90K字符报告可浏览
+- SubAgent prompt质量决定输出质量（详细prompt→精准数据）
+- 标注密度是最敏感的质量指标（TSM 0.1/万 vs AMD 16.3/万）
+- Phase 4标注密度天然较低（G2阈值8/万）
+- Fast Gate在commit前拦截问题，效率远高于事后审核
