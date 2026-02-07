@@ -67,7 +67,9 @@ else
 fi
 
 # --- G2: 数据标注密度 ---
-ANNOTATIONS=$(count_matches '\[(A|B|P|E):' "$FILE")
+OLD_ANNOTATIONS=$(count_matches '\[(A|B|P|E):' "$FILE")
+NEW_ANNOTATIONS=$(count_matches '\[(硬数据|合理推断|主观判断):' "$FILE")
+ANNOTATIONS=$((OLD_ANNOTATIONS + NEW_ANNOTATIONS))
 if [ "$CHARS" -gt 0 ]; then
     DENSITY=$(python3 -c "print(round($ANNOTATIONS * 10000 / $CHARS, 1))")
 else
@@ -98,7 +100,7 @@ else
     echo -e "${GREEN}PASS G3a: 免责声明存在${NC}"
 fi
 
-TOC_ITEMS=$(grep -cE '^\- [0-9]+\.[0-9]+|^## Phase|^# 目录|^# 全报告目录' "$FILE" 2>/dev/null || echo 0)
+TOC_ITEMS=$(grep -cE '^\- \[?[0-9]+\.[0-9]+|^## Phase|^# 目录|^## 全报告目录' "$FILE" 2>/dev/null || echo 0)
 if [ "$TOC_ITEMS" -lt 3 ]; then
     echo -e "${YELLOW}WARN G3b: 目录条目较少 (${TOC_ITEMS}个)，可能缺少目录${NC}"
     WARNINGS=$((WARNINGS+1))
@@ -153,7 +155,11 @@ A_COUNT=$(count_matches '\[A:' "$FILE")
 B_COUNT=$(count_matches '\[B:' "$FILE")
 P_COUNT=$(count_matches '\[P:' "$FILE")
 E_COUNT=$(count_matches '\[E:' "$FILE")
-echo "       标注分布: [A]=${A_COUNT} [B]=${B_COUNT} [P]=${P_COUNT} [E]=${E_COUNT}"
+HARD_COUNT=$(count_matches '\[硬数据:' "$FILE")
+INFER_COUNT=$(count_matches '\[合理推断:' "$FILE")
+SUBJ_COUNT=$(count_matches '\[主观判断:' "$FILE")
+echo "       旧格式: [A]=${A_COUNT} [B]=${B_COUNT} [P]=${P_COUNT} [E]=${E_COUNT}"
+echo "       新格式: [硬数据]=${HARD_COUNT} [合理推断]=${INFER_COUNT} [主观判断]=${SUBJ_COUNT}"
 
 # --- G7: Phase 4 专项检查 (Kill Switch / 预测) ---
 HAS_PHASE4=$(grep -qi 'phase 4\|对抗审查\|决策输出\|kill switch' "$FILE" 2>/dev/null && echo 1 || echo 0)
