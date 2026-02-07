@@ -359,13 +359,25 @@ Step 5: 五引擎协同 → 统一投资建议+置信度
 
 ## 并行Agent加速
 
-> 详见 `docs/parallel_execution.md`
+> 并行基础见 `docs/parallel_execution.md`
+> 协作协议见 `docs/agent_collaboration_protocol.md`
 
 独立任务**必须并行**执行。推荐并行组合:
 - Phase 0 + 0.5: 数据预取与注意力雷达并行
 - Phase 3各子模块: 护城河/五引擎/热点补丁可并行
 - Phase 3.5: Layer 1(冲击矩阵) + Layer 2(L×S定位)可并行
 - Phase 5: Kill Switch + 预测清单 + 行动清单可并行
+
+### 多Agent协作机制 (v1.0)
+
+**每个Phase并行执行时必须遵循**:
+
+1. **共享上下文**: dispatch前编写 `data/research/{TICKER}/shared_context.md`，Agent只读此文件
+2. **任务锁**: dispatch前创建 `current_tasks/Agent{X}.lock.md`，完成+QG通过后删锁
+3. **质量门控**: Agent返回后运行 `bash tests/research_fast.sh {file} {min_chars} 15`
+4. **增量提交**: 每个Agent通过QG → 立即 `git commit`
+5. **状态仪表盘**: 每个Agent完成时更新 `STATUS.md`
+6. **Session恢复**: 新session检测到锁文件 → 执行恢复协议（检查output→判断状态→报告用户）
 
 ---
 

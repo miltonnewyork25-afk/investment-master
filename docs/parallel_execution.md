@@ -104,3 +104,16 @@ Agent 3 [维度C]   █████░░░░░ 50%  数据收集中...
   - 需要足够带宽支持并行请求
   - 汇总阶段需要额外处理时间
 ```
+
+---
+
+## 多Agent协作协议
+
+> 详见 `docs/agent_collaboration_protocol.md`
+
+**解决的5个痛点**:
+1. 重复I/O → **共享上下文** (`shared_context.md`)
+2. 无质量预检 → **双层质量门控** (`tests/research_fast.sh`)
+3. 无session恢复 → **任务锁** (`current_tasks/Agent{X}.lock.md`)
+4. 无失败记录 → **Agent执行日志** (`agent_logs/`)
+5. 批量commit → **增量提交** (每Agent完成即commit)

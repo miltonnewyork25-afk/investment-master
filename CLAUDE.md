@@ -94,10 +94,11 @@
 
 ### 铁律 D: 会话范围预检（每次会话开始必须执行）
 1. **识别目标**: 用户想做什么？归类为 Tier 1/2/3
-2. **估算范围**: 该目标预计需要多少模块/步骤？
-3. **范围裁剪**: 如果范围超出单会话容量，主动提议拆分并明确本次会话的交付物
-4. **确认交付物**: 与用户对齐"本次会话结束时，你将得到 X"
-5. **拒绝膨胀**: 执行中如果发现新任务，记录到待办而非立即执行
+2. **恢复检查**: 检查 `data/research/{TICKER}/current_tasks/` 是否有未完成锁文件（详见 `docs/agent_collaboration_protocol.md`）
+3. **估算范围**: 该目标预计需要多少模块/步骤？
+4. **范围裁剪**: 如果范围超出单会话容量，主动提议拆分并明确本次会话的交付物
+5. **确认交付物**: 与用户对齐"本次会话结束时，你将得到 X"
+6. **拒绝膨胀**: 执行中如果发现新任务，记录到待办而非立即执行
 
 ### 铁律 A: 单会话禁跨Phase（Tier 3）
 - 完成当前Phase后必须停止并输出完成报告
@@ -164,6 +165,8 @@
 | `docs/confidence_system.md` | 写报告标注数据时 |
 | `docs/differentiated_insight_standard.md` | 模块质量检查时 |
 | `docs/bear_case_methodology.md` | Phase 4看空分析时 |
+| `docs/agent_collaboration_protocol.md` | 多Agent并行执行时 |
+| `tests/research_fast.sh` | Agent完成后质量门控 |
 | `docs/v21_migration_guide.md` | v20→v21迁移参考 |
 | `CHANGELOG.md` | 查看变更历史时 |
 

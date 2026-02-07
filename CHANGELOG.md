@@ -6,6 +6,25 @@
 
 ---
 
+## [v1.0-agent-collab] - 2026-02-07
+
+### MINOR - 多Agent协作优化
+
+基于PG Phase 1-3的4路并行Agent经验，解决5个协作痛点。
+
+- **新增** `docs/agent_collaboration_protocol.md` — 完整协作协议(共享上下文+任务锁+质量门控+STATUS.md+Agent日志+增量提交)
+- **新增** `tests/research_fast.sh` — 报告质量门控脚本(字符数+标注密度+硬数据占比+So What检查)
+- **新增** `data/research/PG/shared_context.md` — PG Phase 4共享上下文模板
+- **新增** `data/research/PG/STATUS.md` — Phase执行期间实时仪表盘
+- **新增** `data/research/PG/current_tasks/` — 任务锁目录
+- **新增** `data/research/PG/agent_logs/` — Agent执行日志目录
+- **升级** `CLAUDE.md` 铁律D: 新增session恢复检查(Step 2); 文档索引新增2条
+- **升级** `docs/deep_dive_protocol.md`: 并行Agent加速段新增6项协作机制
+- **升级** `docs/parallel_execution.md`: 新增多Agent协作协议引用
+- **升级** `data/research/PG/progress.md`: 新增失败记录表+会话恢复日志
+
+---
+
 ## [v21.0] - 2026-02-06
 
 ### MAJOR - 争议驱动框架升级（从模板填空到Core Questions驱动）
