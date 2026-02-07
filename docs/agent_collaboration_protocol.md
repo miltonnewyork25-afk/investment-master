@@ -1,6 +1,6 @@
-# 多Agent协作协议 v1.0
+# 多Agent协作协议 v1.1
 
-> **目的**: 解决并行Agent执行中的5个协作痛点 — 重复I/O、无质量预检、无session恢复、无失败记录、批量commit
+> **目的**: 解决并行Agent执行中的6个协作痛点 — 重复I/O、无质量预检、无session恢复、无失败记录、批量commit、文件碎片化
 > **适用**: Tier 3 Deep-Dive Phase 1-5 的多Agent并行执行
 
 ---
@@ -56,14 +56,21 @@
 ```
 data/research/{TICKER}/
 ├── current_tasks/           # Phase执行期间的任务锁
-│   ├── Agent_A.lock.md      # Agent A 锁文件
-│   ├── Agent_B.lock.md
+│   ├── Agent_A.lock.md
 │   └── ...
 ├── agent_logs/              # Agent执行日志 (永久)
 │   ├── {TICKER}_Phase1_AgentA.log.md
 │   └── ...
 ├── shared_context.md        # 共享上下文 (每Phase更新)
 └── STATUS.md                # 实时仪表盘 (Phase执行期)
+
+reports/{TICKER}/
+├── staging/                 # Agent暂存区 (临时，QG通过后删除)
+│   ├── Phase1_AgentA_raw.md
+│   └── ...
+├── {TICKER}_Phase1.md       # Phase级主文件 (主线程归档)
+├── {TICKER}_Phase2.md
+└── {TICKER}_Complete.md     # 最终合并报告 (项目结束时生成)
 ```
 
 ### 锁文件格式
@@ -245,6 +252,78 @@ feat({TICKER}): Phase {N} Complete — {Phase名称} 全模块验证
 
 ---
 
+## 7. 暂存→归档 (消除文件碎片化)
+
+### 问题
+4路Agent × 5个Phase = 20+个零散报告文件，不可读、不可交付。
+
+### 方案: Agent写暂存，主线程归档到Phase主文件
+
+```
+Agent写入 staging/ → 主线程QG验证 →
+  PASS → 追加到Phase主文件 → 删staging → git commit
+  FAIL → 重试Agent
+
+Phase全部完成 → Phase主文件即为交付物
+项目结束 → 合并所有Phase文件为Complete报告
+```
+
+### 主线程归档操作
+
+Agent通过QG后，主线程执行:
+
+1. **提取内容**: 去掉Agent文件的元数据头(前5-6行)和免责声明尾(最后2行)
+2. **追加到Phase主文件**: 添加模块分隔线，保留所有标注和内容
+3. **删除staging文件**: `rm reports/{TICKER}/staging/Phase{N}_Agent{X}_raw.md`
+4. **git commit**: 增量提交Phase主文件
+
+### Phase主文件结构
+
+```markdown
+# {TICKER} Deep Research — Phase {N}: {Phase名称}
+## 公司: {Name} | 日期: {date} | 框架: v21.0
+
+### 目录
+- [模块1名称](#)
+- [模块2名称](#)
+- ...
+
+---
+
+## 模块1: {标题} (来源: Agent A)
+{Agent A 内容}
+
+---
+
+## 模块2: {标题} (来源: Agent B)
+{Agent B 内容}
+
+---
+
+*免责声明: ...*
+```
+
+### 最终合并 (项目结束时)
+
+Phase 1-5全部完成后，生成完整报告:
+
+```bash
+# 合并所有Phase文件为最终报告
+cat reports/{TICKER}/{TICKER}_header.md \
+    reports/{TICKER}/{TICKER}_Phase1.md \
+    reports/{TICKER}/{TICKER}_Phase2.md \
+    reports/{TICKER}/{TICKER}_Phase3.md \
+    reports/{TICKER}/{TICKER}_Phase4.md \
+    reports/{TICKER}/{TICKER}_Phase5.md \
+    > reports/{TICKER}/{TICKER}_Complete.md
+```
+
+**文件数量对比**:
+- 旧: 20-28个零散Agent文件
+- 新: 5个Phase文件 + 1个Complete文件 = 6个文件
+
+---
+
 ## 主线程工作流 (完整)
 
 ```
@@ -259,16 +338,17 @@ Step 4: 创建 current_tasks/Agent{X}.lock.md (每个Agent一个)
 Step 5: 并行dispatch Agent (prompt引用shared_context.md)
 Step 6: 主线程同时执行自己的模块
 
-=== 阶段C: 验证+提交 (每个Agent返回时) ===
-Step 7: 运行 tests/research_fast.sh → PASS/FAIL
-Step 8: FAIL → 记录到STATUS.md失败日志 + 重试Agent (最多1次)
-Step 9: PASS → 删锁 + 更新STATUS.md + git commit (增量)
+=== 阶段C: 验证+归档 (每个Agent返回时) ===
+Step 7: Agent输出写入 reports/{TICKER}/staging/
+Step 8: 运行 tests/research_fast.sh → PASS/FAIL
+Step 9: FAIL → 记录到STATUS.md失败日志 + 重试Agent (最多1次)
+Step 10: PASS → 追加到Phase主文件 + 删staging + 删锁 + 更新STATUS.md + git commit
 
 === 阶段D: Phase收尾 ===
-Step 10: 全部Agent完成 → 汇总检查 (总字数/CQ覆盖)
-Step 11: STATUS.md关键数据合并入progress.md
-Step 12: git commit "Phase {N} Complete"
-Step 13: 提醒用户是否push
+Step 11: 全部Agent完成 → 对Phase主文件汇总检查 (总字数/CQ覆盖/Fast Gate)
+Step 12: STATUS.md关键数据合并入progress.md
+Step 13: git commit "Phase {N} Complete"
+Step 14: 提醒用户是否push
 ```
 
 ---
@@ -279,6 +359,9 @@ Step 13: 提醒用户是否push
 |------|------|---------|---------|
 | 共享上下文 | `shared_context.md` | Phase开始前 | 下个Phase覆盖 |
 | 任务锁 | `current_tasks/Agent{X}.lock.md` | dispatch前 | Agent完成+QG通过 |
+| Agent暂存 | `reports/{TICKER}/staging/Phase{N}_Agent{X}_raw.md` | Agent写入时 | 归档到Phase主文件后删除 |
+| Phase主文件 | `reports/{TICKER}/{TICKER}_Phase{N}.md` | Phase开始时 | 永久保留 |
+| 完整报告 | `reports/{TICKER}/{TICKER}_Complete.md` | 项目结束时 | 永久保留 |
 | 执行日志 | `agent_logs/{TICKER}_Phase{N}_Agent{X}.log.md` | Agent完成时 | 永久保留 |
 | 状态仪表盘 | `STATUS.md` | Phase开始时 | Phase完成后合并入progress.md |
 | 质量门控 | `tests/research_fast.sh` | 永久 | 永久 |
