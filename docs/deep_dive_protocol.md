@@ -43,8 +43,8 @@
 **铁律**: 每个Phase完成后，**必须**运行 Fast Gate 检查，通过后才能 git commit。
 
 ```bash
-# Phase完成后执行:
-bash tests/research_fast.sh reports/{TICKER}_Phase{N}.md {最低字符数} 3
+# Phase完成后执行（在对应行业worktree中）:
+bash tests/research_fast.sh reports/{TICKER}/{TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md {最低字符数} 3
 # 通过(exit 0) → git commit
 # 失败(exit 1) → 修复后重新检查
 ```
@@ -405,8 +405,8 @@ Step 5: 五引擎协同 → 统一投资建议+置信度
 
 **每个Phase并行执行时必须遵循**:
 
-1. **共享上下文**: dispatch前编写 `data/research/{TICKER}/shared_context.md`，Agent只读此文件
-2. **任务锁**: dispatch前创建 `current_tasks/Agent{X}.lock.md`，完成+QG通过后删锁
+1. **共享上下文**: dispatch前编写 `reports/{TICKER}/data/shared_context.md`，Agent只读此文件
+2. **任务锁**: dispatch前创建 `reports/{TICKER}/data/current_tasks/Agent{X}.lock.md`，完成+QG通过后删锁
 3. **质量门控**: Agent返回后运行 `bash tests/research_fast.sh {file} {min_chars} 3`
 4. **增量提交**: 每个Agent通过QG → 立即 `git commit`
 5. **状态仪表盘**: 每个Agent完成时更新 `STATUS.md`

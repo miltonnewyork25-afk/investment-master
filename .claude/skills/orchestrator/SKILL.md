@@ -65,7 +65,8 @@ description: 投资分析框架编排器。识别公司行业，组装通用模�
 ## 行业：{行业类型}
 ## 行业复杂度系数：{系数}
 ## 最低字数：120,000 × {系数} = {目标字数}
-## 数据缓存：data/research/{TICKER}/
+## 报告输出：reports/{TICKER}/
+## 数据缓存：reports/{TICKER}/data/
 ## Core Questions: {CQ数量}个
 
 ### Core Questions 清单

@@ -6,6 +6,23 @@
 
 ---
 
+## [v1.1-report-structure] - 2026-02-07
+
+### MINOR - 报告目录结构标准化
+
+解决报告放置混乱问题（504个文件混杂在reports/根目录、无Ticker子目录、命名不统一），统一到 `reports/{TICKER}/` 结构。
+
+- **新增** `CLAUDE.md` 铁律E: 报告放置规则 — 所有报告统一存放 `reports/{TICKER}/`（main分支），方便查阅和横向参考
+- **新增** 报告命名规范: `{TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md` / `{TICKER}_standard_v{版本}_{YYYY-MM-DD}.md`
+- **新增** 目录结构标准: `reports/{TICKER}/` 含Phase报告+完整报告+`data/`子目录（合并原 `data/research/` 功能）
+- **新增** Write hook: 报告未放入`reports/{TICKER}/`子目录时自动警告
+- **升级** `.claude/skills/standard-analysis/SKILL.md`: 输出路径改为 `reports/{TICKER}/`
+- **升级** `.claude/skills/orchestrator/SKILL.md`: 执行计划模板新增报告输出路径+数据缓存路径
+- **升级** `docs/deep_dive_protocol.md`: Fast Gate路径+共享上下文路径对齐新结构
+- **原则**: 不迁移现有504个历史文件，只规范未来行为
+
+---
+
 ## [v1.0-agent-collab] - 2026-02-07
 
 ### MINOR - 多Agent协作优化

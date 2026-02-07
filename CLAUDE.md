@@ -94,7 +94,7 @@
 
 ### 铁律 D: 会话范围预检（每次会话开始必须执行）
 1. **识别目标**: 用户想做什么？归类为 Tier 1/2/3
-2. **恢复检查**: 检查 `data/research/{TICKER}/current_tasks/` 是否有未完成锁文件（详见 `docs/agent_collaboration_protocol.md`）
+2. **恢复检查**: 检查 `reports/{TICKER}/data/current_tasks/` 是否有未完成锁文件（详见 `docs/agent_collaboration_protocol.md`）
 3. **估算范围**: 该目标预计需要多少模块/步骤？
 4. **范围裁剪**: 如果范围超出单会话容量，主动提议拆分并明确本次会话的交付物
 5. **确认交付物**: 与用户对齐"本次会话结束时，你将得到 X"
@@ -125,6 +125,32 @@
 - 分析公司时: 建议对应行业worktree → 等待用户确认后切换
 - 修改CLAUDE.md/框架文件: 确认影响范围（当前worktree vs 全局）
 - 用户说"我在哪": 给出完整状态报告
+
+### 报告放置规则（铁律 E）
+
+**核心原则: 所有报告统一存放在 `reports/{TICKER}/` 目录（main 分支），方便查阅和横向参考。**
+
+**目录结构**:
+```
+reports/
+└── {TICKER}/
+    ├── {TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md   # Phase级报告
+    ├── {TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md    # 最终合并报告
+    └── data/                                        # 该公司研究数据
+        ├── shared_context.md
+        ├── STATUS.md
+        ├── agent_logs/
+        └── current_tasks/
+```
+
+**命名规范**:
+- Tier 2: `{TICKER}_standard_v{版本}_{YYYY-MM-DD}.md`
+- Tier 3 Phase: `{TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md`
+- Tier 3 Complete: `{TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md`
+
+**禁止事项**:
+- 禁止将报告散放在 `reports/` 根目录（必须进 `{TICKER}/` 子目录）
+- 禁止将研究数据放在 `reports/{TICKER}/` 以外的位置
 
 ### 会话效率规则（7条核心）
 
