@@ -1,0 +1,393 @@
+{
+  "metadata": {
+    "report_title": "Google/Alphabet AI Competitive Landscape Map",
+    "generated_date": "2026-02-06",
+    "data_sources": [
+      "LM Council Benchmarks",
+      "Artificial Analysis",
+      "LMArena Leaderboard",
+      "StatCounter",
+      "First Page Sage",
+      "DemandSage",
+      "Business of Apps",
+      "Yahoo Finance",
+      "CNBC",
+      "Fortune",
+      "SearchEngineLand",
+      "Pew Research"
+    ],
+    "confidence_notes": "All data points sourced via WebSearch on 2026-02-06. Financial figures from Q4 2025 earnings reports and analyst coverage. Benchmark scores from independent leaderboards."
+  },
+
+  "model_benchmarks": {
+    "summary": "No single model dominates all benchmarks in Jan 2026. Gemini 3 Pro leads on multimodal and user preference; GPT-5.2 leads on abstract reasoning; Claude Opus 4.5 leads on coding.",
+    "overall_rankings": {
+      "artificial_analysis_v4_index": {
+        "GPT_5_2": { "score": 50, "rank": 1 },
+        "Claude_Opus_4_5": { "score": 49, "rank": 2 },
+        "Gemini_3_Pro": { "score": "not_specified_but_top_3", "rank": "top_3" }
+      },
+      "lmarena_leaderboard": {
+        "leader": "Gemini 3 Pro",
+        "note": "Topped LMArena Leaderboard as of late 2025; consolidating position as global leader in user preference"
+      }
+    },
+    "coding_benchmarks": {
+      "swe_bench_verified": {
+        "Claude_Opus_4_5": { "score_pct": 80.9, "rank": 1 },
+        "GPT_5_2": { "score_pct": 80.0, "rank": 2 },
+        "Gemini": { "score_pct": "not_specified", "rank": "lower" }
+      },
+      "terminal_bench": {
+        "Claude_Opus_4_5": { "score_pct": 59.3, "rank": 1 },
+        "GPT_5_2": { "score_pct": 47.6, "rank": 2 }
+      },
+      "webdev_leaderboard": {
+        "leader": "Claude Opus 4.5 Thinking",
+        "source": "LMArena WebDev"
+      }
+    },
+    "reasoning_benchmarks": {
+      "arc_agi_2": {
+        "GPT_5_2": { "score_pct": 52.9, "rank": 1 },
+        "note": "Abstract reasoning benchmark"
+      },
+      "humanitys_last_exam": {
+        "leader": "Gemini 3",
+        "note": "Breakthrough scores reported by Google"
+      },
+      "gpqa_diamond": {
+        "leader": "Gemini 3",
+        "note": "Redefined multimodal reasoning benchmarks"
+      }
+    },
+    "general_knowledge": {
+      "mmlu": {
+        "GPT_4o": { "score_pct": 88.7, "rank": 1 },
+        "Claude_3_7": { "score_pct": 85.0, "rank": 2 },
+        "note": "Newer models (GPT-5.2, Claude 4.5, Gemini 3) may have higher scores not yet standardized"
+      }
+    },
+    "multimodal": {
+      "visual_reasoning": {
+        "Gemini_2_5_Pro": { "score_pct": 79.6, "rank": 1 },
+        "Claude_Opus_4": { "score_pct": 76.5, "rank": 2 }
+      },
+      "context_window": {
+        "Gemini": { "tokens": "2M", "rank": 1, "note": "Unmatched in industry" },
+        "Claude": { "tokens": "200K", "rank": 2 },
+        "OpenAI": { "tokens": "128K", "rank": 3 }
+      }
+    },
+    "speed_performance": {
+      "tokens_per_second": {
+        "Gemini_2_0_Flash": { "tps": 250, "ttft_seconds": 0.25, "rank": 1 },
+        "Claude_3_Sonnet": { "tps": 170.4, "rank": 2 },
+        "GPT_4o": { "tps": 131, "rank": 3 }
+      }
+    },
+    "hallucination_rates": {
+      "lowest_to_highest": ["Gemini 2.0 Flash", "GPT-4.5", "Claude 3.7"],
+      "note": "Gemini Flash produced the fewest hallucinations"
+    },
+    "google_assessment": "Gemini 3 Pro is the strongest Gemini model yet, leading on multimodal and user preference benchmarks. However, it trails Claude on coding and GPT-5.2 on abstract reasoning. Google's strength is in multimodal (2M context, visual reasoning) and inference speed."
+  },
+
+  "api_pricing": {
+    "summary": "Gemini offers the most aggressive pricing at the budget and mid-tier levels. At the flagship level, GPT-5 undercuts both Gemini 3 Pro and Claude Opus 4.5.",
+    "per_1m_tokens_usd": {
+      "budget_tier": {
+        "Gemini_2_5_Flash_Lite": { "input": 0.10, "output": 0.40 },
+        "note": "Cheapest option available across all providers"
+      },
+      "mid_tier": {
+        "Gemini_2_5_Flash": { "input": 0.15, "output": 0.60 },
+        "GPT_4o": { "input": 2.50, "output": 10.00 },
+        "Claude_Sonnet": { "input": 3.00, "output": 15.00 },
+        "price_ratio": "Gemini 2.5 Flash is 6% the cost of GPT-4o and 5% of Claude Sonnet"
+      },
+      "flagship_tier": {
+        "GPT_5": { "input": 1.25, "output": 10.00 },
+        "Gemini_3_Pro": { "input": 2.00, "output": 12.00 },
+        "Claude_Opus_4_5": { "input": 5.00, "output": 25.00 },
+        "Claude_Opus_premium": { "input": 15.00, "output": 75.00, "note": "~3x OpenAI pricing" }
+      }
+    },
+    "cost_saving_features": {
+      "OpenAI_batch_api": "50% discount on batch processing",
+      "prompt_caching": "50-90% savings on repeated content (available across providers)",
+      "Gemini_free_tier": "Available with rate limits"
+    },
+    "consumer_subscription_pricing": {
+      "Google_One_AI_Premium": { "monthly_usd": 19.99, "includes": "Gemini Advanced" },
+      "ChatGPT_Plus": { "monthly_usd": 20.00 },
+      "ChatGPT_Pro": { "monthly_usd": 200.00 },
+      "Claude_Pro": { "monthly_usd": 20.00 }
+    },
+    "google_assessment": "Google has the strongest price-performance ratio at budget/mid tiers, making it attractive for high-volume enterprise workloads. At the flagship level, GPT-5 currently undercuts Gemini 3 Pro, but Google's 2M context window provides unique value for long-document use cases."
+  },
+
+  "market_share": {
+    "search_market": {
+      "global_search_share": {
+        "Google": { "share_pct": "78-81.6%", "monthly_active_users": "4.9B" },
+        "ChatGPT_Search": { "share_pct": "9-18%", "monthly_active_users": "542M", "note": "Range depends on methodology; 17-18% for query volume, 9% for traditional market share" },
+        "Perplexity": { "share_pct": "estimated_2-3%", "note": "Not in traditional search rankings but growing rapidly" }
+      },
+      "search_by_type": {
+        "creative_informational": { "ChatGPT": "64%", "Google": "29%" },
+        "transactional": { "Google": "dominant", "note": "Most valuable to businesses; Google less vulnerable here" }
+      },
+      "user_engagement": {
+        "avg_session_google_minutes": 5,
+        "avg_session_chatgpt_minutes": 14
+      },
+      "age_demographics": {
+        "age_25_44": { "Google": "80%", "ChatGPT": "13%" },
+        "age_45_64": { "Google": "85%+", "ChatGPT": "8%" },
+        "age_65_plus": { "Google": "85%+", "ChatGPT": "5%" }
+      }
+    },
+    "ai_chatbot_app_market_share": {
+      "trend": "ChatGPT declining, Gemini rising",
+      "ChatGPT_app": { "jan_2025_pct": 69.1, "jan_2026_pct": 45.3 },
+      "Gemini_app": { "jan_2025_pct": 14.7, "jan_2026_pct": 25.2 },
+      "Gemini_monthly_active_users": "750M+",
+      "ChatGPT_weekly_active_users": "800M+"
+    },
+    "perplexity_ai": {
+      "ai_chatbot_share_pct": "6.4-8.03%",
+      "monthly_queries": "1.2-1.5B (mid-2026 estimate)",
+      "weekly_queries": "180-220M",
+      "yoy_growth": "800%",
+      "valuation_usd_B": 20,
+      "arr_2025_usd_M": 150,
+      "arr_2026_forecast_usd_M": 656,
+      "target_weekly_queries": "1B (2026 goal)",
+      "ambition": "15-20% AI chatbot market share within 18 months"
+    },
+    "ai_overviews_impact": {
+      "prevalence": "18% of global Google searches show AI Overviews",
+      "us_desktop_pct": 16,
+      "users_engaging_monthly": "1B+",
+      "ctr_impact": {
+        "organic_ctr_drop_pct": 61,
+        "paid_ctr_drop_pct": 68,
+        "source": "Seer Interactive September 2025",
+        "nuance": "CTR for AI Overview keywords has been steadily rising since January; may even encourage clicks in some cases"
+      },
+      "zero_click_rates": {
+        "without_ai_overview_pct": 34,
+        "with_ai_overview_pct": 43,
+        "in_ai_mode_pct": 93
+      },
+      "publisher_impact": "Google search traffic to publishers declined globally by ~33% in year to November 2025"
+    },
+    "google_assessment": "Google maintains dominant search share (78-81%) but faces meaningful erosion in creative/informational queries where ChatGPT has 64% share. Gemini app is the fastest-growing chatbot (14.7% -> 25.2% in one year). AI Overviews create a monetization tension: higher engagement but lower CTR. Key risk is in the 25-44 age demographic where ChatGPT has 13% share."
+  },
+
+  "capex_roi": {
+    "alphabet_capex": {
+      "2024_actual_usd_B": 52.5,
+      "2025_actual_usd_B": 91.4,
+      "2025_q4_usd_B": 27.9,
+      "2026_guidance_range_usd_B": "175-185",
+      "2026_wall_street_estimate_usd_B": 119.5,
+      "yoy_growth_2025_vs_2024": "74%",
+      "yoy_growth_2026_vs_2025_guidance": "~100% (doubling)",
+      "purpose": "AI compute capacity for Google DeepMind + cloud customer demand + strategic investments in Other Bets"
+    },
+    "cloud_backlog": {
+      "q4_2025_usd_B": 240,
+      "sequential_growth_pct": 55,
+      "yoy_growth": "more than doubled"
+    },
+    "tpu_vs_gpu_cost_analysis": {
+      "tpu_v6e_hourly_usd": 1.375,
+      "tpu_v6e_3yr_commitment_hourly_usd": 0.55,
+      "nvidia_a100_hourly_usd": 2.93,
+      "nvidia_h100_cluster_cost": "order of magnitude more than TPU v5e cluster",
+      "cost_effectiveness": {
+        "llm_training": "TPU 4-10x more cost-effective than GPUs",
+        "performance_per_dollar": "TPU v6e delivers 4.7x better performance-per-dollar",
+        "power_consumption": "TPU uses 67% less power",
+        "training_cost_per_billion_tokens": "TPU/Trainium 50-70% lower than H100 clusters"
+      },
+      "tpu_limitations": "Only available as cloud service through GCP; not sold individually"
+    },
+    "competitor_capex_comparison": {
+      "note": "Microsoft and Meta also ramping AI capex significantly in 2026",
+      "alphabet_advantage": "Vertically integrated with own TPUs, reducing dependency on Nvidia"
+    },
+    "roi_indicators": {
+      "google_cloud_revenue_q4_2025_usd_B": 17.66,
+      "google_cloud_yoy_growth_pct": 48,
+      "search_revenue_q4_2025_usd_B": 63,
+      "gemini_mau": "750M+",
+      "market_reaction": "Stock sank after $175-185B guidance revealed (vs $119.5B Street estimate)"
+    },
+    "openai_comparison": {
+      "openai_2024_revenue_usd_B": 6,
+      "openai_2025_revenue_usd_B": 13,
+      "openai_2025_arr_usd_B": 20,
+      "openai_2026_projected_revenue_usd_B": 30,
+      "openai_cumulative_losses_to_2029_usd_B": 143,
+      "note": "OpenAI growing faster in revenue but from much smaller base; still deeply unprofitable"
+    },
+    "google_assessment": "Alphabet's $175-185B 2026 capex guidance shocked the market (46% above Street estimates). However, the $240B cloud backlog provides revenue visibility. TPU vertical integration gives Google a structural cost advantage of 4-10x vs Nvidia GPUs for LLM training. The key question: can Google convert this massive infrastructure spend into proportional revenue growth, or will it compress margins?"
+  },
+
+  "developer_adoption": {
+    "enterprise_cloud_ai_platforms": {
+      "Azure_OpenAI": {
+        "enterprise_adoption_pct": 80,
+        "strengths": "Exclusive OpenAI access, enterprise workflow integration, compliance guardrails",
+        "model_provider_usage": "63% of companies use OpenAI models"
+      },
+      "AWS_Bedrock": {
+        "enterprise_adoption_pct": 77,
+        "strengths": "Multi-provider flexibility (Claude, Titan, Stability), 15-25% lower costs for typical workloads",
+        "cost_advantage": "15-25% lower for 10-50M tokens/month"
+      },
+      "Google_Vertex_AI": {
+        "enterprise_adoption_pct": "third behind Azure and AWS",
+        "strengths": "BigQuery/Dataflow/Looker integration, data-intensive analytics use cases, native Gemini access"
+      }
+    },
+    "managed_cloud_adoption": {
+      "organizations_using_managed_services_pct": 74,
+      "executive_led_ai_initiatives_pct": 81,
+      "infrastructure_limitations_as_obstacle_pct": 44
+    },
+    "api_usage_trends": {
+      "gemini_advantage": "Cheapest mid-tier pricing (5-6% of competitors) attracts high-volume developers",
+      "context_window_advantage": "2M tokens enables unique long-document use cases",
+      "free_tier": "Gemini API offers free tier, lowering barrier to entry"
+    },
+    "google_assessment": "Google Vertex AI trails Azure and AWS in enterprise adoption. Azure leads due to exclusive OpenAI access (63% of companies). However, Gemini's aggressive API pricing and 2M context window are differentiators for cost-sensitive and document-heavy workloads. The $240B cloud backlog suggests strong enterprise pipeline."
+  },
+
+  "expert_opinions": {
+    "google_competitive_position": {
+      "investor_sentiment_shift": {
+        "description": "Google has gone from perceived AI laggard to leader in ~1 year",
+        "evidence": "Alphabet stock +36% vs Microsoft -20% and Oracle -49% over same period",
+        "source": "Reuters/Investing.com Feb 2026"
+      },
+      "sustainable_business_model": {
+        "description": "Google demonstrates more sustainable AI business models with returns across multiple segments",
+        "vs_openai": "OpenAI growing faster but deeply unprofitable with $143B projected cumulative losses to 2029"
+      },
+      "capex_concern": {
+        "description": "Market shocked by $175-185B 2026 capex guidance; stock sold off",
+        "bull_case": "$240B cloud backlog provides revenue visibility; CEO says supply constraints mean even $185B may not be enough",
+        "bear_case": "ROI on this massive spend is unproven; could compress margins significantly"
+      }
+    },
+    "ai_monetization_strategy": {
+      "bifurcated_approach": {
+        "search_lane": "AI Overviews aggressively monetized; AI Mode creating new ad inventory",
+        "assistant_lane": "Gemini app is a 'loss leader' for retention and utility; no current plans for ads",
+        "direct_offers": "New 'Direct Offers' pilot (Jan 2026) bypasses click-to-website model with in-interface personalized discounts"
+      },
+      "query_economics": "AI Mode queries 3x longer than traditional searches; significant portion lead to follow-up questions; new inventory creation",
+      "risk": "93% zero-click rate in AI Mode threatens core ad model if not managed carefully"
+    },
+    "deepmind_research_moat": {
+      "recent_breakthroughs": [
+        "Gemini 3 and Gemini 3 Flash (Nov-Dec 2025)",
+        "Genie 3: Infinite world model for interactive environments",
+        "Project Mariner: Multi-agent system (up to 10 concurrent tasks)",
+        "C2S-Scale: 27B parameter single-cell biology model with cancer therapy implications",
+        "Nobel Prize for AI-driven protein structure prediction",
+        "Advances in quantum computing, mathematics, and algorithmic discovery"
+      ],
+      "assessment": "DeepMind remains one of the strongest AI research organizations globally, with unique ability to convert research breakthroughs into products (AlphaFold -> biology, Gemini -> consumer/enterprise)"
+    },
+    "key_competitive_risks": [
+      {
+        "risk": "ChatGPT dominance in creative/informational queries (64% share)",
+        "severity": "medium",
+        "mitigant": "Google dominates transactional queries (most valuable); Gemini app growing fast"
+      },
+      {
+        "risk": "AI Overviews cannibalize ad revenue (CTR down 61%)",
+        "severity": "high",
+        "mitigant": "CTR recovering; new monetization formats like Direct Offers being tested"
+      },
+      {
+        "risk": "Massive capex ($175-185B) may not generate proportional returns",
+        "severity": "high",
+        "mitigant": "$240B cloud backlog; TPU cost advantage; CEO says demand exceeds supply"
+      },
+      {
+        "risk": "Vertex AI trailing Azure/AWS in enterprise adoption",
+        "severity": "medium",
+        "mitigant": "Aggressive pricing; BigQuery integration; cloud revenue growing 48% YoY"
+      },
+      {
+        "risk": "Perplexity and other AI-native search challengers growing 800% YoY",
+        "severity": "low-medium",
+        "mitigant": "Still tiny market share (<3%); Google has distribution advantage with 4.9B users"
+      }
+    ],
+    "overall_assessment": "Google has executed a remarkable turnaround from perceived AI laggard (2023-early 2024) to competitive leader across multiple AI dimensions. Gemini 3 Pro is a genuine frontier model. The combination of TPU cost advantages, DeepMind research depth, massive distribution (750M+ Gemini users, 4.9B search users), and a $240B cloud backlog creates a formidable competitive position. The primary risks are (1) the unprecedented $175-185B capex commitment, (2) AI Overviews cannibalization of core search economics, and (3) trailing in enterprise AI platform adoption vs Azure/AWS. The bifurcated monetization strategy (monetize Search AI, subsidize Gemini app) is strategically sound but execution risk is high."
+  },
+
+  "sources": {
+    "benchmarks": [
+      "https://lmcouncil.ai/benchmarks",
+      "https://www.cosmicjs.com/blog/best-ai-for-developers-claude-vs-gpt-vs-gemini-technical-comparison-2026",
+      "https://felloai.com/best-ai-of-january-2026/",
+      "https://artificialanalysis.ai/leaderboards/models",
+      "https://llm-stats.com/leaderboards/llm-leaderboard"
+    ],
+    "pricing": [
+      "https://intuitionlabs.ai/articles/ai-api-pricing-comparison-grok-gemini-openai-claude",
+      "https://www.cloudidr.com/llm-pricing",
+      "https://www.metacto.com/blogs/the-true-cost-of-google-gemini-a-guide-to-api-pricing-and-integration",
+      "https://www.aifreeapi.com/en/posts/gemini-api-pricing-2026"
+    ],
+    "market_share": [
+      "https://firstpagesage.com/seo-blog/google-vs-chatgpt-market-share-report/",
+      "https://gs.statcounter.com/search-engine-market-share",
+      "https://www.demandsage.com/ai-overviews-statistics/",
+      "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/"
+    ],
+    "perplexity": [
+      "https://www.businessofapps.com/data/perplexity-ai-statistics/",
+      "https://seoprofy.com/blog/perplexity-ai-statistics/",
+      "https://www.demandsage.com/perplexity-ai-statistics/"
+    ],
+    "capex_financials": [
+      "https://finance.yahoo.com/news/alphabet-2026-spending-forecast-soars-past-wall-street-expectations-as-google-parent-goes-all-in-on-ai-195254701.html",
+      "https://www.cnbc.com/2026/02/04/alphabet-resets-the-bar-for-ai-infrastructure-spending.html",
+      "https://fortune.com/2026/02/04/alphabet-google-ai-spending-supply-constraints/",
+      "https://www.cnbc.com/2026/02/04/alphabet-googl-q4-2025-earnings.html"
+    ],
+    "monetization": [
+      "https://www.searchenginejournal.com/google-search-hits-63b-details-ai-mode-ad-tests/566613/",
+      "https://www.aragil.com/blog/google-s-gemini-strategy-monetizing-search-subsidizing-assistants",
+      "https://siliconangle.com/2026/02/04/alphabet-jack-ai-spending-google-cloud-ad-business-revenues-shine/"
+    ],
+    "openai_comparison": [
+      "https://sacra.com/c/openai/",
+      "https://americanbazaaronline.com/2026/02/05/google-pulls-ahead-of-openai-with-impressive-ai-growth-474547/",
+      "https://www.saastr.com/openai-crosses-12-billion-arr-the-3-year-sprint-that-redefined-whats-possible-in-scaling-software/"
+    ],
+    "enterprise": [
+      "https://xenoss.io/blog/aws-bedrock-vs-azure-ai-vs-google-vertex-ai",
+      "https://www.cloudoptimo.com/blog/amazon-bedrock-vs-azure-openai-vs-google-vertex-ai-an-in-depth-analysis/"
+    ],
+    "deepmind": [
+      "https://blog.google/innovation-and-ai/products/2025-research-breakthroughs/",
+      "https://deepmind.google/research/",
+      "https://www.nature.com/articles/d41586-025-03713-1"
+    ],
+    "tpu_gpu": [
+      "https://www.ainewshub.org/post/nvidia-vs-google-tpu-2025-cost-comparison",
+      "https://introl.com/blog/google-tpu-v6e-vs-gpu-4x-better-ai-performance-per-dollar-guide",
+      "https://www.cloudexpat.com/blog/comparison-aws-trainium-google-tpu-v5e-azure-nd-h100-nvidia/"
+    ]
+  }
+}

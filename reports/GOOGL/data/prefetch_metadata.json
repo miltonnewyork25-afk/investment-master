@@ -1,0 +1,90 @@
+{
+  "ticker": "GOOGL",
+  "company": "Alphabet Inc.",
+  "prefetch_date": "2026-02-06",
+  "framework_version": "v21.0",
+  "industry": "科技平台",
+  "tier": 3,
+  "industry_coefficient": 1.4,
+  "min_chars_target": 119000,
+
+  "files": {
+    "stock_full.json": {
+      "status": "complete",
+      "chars": 3506,
+      "source": "WebSearch + compare_stocks MCP",
+      "coverage": "Stock price, FY2025, Q4 2025 segments, peer comparison"
+    },
+    "analyst_consensus.json": {
+      "status": "complete",
+      "chars": 15114,
+      "source": "7 WebSearch queries",
+      "coverage": "43 analysts, avg PT $346.21, FY2026E estimates, post-earnings upgrades"
+    },
+    "prediction_market.json": {
+      "status": "complete",
+      "chars": 15192,
+      "source": "10 WebSearch queries (Polymarket/Kalshi/Manifold/Metaculus)",
+      "coverage": "10 events tracked, 5 no-coverage documented, Chrome divestiture 2%"
+    },
+    "recent_news.json": {
+      "status": "complete",
+      "chars": 26353,
+      "source": "8 WebSearch queries",
+      "coverage": "15 events Nov 2025-Feb 2026, 6 thematic summaries"
+    },
+    "business_overview.json": {
+      "status": "complete",
+      "chars": 24108,
+      "source": "9 WebSearch queries",
+      "coverage": "9 segments, quarterly breakdowns, market share data, Waymo details"
+    },
+    "management_team.json": {
+      "status": "complete",
+      "chars": 20871,
+      "source": "6 WebSearch queries",
+      "coverage": "CEO + 8 C-suite, 11-member board, dual-class governance, insider trading"
+    },
+    "smart_money_13f.json": {
+      "status": "complete",
+      "chars": 14506,
+      "source": "7 WebSearch queries",
+      "coverage": "62.54% institutional, 243 hedge funds, Berkshire NEW $4.3B, short interest"
+    },
+    "doj_antitrust_status.json": {
+      "status": "complete",
+      "chars": 30065,
+      "source": "8 WebSearch queries",
+      "coverage": "Complete case timeline, Judge Mehta ruling, DOJ appeal, EU/Japan/Korea/India, probability matrix"
+    },
+    "ai_competitive_map.json": {
+      "status": "complete",
+      "chars": 20001,
+      "source": "8 WebSearch queries",
+      "coverage": "Model benchmarks, API pricing, search market share, AI Overviews impact, TPU advantage"
+    }
+  },
+
+  "not_created": {
+    "dcf_valuation.json": "Deferred to Phase 2 Ch14 (requires segment assumptions)",
+    "comparable_analysis.json": "Partially covered in stock_full.json peer_comparison; full analysis in Phase 2 Ch15",
+    "competitive_landscape.json": "Merged into business_overview.json + ai_competitive_map.json",
+    "options_short_interest.json": "Merged into smart_money_13f.json (short interest + options flow included)"
+  },
+
+  "mcp_tool_status": {
+    "analyze_stock": "FAILED - Timestamp serialization error",
+    "compare_stocks": "SUCCESS - peer data obtained",
+    "get_market_overview": "PARTIAL - all values null"
+  },
+
+  "total_chars": 169422,
+  "total_files": 9,
+  "total_websearch_queries": "~63 across 7 agents + direct searches",
+  "data_quality_assessment": "HIGH - All critical data obtained from multiple corroborated sources",
+  "key_data_gaps": [
+    "ARPU by region (not publicly disclosed by Google, will use estimates in analysis)",
+    "Exact Gemini revenue contribution (not broken out, will note as gap)",
+    "YouTube standalone financials beyond ad revenue (limited disclosure)"
+  ]
+}
