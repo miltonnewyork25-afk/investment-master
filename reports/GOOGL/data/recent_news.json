@@ -1,0 +1,390 @@
+{
+  "metadata": {
+    "company": "Alphabet Inc. (GOOGL)",
+    "research_date": "2026-02-06",
+    "coverage_period": "2025-11-01 to 2026-02-06",
+    "data_sources": [
+      "CNBC", "Variety", "Yahoo Finance", "TechCrunch", "Bloomberg",
+      "SEC Filings", "DOJ/Justice.gov", "StatCounter", "First Page Sage",
+      "Search Engine Land", "9to5Google", "Electrek"
+    ],
+    "total_events": 25
+  },
+  "events": [
+    {
+      "id": "EVT-001",
+      "date": "2026-02-05",
+      "category": "antitrust",
+      "headline": "DOJ and 35 States Appeal Google Antitrust Ruling, Seek Chrome Divestiture",
+      "description": "The Department of Justice and 35 state attorneys general filed a cross-appeal of the September 2025 antitrust remedies ruling, arguing the court should have ordered Google to divest Chrome. The DOJ contends the behavioral remedies imposed (banning exclusivity payments, limited search data sharing) are insufficient.",
+      "source": "Search Engine Land / WinBuzzer",
+      "source_urls": [
+        "https://searchengineland.com/doj-states-appeal-google-search-antitrust-remedies-ruling-468230",
+        "https://winbuzzer.com/2026/02/05/doj-appeals-google-antitrust-ruling-chrome-divestiture-xcxwbn/"
+      ],
+      "key_data_points": {
+        "states_joining_appeal": 35,
+        "original_ruling_date": "2025-09",
+        "demanded_remedy": "Chrome divestiture",
+        "court_imposed_remedy": "Ban on exclusivity payments + limited search data sharing",
+        "expected_decision_timeline": "12-18 months from filing"
+      },
+      "market_reaction": "Minimal immediate impact; market had largely priced in ongoing litigation risk",
+      "investment_relevance": "Ongoing antitrust overhang. If appeal succeeds on Chrome divestiture, would be structurally significant. However, D.C. Circuit decisions expected 12-18 months out, and Supreme Court review possible beyond that. Near-term business impact limited."
+    },
+    {
+      "id": "EVT-002",
+      "date": "2026-02-04",
+      "category": "earnings",
+      "headline": "Alphabet Q4 2025 Earnings Beat: Revenue $113.8B (+18% YoY), EPS $2.82",
+      "description": "Alphabet reported Q4 2025 results exceeding Wall Street expectations. Revenue of $113.8B beat consensus estimate of $111.4B. Net income surged 30% to $34.5B. Full-year 2025 revenue reached $402.8B (+15% YoY) with net income of $100B (+24.3% YoY). Company guided 2026 capex of $175-185B, roughly double 2025's $91.4B.",
+      "source": "CNBC / SEC Filing",
+      "source_urls": [
+        "https://www.cnbc.com/2026/02/04/alphabet-googl-q4-2025-earnings.html",
+        "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000012/googexhibit991q42025.htm"
+      ],
+      "key_data_points": {
+        "q4_revenue": "$113.8B",
+        "q4_revenue_growth_yoy": "18%",
+        "q4_revenue_vs_consensus": "Beat by $2.4B",
+        "q4_net_income": "$34.5B",
+        "q4_net_income_growth_yoy": "30%",
+        "q4_eps": "$2.82",
+        "fy2025_revenue": "$402.8B",
+        "fy2025_revenue_growth": "15%",
+        "fy2025_net_income": "$100B",
+        "fy2025_net_income_growth": "24.3%",
+        "fy2026_capex_guidance": "$175-185B",
+        "fy2025_capex": "$91.4B"
+      },
+      "market_reaction": "Stock initially traded lower after-hours despite earnings beat, driven by concern over massive 2026 capex guidance ($175-185B) and YouTube ad revenue miss",
+      "investment_relevance": "Core earnings power remains very strong. The $175-185B capex guidance signals aggressive AI infrastructure investment — a potential concern for near-term free cash flow but bullish for long-term AI positioning. Cloud and AI momentum are clear growth drivers."
+    },
+    {
+      "id": "EVT-003",
+      "date": "2026-02-04",
+      "category": "cloud",
+      "headline": "Google Cloud Revenue Surges 48% to $17.7B in Q4; Operating Margin Hits 30.1%",
+      "description": "Google Cloud posted its strongest quarter ever with $17.7B revenue (+48% YoY), driven by AI infrastructure (TPU/GPU deployments) and enterprise AI solutions. Operating income more than doubled to $5.31B (from $2.09B YoY). Cloud operating margin expanded from 17.5% to 30.1%. Backlog reached $240B, more than doubling YoY and up 55% sequentially. Annual run rate exceeded $70B.",
+      "source": "CNBC / Yahoo Finance / Alphabet Earnings Release",
+      "source_urls": [
+        "https://www.cnbc.com/2026/02/04/alphabet-googl-q4-2025-earnings.html",
+        "https://finance.yahoo.com/news/alphabet-outperforms-expectations-google-cloud-220258747.html",
+        "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/2025q4-alphabet-earnings-release.pdf"
+      ],
+      "key_data_points": {
+        "q4_cloud_revenue": "$17.7B",
+        "q4_cloud_revenue_growth_yoy": "48%",
+        "q4_cloud_operating_income": "$5.31B",
+        "q4_cloud_oi_growth_yoy": "153.45%",
+        "q4_cloud_operating_margin": "30.1%",
+        "prior_year_cloud_margin": "17.5%",
+        "cloud_backlog": "$240B",
+        "backlog_growth_yoy": ">100%",
+        "backlog_growth_sequential": "55%",
+        "annual_run_rate": ">$70B"
+      },
+      "market_reaction": "Cloud performance was the standout positive in the earnings report; investors viewed the $240B backlog as a strong forward indicator",
+      "investment_relevance": "Google Cloud is rapidly becoming a core growth engine for Alphabet. The 48% growth rate significantly outpaces AWS and Azure growth rates. The $240B backlog provides multi-year revenue visibility. Margin expansion from 17.5% to 30.1% demonstrates operating leverage. AI workloads are the primary demand driver."
+    },
+    {
+      "id": "EVT-004",
+      "date": "2026-02-04",
+      "category": "youtube",
+      "headline": "YouTube Full-Year 2025 Revenue Exceeds $60B; Q4 Ad Revenue Misses Expectations",
+      "description": "Alphabet disclosed for the first time that YouTube's total revenue (ads + subscriptions) exceeded $60B for 2025, making it larger than Netflix by revenue. Q4 ad revenue was $11.38B (+8.7% YoY), but missed analyst expectations and showed deceleration from 15% growth in Q3. YouTube's subscription business (Music, Premium, TV, NFL Sunday Ticket) generates approximately $20B annually. Full-year ad revenue was $40.37B (+11.7% YoY).",
+      "source": "Variety / Tubefilter / Music Business Worldwide",
+      "source_urls": [
+        "https://variety.com/2026/digital/news/youtube-q4-2025-ad-revenue-record-alphabet-earnings-1236652260/",
+        "https://www.tubefilter.com/2026/02/05/alphabet-q4-2025-youtube-earnings-revenue-60-billion/",
+        "https://www.musicbusinessworldwide.com/youtubes-subscription-business-is-now-generating-around-20bn-a-year-with-music-a-key-growth-driver/"
+      ],
+      "key_data_points": {
+        "fy2025_total_youtube_revenue": ">$60B",
+        "fy2025_youtube_ad_revenue": "$40.37B",
+        "fy2025_youtube_ad_growth": "11.7%",
+        "youtube_subscription_annual_revenue": "~$20B",
+        "q4_youtube_ad_revenue": "$11.38B",
+        "q4_youtube_ad_growth_yoy": "8.7%",
+        "q3_youtube_ad_growth_yoy": "15%",
+        "prior_year_q4_youtube_ad_revenue": "$10.47B"
+      },
+      "market_reaction": "YouTube ad revenue miss was a negative catalyst, contributing to after-hours stock decline despite overall earnings beat",
+      "investment_relevance": "YouTube ad growth deceleration (15% -> 8.7% QoQ) is a near-term concern, potentially reflecting competitive pressure from TikTok/Reels or broader ad market softness. However, the $60B+ total revenue disclosure and $20B subscription business highlight YouTube's diversified monetization and streaming-scale economics."
+    },
+    {
+      "id": "EVT-005",
+      "date": "2026-02-04",
+      "category": "ai",
+      "headline": "Gemini AI App Reaches 750M Monthly Active Users; 2026 Capex Guided at $175-185B",
+      "description": "CEO Sundar Pichai disclosed that the Gemini AI app has reached 750M monthly active users, up from 650M in Q3. Alphabet guided 2026 capex at $175-185B, nearly doubling the $91.4B spent in 2025, reflecting massive AI infrastructure investment. The spend will primarily go toward data centers, TPU chips, and GPU procurement.",
+      "source": "Google Blog / CNBC / The Register",
+      "source_urls": [
+        "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q4-2025/",
+        "https://www.cnbc.com/2026/02/04/alphabet-googl-q4-2025-earnings.html",
+        "https://www.theregister.com/2026/02/05/alphabet_google_q4_2025"
+      ],
+      "key_data_points": {
+        "gemini_mau": "750M",
+        "gemini_mau_prior_quarter": "650M",
+        "gemini_mau_growth_qoq": "15.4%",
+        "fy2026_capex_guidance": "$175-185B",
+        "fy2025_capex_actual": "$91.4B",
+        "capex_increase_yoy": "~91-102%"
+      },
+      "market_reaction": "Massive capex guidance spooked investors concerned about near-term FCF impact; stock traded lower after-hours",
+      "investment_relevance": "The $175-185B capex is the largest annual infrastructure investment ever announced by a single company. Bull case: positions Google at the frontier of AI infrastructure. Bear case: risk of overinvestment if AI monetization doesn't scale proportionally. Gemini's 750M MAU demonstrates consumer adoption but monetization path still unclear."
+    },
+    {
+      "id": "EVT-006",
+      "date": "2026-02-02",
+      "category": "waymo",
+      "headline": "Waymo Raises $16B at $126B Valuation; Plans Expansion to 20+ Cities Including International",
+      "description": "Waymo closed a $16B funding round at a $126B valuation — the largest autonomous vehicle investment ever. Investors include Dragoneer, DST Global, Sequoia, a16z, Silver Lake, Tiger Global, T. Rowe Price, and Fidelity. Waymo plans to expand to 20+ cities in 2026 including Dallas, Denver, Miami, San Diego, Washington DC, and internationally to London and Tokyo. Fleet production will double to 2,000+ vehicles via Magna partnership. Target: 1M rides/week by end of 2026 (4x current volume).",
+      "source": "TechCrunch / Bloomberg / Electrek / CNBC",
+      "source_urls": [
+        "https://techcrunch.com/2026/02/02/waymo-raises-16-billion-round-to-scale-robotaxi-fleet-london-tokyo/",
+        "https://electrek.co/2026/02/02/waymo-raises-16-billion-round-at-126-billion-valuation-plans-expansion/",
+        "https://www.cnbc.com/2026/02/02/waymo-announced-16-billion-fundraising-round.html"
+      ],
+      "key_data_points": {
+        "funding_amount": "$16B",
+        "valuation": "$126B",
+        "expansion_target_cities": "20+",
+        "international_markets": ["London", "Tokyo"],
+        "us_new_cities": ["Dallas", "Denver", "Detroit", "Houston", "Las Vegas", "Miami", "Nashville", "Orlando", "San Antonio", "San Diego", "Washington DC", "Sacramento", "Boston"],
+        "fleet_production_target_2026": "2,000+ vehicles",
+        "rides_per_week_target": "1M (4x current)",
+        "manufacturing_partner": "Magna",
+        "key_investors": ["Dragoneer", "DST Global", "Sequoia", "a16z", "Mubadala", "Silver Lake", "Tiger Global", "T. Rowe Price", "Fidelity"]
+      },
+      "market_reaction": "Positive for Alphabet; Waymo valuation at $126B implies significant embedded value within Alphabet's Other Bets segment",
+      "investment_relevance": "At $126B valuation, Waymo alone represents roughly 5% of Alphabet's market cap, validating the autonomous driving investment thesis. External funding reduces Alphabet's direct cash burn. Expansion to 20+ cities and international markets signals transition from R&D to commercial scaling. Toyota partnership announced in January 2026 adds strategic credibility."
+    },
+    {
+      "id": "EVT-007",
+      "date": "2026-01-16",
+      "category": "ai",
+      "headline": "Google AI Pro and AI Ultra Subscription Tiers with Gemini 3 Deep Think",
+      "description": "Google launched tiered AI subscription plans: AI Pro and AI Ultra. AI Ultra subscribers get access to Gemini 3 Deep Think, the most advanced reasoning mode. Gemini 3 Flash became the default model for all users. Chrome received 'auto browse' feature built on Gemini 3 for multi-step task automation.",
+      "source": "9to5Google",
+      "source_urls": [
+        "https://9to5google.com/2026/01/16/google-ai-pro-ultra-features/"
+      ],
+      "key_data_points": {
+        "subscription_tiers": ["AI Pro", "AI Ultra"],
+        "flagship_model": "Gemini 3 Deep Think",
+        "default_model": "Gemini 3 Flash",
+        "new_chrome_feature": "Auto Browse (multi-step task automation)"
+      },
+      "market_reaction": "N/A - incremental product update",
+      "investment_relevance": "Tiered AI subscriptions represent a new direct consumer monetization channel for Gemini. Auto Browse in Chrome could increase Chrome's strategic value (relevant to antitrust context). Positions Google competitively against OpenAI's ChatGPT Pro and Anthropic's offerings."
+    },
+    {
+      "id": "EVT-008",
+      "date": "2026-01-05",
+      "category": "ai",
+      "headline": "Google Previews Gemini AI Features for TV at CES 2026",
+      "description": "At CES 2026, Google demonstrated new Gemini-powered features for Google TV, including deep-dive topic exploration and AI-powered photo/video search and reimagining capabilities.",
+      "source": "TechCrunch",
+      "source_urls": [
+        "https://techcrunch.com/2026/01/05/google-previews-new-gemini-features-for-tv-at-ces-2026/"
+      ],
+      "key_data_points": {
+        "platform": "Google TV",
+        "features": ["Deep-dive topic exploration", "AI photo/video search", "Content reimagining"]
+      },
+      "market_reaction": "N/A - product preview",
+      "investment_relevance": "Demonstrates Gemini integration across Google's hardware/software ecosystem. Incremental monetization opportunity through Google TV platform."
+    },
+    {
+      "id": "EVT-009",
+      "date": "2026-01-01",
+      "category": "ai",
+      "headline": "Google Assistant Shutdown on Mobile Delayed to March 2026",
+      "description": "Google extended the deadline for shutting down Google Assistant on mobile devices to March 2026, as it continues refining Gemini's capabilities to fully replace Assistant functionality.",
+      "source": "Android Gadget Hacks",
+      "source_urls": [
+        "https://android.gadgethacks.com/news/google-extends-gemini-ai-rollout-to-2026-what-changed/"
+      ],
+      "key_data_points": {
+        "shutdown_target": "March 2026",
+        "reason_for_delay": "Continuing to refine Gemini capabilities",
+        "replacement": "Gemini AI app"
+      },
+      "market_reaction": "N/A",
+      "investment_relevance": "The transition from Assistant to Gemini is strategically critical for Google's mobile AI platform. Delays suggest execution risk but also quality-focused approach. Successful migration would embed Gemini as the default AI interface for Android's 3B+ device install base."
+    },
+    {
+      "id": "EVT-010",
+      "date": "2026-01-01",
+      "category": "education",
+      "headline": "Google Announces Gemini AI Integration in Google Classroom at BETT 2026",
+      "description": "Google announced major AI updates for education at BETT 2026, including Gemini integration in Google Classroom, AI-powered Writing Coach (partnered with Khan Academy), SAT practice tests with Princeton Review, and connected classroom tools.",
+      "source": "Google Blog / EdTech Innovation Hub",
+      "source_urls": [
+        "https://blog.google/products-and-platforms/products/education/bett-2026-gemini-classroom-updates/",
+        "https://www.edtechinnovationhub.com/news/bett-2026-google-announces-major-ai-updates-to-gemini-and-google-classroom"
+      ],
+      "key_data_points": {
+        "platform": "Google Classroom",
+        "partnerships": ["Khan Academy", "Princeton Review"],
+        "features": ["AI Writing Coach", "SAT practice tests", "Connected classroom tools"]
+      },
+      "market_reaction": "N/A",
+      "investment_relevance": "Google Workspace for Education is a high-moat, high-retention business. Gemini integration deepens lock-in for the next generation of users and could drive Workspace subscription upgrades in education."
+    },
+    {
+      "id": "EVT-011",
+      "date": "2026-01-01",
+      "category": "waymo",
+      "headline": "Toyota and Waymo Announce Autonomous Driving Collaboration",
+      "description": "Toyota and Waymo announced a preliminary agreement to collaborate on autonomous driving technologies, potentially combining Toyota's manufacturing expertise with Waymo's software platform.",
+      "source": "Yahoo Finance",
+      "source_urls": [
+        "https://finance.yahoo.com/news/why-2026-could-be-waymos-year-195850263.html"
+      ],
+      "key_data_points": {
+        "partners": ["Toyota", "Waymo"],
+        "type": "Preliminary collaboration agreement",
+        "focus": "Autonomous driving technology"
+      },
+      "market_reaction": "Positive for both Alphabet and Toyota; validates Waymo's technology leadership",
+      "investment_relevance": "Toyota partnership could provide Waymo access to Toyota's global manufacturing scale and distribution network. Strategic validation from the world's largest automaker strengthens Waymo's competitive position vs. Tesla FSD, Cruise, and others."
+    },
+    {
+      "id": "EVT-012",
+      "date": "2025-11-18",
+      "category": "ai",
+      "headline": "Gemini 3 Pro Model Launched with Immediate Availability",
+      "description": "Google launched Gemini 3 Pro, its next-generation AI model, with immediate availability across Gemini products. Gemini 3 Flash was set as the default model for all users. Gemini 3 Deep Think began rolling out through early 2026.",
+      "source": "Google AI / Gemini Release Notes",
+      "source_urls": [
+        "https://gemini.google/release-notes/",
+        "https://ai.google.dev/gemini-api/docs/changelog"
+      ],
+      "key_data_points": {
+        "model_launched": "Gemini 3 Pro",
+        "launch_date": "2025-11-18",
+        "default_model": "Gemini 3 Flash",
+        "advanced_model": "Gemini 3 Deep Think (rolling out early 2026)"
+      },
+      "market_reaction": "Positive; demonstrated Google maintaining competitive parity with OpenAI and Anthropic in frontier AI models",
+      "investment_relevance": "Gemini 3 Pro launch keeps Google competitive in the AI model race. The three-tier model strategy (Flash/Pro/Deep Think) mirrors OpenAI's approach and supports differentiated pricing. Key question: does model leadership translate to search/cloud revenue retention?"
+    },
+    {
+      "id": "EVT-013",
+      "date": "2025-10-15",
+      "category": "restructuring",
+      "headline": "Google Lays Off 100+ Employees in Cloud Division Design and Research Teams",
+      "description": "Google laid off over 100 employees primarily in its Cloud division's design and quantitative user experience research teams, with most affected roles based in the United States.",
+      "source": "Android Headlines / AI Loss Tracker",
+      "source_urls": [
+        "https://www.androidheadlines.com/2026/01/tech-layoffs-roundup-every-major-company-cutting-jobs-in-2025-2026.html",
+        "https://ailoss.co/layoffs/google-layoffs-2023-onwards/"
+      ],
+      "key_data_points": {
+        "employees_affected": "100+",
+        "divisions": ["Cloud - Design", "Cloud - Quantitative UX Research"],
+        "location": "Primarily US-based"
+      },
+      "market_reaction": "Minimal market impact; viewed as routine optimization",
+      "investment_relevance": "Continued pattern of targeted cost optimization. Layoffs in Cloud's design/UX research teams suggest consolidation rather than strategic retreat. Consistent with broader tech industry trend of AI-driven workforce restructuring."
+    },
+    {
+      "id": "EVT-014",
+      "date": "2025-10-01",
+      "category": "restructuring",
+      "headline": "Alphabet CFO Ruth Porat Announces Finance Team Restructuring Toward AI-Centric Hub Model",
+      "description": "CFO Ruth Porat announced a restructuring of Google's finance organization to pursue AI initiatives, shifting to hub-based operations in cost-effective locations including Bangalore, Mexico City, Chicago, Atlanta, and Dublin. The reorganization includes layoffs and relocations.",
+      "source": "CFO.com",
+      "source_urls": [
+        "https://www.cfo.com/news/alphabet-google-ruth-porat-internal-memo-finance-restructuring-artificial-intelligence/713634/"
+      ],
+      "key_data_points": {
+        "restructured_org": "Finance organization",
+        "new_hub_locations": ["Bangalore", "Mexico City", "Chicago", "Atlanta", "Dublin"],
+        "driver": "AI initiatives and cost optimization"
+      },
+      "market_reaction": "N/A",
+      "investment_relevance": "Signals continued cost discipline and operational efficiency focus. Transition to lower-cost hubs could improve operating margins. AI-driven restructuring of back-office functions is a leading indicator of broader enterprise AI adoption."
+    },
+    {
+      "id": "EVT-015",
+      "date": "2025-09-01",
+      "category": "antitrust",
+      "headline": "Judge Mehta Rejects Chrome Divestiture; Imposes Modest Behavioral Remedies in Google Search Antitrust Case",
+      "description": "In the remedies phase of the DOJ v. Google antitrust case, Judge Amit Mehta rejected the DOJ's request to force Google to divest Chrome. Instead, the court imposed behavioral remedies: banning Google from paying for search exclusivity on devices and requiring limited sharing of search data. The DOJ subsequently announced plans to appeal.",
+      "source": "Justice.gov / Congress.gov (CRS Report)",
+      "source_urls": [
+        "https://www.justice.gov/opa/pr/department-justice-wins-significant-remedies-against-google",
+        "https://www.congress.gov/crs-product/LSB11362"
+      ],
+      "key_data_points": {
+        "ruling": "Behavioral remedies only; structural relief (Chrome divestiture) rejected",
+        "banned_practice": "Paying for search exclusivity on devices",
+        "required_action": "Limited search data sharing",
+        "impact_on_apple_deal": "Google-Apple default search agreement likely affected"
+      },
+      "market_reaction": "Stock rallied on the ruling as worst-case scenario (Chrome divestiture) was avoided",
+      "investment_relevance": "Major positive for Alphabet — avoidance of Chrome divestiture preserves Google's integrated ecosystem. However, the ban on exclusivity payments threatens the ~$20B/year Google-Apple search deal. Net impact: modest negative but far less severe than structural breakup risk. DOJ appeal keeps uncertainty alive."
+    }
+  ],
+  "market_context": {
+    "search_market_share": {
+      "global_2026": "90.04%",
+      "global_2025": "91.47%",
+      "us_2026": "85.07%",
+      "us_2024": "87.39%",
+      "mobile_2026": "92-95.4%",
+      "desktop_2025": "79.88%",
+      "trend": "Gradual erosion — largest annual drop in a decade (-1.43pp globally), but Google retains overwhelming dominance. AI-powered search alternatives (ChatGPT, Perplexity) gaining share at the margins.",
+      "key_competitors": {
+        "bing": "4.31%",
+        "yandex": "1.84%"
+      },
+      "source": "StatCounter / First Page Sage",
+      "source_urls": [
+        "https://gs.statcounter.com/search-engine-market-share",
+        "https://firstpagesage.com/seo-blog/google-vs-chatgpt-market-share-report/"
+      ]
+    },
+    "search_ad_market_share_outlook": {
+      "note": "Google projected to drop below 50% share of search ad market in 2026",
+      "source": "eMarketer",
+      "source_url": "https://www.emarketer.com/chart/c/353333/google-will-drop-below-50-share-of-search-ad-market-2026-353333"
+    }
+  },
+  "thematic_summary": {
+    "ai_transformation": {
+      "summary": "Gemini 3 model family launched (Flash/Pro/Deep Think). 750M MAU on Gemini app. Tiered subscription monetization (AI Pro/Ultra). $175-185B capex guidance for 2026 signals all-in AI infrastructure bet. Auto Browse in Chrome demonstrates agentic AI capabilities.",
+      "investment_signal": "Bullish long-term; capex concern near-term",
+      "confidence": "High — based on disclosed earnings data"
+    },
+    "cloud_momentum": {
+      "summary": "Google Cloud is the fastest-growing major cloud platform at 48% YoY. $240B backlog provides multi-year visibility. Operating margin nearly doubled to 30.1%. AI workloads (TPU/GPU infrastructure, enterprise AI solutions) are the primary growth driver.",
+      "investment_signal": "Strongly bullish",
+      "confidence": "High — based on Q4 2025 earnings data"
+    },
+    "antitrust_risk": {
+      "summary": "Behavioral remedies imposed Sep 2025; Chrome divestiture rejected. DOJ + 35 states appealing. D.C. Circuit decision expected 12-18 months. Google-Apple search deal (~$20B/year) at risk from exclusivity ban. Structural breakup risk remains low but non-zero.",
+      "investment_signal": "Modest overhang; manageable",
+      "confidence": "Medium — legal outcomes inherently uncertain"
+    },
+    "youtube_maturation": {
+      "summary": "Total YouTube revenue >$60B (ads $40B + subscriptions $20B). Ad growth decelerating (15% -> 8.7% QoQ). Subscription business provides diversification. YouTube now larger than Netflix by revenue.",
+      "investment_signal": "Mixed — deceleration concern offset by scale and diversification",
+      "confidence": "High — based on disclosed earnings data"
+    },
+    "waymo_value_unlock": {
+      "summary": "Waymo raised $16B at $126B valuation — largest-ever AV investment. Expansion to 20+ cities including London and Tokyo. 1M rides/week target by end 2026. Toyota collaboration announced. External funding validates standalone value within Alphabet.",
+      "investment_signal": "Bullish — hidden asset value being recognized",
+      "confidence": "High — based on actual funding round"
+    },
+    "search_share_erosion": {
+      "summary": "Google search share declining at fastest rate in a decade (91.47% -> 90.04% globally). US share down to 85.07%. AI search alternatives gaining. Google projected to drop below 50% of search ad market in 2026. Core moat still dominant but under pressure.",
+      "investment_signal": "Cautionary — long-term strategic risk",
+      "confidence": "Medium — market share data varies by source"
+    }
+  }
+}

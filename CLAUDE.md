@@ -68,6 +68,11 @@
 - **密度要求**: Tier 3报告≥15个标注/万字符，硬数据≥40%
 - **详见**: `docs/confidence_system.md`
 
+**铁律4: 无源数字禁止写入（v22.0新增）**
+- 报告中每个数字必须来自: DM锚点`[DM-xxx vN.N]` / 外部来源`[硬数据:]` / 明确公式`[合理推断:]`
+- 无源数字 = 幻觉 = 禁止写入
+- **详见**: `docs/anti_hallucination_protocol.md`
+
 **禁止事项**:
 - 不做无数据支撑的判断
 - 不写"众所周知"等模糊表述
@@ -94,10 +99,11 @@
 
 ### 铁律 D: 会话范围预检（每次会话开始必须执行）
 1. **识别目标**: 用户想做什么？归类为 Tier 1/2/3
-2. **估算范围**: 该目标预计需要多少模块/步骤？
-3. **范围裁剪**: 如果范围超出单会话容量，主动提议拆分并明确本次会话的交付物
-4. **确认交付物**: 与用户对齐"本次会话结束时，你将得到 X"
-5. **拒绝膨胀**: 执行中如果发现新任务，记录到待办而非立即执行
+2. **恢复检查**: 检查 `reports/{TICKER}/data/current_tasks/` 是否有未完成锁文件（详见 `docs/agent_collaboration_protocol.md`）
+3. **估算范围**: 该目标预计需要多少模块/步骤？
+4. **范围裁剪**: 如果范围超出单会话容量，主动提议拆分并明确本次会话的交付物
+5. **确认交付物**: 与用户对齐"本次会话结束时，你将得到 X"
+6. **拒绝膨胀**: 执行中如果发现新任务，记录到待办而非立即执行
 
 ### 铁律 A: 单会话禁跨Phase（Tier 3）
 - 完成当前Phase后必须停止并输出完成报告
@@ -124,6 +130,32 @@
 - 分析公司时: 建议对应行业worktree → 等待用户确认后切换
 - 修改CLAUDE.md/框架文件: 确认影响范围（当前worktree vs 全局）
 - 用户说"我在哪": 给出完整状态报告
+
+### 报告放置规则（铁律 E）
+
+**核心原则: 所有报告统一存放在 `reports/{TICKER}/` 目录（main 分支），方便查阅和横向参考。**
+
+**目录结构**:
+```
+reports/
+└── {TICKER}/
+    ├── {TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md   # Phase级报告
+    ├── {TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md    # 最终合并报告
+    └── data/                                        # 该公司研究数据
+        ├── shared_context.md
+        ├── STATUS.md
+        ├── agent_logs/
+        └── current_tasks/
+```
+
+**命名规范**:
+- Tier 2: `{TICKER}_standard_v{版本}_{YYYY-MM-DD}.md`
+- Tier 3 Phase: `{TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md`
+- Tier 3 Complete: `{TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md`
+
+**禁止事项**:
+- 禁止将报告散放在 `reports/` 根目录（必须进 `{TICKER}/` 子目录）
+- 禁止将研究数据放在 `reports/{TICKER}/` 以外的位置
 
 ### 会话效率规则（7条核心）
 
@@ -164,7 +196,16 @@
 | `docs/confidence_system.md` | 写报告标注数据时 |
 | `docs/differentiated_insight_standard.md` | 模块质量检查时 |
 | `docs/bear_case_methodology.md` | Phase 4看空分析时 |
+| `docs/agent_collaboration_protocol.md` | 多Agent并行执行时 |
+| `tests/research_fast.sh` | Agent完成后质量门控 |
+| `docs/data_version_control.md` | Tier 3 Phase 0 DM初始化时 |
+| `docs/anti_hallucination_protocol.md` | 并行Agent dispatch时 |
+| `docs/key_assumptions_list.md` | Tier 3 Phase 1-4 假设管理时 |
+| `docs/kill_switch_registry.md` | Tier 3 Phase 5 KS注册时 |
+| `docs/valuation_correction_hierarchy.md` | Phase 4 估值修正时 |
+| `docs/quality_gate_v2.md` | Phase 4/5 质量门控时 |
 | `docs/v21_migration_guide.md` | v20→v21迁移参考 |
+| `docs/v22_migration_guide.md` | v21→v22迁移参考 |
 | `CHANGELOG.md` | 查看变更历史时 |
 
 ---

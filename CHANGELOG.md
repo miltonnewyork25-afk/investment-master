@@ -6,6 +6,82 @@
 
 ---
 
+## [v22.0] - 2026-02-07
+
+### MAJOR - GOOGL经验驱动的实质质量升级（从"高形式分"到"高形式分+高实质分"）
+
+基于GOOGL Tier 3深度研究的79个具体问题，提炼6个系统性根因，设计6个新机制解决。核心转变：流程合规→结果准确。
+
+**M1: 数据版本控制 (Data Master v2.0)**
+- **新增** `docs/data_version_control.md` — DM模板+语义版本号+Agent引用规范+生命周期+变更审计
+- **解决S1**: shared_context无版本号 → SOTP段值偏差249%
+
+**M2: 反幻觉协议**
+- **新增** `docs/anti_hallucination_protocol.md` — 铁律14"无源数字禁写入"+5条禁令+SOTP三步验证+12项一致性清单
+- **解决S2**: Agent幻觉 → Writer C"合理化"推算出错误段值
+
+**M3: 关键假设主表 (KAL)**
+- **新增** `docs/key_assumptions_list.md` — 假设注册+分类+敏感度分级+生命周期+跨Phase传递+Phase 4验证
+- **解决S3**: 假设散落各Phase → GCP利润率假设跨Phase不一致
+
+**M4: Kill Switch统一注册表**
+- **新增** `docs/kill_switch_registry.md` — 注册表结构+三级阈值(L1黄/L2橙/L3红)+引用规则+KAL联动
+- **解决S4**: KS各章节自行描述 → 阈值/状态/动作三重不一致
+
+**M5: 估值修正层级**
+- **新增** `docs/valuation_correction_hierarchy.md` — 5层管道(L1数据→L5范式)+单层±15%上限+审计日志+方向规则
+- **解决S5**: Phase 4直接覆盖Phase 2 → $311→$326→$313来回跳
+
+**M6: 质量门控v2.0 (双维度)**
+- **新增** `docs/quality_gate_v2.md` — P-G过程门控10项+R-G结果门控12项+通过标准P-G≥8且R-G≥7
+- **解决S6**: 质量门控只查流程不查结果 → 形式分9.6实质分6.8
+
+**现有文件升级**
+- **升级** `docs/deep_dive_protocol.md` v5.1→v6.0: Phase 0加DM/KAL初始化+双维度门控+铁律14/15+Agent协作8项
+- **升级** `docs/parallel_execution.md` v3.0→v4.0: Agent Prompt反幻觉注入+DM/KAL引用规范+QG v2.0
+- **升级** `docs/confidence_system.md` v1.0→v2.0: 数字来源分类+DM版本号标注
+- **升级** `docs/sotp_methodology.md` v1.0→v2.0: 工作底稿三步验证+估值修正层级引用+DM集成
+- **升级** `CLAUDE.md`: 铁律4(无源数字禁写入)+文档索引新增8项
+- **新增** `docs/v22_migration_guide.md` — v21→v22迁移指南
+
+---
+
+## [v1.1-report-structure] - 2026-02-07
+
+### MINOR - 报告目录结构标准化
+
+解决报告放置混乱问题（504个文件混杂在reports/根目录、无Ticker子目录、命名不统一），统一到 `reports/{TICKER}/` 结构。
+
+- **新增** `CLAUDE.md` 铁律E: 报告放置规则 — 所有报告统一存放 `reports/{TICKER}/`（main分支），方便查阅和横向参考
+- **新增** 报告命名规范: `{TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md` / `{TICKER}_standard_v{版本}_{YYYY-MM-DD}.md`
+- **新增** 目录结构标准: `reports/{TICKER}/` 含Phase报告+完整报告+`data/`子目录（合并原 `data/research/` 功能）
+- **新增** Write hook: 报告未放入`reports/{TICKER}/`子目录时自动警告
+- **升级** `.claude/skills/standard-analysis/SKILL.md`: 输出路径改为 `reports/{TICKER}/`
+- **升级** `.claude/skills/orchestrator/SKILL.md`: 执行计划模板新增报告输出路径+数据缓存路径
+- **升级** `docs/deep_dive_protocol.md`: Fast Gate路径+共享上下文路径对齐新结构
+- **原则**: 不迁移现有504个历史文件，只规范未来行为
+
+---
+
+## [v1.0-agent-collab] - 2026-02-07
+
+### MINOR - 多Agent协作优化
+
+基于PG Phase 1-3的4路并行Agent经验，解决5个协作痛点。
+
+- **新增** `docs/agent_collaboration_protocol.md` — 完整协作协议(共享上下文+任务锁+质量门控+STATUS.md+Agent日志+增量提交)
+- **新增** `tests/research_fast.sh` — 报告质量门控脚本(字符数+标注密度+硬数据占比+So What检查)
+- **新增** `data/research/PG/shared_context.md` — PG Phase 4共享上下文模板
+- **新增** `data/research/PG/STATUS.md` — Phase执行期间实时仪表盘
+- **新增** `data/research/PG/current_tasks/` — 任务锁目录
+- **新增** `data/research/PG/agent_logs/` — Agent执行日志目录
+- **升级** `CLAUDE.md` 铁律D: 新增session恢复检查(Step 2); 文档索引新增2条
+- **升级** `docs/deep_dive_protocol.md`: 并行Agent加速段新增6项协作机制
+- **升级** `docs/parallel_execution.md`: 新增多Agent协作协议引用
+- **升级** `data/research/PG/progress.md`: 新增失败记录表+会话恢复日志
+
+---
+
 ## [v21.0] - 2026-02-06
 
 ### MAJOR - 争议驱动框架升级（从模板填空到Core Questions驱动）
