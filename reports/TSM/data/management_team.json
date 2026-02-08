@@ -1,0 +1,124 @@
+{
+  "ticker": "TSM",
+  "fetched_at": "2026-02-06",
+  "source": "WebSearch:Agent-E",
+  "ceo": {
+    "name": "Dr. C.C. Wei (Che-Chia Wei)",
+    "tenure_years": 8,
+    "background": "Born 1953, Lugu Township, Nantou County, Taiwan. B.S. and M.S. in Electrical Engineering from National Chiao Tung University; Ph.D. in Electrical Engineering from Yale University (1985). Previously held positions at Texas Instruments (technical officer), STMicroelectronics (SVP of Technology), and Charter Semiconductor Manufacturing (SVP). Joined TSMC as VP in 1998. Served as SVP of Mainstream Technology Business, then SVP of Business Development (2009-2012). Appointed CEO in June 2018. Succeeded Mark Liu as Chairman in June 2024.",
+    "track_record": "Praised by TSMC founder Morris Chang as 'the most prepared CEO'. Named by Time magazine as one of the 100 most influential people in AI (September 2024). Co-recipient with Dr. Mark Liu of the SIA Robert N. Noyce Award (2025), the semiconductor industry's highest honor. Led TSMC through the AI/advanced node boom, overseeing expansion of 3nm/2nm production and the Arizona fab buildout."
+  },
+  "cfo": {
+    "name": "Wendell Huang",
+    "tenure_years": 7,
+    "background": "B.B.A. in Statistics from National Chengchi University; MBA from Cornell University. Over 30 years of finance experience. Prior to TSMC, worked at ING Barings, Chase Manhattan Bank, Bankers Trust Company, Chemical Bank, and Bank of Boston. Joined TSMC in 1999. Led major corporate finance projects including acquisitions of TASMC and WSMC, the sale of Philips' shares in TSMC, and major bond issues (2010-2013). Appointed Deputy CFO in January 2019, promoted to CFO and Spokesperson in September 2019. Responsible for Investment Management, Financial Planning, SEC Compliance, Customer Credit, FX Management, Financial Risk Management, and Funding & Cashier."
+  },
+  "key_executives": [
+    {
+      "name": "Dr. Cliff Hou",
+      "title": "Senior Vice President, Deputy Co-COO / Chief Information Security Officer",
+      "note": "Oversees operational security and co-COO duties"
+    },
+    {
+      "name": "Dr. Kevin Zhang",
+      "title": "Senior Vice President, Business Development and Global Sales, Deputy Co-COO",
+      "note": "Leads business development and global sales"
+    },
+    {
+      "name": "Sylvia Fang",
+      "title": "Senior Vice President, Legal and General Counsel / Corporate Governance Officer",
+      "note": "Oversees legal, compliance and corporate governance"
+    },
+    {
+      "name": "Lora Ho",
+      "title": "Senior Vice President, Human Resources",
+      "note": "Long-tenured HR leader"
+    },
+    {
+      "name": "Dr. Y.L. Wang",
+      "title": "Vice President, Operations / Fab Operations I",
+      "note": "Former CEO of TSMC Arizona; returned to Taiwan. Expected elevation to SVP by end of 2025"
+    },
+    {
+      "name": "Dr. T.S. Chang",
+      "title": "Vice President, Operations / Advanced Technology and Mask Engineering",
+      "note": "Expected elevation to SVP by end of 2025"
+    },
+    {
+      "name": "K.C. Hsu",
+      "title": "Vice President, Integrated Interconnect & Packaging",
+      "note": "Leads advanced packaging (CoWoS, InFO, SoIC)"
+    },
+    {
+      "name": "Dr. Michael Wu",
+      "title": "Vice President, Technology Development (R&D)",
+      "note": "Leads technology development under R&D division"
+    },
+    {
+      "name": "Ray Chuang",
+      "title": "Vice President, CEO of TSMC Arizona",
+      "note": "5nm veteran; succeeded Dr. Y.L. Wang as CEO of TSMC Arizona effective October 1, 2025"
+    },
+    {
+      "name": "Christopher Thomas",
+      "title": "President, TSMC Europe",
+      "note": "Joined TSMC in 2026 to lead European operations (Dresden fab)"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2024-06",
+      "event": "C.C. Wei succeeded Mark Liu as Chairman of TSMC, consolidating CEO and Chairman roles"
+    },
+    {
+      "date": "2025-04",
+      "event": "SVP J.K. Lin retired from TSMC"
+    },
+    {
+      "date": "2025-07",
+      "event": "SVP Wei-Jen Lo retired after 21 years at TSMC"
+    },
+    {
+      "date": "2025-07",
+      "event": "VP Douglas Yu (R&D, Pathfinding for System Integration) retired"
+    },
+    {
+      "date": "2025-09",
+      "event": "Rick Cassidy stepped down as Chairman of TSMC Arizona; to retire January 2026, serving as Executive Advisor in the interim"
+    },
+    {
+      "date": "2025-10",
+      "event": "Ray Chuang appointed CEO of TSMC Arizona, succeeding Dr. Y.L. Wang"
+    },
+    {
+      "date": "2025-H2",
+      "event": "Dr. Y.L. Wang and Dr. T.S. Chang expected to be elevated to SVP, forming the next generation of TSMC leadership"
+    },
+    {
+      "date": "2026-01",
+      "event": "Christopher Thomas joined as President of TSMC Europe"
+    }
+  ],
+  "insider_ownership_pct": 3.71,
+  "insider_ownership_note": "Reported as ~3.71% by TipRanks. Significant discrepancies across sources (0% to 3.71%) likely due to different methodologies and ADR vs total share measurement. The National Development Fund (Taiwan government) holds a significant stake and its representative Chin-Ching Liu sits on the board. Institutional ownership of ADR shares is substantial with ~3,800 institutional holders owning 980M+ ADR shares.",
+  "compensation_highlights": "CEO C.C. Wei total yearly compensation: NT$946.40M (~US$29M), comprised of 1.7% salary and 98.3% bonuses (including stock and options). Board directors' compensation capped at 0.3% of annual profits per Articles of Incorporation. 2024 total directors' compensation: NT$358,989 thousand distributed in cash. Directors who serve as executive officers do not receive separate director compensation. Independent directors may receive higher compensation due to committee service.",
+  "governance_notes": "10-member Board of Directors with 6 independent directors (60% independence). Three board committees: (1) Audit and Risk Committee, (2) Compensation and People Development Committee, (3) Nominating, Corporate Governance and Sustainability Committee. Audit and Compensation committees consist solely of independent directors. Board includes international members from Taiwan, Europe, and the U.S. Notable independent directors include: Sir Peter L. Bonfield, Michael R. Splinter (former Applied Materials CEO), Moshe N. Gavrielov (former Xilinx CEO), Dr. L. Rafael Reif (former MIT President), Ursula M. Burns (former Xerox CEO), and Lynn L. Elsenhans (former Sunoco CEO). Dr. F.C. Tseng serves as non-independent director (former TSMC executive). Chin-Ching Liu represents the National Development Fund.",
+  "sources": [
+    "https://en.wikipedia.org/wiki/Che-Chia_Wei",
+    "https://www.tsmc.com/english/aboutTSMC/executives",
+    "https://www.ceotodaymagazine.com/2025/10/who-is-the-ceo-of-tsmc/",
+    "https://www.semiconductors.org/tsmcs-dr-c-c-wei-and-dr-mark-liu-to-receive-sias-highest-honor/",
+    "https://www.bloomberg.com/profile/person/18242139",
+    "https://the-cfo.io/2021/01/11/tsmc-cfo-on-addressing-global-tech-surge/",
+    "https://www.trendforce.com/news/2025/09/26/news-tsmc-arizona-names-5nm-veteran-ray-chuang-as-ceo-to-accelerate-u-s-expansion/",
+    "https://www.trendforce.com/news/2025/07/29/news-tsmcs-senior-executive-wei-jen-lo-retires-after-21-years-marking-leadership-transition/",
+    "https://investor.tsmc.com/english/board-of-directors",
+    "https://investor.tsmc.com/english/corporate-governance",
+    "https://investor.tsmc.com/english/committees",
+    "https://www.tipranks.com/stocks/tsm/ownership",
+    "https://www.comparably.com/companies/tsmc/executive-salaries",
+    "https://investor.tsmc.com/sites/ir/shareholders-meeting/2025-06-03/2025AGM_Agenda_wmn.pdf",
+    "https://www.clay.com/dossier/tsmc-executives",
+    "https://www.theofficialboard.com/org-chart/tsmc"
+  ]
+}

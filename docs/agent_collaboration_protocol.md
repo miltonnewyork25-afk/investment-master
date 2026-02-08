@@ -322,6 +322,25 @@ cat reports/{TICKER}/{TICKER}_header.md \
 - 旧: 20-28个零散Agent文件
 - 新: 5个Phase文件 + 1个Complete文件 = 6个文件
 
+### Agent返回规范 (v1.2新增)
+
+SubAgent完成后，**仅返回以下摘要到主线程** (≤500字符):
+
+```
+=== Agent {X} 完成 ===
+file: reports/{TICKER}/staging/Phase{N}_Agent{X}.md
+chars: 12450
+qg_self_check: PASS
+top3:
+  1. [关键发现1, ≤80字符]
+  2. [关键发现2, ≤80字符]
+  3. [关键发现3, ≤80字符]
+anchors: [DM-FIN-001 v1.0, DM-MEM-001 v1.0]
+```
+
+完整输出已在Step 7写入staging文件。主线程通过Step 10读取staging文件合并。
+**禁止**: SubAgent将完整报告内容作为返回消息发送给主线程。
+
 ---
 
 ## 主线程工作流 (完整)
@@ -347,6 +366,7 @@ Step 10: PASS → 追加到Phase主文件 + 删staging + 删锁 + 更新STATUS.m
 === 阶段D: Phase收尾 ===
 Step 11: 全部Agent完成 → 对Phase主文件汇总检查 (总字数/CQ覆盖/Fast Gate)
 Step 12: STATUS.md关键数据合并入progress.md
+Step 12.5: 写入/更新 reports/{TICKER}/data/checkpoint.yaml (详见 docs/checkpoint_protocol.md)
 Step 13: git commit "Phase {N} Complete"
 Step 14: 提醒用户是否push
 ```

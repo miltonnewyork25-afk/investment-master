@@ -1,0 +1,15 @@
+{
+  "fetched_at": "2026-02-06",
+  "source": "MCP:compare_stocks",
+  "benchmark": "SPY",
+  "data": {
+    "TSM": { "pe_ratio": 31.56, "pb_ratio": 50.16, "roe": 0.352, "market_cap": 1715332710400 },
+    "NVDA": { "pe_ratio": 42.54, "pb_ratio": 35.13, "roe": 1.074, "market_cap": 4184762744832 },
+    "AMD": { "pe_ratio": 73.47, "pb_ratio": 4.98, "roe": 0.071, "market_cap": 313854099456 },
+    "INTC": { "pe_ratio": null, "pb_ratio": 2.11, "roe": 0.0002, "market_cap": 240967417856 },
+    "ASML": { "pe_ratio": 45.88, "pb_ratio": 22.55, "roe": 0.505, "market_cap": 524061474816 },
+    "MU": { "pe_ratio": 36.36, "pb_ratio": 7.33, "roe": 0.226, "market_cap": 430946254848 },
+    "LRCX": { "pe_ratio": 43.09, "pb_ratio": 26.31, "roe": 0.656, "market_cap": 267923750912 },
+    "SPY": { "pe_ratio": 26.87, "pb_ratio": 1.58 }
+  }
+}

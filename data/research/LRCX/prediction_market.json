@@ -1,0 +1,278 @@
+{
+  "collection_date": "2026-02-07",
+  "collector": "Agent A2",
+  "target_company": "LRCX (Lam Research)",
+  "methodology": "WebSearch + WebFetch across Polymarket, Kalshi, Metaculus; 10 query groups executed",
+  "events": [
+    {
+      "platform": "Polymarket",
+      "contract": "AI bubble burst by March 31, 2026",
+      "probability": "4%",
+      "expiry": "2026-03-31",
+      "volume": "$167,644",
+      "lrcx_relevance": "High",
+      "impact_channel": "AI泡沫破裂定义包括NVDA跌50%+SOXX跌40%+主要AI硬件供应商(TSM/ASML/AVGO等)跌50%。若触发，LRCX作为刻蚀设备龙头将遭受WFE资本开支大幅削减，营收可能下滑30-50%。当前4%概率意味着短期风险极低。",
+      "resolution_criteria": "至少3项条件在90天窗口内满足: NVDA跌50%/SOXX跌40%/OpenAI或Anthropic破产/OpenAI被收购/H100租金降至$1以下连续5天/主要AI硬件供应商跌50%"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "AI bubble burst by December 31, 2026",
+      "probability": "20%",
+      "expiry": "2026-12-31",
+      "volume": "$1,561,051",
+      "lrcx_relevance": "High",
+      "impact_channel": "全年维度AI泡沫破裂概率20%，这是LRCX面临的最大系统性风险。LRCX约35-40%营收来自先进制程设备(与AI芯片直接相关)。若AI投资周期逆转，设备订单将率先被砍。20%概率暗示市场认为仍有显著尾部风险。",
+      "resolution_criteria": "同上，截止2026-12-31"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "TSM quarterly earnings beat (GAAP EPS > $2.92)",
+      "probability": "数据为2026-01-15已到期合约",
+      "expiry": "2026-01-15 (已到期)",
+      "volume": "N/A",
+      "lrcx_relevance": "High",
+      "impact_channel": "TSM是LRCX最大客户之一(占营收约25-30%)。TSM盈利超预期意味着先进制程产能利用率高，后续设备采购意愿强。TSM盈利趋势是LRCX需求的领先指标。",
+      "resolution_criteria": "TSM报告GAAP EPS是否超过$2.92"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Intel x TSMC joint venture announced before July 2025",
+      "probability": "已到期，结果为No",
+      "expiry": "2025-06-30 (已到期)",
+      "volume": "$71,795",
+      "lrcx_relevance": "Medium",
+      "impact_channel": "Intel-TSMC合并/合资将重塑半导体设备采购格局。该合约已到期(结果No)，但类似行业整合事件仍值得持续监控，因为客户集中度变化直接影响LRCX议价能力。",
+      "resolution_criteria": "Intel或TSMC官方宣布合资/合并/收购"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "NVIDIA stock price above $170 end of Feb 2026",
+      "probability": "76%",
+      "expiry": "2026-02-27",
+      "volume": "$9,314",
+      "lrcx_relevance": "High",
+      "impact_channel": "NVDA是LRCX间接但关键的需求驱动力。NVDA股价反映AI芯片需求预期——NVDA强劲意味着数据中心GPU需求旺盛，TSM/Samsung先进制程产能扩张，LRCX刻蚀设备订单增长。76%概率暗示市场预期NVDA短期维持强势。",
+      "resolution_criteria": "NVDA 2026年2月最后交易日收盘价>$170"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "NVIDIA stock price above $180 end of Feb 2026",
+      "probability": "61.5%",
+      "expiry": "2026-02-27",
+      "volume": "$14,244",
+      "lrcx_relevance": "High",
+      "impact_channel": "同上。$180以上概率61.5%表明市场对NVDA中期前景乐观，间接利好LRCX设备需求展望。",
+      "resolution_criteria": "NVDA 2026年2月最后交易日收盘价>$180"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "NVIDIA stock price above $200 end of Feb 2026",
+      "probability": "23.5%",
+      "expiry": "2026-02-27",
+      "volume": "$1,504",
+      "lrcx_relevance": "Medium",
+      "impact_channel": "NVDA突破$200意味着AI需求超预期爆发，对LRCX属于上行催化剂。23.5%概率说明市场认为大幅上行可能性有限但不可忽视。",
+      "resolution_criteria": "NVDA 2026年2月最后交易日收盘价>$200"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Fed decision March 2026 - No change",
+      "probability": "87%",
+      "expiry": "2026-03-18",
+      "volume": "N/A",
+      "lrcx_relevance": "Medium",
+      "impact_channel": "利率维持不变(87%概率)对半导体设备资本开支影响中性。降息周期有利于设备投资意愿，但短期内Fed按兵不动不会改变LRCX基本面。",
+      "resolution_criteria": "FOMC 2026年3月17-18日会议后联邦基金利率上界是否变化"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Fed rate cuts in 2026 - 2 cuts (50 bps)",
+      "probability": "26%",
+      "expiry": "2026-12-31",
+      "volume": "N/A",
+      "lrcx_relevance": "Medium",
+      "impact_channel": "全年2次降息(26%)与3次降息(27%)概率接近，合计53%。适度降息环境对半导体设备资本开支中性偏正面——利率下行降低设备采购融资成本，但降息幅度有限说明经济韧性仍强。",
+      "resolution_criteria": "2026年全年Fed累计降息幅度"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Fed rate cuts in 2026 - 3 cuts (75 bps)",
+      "probability": "27%",
+      "expiry": "2026-12-31",
+      "volume": "N/A",
+      "lrcx_relevance": "Medium",
+      "impact_channel": "3次降息是最大概率单一结果。若实现，年末利率将降至3.75-4.0%区间，对半导体设备投资环境温和利好。",
+      "resolution_criteria": "2026年全年Fed累计降息次数"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Fed rate at end of 2026 - 3.0% upper bound",
+      "probability": "29%",
+      "expiry": "2026-12-31",
+      "volume": "N/A",
+      "lrcx_relevance": "Medium",
+      "impact_channel": "3.0%是最大概率单一利率水平(29%)。从当前4.25-4.50%降至3.0%意味着累计降息125-150bps，属于较大幅度宽松，对设备投资有明显正面影响。",
+      "resolution_criteria": "2026年12月FOMC会议后联邦基金利率上界"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Fed rate at end of 2026 - 3.25% upper bound",
+      "probability": "27%",
+      "expiry": "2026-12-31",
+      "volume": "N/A",
+      "lrcx_relevance": "Medium",
+      "impact_channel": "3.25%为第二高概率(27%)。3.0%+3.25%合计56%，市场共识倾向年末利率在3.0-3.25%区间。",
+      "resolution_criteria": "同上"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Fed rate hike in 2026",
+      "probability": "12%",
+      "expiry": "2026-12-09",
+      "volume": "$34,671",
+      "lrcx_relevance": "Medium",
+      "impact_channel": "加息概率12%是尾部风险信号。若因通胀反弹导致加息，半导体设备资本开支将显著承压。12%不可忽视但概率较低。",
+      "resolution_criteria": "2026年1月1日至12月FOMC会议期间联邦基金利率上界是否被上调"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Supreme Court rules in favor of Trump's tariffs",
+      "probability": "32%",
+      "expiry": "2026-12-31",
+      "volume": "$4,000,000",
+      "lrcx_relevance": "High",
+      "impact_channel": "最高法院若支持关税权力(32%)，将巩固对华关税的法律基础，长期影响LRCX对华出口和中国半导体设备国产化进程。32%概率意味着市场倾向于关税被裁定违法(68%)，若如此，贸易紧张可能缓和，利好LRCX中国营收(约30%来自中国)。",
+      "resolution_criteria": "最高法院是否裁定支持总统关税行政权力"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Trump makes trade deal with Japan before 2027",
+      "probability": "35% (Mexico highest at 36%)",
+      "expiry": "2026-12-31",
+      "volume": "$7,000,000",
+      "lrcx_relevance": "Low",
+      "impact_channel": "日本贸易协议对LRCX影响有限。日本半导体设备商(TEL, Screen)是LRCX竞争对手而非客户。贸易协议可能涉及半导体合作条款但影响间接。",
+      "resolution_criteria": "美国与各国签署新贸易协议"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Trump visit China by April 30, 2026",
+      "probability": "84%",
+      "expiry": "2026-04-30",
+      "volume": "$1,000,000",
+      "lrcx_relevance": "Medium",
+      "impact_channel": "Trump访华(84%概率)可能带来中美关系阶段性缓和信号。若访问伴随半导体出口管制放松讨论，将直接利好LRCX对华销售。但访华不等于政策变化。",
+      "resolution_criteria": "Trump是否在2026年4月30日前访问中国"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "Will Court Force Trump to Refund Tariffs?",
+      "probability": "12%",
+      "expiry": "2026-06-30",
+      "volume": "N/A",
+      "lrcx_relevance": "Low",
+      "impact_channel": "关税退还令对LRCX影响有限。LRCX产品主要从美国出口，非从中国进口。但整体贸易政策不确定性下降对市场情绪有正面影响。",
+      "resolution_criteria": "法院是否命令退还已征收关税"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "China invade Taiwan by end of 2026",
+      "probability": "12%",
+      "expiry": "2026-12-31",
+      "volume": "N/A",
+      "lrcx_relevance": "High",
+      "impact_channel": "台海冲突是LRCX最极端的尾部风险。TSMC(LRCX最大客户之一)90%+先进制程产能在台湾。入侵将导致全球半导体供应链崩溃，LRCX短期营收暴跌但中长期因产能重建需求可能受益。12%概率需要认真对待。",
+      "resolution_criteria": "中国是否对台湾发动军事入侵"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "China x Taiwan military clash before 2027",
+      "probability": "16%",
+      "expiry": "2026-12-31",
+      "volume": "N/A",
+      "lrcx_relevance": "High",
+      "impact_channel": "军事冲突(含非全面入侵)概率16%高于入侵概率12%。即使是有限冲突也会导致半导体供应链严重中断，影响LRCX全球设备交付和客户投资信心。",
+      "resolution_criteria": "中国与台湾是否发生军事冲突(含有限冲突)"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "China blockade Taiwan by June 30, 2026",
+      "probability": "6%",
+      "expiry": "2026-06-30",
+      "volume": "N/A",
+      "lrcx_relevance": "High",
+      "impact_channel": "台海封锁将切断TSM设备进出口通道，LRCX无法向TSM台湾工厂交付设备。6%概率短期内风险可控但需纳入情景分析。",
+      "resolution_criteria": "中国是否在2026年6月30日前封锁台湾"
+    },
+    {
+      "platform": "Kalshi",
+      "contract": "US Recession in 2026 (NBER definition)",
+      "probability": "20%",
+      "expiry": "2027-01-31",
+      "volume": "619,020 contracts",
+      "lrcx_relevance": "High",
+      "impact_channel": "经济衰退(20%概率)将导致半导体设备资本开支周期下行。历史上WFE在衰退期间平均下滑20-30%。LRCX周期性敞口大，衰退风险是估值折价的重要因素。近期数据(GDP 4.3% Q3 2025)使衰退概率从42%降至20%。",
+      "resolution_criteria": "2026年是否出现连续两个季度GDP负增长"
+    },
+    {
+      "platform": "Polymarket",
+      "contract": "DeepSeek V4 released by March 31, 2026",
+      "probability": "81%",
+      "expiry": "2026-03-31",
+      "volume": "N/A",
+      "lrcx_relevance": "Medium",
+      "impact_channel": "DeepSeek V4发布(81%)代表中国AI能力持续提升。一方面可能加速中国对先进芯片/设备的需求(利好)，另一方面可能加强美国收紧出口管制的理由(利空)。对LRCX中国营收形成双向博弈。"
+    }
+  ],
+  "macro_context": {
+    "ai_capex_2026_consensus": "Hyperscaler四巨头(GOOGL/MSFT/META/AMZN)合计AI资本开支预计~$700B(2026年)，同比增长36%",
+    "ai_capex_2026_sources": [
+      "Goldman Sachs: AI companies may invest >$500B in 2026",
+      "CNBC (2026-02-06): Tech AI spending approaches $700B in 2026",
+      "BofA: $641B AI/cloud capex for 2026 (+36% YoY)",
+      "Alphabet: $175-185B capex guidance for 2026 (vs $91.4B in 2025)",
+      "Meta: $115-135B capex for 2026",
+      "Amazon: ~$200B capex for 2026"
+    ],
+    "ai_capex_2027_projection": "$629B (Morgan Stanley), total AI infrastructure ~$1.75T",
+    "ai_capex_implication_for_lrcx": "AI资本开支大幅增长直接驱动先进制程扩产(3nm/2nm)，LRCX刻蚀设备在先进制程中步骤数增长(每代+15-20%)。$700B级别的hyperscaler capex是LRCX需求的强力支撑。但需警惕AI泡沫破裂(20%概率)导致capex sudden stop。"
+  },
+  "coverage_gaps": [
+    "Polymarket/Kalshi均无直接覆盖'中国半导体出口管制升级/放松'的预测合约 — 这是LRCX最核心的政策风险，但预测市场未提供定价",
+    "无'全球WFE(晶圆设备支出)规模'的预测合约 — Metaculus也未找到相关问题",
+    "无'LRCX股价/盈利'的直接预测合约 — Polymarket仅覆盖NVDA/TSM等大市值半导体股",
+    "无'CHIPS Act资金拨付进度'的预测合约 — CHIPS Act补贴对LRCX美国工厂客户(Intel/TSMC Arizona)至关重要",
+    "无'中国国产半导体设备替代率'的预测合约 — 这是LRCX中国营收的长期结构性风险",
+    "无'存储芯片(DRAM/NAND)资本开支周期'预测 — 存储占LRCX营收约25-30%",
+    "Kalshi无半导体行业专属合约 — 该平台侧重宏观经济和政治事件"
+  ],
+  "risk_signal_summary": {
+    "tail_risks": {
+      "ai_bubble_burst_2026": "20% — 包含SOXX跌40%和主要半导体供应商跌50%条件，直接影响LRCX",
+      "taiwan_military_clash": "16% — TSM产能集中台湾，冲突将严重打击LRCX核心客户",
+      "us_recession_2026": "20% — WFE周期性强，衰退环境下资本开支首先被砍",
+      "fed_rate_hike": "12% — 通胀反弹导致加息将压制设备投资"
+    },
+    "base_case_positive": {
+      "ai_capex_surge": "$700B hyperscaler capex(2026)支撑先进制程设备需求",
+      "fed_easing": "2-3次降息(53%合计概率)，年末利率3.0-3.25%(56%合计概率)，利好设备投资",
+      "nvda_strength": "NVDA $170以上概率76%，反映AI芯片需求仍旺",
+      "tariff_legal_challenge": "最高法院不支持关税概率68%，可能缓和贸易紧张"
+    },
+    "key_monitoring_events": [
+      "2026年2月下旬: NVDA Q4 FY26财报 — AI需求验证",
+      "2026年3月17-18日: FOMC会议 — 利率路径确认(87%不变)",
+      "2026年上半年: 最高法院关税裁决 — 贸易政策方向",
+      "2026年Q1-Q2: LRCX自身财报(3月/6月) — 设备订单和Backlog验证",
+      "持续监控: AI泡沫条件(NVDA价格+SOXX+H100租金) — 目前4%→20%渐进式升温"
+    ]
+  },
+  "data_quality_notes": [
+    "Polymarket数据为实时市场价格，反映交易者集体判断，流动性因合约而异",
+    "Kalshi为CFTC监管的美国合法预测市场，数据可靠性较高",
+    "Metaculus未找到半导体设备相关预测问题",
+    "部分Polymarket合约交易量较低(<$10K)，价格发现功能有限",
+    "AI泡沫合约($1.56M volume)和衰退合约(619K contracts)流动性充足，信号较可靠",
+    "所有概率均为2026-02-07采集，预测市场价格实时波动"
+  ]
+}
