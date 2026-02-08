@@ -6,6 +6,68 @@
 
 ---
 
+## [v24.0] - 2026-02-08
+
+### MAJOR - 质量不可回退 (Iron Rule F + Complete报告强制门控)
+
+解决META报告质量回退问题(36K vs GOOGL 311K)。根因: Phase 5独立交付而未组装Complete报告 + Phase 5内容不达GOOGL基准。
+
+**新增: 铁律F — 质量不可回退**
+- **新增** `docs/quality_benchmarks.md` — 历史最佳质量基准注册表(GOOGL 311K为基准)
+  - 10维度评分标准 + 10字段KS格式 + 三情景VP格式 + CQ 5要素闭环格式
+  - 5档仓位矩阵标准 + Complete报告组装标准
+- **新增** `tests/quality_gate_complete.sh` — 11项自动化Complete报告质量门控
+  - CG1-CG11: 总字符/Phase5字符/评分维度/KS数/VP数/三情景/CQ闭环/标注密度/硬数据占比/Mermaid/必需章节
+  - 全部基于历史最佳80%地板 — 违反即阻断commit
+- **升级** `CLAUDE.md` 铁律F: 11项检查表 + Complete组装流程 + 禁止Phase 5即宣布完成
+- **升级** `CLAUDE.md` 文档索引: 新增quality_benchmarks.md条目
+
+**升级: Phase 5协议 (v6.0 → v7.0)**
+- **升级** `docs/deep_dive_protocol.md` Phase 5: 字符目标15K→34K(GOOGL实际73.6K)
+- **升级** Phase 5评分: 自定维度 → 标准10维度(估值/增长/护城河/财务/管理/催化/风险/聪明钱/竞争/时机)
+- **升级** Phase 5 KS: 简要格式 → 10字段详细格式(触发/阈值/当前/距离/动作/CQ/Bear#/数据源/AI/紧迫性)
+- **升级** Phase 5 VP: 单情景 → 三情景(Base/Bull/Bear)(禁止单情景预测)
+- **新增** Phase 5 CQ最终解答: 5要素闭环(回答+置信度路径+KS关联+验证事件+反思)
+- **新增** Phase 5.5: Complete报告组装为强制步骤(quality_gate_complete.sh通过后才能commit)
+- **新增** Phase 5仓位: 5档矩阵标准(观望/观察仓/标准/核心/重仓)
+
+**防退机制**:
+- 80%地板规则: 新报告每项指标≥历史最佳80% (硬性阻断)
+- Complete强制: Phase 5不等于全量完成，必须组装所有Phase + 通过11项CG门控
+- 基准更新: 每完成一份报告，更新quality_benchmarks.md中的基准值
+
+---
+
+## [v23.0] - 2026-02-07
+
+### MINOR - Context Window优化（输出质量不变，context占用大幅降低）
+
+解决多worktree并行深度研究时context窗口频繁耗尽问题。4项优化，0质量降级。
+
+**优化1: 自动检查点协议（最高优先级）**
+- **新增** `docs/checkpoint_protocol.md` — checkpoint.yaml schema + 触发时机 + 恢复流程
+- **升级** `CLAUDE.md` 铁律D步骤2: 新增checkpoint.yaml恢复检查
+- **升级** `docs/agent_collaboration_protocol.md`: Step 12.5写入checkpoint
+- **升级** `docs/deep_dive_protocol.md`: Fast Gate通过后写入checkpoint再git commit
+- **升级** `CLAUDE.md` 文档索引: 新增checkpoint_protocol.md条目
+
+**优化2: SubAgent输出压缩（高优先级）**
+- **升级** `docs/parallel_execution.md`: 结果汇总改为摘要返回(≤500字符/agent)
+- **升级** `docs/parallel_execution.md`: Agent Prompt v6.0新增第5项返回格式约束
+- **升级** `docs/agent_collaboration_protocol.md`: Section 7新增Agent返回规范
+- **节省**: 3 agents场景从24K→1.5K chars(94%), 5 agents场景从50K→2.5K chars(95%)
+
+**优化3: CLAUDE.md瘦身（中等优先级）**
+- **移出** 会话效率规则(8条) → `docs/time_management.md`，CLAUDE.md替换为1行指针
+- **移出** 格式决策+框架开发规范 → `docs/readability_spec.md`，CLAUDE.md替换为2行指针
+- **净减**: CLAUDE.md从226行减至~200行
+
+**优化4: Agent调度预算规则（低优先级）**
+- **升级** `docs/parallel_execution.md`: 并行数量限制→Agent调度预算规则v5.0
+- **规则**: 单批次≤3 agents, 单会话≤6 agents, 批次间必须写checkpoint
+
+---
+
 ## [v22.0] - 2026-02-07
 
 ### MAJOR - GOOGL经验驱动的实质质量升级（从"高形式分"到"高形式分+高实质分"）
