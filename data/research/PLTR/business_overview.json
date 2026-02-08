@@ -1,0 +1,269 @@
+{
+  "ticker": "PLTR",
+  "fetched_at": "2026-02-08",
+  "agent": "Agent D - Business Overview & Competitive Landscape",
+  "fy2025_total_revenue": {
+    "amount_billion": 4.475,
+    "yoy_growth_pct": 56,
+    "source": "Palantir Q4 2025 Earnings Release, 2026-02-01"
+  },
+  "segments": [
+    {
+      "name": "Government (Total)",
+      "fy2025_revenue_billion": 2.402,
+      "pct_of_total": 53.7,
+      "yoy_growth_pct": 53,
+      "q4_2025_revenue_million": 730,
+      "q4_yoy_growth_pct": 60,
+      "source": "Palantir Q4 2025 Earnings Release"
+    },
+    {
+      "name": "U.S. Government",
+      "fy2025_revenue_billion": 1.855,
+      "pct_of_total": 41.5,
+      "yoy_growth_pct": 55,
+      "q4_2025_revenue_million": 570,
+      "q4_yoy_growth_pct": 66,
+      "source": "Palantir Q4 2025 Earnings Release"
+    },
+    {
+      "name": "International Government",
+      "fy2025_revenue_billion": 0.547,
+      "pct_of_total": 12.2,
+      "yoy_growth_pct": null,
+      "q4_2025_revenue_million": 160,
+      "q4_yoy_growth_pct": 43,
+      "note": "FY figure derived: Total Gov $2.402B minus US Gov $1.855B",
+      "source": "Palantir Q4 2025 Earnings Release"
+    },
+    {
+      "name": "Commercial (Total)",
+      "fy2025_revenue_billion": 2.073,
+      "pct_of_total": 46.3,
+      "yoy_growth_pct": 60,
+      "q4_2025_revenue_million": 677,
+      "q4_yoy_growth_pct": null,
+      "note": "Q4 derived: Total $1.407B minus Gov $730M",
+      "source": "Palantir Q4 2025 Earnings Release"
+    },
+    {
+      "name": "U.S. Commercial",
+      "fy2025_revenue_billion": 1.465,
+      "pct_of_total": 32.7,
+      "yoy_growth_pct": 109,
+      "q4_2025_revenue_million": 507,
+      "q4_yoy_growth_pct": 137,
+      "q4_qoq_growth_pct": 28,
+      "source": "Palantir Q4 2025 Earnings Release"
+    },
+    {
+      "name": "International Commercial",
+      "fy2025_revenue_billion": 0.608,
+      "pct_of_total": 13.6,
+      "yoy_growth_pct": 2,
+      "q4_2025_revenue_million": null,
+      "q4_yoy_growth_pct": null,
+      "note": "International commercial growth lagged significantly vs US commercial",
+      "source": "Palantir Q4 2025 Earnings Release"
+    }
+  ],
+  "geographic_breakdown": [
+    {
+      "region": "United States",
+      "fy2025_revenue_billion": 3.320,
+      "pct_of_total": 74.2,
+      "yoy_growth_pct": 75,
+      "source": "Palantir Q4 2025 Earnings Release"
+    },
+    {
+      "region": "United Kingdom",
+      "fy2024_revenue_million": 304.58,
+      "fy2024_pct_of_total": 10.63,
+      "fy2025_revenue_billion": null,
+      "note": "FY2025 UK-specific not disclosed separately; FY2024 data shown",
+      "source": "Bullfincher / Palantir 10-K FY2024"
+    },
+    {
+      "region": "Rest of World",
+      "fy2024_revenue_million": 660.69,
+      "fy2024_pct_of_total": 23.06,
+      "fy2025_revenue_billion": null,
+      "note": "FY2025 RoW not disclosed separately; FY2024 data shown",
+      "source": "Bullfincher / Palantir 10-K FY2024"
+    }
+  ],
+  "product_lines": [
+    {
+      "name": "Gotham",
+      "description": "Intelligence platform for government/defense - enables analysts to identify patterns across classified data sources, integrate disparate intelligence feeds, and support mission-critical decision-making",
+      "target_market": "government",
+      "revenue_breakdown": null,
+      "note": "Palantir does not disclose revenue by product line; reports by segment (Gov/Commercial) only"
+    },
+    {
+      "name": "Foundry",
+      "description": "Data integration operating system for commercial enterprises - connects disparate systems across manufacturing, supply chain, and business operations into a unified digital twin (Ontology)",
+      "target_market": "commercial",
+      "revenue_breakdown": null
+    },
+    {
+      "name": "AIP (Artificial Intelligence Platform)",
+      "description": "Launched 2023 - integrates large language models with enterprise data while maintaining security controls; enables organizations to operationalize AI within existing workflows through the Ontology",
+      "target_market": "both",
+      "revenue_breakdown": null,
+      "note": "Primary growth driver behind US commercial 137% YoY Q4 acceleration"
+    },
+    {
+      "name": "Apollo",
+      "description": "Deployment infrastructure enabling continuous delivery across cloud, on-premises, and classified/air-gapped environments",
+      "target_market": "both",
+      "revenue_breakdown": null
+    }
+  ],
+  "key_customers": {
+    "government": [
+      "U.S. Army (Enterprise Service Agreement up to $10B over 10 years, awarded mid-2025)",
+      "CIA",
+      "NSA",
+      "FBI",
+      "Department of Homeland Security (DHS)",
+      "Department of Defense (DoD)",
+      "Marine Corps",
+      "Air Force",
+      "Special Operations Command (SOCOM)",
+      "CDC",
+      "UK NHS (7-year, 330M GBP Federated Data Platform contract, Nov 2023)",
+      "UK Ministry of Defence (240M GBP contract)"
+    ],
+    "commercial": [
+      "Morgan Stanley",
+      "JPMorgan Chase",
+      "Goldman Sachs",
+      "Citigroup",
+      "Airbus (A350 delivery accelerated 33% via partnership)",
+      "BP",
+      "3M",
+      "Boeing",
+      "General Electric",
+      "Siemens",
+      "Merck KGaA",
+      "Ferrari",
+      "Lear Corp (5-year Warp Speed manufacturing OS deal, Sept 2025)",
+      "Wendy's (supply chain digital twin across 6,450 restaurants)",
+      "Walgreens (8,500 stores)",
+      "Lloyd's of London",
+      "PG&E",
+      "Walmart",
+      "United Healthcare"
+    ],
+    "sources": [
+      "Palantir Wikipedia",
+      "ReadyContacts customer list",
+      "Palantir impact pages",
+      "Various news reports"
+    ]
+  },
+  "key_partners": [
+    {
+      "name": "Google Cloud",
+      "description": "Multi-year partnership for digital transformation in retail, financial services, supply chain/logistics",
+      "source": "Google Cloud Blog"
+    },
+    {
+      "name": "Amazon Web Services (AWS)",
+      "description": "Cloud infrastructure partner",
+      "source": "General knowledge"
+    },
+    {
+      "name": "Microsoft Azure",
+      "description": "Cloud infrastructure partner",
+      "source": "General knowledge"
+    },
+    {
+      "name": "Object Edge",
+      "description": "Partnership for AI-native supply chain solution adoption",
+      "source": "Object Edge blog"
+    }
+  ],
+  "tam": {
+    "palantir_ipo_estimate_billion": 120,
+    "analyst_2025_estimate_billion": 230,
+    "analyst_2030_estimate_billion": 300,
+    "morningstar_base_case_trillion": 1.4,
+    "bull_case_trillion": 1.0,
+    "broader_data_analytics_market_2028_billion": 190,
+    "broader_data_analytics_cagr_pct": 11.14,
+    "note": "TAM estimates vary widely: Palantir's IPO estimate $120B vs Morningstar's base case $1.4T. Discrepancy reflects disagreement on how broadly to define Palantir's addressable market with AIP expansion.",
+    "sources": [
+      "Financhill - The Bull Case for Palantir",
+      "Morningstar analyst Mark Giarelli",
+      "GlobalData market forecast"
+    ]
+  },
+  "customer_metrics": {
+    "total_customers": 954,
+    "total_customers_yoy_growth_pct": 34,
+    "total_customers_qoq_growth_pct": 5,
+    "government_customers": null,
+    "commercial_customers": null,
+    "aip_customers": null,
+    "net_dollar_retention_rate_pct": 139,
+    "ndr_qoq_change_bps": 500,
+    "top_20_customer_avg_ttm_revenue_million": 94,
+    "top_20_customer_avg_yoy_growth_pct": 45,
+    "remaining_deal_value_billion": 11.2,
+    "rdv_yoy_growth_pct": 105,
+    "rdv_qoq_growth_pct": 29,
+    "remaining_performance_obligations_billion": 4.2,
+    "rpo_yoy_growth_pct": 144,
+    "total_contract_value_q4_billion": 4.3,
+    "tcv_yoy_growth_pct": 138,
+    "commercial_tcv_q4_billion": 2.6,
+    "commercial_tcv_yoy_growth_pct": 161,
+    "us_commercial_tcv_fy2025_billion": 4.3,
+    "deals_over_1m_q4": 180,
+    "deals_over_5m_q4": 84,
+    "deals_over_10m_q4": 61,
+    "note": "Palantir does not disclose DAU/MAU or separate gov/commercial customer counts",
+    "source": "Palantir Q4 2025 Earnings Release, 2026-02-01"
+  },
+  "operational_metrics": {
+    "adjusted_operating_margin_q4_pct": 57,
+    "adjusted_operating_margin_fy2025_pct": 50,
+    "adj_op_margin_yoy_improvement_bps": 1100,
+    "adjusted_free_cash_flow_margin_q4_pct": 56,
+    "adjusted_free_cash_flow_margin_fy2025_pct": 51,
+    "rule_of_40_q4": 127,
+    "rule_of_40_fy2025": 106,
+    "source": "Palantir Q4 2025 Earnings Release"
+  },
+  "fy2026_guidance": {
+    "total_revenue_billion_low": 7.182,
+    "total_revenue_billion_high": 7.198,
+    "total_revenue_yoy_growth_pct": 61,
+    "us_commercial_revenue_minimum_billion": 3.144,
+    "us_commercial_yoy_growth_pct_minimum": 115,
+    "adjusted_operating_income_billion_low": 4.126,
+    "adjusted_operating_income_billion_high": 4.142,
+    "adjusted_free_cash_flow_billion_low": 3.925,
+    "adjusted_free_cash_flow_billion_high": 4.125,
+    "q1_2026_revenue_billion_low": 1.532,
+    "q1_2026_revenue_billion_high": 1.536,
+    "q1_2026_adj_operating_income_million_low": 870,
+    "q1_2026_adj_operating_income_million_high": 874,
+    "source": "Palantir Q4 2025 Earnings Release"
+  },
+  "sources": [
+    "[硬数据: Palantir Q4 2025 Earnings Release, BusinessWire, 2026-02-01]",
+    "[硬数据: Palantir Q4 2025 Investor Presentation]",
+    "[硬数据: Palantir 10-K FY2024, SEC Filing]",
+    "[硬数据: Bullfincher Revenue Breakdown]",
+    "[硬数据: TickerReport Q4 2025 Earnings Call Highlights]",
+    "[硬数据: TheMarketsDailyQ4 2025 Earnings Call Highlights]",
+    "[硬数据: Palantir Wikipedia - customer list]",
+    "[硬数据: Google Cloud Blog - partnership announcement]",
+    "[硬数据: Morningstar - TAM estimate, analyst Mark Giarelli]",
+    "[硬数据: Financhill - Bull Case for Palantir, TAM data]",
+    "[硬数据: GlobalData - Data & Analytics market forecast to 2028]"
+  ]
+}

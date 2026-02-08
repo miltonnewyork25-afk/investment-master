@@ -1,0 +1,10 @@
+{
+  "fetched_at": "2026-02-08",
+  "source": "WebSearch (MCP returned nulls)",
+  "indices": {
+    "sp500": {"name": "S&P 500", "price": 6932, "date": "2026-02-06", "note": "Turned red for 2026 after $1T wipeout, then rebounded 1.97%"},
+    "nasdaq": {"name": "NASDAQ Composite", "change_pct": 2.1, "date": "2026-02-06", "note": "Led by semiconductor rebound, NVDA/AVGO/AMD +7%"},
+    "vix": {"name": "CBOE Volatility Index", "price": 17.76, "date": "2026-02-08"}
+  },
+  "market_context": "Early February 2026 saw significant volatility. S&P 500 briefly turned negative for the year as near-term AI disruption fears hit markets. Broad-based snapback followed as dip buying returned."
+}

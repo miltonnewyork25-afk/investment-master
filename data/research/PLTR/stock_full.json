@@ -1,0 +1,102 @@
+{
+  "fetched_at": "2026-02-08",
+  "source": "WebSearch (MCP fallback) + Palantir IR",
+  "ticker": "PLTR",
+  "company": "Palantir Technologies Inc.",
+  "exchange": "NASDAQ",
+  "price": {
+    "current": 137.65,
+    "day_range": {"low": 127.38, "high": 137.76},
+    "date": "2026-02-08"
+  },
+  "market_cap": 323909000000,
+  "shares_outstanding": {
+    "class_a": 2248950826,
+    "class_b": 95400680,
+    "class_f": 1005000,
+    "diluted_avg_q3_2025": 2549000000,
+    "source": "Palantir 10-K FY2024 (Feb 2025) + Q3 2025 filing"
+  },
+  "valuation": {
+    "pe_ratio": 215.71,
+    "pb_ratio": 43.91,
+    "ps_ratio_ttm": 72.4,
+    "ev_to_revenue_ttm": 70.8
+  },
+  "fundamentals": {
+    "fy2025": {
+      "revenue": 4475000000,
+      "revenue_growth_yoy": 0.56,
+      "adjusted_operating_income": 2300000000,
+      "adjusted_operating_margin": 0.50,
+      "adjusted_free_cash_flow": 2270000000,
+      "adjusted_fcf_margin": 0.51,
+      "adjusted_fcf_growth_yoy": 0.82,
+      "source": "Palantir IR press release 2026-02-01"
+    },
+    "q4_2025": {
+      "revenue": 1407000000,
+      "revenue_growth_yoy": 0.70,
+      "revenue_growth_qoq": 0.19,
+      "eps_adjusted": 0.25,
+      "eps_gaap": 0.24,
+      "net_income": 608000000,
+      "adjusted_operating_income": 798000000,
+      "adjusted_operating_margin": 0.57,
+      "adjusted_free_cash_flow": 791000000,
+      "adjusted_fcf_margin": 0.56,
+      "source": "Palantir Q4 2025 earnings release 2026-02-02"
+    },
+    "segments_q4_2025": {
+      "us_total": {"revenue": 1076000000, "growth_yoy": 0.93, "growth_qoq": 0.22},
+      "us_commercial": {"revenue": 507000000, "growth_yoy": 1.37, "growth_qoq": 0.28},
+      "us_government": {"revenue": 570000000, "growth_yoy": 0.66},
+      "international": {"revenue": 331000000}
+    },
+    "guidance_fy2026": {
+      "revenue_midpoint": 7190000000,
+      "revenue_growth_yoy": 0.61,
+      "us_commercial_growth_guidance": 1.15,
+      "source": "Palantir Q4 2025 guidance 2026-02-02"
+    }
+  },
+  "key_metrics": {
+    "net_dollar_retention": 1.39,
+    "ndr_qoq_change_bps": 500,
+    "rpo": 4200000000,
+    "rpo_growth_yoy": 1.44,
+    "rpo_growth_qoq": 0.62,
+    "tcv_q4": 4300000000,
+    "tcv_growth_yoy": 1.38,
+    "us_commercial_customer_count": 571,
+    "us_commercial_customer_growth_yoy": 0.49,
+    "rule_of_40_score": 127,
+    "source": "Palantir Q4 2025 earnings + IR presentation"
+  },
+  "balance_sheet": {
+    "cash_and_equivalents_and_treasuries": 7200000000,
+    "as_of": "2025-12-31",
+    "source": "Palantir Q4 2025 earnings"
+  },
+  "sbc": {
+    "fy2024": 691640000,
+    "ttm_sep2025": 1650000000,
+    "q1_2025": 155300000,
+    "q2_2025": 160000000,
+    "q3_2025": 172300000,
+    "sbc_growth_yoy_ttm": 0.2902,
+    "source": "MacroTrends + Palantir filings"
+  },
+  "profitability": {
+    "roe": 0.2598,
+    "rule_of_40_score": 127
+  },
+  "government_contracts": {
+    "total_federal_since_2008": 1900000000,
+    "dod_total": 1650000000,
+    "project_maven_contract": {"value": 1300000000, "through": 2029},
+    "fedramp_status": "FedRAMP High Baseline Authorization",
+    "dod_il5_il6": true,
+    "source": "FedScoop, Palantir IR, USASpending.gov"
+  }
+}

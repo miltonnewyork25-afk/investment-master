@@ -1,0 +1,49 @@
+{
+  "fetched_at": "2026-02-08",
+  "source": "MCP:compare_stocks",
+  "benchmark": "SPY",
+  "data": {
+    "PLTR": {
+      "pe_ratio": 215.71,
+      "pb_ratio": 43.91,
+      "roe": 0.2598,
+      "market_cap": 323908993024
+    },
+    "SNOW": {
+      "pe_ratio": null,
+      "pb_ratio": 27.01,
+      "roe": -0.5309,
+      "market_cap": 57636745216
+    },
+    "AI": {
+      "pe_ratio": null,
+      "pb_ratio": 2.12,
+      "roe": -0.4677,
+      "market_cap": 1639775616
+    },
+    "DDOG": {
+      "pe_ratio": 360.29,
+      "pb_ratio": 11.38,
+      "roe": 0.0352,
+      "market_cap": 39166418944
+    },
+    "CRWD": {
+      "pe_ratio": null,
+      "pb_ratio": 24.82,
+      "roe": -0.0881,
+      "market_cap": 99704930304
+    },
+    "NOW": {
+      "pe_ratio": 60.32,
+      "pb_ratio": 8.14,
+      "roe": 0.1549,
+      "market_cap": 106295099392
+    },
+    "SPY": {
+      "pe_ratio": 27.38,
+      "pb_ratio": 1.61,
+      "roe": null,
+      "market_cap": 633838632960
+    }
+  }
+}

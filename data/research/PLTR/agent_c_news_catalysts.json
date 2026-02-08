@@ -1,0 +1,256 @@
+{
+  "ticker": "PLTR",
+  "fetched_at": "2026-02-08",
+  "current_price": {
+    "price": 137.65,
+    "date": "2026-02-08",
+    "intraday_range": "127.38 - 137.76",
+    "52_week_range": "66.12 - 207.52",
+    "market_cap": "323.86B",
+    "pe_ratio_ttm": 197.01,
+    "source": "Yahoo Finance / Robinhood, 2026-02-08"
+  },
+  "key_news": [
+    {
+      "date": "2026-02-02",
+      "headline": "Palantir Q4 2025财报大幅超预期: 营收$1.41B (+70% YoY), EPS $0.25 vs 预期$0.23",
+      "summary": "Q4 2025营收$1.407B, 同比增长70%(去年同期$827.5M)。调整后EPS $0.25超预期$0.23。美国政府业务增长66%, 美国商业收入增长137%至$5.07亿, 创纪录$13亿美国商业合同总价值。Rule of 40达到127%。",
+      "sentiment": "positive",
+      "source": "CNBC, Palantir IR, 2026-02-02"
+    },
+    {
+      "date": "2026-02-02",
+      "headline": "FY2026指引远超共识: 全年营收$7.18-7.20B (+61% YoY), Q1 $1.53-1.54B",
+      "summary": "FY2026营收指引$7.182-7.198B, 远超华尔街预期$6.22B (+15.5%)。Q1指引$1.532-1.536B, 超预期$1.32B (+16%)。美国商业收入全年指引超$3.144B (≥115% YoY增长)。",
+      "sentiment": "positive",
+      "source": "Seeking Alpha, Bloomberg, Palantir IR, 2026-02-02"
+    },
+    {
+      "date": "2026-02-03",
+      "headline": "财报后PLTR股价大涨, 盘后一度涨超8%",
+      "summary": "Q4财报和强劲指引推动股价盘后大涨近8%。Alex Karp称Palantir是'an n of 1', 强调AI需求不可阻挡。",
+      "sentiment": "positive",
+      "source": "CNBC, Fortune, Motley Fool, 2026-02-03"
+    },
+    {
+      "date": "2026-02-04",
+      "headline": "两大红旗警告: 客户增长放缓(34% vs 上季45%), 极端估值(P/E 197x)",
+      "summary": "客户数增至954但同比增速从45%降至34%, 环比增速从7%降至5%。P/E 197x为行业均值的8倍以上。Jefferies分析师维持卖出评级, 目标价$70(Street-low)。",
+      "sentiment": "negative",
+      "source": "Motley Fool, Yahoo Finance, 2026-02-04"
+    },
+    {
+      "date": "2026-02-06",
+      "headline": "CEO Alex Karp的$20亿减持警告: 三年累计卖出$2.2B股票",
+      "summary": "Karp自2024年起已出售3800万股, 价值$18.8亿。2026年计划再出售最多997.5万股(按当前价约$10亿+)。为10b5-1预设计划, 目前仍持有640万A类股(约$8.32亿)。",
+      "sentiment": "negative",
+      "source": "Motley Fool, Yahoo Finance, Nasdaq, 2026-02-06"
+    },
+    {
+      "date": "2026-02-07",
+      "headline": "Karp称美国商业曾是'backwater(死水)', 现成增长超级引擎",
+      "summary": "Karp在财报电话会议中表示, 美国商业业务曾被视为不重要的'backwater', 但AIP彻底改变了局面, 现在是增长最快的业务线(137% YoY)。预测将出现'不可思议的收入增长, 但不会有不可思议的客户增长'。",
+      "sentiment": "positive",
+      "source": "Motley Fool, 2026-02-07"
+    },
+    {
+      "date": "2026-02-07",
+      "headline": "PLTR从高点回撤38%, 测试$130.5斐波那契支撑位",
+      "summary": "股价从52周高点$207.52回落约38%, 在$130附近寻找支撑。部分分析师认为这是布局机会, 但估值争议持续。TipRanks共识: 5买入/10持有/2卖出 = 持有。",
+      "sentiment": "neutral",
+      "source": "FX Leaders, TipRanks, 2026-02-07"
+    },
+    {
+      "date": "2026-01-21",
+      "headline": "达沃斯: HD Hyundai与Palantir扩大AI战略合作, 交易价值数亿美元",
+      "summary": "HD Hyundai董事长与Karp在达沃斯会面, 将AI合作扩展至集团全线(电气/机器人/海事等)。双方将共建Center of Excellence。HD Hyundai自2021年起使用Palantir, 从油库开始已扩展至造船、海上作业、能源和建筑设备。",
+      "sentiment": "positive",
+      "source": "Nasdaq, Korea Times, UPI, 2026-01-21"
+    },
+    {
+      "date": "2026-01-21",
+      "headline": "Sovereign AI选择Accenture和Palantir建设EMEA下一代AI数据中心",
+      "summary": "英国AI基础设施公司Sovereign AI选择Accenture+Palantir构建主权级AI数据中心。Palantir提供Chain Reaction基础设施操作系统, Dell AI Factory + NVIDIA提供硬件。60%欧洲组织计划增加主权AI投资。计划扩展至APAC。",
+      "sentiment": "positive",
+      "source": "Accenture Newsroom, Seeking Alpha, 2026-01-21"
+    },
+    {
+      "date": "2025-12-09",
+      "headline": "美国海军$4.48亿ShipOS合同: AI赋能造船和维修",
+      "summary": "海军宣布$4.48亿战略投资, 部署Palantir开发的ShipOS(造船操作系统)。首先部署于潜艇项目, 覆盖2家主要造船厂、3家船坞、100家供应商。GD Electric Boat潜艇排程从160小时降至10分钟。合同至2027年底。",
+      "sentiment": "positive",
+      "source": "USNI News, Military.com, Bloomberg, 2025-12-09"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-02-18 (预计)",
+      "event": "FY2025 10-K年报提交SEC (去年为2月18日, 今年日期待确认)",
+      "expected_impact": "neutral"
+    },
+    {
+      "date": "2026-05-04 或 05-11 (待确认)",
+      "event": "Q1 2026财报发布 — 指引$1.532-1.536B, 远超共识$1.32B",
+      "expected_impact": "positive"
+    },
+    {
+      "date": "2026 Q1-Q2",
+      "event": "Agentic AI Hives产品推出 — 从决策支持升级为决策执行平台",
+      "expected_impact": "positive"
+    },
+    {
+      "date": "2026全年",
+      "event": "美国陆军$100亿/10年框架合同持续收入 + ShipOS扩展至水面舰艇",
+      "expected_impact": "positive"
+    },
+    {
+      "date": "2026全年",
+      "event": "Sovereign AI EMEA数据中心建设 + APAC扩展计划",
+      "expected_impact": "positive"
+    },
+    {
+      "date": "2026全年",
+      "event": "HD Hyundai集团全线AIP部署 + Center of Excellence共建",
+      "expected_impact": "positive"
+    },
+    {
+      "date": "2026全年",
+      "event": "五角大楼2026年AI预算创纪录$134亿 — Palantir为主要受益者",
+      "expected_impact": "positive"
+    },
+    {
+      "date": "2026全年 (风险)",
+      "event": "客户增长放缓趋势是否持续 — Q4环比仅+5%, 同比34%(前季45%)",
+      "expected_impact": "negative"
+    },
+    {
+      "date": "2026全年 (风险)",
+      "event": "CEO Karp计划出售最多997.5万股 — 持续减持压力",
+      "expected_impact": "negative"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "date": "2026-02-02",
+        "name": "Alexander D. Moore",
+        "title": "Director",
+        "type": "sell",
+        "shares": 20000,
+        "value_estimated": "2,935,000 - 3,023,000",
+        "price_range": "146.75 - 151.14",
+        "plan": "10b5-1 (set 2024-11-22)"
+      },
+      {
+        "date": "2026-01-02",
+        "name": "Multiple insiders",
+        "title": "Various",
+        "type": "sell",
+        "shares": "15 transactions total",
+        "value": 6252405,
+        "note": "3 transactions exceeded typical size by up to 6X"
+      },
+      {
+        "date": "2024-01 to 2025-11 (累计)",
+        "name": "Alexander C. Karp",
+        "title": "CEO",
+        "type": "sell",
+        "shares": 38000000,
+        "value": 1880000000,
+        "note": "三年累计$2.2B; 2026年计划再售最多9,975,000股; 目前持有640万A类股(~$832M)",
+        "plan": "10b5-1"
+      }
+    ],
+    "net_insider_sentiment": "bearish",
+    "sentiment_detail": "过去90天净卖出超$1.22亿, 无重大买入。CEO Karp三年累计减持$2.2B。所有交易均为10b5-1预设计划。"
+  },
+  "sec_filings": [
+    {
+      "date": "2025-02-18",
+      "type": "10-K",
+      "description": "FY2024年报 (截至2024-12-31): 美国收入$1.90B (+38% YoY), 美国商业$702M (+54% YoY), 美国政府$1.20B (+30% YoY), 现金及短期国债$5.2B"
+    },
+    {
+      "date": "2025-05-05",
+      "type": "10-Q",
+      "description": "Q1 2025季报 (截至2025-03-31), 受理日期2025-05-06"
+    },
+    {
+      "date": "2026-02-02",
+      "type": "8-K",
+      "description": "Q4 2025财报新闻稿: 营收$1.407B (+70% YoY), EPS $0.25, FY2026指引$7.18-7.20B (+61% YoY)"
+    },
+    {
+      "date": "2026-02 (预计)",
+      "type": "10-K (待提交)",
+      "description": "FY2025年报预计于2026年2月中旬提交SEC (去年为2月18日)"
+    }
+  ],
+  "analyst_consensus": {
+    "rating": "Hold",
+    "breakdown": "5 Buy / 10 Hold / 2 Sell",
+    "notable_targets": {
+      "bull": "部分分析师认为可突破$200",
+      "bear": "Jefferies Brent Thill: Sell, 目标$70 (Street-low)",
+      "concern": "P/E 197x为软件行业均值的8倍+"
+    },
+    "source": "TipRanks, 2026-02-08"
+  },
+  "key_metrics_q4_2025": {
+    "revenue": "$1.407B (+70% YoY)",
+    "us_commercial_revenue": "$507M (+137% YoY)",
+    "us_government_revenue": "+66% YoY",
+    "adjusted_eps": "$0.25 (vs consensus $0.23)",
+    "customer_count": 954,
+    "customer_growth_yoy": "34% (deceleration from 45% in Q3)",
+    "customer_growth_qoq": "5% (deceleration from 7% in Q3)",
+    "us_commercial_tcv": "$1.3B (record)",
+    "total_deal_value": "$4.3B (+138% YoY)",
+    "rule_of_40": "127%",
+    "fy2026_revenue_guidance": "$7.182-7.198B (+61% YoY)",
+    "q1_2026_revenue_guidance": "$1.532-1.536B",
+    "us_commercial_2026_guidance": ">$3.144B (+115% YoY)",
+    "source": "Palantir IR, CNBC, 2026-02-02"
+  },
+  "strategic_developments": {
+    "agentic_ai": "2026年推出Agentic AI Hives — 自主Agent处理复杂供应链中断, 从决策支持转向决策执行",
+    "sovereign_ai": "与Accenture合作为Sovereign AI构建EMEA主权级AI数据中心, Chain Reaction基础设施OS",
+    "military": "海军$448M ShipOS合同(至2027), 陆军$100亿/10年框架, 五角大楼2026 AI预算$134亿",
+    "international": "HD Hyundai数亿美元扩展合作(达沃斯宣布), 覆盖电气/机器人/海事/建设等",
+    "commercial_model": "1-Day Bootcamp获客模式成功, 但正转向更少更大的客户(如$96M医疗、$80M工程服务合同)"
+  },
+  "sources": [
+    "https://www.cnbc.com/2026/02/02/palantir-pltr-q4-2025-earnings.html",
+    "https://seekingalpha.com/news/4545908-palantir-outlines-61-percent-revenue-growth-target-for-2026-as-u-s-business-surges-93-percent",
+    "https://www.bloomberg.com/news/articles/2026-02-02/palantir-s-revenue-forecast-for-year-and-quarter-lap-consensus",
+    "https://www.cnbc.com/2026/02/03/palantir-stock-earnings.html",
+    "https://www.fxleaders.com/news/2026/02/07/palantir-pltr-ready-to-bounce/",
+    "https://www.fool.com/investing/2026/02/04/2-red-flags-from-palantirs-latest-quarterly-update/",
+    "https://www.fool.com/investing/2026/02/07/this-palantir-backwater-now-drives-growth/",
+    "https://investors.palantir.com/news-details/2026/Palantir-Reports-Q4-2025-U-S--Comm-Revenue-Growth-of-137-YY-and-Revenue-Growth-of-70-YY-Issues-FY-2026-Revenue-Guidance-of-61-YY-and-U-S--Comm-Revenue-Guidance-of-115-YY-Crushing-Consensus-Expectations/",
+    "https://247wallst.com/investing/2026/02/04/will-palantir-pltr-stock-hit-200-in-2026/",
+    "https://finance.yahoo.com/quote/PLTR/",
+    "https://www.tipranks.com/news/palantir-stock-pltr-forecast-bull-vs-bear-price-scenarios-for-2026",
+    "https://www.fool.com/investing/2026/02/06/is-palantir-a-good-stock-to-buy/",
+    "https://seekingalpha.com/article/4861171-palantir-stock-2026-forecast-is-its-high-valuation-sustainable",
+    "https://www.wallstreethorizon.com/palantir-earnings-calendar",
+    "https://www.marketbeat.com/stocks/NASDAQ/PLTR/earnings/",
+    "https://www.marketbeat.com/stocks/NASDAQ/PLTR/insider-trades/",
+    "https://www.nasdaq.com/market-activity/stocks/pltr/insider-activity",
+    "https://www.stocktitan.net/sec-filings/PLTR/form-4-palantir-technologies-inc-insider-trading-activity-238dae350724.html",
+    "https://www.nasdaq.com/market-activity/stocks/pltr/sec-filings",
+    "https://investors.palantir.com/files/2024%20FY%20PLTR%2010-K.pdf",
+    "https://www.fool.com/investing/2026/02/06/alex-karp-sends-palantir-stock-investors-warning/",
+    "https://fortune.com/2026/02/02/palantir-record-earnings-stock-up-8-percent-alex-karp-n-of-1/",
+    "https://www.nasdaq.com/articles/hd-hyundai-expands-strategic-ai-partnership-palantir-davos-2026",
+    "https://www.koreatimes.co.kr/business/tech-science/20260121/hd-hyundai-seeks-data-driven-decision-making-with-palantir-software-deal-in-davos",
+    "https://www.theglobeandmail.com/investing/markets/stocks/PLTR/pressreleases/37139387/palantir-secures-hundreds-of-millions-software-deal-with-hd-hyundai-as-ai-push-expands-in-heavy-industry/",
+    "https://newsroom.accenture.com/news/2026/sovereign-ai-selects-accenture-and-palantir-to-help-build-next-generation-ai-infrastructure-across-emea",
+    "https://news.usni.org/2025/12/09/navy-palantir-announce-448m-ship-os-ai-tool-for-shipbuilding-and-repair",
+    "https://www.military.com/daily-news/2025/12/10/navy-partners-palantir-448-million-ai-submarine-shipbuilding-deal.html",
+    "https://www.investing.com/analysis/palantir-3-forces-making-it-unavoidable-in-ai-infrastructure-by-2026-200672222",
+    "https://markets.financialcontent.com/stocks/article/finterra-2026-2-5-palantir-technologies-pltr-the-operating-system-of-the-agentic-ai-era",
+    "https://finance.yahoo.com/news/palantir-technologies-inc-pltr-q4-050032107.html",
+    "https://www.fool.com/earnings/call-transcripts/2026/02/02/palantir-pltr-q4-2025-earnings-call-transcript/"
+  ]
+}
