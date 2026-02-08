@@ -452,14 +452,16 @@ v19.13 Fintech框架核心:
 | 另类借贷 | UPST, LC, AFRM | AI风控+信贷周期 |
 | BaaS基础设施 | Galileo, MQ | B2B平台+启用账户 |
 
-### Fintech专用模块 (FT1-FT10)
+### Fintech专用模块 (FT1-FT15, v2.0)
 
 | Phase | 模块 | 深度 | 独创框架 |
 |-------|------|------|---------|
-| Phase 1 | FT1 双坐标定位, FT2 牌照护照图 | L3 | — |
-| Phase 2 | FT3 单元经济学, FT4 信贷仪表盘, FT5 存款成本 | L3-L4 | — |
-| Phase 3 | FT6 飞轮动力学, FT7 交叉销售, FT8 监管压力测试, FT9 BaaS | L3-L4 | ⭐飞轮 |
-| Phase 4 | FT10 双轨哨兵 | **L5** | ⭐哨兵 |
+| Phase 1 | FT1 双坐标定位, FT2 牌照7重优势, **FT11 失败案例库** | L3-L4 | — |
+| Phase 2 | FT3 五引擎诊断, FT4 信贷压力测试, FT5 存款成本, **FT12 管理层评估** | L3-L4 | ⭐五引擎 |
+| Phase 3 | FT6 飞轮, FT7 交叉销售, FT8 利率×概率矩阵, FT9 BaaS深度, **FT13 护城河矩阵**, **FT14 命题验证** | L4 | ⭐飞轮+护城河 |
+| Phase 4 | FT10 双轨哨兵, **FT15 敏感性+自省** | L4-**L5** | ⭐哨兵 |
+
+**v2.0新增**: 预测市场概率集成, 五引擎模型, 管理层评估, 6维护城河, 反常识洞察, 失败案例库, 敏感性矩阵, 自省清单
 
 > 详细定义: `skills/orchestrator/modules/fintech.md`
 > 行业增强标准: `docs/industry/fintech.md`

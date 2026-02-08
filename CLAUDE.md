@@ -1,4 +1,4 @@
-# 投资研究 Agent v19.13 - 金融 Worktree
+# 投资研究 Agent v19.14 - 金融 Worktree
 
 ## 你是谁
 
