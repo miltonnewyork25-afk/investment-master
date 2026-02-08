@@ -1,0 +1,84 @@
+{
+  "fetch_date": "2026-02-06",
+  "benchmark": "SPY",
+  "peers": {
+    "PG": {
+      "pe_ratio": 23.46,
+      "pb_ratio": 7.05,
+      "roe": 0.316,
+      "market_cap_B": 370.6,
+      "dividend_yield": 2.67,
+      "revenue_growth": 0.015,
+      "profit_margin": 0.193,
+      "debt_to_equity": 68.7
+    },
+    "KO": {
+      "pe_ratio": 26.0,
+      "pb_ratio": 10.81,
+      "roe": 0.424,
+      "market_cap_B": 337.9,
+      "dividend_yield": 2.6,
+      "revenue_growth": 0.051,
+      "profit_margin": 0.273,
+      "debt_to_equity": 144.8
+    },
+    "CL": {
+      "pe_ratio": 36.08,
+      "pb_ratio": 1416.1,
+      "roe": 4.975,
+      "market_cap_B": 76.7,
+      "dividend_yield": 2.19,
+      "revenue_growth": 0.058,
+      "profit_margin": 0.105,
+      "debt_to_equity": 2188.5
+    },
+    "UL": {
+      "pe_ratio": 24.02,
+      "pb_ratio": 7.43,
+      "roe": 0.287,
+      "market_cap_B": 156.1,
+      "dividend_yield": 3.2,
+      "revenue_growth": -0.032,
+      "profit_margin": 0.093,
+      "debt_to_equity": 160.7
+    },
+    "PEP": {
+      "pe_ratio": 27.92,
+      "pb_ratio": 11.22,
+      "roe": 0.428,
+      "market_cap_B": 229.1,
+      "dividend_yield": 3.4,
+      "revenue_growth": 0.056,
+      "profit_margin": 0.088,
+      "debt_to_equity": 258.1
+    },
+    "KMB": {
+      "pe_ratio": 21.45,
+      "pb_ratio": 23.04,
+      "roe": 1.266,
+      "market_cap_B": 34.6,
+      "dividend_yield": 4.91,
+      "revenue_growth": -0.172,
+      "profit_margin": 0.123,
+      "debt_to_equity": 441.1
+    },
+    "CHD": {
+      "pe_ratio": 33.31,
+      "pb_ratio": 6.0,
+      "roe": 0.176,
+      "market_cap_B": 24.5,
+      "dividend_yield": 1.22,
+      "revenue_growth": 0.039,
+      "profit_margin": 0.119,
+      "debt_to_equity": 55.1
+    }
+  },
+  "pg_positioning": {
+    "valuation": "PE 23.5x — 同行最低(CHD 33x, CL 36x), 估值折价明显",
+    "profitability": "利润率19.3% — 仅次于KO(27.3%), 远超CL/UL/PEP/KMB",
+    "leverage": "D/E 68.7 — 同行最低, 资产负债表最健康",
+    "growth": "营收增长1.5% — 同行最低(KO 5.1%, CL 5.8%), 增长问题突出",
+    "dividend": "股息率2.67% — 中等偏低(KMB 4.9%, PEP 3.4%)",
+    "size": "市值$370.6B — 消费品龙头, 远超其他同行"
+  }
+}

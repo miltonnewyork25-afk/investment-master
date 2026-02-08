@@ -1,0 +1,457 @@
+{
+  "metadata": {
+    "ticker": "GOOGL",
+    "company": "Alphabet Inc. (Class A)",
+    "exchange": "NASDAQ",
+    "data_collected_date": "2026-02-06",
+    "last_earnings_date": "2026-02-04",
+    "last_earnings_quarter": "Q4 2025",
+    "data_sources": [
+      "StockAnalysis.com",
+      "MarketBeat.com",
+      "TipRanks.com",
+      "WallStreetZen.com",
+      "Public.com",
+      "Yahoo Finance",
+      "CNBC",
+      "Benzinga",
+      "Investing.com",
+      "SEC filings",
+      "Morningstar",
+      "Goldman Sachs",
+      "Variety",
+      "TrendForce"
+    ]
+  },
+
+  "price_target_consensus": {
+    "primary_source_stockanalysis": {
+      "source": "StockAnalysis.com",
+      "num_analysts": 43,
+      "average": 346.21,
+      "median": 360.00,
+      "high": 420.00,
+      "low": 190.00,
+      "implied_upside_pct": 4.52,
+      "as_of": "2026-02-06"
+    },
+    "secondary_sources": [
+      {
+        "source": "MarketBeat.com",
+        "num_analysts": 31,
+        "average": 375.48,
+        "high": 415.00,
+        "low": 305.00
+      },
+      {
+        "source": "Investing.com",
+        "num_analysts": 54,
+        "average": 346.32,
+        "high": 432.00,
+        "low": 185.00
+      },
+      {
+        "source": "Public.com",
+        "num_analysts": 40,
+        "average": 345.18
+      },
+      {
+        "source": "WallStreetZen.com",
+        "average": 333.42
+      }
+    ]
+  },
+
+  "rating_distribution": {
+    "primary_source_stockanalysis": {
+      "source": "StockAnalysis.com",
+      "total_analysts": 43,
+      "consensus": "Strong Buy",
+      "strong_buy": 18,
+      "buy": 19,
+      "hold": 6,
+      "sell": 0,
+      "strong_sell": 0,
+      "buy_pct": 86.0,
+      "hold_pct": 14.0,
+      "sell_pct": 0.0
+    },
+    "secondary_sources": [
+      {
+        "source": "Public.com (40 analysts)",
+        "strong_buy_pct": 43,
+        "buy_pct": 45,
+        "hold_pct": 13,
+        "sell_pct": 0,
+        "strong_sell_pct": 0
+      },
+      {
+        "source": "Public.com (36 analysts)",
+        "strong_buy": 19,
+        "buy": 11,
+        "hold": 6,
+        "sell": 0,
+        "strong_sell": 0,
+        "strong_buy_pct": 52.78,
+        "buy_pct": 30.56,
+        "hold_pct": 16.67
+      }
+    ]
+  },
+
+  "eps_estimates": {
+    "annual": {
+      "FY2025_actual": {
+        "eps": 10.81,
+        "source": "StockAnalysis.com"
+      },
+      "FY2026_consensus": {
+        "eps_mean": 11.55,
+        "eps_low": 10.19,
+        "eps_high": 13.77,
+        "yoy_growth_pct": 6.85,
+        "num_analysts": 66,
+        "source": "StockAnalysis.com"
+      },
+      "FY2027_consensus": {
+        "eps_mean": 13.43,
+        "yoy_growth_pct": 16.27,
+        "source": "StockAnalysis.com"
+      }
+    },
+    "quarterly": {
+      "Q4_2025_actual": {
+        "eps_actual": 2.82,
+        "eps_estimate": 2.61,
+        "beat_by_pct": 8.05,
+        "reported_date": "2026-02-04"
+      },
+      "Q1_2026_estimate": {
+        "eps_consensus": 2.61,
+        "expected_report_date": "2026-04-23"
+      }
+    },
+    "goldman_sachs_estimate": {
+      "FY2026_gaap_eps": 10.66,
+      "analyst": "Eric Sheridan",
+      "source": "Goldman Sachs via Benzinga"
+    }
+  },
+
+  "revenue_estimates": {
+    "annual_consensus": {
+      "FY2025_actual": {
+        "total_revenue_B": 402.84,
+        "source": "Alphabet Q4 2025 earnings release / StockAnalysis.com"
+      },
+      "FY2026_consensus": {
+        "total_revenue_B": 467.92,
+        "revenue_low_B": 371.60,
+        "revenue_high_B": 503.30,
+        "yoy_growth_pct": 16.16,
+        "source": "StockAnalysis.com"
+      },
+      "FY2027_consensus": {
+        "total_revenue_B": 529.31,
+        "yoy_growth_pct": 13.12,
+        "source": "StockAnalysis.com"
+      }
+    },
+    "goldman_sachs_estimate": {
+      "FY2026_revenue_B": 472.2,
+      "prior_estimate_B": 456.1,
+      "analyst": "Eric Sheridan",
+      "source": "Goldman Sachs via Benzinga"
+    },
+    "trefis_estimate": {
+      "FY2026_revenue_B": 455.0,
+      "yoy_growth_pct": 14,
+      "source": "Trefis"
+    },
+    "consensus_net_income": {
+      "FY2026_net_income_B": 139.38,
+      "FY2026_net_income_low_B": 122.99,
+      "FY2026_net_income_high_B": 166.11,
+      "num_analysts": 66,
+      "source": "StockAnalysis.com"
+    }
+  },
+
+  "segment_revenue": {
+    "Q4_2025_actual": {
+      "total_revenue_B": 113.83,
+      "yoy_growth_pct": 18,
+      "google_services": {
+        "total_B": 95.9,
+        "yoy_growth_pct": 14,
+        "google_search_and_other_B": 63.07,
+        "google_search_yoy_growth_pct": 17,
+        "youtube_ads_B": 11.38,
+        "youtube_ads_yoy_growth_pct": 9,
+        "google_network_B": 7.83,
+        "google_network_yoy_growth_pct": -1.5,
+        "subscriptions_platforms_devices_note": "17% growth"
+      },
+      "google_cloud": {
+        "revenue_B": 17.7,
+        "yoy_growth_pct": 48,
+        "annual_run_rate_B": 70.0,
+        "backlog_B": 240.0,
+        "backlog_yoy_growth_pct": 158
+      },
+      "other_bets": {
+        "revenue_B": 0.37,
+        "yoy_growth_pct": -7.5
+      },
+      "total_advertising_revenue_B": 82.28,
+      "total_advertising_yoy_growth_pct": 13.5,
+      "net_income_B": 34.46,
+      "net_income_yoy_growth_pct": 30,
+      "operating_margin_pct": 31.6
+    },
+    "FY2025_actual": {
+      "total_revenue_B": 402.84,
+      "yoy_growth_pct": 15,
+      "youtube_total_revenue_B": 60.0,
+      "youtube_total_note": "ads + subscriptions exceeded $60B",
+      "google_cloud_annual_run_rate_B": 70.0
+    },
+    "FY2026_segment_forecasts": {
+      "google_cloud": {
+        "morgan_stanley_forecast": {
+          "analyst": "Brian Nowak",
+          "base_case_yoy_growth_pct": 44,
+          "bull_case_yoy_growth_pct": 50,
+          "bull_case_note": "if Google can secure more large-scale cloud deals",
+          "implied_revenue_range_B": "estimated ~$100-105B based on $70B run rate + 44% growth"
+        }
+      },
+      "youtube_advertising": {
+        "yoy_growth_estimate_pct": 11,
+        "youtube_tv_core_revenue_forecast_B": 10.0,
+        "growth_rate_deceleration_note": "growth dropped from 45.9% peak in 2021 to 12.5% in 2025"
+      }
+    }
+  },
+
+  "capex_guidance": {
+    "FY2025_actual": {
+      "capex_B": 91.4
+    },
+    "FY2026_company_guidance": {
+      "capex_low_B": 175.0,
+      "capex_high_B": 185.0,
+      "capex_midpoint_B": 180.0,
+      "vs_2025_change_pct": "approximately +97% (roughly doubled)",
+      "allocation": {
+        "servers_pct": 60,
+        "data_centers_pct": 40
+      },
+      "purpose": "AI compute capacity for Google DeepMind, significant cloud customer demand, strategic investments in other bets",
+      "source": "CFO Anat Ashkenazi, Q4 2025 earnings call"
+    },
+    "wall_street_pre_guidance_estimate_B": 119.5,
+    "guidance_vs_street_surprise_pct": "+50.6% above Street estimate",
+    "analyst_reactions": {
+      "deutsche_bank": {
+        "analyst": "Benjamin Black",
+        "quote": "The resulting infrastructure footprint creates a meaningful moat that few (if any) can replicate, and perhaps just as importantly, one that Alphabet can best monetize."
+      },
+      "rbc_capital_markets": {
+        "analyst": "Brad Erickson",
+        "quote": "The momentum in the Gemini app and spike in fourth quarter Google Cloud revenue were plenty good as proof points which warrant the higher spend."
+      }
+    }
+  },
+
+  "fair_value_estimates": {
+    "morningstar": {
+      "fair_value": 340.0,
+      "previous_fair_value": 300.0,
+      "change_pct": 13.3,
+      "key_driver": "79% growth in Google Cloud backlog points to an inflection in cloud demand coming in 2026",
+      "source": "Morningstar"
+    },
+    "goldman_sachs": {
+      "price_target": 400.0,
+      "previous_target": 375.0,
+      "analyst": "Eric Sheridan",
+      "implied_upside_pct": 20,
+      "source": "Goldman Sachs via Benzinga"
+    }
+  },
+
+  "recent_analyst_actions": {
+    "post_Q4_2025_earnings": [
+      {
+        "date": "2026-02-05",
+        "firm": "Goldman Sachs",
+        "analyst": "Eric Sheridan",
+        "action": "Price target raised",
+        "old_target": 375,
+        "new_target": 400,
+        "rating": "Buy",
+        "key_quotes": [
+          "This quarterly report continued a trend that started in late summer 2025 with Alphabet demonstrating continued operating momentum in its core business while scaling its consumer and enterprise AI efforts.",
+          "Alphabet has climbed a steep wall of worry in the past 12 months around the AI theme.",
+          "We don't see any reasons to suspect a pause or step back in terms of its operating proof points that would change investor perception over the near term."
+        ],
+        "key_positives": [
+          "Google Cloud revenue growth of 48% YoY (beat 40% estimate)",
+          "$240B backlog (up 158% YoY)",
+          "Record enterprise AI demand",
+          "More $1B+ deals signed in 2025 than prior three years combined"
+        ]
+      },
+      {
+        "date": "2026-02-05",
+        "firm": "Wedbush",
+        "analyst": null,
+        "action": "Price target raised",
+        "old_target": 360,
+        "new_target": 370,
+        "rating": "Outperform"
+      },
+      {
+        "date": "2026-02-05",
+        "firm": "Raymond James",
+        "analyst": null,
+        "action": "Upgrade + price target raised",
+        "old_rating": "Outperform",
+        "new_rating": "Strong Buy",
+        "old_target": 315,
+        "new_target": 400
+      },
+      {
+        "date": "2026-02-05",
+        "firm": "Mizuho",
+        "analyst": "Lloyd Walmsley",
+        "action": "Price target raised",
+        "old_target": 365,
+        "new_target": 400,
+        "rating": "Buy",
+        "note": "Said Meta Platforms outlook bodes particularly well for Alphabet YouTube"
+      },
+      {
+        "date": "2026-02-05",
+        "firm": "TD Cowen",
+        "analyst": null,
+        "action": "Price target raised",
+        "old_target": 350,
+        "new_target": 355,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-02-05",
+        "firm": "Morningstar",
+        "analyst": null,
+        "action": "Fair value raised",
+        "old_fair_value": 300,
+        "new_fair_value": 340,
+        "key_driver": "79% growth in Google Cloud backlog"
+      }
+    ],
+    "pre_Q4_2025_earnings": [
+      {
+        "date": "2026-01-09",
+        "firm": "Scotiabank",
+        "analyst": null,
+        "action": "Price target set",
+        "target": 375,
+        "rating": "Sector Outperform"
+      },
+      {
+        "date": "2026-01",
+        "firm": "Mizuho",
+        "analyst": "Lloyd Walmsley",
+        "action": "Price target raised ahead of Q4 earnings",
+        "source": "TipRanks"
+      },
+      {
+        "date": "2026-01",
+        "firm": "BNP Paribas",
+        "action": "Issued positive forecast ahead of Q4 earnings",
+        "source": "TipRanks"
+      }
+    ]
+  },
+
+  "bear_case_concerns": {
+    "capex_overshoot": {
+      "description": "2026 capex guidance of $175-185B is ~50% above Street estimate of $119.5B; raises concerns about ROI timing",
+      "market_reaction": "Stock fell ~3% after-hours on earnings day despite beat on revenue and EPS"
+    },
+    "margin_pressure": {
+      "description": "Operating margins declined from 32.4% in Q2 2025 to 30.5% in Q3 2025, reflecting profitability pressures",
+      "concern": "Massive capex increase could further compress margins"
+    },
+    "ai_competition_pricing": {
+      "description": "If rivals compress pricing for AI services, or if customers optimize workloads to cheaper options, the return on capex could take longer to materialize"
+    },
+    "youtube_ads_miss": {
+      "description": "YouTube advertising revenue grew only 9% YoY in Q4 2025, below expectations; growth rate deceleration from 45.9% peak in 2021 to 12.5% in 2025"
+    },
+    "valuation_premium": {
+      "description": "Alphabet trading at a premium compared to historical averages; any sign of slowing Cloud momentum or Search revenue miss due to AI disruption could lead to correction"
+    },
+    "free_cash_flow_weakening": {
+      "description": "Seeking Alpha analyst downgraded citing valuation concerns and weakening free cash flow",
+      "source": "Seeking Alpha"
+    }
+  },
+
+  "key_analyst_quotes": [
+    {
+      "analyst": "Eric Sheridan",
+      "firm": "Goldman Sachs",
+      "quote": "This quarterly report continued a trend that started in late summer 2025 with Alphabet demonstrating continued operating momentum in its core business while scaling its consumer and enterprise AI efforts."
+    },
+    {
+      "analyst": "Eric Sheridan",
+      "firm": "Goldman Sachs",
+      "quote": "We don't see any reasons to suspect a pause or step back in terms of its operating proof points that would change investor perception over the near term."
+    },
+    {
+      "analyst": "Benjamin Black",
+      "firm": "Deutsche Bank",
+      "quote": "The resulting infrastructure footprint creates a meaningful moat that few (if any) can replicate, and perhaps just as importantly, one that Alphabet can best monetize."
+    },
+    {
+      "analyst": "Brad Erickson",
+      "firm": "RBC Capital Markets",
+      "quote": "The momentum in the Gemini app and spike in fourth quarter Google Cloud revenue were plenty good as proof points which warrant the higher spend."
+    },
+    {
+      "analyst": "Brian Nowak",
+      "firm": "Morgan Stanley",
+      "quote_context": "Predicts Google Cloud revenue achieving 44% YoY growth in 2026, potentially 50% if Google secures more large-scale cloud deals."
+    },
+    {
+      "analyst": "Lloyd Walmsley",
+      "firm": "Mizuho",
+      "quote_context": "Meta Platforms outlook bodes particularly well for Alphabet YouTube."
+    }
+  ],
+
+  "market_context": {
+    "stock_price_reaction": {
+      "post_earnings_move": "Fell ~3% in extended trading on Feb 4, 2026",
+      "primary_driver": "Elevated 2026 capex guidance ($175-185B vs $119.5B Street estimate) and YouTube ads miss"
+    },
+    "market_cap_context": "$4 trillion+ valuation",
+    "FY2025_highlights": {
+      "first_time_annual_revenue_above_400B": true,
+      "google_cloud_48pct_growth": "Standout growth driver",
+      "more_1B_deals_than_prior_3_years_combined": true,
+      "cloud_backlog_240B_up_158pct_yoy": true
+    }
+  },
+
+  "data_quality_notes": {
+    "price_target_variance": "Different aggregators show different averages ($330-$375) due to varying analyst pools, recency weighting, and inclusion criteria. StockAnalysis.com (43 analysts, $346.21) used as primary source.",
+    "revenue_estimate_variance": "Consensus FY2026 revenue ranges from $455B (Trefis individual) to $467.92B (StockAnalysis consensus). Goldman Sachs at $472.2B.",
+    "eps_estimate_note": "FY2026 consensus EPS of $11.55 vs Goldman Sachs at $10.66 GAAP EPS - difference may reflect GAAP vs non-GAAP methodology.",
+    "capex_impact_on_estimates": "Post-Q4 2025 earnings, analyst estimates may still be updating to reflect the $175-185B capex guidance. Data collected within 2 days of earnings release.",
+    "quarterly_eps_gaps": "Only Q1 2026 quarterly EPS estimate ($2.61) available; Q2-Q4 2026 quarterly estimates not found in searches."
+  }
+}

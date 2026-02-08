@@ -7,7 +7,7 @@
 单次会话完成的完整投资分析，产出独立 MD 报告：
 - 2-3小时完成
 - 单次会话，不跨Phase
-- 输出独立 MD 报告到 `reports/[TICKER]_standard_[日期].md`
+- 输出独立 MD 报告到 `reports/{TICKER}/{TICKER}_standard_v{版本}_{YYYY-MM-DD}.md`
 - 适合完整投资判断
 
 ## 层级定位

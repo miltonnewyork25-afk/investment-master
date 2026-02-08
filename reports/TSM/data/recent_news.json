@@ -1,0 +1,200 @@
+{
+  "ticker": "TSM",
+  "fetched_at": "2026-02-06",
+  "source": "WebSearch:Agent-C",
+  "key_news": [
+    {
+      "date": "2026-02-05",
+      "headline": "TSMC Plans Cutting-Edge 3nm Chips in Japan, Upgrades Kumamoto Fab 2",
+      "summary": "TSMC revealed plans to transition its second Kumamoto, Japan wafer fab to 3nm process technology, upgrading from the original 7nm blueprint. Total Japan investment raised to 2.6 trillion yen ($17 billion). Chairman C.C. Wei discussed the upgrade with Japanese PM Sanae Takaichi, driven by surging AI hardware demand from US customers including Nvidia.",
+      "sentiment": "positive",
+      "source": "Bloomberg / The Japan Times"
+    },
+    {
+      "date": "2026-02-05",
+      "headline": "TSMC to Quadruple Advanced Packaging Capacity to 130,000 CoWoS Wafers Monthly by Late 2026",
+      "summary": "TSMC aims to produce 130,000 Chip-on-Wafer-on-Substrate (CoWoS) wafers per month by late 2026, nearly quadrupling its output from late 2024 levels. The capacity is reported to be fully booked out.",
+      "sentiment": "positive",
+      "source": "FinancialContent / TrendForce"
+    },
+    {
+      "date": "2026-01-15",
+      "headline": "TSMC Q4 2025 Record Earnings: Net Profit Soars 35% YoY to NT$505.7B",
+      "summary": "Q4 2025 consolidated revenue was NT$1,046.09B, net income NT$505.74B (EPS NT$19.50 / US$3.14 per ADR). Gross margin hit 62.3%, operating margin 54%. Advanced technologies (7nm and below) accounted for 77% of total wafer revenue. HPC was 55% of revenue, Smartphones 32%.",
+      "sentiment": "positive",
+      "source": "TSMC IR / CNBC / TrendForce"
+    },
+    {
+      "date": "2026-01-15",
+      "headline": "TSMC Raises 2026 Capex to $52-56 Billion, Up ~40% YoY",
+      "summary": "TSMC increased its capital spending guidance for 2026 to $52-56 billion, up from $40 billion in 2025, reflecting strong AI-related demand. The company guided for approximately 30% revenue growth in 2026.",
+      "sentiment": "positive",
+      "source": "TSMC Earnings Call / Yahoo Finance"
+    },
+    {
+      "date": "2026-01-06",
+      "headline": "TSMC Reportedly Set to Build Up to 12 Arizona Fabs",
+      "summary": "TSMC is planning to build up to 12 fabs in Arizona, while Japan and Germany expansions reportedly face some delays. Total US investment plans could reach $165 billion as part of a potential US-Taiwan trade deal.",
+      "sentiment": "positive",
+      "source": "Digitimes"
+    },
+    {
+      "date": "2026-01-05",
+      "headline": "Goldman Sachs Raises TSMC Price Target 35% to NT$2,330",
+      "summary": "Goldman Sachs boosted its price target by 35% to NT$2,330, calling AI 'a multi-year growth engine' for TSMC. JPMorgan followed with a raise to NT$2,100, forecasting roughly 30% revenue growth in 2026. TSMC shares surged to a new high on the news.",
+      "sentiment": "positive",
+      "source": "Bloomberg / Seeking Alpha"
+    },
+    {
+      "date": "2026-01-02",
+      "headline": "TSMC Enters the 2nm Era: Mass Production Begins",
+      "summary": "TSMC's 2nm (N2) technology entered volume production in Q4 2025 as planned. TSMC is the only foundry globally capable of delivering 2nm at high volume. All 2026 2nm capacity is fully booked, with Apple taking more than half. Other customers include Qualcomm, MediaTek, AMD, and NVIDIA.",
+      "sentiment": "positive",
+      "source": "Tom's Hardware / FinancialContent"
+    },
+    {
+      "date": "2025-12-18",
+      "headline": "TSMC Accelerates Arizona Fab 2 Timeline, 3nm Production Targeted for 2027",
+      "summary": "TSMC's second Arizona fab (Fab 21 phase 2) construction is complete. Equipment installation planned for Q3 2026, with 3nm mass production targeted for 2027 -- several quarters ahead of the original 2028 schedule.",
+      "sentiment": "positive",
+      "source": "TrendForce / Tom's Hardware"
+    },
+    {
+      "date": "2026-01-31",
+      "headline": "Analyst Consensus: Strong Buy with $419.81 Average Price Target",
+      "summary": "18 Wall Street analysts maintain a Buy consensus, with 6 Strong Buy ratings. Average 12-month price target of $419.81, representing 25.4% upside from current levels. TSM stock has climbed 65% over the past year, outpacing the S&P 500.",
+      "sentiment": "positive",
+      "source": "MarketBeat / Seeking Alpha"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-04-16",
+      "event": "Q1 2026 Earnings Report",
+      "expected_impact": "Key readthrough on 2nm ramp progress, AI demand sustainability, and updated full-year guidance. Consensus EPS estimate ~$3.26 per ADR."
+    },
+    {
+      "date": "2026-H1",
+      "event": "2nm (N2) Production Ramp and Customer Product Launches",
+      "expected_impact": "Apple (A20 Pro / iPhone 18), Qualcomm, MediaTek products using N2. Validates yield and volume production capability. Positive if yields meet targets."
+    },
+    {
+      "date": "2026-H2",
+      "event": "A16 Nanosheet Mass Production with Super Power Rail (Backside Power Delivery)",
+      "expected_impact": "Next-gen node targeting complex AI and HPC processors. Successful ramp would cement technology leadership over Samsung and Intel."
+    },
+    {
+      "date": "2026-H2",
+      "event": "N2P (Enhanced 2nm with Backside Power Delivery) Introduction",
+      "expected_impact": "Performance upgrade to base 2nm, further differentiating TSMC's offering. Key for NVIDIA post-Blackwell architectures."
+    },
+    {
+      "date": "2026-Q3",
+      "event": "Arizona Fab 2 Equipment Installation Begins",
+      "expected_impact": "Major milestone for US manufacturing diversification. Signals de-risking of geopolitical Taiwan concentration. 3nm production targeted for 2027."
+    },
+    {
+      "date": "2026-late",
+      "event": "CoWoS Advanced Packaging Capacity Reaches 130,000 Wafers/Month",
+      "expected_impact": "Alleviates key AI chip supply bottleneck. Supports NVIDIA, AMD, Broadcom advanced packaging needs. Capacity reported fully booked."
+    },
+    {
+      "date": "2026",
+      "event": "Potential Price Hikes of Up to 10% on Advanced Nodes",
+      "expected_impact": "Positive for gross margin expansion. Reflects TSMC's strong pricing power and demand-supply dynamics at leading edge."
+    },
+    {
+      "date": "2026-04 (est.)",
+      "event": "20-F Annual Report Filing (FY2025) with SEC",
+      "expected_impact": "Comprehensive annual disclosure. Previous year's 20-F was filed April 17, 2025."
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [],
+    "net_insider_sentiment": "Insufficient data. As a Taiwan-incorporated company filing as a Foreign Private Issuer (FPI), TSMC files Form 20-F and 6-K (not 10-K/10-Q). Insider trading disclosure follows different rules than US domestic issuers. No specific insider buy/sell transactions were found in public search results for 2025-2026. Recommend checking Nasdaq.com/market-activity/stocks/tsm/insider-activity or Fintel.io for latest Form 4 equivalent data."
+  },
+  "sec_filings": [
+    {
+      "type": "20-F Annual Report (FY2024)",
+      "date": "2025-04-17",
+      "description": "Most recent annual report filed with SEC, covering fiscal year ended December 31, 2024.",
+      "url": "https://investor.tsmc.com/english/sec-filings"
+    },
+    {
+      "type": "6-K Current Reports",
+      "date": "ongoing",
+      "description": "TSMC files Form 6-K for current reports (equivalent to 8-K for domestic filers). Includes monthly revenue reports, quarterly earnings, and material events.",
+      "url": "https://investor.tsmc.com/english/sec-filings"
+    },
+    {
+      "type": "20-F Annual Report (FY2025) - Expected",
+      "date": "2026-04 (estimated)",
+      "description": "Next annual report expected to be filed in April 2026, based on prior year's filing pattern.",
+      "url": "https://investor.tsmc.com/english/sec-filings"
+    }
+  ],
+  "semiconductor_specific": {
+    "technology_roadmap": {
+      "2nm_N2": "Volume production started Q4 2025. All 2026 capacity fully booked. Apple >50% of initial capacity. Customers: Apple, Qualcomm, MediaTek, AMD, NVIDIA.",
+      "N2P": "Enhanced 2nm with backside power delivery, planned for H2 2026.",
+      "A16": "Nanosheet architecture with Super Power Rail, mass production targeted late 2026. For complex AI/HPC processors.",
+      "1.4nm": "First 1.4nm fab construction started, targeted for production in 2028."
+    },
+    "capacity_expansion": {
+      "CoWoS_advanced_packaging": "Target 130,000 wafers/month by late 2026, up from ~75,000 (66% increase). Fully booked.",
+      "3nm_revenue_share": "3nm was 28% of Q4 2025 wafer revenue; expected to reach ~23% or higher in 2026 mix.",
+      "advanced_tech_share": "7nm and below accounted for 77% of Q4 2025 wafer revenue."
+    },
+    "fab_status": {
+      "Arizona_Fab1": "Producing 4nm chips, ramping production.",
+      "Arizona_Fab2": "Construction complete. Equipment installation Q3 2026. 3nm production targeted 2027 (ahead of original 2028 schedule).",
+      "Arizona_total": "Up to 12 fabs planned. Total US investment could reach $165 billion.",
+      "Japan_Kumamoto_Fab1": "Mass production started late 2024. Producing mature node chips.",
+      "Japan_Kumamoto_Fab2": "Under construction. Upgraded plan from 7nm to 3nm process. Total Japan investment raised to 2.6 trillion yen ($17 billion).",
+      "Germany_Dresden": "ESMC joint venture. Reported facing some delays."
+    },
+    "key_customers_AI": "NVIDIA, Broadcom, Marvell, AMD, Apple, Qualcomm, MediaTek - all driving advanced node and packaging demand."
+  },
+  "financial_snapshot_Q4_2025": {
+    "revenue": "NT$1,046.09B",
+    "net_income": "NT$505.74B",
+    "EPS": "NT$19.50 (US$3.14 per ADR)",
+    "gross_margin": "62.3%",
+    "operating_margin": "54.0%",
+    "yoy_revenue_growth": "20.5%",
+    "yoy_net_income_growth": "35%",
+    "2025_full_year_revenue": "~$122B (estimated from Manufacturing Dive)",
+    "2026_capex_guidance": "$52-56 billion",
+    "2026_revenue_growth_guidance": "~30%",
+    "platform_mix": {
+      "HPC": "55%",
+      "Smartphone": "32%",
+      "IoT": "5%",
+      "Automotive": "5%",
+      "DCE": "1%"
+    }
+  },
+  "sources": [
+    "https://www.bloomberg.com/news/articles/2026-02-05/tsmc-plans-major-upgrade-of-japan-chip-plant-in-win-for-takaichi",
+    "https://www.japantimes.co.jp/business/2026/02/05/companies/tsmc-plan-upgrade-chip-plant/",
+    "https://markets.financialcontent.com/stocks/article/tokenring-2026-2-5-tsmc-to-quadruple-advanced-packaging-capacity-reaching-130000-cowos-wafers-monthly-by-late-2026",
+    "https://www.cnbc.com/2026/01/15/tsmc-q4-profit-record-ai-chip-demand-nt1-trillion.html",
+    "https://www.trendforce.com/news/2026/01/15/news-tsmc-2025-q4-net-profit-soars-35-yoy-to-record-nt505-7b-eps-hits-nt19-5/",
+    "https://investor.tsmc.com/english/quarterly-results/2025/q4",
+    "https://finance.yahoo.com/news/tsmc-lifts-2026-capex-outlook-154053660.html",
+    "https://www.digitimes.com/news/a20260106PD217/tsmc-arizona-market-germany-2026.html",
+    "https://www.tomshardware.com/tech-industry/semiconductors/tsmc-begins-quietly-volume-production-of-2nm-class-chips-first-gaa-transistor-for-tsmc-claims-up-to-15-percent-improvement-at-iso-power",
+    "https://www.tomshardware.com/tech-industry/semiconductors/tsmc-brings-its-most-advanced-chipmaking-node-to-the-us-yet-to-begin-equipment-installation-for-3mn-months-ahead-of-schedule-arizona-fab-slated-for-production-in-2027",
+    "https://www.trendforce.com/news/2025/12/18/news-tsmc-reportedly-accelerates-arizona-2nd-fab-eyes-3q26-tool-install-2027-3nm-production/",
+    "https://gcn.com/tsmc-to-begin-mass-production-of-chips-a16/13232/",
+    "https://www.sdxcentral.com/news/apple-qualcomm-to-launch-2nm-chips-in-2026-with-tsmc/",
+    "https://seekingalpha.com/article/4857005-tsmc-relentlessly-getting-stronger-market-mispricing-it",
+    "https://seekingalpha.com/article/4855898-tsmc-why-2026-will-be-even-bigger",
+    "https://www.marketbeat.com/stocks/NYSE/TSM/earnings/",
+    "https://www.zacks.com/stock/research/TSM/earnings-calendar",
+    "https://investor.tsmc.com/english/sec-filings",
+    "https://www.nasdaq.com/market-activity/stocks/tsm/insider-activity",
+    "https://www.manufacturingdive.com/news/tsmc-q4-full-year-2025-earnings-ai-taiwan/809775/",
+    "https://www.technetbooks.com/2026/02/tsmc-3nm-process-japan-wafer-fab.html"
+  ]
+}

@@ -1,7 +1,10 @@
-# 并行Agent加速系统
+# 并行Agent加速系统 v6.0
 
 > **设计目的**：利用Task Agent能力并行执行独立分析任务，大幅缩短分析时间
-> **验证基准**：TSM五引擎并行执行节省约70%时间（从70分钟降至20分钟）
+> **验证基准**：SOFI/COST/META/TSM四项目实证数据驱动
+> **v6.0变化**: Agent架构从硬规格改为指导原则、模块类型驱动产出目标、看空Agent强制独立、实证参考表
+> **v5.0变化**: SubAgent输出压缩(≤500字符返回)、checkpoint.yaml批次间写入
+> **v4.0变化**: Agent Prompt反幻觉注入、DM引用规范、Quality Gate v2.0集成
 
 ---
 
@@ -68,7 +71,8 @@
   主Agent: 汇总对比 → 生成综合分析
 
 结果汇总:
-  - 收集各agent输出
+  - 收集各agent摘要返回 (≤500字符/agent)
+  - 从staging文件读取完整内容进行合并
   - 交叉验证一致性
   - 识别分歧点
   - 生成综合报告
@@ -91,16 +95,84 @@ Agent 3 [维度C]   █████░░░░░ 50%  数据收集中...
 
 ---
 
-## 并行数量限制
+## Agent架构指导原则 (v6.0)
+
+> 基于SOFI(金融)、COST(消费品)、META(科技平台)、TSM(半导体)四个完整项目的实证数据。
+> 以下为指导原则，非硬性规格。根据公司复杂度和会话context余量灵活调整。
+
+### 原则1: 模块驱动Agent数量
+
+Agent数量由分析模块数决定，不是固定数字。
+- 简单公司(单一业务): Phase可能只需2-3 Agent
+- 复杂公司(多分部/多平台): Phase可能需4-5 Agent
+- 批次间写checkpoint.yaml，批次完成后可选/compact
+
+### 原则2: 按模块类型设产出目标
+
+| 模块类型 | 产出范围 | 典型示例 |
+|---------|---------|---------|
+| 数据密集型 | 12-20K字符 | 财务分析、SOTP估值、护城河量化 |
+| 分析判断型 | 10-15K字符 | 偏差检查、五引擎协同、PPDA |
+| 输出型 | 5-8K字符 | 投资日历、行动清单、Phase 0.5 CQ |
+| 专精对抗型 | 15-22K字符 | 看空等权分析、Kill Switch注册表 |
+
+### 原则3: Context感知动态调整
 
 ```yaml
-推荐配置:
-  最佳并行数: 3-5个agent
-  最大并行数: 5个agent
-  原因: 过多并行增加协调复杂度，收益递减
+会话前期 (Phase 1-2): context充裕，可dispatch 4-5 Agent
+会话中期 (Phase 3):   视余量dispatch 3-4 Agent
+会话后期 (Phase 4-5): 降到2-3 Agent
+跨会话恢复:           新会话context全新，可dispatch更多
 
-资源考虑:
-  - 每个agent消耗独立context
-  - 需要足够带宽支持并行请求
-  - 汇总阶段需要额外处理时间
+每批次完成后必须:
+  1. 写入/更新 checkpoint.yaml
+  2. 评估context余量
+  3. 余量不足 → 减少下批Agent数 或 开新会话
 ```
+
+### 原则4: 看空Agent必须独立
+
+Phase 4的看空分析Agent（Bear Case Advocate）必须:
+- **不读**前序Phase的看多结论和shared_context中的投资论点
+- **只读**原始数据（DM锚点）+ Core Questions + 公开财报
+- 独立形成看空论点后，由主线程与看多结论对抗合并
+
+### 原则5: Checkpoint必写
+
+每批次Agent完成后、每Phase结束时，写入 `reports/{TICKER}/data/checkpoint.yaml`。
+详见 `docs/checkpoint_protocol.md`。
+
+### 实证参考（非硬性标准）
+
+| 项目 | Agent总数 | 每Agent均产出 | Complete字符 | 会话数 | 最优实践 |
+|------|:---:|:---:|:---:|:---:|------|
+| SOFI(金融) | 16 | 11.2K | 163K+ | 5 | checkpoint恢复、3-5/Phase |
+| COST(消费品) | 27 | 5.5K | 150K | ~1 | Message Bus冲突管理 |
+| META(科技平台) | 25 | 13.8K | 317K | 6 | 专精Agent、角色希腊字母命名 |
+| TSM(半导体) | 8+线性 | Phase独占 | 142K | 6 | 宽预取Phase 0(8路并行) |
+
+---
+
+## 多Agent协作协议
+
+> 详见 `docs/agent_collaboration_protocol.md`
+
+**解决的5+3个痛点**:
+1. 重复I/O → **共享上下文** (`shared_context.md`, Data Master格式)
+2. 无质量预检 → **双维度质量门控** P-G(Fast Gate) + R-G(结果检查)
+3. 无session恢复 → **任务锁** (`current_tasks/Agent{X}.lock.md`)
+4. 无失败记录 → **Agent执行日志** (`agent_logs/`)
+5. 批量commit → **增量提交** (每Agent完成即commit)
+6. Agent幻觉 (v4.0) → **反幻觉5条禁令**注入每个SubAgent prompt
+7. 数据版本混乱 (v4.0) → **DM引用规范** Agent必须用 `[DM-xxx vN.N]` 引用数据
+8. 假设不一致 (v4.0) → **KAL引用规范** Agent必须用 `[KA-xxx]` 引用假设
+
+### Agent Prompt v6.0 必须注入项 (v4.0新增)
+
+每个SubAgent dispatch时，prompt中除现有要求外，还必须包含:
+
+1. **反幻觉5条禁令** — 完整文本见 `docs/anti_hallucination_protocol.md` "Agent Prompt 反幻觉5条禁令"
+2. **DM引用指令** — "引用数据时必须附带 [DM-xxx vN.N] 标注"
+3. **KAL引用指令** — "引用假设时必须附带 [KA-xxx] 标注"
+4. **自检清单** — "完成后统计无源数字数量，补充来源或标注'数据待获取'"
+5. **返回格式约束 (v5.0)** — 完成后将完整内容写入staging文件，仅返回≤500字符结构化摘要。格式: agent/file/chars/qg/top3/anchors。禁止将全文返回主线程。

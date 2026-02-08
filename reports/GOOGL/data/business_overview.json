@@ -1,0 +1,644 @@
+{
+  "metadata": {
+    "company": "Alphabet Inc.",
+    "ticker": "GOOGL / GOOG",
+    "data_collected_date": "2026-02-06",
+    "fiscal_year_end": "December 31",
+    "currency": "USD",
+    "notes": "Data compiled from SEC filings, earnings releases, StatCounter, Statista, and industry reports. Full year 2025 segment totals calculated by summing Q1-Q4 quarterly data where annual figures not directly reported."
+  },
+
+  "consolidated_financials": {
+    "fy2025": {
+      "total_revenue_B": 402.84,
+      "revenue_growth_yoy_pct": 15.09,
+      "net_income_B": 132.2,
+      "net_income_growth_yoy_pct": 32,
+      "eps": 10.81,
+      "eps_growth_yoy_pct": 34,
+      "operating_income_B": 129,
+      "capex_guidance_2026_B": "175-185",
+      "paid_subscriptions_M": 325,
+      "employees": 187103,
+      "employees_as_of": "2025-06-30",
+      "source": "[Alphabet Q4 FY2025 Earnings Release, SEC Filing, 2026-02-04; TheWrap, 2026-02-04; StockAnalysis.com]"
+    },
+    "fy2024": {
+      "total_revenue_B": 350.02,
+      "revenue_growth_yoy_pct": 13.87,
+      "employees_year_end": 183323,
+      "source": "[Alphabet 10-K FY2024; MacroTrends; StockAnalysis.com]"
+    },
+    "q4_2025": {
+      "total_revenue_B": 113.83,
+      "revenue_growth_yoy_pct": 18,
+      "net_income_B": 34.46,
+      "net_income_growth_yoy_pct": 30,
+      "operating_income_B": 35.93,
+      "eps": 2.82,
+      "source": "[Alphabet Q4 FY2025 Earnings Release, 2026-02-04; Benzinga; 9to5Google]"
+    },
+    "quarterly_revenue_2025_B": {
+      "Q1": 90.2,
+      "Q2": 96.43,
+      "Q3": 102.35,
+      "Q4": 113.83,
+      "source": "[SEC Filings Q1-Q4 2025]"
+    }
+  },
+
+  "segments": {
+
+    "google_search_and_other": {
+      "description": "Google's core search advertising business, including Google.com, Google Play, Gmail, Maps, and other Google-owned properties.",
+      "revenue": {
+        "fy2024_B": 198.08,
+        "fy2024_pct_of_total": 56.63,
+        "fy2025_growth_pct": 17,
+        "quarterly_2025_B": {
+          "Q1": 50.7,
+          "Q2": 54.19,
+          "Q3": 56.57,
+          "Q4": 63.07
+        },
+        "fy2025_calculated_total_B": 224.53,
+        "source": "[SEC Filings Q1-Q4 2025; Bullfincher; Benzinga; Fifth Person]"
+      },
+      "market_share": {
+        "global_search_share_pct": {
+          "value": 90.04,
+          "trend": "declining from 91.47% one year prior; dipped below 90% in late 2024 and hovered in high 89% range for most of 2025",
+          "date": "January 2026",
+          "source": "[StatCounter Global Stats; Resourcera, 2026]"
+        },
+        "us_search_share_pct": {
+          "value": 85.07,
+          "change_from_2024": -2.32,
+          "prior_value": 87.39,
+          "date": "2026",
+          "source": "[StatCounter US; Resourcera, 2026]"
+        },
+        "mobile_search_share_pct": 95.32,
+        "desktop_search_share_pct": {
+          "value_range": "79.1-81.95",
+          "date": "March 2025",
+          "source": "[StatCounter; Statista, 2025]"
+        },
+        "competitors": {
+          "bing_global_pct": 4.31,
+          "yandex_global_pct": 1.84,
+          "source": "[StatCounter, 2026]"
+        }
+      },
+      "digital_ad_market_share": {
+        "google_global_digital_ad_share_pct": {
+          "value_range": "28-40",
+          "note": "Varies by source; some measure total digital ads (~28-32%), others measure PPC specifically (~39.37%). Google's ad share was below 50% for first time. Lost ~760bps from Q3 2021 to Q3 2025.",
+          "source": "[DemandSage; BloomAgency; MBI Deep Dives, 2025]"
+        },
+        "advertiser_adoption_pct": 96,
+        "advertising_revenue_first_3q_2025_B": 212.4,
+        "q4_2025_total_advertising_B": 82.28,
+        "source": "[DemandSage; BloomAgency; Benzinga, 2025-2026]"
+      },
+      "ai_search_competitive_threat": {
+        "google_global_search_with_ai_pct": 81.6,
+        "google_gemini_ai_chatbot_share_pct": {
+          "value": 25.2,
+          "growth_from": 14.7,
+          "growth_period": "January 2025 to January 2026",
+          "source": "[Vertu; SimilarWeb Analysis, 2026]"
+        },
+        "chatgpt_ai_chatbot_share_pct": {
+          "value": 45.3,
+          "decline_from": 69.1,
+          "decline_period": "January 2025 to January 2026",
+          "source": "[Vertu; SimilarWeb Analysis, 2026]"
+        },
+        "perplexity_ai_chatbot_share_pct": {
+          "value": 2.0,
+          "peak": 2.4,
+          "ai_search_specific_share_pct": 6.6,
+          "date": "January 2026 (chatbot); October 2025 (AI search)",
+          "source": "[SeoProfy; First Page Sage, 2026]"
+        },
+        "grok_ai_chatbot_share_pct": {
+          "value": 15.2,
+          "date": "February 2026",
+          "source": "[TrendingTopics.eu, 2026]"
+        },
+        "note": "Gemini nearly quadrupled market share from 5.7% to 21.5% in 12 months. ChatGPT + Gemini control 86.2% of AI chatbot market.",
+        "source": "[ContentGrip; Vertu; DigitalInformationWorld, 2026]"
+      }
+    },
+
+    "youtube": {
+      "description": "Video sharing and streaming platform. Revenue includes advertising (YouTube ads) and subscription services (YouTube Premium, YouTube TV, NFL Sunday Ticket).",
+      "revenue": {
+        "fy2025_total_ads_plus_subscriptions_B": 60,
+        "fy2025_note": "Exceeded $60 billion for 2025 (ads + subscriptions combined)",
+        "quarterly_ads_2025_B": {
+          "Q1": 8.9,
+          "Q2": 9.80,
+          "Q3": 10.26,
+          "Q4": 11.38
+        },
+        "fy2025_ads_calculated_total_B": 40.34,
+        "q4_2025_ads_yoy_growth_pct": 9,
+        "q4_2024_ads_B": 10.47,
+        "source": "[SEC Filings Q1-Q4 2025; Variety; Benzinga; Shacknews]"
+      },
+      "users": {
+        "monthly_active_users_B": {
+          "value_range": "2.53-2.74",
+          "note": "Multiple sources report varying figures; approximately 2.7 billion MAU as of early 2025",
+          "source": "[DemandSage; GlobalMediaInsight; Teleprompter.com, 2025-2026]"
+        },
+        "daily_active_users_M": 122,
+        "platform_ranking": "2nd most popular platform globally, behind Facebook",
+        "user_growth_rate_pct": 0.7,
+        "user_growth_note": "Growth has slowed significantly; only ~20M additional users from 2023-2025 vs double-digit growth in 2018-2020",
+        "source": "[DemandSage; Business of Apps; evoca.tv, 2025-2026]"
+      },
+      "youtube_shorts": {
+        "note": "YouTube Shorts is a key growth format competing with TikTok",
+        "source": "[DemandSage YouTube Shorts Statistics, 2026]"
+      },
+      "subscriptions": {
+        "total_paid_subscriptions_across_google_M": 325,
+        "note": "325M+ paid subscriptions across Google consumer services, led by Google One and YouTube Premium",
+        "source": "[Alphabet Q4 FY2025 Earnings Release, 2026-02-04]"
+      }
+    },
+
+    "google_cloud": {
+      "description": "Google Cloud Platform (GCP) infrastructure, enterprise AI solutions, and Google Workspace productivity suite.",
+      "revenue": {
+        "fy2024_B": 43.23,
+        "fy2024_pct_of_total": 12.36,
+        "quarterly_2025_B": {
+          "Q1": 12.3,
+          "Q2": 13.62,
+          "Q3": 15.16,
+          "Q4": 17.66
+        },
+        "fy2025_calculated_total_B": 58.74,
+        "fy2025_annual_run_rate_B": 70,
+        "fy2025_run_rate_note": "Exceeded $70B annual run rate by Q4 2025",
+        "q4_2025_yoy_growth_pct": 48,
+        "q3_2025_yoy_growth_pct": 34,
+        "q2_2025_yoy_growth_pct": 32,
+        "q1_2025_yoy_growth_pct": 28,
+        "cloud_backlog_B": 155,
+        "source": "[SEC Filings Q1-Q4 2025; Benzinga; Investing.com; CNBC, 2025-2026]"
+      },
+      "operating_income": {
+        "q4_2025_operating_income_B": 5.3,
+        "q4_2025_operating_margin_pct": 30.1,
+        "q4_2024_operating_margin_pct": 17.5,
+        "note": "Operating income more than doubled YoY in Q4 2025",
+        "source": "[Benzinga; 9to5Google, 2026-02-04]"
+      },
+      "market_share": {
+        "gcp_cloud_infrastructure_share_pct": {
+          "value_range": "12-13",
+          "date": "Q2-Q4 2025",
+          "ranking": "3rd globally",
+          "source": "[emma Blog; Cargoson; TekRevol, 2025-2026]"
+        },
+        "aws_share_pct": {
+          "value": 30,
+          "trend": "slow decline from 33% in late 2021",
+          "source": "[emma Blog; Cargoson, 2025]"
+        },
+        "azure_share_pct": {
+          "value": 20,
+          "source": "[emma Blog; Cargoson, 2025]"
+        },
+        "growth_comparison": {
+          "gcp_growth_pct": 32,
+          "aws_growth_pct": 17.5,
+          "azure_growth_pct": 39,
+          "period": "YoY as of Q2-Q3 2025",
+          "source": "[Revolgy; TomTunguz, 2025]"
+        },
+        "competitive_position_note": "GCP more likely to strengthen as strong third player than catch up with leaders in 2026-2027 timeframe"
+      },
+      "google_workspace": {
+        "total_users_B": 3,
+        "total_users_note": "Mostly consumer users of free apps (Gmail, Docs, etc.); enterprise use lags Microsoft 365",
+        "paying_customers_M": 11,
+        "paying_customers_date": "December 2025",
+        "productivity_market_share_pct": {
+          "google_workspace": 50.34,
+          "microsoft_365": 45.46,
+          "note": "Measurement methodology varies; some sources report 44% Google vs 30% Microsoft. Consumer free tier inflates Google's numbers.",
+          "source": "[Patronum; electroiq, 2024-2025]"
+        },
+        "pricing_changes": {
+          "price_increase_pct": "17-22",
+          "reason": "Addition of Gemini AI features to all Business and Enterprise plans",
+          "effective_date": "January 15, 2025",
+          "source": "[Google Workspace Blog; EmailToolTester, 2025-2026]"
+        },
+        "source": "[LinkedIn; Patronum; electroiq; Google Workspace Blog, 2024-2025]"
+      }
+    },
+
+    "google_network": {
+      "description": "Revenue from ads placed on non-Google websites through AdSense, AdMob, and Google Ad Manager partner networks.",
+      "revenue": {
+        "fy2024_B": 30.36,
+        "fy2024_pct_of_total": 8.68,
+        "quarterly_2025_B": {
+          "Q1": 7.26,
+          "Q2": 7.35,
+          "Q3": 7.35,
+          "Q4": 7.83
+        },
+        "fy2025_calculated_total_B": 29.79,
+        "trend": "declining",
+        "q1_2025_yoy_change_pct": -2.1,
+        "q2_2025_yoy_change_pct": -1.2,
+        "q3_2025_yoy_change_pct": -2.6,
+        "q4_2025_yoy_note": "Declined from $7.95B in Q4 2024",
+        "source": "[SEC Filings Q1-Q4 2025; Fifth Person; Benzinga]"
+      }
+    },
+
+    "subscriptions_platforms_devices": {
+      "description": "Revenue from consumer subscription products (YouTube Premium/TV, Google One, NFL Sunday Ticket), Google Play Store, and hardware devices (Pixel phones, Nest, Fitbit).",
+      "revenue": {
+        "fy2024_B": 40.34,
+        "fy2024_pct_of_total": 11.53,
+        "quarterly_2025_B": {
+          "Q1": 10.4,
+          "Q2": 11.20,
+          "Q3": 12.87,
+          "Q4": 13.58
+        },
+        "fy2025_calculated_total_B": 48.05,
+        "q4_2025_yoy_growth_pct": 17,
+        "q3_2025_yoy_growth_pct": 20.8,
+        "q2_2025_yoy_growth_pct": 20.3,
+        "q1_2025_yoy_growth_pct": 19,
+        "source": "[SEC Filings Q1-Q4 2025; Fifth Person; Benzinga]"
+      }
+    },
+
+    "android": {
+      "description": "Open-source mobile operating system. Not a direct revenue segment but critical to Google's ecosystem (search, Play Store, Chrome, advertising distribution).",
+      "market_share": {
+        "global_mobile_os_share_pct": 72.77,
+        "ios_share_pct": 26.82,
+        "active_devices_B": 3.9,
+        "active_users_B": 3.9,
+        "user_growth_yoy_pct": 8,
+        "date": "Late 2025",
+        "source": "[StatCounter; DemandSage; CommandLinux, 2025-2026]"
+      },
+      "regional_share": {
+        "india_pct": 95.21,
+        "indonesia_pct": 86.8,
+        "brazil_pct": 81.45,
+        "us_pct": 41.71,
+        "source": "[DemandSage; accio.com, 2025]"
+      },
+      "projections_2026": {
+        "expected_share_pct": "71-73",
+        "note": "Stable; modest contraction of 0.9% in overall smartphone shipments due to component shortages",
+        "source": "[TechJury; DemandSage, 2026]"
+      },
+      "top_android_vendor": {
+        "samsung_global_smartphone_share_pct": 19.7,
+        "samsung_units_shipped_M": 58,
+        "period": "Q2 2025",
+        "source": "[DemandSage, 2025]"
+      }
+    },
+
+    "chrome": {
+      "description": "Web browser. Not a direct revenue segment but critical distribution channel for Search, advertising, and data collection.",
+      "market_share": {
+        "global_all_platforms_pct": {
+          "value_range": "61.2-73.4",
+          "note": "Varies by source and measurement methodology; StatCounter reports ~67.72%, Backlinko reports 73.4% as of Dec 2025",
+          "source": "[StatCounter; DemandSage; Backlinko, 2025-2026]"
+        },
+        "desktop_pct": 65.72,
+        "mobile_pct": 66.9,
+        "tablet_pct": 48.02,
+        "us_share_pct": 52.23,
+        "asia_pacific_pct": 71.5,
+        "source": "[StatCounter; DemandSage; TechJury, 2025-2026]"
+      },
+      "users": {
+        "global_users_B": 3.83,
+        "user_growth_yoy_pct": 5.8,
+        "source": "[DemandSage, 2026]"
+      },
+      "antitrust_note": "Google faced DOJ antitrust ruling regarding default search agreements in Chrome and other browsers. Outcome may impact Google's ability to maintain Chrome as search distribution channel."
+    },
+
+    "google_maps_and_waze": {
+      "description": "Navigation and local search platforms. Google acquired Waze in 2013 for $1.3B. Not broken out as a separate revenue segment.",
+      "market_share": {
+        "google_maps_global_share_pct": 67,
+        "date": "Q1 2025",
+        "source": "[Loopex Digital; SQ Magazine, 2025]"
+      },
+      "users": {
+        "google_maps_active_users_B": 2.2,
+        "google_maps_monthly_active_users_B": 1.0,
+        "waze_monthly_active_users_M": 151,
+        "date": "Early 2025",
+        "source": "[Loopex Digital; SQ Magazine; autoevolution, 2025]"
+      },
+      "us_market": {
+        "google_maps_us_smartphone_users_pct": 80,
+        "apple_maps_us_pct": 18,
+        "waze_us_pct": 12,
+        "source": "[SQ Magazine; autoevolution, 2025]"
+      },
+      "revenue_context": {
+        "navigation_app_sector_revenue_2024_B": 21,
+        "google_maps_dominant_share_of_sector": true,
+        "source": "[Business of Apps, 2026]"
+      }
+    },
+
+    "other_bets": {
+      "description": "Collection of non-core businesses including Waymo (autonomous vehicles), Verily (healthcare/life sciences), Wing (drone delivery), and other moonshot projects.",
+      "revenue": {
+        "fy2024_B": 1.65,
+        "fy2024_pct_of_total": 0.47,
+        "quarterly_2025_B": {
+          "Q1": null,
+          "Q1_note": "Not separately reported in available data; estimated ~0.35-0.40B based on trend",
+          "Q2": 0.373,
+          "Q3": 0.344,
+          "Q4": 0.370
+        },
+        "q4_2025_yoy_change_pct": -7.5,
+        "source": "[SEC Filings Q2-Q4 2025; Benzinga; 9to5Google]"
+      },
+      "operating_losses": {
+        "fy2024_operating_loss_B": -4.4,
+        "quarterly_2025_operating_loss_B": {
+          "Q1": -1.226,
+          "Q2": -1.25,
+          "Q3": -1.4,
+          "Q4": -3.6
+        },
+        "fy2025_calculated_operating_loss_B": -7.476,
+        "q4_2025_loss_spike_note": "Q4 2025 loss of $3.6B was significantly higher than Q4 2024's $1.17B, primarily driven by Waymo investment",
+        "source": "[SEC Filings Q1-Q4 2025; Fifth Person; Yahoo Finance]"
+      },
+      "waymo": {
+        "description": "Autonomous vehicle / robotaxi subsidiary. Largest component of Other Bets by investment.",
+        "weekly_paid_rides": {
+          "start_of_2025": 175000,
+          "end_of_2025": 450000,
+          "growth_pct": 157,
+          "target_2026": 1000000,
+          "source": "[Waymo Blog; CNBC; The Driverless Digest, 2025-12]"
+        },
+        "annual_trips_2025_M": 14,
+        "fleet_size": 2500,
+        "valuation_B": 126,
+        "latest_funding_round_B": 16,
+        "funding_date": "February 2026",
+        "funding_note": "Significant majority funded by Alphabet",
+        "source": "[TechCrunch; CNBC; The Driverless Digest, 2026-02-02]",
+        "operating_cities": [
+          "San Francisco",
+          "Los Angeles",
+          "Phoenix",
+          "Atlanta",
+          "Austin"
+        ],
+        "cities_launching_2026": [
+          "Miami",
+          "Dallas",
+          "Houston",
+          "San Antonio",
+          "Orlando"
+        ],
+        "testing_cities": [
+          "Minneapolis",
+          "New Orleans",
+          "Tampa",
+          "Philadelphia",
+          "Pittsburgh",
+          "Baltimore",
+          "St. Louis"
+        ],
+        "international_expansion_2026": [
+          "Tokyo",
+          "London"
+        ],
+        "total_expansion_target_2026": "20+ additional cities",
+        "source_cities": "[Waymo Blog Year in Review; TechCrunch; Technology Magazine, 2025-2026]"
+      }
+    }
+  },
+
+  "fy2025_revenue_summary": {
+    "note": "Full year 2025 segment totals calculated by summing Q1-Q4 quarterly data. Some Q1 figures (Other Bets) estimated.",
+    "segments_B": {
+      "google_search_and_other": 224.53,
+      "youtube_ads": 40.34,
+      "google_network": 29.79,
+      "subscriptions_platforms_devices": 48.05,
+      "google_services_subtotal": 342.71,
+      "google_cloud": 58.74,
+      "other_bets": 1.45,
+      "hedging_and_other": -0.06,
+      "total": 402.84
+    },
+    "revenue_mix_pct": {
+      "google_search_and_other": 55.7,
+      "youtube_ads": 10.0,
+      "google_network": 7.4,
+      "subscriptions_platforms_devices": 11.9,
+      "google_cloud": 14.6,
+      "other_bets": 0.4
+    },
+    "total_advertising_revenue_B": 294.66,
+    "advertising_pct_of_total": 73.1,
+    "source": "[Calculated from SEC Filings Q1-Q4 2025]"
+  },
+
+  "competitive_landscape": {
+    "search": {
+      "primary_competitors": ["Microsoft Bing", "Yandex", "DuckDuckGo", "Baidu"],
+      "ai_search_challengers": ["ChatGPT Search (OpenAI)", "Perplexity AI", "Gemini (Google's own)", "Grok (xAI)"],
+      "key_trend": "Google search share declined below 90% globally for first time in a decade; AI search tools gaining traction but Google's Gemini is the fastest growing AI chatbot, nearly quadrupling market share in 12 months"
+    },
+    "digital_advertising": {
+      "primary_competitors": ["Meta (Facebook/Instagram)", "Amazon Ads", "TikTok/ByteDance", "Microsoft Advertising"],
+      "key_trend": "Google lost ~760bps market share from Q3 2021 to Q3 2025, primarily to Meta (+300bps) and Amazon (+400bps)"
+    },
+    "cloud": {
+      "primary_competitors": ["Amazon Web Services (AWS)", "Microsoft Azure", "Oracle Cloud", "IBM Cloud"],
+      "key_trend": "GCP growing fastest among top 3 at 32-48% YoY; positioned as strong third player; AI workloads driving differentiation"
+    },
+    "video_streaming": {
+      "primary_competitors": ["TikTok", "Instagram Reels", "Netflix", "Twitch"],
+      "key_trend": "YouTube MAU growth slowing (~0.7%) as platform approaches saturation at ~2.7B users"
+    }
+  },
+
+  "sources_index": [
+    {
+      "id": 1,
+      "name": "Alphabet Q4 FY2025 Earnings Release (SEC Filing)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000012/googexhibit991q42025.htm",
+      "date": "2026-02-04"
+    },
+    {
+      "id": 2,
+      "name": "Alphabet Q3 FY2025 Earnings Release (SEC Filing)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000087/googexhibit991q32025.htm",
+      "date": "2025-10-29"
+    },
+    {
+      "id": 3,
+      "name": "Alphabet Q2 FY2025 Earnings Release (SEC Filing)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000056/googexhibit991q22025.htm",
+      "date": "2025-07-23"
+    },
+    {
+      "id": 4,
+      "name": "Alphabet Q1 FY2025 Earnings Release (SEC Filing)",
+      "url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204425000040/googexhibit991q12025.htm",
+      "date": "2025-04-24"
+    },
+    {
+      "id": 5,
+      "name": "Benzinga - Alphabet Q4 Highlights",
+      "url": "https://www.benzinga.com/markets/earnings/26/02/50396139/alphabet-q4-highlights-google-cloud-revenue-up-48-youtube-tops-60-billion-for-2025",
+      "date": "2026-02-04"
+    },
+    {
+      "id": 6,
+      "name": "9to5Google - Alphabet Q4 2025 Earnings",
+      "url": "https://9to5google.com/2026/02/04/alphabet-q4-2025-earnings/",
+      "date": "2026-02-04"
+    },
+    {
+      "id": 7,
+      "name": "TheWrap - Alphabet Annual Revenue Surpasses $400 Billion",
+      "url": "https://www.thewrap.com/industry-news/business/alphabet-earnings-q4-2025/",
+      "date": "2026-02-04"
+    },
+    {
+      "id": 8,
+      "name": "Fifth Person - Alphabet Q2 2025 Earnings Call",
+      "url": "https://fifthperson.com/alphabet-q2-2025-earnings-call/",
+      "date": "2025-07-23"
+    },
+    {
+      "id": 9,
+      "name": "Fifth Person - Alphabet Q3 2025",
+      "url": "https://fifthperson.com/alphabet-q3-2025/",
+      "date": "2025-10-29"
+    },
+    {
+      "id": 10,
+      "name": "StatCounter - Search Engine Market Share",
+      "url": "https://gs.statcounter.com/search-engine-market-share",
+      "date": "2026-01"
+    },
+    {
+      "id": 11,
+      "name": "Resourcera - Global Search Engine Market Share 2026",
+      "url": "https://resourcera.com/data/search/search-engine-market-share/",
+      "date": "2026"
+    },
+    {
+      "id": 12,
+      "name": "DemandSage - Chrome Statistics 2026",
+      "url": "https://www.demandsage.com/chrome-statistics/",
+      "date": "2026"
+    },
+    {
+      "id": 13,
+      "name": "DemandSage - YouTube Stats 2026",
+      "url": "https://www.demandsage.com/youtube-stats/",
+      "date": "2026"
+    },
+    {
+      "id": 14,
+      "name": "DemandSage - Android Statistics 2026",
+      "url": "https://www.demandsage.com/android-statistics/",
+      "date": "2026"
+    },
+    {
+      "id": 15,
+      "name": "DemandSage - Google Ads Statistics 2026",
+      "url": "https://www.demandsage.com/google-ads-statistics/",
+      "date": "2026"
+    },
+    {
+      "id": 16,
+      "name": "emma Blog - Cloud Market Share Trends 2026",
+      "url": "https://www.emma.ms/blog/cloud-market-share-trends",
+      "date": "2026"
+    },
+    {
+      "id": 17,
+      "name": "Vertu - AI Chatbot Market Share 2026",
+      "url": "https://vertu.com/lifestyle/ai-chatbot-market-share-2026-chatgpt-drops-to-68-as-google-gemini-surges-to-18-2/",
+      "date": "2026"
+    },
+    {
+      "id": 18,
+      "name": "Waymo Blog - 2025 Year in Review",
+      "url": "https://waymo.com/blog/2025/12/2025-year-in-review",
+      "date": "2025-12"
+    },
+    {
+      "id": 19,
+      "name": "TechCrunch - Waymo Raises $16B",
+      "url": "https://techcrunch.com/2026/02/02/waymo-raises-16-billion-round-to-scale-robotaxi-fleet-london-tokyo/",
+      "date": "2026-02-02"
+    },
+    {
+      "id": 20,
+      "name": "MacroTrends - Alphabet Employees",
+      "url": "https://www.macrotrends.net/stocks/charts/GOOG/alphabet/number-of-employees",
+      "date": "2025"
+    },
+    {
+      "id": 21,
+      "name": "StockAnalysis.com - GOOGL Revenue",
+      "url": "https://stockanalysis.com/stocks/googl/revenue/",
+      "date": "2026"
+    },
+    {
+      "id": 22,
+      "name": "Patronum - Google Workspace Statistics",
+      "url": "https://www.patronum.io/key-google-workspace-statistics-for-2023",
+      "date": "2025"
+    },
+    {
+      "id": 23,
+      "name": "Thurrott.com - Alphabet Q4 Revenues",
+      "url": "https://www.thurrott.com/google/332364/alphabet-google-revenues-up-18-percent-to-113-8-billion",
+      "date": "2026-02-04"
+    },
+    {
+      "id": 24,
+      "name": "SQ Magazine - Google Maps Statistics",
+      "url": "https://sqmagazine.co.uk/google-maps-statistics/",
+      "date": "2025"
+    },
+    {
+      "id": 25,
+      "name": "ContentGrip - Google vs AI Search",
+      "url": "https://www.contentgrip.com/google-search-market-share-decline/",
+      "date": "2026"
+    }
+  ]
+}

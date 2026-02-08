@@ -1,0 +1,502 @@
+{
+  "metadata": {
+    "company": "Alphabet Inc.",
+    "ticker": ["GOOGL", "GOOG"],
+    "data_collected": "2026-02-06",
+    "sources": [
+      "SEC proxy filings (DEF 14A)",
+      "Yahoo Finance",
+      "CNBC",
+      "MarketBeat",
+      "Investing.com",
+      "The Register",
+      "Fortune",
+      "Bloomberg Law",
+      "NPR",
+      "Alphabet Investor Relations (abc.xyz)"
+    ]
+  },
+
+  "ceo": {
+    "name": "Sundar Pichai",
+    "title": "Chief Executive Officer, Alphabet and Google; Director",
+    "tenure_start": "2015 (Google CEO), 2019 (Alphabet CEO)",
+    "age": 53,
+    "background": "Former SVP of Google Chrome, Apps & Android. Joined Google in 2004. IIT Kharagpur (BTech), Stanford (MS), Wharton (MBA).",
+    "compensation": {
+      "fy2024": {
+        "base_salary": 2015000,
+        "stock_awards": 405630,
+        "other_compensation": 8304000,
+        "other_compensation_detail": "Primarily $8.27M personal security costs (22% increase YoY)",
+        "total": 10725043,
+        "yoy_change_pct": 21.8,
+        "note": "Down significantly from $226M in FY2022 which included large stock grant"
+      },
+      "ceo_to_median_pay_ratio": "32:1",
+      "median_employee_compensation_fy2024": 331894,
+      "source": "[The Register, 2025-05-14; salary.com; storyboard18]"
+    },
+    "leadership_assessment": {
+      "style": "Hybrid transformational + servant leadership with democratic decision-making",
+      "strengths": [
+        "Calm, measured approach under pressure",
+        "Strong communicator who adapts to audience (ICs, VPs, partners, customers)",
+        "Successfully pivoted Alphabet to AI-first strategy",
+        "Talks to DeepMind CEO Hassabis 'every day' — tight AI coordination",
+        "Drove $75B annual AI infrastructure investment",
+        "Launched Gemini 3 with 'fastest adoption of any model in Google history'"
+      ],
+      "criticisms": [
+        "Perceived slow initial response to ChatGPT/OpenAI threat in 2023",
+        "Oversaw significant layoffs (12,000 in Jan 2023)",
+        "Stock sold consistently via 10b5-1 plan — $95M+ in 6 months"
+      ],
+      "analyst_quotes": [
+        "Pichai's 'full-stack approach to AI' is not just a technological bet, it's a leadership philosophy reshaping every corner of Alphabet's business — Q3 2025 earnings call",
+        "AI 2026: Sundar Pichai is tasked with preserving Google — Bismarck Analysis",
+        "Google was 'nowhere near' done with search 25 years ago, and AI proves it — Larry Page reflection, Fortune Dec 2025"
+      ],
+      "source": "[BusinessChief; Bismarck Analysis; Fortune; CNBC]"
+    },
+    "insider_trading": {
+      "6_month_summary": {
+        "total_transactions": 79,
+        "total_shares_sold": 390000,
+        "total_value_usd": 95265276,
+        "type": "All sales, no purchases",
+        "trading_plan": "Rule 10b5-1 plan adopted December 2, 2024"
+      },
+      "recent_transactions": [
+        {
+          "date": "2026-01-21",
+          "shares": 32500,
+          "share_class": "Class C",
+          "price_range": "$319.87 - $332.52",
+          "estimated_value": 10300000
+        },
+        {
+          "date": "2025-12-03",
+          "shares": 32100,
+          "share_class": "Class C",
+          "price_range": "$315.16 - $321.77",
+          "estimated_value": 10300000
+        },
+        {
+          "date": "2025-11-19",
+          "shares": 32500,
+          "share_class": "Class C",
+          "price_range": "~$280-290",
+          "estimated_value": 9200000
+        },
+        {
+          "date": "2025-11-05",
+          "shares": 32500,
+          "share_class": "Class C",
+          "price_range": "~$280",
+          "estimated_value": 9200000
+        },
+        {
+          "date": "2025-09-17",
+          "shares": 32690,
+          "share_class": "Class C",
+          "price_range": "~$248",
+          "estimated_value": 8100000
+        }
+      ],
+      "context": "All sales under pre-established 10b5-1 trading plan. Pichai became a billionaire in July 2025. Fortune noted he could have been up an extra billion if he hadn't sold stock during AI rally.",
+      "source": "[Investing.com; StockTitan; Fortune]"
+    }
+  },
+
+  "c_suite_executives": [
+    {
+      "name": "Anat Ashkenazi",
+      "title": "Chief Financial Officer and Senior Vice President",
+      "tenure_start": "July 31, 2024",
+      "previous_role": "EVP and CFO at Eli Lilly (2021-2024, 20+ years at company)",
+      "compensation_fy2024": {
+        "stock_awards": 38500000,
+        "signing_bonus": 9900000,
+        "base_salary": 1000000,
+        "bonus_opportunity": "Up to 200% of base salary",
+        "total": 49980000,
+        "note": "Elevated compensation reflects sign-on package for recruitment from Eli Lilly"
+      },
+      "source": "[CFO.com; The Register; Wikipedia]"
+    },
+    {
+      "name": "Ruth Porat",
+      "title": "President and Chief Investment Officer, Alphabet and Google",
+      "tenure_start": "2015 (CFO), September 2023 (President & CIO)",
+      "previous_role": "CFO of Alphabet/Google (2015-2024); formerly EVP and CFO at Morgan Stanley",
+      "compensation_fy2024": {
+        "stock_awards": 27000000,
+        "total": 30160000
+      },
+      "note": "Transitioned from CFO to President & CIO role; oversees Alphabet's investment portfolio including Other Bets",
+      "source": "[Fortune Most Powerful Women 2025; The Register]"
+    },
+    {
+      "name": "Kent Walker",
+      "title": "President of Global Affairs and Chief Legal Officer",
+      "tenure_start": "2006 (joined Google); promoted to President of Global Affairs",
+      "compensation_fy2024": {
+        "stock_awards": 27140000,
+        "total": 30160000,
+        "yoy_change_pct": 10.3
+      },
+      "responsibilities": "Global legal, policy, trust and safety, compliance, government affairs. Key figure in antitrust defense.",
+      "source": "[The Register; DigitalDefynd]"
+    },
+    {
+      "name": "Philipp Schindler",
+      "title": "Senior Vice President and Chief Business Officer",
+      "tenure_start": "2005 (joined Google)",
+      "compensation_fy2024": {
+        "stock_awards": 43970000,
+        "total": 47000000,
+        "yoy_change_pct": 12
+      },
+      "responsibilities": "Global sales, partnerships, and business development for Google",
+      "insider_trading": {
+        "recent_transaction": {
+          "date": "2025-12-31",
+          "shares": 44701,
+          "share_class": "Class C",
+          "total_value": 6604380
+        }
+      },
+      "source": "[The Register; DefenseWorld]"
+    },
+    {
+      "name": "Demis Hassabis",
+      "title": "CEO, Google DeepMind",
+      "tenure_start": "2010 (co-founded DeepMind); 2023 (CEO of merged Google DeepMind)",
+      "background": "Co-founder of DeepMind (acquired by Google in 2014). Nobel Prize in Chemistry 2024 (with John Jumper) for AlphaFold protein structure prediction.",
+      "leadership_assessment": {
+        "role_in_ai_strategy": "Leads Alphabet's core AI research and development — called DeepMind 'the engine room' of Google's AI efforts",
+        "relationship_with_ceo": "Talks to Pichai 'every day' amid 'ferocious' AI competition",
+        "key_achievements": [
+          "Nobel Prize in Chemistry 2024 (AlphaFold)",
+          "Led merger of Google Brain + DeepMind into unified Google DeepMind",
+          "Gemini model family development and deployment",
+          "Gemini 3 launched mid-November 2025 — 'fastest adoption of any model in Google history'",
+          "Gemini 3 Pro processes 3x daily tokens vs 2.5 Pro"
+        ],
+        "other_ventures": "CEO of Isomorphic Labs (Alphabet subsidiary) — AI for drug discovery"
+      },
+      "source": "[CNBC Jan 2026; Fortune; Wikipedia; Benzinga]"
+    },
+    {
+      "name": "Nick Fox",
+      "title": "Senior Vice President, Knowledge and Information (Search, Ads, Geo, Commerce)",
+      "tenure_start": "2003 (joined Google); October 2024 (current role)",
+      "previous_role": "VP of Product and Design for Google Assistant",
+      "context": "Replaced Prabhakar Raghavan who moved to Chief Technologist role",
+      "source": "[CNBC; AdWeek; Nasdaq]"
+    },
+    {
+      "name": "Prabhakar Raghavan",
+      "title": "Chief Technologist, Google",
+      "tenure_start": "2018 (led Knowledge & Information); October 2024 (Chief Technologist)",
+      "previous_role": "SVP leading Google Search, Ads, Geo, Commerce, Payments (2018-2024)",
+      "compensation_fy2024": {
+        "stock_awards": 43970000,
+        "total": 46990000,
+        "yoy_change_pct": 12
+      },
+      "context": "Lateral move to Chief Technologist widely seen as a demotion from operational Search leadership amid AI transition pressures",
+      "source": "[The Register; CNBC; AdWeek]"
+    },
+    {
+      "name": "Sissie Hsiao",
+      "title": "VP, Gemini App (now under Google DeepMind)",
+      "context": "Led Gemini app team which was moved under DeepMind to accelerate AI product feedback loops",
+      "source": "[Business Standard; CNBC]"
+    }
+  ],
+
+  "board_of_directors": {
+    "total_members": 11,
+    "chair": "John L. Hennessy",
+    "last_agm": "June 6, 2025",
+    "members": [
+      {
+        "name": "John L. Hennessy",
+        "role": "Independent Chairman of the Board",
+        "background": "Former President of Stanford University (2000-2016). Computer scientist. Co-founder of MIPS Computer Systems.",
+        "committees": ["Nominating and Corporate Governance Committee (Chair)"],
+        "independence": true
+      },
+      {
+        "name": "Sundar Pichai",
+        "role": "CEO and Director",
+        "independence": false
+      },
+      {
+        "name": "Larry Page",
+        "role": "Co-Founder and Director",
+        "independence": false,
+        "voting_power_note": "Controls ~26% voting power via Class B shares"
+      },
+      {
+        "name": "Sergey Brin",
+        "role": "Co-Founder and Director",
+        "independence": false,
+        "voting_power_note": "Controls ~25% voting power via Class B shares"
+      },
+      {
+        "name": "Frances Arnold",
+        "role": "Independent Director",
+        "background": "Nobel Prize in Chemistry 2018. Professor at Caltech. Appointed to board December 2019.",
+        "committees": ["Nominating and Corporate Governance Committee"],
+        "independence": true,
+        "insider_trading": {
+          "recent_transaction": {
+            "date": "2026-01-29",
+            "shares": 102,
+            "price": 340.00,
+            "total_value": 34680
+          }
+        }
+      },
+      {
+        "name": "L. John Doerr",
+        "role": "Independent Director",
+        "background": "Chairman of Kleiner Perkins. Early Google investor.",
+        "committees": ["Leadership Development, Inclusion, and Compensation Committee"],
+        "independence": true
+      },
+      {
+        "name": "Roger W. Ferguson Jr.",
+        "role": "Independent Director",
+        "background": "Former CEO of TIAA. Former Vice Chairman of the Federal Reserve Board.",
+        "independence": true
+      },
+      {
+        "name": "Ann Mather",
+        "role": "Independent Director",
+        "background": "Former CFO of Pixar Animation Studios.",
+        "committees": ["Audit Committee (Chair)"],
+        "independence": true
+      },
+      {
+        "name": "K. Ram Shriram",
+        "role": "Independent Director",
+        "background": "Founding board member of Google. Managing Partner at Sherpalo Ventures.",
+        "committees": ["Leadership Development, Inclusion, and Compensation Committee"],
+        "independence": true
+      },
+      {
+        "name": "Robin L. Washington",
+        "role": "Independent Director",
+        "background": "Former CFO of Gilead Sciences.",
+        "committees": ["Leadership Development, Inclusion, and Compensation Committee (Chair)", "Audit Committee"],
+        "independence": true
+      },
+      {
+        "name": "Alan Mulally",
+        "role": "Independent Director",
+        "background": "Former President and CEO of Ford Motor Company. Former CEO of Boeing Commercial Airplanes.",
+        "independence": true
+      }
+    ],
+    "committees": {
+      "audit": {
+        "chair": "Ann Mather",
+        "members": ["Ann Mather", "Robin L. Washington"]
+      },
+      "leadership_development_inclusion_compensation": {
+        "chair": "Robin L. Washington",
+        "members": ["Robin L. Washington", "L. John Doerr", "K. Ram Shriram"]
+      },
+      "nominating_corporate_governance": {
+        "chair": "John L. Hennessy",
+        "members": ["John L. Hennessy", "Frances Arnold"]
+      }
+    }
+  },
+
+  "founders_involvement": {
+    "larry_page": {
+      "current_roles": ["Board Member", "Controlling Shareholder", "Employee (nominal)"],
+      "day_to_day_involvement": "Stepped down from executive roles December 2019. Minimal day-to-day involvement but champions DeepMind CEO Demis Hassabis. Active in non-Google tech investments.",
+      "ownership": {
+        "economic_ownership_pct": "~5.7%",
+        "voting_power_pct": "~26%",
+        "share_class": "Primarily Class B (10 votes per share)"
+      },
+      "recent_activity": "45+ California LLCs filed paperwork to move out of state or become inactive (Dec 2025), partly due to proposed California billionaire tax.",
+      "source": "[Wikipedia; Fortune; Luxurylaunches; Fox Business]"
+    },
+    "sergey_brin": {
+      "current_roles": ["Board Member", "Controlling Shareholder"],
+      "day_to_day_involvement": "Re-engaged significantly since 2023 AI race. Back at Googleplex contributing hands-on. Contributed code to Gemini. Instrumental in deal to bring Noam Shazeer back from Character.AI (~$2.7B deal).",
+      "ownership": {
+        "economic_ownership_pct": "~5.5%",
+        "voting_power_pct": "~25%",
+        "share_class": "Primarily Class B (10 votes per share)"
+      },
+      "recent_activity": "15 California LLCs relocated out of state (Dec 2025). Fortune ranked Brin and Page among '100 Most Powerful People in Business' 2025.",
+      "source": "[Fortune; SurgeGraph; Wikipedia; Fox Business]"
+    },
+    "combined_voting_control": {
+      "total_voting_power_pct": ">51%",
+      "economic_ownership_pct": "<12%",
+      "implication": "Founders retain absolute control of all shareholder votes despite holding minority economic interest. No hostile takeover possible. Minority shareholders have no ability to override founders on any vote."
+    }
+  },
+
+  "governance_structure": {
+    "share_classes": {
+      "class_a_googl": {
+        "voting_rights": "1 vote per share",
+        "traded": true,
+        "exchange": "NASDAQ",
+        "holders": "Public investors"
+      },
+      "class_b": {
+        "voting_rights": "10 votes per share",
+        "traded": false,
+        "holders": "Founders (Page, Brin) and select early insiders",
+        "note": "Convert to Class A if sold to non-insiders"
+      },
+      "class_c_goog": {
+        "voting_rights": "0 votes per share (no voting rights)",
+        "traded": true,
+        "exchange": "NASDAQ",
+        "holders": "Public investors, used for employee equity compensation",
+        "note": "Created in 2014 stock split to allow capital raising without diluting founder voting control"
+      }
+    },
+    "governance_concerns": [
+      "Dual-class structure gives founders >51% voting control with <12% economic interest",
+      "No sunset provision on super-voting shares",
+      "Minority shareholder proposals have no binding power",
+      "Shareholder proposal to equalize voting rights has been submitted but defeated",
+      "Board independence questioned — several long-tenured directors with personal ties to founders"
+    ],
+    "governance_strengths": [
+      "Independent Chairman (Hennessy) separate from CEO",
+      "Strong board credentials (multiple Nobel laureates, former Fortune 500 CEOs, former Fed vice chair)",
+      "Regular executive compensation disclosure",
+      "All insider sales conducted under pre-set 10b5-1 trading plans"
+    ]
+  },
+
+  "insider_trading_summary": {
+    "period": "Last 90 days (as of 2026-02-06)",
+    "total_transactions": 93,
+    "buy_transactions": 0,
+    "sell_transactions": 93,
+    "total_value_sold_usd": 56300000,
+    "top_sellers": [
+      {
+        "name": "Sundar Pichai",
+        "title": "CEO",
+        "6_month_shares_sold": 390000,
+        "6_month_total_value": 95265276
+      },
+      {
+        "name": "Philipp Schindler",
+        "title": "SVP & Chief Business Officer",
+        "notable_sale": {
+          "date": "2025-12-31",
+          "shares": 44701,
+          "value": 6604380
+        }
+      },
+      {
+        "name": "Frances Arnold",
+        "title": "Director",
+        "notable_sale": {
+          "date": "2026-01-29",
+          "shares": 102,
+          "value": 34680
+        }
+      }
+    ],
+    "assessment": "All sales conducted under pre-established Rule 10b5-1 trading plans. Zero insider purchases in the period. Consistent selling pattern across executives is typical for high-valued tech companies where executive comp is equity-heavy. No unusual or emergency selling patterns detected.",
+    "source": "[MarketBeat; DefenseWorld; Investing.com]"
+  },
+
+  "organizational_changes_2024_2025": [
+    {
+      "date": "2024-07",
+      "change": "CFO transition: Anat Ashkenazi replaces Ruth Porat as CFO. Porat becomes President & CIO.",
+      "significance": "Major financial leadership change. Ashkenazi brings pharma industry CFO perspective."
+    },
+    {
+      "date": "2024-10",
+      "change": "Search leadership overhaul: Nick Fox replaces Prabhakar Raghavan as head of Search/Ads/Commerce. Raghavan becomes Chief Technologist.",
+      "significance": "Widely interpreted as response to AI disruption of search. Raghavan's move seen as lateral/demotion."
+    },
+    {
+      "date": "2024-10",
+      "change": "Gemini app team (Sissie Hsiao) moved under Google DeepMind (Hassabis).",
+      "significance": "Consolidates AI product and research under single leader. Accelerates feedback loop."
+    },
+    {
+      "date": "2024-10",
+      "change": "Google Assistant teams integrated into Platforms & Devices division.",
+      "significance": "Aligns voice AI with hardware/ecosystem strategy."
+    },
+    {
+      "date": "2025-08",
+      "change": "Eliminated 35% of managers overseeing small teams over past year.",
+      "significance": "Flattening org structure for speed. Part of ongoing efficiency drive post-2023 layoffs."
+    }
+  ],
+
+  "management_controversies": [
+    {
+      "topic": "DOJ Antitrust — Search Monopoly",
+      "status": "Remedies issued September 2025; DOJ + 35 states appealing",
+      "detail": "Judge Mehta found Google illegally maintained search monopoly via exclusive default search deals. Court rejected Chrome/Android divestiture but prohibited exclusive search distribution contracts and ordered data sharing with rivals. DOJ appealing for stronger remedies.",
+      "management_response": "Google called ruling a 'home run' for avoiding structural remedies. Kent Walker leads legal defense.",
+      "source": "[NPR; Bloomberg Law; Congress.gov]"
+    },
+    {
+      "topic": "DOJ Antitrust — Ad Tech",
+      "status": "Ruling April 2025; potential AdX divestiture",
+      "detail": "Judge Brinkema ruled Google violated antitrust law in ad exchange and ad server markets. DOJ seeking divestiture of AdX.",
+      "source": "[AdExchanger; Bloomberg Law]"
+    },
+    {
+      "topic": "AI Bias Controversy — Gemini Image Generation",
+      "status": "Resolved (early 2024)",
+      "detail": "Gemini's image generation produced historically inaccurate diverse images. Sergey Brin personally addressed the issue and contributed fixes.",
+      "source": "[SurgeGraph; Fortune]"
+    },
+    {
+      "topic": "Mass Layoffs",
+      "status": "Ongoing efficiency measures",
+      "detail": "12,000 employees laid off January 2023. Continued manager reduction (35% of small-team managers) through 2025.",
+      "source": "[CNBC]"
+    },
+    {
+      "topic": "Founders' California Tax Exodus",
+      "status": "December 2025",
+      "detail": "Page and Brin moved 60+ LLCs out of California ahead of proposed billionaire tax. Estimated $20B loss to California tax base.",
+      "source": "[Fox Business; Luxurylaunches]"
+    }
+  ],
+
+  "recent_financial_context": {
+    "q4_2025_results": {
+      "revenue": 113800000000,
+      "revenue_yoy_growth_pct": 18,
+      "net_income": 34500000000,
+      "net_income_yoy_growth_pct": 30,
+      "eps": 2.82,
+      "eps_beat_by": 0.18,
+      "google_cloud_revenue": 17660000000,
+      "youtube_ad_revenue": 11380000000,
+      "total_advertising_revenue": 82280000000,
+      "capex_guidance_2026": "175-185 billion USD",
+      "capex_guidance_note": "Well above consensus. Markets initially shocked by aggressive AI investment stance."
+    },
+    "source": "[CNBC; Variety; Investing.com; 9to5Google]"
+  }
+}
