@@ -1,0 +1,88 @@
+{
+  "version": "2.0",
+  "ticker": "TSM",
+  "company": "Taiwan Semiconductor Manufacturing Company",
+  "industry": "半导体",
+  "timestamp": "2026-02-06T12:44:00+08:00",
+  "data_files": {
+    "stock_full": {
+      "status": "error",
+      "source": "MCP:analyze_stock",
+      "fetched_at": "2026-02-06T12:41:00+08:00",
+      "expires_at": null,
+      "error": "keys must be str, int, float, bool or None, not Timestamp"
+    },
+    "peer_comparison": {
+      "status": "ok",
+      "source": "MCP:compare_stocks",
+      "fetched_at": "2026-02-06T12:41:00+08:00",
+      "expires_at": "2026-02-13T12:41:00+08:00"
+    },
+    "market_context": {
+      "status": "error",
+      "source": "MCP:get_market_overview",
+      "fetched_at": "2026-02-06T12:41:00+08:00",
+      "expires_at": null,
+      "error": "All index values returned null"
+    },
+    "dcf_valuation": {
+      "status": "error",
+      "source": "Python:dcf_calculator",
+      "fetched_at": null,
+      "expires_at": null,
+      "error": "Skipped - depends on stock_full which failed"
+    },
+    "comparable_analysis": {
+      "status": "error",
+      "source": "Python:comparable_companies",
+      "fetched_at": null,
+      "expires_at": null,
+      "error": "Skipped - depends on stock_full which failed"
+    },
+    "analyst_consensus": {
+      "status": "ok",
+      "source": "WebSearch:Agent-A",
+      "fetched_at": "2026-02-06T12:43:00+08:00",
+      "expires_at": "2026-02-09T12:43:00+08:00"
+    },
+    "prediction_market": {
+      "status": "ok",
+      "source": "WebSearch:Agent-B",
+      "fetched_at": "2026-02-06T12:44:00+08:00",
+      "expires_at": "2026-02-07T00:44:00+08:00"
+    },
+    "recent_news": {
+      "status": "ok",
+      "source": "WebSearch:Agent-C",
+      "fetched_at": "2026-02-06T12:43:00+08:00",
+      "expires_at": "2026-02-06T18:43:00+08:00"
+    },
+    "business_overview": {
+      "status": "ok",
+      "source": "WebSearch:Agent-D",
+      "fetched_at": "2026-02-06T12:43:00+08:00",
+      "expires_at": "2026-03-08T12:43:00+08:00"
+    },
+    "competitive_landscape": {
+      "status": "ok",
+      "source": "WebSearch:Agent-D",
+      "fetched_at": "2026-02-06T12:44:00+08:00",
+      "expires_at": "2026-02-13T12:44:00+08:00"
+    },
+    "management_team": {
+      "status": "ok",
+      "source": "WebSearch:Agent-E",
+      "fetched_at": "2026-02-06T12:43:00+08:00",
+      "expires_at": "2026-03-08T12:43:00+08:00"
+    }
+  },
+  "quality": {
+    "complete_fields": 7,
+    "total_fields": 11,
+    "completeness_pct": 63.6,
+    "files_ok": 7,
+    "files_error": 4,
+    "files_total": 11,
+    "notes": "MCP analyze_stock failed (Timestamp key error), market_overview returned nulls, DCF/comparable skipped. WebSearch agents all succeeded. Core analysis data available via WebSearch fallback."
+  }
+}

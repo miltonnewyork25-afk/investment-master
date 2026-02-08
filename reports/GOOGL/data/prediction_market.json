@@ -1,0 +1,238 @@
+{
+  "metadata": {
+    "subject": "Alphabet/Google (GOOGL) Prediction Market Data",
+    "data_collection_date": "2026-02-06",
+    "analyst_note": "Comprehensive scan across Polymarket, Kalshi, Manifold, and Metaculus for events impacting GOOGL investment thesis",
+    "confidence_label": "[硬数据: Polymarket/Kalshi/Manifold/Metaculus, 2026-02-06]"
+  },
+  "events": [
+    {
+      "id": "PM-GOOGL-001",
+      "event_name": "Google forced to sell Chrome?",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/google-forced-to-sell-chrome",
+      "status": "RESOLVED",
+      "outcome": "No",
+      "resolution_date": "2025-06-02",
+      "final_probability_pct": 0,
+      "peak_probability_pct": 32,
+      "peak_probability_note": "Peaked at ~32% during DOJ remedies proposal phase (late 2024)",
+      "total_volume_usd": 299667,
+      "resolution_criteria": "Resolves Yes if Alphabet/Google formally announces or is legally compelled to divest or sell its Chrome browser, either partially or entirely, due to regulatory or legal action by May 31, 2025, 11:59 PM ET. Resolution based on first announcement by Google or US Courts. Does not require sale to actually occur.",
+      "investment_relevance": "HIGH — Chrome divestiture was the most extreme DOJ remedy proposal. Market correctly predicted it would not happen. Judge Mehta ruled Sept 2025 that Google need not divest Chrome, instead imposing data-sharing requirements.",
+      "current_status_note": "Judge Mehta ruled Sept 2, 2025 against forced Chrome divestiture. Google filed appeal Jan 16, 2026. Legal experts expect Supreme Court resolution by late 2027 or early 2028."
+    },
+    {
+      "id": "PM-GOOGL-002",
+      "event_name": "Will Google be forced to break up in 2025?",
+      "platform": "Kalshi",
+      "url": "https://kalshi.com/markets/kxgooglebreakup/google-breakup/kxgooglebreakup-26",
+      "status": "RESOLVED",
+      "outcome": "No",
+      "resolution_date": "2026-01-01",
+      "final_probability_pct": 0,
+      "last_traded_price_usd": 0.02,
+      "total_volume_contracts": 470344,
+      "dollar_volume_usd": 235172,
+      "open_interest_contracts": 174136,
+      "resolution_criteria": "Resolves Yes if a court orders Google to be broken up (orders any part of it to be divested) before Jan 1, 2026. If a court orders a breakup and additional remedies (e.g. the payment of fines), that is sufficient to resolve to Yes.",
+      "settlement_source": "PACER (pacer.uscourts.gov)",
+      "investment_relevance": "HIGH — Largest volume Google antitrust market. Confirmed that structural breakup was not ordered in 2025 remedies phase."
+    },
+    {
+      "id": "PM-GOOGL-003",
+      "event_name": "Will Google sell or divest Chrome by 2029?",
+      "platform": "Manifold",
+      "url": "https://manifold.markets/ZviMowshowitz/will-google-sell-or-divest-chrome-b",
+      "status": "ACTIVE",
+      "current_probability_pct": 2,
+      "total_volume_mana": 17625.43,
+      "liquidity_mana": 1000,
+      "unique_bettors": 74,
+      "total_trades": 146,
+      "resolution_date": "2029-01-01",
+      "resolution_criteria": "Resolves YES if Google sells or divests Chrome, for any reason, by Jan 1, 2029. Resolves NO if it does not. Early resolution clause: if trading at 2% or less reliably for a week and antitrust suit resolved, may resolve early to NO.",
+      "investment_relevance": "MEDIUM — Longer-dated market capturing appeal/Supreme Court timeline. Current 2% probability reflects very low market expectation of Chrome divestiture even through 2029, consistent with Judge Mehta's ruling.",
+      "note": "Manifold uses play money (MANA), not real USD. Directional signal is informative but lacks financial skin-in-the-game weight of Polymarket/Kalshi."
+    },
+    {
+      "id": "PM-GOOGL-004",
+      "event_name": "Will the US break up Google before 1 January 2026?",
+      "platform": "Metaculus",
+      "url": "https://www.metaculus.com/questions/29501/will-the-us-break-up-google-before-1-january-2026/",
+      "status": "RESOLVED",
+      "outcome": "No",
+      "resolution_date": "2026-01-01",
+      "resolution_criteria": "Resolves Yes if the US government orders a breakup of Google before January 1, 2026.",
+      "investment_relevance": "MEDIUM — Metaculus community correctly forecasted no breakup. No active follow-up question found for 2027-2028 timeframe.",
+      "data_access_note": "Metaculus returned 403 on direct fetch. Final community probability not captured; outcome confirmed as No from search results."
+    },
+    {
+      "id": "PM-GOOGL-005",
+      "event_name": "Sundar Pichai leaves Google this year? (2025)",
+      "platform": "Kalshi",
+      "url": "https://kalshi.com/markets/kxgoogleceochange",
+      "status": "RESOLVED",
+      "outcome": "No",
+      "resolution_date": "2026-01-01",
+      "final_probability_pct": 0,
+      "last_traded_price_usd": 0.01,
+      "total_volume_contracts": 28778,
+      "dollar_volume_usd": 14389,
+      "open_interest_contracts": 7338,
+      "resolution_criteria": "Resolves Yes if Sundar Pichai is no longer CEO of Google by Dec 31, 2025.",
+      "settlement_source": "Bloomberg, Google official channels",
+      "investment_relevance": "LOW-MEDIUM — CEO stability confirmed. Pichai remains CEO through antitrust period and AI transition."
+    },
+    {
+      "id": "PM-GOOGL-006",
+      "event_name": "GOOGL Weekly Price Markets (Week of Feb 2, 2026)",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/predictions/googl",
+      "status": "ACTIVE",
+      "data_date": "2026-02-06",
+      "resolution_date": "2026-02-06",
+      "markets": [
+        {"strike": "$310", "yes_probability_pct": 97.7, "volume_usd": 9100},
+        {"strike": "$315", "yes_probability_pct": 89.0, "volume_usd": 2700},
+        {"strike": "$320", "yes_probability_pct": 61.0, "volume_usd": 9300},
+        {"strike": "$325", "yes_probability_pct": 66.5, "volume_usd": 16000},
+        {"strike": "$330", "yes_probability_pct": 39.5, "volume_usd": 15600},
+        {"strike": "$335", "yes_probability_pct": 22.0, "volume_usd": 10400},
+        {"strike": "$340", "yes_probability_pct": 29.0, "volume_usd": 3700},
+        {"strike": "$345", "yes_probability_pct": 36.9, "volume_usd": 1700},
+        {"strike": "$350", "yes_probability_pct": 21.5, "volume_usd": 7300},
+        {"strike": "$370", "yes_probability_pct": 0.2, "volume_usd": 929}
+      ],
+      "implied_weekly_close_range": "$320-$330 (highest probability zone)",
+      "investment_relevance": "LOW — Short-term price markets with limited predictive value beyond current week. Useful for gauging near-term sentiment post-earnings."
+    },
+    {
+      "id": "PM-GOOGL-007",
+      "event_name": "GOOGL Monthly Price Targets (February 2026)",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/predictions/googl",
+      "status": "ACTIVE",
+      "data_date": "2026-02-06",
+      "resolution_date": "2026-03-01",
+      "markets": [
+        {"target": "$280 close above end of month", "yes_probability_pct": 95.0},
+        {"target": "$385 hit anytime in Feb", "yes_probability_pct": 11.4, "volume_usd": 2800},
+        {"target": "$405 hit anytime in Feb", "yes_probability_pct": 2.95, "volume_usd": 2700},
+        {"target": "$430 hit anytime in Feb", "yes_probability_pct": 3.4, "volume_usd": 2400}
+      ],
+      "investment_relevance": "LOW-MEDIUM — Market implies <12% chance of a major rally to $385+ in February 2026. Consistent with post-earnings stability view."
+    },
+    {
+      "id": "PM-GOOGL-008",
+      "event_name": "U.S. enacts AI safety bill before 2027?",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/us-enacts-ai-safety-bill-before-2027",
+      "status": "ACTIVE",
+      "current_probability_pct": 41,
+      "total_volume_usd": 13244.35,
+      "volume_24h_usd": 2851,
+      "liquidity_usd": 1984.38,
+      "resolution_date": "2026-12-31",
+      "resolution_criteria": "Resolves Yes if federal legislation including at least one of: (1) prohibition on creation/release of specific AI systems, (2) training restrictions, (3) usage restrictions, or (4) human-in-the-loop requirements becomes law by Dec 31, 2026, 11:59 PM ET.",
+      "resolution_source": "Congress.gov or credible reporting consensus",
+      "investment_relevance": "MEDIUM-HIGH — 41% probability of AI safety legislation by end of 2026. If enacted, could constrain Google's AI model deployment, training data usage, or require additional compliance costs. Also impacts competitors equally. Google's Gemini models and AI Overviews in Search would be directly affected.",
+      "googl_impact_assessment": "Moderate negative if restrictive; could slow AI feature rollouts. But also raises barriers for smaller AI competitors, potentially favoring incumbents with compliance resources."
+    },
+    {
+      "id": "PM-GOOGL-009",
+      "event_name": "AI data center moratorium passed before 2027?",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/ai-data-center-moratorium-passed-before-2027",
+      "status": "ACTIVE",
+      "current_probability_pct": 12,
+      "total_volume_usd": 5486,
+      "liquidity_usd": 4895.62,
+      "resolution_date": "2026-12-31",
+      "resolution_criteria": "Resolves Yes if legislation establishing a moratorium prohibiting or suspending approvals for new AI data center construction or major expansions anywhere in the US is passed into law by Dec 31, 2026. Must apply to facilities described as AI data centers, AI compute facilities, AI training/inference data centers, or similar terms.",
+      "resolution_source": "Official U.S. Government information; credible reporting consensus",
+      "investment_relevance": "HIGH — Google announced $175-185B capex for 2026 (nearly double 2025's $91.4B), heavily concentrated in AI data centers. A moratorium would directly impede this expansion plan, though low 12% probability suggests market views this as unlikely.",
+      "googl_impact_assessment": "Severe negative if enacted — would freeze Google's massive AI infrastructure buildout. However, also freezes competitors. 12% probability = low but non-trivial tail risk."
+    },
+    {
+      "id": "PM-GOOGL-010",
+      "event_name": "Google earnings call antitrust mention tracking",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/earnings-mentions-google-2025-11-04",
+      "status": "RESOLVED (multiple instances)",
+      "markets_found": [
+        {
+          "event": "Q2 2025 earnings call — 'Antitrust' mentioned?",
+          "volume_usd": 3331,
+          "resolution_criteria": "Resolves Yes if the term 'Antitrust' is mentioned by anyone during the earnings event."
+        },
+        {
+          "event": "Q3 2025 earnings call — 'Antitrust' mentioned?",
+          "volume_usd": 1675,
+          "resolution_criteria": "Same as above."
+        }
+      ],
+      "investment_relevance": "LOW — Novelty/entertainment markets. Antitrust is routinely mentioned on Google earnings calls given ongoing litigation."
+    }
+  ],
+  "analyst_consensus_context": {
+    "source": "StockAnalysis.com, 43 analysts, as of 2026-02-05",
+    "consensus_rating": "Strong Buy",
+    "average_price_target_usd": 346.21,
+    "median_price_target_usd": 360.00,
+    "low_target_usd": 190,
+    "high_target_usd": 420,
+    "current_price_usd": 331.25,
+    "upside_pct": 4.52,
+    "revenue_2026E_B_usd": 467.92,
+    "revenue_growth_2026E_pct": 16.16,
+    "eps_2026E_usd": 11.55,
+    "notable_targets": [
+      {"firm": "JP Morgan", "target_usd": 395, "rating": "Buy"},
+      {"firm": "Stifel", "target_usd": 395, "rating": "Strong Buy"}
+    ]
+  },
+  "searches_with_no_coverage": [
+    {
+      "search_query": "polymarket Google DOJ settlement 2026",
+      "result": "该事件预测市场无覆盖",
+      "note": "No active prediction market found for a specific Google-DOJ settlement outcome in 2026. The remedies were finalized by Judge Mehta in Dec 2025; Google appealed Jan 2026. Search results returned Polymarket's own DOJ probe resolution (unrelated)."
+    },
+    {
+      "search_query": "polymarket AI search market share",
+      "result": "该事件预测市场无覆盖",
+      "note": "No prediction market found tracking AI search market share (e.g., ChatGPT Search vs Google Search vs Perplexity). Polymarket has AI-related markets but none specifically on search market share dynamics."
+    },
+    {
+      "search_query": "metaculus Google antitrust outcome prediction (active 2027+)",
+      "result": "该事件预测市场无覆盖",
+      "note": "Metaculus had a question for 'Will the US break up Google before Jan 1, 2026?' which resolved No. No active follow-up question found for the 2027-2028 appeal/Supreme Court timeline. Direct page fetch returned 403."
+    },
+    {
+      "search_query": "prediction market alphabet stock price 2026",
+      "result": "该事件预测市场无覆盖 (长期)",
+      "note": "No long-term prediction market for GOOGL end-of-2026 price target. Only short-term weekly/monthly binary options on Polymarket (documented in PM-GOOGL-006/007). Analyst consensus ($346 avg) is the best available proxy for year-end expectations."
+    },
+    {
+      "search_query": "site:kalshi.com Google antitrust (active markets)",
+      "result": "该事件预测市场无覆盖 (当前)",
+      "note": "Kalshi's 'Will Google be forced to break up in 2025?' market resolved No. No active successor market found for 2026+ breakup/divestiture risk."
+    }
+  ],
+  "synthesis": {
+    "key_takeaways": [
+      "Chrome divestiture risk is effectively priced at ~2% (Manifold through 2029), down from ~32% peak during DOJ remedies proposal. Judge Mehta's Sept 2025 ruling rejected structural breakup.",
+      "Google's antitrust case enters appeal phase (filed Jan 2026). Final resolution expected late 2027/early 2028. No active prediction market covers this extended timeline.",
+      "AI regulatory risk is the most significant active market signal: 41% probability of US AI safety legislation by end of 2026, which could affect Google's AI product deployment.",
+      "AI data center moratorium has 12% probability — a tail risk to Google's $175-185B 2026 capex plan.",
+      "Analyst consensus is Strong Buy with $346 avg target vs $331 current price (4.5% upside). JP Morgan and Stifel are most bullish at $395."
+    ],
+    "risk_matrix": {
+      "chrome_divestiture": {"probability_pct": 2, "impact": "Severe (15-25% stock decline per Barclays)", "timeline": "2027-2029 if appeal reverses Mehta ruling"},
+      "ai_safety_regulation": {"probability_pct": 41, "impact": "Moderate (compliance costs, feature rollout delays)", "timeline": "By Dec 2026"},
+      "data_center_moratorium": {"probability_pct": 12, "impact": "Severe (freezes $175-185B capex plan)", "timeline": "By Dec 2026"},
+      "ceo_change": {"probability_pct": "N/A (2025 market resolved No)", "impact": "Moderate (leadership transition risk)", "timeline": "No active market"},
+      "ad_tech_antitrust_breakup": {"probability_pct": "No active market", "impact": "Severe (Google ad business restructuring)", "timeline": "2027-2028 expected"}
+    }
+  }
+}

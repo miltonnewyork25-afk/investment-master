@@ -1,0 +1,43 @@
+{
+  "collection_date": "2026-02-07",
+  "source": "MCP investment-master compare_stocks",
+  "benchmark": "SPY",
+  "data": {
+    "LRCX": {
+      "pe_ratio": 47.435,
+      "pb_ratio": 28.488,
+      "roe": 0.656,
+      "market_cap_B": 290.2
+    },
+    "AMAT": {
+      "pe_ratio": 37.156,
+      "pb_ratio": 12.528,
+      "roe": 0.355,
+      "market_cap_B": 256.0
+    },
+    "KLAC": {
+      "pe_ratio": 42.020,
+      "pb_ratio": 34.621,
+      "roe": 1.007,
+      "market_cap_B": 189.6
+    },
+    "ASML": {
+      "pe_ratio": 48.540,
+      "pb_ratio": 23.645,
+      "roe": 0.505,
+      "market_cap_B": 548.5
+    },
+    "SPY": {
+      "pe_ratio": 27.381,
+      "pb_ratio": 1.609,
+      "roe": null,
+      "market_cap_B": null
+    }
+  },
+  "key_observations": [
+    "LRCX P/E 47.4x 接近ASML(48.5x), 显著高于AMAT(37.2x)",
+    "LRCX ROE 65.6% 仅次于KLAC(100.7%), 远超AMAT(35.5%)",
+    "LRCX P/B 28.5x 高于AMAT/ASML, 反映轻资产+高回购",
+    "设备商整体P/E 37-49x, 溢价于SPY(27.4x) 约40-80%"
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "ticker": "TSM",
+  "fetched_at": "2026-02-06",
+  "source": "WebSearch:Agent-D",
+  "market_position": {
+    "rank": 1,
+    "market_share_q3_2025_pct": 71,
+    "market_share_q2_2025_pct": 70.2,
+    "market_share_q1_2025_pct": 67.6,
+    "trend": "Expanding - reached record 71% in Q3 2025, up from 67.6% in Q1 2025. TSMC captures >10x the share of nearest competitor.",
+    "q2_2025_revenue_usd_bn": 30.24,
+    "q3_2025_revenue_usd_bn": 33.0,
+    "total_foundry_market_q2_2025_usd_bn": 41.7
+  },
+  "competitors": [
+    {
+      "name": "Samsung Foundry",
+      "ticker": "005930.KS",
+      "market_share_q3_2025_pct": 6.8,
+      "key_advantage": "Vertically integrated memory + foundry; early GAA adoption (3nm GAA since 2022); strong in-house demand from Samsung mobile/consumer divisions",
+      "key_weakness": "Yield issues on advanced nodes; struggling to attract external customers; declining foundry share",
+      "note": "Distant second place despite being technology competitor at advanced nodes"
+    },
+    {
+      "name": "SMIC (Semiconductor Manufacturing International Corp)",
+      "ticker": "0981.HK",
+      "market_share_q3_2025_pct": 5.1,
+      "key_advantage": "Dominant position in China domestic market; government subsidies and policy support; growing mature node capacity",
+      "key_weakness": "Restricted from EUV equipment due to US export controls; limited to ~7nm-equivalent without EUV; geopolitical risk",
+      "note": "Largest Chinese foundry; benefits from China semiconductor self-sufficiency push"
+    },
+    {
+      "name": "UMC (United Microelectronics Corp)",
+      "ticker": "UMC",
+      "market_share_q3_2025_pct": 4.2,
+      "key_advantage": "Specialty and mature node focus (28nm+); high profitability in niche markets; automotive and industrial specialization",
+      "key_weakness": "No advanced node (sub-14nm) capability; limited growth in AI/HPC wave",
+      "note": "Strategically focused on mature nodes with higher margins"
+    },
+    {
+      "name": "GlobalFoundries",
+      "ticker": "GFS",
+      "market_share_q3_2025_pct": 3.6,
+      "key_advantage": "US-based manufacturing (national security advantage); specialty processes (RF, embedded flash, FD-SOI); strong government contract potential",
+      "key_weakness": "Exited advanced node race in 2018 (no sub-12nm); limited TAM participation as AI shifts to advanced nodes",
+      "note": "Only major US-headquartered pure-play foundry"
+    },
+    {
+      "name": "HuaHong Group",
+      "ticker": "1347.HK",
+      "market_share_q3_2025_pct": 2.6,
+      "key_advantage": "China domestic demand; specialty processes (power discrete, NOR flash, BCD)",
+      "key_weakness": "Small scale; limited to mature nodes; concentrated China exposure",
+      "note": "Second-largest Chinese foundry after SMIC"
+    },
+    {
+      "name": "Intel Foundry Services (IFS)",
+      "ticker": "INTC",
+      "market_share_q3_2025_pct": null,
+      "key_advantage": "Advanced process technology (Intel 18A); US/EU manufacturing footprint; massive government subsidies (CHIPS Act); x86 ecosystem",
+      "key_weakness": "Unproven as external foundry; financial losses in foundry division; cultural shift from IDM to foundry; limited customer trust",
+      "note": "Potential long-term competitor if execution improves; Intel 18A targeting 2nm-equivalent; government-backed for geopolitical diversification"
+    }
+  ],
+  "competitive_dynamics": "TSMC's dominance is accelerating, not declining. The company's 71% market share in Q3 2025 represents a structural moat built on: (1) unmatched manufacturing yield at advanced nodes, (2) deep customer co-optimization relationships spanning decades, (3) the virtuous cycle where leading customers fund next-gen R&D through premium pricing, (4) CoWoS advanced packaging becoming a critical AI infrastructure bottleneck that only TSMC can solve at scale. Samsung's foundry business is losing ground despite similar technology ambitions, while Intel Foundry Services remains pre-revenue at meaningful scale. The AI supercycle disproportionately benefits TSMC as virtually all frontier AI chips (NVIDIA, AMD, Google TPU, Amazon Trainium) are manufactured on TSMC advanced nodes. The competitive gap is widening, not narrowing.",
+  "moat_indicators": [
+    {
+      "type": "Technology Leadership",
+      "detail": "First to volume production of 2nm GAA nanosheet transistors (Q4 2025); consistently 6-12 months ahead of Samsung on yield maturity at each node; N2P and A16 (backside power delivery) planned for H2 2026"
+    },
+    {
+      "type": "Manufacturing Excellence / Yield",
+      "detail": "Industry-leading yields at advanced nodes; decades of process optimization; able to ramp new nodes to volume faster than any competitor"
+    },
+    {
+      "type": "Customer Switching Costs",
+      "detail": "Chip designs are optimized for specific foundry processes; migration to another foundry requires 12-18 months of redesign and re-qualification; customers like Apple and NVIDIA deeply embedded in TSMC ecosystem"
+    },
+    {
+      "type": "Scale Economics",
+      "detail": "71% market share creates unmatched R&D reinvestment capacity; $30B+ annual capex funds next-gen development; competitors cannot match investment levels"
+    },
+    {
+      "type": "Advanced Packaging Monopoly",
+      "detail": "CoWoS capacity scaling from 75-80K to 120-130K wafers/month by end 2026; no competitor offers comparable advanced packaging at scale; this is the key bottleneck for AI chip production"
+    },
+    {
+      "type": "Ecosystem / Network Effects",
+      "detail": "Largest EDA tool and IP ecosystem; TSMC's Open Innovation Platform enables fastest time-to-market; design partners optimize for TSMC first"
+    }
+  ],
+  "industry_specific": {
+    "advanced_node_competition": {
+      "2nm_status": {
+        "TSMC": "Volume production started Q4 2025; 100K wafers/month target in 2026",
+        "Samsung": "3nm GAA in production but with yield challenges; 2nm GAA planned but timeline uncertain",
+        "Intel": "Intel 18A (roughly 2nm equivalent) in development; targeting external foundry customers but limited traction so far"
+      },
+      "note": "TSMC's 2nm is expected to surpass 3nm and 5nm in cumulative revenue by Q3 2026"
+    },
+    "ai_chip_foundry_dominance": {
+      "nvidia_gpu_market_share_2025_pct": "92-94% of discrete GPU market",
+      "nvidia_foundry": "TSMC (exclusive)",
+      "amd_gpu_foundry": "TSMC",
+      "google_tpu_foundry": "TSMC (via Broadcom)",
+      "amazon_trainium_foundry": "TSMC",
+      "tsmc_ai_wafer_allocation_pct": 28,
+      "implication": "Virtually all frontier AI training chips are manufactured by TSMC; this creates near-monopoly position in AI chip fabrication"
+    },
+    "geopolitical_risk": {
+      "taiwan_strait_risk": "Primary manufacturing concentrated in Taiwan; US/Japan/EU fab construction underway but at limited scale",
+      "us_fab_status": "Arizona Fab 21 (4nm) producing chips; Fab 22 (2nm/advanced) under construction",
+      "japan_fab_status": "JASM joint venture with Sony; mature nodes initially",
+      "eu_fab_status": "ESMC in Dresden, Germany; joint venture with Bosch, Infineon, NXP",
+      "diversification_assessment": "Geographic diversification is underway but overseas fabs will represent <15% of total capacity through 2027"
+    }
+  },
+  "sources": [
+    { "name": "TrendForce - Q2 2025 Foundry Revenue & Market Share", "url": "https://www.trendforce.com/presscenter/news/20250901-12691.html" },
+    { "name": "Mark LaPedus - TSMC Gains Foundry Share", "url": "https://marklapedus.substack.com/p/tsmc-gains-foundry-share-but-others" },
+    { "name": "Counterpoint Research - Global Foundry Market Share", "url": "https://counterpointresearch.com/en/insights/global-semiconductor-foundry-market-share" },
+    { "name": "Astutegroup - TSMC Record 70% Market Share", "url": "https://www.astutegroup.com/news/industrial/tsmc-record-70-market-share-as-global-foundry-revenue-hits-41-7-billion/" },
+    { "name": "Design-Reuse - Global Foundry Revenue Q2 2025", "url": "https://www.design-reuse.com/news/202529294-global-foundry-revenue-surged-to-41-7-billion-in-q2-2025-with-tsmc-capturing-a-record-70-percent-market-share/" },
+    { "name": "Averroes AI - Top 10 Semiconductor Foundries 2026", "url": "https://averroes.ai/blog/top-10-semiconductor-foundries" },
+    { "name": "Fortune Business Insights - Foundry Market Size", "url": "https://www.fortunebusinessinsights.com/semiconductor-foundry-market-110068" },
+    { "name": "Counterpoint - TSMC Strengthening Foundry Leadership", "url": "https://counterpointresearch.com/en/insights/TSMC_strengthening_foundry_leadership_amid_strong_AI_and_packaging_demand" },
+    { "name": "Carbon Credits - NVIDIA 92% GPU Market Share", "url": "https://carboncredits.com/nvidia-controls-92-of-the-gpu-market-in-2025-and-reveals-next-gen-ai-supercomputer/" },
+    { "name": "PatentPC - TSMC Samsung Intel Semiconductor Race", "url": "https://patentpc.com/blog/tsmc-samsung-and-intel-whos-leading-the-semiconductor-race-latest-market-share-data" },
+    { "name": "Tom's Hardware - TSMC 2nm Volume Production", "url": "https://www.tomshardware.com/tech-industry/semiconductors/tsmc-begins-quietly-volume-production-of-2nm-class-chips-first-gaa-transistor-for-tsmc-claims-up-to-15-percent-improvement-at-iso-power" },
+    { "name": "36Kr - CoWoS Production Capacity 2026", "url": "https://eu.36kr.com/en/p/3580962946874242" },
+    { "name": "FinancialContent - TSMC CoWoS 130K wafers", "url": "https://markets.financialcontent.com/stocks/article/tokenring-2026-2-5-tsmc-to-quadruple-advanced-packaging-capacity-reaching-130000-cowos-wafers-monthly-by-late-2026" }
+  ]
+}
