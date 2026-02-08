@@ -1,0 +1,85 @@
+ticker: PLTR
+company: Palantir Technologies Inc.
+framework_version: v25.0
+worktree: 生态科技-new
+industry: 科技平台
+complexity_coefficient: 1.4
+total_char_target: 119000
+
+phases:
+  phase_0:
+    status: completed
+    completed_at: "2026-02-08"
+    files_available: 7
+    files_total: 14
+    data_path: data/research/PLTR/
+
+  phase_0.5:
+    status: completed
+    completed_at: "2026-02-08"
+    report: reports/PLTR/PLTR_Phase0.5_v1.0_2026-02-08.md
+    chars: 14725
+    fast_gate: PASSED
+    metrics:
+      top10_dimensions: 10
+      core_questions: 7
+      module_coverage: 100%
+      kal_assumptions: 7
+      annotation_density: 15.6
+      hard_data_pct: 82.6
+      mermaid_charts: 3
+    agents_used: 5
+    searches_total: 31
+    independent_sources: 60+
+
+  phase_1:
+    status: pending
+    plan:
+      agents: 4
+      char_target: 20000
+      modules: [M01, M02, M03, M04, M14, TP01, TP06, HP01]
+      key_cq: [CQ2, CQ3, CQ4, CQ6, CQ7]
+
+  phase_2:
+    status: pending
+    plan:
+      agents: 4
+      char_target: 25000
+      modules: [M05, M06, M07, M08]
+      key_cq: [CQ1, CQ2, CQ5, CQ6, CQ7]
+
+  phase_3:
+    status: pending
+    plan:
+      agents: 5
+      char_target: 35000
+      modules: [M09, M10, M11, M12, M13, TP03, TP04, TP05, HP02, HP03]
+      key_cq: [CQ2, CQ4, CQ5, CQ7]
+
+  phase_4:
+    status: pending
+    plan:
+      agents: 3
+      char_target: 15000
+      key_cq: all
+
+  phase_5:
+    status: pending
+    plan:
+      agents: 3
+      char_target: 34000
+      key_cq: all
+
+core_questions:
+  CQ1: "72倍P/S的估值溢价能否被持续高增长证明合理?"
+  CQ2: "AIP能否将PLTR转型为企业AI操作系统平台?"
+  CQ3: "DOGE+国防重构对政府收入是净正还是净负?"
+  CQ4: "面对MSFT/AWS/GOOG/OpenAI，护城河是否足够深?"
+  CQ5: "CEO减持$2.2B+散户42-59%意味着什么风险?"
+  CQ6: "国际商业+2% vs 美国+109%，增长是否可全球复制?"
+  CQ7: "AI叙事转向或衰退冲击时，估值安全边际在哪?"
+
+hot_patches:
+  HP01: {name: "DOGE效应", phase: 1, chars: 2500}
+  HP02: {name: "CEO减持+股东结构", phase: 3, chars: 2000}
+  HP03: {name: "Agentic AI深度", phase: 3.5, chars: 2500}
