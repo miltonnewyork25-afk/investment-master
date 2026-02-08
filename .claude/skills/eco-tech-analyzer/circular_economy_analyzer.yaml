@@ -1,0 +1,370 @@
+name: circular-economy-analyzer
+description: 循环经济分析器 - 专门分析循环经济商业模式、资源循环效率、废物价值化，评估循环经济创新的投资价值
+version: "1.0"
+author: "投资研究Agent v19.12"
+category: circular_economy
+
+triggers:
+  - "循环经济分析"
+  - "废物管理评估"
+  - "资源回收利用"
+  - "循环商业模式"
+  - "材料循环价值"
+  - "零废物战略"
+
+system_message: |
+  你是循环经济分析专家，专门负责：
+  1. 分析循环经济商业模式和价值创造机制
+  2. 评估资源循环利用效率和经济效益
+  3. 量化废物减量和资源节约的财务价值
+  4. 识别循环经济创新机会和投资潜力
+  5. 建立循环度量和可持续价值评估体系
+
+  核心专长：
+  - 循环商业模式设计和优化
+  - 材料流分析和生命周期评估
+  - 废物价值化和资源回收技术
+  - 产业共生和生态工业园区
+  - 循环经济政策和标准制定
+
+analysis_framework:
+  circular_business_models:
+    resource_loops:
+      - design_for_circularity: "循环设计原则应用"
+      - product_as_service: "产品即服务(PaaS)模式"
+      - sharing_platforms: "共享平台经济模式"
+      - product_life_extension: "产品生命延长策略"
+      - material_recovery: "材料回收和再利用"
+
+    value_retention_strategies:
+      - maintain_repair: "维护修理延长使用"
+      - reuse_redistribute: "再利用和再分配"
+      - refurbish_remanufacture: "翻新和再制造"
+      - recycle_upcycle: "回收和升级循环"
+      - recover_regenerate: "回收和再生利用"
+
+  circular_value_assessment:
+    economic_value_streams:
+      - cost_savings: "资源成本节约"
+      - revenue_generation: "新收入流创造"
+      - asset_utilization: "资产利用效率提升"
+      - risk_mitigation: "供应链风险缓解"
+      - brand_premium: "循环品牌溢价"
+
+    environmental_benefits:
+      - resource_conservation: "自然资源保护"
+      - waste_reduction: "废物产生减少"
+      - emission_reduction: "温室气体减排"
+      - pollution_prevention: "污染预防和控制"
+      - biodiversity_protection: "生物多样性保护"
+
+    social_impacts:
+      - job_creation: "绿色就业创造"
+      - skill_development: "技能培养和升级"
+      - community_engagement: "社区参与和合作"
+      - health_improvement: "公共健康改善"
+      - social_equity: "社会公平和包容"
+
+circular_economy_sectors:
+  manufacturing_circularity:
+    automotive_industry:
+      - vehicle_design_for_disassembly: "汽车拆解设计"
+      - component_remanufacturing: "零部件再制造"
+      - material_recycling: "材料回收利用"
+      - sharing_mobility: "共享出行模式"
+
+    electronics_industry:
+      - modular_design: "模块化设计理念"
+      - component_harvesting: "组件回收利用"
+      - rare_earth_recovery: "稀土元素回收"
+      - e_waste_management: "电子废物管理"
+
+    textiles_fashion:
+      - sustainable_materials: "可持续材料应用"
+      - clothing_rental: "服装租赁模式"
+      - textile_recycling: "纺织品回收"
+      - slow_fashion: "慢时尚运动"
+
+  service_economy_circularity:
+    product_service_systems:
+      - equipment_leasing: "设备租赁服务"
+      - performance_economy: "绩效经济模式"
+      - maintenance_services: "维护服务体系"
+      - end_of_life_management: "生命周期末端管理"
+
+    platform_economy:
+      - peer_to_peer_sharing: "点对点共享平台"
+      - asset_optimization: "资产优化配置"
+      - collaborative_consumption: "协作消费模式"
+      - digital_enablement: "数字化赋能技术"
+
+material_flow_analysis:
+  input_output_mapping:
+    material_inputs:
+      - virgin_materials: "原生材料投入量(吨/年)"
+      - recycled_materials: "回收材料投入量(吨/年)"
+      - renewable_inputs: "可再生投入占比(%)"
+      - material_intensity: "材料强度(kg/收入$)"
+
+    waste_outputs:
+      - waste_generation: "废物产生量(吨/年)"
+      - recycling_rate: "回收利用率(%)"
+      - landfill_waste: "填埋废物量(吨/年)"
+      - energy_recovery: "能源回收量(MWh/年)"
+
+  circularity_indicators:
+    material_circularity_rate:
+      calculation: |
+        材料循环率 = (回收材料投入 + 内部循环材料) / (总材料投入) × 100%
+        价值保留指数 = Σ(保留价值策略价值权重 × 应用比例)
+        循环度 = (线性投入 - 线性输出) / 线性投入
+
+    resource_productivity:
+      - material_productivity: "材料生产率(收入$/吨材料)"
+      - energy_productivity: "能源生产率(收入$/MWh)"
+      - water_productivity: "水资源生产率(收入$/m³水)"
+      - land_productivity: "土地生产率(收入$/公顷)"
+
+    waste_intensity:
+      - waste_per_revenue: "单位收入废物量(kg废物/收入$)"
+      - recyclable_content: "可回收内容占比(%)"
+      - compostable_content: "可堆肥内容占比(%)"
+      - hazardous_waste_ratio: "危险废物比例(%)"
+
+technology_enablers:
+  digital_technologies:
+    iot_tracking:
+      - asset_monitoring: "资产实时监控"
+      - usage_optimization: "使用效率优化"
+      - predictive_maintenance: "预测性维护"
+      - end_of_life_tracking: "生命周期跟踪"
+
+    blockchain_traceability:
+      - supply_chain_transparency: "供应链透明度"
+      - material_provenance: "材料来源追溯"
+      - circular_credentials: "循环认证体系"
+      - value_chain_optimization: "价值链优化"
+
+    ai_optimization:
+      - demand_forecasting: "需求预测优化"
+      - routing_optimization: "路径优化算法"
+      - quality_sorting: "质量分拣自动化"
+      - pattern_recognition: "循环模式识别"
+
+  physical_technologies:
+    advanced_recycling:
+      - chemical_recycling: "化学回收技术"
+      - molecular_recycling: "分子回收技术"
+      - bio_recycling: "生物回收技术"
+      - mechanical_recycling: "机械回收升级"
+
+    manufacturing_innovation:
+      - additive_manufacturing: "增材制造技术"
+      - bio_based_materials: "生物基材料"
+      - smart_materials: "智能材料应用"
+      - modular_design: "模块化设计技术"
+
+business_model_innovation:
+  revenue_model_transformation:
+    traditional_to_circular:
+      ownership_to_access: "从所有权到使用权"
+      product_to_service: "从产品到服务"
+      linear_to_loop: "从线性到循环"
+      waste_to_resource: "从废物到资源"
+
+    new_revenue_streams:
+      - service_revenue: "服务收入模式"
+      - subscription_model: "订阅经济模式"
+      - performance_based: "绩效付费模式"
+      - resource_trading: "资源交易收入"
+
+  value_proposition_design:
+    customer_value_creation:
+      - cost_reduction: "客户成本降低"
+      - convenience_improvement: "便利性提升"
+      - quality_enhancement: "质量价值增强"
+      - sustainability_benefit: "可持续效益"
+
+    stakeholder_value_alignment:
+      - supplier_collaboration: "供应商协作价值"
+      - customer_engagement: "客户参与价值"
+      - community_benefit: "社区效益创造"
+      - investor_return: "投资者回报优化"
+
+financial_valuation_models:
+  circular_value_quantification:
+    cost_benefit_analysis:
+      circular_investments:
+        - r_d_investment: "循环R&D投资($M)"
+        - infrastructure_capex: "基础设施投资($M)"
+        - technology_acquisition: "技术获取成本($M)"
+        - training_development: "培训开发成本($M)"
+
+      circular_benefits:
+        - material_cost_savings: "材料成本节约($M/年)"
+        - waste_cost_reduction: "废物处理成本降低($M/年)"
+        - energy_cost_savings: "能源成本节约($M/年)"
+        - new_revenue_streams: "新收入流($M/年)"
+
+    circular_roi_calculation: |
+      循环投资回报率 = (循环效益现值 - 循环投资) / 循环投资 × 100%
+      循环净现值 = Σ[(年循环效益 - 年循环成本) / (1+贴现率)^t] - 初始投资
+      循环投资回收期 = 累计循环效益达到初始投资的时间
+
+  circular_valuation_premium:
+    market_valuation_impact:
+      esg_premium: "ESG投资溢价(10-30%)"
+      innovation_premium: "创新技术溢价(15-25%)"
+      risk_reduction_premium: "风险降低溢价(5-15%)"
+      growth_premium: "增长机会溢价(20-40%)"
+
+    competitive_advantage_value:
+      - cost_leadership: "成本领先价值"
+      - differentiation_value: "差异化价值"
+      - customer_loyalty: "客户忠诚度价值"
+      - barrier_to_entry: "进入壁垒价值"
+
+policy_regulatory_landscape:
+  circular_economy_policies:
+    eu_circular_action_plan:
+      - sustainable_product_design: "可持续产品设计要求"
+      - right_to_repair: "维修权利法规"
+      - extended_producer_responsibility: "生产者延伸责任"
+      - waste_prevention_targets: "废物预防目标"
+
+    china_circular_economy_law:
+      - resource_efficiency_standards: "资源效率标准"
+      - circular_economy_parks: "循环经济园区"
+      - green_procurement: "绿色采购政策"
+      - waste_classification_system: "废物分类制度"
+
+    us_state_initiatives:
+      - california_circular_economy: "加州循环经济倡议"
+      - deposit_return_systems: "押金返还制度"
+      - plastic_reduction_laws: "塑料减量法规"
+      - recycled_content_mandates: "回收内容强制要求"
+
+  regulatory_drivers_barriers:
+    supportive_policies:
+      - tax_incentives: "税收激励政策"
+      - green_public_procurement: "绿色公共采购"
+      - research_funding: "研发资金支持"
+      - circular_standards: "循环标准制定"
+
+    regulatory_challenges:
+      - waste_classification: "废物分类复杂性"
+      - cross_border_movement: "跨境运输限制"
+      - product_liability: "产品责任规定"
+      - safety_standards: "安全标准要求"
+
+risk_opportunity_assessment:
+  circular_economy_risks:
+    business_model_risks:
+      - customer_adoption: "客户接受度风险"
+      - technology_maturity: "技术成熟度风险"
+      - supply_chain_complexity: "供应链复杂性"
+      - regulatory_uncertainty: "监管不确定性"
+
+    operational_risks:
+      - quality_control: "质量控制挑战"
+      - logistics_complexity: "物流复杂性增加"
+      - contamination_risk: "污染风险管理"
+      - scale_economy_challenges: "规模经济挑战"
+
+    financial_risks:
+      - investment_recovery: "投资回收风险"
+      - cash_flow_timing: "现金流时间错配"
+      - market_volatility: "市场波动影响"
+      - competitive_response: "竞争对手回应"
+
+  circular_opportunities:
+    market_opportunities:
+      - growing_demand: "循环产品需求增长"
+      - policy_support: "政策支持增强"
+      - cost_advantage: "成本优势建立"
+      - brand_differentiation: "品牌差异化机会"
+
+    innovation_opportunities:
+      - technology_breakthrough: "技术突破机会"
+      - partnership_collaboration: "合作伙伴关系"
+      - new_market_creation: "新市场创造"
+      - value_chain_integration: "价值链整合"
+
+measurement_monitoring:
+  circular_kpis:
+    environmental_indicators:
+      - material_footprint: "材料足迹(吨/年)"
+      - carbon_footprint_reduction: "碳足迹减少(%)"
+      - water_footprint: "水足迹(m³/年)"
+      - land_use_efficiency: "土地利用效率"
+      - biodiversity_impact: "生物多样性影响"
+
+    economic_indicators:
+      - circular_revenue_share: "循环收入占比(%)"
+      - resource_cost_savings: "资源成本节约($M)"
+      - circular_investment_roi: "循环投资回报率(%)"
+      - job_creation: "就业创造数量"
+      - innovation_pipeline: "创新管道价值($M)"
+
+    social_indicators:
+      - stakeholder_satisfaction: "利益相关者满意度"
+      - community_engagement: "社区参与度"
+      - employee_training: "员工培训小时数"
+      - health_safety_improvement: "健康安全改善"
+      - social_impact_measurement: "社会影响测量"
+
+  reporting_frameworks:
+    circular_indicators_initiative: "循环指标倡议(CII)"
+    ellen_macarthur_foundation: "艾伦·麦克阿瑟基金会指标"
+    eu_monitoring_framework: "欧盟循环经济监测框架"
+    iso_circular_economy: "ISO循环经济标准"
+
+output_deliverables:
+  circular_economy_assessment:
+    executive_summary: "循环经济评估执行摘要"
+    business_model_analysis: "循环商业模式分析"
+    material_flow_assessment: "材料流分析"
+    financial_impact_evaluation: "财务影响评估"
+    risk_opportunity_matrix: "风险机会矩阵"
+    implementation_roadmap: "实施路线图"
+
+  circular_investment_case:
+    investment_thesis: "循环经济投资论证"
+    value_creation_model: "价值创造模型"
+    competitive_advantage: "循环竞争优势"
+    financial_projections: "财务预测模型"
+    esg_impact_assessment: "ESG影响评估"
+
+quality_standards:
+  data_collection_verification:
+    primary_data_sources:
+      - company_sustainability_reports: "公司可持续发展报告"
+      - material_flow_audits: "材料流审计"
+      - life_cycle_assessments: "生命周期评估"
+      - stakeholder_interviews: "利益相关者访谈"
+
+    secondary_data_validation:
+      - industry_benchmarks: "行业基准对比"
+      - academic_research: "学术研究验证"
+      - regulatory_databases: "监管数据库"
+      - certification_bodies: "认证机构数据"
+
+  methodology_rigor:
+    analytical_frameworks: "分析框架标准化"
+    assumption_documentation: "假设条件文档化"
+    sensitivity_analysis: "敏感性分析"
+    peer_review_process: "同行评议流程"
+
+integration_protocols:
+  with_environmental_impact: "环境影响评估整合"
+  with_technology_assessment: "技术评估循环维度"
+  with_financial_modeling: "财务模型循环调整"
+  with_esg_valuation: "ESG估值循环要素"
+  with_policy_analysis: "政策分析循环法规"
+
+success_criteria:
+  analysis_comprehensiveness: "分析全面性 >90%"
+  quantification_accuracy: "量化准确性 >85%"
+  business_model_innovation: "商业模式创新识别 >80%"
+  investment_actionability: "投资建议可执行性 >85%"
+  stakeholder_value_creation: "利益相关者价值创造 >80%"

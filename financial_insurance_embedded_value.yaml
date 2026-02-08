@@ -1,0 +1,453 @@
+name: "financial_insurance_embedded_value"
+version: "1.0"
+description: "L4级保险内含价值深度分析 - 涵盖传统EV、MCEV、精算假设审计、敏感性测试的完整价值评估体系"
+category: "insurance_specialized"
+complexity_score: 9.2
+dependencies: ["financial_digital_twin_core", "financial_regulatory_radar"]
+
+# ==============================================================================
+# 核心功能模块
+# ==============================================================================
+
+core_capabilities:
+  embedded_value_calculation:
+    description: "内含价值计算与分解分析"
+    key_components:
+      - "有效业务价值(VIF)深度分析"
+      - "调整净资产(ANW)评估"
+      - "新业务价值(VNB)质量分析"
+      - "营运回报(Operating Return)剖析"
+      - "内含价值倍数与同业对比"
+
+    calculation_framework:
+      vif_analysis:
+        methodology: |
+          VIF = Σ(未来现金流 × 贴现因子)
+          其中贴现率 = 无风险利率 + 风险边际
+        components:
+          existing_business: "现有保单组合未来利润现值"
+          mortality_margin: "死亡率假设保守边际"
+          expense_margin: "费用假设保守边际"
+          lapse_margin: "退保率假设保守边际"
+          investment_margin: "投资收益率保守边际"
+
+      anw_evaluation:
+        shareholder_equity: "股东权益账面价值调整"
+        market_adjustments: "市场价值调整(可供出售金融资产)"
+        goodwill_treatment: "商誉和无形资产处理"
+        regulatory_capital: "监管资本占用扣除"
+
+      vnb_quality_assessment:
+        margin_sustainability: "新业务边际率可持续性"
+        product_mix_impact: "产品结构对VNB的影响"
+        channel_profitability: "销售渠道盈利能力分析"
+        strain_analysis: "新业务价值拖累分析"
+
+  actuarial_assumptions_audit:
+    description: "精算假设合理性审计与偏差分析"
+    key_metrics:
+      - "死亡率/发病率假设vs实际经验"
+      - "退保率假设的前瞻性与保守性"
+      - "投资收益率假设与市场环境匹配"
+      - "费用率假设与运营效率趋势"
+      - "假设变更对EV影响的敏感性"
+
+    audit_framework:
+      mortality_morbidity:
+        experience_analysis: "历史5年实际vs假设死亡率对比"
+        trend_projection: "人口结构变化对未来死亡率影响"
+        medical_advancement: "医疗进步对重疾发病率影响"
+        conservatism_level: "假设保守程度与同业对比"
+
+      lapse_assumptions:
+        behavioral_factors: "客户退保行为驱动因子分析"
+        economic_sensitivity: "经济环境对退保率影响建模"
+        product_stickiness: "不同产品类型的客户粘性分析"
+        dynamic_lapsing: "动态退保模型vs静态假设对比"
+
+      investment_returns:
+        yield_curve_matching: "投资收益假设与收益率曲线匹配"
+        asset_allocation: "实际资产配置vs假设收益一致性"
+        credit_risk_premium: "信用风险溢价的充分性"
+        reinvestment_risk: "再投资风险对长期收益的影响"
+
+      expense_assumptions:
+        unit_cost_analysis: "单位成本假设vs实际运营数据"
+        inflation_adjustment: "费用通胀调整的合理性"
+        scale_economics: "规模效应对费用率的改善预期"
+        digital_transformation: "数字化转型对费用结构的影响"
+
+  mcev_analysis:
+    description: "市场一致性内含价值(MCEV)分析"
+    key_elements:
+      - "MCEV vs 传统EV差异分析"
+      - "时间价值(TVOG)构成分析"
+      - "金融期权和保证的价值"
+      - "风险资本成本(CoRC)评估"
+      - "确定性等价收益分析"
+
+    mcev_framework:
+      tvog_analysis:
+        financial_options: "金融期权价值(利率保证、分红选择权等)"
+        dynamic_hedging: "动态对冲策略的价值创造"
+        asymmetric_risks: "不对称风险的价值影响"
+        path_dependency: "路径依赖性产品的估值调整"
+
+      corc_assessment:
+        capital_requirements: "偿付能力II下的资本需求"
+        cost_of_capital: "风险资本的机会成本评估"
+        diversification_benefits: "多元化业务的风险分散效益"
+        capital_efficiency: "资本使用效率与同业对比"
+
+  sensitivity_stress_testing:
+    description: "敏感性分析与压力测试"
+    key_scenarios:
+      - "利率环境变化(+/-100bps)的EV影响"
+      - "股市波动对分红险和投连险的影响"
+      - "死亡率改善对寿险业务的长期影响"
+      - "退保率上升对现金流和EV的冲击"
+      - "费用通胀对盈利能力的侵蚀"
+
+    stress_scenarios:
+      interest_rate_stress:
+        rising_rates: "+200bps利率冲击对EV和偿付能力的影响"
+        falling_rates: "-100bps利率环境下投资收益压力"
+        yield_curve_flattening: "收益率曲线平坦化的期限错配风险"
+        rate_volatility: "利率波动对期权价值的影响"
+
+      equity_market_stress:
+        bear_market: "-30%股市下跌对分红险和投连险的冲击"
+        prolonged_downturn: "持续低迷股市对客户信心的影响"
+        volatility_spike: "波动率飙升对担保产品的压力"
+
+      longevity_stress:
+        mortality_improvement: "死亡率持续改善的长期影响"
+        pandemic_impact: "疫情等突发事件对死亡率的冲击"
+        medical_breakthrough: "医疗突破对重疾险业务的影响"
+
+      behavioral_stress:
+        mass_lapsing: "经济危机下大规模退保情景"
+        product_switching: "客户产品转换行为变化"
+        channel_disruption: "销售渠道中断对新业务的影响"
+
+# ==============================================================================
+# L4级深度分析方法
+# ==============================================================================
+
+advanced_methodologies:
+  dynamic_ev_modeling:
+    description: "动态内含价值建模"
+    methodology: |
+      构建基于随机模拟的动态EV模型:
+      EV(t) = VIF(t) + ANW(t) + E[VNB(t+1:∞) × P(survival)]
+
+      考虑因素:
+      - 利率环境的随机演变
+      - 死亡率的长期改善趋势
+      - 退保率的经济周期性
+      - 费用通胀与规模效应
+      - 监管环境变化
+
+    model_components:
+      economic_scenario_generator:
+        - "Hull-White利率模型"
+        - "Heston股票价格模型"
+        - "通胀指数化模型"
+        - "相关性结构建模"
+
+      actuarial_projections:
+        - "队列死亡率投影"
+        - "动态退保率建模"
+        - "费用发展趋势"
+        - "产品组合演变"
+
+    output_metrics:
+      ev_distribution: "EV的概率分布与置信区间"
+      downside_protection: "下行风险保护水平"
+      upside_potential: "上行价值创造潜力"
+      risk_adjusted_ev: "风险调整后的EV评估"
+
+  peer_benchmarking:
+    description: "同业对标分析框架"
+    methodology: |
+      构建多维度同业比较体系:
+      1. 业务模式相似性匹配
+      2. EV创造能力对比
+      3. 假设保守性对比
+      4. 价值实现能力评估
+
+    comparison_dimensions:
+      value_creation:
+        vnb_margin: "新业务价值率与同业对比"
+        ev_growth: "EV增长率稳定性与持续性"
+        operating_variances: "营运偏差控制能力"
+        capital_efficiency: "资本使用效率对比"
+
+      assumption_conservatism:
+        mortality_buffer: "死亡率假设保守边际"
+        lapse_prudence: "退保率假设审慎程度"
+        expense_realism: "费用假设现实性"
+        investment_prudence: "投资收益假设保守性"
+
+      execution_capability:
+        assumption_accuracy: "假设准确性历史表现"
+        variance_management: "实际vs预期偏差控制"
+        strategic_flexibility: "战略调整灵活性"
+        risk_management: "风险管理能力评估"
+
+  embedded_value_quality_assessment:
+    description: "内含价值质量评估"
+    methodology: |
+      评估EV的"质量"而非仅仅数量:
+      1. 可实现性评估
+      2. 可持续性分析
+      3. 透明度评价
+      4. 稳定性测试
+
+    quality_dimensions:
+      realizability:
+        cash_generation: "EV转化为实际现金流的能力"
+        capital_strain: "价值实现的资本占用需求"
+        regulatory_constraints: "监管约束对价值实现的限制"
+        market_conditions: "市场环境对价值实现的影响"
+
+      sustainability:
+        competitive_position: "竞争优势的可持续性"
+        product_relevance: "产品与市场需求的匹配度"
+        distribution_strength: "销售渠道的持续竞争力"
+        operational_efficiency: "运营效率改善空间"
+
+      transparency:
+        disclosure_quality: "EV披露的详细程度和清晰度"
+        assumption_rationale: "关键假设的合理性解释"
+        sensitivity_disclosure: "敏感性分析的完整性"
+        methodology_consistency: "计算方法的一致性"
+
+# ==============================================================================
+# 风险预警系统(Kill Switch)
+# ==============================================================================
+
+risk_warning_system:
+  tier_1_critical_alerts:
+    ev_deterioration:
+      trigger: "EV连续2季度下降且累计降幅>15%"
+      severity: "CRITICAL"
+      implication: "价值创造能力严重恶化"
+      action: "立即减仓/重新评估投资逻辑"
+
+    vnb_collapse:
+      trigger: "新业务价值率降至0以下或连续3季度下降>30%"
+      severity: "CRITICAL"
+      implication: "新业务价值创造能力丧失"
+      action: "立即减仓/避免新增投资"
+
+    assumption_shock:
+      trigger: "关键假设变更导致EV下降>20%"
+      severity: "CRITICAL"
+      implication: "精算假设存在重大缺陷"
+      action: "立即减仓/要求管理层详细说明"
+
+  tier_2_warning_alerts:
+    margin_compression:
+      trigger: "新业务价值率连续4季度下降且累计降幅>25%"
+      severity: "WARNING"
+      implication: "盈利能力持续恶化"
+      action: "降低仓位/加强监控"
+
+    operating_variance:
+      trigger: "营运偏差连续2季度为负且单季度偏差>5%"
+      severity: "WARNING"
+      implication: "实际经营偏离精算假设"
+      action: "谨慎评估/要求管理层说明"
+
+    solvency_pressure:
+      trigger: "偿付能力充足率<150%且EV增长乏力"
+      severity: "WARNING"
+      implication: "资本约束限制价值创造"
+      action: "密切监控/评估资本补充计划"
+
+  tier_3_monitoring_alerts:
+    peer_underperformance:
+      trigger: "EV增长率连续2季度低于同业中位数"
+      severity: "MONITOR"
+      implication: "相对竞争力下降"
+      action: "深入分析原因/对比同业策略"
+
+    market_headwinds:
+      trigger: "利率环境或股市表现对EV产生持续负面影响"
+      severity: "MONITOR"
+      implication: "外部环境不利于价值创造"
+      action: "评估管理层应对策略"
+
+# ==============================================================================
+# 数据需求与质量标准
+# ==============================================================================
+
+data_requirements:
+  company_disclosures:
+    - source: "内含价值报告"
+      frequency: "半年度"
+      confidence: "A级(95-99%)"
+      key_data: ["VIF", "ANW", "VNB", "营运回报", "精算假设"]
+
+    - source: "偿付能力报告"
+      frequency: "季度"
+      confidence: "A级(95-99%)"
+      key_data: ["偿付能力充足率", "风险综合评级", "压力测试结果"]
+
+    - source: "投资者关系材料"
+      frequency: "季度"
+      confidence: "B级(85-94%)"
+      key_data: ["管理层指引", "战略调整", "市场环境分析"]
+
+  market_data:
+    - source: "利率曲线(Bloomberg/Wind)"
+      frequency: "日度"
+      confidence: "A级(95-99%)"
+      key_data: ["国债收益率", "企业债利差", "利率衍生品价格"]
+
+    - source: "股票指数(主要指数)"
+      frequency: "日度"
+      confidence: "A级(95-99%)"
+      key_data: ["股指水平", "股指波动率", "股指期货价格"]
+
+  peer_data:
+    - source: "同业EV报告"
+      frequency: "半年度"
+      confidence: "B级(85-94%)"
+      key_data: ["同业EV增长", "VNB边际率", "精算假设对比"]
+
+    - source: "行业研究报告"
+      frequency: "月度"
+      confidence: "C级(70-84%)"
+      key_data: ["行业趋势", "监管动态", "竞争格局分析"]
+
+  regulatory_data:
+    - source: "监管机构公告"
+      frequency: "不定期"
+      confidence: "A级(95-99%)"
+      key_data: ["监管政策变化", "偿付能力II实施", "资本监管要求"]
+
+data_quality_standards:
+  completeness: "关键EV指标数据完整性≥98%"
+  timeliness: "EV报告发布后5个工作日内更新"
+  accuracy: "A+B级数据占比≥90%"
+  consistency: "跨报告期数据一致性校验通过率≥95%"
+
+# ==============================================================================
+# 输出规范与报告模板
+# ==============================================================================
+
+output_specifications:
+  analysis_report:
+    structure:
+      executive_summary: "EV价值判断与投资建议(300字)"
+      ev_decomposition: "内含价值分解分析(1000字)"
+      assumption_audit: "精算假设合理性审计(800字)"
+      sensitivity_analysis: "敏感性分析与压力测试(600字)"
+      peer_comparison: "同业对标分析(500字)"
+      quality_assessment: "EV质量评估(400字)"
+      risk_warning: "风险预警与Kill Switch(200字)"
+      investment_recommendation: "投资建议与仓位建议(200字)"
+
+    minimum_length: 4000
+    required_elements:
+      - "≥20个量化指标分析"
+      - "≥5个精算假设详细审计"
+      - "≥3种压力情景测试"
+      - "≥3个同业对比维度"
+      - "≥5个风险预警指标"
+      - "具体投资建议+仓位建议+时间框架"
+
+  quantitative_outputs:
+    ev_score: "内含价值质量评分(1-10分)"
+    value_sustainability: "价值可持续性评估(强/中/弱)"
+    assumption_conservatism: "精算假设保守程度(保守/适中/激进)"
+    peer_ranking: "同业EV创造能力排名(前25%/中位数/后25%)"
+    investment_rating: "基于EV的投资评级(强烈推荐/推荐/中性/回避/强烈回避)"
+
+# ==============================================================================
+# 技能调用示例
+# ==============================================================================
+
+usage_examples:
+  china_life_ev_analysis:
+    input: "分析中国人寿的内含价值创造能力"
+    process: |
+      1. 提取最新EV报告，分解VIF、ANW、VNB构成
+      2. 审计死亡率、退保率、投资收益率假设合理性
+      3. 进行+/-100bps利率冲击的敏感性测试
+      4. 对比平安、太保、新华的EV创造能力
+      5. 评估当前股价相对EV的估值水平
+    output: "L4级EV分析报告+具体投资建议"
+
+  global_insurer_comparison:
+    input: "对比分析全球领先保险公司的EV质量"
+    process: |
+      1. 标准化不同会计准则下的EV计算方法
+      2. 分析各公司精算假设的保守性差异
+      3. 评估MCEV vs 传统EV的价值差异
+      4. 压力测试各公司EV的下行风险
+      5. 提供全球保险股的投资排序
+    output: "全球保险公司EV质量排名+配置建议"
+
+# ==============================================================================
+# 持续优化机制
+# ==============================================================================
+
+continuous_improvement:
+  model_validation:
+    frequency: "半年度"
+    methodology: "EV预测vs实际表现回测，优化评估模型"
+    success_metrics: "EV增长预测准确率≥70%, 风险预警准确率≥75%"
+
+  assumption_tracking:
+    frequency: "季度"
+    methodology: "跟踪各公司精算假设变化，建立假设数据库"
+    focus_areas: ["假设变更频率", "变更幅度", "变更理由合理性"]
+
+  regulatory_adaptation:
+    frequency: "实时"
+    methodology: "监管政策变化跟踪，更新EV评估框架"
+    adaptation: "及时调整评估标准和计算方法"
+
+  peer_learning:
+    frequency: "年度"
+    methodology: "全球最佳实践学习，EV披露质量提升跟踪"
+    benchmarking: ["欧洲MCEV标准", "亚洲EV披露实践", "北美精算创新"]
+
+# ==============================================================================
+# 技能元数据
+# ==============================================================================
+
+metadata:
+  creation_date: "2026-02-05"
+  last_updated: "2026-02-05"
+  version_history:
+    - "1.0: 初始版本，完整L4级保险内含价值分析能力"
+
+  performance_metrics:
+    accuracy_target: "EV价值评估准确率≥75%"
+    coverage_target: "适用保险公司类型≥90%"
+    efficiency_target: "完整EV分析时间≤3小时"
+
+  integration_points:
+    - "financial_digital_twin_core: 精算建模与风险评估集成"
+    - "financial_regulatory_radar: 保险监管环境分析"
+    - "financial_insurance_underwriting_solvency: 偿付能力管理联动"
+
+  skill_classification:
+    domain: "insurance"
+    complexity: "L4_advanced"
+    specialization: "embedded_value_actuarial"
+    user_level: "professional_analyst"
+
+# ==============================================================================
+# 免责声明
+# ==============================================================================
+
+disclaimer: |
+  本技能模块提供的内含价值分析结果仅供参考，不构成投资建议。
+  内含价值评估涉及复杂的精算假设、市场环境、监管变化等多重因素，
+  实际投资决策应结合财务分析、业务前景、估值水平等综合考量。
+  使用者应具备相应的保险专业知识和风险承受能力。

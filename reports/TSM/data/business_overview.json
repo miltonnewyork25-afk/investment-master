@@ -1,0 +1,166 @@
+{
+  "ticker": "TSM",
+  "fetched_at": "2026-02-06",
+  "source": "WebSearch:Agent-D",
+  "revenue_summary": {
+    "full_year_2025_revenue_usd_bn": 122.42,
+    "yoy_growth_pct": 35.9
+  },
+  "segments": [
+    {
+      "name": "High Performance Computing (HPC)",
+      "pct_of_total": 57,
+      "yoy_growth_pct": 48,
+      "note": "Includes AI/GPU, CPU, FPGA chips"
+    },
+    {
+      "name": "Smartphone",
+      "pct_of_total": 30,
+      "yoy_growth_pct": null,
+      "note": "Apple is largest customer in this segment"
+    },
+    {
+      "name": "Internet of Things (IoT)",
+      "pct_of_total": 5,
+      "yoy_growth_pct": 15,
+      "note": "Includes smart home, wearables, edge devices"
+    },
+    {
+      "name": "Automotive",
+      "pct_of_total": 5,
+      "yoy_growth_pct": 34,
+      "note": "ADAS, EV power management, infotainment"
+    },
+    {
+      "name": "Digital Consumer Electronics & Others",
+      "pct_of_total": 3,
+      "yoy_growth_pct": null,
+      "note": "Remaining segments including DCE"
+    }
+  ],
+  "technology_node_breakdown": [
+    { "node": "3nm", "pct_of_revenue_2025": 24, "pct_of_revenue_2024": 18 },
+    { "node": "5nm", "pct_of_revenue_2025": 36, "pct_of_revenue_2024": 34 },
+    { "node": "7nm", "pct_of_revenue_2025": null, "pct_of_revenue_2024": null },
+    {
+      "note": "3nm + 5nm combined = ~60% of 2025 revenue"
+    }
+  ],
+  "geographic_breakdown": [
+    { "region": "North America", "pct_of_total": 75, "note": "Up from 56% at start of 2020; Q4 2025 was 74%" },
+    { "region": "Asia Pacific", "pct_of_total": 9 },
+    { "region": "China", "pct_of_total": 9 },
+    { "region": "Japan", "pct_of_total": 4 },
+    { "region": "EMEA", "pct_of_total": 3 }
+  ],
+  "supply_chain": {
+    "key_suppliers": [
+      { "name": "ASML Holding", "ticker": "ASML", "category": "Equipment", "detail": "Sole supplier of EUV lithography systems, critical for advanced nodes" },
+      { "name": "Applied Materials", "ticker": "AMAT", "category": "Equipment", "detail": "Deposition, etching, and inspection equipment" },
+      { "name": "Lam Research", "ticker": "LRCX", "category": "Equipment", "detail": "Etching, deposition, and cleaning equipment" },
+      { "name": "KLA Corporation", "ticker": "KLAC", "category": "Equipment", "detail": "Process control and yield management systems" },
+      { "name": "Shin-Etsu Chemical", "ticker": "4063.T", "category": "Materials", "detail": "Silicon wafer supplier" },
+      { "name": "SUMCO", "ticker": "3436.T", "category": "Materials", "detail": "Silicon wafer supplier" }
+    ],
+    "key_customers": [
+      { "name": "Apple", "ticker": "AAPL", "detail": "Largest single customer; iPhone/Mac/iPad SoCs on 3nm/5nm" },
+      { "name": "NVIDIA", "ticker": "NVDA", "detail": "AI/data center GPUs; largest CoWoS advanced packaging customer" },
+      { "name": "AMD", "ticker": "AMD", "detail": "CPUs and GPUs on advanced nodes" },
+      { "name": "Broadcom", "ticker": "AVGO", "detail": "Custom AI ASICs (for Google TPU, Meta); ~15% of CoWoS capacity" },
+      { "name": "Qualcomm", "ticker": "QCOM", "detail": "Mobile SoCs including Snapdragon series" },
+      { "name": "MediaTek", "ticker": "2454.TW", "detail": "Mobile and IoT SoCs" },
+      { "name": "Intel", "ticker": "INTC", "detail": "Outsources select products to TSMC" }
+    ],
+    "concentration_risk": "Top 2 customers (Apple + NVIDIA) likely account for >40% of revenue. North America geographic concentration at 75%. Heavy dependence on ASML as sole EUV lithography supplier. Over 500 suppliers globally across equipment, materials, packaging, testing.",
+    "total_suppliers": "500+"
+  },
+  "tam": {
+    "semiconductor_foundry_market": {
+      "2025_usd_bn": 175.14,
+      "2032_forecast_usd_bn": 258.27,
+      "cagr_pct": 5.7,
+      "source": "Fortune Business Insights"
+    },
+    "alternative_estimates": [
+      {
+        "2025_usd_bn": 124.96,
+        "2033_forecast_usd_bn": 215.88,
+        "cagr_pct": 8.12,
+        "source": "SkyQuest"
+      },
+      {
+        "2024_usd_bn": 148.48,
+        "2032_forecast_usd_bn": 228.74,
+        "cagr_pct": 5.55,
+        "source": "Credence Research"
+      },
+      {
+        "foundry_2_0_market_2025_usd_bn": 298,
+        "yoy_growth_pct": 11,
+        "note": "Foundry 2.0 includes foundry, non-memory IDM, OSAT, and photomask",
+        "source": "IDC"
+      }
+    ],
+    "2026_estimate_usd_bn": 100.68,
+    "2026_source": "Business Research Insights (pure foundry narrower definition)",
+    "key_growth_drivers": ["AI/ML chip demand", "5G infrastructure", "IoT proliferation", "Advanced node migration (3nm/2nm)", "Automotive electrification"]
+  },
+  "industry_specific": {
+    "technology_roadmap": {
+      "current_leading_node": "N2 (2nm) - volume production began Q4 2025",
+      "n2_details": {
+        "transistor_architecture": "Gate-All-Around (GAA) nanosheet - TSMC's first GAA node",
+        "performance_vs_n3e": "10-15% performance gain at same power",
+        "power_vs_n3e": "25-30% power reduction at same performance",
+        "transistor_density_improvement": "15% increase in mixed logic+SRAM+analog designs",
+        "initial_capacity_wafers_per_month": 40000,
+        "2026_target_capacity_wafers_per_month": 100000,
+        "2027_target_capacity_wafers_per_month": 200000,
+        "key_customers": ["Apple", "NVIDIA", "AMD", "Google"]
+      },
+      "upcoming_nodes": {
+        "N2P": "Performance-enhanced N2, planned H2 2026",
+        "A16": "Incorporates backside power delivery (BSPDN), targeting AI/HPC processors, planned H2 2026"
+      },
+      "note": "TSMC 2nm expected to surpass 3nm and 5nm in cumulative revenue by Q3 2026 due to explosive AI growth"
+    },
+    "advanced_packaging": {
+      "cowos_capacity_2024_kwpm": 35,
+      "cowos_capacity_2025_kwpm": "75-80",
+      "cowos_capacity_2026_target_kwpm": "120-130",
+      "expansion_strategy": "Optimizations in existing facilities AP8 and adjustments at AP7",
+      "capacity_allocation_2026": {
+        "nvidia_pct": ">50%",
+        "broadcom_pct": "~15%",
+        "others_pct": "~35%"
+      },
+      "outsourcing_2026": {
+        "total_wafers_annually": "240,000-270,000",
+        "amkor_wafers": "180,000-190,000",
+        "spil_wafers": "60,000-80,000"
+      },
+      "note": "CoWoS demand driven primarily by NVIDIA GPU and custom ASIC packaging needs"
+    },
+    "ai_chip_foundry_share": {
+      "tsmc_ai_wafer_capacity_pct_of_total_2025": 28,
+      "note": "TSMC dedicates over 28% of total wafer capacity to AI chip manufacturing in 2025"
+    }
+  },
+  "sources": [
+    { "name": "TSMC Investor Relations - Monthly Revenue", "url": "https://investor.tsmc.com/english/monthly-revenue/2025" },
+    { "name": "TSMC Q4 2025 Management Report", "url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf" },
+    { "name": "Motley Fool - TSMC Revenue Breakdown", "url": "https://www.fool.com/research/tsmc-revenue/" },
+    { "name": "StockAnalysis - TSM Revenue", "url": "https://stockanalysis.com/stocks/tsm/revenue/" },
+    { "name": "Investing.com - TSMC Q4 2025 Slides", "url": "https://www.investing.com/news/company-news/tsmc-q4-2025-slides-revenue-exceeds-guidance-as-advanced-nodes-drive-growth-93CH-4448734" },
+    { "name": "Fortune Business Insights - Foundry Market", "url": "https://www.fortunebusinessinsights.com/semiconductor-foundry-market-110068" },
+    { "name": "SkyQuest - Foundry Market Analysis", "url": "https://www.skyquestt.com/report/semiconductor-foundry-market" },
+    { "name": "IDC - Foundry 2.0 Market", "url": "https://my.idc.com/getdoc.jsp?containerId=prAP53273625" },
+    { "name": "Tom's Hardware - TSMC 2nm Volume Production", "url": "https://www.tomshardware.com/tech-industry/semiconductors/tsmc-begins-quietly-volume-production-of-2nm-class-chips-first-gaa-transistor-for-tsmc-claims-up-to-15-percent-improvement-at-iso-power" },
+    { "name": "WCCFTech - TSMC 2nm Revenue Forecast", "url": "https://wccftech.com/tsmc-2nm-process-surpass-3nm-and-5nm-revenue-by-q3-2026-due-to-ai-growth/" },
+    { "name": "TrendForce - CoWoS Capacity 2025", "url": "https://www.trendforce.com/news/2025/01/02/news-tsmc-set-to-expand-cowos-capacity-to-record-75000-wafers-in-2025-doubling-2024-output/" },
+    { "name": "FinancialContent - TSMC CoWoS 130K Target", "url": "https://markets.financialcontent.com/stocks/article/tokenring-2026-2-5-tsmc-to-quadruple-advanced-packaging-capacity-reaching-130000-cowos-wafers-monthly-by-late-2026" },
+    { "name": "TSMC Supply Chain Infographic", "url": "https://www.tsmc.com/english/aboutTSMC/dc_infographics_supplychain" },
+    { "name": "moomoo - TSMC Suppliers Chart", "url": "https://www.moomoo.com/community/feed/tech-giant-in-one-chart-who-are-the-suppliers-of-112088265392133" },
+    { "name": "Carbon Credits - NVIDIA 92% GPU Market", "url": "https://carboncredits.com/nvidia-controls-92-of-the-gpu-market-in-2025-and-reveals-next-gen-ai-supercomputer/" }
+  ]
+}

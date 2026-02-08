@@ -1,6 +1,6 @@
 # 半导体行业适配模块
 
-**行业复杂度系数**: 1.3
+**行业复杂度系数**: 2.0
 **适用公司**: TSM, MU, LRCX, AMAT, ASML, NVDA, AMD, INTC, SK Hynix, Samsung
 
 ## 适配模块（插入通用框架）

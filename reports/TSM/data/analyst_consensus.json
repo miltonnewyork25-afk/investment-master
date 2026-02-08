@@ -1,0 +1,167 @@
+{
+  "ticker": "TSM",
+  "fetched_at": "2026-02-06",
+  "source": "WebSearch:Agent-A",
+  "current_price": {
+    "close_2026_02_05": 330.73,
+    "after_hours_2026_02_05": 323.35,
+    "open_2026_02_06": 322.78
+  },
+  "consensus": {
+    "rating": "Strong Buy",
+    "buy_count": 12,
+    "hold_count": 1,
+    "sell_count": 0,
+    "total_analysts": 13,
+    "note": "TipRanks (8 analysts, last 3 months): 7 Buy, 1 Hold, 0 Sell. Broader set (MarketBeat/StockAnalysis): 3 Strong Buy + 9 Buy = 12 Buy, 1 Hold, 0 Sell",
+    "avg_price_target": 396.83,
+    "high_target": 450.00,
+    "low_target": 330.00,
+    "broader_high_target": 520.00,
+    "broader_low_target": 287.60,
+    "broader_avg_target": 419.81,
+    "broader_analyst_count": 17,
+    "upside_from_close_pct": 20.0
+  },
+  "earnings_estimates": {
+    "current_quarter": {
+      "quarter": "Q1 2026",
+      "eps_est": 3.28,
+      "eps_est_alt": 3.23,
+      "rev_est_billion_usd": 35.26,
+      "company_rev_guidance_low_billion_usd": 34.6,
+      "company_rev_guidance_high_billion_usd": 35.8,
+      "company_gm_guidance_low_pct": 63.0,
+      "company_gm_guidance_high_pct": 65.0,
+      "company_om_guidance_low_pct": 54.0,
+      "company_om_guidance_high_pct": 56.0,
+      "yoy_rev_growth_est_pct": 38.0,
+      "qoq_rev_growth_est_pct": 4.0,
+      "earnings_date": "2026-04-16"
+    },
+    "next_quarter": {
+      "quarter": "Q2 2026",
+      "eps_est": null,
+      "rev_est_billion_usd": null,
+      "note": "Specific Q2 2026 quarterly estimates not yet widely published in search results"
+    },
+    "full_year_2026": {
+      "eps_est": 12.61,
+      "eps_est_prior": 12.13,
+      "rev_est_billion_usd": 128.41,
+      "rev_growth_est_pct": 30.0,
+      "note": "EPS revised upward from $12.13 to $12.61"
+    }
+  },
+  "earnings_surprise_history": [
+    {
+      "quarter": "Q4 2025",
+      "reported_date": "2026-01-15",
+      "eps_actual": 3.14,
+      "eps_estimate": 2.79,
+      "surprise_pct": 12.54,
+      "revenue_ntd_billion": 1046.09,
+      "note": "NT$19.50 EPS (TWD), up 35% YoY"
+    },
+    {
+      "quarter": "Q3 2025",
+      "reported_date": "2025-10-16",
+      "eps_actual": 2.92,
+      "eps_estimate": 2.60,
+      "surprise_pct": 12.3,
+      "note": "Strongest beat in two years, EPS up 50.5% YoY"
+    },
+    {
+      "quarter": "Q2 2025",
+      "reported_date": "2025-07",
+      "eps_actual": 2.24,
+      "eps_estimate": 2.16,
+      "surprise_pct": 3.70,
+      "note": "Source: Zacks"
+    },
+    {
+      "quarter": "Q3 2024",
+      "reported_date": "2024-10",
+      "eps_actual": 1.94,
+      "eps_estimate": 1.74,
+      "surprise_pct": 11.49,
+      "note": "Source: Zacks"
+    }
+  ],
+  "earnings_surprise_summary": {
+    "trailing_4q_avg_beat_pct": 7.6,
+    "beat_count_last_116_reports": 73,
+    "miss_count_last_116_reports": 9,
+    "meet_count_last_116_reports": 34
+  },
+  "recent_changes": [
+    {
+      "date": "2026-01-16",
+      "analyst": "Barclays",
+      "action": "Price Target Raised",
+      "rating": "Overweight",
+      "old_target": 380.00,
+      "new_target": 450.00
+    },
+    {
+      "date": "2026-01-15",
+      "analyst": "Needham",
+      "action": "Price Target Raised",
+      "rating": "Buy",
+      "old_target": 360.00,
+      "new_target": 410.00
+    },
+    {
+      "date": "2025-12-08",
+      "analyst": "Bernstein",
+      "action": "Price Target Raised",
+      "rating": "Outperform",
+      "old_target": 290.00,
+      "new_target": 330.00
+    },
+    {
+      "date": "2025-10-10",
+      "analyst": "Susquehanna",
+      "action": "Price Target Set",
+      "rating": null,
+      "old_target": null,
+      "new_target": 400.00
+    }
+  ],
+  "bull_bear_summary": {
+    "bull_case": "AI dominance with HPC segment now 55% of revenue (up from 34% 18 months ago). Sub-7nm monopoly gives unparalleled pricing power with major customers (Apple, Nvidia) pre-committing years of capacity at premiums. Revenue CAGR ~25% over next 5 years. AI accelerator revenue CAGR mid-to-high 50% through 2029. 2nm technology rollout as key catalyst. Structural shift from cyclical manufacturer to utility-like AI computation powerhouse. CapEx ramping to $52-56B in 2026 (from <$41B in 2025) to meet demand.",
+    "bear_case": "Stock priced for perfect execution with record margins, elevated P/E multiples, and extreme bullish sentiment. Bear scenario: revenue growth turns negative, margins compress to ~52%, stock trades $150-200 range. Geopolitical risk (Taiwan). Cyclical slowdown risk if AI spending decelerates. One analyst (Seeking Alpha) rates Sell as contrarian view on valuation stretch.",
+    "bull_target": 450,
+    "bear_target": 200
+  },
+  "industry_specific": {
+    "ai_data_center_revenue_forecast": "TSMC expects AI revenue to grow at mid-to-high 50% CAGR through 2029. HPC segment now 55% of total revenue. Context: Nvidia estimates AI data center CapEx could grow 40% CAGR over next 5 years to $3-4T by 2030. McKinsey estimates ~$6.7T global data center expenditure over next 5 years.",
+    "capex_2026_guidance_billion_usd": "52-56",
+    "capex_2025_actual_billion_usd": "<41",
+    "full_year_2025_revenue_growth_pct": 35.9,
+    "full_year_2025_revenue_billion_usd": 122,
+    "full_year_2025_eps_ntd": 66.25,
+    "full_year_2025_eps_yoy_growth_pct": 46.4,
+    "technology_node_mix": "3nm and 5nm orders surging as global fabs expand"
+  },
+  "sources": [
+    "https://finance.yahoo.com/quote/TSM/analysis/",
+    "https://www.tipranks.com/stocks/tsm/forecast",
+    "https://stockanalysis.com/stocks/tsm/forecast/",
+    "https://stockanalysis.com/stocks/tsm/ratings/",
+    "https://www.marketbeat.com/stocks/NYSE/TSM/forecast/",
+    "https://www.benzinga.com/quote/TSM/analyst-ratings",
+    "https://www.nasdaq.com/market-activity/stocks/tsm/earnings",
+    "https://www.zacks.com/stock/research/TSM/earnings-calendar",
+    "https://www.zacks.com/stock/quote/TSM/detailed-earning-estimates",
+    "https://www.nasdaq.com/articles/ai-driven-demand-fuels-tsms-growth-will-it-meet-2026-revenue-target",
+    "https://www.nasdaq.com/articles/tsmc-foundry-revenue-poised-explosive-growth-ai-data-center-boom",
+    "https://www.gurufocus.com/news/4115615/barclays-raises-price-target-for-tsm-to-450-while-maintaining-overweight-rating-tsm-stock-news",
+    "https://stocktwits.com/news-articles/markets/equity/tsmc-draws-analyst-price-target-updates-after-blowout-q4-results-retail-says-ai-bubble-narrative-shattered/cmU1rjKR4Jf",
+    "https://seekingalpha.com/article/4862330-tsmc-sell-the-perfect-quarter-a-contrarian-view-rating-downgrade",
+    "https://www.trendforce.com/news/2026/01/15/news-tsmc-2025-q4-net-profit-soars-35-yoy-to-record-nt505-7b-eps-hits-nt19-5/",
+    "https://investor.tsmc.com/english/quarterly-results/2025/q4",
+    "https://public.com/stocks/tsm/forecast-price-target",
+    "https://www.fool.com/investing/2026/02/01/artificial-intelligence-ai-growth-stock-winner-tsm/"
+  ]
+}

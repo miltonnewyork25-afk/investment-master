@@ -1,0 +1,541 @@
+{
+  "meta": {
+    "research_date": "2026-02-06",
+    "last_updated": "2026-02-06",
+    "data_confidence": "High - based on 10 WebSearch queries + 7 WebFetch deep dives",
+    "sources_count": 40,
+    "disclaimer": "Research compiled from public sources. Not investment advice."
+  },
+
+  "case_timeline": {
+    "us_search_monopoly_case": {
+      "case_name": "United States v. Google LLC (Case 1:20-cv-03010-APM)",
+      "court": "U.S. District Court for the District of Columbia",
+      "judge": "Judge Amit P. Mehta",
+      "key_dates": [
+        {
+          "date": "2020-10-20",
+          "event": "DOJ files antitrust lawsuit against Google",
+          "status": "completed"
+        },
+        {
+          "date": "2023-09-12",
+          "event": "Trial begins (liability phase)",
+          "status": "completed"
+        },
+        {
+          "date": "2024-08-05",
+          "event": "Judge Mehta rules Google unlawfully maintained monopoly in general search services and search text advertising through exclusionary distribution agreements",
+          "status": "completed",
+          "significance": "Landmark liability finding - first major tech monopoly ruling since Microsoft (2001)"
+        },
+        {
+          "date": "2025-04-21",
+          "event": "Remedies hearing begins (evidentiary phase)",
+          "status": "completed"
+        },
+        {
+          "date": "2025-05-xx",
+          "event": "Remedies hearing concludes",
+          "status": "completed"
+        },
+        {
+          "date": "2025-09-02",
+          "event": "Judge Mehta issues remedies decision - rejects Chrome/Android divestiture, imposes behavioral remedies",
+          "status": "completed",
+          "significance": "Market relief rally - GOOGL rose 8%+ the next day"
+        },
+        {
+          "date": "2025-12-05",
+          "event": "Judge Mehta finalizes remedies order",
+          "status": "completed"
+        },
+        {
+          "date": "2026-01-16",
+          "event": "Google files appeal against behavioral remedies imposed",
+          "status": "in_progress"
+        },
+        {
+          "date": "2026-02-03",
+          "event": "DOJ and 35 states file cross-appeal seeking tougher remedies including Chrome divestiture",
+          "status": "in_progress"
+        },
+        {
+          "date": "2026-H2",
+          "event": "D.C. Circuit Court of Appeals expected to hear oral arguments",
+          "status": "upcoming"
+        },
+        {
+          "date": "2027-H1_to_H2",
+          "event": "Appellate decision expected (12-18 months from filing)",
+          "status": "upcoming"
+        },
+        {
+          "date": "2028_or_later",
+          "event": "Potential Supreme Court review if either party petitions for certiorari",
+          "status": "speculative"
+        }
+      ]
+    },
+
+    "us_ad_tech_case": {
+      "case_name": "United States v. Google LLC (Ad Tech)",
+      "court": "U.S. District Court for the Eastern District of Virginia",
+      "judge": "Judge Leonie Brinkema",
+      "key_dates": [
+        {
+          "date": "2023-01-24",
+          "event": "DOJ files second antitrust suit targeting Google's ad tech monopoly",
+          "status": "completed"
+        },
+        {
+          "date": "2024-09-09",
+          "event": "Ad tech trial begins",
+          "status": "completed"
+        },
+        {
+          "date": "2025-04-xx",
+          "event": "Judge Brinkema rules Google unlawfully monopolized publisher ad server and ad exchange markets",
+          "status": "completed"
+        },
+        {
+          "date": "2025-10-xx",
+          "event": "Remedies hearing held",
+          "status": "completed"
+        },
+        {
+          "date": "2025-11-17",
+          "event": "Closing arguments on remedies",
+          "status": "completed"
+        },
+        {
+          "date": "2026-H1",
+          "event": "Judge Brinkema's remedies ruling expected",
+          "status": "upcoming",
+          "significance": "Could order divestiture of AdX exchange - would be first forced tech platform breakup"
+        }
+      ],
+      "doj_remedy_proposal": {
+        "primary": "Divest Google's ad exchange (AdX)",
+        "secondary": "Open-source ad server auction code; divest ad server (Google Ad Manager/DFP) if necessary",
+        "implementation_timeline": "Up to 14 years for full compliance",
+        "additional": "Expand AdX access to all inventory types, route all bids through transparent channels like Prebid"
+      },
+      "google_remedy_proposal": {
+        "primary": "Behavioral remedies - lighter-touch constraints",
+        "details": "Publisher contract modifications, interoperability with rival ad servers",
+        "implementation_timeline": "1 year"
+      },
+      "judge_signals": {
+        "skepticism_on_divestiture": "Judge questioned 'commercial reality' of structural remedies; asked who would buy AdX",
+        "skepticism_on_behavioral": "Called Google's behavioral proposals 'too shallow'",
+        "google_internal_docs": "Google's own documents showed company found 'a breakup was technically feasible'",
+        "likely_outcome_expert_view": "Hard conduct remedies (mandatory interoperability, bans on preferential treatment, independent monitoring) rather than immediate divestiture, with structural divestiture as enforcement leverage"
+      }
+    }
+  },
+
+  "remedy_proposals": {
+    "search_case_remedies_imposed": {
+      "behavioral_remedies_ordered": [
+        {
+          "remedy": "Ban on exclusive distribution agreements",
+          "details": "Google barred from entering or maintaining exclusive distribution agreements for Google Search, Chrome, Google Assistant, and Gemini",
+          "impact": "Google can still pay for default placement but cannot require exclusivity"
+        },
+        {
+          "remedy": "Annual contract rebidding",
+          "details": "Revenue share agreements limited to 12-month terms; competitors get annual opportunity to bid for default status",
+          "impact": "Opens door for Bing, DuckDuckGo, or AI search competitors to bid annually"
+        },
+        {
+          "remedy": "Data sharing requirement",
+          "details": "Google must share portions of search index and aggregated user-interaction data with qualified competitors",
+          "impact": "Benefits smaller search players; limited value to major AI competitors who have own data"
+        },
+        {
+          "remedy": "No exclusivity-linked bonuses",
+          "details": "Google cannot offer higher revenue-share tiers or bonuses in exchange for exclusivity or condition revenue share on keeping any Google service as default for more than one year",
+          "impact": "Reduces Google's ability to lock in partners"
+        },
+        {
+          "remedy": "Technical oversight committee",
+          "details": "Independent committee monitors compliance for 6 years",
+          "impact": "Ongoing enforcement mechanism"
+        }
+      ],
+      "structural_remedies_rejected": [
+        {
+          "proposal": "Chrome browser divestiture",
+          "reason_rejected": "Judge found 'Google's market dominance is not sufficiently attributable to its illegal conduct to justify divestiture'; Chrome accounts for 20% of U.S. searches",
+          "doj_argument": "Chrome is critical search access point; divestiture would open competition",
+          "status": "DOJ appealing this rejection (Feb 2026)"
+        },
+        {
+          "proposal": "Android operating system divestiture",
+          "reason_rejected": "Disproportionate and not directly tied to exclusionary agreements identified in liability ruling",
+          "status": "DOJ appealing"
+        },
+        {
+          "proposal": "Ban on all search distribution payments",
+          "reason_rejected": "Court reasoned banning such payments would harm distribution partners (particularly smaller firms) and consumers",
+          "status": "DOJ appealing"
+        }
+      ]
+    },
+
+    "appeal_positions": {
+      "doj_cross_appeal": {
+        "filed": "2026-02-03",
+        "parties": "DOJ + 35 state attorneys general",
+        "key_arguments": [
+          "Remedies too weak to restore competition",
+          "Chrome divestiture necessary to open critical search access point",
+          "Continued default payments preserve anticompetitive mechanism",
+          "Behavioral remedies historically ineffective at restoring competition"
+        ]
+      },
+      "google_appeal": {
+        "filed": "2026-01-16",
+        "key_arguments": [
+          "Behavioral remedies represent unwarranted government intervention",
+          "Data sharing requirements overly broad",
+          "Annual rebidding requirement disrupts business relationships",
+          "AI competition already disrupting search market"
+        ]
+      },
+      "competitor_view": {
+        "duckduckgo": "Remedies 'don't go far enough'; urges Congressional intervention",
+        "yelp": "Remedies 'unlikely to restore competition'; allowing continued default payments preserves anticompetitive mechanisms"
+      }
+    }
+  },
+
+  "financial_impact": {
+    "chrome_valuation": {
+      "raymond_james_estimate": "$50 billion",
+      "basis": "2.25 billion users globally + revenue share agreements with device manufacturers",
+      "search_revenue_contribution": "Chrome drives approximately 35% of Google's search revenue",
+      "us_search_share": "Chrome accounts for ~20% of all U.S. searches"
+    },
+    "stock_price_scenarios": {
+      "chrome_divestiture_impact": {
+        "barclays_warning": "15% to 25% stock decline (characterized as 'black swan' risk)",
+        "mild_scenario": "~5% decline if Chrome retains significant market share post-divestiture",
+        "moderate_scenario": "~15% decline if Chrome market share moderately reduced",
+        "severe_scenario": "~25% decline if significant Chrome market share loss",
+        "current_status": "Chrome divestiture rejected by trial court; under appeal"
+      },
+      "post_ruling_reaction": {
+        "date": "2025-09-03",
+        "movement": "GOOGL rose 8%+ after Judge Mehta rejected Chrome divestiture",
+        "interpretation": "Market priced in relief that structural breakup avoided"
+      }
+    },
+    "distribution_agreement_costs": {
+      "total_annual_cost": "$20+ billion annually",
+      "apple_deal": {
+        "estimated_annual_value": "$20 billion (2024 estimate; grew from ~$15B in 2021)",
+        "apple_services_revenue_share": "~20.8% of Apple's Services revenue (2024)",
+        "jpmorgan_worst_case_apple_impact": "$12.5 billion revenue hit to Apple if deal fundamentally altered",
+        "current_status": "Google may continue paying Apple for default placement but cannot require exclusivity; limited to 12-month terms"
+      }
+    },
+    "ad_tech_case_financial_exposure": {
+      "adx_revenue_at_risk": "Google Ad Manager (DFP + AdX) processes majority of programmatic display ad revenue",
+      "dfp_market_share": "~90% of publisher ad server market",
+      "potential_divestiture_value": "Not publicly estimated; AdX is 'the beating heart of how Google monetizes the web'",
+      "eu_fine_reference": "EUR 2.95 billion EU fine for same ad tech practices (September 2025)"
+    },
+    "cumulative_global_fines": {
+      "eu_ad_tech_fine_2025": "EUR 2.95 billion",
+      "south_korea_android_fine": "KRW 224.9 billion (~$177 million)",
+      "india_play_store_fine": "INR 936.44 crore (~$113 million, reduced to INR 216.69 crore on appeal)",
+      "eu_prior_fines": "EUR 8.25 billion (cumulative from Shopping, Android, AdSense cases 2017-2019)",
+      "total_global_fines_estimate": "~$12+ billion cumulative"
+    }
+  },
+
+  "expert_opinions": {
+    "on_search_case_remedies": [
+      {
+        "source": "AAG Abigail Slater (DOJ)",
+        "view": "Ruling 'restores competition to the search engine market' while reserving rights to seek additional relief on appeal",
+        "confidence_tag": "[硬数据: DOJ official statement, 2025-09]"
+      },
+      {
+        "source": "Gabriel Weinberg (DuckDuckGo CEO)",
+        "view": "Remedies 'don't go far enough'; urges Congress to intervene",
+        "confidence_tag": "[硬数据: DuckDuckGo statement, 2025-09]"
+      },
+      {
+        "source": "Neil Chilson (Abundance Institute)",
+        "view": "Data remedies offer limited value to major AI competitors but could benefit smaller players",
+        "confidence_tag": "[硬数据: Expert commentary, 2025-09]"
+      },
+      {
+        "source": "Brookings Institution",
+        "view": "Google decision demonstrates need to overhaul competition policy for AI era; current remedies may not address AI-driven market dynamics",
+        "confidence_tag": "[硬数据: Brookings analysis, 2025]"
+      },
+      {
+        "source": "TechPolicy.Press analysis",
+        "view": "Without structural remedies, 'antitrust enforcement may achieve legal victories without meaningful market restructuring'",
+        "confidence_tag": "[硬数据: TechPolicy.Press, 2026-01]"
+      },
+      {
+        "source": "Legal consensus (multiple sources)",
+        "view": "Appellate court unlikely to reverse trial court's factual findings on liability; remedy scope is the key battleground",
+        "confidence_tag": "[合理推断: based on D.C. Circuit appellate standards]"
+      }
+    ],
+    "on_ad_tech_case": [
+      {
+        "source": "Industry analysts (compiled)",
+        "view": "Judge Brinkema likely to impose 'hard conduct remedies' (mandatory interoperability, preferential treatment bans, independent monitoring) rather than immediate divestiture",
+        "confidence_tag": "[合理推断: based on judicial signals during hearings]"
+      },
+      {
+        "source": "Capitol Forum (2026 predictions)",
+        "view": "Brinkema will order some form of structural separation in Google's ad tech monopoly",
+        "confidence_tag": "[主观判断: Capitol Forum prediction]"
+      }
+    ],
+    "on_trump_administration_approach": [
+      {
+        "source": "TechPolicy.Press",
+        "view": "Trump administration shows 'surprising continuity' in defending monopolization cases from prior administrations; Gail Slater maintained Chrome divestiture as key ask",
+        "confidence_tag": "[硬数据: observed DOJ actions, 2025-2026]"
+      },
+      {
+        "source": "Industry consensus",
+        "view": "Trump DOJ favors settlements over novel theories; more transparent process but maintains enforcement on existing cases",
+        "confidence_tag": "[合理推断: based on DOJ statements and actions]"
+      },
+      {
+        "source": "DOJ Gail Slater (AAG Antitrust)",
+        "view": "Dropped mandatory divestiture of Google's AI investments; maintained Chrome divestiture as key remedy sought",
+        "confidence_tag": "[硬数据: DOJ court filings, 2025]"
+      }
+    ],
+    "on_likely_final_outcome": {
+      "base_case": {
+        "probability": "55-60%",
+        "outcome": "Behavioral remedies largely upheld on appeal with minor modifications; no Chrome divestiture; ad tech case results in hard conduct remedies",
+        "financial_impact": "Modest - Google loses exclusivity premium but retains distribution payments and Chrome; annual cost increase of $2-5B from competitive bidding",
+        "confidence_tag": "[主观判断: synthesized from expert analysis and judicial signals]"
+      },
+      "bull_case_for_google": {
+        "probability": "20-25%",
+        "outcome": "Appeals court narrows behavioral remedies further; ad tech case settles with consent decree",
+        "financial_impact": "Minimal - Google's business model largely preserved",
+        "confidence_tag": "[主观判断: possible if appellate court is sympathetic to AI competition argument]"
+      },
+      "bear_case_for_google": {
+        "probability": "15-20%",
+        "outcome": "Appeals court orders Chrome divestiture or substantially tougher remedies; ad tech divestiture ordered",
+        "financial_impact": "Severe - 15-25% stock decline; $50B+ in asset value at risk; fundamental restructuring of search distribution",
+        "confidence_tag": "[主观判断: low probability given trial court rejection and judicial skepticism]"
+      }
+    }
+  },
+
+  "international_cases": {
+    "european_union": {
+      "dma_compliance": {
+        "status": "Active investigation",
+        "key_actions": [
+          {
+            "date": "2025-03-19",
+            "action": "Commission preliminary finding that Google Search self-preferences Alphabet's vertical search services (Flights, Hotels, Shopping) over rivals",
+            "status": "ongoing"
+          },
+          {
+            "date": "2025-ongoing",
+            "action": "Google Play DMA investigation - Google prevents app developers from directing consumers to better offers outside Google Play",
+            "status": "ongoing"
+          },
+          {
+            "date": "2025-ongoing",
+            "action": "DMA non-compliance probe targeting Google's spam policy impact on news publishers",
+            "status": "ongoing"
+          }
+        ],
+        "potential_fines": "Up to 10% of global turnover for DMA violations (~$30B based on 2024 revenue)",
+        "dma_revision": "Commission report on first revision expected May 2026; may expand scope to AI and cloud services"
+      },
+      "ad_tech_case": {
+        "date": "2025-09-05",
+        "decision": "EUR 2.95 billion fine for self-preferencing in ad tech (Case AT.40670)",
+        "structural_remedy": "Commission contemplating structural remedies including potential divestiture; Google given 60 days to propose compliance measures",
+        "significance": "Second-largest EU antitrust penalty ever; only third instance of divestiture contemplation in EU antitrust history",
+        "status": "Google expected to appeal to EU General Court"
+      },
+      "prior_fines": {
+        "google_shopping_2017": "EUR 2.42 billion",
+        "google_android_2018": "EUR 4.34 billion",
+        "google_adsense_2019": "EUR 1.49 billion",
+        "total_prior": "EUR 8.25 billion"
+      }
+    },
+    "japan": {
+      "jftc_cease_and_desist": {
+        "date": "2025-04-15",
+        "action": "Japan Fair Trade Commission issued cease-and-desist order - first ever against global tech giant",
+        "violation": "Google imposed binding conditions on Android smartphone manufacturers since at least July 2020, requiring Google Play installation as package with Chrome",
+        "status": "Order issued"
+      },
+      "ai_search_investigation": {
+        "status": "Planned",
+        "details": "JFTC to launch fact-finding investigation into AI search services targeting Google and Microsoft",
+        "timeline": "2025-2026"
+      }
+    },
+    "south_korea": {
+      "android_fine": {
+        "amount": "KRW 224.9 billion (~$177 million)",
+        "violation": "Anti-fragmentation agreements (AFAs) preventing Samsung, LG from customizing Android OS",
+        "status": "Google suing KFTC to reverse fine",
+        "regulatory_trend": "Korea planning sharp increases in antitrust fines; antitrust chief signals tougher rules for digital platforms"
+      }
+    },
+    "india": {
+      "play_store_case": {
+        "original_fine": "INR 936.44 crore (~$113 million) by CCI",
+        "reduced_fine": "INR 216.69 crore on appeal to NCLAT (March 2025)",
+        "violation": "Mandating Google Play Billing System for app purchases/in-app transactions while exempting own apps",
+        "current_status": "Supreme Court admitted appeals from Google, CCI, and ADIF (August 2025); case ongoing",
+        "additional": "NCLAT reinstated CCI directives on data disclosure and billing data use (May 2025)"
+      },
+      "android_tv_settlement": {
+        "date": "2025-04-21",
+        "amount": "INR 20.24 crore settlement",
+        "status": "Settled - ended CCI probe into Android TV practices"
+      }
+    },
+    "china": {
+      "antitrust_probe": {
+        "date": "2025-02-04",
+        "context": "Launched amid US-China trade tensions; widely seen as retaliatory measure",
+        "practical_impact": "Minimal - Google has limited China operations",
+        "significance": "Geopolitical signaling rather than direct financial threat"
+      }
+    }
+  },
+
+  "apple_deal_risk": {
+    "deal_overview": {
+      "annual_value": "$20 billion (2024 estimate)",
+      "growth_trajectory": "Grew from ~$15B (2021) to ~$20B (2024)",
+      "apple_dependency": "~20.8% of Apple's Services revenue (2024)",
+      "mechanism": "Google pays Apple for default search engine placement on Safari across all Apple devices"
+    },
+    "current_ruling_impact": {
+      "payments_allowed": true,
+      "exclusivity_banned": true,
+      "annual_rebidding_required": true,
+      "details": "Google may continue paying Apple for default placement; cannot require exclusivity; limited to 12-month terms; competitors get annual bid opportunity",
+      "net_assessment": "Deal largely preserved in current form but with reduced lock-in; Apple can promote competing search engines and AI assistants alongside Google"
+    },
+    "appeal_risk_scenarios": {
+      "if_doj_wins_appeal": {
+        "scenario": "Chrome divestiture ordered + stricter payment restrictions",
+        "apple_impact": "Moderate - deal may continue but Apple gains leverage if Google has weaker distribution; Apple could extract higher payments from competing bidders",
+        "google_impact": "Severe - loss of Chrome + weakened distribution moat; would need to pay more for remaining distribution channels"
+      },
+      "if_current_ruling_stands": {
+        "scenario": "Behavioral remedies maintained as-is",
+        "apple_impact": "Minimal - deal continues with annual rebidding; Apple likely continues with Google as highest bidder",
+        "google_impact": "Moderate - annual rebidding creates pricing pressure; potential cost increase of $2-5B as competitors bid"
+      },
+      "if_google_wins_appeal": {
+        "scenario": "Behavioral remedies narrowed or overturned",
+        "apple_impact": "Positive - stronger position to negotiate higher payments with Google",
+        "google_impact": "Positive - can restore longer-term exclusive-like arrangements"
+      }
+    },
+    "alternative_bidders": {
+      "microsoft_bing": "Most likely alternative bidder; has financial resources but lower search quality perception",
+      "ai_search_startups": "Perplexity, OpenAI SearchGPT could bid but lack revenue base to match Google's payments",
+      "apple_own_search": "Apple has been building internal search capabilities; could reduce dependency on Google over time"
+    },
+    "key_insight": "The annual rebidding requirement is the most significant change for the Apple deal. While Google will almost certainly remain the highest bidder in the near term, the competitive dynamics could shift if AI-powered search alternatives gain traction and can monetize search traffic comparably."
+  },
+
+  "investment_implications": {
+    "risk_severity": "HIGH - but manageable in base case",
+    "key_risk_factors": [
+      {
+        "risk": "Chrome divestiture on appeal",
+        "probability": "15-20%",
+        "impact_if_realized": "15-25% stock decline; $50B+ asset value at risk",
+        "timeline": "Decision expected 2027"
+      },
+      {
+        "risk": "Ad tech structural divestiture",
+        "probability": "25-35%",
+        "impact_if_realized": "Moderate - ad tech is smaller portion of total revenue; could actually unlock value if divested unit is profitable standalone",
+        "timeline": "Ruling expected H1 2026"
+      },
+      {
+        "risk": "Distribution cost inflation from annual rebidding",
+        "probability": "80-90% (already ordered)",
+        "impact_if_realized": "Modest - $2-5B annual cost increase; manageable given Google's $300B+ revenue base",
+        "timeline": "Already in effect (unless overturned on appeal)"
+      },
+      {
+        "risk": "EU structural remedies (ad tech)",
+        "probability": "30-40%",
+        "impact_if_realized": "EUR 2.95B fine already imposed; structural remedy could compound US case outcomes",
+        "timeline": "2026-2027"
+      },
+      {
+        "risk": "Cascading international enforcement",
+        "probability": "60-70%",
+        "impact_if_realized": "Cumulative fines in $1-5B range; behavioral compliance costs; operational complexity",
+        "timeline": "Ongoing 2025-2028"
+      }
+    ],
+    "total_financial_exposure_estimate": {
+      "base_case": "$5-10B cumulative (fines + increased distribution costs over 3 years)",
+      "bear_case": "$50-80B (Chrome divestiture + ad tech divestiture + global fines + distribution cost inflation)",
+      "context": "Alphabet market cap ~$2.3T; even bear case is ~3.5% of market cap"
+    },
+    "monitoring_triggers": [
+      "D.C. Circuit appeal oral argument date announcement",
+      "Judge Brinkema ad tech remedies ruling (expected H1 2026)",
+      "EU ad tech structural remedy decision",
+      "Annual default search bidding results",
+      "Any settlement negotiations between DOJ and Google"
+    ]
+  },
+
+  "sources": [
+    {"name": "NPR - Major antitrust ruling lets Google keep Chrome", "url": "https://www.npr.org/2025/09/02/nx-s1-5478625/google-chrome-doj-antitrust-ruling", "date": "2025-09-02"},
+    {"name": "DLA Piper - Federal court orders remedies", "url": "https://www.dlapiper.com/en/insights/publications/2025/09/federal-court-orders-remedies-in-google-antitrust-case", "date": "2025-09"},
+    {"name": "WinBuzzer - DOJ Appeals Google Antitrust Ruling", "url": "https://winbuzzer.com/2026/02/05/doj-appeals-google-antitrust-ruling-chrome-divestiture-xcxwbn/", "date": "2026-02-05"},
+    {"name": "SearchEngineLand - DOJ and states appeal", "url": "https://searchengineland.com/doj-states-appeal-google-search-antitrust-remedies-ruling-468230", "date": "2026-02-03"},
+    {"name": "Congress.gov CRS - Behavioral vs Structural Remedies", "url": "https://www.congress.gov/crs-product/LSB11362", "date": "2025"},
+    {"name": "9to5Mac - Apple search deal renewed scrutiny", "url": "https://9to5mac.com/2026/02/03/apple-search-deal-with-google-could-face-renewed-scrutiny-as-doj-appeals-antitrust-ruling/", "date": "2026-02-03"},
+    {"name": "CNBC - Google stock jumps on Chrome ruling", "url": "https://www.cnbc.com/2025/09/02/google-antitrust-search-ruling.html", "date": "2025-09-02"},
+    {"name": "CNBC - Judge finalizes remedies", "url": "https://www.cnbc.com/2025/12/05/judge-finalize-remedies-in-google-antitrust-case.html", "date": "2025-12-05"},
+    {"name": "Yahoo Finance - Apple risks $12.5B revenue hit", "url": "https://finance.yahoo.com/news/apple-risks-12-5-billion-152458330.html", "date": "2025-07-30"},
+    {"name": "Nasdaq - Apple joins Google antitrust fight", "url": "https://www.nasdaq.com/articles/apple-joins-google-antitrust-fight-protect-20b-search-partnership", "date": "2025"},
+    {"name": "CNBC - Analysts valuing Chrome at $50B", "url": "https://www.cnbc.com/2025/08/13/google-antitrust-chrome-perplexity-ai-youtube.html", "date": "2025-08-13"},
+    {"name": "Digiday - Ad tech remedy phase explained", "url": "https://digiday.com/marketing/googles-ad-tech-antitrust-remedy-phase-explained-doj-wants-googles-offerings-and-where-the-judge-might-land/", "date": "2025"},
+    {"name": "AdExchanger - Closing arguments in ad tech case", "url": "https://www.adexchanger.com/antitrust/closing-arguments-are-done-in-the-us-v-google-ad-tech-case/", "date": "2025-11"},
+    {"name": "TechPolicy.Press - 2026 enforcement outlook", "url": "https://www.techpolicy.press/looking-ahead-on-us-antitrust-enforcement-and-tech-will-2026-deliver-more-of-the-same/", "date": "2026-01"},
+    {"name": "SCiDA - EU Google AdTech structural remedies", "url": "https://scidaproject.com/2026/01/23/google-adtech-decision-the-commissions-landmark-self-preferencing-case-and-the-path-to-structural-remedies/", "date": "2026-01-23"},
+    {"name": "JFTC - Cease and desist order to Google", "url": "https://www.jftc.go.jp/en/pressreleases/yearly-2025/April/250415.html", "date": "2025-04-15"},
+    {"name": "CNBC - Japan JFTC cease and desist order", "url": "https://www.cnbc.com/2025/04/16/google-receives-cease-and-desist-order-from-japans-antimonopoly-watchdog-over-unfair-practices.html", "date": "2025-04-16"},
+    {"name": "PYMNTS - DOJ appeals ruling", "url": "https://www.pymnts.com/google/2026/justice-department-to-appeal-ruling-in-google-search-antitrust-case/", "date": "2026-02"},
+    {"name": "Bloomberg - Google search remedy appeal", "url": "https://www.bloomberg.com/news/articles/2026-02-03/google-search-remedy-to-be-appealed-by-state-attorneys-general", "date": "2026-02-03"},
+    {"name": "Capitol Forum - Tech Policy 2026 Predictions", "url": "https://thecapitolforum.com/capitol-forums-tech-policy-2026-predictions/", "date": "2026-01"},
+    {"name": "Brookings - Google decision and AI era competition policy", "url": "https://www.brookings.edu/articles/google-decision-demonstrates-need-to-overhaul-competition-policy-for-ai-era/", "date": "2025"},
+    {"name": "Winston & Strawn - AI and evolving search market", "url": "https://www.winston.com/en/blogs-and-podcasts/competition-corner/antitrust-remedies-in-united-states-v-google-ai-and-the-evolving-search-market", "date": "2025"},
+    {"name": "NTU - Key takeaways from district court decision", "url": "https://www.ntu.org/publications/detail/google-antitrust-ruling-key-takeaways-from-the-district-courts-decision", "date": "2025"},
+    {"name": "DOJ Press Release - Significant remedies against Google", "url": "https://www.justice.gov/opa/pr/department-justice-wins-significant-remedies-against-google", "date": "2025-09"},
+    {"name": "India NCLAT upholds antitrust ruling", "url": "https://thetechportal.com/2025/03/29/indias-nclat-upholds-antitrust-ruling-against-google", "date": "2025-03-29"},
+    {"name": "Euronews - EU takes on Big Tech 2025", "url": "https://www.euronews.com/next/2025/12/17/eu-takes-on-big-tech-here-are-the-top-actions-regulators-have-taken-in-2025", "date": "2025-12-17"}
+  ]
+}

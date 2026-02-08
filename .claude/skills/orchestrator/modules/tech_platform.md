@@ -1,6 +1,6 @@
 # 科技平台行业适配模块
 
-**行业复杂度系数**: 1.4
+**行业复杂度系数**: 1.7
 **适用公司**: META, GOOG, AMZN, MSFT, AAPL, NFLX, UBER, SPOT, SNAP, PINS
 
 ## 适配模块（插入通用框架）

@@ -1,0 +1,11 @@
+{
+  "collection_date": "2026-02-07",
+  "source": "MCP investment-master get_market_overview",
+  "note": "Market overview API returned null prices — market may be closed or data temporarily unavailable",
+  "indices": {
+    "SP500": {"name": "S&P 500", "price": null, "change": null},
+    "DJIA": {"name": "Dow Jones", "price": null, "change": null},
+    "NASDAQ": {"name": "NASDAQ Composite", "price": null, "change": null},
+    "VIX": {"name": "CBOE VIX", "price": null, "change": null}
+  }
+}

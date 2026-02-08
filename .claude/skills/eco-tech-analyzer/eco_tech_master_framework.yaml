@@ -1,0 +1,260 @@
+name: eco-tech-master-framework
+description: 生态科技公司机构级投资分析主框架 - 整合环境影响、技术创新、政策敏感性和Polymarket预测市场的综合分析体系
+version: "1.1"
+author: "投资研究Agent v19.12"
+category: investment_analysis
+
+triggers:
+  - "生态科技分析"
+  - "环保科技投资"
+  - "绿色技术研究"
+  - "可持续科技评估"
+  - "清洁技术分析"
+  - "碳中和技术"
+
+activation_conditions:
+  company_indicators:
+    - "新能源"
+    - "电动汽车"
+    - "储能"
+    - "太阳能"
+    - "风能"
+    - "氢能"
+    - "电池"
+    - "碳捕获"
+    - "循环经济"
+    - "智能电网"
+    - "绿色建筑"
+    - "环境监测"
+
+  polymarket_high_relevance_companies:
+    tesla_specific:
+      company_names: ["Tesla", "特斯拉", "TSLA"]
+      mandatory_polymarket_analysis: true
+      required_predictions:
+        - "Tesla FSD Level 4技术实现时间"
+        - "Tesla季度交付量目标达成"
+        - "Tesla股价关键目标水平"
+        - "Robotaxi商业化时间线"
+        - "美国EV税收抵免政策延续"
+        - "自动驾驶监管批准"
+      minimum_prediction_count: 6
+
+    other_ev_companies:
+      company_names: ["BYD", "比亚迪", "蔚来", "NIO", "理想", "LI", "小鹏", "XPEV"]
+      mandatory_polymarket_analysis: "conditional"
+      required_predictions:
+        - "中国EV市场政策支持"
+        - "电池技术突破时间"
+        - "充电基础设施发展"
+      minimum_prediction_count: 3
+
+system_message: |
+  你是生态科技投资分析专家，专门负责分析环保科技、清洁能源、可持续技术公司的投资价值。
+
+  核心能力：
+  1. 环境影响量化和货币化
+  2. 碳足迹分析和减排价值评估
+  3. 循环经济商业模式分析
+  4. 政策敏感性和监管环境评估
+  5. 技术成熟度和商业化时间线
+  6. ESG原生价值和外部性量化
+  7. 长期可持续竞争优势识别
+  8. 生态科技专用估值模型
+
+analysis_framework:
+  phase_0: "Polymarket预测市场前置评估 (新增必须阶段)"
+  modules:
+    - polymarket_relevance_check: "强相关预测事件识别"
+    - prediction_probability_analysis: "预测概率可信度评估"
+    - market_quality_assessment: "预测市场质量评估"
+    - probability_impact_modeling: "概率权重影响建模"
+
+  phase_1: "生态科技基础分析"
+  modules:
+    - eco_business_model: "环保商业模式分析"
+    - environmental_impact: "环境影响量化"
+    - technology_readiness: "技术成熟度评估"
+    - policy_landscape: "政策环境分析"
+    - sustainability_moats: "可持续竞争优势"
+    - polymarket_baseline: "预测概率基准线建立"
+
+  phase_2: "深度技术与财务建模"
+  modules:
+    - carbon_economics: "碳经济学分析"
+    - circular_economy: "循环经济建模"
+    - green_finance: "绿色金融与估值"
+    - regulatory_scenario: "监管情景建模"
+    - tech_scalability: "技术规模化分析"
+    - polymarket_valuation_adjustment: "预测概率权重估值调整"
+    - probability_sensitivity_analysis: "概率敏感性分析"
+
+  phase_3: "战略整合与长期定位"
+  modules:
+    - esg_native_value: "ESG原生价值"
+    - policy_risk_hedge: "政策风险对冲"
+    - sustainability_leadership: "可持续发展领导力"
+    - long_term_transition: "能源转型长期愿景"
+    - eco_monitoring: "生态科技监控系统"
+    - polymarket_risk_management: "预测市场风险管理"
+    - probability_monitoring_system: "预测概率监控体系"
+
+confidence_targets:
+  environmental_impact: 8.5  # 环境影响必须高置信度
+  technology_assessment: 7.5  # 技术评估中等偏高
+  policy_analysis: 7.0       # 政策分析中等置信度
+  financial_modeling: 8.0    # 财务建模高置信度
+  overall_framework: 7.8     # 整体框架高质量
+
+specialized_metrics:
+  carbon_metrics:
+    - "CO2减排量(吨/年)"
+    - "碳信用价值($M/年)"
+    - "碳强度改善(%)"
+    - "生命周期碳足迹"
+
+  technology_metrics:
+    - "技术成熟度等级(TRL 1-9)"
+    - "商业化时间线(年)"
+    - "成本下降曲线(%/年)"
+    - "效率改善轨迹"
+
+  policy_metrics:
+    - "政策支持强度评分"
+    - "补贴依赖度(%)"
+    - "监管确定性评分"
+    - "政策风险敞口($B)"
+
+  sustainability_metrics:
+    - "可持续发展目标贡献"
+    - "循环经济指标"
+    - "资源利用效率"
+    - "生态系统服务价值"
+
+  polymarket_prediction_metrics:
+    prediction_quality_indicators:
+      - "预测市场日交易量($)"
+      - "参与者数量(独立交易者)"
+      - "预测时间跨度(月)"
+      - "历史预测准确率(%)"
+      - "市场流动性评分(1-10)"
+
+    prediction_impact_metrics:
+      - "强相关预测事件数量"
+      - "预测概率权重影响($B)"
+      - "概率敏感性系数"
+      - "预测不确定性溢价(bps)"
+      - "概率调整估值比例(%)"
+
+    monitoring_metrics:
+      - "概率变化频率(次/月)"
+      - "重大概率变化次数(>10%)"
+      - "预测催化剂事件数量"
+      - "概率趋势确认天数"
+      - "预测预警触发频率"
+
+output_requirements:
+  report_structure:
+    - "生态科技投资论证"
+    - "环境影响价值化分析"
+    - "技术-商业化路径图"
+    - "政策风险-机会矩阵"
+    - "可持续竞争优势评估"
+    - "碳经济学建模"
+    - "ESG原生价值量化"
+    - "长期能源转型定位"
+    - "🆕 Polymarket预测市场分析 (强相关公司必须)"
+    - "🆕 预测概率权重调整估值"
+    - "🆕 概率敏感性分析"
+    - "🆕 预测监控预警体系"
+
+  polymarket_specific_deliverables:
+    tesla_mandatory_sections:
+      - "Tesla FSD预测概率分析与价值影响"
+      - "Tesla交付量预测与基本面对比"
+      - "美国EV政策预测概率权重"
+      - "自动驾驶监管预测时间线影响"
+      - "概率调整Tesla估值模型"
+      - "预测变化实时监控建议"
+
+    general_eco_tech_sections:
+      - "强相关预测事件识别与筛选"
+      - "预测市场质量评估报告"
+      - "概率权重影响建模分析"
+      - "预测不确定性风险评估"
+      - "概率监控预警体系设计"
+
+  confidence_requirements:
+    minimum_overall: 7.5
+    environmental_analysis: 8.0
+    technology_assessment: 7.0
+    policy_framework: 6.5
+    financial_modeling: 8.0
+
+execution_workflow:
+  step_1: "触发条件识别 - 生态科技公司特征检测"
+  step_2: "框架初始化 - 15模块分析体系启动"
+  step_3: "环境影响优先 - 核心环保价值量化"
+  step_4: "技术路径分析 - 商业化时间线和风险"
+  step_5: "政策环境评估 - 监管风险和机会"
+  step_6: "财务建模整合 - 生态科技专用估值"
+  step_7: "长期战略定位 - 能源转型角色"
+  step_8: "监控体系建立 - 生态科技特有指标"
+
+skill_integration:
+  primary_skills:
+    - "environmental-impact-quantifier"
+    - "carbon-economics-modeler"
+    - "green-tech-evaluator"
+    - "policy-scenario-analyzer"
+    - "sustainability-valuator"
+    - "polymarket-predictor-analyzer"  # 🆕 新增主要技能
+
+  supporting_skills:
+    - "circular-economy-analyzer"
+    - "regulatory-pathway-mapper"
+    - "esg-native-assessor"
+    - "green-finance-modeler"
+    - "eco-monitoring-builder"
+
+  conditional_activation:
+    polymarket_predictor_analyzer:
+      trigger_conditions:
+        - company_in_high_relevance_list: true
+        - available_relevant_predictions: ">= 3"
+        - prediction_market_quality: ">= 6/10"
+      mandatory_for:
+        - "Tesla"
+        - "特斯拉"
+        - "TSLA"
+      conditional_for:
+        - "BYD"
+        - "蔚来"
+        - "理想"
+        - "小鹏"
+
+quality_standards:
+  data_sources:
+    tier_1: "政府环保部门、IEA、IRENA官方数据"
+    tier_2: "Bloomberg NEF、专业环保咨询机构"
+    tier_3: "学术研究、行业协会数据"
+
+  analysis_depth:
+    environmental: "量化CO2减排、资源节约等环境效益"
+    technological: "详细技术成熟度和规模化分析"
+    financial: "专用绿色估值模型和风险调整"
+    strategic: "能源转型中的长期定位"
+
+success_criteria:
+  analysis_completeness: "15模块全覆盖，重点突出环保价值 + Polymarket集成"
+  confidence_achievement: "平均7.8+置信度，环境分析8.0+，预测分析7.5+"
+  actionability: "具体投资建议和仓位指导 + 概率调整策略"
+  monitoring: "生态科技特有的50+指标体系 + 预测概率跟踪"
+  professional: "适用于ESG基金投资委员会 + 预测市场增强前瞻性"
+
+  polymarket_integration_standards:
+    mandatory_for_tesla: "Tesla分析必须包含6+强相关预测分析"
+    prediction_quality_threshold: "预测市场日交易量>$10K，参与者>100人"
+    probability_impact_quantification: "概率权重对估值影响必须量化"
+    monitoring_system_deployment: "预测变化监控预警体系必须建立"
+    sensitivity_analysis_requirement: "关键预测概率敏感性分析必须完成"

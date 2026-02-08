@@ -1,0 +1,411 @@
+{
+  "metadata": {
+    "ticker": "GOOGL",
+    "company": "Alphabet Inc.",
+    "data_collected": "2026-02-06",
+    "data_sources": [
+      "MarketBeat",
+      "HedgeFollow",
+      "Fintel",
+      "Benzinga",
+      "Barchart",
+      "Yahoo Finance",
+      "CNBC",
+      "Seeking Alpha",
+      "InsiderMonkey",
+      "SEC EDGAR 13F filings"
+    ],
+    "notes": "Data primarily reflects Q3 2025 13F filings (portfolio date: 2025-09-30, filed by 2025-11-14). Q4 2025 13F filings due by 2026-02-14."
+  },
+
+  "ownership_summary": {
+    "institutional_ownership_pct": 62.54,
+    "insider_ownership_pct": 3.84,
+    "retail_ownership_pct": 33.62,
+    "total_institutional_holders": 6919,
+    "total_shares_held_by_institutions": 4944121249,
+    "hedge_funds_holding": 243,
+    "hedge_funds_holding_prior_quarter": 219,
+    "hedge_fund_count_change": "+24 (Q2 to Q3 2025)",
+    "super_investors_holding": 42,
+    "super_investor_combined_value_usd": 38560000000,
+    "data_date": "Q3 2025 (2025-09-30)"
+  },
+
+  "top_holders": [
+    {
+      "institution": "Vanguard Group Inc.",
+      "shares": 516559609,
+      "value_usd": 91033300000,
+      "ownership_pct": 7.0,
+      "change": "Slight reduction reported",
+      "filing_date": "2025-09-30",
+      "type": "Index/Passive"
+    },
+    {
+      "institution": "BlackRock Inc.",
+      "shares": null,
+      "value_usd": null,
+      "ownership_pct": 6.2,
+      "change": "Maintained position",
+      "filing_date": "2025-09-30",
+      "type": "Index/Passive"
+    },
+    {
+      "institution": "State Street Corp",
+      "shares": null,
+      "value_usd": null,
+      "ownership_pct": null,
+      "change": "Top institutional holder (exact share count unavailable)",
+      "filing_date": "2025-09-30",
+      "type": "Index/Passive"
+    },
+    {
+      "institution": "FMR LLC (Fidelity)",
+      "shares": null,
+      "value_usd": null,
+      "ownership_pct": null,
+      "change": "Top institutional holder",
+      "filing_date": "2025-09-30",
+      "type": "Active/Passive"
+    },
+    {
+      "institution": "Geode Capital Management LLC",
+      "shares": null,
+      "value_usd": null,
+      "ownership_pct": null,
+      "change": "Top institutional holder",
+      "filing_date": "2025-09-30",
+      "type": "Index/Passive"
+    },
+    {
+      "institution": "Morgan Stanley",
+      "shares": null,
+      "value_usd": null,
+      "ownership_pct": null,
+      "change": "Top institutional holder",
+      "filing_date": "2025-09-30",
+      "type": "Investment Bank"
+    },
+    {
+      "institution": "T. Rowe Price Associates Inc.",
+      "shares": null,
+      "value_usd": null,
+      "ownership_pct": null,
+      "change": "Top institutional holder",
+      "filing_date": "2025-09-30",
+      "type": "Active"
+    },
+    {
+      "institution": "JPMorgan Chase & Co.",
+      "shares": null,
+      "value_usd": 24200000000,
+      "ownership_pct": null,
+      "change": "Added 9,704,869 shares (+16.1%) in Q3 2025",
+      "shares_added": 9704869,
+      "pct_change": "+16.1%",
+      "filing_date": "2025-09-30",
+      "type": "Investment Bank"
+    },
+    {
+      "institution": "AllianceBernstein L.P.",
+      "shares": 40000000,
+      "value_usd": 9700000000,
+      "ownership_pct": null,
+      "change": "Boosted holdings +5.8%",
+      "pct_change": "+5.8%",
+      "filing_date": "2025-09-30",
+      "type": "Active"
+    },
+    {
+      "institution": "UBS Asset Management",
+      "shares": null,
+      "value_usd": 7588981299,
+      "ownership_pct": null,
+      "change": "Added 31,217,529 shares (+56.4%) in Q3 2025",
+      "shares_added": 31217529,
+      "pct_change": "+56.4%",
+      "filing_date": "2025-09-30",
+      "type": "Active"
+    }
+  ],
+
+  "notable_investors": {
+    "berkshire_hathaway": {
+      "investor": "Berkshire Hathaway Inc. (Warren Buffett)",
+      "action": "NEW POSITION",
+      "shares": 17850000,
+      "value_usd": 4300000000,
+      "avg_purchase_price": 209,
+      "current_value_usd": 5600000000,
+      "portfolio_weight_pct": 1.8,
+      "ownership_of_googl_pct": 0.3,
+      "share_class": "Class A (voting shares)",
+      "filing_date": "2025-11-14",
+      "portfolio_date": "2025-09-30",
+      "ranking_in_portfolio": "10th largest holding",
+      "context": "First-ever Alphabet investment. Buffett had admitted for over a decade he 'screwed up' by not investing in Google despite watching GEICO pay $10-11 per click for Google ads. Purchase made as Greg Abel prepares to succeed Buffett as CEO on Jan 1, 2026.",
+      "significance": "HIGH - Marquee signal from the most-watched value investor. Validates GOOGL at ~$209 entry price as meeting Buffett's quality + valuation criteria.",
+      "source": "CNBC, Motley Fool, Yahoo Finance (Nov 14, 2025)"
+    },
+    "ken_fisher": {
+      "investor": "Fisher Asset Management (Ken Fisher)",
+      "action": "INCREASED",
+      "value_usd": 9121800000,
+      "portfolio_weight_pct": 3.3,
+      "change": "Added 2.28% to position in Q3 2025",
+      "ranking_in_portfolio": "4th largest (after NVDA, AAPL, MSFT)",
+      "portfolio_total_value": 276290000000,
+      "total_holdings": 1015,
+      "filing_date": "2025-11-12",
+      "portfolio_date": "2025-09-30",
+      "source": "GuruFocus, 13Radar"
+    },
+    "norges_bank": {
+      "investor": "Norges Bank (Norway Sovereign Wealth Fund)",
+      "action": "NEW POSITION",
+      "value_usd": 4300000000,
+      "filing_date": "Q2 2025",
+      "significance": "Sovereign wealth fund entry signals long-term institutional confidence",
+      "source": "HedgeFollow"
+    },
+    "arrowstreet_capital": {
+      "investor": "Arrowstreet Capital Limited Partnership",
+      "action": "INCREASED",
+      "change": "Boosted position by 330.4% in Q2 2025, buying additional 3M shares",
+      "shares_added": 3000000,
+      "pct_change": "+330.4%",
+      "filing_date": "Q2 2025",
+      "source": "Institutional filings"
+    }
+  },
+
+  "recent_changes": {
+    "summary": "Net accumulation trend. Hedge fund count rose from 219 to 243 (+11%) between Q2 and Q3 2025. Multiple marquee investors opened new positions (Berkshire Hathaway, Norges Bank) or significantly increased existing ones (JPMorgan +16.1%, UBS +56.4%, Arrowstreet +330.4%).",
+    "q3_2025_highlights": [
+      {
+        "institution": "Berkshire Hathaway",
+        "action": "NEW",
+        "shares": 17850000,
+        "value_usd": 4300000000
+      },
+      {
+        "institution": "JPMorgan Chase",
+        "action": "INCREASED",
+        "shares_added": 9704869,
+        "pct_change": "+16.1%",
+        "estimated_value_added": 2359253653
+      },
+      {
+        "institution": "UBS Asset Management",
+        "action": "INCREASED",
+        "shares_added": 31217529,
+        "pct_change": "+56.4%",
+        "estimated_value_added": 7588981299
+      },
+      {
+        "institution": "AllianceBernstein",
+        "action": "INCREASED",
+        "pct_change": "+5.8%"
+      },
+      {
+        "institution": "Ken Fisher / Fisher Asset Management",
+        "action": "INCREASED",
+        "pct_change": "+2.28%"
+      }
+    ],
+    "q2_2025_highlights": [
+      {
+        "institution": "Norges Bank",
+        "action": "NEW",
+        "value_usd": 4300000000
+      },
+      {
+        "institution": "Arrowstreet Capital",
+        "action": "INCREASED",
+        "pct_change": "+330.4%",
+        "shares_added": 3000000
+      }
+    ],
+    "insider_activity": {
+      "recent_sale": {
+        "who": "Alphabet Director",
+        "amount_usd": 34680,
+        "date": "2026-02-02",
+        "note": "Minimal sale, likely routine/scheduled"
+      },
+      "political_purchase": {
+        "who": "Rep. Cleo Fields (US Congress)",
+        "action": "BOUGHT",
+        "date": "2026-02-05",
+        "source": "Defense World"
+      }
+    },
+    "key_founders": {
+      "larry_page": {
+        "ownership_pct": 6.1,
+        "note": "Primarily Class B super-voting shares"
+      },
+      "sergey_brin": {
+        "ownership_pct": 5.7,
+        "note": "Primarily Class B super-voting shares"
+      }
+    }
+  },
+
+  "short_interest": {
+    "latest_report": {
+      "shares_short": 58340000,
+      "prior_period_shares_short": 59540000,
+      "change": -1200000,
+      "change_pct": "-2.0%",
+      "direction": "DECREASING",
+      "pct_of_float": 1.0,
+      "days_to_cover": 2.18,
+      "avg_daily_volume": 26730000,
+      "data_date": "January 2026 (latest FINRA settlement)",
+      "source": "MarketBeat"
+    },
+    "alternative_data_point": {
+      "shares_short": 39000000,
+      "pct_of_outstanding": 0.33,
+      "days_to_cover": 1.72,
+      "avg_daily_volume": 23000000,
+      "data_date": "2025-10-31",
+      "source": "FINRA",
+      "note": "Lower figure may reflect GOOGL Class A only vs combined GOOGL+GOOG"
+    },
+    "leveraged_etf_short_interest": {
+      "GGLS_bear_1x": {
+        "change": "+55.1% increase in short interest",
+        "date": "2026-01-16",
+        "significance": "Rising short interest in the BEAR ETF is actually a bullish signal for GOOGL"
+      },
+      "GGLL_bull_2x": {
+        "change": "+25.2% increase in short interest",
+        "date": "2026-01",
+        "significance": "Some hedging activity against bullish leveraged bets"
+      }
+    },
+    "assessment": "Short interest is LOW at ~1% of float with days-to-cover of ~2 days. The decreasing trend (59.5M -> 58.3M) suggests bears are covering. No short squeeze setup. Minimal bearish conviction from short sellers."
+  },
+
+  "options_activity": {
+    "overall_sentiment": "MIXED-TO-BULLISH",
+    "data_date_range": "January-February 2026",
+    "institutional_flow_jan_26_2026": {
+      "net_trade_sentiment_usd": 3074600,
+      "delta_imbalance": 162191,
+      "direction": "Heavily bullish",
+      "largest_single_trade": {
+        "strike": 340,
+        "expiration": "2026-06-18",
+        "premium_usd": 3430000,
+        "contracts": 1104,
+        "delta": 0.48,
+        "type": "OTM Call purchase",
+        "sentiment": "BULLISH"
+      },
+      "call_strikes_targeted": [280, 300, 312.5, 330, 340],
+      "put_protection_strikes": [300, 340],
+      "characterization": "Broad-based bullish conviction rather than concentrated speculation. Institutional players positioning across multiple time horizons.",
+      "source": "Barchart (Jan 26, 2026)"
+    },
+    "benzinga_unusual_activity_jan_14_2026": {
+      "total_unusual_trades": 16,
+      "sentiment_breakdown": {
+        "bearish_pct": 50,
+        "bullish_pct": 37,
+        "neutral_pct": 13
+      },
+      "puts_total_premium": 229966,
+      "calls_total_premium": 505810,
+      "strike_range": [200, 370],
+      "notable_trades": [
+        {
+          "strike": 340,
+          "type": "Call Sweep",
+          "sentiment": "Bearish",
+          "expiration": "2026-03-20",
+          "premium_usd": 173800
+        },
+        {
+          "strike": 350,
+          "type": "Put",
+          "sentiment": "Bearish",
+          "expiration": "2026-01-30",
+          "premium_usd": 96500
+        },
+        {
+          "strike": 335,
+          "type": "Put",
+          "sentiment": "Bullish",
+          "expiration": "2026-04-17",
+          "premium_usd": 59000
+        },
+        {
+          "strike": 327.5,
+          "type": "Put Sweep",
+          "sentiment": "Bearish",
+          "expiration": "2026-01-30",
+          "premium_usd": 41100
+        }
+      ],
+      "source": "Benzinga (Jan 14, 2026)"
+    },
+    "expiration_concentration": {
+      "march_2026": "Heavy call volume — targeting Q4 2025 earnings catalyst + AI product announcements",
+      "june_2026": "Extended institutional positioning through H1 2026"
+    },
+    "put_call_ratio": {
+      "value": null,
+      "note": "Real-time put/call ratio data not available via web search. Reference sources: Barchart, Fintel, AlphaQuery for live data. General indication: call volume and premium substantially outweigh put buying per Barchart flow analysis.",
+      "interpretation_framework": "Below 0.7 = bullish, above 1.0 = bearish"
+    },
+    "post_earnings_context": {
+      "event": "Q4 2025 Earnings (reported 2026-02-04)",
+      "result": "Beat on revenue (+18% YoY) and EPS (net income $34.46B, +30% YoY)",
+      "capex_guidance": "$175B-$185B for 2026 (vs $142B consensus; nearly 2x 2025 spend of $91.4B)",
+      "stock_reaction": "Fell ~3% after-hours despite earnings beat, on capex shock",
+      "expected_options_impact": "Likely elevated put activity and IV crush post-earnings. Capex concerns may shift near-term sentiment more bearish."
+    }
+  },
+
+  "analyst_consensus": {
+    "rating": "Buy",
+    "average_price_target": 365,
+    "price_target_range": {
+      "low": 350,
+      "high": 390
+    },
+    "recent_ratings": [
+      {
+        "firm": "Stifel Nicolaus",
+        "rating": "Buy",
+        "date": "2026-02-05"
+      }
+    ],
+    "post_earnings_commentary": "Alphabet Q4 earnings win over analysts: 'We have more conviction here' (Benzinga, Feb 2026). Despite massive capex guidance, analysts view AI spending as necessary investment for long-term positioning."
+  },
+
+  "key_signals_summary": {
+    "smart_money_conviction": "STRONG BULLISH",
+    "evidence": [
+      "Berkshire Hathaway opened $4.3B new position (first-ever GOOGL buy) at ~$209 avg price",
+      "Hedge fund count increased 11% (219 -> 243) in Q3 2025",
+      "JPMorgan +16.1%, UBS +56.4%, Arrowstreet +330.4% position increases",
+      "Ken Fisher maintains as 4th largest holding ($9.1B), added 2.28%",
+      "Norges Bank (sovereign wealth) opened $4.3B new position",
+      "42 super investors hold positions totaling ~$38.6B",
+      "Short interest declining (59.5M -> 58.3M shares), only 1% of float",
+      "Options flow net sentiment +$3.07M bullish (Jan 26, 2026)"
+    ],
+    "risk_factors": [
+      "$175-185B capex guidance for 2026 (nearly 2x 2025) spooked market",
+      "Stock fell ~3% post-earnings despite beat, on spending concerns",
+      "Some bearish options activity detected (50% bearish sentiment on Jan 14 unusual trades)",
+      "Vanguard reported slight reduction in position"
+    ],
+    "overall_assessment": "Overwhelming smart money accumulation through 2025. The Berkshire Hathaway entry is the single most significant signal -- Buffett's first-ever Google investment after years of public regret. Institutional ownership broad and deep at 62.5%. Short interest negligible. The primary near-term risk is investor anxiety over the massive $175-185B 2026 capex plan, which could create short-term volatility but is viewed by most analysts as necessary AI infrastructure investment."
+  }
+}

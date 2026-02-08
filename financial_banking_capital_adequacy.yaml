@@ -1,0 +1,465 @@
+# 银行资本充足率动态分析系统
+# Banking Capital Adequacy Analysis System v1.0
+# 银行资本充足率动态分析与压力测试专业技能模块
+
+name: "financial_banking_capital_adequacy"
+version: "1.0"
+description: "银行资本充足率动态分析与压力测试，涵盖监管要求、资本规划、风险管理的全维度评估"
+
+# 技能元数据
+metadata:
+  category: "financial_analysis"
+  subcategory: "banking_specialized"
+  target_analysis_depth: "L4-L5"
+  required_data_quality: "≥90% A+B级数据"
+  complexity_coefficient: 1.5  # 银行专业高复杂度
+  estimated_execution_time: "25-35分钟"
+  prerequisite_skills: ["financial_digital_twin_core", "financial_regulatory_radar"]
+
+# 资本监管框架覆盖
+regulatory_frameworks:
+  basel_iii_iv:
+    capital_conservation_buffer: "2.5%"
+    countercyclical_buffer: "0-2.5%(各国自定)"
+    d_sib_buffer: "1.0-3.5%(系统重要性银行)"
+    pillar_2_requirement: "通常1-3%"
+
+  china_specific:
+    minimum_core_tier1: "9.5%(含2.5%保护缓冲资本)"
+    minimum_tier1: "11.5%(含2.5%保护缓冲资本)"
+    minimum_total: "13.5%(含2.5%保护缓冲资本)"
+    macroprudential_buffer: "0-2.5%(逆周期资本缓冲)"
+    systemic_importance: "1.0-3.5%(系统重要性银行附加资本)"
+
+  us_specific:
+    enhanced_slr: "5%(G-SIB附加杠杆率)"
+    stress_capital_buffer: "动态缓冲(压力测试结果)"
+    tlac_requirement: "18%+缓冲(总损失吸收能力)"
+    ccar_dividends: "股利发放能力评估"
+
+# 分析框架结构
+analysis_framework:
+  phase_1_current_status:
+    duration: "8分钟"
+    objectives:
+      - "资本充足率现状评估"
+      - "资本结构分析与质量评价"
+      - "监管要求对标与缺口识别"
+    key_metrics:
+      - "CET1/Tier1/总资本充足率"
+      - "杠杆率与补充杠杆率"
+      - "RWA结构与变化趋势"
+    deliverables:
+      - "资本状况仪表板"
+      - "监管要求对标表"
+      - "资本缺口分析报告"
+
+  phase_2_rwa_optimization:
+    duration: "10分钟"
+    objectives:
+      - "风险加权资产结构深度分析"
+      - "资本效率优化机会识别"
+      - "业务组合资本配置评估"
+    analysis_methods:
+      - "RWA密度分析(RWA/总资产)"
+      - "业务条线资本占用分解"
+      - "RORAC(风险调整资本回报)计算"
+    deliverables:
+      - "RWA结构分解图"
+      - "资本效率分析矩阵"
+      - "业务资本配置优化建议"
+
+  phase_3_stress_testing:
+    duration: "12分钟"
+    objectives:
+      - "监管压力测试情景模拟"
+      - "内部压力测试与敏感性分析"
+      - "极端情景下资本充足性评估"
+    stress_scenarios:
+      - "监管标准情景(严重经济衰退)"
+      - "银行特定压力情景"
+      - "尾部风险情景(99.9%置信水平)"
+    deliverables:
+      - "压力测试结果矩阵"
+      - "资本规划路径图"
+      - "风险缓释措施建议"
+
+  phase_4_dynamic_planning:
+    duration: "8分钟"
+    objectives:
+      - "动态资本规划与预测"
+      - "资本筹集策略评估"
+      - "股利政策与资本管理平衡"
+    planning_horizon: "3年滚动规划"
+    deliverables:
+      - "动态资本规划模型"
+      - "筹资策略选择矩阵"
+      - "股东回报与资本平衡分析"
+
+  phase_5_regulatory_implications:
+    duration: "7分钟"
+    objectives:
+      - "监管变化影响评估"
+      - "合规风险与机遇识别"
+      - "监管关系管理策略"
+    deliverables:
+      - "监管风险评估报告"
+      - "合规优化建议"
+      - "监管沟通要点"
+
+# 核心分析模型
+analytical_models:
+  capital_ratio_calculation:
+    cet1_ratio:
+      numerator: "普通股股本 + 留存收益 - 扣除项"
+      denominator: "风险加权资产(RWA)"
+      regulatory_minimum: "4.5% + 缓冲资本"
+      quality_factors:
+        - "核心资本质量评估"
+        - "扣除项合理性分析"
+        - "递延税资产占比"
+
+    tier1_ratio:
+      components: "CET1 + 其他一级资本工具"
+      regulatory_minimum: "6.0% + 缓冲资本"
+      instrument_analysis:
+        - "混合资本工具条款分析"
+        - "损失吸收机制有效性"
+        - "触发条件可行性评估"
+
+    total_capital_ratio:
+      components: "一级资本 + 二级资本"
+      regulatory_minimum: "8.0% + 缓冲资本"
+      subordinated_debt: "次级债到期滚续风险"
+
+  rwa_analysis:
+    credit_risk_rwa:
+      standardized_approach: "标准法RWA计算"
+      irb_approach: "内评法RWA计算"
+      model_validation: "内部模型有效性验证"
+      concentration_risk: "集中度风险附加资本"
+
+    market_risk_rwa:
+      trading_book: "交易账簿市场风险"
+      banking_book: "银行账簿利率风险"
+      frtb_impact: "基础市场风险新框架影响"
+
+    operational_risk_rwa:
+      standardized_approach: "标准法(SA-OpRisk)"
+      loss_data: "操作风险损失数据分析"
+      scenario_analysis: "操作风险情景分析"
+
+  leverage_ratio_analysis:
+    exposure_calculation:
+      on_balance_sheet: "表内资产敞口"
+      off_balance_sheet: "表外敞口(信用转换系数)"
+      derivatives: "衍生品敞口(重置成本法)"
+      sft: "证券融资交易敞口"
+
+    supplementary_leverage:
+      enhanced_requirement: "G-SIB附加要求"
+      buffer_analysis: "缓冲空间评估"
+      constraint_identification: "约束性识别"
+
+# 压力测试模型
+stress_testing_models:
+  regulatory_stress_tests:
+    dfast_ccar: "美联储DFAST/CCAR压力测试"
+    ecb_stress: "欧洲银行管理局压力测试"
+    pboc_stress: "央行压力测试"
+
+    scenario_design:
+      baseline: "基准经济情景"
+      adverse: "不利经济情景"
+      severely_adverse: "严重不利情景"
+
+    key_variables:
+      macro_factors:
+        - "GDP增速下滑幅度"
+        - "失业率上升程度"
+        - "房价下跌幅度"
+        - "股市下跌程度"
+      financial_factors:
+        - "利率曲线变化"
+        - "信用利差扩大"
+        - "汇率波动"
+        - "VIX恐慌指数"
+
+  internal_stress_tests:
+    credit_stress:
+      pd_shocks: "违约概率冲击情景"
+      lgd_deterioration: "违约损失率恶化"
+      concentration_risk: "行业/地区集中度压力"
+
+    market_stress:
+      interest_rate_shock: "利率平行/非平行移动"
+      credit_spread_shock: "信用利差扩大"
+      equity_shock: "股票投资损失"
+      fx_shock: "汇率冲击"
+
+    liquidity_stress:
+      deposit_outflow: "存款流失情景"
+      funding_cost_increase: "融资成本上升"
+      asset_liquidation: "资产被迫变现"
+
+    operational_stress:
+      cyber_attack: "网络安全事件"
+      legal_risk: "重大诉讼损失"
+      model_risk: "模型失效风险"
+
+# 动态资本规划
+dynamic_capital_planning:
+  planning_methodology:
+    baseline_projection:
+      earnings_forecast: "盈利能力预测"
+      dividend_policy: "股利政策假设"
+      business_growth: "业务增长规划"
+      rwa_evolution: "RWA变化预测"
+
+    stress_projection:
+      stress_losses: "压力情景下损失"
+      capital_depletion: "资本消耗路径"
+      recovery_timeline: "资本恢复时间表"
+
+  capital_actions:
+    organic_capital_generation:
+      retained_earnings: "留存收益积累"
+      rwa_optimization: "RWA优化节约资本"
+      business_mix_shift: "业务结构调整"
+
+    external_capital_raising:
+      equity_issuance: "股权融资"
+      tier1_instruments: "其他一级资本工具"
+      tier2_instruments: "二级资本工具"
+
+    capital_conservation:
+      dividend_cuts: "股利削减"
+      share_buyback_suspension: "暂停股票回购"
+      discretionary_bonus_cuts: "可变薪酬削减"
+
+# 资本优化策略
+capital_optimization:
+  rwa_optimization:
+    portfolio_rebalancing:
+      high_rwa_reduction: "高RWA资产减持"
+      low_rwa_expansion: "低RWA业务扩张"
+      risk_transfer: "风险转移工具使用"
+
+    credit_risk_mitigation:
+      guarantees: "担保措施"
+      credit_derivatives: "信用衍生品对冲"
+      securitization: "资产证券化"
+      netting_agreements: "净额结算协议"
+
+  leverage_optimization:
+    balance_sheet_efficiency:
+      off_balance_sheet: "表外业务发展"
+      netting_enhancement: "净额结算增强"
+      collateral_optimization: "担保品优化"
+
+  regulatory_capital_efficiency:
+    instrument_design:
+      call_options: "赎回选择权设计"
+      trigger_levels: "触发条件设置"
+      conversion_mechanisms: "转换机制优化"
+
+# 监管关系管理
+regulatory_relationship:
+  supervisory_dialogue:
+    capital_planning: "资本规划讨论"
+    stress_test_results: "压力测试结果沟通"
+    model_approval: "模型审批流程"
+    remediation_plans: "整改计划制定"
+
+  regulatory_reporting:
+    basel_pillar3: "巴塞尔第三支柱披露"
+    supervisory_reporting: "监管报告要求"
+    data_quality: "数据质量管理"
+
+  early_warning_system:
+    regulatory_ratios: "监管比率预警"
+    trend_monitoring: "趋势恶化监控"
+    peer_comparison: "同业对比分析"
+
+# 特殊情况处理
+special_circumstances:
+  merger_acquisition:
+    capital_impact: "并购对资本的影响"
+    regulatory_approval: "监管审批要求"
+    integration_planning: "整合资本规划"
+
+  crisis_management:
+    capital_contingency: "资本应急预案"
+    government_support: "政府支持可能性"
+    resolution_planning: "处置规划影响"
+
+  business_transformation:
+    digital_transformation: "数字化转型资本需求"
+    new_business_lines: "新业务资本配置"
+    geographic_expansion: "地域扩张资本规划"
+
+# 关键风险指标(KRI)
+key_risk_indicators:
+  capital_adequacy_kris:
+    - name: "CET1比率趋势"
+      threshold: "连续2季度下降>50bps"
+      action: "启动资本补充预案"
+
+    - name: "RWA增长率"
+      threshold: "年化增长率>20%"
+      action: "RWA增长控制措施"
+
+    - name: "杠杆率缓冲"
+      threshold: "低于最低要求200bps"
+      action: "杠杆率提升计划"
+
+  stress_test_kris:
+    - name: "压力测试最低比率"
+      threshold: "低于监管最低要求"
+      action: "资本规划重新评估"
+
+    - name: "资本规划缺口"
+      threshold: "未来2年出现资本缺口"
+      action: "提前筹资准备"
+
+# 同业对比分析
+peer_analysis:
+  comparison_metrics:
+    capital_ratios: "资本充足率水平对比"
+    capital_quality: "资本质量评估"
+    capital_efficiency: "资本使用效率"
+    stress_performance: "压力测试表现"
+
+  peer_groups:
+    global_systemically_important: "全球系统重要性银行"
+    domestic_systemically_important: "国内系统重要性银行"
+    regional_banks: "区域性银行"
+    specialized_banks: "专业银行"
+
+# 输出规范
+output_specifications:
+  executive_dashboard:
+    key_metrics_summary:
+      - "当前资本充足率状况"
+      - "监管要求对标结果"
+      - "资本缺口/富余情况"
+      - "压力测试核心结果"
+
+  detailed_analysis_report:
+    sections:
+      - "资本结构分析与质量评估"
+      - "风险加权资产分解与优化"
+      - "压力测试结果与敏感性分析"
+      - "动态资本规划与筹资策略"
+      - "监管风险与合规建议"
+
+  actionable_recommendations:
+    immediate_actions: "立即可执行的资本优化措施"
+    medium_term_strategy: "中期资本管理策略"
+    long_term_planning: "长期资本规划建议"
+
+# 数据要求
+data_requirements:
+  financial_statements:
+    frequency: "季度"
+    depth: "至少8个季度"
+    quality: "审计后财务数据[A级:99%]"
+
+  regulatory_reports:
+    capital_adequacy: "资本充足率报告[A级:99%]"
+    large_exposures: "大额风险暴露报告[A级:98%]"
+    liquidity_reporting: "流动性风险监管报告[A级:97%]"
+
+  risk_data:
+    credit_portfolio: "信贷组合明细[A级:95%]"
+    market_positions: "市场风险头寸[B级:90%]"
+    operational_losses: "操作风险损失数据[B级:85%]"
+
+# 模型验证
+model_validation:
+  backtesting:
+    historical_accuracy: "历史预测准确性验证"
+    stress_scenarios: "压力情景合理性检验"
+    regulatory_consistency: "监管要求一致性检查"
+
+  sensitivity_analysis:
+    parameter_sensitivity: "关键参数敏感性分析"
+    assumption_testing: "核心假设压力测试"
+    model_stability: "模型稳定性评估"
+
+  benchmarking:
+    peer_comparison: "同业模型结果对比"
+    regulatory_models: "监管模型结果对比"
+    academic_research: "学术研究结果对比"
+
+# 系统集成
+system_integration:
+  data_sources:
+    core_banking: "核心银行系统"
+    risk_management: "风险管理系统"
+    regulatory_reporting: "监管报告系统"
+    finance_accounting: "财务会计系统"
+
+  output_integration:
+    dashboard_systems: "管理仪表板"
+    reporting_platforms: "监管报告平台"
+    planning_systems: "资本规划系统"
+
+# 质量保证
+quality_assurance:
+  data_validation:
+    - "数据完整性检查"
+    - "逻辑一致性验证"
+    - "时序数据合理性"
+
+  calculation_verification:
+    - "公式正确性检查"
+    - "监管要求符合性"
+    - "同业数据对比验证"
+
+  result_reasonableness:
+    - "历史趋势一致性"
+    - "经济逻辑合理性"
+    - "专家经验判断"
+
+# 使用示例
+usage_examples:
+  large_commercial_bank:
+    scenario: "某大型商业银行CET1比率从12.5%下降至11.8%"
+    analysis_approach:
+      - "RWA增长原因分析"
+      - "资本消耗因素分解"
+      - "监管缓冲空间评估"
+      - "资本补充时间窗口"
+    expected_insights:
+      - "主要由信贷投放增长导致"
+      - "仍有180bps监管缓冲"
+      - "建议优化资产结构"
+      - "12个月内需资本补充"
+
+  regional_bank_stress:
+    scenario: "区域银行面临房地产风险集中"
+    analysis_approach:
+      - "房地产敞口压力测试"
+      - "集中度风险评估"
+      - "资本消耗路径分析"
+      - "风险缓释措施评估"
+    expected_insights:
+      - "重度房地产敞口30%"
+      - "房价下跌30%情景资本消耗300bps"
+      - "建议增加一般准备金"
+      - "考虑风险转移工具"
+
+# 版本历史
+version_history:
+  v1_0:
+    release_date: "2026-02-05"
+    features:
+      - "完整资本充足率分析框架"
+      - "压力测试与情景分析"
+      - "动态资本规划模型"
+      - "监管合规评估"
+    coverage:
+      - "中美欧监管框架"
+      - "巴塞尔III/IV标准"
+      - "大中小型银行适用"
