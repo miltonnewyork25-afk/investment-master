@@ -1,5 +1,5 @@
-# PLTR Phase 0.5 共享上下文
-## 编译时间: 2026-02-08T15:45:00+08:00
+# PLTR Phase 2 共享上下文
+## 编译时间: 2026-02-08T17:00:00+08:00
 
 ### Section A: 基础数据锚点 (Data Master v1.0)
 
@@ -55,38 +55,60 @@
 - [DM-GOV-005 v1.0] FedRAMP High + DoD IL5/IL6认证
 
 #### DM-COMP (竞争格局)
-- [DM-COMP-001 v1.0] Snowflake ARR: $2.6B (+26%), 9000客户
-- [DM-COMP-002 v1.0] Databricks ARR: $3.7B (+50%), 估值$100B (私有)
-- [DM-COMP-003 v1.0] PLTR P/S 72.4x vs SNOW P/B 27.01x vs NOW P/E 60.32x
+- [DM-COMP-001 v1.0] Snowflake ARR: $4.6B (+29%), PB 27.01, ROE -53.09%
+- [DM-COMP-002 v1.0] Databricks ARR: $4.8B (+55%), 估值$134B (私有)
+- [DM-COMP-003 v1.0] PLTR P/S 72.4x vs DDOG P/E 360.29x vs NOW P/E 60.32x vs SPY P/E 27.38x
+- [DM-COMP-004 v1.0] C3.ai ARR: $389M (+25%), PB 2.12, ROE -46.77%
+- [DM-COMP-005 v1.0] CrowdStrike: PB 24.82, ROE -8.81%, 市值$99.7B
 
-### Section B: 前序Phase关键发现
-Phase 0数据预取完成。7/14文件可用。关键发现:
-1. Q4 2025业绩远超预期，美商业务+137%加速增长，AIP为核心驱动
-2. FY2026指引$7.19B超华尔街共识$6.22B达15.5%
-3. 估值极端: P/E 216x, P/S 72x, 为可比公司的4-8倍
-4. 客户增速放缓(34% vs 45%)，但ARPU大幅提升(Top20均$94M/年)
-5. CEO Karp三年减持$2.2B，2026计划再售近1000万股
-6. 护城河极强: Ontology锁定+安全审查壁垒+NDR 139%
+### Section B: Phase 1 关键发现 (Phase 2 Agent必读)
 
-### Section C: 量化汇总表
-| Phase | 字符数 | 标注数 | 硬数据% | 目标达成率 |
-|-------|--------|--------|---------|-----------|
-| Phase 0 | 46,734 (7 JSON files) | N/A | N/A | 50% (7/14) |
+1. **S曲线最大加速段后半程** — 美商+137%, Rule of 40=127, 拐点窗口FY2026H2-FY2027
+2. **护城河核心=锁定系数7.8/10** — 安全+工作流锁定是Snowflake的1.56x; 网络效应仅3.7/10
+3. **DOGE净正效应(65%正面)** — IRS/Treasury合同需落地+隐私审查需化解
+4. **三大PPDA背离** — DOGE恐慌过度定价/AI安全法被低估正面/AI泡沫22%
+5. **72x P/S = 50%锁定溢价 + 50%AIP期权定价** — 高风险/高回报估值结构
+6. **数据护城河3年加宽概率70%, 5年维持概率55%** — Microsoft Fabric最大长期威胁
+7. **Ontology重建成本$2.5-7.5M/客户** — 创造数据+工作流锁定
+8. **3,438项专利**, 2,608项已授权 — 时间壁垒竞品无法快速复制
+9. **四周期叠加: 三正一负** — AI投资+政府支出+AIP加速 vs 高利率
+10. **产业链中间层操作系统位置** — 坐在SNOW/DBRX之上消费其数据，非直接竞争
 
-### Section D: 深度参考表
-| 主题 | 文件路径 | 核心数据点 |
-|------|---------|-----------|
-| 财务+分部 | data/research/PLTR/stock_full.json | 营收/分部/指引/NDR/RPO |
-| 业务概况 | data/research/PLTR/business_overview.json | 产品线/客户/TAM/竞争 |
-| 竞争格局 | data/research/PLTR/competitive_landscape.json | 护城河/竞争对手/风险 |
-| 预测市场 | data/research/PLTR/prediction_market_data.json | 衰退/AI/DOGE/PLTR价格 |
-| 新闻催化 | data/research/PLTR/agent_c_news_catalysts.json | 财报/合同/减持/催化 |
-| 市场环境 | data/research/PLTR/market_context.json | S&P/NASDAQ/VIX |
-| 同业对比 | data/research/PLTR/peer_comparison.json | PE/PB/ROE对比 |
+### Section C: Phase 2 关键输入数据
 
-### Section E: 质量标准提醒
+#### 财务详细数据 (from stock_full.json)
+- FY2025 Adjusted Operating Income: $2.3B (margin 50%)
+- FY2025 Adjusted FCF: $2.27B (margin 51%, +82% YoY)
+- Q4 Adjusted Operating Margin: 57%
+- Q4 Adjusted FCF Margin: 56%
+- Q4 Net Income: $608M
+- Q4 Adjusted EPS: $0.25, GAAP EPS: $0.24
+- Cash + Treasuries: $7.2B (2025-12-31)
+- SBC FY2024: $691.6M, TTM Q3 2025: $1.65B (+29%)
+- SBC/Revenue ratio TTM: ~37% (based on $1.65B/$4.475B)
+- Diluted shares: 2.549B
+- ROE: 25.98%
+
+#### 分部估值输入
+- US Government: FY2025 $1.855B (+55%), Q4 $570M (+66%)
+- US Commercial: FY2025 $1.465B (+109%), Q4 $507M (+137%), FY2026 guide >$3.144B (+115%)
+- International Government: FY2025 $547M, Q4 $160M (+43%)
+- International Commercial: FY2025 $608M (+2%)
+- Total FY2025: $4.475B, FY2026 guide: $7.19B (+61%)
+
+#### 可比公司倍数
+- PLTR: PE 215.71x, PB 43.91x, PS 72.4x, ROE 25.98%
+- SNOW: PE N/A, PB 27.01x, ROE -53.09%, 市值$57.6B
+- DDOG: PE 360.29x, PB 11.38x, ROE 3.52%, 市值$39.2B
+- CRWD: PE N/A, PB 24.82x, ROE -8.81%, 市值$99.7B
+- NOW: PE 60.32x, PB 8.14x, ROE 15.49%, 市值$106.3B
+- SPY: PE 27.38x
+
+### Section D: 质量标准
 - 标注密度: ≥15个/万字
 - 硬数据占比: ≥40%
 - 每模块必须有 So What 段落
-- 行业系数: ×1.4 (科技平台)
-- 总字符目标: ≥119,000 (wc -m)
+- SOTP必须三步验证 (段值/汇总/每股)
+- DCF必须多阶段+敏感度表
+- 可比公司必须≥5家
+- 护城河评分必须量化(0-10)
