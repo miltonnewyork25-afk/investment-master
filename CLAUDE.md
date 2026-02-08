@@ -50,6 +50,7 @@
 | `docs/time_management.md` | 项目启动时 |
 | `tests/research_fast.sh` | Agent完成后质量门控 |
 | `tests/quality_gate_complete.sh` | Complete报告门控 |
+| `docs/compound_learning_flywheel.md` | Complete报告通过后反思 / 架构优化时 |
 | `CHANGELOG.md` | 查看变更历史时 |
 
 ## 金融行业专用规则
