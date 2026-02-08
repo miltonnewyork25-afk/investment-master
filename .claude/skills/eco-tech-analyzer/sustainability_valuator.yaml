@@ -1,0 +1,373 @@
+name: sustainability-valuator
+description: 可持续发展价值评估器 - 专门评估ESG原生价值、可持续竞争优势，将ESG要素转化为具体投资价值
+version: "1.0"
+author: "投资研究Agent v19.12"
+category: esg_valuation
+
+triggers:
+  - "ESG价值评估"
+  - "可持续发展估值"
+  - "ESG原生价值"
+  - "可持续竞争优势"
+  - "ESG溢价分析"
+  - "影响力投资"
+
+system_message: |
+  你是可持续发展价值评估专家，专门负责：
+  1. 量化ESG要素对企业价值的影响
+  2. 评估可持续发展竞争优势和护城河
+  3. 分析ESG投资溢价和折价机制
+  4. 建立ESG风险调整估值模型
+  5. 评估长期可持续价值创造能力
+
+  核心专长：
+  - ESG materiality分析和价值传导机制
+  - 可持续商业模式护城河评估
+  - ESG风险和机会的财务量化
+  - 影响力投资回报测量
+  - ESG数据质量和可靠性评估
+
+analysis_framework:
+  esg_materiality_assessment:
+    environmental_factors:
+      - climate_risk_opportunity: "气候风险与机会评估"
+      - resource_efficiency: "资源利用效率优势"
+      - pollution_prevention: "污染防控能力"
+      - biodiversity_impact: "生物多样性影响"
+      - circular_economy: "循环经济商业模式"
+
+    social_factors:
+      - stakeholder_relations: "利益相关者关系质量"
+      - human_capital: "人力资本优势"
+      - product_responsibility: "产品责任和安全"
+      - community_impact: "社区影响和贡献"
+      - supply_chain_ethics: "供应链道德标准"
+
+    governance_factors:
+      - board_effectiveness: "董事会有效性"
+      - executive_compensation: "高管薪酬合理性"
+      - transparency_disclosure: "透明度和披露质量"
+      - risk_management: "风险管理体系"
+      - stakeholder_governance: "利益相关者治理"
+
+  value_creation_pathways:
+    revenue_enhancement:
+      premium_pricing: "可持续产品溢价定价能力"
+      market_expansion: "ESG驱动的市场扩张"
+      customer_loyalty: "可持续品牌忠诚度"
+      innovation_pipeline: "ESG驱动创新管道"
+
+    cost_optimization:
+      operational_efficiency: "运营效率改善"
+      resource_cost_savings: "资源成本节约"
+      regulatory_compliance: "合规成本优化"
+      risk_mitigation: "风险缓解成本节约"
+
+    capital_efficiency:
+      cost_of_capital: "ESG改善融资成本"
+      capital_allocation: "可持续投资配置"
+      asset_utilization: "资产利用效率"
+      working_capital: "营运资本优化"
+
+    risk_premium_reduction:
+      systematic_risk: "系统性风险降低"
+      operational_risk: "运营风险缓解"
+      regulatory_risk: "监管风险降低"
+      reputational_risk: "声誉风险管理"
+
+esg_valuation_methodologies:
+  esg_adjusted_dcf:
+    revenue_adjustments:
+      - sustainable_growth_premium: "可持续增长溢价(2-5%)"
+      - market_share_expansion: "ESG市场份额增长"
+      - pricing_power_enhancement: "定价权增强效应"
+      - customer_retention_value: "客户留存价值提升"
+
+    cost_adjustments:
+      - operational_efficiency_gains: "运营效率收益"
+      - resource_productivity: "资源生产率改善"
+      - compliance_cost_savings: "合规成本节约"
+      - talent_attraction_cost: "人才吸引成本降低"
+
+    discount_rate_adjustments:
+      - beta_adjustment: "ESG Beta调整(-0.1到+0.2)"
+      - cost_of_debt_reduction: "债务成本降低(10-50bps)"
+      - equity_risk_premium: "权益风险溢价调整"
+      - terminal_value_adjustment: "永续价值ESG调整"
+
+    calculation: |
+      ESG调整DCF = Σ[(收入+ESG收入溢价) - (成本-ESG成本节约)] / (WACC-ESG贴现率降低)^t
+      ESG价值贡献 = ESG调整DCF - 传统DCF
+      ESG价值比例 = ESG价值贡献 / 企业总价值
+
+  esg_multiple_valuation:
+    esg_scoring_system:
+      environmental_score_0_100: "环境评分(0-100分)"
+      social_score_0_100: "社会评分(0-100分)"
+      governance_score_0_100: "治理评分(0-100分)"
+      overall_esg_score: "综合ESG评分(0-100分)"
+
+    multiple_adjustments:
+      pe_multiple_adjustment: "PE倍数ESG调整(±10-30%)"
+      ev_sales_adjustment: "EV/Sales倍数调整"
+      ev_ebitda_adjustment: "EV/EBITDA倍数调整"
+      price_book_adjustment: "PB倍数调整"
+
+    calculation: |
+      ESG调整倍数 = 基础倍数 × (1 + ESG评分系数)
+      ESG评分系数 = (ESG综合评分/100 - 0.5) × 倍数弹性系数
+      倍数弹性系数 = 0.3-0.6 (根据行业ESG敏感度)
+
+sustainability_competitive_advantages:
+  sustainable_moats_assessment:
+    cost_moats:
+      - resource_efficiency: "资源利用效率护城河"
+      - renewable_energy: "可再生能源成本优势"
+      - waste_reduction: "废物减少成本节约"
+      - process_optimization: "工艺流程优化"
+
+    differentiation_moats:
+      - sustainable_innovation: "可持续创新领先性"
+      - brand_sustainability: "可持续品牌价值"
+      - customer_engagement: "客户ESG参与度"
+      - product_lifecycle: "产品生命周期优势"
+
+    switching_cost_moats:
+      - integrated_solutions: "集成解决方案粘性"
+      - certification_standards: "认证标准建立"
+      - ecosystem_lock_in: "生态系统锁定"
+      - knowledge_accumulation: "可持续知识积累"
+
+    network_effect_moats:
+      - platform_sustainability: "可持续平台效应"
+      - stakeholder_network: "利益相关者网络"
+      - data_network_effects: "ESG数据网络效应"
+      - collaborative_innovation: "协作创新网络"
+
+  moat_durability_analysis:
+    environmental_moats_5_15_years:
+      - "技术领先优势逐步缩小"
+      - "监管标准普及降低差异化"
+      - "新技术可能颠覆现有优势"
+
+    social_moats_10_20_years:
+      - "品牌和文化优势相对持久"
+      - "人才和社区关系需持续维护"
+      - "社会期望变化带来挑战"
+
+    governance_moats_15_25_years:
+      - "治理优势最为持久和稳定"
+      - "制度优势难以快速复制"
+      - "但需适应治理标准演进"
+
+esg_risk_assessment:
+  esg_risk_quantification:
+    transition_risks:
+      - policy_regulatory_risk: "政策监管转型风险"
+      - technology_disruption: "技术颠覆风险"
+      - market_demand_shift: "市场需求转变"
+      - reputation_brand_risk: "声誉品牌风险"
+
+    physical_risks:
+      - acute_physical_risk: "极端天气等急性风险"
+      - chronic_physical_risk: "气候变化慢性风险"
+      - supply_chain_disruption: "供应链中断风险"
+      - operational_impact: "运营影响风险"
+
+    social_risks:
+      - labor_relations: "劳资关系风险"
+      - community_opposition: "社区反对风险"
+      - human_rights_issues: "人权问题风险"
+      - product_safety_liability: "产品安全责任风险"
+
+    governance_risks:
+      - management_quality: "管理质量风险"
+      - corruption_compliance: "腐败合规风险"
+      - information_security: "信息安全风险"
+      - strategic_oversight: "战略监督风险"
+
+  risk_financial_impact:
+    earnings_impact:
+      high_risk_companies: "ESG高风险公司：-15%到-30%盈利影响"
+      medium_risk_companies: "ESG中等风险公司：-5%到-15%盈利影响"
+      low_risk_companies: "ESG低风险公司：0到-5%盈利影响"
+
+    valuation_impact:
+      risk_premium_increase: "ESG风险溢价增加50-200bps"
+      multiple_compression: "估值倍数压缩10-40%"
+      terminal_value_reduction: "终值折价5-20%"
+
+stakeholder_value_creation:
+  stakeholder_impact_measurement:
+    shareholder_value:
+      - total_return: "股东总回报(TSR)"
+      - dividend_sustainability: "股息可持续性"
+      - capital_appreciation: "资本增值稳定性"
+      - risk_adjusted_return: "风险调整后收益"
+
+    employee_value:
+      - compensation_benefits: "薪酬福利水平"
+      - career_development: "职业发展机会"
+      - workplace_safety: "工作场所安全"
+      - work_life_balance: "工作生活平衡"
+
+    customer_value:
+      - product_quality_safety: "产品质量安全"
+      - fair_pricing: "公平定价政策"
+      - service_accessibility: "服务可及性"
+      - innovation_benefits: "创新效益分享"
+
+    community_value:
+      - local_economic_impact: "本地经济影响"
+      - environmental_improvement: "环境改善贡献"
+      - social_program_investment: "社会项目投资"
+      - tax_contribution: "税收贡献"
+
+  integrated_value_model:
+    stakeholder_weighting:
+      - shareholders_40_50: "股东价值权重40-50%"
+      - employees_20_25: "员工价值权重20-25%"
+      - customers_15_20: "客户价值权重15-20%"
+      - community_10_15: "社区价值权重10-15%"
+
+    value_integration: |
+      综合价值 = Σ(利益相关者价值 × 权重)
+      可持续价值溢价 = 综合价值 / 纯股东价值 - 1
+      长期价值稳定性 = 利益相关者价值协调度评分
+
+impact_investment_metrics:
+  impact_measurement:
+    environmental_impact:
+      - co2_reduction_tons: "CO2减排量(吨/年)"
+      - renewable_energy_mwh: "可再生能源产生(MWh/年)"
+      - waste_diverted_tons: "废物转化量(吨/年)"
+      - water_saved_liters: "节约用水量(升/年)"
+
+    social_impact:
+      - jobs_created: "创造就业岗位数量"
+      - people_served: "服务受益人口数量"
+      - education_access: "教育机会提升人数"
+      - health_improvement: "健康改善受益人数"
+
+  impact_return_integration:
+    financial_return_metrics:
+      - irr: "内部收益率(%)"
+      - multiple_of_money: "资金倍数(MoM)"
+      - payback_period: "投资回收期(年)"
+      - risk_adjusted_return: "风险调整收益率(%)"
+
+    impact_return_metrics:
+      - impact_per_dollar: "单位投资影响力"
+      - cost_per_beneficiary: "单位受益人成本"
+      - impact_duration: "影响力持续时间"
+      - attribution_confidence: "影响归因可信度"
+
+    blended_value_calculation: |
+      综合价值回报 = 财务回报权重 × 财务IRR + 影响回报权重 × 影响价值回报
+      影响溢价 = 影响投资接受的财务回报折让
+      影响效率 = 影响成果 / 总投资成本
+
+esg_data_quality_assessment:
+  data_sources_reliability:
+    tier_1_sources_95_99:
+      - "公司官方ESG报告和审计"
+      - "第三方ESG评级机构(MSCI, Sustainalytics)"
+      - "监管机构ESG披露要求"
+      - "国际标准组织认证"
+
+    tier_2_sources_85_94:
+      - "行业协会ESG基准"
+      - "专业ESG咨询机构"
+      - "学术研究机构数据"
+      - "NGO环保组织报告"
+
+    tier_3_sources_70_84:
+      - "媒体ESG相关报道"
+      - "社交媒体情感分析"
+      - "供应商自主披露"
+      - "地方政府环境数据"
+
+  measurement_standardization:
+    reporting_frameworks:
+      - gri_standards: "全球报告倡议(GRI)标准"
+      - sasb_standards: "可持续会计准则委员会(SASB)"
+      - tcfd_framework: "气候相关财务披露(TCFD)"
+      - un_global_compact: "联合国全球契约"
+
+    verification_requirements:
+      - third_party_assurance: "第三方鉴证要求"
+      - audit_trail: "审计轨迹完整性"
+      - data_consistency: "数据一致性检查"
+      - methodology_transparency: "方法论透明度"
+
+valuation_integration_models:
+  esg_adjusted_wacc:
+    cost_of_equity_adjustment:
+      - beta_esg_adjustment: "ESG Beta调整"
+      - esg_risk_premium: "ESG风险溢价"
+      - esg_quality_discount: "ESG质量折价"
+
+    cost_of_debt_adjustment:
+      - green_bond_pricing: "绿色债券定价优势"
+      - credit_rating_impact: "ESG信用评级影响"
+      - sustainability_linked_loans: "可持续发展关联贷款"
+
+    calculation: |
+      ESG调整WACC = (调整后权益成本 × 权益比重) + (调整后债务成本 × 债务比重)
+      权益成本调整 = Rf + Beta_ESG × (Rm-Rf) + ESG风险溢价
+      债务成本调整 = 基础债务成本 - ESG债务成本降低
+
+  esg_scenario_valuation:
+    esg_leadership_scenario:
+      - esg_score_80_100: "ESG领导者(80-100分)"
+      - valuation_premium_20_40: "估值溢价20-40%"
+      - revenue_growth_premium_3_7: "收入增长溢价3-7%"
+      - margin_improvement_2_5: "利润率改善2-5%"
+
+    esg_laggard_scenario:
+      - esg_score_0_40: "ESG落后者(0-40分)"
+      - valuation_discount_15_35: "估值折价15-35%"
+      - revenue_growth_penalty_2_5: "收入增长惩罚2-5%"
+      - margin_pressure_3_8: "利润率压力3-8%"
+
+output_deliverables:
+  esg_valuation_report:
+    executive_summary: "ESG价值评估执行摘要"
+    materiality_analysis: "ESG重要性分析矩阵"
+    competitive_advantage_assessment: "可持续竞争优势评估"
+    financial_impact_quantification: "财务影响量化分析"
+    risk_opportunity_matrix: "ESG风险机会矩阵"
+    valuation_adjustment: "ESG估值调整建议"
+
+  stakeholder_value_model:
+    stakeholder_impact_assessment: "利益相关者影响评估"
+    integrated_value_calculation: "综合价值计算模型"
+    long_term_sustainability: "长期可持续性分析"
+    value_creation_roadmap: "价值创造路线图"
+
+quality_assurance:
+  esg_expertise_validation:
+    expert_panel_review: "ESG专家小组审查"
+    industry_benchmark_comparison: "行业基准对比"
+    methodology_peer_review: "方法论同行评议"
+    stakeholder_feedback: "利益相关者反馈"
+
+  quantification_accuracy:
+    sensitivity_analysis: "关键假设敏感性分析"
+    scenario_stress_testing: "情景压力测试"
+    data_quality_assessment: "数据质量评估"
+    model_backtesting: "模型回测验证"
+
+integration_protocols:
+  with_financial_modeling: "财务建模ESG调整输入"
+  with_risk_assessment: "风险评估ESG要素整合"
+  with_competitive_analysis: "竞争分析ESG维度"
+  with_investment_strategy: "投资策略ESG考量"
+  with_monitoring_system: "ESG监控指标体系"
+
+success_criteria:
+  valuation_accuracy: "ESG估值调整准确性 >80%"
+  materiality_identification: "重要性议题识别完整性 >90%"
+  competitive_advantage_assessment: "竞争优势评估可靠性 >85%"
+  stakeholder_value_integration: "利益相关者价值整合有效性 >80%"
+  long_term_predictive_power: "长期价值预测力 >75%"

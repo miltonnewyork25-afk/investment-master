@@ -1,0 +1,472 @@
+name: "financial_banking_nim_alm"
+version: "1.0"
+description: "L4级银行净息差与资产负债管理深度分析 - 涵盖利率敏感性、久期匹配、流动性管理、息差驱动因素的完整ALM分析体系"
+category: "banking_specialized"
+complexity_score: 9.0
+dependencies: ["financial_digital_twin_core", "financial_banking_capital_adequacy"]
+
+# ==============================================================================
+# 核心功能模块
+# ==============================================================================
+
+core_capabilities:
+  nim_decomposition_analysis:
+    description: "净息差深度分解与驱动因子分析"
+    key_metrics:
+      - "净息差(NIM)的组成部分分解"
+      - "资产收益率与负债成本率趋势"
+      - "息差敏感性与利率环境关联"
+      - "产品组合对息差的贡献分析"
+      - "同业息差水平对比与竞争优势"
+
+    decomposition_framework:
+      nim_calculation:
+        basic_formula: "NIM = (利息收入 - 利息支出) / 平均生息资产"
+        advanced_formula: |
+          NIM = Σ(资产组合i × 收益率i) - Σ(负债组合j × 成本率j)
+          调整项: 免息资金成本 + 资金转移定价 + 期权价值
+
+      asset_yield_analysis:
+        loan_portfolio: "贷款组合收益率分解(定价+信用成本+费用)"
+        securities_portfolio: "证券投资收益率分析(持有至到期+可供出售)"
+        interbank_assets: "银行间资产收益率与市场利率联动"
+        fee_integration: "手续费收入对有效收益率的贡献"
+
+      liability_cost_analysis:
+        deposit_costs: "存款成本率分解(活期+定期+大额存单)"
+        wholesale_funding: "批发资金成本(同业+债券+央行资金)"
+        cost_of_equity: "股权资金成本与ROE要求"
+        funding_mix_optimization: "资金结构优化与成本控制"
+
+  interest_rate_sensitivity_modeling:
+    description: "利率敏感性建模与风险管理"
+    key_elements:
+      - "利率重定价缺口分析"
+      - "久期缺口与利率风险暴露"
+      - "凸性风险与非线性利率影响"
+      - "隐含期权价值与期权风险"
+      - "情景分析与压力测试"
+
+    sensitivity_framework:
+      repricing_gap_analysis:
+        gap_calculation: |
+          重定价缺口 = 利率敏感资产 - 利率敏感负债
+          累计缺口 = Σ(各期限重定价缺口)
+
+        time_buckets:
+          overnight_7d: "隔夜至7天重定价缺口"
+          7d_1m: "7天至1个月重定价缺口"
+          1m_3m: "1个月至3个月重定价缺口"
+          3m_1y: "3个月至1年重定价缺口"
+          1y_plus: "1年以上重定价缺口"
+
+        sensitivity_metrics:
+          - "100bp利率变化对NIM的影响"
+          - "收益率曲线平移的净利息收入影响"
+          - "收益率曲线形状变化的影响"
+
+      duration_analysis:
+        asset_duration: "资产组合修正久期计算"
+        liability_duration: "负债组合修正久期计算"
+        duration_gap: "久期缺口 = 资产久期 - (负债/资产) × 负债久期"
+        convexity_analysis: "凸性对利率变动的二阶效应"
+
+      embedded_options_valuation:
+        prepayment_options: "贷款提前还款选择权价值"
+        call_options: "可赎回债券选择权价值"
+        deposit_options: "存款提前支取选择权价值"
+        caps_floors: "利率上下限保护的期权价值"
+
+  asset_liability_matching:
+    description: "资产负债匹配与期限结构管理"
+    key_components:
+      - "期限结构匹配优化"
+      - "流动性缺口管理"
+      - "资金转移定价(FTP)机制"
+      - "经济价值敏感性(EVE)管理"
+      - "收益模拟与情景规划"
+
+    matching_framework:
+      maturity_matching:
+        static_matching: "静态期限匹配分析"
+        dynamic_matching: "考虑现金流时序的动态匹配"
+        behavioral_maturity: "行为到期日vs合同到期日差异"
+        rollover_assumptions: "资产负债滚动假设合理性"
+
+      liquidity_gap_management:
+        cash_flow_projection: "未来现金流预测与缺口识别"
+        contingency_planning: "流动性应急预案与压力情景"
+        regulatory_requirements: "LCR/NSFR等监管流动性要求"
+        market_accessibility: "市场流动性获取能力评估"
+
+      funds_transfer_pricing:
+        ftp_methodology: "资金转移定价方法论"
+        yield_curve_construction: "内部资金成本曲线构建"
+        business_unit_profitability: "业务单元真实盈利能力评估"
+        incentive_alignment: "FTP激励机制与行为引导"
+
+  yield_curve_positioning:
+    description: "收益率曲线定位与利率周期管理"
+    key_aspects:
+      - "收益率曲线形状变化的影响"
+      - "利率周期定位与息差预测"
+      - "央行政策对银行息差的传导机制"
+      - "宏观经济周期与息差波动关系"
+      - "利率风险对冲策略有效性"
+
+    positioning_framework:
+      curve_shape_analysis:
+        steepening_impact: "收益率曲线陡峭化对息差的正面影响"
+        flattening_impact: "收益率曲线平坦化对息差的负面影响"
+        inversion_stress: "收益率曲线倒挂的息差压力"
+        parallel_shift: "平行移动对不同期限结构银行的影响"
+
+      cycle_positioning:
+        tightening_cycle: "加息周期中的ALM策略调整"
+        easing_cycle: "降息周期中的息差保护策略"
+        rate_plateau: "利率平台期的收益优化策略"
+        volatility_management: "利率波动期的风险控制"
+
+      hedging_effectiveness:
+        derivatives_usage: "利率衍生品对冲有效性评估"
+        natural_hedges: "业务结构的天然对冲效果"
+        dynamic_hedging: "动态对冲策略的成本效益分析"
+        hedge_accounting: "套期会计对财务报表的影响"
+
+# ==============================================================================
+# L4级深度分析方法
+# ==============================================================================
+
+advanced_methodologies:
+  dynamic_nim_forecasting:
+    description: "动态净息差预测模型"
+    methodology: |
+      构建多因子动态NIM预测模型:
+      NIM(t+1) = α + β₁×利率环境(t) + β₂×信用周期(t) + β₃×竞争强度(t) +
+                β₄×资金结构(t) + β₅×监管环境(t) + β₆×银行特定因子(t) + ε
+
+    model_components:
+      interest_rate_factors:
+        - "基准利率水平与变化趋势"
+        - "收益率曲线斜率与形状"
+        - "利率波动率与不确定性"
+        - "央行政策立场与预期"
+
+      credit_cycle_factors:
+        - "信用风险溢价变化"
+        - "违约率预期与风险定价"
+        - "信贷需求强度"
+        - "风险偏好变化"
+
+      competitive_factors:
+        - "银行间竞争激烈程度"
+        - "非银机构竞争压力"
+        - "数字银行冲击"
+        - "利率市场化程度"
+
+      regulatory_factors:
+        - "存款保险制度影响"
+        - "流动性监管要求"
+        - "资本监管约束"
+        - "利率管制政策"
+
+    output_metrics:
+      nim_forecast: "未来4季度NIM预测值与置信区间"
+      sensitivity_analysis: "关键假设变化对NIM预测的影响"
+      scenario_planning: "不同宏观情景下的NIM表现"
+      risk_assessment: "NIM下行风险概率与幅度"
+
+  alm_optimization_modeling:
+    description: "资产负债管理优化建模"
+    methodology: |
+      资产负债配置优化目标函数:
+      Max: E[ROA] - λ₁×Var[ROA] - λ₂×VaR[利率风险] - λ₃×流动性成本
+
+      约束条件:
+      - 监管资本充足率 ≥ 监管要求
+      - 流动性覆盖率 ≥ 100%
+      - 利率风险限额 ≤ 风险容忍度
+      - 业务战略约束
+
+    optimization_framework:
+      objective_function:
+        risk_adjusted_return: "风险调整后收益最大化"
+        volatility_minimization: "收益波动率最小化"
+        shareholder_value: "股东价值最大化"
+        regulatory_compliance: "监管合规约束满足"
+
+      decision_variables:
+        asset_allocation: "各类资产配置比例"
+        funding_structure: "资金来源结构选择"
+        hedging_positions: "利率风险对冲头寸"
+        product_pricing: "产品定价策略调整"
+
+      constraint_modeling:
+        capital_constraints: "资本约束建模"
+        liquidity_constraints: "流动性约束建模"
+        risk_constraints: "各类风险限额约束"
+        business_constraints: "业务发展战略约束"
+
+    solution_approaches:
+      linear_programming: "线性规划求解资产配置"
+      stochastic_optimization: "随机优化应对不确定性"
+      monte_carlo_simulation: "蒙特卡洛仿真验证方案"
+      multi_objective_optimization: "多目标优化权衡"
+
+  peer_alm_benchmarking:
+    description: "同业ALM能力对标分析"
+    methodology: |
+      构建同业ALM管理能力评估体系:
+      1. 息差管理能力对比
+      2. 利率风险控制能力对比
+      3. 流动性管理效率对比
+      4. ALM创新实践对比
+
+    benchmarking_dimensions:
+      nim_management:
+        nim_level: "净息差绝对水平同业排名"
+        nim_stability: "净息差稳定性与波动率对比"
+        nim_sensitivity: "利率敏感性管理能力"
+        nim_improvement: "息差改善速度与持续性"
+
+      risk_control:
+        interest_rate_risk: "利率风险控制有效性"
+        liquidity_management: "流动性管理质量"
+        duration_matching: "久期匹配管理水平"
+        hedging_effectiveness: "对冲策略执行效果"
+
+      operational_efficiency:
+        ftp_sophistication: "FTP机制先进性"
+        alm_governance: "ALM治理结构完善性"
+        system_capability: "ALM系统技术能力"
+        talent_depth: "ALM专业人才深度"
+
+# ==============================================================================
+# 风险预警系统(Kill Switch)
+# ==============================================================================
+
+risk_warning_system:
+  tier_1_critical_alerts:
+    nim_collapse:
+      trigger: "NIM连续2季度下降且单季度降幅>25bp"
+      severity: "CRITICAL"
+      implication: "息差急剧恶化，盈利能力面临重大威胁"
+      action: "立即减仓/避免新增投资"
+
+    duration_mismatch_excessive:
+      trigger: "久期缺口>资产×5%且利率上升环境"
+      severity: "CRITICAL"
+      implication: "巨大久期风险敞口，利率上升将重创经济价值"
+      action: "立即减仓/要求管理层说明风控措施"
+
+    liquidity_crisis:
+      trigger: "LCR<100%或NSFR<100%"
+      severity: "CRITICAL"
+      implication: "流动性监管指标违反，面临监管处罚"
+      action: "立即减仓/监控监管动态"
+
+  tier_2_warning_alerts:
+    nim_compression:
+      trigger: "NIM连续3季度下降且累计降幅>15bp"
+      severity: "WARNING"
+      implication: "息差持续受压，盈利前景担忧"
+      action: "降低仓位/加强监控"
+
+    funding_cost_spike:
+      trigger: "批发资金成本环比上升>50bp"
+      severity: "WARNING"
+      implication: "融资成本急升，息差面临压力"
+      action: "谨慎评估/监控流动性状况"
+
+    asset_yield_deterioration:
+      trigger: "贷款收益率下降>30bp且信贷投放增长<5%"
+      severity: "WARNING"
+      implication: "资产端定价能力削弱"
+      action: "密切监控/评估竞争策略"
+
+  tier_3_monitoring_alerts:
+    rate_sensitivity_high:
+      trigger: "100bp利率变动对NIM影响>40bp"
+      severity: "MONITOR"
+      implication: "利率敏感性较高，需关注利率环境"
+      action: "持续监控/评估对冲需求"
+
+    deposit_competition:
+      trigger: "存款增长率<市场平均水平且存款成本上升"
+      severity: "MONITOR"
+      implication: "存款竞争加剧，资金来源承压"
+      action: "监控竞争态势/评估存款策略"
+
+# ==============================================================================
+# 数据需求与质量标准
+# ==============================================================================
+
+data_requirements:
+  regulatory_filings:
+    - source: "银行年报/季报"
+      frequency: "季度"
+      confidence: "A级(95-99%)"
+      key_data: ["净息差", "利息收入/支出明细", "平均余额", "利率水平"]
+
+    - source: "监管报表(1104表等)"
+      frequency: "月度"
+      confidence: "A级(95-99%)"
+      key_data: ["利率重定价期限分布", "久期分析", "利率敏感性"]
+
+    - source: "LCR/NSFR披露报告"
+      frequency: "季度"
+      confidence: "A级(95-99%)"
+      key_data: ["流动性覆盖率", "净稳定资金比例", "流动性缺口"]
+
+  market_data:
+    - source: "货币市场利率(SHIBOR/DR007)"
+      frequency: "日度"
+      confidence: "A级(95-99%)"
+      key_data: ["基准利率", "银行间拆借利率", "债券收益率"]
+
+    - source: "银行同业存单利率"
+      frequency: "日度"
+      confidence: "A级(95-99%)"
+      key_data: ["各期限存单发行利率", "银行评级利差"]
+
+    - source: "利率衍生品价格"
+      frequency: "日度"
+      confidence: "B级(85-94%)"
+      key_data: ["利率互换价格", "期权隐含波动率", "远期利率"]
+
+  peer_comparison_data:
+    - source: "同业银行财报"
+      frequency: "季度"
+      confidence: "A级(95-99%)"
+      key_data: ["同业NIM水平", "资产负债结构", "利率敏感性披露"]
+
+    - source: "银行业协会统计"
+      frequency: "季度"
+      confidence: "B级(85-94%)"
+      key_data: ["行业平均息差", "资产负债结构变化", "风险管理实践"]
+
+data_quality_standards:
+  completeness: "关键ALM指标数据完整性≥98%"
+  timeliness: "市场数据更新滞后≤1个工作日"
+  accuracy: "A+B级数据占比≥90%"
+  consistency: "跨数据源一致性校验通过率≥95%"
+
+# ==============================================================================
+# 输出规范与报告模板
+# ==============================================================================
+
+output_specifications:
+  analysis_report:
+    structure:
+      executive_summary: "ALM管理能力与投资建议(300字)"
+      nim_decomposition: "净息差分解与驱动分析(1000字)"
+      interest_rate_sensitivity: "利率敏感性与风险评估(800字)"
+      alm_positioning: "资产负债管理定位分析(700字)"
+      yield_curve_strategy: "收益率曲线定位策略(600字)"
+      liquidity_management: "流动性管理能力评估(500字)"
+      peer_comparison: "同业ALM能力对标(500字)"
+      risk_warning: "ALM风险预警分析(300字)"
+      investment_recommendation: "基于ALM的投资建议(300字)"
+
+    minimum_length: 5000
+    required_elements:
+      - "≥30个ALM量化指标分析"
+      - "≥5个利率情景敏感性测试"
+      - "≥3种期限结构分析"
+      - "≥4个流动性管理指标"
+      - "≥6个风险预警指标"
+      - "具体投资建议+仓位建议+时间框架"
+
+  quantitative_outputs:
+    alm_quality_score: "ALM管理质量评分(1-10分)"
+    nim_forecast: "未来4季度NIM预测与置信区间"
+    interest_rate_sensitivity: "利率敏感性评估(高/中/低)"
+    liquidity_strength: "流动性管理能力评级(强/中/弱)"
+    duration_risk: "久期风险暴露程度(低/中/高)"
+    investment_rating: "基于ALM的投资评级(强烈推荐/推荐/中性/回避/强烈回避)"
+
+# ==============================================================================
+# 技能调用示例
+# ==============================================================================
+
+usage_examples:
+  jpmorgan_alm_analysis:
+    input: "分析摩根大通的资产负债管理能力"
+    process: |
+      1. 分析JPM的NIM构成与同业对比优势
+      2. 评估利率上升环境下的息差敏感性
+      3. 分析其资产负债期限匹配策略
+      4. 评估流动性管理与CCAR表现
+      5. 预测不同利率情景下的NIM表现
+    output: "L4级ALM分析报告+投资建议"
+
+  regional_banks_alm_stress:
+    input: "评估区域银行在利率上升周期中的ALM压力"
+    process: |
+      1. 对比区域银行的资产负债久期匹配
+      2. 分析存款定价滞后对息差的影响
+      3. 评估CRE敞口在加息环境下的风险
+      4. 压力测试不同加息路径的NIM影响
+      5. 提供区域银行防守性投资策略
+    output: "区域银行ALM压力测试+投资排序"
+
+# ==============================================================================
+# 持续优化机制
+# ==============================================================================
+
+continuous_improvement:
+  model_validation:
+    frequency: "季度"
+    methodology: "NIM预测准确性验证，优化预测模型"
+    success_metrics: "NIM预测准确率≥75%, 利率敏感性预测误差≤20%"
+
+  methodology_updates:
+    frequency: "半年度"
+    methodology: "ALM最佳实践学习，更新分析方法"
+    focus_areas: ["数字化ALM工具", "机器学习应用", "高频数据利用"]
+
+  regulatory_tracking:
+    frequency: "实时"
+    methodology: "ALM相关监管政策跟踪，及时调整框架"
+    monitoring: ["巴塞尔III实施", "流动性监管变化", "利率市场化进程"]
+
+  market_intelligence:
+    frequency: "月度"
+    methodology: "市场环境变化对ALM策略的影响分析"
+    tracking: ["央行政策立场", "收益率曲线演变", "银行竞争格局"]
+
+# ==============================================================================
+# 技能元数据
+# ==============================================================================
+
+metadata:
+  creation_date: "2026-02-05"
+  last_updated: "2026-02-05"
+  version_history:
+    - "1.0: 初始版本，完整L4级银行净息差与资产负债管理分析能力"
+
+  performance_metrics:
+    accuracy_target: "NIM预测准确率≥75%"
+    coverage_target: "适用银行类型≥95%"
+    efficiency_target: "ALM分析完成时间≤2.5小时"
+
+  integration_points:
+    - "financial_digital_twin_core: ALM数据集成与建模"
+    - "financial_banking_capital_adequacy: 资本与ALM联动分析"
+    - "financial_banking_credit_risk: 信用风险与利率风险综合"
+
+  skill_classification:
+    domain: "banking"
+    complexity: "L4_advanced"
+    specialization: "nim_alm_management"
+    user_level: "professional_analyst"
+
+# ==============================================================================
+# 免责声明
+# ==============================================================================
+
+disclaimer: |
+  本技能模块提供的资产负债管理分析结果仅供参考，不构成投资建议。
+  ALM分析涉及复杂的利率环境、监管政策、市场流动性等多重因素，
+  实际投资决策应结合银行整体经营状况、风险管控能力、战略执行力等综合评估。
+  使用者应具备相应的银行业专业知识和风险承受能力。

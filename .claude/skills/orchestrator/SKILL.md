@@ -15,18 +15,28 @@ description: 投资分析框架编排器。识别公司行业，组装通用模�
 
 根据公司名/代码判断行业类型：
 
-| 行业 | 适配器文件 | 代表公司 |
-|------|-----------|---------|
-| 半导体 | `modules/semiconductor.md` | TSM, MU, LRCX, NVDA, ASML |
-| 消费品 | `modules/consumer.md` | PG, KO, COST, NKE, LVMH |
-| 科技平台 | `modules/tech_platform.md` | META, GOOG, AMZN, MSFT, AAPL |
-| 零售 | `modules/retail.md` | WMT, COST, HD, TGT, DG |
-| 金融 | `modules/financial.md` | JPM, GS, BRK, V, MA |
-| 其他 | 仅用通用模块 | - |
+| 行业 | 适配器文件 | 代表公司 | 复杂度系数 |
+|------|-----------|---------|-----------|
+| 半导体 | `modules/semiconductor.md` | TSM, MU, LRCX, NVDA, ASML | 2.0 |
+| 消费品 | `modules/consumer.md` | PG, KO, COST, NKE, LVMH | 1.8 |
+| 科技平台 | `modules/tech_platform.md` | META, GOOG, AMZN, MSFT, AAPL | 1.7 |
+| 零售 | `modules/retail.md` | WMT, COST, HD, TGT, DG | 1.6 |
+| 金融 | `modules/financial.md` | JPM, GS, BRK, V, MA | 1.6 |
+| 其他 | 仅用通用模块 | - | 1.0 |
 
-### Step 2: 加载模块
+### Step 2: 数据预取（v2.0 — 11个文件）
 
-1. **必须读取** `modules/universal.md` — 通用模块（所有行业共用）
+触发 `/data-prefetch` 技能（参见 `.claude/skills/data-prefetch/SKILL.md`）：
+
+1. 调用 MCP 工具获取实时数据（analyze_stock, compare_stocks, get_market_overview）→ 3个文件
+2. 启动 5个并行 WebSearch Task Agent 预取分析师共识、预测市场、新闻催化剂、业务竞争、管理层数据 → 6个文件
+3. 运行 Python 估值模型（DCF计算器, 可比公司分析）→ 2个文件
+4. 缓存到 `data/research/{TICKER}/`（共11个数据文件 + 1个元数据文件）
+5. 分类检查缓存有效性（不同数据类型有不同的过期规则，详见 data-prefetch SKILL.md）
+
+### Step 3: 加载模块
+
+1. **必须读取** `modules/universal.md` — 通用模块（所有行业共用，29个模块）
 2. **必须读取** `modules/{行业}.md` — 行业适配模块
 3. 合并两份模块清单，去重
 
@@ -55,7 +65,8 @@ description: 投资分析框架编排器。识别公司行业，组装通用模�
 ## 行业：{行业类型}
 ## 行业复杂度系数：{系数}
 ## 最低字数：120,000 × {系数} = {目标字数}
-## 数据缓存：data/research/{TICKER}/
+## 报告输出：reports/{TICKER}/
+## 数据缓存：reports/{TICKER}/data/
 ## Core Questions: {CQ数量}个
 
 ### Core Questions 清单
@@ -75,13 +86,14 @@ description: 投资分析框架编排器。识别公司行业，组装通用模�
 - 预定看空论点: [从CQ中提取]
 ```
 
-### Step 4: 执行并追踪
+### Step 6: 执行并追踪
 
 - 每完成一个模块，更新 `progress.md`
 - 每完成一个 Phase，输出检查点
+- 检查点内容：模块完成度 + 字数 + 五引擎状态 + PPDA/PMSI（Phase 3-4）
 - 检查点通过后才进入下一 Phase
 
-### Step 5: 完成后复盘
+### Step 7: 完成后复盘
 
 写入 `reflection.md`：哪些模块做得好，哪些需改进
 
@@ -105,7 +117,8 @@ description: 投资分析框架编排器。识别公司行业，组装通用模�
 
 ## 重要规则
 
-- ❌ 不可跳过任何通用模块
-- ❌ 不可跳过行业适配模块
-- ✅ 每个模块完成后立即更新 progress.md
-- ✅ /compact 后从 task_plan.md + progress.md 恢复上下文
+- 不可跳过任何通用模块
+- 不可跳过行业适配模块
+- 每个模块完成后立即更新 progress.md
+- /compact 后从 task_plan.md + progress.md + data/research/{TICKER}/ 恢复上下文
+- 数据优先从 MCP 缓存读取，减少重复获取
