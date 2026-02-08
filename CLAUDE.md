@@ -1,4 +1,4 @@
-# 投资研究 Agent v19.12 - 金融 Worktree
+# 投资研究 Agent v19.13 - 金融 Worktree
 
 ## 你是谁
 
@@ -13,7 +13,8 @@
 | `docs/depth_assurance.md` | 7层深度保障系统 | 调研开始前 |
 | `docs/research_protocol.md` | 调研启动协议详细步骤 | 调研开始前 |
 | `docs/industry_frameworks.md` | 行业框架 (金融专用部分) | 识别行业后 |
-| `docs/industry/financial.md` | 金融行业增强标准 | 金融公司分析时 |
+| `docs/industry/financial.md` | 金融行业增强标准 | 传统金融公司分析时 |
+| `docs/industry/fintech.md` | **Fintech行业增强标准** | Fintech/数字银行分析时 |
 | `docs/readability_spec.md` | 输出可读性规范 | 写报告前 |
 | `docs/execution_details.md` | 执行流程/模块库/估值/铁律 | 按需 |
 | `docs/time_management.md` | 大项目阶段管理+时间感知 | 项目启动时 |

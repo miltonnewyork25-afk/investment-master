@@ -22,6 +22,7 @@ description: 投资分析框架编排器。识别公司行业，组装通用模�
 | 科技平台 | `modules/tech_platform.md` | META, GOOG, AMZN, MSFT, AAPL |
 | 零售 | `modules/retail.md` | WMT, COST, HD, TGT, DG |
 | 金融 | `modules/financial.md` | JPM, GS, BRK, V, MA |
+| **金融科技** | `modules/fintech.md` | SOFI, SQ, PYPL, HOOD, AFRM, COIN, NU |
 | 其他 | 仅用通用模块 | - |
 
 ### Step 2: 加载模块
