@@ -99,7 +99,7 @@
 
 ### 铁律 D: 会话范围预检（每次会话开始必须执行）
 1. **识别目标**: 用户想做什么？归类为 Tier 1/2/3
-2. **恢复检查**: 检查 `reports/{TICKER}/data/checkpoint.yaml`，如存在则读取并恢复状态；同时检查 `current_tasks/` 锁文件（详见 `docs/checkpoint_protocol.md` + `docs/agent_collaboration_protocol.md`）
+2. **恢复检查**: 检查 `reports/{TICKER}/data/current_tasks/` 是否有未完成锁文件（详见 `docs/agent_collaboration_protocol.md`）
 3. **估算范围**: 该目标预计需要多少模块/步骤？
 4. **范围裁剪**: 如果范围超出单会话容量，主动提议拆分并明确本次会话的交付物
 5. **确认交付物**: 与用户对齐"本次会话结束时，你将得到 X"
@@ -157,43 +157,18 @@ reports/
 - 禁止将报告散放在 `reports/` 根目录（必须进 `{TICKER}/` 子目录）
 - 禁止将研究数据放在 `reports/{TICKER}/` 以外的位置
 
-### 铁律 F: 质量不可回退（Complete报告强制门控）
+### 会话效率规则（7条核心）
 
-**核心原则: 新报告的质量指标不得低于历史最佳的80%。Complete报告组装是Tier 3的强制最终步骤。**
+> 详细模板见 `docs/time_management.md`
 
-**基准来源**: `docs/quality_benchmarks.md` — 记录每份已完成报告的关键指标
-
-**执行方式**: Phase 5完成后，**必须**将所有Phase整合为Complete报告，然后运行:
-```bash
-bash tests/quality_gate_complete.sh reports/{TICKER}/{TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md
-```
-
-**11项硬性检查** (基于GOOGL 311K基准):
-
-| # | 指标 | 基准(GOOGL) | 80%地板 | 说明 |
-|:---:|------|:---:|:---:|------|
-| CG1 | Complete总字符 | 311K | **≥249K** | 所有Phase合并后 |
-| CG2 | Phase 5字符 | 73.6K | **≥59K** | 决策输出部分 |
-| CG3 | 评分维度 | 10 | **≥8** | 10维度加权评分 |
-| CG4 | Kill Switch | 14(详细) | **≥12** | 含10字段详细格式 |
-| CG5 | 可验证预测 | 17(3情景) | **≥14** | 每个含Base/Bull/Bear |
-| CG6 | VP三情景 | 100% | **≥80%** | 禁止单情景预测 |
-| CG7 | CQ闭环 | 6(5要素) | **≥5** | 回答+置信度+KS+验证+反思 |
-| CG8 | 标注密度 | 15/万 | **≥12/万** | 三层标注系统 |
-| CG9 | 硬数据占比 | 45% | **≥36%** | [硬数据:]占总标注 |
-| CG10 | Mermaid图表 | 10+ | **≥8** | 可视化图表 |
-| CG11 | 必需章节 | 全部 | **全部** | 投资日历+行动清单+免责声明 |
-
-**违反 = 禁止commit + 禁止标记完成 + 必须返工**
-
-**Complete报告组装流程**:
-1. 统一TOC → Phase 0.5 → Phase 1 → Phase 2 → Phase 3+3.5 → Phase 4 → Phase 5 → 免责声明
-2. 运行 `tests/quality_gate_complete.sh` — 全部通过后才能commit
-3. 禁止: Phase 5完成即宣布"全量完成"而不组装Complete文档
-
-**详见**: `docs/quality_benchmarks.md`（评分维度/KS格式/VP格式/CQ格式标准）
-
-### 会话效率规则 → 详见 `docs/time_management.md`
+**规则1 单目标会话** — 每会话只接受1个主目标。多目标→拆分+用户选优先级
+**规则2 范围预检** — 任务前估算步骤数+复杂度。>20步必须分Phase
+**规则3 文件防错** — 读取前Glob确认存在，始终绝对路径
+**规则4 Edit防错** — Edit前必须Read，old_string完全精确匹配
+**规则5 大文件分段** — >2000行分段读取，报告按Phase分文件
+**规则6 CHANGELOG** — 修改核心文件必须同步更新CHANGELOG.md
+**规则7 完成度量化** — 每Phase结束输出完成度报告
+**规则8 字符计量** — 统一使用 `wc -m`（Unicode字符），禁止用 `wc -c`（字节）
 
 ---
 
@@ -231,12 +206,21 @@ bash tests/quality_gate_complete.sh reports/{TICKER}/{TICKER}_Complete_v{版本}
 | `docs/quality_gate_v2.md` | Phase 4/5 质量门控时 |
 | `docs/v21_migration_guide.md` | v20→v21迁移参考 |
 | `docs/v22_migration_guide.md` | v21→v22迁移参考 |
-| `docs/checkpoint_protocol.md` | Context恢复/检查点写入时 |
-| `docs/quality_benchmarks.md` | Tier 3 Phase 5 / Complete报告组装时 |
 | `CHANGELOG.md` | 查看变更历史时 |
 
 ---
 
-## 格式决策 → 详见 `docs/readability_spec.md`
+## 格式决策
 
-## 框架开发规范 → 详见 `docs/readability_spec.md`
+- 深度调研输出MD格式，不转HTML
+- 报告末尾必须加免责声明
+
+---
+
+## 框架开发规范
+
+- 创建新框架时同步创建 `.claude/skills/` 技能文件
+- 框架迁移/升级时创建 MIGRATION.md 记录
+- 所有框架修改记录到 `CHANGELOG.md`
+- 单个 MD/YAML 文件不超过 500 行，超过时拆分为子文件
+- 执行中发现新需求 → 记录到 `progress.md` 待办队列，不在当前任务中膨胀
