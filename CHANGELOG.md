@@ -6,6 +6,29 @@
 
 ---
 
+## [v25.0] - 2026-02-08
+
+### MAJOR - Worktree统一 + Agent架构指导原则
+
+解决5个worktree框架版本碎片化问题(v19.14~v24.0共存)和Agent架构缺乏统一指导的问题。
+
+**Agent架构指导原则 (v6.0)**
+- **升级** `docs/parallel_execution.md` v5.0→v6.0: 硬性预算规则→5条指导原则
+- 原则1: 模块驱动Agent数量(非固定数字)
+- 原则2: 按模块类型设产出目标(数据密集12-20K/分析判断10-15K/输出型5-8K/专精对抗15-22K)
+- 原则3: Context感知动态调整(前期4-5 Agent，后期2-3 Agent)
+- 原则4: 看空Agent必须独立(不读前序看多结论)
+- 原则5: Checkpoint必写(每批次后)
+- 新增: 四项目实证参考表(SOFI/COST/META/TSM)
+
+**Worktree CLAUDE.md统一**
+- **重写** 5个worktree CLAUDE.md为薄壳模式(~60行): 行业配置+铁律速查+文档索引+行业专用规则
+- 通用框架规则全部通过docs/目录按需加载，不在worktree CLAUDE.md中重复
+- `git merge main` 传播v22-v25所有框架文件到全部worktree
+- 未来main更新框架 → merge到worktree → 自动生效，无需逐个修改
+
+---
+
 ## [v22.0] - 2026-02-07
 
 ### MAJOR - GOOGL经验驱动的实质质量升级（从"高形式分"到"高形式分+高实质分"）
