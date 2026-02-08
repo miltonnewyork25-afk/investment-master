@@ -234,6 +234,7 @@ bash tests/quality_gate_complete.sh reports/{TICKER}/{TICKER}_Complete_v{版本}
 | `docs/v22_migration_guide.md` | v21→v22迁移参考 |
 | `docs/checkpoint_protocol.md` | Context恢复/检查点写入时 |
 | `docs/quality_benchmarks.md` | Tier 3 Phase 5 / Complete报告组装时 |
+| `docs/compound_learning_flywheel.md` | Complete报告通过后反思 / 累计3项目后审视 / 架构优化时 |
 | `CHANGELOG.md` | 查看变更历史时 |
 
 ---
