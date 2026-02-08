@@ -899,6 +899,18 @@ Costco并非单一零售商，其商业模式包含差异显著的子业务，�
 
 **覆盖率检查**: 分部1+4+5合计约$288B(含重叠), 覆盖净销售额$269.9B的100%+。会员费$5.3B和Kirkland溢价为独立增量价值层，不重复计算收入。[合理推断: QG-05通过, 覆盖率>90%]
 
+#### M-03: 收入构成图
+
+```mermaid
+pie title COST FY2025 收入构成 ($275.2B)
+    "北美实体零售" : 181
+    "国际业务" : 70.3
+    "电商+数字化" : 18.5
+    "会员费" : 5.3
+```
+
+**解读**: Costco收入高度集中于北美实体零售(65.8%)，国际业务贡献25.6%且增速最快(SSS +8.8%)。会员费仅占1.9%但贡献约51%营业利润，是利润倒置模型的核心。电商占比6.7%但增速+20.5%，正从边缘走向主流。这一结构揭示了SOTP分析的必要性——单一PE无法反映四种截然不同的业务特征。[硬数据: Costco FY2025年报/Q1 FY2026财报]
+
 ---
 
 ## 6.2 各分部独立估值
@@ -1380,6 +1392,26 @@ Costco管理层明确表态"We will never succumb to not being the best price" [
 当前估值处于**合理但无安全边际**的区间。上行需要: (1) 分析师共识EPS持续上修; (2) 降息兑现支撑PE; (3) 电商加速或国际扩张超预期。下行风险: (1) 任何增长失速将触发PE压缩; (2) 关税全面落地; (3) Sam's Club竞争加剧蚕食份额。
 
 **投资者定位**: 以$1,001买入COST，实质上是在赌: EPS增长跑赢PE压缩。这是一笔"付高价买确定性"的交易 -- 问题不在于COST是否是好公司(毫无疑问)，而在于"好"是否已经被**充分定价**。
+
+#### M-04: 估值方法论汇总图
+
+```mermaid
+graph LR
+    A["SOTP分部估值<br/>$602-$1,096"] --> E["概率加权<br/>SOTP: $861"]
+    B["DCF三情景<br/>$307-$1,248"] --> F["概率加权<br/>DCF: $992"]
+    C["可比公司<br/>PE/PS/EV"] --> G["5Y均值PE<br/>$909"]
+    D["分析师共识<br/>22家覆盖"] --> H["目标均值<br/>$1,061"]
+    E --> I{{"交叉验证<br/>偏离度检查"}}
+    F --> I
+    G --> I
+    H --> I
+    I --> J["最终概率加权<br/>公允价值: $992"]
+    J --> K["vs 当前$1,001<br/>高估~0.9%"]
+    style J fill:#FF9800,color:white,stroke:#E65100
+    style K fill:#F44336,color:white
+```
+
+**解读**: 四种估值方法收敛于$861-$1,061区间。SOTP($861)最保守，反映零售业低倍数特征；DCF概率加权($992)最接近当前股价，因乐观情景(WACC 6.5% + 终端增长3.5%)拉高了加权值；可比公司($909)居中；分析师共识($1,061)最乐观但受卖方偏差影响。三重交叉验证显示当前价格处于"合理但无安全边际"区间。[合理推断: 基于Phase 2 Section B/C/D三个独立Agent的估值整合]
 
 ---
 
@@ -2234,6 +2266,26 @@ Costco在价格(Price)、品质(Product)、分销(Distribution)、广告(Adverti
 
 **核心结论**: Costco的竞争护城河在北美市场极其稳固——员工飞轮(8%流失率)和PPDA四重背离构成系统性壁垒，非单点模仿可突破。Sam's Club的真正威胁不在北美而在中国(50:7门店差距)。Amazon关闭Fresh/Go门店反向验证了仓储模式的不可复制性。长期需监控Agentic Commerce对"寻宝+冲动消费"模式的潜在侵蚀，但5年内影响有限。
 
+#### M-06: 竞争定位矩阵
+
+```mermaid
+quadrantChart
+    title 仓储零售竞争定位 (运营效率 vs 会员粘性)
+    x-axis "低运营效率" --> "高运营效率"
+    y-axis "低会员粘性" --> "高会员粘性"
+    quadrant-1 "领导者"
+    quadrant-2 "粘性优先"
+    quadrant-3 "落后者"
+    quadrant-4 "效率优先"
+    "Costco": [0.90, 0.88]
+    "Sam's Club": [0.55, 0.50]
+    "BJ's": [0.40, 0.45]
+    "Walmart": [0.70, 0.35]
+    "Amazon(实体)": [0.30, 0.60]
+```
+
+**解读**: Costco在运营效率(坪效$1,800/sq ft, 人效$800K+/人, 库存周转12.4x)和会员粘性(续费率92.3%, ARPU $3,374)两个维度均居领导象限。Sam's Club在效率维度追赶(Scan & Go技术领先)但粘性仍有显著差距(ARPU仅$1,920)。Amazon实体业务(关闭72家Fresh/Go后仅剩Whole Foods)会员粘性尚可(Prime 93%续费)但实体运营效率低下。Walmart规模最大但会员制粘性低(非会员模式为主)。BJ's在两个维度均处于跟随位置。[主观判断: 基于各公司公开运营数据的综合定位]
+
 ---
 
 *数据来源: Costco FY25年报/Q1 FY2026财报, Walmart 2025投资者日, Amazon 2026-01公告, CFRA Research, Grocery Dive, HBS, MMCGInvest, McKinsey, Bain, CNBC, Retail Dive, BusinessResearchInsights*
@@ -2934,6 +2986,34 @@ Costco的护城河建立在**人必须亲自到店**的前提上——"寻宝体
 
 **结论**: 从专职看空视角，概率加权公允价值为$837，较当前$1,001隐含**-16.4%下行空间**。最大风险不在任何单一Bear Case，而在BC1(PE压缩)+BC8(增长天花板)的**共振**——一旦市场开始质疑6.4% SSS能否支撑53x PE，下行可能是非线性的。
 
+#### M-08: Bear Case决策树
+
+```mermaid
+graph TD
+    ROOT["8个Bear Case<br/>概率加权分析"] --> BC1["BC1: PE压缩<br/>概率45% | -$281/股"]
+    ROOT --> BC2["BC2: 续费率下降<br/>概率25% | -$24~48/股"]
+    ROOT --> BC4["BC4: Sam's中国碾压<br/>概率35% | -$38~50/股"]
+    ROOT --> BC5["BC5: 关税IEEPA<br/>概率32% | -$30~150/股"]
+
+    BC1 --> COMBO{"BC1+BC8共振<br/>增长放缓+PE压缩<br/>联合概率~18%"}
+    BC2 --> COMBO
+
+    COMBO --> MILD["温和看空 40%<br/>目标$850"]
+    COMBO --> MED["中度看空 30%<br/>目标$720"]
+    COMBO --> EXT["极端看空 6%<br/>目标$630"]
+
+    MILD --> FINAL["概率加权<br/>看空公允价值<br/>$837 (-16.4%)"]
+    MED --> FINAL
+    EXT --> FINAL
+
+    style ROOT fill:#F44336,color:white
+    style COMBO fill:#FF9800,color:white
+    style FINAL fill:#B71C1C,color:white
+    style EXT fill:#D32F2F,color:white
+```
+
+**解读**: 8个Bear Case中，BC1(PE压缩, 45%)是概率最高且破坏力最大的单一风险。但真正危险的是BC1与BC8(增长天花板)的共振效应——当SSS增速放缓至<4%时，市场将同时质疑增长叙事和PE支撑力，触发非线性下行。概率加权后看空公允价值$837，隐含当前$1,001高估16.4%。钢人论证显示BC4(Sam's中国)的反驳力度最弱——7 vs 61家门店的物理差距无法用品牌力弥补。[合理推断: 基于Phase 4看空Agent独立分析]
+
 ---
 
 ## 16. Smart Money验证 + 维度回检 + So What抽查
@@ -3236,6 +3316,31 @@ Phase 1-3的叙事弧线呈"确认看多"模式: 护城河强(4.3/5)→财务健
 ### 18.1 Kill Switch注册表
 
 > Single Source of Truth — 所有KS定义仅在此表，其他章节通过[KS-xxx]引用
+
+#### M-09: Kill Switch激活流程图
+
+```mermaid
+graph TD
+    MONITOR["持续监控<br/>月度/季度数据"] --> |"指标异常"| TRIGGER{"触发条件<br/>达到阈值?"}
+    TRIGGER --> |"未触发"| MONITOR
+    TRIGGER --> |"预警级"| WARN["预警响应<br/>加密监控频率"]
+    TRIGGER --> |"触发级"| VERIFY{"交叉验证<br/>≥2个独立源确认?"}
+    VERIFY --> |"未确认"| WARN
+    VERIFY --> |"确认触发"| ASSESS["影响评估<br/>对SOTP/DCF影响量化"]
+    ASSESS --> REDUCE["减仓30-50%<br/>KS-VAL类触发"]
+    ASSESS --> EXIT["清仓<br/>KS-FUN-01+KS-FUN-02<br/>同时触发"]
+    ASSESS --> REEVAL["重新评估<br/>更新估值模型<br/>重跑Phase 2-3"]
+    REDUCE --> UPDATE["更新STATUS.md<br/>记录触发原因+行动"]
+    EXIT --> UPDATE
+    REEVAL --> UPDATE
+
+    style TRIGGER fill:#FF9800,color:white
+    style EXIT fill:#F44336,color:white
+    style REDUCE fill:#FFC107,color:black
+    style REEVAL fill:#2196F3,color:white
+```
+
+**解读**: Kill Switch系统是投资论点的"保险丝"——当预设条件触发时，强制执行而非犹豫。流程分三级: 预警级(加密监控)、确认级(交叉验证)、行动级(减仓/清仓/重估)。关键设计: 任何单一KS触发仅导致"减仓"或"重估"，唯有KS-FUN-01(续费率<91.0%连续两季)与KS-FUN-02(SSS<4%连续四月)同时触发才执行"清仓"——因为这意味着飞轮核心指标同时恶化，商业模式遭遇根本性挑战。[合理推断: 基于Phase 5 Kill Switch注册表设计逻辑]
 
 #### 估值类
 
