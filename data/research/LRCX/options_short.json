@@ -1,0 +1,100 @@
+{
+  "collection_date": "2026-02-07",
+  "agent": "A9",
+  "ticker": "LRCX",
+  "current_price": 230.90,
+  "short_interest": {
+    "shares_short": "33.12M",
+    "short_pct_of_float": "2.64%",
+    "days_to_cover": "1.66",
+    "data_note": "Short interest is relatively low at 2.64% of float. Days-to-cover of 1.66 suggests limited short squeeze potential.",
+    "trend": "Stable — no significant recent increase in short positioning despite elevated valuation",
+    "data_freshness": "Latest available as of collection date; exact reporting date may lag by 2 weeks per FINRA schedule"
+  },
+  "options_activity": [
+    {
+      "date": "2025-12-26",
+      "type": "put spread (institutional whale trade)",
+      "strike": "$170/$160 put roll",
+      "expiry": "March 2026",
+      "volume": "25,000 contracts",
+      "oi": "Absorbed nearly all existing OI at $160 strike",
+      "significance": "Whale-sized institutional hedge against significant downside. Buy-to-open $170 put, sell $160 put. Suggests institution protecting portfolio against 25-30% drawdown.",
+      "sentiment": "Bearish hedge"
+    },
+    {
+      "date": "2026-02-07",
+      "type": "February 2026 options chain newly available",
+      "strike": "Multiple strikes",
+      "expiry": "February 2026",
+      "volume": "See Nasdaq/Barchart for real-time",
+      "oi": "See below for aggregate data",
+      "significance": "New monthly expiry options available for trading",
+      "sentiment": "Neutral — standard expiry"
+    }
+  ],
+  "put_call_ratio": {
+    "value": 1.4,
+    "trend": "Decreased -11.6% in last 5 days",
+    "interpretation": "Bearish — ratio above 1.0 indicates more put open interest than calls. However, recent decline suggests some normalization.",
+    "open_interest_breakdown": {
+      "total_oi": 95396,
+      "call_oi": 39610,
+      "put_oi": 55786,
+      "call_oi_change_5d": "+6.9%",
+      "put_oi_change_5d": "+4.7%"
+    }
+  },
+  "implied_volatility_context": {
+    "note": "Post-earnings IV crush expected after Jan 28 Q2 FY2026 report. Stock saw 9% single-day move in early February, indicating realized vol remains elevated.",
+    "recent_moves": [
+      {"date": "2026-01-27", "move": "-5.6%", "catalyst": "DeepSeek AI sell-off"},
+      {"date": "2026-02-05", "move": "-8.83%", "catalyst": "Broad semiconductor equipment sell-off"},
+      {"date": "2026-02-06", "move": "+1.6%", "catalyst": "Recovery bounce"}
+    ]
+  },
+  "buyback_support": {
+    "program_size": "$10B authorized (May 2024)",
+    "recent_pace": "$1.29B in Q3 FY2025 (ending Jun 2025)",
+    "quarterly_pace_range": "$435M - $1.29B per quarter (varies)",
+    "fcf_return_target": "75-100% of free cash flow via dividends + buybacks",
+    "total_repurchased_under_program": "14,981,549 shares for $1.17B as of Jun 30, 2025",
+    "remaining_authorization": "Substantial — majority of $10B still available",
+    "impact": "Provides floor support for stock; reduces share count and boosts EPS"
+  },
+  "risk_signals_summary": {
+    "overall_sentiment": "Cautiously bearish short-term positioning amid bullish fundamental backdrop",
+    "key_signals": [
+      {
+        "signal": "Institutional put spread hedge (25K contracts)",
+        "interpretation": "Large player protecting against 25-30% downside by March 2026",
+        "severity": "High"
+      },
+      {
+        "signal": "Put/call ratio at 1.4 (above 1.0 bearish threshold)",
+        "interpretation": "Options market pricing more downside protection than upside speculation",
+        "severity": "Medium"
+      },
+      {
+        "signal": "Short interest only 2.64% of float",
+        "interpretation": "No significant short thesis building despite elevated valuation",
+        "severity": "Low (bullish)"
+      },
+      {
+        "signal": "Recent 9% single-day selloff followed by weak bounce",
+        "interpretation": "Elevated realized volatility; market nervous about semiconductor equipment names",
+        "severity": "Medium"
+      }
+    ]
+  },
+  "data_sources": [
+    "Barchart.com (options data, put/call ratios)",
+    "Nasdaq.com (short interest, options chain)",
+    "MarketBeat.com (short interest history)",
+    "TipRanks.com (unusual options activity)",
+    "Yahoo Finance (options chain, historical)",
+    "Fintel.io (short interest, put/call ratios)",
+    "AlphaQuery.com (180-day put/call ratio OI)",
+    "Market Chameleon (open interest trends)"
+  ]
+}
