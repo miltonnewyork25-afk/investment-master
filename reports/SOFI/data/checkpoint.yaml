@@ -1,0 +1,58 @@
+ticker: SOFI
+company: SoFi Technologies, Inc.
+worktree: 金融
+branch: 金融
+start_date: 2026-02-08
+protocol_version: v6.0
+
+phases:
+  phase_0:
+    status: completed
+    completed_at: 2026-02-08
+    dm_version: v1.0
+    dm_anchors: 34
+    kal_initialized: true
+    data_files_read: 3
+    websearch_queries: 21+
+    key_outputs:
+      - shared_context.md (DM v1.0)
+      - key_assumptions.md (KAL empty template)
+    notes: "3个并行WebSearch Agent + 主线程MCP调用(错误) + 3个已有数据文件读取"
+
+  phase_0.5:
+    status: pending
+    target_outputs:
+      - staging/Phase05_debates.md
+      - staging/Phase05_cq.md
+      - staging/Phase05_coverage.md
+
+  phase_1:
+    status: pending
+    char_target: 28000
+    target_outputs:
+      - SOFI_Phase1_v22_2026-02-08.md
+
+  phase_2:
+    status: not_started
+    char_target: 35000
+    session: 2
+
+  phase_3:
+    status: not_started
+    char_target: 45000
+    session: 3
+
+  phase_4:
+    status: not_started
+    char_target: 25000
+    session: 4
+
+  phase_5:
+    status: not_started
+    char_target: 22000
+    session: 5
+
+quality_metrics:
+  total_char_target: 155000
+  industry_coefficient: 1.2
+  min_chars_per_protocol: 102000
