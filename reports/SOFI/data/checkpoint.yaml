@@ -20,11 +20,18 @@ phases:
     notes: "3个并行WebSearch Agent + 主线程MCP调用(错误) + 3个已有数据文件读取"
 
   phase_0.5:
-    status: pending
-    target_outputs:
-      - staging/Phase05_debates.md
-      - staging/Phase05_cq.md
-      - staging/Phase05_coverage.md
+    status: completed
+    completed_at: 2026-02-08
+    total_chars: 11474
+    debates: 10
+    core_questions: 7
+    coverage_rate: 85.7%
+    hot_patches: 2
+    key_outputs:
+      - staging/Phase05_debates.md (10个争论, Heat 40-95)
+      - staging/Phase05_cq.md (7个CQ, 优先级P0-P2)
+      - staging/Phase05_coverage.md (23模块×7CQ, 85.7%覆盖)
+    notes: "3个并行Agent完成, CQ-7和CQ-4需HP补强"
 
   phase_1:
     status: pending
