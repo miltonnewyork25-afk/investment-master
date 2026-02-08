@@ -514,6 +514,7 @@ Step 5: 五引擎协同 → 统一投资建议+置信度
 | 4 | 偏差检查+核查≥10点+反证≥3条+维度回应100%+P-G≥8+R-G≥7+DM冻结+KAL全部A级已验证 |
 | 5 | Kill Switch注册表≥15条(10字段)+预测≥20个(三情景)+评分≥8维度+CQ≥5个(5要素)+铁律十五条全满足+P-G≥8+R-G≥7 |
 | 5.5 | **Complete报告组装** → `quality_gate_complete.sh` exit 0 → 11项CG全部通过 → git commit → 才能标记"全量完成" |
+| 6 | **反思(飞轮)** → 写 `reports/{TICKER}/data/reflection.md` → 提取可泛化教训 → 如有框架提案则更新main的docs/ (详见 `docs/compound_learning_flywheel.md`) |
 
 ---
 
