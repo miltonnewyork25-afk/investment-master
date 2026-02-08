@@ -186,20 +186,22 @@ phases:
     status: completed
     report_file: "SOFI_Complete_v1.0_2026-02-08.md"
     location: "main branch → reports/SOFI/"
-    total_chars: 267926
+    total_chars: 271268
     total_annotations: 908
-    annotation_density: "33.9/万"
+    annotation_density: "33.5/万"
     hard_data_ratio: "57.3%"
-    mermaid_diagrams: 21
+    mermaid_diagrams: 27
     kill_switches: 23
     verifiable_predictions: 22
     core_questions: 14
     scoring_dimensions: 17
     quality_gate: "ALL 11 GATES PASSED ✓ (0 errors, 0 warnings)"
     commit_main: "40661d3"
+    reflection_commit: "d2454f8"
+    reflection_changes: "+6 Mermaid(执行摘要1+Phase2 4+Phase5 1), Phase 5决策摘要, 清理重复免责"
 
 quality_metrics:
   total_char_target: 155000
   industry_coefficient: 1.2
   min_chars_per_protocol: 102000
-  actual_total_chars: 267926
+  actual_total_chars: 271268
