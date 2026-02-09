@@ -1,0 +1,319 @@
+{
+  "ticker": "MU",
+  "fetched_at": "2026-02-08",
+  "consensus": {
+    "rating": "Strong Buy",
+    "buy_count": 27,
+    "hold_count": 1,
+    "sell_count": 0,
+    "total_analysts": 28,
+    "avg_price_target": 384.19,
+    "high_target": 500.00,
+    "low_target": 235.00,
+    "current_price": 379.40,
+    "upside_pct": 1.26,
+    "source": "[硬数据: TipRanks/StockAnalysis, 2026-02-08]"
+  },
+  "earnings_estimates": {
+    "current_quarter": {
+      "period": "Q2 FY2026 (ending Feb 2026)",
+      "report_date": "2026-03-18",
+      "revenue_estimate_midpoint": 18700000000,
+      "revenue_estimate_low": 18300000000,
+      "revenue_estimate_high": 19100000000,
+      "eps_estimate_non_gaap": 8.42,
+      "eps_estimate_range": "8.22 - 8.62",
+      "gross_margin_guidance": 0.68,
+      "gross_margin_range": "67% - 69%",
+      "opex_guidance": 1380000000,
+      "yoy_revenue_growth": 1.32,
+      "yoy_eps_growth": 4.80,
+      "source": "[硬数据: Micron Q1 FY2026 Guidance, 2025-12-17]"
+    },
+    "next_quarter": {
+      "period": "Q3 FY2026 (ending May 2026)",
+      "report_date": "2026-06-25 (estimated)",
+      "eps_estimate_normalized": 8.43,
+      "eps_estimate_gaap": 8.18,
+      "revenue_estimate": 18800000000,
+      "source": "[硬数据: Nasdaq/Seeking Alpha consensus, 2026-02-08]"
+    },
+    "fy2026": {
+      "period": "FY2026 (ending Aug 2026)",
+      "eps_consensus": 31.88,
+      "revenue_consensus": 73810000000,
+      "revenue_consensus_display": "$73.81B",
+      "yoy_revenue_growth_vs_fy2025": 0.97,
+      "source": "[硬数据: Wall Street consensus via Seeking Alpha/Yahoo Finance, 2026-02-08]"
+    },
+    "fy2027": {
+      "period": "FY2027 (ending Aug 2027)",
+      "eps_consensus": 36.27,
+      "eps_low": 14.11,
+      "eps_high": 52.50,
+      "revenue_consensus": 109400000000,
+      "revenue_consensus_display": "$109.4B",
+      "analyst_count": 42,
+      "yoy_revenue_growth_vs_fy2026": 0.48,
+      "source": "[硬数据: Wall Street consensus via StockAnalysis/TradingView, 2026-02-08]"
+    }
+  },
+  "earnings_surprise_history": [
+    {
+      "quarter": "Q1 FY2026",
+      "date": "2025-12-17",
+      "eps_estimate": 3.82,
+      "eps_actual": 4.78,
+      "surprise_pct": 25.13,
+      "revenue_actual": 13640000000,
+      "revenue_yoy_growth": 0.57,
+      "source": "[硬数据: Micron Q1 FY2026 Press Release]"
+    },
+    {
+      "quarter": "Q4 FY2025",
+      "date": "2025-09-23",
+      "eps_estimate": 2.86,
+      "eps_actual": 3.03,
+      "surprise_pct": 5.94,
+      "revenue_actual": 11320000000,
+      "source": "[硬数据: Nasdaq/Seeking Alpha]"
+    },
+    {
+      "quarter": "Q3 FY2025",
+      "date": "2025-06-25",
+      "eps_estimate": 1.59,
+      "eps_actual": 1.91,
+      "surprise_pct": 20.13,
+      "revenue_actual": 9300000000,
+      "source": "[硬数据: Zacks/Seeking Alpha]"
+    },
+    {
+      "quarter": "Q2 FY2025",
+      "date": "2025-03-20",
+      "eps_estimate": 1.43,
+      "eps_actual": 1.56,
+      "surprise_pct": 9.09,
+      "revenue_actual": 8710000000,
+      "source": "[硬数据: Zacks]"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-02",
+      "analyst": "HSBC (Warren Lau)",
+      "action": "Downgrade",
+      "from_rating": "Buy",
+      "to_rating": "Hold",
+      "price_target": "N/A",
+      "rationale": "Downgrade without specific target price",
+      "source": "[硬数据: TipRanks/TimothySykes, 2026-02-04]"
+    },
+    {
+      "date": "2026-01",
+      "analyst": "Seeking Alpha Contributor",
+      "action": "Downgrade to Sell",
+      "rationale": "Current valuations fully price in peak AI-driven demand and profitability; stretched valuation and cyclical memory risks",
+      "source": "[硬数据: Seeking Alpha, 2026-01]"
+    },
+    {
+      "date": "2026-01",
+      "analyst": "Seeking Alpha Contributor (previously bearish)",
+      "action": "Upgrade",
+      "to_rating": "Buy",
+      "price_target": 498,
+      "rationale": "Structural cycle longer than past memory cycles; ~45% upside implied",
+      "source": "[硬数据: Seeking Alpha, 2026-01]"
+    },
+    {
+      "date": "2025-12",
+      "analyst": "Goldman Sachs",
+      "action": "Maintain Buy",
+      "rationale": "Continued growth driven by high demand for high-bandwidth memory",
+      "source": "[硬数据: FMP/Goldman Sachs, 2025-12]"
+    },
+    {
+      "date": "2025-12",
+      "analyst": "Wells Fargo",
+      "action": "Maintain Overweight",
+      "price_target_from": 300,
+      "price_target_to": 335,
+      "rationale": "Raised price target on strong Q1 FY2026 results",
+      "source": "[硬数据: FMP/Wells Fargo, 2025-12]"
+    }
+  ],
+  "bull_bear_summary": {
+    "bull_case": "1) HBM供给锁定: Micron已签下2026年全部HBM供应(含HBM4)的多年合约,价量均锁定,管理层预期供需紧张将持续至2026年以后。2) AI驱动需求爆发: FQ1 2026营收$13.6B(+57% YoY),毛利率57%,DRAM/NAND/HBM均创纪录。3) 估值洼地: 以2026展望计算,前瞻PE不到10x,远低于蓝筹科技和AI龙头及标普500均值,若回归市场平均估值则股价翻倍。4) 分析师预期持续上修: Zacks Rank #1(Strong Buy),EPS预期连续上修。5) HBM TAM: 管理层预计HBM市场以~40% CAGR增长,从2025年$35B到2028年$100B。",
+    "bear_case": "1) 周期性风险: 恐Micron产能过度扩张导致供过于求,记忆体本质仍是大宗商品。2) 制造执行风险: HBM良率、产能爬坡延迟、下一代HBM4设计赢单失败都可能威胁技术领先地位和溢价定价能力。3) 估值已充分反映: 部分分析师认为当前股价已完全反映AI驱动的峰值需求和盈利能力。4) 内部人士抛售: 2026年2月初有内部人士减持记录。5) HBM4供应争议: 有分析师将Micron对NVIDIA的HBM4供应预测削减至零。",
+    "source": "[合理推断: 综合Yahoo Finance/Seeking Alpha/Investing.com/CNBC多源分析师观点]"
+  },
+  "financial_highlights": {
+    "revenue_fy2025": 37400000000,
+    "revenue_fy2025_display": "$37.4B",
+    "revenue_fy2025_yoy_growth": 0.49,
+    "revenue_fy2024": 25100000000,
+    "revenue_fy2024_display": "$25.1B",
+    "revenue_fy2024_yoy_growth": 0.62,
+    "gross_margin_fy2025_gaap": 0.40,
+    "gross_margin_fy2025_non_gaap": 0.457,
+    "gross_margin_fy2024_gaap": 0.22,
+    "operating_margin_fy2025": "N/A - 详见Q4非GAAP营业利润$3.96B(Q4单季)",
+    "net_margin_fy2025": "N/A - GAAP EPS $8.29(全年), +538% YoY",
+    "eps_fy2025_gaap": 8.29,
+    "eps_fy2024_gaap": 0.70,
+    "net_income_fy2024": 778000000,
+    "fcf_fy2025": 3700000000,
+    "fcf_fy2025_margin": 0.10,
+    "capex_fy2025": 13800000000,
+    "capex_fy2025_display": "$13.8B",
+    "chips_act_funding": 6400000000,
+    "share_buyback_authorization": 10000000000,
+    "shares_repurchased_through_aug2025": 7190000000,
+    "quarterly_dividend_per_share": 0.115,
+    "shares_outstanding": 1122466035,
+    "revenue_by_segment": {
+      "DRAM": {
+        "fy2025_revenue": 28580000000,
+        "fy2025_yoy_growth": 0.62,
+        "asp_change": "low-40% increase",
+        "bit_shipment_change": "mid-teen percentage increase",
+        "q1_fy2026_revenue": 10800000000,
+        "q1_fy2026_pct_of_total": 0.79,
+        "q1_fy2026_yoy_growth": 0.69,
+        "source": "[硬数据: Micron 10-K FY2025 + Q1 FY2026 Press Release]"
+      },
+      "NAND": {
+        "fy2025_revenue": 8500000000,
+        "fy2025_yoy_growth": 0.18,
+        "bit_shipment_change": "high-teen percentage increase",
+        "q1_fy2026_revenue": 2700000000,
+        "q1_fy2026_pct_of_total": 0.20,
+        "q1_fy2026_yoy_growth": 0.22,
+        "source": "[硬数据: Micron 10-K FY2025 + Q1 FY2026 Press Release]"
+      }
+    },
+    "revenue_by_business_unit_fy2025": {
+      "CMBU_cloud_memory": {
+        "revenue": 13520000000,
+        "note": "Cloud Memory Business Unit"
+      },
+      "CDBU_core_data_center": {
+        "revenue": 7230000000,
+        "note": "Core Data Center Business Unit"
+      },
+      "MCBU_mobile_client": {
+        "revenue": 11860000000,
+        "note": "Mobile and Client Business Unit"
+      },
+      "AEBU_automotive_embedded": {
+        "revenue": 4750000000,
+        "note": "Automotive and Embedded Business Unit"
+      },
+      "total_data_center_pct_fy2025": 0.56,
+      "data_center_revenue_fy2025": 20750000000,
+      "data_center_yoy_growth": 1.37,
+      "source": "[硬数据: Micron 10-K FY2025]"
+    },
+    "revenue_by_geography_fy2025": {
+      "united_states": {
+        "revenue": 24110000000,
+        "pct": 0.6451,
+        "yoy_growth": 0.8312
+      },
+      "taiwan": {
+        "revenue": 5670000000,
+        "pct": 0.1517,
+        "yoy_growth": 0.2048
+      },
+      "china": {
+        "revenue": 2640000000,
+        "pct": 0.0706
+      },
+      "other_asia_pacific": {
+        "revenue": 1910000000,
+        "pct": 0.0512
+      },
+      "japan": {
+        "revenue": 895000000,
+        "pct": 0.024
+      },
+      "hong_kong": {
+        "revenue": 1140000000,
+        "pct": 0.030
+      },
+      "europe": {
+        "revenue": 625000000,
+        "pct": 0.0167
+      },
+      "source": "[硬数据: Bullfincher/Micron 10-K FY2025]"
+    },
+    "source": "[硬数据: Micron 10-K FY2025 via StockTitan + Investor Relations]"
+  },
+  "industry_specific": {
+    "hbm_revenue_fy2025": "HBM+高容量DIMM+LP服务器DRAM合计$10B(五倍于前年); HBM单项Q4 FY2025达$2B",
+    "hbm_supply_2026": "2026年全部HBM供应(含HBM4)已售罄,多年合约锁定价量",
+    "hbm_tam_forecast": "HBM TAM以~40% CAGR增长: 2025年$35B → 2028年$100B(较此前预期提前2年)",
+    "dram_revenue_pct_q1_fy2026": 0.79,
+    "nand_revenue_pct_q1_fy2026": 0.20,
+    "dram_revenue_pct_fy2025": 0.76,
+    "nand_revenue_pct_fy2025": 0.23,
+    "data_center_pct_fy2025": 0.56,
+    "data_center_pct_q1_fy2026": 0.57,
+    "hbm4_status": "部分分析师将Micron对NVIDIA的HBM4供应预测削减至零(争议中)",
+    "memory_market_outlook": "2026年记忆体市场预期繁荣,DRAM/NAND价格趋势向好",
+    "competitive_position": "HBM市场三大玩家之一(SK Hynix, Samsung, Micron),Micron在HBM3E具竞争力",
+    "source": "[硬数据: Micron Q1 FY2026 Earnings Call + IO Fund + NextPlatform + Investing.com]"
+  },
+  "quarterly_financial_trajectory": {
+    "q2_fy2025": {
+      "revenue": 8710000000,
+      "period_end": "2025-02"
+    },
+    "q3_fy2025": {
+      "revenue": 9300000000,
+      "period_end": "2025-05"
+    },
+    "q4_fy2025": {
+      "revenue": 11320000000,
+      "period_end": "2025-08"
+    },
+    "q1_fy2026": {
+      "revenue": 13640000000,
+      "eps_gaap": 4.60,
+      "eps_non_gaap": 4.78,
+      "net_income_gaap": 5240000000,
+      "net_income_non_gaap": 5480000000,
+      "gross_margin_non_gaap": 0.57,
+      "period_end": "2025-11"
+    },
+    "q2_fy2026_guidance": {
+      "revenue_midpoint": 18700000000,
+      "eps_non_gaap": 8.42,
+      "gross_margin": 0.68,
+      "period_end": "2026-02"
+    },
+    "source": "[硬数据: Micron Investor Relations Press Releases]"
+  },
+  "sources": [
+    "TipRanks - MU Analyst Forecast (https://www.tipranks.com/stocks/mu/forecast)",
+    "StockAnalysis - MU Forecast (https://stockanalysis.com/stocks/mu/forecast/)",
+    "StockAnalysis - MU Ratings (https://stockanalysis.com/stocks/mu/ratings/)",
+    "MarketBeat - MU Forecast (https://www.marketbeat.com/stocks/NASDAQ/MU/forecast/)",
+    "Micron Investor Relations - Q1 FY2026 Press Release (https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-first-quarter-fiscal-2026)",
+    "Micron Investor Relations - Q4/FY2025 Press Release (https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-fourth-quarter-and-full-8)",
+    "StockTitan - MU 10-K FY2025 Summary (https://www.stocktitan.net/sec-filings/MU/10-k-micron-technology-inc-files-annual-report-a879767daea7.html)",
+    "Yahoo Finance - MU Bull Case Theory (https://finance.yahoo.com/news/micron-technology-inc-mu-bull-191903202.html)",
+    "Investing.com - Micron HBM4 Supply Forecast (https://www.investing.com/news/stock-market-news/micron-stock-dips-as-analyst-slashes-nvidia-hbm4-supply-forecast-to-zero-4491031)",
+    "Investing.com - Micron 30-80% Upside (https://www.investing.com/analysis/micron-gains-momentum-again30-to-80-upside-in-2026-200672547)",
+    "Seeking Alpha - Micron Top Stock 2026 (https://seekingalpha.com/article/4847296-micron-technology-top-stock-to-watch-for-2026-from-my-quant-deans-list)",
+    "Seeking Alpha - Micron Downgrade (https://seekingalpha.com/article/4861607-micron-this-time-is-not-different-its-time-to-sell-downgrade)",
+    "Seeking Alpha - Micron Upgrade (https://seekingalpha.com/article/4857850-micron-i-was-dead-wrong-rating-upgrade)",
+    "NextPlatform - HBM Supply (https://www.nextplatform.com/2025/12/19/hbm-supply-curve-gets-steeper-but-still-cant-meet-demand/)",
+    "IO Fund - Micron HBM Leader (https://io-fund.com/ai-stocks/micron-stock-up-100-hbm-leader-2026-plan)",
+    "Bullfincher - MU Revenue by Geography (https://bullfincher.io/companies/micron-technology/revenue-by-geography)",
+    "Nasdaq - MU Earnings (https://www.nasdaq.com/market-activity/stocks/mu/earnings)",
+    "Zacks - MU Earnings Calendar (https://www.zacks.com/stock/research/MU/earnings-calendar)",
+    "FMP - MU Financial Summary (https://site.financialmodelingprep.com/financial-summary/MU)",
+    "TimothySykes - HSBC Downgrade (https://www.timothysykes.com/news/micron-technology-inc-mu-news-2026_02_04/)",
+    "CNBC - Bill Baruch trims Micron (https://www.cnbc.com/video/2026/02/05/trade-tracker-bill-baruch-trims-micron-sells-coinbase-and-the-ibit.html)"
+  ]
+}

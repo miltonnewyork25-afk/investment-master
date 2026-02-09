@@ -1,0 +1,44 @@
+{
+  "version": "3.0",
+  "ticker": "MU",
+  "company": "Micron Technology Inc",
+  "industry": "半导体-存储",
+  "timestamp": "2026-02-08T15:45:00+08:00",
+  "data_files": {
+    "stock_full": { "status": "error", "source": "MCP:analyze_stock", "fetched_at": "2026-02-08T10:30:00", "expires_at": "2026-02-09T10:30:00", "error": "analyze_stock timeout - using peer_comparison data instead" },
+    "peer_comparison": { "status": "ok", "source": "MCP:compare_stocks", "fetched_at": "2026-02-08T10:31:00", "expires_at": "2026-02-15T10:31:00" },
+    "market_context": { "status": "stale", "source": "MCP:get_market_overview", "fetched_at": "2026-02-08T10:32:00", "expires_at": "2026-02-09T10:32:00", "note": "weekend null data" },
+    "analyst_consensus": { "status": "ok", "source": "WebSearch:Agent-A", "fetched_at": "2026-02-08T10:46:00", "expires_at": "2026-02-11T10:46:00" },
+    "prediction_market": { "status": "ok", "source": "WebSearch:Agent-B", "fetched_at": "2026-02-08T10:41:00", "expires_at": "2026-02-09T10:41:00" },
+    "recent_news": { "status": "ok", "source": "WebSearch:Agent-C", "fetched_at": "2026-02-08T10:45:00", "expires_at": "2026-02-09T10:45:00" },
+    "business_overview": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-02-08T10:54:00", "expires_at": "2026-03-10T10:54:00" },
+    "competitive_landscape": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-02-08T10:55:00", "expires_at": "2026-03-08T10:55:00" },
+    "management_team": { "status": "ok", "source": "WebSearch:Agent-E", "fetched_at": "2026-02-08T10:49:00", "expires_at": "2026-03-10T10:49:00" },
+    "smart_money": { "status": "ok", "source": "WebSearch:Agent-F", "fetched_at": "2026-02-08T10:56:00", "expires_at": "2026-02-15T10:56:00" },
+    "options_short": { "status": "error", "source": "WebSearch:Agent-G", "fetched_at": "", "expires_at": "", "error": "Agent G internal error - partial data in smart_money.json" },
+    "core_questions": { "status": "ok", "source": "Phase-0.5:Market-Debate", "fetched_at": "2026-02-08T11:01:00", "expires_at": "2026-02-15T11:01:00" }
+  },
+  "quality": {
+    "complete_fields": 8,
+    "total_fields": 12,
+    "completeness_pct": 66.7,
+    "files_ok": 8,
+    "files_error": 2,
+    "files_stale": 1,
+    "files_total": 11
+  },
+  "layer_status": {
+    "layer1_mcp": "partial",
+    "layer2_python": "skipped",
+    "layer3_websearch": "ok"
+  },
+  "coverage_summary": {
+    "financial_data": "ok - analyst consensus + peer comparison",
+    "market_sentiment": "ok - prediction market + recent news",
+    "competition": "ok - business overview + competitive landscape",
+    "institutional": "ok - smart money 13F data",
+    "management": "ok - executive team data",
+    "options_sentiment": "partial - integrated in smart_money.json",
+    "core_questions": "ok - 7 CQs extracted from market debate"
+  }
+}

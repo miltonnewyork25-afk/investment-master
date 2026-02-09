@@ -1,0 +1,252 @@
+{
+  "ticker": "MU",
+  "fetched_at": "2026-02-08",
+  "institutional_summary": {
+    "total_institutions": 3189,
+    "total_shares_held": 1041498635,
+    "ownership_pct": 80.05,
+    "insider_ownership_pct": 0.25,
+    "retail_ownership_pct": 19.7,
+    "shares_outstanding": 1130000000,
+    "float": 1120000000,
+    "qoq_change_institutions": "N/A — 最新13F数据尚未公布完整季度对比",
+    "qoq_change_shares": "N/A — 最新13F数据尚未公布完整季度对比",
+    "sources": [
+      "[硬数据: stockanalysis.com, 2026-02-08] 机构持股80.05%, 内部人0.25%",
+      "[硬数据: fintel.io, 2026-02-08] 3189家机构持有1,041,498,635股"
+    ]
+  },
+  "top_holders": [
+    {
+      "rank": 1,
+      "name": "Vanguard Group Inc.",
+      "shares": 104650000,
+      "pct": 9.38,
+      "value_usd": null,
+      "change": "增持1.9% (Q2 2025 vs Q1 2025, 从101.91M增至~104.65M)",
+      "report_date": "2025-06-30",
+      "source": "[硬数据: marketbeat.com/fintel.io, 2026-02]"
+    },
+    {
+      "rank": 2,
+      "name": "BlackRock, Inc.",
+      "shares": 93830000,
+      "pct": 8.41,
+      "value_usd": null,
+      "change": "未确认季度变化",
+      "report_date": "2025-06-30",
+      "source": "[硬数据: fintel.io, 2026-02]"
+    },
+    {
+      "rank": 3,
+      "name": "Capital World Investors",
+      "shares": 54280000,
+      "pct": 4.85,
+      "value_usd": null,
+      "change": "未确认季度变化",
+      "report_date": "2025-03-31",
+      "source": "[硬数据: matrixbcg.com/fintel.io, 2025-07]"
+    },
+    {
+      "rank": 4,
+      "name": "State Street Corp",
+      "shares": 51373591,
+      "pct": 4.56,
+      "value_usd": 6331795000,
+      "change": "增持2.7% (Q2 2025)",
+      "report_date": "2025-06-30",
+      "source": "[硬数据: marketbeat.com, 2026-01]"
+    },
+    {
+      "rank": 5,
+      "name": "FMR LLC (Fidelity)",
+      "shares": null,
+      "pct": null,
+      "value_usd": null,
+      "change": "未获取具体数据,确认为前10持有人",
+      "report_date": null,
+      "source": "[合理推断: 多来源确认FMR为MU前10持有人, 具体股数未获取]"
+    },
+    {
+      "rank": 6,
+      "name": "Primecap Management Co/CA",
+      "shares": null,
+      "pct": null,
+      "value_usd": null,
+      "change": "未获取具体数据,确认为前10持有人",
+      "report_date": null,
+      "source": "[合理推断: 多来源确认Primecap为MU前10持有人, 具体股数未获取]"
+    },
+    {
+      "rank": 7,
+      "name": "Geode Capital Management LLC",
+      "shares": null,
+      "pct": null,
+      "value_usd": null,
+      "change": "未获取具体数据,确认为前10持有人",
+      "report_date": null,
+      "source": "[合理推断: 多来源确认Geode为MU前10持有人, 具体股数未获取]"
+    },
+    {
+      "rank": 8,
+      "name": "JPMorgan Chase & Co.",
+      "shares": null,
+      "pct": null,
+      "value_usd": null,
+      "change": "未获取具体数据,确认为前10持有人",
+      "report_date": null,
+      "source": "[合理推断: 多来源确认JPMorgan为MU前10持有人, 具体股数未获取]"
+    }
+  ],
+  "notable_moves": [
+    {
+      "fund": "Vanguard Group Inc.",
+      "action": "增持",
+      "detail": "Q2 2025增持1.9%, 持股从101.91M增至约104.65M股",
+      "source": "[硬数据: marketbeat.com, 2026-01]"
+    },
+    {
+      "fund": "State Street Corp",
+      "action": "增持",
+      "detail": "Q2 2025增持2.7%, 持有51,373,591股, 价值$6.33B",
+      "source": "[硬数据: marketbeat.com, 2026-01]"
+    },
+    {
+      "fund": "Renaissance Technologies",
+      "action": "增持",
+      "detail": "Q3 2025增持, 仓位增加约$201M",
+      "source": "[硬数据: seekingalpha.com, 2025-Q3 13F]"
+    },
+    {
+      "fund": "Parnassus Investments",
+      "action": "减持",
+      "detail": "Q3 2025减持33.2%, 卖出177,650股, 剩余358,210股",
+      "source": "[硬数据: marketbeat.com, 2026-01-10]"
+    },
+    {
+      "fund": "David Tepper / Appaloosa Management",
+      "action": "卖出/退出",
+      "detail": "2025年大幅减仓MU, 不再为前列持仓. 曾占投资组合约10%",
+      "source": "[硬数据: yahoo finance/insidermonkey, 2025-Q3 13F]"
+    }
+  ],
+  "guru_investors": [
+    {
+      "name": "David Tepper / Appaloosa Management",
+      "status": "已大幅减仓或退出",
+      "detail": "2025年卖出Oracle/Micron/Intel, MU不再为其top holdings. Q3 2025 13F显示45只股票, 前列为BABA/AMZN/WHR/NVDA/GOOG",
+      "source": "[硬数据: yahoo finance, 2025-11]"
+    },
+    {
+      "name": "Parnassus Investments (Parnassus Endeavor Fund)",
+      "status": "持有但减仓",
+      "detail": "MU占其投资组合1.76%, Q3减持33.2%至358,210股",
+      "source": "[硬数据: marketbeat.com/13radar.com, 2026-01]"
+    },
+    {
+      "name": "Renaissance Technologies",
+      "status": "持有并增仓",
+      "detail": "Q3 2025增持约$201M, MU非其前5持仓(前5: PLTR/NVDA/RBLX/UTHR/VRSN)",
+      "source": "[硬数据: seekingalpha.com, 2025-Q3]"
+    },
+    {
+      "name": "Warren Buffett / Berkshire Hathaway",
+      "status": "未持有",
+      "detail": "Berkshire无MU持仓记录",
+      "source": "[硬数据: hedgefollow.com/dataroma.com, 2026-02]"
+    },
+    {
+      "name": "Soros Fund Management",
+      "status": "未确认持有MU",
+      "detail": "Soros持有TSM等半导体, 但搜索未发现MU持仓. 2025年卖出ARM全部325,000股",
+      "source": "[硬数据: insidermonkey.com/hedgefollow.com, 2025]"
+    },
+    {
+      "name": "ARK Invest (Cathie Wood)",
+      "status": "未确认持有MU",
+      "detail": "ARKK/ARKQ等基金中未搜索到MU持仓记录",
+      "source": "[合理推断: ark-invest.com搜索无结果, 2026-02]"
+    }
+  ],
+  "insider_activity": {
+    "net_insider_sentiment": "偏空 — 近90天内部人净卖出, 持股减少3.74%(3.43M→3.30M股). 唯一买入为董事Teyin Liu的$7.8M购买",
+    "insider_ownership_pct": 0.29,
+    "total_insider_shares": 3300000,
+    "recent_transactions": [
+      {
+        "name": "Sumit Sadana",
+        "title": "EVP & Chief Business Officer",
+        "date": "2026-02-02",
+        "type": "卖出",
+        "shares": 25000,
+        "price_range": "$429.00 - $431.76",
+        "total_value": 10750196,
+        "remaining_shares": 248021,
+        "source": "[硬数据: SEC Form 4, benzinga.com/parameter.io, 2026-02-05]"
+      },
+      {
+        "name": "Mark J. Murphy",
+        "title": "EVP & CFO",
+        "date": "2026-01-27",
+        "type": "卖出",
+        "shares": 35000,
+        "price_range": "未获取具体价格",
+        "total_value": 5025987,
+        "remaining_shares": null,
+        "source": "[硬数据: businessquant.com/secform4.com, 2026-02-06] 注: 35000股为90天累计数据, 1/27交易具体股数可能为部分"
+      },
+      {
+        "name": "Teyin Liu",
+        "title": "Director (董事)",
+        "date": "2026-01-13 至 2026-01-14",
+        "type": "买入",
+        "shares": 23200,
+        "price_range": "$337.07 - $337.50 (加权均价)",
+        "total_value": 7821723,
+        "remaining_shares": 25910,
+        "source": "[硬数据: SEC Form 4, stocktitan.net/yahoo finance, 2026-01-14]"
+      },
+      {
+        "name": "Sanjay Mehrotra",
+        "title": "President & CEO",
+        "date": "2025-11-06",
+        "type": "卖出",
+        "shares": 400025,
+        "price_range": "$227.72",
+        "total_value": null,
+        "remaining_shares": 1071578,
+        "source": "[硬数据: investingpoint.com, 2025-11]"
+      }
+    ],
+    "notable_signal": "董事Teyin Liu的$7.8M买入(新建仓)是罕见的看多信号, MU股价在消息后一度涨5%. 但CEO和EVP的持续卖出形成对冲. 总体内部人信心为负面",
+    "sources": [
+      "[硬数据: businessquant.com, 2026-02-06] 内部人持股0.29%, 3.30M股",
+      "[硬数据: benzinga.com, 2026-02-05] Sadana卖出25,000股@$429-431",
+      "[硬数据: stocktitan.net, 2026-01-14] Liu买入23,200股@$337"
+    ]
+  },
+  "short_interest": {
+    "shares_short": 27610000,
+    "short_pct_outstanding": 2.45,
+    "short_pct_float": 2.46,
+    "days_to_cover": 0.88,
+    "avg_daily_volume": 31320000,
+    "trend_note": "空头持仓相对温和, 约2.5%的流通股被做空. Days to cover不到1天, 表明空头头寸可快速平仓",
+    "source": "[硬数据: stockanalysis.com, 2026-02-08]"
+  },
+  "sources": [
+    "stockanalysis.com — 短期空头/机构持股/内部人持股比例",
+    "fintel.io — 机构持有人总数(3189)和总股数",
+    "marketbeat.com — 顶级持有人持股变化(Vanguard +1.9%, State Street +2.7%)",
+    "matrixbcg.com — 前3大持有人具体股数(Vanguard/BlackRock/Capital World)",
+    "benzinga.com — Sumit Sadana内部人卖出$10.75M",
+    "parameter.io — Sadana卖出细节(17,450+7,500+50股)",
+    "stocktitan.net — Teyin Liu董事买入23,200股",
+    "yahoo finance — David Tepper减仓MU/Teyin Liu买入$7.8M",
+    "seekingalpha.com — Renaissance Technologies Q3 2025增持$201M",
+    "businessquant.com — 内部人持股0.29%, 90天减少3.74%",
+    "hedgefollow.com — Berkshire未持有MU确认",
+    "insidermonkey.com — Soros Fund/Appaloosa 13F数据",
+    "SEC EDGAR (sec.gov) — 13F制度说明, Micron CIK: 723125"
+  ]
+}

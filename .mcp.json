@@ -8,6 +8,8 @@
         "--with", "yfinance>=0.2.36",
         "--with", "pandas>=2.0.0",
         "--with", "numpy>=1.24.0",
+        "--with", "python-dotenv>=1.0.0",
+        "--with", "requests>=2.31.0",
         "python",
         "mcp_server/main.py"
       ],

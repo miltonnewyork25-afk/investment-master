@@ -1,0 +1,195 @@
+{
+  "ticker": "MU",
+  "fetched_at": "2026-02-08",
+  "macro_events": [
+    {
+      "event": "US recession by end of 2026",
+      "platform": "Polymarket",
+      "probability": 0.26,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "volume": "$213,146",
+      "liquidity": "$37,971",
+      "resolution_criteria": "NBER announces recession or two consecutive quarters negative GDP (Q2 2025-Q4 2026), by Q4 2026 advance estimate release",
+      "mu_relevance": "high - recession would severely cut DRAM/NAND demand from enterprise and consumer segments"
+    },
+    {
+      "event": "US recession in 2026 (Kalshi)",
+      "platform": "Kalshi",
+      "probability": 0.25,
+      "last_updated": "2026-02-08",
+      "url": "https://kalshi.com/markets/kxrecssnber/recession",
+      "volume": "not fetched - page rendering issue",
+      "note": "Kalshi recession odds fell to 25% from 42% in July 2025, after strong Q3 GDP of 4.3%",
+      "mu_relevance": "high - consistent with Polymarket at ~25-26%"
+    },
+    {
+      "event": "Negative GDP growth in 2026",
+      "platform": "Polymarket",
+      "probability": 0.12,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/event/negative-gdp-growth-in-2026",
+      "volume": "$10,485",
+      "resolution_criteria": "Full year 2026 GDP advance estimate below 0% (BEA)",
+      "mu_relevance": "medium - negative GDP = cyclical downturn for memory demand"
+    },
+    {
+      "event": "Inflation reaches more than 3% in 2026",
+      "platform": "Polymarket",
+      "probability": 0.30,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026/will-inflation-reach-more-than-3-in-2026",
+      "volume": "$52,684",
+      "resolution_criteria": "CPI increases by more than 3% over any 12-month period ending in 2026 (BLS)",
+      "mu_relevance": "medium - high inflation may delay rate cuts, raising discount rates and pressuring tech valuations"
+    },
+    {
+      "event": "Fed rate hike in 2026",
+      "platform": "Polymarket",
+      "probability": 0.12,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/event/fed-rate-hike-in-2026",
+      "volume": "$34,678",
+      "mu_relevance": "medium - rate hike would be bearish for capital-intensive memory industry capex cycle"
+    }
+  ],
+  "company_specific": [
+    {
+      "event": "Will Micron Technology (MU) beat quarterly earnings (non-GAAP EPS > $3.78, Dec 17 2025 report)",
+      "platform": "Polymarket",
+      "probability": "market expired/resolved",
+      "last_updated": "2025-12-17",
+      "url": "https://polymarket.com/event/mu-quarterly-earnings-nongaap-eps-12-17-2025-3pt78",
+      "note": "Historical market - MU Dec 2025 earnings. No active forward-looking MU-specific markets found as of 2026-02-08",
+      "mu_relevance": "informational - shows Polymarket has covered MU earnings but no active market currently"
+    }
+  ],
+  "industry_events": [
+    {
+      "event": "AI industry downturn by December 31, 2026",
+      "platform": "Polymarket",
+      "probability": 0.22,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/event/ai-bubble-burst-by/ai-industry-downturn-by-december-31-2026-857",
+      "volume": "$1,561,981",
+      "resolution_criteria": "At least 3 of: NVDA -50% from ATH, SOXX -40% from ATH, OpenAI/Anthropic bankruptcy, OpenAI acquired, H100 rental <= $1.00 for 5 consecutive days — within 90-day window",
+      "mu_relevance": "critical - MU is major HBM3E supplier to AI accelerators; AI downturn = HBM demand collapse"
+    },
+    {
+      "event": "AI industry downturn by March 31, 2026",
+      "platform": "Polymarket",
+      "probability": 0.04,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/event/ai-bubble-burst-by/ai-industry-downturn-by-march-31-2026-547",
+      "volume": "included in parent market $1.56M",
+      "mu_relevance": "low near-term risk - only 4% probability of imminent AI bust"
+    },
+    {
+      "event": "China invades Taiwan by end of 2026",
+      "platform": "Polymarket",
+      "probability": 0.12,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027/will-china-invade-taiwan-before-2027",
+      "volume": "$8,263,966",
+      "liquidity": "$572,239",
+      "mu_relevance": "critical - Taiwan invasion = TSMC production halt = severe supply chain disruption for advanced packaging; MU benefits as non-Taiwan supplier but overall industry chaos"
+    },
+    {
+      "event": "China invades Taiwan by June 30, 2026",
+      "platform": "Polymarket",
+      "probability": 0.05,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/event/will-china-invade-taiwan-by-june-30-2026",
+      "volume": "$586,323",
+      "mu_relevance": "low near-term risk of Taiwan invasion"
+    },
+    {
+      "event": "China-Taiwan military clash before 2027",
+      "platform": "Polymarket",
+      "probability": 0.16,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
+      "volume": "$737,876",
+      "liquidity": "$78,850",
+      "resolution_criteria": "Any incident involving use of force (missile strikes, artillery, gunfire, direct military engagement) between Chinese and Taiwanese forces, Nov 2025-Dec 2026",
+      "mu_relevance": "high - military clash short of invasion still causes supply chain panic and semiconductor risk premium"
+    },
+    {
+      "event": "China blockades Taiwan by June 30, 2026",
+      "platform": "Polymarket",
+      "probability": 0.06,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/event/will-china-blockade-taiwan-by-june-30",
+      "volume": "$482,766",
+      "resolution_criteria": "China establishes aerial or naval blockade for Taiwan territory by June 30, 2026",
+      "mu_relevance": "medium - blockade would disrupt TSMC supply chain, boost MU as alternative but create industry chaos"
+    },
+    {
+      "event": "Supreme Court rules in favor of Trump's tariffs",
+      "platform": "Polymarket",
+      "probability": 0.31,
+      "last_updated": "2026-02-08",
+      "url": "https://polymarket.com/politics/trade-war",
+      "volume": "$4,000,000",
+      "mu_relevance": "medium - tariff escalation could impact semiconductor supply chains and pricing"
+    }
+  ],
+  "memory_specific": [],
+  "fed_rate_outlook": {
+    "source": "Polymarket",
+    "url": "https://polymarket.com/event/how-many-fed-rate-cuts-in-2026",
+    "fetched_at": "2026-02-08",
+    "total_volume": "$4,600,000+",
+    "current_fed_funds_rate": "3.50%-3.75% (held steady Jan 28, 2026)",
+    "rate_cuts_probability": {
+      "0_cuts_0bps": 0.07,
+      "1_cut_25bps": 0.16,
+      "2_cuts_50bps": 0.27,
+      "3_cuts_75bps": 0.26,
+      "4_cuts_100bps": 0.13,
+      "5_cuts_125bps": 0.06,
+      "6_cuts_150bps": 0.03,
+      "7_cuts_175bps": 0.02,
+      "8_cuts_200bps": 0.01,
+      "9plus_cuts_225bps": 0.00
+    },
+    "most_likely": "2-3 cuts (53% combined probability)",
+    "march_2026_cut_probability": 0.16,
+    "kalshi_march_cut_note": "Kalshi shows 64% probability of March cut — significant divergence from Polymarket's 16%",
+    "mu_relevance": "high - rate cuts lower discount rates, reduce MU's debt servicing cost (~$11B long-term debt), and support memory cycle recovery"
+  },
+  "no_coverage": [
+    "DRAM/memory specific prediction markets — searched 'site:polymarket.com DRAM memory', zero results",
+    "Chip export ban specific prediction markets — searched 'site:polymarket.com chip export ban', no dedicated market found",
+    "Semiconductor tariff on Kalshi — searched 'site:kalshi.com semiconductor tariff', no dedicated market found",
+    "MU-specific forward-looking markets — only expired Dec 2025 earnings market found",
+    "HBM demand/pricing prediction markets — no coverage on any platform",
+    "Memory cycle prediction markets — no coverage on any platform"
+  ],
+  "key_implications_for_mu": "1) RECESSION RISK MODERATE: 25-26% probability (Polymarket+Kalshi consensus) — MU is highly cyclical, recession = memory ASP decline. 2) AI BUBBLE LOW-MEDIUM: 22% probability of AI downturn by end 2026, only 4% by March — MU's HBM3E revenue growth story has ~78% probability of remaining intact through 2026. 3) TAIWAN RISK MANAGEABLE: 12% invasion, 16% military clash, 6% blockade — MU as US-based memory maker could be relative beneficiary vs Taiwan-exposed competitors (Nanya, Winbond) but overall industry disruption is net negative. 4) FED CUTS SUPPORTIVE: 53% probability of 2-3 cuts, only 7% chance of zero cuts — favorable for capital-intensive memory sector. 5) INFLATION WATCH: 30% chance of >3% inflation could delay cuts. 6) NO MEMORY-SPECIFIC MARKETS: Prediction markets have zero coverage of DRAM/NAND/HBM cycles, limiting direct applicability.",
+  "comparison_vs_tsm_report": {
+    "taiwan_invasion_eoy2026": "12% (unchanged from TSM report 2026-02-07)",
+    "military_clash": "16% (unchanged)",
+    "blockade_june2026": "6% (TSM report had 9% — different timeframe or updated)",
+    "ai_bubble_eoy2026": "22% (TSM report had 20% — slight increase, +2pp)",
+    "us_recession_2026": "26% (TSM report had 20% — notable increase, +6pp from Polymarket; Kalshi at 25%)",
+    "fed_2_to_3_cuts": "53% (unchanged from TSM report)"
+  },
+  "sources": [
+    "https://polymarket.com/event/us-recession-by-end-of-2026",
+    "https://polymarket.com/event/negative-gdp-growth-in-2026",
+    "https://polymarket.com/event/how-high-will-inflation-get-in-2026/will-inflation-reach-more-than-3-in-2026",
+    "https://polymarket.com/event/how-many-fed-rate-cuts-in-2026",
+    "https://polymarket.com/event/fed-rate-hike-in-2026",
+    "https://polymarket.com/event/ai-bubble-burst-by/ai-industry-downturn-by-december-31-2026-857",
+    "https://polymarket.com/event/ai-bubble-burst-by/ai-industry-downturn-by-march-31-2026-547",
+    "https://polymarket.com/event/will-china-invade-taiwan-before-2027/will-china-invade-taiwan-before-2027",
+    "https://polymarket.com/event/will-china-invade-taiwan-by-june-30-2026",
+    "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
+    "https://polymarket.com/event/will-china-blockade-taiwan-by-june-30",
+    "https://polymarket.com/event/mu-quarterly-earnings-nongaap-eps-12-17-2025-3pt78",
+    "https://polymarket.com/politics/trade-war",
+    "https://kalshi.com/markets/kxrecssnber/recession",
+    "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31"
+  ]
+}

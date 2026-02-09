@@ -1,262 +1,86 @@
-# TSM台积电分析文档L5标准优化升级计划
+# System Update Assessment & Investment Logic Toolkit Creation
 
-## 🎯 分析目标与升级范围
+## Goal
+Comprehensively assess all new system updates (MCP integrations, skills, investment thermometer strategy) and create a unified investment-logic-toolkit.skill.md that optimizes company research workflows.
 
-### 优化基础
-- **现有文档**: `TSM_Complete_Analysis_ACTIVE_v5.0_2026-02-04.md` (当前185,000字符)
-- **目标文档**: TSM v6.0 L5标准完整版本
-- **新框架**: 半导体专用CLAUDE.md L5标准
-- **升级重点**: 补充遗漏的L5标准模块和视角
+## Success Criteria
+- [ ] Complete inventory of all system updates
+- [ ] Assessment of new MCP tools integration impact
+- [ ] Analysis of new/updated skills
+- [ ] Investment thermometer strategy evaluation
+- [ ] Creation of unified investment-logic-toolkit.skill.md
+- [ ] Updated company research workflow with new dimensions
+- [ ] Agent optimization recommendations
 
-### L5标准升级要求
-| 指标 | 当前v5.0 | 新L5目标 | 升级重点 |
-|------|----------|----------|----------|
-| **总字数** | 185,000字符 | **≥108,000字符×1.8=194,400** | 补充深度内容 |
-| **置信度** | 92% A+B | **≥90% A+B** | 数据源标注优化 |
-| **洞察卡** | 15张 | **8张×400字=3,200字** | 质量>数量，深度优化 |
-| **Kill Switch** | 6个 | **≥15个** | 技术+周期+市场+政策全维度 |
-| **预测数量** | 13个 | **≥25个** | 技术时间点+周期拐点+价格趋势 |
-| **数据表格** | 现有30+ | **≥45个** | 技术对比+财务分析+周期数据 |
-| **可视化图** | Mermaid4张 | **≥12个** | 供应链+技术路线+周期雷达 |
+## Phases
 
-## 🚀 升级优化任务清单
+### Phase 1: System Update Inventory [COMPLETE]
+**Objective:** Catalog all new additions and changes
+- [x] List all new MCP tools (100baggers, FMP, Polymarket)
+- [x] Identify new skills added
+- [x] Map updated/optimized existing skills
+- [x] Document investment thermometer strategy
+- [x] Check framework version changes (Deep-Dive Protocol v7.0)
 
-### Phase 1: 半导体专家身份强化 (20,000字符)
-> **目标**: 按照新CLAUDE.md的半导体专家定位深化技术分析深度
+### Phase 2: New MCP Tools Analysis [COMPLETE]
+**Objective:** Understand capabilities and integration points
+- [x] Test 100baggers.club integration capabilities
+- [x] Analyze FMP endpoint coverage and data quality
+- [x] Evaluate Polymarket prediction market data access
+- [x] Map data flow from MCP tools to research workflow
+- [x] Identify automation opportunities
 
-- [ ] **1.1 技术深度强化**
-  - 补充摩尔定律演进分析 (3nm→2nm→1.4nm技术路径)
-  - 工艺节点迁移的物理极限分析
-  - 新架构突破对现有产业链的重塑影响
-  - 专利布局影响未来议价权分析
+### Phase 3: Skills Ecosystem Review [COMPLETE]
+**Objective:** Understand new skill capabilities and optimization
+- [x] Review all available skills (20+ skills listed)
+- [x] Identify newly added skills
+- [x] Analyze skill interdependencies
+- [x] Map skills to research workflow stages
+- [x] Document optimization changes
 
-- [ ] **1.2 周期敏感性分析**
-  - 半导体18-24月超级周期精确定位
-  - 库存小周期叠加逻辑深度建模
-  - P1-P5周期定位与6层雷达信号交叉验证
-  - 周期拐点预测精确到±1季度误差
+### Phase 4: Investment Thermometer Deep Dive [COMPLETE]
+**Objective:** Evaluate thermometer strategy implementation readiness
+- [x] Analyze Core layer (70%) implementation path
+- [x] Assess Enhanced layer (20%) roadmap
+- [x] Review AI layer (10%) feasibility
+- [x] Test algorithm components with real data
+- [x] Identify integration points with existing research
 
-- [ ] **1.3 AI时代适配评估**
-  - AI对半导体产业链结构性重塑量化分析
-  - L+S双轴AI实施评估深度应用
-  - AI五不变量量化分析
-  - AI硬件销售vs平台生态价值区分
+### Phase 5: Workflow Impact Analysis [IN_PROGRESS]
+**Objective:** Determine how updates change company research
+- [ ] Map current Deep-Dive Protocol (Phase 0-5.5)
+- [ ] Identify new research dimensions to add
+- [ ] Analyze agent optimization needs
+- [ ] Assess data prefetch changes needed
+- [ ] Plan Core Questions methodology updates
 
-- [ ] **1.4 地缘政治意识深化**
-  - 技术竞争+供应链安全的战略博弈深度
-  - 出口管制基准/收紧/极端情景三情景分析
-  - 供应链韧性评估与替代方案成本
-  - 技术自主可控影响长期格局分析
+### Phase 6: Toolkit Creation [COMPLETE]
+**Objective:** Create investment-logic-toolkit.skill.md
+- [x] Design unified toolkit architecture
+- [x] Integrate thermometer strategy
+- [x] Include MCP tool orchestration
+- [x] Add automated research triggers
+- [x] Document agent deployment patterns
 
-**Phase 1验收**: □ 字数20,000+ □ 技术路线图标注不确定性 □ 周期定位±1季度精度 □ 地缘三情景量化
+### Phase 7: Implementation Planning [COMPLETE]
+**Objective:** Plan rollout strategy
+- [x] Prioritize implementation phases
+- [x] Identify testing requirements
+- [x] Plan integration with existing workflows
+- [x] Document training/familiarization needs
 
-### Phase 2: L5质量硬性要求补充 (25,000字符)
-> **目标**: 确保所有L5硬性指标达标，补充缺失模块
+## Context
+- Current location: /Users/milton/投资大师/.worktrees/半导体
+- Framework version: Deep-Dive Protocol v7.0
+- Active company research: MU (Phase 0 completion pending)
+- Available skills: 20+ including new additions
 
-- [ ] **2.1 数据表格扩充** (目标45+个)
-  - 技术对比表格：3nm vs Samsung GAA详细参数
-  - 财务分析表格：历史10年财务指标矩阵
-  - 周期数据表格：2018-2025三轮周期完整数据
-  - 竞争分析表格：TSM vs Samsung vs Intel全维对比
-  - 客户分析表格：前10大客户依赖度+切换成本
-  - 地缘风险表格：政策影响量化评估矩阵
+## Key Questions
+1. What specific new capabilities do the MCP integrations provide?
+2. How do new skills change the optimal research workflow?
+3. Where should the investment thermometer integrate into existing phases?
+4. Which agents need modification to leverage new data sources?
+5. What new research dimensions should be standard vs optional?
 
-- [ ] **2.2 可视化图扩充** (目标12+个)
-  - 供应链控制图：5层供应链结构可视化
-  - 技术路线图：2026-2030技术演进路径
-  - 周期雷达图：6层雷达当前状态+历史对比
-  - 竞争态势图：代工三寡头战略群组
-  - AI架构图：7层AI技术栈TSM定位
-  - 地缘政治影响图：政策传导机制
-
-- [ ] **2.3 洞察卡质量提升** (8张×400字)
-  - 重新筛选最具价值的8张洞察卡
-  - 每张400字深度论证
-  - 挑战市场共识的反常识观点
-  - A/B级证据支撑
-
-- [ ] **2.4 Kill Switch扩充** (≥15个)
-  - 技术风险：Samsung技术追平、新技术颠覆
-  - 周期风险：AI需求下降、库存周期反转
-  - 市场风险：地缘冲突、客户集中度风险
-  - 政策风险：出口管制、技术转让限制
-  - 量化阈值设定和监控机制
-
-**Phase 2验收**: □ 表格45+ □ 可视化12+ □ 洞察卡8×400字 □ Kill Switch 15+
-
-### Phase 3: AI实施评估框架深度应用 (20,000字符)
-> **目标**: 按照AI评估框架对TSM进行L+S双轴深度评估
-
-- [ ] **3.1 L轴技术实施深度评估**
-  - L0-L4各层级TSM定位分析
-  - AI芯片制造技术不可替代性量化
-  - 与客户AI芯片联合开发深度评估
-  - AI平台化收税能力评估
-
-- [ ] **3.2 S轴商业兑现程度评估**
-  - AI相关营收占比精确计算
-  - AI业务毛利率vs传统业务对比
-  - AI驱动的利润结构优化建模
-  - AI成为主要增长引擎的时间节点预测
-
-- [ ] **3.3 投资含义转化**
-  - L≥L3 AND S≥S3投资溢价量化
-  - AI强受益者20-50%溢价估值模型
-  - 与传统代工厂商估值差异分析
-  - AI泡沫风险vs结构性受益权衡
-
-- [ ] **3.4 AI五不变量分析**
-  - AI需求的结构性vs周期性成分拆解
-  - AI芯片性能需求演进趋势
-  - AI算力密度增长对先进制程需求
-  - AI应用场景扩展对半导体的长期影响
-
-**Phase 3验收**: □ L+S双轴量化 □ AI溢价20-50%模型 □ 五不变量分析 □ 投资含义清晰
-
-### Phase 4: 心理学评分修正与周期分析 (15,000字符)
-> **目标**: 应用心理学增强评分系统，深化周期分析
-
-- [ ] **4.1 半导体周期心理修正**
-  - P1底部心理：技术悲观主义+损失厌恶放大 (+15分修正)
-  - P3成长期：技术乐观主义+确认偏误 (+5分修正)
-  - P5顶部心理：新范式叙事+FOMO放大 (-20分修正)
-  - 当前P2-P3阶段心理状态分析
-
-- [ ] **4.2 认知偏误识别与控制**
-  - 锚定效应：TSM历史估值锚定分析
-  - 确认偏误：AI受益逻辑的反证检验
-  - 可得性偏误：地缘风险过度反应分析
-  - 框架效应：从周期股到成长股的认知转换
-
-- [ ] **4.3 周期精确定位分析**
-  - 6层雷达信号当前状态精确评估
-  - P1-P5阶段转换的领先指标识别
-  - ±1季度拐点预测模型构建
-  - 历史周期模式vs当前AI周期差异
-
-- [ ] **4.4 投资者情绪分析**
-  - 机构vs散户情绪差异
-  - 半导体板块整体情绪vs TSM特有情绪
-  - 情绪指标与股价表现相关性
-  - 情绪极值对应的投资机会识别
-
-**Phase 4验收**: □ 心理修正模型 □ 认知偏误控制 □ 周期±1季度精度 □ 情绪量化分析
-
-### Phase 5: 技术分析与竞争评估深化 (20,000字符)
-> **目标**: 强化技术专业性分析，深度竞争评估
-
-- [ ] **5.1 制程代差精确评估**
-  - 3nm FinFET vs Samsung GAA技术原理对比
-  - 良率差距量化：TSM领先15-20个百分点机制分析
-  - 成本曲线分析：学习效应vs规模效应
-  - 技术领先时间窗口：12-24个月优势维持分析
-
-- [ ] **5.2 架构创新判断**
-  - Gate-All-Around vs FinFET架构转换影响
-  - 新材料应用对制程性能提升
-  - EUV光刻技术进阶应用分析
-  - 后摩尔定律时代技术路径探索
-
-- [ ] **5.3 专利护城河分析**
-  - 关键制程技术专利组合评估
-  - 专利保护期限与技术生命周期匹配
-  - 专利诉讼风险评估
-  - 专利许可收入潜力分析
-
-- [ ] **5.4 技术路线图预测**
-  - 2nm技术路线图：2025年风险量产时间表
-  - 1.4nm及beyond：物理极限挑战
-  - 替代技术路径：光刻、材料、封装创新
-  - 技术不确定性概率分析
-
-**Phase 5验收**: □ 技术代差量化 □ 专利组合评估 □ 路线图不确定性标注 □ 技术预测80%准确率目标
-
-### Phase 6: 质量门控与最终验收 (10,000字符)
-> **目标**: 确保L5标准全部达成，最终质量验收
-
-- [ ] **6.1 7层质量检查执行**
-  - QG-01: 技术判断vs≥2个竞争对手对比 ✓
-  - QG-02: 周期定位≥3层雷达确认 ✓
-  - QG-03: AI评估区分硬件vs平台价值 ✓
-  - QG-04: 地缘风险3情景数值测算 ✓
-  - QG-05: 技术路线图概率+替代路径 ✓
-  - QG-06: 估值周期调整+正常化调整 ✓
-  - QG-07: Kill Switch技术+周期+地缘+竞争全覆盖 ✓
-
-- [ ] **6.2 自动化质量检测**
-  - A/B级证据占比≥90%验证
-  - 逻辑一致性：技术vs周期vs估值结论检查
-  - 预测可验证性：25+预测的时间点+概率区间
-  - 反证完整性：核心判断的失败情景分析
-
-- [ ] **6.3 L5标准最终验收**
-  - 字数194,400+达标验收
-  - 平均L3.5深度，核心模块L4+验收
-  - 技术预判80%、周期±1季度、投资20%+跑赢目标承诺
-  - 免责声明和风险提示完整性
-
-**Phase 6验收**: □ 7层质量门控通过 □ L5所有硬性指标达标 □ 预测验证机制 □ 最终质量承诺
-
-## 📊 数据获取计划
-
-### API数据源优先级
-1. **100baggers.club API**: TSM最新财务指标和估值指标
-2. **FMP API**: TSM完整财务数据和同行对比
-3. **SEC API**: TSM最新10-K/10-Q报告数据提取
-4. **WebSearch**: 最新分析师报告、行业新闻、技术进展
-
-### 数据质量保证
-- **A级数据**: 财报数据、SEC文件、官方指引 (目标>70%)
-- **B级数据**: 权威第三方数据库、机构研究 (目标15-20%)
-- **C级数据**: 分析师预测、行业报告 (目标<10%)
-- **Unknown数据**: 必须明确标注不确定性
-
-## ⚠️ 风险管控与质量保证
-
-### 执行风险识别
-- **数据时效性**: API失效或数据滞后风险
-- **分析偏误**: 确认偏误、锚定效应控制机制
-- **完成度风险**: L5标准要求高，需严格质量控制
-- **逻辑一致性**: 跨模块逻辑冲突识别机制
-
-### 质量保证机制
-- **阶段性检查**: 每个Phase完成后质量门控
-- **交叉验证**: 多维度分析结论一致性检查
-- **反证分析**: 每个核心判断的失败情景
-- **专家标准**: 对标顶级投行半导体分析师标准
-
-## 📅 执行时间表
-
-| Phase | 预计工作量 | 关键里程碑 | 质量检查点 |
-|-------|------------|------------|------------|
-| **Phase 1** | 6小时 | 半导体专家身份强化 | 技术深度+周期敏感性 |
-| **Phase 2** | 8小时 | L5硬性要求补充 | 表格45++可视化12+ |
-| **Phase 3** | 6小时 | AI评估框架应用 | L+S双轴量化评估 |
-| **Phase 4** | 4小时 | 心理学修正+周期 | ±1季度精度要求 |
-| **Phase 5** | 6小时 | 技术竞争深化 | 技术预判80%准确率 |
-| **Phase 6** | 2小时 | 质量门控验收 | L5标准全部达成 |
-| **总计** | **32小时** | **完整L5标准报告** | **所有质量门控通过** |
-
----
-
-## 🎯 成功标准定义
-
-### L5级别成功定义
-- **技术预判准确率** ≥80%
-- **周期拐点预测** ±1季度误差
-- **AI影响评估** 可量化验证
-- **投资建议回报** 跑赢行业基准20%+
-- **质量门控通过率** 100%
-
-### 最终交付目标
-- **文档名称**: `TSM_v6.0_L5_Enhanced_Framework.md`
-- **字数目标**: ≥194,400字符
-- **深度等级**: 平均L3.5+，核心模块L4+
-- **质量标准**: 超越顶级投行半导体团队机构级标准
-
----
-**计划创建**: 2026-02-04
-**预计完成**: 2026-02-05
-**框架版本**: 半导体L5标准
-**质量承诺**: 机构级投研标准
-**状态**: ✅ 规划完成，准备执行
+## Next Steps
+Start with Phase 1: Complete system inventory by examining all available skills, MCP tools, and strategic documents.

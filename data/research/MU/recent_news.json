@@ -1,0 +1,408 @@
+{
+  "ticker": "MU",
+  "fetched_at": "2026-02-08",
+  "stock_price": {
+    "current": 394.34,
+    "date": "2026-02-07",
+    "52w_low": 61.54,
+    "52w_high": 455.50,
+    "market_cap_B": 448.08,
+    "pe_ratio": 37.52,
+    "source": "Yahoo Finance / CNBC, 2026-02-07"
+  },
+  "key_news": [
+    {
+      "date": "2026-02-04",
+      "headline": "Micron Stock Faces Pressure Amid Insider Selling and Analyst Downgrade",
+      "summary": "Analyst Warren Lau at Aletheia Capital downgraded MU to Hold, citing shift in investor sentiment to cautious outlook and challenges in chip export regulations. Stock traded down -2.64%.",
+      "sentiment": "negative",
+      "source": "Timothy Sykes / Aletheia Capital",
+      "relevance": "high"
+    },
+    {
+      "date": "2026-02-03",
+      "headline": "Micron Stock Soared 45% in January 2026",
+      "summary": "MU gained 45.4% in January, up 80% in two months and 303% in six months, driven by AI memory demand and HBM production sold out for 2026.",
+      "sentiment": "positive",
+      "source": "Motley Fool",
+      "relevance": "high"
+    },
+    {
+      "date": "2026-02-06",
+      "headline": "Analyst Price Target: $500 by End of 2026",
+      "summary": "Multiple analysts see MU reaching ~$500 by year-end 2026, representing 30%+ upside from ~$380 level. Some targets as high as $550 amid booming data center needs.",
+      "sentiment": "positive",
+      "source": "Motley Fool / Trefis",
+      "relevance": "medium"
+    },
+    {
+      "date": "2026-01-27",
+      "headline": "Micron Breaks Ground on $24 Billion Singapore NAND Megafab",
+      "summary": "Micron broke ground on $24B (SG$31B) double-story NAND fab in Singapore, its first of this design. 700K sqft cleanroom, wafer output from H2 2028. Will produce advanced NAND for AI/data center. Creates ~3,000 jobs.",
+      "sentiment": "positive",
+      "source": "CNBC / GlobeNewswire",
+      "relevance": "high"
+    },
+    {
+      "date": "2026-01-16",
+      "headline": "Micron Breaks Ground on $100 Billion New York DRAM Megafab",
+      "summary": "Micron officially broke ground on megafab in Onondaga County, NY. Largest private investment in NY history, up to 4 fabs making it largest US semiconductor facility. Supported by $6.4B CHIPS Act funding. ~50,000 jobs statewide, ~9,000 direct Micron positions. First factory operations estimated ~2030.",
+      "sentiment": "positive",
+      "source": "Micron IR / Governor Hochul Press Release / The Register",
+      "relevance": "high"
+    },
+    {
+      "date": "2025-12-04",
+      "headline": "Micron Exits Crucial Consumer Business to Focus on AI/HBM",
+      "summary": "After 29 years, Micron is shutting down Crucial consumer SSD and RAM brand by end of February 2026. Reallocating 3D NAND and DRAM capacity to enterprise SSDs, HBM for AI accelerators, and server-grade memory modules.",
+      "sentiment": "neutral",
+      "source": "Micron IR / Tom's Hardware",
+      "relevance": "high"
+    },
+    {
+      "date": "2026-02-02",
+      "headline": "Is Micron the Next Nvidia? AI Memory Boom Comparison",
+      "summary": "Analysts draw parallels between Micron's AI-driven HBM dominance and Nvidia's GPU monopoly. Social media buzz surrounds MU's explosive rally driven by acute AI memory shortages.",
+      "sentiment": "positive",
+      "source": "Motley Fool",
+      "relevance": "medium"
+    },
+    {
+      "date": "2026-01-02",
+      "headline": "MU Stock Popped on New Year Trading",
+      "summary": "Micron started 2026 strong with significant stock pop, driven by confirmation that HBM 2026 production is entirely sold out.",
+      "sentiment": "positive",
+      "source": "Motley Fool",
+      "relevance": "medium"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-02-28",
+      "event": "Q2 FY2026 Quarter End (fiscal quarter ending)",
+      "expected_impact": "Record revenue guided at $18.7B +/- $400M, gross margin 68% +/- 100bps, EPS $8.42 +/- $0.20. Significant sequential acceleration.",
+      "source": "Micron Q1 FY2026 Earnings Call, Dec 17 2025"
+    },
+    {
+      "date": "2026-04-01",
+      "event": "Q2 FY2026 Earnings Report (estimated)",
+      "expected_impact": "Expected to confirm massive revenue acceleration to ~$18.7B. Key focus: HBM4 ramp progress, DRAM/NAND pricing trajectory, data center mix shift. Non-GAAP EPS guided at $8.42, a 440% YoY jump.",
+      "source": "MarketBeat / Nasdaq / Micron IR"
+    },
+    {
+      "date": "2026-Q2",
+      "event": "HBM4 Volume Production Ramp",
+      "expected_impact": "Micron begins ramping HBM4 output from Q2 2026 for Nvidia Vera Rubin and next-gen AI platforms. HBM4 exceeds 11 Gbps, 20% better power efficiency vs HBM3E. Capacity target: 15,000 wafers/month.",
+      "source": "TrendForce / Digitimes / Micron IR"
+    },
+    {
+      "date": "2026-02",
+      "event": "Large-Scale HBM4 Co-Supply for Nvidia Begins",
+      "expected_impact": "Micron begins large-scale HBM4 supply aligned with Nvidia's next-gen AI platform production ramp.",
+      "source": "Digitimes, Jan 7 2026"
+    },
+    {
+      "date": "2026-H2",
+      "event": "1-Gamma DRAM Node Becomes Majority of Bit Output",
+      "expected_impact": "1-gamma DRAM (most advanced node) becomes primary driver of DRAM bit growth and majority of output in H2 2026. Key cost reduction and performance driver.",
+      "source": "Micron Q1 FY2026 Earnings Call"
+    },
+    {
+      "date": "2026",
+      "event": "Second Idaho Fab Construction Begins",
+      "expected_impact": "Construction of second Idaho fab starts in 2026, operational by end of 2028. First Idaho fab targets mid-CY2027 wafer output, earlier than prior guidance.",
+      "source": "Micron IR"
+    },
+    {
+      "date": "2026-02",
+      "event": "Crucial Consumer Brand Wind-Down Complete",
+      "expected_impact": "Final Crucial product shipments by end of Feb 2026. Full capacity reallocation to enterprise/AI memory products.",
+      "source": "Micron IR, Dec 2025"
+    },
+    {
+      "date": "2026",
+      "event": "Capex Ramp to $20 Billion",
+      "expected_impact": "FY2026 capex increased from $18B to $20B to support HBM capacity and 1-gamma supply acceleration. Equipment orders pulled in and installation timelines accelerated.",
+      "source": "Micron Q1 FY2026 Earnings Call"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "date": "2026-01-15",
+        "insider": "Teyin M. Liu (Director)",
+        "type": "Purchase",
+        "shares": 23200,
+        "value_usd": 7821723,
+        "source": "TipRanks / MarketBeat"
+      },
+      {
+        "date": "2026-01-27",
+        "insider": "Single Executive (13 transactions)",
+        "type": "Sale",
+        "shares": "multiple",
+        "value_usd": 5025987,
+        "source": "MarketBeat"
+      }
+    ],
+    "30_day_summary": {
+      "total_sales_shares": 65890,
+      "total_sales_value_usd": 26860000,
+      "total_purchases_shares": 23200,
+      "total_purchases_value_usd": 7820000,
+      "source": "MarketBeat / Nasdaq, as of Feb 2026"
+    },
+    "6_month_summary": {
+      "total_transactions": 121,
+      "purchases": 3,
+      "sales": 118,
+      "source": "StockCircle"
+    },
+    "key_insiders": {
+      "CEO_Sanjay_Mehrotra": {
+        "purchases": 0,
+        "sales": 76,
+        "shares_sold": 177500,
+        "estimated_value_usd": 34339396
+      },
+      "CFO_Mark_Murphy": {
+        "purchases": 0,
+        "sales": 6,
+        "shares_sold": 126000,
+        "estimated_value_usd": 28389111
+      }
+    },
+    "net_insider_sentiment": "Net negative — heavy insider selling (118 sales vs 3 purchases in 6 months). Notable exception: Director Liu's $7.8M purchase in Jan 2026. CEO Mehrotra and CFO Murphy have been consistent sellers."
+  },
+  "sec_filings": [
+    {
+      "type": "10-Q",
+      "date": "2025-12-18",
+      "period": "Q1 FY2026 (ended Nov 27, 2025)",
+      "key_highlights": "Record revenue $13.64B (+57% YoY). DRAM $10.81B, NAND $2.74B. Gross margin 56% (vs 38% YoY). Net income $5.24B, EPS $4.60. Operating cash flow $8.41B. Free cash flow ~$3.0B. Cash position ~$12.0B. Long-term debt $11.19B. Capex $5.39B. Q2 guidance: revenue $18.7B, GM 67%, EPS $8.19.",
+      "url": "https://investors.micron.com/static-files/502c03ac-dd06-4c88-9441-02ebfe6ff6fa",
+      "source": "SEC EDGAR / Micron IR"
+    },
+    {
+      "type": "10-K",
+      "date": "2025-10-17",
+      "period": "FY2025 (ended Aug 28, 2025)",
+      "key_highlights": "Revenue growth +49% YoY. DRAM revenue $28.58B (+62% YoY), NAND $8.50B (+18% YoY). Consolidated gross margin improved to 40% (from 22%). CHIPS Act funding up to $6.4B. $10B share repurchase program ($7.19B used). Patent litigation risk: $445M jury award under appeal. China CAC restriction on government purchases persists.",
+      "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000027/mu-20240829.htm",
+      "source": "SEC EDGAR / StockTitan"
+    },
+    {
+      "type": "10-Q",
+      "date": "2025-10",
+      "period": "Q4 FY2025 (ended Aug 28, 2025)",
+      "key_highlights": "Revenue $11.32B. GAAP net income $3.20B, EPS $2.83. Non-GAAP EPS $3.03. Operating cash flow $5.73B.",
+      "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000046/mu-20251127.htm",
+      "source": "SEC EDGAR"
+    },
+    {
+      "type": "8-K",
+      "date": "2025-12-17",
+      "period": "Q1 FY2026 Earnings Release",
+      "key_highlights": "Record quarterly revenue announcement. Q2 FY2026 guidance significantly above consensus.",
+      "url": "https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-first-quarter-fiscal-2026",
+      "source": "Micron IR"
+    }
+  ],
+  "q1_fy2026_financials": {
+    "revenue_total_M": 13643,
+    "revenue_yoy_growth": "57%",
+    "revenue_by_technology": {
+      "DRAM_M": 10812,
+      "NAND_M": 2743,
+      "Other_M": 88
+    },
+    "revenue_by_business_unit": {
+      "Cloud_Memory_M": 5284,
+      "Cloud_Memory_GM": "66%",
+      "Core_Data_Center_M": 2379,
+      "Core_Data_Center_GM": "51%",
+      "Mobile_and_Client_M": 4255,
+      "Mobile_and_Client_GM": "54%",
+      "Automotive_and_Embedded_M": 1720,
+      "Automotive_and_Embedded_GM": "45%"
+    },
+    "gross_margin_GAAP": "56.0%",
+    "gross_margin_NonGAAP": "56.8%",
+    "operating_income_M": 6136,
+    "net_income_M": 5240,
+    "eps_diluted_GAAP": 4.60,
+    "eps_diluted_NonGAAP": 4.78,
+    "operating_cash_flow_M": 8411,
+    "capex_M": 5389,
+    "free_cash_flow_M": 3022,
+    "cash_and_equivalents_M": 9731,
+    "total_cash_position_M": 12015,
+    "long_term_debt_M": 11187,
+    "debt_prepayments_M": 2822,
+    "share_repurchases_M": 300,
+    "dividends_per_share": 0.115,
+    "source": "Micron 10-Q filed 2025-12-18 / StockTitan"
+  },
+  "q2_fy2026_guidance": {
+    "revenue_M": 18700,
+    "revenue_range": "+/- $400M",
+    "gross_margin_GAAP": "67.0%",
+    "gross_margin_range": "+/- 100bps",
+    "operating_expenses_M": 1380,
+    "eps_GAAP": 8.19,
+    "eps_NonGAAP": 8.42,
+    "eps_range": "+/- $0.20",
+    "source": "Micron Q1 FY2026 Earnings Call, Dec 17 2025"
+  },
+  "fy2025_annual_financials": {
+    "total_revenue_growth_yoy": "49%",
+    "DRAM_revenue_B": 28.58,
+    "DRAM_revenue_growth_yoy": "62%",
+    "NAND_revenue_B": 8.50,
+    "NAND_revenue_growth_yoy": "18%",
+    "gross_margin": "40%",
+    "segment_revenue": {
+      "Cloud_Memory_B": 13.52,
+      "Core_Data_Center_B": 7.23,
+      "Mobile_and_Client_B": 11.86,
+      "Automotive_and_Embedded_B": 4.75
+    },
+    "CHIPS_Act_funding_B": 6.4,
+    "share_repurchase_authorization_B": 10.0,
+    "share_repurchased_through_aug2025_B": 7.19,
+    "revolving_credit_facility_B": 3.5,
+    "source": "Micron 10-K FY2025 / StockTitan"
+  },
+  "hbm_product_updates": [
+    {
+      "product": "HBM3E 12H",
+      "status": "Volume production, majority of HBM shipments",
+      "performance": "30% power reduction vs competition, 50% higher capacity vs 8H products",
+      "supply_status": "Commitments secured from almost all customers for vast majority of CY2026 supply",
+      "source": "Micron Q1 FY2026 Earnings Call"
+    },
+    {
+      "product": "HBM4",
+      "status": "Shipping to key customers, volume ramp from Q2 CY2026",
+      "performance": "Exceeds 11 Gbps, 60% bandwidth increase vs HBM3E, 20% better power efficiency",
+      "capacity_target": "15,000 wafers/month in CY2026",
+      "supply_status": "Entire CY2026 HBM supply (including HBM4) under price and volume agreements",
+      "source": "Micron IR / TrendForce / Digitimes"
+    },
+    {
+      "product": "HBM4E",
+      "status": "Planned for 2027-2028, customized versions for key customers",
+      "performance": "Expected to improve capacity 60% and energy efficiency 20% beyond HBM4",
+      "supply_status": "Entire 2026 supply already sold out before launch",
+      "source": "TrendForce, Dec 2024"
+    },
+    {
+      "product": "HBM TAM Forecast",
+      "status": "Market sizing",
+      "tam_2025_B": 35,
+      "tam_2028_B": 100,
+      "tam_cagr": "~40% through CY2028",
+      "note": "$100B milestone pulled forward by 2 years vs prior outlook",
+      "source": "Micron Q1 FY2026 Earnings Call"
+    },
+    {
+      "product": "Singapore HBM Packaging Plant",
+      "status": "$7B advanced packaging plant for HBM, production starting 2027",
+      "source": "CNBC / The Register"
+    }
+  ],
+  "dram_nand_market_outlook": {
+    "dram_pricing": "~20% sequential increase in Q1 FY2026. Gartner forecasts 47% DRAM price increase in CY2026. Conventional DRAM contract prices up 55-60% QoQ in Q1 CY2026.",
+    "nand_pricing": "NAND Flash contract prices expected to rise 33-38% QoQ in Q1 CY2026.",
+    "supply_constraints": "Tight industry conditions across DRAM and NAND expected to persist through and beyond CY2026.",
+    "enterprise_ssd": "Enterprise SSDs expected to become largest NAND Flash application segment in 2026, driven by AI infrastructure investment.",
+    "source": "TrendForce / Gartner / Micron Q1 FY2026 Earnings Call"
+  },
+  "major_investments": [
+    {
+      "project": "New York DRAM Megafab",
+      "investment_B": 100,
+      "groundbreaking": "2026-01-16",
+      "details": "Up to 4 fabs, largest US semiconductor facility. First factory ops ~2030. ~50,000 jobs. CHIPS Act funded.",
+      "source": "Micron IR / Governor Hochul"
+    },
+    {
+      "project": "Singapore NAND Megafab",
+      "investment_B": 24,
+      "groundbreaking": "2026-01-27",
+      "details": "First double-story wafer fab in Singapore. 700K sqft cleanroom. Wafer output H2 2028. ~3,000 jobs.",
+      "source": "CNBC / GlobeNewswire"
+    },
+    {
+      "project": "Idaho Fabs (2 planned)",
+      "details": "First fab wafer output mid-CY2027 (earlier than prior). Second fab construction begins 2026, operational by end-2028.",
+      "source": "Micron Q1 FY2026 Earnings Call"
+    },
+    {
+      "project": "FY2026 Total Capex",
+      "investment_B": 20,
+      "details": "Increased from $18B to $20B to support HBM and 1-gamma DRAM capacity acceleration.",
+      "source": "Micron Q1 FY2026 Earnings Call"
+    }
+  ],
+  "risk_factors": [
+    {
+      "risk": "Analyst Downgrade and Export Regulations",
+      "detail": "Aletheia Capital downgrade to Hold on Feb 4, 2026 citing chip export regulation challenges and cautious investor sentiment.",
+      "source": "Timothy Sykes, Feb 4 2026"
+    },
+    {
+      "risk": "Heavy Insider Selling",
+      "detail": "118 insider sales vs 3 purchases in 6 months. CEO and CFO are consistent sellers. Net insider sentiment negative.",
+      "source": "MarketBeat / StockCircle"
+    },
+    {
+      "risk": "Patent Litigation",
+      "detail": "Multiple active patent suits covering substantially all revenue. $445M jury award (under appeal). Suits with Netlist, YMTC, and others.",
+      "source": "Micron 10-K FY2025"
+    },
+    {
+      "risk": "China CAC Restriction",
+      "detail": "May 2023 CAC decision restricting Chinese government purchases of Micron products remains in effect.",
+      "source": "Micron 10-K FY2025"
+    },
+    {
+      "risk": "Customer Concentration",
+      "detail": "Over 50% of FY2025 revenue from top 10 customers. ~50% from data center end markets.",
+      "source": "Micron 10-K FY2025"
+    },
+    {
+      "risk": "High Valuation After Rally",
+      "detail": "Stock up 303% in 6 months, PE ratio 37.52. Potential for mean reversion if AI spending slows or memory pricing weakens.",
+      "source": "Yahoo Finance / Analyst commentary"
+    }
+  ],
+  "sources": [
+    "https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-first-quarter-fiscal-2026",
+    "https://www.timothysykes.com/news/micron-technology-inc-mu-news-2026_02_04/",
+    "https://www.fool.com/investing/2026/02/06/microns-stock-price-will-reach-this-level-by-the-e/",
+    "https://www.fool.com/investing/2026/02/03/how-micron-technology-stock-soared-45-last-month/",
+    "https://futurumgroup.com/insights/micron-technology-q1-fy-2026-sets-records-strong-q2-outlook/",
+    "https://www.cnbc.com/2026/01/27/micron-24-billion-singapore-nand-dram-expansion-ai-memory-shortages.html",
+    "https://investors.micron.com/news-releases/news-release-details/micron-announces-groundbreaking-historic-new-york-megafab",
+    "https://www.trendforce.com/news/2024/12/23/news-micron-plans-hbm4-mass-production-in-2026-customized-hbm4e-to-launch-in-2027-2028/",
+    "https://investors.micron.com/news-releases/news-release-details/micron-ships-hbm4-key-customers-power-next-gen-ai-platforms",
+    "https://www.marketbeat.com/stocks/NASDAQ/MU/insider-trades/",
+    "https://www.nasdaq.com/market-activity/stocks/mu/insider-activity",
+    "https://www.tipranks.com/news/insider-trading/micron-insider-makes-bold-multi-million-dollar-move-on-company-stock-insider-trading",
+    "https://www.stocktitan.net/sec-filings/MU/10-k-micron-technology-inc-files-annual-report-a879767daea7.html",
+    "https://www.stocktitan.net/sec-filings/MU/10-q-micron-technology-inc-quarterly-earnings-report-375b0fb630bb.html",
+    "https://www.stocktitan.net/news/MU/micron-technology-inc-reports-results-for-the-first-quarter-of-5gdldx3f7mb2.html",
+    "https://www.sec.gov/Archives/edgar/data/723125/000072312524000027/mu-20240829.htm",
+    "https://www.sec.gov/Archives/edgar/data/723125/000072312525000046/mu-20251127.htm",
+    "https://investors.micron.com/sec-filings",
+    "https://www.sec.gov/edgar/browse/?CIK=0000723125",
+    "https://www.trendforce.com/presscenter/news/20260105-12860.html",
+    "https://evertiq.com/news/2026-01-05-dram-and-nand-flash-prices-to-surge-in-q1-2026",
+    "https://investors.micron.com/news-releases/news-release-details/micron-announces-exit-crucial-consumer-business",
+    "https://www.tomshardware.com/pc-components/dram/micron-is-killing-crucial-ssds-and-memory-in-ai-pivot-company-refocuses-on-hbm-and-enterprise-customers",
+    "https://finance.yahoo.com/quote/MU/",
+    "https://www.cnbc.com/quotes/MU",
+    "https://www.digitimes.com/news/a20260107PD236/nvidia-hbm4-micron-2026-rubin.html"
+  ]
+}

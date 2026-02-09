@@ -1,0 +1,90 @@
+{
+  "ticker": "MU",
+  "fetched_at": "2026-02-08",
+  "ceo": {
+    "name": "Sanjay Mehrotra",
+    "tenure_years": 8.75,
+    "background": "Co-founder and former President/CEO of SanDisk (2011-2016, acquired by Western Digital). 35+ years in non-volatile semiconductor memory industry. BS and MS in Electrical Engineering and Computer Science from UC Berkeley; Stanford GSB Executive Program. 70+ patents in high-capacity flash memory. Inducted into National Academy of Engineering in 2022.",
+    "track_record": "Transformed Micron from 'technology follower' to 'technology leader'. Revenue surpassed $30B, company climbed 45 spots on Fortune 500. Pivoted away from low-margin consumer markets toward high-value AI-critical HBM. Record-breaking revenue in fiscal Q3 June 2025. Tripled women in leadership roles, achieved 99% gender pay parity. Managed 'exit' from low-margin consumer markets in 2024 to prioritize AI/HBM.",
+    "key_achievements": [
+      "Co-founded SanDisk, grew it to acquisition by Western Digital for ~$19B",
+      "Transformed Micron operational DNA, reaching new process nodes ahead of Korean rivals",
+      "Revenue surpassed $30B under his leadership",
+      "Secured billions in U.S. CHIPS Act government subsidies",
+      "Managed ~$20B annual capex budget with operational discipline",
+      "70+ patents in high-capacity flash memory technology",
+      "National Academy of Engineering inductee (2022)"
+    ],
+    "concerns": "Shareholder lawsuit alleging insider trading - claims he sold ~$70M in shares prior to announcing poor earnings results. Paragon Intel notes 'poor cyclical track record' that may limit upside."
+  },
+  "cfo": {
+    "name": "Mark Murphy",
+    "tenure_years": 3.8,
+    "background": "Joined Micron as CFO in April 2022. 25+ years of financial and operational leadership in semiconductors. Previously CFO at Qorvo (2016-2022), CFO at Delphi Automotive, CFO at MEMC Electronic Materials, President of Electronics Materials division at Praxair. MBA from Harvard University, BS in Business from Marquette University. U.S. Marine Corps veteran."
+  },
+  "key_executives": [
+    {
+      "name": "Sumit Sadana",
+      "title": "EVP and Chief Business Officer",
+      "background": "Joined Micron in 2017. 30+ years of technology industry experience. Previously EVP and GM of Enterprise Solutions at SanDisk. Earlier career at IBM (13 years) and Freescale. Served as Micron Interim CFO in 2022. MS in EE from Stanford, BS in EE from IIT Kharagpur. Responsible for all four business units, company P&L, revenue and profitability.",
+      "compensation_fy2025": "$11.81M"
+    },
+    {
+      "name": "Scott DeBoer",
+      "title": "EVP and Chief Technology & Products Officer",
+      "background": "Joined Micron in 1995 as process technology engineer. PhD in Electrical Engineering from Iowa State University. Appointed EVP Technology & Products in 2019. Leads global technology development and engineering from silicon design to system solutions. 120+ U.S. patents, dozens of technical publications. Chairs U.S. Dept of Commerce NIST Industrial Advisory Committee.",
+      "compensation_fy2025": "$10.22M"
+    },
+    {
+      "name": "Manish Bhatia",
+      "title": "EVP of Global Operations",
+      "background": "Joined Micron in October 2017 after 18-year career at SanDisk (EVP Worldwide Operations) and Western Digital (EVP Silicon Operations). 25+ years of engineering and operations experience. BS and MS in Mechanical Engineering from MIT, MBA from MIT Sloan. Awarded Singapore Public Service Medal (2024) for role in securing Singapore's semiconductor supply chain position.",
+      "compensation_fy2025": "$11.76M"
+    },
+    {
+      "name": "Mike Cordano",
+      "title": "EVP of Worldwide Sales",
+      "background": "Newly appointed, succeeding Mike Bokan who retired after 28+ years at Micron. Responsible for global sales operations."
+    },
+    {
+      "name": "Joel L. Poppen",
+      "title": "SVP and General Counsel/Secretary",
+      "background": "Third-largest insider shareholder with 259.22K shares."
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-01-15",
+      "event": "Board members Richard M. Beyer and Mary Pat McCarthy retired at annual shareholders meeting. Board reduced from 10 to 8 directors."
+    },
+    {
+      "date": "2025",
+      "event": "Mike Cordano appointed EVP of Worldwide Sales, succeeding Mike Bokan who retired after 28+ years."
+    },
+    {
+      "date": "2025",
+      "event": "Mark Liu (former TSMC Chairman) and Christie Simons appointed to Board of Directors."
+    }
+  ],
+  "insider_ownership_pct": 0.29,
+  "insider_ownership_detail": "Approximately 3.30M shares out of 1.13B outstanding (as of Feb 6, 2026). Top holders: Sanjay Mehrotra (1.07M shares), Manish Bhatia (323.49K shares), Joel Poppen (259.22K shares). Note: some sources report 1.60% using different methodology.",
+  "compensation_highlights": "CEO Mehrotra total comp $30.94M (FY2025). Named executives: Sadana $11.81M, Bhatia $11.76M, Murphy $11.12M, DeBoer $10.22M. Say-on-pay received 84% approval at FY2024 annual meeting (Jan 2025). Majority of comp is at-risk with substantial portion tied to objective performance goals. FY2025 updated PRSU vesting to cliff vest at end of year 3 (per shareholder feedback).",
+  "governance_notes": "Board of 8 directors following Jan 2026 retirements. Directors: Lynn Dugle, Steven J. Gomo, Linnie M. Haynesworth, T. Mark Liu, Sanjay Mehrotra, A. Christine Simons, Robert H. Swan, MaryAnn Wright. Committees: Audit, Finance (Chair: Gomo), Governance & Sustainability, Compensation. All committee members satisfy Nasdaq independence requirements. Notable: Mark Liu (former TSMC Chairman) adds deep semiconductor industry expertise. Robert Swan is former Intel CEO.",
+  "capital_allocation_history": "Annual capex ~$20B focused on leading-edge technology. Secured billions in U.S. CHIPS Act subsidies. Managed exit from low-margin consumer markets in 2024 to prioritize AI-critical HBM. Balances aggressive R&D spending with shareholder returns via buybacks when cycle permits. Operational discipline to avoid over-expansion and price crashes.",
+  "sources": [
+    "[micron.com] Sanjay Mehrotra Leadership Page - https://www.micron.com/about/company/leadership/sanjay-mehrotra",
+    "[micron.com] Mark Murphy Leadership Page - https://www.micron.com/about/company/leadership/mark-murphy",
+    "[micron.com] Scott DeBoer Leadership Page - https://www.micron.com/about/company/leadership/scott-deboer",
+    "[micron.com] Sumit Sadana Leadership Page - https://www.micron.com/about/company/leadership/sumit-sadana",
+    "[micron.com] Manish Bhatia Leadership Page - https://www.micron.com/about/company/leadership/manish-bhatia",
+    "[investors.micron.com] Board of Directors Retirements - https://investors.micron.com/news-releases/news-release-details/micron-announces-board-directors-retirements",
+    "[investors.micron.com] Mike Cordano Appointment - https://investors.micron.com/news-releases/news-release-details/micron-appoints-mike-cordano-executive-vice-president-worldwide",
+    "[salary.com] Micron Executive Compensation FY2025 - https://www.salary.com/research/executive-compensation/micron-technology-inc-executive-salary",
+    "[simplywall.st] Insider Ownership - https://simplywall.st/stocks/us/semiconductors/nasdaq-mu/micron-technology/ownership",
+    "[businessquant.com] MU Insiders - https://businessquant.com/stocks/mu/insiders",
+    "[wikipedia.org] Sanjay Mehrotra - https://en.wikipedia.org/wiki/Sanjay_Mehrotra",
+    "[micron.com] Corporate Governance - https://www.micron.com/about/environmental-social-governance/corporate-governance",
+    "[financialcontent.com] Micron AI Supercycle Deep Dive - https://markets.financialcontent.com/stocks/article/finterra-2026-1-28-microns-ai-supercycle-a-deep-dive-into-the-memory-giants-400b-ascent",
+    "[paragonintel.com] CEO Mehrotra Analysis - https://paragonintel.com/sanjay-mehrotra-ceo-analysis-mu/"
+  ]
+}

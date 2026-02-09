@@ -1,0 +1,22 @@
+{
+  "ticker": "MU",
+  "fetched_at": "2026-02-08",
+  "source": "MCP:compare_stocks",
+  "benchmark": "SPY",
+  "peers": {
+    "MU": { "pe_ratio": 37.45, "pb_ratio": 7.56, "roe": 0.226, "market_cap": 444227256320, "revenue_growth": 0.567, "profit_margin": 0.281, "debt_to_equity": 21.24 },
+    "TSM": { "pe_ratio": 33.32, "pb_ratio": 52.89, "roe": 0.352, "market_cap": 1809312251904, "revenue_growth": 0.205, "profit_margin": 0.451, "debt_to_equity": 18.19 },
+    "NVDA": { "pe_ratio": 45.89, "pb_ratio": 37.90, "roe": 1.074, "market_cap": 4514177351680, "revenue_growth": 0.625, "profit_margin": 0.530, "debt_to_equity": 9.10 },
+    "AMD": { "pe_ratio": 79.86, "pb_ratio": 5.39, "roe": 0.071, "market_cap": 339842859008, "revenue_growth": 0.341, "profit_margin": 0.125, "debt_to_equity": 6.36 },
+    "INTC": { "pe_ratio": null, "pb_ratio": 2.21, "roe": 0.000, "market_cap": 252706078720, "revenue_growth": -0.041, "profit_margin": -0.005, "debt_to_equity": 37.28 },
+    "ASML": { "pe_ratio": 48.54, "pb_ratio": 23.55, "roe": 0.505, "market_cap": 548456562688, "revenue_growth": 0.049, "profit_margin": 0.294, "debt_to_equity": 13.81 },
+    "LRCX": { "pe_ratio": 47.44, "pb_ratio": 28.49, "roe": 0.656, "market_cap": 290155462656, "revenue_growth": 0.221, "profit_margin": 0.302, "debt_to_equity": 44.20 },
+    "SPY": { "pe_ratio": 27.38, "pb_ratio": 1.61, "roe": null, "market_cap": null, "revenue_growth": null, "profit_margin": null, "debt_to_equity": null }
+  },
+  "mu_highlights": {
+    "pe_vs_peers": "MU 37.4x vs 半导体中位数47.4x — MU在半导体中PE偏低(但存储周期高峰PE通常较低)",
+    "revenue_growth_leader": "MU 56.7%增长在半导体中仅次于NVDA(62.5%)",
+    "roe_mid_range": "MU ROE 22.6% vs TSM 35.2% vs NVDA 107.4% — 中等水平",
+    "leverage_note": "MU D/E 21.2 vs INTC 37.3 vs LRCX 44.2 — 杠杆中等偏低"
+  }
+}

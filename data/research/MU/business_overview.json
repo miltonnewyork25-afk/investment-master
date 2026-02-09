@@ -1,0 +1,138 @@
+{
+  "ticker": "MU",
+  "fetched_at": "2026-02-08",
+  "segments": [
+    {
+      "name": "Cloud Memory (CMBU)",
+      "revenue_q1fy26": 5300000000,
+      "pct_of_total": 39,
+      "note": "包含HBM和数据中心DRAM，AI驱动核心增长引擎 [硬数据: Micron Q1 FY2026 Earnings, 2025-12-17]"
+    },
+    {
+      "name": "Mobile & Client (MCBU)",
+      "revenue_q1fy26": 4300000000,
+      "pct_of_total": 31,
+      "note": "智能手机+PC内存 [硬数据: Micron Q1 FY2026 Earnings, 2025-12-17]"
+    },
+    {
+      "name": "Core Data Center",
+      "revenue_q1fy26": 2400000000,
+      "pct_of_total": 17,
+      "note": "企业级存储和SSD, 数据中心NAND收入首次超$1B [硬数据: Micron Q1 FY2026 Earnings, 2025-12-17]"
+    },
+    {
+      "name": "Automotive & Embedded (AEBU)",
+      "revenue_q1fy26": 1700000000,
+      "pct_of_total": 13,
+      "note": "车规级和工业嵌入式 [硬数据: Micron Q1 FY2026 Earnings, 2025-12-17]"
+    }
+  ],
+  "product_breakdown": {
+    "dram": {
+      "fy2025_revenue": 28580000000,
+      "fy2025_pct_of_total": 77.07,
+      "q1fy26_revenue": 10800000000,
+      "q1fy26_pct_of_total": 79,
+      "q1fy26_yoy_growth_note": "DRAM是核心利润引擎，受益于AI服务器DDR5和HBM需求",
+      "source": "[硬数据: Bullfincher/Micron FY2025 10-K; Micron Q1 FY2026 Earnings]"
+    },
+    "nand": {
+      "fy2025_revenue": 8500000000,
+      "fy2025_pct_of_total": 22.93,
+      "fy2025_yoy_growth": 18,
+      "q1fy26_revenue": 2700000000,
+      "q1fy26_pct_of_total": 20,
+      "note": "NAND弱于DRAM，但企业SSD受益于AI推理数据湖需求",
+      "source": "[硬数据: Bullfincher/Micron FY2025 10-K; Micron Q1 FY2026 Earnings]"
+    },
+    "hbm": {
+      "annualized_revenue_run_rate": 8000000000,
+      "hbm_product_generations": ["HBM3E 12-Hi 36GB (量产中)", "HBM4 (2026年量产, 样品已出货)"],
+      "hbm_power_advantage": "HBM3E功耗比三星低约30%; HBM4功耗比HBM3E再低20%+",
+      "hbm_speed": "HBM4速度超11 Gbps，接口宽度2048-bit(HBM3E的2倍)",
+      "supply_status": "2025-2026年HBM产能全部售罄",
+      "source": "[硬数据: Micron Q1 FY2026 Earnings Call; Micron HBM4 Press Release 2025-06]"
+    }
+  },
+  "geographic_breakdown": [
+    { "region": "美国", "fy2025_revenue": 24110000000, "pct": 64.51 },
+    { "region": "台湾", "fy2025_revenue": 5670000000, "pct": 15.17 },
+    { "region": "中国", "fy2025_revenue": 2640000000, "pct": 7.06 },
+    { "region": "其他亚太", "fy2025_revenue": 1910000000, "pct": 5.12 },
+    { "region": "香港", "fy2025_revenue": 1140000000, "pct": 3.04 },
+    { "region": "日本", "fy2025_revenue": 895000000, "pct": 2.39 },
+    { "region": "欧洲", "fy2025_revenue": 625000000, "pct": 1.67 },
+    { "region": "其他", "fy2025_revenue": 383000000, "pct": 1.02 }
+  ],
+  "geographic_trend": "美国份额从FY2024的52.4%提升至FY2025的64.5%，反映AI数据中心客户集中在美国超大规模云厂商; 中国份额从12.1%降至7.1%，受出口管制影响 [硬数据: Bullfincher/Micron 10-K FY2025]",
+  "supply_chain": {
+    "key_suppliers": [
+      { "name": "Lam Research", "role": "前端资本设备(刻蚀/沉积)" },
+      { "name": "ASML", "role": "前端资本设备(光刻机, EUV)" },
+      { "name": "Siltronic", "role": "前端材料(硅晶圆)" },
+      { "name": "Shin-Etsu Chemical", "role": "前端材料(硅晶圆/光刻胶)" },
+      { "name": "Tripod", "role": "封测材料" },
+      { "name": "CMTX", "role": "前端备件" }
+    ],
+    "key_customers": [
+      { "description": "最大客户占总营收17%", "source": "[硬数据: Micron FY2025 10-K]" },
+      { "description": "第二大客户占总营收10%", "source": "[硬数据: Micron FY2025 10-K]" },
+      { "description": "前10大客户合计超过总营收50%，已连续3年", "source": "[硬数据: Micron FY2025 10-K]" },
+      { "description": "主要客户包括: Nvidia(HBM)、Apple(移动DRAM)、各超大规模云厂商(AWS/Azure/GCP/Meta)", "source": "[合理推断: 基于业务单元构成和行业公开信息]" }
+    ],
+    "concentration_risk": "客户集中度适中(最大17%)，优于Nvidia(前两大客户39%)。但HBM业务高度依赖Nvidia GPU平台生态 [合理推断: 基于Micron 10-K披露+HBM主要搭配Nvidia GPU]"
+  },
+  "tam": {
+    "dram_tam": {
+      "q3_2025_quarterly_industry_revenue": 41400000000,
+      "q3_2025_qoq_growth": 30.9,
+      "2025_bit_demand_growth": "low 20% range",
+      "ddr5_tam_2024": 1770000000,
+      "ddr5_tam_2027E": 25000000000,
+      "ddr5_tam_2032E": 6180000000,
+      "ddr5_cagr": 18.3,
+      "note": "DDR5 TAM预测来源不同口径有差异; $25B 2027E来自企业数据中心+消费端综合预测",
+      "source": "[硬数据: TrendForce Q3 2025 Report; IntelMarketResearch DDR5 Forecast]"
+    },
+    "nand_tam": {
+      "q3_2025_top5_quarterly_revenue": 17100000000,
+      "enterprise_ssd_trend": "AI推理驱动企业SSD需求为NAND主要增长点",
+      "2026_price_trend": "NAND合约价格Q1 2026预计环比涨55-60%",
+      "source": "[硬数据: TrendForce Q3 2025 NAND Report; TrendForce Jan 2026 Price Forecast]"
+    },
+    "hbm_tam": {
+      "2025": 35000000000,
+      "2026E": 54600000000,
+      "2028E": 100000000000,
+      "cagr_through_2028": 40,
+      "note": "Micron管理层预测$100B HBM TAM比此前预测提前2年到达",
+      "source": "[硬数据: Micron Q1 FY2026 Earnings Call; SK Hynix 2026 Market Outlook]"
+    },
+    "total_memory_tam": {
+      "2025_dram_revenue_annualized": "~$165B(Q3 2025 $41.4B x4季度，粗略估算)",
+      "2026_outlook": "DRAM收入预计同比增51%, NAND增45% [硬数据: TrendForce/Axtekic 2026 Outlook]",
+      "2026_asp_trend": "常规DRAM合约价Q1 2026预计环比涨90-95%，为历史罕见涨幅",
+      "source": "[硬数据: TrendForce Q1 2026 Price Forecast, 2026-01-05; Axtekic Market Outlook]"
+    }
+  },
+  "industry_specific": {
+    "hbm_roadmap": "HBM3E 12-Hi 36GB量产中 → HBM4于2026年量产(对齐Nvidia Rubin平台) → HBM4带宽>2.0 TB/s，接口2048-bit。Micron HBM4样品速度11 Gbps，已出货多个关键客户 [硬数据: Micron Press Release Jun 2025; Tom's Hardware HBM Roadmap]",
+    "technology_nodes": "1-beta DRAM节点(当前先进制程); 前端转向EUV光刻; NAND采用BiCS8等3D堆叠技术竞争 [合理推断: 基于行业公开信息]",
+    "capex_plans": "FY2026 CapEx指引约$20B; 纽约Clay $100B超级工厂2026年1月动工; 获CHIPS Act $6.1B资金支持; 此外在Boise/台湾/日本均有产能 [硬数据: Micron Q1 FY2026 Earnings; FinancialContent Jan 2026]",
+    "supply_demand_balance": "Micron管理层表示仅能满足55-60%核心客户需求; 新ID1工厂预计2027年才投产; 供应紧张预计持续到2026年及以后 [硬数据: Tom's Hardware/Micron Earnings Call Dec 2025]"
+  },
+  "sources": [
+    { "name": "TrendForce Q3 2025 DRAM Revenue Report", "url": "https://www.trendforce.com/presscenter/news/20251126-12802.html", "date": "2025-11-26" },
+    { "name": "TrendForce Q3 2025 NAND Flash Report", "url": "https://www.trendforce.com/presscenter/news/20251203-12813.html", "date": "2025-12-03" },
+    { "name": "TrendForce Q1 2026 Memory Price Forecast", "url": "https://www.trendforce.com/presscenter/news/20260202-12911.html", "date": "2026-02-02" },
+    { "name": "Micron Q1 FY2026 Earnings Release", "url": "https://investors.micron.com/news-releases/news-release-details/micron-technology-inc-reports-results-first-quarter-fiscal-2026", "date": "2025-12-17" },
+    { "name": "Micron FY2025 Revenue Breakdown (Bullfincher)", "url": "https://bullfincher.io/companies/micron-technology/revenue-by-segment", "date": "2025" },
+    { "name": "Micron Geographic Revenue (Bullfincher)", "url": "https://bullfincher.io/companies/micron-technology/revenue-by-geography", "date": "2025" },
+    { "name": "Micron HBM4 Press Release", "url": "https://investors.micron.com/news-releases/news-release-details/micron-ships-hbm4-key-customers-power-next-gen-ai-platforms", "date": "2025-06" },
+    { "name": "Seeking Alpha - Micron $100B HBM TAM", "url": "https://seekingalpha.com/news/4532757-micron-forecasts-100b-hbm-market-by-2028-as-supply-tightness-persists-through-2026", "date": "2025-12" },
+    { "name": "Tom's Hardware HBM Roadmaps", "url": "https://www.tomshardware.com/tech-industry/semiconductors/hbm-roadmaps-for-micron-samsung-and-sk-hynix-to-hbm4-and-beyond", "date": "2025" },
+    { "name": "FinancialContent - Micron AI Supercycle Deep Dive", "url": "https://markets.financialcontent.com/stocks/article/finterra-2026-1-28-the-memory-king-a-deep-dive-into-micron-technologys-ai-driven-supercycle", "date": "2026-01-28" },
+    { "name": "Axtekic DRAM/NAND Market Outlook 2025-2026", "url": "https://www.axtekic.com/news/global-dram-and-nand-market-outlook-2025%E2%80%932026:-ai-demand-sparks-new-wave-of-price-hikes.html", "date": "2025" },
+    { "name": "SK Hynix 2026 Market Outlook", "url": "https://news.skhynix.com/2026-market-outlook-focus-on-the-hbm-led-memory-supercycle/", "date": "2026" }
+  ]
+}
