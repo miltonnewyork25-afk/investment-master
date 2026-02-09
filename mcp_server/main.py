@@ -96,7 +96,7 @@ SCREEN_PRESETS = {
 # ============================================================
 
 def get_stock_data(symbol: str, period: str = "1y") -> Dict[str, Any]:
-    """获取股票数据（带缓存）"""
+    """获取股票数据（带缓存）— 返回可JSON序列化的紧凑格式"""
     cache_key = f"stock_data:{symbol}:{period}"
     cached = cache.get(cache_key)
     if cached:
@@ -108,6 +108,28 @@ def get_stock_data(symbol: str, period: str = "1y") -> Dict[str, Any]:
         # 基础数据
         info = ticker.info
         history = ticker.history(period=period)
+
+        # 将历史数据转为紧凑摘要（避免Timestamp序列化错误）
+        history_summary = {}
+        if not history.empty:
+            # 最近5个交易日
+            recent = history.tail(5)
+            history_summary["recent_5d"] = [
+                {
+                    "date": idx.strftime("%Y-%m-%d"),
+                    "close": round(float(row["Close"]), 2),
+                    "volume": int(row["Volume"])
+                }
+                for idx, row in recent.iterrows()
+            ]
+            # 区间统计
+            history_summary["period_high"] = round(float(history["Close"].max()), 2)
+            history_summary["period_low"] = round(float(history["Close"].min()), 2)
+            history_summary["period_return"] = round(
+                float((history["Close"].iloc[-1] / history["Close"].iloc[0] - 1) * 100), 2
+            )
+            history_summary["avg_volume"] = int(history["Volume"].mean())
+            history_summary["trading_days"] = len(history)
 
         data = {
             "symbol": symbol,
@@ -123,7 +145,13 @@ def get_stock_data(symbol: str, period: str = "1y") -> Dict[str, Any]:
             "beta": info.get("beta"),
             "52w_high": info.get("fiftyTwoWeekHigh"),
             "52w_low": info.get("fiftyTwoWeekLow"),
-            "history": history.to_dict() if not history.empty else {}
+            "revenue": info.get("totalRevenue"),
+            "revenue_growth": info.get("revenueGrowth"),
+            "profit_margin": info.get("profitMargins"),
+            "operating_margin": info.get("operatingMargins"),
+            "roe": info.get("returnOnEquity"),
+            "free_cashflow": info.get("freeCashflow"),
+            "history_summary": history_summary
         }
 
         cache.set(cache_key, data)
@@ -315,9 +343,10 @@ async def call_tool(name: str, arguments: Any) -> list[TextContent]:
             if data_types == "technical":
                 result["technical"] = get_technical_indicators(symbol, period)
 
+            # 确保所有数据可JSON序列化
             return [TextContent(
                 type="text",
-                text=json.dumps(result, indent=2, ensure_ascii=False)
+                text=json.dumps(result, indent=2, ensure_ascii=False, default=str)
             )]
 
         elif name == "compare_stocks":
@@ -340,7 +369,7 @@ async def call_tool(name: str, arguments: Any) -> list[TextContent]:
 
             return [TextContent(
                 type="text",
-                text=json.dumps(comparison, indent=2, ensure_ascii=False)
+                text=json.dumps(comparison, indent=2, ensure_ascii=False, default=str)
             )]
 
         elif name == "screen_stocks":
@@ -406,7 +435,7 @@ async def call_tool(name: str, arguments: Any) -> list[TextContent]:
                     "criteria": criteria,
                     "results": results,
                     "passed_count": sum(1 for r in results if r.get("passed"))
-                }, indent=2, ensure_ascii=False)
+                }, indent=2, ensure_ascii=False, default=str)
             )]
 
         elif name == "get_market_overview":
@@ -414,16 +443,27 @@ async def call_tool(name: str, arguments: Any) -> list[TextContent]:
             overview = {}
 
             for index in indices:
-                data = get_stock_data(index, period="1d")
-                overview[index] = {
-                    "name": data.get("name"),
-                    "price": data.get("price"),
-                    "change": data.get("regularMarketChangePercent")
-                }
+                try:
+                    t = yf.Ticker(index)
+                    hist = t.history(period="5d")
+                    if not hist.empty and len(hist) >= 2:
+                        last_close = float(hist["Close"].iloc[-1])
+                        prev_close = float(hist["Close"].iloc[-2])
+                        change_pct = round((last_close / prev_close - 1) * 100, 2)
+                        overview[index] = {
+                            "name": t.info.get("shortName", index),
+                            "price": round(last_close, 2),
+                            "change_pct": change_pct,
+                            "date": hist.index[-1].strftime("%Y-%m-%d")
+                        }
+                    else:
+                        overview[index] = {"error": "insufficient data"}
+                except Exception as e:
+                    overview[index] = {"error": str(e)}
 
             return [TextContent(
                 type="text",
-                text=json.dumps(overview, indent=2, ensure_ascii=False)
+                text=json.dumps(overview, indent=2, ensure_ascii=False, default=str)
             )]
 
         else:
