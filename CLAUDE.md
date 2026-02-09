@@ -203,6 +203,8 @@ bash tests/quality_gate_complete.sh reports/{TICKER}/{TICKER}_Complete_v{版本}
 | 文件 | 何时加载 |
 |------|---------|
 | `docs/deep_dive_protocol.md` | Tier 3启动时 |
+| `docs/investment_thermometer_strategy.md` | 投资温度计算和Tier路由时 |
+| `investment-logic-toolkit.skill.md` | 使用统一投资分析工具包时 |
 | `docs/risk_management.md` | Tier 2/3风险分析时 |
 | `docs/prediction_market_methodology.md` | 需要预测市场分析时 |
 | `docs/industry/semiconductor.md` | 分析半导体公司时 |
@@ -232,6 +234,7 @@ bash tests/quality_gate_complete.sh reports/{TICKER}/{TICKER}_Complete_v{版本}
 | `docs/quality_gate_v2.md` | Phase 4/5 质量门控时 |
 | `docs/v21_migration_guide.md` | v20→v21迁移参考 |
 | `docs/v22_migration_guide.md` | v21→v22迁移参考 |
+| `docs/v26_migration_guide.md` | v25→v26迁移指南(温度策略+统一工具包) |
 | `docs/checkpoint_protocol.md` | Context恢复/检查点写入时 |
 | `docs/quality_benchmarks.md` | Tier 3 Phase 5 / Complete报告组装时 |
 | `docs/compound_learning_flywheel.md` | Complete报告通过后反思 / 累计3项目后审视 / 架构优化时 |
