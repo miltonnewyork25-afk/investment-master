@@ -1,0 +1,50 @@
+{
+  "COST": {
+    "pe_ratio": 53.767986,
+    "pb_ratio": 14.360853456316006,
+    "roe": 0.30325,
+    "market_cap": null
+  },
+  "WMT": {
+    "pe_ratio": 45.86713,
+    "pb_ratio": 8.672437563864502,
+    "roe": 0.23661,
+    "market_cap": null
+  },
+  "TGT": {
+    "pe_ratio": 14.006061,
+    "pb_ratio": 4.329317059866358,
+    "roe": 0.25094998,
+    "market_cap": null
+  },
+  "HD": {
+    "pe_ratio": 26.25426,
+    "pb_ratio": 61.424728915662655,
+    "roe": 1.62909,
+    "market_cap": null
+  },
+  "LOW": {
+    "pe_ratio": 23.044703,
+    "pb_ratio": -10.360668962124938,
+    "roe": null,
+    "market_cap": null
+  },
+  "DG": {
+    "pe_ratio": 25.328152,
+    "pb_ratio": 2.1075097275897203,
+    "roe": 0.16450001,
+    "market_cap": null
+  },
+  "KR": {
+    "pe_ratio": 59.734512,
+    "pb_ratio": 5.3195654797827405,
+    "roe": 0.07997,
+    "market_cap": null
+  },
+  "SPY": {
+    "pe_ratio": 27.381319,
+    "pb_ratio": 1.6090117,
+    "roe": null,
+    "market_cap": null
+  }
+}

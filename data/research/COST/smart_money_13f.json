@@ -1,0 +1,49 @@
+{
+  "ticker": "COST",
+  "fetched_at": "2026-02-09T12:00:00Z",
+  "institutional_summary": {
+    "total_institutions": "Data not available in search results",
+    "total_shares_held": "Data not available in search results",
+    "ownership_pct": "Data not available in search results",
+    "qoq_change_institutions": "Data not available in search results",
+    "qoq_change_shares": "Data not available in search results"
+  },
+  "top_holders": [
+    { "name": "Nippon Life Global Investors Americas Inc.", "shares": "Unknown", "value_usd": "Unknown", "change_pct": "Unknown", "new_position": false, "note": "COST is their 9th largest position" }
+  ],
+  "notable_moves": [
+    { "investor": "Warren Buffett/Berkshire Hathaway", "action": "No significant COST position identified", "shares": 0, "quarter": "2026 Q1", "thesis": "Buffett's 2026 portfolio focused on Apple, American Express, Coca-Cola, Bank of America, Chevron - COST not among major holdings" }
+  ],
+  "insider_activity": {
+    "net_insider_sentiment": "Slightly negative",
+    "recent_transactions": [
+      {
+        "period": "Late Oct - Mid Dec 2025",
+        "total_transactions": 5,
+        "gifts": "2 transactions (6,947 shares)",
+        "sales": "3 transactions ($5.92 million)",
+        "anomalies": "None flagged",
+        "assessment": "Routine transactions"
+      }
+    ]
+  },
+  "hedge_fund_specific": {
+    "tiger_global": "No specific COST position identified in search results",
+    "coatue": "No specific COST position identified in search results",
+    "q4_2025_trends": "General hedge fund activity showed focus on tech stocks, policy regime changes, elevated credit opportunities"
+  },
+  "stock_performance": {
+    "current_price": "$989.29",
+    "yoy_change": "-5.87%",
+    "previous_year_price": "$1,050.99",
+    "date": "Feb 5, 2026 vs Feb 6, 2025"
+  },
+  "sources": [
+    "https://www.marketbeat.com/stocks/NASDAQ/COST/institutional-ownership/",
+    "https://fintel.io/so/us/cost",
+    "https://www.gurufocus.com/stock/COST/ownership",
+    "https://www.fool.com/investing/2026/01/05/nearly-65-of-warren-buffetts-portfolio-is-invested/",
+    "https://finance.yahoo.com/quote/COST/insider-transactions/",
+    "https://www.themarketsdaily.com/2026/01/18/costco-wholesale-corporation-cost-is-nippon-life-global-investors-americas-inc-s-9th-largest-position.html"
+  ]
+}

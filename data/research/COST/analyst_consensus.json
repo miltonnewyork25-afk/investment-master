@@ -1,0 +1,47 @@
+{
+  "ticker": "COST",
+  "fetched_at": "2026-02-09T15:30:00Z",
+  "consensus": {
+    "rating": "Buy",
+    "buy_count": 23,
+    "hold_count": 12,
+    "sell_count": 1,
+    "avg_price_target": 1056,
+    "high_target": 1225,
+    "low_target": 769
+  },
+  "earnings_estimates": {
+    "current_quarter": { "quarter": "Q1 2026", "eps_est": 4.27, "rev_est": 67.14 },
+    "next_quarter": { "quarter": "Q2 2026", "eps_est": "N/A", "rev_est": "N/A" }
+  },
+  "earnings_surprise_history": [
+    { "quarter": "Q1 2026", "eps_actual": 4.50, "eps_estimate": 4.27, "surprise_pct": 5.4 },
+    { "quarter": "Q4 2025", "eps_actual": 3.82, "eps_estimate": 3.79, "surprise_pct": 0.79 },
+    { "quarter": "Q3 2025", "eps_actual": 5.15, "eps_estimate": 5.05, "surprise_pct": 1.98 },
+    { "quarter": "Q2 2025", "eps_actual": 3.17, "eps_estimate": 3.00, "surprise_pct": 5.67 }
+  ],
+  "recent_changes": [
+    { "date": "2026-02-05", "firm": "Mizuho", "action": "Upgrade", "from": "Neutral", "to": "Outperform", "price_target": 1000 },
+    { "date": "2026-02-05", "firm": "Northcoast", "action": "Upgrade", "from": "Neutral", "to": "Buy", "price_target": 1100 },
+    { "date": "2026-02-04", "firm": "Oppenheimer", "action": "Price Target Raise", "from": 1050, "to": 1100 },
+    { "date": "2026-01-15", "firm": "Roth/MKM", "action": "Downgrade", "from": "Neutral", "to": "Sell", "price_target": 769 }
+  ],
+  "bull_bear_summary": {
+    "bull_case": "Differentiated warehouse membership model with 91% renewal rate; membership fees represent 75% of net profits despite only 2% of revenue; strong expansion opportunities domestically and internationally; digital sales growing 20.5% year-over-year; proven pricing power with successful fee increases",
+    "bear_case": "Extremely high valuation at 48x earnings vs peers; slowing membership growth and fading renewal rates; rising competition from Amazon and big box retailers; potential consumer discretionary spending weakness; weakening underlying metrics despite earnings beats"
+  },
+  "industry_specific": {
+    "organic_growth_outlook": "Q1 2026 comparable sales grew 6.4%, total sales up 8.2% to $66B. Digital-enabled sales surged 20.5%. Analysts expect 8% revenue growth for FY2026 and 7% for FY2027",
+    "pricing_power_analysis": "Successfully raised membership fees in Sept 2025 (first increase in 7 years) while maintaining member growth. Membership fee increase accounted for nearly half of membership income growth. Strong pricing power offsets inflationary pressures"
+  },
+  "sources": [
+    "https://finance.yahoo.com/quote/COST/analysis/",
+    "https://www.tipranks.com/stocks/cost/forecast",
+    "https://stockanalysis.com/stocks/cost/forecast/",
+    "https://www.fool.com/investing/2024/03/13/costco-stock-bull-vs-bear/",
+    "https://www.cnbc.com/2025/12/11/costco-cost-earnings-q1-2026.html",
+    "https://finance.yahoo.com/news/costco-cost-beat-estimates-again-171005220.html",
+    "https://finance.yahoo.com/news/costco-downgraded-dollar-general-upgraded-145736293.html",
+    "https://www.fool.com/investing/2026/01/05/is-costco-stock-set-to-rebound-higher-in-2026/"
+  ]
+}

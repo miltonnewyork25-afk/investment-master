@@ -1,0 +1,96 @@
+{
+  "ticker": "COST",
+  "fetched_at": "2026-02-09T15:30:00Z",
+  "key_news": [
+    {
+      "date": "2026-02-01",
+      "headline": "Costco Reports Strong January Sales Results - 9.3% Growth",
+      "summary": "Net sales of $21.33 billion for January 2026, up from $19.51 billion last year",
+      "sentiment": "positive",
+      "source": "Costco Investor Relations"
+    },
+    {
+      "date": "2026-01-30",
+      "headline": "Mini Beignets Recall Due to Mislabeling",
+      "summary": "Caramel mini beignets mislabeled as chocolate hazelnut, distributed across 22 states",
+      "sentiment": "negative",
+      "source": "FDA/Costco Recall Notice"
+    },
+    {
+      "date": "2026-02-01",
+      "headline": "14 New Products Launch in February 2026",
+      "summary": "Chocolate Chip Cookie Bar Cake and Peanut Butter Monster Cookies lead new product rollout",
+      "sentiment": "positive",
+      "source": "Various retail publications"
+    },
+    {
+      "date": "2025-12-11",
+      "headline": "Q1 2026 Earnings Beat Expectations",
+      "summary": "Net income $2,001M ($4.50/share) vs $1,798M ($4.04/share) last year; digital sales up 20.5%",
+      "sentiment": "positive",
+      "source": "Costco Earnings Release"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-03-05",
+      "event": "Q2 2026 Earnings Report",
+      "expected_impact": "high"
+    },
+    {
+      "date": "2026-春季",
+      "event": "First Stand-Alone Gas Station Opening (Mission Viejo, CA)",
+      "expected_impact": "medium"
+    },
+    {
+      "date": "2026年内",
+      "event": "35 New Store Openings Planned",
+      "expected_impact": "high"
+    },
+    {
+      "date": "2026年内",
+      "event": "Special Dividend Expected ($12-15/share)",
+      "expected_impact": "high"
+    },
+    {
+      "date": "2026年内",
+      "event": "Monterrey, Mexico Store Opening (Largest in Latin America)",
+      "expected_impact": "medium"
+    },
+    {
+      "date": "2026年内",
+      "event": "Prescan Technology Rollout (20% faster checkout)",
+      "expected_impact": "medium"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "period": "Oct-Dec 2025",
+        "transactions": "5 total: 2 gifts (6,947 shares), 3 sales ($5.92M)",
+        "note": "All routine transactions, no anomalies flagged"
+      }
+    ],
+    "net_insider_sentiment": "neutral"
+  },
+  "sec_filings": [
+    {
+      "type": "Q1 2026 Earnings",
+      "date": "2025-12-11",
+      "key_metrics": "Revenue: $67.31B vs $67.14B expected"
+    },
+    {
+      "note": "2025 Form 10-K filing expected in 2026 filing season",
+      "source": "Available at investor.costco.com and SEC EDGAR"
+    }
+  ],
+  "sources": [
+    "https://investor.costco.com/news/news-details/2026/Costco-Wholesale-Corporation-Reports-January-Sales-Results/default.aspx",
+    "https://www.moneytalksnews.com/new-products-at-costco/",
+    "https://www.marketbeat.com/stocks/NASDAQ/COST/earnings/",
+    "https://www.thetakeout.com/2055795/costco-changes-planned-2026/",
+    "https://markets.financialcontent.com/stocks/article/predictstreet-2025-12-24-the-costco-dividend-watch-a-deep-dive-into-membership-growth-and-2026-catalysts",
+    "https://www.costco.com/recalls.html",
+    "https://www.nasdaq.com/market-activity/stocks/cost/insider-activity"
+  ]
+}

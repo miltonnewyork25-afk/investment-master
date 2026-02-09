@@ -1,0 +1,35 @@
+{
+  "version": "3.0",
+  "ticker": "COST",
+  "company": "Costco Wholesale Corporation",
+  "industry": "Consumer Defensive - Discount Stores",
+  "timestamp": "2026-02-09T22:45:00Z",
+  "data_files": {
+    "stock_full": { "status": "ok", "source": "MCP:analyze_stock", "fetched_at": "2026-02-09T22:30:00Z", "expires_at": "2026-02-10T02:30:00Z" },
+    "peer_comparison": { "status": "ok", "source": "MCP:compare_stocks", "fetched_at": "2026-02-09T22:30:00Z", "expires_at": "2026-02-16T22:30:00Z" },
+    "market_context": { "status": "ok", "source": "MCP:get_market_overview", "fetched_at": "2026-02-09T22:30:00Z", "expires_at": "2026-02-10T02:30:00Z" },
+    "dcf_valuation": { "status": "ok", "source": "Python:dcf_calculator", "fetched_at": "2026-02-09T22:40:00Z", "expires_at": "2026-02-16T22:40:00Z" },
+    "comparable_analysis": { "status": "ok", "source": "Python:comparable_companies", "fetched_at": "2026-02-09T22:40:00Z", "expires_at": "2026-02-16T22:40:00Z" },
+    "analyst_consensus": { "status": "ok", "source": "WebSearch:Agent-A", "fetched_at": "2026-02-09T15:30:00Z", "expires_at": "2026-02-10T15:30:00Z" },
+    "prediction_market": { "status": "ok", "source": "WebSearch:Agent-B", "fetched_at": "2026-02-09T16:30:00Z", "expires_at": "2026-02-09T28:30:00Z" },
+    "recent_news": { "status": "ok", "source": "WebSearch:Agent-C", "fetched_at": "2026-02-09T15:30:00Z", "expires_at": "2026-02-09T21:30:00Z" },
+    "business_overview": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-02-09T15:30:00Z", "expires_at": "2026-03-11T15:30:00Z" },
+    "competitive_landscape": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-02-09T15:30:00Z", "expires_at": "2026-02-16T15:30:00Z" },
+    "management_team": { "status": "ok", "source": "WebSearch:Agent-E", "fetched_at": "2026-02-09T22:30:00Z", "expires_at": "2026-03-11T22:30:00Z" },
+    "smart_money_13f": { "status": "ok", "source": "WebSearch:Agent-F", "fetched_at": "2026-02-09T12:00:00Z", "expires_at": "2026-02-16T12:00:00Z" },
+    "options_short_interest": { "status": "ok", "source": "WebSearch:Agent-G", "fetched_at": "2026-02-09T10:30:00Z", "expires_at": "2026-02-09T22:30:00Z" }
+  },
+  "quality": {
+    "complete_fields": 13,
+    "total_fields": 13,
+    "completeness_pct": 100,
+    "files_ok": 13,
+    "files_error": 0,
+    "files_total": 13
+  },
+  "layer_status": {
+    "layer1_mcp": "ok",
+    "layer2_python": "ok",
+    "layer3_websearch": "ok"
+  }
+}

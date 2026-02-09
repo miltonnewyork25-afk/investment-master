@@ -1,0 +1,22 @@
+{
+  "ticker": "COST",
+  "fetched_at": "2026-02-09T10:30:00Z",
+  "short_interest": {
+    "shares_short": 6454000,
+    "short_pct_float": 1.49,
+    "days_to_cover": 3.03,
+    "vs_sector_avg": -2.44,
+    "trend": "stable"
+  },
+  "options_sentiment": {
+    "put_call_ratio": 0.99,
+    "implied_volatility": "需要专业平台获取",
+    "iv_rank": "需要专业平台获取", 
+    "unusual_activity": []
+  },
+  "sources": [
+    "fintel.io/ss/us/cost",
+    "marketbeat.com/stocks/NASDAQ/COST/short-interest/",
+    "fintel.io/sopt/us/cost"
+  ]
+}

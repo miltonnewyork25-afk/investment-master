@@ -1,0 +1,26 @@
+{
+  "^GSPC": {
+    "name": "S&P 500",
+    "price": 6932.3,
+    "change_pct": 1.97,
+    "date": "2026-02-06"
+  },
+  "^DJI": {
+    "name": "Dow Jones Industrial Average",
+    "price": 50115.67,
+    "change_pct": 2.47,
+    "date": "2026-02-06"
+  },
+  "^IXIC": {
+    "name": "NASDAQ Composite",
+    "price": 23031.21,
+    "change_pct": 2.18,
+    "date": "2026-02-06"
+  },
+  "^VIX": {
+    "name": "CBOE Volatility Index",
+    "price": 20.37,
+    "change_pct": -6.43,
+    "date": "2026-02-06"
+  }
+}

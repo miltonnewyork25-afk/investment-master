@@ -1,0 +1,32 @@
+{
+  "ticker": "COST",
+  "fetched_at": "2026-02-09T15:30:00Z",
+  "market_position": { "rank": 1, "market_share": 62.0, "trend": "stable" },
+  "competitors": [
+    { "name": "Sam's Club (Walmart)", "ticker": "WMT", "market_share": 31.0, "key_advantage": "Walmart ecosystem integration" },
+    { "name": "BJ's Wholesale Club", "ticker": "BJ", "market_share": 7.0, "key_advantage": "East Coast concentration" },
+    { "name": "Amazon Prime", "ticker": "AMZN", "market_share": "N/A", "key_advantage": "Digital convenience" },
+    { "name": "Traditional Retailers", "ticker": "Various", "market_share": "N/A", "key_advantage": "Location convenience" }
+  ],
+  "competitive_dynamics": "Warehouse club sector dominated by Costco (62% share) vs Sam's Club (31%), with BJ's as distant third. Amazon represents existential digital threat but membership club model provides defensibility.",
+  "moat_indicators": [
+    "92.3% membership renewal rate",
+    "Scale purchasing advantages",
+    "Kirkland private label strength (33% penetration)",
+    "Location barriers to entry",
+    "Member loyalty ecosystem"
+  ],
+  "industry_specific": {
+    "membership_comparison": [
+      { "company": "Costco", "fee": "$60-120", "renewal_rate": "92.3%", "members": "81M" },
+      { "company": "Sam's Club", "fee": "$50-110", "renewal_rate": "~85%", "members": "50M" },
+      { "company": "BJ's", "fee": "$55-110", "renewal_rate": "~80%", "members": "5M" }
+    ],
+    "private_label_strength": "Kirkland Signature: $33B revenue, 33% penetration vs Sam's Member's Mark ~20%, BJ's Wellsley Farms ~15%"
+  },
+  "sources": [
+    "https://www.businessresearchinsights.com/market-reports/warehouse-clubs-market-118839",
+    "https://plma.com/article/costco-private-brand-sales-reach-28",
+    "https://intellectia.ai/news/stock/costco-cost-membership-revenue-hits-53-billion-in-2026-with-nearly-90-renewal-rate"
+  ]
+}

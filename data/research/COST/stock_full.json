@@ -1,0 +1,83 @@
+{
+  "basic_data": {
+    "symbol": "COST",
+    "data_source": "FMP(profile,quote,ratios,metrics)+yfinance",
+    "name": "Costco Wholesale Corporation",
+    "sector": "Consumer Defensive",
+    "industry": "Discount Stores",
+    "market_cap": null,
+    "price": 1001.16,
+    "52w_high": 1078.23,
+    "52w_low": 844.06,
+    "pe_ratio": 53.767986,
+    "pb_ratio": 14.360853456316006,
+    "dividend_yield": 0.005212263893357575,
+    "roe": 0.30325,
+    "profit_margin": 0.029425763438516175,
+    "operating_margin": 0.03772412665540356,
+    "revenue": 280390991872,
+    "revenue_growth": 0.083,
+    "free_cashflow": 7170250240,
+    "history_summary": {
+      "recent_5d": [
+        {
+          "date": "2026-02-02",
+          "close": 968.36,
+          "volume": 2451300
+        },
+        {
+          "date": "2026-02-03",
+          "close": 977.92,
+          "volume": 2960700
+        },
+        {
+          "date": "2026-02-04",
+          "close": 978.35,
+          "volume": 2631500
+        },
+        {
+          "date": "2026-02-05",
+          "close": 989.29,
+          "volume": 2988800
+        },
+        {
+          "date": "2026-02-06",
+          "close": 1001.16,
+          "volume": 2354600
+        }
+      ],
+      "period_high": 1070.99,
+      "period_low": 697.22,
+      "period_return": 40.62,
+      "avg_volume": 2167667,
+      "trading_days": 502
+    },
+    "forward_pe": 45.001232,
+    "beta": 1.008
+  },
+  "fundamentals": {
+    "symbol": "COST",
+    "data_source": "FMP(metrics,ratios,income)+yfinance",
+    "revenue": 280390991872,
+    "revenue_growth": 0.083,
+    "free_cashflow": 7170250240,
+    "earnings_growth": 0.114,
+    "profit_margin": 0.029425763438516175,
+    "operating_margin": 0.03772412665540356,
+    "roe": 0.30325,
+    "roa": 0.08524,
+    "debt_to_equity": 26.968,
+    "current_ratio": 1.0342783227336423,
+    "earnings": 8302000000
+  },
+  "technical": {
+    "symbol": "COST",
+    "price": 1001.1599731445312,
+    "sma_20": 964.3185516357422,
+    "sma_50": 913.8491271972656,
+    "sma_200": 948.9080517578125,
+    "rsi": 64.33657878928972,
+    "volume": 2354600.0,
+    "trend": "上涨"
+  }
+}

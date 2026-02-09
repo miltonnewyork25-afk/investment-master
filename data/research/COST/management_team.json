@@ -1,0 +1,37 @@
+{
+  "ticker": "COST",
+  "fetched_at": "2026-02-09T22:30:00Z",
+  "ceo": {
+    "name": "Ron M. Vachris",
+    "tenure_years": 1.1,
+    "background": "Started as forklift driver in 1982 at Price Club while studying business at Glendale Community College. 40+ years at company, Greek American background, Staten Island born 1965",
+    "track_record": "Only third CEO in Costco history. Rose through operations chief, merchandising chief, real estate head. Named EVP merchandising & COO in 2016, President & COO in 2022. Hands-off leadership style trusting employee innovation"
+  },
+  "cfo": {
+    "name": "Gary Millerchip",
+    "tenure_years": 1.0,
+    "background": "Former CFO of Kroger (2019-2024), extensive retail and finance experience. Succeeded Richard Galanti who retired after 40-year tenure (1984-2024) with Stanford MBA"
+  },
+  "key_executives": [
+    {"name": "Ron M. Vachris", "role": "CEO, President & Director"},
+    {"name": "Gary Millerchip", "role": "CFO"},
+    {"name": "Torsten Lubach", "role": "Chief Technology Officer"},
+    {"name": "Teresa Jones", "role": "EVP, COO - Global Depots and Traffic"}
+  ],
+  "recent_changes": [
+    {"date": "2024-01", "change": "Ron Vachris became CEO, succeeding Craig Jelinek"},
+    {"date": "2024-03", "change": "Gary Millerchip became CFO, Richard Galanti to advisory role"},
+    {"date": "2025-12", "change": "Gina Raimondo nominated to Board (former Commerce Secretary)"},
+    {"date": "2024-2025", "change": "Board refreshment: 5 new independent directors added, 10 ceased service since 2014"}
+  ],
+  "insider_ownership_pct": 0.20,
+  "compensation_highlights": "CEO Vachris 2025: $1.18M salary + $600K bonus + $12.04M stock awards = $13.9M total. Former CFO Galanti: $917K salary + $164K bonus + $5.37M stock. Equity-heavy structure with performance-based RSUs",
+  "governance_notes": "Strong institutional ownership (69-72%). Independent director majority. Nominating committee met 6x in FY2025. Board met 4x with 100% attendance. Annual meeting Jan 15, 2026 for 10 director elections",
+  "sources": [
+    "https://fortune.com/2025/06/04/costco-ceo-ron-vachris-fortune-500-success/",
+    "https://investor.costco.com/news/news-details/2024/Costco-Wholesale-Corporation-Announces-Richard-Galanti-Will-Step-Down-as-CFO-Names-Gary-Millerchip-New-CFO/default.aspx",
+    "https://investor.costco.com/governance/board-of-directors/default.aspx",
+    "https://www1.salary.com/Ron-M-Vachris-Salary-Bonus-Stock-Options-for-COSTCO-WHOLESALE-CORP.html",
+    "https://www.wallstreetzen.com/stocks/us/nasdaq/cost/ownership"
+  ]
+}
