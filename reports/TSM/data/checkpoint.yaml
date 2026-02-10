@@ -4,28 +4,43 @@ company: "Taiwan Semiconductor Manufacturing Company"
 framework_version: "v26.0"
 worktree: "半导体"
 industry: "半导体"
-last_updated: "2026-02-10T19:30:00+08:00"
+last_updated: "2026-02-10T23:30:00+08:00"
 
-current_phase: 1
+current_phase: 2
 phase_status: completed
-phases_completed: [0, 0.5, 1]
+phases_completed: [0, 0.5, 1, 2]
 
 quick_ref:
-  total_chars: 66779  # Phase 1 v2.1 (post-optimization)
-  latest_phase_chars: 66779
-  annotations: 205
-  annotation_density: "30.7/万"
-  hard_data_ratio: "59.5%"
-  mermaid_charts: 12
+  total_chars: 214881  # Phase 0+0.5+1+2 cumulative
+  latest_phase_chars: 148102  # Phase 2 v2.0
+  annotations: 916  # cumulative (P1: 205 + P2: 711)
+  annotation_density: "42.6/万"  # 916 / 21.49万
+  hard_data_ratio: "51.1%"  # Phase 2: 363/711
+  mermaid_charts: 41  # cumulative (P1: 12 + P2: 29)
   pmsi: 76.8
   temperature: "+0.795 (偏热)"
   lxs_company: "L3×S3"
 
+  # Phase 2 specific metrics
+  p2_modules: 7  # M05/M06/M08/M09 + HP-CWS/HP-AZ/HP-SM
+  p2_agents: 7  # B/C/D/E/F + SOTP + DCF
+  p2_cq_coverage: "CQ1-CQ7全覆盖"
+
+  # Valuation summary (Phase 2 core output)
+  sotp_core: "$343/ADR"
+  ovm_option: "$52.7/ADR"
+  full_value: "$396/ADR (+11.5%)"
+  dcf_probability_weighted: "$803/ADR (+126%)"
+  dcf_base_geo_adjusted: "$716/ADR"
+  fair_value_range: "$363-416/ADR"
+  cycle_position: "扩张中后期 7.55/10"
+
 files:
   data_master: "reports/TSM/data/shared_context.md"
   key_assumptions: "reports/TSM/data/key_assumptions.md"
-  latest_report: "reports/TSM/TSM_Phase1_v2.0_2026-02-10.md"
+  phase1_report: "reports/TSM/TSM_Phase1_v2.0_2026-02-10.md"
+  phase2_report: "reports/TSM/TSM_Phase2_v2.0_2026-02-10.md"
   hp_standalone: "reports/TSM/TSM_Phase1_HP1_HP4_v2.0_2026-02-10.md"
 
-next_action: "Phase 2: 财务与估值 — 周期雷达+财务深度+SOTP+DCF+三情景+CoWoS经济学"
-resume_prompt: "继续TSM Phase 2，v26.0框架"
+next_action: "Phase 3: 策略深度 + AI深度评估 — 竞争矩阵+护城河+管理层+ESG+AI冲击"
+resume_prompt: "继续TSM Phase 3，v26.0框架，Phase 2估值Core $343/OVM $53/Full $396/DCF加权$803"
