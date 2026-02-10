@@ -5,9 +5,9 @@ worktree: 半导体
 branch: 半导体
 framework: v6.0
 
-current_phase: 3
+current_phase: 4
 phase_status: completed
-next_phase: 4
+next_phase: 5
 
 phases:
   phase0:
@@ -76,15 +76,39 @@ phases:
       - "三个预期差: HBM毛利率/AI CapEx/周期免疫 均指向下行"
     fast_gate: PASSED (0 errors, 2 warnings - KS/Bear属Phase 4/5)
   phase4:
-    status: pending
-    target_chars: 15000
+    status: completed
+    date: 2026-02-10
+    version: v2.0
+    chars: 16384
+    report: reports/MU/MU_Phase4_v2.0_2026-02-10.md
     modules:
-      - 行为金融四项偏差
-      - 事实核查(≥10数据点)
-      - 反证挑战
-      - 看空等权重(≥8论点)
-      - HP1_内部人信号专项
-      - 维度回检
+      - 行为金融四项偏差(锚定+确认+可得性+框架)
+      - 事实核查(12数据点, 10通过/2修正)
+      - 反证挑战(×3条)
+      - 看空等权重(9论点, 钢人论证)
+      - HP1_内部人信号专项(20年回测)
+      - 维度回检(10/10=100%)
+      - 估值校准($338)
+    key_findings:
+      - "锚定修正: 五引擎$317→$325(E3权重30%→20%)"
+      - "确认偏误: Phase 3看空倾向+19%, AI估值权重上调"
+      - "事实核查: 内部人open market buy仅3/153, 比报告更极端"
+      - "事实核查: FY28E EPS区间$20.9-$60.3, 共识$44具误导性"
+      - "看空9论点概率加权下行-22%, 看空说服力6.8/10>看多5.2/10"
+      - "HP1: 2026与2018匹配度92%, 内部人A/D<0.2历史4次→后12月均跌-35%+"
+      - "Phase 4校准公允价值: $338(区间$307-386)"
+      - "当前$383.50溢价+13.5%, 风险/收益比0.035(极不利)"
+    fast_gate: PASSED (0 errors, 2 warnings - KS/Bear格式匹配)
+  phase5:
+    status: pending
+    target_chars: 34000
+    modules:
+      - 综合评分(10维度)
+      - 仓位建议(5档矩阵)
+      - Kill_Switch注册表(≥15个)
+      - 可验证预测(≥20个三情景)
+      - CQ最终解答(7个5要素闭环)
+      - 行动清单+投资日历
 
-resume_instruction: "继续MU Phase 4，半导体worktree"
+resume_instruction: "继续MU Phase 5，半导体worktree"
 last_updated: 2026-02-10
