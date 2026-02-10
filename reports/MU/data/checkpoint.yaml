@@ -1,0 +1,64 @@
+ticker: MU
+company: Micron Technology, Inc.
+industry: 半导体 — 存储芯片
+worktree: 半导体
+branch: 半导体
+framework: v6.0
+
+current_phase: 2
+phase_status: completed
+next_phase: 3
+
+phases:
+  phase0:
+    status: completed
+    date: 2026-02-08
+    commit: (Phase 0/0.5 combined with Phase 1)
+  phase0.5:
+    status: completed
+    date: 2026-02-08
+  phase1:
+    status: completed
+    date: 2026-02-10
+    version: v2.0
+    chars: 47350
+    commit: df8b2cd
+    report: reports/MU/MU_Phase1_v2.0_2026-02-10.md
+  phase2:
+    status: completed
+    date: 2026-02-10
+    version: v2.0
+    chars: 33500
+    report: reports/MU/MU_Phase2_v2.0_2026-02-10.md
+    modules:
+      - SC01_六层周期雷达
+      - M04_周期定位增强
+      - M05_财务深度分析
+      - M06_SOTP分部估值
+      - M07_DCF估值
+      - M08_三情景精化
+      - HP2_HBM挤出建模
+      - 资本配置分析
+    key_findings:
+      - "周期: P3中后段(55%), 见顶6-12月"
+      - "SOTP: $281/股 (CNBU占68%)"
+      - "DCF: $148-166/股 (周期股系统低估)"
+      - "三情景加权: $418/股 (Bull $570, Base $445, Bear $210)"
+      - "多方法收敛: $302(含DCF) / $357(剔除DCF)"
+      - "V7修正: 正常化EPS $15-20 → $12-16"
+      - "资本配置: 6.4/10, 股东回报3/10"
+      - "HBM挤出: 30%转产是营收甜蜜点, 空窗期-34% EPS风险"
+    fast_gate: ALL PASSED (0 errors, 0 warnings)
+  phase3:
+    status: pending
+    target_chars: 35000
+    modules:
+      - M09_护城河分析
+      - M10_五引擎竞争力
+      - M11_AI冲击矩阵
+      - M12_供需模型
+      - HP3_竞争深度
+      - HP4_地缘风险
+
+resume_instruction: "继续MU Phase 3，半导体worktree"
+last_updated: 2026-02-10
