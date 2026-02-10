@@ -86,7 +86,8 @@
 |------|----------|
 | **Tier 3启动** | `docs/deep_dive_protocol.md` |
 | **温度计算** | `docs/investment_thermometer_strategy.md` |
-| **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech}_deep.md` |
+| **行业增强** | `docs/industry/{eco_tech,tech_platform}_deep.md` (本worktree主要) |
+| **期权估值** | `docs/optionality_valuation.md` (TSLA/PLTR/GOOGL/META等高期权公司) |
 | **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |
