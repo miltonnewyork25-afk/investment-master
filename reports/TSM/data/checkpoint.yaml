@@ -62,5 +62,5 @@ files:
   phase5_report: "reports/TSM/TSM_Phase5_v2.0_2026-02-10.md"
   hp_standalone: "reports/TSM/TSM_Phase1_HP1_HP4_v2.0_2026-02-10.md"
 
-next_action: "Complete组装: Phase 0.5-5拼接 → TSM_Complete_v2.0_2026-02-10.md → quality_gate_complete.sh → main commit"
-resume_prompt: "TSM Phase 5完成。评级中性关注69.78/100。收敛$370(+4.2%)。仓位1.0%观察仓。KS 19个/0触发。VP 23/三情景。CQ 8/8闭环(73.9%)。需要: Complete组装+质量门控+main commit。"
+next_action: "全量完成。最终报告已commit到main (c6215f6)。无待办事项。"
+resume_prompt: "TSM Tier 3 Complete v2.0全量完成。451K chars。13/13 CG PASSED。main commit c6215f6。评级中性关注69.78/100。收敛$370(+4.2%)。仓位1.0%观察仓。"
