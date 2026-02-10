@@ -1,137 +1,31 @@
-# TSM Tier 3 Deep Research Checkpoint
-# Framework: v26.0 | Created: 2026-02-10
-
+schema_version: "2.0"
 ticker: TSM
-company: Taiwan Semiconductor Manufacturing Company
+company: "Taiwan Semiconductor Manufacturing Company"
 framework_version: "v26.0"
-tier: 3
 worktree: "半导体"
-branch: "半导体"
+industry: "半导体"
+last_updated: "2026-02-10T19:30:00+08:00"
 
-# Current State
-current_phase: "Phase 1"
-phase_status: "completed"
-next_phase: "Phase 2"
-next_phase_description: "财务与估值 — 周期雷达+财务深度+SOTP+DCF+三情景+CoWoS经济学"
+current_phase: 1
+phase_status: completed
+phases_completed: [0, 0.5, 1]
 
-# Phase History
-phases_completed:
-  - phase: "Phase 0"
-    date: "2026-02-10"
-    deliverables:
-      - "data/shared_context.md (DM v1.0→v1.1, 43 anchors)"
-      - "data/key_assumptions.md (KAL v2.0, 10 assumptions, 5 A-grade)"
-    data_sources: 18  # MCP tool calls
-    temperature: "+0.795 (偏热)"
+quick_ref:
+  total_chars: 66779  # Phase 1 v2.1 (post-optimization)
+  latest_phase_chars: 66779
+  annotations: 205
+  annotation_density: "30.7/万"
+  hard_data_ratio: "59.5%"
+  mermaid_charts: 12
+  pmsi: 76.8
+  temperature: "+0.795 (偏热)"
+  lxs_company: "L3×S3"
 
-  - phase: "Phase 0.5"
-    date: "2026-02-10"
-    deliverables:
-      - "TSM_Phase0.5_v2.0_2026-02-10.md"
-    key_outputs:
-      top10_dimensions: 10
-      core_questions: 8  # CQ1-CQ8
-      cq_grades: "1S + 5A + 2B"
-      coverage_matrix: "18 modules, 100% CQ coverage"
-      hot_patches: 4  # HP1-HP4 (地缘三情景/CoWoS/技术竞争/客户集中)
-      nci_identified: 4  # Early markers
-      websearch_agents: 5
+files:
+  data_master: "reports/TSM/data/shared_context.md"
+  key_assumptions: "reports/TSM/data/key_assumptions.md"
+  latest_report: "reports/TSM/TSM_Phase1_v2.0_2026-02-10.md"
+  hp_standalone: "reports/TSM/TSM_Phase1_HP1_HP4_v2.0_2026-02-10.md"
 
-  - phase: "Phase 1"
-    date: "2026-02-10"
-    deliverables:
-      - "TSM_Phase1_v2.0_2026-02-10.md (65,098 chars, 13 sections)"
-      - "TSM_Phase1_HP1_HP4_v2.0_2026-02-10.md (15,728 chars, standalone)"
-    key_outputs:
-      total_chars: 65098
-      sections: 13  # S1-S13
-      modules_completed: 10  # M01,M02,M03,M04,M13,M14,SC01,HP1,HP3,HP4
-      mermaid_diagrams: 12
-      annotations: 200  # 30.7 per 10K chars
-      hard_data_ratio: "60%"
-      agents_used: 4
-      cq_progress: "CQ1 partial, CQ4 partial, CQ6 basic, CQ8 basic"
-      kal_upgrades: "KAL-4 B→A (geo discount), KAL-6 B→A (pricing power)"
-      pmsi_score: "70/100"
-      ppda_divergences: 3
-      nci_new: 3  # AI productivity paradox, geo-valuation asymmetry, customer concentration sweet spot
-    quality_metrics:
-      annotation_density: "30.7/10K chars (target ≥15)"
-      hard_data_pct: "60% (target ≥40%)"
-      mermaid_count: "12 (target ≥2/module)"
-      so_what_coverage: "all sections"
-
-# Investment Thermometer (updated Phase 1)
-thermometer:
-  total: 0.795
-  interpretation: "偏热"
-  macro: -0.80  # CAPE 40.58, Buffett 224%, ERP 4.5%
-  fundamental: 2.00  # ROE 32.7%, D/E 0.26, Net margin 42.2%
-  sentiment: 0.175  # RSI 65.8, uptrend, no insider data
-
-# Core Questions Summary
-core_questions:
-  CQ1: "AI芯片需求是结构性还是周期性? [S级] — Phase 1 partial"
-  CQ2: "$38-42B CapEx能否获得合理回报? [A级]"
-  CQ3: "4年涨价计划是否可持续? [A级]"
-  CQ4: "N2量产是否会复制N3的成功? [B级] — Phase 1 partial"
-  CQ5: "毛利率60%+是新常态还是周期峰值? [A级]"
-  CQ6: "地缘风险是折价还是溢价? [A级] — Phase 1 basic"
-  CQ7: "26x远期PE是历史极值还是新常态? [A级]"
-  CQ8: "客户结构变化是好事还是坏事? [B级] — Phase 1 basic"
-
-# Key Data Anchors (DM v1.1 — updated in Phase 1)
-key_data:
-  price: "$355.41"
-  market_cap: "$1.843T"
-  pe_ttm: "~29-30x"
-  pe_forward: "~28x (FY2026E EPS $12.61)"
-  revenue_fy2025: "NT$2,894.3B"
-  gross_margin: "58.62% (FY2025), Q1 2026 guide 63-65%"
-  roe: "32.67%"
-  fcf_fy2025: "NT$526.5B"
-  hpc_share: "~58% of revenue"
-  advanced_node_share: "~90% (≤7nm)"
-  n2_yield: "70-80%"
-  taiwan_invasion_prob: "~13%"
-  analyst_consensus: "Buy, PT $392-410"
-
-# Phase 2 Plan
-phase2_plan:
-  target_chars: 38000
-  agents: 3
-  modules:
-    - "SC01增强 六层周期雷达 + M04周期增强 + M05财务深度分析"
-    - "M06 SOTP分部估值 + M07 DCF + M08三情景精化"
-    - "HP2 CoWoS定价权经济学 + 资本配置深度"
-  cq_coverage: "CQ2, CQ3, CQ5, CQ7"
-
-# Cumulative Stats
-cumulative:
-  total_chars: 65098  # Phase 1 only (Phase 0.5 separate)
-  total_phases: 2  # Phase 0+0.5, Phase 1
-  total_agents: 9  # 5 (Phase 0.5) + 4 (Phase 1)
-  total_mcp_calls: 18  # Phase 0
-
-# Quality Targets (unchanged)
-quality_targets:
-  rdi_target: "≥98/100"
-  cg_target: "11/11"
-  total_chars_target: "≥240K"
-  phase5_chars: "≥40K"
-  annotations_density: "≥15/万字符"
-  hard_data_ratio: "≥45%"
-  mermaid_charts: "≥12"
-  kill_switches: "≥18 (10-field format)"
-  verifiable_predictions: "≥22 (three-scenario)"
-  nci_target: "≥6 (structured registry)"
-
-# Resume Instructions
-resume_instructions: |
-  1. 读取此checkpoint恢复状态
-  2. 读取 data/shared_context.md (DM v1.1) 获取数据锚点
-  3. 读取 data/key_assumptions.md (KAL v2.0) 获取假设
-  4. 读取 TSM_Phase1_v2.0_2026-02-10.md 获取Phase 1发现
-  5. 执行Phase 2: 3并行Agent, 目标38K字符
-  6. Phase 2模块: 周期雷达+财务深度 | SOTP+DCF+三情景 | CoWoS+资本配置
-  7. 恢复指令: "继续TSM Phase 2，v26.0框架"
+next_action: "Phase 2: 财务与估值 — 周期雷达+财务深度+SOTP+DCF+三情景+CoWoS经济学"
+resume_prompt: "继续TSM Phase 2，v26.0框架"
