@@ -1,12 +1,12 @@
 #!/bin/bash
 # ============================================================
-# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v1.0
+# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v1.1
 # ============================================================
 # 用法:
 #   ./tests/quality_gate_complete.sh <Complete报告.md> [benchmark_chars]
 #   例: ./tests/quality_gate_complete.sh reports/META/META_Complete_v1.0_2026-02-08.md
 #
-# 门控项 (11项, 全部基于历史基准):
+# 门控项 (13项, 基于5报告滚动最佳值):
 #   CG1. Complete总字符 ≥ 基准80% (249,049)
 #   CG2. Phase 5字符 ≥ 基准80% (58,867)
 #   CG3. 评分维度 ≥ 8个
@@ -14,12 +14,15 @@
 #   CG5. 可验证预测 ≥ 14个
 #   CG6. VP三情景检查 (≥80% VP含Bear/Bull)
 #   CG7. CQ闭环检查 (置信度路径+验证事件)
-#   CG8. 标注密度 ≥ 12/万字符
+#   CG8. 标注密度 ≥ 25/万字符
 #   CG9. 硬数据占比 ≥ 36%
-#   CG10. Mermaid图表 ≥ 8个
+#   CG10. Mermaid图表 ≥ 24个
 #   CG11. 投资日历+行动清单存在
+#   CG12. 非共识洞察注册表 ≥ 5个CI (v1.1新增)
+#   CG13. 分析框架注册表存在 (v1.1新增)
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v1.1 (2026-02-10) — 复利飞轮反思编码CG12/CG13+密度/Mermaid上调
 # ============================================================
 
 # --- 参数 ---
@@ -32,9 +35,10 @@ FLOOR_PHASE5=58867
 MIN_DIMENSIONS=8
 MIN_KS=12
 MIN_VP=14
-MIN_MERMAID=8
-MIN_DENSITY=12
+MIN_MERMAID=24
+MIN_DENSITY=25
 MIN_HARD_RATIO=36
+MIN_CI=5
 
 # --- 颜色 ---
 RED='\033[0;31m'
@@ -250,16 +254,37 @@ else
     echo -e "${GREEN}PASS CG11: 投资日历+行动清单+免责声明 均存在${NC}"
 fi
 
+# === CG12: 非共识洞察注册表 (v1.1新增) ===
+CI_COUNT=$(grep -oE 'CI-[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
+CI_COUNT="${CI_COUNT// /}"
+HAS_CI_SECTION=$(grep -ci '非共识洞察注册表\|Contrarian.*Insight.*Registry\|非共识洞察' "$FILE" 2>/dev/null || echo 0)
+if [ "$CI_COUNT" -lt "$MIN_CI" ]; then
+    echo -e "${YELLOW}WARN CG12: 非共识洞察 CI-数 ${CI_COUNT} < 建议 ${MIN_CI} (注册表节: ${HAS_CI_SECTION})${NC}"
+    WARNINGS=$((WARNINGS + 1))
+else
+    echo -e "${GREEN}PASS CG12: 非共识洞察 CI-唯一数 ${CI_COUNT} (要求≥${MIN_CI})${NC}"
+fi
+
+# === CG13: 分析框架注册表 (v1.1新增) ===
+HAS_FW_REGISTRY=$(grep -ci '框架注册表\|Framework.*Registry\|分析框架注册' "$FILE" 2>/dev/null || echo 0)
+FW_CUSTOM=$(grep -ciE '原创.*×1\.5\|自研.*×1\.5\|custom.*×1\.5' "$FILE" 2>/dev/null || echo 0)
+if [ "$HAS_FW_REGISTRY" -eq 0 ]; then
+    echo -e "${YELLOW}WARN CG13: 未检测到分析框架注册表章节${NC}"
+    WARNINGS=$((WARNINGS + 1))
+else
+    echo -e "${GREEN}PASS CG13: 分析框架注册表存在 (提及${HAS_FW_REGISTRY}次, 原创框架${FW_CUSTOM}个)${NC}"
+fi
+
 # --- 汇总 ---
 echo ""
 echo "=============================================="
-echo -e " ${CYAN}Complete Quality Gate 检查完成${NC}"
+echo -e " ${CYAN}Complete Quality Gate v1.1 检查完成${NC}"
 echo "=============================================="
 echo " 文件: $(basename "$FILE")"
 echo " 总字符: ${CHARS} / 基准 ${BENCHMARK_CHARS} (地板 ${FLOOR_COMPLETE})"
 echo " 标注: ${TOTAL_ANN} (密度: ${DENSITY}/万字符)"
-echo " KS: ${KS_UNIQUE} | VP: ${VP_COUNT} | CQ: ${CQ_COUNT}"
-echo " Mermaid: ${MERMAID_COUNT} | 评分维度: ${DIMENSION_COUNT}"
+echo " KS: ${KS_UNIQUE} | VP: ${VP_COUNT} | CQ: ${CQ_COUNT} | CI: ${CI_COUNT}"
+echo " Mermaid: ${MERMAID_COUNT} | 评分维度: ${DIMENSION_COUNT} | 框架注册: ${HAS_FW_REGISTRY}"
 echo -e " 错误: ${RED}${ERRORS}${NC} | 警告: ${YELLOW}${WARNINGS}${NC}"
 echo "=============================================="
 
