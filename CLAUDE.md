@@ -17,7 +17,7 @@
 |------|------|------|
 | "看看/怎么样" | Tier 1 ~5K字 | `.claude/skills/quick-company-scan/SKILL.md` |
 | "分析/研究" | 先问T1或T2 | `.claude/skills/standard-analysis/SKILL.md` |
-| "深度/全面" | Tier 3 ≥85K×1.3 | `docs/deep_dive_protocol.md` |
+| "深度/全面" | Tier 3 ≥85K×系数 | `docs/deep_dive_protocol.md` |
 
 ## 铁律速查 (A-M)
 
@@ -49,6 +49,8 @@
 | ESG数据 | PLTR(ESG) | E2+V4 | 数据质量+粘性+监管 |
 | 电动交通 | TSLA(能源) | E4+V3 | 基础设施+政策+成本 |
 | 绿色金融 | 绿色债券基金 | E3+V3 | 资金流+收益率+激励 |
+
+科技平台公司分类见 `docs/industry/tech_platform_deep.md`
 
 ## Phase完成
 
