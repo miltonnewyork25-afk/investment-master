@@ -1,0 +1,32 @@
+# 投资大师 Worktree 合并规则 v2.0
+# 核心原则: 默认不同步main，同步必须用户确认
+
+rules:
+  # 禁止同步到main的文件 — 永远留在worktree
+  worktree_only:
+    patterns:
+      - "^reports/.*$"                  # 公司研究报告
+      - "^data/research/.*$"            # 研究数据
+      - "^current_tasks/.*$"            # 任务锁文件
+      - "^agent_logs/.*$"               # Agent日志
+      - "^findings\\.md$"               # 发现文档
+      - "^progress\\.md$"               # 进度追踪
+      - "^task_plan.*\\.md$"            # 任务计划
+      - ".*_backup\\.md$"               # 备份文件
+      - "^\\.lock\\.json$"              # 锁文件
+      - "^STATUS\\.md$"                 # 状态文件
+      - "^docs/industry/.*$"            # 行业特定文档
+
+  # 可同步但必须用户确认 — 默认=不同步
+  syncable:
+    patterns:
+      - "^docs/(?!industry/).*\\.md$"   # 通用文档
+      - "^\\.claude/skills/.*$"         # 通用技能
+      - "^tests/.*\\.sh$"              # 测试脚本
+      - "^scripts/.*\\.sh$"            # 工具脚本
+      - "^config/.*\\.(yaml|json)$"    # 配置文件
+      - "^CLAUDE\\.md$"               # 主配置
+      - "^mcp_server/.*$"             # MCP服务器
+      - "^Makefile$"                   # 构建文件
+    sync_method: "cherry-pick"         # 禁止merge整个分支
+    default_sync: false                # 默认不同步
