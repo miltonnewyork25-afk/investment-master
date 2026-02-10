@@ -86,7 +86,8 @@
 |------|----------|
 | **Tier 3启动** | `docs/deep_dive_protocol.md` |
 | **温度计算** | `docs/investment_thermometer_strategy.md` |
-| **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech}_deep.md` |
+| **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech,tech_platform}_deep.md` |
+| **期权估值** | `docs/optionality_valuation.md` (高期权公司: TSLA/PLTR/GOOGL/META等) |
 | **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |
@@ -102,5 +103,6 @@
 **最新版本**: v2.1 Context优化 + 复利学习飞轮
 **升级报告**: `docs/system_reflection_v2.1_2026-02-10.md`
 **健康监控**: `bash tests/framework_health_check.sh`
+**反思报告**: `reports/reflection/compound_learning_reflection_2026-02-10.md`
 
-**预期效果**: 每会话省40-60% context + 零运维负担 + 持续质量提升
+**v1.1门控升级(2026-02-10)**: CG12(CI注册表≥5) + CG13(框架注册表) + 密度25/万 + Mermaid≥24
