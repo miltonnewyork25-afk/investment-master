@@ -1,6 +1,7 @@
-# Deep-Dive 分析协议 v7.0 (Tier 3)
+# Deep-Dive 分析协议 v8.0 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
+> **v8.0变化 (框架v26.0)**: Tier 0温度预筛选机制+17个数据文件预取(+3新增)+12个MCP工具统一整合+Agent架构调整(新增Temperature/Industry/Quality Agent)+investment-logic-toolkit统一接口。
 > **v7.0变化**: Complete报告强制组装+质量基准对齐(GOOGL 311K)。Phase 5升级: 10维度评分、10字段KS、三情景VP、CQ 5要素闭环。新增Iron Rule F + `quality_gate_complete.sh`自动门控。
 > **v6.0变化**: Data Master版本控制(M1)、反幻觉协议(M2)、关键假设主表KAL(M3)、Kill Switch注册表(M4)、估值修正层级(M5)、双维度质量门控P-G+R-G(M6)。解决GOOGL"高形式分低实质分"问题。
 > **v5.1变化**: Fast Gate强制门控(每Phase必须通过research_fast.sh)、Kill Switch≥15、可验证预测≥20、Phase 4标注密度阈值8/万、并行Agent prompt规范、AMD v3.1验证基准固化
@@ -11,17 +12,30 @@
 
 ## 启动协议
 
-### Phase 0: 数据基础（自动执行，不占会话）
+### Phase 0: 数据基础 + 温度预筛选（自动执行，不占会话）
 
 1. **环境验证** — 确认当前worktree + 公司行业分类
-2. **数据预取** — 调用 `data-prefetch` 技能，获取14个数据文件到 `data/research/{TICKER}/`
-3. **数据质量检查** — 读取 `prefetch_metadata.json`，确认关键数据可用
-4. **预测市场可用性** — 检查 `prediction_market.json` 覆盖度
-5. **框架加载** — 读取行业特化配置 + 行业框架文档
-6. **Data Master初始化 (v6.0)** — 创建 `reports/{TICKER}/data/shared_context.md` 为DM格式(v1.0)，写入财务/市场基础数据锚点。详见 `docs/data_version_control.md`
-7. **KAL初始化 (v6.0)** — 创建 `reports/{TICKER}/data/key_assumptions.md` 空模板。详见 `docs/key_assumptions_list.md`
+2. **数据预取升级 (v8.0)** — 调用 `data-prefetch` 技能，获取17个数据文件到 `data/research/{TICKER}/`
+   - **原有14类**: 基础财务、市场数据、分析师预期等
+   - **新增3类**: 宏观温度数据(CAPE/Buffett/ERP)、预测市场事件、内部人交易情绪
+3. **投资温度计算 (v8.0新增)** — 调用 `investment-logic-toolkit` 执行5秒温度评估
+   - **宏观温度**: 基于100baggers.club的CAPE/Buffett/ERP数据
+   - **基本面质量**: 基于FMP ratios历史数据
+   - **市场情绪**: 基于技术指标+内部人交易
+   - **输出**: 温度评分(-2.0~+2.0) + 5级分类 + Tier建议
+4. **数据质量检查** — 读取 `prefetch_metadata.json`，确认关键数据可用
+5. **预测市场可用性** — 检查 `prediction_market.json` 覆盖度
+6. **框架加载** — 读取行业特化配置 + 行业框架文档
+7. **Data Master初始化 (v6.0)** — 创建 `reports/{TICKER}/data/shared_context.md` 为DM格式(v1.0)，写入财务/市场基础数据锚点。详见 `docs/data_version_control.md`
+8. **KAL初始化 (v6.0)** — 创建 `reports/{TICKER}/data/key_assumptions.md` 空模板。详见 `docs/key_assumptions_list.md`
+9. **温度路由决策 (v8.0新增)** — 基于温度评分建议最适合的分析深度
+   - **≥1.5 (过热)**: 建议Tier 1快速扫描，关注风险
+   - **0.5~1.5 (偏热)**: 建议Tier 2标准分析，谨慎评估
+   - **-0.5~0.5 (中性)**: 建议Tier 2标准分析
+   - **-1.5~-0.5 (偏冷)**: 建议Tier 3深度研究，潜在机会
+   - **≤-1.5 (极冷)**: 建议Tier 3深度研究，重点机会
 
-**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥8/14文件可用 + DM v1.0已创建 + KAL模板已创建
+**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算
 
 ### Phase 0.5: 市场注意力雷达 + Core Questions（自动执行，与Phase 0并行）
 
