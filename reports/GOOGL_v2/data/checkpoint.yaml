@@ -1,0 +1,166 @@
+# GOOGL v2.0 Deep Dive Checkpoint
+# 恢复说明: 读取此文件 + shared_context.md + 最新Phase报告
+
+project:
+  ticker: GOOGL
+  company: Alphabet Inc.
+  framework_version: v26.0
+  report_version: v2.0
+  industry: tech_platform
+  complexity_factor: 1.4
+  worktree: 科技平台
+  branch: 科技平台
+  target_chars: ">=450K"
+  target_rdi: ">=97"
+
+current_state:
+  phase: "Phase 1"
+  status: completed
+  date: 2026-02-10
+  next_phase: "Phase 2"
+  next_action: "财务分析 + 估值 (5 Agent并行, 目标>=100K)"
+
+phases:
+  phase_0.5:
+    status: completed
+    date: 2026-02-10
+    report: "reports/GOOGL_v2/GOOGL_Phase0.5_v2.0_2026-02-10.md"
+    char_count: "~18K"
+    commit: pending
+    metrics:
+      top10_dimensions: 10
+      core_questions: 7
+      module_coverage: "100% (含HP-01/HP-02)"
+      kal_assumptions: 10
+      hot_patches: 2
+      dm_anchors: 20
+      mcp_tools_used: [baggers_summary, fmp_data, polymarket_events]
+      fmp_endpoints: [income, key-metrics, estimates, rating, dcf, financial-scores]
+      websearch_agents: 7
+      independent_sources: "20+"
+    key_findings:
+      - "FY2025: 收入$402.9B(+15.1%), 净利润$132.2B(+32.0%), ROE 35.7%"
+      - "Q4'25: 收入$113.9B(beat+2.2%), EPS $2.82(beat+8.05%)"
+      - "CapEx指引$175-185B(超预期46-55%) → 最大争议点"
+      - "Google Cloud +48%($17.7B), 积压$240B → 增速#1但份额#3"
+      - "YouTube广告miss $460M(+8.7%增速放缓) → 天花板争议"
+      - "Waymo $126B估值(+180%), 20城扩展计划"
+      - "DOJ交叉上诉Chrome剥离(2026-02-04) → 12-18月时间窗"
+      - "FMP DCF $164.88 vs 当前$325.17 → 溢价97.2%"
+      - "宏观温度-0.80(CAPE 40.58/98ptile)"
+    v26_enhancements:
+      - "DM v2.0: 20个锚点(MCP全量验证)"
+      - "KAL v2.0: 10个假设(4个A级)"
+      - "7个CQ + 2个Hot-Patch(CapEx ROI + Gemini竞争力)"
+      - "7个GOOGL专属框架候选(F-G1至F-G7)"
+      - "6个NCI候选"
+      - "温度计原始数据收集完成(计算待Phase 1)"
+
+  phase_1:
+    status: completed
+    date: 2026-02-10
+    report: "reports/GOOGL_v2/GOOGL_Phase1_v2.0_2026-02-10.md"
+    char_count: 114686
+    target_chars: ">=85K"
+    achievement: "132%"
+    agents: 5
+    chapters: [Ch01, Ch02, Ch03, Ch04, Ch05, Ch06, Ch07, Ch08]
+    cq_focus: [CQ2, CQ4, CQ5, CQ3, CQ1]
+    key_findings:
+      - "产品矩阵: 10个$2B+产品, 管理层综合7.8/10"
+      - "搜索护城河: 锁定系数7.5/10, AI覆盖16%<45%安全阈值"
+      - "AI自蚕食率F-G7: 概率加权搜索收入~$236B(+5%)"
+      - "YouTube独立估值$300-450B, Q4 miss 70-80%一次性"
+      - "GCP SOTP $650-750B, 55-60%概率2029达20%份额"
+      - "监管概率加权冲击-$14.9/股(-4.5%)"
+      - "温度计+0.18(中性): 质量+1.00对冲宏观-0.80"
+    v26_enhancements:
+      - "投资温度计三层完整计算: +0.18"
+      - "F-G1双螺旋模型首次应用"
+      - "F-G7 AI自蚕食率建模首次应用"
+      - "F-G2 YouTube三引擎模型"
+      - "F-G3 GCP S曲线模型"
+      - "F-G6反垄断博弈树"
+      - "HP-01 Part 1 CapEx初评完成"
+
+  phase_2:
+    status: pending
+    target_chars: ">=100K"
+    agents: 5
+    chapters: [Ch09, Ch10, Ch11, Ch12, Ch13]
+    cq_focus: [CQ1, CQ6, CQ7]
+
+  phase_3_3.5:
+    status: pending
+    target_chars: ">=100K"
+    agents: 5
+    chapters: [Ch14, Ch15, Ch16, Ch17, Ch18]
+    cq_focus: [CQ2, CQ4, CQ1, CQ6]
+
+  phase_4:
+    status: pending
+    target_chars: ">=75K"
+    agents: 4
+    chapters: [Ch19, Ch20, Ch21, Ch22]
+    cq_focus: [all]
+
+  phase_5:
+    status: pending
+    target_chars: ">=80K"
+    agents: 3
+    chapters: [Ch23, Ch24, Ch25]
+    cq_focus: [all]
+
+  complete:
+    status: pending
+    target_chars: ">=450K"
+    additional_chapters: [Ch26_NCI, Ch27_Framework]
+    quality_gates: [CG1-CG11]
+    rdi_target: ">=97"
+
+data_files:
+  dm: "reports/GOOGL_v2/data/shared_context.md"
+  checkpoint: "reports/GOOGL_v2/data/checkpoint.yaml"
+  status: "reports/GOOGL_v2/data/STATUS.md"
+
+reference:
+  v1_report: "reports/GOOGL/Google_GOOGL_Complete_Analysis.md"
+  v1_chars: 311000
+  v1_rating: 62.4
+  pltr_benchmark: "reports/PLTR/PLTR_Complete_v2.0_2026-02-10.md"
+  pltr_chars: 457000
+  pltr_rdi: 99
+
+innovations_planned:
+  - "F-G7: AI自蚕食率建模(GOOGL独创框架)"
+  - "5层估值校准法(借鉴COST v2.0)"
+  - "50%/80%/95%置信区间(借鉴SOFI v3.0)"
+  - "隐含增长率逆推(借鉴COST)"
+  - "CQ置信度路径表(借鉴PLTR)"
+  - "NCI辨识度自检(借鉴PLTR)"
+  - "KS-CQ-Bear三维交叉矩阵(借鉴PLTR)"
+  - "看空渗透度分析(借鉴PLTR, 目标>=25%全报告)"
+
+lessons_absorbed:
+  from_pltr:
+    - "A级公司+D级股价分离分析 → GOOGL可能是A级公司+B级股价"
+    - "CQ置信度路径表(Phase演进轨迹)"
+    - "NCI辨识度自检(删掉公司名测试)"
+    - "KS三级灯号+10字段"
+    - "估值极限计算"
+    - "五档仓位阶梯+3批建仓"
+    - "看空渗透度>25%"
+    - "6个公司定制框架(Type 3)"
+  from_cost:
+    - "v2.0增强标注([v2.0新增]标记)"
+    - "飞轮四状态诊断"
+    - "5层估值校准法"
+    - "隐含增长率逆推"
+    - "Nifty Fifty历史类比 → P/E 30.6x有类似参考价值"
+    - "估值锚点前置(Phase 0.5嵌入)"
+  from_sofi:
+    - "模块覆盖矩阵量化"
+    - "温度计-深度分析张力分析"
+    - "NCI数据链(8-12数据点)"
+    - "50%/80%/95%置信区间"
+    - "Hot-Patch覆盖缺口修补"
