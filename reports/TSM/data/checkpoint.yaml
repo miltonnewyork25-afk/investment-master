@@ -4,50 +4,49 @@ company: "Taiwan Semiconductor Manufacturing Company"
 framework_version: "v26.0"
 worktree: "半导体"
 industry: "半导体"
-last_updated: "2026-02-11T07:00:00+08:00"
+last_updated: "2026-02-11T07:15:00+08:00"
 
-current_phase: 4
+current_phase: 5
 phase_status: completed
-phases_completed: [0, 0.5, 1, 2, 3, 4]
+phases_completed: [0, 0.5, 1, 2, 3, 4, 5]
 
 quick_ref:
-  total_chars: 371171  # Phase 0-4 cumulative (296918+74253)
-  latest_phase_chars: 74253  # Phase 4 v2.0
-  annotations: 1431  # cumulative (P1:205 + P2:711 + P3:315 + P4:200)
-  annotation_density: "38.6/万"  # 1431 / 37.12万
-  hard_data_ratio: "53%"  # P4: 106/200=53%, cumulative weighted
-  mermaid_charts: 73  # cumulative (P1:12 + P2:29 + P3:27 + P4:5)
-  pmsi: 73.0  # Phase 3 value, not revised in Phase 4
+  total_chars: 440828  # Phase 0-5 cumulative (371171+69657)
+  latest_phase_chars: 69657  # Phase 5 v2.0
+  annotations: 1584  # cumulative (P1:205 + P2:711 + P3:315 + P4:200 + P5:153)
+  annotation_density: "36.0/万"  # 1584 / 44.08万
+  hard_data_ratio: "55%"  # P5: 105/153=69%, cumulative weighted up
+  mermaid_charts: 83  # cumulative (P1:12 + P2:29 + P3:27 + P4:5 + P5:10)
+  pmsi: 73.0  # Phase 3 value
   temperature: "+0.795 (偏热)"
   lxs_company: "L2×S3"
 
-  # Phase 4 specific metrics
-  p4_modules: 4  # M14/M15/M16/M17
-  p4_agents: 4  # A/B/C/D
-  p4_bear_cases: 8  # 台海/AI泡沫/竞争/估值/周期/客户/CapEx/政策
-  p4_counter_arguments: 3  # 护城河/AI增长/地缘
-  p4_bias_checks: 4  # 锚定/确认偏误/过度自信/沉没成本
-  p4_data_checks: 10  # 5准确+4近似+1偏差
-  p4_data_integrity: "8.75/10 B+"
-  p4_dimension_coverage: "9/10 (90%)"
-  p4_so_what_average: "4.4/5"
-  p4_kill_switches: 19  # P3:17 + P4新增2
+  # Phase 5 specific metrics
+  p5_modules: 8  # 评分/收敛/仓位/KS注册/日历/行动/VP/CQ
+  p5_agents: 3  # A/B/C
+  p5_rating: "中性关注 69.78/100"
+  p5_convergence_target: "$370/ADR (+4.2%)"
+  p5_position: "观察仓 1.0%"
+  p5_kill_switches: "19个, 0触发, 5橙色警戒"
+  p5_verifiable_predictions: "23个VP, 100%三情景"
+  p5_cq_closure: "8/8, 5要素, 平均73.9%"
+  p5_confidence_range: "$340-$410 (50%) / $280-$480 (80%)"
 
-  # Valuation summary (Phase 4 calibrated)
+  # Final valuation (Phase 5 converged)
   sotp_core: "$343/ADR"
   ai_adjusted_core: "$386/ADR (+12.5%)"
   bias_corrected_core: "$317/ADR (偏差修正)"
-  bias_corrected_full: "$370/ADR (偏差修正)"
+  convergence_target: "$370/ADR (6方法加权)"
   bear_adjusted_median: "$340/ADR"
   p4_composite_fair_value: "$416/ADR (综合加权)"
-  p4_fair_value_range: "$317-416/ADR"
+  final_fair_value_range: "$317-416/ADR"
   ovm_option: "$52.7/ADR"
   full_value: "$439/ADR (+23.6%)"
   dcf_probability_weighted: "$803/ADR (+126%)"
   cycle_position: "扩张中后期 7.55/10"
   warning_level: "3.6/5 警告级"
 
-  # Data corrections
+  # Data corrections (unchanged from P4)
   revenue_growth_corrected: "+31.6% (公司公告) / +33.0% (FMP)"
   advanced_node_share_corrected: "3nm ~90%+; ≤7nm ~65-80%"
   polymarket_updated: "11.5% (2026-02-10)"
@@ -60,7 +59,8 @@ files:
   phase2_report: "reports/TSM/TSM_Phase2_v2.0_2026-02-10.md"
   phase3_report: "reports/TSM/TSM_Phase3_v2.0_2026-02-10.md"
   phase4_report: "reports/TSM/TSM_Phase4_v2.0_2026-02-10.md"
+  phase5_report: "reports/TSM/TSM_Phase5_v2.0_2026-02-10.md"
   hp_standalone: "reports/TSM/TSM_Phase1_HP1_HP4_v2.0_2026-02-10.md"
 
-next_action: "Phase 5: 决策输出 — 最终评级+仓位+KS手册+可验证预测+CQ最终答案+12层QG"
-resume_prompt: "继续TSM Phase 5，v26.0框架，Phase 4完成。校准后公允价值$317-416(中位$365)。8 Bear Cases概率加权$318。偏差修正-$69/ADR。KS 19个。数据诚信8.75/10。9/10维度覆盖。需要: 最终评级+仓位建议+可验证预测≥5+CQ闭环+12层QG"
+next_action: "Complete组装: Phase 0.5-5拼接 → TSM_Complete_v2.0_2026-02-10.md → quality_gate_complete.sh → main commit"
+resume_prompt: "TSM Phase 5完成。评级中性关注69.78/100。收敛$370(+4.2%)。仓位1.0%观察仓。KS 19个/0触发。VP 23/三情景。CQ 8/8闭环(73.9%)。需要: Complete组装+质量门控+main commit。"
