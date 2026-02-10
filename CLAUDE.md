@@ -120,37 +120,41 @@
 - 单会话最多1个主目标 + 1个小目标
 - ≥3个独立目标 → 强制拆分
 
-### Git提交规则（铁律 E，v27.0统一）
+### Git提交规则（铁律 E，v27.1统一）
 
-**三问决策树 — 每次commit前必须走完**:
+**报告放置: main分支 `reports/{TICKER}/` 为最终存放地**
 
+完成的报告(Complete/标准分析)必须存放在main分支的`reports/{TICKER}/`目录，方便跨公司横向查阅。
+
+**提交流程**:
 ```
-Q1: 文件类型?
-├── 公司内容 (reports/, data/research/, agent_logs/) → commit到当前worktree，结束
-├── 行业内容 (docs/industry/, worktree CLAUDE.md) → commit到当前worktree，结束
-└── 框架/工具 (docs/*, tests/*, scripts/*, config/*) → commit到当前worktree，继续Q2
-
-Q2: 是否需要同步main? → 必须询问用户，默认=不同步
-
-Q3: 用户确认同步? → Yes: cherry-pick到main | No: 留在worktree
+1. 分析过程中: 在worktree分支工作（Phase报告、staging、data/）
+2. 完成后: 将最终报告复制到main分支的 reports/{TICKER}/
+3. 两处都commit: worktree保留完整研究过程，main保留最终成果
 ```
 
 **硬性禁令**:
 - 禁止`git add .`和`git add -A`（必须指定文件或用`git add -u`）
-- 禁止未经用户确认commit到main
-- 禁止自动merge整个分支到main（只允许cherry-pick单个commit）
+- 禁止自动merge整个分支到main（报告用复制，不用merge）
 
 **Worktree规则**:
 - 每次对话开始: 确认当前worktree位置
 - 分析公司时: 建议对应行业worktree → 等待用户确认后切换
 - 用户说"我在哪": 给出完整状态报告
 
-**报告目录结构**（存放在当前worktree分支，非main）:
+**报告目录结构**:
 ```
+# main分支 — 最终报告统一存放
 reports/{TICKER}/
-├── {TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md
-├── {TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md
-└── data/ (shared_context.md, STATUS.md, agent_logs/, current_tasks/)
+├── {TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md   # 最终成果
+└── {TICKER}_standard_v{版本}_{YYYY-MM-DD}.md   # Tier 2成果
+
+# worktree分支 — 完整研究过程
+reports/{TICKER}/
+├── {TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md   # Phase级报告
+├── {TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md    # 最终成果(副本)
+├── data/ (shared_context.md, STATUS.md, checkpoint.yaml)
+└── staging/ (Agent中间产出)
 ```
 
 **命名规范**: Tier 2: `{TICKER}_standard_v{版本}_{日期}.md` | Tier 3: `{TICKER}_Phase{N}_v{版本}_{日期}.md` | Complete: `{TICKER}_Complete_v{版本}_{日期}.md`
