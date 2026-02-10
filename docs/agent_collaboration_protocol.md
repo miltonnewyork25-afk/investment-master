@@ -62,7 +62,6 @@ data/research/{TICKER}/
 │   ├── {TICKER}_Phase1_AgentA.log.md
 │   └── ...
 ├── shared_context.md        # 共享上下文 (每Phase更新)
-└── STATUS.md                # 实时仪表盘 (Phase执行期)
 
 reports/{TICKER}/
 ├── staging/                 # Agent暂存区 (临时，QG通过后删除)
@@ -129,8 +128,8 @@ Agent返回后，主线程执行:
 bash tests/research_fast.sh {output_file} {min_chars} {min_density}
 ```
 
-- **PASS (exit 0)**: 删锁 → 更新STATUS.md → git commit
-- **FAIL (exit 1)**: 记录到STATUS.md失败日志 → 重试Agent (最多1次)
+- **PASS (exit 0)**: 删锁 → git commit
+- **FAIL (exit 1)**: 记录到agent_logs → 重试Agent (最多1次)
 
 ### 脚本详情
 
@@ -144,43 +143,9 @@ bash tests/research_fast.sh {output_file} {min_chars} {min_density}
 
 ---
 
-## 4. STATUS.md 实时仪表盘
+## 4. Agent状态追踪 (已简化)
 
-### 与 progress.md 的关系
-
-| 文件 | 生命周期 | 更新频率 | 用途 |
-|------|---------|---------|------|
-| `STATUS.md` | Phase执行期间 | 每个Agent完成时 | 实时监控 |
-| `progress.md` | 项目全生命周期 | Phase完成时 | 永久档案 |
-
-Phase完成后，STATUS.md关键信息合并入progress.md。
-
-### 内容模板
-
-```markdown
-# {TICKER} Phase {N} 执行状态
-## 更新时间: {timestamp}
-
-### Agent状态
-| Agent | 模块 | 状态 | 字符 | 标注 | 硬数据% | QG |
-|-------|------|------|------|------|---------|-----|
-| A | {modules} | PENDING/RUNNING/COMPLETED/FAILED | - | - | - | - |
-
-### 累计指标
-| 指标 | 当前 | 目标 | 达成率 |
-|------|------|------|--------|
-| 总字符 | {X} | {Y} | {%} |
-| 总标注 | {X} | - | - |
-| 硬数据% | {X}% | ≥40% | {PASS/FAIL} |
-
-### 失败日志
-| 时间 | Agent | 错误类型 | 详情 | 解决方案 |
-|------|-------|---------|------|---------|
-{每次FAIL一行}
-
-### 下一步
-1. {action item}
-```
+> STATUS.md 已废弃 (v2.0)。Agent执行状态通过 lock files 追踪，Phase进度通过 checkpoint.yaml 追踪。
 
 ---
 
@@ -350,8 +315,7 @@ anchors: [DM-FIN-001 v1.0, DM-MEM-001 v1.0]
 Step 0: 读 progress.md + 检查 current_tasks/ (恢复协议)
 Step 1: 读 execution_plan.md (本Phase模块分配)
 Step 2: 编写 shared_context.md (合并所有前序发现)
-Step 3: 初始化 STATUS.md (所有Agent=PENDING)
-Step 4: 创建 current_tasks/Agent{X}.lock.md (每个Agent一个)
+Step 3: 创建 current_tasks/Agent{X}.lock.md (每个Agent一个)
 
 === 阶段B: 执行 ===
 Step 5: 并行dispatch Agent (prompt引用shared_context.md)
@@ -360,15 +324,13 @@ Step 6: 主线程同时执行自己的模块
 === 阶段C: 验证+归档 (每个Agent返回时) ===
 Step 7: Agent输出写入 reports/{TICKER}/staging/
 Step 8: 运行 tests/research_fast.sh → PASS/FAIL
-Step 9: FAIL → 记录到STATUS.md失败日志 + 重试Agent (最多1次)
-Step 10: PASS → 追加到Phase主文件 + 删staging + 删锁 + 更新STATUS.md + git commit
+Step 9: FAIL → 记录到agent_logs + 重试Agent (最多1次)
+Step 10: PASS → 追加到Phase主文件 + 删staging + 删锁 + git commit
 
 === 阶段D: Phase收尾 ===
 Step 11: 全部Agent完成 → 对Phase主文件汇总检查 (总字数/CQ覆盖/Fast Gate)
-Step 12: STATUS.md关键数据合并入progress.md
-Step 12.5: 写入/更新 reports/{TICKER}/data/checkpoint.yaml (详见 docs/checkpoint_protocol.md)
-Step 13: git commit "Phase {N} Complete"
-Step 14: 提醒用户是否push
+Step 12: 运行 `bash scripts/phase_complete.sh` (自动: Fast Gate → checkpoint v2.0 → git commit)
+Step 13: 提醒用户是否push
 ```
 
 ---
@@ -383,5 +345,4 @@ Step 14: 提醒用户是否push
 | Phase主文件 | `reports/{TICKER}/{TICKER}_Phase{N}.md` | Phase开始时 | 永久保留 |
 | 完整报告 | `reports/{TICKER}/{TICKER}_Complete.md` | 项目结束时 | 永久保留 |
 | 执行日志 | `agent_logs/{TICKER}_Phase{N}_Agent{X}.log.md` | Agent完成时 | 永久保留 |
-| 状态仪表盘 | `STATUS.md` | Phase开始时 | Phase完成后合并入progress.md |
 | 质量门控 | `tests/research_fast.sh` | 永久 | 永久 |
