@@ -120,43 +120,42 @@
 - 单会话最多1个主目标 + 1个小目标
 - ≥3个独立目标 → 强制拆分
 
-### Push vs Merge 严格区分
-- **"提交到GitHub"** = `git push origin [当前分支]`，永不触碰main
-- **"合并到main"** = 真正的merge，必须每次明确确认用户意图
-- 应合并到main: Bug修复 | 通用工具 | 框架增强 | 安全修复
-- 应留在worktree: 行业特定 | 公司定制 | 实验性 | 临时需求
+### Git提交规则（铁律 E，v27.0统一）
 
-### Worktree规则
+**三问决策树 — 每次commit前必须走完**:
+
+```
+Q1: 文件类型?
+├── 公司内容 (reports/, data/research/, agent_logs/) → commit到当前worktree，结束
+├── 行业内容 (docs/industry/, worktree CLAUDE.md) → commit到当前worktree，结束
+└── 框架/工具 (docs/*, tests/*, scripts/*, config/*) → commit到当前worktree，继续Q2
+
+Q2: 是否需要同步main? → 必须询问用户，默认=不同步
+
+Q3: 用户确认同步? → Yes: cherry-pick到main | No: 留在worktree
+```
+
+**硬性禁令**:
+- 禁止`git add .`和`git add -A`（必须指定文件或用`git add -u`）
+- 禁止未经用户确认commit到main
+- 禁止自动merge整个分支到main（只允许cherry-pick单个commit）
+
+**Worktree规则**:
 - 每次对话开始: 确认当前worktree位置
 - 分析公司时: 建议对应行业worktree → 等待用户确认后切换
-- 修改CLAUDE.md/框架文件: 确认影响范围（当前worktree vs 全局）
 - 用户说"我在哪": 给出完整状态报告
 
-### 报告放置规则（铁律 E）
-
-**核心原则: 所有报告统一存放在 `reports/{TICKER}/` 目录（main 分支），方便查阅和横向参考。**
-
-**目录结构**:
+**报告目录结构**（存放在当前worktree分支，非main）:
 ```
-reports/
-└── {TICKER}/
-    ├── {TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md   # Phase级报告
-    ├── {TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md    # 最终合并报告
-    └── data/                                        # 该公司研究数据
-        ├── shared_context.md
-        ├── STATUS.md
-        ├── agent_logs/
-        └── current_tasks/
+reports/{TICKER}/
+├── {TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md
+├── {TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md
+└── data/ (shared_context.md, STATUS.md, agent_logs/, current_tasks/)
 ```
 
-**命名规范**:
-- Tier 2: `{TICKER}_standard_v{版本}_{YYYY-MM-DD}.md`
-- Tier 3 Phase: `{TICKER}_Phase{N}_v{版本}_{YYYY-MM-DD}.md`
-- Tier 3 Complete: `{TICKER}_Complete_v{版本}_{YYYY-MM-DD}.md`
+**命名规范**: Tier 2: `{TICKER}_standard_v{版本}_{日期}.md` | Tier 3: `{TICKER}_Phase{N}_v{版本}_{日期}.md` | Complete: `{TICKER}_Complete_v{版本}_{日期}.md`
 
-**禁止事项**:
-- 禁止将报告散放在 `reports/` 根目录（必须进 `{TICKER}/` 子目录）
-- 禁止将研究数据放在 `reports/{TICKER}/` 以外的位置
+**禁止**: 报告散放在`reports/`根目录 | 研究数据放在`reports/{TICKER}/`以外
 
 ### 铁律 F: 质量不可回退（Complete报告强制门控）
 
