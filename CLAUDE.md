@@ -39,7 +39,7 @@
 
 ## 铁律速查 (A-F)
 
-**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控
+**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
@@ -73,10 +73,20 @@
 ## Phase自动化
 
 **一键完成**: `bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}`
+**紧急保存**: `bash scripts/context_save.sh [TICKER]`
 **自动执行**: FastGate → checkpoint v2.0 → git commit
 **省context**: ~25K/Phase (原~68K → 新~28K, -59%)
 
 **详见**: `docs/checkpoint_protocol.md` v2.0
+
+## 铁律 G: Context主动管理
+
+**Agent必须在以下时机主动执行 `bash scripts/context_save.sh`**:
+1. **用户说context不够/要clear** — 立即执行，不问问题
+2. **并行Agent全部返回后** — 立即commit staging产出，不等Phase完成
+3. **任何阶段性产出完成时** — 报告/staging/data有变化就commit，不积压
+
+**禁止**: 让用户手动提醒保存 | 未提交就建议/clear | 积压超过2个Agent产出不commit
 
 ---
 
@@ -86,7 +96,8 @@
 |------|----------|
 | **Tier 3启动** | `docs/deep_dive_protocol.md` |
 | **温度计算** | `docs/investment_thermometer_strategy.md` |
-| **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech}_deep.md` |
+| **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech,tech_platform}_deep.md` |
+| **期权估值** | `docs/optionality_valuation.md` (高期权公司: TSLA/PLTR/GOOGL/META等) |
 | **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |
@@ -102,5 +113,6 @@
 **最新版本**: v2.1 Context优化 + 复利学习飞轮
 **升级报告**: `docs/system_reflection_v2.1_2026-02-10.md`
 **健康监控**: `bash tests/framework_health_check.sh`
+**反思报告**: `reports/reflection/compound_learning_reflection_2026-02-10.md`
 
-**预期效果**: 每会话省40-60% context + 零运维负担 + 持续质量提升
+**v1.1门控升级(2026-02-10)**: CG12(CI注册表≥5) + CG13(框架注册表) + 密度25/万 + Mermaid≥24
