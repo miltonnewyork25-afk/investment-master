@@ -4,41 +4,54 @@ company: "Taiwan Semiconductor Manufacturing Company"
 framework_version: "v26.0"
 worktree: "半导体"
 industry: "半导体"
-last_updated: "2026-02-10T23:55:00+08:00"
+last_updated: "2026-02-11T07:00:00+08:00"
 
-current_phase: 3
+current_phase: 4
 phase_status: completed
-phases_completed: [0, 0.5, 1, 2, 3]
+phases_completed: [0, 0.5, 1, 2, 3, 4]
 
 quick_ref:
-  total_chars: 296918  # Phase 0+0.5+1+2+3 cumulative (214881+82037)
-  latest_phase_chars: 82037  # Phase 3 v2.0
-  annotations: 1231  # cumulative (P1: 205 + P2: 711 + P3: 315)
-  annotation_density: "41.5/万"  # 1231 / 29.69万
-  hard_data_ratio: "54.8%"  # P3: 182/315=57.8%, cumulative weighted
-  mermaid_charts: 68  # cumulative (P1: 12 + P2: 29 + P3: 27)
-  pmsi: 73.0  # Phase 3 independent calculation
+  total_chars: 371171  # Phase 0-4 cumulative (296918+74253)
+  latest_phase_chars: 74253  # Phase 4 v2.0
+  annotations: 1431  # cumulative (P1:205 + P2:711 + P3:315 + P4:200)
+  annotation_density: "38.6/万"  # 1431 / 37.12万
+  hard_data_ratio: "53%"  # P4: 106/200=53%, cumulative weighted
+  mermaid_charts: 73  # cumulative (P1:12 + P2:29 + P3:27 + P4:5)
+  pmsi: 73.0  # Phase 3 value, not revised in Phase 4
   temperature: "+0.795 (偏热)"
-  lxs_company: "L2×S3"  # Phase 3 AI评估下调自L3→L2
+  lxs_company: "L2×S3"
 
-  # Phase 3 specific metrics
-  p3_modules: 7  # M10/M10b/M10c/M11/M12/M12b/M13
-  p3_agents: 5  # A/B/C/D/E
-  p3_cq_coverage: "CQ1-CQ8全覆盖(100%)"
-  p3_moat_score: "8.98/10 Very Wide"
-  p3_kill_switches: 17  # P2:12 + P3新增5
-  p3_stress_tests: 4  # ST1台海/ST2AI断崖/ST3禁运/ST4周期
-  p3_ppda_divergences: 3  # 地缘定价不足/AI乐观vs对冲/EPS vs FCF
+  # Phase 4 specific metrics
+  p4_modules: 4  # M14/M15/M16/M17
+  p4_agents: 4  # A/B/C/D
+  p4_bear_cases: 8  # 台海/AI泡沫/竞争/估值/周期/客户/CapEx/政策
+  p4_counter_arguments: 3  # 护城河/AI增长/地缘
+  p4_bias_checks: 4  # 锚定/确认偏误/过度自信/沉没成本
+  p4_data_checks: 10  # 5准确+4近似+1偏差
+  p4_data_integrity: "8.75/10 B+"
+  p4_dimension_coverage: "9/10 (90%)"
+  p4_so_what_average: "4.4/5"
+  p4_kill_switches: 19  # P3:17 + P4新增2
 
-  # Valuation summary (Phase 3 updated)
+  # Valuation summary (Phase 4 calibrated)
   sotp_core: "$343/ADR"
   ai_adjusted_core: "$386/ADR (+12.5%)"
+  bias_corrected_core: "$317/ADR (偏差修正)"
+  bias_corrected_full: "$370/ADR (偏差修正)"
+  bear_adjusted_median: "$340/ADR"
+  p4_composite_fair_value: "$416/ADR (综合加权)"
+  p4_fair_value_range: "$317-416/ADR"
   ovm_option: "$52.7/ADR"
   full_value: "$439/ADR (+23.6%)"
   dcf_probability_weighted: "$803/ADR (+126%)"
-  fair_value_range: "$363-439/ADR"
   cycle_position: "扩张中后期 7.55/10"
   warning_level: "3.6/5 警告级"
+
+  # Data corrections
+  revenue_growth_corrected: "+31.6% (公司公告) / +33.0% (FMP)"
+  advanced_node_share_corrected: "3nm ~90%+; ≤7nm ~65-80%"
+  polymarket_updated: "11.5% (2026-02-10)"
+  hyperscaler_capex_updated: "$650-725B (上调)"
 
 files:
   data_master: "reports/TSM/data/shared_context.md"
@@ -46,7 +59,8 @@ files:
   phase1_report: "reports/TSM/TSM_Phase1_v2.0_2026-02-10.md"
   phase2_report: "reports/TSM/TSM_Phase2_v2.0_2026-02-10.md"
   phase3_report: "reports/TSM/TSM_Phase3_v2.0_2026-02-10.md"
+  phase4_report: "reports/TSM/TSM_Phase4_v2.0_2026-02-10.md"
   hp_standalone: "reports/TSM/TSM_Phase1_HP1_HP4_v2.0_2026-02-10.md"
 
-next_action: "Phase 4: 温度计验证+估值校准 — 对抗性分析+bear-case+AI溢价校准+12层质量门控"
-resume_prompt: "继续TSM Phase 4，v26.0框架，Phase 3完成。Core $343/AI调整$386/Full $439。护城河8.98/10。PMSI 73.0。KS 17个。预警3.6/5警告级。需要: 对抗性看空≥8处+bear-case+AI溢价精确校准+CQ闭环"
+next_action: "Phase 5: 决策输出 — 最终评级+仓位+KS手册+可验证预测+CQ最终答案+12层QG"
+resume_prompt: "继续TSM Phase 5，v26.0框架，Phase 4完成。校准后公允价值$317-416(中位$365)。8 Bear Cases概率加权$318。偏差修正-$69/ADR。KS 19个。数据诚信8.75/10。9/10维度覆盖。需要: 最终评级+仓位建议+可验证预测≥5+CQ闭环+12层QG"
