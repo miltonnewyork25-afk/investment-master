@@ -1,0 +1,106 @@
+# TSM Tier 3 Deep Research Checkpoint
+# Framework: v26.0 | Created: 2026-02-10
+
+ticker: TSM
+company: Taiwan Semiconductor Manufacturing Company
+framework_version: "v26.0"
+tier: 3
+worktree: "半导体"
+branch: "半导体"
+
+# Current State
+current_phase: "Phase 0.5"
+phase_status: "completed"
+next_phase: "Phase 1"
+next_phase_description: "定位与生态全景 — 公司画像+产业链+技术路线+周期定位+Polymarket+地缘+客户"
+
+# Phase History
+phases_completed:
+  - phase: "Phase 0"
+    date: "2026-02-10"
+    deliverables:
+      - "data/shared_context.md (DM v1.0, 43 anchors)"
+      - "data/key_assumptions.md (KAL v2.0, 10 assumptions, 5 A-grade)"
+    data_sources: 18  # MCP tool calls
+    temperature: "+0.795 (偏热)"
+
+  - phase: "Phase 0.5"
+    date: "2026-02-10"
+    deliverables:
+      - "TSM_Phase0.5_v2.0_2026-02-10.md"
+    key_outputs:
+      top10_dimensions: 10
+      core_questions: 8  # CQ1-CQ8
+      cq_grades: "1S + 5A + 2B"
+      coverage_matrix: "18 modules, 100% CQ coverage"
+      hot_patches: 4  # HP1-HP4 (地缘三情景/CoWoS/技术竞争/客户集中)
+      nci_identified: 4  # Early markers
+      websearch_agents: 5
+
+# Investment Thermometer
+thermometer:
+  total: 0.795
+  interpretation: "偏热 🌡️"
+  macro: -0.80  # CAPE 40.58, Buffett 224%, ERP 4.5%
+  fundamental: 2.00  # ROE 32.7%, D/E 0.26, Net margin 42.2%
+  sentiment: 0.175  # RSI 65.8, uptrend, no insider data
+
+# Core Questions Summary
+core_questions:
+  CQ1: "AI芯片需求是结构性还是周期性? [S级]"
+  CQ2: "$38-42B CapEx能否获得合理回报? [A级]"
+  CQ3: "4年涨价计划是否可持续? [A级]"
+  CQ4: "N2量产是否会复制N3的成功? [B级]"
+  CQ5: "毛利率60%+是新常态还是周期峰值? [A级]"
+  CQ6: "地缘风险是折价还是溢价? [A级]"
+  CQ7: "26x远期PE是历史极值还是新常态? [A级]"
+  CQ8: "客户结构变化是好事还是坏事? [B级]"
+
+# Key Data Anchors (from DM v1.0)
+key_data:
+  price: "$218.31"
+  market_cap: "$1.131T"
+  pe_ttm: 25.71
+  pe_forward: "~22x (FY2026E EPS $9.93)"
+  revenue_fy2025: "NT$2,894.3B"
+  gross_margin: "58.62% (FY2025), Q1 2026 guide 63-65%"
+  roe: "32.67%"
+  fcf_fy2025: "NT$526.5B"
+  hpc_share: "~58% of revenue"
+  advanced_node_share: "~90% (≤7nm)"
+  n2_yield: "70-80%"
+  taiwan_invasion_prob: "~13%"
+  analyst_consensus: "Buy, PT $240"
+
+# Phase 1 Plan
+phase1_plan:
+  target_chars: 46000
+  agents: 4
+  modules:
+    - "M01 公司画像 + M02 产业链 + M14 注意力雷达"
+    - "M04 周期定位 + SC01 周期雷达 + HP3 技术竞争力"
+    - "M03 Polymarket矩阵 + M13 AI冲击矩阵"
+    - "HP1 地缘风险三情景 + HP4 客户集中度"
+  cq_coverage: "6/8 CQs"
+
+# Quality Targets
+quality_targets:
+  rdi_target: "≥98/100"
+  cg_target: "11/11"
+  total_chars_target: "≥240K"
+  phase5_chars: "≥40K"
+  annotations_density: "≥15/万字符"
+  hard_data_ratio: "≥45%"
+  mermaid_charts: "≥12"
+  kill_switches: "≥18 (10-field format)"
+  verifiable_predictions: "≥22 (three-scenario)"
+  nci_target: "≥6 (structured registry)"
+
+# Resume Instructions
+resume_instructions: |
+  1. 读取此checkpoint恢复状态
+  2. 读取 data/shared_context.md (DM v1.0) 获取数据锚点
+  3. 读取 data/key_assumptions.md (KAL v2.0) 获取假设
+  4. 读取 TSM_Phase0.5_v2.0_2026-02-10.md 获取CQ和覆盖矩阵
+  5. 执行Phase 1: 4并行Agent, 目标46K字符
+  6. 恢复指令: "继续TSM Phase 1，v26.0框架"
