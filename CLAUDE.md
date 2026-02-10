@@ -1,16 +1,15 @@
-# 投资研究 Agent — 生态科技行业专用 v26.0
+# 投资研究 Agent — 生态科技+科技平台 v26.0
 
 > 通用框架见 `docs/`。本文件仅含行业配置+铁律速查+路由+工具优先级。
-> 详细公式/Phase指南/监控指标 → `docs/industry/eco_tech_deep.md`
+> 生态科技详细 → `docs/industry/eco_tech_deep.md`
+> 科技平台详细 → `docs/industry/tech_platform_deep.md`
 
 ## 行业配置
 
-| 项目 | 值 |
-|------|-----|
-| 行业 | 生态科技 (清洁能源/ESG/绿色金融/碳中和) |
-| 框架 | `.claude/skills/eco-tech-analyzer/eco_tech_master_framework.yaml` |
-| 系数 | ×1.3 |
-| 公司 | ENPH, SEDG, FSLR, NEE, PLTR(ESG), TSLA(能源), BEP, ICLN |
+| 行业 | 系数 | 公司 |
+|------|------|------|
+| 生态科技 | ×1.3 | ENPH, SEDG, FSLR, NEE, PLTR(ESG), TSLA(能源), BEP, ICLN |
+| 科技平台 | ×1.4 | AAPL, MSFT, GOOGL, META, AMZN |
 
 ## 分析路由
 
@@ -63,6 +62,7 @@ bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}
 | 文件 | 时机 |
 |------|------|
 | `docs/industry/eco_tech_deep.md` | E×V公式/Phase指南/监控指标/ESG框架 |
+| `docs/industry/tech_platform_deep.md` | TP01-06模块/网络效应/广告/云/监管/数据护城河 |
 | `docs/investment_thermometer_strategy.md` | Phase 0+4温度计 |
 | `docs/deep_dive_protocol.md` | Tier 3启动 |
 | `docs/checkpoint_protocol.md` | 恢复/检查点 |
