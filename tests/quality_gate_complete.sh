@@ -151,7 +151,7 @@ KS_ACTION=$(count_matches '动作\|行动\|清仓\|减仓' "$FILE" "-c")
 echo "       KS详细度: 触发条件=${KS_TRIGGER} 阈值=${KS_THRESHOLD} 动作=${KS_ACTION}"
 
 # === CG5: 可验证预测数量 ===
-VP_COUNT=$(grep -oE 'VP-[0-9]+|P-[A-Z]+-[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
+VP_COUNT=$(grep -oE 'VP-[0-9]+|VP[0-9]+|P-[A-Z]+-[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
 VP_COUNT="${VP_COUNT// /}"
 if [ "$VP_COUNT" -lt "$MIN_VP" ]; then
     echo -e "${RED}FAIL CG5: 可验证预测唯一数 ${VP_COUNT} < 要求 ${MIN_VP}${NC}"
