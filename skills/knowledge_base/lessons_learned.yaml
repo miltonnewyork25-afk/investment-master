@@ -1637,7 +1637,7 @@ semiconductor_cycle_framework:
   lesson_059:
     id: "LL_059"
     category: "risk_management"
-    lesson: "Kill Switch设计：ASML订单连续2季度<€4B时减仓50%设备股"
+    lesson: "Kill Switch设计：ASML订单连续2季度<€4B时设备股增长假设失效"
     kill_switches:
       immediate_triggers:
         - trigger: "ASML订单连续2季度<€4B"
