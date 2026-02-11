@@ -226,7 +226,7 @@ const tsmGeopoliticalRiskAnalysis = (tsmData) => {
     current_market_implied_risk: impliedRiskProbability, // 估计25-30%
     polymarket_probability: 0.13,  // 13%来自Polymarket
     divergence: impliedRiskProbability - 0.13,
-    arbitrage_signal: impliedRiskProbability > 0.20 ? 'BUY' : 'NEUTRAL'
+    divergence_signal: impliedRiskProbability > 0.20 ? 'FAVORABLE' : 'NEUTRAL'
   };
 };
 ```
@@ -386,13 +386,13 @@ const pmsiCalibration = {
     pmsi_neutral: { hit_rate: 0.54, avg_return: 0.03 }        // PMSI中性时胜率
   },
 
-  // 最优交易阈值
+  // 最优分析阈值
   optimal_thresholds: {
-    strong_buy: 40,      // 强买入信号
-    buy: 20,             // 买入信号
-    hold: [-20, 20],     // 持有区间
-    sell: -20,           // 卖出信号
-    strong_sell: -40     // 强卖出信号
+    strongly_favorable: 40,      // 强有利信号
+    favorable: 20,               // 有利信号
+    neutral: [-20, 20],          // 中性区间
+    unfavorable: -20,            // 不利信号
+    strongly_unfavorable: -40    // 强不利信号
   }
 };
 ```
@@ -415,14 +415,14 @@ const probabilityAlertSystem = {
         condition: 'china_taiwan_invasion_prob > 0.25',
         current_threshold: 0.25,
         alert_message: '🔴 台海冲突概率超过25%，建议立即评估TSM持仓',
-        recommended_action: 'REDUCE_POSITION_50%'
+        thesis_implication: '台海风险假设需重新评估'
       },
 
       ai_bubble_burst: {
         condition: 'ai_bubble_prob > 0.40',
         current_threshold: 0.40,
         alert_message: '🟠 AI泡沫破灭概率超过40%，AI受益股面临系统性风险',
-        recommended_action: 'HEDGE_AI_EXPOSURE'
+        thesis_implication: 'AI泡沫风险上升，论文假设承压'
       }
     },
 
@@ -507,36 +507,36 @@ const divergenceAlertSystem = {
 ```javascript
 const automaticStrategyAdjustment = (alertLevel, eventType, probabilityChange) => {
   const adjustmentRules = {
-    // 高风险事件自动对冲
-    high_risk_hedge: {
+    // 高风险事件自动标记
+    high_risk_flag: {
       trigger: 'level_1_alert AND geopolitical_risk',
       actions: [
-        'reduce_position_sizing_by_percentage(30)',
-        'activate_put_option_hedge',
-        'increase_cash_allocation',
+        'flag_thesis_risk_level(HIGH)',
+        'update_risk_assessment',
+        'reassess_thesis_assumptions',
         'notify_stakeholders_immediate'
       ]
     },
 
-    // 机会识别自动调整
-    opportunity_capture: {
+    // 机会识别自动标记
+    opportunity_flag: {
       trigger: 'divergence_score > 60 AND bullish_divergence',
       actions: [
-        'increase_position_sizing_by_percentage(15)',
-        'reduce_hedge_ratio',
-        'set_profit_taking_levels',
+        'flag_thesis_signal(POSITIVE)',
+        'update_opportunity_assessment',
+        'validate_thesis_assumptions',
         'monitor_liquidity_conditions'
       ]
     },
 
     // 概率趋势跟踪
-    probability_trend_following: {
+    probability_trend_tracking: {
       trigger: 'probability_trend_strength > 0.7',
       actions: [
-        'adjust_position_based_on_trend',
-        'update_stop_loss_levels',
-        'rebalance_portfolio_weights',
-        'schedule_position_review'
+        'update_thesis_based_on_trend',
+        'reassess_risk_parameters',
+        'review_thesis_assumptions',
+        'schedule_thesis_review'
       ]
     }
   };
@@ -751,14 +751,14 @@ const tsmAnalysisExample = {
   pmsi_score: +12.3,                  // 轻微看多
   pmsi_interpretation: 'MODERATELY_BULLISH',
 
-  // 投资建议
-  investment_recommendation: {
-    action: 'BUY',
+  // 投资评估
+  investment_assessment: {
+    assessment: 'FAVORABLE',
     confidence: 'HIGH',
     rationale: '地缘风险被市场过度定价，存在15pp概率套利机会',
-    position_sizing: '8-12%',
-    stop_loss: '台海冲突概率>25%时减仓50%',
-    profit_target: '概率收敛时获利了结'
+    thesis_strength: 'STRONG',
+    thesis_invalidation: '台海冲突概率>25%时投资论文需重评',
+    monitoring: '概率收敛时重新评估论文'
   }
 };
 ```
@@ -796,7 +796,7 @@ const tsmAnalysisExample = {
 ### 概率-价格背离分析
 **整体背离评分**: XX/100 ([高/中/低]套利机会)
 **主要背离源**: [具体分析]
-**建议策略**: [买入/卖出/观望]
+**概率评估**: [有利/不利/中性]
 ```
 
 ### 预测市场情绪指数
@@ -828,10 +828,10 @@ const tsmAnalysisExample = {
 **建议行动**: [具体投资行动]
 **置信度**: [HIGH/MEDIUM/LOW]
 
-#### 概率驱动的仓位管理
-**建议仓位**: X%-Y%
-**概率止损**: [具体概率阈值]
-**概率止盈**: [具体概率阈值]
+#### 概率驱动的论文管理
+**论文强度**: [HIGH/MEDIUM/LOW]
+**论文失效条件**: [具体概率阈值]
+**论文重评触发**: [具体概率阈值]
 
 #### 风险管理
 **主要风险**: [基于概率的风险识别]
