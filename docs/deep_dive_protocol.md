@@ -115,7 +115,7 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 | **3** | 战略分析 | 竞争优势+五引擎+PPDA+热点补丁 | 1次 | QG-07~09 |
 | **3.5** | AI深度评估 | 分部AI冲击矩阵+L×S定位+AI调整估值 | 与P3同会话 | QG-09.5 |
 | **4** | 对抗审查(**强制**) | 行为金融+事实核查+反证+维度回检 | 1次 | QG-10~11 |
-| **5** | 决策输出 | 评级+仓位+Kill Switch+行动清单 | 1次 | QG-12 |
+| **5** | 决策输出 | 评级+Kill Switch+可验证预测+CQ闭环 | 1次 | QG-12 |
 | **5.5** | **Complete组装(强制)** | **全Phase整合+Complete QG通过** | **Phase 5会话内** | **quality_gate_complete.sh** |
 
 ---
