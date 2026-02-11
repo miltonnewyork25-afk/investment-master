@@ -97,8 +97,8 @@ Agent 3 [维度C]   █████░░░░░ 50%  数据收集中...
 
 ## Agent架构指导原则 (v6.0)
 
-> 基于SOFI(金融)、COST(消费品)、META(科技平台)、TSM(半导体)四个完整项目的实证数据。
-> 以下为指导原则，非硬性规格。根据公司复杂度和会话context余量灵活调整。
+> 基于13个项目实证(SOFI/COST/META/TSM/PLTR/TSLA/GOOGL等)。v6.1: P5=3A铁律 + P4看空≥50%。
+> 以下为指导原则，非硬性规格。**例外: 原则6(P5=3Agent)是铁律，不可调整**。
 
 ### 原则1: 模块驱动Agent数量
 
@@ -142,14 +142,51 @@ Phase 4的看空分析Agent（Bear Case Advocate）必须:
 每批次Agent完成后、每Phase结束时，写入 `reports/{TICKER}/data/checkpoint.yaml`。
 详见 `docs/checkpoint_protocol.md`。
 
-### 实证参考（非硬性标准）
+### 原则6: Phase 5 = 3 Agent (铁律) — v6.1新增
 
-| 项目 | Agent总数 | 每Agent均产出 | Complete字符 | 会话数 | 最优实践 |
-|------|:---:|:---:|:---:|:---:|------|
-| SOFI(金融) | 16 | 11.2K | 163K+ | 5 | checkpoint恢复、3-5/Phase |
-| COST(消费品) | 27 | 5.5K | 150K | ~1 | Message Bus冲突管理 |
-| META(科技平台) | 25 | 13.8K | 317K | 6 | 专精Agent、角色希腊字母命名 |
-| TSM(半导体) | 8+线性 | Phase独占 | 142K | 6 | 宽预取Phase 0(8路并行) |
+**这是铁律，不是指导原则。** 基于META/SOFI/TSM三项目一致验证:
+
+```
+Phase 5固定3个Agent:
+  Agent A: 综合评分(10维度) + SOTP收敛(6方法) + 仓位建议(5档)
+  Agent B: Kill Switch注册表 + 12月投资日历 + 90天行动清单
+  Agent C: 可验证预测(VP) + CQ最终解答(5要素闭环)
+```
+
+**实证**:
+- META P5: 3A → ~100%目标达成
+- SOFI P5: 3A → ~100%目标达成
+- TSM P5: 3A → **205%目标达成**(69.7K, 最高效P5)
+
+**禁止**: P5使用4+Agent(会重叠) 或 2-Agent(会遗漏)。
+
+### 原则7: Phase 4看空Agent≥50% — v6.1新增
+
+Phase 4的Agent中至少50%必须是**纯看空Agent**(不含校准/数据核查):
+
+```
+推荐P4配置(4个Agent):
+  Agent A: 看空论点构建 (纯看空, 信息隔离)
+  Agent B: 行为金融偏差检查 + 黑天鹅/尾部风险 (看空)
+  Agent C: 数据核查 + 聪明钱验证 (中立校准)
+  Agent D: 维度回检 + 估值压力测试 (中立校准)
+  → 看空占比: 50% (A+B)
+```
+
+**依据**: TSM P4=16.5%(改善但仍<18%目标), 前5报告bear case仅10-13%。
+
+### 实证参考（v6.1更新 — 13项目）
+
+| 项目 | Agent总数 | 每Agent均产出 | Complete字符 | 最优实践 |
+|------|:---:|:---:|:---:|------|
+| TSLA(生态科技) | ~25+ | ~18K | 534K | OVM-7 PMX最复杂案例 |
+| GOOGL v3(生态科技) | ~25+ | ~18K | 528K | OVM TAM Ceiling杀手级信号 |
+| PLTR(生态科技) | ~25+ | ~16K | 457K | P0.5规划5A, 最大Agent团队 |
+| TSM v2(半导体) | ~29 | ~15K | 451K | P2:5A(148K), P5:3A(69.7K铁律) |
+| META(科技平台) | ~25 | ~14K | 317K | 专精Agent, 希腊字母命名 |
+| SOFI(金融) | ~19 | ~15K | 295K | checkpoint恢复, 3-5/Phase |
+| COST(消费品) | ~27 | ~10K | 282K | CI注册表+框架注册表首发 |
+| MU(半导体) | ~15 | ~12K | 179K | v26首尝试, CG1需扩展 |
 
 ---
 
