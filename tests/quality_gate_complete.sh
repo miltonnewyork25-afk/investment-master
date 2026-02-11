@@ -130,11 +130,19 @@ fi
 KS_UNIQUE=$(grep -oE 'KS-[A-Z]+-[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
 KS_UNIQUE="${KS_UNIQUE// /}"
 if [ "$KS_UNIQUE" -lt "$MIN_KS" ]; then
-    # 备选: KS-数字格式
+    # 备选: KS-数字格式 (如 KS-1, KS-14)
     KS_UNIQUE2=$(grep -oE 'KS-[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
     KS_UNIQUE2="${KS_UNIQUE2// /}"
     if [ "$KS_UNIQUE2" -gt "$KS_UNIQUE" ]; then
         KS_UNIQUE=$KS_UNIQUE2
+    fi
+fi
+if [ "$KS_UNIQUE" -lt "$MIN_KS" ]; then
+    # 备选: KS数字格式无连字符 (如 KS1, KS14) — v9.0报告使用此格式
+    KS_UNIQUE3=$(grep -oE 'KS[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
+    KS_UNIQUE3="${KS_UNIQUE3// /}"
+    if [ "$KS_UNIQUE3" -gt "$KS_UNIQUE" ]; then
+        KS_UNIQUE=$KS_UNIQUE3
     fi
 fi
 if [ "$KS_UNIQUE" -lt "$MIN_KS" ]; then
