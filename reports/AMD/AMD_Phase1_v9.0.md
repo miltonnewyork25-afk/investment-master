@@ -552,7 +552,7 @@ graph LR
 从已完成的MU v1.0研究中获得的关键交叉验证信号:
 
 - **存储周期位置**: P3顶峰期初段，75%置信度，6-9个月见顶。[硬数据: MU v1.0 Complete shared_context]
-- **DRAM价格**: +171% YoY暴涨中，但即将见顶。[硬数据: MU v1.0 shared_context]
+- **DRAM价格**: 现货价YoY峰值+171%(2025 Q3)，FY2025均值约+120%，暴涨中但即将见顶。[硬数据: MU v1.0 shared_context, P4回流F03时点标注]
 - **HBM价格含义**: 如果DRAM整体见顶，HBM价格短期内仍有支撑(结构性需求)，但中期(2027+)可能随产能释放而松动。[合理推断: HBM需求受AI CapEx驱动，与传统DRAM周期部分脱钩但非完全独立]
 - **Memory CapEx扩张**: DRAM CapEx $61.3B(+14%)，三寡头同步扩产。[硬数据: LRCX shared_context] 这意味着2027年后HBM4产能将大幅释放，AMD的供应约束可能在2027年显著缓解。[合理推断: CapEx扩张→产能释放的典型周期为12-18个月]
 
