@@ -43,13 +43,28 @@
 
 ---
 
-## 铁律速查 (A-F)
+## 铁律速查 (A-G)
+
+**第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(新报告适用，历史报告不回溯)
 
 **基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
 **健康检查**: 会话启动时运行 `bash tests/framework_health_check.sh`
+
+---
+
+## 第零律: 发布合规 (优先级最高)
+
+> **适用范围**: 所有**新撰写**的报告。已完成的历史报告不回溯修改。
+
+1. **台海中性表述** — 禁止"入侵台湾/invasion" → "台海冲突/台海危机/cross-strait tension"
+2. **回流无痕化** — P4纠错覆盖原文，不保留"P4回流"标注
+3. **报告连贯性** — Complete = 一次性撰写的连贯文档
+4. **Polymarket例外** — 引号内市场名称保留原文
+
+**转换表**: `docs/deep_dive_protocol.md` "发布合规规则"
 
 ---
 
