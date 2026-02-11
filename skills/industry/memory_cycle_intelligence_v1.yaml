@@ -442,7 +442,7 @@ cycle_thermometer:
         - "价格持续下跌"
         - "大额库存减值"
         - "CapEx 大幅削减"
-      action: "逆周期建仓"
+      action: "周期底部信号出现"
 
     P2_early_recovery:
       temperature_range: "20-40"
@@ -450,7 +450,7 @@ cycle_thermometer:
         - "价格止跌企稳"
         - "库存天数下降"
         - "设备订单回暖"
-      action: "加仓"
+      action: "周期信号转积极"
 
     P3_recovery:
       temperature_range: "40-60"
@@ -458,7 +458,7 @@ cycle_thermometer:
         - "价格上涨"
         - "Fab 利用率回升至 85%+"
         - "CapEx 指引上修"
-      action: "持有"
+      action: "周期信号持续改善"
 
     P4_boom:
       temperature_range: "60-80"
@@ -467,7 +467,7 @@ cycle_thermometer:
         - "价格大幅上涨"
         - "Fab 利用率 >95%"
         - "设备交期延长"
-      action: "设止盈，准备减仓"
+      action: "周期信号开始恶化"
 
     P5_peak:
       temperature_range: "80-100"
@@ -476,7 +476,7 @@ cycle_thermometer:
         - "库存开始累积"
         - "CapEx 达峰值"
         - "新产能即将释放"
-      action: "逐步减仓，等待下一周期"
+      action: "下行周期确认，关注下一轮底部信号"
 
 # ============================================================
 # 信号传导时间表
@@ -512,37 +512,37 @@ kill_switches:
       layer: "Layer -1"
       trigger: "AI CapEx 指引下调 >20%"
       lead_time: "18-24 个月"
-      action: "审视整体持仓，准备对冲"
+      action: "长期需求假设削弱，周期拐点预警"
 
     - id: "KS_L0_001"
       layer: "Layer 0"
       trigger: "设备订单增速转负"
       lead_time: "12-18 个月"
-      action: "减少 Memory 敞口"
+      action: "供给周期转向警告"
 
     - id: "KS_L05_001"
       layer: "Layer 0.5"
       trigger: "Wafer Starts 环比下降 >10%"
       lead_time: "9-15 个月"
-      action: "密切监测，准备减仓"
+      action: "警告信号出现，投资论文假设承压"
 
     - id: "KS_L05_002"
       layer: "Layer 0.5"
       trigger: "Fab 利用率降至 <80%"
       lead_time: "6-12 个月"
-      action: "减仓 50%"
+      action: "核心假设被否定"
 
     - id: "KS_L2_001"
       layer: "Layer 2"
       trigger: "渠道库存 >60 天"
       lead_time: "3-6 个月"
-      action: "设止损，准备退出"
+      action: "投资论文严重削弱"
 
     - id: "KS_L2_002"
       layer: "Layer 2"
       trigger: "HBM 价格单季下跌 >15%"
       lead_time: "即时"
-      action: "立即减仓，重新评估"
+      action: "投资论文失效，需根据新现实重评"
 
 # ============================================================
 # 输出模板
@@ -572,10 +572,10 @@ output_template: |
   | KS_L-1_001 | AI CapEx 下调 >20% | +XX% | 🟢 |
   | ... | ... | ... | ... |
 
-  ### 建议行动
+  ### 周期评估
 
   - 当前位置: [周期阶段描述]
-  - 建议: [持有/加仓/减仓/观望]
+  - 周期评估: [有利/中性/不利/极端不利]
   - 下一关注点: [关键指标及时间]
 
 # ============================================================

@@ -11,7 +11,7 @@
 
 ---
 
-## 三层分析路由
+## 分析路由
 
 **默认触发 Tier 1**，除非用户明确要求更高层级。
 
@@ -20,6 +20,12 @@
 | **Tier 1** | "看看/怎么样" | 10-15分钟 | ~5K | `.claude/skills/quick-company-scan/SKILL.md` |
 | **Tier 2** | "分析/研究" | 2-3小时 | ~40K | `.claude/skills/standard-analysis/SKILL.md` |
 | **Tier 3** | "深度/全面" | 多会话 | ≥85K×系数 | `docs/deep_dive_protocol.md` |
+
+**Tier 3方法论路由**: Phase 0完成后评估"可能性宽度"(5项打分，0-10)：
+- **0-3分(窄)**: 传统框架 — SOTP/DCF → 目标价+评级
+- **4-6分(中)**: 混合模式 — 传统估值 + 可能性附录
+- **7-10分(宽)**: 发现系统 — 不给目标价，映射可能性空间+开放问题+转折点
+- **详见**: `docs/paradigm_research_framework.md`
 
 ---
 
@@ -98,6 +104,7 @@
 | **温度计算** | `docs/investment_thermometer_strategy.md` |
 | **行业增强** | `docs/industry/{eco_tech,tech_platform}_deep.md` (本worktree主要) |
 | **期权估值** | `docs/optionality_valuation.md` (TSLA/PLTR/GOOGL/META等高期权公司) |
+| **发现系统** | `docs/paradigm_research_framework.md` (可能性宽度≥7分: TSLA/PLTR等) |
 | **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |
