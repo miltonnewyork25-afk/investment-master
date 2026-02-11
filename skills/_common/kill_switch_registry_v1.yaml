@@ -52,7 +52,7 @@ classification:
       requires_human_review: true
 
     HIGH:
-      description: "触发立即减仓/降级"
+      description: "触发论文降级/重评估"
       action: "DEGRADE_OR_FAIL"
       requires_human_review: false
 
@@ -78,7 +78,7 @@ investment_kill_switches:
       monitoring_metric: "quarterly_capex_guidance"
       current_status: "GREEN"
       action_on_trigger:
-        immediate: "减仓AI全栈30%"
+        immediate: "AI全栈投资假设失效"
         follow_up: "重新评估AI周期定位"
       rationale: "需求端信心动摇，链条传导风险"
       source: "ai_roi_verification_framework_v1.yaml"
@@ -89,7 +89,7 @@ investment_kill_switches:
       monitoring_metric: "msft_ai_revenue_yoy"
       current_status: "GREEN"
       action_on_trigger:
-        immediate: "减仓应用层50%"
+        immediate: "应用层增长假设被否定"
         follow_up: "验证其他厂商AI收入"
       rationale: "ROI验证失败的早期信号"
       source: "ai_roi_verification_framework_v1.yaml"
@@ -100,7 +100,7 @@ investment_kill_switches:
       monitoring_metric: "enterprise_ai_budget_survey"
       current_status: "GREEN"
       action_on_trigger:
-        immediate: "减仓企业AI相关股30%"
+        immediate: "企业AI投资论文受损"
         follow_up: "分析哪些用例失败"
       rationale: "企业ROI验证失败"
       source: "ai_roi_verification_framework_v1.yaml"
@@ -127,8 +127,8 @@ investment_kill_switches:
       monitoring_metric: "cycle_temperature_gauge"
       current_status: "GREEN"
       action_on_trigger:
-        when_high: "减仓周期敏感股50%"
-        when_low: "评估逆向加仓机会"
+        when_high: "周期敏感假设需重新评估"
+        when_low: "可能出现逆向价值信号"
       rationale: "周期极端点通常是转折点"
       source: "cycle_temperature_gauge_v1.yaml"
 
@@ -138,7 +138,7 @@ investment_kill_switches:
       monitoring_metric: "leading_indicator_composite"
       current_status: "GREEN"
       action_on_trigger:
-        immediate: "提高警惕，准备减仓"
+        immediate: "论文可靠性下降，需重新评估"
         follow_up: "确认背离方向"
       rationale: "领先指标通常6个月领先价格"
       source: "cycle_analysis framework"
@@ -154,7 +154,7 @@ investment_kill_switches:
       monitoring_metric: "earnings_guidance_hit_rate"
       current_status: "N/A"
       action_on_trigger:
-        immediate: "清仓该公司"
+        immediate: "投资论文完全失效"
         follow_up: "6个月后重新评估"
       rationale: "管理层失去信任=投资失去基础"
       source: "company_analysis_framework"
@@ -165,7 +165,7 @@ investment_kill_switches:
       monitoring_metric: "moat_score_quarterly"
       current_status: "N/A"
       action_on_trigger:
-        immediate: "减仓50%"
+        immediate: "核心假设被否定"
         follow_up: "评估是否永久性损害"
       rationale: "护城河是长期价值的基础"
       source: "moat_analysis_framework"
@@ -176,7 +176,7 @@ investment_kill_switches:
       monitoring_metric: "financial_health_scores"
       current_status: "N/A"
       action_on_trigger:
-        immediate: "减仓至观察仓位"
+        immediate: "投资论文严重削弱"
         follow_up: "监控流动性风险"
       rationale: "财务恶化可能导致永久性资本损失"
       source: "fallen_angel_framework"
@@ -448,7 +448,7 @@ usage_guide:
 
     - mistake: "行动不具体"
       example: "谨慎对待"
-      fix: "减仓50%并设置止损"
+      fix: "核心假设被否定，论文需重建"
 
     - mistake: "没有监控机制"
       example: "只定义不监控"
