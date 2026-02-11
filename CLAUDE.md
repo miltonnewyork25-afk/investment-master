@@ -43,7 +43,23 @@
 
 ---
 
-## 铁律速查 (A-F)
+## 公司级框架路由 (v9.0 × 发现系统)
+
+> v9.0扬长避短对**所有**公司生效。发现系统是宽概率公司额外的[深挖]维度。
+
+| 公司 | 宽度 | 框架 | Phase 5产出 |
+|------|-----|------|-----------|
+| TSLA | 9(宽) | v9.0 + Discovery全量 | 可能性映射+Reverse DCF+TS |
+| PLTR | 8(宽) | v9.0 + Discovery全量 | 产品边界+天花板+Reverse DCF |
+| GOOGL | 6(中) | v9.0 + Discovery部分 | v9.0标准+转型附录 |
+| META | 5(中) | v9.0标准 | v9.0标准 |
+| ENPH/FSLR | 2(窄) | v9.0标准 | Reverse DCF+KS+TS |
+
+**映射可能性 = [深挖区]** | **预测具体数字 = [诚实区]** — 详见 `docs/paradigm_research_framework.md` §9
+
+---
+
+## 铁律速查 (A-G)
 
 **基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)**
 
