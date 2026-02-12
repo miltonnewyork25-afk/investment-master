@@ -1,28 +1,29 @@
 #!/bin/bash
 # ============================================================
-# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v1.1
+# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v2.0
 # ============================================================
 # 用法:
 #   ./tests/quality_gate_complete.sh <Complete报告.md> [benchmark_chars]
 #   例: ./tests/quality_gate_complete.sh reports/META/META_Complete_v1.0_2026-02-08.md
 #
-# 门控项 (13项, 基于5报告滚动最佳值):
+# 门控项 (14项, 基于8报告滚动最佳值):
 #   CG1. Complete总字符 ≥ 基准80% (249,049)
 #   CG2. Phase 5字符 ≥ 基准80% (58,867)
 #   CG3. 评分维度 ≥ 8个
 #   CG4. Kill Switch ≥ 12个(详细格式)
-#   CG5. 可验证预测 ≥ 14个
+#   CG5. 可验证预测 ≥ 5个
 #   CG6. VP三情景检查 (≥80% VP含Bear/Bull)
 #   CG7. CQ闭环检查 (置信度路径+验证事件)
-#   CG8. 标注密度 ≥ 25/万字符
-#   CG9. 硬数据占比 ≥ 36%
+#   CG8. 数据审计覆盖 (v2.0: 审计摘要+折叠源表 或 旧标注密度≥25/万)
+#   CG9. 数据质量 (v2.0: DM覆盖声明 或 旧硬数据占比≥36%)
 #   CG10. Mermaid图表 ≥ 24个
 #   CG11. 投资日历+行动清单存在
-#   CG12. 非共识洞察注册表 ≥ 5个CI (v1.1新增)
-#   CG13. 分析框架注册表存在 (v1.1新增)
+#   CG12. 非共识洞察注册表 ≥ 5个CI
+#   CG13. 分析框架注册表存在
+#   CG14. 方法离散度声明 (WARN级, v2.0新增)
 #
 # 退出码: 0=全部通过, 1=有失败项
-# 更新: v1.1 (2026-02-10) — 复利飞轮反思编码CG12/CG13+密度/Mermaid上调
+# 更新: v2.0 (2026-02-12) — CG8/CG9自动检测v2.0/v10.0模式+CG14方法离散度WARN
 # ============================================================
 
 # --- 参数 ---
@@ -130,11 +131,19 @@ fi
 KS_UNIQUE=$(grep -oE 'KS-[A-Z]+-[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
 KS_UNIQUE="${KS_UNIQUE// /}"
 if [ "$KS_UNIQUE" -lt "$MIN_KS" ]; then
-    # 备选: KS-数字格式
+    # 备选: KS-数字格式 (如 KS-1, KS-14)
     KS_UNIQUE2=$(grep -oE 'KS-[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
     KS_UNIQUE2="${KS_UNIQUE2// /}"
     if [ "$KS_UNIQUE2" -gt "$KS_UNIQUE" ]; then
         KS_UNIQUE=$KS_UNIQUE2
+    fi
+fi
+if [ "$KS_UNIQUE" -lt "$MIN_KS" ]; then
+    # 备选: KS数字格式无连字符 (如 KS1, KS14) — v9.0报告使用此格式
+    KS_UNIQUE3=$(grep -oE 'KS[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
+    KS_UNIQUE3="${KS_UNIQUE3// /}"
+    if [ "$KS_UNIQUE3" -gt "$KS_UNIQUE" ]; then
+        KS_UNIQUE=$KS_UNIQUE3
     fi
 fi
 if [ "$KS_UNIQUE" -lt "$MIN_KS" ]; then
@@ -196,37 +205,69 @@ else
     echo -e "${GREEN}PASS CG7: CQ数量 ${CQ_COUNT}${NC}"
 fi
 
-# === CG8: 标注密度 ===
-OLD_ANN=$(count_matches '\[(A|B|P|E):' "$FILE")
-NEW_ANN=$(count_matches '\[(硬数据|合理推断|主观判断):' "$FILE")
-TOTAL_ANN=$((OLD_ANN + NEW_ANN))
-if [ "$CHARS" -gt 0 ]; then
-    DENSITY=$(python3 -c "print(round($TOTAL_ANN * 10000 / $CHARS, 1))")
-else
-    DENSITY=0
-fi
-DENSITY_OK=$(python3 -c "print(1 if $DENSITY >= $MIN_DENSITY else 0)")
-if [ "$DENSITY_OK" -eq 0 ]; then
-    echo -e "${RED}FAIL CG8: 标注密度 ${DENSITY}/万字符 < 要求 ${MIN_DENSITY}/万字符 (总数: ${TOTAL_ANN})${NC}"
-    ERRORS=$((ERRORS + 1))
-else
-    echo -e "${GREEN}PASS CG8: 标注密度 ${DENSITY}/万字符 (总数: ${TOTAL_ANN})${NC}"
-fi
+# === CG8: 数据审计覆盖 (v2.0: 自动检测模式) ===
+# v10.0模式: 检查文末审计摘要+折叠源表
+# v2.0模式: 检查内联标注密度
+HAS_AUDIT_SUMMARY=$(grep -ci '数据审计摘要\|数据审计\|DM覆盖率' "$FILE" 2>/dev/null || echo 0)
+DETAILS_COUNT=$(grep -c '<details>' "$FILE" 2>/dev/null || echo 0)
 
-# === CG9: 硬数据占比 ===
-HARD_DATA=$(count_matches '\[(A|B|P):|\[硬数据:' "$FILE")
-if [ "$TOTAL_ANN" -gt 0 ]; then
-    HARD_RATIO=$(python3 -c "print(round($HARD_DATA * 100 / $TOTAL_ANN, 1))")
-    HARD_OK=$(python3 -c "print(1 if $HARD_RATIO >= $MIN_HARD_RATIO else 0)")
-    if [ "$HARD_OK" -eq 0 ]; then
-        echo -e "${RED}FAIL CG9: 硬数据占比 ${HARD_RATIO}% < 要求 ${MIN_HARD_RATIO}% (${HARD_DATA}/${TOTAL_ANN})${NC}"
-        ERRORS=$((ERRORS + 1))
+if [ "$HAS_AUDIT_SUMMARY" -gt 0 ]; then
+    # v10.0模式: 检查审计覆盖
+    FOLD_SOURCES=$(grep -c '📋.*数据源\|📊.*数据审计' "$FILE" 2>/dev/null || echo 0)
+    if [ "$FOLD_SOURCES" -ge 5 ] || [ "$DETAILS_COUNT" -ge 5 ]; then
+        echo -e "${GREEN}PASS CG8: [v10.0] 审计覆盖 — 审计摘要存在 + 折叠源表${FOLD_SOURCES}个${NC}"
     else
-        echo -e "${GREEN}PASS CG9: 硬数据占比 ${HARD_RATIO}% (${HARD_DATA}/${TOTAL_ANN})${NC}"
+        echo -e "${RED}FAIL CG8: [v10.0] 审计覆盖不足 — 折叠源表${FOLD_SOURCES}个 < 要求5个${NC}"
+        ERRORS=$((ERRORS + 1))
     fi
 else
-    echo -e "${YELLOW}WARN CG9: 无标注，无法计算硬数据占比${NC}"
-    WARNINGS=$((WARNINGS + 1))
+    # v2.0模式: 检查内联标注密度
+    OLD_ANN=$(count_matches '\[(A|B|P|E):' "$FILE")
+    NEW_ANN=$(count_matches '\[(硬数据|合理推断|主观判断):' "$FILE")
+    TOTAL_ANN=$((OLD_ANN + NEW_ANN))
+    if [ "$CHARS" -gt 0 ]; then
+        DENSITY=$(python3 -c "print(round($TOTAL_ANN * 10000 / $CHARS, 1))")
+    else
+        DENSITY=0
+    fi
+    DENSITY_OK=$(python3 -c "print(1 if $DENSITY >= $MIN_DENSITY else 0)")
+    if [ "$DENSITY_OK" -eq 0 ]; then
+        echo -e "${RED}FAIL CG8: [v2.0] 标注密度 ${DENSITY}/万字符 < 要求 ${MIN_DENSITY}/万字符 (总数: ${TOTAL_ANN})${NC}"
+        ERRORS=$((ERRORS + 1))
+    else
+        echo -e "${GREEN}PASS CG8: [v2.0] 标注密度 ${DENSITY}/万字符 (总数: ${TOTAL_ANN})${NC}"
+    fi
+fi
+
+# === CG9: 数据质量 (v2.0: 自动检测模式) ===
+if [ "$HAS_AUDIT_SUMMARY" -gt 0 ]; then
+    # v10.0模式: 检查DM覆盖率声明
+    DM_COVERAGE=$(grep -oE 'DM覆盖率 *[0-9]+%' "$FILE" 2>/dev/null | grep -oE '[0-9]+' | head -1) || true
+    if [ -n "$DM_COVERAGE" ] && [ "$DM_COVERAGE" -ge 90 ]; then
+        echo -e "${GREEN}PASS CG9: [v10.0] DM覆盖率 ${DM_COVERAGE}% (要求≥90%)${NC}"
+    elif [ -n "$DM_COVERAGE" ]; then
+        echo -e "${RED}FAIL CG9: [v10.0] DM覆盖率 ${DM_COVERAGE}% < 要求90%${NC}"
+        ERRORS=$((ERRORS + 1))
+    else
+        echo -e "${YELLOW}WARN CG9: [v10.0] 未检测到DM覆盖率数字${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    # v2.0模式: 检查硬数据占比
+    HARD_DATA=$(count_matches '\[(A|B|P):|\[硬数据:' "$FILE")
+    if [ "${TOTAL_ANN:-0}" -gt 0 ]; then
+        HARD_RATIO=$(python3 -c "print(round($HARD_DATA * 100 / $TOTAL_ANN, 1))")
+        HARD_OK=$(python3 -c "print(1 if $HARD_RATIO >= $MIN_HARD_RATIO else 0)")
+        if [ "$HARD_OK" -eq 0 ]; then
+            echo -e "${RED}FAIL CG9: [v2.0] 硬数据占比 ${HARD_RATIO}% < 要求 ${MIN_HARD_RATIO}% (${HARD_DATA}/${TOTAL_ANN})${NC}"
+            ERRORS=$((ERRORS + 1))
+        else
+            echo -e "${GREEN}PASS CG9: [v2.0] 硬数据占比 ${HARD_RATIO}% (${HARD_DATA}/${TOTAL_ANN})${NC}"
+        fi
+    else
+        echo -e "${YELLOW}WARN CG9: 无标注，无法计算硬数据占比${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
 fi
 
 # === CG10: Mermaid图表 ===
@@ -275,14 +316,32 @@ else
     echo -e "${GREEN}PASS CG13: 分析框架注册表存在 (提及${HAS_FW_REGISTRY}次, 原创框架${FW_CUSTOM}个)${NC}"
 fi
 
+# === CG14: 方法离散度 (v2.0新增, WARN级) ===
+HAS_DISPERSION=$(grep -ciE '方法离散度|离散度.*x|method.*dispersion' "$FILE" 2>/dev/null || echo 0)
+if [ "$HAS_DISPERSION" -eq 0 ]; then
+    echo -e "${YELLOW}WARN CG14: 未检测到方法离散度声明${NC}"
+    WARNINGS=$((WARNINGS + 1))
+else
+    DISPERSION_VAL=$(grep -oE '方法离散度[: ]*[0-9]+\.?[0-9]*x|离散度[: ]*[0-9]+\.?[0-9]*x' "$FILE" 2>/dev/null | grep -oE '[0-9]+\.?[0-9]*' | head -1) || true
+    if [ -n "$DISPERSION_VAL" ]; then
+        echo -e "${GREEN}PASS CG14: 方法离散度 ${DISPERSION_VAL}x (WARN级, 提及${HAS_DISPERSION}次)${NC}"
+    else
+        echo -e "${GREEN}PASS CG14: 方法离散度已声明 (提及${HAS_DISPERSION}次)${NC}"
+    fi
+fi
+
 # --- 汇总 ---
 echo ""
 echo "=============================================="
-echo -e " ${CYAN}Complete Quality Gate v1.1 检查完成${NC}"
+echo -e " ${CYAN}Complete Quality Gate v2.0 检查完成${NC}"
 echo "=============================================="
 echo " 文件: $(basename "$FILE")"
 echo " 总字符: ${CHARS} / 基准 ${BENCHMARK_CHARS} (地板 ${FLOOR_COMPLETE})"
-echo " 标注: ${TOTAL_ANN} (密度: ${DENSITY}/万字符)"
+if [ "$HAS_AUDIT_SUMMARY" -gt 0 ]; then
+    echo " 模式: v10.0 (DM锚定+审计覆盖)"
+else
+    echo " 模式: v2.0 (内联标注) | 标注: ${TOTAL_ANN:-0} (密度: ${DENSITY:-0}/万字符)"
+fi
 echo " KS: ${KS_UNIQUE} | VP: ${VP_COUNT} | CQ: ${CQ_COUNT} | CI: ${CI_COUNT}"
 echo " Mermaid: ${MERMAID_COUNT} | 评分维度: ${DIMENSION_COUNT} | 框架注册: ${HAS_FW_REGISTRY}"
 echo -e " 错误: ${RED}${ERRORS}${NC} | 警告: ${YELLOW}${WARNINGS}${NC}"

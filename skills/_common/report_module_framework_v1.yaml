@@ -1,5 +1,5 @@
 # =============================================================================
-# 投资研究报告模块化框架 v1.0
+# 投资研究报告模块化框架 v2.0
 # Report Module Framework - "乐高模块"设计
 # =============================================================================
 #
@@ -11,48 +11,42 @@
 #   2. 通用模块适用所有行业
 #   3. 行业模块按需组合
 #   4. 输出格式网站友好（无代码块、无特殊符号）
-#   5. 数据来源统一放在文末
+#   5. v2.0: DM锚点系统 — 正文干净叙事，数据引用通过DM锚点
+#   6. v2.0: 零目标价 | 零数字评分 | 零仓位建议 (v9.0铁律)
 # =============================================================================
 
-version: "1.0"
+version: "2.0"
 created: "2026-01-29"
+updated: "2026-02-12"
 author: "投资研究Agent v11.0"
+framework_compatibility: "v9.0+ / v10.0"
 
 # =============================================================================
-# 第一部分：评级体系（免责设计）
+# 第一部分：评级体系（v9.0四档定性）
 # =============================================================================
 
 rating_system:
 
   description: |
-    采用"关注"系列用语，避免直接投资建议
-    所有评级均附免责声明
+    v9.0四档定性评级。零数字评分，零仓位建议。
+    评级反映研究结论的"关注程度"而非投资建议。
 
   levels:
-    - level: 5
-      name: "强烈关注"
-      description: "投资价值显著，建议深入研究和持续跟踪"
-      color: "#00AA00"  # 深绿
+    - name: "深度关注"
+      description: "多个核心假设具有高置信度支撑,投资论文清晰"
+      color: "#00AA00"
 
-    - level: 4
-      name: "关注"
-      description: "具有投资潜力，值得纳入观察名单"
-      color: "#66CC66"  # 浅绿
+    - name: "关注"
+      description: "核心假设有中等置信度支撑,值得持续跟踪"
+      color: "#66CC66"
 
-    - level: 3
-      name: "观察"
-      description: "等待更好时机或更多信息确认"
-      color: "#FFAA00"  # 橙色
+    - name: "中性关注"
+      description: "核心假设置信度混合,需更多数据确认"
+      color: "#FFAA00"
 
-    - level: 2
-      name: "谨慎"
-      description: "风险上升，需重新评估持仓逻辑"
-      color: "#FF6666"  # 浅红
-
-    - level: 1
-      name: "规避"
-      description: "重大风险存在，不建议介入"
-      color: "#CC0000"  # 深红
+    - name: "审慎关注"
+      description: "多个核心假设的置信度较低或面临结构性不确定"
+      color: "#FF6666"
 
   disclaimer: |
     免责声明：以上分析仅为研究观点分享，不构成任何投资建议。
@@ -99,32 +93,36 @@ universal_modules:
   M02_investment_rating:
     id: "M02"
     name: "投资评级卡"
-    description: "一眼看清关注等级和目标价"
+    description: "一眼看清关注等级和条件估值"
     format: "评级卡片"
     required: true
 
     content:
       - field: "关注等级"
         type: "rating"
-        options: ["强烈关注", "关注", "观察", "谨慎", "规避"]
-
-      - field: "目标价区间"
-        type: "price_range"
-        example: "210-230美元"
+        options: ["深度关注", "关注", "中性关注", "审慎关注"]
 
       - field: "当前股价"
         type: "price"
 
-      - field: "潜在空间"
-        type: "percentage"
+      - field: "条件估值范围"
+        type: "text"
+        description: "非目标价，附带前提条件的估值区间"
+        example: "$145-165(前提: CSBG持续增长+先进制程扩产如期)"
+
+      - field: "Reverse DCF价格含义"
+        type: "text"
+        description: "当前价格隐含的增长假设"
+        example: "当前$220隐含未来5年收入CAGR 18%，高于历史均值12%"
 
       - field: "适合人群"
         type: "text"
         example: "愿意承受周期波动的长期投资者"
 
-      - field: "建仓建议"
+      - field: "CQ加权置信度"
         type: "text"
-        example: "等待回调至200-210美元区间"
+        description: "核心问题加权置信度"
+        example: "47.1%(10报告中位)"
 
   M03_financial_health:
     id: "M03"
@@ -184,44 +182,48 @@ universal_modules:
           vs_wacc: true  # 与资本成本对比
 
     dupont_display:
-      format: "ROE = 净利率 × 资产周转率 × 权益乘数"
+      format: "ROE = 净利率 x 资产周转率 x 权益乘数"
       show_each_component: true
 
   M05_moat_assessment:
     id: "M05"
     name: "护城河评估"
     description: "评估公司竞争优势的强度和持久性"
-    format: "评分卡+说明"
+    format: "定性评估卡+说明"
     required: true
 
     content:
-      overall_score:
-        range: "0-100"
-        levels:
-          - "90-100: 极强护城河"
-          - "75-89: 强护城河"
-          - "60-74: 中等护城河"
-          - "40-59: 弱护城河"
-          - "0-39: 无明显护城河"
+      overall_assessment:
+        scale: "强 / 中 / 弱"
+        confidence: "高 / 中 / 低"
+        description: |
+          v9.0定性评估，不使用数字评分。
+          评估基于护城河类型的数量、深度和持久性综合判断。
 
       moat_types:
         - type: "技术壁垒"
           indicator: "研发投入、专利数、技术领先代差"
+          assessment: "强/中/弱"
 
         - type: "转换成本"
           indicator: "客户流失率、NRR、合同期限"
+          assessment: "强/中/弱"
 
         - type: "网络效应"
           indicator: "用户增速、平台活跃度"
+          assessment: "强/中/弱"
 
         - type: "规模经济"
           indicator: "市场份额、成本优势"
+          assessment: "强/中/弱"
 
         - type: "品牌溢价"
           indicator: "定价权、品牌认知度"
+          assessment: "强/中/弱"
 
         - type: "监管壁垒"
           indicator: "牌照、准入门槛"
+          assessment: "强/中/弱"
 
       durability:
         field: "持久性评估"
@@ -255,7 +257,7 @@ universal_modules:
 
       flywheel:
         description: "核心业务飞轮"
-        format: "A → B → C → A 循环说明"
+        format: "A - B - C - A 循环说明"
 
   M07_management:
     id: "M07"
@@ -284,7 +286,7 @@ universal_modules:
   M08_valuation:
     id: "M08"
     name: "估值分析"
-    description: "判断当前价格是否合理"
+    description: "判断当前价格隐含的假设是否合理"
     format: "对比图表"
     required: true
 
@@ -307,17 +309,25 @@ universal_modules:
         - type: "隐含假设"
           description: "当前股价隐含的增长预期"
 
-      target_price:
-        method: "SOTP概率加权"
-        scenarios:
-          - scenario: "悲观"
-            probability: "20-25%"
+      reverse_dcf:
+        description: "Reverse DCF价格含义 — Phase 5核心输出"
+        content:
+          - "当前价格隐含的收入CAGR"
+          - "当前价格隐含的利润率假设"
+          - "当前价格隐含的终端倍数"
+          - "隐含假设 vs 历史/行业参考的偏离度"
+          - "价格含义叙事(而非目标价)"
 
-          - scenario: "基准"
-            probability: "50-55%"
-
-          - scenario: "乐观"
-            probability: "20-25%"
+      method_convergence:
+        description: "多方法估值收敛分析"
+        methods:
+          - "SOTP概率加权"
+          - "Reverse DCF"
+          - "可比公司"
+          - "历史倍数"
+          - "PEG调整"
+          - "FCF Yield"
+        output: "方法离散度(最高/最低比值) — 离散度越大,不确定性越高"
 
   M09_risk_matrix:
     id: "M09"
@@ -381,12 +391,10 @@ universal_modules:
       bull_case:
         - "多头核心论点"
         - "代表分析师/机构"
-        - "目标价"
 
       bear_case:
         - "空头核心论点"
         - "代表分析师/机构"
-        - "目标价"
 
       our_view:
         - "我们的判断"
@@ -405,14 +413,157 @@ universal_modules:
         format:
           - "触发条件"
           - "当前状态"
-          - "建议行动"
+          - "论文含义"
           - "检查频率"
 
       example:
         - condition: "ASML订单连续2季度下降超过20%"
           status: "正常"
-          action: "减少仓位50%"
+          thesis_implication: "增长假设失效,需重估条件估值区间下沿"
           frequency: "每季度"
+
+  M13_ai_impact_matrix:
+    id: "M13"
+    name: "分部级AI冲击矩阵"
+    description: "评估AI浪潮对每个业务分部的影响：受益还是被颠覆"
+    format: "矩阵表格"
+    required: true
+
+    content:
+      per_segment_assessment:
+        dimensions:
+          - "收入冲击(-5~+5)"
+          - "成本冲击(-5~+5)"
+          - "护城河变化(强化/中性/削弱)"
+          - "竞争格局变化(利好/中性/利空)"
+          - "时间窗口(1-3yr/3-5yr/5-10yr)"
+
+      ai_role_classification:
+        - type: "AI放大器"
+          description: "AI强化现有业务竞争优势"
+        - type: "AI赋能者"
+          description: "AI创造全新收入流或业务线"
+        - type: "AI中性"
+          description: "AI对业务影响有限"
+        - type: "AI易受冲击"
+          description: "AI使竞争者更容易进入或替代"
+        - type: "AI被颠覆"
+          description: "AI从根本上威胁业务模式"
+
+      aggregate:
+        formula: "概率加权AI净分 = Sum(分部AI净分 x 收入权重 x 实现概率)"
+
+    methodology: "详见 docs/ai_depth_assessment.md"
+
+  M14_market_attention_radar:
+    id: "M14"
+    name: "市场注意力雷达"
+    description: "分析前自动发现市场当前最关注的维度，确保报告不遗漏热点"
+    format: "排序列表+覆盖矩阵"
+    required: true
+
+    content:
+      execution:
+        - "5路并行WebSearch(30天内)"
+        - "Top 10维度抽取与排序"
+        - "框架覆盖度比对"
+        - "Hot-Patch补丁生成"
+        - "执行清单输出"
+
+      coverage_target: ">=80% Top 10维度覆盖率"
+
+    methodology: "详见 docs/market_attention_radar.md"
+
+  # =========================================================================
+  # v2.0 新增模块 M15-M18
+  # =========================================================================
+
+  M15_protocol_header:
+    id: "M15"
+    name: "研究契约"
+    description: "报告开头的框架声明+包含/不包含+AI能力边界"
+    format: "声明块"
+    required: true
+
+    content:
+      sections:
+        - "框架版本+数据截止+评级"
+        - "本报告包含"
+        - "本报告不包含"
+        - "AI能力边界声明(深挖区/诚实区/人类决策区)"
+
+    example: |
+      框架: v10.0 | 数据截止: 2026-02-12 | 评级: 中性关注
+      本报告包含: 财务深度分析、竞争格局、Reverse DCF价格含义、追踪信号
+      本报告不包含: 精确目标价、仓位建议、操作触发
+      AI能力边界:
+        深挖区(高置信): 技术架构拆解、供应链交叉验证、历史周期类比
+        诚实区(中置信): 竞争格局演变、管理层执行评估
+        人类决策区(不提供): 买卖时机、仓位管理、个人风险偏好
+
+  M16_audit_summary:
+    id: "M16"
+    name: "数据审计摘要"
+    description: "文末折叠审计区，DM覆盖率+锚点统计+类型分布"
+    format: "折叠HTML details块"
+    required: true
+
+    content:
+      - "DM覆盖率(目标>=90%)"
+      - "锚点总数+H/R/S分布"
+      - "数据获取工具列表"
+      - "关键推断证伪条件汇总"
+
+    example: |
+      <details><summary>数据审计摘要</summary>
+      DM覆盖率: 94.2% (目标>=90%)
+      锚点总数: 1,573 | H(硬数据): 48% | R(合理推断): 35% | S(主观判断): 17%
+      数据工具: baggers_summary, fmp_data, analyze_stock, WebSearch
+      关键推断证伪条件:
+        - R-FIN-012: FY2026毛利率假设>45% — 证伪: Q1毛利率<42%
+        - R-COMP-003: 份额稳定假设 — 证伪: 连续2Q份额下降>2pp
+      </details>
+
+  M17_bearing_wall_fragility:
+    id: "M17"
+    name: "承重墙脆弱度表"
+    description: "Reverse DCF隐含假设的脆弱性评估"
+    format: "表格"
+    required: true  # Phase 2必须
+
+    content:
+      - "隐含假设列表"
+      - "隐含值 vs 历史/行业参考"
+      - "脆弱度(高/中/低)"
+      - "若倒塌影响"
+
+    example: |
+      | 隐含假设 | 隐含值 | 历史/行业参考 | 脆弱度 | 若倒塌影响 |
+      |----------|--------|---------------|--------|-----------|
+      | 收入CAGR | 18% | 历史均值12% | 高 | 估值下修30-40% |
+      | 终端净利率 | 25% | 行业均值20% | 中 | 估值下修15-20% |
+      | WACC | 9.5% | 当前无风险4.3% | 低 | 估值变动5-10% |
+
+  M18_black_swan_table:
+    id: "M18"
+    name: "黑天鹅概率加权表"
+    description: ">=3个低概率高影响事件的量化分析"
+    format: "概率加权表"
+    required: true  # Phase 4必须
+
+    content:
+      - "事件描述"
+      - "独立概率(Polymarket优先)"
+      - "影响幅度"
+      - "加权损失"
+      - "早期信号"
+
+    example: |
+      | 事件 | 独立概率 | 影响幅度 | 加权损失 | 早期信号 |
+      |------|---------|---------|---------|---------|
+      | 台海冲突升级 | 8% | -45% | -3.6% | 军事演习频率/外交降级 |
+      | 关键客户破产 | 3% | -30% | -0.9% | 客户信用评级下调 |
+      | 技术路线颠覆 | 5% | -50% | -2.5% | 竞品论文/专利激增 |
 
 # =============================================================================
 # 第三部分：行业特定模块
@@ -560,7 +711,7 @@ industry_modules:
               company_position: "领先/跟随/落后"
 
             - tech: "HBM堆叠"
-              timeline: "HBM3E→HBM4→HBM4E"
+              timeline: "HBM3E-HBM4-HBM4E"
               company_position: "领先/跟随/落后"
 
             - tech: "先进封装"
@@ -710,6 +861,54 @@ industry_modules:
             - "复购率"
             - "钱包份额"
 
+  # ---------------------------------------------------------------------------
+  # 科技平台行业
+  # ---------------------------------------------------------------------------
+  tech_platform:
+    industry_id: "TECH"
+    industry_name: "科技平台"
+    applicable_to: ["AAPL", "MSFT", "GOOG", "GOOGL", "META", "AMZN"]
+
+    modules:
+
+      TP01_platform_economics:
+        id: "TP01"
+        name: "平台经济学"
+        description: "网络效应强度、多边市场健康度、锁定系数"
+        format: "矩阵+评分卡"
+
+      TP02_advertising_economics:
+        id: "TP02"
+        name: "广告经济学"
+        description: "ARPU趋势、广告负载、CPM/CPC、广告主集中度"
+        format: "趋势图+对比表"
+        applicable_to: ["GOOG", "GOOGL", "META", "AMZN"]
+
+      TP03_cloud_infrastructure:
+        id: "TP03"
+        name: "云基础设施"
+        description: "市场份额、GenAI服务贡献、利润率演进"
+        format: "份额追踪+利润率分析"
+        applicable_to: ["GOOG", "GOOGL", "AMZN", "MSFT"]
+
+      TP04_regulatory_antitrust:
+        id: "TP04"
+        name: "监管与反垄断"
+        description: "全球监管矩阵、反垄断概率量化、合规成本、AI监管"
+        format: "风险矩阵+概率表"
+
+      TP05_developer_ecosystem:
+        id: "TP05"
+        name: "开发者生态"
+        description: "开发者数量、API经济、开源战略、AI开发者工具"
+        format: "健康度评分卡"
+
+      TP06_data_moat:
+        id: "TP06"
+        name: "数据护城河"
+        description: "数据独占性、飞轮效率、隐私法规冲击、变现能力"
+        format: "评估矩阵"
+
 # =============================================================================
 # 第四部分：数据源整合
 # =============================================================================
@@ -776,7 +975,7 @@ data_sources:
       - "分析师观点"
       - "行业新闻"
       - "竞争对手信息"
-    citation: "放在文末'参考来源'部分"
+    citation: "通过DM锚点系统管理"
 
 # =============================================================================
 # 第五部分：输出格式标准
@@ -793,25 +992,38 @@ output_format:
       - "加粗/斜体"
       - "有序/无序列表"
       - "引用块(>)"
+      - "Mermaid图表(v2.0新增)"
+      - "HTML折叠块(<details>)"
 
     prohibited:
       - "YAML/JSON代码块"
       - "ASCII艺术图"
-      - "特殊Unicode符号（→✅❌★等）"
+      - "特殊Unicode符号"
       - "内联数据源标注如[API:FMP]"
 
     symbol_replacement:
-      "→": " - "
-      "✅": "[通过]"
-      "❌": "[未通过]"
-      "★": "[重点]"
-      "⚠️": "[注意]"
-      "↑": "上升"
-      "↓": "下降"
+      "->": " - "
+      "[通过]": "[通过]"
+      "[未通过]": "[未通过]"
+      "[重点]": "[重点]"
+      "[注意]": "[注意]"
+      "上升": "上升"
+      "下降": "下降"
 
-  # 数据来源处理
+  # v2.0 数据引用方式 — DM锚点系统
   data_citation:
-    rule: "所有数据来源统一放在文末'数据说明'部分"
+    v1_rule: "所有数据来源统一放在文末'数据说明'部分"
+    v2_rule: |
+      v10.0双模式:
+      - 报告正文: 干净叙事,零内联标注
+      - 每个主要章节末: 折叠源表(可选,推荐)
+      - 报告最后: 全局审计摘要(必须)
+      - DM锚点: shared_context.md(核心)
+
+    dm_anchor_format: |
+      正文: "FY2025 Revenue $402.96B" (干净叙事,无标注)
+      DM: DM-FIN-001 -> source: FMP income-ttm | type: H | date: 2026-02-10
+      审计: 章节折叠源表引用 DM-FIN-001
 
     format: |
       ---
@@ -828,10 +1040,17 @@ output_format:
       - 最新10-K年报：[链接]
       - 最新10-Q季报：[链接]
 
+      DM锚点覆盖率: XX% (目标>=90%)
+
   # 报告结构模板
   report_structure:
 
     sections:
+      - name: "研究契约"
+        modules: ["M15"]
+        word_count: "200-300字"
+        purpose: "框架声明+AI能力边界"
+
       - name: "投资概览"
         modules: ["M01", "M02"]
         word_count: "500-800字"
@@ -857,54 +1076,66 @@ output_format:
         word_count: "1500-2000字"
         purpose: "行业专属视角"
 
-      - name: "风险与监控"
-        modules: ["M09", "M12"]
-        word_count: "1000-1500字"
-        purpose: "风险识别和监控"
-
       - name: "估值分析"
-        modules: ["M08"]
+        modules: ["M08", "M17"]
         word_count: "1500-2000字"
-        purpose: "价格合理性判断"
+        purpose: "Reverse DCF价格含义+承重墙脆弱度"
+
+      - name: "风险与监控"
+        modules: ["M09", "M12", "M18"]
+        word_count: "1000-1500字"
+        purpose: "风险识别+监控+黑天鹅"
+
+      - name: "AI冲击评估"
+        modules: ["M13"]
+        word_count: "800-1200字"
+        purpose: "AI浪潮影响"
 
       - name: "市场观点对比"
         modules: ["M11"]
         word_count: "1000-1500字"
         purpose: "多空观点和我们的超越"
 
-      - name: "投资建议"
+      - name: "研究结论"
         word_count: "300-500字"
-        purpose: "结论和行动建议"
+        purpose: "定性评级+条件估值+追踪信号"
 
-      - name: "数据说明"
-        purpose: "数据来源和免责声明"
+      - name: "数据审计摘要"
+        modules: ["M16"]
+        purpose: "数据来源和审计+免责声明"
 
 # =============================================================================
-# 第六部分：行业模板组合
+# 第六部分：行业模板组合（v2.0 含M15-M18）
 # =============================================================================
 
 industry_templates:
 
   semiconductor_equipment:
     name: "半导体设备行业模板"
-    universal_modules: ["M01", "M02", "M03", "M04", "M05", "M06", "M08", "M09", "M10", "M11", "M12"]
+    universal_modules: ["M01", "M02", "M03", "M04", "M05", "M06", "M08", "M09", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "M18"]
     industry_modules: ["S01", "S02", "S03", "S04", "S05", "S06"]
     optional_modules: ["M07"]
 
   saas:
     name: "SaaS软件行业模板"
-    universal_modules: ["M01", "M02", "M03", "M04", "M05", "M06", "M08", "M09", "M10", "M11", "M12"]
+    universal_modules: ["M01", "M02", "M03", "M04", "M05", "M06", "M08", "M09", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "M18"]
     industry_modules: ["SS01", "SS02", "SS03", "SS04"]
     optional_modules: ["M07"]
 
   consumer:
     name: "消费品行业模板"
-    universal_modules: ["M01", "M02", "M03", "M04", "M05", "M06", "M08", "M09", "M10", "M11", "M12"]
+    universal_modules: ["M01", "M02", "M03", "M04", "M05", "M06", "M08", "M09", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "M18"]
     industry_modules: ["C01", "C02", "C03"]
     optional_modules: ["M07"]
 
+  tech_platform:
+    name: "科技平台行业模板"
+    universal_modules: ["M01", "M02", "M03", "M04", "M05", "M06", "M08", "M09", "M10", "M11", "M12", "M13", "M14", "M15", "M16", "M17", "M18"]
+    industry_modules: ["TP01", "TP02", "TP03", "TP04", "TP05", "TP06"]
+    optional_modules: ["M07"]
+
 # =============================================================================
-# 第七部分：质量检查清单
+# 第七部分：质量检查清单（v2.0 适配v9.0）
 # =============================================================================
 
 quality_checklist:
@@ -912,25 +1143,76 @@ quality_checklist:
   content_quality:
     - "每个核心论点有2-3条证据支撑"
     - "每个论点有反面观点说明"
-    - "估值目标价与SOTP差距<20%或有解释"
-    - "至少3个差异化洞察"
+    - "多方法估值收敛分析(方法离散度已计算)"
+    - "至少3个差异化洞察(CI注册表>=5)"
+    - "承重墙脆弱度表已完成(M17)"
+    - "黑天鹅概率加权表>=3个事件(M18)"
+    - "研究契约(M15)已在报告开头"
+    - "数据审计摘要(M16)DM覆盖率>=90%"
 
   format_quality:
     - "无代码块"
     - "无特殊符号"
-    - "数据来源在文末统一说明"
+    - "数据引用通过DM锚点系统"
     - "免责声明已添加"
+    - "Mermaid图表>=24个"
 
   data_quality:
     - "关键财务数据已验证"
     - "SEC文件已查阅"
-    - "分析师观点已整理"
+    - "DM锚点覆盖率>=90%"
+    - "H/R/S类型分布已统计"
+
+# =============================================================================
+# 第八部分：禁止内容（v9.0 + v10.0）
+# =============================================================================
+
+prohibited_content:
+
+  v9_prohibitions:
+    - pattern: "目标价$X"
+      reason: "v9.0禁止精确目标价 — 改用条件估值范围"
+    - pattern: "X/100评分"
+      reason: "v9.0禁止数字评分 — 改用定性(强/中/弱)"
+    - pattern: "加仓/减仓/建仓/卖出/仓位%"
+      reason: "v9.0禁止仓位建议 — 改用论文含义"
+    - pattern: "操作触发"
+      reason: "v9.0禁止操作触发 — 改用追踪信号"
+    - pattern: "止损$X"
+      reason: "v9.0禁止止损建议 — 改用监控指标"
+
+  v10_prohibitions:
+    - pattern: "中国入侵台湾/invasion of Taiwan"
+      reason: "第零律发布合规 — 改用台海冲突/台海危机/cross-strait tension"
+
+  validation:
+    timing: "Complete组装时执行"
+    method: "grep -i检查所有prohibited patterns"
+    action: "违规则FAIL,修正后重新检查"
 
 # =============================================================================
 # 版本历史
 # =============================================================================
 
 version_history:
+  - version: "2.0"
+    date: "2026-02-12"
+    changes:
+      - "评级体系: 5级数字评分 -> 4档定性(深度关注/关注/中性关注/审慎关注)"
+      - "M02投资评级卡: 删除目标价/潜在空间/建仓建议,新增条件估值/Reverse DCF/CQ置信度"
+      - "M05护城河评估: 0-100数字评分 -> 定性(强/中/弱)+置信度"
+      - "M08估值分析: 删除target_price,新增reverse_dcf+method_convergence"
+      - "M12监控指标: 建议行动 -> 论文含义"
+      - "M11市场观点: 删除目标价字段"
+      - "新增M15研究契约: 框架声明+AI能力边界"
+      - "新增M16数据审计摘要: DM覆盖率+锚点统计"
+      - "新增M17承重墙脆弱度表: Reverse DCF隐含假设脆弱性"
+      - "新增M18黑天鹅概率加权表: 低概率高影响事件分析"
+      - "数据引用: 文末统一说明 -> DM锚点双模式"
+      - "行业模板: 所有模板新增M15-M18"
+      - "新增prohibited_content: v9.0+v10.0禁止词列表"
+      - "质量清单: 适配v9.0(删除目标价差距检查,新增CI/DM/Mermaid检查)"
+
   - version: "1.0"
     date: "2026-01-29"
     changes:

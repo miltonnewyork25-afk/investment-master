@@ -1,0 +1,963 @@
+# Skill Design Standard v3.0
+# 顶级Skill的设计标准 - 可评测的产品合约
+# 版本: 3.0
+# 创建日期: 2026-01-27
+# 更新日期: 2026-02-12
+# 核心原则: Contract-first | Eval-first | SRE-first | Compact-first | Time-first | Invariant-first | DM-first
+
+---
+
+# ============================================================
+# v2.2 → v3.0 核心升级
+# ============================================================
+version_upgrades:
+  v3_0_summary: |
+    基于v10.0框架升级和GOOGL v4.0实战反馈:
+    1. DM锚定标准: skill输出兼容DM锚点系统
+    2. v9.0合规检查: 禁止词自动验证
+    3. CQ关联标准: 输出必须关联CQ体系
+    4. 干净叙事: 移除内联标注要求
+
+  v2_2_summary: |
+    基于Ecosystem Graph v2.3的实践，提炼6大升级点：
+    1. 时间维度一等公民 (asof + valid_from/to)
+    2. 规则边PARTS化 (owner/enforcer/mechanism/reversibility)
+    3. 动态因素强约束 (trajectory + trigger_events)
+    4. 严格资格检查 (disqualifiers + hard gates)
+    5. 置信度传播内置 (confidence_cap)
+    6. 不变量作为自动测试 (invariants)
+
+---
+
+# ============================================================
+# 〇〇、v2.2 时间维度标准
+# ============================================================
+time_dimension_standard:
+  purpose: |
+    时间成为一等公民。规则/政策/价格条款会变化，
+    所有关键边/判断必须支持时间标注。
+
+  required_fields:
+    asof:
+      description: "数据截止日期"
+      format: "YYYY-MM-DD"
+      required: true
+      location: "inputs"
+
+    valid_from:
+      description: "生效开始日期"
+      format: "YYYY-MM-DD"
+      required: "when applicable"
+      location: "edges/claims/rules"
+
+    valid_to:
+      description: "生效结束日期(可为空=持续有效)"
+      format: "YYYY-MM-DD"
+      required: "when applicable"
+      location: "edges/claims/rules"
+
+  stale_detection:
+    rule: "asof距今>6个月 或 valid_to已过期"
+    action: "触发ECO_STALE reason_code"
+    confidence_impact: "自动降级confidence"
+
+  best_practices:
+    - "所有inputs必须有asof"
+    - "规则类边(contracts/policies/regulations)必须有valid_from/to"
+    - "预测类claims必须有time_horizon"
+    - "历史数据必须标注retrieved_at"
+
+---
+
+# ============================================================
+# 〇一、v2.2 规则边PARTS标准
+# ============================================================
+rules_parts_standard:
+  purpose: |
+    规则边符合Brandenburger/Nalebuff PARTS框架。
+    把"谁能改规则、如何执行、可逆性"固定成必填字段。
+
+  theory_ref: "https://www.mindtools.com/abqnjon/the-value-net-model/"
+
+  required_fields:
+    owner:
+      description: "谁制定规则"
+      required: true
+      examples: ["Apple", "SEC", "ISO"]
+
+    enforcer:
+      description: "谁执行规则(可与owner不同)"
+      required: true
+      examples: ["App Store审核团队", "法院", "认证机构"]
+
+    mechanism:
+      description: "如何约束"
+      required: true
+      enum: ["technical", "contractual", "legal", "social", "economic"]
+      examples:
+        technical: "API限制、技术标准"
+        contractual: "合同条款、SLA"
+        legal: "法规、诉讼风险"
+        social: "声誉、行业惯例"
+        economic: "价格机制、激励结构"
+
+    reversibility:
+      description: "规则的可逆性"
+      required: true
+      enum: ["easy", "hard", "irreversible"]
+      scoring_impact:
+        easy: "低锁定，竞争激烈"
+        hard: "中锁定，护城河中等"
+        irreversible: "高锁定，强护城河"
+
+  optional_fields:
+    rights_scope:
+      description: "适用于data_rights规则"
+      schema:
+        portability: "数据可携带性(如GDPR Art.20)"
+        access: "数据访问权"
+        reuse: "数据再利用权"
+        exclusivity: "数据独占性"
+
+    impact_surface:
+      description: "适用于pricing_rules规则"
+      schema:
+        ceiling: "价格上限影响"
+        channel: "渠道影响"
+        margin: "利润率影响"
+
+  validation:
+    rule: "rule类边必须有owner+enforcer+mechanism"
+    on_fail: "触发ECO_RULE_INCOMPLETE reason_code"
+
+---
+
+# ============================================================
+# 〇二、v2.2 动态因素标准
+# ============================================================
+dynamic_factors_standard:
+  purpose: |
+    分析不能只看静态快照。轨迹(trajectory)和触发事件(trigger_events)
+    是投资决策的关键动态维度。
+
+  trajectory:
+    description: "性能/份额/指标的改进轨迹"
+    required_for: ["substitute_analysis", "disruption_analysis", "competitive_analysis"]
+    schema:
+      status: "stable | rising | accelerating | declining"
+      metric: "具体衡量指标(可选)"
+      slope: "定量斜率(可选)"
+      crossover_timeline: "预计追上/超越时间(如适用)"
+    scoring: "+2=2年内crossover, +1=5年内, 0=相当, -1=更慢, -2=差距扩大"
+
+  trigger_events:
+    description: "可能触发大规模变化的事件"
+    required_for: ["substitute_analysis", "disruption_analysis"]
+    schema:
+      events: ["具体事件列表"]
+      class: "tech | reg | price | distribution | data_rights"
+    scoring: "+2=已发生/即将, +1=可预见(1-3年), 0=存在但不确定, -1=遥远, -2=无可见"
+
+  enforcement:
+    rule: "trajectory/trigger无数据->reason_code+降级，不硬编假设"
+    reason_codes:
+      - "ECO_TRAJECTORY_UNKNOWN"
+      - "ECO_TRIGGER_UNKNOWN"
+
+---
+
+# ============================================================
+# 〇三、v2.2 严格资格检查标准
+# ============================================================
+strict_qualification_standard:
+  purpose: |
+    防止概念滥用（如"颠覆"被过度使用）。
+    通过hard gates和disqualifiers严格筛选。
+
+  hard_gates:
+    description: "必须满足的前置条件，不满足则直接判定为否"
+    pattern:
+      condition: "门槛条件"
+      pass_action: "继续后续评估"
+      fail_action: "直接判定为不符合，终止流程"
+    example:
+      gate: "same_job >= 2"
+      pass: "继续替代分析"
+      fail: "判定为非替代品，设置reason_code=ECO_SAME_JOB_FAIL"
+
+  disqualifiers:
+    description: "排除条件，任一命中则判定为否"
+    pattern:
+      - id: "DQ1"
+        name: "排除条件名称"
+        condition: "具体条件"
+        example: "示例"
+        result: "排除后的判定"
+    usage: "用于颠覆判定、替代判定等需要严格把关的场景"
+
+  scoring_integration:
+    formula: "final_score = gate_pass x base_score x (no_disqualifier ? 1 : 0)"
+    interpretation: "任一gate失败或disqualifier命中->score归零"
+
+---
+
+# ============================================================
+# 〇四、v2.2 置信度传播标准
+# ============================================================
+confidence_propagation_standard:
+  purpose: |
+    多技能串联时，下游置信度不能高于上游。
+    防止"垃圾进、黄金出"的虚假信心。
+
+  core_rule:
+    statement: "downstream_confidence <= min(upstream_confidences)"
+    rationale: "下游分析的可靠性受限于输入数据的可靠性"
+
+  implementation:
+    output_fields:
+      confidence:
+        description: "本技能的置信度评估"
+        type: "float"
+        range: "0.0-1.0"
+        required: true
+
+      confidence_cap:
+        description: "来自上游的置信度上限"
+        type: "float"
+        range: "0.0-1.0"
+        required: "when has_upstream"
+        calculation: "min(upstream_confidence_1, upstream_confidence_2, ...)"
+
+    validation:
+      rule: "output.confidence <= output.confidence_cap"
+      on_fail: "自动cap到上游最小值，触发警告"
+
+  best_practices:
+    - "每个技能输出都包含confidence和confidence_cap"
+    - "技能链末端的confidence反映整链最弱环节"
+    - "高confidence_cap说明上游数据质量好"
+
+---
+
+# ============================================================
+# 〇五、v2.2 不变量标准
+# ============================================================
+invariants_standard:
+  purpose: |
+    把一致性检查固化为可自动执行的不变量(invariants)。
+    每个技能应定义其逻辑不变量，作为自动测试规则。
+
+  invariant_schema:
+    id: "INV-{SKILL}-{NUM}"
+    description: "不变量描述"
+    check: "检查规则/表达式"
+    on_fail: "违反时的动作"
+
+  invariant_types:
+    input_invariants:
+      description: "输入数据必须满足的条件"
+      example: "所有required字段非空"
+
+    output_invariants:
+      description: "输出数据必须满足的条件"
+      example: "confidence在0-1范围内"
+
+    cross_field_invariants:
+      description: "字段间的一致性约束"
+      example: "same_job<2时substitute_score必须为0"
+
+    cross_skill_invariants:
+      description: "技能间的一致性约束"
+      example: "Role Map中每个player在Flow Graph至少有1条边"
+
+  enforcement:
+    timing: "输出前自动检查"
+    on_violation:
+      - "记录violation到reason_codes"
+      - "根据严重程度DEGRADE或FAIL"
+      - "生成修复建议"
+
+  examples:
+    - id: "INV-RM-01"
+      check: "每个canonical_id必须有>=1个role"
+      on_fail: "FAIL with ECO_ROLE_UNCERTAIN"
+
+    - id: "INV-SC-01"
+      check: "same_job<2不可判为substitute"
+      on_fail: "FAIL with ECO_SAME_JOB_FAIL"
+
+    - id: "INV-DQ-01"
+      check: "无foothold不可判为disruption"
+      on_fail: "FAIL with ECO_FOOTHOLD_MISSING"
+
+---
+
+# ============================================================
+# 〇六、v2.2 XML格式支持
+# ============================================================
+xml_format_standard:
+  purpose: |
+    支持XML格式的技能定义，适用于需要严格schema验证的场景。
+
+  when_to_use:
+    - "需要严格的结构验证"
+    - "需要与外部系统交互"
+    - "Agent配置需要机器可读"
+
+  xml_structure:
+    root_element: "skill"
+    required_attributes:
+      - name: "技能名称"
+      - lang: "语言(zh/en)"
+      - version: "版本号"
+
+    required_sections:
+      - metadata
+      - purpose
+      - inputs
+      - workflow
+      - scoring
+      - reason_codes
+      - disconfirmers
+      - invariants
+      - output_contract
+
+  yaml_vs_xml:
+    yaml:
+      pros: ["人类可读", "编写快", "注释方便"]
+      cons: ["schema验证弱", "解析变异大"]
+      use_for: ["Agent配置", "设计文档", "高层规范"]
+
+    xml:
+      pros: ["schema验证强", "机器可读", "结构严格"]
+      cons: ["冗长", "人类阅读困难"]
+      use_for: ["执行规范", "技能定义", "需要验证的场景"]
+
+---
+
+# ============================================================
+# 〇七、v2.2 长度与格式标准 (升级自v2.1)
+# ============================================================
+length_standard:
+  purpose: |
+    控制skill文件长度，在不损失深度的前提下提高可读性和加载效率。
+
+  length_tiers:
+    compact:
+      target_lines: "150-250"
+      target_tokens: "<=600"
+      applicable: "单一功能skill（如评分器、转换器）"
+
+    standard:
+      target_lines: "250-350"
+      target_tokens: "600-900"
+      applicable: "标准分析skill（如竞争分析、估值框架）"
+
+    complex:
+      target_lines: "350-450"
+      target_tokens: "900-1200"
+      applicable: "多模块综合skill（如完整研究框架）"
+
+  length_alerts:
+    warning: ">450 lines 或 >1200 tokens"
+    critical: ">600 lines 或 >1500 tokens"
+    action: "必须压缩，否则不合规"
+
+  # v2.2: Core + Extended模式
+  core_extended_pattern:
+    description: "大型技能拆分为Core(<=600 token) + Extended(按需加载)"
+    core:
+      content: ["元数据", "核心工作流", "评分", "输出合约"]
+      token_limit: 600
+    extended:
+      content: ["详细示例", "边界情况", "完整参考"]
+      loading: "按需"
+
+  compression_principles:
+    P1_table_over_prose: "用表格替代段落描述"
+    P2_yaml_compact: "YAML只保留核心字段"
+    P3_single_example: "每概念只保留1个典型示例"
+    P4_inline_definition: "定义内嵌到使用处"
+    P5_output_contract_minimal: "Output Contract只列字段名和类型"
+    P6_merge_similar_sections: "合并相似章节"
+
+  non_compressible:
+    - "Scoring System（评分维度+权重+分数标准）"
+    - "Kill Switches（触发条件+动作）"
+    - "Invariants（不变量）"
+    - "Output Contract（字段定义）"
+    - "Core Workflow（步骤骨架）"
+
+---
+
+# ============================================================
+# 〇八、v3.0 DM锚定标准 (NEW)
+# ============================================================
+dm_anchoring_standard:
+  purpose: |
+    v10.0将数据可信度从内联标注转移到DM锚点系统。
+    所有产出数据的skill必须遵循DM锚定规范。
+
+  required_for: "所有产出包含数值数据的skill"
+
+  output_requirements:
+    - "每个数值输出必须附带source字段"
+    - "每个输出必须标注type: H/R/S"
+    - "推断类输出(type: R)必须附带chain(推理链)"
+    - "关键推断必须附带falsifiable(证伪条件)"
+
+  type_definitions:
+    H:
+      name: "硬数据"
+      description: "直接来自权威源(SEC filing/FMP/公司公告)的事实数据"
+      requires_source: true
+      requires_chain: false
+    R:
+      name: "合理推断"
+      description: "基于硬数据的推理链得出的结论"
+      requires_source: true
+      requires_chain: true
+      requires_falsifiable: true
+    S:
+      name: "主观判断"
+      description: "基于经验/模式的判断,可能因人而异"
+      requires_source: false
+      requires_chain: false
+
+  dm_reference_format:
+    in_skill_output: |
+      不在正文中添加[硬数据: X]等标注。
+      数据引用通过DM锚点ID实现:
+      - 正文: "FY2025 Revenue $402.96B" (干净叙事)
+      - DM: DM-FIN-001 -> 来源+类型+日期
+      - 审计: 章节折叠源表引用DM-FIN-001
+
+  dm_id_format:
+    pattern: "DM-{CATEGORY}-{NUM}"
+    categories:
+      FIN: "财务数据"
+      COMP: "竞争数据"
+      TECH: "技术数据"
+      MKT: "市场数据"
+      MACRO: "宏观数据"
+      MGMT: "管理层数据"
+
+  skill_integration:
+    rule: "skill输出的每个数值必须可追溯到DM锚点"
+    output_field:
+      dm_anchors:
+        description: "本次输出关联的DM锚点列表"
+        type: "list of DM IDs"
+        required: true
+        example: ["DM-FIN-001", "DM-FIN-002", "DM-COMP-005"]
+
+  coverage_target:
+    minimum: "90%"
+    description: "skill输出中>=90%的数值有DM锚点"
+
+---
+
+# ============================================================
+# 〇九、v3.0 v9.0合规检查标准 (NEW)
+# ============================================================
+v9_compliance_standard:
+  purpose: "确保所有skill输出符合v9.0扬长避短铁律"
+
+  hard_prohibitions:
+    - id: "HP-01"
+      pattern: "目标价\\$\\d+"
+      reason: "v9.0禁止精确目标价"
+      replacement: "条件估值范围(附带前提)"
+
+    - id: "HP-02"
+      pattern: "\\d+/100"
+      reason: "v9.0禁止数字评分"
+      replacement: "定性评估(强/中/弱 + 置信度高/中/低)"
+
+    - id: "HP-03"
+      pattern: "加仓|减仓|建仓|卖出|仓位"
+      reason: "v9.0禁止仓位建议"
+      replacement: "论文含义(如: 增长假设失效,需重估)"
+
+    - id: "HP-04"
+      pattern: "入侵台湾|invasion of Taiwan"
+      reason: "第零律发布合规"
+      replacement: "台海冲突/台海危机/cross-strait tension"
+
+    - id: "HP-05"
+      pattern: "操作触发|止损\\$"
+      reason: "v9.0禁止操作触发和止损建议"
+      replacement: "追踪信号(TS)+论文含义"
+
+  output_validation:
+    rule: "skill输出前必须grep检查hard_prohibitions"
+    action: "违规则FAIL,不输出"
+    implementation: |
+      for each HP in hard_prohibitions:
+        if grep -iE HP.pattern output:
+          FAIL("v9.0 compliance violation: " + HP.id)
+          return null
+
+  soft_warnings:
+    - pattern: "预测|预计将"
+      warning: "AI预测能力有限,建议改用条件表述"
+    - pattern: "必将|一定会"
+      warning: "过度确定性表述,建议标注置信度"
+
+---
+
+# ============================================================
+# 一〇、v3.0 CQ关联标准 (NEW)
+# ============================================================
+cq_linkage_standard:
+  purpose: "确保skill输出与CQ(核心问题)体系关联"
+
+  background: |
+    CQ(Core Questions)是Tier 3深度分析的核心驱动。
+    每个CQ代表一个关键投资问题,有独立的置信度评估。
+    skill输出应明确关联其影响的CQ,形成闭环。
+
+  required_fields:
+    related_cqs:
+      description: "该skill输出关联的CQ编号"
+      type: "list of CQ IDs"
+      required: true
+      example: ["CQ1", "CQ3", "CQ8"]
+
+    cq_confidence_impact:
+      description: "该skill输出对CQ置信度的影响方向"
+      type: "map of CQ ID to direction"
+      required: false
+      example:
+        CQ1: "+5pp"
+        CQ3: "-3pp"
+
+  integration_rules:
+    - "每个产出分析结论的skill必须声明related_cqs"
+    - "Phase 5的CQ闭环需引用skill产出作为证据"
+    - "skill的confidence_impact会反映到CQ加权置信度"
+
+  cq_examples:
+    - id: "CQ1"
+      template: "{公司}的核心增长引擎是否可持续?"
+    - id: "CQ2"
+      template: "{公司}的护城河是否在加强还是削弱?"
+    - id: "CQ3"
+      template: "当前估值隐含了什么假设?"
+    - id: "CQ4"
+      template: "管理层执行记录是否支撑其战略?"
+    - id: "CQ5"
+      template: "{公司}面临的最大结构性风险是什么?"
+
+  validation:
+    rule: "skill输出必须包含related_cqs字段且非空"
+    on_fail: "WARNING: CQ关联缺失,可能导致Phase 5闭环不完整"
+
+---
+
+# ============================================================
+# 一、元信息 (Metadata) - v3.0升级
+# ============================================================
+metadata:
+  skill_id:
+    format: "{agent}.{skill_name}_v{major}.{minor}"
+    example: "ecosystem_graph.role_map_v2.3"
+
+  # v2.2: 时间字段
+  asof_support:
+    required: true
+    description: "技能必须支持asof输入"
+
+  # v2.2: 上下游依赖
+  dependency_declaration:
+    upstream:
+      description: "依赖的上游技能"
+      schema: ["skill_id_1", "skill_id_2"]
+    downstream:
+      description: "被依赖的下游技能"
+      schema: ["skill_id_1", "skill_id_2"]
+
+  # v3.0新增: DM锚定声明
+  dm_anchoring:
+    produces_data: true  # 是否产出数值数据
+    dm_categories: []    # 使用的DM类别,如["FIN", "COMP"]
+
+  # v3.0新增: CQ关联声明
+  cq_linkage:
+    related_cqs: []      # 关联的CQ列表
+    primary_cq: null     # 主关联CQ
+
+  contract_version: "skill_design_standard_v3.0"
+
+---
+
+# ============================================================
+# 二、用途 (Purpose) - 保持v2.1
+# ============================================================
+purpose:
+  one_liner:
+    max_length: 100
+    rule: "动词开头，说清解决什么问题"
+
+  when_to_use:
+    triggers: []
+
+  when_not_to_use:
+    anti_patterns: []
+
+---
+
+# ============================================================
+# 三、输入规范 (Input Specification) - v3.0升级
+# ============================================================
+input_spec:
+  # v2.2: asof必填
+  required:
+    - name: "asof"
+      type: "date"
+      format: "YYYY-MM-DD"
+      description: "数据截止日期"
+      required: true
+
+  # v2.2: 上游输入
+  from_upstream:
+    description: "来自上游技能的输入"
+    schema:
+      skill_id: "上游技能ID"
+      fields: ["需要的字段列表"]
+      confidence_cap: "上游置信度上限"
+
+  # v3.0新增: CQ上下文
+  cq_context:
+    description: "当前研究的CQ列表及已知置信度"
+    schema:
+      cqs: ["CQ ID列表"]
+      current_confidences: {"CQ1": "55%", "CQ3": "40%"}
+    required: false
+
+  validation_rules:
+    - rule: "asof必须是有效日期"
+      on_fail: "FAIL with RC-DATA-001"
+    - rule: "asof不能是未来日期"
+      on_fail: "FAIL with RC-DATA-002"
+    - rule: "asof距今>6个月触发stale警告"
+      on_fail: "DEGRADE with ECO_STALE"
+
+---
+
+# ============================================================
+# 四、工作流 (Workflow) - v3.0升级
+# ============================================================
+workflow:
+  steps:
+    - id: "S1"
+      name: "步骤名称"
+      # v2.2: 时间标注
+      temporal_annotations:
+        valid_from_support: true
+        valid_to_support: true
+
+  # v2.2: 不变量检查步骤
+  invariant_checks:
+    when: "输出前"
+    checks: ["INV-xxx-01", "INV-xxx-02"]
+    on_fail: "按invariant定义处理"
+
+  # v3.0新增: 合规检查步骤
+  compliance_checks:
+    when: "输出前(invariant_checks之后)"
+    checks: "v9_compliance_standard.hard_prohibitions"
+    on_fail: "FAIL并拒绝输出"
+
+  # v3.0新增: DM锚定步骤
+  dm_anchoring_step:
+    when: "数据获取后、分析前"
+    action: "为每个数值创建DM锚点"
+    output: "dm_anchors列表"
+
+---
+
+# ============================================================
+# 五、评分系统 (Scoring System) - v2.2升级
+# ============================================================
+scoring_system:
+  # v2.2: hard gates支持
+  hard_gates:
+    description: "必须满足的前置条件"
+    schema:
+      gate_id: "HG-xxx"
+      condition: "条件表达式"
+      pass_action: "通过后继续"
+      fail_action: "失败则终止并设置reason_code"
+
+  # v2.2: disqualifiers支持
+  disqualifiers:
+    description: "排除条件"
+    schema:
+      dq_id: "DQ1"
+      name: "排除条件名称"
+      condition: "条件"
+      result: "排除后判定"
+
+  # v2.2: 置信度计算
+  confidence_calculation:
+    components:
+      - dimension_scores: "各维度评分"
+      - gate_penalty: "gate失败则归零"
+      - dq_penalty: "disqualifier命中则归零"
+      - upstream_cap: "不超过上游最小置信度"
+    formula: "confidence = min(dimension_avg, upstream_cap) x gate_pass x dq_pass"
+
+---
+
+# ============================================================
+# 六、输出规范 (Output Specification) - v3.0升级
+# ============================================================
+output_spec:
+  # v2.2: 置信度字段必填
+  confidence_fields:
+    confidence:
+      required: true
+      type: "float"
+      range: "0.0-1.0"
+    confidence_cap:
+      required: "when has_upstream"
+      type: "float"
+      range: "0.0-1.0"
+
+  # v2.2: 时间字段必填
+  temporal_fields:
+    asof:
+      required: true
+      type: "date"
+
+  # v2.2: 不变量验证结果
+  invariant_results:
+    required: true
+    schema:
+      checked: ["已检查的不变量列表"]
+      passed: ["通过的不变量"]
+      failed: ["失败的不变量"]
+      violations: ["违反详情"]
+
+  # v3.0新增: DM锚点输出
+  dm_anchor_output:
+    required: "when produces_data == true"
+    schema:
+      dm_anchors:
+        type: "list"
+        items:
+          id: "DM-{CAT}-{NUM}"
+          value: "数值"
+          source: "来源工具/API"
+          type: "H | R | S"
+          date: "数据日期"
+          chain: "推理链(type=R时必填)"
+          falsifiable: "证伪条件(关键推断时必填)"
+
+  # v3.0新增: CQ关联输出
+  cq_linkage_output:
+    required: true
+    schema:
+      related_cqs: ["CQ1", "CQ3"]
+      cq_confidence_impact:
+        CQ1: "+5pp"
+        CQ3: "-3pp"
+
+  # v3.0新增: 合规验证结果
+  compliance_results:
+    required: true
+    schema:
+      checked_patterns: ["HP-01", "HP-02", "HP-03", "HP-04", "HP-05"]
+      violations: []
+      status: "PASS | FAIL"
+
+  # 保持v2.1的其他要求
+  hard_components:
+    quality_gate:
+      required: true
+    claims:
+      required: true
+    evidence_registry:
+      required: true
+    kill_switches:
+      required: true
+    degrade_mode:
+      required_when: "verdict == DEGRADE"
+    blackboard_outputs:
+      required: true
+
+---
+
+# ============================================================
+# 七、Reason Codes - v3.0扩展
+# ============================================================
+reason_codes:
+  # v2.2: 生态系统分析专用codes
+  ecosystem_codes:
+    # 实体相关
+    ECO_PLAYER_MISSING: "关键玩家未识别(份额>10%)"
+    ECO_ENTITY_AMBIGUOUS: "实体消歧失败"
+    ECO_ORPHAN_NODE: "Role Map中player无任何边"
+
+    # 规则相关
+    ECO_RULE_INCOMPLETE: "规则边缺少owner/enforcer/mechanism"
+    ECO_MECHANISM_UNKNOWN: "约束机制不明"
+
+    # 竞争/替代相关
+    ECO_OVERLAP_UNPROVEN: "overlap_score无证据支撑"
+    ECO_SAME_JOB_FAIL: "same_job<2，不构成替代"
+    ECO_DECISION_UNIT_UNKNOWN: "决策单元不明"
+
+    # 动态因素相关
+    ECO_TRAJECTORY_UNKNOWN: "改进轨迹无数据"
+    ECO_TRIGGER_UNKNOWN: "触发事件不明"
+
+    # 颠覆相关
+    ECO_FOOTHOLD_MISSING: "无low_end或new_market立足点"
+    ECO_UPMARKET_WEAK: "向上攻击证据不足"
+    ECO_DISQUALIFIER_HIT: "触发disqualifier"
+    ECO_REG_DEPENDENCY: "受监管强约束"
+
+    # 邻接相关
+    ECO_CONSTRAINT_WEAK: "约束强度不足"
+    ECO_FALSIFIER_MISSING: "无反证条件"
+    ECO_SIGNAL_PATH_UNCLEAR: "信号链路不清"
+
+    # 通用
+    ECO_SOURCE_CONFLICT: "来源矛盾"
+    ECO_STALE: "数据过期(>6个月)"
+    ECO_ROLE_UNCERTAIN: "角色分配无rationale"
+
+  # v3.0新增: DM锚定相关codes
+  dm_codes:
+    DM_ANCHOR_MISSING: "数值缺少DM锚点"
+    DM_SOURCE_UNVERIFIED: "DM来源未验证"
+    DM_CHAIN_MISSING: "推断类(R)缺少推理链"
+    DM_FALSIFIABLE_MISSING: "关键推断缺少证伪条件"
+    DM_COVERAGE_LOW: "DM覆盖率<90%"
+
+  # v3.0新增: v9.0合规相关codes
+  compliance_codes:
+    V9_TARGET_PRICE: "违反v9.0: 包含精确目标价"
+    V9_NUMERIC_SCORE: "违反v9.0: 包含数字评分"
+    V9_POSITION_ADVICE: "违反v9.0: 包含仓位建议"
+    V9_PUBLICATION_COMPLIANCE: "违反第零律: 发布合规"
+    V9_OPERATION_TRIGGER: "违反v9.0: 包含操作触发"
+
+  # v3.0新增: CQ关联相关codes
+  cq_codes:
+    CQ_LINKAGE_MISSING: "skill输出未关联CQ"
+    CQ_IMPACT_UNCLEAR: "CQ置信度影响方向不明"
+    CQ_LOOP_INCOMPLETE: "CQ闭环不完整"
+
+---
+
+# ============================================================
+# 八、质量检验清单 - v3.0扩展
+# ============================================================
+quality_checks:
+  # v2.2: 时间维度检查
+  temporal_checks:
+    - "asof字段存在且有效"
+    - "valid_from/to格式正确"
+    - "stale数据已标记"
+
+  # v2.2: PARTS规则检查
+  rules_parts_checks:
+    - "rule边有owner"
+    - "rule边有enforcer"
+    - "rule边有mechanism"
+    - "rule边有reversibility"
+
+  # v2.2: 动态因素检查
+  dynamic_checks:
+    - "trajectory有数据或有reason_code"
+    - "trigger_events有数据或有reason_code"
+
+  # v2.2: 资格检查
+  qualification_checks:
+    - "hard gates已验证"
+    - "disqualifiers已检查"
+    - "gate失败则score归零"
+
+  # v2.2: 置信度检查
+  confidence_checks:
+    - "confidence在0-1范围"
+    - "confidence <= confidence_cap"
+    - "confidence_cap = min(upstreams)"
+
+  # v2.2: 不变量检查
+  invariant_checks:
+    - "所有invariants已执行"
+    - "违反的invariants已记录"
+    - "严重违反已FAIL"
+
+  # v3.0新增: DM锚定检查
+  dm_anchoring_checks:
+    - "所有数值输出有DM锚点"
+    - "DM覆盖率>=90%"
+    - "推断类(R)有推理链"
+    - "关键推断有证伪条件"
+    - "DM ID格式正确(DM-{CAT}-{NUM})"
+
+  # v3.0新增: v9.0合规检查
+  v9_compliance_checks:
+    - "无精确目标价"
+    - "无数字评分(X/100)"
+    - "无仓位建议"
+    - "无发布合规违规"
+    - "所有HP patterns已grep检查"
+
+  # v3.0新增: CQ关联检查
+  cq_linkage_checks:
+    - "related_cqs非空"
+    - "cq_confidence_impact方向合理"
+    - "CQ关联与skill功能匹配"
+
+---
+
+# ============================================================
+# 版本历史
+# ============================================================
+version_history:
+  - version: "3.0"
+    date: "2026-02-12"
+    changes:
+      - "DM锚定标准: skill输出兼容v10.0 DM锚点系统"
+      - "v9.0合规检查标准: 禁止词自动验证(5个HP patterns)"
+      - "CQ关联标准: 输出必须关联CQ体系"
+      - "干净叙事: 移除内联标注要求,数据引用通过DM锚点"
+      - "新增reason codes: dm_codes(5) + compliance_codes(5) + cq_codes(3)"
+      - "工作流新增compliance_checks和dm_anchoring_step"
+      - "输出规范新增dm_anchor_output, cq_linkage_output, compliance_results"
+      - "元信息新增dm_anchoring和cq_linkage声明"
+      - "质量清单新增dm_anchoring_checks, v9_compliance_checks, cq_linkage_checks"
+
+  - version: "2.2"
+    date: "2026-01-27"
+    changes:
+      - "时间维度一等公民(asof + valid_from/to)"
+      - "规则边PARTS化标准"
+      - "动态因素标准(trajectory + trigger_events)"
+      - "严格资格检查标准(hard gates + disqualifiers)"
+      - "置信度传播标准(confidence_cap)"
+      - "不变量标准(invariants)"
+      - "XML格式支持"
+      - "生态系统reason codes扩展"
+
+  - version: "2.1"
+    date: "2026-01-27"
+    changes:
+      - "长度标准与压缩原则"
+      - "深度保障机制"
+
+  - version: "2.0"
+    date: "2026-01-27"
+    changes:
+      - "Contract-first | Eval-first | SRE-first"
+      - "Claims 5类强制"
+      - "Evidence双门槛"
+      - "Kill Switches 3类必须"
+      - "Observability & Replay"
+      - "Cost/Latency Budget"
