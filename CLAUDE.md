@@ -69,14 +69,14 @@
 
 ---
 
-## 数据诚信 (4铁律)
+## 数据诚信 (4铁律, v10.0)
 
 1. **财务数据真实获取** — MCP工具>WebSearch>禁编造
 2. **预测市场验证** — Polymarket搜索验证>禁虚构概率
-3. **三层置信标注** — [硬数据:] [合理推断:] [主观判断:] 密度≥15/万字符
+3. **DM锚定+脚本验证** — 报告正文零内联标注，数据可信度由DM锚点+`verify_data_sources.sh`保障
 4. **无源数字禁写** — 每个数字必须有DM锚点/外部来源/明确公式
 
-**详见**: `docs/confidence_system.md` + `docs/anti_hallucination_protocol.md`
+**详见**: `docs/confidence_system.md` v3.0 + `docs/anti_hallucination_protocol.md` v2.0
 
 ---
 
@@ -122,9 +122,11 @@
 | **期权估值** | `docs/optionality_valuation.md` (高期权公司: TSLA/PLTR/GOOGL/META等) |
 | **发现系统** | `docs/paradigm_research_framework.md` (可能性宽度≥7分: TSLA/PLTR等) |
 | **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
+| **数据验证** | `tests/verify_data_sources.sh` (DM交叉验证) |
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |
-| **数据标注** | `docs/confidence_system.md` |
+| **数据可信度** | `docs/confidence_system.md` v3.0 (DM锚定+脚本验证) |
+| **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
 
 **完整索引**: 原CLAUDE.md第204-246行 → `docs/framework_index.md`
@@ -133,9 +135,7 @@
 
 ## 系统升级
 
-**最新版本**: v2.1 Context优化 + 复利学习飞轮
-**升级报告**: `docs/system_reflection_v2.1_2026-02-10.md`
+**最新版本**: v10.0 框架升级 (标注重构+红队+承重墙+CQ演化)
 **健康监控**: `bash tests/framework_health_check.sh`
-**反思报告**: `reports/reflection/compound_learning_reflection_2026-02-10.md`
 
-**v1.1门控升级(2026-02-10)**: CG12(CI注册表≥5) + CG13(框架注册表) + 密度25/万 + Mermaid≥24
+**v10.0升级(2026-02-12)**: 标注系统重构(内联→DM锚定+脚本验证) + Protocol Header + 承重墙脆弱度表 + 红队七问(RT-1~RT-7) + CG14方法离散度(WARN) + CQ置信度演化表 + AI能力边界声明 + 黑天鹅概率加权表 + 推断证伪条件 + 分析框架注册表
