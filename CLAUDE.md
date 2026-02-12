@@ -43,25 +43,9 @@
 
 ---
 
-## 公司级框架路由 (v9.0 × 发现系统)
-
-> v9.0扬长避短对**所有**公司生效。发现系统是宽概率公司额外的[深挖]维度。
-
-| 公司 | 宽度 | 框架 | Phase 5产出 |
-|------|-----|------|-----------|
-| TSLA | 9(宽) | v9.0 + Discovery全量 | 可能性映射+Reverse DCF+TS |
-| PLTR | 8(宽) | v9.0 + Discovery全量 | 产品边界+天花板+Reverse DCF |
-| GOOGL | 6(中) | v9.0 + Discovery部分 | v9.0标准+转型附录 |
-| META | 5(中) | v9.0标准 | v9.0标准 |
-| ENPH/FSLR | 2(窄) | v9.0标准 | Reverse DCF+KS+TS |
-
-**映射可能性 = [深挖区]** | **预测具体数字 = [诚实区]** — 详见 `docs/paradigm_research_framework.md` §9
-
----
-
 ## 铁律速查 (A-G)
 
-**第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(新报告适用，历史报告不回溯)
+**第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(见下)
 
 **基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)**
 
@@ -75,12 +59,13 @@
 
 > **适用范围**: 所有**新撰写**的报告。已完成的历史报告不回溯修改。
 
-1. **台海中性表述** — 禁止"入侵台湾/invasion" → "台海冲突/台海危机/cross-strait tension"
-2. **回流无痕化** — P4纠错覆盖原文，不保留"P4回流"标注
-3. **报告连贯性** — Complete = 一次性撰写的连贯文档
-4. **Polymarket例外** — 引号内市场名称保留原文
+1. **台海中性表述** — 禁止"中国入侵台湾/invasion of Taiwan"等表述 → 统一用"台海冲突/台海危机/cross-strait tension"
+2. **回流无痕化** — P4纠错回流后，Phase 1-3中不保留"P4回流"标注，修正数据用原始来源标注
+3. **报告连贯性** — Complete应像一次性撰写的连贯文档，非研究过程拼接记录
+4. **Polymarket例外** — 引号内市场名称(如"Will China invade Taiwan?")保留原文，描述性文本用中性词
 
 **转换表**: `docs/deep_dive_protocol.md` "发布合规规则"
+**检查时机**: Complete组装时 `grep -i "入侵\|invade\|invasion"` 逐一确认
 
 ---
 
@@ -147,14 +132,14 @@
 |------|----------|
 | **Tier 3启动** | `docs/deep_dive_protocol.md` |
 | **温度计算** | `docs/investment_thermometer_strategy.md` |
-| **行业增强** | `docs/industry/{eco_tech,tech_platform}_deep.md` (本worktree主要) |
-| **期权估值** | `docs/optionality_valuation.md` (TSLA/PLTR/GOOGL/META等高期权公司) |
+| **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech,tech_platform}_deep.md` |
+| **期权估值** | `docs/optionality_valuation.md` (高期权公司: TSLA/PLTR/GOOGL/META等) |
 | **发现系统** | `docs/paradigm_research_framework.md` (可能性宽度≥7分: TSLA/PLTR等) |
 | **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
+| **数据验证** | `tests/verify_data_sources.sh` (DM交叉验证) |
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |
 | **数据可信度** | `docs/confidence_system.md` v3.0 (DM锚定+脚本验证) |
-| **数据验证** | `tests/verify_data_sources.sh` (DM交叉验证) |
 | **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
 
