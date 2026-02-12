@@ -92,6 +92,20 @@
 
 ---
 
+## 会话规范
+
+**继续/恢复**: 用户说"继续"时 → ①`git branch --show-current` + `pwd` 确认位置 → ②读 `reports/{TICKER}/data/checkpoint.yaml` → ③`git log --oneline -5` → 立即恢复执行，不问澄清问题
+
+**Worktree导航**: 用户说"进入XX"/"切换到XX" → 直接 `cd` 到对应worktree路径 → `pwd` + `git branch --show-current` 确认。**禁止**: 让用户手动cd/开新session/只打印路径不切换
+
+**行业Worktree模型**: 本项目使用**行业级**worktree(半导体/消费品/生态科技/金融)，不是公司级。每个worktree覆盖一个行业板块
+
+**多Agent文件传递**: ≥3个并行Agent时，Agent必须写结果到 `staging/` 文件，completion message只返回状态摘要+文件路径。编排器从文件读取，不从inline context读取。防止context溢出
+
+**Commit前确认分支**: `git add` 前必须 `git branch --show-current` 确认在正确分支。worktree工作→worktree分支commit | 最终报告→main commit
+
+---
+
 ## Phase自动化
 
 **一键完成**: `bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}`
