@@ -47,7 +47,7 @@
 
 **第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(见下)
 
-**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)**
+**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
@@ -123,6 +123,30 @@
 3. **任何阶段性产出完成时** — 报告/staging/data有变化就commit，不积压
 
 **禁止**: 让用户手动提醒保存 | 未提交就建议/clear | 积压超过2个Agent产出不commit
+
+---
+
+## 铁律 H: 报告参考协议
+
+**AI在参考历史报告时，必须使用脚本确定最佳版本**:
+
+**强制调用场景**:
+1. **Phase 0开始前** — 参考类似公司报告确定框架方向
+2. **用户询问历史分析** — "之前怎么分析过PLTR？"
+3. **框架方法参考** — 需要借鉴成功案例的结构/方法
+
+**标准流程**:
+```bash
+# 自动推荐最佳版本
+bash scripts/find_best_reference.sh {TICKER}
+
+# 验证质量等级 (≥400K优秀, 250K-400K良好, <250K谨慎)
+# 记录参考信息到Phase 0
+```
+
+**禁止**: 随意选择版本 | 参考staging文件 | 忽视质量验证 | 使用过时版本
+
+**详见**: `docs/ai_reference_protocol.md`
 
 ---
 
