@@ -1,0 +1,167 @@
+{
+  "ticker": "META",
+  "fetched_at": "2026-02-13T07:30:00Z",
+  "key_news": [
+    {
+      "date": "2026-02-11",
+      "headline": "Meta to invest $10+ billion in Indiana AI data center",
+      "summary": "Meta will spend more than $10 billion to build a data center campus in Lebanon, Indiana, among the company's largest AI infrastructure investments. Expected operational by end 2027/early 2028.",
+      "sentiment": "正面",
+      "source": "Bloomberg",
+      "_dm_type": "H",
+      "_dm_source": "https://www.bloomberg.com/news/articles/2026-02-11/meta-to-spend-more-than-10-billion-on-indiana-based-data-center",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "date": "2026-02-09",
+      "headline": "EU formally charges Meta with antitrust violations over AI dominance",
+      "summary": "European Commission charged Meta with violating EU antitrust rules by leveraging messaging dominance to stifle AI assistant competition, specifically excluding rival AI from WhatsApp platform.",
+      "sentiment": "负面",
+      "source": "Multiple sources",
+      "_dm_type": "H",
+      "_dm_source": "https://www.eweek.com/news/eu-meta-whatsapp-ai-antitrust-2026/",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "date": "2026-02-12",
+      "headline": "Bill Ackman reveals stake in Meta, cites 'deeply discounted valuation'",
+      "summary": "Pershing Square disclosed position in Meta, with Ackman stating the company has deeply discounted valuation despite AI investment concerns.",
+      "sentiment": "正面",
+      "source": "CNBC",
+      "_dm_type": "H",
+      "_dm_source": "https://www.cnbc.com/2026/02/11/bill-ackman-meta-valuation.html",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "date": "2026-01-13",
+      "headline": "Meta lays off 1,000 Reality Labs employees, shifts focus to AI",
+      "summary": "Meta confirmed cuts affecting ~1,000 Reality Labs roles, representing strategic shift toward AI and away from metaverse investments. Up to 30% budget cuts planned for metaverse unit.",
+      "sentiment": "中性",
+      "source": "Multiple sources",
+      "_dm_type": "H",
+      "_dm_source": "https://www.cnbc.com/2026/01/13/meta-lays-off-vr-employees-underscoring-zuckerbergs-pivot-to-ai.html",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-04-29",
+      "event": "Q1 2026 Earnings Release (forecasted)",
+      "expected_impact": "Critical test of $115B-$135B CapEx guidance and AI ROI timeline. Q1 revenue guidance $53.5-56.5B provides first test of 2026 outlook.",
+      "_dm_type": "R",
+      "_dm_source": "https://www.marketbeat.com/stocks/NASDAQ/META/earnings/",
+      "_dm_date": "2026-02-13",
+      "_dm_chain": "Historical reporting pattern suggests late April timing",
+      "_dm_falsifiable": "Official earnings date announcement would override this forecast"
+    },
+    {
+      "date": "2026-Q2",
+      "event": "Llama 4 frontier AI model launch",
+      "expected_impact": "Spring 2026 launch expected to unlock new revenue streams and demonstrate AI leadership. Could overshadow regulatory concerns if successful.",
+      "_dm_type": "R",
+      "_dm_source": "Multiple analyst reports",
+      "_dm_date": "2026-02-13",
+      "_dm_chain": "Company guidance points to spring frontier model release",
+      "_dm_falsifiable": "Delayed launch or underperformance vs GPT-5 would reduce impact"
+    },
+    {
+      "date": "2026-Q4",
+      "event": "Orion AR glasses consumer launch",
+      "expected_impact": "Rumored late 2026 consumer launch could validate Reality Labs investment strategy and AR market positioning.",
+      "_dm_type": "R",
+      "_dm_source": "Industry reports",
+      "_dm_date": "2026-02-13",
+      "_dm_chain": "AR roadmap suggests consumer readiness by Q4 2026",
+      "_dm_falsifiable": "Technical delays or poor market reception would undermine thesis"
+    },
+    {
+      "date": "2026-ongoing",
+      "event": "Federal trials on algorithm impact on minors",
+      "expected_impact": "Multiple trials regarding mental health impacts could result in multi-billion settlements and mandated product changes.",
+      "_dm_type": "H",
+      "_dm_source": "Legal filings",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "date": "2026-02-12",
+        "executive": "Javier Olivan (COO)",
+        "action": "Sale",
+        "shares": "517",
+        "transaction_value": "~$369K at ~$714/share",
+        "note": "Routine planned sale"
+      }
+    ],
+    "net_insider_sentiment": "负面 - $24M net outflow over recent months, zero informative buys",
+    "_dm_type": "H",
+    "_dm_source": "https://www.marketbeat.com/stocks/NASDAQ/META/insider-trades/",
+    "_dm_date": "2026-02-13"
+  },
+  "sec_filings": [
+    {
+      "date": "2026-01-29",
+      "filing_type": "10-K",
+      "period_ending": "2025-12-31",
+      "accession_number": "0001628280-26-003942",
+      "key_highlights": "Annual report covering full year 2025 results and 2026 outlook"
+    }
+  ],
+  "dm_anchors": [
+    {
+      "id": "DM-NEW-001",
+      "value": "$10+ billion Indiana data center investment",
+      "type": "H",
+      "source": "Bloomberg, 2026-02-11",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-NEW-002",
+      "value": "EU antitrust charges filed 2026-02-09 for WhatsApp AI exclusivity",
+      "type": "H",
+      "source": "European Commission press release",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-NEW-003",
+      "value": "$115B-$135B 2026 CapEx guidance (vs $72B in 2025)",
+      "type": "H",
+      "source": "Q4 2025 earnings report, January 2026",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-NEW-004",
+      "value": "Reality Labs $19.2B loss in 2025 (+8% vs 2024)",
+      "type": "H",
+      "source": "Q4 2025 earnings report",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-NEW-005",
+      "value": "1,000 Reality Labs layoffs announced January 2026",
+      "type": "H",
+      "source": "Company announcement, multiple news sources",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-NEW-006",
+      "value": "Bill Ackman position disclosure February 2026",
+      "type": "H",
+      "source": "CNBC report, 2026-02-11",
+      "date": "2026-02-13"
+    }
+  ],
+  "sources": [
+    "[Meta's Indiana Data Center Investment](https://www.bloomberg.com/news/articles/2026-02-11/meta-to-spend-more-than-10-billion-on-indiana-based-data-center)",
+    "[EU Antitrust Charges](https://www.eweek.com/news/eu-meta-whatsapp-ai-antitrust-2026/)",
+    "[Bill Ackman Meta Stake](https://www.cnbc.com/2026/02/11/bill-ackman-meta-valuation.html)",
+    "[META Stock News 2026](https://finance.yahoo.com/news/meta-stock-climbs-on-q4-earnings-beat-plans-to-spend-as-much-as-135-billion-on-ai-build-out-in-2026-154456872.html)",
+    "[Morgan Stanley Catalysts](https://finance.yahoo.com/news/morgan-stanley-sees-three-key-145421984.html)",
+    "[META Earnings Calendar](https://www.marketbeat.com/stocks/NASDAQ/META/earnings/)",
+    "[META Insider Trading](https://www.marketbeat.com/stocks/NASDAQ/META/insider-trades/)",
+    "[META SEC Filings](https://www.nasdaq.com/market-activity/stocks/meta/sec-filings)",
+    "[Reality Labs Layoffs](https://www.cnbc.com/2026/01/13/meta-lays-off-vr-employees-underscoring-zuckerbergs-pivot-to-ai.html)",
+    "[Reality Labs Financial Results](https://www.cnbc.com/2026/01/28/metas-reality-labs-posts-6point02-billion-loss-in-fourth-quarter.html)"
+  ]
+}

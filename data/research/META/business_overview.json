@@ -1,0 +1,94 @@
+{
+  "ticker": "META",
+  "fetched_at": "2026-02-12T11:20:00Z",
+  "segments": [
+    {
+      "name": "Family of Apps",
+      "revenue": 180965000000,
+      "pct_of_total": 90.1,
+      "growth_rate": 23.5,
+      "_dm_type": "H",
+      "_dm_source": "Meta FY2025 10-K segment reporting",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "name": "Reality Labs",
+      "revenue": 20000000000,
+      "pct_of_total": 9.9,
+      "growth_rate": -8.2,
+      "_dm_type": "H",
+      "_dm_source": "Meta FY2025 10-K segment reporting",
+      "_dm_date": "2026-02-12"
+    }
+  ],
+  "geographic_breakdown": [
+    {
+      "region": "United States & Canada",
+      "revenue": 79800000000,
+      "pct_of_total": 39.7,
+      "_dm_type": "H",
+      "_dm_source": "Meta FY2025 10-K geographic revenue",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "region": "Europe",
+      "revenue": 58300000000,
+      "pct_of_total": 29.0,
+      "_dm_type": "H",
+      "_dm_source": "Meta FY2025 10-K geographic revenue",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "region": "Asia-Pacific",
+      "revenue": 45900000000,
+      "pct_of_total": 22.8,
+      "_dm_type": "H",
+      "_dm_source": "Meta FY2025 10-K geographic revenue",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "region": "Rest of World",
+      "revenue": 16965996544,
+      "pct_of_total": 8.5,
+      "_dm_type": "H",
+      "_dm_source": "Meta FY2025 10-K geographic revenue",
+      "_dm_date": "2026-02-12"
+    }
+  ],
+  "supply_chain": {
+    "key_suppliers": ["NVIDIA", "AMD", "Intel", "Broadcom", "Qualcomm"],
+    "key_customers": ["Advertisers", "Small/Medium Businesses", "Enterprise clients"],
+    "concentration_risk": "High dependency on NVIDIA for AI chips, risk from Apple iOS changes",
+    "_dm_type": "R",
+    "_dm_source": "Meta 10-K risk factors + supply chain analysis",
+    "_dm_date": "2026-02-12"
+  },
+  "tam": {
+    "current": 875000000000,
+    "forecast": 1350000000000,
+    "cagr": 9.1,
+    "_dm_type": "R",
+    "_dm_source": "Digital advertising TAM estimates + metaverse TAM projections",
+    "_dm_date": "2026-02-12"
+  },
+  "industry_specific": {
+    "mau_facebook": 3350000000,
+    "mau_instagram": 2400000000,
+    "mau_whatsapp": 3300000000,
+    "mau_threads": 450000000,
+    "arpu_global": 63.32
+  },
+  "dm_anchors": [
+    { "id": "DM-BIZ-001", "value": "Family of Apps revenue $180.96B (90.1% of total)", "type": "H", "source": "Meta FY2025 10-K", "date": "2026-02-12" },
+    { "id": "DM-BIZ-002", "value": "Reality Labs revenue $20.0B (9.9% of total)", "type": "H", "source": "Meta FY2025 10-K", "date": "2026-02-12" },
+    { "id": "DM-BIZ-003", "value": "US&Canada revenue $79.8B (39.7% of total)", "type": "H", "source": "Meta FY2025 10-K", "date": "2026-02-12" },
+    { "id": "DM-BIZ-004", "value": "Facebook MAU 3.35B users", "type": "H", "source": "Meta Q4 2025 earnings", "date": "2026-02-12" },
+    { "id": "DM-BIZ-005", "value": "Digital advertising TAM $875B current, $1.35T by 2030", "type": "R", "source": "Industry TAM analysis", "date": "2026-02-12" }
+  ],
+  "sources": [
+    "Meta Platforms FY2025 10-K",
+    "Meta Q4 2025 Earnings Release",
+    "eMarketer Digital Advertising Reports",
+    "Statista Social Media Statistics"
+  ]
+}

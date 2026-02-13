@@ -1,0 +1,184 @@
+{
+  "ticker": "META",
+  "fetched_at": "2026-02-13T03:30:00Z",
+  "segments": [
+    {
+      "name": "Family of Apps",
+      "revenue": 198760000000,
+      "pct_of_total": 98.9,
+      "growth_rate": 22.42,
+      "_dm_type": "H",
+      "_dm_source": "Meta investor.atmeta.com Q4 2025 earnings",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "name": "Reality Labs",
+      "revenue": 2210000000,
+      "pct_of_total": 1.1,
+      "growth_rate": 2.84,
+      "_dm_type": "H",
+      "_dm_source": "Meta investor.atmeta.com Q4 2025 earnings",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "geographic_breakdown": [
+    {
+      "region": "US & Canada",
+      "revenue": 63210000000,
+      "pct_of_total": 38.42,
+      "_dm_type": "H",
+      "_dm_source": "stockanalysis.com META revenue by geography",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "region": "Asia Pacific",
+      "revenue": 45010000000,
+      "pct_of_total": 27.36,
+      "_dm_type": "H",
+      "_dm_source": "stockanalysis.com META revenue by geography",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "region": "Europe",
+      "revenue": 38360000000,
+      "pct_of_total": 23.32,
+      "_dm_type": "H",
+      "_dm_source": "stockanalysis.com META revenue by geography",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "region": "Rest of World",
+      "revenue": 17920000000,
+      "pct_of_total": 10.9,
+      "_dm_type": "H",
+      "_dm_source": "stockanalysis.com META revenue by geography",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "supply_chain": {
+    "key_suppliers": [
+      "Luxottica (Ray-Ban partnership for smartglasses)",
+      "Microsoft Azure (cloud services for AI models)",
+      "Major cloud providers (Llama 2 distribution)"
+    ],
+    "key_customers": [
+      "3.58B daily active users across platform family",
+      "Advertisers through Meta Business Partner program",
+      "SMB advertisers globally"
+    ],
+    "concentration_risk": "Limited supplier concentration risk due to diversified technology stack, but heavy dependence on advertising revenue from global advertiser base creates customer concentration risk",
+    "_dm_type": "R",
+    "_dm_source": "Inference from Meta partnerships and business model",
+    "_dm_date": "2026-02-13",
+    "_dm_chain": "Meta's revenue is 98.9% advertising-dependent, making advertiser ecosystem concentration a key risk. Hardware partnerships with Luxottica and cloud partnerships diversify supplier base.",
+    "_dm_falsifiable": "Evidence of significant direct hardware manufacturing partnerships or reduced advertising revenue dependency would contradict this assessment"
+  },
+  "tam": {
+    "current": 95800000000,
+    "forecast": 221400000000,
+    "cagr": 18.2,
+    "_dm_type": "H",
+    "_dm_source": "mordorintelligence.com social networking market report 2025-2030",
+    "_dm_date": "2026-02-13"
+  },
+  "industry_specific": {
+    "daily_active_users": {
+      "value": 3580000000,
+      "growth_yoy": 7.0,
+      "_dm_type": "H",
+      "_dm_source": "sociallyin.com Meta statistics Q4 2025",
+      "_dm_date": "2026-02-13"
+    },
+    "monthly_active_users": {
+      "facebook": 3070000000,
+      "instagram": 3000000000,
+      "whatsapp": 3000000000,
+      "_dm_type": "H",
+      "_dm_source": "Multiple sources: backlinko.com, demandsage.com user statistics",
+      "_dm_date": "2026-02-13"
+    },
+    "reality_labs_outlook": {
+      "expected_loss_2026": 20000000000,
+      "strategic_shift": "30% budget cut toward AI pivot",
+      "_dm_type": "H",
+      "_dm_source": "techcrunch.com Meta Reality Labs 2026 outlook",
+      "_dm_date": "2026-02-13"
+    }
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-BIZ-001",
+      "value": "Family of Apps revenue $198.76B (98.9% of total) vs Reality Labs $2.21B (1.1%)",
+      "type": "H",
+      "source": "Meta Q4 2025 earnings investor.atmeta.com",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-002",
+      "value": "Q4 2025 DAU 3.58B (+7% YoY), demonstrating continued user growth momentum",
+      "type": "H",
+      "source": "sociallyin.com Meta statistics 2026",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-003",
+      "value": "US/Canada revenue share declined from 49% (2017) to 38.42% (2024), indicating geographic diversification",
+      "type": "H",
+      "source": "stockanalysis.com META revenue by geography",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-004",
+      "value": "Social networking TAM forecast $95.8B (2025) → $221.4B (2030) at 18.2% CAGR",
+      "type": "H",
+      "source": "mordorintelligence.com social networking market report",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-005",
+      "value": "Reality Labs expected $20B loss in 2026 with 30% budget reduction toward AI",
+      "type": "H",
+      "source": "techcrunch.com Meta VR spending outlook 2026",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-006",
+      "value": "Cross-platform ecosystem: 73.6% Facebook users active on WhatsApp, 80% on Instagram",
+      "type": "H",
+      "source": "sociallyin.com Meta platform cross-usage statistics",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-007",
+      "value": "Supplier diversification through strategic partnerships: Luxottica (hardware), Microsoft (cloud AI)",
+      "type": "R",
+      "source": "Inference from partnership announcements and business structure",
+      "date": "2026-02-13",
+      "chain": "Hardware partnerships reduce manufacturing concentration while cloud partnerships enable AI model distribution",
+      "falsifiable": "Evidence of major in-house manufacturing or exclusive single-provider dependencies would contradict this"
+    },
+    {
+      "id": "DM-BIZ-008",
+      "value": "Revenue concentration risk: 98.9% advertising dependency creates customer base vulnerability",
+      "type": "R",
+      "source": "Analysis of Meta segment revenue breakdown",
+      "date": "2026-02-13",
+      "chain": "Near-total advertising revenue dependency means advertiser health directly impacts Meta performance",
+      "falsifiable": "Significant growth in subscription or commerce revenue streams would reduce this concentration"
+    },
+    {
+      "id": "DM-BIZ-009",
+      "value": "Geographic revenue balance: APAC (27.36%) and Europe (23.32%) reduce US/Canada dependence",
+      "type": "H",
+      "source": "stockanalysis.com META 2024 geographic revenue breakdown",
+      "date": "2026-02-13"
+    }
+  ],
+  "sources": [
+    "Meta - Meta Reports Fourth Quarter and Full Year 2025 Results (https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Fourth-Quarter-and-Full-Year-2025-Results/default.aspx)",
+    "Meta Platforms (META) Revenue by Geography (https://stockanalysis.com/stocks/meta/metrics/revenue-by-geography/)",
+    "Meta Statistics 2026: Key Metrics & Platform Performance (https://sociallyin.com/meta-statistics/)",
+    "Social Networking Market - Share, Size & Industry Analysis 2025 - 2030 (https://www.mordorintelligence.com/industry-reports/global-social-networking-market)",
+    "Meta burned $19 billion on VR last year, and 2026 won't be any better | TechCrunch (https://techcrunch.com/2026/01/28/meta-burned-19-billion-on-vr-last-year-and-2026-wont-be-any-better/)"
+  ]
+}

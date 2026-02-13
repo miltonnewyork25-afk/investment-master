@@ -1,0 +1,159 @@
+{
+  "ticker": "META",
+  "fetched_at": "2026-02-13T11:30:00Z",
+  "ceo": {
+    "name": "Mark Zuckerberg",
+    "tenure_years": 22,
+    "background": "Co-founder of Facebook in 2004, dropped out of Harvard to focus on company, became world's youngest self-made billionaire at age 23 in 2008",
+    "track_record": "Led Facebook from Harvard dorm room to world's largest social network, navigated through major challenges including Cambridge Analytica scandal, pivot to metaverse (incurred $13.7B losses), strategic pivot to AI in 2023",
+    "_dm_type": "H",
+    "_dm_source": "Wikipedia, Britannica, Meta official bio",
+    "_dm_date": "2026-02-13"
+  },
+  "cfo": {
+    "name": "Susan Li",
+    "tenure_years": 4,
+    "background": "Joined Meta in 2008, Stanford Economics graduate, previously at Morgan Stanley as investment banking analyst, served as VP of Finance before CFO appointment in November 2022",
+    "_dm_type": "H",
+    "_dm_source": "Bloomberg, Fortune, Clay executive profiles",
+    "_dm_date": "2026-02-13"
+  },
+  "key_executives": [
+    {
+      "name": "Chris Cox",
+      "position": "Chief Product Officer",
+      "_dm_type": "H",
+      "_dm_source": "Meta executive team listings",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "name": "Javier Olivan",
+      "position": "Chief Operating Officer",
+      "_dm_type": "H",
+      "_dm_source": "Meta executive team listings",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "name": "Jennifer Newstead",
+      "position": "Chief Legal Officer",
+      "_dm_type": "H",
+      "_dm_source": "Meta executive team listings",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "name": "Joel Kaplan",
+      "position": "Head of Global Policy",
+      "note": "Appointed January 2025 to lead Facebook's global policy, regulatory, and government relations",
+      "_dm_type": "H",
+      "_dm_source": "Digital Defynd, leadership change reports",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "recent_changes": [
+    {
+      "change": "John Hegeman departure",
+      "role": "Chief Revenue Officer",
+      "date": "November 2025",
+      "context": "17-year veteran stepped down amid AI leadership reshuffle",
+      "_dm_type": "H",
+      "_dm_source": "StockTwits news reports",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "change": "Yann LeCun potential departure",
+      "role": "Chief AI Scientist",
+      "date": "2025",
+      "context": "Reported preparation to leave to launch own start-up",
+      "_dm_type": "R",
+      "_dm_source": "AI restructuring reports",
+      "_dm_date": "2026-02-13",
+      "_dm_chain": "Media reports suggest departure preparation, consistent with AI leadership changes",
+      "_dm_falsifiable": "Official announcement or denial from Meta would confirm/refute"
+    },
+    {
+      "change": "Board additions",
+      "members": ["Dana White (UFC CEO)", "John Elkann", "Charlie Songhurst", "Patrick Collison (Stripe CEO)", "Dina Powell McCormick"],
+      "date": "January 2025",
+      "context": "Multiple new directors elected to strengthen governance",
+      "_dm_type": "H",
+      "_dm_source": "PR Newswire, Payments Dive",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "insider_ownership_pct": 0.07,
+  "_dm_insider_ownership": {
+    "_dm_type": "H",
+    "_dm_source": "TipRanks, Simply Wall St ownership data",
+    "_dm_date": "2026-02-13"
+  },
+  "compensation_highlights": "2025 executive bonus raised from 75% to 200% of base salary. Mark Zuckerberg receives $1 salary. Shareholders approved 2025 Equity Incentive Plan and voted for triennial advisory votes on executive compensation.",
+  "_dm_compensation": {
+    "_dm_type": "H",
+    "_dm_source": "2025 SEC proxy filing, The Register compensation reports",
+    "_dm_date": "2026-02-13"
+  },
+  "governance_notes": "Controlled company structure with majority independent directors. Three standing committees: Audit & Risk Oversight, Compensation/Nominating/Governance, Privacy and Product Compliance. Quarterly board meetings with no term limits.",
+  "_dm_governance": {
+    "_dm_type": "H",
+    "_dm_source": "Meta investor relations governance guidelines",
+    "_dm_date": "2026-02-13"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-MGT-001",
+      "value": "Mark Zuckerberg 22-year tenure as CEO since 2004 founding",
+      "type": "H",
+      "source": "Wikipedia, Britannica Money, Meta official biography",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-MGT-002",
+      "value": "Susan Li appointed CFO November 2022, 16-year Meta veteran",
+      "type": "H",
+      "source": "Bloomberg Markets, Fortune CFO profile",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-MGT-003",
+      "value": "John Hegeman CRO departure November 2025 after 17 years",
+      "type": "H",
+      "source": "StockTwits leadership reshuffle report",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-MGT-004",
+      "value": "Insider ownership 0.07% despite Zuckerberg voting control through dual-class shares",
+      "type": "H",
+      "source": "TipRanks, Simply Wall St ownership analysis",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-MGT-005",
+      "value": "Executive bonus increase 75% to 200% base salary effective 2025",
+      "type": "H",
+      "source": "The Register executive compensation report, 2025 SEC proxy",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-MGT-006",
+      "value": "Five new board directors added January 2025 including Dana White",
+      "type": "H",
+      "source": "PR Newswire board announcement, Digital Watch Observatory",
+      "date": "2026-02-13"
+    }
+  ],
+  "sources": [
+    "[Mark Zuckerberg Biography - Wikipedia](https://en.wikipedia.org/wiki/Mark_Zuckerberg)",
+    "[Mark Zuckerberg Biography & Facts - Britannica Money](https://www.britannica.com/money/Mark-Zuckerberg)",
+    "[Mark Zuckerberg Official Biography - Meta](https://www.meta.com/media-gallery/executives/mark-zuckerberg/)",
+    "[Susan Li CFO Profile - Bloomberg Markets](https://www.bloomberg.com/profile/person/20553956)",
+    "[Meta's Susan Li CFO Profile - Pilot Blog](https://pilot.com/blog/meta-cfo)",
+    "[Meta Executive Leadership Changes - Digital Defynd](https://digitaldefynd.com/IQ/meet-the-executive-csuite-team-of-meta-facebook/)",
+    "[John Hegeman Departure - StockTwits](https://stocktwits.com/news-articles/markets/equity/meta-s-longtime-revenue-chief-john-hegeman-departs-amid-ai-leadership-reshuffle-report/cLPVahvREJP)",
+    "[Meta Board Directors Addition - PR Newswire](https://www.prnewswire.com/news-releases/dana-white-john-elkann-and-charlie-songhurst-to-join-meta-board-of-directors-302343463.html)",
+    "[Meta Leadership & Governance](https://investor.atmeta.com/leadership-and-governance/)",
+    "[Meta Executive Compensation - The Register](https://www.theregister.com/2025/02/22/meta_pumps_executive_bonuses/)",
+    "[Meta Insider Ownership - TipRanks](https://www.tipranks.com/stocks/meta/ownership)",
+    "[Meta Ownership Structure - Simply Wall St](https://simplywall.st/stocks/us/media/nasdaq-meta/meta-platforms/ownership)"
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "version": "4.0",
+  "ticker": "META",
+  "company": "Meta Platforms, Inc.",
+  "generated_at": "2026-02-12T11:20:00Z",
+  "total_anchors": 31,
+  "by_type": {
+    "H": 22,
+    "R": 7,
+    "S": 2
+  },
+  "by_category": {
+    "FIN": 6,
+    "VAL": 7,
+    "MKT": 3,
+    "CON": 2,
+    "PMK": 1,
+    "NEW": 0,
+    "BIZ": 9,
+    "MGT": 2,
+    "SMT": 2,
+    "OPT": 2,
+    "INF": 2,
+    "SUB": 1
+  },
+  "anchors": [
+    {
+      "id": "DM-FIN-001",
+      "value": "FY2025 Revenue $200.97B (+23.8% YoY)",
+      "type": "H",
+      "source": "MCP analyze_stock + Meta FY2025 earnings",
+      "date": "2026-02-12",
+      "used_in": ["Ch02 §2.1", "Ch14 §Reverse DCF"]
+    },
+    {
+      "id": "DM-FIN-002",
+      "value": "FY2025 Net Income $60.46B (+10.7% YoY)",
+      "type": "H",
+      "source": "MCP analyze_stock fundamentals",
+      "date": "2026-02-12",
+      "used_in": ["Ch02 §2.1", "Ch15 §盈利能力"]
+    },
+    {
+      "id": "DM-FIN-003",
+      "value": "Profit Margin 30.1%",
+      "type": "H",
+      "source": "MCP analyze_stock fundamentals",
+      "date": "2026-02-12",
+      "used_in": ["Ch02 §2.2", "Ch05 §定价权"]
+    },
+    {
+      "id": "DM-FIN-004",
+      "value": "Operating Margin 41.4%",
+      "type": "H",
+      "source": "MCP analyze_stock fundamentals",
+      "date": "2026-02-12",
+      "used_in": ["Ch02 §运营效率"]
+    },
+    {
+      "id": "DM-FIN-005",
+      "value": "Free Cash Flow $23.43B",
+      "type": "H",
+      "source": "MCP analyze_stock fundamentals",
+      "date": "2026-02-12",
+      "used_in": ["Ch14 §DCF", "Ch16 §现金创造"]
+    },
+    {
+      "id": "DM-FIN-006",
+      "value": "ROE 30.24%",
+      "type": "H",
+      "source": "MCP analyze_stock fundamentals",
+      "date": "2026-02-12",
+      "used_in": ["Ch05 §资本效率"]
+    },
+    {
+      "id": "DM-VAL-001",
+      "value": "DCF fair value $595.45 vs current $649.81 (-8.4%)",
+      "type": "R",
+      "source": "Internal DCF model v4.0",
+      "date": "2026-02-12",
+      "used_in": ["Ch14 §DCF"]
+    },
+    {
+      "id": "DM-VAL-002",
+      "value": "P/E (TTM) 28.49x",
+      "type": "H",
+      "source": "MCP analyze_stock basic_data",
+      "date": "2026-02-12",
+      "used_in": ["Ch14 §估值对比"]
+    },
+    {
+      "id": "DM-VAL-003",
+      "value": "Forward P/E 18.22x",
+      "type": "H",
+      "source": "MCP analyze_stock basic_data",
+      "date": "2026-02-12",
+      "used_in": ["Ch14 §Forward估值"]
+    },
+    {
+      "id": "DM-VAL-004",
+      "value": "META P/E 28.49x vs peer average 29.11x (-2.1% discount)",
+      "type": "H",
+      "source": "Peer comparison analysis",
+      "date": "2026-02-12",
+      "used_in": ["Ch14 §相对估值"]
+    },
+    {
+      "id": "DM-VAL-005",
+      "value": "META forward P/E 18.22x vs peer average 24.88x (-26.8% discount)",
+      "type": "H",
+      "source": "Peer comparison analysis",
+      "date": "2026-02-12",
+      "used_in": ["Ch14 §Forward对比"]
+    },
+    {
+      "id": "DM-MKT-001",
+      "value": "当前股价 $649.81",
+      "type": "H",
+      "source": "MCP analyze_stock",
+      "date": "2026-02-12",
+      "used_in": ["全文引用"]
+    },
+    {
+      "id": "DM-MKT-002",
+      "value": "52周高点 $796.25, 低点 $479.8",
+      "type": "H",
+      "source": "MCP analyze_stock basic_data",
+      "date": "2026-02-12",
+      "used_in": ["Ch01 §股价历史"]
+    },
+    {
+      "id": "DM-MKT-003",
+      "value": "RSI 47.87 (中性区间)",
+      "type": "H",
+      "source": "MCP analyze_stock technical",
+      "date": "2026-02-12",
+      "used_in": ["Ch01 §技术面"]
+    },
+    {
+      "id": "DM-CON-001",
+      "value": "分析师共识评级 Buy (35 Buy / 8 Hold / 2 Sell)",
+      "type": "H",
+      "source": "WebSearch Agent-A analyst consensus",
+      "date": "2026-02-12",
+      "used_in": ["Ch13 §分析师共识"]
+    },
+    {
+      "id": "DM-CON-002",
+      "value": "平均目标价 $725.40 (+11.6% upside)",
+      "type": "H",
+      "source": "WebSearch Agent-A analyst consensus",
+      "date": "2026-02-12",
+      "used_in": ["Ch13 §目标价分布"]
+    },
+    {
+      "id": "DM-PMK-001",
+      "value": "Meta Q1 2026 earnings beat 概率 68%",
+      "type": "H",
+      "source": "Polymarket via WebSearch Agent-B",
+      "date": "2026-02-12",
+      "used_in": ["Ch09 §市场预期"]
+    },
+    {
+      "id": "DM-BIZ-001",
+      "value": "Family of Apps revenue $180.96B (90.1% of total)",
+      "type": "H",
+      "source": "Meta FY2025 10-K",
+      "date": "2026-02-12",
+      "used_in": ["Ch03 §业务矩阵"]
+    },
+    {
+      "id": "DM-BIZ-002",
+      "value": "Reality Labs revenue $20.0B (9.9% of total)",
+      "type": "H",
+      "source": "Meta FY2025 10-K",
+      "date": "2026-02-12",
+      "used_in": ["Ch03 §业务矩阵"]
+    },
+    {
+      "id": "DM-BIZ-003",
+      "value": "US&Canada revenue $79.8B (39.7% of total)",
+      "type": "H",
+      "source": "Meta FY2025 10-K geographic revenue",
+      "date": "2026-02-12",
+      "used_in": ["Ch04 §地理分布"]
+    },
+    {
+      "id": "DM-BIZ-004",
+      "value": "Facebook MAU 3.35B users",
+      "type": "H",
+      "source": "Meta Q4 2025 earnings",
+      "date": "2026-02-12",
+      "used_in": ["Ch05 §用户基础"]
+    },
+    {
+      "id": "DM-BIZ-010",
+      "value": "Meta social media market share 29.4% (rank #1)",
+      "type": "H",
+      "source": "eMarketer 2025 research",
+      "date": "2026-02-12",
+      "used_in": ["Ch06 §竞争地位"]
+    },
+    {
+      "id": "DM-BIZ-011",
+      "value": "TikTok market share 18.7% (main competitor)",
+      "type": "H",
+      "source": "eMarketer 2025 research",
+      "date": "2026-02-12",
+      "used_in": ["Ch06 §竞争威胁"]
+    },
+    {
+      "id": "DM-MGT-001",
+      "value": "CEO Mark Zuckerberg, 22年任期(2004-至今)",
+      "type": "H",
+      "source": "WebSearch Agent-E management analysis",
+      "date": "2026-02-12",
+      "used_in": ["Ch07 §管理层"]
+    },
+    {
+      "id": "DM-MGT-002",
+      "value": "CFO Susan Li, 2022年上任, Meta 16年老员工",
+      "type": "H",
+      "source": "WebSearch Agent-E management analysis",
+      "date": "2026-02-12",
+      "used_in": ["Ch07 §财务管理"]
+    },
+    {
+      "id": "DM-SMT-001",
+      "value": "机构持股91.27% (6,738家机构)",
+      "type": "H",
+      "source": "WebSearch Agent-F smart money analysis",
+      "date": "2026-02-12",
+      "used_in": ["Ch08 §机构态度"]
+    },
+    {
+      "id": "DM-SMT-002",
+      "value": "Bill Ackman新进$20亿仓位(均价$625)",
+      "type": "H",
+      "source": "WebSearch Agent-F smart money analysis",
+      "date": "2026-02-12",
+      "used_in": ["Ch08 §Smart Money信号"]
+    },
+    {
+      "id": "DM-OPT-001",
+      "value": "做空股数2,772.5万股(占流通股1.28%)",
+      "type": "H",
+      "source": "WebSearch Agent-G options analysis",
+      "date": "2026-02-12",
+      "used_in": ["Ch09 §市场情绪"]
+    },
+    {
+      "id": "DM-OPT-002",
+      "value": "看跌/看涨比率0.70(偏向看涨)",
+      "type": "H",
+      "source": "WebSearch Agent-G options analysis",
+      "date": "2026-02-12",
+      "used_in": ["Ch09 §期权情绪"]
+    },
+    {
+      "id": "DM-INF-001",
+      "value": "Revenue CAGR FY2025-FY2030E ~12-15%",
+      "type": "R",
+      "source": "WebSearch Agent-A + DCF模型推导",
+      "date": "2026-02-12",
+      "chain": "当前+23.8% → AI加速增长 → 逐步成熟减速至长期增速",
+      "falsifiable": "连续2个季度收入增长<10%",
+      "used_in": ["Ch14 §14.2 成长性评估"]
+    },
+    {
+      "id": "DM-INF-002",
+      "value": "AI CapEx回报周期2-3年",
+      "type": "R",
+      "source": "CapEx指引 + 历史ROI模式分析",
+      "date": "2026-02-12",
+      "chain": "$125-135B年投入 → AI广告效率提升 → ARPU增长验证ROI",
+      "falsifiable": "ARPU增速连续3Q <10%",
+      "used_in": ["Ch03 §CapEx评估"]
+    },
+    {
+      "id": "DM-SUB-001",
+      "value": "护城河综合评估: 强",
+      "type": "S",
+      "source": "竞争分析 + 护城河理论应用",
+      "date": "2026-02-12",
+      "used_in": ["Ch05 §护城河评估"]
+    }
+  ],
+  "quality": {
+    "h_pct": 71.0,
+    "r_pct": 22.6,
+    "s_pct": 6.4,
+    "h_target_pct": 50,
+    "passed": true
+  }
+}

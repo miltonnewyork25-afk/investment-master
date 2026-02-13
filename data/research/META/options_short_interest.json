@@ -1,0 +1,105 @@
+{
+  "ticker": "META",
+  "fetched_at": "2026-02-13T11:30:00Z",
+  "short_interest": {
+    "shares_short": 27725000,
+    "short_pct_float": 1.28,
+    "days_to_cover": null,
+    "vs_sector_avg": "low",
+    "trend": "decreasing",
+    "_dm_type": "H",
+    "_dm_source": "MarketBeat, Fintel",
+    "_dm_date": "2026-02-12"
+  },
+  "options_sentiment": {
+    "put_call_ratio": 0.70,
+    "implied_volatility": null,
+    "iv_rank": "above_52w_avg",
+    "unusual_activity": [
+      "General monitoring tools available but specific activity data requires premium access"
+    ],
+    "earnings_expected_move": 6.6,
+    "earnings_expected_move_dollars": 44.46,
+    "_dm_type": "H",
+    "_dm_source": "Fintel, Barchart, Options AI",
+    "_dm_date": "2026-02-12"
+  },
+  "short_squeeze_potential": {
+    "risk_score": null,
+    "assessment": "low_risk",
+    "rationale": "Short interest at 1.28% of float is well below 10% threshold typically associated with squeeze risk",
+    "_dm_type": "R",
+    "_dm_source": "WebSearch analysis",
+    "_dm_date": "2026-02-12",
+    "_dm_chain": "Short squeeze risk typically requires >10% short interest. META at 1.28% suggests minimal squeeze potential",
+    "_dm_falsifiable": "Short squeeze risk would increase if short interest rises above 5-10% of float"
+  },
+  "volatility_analysis": {
+    "iv_vs_historical": "monitoring_available",
+    "assessment": "Tools available for IV comparison but specific current metrics require premium access",
+    "_dm_type": "S",
+    "_dm_source": "Barchart, ORATS, OptionCharts",
+    "_dm_date": "2026-02-12"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-OPT-001",
+      "value": "27.725M shares short (1.28% of float)",
+      "type": "H",
+      "source": "MarketBeat short interest data",
+      "date": "2026-02-12"
+    },
+    {
+      "id": "DM-OPT-002",
+      "value": "Put/call ratio 0.70 (bullish sentiment)",
+      "type": "H",
+      "source": "Fintel options sentiment data",
+      "date": "2026-02-12"
+    },
+    {
+      "id": "DM-OPT-003",
+      "value": "Short squeeze risk assessed as low",
+      "type": "R",
+      "source": "Analysis based on 1.28% short interest vs 10% typical threshold",
+      "date": "2026-02-12",
+      "chain": "Short squeeze risk correlates with short interest percentage. META's 1.28% is far below risk levels.",
+      "falsifiable": "Risk assessment would change if short interest exceeded 5-10% of float"
+    },
+    {
+      "id": "DM-OPT-004",
+      "value": "Expected earnings move 6.6% ($44.46)",
+      "type": "H",
+      "source": "Options AI expected move calculation",
+      "date": "2026-02-12"
+    },
+    {
+      "id": "DM-OPT-005",
+      "value": "Short interest trend decreasing (280.30M to 275.20M shares)",
+      "type": "H",
+      "source": "MarketBeat short interest trend data",
+      "date": "2026-02-12"
+    }
+  ],
+  "sources": [
+    {
+      "title": "Meta Platforms (META) Short Interest & Short Float | Updated Jan 2026",
+      "url": "https://www.marketbeat.com/stocks/NASDAQ/META/short-interest/"
+    },
+    {
+      "title": "META / Meta Platforms, Inc. - Put/Call Ratio, Options Sentiment, Unusual Options Activity",
+      "url": "https://fintel.io/sopt/us/meta"
+    },
+    {
+      "title": "META Put/Call Ratio for Meta Platforms Stock",
+      "url": "https://www.barchart.com/stocks/quotes/META/put-call-ratios"
+    },
+    {
+      "title": "META Options Volatility & Greeks for Meta Platforms Stock",
+      "url": "https://www.barchart.com/stocks/quotes/META/volatility-greeks"
+    },
+    {
+      "title": "Meta Platforms, Inc. (META) Expected Move | Options AI",
+      "url": "https://tools.optionsai.com/expected-move/META"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "ticker": "META",
+  "fetched_at": "2026-02-12T11:20:00Z",
+  "market_position": {
+    "rank": 1,
+    "market_share": 29.4,
+    "trend": "Stable with TikTok pressure",
+    "_dm_type": "H",
+    "_dm_source": "eMarketer social media market share 2025",
+    "_dm_date": "2026-02-12"
+  },
+  "competitors": [
+    {
+      "name": "TikTok",
+      "ticker": "Private",
+      "market_share": 18.7,
+      "key_advantage": "Short-form video dominance, younger demographics",
+      "_dm_type": "H",
+      "_dm_source": "eMarketer social media research",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "name": "YouTube",
+      "ticker": "GOOGL",
+      "market_share": 15.3,
+      "key_advantage": "Long-form video, creator economy",
+      "_dm_type": "H",
+      "_dm_source": "eMarketer social media research",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "name": "X (Twitter)",
+      "ticker": "Private",
+      "market_share": 8.2,
+      "key_advantage": "Real-time news and conversation",
+      "_dm_type": "H",
+      "_dm_source": "eMarketer social media research",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "name": "Snapchat",
+      "ticker": "SNAP",
+      "market_share": 6.1,
+      "key_advantage": "AR filters, teen engagement",
+      "_dm_type": "H",
+      "_dm_source": "eMarketer social media research",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "name": "LinkedIn",
+      "ticker": "MSFT",
+      "market_share": 4.8,
+      "key_advantage": "Professional networking, B2B focus",
+      "_dm_type": "H",
+      "_dm_source": "eMarketer social media research",
+      "_dm_date": "2026-02-12"
+    }
+  ],
+  "competitive_dynamics": "Meta maintains leadership through scale and network effects, but faces pressure from TikTok in short-form video and from AI-powered alternatives in search/discovery",
+  "moat_indicators": [
+    "Network effects with 3.3B+ cross-platform users",
+    "Switching costs through social graphs and content history",
+    "Data advantages for ad targeting",
+    "Developer ecosystem with 200M+ businesses",
+    "AI infrastructure and talent concentration"
+  ],
+  "industry_specific": {
+    "digital_ad_market_share": 23.1,
+    "social_commerce_leadership": "Instagram Shopping, Facebook Marketplace",
+    "metaverse_investment": "$19.19B RL losses in FY2025",
+    "ai_competition": "Competing with ChatGPT, Gemini in AI assistant space"
+  },
+  "dm_anchors": [
+    { "id": "DM-BIZ-010", "value": "Meta social media market share 29.4% (rank #1)", "type": "H", "source": "eMarketer 2025 research", "date": "2026-02-12" },
+    { "id": "DM-BIZ-011", "value": "TikTok market share 18.7% (main competitor)", "type": "H", "source": "eMarketer 2025 research", "date": "2026-02-12" },
+    { "id": "DM-BIZ-012", "value": "Meta digital ad market share 23.1%", "type": "H", "source": "eMarketer digital ad research", "date": "2026-02-12" },
+    { "id": "DM-BIZ-013", "value": "Cross-platform user base 3.3B+ creates network effects moat", "type": "R", "source": "Meta user metrics analysis", "date": "2026-02-12" },
+    { "id": "DM-BIZ-014", "value": "Developer ecosystem 200M+ businesses provides switching costs", "type": "H", "source": "Meta business platform metrics", "date": "2026-02-12" }
+  ],
+  "sources": [
+    "eMarketer Social Media Market Share Reports",
+    "Digital Advertising Market Analysis",
+    "Meta Platforms Investor Relations",
+    "TechCrunch Competitive Analysis",
+    "Statista Digital Marketing Reports"
+  ]
+}

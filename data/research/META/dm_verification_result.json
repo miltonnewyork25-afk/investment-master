@@ -1,0 +1,45 @@
+{
+  "ticker": "META",
+  "verified_at": "2026-02-12T11:20:00Z",
+  "total_checks": 7,
+  "passed": 7,
+  "failed": 0,
+  "warnings": 0,
+  "details": [
+    {
+      "check": "unique_ids",
+      "status": "pass",
+      "message": "31 anchors, 0 duplicates"
+    },
+    {
+      "check": "type_completeness",
+      "status": "pass",
+      "message": "31/31 have type"
+    },
+    {
+      "check": "source_completeness",
+      "status": "pass",
+      "message": "31/31 have source"
+    },
+    {
+      "check": "r_chain_coverage",
+      "status": "pass",
+      "message": "2/2 R anchors have chain+falsifiable"
+    },
+    {
+      "check": "h_ratio",
+      "status": "pass",
+      "message": "H=71.0% >= 50%"
+    },
+    {
+      "check": "json_consistency",
+      "status": "pass",
+      "message": "registry matches all agent outputs"
+    },
+    {
+      "check": "shared_context_sync",
+      "status": "pass",
+      "message": "shared_context.md aligned"
+    }
+  ]
+}

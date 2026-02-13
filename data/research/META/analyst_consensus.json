@@ -1,0 +1,181 @@
+{
+  "ticker": "META",
+  "fetched_at": "2026-02-13T11:15:00Z",
+  "consensus": {
+    "rating": "Strong Buy",
+    "buy_count": 32,
+    "hold_count": 8,
+    "sell_count": 0,
+    "avg_price_target": 838.08,
+    "high_target": 1144.00,
+    "low_target": 645.00,
+    "_dm_type": "H",
+    "_dm_source": "TipRanks/MarketBeat/公开源汇总40分析师",
+    "_dm_date": "2026-02-13"
+  },
+  "earnings_estimates": {
+    "current_quarter": {
+      "quarter": "Q1 2026",
+      "eps_est": 0,
+      "rev_est": 55000,
+      "_dm_type": "H",
+      "_dm_source": "META Q1 2026指导范围中值",
+      "_dm_date": "2026-02-13"
+    },
+    "next_quarter": {
+      "quarter": "Q2 2026",
+      "eps_est": 6.81,
+      "rev_est": 55460,
+      "_dm_type": "H",
+      "_dm_source": "分析师共识估值",
+      "_dm_date": "2026-02-13"
+    }
+  },
+  "earnings_surprise_history": [
+    {
+      "quarter": "Q4 2025",
+      "eps_actual": 8.88,
+      "eps_estimate": 8.19,
+      "surprise_percent": 8.42,
+      "revenue_actual": 59900,
+      "revenue_estimate": 58350,
+      "_dm_type": "H",
+      "_dm_source": "META财报",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "quarter": "Q3 2025",
+      "eps_actual": 8.02,
+      "eps_estimate": 6.68,
+      "surprise_percent": 20.06,
+      "_dm_type": "H",
+      "_dm_source": "历史财报数据",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "quarter": "Q3 2024",
+      "eps_actual": 6.03,
+      "eps_estimate": 5.19,
+      "surprise_percent": 16.18,
+      "_dm_type": "H",
+      "_dm_source": "历史财报数据",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-01-26",
+      "action": "upgrade",
+      "firm": "Rothschild & Co",
+      "new_target": 900,
+      "rating": "Neutral to Buy",
+      "_dm_type": "H",
+      "_dm_source": "分析师评级变更记录",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "date": "2026-01-13",
+      "action": "downgrade",
+      "firm": "Wells Fargo",
+      "new_target": 795,
+      "old_target": 802,
+      "_dm_type": "H",
+      "_dm_source": "分析师评级变更记录",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "bull_bear_summary": {
+    "bull_case": "AI技术进步驱动广告精准度提升，庞大用户基础支撑增长，Llama模型升级，WhatsApp和Threads货币化加速。股价估值合理(10-11x NTM EV/EBITDA略低于历史均值)",
+    "bear_case": "在AI竞赛中落后，基础设施投资ROI不确定，营收和KPI对比基数较高，新业务货币化缓慢，TikTok在美国复苏构成威胁，监管阻力和竞争压力",
+    "_dm_type": "R",
+    "_dm_source": "分析师观点综合",
+    "_dm_date": "2026-02-13",
+    "_dm_chain": "基于9项WebSearch结果中bull/bear case关键词提取→观点分类→逻辑归纳",
+    "_dm_falsifiable": "如果META广告收入增速持续下滑至个位数或AI投资ROI低于15%则bear case成立"
+  },
+  "industry_specific": {
+    "ai_monetization": {
+      "capex_2026": 127500,
+      "revenue_impact": "AI驱动广告点击提升3.5%(Facebook)和转化率提升1%(Instagram)",
+      "roi_status": "增量ROI保持20%以上",
+      "_dm_type": "H",
+      "_dm_source": "META财报AI投资指导",
+      "_dm_date": "2026-02-13"
+    },
+    "metaverse_outlook": {
+      "reality_labs_loss_q4": -6020,
+      "reality_labs_revenue_q4": 955,
+      "cumulative_losses": -80000,
+      "outlook": "2026年损失将达到峰值，此后逐渐减少",
+      "_dm_type": "H",
+      "_dm_source": "META Reality Labs财报数据",
+      "_dm_date": "2026-02-13"
+    }
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-CON-001",
+      "value": "Strong Buy评级基于40分析师共识，平均目标价$838.08",
+      "type": "H",
+      "source": "TipRanks/MarketBeat多源汇总",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-CON-002",
+      "value": "Q1 2026营收指导$53.5-56.5B，超共识$51.27B",
+      "type": "H",
+      "source": "META官方财报指导",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-CON-003",
+      "value": "连续3季度EPS超预期(Q4'25: +8.4%, Q3'25: +20.1%, Q3'24: +16.2%)",
+      "type": "H",
+      "source": "历史财报surprise记录",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-CON-004",
+      "value": "2026年资本支出$115-135B主要用于AI基础设施投资",
+      "type": "H",
+      "source": "META财报指导",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-CON-005",
+      "value": "Reality Labs累计亏损$80B，但2026年将是损失峰值",
+      "type": "H",
+      "source": "META Reality Labs分部财报",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-CON-006",
+      "value": "分析师bull case基于AI广告精准度提升和用户基础增长",
+      "type": "R",
+      "source": "分析师观点综合",
+      "date": "2026-02-13",
+      "chain": "多家券商报告提及AI技术→广告精准度→点击率转化率提升→营收增长逻辑链",
+      "falsifiable": "如果广告收入同比增速连续2季度低于15%则该逻辑失效"
+    },
+    {
+      "id": "DM-CON-007",
+      "value": "bear case聚焦AI竞争落后和基础设施投资ROI不确定性",
+      "type": "R",
+      "source": "分析师观点综合",
+      "date": "2026-02-13",
+      "chain": "AI投资$135B→ROI不明确→与MSFT/GOOGL竞争劣势→市场份额风险",
+      "falsifiable": "如果META发布具体AI货币化路径和ROI数据则该担忧缓解"
+    }
+  ],
+  "sources": [
+    "Meta (META) Stock Forecast: Analyst Ratings, Predictions & Price Target 2026 - https://public.com/stocks/meta/forecast-price-target",
+    "Meta Platforms (META) Stock Forecast, Price Targets and Analysts Predictions - https://www.tipranks.com/stocks/meta/forecast",
+    "META Stock Analysis: The Bull and Bear Case for Buying Meta Platforms - https://www.nasdaq.com/articles/meta-stock-analysis-bull-and-bear-case-buying-meta-platforms",
+    "Meta Q1 2026 Earnings Report Released - https://www.macobserver.com/news/meta-first-earnings-call-of-2026-full-schedule-and-investor-preview/",
+    "Meta Platforms, Inc. (META) Earnings Surprise Summary - https://seekingalpha.com/symbol/META/earnings/eps-surprise-summary",
+    "Meta Platforms Analyst Ratings and Price Targets - https://www.benzinga.com/quote/META/analyst-ratings",
+    "Meta Platforms, Inc. (META) Earnings Estimates, Revenue Estimates - https://seekingalpha.com/symbol/META/earnings/estimates",
+    "Meta Q4 FY 2025 Results Underscore AI-Fueled Ads Momentum - https://futurumgroup.com/insights/meta-q4-fy-2025-results-underscore-ai-fueled-ads-momentum/",
+    "Meta's Reality Labs posts $6.02 billion loss in fourth quarter - https://www.cnbc.com/2026/01/28/metas-reality-labs-posts-6point02-billion-loss-in-fourth-quarter.html"
+  ]
+}

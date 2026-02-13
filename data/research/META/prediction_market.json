@@ -1,0 +1,149 @@
+{
+  "ticker": "META",
+  "fetched_at": "2026-02-13T11:30:00Z",
+  "macro_events": [
+    {
+      "event": "US recession by end of 2026",
+      "platform": "Polymarket",
+      "probability": 26,
+      "last_updated": "2026-02-13",
+      "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "_dm_type": "H",
+      "_dm_source": "Polymarket web scraping 2026-02-13",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "event": "US inflation above 3% in 2026",
+      "platform": "Polymarket",
+      "probability": 67,
+      "last_updated": "2026-02-13",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "_dm_type": "H",
+      "_dm_source": "Polymarket inflation market 2026-02-13",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "event": "Federal Reserve rate cuts in 2026",
+      "platform": "Kalshi",
+      "probability": null,
+      "last_updated": "2026-02-13",
+      "url": "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31",
+      "_dm_type": "R",
+      "_dm_source": "Kalshi market exists but specific odds not captured in search",
+      "_dm_date": "2026-02-13",
+      "_dm_chain": "Kalshi search showed rate cut markets exist for 2026 → traders are actively betting on Fed policy → market sentiment available but specific probabilities not captured",
+      "_dm_falsifiable": "Could be falsified by visiting Kalshi directly and finding no active rate cut markets"
+    }
+  ],
+  "company_specific": [
+    {
+      "event": "Meta beats Q4 2025 earnings (EPS > $8.19)",
+      "platform": "Polymarket",
+      "probability": 91,
+      "last_updated": "2026-01-28",
+      "url": "https://polymarket.com/event/meta-quarterly-earnings-gaap-eps-10-29-2025-6pt72",
+      "_dm_type": "H",
+      "_dm_source": "TipRanks reporting Polymarket odds pre-earnings",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "event": "Meta stock price above $700 in February 2026",
+      "platform": "Polymarket",
+      "probability": 100,
+      "last_updated": "2026-02-13",
+      "url": "https://polymarket.com/predictions/meta",
+      "_dm_type": "H",
+      "_dm_source": "Polymarket Meta predictions page 2026-02-13",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "event": "Meta settles with FTC by Dec 2025",
+      "platform": "Polymarket",
+      "probability": null,
+      "last_updated": "2026-02-13",
+      "url": "https://polymarket.com/event/will-meta-settle-with-the-ftc",
+      "_dm_type": "H",
+      "_dm_source": "Polymarket antitrust search results 2026-02-13",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "industry_events": [
+    {
+      "event": "Big Tech antitrust enforcement action",
+      "platform": "Polymarket",
+      "probability": null,
+      "last_updated": "2026-02-13",
+      "url": "https://polymarket.com/predictions/big-tech",
+      "_dm_type": "R",
+      "_dm_source": "Polymarket hosts 125 active Big Tech markets with $38.5M volume",
+      "_dm_date": "2026-02-13",
+      "_dm_chain": "Polymarket search showed active Big Tech markets → significant trading volume indicates market interest → antitrust concerns are being actively priced",
+      "_dm_falsifiable": "Could be falsified by finding no Big Tech-related regulatory markets on Polymarket"
+    },
+    {
+      "event": "Social media regulation enforcement 2026",
+      "platform": "Kalshi",
+      "probability": null,
+      "last_updated": "2026-02-13",
+      "url": "https://kalshi.com/tag/social-media",
+      "_dm_type": "R",
+      "_dm_source": "Kalshi social media tag page exists",
+      "_dm_date": "2026-02-13",
+      "_dm_chain": "Search found Kalshi has social media prediction markets → regulatory activity is being tracked → enforcement probability can be inferred",
+      "_dm_falsifiable": "Could be falsified by finding no social media regulation markets on Kalshi platform"
+    }
+  ],
+  "no_coverage": [
+    "AI regulation specific to Meta platforms",
+    "Metaverse/VR adoption rates",
+    "Tech stock crash probabilities",
+    "Reality Labs profitability targets"
+  ],
+  "dm_anchors": [
+    {
+      "id": "DM-PMK-001",
+      "value": "26% probability of US recession by end of 2026",
+      "type": "H",
+      "source": "Polymarket recession market",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-PMK-002",
+      "value": "67% probability of US inflation above 3% in 2026",
+      "type": "H",
+      "source": "Polymarket inflation market",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-PMK-003",
+      "value": "91% probability Meta beats Q4 2025 earnings",
+      "type": "H",
+      "source": "Polymarket pre-earnings odds via TipRanks",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-PMK-004",
+      "value": "100% probability Meta hits $700+ in February 2026",
+      "type": "H",
+      "source": "Polymarket Meta price predictions",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-PMK-005",
+      "value": "125 active Big Tech markets on Polymarket with $38.5M volume",
+      "type": "H",
+      "source": "Polymarket Big Tech search results",
+      "date": "2026-02-13"
+    }
+  ],
+  "sources": [
+    "https://polymarket.com/event/us-recession-by-end-of-2026",
+    "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+    "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31",
+    "https://www.tipranks.com/news/polymarket-odds-will-tsla-meta-msft-beat-earnings-tomorrow",
+    "https://polymarket.com/predictions/meta",
+    "https://polymarket.com/event/will-meta-settle-with-the-ftc",
+    "https://polymarket.com/predictions/big-tech",
+    "https://kalshi.com/tag/social-media"
+  ]
+}

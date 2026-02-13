@@ -1,0 +1,83 @@
+{
+  "basic_data": {
+    "symbol": "META",
+    "data_source": "FMP(profile,quote,ratios,metrics)+yfinance",
+    "name": "Meta Platforms, Inc.",
+    "sector": "Technology",
+    "industry": "Internet Content & Information",
+    "market_cap": null,
+    "price": 649.81,
+    "52w_high": 796.25,
+    "52w_low": 479.8,
+    "pe_ratio": 28.487944,
+    "pb_ratio": 7.660025363302845,
+    "dividend_yield": 0.00319935216844356,
+    "roe": 0.30238,
+    "profit_margin": 0.3008369574952977,
+    "operating_margin": 0.41437855159579234,
+    "revenue": 200965996544,
+    "revenue_growth": 0.238,
+    "free_cashflow": 23432374272,
+    "history_summary": {
+      "recent_5d": [
+        {
+          "date": "2026-02-06",
+          "close": 661.46,
+          "volume": 18159300
+        },
+        {
+          "date": "2026-02-09",
+          "close": 677.22,
+          "volume": 14837500
+        },
+        {
+          "date": "2026-02-10",
+          "close": 670.72,
+          "volume": 10455800
+        },
+        {
+          "date": "2026-02-11",
+          "close": 668.69,
+          "volume": 14323800
+        },
+        {
+          "date": "2026-02-12",
+          "close": 649.81,
+          "volume": 14903200
+        }
+      ],
+      "period_high": 788.82,
+      "period_low": 427.64,
+      "period_return": 42.21,
+      "avg_volume": 14878456,
+      "trading_days": 502
+    },
+    "forward_pe": 18.21706,
+    "beta": 1.284
+  },
+  "fundamentals": {
+    "symbol": "META",
+    "data_source": "FMP(metrics,ratios,income)+yfinance",
+    "revenue": 200965996544,
+    "revenue_growth": 0.238,
+    "free_cashflow": 23432374272,
+    "earnings_growth": 0.107,
+    "profit_margin": 0.3008369574952977,
+    "operating_margin": 0.41437855159579234,
+    "roe": 0.30238,
+    "roa": 0.16212,
+    "debt_to_equity": 39.164,
+    "current_ratio": 2.5987666124868536,
+    "earnings": 60458000000
+  },
+  "technical": {
+    "symbol": "META",
+    "price": 649.8099975585938,
+    "sma_20": 664.9299957275391,
+    "sma_50": 658.2375622558594,
+    "sma_200": 687.6612219238282,
+    "rsi": 47.87400465165236,
+    "volume": 14903200.0,
+    "trend": "下跌"
+  }
+}

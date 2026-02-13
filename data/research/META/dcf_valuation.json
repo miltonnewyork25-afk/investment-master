@@ -1,0 +1,92 @@
+{
+  "ticker": "META",
+  "model_version": "v4.0",
+  "calculated_at": "2026-02-12T11:20:00Z",
+  "current_price": 649.81,
+  "dcf_fair_value": 595.45,
+  "upside_downside_pct": -8.4,
+  "assumptions": {
+    "revenue_growth": {
+      "2026e": 0.185,
+      "2027e": 0.142,
+      "2028e": 0.118,
+      "2029e": 0.095,
+      "2030e": 0.078,
+      "terminal": 0.035,
+      "_dm_type": "R",
+      "_dm_source": "Analyst consensus + AI adoption curve modeling",
+      "_dm_date": "2026-02-12"
+    },
+    "operating_margin": {
+      "2026e": 0.285,
+      "2027e": 0.295,
+      "2028e": 0.305,
+      "2029e": 0.315,
+      "2030e": 0.325,
+      "terminal": 0.330,
+      "_dm_type": "R",
+      "_dm_source": "Operating leverage from AI efficiency + scale effects",
+      "_dm_date": "2026-02-12"
+    },
+    "capex_revenue_ratio": {
+      "2026e": 0.195,
+      "2027e": 0.165,
+      "2028e": 0.145,
+      "2029e": 0.125,
+      "2030e": 0.115,
+      "terminal": 0.100,
+      "_dm_type": "R",
+      "_dm_source": "AI infrastructure buildout peak in 2026, then normalize",
+      "_dm_date": "2026-02-12"
+    },
+    "wacc": 0.092,
+    "terminal_growth": 0.035,
+    "tax_rate": 0.21
+  },
+  "scenarios": {
+    "base_case": {
+      "fair_value": 595.45,
+      "probability": 0.45,
+      "_dm_type": "R",
+      "_dm_source": "DCF base case with consensus assumptions",
+      "_dm_date": "2026-02-12"
+    },
+    "bull_case": {
+      "fair_value": 798.32,
+      "probability": 0.25,
+      "key_drivers": ["AI monetization acceleration", "Metaverse breakthrough", "Margin expansion"],
+      "_dm_type": "R",
+      "_dm_source": "DCF bull case with accelerated AI adoption",
+      "_dm_date": "2026-02-12"
+    },
+    "bear_case": {
+      "fair_value": 423.67,
+      "probability": 0.30,
+      "key_drivers": ["Regulation headwinds", "AI ROI disappointment", "TikTok share gains"],
+      "_dm_type": "R",
+      "_dm_source": "DCF bear case with regulatory and competitive pressures",
+      "_dm_date": "2026-02-12"
+    }
+  },
+  "sensitivity_analysis": {
+    "wacc_range": [0.08, 0.09, 0.10, 0.11, 0.12],
+    "terminal_growth_range": [0.02, 0.025, 0.03, 0.035, 0.04],
+    "value_matrix": [
+      [712.45, 645.32, 589.21, 542.18, 502.87],
+      [678.92, 618.76, 568.45, 525.33, 489.12],
+      [649.81, 595.45, 550.12, 511.67, 478.95],
+      [624.56, 574.89, 533.21, 498.45, 469.23],
+      [602.34, 556.78, 518.67, 486.89, 460.12]
+    ]
+  },
+  "dm_anchors": [
+    { "id": "DM-VAL-001", "value": "DCF fair value $595.45 vs current $649.81 (-8.4%)", "type": "R", "source": "Internal DCF model v4.0", "date": "2026-02-12" },
+    { "id": "DM-VAL-002", "value": "WACC assumption 9.2%", "type": "R", "source": "CAPM model with current risk-free rate", "date": "2026-02-12" },
+    { "id": "DM-VAL-003", "value": "Terminal growth 3.5%", "type": "R", "source": "Long-term GDP growth assumption", "date": "2026-02-12" }
+  ],
+  "model_notes": [
+    "High CapEx assumptions for 2026-2027 reflecting AI infrastructure investment",
+    "Operating margin expansion assumes successful AI monetization and efficiency gains",
+    "Terminal value represents 68% of total enterprise value"
+  ]
+}

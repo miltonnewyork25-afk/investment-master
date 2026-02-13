@@ -1,0 +1,184 @@
+{
+  "ticker": "META",
+  "fetched_at": "2026-02-13T03:35:00Z",
+  "market_position": {
+    "rank": 1,
+    "market_share": 69.71,
+    "trend": "Dominant but facing intensified competition from TikTok and YouTube",
+    "_dm_type": "H",
+    "_dm_source": "sociallyin.com Meta statistics 2026 market share data",
+    "_dm_date": "2026-02-13"
+  },
+  "competitors": [
+    {
+      "name": "TikTok",
+      "ticker": "Private",
+      "market_share": 15.8,
+      "key_advantage": "3.70% engagement rate (+49% YoY), superior to Meta's 0.48%",
+      "_dm_type": "H",
+      "_dm_source": "sproutsocial.com social media engagement benchmarks 2026",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "name": "YouTube",
+      "ticker": "GOOGL",
+      "market_share": 22.4,
+      "key_advantage": "2.58B advertising reach, Shorts reached 2B MAU surpassing TikTok",
+      "_dm_type": "H",
+      "_dm_source": "sproutsocial.com YouTube performance metrics 2026",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "name": "Snapchat",
+      "ticker": "SNAP",
+      "market_share": 5.2,
+      "key_advantage": "Strong Gen Z engagement and AR/camera innovation",
+      "_dm_type": "R",
+      "_dm_source": "Industry analysis and positioning assessment",
+      "_dm_date": "2026-02-13",
+      "_dm_chain": "Snapchat's historical strength in younger demographics and AR technology development",
+      "_dm_falsifiable": "Snapchat losing Gen Z market share or abandoning AR focus would contradict this advantage"
+    },
+    {
+      "name": "X (Twitter)",
+      "ticker": "Private",
+      "market_share": 3.8,
+      "key_advantage": "Real-time news and public discourse platform",
+      "_dm_type": "R",
+      "_dm_source": "Platform positioning analysis",
+      "_dm_date": "2026-02-13",
+      "_dm_chain": "X maintains unique position in real-time information sharing despite ownership changes",
+      "_dm_falsifiable": "Loss of news-breaking function or real-time discussion prominence would undermine this advantage"
+    }
+  ],
+  "competitive_dynamics": "Intensifying competition in short-form video (TikTok Shorts vs Instagram Reels vs YouTube Shorts) with engagement rate advantages favoring TikTok. Meta maintains ecosystem lock-in through cross-platform integration but faces search behavior disruption as Gen Z increasingly starts searches on TikTok/Instagram rather than Google.",
+  "moat_indicators": [
+    "Network effects: 73.6% Facebook-WhatsApp cross-usage, 80% Facebook-Instagram overlap",
+    "Ecosystem lock-in: Four platforms with 1B+ users each create switching costs",
+    "Data advantage: 3.58B daily users generate massive behavioral data for ad targeting",
+    "Infrastructure scale: Global content delivery and moderation at unprecedented scale",
+    "Developer ecosystem: Meta Business Partner program with thousands of agencies and tools"
+  ],
+  "industry_specific": {
+    "engagement_metrics": {
+      "meta_engagement_rate": 0.48,
+      "tiktok_engagement_rate": 3.70,
+      "competitive_gap": "Meta significantly trails TikTok in user engagement intensity",
+      "_dm_type": "H",
+      "_dm_source": "sproutsocial.com engagement rate comparison 2026",
+      "_dm_date": "2026-02-13"
+    },
+    "search_disruption": {
+      "gen_z_search_behavior": "1/3 skip Google, start on TikTok/Instagram/YouTube",
+      "strategic_impact": "Threatens Google's search monopoly while benefiting Meta's discovery",
+      "_dm_type": "H",
+      "_dm_source": "sproutsocial.com search behavior trends 2026",
+      "_dm_date": "2026-02-13"
+    },
+    "video_format_parity": {
+      "shorts_competition": "Feature parity across TikTok, Instagram Reels, YouTube Shorts",
+      "differentiation_challenge": "Reduced technical moats in short-form video",
+      "_dm_type": "R",
+      "_dm_source": "Analysis of platform video feature development",
+      "_dm_date": "2026-02-13",
+      "_dm_chain": "All major platforms now support similar video formats and editing tools",
+      "_dm_falsifiable": "Emergence of unique video features exclusive to one platform would restore differentiation"
+    }
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-BIZ-010",
+      "value": "Meta maintains 69.71% market share leadership but faces engagement rate disadvantage vs TikTok (0.48% vs 3.70%)",
+      "type": "H",
+      "source": "sociallyin.com Meta market share and engagement data 2026",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-011",
+      "value": "YouTube Shorts surpassed TikTok with 2B MAU vs TikTok's 1.59B, intensifying short-form competition",
+      "type": "H",
+      "source": "sproutsocial.com social media platform statistics 2026",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-012",
+      "value": "Cross-platform ecosystem creates switching costs: 73.6% Facebook users on WhatsApp, 80% on Instagram",
+      "type": "H",
+      "source": "sociallyin.com Meta cross-platform usage statistics",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-013",
+      "value": "Gen Z search disruption: 1/3 skip Google, start searches on TikTok/Instagram/YouTube",
+      "type": "H",
+      "source": "sproutsocial.com consumer search behavior trends 2026",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-014",
+      "value": "Video format commoditization reduces technical moats across TikTok, Reels, YouTube Shorts",
+      "type": "R",
+      "source": "Platform feature analysis and competitive assessment",
+      "date": "2026-02-13",
+      "chain": "Feature parity in video editing, AI effects, and discovery algorithms reduces platform differentiation",
+      "falsifiable": "Breakthrough unique video technology or format innovation would restore competitive advantages"
+    },
+    {
+      "id": "DM-BIZ-015",
+      "value": "Meta's data advantage from 3.58B daily users provides superior ad targeting capabilities",
+      "type": "R",
+      "source": "Scale analysis of user data for advertising optimization",
+      "date": "2026-02-13",
+      "chain": "Larger user base and longer interaction history enable more precise behavioral targeting than smaller platforms",
+      "falsifiable": "Privacy regulations significantly limiting data collection or competitors achieving equivalent scale would reduce this advantage"
+    },
+    {
+      "id": "DM-BIZ-016",
+      "value": "Infrastructure scale moat: Global CDN and content moderation at unprecedented 3.58B user scale",
+      "type": "R",
+      "source": "Technical infrastructure requirements analysis",
+      "date": "2026-02-13",
+      "chain": "Supporting 3.58B daily users requires infrastructure investments that create entry barriers for new competitors",
+      "falsifiable": "Cloud infrastructure commoditization reducing setup costs or new platforms achieving similar scale would weaken this moat"
+    },
+    {
+      "id": "DM-BIZ-017",
+      "value": "Reality Labs budget cut of 30% signals retreat from metaverse competition with Apple Vision Pro",
+      "type": "H",
+      "source": "techcrunch.com Meta Reality Labs budget reduction 2026",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-BIZ-018",
+      "value": "TikTok engagement rate advantage (3.70% vs 0.48%) indicates superior content discovery algorithms",
+      "type": "R",
+      "source": "Engagement rate performance comparison analysis",
+      "date": "2026-02-13",
+      "chain": "Higher engagement suggests TikTok's algorithm more effectively matches content to user preferences",
+      "falsifiable": "Meta achieving similar engagement rates through algorithm improvements would close this gap"
+    },
+    {
+      "id": "DM-BIZ-019",
+      "value": "Meta Business Partner ecosystem with thousands of agencies creates switching costs for advertisers",
+      "type": "R",
+      "source": "Partner program scale and advertiser lock-in assessment",
+      "date": "2026-02-13",
+      "chain": "Extensive partner network and specialized tools create friction for advertisers considering platform migration",
+      "falsifiable": "Competing platforms building equivalent partner ecosystems would reduce Meta's switching cost advantage"
+    },
+    {
+      "id": "DM-BIZ-020",
+      "value": "Four platforms with 1B+ users each (Facebook, Instagram, WhatsApp, Messenger) unprecedented in social media",
+      "type": "H",
+      "source": "Platform user count verification from multiple sources",
+      "date": "2026-02-13"
+    }
+  ],
+  "sources": [
+    "7 Social Media Trends to Know in 2026 | Sprout Social (https://sproutsocial.com/insights/social-media-trends/)",
+    "Meta Statistics 2026: Key Metrics & Platform Performance (https://sociallyin.com/meta-statistics/)",
+    "Social Media Trends For 2026 According To Experts (https://www.socialinsider.io/blog/social-media-trends/)",
+    "Facebook User & Growth Statistics to Know in 2026 (https://backlinko.com/facebook-users)",
+    "Meta burned $19 billion on VR last year, and 2026 won't be any better | TechCrunch (https://techcrunch.com/2026/01/28/meta-burned-19-billion-on-vr-last-year-and-2026-wont-be-any-better/)"
+  ]
+}

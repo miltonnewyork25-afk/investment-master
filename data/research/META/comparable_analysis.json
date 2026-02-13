@@ -1,0 +1,138 @@
+{
+  "ticker": "META",
+  "analysis_date": "2026-02-12T11:20:00Z",
+  "current_price": 649.81,
+  "peer_group": "Mega-cap Technology Platforms",
+  "comparable_companies": [
+    {
+      "ticker": "AAPL",
+      "name": "Apple Inc.",
+      "market_cap": 3756000000000,
+      "pe_ratio": 34.85,
+      "forward_pe": 28.12,
+      "peg_ratio": 2.1,
+      "ev_revenue": 8.9,
+      "ev_ebitda": 24.3,
+      "roe": 152.02,
+      "revenue_growth": 0.041,
+      "_dm_type": "H",
+      "_dm_source": "MCP peer comparison data",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft Corporation",
+      "market_cap": 3102000000000,
+      "pe_ratio": 25.32,
+      "forward_pe": 22.87,
+      "peg_ratio": 1.8,
+      "ev_revenue": 12.4,
+      "ev_ebitda": 19.6,
+      "roe": 34.39,
+      "revenue_growth": 0.158,
+      "_dm_type": "H",
+      "_dm_source": "MCP peer comparison data",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc.",
+      "market_cap": 3761000000000,
+      "pe_ratio": 28.81,
+      "forward_pe": 23.45,
+      "peg_ratio": 1.9,
+      "ev_revenue": 7.8,
+      "ev_ebitda": 17.2,
+      "roe": 35.71,
+      "revenue_growth": 0.151,
+      "_dm_type": "H",
+      "_dm_source": "MCP peer comparison data",
+      "_dm_date": "2026-02-12"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon.com Inc.",
+      "market_cap": 1987000000000,
+      "pe_ratio": 28.47,
+      "forward_pe": 25.63,
+      "peg_ratio": 2.3,
+      "ev_revenue": 3.2,
+      "ev_ebitda": 18.7,
+      "roe": 22.29,
+      "revenue_growth": 0.112,
+      "_dm_type": "H",
+      "_dm_source": "MCP peer comparison data",
+      "_dm_date": "2026-02-12"
+    }
+  ],
+  "meta_metrics": {
+    "market_cap": 1673000000000,
+    "pe_ratio": 28.49,
+    "forward_pe": 18.22,
+    "peg_ratio": 1.2,
+    "ev_revenue": 8.1,
+    "ev_ebitda": 18.1,
+    "roe": 30.24,
+    "revenue_growth": 0.238,
+    "_dm_type": "H",
+    "_dm_source": "MCP analyze_stock + financial calculations",
+    "_dm_date": "2026-02-12"
+  },
+  "relative_valuation": {
+    "pe_discount_premium": {
+      "vs_aapl": -18.3,
+      "vs_msft": 12.5,
+      "vs_googl": -1.1,
+      "vs_amzn": 0.1,
+      "vs_peer_avg": -1.8
+    },
+    "forward_pe_discount_premium": {
+      "vs_aapl": -35.2,
+      "vs_msft": -20.3,
+      "vs_googl": -22.3,
+      "vs_amzn": -28.9,
+      "vs_peer_avg": -26.7
+    },
+    "ev_revenue_discount_premium": {
+      "vs_peer_avg": 2.4
+    }
+  },
+  "valuation_scenarios": {
+    "peer_median_pe": {
+      "target_pe": 28.65,
+      "implied_price": 654.18,
+      "upside_downside": 0.7,
+      "_dm_type": "R",
+      "_dm_source": "Peer median P/E multiple applied to META EPS",
+      "_dm_date": "2026-02-12"
+    },
+    "peer_median_forward_pe": {
+      "target_pe": 24.78,
+      "implied_price": 789.32,
+      "upside_downside": 21.5,
+      "_dm_type": "R",
+      "_dm_source": "Peer median forward P/E applied to META forward EPS",
+      "_dm_date": "2026-02-12"
+    },
+    "growth_adjusted_pe": {
+      "target_pe": 23.8,
+      "implied_price": 758.14,
+      "upside_downside": 16.7,
+      "_dm_type": "R",
+      "_dm_source": "PEG-adjusted valuation based on growth differential",
+      "_dm_date": "2026-02-12"
+    }
+  },
+  "dm_anchors": [
+    { "id": "DM-VAL-004", "value": "META P/E 28.49x vs peer average 29.11x (-2.1% discount)", "type": "H", "source": "Peer comparison analysis", "date": "2026-02-12" },
+    { "id": "DM-VAL-005", "value": "META forward P/E 18.22x vs peer average 24.88x (-26.8% discount)", "type": "H", "source": "Peer comparison analysis", "date": "2026-02-12" },
+    { "id": "DM-VAL-006", "value": "Peer median P/E valuation implies $654.18 target (+0.7%)", "type": "R", "source": "Multiple-based valuation model", "date": "2026-02-12" },
+    { "id": "DM-VAL-007", "value": "Growth-adjusted valuation implies $758.14 target (+16.7%)", "type": "R", "source": "PEG-adjusted valuation model", "date": "2026-02-12" }
+  ],
+  "key_insights": [
+    "META trades at significant discount on forward P/E (-26.8%) despite highest revenue growth (23.8%)",
+    "Current valuation appears attractive relative to growth and profitability metrics",
+    "Forward P/E discount suggests market skepticism about sustainability of current growth",
+    "EV/Revenue multiple in line with peers despite superior margins"
+  ]
+}

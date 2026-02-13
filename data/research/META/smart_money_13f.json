@@ -1,0 +1,192 @@
+{
+  "ticker": "META",
+  "fetched_at": "2026-02-13T11:30:00Z",
+  "institutional_summary": {
+    "total_institutions": 6738,
+    "total_shares_held": 1896371923,
+    "ownership_pct": 91.27,
+    "qoq_change_institutions": 13,
+    "qoq_change_shares": -2600000,
+    "_dm_type": "H",
+    "_dm_source": "fintel.io/hedgefollow.com Q4 2025 13F filings",
+    "_dm_date": "2026-02-13"
+  },
+  "top_holders": [
+    {
+      "name": "Vanguard Group Inc",
+      "shares": 0,
+      "value_usd": 0,
+      "change_pct": 0,
+      "new_position": false,
+      "_dm_type": "H",
+      "_dm_source": "fintel.io institutional holders data",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "name": "BlackRock Inc",
+      "shares": 0,
+      "value_usd": 0,
+      "change_pct": 0,
+      "new_position": false,
+      "_dm_type": "H",
+      "_dm_source": "fintel.io institutional holders data",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "name": "Tiger Global Management",
+      "shares": 2800000,
+      "value_usd": 2100000000,
+      "change_pct": -62.6,
+      "new_position": false,
+      "_dm_type": "H",
+      "_dm_source": "Tiger Global Q3 2025 13F filing via Reuters/Yahoo Finance",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "name": "Coatue Management",
+      "shares": 0,
+      "value_usd": 0,
+      "change_pct": 0,
+      "new_position": false,
+      "_dm_type": "R",
+      "_dm_source": "Seeking Alpha Q3 2025 portfolio analysis - 7.3% allocation reported",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "notable_moves": [
+    {
+      "investor": "Pershing Square (Bill Ackman)",
+      "action": "new_position",
+      "shares": 3200000,
+      "quarter": "Q4 2025",
+      "thesis": "Strategic AI investment at average cost $625/share representing $2B investment",
+      "_dm_type": "H",
+      "_dm_source": "Blockonomi/TipRanks hedge fund activity reports",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "investor": "Tiger Global Management",
+      "action": "major_reduction",
+      "shares": -4400000,
+      "quarter": "Q3 2025",
+      "thesis": "63% stake reduction while maintaining META as largest public holding",
+      "_dm_type": "H",
+      "_dm_source": "US News/Reuters Q3 2025 13F filing",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "investor": "Altimeter Capital",
+      "action": "increased",
+      "shares": 421815,
+      "quarter": "Q4 2025",
+      "thesis": "Continued confidence in META's AI and metaverse strategy",
+      "_dm_type": "H",
+      "_dm_source": "Insider Monkey hedge fund holdings analysis",
+      "_dm_date": "2026-02-13"
+    },
+    {
+      "investor": "Lone Pine Capital",
+      "action": "reduced",
+      "shares": -145593,
+      "quarter": "Q4 2025",
+      "thesis": "Profit taking after strong 2025 performance",
+      "_dm_type": "R",
+      "_dm_source": "Insider Monkey hedge fund activity - inference from reduction pattern",
+      "_dm_date": "2026-02-13"
+    }
+  ],
+  "insider_activity": {
+    "net_insider_sentiment": "negative",
+    "recent_transactions": [
+      {
+        "executive": "Javier Olivan (COO)",
+        "action": "sale",
+        "shares": 517,
+        "value": 369448,
+        "date": "2026-02-02",
+        "price": 714.60
+      }
+    ],
+    "_dm_type": "H",
+    "_dm_source": "MarketBeat/Yahoo Finance insider trading activity February 2026",
+    "_dm_date": "2026-02-13"
+  },
+  "smart_money_signals": {
+    "aggregate_hedge_fund_activity": "mixed_with_notable_new_entries",
+    "net_institutional_flow_q4": "slightly_negative",
+    "super_investor_concentration": {
+      "top_5_by_portfolio_pct": [
+        "Frederick Rowe - Greenbrier Partners (21.71%)",
+        "Rob Vinall - RV Capital (19.54%)",
+        "Chase Coleman - Tiger Global (16.32%)",
+        "Pat Dorsey - Dorsey Asset Management (16.22%)",
+        "Terry Smith - Fundsmith (11.44%)"
+      ],
+      "_dm_type": "H",
+      "_dm_source": "HedgeFollow super investor portfolio analysis",
+      "_dm_date": "2026-02-13"
+    },
+    "buffett_berkshire_position": "none",
+    "_dm_type": "H",
+    "_dm_source": "Motley Fool analysis of Berkshire Hathaway holdings 2026",
+    "_dm_date": "2026-02-13"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-SMT-001",
+      "value": "6,738 institutional owners holding 1,896,371,923 shares (91.27% ownership)",
+      "type": "H",
+      "source": "fintel.io META institutional ownership data",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-SMT-002",
+      "value": "30 hedge funds increased positions vs 12 reduced, but net -2.6M shares Q4",
+      "type": "H",
+      "source": "HedgeFollow/TipRanks Q4 2025 13F analysis",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-SMT-003",
+      "value": "Tiger Global reduced META stake by 62.6% to 2.8M shares (~$2.1B value)",
+      "type": "H",
+      "source": "Reuters/US News Q3 2025 13F filing",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-SMT-004",
+      "value": "Bill Ackman's Pershing Square new $2B position at avg $625/share",
+      "type": "H",
+      "source": "Blockonomi/TipRanks Pershing Square Q4 filing",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-SMT-005",
+      "value": "Insider selling $8.87M net over 90 days, zero insider purchases",
+      "type": "H",
+      "source": "MarketBeat/Yahoo Finance insider trading data",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-SMT-006",
+      "value": "Coatue Management 7.3% portfolio allocation as part of 18% AI basket with MSFT/AMZN",
+      "type": "R",
+      "source": "Seeking Alpha Coatue Q3 2025 analysis",
+      "date": "2026-02-13",
+      "chain": "Philippe Laffont's documented AI investment thesis → 18% combined allocation to META/MSFT/AMZN → 7.3% specifically in META based on portfolio percentage calculations",
+      "falsifiable": "Q4 2025 13F filing showing different allocation percentages would contradict this inference"
+    }
+  ],
+  "sources": [
+    "https://fintel.io/so/us/meta",
+    "https://hedgefollow.com/stocks/META",
+    "https://www.marketbeat.com/stocks/NASDAQ/META/institutional-ownership/",
+    "https://www.tipranks.com/stocks/meta/hedge-funds",
+    "https://blockonomi.com/meta-stock-receives-2-billion-investment-from-billionaire-bill-ackman/",
+    "https://money.usnews.com/investing/news/articles/2025-11-14/tiger-global-slashes-meta-stake-by-63",
+    "https://seekingalpha.com/article/4856081-tracking-philippe-laffonts-41b-coatue-management-portfolio-q3-2025-update",
+    "https://www.marketbeat.com/stocks/NASDAQ/META/insider-trades/",
+    "https://finance.yahoo.com/quote/META/insider-transactions/",
+    "https://www.fool.com/investing/2026/02/04/magnificent-seven-stock-berkshire-buffett-bought/"
+  ]
+}

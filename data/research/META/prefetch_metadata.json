@@ -1,0 +1,117 @@
+{
+  "version": "4.0",
+  "ticker": "META",
+  "company": "Meta Platforms, Inc.",
+  "industry": "Internet Content & Information",
+  "timestamp": "2026-02-12T11:20:00Z",
+  "data_files": {
+    "stock_full": {
+      "status": "ok",
+      "source": "MCP:analyze_stock",
+      "fetched_at": "2026-02-12T11:17:00Z",
+      "expires_at": "2026-02-12T15:17:00Z"
+    },
+    "peer_comparison": {
+      "status": "ok",
+      "source": "MCP:compare_stocks",
+      "fetched_at": "2026-02-12T11:17:00Z",
+      "expires_at": "2026-02-13T11:17:00Z"
+    },
+    "market_context": {
+      "status": "ok",
+      "source": "MCP:get_market_overview",
+      "fetched_at": "2026-02-12T11:17:00Z",
+      "expires_at": "2026-02-12T15:17:00Z"
+    },
+    "dcf_valuation": {
+      "status": "ok",
+      "source": "Internal:dcf_model_v4",
+      "fetched_at": "2026-02-12T11:20:00Z",
+      "expires_at": "2026-02-19T11:20:00Z"
+    },
+    "comparable_analysis": {
+      "status": "ok",
+      "source": "Internal:peer_analysis",
+      "fetched_at": "2026-02-12T11:20:00Z",
+      "expires_at": "2026-02-19T11:20:00Z"
+    },
+    "analyst_consensus": {
+      "status": "ok",
+      "source": "WebSearch:Agent-A",
+      "fetched_at": "2026-02-12T11:20:00Z",
+      "expires_at": "2026-02-15T11:20:00Z"
+    },
+    "prediction_market": {
+      "status": "ok",
+      "source": "WebSearch:Agent-B",
+      "fetched_at": "2026-02-12T11:20:00Z",
+      "expires_at": "2026-02-14T11:20:00Z"
+    },
+    "recent_news": {
+      "status": "ok",
+      "source": "WebSearch:Agent-C",
+      "fetched_at": "2026-02-12T11:19:00Z",
+      "expires_at": "2026-02-12T17:19:00Z"
+    },
+    "business_overview": {
+      "status": "ok",
+      "source": "Manual:agent_complement",
+      "fetched_at": "2026-02-12T11:20:00Z",
+      "expires_at": "2026-03-14T11:20:00Z"
+    },
+    "competitive_landscape": {
+      "status": "ok",
+      "source": "Manual:agent_complement",
+      "fetched_at": "2026-02-12T11:20:00Z",
+      "expires_at": "2026-03-14T11:20:00Z"
+    },
+    "management_team": {
+      "status": "ok",
+      "source": "WebSearch:Agent-E",
+      "fetched_at": "2026-02-12T11:20:00Z",
+      "expires_at": "2026-03-14T11:20:00Z"
+    },
+    "smart_money_13f": {
+      "status": "ok",
+      "source": "WebSearch:Agent-F",
+      "fetched_at": "2026-02-12T11:20:00Z",
+      "expires_at": "2026-02-19T11:20:00Z"
+    },
+    "options_short_interest": {
+      "status": "ok",
+      "source": "WebSearch:Agent-G",
+      "fetched_at": "2026-02-12T11:20:00Z",
+      "expires_at": "2026-02-14T11:20:00Z"
+    },
+    "dm_anchor_registry": {
+      "status": "ok",
+      "source": "prefetch:aggregator",
+      "fetched_at": "2026-02-12T11:20:00Z",
+      "expires_at": "2026-02-12T11:20:00Z"
+    }
+  },
+  "quality": {
+    "complete_fields": 15,
+    "total_fields": 15,
+    "completeness_pct": 100.0,
+    "files_ok": 14,
+    "files_error": 0,
+    "files_total": 14
+  },
+  "dm_quality": {
+    "total_anchors": 31,
+    "h_count": 22,
+    "r_count": 7,
+    "s_count": 2,
+    "h_pct": 71.0,
+    "anchors_with_source": 31,
+    "r_with_chain": 2,
+    "r_with_falsifiable": 2,
+    "integrity_check": "passed"
+  },
+  "layer_status": {
+    "layer1_mcp": "ok",
+    "layer2_python": "ok",
+    "layer3_websearch": "ok"
+  }
+}
