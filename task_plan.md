@@ -1,86 +1,306 @@
-# System Update Assessment & Investment Logic Toolkit Creation
+# ASML Tier 3 Deep Dive — Master Planning Framework v1.0
 
-## Goal
-Comprehensively assess all new system updates (MCP integrations, skills, investment thermometer strategy) and create a unified investment-logic-toolkit.skill.md that optimizes company research workflows.
+> **目标**: 创建700-800KB的ASML深度分析，超越所有现有基准
+> **字符目标**: 500-600K字符 + DM锚点/图表补充
+> **框架**: v10.0 + Discovery System + OVM + Agent Teams协作
+> **基准对比**: AMD 544KB | LRCX 717KB | TSM 715KB — **目标超越**
+> **创建时间**: 2026-02-13 | **会话**: 半导体worktree
 
-## Success Criteria
-- [ ] Complete inventory of all system updates
-- [ ] Assessment of new MCP tools integration impact
-- [ ] Analysis of new/updated skills
-- [ ] Investment thermometer strategy evaluation
-- [ ] Creation of unified investment-logic-toolkit.skill.md
-- [ ] Updated company research workflow with new dimensions
-- [ ] Agent optimization recommendations
+---
 
-## Phases
+## 🎯 项目概览与正确基准
 
-### Phase 1: System Update Inventory [COMPLETE]
-**Objective:** Catalog all new additions and changes
-- [x] List all new MCP tools (100baggers, FMP, Polymarket)
-- [x] Identify new skills added
-- [x] Map updated/optimized existing skills
-- [x] Document investment thermometer strategy
-- [x] Check framework version changes (Deep-Dive Protocol v7.0)
+### 核心目标 (基于真实文件大小)
+- **文件大小目标**: 700-800KB (vs LRCX 717KB基准)
+- **字符目标**: 500-600K纯文本字符 (vs LRCX ~472K基准)
+- **额外内容**: DM锚点≥200个 + Mermaid≥150个 + 标注密度≥30/万
+- **质量门控**: 13/13 CG通过 + v10.0新标准全达标
 
-### Phase 2: New MCP Tools Analysis [COMPLETE]
-**Objective:** Understand capabilities and integration points
-- [x] Test 100baggers.club integration capabilities
-- [x] Analyze FMP endpoint coverage and data quality
-- [x] Evaluate Polymarket prediction market data access
-- [x] Map data flow from MCP tools to research workflow
-- [x] Identify automation opportunities
+### ASML独特优势线索 (基于AMD/TSM/LRCX深度分析)
 
-### Phase 3: Skills Ecosystem Review [COMPLETE]
-**Objective:** Understand new skill capabilities and optimization
-- [x] Review all available skills (20+ skills listed)
-- [x] Identify newly added skills
-- [x] Analyze skill interdependencies
-- [x] Map skills to research workflow stages
-- [x] Document optimization changes
+#### 1. **EUV垄断生态链条** (核心护城河)
+- **上游控制**: Carl Zeiss光学系统+Trumpf激光源→ASML独家整合
+- **下游锁定**: TSM($56B CapEx)→Samsung→Intel，全球先进制程100%依赖
+- **技术壁垒**: 10万个零件+300+供应商+15年技术积累
+- **从LRCX学到**: 设备垄断的定价权+客户锁定效应
 
-### Phase 4: Investment Thermometer Deep Dive [COMPLETE]
-**Objective:** Evaluate thermometer strategy implementation readiness
-- [x] Analyze Core layer (70%) implementation path
-- [x] Assess Enhanced layer (20%) roadmap
-- [x] Review AI layer (10%) feasibility
-- [x] Test algorithm components with real data
-- [x] Identify integration points with existing research
+#### 2. **AI超级周期受益链** (从TSM/AMD需求推导)
+- **TSM连接**: AI芯片→先进制程→EUV设备，每台EUV ~$200M
+- **AMD连接**: Instinct GPU增长→7nm/5nm需求→EUV产能需求
+- **NVIDIA连接**: H100/B200→TSM代工→EUV设备采购周期
+- **量化关系**: AI CapEx $600B+ → 半导体设备WFE $100B+ → ASML份额~60%
 
-### Phase 5: Workflow Impact Analysis [IN_PROGRESS]
-**Objective:** Determine how updates change company research
-- [ ] Map current Deep-Dive Protocol (Phase 0-5.5)
-- [ ] Identify new research dimensions to add
-- [ ] Analyze agent optimization needs
-- [ ] Assess data prefetch changes needed
-- [ ] Plan Core Questions methodology updates
+#### 3. **地缘政治关键节点** (中美科技博弈核心)
+- **政策工具**: 对中国EUV禁运→直接影响中国先进制程能力
+- **双刃剑效应**: 中国市场损失 vs 战略价值提升
+- **从TSM学到**: 地缘风险可能转化为"硅盾溢价"
 
-### Phase 6: Toolkit Creation [COMPLETE]
-**Objective:** Create investment-logic-toolkit.skill.md
-- [x] Design unified toolkit architecture
-- [x] Integrate thermometer strategy
-- [x] Include MCP tool orchestration
-- [x] Add automated research triggers
-- [x] Document agent deployment patterns
+#### 4. **资本设备超级周期** (从LRCX周期性分析)
+- **WFE周期**: 2024-2026E增长+30%/年→ASML直接受益
+- **客户CapEx同步**: TSM $56B + Samsung $30B + Intel $25B = $111B
+- **设备占比**: EUV设备占先进fab CapEx的20-25%
 
-### Phase 7: Implementation Planning [COMPLETE]
-**Objective:** Plan rollout strategy
-- [x] Prioritize implementation phases
-- [x] Identify testing requirements
-- [x] Plan integration with existing workflows
-- [x] Document training/familiarization needs
+---
 
-## Context
-- Current location: /Users/milton/投资大师/.worktrees/半导体
-- Framework version: Deep-Dive Protocol v7.0
-- Active company research: MU (Phase 0 completion pending)
-- Available skills: 20+ including new additions
+## 📊 Phase架构设计 (6阶段，700KB+目标)
 
-## Key Questions
-1. What specific new capabilities do the MCP integrations provide?
-2. How do new skills change the optimal research workflow?
-3. Where should the investment thermometer integrate into existing phases?
-4. Which agents need modification to leverage new data sources?
-5. What new research dimensions should be standard vs optional?
+### Phase 0: 数据基础建设 (DM v3.0)
+**状态**: 🔴 Not Started
+**目标**: 20,000字符 + DM锚点≥60个
 
-## Next Steps
-Start with Phase 1: Complete system inventory by examining all available skills, MCP tools, and strategic documents.
+**Agent团队**:
+- **Agent A**: MCP金融数据聚合 (财务+市场+估值+竞争对手)
+- **Agent B**: Polymarket地缘政治+预测市场信号跟踪
+- **Agent C**: 半导体设备行业数据 (WFE预测+EUV需求+客户CapEx)
+- **Agent D**: ASML供应链+技术壁垒深度数据收集
+
+**关键产出**:
+```
+data/asml_shared_context.md (DM锚点≥60, 基础数据全集)
+data/financial_deep_dive.md (财务矩阵+竞争对手对比)
+data/geopolitical_signals.md (中美科技博弈+政策风险)
+data/semiconductor_equipment_ecosystem.md (WFE+EUV市场分析)
+```
+
+**成功标准**: DM锚点≥60, 数据覆盖率95%, verify脚本通过
+
+### Phase 0.5: CQ提取 + 市场注意力雷达
+**状态**: 🔴 Not Started
+**目标**: 15,000字符 + 市场争议全景
+
+**Agent团队**:
+- **Agent A**: 5路并行WebSearch (EUV垄断/中国政策/AI设备需求/WFE周期/估值泡沫)
+- **Agent B**: 非共识观点挖掘 (反向思维+空头钢人最强论点)
+- **Agent C**: CQ结构化提取 (8个核心问题+S/A/B级分类)
+
+**关键产出**:
+```
+data/core_questions.md (8个CQ, 质量检验+置信度初值)
+data/market_attention_radar.md (Top 12争议维度，超越TSM的10个)
+data/non_consensus_insights.md (NCI注册表≥6个)
+```
+
+**成功标准**: CQ通过质量检验, 注意力热力图验证, NCI特异性测试100%
+
+### Phase 1: 公司定位与EUV生态霸权 (5章)
+**状态**: 🔴 Not Started
+**目标**: 140,000字符 (超越LRCX Part I的117K基准)
+
+**Agent团队**:
+- **Agent A**: ASML公司画像 + 历史演进 (从普通光刻到EUV霸主)
+- **Agent B**: EUV技术护城河深度拆解 (光学+激光+控制系统)
+- **Agent C**: 全球生态系统地位分析 (客户依赖链+供应商控制)
+- **Agent D**: 地缘政治漩涡中心 (中美科技博弈+政策影响)
+- **Agent E**: 创新路线图前瞻 (High-NA EUV+下一代技术)
+
+**核心章节架构**:
+```
+Ch01: ASML公司画像 — 从Philips子公司到EUV帝国 (28K字符)
+Ch02: EUV技术护城河 — 10万零件构筑的不可逾越壁垒 (30K字符)
+Ch03: 全球生态系统控制 — 半导体制造咽喉要道 (28K字符)
+Ch04: 客户依赖与议价 — TSM/Samsung/Intel的"甜蜜负担" (27K字符)
+Ch05: 地缘政治核心节点 — 中美科技博弈的关键棋子 (27K字符)
+```
+
+**成功标准**: 每章≥25K字符, CQ关联明确, DM锚点≥25个, Mermaid≥35个
+
+### Phase 2: 财务与估值体系 (6章)
+**状态**: 🔴 Not Started
+**目标**: 120,000字符 (超越LRCX Part II的88K基准)
+
+**Agent团队**:
+- **Agent A**: 财务质量深挖 + 资本设备周期性特征分析
+- **Agent B**: 6方法估值体系构建 + SOTP精密收敛
+- **Agent C**: Reverse DCF分析 + 市价隐含假设推演
+- **Agent D**: 承重墙脆弱度评估 (v10.0新框架)
+- **Agent E**: OVM期权估值 (如果触发条件满足)
+- **Agent F**: 竞争对手估值对比 (LRCX/AMAT/TEL)
+
+**核心章节架构**:
+```
+Ch06: 财务质量全景 — ROIC/FCF/现金生成的设备龙头特征 (20K字符)
+Ch07: 资本设备周期性 — WFE波动对ASML的影响模式 (20K字符)
+Ch08: 6方法估值收敛 — DCF/SOTP/P/E/EV/Sales/FCF综合 (20K字符)
+Ch09: Reverse DCF分析 — 市价隐含的增长假设推演 (20K字符)
+Ch10: 承重墙脆弱度表 — 关键假设的高/中/低风险评估 (20K字符)
+Ch11: 期权估值模块 — EUV垄断的选择权价值(如触发) (20K字符)
+```
+
+**成功标准**: 6方法偏差<3%, 承重墙表完整, DM锚点≥40个
+
+### Phase 3: 竞争与技术深度 (5章)
+**状态**: 🔴 Not Started
+**目标**: 130,000字符 (超越LRCX Part III的85K基准)
+
+**Agent团队**:
+- **Agent A**: EUV技术壁垒终极分解 (为什么Canon/Nikon永远追不上)
+- **Agent B**: 下一代技术路线图 (High-NA EUV+未来制程+竞争预判)
+- **Agent C**: 客户议价能力分析 (TSM/Samsung/Intel的真实谈判空间)
+- **Agent D**: AI驱动先进制程需求建模 (2nm/1.4nm时间线+EUV需求量化)
+- **Agent E**: 供应链控制力评估 (300+供应商网络+关键节点控制)
+
+**核心章节架构**:
+```
+Ch12: EUV技术终极壁垒 — 光学+激光+精密控制的不可复制性 (26K字符)
+Ch13: 竞争格局锁定 — 为什么Canon/Nikon/中国厂商无法威胁 (26K字符)
+Ch14: 客户控制力分析 — "没有选择"的甜蜜垄断 (26K字符)
+Ch15: AI制程需求建模 — 从AI芯片到EUV设备的需求传导 (26K字符)
+Ch16: 供应链生态控制 — 300+供应商的精密编排 (26K字符)
+```
+
+**成功标准**: 技术分析达到专业级深度, 竞争护城河量化, AI需求模型验证
+
+### Phase 4: 红队对抗审查 (RT-1 to RT-7, v10.0标准)
+**状态**: 🔴 Not Started
+**目标**: 100,000字符 (超越所有现有Phase 4基准)
+
+**Agent团队**:
+- **Agent A**: RT-1~RT-3执行 (承重墙攻击+偏差识别+空头钢人)
+- **Agent B**: RT-4~RT-6执行 (数据审计+黑天鹅+时间框架)
+- **Agent C**: RT-7+综合 (替代解释+红队报告整合)
+
+**红队七问执行标准**:
+```
+RT-1: 承重墙攻击 — EUV垄断可持续性的致命质疑
+RT-2: 偏差识别 — 分析师认知偏差+确认偏误检查
+RT-3: 空头钢人 — 构建最强Bear论点(技术替代+地缘+周期)
+RT-4: 数据审计 — DM锚点交叉验证+数据质量评估
+RT-5: 黑天鹅事件 — 低概率高影响事件≥3个+概率加权表
+RT-6: 时间框架 — 预测时间窗口的合理性挑战
+RT-7: 替代解释 — 所有关键数据的其他合理解释路径
+```
+
+**关键产出**:
+```
+承重墙脆弱度更新表 (高/中/低风险重新评估)
+黑天鹅概率加权表 (≥3事件, 独立概率×影响=加权损失)
+红队质疑清单 (每个CQ的反向论证+置信度下调)
+```
+
+**成功标准**: 7问全覆盖, 黑天鹅表完整, CQ置信度合理下调
+
+### Phase 5: 综合决策与发现系统 (6章)
+**状态**: 🔴 Not Started
+**目标**: 110,000字符 (超越所有现有Phase 5基准)
+
+**Agent团队**:
+- **Agent A**: 投资逻辑总结+评级确定 (v9.0四档定性系统)
+- **Agent B**: Kill Signals+追踪信号生成 (ASML专用可执行指标)
+- **Agent C**: CQ最终闭环+置信度演化追踪+加权平均计算
+- **Agent D**: 估值综合收敛+方法离散度分析
+- **Agent E**: 发现系统输出 (如果可能性宽度≥7分)
+- **Agent F**: 投资决策框架总结
+
+**核心章节架构**:
+```
+Ch17: 投资逻辑整合 — Bull/Bear/Base三案例最终综合 (18K字符)
+Ch18: Kill Signals框架 — 12+个可执行监控指标 (18K字符)
+Ch19: 追踪信号系统 — 8+个前瞻预警指标 (18K字符)
+Ch20: CQ最终闭环 — 8问题置信度收敛+演化追踪 (18K字符)
+Ch21: 估值综合收敛 — 方法离散度+概率加权+敏感性 (19K字符)
+Ch22: 发现系统输出 — 可能性空间映射+开放问题(如触发) (19K字符)
+```
+
+**成功标准**: KS≥12个, TS≥8个, CQ加权置信度, 评级论证充分
+
+### Phase 6: Complete组装与质量门控
+**状态**: 🔴 Not Started
+**目标**: 组装+验证阶段，确保700-800KB目标达成
+
+**关键任务**:
+```
+1. Complete报告组装 (ASML_Complete_v1.0_2026-02-13.md)
+2. 质量门控脚本验证 (CG1-CG14全通过, v10.0标准)
+3. DM锚点脚本验证 (verify_data_sources.sh, ≥200锚点)
+4. 发布合规检查 (地缘政治中性表述+回流无痕)
+5. 字符统计验证 (确保500-600K字符+700-800KB文件大小)
+```
+
+**成功标准**: 14/14 CG通过, 文件大小≥700KB, DM验证通过, 合规零警告
+
+---
+
+## 🤝 Agent Teams协作架构 (升级版)
+
+### 数据收集团队 (Phase 0-0.5)
+```
+Agent A (金融数据) ↔ Agent B (地缘信号)
+Agent C (行业数据) ↔ Agent D (供应链数据)
+         ↓
+共享产出: data/ 文件夹 (4个核心文件)
+```
+
+### 内容创作团队 (Phase 1-3)
+```
+Phase 1: 5 Agents → Part I (140K) — EUV生态霸权
+Phase 2: 6 Agents → Part II (120K) — 财务估值体系
+Phase 3: 5 Agents → Part III (130K) — 竞争技术深度
+```
+
+### 质量控制团队 (Phase 4-5)
+```
+Phase 4: 3 Agents → 红队七问执行 (100K)
+Phase 5: 6 Agents → 决策系统输出 (110K)
+         ↓
+最终质量检查 + v10.0 CG门控
+```
+
+### 协作规则 (防止context溢出)
+1. **文件传递模式**: ≥3个Agent时强制使用staging/文件传递
+2. **阶段性commit**: 每Phase完成后立即commit staging产出
+3. **紧急保存协议**: 并行Agent全部返回后60秒内执行context_save.sh
+4. **质量检查点**: 每30K字符检查DM密度+Mermaid分布
+
+---
+
+## 🛡️ 风险缓解与防回退策略
+
+### 超越基准保证
+- **硬目标**: 必须超过LRCX 717KB + TSM 715KB基准
+- **缓冲设计**: 每Phase预设20%字符buffer
+- **质量标杆**: DM密度≥30/万, Mermaid≥150个
+- **框架升级**: v10.0所有新功能必须应用
+
+### Context管理升级
+- **预防性保存**: 每40K字符自动checkpoint
+- **Agent file模式**: 严格执行文件传递，零tolerance context溢出
+- **紧急响应**: 用户提及"context"立即执行save脚本
+
+### 质量永不回退
+- **CG门控**: 14项检查(v10.0)必须全通过
+- **DM验证**: 脚本验证锚点质量+覆盖率
+- **发布合规**: 地缘政治表述100%合规
+
+---
+
+## 📈 成功指标KPI (700KB+标准)
+
+| 指标类别 | ASML目标 | 现有最佳 | 超越幅度 |
+|---------|---------|----------|----------|
+| **文件大小** | 700-800KB | LRCX 717KB | +0-15% |
+| **字符数** | 500-600K | LRCX ~472K | +6-27% |
+| **DM锚点** | ≥200个 | 估计150个 | +33% |
+| **Mermaid图** | ≥150个 | LRCX 124个 | +21% |
+| **CQ数量** | 8个+闭环 | 标准配置 | 标准 |
+| **Phase覆盖** | 0→5全覆盖 | 标准配置 | 标准 |
+| **创新应用** | Discovery System | PLTR成功案例 | 创新应用 |
+
+---
+
+## 🚀 立即行动计划
+
+### Next Actions (按优先级)
+1. ✅ **启动Phase 0**: 4-Agent并行数据收集团队
+2. ⭕ **创建findings.md**: 重大发现记录系统
+3. ⭕ **创建progress.md**: 详细会话进度追踪
+4. ⭕ **框架健康检查**: `bash tests/framework_health_check.sh`
+
+### 会话管理策略
+- **Phase 0完成**: 立即commit+checkpoint
+- **Agent协作**: 严格文件传递模式
+- **质量检查**: 每Phase末质量门控验证
+- **用户沟通**: 定期报告进度+字符累积状况
+
+---
+
+**Ready for Phase 0 Launch**: 4-Agent并行数据收集团队可立即启动

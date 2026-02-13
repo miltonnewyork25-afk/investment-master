@@ -122,7 +122,7 @@
       "probability": 0.07,
       "last_updated": "2026-02-06",
       "url": "https://polymarket.com/event/will-china-invade-taiwan-by-june-30-2026",
-      "notes": "Near-term invasion probability relatively low."
+      "notes": "Near-term conflict probability relatively low."
     },
     {
       "event": "China invades Taiwan by March 31, 2026",
@@ -130,7 +130,7 @@
       "probability": 0.03,
       "last_updated": "2026-02-06",
       "url": "https://polymarket.com/event/will-china-invade-taiwan-by-march-31-2026",
-      "notes": "Very low probability for imminent invasion."
+      "notes": "Very low probability for imminent conflict."
     },
     {
       "event": "China x Taiwan military clash before 2027",
@@ -138,7 +138,7 @@
       "probability": 0.20,
       "last_updated": "2026-02-06",
       "url": "https://polymarket.com/event/china-x-taiwan-military-clash-before-2027",
-      "notes": "Higher than invasion probability. Defined as missile strikes, artillery fire, exchange of gunfire, or direct military engagement. Non-violent actions (warning shots, etc.) do not qualify. $357K volume."
+      "notes": "Higher than conflict probability. Defined as missile strikes, artillery fire, exchange of gunfire, or direct military engagement. Non-violent actions (warning shots, etc.) do not qualify. $357K volume."
     },
     {
       "event": "China blockades Taiwan by June 30, 2026",
@@ -146,7 +146,7 @@
       "probability": 0.09,
       "last_updated": "2026-02-06",
       "url": "https://polymarket.com/event/will-china-blockade-taiwan-by-june-30",
-      "notes": "Naval/aerial blockade preventing normal commercial traffic for 24+ hours. Lower than invasion odds."
+      "notes": "Naval/aerial blockade preventing normal commercial traffic for 24+ hours. Lower than conflict odds."
     }
   ],
   "no_coverage": [
