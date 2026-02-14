@@ -127,9 +127,28 @@ phases:
       - staging/phase4_agent_b3.md
 
   phase_5:
-    status: pending
+    status: completed
     session: 4
+    date: "2026-02-14"
     target_chars: 33000
+    actual_chars: 42835
+    agents:
+      - id: C-4
+        role: "定量估值分析师"
+        tasks: ["综合评估", "KS注册表", "方法离散度", "AI边界"]
+        chars: 12684
+      - id: A-4
+        role: "商业洞察分析师"
+        tasks: ["TS注册表", "投资日历", "CI注册表", "框架注册表"]
+        chars: 16036
+      - id: B-4
+        role: "独立风险审计员"
+        tasks: ["CQ闭环", "推断证伪", "黑天鹅最终", "AI边界"]
+        chars: 14115
+    outputs:
+      - staging/phase5_agent_c4.md
+      - staging/phase5_agent_a4.md
+      - staging/phase5_agent_b4.md
 
 quality_gates:
   cg_target: "13/13"
