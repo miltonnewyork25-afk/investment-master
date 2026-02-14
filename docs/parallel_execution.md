@@ -1,7 +1,8 @@
-# 并行Agent加速系统 v6.0
+# 并行Agent加速系统 v7.0
 
 > **设计目的**：利用Task Agent能力并行执行独立分析任务，大幅缩短分析时间
-> **验证基准**：SOFI/COST/META/TSM四项目实证数据驱动
+> **验证基准**：10份Tier 3报告实证(GOOGL/TSLA/PLTR/LRCX/TSM/AMD/META/SOFI/COST/MU)
+> **v7.0变化**: 3+1 Agent架构(Agent A/B/C + QSA质量哨兵)、最低Agent数量门控(≥20)、与DAG编排器v22.0集成、跨Session角色一致性机制
 > **v6.0变化**: Agent架构从硬规格改为指导原则、模块类型驱动产出目标、看空Agent强制独立、实证参考表
 > **v5.0变化**: SubAgent输出压缩(≤500字符返回)、checkpoint.yaml批次间写入
 > **v4.0变化**: Agent Prompt反幻觉注入、DM引用规范、Quality Gate v2.0集成
@@ -95,10 +96,63 @@ Agent 3 [维度C]   █████░░░░░ 50%  数据收集中...
 
 ---
 
-## Agent架构指导原则 (v6.0)
+## 3+1 Agent架构 (v7.0新增)
 
-> 基于13个项目实证(SOFI/COST/META/TSM/PLTR/TSLA/GOOGL等)。v6.1: P5=3A铁律 + P4看空≥50%。
-> 以下为指导原则，非硬性规格。**例外: 原则6(P5=3Agent)是铁律，不可调整**。
+> **实证来源**: GOOGL v4.0(最佳报告, 9 Agent, 3×3并行, 453.5K) — 成功靠角色固定+跨Session一致，不是角色数量多。
+> **与DAG编排器集成**: 详见 `docs/dag_orchestrator.md` 子代理模型v2.0。
+
+### 核心架构: 3个研究Agent + 1个质量哨兵
+
+| 代号 | 角色 | 职责 | 产出目标 | GOOGL实证 |
+|------|------|------|---------|----------|
+| **Agent A** | 叙事策略 | 公司定义+竞争格局+行业定位+行为偏差 | 12-18K/session | 116K(25.6%) |
+| **Agent B** | 风险竞争 | 护城河+Kill Switch+RT-1~7+Bear Case | 12-18K/session | 148K(32.6%) |
+| **Agent C** | 估值综合 | Reverse DCF+SOTP+OVM+KS/TS+CQ闭环 | 15-22K/session | 267K(58.9%) |
+| **QSA** | 质量哨兵 | 脚本检查: 数值一致/密度/合规/EC完备 | N/A(脚本) | N/A |
+
+### 角色一致性规则 (GOOGL成功核心)
+
+```yaml
+跨Session规则:
+  Agent_A: "角色定义固定，不因Session切换而改变。永远做叙事/策略"
+  Agent_B: "Phase 1-3做护城河/竞争，Phase 4自动切换Bear隔离模式"
+  Agent_C: "估值模型参数跨Session继承，不重新计算已verified的EC"
+
+角色边界:
+  禁止: "Agent A做估值计算 | Agent C写叙事定义 | Agent B在非P4时做Bear Case"
+  允许: "各Agent创建自己领域的EC(轻量级fact/estimate直接写入)"
+```
+
+### 最低Agent数量门控 (v7.0新增)
+
+> **实证**: 19个Agent是CG通过的硬性门槛。MU(15 Agent)是唯一CG失败的报告。
+
+| Phase | 最低 | 推荐 | 铁律 |
+|:-----:|:----:|:----:|:----:|
+| P0/P0.5 | 3 | 3-5 | — |
+| P1 | 3 | 3-4 | — |
+| P2 | 3 | 4-5 | — |
+| P3 | 3 | 4-5 | — |
+| P4 | 3 | 3-4 | — |
+| P5 | **3** | **3** | **铁律** |
+| **合计** | **≥20** | **22-29** | — |
+
+**门控检查**: 编排器在生成执行计划时，计算总Agent数。<20 → WARN + 建议增加。
+
+### 与旧版的兼容性
+
+- Agent A = 旧版Agent A/希腊字母α (叙事类)
+- Agent B = 旧版Agent B/希腊字母β (风险类) + 旧BP角色(Phase 4)
+- Agent C = 旧版Agent C/希腊字母γ (估值类) + 旧VAL角色
+- QSA = 新增，替代旧DQA+GOV的脚本化部分
+- 旧SUP = 编排器本身(不是独立Agent)
+
+---
+
+## Agent架构指导原则 (v6.0 → 整合入v7.0)
+
+> 基于10份Tier 3报告实证。v7.0: 3+1架构 + 最低Agent门控 + 角色一致性。v6.1: P5=3A铁律 + P4看空≥50%。
+> 以下为指导原则，非硬性规格。**例外: 原则6(P5=3Agent)和最低Agent门控(≥20)是铁律**。
 
 ### 原则1: 模块驱动Agent数量
 
@@ -147,10 +201,10 @@ Phase 4的看空分析Agent（Bear Case Advocate）必须:
 **这是铁律，不是指导原则。** 基于META/SOFI/TSM三项目一致验证:
 
 ```
-Phase 5固定3个Agent:
-  Agent A: 综合评分(10维度) + SOTP收敛(6方法) + 仓位建议(5档)
-  Agent B: Kill Switch注册表 + 12月投资日历 + 90天行动清单
-  Agent C: 可验证预测(VP) + CQ最终解答(5要素闭环)
+Phase 5固定3个Agent (v7.0更新角色名):
+  Agent A: 综合评估(定性评级) + SOTP收敛(6方法) + 条件估值范围
+  Agent B: Kill Switch注册表 + TS追踪信号 + 12月投资日历
+  Agent C: CQ最终解答(5要素闭环) + CI注册表 + 框架注册表
 ```
 
 **实证**:

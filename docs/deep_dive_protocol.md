@@ -13,6 +13,22 @@
 
 ## 启动协议
 
+### Scope Lock (DAG-0): 边界锁定（Phase 0前自动执行）
+
+> **v12.0新增**。在任何数据获取开始前，锁定分析范围+工具+停止标准。详见 `docs/dag_orchestrator.md` DAG-0节。
+
+1. **唯一目标定义** — `task.goal` = "对{TICKER}进行Tier {N}分析"，输出工件=[Complete报告, EC集合, checkpoint.yaml]
+2. **不做范围** — `task.out_of_scope[]` ≥ 5项(不做仓位建议/精确目标价/操作触发/空泛预测/数字评分)
+3. **工具权限** — `governance.allowed_tools[]` = [baggers_summary, fmp_data, analyze_stock, polymarket_events, WebSearch]
+4. **确定性门禁映射** — 关键约束≥80%映射到脚本(FastGate/verify_data_sources/quality_sentinel/合规检查)
+5. **环境指纹** — `env_fingerprint` = {framework_version}_{git_hash}_{data_date}_{stock_price}
+6. **停止标准** — `stop.criteria[]` = [所有L1问题有EC支撑, CG1-14全PASS, ec.verification_rate≥80%]
+7. **已知失败模式** — `risk.failure_modes[]` ≥ 3个 + 每个有detector
+
+**Scope Lock 完成标准**: goal非空 + out_of_scope≥5 + env_fingerprint生成 + gates.mapped_ratio≥80%
+
+---
+
 ### Phase 0: 数据基础 + 温度预筛选（自动执行，不占会话）
 
 1. **环境验证** — 确认当前worktree + 公司行业分类

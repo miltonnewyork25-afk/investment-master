@@ -30,6 +30,26 @@ DM 锚点 (v3.0)                    Evidence Card (v1.0)
 
 **迁移规则**: 新报告必须用 EC。历史报告中的 DM 锚点不回溯修改，但如果被引用时应视为"status: legacy"的 EC。
 
+### DM → EC 迁移映射表
+
+| DM 旧类型 | EC claim_type | 迁移动作 | 示例 |
+|:---------:|:------------:|---------|------|
+| **H** (硬数据) | **fact** | 直接映射，source.locator=原DM来源 | DM-FIN-001 type:H → EC-FIN-001 claim_type:fact |
+| **H** (分析师估计) | **estimate** | H类中来自分析师共识的降为estimate | DM-MKT-003 "分析师预期" → EC-MKT-003 claim_type:estimate |
+| **R** (合理推断) | **inference** | 映射+补充falsifier字段 | DM-INF-005 type:R → EC-INF-005 claim_type:inference |
+| **S** (主观假设) | **assumption** | 映射+注册KAL+补充falsifier | DM-ASM-002 type:S → EC-ASM-002 claim_type:assumption |
+
+### 存储规则 (消除碰撞)
+
+```
+reports/{TICKER}/data/shared_context.md  ← 唯一数据存储文件
+├── 新报告: 全部使用 EC 格式 (EC-{CAT}-{SEQ} v{VER})
+├── 历史报告: 保留 DM 格式不修改, 视为 status:legacy
+└── 禁止: 同一文件中 DM 和 EC 混用同一编号前缀
+```
+
+**命名规则**: EC 使用与 DM 相同的分类前缀(FIN/MKT/INF/VAL/ASM)，编号从001开始。新报告中不再出现 `DM-` 前缀，统一使用 `EC-` 前缀。
+
 ---
 
 ## 2. Claim Type 四分类
@@ -63,46 +83,74 @@ DM 锚点 (v3.0)                    Evidence Card (v1.0)
 
 ---
 
-## 3. EC 完整 Schema
+## 3. EC 双层 Schema (v1.1 — 轻量化)
+
+> **设计原则**: 不是每个数字都需要完整EC。fact/estimate只需3核心字段(低开销)，inference/assumption才需完整验证字段(高价值)。
+> **实证依据**: GOOGL v4.0中54%为硬数据(fact)——如果每个都写完整EC，Agent将花30%时间写元数据而非分析。
+
+### 层级一: 轻量EC (fact / estimate) — 3核心字段
 
 ```yaml
-# Evidence Card Template v1.0
-# 文件位置: reports/{TICKER}/data/shared_context.md
+### EC-{CATEGORY}-{SEQ} v{VERSION}
+claim: ""                    # Claim 的精确表述
+claim_type: fact             # fact | estimate
+source:
+  type: ""                   # MCP | SEC | WebSearch | analyst | management
+  locator: ""                # 可复核的定位符
+  timestamp: ""              # YYYY-MM-DD
+# === 轻量EC到此结束 ===
+# status由脚本自动判定: source.locator可访问 → verified, 否则 draft
+# used_in[] 在Complete组装时由脚本自动生成(grep EC编号)
+```
 
+**开销**: ~80字符/EC | **适用**: 占报告EC总数的50-70%
+
+### 层级二: 完整EC (inference / assumption) — 全部字段
+
+```yaml
 ### EC-{CATEGORY}-{SEQ} v{VERSION}
 # ─── 核心字段 (必填) ───
 claim: ""                    # Claim 的精确表述
-claim_type: fact             # fact | estimate | inference | assumption
+claim_type: inference        # inference | assumption
 source:
   type: ""                   # MCP | SEC | WebSearch | formula | analyst | management
-  locator: ""                # 可复核的定位符: API调用/URL/文件路径/工具记录
-  timestamp: ""              # 数据获取时间 YYYY-MM-DD
-method: ""                   # 计算方法或推理链简述 (fact类可为"直接获取")
+  locator: ""                # 可复核的定位符
+  timestamp: ""              # YYYY-MM-DD
+method: ""                   # 推理链简述: "前提A + 前提B → 结论C"
 status: draft                # draft | verified | challenged | deprecated
 
 # ─── 验证字段 (inference/assumption 必填) ───
 falsifier:                   # 什么可观测证据能推翻这个 Claim
   condition: ""              # 证伪条件的精确描述
-  probability: ""            # 低/中/高 — 基于当前信号
+  probability: ""            # 低/中/高
   impact: ""                 # 若推翻，对估值/论文的影响
 verifier_questions:          # CoVe 验证问题 (≥2个)
   - ""                       # 独立验证问题1
   - ""                       # 独立验证问题2
-verification_mode: independent  # independent | dependent
-  # independent: 验证时隔离草稿上下文，只看原始数据
-  # dependent: 验证时允许引用前序 EC (仅用于衍生计算)
 
 # ─── 溯源字段 (必填) ───
-used_in: []                  # 报告中引用此 EC 的章节: ["P1§1.1", "P2§2.3"]
 linked_question: ""          # 关联的 Question DAG 节点: "Q-L2-03a"
-owner: ""                    # 负责子代理: Evidence Librarian | Data QA | Valuation
+owner: ""                    # 负责Agent: Agent A | Agent B | Agent C
 
-# ─── 治理字段 (可选) ───
-gate_log_refs: []            # 通过的门控记录: ["CG8_pass", "FastGate_P2"]
+# ─── 治理字段 (Phase 4 Bear EC必填, 其他可选) ───
 contamination_guard:
   allowed_context: []        # 验证时允许引用的 EC 白名单
-  blocked_context: []        # 验证时禁止引用的来源 (如 Phase 1-3 看多结论)
+  blocked_context: []        # 验证时禁止引用的来源
 ```
+
+**开销**: ~300字符/EC | **适用**: 占报告EC总数的30-50%
+
+### 哪些EC需要完整版?
+
+| 情况 | 层级 | 理由 |
+|------|:----:|------|
+| MCP直接获取的财务数据 | 轻量 | 来源可机器验证 |
+| SEC filing引用的数字 | 轻量 | 来源可机器验证 |
+| 分析师共识估计 | 轻量 | 标注来源即可 |
+| 基于多个fact推导的结论 | **完整** | 推理链需可审查 |
+| Reverse DCF隐含假设 | **完整** | 承重墙需falsifier |
+| 无外部来源的前提假设 | **完整** | 必须注册KAL+设falsifier |
+| Phase 4 Bear Case数据 | **完整** | 需contamination_guard |
 
 ---
 
@@ -125,11 +173,11 @@ contamination_guard:
 
 | 当前状态 | 可转换到 | 触发条件 | 谁触发 |
 |---------|---------|---------|--------|
-| **draft** | verified | CoVe 验证通过 + 门控日志记录 | Data QA |
-| **draft** | deprecated | 来源失效或数据过期(>30天) | Evidence Librarian |
-| **verified** | challenged | Phase 4 RT-4 数据审计 或 RT-7 替代解释 | Bear Prosecutor |
-| **challenged** | verified | 重新验证通过(版本号+1) | Data QA |
-| **challenged** | deprecated | 确认无效 | Data QA + Supervisor |
+| **draft** | verified | 脚本验证通过(轻量EC) 或 CoVe验证通过(完整EC) | QSA / Agent负责人 |
+| **draft** | deprecated | 来源失效或数据过期(>30天) | QSA |
+| **verified** | challenged | Phase 4 RT-4 数据审计 或 RT-7 替代解释 | Agent B (Bear模式) |
+| **challenged** | verified | 重新验证通过(版本号+1) | QSA / Agent负责人 |
+| **challenged** | deprecated | 确认无效 | 编排器裁决 |
 | **deprecated** | — | 终态，不可恢复 | — |
 
 ### 版本控制
@@ -275,12 +323,13 @@ Question DAG                    Evidence Cards
 
 | 现有机制 | EC 集成方式 |
 |---------|-----------|
-| **shared_context.md** | EC 就写在这里，替代原 DM 锚点格式 |
+| **shared_context.md** | EC 就写在这里，替代原 DM 锚点格式(新报告禁用DM前缀) |
 | **verify_data_sources.sh** | 升级: 额外检查 ec.completeness + ec.verification_rate |
 | **quality_gate_complete.sh** | CG8 升级: 检查 EC 审计覆盖 + ec.fact_ratio |
-| **Agent Prompt 注入** | 新增: contamination_guard 白名单注入 |
-| **Phase 4 RT-4** | RT-4 数据审计 = 对所有 EC 的 status 审查 |
-| **Phase 5 CQ 闭环** | CQ 回答必须引用 linked EC 列表 |
+| **tests/quality_sentinel.sh** | 新增: 每Agent产出后自动检查EC完备性+数值一致性 |
+| **Agent B (Phase 4)** | 自动启用Bear隔离模式，contamination_guard白名单注入 |
+| **Phase 4 RT-4** | RT-4 数据审计 = Agent B对所有 EC 的 status 审查 |
+| **Phase 5 CQ 闭环** | Agent C回答CQ必须引用 linked EC 列表 |
 | **checkpoint.yaml** | 新增: ec_stats (总数/verified/challenged/deprecated) |
 | **KAL (key_assumptions.md)** | assumption 类型 EC 自动注册到 KAL |
 
@@ -304,7 +353,7 @@ verifier_questions:
 verification_mode: independent
 used_in: ["P1§1.1", "P2§2.3", "P5§估值"]
 linked_question: "Q-L2-01a"
-owner: "Evidence Librarian"
+owner: "Agent C"
 gate_log_refs: ["FastGate_P1_pass"]
 
 ### EC-INF-003 v1.0
@@ -326,7 +375,7 @@ verifier_questions:
 verification_mode: independent
 used_in: ["P2§Reverse DCF", "P5§承重墙"]
 linked_question: "Q-L1-01"
-owner: "Data QA"
+owner: "Agent C"
 contamination_guard:
   allowed_context: ["EC-FIN-001", "EC-FIN-002", "Mercury Research 原始数据"]
   blocked_context: ["Phase 1 看多叙事", "Phase 3 护城河结论"]
@@ -351,7 +400,7 @@ verifier_questions:
 verification_mode: independent
 used_in: ["P3§护城河", "P4§RT-7替代解释"]
 linked_question: "Q-L1-01"
-owner: "Bear Prosecutor"
+owner: "Agent B (Bear模式)"
 contamination_guard:
   allowed_context: ["市场份额原始数据", "云厂商公开声明"]
   blocked_context: ["AMD 管理层对 ROCm 的乐观声明", "Phase 1 竞争优势叙事"]
@@ -365,3 +414,4 @@ contamination_guard:
 | 版本 | 日期 | 变更 |
 |:---:|:---:|------|
 | v1.0 | 2026-02-14 | 初版。DM→EC 升级 + claim_type 四分类 + CoVe 隔离验证 + contamination_guard + 状态追踪 + 自动评分 |
+| v1.1 | 2026-02-14 | 双层EC(轻量/完整) + DM→EC迁移映射表 + EC-前缀统一 + owner改为Agent A/B/C + QSA脚本验证 |
