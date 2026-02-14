@@ -65,6 +65,24 @@ env_fingerprint:
 
 **Stop**: scope.locked == 1 AND gates.mapped_ratio >= 0.80
 
+### Step 1.5: Scout Agent — 参考报告学习 (Phase 0)
+
+> **完整规格**: `docs/architecture/learning_sentinel_proposal.md`
+> **触发条件**: 同行业有≥250K Complete报告时自动推荐，用户指定参考报告时强制触发
+
+**执行流程**:
+1. `bash scripts/find_best_reference.sh {TICKER}` — 找到最佳参考报告 (铁律H)
+2. `bash scripts/scout_scan.sh {参考报告} {TICKER}` — 脚本快速扫描指标+定位关键章节 (0 tokens)
+3. Scout Agent (LLM) — 精读5个关键章节，产出5条教训 (~15K tokens)
+4. 产出写入 `reports/{TICKER}/data/scout_baseline.md`
+5. 后续Agent A/B/C dispatch时附带scout_baseline.md路径
+
+**Scout精读章节**: Phase 4红队 | Phase 5综合评估 | Reverse DCF | Kill Switch注册表 | CI非共识洞察
+
+**防模仿约束**: 禁止提取数量指标(密度/Mermaid数)，必须提取"在什么场景下用什么方法效果好"，每条教训必须有不适用条件。
+
+**跳过条件**: 首份行业报告/无参考可用时跳过此步骤。
+
 ### Step 2: 数据预取 + EC 初始化 (DAG-0 + DAG-2)
 
 触发 `/data-prefetch` 技能:
@@ -343,28 +361,37 @@ quality_bar: "好的估值 = Reverse DCF的隐含假设被逐条列出..."
 this_session: "GOOGL Phase 2: Reverse DCF + SOTP六方法 + 承重墙脆弱度"
 ```
 
-## Phase 0 知识传递 (v7.0新增)
+## Phase 0 知识传递 — Scout Agent (v7.1升级)
 
-> **来源**: GOOGL v4.0的 `AMD_lessons_for_GOOGL_v4.0.md`(13K) — 不是装饰，而是跨报告学习的关键机制。
-> **目标**: 自动将同行业上一份报告的教训注入当前报告。
+> **来源**: GOOGL v4.0参考AMD教训(密度33→44/万) — 跨报告学习是质量飞跃的关键机制。
+> **升级**: v7.0的10条教训 → v7.1的5条精炼教训(含防模仿约束+不适用条件)。
+> **完整规格**: `docs/architecture/learning_sentinel_proposal.md`
 
-**执行步骤**:
+**执行流程**:
 
-1. **识别参考报告** — 运行 `bash scripts/find_best_reference.sh {TICKER}` 找同行业最佳报告
-2. **提取教训** — 读取参考报告的 `data/reflection.md` + 报告Complete中的框架注册表
-3. **生成教训文件** — 写入 `reports/{TICKER}/data/lessons_from_{REF_TICKER}.md`
-   - 最多10条可操作教训
-   - 每条格式: `教训 | 来源 | 应用方式 | 注意事项`
-4. **注入Agent Prompt** — 所有后续Agent dispatch时附带教训文件路径
-5. **跟踪应用** — Phase 5时回顾哪些教训被应用、哪些被证明不适用
+1. `bash scripts/find_best_reference.sh {TICKER}` — 找同行业最佳参考报告 (铁律H)
+2. `bash scripts/scout_scan.sh {参考报告} {TICKER}` — 脚本快速扫描+定位关键章节 (0 tokens)
+3. **Scout Agent (LLM)** — 精读5个关键章节，产出5条教训 (~15K tokens)
+4. 产出写入 `reports/{TICKER}/data/scout_baseline.md`
+5. 后续Agent A/B/C dispatch时附带 `scout_baseline.md` 路径
 
-**教训提取模板**:
+**Scout精读章节**: Phase 4红队 | Phase 5综合评估 | Reverse DCF | Kill Switch注册表 | CI非共识洞察
+
+**防模仿约束**:
+- 禁止提取数量指标（"参考报告有124张Mermaid"不是教训）
+- 必须提取方法在场景中的效果（"什么场景下用什么方法效果好"）
+- 每条教训必须有**不适用条件**（"什么情况下这个教训不该用"）
+- 第5条必须是**反面教训**（参考报告的弱点/可改进之处）
+
+**触发条件**: 同行业有≥250K Complete报告时自动推荐 | 用户指定参考报告时强制触发 | 无参考可用时跳过
+
+**教训格式** (每条≤500字符):
 ```markdown
-## 从 {REF_TICKER} v{VER} 学到的教训
-
-1. {教训描述} — 来源: {哪个Phase发现的} — 应用: {在当前报告如何用}
-2. ...
-(最多10条)
+## 教训 N: {一句话标题}
+- **来源**: {报告名} {具体章节}
+- **模式**: {通用模式描述}
+- **本报告如何应用**: {具体应用方式}
+- **不适用条件**: {什么情况下不该用}
 ```
 
 ## 重要规则
