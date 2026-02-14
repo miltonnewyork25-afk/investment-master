@@ -1,0 +1,77 @@
+ticker: RDDT
+framework_version: "v10.0"
+methodology: "mixed_mode"  # 6/10 可能性宽度
+ovm_triggered: true
+erm_triggered: true
+tier: 3
+industry: "生态科技"
+coefficient: 1.1
+min_chars: 126500  # 85K × 1.1 × 实际系数
+
+phases:
+  phase_0:
+    status: completed
+    session: 1
+    date: "2026-02-14"
+    outputs:
+      - data/research/RDDT_financial_summary.md
+      - data/research/RDDT_websearch_consolidated.md
+      - data/scout_baseline.md
+      - data/shared_context.md
+    dm_anchors: 73  # financial_summary
+    agent_count: 0  # 自动化, 不占Agent额度
+
+  phase_0.5:
+    status: completed
+    session: 1
+    date: "2026-02-14"
+    outputs:
+      - data/shared_context.md  # CQ + 路由 + Agent分配
+    cq_count: 7
+    cq_weighted_confidence: 40.7
+
+  phase_1:
+    status: pending
+    session: 1
+    target_chars: 27500
+    agents:
+      - id: A-1
+        role: "商业洞察分析师"
+        tasks: ["公司画像", "财务全景", "管理层评估"]
+      - id: A-2
+        role: "商业洞察分析师"
+        tasks: ["用户生态", "版主经济学", "竞争格局"]
+      - id: C-1
+        role: "定量估值分析师"
+        tasks: ["分部收入拆解", "利润率反算", "领先指标"]
+
+  phase_2:
+    status: pending
+    session: 2
+    target_chars: 27500
+
+  phase_3:
+    status: pending
+    session: 2
+    target_chars: 27500
+
+  phase_4:
+    status: pending
+    session: 3
+    target_chars: 16500
+
+  phase_5:
+    status: pending
+    session: 4
+    target_chars: 33000
+
+quality_gates:
+  cg_target: "13/13"
+  dm_target: 150
+  density_target: 25  # per 万字
+  mermaid_target: 24
+  ks_target: "10-12"
+  ts_target: "6-8"
+  ci_target: "5-6"
+  bear_case_target: "5-7"
+  agent_total_target: 20
