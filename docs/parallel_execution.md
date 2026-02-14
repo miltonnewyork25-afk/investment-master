@@ -103,20 +103,28 @@ Agent 3 [维度C]   █████░░░░░ 50%  数据收集中...
 
 ### 核心架构: 3个研究Agent + 1个质量哨兵
 
-| 代号 | 角色 | 职责 | 产出目标 | GOOGL实证 |
-|------|------|------|---------|----------|
-| **Agent A** | 叙事策略 | 公司定义+竞争格局+行业定位+行为偏差 | 12-18K/session | 116K(25.6%) |
-| **Agent B** | 风险竞争 | 护城河+Kill Switch+RT-1~7+Bear Case | 12-18K/session | 148K(32.6%) |
-| **Agent C** | 估值综合 | Reverse DCF+SOTP+OVM+KS/TS+CQ闭环 | 15-22K/session | 267K(58.9%) |
+> **身份模型 v7.1**: Agent身份 = 分析哲学 + 质量直觉 + 本次任务，不是功能标签。
+> **完整身份定义**: `docs/dag_orchestrator.md` "Agent身份与行为规则"
+
+| 代号 | 定位 | 分析哲学(核心) | 产出目标 | GOOGL实证 |
+|------|------|---------------|---------|----------|
+| **Agent A** | 商业洞察分析师 | 穿透公司自我叙事，找到真正的竞争身份。特异性测试：换公司名仍成立→太空泛 | 12-18K/session | 116K(25.6%) |
+| **Agent B** | 独立风险审计员 | 找到论文中最脆弱的假设并压力测试。价值在于发现别人不愿面对的风险 | 12-18K/session | 148K(32.6%) |
+| **Agent C** | 定量估值分析师 | "市场在赌什么"比"我认为值多少"更有价值。方法离散度本身就是不确定性量化 | 15-22K/session | 267K(58.9%) |
 | **QSA** | 质量哨兵 | 脚本检查: 数值一致/密度/合规/EC完备 | N/A(脚本) | N/A |
 
 ### 角色一致性规则 (GOOGL成功核心)
 
 ```yaml
 跨Session规则:
-  Agent_A: "角色定义固定，不因Session切换而改变。永远做叙事/策略"
+  Agent_A: "分析师身份固定，不因Session切换而改变。永远做商业洞察"
   Agent_B: "Phase 1-3做护城河/竞争，Phase 4自动切换Bear隔离模式"
   Agent_C: "估值模型参数跨Session继承，不重新计算已verified的EC"
+
+身份注入规则:
+  每次dispatch: "必须注入完整identity + quality_bar + this_session字段"
+  禁止: "将identity缩写为单行role标签(如'你是估值专家')"
+  this_session: "编排器每次dispatch时填入本Phase具体任务(identity和quality_bar固定不变)"
 
 角色边界:
   禁止: "Agent A做估值计算 | Agent C写叙事定义 | Agent B在非P4时做Bear Case"
