@@ -108,9 +108,23 @@ phases:
       - staging/phase3_agent_b1.md
 
   phase_4:
-    status: pending
+    status: completed
     session: 3
+    date: "2026-02-14"
     target_chars: 16500
+    actual_chars: 25638
+    agents:
+      - id: B-2
+        role: "独立风险审计员"
+        tasks: ["RT-1承重墙", "RT-2偏差", "RT-3空头钢人", "RT-4数据审计"]
+        chars: 13766
+      - id: B-3
+        role: "独立风险审计员"
+        tasks: ["RT-5黑天鹅", "RT-6时间框架", "RT-7替代解释", "Bear Case×7", "纠错"]
+        chars: 11872
+    outputs:
+      - staging/phase4_agent_b2.md
+      - staging/phase4_agent_b3.md
 
   phase_5:
     status: pending
