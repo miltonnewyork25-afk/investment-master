@@ -160,6 +160,7 @@ bash scripts/find_best_reference.sh {TICKER}
 | **期权估值** | `docs/optionality_valuation.md` (高期权公司: TSLA/PLTR/GOOGL/META等) |
 | **发现系统** | `docs/paradigm_research_framework.md` (可能性宽度≥7分: TSLA/PLTR等) |
 | **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
+| **研究记分卡** | `tests/research_scorecard.sh` (Pre/Post/Compare, 10维度×0-10分) |
 | **数据验证** | `tests/verify_data_sources.sh` (DM交叉验证) |
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |

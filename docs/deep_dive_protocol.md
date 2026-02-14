@@ -55,6 +55,8 @@
 
 **Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算
 
+**Research Scorecard (v13.1)**: Phase 0/0.5完成后运行 `bash tests/research_scorecard.sh pre {TICKER}` 记录基线分数(典型15-25分)。分数写入checkpoint.yaml的`scorecard.pre`节。
+
 ### Phase 0.5: 市场注意力雷达 + Core Questions（自动执行，与Phase 0并行）
 
 > **v4.0新增，v5.0升级**。让市场告诉我们该关注什么，再围绕核心争议组织报告。详见 `docs/market_attention_radar.md` + `docs/core_questions_methodology.md`
@@ -508,6 +510,17 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 - CQ置信度: Supplement完成后更新CQ置信度演化表
 
 **Supplement数量限制**: 最多4个Supplement (PLTR v3.1实证上限)
+
+### Research Scorecard Post评分 (v13.1新增)
+
+Complete组装 + CG门控通过后，运行研究记分卡:
+```bash
+# Post评分 + Pre/Post对比
+bash tests/research_scorecard.sh compare {TICKER} reports/{TICKER}/{TICKER}_Complete_v{VER}_{DATE}.md [poss_width]
+```
+- Delta≥50 = 优秀研究 | Delta≥40 = 良好 | Delta<30 = 需诊断
+- 结果写入 `checkpoint.yaml` 的 `scorecard` 节
+- 与CG门控互补: CG=门槛(PASS/FAIL), Scorecard=评分(0-100连续)
 
 ---
 
