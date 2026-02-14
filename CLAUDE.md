@@ -165,6 +165,9 @@ bash scripts/find_best_reference.sh {TICKER}
 | **并行Agent** | `docs/parallel_execution.md` |
 | **数据可信度** | `docs/confidence_system.md` v3.0 (DM锚定+脚本验证) |
 | **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) |
+| **DAG编排** | `docs/dag_orchestrator.md` (DAG-0~7问题树+EC绑定) |
+| **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
+| **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
 
 **完整索引**: 原CLAUDE.md第204-246行 → `docs/framework_index.md`
@@ -173,7 +176,9 @@ bash scripts/find_best_reference.sh {TICKER}
 
 ## 系统升级
 
-**最新版本**: v10.0 框架升级 (标注重构+红队+承重墙+CQ演化)
+**最新版本**: v12.0 框架升级 (DAG编排器+Evidence Cards+确定性门禁)
 **健康监控**: `bash tests/framework_health_check.sh`
+
+**v12.0升级(2026-02-14)**: 编排器v22.0 DAG-Aware重写(模块填空→问题树展开) + Evidence Cards原子证据单元(替代DM锚点自由文本) + CoVe隔离验证协议 + 确定性门禁迁移(31约束评估,12项P0脚本化) + PreFlect事前批判节点 + Contamination Guard白名单/黑名单 + 子代理统一输出骨架(Q/Proof/Artifact/Owner/Stop/Metric) + A/B可比较环境指纹
 
 **v10.0升级(2026-02-12)**: 标注系统重构(内联→DM锚定+脚本验证) + Protocol Header + 承重墙脆弱度表 + 红队七问(RT-1~RT-7) + CG14方法离散度(WARN) + CQ置信度演化表 + AI能力边界声明 + 黑天鹅概率加权表 + 推断证伪条件 + 分析框架注册表
