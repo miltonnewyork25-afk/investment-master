@@ -1,6 +1,6 @@
-# 投资研究 Agent — 主分支精简版 v2.1
+# 投资研究 Agent — 主分支精简版 v2.2
 
-> **Context优化v2.1**: 详细框架见 `docs/`。本文件仅含核心路由+铁律速查+行业路由。
+> **Context优化v2.2**: 详细框架见 `docs/`。本文件仅含核心路由+铁律速查+行业路由。
 > **完整框架**: `docs/deep_dive_protocol.md` + 行业专用文档 + 质量门控协议
 
 ## 身份
@@ -176,8 +176,10 @@ bash scripts/find_best_reference.sh {TICKER}
 
 ## 系统升级
 
-**最新版本**: v12.0 框架升级 (DAG编排器+Evidence Cards+确定性门禁)
+**最新版本**: v13.0 框架升级 (RDDT质量复盘驱动6项改进)
 **健康监控**: `bash tests/framework_health_check.sh`
+
+**v13.0升级(2026-02-14)**: Scout Protocol v2.0(学执行过程: checkpoint基线+staging prompt基线+执行参数) + Agent产出合同v2.0(模块类型最低字符门槛+重跑机制) + Supplement扩展协议(Phase 5.5后补强薄弱CQ) + CG1/CG2动态基准(按可能性宽度分层: 0-3分250K/4-6分200K/7-10分350K) + Phase 4 Cross-Agent验证(Agent B读P1-3 staging) + quality_sentinel v1.1(模块类型感知)
 
 **v12.0升级(2026-02-14)**: 编排器v22.0 DAG-Aware重写(模块填空→问题树展开) + Evidence Cards原子证据单元(替代DM锚点自由文本) + CoVe隔离验证协议 + 确定性门禁迁移(31约束评估,12项P0脚本化) + PreFlect事前批判节点 + Contamination Guard白名单/黑名单 + 子代理统一输出骨架(Q/Proof/Artifact/Owner/Stop/Metric) + A/B可比较环境指纹
 

@@ -1,6 +1,7 @@
-# Deep-Dive 分析协议 v10.0 (Tier 3)
+# Deep-Dive 分析协议 v13.0 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
+> **v13.0变化**: Supplement扩展协议(Phase 5.5后补强薄弱CQ)+Cross-Agent验证(P4 Agent B读P1-3 staging)+CG动态基准(按可能性宽度分层)。
 > **v10.0变化**: 标注系统重构(内联→DM锚定+脚本验证+干净叙事)+Protocol Header+承重墙脆弱度表+红队七问+CQ置信度演化表+AI能力边界声明+黑天鹅概率加权表+方法离散度CG14+推断证伪条件+分析框架注册表。
 > **v9.0变化 (扬长避短)**: Phase 4纠错回流+Phase 5重塑(VP→TS, 评分→定性, Reverse DCF核心)+特异性测试+零操作建议铁律。
 > **v8.0变化**: Tier 0温度预筛选+17文件预取+12 MCP工具+Agent架构调整。
@@ -266,6 +267,12 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 - **红队七问 (v10.0新增)**: RT-1~RT-7固定问题逐一回答。详见 `docs/red_team_protocol.md`
   - RT-1 承重墙测试 | RT-2 认知偏差审计 | RT-3 空头钢人 | RT-4 数据质量审计
   - RT-5 黑天鹅压力测试 | RT-6 时间框架挑战 | RT-7 替代解释
+- **Cross-Agent验证 (v13.0新增)**: Phase 4的Agent B**必须读Phase 1-3的staging文件**。
+  - 读取范围: staging/phase1_*.md + staging/phase2_*.md + staging/phase3_*.md
+  - 验证目标: Agent A叙事推理链逻辑跳跃, Agent C估值参数一致性
+  - 信息隔离调整: 从"仅读DM锚点"升级为"读DM锚点+staging全文"
+  - 产出: RT-4(数据审计)中增加"Cross-Agent一致性检查"子模块
+  - 注意: Agent B的看空论点构建(RT-3)仍保持信息隔离，Cross-Agent验证仅用于RT-4数据审计
 - **行为金融偏差检查**（详见 `docs/behavioral_finance.md`，已融入RT-2）
 - **关键数据事实核查**: 抽查≥10个核心数据点的来源真实性（已融入RT-4）
 - **反证挑战**: "如果论点完全错误，最可能的原因是什么？" × 3条（已融入RT-3）
@@ -467,6 +474,40 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 - **零操作建议**: 全文无持仓/减仓/加仓/仓位%/操作触发
 - **数据审计**: 文末审计摘要存在 + DM覆盖率声明
 - **Phase 5完成后必须组装Complete报告** → 运行 `tests/quality_gate_complete.sh` → 通过后才能标记"全量完成"
+
+### Phase 5.5: Supplement扩展协议 (v13.0新增)
+
+> **实证来源**: PLTR v3.1的4个Supplement(134K)将报告从250K→389K，CQ覆盖度显著提升。
+> RDDT v1.0无Supplement，CQ加权置信度29.6%(最低)。
+
+**触发条件** (任一满足即触发):
+1. Phase 5完成后，任何CQ置信度 < 35%
+2. Complete总字符 < plan_target × 1.5
+3. 方法离散度 > 5.0x
+4. Scout baseline标记的"特异性风险" 仍未建模 (仅被提及未深入分析)
+
+**Supplement设计规则**:
+- 每个Supplement针对1个薄弱CQ或1个Scout特异性风险
+- 字符目标: 25-40K/Supplement
+- Agent分配: 1个专项Agent (身份继承对应领域的Agent A/B/C)
+- 独立可读: 可作为Complete的选读扩展
+- 无内容重复: 不复制Complete已有内容，只深化薄弱环节
+- DM锚点: 继承主报告shared_context.md，可新增DM锚点
+
+**Supplement产出流程**:
+1. 识别薄弱环节: CQ置信度排序 → 选最低1-3个
+2. 设计专项Agent prompt: 包含CQ原文+Phase 1-5已有分析摘要+需深化方向
+3. 执行Agent: 产出写入 `staging/supplement_{topic}.md`
+4. QSA检查: 运行quality_sentinel.sh验证
+5. 整合: Complete组装时附加在Part V之后
+
+**与Complete整合**:
+- Supplement独立为staging文件: `staging/supplement_{A/B/C}_{topic}.md`
+- Complete组装时附加在主报告Part V之后，以"## Supplement A/B/C: {标题}"开头
+- CG检查: Supplement字符计入CG1总字符
+- CQ置信度: Supplement完成后更新CQ置信度演化表
+
+**Supplement数量限制**: 最多4个Supplement (PLTR v3.1实证上限)
 
 ---
 
