@@ -224,9 +224,9 @@ reports:
 
   RBLX:
     industry: 生态科技
-    version: "v1.1"
+    version: "v1.2"
     date: "2026-02-16"
-    chars: 383000
+    chars: 383800
     cg: "pending/17"
     poss_width: 6
     methodology: mixed_mode
@@ -235,11 +235,13 @@ reports:
     business_model: [ugc_gaming_platform, virtual_economy, developer_ecosystem, immersive_ads, virtual_currency]
     risk_profile: [sbc_value_destruction, coppa_regulation, mdl_litigation, developer_defection, age_data_credibility, platform_dependency]
     key_lessons:
-      - "SBC是估值薛定谔开关: 含SBC $13-20B vs 不含 $32-46B, 处理方式占65%估值离散"
+      - "SBC是估值薛定谔开关: 含SBC $10-20B vs 不含 $32-46B, 处理方式占65%估值离散"
       - "Phase 4 Agent context溢出: broad context需inline summary而非读全部staging文件"
       - "CQ Lifecycle应从Phase 0.5就建, 延迟建也好过不建"
       - "补充模块(品牌忠诚+催化剂+聪明钱)应在Phase 0规划, 不应Phase 3补救"
       - "8/8 CQ全确认风险(75%置信度)——无虚假警报本身是重要投资信号"
+      - "v1.2教训: MacroTrends SBC口径含DevEx/创作者支付, APIC变动是SBC硬约束校验"
+      - "v1.2教训: 多源交叉验证时异常值(2.35x于多数源)应即时标红, 不可采信"
     similar_to: [RDDT, META, UNITY, SNAP, APP]
 
 # 显式相似性图谱

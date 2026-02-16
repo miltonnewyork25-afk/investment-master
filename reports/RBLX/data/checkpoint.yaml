@@ -130,7 +130,14 @@ phases:
       - "KS 15/TS 10/CQ 8/CI 8全部完成"
       - "10项P4纠错全部有机吸收"
   assembly:
-    status: pending
+    status: completed
+    version: "v1.2"
+    output: reports/RBLX/RBLX_Complete_v1.2_2026-02-16.md
+    chars: 383800
+    v1_2_correction:
+      root_cause: "MacroTrends SBC $2.65B含DevEx, 实际SBC $1.13B (4源交叉验证)"
+      fixes: "240+处级联更新, Track B $5.2B→$9.5B, 离散度7.85x→4.3x"
+      unchanged: "评级(审慎关注), 综合EV($29.0B), 期望回报(-19.6%)"
 
 # CQ预设 (Phase 0.5定稿)
 cq_final:
@@ -141,7 +148,7 @@ cq_final:
   CQ5: "开发者叛逃: Fortnite UEFN+GTA 6 UGC的威胁多大?"
   CQ6: "年龄数据可信度: 自报42% vs 验证27%为18+, TAM叙事是否需重构?"
   CQ7: "Apple/Google渠道税(30%)+支付政策变化的PDRM量化影响?"
-  CQ8: "SBC $2.65B/年+年稀释4%: FCF叙事是否误导投资者?"
+  CQ8: "SBC $1.13B/年+年稀释4%: FCF叙事是否误导投资者?"
 
 # 数据文件
 data_files:
