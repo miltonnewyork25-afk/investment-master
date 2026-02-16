@@ -47,10 +47,39 @@ phases:
       - ERM生态韧性2.5/5,指纹追踪禁令→收入-8-17%
       - 纯广告期毛利率91%=垄断软件平台水平
       - DPO 360天(YoY翻倍)=现金循环异常
+  phase_2:
+    status: complete
+    session: 2
+    agents: 3
+    staging_files:
+      - APP_P2_AgentA.md  # Ch8+Ch9 (财务深挖+分部解剖) 38,977 chars
+      - APP_P2_AgentB.md  # Ch12+Ch13 (承重墙+PDRM) 28,974 chars
+      - APP_P2_AgentC.md  # Ch10+Ch11 (DPO解剖+Reverse DCF) 35,492 chars
+    total_chars: 103443
+    target_chars: 85000
+    dm_anchors_new: 112  # A:48 + B:22 + C:42
+    mermaid_new: 28  # A:12 + B:7 + C:9
+    key_findings:
+      - Reverse DCF隐含10年FCF CAGR 28.5%,隐含FY2035收入$63-76B超TAM天花板
+      - 引擎级分解仅解释EV的32-39%,61-68%是期权/投机溢价
+      - 概率加权EV $134B(隐含$229),低于当前$390达41%
+      - DPO实际410天(FMP),TTD更极端(2035天)=广告科技net revenue特征
+      - ROIC正常化至89.4%(去DPO效应),仍然极高
+      - 8面承重墙中2面高脆弱(平台政策+电商)
+      - PDRM概率加权风险敞口$364M-$1.2B/年(占收入6.6-22.4%)
+      - 电商失败情景:合理EV $55-100B(-56%~-76%)
+    consistency_check:
+      dpo: 410天(FMP) vs 360天(baggers)差异已解释=计算口径
+      roic_normalized: Agent_A 85-90% vs Agent_C 89.4% = 一致
+      ecom_fail_ev: Agent_A $64-100B(multiples) vs Agent_C $55-75B(DCF) = 方法差异正常
+    cq_updates:
+      CQ2: 25-30pct  # 电商规模化高度不确定
+      CQ4: 45-50pct  # 估值隐含假设透明但激进
+      CQ6: 50pct     # DPO是竞争性浮存金,非制度性
 
-current_phase: 1
-current_session: 1
-next_action: phase_2_financial_deep_dive
+current_phase: 2
+current_session: 2
+next_action: phase_3_competition_ecommerce_tam
 
 planning:
   version: v3.0
@@ -59,6 +88,11 @@ planning:
   agents: 21
   target_chars: 500K
   scenarios: [S1_Bear_20pct, S2_Base_45pct, S3_Bull_25pct, S4_Moonshot_10pct]
+
+cumulative:
+  total_chars: 195537  # P1:92094 + P2:103443
+  dm_anchors: 325  # P0:78 + P1:135 + P2:112
+  mermaid: 47  # P1:19 + P2:28
 
 scorecard:
   pre: pending
