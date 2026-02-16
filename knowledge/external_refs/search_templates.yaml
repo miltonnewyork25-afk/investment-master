@@ -1,0 +1,123 @@
+# 外部文献侦察搜索模板 v1.0
+# Phase -0.5 使用: 5维度系统性搜索 + 行业顶级来源 + 质量过滤标准
+# 变量: {TICKER} {COMPANY} {INDUSTRY} {YEAR} {COMPETITOR} {BUSINESS_MODEL}
+
+search_dimensions:
+  D1_deep_analysis:
+    label: "深度分析"
+    templates:
+      - "{TICKER} deep dive analysis {YEAR}"
+      - "{TICKER} investment thesis {YEAR}"
+      - "{COMPANY} competitive advantage analysis"
+    target: "最深度的外部分析框架"
+    extract: "A(核心论点) — 外部分析师的主线逻辑, 与我们CQ的重叠/偏差"
+
+  D2_adversarial:
+    label: "对抗视角"
+    templates:
+      - "{TICKER} bear case OR short thesis {YEAR}"
+      - "why {TICKER} is overvalued {YEAR}"
+      - "{TICKER} risks problems concerns {YEAR}"
+    target: "最强反面论证"
+    extract: "B(风险盲点) — 我们框架可能忽略的风险维度"
+
+  D3_industry:
+    label: "行业结构"
+    templates:
+      - "{INDUSTRY} competitive landscape {YEAR}"
+      - "{TICKER} vs {COMPETITOR} comparison {YEAR}"
+      - "{INDUSTRY} market share trends {YEAR}"
+    target: "行业结构性变化"
+    extract: "C(竞争格局) — 行业动态中的结构性位移"
+
+  D4_expert:
+    label: "专家视角"
+    templates:
+      - "{TICKER} investor letter mention {YEAR}"
+      - "{TICKER} earnings call key takeaway {YEAR}"
+      - "{COMPANY} management strategy analysis"
+    target: "业内人士/机构视角"
+    extract: "D(信息差) — 管理层/机构投资者的独特洞察"
+
+  D5_academic:
+    label: "思维模型"
+    templates:
+      - "{BUSINESS_MODEL} unit economics analysis"
+      - "{BUSINESS_MODEL} platform dynamics research"
+      - "{BUSINESS_MODEL} competitive moat framework"
+    target: "思维模型/学术框架"
+    extract: "E(分歧) — 外部观点与AI分析的实质性分歧"
+
+# 行业顶级来源 (质量>SEO排名)
+industry_sources:
+  半导体:
+    primary: [SemiAnalysis, IC Insights, TechInsights, Fabricated Knowledge]
+    secondary: [AnandTech, ServeTheHome, WikiChip, Dylan Patel]
+    earnings: [半导体行业协会SIA, SEMI, WSTS]
+
+  生态科技:
+    primary: [Stratechery, Benedict Evans, a16z blog, Lenny's Newsletter]
+    secondary: [The Information, Protocol, Casey Newton Platformer]
+    earnings: [Visible Alpha, Tegus transcripts]
+
+  消费品:
+    primary: [Nielsen, Euromonitor, Consumer Staples Digest]
+    secondary: [Placer.ai, Second Measure, YipitData]
+    earnings: [NRF, IRI/Circana]
+
+  金融:
+    primary: [Matt Levine Money Stuff, S&P Global, Autonomous Research]
+    secondary: [Bank of America Research, Fitch Ratings, Moody's]
+    earnings: [FDIC quarterly, Federal Reserve reports]
+
+# 质量过滤标准
+quality_filter:
+  prefer: "独立研究者 > 机构研报 > 财经媒体 > 论坛讨论"
+  depth_minimum: "2000字深度分析, 非新闻摘要/标题党"
+  recency: "6个月内优先, 12个月内有框架价值可接受"
+  contrarian_bonus: "看空/质疑视角额外加分(D2维度必须有结果)"
+  disqualify:
+    - "纯SEO内容农场"
+    - "无具体数据支撑的观点文"
+    - "付费推广/软文"
+    - "抄袭/聚合其他来源的摘要"
+
+# 输出格式: 文献侦察备忘录
+memo_template: |
+  # {TICKER} 文献侦察备忘录
+  > Phase -0.5 | {DATE} | 搜索维度: {N}/5 有结果
+
+  ## A. 核心论点 (D1)
+  - 来源: {source}
+  - 主线: {thesis}
+  - 与CQ重叠: {overlap}
+
+  ## B. 风险盲点 (D2)
+  - 来源: {source}
+  - 最强空头论点: {bear_case}
+  - 框架是否已覆盖: {covered}
+
+  ## C. 竞争格局 (D3)
+  - 来源: {source}
+  - 结构性变化: {shift}
+
+  ## D. 信息差 (D4)
+  - 来源: {source}
+  - 独特洞察: {insight}
+
+  ## E. 分歧 (D5) ← 反形式化门控: 此节≥2条
+  - 分歧1: {disagreement}
+  - 分歧2: {disagreement}
+
+  ## 行动项
+  - 纳入CQ: {cq_additions}
+  - 纳入KS: {ks_additions}
+  - 纳入Bear Case: {bear_additions}
+
+# 反形式化门控
+anti_formalism_gate:
+  required:
+    - "E节(分歧)≥2条实质性分歧"
+    - "≥3个维度有搜索结果"
+    - "≥1个看空/质疑来源"
+  if_fail: "在备忘录顶部标注[门控未通过: {原因}], 但不阻断Phase 0"

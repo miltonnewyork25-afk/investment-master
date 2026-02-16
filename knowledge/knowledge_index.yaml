@@ -1,0 +1,231 @@
+# Knowledge Index v1.0
+# 13份已完成报告的结构化索引 + 相似性图谱
+# 用途: find_relevant_knowledge.sh 的数据源
+# 更新时机: 每份新报告Complete后追加
+
+reports:
+  TSLA:
+    industry: 生态科技
+    version: "v3.0"
+    date: "2026-02-11"
+    chars: 415500
+    cg: "13/13"
+    poss_width: 9
+    methodology: discovery_system
+    ovm: true
+    erm: false
+    business_model: [ev_manufacturing, energy_storage, autonomous_driving, robotaxi, ai_robotics]
+    risk_profile: [execution_gap, regulatory_uncertainty, ceo_distraction, valuation_disconnect]
+    key_lessons:
+      - "发现系统适合A型不确定性(类别): 映射可能性空间比给目标价更诚实"
+      - "升级报告比fresh Tier 3短是正常的(Phase 3压缩)"
+      - "CG4 KS regex需兼容无连字符格式"
+    similar_to: [PLTR, NIO, RIVN, BYD]
+
+  GOOGL:
+    industry: 生态科技
+    version: "v4.0"
+    date: "2026-02-12"
+    chars: 453500
+    cg: "13/13"
+    poss_width: 6
+    methodology: mixed_mode
+    ovm: true
+    erm: false
+    business_model: [advertising, cloud, search, ai_platform, youtube]
+    risk_profile: [antitrust, ai_disruption, search_share_erosion, capex_intensity]
+    key_lessons:
+      - "六方法SOTP收敛偏差<2%, 最强估值框架"
+      - "TAM Ceiling是杀手级信号: 即使全部成功也<市价"
+      - "框架复杂度不等于报告质量: 9个Agent产出最佳报告"
+    similar_to: [META, MSFT, AMZN, RDDT]
+
+  LRCX:
+    industry: 半导体
+    version: "v2.0"
+    date: "2026-02-11"
+    chars: 470000
+    cg: "13/13"
+    poss_width: 3
+    methodology: traditional
+    ovm: false
+    erm: false
+    business_model: [semiconductor_equipment, deposition, etch, csbg_services]
+    risk_profile: [cyclicality, china_export_controls, customer_concentration, capex_cycle]
+    key_lessons:
+      - "传统框架(PW 0-3)直接给条件估值范围, 最高效"
+      - "首份v9.0框架报告: 标注密度44.4/万创纪录"
+      - "CSBG服务收入是周期缓冲器, 特异性KS标本"
+    similar_to: [ASML, AMAT, KLAC, TEL]
+
+  PLTR:
+    industry: 生态科技
+    version: "v3.1"
+    date: "2026-02-12"
+    chars: 389500
+    cg: "13/13"
+    poss_width: 8
+    methodology: discovery_system
+    ovm: true
+    erm: false
+    business_model: [government_analytics, commercial_platform, data_integration, aip]
+    risk_profile: [valuation_extreme, gov_concentration, commercial_ramp_uncertainty, stock_comp]
+    key_lessons:
+      - "Discovery System B型(量级不确定): 方法离散度25.5x反映真实估值困难"
+      - "4个Supplement有效补强薄弱CQ"
+      - "数据授权模式的不确定性是跨公司共性"
+    similar_to: [SNOW, DDOG, MDB, RDDT]
+
+  TSM:
+    industry: 半导体
+    version: "v2.0"
+    date: "2026-02-10"
+    chars: 451000
+    cg: "13/13"
+    poss_width: 3
+    methodology: traditional
+    ovm: true
+    erm: false
+    business_model: [foundry, advanced_node, packaging, specialty]
+    risk_profile: [geopolitical_taiwan, customer_concentration, capex_burden, china_decoupling]
+    key_lessons:
+      - "地缘政治风险需用中性表述(台海冲突非入侵)"
+      - "传统框架+OVM混合: 安全边际+4.2%不足以触发深度关注"
+      - "半导体密度天然高: 工艺/产能/良率硬数据密集"
+    similar_to: [ASML, LRCX, INTC, AMD]
+
+  META:
+    industry: 生态科技
+    version: "v2.0"
+    date: "2026-02-08"
+    chars: 317000
+    cg: "13/13"
+    poss_width: 5
+    methodology: mixed_mode
+    ovm: false
+    erm: false
+    business_model: [social_advertising, reels, whatsapp, metaverse, ai_platform]
+    risk_profile: [privacy_regulation, tiktok_competition, metaverse_capex, advertiser_concentration]
+    key_lessons:
+      - "P5三Agent铁律首次验证: A评估+B(KS+TS)+C(CQ闭环)"
+      - "PMX飞轮溢价可达50%上限"
+      - "广告ARPU天花板测试是平台公司通用KS"
+    similar_to: [GOOGL, SNAP, PINS, RDDT]
+
+  SOFI:
+    industry: 金融
+    version: "v2.0"
+    date: "2026-02-09"
+    chars: 282000
+    cg: "13/13"
+    poss_width: 4
+    methodology: mixed_mode
+    ovm: false
+    erm: false
+    business_model: [digital_banking, lending, brokerage, technology_platform]
+    risk_profile: [credit_risk, interest_rate, regulatory, competition_from_incumbents]
+    key_lessons:
+      - "金融公司估值需拆分银行+科技平台双属性"
+      - "NIM趋势是金融科技最关键KS"
+      - "会员增长曲线拐点是核心CQ"
+    similar_to: [HOOD, NU, LC, ALLY]
+
+  COST:
+    industry: 消费品
+    version: "v2.0"
+    date: "2026-02-10"
+    chars: 282000
+    cg: "13/13"
+    poss_width: 2
+    methodology: traditional
+    ovm: false
+    erm: false
+    business_model: [warehouse_club, membership, private_label, e_commerce]
+    risk_profile: [membership_churn, private_label_margin, e_commerce_disruption, international_expansion]
+    key_lessons:
+      - "传统框架(PW=2)最简洁高效: 直接估值+评级"
+      - "会员续费率是消费防御品核心KS"
+      - "消费品密度需刻意提升: 缺少硬件参数类数据"
+    similar_to: [WMT, TGT, BJ, PG]
+
+  AMD:
+    industry: 半导体
+    version: "v2.0"
+    date: "2026-02-11"
+    chars: 349000
+    cg: "13/13"
+    poss_width: 5
+    methodology: mixed_mode
+    ovm: false
+    erm: false
+    business_model: [cpu_datacenter, gpu_ai, gaming, embedded, xilinx_fpga]
+    risk_profile: [nvidia_dominance, software_ecosystem_gap, intel_resurgence, cyclicality]
+    key_lessons:
+      - "方法离散度4.42x量化不确定性, 比点估计更有决策价值"
+      - "CQ下调=P4对抗成功: 5/8 CQ下调=校准成功"
+      - "CI注册表可嵌入P5: 修复CG12"
+    similar_to: [NVDA, INTC, QCOM, MRVL]
+
+  RDDT:
+    industry: 生态科技
+    version: "v1.1"
+    date: "2026-02-14"
+    chars: 245000
+    cg: "13/13"
+    poss_width: 6
+    methodology: mixed_mode
+    ovm: true
+    erm: true
+    business_model: [advertising, data_licensing, ugc_platform, community]
+    risk_profile: [seo_dependency, volunteer_labor, ai_licensing_slowdown, google_algo_risk]
+    key_lessons:
+      - "ERM应在P0.5启动: 生态风险映射越早越好"
+      - "Supplement拼入Complete时必须降标题层级+剥离Agent header"
+      - "Agent产出不均需重跑: 质量不达标模块必须返工"
+    similar_to: [META, GOOGL, SNAP, PINS]
+
+  MU:
+    industry: 半导体
+    version: "v1.0"
+    date: "2026-02-10"
+    chars: 179000
+    cg: "12/13"
+    poss_width: 3
+    methodology: traditional
+    ovm: false
+    erm: false
+    business_model: [dram, nand, hbm, automotive_memory]
+    risk_profile: [memory_cyclicality, price_volatility, samsung_competition, inventory_buildup]
+    key_lessons:
+      - "CG1未通过需扩展: 179K低于250K标准"
+      - "内存周期性是最强风险因素, KS需聚焦价格拐点"
+      - "HBM是AI驱动的增量引擎, 但份额不稳定"
+    similar_to: [NVDA, AMD, TSM, SK]
+
+# 显式相似性图谱
+# 每对含理由, find_relevant_knowledge.sh用similar_to字段+此图谱综合匹配
+similarity_graph:
+  - pair: [TSLA, PLTR]
+    reason: "高可能性宽度+发现系统+极端估值分歧"
+  - pair: [GOOGL, META]
+    reason: "广告平台+生态科技+AI转型"
+  - pair: [GOOGL, RDDT]
+    reason: "广告+平台+AI数据授权"
+  - pair: [LRCX, ASML]
+    reason: "半导体设备双寡头+周期性+服务收入"
+  - pair: [AMD, TSM]
+    reason: "芯片设计-代工供应链+半导体周期"
+  - pair: [AMD, NVDA]
+    reason: "GPU竞争+AI加速器+datacenter"
+  - pair: [COST, PG]
+    reason: "消费防御品+会员/品牌忠诚度"
+  - pair: [PLTR, RDDT]
+    reason: "数据授权模式不确定性+平台价值评估"
+  - pair: [META, RDDT]
+    reason: "UGC平台+广告变现+社区治理"
+  - pair: [TSM, LRCX]
+    reason: "半导体产业链上下游+设备-代工依赖"
+  - pair: [SOFI, HOOD]
+    reason: "金融科技+零售用户+多产品平台"
+  - pair: [MU, AMD]
+    reason: "半导体+HBM/AI协同+周期性"
