@@ -26,13 +26,31 @@ phases:
     dm_quality: {H: 70pct, S: 20pct, I: 10pct}
     data_files: [baggers_summary, income_q8, income_y5, balance_y5, cashflow_y5, ratios_y5, insider_trading, estimates, key_metrics, rating, compare_stocks]
   phase_0.5:
-    status: in_progress
+    status: complete
     cq_count: 8
     cq_source: planning_v3.0
+  phase_1:
+    status: complete
+    session: 1
+    agents: 3
+    staging_files:
+      - APP_P1_AgentA.md  # Ch3+Ch4+Ch5 (AXON+MAX) 55,002 chars
+      - APP_P1_AgentB.md  # Ch6 (ERM) 21,820 chars
+      - APP_P1_AgentC.md  # Ch7 (Value Chain) 15,272 chars
+    total_chars: 92094
+    target_chars: 90000
+    dm_anchors_new: 135  # A:82 + B:26 + C:27
+    mermaid_new: 19  # A:7 + B:7 + C:5
+    key_findings:
+      - AXON三层架构(深度学习+强化学习+NLP)是核心引擎
+      - MAX中介层60-80%市场份额,六维锁定机制
+      - ERM生态韧性2.5/5,指纹追踪禁令→收入-8-17%
+      - 纯广告期毛利率91%=垄断软件平台水平
+      - DPO 360天(YoY翻倍)=现金循环异常
 
-current_phase: 0.5
-current_session: 0
-next_action: complete_phase_0.5_then_commit_and_start_phase_1
+current_phase: 1
+current_session: 1
+next_action: phase_2_financial_deep_dive
 
 planning:
   version: v3.0
