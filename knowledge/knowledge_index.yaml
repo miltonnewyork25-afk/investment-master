@@ -1,5 +1,5 @@
-# Knowledge Index v1.1
-# 13份已完成报告的结构化索引 + 相似性图谱
+# Knowledge Index v1.2
+# 14份已完成报告的结构化索引 + 相似性图谱
 # 用途: find_relevant_knowledge.sh 的数据源
 # 更新时机: 每份新报告Complete后追加
 
@@ -222,6 +222,26 @@ reports:
       - "HBM是AI驱动的增量引擎, 但份额不稳定"
     similar_to: [NVDA, AMD, TSM, SK]
 
+  RBLX:
+    industry: 生态科技
+    version: "v1.0"
+    date: "2026-02-16"
+    chars: 383000
+    cg: "pending/17"
+    poss_width: 6
+    methodology: mixed_mode
+    ovm: false
+    erm: true
+    business_model: [ugc_gaming_platform, virtual_economy, developer_ecosystem, immersive_ads, virtual_currency]
+    risk_profile: [sbc_value_destruction, coppa_regulation, mdl_litigation, developer_defection, age_data_credibility, platform_dependency]
+    key_lessons:
+      - "SBC是估值薛定谔开关: 含SBC $13-20B vs 不含 $32-46B, 处理方式占65%估值离散"
+      - "Phase 4 Agent context溢出: broad context需inline summary而非读全部staging文件"
+      - "CQ Lifecycle应从Phase 0.5就建, 延迟建也好过不建"
+      - "补充模块(品牌忠诚+催化剂+聪明钱)应在Phase 0规划, 不应Phase 3补救"
+      - "8/8 CQ全确认风险(75%置信度)——无虚假警报本身是重要投资信号"
+    similar_to: [RDDT, META, UNITY, SNAP, APP]
+
 # 显式相似性图谱
 # 每对含理由, find_relevant_knowledge.sh用similar_to字段+此图谱综合匹配
 similarity_graph:
@@ -257,3 +277,13 @@ similarity_graph:
     reason: "广告平台+平台编排者vs依赖者+AI竞争+反垄断"
   - pair: [APP, RDDT]
     reason: "广告变现+平台生态依赖+数据授权+ERM触发"
+  - pair: [RBLX, RDDT]
+    reason: "UGC平台+开发者/版主生态依赖+广告变现+ERM触发+混合模式估值"
+  - pair: [RBLX, META]
+    reason: "广告ARPU天花板对比($1.3 vs $50+)+平台依赖+监管风险+SBC问题"
+  - pair: [RBLX, APP]
+    reason: "SBC高企+FCF叙事vs真实成本+平台依赖+监管催化剂+S&P 500/分析师共识偏差"
+  - pair: [RBLX, UNITY]
+    reason: "游戏引擎/平台+开发者生态+SBC问题+估值争议"
+  - pair: [RBLX, SNAP]
+    reason: "年轻用户平台+广告变现挑战+COPPA/隐私监管+注意力竞争"
