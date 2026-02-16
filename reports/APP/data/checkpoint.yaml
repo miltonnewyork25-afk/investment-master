@@ -169,12 +169,30 @@ phases:
           - 电商隐含定价$32-49B vs SoTP估值$5-25B=溢价50-150%
       SD:
         status: complete
-        title: "终局推演"
+        title: "终局推演 — CQ8长期框架"
         staging_file: APP_P5.5_SD.md
+        total_chars: 26752
+        dm_anchors_new: 15  # DM-END-001~015
+        mermaid_new: 6
+        cq_update:
+          CQ8: 25pct  # 从22%上调, Moloco IPO验证独立AdTech+Meta AI agent抵消
+        key_findings:
+          - 三终局模型: E1赢家通吃(30%)+E2生态特化(45%)+E3平台主权(25%)
+          - 四角色分析: 垂直巨头/幸存者/边缘化/全渠道挑战者
+          - M&A双向: APP作为收购方(4标的)+被收购方(5潜在买家)
+          - Moloco IPO后三步战略: 收购SSP→推中介层→双线竞争
+          - E3渐进路径: Apple年度政策收紧累积5年系统性削弱第三方SDK
+          - 角色加权EV $115.8B vs $133.1B=温和高估13%
+          - CQ8与CQ1/CQ2/CQ5交互: 终局越远,护城河价值越低
+    consistency_check:
+      market_cap: SA $132B = SD $133.1B = 一致
+      cq2_sa_vs_p5: SA 28% < P5 30% = SA更保守(合理,新证据偏空)
+      cq8_sd_vs_p5: SD 25% > P5 22% = SD略上调(合理,Moloco IPO验证)
+      ev_sa_vs_sd: SA电商隐含$32-49B ⊂ SD角色加权$115.8B = 一致(电商是全局一部分)
 
 current_phase: 5.5
 current_session: 6
-next_action: phase_5.5_remaining_supplements_or_complete_assembly
+next_action: complete_assembly
 
 planning:
   version: v3.0
@@ -185,9 +203,9 @@ planning:
   scenarios: [S1_Bear_20pct, S2_Base_45pct, S3_Bull_25pct, S4_Moonshot_10pct]
 
 cumulative:
-  total_chars: 493104  # P1:92094 + P2:103443 + P3:98454 + P4:70267 + P5:100663 + SA:28183
-  dm_anchors: 566  # P0:78 + P1:135 + P2:112 + P3:88 + P4:61 + P5:67 + SA:25
-  mermaid: 100  # P1:19 + P2:28 + P3:23 + P4:9 + P5:15 + SA:6
+  total_chars: 519856  # P1:92094 + P2:103443 + P3:98454 + P4:70267 + P5:100663 + SA:28183 + SD:26752
+  dm_anchors: 581  # P0:78 + P1:135 + P2:112 + P3:88 + P4:61 + P5:67 + SA:25 + SD:15
+  mermaid: 106  # P1:19 + P2:28 + P3:23 + P4:9 + P5:15 + SA:6 + SD:6
   chapters_complete: 27  # Ch1-27 (Ch28=Complete组装) + SA/SD supplements
 
 scorecard:
