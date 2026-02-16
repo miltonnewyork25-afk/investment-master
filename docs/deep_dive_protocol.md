@@ -1,6 +1,8 @@
-# Deep-Dive 分析协议 v10.0 (Tier 3)
+# Deep-Dive 分析协议 v14.0 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
+> **v14.0变化**: 知识层(Phase -1知识库检索+Phase -0.5外部文献侦察)+knowledge_index.yaml+planning_archives+搜索模板。
+> **v13.0变化**: Supplement扩展协议(Phase 5.5后补强薄弱CQ)+Cross-Agent验证(P4 Agent B读P1-3 staging)+CG动态基准(按可能性宽度分层)。
 > **v10.0变化**: 标注系统重构(内联→DM锚定+脚本验证+干净叙事)+Protocol Header+承重墙脆弱度表+红队七问+CQ置信度演化表+AI能力边界声明+黑天鹅概率加权表+方法离散度CG14+推断证伪条件+分析框架注册表。
 > **v9.0变化 (扬长避短)**: Phase 4纠错回流+Phase 5重塑(VP→TS, 评分→定性, Reverse DCF核心)+特异性测试+零操作建议铁律。
 > **v8.0变化**: Tier 0温度预筛选+17文件预取+12 MCP工具+Agent架构调整。
@@ -12,6 +14,79 @@
 ---
 
 ## 启动协议
+
+### Scope Lock (DAG-0): 边界锁定（Phase 0前自动执行）
+
+> **v12.0新增**。在任何数据获取开始前，锁定分析范围+工具+停止标准。详见 `docs/dag_orchestrator.md` DAG-0节。
+
+1. **唯一目标定义** — `task.goal` = "对{TICKER}进行Tier {N}分析"，输出工件=[Complete报告, EC集合, checkpoint.yaml]
+2. **不做范围** — `task.out_of_scope[]` ≥ 5项(不做仓位建议/精确目标价/操作触发/空泛预测/数字评分)
+3. **工具权限** — `governance.allowed_tools[]` = [baggers_summary, fmp_data, analyze_stock, polymarket_events, WebSearch]
+4. **确定性门禁映射** — 关键约束≥80%映射到脚本(FastGate/verify_data_sources/quality_sentinel/合规检查)
+5. **环境指纹** — `env_fingerprint` = {framework_version}_{git_hash}_{data_date}_{stock_price}
+6. **停止标准** — `stop.criteria[]` = [所有L1问题有EC支撑, CG1-14全PASS, ec.verification_rate≥80%]
+7. **已知失败模式** — `risk.failure_modes[]` ≥ 3个 + 每个有detector
+
+**Scope Lock 完成标准**: goal非空 + out_of_scope≥5 + env_fingerprint生成 + gates.mapped_ratio≥80%
+
+---
+
+### Phase -1: 知识库检索（自动执行，Scope Lock后立即触发）
+
+> **v14.0新增**。从已有报告经验中提取相似公司教训，避免重复犯错、复用成功模式。零LLM tokens(脚本执行) + 少量精读(planning archives)。
+
+1. **运行知识检索脚本** — `bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}`
+   - 输出top-3相似公司 + 匹配分数 + 教训摘要
+   - 匹配算法: similar_to显式边(5分) + 同行业(3分) + business_model重叠(2分/个) + PW接近(1分) + OVM/ERM匹配(各1分)
+2. **精读Top-1 Planning Archive** — 读取 `knowledge/planning_archives/{TOP1}.md`
+   - 重点关注: "什么有效(可复用)" + "什么无效(需避免)" + "如果重做"
+   - 耗时: ~30秒(单文件精读)
+3. **浏览Top-2/3 Archive** — 快速扫描标题和关键指标
+4. **输出知识上下文** — 写入 `reports/{TICKER}/data/knowledge_context.md`，内容:
+   - 相似公司列表 + 匹配理由
+   - 可复用模式(≤3个)
+   - 需避免的反模式(≤3个)
+   - 建议框架方向(基于相似公司的methodology/PW)
+
+**Phase -1 完成标准**: `knowledge_context.md` 已创建 + 包含≥1个可复用模式 + ≥1个需避免反模式
+**Context成本**: ~2K持久(knowledge_context.md) + ~8K临时(archive精读，不持久化)
+
+---
+
+### Phase -0.5: 外部文献侦察（与Phase 0并行执行）
+
+> **v14.0新增**。系统性搜索外部分析、对抗观点、行业洞察。弥补AI通用知识缺口，引入外部专家视角。
+
+1. **加载搜索模板** — 读取 `knowledge/external_refs/search_templates.yaml`
+2. **5路WebSearch搜索** — 按D1-D5维度展开:
+   - **D1 深度分析**: "{TICKER} deep dive analysis {YEAR}" / "{TICKER} investment thesis {YEAR}"
+   - **D2 对抗视角**: "{TICKER} bear case OR short thesis {YEAR}" / "why {TICKER} is overvalued"
+   - **D3 行业结构**: "{INDUSTRY} competitive landscape {YEAR}" / "{TICKER} vs {COMPETITOR}"
+   - **D4 专家视角**: "{TICKER} investor letter mention" / "{TICKER} earnings call key takeaway"
+   - **D5 思维模型**: "{BUSINESS_MODEL} unit economics" / "{BUSINESS_MODEL} platform dynamics"
+3. **质量过滤** — 按 `quality_filter` 标准筛选:
+   - 优先级: 独立研究者 > 机构研报 > 财经媒体 > 论坛
+   - 深度门槛: ≥2000字深度分析
+   - 时效性: 6个月内优先
+4. **精读Top 3-5篇** — 使用WebFetch深度阅读通过筛选的文章
+5. **ABCDE信息提取** — 按5个维度提取结构化信息:
+   - **A(核心论点)**: 外部分析师主线逻辑, 与CQ重叠/偏差
+   - **B(风险盲点)**: 框架可能忽略的风险维度
+   - **C(竞争格局)**: 行业动态中的结构性位移
+   - **D(信息差)**: 管理层/机构的独特洞察
+   - **E(分歧)**: 外部观点与AI分析的实质性分歧
+6. **输出文献侦察备忘录** — 写入 `reports/{TICKER}/data/lit_recon_memo.md`
+
+**反形式化门控**:
+- E节(分歧) ≥ 2条实质性分歧
+- ≥ 3个维度有搜索结果
+- ≥ 1个看空/质疑来源
+- **门控未通过**: 在备忘录顶部标注 `[门控未通过: {原因}]`，但不阻断Phase 0
+
+**Phase -0.5 完成标准**: `lit_recon_memo.md` 已创建 + 反形式化门控已评估
+**Context成本**: ~3K持久(lit_recon_memo.md) + ~8K临时(WebSearch+WebFetch，不持久化)
+
+---
 
 ### Phase 0: 数据基础 + 温度预筛选（自动执行，不占会话）
 
@@ -37,6 +112,8 @@
    - **≤-1.5 (极冷)**: 建议Tier 3深度研究，重点机会
 
 **Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算
+
+**Research Scorecard (v13.1)**: Phase 0/0.5完成后运行 `bash tests/research_scorecard.sh pre {TICKER}` 记录基线分数(典型15-25分)。分数写入checkpoint.yaml的`scorecard.pre`节。
 
 ### Phase 0.5: 市场注意力雷达 + Core Questions（自动执行，与Phase 0并行）
 
@@ -250,6 +327,12 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 - **红队七问 (v10.0新增)**: RT-1~RT-7固定问题逐一回答。详见 `docs/red_team_protocol.md`
   - RT-1 承重墙测试 | RT-2 认知偏差审计 | RT-3 空头钢人 | RT-4 数据质量审计
   - RT-5 黑天鹅压力测试 | RT-6 时间框架挑战 | RT-7 替代解释
+- **Cross-Agent验证 (v13.0新增)**: Phase 4的Agent B**必须读Phase 1-3的staging文件**。
+  - 读取范围: staging/phase1_*.md + staging/phase2_*.md + staging/phase3_*.md
+  - 验证目标: Agent A叙事推理链逻辑跳跃, Agent C估值参数一致性
+  - 信息隔离调整: 从"仅读DM锚点"升级为"读DM锚点+staging全文"
+  - 产出: RT-4(数据审计)中增加"Cross-Agent一致性检查"子模块
+  - 注意: Agent B的看空论点构建(RT-3)仍保持信息隔离，Cross-Agent验证仅用于RT-4数据审计
 - **行为金融偏差检查**（详见 `docs/behavioral_finance.md`，已融入RT-2）
 - **关键数据事实核查**: 抽查≥10个核心数据点的来源真实性（已融入RT-4）
 - **反证挑战**: "如果论点完全错误，最可能的原因是什么？" × 3条（已融入RT-3）
@@ -451,6 +534,51 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 - **零操作建议**: 全文无持仓/减仓/加仓/仓位%/操作触发
 - **数据审计**: 文末审计摘要存在 + DM覆盖率声明
 - **Phase 5完成后必须组装Complete报告** → 运行 `tests/quality_gate_complete.sh` → 通过后才能标记"全量完成"
+
+### Phase 5.5: Supplement扩展协议 (v13.0新增)
+
+> **实证来源**: PLTR v3.1的4个Supplement(134K)将报告从250K→389K，CQ覆盖度显著提升。
+> RDDT v1.0无Supplement，CQ加权置信度29.6%(最低)。
+
+**触发条件** (任一满足即触发):
+1. Phase 5完成后，任何CQ置信度 < 35%
+2. Complete总字符 < plan_target × 1.5
+3. 方法离散度 > 5.0x
+4. Scout baseline标记的"特异性风险" 仍未建模 (仅被提及未深入分析)
+
+**Supplement设计规则**:
+- 每个Supplement针对1个薄弱CQ或1个Scout特异性风险
+- 字符目标: 25-40K/Supplement
+- Agent分配: 1个专项Agent (身份继承对应领域的Agent A/B/C)
+- 独立可读: 可作为Complete的选读扩展
+- 无内容重复: 不复制Complete已有内容，只深化薄弱环节
+- DM锚点: 继承主报告shared_context.md，可新增DM锚点
+
+**Supplement产出流程**:
+1. 识别薄弱环节: CQ置信度排序 → 选最低1-3个
+2. 设计专项Agent prompt: 包含CQ原文+Phase 1-5已有分析摘要+需深化方向
+3. 执行Agent: 产出写入 `staging/supplement_{topic}.md`
+4. QSA检查: 运行quality_sentinel.sh验证
+5. 整合: Complete组装时附加在Part V之后
+
+**与Complete整合**:
+- Supplement独立为staging文件: `staging/supplement_{A/B/C}_{topic}.md`
+- Complete组装时附加在主报告Part V之后，以"## Supplement A/B/C: {标题}"开头
+- CG检查: Supplement字符计入CG1总字符
+- CQ置信度: Supplement完成后更新CQ置信度演化表
+
+**Supplement数量限制**: 最多4个Supplement (PLTR v3.1实证上限)
+
+### Research Scorecard Post评分 (v13.1新增)
+
+Complete组装 + CG门控通过后，运行研究记分卡:
+```bash
+# Post评分 + Pre/Post对比
+bash tests/research_scorecard.sh compare {TICKER} reports/{TICKER}/{TICKER}_Complete_v{VER}_{DATE}.md [poss_width]
+```
+- Delta≥50 = 优秀研究 | Delta≥40 = 良好 | Delta<30 = 需诊断
+- 结果写入 `checkpoint.yaml` 的 `scorecard` 节
+- 与CG门控互补: CG=门槛(PASS/FAIL), Scorecard=评分(0-100连续)
 
 ---
 

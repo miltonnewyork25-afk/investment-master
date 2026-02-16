@@ -1,0 +1,29 @@
+upgrade_id: "v14.0-knowledge-layer"
+date_proposed: "2026-02-16"
+author: "agent"
+
+hypothesis:
+  what: "知识层 + 外部文献侦察 — Phase -1(内部知识检索) + Phase -0.5(外部文献侦察)"
+  improves_which_dimension: "CQ精准度、KS特异性、CI产出率、框架经验复用"
+  current_baseline: "Scout只读1份参考报告, find_best_reference.sh只按ticker匹配, 无'类似公司'概念, 零外部文献输入"
+  expected_after: "自动匹配相似公司经验(top-3) + 系统性搜索外部文献 → CQ引用外部角度 + KS更特异"
+  could_regress: "Phase -1/-0.5增加启动时间, 外部文献引入噪音, knowledge_index.yaml维护负担"
+
+success_criteria:
+  - "首份使用Phase -1/-0.5的报告, CQ至少引用1个外部文献角度"
+  - "find_relevant_knowledge.sh对测试ticker返回正确top-3"
+  - "Phase -1 + -0.5持久化Context增量<8K tokens(临时读取不算)"
+  - "MEMORY.md降至<200行"
+
+kill_condition:
+  - "Phase -1/-0.5合计>10分钟但无新颖角度"
+  - "文献备忘录E-section(分歧)连续2份报告为空"
+
+validation:
+  status: "PENDING"
+  first_report: ""
+  date_validated: ""
+  actual_results: ""
+  criteria_met: []
+  criteria_failed: []
+  honest_assessment: "纯框架升级, 零报告验证。知识索引来自已有报告元数据(低风险), 外部文献侦察需实战验证搜索质量和Context成本。"
