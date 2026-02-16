@@ -144,9 +144,37 @@ phases:
       CQ7: 38pct  # 管理层(高方差CEO)
       CQ8: 22pct  # AI终局
 
-current_phase: 5
-current_session: 5
-next_action: phase_5.5_supplements_or_complete_assembly
+  phase_5.5:
+    status: in_progress
+    session: 6
+    supplements:
+      SA:
+        status: complete
+        title: "电商深度深挖 — CQ2决定性证据"
+        staging_file: APP_P5.5_SA.md
+        total_chars: 28183
+        dm_anchors_new: 25  # DM-ECM-201~225
+        mermaid_new: 6
+        cq_update:
+          CQ2: 28pct  # 从30%下调, Decision ROAS+规模化数学+竞争力评分
+        key_findings:
+          - Decision ROAS: 报告3.5x→全调整后1.05x, 多数品类亏损
+          - 品类D30适配热力图: CPG甜蜜区 vs 家居地狱区
+          - 边际ROAS三层衰减: 库存分层+受众耗竭+竞价密度
+          - 补充渠道TAM天花板$0.45-1.2B/年
+          - 概率加权2028E电商$1.87B(低于P3的$2.6B)
+          - 广告主决策漏斗穿透率: 15,000品牌→~94核心渠道化客户
+          - GA后SMB onboarding穿透率6.7%(25,000注册→1,675稳定)
+          - 四维竞争力: APP 18/40 vs META 38/40
+          - 电商隐含定价$32-49B vs SoTP估值$5-25B=溢价50-150%
+      SD:
+        status: complete
+        title: "终局推演"
+        staging_file: APP_P5.5_SD.md
+
+current_phase: 5.5
+current_session: 6
+next_action: phase_5.5_remaining_supplements_or_complete_assembly
 
 planning:
   version: v3.0
@@ -157,10 +185,10 @@ planning:
   scenarios: [S1_Bear_20pct, S2_Base_45pct, S3_Bull_25pct, S4_Moonshot_10pct]
 
 cumulative:
-  total_chars: 464921  # P1:92094 + P2:103443 + P3:98454 + P4:70267 + P5:100663
-  dm_anchors: 541  # P0:78 + P1:135 + P2:112 + P3:88 + P4:61 + P5:67
-  mermaid: 94  # P1:19 + P2:28 + P3:23 + P4:9 + P5:15
-  chapters_complete: 27  # Ch1-27 (Ch28=Complete组装)
+  total_chars: 493104  # P1:92094 + P2:103443 + P3:98454 + P4:70267 + P5:100663 + SA:28183
+  dm_anchors: 566  # P0:78 + P1:135 + P2:112 + P3:88 + P4:61 + P5:67 + SA:25
+  mermaid: 100  # P1:19 + P2:28 + P3:23 + P4:9 + P5:15 + SA:6
+  chapters_complete: 27  # Ch1-27 (Ch28=Complete组装) + SA/SD supplements
 
 scorecard:
   pre: pending
