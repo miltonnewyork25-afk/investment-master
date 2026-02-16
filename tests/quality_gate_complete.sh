@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v3.0
+# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v5.0
 # ============================================================
 # 用法:
 #   ./tests/quality_gate_complete.sh <Complete报告.md> [benchmark_chars] [possibility_width]
@@ -8,7 +8,7 @@
 #   例: ./tests/quality_gate_complete.sh reports/RDDT/RDDT_Complete_v1.0_2026-02-14.md 0 6
 #   注: benchmark_chars=0 时使用按可能性宽度的动态基准
 #
-# 门控项 (17项, 基于8报告滚动最佳值):
+# 门控项 (18项, 基于8报告滚动最佳值):
 #   CG1. Complete总字符 ≥ 基准80% (动态: 按可能性宽度分层)
 #   CG2. Phase 5字符 ≥ 基准80% (动态: 按可能性宽度分层)
 #   CG3. 评分维度 ≥ 8个
@@ -26,8 +26,10 @@
 #   CG15. Agent引用残留 = 0 (FAIL级, v4.0新增)
 #   CG16. 市值基准唯一性 (WARN级, v4.0新增)
 #   CG17. P/E一致性 (WARN级, v4.0新增)
+#   CG18. 财务数据交叉验证声明 (WARN级, v5.0新增)
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v5.0 (2026-02-16) — CG18财务数据交叉验证声明(WARN, 深层质量协议L2)
 # 更新: v4.0 (2026-02-16) — CG15 Agent引用FAIL+CG16市值唯一性WARN+CG17 P/E一致性WARN
 # 更新: v3.0 (2026-02-14) — CG1/CG2动态基准(按可能性宽度分层)+Phase 5基准动态化
 # 更新: v2.0 (2026-02-12) — CG8/CG9自动检测v2.0/v10.0模式+CG14方法离散度WARN
@@ -91,7 +93,7 @@ count_matches() {
 }
 
 echo "=============================================="
-echo -e " ${CYAN}Complete Report Quality Gate v4.0${NC}"
+echo -e " ${CYAN}Complete Report Quality Gate v5.0${NC}"
 echo " 文件: $(basename "$FILE")"
 echo " 可能性宽度: ${POSSIBILITY_WIDTH} | ${BENCHMARK_LABEL:-自定义}"
 echo " 基准字符: $BENCHMARK_CHARS | 80%地板: $FLOOR_COMPLETE"
@@ -426,10 +428,21 @@ else
     fi
 fi
 
+# === CG18: 财务数据交叉验证声明 (v5.0新增, WARN级) ===
+# 检测报告中是否存在数据交叉验证的证据
+# 背景: RBLX v1.2事件中单源SBC数据($2.65B)传播240+处, APIC硬约束本可即时否决
+CROSS_VAL=$(grep -ciE '交叉验证|cross.validation|APIC.*验证|多源验证|数据源对比|source.*reconcil|数据源.*校验|硬约束.*验证' "$FILE" 2>/dev/null || echo 0)
+if [ "$CROSS_VAL" -lt 3 ]; then
+    echo -e "${YELLOW}WARN CG18: 交叉验证声明 ${CROSS_VAL}次 < 建议3次 — 关键财务数据可能缺少多源校验${NC}"
+    WARNINGS=$((WARNINGS + 1))
+else
+    echo -e "${GREEN}PASS CG18: 财务数据交叉验证声明 ${CROSS_VAL}次 (要求≥3)${NC}"
+fi
+
 # --- 汇总 ---
 echo ""
 echo "=============================================="
-echo -e " ${CYAN}Complete Quality Gate v4.0 检查完成${NC}"
+echo -e " ${CYAN}Complete Quality Gate v5.0 检查完成${NC}"
 echo "=============================================="
 echo " 文件: $(basename "$FILE")"
 echo " 总字符: ${CHARS} / 基准 ${BENCHMARK_CHARS} (地板 ${FLOOR_COMPLETE})"
@@ -441,6 +454,7 @@ fi
 echo " KS: ${KS_UNIQUE} | VP: ${VP_COUNT} | CQ: ${CQ_COUNT} | CI: ${CI_COUNT}"
 echo " Mermaid: ${MERMAID_COUNT} | 评分维度: ${DIMENSION_COUNT} | 框架注册: ${HAS_FW_REGISTRY}"
 echo " Agent引用: ${AGENT_REF_COUNT} | 市值值种类: ${MCAP_UNIQUE:-0} | P/E值种类: ${PE_UNIQUE_COUNT:-0}"
+echo " 交叉验证: ${CROSS_VAL}"
 echo -e " 错误: ${RED}${ERRORS}${NC} | 警告: ${YELLOW}${WARNINGS}${NC}"
 echo "=============================================="
 
