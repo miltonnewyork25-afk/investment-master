@@ -68,10 +68,46 @@ phases:
       CQ1: 35-45pct  # Agent A 45%(竞争) vs C 35%(AI)=Phase 5调和
       CQ2: 25-30pct  # 电商不确定性高
       CQ8: 20pct     # AI终局不确定性极高
+  phase_4:
+    status: complete
+    session: 4
+    agents: 2
+    staging_files:
+      - APP_P4_AgentA.md  # Ch19(RT-1~RT-7)+Ch22(管理层) 33,255 chars
+      - APP_P4_AgentB.md  # Ch20(做空钢人)+Ch21(SEC建模) 37,012 chars
+    total_chars: 70267
+    target_chars: 60000
+    dm_anchors_new: 61  # A:20(DM-RT+DM-MGT) + B:41(DM-REG+DM-INF)
+    mermaid_new: 9  # A:3 + B:6
+    key_findings:
+      - CI-7杀手发现:市值$228B→$132B(-42.1%)改变整个论文基调
+      - Phase 1-3的"高估40-50%"修正为"温和高估15-30%"
+      - Fwd P/E(FY2027E)仅19.0x,低于META(27.2x)/TTD(29.3x)
+      - EV差额从61-68%缩至32-45%,高增长科技股正常范围
+      - 承重墙3年内至少1面倒塌概率88.8%(Agent A)
+      - 黑天鹅至少1个发生概率65.8%,加权折价-20~-25%(Agent B)
+      - SEC概率加权风险折价-8.5%($11.2B)
+      - MW正确概率:完全正确20-25%,部分正确50-55%
+      - CQ3从20%→40-45%(SEC+做空证据加权后仍有分歧)
+      - Foroughi CQ7 35-40%:高方差CEO+双重股权放大风险
+    corrections:
+      - "DPO 410天vs360天:统一使用TTM 360天,保留410天为敏感性上限"
+      - "市值$228B→$132B:Phase 5必须用最新市值重算全部估值"
+      - "P/E数据:TTM口径39.6x,需Phase 5更新compare_stocks"
+      - "引擎级EV差额:61-68%→32-45%,叙事力度需减弱"
+      - "DPO经济vs会计:经济DPO 120-180天,浮存金$249M非$747M"
+    consistency_check:
+      market_cap: 双Agent确认$132B基准=一致
+      sec_probability: A(25-35%违规) vs B(5结局加权-8.5%)=互补非矛盾
+      black_swan: A($20.9-39.7B) vs B(-30.35%≈$40B)=接近
+      cq3: B更新20%→40-45%,A维持关注=B更详细
+    cq_updates:
+      CQ3: 40-45pct  # Agent B: SEC+做空证据加权
+      CQ7: 35-40pct  # Agent A: 高方差CEO+双重股权
 
-current_phase: 3
-current_session: 3
-next_action: phase_4_red_team_short_sec
+current_phase: 4
+current_session: 4
+next_action: phase_5_ks_ts_cq_discovery
 
 planning:
   version: v3.0
@@ -82,10 +118,10 @@ planning:
   scenarios: [S1_Bear_20pct, S2_Base_45pct, S3_Bull_25pct, S4_Moonshot_10pct]
 
 cumulative:
-  total_chars: 293991  # P1:92094 + P2:103443 + P3:98454
-  dm_anchors: 413  # P0:78 + P1:135 + P2:112 + P3:88
-  mermaid: 70  # P1:19 + P2:28 + P3:23
-  chapters_complete: 16  # Ch3-18
+  total_chars: 364258  # P1:92094 + P2:103443 + P3:98454 + P4:70267
+  dm_anchors: 474  # P0:78 + P1:135 + P2:112 + P3:88 + P4:61
+  mermaid: 79  # P1:19 + P2:28 + P3:23 + P4:9
+  chapters_complete: 20  # Ch3-22
 
 scorecard:
   pre: pending
