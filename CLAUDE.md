@@ -99,6 +99,7 @@
 |------|----------|----------|
 | **P0** | MCP数据工具 | `baggers_summary` `fmp_data` `analyze_stock` `polymarket_events` |
 | **P1** | 专业投资skill | `/investment-logic-toolkit` `/company-research-agent` `/data-prefetch` |
+| **P1** | 分析深度skill (v15.0) | `/belief-inversion` `/consensus-deconstruction` `/risk-topology` `/constraint-classifier` `/valuation-independence-audit` `/red-team-calibration` |
 | **P2** | Agent协作工具 | `/dispatching-parallel-agents` `/cross-validation` `/bear-case-generator` |
 
 **完整列表**: 各行业worktree CLAUDE.md
@@ -194,14 +195,15 @@ bash scripts/find_best_reference.sh {TICKER}
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |
 | **数据可信度** | `docs/confidence_system.md` v3.0 (DM锚定+脚本验证) |
-| **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) |
+| **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) + `/red-team-calibration` + `/risk-topology` |
+| **分析深度** | `/belief-inversion` `/consensus-deconstruction` `/constraint-classifier` `/valuation-independence-audit` (v15.0) |
 | **DAG编排** | `docs/dag_orchestrator.md` (DAG-0~7问题树+EC绑定) |
 | **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
 | **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
 | **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
 | **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
-| **规划经验** | `knowledge/planning_archives/{TICKER}.md` (11份报告规划档案) |
+| **规划经验** | `knowledge/planning_archives/{TICKER}.md` (12份报告规划档案) |
 
 **完整索引**: 原CLAUDE.md第204-246行 → `docs/framework_index.md`
 
@@ -209,8 +211,10 @@ bash scripts/find_best_reference.sh {TICKER}
 
 ## 系统升级
 
-**最新版本**: v14.0 知识层 + 外部文献侦察协议
+**最新版本**: v15.0 分析深度Skill套件 + 评级标准对齐
 **健康监控**: `bash tests/framework_health_check.sh`
+
+**v15.0升级(2026-02-17)**: 6个分析深度Skill(belief-inversion/consensus-deconstruction/risk-topology/constraint-classifier/valuation-independence-audit/red-team-calibration) + 评级标准量化触发器(四档+期望回报%) + CG18交叉验证(quality_gate v5.0) — 源自AMAT v1.0 vs GOOGL/APP对比反思
 
 **v14.0升级(2026-02-16)**: 知识层(Phase -1知识库检索+Phase -0.5外部文献侦察) + knowledge_index.yaml(11报告结构化索引+相似性图谱) + find_relevant_knowledge.sh(top-3匹配) + planning_archives(11份规划经验档案) + search_templates.yaml(5维度搜索+行业来源+质量过滤) + 铁律I知识前置
 
