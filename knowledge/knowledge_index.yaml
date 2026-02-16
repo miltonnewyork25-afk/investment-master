@@ -1,5 +1,5 @@
-# Knowledge Index v1.2
-# 14份已完成报告的结构化索引 + 相似性图谱
+# Knowledge Index v1.3
+# 15份已完成报告的结构化索引 + 相似性图谱
 # 用途: find_relevant_knowledge.sh 的数据源
 # 更新时机: 每份新报告Complete后追加
 
@@ -222,6 +222,26 @@ reports:
       - "HBM是AI驱动的增量引擎, 但份额不稳定"
     similar_to: [NVDA, AMD, TSM, SK]
 
+  AMAT:
+    industry: 半导体
+    version: "v1.0"
+    date: "2026-02-16"
+    chars: 291353
+    cg: "18/18"
+    poss_width: 3
+    methodology: traditional
+    ovm: false
+    erm: false
+    business_model: [semiconductor_equipment, deposition, etch, ion_implant, cmp, inspection, ags_services, advanced_packaging, epic_center]
+    risk_profile: [china_export_controls, cyclicality, breadth_vs_depth_moat, capex_intensity, wfe_cycle, icaps_digestion]
+    key_lessons:
+      - "L4生态一致性首次验证: 4份半导体报告交叉验证发现4个FLAG(P/E过期-22%/R&D+15%/中国风险2x/FCF-24%)"
+      - "传统框架PW=3最高效: 291K字符含NVDA桥梁+28章+五方法估值, 无OVM/ERM/Discovery膨胀"
+      - "NVDA桥梁12个DM-BRIDGE锚点: AMAT先进封装→TSMC CoWoS→NVIDIA GPU传导链量化(50-100x放大)"
+      - "广度vs深度护城河是核心CQ: 8产品线#2-3 vs LRCX刻蚀#1, 通才折价30-40% P/E gap"
+      - "EPIC Center $5B投入P4最大下调(-10pp): 创新溢价偏差, 零收入贡献截至报告日"
+    similar_to: [LRCX, KLAC, TEL, ASML, TSM]
+
   RBLX:
     industry: 生态科技
     version: "v1.2"
@@ -289,3 +309,11 @@ similarity_graph:
     reason: "游戏引擎/平台+开发者生态+SBC问题+估值争议"
   - pair: [RBLX, SNAP]
     reason: "年轻用户平台+广告变现挑战+COPPA/隐私监管+注意力竞争"
+  - pair: [AMAT, LRCX]
+    reason: "半导体设备双巨头+中国出口管制+服务收入(AGS vs CSBG)+WFE周期+广度vs深度护城河"
+  - pair: [AMAT, KLAC]
+    reason: "半导体设备+检测领域竞争+不同护城河策略(广度vs深度专精)"
+  - pair: [AMAT, TSM]
+    reason: "设备-代工供应链+先进封装+NVDA桥梁传导链+GAA技术协同"
+  - pair: [AMAT, AMD]
+    reason: "半导体+HBM设备需求+先进封装+传统框架PW=3/5"
