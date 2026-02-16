@@ -93,7 +93,17 @@ phases:
     cq_delta: -5.4
     timestamp: "2026-02-16T20:30:00"
   phase_5:
-    status: pending
+    status: complete
+    output: "reports/AMAT/staging/P5_Agent{A,B,C}.md"
+    chars: 75006
+    rating: "中性关注"
+    expected_return: -2.1%
+    probability_weighted_ev_B: 277.6
+    method_dispersion: 5.3x
+    ks_count: 14
+    ts_count: 8
+    ci_count: 10
+    timestamp: "2026-02-16T22:00:00"
 
 # Session进度
 current_session: 2
