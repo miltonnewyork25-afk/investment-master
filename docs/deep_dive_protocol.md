@@ -1,6 +1,7 @@
-# Deep-Dive 分析协议 v13.0 (Tier 3)
+# Deep-Dive 分析协议 v14.0 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
+> **v14.0变化**: 知识层(Phase -1知识库检索+Phase -0.5外部文献侦察)+knowledge_index.yaml+planning_archives+搜索模板。
 > **v13.0变化**: Supplement扩展协议(Phase 5.5后补强薄弱CQ)+Cross-Agent验证(P4 Agent B读P1-3 staging)+CG动态基准(按可能性宽度分层)。
 > **v10.0变化**: 标注系统重构(内联→DM锚定+脚本验证+干净叙事)+Protocol Header+承重墙脆弱度表+红队七问+CQ置信度演化表+AI能力边界声明+黑天鹅概率加权表+方法离散度CG14+推断证伪条件+分析框架注册表。
 > **v9.0变化 (扬长避短)**: Phase 4纠错回流+Phase 5重塑(VP→TS, 评分→定性, Reverse DCF核心)+特异性测试+零操作建议铁律。
@@ -27,6 +28,63 @@
 7. **已知失败模式** — `risk.failure_modes[]` ≥ 3个 + 每个有detector
 
 **Scope Lock 完成标准**: goal非空 + out_of_scope≥5 + env_fingerprint生成 + gates.mapped_ratio≥80%
+
+---
+
+### Phase -1: 知识库检索（自动执行，Scope Lock后立即触发）
+
+> **v14.0新增**。从已有报告经验中提取相似公司教训，避免重复犯错、复用成功模式。零LLM tokens(脚本执行) + 少量精读(planning archives)。
+
+1. **运行知识检索脚本** — `bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}`
+   - 输出top-3相似公司 + 匹配分数 + 教训摘要
+   - 匹配算法: similar_to显式边(5分) + 同行业(3分) + business_model重叠(2分/个) + PW接近(1分) + OVM/ERM匹配(各1分)
+2. **精读Top-1 Planning Archive** — 读取 `knowledge/planning_archives/{TOP1}.md`
+   - 重点关注: "什么有效(可复用)" + "什么无效(需避免)" + "如果重做"
+   - 耗时: ~30秒(单文件精读)
+3. **浏览Top-2/3 Archive** — 快速扫描标题和关键指标
+4. **输出知识上下文** — 写入 `reports/{TICKER}/data/knowledge_context.md`，内容:
+   - 相似公司列表 + 匹配理由
+   - 可复用模式(≤3个)
+   - 需避免的反模式(≤3个)
+   - 建议框架方向(基于相似公司的methodology/PW)
+
+**Phase -1 完成标准**: `knowledge_context.md` 已创建 + 包含≥1个可复用模式 + ≥1个需避免反模式
+**Context成本**: ~2K持久(knowledge_context.md) + ~8K临时(archive精读，不持久化)
+
+---
+
+### Phase -0.5: 外部文献侦察（与Phase 0并行执行）
+
+> **v14.0新增**。系统性搜索外部分析、对抗观点、行业洞察。弥补AI通用知识缺口，引入外部专家视角。
+
+1. **加载搜索模板** — 读取 `knowledge/external_refs/search_templates.yaml`
+2. **5路WebSearch搜索** — 按D1-D5维度展开:
+   - **D1 深度分析**: "{TICKER} deep dive analysis {YEAR}" / "{TICKER} investment thesis {YEAR}"
+   - **D2 对抗视角**: "{TICKER} bear case OR short thesis {YEAR}" / "why {TICKER} is overvalued"
+   - **D3 行业结构**: "{INDUSTRY} competitive landscape {YEAR}" / "{TICKER} vs {COMPETITOR}"
+   - **D4 专家视角**: "{TICKER} investor letter mention" / "{TICKER} earnings call key takeaway"
+   - **D5 思维模型**: "{BUSINESS_MODEL} unit economics" / "{BUSINESS_MODEL} platform dynamics"
+3. **质量过滤** — 按 `quality_filter` 标准筛选:
+   - 优先级: 独立研究者 > 机构研报 > 财经媒体 > 论坛
+   - 深度门槛: ≥2000字深度分析
+   - 时效性: 6个月内优先
+4. **精读Top 3-5篇** — 使用WebFetch深度阅读通过筛选的文章
+5. **ABCDE信息提取** — 按5个维度提取结构化信息:
+   - **A(核心论点)**: 外部分析师主线逻辑, 与CQ重叠/偏差
+   - **B(风险盲点)**: 框架可能忽略的风险维度
+   - **C(竞争格局)**: 行业动态中的结构性位移
+   - **D(信息差)**: 管理层/机构的独特洞察
+   - **E(分歧)**: 外部观点与AI分析的实质性分歧
+6. **输出文献侦察备忘录** — 写入 `reports/{TICKER}/data/lit_recon_memo.md`
+
+**反形式化门控**:
+- E节(分歧) ≥ 2条实质性分歧
+- ≥ 3个维度有搜索结果
+- ≥ 1个看空/质疑来源
+- **门控未通过**: 在备忘录顶部标注 `[门控未通过: {原因}]`，但不阻断Phase 0
+
+**Phase -0.5 完成标准**: `lit_recon_memo.md` 已创建 + 反形式化门控已评估
+**Context成本**: ~3K持久(lit_recon_memo.md) + ~8K临时(WebSearch+WebFetch，不持久化)
 
 ---
 

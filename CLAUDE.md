@@ -47,7 +47,7 @@
 
 **第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(见下)
 
-**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)**
+**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)** | **I 知识前置(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
@@ -150,6 +150,22 @@ bash scripts/find_best_reference.sh {TICKER}
 
 ---
 
+## 铁律 I: 知识前置
+
+**Tier 3分析启动时，必须在Phase 0前完成知识检索+文献侦察**:
+
+1. **Phase -1 知识库检索** — `bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}` → 读取top-1 planning archive → 输出 `knowledge_context.md`
+2. **Phase -0.5 文献侦察** — 5路WebSearch(D1深度/D2对抗/D3行业/D4专家/D5模型) → 精读Top 3-5 → 输出 `lit_recon_memo.md`
+
+**产出**: `reports/{TICKER}/data/knowledge_context.md` (~2K) + `reports/{TICKER}/data/lit_recon_memo.md` (~3K)
+**成本**: 持久化<8K tokens | 临时读取~16K(不持久化)
+
+**禁止**: 跳过Phase -1直接开始Phase 0 | 忽略相似公司的失败教训 | 文献侦察E节(分歧)为空
+
+**详见**: `docs/deep_dive_protocol.md` Phase -1 / Phase -0.5
+
+---
+
 ## 文档索引（按需加载）
 
 | 场景 | 核心文档 |
@@ -170,6 +186,9 @@ bash scripts/find_best_reference.sh {TICKER}
 | **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
 | **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
+| **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
+| **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
+| **规划经验** | `knowledge/planning_archives/{TICKER}.md` (11份报告规划档案) |
 
 **完整索引**: 原CLAUDE.md第204-246行 → `docs/framework_index.md`
 
@@ -177,8 +196,10 @@ bash scripts/find_best_reference.sh {TICKER}
 
 ## 系统升级
 
-**最新版本**: v13.0 框架升级 (RDDT质量复盘驱动6项改进)
+**最新版本**: v14.0 知识层 + 外部文献侦察协议
 **健康监控**: `bash tests/framework_health_check.sh`
+
+**v14.0升级(2026-02-16)**: 知识层(Phase -1知识库检索+Phase -0.5外部文献侦察) + knowledge_index.yaml(11报告结构化索引+相似性图谱) + find_relevant_knowledge.sh(top-3匹配) + planning_archives(11份规划经验档案) + search_templates.yaml(5维度搜索+行业来源+质量过滤) + 铁律I知识前置
 
 **v13.0升级(2026-02-14)**: Scout Protocol v2.0(学执行过程: checkpoint基线+staging prompt基线+执行参数) + Agent产出合同v2.0(模块类型最低字符门槛+重跑机制) + Supplement扩展协议(Phase 5.5后补强薄弱CQ) + CG1/CG2动态基准(按可能性宽度分层: 0-3分250K/4-6分200K/7-10分350K) + Phase 4 Cross-Agent验证(Agent B读P1-3 staging) + quality_sentinel v1.1(模块类型感知)
 
