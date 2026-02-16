@@ -1,0 +1,80 @@
+# AMAT Tier 3 Checkpoint
+# Version: v10.0 + Scout v2.0 + L4
+# Created: 2026-02-16
+
+ticker: AMAT
+company: Applied Materials, Inc.
+industry: 半导体(设备)
+framework_version: "v10.0 + Scout v2.0 + L4生态验证"
+possibility_width: 3
+paradigm: traditional  # PW 0-3 → 传统框架
+erm: false
+ovm: false
+
+# 市值基准 (Phase 0锁定)
+market_cap_basis:
+  date: "2026-02-14"
+  price: 354.91
+  market_cap_B: 283.5  # 799M diluted × $354.91
+  diluted_shares_M: 799  # Q1 FY2026
+  pe_ttm: 29.9
+  ev_ebitda_ttm: 21.3
+  forward_pe_fy2026: 32.5  # $354.91 / $10.91
+  forward_pe_fy2027: 25.9  # $354.91 / $13.69
+
+# APIC验证
+apic_check:
+  fy2025_apic: 10333  # $M
+  fy2024_apic: 9660
+  delta_apic: 673
+  fmp_sbc: 653  # $M
+  threshold: 740  # $673M × 1.1
+  result: PASS
+
+# CQ定稿 (7+1 Bridge)
+cq_list:
+  CQ1: "广度vs深度护城河持久性"
+  CQ2: "DRAM 28%敞口 — Memory周期受益/风险"
+  CQ3: "中国30%收入+$253M罚款 — 出口管制长期影响"
+  CQ4: "EPIC Center $5B — 创新溢价被低估?"
+  CQ5: "AGS $6.24B vs LRCX CSBG — 服务收入质量"
+  CQ6: "GAA/先进封装/Mo — 下一代技术卡位"
+  CQ7: "CapEx翻倍($2.26B) vs FCF下降 — 资本配置"
+  CQ_Bridge: "AMAT先进封装→TSMC CoWoS→NVIDIA供应链瓶颈量化"
+
+# 字符目标
+target_chars: 250000  # PW 0-3, 半导体系数×1.0
+min_dm_anchors: 300
+min_mermaid: 50
+min_ks: 12
+min_ts: 8
+min_ci: 8
+
+# Phase进度
+phases:
+  phase_neg1:
+    status: complete
+    output: "reports/AMAT/data/knowledge_context.md"
+    timestamp: "2026-02-16T15:10:00"
+  phase_neg05:
+    status: complete
+    output: "reports/AMAT/data/lit_recon_memo.md"
+    timestamp: "2026-02-16T15:15:00"
+  phase_0:
+    status: complete
+    output: "reports/AMAT/data/"
+    timestamp: "2026-02-16T15:20:00"
+  phase_1:
+    status: in_progress
+  phase_2:
+    status: pending
+  phase_3:
+    status: pending
+  phase_4:
+    status: pending
+  phase_5:
+    status: pending
+
+# Session进度
+current_session: 1
+current_phase: "Phase 1"
