@@ -1,0 +1,30 @@
+upgrade_id: "v12.0-dag-orchestrator"
+date_proposed: "2026-02-14"
+author: "agent"
+
+hypothesis:
+  what: "DAG编排器v22.0 — 问题树替代模块填空，7阶段展开"
+  improves_which_dimension: "分析结构化程度、问题导向性"
+  current_baseline: "模块列表式编排，按Phase线性执行"
+  expected_after: "问题树驱动，DAG-0到DAG-7展开，Agent按问题分配而非模块"
+  could_regress: "增加编排复杂度，可能过度工程化"
+
+success_criteria:
+  - "至少1份报告使用DAG-0到DAG-7结构"
+  - "问题树导致至少1个CQ在DAG阶段被改进"
+  - "报告质量(CG通过率)不下降"
+
+kill_condition:
+  - "连续2份报告未使用DAG结构"
+  - "DAG文档存在但从未被引用"
+
+validation:
+  status: "REGRESSED"
+  first_report: ""
+  date_validated: "2026-02-16"
+  actual_results: "零份报告使用。PLTR/RDDT两份v10.0+报告均未采用DAG结构。36KB文档零引用。"
+  criteria_met: []
+  criteria_failed:
+    - "零报告使用 — kill_condition '连续2份未使用' 已触发"
+    - "36KB docs/dag_orchestrator.md 零引用 — 纯理论"
+  honest_assessment: "典型的过度工程化。问题树听起来比模块列表高级，但实际操作中Phase线性执行足够有效。增加了框架复杂度但零产出改善。应冻结。"

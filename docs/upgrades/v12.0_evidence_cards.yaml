@@ -1,0 +1,31 @@
+upgrade_id: "v12.0-evidence-cards"
+date_proposed: "2026-02-14"
+author: "agent"
+
+hypothesis:
+  what: "Evidence Cards — EC-前缀原子证据单元替代DM自由文本"
+  improves_which_dimension: "数据粒度、证据结构化程度"
+  current_baseline: "DM-FIN-001自由文本锚点，verify_data_sources.sh扫描DM-"
+  expected_after: "EC-REVENUE-01结构化卡片，每个EC含source/quote/confidence/CoVe"
+  could_regress: "破坏现有工具链(verify_data_sources.sh/quality_gate_complete.sh扫描DM-不是EC-)"
+
+success_criteria:
+  - "至少1份报告使用EC-前缀"
+  - "工具链同步更新支持EC-"
+  - "EC结构化带来的可追溯性优于DM自由文本"
+
+kill_condition:
+  - "EC破坏现有verify_data_sources.sh — 已知风险"
+  - "连续2份报告继续使用DM-而非EC-"
+
+validation:
+  status: "REGRESSED"
+  first_report: ""
+  date_validated: "2026-02-16"
+  actual_results: "零份报告使用EC-前缀。工具链未更新。PLTR/RDDT继续使用DM-锚点。kill_condition已触发。"
+  criteria_met: []
+  criteria_failed:
+    - "零报告使用EC — kill_condition '连续2份用DM' 触发"
+    - "工具链未更新 — verify_data_sources.sh仍扫描DM-"
+    - "已知会破坏工具链但仍提出 — 设计失误"
+  honest_assessment: "在DM系统刚验证成功(v10.0 VALIDATED)的情况下提出替代方案，时机错误。更严重的是：已知会破坏工具链但仍commit了文档。DM-系统工作良好，无需替换。应冻结。"
