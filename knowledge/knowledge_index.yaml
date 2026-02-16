@@ -1,4 +1,4 @@
-# Knowledge Index v1.0
+# Knowledge Index v1.1
 # 13份已完成报告的结构化索引 + 相似性图谱
 # 用途: find_relevant_knowledge.sh 的数据源
 # 更新时机: 每份新报告Complete后追加
@@ -184,6 +184,26 @@ reports:
       - "Agent产出不均需重跑: 质量不达标模块必须返工"
     similar_to: [META, GOOGL, SNAP, PINS]
 
+  APP:
+    industry: 生态科技
+    version: "v1.2"
+    date: "2026-02-16"
+    chars: 452600
+    cg: "14/14"
+    poss_width: 7
+    methodology: discovery_system
+    ovm: false
+    erm: true
+    business_model: [mobile_advertising, adtech_platform, gaming_monetization, ecommerce_expansion, ctv]
+    risk_profile: [sec_investigation, short_seller_attacks, d30_attribution_bias, platform_dependency, dpo_sustainability]
+    key_lessons:
+      - "市值大幅波动时必须即时回流到全部章节, 不能只改Ch1/Ch26"
+      - "派生指标(P/E/总资本)也需同步更新, 不能只改市值"
+      - "DM锚点ID需全局唯一, 多Agent写作时不同章节会复用同一ID"
+      - "方程块的自我纠错痕迹(不对,重算)必须删除, 违反第零律连贯性"
+      - "Opus审计能发现cascading regex遗漏的深层问题"
+    similar_to: [META, TTD, GOOGL, UNITY]
+
   MU:
     industry: 半导体
     version: "v1.0"
@@ -229,3 +249,11 @@ similarity_graph:
     reason: "金融科技+零售用户+多产品平台"
   - pair: [MU, AMD]
     reason: "半导体+HBM/AI协同+周期性"
+  - pair: [APP, META]
+    reason: "广告科技+AI优化+平台依赖(Apple/Google)+SEC/监管风险"
+  - pair: [APP, TTD]
+    reason: "广告科技+程序化广告+CTV扩展+高增长估值"
+  - pair: [APP, GOOGL]
+    reason: "广告平台+平台编排者vs依赖者+AI竞争+反垄断"
+  - pair: [APP, RDDT]
+    reason: "广告变现+平台生态依赖+数据授权+ERM触发"
