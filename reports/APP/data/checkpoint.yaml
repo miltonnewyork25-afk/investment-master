@@ -1,0 +1,46 @@
+ticker: APP
+framework: v14.0+v10.0+v9.0
+possibility_width: 7
+methodology: discovery_system_b
+worktree: 生态科技
+branch: 生态科技-new
+
+phases:
+  phase_neg1:
+    status: complete
+    output: knowledge_context.md
+    similar: [META, PLTR, RDDT]
+    patterns: [discovery_b, erm, supplement]
+    anti_patterns: [prompt_vague, framework_bloat, upgrade_compress]
+  phase_neg0.5:
+    status: complete
+    output: literature_map_phase_neg0.5.md
+    sources: 30
+    tiers: {A: 10, B: 10, C: 10}
+    dimensions: [deep_reports, adversarial, industry, expert, academic]
+    disagreements: 5
+  phase_0:
+    status: complete
+    output: shared_context.md
+    dm_anchors: 78
+    dm_quality: {H: 70pct, S: 20pct, I: 10pct}
+    data_files: [baggers_summary, income_q8, income_y5, balance_y5, cashflow_y5, ratios_y5, insider_trading, estimates, key_metrics, rating, compare_stocks]
+  phase_0.5:
+    status: in_progress
+    cq_count: 8
+    cq_source: planning_v3.0
+
+current_phase: 0.5
+current_session: 0
+next_action: complete_phase_0.5_then_commit_and_start_phase_1
+
+planning:
+  version: v3.0
+  score: 84
+  chapters: 28
+  agents: 21
+  target_chars: 500K
+  scenarios: [S1_Bear_20pct, S2_Base_45pct, S3_Bull_25pct, S4_Moonshot_10pct]
+
+scorecard:
+  pre: pending
