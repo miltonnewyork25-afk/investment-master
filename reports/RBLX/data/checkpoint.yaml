@@ -1,0 +1,68 @@
+# RBLX Tier 3 深度研究 — Checkpoint
+# 框架版本: v10.0 + Scout v1.0 + ERM v1.0
+# 创建时间: 2026-02-16
+
+ticker: RBLX
+company: Roblox Corporation
+industry: 生态科技
+worktree: main (最终报告→main)
+framework_version: "v10.0+Scout+ERM"
+possibility_width: 6
+paradigm: 混合模式 (传统估值+可能性附录)
+
+# 市值基准 (全报告统一使用)
+market_cap_basis: "$44.3B"
+market_cap_date: "2026-02-13"
+share_price: "$63.17"
+shares_diluted: "702M"
+
+# Phase进度
+phases:
+  scout:
+    status: completed
+    session: 1
+    output: reports/RBLX/data/scout_baseline.md
+    lines: 129
+  phase_0:
+    status: in_progress
+    session: 1
+    substeps:
+      data_prefetch: completed
+      cq_finalization: pending
+      possibility_width: pending
+  phase_1:
+    status: pending
+  phase_2:
+    status: pending
+  phase_3:
+    status: pending
+  phase_4:
+    status: pending
+  phase_5:
+    status: pending
+
+# CQ预设 (Phase 0.5定稿)
+cq_draft:
+  CQ1: "开发者经济健康度: DevEx 30%分成可持续吗?"
+  CQ2: "广告变现(Immersive Ads)的ARPU天花板在哪?"
+  CQ3: "COPPA/KOSA儿童隐私监管如何改变业务模型?"
+  CQ4: "当前估值隐含什么假设? Reverse DCF说什么?"
+  CQ5: "开发者叛逃: Unity/Unreal/Fortnite Creative威胁多大?"
+  CQ6: "年龄扩展(13+→17-24岁)能否成功? TAM天花板决定因素"
+  CQ7: "Apple/Google渠道税(30%)和支付政策变化的影响?"
+
+# 数据文件
+data_files:
+  - reports/RBLX/data/scout_baseline.md
+  - reports/RBLX/data/financial_summary.md
+  - reports/RBLX/data/checkpoint.yaml
+
+# 质量门控
+quality_gates:
+  target_chars: "≥250K"
+  target_dm: "≥200"
+  target_mermaid: "≥60"
+  target_cq: 7
+  target_ks: "12-15"
+  target_ci: "≥5"
+  cg_version: "v4.0 (17 gates)"

@@ -8,7 +8,7 @@
 #   例: ./tests/quality_gate_complete.sh reports/RDDT/RDDT_Complete_v1.0_2026-02-14.md 0 6
 #   注: benchmark_chars=0 时使用按可能性宽度的动态基准
 #
-# 门控项 (14项, 基于8报告滚动最佳值):
+# 门控项 (17项, 基于8报告滚动最佳值):
 #   CG1. Complete总字符 ≥ 基准80% (动态: 按可能性宽度分层)
 #   CG2. Phase 5字符 ≥ 基准80% (动态: 按可能性宽度分层)
 #   CG3. 评分维度 ≥ 8个
@@ -23,8 +23,12 @@
 #   CG12. 非共识洞察注册表 ≥ 5个CI
 #   CG13. 分析框架注册表存在
 #   CG14. 方法离散度声明 (WARN级, v2.0新增)
+#   CG15. Agent引用残留 = 0 (FAIL级, v4.0新增)
+#   CG16. 市值基准唯一性 (WARN级, v4.0新增)
+#   CG17. P/E一致性 (WARN级, v4.0新增)
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v4.0 (2026-02-16) — CG15 Agent引用FAIL+CG16市值唯一性WARN+CG17 P/E一致性WARN
 # 更新: v3.0 (2026-02-14) — CG1/CG2动态基准(按可能性宽度分层)+Phase 5基准动态化
 # 更新: v2.0 (2026-02-12) — CG8/CG9自动检测v2.0/v10.0模式+CG14方法离散度WARN
 # ============================================================
@@ -87,7 +91,7 @@ count_matches() {
 }
 
 echo "=============================================="
-echo -e " ${CYAN}Complete Report Quality Gate v3.0${NC}"
+echo -e " ${CYAN}Complete Report Quality Gate v4.0${NC}"
 echo " 文件: $(basename "$FILE")"
 echo " 可能性宽度: ${POSSIBILITY_WIDTH} | ${BENCHMARK_LABEL:-自定义}"
 echo " 基准字符: $BENCHMARK_CHARS | 80%地板: $FLOOR_COMPLETE"
@@ -357,10 +361,75 @@ else
     fi
 fi
 
+# === CG15: Agent引用残留 (v4.0新增, FAIL级) ===
+# 检测残留的Agent身份引用(组装时应已清除)
+AGENT_REF_COUNT=0
+# 排除DM源表(|开头的表格行)和staging头部标记(*Agent*产出完成*)
+# 只检测正文中的Agent身份泄漏
+# 模式1: "Agent A/B/C" (带空格, 排除表格行和staging标记)
+AG_SPACE=$({ grep -E 'Agent [A-C][^a-z]|Agent [A-C]$' "$FILE" 2>/dev/null | grep -cvE '^\||\*Agent.*产出' 2>/dev/null || echo 0; } | tail -1)
+AG_SPACE="${AG_SPACE//[^0-9]/}"
+AG_SPACE="${AG_SPACE:-0}"
+# 模式2: "AgentA/AgentB/AgentC" (无空格, 排除表格行)
+AG_NOSPACE=$({ grep -E 'AgentA|AgentB|AgentC' "$FILE" 2>/dev/null | grep -cvE '^\|' 2>/dev/null || echo 0; } | tail -1)
+AG_NOSPACE="${AG_NOSPACE//[^0-9]/}"
+AG_NOSPACE="${AG_NOSPACE:-0}"
+# 模式3: "Phase X Agent" 格式 (排除表格行和staging标记)
+AG_PHASE=$({ grep -E 'Phase [0-5] Agent' "$FILE" 2>/dev/null | grep -cvE '^\||\*.*产出' 2>/dev/null || echo 0; } | tail -1)
+AG_PHASE="${AG_PHASE//[^0-9]/}"
+AG_PHASE="${AG_PHASE:-0}"
+AGENT_REF_COUNT=$((AG_SPACE + AG_NOSPACE + AG_PHASE))
+if [ "$AGENT_REF_COUNT" -gt 0 ]; then
+    echo -e "${RED}FAIL CG15: Agent引用残留 ${AGENT_REF_COUNT} 处 (Agent空格=${AG_SPACE} 无空格=${AG_NOSPACE} Phase格式=${AG_PHASE})${NC}"
+    echo "       修复: 组装时清除所有Agent身份引用"
+    ERRORS=$((ERRORS + 1))
+else
+    echo -e "${GREEN}PASS CG15: Agent引用残留 = 0${NC}"
+fi
+
+# === CG16: 市值基准唯一性 (v4.0新增, WARN级) ===
+# 检测报告中"当前市值"相关数值的一致性
+# 提取所有"市值"后跟的$数字模式
+MCAP_VALUES=$(grep -oE '市值[^0-9$]*\$[0-9,]+\.?[0-9]*[BMK亿万]?' "$FILE" 2>/dev/null | grep -oE '\$[0-9,]+\.?[0-9]*[BMK亿万]?' | sort | uniq -c | sort -rn) || true
+MCAP_UNIQUE=$(echo "$MCAP_VALUES" | grep -c '[0-9]' 2>/dev/null || echo 0)
+if [ "$MCAP_UNIQUE" -gt 1 ]; then
+    # 检查是否有"当前市值"使用了不同的值
+    MCAP_CURRENT=$(grep -oE '当前市值[^0-9$]*\$[0-9,]+\.?[0-9]*[BMK亿万]?' "$FILE" 2>/dev/null | grep -oE '\$[0-9,]+\.?[0-9]*[BMK亿万]?' | sort -u) || true
+    MCAP_CURRENT_COUNT=$(echo "$MCAP_CURRENT" | grep -c '[0-9]' 2>/dev/null || echo 0)
+    if [ "$MCAP_CURRENT_COUNT" -gt 1 ]; then
+        echo -e "${YELLOW}WARN CG16: 当前市值出现${MCAP_CURRENT_COUNT}个不同值 — 可能存在旧数据未回流${NC}"
+        echo "       值: $(echo "$MCAP_CURRENT" | tr '\n' ' ')"
+        WARNINGS=$((WARNINGS + 1))
+    else
+        echo -e "${GREEN}PASS CG16: 市值基准一致 (当前市值值唯一, 总市值提及${MCAP_UNIQUE}种含历史对比)${NC}"
+    fi
+else
+    echo -e "${GREEN}PASS CG16: 市值基准一致 (市值引用${MCAP_UNIQUE}种)${NC}"
+fi
+
+# === CG17: P/E一致性 (v4.0新增, WARN级) ===
+# 检测"当前P/E"或"P/E(TTM)"后数值的一致性
+PE_VALUES=$(grep -oE '当前P/E[^0-9]*[0-9]+\.?[0-9]*x?' "$FILE" 2>/dev/null | grep -oE '[0-9]+\.?[0-9]*' | sort -u) || true
+PE_TTM_VALUES=$(grep -oE 'P/E.{0,5}TTM.{0,5}[0-9]+\.?[0-9]*x?' "$FILE" 2>/dev/null | grep -oE '[0-9]+\.?[0-9]*' | sort -u) || true
+# 合并并去重
+ALL_PE=$(echo -e "${PE_VALUES}\n${PE_TTM_VALUES}" | grep -v '^$' | sort -u) || true
+PE_UNIQUE_COUNT=$(echo "$ALL_PE" | grep -c '[0-9]' 2>/dev/null || echo 0)
+if [ "$PE_UNIQUE_COUNT" -gt 1 ]; then
+    echo -e "${YELLOW}WARN CG17: P/E(TTM)/当前P/E出现${PE_UNIQUE_COUNT}个不同值 — 可能有幽灵数据${NC}"
+    echo "       值: $(echo "$ALL_PE" | tr '\n' ' ')"
+    WARNINGS=$((WARNINGS + 1))
+else
+    if [ "$PE_UNIQUE_COUNT" -eq 1 ]; then
+        echo -e "${GREEN}PASS CG17: P/E基准一致 (值: $(echo "$ALL_PE" | tr '\n' ' '))${NC}"
+    else
+        echo -e "${GREEN}PASS CG17: P/E基准一致 (未检测到当前P/E/TTM声明)${NC}"
+    fi
+fi
+
 # --- 汇总 ---
 echo ""
 echo "=============================================="
-echo -e " ${CYAN}Complete Quality Gate v3.0 检查完成${NC}"
+echo -e " ${CYAN}Complete Quality Gate v4.0 检查完成${NC}"
 echo "=============================================="
 echo " 文件: $(basename "$FILE")"
 echo " 总字符: ${CHARS} / 基准 ${BENCHMARK_CHARS} (地板 ${FLOOR_COMPLETE})"
@@ -371,6 +440,7 @@ else
 fi
 echo " KS: ${KS_UNIQUE} | VP: ${VP_COUNT} | CQ: ${CQ_COUNT} | CI: ${CI_COUNT}"
 echo " Mermaid: ${MERMAID_COUNT} | 评分维度: ${DIMENSION_COUNT} | 框架注册: ${HAS_FW_REGISTRY}"
+echo " Agent引用: ${AGENT_REF_COUNT} | 市值值种类: ${MCAP_UNIQUE:-0} | P/E值种类: ${PE_UNIQUE_COUNT:-0}"
 echo -e " 错误: ${RED}${ERRORS}${NC} | 警告: ${YELLOW}${WARNINGS}${NC}"
 echo "=============================================="
 
