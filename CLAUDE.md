@@ -1,6 +1,6 @@
-# 投资研究 Agent — 主分支精简版 v2.1
+# 投资研究 Agent — 主分支精简版 v2.2
 
-> **Context优化v2.1**: 详细框架见 `docs/`。本文件仅含核心路由+铁律速查+行业路由。
+> **Context优化v2.2**: 详细框架见 `docs/`。本文件仅含核心路由+铁律速查+行业路由。
 > **完整框架**: `docs/deep_dive_protocol.md` + 行业专用文档 + 质量门控协议
 
 ## 身份
@@ -47,7 +47,7 @@
 
 **第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(见下)
 
-**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)**
+**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
@@ -126,6 +126,30 @@
 
 ---
 
+## 铁律 H: 报告参考协议
+
+**AI在参考历史报告时，必须使用脚本确定最佳版本**:
+
+**强制调用场景**:
+1. **Phase 0开始前** — 参考类似公司报告确定框架方向
+2. **用户询问历史分析** — "之前怎么分析过PLTR？"
+3. **框架方法参考** — 需要借鉴成功案例的结构/方法
+
+**标准流程**:
+```bash
+# 自动推荐最佳版本
+bash scripts/find_best_reference.sh {TICKER}
+
+# 验证质量等级 (≥400K优秀, 250K-400K良好, <250K谨慎)
+# 记录参考信息到Phase 0
+```
+
+**禁止**: 随意选择版本 | 参考staging文件 | 忽视质量验证 | 使用过时版本
+
+**详见**: `docs/ai_reference_protocol.md`
+
+---
+
 ## 文档索引（按需加载）
 
 | 场景 | 核心文档 |
@@ -136,11 +160,15 @@
 | **期权估值** | `docs/optionality_valuation.md` (高期权公司: TSLA/PLTR/GOOGL/META等) |
 | **发现系统** | `docs/paradigm_research_framework.md` (可能性宽度≥7分: TSLA/PLTR等) |
 | **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
+| **研究记分卡** | `tests/research_scorecard.sh` (Pre/Post/Compare, 10维度×0-10分) |
 | **数据验证** | `tests/verify_data_sources.sh` (DM交叉验证) |
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |
 | **数据可信度** | `docs/confidence_system.md` v3.0 (DM锚定+脚本验证) |
 | **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) |
+| **DAG编排** | `docs/dag_orchestrator.md` (DAG-0~7问题树+EC绑定) |
+| **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
+| **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
 
 **完整索引**: 原CLAUDE.md第204-246行 → `docs/framework_index.md`
@@ -149,7 +177,11 @@
 
 ## 系统升级
 
-**最新版本**: v10.0 框架升级 (标注重构+红队+承重墙+CQ演化)
+**最新版本**: v13.0 框架升级 (RDDT质量复盘驱动6项改进)
 **健康监控**: `bash tests/framework_health_check.sh`
+
+**v13.0升级(2026-02-14)**: Scout Protocol v2.0(学执行过程: checkpoint基线+staging prompt基线+执行参数) + Agent产出合同v2.0(模块类型最低字符门槛+重跑机制) + Supplement扩展协议(Phase 5.5后补强薄弱CQ) + CG1/CG2动态基准(按可能性宽度分层: 0-3分250K/4-6分200K/7-10分350K) + Phase 4 Cross-Agent验证(Agent B读P1-3 staging) + quality_sentinel v1.1(模块类型感知)
+
+**v12.0升级(2026-02-14)**: 编排器v22.0 DAG-Aware重写(模块填空→问题树展开) + Evidence Cards原子证据单元(替代DM锚点自由文本) + CoVe隔离验证协议 + 确定性门禁迁移(31约束评估,12项P0脚本化) + PreFlect事前批判节点 + Contamination Guard白名单/黑名单 + 子代理统一输出骨架(Q/Proof/Artifact/Owner/Stop/Metric) + A/B可比较环境指纹
 
 **v10.0升级(2026-02-12)**: 标注系统重构(内联→DM锚定+脚本验证) + Protocol Header + 承重墙脆弱度表 + 红队七问(RT-1~RT-7) + CG14方法离散度(WARN) + CQ置信度演化表 + AI能力边界声明 + 黑天鹅概率加权表 + 推断证伪条件 + 分析框架注册表

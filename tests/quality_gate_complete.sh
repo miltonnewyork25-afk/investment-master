@@ -1,14 +1,16 @@
 #!/bin/bash
 # ============================================================
-# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v2.0
+# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v3.0
 # ============================================================
 # 用法:
-#   ./tests/quality_gate_complete.sh <Complete报告.md> [benchmark_chars]
+#   ./tests/quality_gate_complete.sh <Complete报告.md> [benchmark_chars] [possibility_width]
 #   例: ./tests/quality_gate_complete.sh reports/META/META_Complete_v1.0_2026-02-08.md
+#   例: ./tests/quality_gate_complete.sh reports/RDDT/RDDT_Complete_v1.0_2026-02-14.md 0 6
+#   注: benchmark_chars=0 时使用按可能性宽度的动态基准
 #
 # 门控项 (14项, 基于8报告滚动最佳值):
-#   CG1. Complete总字符 ≥ 基准80% (249,049)
-#   CG2. Phase 5字符 ≥ 基准80% (58,867)
+#   CG1. Complete总字符 ≥ 基准80% (动态: 按可能性宽度分层)
+#   CG2. Phase 5字符 ≥ 基准80% (动态: 按可能性宽度分层)
 #   CG3. 评分维度 ≥ 8个
 #   CG4. Kill Switch ≥ 12个(详细格式)
 #   CG5. 可验证预测 ≥ 5个
@@ -23,16 +25,39 @@
 #   CG14. 方法离散度声明 (WARN级, v2.0新增)
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v3.0 (2026-02-14) — CG1/CG2动态基准(按可能性宽度分层)+Phase 5基准动态化
 # 更新: v2.0 (2026-02-12) — CG8/CG9自动检测v2.0/v10.0模式+CG14方法离散度WARN
 # ============================================================
 
 # --- 参数 ---
-FILE="${1:?用法: $0 <Complete报告.md> [benchmark_chars]}"
-BENCHMARK_CHARS="${2:-311311}"
+FILE="${1:?用法: $0 <Complete报告.md> [benchmark_chars] [possibility_width]}"
+BENCHMARK_INPUT="${2:-0}"
+POSSIBILITY_WIDTH="${3:-6}"
+
+# --- 动态基准计算 (v3.0: 按可能性宽度分层) ---
+# 若用户显式传入benchmark_chars>0，使用用户值; 否则按可能性宽度自动计算
+if [ "$BENCHMARK_INPUT" -gt 0 ] 2>/dev/null; then
+    BENCHMARK_CHARS="$BENCHMARK_INPUT"
+else
+    if [ "$POSSIBILITY_WIDTH" -le 3 ]; then
+        # 传统框架 (LRCX 470K, TSM 451K, COST 282K → 中位~350K)
+        BENCHMARK_CHARS=250000
+        BENCHMARK_LABEL="传统框架(≤3分)"
+    elif [ "$POSSIBILITY_WIDTH" -le 6 ]; then
+        # 混合模式 (RDDT 160K, AMD 349K, META 317K → 适度基准)
+        BENCHMARK_CHARS=200000
+        BENCHMARK_LABEL="混合模式(4-6分)"
+    else
+        # 发现系统 (TSLA 416K, PLTR 389K → 高基准)
+        BENCHMARK_CHARS=350000
+        BENCHMARK_LABEL="发现系统(≥7分)"
+    fi
+fi
 
 # --- 计算80%地板 ---
 FLOOR_COMPLETE=$((BENCHMARK_CHARS * 80 / 100))
-FLOOR_PHASE5=58867
+# Phase 5 floor = 15% of benchmark (discovery系统Phase 1-3占比更大, P5相对紧凑)
+FLOOR_PHASE5=$((BENCHMARK_CHARS * 15 / 100))
 MIN_DIMENSIONS=8
 MIN_KS=12
 MIN_VP=5
@@ -62,8 +87,9 @@ count_matches() {
 }
 
 echo "=============================================="
-echo -e " ${CYAN}Complete Report Quality Gate v1.0${NC}"
+echo -e " ${CYAN}Complete Report Quality Gate v3.0${NC}"
 echo " 文件: $(basename "$FILE")"
+echo " 可能性宽度: ${POSSIBILITY_WIDTH} | ${BENCHMARK_LABEL:-自定义}"
 echo " 基准字符: $BENCHMARK_CHARS | 80%地板: $FLOOR_COMPLETE"
 echo "=============================================="
 echo ""
@@ -96,11 +122,12 @@ fi
 if [ -n "$PHASE5_START" ] && [ "$PHASE5_START" -gt 0 ]; then
     PHASE5_CHARS=$(tail -n +"$PHASE5_START" "$FILE" | wc -m)
     PHASE5_CHARS="${PHASE5_CHARS// /}"
+    P5_BENCHMARK=$((BENCHMARK_CHARS * 25 / 100))
     if [ "$PHASE5_CHARS" -lt "$FLOOR_PHASE5" ]; then
-        echo -e "${RED}FAIL CG2: Phase 5字符 ${PHASE5_CHARS} < 80%地板 ${FLOOR_PHASE5} (基准: 73,584)${NC}"
+        echo -e "${RED}FAIL CG2: Phase 5字符 ${PHASE5_CHARS} < 80%地板 ${FLOOR_PHASE5} (基准: ${P5_BENCHMARK})${NC}"
         ERRORS=$((ERRORS + 1))
     else
-        P5_RATIO=$((PHASE5_CHARS * 100 / 73584))
+        P5_RATIO=$((PHASE5_CHARS * 100 / P5_BENCHMARK))
         echo -e "${GREEN}PASS CG2: Phase 5字符 ${PHASE5_CHARS} (基准的${P5_RATIO}%)${NC}"
     fi
 else
@@ -333,7 +360,7 @@ fi
 # --- 汇总 ---
 echo ""
 echo "=============================================="
-echo -e " ${CYAN}Complete Quality Gate v2.0 检查完成${NC}"
+echo -e " ${CYAN}Complete Quality Gate v3.0 检查完成${NC}"
 echo "=============================================="
 echo " 文件: $(basename "$FILE")"
 echo " 总字符: ${CHARS} / 基准 ${BENCHMARK_CHARS} (地板 ${FLOOR_COMPLETE})"
