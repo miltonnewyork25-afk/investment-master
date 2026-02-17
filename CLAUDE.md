@@ -100,6 +100,7 @@
 | **P0** | MCP数据工具 | `baggers_summary` `fmp_data` `analyze_stock` `polymarket_events` |
 | **P1** | 专业投资skill | `/investment-logic-toolkit` `/company-research-agent` `/data-prefetch` |
 | **P1** | 分析深度skill (v15.0) | `/belief-inversion` `/consensus-deconstruction` `/risk-topology` `/constraint-classifier` `/valuation-independence-audit` `/red-team-calibration` |
+| **P1** | 质量保障skill (v16.0) | `/valuation-arithmetic-verifier` `/megacap-valuation-framing` `/red-team-effectiveness-gate` `/omission-scanner` `/dispersion-honesty-check` |
 | **P2** | Agent协作工具 | `/dispatching-parallel-agents` `/cross-validation` `/bear-case-generator` |
 
 **完整列表**: 各行业worktree CLAUDE.md
@@ -211,8 +212,10 @@ bash scripts/find_best_reference.sh {TICKER}
 
 ## 系统升级
 
-**最新版本**: v15.0 分析深度Skill套件 + 评级标准对齐
+**最新版本**: v16.0 质量保障Skill套件 + MSFT教训系统化
 **健康监控**: `bash tests/framework_health_check.sh`
+
+**v16.0升级(2026-02-17)**: 5个质量保障Skill(valuation-arithmetic-verifier/megacap-valuation-framing/red-team-effectiveness-gate/omission-scanner/dispersion-honesty-check) + verify_dcf_arithmetic.py(Python纯算术DCF验证) — 源自MSFT v1.0质量评估(3.5/5): FCFF双表矛盾+敏感性矩阵8/9错+WACC主导评级+DeepSeek遗漏+离散度2.57x误导
 
 **v15.0升级(2026-02-17)**: 6个分析深度Skill(belief-inversion/consensus-deconstruction/risk-topology/constraint-classifier/valuation-independence-audit/red-team-calibration) + 评级标准量化触发器(四档+期望回报%) + CG18交叉验证(quality_gate v5.0) — 源自AMAT v1.0 vs GOOGL/APP对比反思
 
