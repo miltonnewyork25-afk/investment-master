@@ -20,7 +20,7 @@
 
 **R1: CapEx过度投入/ROIC不恢复**
 
-FY2026 CapEx指引约$80B(仅PPE口径) [DM-P1B-012]，含Finance Lease后总Capital Spend达~$150B/年 [DM-P1B-013]。Q2 FY26单季CapEx已达$29.9B，CapEx/Revenue比率从FY23的13.3%飙升至Q2 FY26的36.8% [DM-P1B-014]。ROIC已从FY20的43.4%下降至FY25的23.8% [DM-P1B-015]。关键传导链: CapEx激增→D&A滞后攀升(当前年化$40-45B，2-3年内可能升至$50-60B)→Operating Margin承压2-3个百分点→FCF持续被挤压(Q2 FY26 FCF仅$5.9B，不足以覆盖季度股息$6.8B [DM-P1B-016])。
+FY2026 CapEx指引约$80B(仅PPE口径) [DM-P1B-012]，含Finance Lease后总Capital Spend达~$150B/年 [DM-P1B-013]。Q2 FY26单季CapEx已达$29.9B，CapEx/Revenue比率从FY23的13.3%飙升至Q2 FY26的36.8% [DM-P1B-014]。ROIC已从FY20的43.4%下降至FY25的22.0% [DM-P1B-015]。关键传导链: CapEx激增→D&A滞后攀升(当前年化$40-45B，2-3年内可能升至$50-60B)→Operating Margin承压2-3个百分点→FCF持续被挤压(Q2 FY26 FCF仅$5.9B，不足以覆盖季度股息$6.8B [DM-P1B-016])。
 
 **R2: OpenAI依赖/关系破裂**
 

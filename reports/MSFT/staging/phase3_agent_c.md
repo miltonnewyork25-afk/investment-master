@@ -497,9 +497,9 @@ CFO Amy Hood在earnings call中披露了MSFT CapEx的核心分层结构——这
 | 长周期 | 数据中心建筑/电力/土地 | ~1/3 | 15-20年 | ~$27B | ~$12.5B |
 | **合计** | — | 100% | — | **~$80B** | **~$37.5B** |
 
-<!-- DM-BRIDGE-001: MSFT CapEx分层: 短周期(GPU/CPU)~2/3, 长周期(建筑/电力)~1/3, FY25 $80B, Q1 FY26 $37.5B | Source: CFO Amy Hood earnings call | Target: NVDA | Confidence: H -->
+<!-- DM-BRIDGE-001: MSFT CapEx分层: 短周期(GPU/CPU)~2/3, 长周期(建筑/电力)~1/3, FY25 $80B, Q2 FY26 $37.5B | Source: CFO Amy Hood earnings call | Target: NVDA | Confidence: H -->
 
-Q1 FY26单季Capital Spend $37.5B(其中PPE CapEx $29.9B + Finance Leases $6.7B + 其他$0.9B)创下历史新高。如果年化(×4=$150B)，这一支出水平将是FY25($80B)的近2倍。但管理层暗示Q2 FY26起CapEx增速会放缓——"Q1是一个峰值季度"。
+Q2 FY26单季Capital Spend $37.5B(其中PPE CapEx $29.9B + Finance Leases $6.7B + 其他$0.9B)创下历史新高。如果年化(×4=$150B)，这一支出水平将是FY25($80B)的近2倍。但管理层暗示后续季度CapEx增速会放缓——"这是一个峰值季度"。
 
 PP&E的详细分类证实了短周期资产的主导地位：
 
