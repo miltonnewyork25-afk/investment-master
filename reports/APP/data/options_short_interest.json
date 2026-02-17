@@ -1,0 +1,120 @@
+{
+  "timestamp": "2026-02-17T10:30:00Z",
+  "ticker": "APP",
+  "company_name": "AppLovin Corporation",
+
+  "short_interest": {
+    "short_shares": 14530000,
+    "float_percentage": 4.98,
+    "days_to_cover": 3.3,
+    "assessment": "moderate_level",
+    "squeeze_potential": "low",
+    "data_date": "2026-01-15",
+    "dm_anchor": "DM-OPT-001"
+  },
+
+  "options_sentiment": {
+    "put_call_ratio": 0.73,
+    "sentiment": "bullish",
+    "sentiment_explanation": "Put/call ratio <1 indicates bullish sentiment",
+    "implied_volatility": {
+      "status": "data_unavailable",
+      "relative_to_historical": "unknown"
+    },
+    "iv_percentile": null,
+    "dm_anchor": "DM-OPT-002"
+  },
+
+  "unusual_activity": {
+    "recent_activity": "no_specific_data",
+    "volume_anomalies": [],
+    "large_block_trades": [],
+    "tracking_sources": [
+      "Barchart unusual options activity",
+      "TipRanks unusual activity",
+      "InsiderFinance flow monitoring"
+    ],
+    "dm_anchor": "DM-OPT-003"
+  },
+
+  "gamma_exposure": {
+    "market_maker_positioning": "data_unavailable",
+    "gex_level": null,
+    "hedging_pressure": "unknown",
+    "price_impact_assessment": "monitoring_required",
+    "dm_anchor": "DM-OPT-004"
+  },
+
+  "squeeze_metrics": {
+    "short_float_threshold": {
+      "current": 4.98,
+      "squeeze_threshold": 10.0,
+      "assessment": "below_threshold"
+    },
+    "days_to_cover_assessment": {
+      "current": 3.3,
+      "squeeze_threshold": 8.0,
+      "assessment": "low_squeeze_risk"
+    },
+    "volume_ratio": "data_unavailable",
+    "dm_anchor": "DM-OPT-005"
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-OPT-001",
+      "type": "short_interest_data",
+      "source": "Fintel.io via MarketBeat",
+      "reliability": "high",
+      "timestamp": "2026-01-15",
+      "data_scope": "monthly_reporting"
+    },
+    {
+      "id": "DM-OPT-002",
+      "type": "options_sentiment",
+      "source": "Fintel options sentiment tracker",
+      "reliability": "medium",
+      "timestamp": "2026-02-17",
+      "data_scope": "daily_tracking"
+    },
+    {
+      "id": "DM-OPT-003",
+      "type": "unusual_options_activity",
+      "source": "Multiple tracking platforms (Barchart, TipRanks, etc.)",
+      "reliability": "medium",
+      "timestamp": "2026-02-17",
+      "data_scope": "real_time_monitoring"
+    },
+    {
+      "id": "DM-OPT-004",
+      "type": "gamma_exposure_metrics",
+      "source": "Options flow tracking platforms",
+      "reliability": "low",
+      "timestamp": "2026-02-17",
+      "data_scope": "intraday_estimates",
+      "note": "Specific APP gamma exposure data not available in public sources"
+    },
+    {
+      "id": "DM-OPT-005",
+      "type": "squeeze_potential_assessment",
+      "source": "Calculated from short interest and volume data",
+      "reliability": "medium",
+      "timestamp": "2026-02-17",
+      "data_scope": "derived_metrics"
+    }
+  ],
+
+  "data_quality_notes": {
+    "limitations": [
+      "Implied volatility data not available in search results",
+      "Real-time gamma exposure requires specialized data feeds",
+      "Unusual options activity requires subscription services for detailed data",
+      "Some metrics require intraday data not captured in web searches"
+    ],
+    "recommended_sources": [
+      "Bloomberg Terminal for comprehensive options data",
+      "CBOE for official volatility metrics",
+      "Professional options flow platforms for real-time gamma exposure"
+    ]
+  }
+}

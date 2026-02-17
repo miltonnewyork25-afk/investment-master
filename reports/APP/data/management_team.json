@@ -1,0 +1,128 @@
+{
+  "ceo": {
+    "name": "Adam Foroughi",
+    "age": 46,
+    "tenure_years": 13,
+    "background": "Co-Founder & CEO since December 2011, Chairperson since March 2021. Born in Los Angeles in 1980 after family fled Iraq-Iran War. UC Berkeley economics graduate. Previous entrepreneur with two marketing-tech companies (Lifestreet Media and Social Hour). Former derivatives trader inspired by high-frequency data-driven models.",
+    "track_record": "Led AppLovin from startup to $4.7B revenue company (2024). Spearheaded key acquisitions including MoPub ($1.05B from Twitter) and Machine Zone (MZ). Successfully took company public in 2021. 2024 results: $4.7B revenue (+43% YoY), $1.6B GAAP net income (34% margin), $2.7B Adjusted EBITDA (58% margin).",
+    "recognition": "Ernst & Young Entrepreneur of the Year Award 2018. Net worth estimated at $2B.",
+    "dm_anchor": "DM-MGT-001"
+  },
+  "cfo": {
+    "name": "Herald Chen",
+    "current_role": "Board Member & Advisor to CEO (Jan 2024-present)",
+    "previous_role": "President & CFO (Nov 2019 - Jan 2024)",
+    "background": "Dual degree in engineering and finance from University of Pennsylvania Management & Technology program. Stanford MBA. Former head of KKR's Technology, Media and Telecom investing (2007-2019). Previously Managing Director at Fox Paine & Company, CEO of ACMI Corporation, CFO and co-founder of Jamcracker Inc.",
+    "track_record": "Guided AppLovin through successful IPO in April 2021. During his tenure as CFO, helped increase revenue nearly sevenfold to $3.3B and net income to $357M in 2023.",
+    "dm_anchor": "DM-MGT-002"
+  },
+  "key_executives": [
+    {
+      "name": "Victoria Valenzuela",
+      "title": "Chief Legal Officer and Corporate Secretary",
+      "compensation_2024": "$5,944,007 total ($400K salary, $5.5M stock awards)",
+      "dm_anchor": "DM-MGT-003"
+    }
+  ],
+  "recent_changes": {
+    "2024": "Herald Chen transitioned from President & CFO to Board Member & Advisor role in January 2024",
+    "2025": "Maynard Webb appointed to Board of Directors (April 2025). Webb had early connection with company since 2012 investment.",
+    "board_tenure": "Ted Oberwager's current board term ends at 2025 Annual Meeting",
+    "dm_anchor": "DM-MGT-004"
+  },
+  "insider_ownership_pct": {
+    "percentage": "21.25-28.91%",
+    "note": "Range reflects different reporting methodologies. TipRanks reports 21.25%, other sources cite 28.91%",
+    "dm_anchor": "DM-MGT-005"
+  },
+  "compensation_highlights": {
+    "ceo_2023": {
+      "adam_foroughi": "$83.4M total compensation (8th highest paid US CEO in 2023)",
+      "breakdown": "$400K salary, $82.95M stock awards, $11.7K other",
+      "dm_anchor": "DM-MGT-006"
+    },
+    "structure": "Variable compensation delivered predominantly via equity, not cash bonuses",
+    "source": "SEC proxy statement (DEF 14A)",
+    "dm_anchor": "DM-MGT-007"
+  },
+  "board_composition": {
+    "total_members": 10,
+    "members": [
+      "Adam Foroughi (CEO & Chairperson)",
+      "Herald Chen (Former CFO)",
+      "Craig Billings (CEO Wynn Resorts)",
+      "Margaret Georgiadis (Co-founder/CEO Montai Health)",
+      "Alyssa Harvey Dawson (Former CLO HubSpot)",
+      "Ted Oberwager (Managing Director KKR)",
+      "Eduardo Vivas (COO Humans Inc.)",
+      "Todd Morgenfeld (Former CFO Pinterest)",
+      "Barbara Messing (Former CMO Roblox)",
+      "Maynard Webb (Founder Webb Investment Network)"
+    ],
+    "committees": ["Audit Committee", "Compensation Committee"],
+    "dm_anchor": "DM-MGT-008"
+  },
+  "governance_notes": {
+    "assessment": "Strong governance structure with diverse, experienced board including technology, finance, and operational expertise. Clear committee structure with independent directors providing oversight.",
+    "code_of_conduct": "Company maintains Code of Conduct for all employees with Whistleblower Policy for reporting violations",
+    "diversity_commitment": "Board actively seeks candidates from wide range of backgrounds and experiences",
+    "selection_process": "Directors evaluated based on professional achievements, leadership potential, and personal integrity",
+    "dm_anchor": "DM-MGT-009"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-MGT-001",
+      "data": "Adam Foroughi CEO tenure 13 years, UC Berkeley economics, 2024 results $4.7B revenue",
+      "confidence": "Hard",
+      "source": "Wikipedia, Clay.com, Bloomberg profile"
+    },
+    {
+      "id": "DM-MGT-002",
+      "data": "Herald Chen former CFO (2019-2024), KKR TMT head, guided IPO 2021",
+      "confidence": "Hard",
+      "source": "Clay.com, Bloomberg profile, CFO Thought Leader"
+    },
+    {
+      "id": "DM-MGT-003",
+      "data": "Victoria Valenzuela CLO compensation $5.94M (2024)",
+      "confidence": "Hard",
+      "source": "Salary.com executive compensation data"
+    },
+    {
+      "id": "DM-MGT-004",
+      "data": "Maynard Webb board appointment April 2025, Herald Chen transition Jan 2024",
+      "confidence": "Hard",
+      "source": "BusinessWire press release"
+    },
+    {
+      "id": "DM-MGT-005",
+      "data": "Insider ownership 21.25-28.91% range",
+      "confidence": "Soft",
+      "source": "TipRanks, Simply Wall St, WallStreetZen"
+    },
+    {
+      "id": "DM-MGT-006",
+      "data": "Adam Foroughi $83.4M total compensation 2023 (8th highest US CEO)",
+      "confidence": "Hard",
+      "source": "Salary.com executive compensation, proxy statement"
+    },
+    {
+      "id": "DM-MGT-007",
+      "data": "Compensation structure equity-heavy vs cash bonuses",
+      "confidence": "Medium",
+      "source": "Salary.com analysis, SEC filings"
+    },
+    {
+      "id": "DM-MGT-008",
+      "data": "10-member board with Audit & Compensation committees",
+      "confidence": "Hard",
+      "source": "AdvisoryCloud board analysis, BusinessWire"
+    },
+    {
+      "id": "DM-MGT-009",
+      "data": "Governance assessment based on board structure and policies",
+      "confidence": "Subjective",
+      "source": "MarketScreener governance analysis, company policies"
+    }
+  ]
+}

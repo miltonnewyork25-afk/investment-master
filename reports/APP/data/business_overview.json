@@ -1,0 +1,115 @@
+{
+  "company": "AppLovin Corporation (APP)",
+  "data_collection_date": "2026-02-17",
+  "business_segments": {
+    "primary_segments": [
+      {
+        "name": "Software Platform (Advertising Revenue)",
+        "description": "High-margin advertising segment, AI-powered ad targeting",
+        "revenue_percentage": "~100% (post-Apps divestiture)",
+        "revenue_2025_q1": "$1.159B",
+        "growth_rate": "71% YoY (Q1 2025)",
+        "confidence": "DM-BIZ-001 [Hard] Q1 2025 earnings disclosure",
+        "products": ["AXON 2.0", "MAX mediation platform", "AppDiscovery"]
+      },
+      {
+        "name": "Apps Business (Discontinued)",
+        "description": "Gaming Apps business sold to Tripledot Studios in 2025",
+        "revenue_percentage": "0% (discontinued)",
+        "divestiture_value": "$400M + equity stake",
+        "status": "Sold Q2 2025",
+        "confidence": "DM-BIZ-002 [Hard] Q2 2025 earnings disclosure"
+      }
+    ],
+    "revenue_projection_2025": {
+      "full_year_estimate": "$5.408B",
+      "basis": "Nine-month actuals + Q4 guidance midpoint ($1.585B)",
+      "confidence": "DM-BIZ-003 [Hard] Company guidance"
+    }
+  },
+  "geographic_breakdown": {
+    "united_states": {
+      "revenue_2024": "$2.69B",
+      "percentage": "57.1%",
+      "confidence": "DM-BIZ-004 [Hard] 2024 annual report"
+    },
+    "rest_of_world": {
+      "revenue_2024": "$2.02B",
+      "percentage": "42.9%",
+      "confidence": "DM-BIZ-005 [Hard] 2024 annual report"
+    },
+    "trend_analysis": {
+      "us_share_stability": "Consistent 57-61% over 2022-2024",
+      "international_share": "Consistent 39-43% over 2022-2024",
+      "q1_2025_international": "~40% of total revenue",
+      "confidence": "DM-BIZ-006 [Hard] Historical SEC filings"
+    }
+  },
+  "supply_chain_architecture": {
+    "platform_model": {
+      "description": "Vertically integrated intermediary connecting advertisers to publishers",
+      "core_function": "Data-driven intermediation with ML-powered user value prediction",
+      "confidence": "DM-BIZ-007 [Subjective] Business model analysis"
+    },
+    "key_acquisitions": [
+      {
+        "target": "MoPub",
+        "year": 2022,
+        "seller": "Twitter",
+        "strategic_value": "Mobile supply side platform (SSP) integration",
+        "confidence": "DM-BIZ-008 [Hard] Public acquisition announcement"
+      },
+      {
+        "target": "MAX",
+        "year": 2018,
+        "strategic_value": "Core in-app bidding technology for mobile ad monetization",
+        "confidence": "DM-BIZ-009 [Hard] Company history"
+      }
+    ],
+    "customer_acquisition_model": {
+      "primary_channel": "Direct-to-developer (D2D)",
+      "evolution": "From third-party resellers to dominant D2D model",
+      "onboarding": "Low-friction website portal with immediate SDK integration",
+      "confidence": "DM-BIZ-010 [Reasonable] Industry analysis"
+    },
+    "data_flywheel": {
+      "mechanism": "AI models → higher ROAS → more advertiser budgets → more ad placements → better data → improved models",
+      "competitive_advantage": "ROI 20-30% higher than competitors",
+      "confidence": "DM-BIZ-011 [Subjective] Competitive positioning analysis"
+    }
+  },
+  "total_addressable_market": {
+    "mobile_advertising_market": {
+      "size_2026": "Part of $322.67B global mobile ad market (2026 projection)",
+      "growth_rate": "18.60% CAGR (2026-2034)",
+      "projected_2030": "$640.22B",
+      "video_share_2026": "39.5% of mobile ad spend",
+      "search_share_2026": "38.3% of mobile ad spend",
+      "confidence": "DM-BIZ-012 [Reasonable] Multiple market research reports"
+    },
+    "programmatic_advertising": {
+      "global_spend_2026": ">$200B programmatic ad spend",
+      "display_spend_2026": ">$725B programmatic digital display",
+      "mobile_dominance": "Programmatic direct drives 86% of mobile display spending",
+      "confidence": "DM-BIZ-013 [Reasonable] eMarketer and industry forecasts"
+    },
+    "regional_growth": {
+      "north_america": "33.20% market share (dominant region)",
+      "asia_pacific": "26.4% market share, fastest growth region",
+      "growth_drivers": "Smartphone penetration, rising middle class in China/India",
+      "confidence": "DM-BIZ-014 [Reasonable] Regional market analysis"
+    }
+  },
+  "market_positioning": {
+    "mediation_dominance": {
+      "max_market_share": "60%+ mediation market share",
+      "description": "Data monopolization through MAX mediation platform",
+      "confidence": "DM-BIZ-015 [Reasonable] Industry estimates"
+    },
+    "advertising_network_rank": {
+      "position": "3rd largest mobile game in-app advertising network",
+      "ahead_of": "After Google and Meta",
+      "confidence": "DM-BIZ-016 [Reasonable] Industry analysis"
+    }
+  }
+}

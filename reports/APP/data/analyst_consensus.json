@@ -1,0 +1,252 @@
+{
+  "consensus": {
+    "rating_distribution": {
+      "strong_buy": 8,
+      "buy": 20,
+      "hold": 5,
+      "sell": 1,
+      "strong_sell": 0,
+      "total_analysts": 34,
+      "dm_anchor": "DM-CON-001"
+    },
+    "consensus_rating": "Buy",
+    "consensus_score": "8.6/10",
+    "average_price_target": 721.85,
+    "price_target_range": {
+      "low": 500.00,
+      "high": 860.00,
+      "dm_anchor": "DM-CON-002"
+    },
+    "upside_potential": "92.4%",
+    "current_price": 619.93
+  },
+  "earnings_estimates": {
+    "q1_2026": {
+      "eps_estimate": 3.38,
+      "revenue_guidance": {
+        "low": 1745000000,
+        "high": 1775000000,
+        "growth_rate": "50-53%",
+        "dm_anchor": "DM-CON-003"
+      },
+      "ebitda_guidance": {
+        "low": 1465000000,
+        "high": 1495000000,
+        "margin": "~84%",
+        "dm_anchor": "DM-CON-004"
+      }
+    },
+    "q2_2026": {
+      "note": "No specific Q2 2026 guidance found in search results",
+      "dm_anchor": "DM-CON-005"
+    }
+  },
+  "earnings_surprise_history": {
+    "q4_2025": {
+      "reported_eps": 3.24,
+      "estimated_eps": 2.93,
+      "surprise_percent": 10.58,
+      "dm_anchor": "DM-CON-006"
+    },
+    "q3_2025": {
+      "reported_eps": 2.45,
+      "estimated_eps": 2.37,
+      "surprise_percent": 3.38,
+      "dm_anchor": "DM-CON-007"
+    },
+    "q2_2025": {
+      "reported_eps": 2.26,
+      "estimated_eps": 1.99,
+      "surprise_percent": 13.57,
+      "dm_anchor": "DM-CON-008"
+    },
+    "q2_2024": {
+      "reported_eps": 0.89,
+      "estimated_eps": 0.77,
+      "surprise_percent": 15.58,
+      "dm_anchor": "DM-CON-009"
+    },
+    "average_surprise": "8.47%"
+  },
+  "recent_changes": {
+    "february_2026": [
+      {
+        "firm": "Citigroup",
+        "action": "Price Target Cut",
+        "old_target": 820,
+        "new_target": 710,
+        "rating": "Buy",
+        "impact": "Stock down 19.7%",
+        "dm_anchor": "DM-CON-010"
+      },
+      {
+        "firm": "Scotiabank",
+        "action": "Price Target Raise",
+        "new_target": 775,
+        "rating": "Outperform",
+        "dm_anchor": "DM-CON-011"
+      },
+      {
+        "firm": "Wedbush",
+        "action": "Price Target Raise",
+        "new_target": 640,
+        "rating": "Outperform",
+        "dm_anchor": "DM-CON-012"
+      }
+    ],
+    "january_2026": [
+      {
+        "firm": "Needham",
+        "action": "Upgrade",
+        "old_rating": "Hold",
+        "new_rating": "Buy",
+        "price_target": 700,
+        "dm_anchor": "DM-CON-013"
+      },
+      {
+        "firm": "Goldman Sachs",
+        "action": "Price Target Raise",
+        "old_target": 630,
+        "new_target": 720,
+        "rating": "Neutral",
+        "dm_anchor": "DM-CON-014"
+      }
+    ]
+  },
+  "bull_bear_summary": {
+    "bull_case": {
+      "key_points": [
+        "Strong financial performance with 66% YoY revenue growth in Q4 2025",
+        "AI-driven growth through Axon advertising platform",
+        "Market opportunity in e-commerce segment expected to generate $1.45B revenue",
+        "Reasonable valuation at ~25x 2026 EBITDA with 70%+ EBITDA margins",
+        "Potential TikTok-like trajectory in advertising ramp-up"
+      ],
+      "dm_anchor": "DM-CON-015"
+    },
+    "bear_case": {
+      "key_points": [
+        "Growth deceleration with Q1 2026 guidance implying 52% YoY growth vs prior 66%",
+        "Platform dependency risk on Apple iOS and Google Android",
+        "Short-seller allegations of fraudulent traffic (though unproven)",
+        "Premium valuation concerns amid competitive pressures",
+        "Competitive threats from Meta and new AI tools"
+      ],
+      "dm_anchor": "DM-CON-016"
+    }
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-CON-001",
+      "type": "H",
+      "source": "WebSearch: APP analyst ratings consensus 2026 - Multiple sources including public.com, stockanalysis.com",
+      "description": "Analyst rating distribution: 44% Strong Buy, 44% Buy, 11% Hold, 0% Sell"
+    },
+    {
+      "id": "DM-CON-002",
+      "type": "H",
+      "source": "WebSearch: APP price target consensus Wall Street - WallStreetZen, TipRanks",
+      "description": "Price target range $500-$860 with median $735 and average $721.85"
+    },
+    {
+      "id": "DM-CON-003",
+      "type": "H",
+      "source": "WebSearch: APP earnings estimates Q1 2026 - Company guidance from earnings call",
+      "description": "Q1 2026 revenue guidance $1.745-1.775B representing 50-53% growth"
+    },
+    {
+      "id": "DM-CON-004",
+      "type": "H",
+      "source": "WebSearch: APP earnings estimates Q1 2026 - Company guidance",
+      "description": "Q1 2026 EBITDA guidance $1.465-1.495B with ~84% margin"
+    },
+    {
+      "id": "DM-CON-005",
+      "type": "R",
+      "source": "WebSearch: APP EPS revenue estimate Q2 2026 - Inference from search results",
+      "description": "No Q2 2026 specific guidance found, company typically provides quarterly guidance",
+      "chain": "Company provided Q1 2026 guidance but Q2 2026 estimates not yet available",
+      "falsifiable": "Future earnings calls will provide Q2 2026 guidance"
+    },
+    {
+      "id": "DM-CON-006",
+      "type": "H",
+      "source": "WebSearch: APP earnings surprise history - Zacks, Yahoo Finance",
+      "description": "Q4 2025: EPS $3.24 vs est. $2.93, +10.58% surprise"
+    },
+    {
+      "id": "DM-CON-007",
+      "type": "H",
+      "source": "WebSearch: APP earnings surprise history - Zacks consensus data",
+      "description": "Q3 2025: EPS $2.45 vs est. $2.37, +3.38% surprise"
+    },
+    {
+      "id": "DM-CON-008",
+      "type": "H",
+      "source": "WebSearch: APP earnings surprise history - Zacks consensus data",
+      "description": "Q2 2025: EPS $2.26 vs est. $1.99, +13.57% surprise"
+    },
+    {
+      "id": "DM-CON-009",
+      "type": "H",
+      "source": "WebSearch: APP earnings surprise history - Zacks consensus data",
+      "description": "Q2 2024: EPS $0.89 vs est. $0.77, +15.58% surprise"
+    },
+    {
+      "id": "DM-CON-010",
+      "type": "H",
+      "source": "WebSearch: AppLovin analyst upgrade downgrade 2026 - MarketBeat",
+      "description": "Citigroup cut price target $820→$710, maintained Buy, stock down 19.7%"
+    },
+    {
+      "id": "DM-CON-011",
+      "type": "H",
+      "source": "WebSearch: AppLovin analyst upgrade downgrade 2026 - Multiple sources",
+      "description": "Scotiabank raised price target to $775 with Outperform rating"
+    },
+    {
+      "id": "DM-CON-012",
+      "type": "H",
+      "source": "WebSearch: AppLovin analyst upgrade downgrade 2026 - Multiple sources",
+      "description": "Wedbush raised price target to $640 with Outperform rating"
+    },
+    {
+      "id": "DM-CON-013",
+      "type": "H",
+      "source": "WebSearch: AppLovin analyst upgrade downgrade 2026 - Needham research",
+      "description": "Needham upgraded Hold→Buy with $700 price target on Jan 26, 2026"
+    },
+    {
+      "id": "DM-CON-014",
+      "type": "H",
+      "source": "WebSearch: AppLovin AI advertising forecast analyst - Goldman Sachs research",
+      "description": "Goldman Sachs raised price target $630→$720, maintained Neutral"
+    },
+    {
+      "id": "DM-CON-015",
+      "type": "H",
+      "source": "WebSearch: AppLovin bull case bear case analyst - Multiple financial publications",
+      "description": "Bull case: 66% YoY growth, AI-driven Axon platform, e-commerce opportunity $1.45B"
+    },
+    {
+      "id": "DM-CON-016",
+      "type": "H",
+      "source": "WebSearch: AppLovin bull case bear case analyst - Multiple financial publications",
+      "description": "Bear case: Growth deceleration to 52% YoY, platform risks, premium valuation"
+    }
+  ],
+  "data_collection_timestamp": "2026-02-17",
+  "search_queries_executed": 8,
+  "sources_consulted": [
+    "public.com",
+    "stockanalysis.com",
+    "wallstreetzen.com",
+    "tipranks.com",
+    "marketbeat.com",
+    "zacks.com",
+    "yahoo.com",
+    "benzinga.com",
+    "seekingalpha.com",
+    "247wallst.com"
+  ]
+}

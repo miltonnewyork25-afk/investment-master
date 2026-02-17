@@ -1,0 +1,332 @@
+{
+  "smart_money_analysis": {
+    "institutional_summary": {
+      "total_institutional_ownership": "78.38%",
+      "institutional_holders_count": 2226,
+      "total_shares_held": "265,741,393",
+      "recent_activity": "868 institutions added shares, 713 decreased positions in Q4 2025",
+      "dm_anchor": "DM-SMT-001"
+    },
+
+    "top_holders": [
+      {
+        "rank": 1,
+        "institution": "Vanguard Group Inc",
+        "position_type": "Passive Index",
+        "dm_anchor": "DM-SMT-002"
+      },
+      {
+        "rank": 2,
+        "institution": "BlackRock, Inc.",
+        "position_type": "Passive Index",
+        "dm_anchor": "DM-SMT-003"
+      },
+      {
+        "rank": 3,
+        "institution": "Ieq Capital LLC",
+        "position_type": "Active Management",
+        "dm_anchor": "DM-SMT-004"
+      },
+      {
+        "rank": 4,
+        "institution": "Fmr LLC (Fidelity)",
+        "position_type": "Active Management",
+        "dm_anchor": "DM-SMT-005"
+      },
+      {
+        "rank": 5,
+        "institution": "State Street Corp",
+        "position_type": "Passive Index",
+        "dm_anchor": "DM-SMT-006"
+      },
+      {
+        "rank": 6,
+        "institution": "Geode Capital Management LLC",
+        "position_type": "Active Management",
+        "dm_anchor": "DM-SMT-007"
+      },
+      {
+        "rank": 7,
+        "institution": "JPMorgan Chase & Co",
+        "position_type": "Diversified",
+        "dm_anchor": "DM-SMT-008"
+      },
+      {
+        "rank": 8,
+        "institution": "Invesco QQQ Trust Series 1",
+        "position_type": "ETF/Index",
+        "dm_anchor": "DM-SMT-009"
+      },
+      {
+        "rank": 9,
+        "institution": "Baillie Gifford & Co",
+        "position_type": "Growth Focused",
+        "dm_anchor": "DM-SMT-010"
+      },
+      {
+        "rank": 10,
+        "institution": "Coatue Management LLC",
+        "shares": "98,836",
+        "average_price": "$461.14",
+        "position_type": "Tech-Focused Hedge Fund",
+        "dm_anchor": "DM-SMT-011"
+      }
+    ],
+
+    "notable_moves": [
+      {
+        "institution": "JENNISON ASSOCIATES LLC",
+        "action": "SELL",
+        "shares_changed": "-1,149,126",
+        "percentage_change": "-29.6%",
+        "estimated_value": "$774,304,081",
+        "quarter": "Q4 2025",
+        "dm_anchor": "DM-SMT-012"
+      },
+      {
+        "institution": "UBS AM",
+        "action": "SELL",
+        "shares_changed": "-4,076,600",
+        "percentage_change": "-72.0%",
+        "estimated_value": "$2,746,894,612",
+        "quarter": "Q4 2025",
+        "dm_anchor": "DM-SMT-013"
+      },
+      {
+        "institution": "COMMERCE BANK",
+        "action": "BUY",
+        "shares_changed": "+37,129",
+        "position_type": "New Position",
+        "quarter": "Q4 2025",
+        "dm_anchor": "DM-SMT-014"
+      },
+      {
+        "institution": "RiverFront Investment Group LLC",
+        "action": "BUY",
+        "position_type": "New Investment",
+        "quarter": "Q4 2025",
+        "dm_anchor": "DM-SMT-015"
+      },
+      {
+        "institution": "Revolve Wealth Partners LLC",
+        "action": "BUY",
+        "estimated_value": "$294,000",
+        "position_type": "New Position",
+        "quarter": "Q4 2025",
+        "dm_anchor": "DM-SMT-016"
+      }
+    ],
+
+    "insider_activity": [
+      {
+        "period": "December 2025 - January 2026",
+        "total_transactions": 5,
+        "breakdown": {
+          "stock_awards": 1,
+          "sales": 1,
+          "stock_gifts": 3
+        },
+        "sale_value": "$5.0 million",
+        "dm_anchor": "DM-SMT-017"
+      },
+      {
+        "period": "November 2025",
+        "description": "Heavy insider selling around November 21",
+        "price_range": "$400s to low-$520s",
+        "context": "After blowout Q3 results and major rally",
+        "dm_anchor": "DM-SMT-018"
+      },
+      {
+        "period": "Q2 2025",
+        "total_value": "$132M+",
+        "notable_sale": {
+          "insider": "Herald Chen (Director)",
+          "value": "$15.1M",
+          "timeframe": "One day"
+        },
+        "dm_anchor": "DM-SMT-019"
+      },
+      {
+        "recent_sale": {
+          "value": "$7.8 million",
+          "source": "SEC Filing",
+          "period": "2025"
+        },
+        "dm_anchor": "DM-SMT-020"
+      }
+    ],
+
+    "notable_absences": [
+      {
+        "fund": "Berkshire Hathaway (Warren Buffett)",
+        "status": "No position found",
+        "dm_anchor": "DM-SMT-021"
+      },
+      {
+        "fund": "ARK Invest (Cathie Wood)",
+        "status": "Not found in top holdings",
+        "note": "ARK focuses on disruptive innovation, primarily holds Tesla, Robinhood, Roku, Roblox",
+        "dm_anchor": "DM-SMT-022"
+      },
+      {
+        "fund": "Tiger Global Management",
+        "status": "Direct position not confirmed",
+        "note": "Co-invests frequently with Coatue Capital",
+        "dm_anchor": "DM-SMT-023"
+      }
+    ]
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-SMT-001",
+      "type": "Hard",
+      "description": "Institutional ownership percentage and holder count from SEC 13F filings",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-002",
+      "type": "Hard",
+      "description": "Vanguard as top institutional holder from 13F data",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-003",
+      "type": "Hard",
+      "description": "BlackRock institutional holdings from SEC filings",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-004",
+      "type": "Hard",
+      "description": "Ieq Capital LLC holdings from 13F filings",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-005",
+      "type": "Hard",
+      "description": "Fidelity (FMR LLC) institutional position",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-006",
+      "type": "Hard",
+      "description": "State Street Corp holdings data",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-007",
+      "type": "Hard",
+      "description": "Geode Capital Management position from filings",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-008",
+      "type": "Hard",
+      "description": "JPMorgan Chase institutional holdings",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-009",
+      "type": "Hard",
+      "description": "Invesco QQQ Trust holdings data",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-010",
+      "type": "Hard",
+      "description": "Baillie Gifford institutional position",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-011",
+      "type": "Hard",
+      "description": "Coatue Management specific position: 98,836 shares at avg $461.14",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-012",
+      "type": "Hard",
+      "description": "Jennison Associates Q4 2025 reduction: -1,149,126 shares (-29.6%)",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-013",
+      "type": "Hard",
+      "description": "UBS AM Q4 2025 reduction: -4,076,600 shares (-72.0%)",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-014",
+      "type": "Hard",
+      "description": "Commerce Bank Q4 2025 addition: +37,129 shares per SEC filing",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-015",
+      "type": "Hard",
+      "description": "RiverFront Investment Group new position Q4 2025",
+      "confidence": "Medium"
+    },
+    {
+      "id": "DM-SMT-016",
+      "type": "Hard",
+      "description": "Revolve Wealth Partners new $294K position Q4 2025",
+      "confidence": "Medium"
+    },
+    {
+      "id": "DM-SMT-017",
+      "type": "Hard",
+      "description": "Insider activity Dec 2025-Jan 2026: 5 transactions, $5M sale per SEC filings",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-018",
+      "type": "Hard",
+      "description": "November 2025 insider selling at $400s-$520s price range",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-019",
+      "type": "Hard",
+      "description": "Q2 2025 executive sales totaling $132M+, Herald Chen $15.1M",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-020",
+      "type": "Hard",
+      "description": "$7.8M insider sale per SEC filing in 2025",
+      "confidence": "High"
+    },
+    {
+      "id": "DM-SMT-021",
+      "type": "Hard",
+      "description": "Berkshire Hathaway portfolio search shows no APP position",
+      "confidence": "Medium"
+    },
+    {
+      "id": "DM-SMT-022",
+      "type": "Reasonable",
+      "description": "ARK Invest focus on other disruptive tech stocks, APP not in top holdings",
+      "confidence": "Medium"
+    },
+    {
+      "id": "DM-SMT-023",
+      "type": "Reasonable",
+      "description": "Tiger Global co-investment pattern with Coatue, but no direct APP confirmation",
+      "confidence": "Low"
+    }
+  ],
+
+  "analysis_summary": {
+    "key_findings": [
+      "Strong institutional ownership at 78.38% with 2,226 institutional holders",
+      "Mixed Q4 2025 activity: 868 institutions added shares, 713 reduced positions",
+      "Major reductions by UBS AM (-72.0%) and Jennison Associates (-29.6%)",
+      "Consistent insider selling throughout 2025, including $132M+ in Q2",
+      "Notable absence of high-profile investors like Buffett and Cathie Wood",
+      "Coatue Management confirmed as tech-focused hedge fund holder"
+    ],
+    "smart_money_verdict": "Mixed sentiment with institutional rotation and consistent insider selling indicating potential profit-taking after strong performance"
+  }
+}

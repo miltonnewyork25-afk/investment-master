@@ -1,0 +1,203 @@
+{
+  "analysis_date": "2026-02-17T00:00:00Z",
+  "ticker": "APP",
+  "company": "AppLovin Corporation",
+  "analyst": "Prediction Market Data Specialist",
+
+  "macro_events": [
+    {
+      "event_id": "dm-pmk-001",
+      "event": "US recession by end of 2026",
+      "probability": 0.22,
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "NBER declares recession OR two consecutive quarters of negative GDP growth between Q2 2025-Q4 2026",
+      "impact_on_app": "High negative - advertising spend typically declines 10-30% in recessions, directly impacting APP's programmatic advertising revenue"
+    },
+    {
+      "event_id": "dm-pmk-002",
+      "event": "Negative GDP growth in 2026",
+      "probability": 0.11,
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "Any quarter in 2026 showing negative GDP growth",
+      "impact_on_app": "Moderate negative - slower economic growth reduces mobile gaming spend and advertising budgets"
+    },
+    {
+      "event_id": "dm-pmk-003",
+      "event": "Fed rate hike in 2026",
+      "probability": 0.12,
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "Federal Reserve increases interest rates at any point in 2026",
+      "impact_on_app": "Moderate negative - higher rates reduce growth company valuations and may slow mobile gaming investment"
+    },
+    {
+      "event_id": "dm-pmk-004",
+      "event": "Inflation above 3% in 2026",
+      "probability": 0.67,
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "How high will inflation get in 2026? Market shows 67% odds for >3%",
+      "impact_on_app": "Mixed - higher inflation may reduce consumer discretionary spend but also drives nominal advertising rate increases"
+    },
+    {
+      "event_id": "dm-pmk-005",
+      "event": "Taiwan-China military conflict before 2027",
+      "probability": "Multiple markets tracking different scenarios",
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "Various markets tracking invasion scenarios and military clashes across different timeframes",
+      "impact_on_app": "High negative - major geopolitical instability would disrupt global advertising markets and mobile gaming supply chains"
+    }
+  ],
+
+  "industry_events": [
+    {
+      "event_id": "dm-pmk-006",
+      "event": "U.S. AI safety bill before 2027",
+      "probability": "Market available",
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "Federal legislation including AI training restrictions, usage limits, or human-in-the-loop requirements",
+      "impact_on_app": "Moderate positive - may limit big tech AI advantage, creating opportunities for specialized adtech players like APP"
+    },
+    {
+      "event_id": "dm-pmk-007",
+      "event": "AI data center moratorium by 2026",
+      "probability": "Market available",
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "Bill prohibiting/suspending new AI data center construction approvals in the US",
+      "impact_on_app": "Low impact - APP's business model doesn't require massive data center infrastructure compared to hyperscalers"
+    },
+    {
+      "event_id": "dm-pmk-008",
+      "event": "Big Tech antitrust actions",
+      "probability": "Limited market coverage found",
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "General big tech prediction markets exist but specific antitrust enforcement markets limited",
+      "impact_on_app": "Positive if enacted - antitrust breakups of Google/Meta could redistribute advertising market share to independent players"
+    },
+    {
+      "event_id": "dm-pmk-009",
+      "event": "Mobile gaming industry events",
+      "probability": "Gaming awards markets only",
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "Found Game Awards 'Best Mobile Game' markets but no industry-wide mobile gaming prediction markets",
+      "impact_on_app": "Limited direct relevance - gaming awards don't correlate strongly with advertising revenue trends"
+    },
+    {
+      "event_id": "dm-pmk-010",
+      "event": "Advertising industry spending trends",
+      "probability": "Limited market coverage",
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "General advertising prediction markets exist but no specific spending trend forecasts found",
+      "impact_on_app": "Direct relevance - advertising spend is APP's primary revenue driver but prediction markets lack granular coverage"
+    }
+  ],
+
+  "company_specific": [
+    {
+      "event_id": "dm-pmk-011",
+      "event": "AppLovin quarterly earnings beat (Q1 2026)",
+      "probability": "Market available",
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "Will APP report GAAP EPS > $2.95 for Q1 2026? Earnings expected February 11, 2026",
+      "impact_on_app": "Direct - earnings beat/miss immediately impacts stock price and analyst sentiment"
+    },
+    {
+      "event_id": "dm-pmk-012",
+      "event": "AppLovin TikTok acquisition",
+      "probability": "Long-shot scenario",
+      "platform": "Polymarket",
+      "last_updated": "2026-02-17",
+      "description": "APP listed among potential TikTok acquirers with $32,034 trading volume, resolves if acquisition announced by June 30, 2026",
+      "impact_on_app": "Extremely high positive if realized - TikTok acquisition would transform APP into social media giant, but probability appears very low based on trading volume"
+    }
+  ],
+
+  "no_coverage": [
+    {
+      "event_category": "APP-specific operational metrics",
+      "examples": [
+        "MAX revenue growth rates",
+        "AppDiscovery customer acquisition",
+        "Software platform adoption rates",
+        "International expansion success",
+        "Key executive departures",
+        "Patent litigation outcomes",
+        "Privacy regulation compliance costs"
+      ],
+      "reason": "Prediction markets focus on high-profile binary outcomes rather than company-specific operational details"
+    },
+    {
+      "event_category": "Mobile advertising ecosystem changes",
+      "examples": [
+        "iOS/Android policy changes impact",
+        "Programmatic advertising market share shifts",
+        "Attribution technology developments",
+        "Privacy-focused advertising solutions adoption"
+      ],
+      "reason": "Too technical/niche for broad prediction market participation"
+    }
+  ],
+
+  "dm_anchors": [
+    {
+      "id": "DM-PMK-001",
+      "source": "Polymarket - US recession by end of 2026",
+      "value": "22% probability",
+      "verification_date": "2026-02-17",
+      "url": "https://polymarket.com/event/us-recession-by-end-of-2026"
+    },
+    {
+      "id": "DM-PMK-002",
+      "source": "Polymarket - Negative GDP growth in 2026",
+      "value": "11% probability",
+      "verification_date": "2026-02-17",
+      "url": "https://polymarket.com/event/negative-gdp-growth-in-2026"
+    },
+    {
+      "id": "DM-PMK-003",
+      "source": "Polymarket - How high will inflation get in 2026",
+      "value": "67% odds for >3%",
+      "verification_date": "2026-02-17",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026"
+    },
+    {
+      "id": "DM-PMK-004",
+      "source": "Polymarket - AppLovin quarterly earnings",
+      "value": "GAAP EPS consensus $2.95",
+      "verification_date": "2026-02-17",
+      "url": "https://polymarket.com/event/will-applovin-app-beat-quarterly-earnings"
+    },
+    {
+      "id": "DM-PMK-005",
+      "source": "Kalshi - Meta earnings mentions",
+      "value": "Market available for earnings call content",
+      "verification_date": "2026-02-17",
+      "url": "https://kalshi.com/markets/kxearningsmentionmeta/earnings-mention/kxearningsmentionmeta-26jun30"
+    },
+    {
+      "id": "DM-PMK-006",
+      "source": "Polymarket - U.S. AI safety bill before 2027",
+      "value": "Market tracking AI regulation probability",
+      "verification_date": "2026-02-17",
+      "url": "https://polymarket.com/event/us-enacts-ai-safety-bill-before-2027"
+    }
+  ],
+
+  "research_notes": {
+    "coverage_assessment": "Strong coverage of macro/geopolitical risks, moderate coverage of tech industry trends, limited coverage of company-specific operational risks",
+    "data_reliability": "Polymarket provides real-time probability updates based on actual trading, making it more dynamic than analyst estimates",
+    "gaps_identified": "Key gaps in mobile advertising ecosystem changes, APP-specific operational metrics, and granular industry spending forecasts",
+    "investment_relevance": "High relevance for macro risk assessment, moderate relevance for industry positioning, limited relevance for company-specific analysis"
+  },
+
+  "methodology_note": "Data collected via 10 targeted web searches plus direct Polymarket API query for 'AppLovin'. Probabilities represent market-based consensus as of analysis date. Some markets show trading activity levels rather than exact probabilities due to data formatting limitations."
+}

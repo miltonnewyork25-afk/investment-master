@@ -1,0 +1,214 @@
+{
+  "key_news": [
+    {
+      "headline": "AppLovin Reports Strong Q4 2025 Results, But Stock Falls 16%",
+      "date": "2026-02-11",
+      "sentiment": "mixed",
+      "impact": "high",
+      "summary": "AppLovin reported Q4 2025 revenue of $1.66B (+66% YoY) with net income of $1.10B, beating estimates. However, shares fell 16% despite strong earnings and Q1 2026 guidance of $1.745-1.775B revenue.",
+      "dm_anchor": "DM-NEW-001"
+    },
+    {
+      "headline": "CapitalWatch Retracts Money Laundering Allegations",
+      "date": "2026-02-08",
+      "sentiment": "positive",
+      "impact": "high",
+      "summary": "Short-seller CapitalWatch formally retracted allegations about AppLovin shareholders' ties to illicit capital networks and issued apology. Stock rose 6% on Friday following retraction.",
+      "dm_anchor": "DM-NEW-002"
+    },
+    {
+      "headline": "SEC Investigation into Data Collection Practices Continues",
+      "date": "2026-01-22",
+      "sentiment": "negative",
+      "impact": "medium",
+      "summary": "AppLovin faces ongoing SEC investigation into 'identifier bridging' techniques that allegedly bypass Apple's privacy restrictions. Regulatory scrutiny includes potential DOJ and CFIUS involvement.",
+      "dm_anchor": "DM-NEW-003"
+    },
+    {
+      "headline": "Wedbush Raises Price Target to $640",
+      "date": "2026-02-12",
+      "sentiment": "positive",
+      "impact": "medium",
+      "summary": "Wedbush analysts raised 12-month price target from $465 to $640, citing AppLovin's leading position in mobile gaming advertising and AI-driven platform expansion.",
+      "dm_anchor": "DM-NEW-004"
+    },
+    {
+      "headline": "Benchmark Names APP '2026 Top Idea'",
+      "date": "2026-02-09",
+      "sentiment": "positive",
+      "impact": "medium",
+      "summary": "Benchmark selected AppLovin as a '2026 EDM Top Idea' due to durable core gaming growth and emerging web/e-commerce advertising business with dual growth engines.",
+      "dm_anchor": "DM-NEW-005"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "event": "Q1 2026 Earnings Release",
+      "date": "2026-05-13",
+      "impact": "high",
+      "description": "First quarter 2026 financial results. Company guided Q1 2026 revenue of $1.745-$1.775B (+5-7% sequential) with ~84% EBITDA margin.",
+      "dm_anchor": "DM-NEW-006"
+    },
+    {
+      "event": "AXON Ads Manager Global Launch",
+      "date": "H1 2026",
+      "impact": "high",
+      "description": "Global rollout of self-service AXON Ads Manager platform following referral-only launch in October 2025. Expected to drive e-commerce advertiser adoption.",
+      "dm_anchor": "DM-NEW-007"
+    },
+    {
+      "event": "AXON 3.0 with Generative AI",
+      "date": "2026",
+      "impact": "high",
+      "description": "Launch of AXON 3.0 integrating Generative AI to create and place ads in real-time, representing next evolution of AI-driven advertising platform.",
+      "dm_anchor": "DM-NEW-008"
+    },
+    {
+      "event": "Connected TV Performance Channel Launch",
+      "date": "2026",
+      "impact": "medium",
+      "description": "Expansion of AXON platform into Connected TV advertising using Wurl acquisition, focusing on performance-based attribution model.",
+      "dm_anchor": "DM-NEW-009"
+    },
+    {
+      "event": "SEC Investigation Resolution",
+      "date": "Unknown",
+      "impact": "high",
+      "description": "Resolution of ongoing SEC investigation into data collection practices and 'identifier bridging' techniques. Outcome could significantly impact regulatory positioning.",
+      "dm_anchor": "DM-NEW-010"
+    }
+  ],
+  "insider_activity": [
+    {
+      "summary": "Limited specific 2026 insider trading data available from search results",
+      "resources": [
+        "MarketBeat tracks APP insider trading activity",
+        "NASDAQ provides insider activity data for corporate officers and directors",
+        "OpenInsider offers SEC Form 4 filing tracking"
+      ],
+      "note": "Real-time insider trading data requires direct access to financial platforms",
+      "dm_anchor": "DM-NEW-011"
+    }
+  ],
+  "sec_filings": [
+    {
+      "filing_type": "10-K",
+      "date": "2025-02-27",
+      "period": "FY 2024",
+      "status": "Most recent annual report filed",
+      "dm_anchor": "DM-NEW-012"
+    },
+    {
+      "filing_type": "10-Q",
+      "date": "2025-05-07",
+      "period": "Q1 2025",
+      "status": "Most recent quarterly report",
+      "dm_anchor": "DM-NEW-013"
+    },
+    {
+      "filing_type": "8-K",
+      "date": "2026-02-11",
+      "event": "Q4 2025 earnings results announcement",
+      "status": "Recent material event filing",
+      "dm_anchor": "DM-NEW-014"
+    }
+  ],
+  "dm_anchors": [
+    {
+      "id": "DM-NEW-001",
+      "description": "Q4 2025 financial results: $1.66B revenue (+66% YoY), $1.10B net income, stock down 16% despite beat",
+      "source": "Yahoo Finance, Business Wire",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-NEW-002",
+      "description": "CapitalWatch retraction and apology for money laundering allegations, stock +6% relief rally",
+      "source": "CNBC, Financial markets reports",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-NEW-003",
+      "description": "Ongoing SEC investigation into identifier bridging and data collection practices",
+      "source": "Financial Content, regulatory reports",
+      "confidence": "medium"
+    },
+    {
+      "id": "DM-NEW-004",
+      "description": "Wedbush price target increase to $640 from $465 based on AI platform leadership",
+      "source": "Analyst reports",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-NEW-005",
+      "description": "Benchmark 2026 Top Idea selection citing dual growth engines",
+      "source": "Investing.com analyst coverage",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-NEW-006",
+      "description": "Q1 2026 earnings date May 13, 2026 with guided revenue $1.745-1.775B",
+      "source": "MarketBeat earnings calendar",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-NEW-007",
+      "description": "AXON Ads Manager global launch planned for H1 2026 following referral rollout",
+      "source": "Modern Retail, company announcements",
+      "confidence": "medium"
+    },
+    {
+      "id": "DM-NEW-008",
+      "description": "AXON 3.0 with Generative AI for real-time ad creation and placement in 2026",
+      "source": "Yahoo Finance, AI stock coverage",
+      "confidence": "medium"
+    },
+    {
+      "id": "DM-NEW-009",
+      "description": "Connected TV expansion using Wurl acquisition for performance-based attribution",
+      "source": "Seeking Alpha platform analysis",
+      "confidence": "medium"
+    },
+    {
+      "id": "DM-NEW-010",
+      "description": "SEC investigation resolution timing unknown, potential DOJ/CFIUS involvement",
+      "source": "Financial Content regulatory storm analysis",
+      "confidence": "low"
+    },
+    {
+      "id": "DM-NEW-011",
+      "description": "Insider trading data available through multiple tracking platforms but specific 2026 activity not detailed in search",
+      "source": "MarketBeat, NASDAQ, OpenInsider",
+      "confidence": "low"
+    },
+    {
+      "id": "DM-NEW-012",
+      "description": "Most recent 10-K annual report filed February 27, 2025 for FY 2024",
+      "source": "SEC EDGAR, NASDAQ SEC filings",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-NEW-013",
+      "description": "Most recent 10-Q quarterly report filed May 7, 2025 for Q1 2025",
+      "source": "SEC filing aggregators",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-NEW-014",
+      "description": "8-K filing for Q4 2025 earnings announcement on February 11, 2026",
+      "source": "StockTitan SEC filing tracker",
+      "confidence": "high"
+    }
+  ],
+  "research_metadata": {
+    "search_date": "2026-02-17",
+    "total_searches": 8,
+    "data_freshness": "Current through February 2026",
+    "key_themes": [
+      "Strong financial performance vs. market skepticism",
+      "Regulatory scrutiny and short-seller allegations",
+      "AI-driven platform expansion beyond gaming",
+      "AXON product evolution and e-commerce penetration",
+      "Analyst optimism despite stock volatility"
+    ]
+  }
+}

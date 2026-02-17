@@ -1,0 +1,192 @@
+{
+  "company": "AppLovin Corporation (APP)",
+  "data_collection_date": "2026-02-17",
+  "market_share_analysis": {
+    "mobile_ad_network": {
+      "applovin_share": "8.40%",
+      "rank": "#3 in mobile ad network market",
+      "confidence": "DM-BIZ-017 [Hard] 6sense market data"
+    },
+    "ad_monetization_by_platform": {
+      "ios_market_share": {
+        "applovin": "37% (leader)",
+        "unity_ads": "16%",
+        "google_admob": "15%",
+        "mintegral": "11%",
+        "ironsource": "9%",
+        "confidence": "DM-BIZ-018 [Hard] Tenjin Benchmark Report 2025"
+      },
+      "android_market_share": {
+        "google_admob": "28% (leader)",
+        "applovin": "24%",
+        "unity_ads": "13%",
+        "mintegral": "11%",
+        "ironsource": "5%",
+        "confidence": "DM-BIZ-019 [Hard] Tenjin Benchmark Report 2025"
+      }
+    },
+    "mediation_dominance": {
+      "applovin_max": "80% of mediation market",
+      "competitive_position": "Near-monopolistic in mediation",
+      "confidence": "DM-BIZ-020 [Reasonable] Industry estimates"
+    },
+    "overall_digital_advertising": {
+      "applovin_share": "~3%",
+      "google_meta_combined": "~50%",
+      "context": "Small player in broader digital advertising ecosystem",
+      "confidence": "DM-BIZ-021 [Reasonable] Market analysis"
+    }
+  },
+  "competitive_landscape": {
+    "tier_1_competitors": [
+      {
+        "company": "Google (AdMob, DV360)",
+        "strengths": ["Ecosystem integration", "Global reach", "Android dominance"],
+        "market_position": "Dominant across platforms",
+        "relationship_with_app": "Integration partner (DV360 participates in AppLovin auctions)",
+        "confidence": "DM-BIZ-022 [Subjective] Competitive analysis"
+      },
+      {
+        "company": "Meta",
+        "strengths": ["Social targeting", "User data", "Cross-platform reach"],
+        "market_position": "Duopoly leader with Google",
+        "competitive_dynamic": "Direct competitor for advertiser budgets",
+        "confidence": "DM-BIZ-023 [Subjective] Competitive analysis"
+      }
+    ],
+    "tier_2_competitors": [
+      {
+        "company": "Unity Ads (including IronSource)",
+        "market_performance": "Revenue dropped 10% in 2024 to $1.2B vs AppLovin's 75% growth",
+        "ios_share": "16%",
+        "android_share": "13%",
+        "competitive_position": "Struggling vs AppLovin growth",
+        "confidence": "DM-BIZ-024 [Hard] 2024 financial results"
+      },
+      {
+        "company": "IronSource (Unity)",
+        "market_share": "9% iOS, 5% Android",
+        "platform": "LevelPlay mediation competes with MAX",
+        "trend": "Losing share to AppLovin's AXON improvements",
+        "confidence": "DM-BIZ-025 [Hard] Market share data"
+      },
+      {
+        "company": "Chartboost (Take-Two)",
+        "competitive_advantage": "Regional supply and publisher relationships",
+        "market_share": "2.94% mobile ad network",
+        "position": "#4 in mobile ad network market",
+        "confidence": "DM-BIZ-026 [Hard] 6sense market data"
+      }
+    ],
+    "emerging_dynamics": {
+      "market_consolidation": "Publishers consolidate to top mediation stacks (MAX vs LevelPlay)",
+      "ai_competition": "AXON improvements gaining incremental share vs competitors 2023-2024",
+      "confidence": "DM-BIZ-027 [Reasonable] Industry trend analysis"
+    }
+  },
+  "competitive_advantages": {
+    "ai_optimization": {
+      "platform": "AXON 2.0 AI-powered ad targeting engine",
+      "performance_claim": "ROI 20-30% higher than competitors",
+      "key_differentiator": "Real-time AI-optimized bidding",
+      "confidence": "DM-BIZ-028 [Subjective] Company claims and positioning"
+    },
+    "vertical_integration": {
+      "strength": "End-to-end platform from demand to supply",
+      "mopub_acquisition": "Vertically integrated SSP capabilities",
+      "max_platform": "Dominant mediation position",
+      "confidence": "DM-BIZ-029 [Reasonable] Business model analysis"
+    },
+    "gaming_specialization": {
+      "focus": "Deep expertise in mobile gaming advertising",
+      "market_position": "3rd largest mobile game in-app ad network",
+      "specialization_advantage": "Outperforms competitors in gaming user acquisition",
+      "confidence": "DM-BIZ-030 [Subjective] Industry positioning"
+    },
+    "data_network_effects": {
+      "mechanism": "Data flywheel creates sustainable competitive advantage",
+      "scale_benefit": "More data improves AI models, attracts more advertisers",
+      "barrier_height": "Difficult for competitors to replicate at scale",
+      "confidence": "DM-BIZ-031 [Reasonable] Network effects analysis"
+    }
+  },
+  "axon_competitive_positioning": {
+    "market_entry_strategy": {
+      "target": "Alternative to Meta-Google duopoly",
+      "value_proposition": "ROI-first advertising with transparent attribution",
+      "onboarding": "Referral-only basis for quality control",
+      "confidence": "DM-BIZ-032 [Hard] Product launch announcements"
+    },
+    "performance_metrics": {
+      "ecommerce_run_rate": "$1B advertising run rate",
+      "major_clients": ["Wayfair", "Dr. Squatch", "Ashley Furniture"],
+      "client_behavior": "Reportedly scaling budgets significantly",
+      "confidence": "DM-BIZ-033 [Reasonable] Client case studies and reports"
+    },
+    "key_differentiators": [
+      {
+        "factor": "AI-driven optimization",
+        "description": "Real-time bidding optimization for ROI",
+        "competitive_advantage": "Superior to traditional targeting methods"
+      },
+      {
+        "factor": "Transparent attribution",
+        "description": "Clear measurement and attribution vs black box alternatives",
+        "market_appeal": "Addresses marketer priority for measurable ROI (34%)"
+      },
+      {
+        "factor": "Gaming expertise",
+        "description": "Leverages deep mobile gaming advertising expertise",
+        "expansion": "Applied to e-commerce customer acquisition"
+      }
+    ],
+    "confidence": "DM-BIZ-034 [Subjective] Competitive positioning analysis"
+  },
+  "market_trends_impact": {
+    "programmatic_growth": {
+      "trend": "86% of mobile display spend now programmatic direct",
+      "benefit_to_app": "Plays to AppLovin's automated bidding strengths",
+      "confidence": "DM-BIZ-035 [Hard] Industry data"
+    },
+    "ai_integration": {
+      "trend": "AI embedded across advertising workflow (39% of marketers prioritize)",
+      "app_advantage": "Early mover with AXON AI platform",
+      "confidence": "DM-BIZ-036 [Reasonable] Marketing trend surveys"
+    },
+    "privacy_regulations": {
+      "impact": "Limits traditional targeting capabilities",
+      "app_response": "First-party data and contextual targeting focus",
+      "competitive_effect": "Levels playing field vs Google/Meta user data advantages",
+      "confidence": "DM-BIZ-037 [Reasonable] Regulatory impact analysis"
+    },
+    "retail_media_networks": {
+      "trend": "Retailers control valuable first-party data",
+      "app_opportunity": "Potential partnerships for e-commerce expansion",
+      "competitive_threat": "New intermediaries in advertising value chain",
+      "confidence": "DM-BIZ-038 [Reasonable] Industry evolution analysis"
+    }
+  },
+  "moat_assessment": {
+    "network_effects": {
+      "strength": "Strong",
+      "description": "Data flywheel and mediation platform dominance",
+      "sustainability": "Reinforcing cycle of data → performance → advertisers → data"
+    },
+    "switching_costs": {
+      "strength": "Moderate-High",
+      "description": "SDK integration and performance optimization lock-in",
+      "publisher_side": "MAX mediation platform creates publisher stickiness"
+    },
+    "scale_economies": {
+      "strength": "Strong",
+      "description": "AI model training benefits from massive data scale",
+      "cost_structure": "Fixed costs spread across growing advertiser base"
+    },
+    "brand_intangibles": {
+      "strength": "Moderate",
+      "description": "Strong reputation in gaming, building in e-commerce",
+      "limitation": "Less brand recognition vs Google/Meta"
+    },
+    "confidence": "DM-BIZ-039 [Subjective] Competitive moat analysis"
+  }
+}
