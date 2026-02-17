@@ -1,0 +1,28 @@
+{
+  "quote": [
+    {
+      "symbol": "APP",
+      "name": "AppLovin Corporation",
+      "price": 390.665,
+      "marketCap": 132027195154,
+      "timestamp": 1771016403
+    }
+  ],
+  "analyze_stock": [
+    {
+      "symbol": "APP",
+      "market_cap": null,
+      "price": 390.665,
+      "pe_ratio": 38.91086,
+      "revenue": 5480716800,
+      "earnings": 3333751000
+    }
+  ],
+  "baggers": [
+    {
+      "symbol": "APP",
+      "pe_ttm": 46.85,
+      "market_cap_implied": "calculated from P/E"
+    }
+  ]
+}
