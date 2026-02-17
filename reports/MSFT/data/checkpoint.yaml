@@ -1,0 +1,87 @@
+ticker: MSFT
+company: Microsoft Corporation
+framework_version: v10.0
+paradigm: mixed_mode  # PW=4
+reverse_valuation_center: true  # 逆向估值中心架构
+
+market_cap_lock:
+  price: 401.32
+  shares_diluted: 7.460B
+  market_cap: 2995B
+  pe_ttm: 25.1
+  pe_ttm_adjusted: 26.9  # 剥离Q2 FY26 $9.97B非经营收益
+  ev_ebitda: 18.9
+  fmp_dcf: 353.34
+  lock_date: 2026-02-17
+
+phase_status:
+  phase_minus1: complete  # knowledge_context.md
+  phase_minus05: complete  # lit_recon_memo.md
+  scout: complete  # 9 files, 130K chars
+  phase_0: complete
+  phase_1: in_progress
+  phase_2: pending
+  phase_3: pending
+  phase_35: pending
+  phase_4: pending
+  phase_5: pending
+  phase_55: pending
+
+current_session: S1
+current_phase: phase_1
+agent_count: 14  # total planned
+
+cq_registry:
+  - id: CQ1
+    question: "Azure 5Y CAGR 25%+ sustainability"
+    constraint: cyclical
+    confidence: 55
+  - id: CQ2
+    question: "CapEx $120B+/yr ROIC recovery"
+    constraint: structural
+    confidence: 45
+  - id: CQ3
+    question: "OpenAI dependency (45% CRPO)"
+    constraint: institutional
+    confidence: 50
+  - id: CQ4
+    question: "Copilot S-curve penetration"
+    constraint: cyclical
+    confidence: 40
+  - id: CQ5
+    question: "Office/Windows cash cow durability"
+    constraint: structural
+    confidence: 70
+  - id: CQ6
+    question: "EU DMA + FTC regulatory impact"
+    constraint: institutional
+    confidence: 60
+  - id: CQ7
+    question: "Activision $51B goodwill impairment"
+    constraint: structural
+    confidence: 55
+  - id: CQ-B
+    question: "NVDA #1 customer GPU procurement"
+    constraint: bridge
+    confidence: 50
+
+character_targets:
+  phase_1: 56000
+  phase_2: 52000
+  phase_3: 60000
+  phase_4: 24000
+  phase_5: 55000
+  total: 275000
+
+dm_anchors_count: 56  # Phase 0
+mermaid_target: 60
+ks_target: 15
+ts_target: 8
+ci_target: 8
+
+worktree: main
+industry: tech_platform
+coefficient: 1.1
+
+last_updated: 2026-02-17
+last_phase_completed: phase_0
