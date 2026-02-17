@@ -1,0 +1,89 @@
+ticker: KLAC
+company: KLA Corporation
+industry: semiconductor
+worktree: 半导体
+framework_version: v16.0
+possibility_width: 2.2
+paradigm: traditional
+market_cap_date: "2026-02-16"
+market_cap_usd: 192400000000
+share_price: 1464.13
+
+current_phase: 0
+phases_completed:
+  - phase: -1
+    date: "2026-02-17"
+    status: complete
+    output: reports/KLAC/data/knowledge_context.md
+    notes: "5份半导体报告交叉提取, LRCX最相似"
+  - phase: -0.5
+    date: "2026-02-17"
+    status: complete
+    output: reports/KLAC/data/lit_recon_memo.md
+    notes: "6条非共识发现, 3个分歧区域"
+  - phase: 0
+    date: "2026-02-17"
+    status: complete
+    output: reports/KLAC/data/shared_context.md
+    notes: "20 DM锚点, MCP+FMP数据, APIC验证PASS"
+
+data_files:
+  - reports/KLAC/data/knowledge_context.md
+  - reports/KLAC/data/lit_recon_memo.md
+  - reports/KLAC/data/shared_context.md
+  - reports/KLAC/data/key_assumptions.md
+
+dm_anchors: 20
+dm_breakdown:
+  fact: 14
+  inference: 3
+  model: 1
+  consensus: 1
+  validation: 1
+
+key_metrics:
+  revenue_ttm: 12740000000
+  net_income_ttm: 4560000000
+  gross_margin_ttm: 0.619
+  op_margin_ttm: 0.424
+  net_margin_ttm: 0.358
+  roe_ttm: 1.007
+  roic_ttm: 0.783
+  pe_ttm: 42.5
+  pe_forward: 31.6
+  ev_ebitda: 39.5
+  fcf_yield: 0.020
+  dividend_yield: 0.0033
+  sbc_revenue_ratio: 0.022
+  beta: 1.455
+  z_score: 14.17
+
+ai_assessment:
+  direct_revenue: L1
+  strategic_impact: S1
+  label: "间接受益者"
+
+wfe_cycle_position: "P5→P6过渡(复苏到再扩张)"
+
+apic_validation: PASS
+
+peer_comparison:
+  KLAC_PE: 42.5
+  LRCX_PE: 48.3
+  AMAT_PE: 36.4
+  ASML_PE: 48.1
+
+analyst_consensus:
+  FY2026E_rev: 13390000000
+  FY2027E_rev: 16010000000
+  FY2026E_eps: 36.48
+  FY2027E_eps: 46.38
+  rev_cagr_5y: 0.108
+  eps_cagr_5y: 0.154
+
+next_phase: 0.5
+next_phase_tasks:
+  - "10维度市场注意力评估"
+  - "7+1 CQ定稿 + 约束分类"
+  - "模块-CQ路由矩阵"
+  - "CQ Lifecycle初始化"
