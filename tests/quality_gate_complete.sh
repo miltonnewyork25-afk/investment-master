@@ -245,12 +245,15 @@ HAS_AUDIT_SUMMARY=$(grep -ci '数据审计摘要\|数据审计\|DM覆盖率' "$F
 DETAILS_COUNT=$(grep -c '<details>' "$FILE" 2>/dev/null || echo 0)
 
 if [ "$HAS_AUDIT_SUMMARY" -gt 0 ]; then
-    # v10.0模式: 检查审计覆盖
-    FOLD_SOURCES=$(grep -c '📋.*数据源\|📊.*数据审计' "$FILE" 2>/dev/null || echo 0)
-    if [ "$FOLD_SOURCES" -ge 5 ] || [ "$DETAILS_COUNT" -ge 5 ]; then
-        echo -e "${GREEN}PASS CG8: [v10.0] 审计覆盖 — 审计摘要存在 + 折叠源表${FOLD_SOURCES}个${NC}"
+    # v10.0模式: 检查审计覆盖 (DM锚点 或 折叠源表)
+    DM_ANCHOR_COUNT=$({ grep -oE '\[DM-[A-Z]+-[0-9]+\]' "$FILE" 2>/dev/null | sort -u | wc -l; } || echo 0)
+    DM_ANCHOR_COUNT="${DM_ANCHOR_COUNT// /}"
+    FOLD_SOURCES=$({ grep -c '📋.*数据源' "$FILE" 2>/dev/null || echo 0; } | head -1)
+    FOLD_SOURCES="${FOLD_SOURCES// /}"
+    if [ "$DM_ANCHOR_COUNT" -ge 50 ] || [ "$FOLD_SOURCES" -ge 5 ] || [ "$DETAILS_COUNT" -ge 5 ]; then
+        echo -e "${GREEN}PASS CG8: [v10.0] 审计覆盖 — DM锚点${DM_ANCHOR_COUNT}个唯一 + 折叠源表${FOLD_SOURCES}个${NC}"
     else
-        echo -e "${RED}FAIL CG8: [v10.0] 审计覆盖不足 — 折叠源表${FOLD_SOURCES}个 < 要求5个${NC}"
+        echo -e "${RED}FAIL CG8: [v10.0] 审计覆盖不足 — DM锚点${DM_ANCHOR_COUNT}个(需≥50) 折叠源表${FOLD_SOURCES}个(需≥5)${NC}"
         ERRORS=$((ERRORS + 1))
     fi
 else
@@ -340,8 +343,10 @@ else
 fi
 
 # === CG13: 分析框架注册表 (v1.1新增) ===
-HAS_FW_REGISTRY=$(grep -ci '框架注册表\|Framework.*Registry\|分析框架注册' "$FILE" 2>/dev/null || echo 0)
-FW_CUSTOM=$(grep -ciE '原创.*×1\.5\|自研.*×1\.5\|custom.*×1\.5' "$FILE" 2>/dev/null || echo 0)
+HAS_FW_REGISTRY=$({ grep -ci '框架注册表\|Framework.*Registry\|分析框架注册' "$FILE" 2>/dev/null || echo 0; } | head -1)
+HAS_FW_REGISTRY="${HAS_FW_REGISTRY// /}"
+FW_CUSTOM=$({ grep -ciE '原创.*×1\.5\|自研.*×1\.5\|custom.*×1\.5' "$FILE" 2>/dev/null || echo 0; } | head -1)
+FW_CUSTOM="${FW_CUSTOM// /}"
 if [ "$HAS_FW_REGISTRY" -eq 0 ]; then
     echo -e "${YELLOW}WARN CG13: 未检测到分析框架注册表章节${NC}"
     WARNINGS=$((WARNINGS + 1))
