@@ -40,13 +40,13 @@ data_files:
   - reports/KLAC/data/core_questions.yaml
   - reports/KLAC/data/cq_evolution.md
 
-dm_anchors: 28
+dm_anchors: 38
 dm_breakdown:
-  fact: 20
-  inference: 4
+  fact: 27
+  inference: 6
   model: 1
   consensus: 2
-  validation: 1
+  validation: 2
 
 key_metrics:
   revenue_ttm: 12740000000
@@ -109,6 +109,10 @@ management_guidance:
   CY2026_WFE: "低$120B"
   export_control_impact_CY2026: "~$300-350M"
   china_revenue_pct: "mid-to-high 20%"
+
+supplementary_data_complete: true
+supplementary_date: "2026-02-17"
+supplementary_notes: "3 Agent补充: 子领域份额+装机量+服务业务+管理层+收购+L4交叉(5报告PASS)+历史PE"
 
 next_phase: 1
 next_phase_tasks:
