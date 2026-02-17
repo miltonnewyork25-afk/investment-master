@@ -1,0 +1,137 @@
+# KLAC Core Questions (7+1)
+# Phase 0.5定稿 | 2026-02-17
+# 约束分类: S=结构性 / C=周期性 / I=制度性
+
+framework_version: v16.0
+paradigm: traditional
+total_cq: 8  # 7+1 Bridge
+
+questions:
+  CQ1:
+    question: "检测垄断(63%)持久性 — 数据网络效应能维持多久?"
+    constraint_type: S  # 结构性
+    weight: 20
+    initial_confidence: 65
+    key_assumption: KA-1
+    analysis_path: "终端价值假设影响 → 监测突破信号(AMAT e-beam份额/SiCarrier进展)"
+    primary_agents: [A, B]
+    modules:
+      - "检测垄断深度分析(光学/e-beam/先进封装/AI检测)"
+      - "数据网络效应量化框架"
+      - "AMAT深度vs广度对称分析(Phase 3)"
+    verification: "竞争者e-beam份额变化; KLAC新产品采纳率; 装机量对比"
+
+  CQ2:
+    question: "估值天花板: P/E 42.5x + ROE 100% → 市场隐含什么增长?"
+    constraint_type: S  # 结构性
+    weight: 15
+    initial_confidence: 45
+    key_assumption: KA-2
+    analysis_path: "Reverse DCF反推隐含信念 → /belief-inversion(Phase 2)"
+    primary_agents: [C]
+    modules:
+      - "Reverse DCF + 市场隐含假设(Phase 2)"
+      - "承重墙脆弱度表(Phase 2)"
+      - "P/E历史区间 vs 同行比较"
+    verification: "PEG ratio; 历史周期P/E; Forward P/E路径"
+
+  CQ3:
+    question: "先进封装10%→50%份额 — 可持续还是低基数效应?"
+    constraint_type: SC  # 结构性+周期性混合
+    weight: 15
+    initial_confidence: 55
+    key_assumption: KA-3
+    analysis_path: "绝对金额vs增长率分离 → /consensus-deconstruction(Phase 3)"
+    primary_agents: [A, C]
+    modules:
+      - "先进封装独立分析(Phase 3)"
+      - "共识解构: '85% YoY增长'标题数字(Phase 3)"
+      - "TSMC CoWoS/Intel Foveros产能→KLAC检测需求传导"
+    verification: "季度先进封装收入占比; TAM计算; 竞争进入节奏"
+
+  CQ4:
+    question: "中国双重风险 — 直接收入减少($300-350M) + 国产替代永久丢失"
+    constraint_type: I  # 制度性
+    weight: 15
+    initial_confidence: 40
+    key_assumption: KA-4
+    analysis_path: "三情景(现状/收紧/放松) + 政策催化剂日历"
+    primary_agents: [B]
+    modules:
+      - "中国风险三情景建模(Phase 2)"
+      - "SiCarrier/东方晶源技术水平评估"
+      - "中国收入季度趋势跟踪"
+    verification: "出口管制政策更新; SiCarrier技术突破; 中国fab设备国产化率"
+
+  CQ5:
+    question: "供应约束(光学组件) — CY2026指引低估真实需求多少?"
+    constraint_type: C  # 周期性
+    weight: 10
+    initial_confidence: 50
+    key_assumption: KA-5
+    analysis_path: "供应约束=需求信号 → 瓶颈解除时间表 → 收入加速情景"
+    primary_agents: [A]
+    modules:
+      - "光学组件供应链映射"
+      - "供应约束→指引保守度分析"
+      - "瓶颈解除时间表(Zeiss/Hamamatsu产能)"
+    verification: "Q3/Q4 FY2026收入 vs 指引; backlog变化; 光学供应商产能"
+
+  CQ6:
+    question: "服务业务52Q连续增长 — 经常性收入质量?"
+    constraint_type: S  # 结构性
+    weight: 10
+    initial_confidence: 55
+    key_assumption: KA-6
+    analysis_path: "终端价值影响 → 合同类型/续约率/客户集中度 → vs LRCX CSBG"
+    primary_agents: [C]
+    modules:
+      - "服务业务独立估值(Phase 1/2)"
+      - "vs AMAT AGS经常性收入对比(/consensus-deconstruction)"
+      - "装机基地增长→服务收入传导"
+    verification: "服务/总收入占比趋势; 合同类型; 续约率(如披露); deferred revenue变化"
+
+  CQ7:
+    question: "WFE周期见顶(CY2027?)时检测比沉积/刻蚀更抗周期吗?"
+    constraint_type: C  # 周期性
+    weight: 10
+    initial_confidence: 50
+    key_assumption: KA-5
+    analysis_path: "历史周期回测 → 检测vs设备子行业周期对比 → 情景概率加权"
+    primary_agents: [B, C]
+    modules:
+      - "WFE传导模型KLAC版(Phase 2)"
+      - "历史WFE周期中KLAC vs AMAT/LRCX收入下滑幅度"
+      - "服务业务周期缓冲效应"
+    verification: "历史WFE下行期KLAC收入降幅; CY2023下行中KLAC仅-6.5% vs 行业"
+
+  CQ-B:
+    question: "KLAC先进封装检测→TSMC CoWoS良率→NVDA GPU供应链"
+    constraint_type: Bridge
+    weight: 5
+    initial_confidence: 50
+    key_assumption: null
+    analysis_path: "NVDA桥梁数据嵌入(Phase 3) → 交叉验证TSM/AMAT报告"
+    primary_agents: [C]
+    modules:
+      - "NVDA桥梁专章(Phase 3)"
+      - "传导放大系数: KLAC $1检测→TSMC $X良率→NVDA $Y GPU"
+    verification: "TSMC CoWoS良率公开数据; KLAC先进封装设备出货趋势"
+
+module_cq_routing:
+  # Module → Primary CQ mapping for Phase 1-5
+  phase1_agentA_positioning: [CQ1, CQ3, CQ5]
+  phase1_agentB_risk_mapping: [CQ4, CQ7, CQ1]
+  phase1_agentC_financials: [CQ6, CQ2]
+  phase2_agentA_sotp: [CQ2, CQ6]
+  phase2_agentB_fragility: [CQ7, CQ4, CQ5]
+  phase2_agentC_reverse_dcf: [CQ2, CQ1]
+  phase3_agentA_five_engines: [CQ5, CQ7]
+  phase3_agentB_competitive: [CQ1, CQ3]
+  phase3_agentC_ai_assessment: [CQ3, CQ-B]
+  phase4_bear_case: [CQ1, CQ4, CQ7]
+  phase4_bias_audit: [CQ2, CQ3]
+  phase4_risk_topology: [CQ4, CQ7, CQ1]
+  phase5_synthesis: [all]
+  phase5_signals: [CQ7, CQ5, CQ4]
+  phase5_valuation: [CQ2, CQ1, CQ6]

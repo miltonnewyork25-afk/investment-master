@@ -9,7 +9,7 @@ market_cap_date: "2026-02-16"
 market_cap_usd: 192400000000
 share_price: 1464.13
 
-current_phase: 0
+current_phase: 0.5
 phases_completed:
   - phase: -1
     date: "2026-02-17"
@@ -26,19 +26,26 @@ phases_completed:
     status: complete
     output: reports/KLAC/data/shared_context.md
     notes: "20 DM锚点, MCP+FMP数据, APIC验证PASS"
+  - phase: 0.5
+    date: "2026-02-17"
+    status: complete
+    output: reports/KLAC/data/core_questions.yaml
+    notes: "7+1 CQ定稿, 约束分类(3S/1SC/2C/1I/1Bridge), 加权置信度52%, 市场注意力10维, 28 DM锚点"
 
 data_files:
   - reports/KLAC/data/knowledge_context.md
   - reports/KLAC/data/lit_recon_memo.md
   - reports/KLAC/data/shared_context.md
   - reports/KLAC/data/key_assumptions.md
+  - reports/KLAC/data/core_questions.yaml
+  - reports/KLAC/data/cq_evolution.md
 
-dm_anchors: 20
+dm_anchors: 28
 dm_breakdown:
-  fact: 14
-  inference: 3
+  fact: 20
+  inference: 4
   model: 1
-  consensus: 1
+  consensus: 2
   validation: 1
 
 key_metrics:
@@ -81,9 +88,40 @@ analyst_consensus:
   rev_cagr_5y: 0.108
   eps_cagr_5y: 0.154
 
-next_phase: 0.5
+cq_weighted_confidence: 52.0
+cq_count: "7+1 Bridge"
+constraint_classification:
+  structural: [CQ1, CQ2, CQ6]
+  structural_cyclical: [CQ3]
+  cyclical: [CQ5, CQ7]
+  institutional: [CQ4]
+  bridge: [CQ-B]
+
+market_attention:
+  overall: "强正面(机构驱动)"
+  key_signal: "3升级/6周, ETF $5.4B流入, 514%看跌量突增(警示)"
+  sellside_consensus: "Buy ~50%, Hold ~46%, Sell ~3%"
+  target_price_avg: "$1,612-$1,715"
+
+management_guidance:
+  FY2026_Q3_rev: 3350000000
+  FY2026_Q3_eps: 9.08
+  CY2026_WFE: "低$120B"
+  export_control_impact_CY2026: "~$300-350M"
+  china_revenue_pct: "mid-to-high 20%"
+
+next_phase: 1
 next_phase_tasks:
-  - "10维度市场注意力评估"
-  - "7+1 CQ定稿 + 约束分类"
-  - "模块-CQ路由矩阵"
-  - "CQ Lifecycle初始化"
+  - "3 Agent并行: A(检测垄断+数据网络效应) B(ERM五层+L4验证) C(财务5Y+服务估值)"
+  - "行业背景模块(~15K)"
+  - "供应链映射(~8K)"
+  - "管理层评估(~5K)"
+  - "staging最低45K(3×15K)"
+
+agent_planning:
+  total_agents_estimated: 12-14
+  phase1_agents: 3
+  agent_prefix_allocation:
+    A: "DM-BIZ, DM-TECH"
+    B: "DM-RISK, DM-GEO"
+    C: "DM-FIN, DM-VAL"
