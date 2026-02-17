@@ -1,0 +1,465 @@
+{
+  "company": "Oracle Corporation",
+  "ticker": "ORCL",
+  "collection_date": "2026-02-17",
+  "dm_anchors": [
+    {
+      "id": "NEW-001",
+      "type": "H",
+      "source": "Oracle investor.oracle.com announcement",
+      "content": "Oracle announces $45-50B financing plan for 2026"
+    },
+    {
+      "id": "NEW-002",
+      "type": "H",
+      "source": "Multiple news sources (CNBC, FinancialContent)",
+      "content": "Oracle shares surge 9.6% on CMS modernization deal"
+    },
+    {
+      "id": "NEW-003",
+      "type": "H",
+      "source": "D.A. Davidson analyst Gil Luria",
+      "content": "Analyst upgrade from Neutral to Buy with $180 price target"
+    },
+    {
+      "id": "NEW-004",
+      "type": "H",
+      "source": "Oracle Q2 FY2026 earnings report",
+      "content": "Total revenue $16.1B (+14% YoY), cloud revenue $8B (+34% YoY)"
+    },
+    {
+      "id": "NEW-005",
+      "type": "H",
+      "source": "Oracle earnings announcement",
+      "content": "Remaining performance obligations $523B (+438% YoY)"
+    },
+    {
+      "id": "NEW-006",
+      "type": "H",
+      "source": "Oracle/US Air Force announcement",
+      "content": "$88M Air Force Cloud One contract awarded"
+    },
+    {
+      "id": "NEW-007",
+      "type": "H",
+      "source": "Oracle Database 26ai release announcement",
+      "content": "Oracle AI Database 26ai launched for Linux x86-64 platforms"
+    },
+    {
+      "id": "NEW-008",
+      "type": "H",
+      "source": "Oracle/AMD partnership announcement",
+      "content": "50,000 AMD Instinct MI450 Series GPU supercluster partnership"
+    },
+    {
+      "id": "NEW-009",
+      "type": "R",
+      "source": "Yahoo Finance earnings calendar",
+      "content": "Next earnings date March 9, 2026",
+      "chain": "Based on Oracle's quarterly reporting schedule and previous pattern",
+      "falsifiable": "Oracle could announce different date via press release"
+    },
+    {
+      "id": "NEW-010",
+      "type": "H",
+      "source": "Multiple insider trading tracking sites",
+      "content": "Insiders sold 35K shares worth $6.82M in last 30 days, zero purchases"
+    },
+    {
+      "id": "NEW-011",
+      "type": "R",
+      "source": "Dan Ives/Wedbush analysis",
+      "content": "Analyst target of $250/share for 2026",
+      "chain": "Based on AI momentum and enterprise deals acceleration",
+      "falsifiable": "AI adoption could slow or competition could intensify"
+    },
+    {
+      "id": "NEW-012",
+      "type": "R",
+      "source": "Wall Street consensus via TipRanks",
+      "content": "Average price target $312.34 indicating 60% upside",
+      "chain": "Based on 24 Buy and 10 Hold recommendations",
+      "falsifiable": "Analyst revisions could change consensus significantly"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-02-16",
+      "headline": "Oracle Shares Surge 9.6% as CMS Modernization Deal Solidifies OCI's Public Sector Dominance",
+      "summary": "Centers for Medicare and Medicaid Services selects Oracle Cloud Infrastructure for massive healthcare data systems modernization",
+      "impact": "positive",
+      "category": "contract_win",
+      "_dm": {
+        "anchor_id": "NEW-002",
+        "type": "H",
+        "source": "FinancialContent market report"
+      }
+    },
+    {
+      "date": "2026-02-12",
+      "headline": "U.S. Air Force Awards Oracle $88M Cloud One Contract",
+      "summary": "Department of Air Force selects Oracle Cloud Infrastructure for cloud modernization program",
+      "impact": "positive",
+      "category": "contract_win",
+      "_dm": {
+        "anchor_id": "NEW-006",
+        "type": "H",
+        "source": "Oracle official announcement"
+      }
+    },
+    {
+      "date": "2026-02-03",
+      "headline": "Oracle Reimagines Banking for the AI Era with New Agentic Platform",
+      "summary": "Oracle Financial Services launches AI-infused banking applications and pre-built AI agents",
+      "impact": "positive",
+      "category": "product_launch",
+      "_dm": {
+        "anchor_id": "NEW-013",
+        "type": "H",
+        "source": "Oracle press release"
+      }
+    },
+    {
+      "date": "2026-02-01",
+      "headline": "Oracle Announces $45-50 Billion Financing Plan for AI Infrastructure",
+      "summary": "Company plans debt and equity financing to fund cloud infrastructure expansion and AI buildout",
+      "impact": "positive",
+      "category": "financing",
+      "_dm": {
+        "anchor_id": "NEW-001",
+        "type": "H",
+        "source": "Oracle investor relations"
+      }
+    },
+    {
+      "date": "2026-01-29",
+      "headline": "Oracle Life Sciences AI Data Platform Launch",
+      "summary": "New generative AI platform for pharmaceutical and medical device companies to accelerate R&D and clinical trials",
+      "impact": "positive",
+      "category": "product_launch",
+      "_dm": {
+        "anchor_id": "NEW-014",
+        "type": "H",
+        "source": "Oracle announcement"
+      }
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-03-09",
+      "event": "Q3 FY2026 Earnings Release",
+      "description": "Third quarter fiscal 2026 financial results announcement",
+      "importance": "high",
+      "category": "earnings",
+      "_dm": {
+        "anchor_id": "NEW-009",
+        "type": "R",
+        "source": "Yahoo Finance earnings calendar",
+        "chain": "Based on quarterly reporting schedule",
+        "falsifiable": "Company could change date"
+      }
+    },
+    {
+      "date": "2026 Q2-Q3",
+      "event": "AMD GPU Supercluster Deployment",
+      "description": "Initial deployment of 50,000 AMD Instinct MI450 GPU supercluster begins",
+      "importance": "high",
+      "category": "infrastructure",
+      "_dm": {
+        "anchor_id": "NEW-008",
+        "type": "H",
+        "source": "Oracle/AMD partnership announcement"
+      }
+    },
+    {
+      "date": "2026",
+      "event": "Oracle AI World Tour",
+      "description": "Global event series showcasing AI breakthroughs and technology",
+      "importance": "medium",
+      "category": "event",
+      "_dm": {
+        "anchor_id": "NEW-015",
+        "type": "H",
+        "source": "Oracle AI World website"
+      }
+    },
+    {
+      "date": "2026-2027",
+      "event": "OpenAI Contract Ramp",
+      "description": "Multi-year $300B OpenAI infrastructure contract begins execution in 2027",
+      "importance": "high",
+      "category": "contract",
+      "_dm": {
+        "anchor_id": "NEW-016",
+        "type": "R",
+        "source": "Multiple analyst reports",
+        "chain": "Based on announced partnership and infrastructure buildout timeline",
+        "falsifiable": "Contract terms could be modified or delayed"
+      }
+    },
+    {
+      "date": "Q4 2026 - Q1 2027",
+      "event": "Data Center Capacity Doubles",
+      "description": "Oracle completing doubling of data center footprint with Abilene and other facilities",
+      "importance": "high",
+      "category": "infrastructure",
+      "_dm": {
+        "anchor_id": "NEW-017",
+        "type": "H",
+        "source": "UBS analyst report via Yahoo Finance"
+      }
+    }
+  ],
+  "analyst_sentiment": [
+    {
+      "date": "2026-02-16",
+      "firm": "D.A. Davidson",
+      "analyst": "Gil Luria",
+      "rating": "Buy",
+      "price_target": 180,
+      "previous_rating": "Neutral",
+      "key_points": [
+        "Growing confidence in AI partnerships with OpenAI",
+        "Untapped value in TikTok USA stake",
+        "Cloud infrastructure momentum"
+      ],
+      "_dm": {
+        "anchor_id": "NEW-003",
+        "type": "H",
+        "source": "D.A. Davidson research report"
+      }
+    },
+    {
+      "date": "2026-02",
+      "firm": "Wedbush Securities",
+      "analyst": "Dan Ives",
+      "rating": "Buy",
+      "price_target": 250,
+      "key_points": [
+        "Accelerating AI momentum",
+        "Transformative enterprise deals",
+        "Potential surprise winner of 2026"
+      ],
+      "_dm": {
+        "anchor_id": "NEW-011",
+        "type": "R",
+        "source": "Yahoo Finance analyst report",
+        "chain": "Based on AI adoption trends and enterprise digital transformation",
+        "falsifiable": "AI adoption could slow or face competitive pressure"
+      }
+    }
+  ],
+  "financial_highlights": [
+    {
+      "metric": "Q2 FY2026 Total Revenue",
+      "value": "$16.1B",
+      "change": "+14% YoY",
+      "_dm": {
+        "anchor_id": "NEW-004",
+        "type": "H",
+        "source": "Oracle Q2 FY2026 earnings report"
+      }
+    },
+    {
+      "metric": "Q2 FY2026 Cloud Revenue",
+      "value": "$8.0B",
+      "change": "+34% YoY",
+      "_dm": {
+        "anchor_id": "NEW-004",
+        "type": "H",
+        "source": "Oracle Q2 FY2026 earnings report"
+      }
+    },
+    {
+      "metric": "Remaining Performance Obligations",
+      "value": "$523B",
+      "change": "+438% YoY",
+      "_dm": {
+        "anchor_id": "NEW-005",
+        "type": "H",
+        "source": "Oracle earnings announcement"
+      }
+    },
+    {
+      "metric": "Stock Performance (1 week)",
+      "value": "+12%",
+      "change": "Weekly gain",
+      "_dm": {
+        "anchor_id": "NEW-018",
+        "type": "H",
+        "source": "QuiverQuant stock data"
+      }
+    },
+    {
+      "metric": "YTD Performance",
+      "value": "-27%",
+      "change": "Year-to-date decline",
+      "_dm": {
+        "anchor_id": "NEW-019",
+        "type": "H",
+        "source": "Multiple financial news sources"
+      }
+    }
+  ],
+  "insider_activity": [
+    {
+      "period": "Last 30 days",
+      "net_activity": "Net Selling",
+      "total_shares": "35,000",
+      "total_value": "$6.82M",
+      "purchases": 0,
+      "sales": "Multiple",
+      "_dm": {
+        "anchor_id": "NEW-010",
+        "type": "H",
+        "source": "Multiple insider trading tracking platforms"
+      }
+    },
+    {
+      "period": "Last 90 days",
+      "net_activity": "Net Selling",
+      "total_value": "$5.3M",
+      "notable_transactions": [
+        "EVP Douglas A. Kehring - Sales",
+        "President Mark Hura - Sales",
+        "CEO Clayton M. Magouyrk - Sales",
+        "Director Naomi O Seligman - 2,220 shares at $196.61 (Dec 23, 2025)"
+      ],
+      "_dm": {
+        "anchor_id": "NEW-010",
+        "type": "H",
+        "source": "SEC Form 4 filings and insider tracking sites"
+      }
+    }
+  ],
+  "regulatory_filings": [
+    {
+      "filing_type": "10-K",
+      "date": "2025-06-18",
+      "period_ending": "2025-05-31",
+      "description": "Annual Report for fiscal year 2025",
+      "_dm": {
+        "anchor_id": "NEW-020",
+        "type": "H",
+        "source": "SEC EDGAR database"
+      }
+    },
+    {
+      "filing_type": "10-Q",
+      "date": "2025-09",
+      "period_ending": "2025-08-31",
+      "description": "Quarterly report for Q1 FY2026",
+      "_dm": {
+        "anchor_id": "NEW-021",
+        "type": "H",
+        "source": "SEC EDGAR database"
+      }
+    }
+  ],
+  "key_partnerships_2026": [
+    {
+      "partner": "OpenAI",
+      "type": "Infrastructure Partnership",
+      "description": "Multi-year cloud infrastructure partnership with data centers in Texas, New Mexico, Wisconsin, and Michigan",
+      "value": "~$300B over 5 years starting 2027",
+      "status": "Active buildout phase",
+      "_dm": {
+        "anchor_id": "NEW-016",
+        "type": "R",
+        "source": "Multiple analyst and news reports",
+        "chain": "Inferred from infrastructure announcements and analyst coverage",
+        "falsifiable": "Contract details could be different than reported estimates"
+      }
+    },
+    {
+      "partner": "AMD",
+      "type": "Hardware Partnership",
+      "description": "First hyperscaler to offer AI supercluster with 50,000 AMD Instinct MI450 Series GPUs",
+      "timeline": "Q3 2026 initial deployment, expanding 2027+",
+      "status": "Announced",
+      "_dm": {
+        "anchor_id": "NEW-008",
+        "type": "H",
+        "source": "Oracle/AMD official partnership announcement"
+      }
+    },
+    {
+      "partner": "UK Ministry of Defence",
+      "type": "Government Cloud",
+      "description": "New cloud agreement enabling MoD legacy system migration to OCI",
+      "announcement_date": "2026-01-14",
+      "status": "Active",
+      "_dm": {
+        "anchor_id": "NEW-022",
+        "type": "H",
+        "source": "Oracle UK announcement"
+      }
+    },
+    {
+      "partner": "U.S. Air Force",
+      "type": "Government Cloud",
+      "description": "Cloud One program providing OCI services across multiple classification levels",
+      "value": "$88M",
+      "announcement_date": "2026-02-12",
+      "status": "Awarded",
+      "_dm": {
+        "anchor_id": "NEW-006",
+        "type": "H",
+        "source": "Oracle and Air Force official announcement"
+      }
+    }
+  ],
+  "ai_initiatives_2026": [
+    {
+      "product": "Oracle AI Database 26ai",
+      "launch_date": "January 2026",
+      "description": "Enterprise Edition for Linux x86-64 with AI Vector Search, JSON Relational Duality, Apache Iceberg support",
+      "key_features": ["AI Vector Search", "AI agent deployment tools", "Private data operation"],
+      "_dm": {
+        "anchor_id": "NEW-007",
+        "type": "H",
+        "source": "Oracle database blog announcement"
+      }
+    },
+    {
+      "product": "Oracle Financial Services AI Platform",
+      "launch_date": "2026-02-03",
+      "description": "AI-infused banking applications with pre-built AI agents for retail and corporate banking",
+      "scope": "Hundreds of banking agents planned within 12 months",
+      "_dm": {
+        "anchor_id": "NEW-013",
+        "type": "H",
+        "source": "Oracle press release"
+      }
+    },
+    {
+      "product": "Oracle Life Sciences AI Data Platform",
+      "launch_date": "2026-01-29",
+      "description": "Generative AI platform for pharmaceutical and medical device R&D, clinical trials, and commercialization",
+      "target_industries": ["Pharmaceutical", "Medical Device", "Research", "Life Sciences"],
+      "_dm": {
+        "anchor_id": "NEW-014",
+        "type": "H",
+        "source": "Oracle announcement"
+      }
+    }
+  ],
+  "market_consensus": {
+    "rating_distribution": {
+      "buy": 24,
+      "hold": 10,
+      "sell": 0,
+      "consensus": "Moderate Buy"
+    },
+    "average_price_target": "$312.34",
+    "implied_upside": "~60%",
+    "current_price_context": "Down 40% from September 2025 peak, down 27% YTD 2026",
+    "_dm": {
+      "anchor_id": "NEW-012",
+      "type": "R",
+      "source": "TipRanks analyst consensus data",
+      "chain": "Aggregated from Wall Street analyst recommendations",
+      "falsifiable": "Analyst revisions could significantly change consensus"
+    }
+  }
+}
