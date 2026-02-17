@@ -8,7 +8,7 @@
 #   例: ./tests/quality_gate_complete.sh reports/RDDT/RDDT_Complete_v1.0_2026-02-14.md 0 6
 #   注: benchmark_chars=0 时使用按可能性宽度的动态基准
 #
-# 门控项 (14项, 基于8报告滚动最佳值):
+# 门控项 (15项, 基于8报告滚动最佳值):
 #   CG1. Complete总字符 ≥ 基准80% (动态: 按可能性宽度分层)
 #   CG2. Phase 5字符 ≥ 基准80% (动态: 按可能性宽度分层)
 #   CG3. 评分维度 ≥ 8个
@@ -23,6 +23,7 @@
 #   CG12. 非共识洞察注册表 ≥ 5个CI
 #   CG13. 分析框架注册表存在
 #   CG14. 方法离散度声明 (WARN级, v2.0新增)
+#   CG19. 数据一致性验证 (FAIL级, v16.0新增)
 #
 # 退出码: 0=全部通过, 1=有失败项
 # 更新: v3.0 (2026-02-14) — CG1/CG2动态基准(按可能性宽度分层)+Phase 5基准动态化
@@ -354,6 +355,40 @@ else
         echo -e "${GREEN}PASS CG14: 方法离散度 ${DISPERSION_VAL}x (WARN级, 提及${HAS_DISPERSION}次)${NC}"
     else
         echo -e "${GREEN}PASS CG14: 方法离散度已声明 (提及${HAS_DISPERSION}次)${NC}"
+    fi
+fi
+
+# === CG19: 数据一致性验证 (v16.0新增, FAIL级) ===
+# 检查是否存在数据一致性验证报告，以及是否通过验证
+TICKER=$(basename "$FILE" | sed 's/_Complete.*//g')
+DATA_CONSISTENCY_REPORT="reports/$TICKER/data/data_consistency_report.md"
+
+if [ -f "$DATA_CONSISTENCY_REPORT" ]; then
+    # 检查验证报告的结果
+    CRITICAL_ISSUES=$(grep -c "🔴.*CRITICAL\|CRITICAL.*🔴" "$DATA_CONSISTENCY_REPORT" 2>/dev/null || echo 0)
+    WARNING_ISSUES=$(grep -c "🟡.*WARNING\|WARNING.*🟡" "$DATA_CONSISTENCY_REPORT" 2>/dev/null || echo 0)
+
+    if [ "$CRITICAL_ISSUES" -gt 0 ]; then
+        echo -e "${RED}FAIL CG19: 数据一致性验证失败 — 发现${CRITICAL_ISSUES}个严重问题${NC}"
+        echo "         📄 详见: $DATA_CONSISTENCY_REPORT"
+        ERRORS=$((ERRORS + 1))
+    elif [ "$WARNING_ISSUES" -gt 0 ]; then
+        echo -e "${YELLOW}WARN CG19: 数据一致性验证通过但有${WARNING_ISSUES}个警告${NC}"
+        echo "         📄 详见: $DATA_CONSISTENCY_REPORT"
+        WARNINGS=$((WARNINGS + 1))
+    else
+        echo -e "${GREEN}PASS CG19: 数据一致性验证完全通过${NC}"
+    fi
+else
+    # 对于2026-02-17之前的报告，给出WARNING而非FAIL
+    REPORT_DATE=$(grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' "$FILE" | head -1 || echo "")
+    if [[ -n "$REPORT_DATE" && "$REPORT_DATE" > "2026-02-17" ]]; then
+        echo -e "${RED}FAIL CG19: 缺少数据一致性验证报告 (v16.0后必需)${NC}"
+        echo "         执行: bash .claude/skills/data-consistency-validator/run_validator.sh $TICKER"
+        ERRORS=$((ERRORS + 1))
+    else
+        echo -e "${YELLOW}WARN CG19: 历史报告，数据一致性验证不适用${NC}"
+        WARNINGS=$((WARNINGS + 1))
     fi
 fi
 
