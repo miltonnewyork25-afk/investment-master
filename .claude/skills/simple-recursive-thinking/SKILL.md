@@ -1,7 +1,7 @@
-# Simple Recursive Thinking
+# Simple Recursive Thinking - Boundary-Safe Edition
 
 ## Description
-极简版递归思考触发器。将复杂的递归理论简化为3个简单问题，让用户一键触发，零认知负荷体验递归思考的价值。重点是体验而非技术。
+⚠️ **边界安全版极简递归触发器** - 将复杂的递归理论简化为3个简单问题，同时确保每次递归都严格遵守CLAUDE.md核心原则。让用户一键触发，零认知负荷体验安全的递归思考价值。每个递归循环都内置边界检查，防止原则漂移。
 
 ## When to Use
 - 用户需要递归思考但不想要复杂操作时
@@ -18,22 +18,25 @@
 
 ## The 3 Universal Recursive Questions
 
-### Question 1: 深度挖掘
+### Question 1: 深度挖掘 (边界保护版)
 ```
 "💡 要不要让这个分析更深入一点？"
-→ 如果用户同意：自动质疑当前分析的深度和完整性
+🚨 内置边界保护：确保深入分析时不会违反投资建议边界
+→ 如果用户同意：在CLAUDE.md约束下自动质疑当前分析的深度和完整性
 ```
 
-### Question 2: 方法质疑
+### Question 2: 方法质疑 (边界保护版)
 ```
 "🤔 想质疑一下刚才选择的方法吗？"
-→ 如果用户同意：自动评估方法选择并提出替代方案
+🚨 内置边界保护：确保方法讨论不会转向禁用的评级体系
+→ 如果用户同意：在严格合规框架下自动评估方法选择并提出替代方案
 ```
 
-### Question 3: 思考反思
+### Question 3: 思考反思 (边界保护版)
 ```
 "✨ 要不要反思一下刚才的思考过程？"
-→ 如果用户同意：自动审视思考逻辑并寻找改进点
+🚨 内置边界保护：确保反思过程不会偏离核心原则
+→ 如果用户同意：在边界监控下自动审视思考逻辑并寻找改进点
 ```
 
 ## Implementation
@@ -41,24 +44,48 @@
 ### 核心逻辑
 ```python
 def simple_recursive_thinking():
-    # Step 1: 智能选择最合适的问题
-    best_question = select_best_question_for_context()
+    # 🚨 STEP 0: 边界预检查
+    if boundary_at_risk():
+        return activate_boundary_protection_mode()
 
-    # Step 2: 向用户提出简单选择
-    user_response = ask_user_simple_choice(best_question)
+    # Step 1: 智能选择最合适的问题 (边界约束)
+    best_question = select_best_boundary_safe_question_for_context()
 
-    # Step 3: 如果用户同意，执行对应的递归思考
+    # Step 2: 向用户提出简单选择 (边界提示)
+    user_response = ask_user_boundary_safe_choice(best_question)
+
+    # Step 3: 如果用户同意，执行边界保护的递归思考
     if user_agrees(user_response):
-        recursive_result = execute_matching_recursion(best_question)
-        show_immediate_improvement(recursive_result)
-        track_success()
+        # 🚨 边界锚定前置
+        reinforce_claude_md_boundaries()
+
+        with boundary_monitor():
+            recursive_result = execute_boundary_safe_recursion(best_question)
+
+        # 🚨 后验边界验证
+        if validate_boundary_compliance(recursive_result):
+            show_immediate_improvement(recursive_result)
+            track_success()
+        else:
+            return apply_boundary_correction(recursive_result)
     else:
         continue_without_recursion()
         suggest_later_opportunity()
 
-def select_best_question_for_context():
+def boundary_at_risk():
+    """检查当前是否有边界违反风险"""
+    recent_content = get_recent_content()
+    forbidden_patterns = [
+        r'投资评级.*买入|卖出|推荐',
+        r'目标价.*\$\d+',
+        r'建议.*买入|卖出'
+    ]
+    return any(re.search(pattern, recent_content, re.IGNORECASE)
+               for pattern in forbidden_patterns)
+
+def select_best_boundary_safe_question_for_context():
     """
-    根据上下文智能选择最合适的递归问题
+    根据上下文智能选择最合适且边界安全的递归问题
     """
     if analysis_seems_superficial():
         return "深度挖掘"
@@ -68,6 +95,19 @@ def select_best_question_for_context():
         return "思考反思"
     else:
         return random.choice(["深度挖掘", "方法质疑", "思考反思"])
+
+def activate_boundary_protection_mode():
+    """激活边界保护模式"""
+    return {
+        'status': 'BOUNDARY_PROTECTION_ACTIVATED',
+        'message': '🚨 检测到原则漂移风险，已停止递归思考',
+        'action': '请先确保当前输出符合CLAUDE.md原则',
+        'safe_alternatives': [
+            '检查最近输出是否包含禁用评级',
+            '确认没有投资建议用语',
+            '重新学习边界约束'
+        ]
+    }
 ```
 
 ### 用户交互流程
