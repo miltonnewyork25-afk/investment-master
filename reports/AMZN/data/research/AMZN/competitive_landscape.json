@@ -1,0 +1,149 @@
+{
+  "ticker": "AMZN",
+  "fetched_at": "2026-02-18",
+  "market_position": {
+    "rank": 1,
+    "market_share": 31.0,
+    "trend": "gradual erosion but maintaining leadership",
+    "_dm_type": "H"
+  },
+  "competitors": [
+    {
+      "name": "Microsoft Azure",
+      "ticker": "MSFT",
+      "market_share": 25.0,
+      "key_advantage": "Deep integration with Microsoft 365 and enterprise ecosystem, OpenAI partnership",
+      "_dm_type": "H"
+    },
+    {
+      "name": "Google Cloud Platform",
+      "ticker": "GOOGL",
+      "market_share": 11.0,
+      "key_advantage": "AI/ML capabilities with Gemini and Vertex AI, data analytics strength",
+      "_dm_type": "H"
+    },
+    {
+      "name": "Meta Platforms",
+      "ticker": "META",
+      "market_share": null,
+      "key_advantage": "Social commerce and advertising technology",
+      "_dm_type": "S"
+    },
+    {
+      "name": "Apple",
+      "ticker": "AAPL",
+      "market_share": null,
+      "key_advantage": "Ecosystem integration and consumer hardware dominance",
+      "_dm_type": "S"
+    }
+  ],
+  "moat_indicators": [
+    {
+      "factor": "Scale advantage",
+      "strength": "High",
+      "description": "1,000+ global facilities, 175 fulfillment centers, massive logistics network"
+    },
+    {
+      "factor": "Network effects",
+      "strength": "High",
+      "description": "250M Prime members, millions of sellers, reinforcing marketplace dynamics"
+    },
+    {
+      "factor": "Data advantage",
+      "strength": "High",
+      "description": "Vast customer behavior data across e-commerce, cloud, and advertising"
+    },
+    {
+      "factor": "Capital allocation",
+      "strength": "High",
+      "description": "$200B AI capex commitment in 2026, aggressive reinvestment strategy"
+    },
+    {
+      "factor": "Switching costs",
+      "strength": "Medium-High",
+      "description": "AWS enterprise customers, Prime ecosystem lock-in"
+    }
+  ],
+  "competitive_dynamics": {
+    "cloud_infrastructure": {
+      "aws_share": 31.0,
+      "azure_share": 25.0,
+      "gcp_share": 11.0,
+      "growth_trend": "AWS leading but Azure/GCP growing faster",
+      "_dm_type": "H"
+    },
+    "e_commerce": {
+      "us_market_share": 37.6,
+      "competitive_pressure": "Moderate",
+      "key_differentiator": "Prime ecosystem and logistics capability",
+      "_dm_type": "H"
+    },
+    "advertising": {
+      "projected_2026_revenue": 94000,
+      "growth_rate": 22.0,
+      "competitive_position": "Third largest digital ad platform",
+      "_dm_type": "H"
+    }
+  },
+  "ai_investment_race": {
+    "amazon_capex_2026": 200000,
+    "microsoft_capex_2026": 145000,
+    "meta_capex_2026": 125000,
+    "alphabet_capex_2026": 180000,
+    "total_big_tech_spend": 650000,
+    "_dm_type": "H"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-BIZ-010",
+      "value": "AWS云市场份额31%，仍为全球领导者",
+      "type": "H",
+      "source": "云市场研究报告",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-BIZ-011",
+      "value": "Microsoft Azure市场份额25%，增长速度超过AWS",
+      "type": "H",
+      "source": "云计算市场分析",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-BIZ-012",
+      "value": "美国电商市场份额37.6%，领先地位稳固",
+      "type": "H",
+      "source": "电商市场统计",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-BIZ-013",
+      "value": "2026年AI资本支出$2,000亿，大科技公司总投入$6,500亿",
+      "type": "H",
+      "source": "科技投资分析",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-BIZ-014",
+      "value": "广告业务预计2026年收入$940亿，成为第三大数字广告平台",
+      "type": "H",
+      "source": "数字广告市场研究",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-BIZ-015",
+      "value": "全球物流网络超1,000个设施，包含175个履约中心",
+      "type": "H",
+      "source": "Amazon供应链分析",
+      "date": "2026-02-18"
+    }
+  ],
+  "sources": [
+    "AWS vs Azure vs Google Cloud in 2026: Cloud Comparison",
+    "Cloud Market Share Trends to Watch in 2026 | emma Blog",
+    "94 Amazon Statistics & Market Share 2026 [Worldwide Data]",
+    "Big Tech's AI spending spree: Amazon, Microsoft, Meta, and Google's 2026 investments revealed",
+    "Cloud Computing Market Share 2026: AWS, Azure, and Google Cloud Battle for Dominance",
+    "The big three grab two-thirds of $107B cloud market in Q3",
+    "Amazon Supply Chain Strategy: An In-Depth Analysis"
+  ]
+}

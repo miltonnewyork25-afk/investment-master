@@ -1,0 +1,184 @@
+{
+  "ticker": "AMZN",
+  "fetched_at": "2026-02-18",
+  "institutional_summary": {
+    "total_institutions": 5573,
+    "total_shares_held": 850338457,
+    "ownership_pct": 63.06,
+    "qoq_change_institutions": "increase",
+    "qoq_change_shares": 14200000,
+    "_dm_type": "H"
+  },
+  "top_holders": [
+    {
+      "name": "Vanguard Group Inc",
+      "shares": 845945132,
+      "value_usd": 201400000000,
+      "change_pct": null,
+      "new_position": false,
+      "_dm_type": "H"
+    },
+    {
+      "name": "BlackRock Inc",
+      "shares": 444677467,
+      "value_usd": 105900000000,
+      "change_pct": null,
+      "new_position": false,
+      "_dm_type": "H"
+    },
+    {
+      "name": "State Street Corp",
+      "shares": 381681441,
+      "value_usd": 90900000000,
+      "change_pct": null,
+      "new_position": false,
+      "_dm_type": "H"
+    },
+    {
+      "name": "Tiger Global Management",
+      "shares": 10000000,
+      "value_usd": 2300000000,
+      "change_pct": -9.35,
+      "new_position": false,
+      "_dm_type": "H"
+    },
+    {
+      "name": "Coatue Management",
+      "shares": 10160000,
+      "value_usd": 2230000000,
+      "change_pct": -5.0,
+      "new_position": false,
+      "_dm_type": "H"
+    }
+  ],
+  "notable_moves": [
+    {
+      "investor": "Berkshire Hathaway",
+      "action": "major reduction",
+      "shares": -75000000,
+      "quarter": "Q4 2025",
+      "thesis": "portfolio rebalancing pre-Buffett retirement, focus on new positions like New York Times",
+      "_dm_type": "R"
+    },
+    {
+      "investor": "Tiger Global Management",
+      "action": "trimmed",
+      "shares": -700000,
+      "quarter": "Q4 2025",
+      "thesis": "profit-taking after 62% increase in Q2 2025, maintaining significant position at 7.23% of portfolio",
+      "_dm_type": "R"
+    },
+    {
+      "investor": "Coatue Management",
+      "action": "reduced",
+      "shares": -500000,
+      "quarter": "Q3 2025",
+      "thesis": "profit-taking and rebalancing, maintaining as #3 position behind CoreWeave and Meta",
+      "_dm_type": "R"
+    },
+    {
+      "investor": "Pershing Square (Bill Ackman)",
+      "action": "increased",
+      "shares": 1000000,
+      "quarter": "Q4 2025",
+      "thesis": "bullish on cloud computing and AI infrastructure growth",
+      "_dm_type": "R"
+    },
+    {
+      "investor": "Saxon Interests Inc",
+      "action": "increased",
+      "shares": 4000,
+      "quarter": "Q3 2025",
+      "thesis": "15.3% stake increase, now owns 30,522 shares",
+      "_dm_type": "R"
+    }
+  ],
+  "insider_activity": {
+    "last_90_days": {
+      "total_transactions": 37,
+      "total_sell_value": 56441107,
+      "total_buy_value": 0,
+      "net_sentiment": "negative"
+    },
+    "last_30_days": {
+      "shares_sold": 6660,
+      "value_sold": 5420000,
+      "shares_bought": 0,
+      "value_bought": 0
+    },
+    "notable_executives": [
+      "David Zapolsky (SVP)",
+      "Matthew S. Garman (CEO AWS)",
+      "Douglas J. Herrington (CEO Worldwide Amazon Stores)"
+    ]
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-SMT-001",
+      "value": "机构持股比例 63.06%",
+      "type": "H",
+      "source": "13F filings MarketBeat",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-SMT-002",
+      "value": "5573家机构持有AMZN",
+      "type": "H",
+      "source": "HedgeFollow institutional data",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-SMT-003",
+      "value": "先锋集团持股8.46亿股($2,014亿)",
+      "type": "H",
+      "source": "WallStreetZen ownership data",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-SMT-004",
+      "value": "巴菲特Q4大幅减持75%",
+      "type": "R",
+      "source": "Bloomberg/Motley Fool reports",
+      "date": "2026-02-18",
+      "chain": "退休前组合调整→减仓科技股→增持纽时",
+      "falsifiable": "2026年伯克希尔继续减持至零"
+    },
+    {
+      "id": "DM-SMT-005",
+      "value": "老虎环球Q4减持9.35%至1000万股",
+      "type": "R",
+      "source": "Seeking Alpha Q4 filings",
+      "date": "2026-02-18",
+      "chain": "Q2大增62%→Q4适度减仓→获利了结",
+      "falsifiable": "Q1 2026继续大幅减持"
+    },
+    {
+      "id": "DM-SMT-006",
+      "value": "内部人90天净卖出$5644万",
+      "type": "R",
+      "source": "MarketBeat insider trading",
+      "date": "2026-02-18",
+      "chain": "37笔交易全部卖出→管理层情绪谨慎",
+      "falsifiable": "Q1出现内部人买入"
+    },
+    {
+      "id": "DM-SMT-007",
+      "value": "143家对冲基金Q4净增持1420万股",
+      "type": "R",
+      "source": "Hedge fund tracking data",
+      "date": "2026-02-18",
+      "chain": "聪明钱净流入→长期看好前景",
+      "falsifiable": "Q1对冲基金转为净卖出"
+    }
+  ],
+  "sources": [
+    "https://hedgefollow.com/stocks/AMZN",
+    "https://www.marketbeat.com/stocks/NASDAQ/AMZN/institutional-ownership/",
+    "https://www.fool.com/investing/2026/02/17/warren-buffett-sell-amzn-aapl-bac-added-nyt-retire/",
+    "https://www.bloomberg.com/news/articles/2026-02-17/buffett-slashes-amazon-stake-makes-new-bet-on-new-york-times",
+    "https://www.wallstreetzen.com/stocks/us/nasdaq/amzn/ownership",
+    "https://www.marketbeat.com/stocks/NASDAQ/AMZN/insider-trades/",
+    "https://seekingalpha.com/news/4552805-tiger-global-takes-new-stakes-in-wlth-trims-nvda-amzn-and-msft-among-q4-moves",
+    "https://seekingalpha.com/article/4856081-tracking-philippe-laffonts-41b-coatue-management-portfolio-q3-2025-update"
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "ticker": "AMZN",
+  "fetched_at": "2026-02-18",
+  "key_news": [
+    {
+      "date": "2026-02-05",
+      "headline": "Amazon Reports Strong Q4 2025 Results with $200B 2026 CapEx Plan",
+      "summary": "Net sales of $213.4B in Q4 (up 14% YoY) and $716.9B full-year (up 12%). AWS grew 24% to $35.6B - fastest growth in 13 quarters. Company plans $200B capital expenditure investment for 2026 focused on AI, chips, robotics, and low Earth orbit satellites.",
+      "sentiment": "Mixed",
+      "source": "Amazon IR",
+      "_dm_type": "H"
+    },
+    {
+      "date": "2026-02-16",
+      "headline": "AWS Launches New Graviton5 CPUs and M8azn EC2 Instances",
+      "summary": "AWS introduced Graviton5, company's most powerful CPU, alongside new Amazon EC2 M8azn instances. AWS now offers over 1,160 Amazon EC2 instance types.",
+      "sentiment": "Positive",
+      "source": "AWS Blog",
+      "_dm_type": "H"
+    },
+    {
+      "date": "2026-02-12",
+      "headline": "Amazon Deploys 32 Leo Satellites - Largest Payload Yet",
+      "summary": "Arianespace successfully deployed 32 Amazon Leo satellites into orbit, the largest payload to date, bringing total constellation to over 200 satellites.",
+      "sentiment": "Positive",
+      "source": "About Amazon",
+      "_dm_type": "H"
+    },
+    {
+      "date": "2026-02-11",
+      "headline": "Stock Analysts See Amazon as Buying Opportunity Despite Recent Decline",
+      "summary": "Despite recent stock decline, analysts maintain 'Strong Buy' consensus rating with average price target of $279.59, forecasting 40.65% upside. Stock has declined due to massive CapEx plans.",
+      "sentiment": "Positive",
+      "source": "Multiple Analyst Reports",
+      "_dm_type": "R"
+    },
+    {
+      "date": "2026-02-10",
+      "headline": "McKinsey and AWS Launch Amazon McKinsey Group Partnership",
+      "summary": "Strategic collaboration designed to help organizations achieve enterprise-scale transformations with speed and impact.",
+      "sentiment": "Positive",
+      "source": "McKinsey",
+      "_dm_type": "H"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-04-30",
+      "event": "Q1 2026 Earnings Release",
+      "expected_impact": "High",
+      "_dm_type": "H"
+    },
+    {
+      "date": "2026-09-22",
+      "event": "Amazon Accelerate Conference (Seattle)",
+      "expected_impact": "Medium",
+      "_dm_type": "H"
+    },
+    {
+      "date": "2026-10-13",
+      "event": "FTC v. Amazon Antitrust Trial Begins",
+      "expected_impact": "High",
+      "_dm_type": "H"
+    },
+    {
+      "date": "2026 Mid-Year",
+      "event": "Prime Day (Annual)",
+      "expected_impact": "High",
+      "_dm_type": "H"
+    },
+    {
+      "date": "2026 Q4",
+      "event": "Prime Early Access (Holiday Season)",
+      "expected_impact": "High",
+      "_dm_type": "H"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "period": "Last 90 days",
+        "total_transactions": 37,
+        "total_sell_value": "$56,441,107.38",
+        "insider_buys": 0,
+        "net_selling_insiders": 9,
+        "_dm_type": "H"
+      }
+    ],
+    "net_insider_sentiment": "Bearish - Only selling activity, no reported buys",
+    "_dm_type": "R"
+  },
+  "regulatory_developments": [
+    {
+      "date": "2026-10-13",
+      "event": "FTC Antitrust Trial Scheduled",
+      "details": "FTC alleges Amazon uses 'Buy Box' algorithm to punish sellers with lower prices elsewhere. Could lead to court-ordered marketplace restructuring.",
+      "potential_impact": "High regulatory risk",
+      "_dm_type": "H"
+    },
+    {
+      "date": "2026-02",
+      "event": "German Regulatory Pressure on AI Spend",
+      "details": "Growing regulatory scrutiny in Europe regarding Amazon's massive AI infrastructure investments.",
+      "potential_impact": "Medium compliance risk",
+      "_dm_type": "H"
+    }
+  ],
+  "business_developments": [
+    {
+      "item": "AWS Market Leadership",
+      "details": "Maintains 28% cloud market share vs Microsoft 21% and Google 14%. AWS backlog of $200B in customer commitments.",
+      "_dm_type": "H"
+    },
+    {
+      "item": "AI Shopping Assistant Success",
+      "details": "Rufus AI shopping assistant generated nearly $12B in incremental annualized sales in 2025.",
+      "_dm_type": "H"
+    },
+    {
+      "item": "Delivery Speed Improvements",
+      "details": "Same-day deliveries nearly doubled in rural areas for Prime members in 2025.",
+      "_dm_type": "H"
+    }
+  ],
+  "dm_anchors": [
+    {
+      "id": "DM-NEW-001",
+      "value": "Q1 2026 earnings date April 30, 2026 (unconfirmed)",
+      "type": "H",
+      "source": "Multiple financial calendars",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-002",
+      "value": "Q4 2025 net sales $213.4B up 14% YoY",
+      "type": "H",
+      "source": "Amazon Q4 2025 earnings report",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-003",
+      "value": "AWS Q4 2025 revenue $35.6B up 24% - fastest growth in 13 quarters",
+      "type": "H",
+      "source": "Amazon Q4 2025 earnings report",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-004",
+      "value": "2026 planned CapEx $200B vs $132B in 2025",
+      "type": "H",
+      "source": "Amazon management guidance",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-005",
+      "value": "Analyst consensus rating Strong Buy, avg price target $279.59",
+      "type": "R",
+      "source": "44 analysts consensus",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-006",
+      "value": "Insider activity: 37 transactions, $56.4M in sales, 0 buys in last 90 days",
+      "type": "H",
+      "source": "SEC filings via MarketBeat",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-007",
+      "value": "FTC antitrust trial scheduled October 13, 2026",
+      "type": "H",
+      "source": "Law360 court filings",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-008",
+      "value": "AWS market share 28% vs Microsoft 21% and Google 14%",
+      "type": "H",
+      "source": "Cloud market research",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-009",
+      "value": "Amazon Leo satellite constellation >200 satellites deployed",
+      "type": "H",
+      "source": "About Amazon press release",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-010",
+      "value": "Recent news sentiment mixed to positive despite stock decline",
+      "type": "S",
+      "source": "News sentiment analysis",
+      "date": "2026-02-18"
+    }
+  ],
+  "sources": [
+    "https://www.aboutamazon.com/news/company-news/amazon-news-today-top-stories-company",
+    "https://aws.amazon.com/blogs/aws/aws-weekly-roundup-amazon-ec2-m8azn-instances-new-open-weights-models-in-amazon-bedrock-and-more-february-16-2026/",
+    "https://www.fool.com/investing/2026/02/11/prediction-the-dip-in-amazon-stock-is-a-buying-opp/",
+    "https://www.nasdaq.com/articles/amazon-stock-2026-key-catalysts-and-what-investors-should-watch",
+    "https://www.marketbeat.com/stocks/NASDAQ/AMZN/earnings/",
+    "https://www.marketbeat.com/stocks/NASDAQ/AMZN/insider-trades/",
+    "https://ir.aboutamazon.com/sec-filings/default.aspx",
+    "https://www.law360.com/articles/1778527/no-amazon-antitrust-trial-until-at-least-2026",
+    "https://www.mckinsey.com/about-us/new-at-mckinsey-blog/mckinsey-and-amazon-launch-amazon-mckinsey-group",
+    "https://www.geekwire.com/2026/aws-growth-hits-3-year-high-custom-chips-top-10b-as-200b-capex-plan-rattles-investors/"
+  ]
+}

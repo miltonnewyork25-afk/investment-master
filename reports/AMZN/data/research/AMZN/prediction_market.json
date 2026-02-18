@@ -1,0 +1,149 @@
+{
+  "ticker": "AMZN",
+  "fetched_at": "2026-02-18",
+  "macro_events": [
+    {
+      "event": "2026年美国经济衰退",
+      "platform": "Polymarket",
+      "probability": 0.23,
+      "last_updated": "2026-02-18",
+      "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "_dm_type": "H"
+    },
+    {
+      "event": "2026年通胀水平高于3%",
+      "platform": "Polymarket",
+      "probability": 0.67,
+      "last_updated": "2026-02-18",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "_dm_type": "H"
+    },
+    {
+      "event": "2026年负GDP增长",
+      "platform": "Polymarket",
+      "probability": 0.12,
+      "last_updated": "2026-02-18",
+      "url": "https://polymarket.com/event/negative-gdp-growth-in-2026",
+      "_dm_type": "H"
+    },
+    {
+      "event": "联邦基金利率维持不变(2026年1月)",
+      "platform": "Kalshi",
+      "probability": 0.99,
+      "last_updated": "2026-01-28",
+      "url": "https://kalshi.com/markets/kxfed/fed-funds-rate/kxfed-26jan",
+      "_dm_type": "H"
+    }
+  ],
+  "company_specific": [
+    {
+      "event": "Amazon Q4 2025财报超预期(EPS $1.95)",
+      "platform": "Polymarket",
+      "probability": null,
+      "last_updated": "2026-02-05",
+      "url": "https://polymarket.com/event/amzn-quarterly-earnings-gaap-eps-02-05-2026-1pt95",
+      "_dm_type": "H"
+    },
+    {
+      "event": "Amazon股价2月12日收涨",
+      "platform": "Polymarket",
+      "probability": null,
+      "last_updated": "2026-02-12",
+      "url": "https://polymarket.com/event/amzn-up-or-down-on-february-12-2026",
+      "_dm_type": "H"
+    }
+  ],
+  "industry_events": [
+    {
+      "event": "美国2027年前通过AI安全法案",
+      "platform": "Polymarket",
+      "probability": null,
+      "last_updated": "2026-02-18",
+      "url": "https://polymarket.com/event/us-enacts-ai-safety-bill-before-2027",
+      "_dm_type": "H"
+    },
+    {
+      "event": "AI数据中心禁建令2027年前通过",
+      "platform": "Polymarket",
+      "probability": null,
+      "last_updated": "2026-02-18",
+      "url": "https://polymarket.com/event/ai-data-center-moratorium-passed-before-2027",
+      "_dm_type": "H"
+    },
+    {
+      "event": "Meta被迫出售Instagram或WhatsApp",
+      "platform": "Polymarket",
+      "probability": null,
+      "last_updated": "2025-12-31",
+      "url": "https://polymarket.com/event/will-meta-be-forced-to-sell-instagram-or-whatsapp-in-2025",
+      "_dm_type": "H"
+    }
+  ],
+  "dm_anchors": [
+    {
+      "id": "DM-PMK-001",
+      "value": "经济衰退概率 23%",
+      "type": "H",
+      "source": "Polymarket",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-PMK-002",
+      "value": "通胀>3%概率 67%",
+      "type": "H",
+      "source": "Polymarket",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-PMK-003",
+      "value": "负GDP增长概率 12%",
+      "type": "H",
+      "source": "Polymarket",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-PMK-004",
+      "value": "联邦基金利率维持不变概率 99%",
+      "type": "H",
+      "source": "Kalshi",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-PMK-005",
+      "value": "经济衰退影响消费支出 -8%至-15%",
+      "type": "R",
+      "source": "历史数据推算",
+      "date": "2026-02-18",
+      "chain": "衰退→消费者信心下降→零售支出减少→AWS需求下降",
+      "falsifiable": "衰退期间消费支出增长或平稳"
+    },
+    {
+      "id": "DM-PMK-006",
+      "value": "高通胀环境下科技股估值压缩 15-25%",
+      "type": "R",
+      "source": "历史PE倍数分析",
+      "date": "2026-02-18",
+      "chain": "通胀>3%→利率上升预期→成长股折现率上升→估值压缩",
+      "falsifiable": "高通胀期间科技股跑赢大盘"
+    },
+    {
+      "id": "DM-PMK-007",
+      "value": "AI监管不确定性估值折扣 5-10%",
+      "type": "R",
+      "source": "Polymarket AI监管概率推算",
+      "date": "2026-02-18",
+      "chain": "AI监管→合规成本增加→利润率压缩→估值下调",
+      "falsifiable": "AI监管提升行业准入门槛，利好大型科技公司"
+    }
+  ],
+  "sources": [
+    "https://polymarket.com/event/us-recession-by-end-of-2026",
+    "https://polymarket.com/predictions/amazon",
+    "https://kalshi.com/markets/kxfed/fed-funds-rate/kxfed-26jan",
+    "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+    "https://polymarket.com/predictions/big-tech",
+    "https://polymarket.com/event/us-enacts-ai-safety-bill-before-2027",
+    "https://polymarket.com/event/will-meta-be-forced-to-sell-instagram-or-whatsapp-in-2025",
+    "https://polymarket.com/event/amzn-quarterly-earnings-gaap-eps-02-05-2026-1pt95"
+  ]
+}

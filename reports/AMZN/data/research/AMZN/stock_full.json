@@ -1,0 +1,63 @@
+{
+  "basic_data": {
+    "symbol": "AMZN",
+    "data_source": "FMP(profile,quote,ratios,metrics)+yfinance",
+    "name": "Amazon.com, Inc.",
+    "sector": "Consumer Cyclical",
+    "industry": "Specialty Retail",
+    "market_cap": null,
+    "price": 201.15,
+    "52w_high": 258.6,
+    "52w_low": 161.38,
+    "pe_ratio": 28.093575,
+    "pb_ratio": 6.013285928016251,
+    "dividend_yield": null,
+    "roe": 0.22286,
+    "profit_margin": 0.10833784334183261,
+    "operating_margin": 0.11155296795755199,
+    "revenue": 716923994112,
+    "revenue_growth": 0.136,
+    "free_cashflow": 23793125376,
+    "history_summary": {
+      "recent_5d": [
+        {"date": "2026-02-10", "close": 206.96, "volume": 67175000},
+        {"date": "2026-02-11", "close": 204.08, "volume": 65545500},
+        {"date": "2026-02-12", "close": 199.6, "volume": 83975400},
+        {"date": "2026-02-13", "close": 198.79, "volume": 66321600},
+        {"date": "2026-02-17", "close": 201.15, "volume": 69753800}
+      ],
+      "period_high": 254.0,
+      "period_low": 161.02,
+      "period_return": 20.39,
+      "avg_volume": 43013838,
+      "trading_days": 500
+    },
+    "forward_pe": 21.712826,
+    "beta": 1.385
+  },
+  "fundamentals": {
+    "symbol": "AMZN",
+    "data_source": "FMP(metrics,ratios,income)+yfinance",
+    "revenue": 716923994112,
+    "revenue_growth": 0.136,
+    "free_cashflow": 23793125376,
+    "earnings_growth": 0.05,
+    "profit_margin": 0.10833784334183261,
+    "operating_margin": 0.11155296795755199,
+    "roe": 0.22286,
+    "roa": 0.06928,
+    "debt_to_equity": 43.435,
+    "current_ratio": 1.0508153482718285,
+    "earnings": 77670000000
+  },
+  "technical": {
+    "symbol": "AMZN",
+    "price": 201.14999389648438,
+    "sma_20": 225.49150009155272,
+    "sma_50": 229.83279968261718,
+    "sma_200": 223.70570022583007,
+    "rsi": 10.833189632921403,
+    "volume": 69753800.0,
+    "trend": "下跌"
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "ticker": "AMZN",
+  "fetched_at": "2026-02-18",
+  "consensus": {
+    "rating": "Strong Buy",
+    "buy_count": 41,
+    "hold_count": 3,
+    "sell_count": 0,
+    "avg_price_target": 282.14,
+    "high_target": 360,
+    "low_target": 175,
+    "_dm_type": "H",
+    "_dm_source": "Wall Street consensus across 44 analysts",
+    "_dm_date": "2026-02-18"
+  },
+  "earnings_estimates": {
+    "current_quarter": {
+      "quarter": "Q1 2026",
+      "eps_est": 1.64,
+      "rev_est": 177.05,
+      "guidance_low": 173.5,
+      "guidance_high": 178.5
+    },
+    "next_quarter": {
+      "quarter": "Q2 2026",
+      "eps_est": "TBD",
+      "rev_est": "TBD",
+      "note": "Estimates not yet widely available"
+    }
+  },
+  "earnings_history": {
+    "surprise_pattern": "4 consecutive beats",
+    "recent_surprises": [
+      {
+        "quarter": "Q4 2025",
+        "actual_eps": 1.86,
+        "estimate_eps": 1.52,
+        "surprise_pct": 22.37
+      },
+      {
+        "quarter": "Q3 2025",
+        "actual_eps": 1.43,
+        "estimate_eps": 1.14,
+        "surprise_pct": 25.44
+      }
+    ],
+    "avg_surprise_2q": 22.05
+  },
+  "bull_bear_summary": {
+    "bull_case": "Strong diversified business model with AWS cloud dominance, advertising revenue growing 2x faster than e-commerce, AI/robotics investment positioning, operational efficiency gains, robust cash flow. AWS capacity doubling by 2027 with $244B order backlog (+40% YoY). Project Rainier with Anthropic could generate $10B AWS revenue in 2026.",
+    "bear_case": "Massive size constraints limiting historical growth rates, intense cloud competition from Microsoft Azure and Google Cloud threatening AWS margins by mid-decade, regulatory risks from dominance in multiple markets, $200B capex plan raising investor concerns about capital allocation efficiency, tariff impacts on traditional e-commerce margins."
+  },
+  "recent_actions": {
+    "upgrades": [
+      {
+        "firm": "Wedbush",
+        "action": "Bullish outlook",
+        "price_target": 340,
+        "rationale": "2026 big year for AWS catalyst"
+      },
+      {
+        "firm": "Wells Fargo",
+        "action": "AWS growth revision up",
+        "aws_growth_est": "22% vs consensus 18%",
+        "driver": "Project Rainier with Anthropic"
+      }
+    ],
+    "downgrades": [
+      {
+        "firm": "DA Davidson",
+        "action": "Price target cut",
+        "old_target": 300,
+        "new_target": 175,
+        "date": "2026-02-06",
+        "rationale": "Losing cloud lead concerns"
+      },
+      {
+        "firm": "Invictus Origin",
+        "action": "Downgrade to Hold",
+        "rationale": "Valuation concerns, high AI investment costs"
+      }
+    ]
+  },
+  "aws_ai_monetization": {
+    "q4_growth": "24% (fastest in 13 quarters)",
+    "annualized_revenue": 142.0,
+    "ai_chips_revenue": ">$10B (triple-digit growth)",
+    "capacity_outlook": "Doubling by 2027",
+    "operating_margin": "35.9% (up 9.7pp since 2019)",
+    "monetization_quote": "Monetizing capacity as fast as we can install it"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-CON-001",
+      "value": "分析师平均目标价 $282.14",
+      "type": "H",
+      "source": "44 Wall Street analysts consensus",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-CON-002",
+      "value": "AWS收入增长预期 22%",
+      "type": "R",
+      "source": "Wells Fargo上调预测",
+      "date": "2026-02-18",
+      "chain": "Project Rainier合作伙伴Anthropic→AWS工作负载增长→收入加速",
+      "falsifiable": "AWS季度增长<18%连续2Q则预测失效"
+    },
+    {
+      "id": "DM-CON-003",
+      "value": "Strong Buy评级 (41买入/3持有/0卖出)",
+      "type": "H",
+      "source": "44 analysts consensus",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-CON-004",
+      "value": "连续4个季度盈利超预期",
+      "type": "H",
+      "source": "历史财报数据",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-CON-005",
+      "value": "AWS订单积压 $244B (+40% YoY)",
+      "type": "H",
+      "source": "Q4 2025财报",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-CON-006",
+      "value": "2026年资本支出计划 $200B",
+      "type": "H",
+      "source": "公司指引",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-CON-007",
+      "value": "Anthropic合作预计产生AWS收入 $10B",
+      "type": "R",
+      "source": "Citizens analyst Andrew Boone",
+      "date": "2026-02-18",
+      "chain": "Project Rainier计算容量扩建→Anthropic工作负载→AWS收入增量",
+      "falsifiable": "Anthropic相关AWS收入<$5B则预测过度乐观"
+    }
+  ],
+  "sources": [
+    "https://www.tipranks.com/stocks/amzn/forecast",
+    "https://stockanalysis.com/stocks/amzn/forecast/",
+    "https://finance.yahoo.com/quote/AMZN/analysis/",
+    "https://www.benzinga.com/quote/AMZN/analyst-ratings",
+    "https://www.fool.com/investing/2025/05/07/amazon-stock-bull-vs-bear/",
+    "https://247wallst.com/forecasts/2026/01/30/amazon-amzn-stock-price-prediction-in-2030-bull-base-bear-forecasts/",
+    "https://www.nasdaq.com/market-activity/stocks/amzn/earnings",
+    "https://seekingalpha.com/symbol/AMZN/earnings/eps-surprise-summary",
+    "https://www.cnbc.com/2026/02/05/aws-q4-earnings-report-2025.html",
+    "https://www.benzinga.com/trading-ideas/previews/26/02/50391928/amazon-q4-preview-analyst-sees-big-year-for-aws-in-2026-heres-what-to-expect"
+  ]
+}

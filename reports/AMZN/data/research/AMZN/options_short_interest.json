@@ -1,0 +1,76 @@
+{
+  "ticker": "AMZN",
+  "fetched_at": "2026-02-18",
+  "short_interest": {
+    "shares_short": 78078000,
+    "short_pct_float": 0.81,
+    "days_to_cover": 1.49,
+    "vs_sector_avg": "Below average",
+    "trend": "Slight increase from 70.64M to 78.08M shares",
+    "_dm_type": "H"
+  },
+  "options_sentiment": {
+    "put_call_ratio": 0.66,
+    "implied_volatility": 44.85,
+    "iv_rank": "Higher than 30-day average",
+    "unusual_activity": ["February 2026 $240 call contracts showing significant interest", "OI put/call ratio showing recent 1.5% increase"],
+    "_dm_type": "H"
+  },
+  "market_interpretation": {
+    "short_squeeze_potential": "Low - only 1.49 days to cover with 0.81% short float",
+    "sentiment_bias": "Neutral to slightly bullish based on put/call ratios below 1.0",
+    "volatility_environment": "Elevated IV at 44.85% vs historical averages",
+    "_dm_type": "R"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-OPT-001",
+      "value": "做空比例 0.81%",
+      "type": "H",
+      "source": "MarketBeat短期利息数据",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-OPT-002",
+      "value": "期权偏向看涨",
+      "type": "R",
+      "source": "Put/Call比率分析",
+      "date": "2026-02-18",
+      "chain": "PCR 0.66<1→看涨情绪",
+      "falsifiable": "PCR>1.0表明转向看跌"
+    },
+    {
+      "id": "DM-OPT-003",
+      "value": "隐含波动率 44.85%",
+      "type": "H",
+      "source": "30日期权隐含波动率",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-OPT-004",
+      "value": "做空回补天数 1.49天",
+      "type": "H",
+      "source": "基于平均日交易量49.29M股计算",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-OPT-005",
+      "value": "短挤风险低",
+      "type": "R",
+      "source": "做空比例+回补天数综合评估",
+      "date": "2026-02-18",
+      "chain": "0.81%短期利息+1.49天回补=低短挤风险",
+      "falsifiable": "短期利息>5%或回补天数>5天"
+    }
+  ],
+  "sources": [
+    "https://www.marketbeat.com/stocks/NASDAQ/AMZN/short-interest/",
+    "https://fintel.io/ss/us/amzn",
+    "https://www.barchart.com/stocks/quotes/AMZN/put-call-ratios",
+    "https://fintel.io/sopt/us/amzn",
+    "https://www.nasdaq.com/articles/amzn-february-2026-options-begin-trading",
+    "https://www.alphaquery.com/stock/AMZN/volatility-option-statistics/30-day/put-call-ratio-volume",
+    "https://shortsqueeze.com/shortinterest/stock/AMZN.htm",
+    "https://marketchameleon.com/Overview/AMZN/IV/"
+  ]
+}

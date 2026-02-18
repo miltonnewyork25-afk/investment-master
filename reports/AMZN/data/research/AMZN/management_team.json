@@ -1,0 +1,73 @@
+{
+  "ticker": "AMZN",
+  "fetched_at": "2026-02-18",
+  "ceo": {
+    "name": "Andy Jassy",
+    "tenure_years": 4.5,
+    "background": "Harvard College (Government), Harvard Business School MBA. Joined Amazon 1997, Founded AWS 2003, CEO of AWS 2003-2021, Amazon CEO since July 2021",
+    "track_record": "Built AWS from startup to $91B revenue with 27% operating margin. Successfully transitioned from Jeff Bezos as CEO. Leading AI transformation with $75B investment plan for 2025",
+    "_dm_type": "H"
+  },
+  "cfo": {
+    "name": "Brian Olsavsky",
+    "tenure_years": 11,
+    "background": "Carnegie Mellon University - Tepper School of Business. Joined Amazon 2002, CFO since 2015. Previously VP Finance for Global Consumer Business and North America retail",
+    "_dm_type": "H"
+  },
+  "key_executives": [
+    {
+      "name": "Matt Garman",
+      "role": "AWS CEO",
+      "compensation_2024": "$33.2M",
+      "_dm_type": "H"
+    },
+    {
+      "name": "Douglas Herrington",
+      "role": "CEO Worldwide Amazon Stores",
+      "compensation_2024": "$34.2M",
+      "_dm_type": "H"
+    },
+    {
+      "name": "Peter DeSantis",
+      "role": "Head of AI Models & Custom Chips (new 2025)",
+      "background": "Longtime AWS executive, now leading AI model development and quantum computing",
+      "_dm_type": "H"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "December 2025",
+      "change": "Rohit Prasad (AI chief) departure, Peter DeSantis leads new AI organization",
+      "impact": "Major AI team restructuring",
+      "_dm_type": "H"
+    },
+    {
+      "date": "March 2026",
+      "change": "Dharmesh Mehta promoted to Technical Advisor, Alex Dunlap transitions to new role",
+      "impact": "Leadership reshuffle continues",
+      "_dm_type": "H"
+    }
+  ],
+  "insider_ownership_pct": 8.32,
+  "bezos_ownership_pct": 8.25,
+  "compensation_highlights": "CEO Jassy: $40.1M (2024, +37% YoY), primarily stock awards $38.5M. Base salary unchanged at $365K. Pay ratio 43:1 vs median employee",
+  "governance_notes": "Independent board with Audit, Compensation, and Nominating/Governance committees. Board committed to diverse director candidates including women and minorities",
+  "dm_anchors": [
+    {"id": "DM-MGT-001", "value": "CEO任期 4.5年", "type": "H", "source": "公开履历", "date": "2026-02-18"},
+    {"id": "DM-MGT-002", "value": "CFO任期 11年", "type": "H", "source": "公开履历", "date": "2026-02-18"},
+    {"id": "DM-MGT-003", "value": "内部人持股 8.32%", "type": "H", "source": "股权结构数据", "date": "2026-02-18"},
+    {"id": "DM-MGT-004", "value": "AWS收入从创立到$91B", "type": "H", "source": "业务记录", "date": "2026-02-18"},
+    {"id": "DM-MGT-005", "value": "Amazon收入从2015年$100B增长到2024年$638B", "type": "H", "source": "财务记录", "date": "2026-02-18"},
+    {"id": "DM-MGT-006", "value": "管理层执行力 强", "type": "S", "source": "AWS成功扩张+AI转型领导力评估", "date": "2026-02-18"},
+    {"id": "DM-MGT-007", "value": "AI投资承诺 $75B 2025年", "type": "H", "source": "公司公告", "date": "2026-02-18"},
+    {"id": "DM-MGT-008", "value": "CEO薪酬 $40.1M 2024年", "type": "H", "source": "代理声明", "date": "2026-02-18"}
+  ],
+  "sources": [
+    "Amazon CEO Andy Jassy biography track record - The420.in, Wikipedia, Bloomberg",
+    "Amazon CFO Brian Olsavsky - LinkedIn, Columbia Business School, Amazon IR",
+    "Amazon executive team leadership changes - Fortune, HR Grapevine, CIO Dive",
+    "Amazon board governance - Amazon IR Corporate Governance, AdvisoryCloud",
+    "Amazon executive compensation proxy 2025 - SEC filings, GeekWire",
+    "Amazon insider ownership - GuruFocus, Simply Wall St, WallStreetZen"
+  ]
+}
