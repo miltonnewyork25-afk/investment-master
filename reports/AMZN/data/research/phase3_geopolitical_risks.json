@@ -1,0 +1,39 @@
+{
+  "collection_date": "2026-02-18",
+  "purpose": "Phase 3地缘政治风险数据预取",
+  "data_sources": [
+    {
+      "source": "Polymarket",
+      "categories": ["Amazon监管风险", "中美贸易科技", "云计算竞争"],
+      "total_markets": 67,
+      "key_insights": {
+        "amazon_regulatory_risk": {
+          "ftc_mention_probability": 0.0,
+          "settlement_mention_probability": 100.0,
+          "aws_disruption_risk": 12.5,
+          "interpretation": "市场预期Amazon将提及和解但不直接提及FTC，AWS服务中断风险较低"
+        },
+        "us_china_trade_tech": {
+          "trade_deal_2025": 100.0,
+          "tariff_agreement": 100.0,
+          "china_us_films_ban": 0.0,
+          "xi_visit_us": 0.0,
+          "interpretation": "市场高度确信中美将达成贸易协议，但文化和外交关系仍紧张"
+        },
+        "cloud_competition": {
+          "aws_service_disruption": 12.5,
+          "market_share_risk": "moderate",
+          "interpretation": "AWS技术稳定性风险低，但市场份额面临竞争压力"
+        }
+      }
+    }
+  ],
+  "risk_assessment": {
+    "regulatory_risk_level": "moderate_to_high",
+    "geopolitical_risk_level": "moderate",
+    "competitive_risk_level": "moderate",
+    "overall_risk_score": 6.5,
+    "risk_timeline": "2026-2027年为关键窗口期"
+  },
+  "raw_data": "已获取67个相关预测市场，涵盖Amazon监管、中美科技博弈、云计算竞争三大维度"
+}
