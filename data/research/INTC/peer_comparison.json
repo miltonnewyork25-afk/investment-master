@@ -1,0 +1,50 @@
+{
+  "INTC": {
+    "pe_ratio": null,
+    "pb_ratio": 1.538201450809846,
+    "roe": 0.00022,
+    "market_cap": null
+  },
+  "NVDA": {
+    "pe_ratio": 45.224937,
+    "pb_ratio": 36.655906563969396,
+    "roe": 1.07359,
+    "market_cap": null
+  },
+  "AMD": {
+    "pe_ratio": 79.328125,
+    "pb_ratio": 5.542052413530374,
+    "roe": 0.07082,
+    "market_cap": null
+  },
+  "TSM": {
+    "pe_ratio": 34.71878,
+    "pb_ratio": 9.13849367210823,
+    "roe": 0.35224,
+    "market_cap": null
+  },
+  "ASML": {
+    "pe_ratio": 48.30827,
+    "pb_ratio": 18.045009987118345,
+    "roe": 0.50458,
+    "market_cap": null
+  },
+  "MU": {
+    "pe_ratio": 39.07918,
+    "pb_ratio": 2.5136527277762393,
+    "roe": 0.22554001,
+    "market_cap": null
+  },
+  "LRCX": {
+    "pe_ratio": 48.27459,
+    "pb_ratio": 12.6945759453899,
+    "roe": 0.65565,
+    "market_cap": null
+  },
+  "SPY": {
+    "pe_ratio": 27.495686,
+    "pb_ratio": 1.590909,
+    "roe": null,
+    "market_cap": null
+  }
+}

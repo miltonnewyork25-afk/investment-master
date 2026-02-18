@@ -1,0 +1,78 @@
+{
+  "ticker": "INTC",
+  "fetched_at": "2026-02-18",
+  "short_interest": {
+    "shares_short": 132752000000,
+    "short_pct_float": 2.77,
+    "days_to_cover": 1.41,
+    "vs_sector_avg": 0,
+    "trend": "moderate_squeeze_potential"
+  },
+  "options_sentiment": {
+    "put_call_ratio": 0.64,
+    "implied_volatility": 0,
+    "iv_rank": 0,
+    "unusual_activity": [
+      {
+        "type": "call_sweep",
+        "strike": 50.00,
+        "expiry": "2026-02-20",
+        "contracts": 3506,
+        "sentiment": "bullish"
+      },
+      {
+        "type": "smart_money_positioning",
+        "target_price": 40.00,
+        "expiry": "2026-01-16",
+        "catalyst": "panther_lake_launch"
+      }
+    ]
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-OPT-001",
+      "value": "132.752M shares short (2.77% of float)",
+      "type": "H",
+      "source": "shortsqueeze.com/fintel.io",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-OPT-002",
+      "value": "1.41 days to cover (short interest ratio)",
+      "type": "H",
+      "source": "fintel.io/shortsqueeze.com",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-OPT-003",
+      "value": "Put/Call Ratio: 0.64 (bullish sentiment)",
+      "type": "H",
+      "source": "fintel.io/barchart.com",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-OPT-004",
+      "value": "Call sweep: 3,506 contracts at $50 strike expiring Feb 20, 2026",
+      "type": "H",
+      "source": "optioncharts.io/unusualwhales.com",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-OPT-005",
+      "value": "Smart money positioning for $40+ target by mid-2026",
+      "type": "M",
+      "source": "ainvest.com analysis",
+      "date": "2026-02-18"
+    }
+  ],
+  "sources": [
+    "https://shortsqueeze.com/shortinterest/stock/INTC.htm",
+    "https://fintel.io/ss/us/intc",
+    "https://fintel.io/sopt/us/intc",
+    "https://www.barchart.com/stocks/quotes/INTC/put-call-ratios",
+    "https://optioncharts.io/options/INTC/unusual-options",
+    "https://unusualwhales.com/stock/INTC/overview",
+    "https://www.ainvest.com/news/decoding-unusual-options-activity-intel-intc-strategic-play-2026-2512/",
+    "https://www.marketbeat.com/stocks/NASDAQ/INTC/short-interest/"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "ticker": "INTC",
+  "analysis_date": "2026-02-18",
+  "current_price": 46.18,
+  "updated_market_cap": 230669100000,
+  "peer_groups": {
+    "cpu_direct": ["AMD"],
+    "foundry_equipment": ["TSM", "LRCX", "ASML"],
+    "memory": ["MU"],
+    "gpu_ai": ["NVDA"]
+  },
+  "peer_multiples": {
+    "NVDA": {"pe": 45.90, "pb": 36.66, "roe": 1.074, "market_cap": 4503464838230, "ps": 24.06},
+    "AMD": {"pe": 77.51, "pb": 5.54, "roe": 0.071, "market_cap": null, "ps": null},
+    "TSM": {"pe": 34.59, "pb": 9.14, "roe": 0.352, "market_cap": null, "ps": null},
+    "ASML": {"pe": 48.31, "pb": 18.05, "roe": 0.505, "market_cap": null, "ps": null},
+    "MU": {"pe": 38.04, "pb": 2.51, "roe": 0.226, "market_cap": null, "ps": null},
+    "LRCX": {"pe": 48.27, "pb": 12.69, "roe": 0.656, "market_cap": null, "ps": null}
+  },
+  "valuation_methods": {
+    "pb_multiple": {
+      "peer_group_analysis": {
+        "cpu_direct": {"median_pb": 5.54, "median_roe": 0.071},
+        "foundry_equipment": {"median_pb": 12.69, "median_roe": 0.505},
+        "memory": {"median_pb": 2.51, "median_roe": 0.226},
+        "all_peers": {"median_pb": 9.14, "median_roe": 0.352}
+      },
+      "intc_pb": 1.54,
+      "intc_roe": 0.00022,
+      "quality_adjustment": -0.85,
+      "reasoning": "INTC ROE (0.022%) significantly below all peer groups. Applying 85% discount to peer median PB.",
+      "adjusted_fair_pb": 1.37,
+      "current_book_value": 26.02,
+      "implied_price": 35.65,
+      "upside_downside": -0.228
+    },
+    "forward_pe": {
+      "peer_group_analysis": {
+        "cpu_direct": {"median_pe": 77.51},
+        "foundry_equipment": {"median_pe": 43.73},
+        "memory": {"median_pe": 38.04},
+        "profitable_peers_median": 43.73
+      },
+      "intc_2026e_eps": 0.50,
+      "quality_adjustment": -0.65,
+      "reasoning": "Applied 65% discount to peer median PE due to inferior ROE and turnaround uncertainty.",
+      "fair_value_pe": 15.31,
+      "implied_price": 7.65,
+      "upside_downside": -0.834
+    },
+    "revenue_multiple": {
+      "nvda_ps": 24.06,
+      "peer_estimated_ps_range": "3.0-8.0",
+      "reasoning": "Conservative P/S estimate based on CPU/foundry peers, excluding high-growth AI premium.",
+      "estimated_fair_ps": 4.5,
+      "intc_revenue_ttm": 52852998144,
+      "implied_market_cap": 238138490648,
+      "shares_outstanding": 4998140000,
+      "implied_price": 47.65,
+      "upside_downside": 0.032
+    }
+  },
+  "composite_valuation": {
+    "methodology": "Weight-adjusted based on relevance to current INTC situation",
+    "pb_weight": 0.5,
+    "pe_weight": 0.2,
+    "ps_weight": 0.3,
+    "pb_contribution": 35.65,
+    "pe_contribution": 7.65,
+    "ps_contribution": 47.65,
+    "weighted_fair_value": 36.95,
+    "valuation_range": {
+      "low": 30.0,
+      "mid": 37.0,
+      "high": 45.0
+    }
+  },
+  "relative_positioning": {
+    "roe_percentile": 0,
+    "pb_percentile": 10,
+    "quality_discount": -0.75,
+    "positioning_summary": "INTC trades at significant discount to peers on P/B basis, but justified by vastly inferior ROE performance. Forward PE suggests market expects minimal near-term profitability recovery."
+  },
+  "key_insights": {
+    "valuation_disconnect": "P/B suggests modest discount, but forward PE implies severe earnings concerns",
+    "peer_relevance": "AMD most relevant but trading at premium unsupported by INTC fundamentals",
+    "foundry_comparison": "TSM P/B of 9.14x with 35% ROE vs INTC 1.54x with 0.02% ROE highlights execution gap",
+    "memory_comparison": "MU (P/B 2.51x, ROE 22.6%) provides realistic cyclical baseline for INTC recovery"
+  },
+  "investment_conclusion": "INTC appears fairly valued at current P/B multiple given extremely poor ROE performance. Forward PE valuation suggests deep value if turnaround succeeds, but current fundamentals don't support higher multiples. Revenue multiple analysis suggests modest upside potential. Composite fair value of $37 implies limited upside with high execution risk."
+}

@@ -1,0 +1,100 @@
+{
+  "ticker": "INTC",
+  "fetched_at": "2026-02-18",
+  "ceo": {
+    "name": "Lip-Bu Tan",
+    "tenure_years": 0.9,
+    "background": "Former CEO of Cadence Design Systems (2009-2021), where he more than doubled revenues, expanded operating margins and delivered stock price appreciation of >3,200%. Appointed Intel CEO March 2025.",
+    "track_record": "Transformed Cadence into global leader with exceptional financial performance. Fresh appointment to Intel with turnaround mandate following Pat Gelsinger's retirement in December 2024."
+  },
+  "cfo": {
+    "name": "David Zinsner",
+    "tenure_years": 4.1,
+    "background": "MBA from Vanderbilt University, Bachelor's from Carnegie Mellon. Previously CFO at Micron Technology (2018-2022) and Analog Devices (2009-2018). Appointed Intel CFO January 2022."
+  },
+  "key_executives": [
+    {
+      "name": "Frank D. Yeary",
+      "position": "Independent Board Chair",
+      "tenure": "Board member since 2009, Chair since January 2023"
+    },
+    {
+      "name": "Kevork Kechichian",
+      "position": "EVP & GM Data Center Group",
+      "background": "30+ years at Arm, most recently EVP Engineering. Joined Intel 2025."
+    },
+    {
+      "name": "Annie Shea Weckesser",
+      "position": "SVP & Chief Marketing and Communications Officer",
+      "background": "Appointed 2025 to lead integrated global marketing and communications."
+    },
+    {
+      "name": "Robin Colwell",
+      "position": "SVP Government Affairs",
+      "background": "Joined Intel 2025 to lead global policy and regulatory engagement."
+    }
+  ],
+  "recent_changes": [
+    "Pat Gelsinger retired as CEO December 2024 after 3.8-year tenure",
+    "Lip-Bu Tan appointed CEO March 2025 with $69M compensation package",
+    "Michelle Johnston Holthaus departed after 30+ years, remains advisory through March 2026",
+    "Major leadership appointments in 2025: Kechichian (DCG), Weckesser (CMCO), Colwell (Gov Affairs)",
+    "Frank Yeary served as Interim Executive Chair Dec 2024 - March 2025"
+  ],
+  "insider_ownership_pct": 4.53,
+  "compensation_highlights": "New CEO Lip-Bu Tan: ~$69M package contingent on targets, including $25M share purchase requirement. CFO compensation increased significantly with Johnston Holthaus promotion. Interim Chair Yeary received $700K RSU award for transition service.",
+  "governance_notes": "Independent Board Chair Frank Yeary. Board operates through Audit Committee and Governance Committee. 2014 commitment to actively seek women and minority Board candidates. 2025 Annual Meeting scheduled May 6, 2025.",
+  "dm_anchors": [
+    {
+      "id": "DM-MGT-001",
+      "value": "Lip-Bu Tan appointed Intel CEO March 2025",
+      "type": "H",
+      "source": "Intel Corporation press release",
+      "date": "2025-03"
+    },
+    {
+      "id": "DM-MGT-002",
+      "value": "Pat Gelsinger retired December 2024 after 3.8-year CEO tenure",
+      "type": "H",
+      "source": "Intel Newsroom announcement",
+      "date": "2024-12"
+    },
+    {
+      "id": "DM-MGT-003",
+      "value": "David Zinsner CFO since January 2022",
+      "type": "H",
+      "source": "Intel executive biography",
+      "date": "2022-01"
+    },
+    {
+      "id": "DM-MGT-004",
+      "value": "Insider ownership 4.53% of outstanding shares",
+      "type": "M",
+      "source": "WallStreetZen ownership data",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-MGT-005",
+      "value": "New CEO compensation package valued ~$69M",
+      "type": "H",
+      "source": "Bloomberg executive compensation report",
+      "date": "2025-03"
+    },
+    {
+      "id": "DM-MGT-006",
+      "value": "Frank D. Yeary Independent Board Chair since January 2023",
+      "type": "H",
+      "source": "Intel Board of Directors page",
+      "date": "2023-01"
+    }
+  ],
+  "sources": [
+    "https://newsroom.intel.com/corporate/intel-ceo-news-dec-2024",
+    "https://www.intc.com/news-events/press-releases/detail/1730/intel-appoints-lip-bu-tan-as-chief-executive-officer",
+    "https://newsroom.intel.com/biography/david-zinsner",
+    "https://newsroom.intel.com/corporate/intel-announces-key-leadership-appointments",
+    "https://www.intc.com/board-and-governance/board-committees",
+    "https://www.bloomberg.com/news/articles/2025-03-14/intel-s-new-ceo-gets-pay-package-valued-at-about-69-million",
+    "https://www.wallstreetzen.com/stocks/us/nasdaq/intc/ownership"
+  ]
+}

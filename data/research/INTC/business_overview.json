@@ -1,0 +1,66 @@
+{
+  "ticker": "INTC",
+  "fetched_at": "2026-02-18",
+  "segments": [
+    {"name": "Client Computing Group", "revenue": 30290000000, "pct_of_total": 43.08, "growth_rate": 3.55},
+    {"name": "Data Center Group", "revenue": 12820000000, "pct_of_total": 18.23, "growth_rate": -17.41},
+    {"name": "Intel Foundry Services", "revenue": 17540000000, "pct_of_total": 24.95, "growth_rate": 1741.18},
+    {"name": "Internet of Things Group", "revenue": 5840000000, "pct_of_total": 8.31, "growth_rate": 1.21},
+    {"name": "Other Segments", "revenue": 3820000000, "pct_of_total": 5.44, "growth_rate": 493.32}
+  ],
+  "geographic_breakdown": [
+    {"region": "China (Including Hong Kong)", "revenue": 15530000000, "pct_of_total": 29.25},
+    {"region": "United States", "revenue": 12990000000, "pct_of_total": 24.47},
+    {"region": "Singapore", "revenue": 10190000000, "pct_of_total": 19.18},
+    {"region": "Taiwan", "revenue": 7800000000, "pct_of_total": 14.70},
+    {"region": "Others", "revenue": 6340000000, "pct_of_total": 11.40}
+  ],
+  "supply_chain": {
+    "key_suppliers": [
+      "DISCO Corporation (cutting, grinding and polishing equipment)",
+      "Fujimi Corporation (CMP slurry technologies)",
+      "Applied Materials Inc. (materials engineering solutions)",
+      "Tokyo Electron Limited (coater/developer, dry etch systems)",
+      "Shin-Etsu Chemical Co. Ltd (silicon wafers and photoresist)",
+      "SUMCO Corporation (epitaxial and polished silicon wafers)",
+      "Taiwan Semiconductor Manufacturing Company Ltd (wafer manufacturing)"
+    ],
+    "key_customers": [
+      "PC manufacturers",
+      "Data center operators",
+      "Cloud service providers",
+      "Enterprise customers",
+      "IoT device manufacturers"
+    ],
+    "concentration_risk": "High geographic concentration with China representing 29.25% of revenue, creating geopolitical risk exposure"
+  },
+  "tam": {"current": 789280000000, "forecast": 1290000000000, "cagr": 10.24},
+  "industry_specific": {
+    "process_node_roadmap": [
+      {"node": "Intel 18A", "status": "Risk production, HVM scheduled end of 2025", "features": "Backside power delivery, 1.8nm equivalent"},
+      {"node": "Intel 14A", "status": "Customer engagement phase", "features": "1.4nm equivalent, follow-on to 18A"},
+      {"node": "Intel 18A-PT", "status": "Development", "features": "Foveros Direct 3D with hybrid bonding"}
+    ],
+    "foundry_competitive_position": "Attempting to compete with TSMC and Samsung",
+    "ai_market_exposure": "Limited GPU market share (<1% vs NVIDIA's 92%)"
+  },
+  "dm_anchors": [
+    {"id": "DM-BIZ-001", "value": "Client Computing Group revenue $30.29B (43.08% of total)", "type": "H", "source": "Bullfincher.io", "date": "2026-02-18"},
+    {"id": "DM-BIZ-002", "value": "Intel Foundry Services revenue growth 1741.18% to $17.54B", "type": "H", "source": "Statista", "date": "2026-02-18"},
+    {"id": "DM-BIZ-003", "value": "China generates 29.25% of Intel's revenue ($15.53B)", "type": "H", "source": "Bullfincher.io", "date": "2026-02-18"},
+    {"id": "DM-BIZ-004", "value": "Semiconductor TAM projected $1.29T by 2030 (CAGR 10.24%)", "type": "M", "source": "Statista", "date": "2026-02-18"},
+    {"id": "DM-BIZ-005", "value": "Intel operates with 14,000+ suppliers globally", "type": "M", "source": "ResearchGate", "date": "2026-02-18"},
+    {"id": "DM-BIZ-006", "value": "Intel 18A process node in risk production, HVM scheduled end 2025", "type": "H", "source": "Tom's Hardware", "date": "2026-02-18"},
+    {"id": "DM-BIZ-007", "value": "Data Center Group revenue declined -17.41% to $12.82B", "type": "H", "source": "Bullfincher.io", "date": "2026-02-18"},
+    {"id": "DM-BIZ-008", "value": "Total Intel revenue FY2024: $52.85B", "type": "H", "source": "Multiple sources", "date": "2026-02-18"},
+    {"id": "DM-BIZ-009", "value": "AI accelerator market expected $1T by 2030 (AMD CEO estimate)", "type": "M", "source": "AInvest.com", "date": "2026-02-18"}
+  ],
+  "sources": [
+    "https://bullfincher.io/companies/intel-corporation/revenue-by-segment",
+    "https://www.statista.com/statistics/495928/net-revenue-of-intel-by-segment/",
+    "https://bullfincher.io/companies/intel-corporation/revenue-by-geography",
+    "https://www.researchgate.net/publication/317590557_Global_Supply_Chain_of_the_Intel_Corporation",
+    "https://www.statista.com/outlook/tmo/semiconductors/worldwide",
+    "https://www.tomshardware.com/pc-components/cpus/intel-foundry-roadmap-update-new-18a-pt-variant-that-enables-3d-die-stacking-14a-process-node-enablement"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "basic_data": {
+    "symbol": "INTC",
+    "data_source": "FMP(profile,quote,ratios,metrics)+yfinance",
+    "name": "Intel Corporation",
+    "sector": "Technology",
+    "industry": "Semiconductors",
+    "market_cap": null,
+    "price": 46.18,
+    "52w_high": 54.6,
+    "52w_low": 17.67,
+    "pe_ratio": null,
+    "pb_ratio": 1.538201450809846,
+    "dividend_yield": null,
+    "roe": 0.00022,
+    "profit_margin": -0.005051747299112633,
+    "operating_margin": -0.0004351692429947212,
+    "revenue": 52852998144,
+    "revenue_growth": -0.041,
+    "free_cashflow": -4504500224,
+    "history_summary": {
+      "recent_5d": [
+        {"date": "2026-02-10", "close": 47.13, "volume": 99832900},
+        {"date": "2026-02-11", "close": 48.29, "volume": 107681200},
+        {"date": "2026-02-12", "close": 46.48, "volume": 88321200},
+        {"date": "2026-02-13", "close": 46.79, "volume": 69582600},
+        {"date": "2026-02-17", "close": 46.18, "volume": 63732329}
+      ],
+      "period_high": 54.32,
+      "period_low": 18.13,
+      "period_return": 4.81,
+      "avg_volume": 86098583,
+      "trading_days": 500
+    },
+    "forward_pe": 46.59093,
+    "beta": 1.377
+  },
+  "fundamentals": {
+    "symbol": "INTC",
+    "data_source": "FMP(metrics,ratios,income)+yfinance",
+    "revenue": 52852998144,
+    "revenue_growth": -0.041,
+    "free_cashflow": -4504500224,
+    "earnings_growth": null,
+    "profit_margin": -0.005051747299112633,
+    "operating_margin": -0.0004351692429947212,
+    "roe": 0.00022,
+    "roa": 0.0028400002,
+    "debt_to_equity": 37.282,
+    "current_ratio": 2.017038796516231,
+    "earnings": -267000000
+  },
+  "technical": {
+    "symbol": "INTC",
+    "price": 46.18000030517578,
+    "sma_20": 48.15650043487549,
+    "sma_50": 43.3460001373291,
+    "sma_200": 31.36745002746582,
+    "rsi": 55.447943498867225,
+    "volume": 63732329.0,
+    "trend": "上涨"
+  }
+}

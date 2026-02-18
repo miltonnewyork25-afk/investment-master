@@ -1,0 +1,146 @@
+{
+  "ticker": "INTC",
+  "fetched_at": "2026-02-18",
+  "consensus": {
+    "rating": "Hold",
+    "buy_count": 7,
+    "hold_count": 21,
+    "sell_count": 4,
+    "avg_price_target": 47.12,
+    "high_target": 71.5,
+    "low_target": 20.4,
+    "_dm_type": "H",
+    "_dm_source": "TipRanks consensus data",
+    "_dm_date": "2026-02-18"
+  },
+  "earnings_estimates": {
+    "current_quarter": {
+      "quarter": "Q1 2026",
+      "eps_est": 0.00,
+      "rev_est": 12.2
+    },
+    "next_quarter": {
+      "quarter": "Q2 2026",
+      "eps_est": -0.19,
+      "rev_est": 12.30
+    }
+  },
+  "earnings_surprise_history": [
+    {
+      "quarter": "Q4 2025",
+      "eps_actual": 0.15,
+      "eps_estimate": 0.08,
+      "surprise_pct": 87.5,
+      "revenue_actual": 13.7,
+      "revenue_estimate": 13.41
+    },
+    {
+      "quarter": "Q3 2025",
+      "eps_actual": 0.23,
+      "eps_estimate": 0.01,
+      "surprise_pct": 2200.0,
+      "revenue_actual": 13.7,
+      "revenue_estimate": 13.13
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-01-26",
+      "action": "Upgrade",
+      "firm": "Unnamed Analyst",
+      "from": "Hold",
+      "to": "Buy",
+      "price_target": 66.52
+    },
+    {
+      "date": "2026-01-26",
+      "action": "Downgrade",
+      "firm": "HSBC",
+      "from": "Hold",
+      "to": "Reduce",
+      "price_target": 24.00,
+      "previous_target": 21.25
+    },
+    {
+      "date": "2024-05",
+      "action": "Upgrade",
+      "firm": "Wolfe Research",
+      "from": "Underperform",
+      "to": "Peer Perform",
+      "reason": "Potential margin improvements"
+    }
+  ],
+  "bull_bear_summary": {
+    "bull_case": "Launch of Intel's Gaudi accelerator signals aggressive AI competition against Nvidia; sold-out server CPU checks and improving execution signals; Gaudi 2 AI chip proves faster than Nvidia in AI creation tasks; potential margin improvements from increased in-house production capacity",
+    "bear_case": "Foundry path to profitability by 2027 appears ambitious amid soft external demand; heavy China exposure and geopolitical uncertainty; structural headwinds from TSMC's foundry scale, AMD's server CPU competitiveness, and Nvidia's accelerator dominance; historical struggles with process yields and product ramps"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-CON-001",
+      "value": "Hold consensus rating based on 7 buy, 21 hold, 4 sell ratings",
+      "type": "H",
+      "source": "TipRanks analyst consensus",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-CON-002",
+      "value": "Average price target $47.12 with range $20.4-$71.5",
+      "type": "H",
+      "source": "41 analysts consensus via multiple platforms",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-CON-003",
+      "value": "Q1 2026 EPS estimate $0.00 (non-GAAP) vs $0.05 consensus",
+      "type": "H",
+      "source": "Intel Q4 2025 earnings guidance",
+      "date": "2026-01-23"
+    },
+    {
+      "id": "DM-CON-004",
+      "value": "Q1 2026 revenue guidance $11.7B-$12.7B (midpoint $12.2B)",
+      "type": "H",
+      "source": "Intel official guidance",
+      "date": "2026-01-23"
+    },
+    {
+      "id": "DM-CON-005",
+      "value": "Q4 2025 earnings surprise: $0.15 actual vs $0.08 estimate (+87.5%)",
+      "type": "H",
+      "source": "Reported earnings results",
+      "date": "2026-01-23"
+    },
+    {
+      "id": "DM-CON-006",
+      "value": "Data Center and AI revenue $4.7B in Q4 2025, up 15% sequentially",
+      "type": "H",
+      "source": "Intel Q4 2025 earnings report",
+      "date": "2026-01-23"
+    },
+    {
+      "id": "DM-CON-007",
+      "value": "Intel AI data center market share declined from 68% (2021) to 6% (2025)",
+      "type": "R",
+      "source": "Market analysis compilation",
+      "date": "2026-02-18",
+      "chain": "Historical data center revenue share vs current AI-focused market dynamics",
+      "falsifiable": "If Intel reports significant AI accelerator revenue growth or market share gains"
+    },
+    {
+      "id": "DM-CON-008",
+      "value": "Custom ASIC business >50% YoY growth, $1B+ annualized run rate in Q4",
+      "type": "H",
+      "source": "Intel Q4 2025 earnings report",
+      "date": "2026-01-23"
+    }
+  ],
+  "sources": [
+    "https://www.tipranks.com/stocks/intc/forecast",
+    "https://finance.yahoo.com/quote/INTC/analysis/",
+    "https://stockanalysis.com/stocks/intc/forecast/",
+    "https://www.nasdaq.com/articles/intel-stock-analysis-bull-and-bear-case-intc",
+    "https://www.marketbeat.com/stocks/NASDAQ/INTC/earnings/",
+    "https://seekingalpha.com/symbol/INTC/earnings",
+    "https://www.intc.com/news-events/press-releases/detail/1759/intel-reports-fourth-quarter-and-full-year-2025-financial"
+  ]
+}

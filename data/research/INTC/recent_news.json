@@ -1,0 +1,159 @@
+{
+  "ticker": "INTC",
+  "fetched_at": "2026-02-18",
+  "key_news": [
+    {
+      "date": "2026-02-03",
+      "headline": "Intel CEO Announces GPU Production Plans",
+      "summary": "Intel CEO Lip-Bu Tan announced that the company will start producing graphics processing units (GPUs) for gaming and AI model training tasks. The project will be overseen by Kevork Kechichian, executive VP and GM of Intel's data center group.",
+      "sentiment": "positive",
+      "source": "TechCrunch"
+    },
+    {
+      "date": "2026-01-27",
+      "headline": "Intel Core Ultra Series 3 Processors Launch",
+      "summary": "Intel launched Core Ultra Series 3 processors at CES 2026, the first compute platform built on Intel 18A process. Available in over 200 designs from global partners, featuring up to 16 CPU cores, 12 Xe-cores and 50 NPU TOPS.",
+      "sentiment": "positive",
+      "source": "Intel Corporation"
+    },
+    {
+      "date": "2026-02-06",
+      "headline": "Intel Stock Rally on AI Sector Momentum",
+      "summary": "Intel stock recovering toward multi-year highs as entire AI semiconductor sector moves higher on massive cloud spending forecasts, including Amazon's $200B 2026 plan. Reports of Intel and AMD raising server CPU prices by 10% in China.",
+      "sentiment": "positive",
+      "source": "The Motley Fool"
+    },
+    {
+      "date": "2026-02-03",
+      "headline": "Mixed Insider Trading Activity",
+      "summary": "Intel CLO April Miller sold 20,000 shares for $981,000 proceeds, while CFO David Zinsner purchased 5,880 shares for $249,985 on January 27.",
+      "sentiment": "neutral",
+      "source": "Multiple Sources"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-04-23",
+      "event": "Q1 2026 Earnings Report",
+      "expected_impact": "High - Quarterly financial results and guidance update"
+    },
+    {
+      "date": "Q2 2026",
+      "event": "Panther Lake Handheld Chips Launch",
+      "expected_impact": "Medium - Launch of G3 and G3 Extreme handheld processor variants"
+    },
+    {
+      "date": "H1 2026",
+      "event": "Xeon 6+ (Clearwater Forest) Server Processor Launch",
+      "expected_impact": "High - First Intel 18A-based server processor targeting data center market"
+    },
+    {
+      "date": "H2 2026",
+      "event": "Nova Lake Desktop CPU Launch",
+      "expected_impact": "High - New desktop platform with up to 52 cores, Xe3 GPU, LGA 1954 socket"
+    },
+    {
+      "date": "Q2 2026",
+      "event": "Edge Systems with Core Ultra Series 3 Availability",
+      "expected_impact": "Medium - Expansion into edge computing market with new AI-enabled processors"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "date": "2026-02-03",
+        "insider": "April Miller (EVP, CLO)",
+        "transaction": "Sale of 20,000 shares",
+        "value": "$981,000"
+      },
+      {
+        "date": "2026-01-27",
+        "insider": "David Zinsner (EVP, CFO)",
+        "transaction": "Purchase of 5,880 shares",
+        "value": "$249,985"
+      }
+    ],
+    "net_insider_sentiment": "Mixed - CFO purchase signals confidence while CLO sale may indicate profit-taking"
+  },
+  "sec_filings": [
+    {
+      "date": "2026-01-23",
+      "type": "10-Q",
+      "description": "Most recent quarterly report"
+    },
+    {
+      "date": "2025-01-31",
+      "type": "10-K",
+      "description": "Annual report for period ending December 28, 2024"
+    }
+  ],
+  "dm_anchors": [
+    {
+      "id": "DM-NEW-001",
+      "value": "Intel Core Ultra Series 3 launching with 60% better multithread performance",
+      "type": "H",
+      "source": "Intel Corporation Press Release",
+      "date": "2026-01-27"
+    },
+    {
+      "id": "DM-NEW-002",
+      "value": "Intel stock consensus price target $41.03 from 39 analysts",
+      "type": "H",
+      "source": "Analyst Consensus",
+      "date": "2026-02-17"
+    },
+    {
+      "id": "DM-NEW-003",
+      "value": "Intel and AMD raising server CPU prices by 10% in Chinese market",
+      "type": "H",
+      "source": "Reuters via The Motley Fool",
+      "date": "2026-02-06"
+    },
+    {
+      "id": "DM-NEW-004",
+      "value": "Intel CFO purchased 5,880 shares for $42.50 each on January 27, 2026",
+      "type": "H",
+      "source": "SEC Form 4 Filing",
+      "date": "2026-01-27"
+    },
+    {
+      "id": "DM-NEW-005",
+      "value": "Intel CLO sold 20,000 shares generating $981,000 proceeds",
+      "type": "H",
+      "source": "SEC Form 4 Filing",
+      "date": "2026-02-03"
+    },
+    {
+      "id": "DM-NEW-006",
+      "value": "Xeon 6+ (Clearwater Forest) first Intel 18A server processor launching H1 2026",
+      "type": "H",
+      "source": "Intel Corporation",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-007",
+      "value": "Nova Lake desktop CPUs with up to 52 cores launching H2 2026",
+      "type": "H",
+      "source": "TechSpot",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-NEW-008",
+      "value": "Intel Q1 2026 earnings scheduled for April 23, 2026 after market close",
+      "type": "H",
+      "source": "MarketBeat/WallStreetHorizon",
+      "date": "2026-02-18"
+    }
+  ],
+  "sources": [
+    "https://techcrunch.com/2026/02/03/intel-will-start-making-gpus-a-market-dominated-by-nvidia/",
+    "https://www.intc.com/news-events/press-releases/detail/1757/ces-2026-intel-core-ultra-series-3-debuts-as-first-built",
+    "https://www.fool.com/investing/2026/02/06/why-intel-was-rallying-today/",
+    "https://www.marketbeat.com/stocks/NASDAQ/INTC/earnings/",
+    "https://www.tipranks.com/news/insider-trading/top-intel-insider-quietly-dumps-a-massive-block-of-shares-insider-trading",
+    "https://www.nasdaq.com/market-activity/stocks/intc/sec-filings",
+    "https://www.techspot.com/news/109998-intel-confirms-nova-lake-cpu-launch-2026-up.html",
+    "https://seekingalpha.com/article/4862613-intel-2026-may-make-or-break-comeback-story",
+    "https://www.benzinga.com/money/intel-stock-price-prediction"
+  ]
+}

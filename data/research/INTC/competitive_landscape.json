@@ -1,0 +1,66 @@
+{
+  "ticker": "INTC",
+  "fetched_at": "2026-02-18",
+  "market_position": {"rank": 2, "market_share": 63.6, "trend": "declining"},
+  "competitors": [
+    {"name": "Advanced Micro Devices", "ticker": "AMD", "market_share": 36.4, "key_advantage": "Strong desktop CPU performance and server market growth"},
+    {"name": "NVIDIA Corporation", "ticker": "NVDA", "market_share": 92.0, "key_advantage": "AI/GPU market dominance with CUDA ecosystem"},
+    {"name": "Taiwan Semiconductor Manufacturing", "ticker": "TSM", "market_share": 54.0, "key_advantage": "Leading-edge foundry process technology"},
+    {"name": "Samsung Electronics", "ticker": "005930.KS", "market_share": 20.0, "key_advantage": "Memory and foundry diversification"},
+    {"name": "Qualcomm", "ticker": "QCOM", "market_share": 15.0, "key_advantage": "Mobile processor and 5G connectivity leadership"}
+  ],
+  "competitive_dynamics": "Intel faces intense competition across multiple fronts: AMD has gained significant desktop CPU market share (36.4% vs Intel's 63.6%), NVIDIA dominates the high-growth AI GPU market (92% share), and TSMC leads in foundry services. Intel's foundry business competes directly with TSMC and Samsung while its CPU business faces AMD pressure. The AI acceleration market represents Intel's biggest challenge, holding <1% share versus NVIDIA's dominance.",
+  "moat_indicators": [
+    "x86 architecture ecosystem and software compatibility",
+    "Extensive patent portfolio and IP licensing",
+    "Long-term customer relationships in enterprise and data center",
+    "Manufacturing scale and fab capacity",
+    "Foundry services vertical integration capability"
+  ],
+  "industry_specific": {
+    "cpu_market_segments": {
+      "desktop": {"intel_share": 63.6, "amd_share": 36.4, "trend": "AMD gaining"},
+      "laptop": {"intel_share": 74.0, "amd_share": 25.0, "trend": "Intel retaining dominance"},
+      "server": {"intel_share": 70.0, "amd_share": 30.0, "trend": "AMD growing steadily"},
+      "gaming": {"intel_share": 56.64, "amd_share": 43.34, "trend": "Close competition"}
+    },
+    "ai_gpu_market": {
+      "nvidia_share": 92.0,
+      "amd_share": 8.0,
+      "intel_share": 1.0,
+      "market_size_2026": 12830000000,
+      "growth_rate": 30.6
+    },
+    "foundry_competition": {
+      "tsmc_leadership": "Leading-edge process nodes (3nm, 2nm)",
+      "samsung_position": "Second-tier foundry with memory integration",
+      "intel_strategy": "18A node targeting process leadership recovery"
+    },
+    "process_technology": {
+      "intel_position": "Behind TSMC in leading-edge nodes",
+      "competitive_response": "18A node with PowerVia backside power delivery",
+      "timeline": "Targeting leadership recovery in 2025"
+    }
+  },
+  "dm_anchors": [
+    {"id": "DM-BIZ-010", "value": "Intel desktop CPU market share 63.6% vs AMD 36.4%", "type": "H", "source": "Tom's Hardware", "date": "2026-02-18"},
+    {"id": "DM-BIZ-011", "value": "AMD desktop CPU unit share climbed to 36.4%, Intel down 9.5%", "type": "H", "source": "Tom's Hardware", "date": "2026-02-18"},
+    {"id": "DM-BIZ-012", "value": "NVIDIA controls 92% of GPU market in 2025", "type": "H", "source": "Carbon Credits", "date": "2026-02-18"},
+    {"id": "DM-BIZ-013", "value": "Intel laptop CPU market share remains dominant at 74%", "type": "H", "source": "Statista", "date": "2026-02-18"},
+    {"id": "DM-BIZ-014", "value": "AI GPU market size $12.83B in 2026, growing 30.6% CAGR", "type": "H", "source": "Verified Market Research", "date": "2026-02-18"},
+    {"id": "DM-BIZ-015", "value": "Intel gaming CPU share 56.64% vs AMD 43.34%", "type": "M", "source": "PassMark", "date": "2026-02-18"},
+    {"id": "DM-BIZ-016", "value": "Semiconductor industry projected $975B in 2026", "type": "M", "source": "Deloitte", "date": "2026-02-18"},
+    {"id": "DM-BIZ-017", "value": "Intel fell from 68% to 6% in AI data center after server setbacks", "type": "H", "source": "Visual Capitalist", "date": "2026-02-18"},
+    {"id": "DM-BIZ-018", "value": "Top 10 semiconductor companies hold 62.4% market share", "type": "M", "source": "StartUs Insights", "date": "2026-02-18"},
+    {"id": "DM-BIZ-019", "value": "AI chips expected to represent ~50% of semiconductor revenue in 2026", "type": "M", "source": "Deloitte", "date": "2026-02-18"}
+  ],
+  "sources": [
+    "https://www.tomshardware.com/pc-components/cpus/amd-rockets-past-35-market-share-in-desktop-pc-market",
+    "https://carboncredits.com/nvidia-controls-92-of-the-gpu-market-in-2025",
+    "https://www.statista.com/statistics/1130315/worldwide-x86-intel-amd-laptop-market-share/",
+    "https://www.cpubenchmark.net/market_share.html",
+    "https://www.deloitte.com/us/en/insights/industry/technology/technology-media-telecom-outlooks/semiconductor-industry-outlook.html",
+    "https://www.visualcapitalist.com/charted-the-battle-for-ai-data-center-revenue-2021-2025/",
+    "https://www.verifiedmarketresearch.com/product/ai-gpu-market/"
+  ]
+}

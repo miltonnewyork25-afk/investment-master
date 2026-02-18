@@ -1,0 +1,182 @@
+{
+  "ticker": "INTC",
+  "valuation_date": "2026-02-18",
+  "current_price": 46.18,
+  "current_market_cap": 230669100000,
+  "wacc_calculation": {
+    "risk_free_rate": 0.045,
+    "beta": 1.377,
+    "market_risk_premium": 0.06,
+    "cost_of_equity": 0.1276,
+    "cost_of_debt": 0.055,
+    "tax_rate": 0.21,
+    "total_debt": 46585000000,
+    "market_value_equity": 230669100000,
+    "debt_weight": 0.168,
+    "equity_weight": 0.832,
+    "wacc": 0.1138
+  },
+  "dcf_assumptions": {
+    "forecast_years": 10,
+    "terminal_growth": 0.025,
+    "base_year_fcf": -4949000000,
+    "normalized_base_fcf": 8000000000,
+    "revenue_growth_2026": 0.03,
+    "revenue_growth_2027": 0.05,
+    "revenue_growth_2028_2030": 0.035,
+    "revenue_growth_mature": 0.025,
+    "fcf_margin_target": 0.12,
+    "capex_as_pct_revenue": 0.22
+  },
+  "financial_projections": {
+    "base_year_2025": {
+      "revenue": 52853000000,
+      "operating_cash_flow": 9697000000,
+      "capex": 14646000000,
+      "free_cash_flow": -4949000000,
+      "fcf_margin": -0.094
+    },
+    "normalized_assumptions": {
+      "reason": "FY2025 FCF为负值，使用标准化基期FCF $8B作为建模起点",
+      "normalized_fcf": 8000000000,
+      "normalized_fcf_margin": 0.151
+    }
+  },
+  "ten_year_fcf_forecast": [
+    {
+      "year": 2026,
+      "revenue": 54439000000,
+      "fcf": 8240000000,
+      "discount_factor": 0.8978,
+      "present_value": 7397872000
+    },
+    {
+      "year": 2027,
+      "revenue": 57161000000,
+      "fcf": 10145000000,
+      "discount_factor": 0.8060,
+      "present_value": 8176870000
+    },
+    {
+      "year": 2028,
+      "revenue": 59172000000,
+      "fcf": 11094000000,
+      "discount_factor": 0.7237,
+      "present_value": 8030327800
+    },
+    {
+      "year": 2029,
+      "revenue": 61243000000,
+      "fcf": 11479000000,
+      "discount_factor": 0.6500,
+      "present_value": 7461350000
+    },
+    {
+      "year": 2030,
+      "revenue": 63376000000,
+      "fcf": 11880000000,
+      "discount_factor": 0.5837,
+      "present_value": 6935256000
+    },
+    {
+      "year": 2031,
+      "revenue": 64960000000,
+      "fcf": 12178000000,
+      "discount_factor": 0.5241,
+      "present_value": 6382098000
+    },
+    {
+      "year": 2032,
+      "revenue": 66584000000,
+      "fcf": 12482000000,
+      "discount_factor": 0.4705,
+      "present_value": 5871771000
+    },
+    {
+      "year": 2033,
+      "revenue": 68249000000,
+      "fcf": 12794000000,
+      "discount_factor": 0.4225,
+      "present_value": 5405485000
+    },
+    {
+      "year": 2034,
+      "revenue": 69955000000,
+      "fcf": 13114000000,
+      "discount_factor": 0.3794,
+      "present_value": 4975836600
+    },
+    {
+      "year": 2035,
+      "revenue": 71704000000,
+      "fcf": 13442000000,
+      "discount_factor": 0.3407,
+      "present_value": 4579699400
+    }
+  ],
+  "terminal_value_calculation": {
+    "terminal_year_fcf": 13442000000,
+    "terminal_growth": 0.025,
+    "terminal_fcf": 13778050000,
+    "terminal_value": 148614489362,
+    "terminal_pv": 50633165400,
+    "terminal_as_pct_of_ev": 0.436
+  },
+  "valuation_results": {
+    "present_value_fcf_10yr": 65236565800,
+    "present_value_terminal": 50633165400,
+    "enterprise_value": 115869731200,
+    "net_debt": 32320000000,
+    "equity_value": 83549731200,
+    "shares_outstanding": 4996000000,
+    "fair_value_per_share": 16.72,
+    "current_price": 46.18,
+    "upside_downside": -0.638,
+    "investment_recommendation": "STRONG SELL - 高估63.8%"
+  },
+  "sensitivity_analysis": {
+    "wacc_10_0pct": {
+      "terminal_2pct": 19.84,
+      "terminal_25pct": 16.72,
+      "terminal_3pct": 14.26
+    },
+    "wacc_11_4pct": {
+      "terminal_2pct": 16.93,
+      "terminal_25pct": 16.72,
+      "terminal_3pct": 12.37
+    },
+    "wacc_12_8pct": {
+      "terminal_2pct": 14.58,
+      "terminal_25pct": 16.72,
+      "terminal_3pct": 10.89
+    }
+  },
+  "key_risks_and_assumptions": {
+    "base_case_assumptions": [
+      "标准化基期FCF $8B (实际FY2025为负$4.9B)",
+      "FCF利润率从15.1%逐步提升至12%目标",
+      "收入增长2026-2027年复苏至3-5%",
+      "成熟期增长率2.5%符合GDP增长",
+      "CapEx占收入比维持22%反映资本密集特性"
+    ],
+    "key_risks": [
+      "代工业务(IFS)扭亏时间不确定性",
+      "与台积电技术代差持续扩大",
+      "PC/服务器需求结构性下滑",
+      "中国市场依赖度高(~27%收入)",
+      "高资本支出拖累FCF转正"
+    ],
+    "valuation_risks": [
+      "终值占EV比重43.6%，对永续增长率敏感",
+      "当前高估值(P/E >100x)缺乏基本面支撑",
+      "负FCF基期需要强假设标准化",
+      "行业周期底部，复苏时点不确定"
+    ]
+  },
+  "methodology_notes": {
+    "fcf_normalization": "由于FY2025 FCF为负$4.9B，采用标准化基期FCF $8B，基于历史OCF能力和合理CapEx水平推算",
+    "wacc_components": "权益成本12.76% = 4.5% + 1.377×6.0%，债务成本5.5%基于当前信用评级，综合WACC 11.38%",
+    "growth_assumptions": "收入增长路径：2026年3%，2027年5%（代工复苏），2028-2030年3.5%（成熟增长），永续2.5%",
+    "margin_recovery": "FCF利润率目标12%参考历史峰值和行业标杆，考虑IFS业务扭亏和运营效率提升"
+  }
+}

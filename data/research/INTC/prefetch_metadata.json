@@ -1,0 +1,137 @@
+{
+  "version": "4.0",
+  "ticker": "INTC",
+  "company": "Intel Corporation",
+  "industry": "semiconductor",
+  "timestamp": "2026-02-18T10:11:00Z",
+  "data_files": {
+    "stock_full": {
+      "status": "ok",
+      "source": "MCP:analyze_stock",
+      "fetched_at": "2026-02-18T10:06:00Z",
+      "expires_at": "2026-02-18T14:06:00Z"
+    },
+    "peer_comparison": {
+      "status": "ok",
+      "source": "MCP:compare_stocks",
+      "fetched_at": "2026-02-18T10:06:00Z",
+      "expires_at": "2026-02-19T10:06:00Z"
+    },
+    "market_context": {
+      "status": "ok",
+      "source": "MCP:get_market_overview",
+      "fetched_at": "2026-02-18T10:06:00Z",
+      "expires_at": "2026-02-18T14:06:00Z"
+    },
+    "dcf_valuation": {
+      "status": "ok",
+      "source": "Manual:DCF_analysis",
+      "fetched_at": "2026-02-18T10:42:00Z",
+      "expires_at": "2026-02-25T10:42:00Z",
+      "notes": "Hand-crafted DCF analysis, fair value $16.72"
+    },
+    "comparable_analysis": {
+      "status": "ok",
+      "source": "Manual:Comparable_companies",
+      "fetched_at": "2026-02-18T10:46:00Z",
+      "expires_at": "2026-02-25T10:46:00Z",
+      "notes": "Hand-crafted peer analysis, weighted fair value $36.95"
+    },
+    "analyst_consensus": {
+      "status": "ok",
+      "source": "WebSearch:Agent-A",
+      "fetched_at": "2026-02-18T10:09:00Z",
+      "expires_at": "2026-02-19T10:09:00Z"
+    },
+    "prediction_market": {
+      "status": "ok",
+      "source": "WebSearch:Agent-B",
+      "fetched_at": "2026-02-18T10:10:00Z",
+      "expires_at": "2026-02-18T22:10:00Z"
+    },
+    "recent_news": {
+      "status": "ok",
+      "source": "WebSearch:Agent-C",
+      "fetched_at": "2026-02-18T10:09:00Z",
+      "expires_at": "2026-02-18T16:09:00Z"
+    },
+    "business_overview": {
+      "status": "ok",
+      "source": "WebSearch:Agent-D",
+      "fetched_at": "2026-02-18T10:10:00Z",
+      "expires_at": "2026-03-20T10:10:00Z"
+    },
+    "competitive_landscape": {
+      "status": "ok",
+      "source": "WebSearch:Agent-D",
+      "fetched_at": "2026-02-18T10:10:00Z",
+      "expires_at": "2026-02-25T10:10:00Z"
+    },
+    "management_team": {
+      "status": "ok",
+      "source": "WebSearch:Agent-E",
+      "fetched_at": "2026-02-18T10:11:00Z",
+      "expires_at": "2026-03-20T10:11:00Z"
+    },
+    "smart_money_13f": {
+      "status": "ok",
+      "source": "WebSearch:Agent-F",
+      "fetched_at": "2026-02-18T10:10:00Z",
+      "expires_at": "2026-02-25T10:10:00Z"
+    },
+    "options_short_interest": {
+      "status": "ok",
+      "source": "WebSearch:Agent-G",
+      "fetched_at": "2026-02-18T10:11:00Z",
+      "expires_at": "2026-02-18T22:11:00Z"
+    },
+    "shared_context": {
+      "status": "ok",
+      "source": "prefetch:aggregator",
+      "fetched_at": "2026-02-18T10:11:00Z",
+      "expires_at": "2026-02-18T22:11:00Z"
+    },
+    "dm_anchor_registry": {
+      "status": "ok",
+      "source": "prefetch:aggregator",
+      "fetched_at": "2026-02-18T10:12:00Z",
+      "expires_at": "2026-02-18T22:12:00Z"
+    }
+  },
+  "quality": {
+    "complete_fields": 15,
+    "total_fields": 15,
+    "completeness_pct": 100.0,
+    "files_ok": 15,
+    "files_error": 0,
+    "files_total": 15
+  },
+  "dm_quality": {
+    "total_anchors": 30,
+    "h_count": 25,
+    "r_count": 2,
+    "s_count": 1,
+    "manual_fixed_count": 2,
+    "h_pct": 83.3,
+    "anchors_with_source": 30,
+    "r_with_chain": 2,
+    "r_with_falsifiable": 2,
+    "integrity_check": "completed"
+  },
+  "layer_status": {
+    "layer1_mcp": "ok",
+    "layer2_python": "ok",
+    "layer3_websearch": "ok"
+  },
+  "agent_performance": {
+    "agent_a_duration_ms": 145662,
+    "agent_b_duration_ms": 178568,
+    "agent_c_duration_ms": 130981,
+    "agent_d_duration_ms": 181397,
+    "agent_e_duration_ms": 113029,
+    "agent_f_duration_ms": 135588,
+    "agent_g_duration_ms": 85254,
+    "total_parallel_time_ms": 181397,
+    "avg_agent_time_ms": 138640
+  }
+}
