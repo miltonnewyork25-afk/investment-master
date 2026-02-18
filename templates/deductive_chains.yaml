@@ -1,0 +1,178 @@
+# 演绎链知识库 — 跨报告累积
+# ============================================================
+# 位置: knowledge/deductive_chains.yaml (main) 或 worktree本地
+# 更新: 每份AI生态/半导体报告完成后追加/更新
+# ============================================================
+
+version: "1.0"
+last_updated: "2026-02-19"
+
+# === 演绎链注册表 ===
+chains:
+
+  DED-1:
+    name: "Agent经济的Token乘数效应"
+    domain: ["AI生态", "半导体"]
+    applicable_tickers: ["AMZN", "MSFT", "GOOG", "META", "NVDA", "AMD", "TSM"]
+    version: "1.0"
+    created_in: "AMZN v1.0"
+    created_date: "2026-02-19"
+    status: "active"  # active / weakened / strengthened / falsified
+
+    premises:
+      P1:
+        statement: "单次传统API调用消耗 ~0.5-2K tokens"
+        certainty: "high"
+        source: "API pricing pages, public benchmarks"
+        last_verified: "2026-02-19"
+      P2:
+        statement: "单次Agent任务消耗 ~50K-2M tokens (100-1000x)"
+        certainty: "high"
+        source: "Observed in Claude Code, GPT agents"
+        last_verified: "2026-02-19"
+      P3:
+        statement: "Agent-calls-Agent产生 N×M 乘数"
+        certainty: "medium"
+        source: "Observed in multi-agent frameworks"
+      P4:
+        statement: "Enterprise Agent渗透率 FY2028 ~25-40%"
+        certainty: "low"
+        source: "Analyst estimates, wide dispersion"
+      P5:
+        statement: "Consumer Agent渗透率 FY2028 ~10-20%"
+        certainty: "low"
+        source: "Analyst estimates"
+
+    conclusion: "云推理收入CAGR 35-50% (vs 类比锚点20-25%)"
+    uncertainty_range: "20%-80% CAGR"
+
+    falsification:
+      - condition: "FY2026Q4推理API调用量增速<3x YoY"
+        check_date: "2027-02"
+        status: "pending"
+      - condition: "Agent DAU/MAU比<5% across all platforms"
+        check_date: "2026-12"
+        status: "pending"
+
+    vs_analogy: "矛盾 — 类比预测减速, 演绎预测可能加速"
+
+    used_in_reports:
+      - ticker: "AMZN"
+        chapter: "Ch07 §7.3.2"
+        cq_impact: "CQ1↑ CQ2↓"
+
+  DED-2:
+    name: "推理/训练比反转"
+    domain: ["半导体", "AI生态"]
+    applicable_tickers: ["NVDA", "AMD", "TSM", "ASML", "AMZN", "MSFT", "GOOG"]
+    version: "1.0"
+    created_in: "AMZN v1.0"
+    created_date: "2026-02-19"
+    status: "active"
+
+    premises:
+      P1:
+        statement: "FY2024-2025 AI CapEx ~70%训练/30%推理"
+        certainty: "high"
+      P2:
+        statement: "训练需求增速将减速(scaling law边际递减)"
+        certainty: "medium"
+      P3:
+        statement: "Agent经济使推理需求增速远超训练"
+        certainty: "medium"
+        depends_on: "DED-1"
+      P4:
+        statement: "推理最优硬件≠训练最优硬件"
+        certainty: "low"
+
+    conclusion: "训练/推理比从70:30反转至30:70 (FY2027-2028)"
+    uncertainty_range: "40:60 到 20:80"
+
+    falsification:
+      - condition: "NVDA FY2027推理收入占比仍<40%"
+        status: "pending"
+      - condition: "自定义芯片MLPerf推理未超越NVDA"
+        status: "pending"
+
+    vs_analogy: "矛盾 — 类比(NVDA份额稳定) vs 演绎(推理市场可替代)"
+    used_in_reports: []
+
+  DED-3:
+    name: "CapEx回收路径突变(Agent变现)"
+    domain: ["AI生态"]
+    applicable_tickers: ["AMZN", "MSFT", "GOOG"]
+    version: "1.0"
+    created_in: "AMZN v1.0"
+    created_date: "2026-02-19"
+    status: "active"
+
+    premises:
+      P1:
+        statement: "当前共识CapEx回收=卖云订阅"
+        certainty: "high"
+      P2:
+        statement: "Agent经济创造按任务/按结果收费模式"
+        certainty: "medium"
+      P3:
+        statement: "按任务收费markup 10-100x vs 按token收费"
+        certainty: "low"
+
+    conclusion: "Agent变现ROIC可能达15-25% (vs 传统8-12%)"
+    uncertainty_range: "8-25%"
+
+    falsification:
+      - condition: "FY2027 Agent相关收入占云收入<10%"
+        status: "pending"
+      - condition: "Agent定价持续按token而非按任务"
+        status: "pending"
+
+    vs_analogy: "补充 — 新增类比无法覆盖的回收路径"
+    used_in_reports: []
+
+  DED-4:
+    name: "推理成本Jevons效应"
+    domain: ["AI生态", "半导体"]
+    applicable_tickers: ["AMZN", "MSFT", "GOOG", "META", "NVDA", "TSM"]
+    version: "1.0"
+    created_in: "AMZN v1.0"
+    created_date: "2026-02-19"
+    status: "active"
+
+    premises:
+      P1:
+        statement: "推理成本正以~70%/年速度下降"
+        certainty: "high"
+      P2:
+        statement: "成本下降使原不经济的AI应用变可行"
+        certainty: "medium"
+      P3:
+        statement: "新应用创造新需求,总消耗增加(Jevons)"
+        certainty: "medium"
+
+    conclusion: "成本下降100x × 需求增1000x = 总支出增10x"
+    uncertainty_range: "总支出增2-30x"
+
+    falsification:
+      - condition: "推理成本下降但总推理支出不增反降"
+        status: "pending"
+      - condition: "企业AI预算增速<15% YoY"
+        status: "pending"
+
+    vs_analogy: "补充 — 历史类比(成本降=利润升)可能被Jevons颠覆"
+    used_in_reports: []
+
+# === 跨链依赖图 ===
+dependencies:
+  DED-2.P3: "depends_on DED-1"  # 推理/训练反转依赖Agent token乘数
+  DED-3.P2: "depends_on DED-1"  # CapEx回收依赖Agent经济
+  DED-4.P2: "related_to DED-1"  # Jevons效应与Agent需求相关
+
+# === 更新协议 ===
+update_protocol:
+  trigger: "每份AI生态或半导体Tier 3报告完成后"
+  actions:
+    - "检查每条active链的前提是否有新数据"
+    - "检查falsification条件是否已触发"
+    - "更新status: active/weakened/strengthened/falsified"
+    - "追加新演绎链(如有)"
+    - "更新used_in_reports列表"

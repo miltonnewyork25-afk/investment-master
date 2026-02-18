@@ -376,6 +376,8 @@ reports/{TICKER}/data/
 | CG19 | golden_numbers偏差=0 | FAIL | 微循环 |
 | CG20 | 概率集全报告唯一 | FAIL | 第1圈 |
 | CG21 | 关键指标重复度≤阈值 | WARN | 第1圈 |
+| CG22 | AI生态/半导体报告含≥1条演绎链 | WARN | 第2圈(deductive-dynamics) |
+| CG23 | 演绎链有证伪条件 | WARN | 第2圈(deductive-dynamics) |
 
 ---
 
