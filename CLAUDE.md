@@ -27,6 +27,19 @@
 - **7-10分(宽)**: 发现系统 — 不给目标价，映射可能性空间+开放问题+转折点
 - **详见**: `docs/paradigm_research_framework.md`
 
+**Tier 3评级标准** (量化触发器, 全报告对齐):
+
+| 评级 | 量化触发 (期望回报) | 含义 |
+|------|-------------------|------|
+| **深度关注** | > +30% | 显著低估, 值得深入研究 |
+| **关注** | +10% ~ +30% | 偏积极, 纳入观察名单 |
+| **中性关注** | -10% ~ +10% | 接近合理估值, 观望 |
+| **审慎关注** | < -10% | 偏高估/风险上升, 谨慎对待 |
+
+- 期望回报 = (概率加权EV - 市值) / 市值
+- PW≥7(发现系统)不强制单一评级, 但需给条件评级
+- **禁止**: 5档体系混入Tier 3 | "买入/卖出/推荐"等用语
+
 ---
 
 ## 行业路由
@@ -47,7 +60,7 @@
 
 **第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(见下)
 
-**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)**
+**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)** | **I 知识前置(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
@@ -85,7 +98,9 @@
 | 等级 | 工具类型 | 代表工具 |
 |------|----------|----------|
 | **P0** | MCP数据工具 | `baggers_summary` `fmp_data` `analyze_stock` `polymarket_events` |
-| **P1** | 专业投资skill | `/investment-logic-toolkit` `/company-research-agent` `/data-prefetch` |
+| **P1** | 专业投资skill | `/investment-logic-toolkit` `/data-prefetch` |
+| **P1** | 分析深度skill (v17.0) | `/assumption-audit` `/risk-topology` `/valuation-independence-audit` `/red-team-suite` |
+| **P1** | 质量保障skill (v17.0) | `/valuation-arithmetic-verifier` `/valuation-quality-gate` `/omission-scanner` |
 | **P2** | Agent协作工具 | `/dispatching-parallel-agents` `/cross-validation` `/bear-case-generator` |
 
 **完整列表**: 各行业worktree CLAUDE.md
@@ -150,6 +165,22 @@ bash scripts/find_best_reference.sh {TICKER}
 
 ---
 
+## 铁律 I: 知识前置
+
+**Tier 3分析启动时，必须在Phase 0前完成知识检索+文献侦察**:
+
+1. **Phase -1 知识库检索** — `bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}` → 读取top-1 planning archive → 输出 `knowledge_context.md`
+2. **Phase -0.5 文献侦察** — 5路WebSearch(D1深度/D2对抗/D3行业/D4专家/D5模型) → 精读Top 3-5 → 输出 `lit_recon_memo.md`
+
+**产出**: `reports/{TICKER}/data/knowledge_context.md` (~2K) + `reports/{TICKER}/data/lit_recon_memo.md` (~3K)
+**成本**: 持久化<8K tokens | 临时读取~16K(不持久化)
+
+**禁止**: 跳过Phase -1直接开始Phase 0 | 忽略相似公司的失败教训 | 文献侦察E节(分歧)为空
+
+**详见**: `docs/deep_dive_protocol.md` Phase -1 / Phase -0.5
+
+---
+
 ## 文档索引（按需加载）
 
 | 场景 | 核心文档 |
@@ -165,11 +196,15 @@ bash scripts/find_best_reference.sh {TICKER}
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |
 | **数据可信度** | `docs/confidence_system.md` v3.0 (DM锚定+脚本验证) |
-| **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) |
+| **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) + `/red-team-suite` + `/risk-topology` |
+| **分析深度** | `/assumption-audit`(信念反演+共识解构+约束分类) `/valuation-independence-audit` (v17.0) |
 | **DAG编排** | `docs/dag_orchestrator.md` (DAG-0~7问题树+EC绑定) |
 | **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
 | **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
+| **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
+| **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
+| **规划经验** | `knowledge/planning_archives/{TICKER}.md` (12份报告规划档案) |
 
 **完整索引**: 原CLAUDE.md第204-246行 → `docs/framework_index.md`
 
@@ -177,8 +212,21 @@ bash scripts/find_best_reference.sh {TICKER}
 
 ## 系统升级
 
-**最新版本**: v13.0 框架升级 (RDDT质量复盘驱动6项改进)
+**最新版本**: v17.0 Skills整合精简 + 质量保障+分析深度Skill套件
 **健康监控**: `bash tests/framework_health_check.sh`
+
+**v17.0整合(2026-02-17)**: Skills精简——11个→4个整合Skill:
+- `red-team-suite` v2.0 = red-team-executor + red-team-calibration + red-team-effectiveness-gate (Phase 4一站式)
+- `assumption-audit` v2.0 = belief-inversion + consensus-deconstruction + constraint-classifier (三模式假设审计)
+- `valuation-quality-gate` v2.0 = dispersion-honesty-check + megacap-valuation-framing (Phase 5估值元审查)
+- 删除9个过时散文件(.skill.md) + 归档eco-tech-analyzer
+- **不影响worktree**: 各worktree保留独立副本，需手动同步
+
+**v16.0升级(2026-02-17)**: 5个质量保障Skill + verify_dcf_arithmetic.py — 源自MSFT v1.0质量评估(3.5/5)
+
+**v15.0升级(2026-02-17)**: 6个分析深度Skill + 评级标准量化触发器 + CG18 — 源自AMAT反思
+
+**v14.0升级(2026-02-16)**: 知识层(Phase -1知识库检索+Phase -0.5外部文献侦察) + knowledge_index.yaml(11报告结构化索引+相似性图谱) + find_relevant_knowledge.sh(top-3匹配) + planning_archives(11份规划经验档案) + search_templates.yaml(5维度搜索+行业来源+质量过滤) + 铁律I知识前置
 
 **v13.0升级(2026-02-14)**: Scout Protocol v2.0(学执行过程: checkpoint基线+staging prompt基线+执行参数) + Agent产出合同v2.0(模块类型最低字符门槛+重跑机制) + Supplement扩展协议(Phase 5.5后补强薄弱CQ) + CG1/CG2动态基准(按可能性宽度分层: 0-3分250K/4-6分200K/7-10分350K) + Phase 4 Cross-Agent验证(Agent B读P1-3 staging) + quality_sentinel v1.1(模块类型感知)
 

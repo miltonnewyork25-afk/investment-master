@@ -158,18 +158,30 @@ phases:
     total_chars: 160711
     commit: "1675d59"
 
+  complete_v1.1:
+    status: completed
+    session: 5
+    date: "2026-02-14"
+    file: "reports/RDDT/RDDT_Complete_v1.1_2026-02-14.md"
+    total_chars: 245584
+    commit: "6a87871"
+    supplements:
+      - staging/supplement_a_platform_risks.md  # 30.4K, CQ1/2/4/5
+      - staging/supplement_b_financial_micro.md  # 27.6K, CQ3/6
+      - staging/supplement_c_reverse_dcf.md     # 26.6K, CQ6+全体交叉
+
 quality_gates:
-  cg_result: "11/13"
-  cg_pass: ["CG3","CG4","CG5","CG6","CG7","CG8","CG9","CG10","CG11","CG12","CG13","CG14"]
-  cg_fail: ["CG1","CG2"]  # benchmark scaling (160K vs 311K benchmark from 450K+ reports)
-  cg_note: "超plan target 126.5K by 27%, CG1/CG2 fail is benchmark-relative not quality"
-  dm_coverage: "93%"
-  dm_anchors: 120
-  mermaid: 39
+  cg_result: "13/13"
+  cg_pass: ["CG1","CG2","CG3","CG4","CG5","CG6","CG7","CG8","CG9","CG10","CG11","CG12","CG13","CG14"]
+  cg_fail: []
+  cg_note: "v1.1 Supplement合并后CG1/CG2修复, 245K > 200K基准"
+  dm_coverage: "96%+"
+  dm_anchors: 240  # v1.0: 120 + SA: 50 + SB: 42 + SC: 28
+  mermaid: 69
   ks: 12
   ts: 8
   ci: 6
   cq: 7
   bear_cases: 7
   method_dispersion: "2.91x"
-  agent_total: 12
+  agent_total: 15  # 12 + 3 Supplement Agents

@@ -1,0 +1,127 @@
+# Excellence Catalog v1.0 - 动态最佳实践目录
+# 基于17份完成报告的质量评估，提取板块级最佳实践
+# 每当新报告某板块超越现有最佳时，自动更新此目录
+
+metadata:
+  version: "1.0"
+  last_updated: "2026-02-18"
+  total_reports_analyzed: 17
+  quality_threshold: 4.0/5.0
+
+# ============================================================
+# 估值分析 (Valuation Analysis)
+# ============================================================
+valuation:
+  belief_inversion:
+    champion: "KLAC_Ch24"
+    score: 4.5
+    report_path: "reports/KLAC/KLAC_Complete_v1.0_2026-02-17.md"
+    method: "Reverse DCF → 隐含信念集 → 脆弱度排序 → 数学不可能性测试"
+    key_innovation: "隐含WFE份额28-32%=数学不可能 (TAM天花板测试)"
+    when_to_use: "隐含增长假设不现实时 (P/E >40x 或 隐含市场份额>物理上限)"
+    transferable_to: ["半导体", "垄断型企业", "高估值成长股"]
+
+  method_independence_audit:
+    champion: "AMAT_Ch10.5"
+    score: 4.4
+    method: "五方法估值 → 假设重叠审计 → 合并共享假设方法 → 独立性离散度"
+    key_innovation: "发现M1/M2/M5共享假设，实际只有2.5个独立方法"
+    when_to_use: "多方法估值时 (≥3种方法)"
+    transferable_to: ["所有行业", "复杂估值情况"]
+
+# ============================================================
+# 客户行为分析 (Customer Behavior)
+# ============================================================
+customer_analysis:
+  attribution_framework:
+    champion: "APP_Ch15"
+    score: 5.0
+    method: "D30归因偏差 → 客户迁移四维度 → 粘性分层评分 → LTV/CAC建模"
+    key_innovation: "揭示表面6400万用户实际活跃60万的量级偏差"
+    when_to_use: "B2B平台、SaaS、电商平台"
+    transferable_to: ["所有平台型企业", "订阅制业务"]
+
+  nrr_reconstruction:
+    champion: "ORCL_S1"
+    score: 4.6
+    method: "从财务数据反推NRR → 客户分层分析 → 多云策略影响量化"
+    key_innovation: "Oracle NRR 110-120%首次准确推算"
+    when_to_use: "企业软件、云服务公司"
+    transferable_to: ["B2B SaaS", "企业服务"]
+
+# ============================================================
+# 护城河分析 (Competitive Moats)
+# ============================================================
+moat_analysis:
+  存量vs增量护城河:
+    champion: "KLAC_Ch6"
+    score: 4.4
+    method: "存量护城河(切换成本) vs 增量护城河(新客选择) 分离量化"
+    key_innovation: "Oracle存量极深但增量失守 - 护城河双重现实"
+    when_to_use: "技术密集型垄断企业"
+    transferable_to: ["企业软件", "半导体设备", "数据库"]
+
+# ============================================================
+# 财务建模 (Financial Modeling)
+# ============================================================
+financial_modeling:
+  capex_transmission:
+    champion: "MSFT_Ch13"
+    score: 4.4
+    method: "CapEx → PP&E → 折旧 → 产能 → 收入 全链条传导分析"
+    key_innovation: "AI CapEx的12-18个月J曲线效应量化"
+    when_to_use: "重资本投入的科技公司"
+    transferable_to: ["云服务", "数据中心", "半导体"]
+
+  debt_dynamics:
+    champion: "ORCL_P2_AgentB"
+    score: 4.2
+    method: "全口径债务 → 利息覆盖率 → 信用评级迁移概率 → 融资成本传导"
+    key_innovation: "50%维持/30%降级/15%垃圾/5%回升的概率分布"
+    when_to_use: "高杠杆企业 (D/E >200%)"
+    transferable_to: ["杠杆收购", "周期性行业", "资本密集型"]
+
+# ============================================================
+# 红队审计 (Red Team Analysis)
+# ============================================================
+red_team:
+  systematic_bias_calibration:
+    champion: "AMAT_P4"
+    score: 4.3
+    method: "双向校准 - 不仅下调乐观假设，也识别过度悲观"
+    key_innovation: "8个CQ全部下调→6下调2上调，防止系统性悲观"
+    when_to_use: "红队结果过度单向时"
+    transferable_to: ["所有报告Phase 4"]
+
+# ============================================================
+# 行业专题分析
+# ============================================================
+industry_analysis:
+  semiconductor_ecosystem:
+    champion: "AMAT_L4_validation"
+    score: 4.1
+    method: "4报告交叉网络验证 → 生态系统一致性检查 → FLAG标记"
+    key_innovation: "发现跨报告的逻辑矛盾和数据不一致"
+    when_to_use: "同行业多公司分析"
+    transferable_to: ["所有行业生态分析"]
+
+# ============================================================
+# 动态更新机制
+# ============================================================
+update_triggers:
+  - condition: "新报告板块评分 > 现有最佳 + 0.1"
+    action: "更新champion和相关元数据"
+  - condition: "新方法论被验证跨行业适用"
+    action: "扩展transferable_to列表"
+  - condition: "现有最佳实践被证伪"
+    action: "降级或移除，寻找替代"
+
+# ============================================================
+# 使用指南
+# ============================================================
+usage_guide:
+  phase_neg1: ["查找相似行业最佳实践", "识别可移植方法论"]
+  phase_0: ["选择估值框架参考", "确定分析重点板块"]
+  phase_1to3: ["实施具体分析方法", "对标质量基准"]
+  phase_4: ["参考最佳红队实践", "避免系统性偏差"]
+  phase_5: ["应用最佳估值技术", "质量门控对标"]
