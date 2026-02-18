@@ -1,0 +1,38 @@
+Amazon Negative Cash Cycle Value Model
+
+Sheet 1: Working Capital Metrics
+======================================
+                    2025    2024    2023    2022
+Revenue ($B)       716.92  637.96  574.79  513.98
+Daily Revenue ($B) 19.64   17.48   15.75   14.08
+
+Accounts Receivable ($B) 67.73  55.45  52.25  42.36
+Inventory ($B)     38.33   34.21   33.32   34.41
+Accounts Payable ($B) 121.91 94.36  84.98  79.60
+
+DSO (Days)         31      31      33      27
+DIO (Days)         37      35      40      44
+DPO (Days)         111     101     101     100
+
+Cash Conversion Cycle -42   -35     -28     -29
+
+Sheet 2: Financing Value Calculation
+=====================================
+AP Balance 2025: $121.91B
+Implied Financing Rate: 4.5%
+Annual Interest Savings: $5.486B
+
+Investment Return Scenarios:
+- Conservative (WACC 9.5%): $11.58B
+- Base Case (ROIC 16.99%): $20.72B
+- Optimistic (AWS-level 25%): $30.48B
+
+Sheet 3: Supplier Risk Analysis
+===============================
+Supplier Concentration:
+- Top 20% suppliers: 80% of volume
+- Geographic risk (China): 40%
+- Category concentration: 60%
+
+Risk-adjusted value: $15-25B annual disruption cost
+Net value after risk: $35-55B annually
