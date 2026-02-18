@@ -20,7 +20,7 @@
 | **Phase 4** | 📅 PLANNED | 0% | 60K | Red team suite |
 | **Phase 5** | 📅 PLANNED | 0% | 80K | Multi-method valuation |
 
-**Estimated Total**: 420K+ characters (发现系统级别)
+**Estimated Total**: 445K+ characters (发现系统+Amazon特异性升级)
 
 ---
 
