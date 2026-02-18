@@ -1,0 +1,126 @@
+# Golden Numbers — {TICKER} 单一事实源
+# ============================================================
+# 生成: Phase 0 完成后 | 更新: 每Phase完成后追加
+# 规则: 报告中每个关键指标必须使用此文件中的值
+# 位置: reports/{TICKER}/data/golden_numbers.yaml
+# ============================================================
+
+ticker: "{TICKER}"
+company: "{COMPANY}"
+generated: "{YYYY-MM-DD}"
+last_updated: "{YYYY-MM-DD}"
+source_phase: "Phase 0"
+
+# === 核心财务 (H级, 来自FMP/SEC) ===
+revenue:
+  value: ""           # e.g. "$716.9B"
+  fy: ""              # e.g. "FY2025"
+  source: ""          # e.g. "DM-FIN-001, FMP income"
+  dm_id: ""           # e.g. "DM-FIN-001"
+
+operating_income:
+  value: ""
+  fy: ""
+  source: ""
+  dm_id: ""
+
+net_income:
+  value: ""
+  fy: ""
+  source: ""
+  dm_id: ""
+
+fcf:
+  value: ""
+  fy: ""
+  source: ""
+  dm_id: ""
+
+capex:
+  value: ""
+  fy: ""
+  source: ""
+  dm_id: ""
+
+gross_margin:
+  value: ""
+  fy: ""
+  source: ""
+
+operating_margin:
+  value: ""
+  fy: ""
+  source: ""
+
+# === 分部数据 ===
+# 按分部列出收入和利润, 口径必须一致
+segments:
+  # - name: "AWS"
+  #   revenue: "$132.4B"
+  #   operating_income: "$45.6B"
+  #   opm: "34.4%"
+  #   source: "10-K segment reporting"
+  #   dm_id: "DM-FIN-010"
+  #   caliber_note: "SEC filing口径, Q1-Q4加总"
+
+# === 估值锚点 ===
+market_cap:
+  value: ""
+  date: ""
+  source: ""
+
+share_price:
+  value: ""
+  date: ""
+  source: ""
+
+shares_outstanding:
+  value: ""
+  source: ""
+
+pe_ttm:
+  value: ""
+  source: ""
+
+ev_ebitda:
+  value: ""
+  source: ""
+
+# === 市场份额 ===
+# 口径是矛盾高发区, 必须注明
+market_shares:
+  # - metric: "US ecommerce share"
+  #   value: "37.6%"
+  #   caliber: "eMarketer全品类电商口径"
+  #   source: "DM-BIZ-003"
+  #   note: "不同来源口径差异可达20pp, 必须统一"
+
+# === 关键推断 (R级) ===
+# 不确定参数也要锚定, 防止Agent间各自估算
+key_estimates:
+  # - metric: "广告OPM"
+  #   value: "50-60%"
+  #   type: "R"
+  #   source: "Industry comp (META/GOOG)"
+  #   note: "D级数据质量, 全报告统一使用此范围"
+
+# === 概率集 (Phase 4后更新) ===
+# 概率集矛盾是AMZN报告#1失败模式
+probability_set:
+  # authority: "Phase 4 RT输出"
+  # s1: "14%"
+  # s2: "42%"
+  # s3: "33%"
+  # s4: "11%"
+  # pw_ev: "$2,355.5B"
+  # expected_return: "+9.1%"
+  # note: "全报告统一使用此概率集, 禁止其他变体"
+
+# === Phase间追加区 ===
+# 新Phase完成后在此追加确定的关键数字
+phase_additions:
+  # - phase: "Phase 2"
+  #   metric: "温水煮青蛙概率"
+  #   value: "20-30%"
+  #   source: "Ch12 DM-RT-xxx"
+  #   date: "2026-02-18"
