@@ -1,0 +1,83 @@
+{
+  "basic_data": {
+    "symbol": "ORCL",
+    "data_source": "FMP(profile,quote,ratios,metrics)+yfinance",
+    "name": "Oracle Corporation",
+    "sector": "Technology",
+    "industry": "Software - Infrastructure",
+    "market_cap": null,
+    "price": 160.14,
+    "52w_high": 345.72,
+    "52w_low": 118.86,
+    "pe_ratio": 30.101503,
+    "pb_ratio": 22.574112268348735,
+    "dividend_yield": 0.010273724022646208,
+    "roe": 0.69026,
+    "profit_margin": 0.21678078015296434,
+    "operating_margin": 0.30798445965957594,
+    "revenue": 61015998464,
+    "revenue_growth": 0.142,
+    "free_cashflow": -10208000000,
+    "history_summary": {
+      "recent_5d": [
+        {
+          "date": "2026-02-09",
+          "close": 156.59,
+          "volume": 49936500
+        },
+        {
+          "date": "2026-02-10",
+          "close": 159.89,
+          "volume": 40092200
+        },
+        {
+          "date": "2026-02-11",
+          "close": 157.16,
+          "volume": 24538900
+        },
+        {
+          "date": "2026-02-12",
+          "close": 156.48,
+          "volume": 23285400
+        },
+        {
+          "date": "2026-02-13",
+          "close": 160.14,
+          "volume": 18572200
+        }
+      ],
+      "period_high": 326.9,
+      "period_low": 105.93,
+      "period_return": 43.1,
+      "avg_volume": 14060994,
+      "trading_days": 502
+    },
+    "forward_pe": 20.260756,
+    "beta": 1.633
+  },
+  "fundamentals": {
+    "symbol": "ORCL",
+    "data_source": "FMP(metrics,ratios,income)+yfinance",
+    "revenue": 61015998464,
+    "revenue_growth": 0.142,
+    "free_cashflow": -10208000000,
+    "earnings_growth": 0.909,
+    "profit_margin": 0.21678078015296434,
+    "operating_margin": 0.30798445965957594,
+    "roe": 0.69026,
+    "roa": 0.06864,
+    "debt_to_equity": 432.511,
+    "current_ratio": 0.7529638819961401,
+    "earnings": 15425000000
+  },
+  "technical": {
+    "symbol": "ORCL",
+    "price": 160.13999938964844,
+    "sma_20": 164.74599914550782,
+    "sma_50": 184.59212829589845,
+    "sma_200": 219.76671607971193,
+    "rsi": 35.41339750912903,
+    "volume": 18572200.0,
+    "trend": "下跌"
+  }
+}

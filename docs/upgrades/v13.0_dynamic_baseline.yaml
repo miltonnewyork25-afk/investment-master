@@ -1,0 +1,32 @@
+upgrade_id: "v13.0-dynamic-baseline"
+date_proposed: "2026-02-14"
+author: "agent"
+
+hypothesis:
+  what: "CG1/CG2动态基准 — 按可能性宽度分层(0-3/4-6/7-10不同基准)"
+  improves_which_dimension: "质量门控精准度(不同类型报告用不同标准)"
+  current_baseline: "固定基准350K，所有报告用同一标准"
+  expected_after: "传统(0-3)250K / 混合(4-6)200K / 发现(7-10)350K"
+  could_regress: "降低基准可能导致质量下滑(混合模式200K太低?)"
+
+success_criteria:
+  - "quality_gate_complete.sh v3.0正确识别可能性宽度并应用对应基准"
+  - "不同宽度的报告CG1/CG2通过率合理(非全通过也非全失败)"
+  - "RDDT(PW=6)使用200K基准后CG1 PASS"
+
+kill_condition:
+  - "动态基准导致低质量报告假通过"
+  - "所有报告都trivially通过(基准太低)"
+
+validation:
+  status: "NEUTRAL"
+  first_report: "RDDT v1.1"
+  date_validated: "2026-02-14"
+  actual_results: "RDDT PW=6使用200K基准，245K PASS。脚本运行正常。但仅1份报告验证动态基准。"
+  criteria_met:
+    - "quality_gate_complete.sh v3.0正确应用 — RDDT PW=6→200K基准"
+    - "RDDT 245K > 200K×80% = 160K → CG1 PASS"
+  criteria_failed:
+    - "仅1份报告验证，需不同PW的报告交叉验证"
+    - "200K基准是否太低? RDDT v1.0仅160K(不含Supplement)本也能PASS"
+  honest_assessment: "脚本层面工作正常。但200K基准对混合模式是否过低需要更多数据验证。RDDT v1.0 160K也能通过(160K > 160K floor)，说明门控可能过松。暂定NEUTRAL。"

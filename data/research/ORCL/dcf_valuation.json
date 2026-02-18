@@ -1,0 +1,13 @@
+{
+  "status": "python_model_error",
+  "note": "Python估值脚本使用硬编码数据，需手动计算",
+  "manual_inputs": {
+    "price": 160.14,
+    "market_cap": null,
+    "revenue": 61015998464,
+    "free_cashflow": -10208000000,
+    "pe_ratio": 30.101503,
+    "pb_ratio": 22.574112
+  },
+  "estimated_dcf": "待计算"
+}

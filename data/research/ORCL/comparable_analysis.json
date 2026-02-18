@@ -1,0 +1,12 @@
+{
+  "status": "python_model_error",
+  "note": "Python估值脚本逻辑错误，手动处理同行比较",
+  "peers_comparison": {
+    "ORCL": { "pe": 30.10, "pb": 22.57, "roe": 0.690 },
+    "MSFT": { "pe": 25.13, "pb": 10.76, "roe": 0.344 },
+    "SAP": { "pe": 27.64, "pb": 5.39, "roe": 0.165 },
+    "CRM": { "pe": 25.33, "pb": 5.37, "roe": 0.122 },
+    "median_pe": 26.49,
+    "orcl_pe_premium": "13.6%"
+  }
+}

@@ -1,0 +1,164 @@
+ticker: MSFT
+company: Microsoft Corporation
+framework_version: v10.0
+paradigm: mixed_mode  # PW=4
+reverse_valuation_center: true  # 逆向估值中心架构
+
+market_cap_lock:
+  price: 401.32
+  shares_diluted: 7.460B
+  market_cap: 2995B
+  pe_ttm: 25.1
+  pe_ttm_adjusted: 26.9  # 剥离Q2 FY26 $9.97B非经营收益
+  ev_ebitda: 18.9
+  fmp_dcf: 353.34
+  lock_date: 2026-02-17
+
+phase_status:
+  phase_minus1: complete  # knowledge_context.md
+  phase_minus05: complete  # lit_recon_memo.md
+  scout: complete  # 9 files, 130K chars
+  phase_0: complete
+  phase_1: complete  # 58K chars, 251 DM, 18 Mermaid, Ch3-Ch10
+  phase_2: complete  # 55K chars, 189 DM, 15 Mermaid, Ch11-Ch16
+  phase_3: complete  # 81K chars, 156 DM, 16 Mermaid, Ch17-Ch23+P3.5
+  phase_35: complete  # integrated into Phase 3 Agent A
+  phase_4: complete  # 41K chars, 82 DM, 3 Mermaid, RT-1~RT-7+校准+纠错
+  phase_5: pending
+  phase_55: pending
+
+current_session: S4_complete
+current_phase: phase_5_pending
+agent_count: 14  # total planned
+
+cq_registry:
+  - id: CQ1
+    question: "Azure 5Y CAGR 25%+ sustainability"
+    constraint: cyclical
+    confidence: 60  # P3 Ch17: +5pp (非AI Azure加速+企业分散需求80%)
+  - id: CQ2
+    question: "CapEx $120B+/yr ROIC recovery"
+    constraint: structural
+    confidence: 50  # P4 双向校准: +5pp (D&A追赶+GPU效率+ROIC>WACC, 修正盲点)
+  - id: CQ3
+    question: "OpenAI dependency (45% CRPO)"
+    constraint: institutional
+    confidence: 55  # P3 Ch18: +5pp (API独占法律约束+多层对冲)
+  - id: CQ4
+    question: "Copilot S-curve penetration"
+    constraint: cyclical
+    confidence: 45  # P3 Ch19: +5pp (160% YoY增长但定价/治理障碍限制斜率)
+  - id: CQ5
+    question: "Office/Windows cash cow durability"
+    constraint: structural
+    confidence: 75  # P4 红队: -5pp (AI Agent中期威胁+涨价可持续性+Gemini欧洲追赶)
+  - id: CQ6
+    question: "EU DMA + FTC regulatory impact"
+    constraint: institutional
+    confidence: 65  # P3 Ch20: +5pp (EU DMA承诺结案+SCOTUS弱化FTC+好市民品牌)
+  - id: CQ7
+    question: "Activision $51B goodwill impairment"
+    constraint: structural
+    confidence: 50  # P3 Ch22: -5pp (Gaming-9%+CoD-60%但MPC缓冲$141B)
+  - id: CQ-B
+    question: "NVDA #1 customer GPU procurement"
+    constraint: bridge
+    confidence: 55  # P4 红队: -5pp (Maia上线加速+AMD追赶+CapEx周期逆转风险)
+
+character_targets:
+  phase_1: 56000
+  phase_2: 52000
+  phase_3: 60000
+  phase_4: 24000
+  phase_5: 55000
+  total: 275000
+
+dm_anchors_count: 734  # Phase 0(56) + Phase 1(251) + Phase 2(189) + Phase 3(156) + Phase 4(82)
+mermaid_target: 60
+ks_target: 15
+ts_target: 8
+ci_target: 8
+
+worktree: main
+industry: tech_platform
+coefficient: 1.1
+
+last_updated: 2026-02-17
+last_phase_completed: phase_4
+
+phase_4_results:
+  characters: 40954
+  dm_anchors: 82
+  mermaid_diagrams: 3
+  chapters: RT-1~RT-7+校准+纠错
+  agents: 2
+  cq_updates:
+    - CQ2 45→50 (双向校准上调: D&A追赶31%CAGR+GPU代际效率+ROIC>WACC)
+    - CQ5 80→75 (红队下调: AI Agent中期威胁+涨价可持续性+Gemini追赶)
+    - CQ-B 60→55 (红队下调: Maia上线加速+AMD MI300X追赶+CapEx周期逆转)
+  key_outputs:
+    - RT-1 承重墙压力测试(W3最脆弱, B4+B6联合失败20-25%概率, 底部$1.5T)
+    - RT-2 认知偏差审计(6项偏差, 净偏悲观2-4pp, 锚定+IBM叙事主导)
+    - RT-3 空头钢人(4条论点, AI资本毁灭4/5最高威胁, FY28决定性窗口)
+    - RT-4 数据审计(12项数据点67% S/A级, P/E统一25.1x/26.9x, APIC全有效)
+    - RT-5 黑天鹅(8事件期望损失$104-192B, BS-6最高$40-70B)
+    - RT-6 时间框架(12M/36M/60M, FY28多信念同步验证)
+    - RT-7 替代解释(预囤积20-25%/OpenAI集中25-30%/制造稀缺15-20%)
+    - 双向校准(1上调CQ2+2下调CQ5/CQ-B, 符合AMAT教训)
+    - 纠错(6项: ROIC口径/Azure季度/D&A口径/P/E推导/CapEx季度/OpenAI CRPO)
+  bias_net_correction: +2-4pp  # 报告整体偏悲观, P5应上调Bull概率
+
+phase_3_results:
+  characters: 80830
+  dm_anchors: 156
+  dm_bridge: 12
+  mermaid_diagrams: 16
+  chapters: Ch17-Ch23+P3.5
+  agents: 3
+  cq_updates:
+    - CQ1 55→60 (Azure CAGR 60%概率成立, 两速Azure发现)
+    - CQ3 50→55 (OpenAI财务依赖1.5-2%, 叙事依赖远>财务)
+    - CQ4 40→45 (概率加权渗透率11-13%, 叙事传导>直接财务)
+    - CQ5 70→80 (弹性-0.2极强, 四层锁定无松动)
+    - CQ6 60→65 (EU DMA已结案, FTC行为救济>结构分拆)
+    - CQ7 55→50 (Gaming-9%但MPC缓冲$141B, Intangible减值35%)
+    - CQ-B 50→60 (NVDA采购$17-23B, Maia替代>3年, 12个BRIDGE锚点)
+  key_outputs:
+    - Ch17 Azure两速结构(非AI 22%/AI 100%+, B1 60%概率成立)
+    - Ch18 OpenAI五维双向审计(去OpenAI后Azure仍32-34%, 脱离影响2.5/5)
+    - Ch19 Copilot三情景(Bull 20-25%/Base 10-14%/Bear 5-8%, 概率加权ARR $20.7B)
+    - Ch20 监管五战线($105-148B期望损失, 慢性病>急性发作)
+    - Ch21 四层锁定(弹性-0.2, 迁移成本$25-45M, 5年耐久95%)
+    - Ch22 Activision(MPC FV $228B vs BV $87B, 概率加权减值$3.7-6.3B)
+    - Ch23 NVDA桥梁(FY25 $17-23B, FY28E $35-50B, 份额90%→75%)
+    - P3.5 AI冲击矩阵(6/8净正面, 净影响+$260-400B, MSFT=AI基础设施)
+
+phase_2_results:
+  characters: 54586
+  dm_anchors: 189
+  mermaid_diagrams: 15
+  chapters: Ch11-Ch16
+  agents: 3
+  key_outputs:
+    - Ch11 8项信念反演(B6 FCF=终端汇聚节点, 单独失败即翻转评级)
+    - Ch12 三承重墙(W3最脆弱3.5/5, W2最稳固1.5/5, 底部$1.5-1.7T)
+    - Ch13 CapEx→D&A→OPM→FCF传导链(三情景+ROIC FY29触底14%)
+    - Ch14 边际效率曲线(3pp/$1B→0.8pp/$1B, -73%) + 囚徒困境
+    - Ch15 估值独立性审计(M1/M2/M3合并→3锚结构)
+    - Ch16 TAM三层金字塔 + OVM $124B(3.7%增量)
+
+phase_1_results:
+  characters: 58113
+  dm_anchors: 251
+  mermaid_diagrams: 18
+  chapters: Ch3-Ch10
+  agents: 3
+  key_outputs:
+    - Ch3 三纪元战略架构(Ballmer/Nadella Cloud/AI Platform)
+    - Ch4 八大业务基元映射
+    - Ch5 平台经济学(四层锁定+网络效应+定价权)
+    - Ch6 风险拓扑(7×7矩阵+2风险簇+温水煮青蛙)
+    - Ch7 竞争格局(Azure/AWS/GCP三方对照)
+    - Ch8 五年财务全景(FY21-Q2 FY26)
+    - Ch9 三大分部深度解剖(IC/P&BP/MPC)
+    - Ch10 Reverse DCF 8项隐含信念(核心种子)

@@ -1,0 +1,30 @@
+upgrade_id: "v12.0-cove-verification"
+date_proposed: "2026-02-14"
+author: "agent"
+
+hypothesis:
+  what: "CoVe隔离验证协议 — 独立验证通道防止数据污染"
+  improves_which_dimension: "数据验证独立性"
+  current_baseline: "verify_data_sources.sh脚本验证DM覆盖率"
+  expected_after: "每个关键数据点有独立验证路径(CoVe标记)"
+  could_regress: "增加验证overhead，可能形式化"
+
+success_criteria:
+  - "至少1份报告包含CoVe标记"
+  - "CoVe验证发现至少1个数据错误"
+  - "验证overhead<10%总tokens"
+
+kill_condition:
+  - "连续2份报告无CoVe标记"
+  - "CoVe未发现任何数据问题(纯形式)"
+
+validation:
+  status: "REGRESSED"
+  first_report: ""
+  date_validated: "2026-02-16"
+  actual_results: "零份报告使用CoVe。现有Phase 4 RT-4(数据审计)已覆盖数据验证需求。"
+  criteria_met: []
+  criteria_failed:
+    - "零报告使用 — kill_condition触发"
+    - "RT-4数据审计已覆盖此需求 — 功能重复"
+  honest_assessment: "与RT-4数据审计功能重叠。v10.0的红队七问中RT-4已经是数据验证通道。CoVe试图解决的问题已被解决。应冻结。"

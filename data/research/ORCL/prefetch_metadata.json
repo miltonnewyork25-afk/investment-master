@@ -1,0 +1,54 @@
+{
+  "version": "4.0+",
+  "ticker": "ORCL",
+  "company": "Oracle Corporation",
+  "industry": "Enterprise Software",
+  "timestamp": "2026-02-17T14:30:00Z",
+  "data_files": {
+    "stock_full": { "status": "ok", "source": "MCP:analyze_stock", "fetched_at": "2026-02-17T21:57:00Z", "expires_at": "2026-02-18T01:57:00Z" },
+    "peer_comparison": { "status": "ok", "source": "MCP:compare_stocks", "fetched_at": "2026-02-17T14:28:00Z", "expires_at": "2026-02-24T14:28:00Z" },
+    "market_context": { "status": "ok", "source": "MCP:get_market_overview", "fetched_at": "2026-02-17T21:59:00Z", "expires_at": "2026-02-18T01:59:00Z" },
+    "baggers_summary": { "status": "ok", "source": "MCP:baggers_summary", "fetched_at": "2026-02-17T14:26:00Z", "expires_at": "2026-02-24T14:26:00Z" },
+    "fmp_income_5y": { "status": "ok", "source": "MCP:fmp_data income", "fetched_at": "2026-02-17T14:27:00Z", "expires_at": "2026-02-24T14:27:00Z" },
+    "fmp_balance_3y": { "status": "ok", "source": "MCP:fmp_data balance", "fetched_at": "2026-02-17T14:27:30Z", "expires_at": "2026-02-24T14:27:30Z" },
+    "fmp_cashflow_3y": { "status": "ok", "source": "MCP:fmp_data cashflow", "fetched_at": "2026-02-17T14:28:00Z", "expires_at": "2026-02-24T14:28:00Z" },
+    "fmp_ratios_3y": { "status": "ok", "source": "MCP:fmp_data ratios", "fetched_at": "2026-02-17T14:28:30Z", "expires_at": "2026-02-24T14:28:30Z" },
+    "enterprise_software_peers": { "status": "ok", "source": "MCP:compare_stocks", "fetched_at": "2026-02-17T14:29:00Z", "expires_at": "2026-02-24T14:29:00Z" },
+    "polymarket_events": { "status": "ok", "source": "MCP:polymarket_events", "fetched_at": "2026-02-17T14:29:30Z", "expires_at": "2026-02-17T26:29:30Z" },
+    "oracle_scout_report": { "status": "ok", "source": "Scout v4.0", "fetched_at": "2026-02-17T22:06:00Z", "expires_at": "2026-02-24T22:06:00Z" },
+    "shared_context": { "status": "updated", "source": "DM锚点格式重写", "fetched_at": "2026-02-17T14:30:00Z", "expires_at": "永久有效" },
+    "dm_anchor_registry": { "status": "ok", "source": "prefetch:aggregator v4.0+", "fetched_at": "2026-02-17T14:30:00Z", "expires_at": "同步更新" }
+  },
+  "quality": {
+    "complete_fields": 245,
+    "total_fields": 250,
+    "completeness_pct": 98.0,
+    "files_ok": 13,
+    "files_error": 0,
+    "files_total": 13
+  },
+  "dm_quality": {
+    "total_anchors": 41,
+    "h_count": 32,
+    "r_count": 6,
+    "s_count": 3,
+    "h_pct": 78.0,
+    "anchors_with_source": 41,
+    "r_with_chain": 6,
+    "r_with_falsifiable": 6,
+    "integrity_check": "passed"
+  },
+  "layer_status": {
+    "layer1_mcp": "ok",
+    "layer2_python": "bypassed",
+    "layer3_websearch": "completed_via_scout"
+  },
+  "enhancement_notes": [
+    "获得100baggers深度财务摘要(7维度38指标)",
+    "补齐5年完整财务数据(2021-2025)",
+    "添加企业软件同行对比基准",
+    "获取28个Oracle相关预测市场",
+    "DM锚点格式全面升级到v4.0+标准",
+    "数据完整度从96.7%提升至98.0%"
+  ]
+}

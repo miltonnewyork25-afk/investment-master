@@ -1,13 +1,21 @@
 #!/bin/bash
 # ============================================================
-# quality_sentinel.sh — 质量哨兵脚本 v1.0 (QSA)
+# quality_sentinel.sh — 质量哨兵脚本 v1.1 (QSA)
 # ============================================================
 # 用法:
-#   ./tests/quality_sentinel.sh <staging文件.md> [shared_context.md] [目标字数]
+#   ./tests/quality_sentinel.sh <staging文件.md> [shared_context.md] [目标字数] [模块类型]
 #   例: ./tests/quality_sentinel.sh \
 #       staging/GOOGL_P1_Agent_A.md \
 #       reports/GOOGL/data/shared_context.md \
-#       15000
+#       15000 \
+#       data
+#
+# 模块类型 (v1.1新增, 可选):
+#   data        → 数据密集型, 最低15000字符 (财务/SOTP/护城河)
+#   analytical  → 分析判断型, 最低12000字符 (偏差检查/五引擎)
+#   output      → 输出型,     最低8000字符  (KS/TS注册表)
+#   adversarial → 专精对抗型, 最低15000字符 (RT-1~7/Bear Case)
+#   不传参时使用 TARGET_CHARS 默认值 (向后兼容)
 #
 # 功能: 每个Agent staging产出后自动运行，实时检查质量
 #   1. 字符数检查 (vs 目标)
@@ -20,9 +28,33 @@
 # 退出码: 0=全部PASS, 1=有FAIL, 2=有WARN(无FAIL)
 # ============================================================
 
-STAGING="${1:?用法: $0 <staging文件.md> [shared_context.md] [目标字数]}"
+STAGING="${1:?用法: $0 <staging文件.md> [shared_context.md] [目标字数] [模块类型]}"
 DM="${2:-}"
-TARGET_CHARS="${3:-15000}"
+TARGET_CHARS_INPUT="${3:-0}"
+MODULE_TYPE="${4:-}"
+
+# v1.1: 模块类型感知 — 根据MODULE_TYPE动态设定最低门槛
+if [ -n "$MODULE_TYPE" ]; then
+    case "$MODULE_TYPE" in
+        data)        MODULE_MIN=15000; MODULE_LABEL="数据密集型" ;;
+        analytical)  MODULE_MIN=12000; MODULE_LABEL="分析判断型" ;;
+        output)      MODULE_MIN=8000;  MODULE_LABEL="输出型" ;;
+        adversarial) MODULE_MIN=15000; MODULE_LABEL="专精对抗型" ;;
+        *)           MODULE_MIN=15000; MODULE_LABEL="未知(默认)" ;;
+    esac
+    # 模块类型最低门槛 vs 用户传入目标, 取较大值
+    if [ "$TARGET_CHARS_INPUT" -gt "$MODULE_MIN" ] 2>/dev/null; then
+        TARGET_CHARS="$TARGET_CHARS_INPUT"
+    else
+        TARGET_CHARS="$MODULE_MIN"
+    fi
+elif [ "$TARGET_CHARS_INPUT" -gt 0 ] 2>/dev/null; then
+    TARGET_CHARS="$TARGET_CHARS_INPUT"
+    MODULE_LABEL=""
+else
+    TARGET_CHARS=15000
+    MODULE_LABEL=""
+fi
 
 # --- 颜色 ---
 RED='\033[0;31m'
@@ -59,9 +91,12 @@ fi
 
 FILENAME=$(basename "$STAGING")
 echo "=============================================="
-echo -e " ${CYAN}Quality Sentinel v1.0 (QSA)${NC}"
+echo -e " ${CYAN}Quality Sentinel v1.1 (QSA)${NC}"
 echo "=============================================="
 echo " 文件: $FILENAME"
+if [ -n "$MODULE_LABEL" ]; then
+    echo " 模块类型: ${MODULE_LABEL} (${MODULE_TYPE})"
+fi
 echo " 目标: ${TARGET_CHARS} chars"
 echo "----------------------------------------------"
 
