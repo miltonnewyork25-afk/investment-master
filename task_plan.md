@@ -1,279 +1,213 @@
-# META Platform Inc. (META) — L5-Level Planning System Integration
+# AMZN Phase 0 Planning - Excellence-Driven Multi-Business Analysis
 
-## Status: CRITICAL RECOVERY — Upgrading from Failed v2.0 to Proper L5 Execution
-
-**Created**: 2026-02-13
-**Current Phase**: Integration & Recovery
-**Framework**: L5-Level Deep-Dive v10.0 + Science & Technology Sector ×1.1
-**Target**: 191,500+ characters (as per existing META Master Plan v1.0)
+**Planning Date**: 2026-02-18
+**Framework Version**: v17.0
+**Quality Target**: 4.3+/5.0 (超越KLAC 4.1/5 全系列最佳)
+**Expected Completion**: Multi-session Tier 3 Deep Dive
 
 ---
 
-## CRITICAL SITUATION ANALYSIS
+## 🎯 **Strategic Objective**
 
-### The Failure
-- **Delivered**: META_Complete_v2.0_2026-02-13.md (39KB / 25K chars)
-- **Promised**: 500KB+ high-quality report matching Google depth
-- **Shortfall**: 95% underdelivery (25K vs 500K promised)
-- **Root Cause**: Completely ignored existing L5-level planning system
-
-### The Recovery Plan
-- **Existing Asset**: META_Deep_Dive_Master_Plan_v1.0.md (detailed 191.5K plan)
-- **Available Resources**: 5 Agent outputs in staging/ (~100K content)
-- **Reference Success**: PG analysis (250K chars, proper L5 execution)
-- **Framework**: v10.0 with DM anchoring + Red Team + OVM
+创建业界领先的多业务生态分析标准，超越现有最佳实践：
+- **客户生态分析**: 5.2+/5.0 (超越APP Ch15 的5.0/5)
+- **多业务估值**: 创建新最佳实践 (超越GOOGL六方法框架)
+- **CapEx传导建模**: 4.5+/5.0 (匹敌MSFT Ch13 的4.4/5)
 
 ---
 
-## L5-LEVEL EXECUTION PLAN (Based on Existing Master Plan)
+## 📊 **Business Model Framework**
 
-### Phase 0: Data Foundation & Agent Output Integration
-**Status**: NEEDS IMMEDIATE EXECUTION
-**Target**: Integrate existing staging outputs + update DM system
+### **三引擎架构**
+```
+AMZN Value Engine Network
+├── 🔧 AWS (云基础设施)
+│   ├── 收入: $33B季度 (20.2%增长)
+│   ├── 利润贡献: 60%营业利润
+│   └── 护城河: 企业客户迁移成本+AI基础设施
+├── 🛒 E-commerce (零售平台)
+│   ├── Prime会员: 240M+全球
+│   ├── 现金周期: -42天供应商融资
+│   └── 护城河: 规模经济+配送网络+数据flywheel
+└── 📺 Advertising (广告平台)
+    ├── 收入: $17.7B季度 (24%增长)
+    ├── 利润率: 高利润率业务
+    └── 护城河: 购买意图数据+闭环归因
+```
 
-**Available Agent Outputs** (Must Integrate):
-- `staging/agent_a_framework_upgrade.md` (18K) → v10.0 framework components
-- `staging/agent_b_red_team_seven.md` (41K) → RT-1 through RT-7 adversarial review
-- `staging/agent_c_ovm_valuation.md` (22K) → Option Valuation Module analysis
-- `staging/agent_d_possibility_width.md` (12K) → Mixed mode paradigm (6.6/10 score)
-- `staging/agent_e_quality_gate.md` (9K) → CG1-CG14 quality validation
-
-**Integration Tasks**:
-1. Read all 5 staging files and extract key findings
-2. Update data/shared_context.md with DM anchoring system
-3. Create comprehensive findings registry
-4. Establish Phase 1 launching pad
-
-### Phase 1: Strategic Positioning & Ecosystem (Target: 30K chars)
-**Framework Module**: Ch01-Ch09 from Master Plan
-**CQ Focus**: CQ6(network effects) + CQ4(new products) + CQ8(governance)
-
-**Core Chapters**:
-- Ch01: Company Portrait & Strategic Positioning (2,500 chars)
-- Ch02: Family of Apps Platform Matrix (4,500 chars)
-- Ch03: Reality Labs Strategic Deep Analysis (5,000 chars) — META specialized
-- Ch04: Value Chain & Ecosystem Mapping (2,800 chars)
-- Ch05: Data Moat Quantification (3,500 chars)
-- Ch06: Prediction Market Environment Scan (2,000 chars)
-- Ch07: Industry Cycle Positioning (2,500 chars)
-- Ch08: Management & Governance Deep Dive (3,200 chars) — Zuck governance focus
-- Ch09: Market Attention Radar Display (2,000 chars)
-
-### Phase 2: Financial & Valuation Analysis (Target: 37.5K chars)
-**Framework Module**: Ch10-Ch18 from Master Plan
-**CQ Focus**: CQ1(RL profitability) + CQ2(AI CapEx ROI) + CQ7(FCF divergence)
-
-**Core Chapters**:
-- Ch10: 5-Year Financial Trend Analysis (4,500 chars)
-- Ch11: Capital Allocation Deep Dive (5,000 chars) — CapEx analysis enhanced
-- Ch12: Advertising Economics Deep Dive (4,500 chars)
-- Ch13: Dual-Track SOTP Segment Valuation (6,000 chars) — META specialized
-- Ch14: DCF Cross-Validation (3,500 chars)
-- Ch15: Comparable Company Analysis (3,000 chars)
-- Ch16: Three-Scenario Matrix (4,000 chars)
-- Ch17: Analyst Consensus & Divergence (2,500 chars)
-- Ch18: Precise Cycle Positioning (2,000 chars)
-
-### Phase 3+3.5: Strategic Analysis + AI Deep Assessment (Target: 48.5K chars)
-**Framework Module**: Ch19-Ch29 from Master Plan
-**CQ Focus**: CQ2(AI CapEx) + CQ3(Llama open source) + CQ4(new products) + CQ6(network effects)
-
-**Core Chapters**:
-- Ch19: Moat Identification & Quantification (4,500 chars)
-- Ch20: Threads vs X Competition Tracker (3,800 chars) — META specialized
-- Ch21: WhatsApp Monetization Path vs WeChat Reference (4,200 chars) — META specialized
-- Ch22: Regulation & Antitrust Deep Dive (3,500 chars)
-- Ch23: Developer Ecosystem Health (2,500 chars)
-- Ch24: Five-Engine Comprehensive Analysis (6,000 chars)
-- Ch25: PPDA & PMSI Construction (3,000 chars)
-- Ch26: Hot-Patch Module (2,500 chars)
-- Ch27: Segment-Level AI Impact Matrix (5,000 chars)
-- Ch28: Llama Open Source Strategy Deep Assessment (6,000 chars) — META specialized
-- Ch29: AI Valuation Adjustment Quantification (4,000 chars)
-
-### Phase 4: Adversarial Review (Target: 30K chars)
-**Framework Module**: Ch30-Ch37 from Master Plan + v10.0 Red Team Protocol
-**CQ Focus**: ALL (review all CQ conclusions)
-
-**Integration with Staging**: Use `agent_b_red_team_seven.md` as foundation
-
-**Core Chapters**:
-- Ch30: Behavioral Finance Bias Check (3,500 chars)
-- Ch31: Bear Case Equal-Weight Analysis (6,000 chars) — 10 bear arguments
-- Ch32: Key Data Fact-Check (3,000 chars)
-- Ch33: Counter-Evidence Challenge Chain (3,500 chars)
-- Ch34: Smart Money Position Validation (3,500 chars)
-- Ch35: Extreme Stress Testing (4,500 chars) — 4 META-specific scenarios
-- Ch36: Dimension Review & CQ Verification (3,000 chars)
-- Ch37: "So What?" Insight Density Audit (3,000 chars)
-
-### Phase 5: Decision Output (Target: 34K chars)
-**Framework Module**: Ch38-Ch46 from Master Plan
-**CQ Focus**: ALL (comprehensive decision framework)
-
-**Core Chapters**:
-- Ch38: Comprehensive Scoring & Rating (3,500 chars)
-- Ch39: Position Recommendation Matrix (4,000 chars)
-- Ch40: Kill Switch Registry (5,500 chars) — 18 switches (3 META-specific)
-- Ch41: Verifiable Prediction Checklist (5,000 chars) — 25 predictions (5 CQ-linked)
-- Ch42: Investment Calendar (3,000 chars)
-- Ch43: 90-Day Action Checklist (3,500 chars)
-- Ch44: CQ Ultimate Answers (4,000 chars) — 6-8 CQ definitive conclusions
-- Ch45: Research Limitations Statement (2,000 chars)
-- Ch46: One-Page Decision Summary (1,500 chars)
+### **协同价值网络**
+- **数据flywheel**: Prime→购物→AWS企业客户价值传导
+- **基础设施复用**: AWS支撑电商+广告平台
+- **客户生命周期**: B2C→B2B跨越 + 多触点粘性
 
 ---
 
-## META-SPECIFIC SPECIALIZATION MODULES (47.7K Total)
+## 🏆 **Excellence System 武器库**
 
-Based on Master Plan, these are unique to META and must be executed:
+### **已装载最佳实践**
 
-| Module | Phase | Chars | Core Question | Output |
-|--------|:-----:|:-----:|---------------|--------|
-| **Ch03: RL Strategic Deep** | 1 | 5,000 | When will RL be profitable/should it shut down? | Three-scenario analysis + valuation |
-| **Ch08: Governance Enhanced** | 1 | 3,200 | Is Zuck centralization good or bad? | Dual-class risk quantification |
-| **Ch11: CapEx Enhanced** | 2 | 5,000 | Can AI CapEx convert to ROI? | CapEx/FCF divergence recovery path |
-| **Ch13: Dual-Track SOTP** | 2 | 6,000 | FoA vs RL separate valuation | 7-segment valuation + RL options |
-| **Ch20: Threads Competition** | 3 | 3,800 | Threads vs X outcome? | DAU growth curve + monetization path |
-| **Ch21: WhatsApp Monetization** | 3 | 4,200 | WA vs WeChat reference? | Three monetization paths + valuation |
-| **Ch28: Llama Open Source** | 3 | 6,000 | What is open source ROI? | Open vs closed strategy comparison + ROI quantification |
-| **Ch31: Bear Case 10 Arguments** | 4 | 6,000 | Strongest bear arguments? | 10 arguments + steel man defense |
-| **Ch35: Extreme Stress** | 4 | 4,500 | Extreme scenario impact? | 4-scenario deep simulation |
-| **Ch44: CQ Ultimate Answers** | 5 | 4,000 | 6-8 CQ answers? | Each CQ definitive conclusion |
+#### 1. **GOOGL六方法SOTP框架** (4.4/5基准)
+- **升级目标**: AWS+电商+广告协同价值网络
+- **应用**: 独立估值三引擎 + 协同溢价量化 + 网络效应传导
 
----
+#### 2. **APP客户归因分析** (5.0/5基准)
+- **升级目标**: 三层客户生态价值传导 → 5.2+/5
+- **应用**: Prime会员生命周期建模 + AWS企业客户粘性+NRR + 卖家双重角色分析
 
-## QUALITY GATES MATRIX (Must Pass to Complete)
-
-### Process Gates (P-G): 10 items
-- P-G1: Character count (≥28K P1, ≥35K P2, ≥45K P3, ≥28K P4, ≥32K P5)
-- P-G2: Annotation density (≥15/10K P1-3, ≥8/10K P4, ≥12/10K P5)
-- P-G3: Disclaimer + TOC (✓ all phases)
-- P-G4: Mermaid charts (≥2 P1, ≥3 P2, ≥4 P3, ≥1 P4, ≥2 P5)
-- P-G5: Prohibited word check (0 violations)
-- P-G6: Annotation format (✓ all phases)
-- P-G7: KS/bear case (N/A P1-3, KS≥5 mentions + bear≥10 P4, KS≥18 P5)
-- P-G8: CQ coverage (≥60% P1, ≥80% P2, ≥90% P3, 100% P4-5)
-- P-G9: Annotation ratio (hard≥40% P1-3, hard≥30% P4, hard≥35% P5)
-- P-G10: Bear case proportion (N/A P1-3, ≥30% P4, ≥25% P5)
-
-### Result Gates (R-G): 12 items
-- R-G1: SOTP consistency (Phase 2 SOTP vs Phase 5 final valuation <10% deviation)
-- R-G2: KS consistency (Phase 4 mentioned KS vs Phase 5 registry 100% match)
-- R-G3: KAL consistency (Key assumptions table vs report assumptions 100% match)
-- R-G4: DM consistency (Report numbers vs DM anchors 100% match)
-- R-G5: Valuation traceability (Phase 5 target price traceable to Phase 2 SOTP each segment)
-- R-G6: Number consistency (Same number 100% consistent across chapters)
-- R-G7: CQ answer completeness (6-8 CQ all clearly answered)
-- R-G8: Prediction verifiability (25 predictions all contain probability + time + trigger)
-- R-G9: Bear case steel man defense (10 bear arguments all contain strongest rebuttal)
-- R-G10: AI adjustment traceability (AI adjustment valuation traceable to Phase 3.5 AI impact matrix)
-- R-G11: Hot-patch execution (Phase 0.5 planned patches 100% executed)
-- R-G12: Dimension coverage completeness (Top 10 dimensions 100% responded in report)
-
-**Pass Standards**:
-- Phase 1/2/3: P-G ≥ 8/10
-- Phase 4: P-G ≥ 8/10 AND R-G ≥ 7/10
-- Phase 5: P-G ≥ 9/10 AND R-G ≥ 10/12
+#### 3. **MSFT CapEx传导链** (4.4/5基准)
+- **升级目标**: AWS基础设施投资→收入→利润传导 → 4.5+/5
+- **应用**: $130B AI投入→服务容量→AWS增长→规模效应→利润率提升
 
 ---
 
-## IMMEDIATE RECOVERY ACTIONS
+## 📋 **Phase Execution Plan**
 
-### Priority 1: Agent Output Integration (Today)
-1. Read all 5 staging files completely
-2. Extract key findings and create consolidated findings.md
-3. Update shared_context.md with proper DM anchoring
-4. Create progress.md with proper L5 tracking
+### **Phase -1: 知识检索** ✅ **COMPLETED**
+- [x] 相似公司匹配 (GOOGL/TSLA/RDDT)
+- [x] 最佳实践武器库装载
+- [x] 质量突破路线图制定
+- **产出**: `reports/AMZN/data/knowledge_context.md` (2K chars)
 
-### Priority 2: Data Foundation Rebuild (Today)
-1. Validate existing financial data completeness
-2. Update prediction market scanning (8 events minimum)
-3. Establish 6-8 Core Questions from market attention
-4. Create CQ-module correlation matrix
+### **Phase -0.5: 文献侦察** ✅ **COMPLETED**
+- [x] 5维度WebSearch (D1深度/D2对抗/D3行业/D4专家/D5模型)
+- [x] 华尔街共识收集 ($297平均目标)
+- [x] 监管风险映射 (FTC反垄断审判)
+- [x] 竞争情报收集 (Azure追赶/中国平台冲击)
+- **产出**: `reports/AMZN/data/lit_recon_memo.md` (3K chars)
 
-### Priority 3: Phase 1 Launch Preparation (Tomorrow)
-1. Allocate agent resources for Phase 1 (4 agents parallel)
-2. Prepare comprehensive chapter-by-chapter execution plan
-3. Establish quality checkpoint system
-4. Initialize git workflow for L5-level commits
+### **Phase 0: 规划设计** 🚧 **IN_PROGRESS**
+- [x] 卓越系统激活
+- [x] 框架选择 (发现系统 vs 混合模式 vs 传统)
+- [ ] 可能性宽度评估 (预估7-8分→发现系统)
+- [ ] Agent角色分工设计
+- [ ] 数据预取计划
+- [ ] CQ注册表初始化
 
----
+### **Phase 1: 商业模式深度解构** 📅 **PLANNED**
+**Agent A**: 三引擎商业模式分析
+- [ ] AWS云基础设施护城河分析 (对标KLAC护城河框架)
+- [ ] 电商平台flywheel效应建模
+- [ ] 广告业务增长天花板测试
+- [ ] 三引擎协同效应量化
 
-## INTEGRATION WITH v10.0 FRAMEWORK
+**Agent B**: 客户生态价值传导 (目标: 5.2+/5)
+- [ ] Prime会员生命周期建模 (超越APP单平台分析)
+- [ ] AWS企业客户NRR重构+粘性分层
+- [ ] 卖家双重角色价值分析 (客户+供应商)
+- [ ] 跨业务客户价值传导机制
 
-### v10.0 Key Upgrades Already Available in Staging:
-- **DM Anchoring System**: From agent_a_framework_upgrade.md
-- **Red Team Protocol RT-1 to RT-7**: From agent_b_red_team_seven.md
-- **Option Valuation Module**: From agent_c_ovm_valuation.md
-- **Mixed Mode Paradigm (6.6/10)**: From agent_d_possibility_width.md
-- **Quality Gate CG1-CG14**: From agent_e_quality_gate.md
+### **Phase 2: 财务深度建模** 📅 **PLANNED**
+**Agent A**: CapEx传导链建模 (目标: 4.5+/5)
+- [ ] $130-140B AI投资传导机制 (对标MSFT Ch13)
+- [ ] AWS基础设施投资→产能→收入传导
+- [ ] 规模效应→利润率提升建模
+- [ ] 投资回报期与竞争优势关系
 
-### Must Integrate Into L5 Structure:
-- Protocol header with research contract
-- Load-bearing wall fragility table
-- CQ confidence evolution table (P0.5→P5)
-- AI capability boundary statement
-- Black swan probability weighting table
-- Inference falsifiability conditions
+**Agent C**: 财务质量审计
+- [ ] 三业务引擎财务分离度分析
+- [ ] 自由现金流质量评估 (CapEx周期影响)
+- [ ] 债务结构与利息保障分析
+- [ ] 营运资本效率 (-42天现金周期验证)
 
----
+### **Phase 3: 护城河与风险映射** 📅 **PLANNED**
+**Agent A**: 护城河双重分析
+- [ ] 存量vs增量护城河分离 (对标KLAC框架)
+- [ ] AWS客户迁移成本量化
+- [ ] Prime会员惯性vs新用户获取成本对比
+- [ ] 数据护城河vs技术护城河权重
 
-## SUCCESS CRITERIA
+**Agent B**: 风险拓扑映射
+- [ ] 监管风险 (FTC拆分概率评估)
+- [ ] 竞争加剧风险 (Azure/Google Cloud追赶)
+- [ ] 宏观风险 (利率敏感性+消费放缓)
+- [ ] 风险协同效应识别 (最可能糟糕组合)
 
-### Minimum Viable L5 (Must Achieve):
-- **Total Characters**: ≥191,500 (as per Master Plan)
-- **Phase Completion**: All 5 phases pass quality gates
-- **META Specialization**: All 10 specialized modules complete
-- **CQ Coverage**: 6-8 CQ all definitively answered
-- **Quality Gates**: Phase 5 passes ≥9/10 P-G and ≥10/12 R-G
+### **Phase 4: 红队对抗审查** 📅 **PLANNED**
+**Red Team Suite v2.0执行**:
+- [ ] RT-1~RT-7七问全面对抗
+- [ ] 双向校准 (防止系统性悲观)
+- [ ] 有效性门控 (≥3pp CQ变动+≥3新发现)
 
-### Excellence Targets (Stretch Goals):
-- **Total Characters**: ≥250,000 (matching PG success case)
-- **DM Anchor Coverage**: ≥127 anchors (as per PLTR v3.1 success)
-- **Annotation Density**: ≥40/10K (matching semiconductor sector leaders)
-- **Framework Integration**: Full v10.0 compliance with all upgrades
-
----
-
-## RISK MITIGATION
-
-| Risk | Probability | Impact | Mitigation |
-|------|:-----------:|:------:|------------|
-| Phase 3+3.5 timeout (>4hrs) | 40% | Medium | Pre-allocate to 4 agents, strict time boxes |
-| RL data scarcity (non-public segment) | 50% | High | Use proxy indicators + industry reports + analyst estimates |
-| Llama open source ROI hard to quantify | 60% | High | Accept limitations, use indirect ARPU attribution |
-| Agent coordination failure | 25% | Medium | Fallback to sequential execution |
-| Quality gate failure Phase 4/5 | 30% | High | Build in buffer time, multi-pass review |
-
----
-
-## NEXT ACTIONS (Execute Immediately)
-
-1. **[URGENT] Read all staging files** → Extract to findings.md
-2. **[URGENT] Create progress.md** → Establish tracking system
-3. **[URGENT] Update shared_context.md** → Proper DM anchoring
-4. **[TODAY] Launch Phase 1 prep** → 4-agent allocation plan
-5. **[TODAY] Validate data completeness** → Financial + market + prediction
-6. **[TOMORROW] Execute Phase 1** → 30K character target
+### **Phase 5: 六方法估值综合** 📅 **PLANNED**
+**创新: 多业务协同价值网络估值**
+- [ ] 方法1: 三引擎独立DCF + 协同溢价
+- [ ] 方法2: SOTP分部估值 (AWS/电商/广告)
+- [ ] 方法3: 相对估值 (分业务同业对标)
+- [ ] 方法4: 资产重置成本 (基础设施价值)
+- [ ] 方法5: 期权价值法 (新业务期权价值)
+- [ ] 方法6: 客户生命周期价值折现
 
 ---
 
-## COMMIT STRATEGY
+## 🎯 **Key Performance Indicators**
 
-| Phase | Commit Message Format | Target Branch |
-|:-----:|----------------------|:-------------:|
-| Integration | `fix(生态科技): META L5-level integration - staging outputs + planning system` | 生态科技-new |
-| Phase 1 | `feat(生态科技): META Phase 1 - Strategic positioning (30K chars) complete` | 生态科技-new |
-| Phase 2 | `feat(生态科技): META Phase 2 - Financial analysis (37.5K chars) complete` | 生态科技-new |
-| Phase 3+3.5 | `feat(生态科技): META Phase 3+3.5 - Strategic + AI (48.5K chars) complete` | 生态科技-new |
-| Phase 4 | `feat(生态科技): META Phase 4 - Adversarial review (30K chars) complete` | 生态科技-new |
-| Phase 5 | `feat(生态科技): META Phase 5 + Complete assembly (191.5K+ total) DONE` | 生态科技-new |
+### **质量目标**
+- **Overall Report**: 4.3+/5.0
+- **客户生态模块**: 5.2+/5.0 (超越APP Ch15)
+- **多业务估值**: 创建新最佳实践标准
+- **CapEx建模**: 4.5+/5.0 (匹敌MSFT Ch13)
 
-**Final Step**: Merge to main `reports/META/` after all quality gates pass.
+### **技术指标**
+- **字符数**: 350-450K (发现系统级别)
+- **DM锚点**: 400-500个
+- **Mermaid图表**: 60-80张
+- **CQ置信度**: 目标60%+ (超越KLAC 59.2%)
+
+### **创新指标**
+- **新最佳实践**: 2-3个模块
+- **方法论突破**: 多业务协同估值框架
+- **行业标准**: 成为生态科技分析标杆
 
 ---
 
-**Planning System Status**: ACTIVE - Executing L5-Level Recovery
-**Next Update**: After staging integration complete
-**Escalation Trigger**: Any phase fails quality gates twice
+## ⚠️ **Critical Success Factors**
+
+### **来自历史教训**
+1. **APP v2.0失败教训**: 优秀内容+糟糕执行=价值减半
+   - **应对**: Chief Editor统筹 + 400K字符硬上限 + 三层质量模型
+
+2. **KLAC成功经验**: 254K最短但最高质量
+   - **应对**: 密度>体量 + v1.0无补丁>多轮修正
+
+3. **MSFT质量教训**: WACC±100bps跨3个评级区间
+   - **应对**: 巨头估值假精度警示 + Python验证算术
+
+### **执行约束**
+- **方法独立性审计**: 标准化为所有报告必修
+- **数据硬约束**: L2质量协议，每个数字≥3源交叉验证
+- **发布合规**: 台海中性表述+无痕回流+连贯性
+
+---
+
+## 📈 **Success Metrics Dashboard**
+
+| 维度 | 当前基准 | 目标 | 验证方式 |
+|------|---------|------|----------|
+| 客户分析质量 | APP 5.0/5 | 5.2+/5 | Agent交叉审计 |
+| 估值框架创新 | GOOGL六方法 | 协同价值网络 | 方法论验证 |
+| CapEx建模深度 | MSFT 4.4/5 | 4.5+/5 | 传导链完整度 |
+| 整体报告质量 | KLAC 4.1/5 | 4.3+/5 | 4-Agent交叉评估 |
+| 置信度校准 | KLAC 59.2% | 60%+ | CQ加权平均 |
+
+---
+
+## 🚀 **Phase 0 Next Actions**
+
+### **即将执行**
+1. **可能性宽度评估** (预估7-8分→发现系统)
+2. **Agent任务分工细化** (A商业B客户C财务)
+3. **数据预取激活** (MCP工具+财务数据缓存)
+4. **CQ注册表初始化** (8-10个核心置信度问题)
+
+### **Phase 0 Complete Criteria**
+- [ ] 框架选择确认 (发现系统/混合模式/传统)
+- [ ] 三Agent角色+任务清单完整
+- [ ] 数据预取完成 (15个文件缓存)
+- [ ] CQ注册表建立
+- [ ] Phase 1 execution ready
+
+---
+
+**Phase 0 Status**: 🚧 **IN_PROGRESS**
+**Next Milestone**: 可能性宽度评估 + Agent设计完成
+**Target Completion**: 当前会话内
