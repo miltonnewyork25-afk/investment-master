@@ -1,0 +1,244 @@
+{
+  "company": "Oracle Corporation",
+  "ticker": "ORCL",
+  "reporting_date": "2026-02-17",
+  "data_collection_agent": "Business Overview Agent",
+
+  "business_segments": {
+    "cloud_and_license": {
+      "revenue_billions": 49.23,
+      "revenue_percentage": 85.77,
+      "description": "Cloud services, software licenses, and related support",
+      "_dm": {
+        "id": "BIZ-001",
+        "type": "H",
+        "source": "Oracle Q1 FY2026 earnings - investor.oracle.com",
+        "confidence": 0.95
+      }
+    },
+    "services": {
+      "revenue_billions": 5.23,
+      "revenue_percentage": 9.12,
+      "description": "Consulting, support services, and education",
+      "_dm": {
+        "id": "BIZ-002",
+        "type": "H",
+        "source": "Oracle fiscal 2025 segment breakdown - marketscreener.com",
+        "confidence": 0.95
+      }
+    },
+    "hardware": {
+      "revenue_billions": 2.94,
+      "revenue_percentage": 5.12,
+      "description": "Hardware systems, engineered systems, and related support",
+      "_dm": {
+        "id": "BIZ-003",
+        "type": "H",
+        "source": "Oracle fiscal 2025 segment breakdown - marketscreener.com",
+        "confidence": 0.95
+      }
+    }
+  },
+
+  "geographic_breakdown": {
+    "americas": {
+      "revenue_percentage_annual": 83.87,
+      "revenue_percentage_q2_2026": 64.73,
+      "description": "United States, Canada, and Latin America",
+      "_dm": {
+        "id": "BIZ-004",
+        "type": "H",
+        "source": "Oracle geographic revenue breakdown - bullfincher.io",
+        "confidence": 0.90
+      }
+    },
+    "emea": {
+      "revenue_percentage_annual": 11.53,
+      "revenue_percentage_q2_2026": 23.32,
+      "revenue_billions_recent": 3.76,
+      "description": "Europe, Middle East, and Africa",
+      "_dm": {
+        "id": "BIZ-005",
+        "type": "H",
+        "source": "Oracle geographic revenue breakdown - stockanalysis.com",
+        "confidence": 0.90
+      }
+    },
+    "asia_pacific": {
+      "revenue_percentage_annual": 4.60,
+      "revenue_percentage_q2_2026": 11.95,
+      "description": "Asia Pacific region including Japan, Australia, and emerging markets",
+      "_dm": {
+        "id": "BIZ-006",
+        "type": "H",
+        "source": "Oracle geographic revenue breakdown - stockanalysis.com",
+        "confidence": 0.90
+      }
+    }
+  },
+
+  "key_products_and_metrics": {
+    "netsuite_cloud_erp": {
+      "q1_2026_revenue_billions": 1.0,
+      "growth_rate_usd": 0.16,
+      "description": "Cloud-based ERP software as a service",
+      "_dm": {
+        "id": "BIZ-007",
+        "type": "H",
+        "source": "Oracle Q1 FY2026 earnings announcement - oracle.com",
+        "confidence": 0.95
+      }
+    },
+    "multicloud_database": {
+      "growth_rate_q1_2026": 15.29,
+      "description": "Database services across Amazon, Google, and Microsoft clouds",
+      "_dm": {
+        "id": "BIZ-008",
+        "type": "H",
+        "source": "Oracle Q1 FY2026 earnings announcement - oracle.com",
+        "confidence": 0.95
+      }
+    },
+    "cloud_revenue_total": {
+      "q1_2026_billions": 7.2,
+      "growth_rate_usd": 0.28,
+      "description": "Total cloud services revenue",
+      "_dm": {
+        "id": "BIZ-009",
+        "type": "H",
+        "source": "Oracle Q1 FY2026 earnings announcement - cnbc.com",
+        "confidence": 0.95
+      }
+    }
+  },
+
+  "supply_chain_and_partnerships": {
+    "supplier_count": 100,
+    "products_developed": "thousands",
+    "orders_fulfilled": "tens of thousands annually",
+    "description": "Oracle partners with over 100 suppliers to develop products and fulfill customer orders",
+    "_dm": {
+      "id": "BIZ-010",
+      "type": "R",
+      "source": "Oracle supply chain information - oracle.com playbook",
+      "chain": "Oracle stated supplier relationships indicate scale of hardware manufacturing and software distribution operations",
+      "falsifiable": "Could be disproven by Oracle's detailed supplier disclosure or 10-K filing supplier counts",
+      "confidence": 0.75
+    }
+  },
+
+  "key_customers": {
+    "dhl_supply_chain": {
+      "description": "Implemented Oracle Fusion Cloud ERP across nine European countries",
+      "implementation_status": "live",
+      "_dm": {
+        "id": "BIZ-011",
+        "type": "H",
+        "source": "Oracle customer highlights Q2FY26 earnings - oracle.com",
+        "confidence": 0.90
+      }
+    },
+    "milwaukee_tool": {
+      "description": "Completed rollout of Oracle Fusion Cloud Applications across US and Canada operations",
+      "implementation_status": "completed",
+      "_dm": {
+        "id": "BIZ-012",
+        "type": "H",
+        "source": "Oracle customer highlights Q2FY26 earnings - oracle.com",
+        "confidence": 0.90
+      }
+    },
+    "morrison_supermarkets": {
+      "description": "Moved Oracle E-Business Suite to Oracle Cloud Infrastructure",
+      "migration_status": "completed",
+      "_dm": {
+        "id": "BIZ-013",
+        "type": "H",
+        "source": "Oracle customer case studies - oracle.com",
+        "confidence": 0.90
+      }
+    }
+  },
+
+  "dm_anchors": [
+    {
+      "id": "BIZ-001",
+      "content": "Oracle Cloud and License revenue $49.23B (85.77% of total)",
+      "type": "H",
+      "source": "Oracle Q1 FY2026 earnings - investor.oracle.com"
+    },
+    {
+      "id": "BIZ-002",
+      "content": "Oracle Services revenue $5.23B (9.12% of total)",
+      "type": "H",
+      "source": "Oracle fiscal 2025 segment breakdown - marketscreener.com"
+    },
+    {
+      "id": "BIZ-003",
+      "content": "Oracle Hardware revenue $2.94B (5.12% of total)",
+      "type": "H",
+      "source": "Oracle fiscal 2025 segment breakdown - marketscreener.com"
+    },
+    {
+      "id": "BIZ-004",
+      "content": "Americas represents 83.87% of Oracle's annual revenue",
+      "type": "H",
+      "source": "Oracle geographic revenue breakdown - bullfincher.io"
+    },
+    {
+      "id": "BIZ-005",
+      "content": "EMEA represents 11.53% annual, 23.32% Q2 2026 revenue",
+      "type": "H",
+      "source": "Oracle geographic revenue breakdown - stockanalysis.com"
+    },
+    {
+      "id": "BIZ-006",
+      "content": "Asia Pacific represents 4.60% annual, 11.95% Q2 2026 revenue",
+      "type": "H",
+      "source": "Oracle geographic revenue breakdown - stockanalysis.com"
+    },
+    {
+      "id": "BIZ-007",
+      "content": "NetSuite Cloud ERP revenue $1.0B, up 16% in Q1 2026",
+      "type": "H",
+      "source": "Oracle Q1 FY2026 earnings announcement - oracle.com"
+    },
+    {
+      "id": "BIZ-008",
+      "content": "MultiCloud database revenue grew 1,529% in Q1 2026",
+      "type": "H",
+      "source": "Oracle Q1 FY2026 earnings announcement - oracle.com"
+    },
+    {
+      "id": "BIZ-009",
+      "content": "Total cloud revenue $7.2B, up 28% in Q1 2026",
+      "type": "H",
+      "source": "Oracle Q1 FY2026 earnings announcement - cnbc.com"
+    },
+    {
+      "id": "BIZ-010",
+      "content": "Oracle works with 100+ suppliers for product development and fulfillment",
+      "type": "R",
+      "source": "Oracle supply chain information - oracle.com playbook",
+      "reasoning": "Scale indicator for Oracle's hardware manufacturing and software distribution operations"
+    },
+    {
+      "id": "BIZ-011",
+      "content": "DHL Supply Chain implemented Oracle Fusion Cloud ERP in 9 European countries",
+      "type": "H",
+      "source": "Oracle customer highlights Q2FY26 earnings - oracle.com"
+    },
+    {
+      "id": "BIZ-012",
+      "content": "Milwaukee Tool completed Oracle Fusion Cloud Applications rollout in US/Canada",
+      "type": "H",
+      "source": "Oracle customer highlights Q2FY26 earnings - oracle.com"
+    },
+    {
+      "id": "BIZ-013",
+      "content": "Morrison Supermarkets migrated Oracle E-Business Suite to Oracle Cloud Infrastructure",
+      "type": "H",
+      "source": "Oracle customer case studies - oracle.com"
+    }
+  ]
+}

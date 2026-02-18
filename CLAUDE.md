@@ -35,7 +35,7 @@
 |------|------|----------|------|
 | NVDA, AMD, TSM, ASML, LRCX, MU, INTC | 半导体 | 半导体 | ×1.0 |
 | KO, PG, NKE, COST, WMT, MCD, SBUX | 消费品 | 消费品 | ×1.1 |
-| AAPL, MSFT, GOOG, META, AMZN | 科技平台 | 生态科技 | ×1.1 |
+| AAPL, MSFT, GOOG, META, AMZN, ORCL | 科技平台 | 生态科技 | ×1.1 |
 | JPM, GS, BAC, V, MA, BRK, SOFI | 金融 | 金融 | ×1.2 |
 | 特斯拉, 比亚迪, 跨行业公司 | 询问用户 | — | — |
 
