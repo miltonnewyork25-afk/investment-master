@@ -101,6 +101,31 @@ else
     echo "  scripts/evolution_trend.sh not found"
 fi
 
+# --- Near-miss Score ---
+echo ""
+echo "--- Near-miss Score ---"
+NEAR_MISS=0
+SENTINEL_LOG="reports/${TICKER}/data/sentinel_log.yaml"
+if [ -f "$SENTINEL_LOG" ]; then
+    # 累计: WARN×1 + FAIL×3 + BLOCK×5
+    TOTAL_S_WARNS=0
+    for v in $({ grep -oE 'warn: [0-9]+' "$SENTINEL_LOG" 2>/dev/null | grep -oE '[0-9]+' || true; }); do
+        TOTAL_S_WARNS=$((TOTAL_S_WARNS + v))
+    done
+    TOTAL_S_FAILS=0
+    for v in $({ grep -oE 'fail: [0-9]+' "$SENTINEL_LOG" 2>/dev/null | grep -oE '[0-9]+' || true; }); do
+        TOTAL_S_FAILS=$((TOTAL_S_FAILS + v))
+    done
+    TOTAL_S_BLOCKS=0
+    for v in $({ grep -oE 'block: [0-9]+' "$SENTINEL_LOG" 2>/dev/null | grep -oE '[0-9]+' || true; }); do
+        TOTAL_S_BLOCKS=$((TOTAL_S_BLOCKS + v))
+    done
+    NEAR_MISS=$(( TOTAL_S_WARNS + TOTAL_S_FAILS * 3 + TOTAL_S_BLOCKS * 5 ))
+    echo "  Near-miss score: $NEAR_MISS (W:${TOTAL_S_WARNS}×1 + F:${TOTAL_S_FAILS}×3 + B:${TOTAL_S_BLOCKS}×5)"
+else
+    echo "  Near-miss score: N/A (无sentinel_log)"
+fi
+
 # --- 汇总 ---
 echo ""
 echo "=== AUTOPSY SUMMARY ==="
@@ -132,6 +157,7 @@ cat >> "$LOG_FILE" << ENTRY
     compliance: "$COMPLIANCE"
     dm_anchors: $DM_COUNT
     scorecard: "$SCORECARD"
+    near_miss_score: $NEAR_MISS
     quality: null  # AI填入 (1.0-5.0)
     top_technique: null  # AI填入
     top_lesson: null  # AI填入

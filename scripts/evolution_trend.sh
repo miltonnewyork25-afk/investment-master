@@ -19,8 +19,19 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# JSON模式: 抑制人类可读输出, 只输出JSON到stdout
+if [[ "$JSON_MODE" == "true" ]]; then
+    exec 3>&1
+    exec 1>/dev/null
+fi
+
 if [[ ! -f "$LOG_FILE" ]]; then
-    echo "ERROR: $LOG_FILE not found"
+    if [[ "$JSON_MODE" == "true" ]]; then
+        exec 1>&3
+        echo '{"error":"evolution_log not found"}'
+    else
+        echo "ERROR: $LOG_FILE not found"
+    fi
     exit 1
 fi
 
@@ -229,6 +240,54 @@ fi
 if [[ ${#WARNINGS[@]} -eq 0 && ${#SIGNALS[@]} -eq 0 ]]; then
     echo "  趋势: 正常波动范围内"
     echo ""
+fi
+
+# ============================================================
+# JSON输出模式
+# ============================================================
+if [[ "$JSON_MODE" == "true" ]]; then
+    exec 1>&3  # 恢复stdout
+
+    # 趋势方向
+    if [[ $consecutive_down -ge 2 ]]; then
+        TREND_DIR="down"
+        CONSEC_DIR="$consecutive_down"
+    elif [[ $consecutive_up -ge 3 ]]; then
+        TREND_DIR="up"
+        CONSEC_DIR="$consecutive_up"
+    else
+        TREND_DIR="stable"
+        CONSEC_DIR=0
+    fi
+
+    LATEST_Q="${qualities[$((num_entries-1))]}"
+
+    # 计算平均
+    _sum=0
+    for _q in "${qualities[@]}"; do
+        _sum=$(echo "$_sum + $_q" | bc 2>/dev/null || echo "0")
+    done
+    AVG_Q=$(echo "scale=2; $_sum / $num_entries" | bc 2>/dev/null || echo "0")
+
+    # failure_flag: 最新质量<3.0
+    HAS_FAILURE="false"
+    _is_fail=$(echo "$LATEST_Q < 3.0" | bc 2>/dev/null || echo "0")
+    if [[ "$_is_fail" == "1" ]]; then
+        HAS_FAILURE="true"
+    fi
+
+    # 警告JSON数组
+    WARN_JSON="["
+    for ((w=0; w<${#WARNINGS[@]}; w++)); do
+        if [[ $w -gt 0 ]]; then WARN_JSON+=","; fi
+        ESCAPED=$(echo "${WARNINGS[$w]}" | sed 's/"/\\"/g')
+        WARN_JSON+="\"$ESCAPED\""
+    done
+    WARN_JSON+="]"
+
+    printf '{"trend_direction":"%s","consecutive_direction":%d,"latest_quality":%s,"average_quality":%s,"failure_flag":%s,"warnings":%s}\n' \
+        "$TREND_DIR" "$CONSEC_DIR" "$LATEST_Q" "$AVG_Q" "$HAS_FAILURE" "$WARN_JSON"
+    exit 0
 fi
 
 # ============================================================

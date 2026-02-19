@@ -37,9 +37,61 @@ check_warn()  { echo "  [WARN]  $1"; WARN=$((WARN + 1)); }
 check_fail()  { echo "  [FAIL]  $1"; FAIL=$((FAIL + 1)); }
 check_block() { echo "  [BLOCK] $1"; BLOCK=$((BLOCK + 1)); }
 
+# ============================================================
+# Fever Response — 动态阈值 (基于质量趋势)
+# trend=down+consecutive≥2 → 收紧20%
+# failure_flag=true → 收紧30%
+# trend=up+consecutive≥3 → 放松10%
+# ============================================================
+TH_KC_MIN=500
+TH_LR_MIN=1000
+TH_TARGET_MIN=150000
+TH_PHASE_PCT=15
+TH_DM_MIN=100
+FEVER_LABEL=""
+
+TREND_SCRIPT="$(cd "$(dirname "$0")" && pwd)/evolution_trend.sh"
+if [[ -f "$TREND_SCRIPT" ]]; then
+    TREND_JSON=$(bash "$TREND_SCRIPT" --json 2>/dev/null) || true
+    if [[ -n "$TREND_JSON" ]]; then
+        FEVER_RESULT=$(echo "$TREND_JSON" | python3 -c "
+import json, sys
+try:
+    d = json.load(sys.stdin)
+    trend = d.get('trend_direction', 'stable')
+    consec = d.get('consecutive_direction', 0)
+    failure = d.get('failure_flag', False)
+    if failure:
+        print('FEVER-CRITICAL 1.3')
+    elif trend == 'down' and consec >= 2:
+        print('FEVER 1.2')
+    elif trend == 'up' and consec >= 3:
+        print('RELAXED 0.9')
+    else:
+        print('NORMAL 1.0')
+except:
+    print('NORMAL 1.0')
+" 2>/dev/null) || FEVER_RESULT="NORMAL 1.0"
+
+        FEVER_LABEL=$(echo "$FEVER_RESULT" | cut -d' ' -f1)
+        FEVER_MULT=$(echo "$FEVER_RESULT" | cut -d' ' -f2)
+
+        if [[ "$FEVER_LABEL" != "NORMAL" ]]; then
+            TH_KC_MIN=$(python3 -c "print(int($TH_KC_MIN * $FEVER_MULT))" 2>/dev/null || echo "$TH_KC_MIN")
+            TH_LR_MIN=$(python3 -c "print(int($TH_LR_MIN * $FEVER_MULT))" 2>/dev/null || echo "$TH_LR_MIN")
+            TH_TARGET_MIN=$(python3 -c "print(int($TH_TARGET_MIN * $FEVER_MULT))" 2>/dev/null || echo "$TH_TARGET_MIN")
+            TH_PHASE_PCT=$(python3 -c "print(int($TH_PHASE_PCT * $FEVER_MULT))" 2>/dev/null || echo "$TH_PHASE_PCT")
+            TH_DM_MIN=$(python3 -c "print(int($TH_DM_MIN * $FEVER_MULT))" 2>/dev/null || echo "$TH_DM_MIN")
+        fi
+    fi
+fi
+
 echo "═══════════════════════════════════════════════════"
-echo "  Phase Sentinel v1.0 — 纵深防御"
-echo "  Ticker: $TICKER | Phase: $PHASE | Target: $((TARGET/1000))K"
+echo "  Phase Sentinel v2.0 — 纵深防御 + Fever Response"
+echo "  Ticker: $TICKER | Phase: $PHASE | Target: $((TARGET/1000))K${FEVER_LABEL:+ | [$FEVER_LABEL]}"
+if [[ -n "$FEVER_LABEL" && "$FEVER_LABEL" != "NORMAL" ]]; then
+    echo "  Thresholds: KC≥${TH_KC_MIN} LR≥${TH_LR_MIN} DM≥${TH_DM_MIN} Phase%=${TH_PHASE_PCT}"
+fi
 echo "  Time: $(date '+%Y-%m-%d %H:%M')"
 echo "═══════════════════════════════════════════════════"
 
@@ -53,10 +105,10 @@ echo "--- Layer 1: Prerequisites (永久验证) ---"
 # 1a. knowledge_context.md (Phase -1产出)
 if [ -f "$DATA/knowledge_context.md" ]; then
     KC=$(wc -m < "$DATA/knowledge_context.md" | tr -d ' ')
-    if [ "$KC" -ge 500 ]; then
+    if [ "$KC" -ge $TH_KC_MIN ]; then
         check_pass "knowledge_context.md ($KC chars)"
     else
-        check_fail "knowledge_context.md 过短 ($KC < 500 chars)"
+        check_fail "knowledge_context.md 过短 ($KC < $TH_KC_MIN chars)"
     fi
 else
     check_block "knowledge_context.md 缺失 — Phase -1未执行"
@@ -65,10 +117,10 @@ fi
 # 1b. lit_recon_memo.md (Phase -0.5产出)
 if [ -f "$DATA/lit_recon_memo.md" ]; then
     LR=$(wc -m < "$DATA/lit_recon_memo.md" | tr -d ' ')
-    if [ "$LR" -ge 1000 ]; then
+    if [ "$LR" -ge $TH_LR_MIN ]; then
         check_pass "lit_recon_memo.md ($LR chars)"
     else
-        check_fail "lit_recon_memo.md 过短 ($LR < 1000 chars)"
+        check_fail "lit_recon_memo.md 过短 ($LR < $TH_LR_MIN chars)"
     fi
 else
     check_block "lit_recon_memo.md 缺失 — Phase -0.5未执行"
@@ -84,7 +136,7 @@ fi
 # 1d. checkpoint.yaml + target_chars
 if [ -f "$DATA/checkpoint.yaml" ]; then
     TC=$({ grep -oE 'target_chars: [0-9]+' "$DATA/checkpoint.yaml" 2>/dev/null | grep -oE '[0-9]+' || echo "0"; } | head -1)
-    if [ "$TC" -ge 150000 ]; then
+    if [ "$TC" -ge $TH_TARGET_MIN ]; then
         check_pass "target_chars=$TC"
         # 使用checkpoint中的target覆盖默认值
         TARGET="$TC"
@@ -136,7 +188,7 @@ if [ "$PHASE" -ge 1 ]; then
 
     # 轨迹预期: 每个Phase至少贡献目标的15%
     # Phase 1完成: ≥15% | Phase 2: ≥30% | Phase 3: ≥50% | Phase 4: ≥65%
-    EXPECTED_PCT=$((PHASE * 15))
+    EXPECTED_PCT=$((PHASE * TH_PHASE_PCT))
     if [ "$EXPECTED_PCT" -gt 80 ]; then EXPECTED_PCT=80; fi
     EXPECTED_MIN=$((TARGET * EXPECTED_PCT / 100))
     EXPECTED_MIN_K=$((EXPECTED_MIN / 1000))
@@ -175,12 +227,13 @@ if [ "$PHASE" -ge 3 ]; then
     done
 
     # 预期: Tier 3报告至少100个unique DM锚点到Phase 3
-    if [ "$DM_COUNT" -ge 100 ]; then
-        check_pass "DM锚点: $DM_COUNT (≥100)"
-    elif [ "$DM_COUNT" -ge 50 ]; then
-        check_warn "DM锚点偏少: $DM_COUNT (建议≥100)"
+    DM_WARN_MIN=$((TH_DM_MIN / 2))
+    if [ "$DM_COUNT" -ge $TH_DM_MIN ]; then
+        check_pass "DM锚点: $DM_COUNT (≥$TH_DM_MIN)"
+    elif [ "$DM_COUNT" -ge $DM_WARN_MIN ]; then
+        check_warn "DM锚点偏少: $DM_COUNT (建议≥$TH_DM_MIN)"
     else
-        check_fail "DM锚点严重不足: $DM_COUNT (需≥100)"
+        check_fail "DM锚点严重不足: $DM_COUNT (需≥$TH_DM_MIN)"
         echo "         → 回顾: 分析是否缺乏数据支撑?"
     fi
 fi
@@ -214,6 +267,98 @@ fi
 echo ""
 echo "═══════════════════════════════════════════════════"
 echo "  结果: PASS=$PASS | WARN=$WARN | FAIL=$FAIL | BLOCK=$BLOCK"
+
+# ============================================================
+# Layer 5: Antibody Checks — 自动化AI_review抗体
+# AB-003: 单会话检测 (Phase≥5)
+# AB-004: 交叉验证密度 (Phase≥3)
+# AB-006: 方法独立性 (Phase≥5)
+# ============================================================
+if [ "$PHASE" -ge 3 ]; then
+    echo ""
+    echo "--- Layer 5: Antibody Checks ---"
+
+    # AB-004: 交叉验证提及密度
+    XV_COUNT=0
+    for f in "$STAGING"/*.md reports/${TICKER}/${TICKER}_Phase*.md; do
+        if [ -f "$f" ]; then
+            XV=$({ grep -ci '交叉验证' "$f" 2>/dev/null || echo "0"; })
+            XV="${XV// /}"
+            XV_COUNT=$((XV_COUNT + XV))
+        fi
+    done
+    if [ "$XV_COUNT" -lt 3 ]; then
+        check_warn "AB-004: 交叉验证提及${XV_COUNT}次 (建议≥3) → 可能缺乏多源校验"
+    else
+        check_pass "AB-004: 交叉验证提及${XV_COUNT}次"
+    fi
+fi
+
+if [ "$PHASE" -ge 5 ]; then
+    # AB-003: 单会话检测 — checkpoint更新次数
+    if [ -f "$DATA/checkpoint.yaml" ]; then
+        UC=$({ grep -oE 'update_count: [0-9]+' "$DATA/checkpoint.yaml" 2>/dev/null | grep -oE '[0-9]+' || echo "0"; } | head -1)
+        UC="${UC:-0}"
+        if [ "$UC" -lt 3 ]; then
+            check_warn "AB-003: 仅${UC}次检查点更新 → 可能单会话急速完成"
+        else
+            check_pass "AB-003: ${UC}次检查点更新"
+        fi
+    fi
+
+    # AB-006: 方法独立性 — 估值结果离散度
+    ALL_VALS=""
+    for f in "$STAGING"/*.md reports/${TICKER}/${TICKER}_Phase*.md; do
+        if [ -f "$f" ]; then
+            FVALS=$({ grep -oE '(方法[0-9一二三四五六M][^:：]*[：:].*\$[0-9,.]+|DCF.*\$[0-9,.]+|SOTP.*\$[0-9,.]+)' "$f" 2>/dev/null | grep -oE '\$[0-9,]+\.?[0-9]*' | tr -d ',$' || true; })
+            if [ -n "$FVALS" ]; then
+                ALL_VALS="${ALL_VALS}${FVALS}"$'\n'
+            fi
+        fi
+    done
+    ALL_VALS=$(echo "$ALL_VALS" | sort -un | grep -v '^$' || true)
+
+    if [ -n "$ALL_VALS" ]; then
+        AB006=$(echo "$ALL_VALS" | python3 -c "
+import sys
+vals = [float(x) for x in sys.stdin.read().strip().split('\n') if x]
+if len(vals) >= 2:
+    close = 0
+    for i in range(len(vals)):
+        for j in range(i+1, len(vals)):
+            if max(vals[i],vals[j]) > 0:
+                diff = abs(vals[i]-vals[j])/max(vals[i],vals[j])*100
+                if diff < 3: close += 1
+    print(f'{close}')
+else:
+    print('-1')
+" 2>/dev/null) || AB006="-1"
+
+        if [ "$AB006" != "-1" ] && [ "$AB006" -gt 0 ] 2>/dev/null; then
+            check_warn "AB-006: ${AB006}对估值方法结果差<3% → 方法可能缺乏独立性"
+        elif [ "$AB006" == "0" ]; then
+            check_pass "AB-006: 估值方法结果离散度合理"
+        fi
+    fi
+fi
+
+# --- Near-miss追踪: 写入sentinel_log.yaml ---
+SENTINEL_LOG="$DATA/sentinel_log.yaml"
+mkdir -p "$DATA"
+if [ ! -f "$SENTINEL_LOG" ]; then
+    echo "# Sentinel Log — 质量哨兵事件记录" > "$SENTINEL_LOG"
+    echo "events:" >> "$SENTINEL_LOG"
+fi
+cat >> "$SENTINEL_LOG" << SENTRY
+  - phase: $PHASE
+    timestamp: "$(date -u +"%Y-%m-%dT%H:%M:%S+00:00")"
+    pass: $PASS
+    warn: $WARN
+    fail: $FAIL
+    block: $BLOCK
+    target_chars: $TARGET
+SENTRY
+echo "  → sentinel_log.yaml 已更新"
 
 if [ $BLOCK -gt 0 ]; then
     echo ""

@@ -12,7 +12,7 @@
 #   3. git add 报告+checkpoint → git commit 标准格式
 #   4. 输出摘要
 #
-# 退出码: 0=成功, 1=Fast Gate失败, 2=参数错误, 3=文件缺失
+# 退出码: 0=成功, 1=Fast Gate失败, 2=参数错误, 3=文件缺失, 4=Sentinel BLOCK
 # ============================================================
 
 set -uo pipefail
@@ -30,6 +30,14 @@ PHASE="${2:?缺少PHASE参数}"
 REPORT="${3:?缺少REPORT_FILE参数}"
 MIN_CHARS="${4:?缺少MIN_CHARS参数}"
 TIER="${5:-3}"
+
+# --force 标志: 绕过Circuit Breaker
+FORCE_MODE="false"
+for arg in "$@"; do
+    if [[ "$arg" == "--force" ]]; then
+        FORCE_MODE="true"
+    fi
+done
 
 # --- 路径 ---
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -56,7 +64,7 @@ if [ ! -f "$FAST_GATE" ]; then
 fi
 
 # --- Step 1: Fast Gate ---
-echo -e "${CYAN}[1/4] 运行 Fast Gate...${NC}"
+echo -e "${CYAN}[1/5] 运行 Fast Gate...${NC}"
 if bash "$FAST_GATE" "$REPORT" "$MIN_CHARS" "$TIER"; then
     echo ""
     echo -e "${GREEN}Fast Gate PASSED${NC}"
@@ -68,7 +76,7 @@ fi
 echo ""
 
 # --- Step 2: 读取报告指标 ---
-echo -e "${CYAN}[2/4] 读取报告指标...${NC}"
+echo -e "${CYAN}[2/5] 读取报告指标...${NC}"
 
 ACTUAL_CHARS=$(wc -m < "$REPORT")
 ACTUAL_CHARS="${ACTUAL_CHARS// /}"
@@ -102,7 +110,7 @@ echo "  字符: ${ACTUAL_CHARS} | 标注: ${TOTAL_ANN} | 密度: ${ANN_DENSITY}/
 echo ""
 
 # --- Step 3: 更新 checkpoint.yaml ---
-echo -e "${CYAN}[3/4] 更新 checkpoint.yaml (v2.0精简格式)...${NC}"
+echo -e "${CYAN}[3/5] 更新 checkpoint.yaml (v2.0精简格式)...${NC}"
 
 # 确保 data/ 目录存在
 mkdir -p "$(dirname "$CHECKPOINT")"
@@ -118,6 +126,14 @@ if [ -f "$CHECKPOINT" ]; then
     WORKTREE=$(grep '^worktree:' "$CHECKPOINT" 2>/dev/null | head -1 | sed 's/^worktree: *//' | tr -d '"') || true
     INDUSTRY=$(grep '^industry:' "$CHECKPOINT" 2>/dev/null | head -1 | sed 's/^industry: *//' | tr -d '"') || true
 fi
+
+# 读取已有update_count
+UPDATE_COUNT=0
+if [ -f "$CHECKPOINT" ]; then
+    UC=$({ grep -oE 'update_count: [0-9]+' "$CHECKPOINT" 2>/dev/null | grep -oE '[0-9]+' || echo "0"; } | head -1)
+    UPDATE_COUNT="${UC:-0}"
+fi
+UPDATE_COUNT=$((UPDATE_COUNT + 1))
 
 # 默认值
 COMPANY="${COMPANY:-${TICKER}}"
@@ -163,6 +179,7 @@ last_updated: "${TIMESTAMP}"
 current_phase: ${PHASE}
 phase_status: completed
 phases_completed: ${PHASES_COMPLETED}
+update_count: ${UPDATE_COUNT}
 
 quick_ref:
   total_chars: ${TOTAL_PROJECT_CHARS}
@@ -184,8 +201,46 @@ YAML
 echo -e "${GREEN}  checkpoint.yaml 已更新 (v2.0, $(wc -l < "$CHECKPOINT") 行)${NC}"
 echo ""
 
-# --- Step 4: Git add + commit ---
-echo -e "${CYAN}[4/4] Git commit...${NC}"
+# --- Step 4: Phase Sentinel — Circuit Breaker ---
+echo -e "${CYAN}[4/5] Phase Sentinel — Circuit Breaker...${NC}"
+SENTINEL="${REPO_ROOT}/scripts/phase_sentinel.sh"
+if [ -f "$SENTINEL" ]; then
+    # 从checkpoint读取target_chars(如有)
+    SENTINEL_TARGET="${MIN_CHARS}"
+    if [ -f "$CHECKPOINT" ]; then
+        CT=$({ grep -oE 'target_chars: [0-9]+' "$CHECKPOINT" | grep -oE '[0-9]+' || echo "0"; } | head -1)
+        if [ "$CT" -gt 0 ]; then
+            SENTINEL_TARGET="$CT"
+        fi
+    fi
+
+    SENTINEL_EXIT=0
+    bash "$SENTINEL" "$TICKER" "$PHASE" "$SENTINEL_TARGET" || SENTINEL_EXIT=$?
+
+    if [ "$SENTINEL_EXIT" -eq 2 ]; then
+        echo ""
+        echo -e "${RED}*** CIRCUIT BREAKER — Sentinel BLOCK ***${NC}"
+        echo -e "${RED}前序产出缺失,commit已阻止。${NC}"
+        if [ "$FORCE_MODE" == "true" ]; then
+            echo -e "${YELLOW}*** --force 模式: 绕过Circuit Breaker ***${NC}"
+        else
+            echo -e "${RED}修复问题后重新运行,或使用 --force 绕过${NC}"
+            exit 4
+        fi
+    elif [ "$SENTINEL_EXIT" -eq 1 ]; then
+        echo ""
+        echo -e "${YELLOW}*** SENTINEL FAIL — 有质量问题,建议修复 ***${NC}"
+    else
+        echo ""
+        echo -e "${GREEN}Sentinel CLEARED${NC}"
+    fi
+else
+    echo "  phase_sentinel.sh not found (跳过)"
+fi
+echo ""
+
+# --- Step 5: Git add + commit ---
+echo -e "${CYAN}[5/5] Git commit...${NC}"
 
 # 收集要提交的文件
 FILES_TO_ADD=("$REPORT" "$CHECKPOINT")
@@ -205,6 +260,11 @@ if [ -d "reports/${TICKER}/staging/" ]; then
     for sf in reports/${TICKER}/staging/*.md; do
         [ -f "$sf" ] && FILES_TO_ADD+=("$sf")
     done
+fi
+
+# sentinel_log也加入提交
+if [ -f "reports/${TICKER}/data/sentinel_log.yaml" ]; then
+    FILES_TO_ADD+=("reports/${TICKER}/data/sentinel_log.yaml")
 fi
 
 echo "  提交文件:"
@@ -236,34 +296,5 @@ echo " Chars:       ${ACTUAL_CHARS} (target: ${MIN_CHARS})"
 echo " Annotations: ${TOTAL_ANN} (${ANN_DENSITY}/万, hard: ${HARD_RATIO}%)"
 echo " Checkpoint:  ${CHECKPOINT} (v2.0)"
 echo -e "========================================${NC}"
-echo ""
-
-# --- Step 5: Phase Sentinel — 纵深防御质量哨兵 ---
-echo -e "${CYAN}[5/5] Phase Sentinel — 纵深防御检查...${NC}"
-SENTINEL="${REPO_ROOT}/scripts/phase_sentinel.sh"
-if [ -f "$SENTINEL" ]; then
-    # 从checkpoint读取target_chars(如有)
-    SENTINEL_TARGET="${MIN_CHARS}"
-    if [ -f "$CHECKPOINT" ]; then
-        CT=$({ grep -oE 'target_chars: [0-9]+' "$CHECKPOINT" | grep -oE '[0-9]+' || echo "0"; } | head -1)
-        if [ "$CT" -gt 0 ]; then
-            SENTINEL_TARGET="$CT"
-        fi
-    fi
-
-    SENTINEL_EXIT=0
-    bash "$SENTINEL" "$TICKER" "$PHASE" "$SENTINEL_TARGET" || SENTINEL_EXIT=$?
-
-    if [ "$SENTINEL_EXIT" -eq 2 ]; then
-        echo ""
-        echo -e "${RED}*** SENTINEL BLOCK — 前序产出缺失,请修复后再继续 ***${NC}"
-    elif [ "$SENTINEL_EXIT" -eq 1 ]; then
-        echo ""
-        echo -e "${YELLOW}*** SENTINEL FAIL — 有质量问题,建议修复 ***${NC}"
-    fi
-else
-    echo "  phase_sentinel.sh not found (跳过)"
-fi
-
 echo ""
 echo "下一步: git push (如需) 或继续下一Phase"
