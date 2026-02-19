@@ -1,5 +1,5 @@
 # Launch Brief: AAPL
-> 自动生成 by tier3_launch.sh v1.0 | 2026-02-19 10:59
+> 自动生成 by tier3_launch.sh v1.0 | 2026-02-19 11:15
 > **AI必须在Phase 0开始前完整阅读本文件**
 
 ## 复杂度评估
@@ -42,13 +42,31 @@
 - knowledge_context.md: 1373 chars
 - 状态: ✓ 完成
 
+## 已知失败抗体 (Adaptive Immunity)
+> 以下教训来自历史报告的失败模式。AI必须在分析过程中主动避免。
+  - 66K for mega-cap = catastrophic. 无Phase -1/-0.5 → 产出薄80%
+  - 外部输入变化(用户指令模式改变)导致全部准备工作跳过
+  - 77分钟完成vs多天=质量降低80%
+  - MacroTrends SBC含DevEx, FMP SBC=$0(parser问题), 单源不可信
+  - WACC±100bps跨3个评级区间=假精度, 巨头公司尤其严重
+
+## Pre-mortem: 本报告最可能的失败模式
+> 假设6个月后回顾,本报告质量很差。最可能的原因是什么?
+1. 准备不足 — 跳过文献侦察,对行业认知浅薄 (AAPL教训)
+2. 产出过薄 — 目标279K-437K,实际远低于目标
+3. 数据单源 — 关键财务数字只用FMP,未交叉验证 (RBLX教训)
+4. 方法不独立 — 多方法估值结果<3%差异=共享假设 (AMAT教训)
+5. 红队走过场 — 所有CQ同方向调整=系统性偏差 (AMAT教训)
+
 ## AI待完成清单 (Phase 0之前)
 1. [x] Phase -1 知识检索 (≥500 chars)
 2. [ ] Phase -0.5 文献侦察 — 5路WebSearch → data/lit_recon_memo.md (≥1000 chars)
 3. [ ] 运行 preflight_gate.sh 验证 → 必须CLEARED
-4. [ ] checkpoint.yaml 设定 target_chars: 349694
+4. [x] checkpoint.yaml 已自动创建 (target_chars: 349694)
 
-## 防御提醒
-- 每个Phase完成后运行 phase_sentinel.sh — 自动重新验证所有前序产出
-- 如果累计产出<目标的15%/Phase → sentinel会发出WARN
-- 如果前序产出缺失 → sentinel会发出BLOCK，必须回补
+## 纵深防御提醒
+- **Layer 0**: tier3_launch.sh [已完成] — 复杂度估计+知识检索+checkpoint
+- **Layer 1**: preflight_gate.sh [待执行] — Phase 0前硬阻断
+- **Layer 2**: phase_sentinel.sh [自动] — 每Phase后重验全部前序(嵌入phase_complete)
+- **Layer 3**: quality_gate_complete.sh [最终] — 组装前门控
+- **设计**: 即使任何单层被跳过,后续层仍会检测到缺失产出

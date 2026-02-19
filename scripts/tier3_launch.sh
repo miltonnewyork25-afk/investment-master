@@ -171,10 +171,60 @@ else
 fi
 
 # ============================================================
-# Step 5: 生成 Launch Brief
+# Step 4.5: Poka-yoke — 自动创建checkpoint.yaml (消除AI遗忘)
 # ============================================================
 echo ""
-echo "--- [5/6] 生成 Launch Brief ---"
+echo "--- [4.5/8] Poka-yoke: 自动创建checkpoint ---"
+CHECKPOINT="${DATA_DIR}/checkpoint.yaml"
+if [ ! -f "$CHECKPOINT" ]; then
+    cat > "$CHECKPOINT" << CKPT
+schema_version: "2.0"
+ticker: ${TICKER}
+company: "${TICKER}"
+framework_version: v17.0
+worktree: "${TARGET_IND}"
+industry: "${TARGET_IND}"
+last_updated: "$(date -u +"%Y-%m-%dT%H:%M:%S+00:00")"
+
+current_phase: -1
+phase_status: pre_launch
+phases_completed: []
+
+target_chars: ${IND_AVG}
+target_range: "${TARGET_LOW_K}K-${TARGET_HIGH_K}K"
+hard_floor: 200000
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
+CKPT
+    echo "  checkpoint.yaml 已自动创建 (target_chars: ${IND_AVG})"
+else
+    echo "  checkpoint.yaml 已存在, 保留现有"
+fi
+
+# ============================================================
+# Step 4.7: 抗体加载 (Adaptive Immunity)
+# ============================================================
+echo ""
+echo "--- [4.7/8] 失败抗体检查 ---"
+ANTIBODIES_FILE="knowledge/failure_antibodies.yaml"
+AB_COUNT=0
+AB_RELEVANT=""
+if [ -f "$ANTIBODIES_FILE" ]; then
+    AB_COUNT=$({ grep -c '^  - id:' "$ANTIBODIES_FILE" || echo "0"; })
+    # 提取所有教训作为提醒
+    AB_RELEVANT=$({ grep 'lesson:' "$ANTIBODIES_FILE" | head -5 | sed 's/.*lesson: *"*/  - /' | sed 's/"$//' || true; })
+    echo "  已加载 $AB_COUNT 个失败抗体"
+else
+    echo "  failure_antibodies.yaml not found"
+fi
+
+# ============================================================
+# Step 5: 生成 Launch Brief (含Pre-mortem + 抗体)
+# ============================================================
+echo ""
+echo "--- [5/8] 生成 Launch Brief ---"
 
 cat > "$LAUNCH_BRIEF" << BRIEF
 # Launch Brief: $TICKER
@@ -199,16 +249,30 @@ $EVOLUTION_LESSONS
 - knowledge_context.md: ${KC_CHARS} chars
 - 状态: $([ "$KC_CHARS" -ge 500 ] && echo "✓ 完成" || echo "✗ 需补充")
 
+## 已知失败抗体 (Adaptive Immunity)
+> 以下教训来自历史报告的失败模式。AI必须在分析过程中主动避免。
+$AB_RELEVANT
+
+## Pre-mortem: 本报告最可能的失败模式
+> 假设6个月后回顾,本报告质量很差。最可能的原因是什么?
+1. 准备不足 — 跳过文献侦察,对行业认知浅薄 (AAPL教训)
+2. 产出过薄 — 目标${TARGET_LOW_K}K-${TARGET_HIGH_K}K,实际远低于目标
+3. 数据单源 — 关键财务数字只用FMP,未交叉验证 (RBLX教训)
+4. 方法不独立 — 多方法估值结果<3%差异=共享假设 (AMAT教训)
+5. 红队走过场 — 所有CQ同方向调整=系统性偏差 (AMAT教训)
+
 ## AI待完成清单 (Phase 0之前)
 1. $([ "$KC_CHARS" -ge 500 ] && echo "[x]" || echo "[ ]") Phase -1 知识检索 (≥500 chars)
 2. [ ] Phase -0.5 文献侦察 — 5路WebSearch → data/lit_recon_memo.md (≥1000 chars)
 3. [ ] 运行 preflight_gate.sh 验证 → 必须CLEARED
-4. [ ] checkpoint.yaml 设定 target_chars: ${IND_AVG}
+4. [x] checkpoint.yaml 已自动创建 (target_chars: ${IND_AVG})
 
-## 防御提醒
-- 每个Phase完成后运行 phase_sentinel.sh — 自动重新验证所有前序产出
-- 如果累计产出<目标的15%/Phase → sentinel会发出WARN
-- 如果前序产出缺失 → sentinel会发出BLOCK，必须回补
+## 纵深防御提醒
+- **Layer 0**: tier3_launch.sh [已完成] — 复杂度估计+知识检索+checkpoint
+- **Layer 1**: preflight_gate.sh [待执行] — Phase 0前硬阻断
+- **Layer 2**: phase_sentinel.sh [自动] — 每Phase后重验全部前序(嵌入phase_complete)
+- **Layer 3**: quality_gate_complete.sh [最终] — 组装前门控
+- **设计**: 即使任何单层被跳过,后续层仍会检测到缺失产出
 BRIEF
 
 echo "  launch_brief.md 已生成 ($(wc -m < "$LAUNCH_BRIEF" | tr -d ' ') chars)"
@@ -217,7 +281,7 @@ echo "  launch_brief.md 已生成 ($(wc -m < "$LAUNCH_BRIEF" | tr -d ' ') chars)
 # Step 6: Pre-Flight Gate 预检
 # ============================================================
 echo ""
-echo "--- [6/6] Pre-Flight Gate 预检 ---"
+echo "--- [6/8] Pre-Flight Gate 预检 ---"
 if [ -f "scripts/preflight_gate.sh" ]; then
     GATE_RESULT=$(bash scripts/preflight_gate.sh "$TICKER" "$TARGET_IND" 2>&1) || true
     # 只显示结果行
