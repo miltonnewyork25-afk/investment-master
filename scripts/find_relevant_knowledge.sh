@@ -295,3 +295,103 @@ if [[ -f "${SCORE_FILE}.best" ]]; then
     echo "建议参考报告: bash scripts/find_best_reference.sh ${best_ticker}"
 fi
 echo "─────────────────────────────────────────────────"
+
+# ============================================================
+# 进化上下文: evolution_log 最近3条
+# ============================================================
+EVOL_LOG="knowledge/evolution_log.yaml"
+if [[ -f "$EVOL_LOG" ]]; then
+    echo ""
+    echo "═══════════════════════════════════════════════════"
+    echo "  Evolution Context (最近3份报告)"
+    echo "═══════════════════════════════════════════════════"
+    echo ""
+
+    # 提取所有有quality值的entries
+    evol_tickers=()
+    evol_qualities=()
+    evol_lessons=()
+    evol_proposed=()
+    evol_status=()
+    e_ticker="" e_quality="" e_lesson="" e_proposed="" e_status=""
+
+    while IFS= read -r line; do
+        if echo "$line" | grep -qE '^\s*- ticker:'; then
+            if [[ -n "$e_ticker" && "$e_quality" != "null" && -n "$e_quality" ]]; then
+                evol_tickers+=("$e_ticker")
+                evol_qualities+=("$e_quality")
+                evol_lessons+=("$e_lesson")
+                evol_proposed+=("$e_proposed")
+                evol_status+=("$e_status")
+            fi
+            e_ticker=$(echo "$line" | sed 's/.*ticker: *"\{0,1\}\([^"]*\)"\{0,1\}/\1/' | tr -d ' ')
+            e_quality="" e_lesson="" e_proposed="" e_status=""
+        fi
+        if echo "$line" | grep -qE '^\s+quality:'; then
+            e_quality=$(echo "$line" | sed 's/.*quality: *//' | tr -d ' "')
+        fi
+        if echo "$line" | grep -qE '^\s+top_lesson:'; then
+            e_lesson=$(echo "$line" | sed 's/.*top_lesson: *"\{0,1\}\([^"]*\)"\{0,1\}/\1/')
+        fi
+        if echo "$line" | grep -qE '^\s+evolution_proposed:'; then
+            e_proposed=$(echo "$line" | sed 's/.*evolution_proposed: *"\{0,1\}\([^"]*\)"\{0,1\}/\1/')
+        fi
+        if echo "$line" | grep -qE '^\s+evolution_status:'; then
+            e_status=$(echo "$line" | sed 's/.*evolution_status: *//' | tr -d ' "')
+        fi
+    done < "$EVOL_LOG"
+
+    # 保存最后一条
+    if [[ -n "$e_ticker" && "$e_quality" != "null" && -n "$e_quality" ]]; then
+        evol_tickers+=("$e_ticker")
+        evol_qualities+=("$e_quality")
+        evol_lessons+=("$e_lesson")
+        evol_proposed+=("$e_proposed")
+        evol_status+=("$e_status")
+    fi
+
+    evol_total=${#evol_tickers[@]}
+    evol_start=$((evol_total - 3))
+    if [[ $evol_start -lt 0 ]]; then evol_start=0; fi
+
+    # 质量趋势
+    trend_line=""
+    prev_q=""
+    for ((i=evol_start; i<evol_total; i++)); do
+        q="${evol_qualities[$i]}"
+        t="${evol_tickers[$i]}"
+        arrow=""
+        if [[ -n "$prev_q" ]]; then
+            cmp=$(echo "$q > $prev_q" | bc 2>/dev/null || echo "0")
+            if [[ "$cmp" == "1" ]]; then arrow="->UP->"; else arrow="->DN->"; fi
+        fi
+        trend_line="${trend_line}${arrow}${t}(${q})"
+        prev_q="$q"
+    done
+    echo "  趋势: $trend_line"
+    echo ""
+
+    # 教训
+    echo "  最近教训:"
+    for ((i=evol_start; i<evol_total; i++)); do
+        echo "    [${evol_tickers[$i]}] ${evol_lessons[$i]}"
+    done
+    echo ""
+
+    # 待审批
+    pending_any="false"
+    for ((i=0; i<evol_total; i++)); do
+        if [[ "${evol_status[$i]}" == "pending" ]]; then
+            if [[ "$pending_any" == "false" ]]; then
+                echo "  待审批进化提议:"
+                pending_any="true"
+            fi
+            echo "    [${evol_tickers[$i]}] ${evol_proposed[$i]}"
+        fi
+    done
+    if [[ "$pending_any" == "false" ]]; then
+        echo "  进化提议: (全部已审批)"
+    fi
+
+    echo "─────────────────────────────────────────────────"
+fi
