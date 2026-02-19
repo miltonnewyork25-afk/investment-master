@@ -222,7 +222,8 @@ if [ "$PHASE" -ge 3 ]; then
     DM_COUNT=0
     for f in "$STAGING"/*.md reports/${TICKER}/${TICKER}_Phase*.md; do
         if [ -f "$f" ]; then
-            FC=$({ grep -oE 'DM-[A-Z]+-[0-9]+' "$f" 2>/dev/null | sort -u | wc -l || echo "0"; } | tr -d ' ')
+            FC=$({ grep -oE 'DM-[A-Z]+-[0-9]+' "$f" 2>/dev/null | sort -u | wc -l || echo "0"; } | head -1 | tr -d ' ')
+            FC="${FC:-0}"
             DM_COUNT=$((DM_COUNT + FC))
         fi
     done
@@ -283,8 +284,8 @@ if [ "$PHASE" -ge 3 ]; then
     XV_COUNT=0
     for f in "$STAGING"/*.md reports/${TICKER}/${TICKER}_Phase*.md; do
         if [ -f "$f" ]; then
-            XV=$({ grep -ci '交叉验证' "$f" 2>/dev/null || echo "0"; })
-            XV="${XV// /}"
+            XV=$({ grep -ci '交叉验证' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            XV="${XV:-0}"
             XV_COUNT=$((XV_COUNT + XV))
         fi
     done
@@ -319,8 +320,8 @@ if [ "$PHASE" -ge 5 ]; then
     VIA_MENTION=0
     for f in "$STAGING"/*.md reports/${TICKER}/${TICKER}_Phase*.md; do
         if [ -f "$f" ]; then
-            VM=$({ grep -ci '方法独立性\|假设重叠\|independence.*audit\|方法.*伪独立\|独立性.*审计' "$f" 2>/dev/null || echo "0"; })
-            VM="${VM// /}"
+            VM=$({ grep -ci '方法独立性\|假设重叠\|independence.*audit\|方法.*伪独立\|独立性.*审计' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            VM="${VM:-0}"
             VIA_MENTION=$((VIA_MENTION + VM))
         fi
     done
@@ -331,6 +332,77 @@ if [ "$PHASE" -ge 5 ]; then
     else
         check_warn "AB-007: 未检测到估值方法独立性审计 → 可能存在方法伪独立(5法实际2.5独立)"
         echo "         → 建议: Phase 5前运行 /valuation-independence-audit"
+    fi
+
+    # AB-008 (v17.1, EVO-LRCX-001/003): 跨Agent数值一致性检查
+    # LRCX教训: P5_A(-11.3%) vs P5_C(-29.5%) 18pp冲突, 组装修复43处
+    # 策略: 从每个P5文件的前20行(通常含标题摘要)提取关键数值, 比较跨文件一致性
+    if ls "$STAGING"/P5_*.md 1>/dev/null 2>&1; then
+        P5_CONFLICT=0
+        P5_DETAIL=""
+
+        # 提取每个P5文件中"期望回报"关键数值(取首次出现的百分比,即标题/摘要值)
+        ER_PER_FILE=""
+        for pf in "$STAGING"/P5_*.md; do
+            if [ -f "$pf" ]; then
+                # 提取"期望回报"后紧跟的百分比(支持各种格式: 冒号/空格/~/**等)
+                PF_ER=$({ grep -oE '期望回报[^0-9]*[-+]?[0-9]+\.?[0-9]*%' "$pf" 2>/dev/null | head -1 | grep -oE '[-+]?[0-9]+\.?[0-9]*' || true; })
+                if [ -n "$PF_ER" ]; then
+                    PF_NAME=$(basename "$pf")
+                    ER_PER_FILE="${ER_PER_FILE}${PF_NAME}=${PF_ER} "
+                fi
+            fi
+        done
+        # 提取唯一数值(绝对值精度到整数)
+        ER_UNIQUE=$(echo "$ER_PER_FILE" | grep -oE '=[-+]?[0-9]+' | sort -u | wc -l | tr -d ' ')
+        ER_UNIQUE="${ER_UNIQUE:-0}"
+        if [ "$ER_UNIQUE" -gt 1 ]; then
+            P5_CONFLICT=$((P5_CONFLICT + 1))
+            P5_DETAIL="${P5_DETAIL}期望回报: ${ER_PER_FILE}; "
+        fi
+
+        # 检查CQ加权置信度一致性
+        CQ_PER_FILE=""
+        for pf in "$STAGING"/P5_*.md; do
+            if [ -f "$pf" ]; then
+                PF_CQ=$({ grep -oE 'CQ加权置信度[^0-9]*[0-9]+\.?[0-9]*%' "$pf" 2>/dev/null | head -1 | grep -oE '[0-9]+\.?[0-9]*' || true; })
+                if [ -n "$PF_CQ" ]; then
+                    PF_NAME=$(basename "$pf")
+                    CQ_PER_FILE="${CQ_PER_FILE}${PF_NAME}=${PF_CQ} "
+                fi
+            fi
+        done
+        CQ_UNIQUE=$(echo "$CQ_PER_FILE" | grep -oE '=[0-9]+' | sort -u | wc -l | tr -d ' ')
+        CQ_UNIQUE="${CQ_UNIQUE:-0}"
+        if [ "$CQ_UNIQUE" -gt 1 ]; then
+            P5_CONFLICT=$((P5_CONFLICT + 1))
+            P5_DETAIL="${P5_DETAIL}CQ置信度: ${CQ_PER_FILE}; "
+        fi
+
+        # 检查方法离散度一致性
+        MD_PER_FILE=""
+        for pf in "$STAGING"/P5_*.md; do
+            if [ -f "$pf" ]; then
+                PF_MD=$({ grep -oE '方法离散度[^0-9]*[0-9]+\.?[0-9]*x' "$pf" 2>/dev/null | head -1 | grep -oE '[0-9]+\.?[0-9]*' || true; })
+                if [ -n "$PF_MD" ]; then
+                    PF_NAME=$(basename "$pf")
+                    MD_PER_FILE="${MD_PER_FILE}${PF_NAME}=${PF_MD} "
+                fi
+            fi
+        done
+        MD_UNIQUE=$(echo "$MD_PER_FILE" | grep -oE '=[0-9]+' | sort -u | wc -l | tr -d ' ')
+        MD_UNIQUE="${MD_UNIQUE:-0}"
+        if [ "$MD_UNIQUE" -gt 1 ]; then
+            P5_CONFLICT=$((P5_CONFLICT + 1))
+            P5_DETAIL="${P5_DETAIL}方法离散度: ${MD_PER_FILE}; "
+        fi
+
+        if [ "$P5_CONFLICT" -gt 0 ]; then
+            check_warn "AB-008: P5跨Agent数值冲突${P5_CONFLICT}项 → ${P5_DETAIL}必须统一后再组装"
+            echo "         → 建议: 以P5_C(估值闭环)为权威源, 更新P5_A中的引用值"
+        else
+            check_pass "AB-008: P5跨Agent数值一致(期望回报/CQ/离散度)"
+        fi
     fi
 
     # AB-006: 方法独立性 — 估值结果离散度
