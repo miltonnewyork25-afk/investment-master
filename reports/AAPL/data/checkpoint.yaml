@@ -1,19 +1,114 @@
 schema_version: "2.0"
 ticker: AAPL
-company: "AAPL"
-framework_version: v17.0
-worktree: "科技平台"
+company: "Apple Inc."
 industry: "科技平台"
-last_updated: "2026-02-19T03:15:01+00:00"
+worktree: "生态科技"
+framework_version: v18.0
+report_tier: 3
+last_updated: "2026-02-19"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: 4
+phase_status: in_progress
+phases_completed: [-1, -0.5, 0, 1, 2, 3]
 
-target_chars: 349694
-target_range: "279K-437K"
-hard_floor: 200000
+# 目标: 500KB+ bytes (≈350K+ chars)
+target_chars: 400000
+target_range: "350K-450K"
+target_bytes: "500KB+"
+hard_floor: 300000
+
+# 质量目标
+quality_target: "≥4.0/5"
+quality_reference: "KLAC 4.5/5 (254K) — 密度策略"
+quality_exceed: "MSFT 3.5/5 (316K/517KB) — 必须超越"
+
+# 分析方法
+valuation_method: "逆向估值为中心(Reverse DCF)"
+rating_constraint: "零投资动作建议(不给买入/卖出/加仓/减仓)"
+
+# 可能性宽度
+possibility_width:
+  business_model: 2
+  competitive: 3
+  regulatory: 4
+  technology: 3
+  financial: 1
+  average: 2.6
+  framework: traditional  # 0-3 → 传统框架 + AR1条件估值中心
+
+# 核心问题 (CQ)
+core_questions:
+  CQ-1: "AI能否驱动iPhone超级换机周期, 还是Q1+23%只是ASP提升的一次性效果?"
+  CQ-2: "Google搜索协议若被重组/终止, 对Services利润的实际影响有多大?"
+  CQ-3: "Services能否通过AI货币化(Apple Intelligence Pro)维持12-15%增速?"
+  CQ-4: "中国三重风险(地缘+关税+竞争)对收入的综合压缩幅度?"
+  CQ-5: "33x PE是否能被EPS增长支撑, 还是面临回归25-28x的压缩?"
+  CQ-6: "轻资本AI战略(外采基础模型)长期是否可持续?"
+  CQ-7: "App Store反垄断(DOJ+EU DMA)的实际佣金收入侵蚀幅度?"
+
+# CQ权重
+cq_weights:
+  CQ-1: 25
+  CQ-2: 15
+  CQ-3: 15
+  CQ-4: 10
+  CQ-5: 20
+  CQ-6: 10
+  CQ-7: 5
+
+# Kill Switch
+kill_switches:
+  KS-1: "中国iPhone收入连续2季YoY下降>10%"
+  KS-2: "Google搜索协议被终止且无替代收入"
+  KS-3: "Services增速降至<8%持续两季"
+  KS-4: "Apple Intelligence用户采用率<5%(发布12月后)"
+
+# Phase 1 模块分配
+phase1_modules:
+  agent_a:
+    role: 商业洞察分析师
+    chapters: [2, 3, 4, 5, 6]
+    focus: "生态飞轮+分部深度+AI战略+竞争护城河+增长催化剂"
+    target_chars: 45000
+    dm_prefix: "DM-BIZ/DM-TECH/DM-AI"
+    seeds: "种子1(ARPU拆解)+种子2(AI真实成本)+种子3(Google条件树)"
+  agent_b:
+    role: 独立风险审计员
+    chapters: [7, 8, 9, 10, 11]
+    focus: "风险全景+Google承重墙+监管矩阵+中国情景+iPhone饱和"
+    target_chars: 40000
+    dm_prefix: "DM-RSK/DM-GEO/DM-REG"
+    seeds: "中国情景叙事(AR4)+5G先例对比(AR3)+监管条件估值"
+  agent_c:
+    role: 定量估值分析师
+    chapters: [12, 13, 14, 15, 16]
+    focus: "财务质量+分部SOTP+逆向DCF+条件估值框架+综合评级"
+    target_chars: 45000
+    dm_prefix: "DM-FIN/DM-VAL/DM-DCF"
+    seeds: "Reverse DCF先行(AR1)+分部SOTP(AR2)+P/E溢价分解"
+
+# 参考报告
+references:
+  primary: "MSFT v1.1 (316K/517KB, 3.5/5) — 同为mega-cap科技平台, 必须超越"
+  secondary: "KLAC v1.0 (254K/442KB, 4.5/5) — 密度策略冠军"
+  tertiary: "AMZN v1.0 (236K/391KB) — 同worktree生态平台"
+
+# 数据文件索引
+data_files:
+  guide_prompt: data/aapl_guide_prompt.md
+  knowledge: data/knowledge_context.md
+  lit_recon: data/lit_recon_memo.md
+  launch_brief: data/launch_brief.md
+  prefetch: data/prefetch_data.md
 
 quick_ref:
-  total_chars: 0
-  latest_phase_chars: 0
+  total_chars: 156000
+  p1_chars: 105400
+  p2p3_chars: 50800
+  latest_phase_chars: 50800
+  staging_files:
+    - staging/AAPL_P1_AgentA.md (35.3K chars)
+    - staging/AAPL_P1_AgentB.md (32.9K chars)
+    - staging/AAPL_P1_AgentC.md (37.2K chars)
+    - staging/AAPL_P2_CrossValidation.md (23.4K chars)
+    - staging/AAPL_P2_BeliefInversion.md (27.5K chars)
