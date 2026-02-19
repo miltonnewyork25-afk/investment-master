@@ -230,16 +230,35 @@ Phase 4的看空分析Agent（Bear Case Advocate）必须:
 每批次Agent完成后、每Phase结束时，写入 `reports/{TICKER}/data/checkpoint.yaml`。
 详见 `docs/checkpoint_protocol.md`。
 
-### 原则6: Phase 5 = 3 Agent (铁律) — v6.1新增
+### 原则6: Phase 5 = 3 Agent (铁律) — v6.1新增, v17.1数值锚定
 
 **这是铁律，不是指导原则。** 基于META/SOFI/TSM三项目一致验证:
 
 ```
-Phase 5固定3个Agent (v7.0更新角色名):
-  Agent A: 综合评估(定性评级) + SOTP收敛(6方法) + 条件估值范围
+Phase 5固定3个Agent (v17.1更新 — EVO-LRCX-001/002):
+  Agent C: 估值闭环(多方法交叉+期望回报+CQ加权) — **数值权威源**
+  Agent A: 综合评级(定性) + 研究契约 + 能力边界 — **引用C的数值,禁止独立计算**
   Agent B: Kill Switch注册表 + TS追踪信号 + 12月投资日历
-  Agent C: CQ最终解答(5要素闭环) + CI注册表 + 框架注册表
+
+执行顺序: C先启动 → C完成后A启动(或A并行但在写入前等待C的数值锚)
+          B与C可并行(B不涉及估值数值)
 ```
+
+**数值锚定协议 (v17.1新增 — EVO-LRCX-001)**:
+
+Phase 5启动前，编排器创建 `staging/valuation_anchor.yaml`:
+```yaml
+# Phase 5 数值锚定表 — Agent C负责填写, Agent A/B只读引用
+expected_return: pending    # Agent C填写
+rating: pending             # Agent C填写
+cq_weighted_confidence: pending  # Agent C填写
+method_dispersion: pending  # Agent C填写
+probability_weighted_ev: pending  # Agent C填写
+```
+
+Agent C完成后更新此文件为实际值。Agent A在撰写综合评级时**必须**读取此文件引用数值。
+
+**LRCX教训**: P5_A独立建模(-11.3%) vs P5_C(-29.5%) → 18pp冲突 → 43处修复。数值锚定协议消除此类问题。
 
 **实证**:
 - META P5: 3A → ~100%目标达成
@@ -247,6 +266,21 @@ Phase 5固定3个Agent (v7.0更新角色名):
 - TSM P5: 3A → **205%目标达成**(69.7K, 最高效P5)
 
 **禁止**: P5使用4+Agent(会重叠) 或 2-Agent(会遗漏)。
+**禁止**: Agent A独立计算期望回报/概率加权EV(EVO-LRCX-002)。
+
+### 原则6.5: Complete组装数值冲突检测 (v17.1新增 — EVO-LRCX-003)
+
+**报告组装(report-merger)Step 3必须包含以下自动检测**:
+
+在合并所有staging文件后、写入Complete前，对合并文本执行:
+1. **期望回报一致性**: grep所有"期望回报"后跟的百分比值，要求唯一(容差±0.5pp)
+2. **CQ加权置信度一致性**: grep所有"CQ加权置信度"后跟的百分比值，要求唯一(容差±0.5pp)
+3. **方法离散度一致性**: grep所有"方法离散度"后跟的倍数值，要求唯一(容差±0.05x)
+4. **综合评级一致性**: grep所有评级词(深度关注/关注/中性关注/审慎关注)，要求唯一
+
+**检出>1个不同值 → BLOCK组装**，列出冲突位置(文件名+行号)，要求修复后重试。
+
+**LRCX教训**: 组装后才发现-11.3% vs -29.5%冲突(P5_A vs P5_C)，导致43处修复。前置检测可在合并阶段即时发现。
 
 ### 原则7: Phase 4看空Agent≥50% — v6.1新增
 
