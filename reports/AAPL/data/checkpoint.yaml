@@ -1,0 +1,85 @@
+ticker: AAPL
+company: Apple Inc.
+industry: tech_platform
+worktree: 生态科技
+framework_version: v17.0
+report_tier: 3
+
+current_phase: P0
+phase_status: complete
+last_updated: 2026-02-19
+
+# 可能性宽度
+possibility_width:
+  business_model: 2
+  competitive: 3
+  regulatory: 4
+  technology: 3
+  financial: 1
+  average: 2.6
+  framework: traditional  # 0-3 → 传统框架
+
+# 估值快照
+valuation_snapshot:
+  price: 264.35
+  market_cap_T: 3.90
+  pe_ttm: 33.5
+  forward_pe: 28.5
+  ev_ebitda: 25.1
+  fcf_yield_pct: 3.3
+  fmp_dcf: 150.28
+
+# 核心问题 (CQ)
+core_questions:
+  CQ-1: "AI能否驱动iPhone超级换机周期, 还是Q1+23%只是ASP提升的一次性效果?"
+  CQ-2: "Google搜索协议若被重组/终止, 对Services利润的实际影响有多大?"
+  CQ-3: "Services能否通过AI货币化(Apple Intelligence Pro)维持12-15%增速?"
+  CQ-4: "中国三重风险(地缘+关税+竞争)对收入的综合压缩幅度?"
+  CQ-5: "33x PE是否能被EPS增长支撑, 还是面临回归25-28x的压缩?"
+  CQ-6: "轻资本AI战略(外采基础模型)长期是否可持续?"
+  CQ-7: "App Store反垄断(DOJ+EU DMA)的实际佣金收入侵蚀幅度?"
+
+# Kill Switch
+kill_switches:
+  KS-1: "中国iPhone收入连续2季YoY下降>10%"
+  KS-2: "Google搜索协议被终止且无替代收入"
+  KS-3: "Services增速降至<8%持续两季"
+  KS-4: "Apple Intelligence用户采用率<5%(发布12月后)"
+
+# Phase 1 模块分配
+phase1_modules:
+  agent_a:
+    role: 商业洞察分析师
+    chapters: [2, 3, 4, 5, 6]
+    focus: "生态飞轮+分部深度+AI战略+竞争护城河+增长催化剂"
+    target_chars: 30000
+  agent_b:
+    role: 独立风险审计员
+    chapters: [7, 8, 9, 10, 11]
+    focus: "风险全景+Google承重墙+监管矩阵+中国风险+iPhone饱和"
+    target_chars: 25000
+  agent_c:
+    role: 定量估值分析师
+    chapters: [12, 13, 14, 15, 16]
+    focus: "财务质量+分部SOTP+三情景DCF+可比估值+综合评级"
+    target_chars: 30000
+
+# 数据文件索引
+data_files:
+  prefetch: data/prefetch_data.md
+  knowledge: data/knowledge_context.md
+  lit_recon: data/lit_recon_memo.md
+  lit_d1: data/lit_d1_deep.md
+  lit_d2: data/lit_d2_bear.md
+  lit_d3: data/lit_d3_industry.md
+  lit_d4: data/lit_d4_valuation.md
+  lit_d5: data/lit_d5_deductive.md
+
+# 参考报告
+references:
+  primary: "MSFT v1.1 (316K, 3.5/5) — 同为mega-cap科技平台"
+  secondary: "AMZN v1.0 — 同worktree生态平台"
+  quality_lessons:
+    - "WACC±100bps跨3评级区间→需双锚呈现(MSFT教训)"
+    - "密度>体量, 控制250-300K(KLAC教训)"
+    - "方法独立性审计必修(AMAT教训)"
