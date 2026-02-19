@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v5.0
+# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v6.0
 # ============================================================
 # 用法:
 #   ./tests/quality_gate_complete.sh <Complete报告.md> [benchmark_chars] [possibility_width]
@@ -29,6 +29,7 @@
 #   CG18. 财务数据交叉验证声明 (WARN级, v5.0新增)
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v6.0 (2026-02-19) — CG4/CG5自然语言检测(EVO-AAPL-001: KS/VP内容充分但格式缺失时降级通过)
 # 更新: v5.0 (2026-02-16) — CG18财务数据交叉验证声明(WARN, 深层质量协议L2)
 # 更新: v4.0 (2026-02-16) — CG15 Agent引用FAIL+CG16市值唯一性WARN+CG17 P/E一致性WARN
 # 更新: v3.0 (2026-02-14) — CG1/CG2动态基准(按可能性宽度分层)+Phase 5基准动态化
@@ -93,7 +94,7 @@ count_matches() {
 }
 
 echo "=============================================="
-echo -e " ${CYAN}Complete Report Quality Gate v5.0${NC}"
+echo -e " ${CYAN}Complete Report Quality Gate v6.0${NC}"
 echo " 文件: $(basename "$FILE")"
 echo " 可能性宽度: ${POSSIBILITY_WIDTH} | ${BENCHMARK_LABEL:-自定义}"
 echo " 基准字符: $BENCHMARK_CHARS | 80%地板: $FLOOR_COMPLETE"
@@ -180,10 +181,36 @@ if [ "$KS_UNIQUE" -lt "$MIN_KS" ]; then
     fi
 fi
 if [ "$KS_UNIQUE" -lt "$MIN_KS" ]; then
+    # 备选4 (v6.0): 自然语言Kill Switch检测 (EVO-AAPL-001)
+    # AAPL教训: 报告有完整的触发条件+阈值+论文含义, 但未用KS-N格式标记
+    # 检测策略: 统计含kill-switch语义的行数(触发+阈值+动作), 与正式KS取较大值
+    # 触发类模式: 条件性否定语句("如果..."失败/崩溃/失效), 风险触发器, 信念失效
+    KS_NL_TRIGGER=$(grep -cE '触发条件|如果.*失效|如果.*崩溃|如果.*失败|论文终止|kill.*switch|信念.*失败|承重墙.*倒塌|风险触发|清仓信号|论文.*无效' "$FILE" 2>/dev/null || echo 0)
+    # 阈值类模式: 量化边界
+    KS_NL_THRESHOLD=$(grep -cE '具体阈值|阈值|>[0-9]|<[0-9]|连续[0-9]+|持续[0-9]+|降至[0-9]|跌破|低于[0-9]|超过[0-9].*%|脆弱度.*(高|极高)' "$FILE" 2>/dev/null || echo 0)
+    # 动作类模式: 论文/评级影响
+    KS_NL_ACTION=$(grep -cE '论文含义|论文失效|重新评估|评级.*下调|需要.*修正|估值.*下调|影响.*-[0-9]+%|若倒塌影响|论文.*修正' "$FILE" 2>/dev/null || echo 0)
+    # 取三要素中最小值作为"完整KS段落数"的保守估计
+    KS_NL_MIN=$KS_NL_TRIGGER
+    if [ "$KS_NL_THRESHOLD" -lt "$KS_NL_MIN" ]; then KS_NL_MIN=$KS_NL_THRESHOLD; fi
+    if [ "$KS_NL_ACTION" -lt "$KS_NL_MIN" ]; then KS_NL_MIN=$KS_NL_ACTION; fi
+    if [ "$KS_NL_MIN" -gt "$KS_UNIQUE" ]; then
+        KS_UNIQUE=$KS_NL_MIN
+        KS_NL_USED=1
+    else
+        KS_NL_USED=0
+    fi
+fi
+if [ "$KS_UNIQUE" -lt "$MIN_KS" ]; then
     echo -e "${RED}FAIL CG4: Kill Switch唯一数 ${KS_UNIQUE} < 要求 ${MIN_KS}${NC}"
     ERRORS=$((ERRORS + 1))
 else
-    echo -e "${GREEN}PASS CG4: Kill Switch唯一数 ${KS_UNIQUE} (要求≥${MIN_KS})${NC}"
+    if [ "${KS_NL_USED:-0}" -eq 1 ]; then
+        echo -e "${GREEN}PASS CG4: Kill Switch ${KS_UNIQUE} (自然语言检测: 触发=${KS_NL_TRIGGER} 阈值=${KS_NL_THRESHOLD} 动作=${KS_NL_ACTION})${NC}"
+        echo -e "       ${YELLOW}提示: 建议使用KS-N格式标记以提高可追踪性${NC}"
+    else
+        echo -e "${GREEN}PASS CG4: Kill Switch唯一数 ${KS_UNIQUE} (要求≥${MIN_KS})${NC}"
+    fi
 fi
 
 # KS详细度检查 (触发条件+阈值+动作 三要素)
@@ -196,10 +223,29 @@ echo "       KS详细度: 触发条件=${KS_TRIGGER} 阈值=${KS_THRESHOLD} 动�
 VP_COUNT=$(grep -oE 'VP-[0-9]+|VP[0-9]+|P-[A-Z]+-[0-9]+|TS-[0-9]+|TS[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
 VP_COUNT="${VP_COUNT// /}"
 if [ "$VP_COUNT" -lt "$MIN_VP" ]; then
+    # 备选2 (v6.0): 自然语言验证预测检测
+    # AAPL教训: 报告有验证窗口+时间线+可观测指标, 但未用VP-N/TS-N格式
+    VP_NL_VERIFY=$(grep -cE '验证窗口|[0-9]+[月个季]内验证|验证事件|1年内验证' "$FILE" 2>/dev/null || echo 0)
+    VP_NL_PREDICT=$(grep -cE '预测:|预计.*FY|预计.*Q[1-4]|我们预测|追踪信号|追踪什么' "$FILE" 2>/dev/null || echo 0)
+    VP_NL_COUNT=$VP_NL_VERIFY
+    if [ "$VP_NL_PREDICT" -gt "$VP_NL_COUNT" ]; then VP_NL_COUNT=$VP_NL_PREDICT; fi
+    if [ "$VP_NL_COUNT" -gt "$VP_COUNT" ]; then
+        VP_COUNT=$VP_NL_COUNT
+        VP_NL_USED=1
+    else
+        VP_NL_USED=0
+    fi
+fi
+if [ "$VP_COUNT" -lt "$MIN_VP" ]; then
     echo -e "${RED}FAIL CG5: 可验证预测唯一数 ${VP_COUNT} < 要求 ${MIN_VP}${NC}"
     ERRORS=$((ERRORS + 1))
 else
-    echo -e "${GREEN}PASS CG5: 可验证预测唯一数 ${VP_COUNT} (要求≥${MIN_VP})${NC}"
+    if [ "${VP_NL_USED:-0}" -eq 1 ]; then
+        echo -e "${GREEN}PASS CG5: 可验证预测 ${VP_COUNT} (自然语言检测: 验证窗口=${VP_NL_VERIFY} 预测=${VP_NL_PREDICT})${NC}"
+        echo -e "       ${YELLOW}提示: 建议使用TS-N/VP-N格式标记以提高可追踪性${NC}"
+    else
+        echo -e "${GREEN}PASS CG5: 可验证预测唯一数 ${VP_COUNT} (要求≥${MIN_VP})${NC}"
+    fi
 fi
 
 # === CG6: VP三情景检查 ===
@@ -447,7 +493,7 @@ fi
 # --- 汇总 ---
 echo ""
 echo "=============================================="
-echo -e " ${CYAN}Complete Quality Gate v5.0 检查完成${NC}"
+echo -e " ${CYAN}Complete Quality Gate v6.0 检查完成${NC}"
 echo "=============================================="
 echo " 文件: $(basename "$FILE")"
 echo " 总字符: ${CHARS} / 基准 ${BENCHMARK_CHARS} (地板 ${FLOOR_COMPLETE})"

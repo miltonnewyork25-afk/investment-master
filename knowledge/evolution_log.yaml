@@ -83,7 +83,7 @@ entries:
     top_technique: "循环依赖检测(B1↔B8信念互依赖)+4.5倍增长断层"
     top_lesson: "方法伪独立是系统性问题(5方法实际2独立)+多层组装引入冗余"
     evolution_proposed: "EVO-AAPL-001~004: KS/VP检测扩展+强制独立性审计+组装简化+循环依赖检测"
-    evolution_status: pending
+    evolution_status: approved  # 2026-02-19 全部实施
     redo_flag: true  # 旧AAPL 2.8/5 → 新AAPL 3.79/5 完全重做
 
   # --- 质量趋势 ---

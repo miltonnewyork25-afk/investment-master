@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# phase_sentinel.sh v1.0 — 纵深防御质量哨兵
+# phase_sentinel.sh v2.1 — 纵深防御质量哨兵
 # ============================================================
 # 用法: bash scripts/phase_sentinel.sh <TICKER> <CURRENT_PHASE> [TARGET_CHARS]
 #
@@ -14,6 +14,7 @@
 # [Phase≥1] staging累计产出 vs 轨迹预期
 # [Phase≥3] 分析深度指标 (DM锚点密度)
 # [Phase≥4] 红队产出验证
+# [Phase≥5] AB-007 方法独立性审计检查 (v2.1, EVO-AAPL-002)
 #
 # 退出码: 0=CLEARED | 1=FAIL(建议修复) | 2=BLOCK(前序缺失,必须补)
 # ============================================================
@@ -304,6 +305,32 @@ if [ "$PHASE" -ge 5 ]; then
         else
             check_pass "AB-003: ${UC}次检查点更新"
         fi
+    fi
+
+    # AB-007 (v2.1, EVO-AAPL-002): 方法独立性审计 — 强制检查
+    # AAPL教训: 5种估值方法实际仅2.5独立, 但无脚本检测
+    # 检查: staging中有independence/独立性审计文件, 或报告提及"方法独立性"/"假设重叠"
+    VIA_FILE=0
+    for f in "$STAGING"/*independen* "$STAGING"/*独立性* "$STAGING"/*method_audit*; do
+        if [ -f "$f" ]; then
+            VIA_FILE=$((VIA_FILE + 1))
+        fi
+    done
+    VIA_MENTION=0
+    for f in "$STAGING"/*.md reports/${TICKER}/${TICKER}_Phase*.md; do
+        if [ -f "$f" ]; then
+            VM=$({ grep -ci '方法独立性\|假设重叠\|independence.*audit\|方法.*伪独立\|独立性.*审计' "$f" 2>/dev/null || echo "0"; })
+            VM="${VM// /}"
+            VIA_MENTION=$((VIA_MENTION + VM))
+        fi
+    done
+    if [ "$VIA_FILE" -gt 0 ]; then
+        check_pass "AB-007: 独立性审计文件 $VIA_FILE 个"
+    elif [ "$VIA_MENTION" -ge 3 ]; then
+        check_pass "AB-007: 独立性审计提及 $VIA_MENTION 次 (无独立文件)"
+    else
+        check_warn "AB-007: 未检测到估值方法独立性审计 → 可能存在方法伪独立(5法实际2.5独立)"
+        echo "         → 建议: Phase 5前运行 /valuation-independence-audit"
     fi
 
     # AB-006: 方法独立性 — 估值结果离散度
