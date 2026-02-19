@@ -5,21 +5,23 @@ worktree: 生态科技
 framework_version: v17.0
 report_tier: 3
 
-current_phase: P1
+current_phase: P5
 phase_status: complete
 last_updated: 2026-02-19
 
-# Phase 1 产出
-phase1_output:
-  agent_a: staging/AAPL_P1_AgentA.md  # 30,155 chars, 89 DM锚点, 4 Mermaid
-  agent_b: staging/AAPL_P1_AgentB.md  # 25,340 chars, 20 DM锚点, 4 Mermaid
-  agent_c: staging/AAPL_P1_AgentC.md  # 30,136 chars, 44 DM锚点, 5 Mermaid
-  total_chars: 85631
-  total_dm_anchors: 153
-  total_mermaid: 13
-  preliminary_rating: 审慎关注
-  expected_return: -27.8%
-  probability_weighted_ev_per_share: 191
+# 最终报告
+final_report:
+  file: AAPL_Deep_Analysis_v2.0_2026-02-19.md
+  chars: 65994
+  chapters: 20
+  appendices: 3
+  dm_anchors: 210
+  mermaid: 19
+  rating: 审慎关注
+  expected_return: -20.5%
+  probability_weighted_ev_per_share: 210
+  cq_confidence: 53.95%
+  method_dispersion: 2.33x
 
 # 可能性宽度
 possibility_width:

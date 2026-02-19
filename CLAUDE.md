@@ -60,7 +60,7 @@
 
 **第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(见下)
 
-**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)** | **I 知识前置(见下)**
+**基础** ~~A单会话禁跨Phase~~ A用户未要求停止时可连续执行全部Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)** | **I 知识前置(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
