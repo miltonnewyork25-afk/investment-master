@@ -24,12 +24,13 @@ reports:
   KLAC:  { ind: 半导体, rate: 审慎关注, ret: "-38%", pw: 2, method: traditional, qual: 4.5, chars: 254K, tags: "检测设备/垄断/高估值/WFE周期" }
   INTC:  { ind: 半导体, rate: null, ret: null, pw: null, method: traditional, qual: null, chars: null, tags: "IDM/代工转型/先进制程/政府补贴" }
   ORCL:  { ind: 生态科技, rate: null, ret: null, pw: 6.6, method: mixed, qual: null, chars: "进行中", tags: "云转型/OCI/数据库/OpenAI/高负债" }
+  AAPL:  { ind: 生态科技, rate: 审慎关注, ret: "-14%~-18%", pw: 6, method: mixed, qual: 3.79, chars: 303K, tags: "iPhone/Services/AI换机/Google协议/护城河侵蚀" }
   AMZN:  { ind: 生态科技, rate: null, ret: null, pw: null, method: null, qual: null, chars: 194K, tags: "电商/AWS/广告/物流/AI" }
 
 # 快速统计
 summary:
   total: 19
-  complete: 17
+  complete: 18  # AAPL Redo
   in_progress: 2  # ORCL, AMZN
   by_industry: { 半导体: 6, 生态科技: 10, 金融: 1, 消费品: 1 }
   quality_range: "2.8-4.5 (avg ~3.6)"
