@@ -1,4 +1,4 @@
-# Scout Agent 规格 v1.0 — Phase 0 参考报告学习
+# Scout Agent 规格 v2.0 — Phase 0 参考报告学习
 
 > **状态**: 规格 (已设计，待首次报告验证)
 > **来源**: 生态科技worktree用户反馈 (2026-02-14) + master评审优化
@@ -101,13 +101,34 @@ Phase 0 启动
     │           → 输出: 结构化指标 + 关键章节行号定位
     │           → 成本: 0 tokens (纯bash)
     │
-    ├── Step 3: Scout Agent (LLM)                    # 精读: 只读5个关键章节
-    │           → 输入: scout_scan.sh输出 + 5个章节内容
-    │           → 输出: scout_baseline.md (5条教训)
+    ├── Step 3: 读参考报告checkpoint + Agent产出基线 (v2.0新增)
+    │           → 读取: 参考报告的checkpoint.yaml
+    │           → 提取: 每Phase Agent数, 每Agent字符数, Phase分配比例
+    │           → 输出到scout_baseline.md: "参考报告Agent产出基线"节
+    │           → 示例: "GOOGL P2 Agent C-2: 45K chars, 3个Mermaid, 覆盖CQ2/CQ5"
+    │           → 成本: 0 tokens (读yaml)
+    │
+    ├── Step 4: 读参考报告staging前5行 + Agent Prompt基线 (v2.0新增)
+    │           → 读取: 参考报告的staging/*.md前5行
+    │           → 分析: Agent prompt结构, 任务粒度, 深度标准
+    │           → 提取: 产出最高的Agent用了什么prompt模式
+    │           → 输出到scout_baseline.md: "Agent Prompt基线"节
+    │           → 成本: ~2K tokens (只读前5行)
+    │
+    ├── Step 5: 设定本次报告执行参数 (v2.0新增)
+    │           → per_agent_min_chars = 参考报告per_agent均值 × 80%
+    │           → supplement_trigger: 任何CQ置信度<40% → 标记需Supplement
+    │           → total_target = max(plan_target, 参考报告 × 60%)
+    │           → 输出到scout_baseline.md: "执行参数"节
+    │
+    ├── Step 6: Scout Agent (LLM)                    # 精读: 只读5个关键章节
+    │           → 输入: scout_scan.sh输出 + 5个章节内容 + Step 3-5基线数据
+    │           → 输出: scout_baseline.md (5条教训 + 基线数据 + 执行参数)
     │           → 成本: ~15K tokens (只读精选章节，不读全文)
     │
-    └── Step 4: 注入Agent A/B/C prompt               # 编排器负责
+    └── Step 7: 注入Agent A/B/C prompt               # 编排器负责
                 → 后续Agent dispatch时附带scout_baseline.md路径
+                → 包含per_agent_min_chars和supplement_trigger参数
 ```
 
 ### 触发条件
@@ -139,6 +160,24 @@ Phase 0 启动
 > 参考报告: {文件名} ({字符数}K, {框架版本})
 > 当前项目: {TICKER}
 > 扫描时间: {日期}
+
+## 参考报告Agent产出基线 (v2.0 Step 3)
+| Phase | Agent数 | 每Agent均产出 | 最高产出Agent | 最低产出Agent |
+|:-----:|:------:|:-----------:|:----------:|:----------:|
+| P1 | {N} | {X}K | {Agent}({Y}K) | {Agent}({Z}K) |
+| ... | ... | ... | ... | ... |
+
+**per_agent_min_chars**: {参考报告per_agent均值 × 80%} 字符
+
+## Agent Prompt基线 (v2.0 Step 4)
+- **最高产出Agent prompt模式**: {描述}
+- **任务粒度**: {粗/中/细}
+- **深度标准**: {描述}
+
+## 执行参数 (v2.0 Step 5)
+- **per_agent_min_chars**: {N} (参考基线{M} × 80%)
+- **supplement_trigger**: CQ置信度<40% → 标记需Supplement
+- **total_target**: max({plan_target}, {参考报告字符} × 60%) = {N}
 
 ## 教训 1: {一句话标题}
 - **来源**: {报告名} {具体章节/行号范围}
@@ -191,10 +230,13 @@ Phase 0 启动
 |------|----------|------|
 | find_best_reference.sh | 0 | ~2秒 |
 | scout_scan.sh | 0 | ~5秒 |
-| Scout Agent (LLM精读5章) | ~15K tokens | ~3分钟 |
-| **总计** | **~15K tokens** | **~3分钟** |
+| Step 3: 读checkpoint.yaml | 0 | ~2秒 |
+| Step 4: 读staging前5行 | ~2K tokens | ~1分钟 |
+| Step 5: 计算执行参数 | 0 | ~1秒 |
+| Step 6: Scout Agent (LLM精读5章+基线) | ~15K tokens | ~3分钟 |
+| **总计** | **~17K tokens** | **~4分钟** |
 
-对比全文读取400K+报告: ~200K tokens, ~15分钟 → **节省92%**
+对比全文读取400K+报告: ~200K tokens, ~15分钟 → **节省91%**
 
 ---
 
@@ -211,4 +253,4 @@ Phase 0 启动
 
 ---
 
-*设计完成。待首份报告验证后从proposal升级为standard。*
+*v2.0升级完成 (2026-02-14)。v1.0→v2.0: 新增Step 3-5(checkpoint基线+staging prompt基线+执行参数)。待下一份报告验证。*

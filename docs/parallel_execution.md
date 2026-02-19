@@ -1,7 +1,8 @@
-# 并行Agent加速系统 v7.0
+# 并行Agent加速系统 v8.0
 
 > **设计目的**：利用Task Agent能力并行执行独立分析任务，大幅缩短分析时间
 > **验证基准**：10份Tier 3报告实证(GOOGL/TSLA/PLTR/LRCX/TSM/AMD/META/SOFI/COST/MU)
+> **v8.0变化**: Agent最低产出门槛(模块类型×最低字符+重跑机制)、产出合同声明注入Agent prompt
 > **v7.0变化**: 3+1 Agent架构(Agent A/B/C + QSA质量哨兵)、最低Agent数量门控(≥20)、与DAG编排器v22.0集成、跨Session角色一致性机制
 > **v6.0变化**: Agent架构从硬规格改为指导原则、模块类型驱动产出目标、看空Agent强制独立、实证参考表
 > **v5.0变化**: SubAgent输出压缩(≤500字符返回)、checkpoint.yaml批次间写入
@@ -179,6 +180,29 @@ Agent数量由分析模块数决定，不是固定数字。
 | 分析判断型 | 10-15K字符 | 偏差检查、五引擎协同、PPDA |
 | 输出型 | 5-8K字符 | 投资日历、行动清单、Phase 0.5 CQ |
 | 专精对抗型 | 15-22K字符 | 看空等权分析、Kill Switch注册表 |
+
+### 原则2b: Agent最低产出门槛 (v8.0新增)
+
+> **实证**: RDDT v1.0 Agent A-1(9K)和A-2(10K)仅为PLTR基线18K的55%，
+> 导致Phase 1基础不稳→全报告深度不足。
+
+**最低字符门槛** (硬性，低于则触发重跑):
+
+| 模块类型 | 最低字符 | 理由 |
+|---------|:-------:|------|
+| 数据密集型(data) | 15,000 | PLTR/GOOGL实证: <15K无法完成DM+Mermaid+对标 |
+| 分析判断型(analytical) | 12,000 | AMD/LRCX实证: <12K无法完成Swap Test+级联分析 |
+| 输出型(output) | 8,000 | KS/TS注册表: 12个KS×9字段=最低~8K |
+| 专精对抗型(adversarial) | 15,000 | RT-1~7: 每问≥200字×7=最低~10K+Bear Case ~5K |
+
+**重跑机制**:
+1. 编排器检查每Agent的staging文件字符数
+2. 若 < 最低门槛 × 80%: **FAIL — 必须重跑**，追加prompt "请深度展开以下不足章节: [具体列表]"
+3. 若 ≥ 80% 但 < 100%: **WARN — 建议补充**，编排器可选择接受或追加
+4. 若 ≥ 100%: **PASS**
+
+**Agent Prompt注入** (追加到现有5项之后):
+6. **产出合同声明**: "本次任务最低产出: {min_chars}字符。包含≥{min_dm}个DM锚点引用、≥{min_mermaid}个Mermaid图。产出不足将被要求补充。参考基线: {reference_agent}({reference_chars}字符)"
 
 ### 原则3: Context感知动态调整
 

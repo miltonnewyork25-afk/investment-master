@@ -1,0 +1,32 @@
+upgrade_id: "v11.0-erm-ecosystem-risk"
+date_proposed: "2026-02-13"
+author: "agent"
+
+hypothesis:
+  what: "ERM生态风险映射 — 5层结构+采用链断点+级联失效建模"
+  improves_which_dimension: "生态依赖型公司的系统性风险捕捉率"
+  current_baseline: "无结构化生态风险分析，风险识别靠自由思考"
+  expected_after: "触发条件明确(生态依赖>20%等)，5层映射覆盖率90%+"
+  could_regress: "非生态型公司强制使用会浪费tokens"
+
+success_criteria:
+  - "生态依赖型公司报告包含ERM映射(至少3层)"
+  - "采用链断点分析至少识别1个关键断点"
+  - "ERM发现的风险在Phase 4红队中被验证"
+  - "非触发条件公司不强制使用ERM"
+
+kill_condition:
+  - "ERM映射纯形式、未发现Phase 1-3遗漏的风险"
+  - "ERM消耗>15K tokens但无增量风险发现"
+
+validation:
+  status: "NEUTRAL"
+  first_report: "RDDT v1.1"
+  date_validated: "2026-02-14"
+  actual_results: "RDDT使用ERM，发现Google SEO 63%流量依赖+版主无偿劳动风险。但仅1份报告验证。"
+  criteria_met:
+    - "ERM映射包含编排者/互补者/供应者/渠道/监管者 — RDDT全覆盖"
+    - "采用链断点 — Google SEO依赖被识别"
+  criteria_failed:
+    - "仅1份报告验证，样本不足以判定VALIDATED"
+  honest_assessment: "ERM在RDDT上表现良好，Google SEO依赖是Phase 0.5未预见的风险。但仅1份生态科技报告使用，需要再验证1份(如SNAP/PINS/平台型公司)才能判定。暂定NEUTRAL。"

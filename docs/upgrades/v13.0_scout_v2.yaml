@@ -1,0 +1,28 @@
+upgrade_id: "v13.0-scout-v2"
+date_proposed: "2026-02-14"
+author: "agent"
+
+hypothesis:
+  what: "Scout Protocol v2.0 — 学执行过程(checkpoint基线+staging prompt基线+执行参数)"
+  improves_which_dimension: "参考报告学习深度、Agent prompt质量"
+  current_baseline: "Scout v1.0: 脚本预扫+LLM精读5章→5条教训"
+  expected_after: "Scout除了内容教训，还学习执行参数(每Agent token分配、prompt模板)"
+  could_regress: "增加Phase 0复杂度，可能过拟合单一参考报告的执行模式"
+
+success_criteria:
+  - "Scout v2.0提取的执行参数在下份报告中被实际应用"
+  - "Agent token分配基于参考报告基线调整"
+  - "Phase 0耗时增加<20%"
+
+kill_condition:
+  - "Scout v2.0提取的执行参数被忽略(仍用默认值)"
+  - "过拟合参考报告导致新报告结构雷同"
+
+validation:
+  status: "PENDING"
+  first_report: ""
+  date_validated: ""
+  actual_results: ""
+  criteria_met: []
+  criteria_failed: []
+  honest_assessment: "RDDT使用Scout v1.0(非v2.0)。v2.0的执行过程学习尚未测试。需在下份报告中验证。风险: 可能过度优化Phase 0而实际产出无改善。"

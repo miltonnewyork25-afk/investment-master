@@ -1,0 +1,114 @@
+# ============================================================
+# Failure Antibodies Registry v1.0
+# ============================================================
+# 灵感: 免疫系统的适应性免疫 (Adaptive Immunity)
+# 每次质量失败创建一个"抗体" — 针对特定失败模式的检测规则
+# phase_sentinel.sh 检查 script 类型; AI 检查 ai_review 类型
+# post_report_autopsy.sh 提议新抗体 → 用户审批 → 追加
+#
+# 设计: 随着报告数量增加,抗体库积累 = 系统对已知风险免疫力持续增强
+# ============================================================
+
+antibodies:
+
+  # --- 从 AAPL v2.0 失败提取 (2.8/5, 全系列最低) ---
+  - id: AB-001
+    source: "AAPL_v2.0"
+    date: "2026-02-19"
+    pattern: "output_too_thin"
+    check_type: script  # phase_sentinel可检查
+    rule: "Phase ≥ 2 且 累计产出 < target * 20% → FAIL"
+    lesson: "66K for mega-cap = catastrophic. 无Phase -1/-0.5 → 产出薄80%"
+    prevention: "tier3_launch.sh + preflight_gate.sh + sentinel轨迹检查"
+
+  - id: AB-002
+    source: "AAPL_v2.0"
+    date: "2026-02-19"
+    pattern: "missing_prerequisites"
+    check_type: script
+    rule: "knowledge_context.md 或 lit_recon_memo.md 缺失 → BLOCK"
+    lesson: "外部输入变化(用户指令模式改变)导致全部准备工作跳过"
+    prevention: "sentinel永久检查项 — 每个Phase都重验前序产出"
+
+  - id: AB-003
+    source: "AAPL_v2.0"
+    date: "2026-02-19"
+    pattern: "single_session_completion"
+    check_type: ai_review  # AI在Phase 5组装时检查
+    rule: "Tier 3报告在单一会话完成 → WARN: 可能是走过场"
+    lesson: "77分钟完成vs多天=质量降低80%"
+    prevention: "checkpoint.yaml记录session_count, 组装时验证"
+
+  # --- 从 RBLX v1.0 失败提取 (SBC数据错误) ---
+  - id: AB-004
+    source: "RBLX_v1.0"
+    date: "2026-02-16"
+    pattern: "single_source_financial"
+    check_type: ai_review
+    rule: "关键财务数据仅有单一来源 → WARN: 需交叉验证"
+    lesson: "MacroTrends SBC含DevEx, FMP SBC=$0(parser问题), 单源不可信"
+    prevention: "Phase 2财务建模时强制≥2源交叉验证声明"
+
+  # --- 从 MSFT v1.0 失败提取 (WACC假精度) ---
+  - id: AB-005
+    source: "MSFT_v1.0"
+    date: "2026-02-17"
+    pattern: "wacc_dominance"
+    check_type: ai_review
+    rule: "WACC ±100bps改变评级 → WARN: 估值对WACC过度敏感"
+    lesson: "WACC±100bps跨3个评级区间=假精度, 巨头公司尤其严重"
+    prevention: "Phase 5必须呈现WACC敏感性表+双锚(当前WACC vs 市场隐含WACC)"
+
+  # --- 从 AMAT v1.0 失败提取 (方法假独立) ---
+  - id: AB-006
+    source: "AMAT_v1.0"
+    date: "2026-02-17"
+    pattern: "method_pseudo_independence"
+    check_type: ai_review
+    rule: "多方法估值结果差异 < 3% → WARN: 可能共享假设"
+    lesson: "五方法中M1/M2/M5结果差<2%=实际只有2.5个独立方法"
+    prevention: "/valuation-independence-audit Skill"
+
+  # --- 从 APP v1.0 失败提取 (市值不一致) ---
+  - id: AB-007
+    source: "APP_v1.0"
+    date: "2026-02-16"
+    pattern: "market_cap_inconsistency"
+    check_type: script
+    rule: "报告中市值出现≥2个不同数值 → FAIL"
+    lesson: "市值波动时必须即时回流, 派生指标(P/E)也需同步更新"
+    prevention: "CG16市值唯一性检查 + 组装七步检查清单"
+
+  # --- 从 MSFT v1.0 失败提取 (算术错误) ---
+  - id: AB-008
+    source: "MSFT_v1.0"
+    date: "2026-02-17"
+    pattern: "arithmetic_error"
+    check_type: script
+    rule: "敏感性矩阵/FCFF表有数值矛盾 → FAIL"
+    lesson: "FCFF双表矛盾+敏感性矩阵8/9格错=LLM不能做算术"
+    prevention: "verify_dcf_arithmetic.py + /valuation-arithmetic-verifier"
+
+  # --- 从 AMAT v1.0 失败提取 (红队偏向) ---
+  - id: AB-009
+    source: "AMAT_v1.0"
+    date: "2026-02-17"
+    pattern: "red_team_unidirectional"
+    check_type: ai_review
+    rule: "Phase 4红队全部CQ调整方向相同 → WARN: 系统性偏差"
+    lesson: "8/8 CQ下调=系统性悲观, 不是genuine critique"
+    prevention: "/red-team-calibration 双向校准器"
+
+# ============================================================
+# 抗体统计
+# ============================================================
+# 总数: 9
+# script类型: 4 (可自动检查)
+# ai_review类型: 5 (AI在相应Phase检查)
+# 来源: AAPL(3), RBLX(1), MSFT(2), AMAT(2), APP(1)
+#
+# 新增流程:
+# 1. post_report_autopsy.sh 完成后
+# 2. AI分析质量问题 → 提议新抗体
+# 3. 用户审批 → 追加到本文件
+# 4. script类型抗体 → 考虑提升到 phase_sentinel.sh 硬编码

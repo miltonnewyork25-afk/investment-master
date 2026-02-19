@@ -1,0 +1,33 @@
+upgrade_id: "v10.0-dm-anchors"
+date_proposed: "2026-02-12"
+author: "agent"
+
+hypothesis:
+  what: "标注系统重构 — 内联标注→DM锚定+脚本验证+Protocol Header"
+  improves_which_dimension: "数据可追溯性、报告叙事清洁度"
+  current_baseline: "v9.0: 内联[硬数据:...]标注，密度44-52/万，但干扰阅读"
+  expected_after: "报告正文零内联标注，DM覆盖率≥90%，脚本可验证"
+  could_regress: "DM锚点数量可能不足，验证脚本可能有false negative"
+
+success_criteria:
+  - "报告正文零[硬数据:]等内联标注"
+  - "DM覆盖率≥90%(verify_data_sources.sh验证)"
+  - "Protocol Header出现在报告开头"
+  - "verify_data_sources.sh可自动运行无报错"
+
+kill_condition:
+  - "DM覆盖率<80%"
+  - "读者反馈'数据来源不透明'"
+
+validation:
+  status: "VALIDATED"
+  first_report: "PLTR v3.1"
+  date_validated: "2026-02-12"
+  actual_results: "PLTR 127 DM锚点/40+类别。RDDT 240 DM锚点/96%覆盖率。两份报告均通过。"
+  criteria_met:
+    - "零内联标注 — PLTR/RDDT全文干净叙事"
+    - "DM覆盖率 — RDDT 96%+(超90%目标)"
+    - "Protocol Header — 两份报告开头均有研究契约"
+    - "脚本验证 — verify_data_sources.sh + verify_dm_anchors.sh运行正常"
+  criteria_failed: []
+  honest_assessment: "第二成功的升级。DM系统解决了v9.0内联标注干扰阅读的问题，同时保持数据可追溯。脚本化验证是关键差异化。"

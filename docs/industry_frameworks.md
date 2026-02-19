@@ -419,6 +419,37 @@ v19.8 零售框架核心:
 
 ---
 
+## v4.0 科技平台分析框架 (Tech Platform Framework)
+
+### 设计哲学
+
+科技平台研究 = 网络效应 + 平台经济 + 数据护城河 + 监管博弈
+
+### 适用公司
+
+AAPL, MSFT, GOOG/GOOGL, META, AMZN
+
+### 六大专用模块
+
+| 模块 | 名称 | 适用公司 |
+|------|------|---------|
+| TP01 | 平台经济学 | 全部 |
+| TP02 | 广告经济学 | GOOG, META, AMZN |
+| TP03 | 云基础设施 | GOOG, AMZN, MSFT |
+| TP04 | 监管与反垄断 | 全部 |
+| TP05 | 开发者生态 | 全部 |
+| TP06 | 数据护城河 | 全部 |
+
+详细规范见 `docs/industry/tech_platform.md`
+
+### v4.0 通用模块新增
+
+所有行业新增两个必选模块：
+- **M13 分部级AI冲击矩阵** — 详见 `docs/ai_depth_assessment.md`
+- **M14 市场注意力雷达** — 详见 `docs/market_attention_radar.md`
+
+---
+
 ## v20.0 金融行业分析框架（Financial Industry Framework）⭐NEW
 
 ### 设计哲学

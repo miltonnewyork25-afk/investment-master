@@ -1,0 +1,271 @@
+{
+  "ticker": "ORCL",
+  "company_name": "Oracle Corporation",
+  "collection_date": "2026-02-17",
+  "management_team": {
+    "ceo": {
+      "name": "Clay Magouyrk",
+      "title": "Chief Executive Officer (Co-CEO)",
+      "age": 39,
+      "tenure_at_company": "12 years (since 2014)",
+      "tenure_as_ceo": "5 months (since September 2025)",
+      "previous_role": "President of Oracle Cloud Infrastructure",
+      "background": "Technology executive with focus on cloud infrastructure",
+      "compensation_2025": {
+        "base_salary": 950000,
+        "target_bonus": 5000000,
+        "stock_options_grant_value": 250000000
+      },
+      "_dm": {
+        "type": "H",
+        "source": "Oracle investor announcement September 2025",
+        "confidence": "high"
+      }
+    },
+    "co_ceo": {
+      "name": "Michael Sicilia",
+      "title": "Chief Executive Officer (Co-CEO)",
+      "age": 54,
+      "tenure_at_company": "17 years (since 2009)",
+      "tenure_as_ceo": "5 months (since September 2025)",
+      "previous_role": "President of Industries",
+      "background": "Industry solutions and business development executive",
+      "compensation_2025": {
+        "base_salary": 950000,
+        "target_bonus": 5000000,
+        "stock_options_grant_value": 100000000
+      },
+      "_dm": {
+        "type": "H",
+        "source": "Oracle investor announcement September 2025",
+        "confidence": "high"
+      }
+    },
+    "cfo": {
+      "name": "Douglas Kehring",
+      "title": "Executive Vice President and Principal Financial Officer",
+      "tenure_at_company": "26 years (since 2000)",
+      "tenure_as_cfo": "5 months (since September 2025)",
+      "previous_role": "Executive Vice President of Operations",
+      "background": "Long-tenured Oracle operations and finance executive",
+      "compensation_2025": {
+        "base_salary": 950000,
+        "target_bonus": 950000
+      },
+      "_dm": {
+        "type": "H",
+        "source": "Oracle proxy filing 2025",
+        "confidence": "high"
+      }
+    },
+    "executive_vice_chair": {
+      "name": "Safra A. Catz",
+      "title": "Executive Vice Chair of the Board of Directors",
+      "age": 64,
+      "tenure_at_company": "27 years (since 1999)",
+      "previous_ceo_tenure": "11 years (2014-2025)",
+      "background": "Former investment banker on Wall Street, led Oracle's acquisition strategy (130+ acquisitions)",
+      "key_achievements": [
+        "Drove $10.3B PeopleSoft acquisition in 2005",
+        "Stock price increased 800% during CEO tenure",
+        "Led cloud transformation strategy"
+      ],
+      "education": "BS Business Administration (Wharton), JD (UPenn Law)",
+      "stock_sales_2025": 2500000000,
+      "_dm": {
+        "type": "H",
+        "source": "Oracle executive biographies and SEC filings",
+        "confidence": "high"
+      }
+    },
+    "chairman_cto": {
+      "name": "Larry Ellison",
+      "title": "Executive Chairman and Chief Technology Officer",
+      "age": 80,
+      "tenure_at_company": "47 years (co-founder, 1977)",
+      "ownership_percentage": 40.34,
+      "shares_owned": 1160000000,
+      "stake_value_billions": 185.34,
+      "background": "Co-founder and former CEO, technology visionary",
+      "_dm": {
+        "type": "H",
+        "source": "Yahoo Finance ownership data 2026",
+        "confidence": "high"
+      }
+    },
+    "other_key_executives": {
+      "stuart_levey": {
+        "name": "Stuart Levey",
+        "title": "Executive Vice President and Chief Legal Officer",
+        "compensation_2025": {
+          "base_salary": 950000,
+          "stock_awards": 13690000,
+          "other_compensation": 40090,
+          "total_compensation": 14680000
+        },
+        "_dm": {
+          "type": "H",
+          "source": "Oracle proxy statement 2025",
+          "confidence": "high"
+        }
+      },
+      "mark_hura": {
+        "name": "Mark Hura",
+        "title": "President, Global Field Operations",
+        "previous_role": "EVP of Oracle North America Sales",
+        "promotion_date": "September 2025",
+        "_dm": {
+          "type": "H",
+          "source": "Oracle leadership announcement 2025",
+          "confidence": "medium"
+        }
+      }
+    },
+    "former_leadership": {
+      "jeff_henley": {
+        "name": "Jeffrey O. Henley",
+        "title": "Vice Chairman of the Board",
+        "age": 81,
+        "tenure_at_company": "35 years (since 1991)",
+        "previous_roles": [
+          "CFO (1991-2004)",
+          "Chairman (2004-2014)"
+        ],
+        "background": "Former Pacific Holding Company CFO, brought financial discipline after Oracle's accounting issues",
+        "education": "BA Economics (UCSB), MBA Finance (UCLA Anderson)",
+        "_dm": {
+          "type": "H",
+          "source": "Oracle executive biographies",
+          "confidence": "high"
+        }
+      }
+    }
+  },
+  "governance_structure": {
+    "board_composition": {
+      "total_members": 15,
+      "independence_status": "Predominantly independent directors",
+      "separation_of_roles": "Chairman and CEO roles are separated",
+      "_dm": {
+        "type": "H",
+        "source": "Oracle corporate governance guidelines",
+        "confidence": "medium"
+      }
+    },
+    "key_committees": [
+      "Audit Committee",
+      "Compensation Committee",
+      "Nomination and Governance Committee",
+      "Committee on Independence Issues"
+    ],
+    "governance_highlights": [
+      "Majority voting standard in director elections",
+      "Independent board oversight of management performance",
+      "Established corporate governance guidelines and committee charters"
+    ],
+    "_dm": {
+      "type": "H",
+      "source": "Oracle corporate governance documentation",
+      "confidence": "medium"
+    }
+  },
+  "ownership_structure": {
+    "insider_ownership_percentage": 40.77,
+    "institutional_ownership_percentage": 43.00,
+    "retail_ownership_percentage": 16.24,
+    "largest_individual_shareholder": "Larry Ellison (40.34%)",
+    "_dm": {
+      "type": "H",
+      "source": "WallStreetZen ownership analysis 2026",
+      "confidence": "high"
+    }
+  },
+  "leadership_stability": {
+    "recent_changes": {
+      "ceo_transition": "September 2025 - Safra Catz stepped down, replaced by co-CEOs Clay Magouyrk and Mike Sicilia",
+      "cfo_transition": "September 2025 - Douglas Kehring promoted to CFO",
+      "rationale": "Succession planning for next generation leadership while maintaining founder involvement",
+      "_dm": {
+        "type": "H",
+        "source": "Oracle investor announcements and press releases",
+        "confidence": "high"
+      }
+    },
+    "stability_assessment": {
+      "management_tenure": "Mixed - new CEOs balanced by long-tenured executives",
+      "succession_planning": "Well-executed transition with internal promotions",
+      "founder_involvement": "Larry Ellison remains as Chairman/CTO providing continuity",
+      "risk_factors": [
+        "New leadership team learning curve",
+        "Co-CEO structure execution challenges",
+        "Dependence on founder leadership (age 80)"
+      ],
+      "_dm": {
+        "type": "R",
+        "source": "Analysis of management changes and industry best practices",
+        "chain": "Recent leadership transition + co-CEO structure + founder age = moderate stability risk",
+        "falsifiable": "Performance metrics over next 12-24 months will validate leadership effectiveness",
+        "confidence": "medium"
+      }
+    }
+  },
+  "key_strengths": [
+    "Strong technical leadership with cloud expertise (Magouyrk)",
+    "Industry vertical expertise (Sicilia)",
+    "Financial discipline and operational experience (Kehring)",
+    "Strategic continuity through founder involvement",
+    "Proven track record of successful acquisitions and integrations"
+  ],
+  "key_risks": [
+    "Untested co-CEO leadership model",
+    "Significant dependence on 80-year-old founder",
+    "Large recent stock sales by former CEO Catz ($2.5B in 2025)",
+    "Leadership transition during competitive AI/cloud market phase"
+  ],
+  "dm_anchors": [
+    {
+      "id": "MGT-001",
+      "type": "H",
+      "description": "Clay Magouyrk appointed Co-CEO September 2025",
+      "source": "Oracle investor announcement",
+      "confidence": "high"
+    },
+    {
+      "id": "MGT-002",
+      "type": "H",
+      "description": "Michael Sicilia appointed Co-CEO September 2025",
+      "source": "Oracle investor announcement",
+      "confidence": "high"
+    },
+    {
+      "id": "MGT-003",
+      "type": "H",
+      "description": "Douglas Kehring promoted to CFO September 2025",
+      "source": "Oracle proxy filing",
+      "confidence": "high"
+    },
+    {
+      "id": "MGT-004",
+      "type": "H",
+      "description": "Larry Ellison owns 40.34% of Oracle shares",
+      "source": "WallStreetZen ownership data 2026",
+      "confidence": "high"
+    },
+    {
+      "id": "MGT-005",
+      "type": "H",
+      "description": "Safra Catz sold $2.5B in Oracle stock in 2025",
+      "source": "Seeking Alpha insider trading report",
+      "confidence": "high"
+    },
+    {
+      "id": "MGT-006",
+      "type": "R",
+      "description": "Co-CEO structure presents execution risk",
+      "source": "Management structure analysis",
+      "chain": "New co-CEO model + competitive market = coordination challenges",
+      "falsifiable": "Quarterly performance metrics will show coordination effectiveness",
+      "confidence": "medium"
+    }
+  ]
+}

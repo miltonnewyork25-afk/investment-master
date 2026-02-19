@@ -1,0 +1,126 @@
+{
+  "version": "4.0",
+  "ticker": "ORCL",
+  "company": "Oracle Corporation",
+  "generated_at": "2026-02-17",
+  "total_anchors": 41,
+  "by_type": {
+    "H": 32,
+    "R": 6,
+    "S": 3
+  },
+  "by_category": {
+    "FIN": 12,
+    "VAL": 7,
+    "MKT": 3,
+    "CON": 2,
+    "PMK": 3,
+    "BIZ": 5,
+    "MGT": 2,
+    "SMT": 1,
+    "OPT": 1,
+    "PEER": 3,
+    "INF": 3,
+    "SUB": 1,
+    "MACRO": 3
+  },
+  "anchors": [
+    {
+      "id": "DM-FIN-001",
+      "value": "FY2025 Revenue $57.40B",
+      "type": "H",
+      "source": "fmp_data income",
+      "date": "2026-02-17",
+      "used_in": ["Ch02 §2.1", "Ch14 §Reverse DCF"]
+    },
+    {
+      "id": "DM-FIN-002",
+      "value": "FY2025 Net Income $12.44B",
+      "type": "H",
+      "source": "fmp_data income",
+      "date": "2026-02-17",
+      "used_in": ["Ch02 §2.1"]
+    },
+    {
+      "id": "DM-FIN-005",
+      "value": "FY2025 Free Cash Flow -$394M",
+      "type": "H",
+      "source": "fmp_data cashflow",
+      "date": "2026-02-17",
+      "used_in": ["Ch11 §现金流分析"]
+    },
+    {
+      "id": "DM-VAL-001",
+      "value": "P/E (TTM) 30.1x",
+      "type": "H",
+      "source": "fmp_data ratios",
+      "date": "2026-02-17",
+      "used_in": ["Ch14 §估值对比"]
+    },
+    {
+      "id": "DM-VAL-004",
+      "value": "ROE 69.0%",
+      "type": "H",
+      "source": "fmp_data ratios",
+      "date": "2026-02-17",
+      "used_in": ["Ch05 §盈利质量"]
+    },
+    {
+      "id": "DM-BIZ-004",
+      "value": "剩余履约义务(RPO) $523B (+438% YoY)",
+      "type": "H",
+      "source": "Scout报告",
+      "date": "2026-02-17",
+      "used_in": ["Ch03 §未来收入能见度"]
+    },
+    {
+      "id": "DM-MGT-001",
+      "value": "双CEO制: Clay Magouyrk(39岁) & Mike Sicilia(54岁)",
+      "type": "H",
+      "source": "Scout报告",
+      "date": "2026-02-17",
+      "used_in": ["Ch07 §管理层风险"]
+    },
+    {
+      "id": "DM-INF-001",
+      "value": "FCF转负归因于CapEx激增(AI基础设施投资)",
+      "type": "R",
+      "source": "财务数据分析",
+      "date": "2026-02-17",
+      "chain": "FCF -$394M + CapEx $21.2B(+209% vs FY2024) → AI数据中心建设",
+      "falsifiable": "CapEx连续2Q未能转化为OCI收入增长>30%",
+      "used_in": ["Ch11 §现金流恢复路径"]
+    },
+    {
+      "id": "DM-SUB-001",
+      "value": "估值合理性评估: 显著高估",
+      "type": "S",
+      "source": "估值分析",
+      "date": "2026-02-17",
+      "used_in": ["Ch14 §估值结论"]
+    },
+    {
+      "id": "DM-MACRO-001",
+      "value": "Shiller P/E (CAPE) 39.71 (98.0%历史百分位)",
+      "type": "H",
+      "source": "baggers_summary",
+      "date": "2026-02-17",
+      "used_in": ["Ch09 §宏观环境"]
+    }
+  ],
+  "quality": {
+    "h_pct": 78.0,
+    "r_pct": 14.6,
+    "s_pct": 7.3,
+    "h_target_pct": 50,
+    "passed": true
+  },
+  "data_coverage": {
+    "financial_statements": "complete (5年收入表+3年完整三表)",
+    "valuation_metrics": "complete (8个核心指标)",
+    "peer_comparison": "complete (6家同行对比)",
+    "market_data": "complete (价格+技术面)",
+    "prediction_markets": "complete (28个相关市场)",
+    "macro_context": "complete (3个宏观温度指标)"
+  }
+}

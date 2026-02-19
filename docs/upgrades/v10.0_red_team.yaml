@@ -1,0 +1,33 @@
+upgrade_id: "v10.0-red-team-7"
+date_proposed: "2026-02-12"
+author: "agent"
+
+hypothesis:
+  what: "红队七问 RT-1~RT-7 — Phase 4固定7个对抗性维度"
+  improves_which_dimension: "Phase 4对抗深度、风险识别覆盖率"
+  current_baseline: "v9.0: Phase 4自由格式对抗，维度不固定"
+  expected_after: "7维度100%覆盖(承重墙/偏差/空头钢人/数据审计/黑天鹅/时间/替代解释)"
+  could_regress: "模板化可能导致形式主义(打勾而非深度思考)"
+
+success_criteria:
+  - "Phase 4输出包含RT-1到RT-7全部7个标记"
+  - "承重墙脆弱度表至少3行(高/中/低)"
+  - "黑天鹅概率加权表至少3个事件"
+  - "CQ置信度在Phase 4后有下调(证明对抗有效)"
+
+kill_condition:
+  - "RT-1~RT-7全部通过但Phase 4无实质发现(形式主义)"
+  - "CQ置信度Phase 4后无任何变化"
+
+validation:
+  status: "VALIDATED"
+  first_report: "PLTR v3.1"
+  date_validated: "2026-02-12"
+  actual_results: "PLTR RT-1~RT-7全覆盖。RDDT Phase 4产出25.6K，CQ置信度从40.7%降至29.6%。"
+  criteria_met:
+    - "RT-1~RT-7全覆盖 — PLTR/RDDT两份报告验证"
+    - "承重墙脆弱度表 — PLTR包含承重墙分析"
+    - "黑天鹅表 — RDDT 7个Bear Case"
+    - "CQ下调 — RDDT从40.7%→29.6%，对抗确实有效"
+  criteria_failed: []
+  honest_assessment: "成功的结构化升级。固定7维度比自由格式更有纪律性。RDDT CQ大幅下调(11个百分点)证明不是形式主义。"
