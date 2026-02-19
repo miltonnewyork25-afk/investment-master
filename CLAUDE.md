@@ -127,6 +127,7 @@
 
 ## Phase自动化
 
+**启动门控**: `bash scripts/preflight_gate.sh {TICKER} {INDUSTRY}` — **Phase 0前必须CLEARED，有FAIL则阻断**
 **一键Phase**: `bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}`
 **紧急保存**: `bash scripts/context_save.sh [TICKER]`
 **报告验尸**: `bash scripts/post_report_autopsy.sh {TICKER} {REPORT}` — Complete后自动执行，启动进化循环
@@ -168,17 +169,19 @@ bash scripts/find_best_reference.sh {TICKER}
 
 ---
 
-## 铁律 I: 知识前置
+## 铁律 I: 知识前置 + 强制门控
 
-**Tier 3分析启动时，必须在Phase 0前完成知识检索+文献侦察**:
+**Tier 3分析启动时，必须在Phase 0前完成知识检索+文献侦察，并通过Pre-Flight Gate**:
 
-1. **Phase -1 知识库检索** — `bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}` → 读取top-1 planning archive → 输出 `knowledge_context.md`
-2. **Phase -0.5 文献侦察** — 5路WebSearch(D1深度/D2对抗/D3行业/D4专家/D5模型) → 精读Top 3-5 → 输出 `lit_recon_memo.md`
+1. **Phase -1 知识库检索** — `bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}` → 输出 `knowledge_context.md` (≥500字符)
+2. **Phase -0.5 文献侦察** — 5路WebSearch(D1深度/D2对抗/D3行业/D4估值/D5演绎) → 输出 `lit_recon_memo.md` (≥1000字符)
+3. **Pre-Flight Gate** — `bash scripts/preflight_gate.sh {TICKER} {INDUSTRY}` → **必须返回CLEARED**
 
-**产出**: `reports/{TICKER}/data/knowledge_context.md` (~2K) + `reports/{TICKER}/data/lit_recon_memo.md` (~3K)
-**成本**: 持久化<8K tokens | 临时读取~16K(不持久化)
+**产出**: `reports/{TICKER}/data/knowledge_context.md` + `reports/{TICKER}/data/lit_recon_memo.md`
 
-**禁止**: 跳过Phase -1直接开始Phase 0 | 忽略相似公司的失败教训 | 文献侦察E节(分歧)为空
+**强制执行**: preflight_gate.sh 有任何FAIL → Phase 0阻断。即使用户直接说"分析XX"，AI也必须先完成Phase -1/-0.5再启动Phase 0。
+
+**禁止**: 跳过Phase -1直接开始Phase 0 | 忽略相似公司的失败教训 | 文献侦察E节(分歧)为空 | preflight_gate.sh未CLEARED就启动Phase 0
 
 **详见**: `docs/deep_dive_protocol.md` Phase -1 / Phase -0.5
 

@@ -65,6 +65,20 @@ env_fingerprint:
 
 **Stop**: scope.locked == 1 AND gates.mapped_ratio >= 0.80
 
+### Step 1.25: Pre-Flight Gate — 强制启动门控 (Phase -1/-0.5)
+
+> **脚本**: `bash scripts/preflight_gate.sh {TICKER} {INDUSTRY}`
+> **触发条件**: Tier 3分析时**无条件执行**，有FAIL项则Phase 0不得启动
+
+**执行流程**:
+1. `mkdir -p reports/{TICKER}/data`
+2. `bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}` → 保存到 `data/knowledge_context.md` (≥500字符)
+3. 5路WebSearch文献侦察 → 保存到 `data/lit_recon_memo.md` (≥1000字符)
+4. `bash scripts/preflight_gate.sh {TICKER} {INDUSTRY}` → **必须返回0(CLEARED)**
+5. 设定 `target_chars` 到 checkpoint.yaml (基于公司复杂度: 科技平台≥250K, 半导体≥200K)
+
+**阻断规则**: preflight_gate.sh 返回1 → **禁止进入Phase 0**，必须先完成所有FAIL项
+
 ### Step 1.5: Scout Agent — 参考报告学习 (Phase 0)
 
 > **完整规格**: `docs/architecture/learning_sentinel_proposal.md`
