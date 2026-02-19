@@ -125,12 +125,30 @@
 
 ---
 
-## Phase自动化
+## Phase自动化 + 纵深防御
 
+**单一入口**: `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY}` — **Tier 3分析的第一个命令，替代手动Phase -1**
 **启动门控**: `bash scripts/preflight_gate.sh {TICKER} {INDUSTRY}` — **Phase 0前必须CLEARED，有FAIL则阻断**
-**一键Phase**: `bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}`
+**一键Phase**: `bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}` — **内含sentinel自动检查**
+**质量哨兵**: `bash scripts/phase_sentinel.sh {TICKER} {PHASE} [TARGET]` — **phase_complete自动调用，无需手动记住**
 **紧急保存**: `bash scripts/context_save.sh [TICKER]`
 **报告验尸**: `bash scripts/post_report_autopsy.sh {TICKER} {REPORT}` — Complete后自动执行，启动进化循环
+
+### 纵深防御架构 (Defense-in-Depth)
+
+```
+用户说"深度调研XX"
+    ↓
+Layer 0: tier3_launch.sh — 自动执行Phase -1 + 复杂度估计 + launch_brief
+    ↓
+Layer 1: preflight_gate.sh — Phase 0前硬阻断 (lit_recon缺失?)
+    ↓
+Layer 2: phase_sentinel.sh — 每个Phase后重新验证ALL前序产出
+    ↓ (自动嵌入phase_complete.sh, AI无需记住)
+Layer 3: quality_gate_complete.sh — 最终质量门控
+```
+
+**核心设计**: 每个后续检查点都重新验证全部前序产出。即使Layer 0+1被跳过，Layer 2在Phase 1后仍会检测到缺失的knowledge_context.md → 发出BLOCK → AI必须回补。**单点失败不致命**。
 
 **详见**: `docs/checkpoint_protocol.md` v2.0 + `docs/evolution_system.md`
 
@@ -169,21 +187,26 @@ bash scripts/find_best_reference.sh {TICKER}
 
 ---
 
-## 铁律 I: 知识前置 + 强制门控
+## 铁律 I: 知识前置 + 纵深防御门控
 
-**Tier 3分析启动时，必须在Phase 0前完成知识检索+文献侦察，并通过Pre-Flight Gate**:
+**Tier 3分析启动的第一步，永远是** `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY}`。
 
-1. **Phase -1 知识库检索** — `bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}` → 输出 `knowledge_context.md` (≥500字符)
-2. **Phase -0.5 文献侦察** — 5路WebSearch(D1深度/D2对抗/D3行业/D4估值/D5演绎) → 输出 `lit_recon_memo.md` (≥1000字符)
-3. **Pre-Flight Gate** — `bash scripts/preflight_gate.sh {TICKER} {INDUSTRY}` → **必须返回CLEARED**
+**单一入口流程**:
+1. **tier3_launch.sh** — 自动完成: 创建目录 + 复杂度估计(扫描同行业报告) + Phase -1知识检索 + 进化教训 + launch_brief生成
+2. **AI阅读 launch_brief.md** — 确认目标字符范围 + 参考报告 + 进化教训
+3. **Phase -0.5 文献侦察** — 5路WebSearch → `lit_recon_memo.md` (≥1000字符)
+4. **preflight_gate.sh** → **必须返回CLEARED**
+5. Phase 0 开始
 
-**产出**: `reports/{TICKER}/data/knowledge_context.md` + `reports/{TICKER}/data/lit_recon_memo.md`
+**纵深防御** (4层,每层重新验证前序):
+- Layer 0: tier3_launch.sh (Phase -1自动化)
+- Layer 1: preflight_gate.sh (Phase 0前硬阻断)
+- Layer 2: phase_sentinel.sh (每Phase后自动重检全部前序) ← **嵌入phase_complete.sh**
+- Layer 3: quality_gate_complete.sh (最终门控)
 
-**强制执行**: preflight_gate.sh 有任何FAIL → Phase 0阻断。即使用户直接说"分析XX"，AI也必须先完成Phase -1/-0.5再启动Phase 0。
+**即使用户只说"分析XX"**: AI也必须先运行tier3_launch.sh。这不是文本规则,是代码强制——sentinel在Phase 1后会检测到缺失的知识文件并发出BLOCK。
 
-**禁止**: 跳过Phase -1直接开始Phase 0 | 忽略相似公司的失败教训 | 文献侦察E节(分歧)为空 | preflight_gate.sh未CLEARED就启动Phase 0
-
-**详见**: `docs/deep_dive_protocol.md` Phase -1 / Phase -0.5
+**禁止**: 跳过tier3_launch.sh直接开始Phase 0 | 忽略launch_brief中的目标字符范围 | 产出<launch_brief目标的50%却不停下来检查
 
 ---
 

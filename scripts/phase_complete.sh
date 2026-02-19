@@ -237,4 +237,33 @@ echo " Annotations: ${TOTAL_ANN} (${ANN_DENSITY}/万, hard: ${HARD_RATIO}%)"
 echo " Checkpoint:  ${CHECKPOINT} (v2.0)"
 echo -e "========================================${NC}"
 echo ""
+
+# --- Step 5: Phase Sentinel — 纵深防御质量哨兵 ---
+echo -e "${CYAN}[5/5] Phase Sentinel — 纵深防御检查...${NC}"
+SENTINEL="${REPO_ROOT}/scripts/phase_sentinel.sh"
+if [ -f "$SENTINEL" ]; then
+    # 从checkpoint读取target_chars(如有)
+    SENTINEL_TARGET="${MIN_CHARS}"
+    if [ -f "$CHECKPOINT" ]; then
+        CT=$({ grep -oE 'target_chars: [0-9]+' "$CHECKPOINT" | grep -oE '[0-9]+' || echo "0"; } | head -1)
+        if [ "$CT" -gt 0 ]; then
+            SENTINEL_TARGET="$CT"
+        fi
+    fi
+
+    SENTINEL_EXIT=0
+    bash "$SENTINEL" "$TICKER" "$PHASE" "$SENTINEL_TARGET" || SENTINEL_EXIT=$?
+
+    if [ "$SENTINEL_EXIT" -eq 2 ]; then
+        echo ""
+        echo -e "${RED}*** SENTINEL BLOCK — 前序产出缺失,请修复后再继续 ***${NC}"
+    elif [ "$SENTINEL_EXIT" -eq 1 ]; then
+        echo ""
+        echo -e "${YELLOW}*** SENTINEL FAIL — 有质量问题,建议修复 ***${NC}"
+    fi
+else
+    echo "  phase_sentinel.sh not found (跳过)"
+fi
+
+echo ""
 echo "下一步: git push (如需) 或继续下一Phase"

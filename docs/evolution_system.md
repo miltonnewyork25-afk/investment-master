@@ -44,11 +44,38 @@
 
 | 脚本 | 角色 | 触发时机 |
 |------|------|----------|
+| `scripts/tier3_launch.sh` | **单一入口 — 复杂度估计+Phase -1+launch_brief** | **Tier 3启动的第一个命令** |
+| `scripts/phase_sentinel.sh` | **纵深防御哨兵 — 每Phase后重验全部前序** | **phase_complete.sh自动调用** |
+| `scripts/preflight_gate.sh` | Phase 0前硬阻断门控 | tier3_launch内 / 手动 |
 | `scripts/post_report_autopsy.sh` | 自动测量编排器 (v2.0) | 报告Complete后 |
 | `scripts/evolution_trend.sh` | 质量趋势分析+警告 | autopsy内联 / 独立运行 |
 | `scripts/update_excellence_catalog.sh` | 冠军对比+升级建议 (v2.0) | autopsy后AI运行 |
-| `scripts/find_relevant_knowledge.sh` | Phase -1知识检索+进化上下文 | 新报告启动时 |
+| `scripts/find_relevant_knowledge.sh` | Phase -1知识检索+进化上下文 | tier3_launch内 |
 | `scripts/excellence_scout.sh` | Phase级最佳实践推荐 | 各Phase启动时 |
+
+### 纵深防御架构 (Defense-in-Depth)
+
+```
+用户: "深度调研XX公司"
+  ↓
+Layer 0: tier3_launch.sh ← 自动Phase -1 + 复杂度估计 + launch_brief
+  ↓
+  AI: 文献侦察 (WebSearch) → lit_recon_memo.md
+  ↓
+Layer 1: preflight_gate.sh ← 硬阻断: knowledge+lit_recon+scout
+  ↓
+Phase 0 → phase_complete.sh → [Layer 2: phase_sentinel.sh] ← 重验ALL前序
+  ↓
+Phase 1 → phase_complete.sh → [Layer 2: phase_sentinel.sh] ← 重验ALL前序
+  ↓                            (即使Layer 0+1被跳过, 这里仍会BLOCK)
+  ... (每个Phase重复)
+  ↓
+Layer 3: quality_gate_complete.sh ← 最终门控
+  ↓
+post_report_autopsy.sh → evolution_log → 进化循环
+```
+
+**核心设计**: 每个后续检查点重新验证**全部**前序产出。单点失败不致命。
 
 ---
 
