@@ -1,0 +1,356 @@
+{
+  "ticker": "ORCL",
+  "data_collection_date": "2026-02-17",
+  "short_interest": {
+    "shares_short": {
+      "value": 27050000,
+      "_dm": {
+        "id": "OPT-001",
+        "type": "H",
+        "source": "MarketBeat/Exchange Reports Feb 3, 2026",
+        "confidence": "high"
+      }
+    },
+    "short_float_percentage": {
+      "value": 1.58,
+      "_dm": {
+        "id": "OPT-002",
+        "type": "H",
+        "source": "MarketBeat/Exchange Reports Feb 3, 2026",
+        "confidence": "high"
+      }
+    },
+    "days_to_cover": {
+      "value": 1.0,
+      "_dm": {
+        "id": "OPT-003",
+        "type": "R",
+        "source": "MarketBeat calculation based on trading volume",
+        "chain": "Based on average trading volume, calculated days needed for shorts to cover positions",
+        "falsifiable": "If trading volume changes significantly, days to cover would adjust proportionally",
+        "confidence": "medium"
+      }
+    },
+    "trend": {
+      "value": "decreasing",
+      "change_percentage": -5.39,
+      "_dm": {
+        "id": "OPT-004",
+        "type": "H",
+        "source": "Benzinga Pro short interest reporting",
+        "confidence": "high"
+      }
+    },
+    "peer_comparison": {
+      "orcl_short_float": 1.58,
+      "peer_average": 6.55,
+      "_dm": {
+        "id": "OPT-005",
+        "type": "H",
+        "source": "Benzinga Pro peer group analysis",
+        "confidence": "medium"
+      }
+    }
+  },
+  "options_activity": {
+    "put_call_ratio": {
+      "open_interest": {
+        "value": 0.94,
+        "_dm": {
+          "id": "OPT-006",
+          "type": "H",
+          "source": "Fintel.io options data",
+          "confidence": "high"
+        }
+      },
+      "sentiment": {
+        "value": "slightly_bullish",
+        "_dm": {
+          "id": "OPT-007",
+          "type": "R",
+          "source": "Derived from put/call ratio < 1.0",
+          "chain": "Put/call ratio of 0.94 indicates more calls than puts in open interest, suggesting bullish positioning",
+          "falsifiable": "If put/call ratio rises above 1.0, sentiment would shift to bearish",
+          "confidence": "medium"
+        }
+      }
+    },
+    "historical_ratios": {
+      "120_day_volume_ratio": {
+        "value": 0.6324,
+        "date": "2025-09-08",
+        "_dm": {
+          "id": "OPT-008",
+          "type": "H",
+          "source": "AlphaQuery historical options data",
+          "confidence": "medium"
+        }
+      },
+      "30_day_oi_ratio": {
+        "value": 0.6771,
+        "date": "2025-09-08",
+        "_dm": {
+          "id": "OPT-009",
+          "type": "H",
+          "source": "AlphaQuery historical options data",
+          "confidence": "medium"
+        }
+      }
+    },
+    "recent_activity": {
+      "february_2026_sentiment": {
+        "value": "60% bearish",
+        "description": "Put-heavy conviction near at-the-money strikes",
+        "_dm": {
+          "id": "OPT-010",
+          "type": "H",
+          "source": "QuiverQuantitative options flow analysis Feb 2026",
+          "confidence": "medium"
+        }
+      },
+      "weekly_performance": {
+        "value": 12.0,
+        "period": "week_of_feb_14_2026",
+        "search_rank": 48,
+        "_dm": {
+          "id": "OPT-011",
+          "type": "H",
+          "source": "QuiverQuantitative weekly performance data",
+          "confidence": "high"
+        }
+      }
+    }
+  },
+  "short_squeeze_potential": {
+    "assessment": {
+      "value": "low_to_moderate",
+      "_dm": {
+        "id": "OPT-012",
+        "type": "R",
+        "source": "Analysis based on low short interest (1.58%) vs peer average (6.55%)",
+        "chain": "Lower short interest reduces traditional squeeze potential, but analyst upside targets could trigger covering",
+        "falsifiable": "If short interest increases significantly above peer average, squeeze potential would increase",
+        "confidence": "medium"
+      }
+    },
+    "catalysts": {
+      "analyst_targets": {
+        "mean_target": 272.89,
+        "current_price_implied": "~$157 (74% upside implied)",
+        "_dm": {
+          "id": "OPT-013",
+          "type": "R",
+          "source": "Derived from 74% upside mention and $272.89 target",
+          "chain": "If current price ~$157 and target $272.89, represents 74% upside potential",
+          "falsifiable": "Actual current price could be verified from real-time quotes",
+          "confidence": "low"
+        }
+      },
+      "technical_levels": {
+        "september_peak": 345.72,
+        "decline_from_peak": "~54%",
+        "_dm": {
+          "id": "OPT-014",
+          "type": "H",
+          "source": "Barchart technical analysis data",
+          "confidence": "high"
+        }
+      }
+    }
+  },
+  "volatility_metrics": {
+    "implied_vs_historical": {
+      "description": "IV reflects forward-looking price movement expectations, HV measures past price changes",
+      "_dm": {
+        "id": "OPT-015",
+        "type": "S",
+        "source": "Standard options theory definition from MarketChameleon/Barchart",
+        "confidence": "high"
+      }
+    },
+    "earnings_impact": {
+      "next_earnings": "March 2026",
+      "iv_crush_risk": "Expected post-earnings volatility decline",
+      "_dm": {
+        "id": "OPT-016",
+        "type": "R",
+        "source": "MarketChameleon earnings calendar and IV patterns",
+        "chain": "Options typically experience IV crush after earnings as uncertainty resolves",
+        "falsifiable": "If earnings are delayed or moved, timing would change",
+        "confidence": "medium"
+      }
+    }
+  },
+  "analyst_sentiment": {
+    "recommendation_breakdown": {
+      "strong_buy": 29,
+      "moderate_buy": 1,
+      "hold": 10,
+      "strong_sell": 1,
+      "total_analysts": 41,
+      "_dm": {
+        "id": "OPT-017",
+        "type": "H",
+        "source": "Barchart analyst consensus data",
+        "confidence": "high"
+      }
+    },
+    "price_target": {
+      "average": 304.03,
+      "upside_potential": "71.3%",
+      "_dm": {
+        "id": "OPT-018",
+        "type": "H",
+        "source": "Barchart analyst price target compilation",
+        "confidence": "high"
+      }
+    }
+  },
+  "insider_activity": {
+    "recent_trades": {
+      "count": 18,
+      "period": "past_6_months",
+      "_dm": {
+        "id": "OPT-019",
+        "type": "H",
+        "source": "QuiverQuantitative insider trading data",
+        "confidence": "high"
+      }
+    }
+  },
+  "dm_anchors": [
+    {
+      "id": "OPT-001",
+      "type": "H",
+      "description": "Shares sold short: 27.05M",
+      "source": "MarketBeat/Exchange Reports",
+      "confidence": "high"
+    },
+    {
+      "id": "OPT-002",
+      "type": "H",
+      "description": "Short float percentage: 1.58%",
+      "source": "MarketBeat/Exchange Reports",
+      "confidence": "high"
+    },
+    {
+      "id": "OPT-003",
+      "type": "R",
+      "description": "Days to cover: 1.0 days",
+      "source": "MarketBeat calculation",
+      "confidence": "medium"
+    },
+    {
+      "id": "OPT-004",
+      "type": "H",
+      "description": "Short interest trend: -5.39% decrease",
+      "source": "Benzinga Pro",
+      "confidence": "high"
+    },
+    {
+      "id": "OPT-005",
+      "type": "H",
+      "description": "Peer comparison: 1.58% vs 6.55% average",
+      "source": "Benzinga Pro",
+      "confidence": "medium"
+    },
+    {
+      "id": "OPT-006",
+      "type": "H",
+      "description": "Put/call ratio (OI): 0.94",
+      "source": "Fintel.io",
+      "confidence": "high"
+    },
+    {
+      "id": "OPT-007",
+      "type": "R",
+      "description": "Options sentiment: slightly bullish",
+      "source": "Derived from P/C < 1.0",
+      "confidence": "medium"
+    },
+    {
+      "id": "OPT-008",
+      "type": "H",
+      "description": "120-day volume P/C ratio: 0.6324",
+      "source": "AlphaQuery",
+      "confidence": "medium"
+    },
+    {
+      "id": "OPT-009",
+      "type": "H",
+      "description": "30-day OI P/C ratio: 0.6771",
+      "source": "AlphaQuery",
+      "confidence": "medium"
+    },
+    {
+      "id": "OPT-010",
+      "type": "H",
+      "description": "Feb 2026 sentiment: 60% bearish, put-heavy",
+      "source": "QuiverQuantitative",
+      "confidence": "medium"
+    },
+    {
+      "id": "OPT-011",
+      "type": "H",
+      "description": "Weekly performance: +12%, rank #48 searches",
+      "source": "QuiverQuantitative",
+      "confidence": "high"
+    },
+    {
+      "id": "OPT-012",
+      "type": "R",
+      "description": "Short squeeze potential: low-moderate",
+      "source": "Analysis of 1.58% short interest",
+      "confidence": "medium"
+    },
+    {
+      "id": "OPT-013",
+      "type": "R",
+      "description": "Current price estimate: ~$157",
+      "source": "Derived from 74% upside to $272.89",
+      "confidence": "low"
+    },
+    {
+      "id": "OPT-014",
+      "type": "H",
+      "description": "Technical: 54% decline from $345.72 peak",
+      "source": "Barchart",
+      "confidence": "high"
+    },
+    {
+      "id": "OPT-015",
+      "type": "S",
+      "description": "IV vs HV definition and usage",
+      "source": "Standard options theory",
+      "confidence": "high"
+    },
+    {
+      "id": "OPT-016",
+      "type": "R",
+      "description": "Next earnings March 2026, IV crush expected",
+      "source": "MarketChameleon",
+      "confidence": "medium"
+    },
+    {
+      "id": "OPT-017",
+      "type": "H",
+      "description": "Analyst breakdown: 29 Strong Buy, 1 Mod Buy, 10 Hold, 1 Strong Sell",
+      "source": "Barchart consensus",
+      "confidence": "high"
+    },
+    {
+      "id": "OPT-018",
+      "type": "H",
+      "description": "Average price target: $304.03 (71.3% upside)",
+      "source": "Barchart",
+      "confidence": "high"
+    },
+    {
+      "id": "OPT-019",
+      "type": "H",
+      "description": "Insider trades: 18 in past 6 months",
+      "source": "QuiverQuantitative",
+      "confidence": "high"
+    }
+  ]
+}

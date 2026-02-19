@@ -1,0 +1,170 @@
+# RBLX Tier 3 深度研究 — Checkpoint
+# 框架版本: v10.0 + Scout v1.0 + ERM v1.0
+# 创建时间: 2026-02-16
+
+ticker: RBLX
+company: Roblox Corporation
+industry: 生态科技
+worktree: main (最终报告→main)
+framework_version: "v10.0+Scout+ERM+v14.0知识层"
+possibility_width: 6
+paradigm: 混合模式 (传统估值+可能性附录)
+
+# 市值基准 (全报告统一使用)
+market_cap_basis: "$44.3B"
+market_cap_date: "2026-02-13"
+share_price: "$63.17"
+shares_diluted: "702M"
+
+# Phase进度
+phases:
+  scout:
+    status: completed
+    session: 1
+    output: reports/RBLX/data/scout_baseline.md
+    lines: 129
+  phase_neg05:
+    status: completed
+    session: 1
+    output: reports/RBLX/data/lit_recon_memo.md
+    sources: 28
+  phase_0:
+    status: completed
+    session: 1
+    substeps:
+      data_prefetch: completed
+      cq_finalization: completed
+      possibility_width: completed
+  phase_1:
+    status: completed
+    session: 1
+    output:
+      - reports/RBLX/staging/P1_AgentA_business.md  # 17,270 chars, 8 Mermaid, 50 DM
+      - reports/RBLX/staging/P1_AgentB_risk.md       # 23,158 chars, 8 Mermaid, 59 DM
+      - reports/RBLX/staging/P1_AgentC_quant.md      # 25,686 chars, 11 Mermaid, 41 DM
+    totals:
+      chars: 66114
+      mermaid: 27
+      dm_anchors: 150
+      agent_leaks: 0
+      cq_coverage: "8/8"
+    quality_grade: "A- (91/100)"
+  phase_2:
+    status: completed
+    session: 2
+    output:
+      - reports/RBLX/staging/P2_AgentA_valuation.md   # 30,591 chars, 8 Mermaid, 46 DM
+      - reports/RBLX/staging/P2_AgentB_pdrm_sbc.md    # 28,193 chars, 8 Mermaid, 58 DM
+      - reports/RBLX/staging/P2_AgentC_methods_tam.md  # 28,471 chars, 10 Mermaid, 55 DM
+    totals:
+      chars: 87255
+      mermaid: 26
+      dm_anchors: 159
+      agent_leaks: 0
+    quality_grade: "pending audit"
+    key_findings:
+      - "承重墙加权脆弱度3.5/5, 级联崩塌概率6-9%"
+      - "PDRM加权净影响-$736M/年 (Phase 1的-$327M深化125%)"
+      - "SBC是估值开关: 含SBC→$13-20B, 不含SBC→$32-46B"
+      - "五方法离散度极大, SBC处理占70%方法差异"
+  phase_3:
+    status: completed
+    session: 2
+    output:
+      - reports/RBLX/staging/P3_AgentA_compete_age_brand.md  # 29,688 chars, 7 Mermaid, 59 DM
+      - reports/RBLX/staging/P3_AgentB_ai_reg_catalyst.md    # 27,375 chars, 6 Mermaid, 56 DM
+      - reports/RBLX/staging/P3_AgentC_ads_bookings_smart.md # 30,155 chars, 6 Mermaid, 44 DM
+    totals:
+      chars: 87218
+      mermaid: 19
+      dm_anchors: 159
+      agent_leaks: 0
+    supplementary_modules:
+      - "Ch17.5 品牌忠诚度分层 (Consumer Brand Toolkit)"
+      - "Ch19.5 催化剂时间线 (15事件/3-6-12月)"
+      - "Ch21.5 聪明钱/13F机构分析 (Smart Money Tracking)"
+    key_findings:
+      - "监管概率加权EV影响-$11.4B (-25.5%)"
+      - "品牌忠诚度: >50% DAU无实质锁定"
+      - "广告天花板$500M-$1.0B/年(COPPA+品牌安全约束后)"
+      - "机构信号Mixed偏中性, 分析师共识$145 vs 现价$63(130%差距)"
+  phase_4:
+    status: completed
+    session: 3
+    output:
+      - reports/RBLX/staging/P4_AgentA_redteam_1to4.md  # 20,001 chars, 4 Mermaid, 60 DM
+      - reports/RBLX/staging/P4_AgentB_redteam_5to7.md  # 19,229 chars, 3 Mermaid, 37 DM
+    data:
+      - reports/RBLX/data/cq_evolution.md  # 8,821 chars, CQ1-CQ8 lifecycle
+    totals:
+      chars: 39230
+      mermaid: 7
+      dm_anchors: 97
+      agent_leaks: 0
+    key_findings:
+      - "加权脆弱度上调3.50→3.65(SW-2+0.5, SW-7+0.5)"
+      - "级联崩塌概率上调6-9%→8-12%"
+      - "监管确认偏差修正: EV影响-$11.4B→-$9.7B(概率分布调整)"
+      - "空头钢人论概率加权目标价$33.9(-46%)"
+      - "数据审计9/10 PASS, 1/10 FLAG(SBC估算值)"
+      - "CQ加权置信度75%, 全部CQ≥68%确认"
+      - "尾部风险合计15.46%, 额外EV折扣~$6.9B"
+      - "替代解释净上修+$5-10B, 调整后公允$18-30B"
+      - "10项纠错清单待Phase 5回流"
+  phase_5:
+    status: completed
+    session: 3
+    output:
+      - reports/RBLX/staging/P5_AgentA_ks_ts.md       # 23,587 chars, 3 Mermaid, 28 DM
+      - reports/RBLX/staging/P5_AgentB_cq_ci.md        # 22,956 chars, 3 Mermaid, 24 DM
+      - reports/RBLX/staging/P5_AgentC_valuation_rating.md  # 29,192 chars, 6 Mermaid, 50 DM
+    totals:
+      chars: 75735
+      mermaid: 12
+      dm_anchors: 102
+      agent_leaks: 0
+    key_findings:
+      - "概率加权综合EV $28.4B vs 市值$44.3B, 期望回报-36%"
+      - "评级: 审慎关注"
+      - "方法离散度7.85x, SBC处理占65%离散"
+      - "KS 15/TS 10/CQ 8/CI 8全部完成"
+      - "10项P4纠错全部有机吸收"
+  assembly:
+    status: completed
+    version: "v1.2"
+    output: reports/RBLX/RBLX_Complete_v1.2_2026-02-16.md
+    chars: 383800
+    v1_2_correction:
+      root_cause: "MacroTrends SBC $2.65B含DevEx, 实际SBC $1.13B (4源交叉验证)"
+      fixes: "240+处级联更新, Track B $5.2B→$9.5B, 离散度7.85x→4.3x"
+      unchanged: "评级(审慎关注), 综合EV($29.0B), 期望回报(-19.6%)"
+
+# CQ预设 (Phase 0.5定稿)
+cq_final:
+  CQ1: "开发者经济两极分化: 头部$130万 vs 中位$1575, 长尾流失风险多大?"
+  CQ2: "广告变现(Immersive Ads): Google合作后ARPU天花板在哪?"
+  CQ3: "监管全景: COPPA 4/22截止+MDL 1000+诉讼+4国封禁的量化影响?"
+  CQ4: "估值: SBC调整后真实盈利力+Bookings 27月滞后→隐含什么假设?"
+  CQ5: "开发者叛逃: Fortnite UEFN+GTA 6 UGC的威胁多大?"
+  CQ6: "年龄数据可信度: 自报42% vs 验证27%为18+, TAM叙事是否需重构?"
+  CQ7: "Apple/Google渠道税(30%)+支付政策变化的PDRM量化影响?"
+  CQ8: "SBC $1.13B/年+年稀释4%: FCF叙事是否误导投资者?"
+
+# 数据文件
+data_files:
+  - reports/RBLX/data/scout_baseline.md
+  - reports/RBLX/data/financial_summary.md
+  - reports/RBLX/data/checkpoint.yaml
+
+# 质量门控
+quality_gates:
+  target_chars: "≥300K"
+  target_dm: "≥250"
+  target_mermaid: "≥80"
+  target_cq: 8
+  target_ks: "≥15"
+  target_ci: "≥8"
+  target_ts: "≥10"
+  target_vp: "≥8"
+  target_ext_sources: "≥15"
+  cg_version: "v4.0 (17 gates)"

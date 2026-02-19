@@ -1,6 +1,6 @@
-# 投资研究 Agent — 主分支精简版 v2.1
+# 投资研究 Agent — 主分支精简版 v2.2
 
-> **Context优化v2.1**: 详细框架见 `docs/`。本文件仅含核心路由+铁律速查+行业路由。
+> **Context优化v2.2**: 详细框架见 `docs/`。本文件仅含核心路由+铁律速查+行业路由。
 > **完整框架**: `docs/deep_dive_protocol.md` + 行业专用文档 + 质量门控协议
 
 ## 身份
@@ -27,6 +27,23 @@
 - **7-10分(宽)**: 发现系统 — 不给目标价，映射可能性空间+开放问题+转折点
 - **详见**: `docs/paradigm_research_framework.md`
 
+**Tier 3评级标准** (量化触发器, 全报告对齐):
+
+| 评级 | 量化触发 (期望回报) | 含义 |
+|------|-------------------|------|
+| **深度关注** | > +30% | 显著低估, 值得深入研究 |
+| **关注** | +10% ~ +30% | 偏积极, 纳入观察名单 |
+| **中性关注** | -10% ~ +10% | 接近合理估值, 观望 |
+| **审慎关注** | < -10% | 偏高估/风险上升, 谨慎对待 |
+
+- 期望回报 = (概率加权EV - 市值) / 市值
+- PW≥7(发现系统)不强制单一评级, 但需给条件评级
+- **禁止**: 5档体系混入Tier 3 | "买入/卖出/推荐"等用语
+
+**分析方法论核心**:
+- **逆向估值优先** — Reverse DCF翻译"市场在赌什么"，而非正向DCF算"值多少钱"。先反推隐含假设，再评估假设合理性。详见 `/assumption-audit` M1信念反演
+- **演绎+归纳双轨** — 成熟业务用归纳(历史→外推)，范式变革用演绎(因果链→跨行业传导→二阶效应)。禁止对AI/自动驾驶等未来业务仅用类比。详见 `docs/deductive_analysis.md`
+
 ---
 
 ## 行业路由
@@ -47,7 +64,7 @@
 
 **第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(新报告适用，历史报告不回溯)
 
-**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)**
+**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)** | **I 知识前置(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
@@ -84,7 +101,9 @@
 | 等级 | 工具类型 | 代表工具 |
 |------|----------|----------|
 | **P0** | MCP数据工具 | `baggers_summary` `fmp_data` `analyze_stock` `polymarket_events` |
-| **P1** | 专业投资skill | `/investment-logic-toolkit` `/company-research-agent` `/data-prefetch` |
+| **P1** | 专业投资skill | `/investment-logic-toolkit` `/data-prefetch` |
+| **P1** | 分析深度skill (v17.0) | `/assumption-audit` `/risk-topology` `/red-team-suite` |
+| **P1** | 质量保障skill (v17.0) | `/valuation-quality-gate` `/omission-scanner` |
 | **P2** | Agent协作工具 | `/dispatching-parallel-agents` `/cross-validation` `/bear-case-generator` |
 
 **完整列表**: 各行业worktree CLAUDE.md
@@ -105,14 +124,32 @@
 
 ---
 
-## Phase自动化
+## Phase自动化 + 纵深防御
 
-**一键完成**: `bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}`
+**单一入口**: `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY}` — **Tier 3分析的第一个命令，替代手动Phase -1**
+**启动门控**: `bash scripts/preflight_gate.sh {TICKER} {INDUSTRY}` — **Phase 0前必须CLEARED，有FAIL则阻断**
+**一键Phase**: `bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}` — **内含sentinel自动检查**
+**质量哨兵**: `bash scripts/phase_sentinel.sh {TICKER} {PHASE} [TARGET]` — **phase_complete自动调用，无需手动记住**
 **紧急保存**: `bash scripts/context_save.sh [TICKER]`
-**自动执行**: FastGate → checkpoint v2.0 → git commit
-**省context**: ~25K/Phase (原~68K → 新~28K, -59%)
+**报告验尸**: `bash scripts/post_report_autopsy.sh {TICKER} {REPORT}` — Complete后自动执行，启动进化循环
 
-**详见**: `docs/checkpoint_protocol.md` v2.0
+### 纵深防御架构 (Defense-in-Depth)
+
+```
+用户说"深度调研XX"
+    ↓
+Layer 0: tier3_launch.sh — 自动执行Phase -1 + 复杂度估计 + launch_brief
+    ↓
+Layer 1: preflight_gate.sh — Phase 0前硬阻断 (lit_recon缺失?)
+    ↓
+Layer 2: phase_sentinel.sh — 每个Phase后重新验证ALL前序产出
+    ↓ (自动嵌入phase_complete.sh, AI无需记住)
+Layer 3: quality_gate_complete.sh — 最终质量门控
+```
+
+**核心设计**: 每个后续检查点都重新验证全部前序产出。即使Layer 0+1被跳过，Layer 2在Phase 1后仍会检测到缺失的knowledge_context.md → 发出BLOCK → AI必须回补。**单点失败不致命**。
+
+**详见**: `docs/checkpoint_protocol.md` v2.0 + `docs/evolution_system.md`
 
 ## 铁律 G: Context主动管理
 
@@ -125,6 +162,53 @@
 
 ---
 
+## 铁律 H: 报告参考协议
+
+**AI在参考历史报告时，必须使用脚本确定最佳版本**:
+
+**强制调用场景**:
+1. **Phase 0开始前** — 参考类似公司报告确定框架方向
+2. **用户询问历史分析** — "之前怎么分析过PLTR？"
+3. **框架方法参考** — 需要借鉴成功案例的结构/方法
+
+**标准流程**:
+```bash
+# 自动推荐最佳版本
+bash scripts/find_best_reference.sh {TICKER}
+
+# 验证质量等级 (≥400K优秀, 250K-400K良好, <250K谨慎)
+# 记录参考信息到Phase 0
+```
+
+**禁止**: 随意选择版本 | 参考staging文件 | 忽视质量验证 | 使用过时版本
+
+**详见**: `docs/ai_reference_protocol.md`
+
+---
+
+## 铁律 I: 知识前置 + 纵深防御门控
+
+**Tier 3分析启动的第一步，永远是** `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY}`。
+
+**单一入口流程**:
+1. **tier3_launch.sh** — 自动完成: 创建目录 + 复杂度估计(扫描同行业报告) + Phase -1知识检索 + 进化教训 + launch_brief生成
+2. **AI阅读 launch_brief.md** — 确认目标字符范围 + 参考报告 + 进化教训
+3. **Phase -0.5 文献侦察** — 5路WebSearch → `lit_recon_memo.md` (≥1000字符)
+4. **preflight_gate.sh** → **必须返回CLEARED**
+5. Phase 0 开始
+
+**纵深防御** (4层,每层重新验证前序):
+- Layer 0: tier3_launch.sh (Phase -1自动化)
+- Layer 1: preflight_gate.sh (Phase 0前硬阻断)
+- Layer 2: phase_sentinel.sh (每Phase后自动重检全部前序) ← **嵌入phase_complete.sh**
+- Layer 3: quality_gate_complete.sh (最终门控)
+
+**即使用户只说"分析XX"**: AI也必须先运行tier3_launch.sh。这不是文本规则,是代码强制——sentinel在Phase 1后会检测到缺失的知识文件并发出BLOCK。
+
+**禁止**: 跳过tier3_launch.sh直接开始Phase 0 | 忽略launch_brief中的目标字符范围 | 产出<launch_brief目标的50%却不停下来检查
+
+---
+
 ## 文档索引（按需加载）
 
 | 场景 | 核心文档 |
@@ -134,13 +218,24 @@
 | **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech,tech_platform}_deep.md` |
 | **期权估值** | `docs/optionality_valuation.md` (高期权公司: TSLA/PLTR/GOOGL/META等) |
 | **发现系统** | `docs/paradigm_research_framework.md` (可能性宽度≥7分: TSLA/PLTR等) |
+| **演绎分析** | `docs/deductive_analysis.md` (因果链推演+跨行业传导, 范式变革公司必读) |
+| **上下文架构** | `docs/context_architecture.md` (L0/L1/L2三层加载策略) |
 | **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
+| **研究记分卡** | `tests/research_scorecard.sh` (Pre/Post/Compare, 10维度×0-10分) |
 | **数据验证** | `tests/verify_data_sources.sh` (DM交叉验证) |
 | **Context恢复** | `docs/checkpoint_protocol.md` |
 | **并行Agent** | `docs/parallel_execution.md` |
 | **数据可信度** | `docs/confidence_system.md` v3.0 (DM锚定+脚本验证) |
-| **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) |
+| **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) + `/red-team-suite` + `/risk-topology` |
+| **分析深度** | `/assumption-audit`(信念反演+共识解构+约束分类) (v17.0) |
+| **DAG编排** | `docs/dag_orchestrator.md` (DAG-0~7问题树+EC绑定) |
+| **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
+| **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
+| **进化系统** | `docs/evolution_system.md` + `scripts/post_report_autopsy.sh` + `scripts/evolution_trend.sh` |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
+| **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
+| **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
+| **规划经验** | `knowledge/planning_archives/{TICKER}.md` (12份报告规划档案) |
 
 **完整索引**: 原CLAUDE.md第204-246行 → `docs/framework_index.md`
 
@@ -148,7 +243,5 @@
 
 ## 系统升级
 
-**最新版本**: v10.0 框架升级 (标注重构+红队+承重墙+CQ演化)
-**健康监控**: `bash tests/framework_health_check.sh`
-
-**v10.0升级(2026-02-12)**: 标注系统重构(内联→DM锚定+脚本验证) + Protocol Header + 承重墙脆弱度表 + 红队七问(RT-1~RT-7) + CG14方法离散度(WARN) + CQ置信度演化表 + AI能力边界声明 + 黑天鹅概率加权表 + 推断证伪条件 + 分析框架注册表
+**当前版本**: v17.0 (2026-02-17) | **健康监控**: `bash tests/framework_health_check.sh`
+**版本详情**: `CHANGELOG.md` + `memory/framework_evolution.md`

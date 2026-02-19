@@ -1,0 +1,469 @@
+{
+  "company": "Oracle Corporation (ORCL)",
+  "data_collection_date": "2026-02-17",
+  "currency": "USD",
+
+  "institutional_ownership_overview": {
+    "total_institutional_percentage": {
+      "value": 43.37,
+      "_dm": {
+        "id": "SMT-001",
+        "type": "H",
+        "source": "MarketBeat 2026 data",
+        "confidence": "high"
+      }
+    },
+    "insider_percentage": {
+      "value": 40.91,
+      "_dm": {
+        "id": "SMT-002",
+        "type": "H",
+        "source": "MarketBeat 2026 data",
+        "confidence": "high"
+      }
+    },
+    "retail_percentage": {
+      "value": 15.73,
+      "_dm": {
+        "id": "SMT-003",
+        "type": "H",
+        "source": "MarketBeat 2026 data",
+        "confidence": "high"
+      }
+    }
+  },
+
+  "top_institutional_holders": [
+    {
+      "institution": "Vanguard Group",
+      "shares": 168960000,
+      "percentage": 5.98,
+      "rank": 1,
+      "_dm": {
+        "id": "SMT-004",
+        "type": "H",
+        "source": "HedgeFollow/MarketBeat 2026",
+        "confidence": "high"
+      }
+    },
+    {
+      "institution": "BlackRock",
+      "shares": 139730000,
+      "percentage": 4.94,
+      "rank": 2,
+      "_dm": {
+        "id": "SMT-005",
+        "type": "H",
+        "source": "HedgeFollow/MarketBeat 2026",
+        "confidence": "high"
+      }
+    },
+    {
+      "institution": "BlackRock Funding, Inc. /DE",
+      "shares": 128600000,
+      "percentage": 4.67,
+      "rank": 3,
+      "_dm": {
+        "id": "SMT-006",
+        "type": "H",
+        "source": "HedgeFollow/MarketBeat 2026",
+        "confidence": "high"
+      }
+    },
+    {
+      "institution": "State Street Corp",
+      "shares": null,
+      "percentage": null,
+      "rank": 4,
+      "note": "Among top holders but specific figures not disclosed",
+      "_dm": {
+        "id": "SMT-007",
+        "type": "R",
+        "source": "Inferred from multiple source rankings",
+        "chain": "Listed consistently as top-4 holder across sources",
+        "falsifiable": "If State Street releases 13F showing no ORCL position",
+        "confidence": "medium"
+      }
+    }
+  ],
+
+  "hedge_fund_activity": {
+    "q3_2025_funds_holding": {
+      "value": 122,
+      "_dm": {
+        "id": "SMT-008",
+        "type": "H",
+        "source": "Hedge fund database tracking Q3 2025",
+        "confidence": "high"
+      }
+    },
+    "q2_2025_funds_holding": {
+      "value": 124,
+      "_dm": {
+        "id": "SMT-009",
+        "type": "H",
+        "source": "Hedge fund database tracking Q2 2025",
+        "confidence": "high"
+      }
+    },
+    "trend_direction": {
+      "value": "declining",
+      "_dm": {
+        "id": "SMT-010",
+        "type": "R",
+        "source": "Calculated from Q2 vs Q3 data",
+        "chain": "124 funds in Q2 → 122 funds in Q3 = -1.6% decline",
+        "falsifiable": "If Q4 2025 shows increase in fund count",
+        "confidence": "medium"
+      }
+    },
+    "q2_2025_total_value": {
+      "value": 270000000000,
+      "note": "Total value held by 3,558 hedge funds and institutions",
+      "_dm": {
+        "id": "SMT-011",
+        "type": "H",
+        "source": "Q2 2025 institutional holdings data",
+        "confidence": "high"
+      }
+    }
+  },
+
+  "notable_smart_money_positions": [
+    {
+      "institution": "Coatue Management",
+      "manager": "Philippe Laffont",
+      "action": "new_significant_position",
+      "shares": 3860000,
+      "value_usd": 843300000,
+      "date": "2025-06-30",
+      "additional_increase": 264000000,
+      "note": "Significant new stake showing confidence in Oracle's growth potential",
+      "_dm": {
+        "id": "SMT-012",
+        "type": "H",
+        "source": "GuruFocus and multiple 13F tracking sources",
+        "confidence": "high"
+      }
+    },
+    {
+      "institution": "Loomis Sayles Global Growth Fund",
+      "action": "hold_with_positive_commentary",
+      "commentary": "Highlighted in Q4 2025 investor letter as leader in enterprise software with strong market position in database, infrastructure, application software, and cloud services",
+      "date": "2025-Q4",
+      "_dm": {
+        "id": "SMT-013",
+        "type": "H",
+        "source": "Loomis Sayles Q4 2025 investor letter via InsiderMonkey",
+        "confidence": "high"
+      }
+    },
+    {
+      "institution": "Berkshire Hathaway",
+      "manager": "Warren Buffett/Greg Abel",
+      "action": "no_current_position",
+      "historical_transactions": 2,
+      "current_status": "exited",
+      "note": "Historical minimal involvement, no current position as of 2026",
+      "_dm": {
+        "id": "SMT-014",
+        "type": "H",
+        "source": "StockCircle Warren Buffett portfolio tracking",
+        "confidence": "high"
+      }
+    }
+  ],
+
+  "insider_activity_2026": {
+    "last_30_days": {
+      "sales_volume_shares": 35000,
+      "sales_value_usd": 6820000,
+      "purchases_volume_shares": 0,
+      "purchases_value_usd": 0,
+      "_dm": {
+        "id": "SMT-015",
+        "type": "H",
+        "source": "Yahoo Finance insider transactions data",
+        "confidence": "high"
+      }
+    },
+    "six_month_pattern": {
+      "total_transactions": 18,
+      "sales_count": 18,
+      "purchases_count": 0,
+      "net_sentiment": "bearish",
+      "_dm": {
+        "id": "SMT-016",
+        "type": "R",
+        "source": "Calculated from insider transaction data",
+        "chain": "18 sales + 0 purchases = 100% selling activity = bearish sentiment",
+        "falsifiable": "If significant insider purchases emerge",
+        "confidence": "high"
+      }
+    },
+    "notable_recent_sales": [
+      {
+        "insider": "Clayton M Magouyrk",
+        "title": "Chief Executive Officer",
+        "date": "2025-12-23",
+        "shares": 10000,
+        "price_per_share": 192.52,
+        "_dm": {
+          "id": "SMT-017",
+          "type": "H",
+          "source": "SEC Form 4 filings via Yahoo Finance",
+          "confidence": "high"
+        }
+      },
+      {
+        "insider": "Mark Hura",
+        "title": "President, Global Field Operations",
+        "date": "2025-12-29",
+        "shares": 20000,
+        "price_per_share": 196.89,
+        "_dm": {
+          "id": "SMT-018",
+          "type": "H",
+          "source": "SEC Form 4 filings via Yahoo Finance",
+          "confidence": "high"
+        }
+      }
+    ]
+  },
+
+  "institutional_activity_trends": {
+    "q2_2025_position_changes": {
+      "new_positions": 531,
+      "increased_positions": 1345,
+      "decreased_positions": 1266,
+      "closed_positions": 112,
+      "_dm": {
+        "id": "SMT-019",
+        "type": "H",
+        "source": "Q2 2025 institutional holdings activity data",
+        "confidence": "high"
+      }
+    },
+    "net_institutional_sentiment": {
+      "value": "mixed_to_neutral",
+      "_dm": {
+        "id": "SMT-020",
+        "type": "R",
+        "source": "Analysis of position change data",
+        "chain": "1876 positive actions (new+increase) vs 1378 negative actions (decrease+close) = net positive but balanced",
+        "falsifiable": "If analyzing by dollar value rather than transaction count shows different pattern",
+        "confidence": "medium"
+      }
+    }
+  },
+
+  "market_context": {
+    "stock_price_2026_02_13": {
+      "value": 160.14,
+      "_dm": {
+        "id": "SMT-021",
+        "type": "H",
+        "source": "Market data from multiple financial sources",
+        "confidence": "high"
+      }
+    },
+    "stock_price_2025_02_18": {
+      "value": 179.80,
+      "_dm": {
+        "id": "SMT-022",
+        "type": "H",
+        "source": "Historical market data",
+        "confidence": "high"
+      }
+    },
+    "year_over_year_performance": {
+      "value": -10.93,
+      "unit": "percent",
+      "_dm": {
+        "id": "SMT-023",
+        "type": "R",
+        "source": "Calculated from price data",
+        "chain": "(160.14 - 179.80) / 179.80 * 100 = -10.93%",
+        "falsifiable": "If price data points are incorrect",
+        "confidence": "high"
+      }
+    }
+  },
+
+  "dm_anchors": [
+    {
+      "id": "SMT-001",
+      "category": "institutional_ownership",
+      "data_point": "Total institutional percentage: 43.37%",
+      "type": "H",
+      "source": "MarketBeat 2026 data"
+    },
+    {
+      "id": "SMT-002",
+      "category": "ownership_structure",
+      "data_point": "Insider percentage: 40.91%",
+      "type": "H",
+      "source": "MarketBeat 2026 data"
+    },
+    {
+      "id": "SMT-003",
+      "category": "ownership_structure",
+      "data_point": "Retail percentage: 15.73%",
+      "type": "H",
+      "source": "MarketBeat 2026 data"
+    },
+    {
+      "id": "SMT-004",
+      "category": "top_holders",
+      "data_point": "Vanguard Group: 168.96M shares (5.98%)",
+      "type": "H",
+      "source": "HedgeFollow/MarketBeat 2026"
+    },
+    {
+      "id": "SMT-005",
+      "category": "top_holders",
+      "data_point": "BlackRock: 139.73M shares (4.94%)",
+      "type": "H",
+      "source": "HedgeFollow/MarketBeat 2026"
+    },
+    {
+      "id": "SMT-006",
+      "category": "top_holders",
+      "data_point": "BlackRock Funding: 128.6M shares (4.67%)",
+      "type": "H",
+      "source": "HedgeFollow/MarketBeat 2026"
+    },
+    {
+      "id": "SMT-007",
+      "category": "top_holders",
+      "data_point": "State Street Corp ranked #4 holder",
+      "type": "R",
+      "chain": "Consistently listed as top-4 across multiple sources"
+    },
+    {
+      "id": "SMT-008",
+      "category": "hedge_fund_activity",
+      "data_point": "122 hedge funds holding in Q3 2025",
+      "type": "H",
+      "source": "Hedge fund database tracking"
+    },
+    {
+      "id": "SMT-009",
+      "category": "hedge_fund_activity",
+      "data_point": "124 hedge funds holding in Q2 2025",
+      "type": "H",
+      "source": "Hedge fund database tracking"
+    },
+    {
+      "id": "SMT-010",
+      "category": "hedge_fund_trends",
+      "data_point": "Declining hedge fund participation trend",
+      "type": "R",
+      "chain": "124→122 funds = -1.6% decline Q2→Q3"
+    },
+    {
+      "id": "SMT-011",
+      "category": "institutional_value",
+      "data_point": "$270B total institutional value Q2 2025",
+      "type": "H",
+      "source": "Q2 2025 institutional holdings data"
+    },
+    {
+      "id": "SMT-012",
+      "category": "notable_positions",
+      "data_point": "Coatue Management: 3.86M shares ($843M)",
+      "type": "H",
+      "source": "GuruFocus and 13F tracking sources"
+    },
+    {
+      "id": "SMT-013",
+      "category": "fund_commentary",
+      "data_point": "Loomis Sayles positive Q4 2025 commentary",
+      "type": "H",
+      "source": "Loomis Sayles Q4 2025 investor letter"
+    },
+    {
+      "id": "SMT-014",
+      "category": "notable_positions",
+      "data_point": "Berkshire Hathaway: No current ORCL position",
+      "type": "H",
+      "source": "StockCircle Warren Buffett portfolio tracking"
+    },
+    {
+      "id": "SMT-015",
+      "category": "insider_activity",
+      "data_point": "Last 30 days: 35K shares sold, $6.82M value",
+      "type": "H",
+      "source": "Yahoo Finance insider transactions"
+    },
+    {
+      "id": "SMT-016",
+      "category": "insider_sentiment",
+      "data_point": "6-month pattern: 18 sales, 0 purchases",
+      "type": "R",
+      "chain": "100% selling activity indicates bearish insider sentiment"
+    },
+    {
+      "id": "SMT-017",
+      "category": "insider_transactions",
+      "data_point": "CEO Magouyrk sold 10K shares at $192.52",
+      "type": "H",
+      "source": "SEC Form 4 filings"
+    },
+    {
+      "id": "SMT-018",
+      "category": "insider_transactions",
+      "data_point": "Mark Hura sold 20K shares at $196.89",
+      "type": "H",
+      "source": "SEC Form 4 filings"
+    },
+    {
+      "id": "SMT-019",
+      "category": "institutional_flows",
+      "data_point": "Q2 2025: 531 new, 1345 increased, 1266 decreased, 112 closed positions",
+      "type": "H",
+      "source": "Q2 2025 institutional holdings activity"
+    },
+    {
+      "id": "SMT-020",
+      "category": "institutional_sentiment",
+      "data_point": "Mixed-to-neutral institutional sentiment",
+      "type": "R",
+      "chain": "1876 positive vs 1378 negative position changes"
+    },
+    {
+      "id": "SMT-021",
+      "category": "market_data",
+      "data_point": "Stock price Feb 13, 2026: $160.14",
+      "type": "H",
+      "source": "Multiple financial data sources"
+    },
+    {
+      "id": "SMT-022",
+      "category": "market_data",
+      "data_point": "Stock price Feb 18, 2025: $179.80",
+      "type": "H",
+      "source": "Historical market data"
+    },
+    {
+      "id": "SMT-023",
+      "category": "performance",
+      "data_point": "YoY performance: -10.93%",
+      "type": "R",
+      "chain": "(160.14-179.80)/179.80 * 100 calculation"
+    }
+  ],
+
+  "data_quality_notes": {
+    "collection_date": "2026-02-17",
+    "q4_2025_data_availability": "Limited - 13F filings typically disclosed within 45 days of quarter end",
+    "tiger_global_position": "Not found in available sources - may require direct 13F filing review",
+    "confidence_levels": {
+      "institutional_ownership_percentages": "high",
+      "top_holder_positions": "high",
+      "insider_activity": "high",
+      "hedge_fund_trends": "medium",
+      "sentiment_analysis": "medium"
+    }
+  }
+}

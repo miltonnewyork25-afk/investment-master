@@ -1,0 +1,33 @@
+upgrade_id: "v9.0-core-philosophy"
+date_proposed: "2026-02-11"
+author: "agent"
+
+hypothesis:
+  what: "扬长避短 — 定性评级替代数字评分，KS精选化，TS替代VP，禁止仓位建议"
+  improves_which_dimension: "报告诚实度、可操作性、AI能力边界清晰度"
+  current_baseline: "v8.0: 数字评分(X/100)、20+ VP、仓位建议、空泛预测"
+  expected_after: "零数字评分、零仓位建议、KS 10-15个、TS 5-8个"
+  could_regress: "报告可能感觉'不够具体'，用户习惯数字评分"
+
+success_criteria:
+  - "全文零仓位建议/加仓/减仓/持仓%"
+  - "评级使用四档定性(深度关注/关注/中性关注/审慎关注)"
+  - "KS每个有可观测阈值+论文含义(非'动作')"
+  - "TS通过特异性测试(替换公司名后不成立)"
+
+kill_condition:
+  - "用户反馈'不够具体无法决策'"
+  - "报告质量(CG通过率)下降"
+
+validation:
+  status: "VALIDATED"
+  first_report: "LRCX v2.0"
+  date_validated: "2026-02-11"
+  actual_results: "LRCX+AMD+TSLA全部落地v9.0。LRCX 470K/13CG、AMD 349K/13CG。零仓位建议。"
+  criteria_met:
+    - "全文零仓位建议 — LRCX/AMD/TSLA全部验证"
+    - "四档定性评级 — LRCX'中性关注'、TSLA'审慎关注'"
+    - "KS有阈值+论文含义 — LRCX 14个KS全部合规"
+    - "TS特异性测试 — 'LRCX CSBG>$1.8B'通过"
+  criteria_failed: []
+  honest_assessment: "v9.0是迄今最成功的升级。3份报告验证，全部13/13 CG。核心哲学'AI优势=深度理解现在'被彻底落地。"
