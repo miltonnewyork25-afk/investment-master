@@ -6,9 +6,9 @@ worktree: "半导体"
 industry: "半导体"
 last_updated: "2026-02-20T01:00:00+08:00"
 
-current_phase: 4
+current_phase: 5
 phase_status: complete
-phases_completed: [-1, -0.5, 0, 1, 2, 3, 4]
+phases_completed: [-1, -0.5, 0, 1, 2, 3, 4, 5]
 
 target_chars: 308840
 target_range: "247K-386K"
@@ -23,9 +23,9 @@ quick_ref:
     - "CSBG隐性价值(SaaS类重估)"
     - "刻蚀超线性(AI驱动)"
     - "信念反演(标准方法)"
-  dm_anchors: 261
+  dm_anchors: 322
   reference_report: AMAT
-  cq_weighted_confidence: 50.5
+  cq_weighted_confidence: 51.2
 
 phase_1_summary:
   agents: "3 agents completed (A-business/B-risk/C-valuation)"
@@ -113,6 +113,26 @@ phase_4_summary:
     - "CQ6 largest correction +6pp (28→34%): data quality + overlapping evidence + over-pessimism"
     - "Rating direction maintained: 审慎关注, but expected return revised from ~-15% to ~-11%"
     - "WACC sensitivity: ±100bps spans rating categories → P5 must present dual-anchor"
+
+phase_5_summary:
+  agents: "3 agents completed (A-synthesis_rating/B-ks_ts_calendar/C-valuation_cq)"
+  staging_files:
+    - "P5_A_synthesis_rating.md (43,176 chars, Ch25-Ch26)"
+    - "P5_B_ks_ts_calendar.md (50,007 chars, Ch27-Ch28)"
+    - "P5_C_valuation_cq.md (47,423 chars, Ch29-Ch30)"
+  total_chars: 140606
+  new_dm_anchors: 61
+  new_dm_breakdown: "SYN:22, KS:14, TS:7, EVAL:16, CQ:2"
+  mermaid_count: 10
+  key_findings:
+    - "Rating: 审慎关注, expected return -29.5% (P5_C recalculated from P4 -11%)"
+    - "CQ weighted confidence 51.2% (from P4 50.5%, +0.7pp)"
+    - "5-method valuation: M1 $232B / M2 $173B / M3 $302B / M4 $200-236B / M5 $173-191B"
+    - "Method dispersion 1.34x (effective ~3.5 methods after independence audit)"
+    - "14 kill switches covering all 6 CQs; 3 red / 4 yellow / 4 green tracking signals"
+    - "WACC sensitivity: 8.0%(+19%) to 11.0%(-27%), rating flip needs WACC<9.0%"
+    - "Asymmetry ratio 1:3.8 (upside +4.1% vs downside -15.5%)"
+    - "Thesis validity 12-18 months; 4 invalidation conditions (any 2 = invalidate)"
 
 phase_0_summary:
   mcp_data: "12 endpoints collected (income/balance/cashflow/ratios/metrics/estimates/dcf/stock/compare/market)"
