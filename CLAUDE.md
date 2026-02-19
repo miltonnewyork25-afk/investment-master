@@ -40,6 +40,10 @@
 - PW≥7(发现系统)不强制单一评级, 但需给条件评级
 - **禁止**: 5档体系混入Tier 3 | "买入/卖出/推荐"等用语
 
+**分析方法论核心**:
+- **逆向估值优先** — Reverse DCF翻译"市场在赌什么"，而非正向DCF算"值多少钱"。先反推隐含假设，再评估假设合理性。详见 `/assumption-audit` M1信念反演
+- **演绎+归纳双轨** — 成熟业务用归纳(历史→外推)，范式变革用演绎(因果链→跨行业传导→二阶效应)。禁止对AI/自动驾驶等未来业务仅用类比。详见 `docs/deductive_analysis.md`
+
 ---
 
 ## 行业路由
@@ -190,6 +194,8 @@ bash scripts/find_best_reference.sh {TICKER}
 | **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech,tech_platform}_deep.md` |
 | **期权估值** | `docs/optionality_valuation.md` (高期权公司: TSLA/PLTR/GOOGL/META等) |
 | **发现系统** | `docs/paradigm_research_framework.md` (可能性宽度≥7分: TSLA/PLTR等) |
+| **演绎分析** | `docs/deductive_analysis.md` (因果链推演+跨行业传导, 范式变革公司必读) |
+| **上下文架构** | `docs/context_architecture.md` (L0/L1/L2三层加载策略) |
 | **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
 | **研究记分卡** | `tests/research_scorecard.sh` (Pre/Post/Compare, 10维度×0-10分) |
 | **数据验证** | `tests/verify_data_sources.sh` (DM交叉验证) |
