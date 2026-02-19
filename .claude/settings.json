@@ -3,5 +3,29 @@
     "allow": ["Bash", "Edit", "Write", "Read", "WebSearch", "WebFetch"],
     "deny": []
   },
-  "model": "claude-sonnet-4-20250514"
+  "model": "claude-sonnet-4-20250514",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "检查md文件中的断链引用",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in *.md) grep -oE '`(docs/[^`]+|[A-Z]+\\.md|\\.claude/skills/[^`]+)`' \"$FP\" 2>/dev/null | tr -d '`' | while read ref; do [ ! -f \"$ref\" ] && echo \"WARNING: 断链引用 $ref 在 $FP 中\" || true; done || true ;; esac; true"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "简化版本：只检查基本路径规则",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in */reports/*.md) case \"$FP\" in */reports/*/[A-Z]*) echo \"✓ 报告路径正确: $FP\" ;; *) echo \"WARNING: 铁律E违反 — 报告应放入 reports/{TICKER}/ 子目录\" ;; esac || true ;; esac; true"
+          }
+        ]
+      }
+    ]
+  }
 }

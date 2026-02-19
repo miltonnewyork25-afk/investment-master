@@ -1,0 +1,185 @@
+# AMZN Analysis Checkpoint — v17.0 Framework
+# Generated: 2026-02-18
+
+ticker: AMZN
+company: Amazon.com Inc
+industry: 科技平台
+worktree: 生态科技
+framework_version: v17.0
+price_at_start: 201.15
+market_cap_at_start: 2159B
+shares_outstanding: 10.73B
+
+# Possibility Width Assessment
+possibility_width:
+  business_model_uncertainty: 3  # 成熟多分部,三大引擎明确
+  revenue_predictability: 3      # AWS订阅+零售重复购买+广告
+  competitive_dynamics: 5        # AWS份额下滑,Temu/Shein冲击
+  regulatory_exposure: 5         # FTC垄断案Oct 2026,tariffs
+  technology_disruption: 5       # AI CapEx回报不确定,但可管理
+  total: 4.2
+  framework_type: 混合模式       # 4-6分→传统估值+可能性附录
+
+# Rating Standard (v15.0)
+rating_standard:
+  deep_attention: ">+30%"        # 深度关注
+  attention: "+10%~+30%"         # 关注
+  neutral: "-10%~+10%"           # 中性关注
+  cautious: "<-10%"              # 审慎关注
+
+# Mega-cap Framing (v16.0 valuation-quality-gate)
+megacap_framing:
+  applies: true                  # Market Cap > $500B
+  approach: "什么条件下变便宜/贵"
+  wacc_dual_anchor: true         # 必须双锚(8.5%+9.5%)
+  sensitivity_matrix: true       # WACC×Growth敏感性必须
+
+# Phase Tracking
+phases:
+  phase_minus_1:
+    status: complete
+    date: 2026-02-18
+    output: reports/AMZN/data/knowledge_context.md
+    most_similar: GOOGL(5)/MSFT(4)
+  phase_minus_0.5:
+    status: complete
+    date: 2026-02-18
+    output: reports/AMZN/data/lit_recon_memo.md
+    agents: 5/5 complete
+    key_finding: "CapEx $200B是承重墙#1; AWS份额下滑但绝对收入+$21B; 估值极端分歧$181-$450"
+  phase_0:
+    status: complete
+    date: 2026-02-18
+    output: data/research/AMZN/shared_context.md
+    dm_anchors: 41
+    h_ratio: 80%
+  phase_1:
+    status: complete
+    date: 2026-02-18
+    agent: A (商业洞察分析师)
+    target_chapters: "Ch01-Ch08"
+    focus: "三引擎商业模型+护城河+CapEx传导链"
+    output_files: "S01-S08 (8 files, ~78K chars, 121 DM anchors, 12 Mermaid)"
+    commit: "20ba8c1"
+  phase_2:
+    status: complete
+    date: 2026-02-18
+    agent: B (独立风险审计员)
+    target_chapters: "Ch09-Ch12"
+    focus: "AWS份额侵蚀+CapEx黑洞+Temu竞争+FTC监管"
+    output_files: "S09-S12 (4 files, ~39K chars, 76 DM anchors, 5 Mermaid)"
+    commit: "45e3ebe"
+    key_findings: "温水煮青蛙>完美风暴; FTC分拆悖论; R1-R2-R4不可能三角"
+  phase_3:
+    status: complete
+    date: 2026-02-18
+    agent: C (定量估值分析师)
+    target_chapters: "Ch13-Ch18"
+    focus: "Reverse DCF→SOTP→条件估值+巨头估值框架"
+    output_files: "S13-S18 (6 files, ~71K chars, 94 DM anchors, 6 Mermaid)"
+    commit: "5469799"
+    key_findings: "概率加权EV $2,405B; 期望回报+11.4%; 关注(弱); WACC 100bps=$390B差异"
+  phase_4:
+    status: complete
+    date: 2026-02-18
+    skill: red-team-suite v2.0
+    focus: "CapEx ROIC承重墙+AWS份额信念反演+双向校准"
+    output_files: "S19 (24.9K chars, 16 DM anchors, 5 Mermaid)"
+    commit: "3d8e8f2"
+    key_findings: "评级下调+11.4%→+9.1%; BW#7 D&A peak; 5/6偏差; 论文有效期6-12月"
+    calibrated_return: "+9.1% (中性关注)"
+  phase_5:
+    status: complete
+    date: 2026-02-18
+    focus: "综合评级+AI能力边界声明+方法离散度"
+    output_files: "S20-S22 (3 files, ~21K chars, 20 DM anchors, 2 Mermaid)"
+    commit: "aedb429"
+    final_rating: "中性关注(条件性) +9.1%"
+    cq_weighted_confidence: "52.45%"
+
+# Core Questions (CQ)
+cq_registry:
+  CQ1:
+    question: "AWS的CapEx投资($200B/年)能否产生>WACC的ROIC?"
+    type: 结构性
+    initial_confidence: null
+    weight: 25%
+  CQ2:
+    question: "AWS市占率下滑趋势(33%→29%)是否会持续到<25%?"
+    type: 周期性
+    initial_confidence: null
+    weight: 20%
+  CQ3:
+    question: "零售业务能否在Temu/Shein竞争下维持>5%运营利润率?"
+    type: 结构性
+    initial_confidence: null
+    weight: 15%
+  CQ4:
+    question: "广告业务($85B年化)能否成为第二利润支柱(利润率>50%)?"
+    type: 周期性
+    initial_confidence: null
+    weight: 15%
+  CQ5:
+    question: "FTC垄断案(Oct 2026)对业务分拆的实质风险有多大?"
+    type: 制度性
+    initial_confidence: null
+    weight: 10%
+  CQ6:
+    question: "$200B CapEx指引是否会导致2026年FCF为负?"
+    type: 结构性
+    initial_confidence: null
+    weight: 10%
+  CQ7:
+    question: "GenAI变现(Bedrock/自定义芯片/Rufus)的商业化时间表是否可信?"
+    type: 周期性
+    initial_confidence: null
+    weight: 5%
+
+# Quality Targets
+quality_targets:
+  total_chars: "250K-300K"       # KLAC密度优先
+  dm_anchors: "≥150"
+  mermaid_diagrams: "≥25"
+  cg_pass: "18/18"
+  target_quality: "≥4.0/5"
+  max_pe_mentions: 45
+  max_price_mentions: 35
+
+# Key References
+references:
+  - GOOGL: "SOTP多方法收敛+TAM Ceiling"
+  - MSFT: "CapEx传导链+巨头估值WACC双锚"
+  - KLAC: "密度>体量+Reverse DCF信念反演"
+
+# Chapter Plan (混合模式 ~22章)
+chapter_plan:
+  # Phase 1 (Agent A)
+  Ch01: "执行摘要与评级"
+  Ch02: "财务全景(三表+CapEx轨迹)"
+  Ch03: "三引擎商业模型(AWS+零售+广告)"
+  Ch04: "AWS深度(竞争力+AI+自定义芯片)"
+  Ch05: "护城河评估(7维度)"
+  Ch06: "管理层评估+资本配置"
+  Ch07: "CapEx传导链($200B→ROIC路径)"
+  Ch08: "增长驱动力与天花板"
+  # Phase 2 (Agent B)
+  Ch09: "AWS份额侵蚀风险矩阵"
+  Ch10: "零售竞争力(Temu/Shein/沃尔玛)"
+  Ch11: "监管与政策风险(FTC+关税+de minimis)"
+  Ch12: "风险拓扑与协同效应"
+  # Phase 3 (Agent C)
+  Ch13: "市场共识解构"
+  Ch14: "Reverse DCF→隐含信念集"
+  Ch15: "SOTP估值(AWS+零售+广告)"
+  Ch16: "条件估值框架(四档情景)"
+  Ch17: "巨头估值框架(WACC双锚)"
+  Ch18: "方法离散度与不确定性量化"
+  # Phase 4 (红队)
+  Ch19: "承重墙脆弱度表(RT-1)"
+  Ch20: "认知偏差审计+空头钢人(RT-2~RT-3)"
+  Ch21: "黑天鹅+时间框架+替代解释(RT-5~RT-7)"
+  Ch22: "CQ校准与有效性门控"
+  # Phase 5 (综合)
+  Ch23: "最终评级与条件声明"
+  Ch24: "AI能力边界声明"
+  Ch25: "可能性附录(混合模式)"
