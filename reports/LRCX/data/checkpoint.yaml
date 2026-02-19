@@ -1,0 +1,41 @@
+schema_version: "2.0"
+ticker: LRCX
+company: "Lam Research Corporation"
+framework_version: v17.0
+worktree: "半导体"
+industry: "半导体"
+last_updated: "2026-02-19T17:30:00+08:00"
+
+current_phase: 0
+phase_status: complete
+phases_completed: [-1, -0.5, 0]
+
+target_chars: 308840
+target_range: "247K-386K"
+hard_floor: 200000
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
+  pw_score: 3
+  framework: traditional
+  killer_insight_candidates:
+    - "CSBG隐性价值(SaaS类重估)"
+    - "刻蚀超线性(AI驱动)"
+    - "信念反演(标准方法)"
+  dm_anchors: 73
+  reference_report: AMAT
+
+phase_0_summary:
+  mcp_data: "12 endpoints collected (income/balance/cashflow/ratios/metrics/estimates/dcf/stock/compare/market)"
+  websearch_agents: "7 agents completed (A-G)"
+  data_files: "13 files updated (Feb 19)"
+  shared_context: "v4.0 DM format, 73 anchors (H:56/R:11/S:6)"
+  key_findings:
+    - "FY2025 Rev $18.44B, NI $5.36B, FCF $5.41B — record year"
+    - "Q2 FY2026 beat: Rev $5.34B vs $5.23B, EPS $1.27 vs $1.17"
+    - "TTM P/E 49.3x — top of historical range (13.7x-49.3x)"
+    - "CSBG 100K+ chambers, $7.2B, rev growth > base growth"
+    - "China export impact ~$600M manageable, but risk of expansion"
+    - "Etch share 45% #1, NAND channel 100% (TEL challenging)"
+    - "Strong Buy 24/3/0, avg PT $274 (+14% upside)"

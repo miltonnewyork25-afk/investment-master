@@ -1,0 +1,148 @@
+{
+  "ticker": "LRCX",
+  "company": "Lam Research Corporation",
+  "data_date": "2026-02-19",
+  "agent": "G_options_short",
+
+  "short_interest": {
+    "shares_short": 31240000,
+    "short_pct_float": "2.8%",
+    "report_date": "2026-02-09",
+    "days_to_cover": 2.12,
+    "trend": "Short interest as % of float has fallen 5.08% since last report",
+    "peer_comparison": {
+      "peer_avg_short_pct": "8.50%",
+      "interpretation": "LRCX has significantly less short interest than peer group average"
+    }
+  },
+
+  "short_squeeze_potential": {
+    "assessment": "LOW",
+    "rationale": "Short interest at 2.8% of float is well below peer average of 8.5%. Days to cover at 2.12 is very low. Stock near all-time highs ($251.87 ATH on Jan 30, 2026 vs current $240.09). No significant short squeeze catalyst evident.",
+    "ath_date": "2026-01-30",
+    "ath_price": "$251.87",
+    "current_price": "$240.09"
+  },
+
+  "options_put_call_ratio": {
+    "put_call_ratio_180d_oi": 1.0734,
+    "put_call_ratio_5d_change": "-11.6%",
+    "put_call_ratio_5d_current": 1.4,
+    "interpretation": "Put/call ratio >1.0 indicates moderately bearish options positioning. The 180-day OI ratio of 1.07 is roughly neutral, while the recent 5-day ratio of 1.4 suggests increased protective put buying.",
+    "note": "A ratio above 1.0 = more puts than calls outstanding. Peer benchmark: ratios >1.0 generally considered bearish leaning."
+  },
+
+  "unusual_options_activity": {
+    "date": "2026-02-03",
+    "scanner": "Benzinga Options Scanner",
+    "total_unusual_trades": 11,
+    "sentiment_split": {
+      "bullish_pct": "45%",
+      "bearish_pct": "36%",
+      "neutral_pct": "19%"
+    },
+    "breakdown": {
+      "puts": { "count": 5, "total_value": "$221,998" },
+      "calls": { "count": 6, "total_value": "$250,847" }
+    },
+    "price_range_target": "$80.0 - $245.0 over 3 months",
+    "notable_trades": [
+      {
+        "description": "25,000-contract March 2026 put roll",
+        "details": "Buy-to-open $170 put + simultaneous sale of $160 put, absorbing nearly all existing open interest at the $160 strike",
+        "timing": "Late December 2025",
+        "interpretation": "Large institutional hedging position; establishing downside protection corridor at $160-$170"
+      }
+    ]
+  },
+
+  "options_new_contracts_feb2026": {
+    "notable_call": {
+      "strike": "$177.50",
+      "current_bid": "$10.05",
+      "note": "February 2026 expiry"
+    }
+  },
+
+  "implied_volatility": {
+    "description": "IV represents forward-looking market expectation of price movement. For LRCX, IV is derived from nearest monthly options 30+ days out.",
+    "assessment": "Specific real-time IV vs HV comparison requires live data access. Based on options activity patterns: moderate IV environment consistent with semiconductor sector. The 25,000-contract put roll suggests some institutional participants pricing in elevated near-term risk.",
+    "beta": 1.776,
+    "note": "LRCX beta of 1.776 implies higher-than-market volatility historically; options pricing reflects this elevated beta."
+  },
+
+  "valuation_risk_flags_from_options": {
+    "risk_assessment": "MODERATE",
+    "flags": [
+      "Put/call ratio >1.0 suggests slight bearish lean in options market",
+      "Large 25K-contract put spread roll ($160-$170) indicates institutional hedging",
+      "Options activity flagging 2026 risks per Barchart analysis",
+      "Short interest low (2.8%) and declining - no crowded short thesis"
+    ],
+    "bullish_signals": [
+      "Short interest well below peer average (2.8% vs 8.5%)",
+      "Stock near ATH with strong uptrend",
+      "45% bullish vs 36% bearish unusual options sentiment",
+      "Days to cover very low at 2.12"
+    ]
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-G01",
+      "field": "short_interest",
+      "source": "Benzinga / MarketBeat",
+      "confidence": "HIGH",
+      "url": "https://www.benzinga.com/insights/short-sellers/26/02/50478476/looking-into-lam-research-corps-recent-short-interest"
+    },
+    {
+      "id": "DM-G02",
+      "field": "short_interest.peer_comparison",
+      "source": "Benzinga Pro",
+      "confidence": "HIGH",
+      "url": "https://www.benzinga.com/insights/short-sellers/26/02/50478476/looking-into-lam-research-corps-recent-short-interest"
+    },
+    {
+      "id": "DM-G03",
+      "field": "options_put_call_ratio",
+      "source": "AlphaQuery / Barchart",
+      "confidence": "HIGH",
+      "url": "https://www.alphaquery.com/stock/LRCX/volatility-option-statistics/180-day/put-call-ratio-oi"
+    },
+    {
+      "id": "DM-G04",
+      "field": "unusual_options_activity",
+      "source": "Benzinga Options Scanner",
+      "confidence": "HIGH",
+      "url": "https://www.benzinga.com/insights/options/26/02/50335933/lam-research-unusual-options-activity-for-february-03"
+    },
+    {
+      "id": "DM-G05",
+      "field": "unusual_options_activity.notable_trades",
+      "source": "Barchart / Yahoo Finance",
+      "confidence": "HIGH",
+      "url": "https://www.barchart.com/story/news/36864672/lrcx-outperformed-in-2025-but-valuation-and-options-activity-flag-2026-risks"
+    },
+    {
+      "id": "DM-G06",
+      "field": "short_squeeze_potential",
+      "source": "Fintel / MarketBeat / Nasdaq",
+      "confidence": "MEDIUM",
+      "url": "https://fintel.io/ss/us/lrcx"
+    },
+    {
+      "id": "DM-G07",
+      "field": "implied_volatility.beta",
+      "source": "FMP profile API",
+      "confidence": "HIGH",
+      "url": "https://financialmodelingprep.com"
+    },
+    {
+      "id": "DM-G08",
+      "field": "options_new_contracts_feb2026",
+      "source": "Nasdaq / Stock Options Channel",
+      "confidence": "MEDIUM",
+      "url": "https://www.nasdaq.com/articles/february-2026-options-now-available-lam-research-lrcx"
+    }
+  ]
+}

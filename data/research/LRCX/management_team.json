@@ -1,0 +1,186 @@
+{
+  "ticker": "LRCX",
+  "company": "Lam Research Corporation",
+  "data_date": "2026-02-19",
+  "agent": "E_management",
+
+  "ceo": {
+    "name": "Timothy M. Archer",
+    "title": "President and Chief Executive Officer",
+    "tenure_start": "2018-12",
+    "joined_company": "2012-06",
+    "background": "Joined Lam via Novellus Systems acquisition in 2012. 18-year tenure at Novellus prior, serving as COO and various leadership roles including EVP of PECVD and Electrofill Business Units, VP of Worldwide Sales/Marketing/Customer Satisfaction, and Senior Director of Technology for Novellus Systems Japan. Started career at Tektronix in 1989 developing processes for high-speed bipolar ICs.",
+    "education": "B.S. Applied Physics from California Institute of Technology (Caltech); Program for Management Development at Harvard Graduate School of Business",
+    "track_record": "During CEO tenure, drove revenue growth >50% and EPS increase >85%.",
+    "other_roles": "Board of Directors member at Johnson Controls International since 2024",
+    "prior_roles_at_lam": [
+      "EVP & COO (Jan 2018 - Nov 2018)",
+      "EVP & COO (joined Jun 2012)"
+    ]
+  },
+
+  "cfo": {
+    "name": "Douglas R. Bettinger",
+    "title": "Executive Vice President and Chief Financial Officer",
+    "joined_company": "2013",
+    "background": "Prior to Lam: SVP & CFO of Avago Technologies Ltd. Also held executive finance positions at Xilinx, 24/7 Customer, and Intel Corp.",
+    "education": "MBA in Finance from University of Michigan; B.S. Economics from University of Wisconsin-Madison",
+    "responsibilities": "Finance, tax, treasury, investor relations, corporate analytics",
+    "compensation_fy2025": "$8.59M total"
+  },
+
+  "leadership_transitions_2026": {
+    "announcement_date": "2026-02-03",
+    "headline": "Leadership Transitions to Increase Company Velocity for the AI Era",
+    "changes": [
+      {
+        "name": "Sesha Varadarajan",
+        "new_role": "Chief Operating Officer (COO)",
+        "effective_date": "2026-03-06",
+        "note": "Succeeds Pat Lord. With Lam since 1999. Previously SVP Global Products Group. Will maintain oversight of global product portfolio and add customer support business group, corporate strategy, and government affairs.",
+        "compensation_fy2025": "$7.18M total"
+      },
+      {
+        "name": "Pat Lord",
+        "status": "Retiring",
+        "previous_role": "EVP & COO",
+        "note": "Career spanning 20+ years with Lam and Novellus",
+        "compensation_fy2025": "$7.14M total"
+      },
+      {
+        "name": "Karthik Rammohan",
+        "new_role": "SVP, Global Operations and Enterprise Solutions",
+        "note": "Expanded role: maintains leadership of global manufacturing and supply chain, adds oversight of IT systems, quality, and facilities"
+      }
+    ],
+    "strategic_rationale": "Per CEO Tim Archer: newly expanded roles designed to increase velocity across operations 'from product innovation and manufacturing to installation and maintenance to drive Lam's outperformance in the AI era'"
+  },
+
+  "board_of_directors": {
+    "chair": "Abhijit Talwalkar",
+    "recent_appointment": {
+      "name": "Dr. Anirudh Devgan",
+      "current_role": "President & CEO of Cadence Design Systems",
+      "appointed": "2026-02-03",
+      "expertise": "EDA and virtualization, deep semiconductor ecosystem knowledge"
+    },
+    "committee_structure": [
+      "Nominating and Governance Committee: overall strategy, sustainability, climate goals, political activities",
+      "Compensation and Human Resources Committee: workforce, human capital management",
+      "Audit Committee: Ethics & Compliance, Information Security"
+    ]
+  },
+
+  "executive_compensation_fy2025": {
+    "source": "Proxy DEF 14A",
+    "named_executive_officers": [
+      { "name": "Timothy M. Archer", "title": "President & CEO", "total_comp": "$28.30M" },
+      { "name": "Ava A. Harter", "title": "SVP, Chief Legal Officer & Secretary", "total_comp": "$10.59M" },
+      { "name": "Douglas R. Bettinger", "title": "EVP & CFO", "total_comp": "$8.59M" },
+      { "name": "Seshasayee (Sesha) Varadarajan", "title": "SVP, Global Products Group", "total_comp": "$7.18M" },
+      { "name": "Patrick J. Lord", "title": "EVP & COO", "total_comp": "$7.14M" }
+    ]
+  },
+
+  "insider_ownership": {
+    "insider_ownership_pct": "~0.3%",
+    "note": "Relatively modest insider ownership given the ~$300B market cap"
+  },
+
+  "insider_trading_activity": {
+    "q1_2026": {
+      "acquired_transactions": 7,
+      "disposed_transactions": 7,
+      "total_acquired_shares": 546105,
+      "total_disposed_shares": 364070,
+      "total_open_market_purchases": 0,
+      "total_open_market_sales": 0,
+      "note": "Acquisitions likely from equity comp vesting; disposals include Eric Brandt selling 35,000 shares ($7.90M) on Feb 9 and 18,000 shares ($4.14M) on Feb 6, 2026"
+    },
+    "q4_2025": {
+      "acquired_transactions": 14,
+      "disposed_transactions": 12,
+      "total_acquired_shares": 140232,
+      "total_disposed_shares": 340454,
+      "total_open_market_sales": 7,
+      "note": "Dec 17, 2025: 4 insider transactions totaling $28.76M, including 2 stock sales worth $26.76M and 2 conversions totaling $2.00M"
+    },
+    "pattern": "Consistent net selling pattern; zero open-market purchases in recent years. All acquisitions from equity compensation vesting."
+  },
+
+  "company_basics": {
+    "headquarters": "Fremont, California",
+    "employees": 18600,
+    "founded": 1980,
+    "ipo_date": "1984-05-04",
+    "market_cap": "$299.8B",
+    "stock_price": "$240.09",
+    "52w_range": "$56.32 - $251.87"
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-E01",
+      "field": "ceo.track_record",
+      "source": "SEMI ISS 2022 Bio / lamresearch.com",
+      "confidence": "HIGH",
+      "url": "https://www.semi.org/en/connect/events/industry-strategy-symposium-iss/2022-bio-tim-archer"
+    },
+    {
+      "id": "DM-E02",
+      "field": "cfo.background",
+      "source": "Bloomberg / clay.com",
+      "confidence": "HIGH",
+      "url": "https://www.bloomberg.com/profile/person/16159085"
+    },
+    {
+      "id": "DM-E03",
+      "field": "leadership_transitions_2026",
+      "source": "Lam Research Press Release 2026-02-03",
+      "confidence": "HIGH",
+      "url": "https://newsroom.lamresearch.com/2026-02-03-Lam-Research-Announces-Leadership-Transitions-to-Increase-Company-Velocity-for-the-AI-era"
+    },
+    {
+      "id": "DM-E04",
+      "field": "board_of_directors.recent_appointment",
+      "source": "Lam Research Press Release 2026-02-03",
+      "confidence": "HIGH",
+      "url": "https://newsroom.lamresearch.com/2026-02-03-Lam-Research-Appoints-Cadence-CEO-Anirudh-Devgan-to-Board-of-Directors"
+    },
+    {
+      "id": "DM-E05",
+      "field": "executive_compensation_fy2025",
+      "source": "salary.com / SEC DEF 14A",
+      "confidence": "HIGH",
+      "url": "https://www.salary.com/research/executive-compensation/lam-research-corp-executive-salary"
+    },
+    {
+      "id": "DM-E06",
+      "field": "insider_ownership",
+      "source": "Simply Wall St / GuruFocus",
+      "confidence": "MEDIUM",
+      "url": "https://simplywall.st/stocks/us/semiconductors/nasdaq-lrcx/lam-research/ownership"
+    },
+    {
+      "id": "DM-E07",
+      "field": "insider_trading_activity",
+      "source": "FMP insider-trading API + Benzinga / MarketBeat",
+      "confidence": "HIGH",
+      "url": "https://www.marketbeat.com/stocks/NASDAQ/LRCX/insider-trades/"
+    },
+    {
+      "id": "DM-E08",
+      "field": "insider_trading_activity.q1_2026.eric_brandt_sales",
+      "source": "Defense World / QuiverQuant / TipRanks",
+      "confidence": "HIGH",
+      "url": "https://www.defenseworld.net/2026/02/11/lam-research-nasdaqlrcx-shares-down-1-2-following-insider-selling.html"
+    },
+    {
+      "id": "DM-E09",
+      "field": "company_basics",
+      "source": "FMP profile API",
+      "confidence": "HIGH",
+      "url": "https://financialmodelingprep.com"
+    }
+  ]
+}

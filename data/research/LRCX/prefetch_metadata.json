@@ -1,0 +1,59 @@
+{
+  "version": "4.0",
+  "ticker": "LRCX",
+  "company": "Lam Research Corporation",
+  "industry": "Semiconductor Equipment",
+  "timestamp": "2026-02-19T17:30:00+08:00",
+  "data_files": {
+    "stock_full": {"status": "ok", "source": "MCP:analyze_stock", "fetched_at": "2026-02-19T17:20:00", "note": "inline MCP call, not saved to separate file"},
+    "peer_comparison": {"status": "stale", "source": "MCP:compare_stocks", "fetched_at": "2026-02-07", "note": "old file; fresh compare_stocks data in shared_context via inline MCP"},
+    "market_context": {"status": "ok", "source": "MCP:get_market_overview", "fetched_at": "2026-02-19T17:25:00"},
+    "analyst_consensus": {"status": "ok", "source": "WebSearch:Agent-A", "fetched_at": "2026-02-19T17:14:00"},
+    "prediction_market": {"status": "ok", "source": "WebSearch:Agent-B", "fetched_at": "2026-02-19T17:11:00"},
+    "recent_news": {"status": "ok", "source": "WebSearch:Agent-C", "fetched_at": "2026-02-19T17:11:00"},
+    "business_overview": {"status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-02-19T17:08:00"},
+    "competitive_landscape": {"status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-02-19T17:10:00"},
+    "management_team": {"status": "ok", "source": "WebSearch:Agent-E", "fetched_at": "2026-02-19T17:07:00"},
+    "smart_money_13f": {"status": "ok", "source": "WebSearch:Agent-F", "fetched_at": "2026-02-19T17:08:00"},
+    "options_short_interest": {"status": "ok", "source": "WebSearch:Agent-G", "fetched_at": "2026-02-19T17:08:00"},
+    "dm_anchor_registry": {"status": "ok", "source": "prefetch:aggregator", "fetched_at": "2026-02-19T17:30:00"},
+    "shared_context": {"status": "ok", "source": "prefetch:compiler", "fetched_at": "2026-02-19T17:30:00"}
+  },
+  "quality": {
+    "files_ok": 12,
+    "files_stale": 1,
+    "files_error": 0,
+    "files_total": 13,
+    "completeness_pct": 92.3
+  },
+  "dm_quality": {
+    "total_anchors": 73,
+    "h_count": 56,
+    "r_count": 11,
+    "s_count": 6,
+    "h_pct": 76.7,
+    "anchors_with_source": 73,
+    "r_with_chain": 11,
+    "r_with_falsifiable": 11,
+    "integrity_check": "passed"
+  },
+  "layer_status": {
+    "layer1_mcp": "ok",
+    "layer2_python": "skipped",
+    "layer3_websearch": "ok"
+  },
+  "mcp_data_collected": {
+    "baggers_summary": "inline (prior session)",
+    "fmp_data_income_annual": "ok (5 years FY2021-FY2025)",
+    "fmp_data_income_quarterly": "ok (6 quarters Q1FY25-Q2FY26)",
+    "fmp_data_balance_annual": "ok (5 years)",
+    "fmp_data_cashflow_annual": "ok (5 years)",
+    "fmp_data_key_metrics": "ok (5 years)",
+    "fmp_data_ratios": "ok (5 years)",
+    "fmp_data_estimates": "ok (FY2026-FY2029)",
+    "fmp_data_dcf": "ok ($52.49)",
+    "analyze_stock_full": "ok",
+    "compare_stocks": "ok (LRCX vs AMAT/KLAC/ASML/TEL/SPY)",
+    "get_market_overview": "ok"
+  }
+}

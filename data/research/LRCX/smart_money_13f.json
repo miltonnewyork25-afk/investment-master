@@ -1,0 +1,215 @@
+{
+  "ticker": "LRCX",
+  "company": "Lam Research Corporation",
+  "data_date": "2026-02-19",
+  "agent": "F_smart_money",
+
+  "institutional_ownership": {
+    "institutional_ownership_pct": "~84.7%",
+    "range_recent": "80-86%",
+    "insider_ownership_pct": "~0.3%",
+    "note": "Consistently high institutional ownership; in top 30% of all stocks"
+  },
+
+  "top_institutional_holders": [
+    {
+      "name": "BlackRock",
+      "ownership_pct": "~9.8%",
+      "note": "Largest single institutional holder"
+    },
+    {
+      "name": "The Vanguard Group",
+      "ownership_pct": "~9.5%",
+      "shares": 130974214,
+      "value_est": "$17.5B"
+    },
+    {
+      "name": "State Street Global Advisors",
+      "ownership_pct": "~4.6%"
+    },
+    {
+      "name": "Truist Financial Corp",
+      "value": "$224.5M",
+      "note": "Raised stake by 119.6% in Q3 2025"
+    },
+    {
+      "name": "Penserra Capital Management LLC",
+      "shares": 353460,
+      "value": "$47.3M"
+    },
+    {
+      "name": "Cincinnati Insurance Co",
+      "value": "$426.6M",
+      "note": "NEW position opened Q4 2025"
+    },
+    {
+      "name": "Cincinnati Financial Corp",
+      "value": "$47.5M",
+      "note": "NEW position opened Q4 2025"
+    },
+    {
+      "name": "Jones Financial Companies LLLP",
+      "shares": 85277,
+      "value": "$10.9M",
+      "note": "Acquired 27,223 shares recently"
+    },
+    {
+      "name": "Rothschild Investment LLC",
+      "note": "Raised stake as of Feb 2026"
+    }
+  ],
+
+  "hedge_fund_activity_q4_2025": {
+    "total_institutions_adding": 1073,
+    "total_institutions_reducing": 945,
+    "hedge_fund_count_q3_2025": 93,
+    "hedge_fund_count_q2_2025": 85,
+    "trend": "Increasing hedge fund interest (85 -> 93 portfolios holding LRCX)",
+    "notable_reductions": [
+      {
+        "name": "JPMorgan Chase & Co",
+        "shares_removed": 6436253,
+        "pct_reduction": "-21.5%",
+        "value_est": "$1.10B"
+      },
+      {
+        "name": "Nordea Investment Management AB",
+        "shares_removed": 3909309,
+        "pct_reduction": "-34.6%",
+        "value_est": "$669M"
+      },
+      {
+        "name": "Avantis U.S. Equity Fund",
+        "shares_sold": 7164,
+        "note": "Minor trim"
+      },
+      {
+        "name": "Caisse Des Depots ET Consignations",
+        "shares_sold": 3497,
+        "note": "Minor trim"
+      }
+    ],
+    "notable_additions": [
+      {
+        "name": "Cincinnati Insurance Co",
+        "type": "NEW",
+        "value": "$426.6M"
+      },
+      {
+        "name": "Cincinnati Financial Corp",
+        "type": "NEW",
+        "value": "$47.5M"
+      },
+      {
+        "name": "King Luther Capital Management Corp",
+        "type": "NEW",
+        "value": "$13.3M"
+      },
+      {
+        "name": "Truist Financial Corp",
+        "change": "+119.6%",
+        "value": "$224.5M"
+      },
+      {
+        "name": "Rothschild Investment LLC",
+        "type": "INCREASE",
+        "note": "Raised stake Feb 2026"
+      },
+      {
+        "name": "Jones Financial Companies LLLP",
+        "shares_added": 27223
+      }
+    ]
+  },
+
+  "insider_buying_selling_2026": {
+    "net_direction": "NET SELLING",
+    "open_market_purchases": 0,
+    "notable_sales": [
+      {
+        "name": "Eric Brandt",
+        "title": "Director",
+        "date": "2026-02-09",
+        "shares": 35000,
+        "value": "$7,896,150"
+      },
+      {
+        "name": "Eric Brandt",
+        "title": "Director",
+        "date": "2026-02-06",
+        "shares": 18000,
+        "value": "$4,140,000"
+      }
+    ],
+    "q4_2025_recap": {
+      "dec_17_transactions": 4,
+      "dec_17_total_value": "$28,760,915.50",
+      "includes": "2 stock sales worth $26.76M + 2 conversions totaling $2.00M"
+    },
+    "interpretation": "No open-market buying by any insider. Selling is primarily from equity compensation disposals and director share sales. This is consistent with historical patterns for LRCX; zero open-market purchases across all recent quarters."
+  },
+
+  "tiger_global": {
+    "status": "NO_DATA_FOUND",
+    "note": "No verifiable evidence of Tiger Global holding a significant LRCX position found in available search results. Tiger Brokers (a brokerage platform) has LRCX comparison articles but is unrelated to Tiger Global Management."
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-F01",
+      "field": "institutional_ownership",
+      "source": "Nasdaq / GuruFocus / MarketBeat",
+      "confidence": "HIGH",
+      "url": "https://www.nasdaq.com/market-activity/stocks/lrcx/institutional-holdings"
+    },
+    {
+      "id": "DM-F02",
+      "field": "top_institutional_holders",
+      "source": "HedgeFollow 13F data / Yahoo Finance",
+      "confidence": "HIGH",
+      "url": "https://hedgefollow.com/stocks/LRCX"
+    },
+    {
+      "id": "DM-F03",
+      "field": "hedge_fund_activity_q4_2025.notable_reductions.jpmorgan",
+      "source": "Nasdaq / QuiverQuant",
+      "confidence": "HIGH",
+      "url": "https://www.nasdaq.com/articles/lrcx-stock-3-today-heres-what-we-see-our-data"
+    },
+    {
+      "id": "DM-F04",
+      "field": "hedge_fund_activity_q4_2025.notable_additions.cincinnati",
+      "source": "QuiverQuant SEC 13F filing",
+      "confidence": "HIGH",
+      "url": "https://www.quiverquant.com/news/Fund+Update:+New+$426.6M+$LRCX+stock+position+opened+by+CINCINNATI+INSURANCE+CO"
+    },
+    {
+      "id": "DM-F05",
+      "field": "hedge_fund_activity_q4_2025.notable_additions.truist",
+      "source": "MarketBeat",
+      "confidence": "HIGH",
+      "url": "https://www.marketbeat.com/instant-alerts/filing-truist-financial-corp-has-22450-million-position-in-lam-research-corporation-lrcx-2026-01-28/"
+    },
+    {
+      "id": "DM-F06",
+      "field": "insider_buying_selling_2026",
+      "source": "Defense World / TipRanks / QuiverQuant",
+      "confidence": "HIGH",
+      "url": "https://www.defenseworld.net/2026/02/11/lam-research-nasdaqlrcx-shares-down-1-2-following-insider-selling.html"
+    },
+    {
+      "id": "DM-F07",
+      "field": "hedge_fund_count",
+      "source": "Insider Monkey",
+      "confidence": "MEDIUM",
+      "url": "https://www.insidermonkey.com/blog/does-lam-research-corporation-lrcx-have-a-long-runway-for-growth-1694324/"
+    },
+    {
+      "id": "DM-F08",
+      "field": "insider_trading_fmp",
+      "source": "FMP insider-trading API",
+      "confidence": "HIGH",
+      "url": "https://financialmodelingprep.com"
+    }
+  ]
+}

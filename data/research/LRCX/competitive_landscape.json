@@ -1,0 +1,284 @@
+{
+  "company": "Lam Research Corporation",
+  "ticker": "LRCX",
+  "data_retrieved_date": "2026-02-19",
+
+  "market_position": {
+    "overall_semi_equipment_rank": 3,
+    "rank_context": "Behind ASML (#1 by revenue) and Applied Materials (#2); ahead of Tokyo Electron (#4) and KLA (#5) in overall semiconductor equipment revenue",
+    "etch_market_rank": 1,
+    "etch_market_share_pct": 45,
+    "deposition_market_rank": 2,
+    "deposition_share_note": "Clear #2 behind Applied Materials in overall deposition; leading in ALD for advanced nodes",
+    "sam_share_of_wfe_pct": "mid-30s (FY2025), targeting high-30s",
+    "trend": "Expanding — SAM growing faster than WFE due to etch/deposition intensity increases at advanced nodes (GAA, HBM, advanced packaging)"
+  },
+
+  "competitors": [
+    {
+      "name": "Applied Materials",
+      "ticker": "AMAT",
+      "overall_semi_equip_rank": 2,
+      "market_share_note": "~30% of WFE combined with LRCX; dominant in deposition, ion implant, CMP, and inspection/metrology",
+      "pe_ratio": 37.88,
+      "pb_ratio": 9.11,
+      "roe_pct": 38.9,
+      "revenue_growth_pct": -2.1,
+      "key_advantage": "Broadest product portfolio across all WFE categories; scale advantages; strong in CVD/PVD deposition where LRCX is #2",
+      "competitive_dynamic": "Primary competitor in deposition; both benefit from rising etch+deposition intensity per wafer at advanced nodes. AMAT stronger in traditional CVD/PVD, LRCX gaining in ALD"
+    },
+    {
+      "name": "Tokyo Electron (TEL)",
+      "ticker": "TEL (8035.T)",
+      "overall_semi_equip_rank": 4,
+      "market_share_note": "~25% share in etch (overall dry etch); second largest etch player globally",
+      "pe_ratio": 33.90,
+      "pb_ratio": 5.12,
+      "roe_pct": 16.1,
+      "revenue_growth_pct": 21.7,
+      "key_advantage": "Developing breakthrough 3D NAND channel etch technology (2.5x faster, >400 layers); strong position in coater/developer and etch for logic. Japanese government support",
+      "competitive_dynamic": "Most significant competitive threat — TEL is directly targeting Lam's 100% share in NAND channel etch. TEL projects this market expanding from $500M (2023) to $2B (2027). If TEL succeeds, it could erode Lam's most profitable etch niche"
+    },
+    {
+      "name": "KLA Corporation",
+      "ticker": "KLAC",
+      "overall_semi_equip_rank": 5,
+      "market_share_note": "Dominant in process control, inspection, and metrology (~55% share)",
+      "pe_ratio": 43.11,
+      "pb_ratio": 25.39,
+      "roe_pct": 100.7,
+      "revenue_growth_pct": 7.2,
+      "key_advantage": "Near-monopoly in advanced process control/inspection; high recurring revenue; extraordinary capital returns",
+      "competitive_dynamic": "Complementary rather than directly competitive — KLA's inspection tools are used alongside Lam's etch/deposition tools. Both benefit from node complexity driving more process steps"
+    },
+    {
+      "name": "ASML Holding",
+      "ticker": "ASML",
+      "overall_semi_equip_rank": 1,
+      "market_share_note": "100% monopoly in EUV lithography; ~80% in DUV lithography",
+      "pe_ratio": 50.01,
+      "pb_ratio": 18.05,
+      "roe_pct": 50.5,
+      "revenue_growth_pct": 4.9,
+      "key_advantage": "Absolute monopoly in EUV — the most critical enabling technology for advanced nodes; irreplaceable in <7nm manufacturing",
+      "competitive_dynamic": "Not directly competitive with LRCX. EUV adoption increases etch complexity (multi-patterning reduction but new etch challenges), creating indirect tailwind for Lam's etch business"
+    },
+    {
+      "name": "ASM International",
+      "ticker": "ASM (ASM.AS)",
+      "overall_semi_equip_rank": null,
+      "market_share_note": "Leading position in ALD equipment alongside Lam; strong in epitaxy",
+      "pe_ratio": null,
+      "pb_ratio": null,
+      "roe_pct": null,
+      "revenue_growth_pct": null,
+      "key_advantage": "Pure-play on ALD/epitaxy; benefits from same GAA transition driving ALD demand; European diversification",
+      "competitive_dynamic": "Direct competitor in ALD market. Both benefit from GAA-driven ALD adoption, but compete head-to-head for ALD tool contracts at leading-edge fabs"
+    },
+    {
+      "name": "Hitachi High-Tech (part of Hitachi)",
+      "ticker": "6501.T (parent)",
+      "overall_semi_equip_rank": null,
+      "market_share_note": "Niche player in etch; stronger in electron microscopy and inspection",
+      "pe_ratio": null,
+      "pb_ratio": null,
+      "roe_pct": null,
+      "revenue_growth_pct": null,
+      "key_advantage": "Integrated with Hitachi ecosystem; strong in specialty etch applications",
+      "competitive_dynamic": "Minor etch competitor; Lam, AMAT, and TEL collectively hold ~75% of etch market, leaving limited room for others"
+    },
+    {
+      "name": "Chinese Domestic Equipment Makers (NAURA, AMEC)",
+      "ticker": "002371.SZ (NAURA) / 688012.SS (AMEC)",
+      "overall_semi_equip_rank": null,
+      "market_share_note": "Growing share in trailing-edge etch/deposition within China; limited to mature nodes (28nm+)",
+      "pe_ratio": null,
+      "pb_ratio": null,
+      "roe_pct": null,
+      "revenue_growth_pct": null,
+      "key_advantage": "Government subsidies, domestic preferential procurement policies, not subject to U.S. export controls",
+      "competitive_dynamic": "Long-term structural threat to Lam's China revenue. As China pursues semiconductor self-sufficiency, domestic etch/deposition tools are gaining traction at mature nodes. However, still multiple generations behind at leading edge"
+    }
+  ],
+
+  "competitive_dynamics": {
+    "industry_structure": "Oligopoly — top 3 players (LRCX, AMAT, TEL) control ~75% of global etch equipment revenue. High barriers to entry due to extreme technical complexity, long qualification cycles (12-18 months), and deep customer relationships",
+    "wfe_market_growth": {
+      "2025_actual_usd": 110000000000,
+      "2026_forecast_usd": 135000000000,
+      "2027_forecast_usd": 156000000000,
+      "growth_driver": "AI chip demand (HBM, advanced logic), GAA transistor transition, advanced packaging, CHIPS Act/EU Chips Act driven fab construction"
+    },
+    "key_battlegrounds": [
+      {
+        "area": "3D NAND Channel Etch",
+        "lrcx_position": "100% market share currently",
+        "threat_level": "High",
+        "detail": "TEL developing technology to etch >400 layers at 2.5x speed of conventional. Market projected to grow from $500M (2023) to $2B (2027). Lam's monopoly is at risk for the first time"
+      },
+      {
+        "area": "Gate-All-Around (GAA) ALD",
+        "lrcx_position": "Leading with Striker ALD and ALTUS Halo (Mo ALD)",
+        "threat_level": "Medium",
+        "detail": "GAA transition at TSMC N2 and Samsung 2nm drives massive ALD demand. Lam competing with ASM International and Applied Materials. ALD revenue grew 50%+ YoY in FY2025"
+      },
+      {
+        "area": "Advanced Packaging",
+        "lrcx_position": "Growing rapidly — part of >$3B combined GAA+packaging shipments in 2025",
+        "threat_level": "Medium",
+        "detail": "Heterogeneous integration (chiplets, HBM stacking) creates new etch/deposition steps. Multiple competitors including AMAT, TEL, and specialty players"
+      },
+      {
+        "area": "China Mature-Node Market",
+        "lrcx_position": "Vulnerable — export controls + domestic substitution",
+        "threat_level": "High",
+        "detail": "China represented 33.7% of FY2025 revenue but expected to decline below 30%. NAURA and AMEC gaining share in trailing-edge etch. U.S. export controls limit Lam's ability to serve advanced Chinese fabs"
+      },
+      {
+        "area": "Backside Power Delivery (BSPD)",
+        "lrcx_position": "Emerging opportunity",
+        "threat_level": "Low",
+        "detail": "New architecture requiring novel etch and deposition steps. Lam positioned as a key enabler; part of SAM expansion strategy from mid-30s to high-30s% of WFE"
+      }
+    ],
+    "pricing_dynamics": "Equipment ASPs rising due to increased complexity (atomic-level precision required for sub-5nm). Moderate buyer bargaining power — customers are large but have limited alternative suppliers for leading-edge tools. Long qualification cycles create switching costs"
+  },
+
+  "moat_indicators": {
+    "overall_moat_assessment": "Wide moat — combination of technological leadership, high switching costs, and oligopolistic market structure",
+    "moat_sources": [
+      {
+        "type": "Technological Leadership",
+        "strength": "Strong",
+        "evidence": "45% etch market share; 100% NAND channel etch share; first-to-market with molybdenum ALD tool (ALTUS Halo); atomic-level precision capability",
+        "risk": "TEL challenging NAND channel etch monopoly; technology cycles can shift leadership"
+      },
+      {
+        "type": "High Switching Costs",
+        "strength": "Very Strong",
+        "evidence": "12-18 month tool qualification cycles; process recipes optimized for specific equipment; 100,000+ installed chamber base creates lock-in through CSBG (spares, upgrades, service)",
+        "risk": "At major node transitions (e.g., GAA), customers may re-evaluate equipment choices"
+      },
+      {
+        "type": "Installed Base Network Effect",
+        "strength": "Strong",
+        "evidence": "100,000+ chambers installed globally; CSBG revenue ($7.2B) growing faster than installed base (8% revenue vs 6% unit growth); Reliant refurbished systems extend lifecycle",
+        "risk": "Installed base advantage is incremental, not exponential"
+      },
+      {
+        "type": "Scale Economies",
+        "strength": "Moderate-Strong",
+        "evidence": "R&D spend $2.1B (11.4% of revenue) — only AMAT spends more in absolute terms; gross margins expanding (48.7% in FY2025 from 44.6% in FY2023)",
+        "risk": "TEL has comparable scale in etch; AMAT has larger overall scale"
+      },
+      {
+        "type": "Process Complexity Barrier",
+        "strength": "Very Strong",
+        "evidence": "Semiconductor etch/deposition requires atomic-level precision; new entrants would need decades of process know-how, IP, and fab partnerships. Chinese competitors are generations behind at leading edge",
+        "risk": "Primarily protects against new entrants; less effective against existing oligopoly members"
+      }
+    ],
+    "moat_durability": "High for 5-10 year horizon. Key risk is TEL's NAND channel etch challenge and long-term Chinese equipment self-sufficiency. GAA transition is a moat-widening event for Lam's ALD and etch businesses"
+  },
+
+  "valuation_comparison": {
+    "lrcx": {"pe": 49.30, "pb": 12.69, "roe_pct": 65.6, "rev_growth_pct": 22.1},
+    "amat": {"pe": 37.88, "pb": 9.11, "roe_pct": 38.9, "rev_growth_pct": -2.1},
+    "tel": {"pe": 33.90, "pb": 5.12, "roe_pct": 16.1, "rev_growth_pct": 21.7},
+    "klac": {"pe": 43.11, "pb": 25.39, "roe_pct": 100.7, "rev_growth_pct": 7.2},
+    "asml": {"pe": 50.01, "pb": 18.05, "roe_pct": 50.5, "rev_growth_pct": 4.9},
+    "spy": {"pe": 27.63},
+    "note": "LRCX trades at premium to AMAT and TEL, reflecting higher revenue growth trajectory and etch leadership. Premium vs SPY is ~78%, consistent with high-quality semi equipment sector"
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-BIZ-015",
+      "value": "45%",
+      "type": "market_share",
+      "metric": "LRCX Global Etch Market Share",
+      "source": "PatentPC / BeyondSPX / Mordor Intelligence",
+      "date": "2025-12-01"
+    },
+    {
+      "id": "DM-BIZ-016",
+      "value": "~25%",
+      "type": "market_share",
+      "metric": "TEL Etch Market Share (overall dry etch)",
+      "source": "Yole Group / industry analysis",
+      "date": "2025-06-01"
+    },
+    {
+      "id": "DM-BIZ-017",
+      "value": "75%",
+      "type": "market_share",
+      "metric": "Top 3 (LRCX+AMAT+TEL) Combined Etch Market Share",
+      "source": "Mordor Intelligence",
+      "date": "2025-12-01"
+    },
+    {
+      "id": "DM-BIZ-018",
+      "value": "100%",
+      "type": "market_share",
+      "metric": "LRCX 3D NAND Channel Etch Market Share",
+      "source": "Yole Group / Tokyo Electron announcement",
+      "date": "2025-06-01"
+    },
+    {
+      "id": "DM-BIZ-019",
+      "value": "$500M (2023) -> $2B (2027)",
+      "type": "market_size",
+      "metric": "NAND Channel Etch Process Market Expansion",
+      "source": "Tokyo Electron projections",
+      "date": "2025-06-01"
+    },
+    {
+      "id": "DM-BIZ-020",
+      "value": "$114.82B (2026) -> $162.70B (2031)",
+      "type": "market_size",
+      "metric": "Total Semiconductor Equipment Market",
+      "source": "Mordor Intelligence",
+      "date": "2025-12-01"
+    },
+    {
+      "id": "DM-BIZ-021",
+      "value": "2.5x faster, >400 layers",
+      "type": "competitive_threat",
+      "metric": "TEL New NAND Channel Etch Technology Specs",
+      "source": "Yole Group / Tokyo Electron announcement",
+      "date": "2025-06-01"
+    },
+    {
+      "id": "DM-BIZ-022",
+      "value": "#3 overall semi equipment",
+      "type": "ranking",
+      "metric": "LRCX Global Semi Equipment Revenue Rank",
+      "source": "SEMI / Accio industry ranking",
+      "date": "2025-12-01"
+    },
+    {
+      "id": "DM-BIZ-023",
+      "value": "PE 49.3x vs AMAT 37.9x vs TEL 33.9x",
+      "type": "valuation",
+      "metric": "Peer P/E Comparison",
+      "source": "FMP financial data",
+      "date": "2026-02-19"
+    },
+    {
+      "id": "DM-BIZ-024",
+      "value": "ROE 65.6% vs AMAT 38.9% vs TEL 16.1%",
+      "type": "profitability",
+      "metric": "Peer ROE Comparison",
+      "source": "FMP financial data",
+      "date": "2026-02-19"
+    },
+    {
+      "id": "DM-BIZ-025",
+      "value": "$135B",
+      "type": "market_size",
+      "metric": "2026 WFE Forecast (Lam Research management)",
+      "source": "Lam Research Q2 FY2026 earnings call / Digitimes",
+      "date": "2026-01-28"
+    }
+  ]
+}

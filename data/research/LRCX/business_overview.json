@@ -1,0 +1,333 @@
+{
+  "company": "Lam Research Corporation",
+  "ticker": "LRCX",
+  "exchange": "NASDAQ",
+  "sector": "Technology",
+  "industry": "Semiconductor Equipment",
+  "ceo": "Timothy Archer",
+  "headquarters": "Fremont, California",
+  "employees": 18600,
+  "market_cap_usd": 299817429390,
+  "stock_price_usd": 240.09,
+  "data_retrieved_date": "2026-02-19",
+
+  "segments": [
+    {
+      "name": "Systems (Etch, Deposition, Other Equipment)",
+      "revenue_usd": 11490000000,
+      "pct_of_total": 62.33,
+      "growth_rate_yoy_pct": 31.2,
+      "description": "Leading-edge semiconductor processing equipment including etch (Flex, Kiyo, Syndion, Versys), deposition (ALTUS, SABRE, SOLA, VECTOR, SPEED, Striker ALD), and clean/metrology systems",
+      "fiscal_year": "FY2025 (ended Jun 2025)"
+    },
+    {
+      "name": "Customer Support and Other (CSBG)",
+      "revenue_usd": 6940000000,
+      "pct_of_total": 37.67,
+      "growth_rate_yoy_pct": 16.0,
+      "description": "Service contracts, spare parts, equipment upgrades, Reliant non-leading-edge systems. Installed base surpassed 100,000 chambers. Record $7.2B CSBG revenue in FY2025",
+      "fiscal_year": "FY2025 (ended Jun 2025)"
+    }
+  ],
+
+  "segment_detail_by_technology": [
+    {
+      "name": "Etch Equipment",
+      "products": ["Flex (dielectric etch)", "Kiyo (conductor etch)", "Syndion (TSV etch)", "Versys (metal etch)"],
+      "market_share_pct": 45,
+      "market_position": "Undisputed global leader",
+      "note": "100% share in 3D NAND channel etch (being challenged by TEL)"
+    },
+    {
+      "name": "Deposition Equipment",
+      "products": ["ALTUS (tungsten CVD/ALD)", "VECTOR (PECVD/ALD)", "SPEED (HDP-CVD)", "Striker (ALD)", "SABRE (ECD copper)", "SOLA (UV thermal)"],
+      "market_share_pct": null,
+      "market_position": "Clear #2 behind Applied Materials in overall deposition",
+      "note": "ALD revenue grew 50%+ in 2025 from $1B in 2024, driven by GAA transition. ALTUS Halo launched Feb 2025 — first ALD tool for molybdenum deposition"
+    },
+    {
+      "name": "Clean & Other",
+      "products": ["Coronus (bevel clean)", "Da Vinci / DV-Prime / EOS / SP (wafer clean)", "Metryx (mass metrology)"],
+      "market_share_pct": null,
+      "market_position": "Niche positions in clean and metrology"
+    }
+  ],
+
+  "revenue_history": [
+    {
+      "fiscal_year": "FY2025",
+      "period_end": "2025-06-29",
+      "revenue_usd": 18435591000,
+      "gross_profit_usd": 8979059000,
+      "gross_margin_pct": 48.7,
+      "operating_income_usd": 5900968000,
+      "operating_margin_pct": 32.0,
+      "net_income_usd": 5358217000,
+      "eps_diluted": 4.15,
+      "yoy_revenue_growth_pct": 23.7
+    },
+    {
+      "fiscal_year": "FY2024",
+      "period_end": "2024-06-30",
+      "revenue_usd": 14905386000,
+      "gross_profit_usd": 7052791000,
+      "gross_margin_pct": 47.3,
+      "operating_income_usd": 4263913000,
+      "operating_margin_pct": 28.6,
+      "net_income_usd": 3827772000,
+      "eps_diluted": 2.90,
+      "yoy_revenue_growth_pct": -14.5
+    },
+    {
+      "fiscal_year": "FY2023",
+      "period_end": "2023-06-25",
+      "revenue_usd": 17426706000,
+      "gross_profit_usd": 7776925000,
+      "gross_margin_pct": 44.6,
+      "operating_income_usd": 5174860000,
+      "operating_margin_pct": 29.7,
+      "net_income_usd": 4510931000,
+      "eps_diluted": 3.32,
+      "yoy_revenue_growth_pct": null
+    }
+  ],
+
+  "recent_quarter": {
+    "quarter": "Q2 FY2026 (Dec 2025)",
+    "revenue_usd": 5320000000,
+    "systems_revenue_usd": 3550000000,
+    "systems_pct": 66.7,
+    "csbg_revenue_usd": 2000000000,
+    "csbg_pct": 33.3,
+    "csbg_sequential_growth_pct": 12,
+    "note": "Record revenue and margins, AI-driven growth"
+  },
+
+  "geographic_breakdown": [
+    {
+      "region": "China",
+      "revenue_usd": 6210000000,
+      "pct_of_total": 33.66,
+      "yoy_change_pct": -1.4,
+      "note": "Largest market; expected to decline below 30% in future due to export controls"
+    },
+    {
+      "region": "Korea",
+      "revenue_usd": 4130000000,
+      "pct_of_total": 22.39,
+      "yoy_change_pct": null,
+      "note": "Samsung and SK Hynix spending on HBM and advanced DRAM"
+    },
+    {
+      "region": "Taiwan",
+      "revenue_usd": 3450000000,
+      "pct_of_total": 18.69,
+      "yoy_change_pct": null,
+      "note": "TSMC advanced node expansion (N3, N2 GAA)"
+    },
+    {
+      "region": "Japan",
+      "revenue_usd": 1880000000,
+      "pct_of_total": 10.20,
+      "yoy_change_pct": null,
+      "note": "Rapidus and legacy fab upgrades"
+    },
+    {
+      "region": "United States",
+      "revenue_usd": 1380000000,
+      "pct_of_total": 7.47,
+      "yoy_change_pct": null,
+      "note": "CHIPS Act-driven fab construction (Intel, Micron, TSMC Arizona)"
+    },
+    {
+      "region": "Southeast Asia",
+      "revenue_usd": 837000000,
+      "pct_of_total": 4.54,
+      "yoy_change_pct": null,
+      "note": "Micron Singapore, emerging fab capacity"
+    },
+    {
+      "region": "Europe & Other",
+      "revenue_usd": 548000000,
+      "pct_of_total": 2.97,
+      "yoy_change_pct": null,
+      "note": "Estimated residual; EU Chips Act driving future growth"
+    }
+  ],
+
+  "supply_chain": {
+    "key_customers": [
+      "TSMC (largest foundry customer, N2 GAA transition driving ALD demand)",
+      "Samsung Electronics (memory + foundry, HBM expansion)",
+      "SK Hynix (HBM3E/HBM4 capacity ramp)",
+      "Micron Technology (DRAM/NAND, U.S. fab expansion)",
+      "Intel (advanced logic, CHIPS Act-funded fabs)"
+    ],
+    "key_suppliers": [
+      "Thousands of global suppliers for specialized materials and components",
+      "2024 Supplier Excellence Award winners recognized for innovation and sustainability",
+      "Supply chain spans U.S., India, Korea, and Taiwan R&D/engineering labs"
+    ],
+    "concentration_risk": {
+      "customer_concentration": "High — top 3-5 customers (TSMC, Samsung, SK Hynix, Micron, Intel) represent majority of revenue. Semiconductor equipment is inherently concentrated due to oligopolistic customer base",
+      "geographic_concentration": "High — China alone is 33.7% of revenue, creating geopolitical/export control risk. Top 3 regions (China, Korea, Taiwan) = 74.7% of revenue",
+      "supplier_concentration": "Moderate — diversified across thousands of global suppliers, but specialized components may have limited sourcing options"
+    }
+  },
+
+  "tam": {
+    "etch_equipment_market": {
+      "current_2025_usd": 28100000000,
+      "forecast_2030_usd": 39800000000,
+      "cagr_pct": 7.5,
+      "source": "Average of Mordor Intelligence ($36.8B), Research and Markets ($42.6B), KBV Research ($39.8B) forecasts for 2030",
+      "note": "Estimates range from $36.8B to $56.1B by 2030-2034 depending on source"
+    },
+    "total_wfe_market": {
+      "current_2025_usd": 110000000000,
+      "forecast_2026_usd": 135000000000,
+      "forecast_2027_usd": 156000000000,
+      "growth_2025_pct": 13.7,
+      "source": "SEMI (Dec 2025 forecast)",
+      "note": "Total semiconductor equipment sales (including non-WFE) forecast at $133B in 2025, $145B in 2026, $156B in 2027"
+    },
+    "lrcx_sam_share_of_wfe": {
+      "current_2025_pct": "mid-30s",
+      "target_pct": "high-30s",
+      "note": "Management targets SAM expansion via GAA, advanced packaging, backside power delivery. FY2025 SAM share achieved mid-30s% of WFE, progressing toward multiyear high-30s target"
+    },
+    "ald_market": {
+      "current_2025_usd": 7160000000,
+      "forecast_2030_usd": 12300000000,
+      "cagr_pct": 11.4,
+      "source": "Mordor Intelligence",
+      "note": "Lam's ALD revenue crossed $1B in 2024, grew 50%+ in 2025. Key growth driver from GAA transistor adoption"
+    },
+    "nand_channel_etch_market": {
+      "current_2023_usd": 500000000,
+      "forecast_2027_usd": 2000000000,
+      "source": "Tokyo Electron projection",
+      "note": "Lam currently holds ~100% share but TEL developing competing technology"
+    },
+    "advanced_packaging_and_gaa": {
+      "combined_shipments_2024_usd": 1000000000,
+      "combined_shipments_2025_usd_estimate": 3000000000,
+      "note": "GAA + advanced packaging combined shipments expected to exceed $3B in 2025, up from >$1B each in 2024"
+    }
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-BIZ-001",
+      "value": "$18.44B",
+      "type": "revenue",
+      "metric": "FY2025 Total Revenue",
+      "source": "FMP financial data + Lam Research 10-K FY2025",
+      "date": "2025-06-29"
+    },
+    {
+      "id": "DM-BIZ-002",
+      "value": "$11.49B / $6.94B",
+      "type": "segment_revenue",
+      "metric": "Systems / CSBG Revenue Split FY2025",
+      "source": "Bullfincher / Lam Research earnings report",
+      "date": "2025-06-29"
+    },
+    {
+      "id": "DM-BIZ-003",
+      "value": "33.66%",
+      "type": "geographic_share",
+      "metric": "China Revenue % of Total FY2025",
+      "source": "Bullfincher / Lam Research 10-K FY2025",
+      "date": "2025-06-29"
+    },
+    {
+      "id": "DM-BIZ-004",
+      "value": "$6.21B",
+      "type": "geographic_revenue",
+      "metric": "China Revenue FY2025",
+      "source": "Bullfincher / Lam Research 10-K FY2025",
+      "date": "2025-06-29"
+    },
+    {
+      "id": "DM-BIZ-005",
+      "value": "100,000+ chambers",
+      "type": "installed_base",
+      "metric": "CSBG Installed Base FY2025",
+      "source": "Lam Research Q2 FY2026 earnings call transcript (Motley Fool)",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-BIZ-006",
+      "value": "$7.2B",
+      "type": "segment_revenue",
+      "metric": "CSBG Record Revenue FY2025",
+      "source": "Lam Research Q2 FY2026 earnings / Futurum Group",
+      "date": "2025-06-29"
+    },
+    {
+      "id": "DM-BIZ-007",
+      "value": "mid-30s%",
+      "type": "market_share",
+      "metric": "SAM Share of WFE FY2025",
+      "source": "Lam Research Q2 FY2026 earnings call transcript",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-BIZ-008",
+      "value": "$110B / $135B",
+      "type": "market_size",
+      "metric": "WFE Market 2025 Actual / 2026 Forecast",
+      "source": "SEMI (Dec 2025 forecast) / Lam Research mgmt guidance",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-BIZ-009",
+      "value": ">$3B",
+      "type": "revenue",
+      "metric": "GAA + Advanced Packaging Combined Shipments 2025E",
+      "source": "BeyondSPX / Lam Research investor presentations",
+      "date": "2025-10-22"
+    },
+    {
+      "id": "DM-BIZ-010",
+      "value": "50%+ YoY growth",
+      "type": "growth_rate",
+      "metric": "ALD Revenue Growth FY2025 (from $1B base in FY2024)",
+      "source": "BALD Engineering / Lam Research earnings commentary",
+      "date": "2025-10-22"
+    },
+    {
+      "id": "DM-BIZ-011",
+      "value": "$5.32B",
+      "type": "revenue",
+      "metric": "Q2 FY2026 Quarterly Revenue (Dec 2025)",
+      "source": "Investing.com / Lam Research Q2 FY2026 earnings",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-BIZ-012",
+      "value": "23.7% YoY",
+      "type": "growth_rate",
+      "metric": "FY2025 Revenue Growth",
+      "source": "FMP financial data (calculated: $18.44B/$14.91B - 1)",
+      "date": "2025-06-29"
+    },
+    {
+      "id": "DM-BIZ-013",
+      "value": "48.7%",
+      "type": "margin",
+      "metric": "FY2025 Gross Margin",
+      "source": "FMP financial data ($8.98B/$18.44B)",
+      "date": "2025-06-29"
+    },
+    {
+      "id": "DM-BIZ-014",
+      "value": "$28.1B (2025) -> ~$39.8B (2030)",
+      "type": "market_size",
+      "metric": "Semiconductor Etch Equipment TAM",
+      "source": "Average of Mordor Intelligence, KBV Research, Precedence Research",
+      "date": "2025-12-01"
+    }
+  ]
+}

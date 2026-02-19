@@ -1,78 +1,205 @@
 {
-  "collection_date": "2026-02-07",
-  "current_price": "$230.89",
-  "price_range_today": {"high": "$232.45", "low": "$218.76"},
-  "fiscal_year_note": "Lam Research FY ends in June. FY2025=Jul2024-Jun2025, FY2026=Jul2025-Jun2026, FY2027=Jul2026-Jun2027",
+  "metadata": {
+    "ticker": "LRCX",
+    "company": "Lam Research Corporation",
+    "sector": "Semiconductor Equipment",
+    "collection_date": "2026-02-19",
+    "previous_collection": "2026-02-07",
+    "stock_price": 240.09,
+    "stock_price_date": "2026-02-18",
+    "market_cap_B": 299.8,
+    "52w_high": 251.87,
+    "52w_low": 56.32,
+    "50d_avg": 199.85,
+    "200d_avg": 134.76,
+    "fiscal_year_end": "June",
+    "note": "LRCX fiscal year ends in June. FY2026 = Jul 2025 - Jun 2026. Q2 FY2026 = Dec 2025 quarter. Note: LRCX did a 10:1 stock split in Oct 2024; all EPS figures are post-split adjusted."
+  },
 
   "consensus": {
-    "total_analysts": 25,
-    "strong_buy": 11,
-    "buy": 10,
-    "hold": 4,
-    "sell": 0,
-    "strong_sell": 0,
-    "consensus_rating": "Strong Buy",
-    "avg_target": "$236.67",
-    "median_target": "$260.00",
-    "high_target": "$325.00",
-    "low_target": "$115.00",
-    "avg_target_3mo": "$282.81",
-    "implied_upside_avg": "+2.5%",
-    "implied_upside_3mo_avg": "+22.5%",
-    "sources": ["stockanalysis.com (25 analysts)", "marketbeat.com (36 analysts, avg $243.32)", "tipranks.com"]
+    "rating": "Strong Buy",
+    "total_analysts": 27,
+    "buy_count": 24,
+    "hold_count": 3,
+    "sell_count": 0,
+    "avg_price_target": 274.42,
+    "median_price_target": 260.00,
+    "high_target": 325.00,
+    "low_target": 163.00,
+    "implied_upside_pct": 14.3,
+    "source_cross_check": {
+      "MarketScreener": {"analysts": 25, "avg_target": 274.42},
+      "TipRanks": {"avg_target": 283.21},
+      "StockAnalysis": {"analysts": 24, "buy": 24, "hold": 3, "sell": 0, "avg_target": 236.67},
+      "MarketBeat": {"analysts": 36, "avg_target": 243.32},
+      "note": "MarketScreener used as primary. StockAnalysis avg lower likely due to including older stale targets. MarketBeat wider coverage includes less active analysts."
+    }
   },
 
-  "eps_estimates": {
-    "FY2025": {
-      "consensus": "$4.15",
-      "note": "FY ended Jun 2025, actual likely available"
-    },
-    "FY2026": {
-      "consensus": "$5.35",
-      "yoy_growth": "+28.9%",
-      "high": null,
-      "low": null,
-      "alt_estimates": {
-        "B.Riley": "$4.63",
-        "Zacks": "$4.23",
-        "note": "Wide dispersion suggests uncertainty; StockAnalysis consensus $5.35 is most comprehensive (25 analysts)"
+  "earnings_estimates": {
+    "current_quarter": {
+      "quarter": "Q3 FY2026",
+      "calendar_quarter": "Mar 2026",
+      "report_date": "2026-04-29",
+      "company_guidance": {
+        "eps_low": 1.25,
+        "eps_high": 1.45,
+        "eps_midpoint": 1.35,
+        "revenue_low_B": 5.4,
+        "revenue_high_B": 6.0,
+        "revenue_midpoint_B": 5.7
+      },
+      "analyst_consensus": {
+        "eps_estimate": 1.35,
+        "revenue_estimate_B": 5.70,
+        "note": "Consensus closely aligned with guidance midpoint; guidance issued Jan 28, 2026"
       }
     },
-    "FY2027": {
-      "consensus": "$6.88",
-      "yoy_growth": "+28.5%",
-      "high": null,
-      "low": null,
-      "alt_estimates": {
-        "B.Riley": "$4.97",
-        "Zacks": "$5.00",
-        "note": "Wide dispersion; StockAnalysis consensus $6.88 is multi-analyst aggregate"
-      }
+    "next_quarter": {
+      "quarter": "Q4 FY2026",
+      "calendar_quarter": "Jun 2026",
+      "report_date_est": "2026-07 (TBD)",
+      "eps_estimate_consensus": null,
+      "revenue_estimate_B": null,
+      "note": "Q4 FY2026 analyst estimates not yet widely available; guidance to be issued with Q3 results in April 2026"
     },
-    "sources": ["stockanalysis.com", "B.Riley", "Zacks Research"]
+    "full_year": {
+      "FY2026": {
+        "fiscal_year": "FY2026 (Jul 2025 - Jun 2026)",
+        "eps_avg": 5.32,
+        "eps_low": 4.69,
+        "eps_high": 5.44,
+        "revenue_avg_B": 22.39,
+        "revenue_low_B": 20.58,
+        "revenue_high_B": 22.91,
+        "num_analysts_eps": 22,
+        "num_analysts_revenue": 26,
+        "yoy_eps_growth_pct": 28.9,
+        "yoy_revenue_growth_pct": 21.5,
+        "source": "FMP consensus estimates",
+        "alt_estimates": {
+          "StockAnalysis": {"eps": 5.35, "revenue_B": 22.60},
+          "Zacks_revised": {"eps": 5.43, "note": "Raised from $5.12 post memory outlook improvement"},
+          "B_Riley": {"eps": 4.63, "note": "Most conservative"},
+          "note": "Wide dispersion ($4.63-$5.44 EPS) reflects uncertainty around China/NAND timing"
+        }
+      },
+      "FY2027": {
+        "fiscal_year": "FY2027 (Jul 2026 - Jun 2027)",
+        "eps_avg": 7.01,
+        "eps_low": 5.28,
+        "eps_high": 7.86,
+        "revenue_avg_B": 27.89,
+        "revenue_low_B": 22.63,
+        "revenue_high_B": 29.62,
+        "num_analysts_eps": 21,
+        "num_analysts_revenue": 25,
+        "yoy_eps_growth_pct": 31.8,
+        "yoy_revenue_growth_pct": 24.6,
+        "source": "FMP consensus estimates",
+        "alt_estimates": {
+          "StockAnalysis": {"eps": 6.88, "revenue_B": 27.60},
+          "B_Riley": {"eps": 4.97}
+        }
+      },
+      "FY2028": {
+        "fiscal_year": "FY2028 (Jul 2027 - Jun 2028)",
+        "eps_avg": 8.05,
+        "eps_low": 6.91,
+        "eps_high": 11.44,
+        "revenue_avg_B": 30.87,
+        "revenue_low_B": 30.79,
+        "revenue_high_B": 30.95,
+        "num_analysts_eps": 13,
+        "num_analysts_revenue": 20,
+        "source": "FMP consensus estimates"
+      },
+      "FY2029": {
+        "fiscal_year": "FY2029 (Jul 2028 - Jun 2029)",
+        "eps_avg": 8.74,
+        "eps_low": 7.27,
+        "eps_high": 9.43,
+        "revenue_avg_B": 33.45,
+        "revenue_low_B": 29.14,
+        "revenue_high_B": 35.50,
+        "num_analysts_eps": 7,
+        "num_analysts_revenue": 10,
+        "source": "FMP consensus estimates"
+      }
+    }
   },
 
-  "revenue_estimates": {
-    "FY2025": {
-      "consensus": "$18.44B",
-      "yoy_growth": "+23.7%"
-    },
-    "FY2026": {
-      "consensus": "$22.60B",
-      "yoy_growth": "+22.6%",
-      "alt_estimate": "$20.5B (Zacks)",
-      "note": "Range reflects different analyst sample sizes"
-    },
-    "FY2027": {
-      "consensus": "$27.60B",
-      "yoy_growth": "+22.1%"
-    },
-    "next_quarter_forecast": {
-      "period": "Q3 FY2026 (Mar 2026 quarter)",
-      "revenue": "$5.70B",
-      "range": {"low": "$5.23B", "high": "$5.86B"}
-    },
-    "sources": ["stockanalysis.com", "Zacks Research"]
+  "earnings_surprise_history": {
+    "avg_surprise_pct_4q": 5.89,
+    "consecutive_beats": 14,
+    "overall_beat_rate_pct": 68,
+    "overall_beat_count": "106/156 reporting periods",
+    "quarters": [
+      {
+        "quarter": "Q2 FY2026",
+        "calendar_quarter": "Dec 2025",
+        "report_date": "2026-01-28",
+        "eps_actual": 1.27,
+        "eps_estimate": 1.19,
+        "eps_surprise": 0.08,
+        "eps_surprise_pct": 6.72,
+        "revenue_actual_B": 5.345,
+        "revenue_estimate_B": 5.21,
+        "revenue_surprise_pct": 2.5,
+        "gross_margin_pct": 49.7,
+        "operating_margin_pct": 34.3,
+        "yoy_revenue_growth_pct": 22.0,
+        "note": "Exceeded guidance high end on GM and OM. 10th consecutive quarter of revenue growth. Annual revenue reached $20.6B."
+      },
+      {
+        "quarter": "Q1 FY2026",
+        "calendar_quarter": "Sep 2025",
+        "report_date": "2025-10-22",
+        "eps_actual": 1.26,
+        "eps_estimate": 1.22,
+        "eps_surprise": 0.04,
+        "eps_surprise_pct": 3.28,
+        "revenue_actual_B": 5.32,
+        "revenue_estimate_B": 5.22,
+        "revenue_surprise_pct": 1.9,
+        "gross_margin_pct": 50.6,
+        "operating_margin_pct": 35.0,
+        "note": "Record revenue $5.3B, record gross margin 50.6%, record operating margin 35%."
+      },
+      {
+        "quarter": "Q4 FY2025",
+        "calendar_quarter": "Jun 2025",
+        "report_date": "2025-07-23",
+        "eps_actual": 1.33,
+        "eps_estimate": 1.20,
+        "eps_surprise": 0.13,
+        "eps_surprise_pct": 10.83,
+        "revenue_actual_B": 5.17,
+        "revenue_estimate_B": null,
+        "revenue_surprise_pct": null,
+        "gross_margin_pct": 50.3,
+        "note": "EPS exceeded guidance range. FY2025 full year record revenue $18.4B (+27% YoY), GM 48.8%."
+      },
+      {
+        "quarter": "Q3 FY2025",
+        "calendar_quarter": "Mar 2025",
+        "report_date": "2025-04-23",
+        "eps_actual": 1.04,
+        "eps_estimate": 1.00,
+        "eps_surprise": 0.04,
+        "eps_surprise_pct": 4.00,
+        "revenue_actual_B": 4.72,
+        "revenue_estimate_B": 4.64,
+        "revenue_surprise_pct": 1.64,
+        "note": "Revenue, GM, OM, EPS all exceeded guidance midpoints."
+      }
+    ],
+    "annual_eps_history": {
+      "FY2025_actual": 4.15,
+      "FY2024": 2.91,
+      "FY2023": 3.33,
+      "note": "FY2024 decline reflects semiconductor equipment cycle trough before AI-driven recovery. Post-split adjusted."
+    }
   },
 
   "recent_changes": [
@@ -80,27 +207,36 @@
       "date": "2026-02-05",
       "firm": "Argus",
       "action": "Raised PT",
-      "old_target": "$175.00",
-      "new_target": "$280.00",
-      "rating": "Buy (implied)",
+      "previous_target": 175.00,
+      "new_target": 280.00,
+      "rating": "Buy",
       "source": "dailypolitical.com"
     },
     {
       "date": "2026-02-01",
       "firm": "Wells Fargo",
-      "analyst": null,
       "action": "Raised PT",
-      "old_target": "$250.00",
-      "new_target": "$290.00",
+      "previous_target": 250.00,
+      "new_target": 290.00,
       "rating": "Overweight",
       "source": "defenseworld.net"
     },
     {
       "date": "2026-01-29",
+      "firm": "Goldman Sachs",
+      "analyst": "Toshiya Hari",
+      "action": "Maintained Buy, PT Raised",
+      "previous_target": 180.00,
+      "new_target": 262.00,
+      "rating": "Buy",
+      "source": "gurufocus.com"
+    },
+    {
+      "date": "2026-01-29",
       "firm": "Cantor Fitzgerald",
       "action": "Raised PT, Reiterated",
-      "old_target": "$265.00",
-      "new_target": "$320.00",
+      "previous_target": 265.00,
+      "new_target": 320.00,
       "rating": "Overweight",
       "source": "dailypolitical.com"
     },
@@ -108,8 +244,8 @@
       "date": "2026-01-29",
       "firm": "Citigroup",
       "action": "Raised PT",
-      "old_target": "$265.00",
-      "new_target": "$300.00",
+      "previous_target": 265.00,
+      "new_target": 300.00,
       "rating": "Buy",
       "source": "dailypolitical.com"
     },
@@ -118,8 +254,8 @@
       "firm": "Morgan Stanley",
       "analyst": "Shane Brett",
       "action": "Raised PT, Maintained",
-      "old_target": "$211.00",
-      "new_target": "$244.00",
+      "previous_target": 211.00,
+      "new_target": 244.00,
       "rating": "Equal Weight",
       "note": "Most conservative among peers post-Q2 earnings",
       "source": "defenseworld.net, benzinga.com"
@@ -128,8 +264,8 @@
       "date": "2026-01-29",
       "firm": "B. Riley",
       "action": "Raised PT",
-      "old_target": "$255.00",
-      "new_target": "$310.00",
+      "previous_target": 255.00,
+      "new_target": 310.00,
       "rating": null,
       "source": "web search aggregate"
     },
@@ -137,8 +273,8 @@
       "date": "2026-01-29",
       "firm": "Bernstein",
       "action": "Raised PT",
-      "old_target": "$225.00",
-      "new_target": "$275.00",
+      "previous_target": 225.00,
+      "new_target": 275.00,
       "rating": null,
       "source": "web search aggregate"
     },
@@ -146,8 +282,8 @@
       "date": "2026-01-29",
       "firm": "Evercore ISI",
       "action": "Raised PT",
-      "old_target": "$241.00",
-      "new_target": "$275.00",
+      "previous_target": 241.00,
+      "new_target": 275.00,
       "rating": null,
       "source": "web search aggregate"
     },
@@ -155,38 +291,63 @@
       "date": "2026-01-15",
       "firm": "Wells Fargo",
       "action": "Upgraded",
-      "old_rating": "Equal Weight",
+      "previous_rating": "Equal Weight",
       "new_rating": "Overweight",
-      "old_target": "$145.00",
-      "new_target": "$250.00",
-      "reason": "Memory demand outlook improvement",
-      "source": "defenseworld.net, investing.com, nasdaq.com"
+      "previous_target": 145.00,
+      "new_target": 250.00,
+      "reason": "Memory demand outlook improvement; expects outperformance in FY2026-2027",
+      "source": "investing.com, nasdaq.com"
     },
     {
       "date": "2026-01-15",
       "firm": "RBC Capital",
       "action": "Initiated Coverage",
       "new_rating": "Outperform",
-      "new_target": "$260.00",
+      "new_target": 260.00,
       "reason": "WFE spending growth + market share gains",
       "source": "web search aggregate"
+    },
+    {
+      "date": "2025-12-23",
+      "firm": "UBS",
+      "action": "Maintained",
+      "new_rating": "Buy",
+      "new_target": null,
+      "source": "web search"
+    },
+    {
+      "date": "2025-12-18",
+      "firm": "B. Riley Securities",
+      "action": "Maintained",
+      "new_rating": "Buy",
+      "new_target": null,
+      "source": "web search"
     },
     {
       "date": "2025-12-15",
       "firm": "Jefferies",
       "action": "Raised PT",
-      "old_target": "$175.00",
-      "new_target": "$200.00",
+      "previous_target": 175.00,
+      "new_target": 200.00,
       "rating": null,
       "source": "dailypolitical.com"
+    },
+    {
+      "date": "2025-12-09",
+      "firm": "Deutsche Bank",
+      "action": "Raised PT",
+      "previous_target": 260.00,
+      "new_target": 290.00,
+      "rating": null,
+      "source": "web search"
     },
     {
       "date": "2025-12-08",
       "firm": "Morgan Stanley",
       "analyst": "Shane Brett",
       "action": "Raised PT",
-      "old_target": "$137.00",
-      "new_target": "$158.00",
+      "previous_target": 137.00,
+      "new_target": 158.00,
       "rating": "Equal Weight",
       "reason": "Raised WFE forecast: 2026 $129B (+11% YoY), 2027 $145B (+13% YoY) due to AI/HPC demand",
       "source": "ts2.tech"
@@ -195,8 +356,6 @@
       "date": "2025-09-23",
       "firm": "KeyBanc",
       "action": "Downgraded",
-      "old_rating": null,
-      "new_rating": null,
       "note": "Details limited in available sources",
       "source": "benzinga.com"
     },
@@ -205,155 +364,401 @@
       "firm": "Morgan Stanley",
       "analyst": "Shane Brett",
       "action": "Downgraded",
-      "old_rating": "Equal Weight",
+      "previous_rating": "Equal Weight",
       "new_rating": "Underweight",
-      "old_target": "$94.00",
-      "new_target": "$92.00",
+      "previous_target": 94.00,
+      "new_target": 92.00,
       "reason": "China share gains 'tough' to sustain; growth decelerating from 82% (2025) to 3% (2026); challenging 2026 setup",
       "source": "cnbc.com"
     }
   ],
 
   "morgan_stanley_trajectory": {
-    "note": "Key bear-to-neutral flip in 3 months",
-    "2025-09-02": {"rating": "Underweight", "target": "$92", "thesis": "China deceleration, challenging 2026"},
-    "2025-12-08": {"rating": "Equal Weight", "target": "$158", "thesis": "Raised WFE forecast on AI demand"},
-    "2026-01-29": {"rating": "Equal Weight", "target": "$244", "thesis": "Post Q2 beat, maintained but raised PT 55%"}
+    "note": "Key bear-to-neutral flip — tracks the most cautious major bank's evolving view",
+    "2025-09-02": {"rating": "Underweight", "target": 92, "thesis": "China deceleration, challenging 2026"},
+    "2025-12-08": {"rating": "Equal Weight", "target": 158, "thesis": "Raised WFE forecast on AI demand"},
+    "2026-01-29": {"rating": "Equal Weight", "target": 244, "thesis": "Post Q2 beat, maintained but raised PT 55%"}
   },
 
-  "earnings_track_record": {
-    "overall_beat_rate": "68% (106 beats out of 156 reporting periods)",
-    "trailing_4q_avg_surprise": "+5.89%",
-    "consecutive_beats": "Multiple consecutive quarters through Q2 FY2026",
-    "quarters": [
-      {
-        "period": "Q2 FY2026",
-        "report_date": "2026-01-28",
-        "eps_estimate": "$1.17",
-        "eps_actual": "$1.27",
-        "eps_surprise": "+8.55%",
-        "revenue_estimate": "$5.21B",
-        "revenue_actual": "$5.34B",
-        "revenue_surprise": "+2.5%",
-        "note": "10th consecutive quarter of revenue increases",
-        "source": "investing.com, seekingalpha.com"
-      },
-      {
-        "period": "Q1 FY2026",
-        "report_date": "2025-10-22",
-        "eps_estimate": "$1.22",
-        "eps_actual": "$1.26",
-        "eps_surprise": "+3.3%",
-        "revenue_estimate": "$5.22B",
-        "revenue_actual": "$5.32B",
-        "revenue_surprise": "+1.9%",
-        "note": "Earnings beat despite revenue initially reported as slight miss by some sources",
-        "source": "marketbeat.com, chartmill.com"
-      },
-      {
-        "period": "Q4 FY2025",
-        "report_date": "2025-07",
-        "eps_estimate": "$0.87",
-        "eps_actual": "$0.91",
-        "eps_surprise": "+4.60%",
-        "revenue_estimate": null,
-        "revenue_actual": null,
-        "source": "zacks.com"
-      },
-      {
-        "period": "Q3 FY2025",
-        "report_date": "2025-04",
-        "eps_estimate": "$0.80",
-        "eps_actual": "$0.86",
-        "eps_surprise": "+7.50%",
-        "revenue_estimate": null,
-        "revenue_actual": null,
-        "source": "zacks.com"
-      },
-      {
-        "period": "Q2 FY2025",
-        "report_date": "2025-01",
-        "eps_estimate": null,
-        "eps_actual": "$1.04",
-        "eps_surprise": null,
-        "note": "EPS $1.04 represents +40.5% YoY increase",
-        "source": "macrotrends.net"
-      }
-    ],
-    "annual_eps_history": {
-      "CY2023": "$3.33",
-      "CY2024": "$2.91",
-      "note": "CY2024 decline reflects semiconductor equipment cycle trough before AI-driven recovery"
+  "bull_bear_summary": {
+    "bull_case": {
+      "price_target_range": "$290-$325",
+      "key_arguments": [
+        "AI-driven content gain: 2nm ramp + vertical memory (HBM4) = content-per-wafer at all-time high; LRCX is the 'digital blacksmith' of the AI era",
+        "Structural WFE growth: Management forecasts WFE $135B in CY2026 (up from $110B in CY2025), driven by DRAM + leading-edge foundry/logic for AI",
+        "Market share gains at TSMC and in China foundry/logic segment",
+        "Leadership across key inflection points: gate-all-around transistors (GAA), high-bandwidth memory (HBM4), advanced packaging - unique end-to-end tool presence",
+        "Revenue trajectory: Management sees $25-28B by FY2028 (from $16.2B in FY2024), ~15-20% CAGR",
+        "Record margins: Gross margin 49.7-50.6%, operating margin 34-35% in recent quarters, exceeding guidance",
+        "14 consecutive earnings beats; avg trailing 4Q surprise +5.89%",
+        "Onshoring/reshoring trends (CHIPS Act) create additional equipment demand",
+        "Broad analyst upgrade cycle: Wells Fargo, Goldman Sachs, RBC, Cantor, Citi all bullish"
+      ]
+    },
+    "bear_case": {
+      "price_target_range": "$163-$204",
+      "key_arguments": [
+        "Memory cyclicality: Heavy reliance on DRAM/NAND manufacturers exposes LRCX to deep cyclical downturns",
+        "China export restriction risk: Intensifying geopolitical pressures and export controls threaten significant China revenue (~30% of total)",
+        "Valuation stretched: ~45x forward P/E on FY2026E demands sustained high growth execution",
+        "NAND spending recovery uncertainty: While DRAM/HBM strong, NAND capex recovery timing remains unclear",
+        "Insider selling: 8 insider trades in past 6 months, all sales",
+        "Morgan Stanley (Shane Brett) remains Equal Weight — most conservative major bank despite triple PT raise",
+        "Wide EPS estimate dispersion: B.Riley $4.63 vs consensus $5.35 for FY2026 suggests low visibility",
+        "Stock up ~187% in one year from 52w low; macro risk (hawkish yields) could compress multiples"
+      ]
     }
   },
 
   "wfe_industry_outlook": {
-    "2025": {
-      "total_equipment_sales": "$125.5B",
+    "CY2025": {
+      "total_equipment_sales_B": 125.5,
       "source": "SEMI"
     },
-    "2026": {
-      "total_equipment_sales": "$145B",
-      "wfe_segment": "$135.2B",
-      "wfe_growth": "+9.0%",
-      "morgan_stanley_wfe": "$128.3B (+10%)",
-      "bofa_wfe": "$131B (+10%)",
+    "CY2026": {
+      "total_equipment_sales_B": 145,
+      "wfe_segment_B": 135,
+      "wfe_growth_pct": 9.0,
+      "LRCX_mgmt_WFE_forecast_B": 135,
+      "morgan_stanley_wfe_B": 129,
+      "bofa_wfe_B": 131,
       "drivers": "AI accelerators, HBM, advanced packaging, 3nm/2nm logic",
-      "source": "SEMI, Morgan Stanley, Bank of America"
+      "source": "SEMI, Morgan Stanley, Bank of America, LRCX management"
     },
-    "2027": {
-      "total_equipment_sales": "$156B (record)",
-      "wfe_segment_growth": "+7.3%",
-      "bofa_wfe": "$150B (+14%)",
+    "CY2027": {
+      "total_equipment_sales_B": 156,
+      "note": "Record if achieved",
+      "wfe_growth_pct": 7.3,
+      "bofa_wfe_B": 150,
       "drivers": "Continued AI buildout, NAND layer count increases, HBM capacity expansion",
       "source": "SEMI, Bank of America"
     },
+    "LRCX_revenue_trajectory": {
+      "FY2024_actual_B": 16.2,
+      "FY2025_actual_B": 18.4,
+      "FY2026_estimate_B": 22.4,
+      "FY2028_mgmt_target_low_B": 25,
+      "FY2028_mgmt_target_high_B": 28,
+      "source": "Company filings + management outlook"
+    },
     "segment_details": {
-      "foundry_logic_2026": "+5.5% growth",
-      "foundry_logic_2027": "+6.9% to $75.2B",
-      "nand_2026": "+12.7% to $15.7B",
-      "nand_2027": "+7.3% to $16.9B",
-      "test_2026": "+12.0%",
-      "test_2027": "+7.1%",
-      "advanced_packaging_2026": "+9.2%",
-      "advanced_packaging_2027": "+6.9%"
+      "foundry_logic_2026_growth_pct": 5.5,
+      "foundry_logic_2027_B": 75.2,
+      "foundry_logic_2027_growth_pct": 6.9,
+      "nand_2026_B": 15.7,
+      "nand_2026_growth_pct": 12.7,
+      "nand_2027_B": 16.9,
+      "nand_2027_growth_pct": 7.3,
+      "test_2026_growth_pct": 12.0,
+      "test_2027_growth_pct": 7.1,
+      "advanced_packaging_2026_growth_pct": 9.2,
+      "advanced_packaging_2027_growth_pct": 6.9
     }
   },
 
-  "key_bull_bear_points": {
-    "bull": [
-      "WFE spending in multi-year upcycle driven by AI/HBM ($145B in 2026, record $156B in 2027)",
-      "Consistent earnings beats (trailing 4Q avg surprise +5.89%)",
-      "Revenue growth accelerating: FY2026E $22.6B (+22.6%), FY2027E $27.6B (+22.1%)",
-      "Broad analyst upgrade cycle: Wells Fargo, RBC, Cantor, Citi, JPMorgan all bullish",
-      "Q2 FY2026 beat shows operational momentum (EPS +8.55% surprise)"
-    ],
-    "bear": [
-      "Morgan Stanley (Shane Brett) remains Equal Weight -- most conservative major bank",
-      "China revenue concentration risk (was key growth driver, sustainability questioned)",
-      "P/E ~49x demands sustained high growth execution",
-      "Export control risks to China-related WFE spending",
-      "Wide EPS estimate dispersion (B.Riley $4.63 vs consensus $5.35 for FY2026) suggests low visibility"
-    ]
-  },
-
   "valuation_context": {
-    "current_pe_ttm": "~49x",
-    "forward_pe_fy2026": "~43x (at $230.89 / $5.35 EPS)",
-    "forward_pe_fy2027": "~33.6x (at $230.89 / $6.88 EPS)",
-    "note": "Valuation compression requires sustained 25%+ EPS growth trajectory to be met"
+    "current_pe_ttm": 49,
+    "forward_pe_fy2026": 45.1,
+    "forward_pe_fy2027": 34.2,
+    "forward_pe_fy2028": 29.8,
+    "pe_calculation_note": "At $240.09 stock price. FY2026E EPS $5.32, FY2027E $7.01, FY2028E $8.05",
+    "implied_growth_required": "Sustained 25%+ EPS growth to justify current multiple compression path"
   },
 
-  "data_sources": [
-    "stockanalysis.com/stocks/lrcx/forecast/ [硬数据: 2026-02-07]",
-    "cnbc.com - Morgan Stanley downgrade [硬数据: 2025-09-02]",
-    "investing.com - Wells Fargo upgrade [硬数据: 2026-01-15]",
-    "defenseworld.net - multiple analyst PTs [硬数据: 2026-01/02]",
-    "dailypolitical.com - Argus PT raise [硬数据: 2026-02-05]",
-    "SEMI.org - WFE industry forecast [硬数据: 2025-12]",
-    "seekingalpha.com - Q2 FY2026 earnings [硬数据: 2026-01-28]",
-    "ts2.tech - Morgan Stanley WFE forecast [硬数据: 2025-12-08]",
-    "zacks.com - EPS estimates [硬数据: 2025]",
-    "Yahoo Finance, Benzinga - analyst ratings [硬数据: 2026-02]"
+  "fmp_rating": {
+    "overall_rating": "B+",
+    "overall_score": 3,
+    "dcf_score": 3,
+    "roe_score": 5,
+    "roa_score": 5,
+    "debt_to_equity_score": 2,
+    "pe_score": 2,
+    "pb_score": 1
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-CON-001",
+      "field": "consensus.rating",
+      "value": "Strong Buy (24B/3H/0S out of 27 analysts)",
+      "type": "H",
+      "source": "MarketScreener/StockAnalysis/TipRanks cross-reference",
+      "date": "2026-02-19",
+      "note": "Multiple sources confirm Strong Buy; analyst count ranges 24-36 depending on source and activity window"
+    },
+    {
+      "id": "DM-CON-002",
+      "field": "consensus.avg_price_target",
+      "value": 274.42,
+      "type": "H",
+      "source": "MarketScreener (25 analysts)",
+      "date": "2026-02-19",
+      "cross_check": "TipRanks $283.21, StockAnalysis $236.67, MarketBeat $243.32 — range reflects update timing and coverage differences"
+    },
+    {
+      "id": "DM-CON-003",
+      "field": "consensus.high_target",
+      "value": 325.00,
+      "type": "H",
+      "source": "TipRanks, MarketScreener (multiple sources consistent)",
+      "date": "2026-02-19"
+    },
+    {
+      "id": "DM-CON-004",
+      "field": "consensus.low_target",
+      "value": 163.00,
+      "type": "R",
+      "source": "Multiple sources",
+      "date": "2026-02-19",
+      "note": "Some sources show $115-$117 (likely stale/outlier pre-Q2 beat). $163 from post-Q2 estimates."
+    },
+    {
+      "id": "DM-CON-005",
+      "field": "earnings_estimates.FY2026.eps_avg",
+      "value": 5.32,
+      "type": "H",
+      "source": "FMP consensus (22 analysts)",
+      "date": "2026-02-19",
+      "cross_check": "StockAnalysis $5.35, Zacks revised $5.43 (from $5.12). FMP $5.32 broadly consistent."
+    },
+    {
+      "id": "DM-CON-006",
+      "field": "earnings_estimates.FY2026.revenue_avg_B",
+      "value": 22.39,
+      "type": "H",
+      "source": "FMP consensus (26 analysts)",
+      "date": "2026-02-19",
+      "cross_check": "StockAnalysis $22.60B. Broadly consistent ~$22-23B range."
+    },
+    {
+      "id": "DM-CON-007",
+      "field": "earnings_estimates.FY2027.eps_avg",
+      "value": 7.01,
+      "type": "H",
+      "source": "FMP consensus (21 analysts)",
+      "date": "2026-02-19",
+      "cross_check": "StockAnalysis $6.88. Range $5.28-$7.86."
+    },
+    {
+      "id": "DM-CON-008",
+      "field": "earnings_estimates.FY2027.revenue_avg_B",
+      "value": 27.89,
+      "type": "H",
+      "source": "FMP consensus (25 analysts)",
+      "date": "2026-02-19",
+      "cross_check": "StockAnalysis $27.60B. Consistent."
+    },
+    {
+      "id": "DM-CON-009",
+      "field": "earnings_surprise.Q2_FY2026",
+      "value": "EPS $1.27 vs $1.19 est (+6.72%)",
+      "type": "H",
+      "source": "QuiverQuant, SeekingAlpha, multiple confirmations",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-CON-010",
+      "field": "earnings_surprise.Q1_FY2026",
+      "value": "EPS $1.26 vs $1.22 est (+3.28%)",
+      "type": "H",
+      "source": "MarketBeat, Nasdaq, Lam Research newsroom",
+      "date": "2025-10-22"
+    },
+    {
+      "id": "DM-CON-011",
+      "field": "earnings_surprise.Q4_FY2025",
+      "value": "EPS $1.33 vs $1.20 est (+10.83%)",
+      "type": "H",
+      "source": "Zacks, Yahoo Finance",
+      "date": "2025-07-23"
+    },
+    {
+      "id": "DM-CON-012",
+      "field": "earnings_surprise.Q3_FY2025",
+      "value": "EPS $1.04 vs $1.00 est (+4.00%)",
+      "type": "H",
+      "source": "Zacks, Yahoo Finance",
+      "date": "2025-04-23"
+    },
+    {
+      "id": "DM-CON-013",
+      "field": "Q3_FY2026_guidance.eps_midpoint",
+      "value": 1.35,
+      "type": "H",
+      "source": "Company guidance issued Jan 28, 2026 (MarketBeat, TickerReport)",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-CON-014",
+      "field": "Q3_FY2026_guidance.revenue_midpoint_B",
+      "value": 5.70,
+      "type": "H",
+      "source": "Company guidance issued Jan 28, 2026",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-CON-015",
+      "field": "recent_changes.Goldman_Sachs_PT",
+      "value": "$180 -> $262 (Buy maintained)",
+      "type": "H",
+      "source": "GuruFocus / Goldman Sachs",
+      "date": "2026-01-29"
+    },
+    {
+      "id": "DM-CON-016",
+      "field": "recent_changes.Wells_Fargo_upgrade",
+      "value": "EW -> OW, PT $145 -> $250 (Jan 15) then PT raised to $290 (Feb 1)",
+      "type": "H",
+      "source": "Investing.com, Nasdaq, defenseworld.net",
+      "date": "2026-02-01"
+    },
+    {
+      "id": "DM-CON-017",
+      "field": "recent_changes.Deutsche_Bank_PT",
+      "value": "$260 -> $290",
+      "type": "R",
+      "source": "WebSearch results",
+      "date": "2025-12-09"
+    },
+    {
+      "id": "DM-CON-018",
+      "field": "recent_changes.Morgan_Stanley_trajectory",
+      "value": "UW $92 (Sep) -> EW $158 (Dec) -> EW $244 (Jan)",
+      "type": "H",
+      "source": "CNBC, Investing.com, Benzinga",
+      "date": "2026-01-29"
+    },
+    {
+      "id": "DM-CON-019",
+      "field": "wfe_outlook.CY2026_LRCX_mgmt_forecast_B",
+      "value": 135,
+      "type": "S",
+      "source": "LRCX management guidance / earnings call Jan 2026",
+      "date": "2026-01-28",
+      "note": "Management forecast; actual WFE depends on macro/geopolitical conditions"
+    },
+    {
+      "id": "DM-CON-020",
+      "field": "wfe_outlook.LRCX_FY2028_revenue_target_B",
+      "value": "25-28",
+      "type": "S",
+      "source": "Management long-term outlook (multiple sources)",
+      "date": "2026-02-19"
+    },
+    {
+      "id": "DM-CON-021",
+      "field": "stock_price",
+      "value": 240.09,
+      "type": "H",
+      "source": "FMP quote API",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-CON-022",
+      "field": "market_cap_B",
+      "value": 299.8,
+      "type": "H",
+      "source": "FMP quote API",
+      "date": "2026-02-18"
+    },
+    {
+      "id": "DM-CON-023",
+      "field": "earnings_surprise.avg_4q_surprise_pct",
+      "value": 5.89,
+      "type": "H",
+      "source": "Zacks (trailing 4 quarters average)",
+      "date": "2026-02-19"
+    },
+    {
+      "id": "DM-CON-024",
+      "field": "earnings_surprise.consecutive_beats",
+      "value": 14,
+      "type": "H",
+      "source": "Insider Monkey, multiple sources",
+      "date": "2026-02-19"
+    },
+    {
+      "id": "DM-CON-025",
+      "field": "recent_changes.Argus_PT",
+      "value": "$175 -> $280 (Buy)",
+      "type": "H",
+      "source": "dailypolitical.com",
+      "date": "2026-02-05"
+    },
+    {
+      "id": "DM-CON-026",
+      "field": "recent_changes.Cantor_PT",
+      "value": "$265 -> $320 (Overweight)",
+      "type": "H",
+      "source": "dailypolitical.com",
+      "date": "2026-01-29"
+    },
+    {
+      "id": "DM-CON-027",
+      "field": "recent_changes.Citi_PT",
+      "value": "$265 -> $300 (Buy)",
+      "type": "H",
+      "source": "dailypolitical.com",
+      "date": "2026-01-29"
+    },
+    {
+      "id": "DM-CON-028",
+      "field": "Q2_FY2026.gross_margin_pct",
+      "value": 49.7,
+      "type": "H",
+      "source": "Company earnings report Jan 28, 2026",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-CON-029",
+      "field": "Q1_FY2026.gross_margin_pct",
+      "value": 50.6,
+      "type": "H",
+      "source": "Company earnings report Oct 22, 2025 / Lam Research newsroom",
+      "date": "2025-10-22"
+    },
+    {
+      "id": "DM-CON-030",
+      "field": "FY2025.annual_revenue_B",
+      "value": 18.4,
+      "type": "H",
+      "source": "Company filings (record revenue, +27% YoY)",
+      "date": "2025-07-23"
+    }
+  ],
+
+  "sources": [
+    "https://finance.yahoo.com/quote/LRCX/analysis/",
+    "https://stockanalysis.com/stocks/lrcx/forecast/",
+    "https://www.tipranks.com/stocks/lrcx/forecast",
+    "https://www.marketbeat.com/stocks/NASDAQ/LRCX/forecast/",
+    "https://www.marketscreener.com/quote/stock/LAM-RESEARCH-CORPORATION-4877/consensus/",
+    "https://www.benzinga.com/quote/LRCX/analyst-ratings",
+    "https://www.zacks.com/stock/research/LRCX/price-target-stock-forecast",
+    "https://www.nasdaq.com/market-activity/stocks/lrcx/earnings",
+    "https://www.nasdaq.com/market-activity/stocks/lrcx/analyst-research",
+    "https://www.insidermonkey.com/blog/lam-research-corporation-lrcx-a-bull-case-theory-9-1635884/",
+    "https://finance.yahoo.com/news/lam-research-corporation-lrcx-bull-165904289.html",
+    "https://www.cnbc.com/2025/09/02/morgan-stanley-downgrades-lam-research-sees-a-challenging-setup-in-2026.html",
+    "https://seekingalpha.com/news/4497037-applied-materials-lam-research-get-rating-upgrades-while-kla-cut-at-morgan-stanley",
+    "https://www.investing.com/news/analyst-ratings/lam-research-stock-rating-upgraded-by-wells-fargo-on-memory-demand-outlook-93CH-4449458",
+    "https://www.investing.com/news/analyst-ratings/lam-research-stock-price-target-raised-to-211-from-158-at-morgan-stanley-93CH-4450032",
+    "https://www.gurufocus.com/news/8563933/goldman-sachs-raises-price-target-for-lrcx-amid-continued-buy-rating-lrcx-stock-news",
+    "https://www.quiverquant.com/news/LAM+RESEARCH+($LRCX)+Releases+Q2+2026+Earnings,+Stock+Rises",
+    "https://www.marketbeat.com/earnings/reports/2025-10-22-lam-research-co-stock/",
+    "https://www.marketbeat.com/instant-alerts/lam-research-nasdaqlrcx-updates-q3-2026-earnings-guidance-2026-01-28/",
+    "https://www.tickerreport.com/banking-finance/13330965/lam-research-nasdaqlrcx-releases-q3-2026-earnings-guidance.html",
+    "https://finance.yahoo.com/news/lam-research-lrcx-q4-earnings-212002688.html",
+    "https://finance.yahoo.com/news/lam-research-lrcx-q3-earnings-212008519.html",
+    "https://stockstory.org/us/stocks/nasdaq/lrcx/news/earnings-call/lrcx-q3-deep-dive-ai-demand-and-memory-upgrades-drive-performance-amid-china-uncertainty",
+    "https://markets.financialcontent.com/stocks/article/stockstory-2026-1-29-lrcx-q4-deep-dive-ai-driven-demand-accelerates-revenue-manufacturing-expansion-underway",
+    "https://www.nasdaq.com/articles/can-ai-driven-foundry-demand-drive-lrcxs-systems-revenue-growth",
+    "https://public.com/stocks/lrcx/forecast-price-target",
+    "https://www.tradingview.com/symbols/NASDAQ-LRCX/forecast/",
+    "https://www.wallstreetzen.com/stocks/us/nasdaq/lrcx/stock-forecast",
+    "https://www.defenseworld.net/2026/02/18/rothschild-investment-llc-raises-stake-in-lam-research-corporation-lrcx.html",
+    "https://www.dailypolitical.com/2026/02/18/lam-research-nasdaqlrcx-shares-up-1-9-heres-why.html",
+    "https://newsroom.lamresearch.com/2025-10-22-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-September-28,-2025",
+    "https://www.barchart.com/story/news/255318/are-wall-street-analysts-bullish-on-lam-research-stock"
   ]
 }

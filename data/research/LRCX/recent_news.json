@@ -1,168 +1,548 @@
 {
-  "collection_date": "2026-02-07",
-  "agent": "A9",
-  "ticker": "LRCX",
-  "current_price": 230.90,
-  "news": [
+  "metadata": {
+    "ticker": "LRCX",
+    "company": "Lam Research Corporation",
+    "data_date": "2026-02-19",
+    "agent": "Agent C (News & Catalysts)",
+    "current_price": 240.09,
+    "market_cap_B": 299.8,
+    "exchange": "NASDAQ",
+    "supersedes": "Agent A9 collection dated 2026-02-07"
+  },
+
+  "key_news": [
     {
-      "date": "2026-02-04",
-      "headline": "Lam Research Q2 FY2026 earnings beat: EPS $1.27 vs $1.17 est, revenue $5.34B vs $5.21B est (+22% YoY)",
-      "source": "Investing.com / Seeking Alpha",
+      "date": "2026-02-17",
+      "headline": "Lam Research Deepens Investment in Boise to Support U.S. Semiconductor Manufacturing",
+      "summary": "Opened new 9,200 sq. ft. office in Boise, Idaho, initially supporting ~150 personnel focused on collaborative R&D and high-volume manufacturing of Micron's leading-edge memory technology. Part of multi-year strategy to increase operational and innovation velocity for AI-era chipmakers.",
       "sentiment": "positive",
-      "impact": "High",
-      "details": "Q3 FY2026 guidance: revenue $5.7B +/- $300M, non-GAAP gross margin 49% +/- 1pp, non-GAAP EPS $1.35 +/- $0.10. Guidance above consensus, driven by AI chip equipment demand."
+      "source": "Lam Research Newsroom",
+      "url": "https://newsroom.lamresearch.com/2026-02-17-Lam-Research-Deepens-Investment-in-Boise-to-Support-Projected-Growth-in-U-S-Semiconductor-Manufacturing"
     },
     {
-      "date": "2026-02-04",
-      "headline": "5 Revealing Analyst Questions From Lam Research's Q4 Earnings Call — focus on AI-driven demand sustainability",
-      "source": "StockStory / FinancialContent",
+      "date": "2026-02-17",
+      "headline": "Lam Research Announces Participation at Morgan Stanley TMT and Cantor Conferences",
+      "summary": "CFO Doug Bettinger will present at Morgan Stanley TMT Conference (March 3, 2026, 9:15 AM PST) and Cantor Global Technology & Industrial Growth Conference (March 11, 2026, 7:40 AM PDT). Live audio webcasts available via investor relations.",
       "sentiment": "neutral",
-      "impact": "Medium",
-      "details": "Analysts probed sustainability of AI equipment spending, China exposure, and advanced packaging growth trajectory."
+      "source": "PR Newswire / Lam Research Newsroom",
+      "url": "https://newsroom.lamresearch.com/2026-02-17-Lam-Research-Corporation-Announces-Participation-at-Upcoming-Conferences"
     },
     {
-      "date": "2026-02-03",
-      "headline": "Lam Research appoints Cadence CEO Anirudh Devgan to board; COO Patrick Lord retiring March 6, Sesha Varadarajan to assume COO role",
-      "source": "TipRanks / PR Newswire",
-      "sentiment": "positive",
-      "impact": "Medium",
-      "details": "Devgan joins Innovation and Technology Committee. COO transition is orderly — Varadarajan is a seasoned insider. Board strengthening with semiconductor design expertise."
+      "date": "2026-02-16",
+      "headline": "Sen. John Boozman Discloses Sale of LRCX Shares",
+      "summary": "U.S. Senator John Boozman disclosed sale of Lam Research shares. Congressional stock trading in semiconductor companies under heightened scrutiny.",
+      "sentiment": "slightly_negative",
+      "source": "The Markets Daily",
+      "url": "https://www.themarketsdaily.com/2026/02/16/sen-john-boozman-sells-off-shares-of-lam-research-corporation-nasdaqlrcx.html"
     },
     {
-      "date": "2026-02-06",
-      "headline": "Lam Research stock rebounds 1.6% to $213.12 after 8.83% prior-day drop amid semiconductor equipment sell-off",
-      "source": "TS2.tech",
-      "sentiment": "negative",
-      "impact": "High",
-      "details": "Steep 9% single-day drop driven by broad semiconductor equipment rotation. Stock hit intraday low of $205.11 before partial recovery. Indicates elevated volatility."
-    },
-    {
-      "date": "2026-02-07",
-      "headline": "Lam Research declares quarterly dividend of $0.26/share",
-      "source": "PR Newswire",
-      "sentiment": "neutral",
-      "impact": "Low",
-      "details": "Consistent with prior dividend policy. Annualized yield ~0.45% at current price. Part of 75-100% FCF return commitment."
-    },
-    {
-      "date": "2026-01-27",
-      "headline": "DeepSeek AI sell-off hits semiconductor equipment stocks — LRCX down 5.6%, KLA -6.3%, ASML -6.5%",
-      "source": "Yahoo Finance / Motley Fool",
-      "sentiment": "negative",
-      "impact": "High",
-      "details": "DeepSeek's $6M AI model raised questions about AI chip demand trajectory. Impact proved temporary — stocks rebounded within days. But highlighted market sensitivity to AI capex narrative."
-    },
-    {
-      "date": "2026-01-09",
-      "headline": "Lam Research leads AI infrastructure supercycle — WFE spending projections for 2026 revised to record $145B",
-      "source": "FinancialContent / MarketMinute",
-      "sentiment": "positive",
-      "impact": "High",
-      "details": "CEO Tim Archer expressed confidence that memory and semiconductor equipment spending remains robust in 2026, driven by AI-related demand across NAND, DRAM, and foundry/logic."
+      "date": "2026-02-09",
+      "headline": "Director Eric Brandt Sells 35,000 Shares ($7.9M)",
+      "summary": "Director Eric Brandt sold 35,000 shares for approximately $7,896,150. This follows a prior sale on Feb 6 of 18,000 shares for ~$4,140,000. Total Feb sales by Brandt: 53,000 shares (~$12M).",
+      "sentiment": "slightly_negative",
+      "source": "MarketBeat / TipRanks",
+      "url": "https://www.marketbeat.com/stocks/NASDAQ/LRCX/insider-trades/"
     },
     {
       "date": "2026-02-05",
-      "headline": "Lam Research announces multi-year collaboration with CEA-Leti on next-gen specialty devices (MEMS, 3D imaging, RF, photonics)",
-      "source": "Simply Wall St",
+      "headline": "Board Declares Quarterly Dividend of $0.26 Per Share; Sesha Varadarajan Appointed COO",
+      "summary": "Board approved quarterly dividend of $0.26/share. Sesha Varadarajan appointed Chief Operating Officer, succeeding Patrick Lord who retires March 6. Part of orderly leadership refreshment.",
       "sentiment": "positive",
-      "impact": "Medium",
-      "details": "Partnership targets applications in AI and high-performance computing. Expands SAM beyond traditional etch/deposition into specialty devices."
+      "source": "Lam Research Investor Relations / Simply Wall St",
+      "url": "https://investor.lamresearch.com/"
     },
     {
-      "date": "2026-02-06",
-      "headline": "Jim Cramer says 'Lam Research is the future' — highlights AI infrastructure positioning",
-      "source": "Yahoo Finance",
+      "date": "2026-02-03",
+      "headline": "Dr. Anirudh Devgan (Cadence CEO) Joins Board of Directors",
+      "summary": "Dr. Anirudh Devgan appointed to Lam Research Board. Devgan is CEO of Cadence Design Systems, bringing EDA and semiconductor design expertise to the board.",
       "sentiment": "positive",
-      "impact": "Low",
-      "details": "Media endorsement. Cramer bullish on Lam's positioning in AI chip manufacturing equipment cycle."
+      "source": "Simply Wall St / Lam Research",
+      "url": "https://simplywall.st/stocks/us/semiconductors/nasdaq-lrcx/lam-research/news/should-lam-researchs-new-ai-rd-alliance-and-board-appointmen"
+    },
+    {
+      "date": "2026-02-02",
+      "headline": "Lam Research and CEA-Leti Expand Multi-Year R&D Collaboration for Specialty Technologies",
+      "summary": "New multi-year agreement with CEA-Leti to accelerate pathfinding of new materials and processes for lower-power, high-performance specialty technology applications including MEMS, 3D imaging, sensors, RF, photonics, and quantum optics. Lam Prestis PLD system is integral to the research.",
+      "sentiment": "positive",
+      "source": "Lam Research Newsroom",
+      "url": "https://newsroom.lamresearch.com/2026-02-02-Lam-Research-and-CEA-Leti-Expand-Research-and-Development-Collaboration-to-Advance-Fabrication-of-Specialty-Technologies"
+    },
+    {
+      "date": "2026-01-28",
+      "headline": "Q2 FY2026 Earnings Beat: Revenue $5.34B, EPS $1.27 vs. $1.17 Expected",
+      "summary": "December quarter revenue of $5.34B (vs. $5.23B consensus), marking 10th consecutive quarter of growth. EPS $1.27 beat by $0.10. Gross margin 49.7% exceeded high end of guided range. Full year CY2025 revenue $20.6B (+27% YoY). Diluted EPS $4.89 (+49% YoY).",
+      "sentiment": "positive",
+      "source": "PR Newswire / Investing.com",
+      "url": "https://www.prnewswire.com/news-releases/lam-research-corporation-reports-financial-results-for-the-quarter-ended-december-28-2025-302673080.html"
+    },
+    {
+      "date": "2026-01-28",
+      "headline": "Q3 FY2026 Guidance: Revenue $5.7B, EPS $1.35; WFE to Reach $135B in CY2026",
+      "summary": "March quarter guidance: revenue $5.7B (+/-$300M), gross margin 49% (+/-1pp), operating margin 34% (+/-1pp), diluted EPS $1.35 (+/-$0.10). CY2026 WFE spending forecast >20% growth to $135B from $110B in CY2025.",
+      "sentiment": "positive",
+      "source": "Lam Research Earnings Call / Seeking Alpha",
+      "url": "https://seekingalpha.com/news/4543023-lam-research-q2-2026-earnings-preview"
+    },
+    {
+      "date": "2026-01-28",
+      "headline": "China Revenue Expected Below 30% in CY2026; 50% Affiliate Rule Creates ~$600M Headwind",
+      "summary": "Management expects China revenue mix to decline below 30% of total in CY2026, down from 43% in Q1 FY2026 ($2.28B). Beijing's 50% affiliate rule (requiring chipmakers to use >=50% domestic equipment) creates ~$600M CY2026 revenue headwind (~$200M Q2 impact). Lam expects to offset with stronger global AI-driven demand from Taiwan, Korea, and U.S.",
+      "sentiment": "negative",
+      "source": "Seeking Alpha / Fintool",
+      "url": "https://seekingalpha.com/news/4507247-lam-research-anticipates-china-revenue-below-30-percent-in-2026-as-ai-drives-record-5b"
+    },
+    {
+      "date": "2026-01-27",
+      "headline": "DeepSeek AI Sell-off Hits Semiconductor Equipment Stocks",
+      "summary": "LRCX down 5.6%, KLA -6.3%, ASML -6.5%. DeepSeek's $6M AI model raised questions about AI chip demand trajectory. Impact proved temporary with stocks rebounding within days, but highlighted market sensitivity to AI capex narrative shifts.",
+      "sentiment": "negative",
+      "source": "Yahoo Finance / Motley Fool",
+      "url": "https://finance.yahoo.com/quote/LRCX/"
+    },
+    {
+      "date": "2026-01-10",
+      "headline": "Multiple Analysts Raise LRCX Price Targets; Consensus 'Strong Buy'",
+      "summary": "25 analysts maintain average 'Strong Buy' rating. Forward P/E at 35.93x, above 3- and 5-year averages. Stock appreciated 185% in 12 months ending Feb 2026.",
+      "sentiment": "positive",
+      "source": "StocksToTrade / Barchart",
+      "url": "https://stockstotrade.com/news/lamresearchcorporation-lrcx-news-2026_01_10/"
     },
     {
       "date": "2024-12-02",
-      "headline": "Lam Research comments on newly announced export regulations — impact 'broadly consistent with prior expectations'",
-      "source": "PR Newswire / Lam Research Newsroom",
+      "headline": "Lam Research Comments on New U.S. Export Regulations",
+      "summary": "Dec 2024 U.S. export controls expansion. 50% affiliate rule restricts shipments to specific Chinese customers. Lam stated impact 'broadly consistent with prior expectations'. Estimated $200M Q2 revenue drag, ~$600M CY2026 drag.",
       "sentiment": "negative",
-      "impact": "High",
-      "details": "Dec 2024 U.S. export controls expansion. 50% affiliate rule restricts shipments to specific Chinese customers. Estimated $200M Q2 revenue drag, ~$600M CY2026 drag. Suppliers must find non-Chinese alternatives by end of 2025 or lose status."
-    },
-    {
-      "date": "2025-10-01",
-      "headline": "China retaliates with export controls on rare-earth metals and Chinese version of '50% rule'",
-      "source": "Lexology / AlixPartners",
-      "sentiment": "negative",
-      "impact": "Medium",
-      "details": "China's Ministry of Commerce broadened export controls on rare earths and created deny-list mechanism. Potential supply chain disruption for semiconductor equipment manufacturers."
+      "source": "Lam Research Newsroom / Nikkei Asia",
+      "url": "https://newsroom.lamresearch.com/2024-12-02-Lam-Research-Corporation-Comments-on-Newly-Announced-Export-Regulations"
     }
   ],
+
   "upcoming_catalysts": [
     {
+      "date": "2026-03-03",
+      "event": "Morgan Stanley TMT Conference (CFO Doug Bettinger presentation, 9:15 AM PST)",
+      "expected_impact": "Medium - Potential for updated guidance commentary, AI demand outlook, China headwind details"
+    },
+    {
       "date": "2026-03-06",
-      "event": "COO transition: Patrick Lord retires, Sesha Varadarajan assumes COO role",
-      "expected_impact": "Neutral — orderly insider transition, already announced",
-      "impact_magnitude": "Low",
-      "timeline": "Imminent"
+      "event": "COO Transition: Patrick Lord retires, Sesha Varadarajan assumes COO role",
+      "expected_impact": "Low - Orderly insider transition, already announced and priced in"
+    },
+    {
+      "date": "2026-03-11",
+      "event": "Cantor Global Technology & Industrial Growth Conference (CFO Doug Bettinger, 7:40 AM PDT)",
+      "expected_impact": "Medium - Additional color on WFE outlook, advanced packaging growth trajectory"
     },
     {
       "date": "2026-04-29",
-      "event": "Q3 FY2026 earnings report (estimated)",
-      "expected_impact": "High — guided revenue $5.7B (+7% QoQ), EPS $1.35. Beat/miss will be key for stock direction given elevated valuation",
-      "impact_magnitude": "High",
-      "timeline": "~11 weeks"
+      "event": "Q3 FY2026 Earnings Report (March quarter; guided $5.7B revenue, $1.35 EPS)",
+      "expected_impact": "High - Key test of whether China headwind is offset by non-China demand; WFE trajectory validation; advanced packaging 40%+ growth claim"
     },
     {
       "date": "2026-H1",
-      "event": "Potential new U.S. export control tightening under Trump administration",
-      "expected_impact": "Negative — could expand China revenue restrictions beyond current $600M CY2026 drag estimate",
-      "impact_magnitude": "High",
-      "timeline": "Uncertain, could be any time in 2026"
+      "event": "50% Affiliate Rule Full Impact Assessment / Potential New U.S. Export Control Tightening",
+      "expected_impact": "High - Beijing's mandate for >=50% domestic equipment in new Chinese fabs; ~$600M CY2026 revenue headwind. Additional Trump administration restrictions possible."
     },
     {
       "date": "2026-H1",
-      "event": "WFE spending cycle inflection — industry consensus $145B for CY2026",
-      "expected_impact": "Positive if realized — validates AI-driven equipment supercycle thesis",
-      "impact_magnitude": "High",
-      "timeline": "Ongoing throughout 2026"
-    },
-    {
-      "date": "2026-H2",
-      "event": "NAND recovery acceleration and DRAM/HBM capacity expansion",
-      "expected_impact": "Positive — Lam expects stronger H2 2026 driven by NAND recovery, DRAM fab readiness, and advanced logic timing",
-      "impact_magnitude": "High",
-      "timeline": "Second half 2026"
+      "event": "CEA-Leti R&D Partnership Milestones (MEMS, 3D Imaging, Quantum Optics)",
+      "expected_impact": "Low-Medium - Longer-term revenue diversification into specialty semiconductors; Lam Prestis PLD system commercialization progress"
     },
     {
       "date": "2026-ongoing",
-      "event": "$10B share repurchase program execution (approved May 2024)",
-      "expected_impact": "Positive — sustained EPS accretion. $1.29B bought back in Q3 FY2025 alone. 75-100% FCF return target",
-      "impact_magnitude": "Medium",
-      "timeline": "Ongoing, multi-year program"
+      "event": "Advanced Packaging Business Expected to Grow >40% in 2026",
+      "expected_impact": "High - Market leadership in electroplating and TSV etch; directly tied to HBM/AI packaging demand"
     },
     {
-      "date": "2026-Q1",
-      "event": "Advanced packaging equipment demand ramp (HBM, CoWoS)",
-      "expected_impact": "Positive — Lam highlighted packaging gains in Q2 FY2026 earnings call as key growth driver",
-      "impact_magnitude": "Medium",
-      "timeline": "Near-term, already ramping"
+      "date": "2026-ongoing",
+      "event": "WFE Market Growth to $135B (>20% YoY from $110B in CY2025)",
+      "expected_impact": "High - Lam's 45% plasma etch market share positions it for outsized share of incremental WFE spending"
+    },
+    {
+      "date": "2026-H2",
+      "event": "NAND Recovery Acceleration and DRAM/HBM Capacity Expansion",
+      "expected_impact": "High - Lam expects stronger H2 2026 driven by NAND recovery, DRAM fab readiness, and advanced logic timing"
+    },
+    {
+      "date": "2026-ongoing",
+      "event": "$10B Share Repurchase Program Execution (Approved May 2024)",
+      "expected_impact": "Medium - Sustained EPS accretion. 75-100% FCF return commitment"
     }
   ],
-  "key_themes": {
-    "bull_case": [
-      "AI infrastructure supercycle driving record WFE spending ($145B CY2026)",
-      "Strong earnings momentum: 22% YoY revenue growth, guidance raised",
-      "Advanced packaging (HBM/CoWoS) expanding addressable market",
-      "Aggressive $10B buyback program providing EPS support",
-      "All three device segments (NAND, DRAM, foundry/logic) positioned for growth"
+
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "date": "2026-02-09",
+        "insider": "Eric Brandt (Director)",
+        "type": "Sale",
+        "shares": 35000,
+        "value_usd": 7896150,
+        "price_per_share_est": 225.60
+      },
+      {
+        "date": "2026-02-06",
+        "insider": "Eric Brandt (Director)",
+        "type": "Sale",
+        "shares": 18000,
+        "value_usd": 4140000,
+        "price_per_share_est": 230.00
+      },
+      {
+        "date": "2025-12-17",
+        "insider": "Timothy Archer (President & CEO)",
+        "type": "Sale",
+        "shares": 163300,
+        "value_usd": 26758338,
+        "price_per_share_est": 163.80
+      },
+      {
+        "date": "2025-12-17",
+        "insider": "Multiple insiders",
+        "type": "Sale + Conversion",
+        "shares": null,
+        "value_usd": 28760915,
+        "note": "4 transactions totaling $28.76M: 2 stock sales ($26.76M) + 2 conversions ($2.0M)"
+      }
     ],
-    "bear_case": [
-      "China export controls creating ~$600M CY2026 revenue drag",
-      "Elevated valuation (fwd P/E ~36x) leaves little room for disappointment",
-      "DeepSeek episode showed market vulnerability to AI capex narrative shifts",
-      "Semiconductor equipment stocks are 'crowded trade' with negative technical divergences",
-      "China rare-earth retaliation could disrupt supply chains"
-    ]
+    "net_insider_sentiment": "Net Negative - 0 open market purchases and 10 sales in past 6 months. Director Eric Brandt sold $12M in Feb 2026. CEO Timothy Archer sold $26.8M in Dec 2025. No open market purchases by any insider. Pattern consistent with routine selling at elevated valuations (stock up 185% in 12 months ending Feb 2026).",
+    "fmp_quarterly_summary": {
+      "Q1_2026": {
+        "acquired_transactions": 7,
+        "disposed_transactions": 7,
+        "total_acquired_shares": 546105,
+        "total_disposed_shares": 364070,
+        "open_market_purchases": 0,
+        "open_market_sales": 0,
+        "note": "Acquired transactions appear to be option exercises/RSU vests, not open market purchases"
+      },
+      "Q4_2025": {
+        "acquired_transactions": 14,
+        "disposed_transactions": 12,
+        "total_acquired_shares": 140232,
+        "total_disposed_shares": 340454,
+        "open_market_purchases": 0,
+        "open_market_sales": 7
+      }
+    }
   },
-  "data_sources": [
-    "Seeking Alpha", "Yahoo Finance", "Investing.com", "TipRanks", "PR Newswire",
-    "Simply Wall St", "Barchart", "Benzinga", "Motley Fool", "FinancialContent",
-    "StockStory", "TS2.tech", "Lexology", "AlixPartners", "Sourceability", "Deloitte"
+
+  "sec_filings": [
+    {
+      "filing_type": "10-Q",
+      "filing_date": "2026-01-29",
+      "period_end": "2025-12-28",
+      "fiscal_quarter": "Q2 FY2026",
+      "description": "Quarterly report for quarter ended December 28, 2025 (most recent quarterly filing)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000707549/000070754926000009/lrcx-20251228.htm"
+    },
+    {
+      "filing_type": "8-K",
+      "filing_date": "2025-11-06",
+      "period_end": "2025-11-04",
+      "items": ["3.03", "5.02", "5.03", "5.07", "9.01"],
+      "description": "Material event: dividend declaration, director changes, bylaws amendment",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000707549/000070754925000094/lrcx-20251104.htm"
+    },
+    {
+      "filing_type": "10-Q",
+      "filing_date": "2025-10-24",
+      "period_end": "2025-09-28",
+      "fiscal_quarter": "Q1 FY2026",
+      "description": "Quarterly report for quarter ended September 28, 2025",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000707549/000070754925000085/lrcx-20250928.htm"
+    },
+    {
+      "filing_type": "8-K",
+      "filing_date": "2025-10-22",
+      "period_end": "2025-10-22",
+      "items": ["2.02", "9.01"],
+      "description": "Q1 FY2026 earnings release",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000707549/000070754925000082/lrcx-20251022.htm"
+    },
+    {
+      "filing_type": "10-K",
+      "filing_date": "2025-08-11",
+      "period_end": "2025-06-29",
+      "fiscal_year": "FY2025",
+      "description": "Annual report for fiscal year ended June 29, 2025 (most recent annual filing). Current FY ends June 28, 2026 (52 weeks).",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000707549/000070754925000075/lrcx-20250629.htm"
+    },
+    {
+      "filing_type": "8-K",
+      "filing_date": "2025-07-30",
+      "period_end": "2025-07-30",
+      "items": ["2.02", "9.01"],
+      "description": "Q4 FY2025 earnings release",
+      "url": "https://www.sec.gov/Archives/edgar/data/0000707549/000070754925000068/lrcx-20250730.htm"
+    }
+  ],
+
+  "key_themes": {
+    "ai_driven_wfe_supercycle": "WFE spending forecast >20% growth to $135B in CY2026 from $110B in CY2025. Lam holds ~45% plasma etch market share. AI driving increased etch/deposition intensity per wafer across NAND, DRAM, and foundry/logic.",
+    "china_headwind": "50% affiliate rule + export restrictions = ~$600M CY2026 revenue headwind. China revenue expected <30% of total in CY2026, down from 43% in Q1 FY2026 ($2.28B) and 37.4% of FY2025 total. Management confident non-China demand offsets.",
+    "advanced_packaging_growth": "Advanced packaging business (electroplating, TSV etch) expected to grow >40% in 2026. Direct beneficiary of HBM, chiplet, and AI packaging trends.",
+    "valuation_stretch": "Forward P/E at 35.93x, well above 3- and 5-year averages. Stock up 185% in 12 months ending Feb 2026. 25 analysts maintain 'Strong Buy' but stretched multiples noted as risk.",
+    "leadership_refreshment": "New COO (Sesha Varadarajan), new board member (Anirudh Devgan, CEO of Cadence), multi-year CEA-Leti R&D partnership. Signals strategic positioning for next growth phase.",
+    "specialty_tech_diversification": "CEA-Leti partnership targets MEMS, 3D imaging, sensors, RF, photonics, quantum optics via Lam Prestis PLD system. Longer-term SAM expansion beyond leading-edge logic/memory.",
+    "deepseek_narrative_risk": "Jan 27 DeepSeek sell-off (LRCX -5.6%) demonstrated vulnerability of AI capex narrative. Any evidence of AI spending deceleration or efficiency gains reducing chip demand = outsized stock reaction."
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-NEW-001",
+      "field": "Q2 FY2026 Revenue",
+      "value": "$5.34B",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Release (PR Newswire)",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-002",
+      "field": "Q2 FY2026 EPS",
+      "value": "$1.27 (vs. $1.17 consensus)",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Release",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-003",
+      "field": "Q2 FY2026 Gross Margin",
+      "value": "49.7%",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Release",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-004",
+      "field": "Q3 FY2026 Revenue Guidance",
+      "value": "$5.7B +/- $300M",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Call",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-005",
+      "field": "Q3 FY2026 EPS Guidance",
+      "value": "$1.35 +/- $0.10",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Call",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-006",
+      "field": "Q3 FY2026 Gross Margin Guidance",
+      "value": "49% +/- 1pp",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Call",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-007",
+      "field": "Q3 FY2026 Operating Margin Guidance",
+      "value": "34% +/- 1pp",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Call",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-008",
+      "field": "CY2025 Full Year Revenue",
+      "value": "$20.6B (up 27% YoY)",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Call",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-009",
+      "field": "CY2025 Full Year Diluted EPS",
+      "value": "$4.89 (up 49% YoY)",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Call",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-010",
+      "field": "CY2026 WFE Spending Forecast",
+      "value": "$135B (>20% growth from $110B in CY2025)",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Call / Management Guidance",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-011",
+      "field": "50% Affiliate Rule CY2026 Revenue Headwind",
+      "value": "~$600M (~$200M Q2 impact)",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Call / Seeking Alpha / Fintool",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-012",
+      "field": "China Revenue Target CY2026",
+      "value": "<30% of total (down from 43% in Q1 FY2026)",
+      "type": "H",
+      "source": "Seeking Alpha / Lam Research Earnings Call",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-013",
+      "field": "Q1 FY2026 China Revenue",
+      "value": "$2.28B (43% of total, up 46.5% YoY)",
+      "type": "H",
+      "source": "Fintool / Seeking Alpha",
+      "date": "2025-10-22"
+    },
+    {
+      "id": "DM-NEW-014",
+      "field": "Plasma Etch Market Share",
+      "value": "~45%",
+      "type": "M",
+      "source": "AInvest / Industry estimates",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-NEW-015",
+      "field": "Advanced Packaging Business Growth Outlook CY2026",
+      "value": ">40% growth expected",
+      "type": "H",
+      "source": "Lam Research Q2 FY2026 Earnings Call",
+      "date": "2026-01-28"
+    },
+    {
+      "id": "DM-NEW-016",
+      "field": "Forward P/E Ratio",
+      "value": "35.93x (above 3- and 5-year averages)",
+      "type": "M",
+      "source": "Barchart / Seeking Alpha",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-NEW-017",
+      "field": "12-Month Stock Price Return",
+      "value": "+185% (as of Feb 13, 2026)",
+      "type": "M",
+      "source": "Seeking Alpha",
+      "date": "2026-02-13"
+    },
+    {
+      "id": "DM-NEW-018",
+      "field": "Quarterly Dividend",
+      "value": "$0.26 per share",
+      "type": "H",
+      "source": "Lam Research Board Declaration",
+      "date": "2026-02-05"
+    },
+    {
+      "id": "DM-NEW-019",
+      "field": "Insider Sales (Eric Brandt, Feb 2026)",
+      "value": "53,000 shares, ~$12.04M total",
+      "type": "H",
+      "source": "MarketBeat / TipRanks",
+      "date": "2026-02-09"
+    },
+    {
+      "id": "DM-NEW-020",
+      "field": "Insider Sales (CEO Timothy Archer, Dec 2025)",
+      "value": "163,300 shares, ~$26.76M",
+      "type": "H",
+      "source": "MarketBeat / QuiverQuant",
+      "date": "2025-12-17"
+    },
+    {
+      "id": "DM-NEW-021",
+      "field": "Next Earnings Date",
+      "value": "April 29, 2026 (Q3 FY2026)",
+      "type": "H",
+      "source": "Nasdaq / MarketBeat",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-NEW-022",
+      "field": "Boise Office",
+      "value": "9,200 sq. ft., ~150 personnel initially, supporting Micron memory",
+      "type": "H",
+      "source": "Lam Research Newsroom",
+      "date": "2026-02-17"
+    },
+    {
+      "id": "DM-NEW-023",
+      "field": "Current Fiscal Year End",
+      "value": "June 28, 2026 (52 weeks)",
+      "type": "H",
+      "source": "SEC 10-K filing",
+      "date": "2025-08-11"
+    },
+    {
+      "id": "DM-NEW-024",
+      "field": "Current Stock Price",
+      "value": "$240.09",
+      "type": "H",
+      "source": "FMP Quote API",
+      "date": "2026-02-19"
+    },
+    {
+      "id": "DM-NEW-025",
+      "field": "Market Cap",
+      "value": "$299.8B",
+      "type": "H",
+      "source": "FMP Quote API",
+      "date": "2026-02-19"
+    },
+    {
+      "id": "DM-NEW-026",
+      "field": "Analyst Consensus",
+      "value": "Strong Buy (25 analysts)",
+      "type": "M",
+      "source": "Barchart / Multiple sources",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-NEW-027",
+      "field": "FY2025 China Revenue Contribution",
+      "value": "37.4% of total sales",
+      "type": "H",
+      "source": "Fintool / Lam Research 10-K",
+      "date": "2025-08-11"
+    },
+    {
+      "id": "DM-NEW-028",
+      "field": "CEA-Leti Partnership Scope",
+      "value": "Multi-year R&D: MEMS, 3D imaging, sensors, RF, photonics, quantum optics (Lam Prestis PLD system)",
+      "type": "H",
+      "source": "Lam Research Newsroom",
+      "date": "2026-02-02"
+    },
+    {
+      "id": "DM-NEW-029",
+      "field": "Consecutive Quarters of Revenue Growth",
+      "value": "10 (as of Q2 FY2026)",
+      "type": "H",
+      "source": "Lam Research Earnings Release",
+      "date": "2026-01-28"
+    }
+  ],
+
+  "sources": [
+    "https://newsroom.lamresearch.com/2026-02-17-Lam-Research-Deepens-Investment-in-Boise-to-Support-Projected-Growth-in-U-S-Semiconductor-Manufacturing",
+    "https://newsroom.lamresearch.com/2026-02-17-Lam-Research-Corporation-Announces-Participation-at-Upcoming-Conferences",
+    "https://newsroom.lamresearch.com/2026-02-02-Lam-Research-and-CEA-Leti-Expand-Research-and-Development-Collaboration-to-Advance-Fabrication-of-Specialty-Technologies",
+    "https://www.prnewswire.com/news-releases/lam-research-corporation-reports-financial-results-for-the-quarter-ended-december-28-2025-302673080.html",
+    "https://seekingalpha.com/news/4543023-lam-research-q2-2026-earnings-preview",
+    "https://seekingalpha.com/news/4507247-lam-research-anticipates-china-revenue-below-30-percent-in-2026-as-ai-drives-record-5b",
+    "https://finance.yahoo.com/news/lam-cea-leti-r-d-070921437.html",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-lam-research-q2-2026-sees-earnings-beat-stock-rises-93CH-4471674",
+    "https://www.marketbeat.com/stocks/NASDAQ/LRCX/insider-trades/",
+    "https://www.tipranks.com/news/insider-trading/top-lam-research-insider-makes-major-move-with-multi-million-dollar-stock-sale-insider-trading",
+    "https://www.nasdaq.com/market-activity/stocks/lrcx/earnings",
+    "https://www.barchart.com/story/news/36864672/lrcx-outperformed-in-2025-but-valuation-and-options-activity-flag-2026-risks",
+    "https://simplywall.st/stocks/us/semiconductors/nasdaq-lrcx/lam-research/news/lam-research-ties-new-leaders-and-cea-leti-deal-to-ai-demand",
+    "https://fintool.com/news/china-50-percent-domestic-chip-equipment",
+    "https://investor.lamresearch.com/",
+    "https://www.themarketsdaily.com/2026/02/16/sen-john-boozman-sells-off-shares-of-lam-research-corporation-nasdaqlrcx.html",
+    "https://finance.yahoo.com/news/lam-research-lrcx-announces-breakthrough-134337370.html",
+    "https://fintool.com/app/research/companies/LRCX/earnings/Q1%202026",
+    "https://stockstotrade.com/news/lamresearchcorporation-lrcx-news-2026_01_10/",
+    "https://newsroom.lamresearch.com/2024-12-02-Lam-Research-Corporation-Comments-on-Newly-Announced-Export-Regulations"
   ]
 }
