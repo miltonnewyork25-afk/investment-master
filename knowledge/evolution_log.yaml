@@ -1,0 +1,68 @@
+# Evolution Log — 进化历史记录
+# 每份报告Complete后由 post_report_autopsy.sh 自动追加
+# AI读取最近3条用于Phase -1 + 进化提议
+# 质量趋势: 连续3份↑=继续 | 连续2份↓=审查 | chars↑quality平=简化
+
+entries:
+
+  # --- 历史种子数据 (从17份报告回溯提取) ---
+
+  - ticker: "APP"
+    date: "2026-02-16"
+    quality: 4.1
+    chars: "452K"
+    compliance: "PASS"
+    dm_anchors: 472
+    top_technique: "D30归因偏差_客户漏斗重建"
+    top_lesson: "市值波动即时回流+DM锚点ID全局唯一"
+    evolution_proposed: "组装七步检查清单v2.0"
+    evolution_status: approved
+
+  - ticker: "RBLX"
+    date: "2026-02-16"
+    quality: 3.6
+    chars: "384K"
+    compliance: "PASS"
+    dm_anchors: 613
+    top_technique: "SBC四源交叉验证"
+    top_lesson: "单源数据不可信+P0数据错误每Phase放大10x"
+    evolution_proposed: "深层质量协议L1/L2/L3"
+    evolution_status: approved
+
+  - ticker: "AMAT"
+    date: "2026-02-17"
+    quality: 3.8
+    chars: "304K"
+    compliance: "PASS"
+    dm_anchors: 625
+    top_technique: "方法独立性审计"
+    top_lesson: "五方法中3个共享假设=实际2.5方法"
+    evolution_proposed: "v15.0分析深度Skill+双向校准"
+    evolution_status: approved
+
+  - ticker: "MSFT"
+    date: "2026-02-17"
+    quality: 3.5
+    chars: "316K"
+    compliance: "PASS"
+    dm_anchors: 400
+    top_technique: "CapEx传导链五阶建模"
+    top_lesson: "WACC±100bps跨3评级区间=假精度+LLM不能做算术"
+    evolution_proposed: "v16.0质量保障Skill+verify_dcf_arithmetic.py"
+    evolution_status: approved
+
+  - ticker: "KLAC"
+    date: "2026-02-17"
+    quality: 4.5
+    chars: "254K"
+    compliance: "PASS"
+    dm_anchors: 205
+    top_technique: "信念反演_TAM不可能性证明"
+    top_lesson: "密度>体量+v1.0无补丁>v1.x多轮修正"
+    evolution_proposed: "方法独立性审计标准化+偏差审计强制校正"
+    evolution_status: approved
+
+  # --- 质量趋势 ---
+  # APP(4.1) → RBLX(3.6)↓ → AMAT(3.8)↑ → MSFT(3.5)↓ → KLAC(4.5)↑↑
+  # 波动大，最近一份最高 — 密度策略(254K)优于体量策略(452K)
+  # 关键转折: KLAC采用v1.0一次性写作+传统框架，得分最高

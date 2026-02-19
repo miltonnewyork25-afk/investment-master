@@ -127,12 +127,11 @@
 
 ## Phase自动化
 
-**一键完成**: `bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}`
+**一键Phase**: `bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}`
 **紧急保存**: `bash scripts/context_save.sh [TICKER]`
-**自动执行**: FastGate → checkpoint v2.0 → git commit
-**省context**: ~25K/Phase (原~68K → 新~28K, -59%)
+**报告验尸**: `bash scripts/post_report_autopsy.sh {TICKER} {REPORT}` — Complete后自动执行，启动进化循环
 
-**详见**: `docs/checkpoint_protocol.md` v2.0
+**详见**: `docs/checkpoint_protocol.md` v2.0 + `docs/evolution_system.md`
 
 ## 铁律 G: Context主动管理
 
@@ -207,6 +206,7 @@ bash scripts/find_best_reference.sh {TICKER}
 | **DAG编排** | `docs/dag_orchestrator.md` (DAG-0~7问题树+EC绑定) |
 | **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
 | **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
+| **进化系统** | `docs/evolution_system.md` + `knowledge/evolution_log.yaml` + `scripts/post_report_autopsy.sh` |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
 | **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
 | **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
