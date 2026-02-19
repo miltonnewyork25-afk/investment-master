@@ -6,9 +6,9 @@ worktree: "半导体"
 industry: "半导体"
 last_updated: "2026-02-20T01:00:00+08:00"
 
-current_phase: 3
+current_phase: 4
 phase_status: complete
-phases_completed: [-1, -0.5, 0, 1, 2, 3]
+phases_completed: [-1, -0.5, 0, 1, 2, 3, 4]
 
 target_chars: 308840
 target_range: "247K-386K"
@@ -25,7 +25,7 @@ quick_ref:
     - "信念反演(标准方法)"
   dm_anchors: 261
   reference_report: AMAT
-  cq_weighted_confidence: 46.0
+  cq_weighted_confidence: 50.5
 
 phase_1_summary:
   agents: "3 agents completed (A-business/B-risk/C-valuation)"
@@ -90,6 +90,29 @@ phase_2_summary:
     - "5 WFE cycles: P/E peak never >20x, current 49.3x unprecedented"
     - "Dual-kill: WFE -20% → stock -50% (P/E compression dominates 2/3)"
     - "Probability-weighted target $187 (-22% vs $240)"
+
+phase_4_summary:
+  agents: "1 agent completed (red-team-suite v2.0)"
+  staging_files:
+    - "P4_red_team_rt1_rt7.md (35,406 chars, RT-1~RT-7 + calibration + gate)"
+  total_chars: 35406
+  new_dm_anchors: 0
+  mermaid_count: 5
+  cq_changes: "CQ1 +3pp, CQ2 0pp, CQ3 +3pp, CQ4 +2pp, CQ5 0pp, CQ6 +6pp"
+  effectiveness:
+    avg_absolute_cq_change: "2.33pp"
+    new_findings: "4/7"
+    rt2_direction: "challenging (counter-bearish)"
+    verdict: "effective (marginal-to-effective)"
+  key_findings:
+    - "B6 (P/E 49.3x) most fragile wall; B1+B6 dual-kill 40-50% prob in 3yr"
+    - "RT-2: moderate bearish confirmation bias detected (weighted 2.9:1)"
+    - "RT-4: 'P/E never >20x' inaccurate (FY2021 23.8x, FY2024 36.4x) — key P2 data error"
+    - "RT-7: CSBG transformation bull case SOTP $280-320B ≈ market cap — not obviously bubble"
+    - "Boiling frog 24M path: $240→$130-170 (-29~46%) with detection signals"
+    - "CQ6 largest correction +6pp (28→34%): data quality + overlapping evidence + over-pessimism"
+    - "Rating direction maintained: 审慎关注, but expected return revised from ~-15% to ~-11%"
+    - "WACC sensitivity: ±100bps spans rating categories → P5 must present dual-anchor"
 
 phase_0_summary:
   mcp_data: "12 endpoints collected (income/balance/cashflow/ratios/metrics/estimates/dcf/stock/compare/market)"
