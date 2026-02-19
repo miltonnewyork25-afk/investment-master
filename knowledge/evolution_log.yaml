@@ -62,6 +62,18 @@ entries:
     evolution_proposed: "方法独立性审计标准化+偏差审计强制校正"
     evolution_status: approved
 
+  - ticker: "AAPL"
+    date: "2026-02-19"
+    quality: 2.8
+    chars: "66K"
+    compliance: "PASS"
+    dm_anchors: 148
+    top_technique: "无突出创新"
+    top_lesson: "外部输入变化(用户直接指令)导致全部准备跳过=Phase -1/-0.5零执行"
+    evolution_proposed: "preflight_gate.sh强制门控+铁律I代码强制执行"
+    evolution_status: approved
+    failure_flag: true  # 质量最低记录, 触发系统级修复
+
   # --- 质量趋势 ---
   # APP(4.1) → RBLX(3.6)↓ → AMAT(3.8)↑ → MSFT(3.5)↓ → KLAC(4.5)↑↑
   # 波动大，最近一份最高 — 密度策略(254K)优于体量策略(452K)
