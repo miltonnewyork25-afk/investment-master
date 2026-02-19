@@ -74,8 +74,35 @@ entries:
     evolution_status: approved
     failure_flag: true  # 质量最低记录, 触发系统级修复
 
+  - ticker: "AAPL"
+    date: "2026-02-19"
+    quality: 3.79
+    chars: "303K"
+    compliance: "FAILED(3E/4W, 格式检测问题非内容缺失)"
+    dm_anchors: 263
+    top_technique: "循环依赖检测(B1↔B8信念互依赖)+4.5倍增长断层"
+    top_lesson: "方法伪独立是系统性问题(5方法实际2独立)+多层组装引入冗余"
+    evolution_proposed: "EVO-AAPL-001~004: KS/VP检测扩展+强制独立性审计+组装简化+循环依赖检测"
+    evolution_status: approved  # 2026-02-19 全部实施
+    redo_flag: true  # 旧AAPL 2.8/5 → 新AAPL 3.79/5 完全重做
+
   # --- 质量趋势 ---
   # APP(4.1) → RBLX(3.6)↓ → AMAT(3.8)↑ → MSFT(3.5)↓ → KLAC(4.5)↑↑ → AAPL(2.8)↓↓↓
   # AAPL是系统性失败(外部输入变化+零代码强制执行), 非框架退化
   # 修复: 纵深防御架构(4层) — tier3_launch + preflight_gate + phase_sentinel + CG
   # 密度策略(254K)仍优于体量策略(452K), 但零准备(66K)是灾难
+
+  - ticker: "AAPL"
+    date: "2026-02-19"
+    report: "AAPL_Deep_Analysis_Complete_2026-02-19.md"
+    chars: "303K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "FAILED"
+    dm_anchors: 263
+    scorecard: "N/A"
+    near_miss_score: 27
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
