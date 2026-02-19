@@ -47,7 +47,6 @@
 | `scripts/post_report_autopsy.sh` | 自动测量编排器 (v2.0) | 报告Complete后 |
 | `scripts/evolution_trend.sh` | 质量趋势分析+警告 | autopsy内联 / 独立运行 |
 | `scripts/update_excellence_catalog.sh` | 冠军对比+升级建议 (v2.0) | autopsy后AI运行 |
-| `scripts/shadow_portfolio_check.sh` | 影子组合价格追踪 | 每季度 |
 | `scripts/find_relevant_knowledge.sh` | Phase -1知识检索+进化上下文 | 新报告启动时 |
 | `scripts/excellence_scout.sh` | Phase级最佳实践推荐 | 各Phase启动时 |
 
@@ -79,7 +78,6 @@ AI手动填入evolution_log中的null字段:
 - `quality`: 1.0-5.0 评分
 - `top_technique`: 本报告最强技术创新
 - `top_lesson`: 本报告最重要教训
-- `shadow.price_at_report`: 报告完成时的股价
 - `evolution_proposed`: AI生成的进化建议
 
 ### Step 3: 进化提议
@@ -97,21 +95,6 @@ AI根据测量结果+教训+趋势，提出具体变更:
 bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}
 ```
 自动输出: Top-3相似公司 + evolution_log最近3条趋势+教训+待审批提议
-
----
-
-## 影子组合 (Shadow Portfolio)
-
-```bash
-bash scripts/shadow_portfolio_check.sh
-```
-- 读取所有evolution_log中的shadow条目
-- 计算距报告日天数，标识需3m/6m/12m价格更新的条目
-- 输出AI用MCP工具填入的具体操作清单
-- 有足够数据后，计算校准统计 (方向准确率/幅度偏差/系统偏差)
-
-**回顾频率**: 每季度运行一次
-**校准信号**: 系统性高估/低估 → 检查WACC/折现率是否偏高/偏低
 
 ---
 
@@ -174,5 +157,4 @@ Phase 1-3: 分析执行（应用推荐技术，避免已知失败模式）
 Phase 4:  red-team-suite + 演绎分析
 Phase 5:  估值 + 质量门控
 Complete: post_report_autopsy.sh → evolution_log → 进化提议 → 用户审批
-季度:    shadow_portfolio_check.sh → 校准分析
 ```

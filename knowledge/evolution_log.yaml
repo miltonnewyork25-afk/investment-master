@@ -17,11 +17,6 @@ entries:
     top_lesson: "市值波动即时回流+DM锚点ID全局唯一"
     evolution_proposed: "组装七步检查清单v2.0"
     evolution_status: approved
-    shadow:
-      price_at_report: 390.55
-      price_3m: null
-      price_6m: null
-      price_12m: null
 
   - ticker: "RBLX"
     date: "2026-02-16"
@@ -33,11 +28,6 @@ entries:
     top_lesson: "单源数据不可信+P0数据错误每Phase放大10x"
     evolution_proposed: "深层质量协议L1/L2/L3"
     evolution_status: approved
-    shadow:
-      price_at_report: 63.17
-      price_3m: null
-      price_6m: null
-      price_12m: null
 
   - ticker: "AMAT"
     date: "2026-02-17"
@@ -49,11 +39,6 @@ entries:
     top_lesson: "五方法中3个共享假设=实际2.5方法"
     evolution_proposed: "v15.0分析深度Skill+双向校准"
     evolution_status: approved
-    shadow:
-      price_at_report: 359.13
-      price_3m: null
-      price_6m: null
-      price_12m: null
 
   - ticker: "MSFT"
     date: "2026-02-17"
@@ -65,11 +50,6 @@ entries:
     top_lesson: "WACC±100bps跨3评级区间=假精度+LLM不能做算术"
     evolution_proposed: "v16.0质量保障Skill+verify_dcf_arithmetic.py"
     evolution_status: approved
-    shadow:
-      price_at_report: 396.86
-      price_3m: null
-      price_6m: null
-      price_12m: null
 
   - ticker: "KLAC"
     date: "2026-02-17"
@@ -81,11 +61,6 @@ entries:
     top_lesson: "密度>体量+v1.0无补丁>v1.x多轮修正"
     evolution_proposed: "方法独立性审计标准化+偏差审计强制校正"
     evolution_status: approved
-    shadow:
-      price_at_report: 1470.19
-      price_3m: null
-      price_6m: null
-      price_12m: null
 
   # --- 质量趋势 ---
   # APP(4.1) → RBLX(3.6)↓ → AMAT(3.8)↑ → MSFT(3.5)↓ → KLAC(4.5)↑↑

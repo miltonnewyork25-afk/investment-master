@@ -137,11 +137,6 @@ cat >> "$LOG_FILE" << ENTRY
     top_lesson: null  # AI填入
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
-    shadow:
-      price_at_report: null  # AI填入当时股价
-      price_3m: null
-      price_6m: null
-      price_12m: null
 ENTRY
 
 echo ""
@@ -152,5 +147,4 @@ echo "  1. 填入 quality (1.0-5.0) — 基于4 Agent交叉审计或自评"
 echo "  2. 填入 top_technique / top_lesson"
 echo "  3. 运行: bash scripts/update_excellence_catalog.sh $TICKER $REPORT"
 echo "  4. 生成进化提议 -> 用户审批"
-echo "  5. 填入 shadow.price_at_report (当前股价)"
-echo "  6. 更新 knowledge/L0_index.yaml"
+echo "  5. 更新 knowledge/L0_index.yaml"

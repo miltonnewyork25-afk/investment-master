@@ -206,7 +206,7 @@ bash scripts/find_best_reference.sh {TICKER}
 | **DAG编排** | `docs/dag_orchestrator.md` (DAG-0~7问题树+EC绑定) |
 | **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
 | **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
-| **进化系统** | `docs/evolution_system.md` + `scripts/post_report_autopsy.sh` + `scripts/evolution_trend.sh` + `scripts/shadow_portfolio_check.sh` |
+| **进化系统** | `docs/evolution_system.md` + `scripts/post_report_autopsy.sh` + `scripts/evolution_trend.sh` |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
 | **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
 | **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
