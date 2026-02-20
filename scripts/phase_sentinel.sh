@@ -127,7 +127,28 @@ else
     check_block "lit_recon_memo.md 缺失 — Phase -0.5未执行"
 fi
 
-# 1c. launch_brief.md (tier3_launch产出)
+# 1c. thesis_crystallization.md (Phase 0.75产出, v17.1新增)
+if [ -f "$DATA/thesis_crystallization.md" ]; then
+    TC_CHARS=$(wc -m < "$DATA/thesis_crystallization.md" | tr -d ' ')
+    if [ "$TC_CHARS" -ge 1500 ]; then
+        # 检查是否有非共识假说(H1/H2标记)
+        H_COUNT=$({ grep -cE '^[|] H[0-9]' "$DATA/thesis_crystallization.md" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+        H_COUNT="${H_COUNT:-0}"
+        if [ "$H_COUNT" -ge 1 ]; then
+            check_pass "thesis_crystallization.md ($TC_CHARS chars, ${H_COUNT}个假说)"
+        else
+            check_warn "thesis_crystallization.md存在但无假说登记(H行=0) → 非共识洞见风险偏低"
+        fi
+    else
+        check_warn "thesis_crystallization.md过短 ($TC_CHARS < 1500 chars)"
+    fi
+else
+    if [ "$PHASE" -ge 1 ]; then
+        check_warn "thesis_crystallization.md缺失 → Phase 0.75未执行, 报告可能缺乏核心矛盾聚焦"
+    fi
+fi
+
+# 1d. launch_brief.md (tier3_launch产出)
 if [ -f "$DATA/launch_brief.md" ]; then
     check_pass "launch_brief.md 存在"
 else
