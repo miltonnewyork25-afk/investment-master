@@ -196,7 +196,9 @@ bash scripts/find_best_reference.sh {TICKER}
 2. **AI阅读 launch_brief.md** — 确认目标字符范围 + 参考报告 + 进化教训
 3. **Phase -0.5 文献侦察** — 5路WebSearch → `lit_recon_memo.md` (≥1000字符)
 4. **preflight_gate.sh** → **必须返回CLEARED**
-5. Phase 0 开始
+5. Phase 0 数据预取 + Phase 0.5 CQ路由
+6. **Phase 0.75 核心矛盾结晶** — 异常狩猎→约束碰撞→非共识假说登记 → `thesis_crystallization.md` (≥1500字符)
+7. Phase 1 开始(**围绕核心矛盾组织**)
 
 **纵深防御** (4层,每层重新验证前序):
 - Layer 0: tier3_launch.sh (Phase -1自动化)
