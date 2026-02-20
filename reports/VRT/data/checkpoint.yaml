@@ -6,9 +6,9 @@ worktree: "半导体"
 industry: "数据中心基础设施/半导体产业链"
 last_updated: "2026-02-20T23:00:00+08:00"
 
-current_phase: 4
+current_phase: 5
 phase_status: completed
-phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4]
+phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4, 5]
 
 target_chars: 480000
 target_range: "450K-520K"
@@ -50,8 +50,8 @@ quick_ref:
   backlog: 15B
   fy26_rev_guide: "13.25-13.75B"
   net_debt_ebitda: 0.76
-  total_chars: 94100
-  latest_phase_chars: 18800
+  total_chars: 107700
+  latest_phase_chars: 13600
 
 key_files:
   knowledge_context: "data/knowledge_context.md"
@@ -65,3 +65,4 @@ key_files:
   phase2: "VRT_Phase2_财务与竞争.md"
   phase3: "VRT_Phase3_估值与信念反演.md"
   phase4: "VRT_Phase4_红队对抗审查.md"
+  phase5: "VRT_Phase5_综合评级.md"
