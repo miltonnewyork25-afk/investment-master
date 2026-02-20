@@ -6,9 +6,9 @@ worktree: "半导体"
 industry: "数据中心基础设施/半导体产业链"
 last_updated: "2026-02-20T21:30:00+08:00"
 
-current_phase: 0.75
+current_phase: 1
 phase_status: completed
-phases_completed: [-1, -0.5, 0, 0.5, 0.75]
+phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1]
 
 target_chars: 480000
 target_range: "450K-520K"
@@ -26,13 +26,13 @@ cq_registry:
   CQ6: "并购整合与资本配置 (5%)"
 
 cq_confidence:
-  CQ1: {phase: 0.5, value: 40, direction: "偏乐观"}
-  CQ2: {phase: 0.5, value: 45, direction: "中性偏乐观"}
-  CQ3: {phase: 0.5, value: 30, direction: "高不确定"}
-  CQ4: {phase: 0.5, value: 55, direction: "偏乐观"}
-  CQ5: {phase: 0.5, value: 35, direction: "偏悲观"}
-  CQ6: {phase: 0.5, value: 60, direction: "偏乐观"}
-  weighted_avg: 40.5
+  CQ1: {phase: 1, value: 50, direction: "偏乐观"}
+  CQ2: {phase: 1, value: 45, direction: "中性偏乐观"}
+  CQ3: {phase: 1, value: 35, direction: "高不确定"}
+  CQ4: {phase: 1, value: 60, direction: "偏乐观"}
+  CQ5: {phase: 1, value: 35, direction: "偏悲观"}
+  CQ6: {phase: 1, value: 65, direction: "偏乐观"}
+  weighted_avg: 45.0
 
 core_thesis: "VRT核心矛盾: 市场以AI基础设施估值(PE46x)定价一个85%传统工业品公司, 液冷护城河深度+800V转型可行性能否支撑AI溢价"
 
@@ -50,8 +50,8 @@ quick_ref:
   backlog: 15B
   fy26_rev_guide: "13.25-13.75B"
   net_debt_ebitda: 0.76
-  total_chars: 0
-  latest_phase_chars: 0
+  total_chars: 31400
+  latest_phase_chars: 31400
 
 key_files:
   knowledge_context: "data/knowledge_context.md"
@@ -61,3 +61,4 @@ key_files:
   thesis_crystallization: "data/thesis_crystallization.md"
   mcp_data: "data/research/VRT/MCP_structured_data.md"
   agent_staging: "staging/VRT_P0_Agent{A-G}.md"
+  phase1: "VRT_Phase1_公司画像.md"
