@@ -1,0 +1,160 @@
+{
+  "ticker": "ANET",
+  "fetched_at": "2026-02-20",
+  "ceo": {
+    "name": "Jayshree Ullal",
+    "tenure_years": 17,
+    "background": "Born 1961 in London, raised in New Delhi. BS Electrical Engineering from San Francisco State University, MS Engineering Management from Santa Clara University. Early career at AMD and Fairchild Semiconductor. Director of internetworking at Ungermann-Bass (4 years), VP Marketing at Crescendo Communications. 15+ years at Cisco where she built the Catalyst switching business from inception to $5B revenue, eventually becoming SVP of Data Center & Switching overseeing ~$15B direct and indirect revenue. Named CEO & President of Arista Networks in October 2008 by co-founders Andy Bechtolsheim and David Cheriton.",
+    "track_record": "Transformed Arista from a small startup to a dominant cloud networking provider. Revenue grew from under $200M (2010) to $5.86B (2023) to $7.0B (2024, +19.5% YoY). Led IPO on NYSE in June 2014. Key clients include Microsoft Azure, Meta, Amazon AWS, and Google Cloud. Named E&Y Entrepreneur of the Year (2015), Barron's World's Best CEOs (2018), Fortune Top 20 Business Persons (2019). Net worth estimated at ~$5.7B. Also serves as Chairperson of the Board. 40+ years of networking industry experience."
+  },
+  "cfo": {
+    "name": "Chantelle Breithaupt",
+    "tenure_years": 2,
+    "background": "Appointed CFO effective February 2024, replacing Ita Brennan. Over 25 years of global financial roles. Previously SVP and CFO of Aspen Technology. Prior to that, held executive finance roles at Cisco Systems (SVP Finance, VP Finance Customer Experience/Services, VP Finance Americas). Before Cisco, spent 17 years at GE in progressive executive global finance roles. Holds Honors Business Administration degree from Wilfrid Laurier University (Canada). Graduate of GE's Financial and Managerial Executive leadership programs. Known for diversity, equality, and inclusion advocacy, recognized by DiversityFirst, YWCA Silicon Valley, and Multiplier Effect Initiative."
+  },
+  "key_executives": [
+    {
+      "name": "Kenneth Duda",
+      "title": "President and Chief Technology Officer",
+      "background": "Pioneer in high-performance networking software. Lead architect of Arista's EOS (Extensible Operating System) and Network Data Lake (NetDL). Role expanded in 2024 to oversee cloud and AI systems engineering and business development. Drives innovation across Arista's products for cloud titans and AI customers. Total compensation in 2024: $35.2M (up from $4.4M in 2023), reflecting expanded responsibilities via a ~$25M RSU award."
+    },
+    {
+      "name": "Todd Nightingale",
+      "title": "President and Chief Operating Officer",
+      "background": "Appointed effective July 1, 2025. Age 45. Previously CEO and Board Member at Fastly Inc. (Sept 2022 - June 2025). Before that, EVP and GM of Enterprise Networking and Cloud at Cisco Systems (March 2020 - Sept 2022), and SVP/GM of Cisco Meraki. Compensation: $350K base salary, $30M RSUs, $2M PSUs."
+    },
+    {
+      "name": "Andreas 'Andy' Bechtolsheim",
+      "title": "Co-Founder and Chief Architect",
+      "background": "Co-founded Arista Networks along with David Cheriton. Also co-founded Sun Microsystems and was an early investor in Google. Resigned as Chairman and Chief Development Officer in December 2023 following SEC insider trading charges. Settled with SEC in 2024 paying ~$1M civil penalty and accepted 5-year bar from serving as officer or director of a public company. Continues to serve as Chief Architect. Holds approximately 15% of shares outstanding."
+    },
+    {
+      "name": "Marc Taxay",
+      "title": "Senior Vice President, General Counsel and Secretary",
+      "background": "SVP at Arista Networks since March 2016. Serves as General Counsel and corporate secretary."
+    },
+    {
+      "name": "Tyson Lamoreaux",
+      "title": "Senior Vice President of Cloud and AI Networking",
+      "background": "Appointed to expanded role overseeing cloud and AI networking initiatives."
+    },
+    {
+      "name": "Alex Rose",
+      "title": "Vice President of Hardware Engineering",
+      "background": "Assumed hardware engineering and related responsibilities from John McCool after McCool's departure as Chief Platform Officer in April 2025."
+    },
+    {
+      "name": "Mike Kappus",
+      "title": "AVP of Manufacturing",
+      "background": "Assumed manufacturing and operations responsibilities from John McCool after McCool's departure in April 2025."
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2025-07-01",
+      "description": "Todd Nightingale appointed President and COO, previously CEO of Fastly. Signals potential succession planning and operational scaling. Compensation package: $350K salary + $30M RSUs + $2M PSUs."
+    },
+    {
+      "date": "2025-06-16",
+      "description": "Todd Nightingale appointment announced via 8-K filing."
+    },
+    {
+      "date": "2025-04-07",
+      "description": "John McCool stepped down as Chief Platform Officer, SVP of Engineering and Operations. Remains as senior advisor to CEO. Responsibilities split between Alex Rose (hardware engineering) and Mike Kappus (manufacturing)."
+    },
+    {
+      "date": "2025-03-14",
+      "description": "Board expanded to 9 members. Greg Lavender appointed as independent director. Lavender was CTO at Intel (June 2021 - June 2025) leading Software & Advanced Technology group, Intel Labs, Intel Tiber AI Cloud, Intel IT and Information Security."
+    },
+    {
+      "date": "2024-02",
+      "description": "Chantelle Breithaupt appointed CFO, replacing Ita Brennan who resigned in December 2023."
+    },
+    {
+      "date": "2023-12",
+      "description": "Andy Bechtolsheim resigned as Chairman and CDO following SEC insider trading investigation. Continues as Chief Architect."
+    }
+  ],
+  "insider_ownership_pct": 4.5,
+  "insider_ownership_notes": "Estimates vary by source and methodology: TipRanks reports ~2.7% insider ownership (Jan 2025); other sources cite 3.4% (Aug 2025 excluding Bechtolsheim's holdings as he's no longer an officer/director) to 17% (Dec 2025 including Bechtolsheim's ~15% stake). The ~4.5% figure represents a midpoint estimate excluding Bechtolsheim's personal holdings from the 'insider' category given his resignation from the board. Bechtolsheim's ~15% stake is a separate consideration for share overhang risk.",
+  "compensation_highlights": "CEO Jayshree Ullal FY2024 total compensation: $8.95M (down 42.5% from $15.6M in FY2023). Breakdown: $300K base salary, $250K non-equity incentive, $6.86M stock awards, $1.54M other. CTO Kenneth Duda FY2024 total compensation: $35.2M (up from $4.4M in FY2023), driven by $34.4M stock award for expanded responsibilities in cloud/AI. New COO Todd Nightingale package: $350K base + $30M RSUs + $2M PSUs. Equity-heavy compensation structure across all executives (>76% of CEO pay is equity). FY2024 revenue: $7.0B (+19.5% YoY). 2025 annual shareholder meeting scheduled May 30, 2025.",
+  "governance_notes": "Board expanded to 9 members in March 2025. Jayshree Ullal serves dual role as CEO and Chairperson. Andy Bechtolsheim (co-founder, ~15% shareholder) barred from officer/director roles for 5 years following SEC insider trading settlement (~$1M penalty). Greg Lavender (ex-Intel CTO) added as independent director, strengthening AI/semiconductor expertise on board. Other board members include Dan Scheinman, Laura Conigliaro, Ann Mather, Peter Long, Kelly Battles. The appointment of Todd Nightingale as President/COO alongside Kenneth Duda as President/CTO suggests potential succession planning for eventual CEO transition, though Ullal has given no indication of stepping down. Key governance concern: founder Bechtolsheim retains ~15% ownership and Chief Architect role despite SEC settlement, creating reputational risk.",
+  "dm_anchors": [
+    {
+      "id": "DM-MGMT-001",
+      "claim": "Jayshree Ullal CEO since October 2008, 17-year tenure",
+      "source": "Wikipedia, Arista investor relations",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGMT-002",
+      "claim": "FY2024 revenue $7.0B, +19.5% YoY",
+      "source": "Arista 2025 proxy statement / SEC DEF 14A filing",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGMT-003",
+      "claim": "CEO total compensation FY2024: $8.95M",
+      "source": "SEC DEF 14A proxy filing, Salary.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGMT-004",
+      "claim": "CTO Kenneth Duda total compensation FY2024: $35.2M",
+      "source": "SEC DEF 14A proxy filing, Panabee/Salary.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGMT-005",
+      "claim": "Andy Bechtolsheim SEC insider trading settlement ~$1M, 5-year officer/director bar",
+      "source": "SEC press release 2024-40, CNBC March 2024",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGMT-006",
+      "claim": "Todd Nightingale appointed President/COO effective July 1, 2025",
+      "source": "SEC 8-K filing June 16, 2025; Yahoo Finance",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGMT-007",
+      "claim": "John McCool stepped down as CPO effective April 7, 2025",
+      "source": "SEC 8-K filing March 14, 2025; GuruFocus",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGMT-008",
+      "claim": "Chantelle Breithaupt appointed CFO effective February 2024",
+      "source": "Arista press release, Nasdaq, BusinessWire",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGMT-009",
+      "claim": "Insider ownership ~2.7-4.5% excluding Bechtolsheim; Bechtolsheim holds ~15% stake",
+      "source": "TipRanks, GuruFocus, Simply Wall St (varying methodologies)",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "DM-MGMT-010",
+      "claim": "Greg Lavender (ex-Intel CTO) appointed to board March 2025",
+      "source": "SEC 8-K filing, GuruFocus March 2025",
+      "confidence": "HIGH"
+    }
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Jayshree_Ullal",
+    "https://jayshreeullal.com/biography",
+    "https://investors.arista.com/Corporate-Governance/default.aspx",
+    "https://www.sec.gov/Archives/edgar/data/1596532/000119312525082860/d916017ddef14a.htm",
+    "https://s21.q4cdn.com/861911615/files/doc_financials/2024/ar/Arista-2025-Proxy-Statement-2024-Annual-Report.pdf",
+    "https://www.nasdaq.com/articles/arista-networks-cfo-ita-brennan-quits-names-chantelle-breithaupt-replacement",
+    "https://www.sec.gov/newsroom/press-releases/2024-40",
+    "https://www.cnbc.com/2024/03/26/sec-charges-arista-co-founder-andy-bechtolsheim-with-insider-trading.html",
+    "https://www.gurufocus.com/news/2741070/arista-networks-anet-announces-board-changes-and-executive-transition",
+    "https://finance.yahoo.com/news/arista-networks-anet-names-todd-200822846.html",
+    "https://www.panabee.com/news/arista-networks-cto-pay-soars-past-35-million-in-2024-amidst-performance-driven-compensa",
+    "https://www.tipranks.com/stocks/anet/ownership",
+    "https://www.gurufocus.com/stock/ANET/ownership",
+    "https://simplywall.st/stocks/us/tech/nyse-anet/arista-networks/ownership"
+  ]
+}

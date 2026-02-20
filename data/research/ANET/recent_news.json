@@ -1,0 +1,281 @@
+{
+  "ticker": "ANET",
+  "fetched_at": "2026-02-20",
+  "key_news": [
+    {
+      "date": "2026-02-12",
+      "headline": "Arista Networks Reports Q4 and Full Year 2025 Financial Results",
+      "summary": "Q4 2025 revenue of $2.49B (+29% YoY), beating consensus of $2.39B. Non-GAAP EPS $0.82 vs $0.76 estimate. Full year 2025 revenue $9.0B. Cumulative 150M ports shipped. Q1 2026 guidance: revenue ~$2.60B, GM 62-63%, OpEx ~46%.",
+      "sentiment": "positive",
+      "source": "arista.com/press-release/23416"
+    },
+    {
+      "date": "2026-02-13",
+      "headline": "ANET Stock Soars After Earnings Beat and Raised 2026 Guidance",
+      "summary": "Management raised 2026 revenue growth outlook to 25% (targeting $11.25B). AI networking revenue target raised to $3.25B (>100% YoY growth). Stock surged on the beat.",
+      "sentiment": "positive",
+      "source": "Motley Fool"
+    },
+    {
+      "date": "2026-02-17",
+      "headline": "Arista Results Highlight AI Networking Growth and VeloCloud SD-WAN Expansion",
+      "summary": "Arista acquired VeloCloud SD-WAN from Broadcom, signaling entry into software-defined WAN and extension of cloud networking portfolio. R4 series platforms unveiled for AI, data center, and routed backbone.",
+      "sentiment": "positive",
+      "source": "Yahoo Finance"
+    },
+    {
+      "date": "2026-02-16",
+      "headline": "The Backbone of AI: Arista Networks and the Ethernet Revolution",
+      "summary": "1.6T switching confirmed imminent, with production deployments expected by end of 2026. Leveraging Broadcom Tomahawk 6 silicon. 7800 R4 Spine is flagship modular chassis for massive AI clusters.",
+      "sentiment": "positive",
+      "source": "FinancialContent"
+    },
+    {
+      "date": "2026-01-26",
+      "headline": "Arista Networks Upgraded Amid Rising Investment Trends",
+      "summary": "Upgraded to Strong Buy with $210 price target. Piper Sandler separately upgraded to Overweight from Neutral with $159 PT, citing enterprise investment growth and AI exposure.",
+      "sentiment": "positive",
+      "source": "StocksToTrade"
+    },
+    {
+      "date": "2026-02-14",
+      "headline": "Arista Networks AI Ethernet Infrastructure Dominates",
+      "summary": "Arista positioned as dominant Ethernet AI networking vendor. AI networking revenue growing >100% YoY. Hyperscaler capex cycle continues to drive demand.",
+      "sentiment": "positive",
+      "source": "FinancialFreedomIsAJourney"
+    },
+    {
+      "date": "2026-02-17",
+      "headline": "Arista Networks 10-K Filed for FY2025",
+      "summary": "Annual report filed with SEC for fiscal year ended December 31, 2025. Accession number 0001596532-26-000013. Contains full financial statements, risk factors, and business overview.",
+      "sentiment": "neutral",
+      "source": "SEC EDGAR"
+    },
+    {
+      "date": "2026-02-15",
+      "headline": "Tariff Uncertainty Weighs on Networking Vendors",
+      "summary": "Tariffs estimated to impact Arista's gross margins by 1-1.5% without mitigation. Company diversifying supply chain to Southeast Asia and Mexico. Strong pricing power helps offset. Management cites 'significant uncertainty' around trade policy.",
+      "sentiment": "negative",
+      "source": "Network World"
+    },
+    {
+      "date": "2026-02-18",
+      "headline": "Analyst: Expect Arista Growth to Pick Up in H2 2026",
+      "summary": "Seeking Alpha analysis suggests revenue growth acceleration in second half of 2026 driven by 1.6T refresh cycle and expanding AI networking backlog.",
+      "sentiment": "positive",
+      "source": "Seeking Alpha"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-02-25",
+      "event": "Bernstein Insights: What's Next in Tech Conference (John McCool, SVP presenting, 1:00-1:50 PM ET)",
+      "expected_impact": "medium - may provide updated AI networking demand signals"
+    },
+    {
+      "date": "2026-03-03",
+      "event": "Morgan Stanley TMT Conference (CEO Jayshree Ullal + CTO Ken Duda, 2:30-3:05 PM ET)",
+      "expected_impact": "high - CEO/CTO joint appearance, likely to discuss 2026 roadmap and AI strategy"
+    },
+    {
+      "date": "2026-04-08",
+      "event": "Networking Field Day 40",
+      "expected_impact": "medium - product demonstration and technology updates"
+    },
+    {
+      "date": "2026-05-04",
+      "event": "Q1 2026 Earnings Report",
+      "expected_impact": "high - first report to confirm $2.6B revenue guidance and 25% growth trajectory"
+    },
+    {
+      "date": "2026-H2",
+      "event": "1.6T Ethernet Switching Customer Trials and Early Production",
+      "expected_impact": "high - massive refresh cycle catalyst, Broadcom Tomahawk 6 based, moves from pilot to production"
+    },
+    {
+      "date": "2026-ongoing",
+      "event": "VeloCloud SD-WAN Integration (acquired from Broadcom)",
+      "expected_impact": "medium - expansion into enterprise SD-WAN market, revenue diversification"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "period": "Q1 2026 (to date)",
+        "acquired_transactions": 1,
+        "disposed_transactions": 21,
+        "total_shares_acquired": 30000,
+        "total_shares_disposed": 102000,
+        "net_sales": 20,
+        "acquired_disposed_ratio": 0.0476
+      },
+      {
+        "period": "Q4 2025",
+        "acquired_transactions": 20,
+        "disposed_transactions": 97,
+        "total_shares_acquired": 424353,
+        "total_shares_disposed": 1619182,
+        "net_sales": 73,
+        "acquired_disposed_ratio": 0.2062
+      },
+      {
+        "period": "Q3 2025",
+        "acquired_transactions": 20,
+        "disposed_transactions": 139,
+        "total_shares_acquired": 838376,
+        "total_shares_disposed": 6216964,
+        "net_sales": 116,
+        "acquired_disposed_ratio": 0.1439,
+        "note": "Notably heavy selling quarter - 6.2M shares disposed"
+      }
+    ],
+    "net_insider_sentiment": "bearish - consistent net selling throughout 2025 and into Q1 2026. Zero insider purchases (totalPurchases=0 across all periods). Q1 2026 acquired/disposed ratio of 0.048 is among lowest on record. All acquisitions appear to be option exercises/RSU vesting, not open-market purchases."
+  },
+  "sec_filings": [
+    {
+      "type": "10-K",
+      "filing_date": "2026-02-17",
+      "period": "FY2025 (ended 2025-12-31)",
+      "accession": "0001596532-26-000013",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001596532/000159653226000013/anet-20251231.htm"
+    },
+    {
+      "type": "10-Q",
+      "filing_date": "2025-11-05",
+      "period": "Q3 2025 (ended 2025-09-30)",
+      "accession": "0001596532-25-000286",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001596532/000159653225000286/anet-20250930.htm"
+    },
+    {
+      "type": "8-K",
+      "filing_date": "2025-11-04",
+      "period": "Q3 2025 Earnings",
+      "accession": "0001596532-25-000284",
+      "items": ["2.02 (Results of Operations)", "9.01 (Financial Statements)"],
+      "url": "https://www.sec.gov/Archives/edgar/data/0001596532/000159653225000284/0001596532-25-000284-index.htm"
+    },
+    {
+      "type": "10-Q",
+      "filing_date": "2025-08-06",
+      "period": "Q2 2025 (ended 2025-06-30)",
+      "accession": "0001596532-25-000216",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001596532/000159653225000216/anet-20250630.htm"
+    },
+    {
+      "type": "8-K",
+      "filing_date": "2025-09-08",
+      "period": "Corporate changes",
+      "accession": "0001596532-25-000258",
+      "items": ["5.02 (Officer departures/appointments)", "5.03 (Amendments to articles)", "8.01 (Other events)", "9.01"],
+      "url": "https://www.sec.gov/Archives/edgar/data/0001596532/000159653225000258/0001596532-25-000258-index.htm"
+    }
+  ],
+  "dm_anchors": [
+    {
+      "id": "DM-ANET-NEWS-001",
+      "fact": "Q4 2025 revenue $2.49B, +29% YoY, beat consensus $2.39B",
+      "source": "Arista Press Release 2026-02-12",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-ANET-NEWS-002",
+      "fact": "Non-GAAP EPS $0.82 vs $0.76 consensus estimate",
+      "source": "Arista Press Release 2026-02-12",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-ANET-NEWS-003",
+      "fact": "FY2025 total revenue $9.0B",
+      "source": "Arista Press Release / CEO Jayshree Ullal statement",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-ANET-NEWS-004",
+      "fact": "Q1 2026 revenue guidance ~$2.60B, GM 62-63%, OpEx ~46%",
+      "source": "Arista Q4 2025 Earnings Call",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-ANET-NEWS-005",
+      "fact": "2026 revenue growth outlook raised to 25%, targeting $11.25B",
+      "source": "Arista Q4 2025 Earnings Call / Multiple analyst reports",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-ANET-NEWS-006",
+      "fact": "2026 AI networking revenue target raised to $3.25B (>100% YoY growth)",
+      "source": "Arista Q4 2025 Earnings Call",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-ANET-NEWS-007",
+      "fact": "Cumulative 150M ports shipped as of end of 2025",
+      "source": "CEO Jayshree Ullal Q4 2025 earnings statement",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-ANET-NEWS-008",
+      "fact": "1.6T switching production deployments expected by end of 2026",
+      "source": "Q4 2025 earnings call / analyst coverage",
+      "confidence": "medium-high"
+    },
+    {
+      "id": "DM-ANET-NEWS-009",
+      "fact": "VeloCloud SD-WAN acquired from Broadcom",
+      "source": "Arista press release / Yahoo Finance",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-ANET-NEWS-010",
+      "fact": "Tariff impact estimated at 1-1.5% on gross margins without mitigation",
+      "source": "Analyst estimates / earnings call commentary",
+      "confidence": "medium"
+    },
+    {
+      "id": "DM-ANET-NEWS-011",
+      "fact": "Q1 2026 insider: 21 dispose transactions, 1 acquire, ratio 0.048, 0 open-market purchases",
+      "source": "FMP insider-trading API",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-ANET-NEWS-012",
+      "fact": "10-K for FY2025 filed 2026-02-17, accession 0001596532-26-000013",
+      "source": "SEC EDGAR via baggers_sec_filings",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-ANET-NEWS-013",
+      "fact": "Analyst consensus: 15 analysts, average Strong Buy, 12-month PT $173.8 (+21.9% upside)",
+      "source": "MarketBeat",
+      "confidence": "medium-high"
+    },
+    {
+      "id": "DM-ANET-NEWS-014",
+      "fact": "Next earnings: May 4, 2026 (Q1 2026)",
+      "source": "Nasdaq / MarketBeat",
+      "confidence": "high"
+    }
+  ],
+  "sources": [
+    "https://www.arista.com/en/company/news/press-release/23416-pr-20260212",
+    "https://www.fool.com/investing/2026/02/13/why-arista-networks-stock-is-soaring-today/",
+    "https://finance.yahoo.com/news/arista-results-highlight-ai-networking-181251621.html",
+    "https://seekingalpha.com/article/4871054-arista-networks-expect-growth-to-pick-up-in-second-half-of-2026",
+    "https://simplywall.st/stocks/us/tech/nyse-anet/arista-networks/news/how-aristas-strong-q4-2025-results-and-ai-cloud-guidance-wil",
+    "https://stockstotrade.com/news/arista-networks-inc-anet-news-2026_01_26/",
+    "https://www.marketbeat.com/stocks/NYSE/ANET/forecast/",
+    "https://investors.arista.com/Events/default.aspx",
+    "https://ts2.tech/en/arista-networks-stock-anet-news-today-whats-driving-the-pullback-the-latest-wall-street-forecasts-and-the-2026-catalysts-to-watch-dec-15-2025/",
+    "https://www.nasdaq.com/market-activity/stocks/anet/earnings",
+    "https://www.marketbeat.com/stocks/NYSE/ANET/earnings/",
+    "https://www.nasdaq.com/market-activity/stocks/anet/insider-activity",
+    "https://hedgefollow.com/stocks/ANET/insider-trading",
+    "https://www.sec.gov/Archives/edgar/data/0001596532/000159653226000013/anet-20251231.htm",
+    "https://markets.financialcontent.com/wral/article/finterra-2026-2-16-the-backbone-of-ai-a-deep-dive-into-arista-networks-anet-and-the-ethernet-revolution",
+    "https://financialfreedomisajourney.com/arista-networks-ai-ethernet-growth-2026-2-14/",
+    "https://www.investingyoung.ca/post/5-reasons-arista-networks-is-set-for-massive-growth-in-2026",
+    "https://www.networkworld.com/article/3986951/tariff-uncertainty-weighs-on-networking-vendors.html",
+    "https://www.benzinga.com/analyst-ratings/analyst-color/25/03/44218719/cisco-nvidia-arista-tackle-tariff-turmoil-whos-best-positioned",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-arista-networks-beats-q4-2025-forecasts-stock-dips-93CH-4504169"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "ticker": "ANET",
+  "fetched_at": "2026-02-20",
+  "source": "MCP:get_market_overview",
+  "indices": {
+    "sp500": { "price": 6861.89, "change_pct": -0.28 },
+    "dow": { "price": 49395.16, "change_pct": -0.54 },
+    "nasdaq": { "price": 22682.73, "change_pct": -0.31 },
+    "vix": { "price": 20.23, "change_pct": 3.11 }
+  },
+  "macro_temperature": {
+    "shiller_pe_cape": 40.01,
+    "cape_percentile": "98%",
+    "buffett_indicator": "222%",
+    "buffett_percentile": "100%",
+    "market_risk_premium": "4.5%",
+    "erp_percentile": "66%",
+    "overall_assessment": "非常昂贵 — 历史极端水平"
+  },
+  "date": "2026-02-19"
+}

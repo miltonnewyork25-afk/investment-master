@@ -1,0 +1,327 @@
+{
+  "ticker": "ANET",
+  "fetched_at": "2026-02-20",
+  "institutional_summary": {
+    "total_institutions": 2763,
+    "total_shares_held": 963769082,
+    "ownership_pct": 70.0,
+    "qoq_change_institutions": 206,
+    "qoq_change_shares": -870247,
+    "notes": "2763 institutional owners filed 13D/G or 13F; ~70% institutional ownership (range 67-82% across sources). 206 institutions added shares vs 147 decreased in most recent quarter. Hedge funds reduced aggregate holdings by 870,247 shares from Q3 to Q4 2025 (179.76M -> 178.89M shares)."
+  },
+  "top_holders": [
+    {
+      "name": "Andreas Bechtolsheim (Co-founder/Chairman)",
+      "type": "insider",
+      "shares": null,
+      "ownership_pct": 15.0,
+      "change_pct": null,
+      "note": "Largest single shareholder; co-founder of Arista Networks"
+    },
+    {
+      "name": "The Vanguard Group, Inc.",
+      "type": "institutional",
+      "shares": 96084951,
+      "ownership_pct": 8.4,
+      "value_usd": 10600000000,
+      "change_pct": null,
+      "as_of": "2024-12-31",
+      "note": "Largest institutional holder. Shares as of Dec 2024 filing."
+    },
+    {
+      "name": "BlackRock, Inc.",
+      "type": "institutional",
+      "shares": null,
+      "ownership_pct": 6.1,
+      "value_usd": null,
+      "change_pct": null,
+      "note": "Second-largest institutional holder"
+    },
+    {
+      "name": "State Street Corp",
+      "type": "institutional",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change_pct": null,
+      "note": "Third-largest institutional holder"
+    },
+    {
+      "name": "FMR LLC (Fidelity)",
+      "type": "institutional",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change_pct": null,
+      "note": "Top-5 institutional holder"
+    },
+    {
+      "name": "T. Rowe Price Associates Inc.",
+      "type": "institutional",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change_pct": null,
+      "note": "Top-5 institutional holder"
+    },
+    {
+      "name": "Massachusetts Financial Services Co (MFS)",
+      "type": "institutional",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": 805168397,
+      "change_pct": 2829.0,
+      "as_of": "Q3 2025",
+      "note": "Added 5,525,828 shares (+2829%) in Q3 2025 — massive new position build"
+    }
+  ],
+  "notable_moves": [
+    {
+      "fund": "Massachusetts Financial Services Co (MFS)",
+      "action": "massive_increase",
+      "shares_change": 5525828,
+      "pct_change": 2829.0,
+      "value_usd": 805168397,
+      "quarter": "Q3 2025",
+      "significance": "One of the largest single-quarter position builds; signals strong institutional conviction"
+    },
+    {
+      "fund": "Squarepoint Ops LLC",
+      "action": "increase",
+      "shares_change": null,
+      "pct_change": 406.0,
+      "value_usd": 70000000,
+      "quarter": "2025",
+      "significance": "Quantitative hedge fund quadrupled position"
+    },
+    {
+      "fund": "Gotham Asset Management (Joel Greenblatt)",
+      "action": "increase",
+      "shares_change": null,
+      "pct_change": 157.0,
+      "value_usd": 23000000,
+      "quarter": "2025",
+      "significance": "Value-oriented fund increasing; notable given Gotham's selective approach and premium ANET valuation"
+    },
+    {
+      "fund": "Jefferies Financial Group",
+      "action": "increase",
+      "shares_change": null,
+      "pct_change": 5200.0,
+      "value_usd": 1600000,
+      "quarter": "2025",
+      "significance": "Dramatic percentage increase from very small base"
+    },
+    {
+      "fund": "Capula Management (Yan Huo)",
+      "action": "increase",
+      "shares_change": null,
+      "pct_change": 8200.0,
+      "value_usd": 48000,
+      "quarter": "2025",
+      "significance": "Tiny absolute value; early position building signal only"
+    },
+    {
+      "fund": "Deutsche Bank AG",
+      "action": "increase",
+      "shares_change": null,
+      "pct_change": 7.11,
+      "value_usd": null,
+      "total_shares": 1190000,
+      "quarter": "recent",
+      "significance": "Moderate increase in already-established position"
+    },
+    {
+      "fund": "TCW Concentrated Large Cap Growth Fund",
+      "action": "hold/featured",
+      "shares_change": null,
+      "pct_change": null,
+      "value_usd": null,
+      "quarter": "Q3 2025",
+      "significance": "Highlighted ANET in investor letter as conviction holding"
+    },
+    {
+      "fund": "Aggregate hedge funds",
+      "action": "slight_decrease",
+      "shares_change": -870247,
+      "pct_change": -0.48,
+      "value_usd": null,
+      "quarter": "Q3->Q4 2025",
+      "significance": "Net reduction of 870K shares (179.76M -> 178.89M), marginal ~0.5% trim"
+    }
+  ],
+  "hedge_fund_count": {
+    "Q3_2025": 92,
+    "Q2_2025": 81,
+    "qoq_change": 11,
+    "note": "92 hedge fund portfolios held ANET at end of Q3 2025, up from 81 in Q2 — 13.6% increase in fund count"
+  },
+  "insider_activity": {
+    "net_insider_sentiment": "net_seller",
+    "summary": "Consistent insider selling throughout 2025; zero insider purchases. Q4 2025 ratio of acquired/disposed was 0.21 (heavily skewed to disposals). Insiders sold 216,464 shares worth $27.6M in most recent quarter.",
+    "recent_transactions": [
+      {
+        "name": "Jayshree Ullal",
+        "title": "CEO",
+        "action": "sell",
+        "shares": 24042,
+        "date": "2025-11",
+        "ownership_change_pct": -70.8,
+        "note": "Sold 70.8% of direct holdings"
+      },
+      {
+        "name": "Kenneth Duda",
+        "title": "CTO/SVP",
+        "action": "sell",
+        "shares": 30000,
+        "price_avg": 123.16,
+        "date": "2025-12-17",
+        "ownership_change_pct": -69.81,
+        "note": "Sold 69.8% of direct holdings"
+      }
+    ],
+    "fmp_insider_data": {
+      "2026_Q1": {
+        "acquired_transactions": 1,
+        "disposed_transactions": 21,
+        "total_acquired": 30000,
+        "total_disposed": 102000,
+        "total_sales": 20,
+        "total_purchases": 0,
+        "ratio": 0.048
+      },
+      "2025_Q4": {
+        "acquired_transactions": 20,
+        "disposed_transactions": 97,
+        "total_acquired": 424353,
+        "total_disposed": 1619182,
+        "total_sales": 73,
+        "total_purchases": 0,
+        "ratio": 0.206
+      },
+      "2025_Q3": {
+        "acquired_transactions": 20,
+        "disposed_transactions": 139,
+        "total_acquired": 838376,
+        "total_disposed": 6216964,
+        "total_sales": 116,
+        "total_purchases": 0,
+        "ratio": 0.144
+      },
+      "2025_Q2": {
+        "acquired_transactions": 26,
+        "disposed_transactions": 114,
+        "total_acquired": 525010,
+        "total_disposed": 1898601,
+        "total_sales": 91,
+        "total_purchases": 0,
+        "ratio": 0.228
+      },
+      "2025_Q1": {
+        "acquired_transactions": 63,
+        "disposed_transactions": 129,
+        "total_acquired": 2201812,
+        "total_disposed": 2615469,
+        "total_sales": 80,
+        "total_purchases": 0,
+        "ratio": 0.488
+      }
+    },
+    "insider_trend_note": "Insider selling accelerated through 2025: Q3 2025 saw the highest disposal volume (6.2M shares disposed vs 838K acquired). The acquired/disposed ratio deteriorated from 0.49 in Q1 to 0.14 in Q3 before recovering slightly to 0.21 in Q4. Zero open market purchases across all of 2025 — all 'acquired' transactions are option exercises/grants, not purchases."
+  },
+  "buffett_berkshire": {
+    "holds_anet": false,
+    "note": "No evidence found that Berkshire Hathaway or Warren Buffett holds/held ANET. Not in Berkshire's known portfolio."
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-SM-001",
+      "claim": "2763 institutional owners filed 13D/G or 13F forms",
+      "source": "fintel.io",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-SM-002",
+      "claim": "Total shares held by institutions: 963,769,082",
+      "source": "fintel.io",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-SM-003",
+      "claim": "Vanguard largest institutional holder with 96,084,951 shares (~8.4%)",
+      "source": "holdingschannel.com / Yahoo Finance",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-SM-004",
+      "claim": "BlackRock second-largest at ~6.1%",
+      "source": "Yahoo Finance / fintel.io",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-SM-005",
+      "claim": "Andreas Bechtolsheim largest shareholder at ~15%",
+      "source": "fintel.io / tikr.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-SM-006",
+      "claim": "92 hedge funds held ANET at Q3 2025 end, up from 81 in Q2",
+      "source": "insidermonkey.com / Yahoo Finance",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "DM-SM-007",
+      "claim": "MFS added 5,525,828 shares (+2829%) in Q3 2025, value ~$805M",
+      "source": "quiverquant.com",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "DM-SM-008",
+      "claim": "Hedge funds reduced ANET by 870,247 shares Q3->Q4 2025",
+      "source": "hedgefollow.com",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "DM-SM-009",
+      "claim": "Jayshree Ullal sold 24,042 shares Nov 2025 (-70.8% direct holdings)",
+      "source": "marketbeat.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-SM-010",
+      "claim": "Kenneth Duda sold 30,000 shares Dec 17 2025 at avg $123.16",
+      "source": "marketbeat.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-SM-011",
+      "claim": "Zero insider open-market purchases throughout 2025",
+      "source": "FMP insider-trading API",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-SM-012",
+      "claim": "Institutional ownership ~70% of outstanding shares",
+      "source": "Yahoo Finance / GuruFocus / moomoo (range 67-82%)",
+      "confidence": "MEDIUM",
+      "note": "Sources vary significantly (67-82%); 70% is consensus midpoint"
+    }
+  ],
+  "sources": [
+    "https://hedgefollow.com/stocks/ANET",
+    "https://fintel.io/so/us/anet",
+    "https://www.nasdaq.com/market-activity/stocks/anet/institutional-holdings",
+    "https://www.gurufocus.com/stock/ANET/ownership",
+    "https://www.marketbeat.com/stocks/NYSE/ANET/institutional-ownership/",
+    "https://www.marketbeat.com/stocks/NYSE/ANET/insider-trades/",
+    "https://finance.yahoo.com/quote/ANET/holders/",
+    "https://finance.yahoo.com/quote/ANET/insider-transactions/",
+    "https://www.holdingschannel.com/institutional/holders-of-anet/",
+    "https://www.quiverquant.com/news/ARISTA+NETWORKS",
+    "https://www.insidermonkey.com/blog/arista-networks-inc-anet-strengthens-position-in-ai-networking-1696704/",
+    "https://www.tikr.com/blog/who-owns-arista-networks-top-shareholders-and-recent-insider-trades",
+    "https://www.secform4.com/institution-holders/1596532.html",
+    "FMP API: insider-trading endpoint"
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "ticker": "ANET",
+  "fetched_at": "2026-02-20",
+  "macro_events": [
+    {
+      "event": "US recession by end of 2026",
+      "platform": "Polymarket",
+      "probability": 0.22,
+      "last_updated": "2026-02-20",
+      "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "notes": "MCP verified: Yes=22%, No=78%. Volume $236K. Resolves if 2 consecutive negative GDP quarters (Q2 2025-Q4 2026) or NBER declares recession.",
+      "relevance_to_ANET": "Recession would cut enterprise IT/cloud capex — direct demand risk for ANET switching revenue"
+    },
+    {
+      "event": "Negative GDP growth in 2026 (full year)",
+      "platform": "Polymarket",
+      "probability": 0.12,
+      "last_updated": "2026-02-20",
+      "url": "https://polymarket.com/event/negative-gdp-growth-in-2026",
+      "notes": "WebSearch sourced. Resolves based on BEA advance estimate for Q4 2026.",
+      "relevance_to_ANET": "Full-year negative GDP would imply severe macro downturn, devastating for enterprise networking spend"
+    },
+    {
+      "event": "Number of Fed rate cuts in 2026 — 3 cuts",
+      "platform": "Kalshi",
+      "probability": 0.25,
+      "last_updated": "2026-01-12",
+      "url": "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31",
+      "notes": "Kalshi tweet: 25% chance of 3 rate cuts in 2026. Open interest >$450M across Fed contracts.",
+      "relevance_to_ANET": "Rate cuts ease borrowing costs for cloud/enterprise capex; supportive for ANET demand environment"
+    },
+    {
+      "event": "Fed March 2026 rate cut (25bps)",
+      "platform": "Kalshi",
+      "probability": 0.64,
+      "last_updated": "2026-02-05",
+      "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26mar",
+      "notes": "64% of Kalshi participants betting on 25bp cut at March 17-18 FOMC.",
+      "relevance_to_ANET": "Near-term monetary easing signal; reduces discount rate for growth stock valuations"
+    },
+    {
+      "event": "Supreme Court rules in favor of Trump tariffs (IEEPA)",
+      "platform": "Polymarket",
+      "probability": 0.25,
+      "last_updated": "2026-02-17",
+      "url": "https://polymarket.com/event/will-the-supreme-court-rule-in-favor-of-trumps-tariffs",
+      "notes": "75% chance SCOTUS rules against. Decision in Learning Resources v. Trump expected after Feb 20. If tariffs struck down, reduces macro uncertainty.",
+      "relevance_to_ANET": "Tariff policy uncertainty affects enterprise capex planning; ANET supply chain (white-box/ODM) could face cost pressure from tariffs on Chinese components"
+    },
+    {
+      "event": "100% tariff on Canada in effect by June 30, 2026",
+      "platform": "Polymarket",
+      "probability": 0.09,
+      "last_updated": "2026-02-20",
+      "url": "https://polymarket.com/event/100-tariff-on-canada-in-effect-by-june-30",
+      "notes": "Low probability (9%). Trump announced conditional 100% tariff on Canada linked to China trade deal.",
+      "relevance_to_ANET": "Broader trade war escalation indicator; ANET has minimal direct Canada exposure but macro sentiment effect"
+    },
+    {
+      "event": "US-China tariff rate <25% resolved (Nov 2025)",
+      "platform": "Polymarket",
+      "probability": 1.0,
+      "last_updated": "2025-11-12",
+      "url": "https://polymarket.com/event/us-tariff-rate-on-china-on-november-12-2025",
+      "notes": "RESOLVED YES. US-China 90-day de-escalation agreement (Aug 11, 2025) held. Tariff rate was <25% on Nov 12. This is historical context showing trade tensions de-escalated.",
+      "relevance_to_ANET": "Resolved favorably — reduced supply chain disruption risk. ANET benefits from stable US-China trade for ODM manufacturing"
+    },
+    {
+      "event": "U.S. enacts AI safety bill before 2027",
+      "platform": "Polymarket",
+      "probability": null,
+      "last_updated": "2026-02-20",
+      "url": "https://polymarket.com/event/us-enacts-ai-safety-bill-before-2027",
+      "notes": "Market exists but exact probability not retrieved. 2025 version traded at ~38% previously. Includes provisions on AI training restrictions, usage restrictions, human-in-the-loop requirements.",
+      "relevance_to_ANET": "AI regulation could slow hyperscaler AI buildout pace, affecting ANET's fastest-growing AI networking segment"
+    }
+  ],
+  "company_specific": [],
+  "industry_events": [
+    {
+      "event": "Silicon Data H100 Index (SDH100RT) hit $2.50/hr by Apr 30, 2026",
+      "platform": "Polymarket",
+      "probability": 0.835,
+      "last_updated": "2026-02-20",
+      "url": "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-2pt50-high-by-april-30-2026",
+      "notes": "MCP verified. 83.5% probability H100 rental hits $2.50. Current index ~$2.35-2.40 (already resolved $2.40 by Apr 30). High GPU demand = robust AI infrastructure build.",
+      "relevance_to_ANET": "CRITICAL: H100 rental price stability/increase = sustained GPU demand = sustained AI cluster networking demand (ANET's 400G/800G Ethernet). GPU utilization proxy for AI capex health."
+    },
+    {
+      "event": "Silicon Data H100 Index hit $2.75/hr by Apr 30, 2026",
+      "platform": "Polymarket",
+      "probability": 0.23,
+      "last_updated": "2026-02-20",
+      "url": "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-2pt75-high-by-april-30-2026",
+      "notes": "MCP verified. Only 23% probability of reaching $2.75. Implies market expects current ~$2.40 price to hold but not surge dramatically.",
+      "relevance_to_ANET": "Moderate upside scenario for GPU demand; $2.75+ would signal supply tightness and potentially accelerated networking buildout"
+    },
+    {
+      "event": "Silicon Data H100 Index hit $3.00/hr by Apr 30, 2026",
+      "platform": "Polymarket",
+      "probability": 0.08,
+      "last_updated": "2026-02-20",
+      "url": "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-3pt00-high-by-april-30-2026",
+      "notes": "MCP verified. Only 8% — very unlikely. $3.00 would be ~25% above current levels.",
+      "relevance_to_ANET": "Bull case for AI infrastructure demand; extremely unlikely in near-term"
+    },
+    {
+      "event": "Silicon Data H100 Index drops to $2.10/hr (LOW) by Apr 30, 2026",
+      "platform": "Polymarket",
+      "probability": 0.145,
+      "last_updated": "2026-02-20",
+      "url": "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-2pt10-low-by-april-30-2026",
+      "notes": "MCP verified. 14.5% probability of decline to $2.10. Would indicate softening GPU demand.",
+      "relevance_to_ANET": "RISK SIGNAL: GPU rental price decline would signal AI capex pullback — negative for ANET's AI networking pipeline"
+    },
+    {
+      "event": "Silicon Data H100 Index drops to $1.75/hr (LOW) by Apr 30, 2026",
+      "platform": "Polymarket",
+      "probability": 0.105,
+      "last_updated": "2026-02-20",
+      "url": "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-1pt75-low-by-april-30-2026",
+      "notes": "MCP verified. 10.5% probability. Would signal significant demand destruction.",
+      "relevance_to_ANET": "MAJOR RISK: ~25% decline from current level would mean AI investment winter. Severe ANET bear case."
+    },
+    {
+      "event": "Silicon Data H100 Index hit $2.45/hr by Feb 28, 2026",
+      "platform": "Polymarket",
+      "probability": 0.55,
+      "last_updated": "2026-02-20",
+      "url": "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-2pt45-high-by-february-28-2026",
+      "notes": "MCP verified. 55% — essentially a coin flip. Current index is near $2.35-2.40 range.",
+      "relevance_to_ANET": "Near-term GPU demand barometer; February resolution imminent"
+    },
+    {
+      "event": "AI hyperscaler capex consensus $527B for 2026 (Goldman Sachs estimate)",
+      "platform": "Goldman Sachs / Industry",
+      "probability": null,
+      "last_updated": "2026-02-07",
+      "url": "https://www.goldmansachs.com/insights/articles/why-ai-companies-may-invest-more-than-500-billion-in-2026",
+      "notes": "Not a prediction market but key context: GS consensus $527B (up from $465B at start of Q3 earnings). $700B would match late-1990s telecom peak. Amazon alone announced $200B capex for FY2026 (~60% YoY jump).",
+      "relevance_to_ANET": "CRITICAL: Hyperscaler capex is ANET's primary demand driver. $527B+ capex means massive networking infrastructure spend. ANET is primary Ethernet switching vendor for cloud titans (MSFT, META, GOOG)."
+    }
+  ],
+  "no_coverage": [
+    {
+      "topic": "Arista Networks (ANET) company-specific events",
+      "platforms_searched": ["Polymarket", "Kalshi"],
+      "notes": "No company-specific prediction markets found for ANET. Polymarket search for 'Arista' returned only Italian music festival (Sanremo/Arisa) results. No ANET earnings, market share, or competitive markets exist."
+    },
+    {
+      "topic": "Data center networking specific markets",
+      "platforms_searched": ["Polymarket"],
+      "notes": "No prediction markets found for data center networking, Ethernet vs InfiniBand, or networking equipment demand. Closest proxy is H100 GPU rental index (above)."
+    },
+    {
+      "topic": "AI spending/capex threshold markets",
+      "platforms_searched": ["Polymarket", "Kalshi"],
+      "notes": "No direct prediction markets for AI capex thresholds ($500B+, $700B+, etc). Market trades GPU rental prices as proxy. Weekly AI contract volume ~$6B across platforms (Feb 2026)."
+    }
+  ],
+  "dm_anchors": [
+    {
+      "id": "DM-PM-001",
+      "claim": "US recession probability by end of 2026: 22%",
+      "source": "Polymarket MCP API",
+      "confidence": "HIGH",
+      "verified_method": "MCP tool direct query, cross-checked with WebSearch"
+    },
+    {
+      "id": "DM-PM-002",
+      "claim": "H100 rental index $2.50 by Apr 2026: 83.5% probability",
+      "source": "Polymarket MCP API",
+      "confidence": "HIGH",
+      "verified_method": "MCP tool direct query with full market data"
+    },
+    {
+      "id": "DM-PM-003",
+      "claim": "Supreme Court rules against Trump tariffs: 75% probability",
+      "source": "Polymarket via WebSearch",
+      "confidence": "MEDIUM",
+      "verified_method": "WebSearch cross-reference (Yahoo Finance, Polymarket direct)"
+    },
+    {
+      "id": "DM-PM-004",
+      "claim": "Fed March 2026 rate cut: 64% probability",
+      "source": "Kalshi via WebSearch",
+      "confidence": "MEDIUM",
+      "verified_method": "WebSearch (Feb 5, 2026 data point)"
+    },
+    {
+      "id": "DM-PM-005",
+      "claim": "AI hyperscaler capex consensus $527B for 2026",
+      "source": "Goldman Sachs",
+      "confidence": "HIGH",
+      "verified_method": "WebSearch direct Goldman Sachs article"
+    },
+    {
+      "id": "DM-PM-006",
+      "claim": "Negative GDP growth in 2026: 12% probability",
+      "source": "Polymarket via WebSearch",
+      "confidence": "MEDIUM",
+      "verified_method": "WebSearch"
+    }
+  ],
+  "sources": [
+    "https://polymarket.com/event/us-recession-by-end-of-2026",
+    "https://polymarket.com/event/negative-gdp-growth-in-2026",
+    "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31",
+    "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26mar",
+    "https://polymarket.com/event/will-the-supreme-court-rule-in-favor-of-trumps-tariffs",
+    "https://polymarket.com/event/100-tariff-on-canada-in-effect-by-june-30",
+    "https://polymarket.com/event/us-tariff-rate-on-china-on-november-12-2025",
+    "https://polymarket.com/event/us-enacts-ai-safety-bill-before-2027",
+    "https://polymarket.com/predictions/nvidia",
+    "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-2pt50-high-by-april-30-2026",
+    "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-2pt75-high-by-april-30-2026",
+    "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-3pt00-high-by-april-30-2026",
+    "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-2pt10-low-by-april-30-2026",
+    "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-1pt75-low-by-april-30-2026",
+    "https://polymarket.com/event/silicon-data-h100-index-sdh100rt-hit-2pt45-high-by-february-28-2026",
+    "https://www.goldmansachs.com/insights/articles/why-ai-companies-may-invest-more-than-500-billion-in-2026",
+    "https://kalshi.com/category/economics/interest-rates",
+    "https://polymarket.com/predictions/trade-war"
+  ]
+}

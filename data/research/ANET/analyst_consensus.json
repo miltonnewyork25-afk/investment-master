@@ -1,0 +1,329 @@
+{
+  "ticker": "ANET",
+  "fetched_at": "2026-02-20",
+  "current_price": 137.23,
+  "market_cap_bn": 172.8,
+  "consensus": {
+    "rating": "Buy",
+    "total_analysts": 33,
+    "strong_buy_count": 9,
+    "buy_count": 18,
+    "hold_count": 6,
+    "sell_count": 0,
+    "strong_sell_count": 0,
+    "avg_price_target": 173.80,
+    "median_price_target": 167.50,
+    "high_target": 185.00,
+    "low_target": 140.00,
+    "implied_upside_pct": 26.6,
+    "dm": {
+      "type": "H",
+      "source": "WebSearch: StockAnalysis/MarketBeat/TipRanks consensus aggregation, Feb 2026",
+      "note": "Analyst counts vary by source (15-40 depending on trailing period); 33 is broadest aggregation. 15-analyst subset rates Strong Buy with $173.80 avg PT."
+    }
+  },
+  "earnings_estimates": {
+    "current_quarter": {
+      "quarter": "Q1 2026",
+      "period_end": "2026-03-31",
+      "report_date": "2026-05-04",
+      "eps_est_avg": 0.81,
+      "eps_est_high": 0.83,
+      "eps_est_low": 0.75,
+      "rev_est_avg_bn": 2.62,
+      "rev_est_high_bn": 2.68,
+      "rev_est_low_bn": 2.56,
+      "mgmt_rev_guidance_bn": 2.60,
+      "mgmt_gm_guidance_pct": "62-63%",
+      "mgmt_opm_guidance_pct": "46%",
+      "num_analysts_rev": 13,
+      "num_analysts_eps": 13,
+      "dm": {
+        "type": "H",
+        "source": "FMP estimates API (13 analysts) + Q4 2025 earnings call guidance",
+        "cross_validated": true
+      }
+    },
+    "next_quarter": {
+      "quarter": "Q2 2026",
+      "period_end": "2026-06-30",
+      "eps_est_avg": 0.85,
+      "eps_est_high": 0.92,
+      "eps_est_low": 0.81,
+      "rev_est_avg_bn": 2.78,
+      "rev_est_high_bn": 2.84,
+      "rev_est_low_bn": 2.74,
+      "num_analysts_rev": 12,
+      "num_analysts_eps": 12,
+      "dm": {
+        "type": "H",
+        "source": "FMP estimates API (12 analysts)",
+        "cross_validated": true
+      }
+    },
+    "q3_2026": {
+      "quarter": "Q3 2026",
+      "period_end": "2026-09-30",
+      "eps_est_avg": 0.90,
+      "eps_est_high": 0.94,
+      "eps_est_low": 0.88,
+      "rev_est_avg_bn": 2.92,
+      "rev_est_high_bn": 3.02,
+      "rev_est_low_bn": 2.87,
+      "num_analysts_rev": 10,
+      "num_analysts_eps": 9,
+      "dm": {
+        "type": "H",
+        "source": "FMP estimates API"
+      }
+    },
+    "q4_2026": {
+      "quarter": "Q4 2026",
+      "period_end": "2026-12-31",
+      "eps_est_avg": 0.96,
+      "eps_est_high": 1.00,
+      "eps_est_low": 0.94,
+      "rev_est_avg_bn": 3.11,
+      "rev_est_high_bn": 3.22,
+      "rev_est_low_bn": 3.05,
+      "num_analysts_rev": 11,
+      "num_analysts_eps": 10,
+      "dm": {
+        "type": "H",
+        "source": "FMP estimates API"
+      }
+    },
+    "fy2026_implied": {
+      "eps_est_sum": 3.52,
+      "rev_est_sum_bn": 11.43,
+      "note": "Sum of Q1-Q4 2026 quarterly consensus estimates",
+      "dm": {
+        "type": "R",
+        "source": "Calculated from FMP quarterly estimates",
+        "chain": "Q1($0.81) + Q2($0.85) + Q3($0.90) + Q4($0.96) = $3.52 EPS; Q1($2.62B) + Q2($2.78B) + Q3($2.92B) + Q4($3.11B) = $11.43B rev",
+        "falsifiable": "If any individual quarter estimate is revised, this sum changes accordingly"
+      }
+    }
+  },
+  "earnings_surprise_history": [
+    {
+      "quarter": "Q4 2025",
+      "reported_date": "2026-02-12",
+      "eps_actual": 0.82,
+      "eps_estimate": 0.75,
+      "eps_surprise_pct": 8.78,
+      "rev_surprise_pct": 4.81,
+      "dm": {
+        "type": "H",
+        "source": "Nasdaq/Zacks Q4 2025 earnings report"
+      }
+    },
+    {
+      "quarter": "Q3 2025",
+      "reported_date": "2025-11-04",
+      "eps_actual": 0.73,
+      "eps_estimate": 0.65,
+      "eps_surprise_pct": 12.31,
+      "rev_surprise_pct": 4.62,
+      "dm": {
+        "type": "H",
+        "source": "Zacks earnings surprise tracker"
+      }
+    },
+    {
+      "quarter": "Q2 2025",
+      "reported_date": "2025-08-05",
+      "eps_actual": 0.65,
+      "eps_estimate": 0.59,
+      "eps_surprise_pct": 10.17,
+      "rev_surprise_pct": null,
+      "dm": {
+        "type": "H",
+        "source": "Zacks earnings surprise tracker"
+      }
+    },
+    {
+      "quarter": "Q1 2025",
+      "reported_date": "2025-05-06",
+      "eps_surprise_pct": 7.89,
+      "rev_surprise_pct": 4.62,
+      "dm": {
+        "type": "H",
+        "source": "Yahoo Finance earnings data"
+      }
+    }
+  ],
+  "beat_streak": {
+    "consecutive_eps_beats": 4,
+    "consecutive_rev_beats": 4,
+    "avg_eps_surprise_pct_4q": 9.79,
+    "dm": {
+      "type": "R",
+      "source": "Calculated from earnings_surprise_history above",
+      "chain": "(8.78 + 12.31 + 10.17 + 7.89) / 4 = 9.79%",
+      "falsifiable": "If any quarter in 2025 was actually a miss, this average is wrong"
+    }
+  },
+  "recent_changes": [
+    {
+      "date": "2026-01-05",
+      "analyst": "Piper Sandler",
+      "action": "Upgrade",
+      "from": "Neutral",
+      "to": "Overweight",
+      "dm": {
+        "type": "H",
+        "source": "Sahm Capital / WebSearch results"
+      }
+    },
+    {
+      "date": "2026-02",
+      "analyst": "Erste Group",
+      "action": "Downgrade",
+      "from": "Buy",
+      "to": "Hold",
+      "rationale": "Revenue growth slowing, operating margins may dip slightly",
+      "dm": {
+        "type": "H",
+        "source": "WebSearch: Arista Networks analyst upgrade downgrade 2026"
+      }
+    },
+    {
+      "date": "2026-02",
+      "analyst": "Wolfe Research",
+      "action": "Caution",
+      "note": "Warned that margin guidance for 2026 and beyond could dampen stock performance near-term",
+      "dm": {
+        "type": "H",
+        "source": "WebSearch results"
+      }
+    }
+  ],
+  "bull_bear_summary": {
+    "bull_case": "Fortress balance sheet (zero long-term debt, massive liquidity). Critical infrastructure enabler for AI and cloud data centers — supplies high-performance switches/software to hyperscalers (Meta, Microsoft). Revenue grew from $4.9B (2022) to $7.0B (2024), net income more than doubled over same period. Expanding TAM via AI networking ($2.75-3.25B target for 2026), campus networking ($1.25B target), and VeloCloud SD-WAN acquisition. Consistent earnings beats (4 consecutive quarters, avg +9.8% surprise). Zacks Rank #1 stock. 20%+ revenue growth trajectory into 2026-2027.",
+    "bear_case": "Heavy customer concentration risk — few hyperscale cloud customers drive majority of revenue; loss of one key account would cause sharp sales drop. Premium valuation multiple leaves little room for execution slips. Microsoft contract cancellations signal potential vendor diversification risk. Margin pressure expected: management guiding GM 62-63% (compression from prior levels), Wolfe Research flagging margin headwinds. Growth rate decelerating (27% in 2025 -> 20% target in 2026). Competition from Cisco in campus, potential InfiniBand vs Ethernet debate in AI networking. Tariff and macro risks to enterprise spending.",
+    "dm": {
+      "type": "S",
+      "source": "Synthesized from Insider Monkey, Simply Wall St, Nasdaq, Seeking Alpha articles",
+      "note": "Bull/bear are editorial synthesis, not single-source verbatim"
+    }
+  },
+  "industry_specific": {
+    "ai_networking_revenue_forecast": {
+      "fy2025_actual_bn": 1.50,
+      "fy2026_target_bn": "2.75-3.25",
+      "note": "Initial target $2.75B was later doubled to $3.25B per some sources. Cross-validate with Q4 2025 earnings call transcript for exact current guidance.",
+      "growth_rate_pct": "~60% YoY (per mgmt Q4 call)",
+      "tam_context": "AI in networks market projected to grow from $15.28B (2025) to $192.42B (2034), CAGR 32.51% (Precedence Research)",
+      "dm": {
+        "type": "H",
+        "source": "Yahoo Finance, Seeking Alpha articles citing ANET management guidance + Precedence Research TAM",
+        "note": "The $3.25B figure needs verification — some sources cite $2.75B reaffirmed, others cite doubling to $3.25B. Recommend checking Q4 2025 call transcript directly."
+      }
+    },
+    "campus_networking_outlook": {
+      "fy2025_actual_bn": 0.80,
+      "fy2026_target_bn": 1.25,
+      "growth_rate_pct": "~60% YoY (per mgmt Q4 call)",
+      "revenue_share_pct": "~18% of total revenue (campus + routing)",
+      "strategy": "Client-to-cloud: cognitive campus + VeloCloud SD-WAN acquisition (July 2025) + unified management. Competing against Cisco in enterprise campus.",
+      "dm": {
+        "type": "H",
+        "source": "Q4 2025 earnings call highlights (Daily Political, Ticker Report), Network World"
+      }
+    },
+    "total_rev_target_fy2026_bn": 10.65,
+    "overall_growth_guidance_pct": "20%+",
+    "dm": {
+      "type": "H",
+      "source": "Yahoo Finance / Seeking Alpha citing ANET management"
+    }
+  },
+  "fmp_rating": {
+    "overall": "B",
+    "overall_score": 3,
+    "dcf_score": 3,
+    "roe_score": 5,
+    "roa_score": 5,
+    "de_score": 1,
+    "pe_score": 1,
+    "pb_score": 1,
+    "dm": {
+      "type": "H",
+      "source": "FMP rating API, 2026-02-20"
+    }
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-ANET-CONS-001",
+      "field": "consensus.avg_price_target",
+      "value": 173.80,
+      "type": "H",
+      "source": "StockAnalysis/MarketBeat/TipRanks multi-source consensus",
+      "confidence": 0.85,
+      "note": "Price targets range $140-185; avg varies by source ($167.50 median vs $173.80 avg vs $180.36 alternate)"
+    },
+    {
+      "id": "DM-ANET-CONS-002",
+      "field": "earnings_estimates.current_quarter.eps_est_avg",
+      "value": 0.81,
+      "type": "H",
+      "source": "FMP estimates API (13 analysts) cross-validated with Nasdaq/MarketBeat",
+      "confidence": 0.90
+    },
+    {
+      "id": "DM-ANET-CONS-003",
+      "field": "earnings_surprise_history.q4_2025.eps_surprise_pct",
+      "value": 8.78,
+      "type": "H",
+      "source": "Nasdaq/Zacks reported earnings surprise",
+      "confidence": 0.95
+    },
+    {
+      "id": "DM-ANET-CONS-004",
+      "field": "industry_specific.ai_networking_revenue_forecast.fy2026_target_bn",
+      "value": "2.75-3.25",
+      "type": "H",
+      "source": "Yahoo Finance/Seeking Alpha citing ANET management",
+      "confidence": 0.70,
+      "note": "Conflicting reports: $2.75B vs $3.25B. Needs Q4 call transcript verification."
+    },
+    {
+      "id": "DM-ANET-CONS-005",
+      "field": "industry_specific.campus_networking_outlook.fy2026_target_bn",
+      "value": 1.25,
+      "type": "H",
+      "source": "Q4 2025 earnings call reporting",
+      "confidence": 0.85
+    },
+    {
+      "id": "DM-ANET-CONS-006",
+      "field": "consensus.total_analysts",
+      "value": 33,
+      "type": "H",
+      "source": "Broadest aggregation across platforms",
+      "confidence": 0.75,
+      "note": "Count varies 15-40 by platform and trailing period"
+    }
+  ],
+  "sources": [
+    "https://stockanalysis.com/stocks/anet/forecast/",
+    "https://www.marketbeat.com/stocks/NYSE/ANET/forecast/",
+    "https://www.tipranks.com/stocks/anet/forecast",
+    "https://public.com/stocks/anet/forecast-price-target",
+    "https://www.nasdaq.com/market-activity/stocks/anet/earnings",
+    "https://finance.yahoo.com/quote/ANET/analysis/",
+    "https://www.insidermonkey.com/blog/arista-networks-inc-anet-a-bull-case-theory-6-1651114/",
+    "https://seekingalpha.com/article/4871054-arista-networks-expect-growth-to-pick-up-in-second-half-of-2026",
+    "https://www.sahmcapital.com/news/content/assessing-arista-networks-anet-valuation-after-analyst-upgrade-and-ai-data-center-security-collaboration-2026-01-12",
+    "https://www.networkworld.com/article/4111354/arista-rides-ai-wave-but-battle-for-campus-networks-looms.html",
+    "FMP API (estimates, rating, quote endpoints)"
+  ],
+  "data_quality_notes": [
+    "Analyst count discrepancy: 15 (tight consensus) vs 33 (broad) vs 40 (including older ratings). Used 33 as primary.",
+    "Price target range: Median $167.50 vs avg $173.80 — median may be more reliable for skewed distributions.",
+    "AI networking revenue target: $2.75B reaffirmed by some sources, $3.25B (doubled) by others. Flag for transcript verification.",
+    "Q2 2026 EPS: WebSearch returned $0.72 (possibly split-adjusted differently); FMP returns $0.85. Used FMP as primary (12 analysts).",
+    "FMP estimates for Q1 show rev avg $2.62B, consistent with WebSearch guidance of $2.60B (mgmt) and $2.62B (consensus)."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "ticker": "ANET",
+  "fetched_at": "2026-02-20",
+  "source": "MCP:fmp_data income quarterly",
+  "quarters": [
+    {
+      "period": "Q1 2024", "date": "2024-03-31",
+      "revenue": 1571400000, "gross_profit": 1001400000, "operating_income": 660200000,
+      "net_income": 637700000, "eps_diluted": 0.50,
+      "gross_margin": 0.6373, "operating_margin": 0.4202, "net_margin": 0.4058,
+      "rd_expense": 208400000, "sga_expense": 132800000
+    },
+    {
+      "period": "Q2 2024", "date": "2024-06-30",
+      "revenue": 1690400000, "gross_profit": 1097213000, "operating_income": 699573000,
+      "net_income": 665428000, "eps_diluted": 0.52,
+      "gross_margin": 0.6491, "operating_margin": 0.4139, "net_margin": 0.3937,
+      "rd_expense": 267482000, "sga_expense": 130158000
+    },
+    {
+      "period": "Q3 2024", "date": "2024-09-30",
+      "revenue": 1810936000, "gross_profit": 1161717000, "operating_income": 785250000,
+      "net_income": 747938000, "eps_diluted": 0.58,
+      "gross_margin": 0.6415, "operating_margin": 0.4337, "net_margin": 0.4130,
+      "rd_expense": 235824000, "sga_expense": 140643000
+    },
+    {
+      "period": "Q4 2024", "date": "2024-12-31",
+      "revenue": 1930436000, "gross_profit": 1230994000, "operating_income": 799652000,
+      "net_income": 800996000, "eps_diluted": 0.62,
+      "gross_margin": 0.6378, "operating_margin": 0.4143, "net_margin": 0.4150,
+      "rd_expense": 285016000, "sga_expense": 146326000
+    },
+    {
+      "period": "Q1 2025", "date": "2025-03-31",
+      "revenue": 2004800000, "gross_profit": 1276100000, "operating_income": 858800000,
+      "net_income": 813800000, "eps_diluted": 0.64,
+      "gross_margin": 0.6364, "operating_margin": 0.4284, "net_margin": 0.4060,
+      "rd_expense": 266400000, "sga_expense": 150900000
+    },
+    {
+      "period": "Q2 2025", "date": "2025-06-30",
+      "revenue": 2204800000, "gross_profit": 1438600000, "operating_income": 986200000,
+      "net_income": 888800000, "eps_diluted": 0.70,
+      "gross_margin": 0.6525, "operating_margin": 0.4474, "net_margin": 0.4032,
+      "rd_expense": 296500000, "sga_expense": 155900000
+    },
+    {
+      "period": "Q3 2025", "date": "2025-09-30",
+      "revenue": 2308300000, "gross_profit": 1490200000, "operating_income": 978200000,
+      "net_income": 853000000, "eps_diluted": 0.67,
+      "gross_margin": 0.6455, "operating_margin": 0.4238, "net_margin": 0.3695,
+      "rd_expense": 326000000, "sga_expense": 186000000
+    },
+    {
+      "period": "Q4 2025", "date": "2025-12-31",
+      "revenue": 2487800000, "gross_profit": 1563800000, "operating_income": 1032900000,
+      "net_income": 955800000, "eps_diluted": 0.75,
+      "gross_margin": 0.6286, "operating_margin": 0.4151, "net_margin": 0.3841,
+      "rd_expense": 348400000, "sga_expense": 182500000
+    }
+  ],
+  "trends": {
+    "revenue_acceleration": "Q1'24 $1.57B → Q4'25 $2.49B (+58% over 8Q)",
+    "quarterly_revenue_growth_sequential": ["7.6%", "7.1%", "6.6%", "3.9%", "10.0%", "4.7%", "7.8%"],
+    "operating_margin_range": "41.4% - 44.7%",
+    "net_margin_range": "36.9% - 41.5%",
+    "rd_expense_growth": "$208M → $348M (+67% over 8Q)"
+  }
+}

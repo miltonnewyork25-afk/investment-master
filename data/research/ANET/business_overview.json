@@ -1,0 +1,201 @@
+{
+  "ticker": "ANET",
+  "fetched_at": "2026-02-20",
+  "segments": [
+    {
+      "name": "Products",
+      "description": "Networking equipment including high-speed Ethernet switches (7050X, 7060X, 7800R series), routers, and platforms for data center, AI, and campus networking. Built on Broadcom merchant silicon (Trident, Tomahawk) with proprietary EOS software.",
+      "fy2025_revenue": "$6.94B (estimated, ~77% of total)",
+      "q4_2025_revenue": "$2.096B",
+      "yoy_growth": "30% (Q4 2025 product revenue YoY)"
+    },
+    {
+      "name": "Services",
+      "description": "Software subscriptions, support, maintenance, and professional services. Includes CloudVision management platform, EOS software updates, and technical support contracts.",
+      "fy2025_revenue": "$2.07B (estimated, ~23% of total)",
+      "q4_2025_revenue": "$392.1M",
+      "yoy_growth": "22% (Q4 2025 service revenue YoY)"
+    },
+    {
+      "name": "AI Networking (sub-segment)",
+      "description": "AI back-end cluster networking including 800GbE switches, AI-specific load balancing, and AI network observability. Not separately reported but guided by management.",
+      "fy2025_revenue": "$1.5B (management estimate)",
+      "fy2026_target": "$2.75B-$3.25B (83% growth target)",
+      "note": "Arista led branded market share for 800GbE and overall DC Ethernet switching"
+    },
+    {
+      "name": "Campus Networking (sub-segment)",
+      "description": "Enterprise campus networking solutions expanded via VeloCloud SD-WAN acquisition from Broadcom. Wi-Fi, wired access, and SD-WAN for enterprise edge.",
+      "fy2025_revenue": "$750M-$800M (estimated)",
+      "fy2026_target": "$1.25B (~60% growth)",
+      "note": "Acquired VeloCloud SD-WAN from Broadcom to accelerate campus entry"
+    }
+  ],
+  "full_year_2025_financials": {
+    "total_revenue": "$9.006B",
+    "yoy_growth": "28.6%",
+    "gaap_gross_margin": "64.1%",
+    "non_gaap_gross_margin": "64.6%",
+    "gaap_net_income": "$3.511B",
+    "gaap_eps": "$2.75",
+    "non_gaap_net_income": "$3.806B",
+    "non_gaap_eps": "$2.98",
+    "operating_margin": "47.5%",
+    "q4_quarterly_net_income_milestone": "Exceeded $1B quarterly net income"
+  },
+  "fy2026_guidance": {
+    "revenue": "$10.65B-$11.25B",
+    "growth": "20-25%",
+    "q1_2026_revenue_outlook": "~$2.6B",
+    "ai_networking_target": "$2.75B-$3.25B",
+    "campus_networking_target": "$1.25B"
+  },
+  "geographic_breakdown": [
+    {
+      "region": "Americas",
+      "fy2024_revenue": "$5.73B",
+      "fy2024_pct": "81.8%",
+      "note": "Dominated by US hyperscaler customers; concentration increasing"
+    },
+    {
+      "region": "EMEA",
+      "fy2024_revenue": "$713.2M",
+      "fy2024_pct": "10.2%",
+      "note": "Europe, Middle East, Africa"
+    },
+    {
+      "region": "Asia Pacific",
+      "fy2024_revenue": "$560.9M",
+      "fy2024_pct": "8.0%",
+      "note": "Relatively smaller; APAC DC buildout could be growth driver"
+    }
+  ],
+  "supply_chain": {
+    "key_suppliers": [
+      {
+        "name": "Broadcom",
+        "role": "Primary networking chip supplier (Trident, Tomahawk merchant silicon)",
+        "estimated_share": "~68% of networking chip components",
+        "relationship": "15+ year partnership; also source of VeloCloud SD-WAN acquisition",
+        "risk": "HIGH - Critical single-source dependency for core switching ASICs"
+      },
+      {
+        "name": "Marvell Technology",
+        "role": "Specialized networking chips",
+        "estimated_share": "~22% of networking chip components",
+        "risk": "MEDIUM - Secondary supplier for specific product lines"
+      },
+      {
+        "name": "Intel",
+        "role": "Advanced networking components, CPU/management processors",
+        "estimated_share": "~10% of networking components",
+        "risk": "LOW - More diversified supply options"
+      },
+      {
+        "name": "TSMC",
+        "role": "Foundry for Broadcom/Marvell chips used in Arista products",
+        "estimated_share": "Indirect but critical",
+        "risk": "HIGH - Geopolitical risk (cross-strait tension); single advanced node foundry"
+      }
+    ],
+    "key_customers": [
+      {
+        "name": "Microsoft",
+        "fy2025_revenue_share": "26%",
+        "fy2025_revenue": "$2.34B",
+        "yoy_growth": "67.2%",
+        "note": "Largest customer; Azure cloud + AI infrastructure"
+      },
+      {
+        "name": "Meta Platforms",
+        "fy2024_revenue_share": "15%",
+        "fy2024_revenue": "~$1.05B",
+        "note": "Second largest; AI training infrastructure + social media DC"
+      },
+      {
+        "name": "Other hyperscalers",
+        "note": "Management indicated 1-2 additional customers may exceed 10% threshold in 2025/2026"
+      }
+    ],
+    "concentration_risk": "VERY HIGH - Microsoft (26%) + Meta (15%) = 41%+ of revenue from just 2 customers. Key risk: capex pause, white-boxing (in-house switch development), or vendor diversification by either customer could materially impact revenue. Broadcom silicon dependency adds supply-side concentration risk."
+  },
+  "tam": {
+    "data_center_networking_2025": "$38.5B-$45.8B (varies by research firm scope)",
+    "data_center_networking_2030": "$103B-$155B",
+    "data_center_networking_cagr": "17.2%-20.5%",
+    "data_center_ethernet_switch_2025": "~$60B+ (total Ethernet switch market grew 35.2% in Q3 2025)",
+    "overall_data_center_market": "$7T cumulative investment through 2030 (McKinsey estimate)"
+  },
+  "industry_specific": {
+    "ai_networking_tam": "AI back-end networking shifting rapidly to Ethernet; over 2/3 of Q3 2025 switch sales in AI clusters were Ethernet (vs InfiniBand). 800GbE port shipments tripled sequentially in Q2 2025. Arista targets $2.75B-$3.25B AI networking revenue in 2026, implying ~$10B+ addressable AI networking market.",
+    "campus_networking_tam": "Arista targeting $1.25B campus revenue in 2026 from ~$750-800M in 2025 (~60% growth). Enterprise campus networking is a multi-billion dollar market traditionally dominated by Cisco. VeloCloud SD-WAN acquisition extends Arista into WAN edge.",
+    "800gbe_leadership": "Arista led branded market share for 800GbE in 2025. 800GbE port shipments more than tripled sequentially in Q2 2025.",
+    "eos_software_moat": "Single unified OS (EOS) — Linux-based, state-sharing architecture. Enables hitless upgrades, deep telemetry, AI-native features. High switching costs once deployed in mission-critical DC environments. CloudVision management platform adds network-wide automation and observability."
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-ANET-BIZ-001",
+      "claim": "FY2025 total revenue $9.006B, +28.6% YoY",
+      "source": "Arista Networks Q4/FY2025 press release (Feb 12, 2026)",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-ANET-BIZ-002",
+      "claim": "Q4 2025 product revenue $2.096B (+30% YoY), service revenue $392.1M (+22% YoY)",
+      "source": "Arista Networks Q4/FY2025 press release",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-ANET-BIZ-003",
+      "claim": "Microsoft = 26% of FY2025 revenue ($2.34B, +67.2% YoY), Meta = 15% of FY2024 revenue",
+      "source": "Arista SEC filings + earnings call transcripts; Seeking Alpha analysis",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-ANET-BIZ-004",
+      "claim": "Geographic breakdown FY2024: Americas 81.8%, EMEA 10.2%, APAC 8.0%",
+      "source": "Arista 10-K FY2024; StockAnalysis.com; Bullfincher.io",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-ANET-BIZ-005",
+      "claim": "FY2026 guidance: revenue $10.65B-$11.25B (+20-25%), AI networking $2.75B-$3.25B, campus $1.25B",
+      "source": "Arista Q4 2025 earnings call; management guidance",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-ANET-BIZ-006",
+      "claim": "Broadcom supplies ~68% of networking chip components; 15+ year partnership",
+      "source": "DCF Modeling Porter's Five Forces; LinkedIn Arista/Broadcom post; analyst estimates",
+      "confidence": "MEDIUM - percentage is analyst estimate, not company-disclosed"
+    },
+    {
+      "id": "DM-ANET-BIZ-007",
+      "claim": "Data center networking TAM: $45.8B (2025) -> $103B (2030), CAGR 17.6%",
+      "source": "GlobeNewsWire market research report (Feb 13, 2026)",
+      "confidence": "MEDIUM - third-party market research"
+    },
+    {
+      "id": "DM-ANET-BIZ-008",
+      "claim": "FY2025 GAAP net income $3.511B, non-GAAP net income $3.806B, operating margin 47.5%",
+      "source": "Arista Networks Q4/FY2025 press release",
+      "confidence": "HIGH"
+    }
+  ],
+  "sources": [
+    "https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Fourth-Quarter-and-Year-End-2025-Financial-Results/default.aspx",
+    "https://www.arista.com/en/company/news/press-release/23416-pr-20260212",
+    "https://futurumgroup.com/insights/arista-networks-q4-fy-2025-revenue-beat-on-ai-ethernet-momentum/",
+    "https://stockanalysis.com/stocks/anet/revenue/",
+    "https://www.alphaspread.com/security/nyse/anet/financials/revenue-breakdown",
+    "https://bullfincher.io/companies/arista-networks/revenue-by-geography",
+    "https://seekingalpha.com/article/4759785-arista-networks-q4-growth-from-microsoft-and-meta-capex-spending",
+    "https://www.gurufocus.com/news/8613330/arista-networks-inc-anet-q4-2025-earnings-call-highlights-record-revenue-and-strategic-growth-amid-challenges",
+    "https://markets.financialcontent.com/wral/article/finterra-2026-2-17-the-ai-backbone-a-deep-dive-into-arista-networks-anet-after-the-q4-earnings-beat",
+    "https://www.globenewswire.com/news-release/2026/02/13/3238149/0/en/Data-Center-Networking-Market-to-Expand-at-17-6-CAGR-Through-2030.html",
+    "https://dcfmodeling.com/products/anet-porters-five-forces-analysis",
+    "https://www.nextplatform.com/2025/08/12/big-ai-wave-will-lift-arista-to-10-billion-two-years-early/",
+    "https://www.networkworld.com/article/4111354/arista-rides-ai-wave-but-battle-for-campus-networks-looms.html",
+    "https://www.klover.ai/arista-networks-ai-strategy-analysis-of-dominance-in-data-center-networking/"
+  ]
+}

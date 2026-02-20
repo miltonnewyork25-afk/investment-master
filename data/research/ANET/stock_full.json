@@ -1,0 +1,91 @@
+{
+  "ticker": "ANET",
+  "fetched_at": "2026-02-20",
+  "source": "MCP:analyze_stock+baggers_summary",
+  "price": {
+    "current": 137.23,
+    "52w_high": 164.94,
+    "52w_low": 59.43,
+    "sma_20": 140.07,
+    "sma_50": 133.56,
+    "sma_200": 125.84,
+    "rsi": 40.49,
+    "beta": 1.444,
+    "trend": "上涨"
+  },
+  "valuation": {
+    "pe_ttm": 51.66,
+    "pe_forward": 32.37,
+    "pb_mrq": 14.70,
+    "ev_ebitda_ttm": 43.04,
+    "ev_ebit_ttm": 43.81,
+    "ev_sales_ttm": 19.70,
+    "fcf_yield_ttm": 0.0237,
+    "pr_ratio": 1.65,
+    "fmp_dcf": 81.36,
+    "dcf_vs_price": -40.4
+  },
+  "profitability": {
+    "gross_margin_ttm": 0.6406,
+    "operating_margin_ttm": 0.4282,
+    "net_margin_ttm": 0.3899,
+    "roe_ttm": 0.3140,
+    "roa_ttm": 0.2097,
+    "rotce_ttm": 0.2937,
+    "roic_ttm": 1.9691,
+    "ocf_margin_ttm": 0.4855,
+    "fcf_margin_ttm": 0.4722
+  },
+  "growth": {
+    "revenue_yoy": 0.289,
+    "earnings_growth": 0.191,
+    "quarterly_revenue": 2487800000,
+    "quarterly_net_income": 955800000,
+    "quarterly_eps_diluted": 0.75
+  },
+  "balance_sheet": {
+    "total_assets": 19448600000,
+    "total_liabilities": 7078100000,
+    "total_equity": 12370500000,
+    "cash_and_investments": 10743000000,
+    "total_debt": 0,
+    "net_debt": -1963900000,
+    "inventory": 2247100000,
+    "deferred_revenue_current": 4002600000,
+    "deferred_revenue_noncurrent": 1369800000,
+    "goodwill": 416100000
+  },
+  "cash_quality": {
+    "ocf_to_net_income_ttm": 1.25,
+    "fcf_to_net_income_ttm": 1.21,
+    "ocf_to_capex_ttm": 36.58,
+    "ocf_to_sbc_ttm": 14.28
+  },
+  "efficiency": {
+    "dso_ttm": 61,
+    "dio_ttm": 230,
+    "dpo_ttm": 58,
+    "ccc_ttm": 233,
+    "asset_turnover_ttm": 0.54,
+    "rd_to_gross_profit": 0.2145,
+    "sga_to_revenue": 0.075
+  },
+  "leverage": {
+    "debt_to_equity": 0.00,
+    "current_ratio": 3.05,
+    "quick_ratio": 2.35,
+    "altman_z_score": 17.71
+  },
+  "shareholder_returns": {
+    "dividend_yield": 0.00,
+    "buyback_yield_ttm": 0.0088,
+    "share_change_1y": -0.0027,
+    "sbc_offset_ratio": 5.1568,
+    "insider_trading_ratio": -0.0066
+  },
+  "macro_temperature": {
+    "shiller_pe": 40.01,
+    "buffett_indicator": 2.22,
+    "market_risk_premium": 0.045
+  }
+}
