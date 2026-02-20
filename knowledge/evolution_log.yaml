@@ -125,14 +125,15 @@ entries:
   - ticker: "ANET"
     date: "2026-02-20"
     report: "ANET_Complete_v1.0.md"
-    chars: "269K"
+    chars: "279K"
     cg_result: "PASSED(0E/1W)"
     compliance: "FAILED(Phase内容引用误判,非Agent残留)"
     dm_anchors: 50
     scorecard: "N/A"
     near_miss_score: 0
-    quality: 3.7
-    top_technique: "Cisco 1998类比4维★★★★★匹配+3结构差异 — 历史类比方法论最佳实践"
-    top_lesson: "DM锚点50个远低于目标(LRCX 326) — 报告正文DM标注密度不足,补救性附录B仅是权宜之计"
+    quality: 4.0
+    top_technique: "Cisco 1998类比4维★★★★★匹配+3结构差异+Token经济Jevons悖论前瞻分析"
+    top_lesson: "v1.1补强(+9K chars, 5处修正)将前瞻视角从缺失提升至体系化; DM锚点仍需Phase-level集成改进"
     evolution_proposed: "EVO-ANET-001: DM锚点写入Phase staging时即达标(≥80/Phase) | EVO-ANET-002: Compliance脚本区分Phase内容引用vs Agent残留"
     evolution_status: pending  # pending/approved/rejected
+    enhancement_note: "v1.1补强: Ch6.5 Token经济+Ch22.4推理基础设施+Ch26.3 AI冲击重估+Ch16/27前瞻修正"

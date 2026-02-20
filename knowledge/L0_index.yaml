@@ -22,7 +22,7 @@ reports:
   AMAT:  { ind: 半导体, rate: 中性关注, ret: "-2%", pw: 3, method: traditional, qual: 3.8, chars: 304K, tags: "半导体设备/广度护城河/先进封装/EPIC" }
   MSFT:  { ind: 生态科技, rate: 中性关注, ret: "+4%", pw: 4, method: mixed, qual: 3.5, chars: 316K, tags: "云/AI/OpenAI/企业软件" }
   KLAC:  { ind: 半导体, rate: 审慎关注, ret: "-38%", pw: 2, method: traditional, qual: 4.5, chars: 254K, tags: "检测设备/垄断/高估值/WFE周期" }
-  ANET:  { ind: 生态科技, rate: 审慎关注, ret: "-25.6%", pw: 4, method: mixed, qual: 3.7, chars: 269K, tags: "DC网络/EOS软件/NVIDIA竞争/客户集中/Cisco类比" }
+  ANET:  { ind: 生态科技, rate: 审慎关注, ret: "-23%~-24%", pw: 4, method: mixed, qual: 4.0, chars: 279K, tags: "DC网络/EOS软件/NVIDIA竞争/客户集中/Cisco类比/Token经济/推理基础设施" }
   INTC:  { ind: 半导体, rate: null, ret: null, pw: null, method: traditional, qual: null, chars: null, tags: "IDM/代工转型/先进制程/政府补贴" }
   ORCL:  { ind: 生态科技, rate: null, ret: null, pw: 6.6, method: mixed, qual: null, chars: "进行中", tags: "云转型/OCI/数据库/OpenAI/高负债" }
   AAPL:  { ind: 生态科技, rate: 审慎关注, ret: "-14%~-18%", pw: 6, method: mixed, qual: 3.79, chars: 303K, tags: "iPhone/Services/AI换机/Google协议/护城河侵蚀" }
