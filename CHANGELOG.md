@@ -6,6 +6,44 @@
 
 ---
 
+## [v17.1] - 2026-02-20
+
+### EVO-LRCX-001~004 框架升级 + Phase 0.75 核心矛盾结晶
+
+基于LRCX v3.0报告(3.8/5)的反思，实施4项进化提议+1项新Phase。目标：从3.8→4.3+。
+
+**EVO-LRCX-001: Phase 5数值锚定协议**
+- `docs/parallel_execution.md` 原则6重写：Agent C为数值权威源，Agent A/B引用C的数值
+- 新增 `valuation_anchor.yaml` 模板：期望回报/CQ加权/方法离散度统一来源
+- 预期影响：消除P5三Agent数值冲突(LRCX 43处修复→0)
+
+**EVO-LRCX-002: Agent分工简化**
+- Phase 5执行顺序改为 C先→A后(A读取C的staging产出)
+- 减少Agent间重复计算，提高一致性
+
+**EVO-LRCX-003: 组装自动冲突检测 (sentinel AB-008)**
+- `scripts/phase_sentinel.sh` 新增AB-008检查：扫描P5 staging文件中的期望回报/CQ置信度/方法离散度
+- 跨文件数值不一致时输出WARN+具体冲突明细
+- `docs/parallel_execution.md` 新增原则6.5：Complete组装4类数值一致性检查
+
+**EVO-LRCX-004: Phase 1背景压缩**
+- `docs/deep_dive_protocol.md` Phase 1新增压缩规则：同行业≥3份报告时背景章节≤40K(vs 70K)
+- 释放~30K字符给Phase 2-3深度分析
+
+**Phase 0.75: 核心矛盾结晶 (新增Phase)**
+- `docs/deep_dive_protocol.md` 新增Phase 0.75详细规范(3步+QG-00.75门控)
+- Step 1: 异常狩猎 — 扫描Phase 0数据中"直觉vs实际"偏差>20%的指标
+- Step 2: 约束碰撞测试 — 对Reverse DCF隐含假设做物理/数学/历史可能性速测
+- Step 3: 非共识假说登记 — 正式登记表，含可证伪条件+Google不可得性测试+EV影响>10%
+- 产出: `thesis_crystallization.md` (≥1500字符)
+- `scripts/phase_sentinel.sh` Layer 1新增thesis_crystallization.md检查
+- `CLAUDE.md` 铁律I流程新增Steps 6-7
+
+**Bug修复**
+- `scripts/phase_sentinel.sh` 修复3处预存算术bug：`grep -ci`多行输出导致`$(())`计算失败，添加`| head -1 | tr -d ' '`管道
+
+---
+
 ## [v26.0] - 2026-02-09
 
 ### MAJOR - 投资温度表格策略 + MCP工具统一整合 + 智能分析工具包
