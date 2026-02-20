@@ -101,11 +101,11 @@ entries:
     dm_anchors: 263
     scorecard: "N/A"
     near_miss_score: 27
-    quality: null  # AI填入 (1.0-5.0)
-    top_technique: null  # AI填入
-    top_lesson: null  # AI填入
-    evolution_proposed: null  # AI填入
-    evolution_status: pending  # pending/approved/rejected
+    quality: 3.8
+    top_technique: "循环依赖检测(B1↔B8信念互依赖)+4.5倍增长断层识别"
+    top_lesson: "方法伪独立是系统性问题(5方法实际2独立)+多层组装引入冗余"
+    evolution_proposed: "EVO-AAPL-001~004(已在v17.0中实施)"
+    evolution_status: approved
 
   - ticker: "LRCX"
     date: "2026-02-19"
@@ -121,3 +121,18 @@ entries:
     top_lesson: "多Agent组装需数值锚定协议(P5_A vs P5_C期望回报18pp冲突→43处修复)"
     evolution_proposed: "EVO-LRCX-001~004: P5数值锚定表+Agent分工简化+merger自动冲突检测+Phase1压缩"
     evolution_status: approved  # 2026-02-19 全部实施
+
+  - ticker: "ANET"
+    date: "2026-02-20"
+    report: "ANET_Complete_v1.0.md"
+    chars: "269K"
+    cg_result: "PASSED(0E/1W)"
+    compliance: "FAILED(Phase内容引用误判,非Agent残留)"
+    dm_anchors: 50
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: 3.7
+    top_technique: "Cisco 1998类比4维★★★★★匹配+3结构差异 — 历史类比方法论最佳实践"
+    top_lesson: "DM锚点50个远低于目标(LRCX 326) — 报告正文DM标注密度不足,补救性附录B仅是权宜之计"
+    evolution_proposed: "EVO-ANET-001: DM锚点写入Phase staging时即达标(≥80/Phase) | EVO-ANET-002: Compliance脚本区分Phase内容引用vs Agent残留"
+    evolution_status: pending  # pending/approved/rejected
