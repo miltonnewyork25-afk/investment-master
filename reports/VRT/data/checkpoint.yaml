@@ -4,16 +4,60 @@ company: "Vertiv Holdings"
 framework_version: v17.0
 worktree: "半导体"
 industry: "数据中心基础设施/半导体产业链"
-last_updated: "2026-02-20T21:00:00+00:00"
+last_updated: "2026-02-20T21:30:00+08:00"
 
-current_phase: -0.5
+current_phase: 0.75
 phase_status: completed
-phases_completed: [-1, -0.5]
+phases_completed: [-1, -0.5, 0, 0.5, 0.75]
 
 target_chars: 480000
 target_range: "450K-520K"
 hard_floor: 350000
 
+possibility_width: 4.8
+analysis_mode: "混合模式(传统估值+可能性附录)"
+
+cq_registry:
+  CQ1: "AI数据中心CapEx周期持续性 (25%)"
+  CQ2: "液冷竞争护城河深度 (20%)"
+  CQ3: "800V HVDC架构对UPS业务颠覆 (20%)"
+  CQ4: "盈利质量与可持续性 (15%)"
+  CQ5: "估值合理性 PE 46x (15%)"
+  CQ6: "并购整合与资本配置 (5%)"
+
+cq_confidence:
+  CQ1: {phase: 0.5, value: 40, direction: "偏乐观"}
+  CQ2: {phase: 0.5, value: 45, direction: "中性偏乐观"}
+  CQ3: {phase: 0.5, value: 30, direction: "高不确定"}
+  CQ4: {phase: 0.5, value: 55, direction: "偏乐观"}
+  CQ5: {phase: 0.5, value: 35, direction: "偏悲观"}
+  CQ6: {phase: 0.5, value: 60, direction: "偏乐观"}
+  weighted_avg: 40.5
+
+core_thesis: "VRT核心矛盾: 市场以AI基础设施估值(PE46x)定价一个85%传统工业品公司, 液冷护城河深度+800V转型可行性能否支撑AI溢价"
+
+non_consensus:
+  H1: "800V不会消灭UPS而会升级UPS"
+  H2: "积压$15B中20%+存在取消/延期风险"
+  H3: "VRT PE溢价12-18月内向Eaton收敛"
+
 quick_ref:
+  price: 243.06
+  market_cap: 93B
+  pe_ttm: 46.4
+  ev_ebitda: 28.8
+  fcf_yield: 2.0%
+  backlog: 15B
+  fy26_rev_guide: "13.25-13.75B"
+  net_debt_ebitda: 0.76
   total_chars: 0
   latest_phase_chars: 0
+
+key_files:
+  knowledge_context: "data/knowledge_context.md"
+  launch_brief: "data/launch_brief.md"
+  lit_recon_memo: "data/lit_recon_memo.md"
+  core_questions: "data/core_questions.md"
+  thesis_crystallization: "data/thesis_crystallization.md"
+  mcp_data: "data/research/VRT/MCP_structured_data.md"
+  agent_staging: "staging/VRT_P0_Agent{A-G}.md"
