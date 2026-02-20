@@ -7,3 +7,94 @@ events:
     fail: 0
     block: 0
     target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:35:41+00:00"
+    pass: 6
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:36:03+00:00"
+    pass: 6
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:36:10+00:00"
+    pass: 6
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:36:45+00:00"
+    pass: 6
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:37:10+00:00"
+    pass: 6
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:38:38+00:00"
+    pass: 6
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:38:47+00:00"
+    pass: 6
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:39:34+00:00"
+    pass: 6
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:39:43+00:00"
+    pass: 6
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:40:11+00:00"
+    pass: 9
+    warn: 3
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:40:21+00:00"
+    pass: 9
+    warn: 3
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-19T13:41:08+00:00"
+    pass: 9
+    warn: 3
+    fail: 0
+    block: 0
+    target_chars: 308840
+  - phase: 5
+    timestamp: "2026-02-20T00:01:08+00:00"
+    pass: 9
+    warn: 4
+    fail: 0
+    block: 0
+    target_chars: 308840
