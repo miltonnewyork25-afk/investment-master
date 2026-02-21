@@ -3,9 +3,9 @@
 # 每当新报告某板块超越现有最佳时，自动更新此目录
 
 metadata:
-  version: "1.1"
-  last_updated: "2026-02-20"
-  total_reports_analyzed: 19
+  version: "1.3"
+  last_updated: "2026-02-21"
+  total_reports_analyzed: 22
   quality_threshold: 4.0/5.0
 
 # ============================================================
@@ -146,6 +146,103 @@ ai_impact:
     transferable_to: ["所有AI相关公司(~75%报告)", "半导体", "网络设备", "云平台"]
 
 # ============================================================
+# 竞争对标分析 (Competitive Benchmarking)
+# ============================================================
+competitive_benchmarking:
+  chinese_competitor_deep_dive:
+    champion: "VRT_Ch7.2.7"
+    score: 4.3
+    report_path: "reports/VRT/VRT_Complete_深度研究报告.md"
+    method: "中国A股对标公司深度分析 — 7维财务对比 + 技术矩阵 + 4重投资论文含义 + Mermaid竞争力定位图"
+    key_innovation: "通过英维克对标揭示GB300开放化=VRT液冷份额命门，A股PE 214x泡沫→潜在价格战全球传导"
+    when_to_use: "被分析公司有直接中国竞争对手时(半导体/AI基础设施/消费品)"
+    transferable_to: ["所有面临中国竞争的行业", "半导体设备", "数据中心基础设施", "消费品", "新能源车"]
+    skill_path: ".claude/skills/competitive-benchmarking/SKILL.md"
+
+# ============================================================
+# 估值张力分析 (Valuation Tension)
+# ============================================================
+valuation_tension:
+  dual_identity_premium:
+    champion: "VRT_Ch7.3+Ch21"
+    score: 4.2
+    report_path: "reports/VRT/VRT_Complete_深度研究报告.md"
+    method: "三因素溢价分解(AI纯度+液冷先发+增长加速) → 可持续性时间线 → PE敏感性量化(份额→PE映射)"
+    key_innovation: "将PE溢价分解为3个可独立追踪的因素，每个因素有独立的衰减时间线和检测信号"
+    when_to_use: "公司估值溢价>同行50%时 (PE/PS显著高于行业) — 拆解溢价的结构性vs暂时性成分"
+    transferable_to: ["高估值科技公司", "AI概念股", "多元化vs纯度定价"]
+
+  deferred_revenue_sustainability:
+    champion: "VRT_Ch13"
+    score: 4.0
+    report_path: "reports/VRT/VRT_Complete_深度研究报告.md"
+    method: "递延收入三层可持续性测试: 存量→增量→周期性 + 递延收入/营收比趋势 + 转化率分析"
+    key_innovation: "区分递延收入的'真实可见性'(长期合同)vs'虚假繁荣'(预付款堆积)"
+    when_to_use: "高递延收入公司(递延/营收>20%) — 如VRT、SaaS、云服务"
+    transferable_to: ["SaaS公司", "数据中心", "订阅制企业", "大合同制造商"]
+
+# ============================================================
+# 运营体系分析 (Operating System Analysis)
+# ============================================================
+operating_system:
+  pe_turnaround_ops:
+    champion: "VRT_Ch8.8"
+    score: 4.0
+    report_path: "reports/VRT/VRT_Complete_深度研究报告.md"
+    method: "PE收购→运营体系(VOS)→利润率改善归因(6因素分解) + 同行体系对比(HOS/DBS/80-20/TPS) + 成熟度评分"
+    key_innovation: "量化VOS成熟度6/10 vs DBS 9.5/10，推导剩余改善空间2-3pp(FY26-FY29)"
+    when_to_use: "PE收购后重新上市的公司 / 有系统性运营改善故事的工业公司"
+    transferable_to: ["PE重组上市公司", "工业/制造业", "利润率改善故事股"]
+
+# ============================================================
+# 产业链分析 (Supply Chain Analysis)
+# ============================================================
+supply_chain:
+  industrial_value_chain:
+    champion: "ETN_Ch9A"
+    score: 4.3
+    report_path: "reports/ETN/ETN_Complete_深度研究报告.md"
+    method: "三层产业链纵深: 上游(原材料脆弱点+供应商集中度) + 下游(客户集中度+合同结构) + 交叉销售(板块协同量化)"
+    key_innovation: "识别GOES变压器钢材为ETN上游最大脆弱点(单一来源30%+, 12-18月交期), Hyperscaler下游集中度加剧定价权博弈"
+    when_to_use: "多元化工业公司(PW≤4) — 供应链关系复杂且对成本/产能有结构性影响"
+    transferable_to: ["工业/制造业", "基础设施", "多元化集团", "半导体设备(部分)"]
+
+  backlog_quality:
+    champion: "ETN_Ch12"
+    score: 4.1
+    report_path: "reports/ETN/ETN_Complete_深度研究报告.md"
+    method: "积压三层分层(Tier1可靠/Tier2条件/Tier3风险) + 恐惧囤积假说(类比2021半导体双重下单) + 取消率未披露=信息不对称"
+    key_innovation: "将$153B名义积压拆解为$6.6-7.9B可靠积压(仅50-60%), 揭示'积压质量'与'积压数量'的本质差异"
+    when_to_use: "积压/收入比>1.5x的工业公司 — 高积压可能是需求信号也可能是恐惧囤积"
+    transferable_to: ["工业设备", "国防/航空", "半导体设备", "基础设施建设"]
+
+# ============================================================
+# 身份溢价分析 (Identity Premium Analysis)
+# ============================================================
+identity_premium:
+  narrative_vs_fundamentals:
+    champion: "ETN_Ch20"
+    score: 4.3
+    report_path: "reports/ETN/ETN_Complete_深度研究报告.md"
+    method: "AI权重隐含法(P/E归因) → 实际收入结构对比 → 缺口量化(38pp) → 叙事相关性验证(r>0.9) → 溢价可持续性评估"
+    key_innovation: "将'身份溢价'从定性观察量化为38pp缺口($90/share), 并证明溢价与AI叙事热度相关性r>0.9=叙事驱动而非基本面驱动"
+    when_to_use: "公司正在经历'身份转型'叙事(传统→AI/绿色/数字化), PE显著偏离同行"
+    transferable_to: ["传统工业转AI概念", "能源转型概念股", "数字化转型概念股", "所有叙事溢价>20%的公司"]
+
+# ============================================================
+# 估值方法论 (Valuation Methodology)
+# ============================================================
+valuation_methodology:
+  valuation_independent_insights:
+    champion: "ETN_Ch26.5"
+    score: 4.2
+    report_path: "reports/ETN/ETN_Complete_深度研究报告.md"
+    method: "绕开WACC/DCF假精度 → 产出3条不依赖估值参数的可操作决策建议 + 每条含触发条件+来源章节"
+    key_innovation: "承认'我们不知道它值多少钱'的前提下, 仍然能给出有用的投资决策指引 — 从'值多少钱'转向'什么信号值得关注'"
+    when_to_use: "期望回报±10%以内(估值无信息优势)的公司 — 传统估值对决策无增量贡献时"
+    transferable_to: ["市值>$200B", "PW≤4传统估值", "期望回报接近0的中性评级"]
+
+# ============================================================
 # 行业专题分析
 # ============================================================
 industry_analysis:
@@ -172,8 +269,8 @@ update_triggers:
 # 使用指南
 # ============================================================
 usage_guide:
-  phase_neg1: ["查找相似行业最佳实践", "识别可移植方法论"]
-  phase_0: ["选择估值框架参考", "确定分析重点板块"]
-  phase_1to3: ["实施具体分析方法", "对标质量基准"]
+  phase_neg1: ["查找相似行业最佳实践", "识别可移植方法论", "匹配中国对标公司(competitive-benchmarking M1)"]
+  phase_0: ["选择估值框架参考", "确定分析重点板块", "识别历史类比候选(competitive-benchmarking M2)"]
+  phase_1to3: ["实施具体分析方法", "对标质量基准", "执行中国对标/历史类比深度分析"]
   phase_4: ["参考最佳红队实践", "避免系统性偏差"]
   phase_5: ["应用最佳估值技术", "质量门控对标"]
