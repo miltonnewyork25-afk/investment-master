@@ -4,11 +4,11 @@ company: "Eaton Corporation plc"
 framework_version: v17.0
 worktree: "半导体"
 industry: "半导体"
-last_updated: "2026-02-21T16:00:00+08:00"
+last_updated: "2026-02-21T18:00:00+08:00"
 
-current_phase: 3
-phase_status: valuation_deep_dive_complete
-phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3]
+current_phase: 4
+phase_status: red_team_complete
+phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4]
 
 target_chars: 300000
 target_range: "240K-375K"
@@ -20,10 +20,11 @@ eval_methods: [SOTP, Reverse_DCF, Relative_Valuation, DCF, Boyd_NPV]
 cq_count: 5
 
 quick_ref:
-  total_chars: 83220
+  total_chars: 109755
   phase1_chars: 37737
   phase2_chars: 17000
   phase3_chars: 28483
+  phase4_chars: 26535
   market_cap_B: 145.0
   price: 373.38
   pe_ratio: 30.2
@@ -31,25 +32,17 @@ quick_ref:
   sotp_range: "308-370"
   boyd_npv_weighted: 8.73
   reverse_dcf_implied_cagr: "17-18%"
-  prob_weighted_target: 351.0
-  expected_return: "-4.2%"
-  preliminary_rating: "中性关注"
+  prob_weighted_target: 353.4
+  expected_return: "-3.5%"
+  rating: "中性关注"
 
 cq_confidence:
-  CQ1_valuation_premium: 25
-  CQ2_boyd_acquisition: 30
-  CQ3_mobility_spinoff: 50
-  CQ4_backlog_quality: 40
-  CQ5_smart_money_divergence: 45
-  weighted_avg: 36
-
-phase2_key_findings:
-  - "OCF/NI=110%, FCF/NI=88% — 盈利质量健康"
-  - "EA margin 29.8% 比同业高800-1000bps — 接近天花板"
-  - "Boyd NPV概率加权$8.73B < $9.5B收购价 — 略贵"
-  - "Post-spin SOTP $326-370 — 市价$373在上方"
-  - "2026 Net Debt/EBITDA将升至3.2x+ — 杠杆风险窗口"
-  - "积压取消率未披露 — 信息不对称信号"
+  CQ1_valuation_premium: 27
+  CQ2_boyd_acquisition: 28
+  CQ3_mobility_spinoff: 55
+  CQ4_backlog_quality: 37
+  CQ5_smart_money_divergence: 43
+  weighted_avg: 36.4
 
 phase3_key_findings:
   - "Reverse DCF隐含FCF CAGR 17-18% > 共识14% > 管理层指引7-9%"
@@ -59,3 +52,19 @@ phase3_key_findings:
   - "安全边际薄弱: B3/B5/B6任一失败可翻转"
   - "PEG 2.18 > VRT 1.80 — 增长调整后ETN比AI纯粹公司更贵"
   - "历史类比: Cisco 2000的5折版,更接近2014页岩油服务"
+
+phase4_key_findings:
+  - "RT-2确认偏误: CQ连续4Phase下降无一上调=轻度看空偏差"
+  - "RT-4 Boyd EBITDA $420M为C级数据,可能虚增10-15%"
+  - "RT-5 DC暂建令Polymarket 32.5%概率=新增监管风险"
+  - "RT-6时间框架错配: 核心论文验证需36月>隐含投资周期18月"
+  - "RT-7替代解释: 积压可能是恐惧囤积+利润率可能是周期峰值"
+  - "温水煮青蛙概率25-30%: DC增速渐缓+Boyd低于目标→P/E不知不觉压缩至24x"
+  - "红队净效果: CQ 36.0%→36.4%(+0.4pp), 确认偏误校正抵消下行新证据"
+  - "校准后期望回报-3.5%(从-4.2%改善), 评级中性关注不变"
+
+red_team_effectiveness:
+  avg_cq_change: 2.8
+  new_findings: 4.5
+  direction: challenging_bearish_bias
+  verdict: marginal_effective
