@@ -1,0 +1,352 @@
+{
+  "ticker": "ETN",
+  "fetched_at": "2026-02-21T01:15:00Z",
+  "market_position": {
+    "overall": "Top 3-4 global power management company. #1 or #2 in multiple product categories (switchgear, UPS, PDU) in North America. Among top 5 in global data center power market.",
+    "data_center_power_ranking": "Top 4 (behind Schneider Electric, alongside Vertiv and ABB)",
+    "north_america_electrical": "Market leader in multiple categories including switchgear, busway, and UPS for commercial/industrial applications",
+    "key_differentiator": "Broadest portfolio in power management solutions for data centers, spanning grid-to-chip. Only player with comprehensive white space + gray space + grid connection coverage.",
+    "strategic_positioning": "Transitioning from electrical-only to electrical+thermal (via Boyd Thermal acquisition), creating the only grid-to-chip-to-cooling integrated solution provider.",
+    "dm_id": "CL-POS-001",
+    "source": "MarketsandMarkets, Eaton Q4 2025 earnings call"
+  },
+  "competitors": [
+    {
+      "name": "Schneider Electric",
+      "ticker": "SU.PA (Euronext Paris)",
+      "market_cap_B": 130,
+      "revenue_2024_B": 38.0,
+      "dc_revenue_pct": 24,
+      "strengths": [
+        "Market leader in data center power with EcoStruxure platform",
+        "End-to-end solutions: UPS, PDUs, intelligent energy management",
+        "36.7% revenue share in European switchgear/UPS/DCIM",
+        "NVIDIA Omniverse partnership for digital twin simulations",
+        "$850M Motivair acquisition (liquid cooling)"
+      ],
+      "weaknesses": [
+        "More diversified, data center not as dominant growth driver",
+        "European-centric, slower US hyperscaler penetration vs Eaton"
+      ],
+      "competitive_overlap": "Direct competitor across all data center power categories. Stronger in DCIM software, weaker in US market share vs Eaton.",
+      "dc_market_share_note": "Leads global data center power market. ~36.7% in European switchgear+UPS+DCIM.",
+      "dm_id": "CL-COMP-001",
+      "source": "MarketsandMarkets, Schneider Electric disclosures"
+    },
+    {
+      "name": "Vertiv Holdings",
+      "ticker": "VRT (NYSE)",
+      "market_cap_B": 45,
+      "revenue_ttm_B": 8.4,
+      "pe_ratio": 71.7,
+      "revenue_growth_pct": 22.7,
+      "strengths": [
+        "Pure-play data center infrastructure (highest revenue concentration)",
+        "360AI platform supports 100kW per rack",
+        "Strong thermal management capabilities (HVAC, liquid cooling)",
+        "Integrated busway, coolant distribution, leak-detection",
+        "Higher revenue growth rate than Eaton (23% vs 10%)"
+      ],
+      "weaknesses": [
+        "Smaller scale than Eaton, Schneider, ABB",
+        "Less diversified end markets (higher cyclical risk if DC capex slows)",
+        "Higher valuation (P/E 72x vs Eaton 38x)",
+        "Lower margins historically"
+      ],
+      "competitive_overlap": "Most direct DC competitor. Vertiv stronger in thermal management (pre-Boyd), Eaton stronger in electrical distribution.",
+      "dm_id": "CL-COMP-002",
+      "source": "FMP compare_stocks, MarketsandMarkets"
+    },
+    {
+      "name": "ABB Ltd",
+      "ticker": "ABB (NYSE/SIX)",
+      "market_cap_B": 95,
+      "revenue_2024_B": 32.9,
+      "pb_ratio": 4.53,
+      "strengths": [
+        "Global leader in electrification and automation",
+        "Strong modular power infrastructure portfolio",
+        "High-efficiency switchgear, transformers, monitoring tools",
+        "DG Matrix minority investment for solid-state power electronics",
+        "Also supporting NVIDIA 800V HVDC architecture"
+      ],
+      "weaknesses": [
+        "More diversified (Robotics, Motion, Process Automation)",
+        "Lower US market penetration in data center vs Eaton",
+        "Complex organizational structure across 4 divisions"
+      ],
+      "competitive_overlap": "Competes in switchgear, medium voltage equipment, power quality. ABB stronger in European industrial automation, Eaton stronger in US data center.",
+      "dm_id": "CL-COMP-003",
+      "source": "MarketsandMarkets, ABB disclosures"
+    },
+    {
+      "name": "Siemens AG",
+      "ticker": "SIEGY (OTC) / SIE.DE",
+      "market_cap_B": 150,
+      "strengths": [
+        "Global leader in industrial automation and digitalization",
+        "Strong switchgear and medium voltage position",
+        "Siemens Energy partnership with Eaton (not pure competitor in DC)",
+        "Comprehensive building technology portfolio"
+      ],
+      "weaknesses": [
+        "Data center not primary focus area",
+        "Siemens Energy spun off (grid infrastructure separate entity)",
+        "More focused on industrial automation than DC power"
+      ],
+      "competitive_overlap": "Competes in switchgear, medium voltage, building electrical. Less direct DC overlap than Schneider/Vertiv.",
+      "dm_id": "CL-COMP-004",
+      "source": "MarketsandMarkets switchgear market report"
+    },
+    {
+      "name": "Delta Electronics",
+      "ticker": "2308.TW",
+      "market_cap_B": 55,
+      "strengths": [
+        "Top 5 data center power market player",
+        "Strong in UPS and power supply units",
+        "Cost advantage from Taiwan manufacturing base",
+        "Growing data center infrastructure portfolio"
+      ],
+      "weaknesses": [
+        "Smaller scale in Western markets",
+        "Less brand recognition with US hyperscalers",
+        "Limited gray space / grid-level capabilities"
+      ],
+      "competitive_overlap": "Competes primarily in UPS and rack-level power supplies. Less overlap in switchgear and grid infrastructure.",
+      "dm_id": "CL-COMP-005",
+      "source": "MarketsandMarkets"
+    },
+    {
+      "name": "Hubbell Incorporated",
+      "ticker": "HUBB (NYSE)",
+      "market_cap_B": 21,
+      "strengths": [
+        "Strong in utility T&D electrical equipment",
+        "Grid modernization beneficiary",
+        "US-focused operations"
+      ],
+      "weaknesses": [
+        "Much smaller scale",
+        "Limited data center-specific portfolio",
+        "Narrower product range"
+      ],
+      "competitive_overlap": "Competes in utility electrical equipment. Minimal direct data center overlap.",
+      "dm_id": "CL-COMP-006",
+      "source": "Industry analysis"
+    },
+    {
+      "name": "AMETEK Inc.",
+      "ticker": "AME (NYSE)",
+      "market_cap_B": 42,
+      "pe_ratio": 36.5,
+      "pb_ratio": 4.45,
+      "roe_pct": 14.6,
+      "revenue_growth_pct": 13.4,
+      "strengths": [
+        "Strong in electronic instruments and power solutions",
+        "High-quality industrial compounder with M&A track record",
+        "Diversified end markets"
+      ],
+      "weaknesses": [
+        "Not a direct DC power competitor",
+        "Smaller scale in power management specifically",
+        "More industrial/aerospace measurement focused"
+      ],
+      "competitive_overlap": "Peripheral competitor. Competes in aerospace components and some power quality instruments.",
+      "dm_id": "CL-COMP-007",
+      "source": "FMP compare_stocks"
+    }
+  ],
+  "competitive_dynamics": {
+    "market_structure": {
+      "concentration": "Top 5 players (Schneider, Vertiv, ABB, Eaton, Delta) collectively hold 41-43% of global data center power market. Remaining ~57% fragmented among regional/specialty players.",
+      "trend": "Consolidating. Large players acquiring specialty capabilities (Schneider: Motivair for cooling, Eaton: Boyd Thermal for cooling). Scale and installed base creating winner-take-more dynamics.",
+      "dm_id": "CL-DYN-001",
+      "source": "MarketsandMarkets"
+    },
+    "key_competitive_factors": [
+      {
+        "factor": "Portfolio Breadth (Grid-to-Chip)",
+        "eaton_position": "Leading",
+        "rationale": "Only player with comprehensive coverage from utility grid connection through medium/low voltage distribution to rack-level power delivery. Post-Boyd, adds thermal management."
+      },
+      {
+        "factor": "Installed Base & Specification",
+        "eaton_position": "Strong",
+        "rationale": "9-11 year DC construction backlog as specified supplier. Once specified, extremely high switching costs."
+      },
+      {
+        "factor": "Technology Innovation (800V HVDC)",
+        "eaton_position": "Co-leading with ABB",
+        "rationale": "Both selected as NVIDIA 800V HVDC reference architecture partners. Eaton launching complete 800V product line in 2026 for Rubin Ultra."
+      },
+      {
+        "factor": "Software/Digital",
+        "eaton_position": "Developing",
+        "rationale": "Brightlayer DCIM suite growing but behind Schneider's EcoStruxure in maturity and market adoption."
+      },
+      {
+        "factor": "Thermal/Cooling",
+        "eaton_position": "Entering (via Boyd)",
+        "rationale": "Boyd Thermal acquisition ($9.5B, closing Q2 2026) brings $1.5B liquid cooling capability. Currently behind Vertiv and Schneider (Motivair) in cooling."
+      },
+      {
+        "factor": "Geographic Reach",
+        "eaton_position": "Strong Americas, Growing Global",
+        "rationale": "61% US revenue = strong North American position. Electrical Global segment provides EMEA/APAC coverage. Schneider and ABB stronger in Europe."
+      }
+    ],
+    "industry_tailwinds": [
+      "AI/ML compute demand driving 50-165% data center power growth through 2030",
+      "Hyperscaler capex approaching $600B in 2026 (top 5 combined)",
+      "Grid modernization and electrification",
+      "US reindustrialization (CHIPS Act, IRA)",
+      "Power density increase (100kW to 1MW+ per rack) requiring new electrical architectures",
+      "Transition from AC to DC power distribution in next-gen AI data centers",
+      "Supply constraints (switchgear, transformer shortages) benefiting incumbents with capacity"
+    ],
+    "industry_headwinds": [
+      "Premium valuations across sector (ETN 38x P/E, VRT 72x P/E) create downside risk if DC capex slows",
+      "DeepSeek-style efficiency improvements could reduce per-unit power demand",
+      "24-72 month power connection delays constraining new DC starts",
+      "Potential tariff impacts on imported components",
+      "Interest rate sensitivity for capital-intensive DC projects"
+    ],
+    "dm_id": "CL-DYN-002"
+  },
+  "moat_indicators": [
+    {
+      "type": "Switching Costs",
+      "strength": "Strong",
+      "evidence": "11-year data center construction backlog as specified supplier. Electrical infrastructure is deeply embedded and specification-driven. Changing suppliers mid-project or retrofit is extremely costly and risky.",
+      "dm_id": "CL-MOAT-001",
+      "source": "Eaton Q4 2025 earnings call"
+    },
+    {
+      "type": "Scale Economies",
+      "strength": "Strong",
+      "evidence": "$27.4B revenue provides manufacturing scale, global supply chain, and R&D leverage ($796M R&D in FY2025). Expanding capacity with $50M Virginia facility and Boyd Thermal's 5,000 employees.",
+      "dm_id": "CL-MOAT-002",
+      "source": "Eaton 10-K, press releases"
+    },
+    {
+      "type": "Intangible Assets (Brand/Reputation)",
+      "strength": "Strong",
+      "evidence": "115-year operating history (founded 1911). UL/CSA/IEC certifications across product portfolio. Trusted by all top 5 hyperscalers. Safety-critical product categories require proven track record.",
+      "dm_id": "CL-MOAT-003",
+      "source": "Eaton company profile"
+    },
+    {
+      "type": "Network Effects",
+      "strength": "Moderate",
+      "evidence": "Brightlayer software platform creates ecosystem stickiness. Electrical specification community tends to default to known brands. Installer/contractor familiarity creates preference.",
+      "dm_id": "CL-MOAT-004",
+      "source": "Industry analysis"
+    },
+    {
+      "type": "Cost Advantages",
+      "strength": "Moderate",
+      "evidence": "Vertical integration across electrical components. Pre-engineered, pre-tested, pre-fabricated modular solutions reduce installation time and cost. 24.9% segment margins indicate pricing power.",
+      "dm_id": "CL-MOAT-005",
+      "source": "Eaton product pages, earnings data"
+    },
+    {
+      "type": "Regulatory/Certification Barriers",
+      "strength": "Strong",
+      "evidence": "Electrical equipment requires extensive safety certifications (UL, CSA, IEC, NEC compliance). Multi-year qualification processes with hyperscalers. FDA/FAA certifications for aerospace. Nuclear-grade certifications for utility equipment.",
+      "dm_id": "CL-MOAT-006",
+      "source": "Industry analysis"
+    },
+    {
+      "type": "Capacity/Supply Constraint Advantage",
+      "strength": "Temporary but Significant",
+      "evidence": "Industry-wide switchgear and transformer shortages extending lead times 24-72 months. Incumbents with existing capacity and expansion plans (like Eaton's Virginia facility) have significant near-term advantage.",
+      "dm_id": "CL-MOAT-007",
+      "source": "Industry reports, FTI Consulting"
+    }
+  ],
+  "valuation_comparison": {
+    "etn": {"pe_ttm": 37.8, "pb": 7.8, "roe_pct": 20.7, "rev_growth_pct": 13.1, "ev_ebitda": 27.8},
+    "vrt": {"pe_ttm": 71.7, "pb": 15.7, "roe_pct": 41.8, "rev_growth_pct": 22.7},
+    "abb": {"pb": 4.5},
+    "ame": {"pe_ttm": 36.5, "pb": 4.5, "roe_pct": 14.6, "rev_growth_pct": 13.4},
+    "spy": {"pe_ttm": 27.8, "pb": 1.6},
+    "note": "Eaton trades at ~37.8x P/E, a premium to S&P 500 (27.8x) and AME (36.5x), but significant discount to pure-play DC peer VRT (71.7x). Premium justified by data center secular growth exposure, 11-year backlog visibility, and portfolio transformation.",
+    "dm_id": "CL-VAL-001",
+    "source": "FMP compare_stocks API"
+  },
+  "market_share_data": {
+    "global_data_center_power": {
+      "top_5_combined_share_pct": "41-43",
+      "players": ["Schneider Electric", "Vertiv", "ABB", "Eaton", "Delta Electronics"],
+      "eaton_estimated_share_pct": "8-10",
+      "note": "Precise individual shares not publicly disclosed. Top 5 share implies ~57% fragmented market.",
+      "dm_id": "CL-MS-001",
+      "source": "MarketsandMarkets"
+    },
+    "data_center_ups": {
+      "top_5_combined_share_pct": "40-42",
+      "leaders": ["Schneider Electric", "Vertiv", "Huawei", "Eaton", "ABB"],
+      "dm_id": "CL-MS-002",
+      "source": "MarketsandMarkets UPS market report"
+    },
+    "european_switchgear_ups_dcim": {
+      "schneider_share_pct": 36.7,
+      "eaton_share_pct": ">10",
+      "dm_id": "CL-MS-003",
+      "source": "FutureMarketInsights"
+    },
+    "switchgear_global": {
+      "leaders": ["ABB", "Schneider Electric", "Siemens", "Eaton", "Hitachi"],
+      "dm_id": "CL-MS-004",
+      "source": "MarketsandMarkets switchgear report"
+    }
+  },
+  "dm_anchors": [
+    {"id": "CL-POS-001", "type": "S", "source": "Synthesis from MarketsandMarkets + earnings call", "confidence": "high"},
+    {"id": "CL-COMP-001", "type": "R", "source": "MarketsandMarkets + Schneider disclosures", "confidence": "medium"},
+    {"id": "CL-COMP-002", "type": "H", "source": "FMP + MarketsandMarkets", "confidence": "high"},
+    {"id": "CL-COMP-003", "type": "R", "source": "MarketsandMarkets + ABB disclosures", "confidence": "medium"},
+    {"id": "CL-COMP-004", "type": "R", "source": "MarketsandMarkets", "confidence": "medium"},
+    {"id": "CL-COMP-005", "type": "R", "source": "MarketsandMarkets", "confidence": "medium"},
+    {"id": "CL-COMP-006", "type": "S", "source": "Industry analysis", "confidence": "low"},
+    {"id": "CL-COMP-007", "type": "H", "source": "FMP compare_stocks", "confidence": "high"},
+    {"id": "CL-DYN-001", "type": "R", "source": "MarketsandMarkets", "confidence": "medium"},
+    {"id": "CL-DYN-002", "type": "S", "source": "Synthesis from multiple sources", "confidence": "medium"},
+    {"id": "CL-MOAT-001", "type": "H", "source": "Eaton Q4 2025 earnings call", "confidence": "high"},
+    {"id": "CL-MOAT-002", "type": "H", "source": "Eaton 10-K + press releases", "confidence": "high"},
+    {"id": "CL-MOAT-003", "type": "H", "source": "Eaton company history", "confidence": "high"},
+    {"id": "CL-MOAT-004", "type": "S", "source": "Industry analysis", "confidence": "low"},
+    {"id": "CL-MOAT-005", "type": "S", "source": "Earnings data + product analysis", "confidence": "medium"},
+    {"id": "CL-MOAT-006", "type": "S", "source": "Industry knowledge", "confidence": "medium"},
+    {"id": "CL-MOAT-007", "type": "R", "source": "FTI Consulting + industry reports", "confidence": "medium"},
+    {"id": "CL-VAL-001", "type": "H", "source": "FMP compare_stocks API", "confidence": "high"},
+    {"id": "CL-MS-001", "type": "R", "source": "MarketsandMarkets", "confidence": "medium"},
+    {"id": "CL-MS-002", "type": "R", "source": "MarketsandMarkets UPS report", "confidence": "medium"},
+    {"id": "CL-MS-003", "type": "R", "source": "FutureMarketInsights", "confidence": "medium"},
+    {"id": "CL-MS-004", "type": "R", "source": "MarketsandMarkets switchgear report", "confidence": "medium"}
+  ],
+  "sources": [
+    "MarketsandMarkets Data Center Power Market: https://www.marketsandmarkets.com/ResearchInsight/data-center-power-market.asp",
+    "MarketsandMarkets Data Center UPS Market: https://www.marketsandmarkets.com/ResearchInsight/data-center-ups-market.asp",
+    "MarketsandMarkets Switchgear Market: https://www.marketsandmarkets.com/ResearchInsight/switchgear-market.asp",
+    "MarketsandMarkets Offsite DC Power Infrastructure: https://www.marketsandmarkets.com/ResearchInsight/offsite-data-center-power-infrastructure-market.asp",
+    "Data Center Power Market Landscape 2025-2030 (ResearchAndMarkets): https://www.businesswire.com/news/home/20250530720441/en/Data-Center-Power-Market-Landscape-2025-2030",
+    "FutureMarketInsights Switchgear for Data Centers: https://www.futuremarketinsights.com/reports/switchgear-for-data-centers-market",
+    "Eaton Q4 2025 Earnings Release: https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-fourth-quarter-2025-results.html",
+    "Eaton Q4 2025 Earnings Call Transcript: https://www.fool.com/earnings/call-transcripts/2026/02/03/eaton-etn-q4-2025-earnings-call-transcript/",
+    "Eaton Q4 2025 Analyst Presentation: https://www.eaton.com/content/dam/eaton/company/investor-relations/quarterly-earnings/filings/2025/q4/4Q-2025-analyst-presentation.pdf",
+    "Eaton 800V Architecture: https://www.eaton.com/us/en-us/company/news-insights/news-releases/2025/eaton-unveils-next-generation-architecture.html",
+    "NVIDIA 800V HVDC Blog: https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories/",
+    "DataCenterFrontier 800V Analysis: https://www.datacenterfrontier.com/energy/article/55323139/preparing-for-800-vdc-data-centers-abb-eaton-support-nvidias-ai-infrastructure-evolution",
+    "Schneider Motivair Acquisition + NVIDIA Omniverse: Industry reports",
+    "ABB DG Matrix Investment: Industry reports",
+    "FMP compare_stocks API: Eaton vs VRT vs ABB vs AME",
+    "Eaton Hyperscale DC Solutions: https://www.eaton.com/mx/en-us/markets/data-centers/hyperscale.html",
+    "Yahoo Finance Power Quality Report: https://finance.yahoo.com/news/power-quality-equipment-company-evaluation-104100285.html",
+    "Klover.ai Eaton AI Strategy: https://www.klover.ai/eaton-ai-strategy-analysis-of-dominance-in-powering-electrical-industrial-ai/",
+    "Goldman Sachs AI Power Demand: https://www.goldmansachs.com/insights/articles/ai-to-drive-165-increase-in-data-center-power-demand-by-2030",
+    "Data Center Support Infrastructure Market Report (GlobeNewsWire): https://www.globenewswire.com/news-release/2026/01/27/3226211/28124/en/Data-Center-Support-Infrastructure-Market-Analysis-Report-2026"
+  ]
+}

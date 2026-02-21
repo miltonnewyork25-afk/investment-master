@@ -1,0 +1,332 @@
+{
+  "ticker": "ETN",
+  "company_name": "Eaton Corporation plc",
+  "fetched_at": "2026-02-21",
+  "market_data_snapshot": {
+    "price": 373.38,
+    "market_cap_B": 145.02,
+    "shares_outstanding_M": 388.4,
+    "year_high": 408.45,
+    "year_low": 231.85,
+    "exchange": "NYSE"
+  },
+  "institutional_summary": {
+    "total_institutions": 3216,
+    "total_institutions_13f_filers": 2331,
+    "total_shares_held_M": 422.16,
+    "ownership_pct": 82.09,
+    "insider_ownership_pct": 0.70,
+    "retail_ownership_pct": 17.22,
+    "qoq_change_institutions": -2,
+    "qoq_change_institutions_note": "72 hedge funds held ETN end of Q3 2025 vs 74 in Q2 2025; slight decrease",
+    "net_institutional_flow": "mixed",
+    "net_institutional_flow_note": "Institutions bought ~105M shares last quarter, sold ~248.8M shares; net selling on aggregate but concentrated in a few large exits",
+    "dm_anchor": "SMT-001"
+  },
+  "top_holders": [
+    {
+      "rank": 1,
+      "name": "Vanguard Group, Inc.",
+      "shares_M": 37.50,
+      "ownership_pct": 9.66,
+      "value_B": 12.45,
+      "change": "reduced by 10,009 shares (negligible, <0.03%)",
+      "filing_type": "13G/A",
+      "dm_anchor": "SMT-002"
+    },
+    {
+      "rank": 2,
+      "name": "BlackRock Institutional Trust Company",
+      "shares_M": 18.0,
+      "ownership_pct": 4.63,
+      "value_B": 5.97,
+      "change": "added 107,259 shares (+0.6%)",
+      "dm_anchor": "SMT-003"
+    },
+    {
+      "rank": 3,
+      "name": "State Street Investment Management",
+      "shares_M": 16.94,
+      "ownership_pct": 4.36,
+      "value_B": 5.63,
+      "change": "added 105,144 shares (+0.6%)",
+      "dm_anchor": "SMT-004"
+    },
+    {
+      "rank": 4,
+      "name": "J.P. Morgan Asset Management",
+      "shares_M": 12.0,
+      "ownership_pct": 3.09,
+      "value_B": 3.99,
+      "change": "cut 3.8M shares (-24.07%); significant reduction",
+      "dm_anchor": "SMT-005"
+    },
+    {
+      "rank": 5,
+      "name": "Fidelity Management & Research",
+      "shares_M": 10.9,
+      "ownership_pct": 2.81,
+      "value_B": 3.62,
+      "change": "added 354,986 shares (+3.4%)",
+      "dm_anchor": "SMT-006"
+    },
+    {
+      "rank": 6,
+      "name": "Geode Capital Management",
+      "shares_M": 8.6,
+      "ownership_pct": 2.22,
+      "value_B": 2.86,
+      "change": "added 47,393 shares (+0.6%)",
+      "dm_anchor": "SMT-007"
+    },
+    {
+      "rank": 7,
+      "name": "Morgan Stanley Smith Barney",
+      "shares_M": 8.6,
+      "ownership_pct": 2.20,
+      "value_B": 2.84,
+      "change": "added 137,789 shares (+1.6%)",
+      "dm_anchor": "SMT-008"
+    },
+    {
+      "rank": 8,
+      "name": "BofA Global Research (US)",
+      "shares_M": 6.8,
+      "ownership_pct": 1.75,
+      "value_B": 2.26,
+      "change": "reduced by 162,678 shares (-2.3%)",
+      "dm_anchor": "SMT-009"
+    },
+    {
+      "rank": 9,
+      "name": "MFS Investment Management",
+      "shares_M": 6.8,
+      "ownership_pct": 1.75,
+      "value_B": 2.25,
+      "change": "cut 820,903 shares (-10.8%)",
+      "dm_anchor": "SMT-010"
+    },
+    {
+      "rank": 10,
+      "name": "Managed Account Advisors LLC",
+      "shares_M": 5.8,
+      "ownership_pct": 1.48,
+      "value_B": 1.91,
+      "change": "reduced by 401,984 shares (-6.5%)",
+      "dm_anchor": "SMT-011"
+    },
+    {
+      "rank": 11,
+      "name": "Coatue Management (Philippe Laffont)",
+      "shares_M": 4.8,
+      "ownership_pct": 1.23,
+      "value_B": 1.59,
+      "change": "added 106,997 shares; ETN is a top-10 pick for Laffont",
+      "dm_anchor": "SMT-012"
+    }
+  ],
+  "notable_moves": [
+    {
+      "entity": "Capital International Investors",
+      "action": "SOLD_ENTIRE_POSITION",
+      "shares_changed_M": -1.70,
+      "value_est_M": -636.6,
+      "quarter": "Q3 2025",
+      "significance": "Complete exit of ~1.7M shares (~$637M value); largest single institutional exit in recent quarters",
+      "dm_anchor": "SMT-013"
+    },
+    {
+      "entity": "J.P. Morgan Asset Management",
+      "action": "MAJOR_REDUCTION",
+      "shares_changed_M": -3.8,
+      "pct_change": -24.07,
+      "quarter": "latest 13F",
+      "significance": "Cut nearly a quarter of position; second-largest reduction by a top holder",
+      "dm_anchor": "SMT-005"
+    },
+    {
+      "entity": "Massachusetts Financial Services Co (MFS)",
+      "action": "MAJOR_REDUCTION",
+      "shares_changed_M": -1.79,
+      "pct_change": -24.5,
+      "value_est_M": -569.0,
+      "quarter": "Q4 2025",
+      "significance": "Removed ~1.79M shares in Q4 2025; consistent with broader MFS position trimming in Q4",
+      "dm_anchor": "SMT-014"
+    },
+    {
+      "entity": "MFS Investment Management (separate filing entity)",
+      "action": "REDUCTION",
+      "shares_changed": -820903,
+      "pct_change": -10.8,
+      "quarter": "latest 13F",
+      "significance": "Further evidence of MFS family trimming Eaton exposure across entities",
+      "dm_anchor": "SMT-010"
+    },
+    {
+      "entity": "Coatue Management (Philippe Laffont)",
+      "action": "INCREASE",
+      "shares_changed": 106997,
+      "quarter": "latest 13F",
+      "significance": "Tech-focused hedge fund increasing industrial position; ETN listed among Laffont's top 10 stock picks",
+      "dm_anchor": "SMT-012"
+    },
+    {
+      "entity": "Fidelity Management & Research",
+      "action": "INCREASE",
+      "shares_changed": 354986,
+      "quarter": "latest 13F",
+      "significance": "Third-largest active manager adding to position; bullish signal from fundamental shop",
+      "dm_anchor": "SMT-006"
+    },
+    {
+      "entity": "TCW Group Inc",
+      "action": "INCREASE",
+      "shares_changed": 138945,
+      "quarter": "Q3-Q4 2025",
+      "significance": "New meaningful position build from value-oriented manager",
+      "dm_anchor": "SMT-015"
+    },
+    {
+      "entity": "Carillon Eagle Growth & Income Fund",
+      "action": "HOLD/POSITIVE",
+      "quarter": "Q4 2025",
+      "significance": "Highlighted ETN in investor letter; anticipates accelerated growth from data center, aerospace, defense",
+      "dm_anchor": "SMT-016"
+    }
+  ],
+  "smart_money_options_activity": {
+    "total_unusual_trades": 12,
+    "sentiment_bullish_pct": 33,
+    "sentiment_bearish_pct": 50,
+    "puts_total_value": 181040,
+    "calls_total_value": 519776,
+    "price_target_range": "$300 - $370",
+    "note": "Smart money options activity showing mixed to bearish sentiment; more call volume by dollar but bearish lean on trade count",
+    "dm_anchor": "SMT-017"
+  },
+  "insider_activity": {
+    "summary": "Net selling bias in recent quarters; insider sales outpace purchases in most periods",
+    "recent_quarters": [
+      {
+        "quarter": "Q1 2026",
+        "acquired_transactions": 2,
+        "disposed_transactions": 4,
+        "total_acquired": 12876,
+        "total_disposed": 23937,
+        "net_shares": -11061,
+        "sales_count": 1,
+        "notable": "Paulo Ruiz Sternadt exercised 11,725 options at $98.21/share, sold 10,707 shares at ~$390.26/share (Feb 2026)"
+      },
+      {
+        "quarter": "Q4 2025",
+        "acquired_transactions": 4,
+        "disposed_transactions": 3,
+        "total_acquired": 10092,
+        "total_disposed": 2082,
+        "net_shares": 8010,
+        "purchases_count": 2,
+        "notable": "Rare net-positive quarter; director Gerald Johnson purchased 100 shares at $361 (Aug 2025 filing)"
+      },
+      {
+        "quarter": "Q3 2025",
+        "acquired_transactions": 5,
+        "disposed_transactions": 7,
+        "total_acquired": 14922,
+        "total_disposed": 31063,
+        "net_shares": -16141,
+        "sales_count": 3,
+        "notable": "CFO Olivier Leonetti sold 16,018 shares at ~$358/share (~$5.7M total) in Aug 2025"
+      },
+      {
+        "quarter": "Q2 2025",
+        "acquired_transactions": 25,
+        "disposed_transactions": 38,
+        "total_acquired": 135747,
+        "total_disposed": 315358,
+        "net_shares": -179611,
+        "sales_count": 11,
+        "notable": "Heaviest insider selling quarter; significant option exercises + disposals"
+      }
+    ],
+    "insider_ownership_pct": 0.70,
+    "insider_trend": "Persistent net selling across 2024-2025, consistent with stock appreciation and option exercise activity rather than loss of confidence. Isolated open-market purchases (Gerald Johnson, Aug 2025) are rare and small.",
+    "dm_anchor": "SMT-018"
+  },
+  "berkshire_hathaway": {
+    "status": "Historical position; current status unclear",
+    "note": "Berkshire 13F once disclosed ~2.9M shares in ETN. This was a relatively small position for Berkshire. Buffett stepped down as CEO end of 2025; portfolio now under Greg Abel/Ted Weschler. Latest 13F data does not confirm continued holding.",
+    "dm_anchor": "SMT-019"
+  },
+  "hedge_fund_count_trend": {
+    "Q3_2025": 72,
+    "Q2_2025": 74,
+    "trend": "slight decline",
+    "note": "Hedge fund interest modestly declining; offset by larger allocations from remaining holders",
+    "dm_anchor": "SMT-020"
+  },
+  "key_signals": {
+    "bullish": [
+      "Big 3 passive (Vanguard/BlackRock/State Street) collectively hold ~18.65% and are steady/slightly adding",
+      "Fidelity (+355K shares) and Morgan Stanley (+138K shares) actively building positions",
+      "Coatue Management (tech-focused hedge fund) has ETN as a top-10 pick",
+      "TCW Group initiated meaningful new position",
+      "Carillon Eagle fund highlighted ETN as growth beneficiary of data center + aerospace megatrends",
+      "HedgeFollow insight: 'ETN saw institutions add through a price pullback while keeping selling comparatively contained, creating a cleaner net-accumulation picture than many industrial peers'"
+    ],
+    "bearish": [
+      "Capital International Investors completely exited ~$637M position in Q3 2025",
+      "J.P. Morgan Asset Management cut 24% of position (~3.8M shares)",
+      "MFS family entities collectively trimmed ~2.6M shares across Q4 2025 filings",
+      "Smart money options activity 50% bearish vs 33% bullish",
+      "Hedge fund count declining (74 -> 72)",
+      "Insider selling persistent; CFO sold ~$5.7M in Aug 2025",
+      "Net institutional flow negative on aggregate (sold 248.8M shares vs bought 105M shares)"
+    ],
+    "neutral": [
+      "82% institutional ownership is typical for large-cap industrial; no activist campaign evident",
+      "Insider selling consistent with option exercises during stock appreciation, not confidence loss",
+      "Passive index fund flows dominate ownership structure, reducing signal quality"
+    ]
+  },
+  "dm_anchors": [
+    {"id": "SMT-001", "type": "R", "source": "fintel.io/nasdaq.com/hedgefollow.com 13F aggregators", "content": "3,216 institutions; 422.16M shares; 82.09% inst ownership"},
+    {"id": "SMT-002", "type": "H", "source": "tikr.com/fintel.io 13G/A filing; nasdaq.com", "content": "Vanguard 37.5M shares (9.66%), reduced 10,009 shares"},
+    {"id": "SMT-003", "type": "H", "source": "tikr.com 13F compilation", "content": "BlackRock Institutional Trust 18.0M shares (4.63%), added 107,259"},
+    {"id": "SMT-004", "type": "H", "source": "tikr.com 13F compilation", "content": "State Street 16.94M shares (4.36%), added 105,144"},
+    {"id": "SMT-005", "type": "H", "source": "tikr.com 13F compilation", "content": "JPM Asset Management 12.0M shares, cut 3.8M (-24.07%)"},
+    {"id": "SMT-006", "type": "H", "source": "tikr.com 13F compilation", "content": "Fidelity 10.9M shares (2.81%), added 354,986"},
+    {"id": "SMT-007", "type": "H", "source": "tikr.com 13F compilation", "content": "Geode Capital 8.6M shares (2.22%), added 47,393"},
+    {"id": "SMT-008", "type": "H", "source": "tikr.com 13F compilation", "content": "Morgan Stanley 8.6M shares (2.20%), added 137,789"},
+    {"id": "SMT-009", "type": "H", "source": "tikr.com 13F compilation", "content": "BofA Global Research 6.8M shares (1.75%), reduced 162,678"},
+    {"id": "SMT-010", "type": "H", "source": "tikr.com 13F compilation", "content": "MFS Investment Management 6.8M shares (1.75%), cut 820,903"},
+    {"id": "SMT-011", "type": "H", "source": "tikr.com 13F compilation", "content": "Managed Account Advisors 5.8M shares (1.48%), reduced 401,984"},
+    {"id": "SMT-012", "type": "H", "source": "tikr.com/insidermonkey.com 13F+portfolio trackers", "content": "Coatue Management 4.8M shares (1.23%), added 106,997; Laffont top-10 pick"},
+    {"id": "SMT-013", "type": "R", "source": "insidermonkey.com/quiverquant.com 13F delta", "content": "Capital International Investors sold 100% of position (1.7M shares, ~$637M) in Q3 2025"},
+    {"id": "SMT-014", "type": "R", "source": "quiverquant.com/insidermonkey.com 13F", "content": "Massachusetts Financial Services removed 1,786,415 shares (-24.5%, ~$569M) in Q4 2025"},
+    {"id": "SMT-015", "type": "R", "source": "quiverquant.com 13F update", "content": "TCW Group added 138,945 shares"},
+    {"id": "SMT-016", "type": "S", "source": "insidermonkey.com fund letter excerpt", "content": "Carillon Eagle Growth & Income Fund bullish on ETN in Q4 2025 letter"},
+    {"id": "SMT-017", "type": "R", "source": "nasdaq.com/benzinga options scanner", "content": "12 unusual options trades; 33% bullish, 50% bearish; $300-$370 range"},
+    {"id": "SMT-018", "type": "H", "source": "FMP insider-trading API + SEC Form 4 filings (stocktitan.net)", "content": "Insider net selling across 2024-2025; CFO Leonetti sold ~$5.7M Aug 2025; Dir. Johnson bought 100 shares $361"},
+    {"id": "SMT-019", "type": "S", "source": "oldschoolvalue.com/seekingalpha.com Berkshire tracker", "content": "Berkshire historical ~2.9M share position; current status unconfirmed post-Buffett CEO transition"},
+    {"id": "SMT-020", "type": "R", "source": "insidermonkey.com hedge fund database", "content": "72 hedge funds held ETN end Q3 2025 vs 74 in Q2 2025"}
+  ],
+  "sources": [
+    "https://fintel.io/so/us/etn",
+    "https://www.tikr.com/blog/who-owns-eaton-top-shareholders-and-recent-insider-transactions",
+    "https://www.nasdaq.com/market-activity/stocks/etn/institutional-holdings",
+    "https://hedgefollow.com/stocks/ETN",
+    "https://www.marketbeat.com/stocks/NYSE/ETN/institutional-ownership/",
+    "https://finance.yahoo.com/quote/ETN/holders/",
+    "https://www.insidermonkey.com/blog/should-you-expect-accelerated-growth-for-eaton-corporation-plc-etn-in-2026-1694363/",
+    "https://www.quiverquant.com/news/EATON+($ETN)+Releases+Q4+2025+Earnings",
+    "https://www.nasdaq.com/articles/smart-money-betting-big-etn-options",
+    "https://www.nasdaq.com/articles/vanguard-group-increases-position-in-eaton-etn",
+    "https://www.nasdaq.com/articles/blackrock-increases-position-in-eaton-etn",
+    "https://www.stocktitan.net/sec-filings/ETN/form-4-eaton-corp-plc-insider-trading-activity-dc4bd3f366f7.html",
+    "https://www.gurufocus.com/term/inst-ownership/ETN",
+    "https://www.wallstreetzen.com/stocks/us/nyse/etn/ownership",
+    "https://ca.finance.yahoo.com/news/eaton-corporation-plc-nyse-etn-170104513.html",
+    "FMP API: insider-trading endpoint"
+  ]
+}

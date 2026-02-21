@@ -1,0 +1,438 @@
+{
+  "ticker": "ETN",
+  "fetched_at": "2026-02-21T01:15:00Z",
+  "company_profile": {
+    "name": "Eaton Corporation plc",
+    "headquarters": "Dublin, Ireland (operational HQ: Cleveland, OH)",
+    "founded": 1911,
+    "ceo": "Paulo Ruiz Sternadt",
+    "employees": 94443,
+    "market_cap_B": 145.0,
+    "stock_price": 373.38,
+    "sector": "Industrials",
+    "industry": "Industrial - Machinery / Power Management",
+    "description": "Global power management company providing electrical, aerospace, and vehicle solutions. Strategic pivot from diversified industrial to power management pure-play, with 75% of revenue from power electronics (up from 40% in 2011-12).",
+    "dm_id": "BIZ-PROF-001"
+  },
+  "segments": [
+    {
+      "name": "Electrical Americas",
+      "description": "Electrical components, power distribution, industrial components, residential products, UPS, circuit protection, wiring devices, utility power distribution, hazardous duty equipment. Core data center power infrastructure: switchgear, UPS, busway, PDUs, remote power panels, static transfer switches.",
+      "fy2025_revenue_B": 13.0,
+      "fy2025_revenue_pct": 47.4,
+      "fy2024_revenue_B": 11.4,
+      "fy2024_revenue_pct": 45.8,
+      "q4_2025_revenue_B": 3.5,
+      "q4_2025_yoy_growth_pct": 21,
+      "q4_2025_organic_growth_pct": 15,
+      "q4_2025_operating_margin_pct": 29.8,
+      "fy2026_growth_guidance_pct": 10,
+      "key_growth_drivers": ["Data center/AI infrastructure", "Grid modernization", "Reindustrialization/reshoring", "Utility spending"],
+      "data_center_metrics": {
+        "q4_2025_dc_orders_yoy_growth_pct": 200,
+        "q4_2025_dc_revenue_yoy_growth_pct": 40,
+        "backlog_years_equivalent": 11,
+        "backlog_yoy_growth_pct": 200,
+        "orders_composition": "50% cloud-based data center, 50% AI-specific"
+      },
+      "dm_id": "BIZ-SEG-001",
+      "source": "Eaton Q4 2025 earnings release, Q4 2025 earnings call transcript"
+    },
+    {
+      "name": "Electrical Global",
+      "description": "Same product portfolio as Electrical Americas but serving markets outside the Americas (EMEA, Asia Pacific). Includes power quality, connectivity, and industrial components.",
+      "fy2025_revenue_B": 6.6,
+      "fy2025_revenue_pct": 24.1,
+      "fy2024_revenue_B": 6.2,
+      "fy2024_revenue_pct": 24.9,
+      "q4_2025_revenue_B": 1.7,
+      "q4_2025_yoy_growth_pct": 10,
+      "q4_2025_organic_growth_pct": 6,
+      "q4_2025_operating_margin_pct": 19.7,
+      "key_growth_drivers": ["European data center expansion", "Grid modernization", "Energy transition"],
+      "dm_id": "BIZ-SEG-002",
+      "source": "Eaton Q4 2025 earnings release"
+    },
+    {
+      "name": "Aerospace",
+      "description": "Hydraulic systems, fuel systems, pneumatic systems, electrical power systems, engine solutions for commercial and military aircraft. Products include pumps, motors, hoses, valves, actuators, sensors, air-to-air refueling systems, wiring connectors.",
+      "fy2025_revenue_B": 4.3,
+      "fy2025_revenue_pct": 15.7,
+      "fy2024_revenue_B": 3.8,
+      "fy2024_revenue_pct": 15.3,
+      "q4_2025_revenue_B": 1.1,
+      "q4_2025_yoy_growth_pct": 14,
+      "q4_2025_organic_growth_pct": 12,
+      "q4_2025_operating_margin_pct": 24.1,
+      "backlog_yoy_growth_pct": 16,
+      "orders_rolling_12m_growth_pct": 11,
+      "key_growth_drivers": ["Commercial aftermarket recovery", "Defense spending increase", "Aircraft electrification"],
+      "dm_id": "BIZ-SEG-003",
+      "source": "Eaton Q4 2025 earnings release"
+    },
+    {
+      "name": "Vehicle",
+      "description": "Transmissions, clutches, superchargers, engine valves, valve actuation systems, locking/limited slip differentials, transmission controls, fuel vapor components for commercial and passenger vehicles.",
+      "fy2025_revenue_B": 2.5,
+      "fy2025_revenue_pct": 9.1,
+      "fy2024_revenue_B": 2.7,
+      "fy2024_revenue_pct": 10.8,
+      "q4_2025_revenue_B": 0.59,
+      "q4_2025_yoy_growth_pct": -9,
+      "operating_margin_approx_pct": 13,
+      "note": "Declining segment, announced spin-off into independent Mobility Group by Q1 2027",
+      "dm_id": "BIZ-SEG-004",
+      "source": "Eaton Q4 2025 earnings release"
+    },
+    {
+      "name": "eMobility",
+      "description": "Voltage inverters, converters, fuses, onboard chargers, circuit protection units, vehicle controls, power distribution systems for electric and hybrid vehicles.",
+      "fy2025_revenue_B": 0.5,
+      "fy2025_revenue_pct": 1.8,
+      "fy2024_revenue_B": 0.6,
+      "fy2024_revenue_pct": 2.4,
+      "q4_2025_revenue_B": 0.12,
+      "q4_2025_yoy_growth_pct": -15,
+      "note": "To be combined with Vehicle in Mobility Group spin-off by Q1 2027",
+      "dm_id": "BIZ-SEG-005",
+      "source": "Eaton Q4 2025 earnings release"
+    }
+  ],
+  "segment_revenue_notes": {
+    "methodology": "FY2025 segment revenues estimated by summing Q1-Q4 2025 quarterly data (Q1: $6.38B, Q2: $7.03B, Q3: $6.99B, Q4: $7.05B = $27.45B total). Segment allocations based on quarterly proportions and growth rates reported in earnings releases. Electrical Americas Q1=$3.0B, Q2=$3.2B(est), Q3=$3.3B(est), Q4=$3.5B. Cross-validated with total FY2025 revenue of $27.4B from 10-K.",
+    "combined_electrical_pct": 71.5,
+    "combined_electrical_revenue_B": 19.6,
+    "mobility_group_revenue_B": 3.0,
+    "mobility_group_pct": 10.9,
+    "dm_id": "BIZ-SEG-NOTE-001"
+  },
+  "geographic_breakdown": [
+    {
+      "region": "United States",
+      "fy2024_revenue_B": 15.2,
+      "fy2024_pct": 61.0,
+      "trend": "Fastest growing region, driven by data center buildout, CHIPS Act reindustrialization, grid modernization",
+      "dm_id": "BIZ-GEO-001",
+      "source": "Eaton 2024 10-K, stock-analysis-on.net geographic analysis"
+    },
+    {
+      "region": "Europe",
+      "fy2024_revenue_B": 4.5,
+      "fy2024_pct": 18.1,
+      "trend": "Steady growth from energy transition, data center expansion",
+      "dm_id": "BIZ-GEO-002",
+      "source": "Eaton 2024 10-K"
+    },
+    {
+      "region": "Asia Pacific",
+      "fy2024_revenue_B": 2.5,
+      "fy2024_pct": 10.0,
+      "trend": "Growth from hyperscaler DC buildout in APAC",
+      "dm_id": "BIZ-GEO-003",
+      "source": "Eaton 2024 10-K"
+    },
+    {
+      "region": "Latin America",
+      "fy2024_revenue_B": 1.7,
+      "fy2024_pct": 6.8,
+      "dm_id": "BIZ-GEO-004",
+      "source": "Eaton 2024 10-K"
+    },
+    {
+      "region": "Canada",
+      "fy2024_revenue_B": 1.1,
+      "fy2024_pct": 4.4,
+      "dm_id": "BIZ-GEO-005",
+      "source": "Eaton 2024 10-K"
+    }
+  ],
+  "supply_chain": {
+    "key_partnerships": [
+      {
+        "partner": "NVIDIA",
+        "type": "Technology Partnership",
+        "description": "Cornerstone partnership to develop commercial-ready 800 VDC power architecture for AI factories. Eaton designing reference architecture for NVIDIA Rubin Ultra platform. 800V HVDC product line launching 2026.",
+        "dm_id": "BIZ-SC-001",
+        "source": "Eaton press release Oct 2025, NVIDIA blog"
+      },
+      {
+        "partner": "Siemens Energy",
+        "type": "Strategic Alliance",
+        "description": "Joint force to provide integrated power and technology solutions for data center capacity delivery. Modular, scalable solutions for electricity supply to data centers, including independent grid operation.",
+        "dm_id": "BIZ-SC-002",
+        "source": "Eaton/Siemens Energy joint press release 2025"
+      },
+      {
+        "partner": "Autodesk",
+        "type": "Technology Partnership",
+        "description": "Collaboration to create digital energy twins for data centers.",
+        "dm_id": "BIZ-SC-003",
+        "source": "enkiai.com analysis"
+      }
+    ],
+    "key_customers": {
+      "hyperscalers": ["Amazon Web Services", "Microsoft Azure", "Google Cloud", "Meta", "Oracle"],
+      "enterprise_dc": ["CyrusOne", "Equinix", "Digital Realty"],
+      "note": "Q4 2025 data center orders 50% from cloud hyperscalers, 50% from AI-specific builds",
+      "dm_id": "BIZ-SC-004",
+      "source": "Eaton Q4 2025 earnings call, eaton.com hyperscale page"
+    },
+    "key_acquisitions": [
+      {
+        "target": "Boyd Thermal (from Boyd Corporation / Goldman Sachs Asset Management)",
+        "value_B": 9.5,
+        "valuation_multiple": "22.5x estimated 2026 EBITDA",
+        "announced": "2025-11-03",
+        "expected_close": "Q2 2026",
+        "target_revenue_2026_B": 1.7,
+        "liquid_cooling_revenue_B": 1.5,
+        "employees": 5000,
+        "strategic_rationale": "Expands Eaton from electrical power infrastructure to thermal/cooling management for data centers. Addresses increasing power density and liquid cooling requirements for AI racks (1MW+ per rack).",
+        "financial_impact": "Accretive to adjusted earnings in year two. No share repurchases planned in 2026 due to acquisition financing.",
+        "dm_id": "BIZ-SC-005",
+        "source": "Eaton press release 2025-11-03, Bloomberg, DCD"
+      }
+    ],
+    "planned_divestitures": [
+      {
+        "unit": "Mobility Group (Vehicle + eMobility)",
+        "type": "Tax-free spin-off to shareholders",
+        "announced": "2026-01-26",
+        "expected_completion": "Q1 2027",
+        "revenue_B": 3.0,
+        "segment_margin_pct": 13,
+        "rationale": "Focus on higher-growth Electrical and Aerospace businesses. Mobility immediately accretive to organic growth rate and operating margin upon separation.",
+        "dm_id": "BIZ-SC-006",
+        "source": "Eaton press release 2026-01-26, Bloomberg"
+      }
+    ],
+    "manufacturing_expansion": [
+      {
+        "location": "Henrico County, Virginia",
+        "investment_M": 50,
+        "purpose": "Grid-to-chip AI data center solutions. Manufacturing static transfer switches, PDUs, remote power panels. Doubling Richmond footprint.",
+        "dm_id": "BIZ-SC-007",
+        "source": "Eaton press release Dec 2025"
+      }
+    ]
+  },
+  "tam": {
+    "data_center_power_market": {
+      "market_2025_B": 35.14,
+      "market_2030_B": 50.51,
+      "cagr_pct": 7.5,
+      "source": "MarketsandMarkets",
+      "dm_id": "BIZ-TAM-001"
+    },
+    "data_center_support_infrastructure": {
+      "market_2025_B": 62.03,
+      "market_2026_B": 69.58,
+      "cagr_pct": 12.2,
+      "source": "GlobeNewsWire Jan 2026",
+      "dm_id": "BIZ-TAM-002"
+    },
+    "data_center_power_demand_forecast": {
+      "us_it_demand_2026_GW": 75.8,
+      "us_it_demand_2028_GW": 108,
+      "us_it_demand_2030_GW": 134.4,
+      "global_new_capacity_2026_2030_GW": 100,
+      "global_capacity_2025_GW": 30,
+      "global_capacity_2030_GW": 90,
+      "capacity_cagr_pct": 22,
+      "source": "Goldman Sachs Research, S&P Global",
+      "dm_id": "BIZ-TAM-003"
+    },
+    "hyperscaler_capex_2026_B": 602,
+    "hyperscaler_capex_source": "Top 5 hyperscalers combined (AWS, Azure, Google, Meta, Oracle)",
+    "grid_spending_through_2030_B": 720,
+    "grid_spending_source": "Goldman Sachs Research",
+    "data_center_electricity_consumption": {
+      "projected_2026_TWh_range": "650-1050",
+      "pct_of_global_electricity_2024": 1.5,
+      "source": "International Energy Agency",
+      "dm_id": "BIZ-TAM-004"
+    },
+    "data_center_liquid_cooling_tam": {
+      "note": "Boyd Thermal acquisition positions Eaton in $1.5B+ liquid cooling market with growing demand from 1MW+ AI racks",
+      "dm_id": "BIZ-TAM-005"
+    },
+    "key_constraint": "Power availability emerging as primary limiting factor. Switchgear, transformer, and gas turbine shortages extending construction timelines by 24-72 months. Vacancy rates in mature hubs below 1%.",
+    "dm_id": "BIZ-TAM-006"
+  },
+  "industry_specific": {
+    "technology_positioning": {
+      "grid_to_chip_strategy": "Comprehensive approach covering medium-voltage grid connection through to chip-level power delivery. Portfolio spans switchgear, transformers, UPS, busway, PDUs, remote power panels, static transfer switches, and software-defined power management.",
+      "hvdc_800v": {
+        "status": "Reference architecture unveiled Oct 2025, complete 800V DC product line launching 2026",
+        "partnership": "NVIDIA (supporting Rubin Ultra platform)",
+        "components": "Supercapacitor-based ride-through storage, ORV3-compatible busbar distribution, DC connectors, hot-aisle containment",
+        "advantages": "Reduces conversion losses, space requirements, copper usage. Enables 1MW+ rack densities with liquid cooling.",
+        "dm_id": "BIZ-IND-001",
+        "source": "Eaton press release, NVIDIA blog, DataCenterFrontier"
+      },
+      "software_platform": "Brightlayer Data Centers Suite - intelligent power management and monitoring",
+      "dm_id": "BIZ-IND-002"
+    },
+    "product_portfolio_dc": {
+      "white_space": ["UPS systems", "PDUs", "Remote power panels", "Rack-level power distribution", "Static transfer switches"],
+      "gray_space": ["Medium voltage switchgear", "Low voltage switchgear", "Busway systems", "Transformers"],
+      "grid_connection": ["Utility-grade switchgear", "Power reliability equipment"],
+      "cooling": ["Liquid cooling (via Boyd Thermal acquisition, pending close)"],
+      "software": ["Brightlayer DCIM suite", "Digital energy twins (with Autodesk)"],
+      "dm_id": "BIZ-IND-003"
+    },
+    "backlog_metrics": {
+      "electrical_backlog_yoy_growth_pct": 29,
+      "aerospace_backlog_yoy_growth_pct": 16,
+      "dc_backlog_years_equivalent": 11,
+      "dc_backlog_note": "11 years of what was built in 2025. Although industry finding ways to build faster, backlog keeps growing.",
+      "rolling_12m_orders_organic_growth_pct": 16,
+      "book_to_bill_ratio": 1.1,
+      "dm_id": "BIZ-IND-004",
+      "source": "Eaton Q4 2025 earnings release and call"
+    },
+    "strategic_transformation": {
+      "from": "Diversified industrial (40% power electronics in 2011-12)",
+      "to": "Power management pure-play (75% power electronics in 2022, ~72% electrical in 2025)",
+      "post_spinoff": "~89% Electrical + Aerospace (post Mobility spin-off Q1 2027)",
+      "post_boyd": "Electrical (power + thermal) + Aerospace, with comprehensive data center solution",
+      "dm_id": "BIZ-IND-005"
+    }
+  },
+  "financial_summary": {
+    "fy2025": {
+      "revenue_B": 27.45,
+      "revenue_growth_pct": 10.3,
+      "organic_growth_pct": 8,
+      "gross_margin_pct": 37.6,
+      "operating_margin_pct": 19.1,
+      "segment_margin_pct": 24.9,
+      "net_income_B": 4.09,
+      "eps_diluted": 10.46,
+      "adjusted_eps": 12.07,
+      "operating_cash_flow_B": 4.5,
+      "free_cash_flow_B": 3.6,
+      "fcf_yield_pct": 2.5,
+      "dm_id": "BIZ-FIN-001",
+      "source": "Eaton 2025 10-K via FMP, Q4 2025 earnings release"
+    },
+    "fy2024": {
+      "revenue_B": 24.88,
+      "gross_margin_pct": 38.2,
+      "operating_margin_pct": 19.6,
+      "net_income_B": 3.79,
+      "eps_diluted": 9.50,
+      "dm_id": "BIZ-FIN-002",
+      "source": "Eaton 2024 10-K via FMP"
+    },
+    "revenue_cagr_3yr_pct": 9.8,
+    "fy2026_guidance": {
+      "organic_growth_pct_range": "7-9",
+      "adjusted_eps_range": "13.00-13.50",
+      "segment_margin_range_pct": "24.6-25.0",
+      "eps_range": "11.57-12.07",
+      "note": "Does not include Boyd Thermal (expected close Q2 2026). No share repurchases planned in 2026.",
+      "dm_id": "BIZ-FIN-003",
+      "source": "Eaton Q4 2025 earnings release"
+    },
+    "balance_sheet": {
+      "total_assets_B": 41.25,
+      "total_debt_B": 11.17,
+      "cash_B": 0.62,
+      "net_debt_B": 10.55,
+      "net_debt_to_ebitda": 0.52,
+      "debt_to_equity": 0.59,
+      "interest_coverage": 21.39,
+      "goodwill_B": 16.04,
+      "goodwill_pct_of_assets": 38.88,
+      "dm_id": "BIZ-FIN-004",
+      "source": "FMP balance sheet data Q4 2025"
+    },
+    "valuation": {
+      "pe_ttm": 37.77,
+      "ev_ebitda_ttm": 27.84,
+      "ev_ebit_ttm": 31.92,
+      "pb_ratio": 7.80,
+      "fcf_yield_pct": 2.50,
+      "dividend_yield_pct": 1.07,
+      "dm_id": "BIZ-FIN-005",
+      "source": "FMP/baggers_summary"
+    },
+    "capital_returns": {
+      "dividend_per_share": 4.16,
+      "buyback_yield_pct": 1.71,
+      "shares_outstanding_change_1yr_pct": -1.49,
+      "note": "No buybacks planned in 2026 due to Boyd Thermal acquisition",
+      "dm_id": "BIZ-FIN-006",
+      "source": "FMP data"
+    },
+    "efficiency": {
+      "roe_pct": 20.66,
+      "roic_pct": 14.88,
+      "roa_pct": 9.83,
+      "asset_turnover": 0.67,
+      "cash_conversion_cycle_days": 87,
+      "ocf_to_net_income": 1.05,
+      "altman_z_score": 5.53,
+      "dm_id": "BIZ-FIN-007",
+      "source": "FMP/baggers_summary"
+    }
+  },
+  "dm_anchors": [
+    {"id": "BIZ-PROF-001", "type": "H", "source": "FMP profile API", "confidence": "high"},
+    {"id": "BIZ-SEG-001", "type": "H", "source": "Eaton Q4 2025 earnings release + call transcript", "confidence": "high"},
+    {"id": "BIZ-SEG-002", "type": "H", "source": "Eaton Q4 2025 earnings release", "confidence": "high"},
+    {"id": "BIZ-SEG-003", "type": "H", "source": "Eaton Q4 2025 earnings release", "confidence": "high"},
+    {"id": "BIZ-SEG-004", "type": "H", "source": "Eaton Q4 2025 earnings release", "confidence": "high"},
+    {"id": "BIZ-SEG-005", "type": "H", "source": "Eaton Q4 2025 earnings release", "confidence": "high"},
+    {"id": "BIZ-SEG-NOTE-001", "type": "S", "source": "Estimated from quarterly earnings summing", "confidence": "medium"},
+    {"id": "BIZ-GEO-001", "type": "H", "source": "Eaton 2024 10-K geographic segment data", "confidence": "high"},
+    {"id": "BIZ-GEO-002", "type": "H", "source": "Eaton 2024 10-K", "confidence": "high"},
+    {"id": "BIZ-GEO-003", "type": "H", "source": "Eaton 2024 10-K", "confidence": "high"},
+    {"id": "BIZ-GEO-004", "type": "H", "source": "Eaton 2024 10-K", "confidence": "high"},
+    {"id": "BIZ-GEO-005", "type": "H", "source": "Eaton 2024 10-K", "confidence": "high"},
+    {"id": "BIZ-SC-001", "type": "H", "source": "Eaton press release, NVIDIA blog", "confidence": "high"},
+    {"id": "BIZ-SC-002", "type": "H", "source": "Eaton/Siemens Energy press release", "confidence": "high"},
+    {"id": "BIZ-SC-003", "type": "R", "source": "enkiai.com analysis", "confidence": "medium"},
+    {"id": "BIZ-SC-004", "type": "H", "source": "Eaton Q4 2025 earnings call", "confidence": "high"},
+    {"id": "BIZ-SC-005", "type": "H", "source": "Eaton press release 2025-11-03", "confidence": "high"},
+    {"id": "BIZ-SC-006", "type": "H", "source": "Eaton press release 2026-01-26", "confidence": "high"},
+    {"id": "BIZ-SC-007", "type": "H", "source": "Eaton press release Dec 2025", "confidence": "high"},
+    {"id": "BIZ-TAM-001", "type": "R", "source": "MarketsandMarkets research report", "confidence": "medium"},
+    {"id": "BIZ-TAM-002", "type": "R", "source": "GlobeNewsWire Jan 2026", "confidence": "medium"},
+    {"id": "BIZ-TAM-003", "type": "R", "source": "Goldman Sachs Research, S&P Global", "confidence": "medium"},
+    {"id": "BIZ-TAM-004", "type": "R", "source": "International Energy Agency", "confidence": "high"},
+    {"id": "BIZ-TAM-005", "type": "S", "source": "Synthesis from Boyd acquisition data", "confidence": "medium"},
+    {"id": "BIZ-TAM-006", "type": "R", "source": "Multiple industry reports", "confidence": "medium"},
+    {"id": "BIZ-IND-001", "type": "H", "source": "Eaton press release, NVIDIA blog", "confidence": "high"},
+    {"id": "BIZ-IND-002", "type": "H", "source": "Eaton website", "confidence": "high"},
+    {"id": "BIZ-IND-003", "type": "H", "source": "Eaton product pages, press releases", "confidence": "high"},
+    {"id": "BIZ-IND-004", "type": "H", "source": "Eaton Q4 2025 earnings release and call", "confidence": "high"},
+    {"id": "BIZ-IND-005", "type": "S", "source": "Synthesis from multiple Eaton disclosures", "confidence": "high"},
+    {"id": "BIZ-FIN-001", "type": "H", "source": "FMP API + Eaton Q4 2025 earnings release", "confidence": "high"},
+    {"id": "BIZ-FIN-002", "type": "H", "source": "FMP API", "confidence": "high"},
+    {"id": "BIZ-FIN-003", "type": "H", "source": "Eaton Q4 2025 earnings release", "confidence": "high"},
+    {"id": "BIZ-FIN-004", "type": "H", "source": "FMP API Q4 2025", "confidence": "high"},
+    {"id": "BIZ-FIN-005", "type": "H", "source": "FMP/baggers_summary", "confidence": "high"},
+    {"id": "BIZ-FIN-006", "type": "H", "source": "FMP API", "confidence": "high"},
+    {"id": "BIZ-FIN-007", "type": "H", "source": "FMP/baggers_summary", "confidence": "high"}
+  ],
+  "sources": [
+    "Eaton Q4 2025 earnings release (2026-02-02): https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-reports-record-fourth-quarter-2025-results.html",
+    "Eaton Q4 2025 earnings call transcript (2026-02-03): https://www.fool.com/earnings/call-transcripts/2026/02/03/eaton-etn-q4-2025-earnings-call-transcript/",
+    "Eaton Q3 2025 earnings release: https://www.eaton.com/us/en-us/company/news-insights/news-releases/2025/eaton-reports-record-third-quarter-2025-results-with-accelerating-orders.html",
+    "Eaton Q2 2025 earnings release: https://www.eaton.com/us/en-us/company/news-insights/news-releases/2025/eaton-reports-record-second-quarter-2025-results.html",
+    "Eaton Q1 2025 earnings release: https://www.eaton.com/us/en-us/company/news-insights/news-releases/2025/eaton-reports-record-first-quarter-2025-results.html",
+    "Eaton 2024 Annual Report / 10-K: https://www.eaton.com/content/dam/eaton/company/investor-relations/annual-report/eaton-2024-annual-report.pdf",
+    "Eaton Boyd Thermal acquisition (2025-11-03): https://www.eaton.com/us/en-us/company/news-insights/news-releases/2025/eaton-signs-agreement-to-acquire-boyd-thermal--expanding-solutio.html",
+    "Eaton Mobility spin-off (2026-01-26): https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/mobility-group-spin-off.html",
+    "Eaton NVIDIA 800V partnership: https://www.eaton.com/us/en-us/company/news-insights/news-releases/2025/eaton-unveils-next-generation-architecture.html",
+    "Eaton Siemens Energy alliance: https://www.eaton.com/us/en-us/company/news-insights/news-releases/2025/eaton-and-siemens-energy-join-forces-to-provide-power-and-technology.html",
+    "Eaton Virginia facility investment: https://www.eaton.com/us/en-us/company/news-insights/news-releases/2025/eaton-invests-fifty-million-dollar-in-new-virginia-facility.html",
+    "FMP API (profile, income statements): Financial Modeling Prep",
+    "baggers_summary MCP tool: 100baggers financial summary",
+    "MarketsandMarkets data center power market: https://www.marketsandmarkets.com/ResearchInsight/data-center-power-market.asp",
+    "Goldman Sachs Research AI power demand: https://www.goldmansachs.com/insights/articles/ai-to-drive-165-increase-in-data-center-power-demand-by-2030",
+    "stock-analysis-on.net geographic analysis: https://www.stock-analysis-on.net/NYSE/Company/Eaton-Corp-plc/Ratios/Geographic-Areas"
+  ]
+}

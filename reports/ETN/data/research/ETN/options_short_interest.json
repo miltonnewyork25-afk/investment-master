@@ -1,0 +1,154 @@
+{
+  "ticker": "ETN",
+  "fetched_at": "2026-02-21T00:00:00Z",
+  "current_price": 373.38,
+  "market_cap_B": 145.02,
+  "short_interest": {
+    "shares_short": 7690000,
+    "shares_short_display": "7.69M",
+    "short_pct_float": 1.95,
+    "days_to_cover": 2.58,
+    "vs_sector_avg": {
+      "sector_avg_short_pct_float": 11.02,
+      "relative": "significantly_below",
+      "ratio_vs_peers": 0.18,
+      "interpretation": "ETN short interest at 1.95% is well below peer group average of 11.02%, indicating low bearish conviction from short sellers"
+    },
+    "trend": {
+      "direction": "increasing",
+      "change_pct": 10.8,
+      "change_description": "+10.8% increase in short interest as pct of float vs prior reporting period",
+      "prior_data_points": [
+        {"date": "2025-12", "days_to_cover": 2.37, "short_pct_float": 1.76},
+        {"date": "2025-11", "days_to_cover": 3.18, "short_pct_float": null}
+      ]
+    },
+    "short_squeeze_potential": "low",
+    "short_squeeze_rationale": "Days to cover at 2.58 is well below 5-7 day threshold typically associated with squeeze risk. Low short float % further reduces squeeze probability.",
+    "data_date": "2026-02-06"
+  },
+  "options_sentiment": {
+    "put_call_ratio": {
+      "volume_ratio": 0.90,
+      "open_interest_ratio": 1.09,
+      "interpretation": "Volume PCR 0.90 is slightly below neutral (1.0), suggesting marginally bullish flow. OI PCR at 1.09 indicates slightly more outstanding put contracts than calls, consistent with hedging activity on a $145B market cap industrial name."
+    },
+    "implied_volatility": {
+      "current_iv": 33.74,
+      "iv_change": "+0.38%",
+      "historical_volatility_30d": 29.87,
+      "iv_vs_hv_spread": 3.87,
+      "iv_vs_hv_interpretation": "IV at 33.74% exceeds 30-day HV of 29.87% by ~3.9pp, suggesting modest options premium relative to realized moves. Not extreme.",
+      "trailing_12m_hv": 34.0,
+      "iv_high_52w": 68.99,
+      "iv_high_52w_date": "2025-04-07",
+      "iv_low_52w": 24.29,
+      "iv_low_52w_date": "2025-08-12"
+    },
+    "iv_rank": 21.15,
+    "iv_percentile": 59,
+    "iv_rank_interpretation": "IV Rank at 21.15% means current IV is near the lower end of its 52-week range (68.99% high to 24.29% low). IV Percentile at 59% means IV was lower than current level 59% of the past year's trading days.",
+    "expected_move_7dte": {
+      "points": 11.26,
+      "pct": 3.02
+    },
+    "options_volume": {
+      "today": 3369,
+      "avg_30d": 5617,
+      "today_vs_avg": 0.60,
+      "interpretation": "Today's volume at 60% of 30-day average, below-average activity"
+    },
+    "open_interest": {
+      "today": 88789,
+      "avg_30d": 72853,
+      "today_vs_avg": 1.22,
+      "interpretation": "Open interest 22% above 30-day average, indicating accumulation of positions"
+    },
+    "unusual_activity": [
+      {
+        "date": "2025-12",
+        "source": "Benzinga whale tracker",
+        "summary": "30 trades detected: 76% bullish, 0% bearish. 29 calls ($1.505M) vs 1 put ($142.1K). Heavily bullish skew.",
+        "notable_trades": [
+          {"type": "CALL", "strike": 270, "expiry": "2026-01-16", "sentiment": "neutral", "volume": 274, "oi": 342, "value_K": 206.8, "trade_type": "sweep"},
+          {"type": "PUT", "strike": 195, "expiry": "2028-01-21", "sentiment": "bullish", "volume": 145, "oi": 0, "value_K": 142.1, "trade_type": "trade"},
+          {"type": "CALL", "strike": 320, "expiry": "2026-04-17", "sentiment": "bullish", "volume": 35, "oi": 41, "value_K": 86.8, "trade_type": "sweep"},
+          {"type": "CALL", "strike": 380, "expiry": "2026-06-18", "sentiment": "bullish", "volume": 74, "oi": 177, "value_K": 63.3, "trade_type": "sweep"},
+          {"type": "CALL", "strike": 270, "expiry": "2026-01-16", "sentiment": "bullish", "volume": 117, "oi": 342, "value_K": 46.9, "trade_type": "trade"}
+        ]
+      },
+      {
+        "date": "2025-11",
+        "source": "Benzinga whale tracker",
+        "summary": "12 trades detected: 41% bullish, 41% bearish. Even split. Puts $326.9K, Calls $284.7K. Price range target: $300-$500.",
+        "notable_trades": [
+          {"type": "PUT", "strike": 320, "expiry": "2026-06-18", "sentiment": "bearish", "volume": 60, "oi": 807, "value_K": 114.6},
+          {"type": "CALL", "strike": 500, "expiry": "2027-01-15", "sentiment": "bullish", "volume": 50, "oi": 110, "value_K": 65.0},
+          {"type": "CALL", "strike": 400, "expiry": "2026-09-18", "sentiment": "bullish", "volume": 30, "oi": 131, "value_K": 58.2},
+          {"type": "CALL", "strike": 320, "expiry": "2026-03-20", "sentiment": "bearish", "volume": 10, "oi": 36, "value_K": 55.4},
+          {"type": "PUT", "strike": 365, "expiry": "2025-11-14", "sentiment": "neutral", "volume": 104, "oi": 200, "value_K": 53.1}
+        ]
+      },
+      {
+        "date": "2025-02-13",
+        "source": "Benzinga unusual options scanner",
+        "summary": "8 trades detected: 62% bullish, 37% bearish. 6 puts ($390.9K) vs 2 calls ($98.1K). Price target range: $220-$450.",
+        "notable_trades": [
+          {"type": "PUT", "strike": 350, "expiry": "2025-04-17", "sentiment": "bearish", "volume": 29, "oi": 404, "value_K": 130.2},
+          {"type": "PUT", "strike": 350, "expiry": "2025-04-17", "sentiment": "bearish", "volume": 50, "oi": 404, "value_K": 94.0},
+          {"type": "CALL", "strike": 330, "expiry": "2025-03-21", "sentiment": "bullish", "volume": 149, "oi": 1000, "value_K": 69.9},
+          {"type": "PUT", "strike": 350, "expiry": "2026-01-16", "sentiment": "bullish", "volume": 14, "oi": 217, "value_K": 49.9},
+          {"type": "PUT", "strike": 220, "expiry": "2026-03-20", "sentiment": "bullish", "volume": 10, "oi": 3, "value_K": 49.0}
+        ]
+      }
+    ],
+    "june_2026_options": {
+      "put_iv": 36.0,
+      "call_iv": 35.0,
+      "trailing_12m_hv_comparison": 34.0,
+      "interpretation": "June 2026 expiry IV slightly above trailing 12-month HV, suggesting modest premium for forward uncertainty"
+    }
+  },
+  "synthesis": {
+    "overall_sentiment": "neutral_to_slightly_bullish",
+    "key_findings": [
+      "Short interest very low at 1.95% of float (peer avg 11.02%) — minimal bearish conviction",
+      "Short interest rising (+10.8% change) but from very low base — early signal to monitor, not alarm",
+      "Days to cover 2.58 — no short squeeze risk",
+      "IV Rank 21% (low end of 52-week range) while IV Percentile 59% — options relatively cheap vs recent extremes",
+      "Whale activity Dec-2025 was heavily bullish (76% bullish, $1.5M calls vs $142K puts)",
+      "Nov-2025 whale activity was balanced (41/41 bull/bear) with wider $300-$500 strike range",
+      "Open interest 22% above 30-day average suggests position accumulation",
+      "Put/Call OI ratio 1.09 consistent with institutional hedging on large-cap industrial holding"
+    ],
+    "risk_signals": [
+      "Short interest trend is upward (+10.8%) — could accelerate if macro weakens",
+      "52-week IV high was 68.99% (Apr 2025, tariff shock period) — tail risk events can double IV rapidly",
+      "Some bearish whale puts at $320 strike (Jun 2026) with significant OI of 807 — downside protection positioning"
+    ]
+  },
+  "dm_anchors": [
+    {"id": "OPT-001", "type": "H", "source": "Benzinga/FINRA", "date": "2026-02-06", "desc": "Shares short 7.69M, 1.95% of float, days to cover 2.58, +10.8% change"},
+    {"id": "OPT-002", "type": "H", "source": "Benzinga/FINRA", "date": "2026-02-06", "desc": "Peer group avg short interest 11.02% of float — ETN at 0.18x peer average"},
+    {"id": "OPT-003", "type": "R", "source": "Barchart.com", "date": "2026-02-21", "desc": "IV 33.74%, HV30d 29.87%, IV Rank 21.15%, IV Percentile 59%"},
+    {"id": "OPT-004", "type": "R", "source": "Barchart.com", "date": "2026-02-21", "desc": "PCR volume 0.90, PCR OI 1.09, options volume 3369 (avg 5617), OI 88789 (avg 72853)"},
+    {"id": "OPT-005", "type": "R", "source": "Barchart.com", "date": "2026-02-21", "desc": "52w IV high 68.99% (2025-04-07), IV low 24.29% (2025-08-12), expected move 7DTE 3.02%"},
+    {"id": "OPT-006", "type": "H", "source": "Benzinga whale tracker", "date": "2025-12", "desc": "30 unusual trades: 76% bullish, 29 calls $1.505M vs 1 put $142.1K"},
+    {"id": "OPT-007", "type": "H", "source": "Benzinga whale tracker", "date": "2025-11", "desc": "12 unusual trades: 41% bullish/41% bearish, puts $326.9K vs calls $284.7K"},
+    {"id": "OPT-008", "type": "R", "source": "Nasdaq/options chain", "date": "2026-02", "desc": "June 2026 expiry: put IV 36%, call IV 35%, vs trailing 12m HV 34%"},
+    {"id": "OPT-009", "type": "R", "source": "MCP/FMP quote", "date": "2026-02-21", "desc": "Current price $373.38, market cap $145.02B, 52w high $408.45, 52w low $231.85"},
+    {"id": "OPT-010", "type": "R", "source": "MCP/analyze_stock", "date": "2026-02-21", "desc": "RSI 61.87, SMA20 $366.30, SMA50 $343.92, SMA200 $351.48, trend: uptrend"}
+  ],
+  "sources": [
+    {"name": "Benzinga Short Interest (Feb 2026)", "url": "https://www.benzinga.com/insights/short-sellers/26/02/50442460/how-is-the-market-feeling-about-eaton-corp-plc"},
+    {"name": "Benzinga Unusual Options (Feb 2025)", "url": "https://www.benzinga.com/insights/options/25/02/43710050/eaton-corp-unusual-options-activity-for-february-13"},
+    {"name": "Benzinga Whale Activity (Dec 2025)", "url": "https://www.benzinga.com/insights/options/25/12/49638084/this-is-what-whales-are-betting-on-eaton-corp"},
+    {"name": "Benzinga Options Sentiment (Nov 2025)", "url": "https://www.benzinga.com/insights/options/25/11/48875649/eaton-corp-options-trading-a-deep-dive-into-market-sentiment"},
+    {"name": "Barchart ETN Overview", "url": "https://www.barchart.com/stocks/quotes/ETN"},
+    {"name": "Fintel Short Interest", "url": "https://fintel.io/ss/us/etn"},
+    {"name": "Nasdaq ETN June 2026 Options", "url": "https://www.nasdaq.com/articles/etn-june-2026-options-begin-trading"},
+    {"name": "MarketBeat ETN Short Interest", "url": "https://www.marketbeat.com/stocks/NYSE/ETN/short-interest/"},
+    {"name": "MCP FMP Quote API", "url": "internal:mcp/fmp_data/quote"},
+    {"name": "MCP Analyze Stock API", "url": "internal:mcp/analyze_stock/technical"}
+  ]
+}

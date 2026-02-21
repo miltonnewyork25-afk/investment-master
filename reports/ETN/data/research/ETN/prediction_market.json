@@ -1,0 +1,387 @@
+{
+  "ticker": "ETN",
+  "fetched_at": "2026-02-21T12:00:00Z",
+  "metadata": {
+    "agent": "Agent_B_prediction_market",
+    "data_integrity": "All data sourced from Polymarket MCP API, Polymarket web pages, and WebSearch. No data fabricated.",
+    "context_note": "Supreme Court struck down IEEPA tariffs 6-3 on Feb 20, 2026. Trump announced new 10% global tariff under Section 122 within hours."
+  },
+  "macro_events": [
+    {
+      "id": "PMK-MACRO-001",
+      "event": "US Recession by End of 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "probability_yes": 0.24,
+      "volume_usd": 241309,
+      "end_date": "2027-01-31",
+      "resolution": "2 consecutive quarters negative GDP (BEA) or NBER announcement",
+      "status": "active",
+      "etn_relevance": "HIGH - Recession directly impacts industrial capex, construction spending, and Eaton's Electrical Americas/Global segments. 24% probability = moderate tail risk to demand thesis.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-MACRO-002",
+      "event": "Negative GDP Growth in 2026 (Full Year)",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/negative-gdp-growth-in-2026",
+      "probability_yes": 0.11,
+      "volume_usd": null,
+      "end_date": "2027-01-31",
+      "resolution": "BEA full-year 2026 GDP growth rate below 0%",
+      "status": "active",
+      "etn_relevance": "MEDIUM - Full-year negative GDP would severely impact all Eaton segments. Low probability (11%) but important for bear scenario modeling.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-MACRO-003",
+      "event": "Fed Rate Cuts in 2026 - How Many",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/how-many-fed-rate-cuts-in-2026",
+      "probability_distribution": {
+        "0_cuts_0bps": 0.09,
+        "1_cut_25bps": 0.18,
+        "2_cuts_50bps": 0.27,
+        "3_cuts_75bps": 0.23,
+        "4_cuts_100bps": 0.12,
+        "5_cuts_125bps": 0.06,
+        "6plus_cuts": 0.05
+      },
+      "modal_outcome": "2 cuts (50 bps)",
+      "volume_usd": 6900000,
+      "status": "active",
+      "etn_relevance": "HIGH - Rate cuts stimulate construction/infrastructure spending, core demand driver for Eaton. 2-3 cuts most likely (50% combined probability). Current rate: 3.50-3.75%. Fed held in Jan 2026 after 3 consecutive cuts in late 2025.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-MACRO-004",
+      "event": "Fed Decision March 2026 (FOMC Mar 18)",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/fed-decision-in-march-885",
+      "probability_distribution": {
+        "no_change": 0.93,
+        "25bps_cut": 0.05,
+        "50bps_cut": 0.01,
+        "25bps_hike": 0.01
+      },
+      "modal_outcome": "No change",
+      "volume_usd": 143000000,
+      "status": "active",
+      "etn_relevance": "MEDIUM - Near-term rate stability. 93% no change in March = continued elevated rate environment near-term. Cuts likely H2 2026.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-MACRO-005",
+      "event": "How High Will Inflation Get in 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "probability_distribution": {
+        "above_3pct": 0.30,
+        "above_4pct": 0.12,
+        "above_5pct": 0.09,
+        "above_6pct": 0.12,
+        "above_8pct": 0.05,
+        "above_10pct": 0.02
+      },
+      "status": "active",
+      "etn_relevance": "HIGH - 30% chance inflation exceeds 3% = potential for higher-for-longer rates, but also supports Eaton's pricing power thesis. Industrial companies with strong market position can pass through inflation. New Section 122 tariff adds upward inflation pressure.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    }
+  ],
+  "company_specific": [],
+  "industry_events": [
+    {
+      "id": "PMK-IND-001",
+      "event": "AI Data Center Moratorium Passed Before 2027",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/ai-data-center-moratorium-passed-before-2027",
+      "probability_yes": 0.31,
+      "volume_usd": 7308,
+      "end_date": "2026-12-31",
+      "resolution": "Bill prohibiting/suspending new AI data center construction passed into law",
+      "status": "active",
+      "etn_relevance": "CRITICAL - Eaton's data center electrical infrastructure (PDUs, UPS, switchgear, busway) is a primary growth driver. 31% moratorium probability = material risk to the data center demand thesis. Even partial restrictions would slow Eaton's highest-margin growth vertical. Context: Bernie Sanders proposed moratorium; bipartisan energy/environmental concerns growing.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "medium",
+        "note": "Low volume ($7.3K) suggests thin market; probability may be less reliable",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-IND-002",
+      "event": "Supreme Court Rules in Favor of Trump's Tariffs (IEEPA)",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/will-the-supreme-court-rule-in-favor-of-trumps-tariffs",
+      "probability_yes": 0.00,
+      "volume_usd": 4760539,
+      "end_date": "2026-12-31",
+      "resolution": "SCOTUS reverses Federal Circuit's Aug 29, 2025 decision in V.O.S. Selections v. Trump",
+      "status": "resolved_no",
+      "resolution_note": "Supreme Court ruled 6-3 on Feb 20, 2026 that IEEPA tariffs are unlawful. Market resolved to No.",
+      "etn_relevance": "HIGH - IEEPA tariffs struck down removes one layer of tariff risk. However, Trump immediately announced new 10% global tariff under Section 122 of Trade Act of 1974. Net impact on Eaton's input costs depends on Section 122 implementation and durability.",
+      "dm_anchor": {
+        "type": "H",
+        "source": "Polymarket + SCOTUS ruling",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-IND-003",
+      "event": "New 10% US Blanket Tariff in Effect by February 28, 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/new-10-us-blanket-tariff-goes-into-effect-by-february-28",
+      "probability_yes": 0.895,
+      "volume_usd": 9844,
+      "end_date": "2026-02-28",
+      "resolution": "New general/blanket US tariff of 10%+ on imports goes into effect",
+      "status": "active",
+      "etn_relevance": "HIGH - 89.5% probability of new 10% blanket tariff by Feb 28. Eaton sources components globally (Mexico, China, Europe). 10% blanket tariff increases COGS for imported components. Eaton management has stated they have a 'playbook' for tariff mitigation via pricing/sourcing, but lag between implementation and price recovery compresses margins near-term.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-IND-004",
+      "event": "Court Forces Trump to Refund Tariffs by June 30, 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/will-the-court-force-trump-to-refund-tariffs-2026-06-30",
+      "probability_yes": 0.32,
+      "volume_usd": null,
+      "end_date": "2026-06-30",
+      "resolution": "Appeal denied + actual refunds issued to importers for tariffs invalidated by May 28, 2025 ruling",
+      "status": "active",
+      "etn_relevance": "MEDIUM - If tariff refunds are ordered, Eaton could receive retroactive refunds on previously paid duties. 32% probability. Potential one-time cash benefit, but uncertain magnitude.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "medium",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-IND-005",
+      "event": "Tariff Increase on Canada in Effect by June 30, 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/tariff-increase-on-canada-in-effect-by-june-30",
+      "probability_yes": 0.205,
+      "volume_usd": 23193,
+      "end_date": "2026-06-30",
+      "status": "active",
+      "etn_relevance": "MEDIUM - Eaton has manufacturing operations in Canada. Additional Canada-specific tariffs would impact cross-border supply chain. 20.5% probability = low but non-trivial risk.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-IND-006",
+      "event": "100% Tariff on Canada in Effect by June 30, 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/100-tariff-on-canada-in-effect-by-june-30",
+      "probability_yes": 0.09,
+      "volume_usd": 24368,
+      "end_date": "2026-06-30",
+      "status": "active",
+      "etn_relevance": "LOW - Extreme scenario. 9% probability. Would severely disrupt Eaton's North American supply chain if enacted.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-IND-007",
+      "event": "Trump Creates Tariff Dividend by March 31, 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/will-trump-create-a-tariff-dividend-by-march-31",
+      "probability_yes": 0.095,
+      "volume_usd": 111208,
+      "end_date": "2026-03-31",
+      "status": "active",
+      "etn_relevance": "LOW - Tariff dividend to consumers would be mildly stimulative for economy but minimal direct Eaton impact. 9.5% probability.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "id": "PMK-IND-008",
+      "event": "US Tariff Revenue Up in Q4 2025",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/us-tariff-revenue-up-in-q4-2025",
+      "probability_yes": 0.955,
+      "volume_usd": 4304,
+      "end_date": "2026-03-31",
+      "status": "active",
+      "etn_relevance": "LOW - Confirms tariff regime was revenue-generating. Contextual data point for tariff durability assessment.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    }
+  ],
+  "no_coverage": [
+    {
+      "topic": "Eaton Corporation (ETN) specific events",
+      "search_performed": "Polymarket MCP search 'Eaton' + WebSearch site:polymarket.com Eaton",
+      "result": "No Eaton-specific prediction markets exist. MCP returned only LA wildfire 'Eaton Fire' results (unrelated). No ETN earnings, M&A, or company-specific markets found.",
+      "dm_anchor": {
+        "type": "S",
+        "source": "Polymarket MCP API + WebSearch",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "topic": "AI capex / hyperscaler spending levels",
+      "search_performed": "WebSearch site:polymarket.com AI spending",
+      "result": "No specific prediction markets for AI spending levels or hyperscaler capex budgets. 86 AI markets exist but focus on model performance, AGI timing, not spending.",
+      "dm_anchor": {
+        "type": "S",
+        "source": "WebSearch",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "topic": "Data center energy / power demand",
+      "search_performed": "WebSearch site:polymarket.com data center energy + MCP search 'data center'",
+      "result": "No prediction markets for data center energy demand, grid capacity, or power infrastructure spending. Only tangentially related market is AI data center moratorium (PMK-IND-001).",
+      "dm_anchor": {
+        "type": "S",
+        "source": "Polymarket + WebSearch",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "topic": "Kalshi Fed rate markets",
+      "search_performed": "WebSearch site:kalshi.com federal reserve interest rate 2026",
+      "result": "Kalshi results not directly accessible via search. Fed rate data captured from Polymarket instead (PMK-MACRO-003, PMK-MACRO-004).",
+      "dm_anchor": {
+        "type": "S",
+        "source": "WebSearch",
+        "confidence": "medium",
+        "fetched": "2026-02-21"
+      }
+    },
+    {
+      "topic": "US infrastructure spending bill / IIJA execution",
+      "search_performed": "Not found in any Polymarket search",
+      "result": "No prediction markets tracking IIJA/infrastructure bill execution pace, which is relevant to Eaton's utility and grid modernization demand.",
+      "dm_anchor": {
+        "type": "S",
+        "source": "Polymarket",
+        "confidence": "medium",
+        "fetched": "2026-02-21"
+      }
+    }
+  ],
+  "key_context": {
+    "scotus_tariff_ruling_feb20": {
+      "summary": "Supreme Court ruled 6-3 on Feb 20, 2026 that Trump's IEEPA-based tariffs exceed presidential authority. Within hours, Trump announced new 10% global tariff under Section 122 of Trade Act of 1974.",
+      "etn_implication": "Net tariff regime uncertainty remains elevated. IEEPA tariffs (which were broad and variable by country) are gone, replaced by a flatter 10% blanket tariff. For Eaton: (1) Simplification may be slightly positive for planning, (2) 10% blanket is generally lower than prior IEEPA rates for some countries (China was 54%+), (3) Section 122 legality will be challenged, adding uncertainty, (4) Pre-existing Section 232 (steel/aluminum) and Section 301 (China tech) tariffs remain.",
+      "dm_anchor": {
+        "type": "H",
+        "source": "SCOTUS ruling + news reports",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    "fed_rate_environment": {
+      "current_rate": "3.50-3.75% (Fed Funds target range)",
+      "last_action": "Hold (Jan 28, 2026) after 3 consecutive 25bp cuts in late 2025",
+      "market_expectation": "2-3 cuts in 2026 (50% combined probability), mostly H2 2026",
+      "etn_implication": "Moderately supportive. Rate cuts in H2 2026 would reduce financing costs for large infrastructure projects, Eaton's core market. But near-term (Q1-Q2) rates stay elevated.",
+      "dm_anchor": {
+        "type": "R",
+        "source": "Fed statement + Polymarket",
+        "confidence": "high",
+        "fetched": "2026-02-21"
+      }
+    },
+    "etn_tariff_resilience": {
+      "gurufocus_score": 5,
+      "rating": "Average Resilient",
+      "management_commentary": "CEO noted tariffs in 2025 were 'mastered pretty well' with pricing actions. Company has 'playbook' for tariff mitigation.",
+      "dm_anchor": {
+        "type": "H",
+        "source": "GuruFocus + ETN Q4 2025 earnings call",
+        "confidence": "medium",
+        "fetched": "2026-02-21"
+      }
+    }
+  },
+  "dm_anchors": [
+    {"id": "PMK-MACRO-001", "type": "R", "source": "Polymarket", "value": "US recession by end 2026: 24% Yes"},
+    {"id": "PMK-MACRO-002", "type": "R", "source": "Polymarket", "value": "Negative GDP 2026: 11% Yes"},
+    {"id": "PMK-MACRO-003", "type": "R", "source": "Polymarket", "value": "Fed rate cuts 2026: modal 2 cuts (27%)"},
+    {"id": "PMK-MACRO-004", "type": "R", "source": "Polymarket", "value": "Fed March 2026: 93% no change"},
+    {"id": "PMK-MACRO-005", "type": "R", "source": "Polymarket", "value": "Inflation above 3% in 2026: 30%"},
+    {"id": "PMK-IND-001", "type": "R", "source": "Polymarket", "value": "AI DC moratorium before 2027: 31% (low volume)"},
+    {"id": "PMK-IND-002", "type": "H", "source": "Polymarket/SCOTUS", "value": "SCOTUS pro-tariff: 0% (resolved No, Feb 20 2026)"},
+    {"id": "PMK-IND-003", "type": "R", "source": "Polymarket", "value": "New 10% blanket tariff by Feb 28: 89.5%"},
+    {"id": "PMK-IND-004", "type": "R", "source": "Polymarket", "value": "Court forces tariff refund by Jun 30: 32%"},
+    {"id": "PMK-IND-005", "type": "R", "source": "Polymarket", "value": "Canada tariff increase by Jun 30: 20.5%"},
+    {"id": "PMK-IND-006", "type": "R", "source": "Polymarket", "value": "100% Canada tariff by Jun 30: 9%"},
+    {"id": "PMK-IND-007", "type": "R", "source": "Polymarket", "value": "Tariff dividend by Mar 31: 9.5%"},
+    {"id": "PMK-IND-008", "type": "R", "source": "Polymarket", "value": "US tariff revenue up Q4 2025: 95.5%"}
+  ],
+  "sources": [
+    "https://polymarket.com/event/us-recession-by-end-of-2026",
+    "https://polymarket.com/event/negative-gdp-growth-in-2026",
+    "https://polymarket.com/event/how-many-fed-rate-cuts-in-2026",
+    "https://polymarket.com/event/fed-decision-in-march-885",
+    "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+    "https://polymarket.com/event/ai-data-center-moratorium-passed-before-2027",
+    "https://polymarket.com/event/will-the-supreme-court-rule-in-favor-of-trumps-tariffs",
+    "https://polymarket.com/event/new-10-us-blanket-tariff-goes-into-effect-by-february-28",
+    "https://polymarket.com/event/will-the-court-force-trump-to-refund-tariffs-2026-06-30",
+    "https://polymarket.com/event/tariff-increase-on-canada-in-effect-by-june-30",
+    "https://polymarket.com/event/100-tariff-on-canada-in-effect-by-june-30",
+    "https://polymarket.com/event/will-trump-create-a-tariff-dividend-by-march-31",
+    "https://polymarket.com/event/us-tariff-revenue-up-in-q4-2025",
+    "https://polymarket.com/dashboards/fed-rates",
+    "https://polymarket.com/economy",
+    "https://tariffcheck.org/supreme-court-tariff-update-feb-20-2026",
+    "https://www.fool.com/earnings/call-transcripts/2026/02/03/eaton-etn-q4-2025-earnings-call-transcript/"
+  ]
+}

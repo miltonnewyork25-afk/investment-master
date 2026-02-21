@@ -1,0 +1,13 @@
+{
+  "ticker": "ETN",
+  "fetched_at": "2026-02-21",
+  "source": "MCP:get_market_overview",
+  "indices": {
+    "sp500": {"price": 6909.51, "change_pct": 0.69},
+    "dow_jones": {"price": 49625.97, "change_pct": 0.47},
+    "nasdaq": {"price": 22886.07, "change_pct": 0.90},
+    "vix": {"price": 19.09, "change_pct": -5.64}
+  },
+  "market_regime": "moderate_volatility",
+  "date": "2026-02-20"
+}

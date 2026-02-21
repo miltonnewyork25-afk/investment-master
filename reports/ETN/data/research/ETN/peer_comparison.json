@@ -1,0 +1,25 @@
+{
+  "ticker": "ETN",
+  "fetched_at": "2026-02-21",
+  "source": "MCP:compare_stocks",
+  "benchmark": "SPY",
+  "peers": {
+    "ETN": {"pe_ratio": 35.73, "pb_ratio": 6.37, "roe": 21.53, "note": "Subject company"},
+    "VRT": {"pe_ratio": 71.69, "pb_ratio": 15.69, "roe": 41.81, "note": "Direct DC infrastructure competitor"},
+    "EMR": {"pe_ratio": 36.34, "pb_ratio": 3.67, "roe": 9.65, "note": "Emerson Electric - industrial automation"},
+    "HON": {"pe_ratio": 32.27, "pb_ratio": 8.07, "roe": 26.14, "note": "Honeywell - diversified industrial"},
+    "GEV": {"pe_ratio": 46.94, "pb_ratio": 15.90, "roe": 42.64, "note": "GE Vernova - energy transition pure play"},
+    "ROK": {"pe_ratio": 45.63, "pb_ratio": 10.78, "roe": 23.74, "note": "Rockwell Automation"},
+    "HUBB": {"pe_ratio": 31.87, "pb_ratio": 6.14, "roe": 24.54, "note": "Hubbell - electrical products"},
+    "SPY": {"pe_ratio": 27.76, "pb_ratio": 1.61, "roe": null, "note": "S&P 500 benchmark"}
+  },
+  "summary": {
+    "etn_pe_vs_spy_premium_pct": 28.7,
+    "etn_pe_rank": "4th of 7 (mid-range)",
+    "etn_roe_rank": "5th of 7 (below median)",
+    "cheapest_peer": "HUBB at 31.87x",
+    "most_expensive_peer": "VRT at 71.69x",
+    "median_peer_pe": 36.34,
+    "etn_below_median": true
+  }
+}

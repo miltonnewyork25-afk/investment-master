@@ -1,0 +1,197 @@
+{
+  "ticker": "ETN",
+  "fetched_at": "2026-02-21",
+  "ceo": {
+    "name": "Paulo Ruiz",
+    "tenure_years": 0.7,
+    "background": "CEO since June 1, 2025. Previously President & COO (Sep 2024-May 2025), President & COO of Industrial Sector. Before Eaton (joined 2019): 18+ years at Siemens including CEO of Dresser-Rand; prior roles at Fiat. Education: BS Electrical Engineering (FEI, Sao Paulo), MBA (Fundacao Dom Cabral, Brazil), post-MBA (Kellogg/Fundacao Dom Cabral).",
+    "track_record": "Led Industrial Sector encompassing Aerospace, Vehicle, e-Mobility, Filtration, and Golf Pride businesses plus Asia-Pacific and Central/South America regions. Previously president of Energy Solutions & Services Americas (Electrical Sector) and Hydraulics Group. Internal promotion after methodical succession planning — named COO Sep 2024, CEO Jun 2025.",
+    "predecessor": {
+      "name": "Craig Arnold",
+      "tenure_as_ceo": "June 2016 - May 2025 (9 years)",
+      "background": "Joined Eaton 2000 from GE (17 years at GE including GE Plastics Greater China, GE Appliances Asia, GE Lighting Services). BS Psychology (Cal State San Bernardino), MBA (Pepperdine). One of six African American Fortune 500 CEOs in 2024. Also serves on P&G board (appointed 2025).",
+      "track_record_as_ceo": "Transformed Eaton from diversified industrial to power management focused company. Drove strategic shift toward electrification, renewable energy, and digital technologies. Oversaw significant revenue growth and margin expansion. Total shareholder return substantially outperformed S&P 500 Industrials during tenure."
+    }
+  },
+  "cfo": {
+    "name": "Olivier Leonetti",
+    "tenure_years": 2.0,
+    "background": "EVP & CFO since February 5, 2024. Previously served on Eaton board (2019-2024). Prior: CFO of Johnson Controls International (2020-2024), CFO of Zebra Technologies, CFO of Western Digital, VP Finance Global Commercial at Amgen, senior finance roles at Dell. Certified Accountant. Education: MS Internal Audit (Graduate School of Management, Marseille), MBA (ESA Grenoble), MS Economics & Accountancy (University of Aix-Marseille).",
+    "departure_planned": "April 1, 2026 — announced Nov 20, 2025. Successor search underway (internal + external via executive search firm).",
+    "note": "Short CFO tenure (~2 years) and planned departure creates transition risk. Board member since 2019 mitigates institutional knowledge gap."
+  },
+  "key_executives": [
+    {
+      "name": "Pete Denk",
+      "title": "President & COO, Industrial Sector",
+      "effective_date": "January 1, 2025",
+      "background": "Succeeded Paulo Ruiz. Previously president of Mobility Group. Responsible for Aerospace, Mobility, Filtration, and Golf Pride businesses.",
+      "note": "Key succession bench — next potential CEO candidate."
+    },
+    {
+      "name": "Antonio Galvao",
+      "title": "President, Mobility Group",
+      "effective_date": "January 1, 2025",
+      "background": "38-year Eaton veteran. Previously president, Mobility Group and Corporate, South America. Reports to Pete Denk. Member of senior leadership team.",
+      "note": "Deep institutional knowledge; long tenure signals strong cultural fit."
+    },
+    {
+      "name": "Gregory R. Page",
+      "title": "Non-Executive Chairman of the Board",
+      "effective_date": "June 1, 2025",
+      "background": "Retired Chairman & CEO of Cargill (CEO 2007-2013, President 2000-2007). Eaton board member since 2003, lead independent director since 2022. Also serves on boards of Deere & Company (since 2013) and 3M (since 2016). BS Economics (University of North Dakota).",
+      "note": "22+ years on Eaton board provides deep institutional knowledge. Separation of Chairman and CEO roles is a governance positive."
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2025-06-01",
+      "event": "CEO transition: Paulo Ruiz succeeds Craig Arnold as CEO",
+      "significance": "high",
+      "type": "H"
+    },
+    {
+      "date": "2025-06-01",
+      "event": "Gregory R. Page appointed non-executive Chairman of the Board, separating Chairman and CEO roles",
+      "significance": "medium",
+      "type": "H"
+    },
+    {
+      "date": "2025-11-20",
+      "event": "CFO Olivier Leonetti announces planned departure effective April 1, 2026; successor search initiated",
+      "significance": "high",
+      "type": "H"
+    },
+    {
+      "date": "2025-01-01",
+      "event": "Pete Denk named President & COO Industrial Sector; Antonio Galvao named President Mobility Group",
+      "significance": "medium",
+      "type": "H"
+    },
+    {
+      "date": "2024-09-02",
+      "event": "Paulo Ruiz appointed President & COO and joined board, signaling succession plan",
+      "significance": "high",
+      "type": "H"
+    }
+  ],
+  "insider_ownership_pct": 0.19,
+  "insider_ownership_notes": "Insider ownership at 0.19% is low but typical for large-cap industrials ($100B+ market cap). Institutional ownership ~87%. Board members collectively hold ~$264M in shares. CEO pay ratio 563:1 (FY2024).",
+  "compensation_highlights": {
+    "ceo_total_2024": {
+      "name": "Craig Arnold",
+      "total": 22575468,
+      "salary": 1450000,
+      "bonus": 3183548,
+      "stock_awards": 12611090,
+      "option_awards": 3567137,
+      "other": 158191,
+      "note": "Final full year as CEO. 563x median employee pay ratio."
+    },
+    "compensation_philosophy": "Performance-based: significant portion tied to Company, business unit, and individual performance objectives. Peer benchmarking via Compensation and Organization Committee with third-party survey data and proxy advisory firm reports.",
+    "say_on_pay": "Advisory vote on NEO compensation included in 2025 proxy statement."
+  },
+  "governance_notes": "Board held 5 meetings in 2024 with 98.7% average attendance. Six standing committees: Audit, Compensation & Organization, Executive, Finance, Governance, Innovation & Technology. All non-employee directors are independent. Separation of Chairman/CEO effective June 2025 is a governance improvement. Director candidates subject to Governance Committee review (all independent members). Incorporated in Ireland (tax-efficient domicile).",
+  "management_assessment": {
+    "strengths": [
+      "Methodical CEO succession planning — 9-month COO transition period demonstrates board discipline",
+      "New CEO Paulo Ruiz has deep operational experience across multiple Eaton divisions (Industrial, Electrical, Hydraulics) plus prior Siemens global experience",
+      "Board separation of Chairman/CEO roles enhances oversight",
+      "Craig Arnold's 9-year tenure delivered transformational pivot to power management with strong TSR",
+      "Gregory Page's 22-year board tenure provides continuity during leadership transition"
+    ],
+    "risks": [
+      "Dual transition risk: New CEO (Jun 2025) + CFO departure (Apr 2026) within 10 months",
+      "CFO successor not yet named as of Feb 2026 — creates uncertainty on financial strategy continuity",
+      "Olivier Leonetti served only ~2 years as CFO — short tenure limits institutional depth",
+      "Low insider ownership (0.19%) reduces skin-in-the-game alignment, though dollar value ($264M board holdings) is substantial",
+      "Paulo Ruiz joined Eaton in 2019 — 6 years of tenure is adequate but not deep vs. Arnold's 25 years"
+    ]
+  },
+  "dm_anchors": [
+    {
+      "id": "MGT-001",
+      "field": "ceo.predecessor.tenure_as_ceo",
+      "value": "June 2016 - May 2025",
+      "type": "H",
+      "source": "Eaton press release Aug 12, 2024; 2025 Proxy Statement"
+    },
+    {
+      "id": "MGT-002",
+      "field": "ceo.name",
+      "value": "Paulo Ruiz, CEO effective June 1, 2025",
+      "type": "H",
+      "source": "Eaton press release Aug 12, 2024 via BusinessWire"
+    },
+    {
+      "id": "MGT-003",
+      "field": "cfo.departure_planned",
+      "value": "April 1, 2026",
+      "type": "H",
+      "source": "Eaton press release Nov 20, 2025 via BusinessWire"
+    },
+    {
+      "id": "MGT-004",
+      "field": "compensation_highlights.ceo_total_2024.total",
+      "value": 22575468,
+      "type": "H",
+      "source": "salary.com citing Eaton 2025 DEF 14A proxy filing"
+    },
+    {
+      "id": "MGT-005",
+      "field": "insider_ownership_pct",
+      "value": 0.19,
+      "type": "H",
+      "source": "MarketBeat institutional ownership data, Dec 2025; SimplyWallSt"
+    },
+    {
+      "id": "MGT-006",
+      "field": "ceo.background",
+      "value": "Paulo Ruiz: 18+ years Siemens, joined Eaton 2019, BS EE (FEI), MBA (Fundacao Dom Cabral)",
+      "type": "H",
+      "source": "Eaton corporate website; BusinessWire Aug 12, 2024"
+    },
+    {
+      "id": "MGT-007",
+      "field": "cfo.background",
+      "value": "Olivier Leonetti: CFO since Feb 5, 2024; prior CFO at Johnson Controls, Zebra Technologies, Western Digital",
+      "type": "H",
+      "source": "Eaton corporate website; Eaton press release Jan 2024"
+    },
+    {
+      "id": "MGT-008",
+      "field": "governance_notes.board_attendance",
+      "value": "98.7% average attendance across 5 board meetings in 2024",
+      "type": "H",
+      "source": "Eaton 2025 Proxy Statement DEF 14A"
+    },
+    {
+      "id": "MGT-009",
+      "field": "key_executives.gregory_page",
+      "value": "Non-Executive Chairman effective June 1, 2025; Eaton board member since 2003",
+      "type": "H",
+      "source": "Eaton press release Aug 12, 2024; BusinessWire"
+    },
+    {
+      "id": "MGT-010",
+      "field": "key_executives.pete_denk",
+      "value": "President & COO Industrial Sector effective Jan 1, 2025",
+      "type": "H",
+      "source": "Eaton press release Dec 11, 2024 via BusinessWire"
+    }
+  ],
+  "sources": [
+    "https://www.eaton.com/us/en-us/company/about-us/leadership-team/corporate-officers/paulo-ruiz.html",
+    "https://www.eaton.com/us/en-us/company/about-us/leadership-team/corporate-officers/craig-arnold.html",
+    "https://www.eaton.com/us/en-us/company/about-us/leadership-team/corporate-officers/olivier-leonetti.html",
+    "https://www.businesswire.com/news/home/20240812193124/en/Eaton-names-Paulo-Ruiz-president-and-COO-effective-September-2-2024-Ruiz-to-succeed-Craig-Arnold-as-CEO-on-June-1-2025",
+    "https://www.businesswire.com/news/home/20251120959192/en/Eaton-Announces-the-Planned-Transition-of-Executive-Vice-President-and-Chief-Financial-Officer-Olivier-Leonetti-Effective-April-1-2026",
+    "https://www.businesswire.com/news/home/20241211094187/en/Eaton-names-Pete-Denk-president-and-chief-operating-officer-Industrial-Sector-and-Antonio-Galvao-president-Mobility",
+    "https://www.sec.gov/Archives/edgar/data/1551182/000130817925000129/etn013294-def14a.htm",
+    "https://www.salary.com/research/executive-compensation/eaton-corp-plc-executive-salary",
+    "https://www.marketbeat.com/stocks/NYSE/ETN/institutional-ownership/",
+    "https://simplywall.st/stocks/us/capital-goods/nyse-etn/eaton/ownership",
+    "https://www.eaton.com/us/en-us/company/about-us/corporate-governance.html",
+    "https://en.wikipedia.org/wiki/Gregory_R._Page"
+  ]
+}
