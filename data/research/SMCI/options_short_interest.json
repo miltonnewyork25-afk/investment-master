@@ -1,0 +1,207 @@
+{
+  "ticker": "SMCI",
+  "fetched_at": "2026-02-21",
+  "current_price": 32.42,
+  "market_cap_B": 19.4,
+  "short_interest": {
+    "shares_short_M": 87.7,
+    "short_pct_float": 19.39,
+    "days_to_cover": 4.12,
+    "avg_daily_volume_M": 21.29,
+    "trend": "slightly_decreasing",
+    "trend_detail": "Decreased from 89.16M to 87.70M in last reporting period (Jan 2026)",
+    "rank_among_hedgefunds": "No.3 most shorted stock by hedge funds",
+    "short_value_B": 4.4,
+    "prior_period_shares_short_M": 89.16
+  },
+  "options_sentiment": {
+    "oi_put_call_ratio": 0.69,
+    "volume_put_call_ratio_recent": 0.16,
+    "volume_put_call_20d_avg": 0.38,
+    "implied_volatility_IV30": 71.52,
+    "iv_prior_reading": 85.97,
+    "iv_vs_52w_median": "below_median",
+    "iv_rank_estimate": "30-40 percentile (IV30 declined from ~86 to ~72, below 52w median)",
+    "unusual_activity": [
+      {
+        "date": "2026-02-19",
+        "type": "bullish_call_sweep",
+        "detail": "Put/call ratio fell to 0.16 vs 20d avg 0.38; bulk activity on near-term expiries (same week + next week); SMCI +7% on day",
+        "sentiment": "bullish_speculative"
+      },
+      {
+        "date": "2026-02-10",
+        "type": "whale_flow_mixed",
+        "detail": "15 large trades detected: 33% bullish, 53% bearish, 14% neutral. Whales leaning bearish at the time",
+        "sentiment": "bearish_leaning"
+      }
+    ]
+  },
+  "convertible_debt": {
+    "total_outstanding_B": 4.725,
+    "tranches": [
+      {
+        "name": "2028 Convertible Senior Notes",
+        "principal_M": 700,
+        "coupon_pct": 2.25,
+        "maturity": "2028",
+        "conversion_price": 61.06,
+        "conversion_rate_per_1000": 16.3784,
+        "max_shares_dilution_M": 11.46,
+        "issued": "2025-02-20",
+        "status": "deep_out_of_money",
+        "premium_to_current": "88% above current $32.42"
+      },
+      {
+        "name": "2029 Amended Convertible Senior Notes",
+        "principal_M": 1725,
+        "coupon_pct": 3.50,
+        "maturity": "2029",
+        "conversion_price": 83.44,
+        "conversion_rate_per_1000": 11.9842,
+        "max_shares_dilution_M": 20.67,
+        "issued": "2024 (amended 2025-02)",
+        "status": "deep_out_of_money",
+        "premium_to_current": "157% above current $32.42"
+      },
+      {
+        "name": "2030 Convertible Senior Notes",
+        "principal_M": 2300,
+        "coupon_pct": 0.0,
+        "maturity": "2030",
+        "conversion_price": 55.20,
+        "conversion_rate_per_1000": 18.1154,
+        "max_shares_dilution_M": 41.67,
+        "capped_call_cap_price": 81.78,
+        "capped_call_cost_M": 158.4,
+        "share_buyback_with_proceeds_M": 200,
+        "shares_repurchased_M": 4.9,
+        "issued": "2025-06-26",
+        "status": "deep_out_of_money",
+        "premium_to_current": "70% above current $32.42"
+      }
+    ],
+    "total_max_dilution_shares_M": 73.8,
+    "dilution_risk_assessment": "LOW near-term (all conversion prices 70-157% above current price of $32.42); HIGH if stock recovers to $55+ (2030 notes in-the-money); capped calls mitigate 2030 dilution up to $81.78",
+    "debt_burden_note": "$4.725B convertible debt vs $19.4B market cap = 24.4% of market cap; interest cost: ~$76M/yr (2028 $15.75M + 2029 $60.375M + 2030 $0)"
+  },
+  "short_squeeze_assessment": {
+    "squeeze_score": "moderate_to_high",
+    "factors_supporting": [
+      "19.39% short float — extremely high",
+      "4.12 days to cover — elevated",
+      "#3 most shorted stock by hedge funds",
+      "Forward P/E ~16.8x, PEG 0.6x — fundamentally cheap if guidance holds",
+      "Q2 revenue beat ($12.68B vs $10.34B consensus)",
+      "Production scaling to 6,000 racks/month by end FY2026"
+    ],
+    "factors_opposing": [
+      "$4.725B convertible debt overhang",
+      "Accounting/governance concerns (delayed 10-K history)",
+      "Gross margin compression risk in commodity server business",
+      "Stock at $32 vs 52w high of $66 — secular downtrend",
+      "Analyst mean target $45.53 but earnings de-growth of -1.16% expected"
+    ]
+  },
+  "dm_anchors": [
+    {
+      "id": "OPT-001",
+      "claim": "Short interest 87.7M shares = 19.39% of float",
+      "type": "H",
+      "source": "MarketBeat/Fintel Jan 2026 FINRA reporting",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "OPT-002",
+      "claim": "Days to cover = 4.12 based on 21.29M avg daily volume",
+      "type": "R",
+      "source": "MarketBeat calculated from FINRA data",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "OPT-003",
+      "claim": "OI Put/Call ratio = 0.69; volume P/C dropped to 0.16 on Feb 19",
+      "type": "H",
+      "source": "Fintel OI P/C; FXLeaders Feb 19 2026 report",
+      "confidence": "MEDIUM-HIGH"
+    },
+    {
+      "id": "OPT-004",
+      "claim": "IV30 = 71.52, below 52-week median",
+      "type": "H",
+      "source": "GuruFocus/MarketChameleon Feb 2026",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "OPT-005",
+      "claim": "2028 notes: $700M at 2.25%, conversion price $61.06",
+      "type": "H",
+      "source": "Supermicro IR press release Feb 12 2025; BusinessWire",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "OPT-006",
+      "claim": "2029 amended notes: $1.725B at 3.50%, conversion price $83.44",
+      "type": "H",
+      "source": "Supermicro IR press release Feb 12 2025; BusinessWire",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "OPT-007",
+      "claim": "2030 notes: $2.3B at 0%, conversion price $55.20, capped call cap at $81.78",
+      "type": "H",
+      "source": "Supermicro IR press release Jun 23-26 2025; Benzinga",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "OPT-008",
+      "claim": "Total convertible debt outstanding = $4.725B across 3 tranches",
+      "type": "R",
+      "source": "Calculated: $700M + $1,725M + $2,300M from IR filings",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "OPT-009",
+      "claim": "#3 most shorted stock by hedge funds; $4.4B short value",
+      "type": "H",
+      "source": "IndexBox/Yahoo Finance Jan 2026",
+      "confidence": "MEDIUM-HIGH"
+    },
+    {
+      "id": "OPT-010",
+      "claim": "Analyst mean price target $45.53 (+54.8% upside); max $64",
+      "type": "H",
+      "source": "IndexBox/Yahoo Finance consensus Feb 2026",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "OPT-011",
+      "claim": "Q2 revenue $12.68B vs $10.34B consensus; guided Q3 $10-11B",
+      "type": "H",
+      "source": "FXLeaders Feb 19 2026; company guidance",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "OPT-012",
+      "claim": "Max potential dilution from all convertibles: ~73.8M shares",
+      "type": "R",
+      "source": "Calculated from conversion rates in IR filings",
+      "confidence": "HIGH"
+    }
+  ],
+  "sources": [
+    "https://www.marketbeat.com/stocks/NASDAQ/SMCI/short-interest/",
+    "https://fintel.io/ss/us/smci",
+    "https://fintel.io/sopt/us/smci",
+    "https://www.barchart.com/stocks/quotes/SMCI/put-call-ratios",
+    "https://www.fxleaders.com/news/2026/02/19/smci-stock-reclaims-30-on-expiry-options-but-resistance-and-profitability-cloud-outlook/",
+    "https://www.benzinga.com/insights/options/26/02/50514862/market-whales-and-their-recent-bets-on-smci-options",
+    "https://www.indexbox.io/blog/super-micro-computer-stock-51-correction-q2-outlook-and-short-squeeze-potential-for-2026/",
+    "https://finance.yahoo.com/news/super-micro-computer-one-most-220524542.html",
+    "https://marketchameleon.com/Overview/SMCI/IV/",
+    "https://ir.supermicro.com/news/news-details/2025/Supermicro-Announces-Pricing-of-Private-Placement-of-700.0-Million-of-New-2.25-Convertible-Senior-Notes-Due-2028-and-Pricing-of-Amended-Convertible-Senior-Notes-Due-2029/default.aspx",
+    "https://ir.supermicro.com/news/news-details/2025/Super-Micro-Computer-Inc--Announces-Closing-of-Private-Offering-of-2-3-Billion-of-Convertible-Senior-Notes-Due-2030/default.aspx",
+    "https://www.benzinga.com/news/financing/25/06/46074323/supermicro-raises-2-billion-via-private-convertible-debt-with-35-conversion-premium",
+    "https://www.gurufocus.com/news/8624294/super-micro-smci-shows-bearish-options-sentiment-amid-modest-share-dip"
+  ]
+}
