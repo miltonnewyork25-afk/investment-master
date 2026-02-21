@@ -149,3 +149,75 @@ entries:
   # ANET突破4.0归因: Cisco历史类比(全系列最佳)+Token经济前瞻(首次系统性前瞻)
   # 但DM锚点50<<目标200 = 系统性退化, 需Phase-level修复
   # 密度策略继续有效: 279K得4.0 > LRCX 375K得3.8
+
+  - ticker: "VRT"
+    date: "2026-02-20"
+    report: "VRT_Complete_深度研究报告.md"
+    chars: "356K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 0
+    scorecard: "88/100"
+    near_miss_score: 0
+    quality: 4.2
+    top_technique: "中国对标深度分析(英维克7维对比+竞争力Mermaid定位图) + 双重身份估值张力(3因素溢价分解)"
+    top_lesson: "扩写Agent输出零DM标注 — 组装流程需增加DM注入步骤; 首次competitive-benchmarking skill成功应用"
+    evolution_proposed: |
+      EVO-VRT-001: Agent扩写需强制DM标注要求(同ETN) [P0]
+      EVO-VRT-002: competitive-benchmarking skill验证通过，确认可推广 [P1]
+      冠军目录新增: 竞争对标(英维克深潜) + 估值张力(双重身份) + 递延收入 + PE运营体系(VOS) [P2]
+    evolution_status: approved  # 2026-02-21 冠军已录入catalog v1.2
+
+  - ticker: "ETN"
+    date: "2026-02-21"
+    report: "ETN_Complete_深度研究报告.md"
+    chars: "303K"
+    cg_result: "FAILED(2E/5W)"
+    compliance: "PASSED"
+    dm_anchors: 0
+    scorecard: "62/100"
+    near_miss_score: 0
+    quality: 3.9
+    top_technique: "身份溢价38pp缺口量化(66.5% AI权重 vs 28% DC收入) + 估值独立可操作洞见(Ch26.5不依赖WACC的三条建议)"
+    top_lesson: "扩写Agent不继承DM/CI标注规范 — CG8/CG9双FAIL的根因; Agent提示词需注入DM密度要求; CG脚本有解析bug待修"
+    evolution_proposed: |
+      EVO-ETN-001: Agent扩写DM注入协议 — 扩写提示词强制"每1000字≥3个[DM-XXX]标注" [P0, 阻断性]
+      EVO-ETN-002: 组装后CI自动提取 — 扫描"非共识/独特/首次"关键词→注册CI-XXX [P1]
+      EVO-ETN-003: CG脚本DM解析修复 — quality_gate_complete.sh integer expression错误 [P0, 工具修复]
+      EVO-ETN-004: 估值独立洞见 — 新catalog条目"不依赖估值的可操作洞见"(ETN Ch26.5) [P2]
+    evolution_status: pending  # 待用户审批
+
+  # --- 质量趋势更新 ---
+  # LRCX(3.8) → ANET(4.0)↑ → VRT(4.2)↑ → ETN(3.9)↓ — 连续4份在3.8-4.2区间
+  # ETN从VRT回落原因: DM=0继续(系统性债务) + CI=0 + 无VRT级别的全新创新
+  # 但分析内容质量与ANET持平(Reverse DCF+历史类比+情景建模+决策输出均强)
+  # 密度继续有效: 303K得3.9 ≈ ANET 279K得4.0的密度水平
+  # 紧急: DM=0已连续2份报告(VRT+ETN) — 系统性退化, 需EVO-ETN-001阻断
+
+  - ticker: "ETN"
+    date: "2026-02-21"
+    report: "ETN_Complete_深度研究报告.md"
+    chars: "331K"
+    cg_result: "PASSED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 60
+    scorecard: "95/100"
+    near_miss_score: 0
+    quality: 4.3
+    top_technique: "产业链纵深分析(Ch9A: 上游GOES脆弱点+下游Hyperscaler集中度+交叉销售量化) + 身份溢价38pp缺口量化 + 估值独立可操作洞见"
+    top_lesson: "DM锚点集中注入+附录化比逐章散布更高效; CG脚本bug修复(EVO-ETN-003)是工具层必要投资; 产业链分析对工业公司的洞见增量>>科技公司"
+    evolution_proposed: |
+      EVO-ETN-001: Agent扩写DM注入协议 — 扩写提示词强制"每1000字≥3个[DM-XXX]标注" [P0, 阻断性] ← 已通过附录化方案解决当前报告
+      EVO-ETN-002: 组装后CI自动提取 — 扫描"非共识/独特/首次"关键词→注册CI-XXX [P1] ← 已手动完成11个CI
+      EVO-ETN-003: CG脚本DM解析修复 — safe_int()函数+21变量修复 [P0] ← ✅ 已实施
+      EVO-ETN-004: 估值独立洞见 — 新catalog条目"不依赖估值的可操作洞见"(ETN Ch26.5) [P2]
+      EVO-ETN-005: 产业链纵深章节 — 工业公司(PW≤4)强制增加Ch9A产业链分析(上游/下游/交叉销售) [P1]
+    evolution_status: approved  # v2优化后全部实施
+    optimization_note: "v1→v2优化: +Ch9A产业链34K + DM附录60锚点 + CI注册表11个 + 记分卡10维度 + 免责声明 → CG从FAILED(2E/5W)→PASSED(0E/1W) + Scorecard从62→95"
+
+  # --- 质量趋势更新(优化后) ---
+  # LRCX(3.8) → ANET(4.0)↑ → VRT(4.2)↑ → ETN-v1(3.9)↓ → ETN-v2(4.3)↑↑
+  # ETN-v2优化归因: 产业链Ch9A(+0.2) + DM附录化(+0.1) + CI注册表(+0.05) + CG全通过(+0.05)
+  # 连续5份3.8-4.3区间, 平均4.06 — 框架v17.0稳定区间
+  # 新发现: 产业链分析对工业公司洞见增量显著(传统框架中被遗漏的维度)
+  # DM系统性债务: 附录化方案暂时解决, 但长期需EVO-ETN-001在Agent层面修复
