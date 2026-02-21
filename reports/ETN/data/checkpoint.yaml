@@ -1,19 +1,36 @@
 schema_version: "2.0"
 ticker: ETN
-company: "ETN"
+company: "Eaton Corporation plc"
 framework_version: v17.0
 worktree: "半导体"
 industry: "半导体"
-last_updated: "2026-02-21T00:36:51+00:00"
+last_updated: "2026-02-21T10:00:00+08:00"
 
-current_phase: -0.5
-phase_status: lit_recon_complete
-phases_completed: [-1]
+current_phase: 0.75
+phase_status: thesis_crystallization_complete
+phases_completed: [-1, -0.5, 0, 0.5, 0.75]
 
 target_chars: 300000
 target_range: "240K-375K"
 hard_floor: 200000
 
+pw_score: 3
+paradigm: traditional
+eval_methods: [SOTP, Reverse_DCF, Relative_Valuation, DCF, Boyd_NPV]
+cq_count: 5
+
 quick_ref:
   total_chars: 0
   latest_phase_chars: 0
+  market_cap_B: 145.0
+  price: 373.38
+  pe_ratio: 30.2
+  ev_ebitda: 22.7
+
+cq_confidence:
+  CQ1_valuation_premium: 35
+  CQ2_boyd_acquisition: 40
+  CQ3_mobility_spinoff: 55
+  CQ4_backlog_quality: 50
+  CQ5_smart_money_divergence: 45
+  weighted_avg: 43
