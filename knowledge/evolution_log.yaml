@@ -221,3 +221,30 @@ entries:
   # 连续5份3.8-4.3区间, 平均4.06 — 框架v17.0稳定区间
   # 新发现: 产业链分析对工业公司洞见增量显著(传统框架中被遗漏的维度)
   # DM系统性债务: 附录化方案暂时解决, 但长期需EVO-ETN-001在Agent层面修复
+
+  - ticker: "SMCI"
+    date: "2026-02-21"
+    report: "SMCI_Complete_深度研究报告.md"
+    chars: "333K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "FAILED"
+    dm_anchors: 102
+    scorecard: "87/100"
+    near_miss_score: 0
+    quality: 3.9
+    top_technique: "CI-01组装商估值陷阱(EV/GP 9.4x vs Dell 4.4x→114%溢价) + CI-02浪潮镜像(跨生态GM收敛<10%) + 10节点风险拓扑双路径温水煮青蛙"
+    top_lesson: "组装DM密度损耗=系统性问题(187→102, 45%丢失因多Agent组装); Assembly Agent 254K context溢出需分段策略; CG脚本关键词匹配过于死板(催化剂日历≠投资日历)"
+    evolution_proposed: |
+      EVO-SMCI-001: CG脚本关键词扩展 — CG11增加"催化剂日历"为"投资日历"别名 [P0, 脚本修复]
+      EVO-SMCI-002: 组装DM保留率 — Assembly流程需强制DM引用(目标≥80%保留率, 当前55%) [P0, 阻断性]
+      EVO-SMCI-003: Agent Context溢出处理 — 254K超限→组装需≤150K/Agent的分段策略 [P1]
+      EVO-SMCI-004: Scorecard D9检测改进 — 23 TS+16 KS→D9仅3分=检测逻辑bug [P1, 脚本修复]
+      冠军目录新增: 组装商估值陷阱(EV/GP方法论) + 跨生态GM收敛(浪潮镜像) [P2]
+    evolution_status: approved
+
+  # --- 质量趋势更新 ---
+  # ANET(4.0)↑ → VRT(4.2)↑ → ETN-v2(4.3)↑ → SMCI(3.9)↓
+  # SMCI从ETN回落原因: DM密度损耗45% + CG脚本匹配问题 + D9追踪检测bug
+  # 但内容质量与ANET持平: D2/D3/D5/D7/D8均9-10分, CI-01是全系列级创新
+  # 密度继续有效: 333K得3.9 ≈ ANET 279K得4.0的水平
+  # 系统性问题: 组装流程DM保留率(SMCI 55% + VRT 0% + ETN附录化) — 需EVO-SMCI-002根治

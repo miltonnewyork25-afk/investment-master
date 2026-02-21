@@ -3,9 +3,9 @@
 # 每当新报告某板块超越现有最佳时，自动更新此目录
 
 metadata:
-  version: "1.3"
+  version: "1.4"
   last_updated: "2026-02-21"
-  total_reports_analyzed: 22
+  total_reports_analyzed: 23
   quality_threshold: 4.0/5.0
 
 # ============================================================
@@ -233,6 +233,24 @@ identity_premium:
 # 估值方法论 (Valuation Methodology)
 # ============================================================
 valuation_methodology:
+  assembler_valuation_trap:
+    champion: "SMCI_CI-01_Ch11-13"
+    score: 4.4
+    report_path: "reports/SMCI/SMCI_Complete_深度研究报告.md"
+    method: "EV/GP替代EV/Sales → 组装商真实估值倍数 → 跨公司对标(Dell 4.4x/浪潮/Flex) → 114%溢价量化"
+    key_innovation: "揭示低毛利组装商(GM<15%)使用EV/Sales会系统性低估估值倍数，EV/GP 9.4x vs Dell 4.4x暴露114%隐含溢价"
+    when_to_use: "低毛利组装/代工企业(GM<15%) — EV/Sales失真，需EV/GP还原真实估值水平"
+    transferable_to: ["服务器组装(Dell/SMCI/浪潮)", "电子代工(Flex/鸿海)", "低毛利分销商", "汽车代工"]
+
+  cross_ecosystem_convergence:
+    champion: "SMCI_CI-02_Ch4-5"
+    score: 4.2
+    report_path: "reports/SMCI/SMCI_Complete_深度研究报告.md"
+    method: "跨生态GM比较(浪潮6.85%→3.45%, SMCI 11.2%→?) → 收敛趋势量化 → 竞争均衡点推导 → 结构性利润率天花板"
+    key_innovation: "证明不同生态(美国/中国)的组装商GM在<10%区间收敛，揭示组装商利润率天花板是结构性而非周期性"
+    when_to_use: "跨国/跨生态比较中，验证利润率是行业结构决定还是公司能力决定"
+    transferable_to: ["服务器组装", "电子制造", "跨国竞争分析", "利润率可持续性评估"]
+
   valuation_independent_insights:
     champion: "ETN_Ch26.5"
     score: 4.2

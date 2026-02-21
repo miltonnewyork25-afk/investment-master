@@ -136,7 +136,7 @@ fi
 # === CG2: Phase 5字符 ===
 # 检测Phase 5起始: 查找"# Phase 5"或"## Phase 5"级别的标题(不匹配普通提及)
 # 也匹配 "# Ch37" ~ "# Ch44" 风格的Phase 5章节开头
-PHASE5_START=$(grep -n -E '^#{1,3} *(Phase *5|P5|决策输出)' "$FILE" 2>/dev/null | head -1 | cut -d: -f1)
+PHASE5_START=$(grep -n -E '^#{1,3} *(Phase *5|P5|Part *V|决策输出)' "$FILE" 2>/dev/null | head -1 | cut -d: -f1)
 if [ -z "$PHASE5_START" ] || [ "$PHASE5_START" -eq 0 ] 2>/dev/null; then
     # 备选: 查找 Ch37/Ch38 级别标题 (GOOGL Ch37开始, META Ch38开始)
     PHASE5_START=$(grep -n -E '^#{1,3} *Ch3[789]|^#{1,3} *Ch4[0-4]' "$FILE" 2>/dev/null | head -1 | cut -d: -f1)
@@ -385,7 +385,7 @@ else
 fi
 
 # === CG11: 投资日历+行动清单 ===
-HAS_CALENDAR=$(safe_int "$(grep -ci '投资日历\|investment calendar' "$FILE" 2>/dev/null || echo 0)")
+HAS_CALENDAR=$(safe_int "$(grep -ci '投资日历\|催化剂日历\|investment calendar\|catalyst calendar' "$FILE" 2>/dev/null || echo 0)")
 HAS_ACTION=$(safe_int "$(grep -ci '行动清单\|action.*plan\|90天\|90-day' "$FILE" 2>/dev/null || echo 0)")
 HAS_DISCLAIMER=$(safe_int "$(grep -ci '免责声明\|不构成投资建议' "$FILE" 2>/dev/null || echo 0)")
 MISSING=""
