@@ -113,31 +113,30 @@ phases:
         description: B5 风险拓扑+17 Kill Switch+风险协同矩阵+35EC
 
   P4_cross_analysis:
-    status: in_progress
+    status: completed
     session: 7
     chapters: [Ch15, Ch16, Ch17, Ch18, Ch19]
-    planned_agents: 4 parallel
     deliverables:
       - file: staging/ch15_ab_scorecard.md
         status: done
         size: 98KB
         description: A+B综合记分卡+交叉验证+评分异常深挖+30EC. 综合排名ASML(7.78)>KLAC(7.65)>>LRCX(6.50)>AMAT(5.19)
       - file: staging/ch16_head_to_head.md
-        status: pending
-        description: 六组Head-to-Head对决
+        status: done
+        size: 80KB
+        description: 六组Head-to-Head对决+战力排名+30EC. ASML/KLAC S级, LRCX B级, AMAT D级
       - file: staging/ch17_scenario_analysis.md
-        status: pending
-        description: 三情景概率加权分析
+        status: done
+        size: 84KB
+        description: 三情景概率加权+敏感性分析+30EC. 期望回报KLAC(+17.7%)>ASML(+4.2%)>AMAT(-22.4%)>LRCX(-24.9%)
       - file: staging/ch18_competitive_dynamics.md
-        status: pending
-        description: 竞争生态动态+红队审查
+        status: done
+        size: 87KB
+        description: 竞争生态+红队审查+25EC. KLAC Bull Case最稳健, LRCX Bull Case最脆弱
       - file: staging/ch19_investor_matrix.md
-        status: pending
-        description: 投资者适配矩阵+综合排名
-    resume_context: |
-      Ch15已完成(98KB,30EC). Ch16-19待生成.
-      ECONNRESET导致Ch16 agent失败, 需重新dispatch.
-      所有评分数据已汇总在Ch15中, agent prompt模板保存在本checkpoint下方.
+        status: done
+        size: 85KB
+        description: 投资者适配矩阵+条件评级+组合构建+25EC. 最优双持ASML+KLAC
 
   P5_decision_framework:
     status: pending
@@ -175,12 +174,12 @@ data_snapshot:
 
 # EC追踪
 evidence_cards:
-  total: 196
+  total: 306
   by_type:
-    fact: 55
-    estimate: 28
-    inference: 88
-    assumption: 25
+    fact: 60
+    estimate: 40
+    inference: 170
+    assumption: 36
   target: 125+
   target_fact_ratio: ">=36%"
   note: "P0=10 + P1~30(估) + P2A~25(估) + P2B~15(估) + P3A=85新EC + P3B=71新EC(Ch13:36+Ch14:35). 目标125+已超额完成"
