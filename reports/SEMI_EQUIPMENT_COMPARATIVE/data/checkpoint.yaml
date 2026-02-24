@@ -9,8 +9,8 @@ report:
   total_sessions: 10
   total_chapters: 22 + 4 appendices
 
-current_phase: P4
-current_session: 7
+current_phase: P5
+current_session: 8
 last_updated: 2026-02-24
 
 # Phase进度
@@ -139,9 +139,22 @@ phases:
         description: 投资者适配矩阵+条件评级+组合构建+25EC. 最优双持ASML+KLAC
 
   P5_decision_framework:
-    status: pending
+    status: completed
     session: 8
     chapters: [Ch20, Ch21, Ch22]
+    deliverables:
+      - file: staging/ch20_executive_summary.md
+        status: done
+        size: 55KB
+        description: 执行摘要+十大核心发现+四公司投资画像+20EC
+      - file: staging/ch21_decision_dashboard.md
+        status: done
+        size: 81KB
+        description: 投资决策框架+战术触发+监控仪表盘+组合再平衡+20EC
+      - file: staging/ch22_limitations_outlook.md
+        status: done
+        size: 45KB
+        description: 研究局限性+结论稳健性+前瞻展望+15EC
 
   P6a_appendices:
     status: pending
@@ -174,12 +187,12 @@ data_snapshot:
 
 # EC追踪
 evidence_cards:
-  total: 306
+  total: 361
   by_type:
-    fact: 60
-    estimate: 40
-    inference: 170
-    assumption: 36
+    fact: 65
+    estimate: 45
+    inference: 205
+    assumption: 46
   target: 125+
   target_fact_ratio: ">=36%"
   note: "P0=10 + P1~30(估) + P2A~25(估) + P2B~15(估) + P3A=85新EC + P3B=71新EC(Ch13:36+Ch14:35). 目标125+已超额完成"
