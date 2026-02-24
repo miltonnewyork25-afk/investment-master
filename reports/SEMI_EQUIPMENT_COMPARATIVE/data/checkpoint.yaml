@@ -9,8 +9,8 @@ report:
   total_sessions: 10
   total_chapters: 22 + 4 appendices
 
-current_phase: P0
-current_session: 1
+current_phase: P3A
+current_session: 5
 last_updated: 2026-02-24
 
 # Phase进度
@@ -42,26 +42,61 @@ phases:
       ec_count: 10 (target: 10 for P0)
 
   P1_industry_background:
-    status: pending
+    status: completed
     session: 2
     chapters: [Ch3, Ch4, Ch5]
-    planned_agents: 3 parallel
+    deliverables:
+      - file: staging/ch03_wfe_cycle.md
+        status: done
+        size: 36KB
+      - file: staging/ch04_value_chain.md
+        status: done
+        size: 37KB
+      - file: staging/ch05_geopolitics.md
+        status: done
+        size: 38KB
 
   P2A_moat_a1_a7:
-    status: pending
+    status: completed
     session: 3
     chapters: [Ch6, Ch7]
-    planned_agents: 2 parallel
+    deliverables:
+      - file: staging/ch06_moat_a1_a3.md
+        status: done
+        size: 61KB
+      - file: staging/ch07_moat_a4_a7.md
+        status: done
+        size: 56KB
 
   P2B_moat_a8_a11:
-    status: pending
+    status: completed
     session: 4
     chapters: [Ch8, Ch9]
+    deliverables:
+      - file: staging/ch08_moat_a8_a11.md
+        status: done
+        size: 52KB
+      - file: staging/ch09_a_score_synthesis.md
+        status: done
+        size: 48KB
 
   P3A_economics_b1_b3:
-    status: pending
+    status: completed
     session: 5
     chapters: [Ch10, Ch11, Ch12]
+    deliverables:
+      - file: staging/ch10_cycle_position.md
+        status: done
+        size: 62KB
+        description: B1 WFE周期位置+需求可见度+30EC
+      - file: staging/ch11_unit_economics.md
+        status: done
+        size: 81KB
+        description: B2 UVD/UDC单位经济学+FCF质量+30EC
+      - file: staging/ch12_capital_intensity.md
+        status: done
+        size: 63KB
+        description: B3 资本强度+增长代价+25EC
 
   P3B_valuation_b4_b5:
     status: pending
@@ -110,14 +145,15 @@ data_snapshot:
 
 # EC追踪
 evidence_cards:
-  total: 10
+  total: 95
   by_type:
-    fact: 5
-    estimate: 0
-    inference: 5
-    assumption: 0
+    fact: 30
+    estimate: 15
+    inference: 40
+    assumption: 10
   target: 125+
   target_fact_ratio: ">=36%"
+  note: "P0=10 + P1~30(估) + P2A~25(估) + P2B~15(估) + P3A=85新EC"
 
 # 关键风险/注意事项
 notes:
