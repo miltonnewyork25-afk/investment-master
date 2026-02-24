@@ -9,8 +9,8 @@ report:
   total_sessions: 10
   total_chapters: 22 + 4 appendices
 
-current_phase: P6a
-current_session: 9
+current_phase: COMPLETE
+current_session: 10
 last_updated: 2026-02-24
 
 # Phase进度
@@ -179,9 +179,24 @@ phases:
         description: A/B评分方法论+UVD/UDC框架+80术语表+数据来源+报告索引
 
   P6b_assembly:
-    status: pending
+    status: completed
     session: 10
     strategy: 3-segment assembly (Part 0-II / Part III-IV / Part V+App)
+    deliverables:
+      - file: SEMI_EQUIPMENT_COMPARATIVE_Complete.md
+        status: done
+        size: 1.55MB
+        lines: 21774
+        description: 完整报告(22章+4附录+封面+目录)=1.55MB, 2001 EC引用, 345 KS引用
+    assembly_checklist:
+      agent_refs: 0_found
+      phase_titles: 0_found
+      chapter_continuity: ch3_to_ch22_sequential
+      market_cap_consistency: verified
+      composite_score_consistency: verified
+      taiwan_compliance: passed(polymarket_exemption_applied)
+      ec_count: 2001_references
+      ks_count: 345_references
 
 # 数据快照基准
 data_snapshot:
