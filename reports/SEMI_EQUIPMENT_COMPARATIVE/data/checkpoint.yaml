@@ -1,0 +1,127 @@
+# Checkpoint — Semi Equipment Comparative Analysis
+# 创建: 2026-02-24
+
+report:
+  ticker: SEMI_EQUIPMENT_COMPARATIVE
+  companies: [AMAT, LRCX, ASML, KLAC]
+  type: comparative_analysis
+  target_size: 600K+ characters
+  total_sessions: 10
+  total_chapters: 22 + 4 appendices
+
+current_phase: P0
+current_session: 1
+last_updated: 2026-02-24
+
+# Phase进度
+phases:
+  P0_framework_data:
+    status: completed
+    session: 1
+    deliverables:
+      - file: data/framework_definition.md
+        status: done
+        description: A1-A11 + B1-B5 unified framework with scoring anchors
+      - file: data/uvd_udc_definitions.md
+        status: done
+        description: UVD/UDC definitions for 4 companies with quantification
+      - file: data/financial_comparison_v2.md
+        status: done
+        description: Expanded financial comparison (~30KB) with unified 2026-02-24 snapshot
+      - file: data/shared_context.md
+        status: done
+        description: EC registry initialized with 10 core cross-company ECs
+      - file: data/financial_comparison.md
+        status: legacy_v1
+        description: Original 5.4KB basic comparison (preserved, superseded by v2)
+    quality_gate:
+      a_score_definition: complete (11 dimensions, all with anchors and weights)
+      b_score_definition: complete (5 dimensions with semi-specific methods)
+      uvd_udc_quantified: complete (4 companies, all with numerical estimates)
+      price_snapshot: 2026-02-24 unified
+      ec_count: 10 (target: 10 for P0)
+
+  P1_industry_background:
+    status: pending
+    session: 2
+    chapters: [Ch3, Ch4, Ch5]
+    planned_agents: 3 parallel
+
+  P2A_moat_a1_a7:
+    status: pending
+    session: 3
+    chapters: [Ch6, Ch7]
+    planned_agents: 2 parallel
+
+  P2B_moat_a8_a11:
+    status: pending
+    session: 4
+    chapters: [Ch8, Ch9]
+
+  P3A_economics_b1_b3:
+    status: pending
+    session: 5
+    chapters: [Ch10, Ch11, Ch12]
+
+  P3B_valuation_b4_b5:
+    status: pending
+    session: 6
+    chapters: [Ch13, Ch14]
+
+  P4_cross_analysis:
+    status: pending
+    session: 7
+    chapters: [Ch15, Ch16, Ch17, Ch18, Ch19]
+    planned_agents: 4 parallel
+
+  P5_decision_framework:
+    status: pending
+    session: 8
+    chapters: [Ch20, Ch21, Ch22]
+
+  P6a_appendices:
+    status: pending
+    session: 9
+    appendices: [App-A, App-B, App-C, App-D]
+
+  P6b_assembly:
+    status: pending
+    session: 10
+    strategy: 3-segment assembly (Part 0-II / Part III-IV / Part V+App)
+
+# 数据快照基准
+data_snapshot:
+  date: 2026-02-24
+  prices:
+    AMAT: 373.55
+    LRCX: 242.27
+    ASML: 1485.99
+    KLAC: 1487.66
+  market_caps_usd_b:
+    AMAT: 296.5
+    LRCX: 302.5
+    ASML: 576.0
+    KLAC: 195.5
+  latest_quarter:
+    AMAT: FY2025_Q4 (ending 2026-01-25)
+    LRCX: FY2025_Q4 (ending 2025-12-28)
+    ASML: FY2025_Q4 (ending 2025-12-31)
+    KLAC: FY2025_Q4 (ending 2025-12-31)
+
+# EC追踪
+evidence_cards:
+  total: 10
+  by_type:
+    fact: 5
+    estimate: 0
+    inference: 5
+    assumption: 0
+  target: 125+
+  target_fact_ratio: ">=36%"
+
+# 关键风险/注意事项
+notes:
+  - "四公司财年不同: AMAT(10月)/LRCX&KLAC(6月)/ASML(12月) — TTM已对齐"
+  - "ASML以EUR报告，其他三家USD — 不做汇率转换"
+  - "AMAT CapEx/折旧TTM=19.13x异常高 — 以FY口径5.2x为准"
+  - "当前TTM P/E全部处于5年历史高位区间 — 宏观CAPE=39.78(98百分位)"
