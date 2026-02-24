@@ -9,8 +9,8 @@ report:
   total_sessions: 10
   total_chapters: 22 + 4 appendices
 
-current_phase: P3A
-current_session: 5
+current_phase: P3B
+current_session: 6
 last_updated: 2026-02-24
 
 # Phase进度
@@ -99,9 +99,18 @@ phases:
         description: B3 资本强度+增长代价+25EC
 
   P3B_valuation_b4_b5:
-    status: pending
+    status: completed
     session: 6
     chapters: [Ch13, Ch14]
+    deliverables:
+      - file: staging/ch13_valuation.md
+        status: done
+        size: 92KB
+        description: B4 逆向DCF+估值走廊+FCF Yield收敛+36EC
+      - file: staging/ch14_risk_map.md
+        status: done
+        size: 70KB
+        description: B5 风险拓扑+17 Kill Switch+风险协同矩阵+35EC
 
   P4_cross_analysis:
     status: pending
@@ -145,15 +154,15 @@ data_snapshot:
 
 # EC追踪
 evidence_cards:
-  total: 95
+  total: 166
   by_type:
-    fact: 30
-    estimate: 15
-    inference: 40
-    assumption: 10
+    fact: 50
+    estimate: 25
+    inference: 70
+    assumption: 21
   target: 125+
   target_fact_ratio: ">=36%"
-  note: "P0=10 + P1~30(估) + P2A~25(估) + P2B~15(估) + P3A=85新EC"
+  note: "P0=10 + P1~30(估) + P2A~25(估) + P2B~15(估) + P3A=85新EC + P3B=71新EC(Ch13:36+Ch14:35). 目标125+已超额完成"
 
 # 关键风险/注意事项
 notes:
