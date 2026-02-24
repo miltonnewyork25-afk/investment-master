@@ -9,8 +9,8 @@ report:
   total_sessions: 10
   total_chapters: 22 + 4 appendices
 
-current_phase: P3B
-current_session: 6
+current_phase: P4
+current_session: 7
 last_updated: 2026-02-24
 
 # Phase进度
@@ -113,10 +113,31 @@ phases:
         description: B5 风险拓扑+17 Kill Switch+风险协同矩阵+35EC
 
   P4_cross_analysis:
-    status: pending
+    status: in_progress
     session: 7
     chapters: [Ch15, Ch16, Ch17, Ch18, Ch19]
     planned_agents: 4 parallel
+    deliverables:
+      - file: staging/ch15_ab_scorecard.md
+        status: done
+        size: 98KB
+        description: A+B综合记分卡+交叉验证+评分异常深挖+30EC. 综合排名ASML(7.78)>KLAC(7.65)>>LRCX(6.50)>AMAT(5.19)
+      - file: staging/ch16_head_to_head.md
+        status: pending
+        description: 六组Head-to-Head对决
+      - file: staging/ch17_scenario_analysis.md
+        status: pending
+        description: 三情景概率加权分析
+      - file: staging/ch18_competitive_dynamics.md
+        status: pending
+        description: 竞争生态动态+红队审查
+      - file: staging/ch19_investor_matrix.md
+        status: pending
+        description: 投资者适配矩阵+综合排名
+    resume_context: |
+      Ch15已完成(98KB,30EC). Ch16-19待生成.
+      ECONNRESET导致Ch16 agent失败, 需重新dispatch.
+      所有评分数据已汇总在Ch15中, agent prompt模板保存在本checkpoint下方.
 
   P5_decision_framework:
     status: pending
@@ -154,12 +175,12 @@ data_snapshot:
 
 # EC追踪
 evidence_cards:
-  total: 166
+  total: 196
   by_type:
-    fact: 50
-    estimate: 25
-    inference: 70
-    assumption: 21
+    fact: 55
+    estimate: 28
+    inference: 88
+    assumption: 25
   target: 125+
   target_fact_ratio: ">=36%"
   note: "P0=10 + P1~30(估) + P2A~25(估) + P2B~15(估) + P3A=85新EC + P3B=71新EC(Ch13:36+Ch14:35). 目标125+已超额完成"
