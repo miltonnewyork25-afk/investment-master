@@ -3,9 +3,9 @@
 # 每当新报告某板块超越现有最佳时，自动更新此目录
 
 metadata:
-  version: "1.4"
-  last_updated: "2026-02-21"
-  total_reports_analyzed: 23
+  version: "1.5"
+  last_updated: "2026-02-24"
+  total_reports_analyzed: 24
   quality_threshold: 4.0/5.0
 
 # ============================================================
@@ -271,6 +271,53 @@ industry_analysis:
     key_innovation: "发现跨报告的逻辑矛盾和数据不一致"
     when_to_use: "同行业多公司分析"
     transferable_to: ["所有行业生态分析"]
+
+# ============================================================
+# 护城河评分体系 (Moat Scoring)
+# ============================================================
+moat_scoring:
+  a_score_framework:
+    champion: "SEMI_EQUIPMENT_Ch6-9"
+    score: 4.5
+    report_path: "reports/SEMI_EQUIPMENT_COMPARATIVE/SEMI_EQUIPMENT_COMPARATIVE_Complete.md"
+    method: "11维度(A1-A11)×0-10统一尺度+加权总分+形状分析(尖峰/平台/偏科/扁平)+概率加权A-Score"
+    key_innovation: "首个可量化跨行业的护城河评分框架: 0个行业专属维度+A4壁垒-利润池匹配(原创)+A8/A9反向指标设计"
+    when_to_use: "任何Tier 3分析的护城河评估(已泛化为A-Score v2.0)"
+    transferable_to: ["所有行业", "单公司分析", "横向对比分析"]
+    framework_doc: "docs/a_score_v2.md"
+
+# ============================================================
+# 专才溢价发现 (Specialist Premium)
+# ============================================================
+specialist_premium:
+  sgi_diagnostic:
+    champion: "SEMI_EQUIPMENT_Ch15-16+复盘Q2"
+    score: 4.5
+    report_path: "reports/SEMI_EQUIPMENT_COMPARATIVE/data/retrospective_q2_specialist.md"
+    method: "SGI 5维度诊断(HHI_rev/R&D_conc/MarketPos/SwitchCost/BrandClarity) → 品质调整P/E → 5行业验证"
+    key_innovation: "跨行业验证专才P/E溢价+1%~+180%; SGI与A-Score相关0.98; 品质调整P/E揭示33%溢价不足以补偿品质差距"
+    when_to_use: "Phase 0速判(2分钟): 定位公司在专才-通才光谱上的位置，锚定估值预期"
+    transferable_to: ["所有行业", "估值交叉验证", "横向对比分析"]
+    cross_industry_data:
+      semiconductor_equipment: "+33%"
+      financials: "+104%"
+      consumer: "+43%"
+      healthcare: "+180%"
+      industrials: "+1%"
+
+# ============================================================
+# 风险拓扑方法论 (Risk Topology)
+# ============================================================
+risk_topology_methodology:
+  ks_synergy_matrix:
+    champion: "SEMI_EQUIPMENT_Ch14+AppC"
+    score: 4.3
+    report_path: "reports/SEMI_EQUIPMENT_COMPARATIVE/SEMI_EQUIPMENT_COMPARATIVE_Complete.md"
+    method: "17 KS×10必填字段+协同矩阵(三阶段防爆炸)+温水煮青蛙+MVP 8+3+1模型"
+    key_innovation: "将风险从清单升级为拓扑系统: 风险形状差异(ASML极化/KLAC均衡/LRCX集中/AMAT分散)+反协同限制折价叠加+条件概率跳跃"
+    when_to_use: "Tier 3 Phase 4: MVP模式(单公司)或Full模式(横向对比)"
+    transferable_to: ["所有行业", "任何≥6个风险的分析"]
+    skill_doc: ".claude/skills/risk-topology/SKILL.md"
 
 # ============================================================
 # 动态更新机制

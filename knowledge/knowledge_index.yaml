@@ -1,9 +1,33 @@
-# Knowledge Index v1.3
-# 15份已完成报告的结构化索引 + 相似性图谱
+# Knowledge Index v1.4
+# 16份已完成报告的结构化索引 + 相似性图谱
 # 用途: find_relevant_knowledge.sh 的数据源
 # 更新时机: 每份新报告Complete后追加
 
 reports:
+  SEMI_EQUIPMENT_COMPARATIVE:
+    industry: 半导体
+    version: "v1.0"
+    date: "2026-02-24"
+    chars: 1550131
+    type: comparative_analysis
+    companies: [AMAT, LRCX, ASML, KLAC]
+    methodology: traditional_framework
+    ovm: false
+    erm: false
+    business_model: [semiconductor_equipment, lithography, etch_deposition, inspection_metrology, process_control]
+    risk_profile: [wfe_cycle, china_export_control, technology_substitution, customer_concentration, valuation_reversion]
+    key_lessons:
+      - "A-Score 11维0个行业专属——框架天然可泛化(已升级为v2.0)"
+      - "专才溢价跨5行业验证(+1%~+180%), SGI诊断与A-Score相关0.98"
+      - "风险拓扑MVP(8+3+1)保留80%价值/20%工作量"
+      - "横向对比的信息密度天然4x于单公司——1.55MB合理但附录可压缩"
+      - "品质调整P/E(P/E÷A-Score)揭示专才33%溢价不足以补偿品质差距"
+    framework_assets:
+      - "docs/a_score_v2.md (A-Score通用框架)"
+      - ".claude/skills/risk-topology/SKILL.md (v2.0 MVP+Full双模式)"
+      - "docs/deep_dive_protocol.md (v14.1 SGI速判)"
+    similar_to: [AMAT, LRCX, KLAC, ASML]
+
   TSLA:
     industry: 生态科技
     version: "v3.0"
