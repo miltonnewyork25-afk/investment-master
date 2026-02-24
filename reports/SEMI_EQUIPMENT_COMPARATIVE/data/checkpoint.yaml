@@ -9,8 +9,8 @@ report:
   total_sessions: 10
   total_chapters: 22 + 4 appendices
 
-current_phase: P5
-current_session: 8
+current_phase: P6a
+current_session: 9
 last_updated: 2026-02-24
 
 # Phase进度
@@ -157,9 +157,26 @@ phases:
         description: 研究局限性+结论稳健性+前瞻展望+15EC
 
   P6a_appendices:
-    status: pending
+    status: completed
     session: 9
     appendices: [App-A, App-B, App-C, App-D]
+    deliverables:
+      - file: staging/app_a_financial_data.md
+        status: done
+        size: 43KB
+        description: 完整财务数据集(5年FY+TTM+季度明细+估值走廊+宏观温度)
+      - file: staging/app_b_ec_registry.md
+        status: done
+        size: 77KB
+        description: 534 EC完整注册表+按类别/公司交叉索引+质量统计+高影响力精选
+      - file: staging/app_c_kill_switch.md
+        status: done
+        size: 73KB
+        description: 17 KS详细卡片+风险协同矩阵+暴露热力图+季度检查清单+对冲策略
+      - file: staging/app_d_methodology.md
+        status: done
+        size: 40KB
+        description: A/B评分方法论+UVD/UDC框架+80术语表+数据来源+报告索引
 
   P6b_assembly:
     status: pending
