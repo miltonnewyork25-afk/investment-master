@@ -4,31 +4,59 @@ company: "INTC"
 framework_version: v17.3
 worktree: "半导体"
 industry: "半导体"
-last_updated: "2026-02-25T17:00:00+00:00"
+last_updated: "2026-02-25T23:30:00+00:00"
 
-current_phase: 5
+current_phase: 5.5
 phase_status: complete
-phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 3.5, 4, 5]
+phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 3.5, 4, 5, 5.5]
 
 target_chars: 400000
 target_range: "400K+"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 410903
-  latest_phase_chars: 205182
+  total_chars: 425883
+  complete_chars: 425883
+  staging_chars: 410903
+  complete_lines: 7208
+  complete_chapters: 26
+  complete_appendices: 4
   sgi: 4.2
   pw: 8
   paradigm: "discovery_system"
   temperature: 88
   cq_count: 7
-  dm_count: 97
+  dm_count: 102
   a_score: 4.74
   a_score_confidence: 4.27
   a_score_shape: "偏科型"
   hypotheses: 3
   anomalies: 6
   collisions: 4
+  conditional_rating: "审慎关注 (期望回报-72%)"
+  kill_switches: 12
+  tracking_signals: 7
+  bear_cases: 12
+  cq_weighted_avg: "37.9%"
+
+complete_report:
+  filename: "INTC_Complete_v1.0_2026-02-25.md"
+  version: "v1.0"
+  assembly_agents: 7
+  assembly_parts:
+    - complete_part1.md (53238 chars, Protocol+Part I Ch1-4)
+    - complete_part2.md (42815 chars, Part II Ch5-8)
+    - complete_part3a.md (68007 chars, Part III-A Moat Ch9-10)
+    - complete_part3b.md (43854 chars, Part III-B Engines Ch11)
+    - complete_part3c.md (80147 chars, Part III-C PPDA+AI Ch12-14)
+    - complete_part4.md (65338 chars, Part IV Red Team Ch15-21)
+    - complete_part5.md (72540 chars, Part V+Appendices Ch22-26+App A-D)
+  compliance_checks:
+    publishing_compliance: PASS
+    agent_references: PASS
+    bf_markers: PASS
+    dm_coverage: "102 unique anchors"
+    chapter_continuity: "26 chapters + 4 appendices"
 
 phase_0_summary:
   sgi: 4.2 (混合模型, 偏通才)
