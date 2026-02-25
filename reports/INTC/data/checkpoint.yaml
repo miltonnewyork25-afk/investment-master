@@ -1,19 +1,47 @@
 schema_version: "2.0"
 ticker: INTC
 company: "INTC"
-framework_version: v17.0
+framework_version: v17.3
 worktree: "半导体"
 industry: "半导体"
-last_updated: "2026-02-25T02:24:22+00:00"
+last_updated: "2026-02-25T03:15:00+00:00"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: 0.75
+phase_status: complete
+phases_completed: [-1, -0.5, 0, 0.5, 0.75]
 
-target_chars: 346132
-target_range: "276K-432K"
+target_chars: 400000
+target_range: "400K+"
 hard_floor: 200000
 
 quick_ref:
   total_chars: 0
   latest_phase_chars: 0
+  sgi: 4.2
+  pw: 8
+  paradigm: "discovery_system"
+  temperature: 88
+  cq_count: 7
+  dm_count: 51
+  hypotheses: 3
+  anomalies: 6
+  collisions: 4
+
+phase_0_summary:
+  sgi: 4.2 (混合模型, 偏通才)
+  pw: 8 (发现系统)
+  temperature: 88/100 (极热)
+  key_metrics:
+    market_cap: $175.8B
+    revenue_fy2025: $52.9B
+    fcf_fy2025: -$4.9B
+    roic_fy2025: -0.05%
+    fmp_dcf: $9.31
+    forward_pe: ~91x (FY2026E)
+    net_debt: $32.3B
+    share_dilution_1y: 13.5%
+  core_contradiction: "活人估值 vs 濒死财务"
+  hypotheses:
+    - H1: 政府期权 > 商业价值 (非共识度高)
+    - H2: 僵尸轨道最可能 (非共识度中高)
+    - H3: 18A真正客户是五角大楼 (非共识度高)
