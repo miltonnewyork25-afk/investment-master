@@ -4,7 +4,7 @@ company: "INTC"
 framework_version: v17.3
 worktree: "半导体"
 industry: "半导体"
-last_updated: "2026-02-25T15:45:00+00:00"
+last_updated: "2026-02-25T17:00:00+00:00"
 
 current_phase: 5
 phase_status: complete
@@ -15,8 +15,8 @@ target_range: "400K+"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 154488
-  latest_phase_chars: 50836
+  total_chars: 410903
+  latest_phase_chars: 205182
   sgi: 4.2
   pw: 8
   paradigm: "discovery_system"
