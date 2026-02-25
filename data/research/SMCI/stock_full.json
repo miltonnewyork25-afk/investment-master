@@ -1,0 +1,76 @@
+{
+  "version": "4.0",
+  "ticker": "SMCI",
+  "fetched_at": "2026-02-21",
+  "source": "MCP:analyze_stock+fmp_data",
+  "price": {
+    "current": 32.42,
+    "52w_high": 66.44,
+    "52w_low": 27.6,
+    "2y_high": 118.81,
+    "2y_low": 18.01,
+    "2y_return_pct": -55.84,
+    "sma20": 31.34,
+    "sma50": 31.10,
+    "sma200": 41.67,
+    "rsi": 58.82,
+    "beta": 1.523,
+    "avg_volume": 58156515,
+    "trend": "上涨"
+  },
+  "fundamentals": {
+    "pe_ttm": 23.66,
+    "forward_pe": 10.95,
+    "pb_mrq": 2.98,
+    "ev_sales_ttm": 0.75,
+    "ev_ebitda_ttm": 26.97,
+    "fcf_yield_ttm": 0.0216,
+    "roe_ttm": 0.1319,
+    "roa_ttm": 0.0463,
+    "roic_ttm": 0.1582,
+    "debt_equity": 0.69,
+    "current_ratio": 1.70,
+    "quick_ratio": 0.98,
+    "altman_z": 2.31,
+    "pr_ratio": 1.75
+  },
+  "income_annual": {
+    "FY2025": { "revenue": 21972042000, "gross_profit": 2429922000, "gm_pct": 11.1, "operating_income": 1252994000, "net_income": 1048854000, "eps_diluted": 1.68, "sbc": 314452000 },
+    "FY2024": { "revenue": 14989251000, "gross_profit": 2061410000, "gm_pct": 13.8, "operating_income": 1210774000, "net_income": 1152666000, "eps_diluted": 1.68, "sbc": 231507000 },
+    "FY2023": { "revenue": 7123482000, "gross_profit": 1283012000, "gm_pct": 18.0, "operating_income": 761142000, "net_income": 639998000, "eps_diluted": 2.01, "sbc": 54433000 },
+    "FY2022": { "revenue": 5196099000, "gross_profit": 800001000, "gm_pct": 15.4, "operating_income": 337167000, "net_income": 285163000, "eps_diluted": 1.14, "sbc": 32816000 },
+    "FY2021": { "revenue": 3557422000, "gross_profit": 534538000, "gm_pct": 15.0, "operating_income": 123947000, "net_income": 111865000, "eps_diluted": 0.53, "sbc": 28549000 }
+  },
+  "income_quarterly": {
+    "Q2_FY2026": { "revenue": 12682491000, "gross_profit": 798567000, "gm_pct": 6.3, "net_income": 400564000, "eps_diluted": 0.60 },
+    "Q1_FY2026": { "revenue": 5017790000, "gross_profit": 467373000, "gm_pct": 9.3, "net_income": 168285000, "eps_diluted": 0.26 },
+    "Q4_FY2025": { "revenue": 5756911000, "gross_profit": 544102000, "gm_pct": 9.5, "net_income": 195154000, "eps_diluted": 0.31 },
+    "Q3_FY2025": { "revenue": 4599913000, "gross_profit": 440218000, "gm_pct": 9.6, "net_income": 108777000, "eps_diluted": 0.17 },
+    "Q2_FY2025": { "revenue": 5677962000, "gross_profit": 670022000, "gm_pct": 11.8, "net_income": 320596000, "eps_diluted": 0.50 },
+    "Q1_FY2025": { "revenue": 5937256000, "gross_profit": 775580000, "gm_pct": 13.1, "net_income": 424327000, "eps_diluted": 0.17 }
+  },
+  "balance_latest": {
+    "period": "Q2_FY2026",
+    "cash": 4090000000,
+    "inventory": 10600000000,
+    "total_assets": 28000000000,
+    "total_debt": 4910000000,
+    "total_equity": 6990000000
+  },
+  "cashflow_annual": {
+    "FY2025": { "ocf": 1659524000, "capex": -127214000, "fcf": 1532310000, "sbc": 314452000 },
+    "FY2024": { "ocf": -2485972000, "capex": -124279000, "fcf": -2610251000, "sbc": 231507000 },
+    "FY2023": { "ocf": 663580000, "capex": -36793000, "fcf": 626787000, "sbc": 54433000 }
+  },
+  "estimates": {
+    "FY2026E": { "revenue_avg": 40468881294, "eps_avg": 2.20, "analysts_rev": 12, "analysts_eps": 11 },
+    "FY2027E": { "revenue_avg": 48233444930, "eps_avg": 2.95, "analysts_rev": 12, "analysts_eps": 10 },
+    "FY2028E": { "revenue_avg": 55659892261, "eps_avg": 3.27, "analysts_rev": 8, "analysts_eps": 2 },
+    "FY2029E": { "revenue_avg": 62086704000, "eps_avg": 3.22, "analysts_rev": 6, "analysts_eps": 1 }
+  },
+  "fmp_dcf": -228.58,
+  "leading_indicators": {
+    "positive": ["经营杠杆释放", "存货效率提升"],
+    "negative": ["营收与毛利下降", "速动比率恶化"]
+  }
+}

@@ -1,0 +1,19 @@
+schema_version: "2.0"
+ticker: SMCI
+company: "SMCI"
+framework_version: v17.0
+worktree: "半导体"
+industry: "半导体"
+last_updated: "2026-02-21T06:53:40+00:00"
+
+current_phase: 4
+phase_status: red_team_complete
+phases_completed: [0, 0.5, 0.75, 1, 2, 3, 4]
+
+target_chars: 329006
+target_range: "263K-411K"
+hard_floor: 200000
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
