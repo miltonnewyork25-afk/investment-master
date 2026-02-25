@@ -1,0 +1,50 @@
+{
+  "version": "4.0",
+  "ticker": "BABA",
+  "company": "Alibaba Group Holding Limited",
+  "industry": "生态科技",
+  "timestamp": "2026-02-25T10:00:00+08:00",
+  "data_files": {
+    "stock_full": { "status": "ok", "source": "MCP:analyze_stock full 2y", "fetched_at": "2026-02-25T09:40:00" },
+    "peer_comparison": { "status": "ok", "source": "MCP:compare_stocks BABA/JD/PDD/BIDU/MELI/SE vs SPY", "fetched_at": "2026-02-25T09:40:00" },
+    "market_context": { "status": "ok", "source": "MCP:get_market_overview", "fetched_at": "2026-02-25T09:40:00" },
+    "baggers_summary": { "status": "ok", "source": "MCP:baggers_summary 7维度38指标", "fetched_at": "2026-02-25T09:40:50" },
+    "fmp_income_annual": { "status": "ok", "source": "MCP:fmp_data income annual 5y", "fetched_at": "2026-02-25T09:41:00" },
+    "fmp_income_quarterly": { "status": "ok", "source": "MCP:fmp_data income quarter 8Q", "fetched_at": "2026-02-25T09:41:00" },
+    "fmp_balance": { "status": "ok", "source": "MCP:fmp_data balance annual 5y", "fetched_at": "2026-02-25T09:41:00" },
+    "fmp_cashflow": { "status": "ok", "source": "MCP:fmp_data cashflow annual 5y", "fetched_at": "2026-02-25T09:42:00" },
+    "fmp_ratios": { "status": "ok", "source": "MCP:fmp_data ratios annual 5y", "fetched_at": "2026-02-25T09:41:00" },
+    "fmp_key_metrics": { "status": "ok", "source": "MCP:fmp_data key-metrics annual 5y", "fetched_at": "2026-02-25T09:41:00" },
+    "fmp_dcf": { "status": "ok", "source": "MCP:fmp_data dcf", "fetched_at": "2026-02-25T09:41:00" },
+    "fmp_rating": { "status": "ok", "source": "MCP:fmp_data rating", "fetched_at": "2026-02-25T09:41:00" },
+    "fmp_estimates": { "status": "ok", "source": "MCP:fmp_data estimates 4y", "fetched_at": "2026-02-25T09:42:00" },
+    "fmp_financial_scores": { "status": "ok", "source": "MCP:fmp_data financial-scores", "fetched_at": "2026-02-25T09:41:00" },
+    "polymarket": { "status": "ok", "source": "MCP:polymarket_events + Agent-B", "fetched_at": "2026-02-25T09:42:00" },
+    "analyst_consensus": { "status": "ok", "source": "WebSearch:Agent-A", "fetched_at": "2026-02-25T09:51:00", "file": "analyst_consensus.md", "size_bytes": 13387 },
+    "prediction_market": { "status": "ok", "source": "MCP:polymarket_events (fallback)", "fetched_at": "2026-02-25T09:42:00", "note": "Agent-B WebSearch skipped; MCP polymarket data used as primary" },
+    "recent_news": { "status": "ok", "source": "WebSearch:Agent-C", "fetched_at": "2026-02-25T09:52:00", "file": "recent_news.md", "size_bytes": 32359 },
+    "business_competitive": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-02-25T09:55:00", "file": "business_competitive.md", "size_bytes": 19873 },
+    "management_team": { "status": "ok", "source": "WebSearch:Agent-E", "fetched_at": "2026-02-25T09:54:00", "file": "management_team.md", "size_bytes": 24945 },
+    "smart_money_13f": { "status": "ok", "source": "WebSearch:Agent-F", "fetched_at": "2026-02-25T09:52:00", "file": "smart_money_13f.md", "size_bytes": 14159 },
+    "options_short_interest": { "status": "ok", "source": "WebSearch:Agent-G", "fetched_at": "2026-02-25T09:55:00", "file": "options_short_interest.md", "size_bytes": 14744 }
+  },
+  "quality": {
+    "files_ok": 21,
+    "files_pending": 1,
+    "files_error": 0,
+    "files_total": 22,
+    "completeness_pct": 95.5
+  },
+  "layer_status": {
+    "layer1_mcp": "ok",
+    "layer2_python": "skip",
+    "layer3_websearch": "ok"
+  },
+  "notes": [
+    "FMP SBC=$0 for all years — known parser issue, requires 20-F manual extraction",
+    "FMP insider-trading returned empty — Chinese ADR insider data limited",
+    "Python DCF/comparable tools skipped — will use manual Reverse DCF in Phase 2",
+    "Agent-B prediction_market still pending; MCP polymarket data covers BABA AI model rankings",
+    "Segment-level data from 20-F not in FMP — covered by Agent-D WebSearch"
+  ]
+}

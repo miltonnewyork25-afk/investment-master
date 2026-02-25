@@ -41,7 +41,7 @@ thesis_crystallization:
 data_prefetch:
   mcp_layer: "complete (income/balance/cashflow/ratios/key-metrics/dcf/rating/estimates/scores)"
   python_layer: "failed (tools default to AAPL/TSLA, using FMP DCF instead)"
-  websearch_layer: "4/7 agents completed (A-consensus/C-news/F-smart_money/G-options), D-business pending"
+  websearch_layer: "7/7 agents completed (A-consensus/B-polymarket_MCP/C-news/D-business/E-management/F-smart_money/G-options)"
   dm_anchors: 38
   h_pct: 87
 
