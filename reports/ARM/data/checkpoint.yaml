@@ -1,0 +1,61 @@
+schema_version: "2.0"
+ticker: ARM
+company: "ARM Holdings plc"
+framework_version: v17.0
+worktree: "半导体"
+industry: "半导体"
+last_updated: "2026-02-25T09:15:00+00:00"
+
+current_phase: 0.75
+phase_status: completed
+phases_completed: [-1, -0.5, 0, 0.5, 0.75]
+
+target_chars: 500000
+target_range: "269K-420K"
+hard_floor: 200000
+
+pw: 6
+sgi: 9.35
+methodology: "mixed_mode"
+
+cqs:
+  - id: CQ-1
+    name: "版税经济学终态"
+    weight: 30
+    confidence: 40
+  - id: CQ-2
+    name: "数据中心征途"
+    weight: 25
+    confidence: 45
+  - id: CQ-3
+    name: "SoftBank双面刃"
+    weight: 20
+    confidence: 45
+  - id: CQ-4
+    name: "RISC-V定价天花板"
+    weight: 15
+    confidence: 50
+  - id: CQ-5
+    name: "Arm China减速"
+    weight: 10
+    confidence: 55
+
+hypotheses:
+  - id: H1
+    name: "盈利质量三重扭曲"
+    ev_impact: "-25~35%"
+  - id: H2
+    name: "RISC-V=信用违约互换"
+    ev_impact: "-15~25%终态P/E"
+  - id: H3
+    name: "支付网络定价"
+    ev_impact: "±30%"
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
+  price_at_analysis: 128.14
+  market_cap: "136.1B"
+  pe_ttm: 140
+  gross_margin: "95.4%"
+  revenue_ttm: "4.671B"
