@@ -337,12 +337,12 @@ entries:
       3. 172K<<269K目标: 即使CG1 PASS(>160K floor), 仍大幅低于checkpoint目标——用户要求500K, 交付289K bytes(含UTF-8膨胀), 实际内容密度仅172K字符
       4. Scorecard 46/100暴露格式合规系统性缺失: D1(数据基础3)+D2(CQ格式0)+D7(CI 0)+D8(Mermaid 4)=格式层失血, 而D3(8)+D5(9)=内容层强
     evolution_proposed: |
-      EVO-ARM-001: CI自动扫描器 — 组装后grep "CDS|信用违约|非共识|独特|首次|悖论|陷阱"→自动生成CI候选清单供确认 [P1, 防D7=0]
-      EVO-ARM-002: 薄章节检测 — sentinel组装前检测<1500字符章节并发出WARN, 列出最薄Top-5供扩展 [P1, 质量门控]
-      EVO-ARM-003: 单会话组装原则 — Complete组装应在单会话内完成(读Phase→组装→CG→修复→提交), 跨会话组装质量不可控 [P0, 流程铁律]
-      EVO-ARM-004: Scorecard D2格式对齐 — CQ定义需要包含特定关键词标记(CQ-N/CQ置信度/CQ权重)被scorecard脚本检测到 [P1, 脚本修复]
+      EVO-ARM-001: CI自动扫描器 — scripts/ci_candidate_scanner.sh + quality_gate_complete.sh CG12-CI集成 [P1, 防D7=0] ← ✅ 已实施
+      EVO-ARM-002: 薄章节检测 — scripts/thin_chapter_detector.sh + phase_sentinel.sh Phase≥5集成 [P1, 质量门控] ← ✅ 已实施
+      EVO-ARM-003: 单会话组装原则 — CLAUDE.md 铁律J(A-J) [P0, 流程铁律] ← ✅ 已实施
+      EVO-ARM-004: Scorecard D2格式对齐 — research_scorecard.sh D2闭环关键词扩展(+4变体) [P1, 脚本修复] ← ✅ 已实施
       非共识洞见候选: H2-RISC-V CDS效应(定价权量化) + Phoenix EV悖论($1.05B) + Arm China零地缘折价 [待CI注册]
-    evolution_status: pending
+    evolution_status: approved  # 2026-02-25 全部实施
 
   # --- 质量趋势更新 ---
   # ETN-v2(4.3)↑ → SMCI(3.9)↓ → SEMI(4.3)↑ → INTC(4.1)↓ → ARM(3.5)↓↓
@@ -352,4 +352,3 @@ entries:
   # H2(CDS)是报告级原创——"RISC-V不需要替代ARM, 存在即限制定价权"是可迁移方法论
   # 核心教训: 体量不足+组装质量是拉低分数的主因, 而非分析能力
   # 紧急: EVO-ARM-003(单会话组装)是流程层P0修复, 否则未来报告持续受损
-    evolution_status: pending  # pending/approved/rejected

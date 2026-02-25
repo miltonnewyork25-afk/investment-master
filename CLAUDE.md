@@ -60,11 +60,11 @@
 
 ---
 
-## 铁律速查 (A-G)
+## 铁律速查 (A-J)
 
 **第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(见下)
 
-**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)** | **I 知识前置(见下)**
+**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议(见下)** | **I 知识前置(见下)** | **J 单会话组装(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
@@ -209,6 +209,14 @@ bash scripts/find_best_reference.sh {TICKER}
 **即使用户只说"分析XX"**: AI也必须先运行tier3_launch.sh。这不是文本规则,是代码强制——sentinel在Phase 1后会检测到缺失的知识文件并发出BLOCK。
 
 **禁止**: 跳过tier3_launch.sh直接开始Phase 0 | 忽略launch_brief中的目标字符范围 | 产出<launch_brief目标的50%却不停下来检查
+
+---
+
+## 铁律 J: 单会话组装原则
+
+Complete组装必须在单会话内完成: 读Phase产出→组装→质量门控→修复→提交。
+跨会话组装导致: CI注册遗漏(D7=0) + CQ格式断裂(D2=0) + 格式合规不一致。
+如果单会话context不足: 先用scripts/context_save.sh保存，下次会话从头组装(不是"续写")。
 
 ---
 

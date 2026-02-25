@@ -29,6 +29,7 @@
 #   CG18. 财务数据交叉验证声明 (WARN级, v5.0新增)
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v6.1 (2026-02-25) — CG1-density: EVO-INTC-004发现系统密度门控(PW≥7且<300K发WARN)
 # 更新: v6.0 (2026-02-19) — CG4/CG5自然语言检测(EVO-AAPL-001: KS/VP内容充分但格式缺失时降级通过)
 # 更新: v5.0 (2026-02-16) — CG18财务数据交叉验证声明(WARN, 深层质量协议L2)
 # 更新: v4.0 (2026-02-16) — CG15 Agent引用FAIL+CG16市值唯一性WARN+CG17 P/E一致性WARN
@@ -60,6 +61,11 @@ else
         BENCHMARK_LABEL="发现系统(≥7分)"
     fi
 fi
+
+# --- EVO-INTC-004: 发现系统密度门控 (PW≥7 且 280K-300K 区间发WARN) ---
+# INTC 270K得4.1/5=密度高, 但发现系统需更多空间映射可能性
+# 建议: PW≥7时 ≥300K, 280K-300K为WARN区间(不阻断但提醒)
+DENSITY_WARN=0
 
 # --- 计算80%地板 ---
 FLOOR_COMPLETE=$((BENCHMARK_CHARS * 80 / 100))
@@ -131,6 +137,12 @@ if [ "$CHARS" -lt "$FLOOR_COMPLETE" ]; then
 else
     RATIO=$((CHARS * 100 / BENCHMARK_CHARS))
     echo -e "${GREEN}PASS CG1: Complete总字符 ${CHARS} (基准的${RATIO}%)${NC}"
+    # EVO-INTC-004: 发现系统密度门控 — PW≥7时<300K发WARN(不阻断)
+    if [ "$POSSIBILITY_WIDTH" -ge 7 ] && [ "$CHARS" -lt 300000 ]; then
+        echo -e "${YELLOW}WARN CG1-density: 发现系统(PW≥7)建议≥300K, 当前${CHARS} — 密度虽好但可能性空间映射不充分${NC}"
+        WARNINGS=$((WARNINGS + 1))
+        DENSITY_WARN=1
+    fi
 fi
 
 # === CG2: Phase 5字符 ===
@@ -409,6 +421,17 @@ if [ "$CI_COUNT" -lt "$MIN_CI" ]; then
     WARNINGS=$((WARNINGS + 1))
 else
     echo -e "${GREEN}PASS CG12: 非共识洞察 CI-唯一数 ${CI_COUNT} (要求≥${MIN_CI})${NC}"
+fi
+
+# === CG12-CI: CI候选扫描补充检测 (EVO-ARM-001) ===
+CI_SCANNER="$(cd "$(dirname "$0")/.." && pwd)/scripts/ci_candidate_scanner.sh"
+if [ -f "$CI_SCANNER" ]; then
+    CI_SCAN_EXIT=0
+    bash "$CI_SCANNER" "$FILE" > /dev/null 2>&1 || CI_SCAN_EXIT=$?
+    if [ "$CI_SCAN_EXIT" -eq 1 ]; then
+        echo -e "${YELLOW}WARN CG12-CI: CI候选扫描器检测到非共识信号但CI注册不足 — 运行 bash scripts/ci_candidate_scanner.sh $FILE 查看详情${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
 fi
 
 # === CG13: 分析框架注册表 (v1.1新增) ===
