@@ -1,0 +1,300 @@
+{
+  "ticker": "SMCI",
+  "fetched_at": "2026-02-21",
+  "current_price": 32.42,
+  "market_cap_B": 19.42,
+  "consensus": {
+    "rating": "Hold",
+    "buy_count": 5,
+    "hold_count": 8,
+    "sell_count": 2,
+    "total_analysts": 15,
+    "avg_price_target": 43.00,
+    "median_price_target": 43.00,
+    "high_target": 93.00,
+    "low_target": 15.00,
+    "implied_upside_pct": 32.6,
+    "alt_avg_targets": {
+      "stockanalysis_17_analysts": 42.35,
+      "zacks": 52.96,
+      "tipranks_16_analysts": 43.19,
+      "public_com_25_analysts": 43.00,
+      "stockanalysis_recent": 46.82
+    }
+  },
+  "earnings_estimates": {
+    "current_quarter_Q3_FY2026": {
+      "period": "Q3 FY2026 (ending Mar 2026)",
+      "eps_consensus_gaap": 0.52,
+      "eps_consensus_non_gaap": 0.60,
+      "eps_northland_estimate": 0.53,
+      "eps_zacks_consensus": 0.61,
+      "revenue_guidance_min_B": 12.3,
+      "gross_margin_guidance": "~30bps QoQ improvement"
+    },
+    "next_quarter_Q4_FY2026": {
+      "period": "Q4 FY2026 (ending Jun 2026)",
+      "eps_northland_estimate": 0.40,
+      "note": "Limited Q4-specific estimates available; Northland only"
+    },
+    "full_year_FY2026": {
+      "revenue_guidance_min_B": 40.0,
+      "revenue_consensus_zacks_B": 36.5,
+      "revenue_consensus_fmp_B": 40.47,
+      "eps_consensus_full_year": 1.86,
+      "eps_consensus_fmp": 2.20,
+      "eps_fmp_range": { "low": 2.03, "high": 2.33 },
+      "num_analysts_revenue_fmp": 12,
+      "num_analysts_eps_fmp": 11,
+      "yoy_revenue_growth_pct": 66
+    },
+    "full_year_FY2027": {
+      "revenue_consensus_fmp_B": 48.23,
+      "eps_consensus_fmp": 2.95,
+      "eps_fmp_range": { "low": 2.38, "high": 3.33 },
+      "num_analysts_revenue_fmp": 12,
+      "num_analysts_eps_fmp": 10
+    },
+    "full_year_FY2025_actual": {
+      "revenue_consensus_fmp_B": 22.25,
+      "eps_consensus_fmp": 2.10
+    }
+  },
+  "most_recent_quarter_Q2_FY2026": {
+    "period": "Q2 FY2026 (ending Dec 2025)",
+    "reported_date": "2026-02-03",
+    "eps_reported": 0.69,
+    "eps_estimate": 0.46,
+    "eps_surprise_pct": 50.0,
+    "revenue_surprise_pct": 21.42,
+    "wall_street_expected_revenue_growth_pct": 82
+  },
+  "earnings_surprise_history": [
+    {
+      "quarter": "Q2 FY2026 (Dec 2025)",
+      "eps_reported": 0.69,
+      "eps_estimate": 0.46,
+      "surprise_pct": 50.0,
+      "revenue_surprise_pct": 21.42,
+      "beat": true
+    },
+    {
+      "quarter": "Q1 FY2026 (Sep 2025)",
+      "eps_surprise_pct": 25.0,
+      "revenue_surprise_pct": -0.56,
+      "beat": true,
+      "note": "EPS beat but revenue slight miss"
+    },
+    {
+      "quarter": "Historical pattern",
+      "note": "Beat consensus EPS estimates 3 out of last 4 quarters"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-02-19",
+      "firm": "Unknown",
+      "action": "Stock gap up",
+      "note": "SMCI shares gapped up, potential positive catalyst"
+    },
+    {
+      "date": "2026-02-05",
+      "firm": "Sanford C. Bernstein",
+      "action": "Price target cut",
+      "old_target": 42.00,
+      "new_target": 37.00,
+      "rating": "Market Perform"
+    },
+    {
+      "date": "2026-02-04",
+      "firm": "Needham",
+      "action": "Price target cut",
+      "old_target": 51.00,
+      "new_target": 40.00,
+      "rating": "Buy"
+    },
+    {
+      "date": "2026-01-20",
+      "firm": "Citigroup",
+      "action": "Price target cut",
+      "old_target": 48.00,
+      "new_target": 39.00,
+      "rating": "Neutral"
+    },
+    {
+      "date": "2026-01-13",
+      "firm": "Goldman Sachs",
+      "action": "Downgrade",
+      "new_rating": "Sell",
+      "new_target": 26.00,
+      "note": "Structural profitability challenges; stock dropped on this downgrade"
+    },
+    {
+      "date": "2025-11-05",
+      "firm": "KGI Securities",
+      "action": "Upgrade",
+      "old_rating": "Neutral",
+      "new_rating": "Outperform",
+      "new_target": 60.00
+    }
+  ],
+  "bull_bear_summary": {
+    "bull_case": "SMCI is the dominant player in AI-optimized server solutions with deep Nvidia GPU partnership. FY2025 revenue of $14.98B (+110% YoY), net income $1.21B. Trading at ~16x FCF while delivering >30% YoY growth. AI-related sales expected to reach $20B over next 4 quarters (surpassing Dell's $15B). Raised FY2026 revenue guidance to $40B+. Liquid-cooled AI systems launch could be a new growth engine. Rack-scale AI strategy (DCBBS) offers faster time-to-deployment than competitors. Stock trading 35% below analyst targets. One analyst sees $60 target by summer 2026.",
+    "bear_case": "Gross margins declined for 10 consecutive quarters; Q1 FY2026 gross margin at 9.3% (down from 11.8% in Q4 FY2025). Despite 47% revenue growth in FY2025, operating income declined 1.0% YoY. Net margin fell to 3.4% in Q1 FY2026. Goldman Sachs Sell rating citing structural profitability challenges. Pricing pressure from both suppliers (Nvidia) and hyperscale customers due to intermediary position. Ongoing DOJ investigation into accounting practices. SGA expenses growing rapidly ($1.37B FY2026E vs $754M FY2025E). FMP rating B- with DCF score of just 1/5 and D/E score 1/5."
+  },
+  "industry_specific": {
+    "ai_data_center": {
+      "fy2026_revenue_guidance_B": 40.0,
+      "ai_related_sales_next_4q_B": 20.0,
+      "dell_comparable_ai_sales_B": 15.0,
+      "zacks_fy2026_revenue_estimate_B": 36.5,
+      "fy2026_yoy_revenue_growth_pct": 66,
+      "growth_drivers": [
+        "Data Center Building Block Solutions (DCBBS)",
+        "Nvidia GPU-accelerated computing partnership",
+        "AMD and other accelerator chip integration",
+        "Liquid-cooled AI systems",
+        "Rack-scale AI solutions"
+      ],
+      "margin_concerns": {
+        "q1_fy2026_gross_margin_pct": 9.3,
+        "q4_fy2025_gross_margin_pct": 11.8,
+        "consecutive_quarters_margin_decline": 10,
+        "q3_fy2026_gross_margin_guidance": "~30bps QoQ improvement"
+      }
+    },
+    "competitive_position": "Intermediary between GPU suppliers (Nvidia/AMD) and hyperscale customers; faster time-to-deployment but squeezed margins",
+    "key_risk": "DOJ investigation into accounting practices remains overhang"
+  },
+  "fmp_rating": {
+    "overall": "B-",
+    "overall_score": 3,
+    "dcf_score": 1,
+    "roe_score": 4,
+    "roa_score": 3,
+    "de_score": 1,
+    "pe_score": 3,
+    "pb_score": 3
+  },
+  "dm_anchors": [
+    {
+      "id": "CON-001",
+      "type": "H",
+      "field": "consensus.rating",
+      "value": "Hold (5 Buy / 8 Hold / 2 Sell)",
+      "source": "StockAnalysis, Benzinga, TipRanks aggregation (Feb 2026)",
+      "note": "Multiple sources converge on Hold; buy/hold/sell counts vary slightly by source due to coverage timing"
+    },
+    {
+      "id": "CON-002",
+      "type": "H",
+      "field": "consensus.avg_price_target",
+      "value": "$43.00 median from 25 analysts",
+      "source": "Public.com, MarketBeat, StockAnalysis (Feb 2026)",
+      "note": "Range $42.35-$52.96 across aggregators; $43 most frequently cited"
+    },
+    {
+      "id": "CON-003",
+      "type": "H",
+      "field": "most_recent_quarter.eps_surprise",
+      "value": "+50% EPS surprise ($0.69 vs $0.46 est)",
+      "source": "Investing.com, Nasdaq.com (Feb 3, 2026 report)",
+      "note": "Revenue surprise +21.42%; wall street expected 82% revenue growth"
+    },
+    {
+      "id": "CON-004",
+      "type": "H",
+      "field": "recent_changes.goldman_downgrade",
+      "value": "Goldman Sachs Sell, PT $26",
+      "source": "MarketBeat, DefenseWorld (Jan 13, 2026)",
+      "note": "Structural profitability concerns; stock fell 8.6%"
+    },
+    {
+      "id": "CON-005",
+      "type": "H",
+      "field": "earnings_estimates.fy2026_eps",
+      "value": "$2.20 (FMP consensus, 11 analysts) / $1.86 (Zacks consensus)",
+      "source": "FMP estimates API + Zacks (Feb 2026)",
+      "note": "Divergence between FMP ($2.20) and Zacks ($1.86) likely due to GAAP vs non-GAAP treatment and timing"
+    },
+    {
+      "id": "CON-006",
+      "type": "H",
+      "field": "industry_specific.fy2026_revenue_guidance",
+      "value": "$40B+ (raised from $36B)",
+      "source": "IR.supermicro.com Q2 FY2026 earnings, GuruFocus, Nasdaq.com",
+      "note": "Company raised guidance after Q2 beat; Zacks consensus still at $36.5B (lagging)"
+    },
+    {
+      "id": "CON-007",
+      "type": "H",
+      "field": "industry_specific.gross_margin_decline",
+      "value": "9.3% Q1 FY2026 GM, 10 consecutive quarters of decline",
+      "source": "Nasdaq.com bull/bear analysis, 247WallSt",
+      "note": "Core bear thesis; Q3 guidance only +30bps QoQ improvement"
+    },
+    {
+      "id": "CON-008",
+      "type": "R",
+      "field": "bull_bear_summary.margin_vs_growth_tension",
+      "value": "Revenue guidance $40B+ but margin trajectory suggests operating leverage not materializing",
+      "source": "Derived from CON-006 + CON-007",
+      "chain": "Revenue +66% YoY (CON-006) but GM declining 10 consecutive quarters (CON-007) -> operating income growth lagging revenue growth -> margin-dilutive deals dominate growth -> bull/bear debate centers on whether margin inflection is coming",
+      "falsifiable": "If Q3 FY2026 gross margin > 10.5%, margin inflection thesis gains credibility; if < 9.3%, bear thesis strengthened"
+    },
+    {
+      "id": "CON-009",
+      "type": "H",
+      "field": "fmp_rating",
+      "value": "B- overall, DCF score 1/5, D/E score 1/5",
+      "source": "FMP rating API (Feb 2026)",
+      "note": "Weak DCF and leverage scores despite strong revenue growth"
+    },
+    {
+      "id": "CON-010",
+      "type": "H",
+      "field": "consensus.high_low_targets",
+      "value": "High $93 / Low $15 (6.2x spread)",
+      "source": "Public.com, MarketBeat (25 analyst survey)",
+      "note": "Extreme target dispersion reflects deep disagreement on SMCI's path"
+    },
+    {
+      "id": "CON-011",
+      "type": "R",
+      "field": "earnings_estimates.fy2027_growth",
+      "value": "FY2027 revenue $48.2B (+19% YoY), EPS $2.95 (+34% YoY)",
+      "source": "FMP estimates API (12 analysts revenue, 10 analysts EPS)",
+      "chain": "FY2026 $40.5B -> FY2027 $48.2B implies growth deceleration from 66% to 19% -> market may be pricing in AI infrastructure spend normalization",
+      "falsifiable": "If FY2027 revenue guidance exceeds $55B by mid-2026, deceleration thesis is wrong"
+    },
+    {
+      "id": "CON-012",
+      "type": "H",
+      "field": "current_price_vs_targets",
+      "value": "$32.42 current vs $43.00 avg target = 32.6% implied upside",
+      "source": "FMP quote API ($32.42) + consensus target aggregation",
+      "note": "Stock at 52-week range: $27.60-$66.44; 50DMA=$31.38, 200DMA=$41.70"
+    }
+  ],
+  "sources": [
+    { "name": "Public.com SMCI Forecast", "url": "https://public.com/stocks/smci/forecast-price-target" },
+    { "name": "StockAnalysis SMCI Forecast", "url": "https://stockanalysis.com/stocks/smci/forecast/" },
+    { "name": "TipRanks SMCI Forecast", "url": "https://www.tipranks.com/stocks/smci/forecast" },
+    { "name": "MarketBeat SMCI Forecast", "url": "https://www.marketbeat.com/stocks/NASDAQ/SMCI/forecast/" },
+    { "name": "Zacks SMCI Price Target", "url": "https://www.zacks.com/stock/research/SMCI/price-target-stock-forecast" },
+    { "name": "Benzinga SMCI Analyst Ratings", "url": "https://www.benzinga.com/quote/SMCI/analyst-ratings" },
+    { "name": "Yahoo Finance SMCI Analysis", "url": "https://finance.yahoo.com/quote/SMCI/analysis/" },
+    { "name": "Nasdaq SMCI Bull/Bear Analysis", "url": "https://www.nasdaq.com/articles/smci-analysis-bull-and-bear-case-super-micro-computer-stock" },
+    { "name": "Nasdaq SMCI Earnings", "url": "https://www.nasdaq.com/market-activity/stocks/smci/earnings" },
+    { "name": "MarketBeat SMCI Downgrade Alert", "url": "https://www.marketbeat.com/instant-alerts/super-micro-computer-nasdaqsmci-stock-price-down-86-after-analyst-downgrade-2026-02-05/" },
+    { "name": "247WallSt SMCI Earnings Coverage", "url": "https://247wallst.com/investing/2026/02/03/super-micro-computer-live-complete-coverage-of-smcis-q2-earnings/" },
+    { "name": "GuruFocus SMCI AI Demand", "url": "https://www.gurufocus.com/news/8579243/strong-ai-demand-boosts-smcis-revenue-and-earnings-forecast" },
+    { "name": "Nasdaq SMCI Rack-Scale Strategy", "url": "https://www.nasdaq.com/articles/smcis-rack-scale-ai-strategy-it-next-growth-engine" },
+    { "name": "FMP Estimates API", "url": "https://financialmodelingprep.com" },
+    { "name": "FMP Rating API", "url": "https://financialmodelingprep.com" },
+    { "name": "FMP Quote API", "url": "https://financialmodelingprep.com" },
+    { "name": "Investing.com SMCI Earnings", "url": "https://www.investing.com/equities/super-micro-compu-earnings" },
+    { "name": "DefenseWorld SMCI Downgrade", "url": "https://www.defenseworld.net/2026/02/06/super-micro-computer-nasdaqsmci-shares-down-8-6-following-analyst-downgrade.html" },
+    { "name": "Seeking Alpha SMCI Upgrade", "url": "https://seekingalpha.com/article/4871993-smci-margins-may-expand-this-year-rating-upgrade" }
+  ]
+}
