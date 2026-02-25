@@ -6,9 +6,9 @@ worktree: "半导体"
 industry: "半导体"
 last_updated: "2026-02-25T09:15:00+00:00"
 
-current_phase: 0.75
+current_phase: 2
 phase_status: completed
-phases_completed: [-1, -0.5, 0, 0.5, 0.75]
+phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2]
 
 target_chars: 500000
 target_range: "269K-420K"
@@ -52,8 +52,9 @@ hypotheses:
     ev_impact: "±30%"
 
 quick_ref:
-  total_chars: 0
-  latest_phase_chars: 0
+  total_chars: 78434
+  phase1_chars: 51655
+  phase2_chars: 26779
   price_at_analysis: 128.14
   market_cap: "136.1B"
   pe_ttm: 140
