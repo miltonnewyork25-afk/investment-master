@@ -248,3 +248,37 @@ entries:
   # 但内容质量与ANET持平: D2/D3/D5/D7/D8均9-10分, CI-01是全系列级创新
   # 密度继续有效: 333K得3.9 ≈ ANET 279K得4.0的水平
   # 系统性问题: 组装流程DM保留率(SMCI 55% + VRT 0% + ETN附录化) — 需EVO-SMCI-002根治
+
+  - ticker: "SEMI_EQUIPMENT_COMPARATIVE"
+    date: "2026-02-25"
+    report: "SEMI_EQUIPMENT_COMPARATIVE_Complete.md"
+    type: comparative_analysis
+    chars: "939K"
+    cg_result: "FAILED(2E/6W) — 结构性不匹配(CG3评分格式+CG8 EC替代DM), 非真实质量问题"
+    compliance: "PASS (CG16 $303B→$302.5B已修复)"
+    dm_anchors: 51
+    ec_count: 534
+    ks_count: 17
+    mermaid_count: 96
+    scorecard: "N/A (横向对比无标准scorecard)"
+    near_miss_score: 0
+    quality: 4.3
+    top_technique: "A-Score 11维可量化护城河评分+SGI专才-通才光谱诊断+风险拓扑协同矩阵"
+    top_lesson: |
+      1. CG脚本不兼容横向对比报告: CG3(评分格式)、CG8(EC替代DM)、CG12(CI命名)、CG13(框架注册表)全部误报
+      2. 横向对比的方法论资产价值>>单公司报告: A-Score v2.0+SGI+risk-topology v2.0三项升级影响所有未来报告
+      3. 534 EC > 51 DM — 横向对比的证据系统自然迁移到EC体系,DM锚点在多公司场景中效率不足
+      4. 10 Session工作流合理: P0-P3B(6 Session做内容)+P4(1 Session交叉)+P5(1 Session决策)+P6(2 Session附录+组装)
+    evolution_proposed: |
+      EVO-SEMI-001: CG脚本横向对比适配 — 检测report_type=comparative时切换评分/标注/CQ匹配规则 [P0, 阻断性]
+      EVO-SEMI-002: EC-DM统一策略 — 横向对比报告使用EC体系(非DM),CG8需识别EC为有效标注 [P0, 与EVO-SEMI-001合并]
+      EVO-SEMI-003: 横向对比模板标准化 — 将22章+4附录结构提炼为可复用comparative_template.md [P1]
+      EVO-SEMI-004: L0_index横向对比条目 — knowledge/L0_index.yaml需支持type=comparative的索引格式 [P2]
+      冠军目录已更新: A-Score评分体系(4.5) + SGI专才溢价(4.5) + 风险拓扑方法论(4.3) [已完成]
+    evolution_status: pending
+
+  # --- 质量趋势更新 ---
+  # ANET(4.0)↑ → VRT(4.2)↑ → ETN-v2(4.3)↑ → SMCI(3.9)↓ → SEMI(4.3)↑
+  # SEMI从SMCI回升原因: 横向对比的方法论创新价值极高(3个冠军), 内容密度4.3/5
+  # CG FAIL是脚本不兼容而非报告质量问题 — 需EVO-SEMI-001根治
+  # 横向对比首作: 10 Session/939K/534 EC/17 KS/96 Mermaid — 工作流验证通过

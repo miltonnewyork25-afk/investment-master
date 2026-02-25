@@ -5555,7 +5555,7 @@ CSBG的经济学特征更像一个年金(annuity)而非周期性设备业务:
 | 增长率(FY2025) | 周期性(~+30%) | ~+16% | 稳定 vs 周期 |
 | 可预测性 | 低(WFE周期) | 高(合同+装机基数) | — |
 
-**[EC-UE-007]**: LRCX CSBG收入$7.2B(FY2025 37.7%占比)本质上是一个"隐藏的年金资产"——100K活跃腔体 x $72K ARPU/年 x 55-60%毛利率 x >90%续约率。如果将CSBG独立估值(按20-25x P/E)，其隐含价值约$80-100B，占LRCX当前市值($303B)的26-33%。但市场以新设备的周期性P/E给整个LRCX估值——这可能是一个结构性低估。
+**[EC-UE-007]**: LRCX CSBG收入$7.2B(FY2025 37.7%占比)本质上是一个"隐藏的年金资产"——100K活跃腔体 x $72K ARPU/年 x 55-60%毛利率 x >90%续约率。如果将CSBG独立估值(按20-25x P/E)，其隐含价值约$80-100B，占LRCX当前市值($302.5B)的26-33%。但市场以新设备的周期性P/E给整个LRCX估值——这可能是一个结构性低估。
 - **claim_type**: inference | **source**: CSBG收入/ARPU推算 + 管理层披露 | **置信度**: M-H
 
 ### 11.3.2 CSBG飞轮: ARPU提升路径
@@ -7839,7 +7839,7 @@ graph LR
     subgraph "Reverse DCF 隐含假设对比"
         direction TB
         A["AMAT<br/>市值$297B<br/>FCF $6.2B<br/>Yield 2.1%<br/><b>隐含CAGR ~13-14%</b>"]
-        B["LRCX<br/>市值$303B<br/>FCF $6.7B<br/> Yield 2.1%<br/><b>隐含CAGR ~13-14%</b>"]
+        B["LRCX<br/>市值$302.5B<br/>FCF $6.7B<br/> Yield 2.1%<br/><b>隐含CAGR ~13-14%</b>"]
         C["ASML<br/>市值$576B<br/>FCF ~$10.7B<br/>Yield 2.3%<br/><b>隐含CAGR ~12-13%</b>"]
         D["KLAC<br/>市值$196B<br/>FCF $4.4B<br/>Yield 2.0%<br/><b>隐含CAGR ~13-15%</b>"]
     end
