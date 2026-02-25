@@ -52,13 +52,14 @@ hypotheses:
     ev_impact: "±30%"
 
 quick_ref:
-  total_chars: 199983
+  total_chars: 289067
   phase1_chars: 51655
   phase2_chars: 26779
   phase3_chars: 52465
   phase4_chars: 21940
   phase5_chars: 20984
-  complete_chars: 199983
+  complete_chars: 172797
+  complete_bytes: 289067
   price_at_analysis: 128.14
   market_cap: "136.1B"
   pe_ttm: 140
