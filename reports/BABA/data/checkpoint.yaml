@@ -1,19 +1,61 @@
 schema_version: "2.0"
 ticker: BABA
-company: "BABA"
+company: "Alibaba Group Holding Limited"
 framework_version: v17.0
 worktree: "生态科技"
 industry: "生态科技"
-last_updated: "2026-02-25T09:27:59+00:00"
+last_updated: "2026-02-25T12:30:00+00:00"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: 0.75
+phase_status: completed
+phases_completed: [-1, -0.5, 0, 0.5, 0.75]
 
 target_chars: 750000
 target_range: "700K-850K"
 hard_floor: 600000
 note: "用户要求700KB+质量优先，含CT01-CT06中国专用模块~190K增量"
+
+methodology:
+  pw_score: 7
+  paradigm: "discovery_system"
+  sgi_score: 5.1
+  sgi_route: "mixed_model"
+  investment_temp: 0.3
+  temp_label: "中性偏暖"
+
+core_questions:
+  cq1: "阿里云零值定价是否极端错误 (30%权重)"
+  cq2: "电商份额流失终点 (25%)"
+  cq3: "$53B AI投资是价值创造还是毁灭 (20%)"
+  cq4: "中国折价边界条件 (15%)"
+  cq5: "隐藏资产释放路径 (10%)"
+  cq6: "即时零售补贴战赢家 (计入CQ-2)"
+
+thesis_crystallization:
+  core_thesis: "AI投资周期长度=估值核心变量(时间折价>中国折价)"
+  h1: "时间折价假说: CapEx回归路线图=重估触发器"
+  h2: "协同被忽视假说: AI消费闭环独特价值被集团折价掩盖"
+  h3: "AI赢者通吃假说: 阿里云AI份额不可逆领先"
+  qg_0075: "PASS (2假说满足全部3条件)"
+
+data_prefetch:
+  mcp_layer: "complete (income/balance/cashflow/ratios/key-metrics/dcf/rating/estimates/scores)"
+  python_layer: "failed (tools default to AAPL/TSLA, using FMP DCF instead)"
+  websearch_layer: "4/7 agents completed (A-consensus/C-news/F-smart_money/G-options), D-business pending"
+  dm_anchors: 38
+  h_pct: 87
+
+key_financials:
+  price_usd: 153.11
+  market_cap_cny: "2254B"
+  ev_cny: "2320B"
+  fy2025_rev_cny: "996.3B"
+  fy2025_ni_cny: "130.1B"
+  fy2025_fcf_cny: "78.2B"
+  fy2025_capex_cny: "86.7B"
+  pe_ttm: 18.3
+  ev_ebitda: 12.7
+  fmp_dcf: 277.24
 
 quick_ref:
   total_chars: 0
