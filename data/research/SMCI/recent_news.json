@@ -1,0 +1,334 @@
+{
+  "ticker": "SMCI",
+  "fetched_at": "2026-02-21",
+  "key_news": [
+    {
+      "date": "2026-02-20",
+      "headline": "SMCI surges 8% on $40B revenue outlook and analyst upgrades",
+      "summary": "Stock closed at $32.16, driven by analyst upgrades and insider purchases. Consensus rating 'Moderate Buy' with mean PT ~$43 (35% upside).",
+      "source": "FX Leaders",
+      "url": "https://www.fxleaders.com/news/2026/02/20/super-micro-computer-surges-8-as-40b-revenue-outlook-and-analyst-upgrades-reignite-ai-enthusiasm/",
+      "dm_id": "NEW-C-001",
+      "dm_type": "R",
+      "dm_source": "FX Leaders (2026-02-20)"
+    },
+    {
+      "date": "2026-02-15",
+      "headline": "SMCI drops 11% week of Feb 3 despite 123% YoY revenue growth",
+      "summary": "Wall Street focused on margin pressures despite record Q2 results. Gross margins compressed to ~6.3%, a new low.",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/02/15/super-micro-computer-smci-week-in-review-11-stock-drop-despite-123-growth/",
+      "dm_id": "NEW-C-002",
+      "dm_type": "R",
+      "dm_source": "24/7 Wall St. (2026-02-15)"
+    },
+    {
+      "date": "2026-02-03",
+      "headline": "Supermicro Q2 FY2026 record results: Revenue $12.7B, Net Income $401M",
+      "summary": "Net sales $12.7B vs $5.7B YoY (+123%). AI GPU platforms >90% of sales. Net income $401M vs $321M YoY. Raised FY2026 guidance to ≥$40B from $36B prior.",
+      "source": "Supermicro IR / BusinessWire",
+      "url": "https://ir.supermicro.com/news/news-details/2026/Supermicro-Announces-Second-Quarter-Fiscal-Year-2026-Financial-Results/default.aspx",
+      "dm_id": "NEW-C-003",
+      "dm_type": "H",
+      "dm_source": "Supermicro IR Press Release (2026-02-03)"
+    },
+    {
+      "date": "2026-01-13",
+      "headline": "Goldman Sachs downgrades SMCI to Sell, PT $26",
+      "summary": "Goldman cut from Neutral to Sell citing worsening profitability. Analyst Katherine Murphy cut PT to $26 from $34. Gross margin compressed from 15.5% (18 months ago) to 9.3% (Q1 FY26) to ~6.3% (Q2 FY26). Operating margin from 10.1% to 3.6%.",
+      "source": "Goldman Sachs via Yahoo Finance / FX Leaders",
+      "url": "https://finance.yahoo.com/news/smci-cut-sell-goldman-sachs-121436328.html",
+      "dm_id": "NEW-C-004",
+      "dm_type": "R",
+      "dm_source": "Goldman Sachs analyst note (2026-01-13)"
+    },
+    {
+      "date": "2026-01-05",
+      "headline": "Supermicro announces support for NVIDIA Vera Rubin NVL72/NVL8 + expanded rack-scale manufacturing",
+      "summary": "Rack-scale NVL72 SuperCluster: 72 Rubin GPUs, 36 Vera CPUs, 3.6 exaflops NVFP4, 1.4 PB/s HBM4 bandwidth. Expanded US-based liquid-cooled manufacturing. Vera Rubin NVL144 and CPX platforms slated for 2H 2026.",
+      "source": "Supermicro IR",
+      "url": "https://ir.supermicro.com/news/news-details/2026/Supermicro-Announces-Support-for-Upcoming-NVIDIA-Vera-Rubin-NVL72-HGX-Rubin-NVL8-and-Expanded-Rack-Scale-Manufacturing-Capacity-for-Liquid-Cooled-AI-Solutions/default.aspx",
+      "dm_id": "NEW-C-005",
+      "dm_type": "H",
+      "dm_source": "Supermicro IR (2026-01-05)"
+    },
+    {
+      "date": "2026-01-01",
+      "headline": "Supermicro launches 6U SuperBlade SBI-622BA-1NE12-LCC",
+      "summary": "High-density blade: dual Intel Xeon 6900 (up to 256 P-cores/blade), direct-liquid-cooled, 93% cabling reduction, 50% space reduction vs rackmount. Up to 25,600 cores per rack.",
+      "source": "StockTitan / Supermicro",
+      "url": "https://www.stocktitan.net/news/SMCI/supermicro-unveils-high-density-liquid-cooled-and-air-cooled-6u-jrv4fykm7bfo.html",
+      "dm_id": "NEW-C-006",
+      "dm_type": "H",
+      "dm_source": "Supermicro press release (2026-01-01)"
+    },
+    {
+      "date": "2026-01-06",
+      "headline": "Supermicro unveils Super AI Station and edge AI PCs",
+      "summary": "ARS-511GD-NB-LCC based on NVIDIA GB300 Grace Blackwell Ultra Desktop Superchip. Up to 784GB coherent memory, ConnectX-8 SuperNIC, direct-to-chip liquid cooling. Plus GPU-ready workstations and compact edge platforms.",
+      "source": "StockTitan / Supermicro",
+      "url": "https://www.stocktitan.net/news/SMCI/supermicro-brings-enterprise-class-ai-performance-to-the-client-edge-dp9q82ya7f8r.html",
+      "dm_id": "NEW-C-007",
+      "dm_type": "H",
+      "dm_source": "Supermicro press release (2026-01-06)"
+    },
+    {
+      "date": "2026-02-13",
+      "headline": "Supermicro expands NVIDIA collaboration for government AI systems (TAA-compliant)",
+      "summary": "Deepened collaboration for US government applications: cybersecurity, healthcare, engineering. TAA-compliant US-based manufacturing. Vera Rubin NVL144/CPX platforms for government in 2026.",
+      "source": "Supermicro / StreetInsider",
+      "url": "https://www.supermicro.com/en/pressreleases/supermicro-expands-collaboration-nvidia-and-strengthens-compliance-data-integrity-and",
+      "dm_id": "NEW-C-008",
+      "dm_type": "H",
+      "dm_source": "Supermicro press release (2026-02-13)"
+    },
+    {
+      "date": "2026-01-30",
+      "headline": "Analysis: 'The Trust Deficit' — SMCI governance crisis reshaped AI infrastructure market",
+      "summary": "Deep analysis on how Hindenburg report, EY resignation, DOJ/SEC probes, and delayed filings created lasting trust deficit. Company regained Nasdaq compliance but governance premium persists.",
+      "source": "FinancialContent",
+      "url": "https://markets.financialcontent.com/stocks/article/marketminute-2026-1-30-the-trust-deficit-how-super-micro-computers-governance-crisis-reshaped-the-ai-infrastructure-market",
+      "dm_id": "NEW-C-009",
+      "dm_type": "S",
+      "dm_source": "FinancialContent analysis (2026-01-30)"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-03-02",
+      "event": "Morgan Stanley Technology, Media Telecom Conference (1x1 meetings, San Francisco)",
+      "type": "investor_conference",
+      "dm_id": "NEW-C-010",
+      "dm_type": "H",
+      "dm_source": "Supermicro IR (2026-02-13)"
+    },
+    {
+      "date": "2026-03-03",
+      "event": "Keybanc Emerging Technology Summit (1x1 meetings, San Francisco)",
+      "type": "investor_conference",
+      "dm_id": "NEW-C-011",
+      "dm_type": "H",
+      "dm_source": "Supermicro IR (2026-02-13)"
+    },
+    {
+      "date": "2026-03-10",
+      "event": "Loop Capital Markets 7th Annual Investor Conference (1x1 meetings, New York)",
+      "type": "investor_conference",
+      "dm_id": "NEW-C-012",
+      "dm_type": "H",
+      "dm_source": "Supermicro IR (2026-02-13)"
+    },
+    {
+      "date": "2026-03-17",
+      "event": "NVIDIA GTC 2026 (expected; Supermicro typically showcases at GTC)",
+      "type": "trade_show",
+      "dm_id": "NEW-C-013",
+      "dm_type": "S",
+      "dm_source": "Supermicro events page + historical pattern"
+    },
+    {
+      "date": "2026-05-05",
+      "event": "Q3 FY2026 Earnings Report (after market close). Consensus EPS ~$0.59. Guided Q3 revenue ≥$12.3B with ~30bps gross margin QoQ improvement.",
+      "type": "earnings",
+      "dm_id": "NEW-C-014",
+      "dm_type": "R",
+      "dm_source": "Nasdaq/MarketBeat/TipRanks earnings calendars"
+    },
+    {
+      "date": "2026-H2",
+      "event": "NVIDIA Vera Rubin product shipments begin (Rubin NVL72/NVL8/NVL144). Supermicro positioned as key integration partner.",
+      "type": "product_cycle",
+      "dm_id": "NEW-C-015",
+      "dm_type": "H",
+      "dm_source": "Supermicro IR (2026-01-05) + NVIDIA newsroom"
+    },
+    {
+      "date": "ongoing",
+      "event": "NVIDIA Blackwell Ultra shipment ramp throughout 2026. Order book >$13B in Blackwell Ultra-related wins.",
+      "type": "product_cycle",
+      "dm_id": "NEW-C-016",
+      "dm_type": "R",
+      "dm_source": "Multiple analyst reports + Supermicro Q2 FY26 earnings call"
+    },
+    {
+      "date": "ongoing",
+      "event": "DOJ/SEC investigation resolution — probe ongoing since Sept 2024 following Hindenburg short report. No resolution timeline announced.",
+      "type": "regulatory",
+      "dm_id": "NEW-C-017",
+      "dm_type": "S",
+      "dm_source": "CFO Dive / CBS News / CNBC (multiple dates)"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "date": "2026-02-17",
+        "insider": "Charles Liang (CEO/President)",
+        "type": "RSU vesting + tax withholding",
+        "shares": "3,650 RSUs exercised; 2,108 shares withheld for taxes at $30.11/share",
+        "dm_id": "NEW-C-018",
+        "dm_type": "H",
+        "dm_source": "SEC Form 4 (2026-02-19)"
+      },
+      {
+        "date": "2026-02-17",
+        "insider": "Liu Liang Chiu-Chu Sara (Director, 10% owner)",
+        "type": "RSU vesting",
+        "shares": "3,650 RSUs exercised into common stock",
+        "dm_id": "NEW-C-019",
+        "dm_type": "H",
+        "dm_source": "SEC Form 4 (2026-02-19)"
+      },
+      {
+        "date": "2025-11-24",
+        "insider": "George Kao (SVP Operations)",
+        "type": "Open market sale",
+        "shares": "~$1.86M sale",
+        "dm_id": "NEW-C-020",
+        "dm_type": "H",
+        "dm_source": "MarketBeat insider trading data"
+      },
+      {
+        "date": "2025-Q4",
+        "insider": "David Weigand (SVP/CFO)",
+        "type": "Planned sales (10b5-1)",
+        "shares": "Multiple sales totaling ~$1.14M",
+        "dm_id": "NEW-C-021",
+        "dm_type": "H",
+        "dm_source": "MarketBeat insider trading data"
+      }
+    ],
+    "net_insider_sentiment": "Mildly Negative. Q1 2026: 27 acquired txns vs 37 disposed (ratio 0.73). Q4 2025: 23 acquired vs 45 disposed (ratio 0.51). Past 90 days: 4 insider transactions all sales (~-$1.87M net). No open-market purchases detected. Activity primarily RSU vestings + tax-related disposals, not conviction buying.",
+    "fmp_quarterly_summary": {
+      "2026_Q1": { "acquired_txns": 27, "disposed_txns": 37, "ratio": 0.73, "total_purchases": 0, "total_sales": 0 },
+      "2025_Q4": { "acquired_txns": 23, "disposed_txns": 45, "ratio": 0.51, "total_purchases": 0, "total_sales": 2 },
+      "2025_Q3": { "acquired_txns": 49, "disposed_txns": 62, "ratio": 0.79, "total_purchases": 0, "total_sales": 6 },
+      "2025_Q2": { "acquired_txns": 23, "disposed_txns": 42, "ratio": 0.55, "total_purchases": 0, "total_sales": 8 }
+    }
+  },
+  "sec_filings": [
+    {
+      "type": "10-Q",
+      "filing_date": "2026-02-06",
+      "period_end": "2025-12-31",
+      "description": "Q2 FY2026 quarterly report (most recent 10-Q)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001375365/000137536526000007/smci-20251231.htm",
+      "dm_id": "NEW-C-022",
+      "dm_type": "H",
+      "dm_source": "SEC EDGAR via baggers_sec_filings"
+    },
+    {
+      "type": "8-K",
+      "filing_date": "2026-01-26",
+      "period_end": "2026-01-21",
+      "description": "Material event (Items 1.01, 5.08, 8.01, 9.01)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001375365/000137536526000004/smci-20260121.htm",
+      "dm_id": "NEW-C-023",
+      "dm_type": "H",
+      "dm_source": "SEC EDGAR via baggers_sec_filings"
+    },
+    {
+      "type": "8-K",
+      "filing_date": "2026-01-02",
+      "period_end": "2025-12-29",
+      "description": "Material definitive agreement (Items 1.01, 9.01)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001375365/000137536526000001/smci-20251229.htm",
+      "dm_id": "NEW-C-024",
+      "dm_type": "H",
+      "dm_source": "SEC EDGAR via baggers_sec_filings"
+    },
+    {
+      "type": "10-K",
+      "filing_date": "2025-08-28",
+      "period_end": "2025-06-30",
+      "description": "FY2025 Annual Report (most recent 10-K)",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001375365/000137536525000027/smci-20250630.htm",
+      "dm_id": "NEW-C-025",
+      "dm_type": "H",
+      "dm_source": "SEC EDGAR via baggers_sec_filings"
+    },
+    {
+      "type": "10-Q",
+      "filing_date": "2025-11-07",
+      "period_end": "2025-09-30",
+      "description": "Q1 FY2026 quarterly report",
+      "url": "https://www.sec.gov/Archives/edgar/data/0001375365/000137536525000030/smci-20250930.htm",
+      "dm_id": "NEW-C-026",
+      "dm_type": "H",
+      "dm_source": "SEC EDGAR via baggers_sec_filings"
+    }
+  ],
+  "stock_snapshot": {
+    "current_price": "~$30.64-$32.16 (as of 2026-02-20/21)",
+    "52wk_high": "~$66",
+    "52wk_low": "~$17-20 (estimated from search context)",
+    "market_cap_note": "~$19-20B at ~$30/share (based on ~620M diluted shares)",
+    "consensus_rating": "Moderate Buy / Hold (mixed, 2.6/5 from 20 firms)",
+    "avg_price_target": "$43-$45.79",
+    "pt_range": "$15-$63",
+    "net_margin_ttm": "3.1% (vs 6.9% YoY)",
+    "gross_margin_q2_fy26": "~6.3% (new low)"
+  },
+  "key_risks_and_themes": [
+    "MARGIN COMPRESSION: Gross margin collapsed from 15.5% → 9.3% → 6.3% over 18 months. Operating margin 10.1% → 3.6%. Revenue growing 123% YoY but profitability deteriorating sharply.",
+    "DOJ/SEC INVESTIGATION: Ongoing since Sept 2024 (Hindenburg report trigger). No resolution timeline. Trust deficit persists despite Nasdaq compliance regained.",
+    "CUSTOMER CONCENTRATION: Hyperscaler customers leveraging bargaining power for lower pricing, further squeezing margins.",
+    "GOLDMAN SACHS SELL RATING: PT $26, citing structurally impaired margins and limited bargaining power. Key bear thesis.",
+    "VERA RUBIN TRANSITION: 2H 2026 product cycle could be catalyst or disruption depending on execution and share gains vs DELL/HPE.",
+    "GOVERNANCE PREMIUM: EY auditor resignation, delayed filings, Hindenburg allegations — scars persist even after compliance restoration."
+  ],
+  "polymarket_events": {
+    "status": "No SMCI-specific prediction markets found on Polymarket as of 2026-02-21",
+    "dm_id": "NEW-C-027",
+    "dm_type": "S",
+    "dm_source": "Polymarket API search (2026-02-21)"
+  },
+  "dm_anchors": [
+    { "id": "NEW-C-001", "type": "R", "source": "FX Leaders (2026-02-20)", "content": "SMCI +8.25% to $32.16, $40B FY26 outlook" },
+    { "id": "NEW-C-002", "type": "R", "source": "24/7 Wall St. (2026-02-15)", "content": "SMCI -11% week despite 123% growth" },
+    { "id": "NEW-C-003", "type": "H", "source": "Supermicro IR (2026-02-03)", "content": "Q2 FY26: Rev $12.7B, NI $401M, guidance ≥$40B" },
+    { "id": "NEW-C-004", "type": "R", "source": "Goldman Sachs (2026-01-13)", "content": "Downgrade to Sell, PT $26, margin erosion thesis" },
+    { "id": "NEW-C-005", "type": "H", "source": "Supermicro IR (2026-01-05)", "content": "Vera Rubin NVL72/NVL8 support + manufacturing expansion" },
+    { "id": "NEW-C-006", "type": "H", "source": "Supermicro (2026-01-01)", "content": "6U SuperBlade launch, 93% cabling reduction" },
+    { "id": "NEW-C-007", "type": "H", "source": "Supermicro (2026-01-06)", "content": "Super AI Station + edge AI PCs, GB300 Blackwell Ultra" },
+    { "id": "NEW-C-008", "type": "H", "source": "Supermicro (2026-02-13)", "content": "Gov't AI collaboration with NVIDIA, TAA-compliant" },
+    { "id": "NEW-C-009", "type": "S", "source": "FinancialContent (2026-01-30)", "content": "Trust deficit analysis post-governance crisis" },
+    { "id": "NEW-C-010", "type": "H", "source": "Supermicro IR (2026-02-13)", "content": "Morgan Stanley TMT conf 3/2" },
+    { "id": "NEW-C-011", "type": "H", "source": "Supermicro IR (2026-02-13)", "content": "Keybanc summit 3/3" },
+    { "id": "NEW-C-012", "type": "H", "source": "Supermicro IR (2026-02-13)", "content": "Loop Capital conf 3/10" },
+    { "id": "NEW-C-013", "type": "S", "source": "Supermicro events + historical", "content": "GTC 2026 expected showcase" },
+    { "id": "NEW-C-014", "type": "R", "source": "Nasdaq/MarketBeat calendars", "content": "Q3 FY26 earnings 5/5/2026, consensus EPS $0.59" },
+    { "id": "NEW-C-015", "type": "H", "source": "Supermicro IR (2026-01-05)", "content": "Vera Rubin shipments 2H 2026" },
+    { "id": "NEW-C-016", "type": "R", "source": "Multiple analyst reports", "content": "Blackwell Ultra order book >$13B" },
+    { "id": "NEW-C-017", "type": "S", "source": "CFO Dive/CBS/CNBC", "content": "DOJ/SEC probe ongoing, no resolution timeline" },
+    { "id": "NEW-C-018", "type": "H", "source": "SEC Form 4 (2026-02-19)", "content": "CEO Liang 3,650 RSU vest, 2,108 shares tax withhold @$30.11" },
+    { "id": "NEW-C-019", "type": "H", "source": "SEC Form 4 (2026-02-19)", "content": "Sara Liu 3,650 RSU vest" },
+    { "id": "NEW-C-020", "type": "H", "source": "MarketBeat", "content": "SVP Kao $1.86M sale (2025-11-24)" },
+    { "id": "NEW-C-021", "type": "H", "source": "MarketBeat", "content": "CFO Weigand ~$1.14M planned sales Q4 2025" },
+    { "id": "NEW-C-022", "type": "H", "source": "SEC EDGAR", "content": "10-Q filed 2026-02-06, period ending 2025-12-31" },
+    { "id": "NEW-C-023", "type": "H", "source": "SEC EDGAR", "content": "8-K filed 2026-01-26 (material event)" },
+    { "id": "NEW-C-024", "type": "H", "source": "SEC EDGAR", "content": "8-K filed 2026-01-02 (material agreement)" },
+    { "id": "NEW-C-025", "type": "H", "source": "SEC EDGAR", "content": "10-K FY2025 filed 2025-08-28" },
+    { "id": "NEW-C-026", "type": "H", "source": "SEC EDGAR", "content": "10-Q Q1 FY26 filed 2025-11-07" },
+    { "id": "NEW-C-027", "type": "S", "source": "Polymarket API", "content": "No SMCI-specific prediction markets found" }
+  ],
+  "sources": [
+    "https://ir.supermicro.com/news/news-details/2026/Supermicro-Announces-Second-Quarter-Fiscal-Year-2026-Financial-Results/default.aspx",
+    "https://www.fxleaders.com/news/2026/02/20/super-micro-computer-surges-8-as-40b-revenue-outlook-and-analyst-upgrades-reignite-ai-enthusiasm/",
+    "https://247wallst.com/investing/2026/02/15/super-micro-computer-smci-week-in-review-11-stock-drop-despite-123-growth/",
+    "https://finance.yahoo.com/news/smci-cut-sell-goldman-sachs-121436328.html",
+    "https://www.fxleaders.com/news/2026/01/13/smci-stock-under-fire-heads-to-20-as-goldman-sachs-downgrade-margin-erosion-weigh/",
+    "https://ir.supermicro.com/news/news-details/2026/Supermicro-Announces-Support-for-Upcoming-NVIDIA-Vera-Rubin-NVL72-HGX-Rubin-NVL8-and-Expanded-Rack-Scale-Manufacturing-Capacity-for-Liquid-Cooled-AI-Solutions/default.aspx",
+    "https://ir.supermicro.com/news/news-details/2026/Supermicro-Announces-Participation-in-Upcoming-Investor-Events/default.aspx",
+    "https://www.stocktitan.net/news/SMCI/supermicro-unveils-high-density-liquid-cooled-and-air-cooled-6u-jrv4fykm7bfo.html",
+    "https://www.stocktitan.net/news/SMCI/supermicro-brings-enterprise-class-ai-performance-to-the-client-edge-dp9q82ya7f8r.html",
+    "https://www.supermicro.com/en/pressreleases/supermicro-expands-collaboration-nvidia-and-strengthens-compliance-data-integrity-and",
+    "https://markets.financialcontent.com/stocks/article/marketminute-2026-1-30-the-trust-deficit-how-super-micro-computers-governance-crisis-reshaped-the-ai-infrastructure-market",
+    "https://www.cfodive.com/news/supermicro-doj-sec-subpoenaed-documents-accounting/739992/",
+    "https://www.nasdaq.com/market-activity/stocks/smci/earnings",
+    "https://www.marketbeat.com/stocks/NASDAQ/SMCI/insider-trades/",
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001375365&type=&dateb=&owner=include&count=40",
+    "https://simplywall.st/stocks/us/tech/nasdaq-smci/super-micro-computer/news/super-micro-computer-q2-2026-margin-compression-tests-bullis",
+    "https://www.businesswire.com/news/home/20260203844970/en/Supermicro-Announces-Second-Quarter-Fiscal-Year-2026-Financial-Results"
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "ticker": "SMCI",
+  "fetched_at": "2026-02-21",
+  "segments": [
+    {
+      "name": "OEM Appliance and Large Data Center",
+      "description": "Rack-scale AI server solutions for hyperscaler CSPs and sovereign AI projects. Includes GPU-optimized servers, liquid-cooled racks, and complete AI infrastructure.",
+      "revenue_q1_fy2026": 3400000000,
+      "revenue_pct_q1_fy2026": 68,
+      "note": "Management targeting 6-8 large datacenter customers in FY2026 (up from 4 in FY2025)",
+      "dm_anchor": "BIZ-01"
+    },
+    {
+      "name": "Enterprise / Channel",
+      "description": "Enterprise IT server solutions sold through distributors, VARs, system integrators, and direct sales.",
+      "revenue_q1_fy2026": 1500000000,
+      "revenue_pct_q1_fy2026": 31,
+      "note": "Remaining ~1% from other/unallocated",
+      "dm_anchor": "BIZ-02"
+    }
+  ],
+  "revenue_trajectory": {
+    "fy2023": {
+      "total_revenue": 7123482000,
+      "gross_margin_pct": 18.0,
+      "source": "FMP income statement",
+      "dm_anchor": "BIZ-03"
+    },
+    "fy2024": {
+      "total_revenue": 14989251000,
+      "yoy_growth_pct": 110.4,
+      "gross_margin_pct": 13.8,
+      "source": "FMP income statement",
+      "dm_anchor": "BIZ-04"
+    },
+    "fy2025": {
+      "total_revenue": 21972042000,
+      "yoy_growth_pct": 46.6,
+      "gross_margin_pct": 11.1,
+      "source": "FMP income statement + 10-K",
+      "dm_anchor": "BIZ-05"
+    },
+    "q1_fy2026": {
+      "revenue": 5020000000,
+      "gross_margin_pct": 9.3,
+      "source": "Supermicro Q1 FY2026 press release",
+      "dm_anchor": "BIZ-06"
+    },
+    "q2_fy2026": {
+      "revenue": 12700000000,
+      "yoy_growth_pct": 123,
+      "qoq_growth_pct": 153,
+      "gross_margin_pct": 6.3,
+      "eps": 0.69,
+      "note": "Record quarter. Includes ~$1.5B delayed Q1 shipments. Beat guidance ($10-11B). AI GPU platforms >90% of revenue.",
+      "source": "Supermicro Q2 FY2026 earnings call (Feb 3, 2026)",
+      "dm_anchor": "BIZ-07"
+    },
+    "fy2026_guidance": {
+      "revenue_target": 40000000000,
+      "prior_target": 33000000000,
+      "q3_guidance_min": 12300000000,
+      "note": "Raised from $33B to $40B after Q2 beat. Original target was $36B at start of fiscal year.",
+      "source": "Management guidance, Feb 2026 earnings call",
+      "dm_anchor": "BIZ-08"
+    }
+  },
+  "gross_margin_trend": {
+    "trend": "Significant downward compression",
+    "data_points": [
+      {"period": "Q3 FY2024", "margin_pct": 15.5},
+      {"period": "Q4 FY2024", "margin_pct": 11.2},
+      {"period": "Q3 FY2025", "margin_pct": 9.6},
+      {"period": "Q4 FY2025", "margin_pct": 9.5},
+      {"period": "Q1 FY2026", "margin_pct": 9.3},
+      {"period": "Q2 FY2026", "margin_pct": 6.3}
+    ],
+    "average_annual_decline_rate_pct": -5.2,
+    "drivers": "Competitive pricing pressure from Dell/HPE, rising GPU component costs, product/customer mix shift toward large hyperscalers with lower margins, price war dynamics",
+    "source": "Multiple quarterly earnings releases + Simply Wall St analysis",
+    "dm_anchor": "BIZ-09"
+  },
+  "geographic_breakdown": [
+    {
+      "region": "United States",
+      "fy2025_revenue_pct": 59.4,
+      "note": "Largest market. Hyperscaler and enterprise concentration.",
+      "dm_anchor": "BIZ-10"
+    },
+    {
+      "region": "Asia",
+      "fy2025_yoy_growth_pct": 88.6,
+      "note": "Strong growth driven by Thailand, Japan. Sovereign AI demand.",
+      "dm_anchor": "BIZ-11"
+    },
+    {
+      "region": "Europe",
+      "fy2025_yoy_growth_pct": 110.7,
+      "note": "Fastest growing region. UK, Sweden, Spain driving growth. 30+ Blackwell enterprise AI products launched for European market.",
+      "dm_anchor": "BIZ-12"
+    },
+    {
+      "region": "Other",
+      "note": "Rest of world, smaller contributor.",
+      "dm_anchor": "BIZ-13"
+    }
+  ],
+  "supply_chain": {
+    "key_suppliers": [
+      {
+        "name": "NVIDIA",
+        "role": "GPU supplier (H100, H200, B200, GB200 NVL72)",
+        "concentration": "64.4% of total purchases in FY2025",
+        "risk": "Critical single-supplier dependency. NVIDIA rerouted some SMCI orders to other suppliers in late 2024 during accounting crisis. Allocation tier may have been affected.",
+        "dm_anchor": "BIZ-14"
+      },
+      {
+        "name": "Second major supplier (undisclosed)",
+        "role": "Likely memory/components",
+        "concentration": "5.1% of purchases in FY2025",
+        "dm_anchor": "BIZ-15"
+      }
+    ],
+    "key_customers": [
+      {
+        "description": "4 large datacenter / hyperscaler customers in FY2025, targeting 6-8 in FY2026",
+        "note": "Customer names undisclosed. Likely includes major CSPs (Meta, Microsoft, etc.). Customer base becoming more concentrated as company targets larger deals.",
+        "dm_anchor": "BIZ-16"
+      }
+    ],
+    "concentration_risk": "Extreme supplier concentration: NVIDIA alone = 64.4% of purchases. Customer concentration increasing as business shifts toward fewer, larger hyperscaler accounts. Both supply and demand side carry significant concentration risk."
+  },
+  "tam": {
+    "ai_server_market_2024": 128000000000,
+    "ai_server_market_2024_alt_estimate": 142880000000,
+    "ai_server_market_2030_forecast": 854160000000,
+    "cagr_2025_2030_pct": 34.3,
+    "cagr_alt_pct": 38.7,
+    "ai_server_shipment_yoy_growth_2026_pct": 28,
+    "total_server_market_2025": 252000000000,
+    "sources": "GM Insights ($128B/28.2% CAGR), MarketsandMarkets, Grand View Research ($854B by 2030), TrendForce (28% YoY shipment growth), Bloomberg ($252B total server market)",
+    "dm_anchor": "BIZ-17"
+  },
+  "industry_specific": {
+    "technology_leadership": {
+      "dlc_production_capacity": "6,000 racks/month total, ~3,000 DLC (45% liquid-cooled ratio, highest in industry)",
+      "dlc_2_specs": "Handles up to 120kW per rack, reduces data center power by 40%, lowers TCO by 20%",
+      "building_block_architecture": "Modular design enables new GPU-compatible server in <6 weeks vs months for Dell/HPE",
+      "ai_gpu_revenue_pct": 90,
+      "note": "AI GPU platforms represent >90% of Q2 FY2026 revenue",
+      "dm_anchor": "BIZ-18"
+    },
+    "product_portfolio": {
+      "gpu_cluster_configs": [
+        {"size": "Small", "nodes": 4, "gpus": 32},
+        {"size": "Medium", "nodes": 8, "gpus": 64},
+        {"size": "Large", "nodes": 32, "gpus": 256}
+      ],
+      "supported_platforms": ["NVIDIA HGX B200", "NVIDIA GB200 NVL72", "NVIDIA RTX PRO 6000 Blackwell"],
+      "dm_anchor": "BIZ-19"
+    },
+    "manufacturing": {
+      "hq": "San Jose, CA",
+      "employees": 5684,
+      "global_locations": 19,
+      "us_manufacturing": "Expanding US-based manufacturing for government/compliance applications",
+      "dm_anchor": "BIZ-20"
+    },
+    "governance_history": {
+      "accounting_crisis": "Late 2024 auditor resignation (Ernst & Young), near-delisting from NASDAQ. BDO LLP appointed as new auditor. Filed delayed 10-K in Feb 2025.",
+      "impact": "NVIDIA temporarily rerouted orders; some customers shifted to Dell/HPE; stock declined significantly",
+      "resolution": "Maintained NASDAQ listing, filed overdue reports, regained some customer confidence",
+      "dm_anchor": "BIZ-21"
+    }
+  },
+  "dm_anchors": [
+    {"id": "BIZ-01", "type": "H", "source": "Supermicro Q1 FY2026 earnings press release (Nov 2025)"},
+    {"id": "BIZ-02", "type": "H", "source": "Supermicro Q1 FY2026 earnings press release (Nov 2025)"},
+    {"id": "BIZ-03", "type": "H", "source": "FMP income statement API"},
+    {"id": "BIZ-04", "type": "H", "source": "FMP income statement API"},
+    {"id": "BIZ-05", "type": "H", "source": "FMP income statement API + SMCI 10-K FY2025"},
+    {"id": "BIZ-06", "type": "H", "source": "Supermicro Q1 FY2026 press release (ir.supermicro.com)"},
+    {"id": "BIZ-07", "type": "H", "source": "Supermicro Q2 FY2026 earnings call (Feb 3, 2026), 247wallst.com, Yahoo Finance"},
+    {"id": "BIZ-08", "type": "H", "source": "Management guidance, Q2 FY2026 earnings call (Feb 2026)"},
+    {"id": "BIZ-09", "type": "H", "source": "Multiple quarterly earnings releases, Simply Wall St, GuruFocus"},
+    {"id": "BIZ-10", "type": "H", "source": "SMCI 10-K FY2025 (StockTitan summary)"},
+    {"id": "BIZ-11", "type": "H", "source": "SMCI 10-K FY2025 geographic breakdown"},
+    {"id": "BIZ-12", "type": "H", "source": "SMCI 10-K FY2025 + Supermicro European Blackwell launch PR"},
+    {"id": "BIZ-13", "type": "S", "source": "StockAnalysis.com SMCI revenue by geography"},
+    {"id": "BIZ-14", "type": "H", "source": "SMCI 10-K FY2025 supplier concentration disclosure (64.4%)"},
+    {"id": "BIZ-15", "type": "H", "source": "SMCI 10-K FY2025 supplier concentration disclosure (5.1%)"},
+    {"id": "BIZ-16", "type": "H", "source": "Supermicro Q1 FY2026 earnings call (4 to 6-8 customer target)"},
+    {"id": "BIZ-17", "type": "R", "source": "GM Insights, MarketsandMarkets, Grand View Research, TrendForce, Bloomberg"},
+    {"id": "BIZ-18", "type": "H", "source": "Supermicro DLC-2 press release (Jan 2025), Q2 FY2026 earnings call"},
+    {"id": "BIZ-19", "type": "H", "source": "Supermicro-Lambda partnership press release, StockTitan"},
+    {"id": "BIZ-20", "type": "H", "source": "FMP company profile, Supermicro government compliance PR"},
+    {"id": "BIZ-21", "type": "H", "source": "Multiple news sources, SMCI SEC filings timeline"}
+  ],
+  "sources": [
+    "https://ir.supermicro.com/news/news-details/2025/Supermicro-Announces-Fourth-Quarter-and-Full-Fiscal-Year-2025-Financial-Results/default.aspx",
+    "https://ir.supermicro.com/news/news-details/2025/Supermicro-Announces-First-Quarter-Fiscal-Year-2026-Financial-Results/default.aspx",
+    "https://ir.supermicro.com/news/news-details/2026/Supermicro-Announces-Second-Quarter-Fiscal-Year-2026-Financial-Results/default.aspx",
+    "https://s204.q4cdn.com/707617056/files/doc_financials/2025/ar/2025-Form-10K.pdf",
+    "https://247wallst.com/investing/2026/02/04/super-micro-computer-rallies-after-raising-full-year-revenue-guidance-to-40-billion-from-33-billion/",
+    "https://stockanalysis.com/stocks/smci/metrics/revenue-by-geography/",
+    "https://www.stocktitan.net/sec-filings/SMCI/10-k-super-micro-computer-inc-files-annual-report-e88daf0756d8.html",
+    "https://www.prnewswire.com/news-releases/supermicros-dlc-2-the-next-generation-direct-liquid-cooling-solutions-302454881.html",
+    "https://www.gminsights.com/industry-analysis/ai-server-market",
+    "https://www.grandviewresearch.com/industry-analysis/ai-server-market-report",
+    "https://www.trendforce.com/presscenter/news/20260120-12887.html",
+    "https://www.bloomberg.com/professional/insights/artificial-intelligence/dell-hpe-lenovo-look-to-ai-in-252-billion-server-market/",
+    "https://www.gurufocus.com/term/gross-margin/SMCI",
+    "FMP API (profile, income statement)"
+  ]
+}

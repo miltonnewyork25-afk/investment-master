@@ -1,6 +1,7 @@
-# Deep-Dive 分析协议 v14.0 (Tier 3)
+# Deep-Dive 分析协议 v14.1 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
+> **v14.1变化**: Phase 0新增SGI速判(专才-通才光谱诊断)。
 > **v14.0变化**: 知识层(Phase -1知识库检索+Phase -0.5外部文献侦察)+knowledge_index.yaml+planning_archives+搜索模板。
 > **v13.0变化**: Supplement扩展协议(Phase 5.5后补强薄弱CQ)+Cross-Agent验证(P4 Agent B读P1-3 staging)+CG动态基准(按可能性宽度分层)。
 > **v10.0变化**: 标注系统重构(内联→DM锚定+脚本验证+干净叙事)+Protocol Header+承重墙脆弱度表+红队七问+CQ置信度演化表+AI能力边界声明+黑天鹅概率加权表+方法离散度CG14+推断证伪条件+分析框架注册表。
@@ -111,7 +112,32 @@
    - **-1.5~-0.5 (偏冷)**: 建议Tier 3深度研究，潜在机会
    - **≤-1.5 (极冷)**: 建议Tier 3深度研究，重点机会
 
-**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算
+10. **SGI速判 (v17.3新增)** — 2分钟专才/通才定位，影响后续分析策略
+   - **计算公式**: `SGI = 0.30×HHI_rev + 0.25×R&D_conc + 0.20×MarketPos + 0.15×SwitchCost + 0.10×BrandClarity`
+   - **五维度快速评分** (各0-10分):
+     - HHI_rev: Top-1品类收入占比 (>90%=10分, 均分10+品类=0分)
+     - R&D_conc: 核心品类R&D集中度 (>90%=10分, <30%=0分)
+     - MarketPos: 核心品类市场份额 (>60%=10分, <10%=0分)
+     - SwitchCost: 客户锁定强度 (切换成本>5年合同=10分, 轻松切换=0分)
+     - BrandClarity: 一句话能否说清公司做什么 (5字说清=10分, 5分钟才能解释=0分)
+   - **路由决策**:
+     - SGI ≥ 7 → **专才模型**: 关注单点故障风险+品类天花板+渗透率上限
+     - SGI 4-6 → **混合模型**: 关注品类间协同是否真实可量化
+     - SGI ≤ 3 → **通才模型**: 关注通才陷阱+管理层资源分配+品类优先级
+   - **估值预期锚定**:
+     - SGI 8-10: 预期P/E溢价30-60% vs 行业中位数
+     - SGI 5-7: 预期P/E溢价0-20%
+     - SGI 1-4: 预期P/E折价0-25%
+     - 实际P/E偏离预期>2σ → 标记为"定价异常"，Phase 4重点验证
+   - **输出**: SGI分数+5维度评分+路由决策+估值预期锚 写入 `shared_context.md` SGI节
+   - **跨行业验证基准** (来自SEMI_EQUIPMENT对比报告复盘):
+     - 半导体设备: SGI与A-Score相关0.98 | 专才P/E溢价+33%
+     - 金融: V/MA(SGI~9) vs JPM(SGI~4) | P/E溢价+104%
+     - 医疗: ISRG(SGI~10) vs JNJ(SGI~3) | P/E溢价+180%
+     - 工业: ITW(SGI~6) vs 3M(SGI~3) | P/E溢价+1%(品类边界不刚性)
+   - **详细方法论**: `docs/a_score_v2.md` §4.4
+
+**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算 + SGI已计算
 
 **Research Scorecard (v13.1)**: Phase 0/0.5完成后运行 `bash tests/research_scorecard.sh pre {TICKER}` 记录基线分数(典型15-25分)。分数写入checkpoint.yaml的`scorecard.pre`节。
 
@@ -297,6 +323,15 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 - 释放的token投入Phase 2/3深度分析(提升密度)
 - 适用行业: 半导体(6份) > 生态科技(10份) > 消费品(1份,不适用) > 金融(1份,不适用)
 - **LRCX教训**: Phase 1 70K中~30K是已有6份报告覆盖的半导体通识
+
+**工业公司产业链纵深 (v17.2新增 — EVO-ETN-005)**:
+当 PW≤4(传统/混合估值) **且** 行业属于工业/制造/基础设施时，Phase 1增加**Ch9A产业链纵深**:
+- **上游**: 核心原材料×供应商集中度×替代成本×交期瓶颈 (如ETN的GOES变压器钢材)
+- **下游**: 客户集中度×合同结构×积压质量分层(Tier1可靠/Tier2条件/Tier3风险)
+- **交叉销售**: 板块间协同效率×量化指标(如ETN电气→航空→车辆的交叉渗透率)
+- 字数: ~15-20K字符 | Mermaid拓扑图≥1张 | DM-SC锚点系列≥15个
+- **ETN验证**: Ch9A贡献+0.2分质量提升, 产出GOES脆弱点+Hyperscaler集中度+恐惧囤积等非共识洞见
+- 触发判断: `L0_index.yaml` 中行业标签为半导体/工业 **且** 公司有≥3个业务板块
 
 **门控 QG-01~03**:
 - QG-01: 公司画像完整（业务模型+管理层+历史≥3000字）
@@ -623,6 +658,16 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 - **分析框架注册表**: 使用/改进/首创的框架已登记
 - **零操作建议**: 全文无持仓/减仓/加仓/仓位%/操作触发
 - **数据审计**: 文末审计摘要存在 + DM覆盖率声明
+- **DM附录化 (v17.2新增 — EVO-ETN-001)**: Complete组装时必须生成DM锚点附录:
+  - 从`data/research/{TICKER}/shared_context.md`提取DM锚点 → 按FIN/VAL/SEG/MKT/SC分组
+  - 每组1个`<details>`折叠源表 → 目标≥5个fold table
+  - 附录末尾写入"数据审计声明"(DM覆盖率≥90%)
+  - **ETN验证**: DM从0→60, CG8/CG9从FAIL→PASS
+- **CI注册表 (v17.2新增 — EVO-ETN-002)**: Complete组装时扫描非共识洞见:
+  - 关键词扫描: `非共识|独特|首次|被忽视|市场低估|系统性|偏差|矛盾`
+  - 输出CI候选列表 → 人工审核 → 写入"附录: CI注册表"
+  - 每个CI含: 洞察+共识观点+我们的观点+证据来源+置信度
+  - 目标≥5个CI (ETN实测11个)
 - **Phase 5完成后必须组装Complete报告** → 运行 `tests/quality_gate_complete.sh` → 通过后才能标记"全量完成"
 
 ### Phase 5.5: Supplement扩展协议 (v13.0新增)

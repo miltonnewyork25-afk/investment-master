@@ -1,0 +1,152 @@
+{
+  "version": "4.0",
+  "ticker": "SMCI",
+  "company": "Super Micro Computer, Inc.",
+  "generated_at": "2026-02-21",
+  "total_anchors": 187,
+  "by_type": {
+    "H": 112,
+    "R": 54,
+    "S": 21
+  },
+  "by_category": {
+    "FIN": 25,
+    "VAL": 12,
+    "MKT": 8,
+    "CON": 12,
+    "PMK": 10,
+    "NEW": 27,
+    "BIZ": 39,
+    "MGT": 12,
+    "SMT": 30,
+    "OPT": 12,
+    "INF": 4,
+    "SUB": 2
+  },
+  "key_anchors": [
+    {
+      "id": "DM-FIN-010",
+      "value": "Q2 FY2026 Revenue $12.68B (+123.4% YoY), GM 6.3%",
+      "type": "H",
+      "source": "MCP fmp_data income Q2 FY2026",
+      "date": "2026-02-21",
+      "used_in": ["Ch02", "Ch09", "Ch11"]
+    },
+    {
+      "id": "DM-FIN-018",
+      "value": "GM趋势: FY21 15.0% -> FY22 15.4% -> FY23 18.0% -> FY24 13.8% -> FY25 11.1% -> Q2FY26 6.3%",
+      "type": "H",
+      "source": "MCP fmp_data income FY2021-2025 + Q2 FY2026",
+      "date": "2026-02-21",
+      "used_in": ["Ch09", "CQ1"]
+    },
+    {
+      "id": "DM-FIN-024",
+      "value": "Q2 FY2026 BS: Cash $4.09B, Inventory $10.60B, Total Debt $4.91B, Equity $6.99B",
+      "type": "H",
+      "source": "MCP baggers_summary Q2 FY2026",
+      "date": "2026-02-21",
+      "used_in": ["Ch10"]
+    },
+    {
+      "id": "DM-VAL-005",
+      "value": "FMP DCF公允价值 -$228.58 (负值!)",
+      "type": "H",
+      "source": "MCP fmp_data dcf",
+      "date": "2026-02-21",
+      "used_in": ["Ch25"]
+    },
+    {
+      "id": "DM-VAL-006",
+      "value": "EV/GP (组装商指标) = ~9.4x (vs Dell ~6-8x)",
+      "type": "R",
+      "source": "DM-VAL-002 + DM-FIN-017推算",
+      "date": "2026-02-21",
+      "chain": "低毛利组装商EV/Sales误导 -> EV/GP是正确对比指标",
+      "falsifiable": "GM恢复>15%则EV/Sales恢复有效性",
+      "used_in": ["Ch25"]
+    },
+    {
+      "id": "DM-CON-004",
+      "value": "Goldman Sachs Sell, PT $26",
+      "type": "H",
+      "source": "MarketBeat/DefenseWorld",
+      "date": "2026-02-21",
+      "used_in": ["Ch13", "Ch25", "CQ1"]
+    },
+    {
+      "id": "DM-PMK-I01",
+      "value": "AI泡沫2026年底破裂概率19%, SMCI被列为触发公司",
+      "type": "R",
+      "source": "Polymarket",
+      "date": "2026-02-21",
+      "chain": "解析条件含SMCI从ATH下跌50%",
+      "used_in": ["Ch24", "CQ2"]
+    },
+    {
+      "id": "DM-BIZ-14",
+      "value": "NVIDIA占SMCI采购64.4% (FY2025)",
+      "type": "H",
+      "source": "SMCI 10-K FY2025",
+      "date": "2026-02-21",
+      "used_in": ["CQ5", "Ch04"]
+    },
+    {
+      "id": "DM-BIZ-22",
+      "value": "AI服务器份额7-10% (Citi:8%), 从2023~50%下滑",
+      "type": "R",
+      "source": "Citi分析师, WCCFTech",
+      "date": "2026-02-21",
+      "used_in": ["CQ4", "Ch05"]
+    },
+    {
+      "id": "DM-MGT-005",
+      "value": "EY辞任审计师(2024-10-30), 无法信任管理层",
+      "type": "H",
+      "source": "CNBC/Bloomberg",
+      "date": "2026-02-21",
+      "used_in": ["CQ3", "Ch07"]
+    },
+    {
+      "id": "DM-SMT-029",
+      "value": "CEO 5yr: 0买入 23卖出 $36.8M/6月",
+      "type": "R",
+      "source": "QuiverQuant",
+      "date": "2026-02-21",
+      "used_in": ["CQ3", "Ch07"]
+    },
+    {
+      "id": "DM-OPT-008",
+      "value": "可转债$4.725B across 3 tranches, 全部深度价外",
+      "type": "R",
+      "source": "Supermicro IR发行公告汇总",
+      "date": "2026-02-21",
+      "used_in": ["Ch10", "Ch25"]
+    },
+    {
+      "id": "DM-INF-002",
+      "value": "GM均衡点8-12% (非历史15-18%), 浪潮6.85%确认行业均衡",
+      "type": "R",
+      "source": "lit_recon + DM-FIN-018",
+      "date": "2026-02-21",
+      "chain": "GPU占BOM 70-80% -> SMCI增值10-15% -> 浪潮确认 -> 均衡8-12%",
+      "falsifiable": "连续2Q GM>14%",
+      "used_in": ["Ch09", "CQ1"]
+    },
+    {
+      "id": "DM-SUB-002",
+      "value": "治理风险为制度性(I) + 惯犯溢价",
+      "type": "S",
+      "source": "Phase -0.5 lit_recon + 约束分类",
+      "date": "2026-02-21",
+      "used_in": ["CQ3"]
+    }
+  ],
+  "quality": {
+    "h_pct": 59.9,
+    "r_pct": 28.9,
+    "s_pct": 11.2,
+    "h_target_pct": 50,
+    "passed": true
+  }
+}
