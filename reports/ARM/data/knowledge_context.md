@@ -40,12 +40,12 @@ Top-3 相似公司:
   Evolution Context (最近3份报告)
 ═══════════════════════════════════════════════════
 
-  趋势: SMCI(3.9)->UP->SEMI_EQUIPMENT_COMPARATIVE(4.3)->DN->INTC(4.1)
+  趋势: SEMI_EQUIPMENT_COMPARATIVE(4.3)->DN->INTC(4.1)->DN->ARM(3.5)
 
   最近教训:
-    [SMCI] 组装DM密度损耗=系统性问题(187→102, 45%丢失因多Agent组装); Assembly Agent 254K context溢出需分段策略; CG脚本关键词匹配过于死板(催化剂日历≠投资日历)
     [SEMI_EQUIPMENT_COMPARATIVE] |
     [INTC] Discovery System(PW=8)首次完整执行验证——条件评级+Kill Switch+追踪信号三联体有效; A-Score v2.0+SGI首次实战应用确认跨行业泛化(半导体低A-Score=4.74与直觉一致); 270K密度可接受但PW≥7的发现系统报告应>300K
+    [ARM] |
 
   待审批进化提议:
     [SEMI_EQUIPMENT_COMPARATIVE] |

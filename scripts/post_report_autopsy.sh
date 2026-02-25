@@ -1,6 +1,7 @@
 #!/bin/bash
-# post_report_autopsy.sh v2.0
+# post_report_autopsy.sh v2.1
 # 报告完成后的自动测量脚本 — 进化循环的起点 + 编排器
+# v2.1: +Mermaid计数 +PW/方法论自动检测 (INTC进化教训)
 # 用法: bash scripts/post_report_autopsy.sh <TICKER> <REPORT_FILE>
 # 输出: 追加到 evolution_log.yaml + 趋势分析 + 屏幕摘要
 
@@ -27,10 +28,29 @@ CHARS_K="$((CHARS / 1000))K"
 LINES=$(wc -l < "$REPORT" 2>/dev/null | tr -d ' ')
 CHAPTERS=$({ grep -cE '^#{1,2} ' "$REPORT" || echo "0"; })
 
+MERMAID_COUNT=$({ grep -cE '```mermaid' "$REPORT" || echo "0"; })
+
+# 自动检测PW和方法论 (从报告头部提取)
+PW="N/A"
+METHOD="N/A"
+PW_LINE=$({ grep -oE '可能性宽度[^0-9]*[0-9]+' "$REPORT" | head -1 | grep -oE '[0-9]+' || echo ""; })
+if [[ -n "$PW_LINE" ]]; then
+    PW="$PW_LINE"
+    if [[ "$PW_LINE" -ge 7 ]]; then
+        METHOD="discovery"
+    elif [[ "$PW_LINE" -ge 4 ]]; then
+        METHOD="mixed"
+    else
+        METHOD="traditional"
+    fi
+fi
+
 echo "--- [1/6] 基础指标 ---"
 echo "  字符数: $CHARS_K ($CHARS)"
 echo "  行数: $LINES"
 echo "  章节数: $CHAPTERS"
+echo "  Mermaid图: $MERMAID_COUNT"
+echo "  PW: $PW | 方法: $METHOD"
 
 # --- [2/6] Quality Gate ---
 echo ""
@@ -71,7 +91,7 @@ fi
 # --- [4/6] DM Anchors ---
 echo ""
 echo "--- [4/6] DM Anchors ---"
-DM_COUNT=$({ grep -oE 'DM-[A-Z]+-[0-9]+' "$REPORT" 2>/dev/null | sort -u | wc -l || echo "0"; } | tr -d ' ')
+DM_COUNT=$({ grep -oE 'DM-[A-Z]*-?[0-9]+' "$REPORT" 2>/dev/null | sort -u | wc -l || echo "0"; } | tr -d ' ')
 echo "  Unique DM anchors: $DM_COUNT"
 
 # --- [5/6] Research Scorecard ---
@@ -129,7 +149,7 @@ fi
 # --- 汇总 ---
 echo ""
 echo "=== AUTOPSY SUMMARY ==="
-echo "  $TICKER | $CHARS_K | CG: $CG_RESULT | Compliance: $COMPLIANCE | DM: $DM_COUNT | SC: $SCORECARD"
+echo "  $TICKER | $CHARS_K | CG: $CG_RESULT | Compliance: $COMPLIANCE | DM: $DM_COUNT | Mermaid: $MERMAID_COUNT | PW: $PW | SC: $SCORECARD"
 
 # --- 追加到 evolution_log.yaml ---
 LOG_FILE="knowledge/evolution_log.yaml"
@@ -156,6 +176,9 @@ cat >> "$LOG_FILE" << ENTRY
     cg_result: "$CG_RESULT"
     compliance: "$COMPLIANCE"
     dm_anchors: $DM_COUNT
+    mermaid_count: $MERMAID_COUNT
+    pw: $PW
+    method: "$METHOD"
     scorecard: "$SCORECARD"
     near_miss_score: $NEAR_MISS
     quality: null  # AI填入 (1.0-5.0)

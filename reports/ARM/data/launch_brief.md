@@ -1,5 +1,5 @@
 # Launch Brief: ARM
-> 自动生成 by tier3_launch.sh v1.0 | 2026-02-25 16:49
+> 自动生成 by tier3_launch.sh v1.0 | 2026-02-25 20:49
 > **AI必须在Phase 0开始前完整阅读本文件**
 
 ## 复杂度评估
@@ -37,14 +37,15 @@
   - TSLA: 534K chars / 910KB (汽车科技)
   - TSM: 451K chars / 715KB (半导体)
   - VRT: 367K chars / 645KB (其他)
+  - WMT: 356K chars / 631KB (消费品)
 
 ## 进化教训 (最近3份报告)
-  - 组装DM密度损耗=系统性问题(187→102, 45%丢失因多Agent组装); Assembly Agent 254K context溢出需分段策略; CG脚本关键词匹配过于死板(催化剂日历≠投资日历)
   - |
   - Discovery System(PW=8)首次完整执行验证——条件评级+Kill Switch+追踪信号三联体有效; A-Score v2.0+SGI首次实战应用确认跨行业泛化(半导体低A-Score=4.74与直觉一致); 270K密度可接受但PW≥7的发现系统报告应>300K
+  - |
 
 ## Phase -1 知识检索
-- knowledge_context.md: 1690 chars
+- knowledge_context.md: 1587 chars
 - 状态: ✓ 完成
 
 ## 已知失败抗体 (Adaptive Immunity)

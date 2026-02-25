@@ -3,9 +3,9 @@
 # 每当新报告某板块超越现有最佳时，自动更新此目录
 
 metadata:
-  version: "1.5"
-  last_updated: "2026-02-24"
-  total_reports_analyzed: 24
+  version: "1.6"
+  last_updated: "2026-02-25"
+  total_reports_analyzed: 25
   quality_threshold: 4.0/5.0
 
 # ============================================================
@@ -259,6 +259,45 @@ valuation_methodology:
     key_innovation: "承认'我们不知道它值多少钱'的前提下, 仍然能给出有用的投资决策指引 — 从'值多少钱'转向'什么信号值得关注'"
     when_to_use: "期望回报±10%以内(估值无信息优势)的公司 — 传统估值对决策无增量贡献时"
     transferable_to: ["市值>$200B", "PW≤4传统估值", "期望回报接近0的中性评级"]
+
+# ============================================================
+# 护城河迁移分析 (Moat Migration)
+# ============================================================
+moat_migration:
+  institutional_migration:
+    champion: "INTC_Ch9-10"
+    score: 4.3
+    report_path: "reports/INTC/INTC_Complete_v2.1_2026-02-25.md"
+    method: "A-Score 12维逐维趋势追踪 → 技术vs制度壁垒权重迁移量化(70/30→30/70) → 迁移地图+时间线 → 残存堡垒识别"
+    key_innovation: "首次分析'护城河搬家'而非'护城河消失'——Intel护城河不是在缩小,而是从技术壁垒(制程领先/IP库)迁移到制度壁垒(CHIPS Act/$15.9B政府入股/Secure Enclave)"
+    when_to_use: "公司A-Score某些维度衰退但整体估值未崩溃时——检测是否存在壁垒类型迁移"
+    transferable_to: ["国防/航空(政府依赖)", "银行/金融(监管壁垒)", "电信(牌照壁垒)", "所有受政策保护的行业"]
+
+# ============================================================
+# 承重墙联合概率 (Bearing Wall Joint Probability)
+# ============================================================
+bearing_wall_analysis:
+  joint_probability_test:
+    champion: "INTC_Ch15"
+    score: 4.2
+    report_path: "reports/INTC/INTC_Complete_v2.1_2026-02-25.md"
+    method: "识别N个承重墙(必须同时成功的因素) → 单因素概率评估 → 联合概率计算(含相关性调整) → naive vs 实际对比"
+    key_innovation: "数学证明: 5个各50%概率的独立因素联合成功=2-3%(非naive 6.25%),揭示多因素转型公司'全部走对'的概率远低于直觉"
+    when_to_use: "多因素转型公司(≥4个必须同时成功的条件) — 如代工转型/多市场突破/技术+商业双重验证"
+    transferable_to: ["转型期公司(INTC/GE/IBM)", "多市场扩张公司", "所有需要'多条件同时满足'的投资论文"]
+
+# ============================================================
+# AI重组识别 (AI Reorganizer)
+# ============================================================
+ai_reorganizer:
+  net_zero_ai_impact:
+    champion: "INTC_Ch13_M13"
+    score: 4.0
+    report_path: "reports/INTC/INTC_Complete_v2.1_2026-02-25.md"
+    method: "分部级AI冲击评分(7-point scale) × 收入权重 × 实现概率 → 概率加权AI净分 → 受益/受害/重组三分类"
+    key_innovation: "AI净分=-0.12≈0时识别'AI重组者'新类别——Intel不是AI受益者(IFS期权)也不是受害者(DCAI被替代),而是收入在分部间重新分配,总量不变"
+    when_to_use: "M13分析后AI净分在-0.5~+0.5区间的公司 — 避免简单贴标签(AI受益/受害)"
+    transferable_to: ["多元化科技公司", "传统公司+AI分部组合", "所有AI净效应模糊的公司"]
 
 # ============================================================
 # 行业专题分析

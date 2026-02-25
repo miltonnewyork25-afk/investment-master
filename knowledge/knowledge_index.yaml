@@ -1,5 +1,5 @@
-# Knowledge Index v1.4
-# 16份已完成报告的结构化索引 + 相似性图谱
+# Knowledge Index v1.5
+# 17份已完成报告的结构化索引 + 相似性图谱
 # 用途: find_relevant_knowledge.sh 的数据源
 # 更新时机: 每份新报告Complete后追加
 
@@ -288,6 +288,33 @@ reports:
       - "v1.2教训: 多源交叉验证时异常值(2.35x于多数源)应即时标红, 不可采信"
     similar_to: [RDDT, META, UNITY, SNAP, APP]
 
+  INTC:
+    industry: 半导体
+    version: "v2.1"
+    date: "2026-02-25"
+    chars: 269896
+    cg: "PASSED(0E/1W)"
+    poss_width: 8
+    methodology: discovery_system
+    ovm: false
+    erm: false
+    a_score: 4.74
+    sgi: 4.2
+    business_model: [idm_foundry, x86_cpu, server_cpu, ai_accelerator, foundry_services, mobileye_adas, altera_fpga, geopolitical_asset]
+    risk_profile: [idm_transformation, foundry_yield, x86_erosion, ai_disruption, management_turnover, ohio_delay, arm_substitution, customer_concentration]
+    key_lessons:
+      - "护城河制度迁移: 技术壁垒(70%)→制度壁垒(70%)——护城河'搬家'而非'消失', 首次分析迁移方向"
+      - "承重墙联合概率: 5因素各50%独立概率→联合成功2-3%→naive计算6.25%高估2-3x"
+      - "AI重组者: AI净分-0.12≈0——Intel不是受益者也不是受害者, DCAI损失被IFS/Altera/NEX抵消"
+      - "催化剂负EV: 2026-2027催化剂丰富但概率加权期望=-4%——信息密度≠正面惊喜概率"
+      - "Discovery System(PW=8)首次完整执行: 条件评级+Kill Switch+追踪信号三联体有效"
+      - "A-Score v2.0首次实战: 4.74/10偏科型(制度壁垒残存+技术壁垒系统性衰退)=直觉一致"
+    framework_assets:
+      - "A-Score v2.0首次应用验证(docs/a_score_v2.md)"
+      - "SGI首次应用(4.2混合偏通才)"
+      - "Discovery System完整流程(条件评级+Kill Switch)"
+    similar_to: [TSM, AMD, AMAT, LRCX, KLAC]
+
 # 显式相似性图谱
 # 每对含理由, find_relevant_knowledge.sh用similar_to字段+此图谱综合匹配
 similarity_graph:
@@ -341,3 +368,11 @@ similarity_graph:
     reason: "设备-代工供应链+先进封装+NVDA桥梁传导链+GAA技术协同"
   - pair: [AMAT, AMD]
     reason: "半导体+HBM设备需求+先进封装+传统框架PW=3/5"
+  - pair: [INTC, TSM]
+    reason: "IDM vs 纯代工+先进制程竞争+地缘政治资产+CHIPS Act受益+美国本土制造"
+  - pair: [INTC, AMD]
+    reason: "x86双雄+服务器份额此消彼长+AI加速器竞争+制程依赖(AMD→TSMC, INTC自有)"
+  - pair: [INTC, PLTR]
+    reason: "政府依赖型估值+地缘政治溢价+高PW发现系统+商业化不确定性"
+  - pair: [INTC, SMCI]
+    reason: "半导体生态链上下游+AI服务器需求+估值溢价vs基本面"
