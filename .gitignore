@@ -25,6 +25,10 @@ __pycache__/
 .pytest_cache/
 *.tmp
 
+# Python virtual environments
+.venv/
+mcp_server/.venv/
+
 # IDE
 .vscode/
 .idea/
