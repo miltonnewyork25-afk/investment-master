@@ -13,11 +13,34 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+import time
+
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 import yfinance as yf
 from dotenv import load_dotenv
 from mcp.server import Server
 from mcp.types import Tool, TextContent
+
+
+def _create_session() -> requests.Session:
+    """创建带重试逻辑的requests Session，防止瞬时ECONNRESET"""
+    session = requests.Session()
+    retry = Retry(
+        total=3,
+        backoff_factor=0.5,
+        status_forcelist=[502, 503, 504],
+        allowed_methods=["GET", "POST"],
+        raise_on_status=False,
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    return session
+
+
+_session = _create_session()
 
 # .env 加载（从项目根目录）
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
@@ -185,7 +208,7 @@ class FMPClient:
                 params["date"] = date
 
         try:
-            resp = requests.get(f"{self.base_url}{api_path}", params=params, timeout=15)
+            resp = _session.get(f"{self.base_url}{api_path}", params=params, timeout=15)
 
             if resp.status_code == 401:
                 return {
@@ -260,7 +283,7 @@ class BaggersClient:
         if cached:
             return cached
         try:
-            resp = requests.get(
+            resp = _session.get(
                 f"{self.base_url}/api/search",
                 params={"q": query}, timeout=15
             )
@@ -280,7 +303,7 @@ class BaggersClient:
         if cached:
             return cached
         try:
-            resp = requests.post(
+            resp = _session.post(
                 f"{self.base_url}/api/generate-summary",
                 headers=self._auth_headers(),
                 json={"symbol": symbol}, timeout=60
@@ -309,7 +332,7 @@ class BaggersClient:
         if limit != 100:
             params["limit"] = limit
         try:
-            resp = requests.get(
+            resp = _session.get(
                 f"{self.base_url}/api/get-sec-filings",
                 headers={"x-api-key": self.api_key},
                 params=params, timeout=15
@@ -330,7 +353,7 @@ class BaggersClient:
         if cached:
             return cached
         try:
-            resp = requests.get(
+            resp = _session.get(
                 f"{self.base_url}/api/get-strategy-report",
                 headers={"x-api-key": self.api_key},
                 params={"symbol": symbol, "locale": locale}, timeout=30
@@ -370,7 +393,7 @@ class PolymarketClient:
                 "keep_closed_markets": 1,
             }
 
-            resp = requests.get(
+            resp = _session.get(
                 f"{self.search_base_url}/public-search",
                 params=params, timeout=15
             )
@@ -481,7 +504,7 @@ class PolymarketClient:
                 "side": side.upper()
             }
 
-            resp = requests.get(
+            resp = _session.get(
                 f"{self.price_base_url}/price",
                 params=params, timeout=10
             )
