@@ -12,6 +12,7 @@
 
 ### 覆盖公司
 - **科技平台**: AAPL, MSFT, GOOG, META, AMZN
+- **中国科技平台**: BABA, JD, PDD, BIDU (行业增强: `docs/industry/china_tech_platform_deep.md`)
 - **企业软件**: CRM, NOW, ORCL, SAP
 - **新兴科技**: PLTR, TSLA, AI相关
 - **云基础设施**: 主要云服务商
