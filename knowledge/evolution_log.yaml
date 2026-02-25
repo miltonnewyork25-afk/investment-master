@@ -277,8 +277,79 @@ entries:
       冠军目录已更新: A-Score评分体系(4.5) + SGI专才溢价(4.5) + 风险拓扑方法论(4.3) [已完成]
     evolution_status: pending
 
+  - ticker: "INTC"
+    date: "2026-02-25"
+    report: "INTC_Complete_v2.1_2026-02-25.md"
+    chars: "270K"
+    cg_result: "PASSED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 102
+    mermaid_count: 23
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: 4.1
+    pw: 8
+    method: discovery_system
+    a_score: "4.74/10 (置信度调整4.27, 偏科型)"
+    sgi: "4.2 (混合模型, 偏通才)"
+    top_technique: "护城河制度迁移(技术→制度壁垒70/30→30/70)+承重墙联合概率2-3%(5独立因素同时成功)+AI重组者净分-0.12(非受益/受害=重组)"
+    top_lesson: "Discovery System(PW=8)首次完整执行验证——条件评级+Kill Switch+追踪信号三联体有效; A-Score v2.0+SGI首次实战应用确认跨行业泛化(半导体低A-Score=4.74与直觉一致); 270K密度可接受但PW≥7的发现系统报告应>300K"
+    evolution_proposed: |
+      EVO-INTC-001: 护城河迁移分析模板 — 当A-Score某些维度从技术迁移到制度时,标准化"迁移地图"分析框架 [P1, 方法论资产]
+      EVO-INTC-002: 承重墙联合概率测试 — 多因素转型公司(≥4承重墙)强制联合概率计算,防止naive独立假设 [P1, 分析工具]
+      EVO-INTC-003: AI重组者识别 — AI净分≈0时标记为"重组者"(非受益/受害),分析内部收入再分配 [P2, M13增强]
+      EVO-INTC-004: Discovery System密度门控 — PW≥7报告建议≥300K字符,防止发现系统变成"压缩版传统报告" [P1, 质量门控]
+      EVO-INTC-005: A-Score v2.0首次实战复盘 — 11维评分+偏科形状分析+概率加权对INTC有效,确认泛化 [P2, 框架验证]
+      冠军目录待更新: 护城河制度迁移(4.3) + 承重墙联合概率(4.2) + AI重组者(4.0) [待录入]
+    evolution_status: pending
+    reflection_file: "memory/INTC_recursive_evolution_2026-02-25.md"
+    first_application: ["A-Score v2.0", "SGI", "Discovery System完整流程"]
+
   # --- 质量趋势更新 ---
-  # ANET(4.0)↑ → VRT(4.2)↑ → ETN-v2(4.3)↑ → SMCI(3.9)↓ → SEMI(4.3)↑
-  # SEMI从SMCI回升原因: 横向对比的方法论创新价值极高(3个冠军), 内容密度4.3/5
-  # CG FAIL是脚本不兼容而非报告质量问题 — 需EVO-SEMI-001根治
-  # 横向对比首作: 10 Session/939K/534 EC/17 KS/96 Mermaid — 工作流验证通过
+  # ANET(4.0)↑ → VRT(4.2)↑ → ETN-v2(4.3)↑ → SMCI(3.9)↓ → SEMI(4.3)↑ → INTC(4.1)↓
+  # INTC从SEMI轻微回落: 270K偏短(PW=8发现系统首份), 但分析创新价值高(3个候选冠军)
+  # A-Score v2.0+SGI首次实战: 半导体低A-Score(4.74/10)与Intel竞争力衰退直觉一致
+  # Discovery System首次完整执行: 条件评级+Kill Switch+追踪信号有效, 无目标价的研究输出可读
+  # DM系统: 102锚点(恢复到SMCI水平), DM附录化方案持续有效
+  # 密度分析: 270K/23 Mermaid/102 DM → 密度尚可但PW≥7应提升到300K+
+  # 整体: 分析质量4.1是稳定水平, 框架v17.3验证通过, 发现系统需要密度门控
+
+  - ticker: "ARM"
+    date: "2026-02-25"
+    report: "ARM_Complete_v1.0_2026-02-25.md"
+    chars: "172K"
+    bytes: "289K"
+    cg_result: "PASSED(0E/5W)"
+    compliance: "PASSED"
+    dm_anchors: 87
+    mermaid_count: 10
+    pw: 6
+    method: "mixed"
+    scorecard: "46/100"
+    near_miss_score: 0
+    quality: 3.5
+    a_score: "7.17/10 (宽但迁移中, T→N转型)"
+    sgi: "9.35 (专才, IP纯度极高)"
+    top_technique: "RISC-V信用违约互换(CDS)定价权量化($15-25B/11-18%市值) + 六承重墙信念分解(4.5%联合概率) + Phoenix概率加权EV仅+$1.05B"
+    top_lesson: |
+      1. 多会话context溢出→组装质量不可控: 3+次组装轮次(Phase拼接+CG修复+Agent扩展)导致章节厚度11x差距(Ch11:1087 vs Ch20:11995)
+      2. Agent扩写不注入CI标注: H2(CDS)和H1(盈利质量)是报告级创新但CI=0(D7=0/10)
+      3. 172K<<269K目标: 即使CG1 PASS(>160K floor), 仍大幅低于checkpoint目标——用户要求500K, 交付289K bytes(含UTF-8膨胀), 实际内容密度仅172K字符
+      4. Scorecard 46/100暴露格式合规系统性缺失: D1(数据基础3)+D2(CQ格式0)+D7(CI 0)+D8(Mermaid 4)=格式层失血, 而D3(8)+D5(9)=内容层强
+    evolution_proposed: |
+      EVO-ARM-001: CI自动扫描器 — 组装后grep "CDS|信用违约|非共识|独特|首次|悖论|陷阱"→自动生成CI候选清单供确认 [P1, 防D7=0]
+      EVO-ARM-002: 薄章节检测 — sentinel组装前检测<1500字符章节并发出WARN, 列出最薄Top-5供扩展 [P1, 质量门控]
+      EVO-ARM-003: 单会话组装原则 — Complete组装应在单会话内完成(读Phase→组装→CG→修复→提交), 跨会话组装质量不可控 [P0, 流程铁律]
+      EVO-ARM-004: Scorecard D2格式对齐 — CQ定义需要包含特定关键词标记(CQ-N/CQ置信度/CQ权重)被scorecard脚本检测到 [P1, 脚本修复]
+      非共识洞见候选: H2-RISC-V CDS效应(定价权量化) + Phoenix EV悖论($1.05B) + Arm China零地缘折价 [待CI注册]
+    evolution_status: pending
+
+  # --- 质量趋势更新 ---
+  # ETN-v2(4.3)↑ → SMCI(3.9)↓ → SEMI(4.3)↑ → INTC(4.1)↓ → ARM(3.5)↓↓
+  # ARM显著回落原因: (1)172K严重低于269K目标(字符量是近6份最低) (2)多会话组装3轮→章节厚度11x差距
+  # (3)CI=0+D7=0 (4)Mermaid=10<24 (5)Scorecard 46/100 — 格式合规系统性失血
+  # 但内容层不弱: D3=8(分析深度)+D5=9(估值框架)=与ANET(4.0)持平
+  # H2(CDS)是报告级原创——"RISC-V不需要替代ARM, 存在即限制定价权"是可迁移方法论
+  # 核心教训: 体量不足+组装质量是拉低分数的主因, 而非分析能力
+  # 紧急: EVO-ARM-003(单会话组装)是流程层P0修复, 否则未来报告持续受损
+    evolution_status: pending  # pending/approved/rejected
