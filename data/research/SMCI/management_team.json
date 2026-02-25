@@ -1,0 +1,180 @@
+{
+  "ticker": "SMCI",
+  "fetched_at": "2026-02-21",
+  "ceo": {
+    "name": "Charles Liang",
+    "tenure_years": 32,
+    "background": "Born in Chiayi, Taiwan. BS EE from National Taiwan University of Science and Technology, MS EE from University of Texas at Arlington. Senior Design Engineer at Chips & Technologies (1988-1991), President of Micro Center Computer (1991-1993). Founded Supermicro in September 1993. Holds multiple server technology patents. IPO in 2007.",
+    "track_record": "FY2024 revenue grew 110.4% to $14.99B, net income rose 80.1% to $1.15B. Built company from startup to major AI server infrastructure player. However: SEC charged SMCI in 2020 for widespread accounting violations ($200M+ improperly recognized revenue); Liang agreed to reimburse $2.1M in stock sale profits. In 2024, Hindenburg Research published short report alleging fresh accounting manipulation; EY resigned as auditor Oct 2024 citing integrity concerns; DOJ and SEC subpoenaed documents. Special Committee found EY concerns 'not supported by facts' (Dec 2024). BDO appointed as new auditor but issued adverse opinion on internal controls FY2024."
+  },
+  "cfo": {
+    "name": "David Weigand",
+    "tenure_years": 5,
+    "background": "Age ~66. MS Taxation from University of Hartford, BS Accounting from San Jose State University, California CPA (inactive). Prior roles: VP at Hewlett Packard Enterprise (2016-2018), VP-Tax at Silicon Graphics International (2013-2016), CFO & VP at NEC Electronics America / Renesas Electronics America (2004-2013), CFO at Broadmedia Corp. Joined SMCI as Chief Compliance Officer (May 2018), promoted to SVP & CFO (Feb 2021).",
+    "cfo_search_status": "Company pledged to search for new CFO 'immediately' after Dec 2024 Special Committee review. As of Feb 2026 (14+ months later), Weigand remains in seat with no public update on search progress. Fortune reported this delay on Feb 20, 2026.",
+    "holdings_shares": 100188,
+    "holdings_value_usd": 3000000,
+    "holdings_as_of": "2025-09-15"
+  },
+  "co_founder": {
+    "name": "Sara Liu (Chiu-Chu Liu)",
+    "role": "Co-Founder, Senior Vice President, Director",
+    "relationship": "Wife of CEO Charles Liang",
+    "background": "Co-founded Supermicro with Charles Liang in 1993. Background in accounting and operations. Served as Treasurer until May 2019, Chief Administrative Officer (Oct 1993 - May 2019). Remains SVP and Board Director.",
+    "ablecom_ownership": "Charles Liang and Sara Liu own 10.5% of Ablecom"
+  },
+  "key_executives": [
+    {
+      "name": "George Kao",
+      "title": "SVP of Operations (retiring)",
+      "note": "Informed company of decision to retire effective Dec 31, 2025. Tom Xiao assumes his responsibilities."
+    },
+    {
+      "name": "Tom Xiao",
+      "title": "Senior Corporate VP of Engineering",
+      "note": "Assumed SVP Operations responsibilities from George Kao post-retirement."
+    },
+    {
+      "name": "Yitai Hu",
+      "title": "General Counsel & SVP, Corporate Development",
+      "note": "Appointed April 2025. Reports directly to CEO. Expanding in-house legal department."
+    },
+    {
+      "name": "Wally Liaw",
+      "title": "Board Director (founding member)",
+      "note": "Returned to board in 2023 despite ties to 2018 accounting scandal period. One of original founding members."
+    }
+  ],
+  "board_of_directors": {
+    "members": [
+      {"name": "Charles Liang", "role": "Chairman, CEO, President", "independent": false, "note": "Founder. Dual CEO-Chairman raises governance concern."},
+      {"name": "Sara Liu", "role": "Director, SVP", "independent": false, "note": "Co-founder, wife of CEO."},
+      {"name": "Wally Liaw", "role": "Director", "independent": false, "note": "Founding member. Returned to board 2023."},
+      {"name": "Daniel W. Fairfax", "role": "Director", "independent": true},
+      {"name": "Tally Liu", "role": "Director", "independent": true},
+      {"name": "Sherman Tuan", "role": "Director", "independent": true},
+      {"name": "Judy Lin", "role": "Director", "independent": true},
+      {"name": "Robert Blair", "role": "Director", "independent": true},
+      {"name": "Susie Giordano", "role": "Director", "independent": true, "note": "Joined Aug 2024. Led one-person Special Committee investigation. 25+ years advising boards in tech sector."},
+      {"name": "Scott Angel", "role": "Director", "independent": true, "note": "Appointed 2025. Nearly 40 years in accounting, audit, consulting. Focus on risk and compliance in tech/semiconductor."}
+    ],
+    "total_members": 10,
+    "independent_count": 7,
+    "insider_family_count": 3,
+    "independence_ratio": 0.70
+  },
+  "recent_changes": [
+    {
+      "date": "2024-08-27",
+      "event": "Hindenburg Research publishes short report alleging accounting manipulation, undisclosed related party transactions, sanctions evasion"
+    },
+    {
+      "date": "2024-08-30",
+      "event": "Audit Committee informed of concerns; Special Committee formed with Susie Giordano (sole member, joined board Aug 2024)"
+    },
+    {
+      "date": "2024-10-30",
+      "event": "EY resigns as auditor citing inability to rely on management and Audit Committee representations"
+    },
+    {
+      "date": "2024-11",
+      "event": "BDO USA appointed as new auditor"
+    },
+    {
+      "date": "2024-12-02",
+      "event": "Special Committee completes review: 9,000+ hours by counsel, 2,500+ by forensic accountants, 4.1TB / 9M+ documents from 89 individuals. Concluded EY concerns 'not supported by facts'. Investigation cost $18.6M."
+    },
+    {
+      "date": "2024-12",
+      "event": "Company pledges to search for new CFO immediately; Weigand to remain until successor found"
+    },
+    {
+      "date": "2025-02",
+      "event": "Belated filing of FY2024 10-K and FQ1/FQ2 FY2025 quarterly reports. BDO issues adverse opinion on internal controls."
+    },
+    {
+      "date": "2025-04",
+      "event": "Yitai Hu appointed General Counsel & SVP Corporate Development"
+    },
+    {
+      "date": "2025",
+      "event": "Scott Angel appointed as new independent director (risk/compliance focus)"
+    },
+    {
+      "date": "2025-12-31",
+      "event": "George Kao (SVP Operations) retires; Tom Xiao assumes responsibilities"
+    },
+    {
+      "date": "2026-02-20",
+      "event": "Fortune reports CFO search still incomplete after 14+ months with no public update"
+    }
+  ],
+  "insider_ownership_pct": 27.92,
+  "insider_ownership_note": "WallStreetZen reports 27.92% (includes Liang family holdings + co-founders); GuruFocus reports 7.16% (may use narrower definition). Institutional ownership ~53.3%, retail ~18.8%. Charles Liang personally estimated at $3.3B stake (Jan 2024).",
+  "insider_trading_pattern": {
+    "note": "FMP data shows consistent net disposition pattern. Q4 2024 notable: 5.26M shares disposed vs 3.52M acquired. Q2 2025: 1.37M disposed, 8 sale transactions. Recent quarters (2025-2026) show lower volumes with mixed acquire/dispose ratios.",
+    "q4_2024_disposed": 5257442,
+    "q4_2024_acquired": 3517666,
+    "q2_2025_disposed": 1366098,
+    "q2_2025_sales": 8
+  },
+  "compensation_highlights": {
+    "ceo_structure": "Charles Liang: $1 salary, no cash bonuses through at least 2029. Compensation is nearly entirely multi-year performance-based stock options with high exercise-price premiums ($4.50 was 32% above grant-date price in 2021; $45.00 was ~53% above grant-date price in 2023). Pay anchored to long-horizon operational and stock milestones.",
+    "cfo_structure": "PRSUs and options linked to stock price and revenue KPIs. Cash fixed bonus at 30% to address market percentile gaps in base salary.",
+    "sbc_total_fy2025": "$314.5M stock-based compensation expense",
+    "say_on_pay_approval": "97% approval at Jan 22, 2024 annual meeting; approved again at Jun 4, 2025 meeting"
+  },
+  "governance_notes": {
+    "critical_risks": [
+      "Dual CEO-Chairman role (Charles Liang) with no lead independent director disclosed",
+      "Two accounting scandals: 2017-2020 SEC settlement ($17.5M fine, $200M+ improperly recognized revenue) AND 2024 Hindenburg/EY resignation crisis",
+      "Related party transactions: Ablecom (Steve Liang, CEO's brother, 28.8% owner; Charles Liang & Sara Liu 10.5% owner) and Compuware (Bill Liang, CEO's brother, is CEO). $983M paid to these entities over 3 years per Hindenburg. ~99.8% of Ablecom US exports and ~99.7% of Compuware US exports go to SMCI",
+      "Former CFO Howard Hideshima (settled with SEC, paid $350K+) later rehired at Ablecom (related party owned by CEO's brother)",
+      "BDO issued adverse opinion on internal controls over financial reporting (FY2024)",
+      "CFO replacement promised Dec 2024 still incomplete as of Feb 2026 (14+ months)",
+      "DOJ and SEC subpoenas outstanding for documents related to Hindenburg allegations",
+      "Special Committee investigation was one-person (Susie Giordano only), raising independence optics questions"
+    ],
+    "mitigating_factors": [
+      "Special Committee found no evidence supporting EY concerns (Dec 2024) after extensive 3-month review",
+      "No financial restatements required per Special Committee findings",
+      "Two new independent directors added (Giordano Aug 2024, Angel 2025) with audit/compliance expertise",
+      "New General Counsel hired (Yitai Hu, April 2025) to expand legal function",
+      "7 of 10 board members classified as independent (70%)",
+      "CEO compensation structure heavily performance-based ($1 salary, no cash bonus through 2029)",
+      "97% say-on-pay approval demonstrates shareholder support"
+    ]
+  },
+  "dm_anchors": [
+    {"id": "MGT-001", "type": "H", "source": "SEC.gov/Wikipedia", "content": "Charles Liang founded Supermicro Sep 1993, BS EE NTUST, MS EE UT Arlington"},
+    {"id": "MGT-002", "type": "H", "source": "SEC.gov 2020", "content": "SEC charged SMCI for accounting violations Aug 2020, $17.5M settlement, Liang reimbursed $2.1M"},
+    {"id": "MGT-003", "type": "R", "source": "FMP insider-trading", "content": "Insider trading data: Q4 2024 disposed 5.26M shares; consistent net selling pattern 2023-2025"},
+    {"id": "MGT-004", "type": "H", "source": "Supermicro IR / BusinessWire Dec 2024", "content": "Special Committee completed review Dec 2, 2024: 9,000+ counsel hours, 4.1TB data, found EY concerns not supported"},
+    {"id": "MGT-005", "type": "H", "source": "CNBC/Bloomberg Oct 2024", "content": "EY resigned as auditor Oct 30, 2024, citing inability to rely on management representations"},
+    {"id": "MGT-006", "type": "R", "source": "Hindenburg Research Aug 2024", "content": "Ablecom + Compuware paid $983M in 3 years; ~99.8% of Ablecom US exports to SMCI"},
+    {"id": "MGT-007", "type": "R", "source": "WallStreetZen Feb 2026", "content": "Insider ownership 27.92%; institutional 53.29%; retail 18.80%"},
+    {"id": "MGT-008", "type": "H", "source": "Fortune Feb 20, 2026", "content": "CFO search still incomplete after 14+ months, Weigand remains in seat"},
+    {"id": "MGT-009", "type": "H", "source": "Supermicro IR 2025", "content": "Scott Angel appointed independent director 2025 (risk/compliance); Yitai Hu appointed GC April 2025"},
+    {"id": "MGT-010", "type": "R", "source": "SEC proxy / fintool.com", "content": "CEO $1 salary, no cash bonus through 2029; SBC expense FY2025 $314.5M; say-on-pay 97% approval"},
+    {"id": "MGT-011", "type": "H", "source": "CFO Dive / SEC filings", "content": "DOJ and SEC subpoenaed documents from SMCI related to Hindenburg allegations late 2024"},
+    {"id": "MGT-012", "type": "R", "source": "BDO audit opinion Feb 2025", "content": "BDO issued adverse opinion on internal controls over financial reporting as of June 30, 2024"}
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/Charles_Liang",
+    "https://www.supermicro.com/en/about/leadership/charles-liang",
+    "https://ir.supermicro.com/governance/board-of-directors/default.aspx",
+    "https://ir.supermicro.com/governance/executive-management/default.aspx",
+    "https://hindenburgresearch.com/smci/",
+    "https://fortune.com/2024/10/31/super-micro-auditor-ey-financial-crisis-family-drama/",
+    "https://fortune.com/2026/02/20/supermicro-smci-cfo-search-david-weigand-nvidia/",
+    "https://ir.supermicro.com/news/news-details/2024/Supermicro-Announces-Completion-of-Review-by-Independent-Special-Committee/default.aspx",
+    "https://www.cnbc.com/2024/10/30/super-micro-auditor-resigns-after-raising-concerns-months-earlier.html",
+    "https://ir.supermicro.com/news/news-details/2025/Supermicro-Appoints-New-Independent-Director-and-General-Counsel/default.aspx",
+    "https://www.wallstreetzen.com/stocks/us/nasdaq/smci/ownership",
+    "https://www.gurufocus.com/stock/SMCI/ownership",
+    "https://fintool.com/app/research/companies/SMCI/people/charles-liang",
+    "https://fintool.com/app/research/companies/SMCI/people/david-weigand",
+    "https://www.cfodive.com/news/supermicro-doj-sec-subpoenaed-documents-accounting/739992/",
+    "https://www.sec.gov/Archives/edgar/data/1375365/000137536525000016/smci-20250604.htm"
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "ticker": "SMCI",
+  "fetched_at": "2026-02-21",
+  "macro_events": [
+    {
+      "id": "PMK-M01",
+      "event": "US Recession by End of 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "probability_yes": 23,
+      "probability_no": 77,
+      "volume_usd": null,
+      "resolution": "2 consecutive quarters negative real GDP (Q2 2025-Q4 2026) or NBER announcement",
+      "relevance": "Recession would sharply reduce enterprise/hyperscaler capex, directly impacting SMCI server demand",
+      "dm": {"id": "PMK-M01", "type": "R", "source": "Polymarket"}
+    },
+    {
+      "id": "PMK-M02",
+      "event": "How High Will Inflation Get in 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "probabilities": {
+        "above_3pct": 30,
+        "above_4pct": 12,
+        "above_5pct": 9,
+        "above_6pct": 11,
+        "above_8pct": 5,
+        "above_10pct": 2
+      },
+      "volume_usd": 86800,
+      "resolution": "BLS CPI reports for each month of 2026",
+      "relevance": "Higher inflation constrains Fed easing, raises SMCI input costs (components, labor), pressures margins",
+      "dm": {"id": "PMK-M02", "type": "R", "source": "Polymarket"}
+    },
+    {
+      "id": "PMK-M03",
+      "event": "Negative GDP Growth in 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/negative-gdp-growth-in-2026",
+      "probability_yes": 11,
+      "probability_no": 89,
+      "volume_usd": null,
+      "resolution": "Full-year 2026 seasonally adjusted GDP growth below 0",
+      "relevance": "Negative GDP = demand destruction for IT infrastructure spending, SMCI revenue at risk",
+      "dm": {"id": "PMK-M03", "type": "R", "source": "Polymarket"}
+    },
+    {
+      "id": "PMK-M04",
+      "event": "How Many Fed Rate Cuts in 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/how-many-fed-rate-cuts-in-2026",
+      "probabilities": {
+        "0_cuts": 8,
+        "1_cut_25bps": 19,
+        "2_cuts_50bps": 27,
+        "3_cuts_75bps": 23,
+        "4_cuts_100bps": 12,
+        "5_cuts_125bps": 6,
+        "6_cuts_150bps": 3,
+        "7plus_cuts_175bps": 2
+      },
+      "modal_outcome": "2 cuts (50bps) at 27%",
+      "volume_usd": 6900000,
+      "resolution": "FOMC statements after scheduled 2026 meetings",
+      "relevance": "Rate cuts lower cost of capital, support tech multiples and enterprise capex financing; 2-3 cuts (50% combined) moderately supportive for SMCI valuation",
+      "dm": {"id": "PMK-M04", "type": "R", "source": "Polymarket"}
+    },
+    {
+      "id": "PMK-M05",
+      "event": "Fed Rate Hike in 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/fed-rate-hike-in-2026",
+      "probability_yes": 13,
+      "probability_no": 87,
+      "volume_usd": null,
+      "resolution": "Any Fed rate increase in 2026",
+      "relevance": "Rate hike tail risk (13%) would compress tech/growth multiples and increase SMCI borrowing costs",
+      "dm": {"id": "PMK-M05", "type": "R", "source": "Polymarket"}
+    },
+    {
+      "id": "PMK-M06",
+      "event": "Current Fed Funds Rate",
+      "platform": "Federal Reserve",
+      "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128a.htm",
+      "current_rate": "3.50-3.75%",
+      "status": "Held steady at Jan 2026 FOMC meeting",
+      "forward_guidance": "Fed officials split; some discussed possible rate hikes if inflation stays sticky above 2% target",
+      "relevance": "Rates held at 3.50-3.75%; market pricing 2-3 cuts in 2026 but hike risk non-trivial at 13%",
+      "dm": {"id": "PMK-M06", "type": "H", "source": "Federal Reserve/CNBC"}
+    }
+  ],
+  "company_specific": [
+    {
+      "id": "PMK-C01",
+      "event": "SMCI-Specific Prediction Markets",
+      "platform": "Polymarket/Kalshi",
+      "status": "NO_ACTIVE_MARKET",
+      "search_queries": [
+        "site:polymarket.com Super Micro Computer",
+        "polymarket SMCI delisting accounting restatement",
+        "kalshi SMCI Super Micro AI server prediction market 2026"
+      ],
+      "note": "No dedicated prediction markets found for SMCI stock price, delisting, or accounting events on Polymarket or Kalshi as of 2026-02-21. SMCI is referenced only as a component in the AI Bubble Burst resolution criteria.",
+      "context": {
+        "nasdaq_compliance": "SMCI regained Nasdaq compliance after filing audited financials on 2025-02-25, closing delisting threat",
+        "restatement": "No financial restatements required; BDO USA issued adverse opinion on internal controls",
+        "doj_investigation": "DOJ investigation ongoing, stock trades at discount despite $36B FY2026 revenue guidance",
+        "backlog": "$13B backlog entering 2026"
+      },
+      "dm": {"id": "PMK-C01", "type": "S", "source": "WebSearch (multiple sources)"}
+    }
+  ],
+  "industry_events": [
+    {
+      "id": "PMK-I01",
+      "event": "AI Bubble Burst By...",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/ai-bubble-burst-by",
+      "probabilities": {
+        "by_march_31_2026": 2,
+        "by_december_31_2026": 19
+      },
+      "resolution_criteria": "At least 3 of the following conditions within a 90-day window: NVDA down 50% from ATH, SMCI down 50% from ATH, TSM/ASML/AVGO/ANET collapse, SOXX down 40% from ATH, OpenAI/Anthropic major setback",
+      "smci_specific_trigger": "SMCI down 50% from all-time high is one of the named resolution conditions",
+      "relevance": "CRITICAL: 19% probability of AI industry downturn by end 2026 is material tail risk for SMCI. SMCI is explicitly named as a trigger company. Combined with governance overhang, SMCI likely more vulnerable than peers to this scenario.",
+      "dm": {"id": "PMK-I01", "type": "R", "source": "Polymarket"}
+    },
+    {
+      "id": "PMK-I02",
+      "event": "Taiwan Cross-Strait Conflict by End of 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
+      "probability_yes": 10,
+      "probability_no": 90,
+      "volume_usd": 9000000,
+      "resolution": "China commences military offensive to establish control over any portion of Taiwan by Dec 31, 2026",
+      "relevance": "Taiwan conflict would devastate semiconductor supply chain; SMCI depends on Taiwan-sourced components (TSM chips, component supply). 10% probability = significant tail risk for server supply chain disruption.",
+      "dm": {"id": "PMK-I02", "type": "R", "source": "Polymarket"}
+    },
+    {
+      "id": "PMK-I03",
+      "event": "NVIDIA (NVDA) Price Targets - February 2026",
+      "platform": "Polymarket",
+      "url": "https://polymarket.com/event/what-price-will-nvda-hit-in-february-2026",
+      "probabilities": {
+        "above_272": 1,
+        "above_252": 1,
+        "above_236": 4,
+        "above_220": 10,
+        "above_208": 12,
+        "above_200": 39,
+        "below_168": 15,
+        "below_156": 3
+      },
+      "volume_usd": 180857,
+      "relevance": "NVDA price trajectory is leading indicator for AI infrastructure sentiment. SMCI revenue directly tied to GPU server builds. 39% chance NVDA hits $200+ in Feb suggests moderate bullishness on AI capex cycle, but 15% chance of drop below $168 = non-trivial downside risk.",
+      "dm": {"id": "PMK-I03", "type": "R", "source": "Polymarket"}
+    }
+  ],
+  "no_coverage": [
+    {
+      "query": "site:polymarket.com chip export ban",
+      "result": "No active markets found for chip export bans or semiconductor trade restrictions",
+      "relevance_if_existed": "HIGH - China export restrictions directly impact SMCI's addressable market and component sourcing"
+    },
+    {
+      "query": "site:polymarket.com AI spending",
+      "result": "No active markets found for AI capex/spending levels; only AI model quality competitions available",
+      "relevance_if_existed": "HIGH - Hyperscaler AI capex is the primary demand driver for SMCI servers"
+    },
+    {
+      "query": "kalshi SMCI prediction market",
+      "result": "No Kalshi markets found for SMCI-specific events",
+      "relevance_if_existed": "MEDIUM - Would provide company-specific probability signals for earnings, delisting, DOJ resolution"
+    },
+    {
+      "query": "polymarket SMCI stock price / delisting",
+      "result": "No dedicated SMCI stock or governance markets on any prediction platform",
+      "relevance_if_existed": "HIGH - Given DOJ investigation + prior delisting scare, such a market would be highly informative"
+    }
+  ],
+  "dm_anchors": [
+    {"id": "PMK-M01", "type": "R", "source": "Polymarket", "desc": "US Recession 2026: 23% Yes"},
+    {"id": "PMK-M02", "type": "R", "source": "Polymarket", "desc": "Inflation >3%: 30%, >4%: 12%"},
+    {"id": "PMK-M03", "type": "R", "source": "Polymarket", "desc": "Negative GDP 2026: 11% Yes"},
+    {"id": "PMK-M04", "type": "R", "source": "Polymarket", "desc": "Fed rate cuts 2026: modal 2 cuts (27%)"},
+    {"id": "PMK-M05", "type": "R", "source": "Polymarket", "desc": "Fed rate hike 2026: 13% Yes"},
+    {"id": "PMK-M06", "type": "H", "source": "Federal Reserve", "desc": "Current rate 3.50-3.75%, held Jan 2026"},
+    {"id": "PMK-C01", "type": "S", "source": "WebSearch", "desc": "No SMCI-specific prediction markets found"},
+    {"id": "PMK-I01", "type": "R", "source": "Polymarket", "desc": "AI bubble burst by end 2026: 19%"},
+    {"id": "PMK-I02", "type": "R", "source": "Polymarket", "desc": "Taiwan conflict by end 2026: 10%"},
+    {"id": "PMK-I03", "type": "R", "source": "Polymarket", "desc": "NVDA $200+ in Feb 2026: 39%"}
+  ],
+  "sources": [
+    "https://polymarket.com/event/us-recession-by-end-of-2026",
+    "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+    "https://polymarket.com/event/negative-gdp-growth-in-2026",
+    "https://polymarket.com/event/how-many-fed-rate-cuts-in-2026",
+    "https://polymarket.com/event/fed-rate-hike-in-2026",
+    "https://polymarket.com/event/ai-bubble-burst-by",
+    "https://polymarket.com/event/will-china-invade-taiwan-before-2027",
+    "https://polymarket.com/event/what-price-will-nvda-hit-in-february-2026",
+    "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260128a.htm",
+    "https://www.cnbc.com/2026/01/28/fed-rate-decision-january-2026.html",
+    "https://markets.financialcontent.com/stocks/article/marketminute-2026-1-27-super-micro-computer-smci-regains-nasdaq-compliance-after-high-stakes-accounting-saga-igniting-fresh-market-volatility"
+  ],
+  "analysis_summary": {
+    "macro_sentiment": "Moderately favorable — recession risk contained (23%), 2-3 rate cuts expected (50% combined probability), but inflation uncertainty (30% above 3%) and rate hike tail risk (13%) create headwinds",
+    "industry_sentiment": "AI capex cycle intact but 19% AI bubble burst probability by year-end is material tail risk; SMCI explicitly named as trigger company",
+    "company_gaps": "Zero SMCI-specific prediction market coverage despite DOJ investigation + governance history — a significant information gap. No markets for AI capex levels, chip export bans, or hyperscaler spending — key SMCI demand drivers remain unpriced in prediction markets",
+    "key_tail_risks": [
+      "AI bubble burst by end 2026 (19%) — SMCI named as trigger company",
+      "Taiwan cross-strait conflict (10%) — supply chain disruption",
+      "US recession (23%) — capex cuts",
+      "Fed rate hike (13%) — multiple compression"
+    ]
+  }
+}

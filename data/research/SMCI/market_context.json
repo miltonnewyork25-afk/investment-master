@@ -1,0 +1,18 @@
+{
+  "fetched_at": "2026-02-21",
+  "source": "MCP:get_market_overview",
+  "indices": {
+    "SP500": { "price": 6909.51, "change_pct": 0.69 },
+    "DJIA": { "price": 49625.97, "change_pct": 0.47 },
+    "NASDAQ": { "price": 22886.07, "change_pct": 0.90 },
+    "VIX": { "price": 19.09, "change_pct": -5.64 }
+  },
+  "macro_temperature": {
+    "CAPE": 40.20,
+    "CAPE_percentile": "98%",
+    "buffett_indicator": "220%",
+    "buffett_percentile": "100%",
+    "market_risk_premium": "4.5%",
+    "assessment": "非常昂贵"
+  }
+}

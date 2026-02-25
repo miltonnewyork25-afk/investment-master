@@ -1,0 +1,48 @@
+{
+  "version": "4.0",
+  "ticker": "SMCI",
+  "company": "Super Micro Computer, Inc.",
+  "industry": "半导体/AI服务器基础设施",
+  "timestamp": "2026-02-21T18:00:00+08:00",
+  "data_files": {
+    "stock_full": { "status": "ok", "source": "MCP:analyze_stock+fmp_data", "fetched_at": "2026-02-21", "size_bytes": 3700 },
+    "peer_comparison": { "status": "ok", "source": "MCP:compare_stocks", "fetched_at": "2026-02-21", "size_bytes": 592 },
+    "market_context": { "status": "ok", "source": "MCP:get_market_overview", "fetched_at": "2026-02-21", "size_bytes": 524 },
+    "dcf_valuation": { "status": "skipped", "source": "Python:dcf_calculator", "note": "Python tool unavailable, using FMP DCF (-$228.58) as fallback" },
+    "comparable_analysis": { "status": "skipped", "source": "Python:comparable_companies", "note": "Python tool unavailable, using MCP peer_comparison as fallback" },
+    "analyst_consensus": { "status": "ok", "source": "WebSearch:Agent-A", "fetched_at": "2026-02-21", "size_bytes": 13000, "dm_count": 12 },
+    "prediction_market": { "status": "ok", "source": "WebSearch:Agent-B", "fetched_at": "2026-02-21", "size_bytes": 11600, "dm_count": 10 },
+    "recent_news": { "status": "ok", "source": "WebSearch:Agent-C", "fetched_at": "2026-02-21", "size_bytes": 19500, "dm_count": 27 },
+    "business_overview": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-02-21", "size_bytes": 10900, "dm_count": 21 },
+    "competitive_landscape": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-02-21", "size_bytes": 14200, "dm_count": 18 },
+    "management_team": { "status": "ok", "source": "WebSearch:Agent-E", "fetched_at": "2026-02-21", "size_bytes": 13100, "dm_count": 12 },
+    "smart_money_13f": { "status": "ok", "source": "WebSearch:Agent-F", "fetched_at": "2026-02-21", "size_bytes": 15200, "dm_count": 30 },
+    "options_short_interest": { "status": "ok", "source": "WebSearch:Agent-G", "fetched_at": "2026-02-21", "size_bytes": 8200, "dm_count": 12 },
+    "dm_anchor_registry": { "status": "ok", "source": "prefetch:aggregator", "fetched_at": "2026-02-21" },
+    "shared_context": { "status": "ok", "source": "prefetch:compiler", "fetched_at": "2026-02-21" }
+  },
+  "quality": {
+    "complete_fields": 13,
+    "total_fields": 15,
+    "completeness_pct": 86.7,
+    "files_ok": 13,
+    "files_skipped": 2,
+    "files_error": 0,
+    "files_total": 15,
+    "note": "Python估值工具不可用, 2个文件跳过但有MCP/FMP替代数据"
+  },
+  "dm_quality": {
+    "total_anchors": 187,
+    "h_count": 112,
+    "r_count": 54,
+    "s_count": 21,
+    "h_pct": 59.9,
+    "anchors_with_source": 187,
+    "integrity_check": "passed"
+  },
+  "layer_status": {
+    "layer1_mcp": "ok",
+    "layer2_python": "skipped",
+    "layer3_websearch": "ok"
+  }
+}

@@ -1,0 +1,373 @@
+{
+  "ticker": "SMCI",
+  "fetched_at": "2026-02-21",
+  "institutional_summary": {
+    "total_institutions": 1655,
+    "total_13f_filers": 790,
+    "ownership_pct": 53.19,
+    "insider_ownership_pct": 13.87,
+    "shares_outstanding_M": 598.99,
+    "float_M": 499.36,
+    "institutional_shares_held_M": 355.67,
+    "qoq_share_change_pct": 4.64,
+    "net_institutional_flow": "negative — institutions sold 444.6M shares vs bought 142.9M shares last quarter"
+  },
+  "top_holders": [
+    {
+      "rank": 1,
+      "name": "Vanguard Group Inc.",
+      "shares": 68032047,
+      "market_value_K": 1991298,
+      "pct_outstanding": 11.36,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-001|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 2,
+      "name": "BlackRock Inc.",
+      "shares": 41631507,
+      "market_value_K": 1218554,
+      "pct_outstanding": 6.95,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-002|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 3,
+      "name": "State Street Corp",
+      "shares": 22149952,
+      "market_value_K": 648329,
+      "pct_outstanding": 3.70,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-003|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 4,
+      "name": "Geode Capital Management LLC",
+      "shares": 13808499,
+      "market_value_K": 402627,
+      "pct_outstanding": 2.31,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-004|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 5,
+      "name": "Morgan Stanley",
+      "shares": 11287585,
+      "market_value_K": 330388,
+      "pct_outstanding": 1.88,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-005|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 6,
+      "name": "Invesco Ltd.",
+      "shares": 9953780,
+      "market_value_K": 291347,
+      "pct_outstanding": 1.66,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-006|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 7,
+      "name": "Disciplined Growth Investors Inc. MN",
+      "shares": 9637492,
+      "market_value_K": 282089,
+      "pct_outstanding": 1.61,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-007|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 8,
+      "name": "UBS Group AG",
+      "shares": 7410629,
+      "market_value_K": 216909,
+      "pct_outstanding": 1.24,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-008|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 9,
+      "name": "Citadel Advisors LLC",
+      "shares": 6677412,
+      "market_value_K": 195448,
+      "pct_outstanding": 1.11,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-009|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 10,
+      "name": "Norges Bank (Norway Sovereign Wealth Fund)",
+      "shares": 4665832,
+      "market_value_K": 136569,
+      "pct_outstanding": 0.78,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-010|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 11,
+      "name": "BNP Paribas Arbitrage SA",
+      "shares": 4508440,
+      "market_value_K": 131962,
+      "pct_outstanding": 0.75,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-011|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 12,
+      "name": "Barclays PLC",
+      "shares": 4487335,
+      "market_value_K": 131344,
+      "pct_outstanding": 0.75,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-012|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 13,
+      "name": "Northern Trust Corp",
+      "shares": 4396455,
+      "market_value_K": 128684,
+      "pct_outstanding": 0.73,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-013|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 14,
+      "name": "Charles Schwab Investment Management",
+      "shares": 4052811,
+      "market_value_K": 118626,
+      "pct_outstanding": 0.68,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-014|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "rank": 15,
+      "name": "Dimensional Fund Advisors LP",
+      "shares": 3971392,
+      "market_value_K": 116259,
+      "pct_outstanding": 0.66,
+      "filing_date": "2025-12-31",
+      "dm": "[SMT-015|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    }
+  ],
+  "notable_moves": [
+    {
+      "type": "net_selling_pressure",
+      "description": "Institutions net sold 301.7M shares last quarter (sold 444.6M vs bought 142.9M), indicating significant institutional distribution",
+      "dm": "[SMT-016|type:S|source:StockAnalysis.com ownership data, Feb 2026]"
+    },
+    {
+      "type": "hedge_fund_activity",
+      "description": "Of 244 current hedge fund holders: 32.4% (79) increased positions, 26.2% (64) decreased, 11.9% (29) exited completely. Net skew toward distribution",
+      "period": "Q3/Q4 2025",
+      "dm": "[SMT-017|type:S|source:HedgeFollow.com SMCI 13F tracker]"
+    },
+    {
+      "type": "citadel_position",
+      "description": "Citadel Advisors holds 6.68M shares ($195M) as of 12/31/2025, ranking ~9th among institutional holders. SMCI is NOT in Citadel's top 5 (SPY, QQQ, TSLA, NVDA, AAPL)",
+      "dm": "[SMT-018|type:H|source:HoldingsChannel 13F + CNBC Citadel portfolio, 2025-12-31]"
+    },
+    {
+      "type": "tudor_large_position",
+      "description": "Tudor Investment Corp Et Al reported the largest 13F position size at 73.35M shares as of 09/30/2025 — notably larger than Vanguard's 68M, suggesting a concentrated hedge fund bet",
+      "dm": "[SMT-019|type:H|source:HoldingsChannel 13F filers page, Q3 2025 filing]"
+    },
+    {
+      "type": "disciplined_growth_concentrated",
+      "description": "Disciplined Growth Investors (MN) holds 9.64M shares (~$282M) — unusual for a relatively small firm to be #7 holder, suggesting high-conviction position",
+      "dm": "[SMT-020|type:H|source:HoldingsChannel 13F, 2025-12-31]"
+    },
+    {
+      "type": "ark_exposure",
+      "description": "SMCI is held within ARK Innovation ETF (ARKK). 104 ETFs total hold SMCI exposure",
+      "dm": "[SMT-021|type:S|source:SwingTradeBot ETF tracker + ARK Invest website]"
+    }
+  ],
+  "short_interest": {
+    "short_shares_M": 91.82,
+    "pct_outstanding": 15.33,
+    "pct_float": 18.39,
+    "days_to_cover": 2.93,
+    "prior_month_short_M": 87.77,
+    "mom_change_pct": 4.61,
+    "trend": "increasing — short interest rose from 87.77M to 91.82M, bearish sentiment growing",
+    "dm": "[SMT-022|type:S|source:StockAnalysis.com SMCI statistics, Feb 2026]"
+  },
+  "insider_activity": {
+    "net_insider_sentiment": "bearish — persistent insider selling, zero open-market purchases",
+    "insider_ownership_pct": 13.87,
+    "recent_transactions": [
+      {
+        "insider": "Charles Liang",
+        "title": "President & CEO",
+        "type": "sell",
+        "shares": 200000,
+        "price_approx": 60.0,
+        "value_approx": 12000000,
+        "date": "2025-07-28",
+        "note": "Largest single sale in 2025",
+        "dm": "[SMT-023|type:R|source:QuiverQuant insider trading + Investing.com]"
+      },
+      {
+        "insider": "Charles Liang",
+        "title": "President & CEO",
+        "type": "sell",
+        "shares": 184694,
+        "price_approx": 50.17,
+        "date": "2025-05-14",
+        "dm": "[SMT-024|type:R|source:QuiverQuant insider trading]"
+      },
+      {
+        "insider": "Charles Liang",
+        "title": "President & CEO",
+        "type": "sell",
+        "shares": 15306,
+        "price_approx": 50.17,
+        "date": "2025-05-14",
+        "dm": "[SMT-025|type:R|source:QuiverQuant insider trading]"
+      },
+      {
+        "insider": "Charles Liang",
+        "title": "President & CEO",
+        "type": "sell",
+        "shares": 46293,
+        "price_approx": 50.17,
+        "value_approx": 2322566,
+        "date": "2025-02-26",
+        "dm": "[SMT-026|type:R|source:Nasdaq.com insider sale article]"
+      },
+      {
+        "insider": "George Kao",
+        "title": "SVP Operations",
+        "type": "sell",
+        "shares": 56904,
+        "date": "2025-11-24",
+        "note": "Net sale of 197,024 shares over past 18 months",
+        "dm": "[SMT-027|type:R|source:GuruFocus George Kao profile]"
+      },
+      {
+        "insider": "Sara Liu (Liang Chiu-Chu)",
+        "title": "Director / 10% Owner",
+        "type": "RSU_vest_and_tax_sale",
+        "shares_acquired": 1330,
+        "shares_sold_for_tax": 717,
+        "price": 47.20,
+        "date": "2025-07",
+        "note": "Routine RSU vesting. 22 sell transactions over 5 years, 0 buys. Holds ~66.9M shares indirectly",
+        "dm": "[SMT-028|type:R|source:StockTitan Form 4 filing + QuiverQuant]"
+      }
+    ],
+    "ceo_5yr_summary": {
+      "total_transactions": 23,
+      "buys": 0,
+      "sells": 23,
+      "six_month_sales_shares": 746293,
+      "six_month_sales_value": 36811881,
+      "dm": "[SMT-029|type:R|source:QuiverQuant Charles Liang profile, Aug 2025 data]"
+    }
+  },
+  "insider_trading_quarterly_trend": {
+    "description": "FMP insider trading data showing quarterly acquired vs disposed transaction counts and shares. acquiredDisposedRatio < 1 indicates net insider selling bias.",
+    "recent_quarters": [
+      {
+        "quarter": "2026-Q1",
+        "acquired_txns": 27,
+        "disposed_txns": 37,
+        "ratio": 0.73,
+        "total_acquired": 101556,
+        "total_disposed": 70566,
+        "open_market_sales": 0
+      },
+      {
+        "quarter": "2025-Q4",
+        "acquired_txns": 23,
+        "disposed_txns": 45,
+        "ratio": 0.51,
+        "total_acquired": 235208,
+        "total_disposed": 387102,
+        "open_market_sales": 2,
+        "note": "Most bearish recent quarter — ratio 0.51, disposed nearly 2x acquired"
+      },
+      {
+        "quarter": "2025-Q3",
+        "acquired_txns": 49,
+        "disposed_txns": 62,
+        "ratio": 0.79,
+        "total_acquired": 2306686,
+        "total_disposed": 668719,
+        "open_market_sales": 6
+      },
+      {
+        "quarter": "2025-Q2",
+        "acquired_txns": 23,
+        "disposed_txns": 42,
+        "ratio": 0.55,
+        "total_acquired": 6079824,
+        "total_disposed": 1366098,
+        "open_market_sales": 8
+      },
+      {
+        "quarter": "2025-Q1",
+        "acquired_txns": 24,
+        "disposed_txns": 30,
+        "ratio": 0.80,
+        "total_acquired": 2151953,
+        "total_disposed": 238250,
+        "open_market_sales": 5
+      }
+    ],
+    "dm": "[SMT-030|type:H|source:FMP insider-trading endpoint, SMCI quarterly data]"
+  },
+  "key_signals": {
+    "signal_1": "Institutional ownership at 53.2% is moderate for a large-cap tech — below typical 70-80% for S&P 500 companies. Reflects governance/accounting concerns lingering post-delisting scare",
+    "signal_2": "Short interest at 15.3% of outstanding (18.4% of float) is elevated — ranks SMCI among the most-shorted large-cap tech stocks. Rising trend from 87.8M to 91.8M shares",
+    "signal_3": "CEO Charles Liang has ZERO open-market purchases over 5 years with 23 sells totaling $37M+ in 6 months — persistent insider selling without any conviction buys",
+    "signal_4": "Tudor Investment Corp holds 73.4M shares (possibly total notional including derivatives) — single largest 13F position, exceeding even Vanguard's passive indexing",
+    "signal_5": "Net institutional outflow: 444.6M shares sold vs 142.9M bought = 301.7M net distribution. Smart money reducing exposure"
+  },
+  "dm_anchors": [
+    "[SMT-001|type:H|source:HoldingsChannel 13F, 2025-12-31] — Vanguard 68.0M shares",
+    "[SMT-002|type:H|source:HoldingsChannel 13F, 2025-12-31] — BlackRock 41.6M shares",
+    "[SMT-003|type:H|source:HoldingsChannel 13F, 2025-12-31] — State Street 22.1M shares",
+    "[SMT-004|type:H|source:HoldingsChannel 13F, 2025-12-31] — Geode Capital 13.8M shares",
+    "[SMT-005|type:H|source:HoldingsChannel 13F, 2025-12-31] — Morgan Stanley 11.3M shares",
+    "[SMT-006|type:H|source:HoldingsChannel 13F, 2025-12-31] — Invesco 10.0M shares",
+    "[SMT-007|type:H|source:HoldingsChannel 13F, 2025-12-31] — Disciplined Growth 9.6M shares",
+    "[SMT-008|type:H|source:HoldingsChannel 13F, 2025-12-31] — UBS 7.4M shares",
+    "[SMT-009|type:H|source:HoldingsChannel 13F, 2025-12-31] — Citadel 6.7M shares",
+    "[SMT-010|type:H|source:HoldingsChannel 13F, 2025-12-31] — Norges Bank 4.7M shares",
+    "[SMT-011|type:H|source:HoldingsChannel 13F, 2025-12-31] — BNP Paribas 4.5M shares",
+    "[SMT-012|type:H|source:HoldingsChannel 13F, 2025-12-31] — Barclays 4.5M shares",
+    "[SMT-013|type:H|source:HoldingsChannel 13F, 2025-12-31] — Northern Trust 4.4M shares",
+    "[SMT-014|type:H|source:HoldingsChannel 13F, 2025-12-31] — Schwab 4.1M shares",
+    "[SMT-015|type:H|source:HoldingsChannel 13F, 2025-12-31] — Dimensional 4.0M shares",
+    "[SMT-016|type:S|source:StockAnalysis.com, Feb 2026] — Net institutional outflow 301.7M shares",
+    "[SMT-017|type:S|source:HedgeFollow.com] — Hedge fund activity breakdown 32.4%/26.2%/11.9%",
+    "[SMT-018|type:H|source:HoldingsChannel+CNBC] — Citadel 6.68M shares, not top 5",
+    "[SMT-019|type:H|source:HoldingsChannel] — Tudor 73.35M shares Q3 2025",
+    "[SMT-020|type:H|source:HoldingsChannel] — Disciplined Growth high-conviction 9.64M shares",
+    "[SMT-021|type:S|source:SwingTradeBot+ARK] — 104 ETFs hold SMCI, including ARKK",
+    "[SMT-022|type:S|source:StockAnalysis.com] — Short interest 91.82M shares, 15.33% OS, 18.39% float",
+    "[SMT-023|type:R|source:QuiverQuant+Investing.com] — CEO Liang sold 200K shares Jul 2025",
+    "[SMT-024|type:R|source:QuiverQuant] — CEO Liang sold 184.7K shares May 2025",
+    "[SMT-025|type:R|source:QuiverQuant] — CEO Liang sold 15.3K shares May 2025",
+    "[SMT-026|type:R|source:Nasdaq.com] — CEO Liang sold 46.3K shares Feb 2025 at $50.17",
+    "[SMT-027|type:R|source:GuruFocus] — SVP Kao sold 56.9K shares Nov 2025",
+    "[SMT-028|type:R|source:StockTitan+QuiverQuant] — Sara Liu RSU vest Jul 2025, 66.9M indirect",
+    "[SMT-029|type:R|source:QuiverQuant] — CEO 5yr: 0 buys, 23 sells, $36.8M in 6 months",
+    "[SMT-030|type:H|source:FMP API] — Quarterly insider trading trend 2025-2026"
+  ],
+  "sources": [
+    "https://www.holdingschannel.com/institutional/holders-of-smci/",
+    "https://stockanalysis.com/stocks/smci/statistics/",
+    "https://hedgefollow.com/stocks/SMCI",
+    "https://www.nasdaq.com/market-activity/stocks/smci/institutional-holdings",
+    "https://finance.yahoo.com/quote/SMCI/holders/",
+    "https://www.quiverquant.com/insiders/1392942/CHARLES-LIANG",
+    "https://www.gurufocus.com/insider/69138/george-kao",
+    "https://www.marketbeat.com/stocks/NASDAQ/SMCI/short-interest/",
+    "https://fintel.io/so/us/smci",
+    "https://www.stocktitan.net/sec-filings/SMCI/form-4-super-micro-computer-inc-insider-trading-activity-4ef3ab332dc8.html",
+    "https://swingtradebot.com/etfs-holding/SMCI",
+    "https://www.investing.com/news/insider-trading-news/super-micro-computer-ceo-charles-liang-sells-232m-in-stock-93CH-3901011"
+  ]
+}

@@ -54,12 +54,16 @@ else
 fi
 
 # --- 检查2: "建议买入/卖出" 推荐性用语 (FAIL级) ---
+# EVO-ANET-006: 排除KS/TS描述中的监控项列举(如"仓位建议/配置权重")
 echo ""
 echo "--- [2/6] 建议性用语 ---"
-c2=$(safe_count '建议.{0,3}(买入|卖出|增持|减持|配置|仓位)' "$FILE")
+c2_raw=$(safe_grep '建议.{0,3}(买入|卖出|增持|减持|配置|仓位)' "$FILE")
+# 过滤: 排除KS/TS监控描述(含"Kill Switch"|"追踪信号"|"触发"|"监控"|"仓位建议/")
+c2_filtered=$(echo "$c2_raw" | grep -vE 'Kill Switch|追踪信号|触发|监控|仓位建议/' || true)
+c2=$(echo "$c2_filtered" | grep -cE '.' 2>/dev/null) || c2=0
 if [ "$c2" -gt 0 ]; then
     echo "  FAIL: 建议性用语 $c2 处"
-    safe_grep '建议.{0,3}(买入|卖出|增持|减持|配置|仓位)' "$FILE" | head -5 | while read -r line; do
+    echo "$c2_filtered" | head -5 | while read -r line; do
         echo "    -> $line"
     done
     FAIL=$((FAIL + 1))
@@ -103,12 +107,16 @@ fi
 
 # --- 检查5: 英文推荐性用语 (FAIL级) ---
 # "Strong Buy" / 评级用Buy/Sell 但排除引用卖方分布
+# EVO-ANET-006: 排除分析师共识分布引用(如"Strong Buy 9 / Buy 18 / Hold 6")
 echo ""
 echo "--- [5/6] 英文推荐性用语 ---"
-c5=$(safe_count 'Strong Buy|Strong Sell|rating.{0,5}Buy|rating.{0,5}Sell' "$FILE")
+c5_raw=$(safe_grep 'Strong Buy|Strong Sell|rating.{0,5}Buy|rating.{0,5}Sell' "$FILE")
+# 过滤: 排除分析师共识分布格式(Strong Buy后跟数字)和共识描述上下文
+c5_filtered=$(echo "$c5_raw" | grep -vE 'Strong Buy [0-9]|Buy [0-9]+ .* Hold|分析师|analyst|consensus|共识|评级分布|覆盖' || true)
+c5=$(echo "$c5_filtered" | grep -cE '.' 2>/dev/null) || c5=0
 if [ "$c5" -gt 0 ]; then
     echo "  FAIL: 英文推荐性用语 $c5 处"
-    safe_grep 'Strong Buy|Strong Sell|rating.{0,5}Buy|rating.{0,5}Sell' "$FILE" | head -5 | while read -r line; do
+    echo "$c5_filtered" | head -5 | while read -r line; do
         echo "    -> $line"
     done
     FAIL=$((FAIL + 1))

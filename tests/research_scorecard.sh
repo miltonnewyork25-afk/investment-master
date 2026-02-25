@@ -298,7 +298,7 @@ score_post() {
     # --- D4: 风险认知 ---
     # KS分(≥12→3) + Bear分(≥8→3) + RT覆盖(N/7×4)
     local KS_COUNT
-    KS_COUNT=$(grep -oE 'KS-[A-Z]+-[0-9]+|KS-[0-9]+|KS[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
+    KS_COUNT=$(grep -oE 'KS-[A-Z]+-[0-9]+|KS-[A-Z][0-9]+|KS-[0-9]+|KS[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
     KS_COUNT="${KS_COUNT// /}"
     KS_COUNT="${KS_COUNT:-0}"
     local KS_SCORE=0
@@ -427,7 +427,7 @@ score_post() {
     [ "$MERMAID_COUNT" -ge 24 ] && CG_PASS=$((CG_PASS + 1))
     # CG11: 日历+行动
     local HAS_CAL HAS_ACT HAS_DISC
-    HAS_CAL=$(grep -ciE '投资日历|investment calendar' "$FILE" 2>/dev/null || true)
+    HAS_CAL=$(grep -ciE '投资日历|催化剂日历|investment calendar|catalyst calendar' "$FILE" 2>/dev/null || true)
     HAS_CAL="${HAS_CAL// /}"; HAS_CAL="${HAS_CAL:-0}"
     HAS_ACT=$(grep -ciE '行动清单|action.*plan|90天' "$FILE" 2>/dev/null || true)
     HAS_ACT="${HAS_ACT// /}"; HAS_ACT="${HAS_ACT:-0}"

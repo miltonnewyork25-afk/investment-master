@@ -232,14 +232,14 @@ if [ "$PHASE" -ge 1 ]; then
 fi
 
 # ============================================================
-# Layer 3: DM锚点密度 — Phase 3+
-# 设计: 检测"有文字但无数据支撑"的情况
+# Layer 3: DM锚点密度 — Phase 1+ (EVO-ANET-003: 从Phase 3前移至Phase 1)
+# 设计: 检测"有文字但无数据支撑"的情况，越早发现越好
 # ============================================================
-if [ "$PHASE" -ge 3 ]; then
+if [ "$PHASE" -ge 1 ]; then
     echo ""
     echo "--- Layer 3: 数据密度 (Phase $PHASE) ---"
 
-    # 统计所有产出中的DM锚点
+    # 统计所有产出中的DM锚点(累计)
     DM_COUNT=0
     for f in "$STAGING"/*.md reports/${TICKER}/${TICKER}_Phase*.md; do
         if [ -f "$f" ]; then
@@ -249,15 +249,49 @@ if [ "$PHASE" -ge 3 ]; then
         fi
     done
 
-    # 预期: Tier 3报告至少100个unique DM锚点到Phase 3
-    DM_WARN_MIN=$((TH_DM_MIN / 2))
-    if [ "$DM_COUNT" -ge $TH_DM_MIN ]; then
-        check_pass "DM锚点: $DM_COUNT (≥$TH_DM_MIN)"
-    elif [ "$DM_COUNT" -ge $DM_WARN_MIN ]; then
-        check_warn "DM锚点偏少: $DM_COUNT (建议≥$TH_DM_MIN)"
+    # 按Phase阶段调整预期 (EVO-ANET-003: 每Phase≥30，累计阶梯式增长)
+    DM_EXPECTED=$((PHASE * 30))
+    if [ "$DM_EXPECTED" -gt $TH_DM_MIN ]; then
+        DM_EXPECTED=$TH_DM_MIN
+    fi
+    DM_WARN_MIN=$((DM_EXPECTED / 2))
+
+    if [ "$DM_COUNT" -ge "$DM_EXPECTED" ]; then
+        check_pass "DM锚点: $DM_COUNT (≥${DM_EXPECTED} for Phase $PHASE)"
+    elif [ "$DM_COUNT" -ge "$DM_WARN_MIN" ]; then
+        check_warn "DM锚点偏少: $DM_COUNT (Phase $PHASE建议≥$DM_EXPECTED)"
     else
-        check_fail "DM锚点严重不足: $DM_COUNT (需≥$TH_DM_MIN)"
-        echo "         → 回顾: 分析是否缺乏数据支撑?"
+        check_fail "DM锚点严重不足: $DM_COUNT (Phase $PHASE需≥$DM_EXPECTED)"
+        echo "         → Agent prompt是否遗漏DM标注要求? 每Phase应≥30个DM引用"
+    fi
+fi
+
+# ============================================================
+# Layer 3.5: 前瞻完整性检查 — Phase 3+ AI相关公司 (EVO-ANET-005)
+# 设计: 防止前瞻视角缺失导致v1.1补丁
+# ============================================================
+if [ "$PHASE" -ge 3 ]; then
+    # 检测是否有checkpoint中的PW≥4(混合/发现模式=AI相关)
+    PW_VAL=0
+    if [ -f "$DATA/checkpoint.yaml" ]; then
+        PW_VAL=$({ grep -oE 'pw: [0-9]+' "$DATA/checkpoint.yaml" 2>/dev/null | grep -oE '[0-9]+' || echo "0"; } | head -1 | tr -d ' ')
+        PW_VAL="${PW_VAL:-0}"
+    fi
+
+    if [ "$PW_VAL" -ge 4 ]; then
+        FWD_COUNT=0
+        for f in "$STAGING"/S07*.md "$STAGING"/S08*.md "$STAGING"/S09*.md; do
+            if [ -f "$f" ]; then
+                FC=$({ grep -ciE '前沿变量|Token经济|推理需求|Agent系统|inference|Jevons' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+                FC="${FC:-0}"
+                FWD_COUNT=$((FWD_COUNT + FC))
+            fi
+        done
+        if [ "$FWD_COUNT" -ge 3 ]; then
+            check_pass "前瞻变量: $FWD_COUNT mentions in P3 staging (PW=$PW_VAL)"
+        else
+            check_warn "前瞻变量偏少: $FWD_COUNT (<3) — PW≥4的AI相关公司应含Token经济/推理/Agent分析"
+        fi
     fi
 fi
 
