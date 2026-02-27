@@ -6,9 +6,9 @@ worktree: "半导体"
 industry: "半导体"
 last_updated: "2026-02-27T22:00:00+00:00"
 
-current_phase: 5
-phase_status: "v2.0_phase5_complete"
-phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4, 5]
+current_phase: "complete"
+phase_status: "v2.0_complete_assembled"
+phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4, 5, "complete"]
 v1_phases_archived: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4, 5, 5.5]
 
 target_chars: 350000
@@ -94,3 +94,23 @@ assembly_errata:
   implied_downside_corrected: "-41%"
   cq_weighted_corrected: "56.4%"
   assembly_ready: true
+
+complete_report:
+  file: "ARM_Complete_v2.0_2026-02-27.md"
+  chars: 359978
+  bytes: 571284
+  lines: 10554
+  chapters: 34
+  appendices: 7
+  mermaid: 50
+  dm_unique: 108
+  ci: 7
+  ks: 27
+  scorecard: 93
+  cg_pass: "18/18"
+  cg_errors: 0
+  cg_warnings: 2
+  rating: "审慎关注"
+  final_anchor: "80.4B"
+  implied_downside: "-41%"
+  assembled_at: "2026-02-27"
