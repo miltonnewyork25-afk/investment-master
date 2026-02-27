@@ -315,6 +315,34 @@ reports:
       - "Discovery System完整流程(条件评级+Kill Switch)"
     similar_to: [TSM, AMD, AMAT, LRCX, KLAC]
 
+  ARM:
+    industry: 半导体
+    version: "v2.0"
+    date: "2026-02-27"
+    chars: 359978
+    bytes: 571284
+    cg: "PASSED(0E/2W)"
+    poss_width: 6
+    methodology: mixed_mode
+    ovm: false
+    erm: false
+    a_score: 6.94
+    sgi: 8.51
+    business_model: [ip_licensing, royalty_per_chip, css_subsystem, architecture_standard, datacenter_expansion, phoenix_chips]
+    risk_profile: [riscv_substitution, softbank_governance, pricing_power_erosion, earning_quality_distortion, arm_china_geopolitical, pe_compression]
+    key_lessons:
+      - "RISC-V CDS定价权量化: 弹性函数ε(t)=ε₀×(1-R/R_crit)^α将定价权从二元转为连续函数——可迁移到所有面临开源替代的IP公司"
+      - "情景P&L Build-out: 5情景×5年FCFF→PV桥接+CAPM→发现即使S1(+3.3%/年)也低于CAPM要求(9.9%)→Sharpe≈-1.0"
+      - "v2.0重做验证铁律J: v1.0(3轮组装46/100)→v2.0(单会话组装93/100)+47pp——多会话组装=质量杀手"
+      - "Python DCF验证捕获关键算术错误: $55.2B→$60.7B期望市值(5个情景概率加权求和)"
+      - "CG8 regex修复: [A-Z]+→[A-Za-z0-9]+支持DM-P1-xxx格式——影响所有未来报告"
+      - "承重墙联合概率2.0%(条件概率,含B3千斤顶): 6墙×单因素概率→联合成功极低→141x P/E隐含假设几乎不可能全部实现"
+    framework_assets:
+      - "CDS定价弹性函数(可迁移到Oracle/Unity/Redis等面临开源替代的公司)"
+      - "情景P&L Build-out+CAPM风险调整(可迁移到所有高P/E公司)"
+      - "verify_dcf_arithmetic.py DCF验证脚本模板"
+    similar_to: [INTC, AMD, QCOM, AVGO, SNPS, CDNS]
+
   RCL:
     industry: 消费品
     version: "v1.0"
@@ -404,6 +432,12 @@ similarity_graph:
     reason: "政府依赖型估值+地缘政治溢价+高PW发现系统+商业化不确定性"
   - pair: [INTC, SMCI]
     reason: "半导体生态链上下游+AI服务器需求+估值溢价vs基本面"
+  - pair: [ARM, INTC]
+    reason: "架构竞争(ARM vs x86)+护城河迁移+高不确定性估值+承重墙联合概率"
+  - pair: [ARM, QCOM]
+    reason: "ARM生态依赖+IP授权模式(QTL)+RISC-V替代风险+手机芯片定价权"
+  - pair: [ARM, SNPS]
+    reason: "半导体IP/EDA+定价权+面临开源替代(CDS弹性函数可迁移)+高P/E"
   - pair: [RCL, CCL]
     reason: "邮轮三巨头+疫后恢复+杠杆下降+收益管理+私人目的地"
   - pair: [RCL, DAL]

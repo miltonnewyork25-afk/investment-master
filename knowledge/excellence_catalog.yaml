@@ -3,9 +3,9 @@
 # 每当新报告某板块超越现有最佳时，自动更新此目录
 
 metadata:
-  version: "1.7"
+  version: "1.8"
   last_updated: "2026-02-27"
-  total_reports_analyzed: 27
+  total_reports_analyzed: 28
   quality_threshold: 4.0/5.0
 
 # ============================================================
@@ -250,6 +250,24 @@ valuation_methodology:
     key_innovation: "证明不同生态(美国/中国)的组装商GM在<10%区间收敛，揭示组装商利润率天花板是结构性而非周期性"
     when_to_use: "跨国/跨生态比较中，验证利润率是行业结构决定还是公司能力决定"
     transferable_to: ["服务器组装", "电子制造", "跨国竞争分析", "利润率可持续性评估"]
+
+  cds_pricing_elasticity:
+    champion: "ARM_Ch14A"
+    score: 4.4
+    report_path: "reports/ARM/ARM_Complete_v2.0_2026-02-27.md"
+    method: "定价弹性函数建模: ε(t) = ε₀ × (1 - R(t)/R_crit)^α → 按市场加权渗透率 → 弹性→收入净效果 → 终态估值折损"
+    key_innovation: "将定价权从二元(有/无)转化为开源替代渗透率的连续函数,三参数(ε₀/R_crit/α)可校准,配有敏感性分析和提价事件→收入差额→市值折损传导链"
+    when_to_use: "IP/授权型公司面临开源替代时 — 评估定价权的'渐进侵蚀'速度而非预测'突然丧失'时点"
+    transferable_to: ["IP授权(ARM/Qualcomm-QTL)", "企业软件vs开源(Oracle vs PostgreSQL, Redis vs Valkey)", "游戏引擎(Unity vs Godot)", "EDA(Synopsys vs开源)", "所有面临开源替代的护城河公司"]
+
+  scenario_pnl_buildout:
+    champion: "ARM_Ch29"
+    score: 4.3
+    report_path: "reports/ARM/ARM_Complete_v2.0_2026-02-27.md"
+    method: "5情景×5年逐年P&L Build-out(收入/毛利/R&D/SBC/OM/NM/NI/FCFF) → FCFF→PV桥接(WACC折现) → 概率加权期望值 → CAPM风险调整回报+Sharpe ratio"
+    key_innovation: "情景分析从'终态市值×概率'升级为'全路径P&L→DCF→CAPM'三层定量化。发现即使最乐观S1(+3.3%/年)也低于CAPM要求回报(9.9%)→概率加权Sharpe≈-1.0='任何情景都不是好投资'"
+    when_to_use: "PW 4-6混合模式的多情景估值 — 需要用完整P&L路径替代简单市值乘法,特别是P/E将大幅压缩的高估值公司"
+    transferable_to: ["高估值成长股(P/E>50x)", "转型期公司(多条路径)", "周期股多情景", "所有Tier 3 Phase 5情景分析"]
 
   valuation_independent_insights:
     champion: "ETN_Ch26.5"
