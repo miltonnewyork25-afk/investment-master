@@ -67,13 +67,30 @@ hypotheses:
 quick_ref:
   v1_complete_chars: 172797
   v2_target_chars: 350000
+  v2_actual_chars: 373341
+  v2_actual_bytes: 588778
   price_at_analysis: 128.14
-  price_latest: 123.78
+  price_latest: 129.26
   market_cap: "136.1B"
-  market_cap_latest: "~131B"
-  pe_ttm: 140
-  gross_margin: "95.4%"
+  market_cap_latest: "~137.3B"
+  pe_ttm: 130
+  pe_ttm_at_analysis: 141
+  gross_margin: "94.2%"
   revenue_ttm: "4.671B"
   fy2026_guided: "~4.79B"
   ocf_ni_ttm: 1.90
   non_gaap_op_margin: "40.7%"
+  dso_latest: 146
+  dso_at_analysis: 173
+  sbc_rev_q2: "23.3%"
+  dm_total: 225
+  mermaid_total: 50
+  ci_total: 7
+  ks_total: 9
+
+assembly_errata:
+  ev_corrected: "60.7B"
+  final_anchor_corrected: "80.4B"
+  implied_downside_corrected: "-41%"
+  cq_weighted_corrected: "56.4%"
+  assembly_ready: true
