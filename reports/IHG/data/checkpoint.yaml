@@ -1,0 +1,53 @@
+schema_version: "2.0"
+ticker: IHG
+company: "InterContinental Hotels Group PLC"
+framework_version: v17.0
+worktree: "消费品"
+industry: "消费品"
+last_updated: "2026-02-27T09:00:00+00:00"
+
+current_phase: 0.75
+phase_status: thesis_crystallized
+phases_completed: ["-1", "-0.5", "0", "0.75"]
+
+target_chars: 350000
+target_range: "330K-400K"
+hard_floor: 200000
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
+  pw: 5.5
+  sgi: 5.5
+  a_score: 6.5
+  route: "mixed_traditional_plus_appendix"
+
+cq_registry:
+  CQ1: "估值折价43% vs HLT — 低估还是合理?"
+  CQ2: "净系统增长4.7%可持续性"
+  CQ3: "RevPAR减速影响"
+  CQ4: "负权益+激进回购可持续性"
+  CQ5: "收入口径突变原因"
+  CQ6: "IHG Rewards缩小品牌差距?"
+  CQ7: "12-15% EPS CAGR可信度"
+  CQ8: "英国ADR系统性折价?"
+  CQ9: "Airbnb长期威胁"
+
+key_data:
+  market_cap: "$21.6B"
+  stock_price: "$143.06"
+  pe_ratio: 29.4
+  ev_ebitda: 18.9
+  fcf_yield: "4.0%"
+  net_debt_ebitda: 2.6
+  fmp_dcf: "$166.36"
+  rooms: "1,026K"
+  pipeline: "342K"
+  net_system_growth: "4.7%"
+  us_revpar_yoy: "-1.6%"
+
+hypotheses:
+  NH1: "43%折价中15-20pp来自制度性因素"
+  NH2: "4引擎实际共享1个底层驱动"
+  NH3: "特许纯度非线性提升中"
+  NH4: "全球RevPAR结构性减速"
