@@ -319,6 +319,37 @@ if [ "$PHASE" -ge 4 ]; then
 fi
 
 # ============================================================
+# Layer 4.5: 薄章节检测 — Phase≥5 (EVO-ARM-002)
+# 设计: Complete组装前检测<1500字符章节,防止章节厚度极不均匀
+# ============================================================
+if [ "$PHASE" -ge 5 ]; then
+    THIN_DETECTOR="$(cd "$(dirname "$0")" && pwd)/thin_chapter_detector.sh"
+    # 查找Complete或最新Phase报告
+    COMPLETE_FILE=""
+    for cf in reports/${TICKER}/${TICKER}_Complete*.md; do
+        if [ -f "$cf" ]; then COMPLETE_FILE="$cf"; fi
+    done
+    if [ -z "$COMPLETE_FILE" ]; then
+        # 回退: 最新Phase报告
+        for cf in reports/${TICKER}/${TICKER}_Phase*.md; do
+            if [ -f "$cf" ]; then COMPLETE_FILE="$cf"; fi
+        done
+    fi
+    if [ -f "$THIN_DETECTOR" ] && [ -n "$COMPLETE_FILE" ]; then
+        echo ""
+        echo "--- Layer 4.5: 薄章节检测 ---"
+        THIN_EXIT=0
+        THIN_RESULT=$(bash "$THIN_DETECTOR" "$COMPLETE_FILE" 1500 2>/dev/null) || THIN_EXIT=$?
+        if [ "$THIN_EXIT" -eq 1 ]; then
+            THIN_COUNT=$(echo "$THIN_RESULT" | grep '薄章节数:' | grep -oE '[0-9]+' | head -1)
+            check_warn "薄章节检测: ${THIN_COUNT:-?}个章节<1500字符 → bash scripts/thin_chapter_detector.sh $COMPLETE_FILE"
+        else
+            check_pass "薄章节检测: 所有章节≥1500字符"
+        fi
+    fi
+fi
+
+# ============================================================
 # 汇总 + 修复建议
 # ============================================================
 echo ""
