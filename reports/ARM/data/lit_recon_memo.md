@@ -1,5 +1,5 @@
-# ARM Holdings (ARM) — 文献侦察备忘录 v1.1
-> Phase -0.5 | 2026-02-25 | 5路WebSearch+MCP数据 | v1.1: 整合全部5路Agent产出
+# ARM Holdings (ARM) — 文献侦察备忘录 v2.0
+> Phase -0.5 v2.0刷新 | 2026-02-25 | 5路WebSearch+MCP数据 | v2.0: 数据刷新+新增发现
 
 ---
 
@@ -271,3 +271,37 @@
 5. **"ARM的真实TAM上限=全球芯片收入的1-2%"** — IP授权模式的数学天花板
 6. **"SoftBank关联授权=收入质量折扣"** — 剔除SoftBank后授权收入下降5%, 30%关联方收入=Visa给自己刷卡
 7. **"ARM从未拥有'正常'估值, 可能永远不会"** — IPO以来P/E区间142x-1073x, 3年均值333x, 传统估值框架完全失效
+
+---
+
+## 9. v2.0数据刷新新增发现 (2026-02-25)
+
+### 9.1 分析师评级重大变化
+- **Goldman Sachs下调至SELL** (2025-12-15): $160→$120, 理由="limited leverage to AI cycle"+商业模式转型风险
+- **BofA上调PT** (2026-02-24): $135→$140, 评级维持Neutral, 理由=市场份额展望
+- **共识**: 20位分析师, Buy共识$160.85, Strong Buy 35% + Buy 55% + Strong Sell 5%(Goldman)
+- **KeyBanc** PT从$200→$170 | **RBC** PT从$140→$130
+
+### 9.2 OCF/NI TTM大幅改善
+- FY2025 OCF/NI = 0.50 (异常低, 应收暴增一次性) → **TTM OCF/NI = 1.90** (大幅回归)
+- 这意味着H1(盈利质量三重扭曲)的OCF维度需要重新评估: FY2025的$397M OCF是周期性低点, 非结构性
+
+### 9.3 Non-GAAP利润率压缩信号
+- Q3 FY26 Non-GAAP营业利润率: **40.7%** (YoY从45.0%下降)
+- 原因: R&D从$485M→$737M (+52%), Phoenix+CSS+v10开发投入上升
+- 这与KA-09(95%毛利率维持)和CQ-6(Phoenix利润率影响)高度相关
+
+### 9.4 RISC-V竞争加速
+- **Tenstorrent + Allen Wu(前ARM中国CEO)**: 合作进军中国市场 — 具有讽刺性的人才流失
+- **StarFive(香港)**: RISC-V数据中心芯片Q1 2026量产 — 时间线比预期快
+- **Google RISC-V AOSP**: FOSDEM 2026展示进展, 但仍在CTS/VTS合规阶段
+- **Qualcomm "Snapdragon Data Center"**: 基于Ventana RISC-V架构, 直接定位vs ARM Neoverse
+
+### 9.5 ARM 12月暴跌20%
+- ARM股价12月从~$160→$80区间, 跌幅~20% (部分因保证金贷款担忧+科技板块抛售)
+- $80低点接近SoftBank $200亿满额保证金的$87触发线
+- 随后反弹至$128 (2月), 但仍低于200日均线$138.6
+
+### 9.6 Polymarket事件
+- "Will ARM beat Q3 FY26 earnings?" — **已解决YES** (Non-GAAP EPS $0.43 beat $0.41)
+- ARM/SoftBank在Polymarket上无高流动性结构性事件市场

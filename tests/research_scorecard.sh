@@ -265,11 +265,11 @@ score_post() {
     local CQ_CLOSED=0
     # 方式1: 标准闭环关键词
     local CQ_C1
-    CQ_C1=$(grep -cE '最终置信度|最终回答|如果我们错了' "$FILE" 2>/dev/null || true)
+    CQ_C1=$(grep -cE '最终置信度|最终回答|如果我们错了|置信度演化表|置信度从.*→|CQ闭环总结|CQ回答' "$FILE" 2>/dev/null || true)
     CQ_C1="${CQ_C1// /}"; CQ_C1="${CQ_C1:-0}"
     # 方式2: CQ加权置信度演化表 (PLTR/RDDT格式)
     local CQ_C2
-    CQ_C2=$(grep -cE 'CQ加权置信度|CQ.*闭环|置信度路径|置信度演化' "$FILE" 2>/dev/null || true)
+    CQ_C2=$(grep -cE 'CQ加权置信度|CQ.*闭环|置信度路径|置信度演化|加权平均置信度|CQ.*权重.*置信度' "$FILE" 2>/dev/null || true)
     CQ_C2="${CQ_C2// /}"; CQ_C2="${CQ_C2:-0}"
     # 方式3: P0.5假设+置信度行 (per-CQ closure)
     local CQ_C3
