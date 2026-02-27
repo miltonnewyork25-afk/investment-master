@@ -282,3 +282,33 @@ entries:
   # SEMI从SMCI回升原因: 横向对比的方法论创新价值极高(3个冠军), 内容密度4.3/5
   # CG FAIL是脚本不兼容而非报告质量问题 — 需EVO-SEMI-001根治
   # 横向对比首作: 10 Session/939K/534 EC/17 KS/96 Mermaid — 工作流验证通过
+
+  - ticker: "INTC"
+    date: "2026-02-25"
+    report: "INTC_Complete_v1.0_2026-02-25.md"
+    chars: "254K"
+    cg_result: "PASSED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 50
+    scorecard: 88
+    near_miss_score: 0
+    quality: 4.1
+    top_technique: "护城河制度迁移分析(垄断→寡头→竞争三阶段)+承重墙联合概率2.0%"
+    top_lesson: "A-Score v2.0+SGI+Discovery System三工具联合无冲突; PW=8发现系统适合高不确定性公司"
+    evolution_proposed: "EVO-INTC-001护城河迁移模板+EVO-INTC-002联合概率+EVO-INTC-004密度门控"
+    evolution_status: approved
+
+  - ticker: "ARM"
+    date: "2026-02-27"
+    report: "ARM_Complete_v2.0_2026-02-27.md"
+    chars: "360K"
+    cg_result: "PASSED(0E/2W)"
+    compliance: "PASSED"
+    dm_anchors: 108
+    scorecard: 93
+    near_miss_score: 0
+    quality: 4.2
+    top_technique: "RISC-V CDS定价权量化(版税弹性函数建模)+情景P&L Build-out(5情景×5年FCFF桥接)"
+    top_lesson: "v2.0重做验证单会话组装铁律(v1.0 46/100→v2.0 93/100); CG8 DM regex需支持[A-Za-z0-9]+; Python DCF验证捕获$55.2B→$60.7B关键算术错误"
+    evolution_proposed: "EVO-ARM-001 CG8-regex修复已实施; EVO-ARM-002 v2.0重做流程模板(7会话渐进深化); EVO-ARM-003 DCF验证脚本模板化"
+    evolution_status: pending
