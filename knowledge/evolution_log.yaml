@@ -352,3 +352,44 @@ entries:
   # H2(CDS)是报告级原创——"RISC-V不需要替代ARM, 存在即限制定价权"是可迁移方法论
   # 核心教训: 体量不足+组装质量是拉低分数的主因, 而非分析能力
   # 紧急: EVO-ARM-003(单会话组装)是流程层P0修复, 否则未来报告持续受损
+
+  - ticker: "RCL"
+    date: "2026-02-27"
+    report: "RCL_Complete_Deep_Dive_2026-02-27.md"
+    chars: "317K"
+    bytes: "538K"
+    cg_result: "PASSED(0E/3W)"
+    compliance: "PASSED"
+    dm_anchors: 0
+    dm_strategy: "数据审计摘要(附录G) — DM覆盖率95%+6折叠源表+12交叉验证"
+    mermaid_count: 56
+    pw: 5.2
+    method: "mixed"
+    a_score: "6.04/10 (专才型, SGI=7.25)"
+    sgi: "7.25 (专才, 100%邮轮收入)"
+    scorecard: "92/100"
+    near_miss_score: 0
+    quality: 4.2
+    top_technique: "Yield Purity Decomposition(YPD收益纯度分解32-36%结构性) + Airline Mirror 2014-2019(6/10维度匹配) + Zero-Revenue Event Insurance Pricing(ZREIP $7.50/股折价)"
+    top_lesson: |
+      1. Phase 1-3系统性悲观偏差+8~16pp — 红队P4需双向校准(不仅是挑战乐观, 也要纠正悲观); 承重墙永久损失模型忽略恢复速度→高估10x
+      2. 522K staging超限Assembly Agent失败 — bash cat拼接+sed清理有效但手工, 需分段Assembly策略(≤200K/Agent)
+      3. DM锚点=0但数据审计摘要通过CG8 — 附录化方案(DM覆盖率+折叠源表)是合理替代, 但长期仍需恢复Agent DM注入
+      4. 56 Mermaid(全系列最多)验证图表密度对92/100 scorecard的贡献
+      5. 单会话组装(铁律J)首次成功执行 — 相比ARM(3轮组装→3.5分)效果显著(1轮→4.2分)
+    evolution_proposed: |
+      EVO-RCL-001: Phase 1-3悲观偏差检测器 — Phase 3完成后自动检测: 如果看空概率>60%且无明确基本面恶化证据, 触发"乐观端校准"提醒 [P1, 分析校准]
+      EVO-RCL-002: YPD方法论模板化 — 收益分解(结构性vs周期性)适用于任何"创新高后估值争议"行业(邮轮/航空/酒店/零售) [P2, 方法论资产]
+      EVO-RCL-003: ZREIP方法论模板化 — 零收入事件保险定价适用于任何有尾部灾难风险的行业(邮轮/航空/旅游/线下零售) [P2, 方法论资产]
+      EVO-RCL-004: 大报告分段Assembly — staging总量>300K时自动触发分段(P1-2/P3/P4-5分三批), 每批≤200K [P1, 流程改进]
+      EVO-RCL-005: Airline Mirror行业类比通用化 — 当行业经历"灾后恢复+估值重评"时, 标准化6维匹配框架(收入恢复/利润率/杠杆/估值/资本配置/市场结构) [P2, 方法论资产]
+      冠军目录待注册: YPD收益纯度分解(4.3) + Airline Mirror行业类比(4.1) + ZREIP事件保险定价(4.2) [P2]
+    evolution_status: pending
+
+  # --- 质量趋势更新 ---
+  # ETN-v2(4.3) → SMCI(3.9)↓ → SEMI(4.3)↑ → INTC(4.1)↓ → ARM(3.5)↓↓ → RCL(4.2)↑↑
+  # RCL(4.2)从ARM(3.5)显著反弹+0.7, 验证铁律J(单会话组装)的效果
+  # 关键归因: (1)单会话组装恢复章节一致性 (2)56 Mermaid全系列最多 (3)92/100 scorecard
+  # Phase 1-3悲观偏差是新发现的系统性问题: 红队需+8~16pp向上修正, 暗示Phase 1-3分析的隐含lock-in悲观锚
+  # 消费品行业首份Tier 3: A-Score v2.0(6.04)+SGI(7.25)在消费品的首次实战, 确认跨行业泛化
+  # DM策略: 数据审计摘要通过CG8, 但DM=0仍是技术债务(与VRT同等级, 低于SMCI/INTC的102)

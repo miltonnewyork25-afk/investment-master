@@ -3,9 +3,9 @@
 # 每当新报告某板块超越现有最佳时，自动更新此目录
 
 metadata:
-  version: "1.6"
-  last_updated: "2026-02-25"
-  total_reports_analyzed: 25
+  version: "1.7"
+  last_updated: "2026-02-27"
+  total_reports_analyzed: 27
   quality_threshold: 4.0/5.0
 
 # ============================================================
@@ -357,6 +357,45 @@ risk_topology_methodology:
     when_to_use: "Tier 3 Phase 4: MVP模式(单公司)或Full模式(横向对比)"
     transferable_to: ["所有行业", "任何≥6个风险的分析"]
     skill_doc: ".claude/skills/risk-topology/SKILL.md"
+
+# ============================================================
+# 收益分解分析 (Revenue Decomposition)
+# ============================================================
+revenue_decomposition:
+  yield_purity_decomposition:
+    champion: "RCL_Ch10-11"
+    score: 4.3
+    report_path: "reports/RCL/RCL_Complete_Deep_Dive_2026-02-27.md"
+    method: "收益增长拆解为结构性(私人目的地/舰队升级/收益管理)vs周期性(复苏反弹/通胀传导/压抑需求) → 结构性比例量化 → 可持续性判定"
+    key_innovation: "将'创新高是否可持续'从观点之争转化为可量化的结构性比例(32-36%), 提供客观判定框架"
+    when_to_use: "行业收入/利润创历史新高且市场对可持续性存在分歧时 — 拆解'新高=泡沫vs新高=升级'"
+    transferable_to: ["消费品(邮轮/航空/酒店)", "零售复苏", "周期性行业创新高", "所有'结构vs周期'争议"]
+
+# ============================================================
+# 行业灾后类比 (Post-Disaster Industry Analogy)
+# ============================================================
+post_disaster_analogy:
+  airline_mirror_framework:
+    champion: "RCL_Ch16"
+    score: 4.1
+    report_path: "reports/RCL/RCL_Complete_Deep_Dive_2026-02-27.md"
+    method: "6维标准化匹配(收入恢复/利润率/杠杆/估值/资本配置/市场结构) → 匹配度评分(x/10) → 均值回归时间表预测 → 差异点识别"
+    key_innovation: "航空2014-2019灾后恢复5年周期作为邮轮基准类比(6/10匹配), 提供估值均值回归的时间维度参考"
+    when_to_use: "行业经历灾难性事件(疫情/金融危机/地缘冲突)后恢复并创新高时 — 需要历史参照系判断均值回归概率"
+    transferable_to: ["航空", "旅游/酒店", "线下零售", "能源(油价暴跌后)", "所有灾后恢复行业"]
+
+# ============================================================
+# 尾部风险定价 (Tail Risk Pricing)
+# ============================================================
+tail_risk_pricing:
+  zero_revenue_event_insurance:
+    champion: "RCL_Ch18"
+    score: 4.2
+    report_path: "reports/RCL/RCL_Complete_Deep_Dive_2026-02-27.md"
+    method: "零收入事件识别(疫情/地缘/新型病毒) → 三因素模型(概率×持续期×恢复速度) → 年化保险成本/股 → 合理折价区间"
+    key_innovation: "将'尾部风险'从定性担忧转化为可定价折扣($7.50/股/年), 使尾部风险参与估值而非仅存在于风险披露"
+    when_to_use: "公司存在'完全停止运营'风险(收入归零事件概率>1%) — 传统DCF忽略的极端情景"
+    transferable_to: ["邮轮/航空/旅游", "线下零售(强制关店)", "能源(ESG政策)", "所有有零收入黑天鹅的行业"]
 
 # ============================================================
 # 动态更新机制

@@ -315,6 +315,34 @@ reports:
       - "Discovery System完整流程(条件评级+Kill Switch)"
     similar_to: [TSM, AMD, AMAT, LRCX, KLAC]
 
+  RCL:
+    industry: 消费品
+    version: "v1.0"
+    date: "2026-02-27"
+    chars: 317000
+    bytes: 538489
+    cg: "PASSED(0E/3W)"
+    poss_width: 5.2
+    methodology: mixed_mode
+    ovm: false
+    erm: false
+    a_score: 6.04
+    sgi: 7.25
+    business_model: [cruise_operator, private_destinations, fleet_management, yield_optimization, onboard_revenue]
+    risk_profile: [pandemic_zero_revenue, geopolitical_itinerary, fuel_cost_volatility, interest_rate_leverage, overcapacity_newbuild, environmental_regulation]
+    key_lessons:
+      - "YPD收益纯度分解: 邮轮收益增长32-36%结构性+64-68%周期性——量化'创新高可持续性'核心争议"
+      - "Airline Mirror 6维匹配(6/10): 航空2014-2019灾后恢复→邮轮可能重演5年均值回归周期"
+      - "ZREIP零收入事件保险: 年化$7.50/股折价, 三因素(概率×持续期×恢复速度)定价尾部风险"
+      - "Phase 1-3系统性悲观+8~16pp: 承重墙永久损失模型忽略恢复速度→红队大幅向上修正"
+      - "单会话组装(铁律J)首次验证: 1轮cat+sed→4.2分 vs ARM 3轮组装→3.5分"
+      - "A-Score v2.0消费品首用: 6.04/10(品牌+规模+产能壁垒)符合中等偏上直觉"
+    framework_assets:
+      - "YPD收益纯度分解方法论(收益分解新板块)"
+      - "ZREIP零收入事件保险定价(尾部风险新板块)"
+      - "Airline Mirror 6维灾后类比框架"
+    similar_to: [CCL, NCLH, DAL, UAL, MAR, HLT]
+
 # 显式相似性图谱
 # 每对含理由, find_relevant_knowledge.sh用similar_to字段+此图谱综合匹配
 similarity_graph:
@@ -376,3 +404,9 @@ similarity_graph:
     reason: "政府依赖型估值+地缘政治溢价+高PW发现系统+商业化不确定性"
   - pair: [INTC, SMCI]
     reason: "半导体生态链上下游+AI服务器需求+估值溢价vs基本面"
+  - pair: [RCL, CCL]
+    reason: "邮轮三巨头+疫后恢复+杠杆下降+收益管理+私人目的地"
+  - pair: [RCL, DAL]
+    reason: "旅游/交通+灾后恢复类比(Airline Mirror)+零收入事件风险+周期性高估值"
+  - pair: [RCL, COST]
+    reason: "消费品+会员粘性+品牌忠诚+防御性消费vs周期性消费"
