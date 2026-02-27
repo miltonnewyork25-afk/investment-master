@@ -25,7 +25,7 @@ reports:
   ANET:  { ind: 生态科技, rate: 审慎关注, ret: "-23%~-24%", pw: 4, method: mixed, qual: 4.0, chars: 279K, tags: "DC网络/EOS软件/NVIDIA竞争/客户集中/Cisco类比/Token经济/推理基础设施" }
   SMCI:  { ind: 半导体, rate: 中性关注, ret: "+3%~+5%", pw: 4, method: mixed, qual: 3.9, chars: 333K, tags: "AI服务器组装/DLC液冷/治理危机/DOJ调查/NVIDIA依赖/组装商估值陷阱/浪潮镜像/反向经营杠杆/EV-GP方法论" }
   INTC:  { ind: 半导体, rate: 审慎关注(条件性), ret: "-72%", pw: 8, method: discovery, qual: 4.1, chars: 270K, tags: "IDM/IFS代工转型/18A先进制程/政府补贴/护城河制度迁移/承重墙联合概率/AI重组者/僵尸轨道/A-Score v2.0首用/SGI首用/Kill Switch" }
-  ARM:   { ind: 半导体, rate: 审慎关注, ret: "-37%", pw: 6, method: mixed, qual: 3.5, chars: 172K, tags: "IP授权/版税经济/RISC-V CDS/SoftBank治理/盈利质量扭曲/Phoenix/数据中心/Arm China/承重墙4.5%/信念反演/信用违约互换" }
+  ARM:   { ind: 半导体, rate: 审慎关注, ret: "-41%", pw: 6, method: mixed, qual: 4.2, chars: 360K, tags: "IP授权/版税经济/RISC-V CDS定价权量化/SoftBank治理/盈利质量扭曲/Phoenix/数据中心/Arm China/承重墙2.0%/信念反演/信用违约互换/情景P&L Build-out/温水煮青蛙/双P/E宇宙/v2.0重做" }
   RCL:   { ind: 消费品, rate: 中性关注(偏审慎), ret: "-8.7%", pw: 5.2, method: mixed, qual: 4.2, chars: 317K, tags: "邮轮/疫后恢复/YPD收益纯度/Airline Mirror/ZREIP零收入保险/私人目的地/杠杆下降/周期vs结构" }
   ORCL:  { ind: 生态科技, rate: null, ret: null, pw: 6.6, method: mixed, qual: null, chars: "进行中", tags: "云转型/OCI/数据库/OpenAI/高负债" }
   AAPL:  { ind: 生态科技, rate: 审慎关注, ret: "-14%~-18%", pw: 6, method: mixed, qual: 3.79, chars: 303K, tags: "iPhone/Services/AI换机/Google协议/护城河侵蚀" }
