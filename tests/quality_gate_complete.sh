@@ -310,7 +310,7 @@ if [ "$HAS_AUDIT_SUMMARY" -gt 0 ]; then
     # EVO-ETN-003: 修复pipefail环境下 { grep|wc -l; } || echo 0 输出 "0\n0" 的问题
     # 原因: pipefail使grep无匹配时管道返回非零 → || echo 0触发 → wc -l的"0"和echo的"0"双输出
     # 修复: 不依赖 || echo 0, 直接用 wc -l (总是返回数字+exit 0); 用 tr 清理换行和空格
-    DM_ANCHOR_COUNT=$(grep -oE '\[DM-[A-Z]+-[0-9]+\]' "$FILE" 2>/dev/null | sort -u | wc -l | tr -d '[:space:]')
+    DM_ANCHOR_COUNT=$(grep -oE '\[DM-[A-Za-z0-9]+-[0-9]+\]' "$FILE" 2>/dev/null | sort -u | wc -l | tr -d '[:space:]')
     DM_ANCHOR_COUNT="${DM_ANCHOR_COUNT:-0}"
     FOLD_SOURCES=$(grep -c '📋.*数据源' "$FILE" 2>/dev/null || echo 0)
     FOLD_SOURCES=$(echo "$FOLD_SOURCES" | tail -1 | tr -d '[:space:]')

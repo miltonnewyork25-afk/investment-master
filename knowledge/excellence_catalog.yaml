@@ -3,9 +3,9 @@
 # 每当新报告某板块超越现有最佳时，自动更新此目录
 
 metadata:
-  version: "1.5"
-  last_updated: "2026-02-24"
-  total_reports_analyzed: 24
+  version: "1.8"
+  last_updated: "2026-02-27"
+  total_reports_analyzed: 28
   quality_threshold: 4.0/5.0
 
 # ============================================================
@@ -251,6 +251,24 @@ valuation_methodology:
     when_to_use: "跨国/跨生态比较中，验证利润率是行业结构决定还是公司能力决定"
     transferable_to: ["服务器组装", "电子制造", "跨国竞争分析", "利润率可持续性评估"]
 
+  cds_pricing_elasticity:
+    champion: "ARM_Ch14A"
+    score: 4.4
+    report_path: "reports/ARM/ARM_Complete_v2.0_2026-02-27.md"
+    method: "定价弹性函数建模: ε(t) = ε₀ × (1 - R(t)/R_crit)^α → 按市场加权渗透率 → 弹性→收入净效果 → 终态估值折损"
+    key_innovation: "将定价权从二元(有/无)转化为开源替代渗透率的连续函数,三参数(ε₀/R_crit/α)可校准,配有敏感性分析和提价事件→收入差额→市值折损传导链"
+    when_to_use: "IP/授权型公司面临开源替代时 — 评估定价权的'渐进侵蚀'速度而非预测'突然丧失'时点"
+    transferable_to: ["IP授权(ARM/Qualcomm-QTL)", "企业软件vs开源(Oracle vs PostgreSQL, Redis vs Valkey)", "游戏引擎(Unity vs Godot)", "EDA(Synopsys vs开源)", "所有面临开源替代的护城河公司"]
+
+  scenario_pnl_buildout:
+    champion: "ARM_Ch29"
+    score: 4.3
+    report_path: "reports/ARM/ARM_Complete_v2.0_2026-02-27.md"
+    method: "5情景×5年逐年P&L Build-out(收入/毛利/R&D/SBC/OM/NM/NI/FCFF) → FCFF→PV桥接(WACC折现) → 概率加权期望值 → CAPM风险调整回报+Sharpe ratio"
+    key_innovation: "情景分析从'终态市值×概率'升级为'全路径P&L→DCF→CAPM'三层定量化。发现即使最乐观S1(+3.3%/年)也低于CAPM要求回报(9.9%)→概率加权Sharpe≈-1.0='任何情景都不是好投资'"
+    when_to_use: "PW 4-6混合模式的多情景估值 — 需要用完整P&L路径替代简单市值乘法,特别是P/E将大幅压缩的高估值公司"
+    transferable_to: ["高估值成长股(P/E>50x)", "转型期公司(多条路径)", "周期股多情景", "所有Tier 3 Phase 5情景分析"]
+
   valuation_independent_insights:
     champion: "ETN_Ch26.5"
     score: 4.2
@@ -259,6 +277,45 @@ valuation_methodology:
     key_innovation: "承认'我们不知道它值多少钱'的前提下, 仍然能给出有用的投资决策指引 — 从'值多少钱'转向'什么信号值得关注'"
     when_to_use: "期望回报±10%以内(估值无信息优势)的公司 — 传统估值对决策无增量贡献时"
     transferable_to: ["市值>$200B", "PW≤4传统估值", "期望回报接近0的中性评级"]
+
+# ============================================================
+# 护城河迁移分析 (Moat Migration)
+# ============================================================
+moat_migration:
+  institutional_migration:
+    champion: "INTC_Ch9-10"
+    score: 4.3
+    report_path: "reports/INTC/INTC_Complete_v2.1_2026-02-25.md"
+    method: "A-Score 12维逐维趋势追踪 → 技术vs制度壁垒权重迁移量化(70/30→30/70) → 迁移地图+时间线 → 残存堡垒识别"
+    key_innovation: "首次分析'护城河搬家'而非'护城河消失'——Intel护城河不是在缩小,而是从技术壁垒(制程领先/IP库)迁移到制度壁垒(CHIPS Act/$15.9B政府入股/Secure Enclave)"
+    when_to_use: "公司A-Score某些维度衰退但整体估值未崩溃时——检测是否存在壁垒类型迁移"
+    transferable_to: ["国防/航空(政府依赖)", "银行/金融(监管壁垒)", "电信(牌照壁垒)", "所有受政策保护的行业"]
+
+# ============================================================
+# 承重墙联合概率 (Bearing Wall Joint Probability)
+# ============================================================
+bearing_wall_analysis:
+  joint_probability_test:
+    champion: "INTC_Ch15"
+    score: 4.2
+    report_path: "reports/INTC/INTC_Complete_v2.1_2026-02-25.md"
+    method: "识别N个承重墙(必须同时成功的因素) → 单因素概率评估 → 联合概率计算(含相关性调整) → naive vs 实际对比"
+    key_innovation: "数学证明: 5个各50%概率的独立因素联合成功=2-3%(非naive 6.25%),揭示多因素转型公司'全部走对'的概率远低于直觉"
+    when_to_use: "多因素转型公司(≥4个必须同时成功的条件) — 如代工转型/多市场突破/技术+商业双重验证"
+    transferable_to: ["转型期公司(INTC/GE/IBM)", "多市场扩张公司", "所有需要'多条件同时满足'的投资论文"]
+
+# ============================================================
+# AI重组识别 (AI Reorganizer)
+# ============================================================
+ai_reorganizer:
+  net_zero_ai_impact:
+    champion: "INTC_Ch13_M13"
+    score: 4.0
+    report_path: "reports/INTC/INTC_Complete_v2.1_2026-02-25.md"
+    method: "分部级AI冲击评分(7-point scale) × 收入权重 × 实现概率 → 概率加权AI净分 → 受益/受害/重组三分类"
+    key_innovation: "AI净分=-0.12≈0时识别'AI重组者'新类别——Intel不是AI受益者(IFS期权)也不是受害者(DCAI被替代),而是收入在分部间重新分配,总量不变"
+    when_to_use: "M13分析后AI净分在-0.5~+0.5区间的公司 — 避免简单贴标签(AI受益/受害)"
+    transferable_to: ["多元化科技公司", "传统公司+AI分部组合", "所有AI净效应模糊的公司"]
 
 # ============================================================
 # 行业专题分析
@@ -318,6 +375,45 @@ risk_topology_methodology:
     when_to_use: "Tier 3 Phase 4: MVP模式(单公司)或Full模式(横向对比)"
     transferable_to: ["所有行业", "任何≥6个风险的分析"]
     skill_doc: ".claude/skills/risk-topology/SKILL.md"
+
+# ============================================================
+# 收益分解分析 (Revenue Decomposition)
+# ============================================================
+revenue_decomposition:
+  yield_purity_decomposition:
+    champion: "RCL_Ch10-11"
+    score: 4.3
+    report_path: "reports/RCL/RCL_Complete_Deep_Dive_2026-02-27.md"
+    method: "收益增长拆解为结构性(私人目的地/舰队升级/收益管理)vs周期性(复苏反弹/通胀传导/压抑需求) → 结构性比例量化 → 可持续性判定"
+    key_innovation: "将'创新高是否可持续'从观点之争转化为可量化的结构性比例(32-36%), 提供客观判定框架"
+    when_to_use: "行业收入/利润创历史新高且市场对可持续性存在分歧时 — 拆解'新高=泡沫vs新高=升级'"
+    transferable_to: ["消费品(邮轮/航空/酒店)", "零售复苏", "周期性行业创新高", "所有'结构vs周期'争议"]
+
+# ============================================================
+# 行业灾后类比 (Post-Disaster Industry Analogy)
+# ============================================================
+post_disaster_analogy:
+  airline_mirror_framework:
+    champion: "RCL_Ch16"
+    score: 4.1
+    report_path: "reports/RCL/RCL_Complete_Deep_Dive_2026-02-27.md"
+    method: "6维标准化匹配(收入恢复/利润率/杠杆/估值/资本配置/市场结构) → 匹配度评分(x/10) → 均值回归时间表预测 → 差异点识别"
+    key_innovation: "航空2014-2019灾后恢复5年周期作为邮轮基准类比(6/10匹配), 提供估值均值回归的时间维度参考"
+    when_to_use: "行业经历灾难性事件(疫情/金融危机/地缘冲突)后恢复并创新高时 — 需要历史参照系判断均值回归概率"
+    transferable_to: ["航空", "旅游/酒店", "线下零售", "能源(油价暴跌后)", "所有灾后恢复行业"]
+
+# ============================================================
+# 尾部风险定价 (Tail Risk Pricing)
+# ============================================================
+tail_risk_pricing:
+  zero_revenue_event_insurance:
+    champion: "RCL_Ch18"
+    score: 4.2
+    report_path: "reports/RCL/RCL_Complete_Deep_Dive_2026-02-27.md"
+    method: "零收入事件识别(疫情/地缘/新型病毒) → 三因素模型(概率×持续期×恢复速度) → 年化保险成本/股 → 合理折价区间"
+    key_innovation: "将'尾部风险'从定性担忧转化为可定价折扣($7.50/股/年), 使尾部风险参与估值而非仅存在于风险披露"
+    when_to_use: "公司存在'完全停止运营'风险(收入归零事件概率>1%) — 传统DCF忽略的极端情景"
+    transferable_to: ["邮轮/航空/旅游", "线下零售(强制关店)", "能源(ESG政策)", "所有有零收入黑天鹅的行业"]
 
 # ============================================================
 # 动态更新机制
