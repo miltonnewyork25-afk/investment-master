@@ -277,38 +277,119 @@ entries:
       冠军目录已更新: A-Score评分体系(4.5) + SGI专才溢价(4.5) + 风险拓扑方法论(4.3) [已完成]
     evolution_status: pending
 
-  # --- 质量趋势更新 ---
-  # ANET(4.0)↑ → VRT(4.2)↑ → ETN-v2(4.3)↑ → SMCI(3.9)↓ → SEMI(4.3)↑
-  # SEMI从SMCI回升原因: 横向对比的方法论创新价值极高(3个冠军), 内容密度4.3/5
-  # CG FAIL是脚本不兼容而非报告质量问题 — 需EVO-SEMI-001根治
-  # 横向对比首作: 10 Session/939K/534 EC/17 KS/96 Mermaid — 工作流验证通过
-
   - ticker: "INTC"
     date: "2026-02-25"
-    report: "INTC_Complete_v1.0_2026-02-25.md"
-    chars: "254K"
+    report: "INTC_Complete_v2.1_2026-02-25.md"
+    chars: "270K"
     cg_result: "PASSED(0E/1W)"
     compliance: "PASSED"
-    dm_anchors: 50
-    scorecard: 88
+    dm_anchors: 102
+    mermaid_count: 23
+    scorecard: "N/A"
     near_miss_score: 0
     quality: 4.1
-    top_technique: "护城河制度迁移分析(垄断→寡头→竞争三阶段)+承重墙联合概率2.0%"
-    top_lesson: "A-Score v2.0+SGI+Discovery System三工具联合无冲突; PW=8发现系统适合高不确定性公司"
-    evolution_proposed: "EVO-INTC-001护城河迁移模板+EVO-INTC-002联合概率+EVO-INTC-004密度门控"
-    evolution_status: approved
+    pw: 8
+    method: discovery_system
+    a_score: "4.74/10 (置信度调整4.27, 偏科型)"
+    sgi: "4.2 (混合模型, 偏通才)"
+    top_technique: "护城河制度迁移(技术→制度壁垒70/30→30/70)+承重墙联合概率2-3%(5独立因素同时成功)+AI重组者净分-0.12(非受益/受害=重组)"
+    top_lesson: "Discovery System(PW=8)首次完整执行验证——条件评级+Kill Switch+追踪信号三联体有效; A-Score v2.0+SGI首次实战应用确认跨行业泛化(半导体低A-Score=4.74与直觉一致); 270K密度可接受但PW≥7的发现系统报告应>300K"
+    evolution_proposed: |
+      EVO-INTC-001: 护城河迁移分析模板 — 当A-Score某些维度从技术迁移到制度时,标准化"迁移地图"分析框架 [P1, 方法论资产]
+      EVO-INTC-002: 承重墙联合概率测试 — 多因素转型公司(≥4承重墙)强制联合概率计算,防止naive独立假设 [P1, 分析工具]
+      EVO-INTC-003: AI重组者识别 — AI净分≈0时标记为"重组者"(非受益/受害),分析内部收入再分配 [P2, M13增强]
+      EVO-INTC-004: Discovery System密度门控 — PW≥7报告建议≥300K字符,防止发现系统变成"压缩版传统报告" [P1, 质量门控]
+      EVO-INTC-005: A-Score v2.0首次实战复盘 — 11维评分+偏科形状分析+概率加权对INTC有效,确认泛化 [P2, 框架验证]
+      冠军目录待更新: 护城河制度迁移(4.3) + 承重墙联合概率(4.2) + AI重组者(4.0) [待录入]
+    evolution_status: pending
+    reflection_file: "memory/INTC_recursive_evolution_2026-02-25.md"
+    first_application: ["A-Score v2.0", "SGI", "Discovery System完整流程"]
+
+  # --- 质量趋势更新 ---
+  # ANET(4.0)↑ → VRT(4.2)↑ → ETN-v2(4.3)↑ → SMCI(3.9)↓ → SEMI(4.3)↑ → INTC(4.1)↓
+  # INTC从SEMI轻微回落: 270K偏短(PW=8发现系统首份), 但分析创新价值高(3个候选冠军)
+  # A-Score v2.0+SGI首次实战: 半导体低A-Score(4.74/10)与Intel竞争力衰退直觉一致
+  # Discovery System首次完整执行: 条件评级+Kill Switch+追踪信号有效, 无目标价的研究输出可读
+  # DM系统: 102锚点(恢复到SMCI水平), DM附录化方案持续有效
+  # 密度分析: 270K/23 Mermaid/102 DM → 密度尚可但PW≥7应提升到300K+
+  # 整体: 分析质量4.1是稳定水平, 框架v17.3验证通过, 发现系统需要密度门控
 
   - ticker: "ARM"
-    date: "2026-02-27"
-    report: "ARM_Complete_v2.0_2026-02-27.md"
-    chars: "360K"
-    cg_result: "PASSED(0E/2W)"
+    date: "2026-02-25"
+    report: "ARM_Complete_v1.0_2026-02-25.md"
+    chars: "172K"
+    bytes: "289K"
+    cg_result: "PASSED(0E/5W)"
     compliance: "PASSED"
-    dm_anchors: 108
-    scorecard: 93
+    dm_anchors: 87
+    mermaid_count: 10
+    pw: 6
+    method: "mixed"
+    scorecard: "46/100"
+    near_miss_score: 0
+    quality: 3.5
+    a_score: "7.17/10 (宽但迁移中, T→N转型)"
+    sgi: "9.35 (专才, IP纯度极高)"
+    top_technique: "RISC-V信用违约互换(CDS)定价权量化($15-25B/11-18%市值) + 六承重墙信念分解(4.5%联合概率) + Phoenix概率加权EV仅+$1.05B"
+    top_lesson: |
+      1. 多会话context溢出→组装质量不可控: 3+次组装轮次(Phase拼接+CG修复+Agent扩展)导致章节厚度11x差距(Ch11:1087 vs Ch20:11995)
+      2. Agent扩写不注入CI标注: H2(CDS)和H1(盈利质量)是报告级创新但CI=0(D7=0/10)
+      3. 172K<<269K目标: 即使CG1 PASS(>160K floor), 仍大幅低于checkpoint目标——用户要求500K, 交付289K bytes(含UTF-8膨胀), 实际内容密度仅172K字符
+      4. Scorecard 46/100暴露格式合规系统性缺失: D1(数据基础3)+D2(CQ格式0)+D7(CI 0)+D8(Mermaid 4)=格式层失血, 而D3(8)+D5(9)=内容层强
+    evolution_proposed: |
+      EVO-ARM-001: CI自动扫描器 — scripts/ci_candidate_scanner.sh + quality_gate_complete.sh CG12-CI集成 [P1, 防D7=0] ← ✅ 已实施
+      EVO-ARM-002: 薄章节检测 — scripts/thin_chapter_detector.sh + phase_sentinel.sh Phase≥5集成 [P1, 质量门控] ← ✅ 已实施
+      EVO-ARM-003: 单会话组装原则 — CLAUDE.md 铁律J(A-J) [P0, 流程铁律] ← ✅ 已实施
+      EVO-ARM-004: Scorecard D2格式对齐 — research_scorecard.sh D2闭环关键词扩展(+4变体) [P1, 脚本修复] ← ✅ 已实施
+      非共识洞见候选: H2-RISC-V CDS效应(定价权量化) + Phoenix EV悖论($1.05B) + Arm China零地缘折价 [待CI注册]
+    evolution_status: approved  # 2026-02-25 全部实施
+
+  # --- 质量趋势更新 ---
+  # ETN-v2(4.3)↑ → SMCI(3.9)↓ → SEMI(4.3)↑ → INTC(4.1)↓ → ARM(3.5)↓↓
+  # ARM显著回落原因: (1)172K严重低于269K目标(字符量是近6份最低) (2)多会话组装3轮→章节厚度11x差距
+  # (3)CI=0+D7=0 (4)Mermaid=10<24 (5)Scorecard 46/100 — 格式合规系统性失血
+  # 但内容层不弱: D3=8(分析深度)+D5=9(估值框架)=与ANET(4.0)持平
+  # H2(CDS)是报告级原创——"RISC-V不需要替代ARM, 存在即限制定价权"是可迁移方法论
+  # 核心教训: 体量不足+组装质量是拉低分数的主因, 而非分析能力
+  # 紧急: EVO-ARM-003(单会话组装)是流程层P0修复, 否则未来报告持续受损
+
+  - ticker: "RCL"
+    date: "2026-02-27"
+    report: "RCL_Complete_Deep_Dive_2026-02-27.md"
+    chars: "317K"
+    bytes: "538K"
+    cg_result: "PASSED(0E/3W)"
+    compliance: "PASSED"
+    dm_anchors: 0
+    dm_strategy: "数据审计摘要(附录G) — DM覆盖率95%+6折叠源表+12交叉验证"
+    mermaid_count: 56
+    pw: 5.2
+    method: "mixed"
+    a_score: "6.04/10 (专才型, SGI=7.25)"
+    sgi: "7.25 (专才, 100%邮轮收入)"
+    scorecard: "92/100"
     near_miss_score: 0
     quality: 4.2
-    top_technique: "RISC-V CDS定价权量化(版税弹性函数建模)+情景P&L Build-out(5情景×5年FCFF桥接)"
-    top_lesson: "v2.0重做验证单会话组装铁律(v1.0 46/100→v2.0 93/100); CG8 DM regex需支持[A-Za-z0-9]+; Python DCF验证捕获$55.2B→$60.7B关键算术错误"
-    evolution_proposed: "EVO-ARM-001 CG8-regex修复已实施; EVO-ARM-002 v2.0重做流程模板(7会话渐进深化); EVO-ARM-003 DCF验证脚本模板化"
+    top_technique: "Yield Purity Decomposition(YPD收益纯度分解32-36%结构性) + Airline Mirror 2014-2019(6/10维度匹配) + Zero-Revenue Event Insurance Pricing(ZREIP $7.50/股折价)"
+    top_lesson: |
+      1. Phase 1-3系统性悲观偏差+8~16pp — 红队P4需双向校准(不仅是挑战乐观, 也要纠正悲观); 承重墙永久损失模型忽略恢复速度→高估10x
+      2. 522K staging超限Assembly Agent失败 — bash cat拼接+sed清理有效但手工, 需分段Assembly策略(≤200K/Agent)
+      3. DM锚点=0但数据审计摘要通过CG8 — 附录化方案(DM覆盖率+折叠源表)是合理替代, 但长期仍需恢复Agent DM注入
+      4. 56 Mermaid(全系列最多)验证图表密度对92/100 scorecard的贡献
+      5. 单会话组装(铁律J)首次成功执行 — 相比ARM(3轮组装→3.5分)效果显著(1轮→4.2分)
+    evolution_proposed: |
+      EVO-RCL-001: Phase 1-3悲观偏差检测器 — Phase 3完成后自动检测: 如果看空概率>60%且无明确基本面恶化证据, 触发"乐观端校准"提醒 [P1, 分析校准]
+      EVO-RCL-002: YPD方法论模板化 — 收益分解(结构性vs周期性)适用于任何"创新高后估值争议"行业(邮轮/航空/酒店/零售) [P2, 方法论资产]
+      EVO-RCL-003: ZREIP方法论模板化 — 零收入事件保险定价适用于任何有尾部灾难风险的行业(邮轮/航空/旅游/线下零售) [P2, 方法论资产]
+      EVO-RCL-004: 大报告分段Assembly — staging总量>300K时自动触发分段(P1-2/P3/P4-5分三批), 每批≤200K [P1, 流程改进]
+      EVO-RCL-005: Airline Mirror行业类比通用化 — 当行业经历"灾后恢复+估值重评"时, 标准化6维匹配框架(收入恢复/利润率/杠杆/估值/资本配置/市场结构) [P2, 方法论资产]
+      冠军目录待注册: YPD收益纯度分解(4.3) + Airline Mirror行业类比(4.1) + ZREIP事件保险定价(4.2) [P2]
     evolution_status: pending
+
+  # --- 质量趋势更新 ---
+  # ETN-v2(4.3) → SMCI(3.9)↓ → SEMI(4.3)↑ → INTC(4.1)↓ → ARM(3.5)↓↓ → RCL(4.2)↑↑
+  # RCL(4.2)从ARM(3.5)显著反弹+0.7, 验证铁律J(单会话组装)的效果
+  # 关键归因: (1)单会话组装恢复章节一致性 (2)56 Mermaid全系列最多 (3)92/100 scorecard
+  # Phase 1-3悲观偏差是新发现的系统性问题: 红队需+8~16pp向上修正, 暗示Phase 1-3分析的隐含lock-in悲观锚
+  # 消费品行业首份Tier 3: A-Score v2.0(6.04)+SGI(7.25)在消费品的首次实战, 确认跨行业泛化
+  # DM策略: 数据审计摘要通过CG8, 但DM=0仍是技术债务(与VRT同等级, 低于SMCI/INTC的102)

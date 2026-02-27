@@ -24,23 +24,44 @@ from mcp.server import Server
 from mcp.types import Tool, TextContent
 
 
-def _create_session() -> requests.Session:
-    """创建带重试逻辑的requests Session，防止瞬时ECONNRESET"""
-    session = requests.Session()
+def _create_retry_adapter() -> HTTPAdapter:
+    """创建带重试逻辑的HTTPAdapter"""
     retry = Retry(
         total=3,
-        backoff_factor=0.5,
-        status_forcelist=[502, 503, 504],
+        backoff_factor=1.0,
+        status_forcelist=[502, 503, 504, 520, 521, 522, 523, 524],
         allowed_methods=["GET", "POST"],
         raise_on_status=False,
+        connect=3,
+        read=2,
     )
-    adapter = HTTPAdapter(max_retries=retry)
+    return HTTPAdapter(max_retries=retry, pool_connections=10, pool_maxsize=10)
+
+
+def _create_direct_session() -> requests.Session:
+    """直连Session — FMP/100baggers/yfinance等不被墙的API
+    绕过代理可以：减少代理负载+避免代理ECONNRESET+降低延迟
+    """
+    session = requests.Session()
+    session.trust_env = False  # 忽略HTTP_PROXY/HTTPS_PROXY
+    adapter = _create_retry_adapter()
     session.mount("https://", adapter)
     session.mount("http://", adapter)
     return session
 
 
-_session = _create_session()
+def _create_proxy_session() -> requests.Session:
+    """代理Session — Polymarket等被墙的API"""
+    session = requests.Session()
+    # trust_env=True (默认): 使用系统HTTP_PROXY/HTTPS_PROXY
+    adapter = _create_retry_adapter()
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    return session
+
+
+_direct = _create_direct_session()   # FMP, 100baggers, yfinance
+_proxied = _create_proxy_session()   # Polymarket
 
 # .env 加载（从项目根目录）
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
@@ -208,7 +229,7 @@ class FMPClient:
                 params["date"] = date
 
         try:
-            resp = _session.get(f"{self.base_url}{api_path}", params=params, timeout=15)
+            resp = _direct.get(f"{self.base_url}{api_path}", params=params, timeout=15)
 
             if resp.status_code == 401:
                 return {
@@ -283,7 +304,7 @@ class BaggersClient:
         if cached:
             return cached
         try:
-            resp = _session.get(
+            resp = _direct.get(
                 f"{self.base_url}/api/search",
                 params={"q": query}, timeout=15
             )
@@ -303,7 +324,7 @@ class BaggersClient:
         if cached:
             return cached
         try:
-            resp = _session.post(
+            resp = _direct.post(
                 f"{self.base_url}/api/generate-summary",
                 headers=self._auth_headers(),
                 json={"symbol": symbol}, timeout=60
@@ -332,7 +353,7 @@ class BaggersClient:
         if limit != 100:
             params["limit"] = limit
         try:
-            resp = _session.get(
+            resp = _direct.get(
                 f"{self.base_url}/api/get-sec-filings",
                 headers={"x-api-key": self.api_key},
                 params=params, timeout=15
@@ -353,7 +374,7 @@ class BaggersClient:
         if cached:
             return cached
         try:
-            resp = _session.get(
+            resp = _direct.get(
                 f"{self.base_url}/api/get-strategy-report",
                 headers={"x-api-key": self.api_key},
                 params={"symbol": symbol, "locale": locale}, timeout=30
@@ -393,7 +414,7 @@ class PolymarketClient:
                 "keep_closed_markets": 1,
             }
 
-            resp = _session.get(
+            resp = _proxied.get(
                 f"{self.search_base_url}/public-search",
                 params=params, timeout=15
             )
@@ -504,7 +525,7 @@ class PolymarketClient:
                 "side": side.upper()
             }
 
-            resp = _session.get(
+            resp = _proxied.get(
                 f"{self.price_base_url}/price",
                 params=params, timeout=10
             )
