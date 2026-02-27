@@ -4,11 +4,11 @@ company: "ARM Holdings plc"
 framework_version: v17.0
 worktree: "半导体"
 industry: "半导体"
-last_updated: "2026-02-27T18:00:00+00:00"
+last_updated: "2026-02-27T22:00:00+00:00"
 
-current_phase: 4
-phase_status: "v2.0_phase4_complete"
-phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4]
+current_phase: 5
+phase_status: "v2.0_phase5_complete"
+phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4, 5]
 v1_phases_archived: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4, 5, 5.5]
 
 target_chars: 350000
@@ -18,7 +18,7 @@ quality_target: 4.3
 version: "v2.0"
 
 pw: 6
-sgi: 9.35
+sgi: 8.51
 methodology: "mixed_mode"
 
 cqs:
