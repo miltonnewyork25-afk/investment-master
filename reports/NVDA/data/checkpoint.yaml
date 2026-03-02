@@ -2,56 +2,27 @@ schema_version: "2.0"
 ticker: NVDA
 company: "NVIDIA Corporation"
 framework_version: v17.0
-worktree: "半导体"
-industry: "半导体"
-last_updated: "2026-03-02T05:29:13+00:00"
+worktree: 半导体
+industry: 半导体
+last_updated: "2026-03-02T05:35:50+00:00"
 
-current_phase: 3
-phase_status: complete
-phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2", "3"]
-
-target_chars: 336602
-target_range: "269K-420K"
-hard_floor: 200000
-
-pw_score: 7.2
-methodology: "discovery_system"
-sgi_score: 8.9
-sgi_route: "specialist"
-
-core_questions: 8
-ci_registered: 4
-dm_anchors: 261
+current_phase: 4
+phase_status: completed
+phases_completed: [1, 2, 3, 4]
+update_count: 1
 
 quick_ref:
-  total_chars: 148046
-  phase1_chars: 90124
-  phase2_chars: 31046
-  phase3_chars: 26876
-  annotations_total: 445
-  mermaid_total: 28
-  phase1_files:
-    - NVDA_Phase1_v1.0_2026-03-02.md (42章, 90K chars, 150 annotations, 15 Mermaid)
-  phase2_files:
-    - NVDA_Phase2_v1.0_2026-03-02.md (17章, 31K chars, 153 annotations, 7 Mermaid)
-  phase3_files:
-    - NVDA_Phase3_v1.0_2026-03-02.md (19章, 27K chars, 142 annotations, 6 Mermaid)
-  phase0_files:
-    - data/shared_context.md (DM v1.0, 183 anchors)
-    - data/key_assumptions.md (6 KAs)
-    - data/core_questions.md (8 CQs)
-    - data/thesis_crystallization.md (5 anomalies, 3 CIs)
-    - data/lit_recon_memo.md
-    - data/knowledge_context.md
-    - data/launch_brief.md
-    - data/research/ (6 research files)
+  total_chars: 165457
+  latest_phase_chars: 17411
+  annotations: 67
+  annotation_density: "38.5/万"
+  hard_data_ratio: "56.7%"
+  mermaid_charts: 3
 
-scorecard:
-  pre: null
-  a_score: 8.10
-  five_engine_weighted: "$3.53T"
-  ppda_adjusted: "$3.28T"
-  implied_downside: "-18~24%"
-  conditional_rating: "审慎关注偏中性(55:45)"
-  pmsi: -0.53
-  kill_switches: 12
+files:
+  data_master: "reports/NVDA/data/shared_context.md"
+  key_assumptions: "reports/NVDA/data/key_assumptions.md"
+  latest_report: "reports/NVDA/NVDA_Phase4_v1.0_2026-03-02.md"
+
+next_action: "Phase 5 或用户指定"
+resume_prompt: "读取 reports/NVDA/data/checkpoint.yaml 继续"
