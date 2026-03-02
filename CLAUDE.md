@@ -40,6 +40,8 @@
 - PW≥7(发现系统)不强制单一评级, 但需给条件评级
 - **禁止**: 5档体系混入Tier 3 | "买入/卖出/推荐"等用语
 
+**跨报告校准**: 新报告评级后运行 `bash scripts/rating_calibration.sh --industry {行业}`，检查同行业一致性。如发现矛盾需在报告中明确解释。详见 `docs/rating_alignment_protocol.md`
+
 **分析方法论核心**:
 - **逆向估值优先** — Reverse DCF翻译"市场在赌什么"，而非正向DCF算"值多少钱"。先反推隐含假设，再评估假设合理性。详见 `/assumption-audit` M1信念反演
 - **演绎+归纳双轨** — 成熟业务用归纳(历史→外推)，范式变革用演绎(因果链→跨行业传导→二阶效应)。禁止对AI/自动驾驶等未来业务仅用类比。详见 `docs/deductive_analysis.md`
@@ -243,6 +245,7 @@ Complete组装必须在单会话内完成: 读Phase产出→组装→质量门�
 | **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
 | **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
 | **进化系统** | `docs/evolution_system.md` + `scripts/post_report_autopsy.sh` + `scripts/evolution_trend.sh` |
+| **评级校准** | `docs/rating_alignment_protocol.md` + `scripts/rating_calibration.sh` |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
 | **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
 | **文献侦察** | `knowledge/external_refs/search_templates.yaml` |

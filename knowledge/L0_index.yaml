@@ -4,36 +4,36 @@
 # L2: reports/{TICKER}/*Complete*.md (完整报告)
 # 更新时机: 每份新报告Complete后追加1行
 
-# 格式: TICKER | 行业 | 评级 | 期望回报 | PW | 方法 | 质量 | 字符 | 核心标签
+# 格式: TICKER | 行业 | 评级 | 期望回报 | PW | 方法 | 质量 | 字符 | 框架版本 | 日期 | P/E | 核心标签
 reports:
-  TSLA:  { ind: 生态科技, rate: 关注, ret: "+22%", pw: 9, method: discovery, qual: 3.8, chars: 415K, tags: "EV/自动驾驶/机器人/范式转移" }
-  GOOGL: { ind: 生态科技, rate: 中性关注, ret: "+5%", pw: 6, method: mixed, qual: 4.0, chars: 453K, tags: "广告/云/AI平台/反垄断" }
-  LRCX:  { ind: 半导体, rate: 审慎关注, ret: "-29.5%", pw: 3, method: traditional, qual: 3.8, chars: 375K, tags: "刻蚀设备/半导体周期/CSBG服务/温水煮青蛙/信念反演" }
-  PLTR:  { ind: 生态科技, rate: 审慎关注, ret: "-40%", pw: 8, method: discovery, qual: 3.6, chars: 389K, tags: "政府分析/AIP/数据平台/极端估值" }
-  TSM:   { ind: 半导体, rate: 中性关注, ret: "+4%", pw: 3, method: traditional, qual: 3.5, chars: 451K, tags: "晶圆代工/先进制程/地缘政治/封装" }
-  META:  { ind: 生态科技, rate: 关注, ret: "+15%", pw: 5, method: mixed, qual: 3.5, chars: 317K, tags: "广告/Reels/元宇宙/AI" }
-  SOFI:  { ind: 金融, rate: 关注, ret: "+20%", pw: 4, method: mixed, qual: 3.4, chars: 282K, tags: "数字银行/金融科技/会员增长" }
-  COST:  { ind: 消费品, rate: 中性关注, ret: "-5%", pw: 2, method: traditional, qual: 3.5, chars: 282K, tags: "会员制/自有品牌/防御消费" }
-  AMD:   { ind: 半导体, rate: 关注, ret: "+12%", pw: 5, method: mixed, qual: 3.5, chars: 349K, tags: "GPU/数据中心/AI加速/FPGA" }
-  MU:    { ind: 半导体, rate: 关注, ret: "+18%", pw: 3, method: traditional, qual: 2.8, chars: 179K, tags: "DRAM/NAND/HBM/内存周期" }
-  RDDT:  { ind: 生态科技, rate: 审慎关注, ret: "-20%", pw: 6, method: mixed, qual: 3.5, chars: 245K, tags: "UGC/广告/数据授权/社区" }
-  APP:   { ind: 生态科技, rate: 审慎关注, ret: "-41%", pw: 7, method: discovery, qual: 4.1, chars: 452K, tags: "广告科技/D30归因/电商/CTV" }
-  RBLX:  { ind: 生态科技, rate: 审慎关注, ret: "-20%", pw: 6, method: mixed, qual: 3.6, chars: 383K, tags: "UGC游戏/虚拟经济/SBC/儿童安全" }
-  AMAT:  { ind: 半导体, rate: 中性关注, ret: "-2%", pw: 3, method: traditional, qual: 3.8, chars: 304K, tags: "半导体设备/广度护城河/先进封装/EPIC" }
-  MSFT:  { ind: 生态科技, rate: 中性关注, ret: "+4%", pw: 4, method: mixed, qual: 3.5, chars: 316K, tags: "云/AI/OpenAI/企业软件" }
-  KLAC:  { ind: 半导体, rate: 审慎关注, ret: "-38%", pw: 2, method: traditional, qual: 4.5, chars: 254K, tags: "检测设备/垄断/高估值/WFE周期" }
-  ANET:  { ind: 生态科技, rate: 审慎关注, ret: "-23%~-24%", pw: 4, method: mixed, qual: 4.0, chars: 279K, tags: "DC网络/EOS软件/NVIDIA竞争/客户集中/Cisco类比/Token经济/推理基础设施" }
-  SMCI:  { ind: 半导体, rate: 中性关注, ret: "+3%~+5%", pw: 4, method: mixed, qual: 3.9, chars: 333K, tags: "AI服务器组装/DLC液冷/治理危机/DOJ调查/NVIDIA依赖/组装商估值陷阱/浪潮镜像/反向经营杠杆/EV-GP方法论" }
-  INTC:  { ind: 半导体, rate: 审慎关注(条件性), ret: "-72%", pw: 8, method: discovery, qual: 4.1, chars: 270K, tags: "IDM/IFS代工转型/18A先进制程/政府补贴/护城河制度迁移/承重墙联合概率/AI重组者/僵尸轨道/A-Score v2.0首用/SGI首用/Kill Switch" }
-  ARM:   { ind: 半导体, rate: 审慎关注, ret: "-41%", pw: 6, method: mixed, qual: 4.2, chars: 360K, tags: "IP授权/版税经济/RISC-V CDS定价权量化/SoftBank治理/盈利质量扭曲/Phoenix/数据中心/Arm China/承重墙2.0%/信念反演/信用违约互换/情景P&L Build-out/温水煮青蛙/双P/E宇宙/v2.0重做" }
-  RCL:   { ind: 消费品, rate: 中性关注(偏审慎), ret: "-8.7%", pw: 5.2, method: mixed, qual: 4.2, chars: 317K, tags: "邮轮/疫后恢复/YPD收益纯度/Airline Mirror/ZREIP零收入保险/私人目的地/杠杆下降/周期vs结构" }
-  IHG:   { ind: 消费品, rate: 关注, ret: "+13.5%", pw: 5.5, method: mixed, qual: 4.3, chars: 501K, tags: "酒店特许经营/估值折价信念反演/双层SOTP/A-Score错配/杠杆悖论/回购效率/ZREIP特许免疫/独立引擎错觉/收入口径突变/ADR折价" }
-  ORCL:  { ind: 生态科技, rate: null, ret: null, pw: 6.6, method: mixed, qual: null, chars: "进行中", tags: "云转型/OCI/数据库/OpenAI/高负债" }
-  AAPL:  { ind: 生态科技, rate: 审慎关注, ret: "-14%~-18%", pw: 6, method: mixed, qual: 3.79, chars: 303K, tags: "iPhone/Services/AI换机/Google协议/护城河侵蚀" }
-  AMZN:  { ind: 生态科技, rate: null, ret: null, pw: null, method: null, qual: null, chars: 194K, tags: "电商/AWS/广告/物流/AI" }
-  VRT:   { ind: 生态科技, rate: 中性关注(条件性), ret: "-1%~+7%", pw: 4, method: mixed, qual: 4.2, chars: 368K, tags: "数据中心基础设施/液冷CDU/UPS/HVDC/英维克对标/双重身份估值张力/PE重组/VOS运营体系" }
-  ETN:   { ind: 半导体, rate: 中性关注, ret: "-3.5%", pw: 3, method: traditional, qual: 4.3, chars: 331K, tags: "电力管理/数据中心基础设施/Boyd液冷/身份溢价38pp/Mobility分拆/积压质量/温水煮青蛙/Cisco5折版/产业链纵深/GOES脆弱点" }
-  SEMI_EQUIPMENT: { ind: 半导体, type: comparative, companies: "AMAT/LRCX/ASML/KLAC", rate: "ASML关注/KLAC关注/LRCX有条件/AMAT中性", ret: "KLAC+17.7%/ASML+4.2%/AMAT-22.4%/LRCX-24.9%", pw: null, method: traditional, qual: 4.3, chars: 939K, tags: "横向对比/A-Score护城河评分/SGI专才溢价/风险拓扑/Kill Switch/逆向DCF对照组/投资者适配矩阵/EUV垄断/检测效率/刻蚀周期/通才陷阱" }
+  TSLA:  { ind: 生态科技, rate: 关注, ret: "+22%", pw: 9, method: discovery, qual: 3.8, chars: 415K, fw: v10, date: "2026-02-11", pe: "175x", tags: "EV/自动驾驶/机器人/范式转移" }
+  GOOGL: { ind: 生态科技, rate: 中性关注, ret: "+5%", pw: 6, method: mixed, qual: 4.0, chars: 453K, fw: v10, date: "2026-02-12", pe: "23x", tags: "广告/云/AI平台/反垄断" }
+  LRCX:  { ind: 半导体, rate: 审慎关注, ret: "-29.5%", pw: 3, method: traditional, qual: 3.8, chars: 375K, fw: v15, date: "2026-02-19", pe: "27x", tags: "刻蚀设备/半导体周期/CSBG服务/温水煮青蛙/信念反演" }
+  PLTR:  { ind: 生态科技, rate: 审慎关注, ret: "-40%", pw: 8, method: discovery, qual: 3.6, chars: 389K, fw: v10, date: "2026-02-12", pe: "200x+", tags: "政府分析/AIP/数据平台/极端估值" }
+  TSM:   { ind: 半导体, rate: 中性关注, ret: "+4%", pw: 3, method: traditional, qual: 3.5, chars: 451K, fw: v10, date: "2026-02-10", pe: "22x", tags: "晶圆代工/先进制程/地缘政治/封装" }
+  META:  { ind: 生态科技, rate: 关注, ret: "+15%", pw: 5, method: mixed, qual: 3.5, chars: 317K, fw: v10, date: "2026-02-13", pe: "24x", tags: "广告/Reels/元宇宙/AI" }
+  SOFI:  { ind: 金融, rate: 关注, ret: "+20%", pw: 4, method: mixed, qual: 3.4, chars: 282K, fw: v10, date: "2026-02-09", pe: "48x", tags: "数字银行/金融科技/会员增长" }
+  COST:  { ind: 消费品, rate: 中性关注, ret: "-5%", pw: 2, method: traditional, qual: 3.5, chars: 282K, fw: v10, date: "2026-02-10", pe: "55x", tags: "会员制/自有品牌/防御消费" }
+  AMD:   { ind: 半导体, rate: 关注, ret: "+12%", pw: 5, method: mixed, qual: 3.5, chars: 349K, fw: v10, date: "2026-02-11", pe: "36x", tags: "GPU/数据中心/AI加速/FPGA" }
+  MU:    { ind: 半导体, rate: 关注, ret: "+18%", pw: 3, method: traditional, qual: 2.8, chars: 179K, fw: v8, date: "2026-02-10", pe: "12x", tags: "DRAM/NAND/HBM/内存周期" }
+  RDDT:  { ind: 生态科技, rate: 审慎关注, ret: "-20%", pw: 6, method: mixed, qual: 3.5, chars: 245K, fw: v12, date: "2026-02-14", pe: "120x+", tags: "UGC/广告/数据授权/社区" }
+  APP:   { ind: 生态科技, rate: 审慎关注, ret: "-41%", pw: 7, method: discovery, qual: 4.1, chars: 452K, fw: v13, date: "2026-02-17", pe: "68x", tags: "广告科技/D30归因/电商/CTV" }
+  RBLX:  { ind: 生态科技, rate: 审慎关注, ret: "-20%", pw: 6, method: mixed, qual: 3.6, chars: 383K, fw: v13, date: "2026-02-16", pe: "N/A", tags: "UGC游戏/虚拟经济/SBC/儿童安全" }
+  AMAT:  { ind: 半导体, rate: 中性关注, ret: "-2%", pw: 3, method: traditional, qual: 3.8, chars: 304K, fw: v13, date: "2026-02-17", pe: "21x", tags: "半导体设备/广度护城河/先进封装/EPIC" }
+  MSFT:  { ind: 生态科技, rate: 中性关注, ret: "+4%", pw: 4, method: mixed, qual: 3.5, chars: 316K, fw: v13, date: "2026-02-17", pe: "34x", tags: "云/AI/OpenAI/企业软件" }
+  KLAC:  { ind: 半导体, rate: 审慎关注, ret: "-38%", pw: 2, method: traditional, qual: 4.5, chars: 254K, fw: v15, date: "2026-02-17", pe: "34x", tags: "检测设备/垄断/高估值/WFE周期" }
+  ANET:  { ind: 生态科技, rate: 审慎关注, ret: "-23%~-24%", pw: 4, method: mixed, qual: 4.0, chars: 279K, fw: v15, date: "2026-02-20", pe: "50x", tags: "DC网络/EOS软件/NVIDIA竞争/客户集中/Cisco类比/Token经济/推理基础设施" }
+  SMCI:  { ind: 半导体, rate: 中性关注, ret: "+3%~+5%", pw: 4, method: mixed, qual: 3.9, chars: 333K, fw: v15, date: "2026-02-21", pe: "15x", tags: "AI服务器组装/DLC液冷/治理危机/DOJ调查/NVIDIA依赖/组装商估值陷阱/浪潮镜像/反向经营杠杆/EV-GP方法论" }
+  INTC:  { ind: 半导体, rate: 审慎关注(条件性), ret: "-72%", pw: 8, method: discovery, qual: 4.1, chars: 270K, fw: v17, date: "2026-02-25", pe: "N/A", tags: "IDM/IFS代工转型/18A先进制程/政府补贴/护城河制度迁移/承重墙联合概率/AI重组者/僵尸轨道/A-Score v2.0首用/SGI首用/Kill Switch" }
+  ARM:   { ind: 半导体, rate: 审慎关注, ret: "-41%", pw: 6, method: mixed, qual: 4.2, chars: 360K, fw: v17, date: "2026-02-27", pe: "85x", tags: "IP授权/版税经济/RISC-V CDS定价权量化/SoftBank治理/盈利质量扭曲/Phoenix/数据中心/Arm China/承重墙2.0%/信念反演/信用违约互换/情景P&L Build-out/温水煮青蛙/双P/E宇宙/v2.0重做" }
+  RCL:   { ind: 消费品, rate: 中性关注(偏审慎), ret: "-8.7%", pw: 5.2, method: mixed, qual: 4.2, chars: 317K, fw: v17, date: "2026-02-27", pe: "20x", tags: "邮轮/疫后恢复/YPD收益纯度/Airline Mirror/ZREIP零收入保险/私人目的地/杠杆下降/周期vs结构" }
+  IHG:   { ind: 消费品, rate: 关注, ret: "+13.5%", pw: 5.5, method: mixed, qual: 4.3, chars: 501K, fw: v17, date: "2026-02-27", pe: "29x", tags: "酒店特许经营/估值折价信念反演/双层SOTP/A-Score错配/杠杆悖论/回购效率/ZREIP特许免疫/独立引擎错觉/收入口径突变/ADR折价" }
+  ORCL:  { ind: 生态科技, rate: null, ret: null, pw: 6.6, method: mixed, qual: null, chars: "进行中", fw: v17, date: null, pe: null, tags: "云转型/OCI/数据库/OpenAI/高负债" }
+  AAPL:  { ind: 生态科技, rate: 审慎关注, ret: "-14%~-18%", pw: 6, method: mixed, qual: 3.79, chars: 303K, fw: v15, date: "2026-02-19", pe: "32x", tags: "iPhone/Services/AI换机/Google协议/护城河侵蚀" }
+  AMZN:  { ind: 生态科技, rate: null, ret: null, pw: null, method: null, qual: null, chars: 194K, fw: null, date: null, pe: null, tags: "电商/AWS/广告/物流/AI" }
+  VRT:   { ind: 生态科技, rate: 中性关注(条件性), ret: "-1%~+7%", pw: 4, method: mixed, qual: 4.2, chars: 368K, fw: v15, date: "2026-02-21", pe: "62x", tags: "数据中心基础设施/液冷CDU/UPS/HVDC/英维克对标/双重身份估值张力/PE重组/VOS运营体系" }
+  ETN:   { ind: 半导体, rate: 中性关注, ret: "-3.5%", pw: 3, method: traditional, qual: 4.3, chars: 331K, fw: v15, date: "2026-02-21", pe: "38x", tags: "电力管理/数据中心基础设施/Boyd液冷/身份溢价38pp/Mobility分拆/积压质量/温水煮青蛙/Cisco5折版/产业链纵深/GOES脆弱点" }
+  SEMI_EQUIPMENT: { ind: 半导体, type: comparative, companies: "AMAT/LRCX/ASML/KLAC", rate: "ASML关注/KLAC关注/LRCX有条件/AMAT中性", ret: "KLAC+17.7%/ASML+4.2%/AMAT-22.4%/LRCX-24.9%", pw: null, method: traditional, qual: 4.3, chars: 939K, fw: v17, date: "2026-02-23", pe: "多家", tags: "横向对比/A-Score护城河评分/SGI专才溢价/风险拓扑/Kill Switch/逆向DCF对照组/投资者适配矩阵/EUV垄断/检测效率/刻蚀周期/通才陷阱" }
 
 # 快速统计
 summary:
