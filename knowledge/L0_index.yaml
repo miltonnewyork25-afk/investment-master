@@ -28,6 +28,7 @@ reports:
   ARM:   { ind: 半导体, rate: 审慎关注, ret: "-41%", pw: 6, method: mixed, qual: 4.2, chars: 360K, fw: v17, date: "2026-02-27", pe: "85x", tags: "IP授权/版税经济/RISC-V CDS定价权量化/SoftBank治理/盈利质量扭曲/Phoenix/数据中心/Arm China/承重墙2.0%/信念反演/信用违约互换/情景P&L Build-out/温水煮青蛙/双P/E宇宙/v2.0重做" }
   RCL:   { ind: 消费品, rate: 中性关注(偏审慎), ret: "-8.7%", pw: 5.2, method: mixed, qual: 4.2, chars: 317K, fw: v17, date: "2026-02-27", pe: "20x", tags: "邮轮/疫后恢复/YPD收益纯度/Airline Mirror/ZREIP零收入保险/私人目的地/杠杆下降/周期vs结构" }
   IHG:   { ind: 消费品, rate: 关注, ret: "+13.5%", pw: 5.5, method: mixed, qual: 4.3, chars: 501K, fw: v17, date: "2026-02-27", pe: "29x", tags: "酒店特许经营/估值折价信念反演/双层SOTP/A-Score错配/杠杆悖论/回购效率/ZREIP特许免疫/独立引擎错觉/收入口径突变/ADR折价" }
+  NVDA:  { ind: 半导体, rate: 审慎关注偏中性(52:48), ret: "-16~20%", pw: 7.2, method: discovery, qual: 4.0, chars: 210K, fw: v17, date: "2026-03-02", pe: "36x", tags: "GPU/AI数据中心/CUDA护城河/CapEx周期/史上最贵周期股/B-4 SPOF/五情景映射/永续平台vs周期巨头/推理经济学/自研芯片替代/Discovery System" }
   ORCL:  { ind: 生态科技, rate: null, ret: null, pw: 6.6, method: mixed, qual: null, chars: "进行中", fw: v17, date: null, pe: null, tags: "云转型/OCI/数据库/OpenAI/高负债" }
   AAPL:  { ind: 生态科技, rate: 审慎关注, ret: "-14%~-18%", pw: 6, method: mixed, qual: 3.79, chars: 303K, fw: v15, date: "2026-02-19", pe: "32x", tags: "iPhone/Services/AI换机/Google协议/护城河侵蚀" }
   AMZN:  { ind: 生态科技, rate: null, ret: null, pw: null, method: null, qual: null, chars: 194K, fw: null, date: null, pe: null, tags: "电商/AWS/广告/物流/AI" }
