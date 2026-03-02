@@ -1,19 +1,33 @@
 #!/bin/bash
 # ============================================================
-# research_scorecard.sh — 研究质量记分卡 v1.0
+# research_scorecard.sh — 研究质量记分卡 v1.1
 # ============================================================
 # 用法:
 #   research_scorecard.sh pre  <TICKER>                        # Phase 0后评分
 #   research_scorecard.sh post <Complete.md> [poss_width]      # Complete后评分
 #   research_scorecard.sh compare <TICKER> <Complete.md> [pw]  # 前后对比
 #
-# 10维度 × 0-10分, Pre+Post差值=研究增量
+# D1-D10: 10维度 × 0-10分 = 总分100 (不变)
+# D11: 分析正交度 — 8卦限覆盖热力图 (附加维度, 不计入总分)
 # 与quality_gate_complete.sh互补: CG=门槛(PASS/FAIL), Scorecard=评分(0-100)
 #
 # 维度: D1数据基础 D2问题定义 D3分析深度 D4风险认知 D5估值框架
 #       D6数据验证 D7非共识洞察 D8可视化 D9追踪体系 D10结构完整度
+#       D11分析正交度 (附加)
+#
+# D11 三轴模型:
+#   X轴 时间: 历史(←) vs 前瞻(→)
+#   Y轴 结构层: 公司/行业(↓) vs 宏观/制度(↑)
+#   Z轴 认知模式: 数据/模型(实) vs 判断/未知(虚)
+#
+# 8卦限:
+#   O1 历史+微观+实证  O2 前瞻+微观+实证
+#   O3 历史+宏观+实证  O4 前瞻+宏观+实证
+#   O5 历史+微观+判断  O6 前瞻+微观+判断
+#   O7 历史+宏观+判断  O8 前瞻+宏观+判断
 #
 # v1.0 (2026-02-14) — 首版
+# v1.1 (2026-03-02) — D11分析正交度(8卦限覆盖热力图)
 # ============================================================
 
 set -euo pipefail
@@ -468,6 +482,104 @@ score_post() {
 }
 
 # ============================================================
+# D11: 分析正交度 — 8卦限覆盖检测 (仅post模式)
+# ============================================================
+# 三轴: X(时间) × Y(结构层) × Z(认知模式) = 8卦限
+# 每个卦限通过特征关键词grep检测, 存在≥2个匹配=覆盖
+#
+# O1 历史+微观+实证: 财务历史数据, 历史P/E, 三表分析, 同比
+# O2 前瞻+微观+实证: DCF, 预测收入, 敏感性矩阵, 目标价
+# O3 历史+宏观+实证: 行业周期历史, 利率历史, GDP, CAPE
+# O4 前瞻+宏观+实证: TAM建模, 渗透率曲线, 行业预测
+# O5 历史+微观+判断: 管理层评价, 护城河演变, 历史类比
+# O6 前瞻+微观+判断: 期权价值, 可能性空间, 非共识洞察, Kill Switch
+# O7 历史+宏观+判断: 制度变迁, 范式转移, 政策演变回顾
+# O8 前瞻+宏观+判断: 地缘情景, 监管展望, 温水煮青蛙, 黑天鹅
+
+score_octant() {
+    local FILE="$1"
+    if [ ! -f "$FILE" ]; then
+        echo "0 0 0 0 0 0 0 0 0 0"
+        return
+    fi
+
+    local O1=0 O2=0 O3=0 O4=0 O5=0 O6=0 O7=0 O8=0
+
+    # 辅助: grep匹配返回0/1, 兼容set -e
+    _hit() { grep -qiE "$1" "$FILE" 2>/dev/null && echo 1 || echo 0; }
+
+    # O1 历史+微观+实证: 财务回溯+公司级硬数据
+    local o1_hits=0
+    o1_hits=$((o1_hits + $(_hit '历史P/E|历史.*倍数|historical.*P/E')))
+    o1_hits=$((o1_hits + $(_hit '三表分析|损益表|资产负债|现金流量表|income.*statement|balance.*sheet')))
+    o1_hits=$((o1_hits + $(_hit '同比.*%|YoY|CAGR.*历史|过去.*年|FY20[0-9]')))
+    o1_hits=$((o1_hits + $(_hit '毛利率.*历史|ROE.*历史|ROIC|资本回报|历史.*财务')))
+    [ "$o1_hits" -ge 2 ] && O1=1
+
+    # O2 前瞻+微观+实证: 公司级前瞻定量模型
+    local o2_hits=0
+    o2_hits=$((o2_hits + $(_hit 'DCF|现金流折现|WACC|终端价值|terminal.*value')))
+    o2_hits=$((o2_hits + $(_hit '敏感性.*矩阵|sensitivity|情景.*概率')))
+    o2_hits=$((o2_hits + $(_hit '预测.*收入|revenue.*forecast|FY202[5-9].*预|预计.*增长')))
+    o2_hits=$((o2_hits + $(_hit 'Reverse.*DCF|反向.*DCF|隐含.*假设|市场在赌')))
+    [ "$o2_hits" -ge 2 ] && O2=1
+
+    # O3 历史+宏观+实证: 行业/宏观历史数据
+    local o3_hits=0
+    o3_hits=$((o3_hits + $(_hit '行业周期|半导体周期|WFE.*历史|行业.*历史|industry.*cycle')))
+    o3_hits=$((o3_hits + $(_hit 'CAPE|Buffett.*Indicator|利率.*历史|GDP.*增|宏观.*数据')))
+    o3_hits=$((o3_hits + $(_hit '市场份额.*变化|share.*shift|competitive.*landscape.*历')))
+    o3_hits=$((o3_hits + $(_hit '产能.*周期|库存.*周期|供需.*历史|capex.*cycle')))
+    [ "$o3_hits" -ge 2 ] && O3=1
+
+    # O4 前瞻+宏观+实证: 行业级前瞻定量建模
+    local o4_hits=0
+    o4_hits=$((o4_hits + $(_hit 'TAM|总可寻址市场|total.*addressable|市场规模.*预')))
+    o4_hits=$((o4_hits + $(_hit '渗透率.*曲线|渗透率.*20[2-3]|penetration.*rate|S曲线|adoption.*curve')))
+    o4_hits=$((o4_hits + $(_hit '行业.*预测|行业.*增长率|industry.*growth|市场.*CAGR.*预')))
+    o4_hits=$((o4_hits + $(_hit '供需.*平衡|产能.*扩张.*预|capex.*forecast|需求.*模型')))
+    [ "$o4_hits" -ge 2 ] && O4=1
+
+    # O5 历史+微观+判断: 公司级历史定性判断
+    local o5_hits=0
+    o5_hits=$((o5_hits + $(_hit '管理层.*评价|管理层.*画像|CEO.*评|leadership.*assessment')))
+    o5_hits=$((o5_hits + $(_hit '护城河.*演变|护城河.*迁移|moat.*evolution|护城河.*强化|护城河.*侵蚀')))
+    o5_hits=$((o5_hits + $(_hit '历史类比|类比.*分析|Cisco.*类比|Intel.*类比|历史.*教训|analog')))
+    o5_hits=$((o5_hits + $(_hit '企业文化|组织.*能力|战略.*回顾|转型.*历史')))
+    [ "$o5_hits" -ge 2 ] && O5=1
+
+    # O6 前瞻+微观+判断: 公司级前瞻定性洞察
+    local o6_hits=0
+    o6_hits=$((o6_hits + $(_hit '期权价值|optionality|可能性空间|possibility.*space')))
+    o6_hits=$((o6_hits + $(_hit 'CI-[0-9]+|非共识.*洞察|non-consensus|differentiated.*view')))
+    o6_hits=$((o6_hits + $(_hit 'Kill.*Switch|催化剂|触发.*条件|trigger|转折点')))
+    o6_hits=$((o6_hits + $(_hit '投资温度计|综合评级|条件.*评级|conditional.*rating')))
+    [ "$o6_hits" -ge 2 ] && O6=1
+
+    # O7 历史+宏观+判断: 制度/范式级历史判断
+    local o7_hits=0
+    o7_hits=$((o7_hits + $(_hit '制度.*变迁|制度.*迁移|regime.*change|institutional.*shift')))
+    o7_hits=$((o7_hits + $(_hit '范式.*转移|paradigm.*shift|产业.*革命|技术.*范式')))
+    o7_hits=$((o7_hits + $(_hit '政策.*演变|监管.*历史|regulation.*history|贸易.*政策.*历')))
+    o7_hits=$((o7_hits + $(_hit '行为.*偏差|behavioral.*bias|锚定效应|过度.*自信|认知.*偏差')))
+    [ "$o7_hits" -ge 2 ] && O7=1
+
+    # O8 前瞻+宏观+判断: 制度/范式级前瞻判断
+    local o8_hits=0
+    o8_hits=$((o8_hits + $(_hit '地缘.*情景|geopolitical.*scenario|台海|中美|脱钩|decoupling')))
+    o8_hits=$((o8_hits + $(_hit '监管.*展望|regulatory.*outlook|政策.*风险.*前瞻|regulation.*forward')))
+    o8_hits=$((o8_hits + $(_hit '温水煮青蛙|boiling.*frog|黑天鹅|black.*swan|尾部风险|tail.*risk')))
+    o8_hits=$((o8_hits + $(_hit '协同.*风险|risk.*topology|风险.*拓扑|系统性.*风险|contagion')))
+    [ "$o8_hits" -ge 2 ] && O8=1
+
+    local COVERED=$((O1 + O2 + O3 + O4 + O5 + O6 + O7 + O8))
+    local D11=$((COVERED * 10 / 8))
+    D11=$(cap10 "$D11")
+
+    echo "$O1 $O2 $O3 $O4 $O5 $O6 $O7 $O8 $COVERED $D11"
+}
+
+# ============================================================
 # 输出格式化
 # ============================================================
 DIMS=("数据基础" "问题定义" "分析深度" "风险认知" "估值框架" "数据验证" "非共识洞察" "可视化" "追踪体系" "结构完整度")
@@ -479,7 +591,7 @@ print_single() {
     local total="${scores[10]}"
 
     echo "============================================="
-    echo -e " ${CYAN}${BOLD}Research Quality Scorecard v1.0${NC}"
+    echo -e " ${CYAN}${BOLD}Research Quality Scorecard v1.1${NC}"
     echo -e " ${ticker} | ${label}"
     echo "============================================="
     echo ""
@@ -495,6 +607,64 @@ print_single() {
     echo ""
 }
 
+# 卦限热力图输出
+print_octant() {
+    local ticker="$1"
+    shift
+    local oct=($@)
+    # oct: O1 O2 O3 O4 O5 O6 O7 O8 COVERED D11
+
+    local O1="${oct[0]}" O2="${oct[1]}" O3="${oct[2]}" O4="${oct[3]}"
+    local O5="${oct[4]}" O6="${oct[5]}" O7="${oct[6]}" O8="${oct[7]}"
+    local COVERED="${oct[8]}" D11="${oct[9]}"
+
+    # 图标: ■=覆盖 □=空白
+    local s1="□" s2="□" s3="□" s4="□" s5="□" s6="□" s7="□" s8="□"
+    [ "$O1" -eq 1 ] && s1="■"
+    [ "$O2" -eq 1 ] && s2="■"
+    [ "$O3" -eq 1 ] && s3="■"
+    [ "$O4" -eq 1 ] && s4="■"
+    [ "$O5" -eq 1 ] && s5="■"
+    [ "$O6" -eq 1 ] && s6="■"
+    [ "$O7" -eq 1 ] && s7="■"
+    [ "$O8" -eq 1 ] && s8="■"
+
+    echo "---------------------------------------------"
+    echo -e " ${CYAN}${BOLD}D11 分析正交度${NC} | ${ticker}"
+    echo "---------------------------------------------"
+    echo ""
+    echo "  三轴: X(时间) × Y(结构层) × Z(认知模式)"
+    echo ""
+    echo "                     ← 历史        前瞻 →"
+    echo "              ┌────────────┬────────────┐"
+    echo "  宏观/制度 ↑ │ O7 ${s7} 判断 │ O8 ${s8} 判断 │"
+    echo "              │ O3 ${s3} 实证 │ O4 ${s4} 实证 │"
+    echo "              ├────────────┼────────────┤"
+    echo "  公司/行业 ↓ │ O5 ${s5} 判断 │ O6 ${s6} 判断 │"
+    echo "              │ O1 ${s1} 实证 │ O2 ${s2} 实证 │"
+    echo "              └────────────┴────────────┘"
+    echo ""
+    printf "  覆盖: %d/8 卦限 | D11得分: %d/10\n" "$COVERED" "$D11"
+
+    # 盲区诊断
+    local blindspots=""
+    [ "$O1" -eq 0 ] && blindspots="${blindspots} O1(历史财务回溯)"
+    [ "$O2" -eq 0 ] && blindspots="${blindspots} O2(前瞻定量模型)"
+    [ "$O3" -eq 0 ] && blindspots="${blindspots} O3(行业历史数据)"
+    [ "$O4" -eq 0 ] && blindspots="${blindspots} O4(行业前瞻建模)"
+    [ "$O5" -eq 0 ] && blindspots="${blindspots} O5(公司历史判断)"
+    [ "$O6" -eq 0 ] && blindspots="${blindspots} O6(前瞻非共识洞察)"
+    [ "$O7" -eq 0 ] && blindspots="${blindspots} O7(制度历史判断)"
+    [ "$O8" -eq 0 ] && blindspots="${blindspots} O8(宏观前瞻判断)"
+
+    if [ -n "$blindspots" ]; then
+        echo -e "  ${YELLOW}盲区:${NC}${blindspots}"
+    else
+        echo -e "  ${GREEN}全覆盖 — 分析空间无系统性盲区${NC}"
+    fi
+    echo ""
+}
+
 print_compare() {
     local ticker="$1"
     shift
@@ -505,7 +675,7 @@ print_compare() {
     local delta=$((post_total - pre_total))
 
     echo "============================================="
-    echo -e " ${CYAN}${BOLD}Research Quality Scorecard v1.0${NC}"
+    echo -e " ${CYAN}${BOLD}Research Quality Scorecard v1.1${NC}"
     echo -e " ${ticker} | Pre-Research → Post-Research"
     echo "============================================="
     echo ""
@@ -574,6 +744,10 @@ case "$MODE" in
         RESULT=$(score_post "$COMPLETE_FILE" "$POSS_WIDTH")
         SCORES=($RESULT)
         print_single "Post-Research (pw=${POSS_WIDTH})" "${TICKER:-UNKNOWN}" "${SCORES[@]}"
+        # D11 卦限覆盖
+        OCT_RESULT=$(score_octant "$COMPLETE_FILE")
+        OCT_SCORES=($OCT_RESULT)
+        print_octant "${TICKER:-UNKNOWN}" "${OCT_SCORES[@]}"
         echo -e "${GREEN}Post评分完成${NC}"
         ;;
 
@@ -586,6 +760,10 @@ case "$MODE" in
         POST_RESULT=$(score_post "$COMPLETE_FILE" "$POSS_WIDTH")
 
         print_compare "$TICKER" "$PRE_RESULT" "$POST_RESULT"
+        # D11 卦限覆盖 (仅post有意义)
+        OCT_RESULT=$(score_octant "$COMPLETE_FILE")
+        OCT_SCORES=($OCT_RESULT)
+        print_octant "$TICKER" "${OCT_SCORES[@]}"
         ;;
 
     *)
