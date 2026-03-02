@@ -3,9 +3,9 @@
 # 每当新报告某板块超越现有最佳时，自动更新此目录
 
 metadata:
-  version: "1.9"
-  last_updated: "2026-02-27"
-  total_reports_analyzed: 29
+  version: "2.0"
+  last_updated: "2026-03-02"
+  total_reports_analyzed: 30
   quality_threshold: 4.0/5.0
 
 # ============================================================
@@ -20,6 +20,15 @@ valuation:
     key_innovation: "隐含WFE份额28-32%=数学不可能 (TAM天花板测试)"
     when_to_use: "隐含增长假设不现实时 (P/E >40x 或 隐含市场份额>物理上限)"
     transferable_to: ["半导体", "垄断型企业", "高估值成长股"]
+
+  spof_belief_inversion:
+    champion: "NVDA_Ch71_B-4"
+    score: 4.2
+    report_path: "reports/NVDA/NVDA_Complete_v2.0_2026-03-02.md"
+    method: "Reverse DCF → 6信念集 → 逻辑一致性检验(B-1×B-4冲突/B-2×B-3互斥) → SPOF识别 → 数学不可能性测试(TAM占比)"
+    key_innovation: "在KLAC的信念反演基础上新增两层: (1)信念间逻辑矛盾检测(分析师FY2030↓ vs P/E 36x) (2)数学不可能性测试移植到非硬上限场景('不是不可能但需要文明级转换')"
+    when_to_use: "高P/E公司信念集存在内部矛盾时(卖方预估vs市场定价) — 信念反演的进阶应用"
+    transferable_to: ["所有P/E>30x股票", "卖方预估与市场估值不一致的公司", "SPOF型投资论文"]
 
   method_independence_audit:
     champion: "AMAT_Ch10.5"
@@ -92,6 +101,19 @@ red_team:
     key_innovation: "8个CQ全部下调→6下调2上调，防止系统性悲观"
     when_to_use: "红队结果过度单向时"
     transferable_to: ["所有报告Phase 4"]
+
+# ============================================================
+# 周期识别 (Cycle Identification)
+# ============================================================
+cycle_identification:
+  capex_cycle_stock:
+    champion: "NVDA_CI-01_Ch71"
+    score: 4.3
+    report_path: "reports/NVDA/NVDA_Complete_v2.0_2026-03-02.md"
+    method: "CapEx历史周期(光纤/无线/云)→NVDA收入依赖度→分析师FY2030↓2.8%→PPDA -20~28%→B-4 SPOF单点故障"
+    key_innovation: "'史上最贵的周期股'——将$4.31T市值与CapEx周期本质的矛盾量化: 永续平台定价(P/E 36x) vs 周期股现实(分析师自己预期FY2030收入下降)"
+    when_to_use: "基建受益股市值>$500B且P/E>25x时 — 测试市场是否将周期性CapEx驱动错误定价为永续增长"
+    transferable_to: ["AI基建(VRT/ETN/SMCI/ANET)", "半导体(AMD/AVGO)", "云基础设施", "所有CapEx周期受益股"]
 
 # ============================================================
 # 情景分析 (Scenario Analysis)
