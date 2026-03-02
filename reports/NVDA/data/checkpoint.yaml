@@ -6,9 +6,9 @@ worktree: "半导体"
 industry: "半导体"
 last_updated: "2026-03-02T05:44:00+00:00"
 
-current_phase: 5
+current_phase: complete
 phase_status: complete
-phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2", "3", "4", "5"]
+phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2", "3", "4", "5", "complete"]
 
 target_chars: 336602
 target_range: "269K-420K"
@@ -68,4 +68,9 @@ scorecard:
   tracking_signals: 14
   red_team_net_impact: "+5pp, +$220-250B"
 
-next_step: "Complete assembly (Iron Rule J: single-session)"
+complete_file: "NVDA_Complete_v1.0_2026-03-02.md"
+complete_chars: 210704
+complete_chapters: 103
+complete_cg: "PASSED (0 errors, 3 warnings)"
+complete_scorecard: 71
+next_step: "Post-report autopsy + merge to main"
