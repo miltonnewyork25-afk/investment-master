@@ -1,0 +1,19 @@
+schema_version: "2.0"
+ticker: RCL
+company: "RCL"
+framework_version: v17.0
+worktree: "消费品"
+industry: "消费品"
+last_updated: "2026-02-25T12:32:28+00:00"
+
+current_phase: -1
+phase_status: pre_launch
+phases_completed: []
+
+target_chars: 296477
+target_range: "237K-370K"
+hard_floor: 200000
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
