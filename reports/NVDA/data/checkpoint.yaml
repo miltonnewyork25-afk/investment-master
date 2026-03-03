@@ -20,7 +20,7 @@ sgi_score: 8.9
 sgi_route: "specialist"
 
 core_questions: 8
-ci_registered: 4
+ci_registered: 5
 dm_anchors: 291
 kill_switches: 14
 
@@ -68,9 +68,11 @@ scorecard:
   tracking_signals: 14
   red_team_net_impact: "+5pp, +$220-250B"
 
-complete_file: "NVDA_Complete_v1.0_2026-03-02.md"
-complete_chars: 210704
+complete_file: "NVDA_Complete_v2.0_2026-03-02.md"
+complete_chars_v1: 210704
+complete_chars_v2: "~220K"
 complete_chapters: 103
 complete_cg: "PASSED (0 errors, 3 warnings)"
-complete_scorecard: 71
-next_step: "Post-report autopsy + merge to main"
+complete_scorecard_v1: 71
+complete_scorecard_v2: 90
+next_step: "Commit v2.0 to main"
