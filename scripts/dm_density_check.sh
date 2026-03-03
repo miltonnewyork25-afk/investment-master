@@ -31,7 +31,7 @@ if [ ! -f "$FILE" ]; then
 fi
 
 # --- 统计DM标注 ---
-ACTUAL_DM=$(grep -o '\[DM-[A-Za-z0-9]+-[0-9]\+\]' "$FILE" 2>/dev/null | wc -l | tr -d ' ')
+ACTUAL_DM=$(grep -o '\[DM-[A-Za-z0-9]\+-[A-Za-z0-9]\+\]' "$FILE" 2>/dev/null | wc -l | tr -d ' ')
 CHARS=$(wc -c < "$FILE" | tr -d ' ')
 DENSITY=$(python3 -c "print(f'{($ACTUAL_DM / ($CHARS / 10000)):.1f}' if $CHARS > 0 else '0.0')")
 
