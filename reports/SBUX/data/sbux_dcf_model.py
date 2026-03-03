@@ -11,7 +11,7 @@ import json
 # 基础参数
 # ============================================================
 SHARES_OUT = 1.14e9  # 流通股 (B)
-NET_DEBT = 30.1e9    # Q1 FY2026净债务
+NET_DEBT = 23.0e9    # 纯金融债净额(排除租赁双重计算)
 CURRENT_PRICE = 96.76
 MARKET_CAP = SHARES_OUT * CURRENT_PRICE  # ~$110.3B
 EV_CURRENT = MARKET_CAP + NET_DEBT       # ~$140.4B
@@ -31,22 +31,22 @@ scenarios = {
         "da_pct":     [0.045, 0.043, 0.042, 0.040, 0.040],
         "nwc_pct":    [0.005, 0.003, 0.002, 0.002, 0.002],  # NWC drain as % of rev
         "terminal_g": 0.030,
-        "wacc": 0.055,
+        "wacc": 0.050,  # 修正: Fed降息预期→前瞻性WACC
         "label": "牛市"
     },
     "基准(第一性原理恢复)": {
-        "probability": 0.50,
+        "probability": 0.45,  # 修正: 50%→45%, 5pp转移至熊市
         "rev_growth": [0.031, 0.045, 0.045, 0.042, 0.040],
-        "opm_path":   [0.105, 0.118, 0.128, 0.133, 0.135],
+        "opm_path":   [0.105, 0.120, 0.132, 0.138, 0.140],  # 修正: 终态13.5%→14.0%(FY2023=16.3%的合理折扣)
         "capex_pct":  [0.062, 0.058, 0.055, 0.055, 0.053],
         "da_pct":     [0.048, 0.045, 0.043, 0.042, 0.042],
         "nwc_pct":    [0.008, 0.005, 0.003, 0.003, 0.002],
         "terminal_g": 0.025,
-        "wacc": 0.063,
+        "wacc": 0.056,  # 修正: 6.3%→5.6%(前瞻利率下行, 利率中位数法)
         "label": "基准"
     },
     "熊市(恢复失败+margin陷阱)": {
-        "probability": 0.25,
+        "probability": 0.30,  # 修正: 25%→30%(基准-5pp转移至此)
         "rev_growth": [0.020, 0.025, 0.030, 0.030, 0.025],
         "opm_path":   [0.095, 0.100, 0.108, 0.112, 0.115],
         "capex_pct":  [0.065, 0.062, 0.060, 0.058, 0.055],
@@ -129,7 +129,7 @@ def run_dcf(params, base_rev=BASE_REVENUE):
     results["terminal_ebit"] = rev * params["opm_path"][-1]
 
     # EPS估算 (简化: NI ≈ NOPAT - Interest)
-    interest_est = NET_DEBT * 0.041  # 4.1% avg cost of debt
+    interest_est = NET_DEBT * 0.045  # 4.5% avg cost of debt (on financial debt only)
     for yr_idx, yr_name in enumerate(results["years"]):
         yr_rev = base_rev
         for i in range(yr_idx + 1):
@@ -148,7 +148,7 @@ def run_dcf(params, base_rev=BASE_REVENUE):
 def sensitivity_matrix():
     """OPM × WACC 敏感性"""
     opms = [0.11, 0.12, 0.13, 0.14, 0.15]
-    waccs = [0.050, 0.055, 0.063, 0.070, 0.075]
+    waccs = [0.045, 0.050, 0.056, 0.063, 0.070]
     g = 0.025
     base_params = scenarios["基准(第一性原理恢复)"].copy()
 
