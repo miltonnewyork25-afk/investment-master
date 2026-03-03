@@ -4,10 +4,10 @@ company: "Starbucks Corporation"
 framework_version: v18.0
 worktree: "消费品"
 industry: "consumer"
-last_updated: "2026-03-03T08:15:00+00:00"
+last_updated: "2026-03-03T19:45:00+00:00"
 
-current_phase: 2
-phase_status: in_progress
+current_phase: 3
+phase_status: pending
 phases_completed:
   - phase: -1
     status: completed
@@ -57,6 +57,18 @@ phases_completed:
       - staging/P1_Ch6_china_jv.md
       - staging/P1_Ch7_ceo.md
       - staging/P1_Ch8_supply_chain.md
+  - phase: 2
+    status: completed
+    timestamp: "2026-03-03T19:45:00+00:00"
+    notes: "v2.0: 6ch, 81,252c, 131DM, 19Mermaid. 新增: DuPont ROIC分解+NEP框架+CSSPD纯度9/10+Reverse DCF概率加权$74+BME三路径+共识OPM偏差150bps+催化剂日历"
+    artifacts:
+      - staging/P2_Ch9_financial_trends.md
+      - staging/P2_Ch10_negative_equity.md
+      - staging/P2_Ch11_comp_sales.md
+      - staging/P2_Ch12_reverse_dcf.md
+      - staging/P2_Ch13_consensus.md
+      - staging/P2_Ch14_macro_catalysts.md
+      - data/p2_research_findings.md
 
 target_chars: 400000
 target_range: "400K-440K"
@@ -71,13 +83,17 @@ cq_registry:
   - id: CQ1
     question: "78x P/E隐含什么？信念互斥是否成立？"
     type: structural
-    confidence: 45
+    confidence: 60
+    confidence_history: "P0.5:45 → P2-Ch9:50 → P2-Ch12:60"
     target_phase: P2
+    p2_answer: "46x正常化P/E隐含OPM 15%+Rev CAGR 5%。BME部分成立——路径C(半转型)是市场赌注。联合概率8.8%。"
   - id: CQ2
     question: "Niccol = CMG 2.0还是Schultz 3.0？"
     type: cyclical
-    confidence: 55
+    confidence: 60
+    confidence_history: "P0.5:50 → P2-Ch9:55 → P2-Ch11:60"
     target_phase: P1
+    p2_answer: "SBUX恢复速度约为CMG 1/3。Q1'26 SSS纯度9/10但调整后仅+2.8%。"
   - id: CQ3
     question: "中国$4B JV是战略撤退还是价值解锁？"
     type: structural
@@ -86,40 +102,59 @@ cq_registry:
   - id: CQ4
     question: "负$8.4B权益 + ROIC<WACC = 回购摧毁价值？"
     type: institutional
-    confidence: 60
+    confidence: 70
+    confidence_history: "P0.5:60 → P2-Ch9:65 → P2-Ch10:70"
     target_phase: P2
+    p2_answer: "部分正确。Johnson时代摧毁$3-5B价值。ROIC 8.5%>WACC 4.8-6.3%但EV基准仅1.88%。杠杆5.6x偏紧。"
   - id: CQ5
     question: "35.5M Rewards会员 = 增长引擎还是天花板？"
     type: cyclical
-    confidence: 50
+    confidence: 55
+    confidence_history: "P0.5:50 → P2-Ch11:55"
     target_phase: P1+P2
 
-next_phase: 2
+next_phase: 3
 next_phase_plan: |
-  Phase 2: 财务与市场 (Ch9-Ch14)
-  - Ch9: 财务趋势深挖(5年三表+杜邦分解)
-  - Ch10: 负权益悖论(NEP框架)
-  - Ch11: CSSPD同店销售纯度分解
-  - Ch12: Reverse DCF + 承重墙脆弱度
-  - Ch13: 分析师共识解构
-  - Ch14: 宏观+Polymarket+催化剂日历
-  目标: ≥75K字符
+  Phase 3: 估值与情景 (Ch15-Ch18)
+  - Ch15: 正向DCF + Python验证 (3情景×5年)
+  - Ch16: 多维估值 (EV/EBITDA + P/FCF + SOTP三重身份)
+  - Ch17: 情景综合与概率加权
+  - Ch18: 投资温度计 + 评级初判
+  目标: ≥60K字符
+  关键输入: Ch12 Reverse DCF参数 + Ch13第一性原理OPM 13.0% + Ch14宏观情景权重
 
 quick_ref:
   price: 96.76
   market_cap: 110.2B
   pe_ttm: 78.6x
+  pe_normalized: 46.1x
   eps_fy25: 1.63
+  eps_fy25_normalized: 2.10
   eps_fy26e: 2.30
   eps_fy28e: 3.63
+  eps_fy28e_first_principles: 3.05
   opm_fy25: 9.6%
+  opm_consensus_fy28: 14.2%
+  opm_first_principles_fy28: 13.0%
   equity: -8.1B
+  net_debt_q1_26: 30.1B
   fcf_fy25: 2.44B
   div_fy25: 2.77B
+  wacc_conservative: 6.3%
+  ev_probability_weighted: 114.4B
+  stock_probability_weighted: 73.9
+  premium_vs_pw: 31%
   rewards_members: 35.5M
   stores_total: ~38000
   stores_china: 8011
   china_jv_ev: 4.0B
   niccol_comp_yr1: 113M
-  total_chars: 120044
-  latest_phase_chars: 120044
+  total_chars: 210199
+  p1_chars: 128947
+  p2_chars: 81252
+  p1_dm: 238
+  p2_dm: 131
+  total_dm: 369
+  p1_mermaid: 22
+  p2_mermaid: 19
+  total_mermaid: 41
