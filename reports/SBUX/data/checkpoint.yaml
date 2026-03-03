@@ -1,0 +1,100 @@
+schema_version: "2.0"
+ticker: SBUX
+company: "Starbucks Corporation"
+framework_version: v18.0
+worktree: "消费品"
+industry: "consumer"
+last_updated: "2026-03-03T08:15:00+00:00"
+
+current_phase: 0.75
+phase_status: completed
+phases_completed:
+  - phase: -1
+    status: completed
+    timestamp: "2026-03-03T08:04:00+00:00"
+    notes: "tier3_launch.sh + knowledge_context.md + lit_recon_memo.md"
+  - phase: 0
+    status: completed
+    timestamp: "2026-03-03T08:12:00+00:00"
+    notes: "MCP data prefetch (SBUX/LKNCY/MCD/BROS) + 3 background agents (China JV, Rewards, Niccol)"
+    artifacts:
+      - data/sbux_financial_summary.md
+      - data/china_jv_research.md
+      - data/rewards_stored_value_research.md
+      - data/niccol_earnings_research.md
+      - staging/P0_CQ_routing.md
+  - phase: 0.5
+    status: completed
+    timestamp: "2026-03-03T08:13:00+00:00"
+    notes: "Thesis crystallization — BME信念互斥 + 三重身份 + 5异常 + 3约束碰撞 + 4非共识假说"
+    artifacts:
+      - staging/P0.5_thesis_crystallization.md
+  - phase: 0.75
+    status: completed
+    timestamp: "2026-03-03T08:15:00+00:00"
+    notes: "Anomaly hunting integrated into P0.5"
+
+target_chars: 400000
+target_range: "400K-440K"
+hard_floor: 300000
+
+pw_score: 5.4
+pw_route: mixed_mode
+sgi_score: 6.5
+a_score_estimate: "6.5-7.0"
+
+cq_registry:
+  - id: CQ1
+    question: "78x P/E隐含什么？信念互斥是否成立？"
+    type: structural
+    confidence: 45
+    target_phase: P2
+  - id: CQ2
+    question: "Niccol = CMG 2.0还是Schultz 3.0？"
+    type: cyclical
+    confidence: 50
+    target_phase: P1
+  - id: CQ3
+    question: "中国$4B JV是战略撤退还是价值解锁？"
+    type: structural
+    confidence: 55
+    target_phase: P1+P3
+  - id: CQ4
+    question: "负$8.4B权益 + ROIC<WACC = 回购摧毁价值？"
+    type: institutional
+    confidence: 60
+    target_phase: P2
+  - id: CQ5
+    question: "35.5M Rewards会员 = 增长引擎还是天花板？"
+    type: cyclical
+    confidence: 40
+    target_phase: P1+P2
+
+next_phase: 1
+next_phase_plan: |
+  Phase 1: 公司深度 (Ch2-Ch8)
+  4个并行Agent:
+  - Agent A: Ch2(身份诊断) + Ch3(门店经济学)
+  - Agent B: Ch4(Rewards/DFFV) + Ch5(竞争生态)
+  - Agent C: Ch6(中国JV) + Ch7(CEO评分卡+沉默分析)
+  - Agent D: Ch8(供应链)
+  目标: ≥100K字符
+
+quick_ref:
+  price: 96.76
+  market_cap: 110.2B
+  pe_ttm: 78.6x
+  eps_fy25: 1.63
+  eps_fy26e: 2.30
+  eps_fy28e: 3.63
+  opm_fy25: 9.6%
+  equity: -8.1B
+  fcf_fy25: 2.44B
+  div_fy25: 2.77B
+  rewards_members: 35.5M
+  stores_total: ~38000
+  stores_china: 8011
+  china_jv_ev: 4.0B
+  niccol_comp_yr1: 113M
+  total_chars: 0
+  latest_phase_chars: 0
