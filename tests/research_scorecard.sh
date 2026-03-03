@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# research_scorecard.sh — 研究质量记分卡 v1.1
+# research_scorecard.sh — 研究质量记分卡 v1.2
 # ============================================================
 # 用法:
 #   research_scorecard.sh pre  <TICKER>                        # Phase 0后评分
@@ -28,6 +28,7 @@
 #
 # v1.0 (2026-02-14) — 首版
 # v1.1 (2026-03-02) — D11分析正交度(8卦限覆盖热力图)
+# v1.2 (2026-03-02) — D1识别DM锚点(≥300→10,≥200→9,≥100→8,≥50→7); D6识别DM锚点+硬数据标注密度 (EVO-NVDA-003)
 # ============================================================
 
 set -euo pipefail
@@ -244,15 +245,29 @@ score_post() {
         BENCHMARK=350000
     fi
 
-    # --- D1: 数据基础 — DM覆盖率%/10 ---
+    # --- D1: 数据基础 — DM锚点数 > DM覆盖率% > 标注密度 ---
     local DM_COV
     DM_COV=$(grep -oE 'DM覆盖率 *[0-9]+%' "$FILE" 2>/dev/null | grep -oE '[0-9]+' | head -1) || true
     if [ -z "$DM_COV" ]; then
         # 回退: 从审计摘要检测覆盖率数字
         DM_COV=$(grep -oE '[0-9]+%' "$FILE" 2>/dev/null | head -3 | grep -oE '[0-9]+' | head -1) || true
     fi
+    # DM锚点计数 (DM-001 / DM-P1A-001 等格式)
+    local DM_ANCHOR_COUNT
+    DM_ANCHOR_COUNT=$(grep -oE 'DM-[A-Za-z0-9]+-[0-9]+|DM-[0-9]+' "$FILE" 2>/dev/null | sort -u | wc -l) || true
+    DM_ANCHOR_COUNT="${DM_ANCHOR_COUNT// /}"
+    DM_ANCHOR_COUNT="${DM_ANCHOR_COUNT:-0}"
     local D1=0
-    if [ -n "$DM_COV" ] && [ "$DM_COV" -gt 0 ]; then
+    if [ "$DM_ANCHOR_COUNT" -ge 300 ]; then
+        D1=10
+    elif [ "$DM_ANCHOR_COUNT" -ge 200 ]; then
+        D1=9
+    elif [ "$DM_ANCHOR_COUNT" -ge 100 ]; then
+        D1=8
+    elif [ "$DM_ANCHOR_COUNT" -ge 50 ]; then
+        D1=7
+    elif [ -n "$DM_COV" ] && [ "$DM_COV" -gt 0 ]; then
+        # DM锚点<50: 尝试DM覆盖率%
         D1=$(cap10 $((DM_COV / 10)))
     else
         # 旧报告: 用标注密度推算
@@ -359,7 +374,7 @@ score_post() {
     local D5=$(cap10 "$D5_RAW")
 
     # --- D6: 数据验证 ---
-    # 审计摘要(+3) + DM覆盖(+4) + 折叠源表≥5(+3)
+    # 审计摘要(+3) + DM覆盖(+4) + 折叠源表≥5(+3) + DM锚点密度(+2) + 硬数据标注(+2)
     local HAS_AUDIT
     HAS_AUDIT=$(grep -ciE '数据审计摘要|数据审计|DM覆盖率' "$FILE" 2>/dev/null || true)
     HAS_AUDIT="${HAS_AUDIT// /}"
@@ -368,6 +383,10 @@ score_post() {
     DETAILS_COUNT=$(grep -c '<details>' "$FILE" 2>/dev/null || true)
     DETAILS_COUNT="${DETAILS_COUNT// /}"
     DETAILS_COUNT="${DETAILS_COUNT:-0}"
+    local HARD_DATA_COUNT
+    HARD_DATA_COUNT=$(grep -c '硬数据:' "$FILE" 2>/dev/null || true)
+    HARD_DATA_COUNT="${HARD_DATA_COUNT// /}"
+    HARD_DATA_COUNT="${HARD_DATA_COUNT:-0}"
 
     local D6=0
     if [ "$HAS_AUDIT" -gt 0 ]; then
@@ -381,6 +400,18 @@ score_post() {
     if [ "$DETAILS_COUNT" -ge 5 ]; then
         D6=$((D6 + 3))
     elif [ "$DETAILS_COUNT" -ge 2 ]; then
+        D6=$((D6 + 1))
+    fi
+    # DM锚点≥200 = de facto verification (+2)
+    if [ "${DM_ANCHOR_COUNT:-0}" -ge 200 ]; then
+        D6=$((D6 + 2))
+    elif [ "${DM_ANCHOR_COUNT:-0}" -ge 100 ]; then
+        D6=$((D6 + 1))
+    fi
+    # 硬数据标注密度 (+2)
+    if [ "$HARD_DATA_COUNT" -ge 100 ]; then
+        D6=$((D6 + 2))
+    elif [ "$HARD_DATA_COUNT" -ge 50 ]; then
         D6=$((D6 + 1))
     fi
     D6=$(cap10 "$D6")
@@ -591,7 +622,7 @@ print_single() {
     local total="${scores[10]}"
 
     echo "============================================="
-    echo -e " ${CYAN}${BOLD}Research Quality Scorecard v1.1${NC}"
+    echo -e " ${CYAN}${BOLD}Research Quality Scorecard v1.2${NC}"
     echo -e " ${ticker} | ${label}"
     echo "============================================="
     echo ""
@@ -675,7 +706,7 @@ print_compare() {
     local delta=$((post_total - pre_total))
 
     echo "============================================="
-    echo -e " ${CYAN}${BOLD}Research Quality Scorecard v1.1${NC}"
+    echo -e " ${CYAN}${BOLD}Research Quality Scorecard v1.2${NC}"
     echo -e " ${ticker} | Pre-Research → Post-Research"
     echo "============================================="
     echo ""

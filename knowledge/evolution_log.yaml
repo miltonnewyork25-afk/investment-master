@@ -394,20 +394,58 @@ entries:
   # 消费品行业首份Tier 3: A-Score v2.0(6.04)+SGI(7.25)在消费品的首次实战, 确认跨行业泛化
   # DM策略: 数据审计摘要通过CG8, 但DM=0仍是技术债务(与VRT同等级, 低于SMCI/INTC的102)
 
+  - ticker: "IHG"
+    date: "2026-02-27"
+    report: "IHG_Complete_2026-02-27.md"
+    chars: "501K"
+    cg_result: "PASSED(0E/3W)"
+    compliance: "PASSED"
+    dm_anchors: 547
+    mermaid_count: 92
+    pw: 5.5
+    method: "mixed"
+    scorecard: 95
+    near_miss_score: 0
+    quality: 4.3  # 501K+95/100+CG PASSED+5CI+16KS+547DM+92Mermaid
+    top_technique: "估值折价信念反演+双层SOTP — 43%折价分解为基本面12%+制度性8%+认知20%三层,每层独立可验证"
+    top_lesson: "酒店特许经营=消费品中最接近纯软件的商业模型; 收入口径突变(FY2024 loyalty reclassification)必须在Phase 0捕获否则贯穿全报告; 15个Agent并行执行+单会话组装=铁律J继续验证有效"
+    evolution_proposed: |
+      EVO-IHG-001: autopsy脚本DM正则兼容性 — 当前`DM-[A-Z]-[0-9]+`不匹配`DM-P2E-001`格式, 需改为`DM-[A-Za-z0-9]+-[0-9]+` [P0, 工具修复]
+      EVO-IHG-002: autopsy脚本wc -m vs wc -c — UTF-8中文字符被wc -m压缩, 导致501KB报告显示314K字符; 建议统一用wc -c或标注单位 [P0, 工具修复]
+      EVO-IHG-003: CG2 Phase 5区域检测 — 当报告不以Phase编号而以Chapter编号组织时, CG2无法检测到Phase 5区域; 需支持"最终评级|Kill Switch|CQ闭合"等关键词作为备选标记 [P1, 门控改进]
+      EVO-IHG-004: 收入口径突变检测模板 — 酒店/零售/SaaS公司常见reclassification导致收入跳升, Phase 0应有标准化检查流程(YoY>25%且非M&A→触发口径审查) [P1, 方法论资产]
+    evolution_status: approved  # 2026-02-27 用户全部批准4个EVO
+
+  # --- 质量趋势更新 ---
+  # ETN-v2(4.3) → SMCI(3.9)↓ → SEMI(4.3)↑ → INTC(4.1)↓ → ARM(3.5)↓↓ → RCL(4.2)↑↑ → IHG(4.3)↑ → NVDA(4.0)↓
+  # NVDA从IHG小幅回落: 210K低于269K目标(78%), 但内容密度强(291 DM+571标注+27.1/万字密度)
+  # Discovery System第二次执行: DM/标注/Mermaid均比INTC进步, 但体量退步(210K<270K)
+  # 铁律J第三次验证(RCL→IHG→NVDA): 单会话组装质量稳定
+  # CI-01"史上最贵的周期股"是冠军级非共识洞见(8.0/10), 可迁移到所有AI基建受益股
+
   - ticker: "NVDA"
     date: "2026-03-02"
     report: "NVDA_Complete_v1.0_2026-03-02.md"
     chars: "210K"
-    cg_result: "PASSED(0E/1W)"
+    bytes: "331K"
+    cg_result: "PASSED(0E/3W)"
     compliance: "PASSED"
-    dm_anchors: 221
+    dm_anchors: 291
     mermaid_count: 39
-    pw: 1
-    method: "traditional"
-    scorecard: "N/A"
+    pw: 7.2
+    method: "discovery_system"
+    a_score: "8.10/10 (极端专才, SGI=8.9)"
+    sgi: "8.9 (极端专才, 收入90%来自AI DC)"
+    scorecard: "71/100"
     near_miss_score: 0
-    quality: null  # AI填入 (1.0-5.0)
-    top_technique: null  # AI填入
-    top_lesson: null  # AI填入
-    evolution_proposed: null  # AI填入
-    evolution_status: pending  # pending/approved/rejected
+    quality: 4.0
+    top_technique: "CI-01'史上最贵的周期股'(8.0/10, CapEx周期4-6年+分析师FY2030↓+PPDA -20~28%+B-4 SPOF完整定量链) + B-4 SPOF信念反演(分析师vs市场逻辑矛盾) + CQ-2诚实不确定(50:50经5 Phase未变)"
+    top_lesson: "Discovery System在$4T级公司首次应用——不确定性范围更宽($0.8T-$7.5T=9.4x), 传统估值框架失效, 条件评级+五情景映射是唯一诚实的输出格式; 体量210K<269K目标暴露PW≥7需≥350K的密度门控需求"
+    evolution_proposed: |
+      EVO-NVDA-001: Discovery System密度门控增强 — Phase 1后sentinel检查已产出占目标比例, <40%发出WARN [P1, 质量门控]
+      EVO-NVDA-002: Complete组装数据统一化 — 组装前扫描核心指标(P/E/ROE/市值)确认使用最新值, 消除幽灵数据 [P1, 流程改进]
+      EVO-NVDA-003: Scorecard D1/D6脚本修复 — 识别DM-/硬数据:/合理推断:作为有效数据指标 [P0, 脚本修复]
+      EVO-NVDA-004: AI CapEx周期跟踪仪表盘 — knowledge/industry/ai_capex_cycle_tracker.md, 跨报告统一跟踪 [P2, 方法论资产]
+      冠军目录待注册: CI-01"史上最贵的周期股"(8.0/10) + B-4 SPOF信念反演(4.2) [P2]
+    evolution_status: pending
+    reflection_file: "memory/NVDA_recursive_evolution_2026-03-02.md"

@@ -3,9 +3,9 @@
 # 每当新报告某板块超越现有最佳时，自动更新此目录
 
 metadata:
-  version: "1.8"
-  last_updated: "2026-02-27"
-  total_reports_analyzed: 28
+  version: "2.0"
+  last_updated: "2026-03-02"
+  total_reports_analyzed: 30
   quality_threshold: 4.0/5.0
 
 # ============================================================
@@ -20,6 +20,15 @@ valuation:
     key_innovation: "隐含WFE份额28-32%=数学不可能 (TAM天花板测试)"
     when_to_use: "隐含增长假设不现实时 (P/E >40x 或 隐含市场份额>物理上限)"
     transferable_to: ["半导体", "垄断型企业", "高估值成长股"]
+
+  spof_belief_inversion:
+    champion: "NVDA_Ch71_B-4"
+    score: 4.2
+    report_path: "reports/NVDA/NVDA_Complete_v2.0_2026-03-02.md"
+    method: "Reverse DCF → 6信念集 → 逻辑一致性检验(B-1×B-4冲突/B-2×B-3互斥) → SPOF识别 → 数学不可能性测试(TAM占比)"
+    key_innovation: "在KLAC的信念反演基础上新增两层: (1)信念间逻辑矛盾检测(分析师FY2030↓ vs P/E 36x) (2)数学不可能性测试移植到非硬上限场景('不是不可能但需要文明级转换')"
+    when_to_use: "高P/E公司信念集存在内部矛盾时(卖方预估vs市场定价) — 信念反演的进阶应用"
+    transferable_to: ["所有P/E>30x股票", "卖方预估与市场估值不一致的公司", "SPOF型投资论文"]
 
   method_independence_audit:
     champion: "AMAT_Ch10.5"
@@ -92,6 +101,19 @@ red_team:
     key_innovation: "8个CQ全部下调→6下调2上调，防止系统性悲观"
     when_to_use: "红队结果过度单向时"
     transferable_to: ["所有报告Phase 4"]
+
+# ============================================================
+# 周期识别 (Cycle Identification)
+# ============================================================
+cycle_identification:
+  capex_cycle_stock:
+    champion: "NVDA_CI-01_Ch71"
+    score: 4.3
+    report_path: "reports/NVDA/NVDA_Complete_v2.0_2026-03-02.md"
+    method: "CapEx历史周期(光纤/无线/云)→NVDA收入依赖度→分析师FY2030↓2.8%→PPDA -20~28%→B-4 SPOF单点故障"
+    key_innovation: "'史上最贵的周期股'——将$4.31T市值与CapEx周期本质的矛盾量化: 永续平台定价(P/E 36x) vs 周期股现实(分析师自己预期FY2030收入下降)"
+    when_to_use: "基建受益股市值>$500B且P/E>25x时 — 测试市场是否将周期性CapEx驱动错误定价为永续增长"
+    transferable_to: ["AI基建(VRT/ETN/SMCI/ANET)", "半导体(AMD/AVGO)", "云基础设施", "所有CapEx周期受益股"]
 
 # ============================================================
 # 情景分析 (Scenario Analysis)
@@ -414,6 +436,33 @@ tail_risk_pricing:
     key_innovation: "将'尾部风险'从定性担忧转化为可定价折扣($7.50/股/年), 使尾部风险参与估值而非仅存在于风险披露"
     when_to_use: "公司存在'完全停止运营'风险(收入归零事件概率>1%) — 传统DCF忽略的极端情景"
     transferable_to: ["邮轮/航空/旅游", "线下零售(强制关店)", "能源(ESG政策)", "所有有零收入黑天鹅的行业"]
+
+  valuation_discount_attribution:
+    champion: "IHG_Ch17+Ch15"
+    score: 4.3
+    report_path: "reports/IHG/IHG_Complete_2026-02-27.md"
+    method: "估值折价(43%) → Reverse DCF隐含信念6个 → A-Score基本面差距(12%) → 制度性折价(ADR上市/薄覆盖 8%) → 认知偏差(CEO新任/叙事缺乏 20%) → 每层独立可验证"
+    key_innovation: "将'为什么便宜'从定性讨论转化为三层可量化归因(基本面/制度性/认知), 每层有独立验证路径和修复时间表"
+    when_to_use: "公司存在显著同行估值折价(>20%) — 需区分'合理折价'vs'市场错误'"
+    transferable_to: ["ADR上市公司(PDD/BABA/IHG)", "薄覆盖公司(<8分析师)", "管理层换届期公司", "跨市场上市折价分析"]
+
+  franchise_dual_layer_sotp:
+    champion: "IHG_Ch2+Ch12"
+    score: 4.2
+    report_path: "reports/IHG/IHG_Complete_2026-02-27.md"
+    method: "特许经营层(品牌费+管理费+信用卡费, 60% margin, 15-20x EBITDA) + 物业层(房间+餐饮, 25-35% margin, 8-12x EBITDA) → 混合倍数随资产轻转型动态变化"
+    key_innovation: "将KO浓缩液经济学(浓缩液高倍数+成品低倍数)映射到酒店特许经营, 解释为什么asset-light transformation直接驱动估值倍数上移"
+    when_to_use: "特许经营模型公司(酒店/餐饮/零售) — 混合了高利润率品牌层和低利润率运营层"
+    transferable_to: ["酒店(HLT/MAR/WH/CHH)", "餐饮特许(MCD/YUM)", "KO/PEP浓缩液经济", "所有franchisor vs operator双层结构"]
+
+  assumption_independence_test:
+    champion: "IHG_Ch18"
+    score: 4.1
+    report_path: "reports/IHG/IHG_Complete_2026-02-27.md"
+    method: "管理层增长公式拆解(4引擎: 系统增长+RevPAR+费率+回购) → 2008/2020历史同时失效验证 → 有效独立引擎数(4→1.8) → 完整周期CAGR折扣(12-15%→9-12%)"
+    key_innovation: "证伪管理层叙事中的'多引擎增长'独立性假设, 将4引擎折算为1.8个有效独立引擎, 使真实增长预期下调3pp"
+    when_to_use: "管理层声称多个增长引擎时 — 测试引擎是否共享底层驱动"
+    transferable_to: ["所有'多引擎增长'叙事公司", "GLP-1(需求+定价+市场份额共享肥胖趋势)", "云计算(IaaS+PaaS+SaaS共享数字化)", "银行(利差+手续费+投行共享经济周期)"]
 
 # ============================================================
 # 动态更新机制
