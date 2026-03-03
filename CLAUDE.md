@@ -257,5 +257,6 @@ Complete组装必须在单会话内完成: 读Phase产出→组装→质量门�
 
 ## 系统升级
 
-**当前版本**: v17.0 (2026-02-17) | **健康监控**: `bash tests/framework_health_check.sh`
+**当前版本**: v18.0 (2026-03-03) | **健康监控**: `bash tests/framework_health_check.sh`
+**v18.0变化**: 战略报告框架回流——CEO沉默分析(P1)+PtW量化评分(P3)+KS条件依赖追踪(P5)。详见 `docs/deep_dive_protocol.md` v18.0
 **版本详情**: `CHANGELOG.md` + `memory/framework_evolution.md`
