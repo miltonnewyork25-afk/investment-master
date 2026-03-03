@@ -4,9 +4,9 @@ company: "Starbucks Corporation"
 framework_version: v18.0
 worktree: "消费品"
 industry: "consumer"
-last_updated: "2026-03-03T19:45:00+00:00"
+last_updated: "2026-03-03T20:30:00+00:00"
 
-current_phase: 3
+current_phase: 4
 phase_status: pending
 phases_completed:
   - phase: -1
@@ -113,15 +113,26 @@ cq_registry:
     confidence_history: "P0.5:50 → P2-Ch11:55"
     target_phase: P1+P2
 
-next_phase: 3
+phases_completed_addendum:
+  - phase: 3
+    status: completed
+    timestamp: "2026-03-03T20:30:00+00:00"
+    notes: "v2.0: 4ch, 35,039c, 61DM, 8Mermaid. Python DCF验证(4情景). 综合加权$60.7(溢价59%). 初判:审慎关注(-37.3%期望回报). A-Score 5.86/10. 温度计-0.15(微凉)."
+    artifacts:
+      - staging/P3_Ch15_forward_dcf.md
+      - staging/P3_Ch16_multi_valuation.md
+      - staging/P3_Ch17_scenario_synthesis.md
+      - staging/P3_Ch18_thermometer.md
+      - data/sbux_dcf_model.py
+
+next_phase: 4
 next_phase_plan: |
-  Phase 3: 估值与情景 (Ch15-Ch18)
-  - Ch15: 正向DCF + Python验证 (3情景×5年)
-  - Ch16: 多维估值 (EV/EBITDA + P/FCF + SOTP三重身份)
-  - Ch17: 情景综合与概率加权
-  - Ch18: 投资温度计 + 评级初判
-  目标: ≥60K字符
-  关键输入: Ch12 Reverse DCF参数 + Ch13第一性原理OPM 13.0% + Ch14宏观情景权重
+  Phase 4: 红队对抗 (Ch19-Ch21)
+  - Ch19: 红队七问 (RT-1~RT-7)
+  - Ch20: 双向校准 (向上调整过度悲观维度)
+  - Ch21: 有效性门控 + 评级修正
+  目标: ≥30K字符
+  关键: 挑战OPM天花板假设 + WACC敏感性 + 情景概率 + SOTP身份B低估
 
 quick_ref:
   price: 96.76
@@ -149,12 +160,20 @@ quick_ref:
   stores_china: 8011
   china_jv_ev: 4.0B
   niccol_comp_yr1: 113M
-  total_chars: 210199
+  综合加权价: 60.7
+  期望回报: -37.3%
+  初判评级: 审慎关注
+  a_score: 5.86
+  温度计: -0.15
+  total_chars: 245238
   p1_chars: 128947
   p2_chars: 81252
+  p3_chars: 35039
   p1_dm: 238
   p2_dm: 131
-  total_dm: 369
+  p3_dm: 61
+  total_dm: 430
   p1_mermaid: 22
   p2_mermaid: 19
-  total_mermaid: 41
+  p3_mermaid: 8
+  total_mermaid: 49
