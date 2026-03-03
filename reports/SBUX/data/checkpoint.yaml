@@ -6,8 +6,8 @@ worktree: "消费品"
 industry: "consumer"
 last_updated: "2026-03-03T08:15:00+00:00"
 
-current_phase: 1
-phase_status: completed
+current_phase: 2
+phase_status: in_progress
 phases_completed:
   - phase: -1
     status: completed
@@ -36,7 +36,19 @@ phases_completed:
   - phase: 1
     status: completed
     timestamp: "2026-03-03T09:30:00+00:00"
-    notes: "7 chapters (Ch2-Ch8), 66,858 chars, 176 DM anchors, 18 Mermaid. Agent ECONNRESET×5, 5/7 direct-written."
+    notes: "v1.0: 7ch, 66,858c, 176DM, 18Mermaid"
+    artifacts:
+      - archive_v1/P1_Ch2_identity.md
+      - archive_v1/P1_Ch3_store_economics.md
+      - archive_v1/P1_Ch4_rewards.md
+      - archive_v1/P1_Ch5_competition.md
+      - archive_v1/P1_Ch6_china_jv.md
+      - archive_v1/P1_Ch7_ceo.md
+      - archive_v1/P1_Ch8_supply_chain.md
+  - phase: "1-v2.0"
+    status: completed
+    timestamp: "2026-03-03T14:00:00+00:00"
+    notes: "v2.0重写: 7ch, 120,044c(+79%), 238DM, 22Mermaid. 新增: Niccol套利+蚕食3.8%+DFFV $2.8B+不可能三角+$2B审计45%"
     artifacts:
       - staging/P1_Ch2_identity.md
       - staging/P1_Ch3_store_economics.md
@@ -64,12 +76,12 @@ cq_registry:
   - id: CQ2
     question: "Niccol = CMG 2.0还是Schultz 3.0？"
     type: cyclical
-    confidence: 50
+    confidence: 55
     target_phase: P1
   - id: CQ3
     question: "中国$4B JV是战略撤退还是价值解锁？"
     type: structural
-    confidence: 55
+    confidence: 65
     target_phase: P1+P3
   - id: CQ4
     question: "负$8.4B权益 + ROIC<WACC = 回购摧毁价值？"
@@ -79,7 +91,7 @@ cq_registry:
   - id: CQ5
     question: "35.5M Rewards会员 = 增长引擎还是天花板？"
     type: cyclical
-    confidence: 40
+    confidence: 50
     target_phase: P1+P2
 
 next_phase: 2
@@ -109,5 +121,5 @@ quick_ref:
   stores_china: 8011
   china_jv_ev: 4.0B
   niccol_comp_yr1: 113M
-  total_chars: 66858
-  latest_phase_chars: 66858
+  total_chars: 120044
+  latest_phase_chars: 120044
