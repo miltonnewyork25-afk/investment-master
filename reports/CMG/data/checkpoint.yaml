@@ -6,28 +6,32 @@ worktree: "消费品"
 industry: "consumer"
 last_updated: "2026-03-04T12:00:00+00:00"
 
-current_phase: 3
+current_phase: 4
 phase_status: completed
-phases_completed: [-1, -0.5, 0.75, 0, 1, 2, 3]
+phases_completed: [-1, -0.5, 0.75, 0, 1, 2, 3, 4]
 
 target_chars: 400000
 target_range: "400K-440K"
 hard_floor: 300000
 
 quick_ref:
-  total_chars: 295644
+  total_chars: 341582
   p1_chars: 125469
   p2_chars: 110114
   p3_chars: 60061
+  p4_chars: 45938
   p1_chapters: 7
   p2_chapters: 6
   p3_chapters: 4
+  p4_chapters: 3
   p1_dm_new: 206
   p2_dm_new: 172
   p3_dm_new: 109
+  p4_dm_new: 84
   p1_mermaid: 22
   p2_mermaid: 15
   p3_mermaid: 11
+  p4_mermaid: 6
   pre_scorecard: 10
   temperature: 5.39
   temperature_level: "中性"
@@ -35,9 +39,12 @@ quick_ref:
   pw: 4.2
   wacc: "9.5%"
   a_score: 6.88
-  pw_price: "$31.33"
-  expected_return: "-15.2%"
-  rating_preliminary: "审慎关注(偏中性)"
-  dm_count: 572
+  pw_price_pre_rt: "$31.33"
+  pw_price_post_rt: "$34.3"
+  expected_return: "-7.0%"
+  rt_correction: "+3.75pp"
+  rating_final: "中性关注(偏审慎)"
+  rating_confidence: "55%"
+  dm_count: 656
   cq_count: 8
   hypothesis_count: 3
