@@ -6,6 +6,25 @@
 
 ---
 
+## [v18.1] - 2026-03-03
+
+### Added
+- **DM标注强制执行器** (`docs/dm_annotation_enforcer.md`) — 解决SBUX质量问题根因
+- **质量门控前置检查** — `phase_complete.sh` v1.1 新增DM密度预检查
+- **早期警告系统** — `dm_density_check.sh` Phase 1-3期间DM密度监控
+- **自动修复工具** — `inject_dm_annotations.sh` 自动DM标注注入
+- **消费品复杂估值框架** (`docs/industry/consumer_valuation_complex.md`) — 负权益+多身份估值
+
+### Changed
+- **tier3_guide_prompt.md** — 强化R5规则，DM密度≥15/万字符强制要求
+- **所有worktree同步** — 四个行业worktree已同步最新框架
+
+### Fixed
+- **SBUX质量门控失败** — 从DM标注密度0.0的系统性问题根因修复
+- **Phase 5门控绕过** — 现在Phase 1-3期间就开始DM密度检查
+
+---
+
 ## [v18.0] - 2026-03-03
 
 ### 战略报告框架回流 — CEO沉默分析 + PtW量化评分 + KS条件依赖追踪
