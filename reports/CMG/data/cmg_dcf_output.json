@@ -1,0 +1,173 @@
+{
+  "model_version": "CMG_DCF_v1.0",
+  "framework": "v18.0",
+  "current_price": 36.93,
+  "net_cash": 1050000000.0,
+  "shares": 1320000000.0,
+  "scenarios": [
+    {
+      "name": "S1: HEEP驱动重加速",
+      "probability": 0.15,
+      "wacc": 0.09,
+      "terminal_g": 0.03,
+      "rev_cagr": 0.12,
+      "opm_terminal": 0.19,
+      "price": 31.19,
+      "upside": -0.1554,
+      "ev": 37.1,
+      "fcf_y5": 2.64,
+      "tv_pct": 0.79,
+      "implied_pe": 24.9
+    },
+    {
+      "name": "S2: 稳态增长",
+      "probability": 0.5,
+      "wacc": 0.095,
+      "terminal_g": 0.025,
+      "rev_cagr": 0.08,
+      "opm_terminal": 0.17,
+      "price": 21.35,
+      "upside": -0.4219,
+      "ev": 25.1,
+      "fcf_y5": 2.0,
+      "tv_pct": 0.74,
+      "implied_pe": 17.0
+    },
+    {
+      "name": "S3: 增长停滞",
+      "probability": 0.25,
+      "wacc": 0.1,
+      "terminal_g": 0.02,
+      "rev_cagr": 0.05,
+      "opm_terminal": 0.15,
+      "price": 14.9,
+      "upside": -0.5966,
+      "ev": 17.5,
+      "fcf_y5": 1.53,
+      "tv_pct": 0.69,
+      "implied_pe": 12.1
+    },
+    {
+      "name": "S4: 品牌衰退",
+      "probability": 0.1,
+      "wacc": 0.11,
+      "terminal_g": 0.015,
+      "rev_cagr": 0.02,
+      "opm_terminal": 0.12,
+      "price": 9.82,
+      "upside": -0.734,
+      "ev": 11.3,
+      "fcf_y5": 1.09,
+      "tv_pct": 0.61,
+      "implied_pe": 8.0
+    }
+  ],
+  "pw_price": 20.06,
+  "pw_upside": -0.4568,
+  "pw_ev": 23.6,
+  "rating_implied": "审慎关注",
+  "sensitivity": [
+    [
+      {
+        "wacc": 0.085,
+        "g": 0.02,
+        "price": 23.35
+      },
+      {
+        "wacc": 0.085,
+        "g": 0.025,
+        "price": 24.87
+      },
+      {
+        "wacc": 0.085,
+        "g": 0.03,
+        "price": 26.66
+      }
+    ],
+    [
+      {
+        "wacc": 0.09,
+        "g": 0.02,
+        "price": 21.7
+      },
+      {
+        "wacc": 0.09,
+        "g": 0.025,
+        "price": 22.97
+      },
+      {
+        "wacc": 0.09,
+        "g": 0.03,
+        "price": 24.46
+      }
+    ],
+    [
+      {
+        "wacc": 0.095,
+        "g": 0.02,
+        "price": 20.26
+      },
+      {
+        "wacc": 0.095,
+        "g": 0.025,
+        "price": 21.35
+      },
+      {
+        "wacc": 0.095,
+        "g": 0.03,
+        "price": 22.6
+      }
+    ],
+    [
+      {
+        "wacc": 0.1,
+        "g": 0.02,
+        "price": 19.01
+      },
+      {
+        "wacc": 0.1,
+        "g": 0.025,
+        "price": 19.94
+      },
+      {
+        "wacc": 0.1,
+        "g": 0.03,
+        "price": 21.01
+      }
+    ],
+    [
+      {
+        "wacc": 0.105,
+        "g": 0.02,
+        "price": 17.91
+      },
+      {
+        "wacc": 0.105,
+        "g": 0.025,
+        "price": 18.71
+      },
+      {
+        "wacc": 0.105,
+        "g": 0.03,
+        "price": 19.63
+      }
+    ],
+    [
+      {
+        "wacc": 0.11,
+        "g": 0.02,
+        "price": 16.92
+      },
+      {
+        "wacc": 0.11,
+        "g": 0.025,
+        "price": 17.63
+      },
+      {
+        "wacc": 0.11,
+        "g": 0.03,
+        "price": 18.42
+      }
+    ]
+  ]
+}
