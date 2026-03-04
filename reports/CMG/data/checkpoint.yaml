@@ -6,9 +6,9 @@ worktree: "消费品"
 industry: "consumer"
 last_updated: "2026-03-04T12:00:00+00:00"
 
-current_phase: 4
+current_phase: 5
 phase_status: completed
-phases_completed: [-1, -0.5, 0.75, 0, 1, 2, 3, 4]
+phases_completed: [-1, -0.5, 0.75, 0, 1, 2, 3, 4, 5]
 
 target_chars: 400000
 target_range: "400K-440K"
@@ -45,6 +45,14 @@ quick_ref:
   rt_correction: "+3.75pp"
   rating_final: "中性关注(偏审慎)"
   rating_confidence: "55%"
-  dm_count: 656
+  p5_chars: 33695
+  app_chars: 26730
+  complete_chars: 402604
+  p5_chapters: 3
+  appendices: 5
+  p5_dm_new: 33
+  p5_mermaid: 6
+  dm_count: 659
+  mermaid_count: 54
   cq_count: 8
   hypothesis_count: 3
