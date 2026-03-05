@@ -1,7 +1,8 @@
 # consumer_modules.md
-# 消费品行业分析模块模板 v1.0
-# 生成日期: 2026-03-05
-# 适用公司示例: KO, PEP, PG, NKE, COST, WMT, MCD, SBUX, CMG, IHG, RCL
+# 消费品行业分析模块模板 v1.1
+# 生成日期: 2026-03-05 | v1.1更新: 2026-03-05
+# v1.1变更: M2新增促销依赖度子模块, M3新增利润池地图子模块, M4新增需求一致性检验
+# 适用公司示例: KO, PEP, PG, NKE, COST, WMT, MCD, SBUX, CMG, IHG, RCL, DPZ
 
 # ============================================================
 # 核心模块 M1-M10 (MECE, 任何消费品公司必须覆盖)
@@ -433,3 +434,65 @@ mece_verification:
     - M6(增长来源) vs M7(增长护城河) — 引擎 vs 壁垒
     - M8(管理意愿与文化) vs M9(财务结果) — 输入 vs 输出
     - E1(特许结构) vs M3(渠道总览) — E1是M3在特许模式下的深度展开,仅在触发时加载
+
+
+# ============================================================
+# v1.1 补丁: 子模块增强 (源自SBUX v3.0反思)
+# ============================================================
+
+v1_1_patches:
+
+  M2_sub_promo_dependency:
+    parent: M2_pricing_power
+    name: 促销依赖度诊断 (Promo Dependency Diagnosis)
+    trigger: >
+      公司促销收入占比>30%, 或管理层频繁提及value/deal/promo策略。
+      典型触发: DPZ, MCD(Value Menu), TGT(促销驱动)。不触发: COST(EDLP), CMG(低促销)。
+    fields:
+      - promo_mix: "含促销订单占总订单比例"
+      - price_realization: "实际客单 vs 菜单价格的折扣深度 (%)"
+      - discount_depth: "促销期间平均折扣幅度"
+      - mix_contribution: "ΔPrice / ΔVolume / ΔMix 三因子分解"
+    consistency_check: >
+      ΔPrice + ΔVolume + ΔMix ≈ 同店增长 (±1pp)。
+      若对不上, 说明mix定义有遗漏(如delivery fee/surcharge未计入price)。
+    kill_switch:
+      threshold: "promo_share >65% 连续2Q 或 price_realization折扣深度 >25%"
+      action: "溢价模型失效——切换到防御情景, 估值回归成本领先者框架"
+
+  M3_sub_profit_pool:
+    parent: M3_channel_ecosystem
+    name: 利润池地图 (Profit Pool Map)
+    trigger: >
+      公司有≥2个收入层(如特许费+供应链+直营+数字化), 且各层利润率差异>10pp。
+      典型触发: DPZ(Supply Chain+Royalty+Digital), KO(浓缩液+瓶装), IHG(Fee+Property)。
+    fields:
+      - revenue_by_layer: "各利润池层的收入 ($M)"
+      - margin_by_layer: "各利润池层的OPM (%)"
+      - profit_pool_share: "各层利润贡献占总利润的比例 (%)"
+      - trend_direction: "各层利润率的3年趋势方向 (↑/→/↓)"
+    consistency_check: >
+      Σ(revenue_by_layer × margin_by_layer) ≈ 总营业利润 (±10%)。
+      偏差>10%说明层划分遗漏了公司级费用分摊或交叉补贴。
+    kill_switch:
+      threshold: "核心利润池层(贡献>40%利润)的margin下滑>300bps且连续2Q"
+      action: "下调长期利润率中枢与终值假设, 重新评估SOTP各层倍数"
+
+  M4_sub_demand_consistency:
+    parent: M4_consumer_behavior
+    name: 需求一致性检验 (Demand Consistency Check)
+    trigger: >
+      所有Tier 3消费品报告强制执行。
+      用于验证"报告的同店增长"是否与"第一性原理需求模型"一致。
+    fields:
+      - frequency: "核心客群的年均购买频次"
+      - penetration: "核心市场的客群渗透率 (%)"
+      - ticket: "平均客单价 ($)"
+      - store_count: "可比门店数"
+    consistency_check: >
+      Bottom-up需求 = penetration × frequency × ticket × store_count。
+      Bottom-up vs reported_sales 差异 ≤±10% (数据透明公司) 或 ≤±20% (数据有限公司)。
+      偏差过大说明frequency/penetration假设有系统性偏差, 或存在未识别的渠道。
+    kill_switch:
+      threshold: "净化后真实comp < +2% 连续2Q 且 交易量(transaction)转负"
+      action: "有机增长熄火——下调增长情景概率, 检查是否为周期性(可恢复)还是结构性(趋势)"
