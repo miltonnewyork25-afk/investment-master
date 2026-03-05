@@ -503,3 +503,36 @@ entries:
     top_lesson: null  # AI填入
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "DPZ"
+    date: "2026-03-05"
+    report: "DPZ_v1.0_Complete_2026-03-05.md"
+    chars: "540K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 386
+    mermaid_count: 54
+    pw: 2.4
+    method: "traditional"
+    a_score: "5.9/10 (中等, 负权益拖累)"
+    sgi: "7.7 (专才, Pizza单品类)"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: 4.0
+    top_technique: "C-1 Supply Chain P&L重建(利润池地图) + C-3 ABS双天花板(DSCR非约束/杠杆约束2.2%余量) + C-2蚕食系数CC模型(15-20%) + C-4 DPZ-CMG 9维镜像(ROIC幻觉56.7%→14.5%)"
+    top_lesson: "体量溢出23%(540K vs 437K目标)是v1.0最大短板——分析原创性4.5但可读性3.5; 悲观偏差大幅收敛(+1.3pp vs RCL+8pp/SBUX+13pp); 模块'差半步'问题(8/15达2分=53%)根因是Phase 0未预取M1-NPS/M2-弹性系数等KPI字段"
+    evolution_proposed: |
+      EVO-DPZ-001: M2-sub促销依赖度QSR强制 — QSR/餐饮公司Phase 1强制promo_mix/discount_depth/price_realization字段 [P1, 方法论]
+      EVO-DPZ-002: Loyalty数据缺口标注 — Loyalty计划<12个月的公司Phase 0标注缺口+设定数据可用时间线 [P2, 流程]
+      EVO-DPZ-003: 体量门控±15% — 目标字符±15%为合格区间, 超出触发精简提醒 [P1, 质量门控]
+      EVO-DPZ-004: 章节标题格式统一 — 组装时强制Ch/Chapter统一化, 加入CG脚本检测 [P1, 工具修复]
+      冠军目录待注册: C-1 Supply Chain P&L重建(4.0) + C-2蚕食系数CC(4.2) + C-3 ABS双天花板(4.3) + C-4 DPZ-CMG镜像(4.1)
+    evolution_status: pending
+    reflection_file: "reports/DPZ/reflection/deep_audit.md"
+
+  # --- 质量趋势更新 ---
+  # INTC(4.1) → ARM(3.5)↓ → RCL(4.2)↑ → IHG(4.3)↑ → NVDA(4.0)↓ → SBUX v2.0(3.8)↓ → DPZ(4.0)↑
+  # DPZ从SBUX回升+0.2: 4个冠军候选 + 5种估值方法收敛 + 悲观偏差收敛至+1.3pp
+  # 但体量溢出(540K/437K=+23%)和模块2分率(53%)限制总分
+  # 消费品第四份Tier 3: RCL(4.2)→IHG(4.3)→SBUX(3.8)→DPZ(4.0) — 平均4.08
+  # 悲观偏差趋势: RCL(+8pp)→SBUX(+13pp)→DPZ(+1.3pp) — 大幅改善, EVO-RCL-001可能不再紧急
