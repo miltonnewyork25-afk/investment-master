@@ -63,8 +63,30 @@ if [ ! -f "$FAST_GATE" ]; then
     exit 3
 fi
 
+# --- Step 0: DM密度预检查 (v1.1新增) ---
+echo -e "${CYAN}[0/6] DM标注密度预检查...${NC}"
+EXPECTED_DM=$(python3 -c "print(max(50, int($MIN_CHARS / 10000 * 15)))")
+DM_CHECK="${REPO_ROOT}/scripts/dm_density_check.sh"
+
+if [ -f "$DM_CHECK" ] && [ "$PHASE" != "0" ]; then
+    if bash "$DM_CHECK" "$REPORT" "$EXPECTED_DM" "$PHASE" 2>/dev/null; then
+        echo -e "${GREEN}DM密度检查通过${NC}"
+    else
+        DM_EXIT_CODE=$?
+        if [ "$DM_EXIT_CODE" -eq 2 ] && [ "$FORCE_MODE" != "true" ]; then
+            echo -e "${RED}DM标注严重不足，中止提交 (使用 --force 强制提交)${NC}"
+            exit 1
+        elif [ "$DM_EXIT_CODE" -eq 1 ]; then
+            echo -e "${YELLOW}DM标注偏低，但继续执行（请在后续Phase补充）${NC}"
+        fi
+    fi
+else
+    echo -e "${YELLOW}跳过DM密度检查 (Phase 0 或脚本不存在)${NC}"
+fi
+echo ""
+
 # --- Step 1: Fast Gate ---
-echo -e "${CYAN}[1/5] 运行 Fast Gate...${NC}"
+echo -e "${CYAN}[1/6] 运行 Fast Gate...${NC}"
 if bash "$FAST_GATE" "$REPORT" "$MIN_CHARS" "$TIER"; then
     echo ""
     echo -e "${GREEN}Fast Gate PASSED${NC}"
@@ -76,7 +98,7 @@ fi
 echo ""
 
 # --- Step 2: 读取报告指标 ---
-echo -e "${CYAN}[2/5] 读取报告指标...${NC}"
+echo -e "${CYAN}[2/6] 读取报告指标...${NC}"
 
 ACTUAL_CHARS=$(wc -m < "$REPORT")
 ACTUAL_CHARS="${ACTUAL_CHARS// /}"
@@ -110,7 +132,7 @@ echo "  字符: ${ACTUAL_CHARS} | 标注: ${TOTAL_ANN} | 密度: ${ANN_DENSITY}/
 echo ""
 
 # --- Step 3: 更新 checkpoint.yaml ---
-echo -e "${CYAN}[3/5] 更新 checkpoint.yaml (v2.0精简格式)...${NC}"
+echo -e "${CYAN}[3/6] 更新 checkpoint.yaml (v2.0精简格式)...${NC}"
 
 # 确保 data/ 目录存在
 mkdir -p "$(dirname "$CHECKPOINT")"
@@ -202,7 +224,7 @@ echo -e "${GREEN}  checkpoint.yaml 已更新 (v2.0, $(wc -l < "$CHECKPOINT") 行
 echo ""
 
 # --- Step 4: Phase Sentinel — Circuit Breaker ---
-echo -e "${CYAN}[4/5] Phase Sentinel — Circuit Breaker...${NC}"
+echo -e "${CYAN}[4/6] Phase Sentinel — Circuit Breaker...${NC}"
 SENTINEL="${REPO_ROOT}/scripts/phase_sentinel.sh"
 if [ -f "$SENTINEL" ]; then
     # 从checkpoint读取target_chars(如有)
@@ -240,7 +262,7 @@ fi
 echo ""
 
 # --- Step 5: Git add + commit ---
-echo -e "${CYAN}[5/5] Git commit...${NC}"
+echo -e "${CYAN}[5/6] Git commit...${NC}"
 
 # 收集要提交的文件
 FILES_TO_ADD=("$REPORT" "$CHECKPOINT")
