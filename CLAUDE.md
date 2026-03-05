@@ -106,7 +106,7 @@
 | **P0** | MCP数据工具 | `baggers_summary` `fmp_data` `analyze_stock` `polymarket_events` |
 | **P1** | 专业投资skill | `/investment-logic-toolkit` `/data-prefetch` |
 | **P1** | 分析深度skill (v17.0) | `/assumption-audit` `/risk-topology` `/red-team-suite` |
-| **P1** | 质量保障skill (v17.0) | `/valuation-quality-gate` `/omission-scanner` |
+| **P1** | 质量保障skill (v17.0) | `/valuation-quality-gate` `/omission-scanner` `/deep-reflection` |
 | **P2** | Agent协作工具 | `/dispatching-parallel-agents` `/cross-validation` `/bear-case-generator` |
 
 **完整列表**: 各行业worktree CLAUDE.md
@@ -244,7 +244,7 @@ Complete组装必须在单会话内完成: 读Phase产出→组装→质量门�
 | **DAG编排** | `docs/dag_orchestrator.md` (DAG-0~7问题树+EC绑定) |
 | **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
 | **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
-| **进化系统** | `docs/evolution_system.md` + `scripts/post_report_autopsy.sh` + `scripts/evolution_trend.sh` |
+| **进化系统** | `docs/evolution_system.md` + `scripts/post_report_autopsy.sh` + `/deep-reflection` (3步深度反思) |
 | **评级校准** | `docs/rating_alignment_protocol.md` + `scripts/rating_calibration.sh` |
 | **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
 | **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
