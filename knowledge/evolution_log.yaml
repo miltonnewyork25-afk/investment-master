@@ -467,3 +467,21 @@ entries:
     top_lesson: null  # AI填入
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "CMG"
+    date: "2026-03-04"
+    report: "CMG_v1.0_Complete_2026-03-04.md"
+    chars: "402K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "FAILED"
+    dm_anchors: 6
+    mermaid_count: 60
+    pw: N/A
+    method: "N/A"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
