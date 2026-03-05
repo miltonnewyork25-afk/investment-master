@@ -7,9 +7,43 @@ industry: "consumer"
 report_version: "v3.0"
 last_updated: "2026-03-04T15:50:00+08:00"
 
-current_phase: 0
-phase_status: setup
-note: "v3.0完全重写(非扩展)。复用v2.0全部研究数据+staging产出，重构章节架构至30ch+7app"
+current_phase: 2
+phase_status: completed
+note: "Phase 2完成142.8K/7ch(4文件)。超额完成59%(目标90K)。实施EVO-001/002/004。待启动Phase 3。"
+
+# Phase 1 completion
+phase_1_completed:
+  completion_date: "2026-03-05T18:30:00+08:00"
+  total_chars: 100100
+  chapters_completed: 12
+  dm_anchors: 106
+  quality_estimate: "4.2+/5.0"
+  chapters: "Ch1-12 (核心8ch + v28.0模块4ch)"
+
+# Phase 2 completion
+phase_2_completed:
+  completion_date: "2026-03-05T22:00:00+08:00"
+  total_chars: 142800
+  target_chars: 90000
+  chapters_completed: 7
+  chapters: "Ch13-19 (4文件: P2_Ch13 + P2_Ch14_15 + P2_Ch16_17 + P2_Ch18_19)"
+  dm_anchors: 158
+  dm_range: "P2-001 ~ P2-126 (含重叠待Complete修复)"
+  quality_estimate: "4.0+/5.0"
+  evo_fixes_implemented:
+    - "EVO-SBUX-001: 净债务三口径 (Ch14)"
+    - "EVO-SBUX-002: WACC前瞻性三情景 (Ch18)"
+    - "EVO-SBUX-004: BME三路径联合概率 (Ch17)"
+  key_findings:
+    - "净债务三口径: 金融$22.1B / 含租赁$30.1B / 过渡性$23-25B → 每股差异$7.0"
+    - "ROIC崩溃100%由Margin驱动(非Turnover), 资本配置4.25/10"
+    - "CSSPD v3.0纯度5/10(vs v2.0的9/10), 有机comp仅+0.4%"
+    - "概率加权WACC 7.52%(vs v2.0的6.3%), WACC每100bps≈$10-15/股"
+    - "概率加权估值$71.5(溢价35%), 12个月目标$90.78(下行6.4%)"
+    - "共识FY2028E EPS $3.63 vs 第一性原理$3.21(高估12%)"
+  cq_updates:
+    CQ1: "60→65(BME量化完成)"
+    CQ4: "70→75(回购$10B时机成本+分红不可持续)"
 
 # v3.0 targets
 target_chars: 418000
@@ -65,8 +99,8 @@ cq_registry:
   - id: CQ1
     question: "78x P/E隐含什么？信念互斥是否成立？"
     type: structural
-    confidence: 60
-    confidence_history: "P0.5:45 → P2:60 → v3.0-start:60"
+    confidence: 65
+    confidence_history: "P0.5:45 → P2:60 → v3.0-P2:65"
   - id: CQ2
     question: "Niccol = CMG 2.0还是Schultz 3.0？"
     type: cyclical
@@ -79,7 +113,8 @@ cq_registry:
   - id: CQ4
     question: "负$8.4B权益 + ROIC<WACC = 回购摧毁价值？"
     type: institutional
-    confidence: 70
+    confidence: 75
+    confidence_history: "P0.5:60 → P2-Ch10:70 → P2-Ch15:75"
   - id: CQ5
     question: "35.5M Rewards会员 = 增长引擎还是天花板？"
     type: cyclical
@@ -126,5 +161,15 @@ sessions:
   - session: S1
     date: "2026-03-04"
     phase: "-1→0.75"
-    status: in_progress
+    status: completed
     notes: "Setup + data refresh + CQ confirmation + preflight"
+  - session: S2
+    date: "2026-03-04/05"
+    phase: "1"
+    status: completed
+    notes: "Phase 1完成 100.1K/12ch"
+  - session: S3
+    date: "2026-03-05"
+    phase: "2"
+    status: completed
+    notes: "Phase 2完成 142.8K/7ch, EVO-001/002/004实施, 158 DM锚点"
