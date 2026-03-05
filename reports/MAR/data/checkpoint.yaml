@@ -1,19 +1,28 @@
 schema_version: "2.0"
 ticker: MAR
 company: "MAR"
-framework_version: v17.0
+framework_version: v18.0
 worktree: "consumer"
 industry: "consumer"
-last_updated: "2026-03-05T07:46:33+00:00"
+last_updated: "2026-03-05T10:00:00+00:00"
 
-current_phase: 0.75
-phase_status: thesis_crystallized
-phases_completed: [-1, -0.5, 0]
+current_phase: 1
+phase_status: in_progress
+phases_completed: [-1, -0.5, 0, 0.75]
 
 target_chars: 440000
 target_range: "400K-484K"
 hard_floor: 300000
 
 quick_ref:
-  total_chars: 0
-  latest_phase_chars: 0
+  total_chars: 191989
+  latest_phase_chars: 191989
+  phase1_agents: 5
+  phase1_chapters: "Ch1-Ch10"
+  phase1_target: 155000
+  phase1_actual: 191989
+  phase1_mermaid: 28
+  phase1_dm_refs: 249
+
+pre_aligned_rating: "中性关注(偏审慎)"
+pre_aligned_return: "-5% ~ -15%"
