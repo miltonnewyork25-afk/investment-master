@@ -1,179 +1,130 @@
-schema_version: "2.0"
+schema_version: "3.0"
 ticker: SBUX
 company: "Starbucks Corporation"
 framework_version: v18.0
 worktree: "消费品"
 industry: "consumer"
-last_updated: "2026-03-03T20:30:00+00:00"
+report_version: "v3.0"
+last_updated: "2026-03-04T15:50:00+08:00"
 
-current_phase: 4
-phase_status: pending
-phases_completed:
-  - phase: -1
-    status: completed
-    timestamp: "2026-03-03T08:04:00+00:00"
-    notes: "tier3_launch.sh + knowledge_context.md + lit_recon_memo.md"
-  - phase: 0
-    status: completed
-    timestamp: "2026-03-03T08:12:00+00:00"
-    notes: "MCP data prefetch (SBUX/LKNCY/MCD/BROS) + 3 background agents (China JV, Rewards, Niccol)"
-    artifacts:
-      - data/sbux_financial_summary.md
-      - data/china_jv_research.md
-      - data/rewards_stored_value_research.md
-      - data/niccol_earnings_research.md
-      - staging/P0_CQ_routing.md
-  - phase: 0.5
-    status: completed
-    timestamp: "2026-03-03T08:13:00+00:00"
-    notes: "Thesis crystallization — BME信念互斥 + 三重身份 + 5异常 + 3约束碰撞 + 4非共识假说"
-    artifacts:
-      - staging/P0.5_thesis_crystallization.md
-  - phase: 0.75
-    status: completed
-    timestamp: "2026-03-03T08:15:00+00:00"
-    notes: "Anomaly hunting integrated into P0.5"
-  - phase: 1
-    status: completed
-    timestamp: "2026-03-03T09:30:00+00:00"
-    notes: "v1.0: 7ch, 66,858c, 176DM, 18Mermaid"
-    artifacts:
-      - archive_v1/P1_Ch2_identity.md
-      - archive_v1/P1_Ch3_store_economics.md
-      - archive_v1/P1_Ch4_rewards.md
-      - archive_v1/P1_Ch5_competition.md
-      - archive_v1/P1_Ch6_china_jv.md
-      - archive_v1/P1_Ch7_ceo.md
-      - archive_v1/P1_Ch8_supply_chain.md
-  - phase: "1-v2.0"
-    status: completed
-    timestamp: "2026-03-03T14:00:00+00:00"
-    notes: "v2.0重写: 7ch, 120,044c(+79%), 238DM, 22Mermaid. 新增: Niccol套利+蚕食3.8%+DFFV $2.8B+不可能三角+$2B审计45%"
-    artifacts:
-      - staging/P1_Ch2_identity.md
-      - staging/P1_Ch3_store_economics.md
-      - staging/P1_Ch4_rewards.md
-      - staging/P1_Ch5_competition.md
-      - staging/P1_Ch6_china_jv.md
-      - staging/P1_Ch7_ceo.md
-      - staging/P1_Ch8_supply_chain.md
-  - phase: 2
-    status: completed
-    timestamp: "2026-03-03T19:45:00+00:00"
-    notes: "v2.0: 6ch, 81,252c, 131DM, 19Mermaid. 新增: DuPont ROIC分解+NEP框架+CSSPD纯度9/10+Reverse DCF概率加权$74+BME三路径+共识OPM偏差150bps+催化剂日历"
-    artifacts:
-      - staging/P2_Ch9_financial_trends.md
-      - staging/P2_Ch10_negative_equity.md
-      - staging/P2_Ch11_comp_sales.md
-      - staging/P2_Ch12_reverse_dcf.md
-      - staging/P2_Ch13_consensus.md
-      - staging/P2_Ch14_macro_catalysts.md
-      - data/p2_research_findings.md
+current_phase: 0
+phase_status: setup
+note: "v3.0完全重写(非扩展)。复用v2.0全部研究数据+staging产出，重构章节架构至30ch+7app"
 
-target_chars: 400000
+# v3.0 targets
+target_chars: 418000
 target_range: "400K-440K"
-hard_floor: 300000
+hard_floor: 350000
+target_chapters: 30
+target_appendices: 7
+target_mermaid: 75
+target_dm: 600
+target_ci: 6
+target_scorecard: 90
 
+# Routing (复用v2.0)
 pw_score: 5.4
 pw_route: mixed_mode
 sgi_score: 6.5
 a_score_estimate: "6.5-7.0"
 
+# v3.0 chapter architecture
+chapter_plan:
+  part_i: "Ch1-8 身份与生态 (~100K)"
+  part_i_supplement: "Ch9-12 v28.0模块 (~35K)"
+  part_ii: "Ch13-19 财务纵深 (~90K)"
+  part_iii: "Ch20-25 估值与情景 (~73K)"
+  part_iv: "Ch26-28 红队对抗 (~45K)"
+  part_v: "Ch29-30 综合裁决 (~30K)"
+  appendices: "A-G (~45K)"
+
+# v2.0 baseline
+v2_baseline:
+  chars: 278000
+  chapters: 21
+  mermaid: 20
+  dm: 466
+  ci: 3
+  scorecard: 71
+  rating: "3.8/5"
+  评级: "审慎关注(偏中性)"
+  期望回报: "-14%"
+  综合加权价: 83.2
+
+# EVO fixes in v3.0
+evo_fixes:
+  - "EVO-SBUX-001: 净债务三口径Phase 2前置 (Ch14)"
+  - "EVO-SBUX-002: WACC前瞻性分析 (Ch18)"
+  - "EVO-SBUX-003: 悲观偏差扫描矩阵 (Ch27)"
+  - "EVO-SBUX-004: BME三路径联合概率量化 (Ch17)"
+  - "EVO-RCL-001: 悲观偏差检测合并至Ch27"
+  - "v28.0五模块: Module A/B/C/D/E (Ch9-12, Ch25)"
+
+# CQ registry (复用v2.0, 置信度微调)
 cq_registry:
   - id: CQ1
     question: "78x P/E隐含什么？信念互斥是否成立？"
     type: structural
     confidence: 60
-    confidence_history: "P0.5:45 → P2-Ch9:50 → P2-Ch12:60"
-    target_phase: P2
-    p2_answer: "46x正常化P/E隐含OPM 15%+Rev CAGR 5%。BME部分成立——路径C(半转型)是市场赌注。联合概率8.8%。"
+    confidence_history: "P0.5:45 → P2:60 → v3.0-start:60"
   - id: CQ2
     question: "Niccol = CMG 2.0还是Schultz 3.0？"
     type: cyclical
     confidence: 60
-    confidence_history: "P0.5:50 → P2-Ch9:55 → P2-Ch11:60"
-    target_phase: P1
-    p2_answer: "SBUX恢复速度约为CMG 1/3。Q1'26 SSS纯度9/10但调整后仅+2.8%。"
+    confidence_history: "P0.5:50 → P2:60 → v3.0-start:60"
   - id: CQ3
     question: "中国$4B JV是战略撤退还是价值解锁？"
     type: structural
     confidence: 65
-    target_phase: P1+P3
   - id: CQ4
     question: "负$8.4B权益 + ROIC<WACC = 回购摧毁价值？"
     type: institutional
     confidence: 70
-    confidence_history: "P0.5:60 → P2-Ch9:65 → P2-Ch10:70"
-    target_phase: P2
-    p2_answer: "部分正确。Johnson时代摧毁$3-5B价值。ROIC 8.5%>WACC 4.8-6.3%但EV基准仅1.88%。杠杆5.6x偏紧。"
   - id: CQ5
     question: "35.5M Rewards会员 = 增长引擎还是天花板？"
     type: cyclical
     confidence: 55
-    confidence_history: "P0.5:50 → P2-Ch11:55"
-    target_phase: P1+P2
 
-phases_completed_addendum:
-  - phase: 3
-    status: completed
-    timestamp: "2026-03-03T20:30:00+00:00"
-    notes: "v2.0: 4ch, 35,039c, 61DM, 8Mermaid. Python DCF验证(4情景). 综合加权$60.7(溢价59%). 初判:审慎关注(-37.3%期望回报). A-Score 5.86/10. 温度计-0.15(微凉)."
-    artifacts:
-      - staging/P3_Ch15_forward_dcf.md
-      - staging/P3_Ch16_multi_valuation.md
-      - staging/P3_Ch17_scenario_synthesis.md
-      - staging/P3_Ch18_thermometer.md
-      - data/sbux_dcf_model.py
-
-next_phase: 4
-next_phase_plan: |
-  Phase 4: 红队对抗 (Ch19-Ch21)
-  - Ch19: 红队七问 (RT-1~RT-7)
-  - Ch20: 双向校准 (向上调整过度悲观维度)
-  - Ch21: 有效性门控 + 评级修正
-  目标: ≥30K字符
-  关键: 挑战OPM天花板假设 + WACC敏感性 + 情景概率 + SOTP身份B低估
-
+# Quick ref (updated 2026-03-04)
 quick_ref:
-  price: 96.76
-  market_cap: 110.2B
-  pe_ttm: 78.6x
+  price: 96.68
+  market_cap: 110.1B
+  pe_ttm: 80.6x
+  pe_forward: 32.7x
   pe_normalized: 46.1x
   eps_fy25: 1.63
   eps_fy25_normalized: 2.10
   eps_fy26e: 2.30
   eps_fy28e: 3.63
-  eps_fy28e_first_principles: 3.05
   opm_fy25: 9.6%
-  opm_consensus_fy28: 14.2%
-  opm_first_principles_fy28: 13.0%
-  equity: -8.1B
+  equity: -8.4B
   net_debt_q1_26: 30.1B
   fcf_fy25: 2.44B
   div_fy25: 2.77B
   wacc_conservative: 6.3%
-  ev_probability_weighted: 114.4B
-  stock_probability_weighted: 73.9
-  premium_vs_pw: 31%
   rewards_members: 35.5M
   stores_total: ~38000
   stores_china: 8011
-  china_jv_ev: 4.0B
-  niccol_comp_yr1: 113M
-  综合加权价: 83.2
-  期望回报: -14.0%
-  初判评级: 审慎关注(偏中性)
-  a_score: 5.86
-  温度计: -0.15
-  total_chars: 245238
-  p1_chars: 128947
-  p2_chars: 81252
-  p3_chars: 35039
-  p1_dm: 238
-  p2_dm: 131
-  p3_dm: 61
-  total_dm: 430
-  p1_mermaid: 22
-  p2_mermaid: 19
-  p3_mermaid: 8
-  total_mermaid: 49
+  sma_20: 96.50
+  sma_50: 92.30
+  sma_200: 87.63
+  rsi: 49.4
+  beta: 0.928
+
+# CMG mirror benchmark
+cmg_benchmark:
+  chars: 402000
+  chapters: 23+5
+  dm: 659
+  mermaid: 54+
+  a_score: 6.88
+  rating: "中性关注(偏审慎)"
+  期望回报: "-7%"
+
+# Session tracking
+sessions:
+  - session: S1
+    date: "2026-03-04"
+    phase: "-1→0.75"
+    status: in_progress
+    notes: "Setup + data refresh + CQ confirmation + preflight"
