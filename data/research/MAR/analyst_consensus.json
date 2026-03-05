@@ -1,0 +1,363 @@
+{
+  "ticker": "MAR",
+  "fetched_at": "2026-03-05",
+  "consensus": {
+    "rating": "Moderate Buy",
+    "buy_count": 10,
+    "hold_count": 13,
+    "sell_count": 1,
+    "strong_buy_count": 10,
+    "avg_price_target": 343.27,
+    "high_target": 400.0,
+    "low_target": 205.0,
+    "median_target": 282.0,
+    "current_price": 313.94,
+    "implied_upside_pct": 9.3,
+    "total_analysts": 26,
+    "dm_anchor": "DM-CON-001",
+    "dm_type": "H",
+    "source": "MarketBeat/DefenseWorld (2026-03-04), TipRanks, TickerNerd"
+  },
+  "earnings_estimates": {
+    "current_quarter": {
+      "period": "Q1 2026",
+      "report_date": "2026-05-05",
+      "eps_estimate_consensus": 2.53,
+      "eps_estimate_low": null,
+      "eps_estimate_high": null,
+      "eps_company_guidance_low": 2.50,
+      "eps_company_guidance_high": 2.55,
+      "revenue_estimate": 6560000000,
+      "eps_revisions_up_90d": 12,
+      "eps_revisions_down_90d": 3,
+      "dm_anchor": "DM-CON-002",
+      "dm_type": "H",
+      "source": "Seeking Alpha, MarketBeat, Nasdaq (2026-02-26)"
+    },
+    "next_quarter": {
+      "period": "Q2 2026",
+      "report_date": "2026-08 (est.)",
+      "eps_estimate_consensus": 2.53,
+      "revenue_estimate": 6560000000,
+      "note": "Q2 estimates appear similar to Q1; limited differentiated Q2 data available",
+      "dm_anchor": "DM-CON-003",
+      "dm_type": "R",
+      "chain": "Seeking Alpha shows normalized EPS $2.53 and rev $6.56B for next report; May 7 pre-market date suggests this may be Q1 not Q2. Q2 specific estimates not separately confirmed.",
+      "falsifiable": "If Q2 consensus diverges >5% from $2.53, this anchor is stale",
+      "source": "Seeking Alpha, Nasdaq"
+    },
+    "full_year_2026": {
+      "eps_guidance_low": 11.32,
+      "eps_guidance_high": 11.57,
+      "eps_consensus": 11.44,
+      "eps_consensus_low": 10.48,
+      "eps_consensus_high": 12.42,
+      "eps_growth_guidance": "13%-15% YoY",
+      "ebitda_growth_guidance": "8%-10%",
+      "ebitda_target_range": "5.8B-5.9B",
+      "gross_fee_revenue_guidance": "5.9B-5.96B",
+      "gross_fee_revenue_growth": "8%-10%",
+      "net_rooms_growth": "4.5%-5.0%",
+      "revpar_growth_guidance": "1.5%-2.5%",
+      "dm_anchor": "DM-CON-004",
+      "dm_type": "H",
+      "source": "Marriott FY2026 guidance (Feb 10, 2026 earnings call), MarketBeat, DefenseWorld"
+    }
+  },
+  "earnings_surprise_history": [
+    {
+      "period": "Q4 2025",
+      "reported_date": "2026-02-10",
+      "eps_actual": 2.58,
+      "eps_estimate": 2.61,
+      "eps_surprise_pct": -1.15,
+      "revenue_actual": 6690000000,
+      "revenue_estimate": 6670000000,
+      "revenue_surprise_pct": 0.3,
+      "stock_reaction_pct": 8.47,
+      "dm_anchor": "DM-CON-005",
+      "dm_type": "H",
+      "source": "MarketBeat, Zacks, Nasdaq"
+    },
+    {
+      "period": "Q3 2025",
+      "reported_date": "2025-11-04",
+      "eps_actual": 2.47,
+      "eps_estimate": 2.40,
+      "eps_surprise_pct": 2.92,
+      "dm_anchor": "DM-CON-006",
+      "dm_type": "H",
+      "source": "Zacks, Yahoo Finance"
+    },
+    {
+      "period": "Q2 2025",
+      "eps_actual": 2.65,
+      "eps_estimate": 2.61,
+      "eps_surprise_pct": 1.46,
+      "revenue_actual": 6740000000,
+      "revenue_estimate": 6670000000,
+      "dm_anchor": "DM-CON-007",
+      "dm_type": "H",
+      "source": "TradingView, Nasdaq"
+    },
+    {
+      "period": "Q1 2025",
+      "reported_date": "2025-05-06",
+      "eps_actual": 2.32,
+      "eps_estimate": 2.27,
+      "eps_surprise_pct": 2.20,
+      "dm_anchor": "DM-CON-008",
+      "dm_type": "H",
+      "source": "Zacks"
+    },
+    {
+      "period": "Q4 2024",
+      "eps_actual": 2.45,
+      "eps_estimate": 2.38,
+      "eps_surprise_pct": 2.94,
+      "dm_anchor": "DM-CON-009",
+      "dm_type": "H",
+      "source": "Zacks"
+    },
+    {
+      "period": "Q3 2024",
+      "eps_actual": 2.26,
+      "eps_estimate": 2.31,
+      "eps_surprise_pct": -2.16,
+      "dm_anchor": "DM-CON-010",
+      "dm_type": "H",
+      "source": "Zacks"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-02-11",
+      "analyst": "Goldman Sachs",
+      "action": "Price target raised",
+      "from": 355.0,
+      "to": 398.0,
+      "rating": "Buy",
+      "dm_anchor": "DM-CON-011",
+      "dm_type": "H",
+      "source": "DefenseWorld, MarketBeat"
+    },
+    {
+      "date": "2026-02-11",
+      "analyst": "BMO Capital",
+      "action": "Price target raised",
+      "from": 370.0,
+      "to": 400.0,
+      "rating": "Outperform",
+      "dm_anchor": "DM-CON-012",
+      "dm_type": "H",
+      "source": "TickerNerd"
+    },
+    {
+      "date": "2026-02-11",
+      "analyst": "Baird",
+      "action": "Price target raised",
+      "from": 325.0,
+      "to": 358.0,
+      "rating": "Not specified",
+      "dm_anchor": "DM-CON-013",
+      "dm_type": "H",
+      "source": "TickerNerd"
+    },
+    {
+      "date": "2026-02-11",
+      "analyst": "Evercore ISI",
+      "action": "Price target raised",
+      "from": 350.0,
+      "to": 385.0,
+      "rating": "Outperform",
+      "dm_anchor": "DM-CON-014",
+      "dm_type": "H",
+      "source": "TickerNerd, Investing.com"
+    },
+    {
+      "date": "2026-02-11",
+      "analyst": "Truist",
+      "action": "Price target raised",
+      "from": 283.0,
+      "to": 350.0,
+      "rating": "Not specified",
+      "dm_anchor": "DM-CON-015",
+      "dm_type": "H",
+      "source": "TickerNerd"
+    },
+    {
+      "date": "2026-01-16",
+      "analyst": "Morgan Stanley",
+      "action": "Price target raised",
+      "from": 296.0,
+      "to": 328.0,
+      "rating": "Overweight",
+      "dm_anchor": "DM-CON-016",
+      "dm_type": "H",
+      "source": "Fintel, TheMarketsDailycom"
+    },
+    {
+      "date": "2026-01-15",
+      "analyst": "Citigroup",
+      "action": "Price target raised",
+      "from": 285.0,
+      "to": 345.0,
+      "rating": "Neutral",
+      "dm_anchor": "DM-CON-017",
+      "dm_type": "H",
+      "source": "MarketBeat, DefenseWorld"
+    },
+    {
+      "date": "2026-01-09",
+      "analyst": "BMO Capital",
+      "action": "Upgrade",
+      "from_rating": "Market Perform",
+      "to_rating": "Outperform",
+      "price_target": 370.0,
+      "dm_anchor": "DM-CON-018",
+      "dm_type": "H",
+      "source": "Fintel, TheMarketsDailycom"
+    },
+    {
+      "date": "2026-01-22",
+      "analyst": "Evercore",
+      "action": "Price target raised",
+      "from": 320.0,
+      "to": 350.0,
+      "rating": "Outperform",
+      "dm_anchor": "DM-CON-019",
+      "dm_type": "H",
+      "source": "Fintel"
+    }
+  ],
+  "bull_bear_summary": {
+    "bull_case": "1) Franchise moat: 20-50yr management agreements lock prime locations, high switching costs for hotel owners. 2) Bonvoy loyalty: 271M members, >50% of global room nights, network effects + co-branded credit card fees projected +35% in 2026. 3) Asset-light model: <2% room ownership, high ROIC, consistent cash flow. 4) Record pipeline: 610K rooms in pipeline, 4.5-5% net rooms growth. 5) Luxury demand: record 114 luxury deals signed in 2025 ('insatiable demand'). 6) Fee revenue re-rating: market re-pricing MAR from hotelier to fee-generating loyalty/fintech platform.",
+    "bear_case": "1) Valuation stretched: P/E 34.2x vs industry avg 23.4x and peer avg 30.8x; intrinsic value estimates range $190-$285 vs $314 current. 2) Organic net unit growth lags Hilton — key driver of valuation discount. 3) Rising labor/wage costs squeezing margins as pricing power cools. 4) Macro risk: weak North American demand, potential consumer pullback. 5) Solvency score 45/100 (Simply Wall St). 6) Q4 2025 EPS miss (-1.15%) despite revenue beat — execution noise.",
+    "dm_anchor": "DM-CON-020",
+    "dm_type": "S",
+    "source": "Insider Monkey, Yahoo Finance, Simply Wall St, Alpha Spread, TIKR"
+  },
+  "industry_specific": {
+    "bonvoy_members": {
+      "value": 271000000,
+      "note": "271M members as of early 2026, largest hotel loyalty program globally",
+      "dm_anchor": "DM-CON-021",
+      "dm_type": "H",
+      "source": "TIKR (2026-02)"
+    },
+    "pipeline_rooms": {
+      "value": 610000,
+      "note": "Record pipeline; drives 4.5-5% net rooms growth in 2026",
+      "dm_anchor": "DM-CON-022",
+      "dm_type": "H",
+      "source": "Marriott earnings call (Feb 2026), FinancialContent"
+    },
+    "asset_light_model": {
+      "rooms_owned_pct": "<2%",
+      "note": "Franchise/management fee model; ROIC advantage vs asset-heavy peers",
+      "dm_anchor": "DM-CON-023",
+      "dm_type": "H",
+      "source": "TIKR, SWOTTemplate"
+    },
+    "co_branded_credit_card_fees": {
+      "growth_2026_projected": "35%",
+      "note": "Key driver of fee revenue acceleration; fintech platform re-rating thesis",
+      "dm_anchor": "DM-CON-024",
+      "dm_type": "R",
+      "chain": "Q4 2025 co-branded credit card fees +8% YoY to part of $1.4B gross fees; 35% projection for FY2026 cited by FinancialContent analysis, not company guidance",
+      "falsifiable": "If FY2026 credit card fee growth <20%, this projection is too aggressive",
+      "source": "FinancialContent (2026-02-11)"
+    },
+    "revpar_fy2025": {
+      "growth": "1.9% YoY",
+      "note": "Led by international markets; luxury outperformed",
+      "dm_anchor": "DM-CON-025",
+      "dm_type": "H",
+      "source": "CoStar, Marriott earnings"
+    },
+    "valuation_multiples": {
+      "trailing_pe": 34.22,
+      "forward_pe": 25.45,
+      "industry_avg_pe": 23.42,
+      "peer_avg_pe": 30.84,
+      "dm_anchor": "DM-CON-026",
+      "dm_type": "H",
+      "source": "Simply Wall St, Insider Monkey"
+    },
+    "fy2025_financials": {
+      "revenue": 26190000000,
+      "revenue_growth_pct": 4.3,
+      "ebitda": 5380000000,
+      "ebitda_margin_pct": 20.6,
+      "fy2026_ebitda_margin_est_pct": 21.1,
+      "dm_anchor": "DM-CON-027",
+      "dm_type": "H",
+      "source": "FinancialContent (2026-02-11)"
+    },
+    "organic_growth_vs_hilton": {
+      "note": "MAR organic net unit growth lags HLT, partially explaining valuation discount. Baird expects sequential improvement post-MGM room additions. MAR relies more on RevPAR growth vs HLT's unit growth.",
+      "dm_anchor": "DM-CON-028",
+      "dm_type": "R",
+      "chain": "Baird analysis: MAR organic NUG < HLT → valuation gap → improvement expected post-MGM integration → watch signings/starts trends",
+      "falsifiable": "If MAR net unit growth accelerates to >5.5% in 2026, valuation gap with HLT should narrow",
+      "source": "Investing.com (Baird analysis), CoStar"
+    },
+    "luxury_segment": {
+      "deals_signed_2025": 114,
+      "note": "Record number; CEO Capuano: 'insatiable demand for luxury'",
+      "dm_anchor": "DM-CON-029",
+      "dm_type": "H",
+      "source": "FinancialContent (2026-02-11)"
+    }
+  },
+  "dm_anchors": [
+    "DM-CON-001: Consensus rating Moderate Buy (10 Strong Buy, 2 Mod Buy, 13 Hold, 1 Strong Sell) across 26 analysts; avg PT $343.27 [H]",
+    "DM-CON-002: Q1 2026 EPS consensus $2.53, revenue $6.56B; company guidance $2.50-$2.55 EPS [H]",
+    "DM-CON-003: Q2 2026 estimates ~$2.53 EPS / ~$6.56B rev (limited differentiated data) [R]",
+    "DM-CON-004: FY2026 EPS guidance $11.32-$11.57; consensus $11.44; EBITDA growth 8-10%; NRG 4.5-5% [H]",
+    "DM-CON-005: Q4 2025 EPS $2.58 vs $2.61 est (-1.15% surprise); rev $6.69B vs $6.67B (+0.3%); stock +8.47% [H]",
+    "DM-CON-006: Q3 2025 EPS $2.47 vs $2.40 est (+2.92% surprise) [H]",
+    "DM-CON-007: Q2 2025 EPS $2.65 vs $2.61 est (+1.46%); rev $6.74B vs $6.67B [H]",
+    "DM-CON-008: Q1 2025 EPS $2.32 vs $2.27 est (+2.20%) [H]",
+    "DM-CON-009: Q4 2024 EPS $2.45 vs $2.38 est (+2.94%) [H]",
+    "DM-CON-010: Q3 2024 EPS $2.26 vs $2.31 est (-2.16%) [H]",
+    "DM-CON-011: Goldman Sachs PT raised $355→$398, Buy (2026-02-11) [H]",
+    "DM-CON-012: BMO Capital PT raised $370→$400, Outperform (2026-02-11) [H]",
+    "DM-CON-013: Baird PT raised $325→$358 (2026-02-11) [H]",
+    "DM-CON-014: Evercore ISI PT raised $350→$385, Outperform (2026-02-11) [H]",
+    "DM-CON-015: Truist PT raised $283→$350 (2026-02-11) [H]",
+    "DM-CON-016: Morgan Stanley PT raised $296→$328, Overweight (2026-01-16) [H]",
+    "DM-CON-017: Citigroup PT raised $285→$345, Neutral (2026-01-15) [H]",
+    "DM-CON-018: BMO upgrade Market Perform→Outperform, PT $370 (2026-01-09) [H]",
+    "DM-CON-019: Evercore PT raised $320→$350, Outperform (2026-01-22) [H]",
+    "DM-CON-020: Bull/bear synthesis from multiple analyst sources [S]",
+    "DM-CON-021: Bonvoy 271M members (early 2026) [H]",
+    "DM-CON-022: Pipeline 610K rooms, record level [H]",
+    "DM-CON-023: Asset-light model <2% rooms owned [H]",
+    "DM-CON-024: Co-branded credit card fees +35% projected 2026 (analyst projection, not guidance) [R]",
+    "DM-CON-025: FY2025 RevPAR +1.9% YoY [H]",
+    "DM-CON-026: Trailing P/E 34.2x, Forward P/E 25.5x, industry avg 23.4x [H]",
+    "DM-CON-027: FY2025 rev $26.19B (+4.3%), EBITDA $5.38B (20.6% margin) [H]",
+    "DM-CON-028: Organic NUG lags Hilton; Baird expects improvement post-MGM [R]",
+    "DM-CON-029: 114 luxury deals signed in 2025, record [H]"
+  ],
+  "sources": [
+    "https://www.defenseworld.net/2026/03/04/marriott-international-inc-nasdaqmar-receives-average-rating-of-moderate-buy-from-analysts.html",
+    "https://www.tipranks.com/stocks/mar/forecast",
+    "https://tickernerd.com/stock/mar-forecast/",
+    "https://www.marketbeat.com/instant-alerts/research-analysts-offer-predictions-for-mar-q1-earnings-2026-02-26/",
+    "https://seekingalpha.com/symbol/MAR/earnings",
+    "https://www.nasdaq.com/market-activity/stocks/mar/earnings",
+    "https://finance.yahoo.com/quote/MAR/analysis/",
+    "https://www.insidermonkey.com/blog/marriott-international-inc-mar-a-bull-case-theory-1553288/",
+    "https://www.tikr.com/blog/marriott-stock-why-271m-bonvoy-members-could-keep-the-20-rally-going",
+    "https://markets.financialcontent.com/stocks/article/finterra-2026-2-11-marriott-international-mar-deep-dive-record-highs-ai-transformation-and-the-global-travel-outlook-february-2026",
+    "https://www.investing.com/news/company-news/marriott-stock-target-increased-rating-held-on-growth-outlook-93CH-3668705",
+    "https://simplywall.st/stocks/us/consumer-services/nasdaq-mar/marriott-international/news/is-marriott-international-mar-pricing-in-too-much-growth-aft",
+    "https://www.wallstreetzen.com/stocks/us/nasdaq/mar/stock-forecast",
+    "https://fintel.io/s/us/mar",
+    "https://www.themarketsdaily.com/2026/02/13/marriott-international-nasdaqmar-hits-new-12-month-high-on-analyst-upgrade.html",
+    "https://www.zacks.com/stock/research/MAR/earnings-calendar",
+    "https://www.marketscreener.com/quote/stock/MARRIOTT-INTERNATIONAL-IN-14633490/consensus/"
+  ]
+}

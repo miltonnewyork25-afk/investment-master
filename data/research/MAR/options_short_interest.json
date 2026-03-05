@@ -1,0 +1,118 @@
+{
+  "ticker": "MAR",
+  "fetched_at": "2026-03-05",
+  "short_interest": {
+    "shares_short": 6360000,
+    "short_pct_float": 2.85,
+    "days_to_cover": 3.04,
+    "trend": "declining — short % of float fell 8.65% vs prior report; low vs peer avg 7.57%; large-cap with low short squeeze probability",
+    "data_vintage": "2024-07 Benzinga (latest available numeric; 2026 data behind paywall on Fintel/NASDAQ)",
+    "note": "Current 2026 figures likely similar or lower given stock +20% 1Y TSR and analyst upgrades"
+  },
+  "options_sentiment": {
+    "put_call_ratio": 1.29,
+    "implied_volatility": null,
+    "iv_rank": null,
+    "iv_note": "IV data behind paywall on Market Chameleon; beta 1.13 suggests moderate vol; check marketchameleon.com/Overview/MAR/IV for real-time IV rank",
+    "unusual_activity": [
+      {
+        "date": "2026-02-12",
+        "description": "49,780 call options acquired — 1,971% above typical daily volume of 2,404 calls; post-earnings positioning",
+        "source": "Defense World / Benzinga"
+      },
+      {
+        "date": "2026-03-02",
+        "description": "20 whale trades detected: 13 puts ($1.51M total) + 7 calls ($409K total); 50% bearish, 40% bullish, 10% neutral; price band focus $280-$375",
+        "source": "Benzinga"
+      }
+    ],
+    "sentiment_summary": "Moderately bearish — P/C ratio 1.29 (>1 = bearish); whale activity tilted toward puts ($1.51M puts vs $409K calls); however post-earnings call surge in Feb suggests split sentiment"
+  },
+  "analyst_context": {
+    "current_price": 326.39,
+    "market_cap_B": 96.27,
+    "pe_ratio": 37.80,
+    "peg_ratio": 3.17,
+    "beta": 1.13,
+    "fy2026_eps_guidance": "11.32-11.57",
+    "q1_2026_eps_guidance": "2.50-2.55",
+    "analyst_targets": {
+      "Goldman_Sachs": {"rating": "Buy", "target": 398},
+      "Wells_Fargo": {"rating": "Overweight", "target": 403},
+      "Jefferies": {"rating": "Buy", "target": 415},
+      "Truist": {"rating": "Hold", "target": 350},
+      "JP_Morgan": {"rating": "Neutral", "target": 356},
+      "consensus_avg": 366
+    },
+    "technical_opinion": "100% Buy (Barchart), short-term strengthening"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-OPT-001",
+      "fact": "MAR short interest: 6.36M shares, 2.85% of float, 3.04 days to cover",
+      "source": "Benzinga short interest analysis",
+      "vintage": "2024-07",
+      "confidence": "medium — dated, but MAR SI historically stable in 2-4% range"
+    },
+    {
+      "id": "DM-OPT-002",
+      "fact": "MAR put/call ratio: 1.29 (bearish tilt)",
+      "source": "Fintel options sentiment tracker",
+      "vintage": "2026-03",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-OPT-003",
+      "fact": "Whale activity: 13 puts ($1.51M) vs 7 calls ($409K), 50% bearish / 40% bullish",
+      "source": "Benzinga unusual options activity",
+      "vintage": "2026-03-02",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-OPT-004",
+      "fact": "Post-earnings call surge: 49,780 calls on 2026-02-12 (1,971% above daily avg of 2,404)",
+      "source": "Defense World / Benzinga",
+      "vintage": "2026-02-12",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-OPT-005",
+      "fact": "MAR peer group avg SI as % of float: 7.57% (MAR well below peers)",
+      "source": "Benzinga short interest analysis",
+      "vintage": "2024-07",
+      "confidence": "medium — dated"
+    },
+    {
+      "id": "DM-OPT-006",
+      "fact": "MAR market cap $96.27B, P/E 37.80, PEG 3.17, beta 1.13",
+      "source": "Multiple (Benzinga, Finviz, Yahoo Finance)",
+      "vintage": "2026-03",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-OPT-007",
+      "fact": "FY2026 EPS guidance: $11.32-$11.57; Q1 2026: $2.50-$2.55",
+      "source": "Company guidance via Benzinga",
+      "vintage": "2026-02",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-OPT-008",
+      "fact": "Analyst consensus target ~$366; range $350 (Truist) to $415 (Jefferies)",
+      "source": "Multiple analyst reports (GS, WFC, Jefferies, Truist, JPM)",
+      "vintage": "2026-02/03",
+      "confidence": "high"
+    }
+  ],
+  "sources": [
+    "https://www.benzinga.com/insights/short-sellers/24/07/39862460/mar-analyzing-marriott-intls-short-interest",
+    "https://fintel.io/ss/us/mar",
+    "https://fintel.io/sopt/us/mar",
+    "https://www.benzinga.com/insights/options/26/03/50980795/unpacking-the-latest-options-trading-trends-in-marriott-international",
+    "https://www.defenseworld.net/2026/02/12/stock-traders-buy-high-volume-of-call-options-on-marriott-international-nasdaqmar.html",
+    "https://www.nasdaq.com/market-activity/stocks/mar/short-interest",
+    "https://marketchameleon.com/Overview/MAR/IV/",
+    "https://simplywall.st/stocks/us/consumer-services/nasdaq-mar/marriott-international/news/evaluating-marriott-international-mar-after-mixed-shortterm",
+    "https://www.barchart.com/stocks/quotes/MAR"
+  ]
+}

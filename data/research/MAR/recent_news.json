@@ -1,0 +1,309 @@
+{
+  "ticker": "MAR",
+  "fetched_at": "2026-03-05",
+  "key_news": [
+    {
+      "date": "2026-02-10",
+      "headline": "Marriott reports Q4 and FY2025 results: Q4 RevPAR +1.9%, FY RevPAR +2.0%, adj EPS $2.58 (Q4) / $10.02 (FY), adj EBITDA $5,383M (FY), net rooms +4.3%, returned $4.0B+ to shareholders",
+      "source": "https://news.marriott.com/news/2026/02/10/marriott-international-reports-fourth-quarter-and-full-year-2025-results",
+      "significance": "high",
+      "dm_anchor": "DM-NEW-001"
+    },
+    {
+      "date": "2026-02-10",
+      "headline": "FY2026 guidance: RevPAR +1.5-2.5%, adj EBITDA growth 8-10%, net rooms growth 4.5-5.0%, EPS $11.32-$11.57, capital returns >$4.3B",
+      "source": "https://www.marketbeat.com/stocks/NASDAQ/MAR/earnings/",
+      "significance": "high",
+      "dm_anchor": "DM-NEW-002"
+    },
+    {
+      "date": "2026-02-10",
+      "headline": "10-K filed: FY2025 total revenue $26,186M (+4.3% YoY), operating income $4,141M (+9.9% YoY), 75% US room nights from loyalty members",
+      "source": "https://marriott.gcs-web.com/static-files/ccd4ffb7-2196-404b-b16d-88c14af5b5dd",
+      "significance": "high",
+      "dm_anchor": "DM-NEW-003"
+    },
+    {
+      "date": "2026-02-26",
+      "headline": "Continental leadership realignment: Liam Brown and Brian King retiring (effective March 28); Satya Anand becomes Group President US/Canada/CALA; Neal Jones to President EMEA; Federico Greppi to CALA President",
+      "source": "https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-announces-changes-its-continent",
+      "significance": "medium",
+      "dm_anchor": "DM-NEW-004"
+    },
+    {
+      "date": "2025-07-22",
+      "headline": "Completed acquisition of citizenM brand for $355M — 37 hotels, 8,789 rooms across 20+ cities; projected stabilized fees ~$30M/year; integration into Marriott Bonvoy ongoing",
+      "source": "https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-completes-acquisition-citizenm-brand",
+      "significance": "high",
+      "dm_anchor": "DM-NEW-005"
+    },
+    {
+      "date": "2026-02",
+      "headline": "Completed two fixed-income offerings totaling ~$1.44B in callable senior unsecured notes",
+      "source": "https://robinhood.com/us/en/stocks/MAR/",
+      "significance": "medium",
+      "dm_anchor": "DM-NEW-006"
+    },
+    {
+      "date": "2025-12",
+      "headline": "Launched three new brands in 2025: Series by Marriott, Outdoor Collection by Marriott Bonvoy, and citizenM integration. Record luxury signings: 114 deals / 15,301 rooms. Record 55 branded residence deals (+50% YoY)",
+      "source": "https://www.marketbeat.com/stocks/NASDAQ/MAR/sec-filings/",
+      "significance": "high",
+      "dm_anchor": "DM-NEW-007"
+    },
+    {
+      "date": "2026-01-22",
+      "headline": "Named Fortune's World's Most Admired Companies #1 in Hotels/Casinos/Resorts, #14 overall",
+      "source": "https://www.stocktitan.net/news/MAR/",
+      "significance": "low",
+      "dm_anchor": "DM-NEW-008"
+    },
+    {
+      "date": "2025",
+      "headline": "Co-branded credit card fees grew 8% to $716M in 2025; expects ~33% growth in 2026 from new card rollouts",
+      "source": "https://simplywall.st/stocks/us/consumer-services/nasdaq-mar/marriott-international/news/is-marriott-international-mar-pricing-in-too-much-growth-aft",
+      "significance": "high",
+      "dm_anchor": "DM-NEW-009"
+    },
+    {
+      "date": "2026-02-12",
+      "headline": "CEO Capuano identifies 'fundamentally permanent shift' — Americans continuing to prioritize travel spending even amid economic uncertainty; luxury RevPAR +6% globally, international markets leading",
+      "source": "https://fortune.com/2026/02/12/marriott-ceo-travel-demand-american-consumer-vacations-economy/",
+      "significance": "medium",
+      "dm_anchor": "DM-NEW-010"
+    },
+    {
+      "date": "2025",
+      "headline": "Record CALA expansion: 94 signed deals, 10,461 rooms (+40% transactions, +30% rooms vs 2024). Pipeline total: 4,056 properties / ~610,000 rooms",
+      "source": "https://www.prnewswire.com/news-releases/marriott-international-announces-significant-growth-and-strategic-expansion-in-the-caribbean-and-latin-america-in-2025-302703603.html",
+      "significance": "high",
+      "dm_anchor": "DM-NEW-011"
+    },
+    {
+      "date": "2026-02",
+      "headline": "Tariff/macro headwinds: hotel CEOs concerned about trade policy impact on consumer confidence; select-service facing weaker demand especially from SMBs; US occupancy impacted by government shutdown",
+      "source": "https://www.hoteldive.com/news/hotel-ceo-tariff-trade-policy-impact-earnings/747925/",
+      "significance": "medium",
+      "dm_anchor": "DM-NEW-012"
+    },
+    {
+      "date": "2026",
+      "headline": "Loyalty program cost pressure: industry loyalty costs rising 4.4% vs 2.7% revenue growth — cost outpacing revenue in Bonvoy ecosystem",
+      "source": "https://www.ainvest.com/news/marriott-2026-loyalty-push-tactical-trade-setup-sign-deeper-pressure-2601/",
+      "significance": "medium",
+      "dm_anchor": "DM-NEW-013"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-03-12",
+      "event": "CEO Capuano and EVP Pinto speak at J.P. Morgan Gaming, Lodging, Restaurant & Leisure Management Access Forum, Las Vegas",
+      "significance": "medium",
+      "dm_anchor": "DM-NEW-014"
+    },
+    {
+      "date": "2026-03-28",
+      "event": "New continental leadership structure effective — Satya Anand (US/Canada/CALA), Neal Jones (EMEA), Federico Greppi (CALA)",
+      "significance": "medium",
+      "dm_anchor": "DM-NEW-015"
+    },
+    {
+      "date": "2026-03-31",
+      "event": "Quarterly dividend of $0.67/share payable (record date Feb 26)",
+      "significance": "low",
+      "dm_anchor": "DM-NEW-016"
+    },
+    {
+      "date": "2026-05-06",
+      "event": "Q1 2026 earnings report — consensus EPS ~$2.50-$2.55, revenue ~$6.56B",
+      "significance": "high",
+      "dm_anchor": "DM-NEW-017"
+    },
+    {
+      "date": "2026-H1",
+      "event": "citizenM pipeline: 3 under-construction hotels (~600 rooms) expected to open by mid-2026",
+      "significance": "low",
+      "dm_anchor": "DM-NEW-018"
+    },
+    {
+      "date": "2026",
+      "event": "New co-branded credit card rollouts expected to drive ~33% fee revenue growth (from $716M base)",
+      "significance": "high",
+      "dm_anchor": "DM-NEW-019"
+    },
+    {
+      "date": "2026",
+      "event": "FIFA World Cup boost expected for group bookings and travel demand",
+      "significance": "medium",
+      "dm_anchor": "DM-NEW-020"
+    },
+    {
+      "date": "2026",
+      "event": "Key EMEA openings: St Regis London, W Riyadh-KAFD, Lake Como EDITION, W Sardinia, Opatija Marriott Croatia (brand debut)",
+      "significance": "medium",
+      "dm_anchor": "DM-NEW-021"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "date": "2026-02-17",
+        "insider": "Anthony Capuano (CEO)",
+        "transaction": "Sold 63,000 shares at avg $359.22",
+        "value": "$22,630,860",
+        "position_change": "-35.67% (113,617 shares remaining)",
+        "dm_anchor": "DM-NEW-022"
+      },
+      {
+        "date": "2026-02-18",
+        "insider": "William P. Brown",
+        "transaction": "Sold 9,456 shares at avg $358.25",
+        "value": "$3,387,612",
+        "position_change": "-46.23% (11,000 shares remaining)",
+        "dm_anchor": "DM-NEW-023"
+      },
+      {
+        "date": "2026-02-18",
+        "insider": "Drew Pinto (EVP/CFO)",
+        "transaction": "Sold 4,000 shares at avg $359.81",
+        "value": "~$1,439,256",
+        "position_change": "N/A",
+        "dm_anchor": "DM-NEW-024"
+      },
+      {
+        "date": "2026-02-20",
+        "insider": "Rajeev Menon (President APEC)",
+        "transaction": "Sold 3,492 shares",
+        "value": "$1,236,168",
+        "position_change": "N/A",
+        "dm_anchor": "DM-NEW-025"
+      },
+      {
+        "date": "2026-Q1",
+        "insider": "Chief Accounting Officer",
+        "transaction": "Sold shares at avg $305.98",
+        "value": "$494,770",
+        "position_change": "4,893 shares remaining",
+        "dm_anchor": "DM-NEW-026"
+      }
+    ],
+    "net_insider_sentiment": "Strongly negative — 9 insider sell transactions totaling 97,157 shares / $34.8M over last 90 days, zero insider buys. CEO sold 35.67% of position near all-time highs. Insider ownership ~10.68%.",
+    "dm_anchor": "DM-NEW-027"
+  },
+  "sec_filings": [
+    {
+      "date": "2026-02-10",
+      "type": "10-K",
+      "description": "FY2025 Annual Report — revenue $26,186M, operating income $4,141M, pipeline 4,056 properties / ~610K rooms, ~1,200 development deals signed (163K rooms, 30%+ conversions), 12.1M shares repurchased for $3.3B",
+      "url": "https://marriott.gcs-web.com/static-files/ccd4ffb7-2196-404b-b16d-88c14af5b5dd",
+      "dm_anchor": "DM-NEW-028"
+    },
+    {
+      "date": "2026-02-17",
+      "type": "Form 4",
+      "description": "Multiple insider sales — CEO Capuano 63K shares, Brown 9.5K, Pinto 4K, Menon 3.5K",
+      "url": "https://www.stocktitan.net/sec-filings/MAR/form-4-marriott-international-inc-md-insider-trading-activity-39f4ac80dfb1.html",
+      "dm_anchor": "DM-NEW-029"
+    }
+  ],
+  "analyst_ratings_summary": {
+    "consensus": "Moderate Buy (2 Strong Buy, 8 Buy, 8 Hold)",
+    "consensus_target": "$343.27",
+    "recent_changes": [
+      {
+        "date": "2026-01-09",
+        "firm": "BMO Capital",
+        "action": "Upgrade to Outperform from Market Perform"
+      },
+      {
+        "date": "2026-01-15",
+        "firm": "Citigroup",
+        "action": "PT raised $285 -> $345 (Neutral)"
+      },
+      {
+        "date": "2026-01-16",
+        "firm": "Morgan Stanley",
+        "action": "PT raised $296 -> $328 (Overweight)"
+      },
+      {
+        "date": "2026-01-22",
+        "firm": "Evercore",
+        "action": "PT raised $320 -> $350 (Outperform)"
+      },
+      {
+        "date": "2026-02",
+        "firm": "JPMorgan",
+        "action": "PT raised $323 -> $356 (Neutral)"
+      }
+    ],
+    "dm_anchor": "DM-NEW-030"
+  },
+  "valuation_snapshot": {
+    "price": "$335.91 (March 4, 2026)",
+    "all_time_high": "$370.00 (February 12, 2026)",
+    "market_cap": "~$92.2B",
+    "pe_ratio": "34.22x (vs industry avg 23.42x, peer avg 30.84x)",
+    "dcf_intrinsic_value_estimate": "$213.59 (Simply Wall St model — 57.3% above)",
+    "ytd_return": "+7.2%",
+    "1yr_return": "+25.2%",
+    "dm_anchor": "DM-NEW-031"
+  },
+  "dm_anchors": [
+    {"id": "DM-NEW-001", "content": "MAR Q4 2025: RevPAR +1.9%, FY +2.0%, adj EPS $2.58/$10.02, adj EBITDA $5,383M, net rooms +4.3%", "source": "Marriott IR press release 2026-02-10", "confidence": "high"},
+    {"id": "DM-NEW-002", "content": "MAR FY2026 guidance: RevPAR +1.5-2.5%, EBITDA growth 8-10%, net rooms 4.5-5%, EPS $11.32-$11.57", "source": "Marriott IR / MarketBeat", "confidence": "high"},
+    {"id": "DM-NEW-003", "content": "MAR 10-K FY2025: revenue $26,186M (+4.3%), op income $4,141M (+9.9%), 75% US room nights from loyalty", "source": "SEC 10-K filed 2026-02-10", "confidence": "high"},
+    {"id": "DM-NEW-004", "content": "Leadership: Brown+King retiring Mar 28; Anand→US/Canada/CALA, Jones→EMEA, Greppi→CALA", "source": "Marriott press release", "confidence": "high"},
+    {"id": "DM-NEW-005", "content": "citizenM acquisition: $355M, 37 hotels/8,789 rooms, ~$30M stabilized fees, completed Jul 2025", "source": "Marriott IR", "confidence": "high"},
+    {"id": "DM-NEW-006", "content": "MAR Feb 2026: $1.44B callable senior unsecured notes offering", "source": "Robinhood/multiple", "confidence": "medium"},
+    {"id": "DM-NEW-007", "content": "2025 new brands: Series by Marriott, Outdoor Collection, citizenM. Record 114 luxury deals/15,301 rooms. 55 branded residences (+50% YoY)", "source": "MarketBeat/10-K", "confidence": "high"},
+    {"id": "DM-NEW-008", "content": "Fortune Most Admired Companies 2026: MAR #1 Hotels category, #14 overall", "source": "Fortune", "confidence": "high"},
+    {"id": "DM-NEW-009", "content": "Co-branded credit card fees: $716M in 2025 (+8%), expects ~33% growth in 2026 from new cards", "source": "Simply Wall St / earnings call", "confidence": "medium"},
+    {"id": "DM-NEW-010", "content": "CEO Capuano: 'fundamentally permanent shift' in US consumer travel prioritization. Luxury RevPAR +6% globally", "source": "Fortune 2026-02-12", "confidence": "medium"},
+    {"id": "DM-NEW-011", "content": "CALA record: 94 signed deals, 10,461 rooms (+40% deals, +30% rooms YoY). Total pipeline: 4,056 properties/~610K rooms", "source": "PR Newswire", "confidence": "high"},
+    {"id": "DM-NEW-012", "content": "Tariff/macro: hotel CEO concerns on trade policy impact; select-service weaker; US govt shutdown hit occupancy", "source": "Hotel Dive", "confidence": "medium"},
+    {"id": "DM-NEW-013", "content": "Industry loyalty costs rising 4.4% vs 2.7% revenue growth — Bonvoy cost outpacing revenue", "source": "AInvest", "confidence": "medium"},
+    {"id": "DM-NEW-014", "content": "JP Morgan Lodging Forum March 12 2026 — CEO Capuano + EVP Pinto speaking", "source": "Marriott IR events", "confidence": "high"},
+    {"id": "DM-NEW-015", "content": "New leadership effective March 28, 2026", "source": "Marriott press release", "confidence": "high"},
+    {"id": "DM-NEW-016", "content": "Dividend $0.67/share payable March 31, 2026", "source": "Multiple", "confidence": "high"},
+    {"id": "DM-NEW-017", "content": "Q1 2026 earnings: May 6-7, 2026. Consensus EPS ~$2.50-$2.55, revenue ~$6.56B", "source": "MarketBeat/Nasdaq", "confidence": "high"},
+    {"id": "DM-NEW-018", "content": "citizenM pipeline: 3 hotels/~600 rooms opening by mid-2026", "source": "Hotel Dive", "confidence": "medium"},
+    {"id": "DM-NEW-019", "content": "New co-branded card rollouts expected to drive ~33% credit card fee growth in 2026", "source": "Skift/earnings call", "confidence": "medium"},
+    {"id": "DM-NEW-020", "content": "FIFA World Cup 2026 boost expected for group bookings", "source": "Skift", "confidence": "medium"},
+    {"id": "DM-NEW-021", "content": "Key 2026 EMEA openings: St Regis London, W Riyadh, Lake Como EDITION, W Sardinia, Opatija Croatia", "source": "Hotel Designs/Sleeper", "confidence": "high"},
+    {"id": "DM-NEW-022", "content": "CEO Capuano sold 63K shares at $359.22, $22.6M total, -35.67% position (Feb 17 2026)", "source": "TipRanks/MarketBeat", "confidence": "high"},
+    {"id": "DM-NEW-023", "content": "William Brown sold 9,456 shares at $358.25, $3.4M, -46.23% position (Feb 18 2026)", "source": "MarketBeat", "confidence": "high"},
+    {"id": "DM-NEW-024", "content": "Drew Pinto sold 4,000 shares at $359.81 (Feb 18 2026)", "source": "MarketBeat", "confidence": "high"},
+    {"id": "DM-NEW-025", "content": "Rajeev Menon sold 3,492 shares, $1.24M (Feb 20 2026)", "source": "MarketBeat", "confidence": "high"},
+    {"id": "DM-NEW-026", "content": "CAO sold shares at $305.98, $495K (Q1 2026)", "source": "MarketBeat", "confidence": "medium"},
+    {"id": "DM-NEW-027", "content": "Aggregate: 9 insider sells, 97,157 shares/$34.8M in 90 days, zero buys. Insider ownership 10.68%", "source": "MarketBeat", "confidence": "high"},
+    {"id": "DM-NEW-028", "content": "10-K filed 2026-02-10: $26,186M revenue, $4,141M op income, 1,200 deals/163K rooms, $3.3B buybacks", "source": "SEC EDGAR", "confidence": "high"},
+    {"id": "DM-NEW-029", "content": "Multiple Form 4 insider sale filings Feb 17-20, 2026", "source": "SEC EDGAR", "confidence": "high"},
+    {"id": "DM-NEW-030", "content": "Analyst consensus: Moderate Buy, $343.27 PT. BMO upgrade Jan 9, MS/Evercore/JPM/Citi PT raises Jan-Feb 2026", "source": "Benzinga/Yahoo Finance", "confidence": "high"},
+    {"id": "DM-NEW-031", "content": "MAR: $335.91 (Mar 4), ATH $370 (Feb 12), mkt cap ~$92.2B, P/E 34.22x vs industry 23.42x", "source": "Simply Wall St/TradingView", "confidence": "high"}
+  ],
+  "sources": [
+    "https://news.marriott.com/news/2026/02/10/marriott-international-reports-fourth-quarter-and-full-year-2025-results",
+    "https://marriott.gcs-web.com/static-files/ccd4ffb7-2196-404b-b16d-88c14af5b5dd",
+    "https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-announces-changes-its-continent",
+    "https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-completes-acquisition-citizenm-brand",
+    "https://www.marketbeat.com/stocks/NASDAQ/MAR/earnings/",
+    "https://www.marketbeat.com/stocks/NASDAQ/MAR/insider-trades/",
+    "https://www.marketbeat.com/stocks/NASDAQ/MAR/sec-filings/",
+    "https://finance.yahoo.com/quote/MAR/insider-transactions/",
+    "https://simplywall.st/stocks/us/consumer-services/nasdaq-mar/marriott-international/news/is-marriott-international-mar-pricing-in-too-much-growth-aft",
+    "https://fortune.com/2026/02/12/marriott-ceo-travel-demand-american-consumer-vacations-economy/",
+    "https://www.hoteldive.com/news/hotel-ceo-tariff-trade-policy-impact-earnings/747925/",
+    "https://www.hoteldive.com/news/marriott-completes-citizenm-acquisition/753881/",
+    "https://www.ainvest.com/news/marriott-2026-loyalty-push-tactical-trade-setup-sign-deeper-pressure-2601/",
+    "https://www.prnewswire.com/news-releases/marriott-international-announces-significant-growth-and-strategic-expansion-in-the-caribbean-and-latin-america-in-2025-302703603.html",
+    "https://hoteldesigns.net/industry-news/marriott-international-2026-pipeline/",
+    "https://skift.com/2025/11/04/marriotts-2026-outlook-new-credit-card-deals-world-cup-boost-and-luxury-premiums/",
+    "https://www.benzinga.com/quote/MAR/analyst-ratings",
+    "https://www.tipranks.com/stocks/mar/earnings",
+    "https://www.nasdaq.com/market-activity/stocks/mar/insider-activity",
+    "https://www.deloitte.com/us/en/insights/industry/transportation/travel-hospitality-industry-outlook.html",
+    "https://www.franchisetimes.com/franchise_finance/marriott-international-sustains-its-stock-growth/article_3e1410c4-42ad-43fa-9472-1f9043a318ea.html",
+    "https://robinhood.com/us/en/stocks/MAR/",
+    "https://www.themarketsdaily.com/2026/02/13/marriott-international-nasdaqmar-hits-new-12-month-high-on-analyst-upgrade.html"
+  ]
+}

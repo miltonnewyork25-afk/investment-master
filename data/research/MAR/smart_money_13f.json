@@ -1,0 +1,280 @@
+{
+  "ticker": "MAR",
+  "fetched_at": "2026-03-05",
+  "institutional_summary": {
+    "total_institutions": 1200,
+    "ownership_pct": 65.0,
+    "hedge_fund_and_institutional_pct": 70.7,
+    "trend": "Stable 64-67% range over 2024-2025; total institutional shares decreased 1.36% in last 3 months to ~220.8M shares",
+    "family_ownership_note": "Marriott family retains significant stake — David Marriott 8.3%, J.W. Marriott Jr. 12.1% (32.5M shares, ~$9.96B)"
+  },
+  "top_holders": [
+    {
+      "name": "Marriott Family (David Marriott + J.W. Marriott Jr.)",
+      "type": "insider/family",
+      "shares": "~106M combined",
+      "pct": "~20.4%",
+      "change": "Net selling in Feb 2026 (David sold 4,747 shares)",
+      "dm_anchor": "DM-SMT-001"
+    },
+    {
+      "name": "Vanguard Group Inc.",
+      "type": "index/passive",
+      "shares": "20,543,195",
+      "pct": "7.4%",
+      "change": "+1.5% in Q2 2025; VTSMX alone holds 8.7M shares (2.75%)",
+      "dm_anchor": "DM-SMT-002"
+    },
+    {
+      "name": "BlackRock Inc.",
+      "type": "index/passive",
+      "shares": "~15,360,000",
+      "pct": "5.2-5.6%",
+      "change": "Updated holdings per Nasdaq filing",
+      "dm_anchor": "DM-SMT-003"
+    },
+    {
+      "name": "State Street Corp",
+      "type": "index/passive",
+      "shares": "9,488,566",
+      "pct": "~3.4%",
+      "change": "+1.2% increase in position",
+      "dm_anchor": "DM-SMT-004"
+    },
+    {
+      "name": "Wellington Management Group LLP",
+      "type": "active/fundamental",
+      "shares": "5,427,410",
+      "pct": "~1.9%",
+      "change": "+16.4% increase — notable active manager conviction",
+      "dm_anchor": "DM-SMT-005"
+    },
+    {
+      "name": "JPMorgan Chase & Co",
+      "type": "active/diversified",
+      "shares": "8,782,525",
+      "pct": "2.77%",
+      "change": "+7.63% portfolio allocation increase in MAR last quarter",
+      "dm_anchor": "DM-SMT-006"
+    },
+    {
+      "name": "FMR LLC (Fidelity)",
+      "type": "active/fundamental",
+      "shares": "N/A",
+      "pct": "Top 10 holder",
+      "change": "N/A",
+      "dm_anchor": "DM-SMT-007"
+    },
+    {
+      "name": "Geode Capital Management LLC",
+      "type": "index/quantitative",
+      "shares": "N/A",
+      "pct": "Top 10 holder",
+      "change": "N/A",
+      "dm_anchor": "DM-SMT-008"
+    },
+    {
+      "name": "Morgan Stanley",
+      "type": "active/diversified",
+      "shares": "N/A",
+      "pct": "Top 10 holder",
+      "change": "N/A",
+      "dm_anchor": "DM-SMT-009"
+    },
+    {
+      "name": "Invesco Ltd",
+      "type": "active/fundamental",
+      "shares": "N/A",
+      "pct": "Top 10 holder",
+      "change": "N/A",
+      "dm_anchor": "DM-SMT-010"
+    }
+  ],
+  "notable_moves": [
+    {
+      "entity": "Wellington Management",
+      "action": "increased",
+      "magnitude": "+16.4%",
+      "context": "Largest percentage increase among top holders — active manager conviction signal",
+      "dm_anchor": "DM-SMT-011"
+    },
+    {
+      "entity": "JPMorgan Chase",
+      "action": "increased",
+      "magnitude": "+7.63% allocation",
+      "context": "Now holds 8.78M shares (2.77%), up from 8.67M",
+      "dm_anchor": "DM-SMT-012"
+    },
+    {
+      "entity": "Vanguard Group",
+      "action": "increased",
+      "magnitude": "+1.5%",
+      "context": "Passive rebalancing — likely index-driven, not conviction signal",
+      "dm_anchor": "DM-SMT-013"
+    },
+    {
+      "entity": "Overall institutional",
+      "action": "decreased",
+      "magnitude": "-1.36% in last 3 months",
+      "context": "Total institutional shares fell to ~220.8M — mild net outflow",
+      "dm_anchor": "DM-SMT-014"
+    },
+    {
+      "entity": "MASTERINVEST Kapitalanlage GmbH",
+      "action": "new position",
+      "magnitude": "New stake acquired Q2 2025",
+      "context": "Small European fund initiated position",
+      "dm_anchor": "DM-SMT-015"
+    }
+  ],
+  "insider_activity": {
+    "net_insider_sentiment": "Net selling — predominantly profit-taking near 52-week highs (~$360-$370)",
+    "feb_2026_summary": "17 transactions totaling $11.21M: 2 open-market sales + 15 award grants (8 at $0 value)",
+    "recent_transactions": [
+      {
+        "name": "William Brown",
+        "title": "Insider",
+        "action": "Sold",
+        "shares": 9456,
+        "price": 358.25,
+        "total_value": 3387612,
+        "date": "2026-02-18",
+        "remaining_shares": 11000,
+        "pct_decrease": "46.23%",
+        "dm_anchor": "DM-SMT-016"
+      },
+      {
+        "name": "Rajeev Menon",
+        "title": "President, APEC",
+        "action": "Sold",
+        "shares": 6333,
+        "price": 356.61,
+        "total_value": 2258411,
+        "date": "2026-02-18",
+        "remaining_shares": "N/A",
+        "dm_anchor": "DM-SMT-017"
+      },
+      {
+        "name": "Rajeev Menon",
+        "title": "President, APEC",
+        "action": "Sold",
+        "shares": 3492,
+        "price": 354.0,
+        "total_value": 1236168,
+        "date": "2026-02-20",
+        "remaining_shares": "N/A",
+        "dm_anchor": "DM-SMT-018"
+      },
+      {
+        "name": "David S. Marriott",
+        "title": "Director, 10%+ owner",
+        "action": "Sold",
+        "shares": 4747,
+        "price": 360.0,
+        "total_value": 1708933,
+        "date": "2026-02-17",
+        "remaining_shares": 591669,
+        "dm_anchor": "DM-SMT-019"
+      },
+      {
+        "name": "Drew Pinto",
+        "title": "EVP",
+        "action": "Sold",
+        "shares": 4000,
+        "price": 359.81,
+        "total_value": 1439256,
+        "date": "2026-02-17",
+        "remaining_shares": "N/A",
+        "dm_anchor": "DM-SMT-020"
+      },
+      {
+        "name": "Rena Hozore Reiss",
+        "title": "EVP & General Counsel",
+        "action": "Sold",
+        "shares": 2512,
+        "price": 357.0,
+        "total_value": 896784,
+        "date": "2026-02-17",
+        "note": "Also received 11,266 shares from vested performance units (Feb 11)",
+        "dm_anchor": "DM-SMT-021"
+      }
+    ],
+    "insider_buying": "None reported in 2026 — zero open-market purchases",
+    "interpretation": "Selling clustered around Feb 17-20, 2026 near 52-week highs ($358-$370). Appears routine (RSU vesting + tax-related + profit-taking) rather than signaling fundamental concerns. No open-market buying provides no bullish counter-signal."
+  },
+  "buffett_berkshire": {
+    "holds_MAR": false,
+    "note": "No evidence of Berkshire Hathaway holding or having recently held MAR. Buffett's recent moves focus on Apple (trimming), Chevron, Chubb, Domino's, and NY Times.",
+    "dm_anchor": "DM-SMT-022"
+  },
+  "activist_investor": {
+    "active_campaign": false,
+    "note": "No publicly reported activist campaign targeting MAR in 2025-2026",
+    "dm_anchor": "DM-SMT-023"
+  },
+  "key_fund_holders": [
+    {
+      "fund": "Vanguard Total Stock Market Index Fund (VTSMX)",
+      "shares": 8708653,
+      "pct_of_MAR": "2.75%",
+      "change": "Up from 8,673,431 — +0.4%",
+      "dm_anchor": "DM-SMT-024"
+    }
+  ],
+  "market_context": {
+    "market_cap_feb_2026": "$92.2B (GuruFocus)",
+    "share_price_mar_2026": "$330.47",
+    "52_week_high": "~$370",
+    "shareholder_returns_2025": "$4.0B+ (dividends + buybacks)",
+    "shareholder_returns_2026_guidance": "$4.3B+",
+    "rooms_pipeline": "610,000 rooms (record, +6% YoY)",
+    "net_rooms_growth_2026E": "4.5-5.0% organic",
+    "FY2026_EPS_guidance": "$11.32-$11.57",
+    "analyst_consensus": "Buy, PT ~$300 (as of Aug 2025 — likely stale)",
+    "dm_anchor": "DM-SMT-025"
+  },
+  "dm_anchors": [
+    {"id": "DM-SMT-001", "source": "SimplyWallSt/WallStreetZen ownership data", "confidence": "medium", "note": "Marriott family combined stake ~20.4%"},
+    {"id": "DM-SMT-002", "source": "Fintel/MarketBeat 13F data", "confidence": "high", "note": "Vanguard 7.4%, 20.5M shares"},
+    {"id": "DM-SMT-003", "source": "Nasdaq BlackRock filing update", "confidence": "high", "note": "BlackRock 5.2-5.6%"},
+    {"id": "DM-SMT-004", "source": "SimplyWallSt institutional data", "confidence": "medium", "note": "State Street 9.49M shares, +1.2%"},
+    {"id": "DM-SMT-005", "source": "SimplyWallSt institutional data", "confidence": "medium", "note": "Wellington +16.4% increase"},
+    {"id": "DM-SMT-006", "source": "Fintel 13F data", "confidence": "medium", "note": "JPMorgan 8.78M shares, +7.63% allocation"},
+    {"id": "DM-SMT-007", "source": "Multiple ownership databases", "confidence": "low", "note": "FMR listed as top 10, no share count"},
+    {"id": "DM-SMT-008", "source": "Multiple ownership databases", "confidence": "low", "note": "Geode listed as top 10, no share count"},
+    {"id": "DM-SMT-009", "source": "Multiple ownership databases", "confidence": "low", "note": "Morgan Stanley listed as top 10, no share count"},
+    {"id": "DM-SMT-010", "source": "Multiple ownership databases", "confidence": "low", "note": "Invesco listed as top 10, no share count"},
+    {"id": "DM-SMT-011", "source": "SimplyWallSt Q2 2025 data", "confidence": "medium", "note": "Wellington +16.4% — largest active manager increase"},
+    {"id": "DM-SMT-012", "source": "Fintel 13F quarterly comparison", "confidence": "medium", "note": "JPMorgan allocation increase"},
+    {"id": "DM-SMT-013", "source": "Fintel/SimplyWallSt", "confidence": "medium", "note": "Vanguard +1.5% likely index rebalancing"},
+    {"id": "DM-SMT-014", "source": "MarketBeat institutional tracker", "confidence": "medium", "note": "Net institutional decrease -1.36%"},
+    {"id": "DM-SMT-015", "source": "Markets Daily news report", "confidence": "medium", "note": "MASTERINVEST new position Q2 2025"},
+    {"id": "DM-SMT-016", "source": "MarketBeat/Markets Daily SEC Form 4", "confidence": "high", "note": "Brown sold 9,456 shares @ $358.25"},
+    {"id": "DM-SMT-017", "source": "MarketBeat SEC Form 4", "confidence": "high", "note": "Menon sold 6,333 shares @ $356.61"},
+    {"id": "DM-SMT-018", "source": "MarketBeat SEC Form 4", "confidence": "high", "note": "Menon sold 3,492 shares (second tx)"},
+    {"id": "DM-SMT-019", "source": "Investing.com SEC Form 4", "confidence": "high", "note": "David Marriott sold 4,747 shares @ $360"},
+    {"id": "DM-SMT-020", "source": "StockTitan SEC Form 4", "confidence": "high", "note": "Pinto sold 4,000 shares @ $359.81"},
+    {"id": "DM-SMT-021", "source": "StockTitan/MarketBeat SEC Form 4", "confidence": "high", "note": "Reiss sold 2,512 + received 11,266 vested"},
+    {"id": "DM-SMT-022", "source": "Motley Fool/Acquirers Multiple Berkshire portfolio analysis", "confidence": "high", "note": "MAR not in Berkshire portfolio"},
+    {"id": "DM-SMT-023", "source": "Web search — no activist campaigns found", "confidence": "medium", "note": "No activist targeting MAR"},
+    {"id": "DM-SMT-024", "source": "Fintel VTSMX filing", "confidence": "high", "note": "VTSMX 8.71M shares, 2.75% of MAR"},
+    {"id": "DM-SMT-025", "source": "GuruFocus/Motley Fool/Marriott Q4 2025 earnings", "confidence": "medium-high", "note": "Market cap, guidance, pipeline data"}
+  ],
+  "sources": [
+    "https://fintel.io/so/us/mar",
+    "https://www.marketbeat.com/stocks/NASDAQ/MAR/institutional-ownership/",
+    "https://simplywall.st/stocks/us/consumer-services/nasdaq-mar/marriott-international/news/marriott-international-inc-nasdaqmar-is-largely-controlled-b/amp",
+    "https://www.wallstreetzen.com/stocks/us/nasdaq/mar/ownership",
+    "https://finance.yahoo.com/quote/MAR/holders/",
+    "https://www.nasdaq.com/market-activity/stocks/mar/institutional-holdings",
+    "https://hedgefollow.com/stocks/MAR",
+    "https://www.tikr.com/blog/who-owns-marriott-international-top-shareholders-and-recent-insider-trades",
+    "https://www.gurufocus.com/term/mktcap/MAR",
+    "https://www.marketbeat.com/instant-alerts/marriott-international-nasdaqmar-insider-rajeev-menon-sells-3492-shares-2026-02-20/",
+    "https://www.themarketsdaily.com/2026/02/20/insider-selling-marriott-international-nasdaqmar-insider-sells-9456-shares-of-stock.html",
+    "https://www.investing.com/news/insider-trading-news/marriott-david-s-sells-marriott-intl-mar-shares-worth-17m-93CH-4512555",
+    "https://www.dailypolitical.com/2026/02/19/insider-selling-marriott-international-nasdaqmar-insider-sells-2258411-13-in-stock.html",
+    "https://matrixbcg.com/blogs/owners/marriott",
+    "https://www.fool.com/earnings/call-transcripts/2026/02/10/marriott-mar-q4-2025-earnings-call-transcript/"
+  ]
+}

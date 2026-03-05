@@ -1,0 +1,241 @@
+{
+  "ticker": "MAR",
+  "fetched_at": "2026-03-05",
+  "market_position": {
+    "rank": "#1 globally by room count",
+    "total_rooms": 1706331,
+    "total_properties": 9361,
+    "countries": 144,
+    "total_brands": 31,
+    "market_cap_early_2026": ">$90B",
+    "fy2025_revenue": "$26.186B",
+    "luxury_market_share": "16.9% (#1 globally)",
+    "pipeline_rooms": "~610,000 (+6% YoY)",
+    "bonvoy_members": "270M+",
+    "asset_light_ratio": "~75% franchised, ~25% managed, minimal owned"
+  },
+  "competitors": [
+    {
+      "name": "Hilton Worldwide (HLT)",
+      "rooms": "~1,180,000",
+      "properties": "~7,530",
+      "brands": 19,
+      "market_cap_early_2026": "~$70B",
+      "model": "97% franchised, 3% owned — most asset-light of the majors",
+      "franchise_fee_growth": "5.57% annually (vs MAR 4.28%)",
+      "operating_margin": "~22% (vs MAR ~25%)",
+      "fee_revenue_share_of_ebitda": "~95%",
+      "strengths": "Fastest franchise fee growth; highest franchise ratio; strong franchisee support; Hampton Inn proven profitability formula; digital key leadership",
+      "weaknesses": "Limited luxury presence; heavy franchise reliance could dilute brand quality; smaller scale than MAR",
+      "competitive_dynamic": "Primary rival. Hilton growing franchise fees faster (+5.57% vs +4.28%) but MAR's fee volume lead so large it would take Hilton ~40 years to catch up at current rates."
+    },
+    {
+      "name": "IHG Hotels & Resorts (IHG)",
+      "rooms": "~950,000+",
+      "brands": 19,
+      "luxury_market_share": "8.8%",
+      "model": "Asset-light, fee-driven. Strong in midscale (Holiday Inn) and growing luxury (Six Senses, Regent, InterContinental)",
+      "strengths": "Strong global distribution (esp. Greater China); IHG One Rewards loyalty; Holiday Inn brand recognition; growing luxury portfolio",
+      "weaknesses": "Smaller scale than MAR/HLT; luxury market share significantly behind MAR (8.8% vs 16.9%)",
+      "competitive_dynamic": "Third-largest global chain. Strong in midscale/upper-midscale but trailing in luxury and total room count."
+    },
+    {
+      "name": "Hyatt Hotels (H)",
+      "rooms": "~330,000+",
+      "brands": "20+",
+      "luxury_market_share": "11.4%",
+      "model": "Asset-light transition ongoing. Acquisitions (Apple Leisure Group, Mr & Mrs Smith) expanding lifestyle/luxury presence",
+      "strengths": "Strong luxury positioning (#2 in luxury market share); World of Hyatt loyalty highly rated; lifestyle/experiential focus",
+      "weaknesses": "Significantly smaller scale; narrower geographic footprint; higher owned/leased exposure historically",
+      "competitive_dynamic": "Niche competitor focused on upper-upscale/luxury. Not a scale competitor but contests MAR in high-value luxury segment."
+    },
+    {
+      "name": "Accor",
+      "rooms": "~820,000+",
+      "brands": "40+",
+      "luxury_market_share": "10%",
+      "model": "Complex structure with asset-light management/franchise plus some owned assets. Strongest in Europe and Middle East",
+      "strengths": "Largest brand count; strong Europe/Middle East presence; Raffles/Fairmont/Sofitel luxury brands; ALL loyalty program",
+      "weaknesses": "Complex corporate structure; weaker in North America; lower margins than US-focused peers",
+      "competitive_dynamic": "Primarily a competitor in international markets, especially Europe and Middle East. Less direct competition in North America."
+    },
+    {
+      "name": "Wyndham Hotels & Resorts (WH)",
+      "rooms": "~900,000+",
+      "properties": "~9,200",
+      "model": "Primarily economy/midscale franchising",
+      "strengths": "Largest by property count in economy/midscale; high franchise ratio; Wyndham Rewards",
+      "weaknesses": "Almost no luxury/upper-upscale presence; lower RevPAR and fee per room",
+      "competitive_dynamic": "Competes on volume in economy/midscale tier. Minimal overlap with MAR's luxury/premium core."
+    },
+    {
+      "name": "Airbnb (ABNB)",
+      "model": "Platform marketplace for alternative accommodations",
+      "notes": "Disrupted hotel industry TAM by creating shared/alternative accommodations market. Not direct hotel competitor but captures leisure demand, especially in vacation/experiential travel segments.",
+      "competitive_dynamic": "Indirect competitor. Expands total accommodation TAM but pressures midscale/economy hotels on price. Less impact on luxury/business segments where MAR is strongest."
+    }
+  ],
+  "competitive_dynamics": "The global hotel industry in 2026 has shifted from post-pandemic recovery to a mature, rate-led growth environment. RevPAR growth is modest (+1-2%), driven by ADR rather than occupancy. Key competitive dynamics: (1) Brand proliferation/saturation — majors creating micro-brands to drive net unit growth; (2) Conversion vs. new-build — high construction costs and interest rates favor conversions; (3) Luxury outperformance — luxury RevPAR +6% while select-service flat, widening the quality premium; (4) Loyalty ecosystem wars — 270M+ Bonvoy members vs Hilton Honors ~190M, loyalty platforms increasingly central to direct booking and fee revenue; (5) Asset-light model convergence — all majors moving toward fee-driven models but with different franchise/management mixes; (6) Regional divergence — APAC/EMEA growing strongly while US/Canada flat; (7) AI/technology becoming table stakes for personalization, dynamic pricing, and distribution (agentic commerce).",
+  "moat_indicators": [
+    {
+      "type": "Scale & Network Effects",
+      "strength": "STRONG",
+      "evidence": "Largest room count globally (1.7M rooms). Scale drives purchasing power, operating efficiencies, and owner/franchisee value proposition. Hilton's fee growth is faster but would take ~40 years to close the gap.",
+      "dm_id": "DM-BIZ-021"
+    },
+    {
+      "type": "Brand Portfolio Breadth",
+      "strength": "STRONG",
+      "evidence": "31 brands across luxury/premium/select/extended-stay. Only competitor with comparable breadth is Accor (40+ but weaker execution). Captures travelers across every price point and occasion.",
+      "dm_id": "DM-BIZ-022"
+    },
+    {
+      "type": "Loyalty Program Lock-in",
+      "strength": "STRONG",
+      "evidence": "Bonvoy 270M+ members — largest hotel loyalty program. Co-branded credit card fees growing +33% in 2026. High switching costs for frequent travelers with status/points invested.",
+      "dm_id": "DM-BIZ-023"
+    },
+    {
+      "type": "Luxury Market Leadership",
+      "strength": "STRONG",
+      "evidence": "16.9% global luxury market share (#1), with Ritz-Carlton and St. Regis as iconic brands. Luxury RevPAR +6% outperforming other tiers — luxury moat widening.",
+      "dm_id": "DM-BIZ-024"
+    },
+    {
+      "type": "Asset-Light Fee Model",
+      "strength": "STRONG",
+      "evidence": "~75% franchised + ~25% managed = capital-light, high-ROIC model. Operating margin 25% vs Hilton 22%. Minimal balance sheet risk from property ownership.",
+      "dm_id": "DM-BIZ-025"
+    },
+    {
+      "type": "Switching Costs (Franchisees)",
+      "strength": "MODERATE-STRONG",
+      "evidence": "Hotel owners invest significant capital in brand-specific renovations, technology, and training. Long-term franchise agreements (typically 20+ years). Switching brands requires costly conversion. However, collection brands (Autograph, Tribute) lower entry barriers.",
+      "dm_id": "DM-BIZ-026"
+    },
+    {
+      "type": "Pipeline & Development Advantage",
+      "strength": "STRONG",
+      "evidence": "~610,000 rooms in pipeline (+6% YoY). Marriott leads in signed new construction rooms. Network effects: more rooms → more Bonvoy members → more bookings → more attractive to developers → more rooms.",
+      "dm_id": "DM-BIZ-027"
+    },
+    {
+      "type": "Credit Card / Financial Ecosystem",
+      "strength": "MODERATE-STRONG",
+      "evidence": "Co-branded credit cards are a growing, high-margin revenue stream. Fee revenue from cards expected to rise by 33% in 2026 with new card launches. Creates financial moat layer beyond room fees.",
+      "dm_id": "DM-BIZ-028"
+    }
+  ],
+  "industry_trends_2026": {
+    "revpar_outlook": "+1-2% globally, rate-led not occupancy-led",
+    "supply_growth": "+1.4% US; record global pipeline of 2.4M rooms",
+    "luxury_outperformance": "Luxury RevPAR leading all tiers; luxury pipeline at record highs",
+    "ai_technology": "AI personalization shifting from differentiator to standard; agentic commerce reshaping distribution",
+    "conversions": "Record conversion activity due to high construction costs and interest rates",
+    "regional_winners": "APAC (Japan, Korea, Vietnam, India), Middle East, parts of EMEA",
+    "regional_laggards": "US select-service and extended-stay; government-related demand weak",
+    "wellness_premium": "Wellness travelers spend 40%+ above average; hotels with wellness report 20-35% higher ADR",
+    "brand_saturation": "Industry at or past brand saturation; micro-brands proliferating for net unit growth"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-BIZ-021",
+      "fact": "MAR is #1 globally by room count (1.7M rooms, 9,361 properties). Hilton #2 (~1.18M rooms, 7,530 properties).",
+      "source": "Marriott corporate / Fenestrasa / BizModelMastery",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-022",
+      "fact": "MAR has 31 brands vs Hilton 19 vs IHG 19 vs Accor 40+. MAR broadest in luxury-to-economy coverage among US peers.",
+      "source": "Skift / HotelTechReport / corporate sites",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-023",
+      "fact": "Bonvoy 270M+ members (largest hotel loyalty program); +43M added in 2025; co-branded card fees +33% expected 2026",
+      "source": "Marriott FY2025 earnings / TravelAndTourWorld",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-024",
+      "fact": "MAR luxury market share 16.9% (#1) vs Hyatt 11.4%, Accor 10%, IHG 8.8%; luxury RevPAR +6% in FY2025",
+      "source": "Marriott corporate / GlobeNewsWire / earnings release",
+      "confidence": "MEDIUM-HIGH"
+    },
+    {
+      "id": "DM-BIZ-025",
+      "fact": "MAR operating margin ~25% vs HLT ~22%; MAR ~75% franchised + ~25% managed vs HLT 97% franchised",
+      "source": "Fenestrasa / BizModelMastery",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "DM-BIZ-026",
+      "fact": "Hotel franchise agreements typically 20+ years; brand-specific renovation requirements create high switching costs",
+      "source": "Brevitas / industry analysis",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "DM-BIZ-027",
+      "fact": "MAR pipeline ~610K rooms (+6% YoY), leading in signed new construction rooms globally",
+      "source": "Marriott FY2025 earnings / TravelAndTourWorld",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-028",
+      "fact": "Co-branded credit card fee revenue expected +33% in 2026 from new card launches",
+      "source": "TravelAndTourWorld / Marriott earnings commentary",
+      "confidence": "MEDIUM-HIGH"
+    },
+    {
+      "id": "DM-BIZ-029",
+      "fact": "Global hotel pipeline Q4 2025: record 15,922 projects / 2,437,354 rooms; luxury pipeline +8% YoY",
+      "source": "Lodging Econometrics / Hotel Online",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-030",
+      "fact": "Global RevPAR forecast +1-2% for 2026, rate-led; occupancy flat in high 50s to low 60s",
+      "source": "PACE Dimensions / CoStar / Hotel Dive",
+      "confidence": "MEDIUM-HIGH"
+    },
+    {
+      "id": "DM-BIZ-031",
+      "fact": "Hilton franchise/licensing fee growth 5.57% annually vs MAR 4.28%; but MAR volume lead requires ~40 years for HLT to close",
+      "source": "Skift / Fenestrasa",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "DM-BIZ-032",
+      "fact": "Wellness travelers spend 40%+ above average per trip; hotels with integrated wellness report 20-35% higher ADR",
+      "source": "HospitalityNet / Hotel Dive",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "DM-BIZ-033",
+      "fact": "US & China together account for ~62% of global hotel pipeline projects",
+      "source": "Lodging Econometrics / NoVacancyNews",
+      "confidence": "HIGH"
+    }
+  ],
+  "sources": [
+    "https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-reports-fourth-quarter-and-full-year-2025",
+    "https://www.fenestrasa.com/marriott-vs-hilton-asset-light-ai-pricing/",
+    "https://bizmodelmastery.substack.com/p/marriott-vs-hilton-inside-the-battle",
+    "https://skift.com/2024/05/20/marriott-vs-hilton-a-fee-fight-for-hotel-dominance/",
+    "https://pacedimensions.com/the-global-hotel-industry-in-2026-discipline-data-and-differentiation/",
+    "https://www.hoteldive.com/news/top-hospitality-industry-trends-2026/808959/",
+    "https://www.hoteldive.com/news/hotel-industry-trends-forecast-2026/811017/",
+    "https://www.hoteldive.com/news/hotel-development-trends-2026-forecast/809599/",
+    "https://www.hotel-online.com/news/global-hotel-pipeline-reaches-record-high-luxury-and-upper-upscale-chain-scales-and-conversions-reach-historic-milestones-at-q4-2025-close",
+    "https://novacancynews.com/what-the-global-hotel-pipeline-actually-says-about-2026/",
+    "https://www.globenewswire.com/news-release/2026/02/27/3246442/28124/en/Marriott-International-in-Lodging-World-Company-Profile-2026.html",
+    "https://www.travelandtourworld.com/news/article/marriotts-2025-success-luxury-hotels-lead-international-growth/",
+    "https://www.pwc.com/us/en/industries/financial-services/asset-wealth-management/real-estate/emerging-trends-in-real-estate-pwc-uli/property-type-outlook/hospitality.html",
+    "https://www.hospitalitynet.org/news/4129938.html",
+    "https://www.costar.com/article/849303403/whats-new-in-hotel-profit-trends-for-2026",
+    "https://brevitas.com/blog/hotel-franchise-investments-evaluating-marriott-hilton-and-hyatt",
+    "https://csimarket.com/stocks/competitionSEG2.php?code=MAR",
+    "https://www.researchandmarkets.com/report/hospitality",
+    "https://www.globenewswire.com/news-release/2026/02/13/3237913/28124/en/Luxury-Hotel-Analysis-Report-2026.html"
+  ]
+}

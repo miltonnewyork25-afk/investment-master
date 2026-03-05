@@ -1,0 +1,291 @@
+{
+  "ticker": "MAR",
+  "fetched_at": "2026-03-05",
+  "segments": [
+    {
+      "name": "Franchise & Base Management Fees",
+      "description": "Fees from franchised and managed properties, including base management fees and franchise fees. Core high-margin revenue stream.",
+      "fy2025_q4": "$1,186M (Q4, +5% YoY)",
+      "notes": "Driven by rooms growth, RevPAR increases, and higher co-branded credit card fees. Fee revenue grew 8% in FY2025 ($716M incremental)."
+    },
+    {
+      "name": "Incentive Management Fees",
+      "description": "Performance-based fees from managed hotels, tied to property profitability.",
+      "notes": "International markets contributed ~2/3 of incentive fees in Q4 2025. Luxury segment outperformance drives higher incentive fee capture."
+    },
+    {
+      "name": "Owned, Leased & Other Revenue",
+      "description": "Revenue from properties Marriott directly owns or leases. Minimal and declining as asset-light strategy continues.",
+      "notes": "Negligible contribution to overall revenue mix; Marriott is systematically divesting owned properties."
+    },
+    {
+      "name": "Cost Reimbursements",
+      "description": "Pass-through revenues that offset reimbursed expenses from managed and franchised properties.",
+      "fy2025": "$19.5B of $26.2B total revenue",
+      "notes": "Low/zero margin pass-through. Represents ~74% of reported revenue but not a meaningful earnings driver."
+    }
+  ],
+  "revenue_summary": {
+    "fy2025_total": "$26.186B (+4.33% YoY)",
+    "fy2025_quarterly": {
+      "Q1": "$6.26B",
+      "Q2": "$6.74B",
+      "Q3": "$6.49B",
+      "Q4": "$6.69B"
+    },
+    "fy2025_net_income": "$2.60B",
+    "fy2024_total": "$25.10B",
+    "fy2023_total": "$23.71B (approx)"
+  },
+  "geographic_breakdown": [
+    {
+      "region": "United States & Canada",
+      "fy2024_revenue": "$18.61B",
+      "fy2024_pct": "82.44%",
+      "fy2023_revenue": "$17.70B",
+      "fy2023_pct": "74.63%",
+      "revpar_trend_2025": "Roughly flat; impacted by government shutdown and softer select-service/extended-stay demand",
+      "notes": "Dominant region. RevPAR flat in 2025 due to government shutdown impact on business transient."
+    },
+    {
+      "region": "International (EMEA + APEC + Greater China)",
+      "fy2024_revenue": "$3.96B",
+      "fy2024_pct": "17.56%",
+      "fy2023_revenue": "$4.46B",
+      "fy2023_pct": "18.79%",
+      "revpar_trend_2025": "International RevPAR +6% led by EMEA and APEC; APAC +9%, EMEA +7%",
+      "notes": "FY2024 revenue decline partly due to reporting reclassification of 'Unallocated Corporate' ($1.56B in FY2023 moved). International RevPAR strong in 2025."
+    },
+    {
+      "region": "Greater China",
+      "notes": "Reported as sub-segment of International. Separate RevPAR tracking. Recovery trajectory post-COVID but lagging EMEA/APAC."
+    }
+  ],
+  "supply_chain": {
+    "business_model": "Asset-light, fee-driven. ~75% franchised, ~25% managed. Minimal owned/leased properties.",
+    "revenue_mix": {
+      "management_fees_pct": "~50% of fee revenue",
+      "franchise_fees_pct": "~40% of fee revenue",
+      "owned_leased_pct": "Negligible"
+    },
+    "operating_margin": "~25%",
+    "gross_margin_vs_hilton": "~20% higher than Hilton due to management-heavy model",
+    "key_partnerships": [
+      "Co-branded credit cards (fee revenue growing, +33% expected in 2026 from new card launches)",
+      "Bonvoy loyalty platform (228M+ members in 2024, 270M+ by end 2025, +43M added in 2025)",
+      "MGM Collection partnership"
+    ]
+  },
+  "tam": {
+    "global_hospitality_market_2026": "$5.82T",
+    "global_hospitality_market_2030": "$7.47T (6.4% CAGR)",
+    "luxury_hotel_market_2030": "$143.19B (4.8% CAGR)",
+    "global_hotel_pipeline_q4_2025": {
+      "total_projects": 15922,
+      "total_rooms": 2437354,
+      "under_construction_projects": 6140,
+      "under_construction_rooms": 1058945
+    },
+    "2026_opening_forecast": {
+      "new_hotels": 2617,
+      "new_rooms": 389175
+    },
+    "us_supply_growth_2026": "+1.4% (708 new hotels, 80,034 rooms)",
+    "international_tourism_2024": "1.4B tourists internationally (+11% YoY, near pre-pandemic)",
+    "notes": "TAM growing but mature markets face supply constraints from high interest rates. Asia-Pacific and Middle East driving pipeline growth."
+  },
+  "industry_specific": {
+    "brand_portfolio": {
+      "total_brands": 31,
+      "luxury": ["The Ritz-Carlton", "St. Regis", "W Hotels", "Edition", "JW Marriott", "The Luxury Collection", "Bulgari"],
+      "premium": ["Marriott Hotels", "Sheraton", "Westin", "Renaissance", "Le Meridien", "Autograph Collection", "Delta Hotels", "Gaylord Hotels", "Tribute Portfolio", "Design Hotels", "MGM Collection"],
+      "select": ["Courtyard", "Fairfield", "SpringHill Suites", "Four Points", "AC Hotels", "Aloft", "Moxy", "Protea Hotels", "City Express"],
+      "longer_stays": ["Residence Inn", "TownePlace Suites", "Element", "Apartments by Marriott Bonvoy", "Homes & Villas", "Marriott Executive Apartments", "Sonder"]
+    },
+    "brand_categorization": {
+      "classic": "Time-honored hospitality for modern traveler",
+      "distinctive": "Lifestyle-driven experiences with unique perspective"
+    },
+    "properties_fy2025": {
+      "total_properties": 9361,
+      "total_rooms": 1706331,
+      "countries": 144
+    },
+    "loyalty_program": {
+      "name": "Marriott Bonvoy",
+      "members_end_2025": "270M+",
+      "members_added_2025": "43M",
+      "strategic_role": "Core direct booking channel; co-branded credit cards major fee revenue driver"
+    },
+    "fy2025_kpis": {
+      "net_rooms_growth": "+4.3%",
+      "worldwide_revpar_growth": "+2%",
+      "international_revpar_growth": "+6%",
+      "luxury_revpar_growth": "+6%",
+      "us_canada_revpar": "Roughly flat",
+      "pipeline_rooms_end_2025": "~610,000 rooms (+6% YoY)",
+      "rooms_added_organic_2025": 163000,
+      "deals_signed_2024": "1,200+"
+    },
+    "recent_acquisitions": [
+      {
+        "target": "CitizenM",
+        "value": "$355M",
+        "date": "April 2025",
+        "rationale": "Strengthen lifestyle hotel segment presence"
+      }
+    ],
+    "new_brands_2025": [
+      {
+        "name": "Series by Marriott",
+        "market": "India",
+        "tier": "Midscale/Upscale",
+        "date": "May 2025"
+      }
+    ],
+    "luxury_market_share": "16.9% global (vs Hyatt 11.4%, Accor 10%, IHG 8.8%)"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-BIZ-001",
+      "fact": "Marriott FY2025 total revenue $26.186B (+4.33% YoY)",
+      "source": "Marriott Q4/FY2025 earnings release",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-002",
+      "fact": "Cost reimbursements ~$19.5B of $26.2B total revenue (74%)",
+      "source": "Marriott FY2025 earnings release + StockAnalysis",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-003",
+      "fact": "FY2025 net income $2.60B",
+      "source": "Marriott FY2025 earnings release",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-004",
+      "fact": "9,361 properties / 1,706,331 rooms / 144 countries (end 2025)",
+      "source": "Marriott corporate + Wikipedia",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-005",
+      "fact": "US & Canada = 82.44% of FY2024 revenue ($18.61B); International = 17.56% ($3.96B)",
+      "source": "Bullfincher / Marriott 10-K FY2024",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-006",
+      "fact": "FY2025 worldwide RevPAR +2%, international RevPAR +6%, US/Canada roughly flat",
+      "source": "Marriott FY2025 earnings release",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-007",
+      "fact": "Luxury RevPAR +6% in FY2025, outperforming other chain scales",
+      "source": "Marriott FY2025 earnings release",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-008",
+      "fact": "Net rooms growth +4.3% in FY2025; pipeline ~610,000 rooms (+6% YoY)",
+      "source": "Marriott FY2025 earnings release",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-009",
+      "fact": "Bonvoy loyalty program: 270M+ members (end 2025), +43M added in 2025",
+      "source": "Marriott FY2025 earnings / TravelAndTourWorld",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-010",
+      "fact": "Fee revenue grew 8% in FY2025 ($716M incremental); co-branded card fees expected +33% in 2026",
+      "source": "Marriott FY2025 earnings / TravelAndTourWorld",
+      "confidence": "MEDIUM-HIGH"
+    },
+    {
+      "id": "DM-BIZ-011",
+      "fact": "Operating margin ~25% (vs Hilton ~22%); gross margin ~20% higher than Hilton",
+      "source": "Fenestrasa / BizModelMastery analysis",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "DM-BIZ-012",
+      "fact": "~75% franchised, ~25% managed; Hilton 97% franchised",
+      "source": "Fenestrasa / BizModelMastery",
+      "confidence": "MEDIUM-HIGH"
+    },
+    {
+      "id": "DM-BIZ-013",
+      "fact": "Marriott luxury market share 16.9% global (#1 vs Hyatt 11.4%, Accor 10%, IHG 8.8%)",
+      "source": "Marriott corporate / GlobeNewsWire",
+      "confidence": "MEDIUM-HIGH"
+    },
+    {
+      "id": "DM-BIZ-014",
+      "fact": "CitizenM acquisition for $355M (April 2025) to strengthen lifestyle segment",
+      "source": "Skift / Hotel Dive",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-015",
+      "fact": "Global hospitality market $5.82T (2026) → $7.47T (2030), 6.4% CAGR",
+      "source": "ResearchAndMarkets",
+      "confidence": "MEDIUM"
+    },
+    {
+      "id": "DM-BIZ-016",
+      "fact": "Global hotel pipeline Q4 2025: 15,922 projects / 2,437,354 rooms (record high)",
+      "source": "Lodging Econometrics / Hotel Online",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-017",
+      "fact": "2026 hotel opening forecast: 2,617 hotels / 389,175 rooms globally",
+      "source": "Lodging Econometrics",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-018",
+      "fact": "US hotel supply growth forecast +1.4% in 2026 (708 hotels, 80,034 rooms)",
+      "source": "Lodging Econometrics",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-019",
+      "fact": "Franchise & base management fees Q4 2025: $1,186M (+5% YoY vs $1,128M)",
+      "source": "Marriott Q4 2025 earnings release",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-BIZ-020",
+      "fact": "Marriott market cap >$90B; Hilton ~$70B (early 2026)",
+      "source": "Fenestrasa",
+      "confidence": "MEDIUM"
+    }
+  ],
+  "sources": [
+    "https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-reports-fourth-quarter-and-full-year-2025",
+    "https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-reports-fourth-quarter-and-full-year-2024",
+    "https://stockanalysis.com/stocks/mar/revenue/",
+    "https://www.macrotrends.net/stocks/charts/MAR/marriott/revenue",
+    "https://bullfincher.io/companies/marriott-international/revenue-by-geography",
+    "https://bullfincher.io/companies/marriott-international/revenue-by-segment",
+    "https://www.statista.com/statistics/266279/revenue-of-the-marriott-international-inc-hotel-chain/",
+    "https://www.travelandtourworld.com/news/article/marriotts-2025-success-luxury-hotels-lead-international-growth/",
+    "https://www.globenewswire.com/news-release/2026/02/27/3246442/28124/en/Marriott-International-in-Lodging-World-Company-Profile-2026.html",
+    "https://skift.com/2025/05/27/every-one-of-marriotts-30-hotel-brands-explained/",
+    "https://www.hotel-development.marriott.com/brands",
+    "https://hoteltechreport.com/news/marriott-hotel-brands",
+    "https://www.fenestrasa.com/marriott-vs-hilton-asset-light-ai-pricing/",
+    "https://bizmodelmastery.substack.com/p/marriott-vs-hilton-inside-the-battle",
+    "https://www.researchandmarkets.com/report/hospitality",
+    "https://www.globenewswire.com/news-release/2026/02/13/3237913/28124/en/Luxury-Hotel-Analysis-Report-2026.html",
+    "https://www.hotel-online.com/news/global-hotel-pipeline-reaches-record-high-luxury-and-upper-upscale-chain-scales-and-conversions-reach-historic-milestones-at-q4-2025-close",
+    "https://novacancynews.com/what-the-global-hotel-pipeline-actually-says-about-2026/",
+    "https://www.sec.gov/Archives/edgar/data/1048286/000162828025004818/mar-20241231.htm"
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "ticker": "MAR",
+  "fetched_at": "2026-03-05",
+  "ceo": {
+    "name": "Anthony 'Tony' G. Capuano",
+    "tenure_years": 5,
+    "background": "Cornell Hotel Administration '87. Joined Marriott 1995 (after initial rejection) on Market Planning & Feasibility team. Rose through development roles: Western US/Canada full-service → North America/Caribbean/LatAm → Global Development (2009) → added Global Design (2014) → added Global Operations (Jan 2020). Pre-CEO title: Group President, Global Development, Design and Operations Services. Appointed CEO Feb 2021 following unexpected death of Arne Sorenson. Board member at McDonald's Corp, Economic Club of Washington DC, Save Venice.",
+    "track_record": "Under his development leadership (2009-2020), Marriott grew from ~3,200 properties to 7,600+ properties and pipeline to 498,000 rooms (>50% international). Instrumental in 2016 Starwood Hotels acquisition. As CEO: signed record 1,200+ development deals in 2024 (~162K rooms), achieved 6.8% net rooms growth, expanded system to 9,600+ properties across 143 countries, grew Bonvoy to ~248M members. Stock has meaningfully outperformed S&P 500 during his tenure."
+  },
+  "cfo": {
+    "name": "Kathleen 'Leeny' K. Oberg",
+    "tenure_years": 10,
+    "background": "BS Commerce (Finance & MIS) from UVA McIntire, MBA from Stanford GSB. Pre-Marriott: Chase Manhattan Bank, Goldman Sachs, Sallie Mae, Sodexo. Joined Marriott 1999 in Investor Relations. Held increasingly senior finance roles: SVP International Project Finance & Asset Management EMEA (London, 2006-2008), SVP Corporate & Development Finance (2008-2013), CFO of The Ritz-Carlton (2013-2015). CFO of Marriott International since Jan 1, 2016. Added EVP Development role in 2023. Adobe Board member. RETIRING effective March 31, 2026 — successor is Jen Mason (33-year Marriott veteran)."
+  },
+  "key_executives": [
+    {
+      "name": "Jen Mason",
+      "title": "Incoming EVP & CFO (effective March 31, 2026)",
+      "note": "33-year Marriott veteran, succeeding Leeny Oberg"
+    },
+    {
+      "name": "Shawn Hill",
+      "title": "Incoming EVP Development (effective March 31, 2026)",
+      "note": "Succeeding Oberg's development responsibilities alongside Mason"
+    },
+    {
+      "name": "David S. Marriott",
+      "title": "Chairman of the Board (since May 2022)",
+      "note": "Marriott family member. Previously President US Full Service Managed, COO Americas Eastern Region"
+    },
+    {
+      "name": "Satya Anand",
+      "title": "Incoming Group President, US/Canada/CALA (effective March 28, 2026)",
+      "note": "37-year Marriott veteran, currently President EMEA. Expanded EMEA to 1,300+ properties. Started as night auditor 1988."
+    },
+    {
+      "name": "Neal Jones",
+      "title": "Incoming President, EMEA (effective March 28, 2026)",
+      "note": "Currently COO Europe/Africa & Global Leader Design Hotels. 30 years Marriott experience."
+    },
+    {
+      "name": "Federico 'Fede' Greppi",
+      "title": "Incoming President, CALA (effective March 28, 2026)",
+      "note": "Currently COO CALA. 22+ years hospitality. Expanded CALA to 500+ properties across 37 markets."
+    },
+    {
+      "name": "William P. Brown",
+      "title": "Named Executive Officer",
+      "note": "Listed in 2025 proxy as NEO"
+    },
+    {
+      "name": "Rena H. Reiss",
+      "title": "Named Executive Officer",
+      "note": "Listed in 2025 proxy as NEO"
+    },
+    {
+      "name": "Benjamin T. Breland",
+      "title": "Named Executive Officer",
+      "note": "Listed in 2025 proxy as NEO"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2025-07-14",
+      "event": "CFO Leeny Oberg announced retirement effective March 31, 2026. Jen Mason named successor CFO, Shawn Hill to lead Development."
+    },
+    {
+      "date": "2026-02",
+      "event": "Major continent leadership restructuring announced: Liam Brown (Group President US/Canada, ~40yr tenure) and Brian King (President Enterprise Transformation & CALA, ~30yr tenure) retiring end June 2026."
+    },
+    {
+      "date": "2026-03-28",
+      "event": "Satya Anand becomes Group President US/Canada/CALA; Neal Jones becomes President EMEA; Federico Greppi becomes President CALA. Jones and Anand join executive leadership team reporting to CEO Capuano."
+    }
+  ],
+  "insider_ownership_pct": 12.1,
+  "insider_ownership_detail": {
+    "note": "Marriott family collectively holds very significant stake via direct and indirect/trust holdings. Figures overlap due to trust structures.",
+    "j_w_marriott_jr": {
+      "shares": 34260363,
+      "pct_approx": "12.1% (direct ~32.5M shares)",
+      "value_approx_B": 9.96
+    },
+    "richard_e_marriott": {
+      "shares_direct": 10949865,
+      "shares_incl_indirect": 27551566,
+      "pct_direct_approx": "4.08%"
+    },
+    "john_w_marriott_iii": {
+      "shares": 25393635,
+      "pct_approx": "27.51% (per some sources; likely includes indirect/trust)",
+      "note": "Largest individual shareholder per some databases; high figure likely reflects trust holdings"
+    },
+    "recent_activity": "17 insider transactions in Feb 2026 totaling $11.21M: 2 stock sales + 15 award grants (8 at $0). J.W. Marriott Jr. disposed ~$38K. Only sales in past 3 months — minimal and consistent with personal portfolio management, not bearish signaling."
+  },
+  "compensation_highlights": "CEO Capuano FY2024 total comp: $21.93M ($1.4M salary + $4.34M bonus + $3.88M options + $11.6M stock + $0.72M other). CEO salary unchanged; other NEO salaries increased ~4%. Annual cash incentive weighted 60% Adjusted EBITDA + 40% unifying goals. NEOs average 25+ years hospitality experience. Clawback/forfeiture provisions on equity awards. SARs (Stock Appreciation Rights) used with exercise price = grant-date average of high/low. Say-on-pay vote included in 2025 proxy.",
+  "governance_notes": "Chairman: David S. Marriott (family member, since May 2022). Board committees: Audit, Nominating & Corporate Governance (NCGC), Human Resources & Compensation. Annual director elections (1-year terms), majority voting in uncontested elections. Strong ethics framework with Code of Ethics/Business Conduct Guide. Regular board meetings (min 4x/year). Long-tenured management culture — most senior executives have 25-40 year Marriott careers. Significant leadership transition underway in 2026 with CFO + two Group Presidents retiring simultaneously.",
+  "dm_anchors": [
+    {
+      "id": "DM-MGT-001",
+      "fact": "Capuano appointed CEO Feb 2021 after Arne Sorenson's death; joined Marriott 1995",
+      "source": "marriott.gcs-web.com, news.marriott.com, hotelsmag.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-002",
+      "fact": "Under Capuano's development leadership (2009-2020), Marriott grew from ~3,200 to 7,600+ properties",
+      "source": "news.marriott.com/leadership/anthony-capuano",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-003",
+      "fact": "Oberg CFO since Jan 1, 2016; retiring March 31, 2026; successor Jen Mason (33yr veteran)",
+      "source": "marriott.gcs-web.com press release 2025-07-14, prnewswire.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-004",
+      "fact": "CEO Capuano FY2024 total comp $21.93M (salary $1.4M + bonus $4.34M + options $3.88M + stock $11.6M + other $0.72M)",
+      "source": "SEC DEF 14A 2025 proxy, salary.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-005",
+      "fact": "J.W. Marriott Jr. holds ~12.1% direct ownership (~32.5M shares); Marriott family collectively holds significant stake via trusts",
+      "source": "tikr.com, gurufocus.com, wallstreetzen.com",
+      "confidence": "MEDIUM — figures vary across sources due to trust/indirect holding overlap"
+    },
+    {
+      "id": "DM-MGT-006",
+      "fact": "Liam Brown (Group President US/Canada, ~40yr tenure) and Brian King (President CALA, ~30yr tenure) retiring end June 2026",
+      "source": "marriott.gcs-web.com press release, prnewswire.com, hoteldive.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-007",
+      "fact": "Record 1,200+ development deals signed in 2024 (~162K rooms), 6.8% net rooms growth, 9,300+ properties by YE2024",
+      "source": "SEC DEF 14A 2025 proxy statement",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-008",
+      "fact": "David S. Marriott is Chairman of the Board since May 2022; board has Audit, NCGC, HR&Comp committees",
+      "source": "marriott.gcs-web.com/corporate-governance",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-009",
+      "fact": "Bonvoy loyalty program has ~248M members as of latest disclosure",
+      "source": "news.marriott.com/leadership/anthony-capuano",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-010",
+      "fact": "Oberg pre-Marriott: Goldman Sachs, Chase Manhattan Bank, Sallie Mae, Sodexo; MBA Stanford, BS UVA McIntire",
+      "source": "news.marriott.com/leadership/leeny-oberg, hospitalitynet.org",
+      "confidence": "HIGH"
+    }
+  ],
+  "sources": [
+    "https://sha.cornell.edu/people/anthony-capuano/",
+    "https://marriott.gcs-web.com/board-directors/anthony-capuano",
+    "https://news.marriott.com/leadership/anthony-capuano",
+    "https://hotelsmag.com/news/a-death-thrust-marriotts-ceo-into-the-top-role-it-wasnt-without-merit/",
+    "https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-announces-retirement-leeny-oberg-chief",
+    "https://news.marriott.com/leadership/leeny-oberg",
+    "https://skift.com/2025/07/16/marriotts-cfo-leeny-oberg-to-retire-c-suite-transition-announced/",
+    "https://www.hoteldive.com/news/marriott-cfo-leeny-oberg-retires/753017/",
+    "https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-announces-changes-its-continent",
+    "https://www.hoteldive.com/news/marriott-appoints-executive-leadership/809334/",
+    "https://marriott.gcs-web.com/board-of-directors",
+    "https://marriott.gcs-web.com/corporate-governance",
+    "https://www.sec.gov/Archives/edgar/data/1048286/000114036125010600/ny20039208x771_def14a.htm",
+    "https://www1.salary.com/MARRIOTT-INTL-INC-Executive-Salaries.html",
+    "https://www.tikr.com/blog/who-owns-marriott-international-top-shareholders-and-recent-insider-trades",
+    "https://www.gurufocus.com/stock/MAR/ownership",
+    "https://www.wallstreetzen.com/stocks/us/nasdaq/mar/ownership"
+  ]
+}
