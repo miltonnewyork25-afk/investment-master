@@ -5,37 +5,43 @@
 
 ---
 
-## 进化循环
+## 进化循环 v2.0 (多步深度反思)
+
+> **v2.0变化**: 原单pass反思升级为3步结构化深度反思。详见 `/deep-reflection` skill。
 
 ```
-┌─────────────────────────────────────────────────┐
-│                  报告完成                         │
-│                    ↓                              │
-│  [1] 自动测量 (post_report_autopsy.sh v2.0)      │
-│      → CG + compliance + DM + scorecard          │
-│      → 内联趋势分析 (evolution_trend.sh)          │
-│      → 追加到 evolution_log.yaml                  │
-│                    ↓                              │
-│  [2] AI提取 + 冠军对比                            │
-│      → update_excellence_catalog.sh 扫描报告评分  │
-│      → 对比现有冠军: 有无超越? 有无新技术?          │
-│      → AI填入: quality / top_technique / lesson    │
-│                    ↓                              │
-│  [3] 进化提议 (AI→用户)                           │
-│      → 技术升级/降级建议                           │
-│      → MEMORY.md / skill / 方法论文档变更          │
-│      → 递归深化三问 (depth/method/reflection)      │
-│                    ↓                              │
-│  [4] 用户审批 ← 唯一的人工门控点                    │
-│      → 批准 → 执行变更 + evolution_status=approved  │
-│      → 拒绝 → 记录理由 + 调整方向                  │
-│                    ↓                              │
-│  [5] 下份报告受益                                  │
-│      → find_relevant_knowledge.sh 自动输出:        │
-│        evolution_log最近3条 + 质量趋势 + 教训       │
-│      → excellence_catalog 推荐最佳技术              │
-│      → 避免已记录的失败模式                         │
-└─────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────┐
+│                  报告Complete                        │
+│                      ↓                               │
+│  [Step 0] 机械测量 (post_report_autopsy.sh)          │
+│      → CG + compliance + DM + scorecard + 趋势      │
+│      → 追加到 evolution_log.yaml                     │
+│                      ↓                               │
+│  [Step R1] 行业模块基建 (模板A) ← 同行业只做一次     │
+│      → MECE 10模块 + 扩展模块                        │
+│      → 每模块: 3必问 + 3KPI + 一致性检验 + KS        │
+│      → 产出: knowledge/industry_modules/{ind}.md     │
+│                      ↓                               │
+│  [Step R2] 深度报告审计 (模板B+C) ← 核心价值步骤     │
+│      → 公司模块定位 + 误判点 + 证据缺口               │
+│      → 报告结构映射: 缺失/重复/缺验证/可删减          │
+│      → 最短补齐路线图 (Top 3模块)                     │
+│      → 产出: reports/{T}/reflection/deep_audit.md    │
+│                      ↓                               │
+│  [Step R3] 评分+升级路线 (模板D+E) ← 可选            │
+│      → 0-2分/模块 → 总分百分比                       │
+│      → Top 10补证据任务清单                           │
+│      → v2目录 (仅v2重做时)                            │
+│      → 产出: reports/{T}/reflection/upgrade.md       │
+│                      ↓                               │
+│  [6] 进化提议 (从R2缺口+R3任务提取EVO-XXX)           │
+│      → 用户审批 → evolution_status=approved           │
+│                      ↓                               │
+│  [7] 下份报告受益                                    │
+│      → find_relevant_knowledge.sh: 检查行业模块+缺口  │
+│      → excellence_catalog: 推荐最佳技术               │
+│      → 上份报告deep_audit未修复缺口 → 本次警告        │
+└─────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -91,37 +97,54 @@ post_report_autopsy.sh → evolution_log → 进化循环
 
 ## 完整执行流程
 
-### Step 1: 自动测量
+### Step 0: 机械测量 (保留)
 ```bash
 bash scripts/post_report_autopsy.sh {TICKER} {REPORT_FILE}
 ```
 输出: 6项指标 (基础/CG/Compliance/DM/Scorecard/趋势) → 追加到evolution_log.yaml
 
-### Step 2: AI填入 + 冠军对比
+### Step R1: 行业模块基建 (同行业只做一次)
+
+检查 `knowledge/industry_modules/{industry}_modules.md` 是否存在:
+- **存在** → 跳过R1，直接R2
+- **不存在** → 执行 `/deep-reflection R1 {industry}`，产出行业MECE模块模板
+
+### Step R2: 深度报告审计 (每份报告)
+
+执行 `/deep-reflection R2 {TICKER}`，需要:
+- 行业模块模板 (R1产出)
+- 报告全文
+- Step 0的测量数据
+
+产出 `reports/{TICKER}/reflection/deep_audit.md`:
+- 公司模块定位矩阵 + 误判风险
+- 报告结构映射: 缺失/重复/缺验证/可删减
+- 最短补齐路线图 (Top 3)
+
+### Step R3: 评分+升级路线 (每份报告, 可选)
+
+执行 `/deep-reflection R3 {TICKER}`，需要:
+- R2的审计结果
+
+产出 `reports/{TICKER}/reflection/upgrade_roadmap.md`:
+- 模块0-2分评分矩阵
+- Top 10补证据任务清单
+- v2目录 (仅v2重做时)
+
+### 冠军对比 + 进化提议
 ```bash
 bash scripts/update_excellence_catalog.sh {TICKER} {REPORT_FILE}
 ```
-AI手动填入evolution_log中的null字段:
-- `quality`: 1.0-5.0 评分
-- `top_technique`: 本报告最强技术创新
-- `top_lesson`: 本报告最重要教训
-- `evolution_proposed`: AI生成的进化建议
+AI从R2缺口+R3任务清单中提取具体EVO-XXX进化提议。
 
-### Step 3: 进化提议
-AI根据测量结果+教训+趋势，提出具体变更:
-- 技术升级: 新冠军超越旧冠军+0.1 → 更新excellence_catalog
-- 技术降级: 连续2份报告无效 → 弱化或移除
-- 方法论泛化: ≥3份报告验证有效 → 写入docs/
-- 框架简化: 复杂度↑但质量→ → 删减
-
-### Step 4: 用户审批
+### 用户审批
 唯一的人工门控。批准→执行+标记approved，拒绝→记录理由。
 
-### Step 5: 下份报告受益
+### 下份报告受益
 ```bash
 bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}
 ```
-自动输出: Top-3相似公司 + evolution_log最近3条趋势+教训+待审批提议
+自动输出: Top-3相似公司 + evolution_log最近3条 + 行业模块模板 + 上份报告未修复缺口
 
 ---
 
@@ -165,11 +188,16 @@ bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}
 
 ## 递归深化机制
 
-每次进化提议自动触发三个递归问题:
+多步反思系统本身就是递归深化的实现:
 
-1. **深度**: "这个提议足够深入吗？有没有更本质的教训？"
-2. **方法**: "这个进化方向正确吗？有没有更好的方式？"
-3. **反思**: "这个变更会不会引入新问题？复杂度预算内吗？"
+- **R1→R2**: 行业坐标系建立后，R2的审计才有MECE基准（而非随机找问题）
+- **R2→R3**: 结构缺口发现后，R3的评分才有评判依据（而非凭印象打分）
+- **R3→下份报告**: 量化的任务清单直接转化为Phase 0的前置检查项
+
+每步的进化提议仍需通过三个校验:
+1. **深度**: R2发现的缺口是根因还是表象？
+2. **方法**: R3的补救方案是否在复杂度预算内？
+3. **复利**: 这个修复能惠及几份未来报告？（≥3份才值得系统化）
 
 如果任一答案为"不确定"→ 暂停，向用户确认。
 
@@ -178,10 +206,15 @@ bash scripts/find_relevant_knowledge.sh {TICKER} {INDUSTRY}
 ## 与Phase系统集成
 
 ```
-Phase -1: find_relevant_knowledge.sh → evolution_log最近3条 + excellence_catalog
+Phase -1: find_relevant_knowledge.sh
+          → evolution_log最近3条 + excellence_catalog
+          → 检查行业模块模板是否存在
+          → 上份同行业报告的deep_audit未修复缺口 → 警告
 Phase 0:  data-prefetch + excellence_scout.sh → 推荐最佳实践
-Phase 1-3: 分析执行（应用推荐技术，避免已知失败模式）
+Phase 1-3: 分析执行（应用推荐技术，避免已知失败模式+已知缺口）
 Phase 4:  red-team-suite + 演绎分析
 Phase 5:  估值 + 质量门控
-Complete: post_report_autopsy.sh → evolution_log → 进化提议 → 用户审批
+Complete: post_report_autopsy.sh (Step 0)
+          → /deep-reflection R1 (首次) → R2 → R3
+          → 进化提议 → 用户审批
 ```
