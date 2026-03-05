@@ -3,6 +3,10 @@
 **Date:** 2026-03-05
 **Sources:** Web searches on valuation multiples, HLT financials, franchise model comparisons, analyst commentary
 
+> **⚠️ 数据校验警告 (2026-03-05)**: 本文件中的P/E、EV/EBITDA、ROIC、杠杆数据来自第三方网站(ainvest/GuruFocus),
+> 与FMP权威数据存在严重偏差。**请以lit_recon_memo.md中的FMP验证版数据为准。**
+> 关键修正: MAR P/E 35.4x(非29x) | MAR ROIC 15.6%(非11.2%) | HLT P/E 49.8x(非43x) | HLT杠杆5.12x(非3.0x)
+
 ---
 
 ## 1. HLT Latest Financials (FY 2025)
