@@ -1,0 +1,57 @@
+schema_version: "2.0"
+ticker: AVGO
+company: "Broadcom Inc."
+framework_version: v18.2
+worktree: "半导体"
+industry: "半导体+科技平台"
+last_updated: "2026-03-06T11:25:00+00:00"
+
+current_phase: 0
+phase_status: data_prefetch_complete
+phases_completed:
+  - phase: "-1"
+    status: complete
+    files: ["knowledge_context.md", "launch_brief.md"]
+  - phase: "-0.5"
+    status: complete
+    files: ["lit_recon_memo.md", "lit_recon_vmware.md", "lit_recon_ai_asic.md", "lit_recon_networking.md", "lit_recon_valuation.md", "lit_recon_traditional.md"]
+  - phase: "scout"
+    status: complete
+    files: ["scout_baseline.md"]
+  - phase: "0"
+    status: in_progress
+    files: ["research/AVGO/fmp_summary.md", "pre_research_brief.md"]
+
+target_chars: 420000
+target_range: "400K-500K"
+hard_floor: 300000
+
+parameters:
+  pw: "6-7"
+  method_route: "混合模式(传统估值+可能性附录)"
+  sgi: "4-5"
+  d1_cyclicality: 0.8
+  industry_route: "半导体(主)+科技平台(辅)"
+  chapter_count: "25-28"
+  dm_target: "500+"
+  valuation_methods: "双层SOTP + Reverse DCF + DCF + EV/GP + 概率加权"
+  roundtable_mode: "Standard(5大师)"
+  quality_scoring: "v18.2完整21维度"
+
+core_contradictions:
+  CQ1: "AI ASIC永续平台 vs CapEx周期"
+  CQ2: "客户集中锁定 vs 脆弱"
+  CQ3: "VMware提价红利 vs 客户流失"
+  CQ4: "估值AI溢价合理 vs 泡沫"
+  CQ5: "Hock Tan核心资产 vs SPOF"
+  CQ6: "传统半导体稳定 vs 衰退"
+
+quick_ref:
+  market_cap: "$1,578B"
+  stock_price: "$332.77"
+  pe_ttm: 62.0
+  ev_ebitda: 40.0
+  fcf_yield: "1.92%"
+  sbc_adjusted_fcf_yield: "~1.5%"
+  total_chars: 0
+  latest_phase_chars: 0
