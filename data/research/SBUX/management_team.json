@@ -1,0 +1,153 @@
+{
+  "ticker": "SBUX",
+  "fetched_at": "2026-03-06",
+  "ceo": {
+    "name": "Brian Niccol",
+    "tenure_years": 1.5,
+    "background": "MBA from University of Chicago Booth. 10 years at P&G in brand management. VP Strategy/CMO/GM at Pizza Hut. CEO of Taco Bell (2015-2018): doubled system sales, opened 2000 new restaurants, only 1 quarter of negative SSS. CEO of Chipotle (2018-2024): revenue nearly doubled, profits increased ~7x, stock +770%. Named Starbucks Chairman & CEO August 2024, started September 2024.",
+    "track_record": "At Chipotle: restored brand after food-safety crisis, restaurant-level margins from 19% to 28.9%, AUV from ~$2M to $3M+, stock +770% vs S&P +99%. At Taco Bell: doubled system sales, expanded internationally. At Starbucks: launched 'Back to Starbucks' plan, Q1 FY2026 revenue $9.9B (+6%), rewards members record 35.5M, but 6 consecutive quarters of negative SSS globally through fiscal Q3 2025.",
+    "compensation": "Starting salary $1.6M, $10M signing bonus, $75M in equity grants vesting over time. Day-one announcement drove SBUX stock +24% (best day since 1992 IPO)."
+  },
+  "cfo": {
+    "name": "Cathy R. Smith",
+    "tenure_years": 0.0,
+    "background": "University of Southern California. ~40-year career in corporate finance. CFO roles: Raytheon (1986-2003), Textron (2003-2005), Kennametal (2005-2006), Centex (2006-2009), GameStop (2009-2010), Walmart International (2010-2014), Express Scripts (2014-2015), Target (2015-2020), Bright Health Group (2020-2023), Nordstrom (2023-2025). At Target: roughly doubled enterprise value during her tenure. Led Centex-Pulte merger (2009). Helped take Nordstrom private. Appointed SBUX CFO March 4, 2025, succeeding Rachel Ruggeri. $5M cash signing bonus (forfeited ~$15M from Nordstrom)."
+  },
+  "key_executives": [
+    {
+      "name": "Mike Grams",
+      "title": "Chief Operating Officer",
+      "note": "Oversees North American coffeehouses, global coffeehouse development, and global supply chain. EVP North America Chief Stores Officer from Jan 2025, expanded to COO role.",
+      "dm": {"type": "H", "source": "about.starbucks.com press releases 2025"}
+    },
+    {
+      "name": "Tressie Lieberman",
+      "title": "Chief Brand Officer",
+      "note": "Michelle Burns (EVP Global Coffee & Sustainability) now reports to her after Oct 2025 restructuring.",
+      "dm": {"type": "H", "source": "about.starbucks.com press release Oct 2025"}
+    },
+    {
+      "name": "Anand Varadarajan",
+      "title": "EVP & Chief Technology Officer",
+      "note": "Joined January 2026, previously at Amazon. Replaced Deb Hall Lefevre who was moved to report to CFO.",
+      "dm": {"type": "H", "source": "about.starbucks.com press release Jan 2026"}
+    },
+    {
+      "name": "Michelle Burns",
+      "title": "EVP Global Coffee & Sustainability",
+      "note": "Now reports to Chief Brand Officer Tressie Lieberman after Oct 2025 restructuring.",
+      "dm": {"type": "H", "source": "about.starbucks.com press release Oct 2025"}
+    },
+    {
+      "name": "Meredith Sandland",
+      "title": "EVP, Chief Development Officer",
+      "note": "Reports to COO Mike Grams.",
+      "dm": {"type": "H", "source": "about.starbucks.com press releases 2025"}
+    },
+    {
+      "name": "Sanjay Shah",
+      "title": "EVP, Chief Supply Chain Officer",
+      "note": "Reports to COO Mike Grams.",
+      "dm": {"type": "H", "source": "about.starbucks.com press releases 2025"}
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2024-08",
+      "description": "Brian Niccol named Chairman & CEO, replacing Laxman Narasimhan (CEO) and Mellody Hobson (Chairman). SBUX stock +24% on announcement.",
+      "dm": {"type": "H", "source": "about.starbucks.com/press/2024"}
+    },
+    {
+      "date": "2025-01",
+      "description": "North America leadership shake-up: Mike Grams appointed EVP North America Chief Stores Officer. Sara Trilling departed after 20+ years (role split in two). Supply chain chief Arthur also departed.",
+      "dm": {"type": "H", "source": "restaurantbusinessonline.com Jan 2025"}
+    },
+    {
+      "date": "2025-03",
+      "description": "Cathy Smith appointed CFO, succeeding Rachel Ruggeri. $5M signing bonus.",
+      "dm": {"type": "H", "source": "SEC filing sbux-20250304, CNBC"}
+    },
+    {
+      "date": "2025-06",
+      "description": "Board elected Dambisa Moyo and Marissa Mayer as new directors, bringing board to 11 members.",
+      "dm": {"type": "H", "source": "investor.starbucks.com June 2025"}
+    },
+    {
+      "date": "2025-10",
+      "description": "Organizational restructuring: Global Coffee & Sustainability and Global Brand teams merged under Chief Brand Officer. CLO Brad Lerman set to leave.",
+      "dm": {"type": "H", "source": "about.starbucks.com press release Oct 2025"}
+    },
+    {
+      "date": "2026-01",
+      "description": "Anand Varadarajan joined as EVP & CTO (from Amazon). Mike Grams expanded to COO role.",
+      "dm": {"type": "H", "source": "about.starbucks.com press release Jan 2026"}
+    }
+  ],
+  "insider_ownership_pct": 2.19,
+  "insider_ownership_detail": {
+    "as_of": "2025-12-28",
+    "range_across_sources": "1.0% - 2.69% (varies by insider definition)",
+    "largest_individual": "Howard D. Schultz — 24.49M shares (2.15%), valued ~$2.18B",
+    "institutional_ownership_pct": 78,
+    "largest_institutional": "Vanguard Group 9.8%",
+    "recent_trend": "Insiders net buyers in past 3 months (as of early 2026)",
+    "dm": {"type": "R", "source": "gurufocus.com, wallstreetzen.com, simplywall.st 2025-2026"}
+  },
+  "compensation_highlights": "2025 proxy: 86% shareholder Say-on-Pay approval. FY2025 returned $2.8B to shareholders via dividends (15th consecutive annual increase, ~17.5% CAGR). Niccol: $1.6M salary + $10M signing bonus + $75M equity grants. Cathy Smith: $5M signing bonus. Rachel Ruggeri (former CFO): $494K salary + $4.37M stock + $1.92M other = ~$6.78M total.",
+  "governance_notes": "11-member board as of June 2025. Brian Niccol serves as Chairman & CEO (combined role). Jorgen Vig Knudstorp is Lead Independent Director (since March 2025, board member since 2017). Board additions in 2025: Dambisa Moyo (global economist, ex-Goldman Sachs, boards of Chevron/Conde Nast) and Marissa Mayer (CEO Sunshine AI, ex-Yahoo/Google CEO, boards of Walmart/AT&T/Hilton). Other directors: Ritch Allison, Andrew Campion, Beth Ford, Neal Mohan, Daniel Servitje, Mike Sievert, Wei Zhang.",
+  "niccol_cmg_comparison": {
+    "chipotle_tenure": "March 2018 - August 2024 (~6.5 years)",
+    "chipotle_stock_return": "+770% (vs S&P 500 +99%)",
+    "chipotle_margin_improvement": "Restaurant-level margins from ~19% to 28.9%",
+    "chipotle_auv": "From ~$2M to $3M+ (targeting $4M)",
+    "chipotle_sss": "Only 1 quarter of negative SSS (COVID quarter) in entire tenure",
+    "chipotle_context": "Turnaround from food-safety crisis. One major concentrated issue to fix.",
+    "starbucks_progress_1yr": {
+      "stock_return_vs_sp500": "-14pp underperformance vs S&P 500 in first year",
+      "sss_trend": "6 consecutive quarters of negative SSS globally through fiscal Q3 2025",
+      "operating_margin": "Fell to 6.9% from 12.8% in fiscal Q2 due to turnaround spending",
+      "net_income_decline": "Q3 FY2025 NI $558M vs $1.05B year-ago",
+      "positive_signs": "Q1 FY2026 revenue $9.9B (+6%), record 35.5M rewards members, 98.2% shift completion rate, double-digit sales growth at college locations",
+      "niccol_claim": "'Back to Starbucks' plan working and ahead of schedule"
+    },
+    "key_difference": "Starbucks much larger/more complex: 86 countries, ~$36B revenue vs Chipotle ~$10B revenue, mostly US-focused. Chipotle had one major issue (food safety); Starbucks has multiple medium-sized issues. Turnaround taking longer than investors anticipated.",
+    "post_niccol_chipotle": "CMG stock -31% in 12 months after Niccol departure",
+    "dm": {"type": "S", "source": "CNBC, Motley Fool, TheStreet, Yahoo Finance 2025"}
+  },
+  "dm_anchors": [
+    {"id": "DM-E-001", "field": "ceo.compensation", "value": "$1.6M salary + $10M bonus + $75M equity", "type": "H", "source": "about.starbucks.com/press/2024, Wikipedia"},
+    {"id": "DM-E-002", "field": "ceo.track_record.chipotle_stock", "value": "+770% vs S&P +99%", "type": "H", "source": "CNBC, Wikipedia, NRN"},
+    {"id": "DM-E-003", "field": "ceo.track_record.chipotle_margins", "value": "19% → 28.9% restaurant-level", "type": "H", "source": "CNBC July 2025"},
+    {"id": "DM-E-004", "field": "cfo.signing_bonus", "value": "$5M (forfeited ~$15M from Nordstrom)", "type": "H", "source": "SEC filing sbux-20250304"},
+    {"id": "DM-E-005", "field": "insider_ownership_pct", "value": "2.19% (Dec 2025)", "type": "R", "source": "gurufocus.com"},
+    {"id": "DM-E-006", "field": "insider_ownership.schultz", "value": "24.49M shares (2.15%), ~$2.18B", "type": "R", "source": "wallstreetzen.com"},
+    {"id": "DM-E-007", "field": "compensation.say_on_pay", "value": "86% approval FY2025", "type": "H", "source": "SEC DEF 14A Jan 2025"},
+    {"id": "DM-E-008", "field": "compensation.dividends_returned", "value": "$2.8B FY2025, 15th consecutive increase, ~17.5% CAGR", "type": "H", "source": "SEC proxy 2025"},
+    {"id": "DM-E-009", "field": "board.size", "value": "11 members as of June 2025", "type": "H", "source": "investor.starbucks.com"},
+    {"id": "DM-E-010", "field": "starbucks_q1fy2026.revenue", "value": "$9.9B (+6%)", "type": "H", "source": "investor.starbucks.com earnings"},
+    {"id": "DM-E-011", "field": "starbucks_q1fy2026.rewards_members", "value": "35.5M (record)", "type": "H", "source": "investor.starbucks.com earnings"},
+    {"id": "DM-E-012", "field": "starbucks_q2fy2025.operating_margin", "value": "6.9% (from 12.8%)", "type": "R", "source": "CNBC Sep 2025"},
+    {"id": "DM-E-013", "field": "ruggeri_total_comp", "value": "~$6.78M ($494K salary + $4.37M stock + $1.92M other)", "type": "H", "source": "salary.com"},
+    {"id": "DM-E-014", "field": "cfo.target_track_record", "value": "Roughly doubled Target enterprise value during tenure (2015-2020)", "type": "S", "source": "Yahoo Finance, Fortune"}
+  ],
+  "sources": [
+    {"url": "https://about.starbucks.com/press/2024/starbucks-names-brian-niccol-as-chairman-and-chief-executive-officer/", "title": "Starbucks names Brian Niccol as Chairman and CEO"},
+    {"url": "https://en.wikipedia.org/wiki/Brian_Niccol", "title": "Brian Niccol - Wikipedia"},
+    {"url": "https://www.cnbc.com/2025/03/04/starbucks-nordstrom-cfo-cathy-smith.html", "title": "Starbucks poaches Nordstrom CFO - CNBC"},
+    {"url": "https://about.starbucks.com/press/2025/message-from-brian-thank-you-rachel-ruggeri-welcome-cathy-smith-cfo/", "title": "Welcome Cathy Smith CFO - Starbucks"},
+    {"url": "https://fortune.com/article/starbucks-new-cfo-turnaround-chipotle/", "title": "How Starbucks new CFO might fix the coffee chain - Fortune"},
+    {"url": "https://about.starbucks.com/press/2025/message-from-brian-executive-leadership-team-changes/", "title": "Executive Leadership Team Changes - Starbucks"},
+    {"url": "https://about.starbucks.com/press/2025/a-new-chapter-in-coffeehouse-leadership/", "title": "A new chapter in Coffeehouse Leadership - Starbucks"},
+    {"url": "https://investor.starbucks.com/news/financial-releases/news-details/2025/Message-from-Brian-Organizational-Changes-to-Accelerate-Back-to-Starbucks-2025-gW9WEPzf17/default.aspx", "title": "Organizational Changes to Accelerate Back to Starbucks"},
+    {"url": "https://investor.starbucks.com/news/financial-releases/news-details/2025/Starbucks-Elects-Dambisa-Moyo-and-Marissa-Mayer-to-its-Board-of-Directors/default.aspx", "title": "Board elects Moyo and Mayer"},
+    {"url": "https://www.sec.gov/Archives/edgar/data/829224/000082922425000016/sbux-20250304.htm", "title": "SEC filing - Cathy Smith appointment"},
+    {"url": "https://www.sec.gov/Archives/edgar/data/829224/000121390025006516/ea0224926-02.htm", "title": "Starbucks 2025 Proxy Statement - SEC"},
+    {"url": "https://www.gurufocus.com/term/insider-ownership/SBUX", "title": "SBUX Insider Ownership - GuruFocus"},
+    {"url": "https://www.wallstreetzen.com/stocks/us/nasdaq/sbux/ownership", "title": "Starbucks Stock Ownership - WallStreetZen"},
+    {"url": "https://www.cnbc.com/2025/07/28/brian-niccols-quick-success-at-chipotle-has-not-made-fixing-starbucks-any-easier.html", "title": "Niccol's quick success at Chipotle has not made fixing Starbucks any easier - CNBC"},
+    {"url": "https://www.cnbc.com/2025/09/09/starbucks-ceo-brian-niccol-starbucks-turnaround-plan-one-year.html", "title": "Starbucks CEO turnaround plan one year - CNBC"},
+    {"url": "https://www.fool.com/investing/2025/10/01/a-year-after-chipotles-old-ceo-was-tapped-to-lead/", "title": "A Year After Chipotle Former CEO Was Tapped - Motley Fool"},
+    {"url": "https://www1.salary.com/starbucks-corp-Executive-Salaries.html", "title": "Starbucks Executive Salaries - Salary.com"},
+    {"url": "https://www.nrn.com/restaurant-operations/brian-niccol-s-r-sum-illustrates-why-he-was-chosen-to-lead-starbucks-turnaround", "title": "Brian Niccol resume - NRN"}
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "ticker": "SBUX",
+  "fetched_at": "2026-03-06",
+  "institutional_summary": {
+    "total_institutions": 3385,
+    "total_shares_held": 1150000000,
+    "ownership_pct": 80.77,
+    "qoq_change_institutions_buyers": 2804,
+    "qoq_change_institutions_sellers": 1838,
+    "qoq_net_share_change": 5200000,
+    "insider_ownership_pct": 2.69,
+    "retail_ownership_pct": 16.54,
+    "institutional_inflows_12m_usd": 65510000000,
+    "institutional_outflows_12m_usd": 31920000000
+  },
+  "top_holders": [
+    {
+      "name": "Vanguard Group Inc.",
+      "shares": 114410675,
+      "value_usd": 9630000000,
+      "ownership_pct": 10.0,
+      "change_pct": null,
+      "new_position": false,
+      "dm": {"id": "DM-F-001", "type": "H", "source": "holdingschannel.com 13F filing 12/31/2025"}
+    },
+    {
+      "name": "Capital Research Global Investors",
+      "shares": null,
+      "value_usd": null,
+      "ownership_pct": 6.8,
+      "change_pct": null,
+      "new_position": false,
+      "dm": {"id": "DM-F-002", "type": "H", "source": "marketbeat.com institutional ownership"}
+    },
+    {
+      "name": "Capital World Investors",
+      "shares": null,
+      "value_usd": null,
+      "ownership_pct": 6.7,
+      "change_pct": null,
+      "new_position": false,
+      "dm": {"id": "DM-F-003", "type": "H", "source": "marketbeat.com institutional ownership"}
+    },
+    {
+      "name": "BlackRock Inc.",
+      "shares": null,
+      "value_usd": null,
+      "ownership_pct": 4.3,
+      "change_pct": null,
+      "new_position": false,
+      "dm": {"id": "DM-F-004", "type": "H", "source": "marketbeat.com institutional ownership"}
+    },
+    {
+      "name": "State Street Corp",
+      "shares": null,
+      "value_usd": null,
+      "ownership_pct": 4.2,
+      "change_pct": null,
+      "new_position": false,
+      "dm": {"id": "DM-F-005", "type": "H", "source": "hedgefollow.com/tipranks.com"}
+    },
+    {
+      "name": "Polen Capital Management LLC",
+      "shares": 5133440,
+      "value_usd": null,
+      "ownership_pct": null,
+      "change_pct": null,
+      "new_position": true,
+      "dm": {"id": "DM-F-006", "type": "H", "source": "marketbeat.com SEC filing, Polen Q2 2025 commentary"}
+    }
+  ],
+  "notable_moves": [
+    {
+      "investor": "Polen Capital Management LLC",
+      "action": "NEW_POSITION_Q1_2025_ADDED_Q2_2025",
+      "shares": 5133440,
+      "quarter": "Q1-Q2 2025",
+      "thesis": "Turnaround bet on new CEO Brian Niccol (ex-Chipotle). Believe store operations became overly complex; Niccol has clear multi-pronged turnaround plan viewed as practical and achievable. Added to position in Q2 2025 at attractive valuations.",
+      "dm": {"id": "DM-F-007", "type": "H", "source": "insidermonkey.com, seekingalpha.com Polen Q2 2025 letter"}
+    },
+    {
+      "investor": "Elliott Investment Management",
+      "action": "BUILT_SIGNIFICANT_POSITION",
+      "shares": null,
+      "quarter": "Mid-2024",
+      "thesis": "Activist position to push for operational changes and unlock value. One of the world's largest activist investors. Catalyst for CEO change to Brian Niccol.",
+      "dm": {"id": "DM-F-008", "type": "H", "source": "hedgefollow.com, insidermonkey.com"}
+    },
+    {
+      "investor": "Lone Pine Capital (Stephen Mandel)",
+      "action": "HELD_POSITION",
+      "shares": null,
+      "quarter": "Q4 2025 (12/31/2025 filing)",
+      "thesis": "SBUX represents 2.95% of portfolio. Long-term quality growth holder.",
+      "dm": {"id": "DM-F-009", "type": "H", "source": "hedgefollow.com super investors"}
+    },
+    {
+      "investor": "Semper Augustus Investments (Christopher Bloomstran)",
+      "action": "HELD_POSITION",
+      "shares": null,
+      "quarter": "Latest 13F",
+      "thesis": "SBUX represents 3.85% of portfolio — largest SBUX weight among tracked super investors.",
+      "dm": {"id": "DM-F-010", "type": "H", "source": "hedgefollow.com super investors"}
+    },
+    {
+      "investor": "Giverny Capital (Francois Rochon)",
+      "action": "HELD_POSITION",
+      "shares": null,
+      "quarter": "Latest 13F",
+      "thesis": "SBUX represents 2.66% of portfolio.",
+      "dm": {"id": "DM-F-011", "type": "H", "source": "hedgefollow.com super investors"}
+    },
+    {
+      "investor": "Viking Global Investors (Ole Andreas Halvorsen)",
+      "action": "HELD_POSITION",
+      "shares": null,
+      "quarter": "Latest 13F",
+      "thesis": "SBUX represents 0.59% of portfolio.",
+      "dm": {"id": "DM-F-012", "type": "H", "source": "hedgefollow.com super investors"}
+    },
+    {
+      "investor": "Voya Investment Management LLC",
+      "action": "INCREASED_2PCT",
+      "shares": null,
+      "quarter": "Q3 2025",
+      "thesis": "Boosted stake by 2.0% per SEC filing.",
+      "dm": {"id": "DM-F-013", "type": "H", "source": "marketbeat.com filing alert 12/20/2025"}
+    },
+    {
+      "investor": "Laffer Tengler Investments Inc.",
+      "action": "PURCHASED_SHARES",
+      "shares": null,
+      "quarter": "Q4 2025 / early 2026",
+      "thesis": "New or increased position per 13F filing.",
+      "dm": {"id": "DM-F-014", "type": "H", "source": "dailypolitical.com 03/04/2026"}
+    },
+    {
+      "investor": "Fisher Asset Management LLC",
+      "action": "ACQUIRED_SHARES",
+      "shares": null,
+      "quarter": "Q4 2025 / early 2026",
+      "thesis": "New or increased position per 13F filing.",
+      "dm": {"id": "DM-F-015", "type": "H", "source": "marketbeat.com filing alert 03/02/2026"}
+    },
+    {
+      "investor": "Bill Ackman / Pershing Square",
+      "action": "NO_CURRENT_POSITION",
+      "shares": 0,
+      "quarter": "N/A — exited Q4 2020-Q1 2021",
+      "thesis": "Historical: entered Oct 2018 at $900M (15.2M shares), exited Jan 2020 with 73% return. Re-entered Apr 2020 at $720M post-COVID. Fully exited by early 2021. No re-entry as of 2026.",
+      "dm": {"id": "DM-F-016", "type": "H", "source": "cnbc.com, thestreet.com, stockcircle.com"}
+    },
+    {
+      "investor": "Berkshire Hathaway (Warren Buffett)",
+      "action": "NEVER_HELD",
+      "shares": 0,
+      "quarter": "N/A",
+      "thesis": "Buffett has never held SBUX despite fitting many of his criteria (strong brand, pricing power, customer loyalty). Berkshire 13F filed 02/17/2026 for 12/31/2025 period shows 42 stocks worth $274.16B — SBUX not among them.",
+      "dm": {"id": "DM-F-017", "type": "H", "source": "kiplinger.com, cnbc.com Berkshire portfolio tracker, stockcircle.com"}
+    }
+  ],
+  "insider_activity": {
+    "net_insider_sentiment": "modestly_bullish",
+    "summary": "Net buying in past 90 days. One open-market purchase by board member, no open-market sales. Six tax-related transactions in Nov 2025 totaling $1.89M (not volitional selling).",
+    "recent_transactions": [
+      {
+        "name": "Jorgen Vig Knudstorp",
+        "role": "Board Member",
+        "action": "BUY",
+        "shares": 11700,
+        "value_usd": 994500,
+        "date": "~Q4 2025 / Q1 2026",
+        "dm": {"id": "DM-F-018", "type": "H", "source": "marketbeat.com insider trades, openinsider.com"}
+      },
+      {
+        "name": "Multiple insiders",
+        "role": "Various",
+        "action": "TAX_PAYMENT",
+        "shares": null,
+        "value_usd": 1891437,
+        "date": "2025-11-18 to 2025-11-19",
+        "dm": {"id": "DM-F-019", "type": "H", "source": "insiderscreener.com, secform4.com"}
+      }
+    ]
+  },
+  "aggregate_signals": {
+    "hedge_fund_net_change_last_quarter": "+5.2M shares (net increase)",
+    "institutional_buyers_vs_sellers_12m": "2804 buyers vs 1838 sellers (60.4% buying)",
+    "super_investor_consensus": "5 tracked super investors hold SBUX (Bloomstran 3.85%, Mandel 2.95%, Rochon 2.66%, Schoenstein 1.07%, Halvorsen 0.59%)",
+    "activist_presence": "Elliott Investment Management built significant position mid-2024, catalyzed CEO change to Brian Niccol",
+    "notable_new_money": "Polen Capital (5.13M shares Q1 2025, added Q2) — high-conviction turnaround bet on Niccol",
+    "notable_absences": "Buffett/Berkshire never held; Ackman/Pershing fully exited 2021, no re-entry"
+  },
+  "dm_anchors": [
+    {"id": "DM-F-001", "type": "H", "claim": "Vanguard holds 114.4M shares ($9.63B) as of 12/31/2025", "source": "holdingschannel.com 13F"},
+    {"id": "DM-F-002", "type": "H", "claim": "Capital Research Global Investors ~6.8% ownership", "source": "marketbeat.com"},
+    {"id": "DM-F-003", "type": "H", "claim": "Capital World Investors ~6.7% ownership", "source": "marketbeat.com"},
+    {"id": "DM-F-004", "type": "H", "claim": "BlackRock ~4.3% ownership", "source": "marketbeat.com"},
+    {"id": "DM-F-005", "type": "H", "claim": "State Street ~4.2% ownership", "source": "hedgefollow.com"},
+    {"id": "DM-F-006", "type": "H", "claim": "Polen Capital purchased 5,133,440 shares Q1 2025", "source": "marketbeat.com SEC filing"},
+    {"id": "DM-F-007", "type": "H", "claim": "Polen thesis: Niccol turnaround, added Q2 2025", "source": "insidermonkey.com, seekingalpha.com"},
+    {"id": "DM-F-008", "type": "H", "claim": "Elliott built significant activist position mid-2024", "source": "hedgefollow.com"},
+    {"id": "DM-F-009", "type": "H", "claim": "Lone Pine holds SBUX at 2.95% of portfolio", "source": "hedgefollow.com"},
+    {"id": "DM-F-010", "type": "H", "claim": "Semper Augustus holds SBUX at 3.85% of portfolio", "source": "hedgefollow.com"},
+    {"id": "DM-F-011", "type": "H", "claim": "Giverny Capital holds SBUX at 2.66% of portfolio", "source": "hedgefollow.com"},
+    {"id": "DM-F-012", "type": "H", "claim": "Viking Global holds SBUX at 0.59% of portfolio", "source": "hedgefollow.com"},
+    {"id": "DM-F-013", "type": "H", "claim": "Voya boosted stake 2.0% in Q3 2025", "source": "marketbeat.com"},
+    {"id": "DM-F-014", "type": "H", "claim": "Laffer Tengler purchased shares Q4 2025/early 2026", "source": "dailypolitical.com"},
+    {"id": "DM-F-015", "type": "H", "claim": "Fisher Asset Management acquired shares Q4 2025/early 2026", "source": "marketbeat.com"},
+    {"id": "DM-F-016", "type": "H", "claim": "Ackman/Pershing fully exited SBUX by Q1 2021, no re-entry", "source": "cnbc.com, stockcircle.com"},
+    {"id": "DM-F-017", "type": "H", "claim": "Berkshire Hathaway has never held SBUX", "source": "kiplinger.com, cnbc.com"},
+    {"id": "DM-F-018", "type": "H", "claim": "Knudstorp bought 11,700 shares at $994,500", "source": "marketbeat.com, openinsider.com"},
+    {"id": "DM-F-019", "type": "H", "claim": "6 insider tax-payment transactions totaling $1.89M Nov 2025", "source": "insiderscreener.com"},
+    {"id": "DM-F-020", "type": "H", "claim": "Institutional ownership 80.77%, 3385 institutions, ~1.15B shares", "source": "wallstreetzen.com, marketbeat.com"},
+    {"id": "DM-F-021", "type": "H", "claim": "Hedge funds net increased holdings +5.2M shares last quarter", "source": "hedgefollow.com, tipranks.com"},
+    {"id": "DM-F-022", "type": "H", "claim": "12M institutional inflows $65.51B vs outflows $31.92B", "source": "marketbeat.com"}
+  ],
+  "sources": [
+    "https://holdingschannel.com/institutional/holders-of-sbux/",
+    "https://hedgefollow.com/stocks/SBUX",
+    "https://www.marketbeat.com/stocks/NASDAQ/SBUX/institutional-ownership/",
+    "https://www.insidermonkey.com/insider-trading/company/starbucks+corp/829224/hedge-funds/",
+    "https://www.tipranks.com/stocks/sbux/hedge-funds",
+    "https://www.gurufocus.com/stock/SBUX/ownership",
+    "https://www.nasdaq.com/market-activity/stocks/sbux/institutional-holdings",
+    "https://www.wallstreetzen.com/stocks/us/nasdaq/sbux/ownership",
+    "https://finance.yahoo.com/quote/SBUX/insider-transactions/",
+    "http://openinsider.com/SBUX",
+    "https://www.marketbeat.com/stocks/NASDAQ/SBUX/insider-trades/",
+    "https://www.insiderscreener.com/en/company/starbucks-corp",
+    "https://www.insidermonkey.com/blog/polen-global-growth-strategy-reestablished-a-position-in-starbucks-sbux-heres-why-1594280/",
+    "https://seekingalpha.com/article/4803243-polen-focus-growth-portfolio-q2-2025-commentary",
+    "https://stockcircle.com/portfolio/bill-ackman/sbux/transactions",
+    "https://www.cnbc.com/2018/10/09/bill-ackmans-pershing-reveals-stake-in-starbucks.html",
+    "https://www.cnbc.com/2020/02/05/bill-ackman-just-made-a-killing-off-of-starbucks-heres-what-hes-betting-on-next.html",
+    "https://www.kiplinger.com/investing/stocks/warren-buffett-stocks-berkshire-hathaway-portfolio",
+    "https://www.cnbc.com/berkshire-hathaway-portfolio/",
+    "https://stockcircle.com/portfolio/warren-buffett"
+  ]
+}

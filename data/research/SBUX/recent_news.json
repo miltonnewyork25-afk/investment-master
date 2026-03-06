@@ -1,0 +1,319 @@
+{
+  "ticker": "SBUX",
+  "fetched_at": "2026-03-06",
+  "key_news": [
+    {
+      "date": "2026-03-10",
+      "headline": "Starbucks Rewards三级会员体系正式上线",
+      "summary": "推出Green/Gold/Reserve三级会员体系，服务3550万活跃美国会员。Green会员1 Star/$1，Gold(500 Stars/年)1.2x赚取速率+永不过期，Reserve(2500 Stars/年)1.7x+独家活动。新增60-Star兑换档位($2折扣)。各档位设置美元上限：100-Star=$6, 200-Star=$10, 300-Star=$16。客户反馈偏负面，认为基础会员Stars earning被削减至少25%。",
+      "sentiment": "mixed",
+      "source": "about.starbucks.com, CNBC, thepointsguy.com"
+    },
+    {
+      "date": "2026-03-03",
+      "headline": "Starbucks 2026春季菜单上线",
+      "summary": "重新打造经典chai latte配方（可自定义甜度/香料），推出Toasted Coconut系列（全年供应），Iced Ube Coconut Macchiato，以及回归的Lavender系列。4月7日将推出Energy Refreshers新品线。",
+      "sentiment": "positive",
+      "source": "about.starbucks.com"
+    },
+    {
+      "date": "2026-03-05",
+      "headline": "Victory Capital Management增持SBUX 54,362股",
+      "summary": "Victory Capital Management在Q3增持SBUX 4.9%，购入54,362股。",
+      "sentiment": "positive",
+      "source": "marketbeat.com"
+    },
+    {
+      "date": "2026-01-29",
+      "headline": "Starbucks 2026投资者日：'Starbucks is Back'",
+      "summary": "CEO Brian Niccol宣布从防守转向进攻。公布长期财务框架至FY2028：5%+合并净收入增长，3%+ comp sales，Non-GAAP EPS $3.35-$4.00。计划全球净新增2000+门店（含美国400家自营），投资$1B重塑门店体验，美国增加25,000+咖啡座。",
+      "sentiment": "positive",
+      "source": "investor.starbucks.com, CNBC, Nasdaq"
+    },
+    {
+      "date": "2026-01-28",
+      "headline": "Q1 FY2026财报：全球comp sales +4%, 收入$9.9B (+6%)",
+      "summary": "全球同店销售增长4%（交易量+3%，客单价+1%）。合并净收入$9.9B同比增长6%。EPS $0.56。北美comp sales +4%。然而EPS低于华尔街预期，门店投资和劳动力成本压缩利润。",
+      "sentiment": "mixed",
+      "source": "investor.starbucks.com"
+    },
+    {
+      "date": "2026-02-13",
+      "headline": "'National Champions'战略推动两年来首次持续客流增长",
+      "summary": "Starbucks报告了两年来首个持续的美国国内客流增长期。Niccol将barista角色从'饮品组装员'提升为'工匠'，在14,000+北美门店推行Coffeehouse Coaches。",
+      "sentiment": "positive",
+      "source": "markets.financialcontent.com"
+    },
+    {
+      "date": "2026-03-01",
+      "headline": "Nashville新企业办公室计划",
+      "summary": "Starbucks将在Nashville开设新企业办公室，部分供应链直接和间接采购团队将迁移。西雅图仍为北美和全球支持中心总部。",
+      "sentiment": "neutral",
+      "source": "king5.com"
+    },
+    {
+      "date": "2026-01-29",
+      "headline": "中国业务合资企业：博裕资本持股60%",
+      "summary": "与博裕资本(Boyu Capital)组建合资公司运营中国零售，博裕获得最高60%股权，Starbucks保留40%+品牌和知识产权所有权。中国零售业务总价值预计超$13B，现有8,000家门店目标扩张至20,000家。",
+      "sentiment": "positive",
+      "source": "investor.starbucks.com, about.starbucks.com"
+    },
+    {
+      "date": "2026-02-10",
+      "headline": "分析师警告SBUX可能削减股息",
+      "summary": "Motley Fool文章指出SBUX股息增速已从十年24.5%年均增长大幅放缓，去年仅增1.6%。尽管转型可能成功，短期股价承压。当前季度股息$0.62/股。",
+      "sentiment": "negative",
+      "source": "fool.com"
+    },
+    {
+      "date": "2026-01-29",
+      "headline": "Coffeehouse Uplift门店改造计划",
+      "summary": "计划2026年底前改造1,000家门店，每店投资约$150,000。引入新休闲椅和重新设计的陶瓷杯。陶瓷杯在洛杉矶和纽约部分门店测试中，计划年内在北美推广。",
+      "sentiment": "positive",
+      "source": "thestreet.com, about.starbucks.com"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-03-10",
+      "event": "Starbucks Rewards三级会员体系正式上线",
+      "expected_impact": "高 — 影响3550万活跃会员，客户反馈偏负面(基础会员Stars earning削减≥25%)，可能短期影响客流和股价"
+    },
+    {
+      "date": "2026-04-07",
+      "event": "Energy Refreshers新品线上市",
+      "expected_impact": "中 — 新品类拓展(能量饮品)，可能吸引新客群"
+    },
+    {
+      "date": "2026-04-28至2026-05-05",
+      "event": "Q2 FY2026财报发布",
+      "expected_impact": "高 — 验证Back to Starbucks转型势头，关注comp sales能否维持≥3%、Rewards改版对交易量影响、OPM改善进度。分析师预期EPS $0.41"
+    },
+    {
+      "date": "2026-H2",
+      "event": "中国合资企业交割",
+      "expected_impact": "高 — 释放中国业务价值($13B+)，改善资产负债表，但失去中国运营控制权"
+    },
+    {
+      "date": "2026年底",
+      "event": "1,000家门店Coffeehouse Uplift改造完成",
+      "expected_impact": "中 — 验证$150K/店投资ROI，恢复'第三空间'体验"
+    },
+    {
+      "date": "FY2028",
+      "event": "长期财务框架目标检验点",
+      "expected_impact": "参考 — Non-GAAP EPS $3.35-$4.00目标，5%+收入增长，13.5%-15% OPM"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "insider": "Jorgen Vig Knudstorp",
+        "type": "Buy",
+        "shares": 11700,
+        "value": 994500,
+        "date": "过去90天内",
+        "source": "gurufocus.com, nasdaq.com"
+      },
+      {
+        "type": "Tax Payment",
+        "count": 6,
+        "total_value": 1891437.13,
+        "date": "2025-11-18至2025-11-19",
+        "source": "nasdaq.com"
+      }
+    ],
+    "net_insider_sentiment": "偏正面 — 过去3个月买入>卖出，Knudstorp(董事)买入$994.5K。未出现显著稀释"
+  },
+  "sec_filings": [
+    {
+      "type": "10-Q",
+      "date": "2026-01-28",
+      "period": "Q1 FY2026",
+      "description": "季度报告，报告全球comp sales +4%，收入$9.9B",
+      "source": "investor.starbucks.com, SEC EDGAR"
+    },
+    {
+      "type": "10-K",
+      "date": "2024-11-20",
+      "period": "FY2024 (截至2024年9月/10月)",
+      "description": "最新年度报告",
+      "source": "SEC EDGAR"
+    },
+    {
+      "type": "8-K",
+      "date": "2026-01-29",
+      "period": "N/A",
+      "description": "投资者日+中国合资+Rewards改版等重大事件",
+      "source": "stocktitan.net, SEC EDGAR"
+    }
+  ],
+  "financial_snapshot": {
+    "stock_price": 97.15,
+    "price_date": "2026-03-04",
+    "ytd_change_pct": 16.4,
+    "analyst_consensus": "Moderate Buy",
+    "analyst_count": 28,
+    "avg_price_target": 101.09,
+    "quarterly_dividend": 0.62,
+    "fy2026_eps_guidance": "$2.15-$2.40",
+    "fy2028_eps_target": "$3.35-$4.00",
+    "total_cash": "~$3.6B",
+    "long_term_debt": "$24.1B",
+    "total_assets": "$32B",
+    "source": "yahoo finance, marketbeat.com, nasdaq.com"
+  },
+  "strategy_update": {
+    "name": "Back to Starbucks",
+    "ceo": "Brian Niccol (since Sep 2024)",
+    "phase": "从防守转向进攻(FY2026起)",
+    "key_pillars": [
+      "菜单简化+创新(chai重做、Energy Refreshers)",
+      "门店体验重塑($1B投资，25,000+新座位)",
+      "Green Apron Service(峰值吞吐<4min)",
+      "Coffeehouse Uplift(1,000店改造，$150K/店)",
+      "Rewards三级体系(3550万会员)",
+      "中国合资(博裕60%，SBUX 40%+品牌)",
+      "全球扩张(2000+ net new stores/年，含美国400家自营)",
+      "National Champions/Coffeehouse Coaches(14,000+门店)"
+    ],
+    "fy2026_guidance": {
+      "global_comps": "≥3%",
+      "net_new_stores": "~600-650",
+      "opm_non_gaap": "13.5%-15%",
+      "eps_non_gaap": "$2.15-$2.40"
+    },
+    "source": "investor.starbucks.com, CNBC"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-NEWS-001",
+      "data": "Q1 FY2026 global comp sales +4% (transactions +3%, ticket +1%)",
+      "type": "H",
+      "source": "investor.starbucks.com Q1 FY2026 earnings release"
+    },
+    {
+      "id": "DM-NEWS-002",
+      "data": "Q1 FY2026 consolidated net revenues $9.9B (+6% YoY)",
+      "type": "H",
+      "source": "investor.starbucks.com Q1 FY2026 earnings release"
+    },
+    {
+      "id": "DM-NEWS-003",
+      "data": "Q1 FY2026 EPS $0.56",
+      "type": "H",
+      "source": "investor.starbucks.com Q1 FY2026 earnings release"
+    },
+    {
+      "id": "DM-NEWS-004",
+      "data": "FY2026 EPS guidance $2.15-$2.40 (Non-GAAP)",
+      "type": "R",
+      "source": "investor.starbucks.com Investor Day 2026"
+    },
+    {
+      "id": "DM-NEWS-005",
+      "data": "FY2028 EPS target $3.35-$4.00",
+      "type": "R",
+      "source": "investor.starbucks.com Investor Day 2026"
+    },
+    {
+      "id": "DM-NEWS-006",
+      "data": "Stock price $97.15 as of 2026-03-04, YTD +16.4%",
+      "type": "H",
+      "source": "yahoo finance, CNBC"
+    },
+    {
+      "id": "DM-NEWS-007",
+      "data": "Analyst consensus: Moderate Buy, avg PT $101.09 (22-28 analysts)",
+      "type": "R",
+      "source": "public.com, marketbeat.com"
+    },
+    {
+      "id": "DM-NEWS-008",
+      "data": "Quarterly dividend $0.62/share",
+      "type": "H",
+      "source": "investor.starbucks.com"
+    },
+    {
+      "id": "DM-NEWS-009",
+      "data": "Starbucks Rewards: 35.5M active US members, 3 tiers (Green/Gold/Reserve), launch March 10",
+      "type": "H",
+      "source": "about.starbucks.com, CNBC"
+    },
+    {
+      "id": "DM-NEWS-010",
+      "data": "China JV with Boyu Capital: Boyu up to 60%, SBUX retains 40% + brand/IP, total value >$13B, 8K stores → target 20K",
+      "type": "H",
+      "source": "investor.starbucks.com"
+    },
+    {
+      "id": "DM-NEWS-011",
+      "data": "Coffeehouse Uplift: 1,000 stores by end 2026, ~$150K/store investment",
+      "type": "R",
+      "source": "thestreet.com, about.starbucks.com"
+    },
+    {
+      "id": "DM-NEWS-012",
+      "data": "FY2026 target: 2,000+ net new stores globally, ~400 US company-operated",
+      "type": "R",
+      "source": "investor.starbucks.com Investor Day 2026"
+    },
+    {
+      "id": "DM-NEWS-013",
+      "data": "Peak throughput <4 minutes average (café + drive-thru) in Q1 FY2026",
+      "type": "H",
+      "source": "investor.starbucks.com, CNBC"
+    },
+    {
+      "id": "DM-NEWS-014",
+      "data": "Insider buy: Jorgen Vig Knudstorp purchased 11,700 shares ($994,500) in past 90 days",
+      "type": "H",
+      "source": "gurufocus.com, nasdaq.com"
+    },
+    {
+      "id": "DM-NEWS-015",
+      "data": "Q2 FY2026 earnings expected April 28 - May 5, 2026, analyst EPS estimate $0.41",
+      "type": "S",
+      "source": "marketbeat.com, nasdaq.com, tipranks.com"
+    },
+    {
+      "id": "DM-NEWS-016",
+      "data": "Total cash ~$3.6B, total assets $32B, long-term debt $24.1B",
+      "type": "H",
+      "source": "SEC filings, yahoo finance"
+    },
+    {
+      "id": "DM-NEWS-017",
+      "data": "Long-term: 5,000 new US coffeehouse opportunities, double international footprint to ~40,000 outside US",
+      "type": "R",
+      "source": "investor.starbucks.com Investor Day 2026"
+    },
+    {
+      "id": "DM-NEWS-018",
+      "data": "Rewards devaluation: base members Stars earning cut ≥25%, Gold members also earn less than before, only Reserve members benefit",
+      "type": "S",
+      "source": "onemileatatime.com, thepointsguy.com, moneywise.com"
+    }
+  ],
+  "sources": [
+    "https://investor.starbucks.com/news/financial-releases/news-details/2026/Starbucks-Reports-Q1-Fiscal-Year-2026-Results/default.aspx",
+    "https://investor.starbucks.com/news/financial-releases/news-details/2026/Starbucks-Is-Back-Turning-Momentum-Into-Long-Term-Sustainable-Growth/default.aspx",
+    "https://about.starbucks.com/press/2026/starbucks-unveils-reimagined-loyalty-program-to-deliver-more-meaningful-value-personalization-and-engagement-to-members/",
+    "https://www.cnbc.com/2026/01/29/starbucks-to-reintroduce-loyalty-program-tiers.html",
+    "https://onemileatatime.com/news/starbucks-rewards-changes-devaluation-elite-status/",
+    "https://thepointsguy.com/news/starbucks-rewards-introduces-elite-status-tiers/",
+    "https://www.thestreet.com/restaurants/starbucks-is-rolling-out-two-big-changes-to-1000-stores-in-2026-chairs-mugs",
+    "https://www.fool.com/investing/2026/02/10/predict-iconic-stock-slash-dividend-2026-sbux/",
+    "https://www.marketbeat.com/instant-alerts/filing-victory-capital-management-inc-buys-54362-shares-of-starbucks-corporation-sbux-2026-03-05/",
+    "https://www.nasdaq.com/articles/what-will-drive-starbucks-sbux-stock-2026-3-important-factors-investors-must-watch",
+    "https://www.king5.com/article/money/business/starbucks-opening-corporate-office-nashville-tennessee/281-c73f3c97-9565-4cb8-83d8-62bc8697341e",
+    "https://www.cnbc.com/2026/01/29/starbucks-investor-day-updates-brian-niccol-turnaround.html",
+    "https://markets.financialcontent.com/stocks/article/marketminute-2026-2-13-the-brew-of-renewal-starbucks-reclaims-the-third-place-with-its-national-champions-strategy",
+    "https://about.starbucks.com/stories/2026/starbucks-spring-menu-arrives-with-new-chai-ube-and-coconut-drinks-plus-the-return-of-lavender-favorites/",
+    "https://www.marketbeat.com/stocks/NASDAQ/SBUX/earnings/",
+    "https://www.nasdaq.com/market-activity/stocks/sbux/insider-activity",
+    "https://www.gurufocus.com/stock/SBUX/insider",
+    "https://moneywise.com/news/starbucks-to-launch-new-three-tiered-rewards-program-says-it-will-deliver-more-meaningful-value-but-are-the-perks-enough-to-justify-your-spend",
+    "https://abcnews.com/GMA/Food/new-starbucks-reward-program-benefits-taking-effect-march/story?id=129672100"
+  ]
+}

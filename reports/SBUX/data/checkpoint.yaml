@@ -4,204 +4,111 @@ company: "Starbucks Corporation"
 framework_version: v18.0
 worktree: "消费品"
 industry: "consumer"
-report_version: "v3.0"
-last_updated: "2026-03-04T15:50:00+08:00"
+report_version: "v4.0"
+last_updated: "2026-03-06T10:50:00+08:00"
 
-current_phase: complete
-phase_status: assembled
-note: "Complete组装完成 542K/30ch/446DM/43Mermaid。待main提交。"
+current_phase: "0"
+phase_status: "data_prefetch"
+note: "v4.0完全重做。目标300K+字符/4.5+分。修复v3.0的E1/E4低分+重复+浅结论。"
 
-# Phase 1 completion
-phase_1_completed:
-  completion_date: "2026-03-05T18:30:00+08:00"
-  total_chars: 100100
-  chapters_completed: 12
-  dm_anchors: 106
-  quality_estimate: "4.2+/5.0"
-  chapters: "Ch1-12 (核心8ch + v28.0模块4ch)"
-
-# Phase 2 completion
-phase_2_completed:
-  completion_date: "2026-03-05T22:00:00+08:00"
-  total_chars: 142800
-  target_chars: 90000
-  chapters_completed: 7
-  chapters: "Ch13-19 (4文件: P2_Ch13 + P2_Ch14_15 + P2_Ch16_17 + P2_Ch18_19)"
-  dm_anchors: 158
-  dm_range: "P2-001 ~ P2-126 (含重叠待Complete修复)"
-  quality_estimate: "4.0+/5.0"
-  evo_fixes_implemented:
-    - "EVO-SBUX-001: 净债务三口径 (Ch14)"
-    - "EVO-SBUX-002: WACC前瞻性三情景 (Ch18)"
-    - "EVO-SBUX-004: BME三路径联合概率 (Ch17)"
-  key_findings:
-    - "净债务三口径: 金融$22.1B / 含租赁$30.1B / 过渡性$23-25B → 每股差异$7.0"
-    - "ROIC崩溃100%由Margin驱动(非Turnover), 资本配置4.25/10"
-    - "CSSPD v3.0纯度5/10(vs v2.0的9/10), 有机comp仅+0.4%"
-    - "概率加权WACC 7.52%(vs v2.0的6.3%), WACC每100bps≈$10-15/股"
-    - "概率加权估值$71.5(溢价35%), 12个月目标$90.78(下行6.4%)"
-    - "共识FY2028E EPS $3.63 vs 第一性原理$3.21(高估12%)"
-  cq_updates:
-    CQ1: "60→65(BME量化完成)"
-    CQ4: "70→75(回购$10B时机成本+分红不可持续)"
-
-# v3.0 targets
-target_chars: 418000
-target_range: "400K-440K"
-hard_floor: 350000
-target_chapters: 30
-target_appendices: 7
-target_mermaid: 75
-target_dm: 600
+# v4.0 targets (用户要求300KB+)
+target_chars: 350000
+target_range: "300K-400K"
+hard_floor: 280000
+target_chapters: 28
+target_appendices: 5
+target_mermaid: 60
+target_dm: 500
 target_ci: 6
-target_scorecard: 90
+target_scorecard: 92
+target_quality: "4.5+/5.0"
 
-# Phase 3 completion
-phase_3_completed:
-  completion_date: "2026-03-05T23:30:00+08:00"
-  total_chars: 138200
-  target_chars: 73000
-  chapters_completed: 6
-  chapters: "Ch20-25 (3文件: P3_Ch20_21 + P3_Ch22_23 + P3_Ch24_25)"
-  dm_anchors: 116
-  dm_range: "P3-001 ~ P3-090"
-  key_findings:
-    - "A-Score 6.78/10 (消费品牌调整权重, 品牌力8.0最强, 财务堡垒3.0最弱)"
-    - "PtW五层战略评分 (Niccol执行力量化)"
-    - "Forward DCF四情景: 牛$109/基准$72/熊$48/极端$33"
-    - "概率加权每股$71.5 vs 当前$97 → 溢价35%"
-    - "投资温度计6.8/10(偏热), 初判审慎关注"
-    - "Nomad稳健比率验证: 分红不可持续+杠杆偏高"
+# v4.0 improvement plan (from v3.0 deep_audit)
+v4_improvements:
+  structural:
+    - "消除OPM 6处重复→1个核心章节+交叉引用"
+    - "合并Ch10/Ch25稳健比率为单一章节"
+    - "净债务口径定义1次，后续仅引用"
+    - "每个结论必须有完整推导链(环环相扣)"
+  content_gaps:
+    - "E1特许经济学: 美国特许化可行性+监管+工会+经济学对比"
+    - "E4数字化: Deep Brew ROI实证+删除PayPal不当类比"
+    - "M3渠道: Nestle CPG独立拆分+2033续约风险"
+    - "M6增长: 门店密度天花板定量分析"
+    - "CEO沉默域: v18.0 QG-01.5系统映射"
+  quality:
+    - "圆桌深化: Standard模式5大师×3轮螺旋(投资大师圆桌v2.0)"
+    - "模块门控目标: 75%→88%+"
+    - "叙事质量: 3.5→4.5(消除重复+深化结论)"
 
-# Routing (复用v2.0)
+# Routing
 pw_score: 5.4
 pw_route: mixed_mode
 sgi_score: 6.5
 a_score_estimate: "6.5-7.0"
 
-# v3.0 chapter architecture
-chapter_plan:
-  part_i: "Ch1-8 身份与生态 (~100K)"
-  part_i_supplement: "Ch9-12 v28.0模块 (~35K)"
-  part_ii: "Ch13-19 财务纵深 (~90K)"
-  part_iii: "Ch20-25 估值与情景 (~73K)"
-  part_iv: "Ch26-28 红队对抗 (~45K)"
-  part_v: "Ch29-30 综合裁决 (~30K)"
-  appendices: "A-G (~45K)"
-
-# v2.0 baseline
-v2_baseline:
-  chars: 278000
-  chapters: 21
-  mermaid: 20
-  dm: 466
-  ci: 3
-  scorecard: 71
-  rating: "3.8/5"
-  评级: "审慎关注(偏中性)"
-  期望回报: "-14%"
-  综合加权价: 83.2
-
-# EVO fixes in v3.0
-evo_fixes:
-  - "EVO-SBUX-001: 净债务三口径Phase 2前置 (Ch14)"
-  - "EVO-SBUX-002: WACC前瞻性分析 (Ch18)"
-  - "EVO-SBUX-003: 悲观偏差扫描矩阵 (Ch27)"
-  - "EVO-SBUX-004: BME三路径联合概率量化 (Ch17)"
-  - "EVO-RCL-001: 悲观偏差检测合并至Ch27"
-  - "v28.0五模块: Module A/B/C/D/E (Ch9-12, Ch25)"
-
-# CQ registry (复用v2.0, 置信度微调)
+# CQ registry (v4.0 updated)
 cq_registry:
   - id: CQ1
     question: "78x P/E隐含什么？信念互斥是否成立？"
     type: structural
     confidence: 65
-    confidence_history: "P0.5:45 → P2:60 → v3.0-P2:65"
+    v4_note: "需深化：量化三路径(A/B/C)的交叉点和互斥条件"
   - id: CQ2
     question: "Niccol = CMG 2.0还是Schultz 3.0？"
     type: cyclical
     confidence: 60
-    confidence_history: "P0.5:50 → P2:60 → v3.0-start:60"
+    v4_note: "需深化：CEO沉默域分析+复刻率的置信区间"
   - id: CQ3
     question: "中国$4B JV是战略撤退还是价值解锁？"
     type: structural
     confidence: 65
+    v4_note: "补充：国际市场(非中国)独立分析"
   - id: CQ4
     question: "负$8.4B权益 + ROIC<WACC = 回购摧毁价值？"
     type: institutional
     confidence: 75
-    confidence_history: "P0.5:60 → P2-Ch10:70 → P2-Ch15:75"
+    v4_note: "v3.0已充分分析，保持深度"
   - id: CQ5
     question: "35.5M Rewards会员 = 增长引擎还是天花板？"
     type: cyclical
     confidence: 55
+    v4_note: "补充：会员因果性分析(选择效应vs会员效应)"
 
-# Quick ref (updated 2026-03-04)
+# v3.0 baseline
+v3_baseline:
+  chars: 120434
+  chars_raw_staging: 542000
+  chapters: 30
+  mermaid: 43
+  dm: 446
+  ci: 4
+  scorecard: 93
+  rating: "4.0/5"
+  评级: "审慎关注(-8%~-12%)"
+  module_gate: "19.5/26 (75%)"
+  weak_modules: "E1(0.5), E4(0.5), M3(1.0), M6(1.0)"
+
+# Quick ref
 quick_ref:
   price: 96.68
   market_cap: 110.1B
   pe_ttm: 80.6x
   pe_forward: 32.7x
-  pe_normalized: 46.1x
   eps_fy25: 1.63
-  eps_fy25_normalized: 2.10
   eps_fy26e: 2.30
   eps_fy28e: 3.63
   opm_fy25: 9.6%
   equity: -8.4B
   net_debt_q1_26: 30.1B
   fcf_fy25: 2.44B
-  div_fy25: 2.77B
-  wacc_conservative: 6.3%
   rewards_members: 35.5M
   stores_total: ~38000
-  stores_china: 8011
-  sma_20: 96.50
-  sma_50: 92.30
-  sma_200: 87.63
-  rsi: 49.4
-  beta: 0.928
-
-# CMG mirror benchmark
-cmg_benchmark:
-  chars: 402000
-  chapters: 23+5
-  dm: 659
-  mermaid: 54+
-  a_score: 6.88
-  rating: "中性关注(偏审慎)"
-  期望回报: "-7%"
 
 # Session tracking
 sessions:
-  - session: S1
-    date: "2026-03-04"
-    phase: "-1→0.75"
-    status: completed
-    notes: "Setup + data refresh + CQ confirmation + preflight"
-  - session: S2
-    date: "2026-03-04/05"
-    phase: "1"
-    status: completed
-    notes: "Phase 1完成 100.1K/12ch"
-  - session: S3
-    date: "2026-03-05"
-    phase: "2"
-    status: completed
-    notes: "Phase 2完成 142.8K/7ch, EVO-001/002/004实施, 158 DM锚点"
-  - session: S4
-    date: "2026-03-05"
-    phase: "3"
-    status: completed
-    notes: "Phase 3完成 138.2K/6ch, 116 DM锚点, A-Score+PtW+DCF+温度计"
-  - session: S5
-    date: "2026-03-05"
-    phase: "4+5"
-    status: completed
-    notes: "Phase 4+5完成 114.1K/5ch, 133 DM锚点, 红队RT1-7+CQ closure+KS注册"
-  - session: S6
-    date: "2026-03-05"
-    phase: "complete"
-    status: assembled
-    notes: "Complete组装 542K/30ch/446DM/43Mermaid, 质量门控通过"
+  - session: "v4.0-S1"
+    date: "2026-03-06"
+    phase: "-1→0"
+    status: in_progress
+    notes: "v4.0启动。tier3_launch完成。Phase 0数据预取中。"

@@ -1,0 +1,189 @@
+{
+  "ticker": "SBUX",
+  "fetched_at": "2026-03-06",
+  "agent": "Agent-G (options & short interest)",
+  "short_interest": {
+    "shares_short": 44801419,
+    "shares_short_date": "2025-07-31",
+    "shares_short_change": -775958,
+    "shares_short_change_date": "2025-07-15",
+    "short_pct_float": null,
+    "short_pct_float_note": "Exact 2026 figure not available in free search results; Fintel leaderboard updated 2026-02-21 but SBUX-specific % not disclosed in snippet",
+    "days_to_cover": 3.46,
+    "days_to_cover_date": "2025-07-31",
+    "avg_daily_volume": 12932402,
+    "vs_sector_avg": null,
+    "vs_sector_avg_note": "Not available from search results; requires Fintel/MarketBeat subscription",
+    "trend": "stable-to-declining based on -775K share reduction in mid-2025",
+    "short_squeeze_score": null,
+    "short_squeeze_score_note": "Fintel provides a 0-100 squeeze score but value behind paywall; SBUX was NOT on Schaeffer's Dec 2025 top-25 squeeze list"
+  },
+  "options_sentiment": {
+    "put_call_ratio_oi": 0.82,
+    "put_call_ratio_oi_source": "Fintel (open interest based, current as of search date)",
+    "put_call_ratio_volume_30d": 1.2524,
+    "put_call_ratio_volume_30d_date": "2025-08-06",
+    "put_call_ratio_oi_180d": 0.883,
+    "put_call_ratio_oi_180d_date": "2025-07-01",
+    "implied_volatility": 0.4225,
+    "implied_volatility_date": "2025-06",
+    "iv_30d_mean": 0.2746,
+    "iv_30d_mean_date": "2025-08-29",
+    "iv_rank": 19.97,
+    "iv_rank_note": "IV Rank 19.97 = current IV near 1-year low (bottom 20th percentile), options relatively cheap",
+    "implied_move": {
+      "dollars": 1.305,
+      "percent": 1.5006,
+      "date": "2025-06"
+    },
+    "unusual_activity": [
+      {
+        "date": "2026-01",
+        "description": "One option with Vol/OI ratio 32.90, ranked 20th highest that day, volume 5100",
+        "signal": "elevated single-contract activity"
+      },
+      {
+        "date": "2025-12",
+        "description": "24% bullish vs 48% bearish among large traders; 6 puts ($400,642) and 19 calls ($961,040)",
+        "signal": "mixed, call-heavy dollar flow but bearish sentiment tilt"
+      },
+      {
+        "date": "2025-10",
+        "description": "50% bullish vs 33% bearish; 9 puts ($734,494) and 9 calls ($562,267)",
+        "signal": "balanced count, put-heavy dollar flow"
+      },
+      {
+        "date": "2025-09",
+        "description": "69% bullish vs 30% bearish; 1 put ($25K) and 12 calls ($564,982); whale target range $60-$90",
+        "signal": "strongly bullish, call-dominated"
+      }
+    ]
+  },
+  "stock_context": {
+    "price": 96.76,
+    "price_date": "2026-03-05",
+    "price_change_pct": -1.29,
+    "dividend_per_share_annual": 2.48,
+    "forward_yield_pct": 2.5,
+    "price_to_ocf": 26.17,
+    "price_to_ocf_date": "2026-03-02"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-G-001",
+      "field": "shares_short",
+      "value": 44801419,
+      "type": "H",
+      "source": "TheOnlineInvestor via WebSearch",
+      "date": "2025-07-31",
+      "confidence": "medium — 8 months stale"
+    },
+    {
+      "id": "DM-G-002",
+      "field": "days_to_cover",
+      "value": 3.46,
+      "type": "H",
+      "source": "TheOnlineInvestor via WebSearch",
+      "date": "2025-07-31",
+      "confidence": "medium — 8 months stale"
+    },
+    {
+      "id": "DM-G-003",
+      "field": "put_call_ratio_oi",
+      "value": 0.82,
+      "type": "R",
+      "source": "Fintel via WebSearch",
+      "date": "2026-03-06",
+      "confidence": "high — real-time OI ratio"
+    },
+    {
+      "id": "DM-G-004",
+      "field": "put_call_ratio_volume_30d",
+      "value": 1.2524,
+      "type": "H",
+      "source": "AlphaQuery via WebSearch",
+      "date": "2025-08-06",
+      "confidence": "medium — 7 months stale"
+    },
+    {
+      "id": "DM-G-005",
+      "field": "implied_volatility",
+      "value": 0.4225,
+      "type": "H",
+      "source": "OptionCharts via WebSearch",
+      "date": "2025-06",
+      "confidence": "low — 9 months stale"
+    },
+    {
+      "id": "DM-G-006",
+      "field": "iv_30d_mean",
+      "value": 0.2746,
+      "type": "H",
+      "source": "AlphaQuery via WebSearch",
+      "date": "2025-08-29",
+      "confidence": "medium — 6 months stale"
+    },
+    {
+      "id": "DM-G-007",
+      "field": "iv_rank",
+      "value": 19.97,
+      "type": "H",
+      "source": "OptionCharts via WebSearch",
+      "date": "2025-06",
+      "confidence": "low — 9 months stale"
+    },
+    {
+      "id": "DM-G-008",
+      "field": "price",
+      "value": 96.76,
+      "type": "R",
+      "source": "Multiple sources via WebSearch",
+      "date": "2026-03-05",
+      "confidence": "high — recent close"
+    },
+    {
+      "id": "DM-G-009",
+      "field": "unusual_activity_jan_2026",
+      "value": "Vol/OI=32.90, vol=5100",
+      "type": "R",
+      "source": "Benzinga via WebSearch",
+      "date": "2026-01",
+      "confidence": "high — recent data"
+    },
+    {
+      "id": "DM-G-010",
+      "field": "price_to_ocf",
+      "value": 26.17,
+      "type": "R",
+      "source": "GuruFocus via WebSearch",
+      "date": "2026-03-02",
+      "confidence": "high — recent"
+    }
+  ],
+  "sources": [
+    "https://fintel.io/ss/us/sbux",
+    "https://www.marketbeat.com/stocks/NASDAQ/SBUX/short-interest/",
+    "https://shortsqueeze.com/shortinterest/stock/SBUX.htm",
+    "https://www.theonlineinvestor.com/short-interest/sbux/",
+    "https://www.barchart.com/stocks/quotes/SBUX/put-call-ratios",
+    "https://fintel.io/sopt/us/sbux",
+    "https://www.alphaquery.com/stock/SBUX/volatility-option-statistics/30-day/put-call-ratio-volume",
+    "https://www.alphaquery.com/stock/SBUX/volatility-option-statistics/180-day/put-call-ratio-oi",
+    "https://www.benzinga.com/insights/options/25/10/48081017/looking-at-starbuckss-recent-unusual-options-activity",
+    "https://www.benzinga.com/insights/options/25/12/49144822/behind-the-scenes-of-starbuckss-latest-options-trends",
+    "https://marketchameleon.com/Overview/SBUX/IV/",
+    "https://www.alphaquery.com/stock/SBUX/volatility-option-statistics",
+    "https://optioncharts.io/options/SBUX",
+    "https://www.barchart.com/stocks/quotes/SBUX/options-flow",
+    "https://fintel.io/sof/us/sbux",
+    "https://www.gurufocus.com/term/price-to-operating-cash-flow/SBUX",
+    "https://www.schaeffersresearch.com/content/analysis/2025/12/31/25-stocks-with-short-squeeze-potential"
+  ],
+  "data_gaps": [
+    "short_pct_float: exact 2026 figure unavailable (paywall); last known shares_short is from Jul 2025",
+    "vs_sector_avg: not available without subscription data",
+    "short_squeeze_score: Fintel score behind paywall",
+    "March 2026 specific options flow: real-time flow data requires subscription to Barchart/Fintel/TrendSpider",
+    "IV and HV data mostly from mid-2025; current 2026 values behind paywalls"
+  ]
+}

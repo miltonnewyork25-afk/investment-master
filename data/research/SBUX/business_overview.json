@@ -1,0 +1,297 @@
+{
+  "ticker": "SBUX",
+  "fetched_at": "2026-03-06",
+  "segments": [
+    {
+      "name": "North America",
+      "revenue_B": 27.12,
+      "pct_of_total": 72.95,
+      "growth_rate_yoy": 3.0,
+      "note": "Q4 FY25 North America net revenues +3% to $6.9B; full year $27.12B",
+      "dm": { "type": "H", "source": "investor.starbucks.com FY2025 results + Bullfincher" }
+    },
+    {
+      "name": "International",
+      "revenue_B": 6.90,
+      "pct_of_total": 18.55,
+      "growth_rate_yoy": 6.78,
+      "note": "Highest growth segment; Q4 +9% to $2.1B driven by 5% net new store growth + 3% comp",
+      "dm": { "type": "H", "source": "investor.starbucks.com FY2025 results + Bullfincher" }
+    },
+    {
+      "name": "Channel Development",
+      "revenue_B": null,
+      "pct_of_total": null,
+      "growth_rate_yoy": 17.0,
+      "note": "Q4 FY25 Channel Dev revenue +17% to $542.6M, driven by Global Coffee Alliance growth. Full-year figure not separately disclosed in search results",
+      "dm": { "type": "H", "source": "investor.starbucks.com Q4 FY2025 press release" }
+    }
+  ],
+  "segments_by_product": [
+    {
+      "name": "Beverages",
+      "revenue_B": 22.54,
+      "pct_of_total": 60.62,
+      "growth_rate_yoy": 3.0,
+      "dm": { "type": "H", "source": "Statista / Bullfincher FY2025" }
+    },
+    {
+      "name": "Food",
+      "revenue_B": 7.05,
+      "pct_of_total": 18.96,
+      "growth_rate_yoy": 4.46,
+      "note": "Highest growth product segment",
+      "dm": { "type": "H", "source": "Statista / Bullfincher FY2025" }
+    },
+    {
+      "name": "Other Products",
+      "revenue_B": 7.59,
+      "pct_of_total": 20.42,
+      "growth_rate_yoy": null,
+      "dm": { "type": "H", "source": "Statista / Bullfincher FY2025" }
+    }
+  ],
+  "total_revenue": {
+    "FY2025": 37.18,
+    "growth_yoy_pct": 2.78,
+    "net_income_B": 1.86,
+    "note": "FY ended September 28, 2025. Net income declined YoY",
+    "dm": { "type": "H", "source": "investor.starbucks.com FY2025 results" }
+  },
+  "geographic_breakdown": [
+    {
+      "region": "United States",
+      "revenue_B": 27.12,
+      "pct_of_total": 72.95,
+      "stores": 16864,
+      "dm": { "type": "H", "source": "Bullfincher + investor.starbucks.com" }
+    },
+    {
+      "region": "China",
+      "revenue_B": 3.16,
+      "pct_of_total": 8.50,
+      "stores": 8011,
+      "growth_yoy_pct": 5.07,
+      "note": "Revenue volatility; peaked ~$3.7B then declined to ~$3B before recovering",
+      "dm": { "type": "H", "source": "Bullfincher + investor.starbucks.com" }
+    },
+    {
+      "region": "International (ex-China)",
+      "revenue_B": 6.90,
+      "pct_of_total": 18.55,
+      "growth_yoy_pct": 6.78,
+      "dm": { "type": "H", "source": "Bullfincher + investor.starbucks.com" }
+    }
+  ],
+  "store_count": {
+    "global_total": 40990,
+    "us": 16864,
+    "china": 8011,
+    "note": "US + China = 61% of global portfolio. 107 net closures in Q4 FY25 (627 stores closed in restructuring, >90% in North America)",
+    "target_2030": 55000,
+    "dm": { "type": "H", "source": "investor.starbucks.com Q4 FY25 + Statista" }
+  },
+  "supply_chain": {
+    "key_suppliers": [
+      "380,000+ coffee farmers across 30+ countries (Latin America, Africa, Asia-Pacific)",
+      "DHL Supply Chain (logistics/distribution)",
+      "Kuehne+Nagel (logistics)",
+      "Lineage Logistics (temperature-controlled storage)",
+      "Nestle (Global Coffee Alliance - CPG distribution)",
+      "Various dairy/plant-based milk suppliers (fluid milk, oat milk, almond milk)"
+    ],
+    "key_customers": [
+      "Direct consumers (company-operated stores)",
+      "Licensed store operators",
+      "Nestle (CPG channel via Global Coffee Alliance)",
+      "Grocery/retail channels"
+    ],
+    "concentration_risk": "Low on supply side (diversified across 30+ countries, 380K+ farmers). Coffee sourced from Latin America (Colombia, Brazil, Guatemala), Africa, Asia-Pacific. 99% verified through C.A.F.E. Practices. Owns Hacienda Alsacia farm in Costa Rica for R&D. 738 Tier 1 supplier connections, 198 subsidiaries.",
+    "dm": { "type": "R", "source": "dynamicinventory.net, dragonsourcing.com, thomasnet.com, data.ark.ai" }
+  },
+  "tam": {
+    "global_coffee_market_2024_B": 269.27,
+    "global_coffee_market_2030_forecast_B": 369.46,
+    "cagr_pct": 5.3,
+    "specialty_coffee_2030_B": 51.4,
+    "specialty_coffee_cagr_pct": 11.3,
+    "us_coffee_snack_shop_2025_B": 73.0,
+    "us_coffee_snack_shop_2030_B": 75.0,
+    "us_coffee_snack_shop_cagr_pct": 0.6,
+    "china_coffee_market_2025_B": 4.24,
+    "china_coffee_market_2031_B": 5.94,
+    "china_coffee_cagr_pct": 5.79,
+    "note": "Wide range across sources ($95B-$690B by 2030) due to scope differences. Grand View $690B includes full ecosystem; narrower definitions yield $161-$370B. US market maturing (~0.6% CAGR). China and Asia-Pacific fastest-growing regions.",
+    "dm": { "type": "R", "source": "Grand View Research, Everyday People Coffee & Tea, Mordor Intelligence, Research and Markets, coffeeteaimagazine.com" }
+  },
+  "industry_specific": {
+    "franchise_economics": {
+      "model": "Primarily company-operated + licensed (NOT traditional franchise in US/Canada)",
+      "company_operated_stores": 19592,
+      "licensed_stores": 18253,
+      "company_operated_revenue_B": 29.46,
+      "licensed_revenue_B": 4.51,
+      "company_operated_pct_of_revenue": 80.0,
+      "unit_economics": {
+        "us_cash_ebitda_margin_pct": 25,
+        "us_pretax_roic_pct": 50,
+        "us_payback_years": 2.0,
+        "china_payback_years": 1.4,
+        "avg_revenue_per_store_M": 1.2
+      },
+      "licensed_store_investment_range": "$228,620 - $2,888,700",
+      "licensing_fee": 315000,
+      "royalty_rate_pct": 6.0,
+      "licensed_store_profit_range": "$50,000 - $200,000 annually",
+      "note": "Howard Schultz avoided franchising for brand control. Licensing used for non-traditional venues and international markets.",
+      "dm": { "type": "R", "source": "fourweekmba.com, sharpsheets.io, wolfoffranchises.com, steadycompounding.com" }
+    },
+    "cpg_channel": {
+      "alliance_partner": "Nestle",
+      "deal_year": 2018,
+      "upfront_payment_B": 7.15,
+      "pre_deal_annual_cpg_revenue_B": 2.0,
+      "post_deal_growth": "15% YoY growth reported",
+      "nestle_incremental_sales_2022_B": 1.6,
+      "markets_reached": 80,
+      "cups_brewed_at_home_B": 14,
+      "channel_dev_q4_fy25_revenue_M": 542.6,
+      "channel_dev_q4_fy25_growth_pct": 17.0,
+      "products": "Starbucks capsules (Nespresso, Dolce Gusto), whole bean, roast & ground, instant, K-Cup pods, creamers, RTD beverages",
+      "brands_licensed": ["Starbucks", "Seattle's Best Coffee", "Starbucks Reserve", "Teavana", "Starbucks VIA", "Torrefazione Italia"],
+      "dm": { "type": "H", "source": "investor.starbucks.com, fool.com, nestle.com, retailwire.com" }
+    },
+    "china_competitive": {
+      "starbucks_china_stores": 8011,
+      "starbucks_china_revenue_B": 3.16,
+      "starbucks_china_market_share_2024_pct": 14.0,
+      "starbucks_china_market_share_2019_pct": 34.0,
+      "luckin_stores_q2_2025": 26206,
+      "luckin_stores_q3_2025": 29214,
+      "luckin_q3_2025_revenue_B": 1.55,
+      "luckin_quarterly_growth_yoy_pct": 48.0,
+      "luckin_to_starbucks_store_ratio": "3.5:1",
+      "starbucks_china_stake_sale": {
+        "buyer": "Boyu Capital (Hong Kong)",
+        "stake_pct": 60,
+        "deal_value_B": 4.0,
+        "target_stores_under_new_arrangement": 20000
+      },
+      "other_competitors": ["Cotti Coffee (7,000 stores, 28 countries)", "Manner Coffee"],
+      "note": "Starbucks market share in China plunged from 34% (2019) to 14% (2024) per Euromonitor. Luckin surpassed Starbucks in both store count and revenue.",
+      "dm": { "type": "H", "source": "Yahoo Finance, NRN, CNBC, Fortune, Euromonitor via Reuters, Mordor Intelligence" }
+    }
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-D-BIZ-01",
+      "claim": "SBUX FY2025 total revenue $37.18B, +2.78% YoY",
+      "type": "H",
+      "source": "investor.starbucks.com FY2025 press release"
+    },
+    {
+      "id": "DM-D-BIZ-02",
+      "claim": "US revenue $27.12B (72.95%), China $3.16B (8.50%), International $6.90B (18.55%)",
+      "type": "H",
+      "source": "Bullfincher + investor.starbucks.com"
+    },
+    {
+      "id": "DM-D-BIZ-03",
+      "claim": "Beverages 60.62%, Food 18.96%, Other 20.42% of revenue",
+      "type": "H",
+      "source": "Statista / Bullfincher FY2025"
+    },
+    {
+      "id": "DM-D-BIZ-04",
+      "claim": "40,990 global stores; US 16,864, China 8,011",
+      "type": "H",
+      "source": "investor.starbucks.com Q4 FY2025"
+    },
+    {
+      "id": "DM-D-BIZ-05",
+      "claim": "Net income $1.86B FY2025 (declined YoY)",
+      "type": "H",
+      "source": "MacroTrends / investor.starbucks.com"
+    },
+    {
+      "id": "DM-D-BIZ-06",
+      "claim": "Channel Dev Q4 FY25 revenue $542.6M, +17% YoY",
+      "type": "H",
+      "source": "investor.starbucks.com Q4 FY25 press release"
+    },
+    {
+      "id": "DM-D-BIZ-07",
+      "claim": "Nestle paid $7.15B upfront for Global Coffee Alliance (2018)",
+      "type": "H",
+      "source": "investor.starbucks.com, nestle.com"
+    },
+    {
+      "id": "DM-D-BIZ-08",
+      "claim": "US new unit cash EBITDA margin ~25%, pretax ROIC ~50%, payback 2 years",
+      "type": "R",
+      "source": "sharpsheets.io, steadycompounding.com"
+    },
+    {
+      "id": "DM-D-BIZ-09",
+      "claim": "Company-operated ~80% of revenue ($29.46B), licensed ~$4.51B",
+      "type": "H",
+      "source": "fourweekmba.com (FY2023 data)"
+    },
+    {
+      "id": "DM-D-BIZ-10",
+      "claim": "Starbucks China market share fell from 34% (2019) to 14% (2024) per Euromonitor",
+      "type": "R",
+      "source": "Reuters citing Euromonitor International"
+    },
+    {
+      "id": "DM-D-BIZ-11",
+      "claim": "Starbucks selling 60% China stake to Boyu Capital for ~$4B",
+      "type": "H",
+      "source": "Fortune, CNBC (Nov 2025)"
+    },
+    {
+      "id": "DM-D-BIZ-12",
+      "claim": "Global coffee market $269.27B (2024), forecast $369.46B (2030), 5.3% CAGR",
+      "type": "R",
+      "source": "Everyday People Coffee & Tea citing multiple research firms"
+    },
+    {
+      "id": "DM-D-BIZ-13",
+      "claim": "US coffee/snack shop industry ~$73B (2025), maturing at 0.6% CAGR to $75B by 2030",
+      "type": "R",
+      "source": "IBISWorld via Motley Fool"
+    },
+    {
+      "id": "DM-D-BIZ-14",
+      "claim": "China coffee market $4.24B (2025), forecast $5.94B (2031), 5.79% CAGR",
+      "type": "R",
+      "source": "Mordor Intelligence"
+    },
+    {
+      "id": "DM-D-BIZ-15",
+      "claim": "Specialty coffee market forecast $51.4B by 2030, 11.3% CAGR",
+      "type": "R",
+      "source": "coffeeteaimagazine.com"
+    }
+  ],
+  "sources": [
+    "https://investor.starbucks.com/news/financial-releases/news-details/2025/Starbucks-Reports-Q4-and-Full-Fiscal-Year-2025-Results/default.aspx",
+    "https://bullfincher.io/companies/starbucks-corporation/revenue-by-segment",
+    "https://bullfincher.io/companies/starbucks-corporation/revenue-by-geography",
+    "https://www.statista.com/statistics/266466/net-revenue-of-the-starbucks-corporation-worldwide/",
+    "https://www.statista.com/statistics/219513/starbucks-revenue-by-product-type/",
+    "https://www.macrotrends.net/stocks/charts/SBUX/starbucks/revenue",
+    "https://fourweekmba.com/starbucks-operated-vs-licensed-stores/",
+    "https://sharpsheets.io/blog/starbucks-franchise-profits-costs-fees/",
+    "https://wolfoffranchises.com/starbucks-franchise/",
+    "https://steadycompounding.com/investing/starbucks/",
+    "https://www.dynamicinventory.net/starbucks-supply-chain-management/",
+    "https://www.dragonsourcing.com/starbucks-international-coffee-sourcing-strategy/",
+    "https://data.ark.ai/analysis/suppliers/starbucks-corporation-supplier-profile-overview/",
+    "https://www.nestle.com/media/news/nestle-starbucks-five-years-global-coffee-alliance",
+    "https://www.grandviewresearch.com/horizon/outlook/coffee-market-size/global",
+    "https://www.everydaypeoplecoffeeandtea.com/blogs/news/coffee-statistics-2025-market-trends-consumption-data-consumer-insight",
+    "https://www.mordorintelligence.com/industry-reports/china-coffee-market",
+    "http://www.coffeeteaimagazine.com/global-specialty-coffee-market-report-2023-sector-is-expected-to-reach-51-4-billion-by-2030-at-a-cagr-of-11-3/"
+  ]
+}

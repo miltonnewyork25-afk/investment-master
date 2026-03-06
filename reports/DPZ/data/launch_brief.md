@@ -1,5 +1,5 @@
-# Launch Brief: SBUX
-> 自动生成 by tier3_launch.sh v1.0 | 2026-03-06 10:46
+# Launch Brief: DPZ
+> 自动生成 by tier3_launch.sh v1.0 | 2026-03-05 13:27
 > **AI必须在Phase 0开始前完整阅读本文件**
 
 ## 复杂度评估
@@ -25,7 +25,6 @@
   - INTC: 269K chars / 448KB (半导体)
   - KLAC: 254K chars / 442KB (半导体)
   - LRCX: 470K chars / 717KB (半导体)
-  - MAR: 355K chars / 586KB (其他)
   - META: 317K chars / 534KB (科技平台)
   - MSFT: 316K chars / 517KB (科技平台)
   - MU: 178K chars / 295KB (半导体)
@@ -36,6 +35,7 @@
   - RBLX: 383K chars / 641KB (其他)
   - RCL: 317K chars / 538KB (其他)
   - RDDT: 244K chars / 397KB (其他)
+  - SBUX: 120K chars / 198KB (消费品)
   - SEMI_EQUIPMENT_COMPARATIVE: 939K chars / 1550KB (其他)
   - SEMI_EQUIPMENT_STRATEGY: 168K chars / 283KB (其他)
   - SMCI: 333K chars / 568KB (其他)
@@ -47,11 +47,11 @@
 
 ## 进化教训 (最近3份报告)
   - null  # AI填入
-  - 体量溢出23%(540K vs 437K目标)是v1.0最大短板——分析原创性4.5但可读性3.5; 悲观偏差大幅收敛(+1.3pp vs RCL+8pp/SBUX+13pp); 模块'差半步'问题(8/15达2分=53%)根因是Phase 0未预取M1-NPS/M2-弹性系数等KPI字段
+  - null  # AI填入
   - null  # AI填入
 
 ## Phase -1 知识检索
-- knowledge_context.md: 1561 chars
+- knowledge_context.md: 1432 chars
 - 状态: ✓ 完成
 
 ## 已知失败抗体 (Adaptive Immunity)

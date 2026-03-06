@@ -1,6 +1,6 @@
 
 ═══════════════════════════════════════════════════
-  Knowledge Retrieval: SBUX
+  Knowledge Retrieval: DPZ
   行业: consumer
   状态: 新公司 (不在索引中)
 ═══════════════════════════════════════════════════
@@ -37,17 +37,16 @@ Top-3 相似公司:
   Evolution Context (最近3份报告)
 ═══════════════════════════════════════════════════
 
-  趋势: SBUX(null#AI填入(1.0-5.0))->UP->DPZ(4.0)->DN->MAR(null#AI填入(1.0-5.0))
+  趋势: SBUX(null#AI填入(1.0-5.0))->DN->CMG(null#AI填入(1.0-5.0))->DN->SBUX(null#AI填入(1.0-5.0))
 
   最近教训:
     [SBUX] null  # AI填入
-    [DPZ] 体量溢出23%(540K vs 437K目标)是v1.0最大短板——分析原创性4.5但可读性3.5; 悲观偏差大幅收敛(+1.3pp vs RCL+8pp/SBUX+13pp); 模块'差半步'问题(8/15达2分=53%)根因是Phase 0未预取M1-NPS/M2-弹性系数等KPI字段
-    [MAR] null  # AI填入
+    [CMG] null  # AI填入
+    [SBUX] null  # AI填入
 
   待审批进化提议:
     [SEMI_EQUIPMENT_COMPARATIVE] |
     [INTC] |
     [RCL] |
     [NVDA] |
-    [DPZ] |
 ─────────────────────────────────────────────────

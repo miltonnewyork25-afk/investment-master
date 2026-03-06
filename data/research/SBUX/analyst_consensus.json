@@ -1,0 +1,277 @@
+{
+  "ticker": "SBUX",
+  "fetched_at": "2026-03-06",
+  "consensus": {
+    "rating": "Moderate Buy",
+    "buy_count": 15,
+    "hold_count": 8,
+    "sell_count": 2,
+    "total_analysts": 25,
+    "avg_price_target": 100.83,
+    "high_target": 120.00,
+    "low_target": 59.00,
+    "notes": "TipRanks reports low of $59; StockAnalysis/GuruFocus report low of $74-$76. MarketBeat reports avg $104.31 (broader coverage)."
+  },
+  "earnings_estimates": {
+    "current_quarter": {
+      "quarter": "Q2 FY2026",
+      "report_date": "2026-05-05",
+      "eps_est": 0.41,
+      "eps_est_range": [0.40, 0.41],
+      "rev_est": 9080000000,
+      "rev_est_note": "Zacks $0.40, TipRanks $0.41. Revenue forecast $9.08B."
+    },
+    "next_quarter": {
+      "quarter": "Q3 FY2026",
+      "eps_est": null,
+      "rev_est": null,
+      "note": "Specific Q3 FY2026 consensus not found in search results"
+    },
+    "full_year": {
+      "fiscal_year": "FY2026",
+      "eps_guidance": [2.15, 2.40],
+      "eps_zacks_est": 2.20,
+      "rev_est": 39130000000,
+      "rev_est_note": "Analysts estimate $39.13B, up 5.22% from $37.18B in FY2025",
+      "comp_sales_guidance": "3%+ global and U.S."
+    },
+    "fy2028_guidance": {
+      "eps_range": [3.35, 4.00],
+      "comp_sales": "3%+",
+      "rev_growth": "5%+",
+      "operating_margin": [0.135, 0.15]
+    }
+  },
+  "most_recent_quarter": {
+    "quarter": "Q1 FY2026",
+    "report_date": "2026-01-28",
+    "eps_actual": 0.56,
+    "eps_estimate": 0.59,
+    "eps_surprise_pct": -5.08,
+    "revenue_actual": 9920000000,
+    "revenue_estimate": 9620000000,
+    "revenue_surprise_note": "Revenue beat by ~$300M",
+    "global_comp_sales": 0.05,
+    "us_comp_sales": 0.04,
+    "us_transaction_growth": 0.03,
+    "note": "First positive U.S. transaction growth in 8 quarters. EPS miss due to investment spending and margin pressure."
+  },
+  "earnings_surprise_history": [
+    {
+      "quarter": "Q1 FY2026 (Dec 2025)",
+      "eps_actual": 0.56,
+      "eps_estimate": 0.59,
+      "surprise_pct": -5.08,
+      "dm": {"type": "H", "source": "Nasdaq/DailyPolitical/MarketBeat"}
+    },
+    {
+      "quarter": "Q4 FY2025 (Sep 2025)",
+      "eps_actual": 0.80,
+      "eps_estimate": 0.80,
+      "surprise_pct": 0.00,
+      "dm": {"type": "H", "source": "Zacks"}
+    },
+    {
+      "quarter": "Q3 FY2025 (Jun 2025)",
+      "eps_actual": 0.50,
+      "eps_estimate": null,
+      "surprise_pct": null,
+      "revenue": 9460000000,
+      "note": "Revenue $9.46B, up 3.8% YoY. EPS $0.50 vs $0.93 year-ago.",
+      "dm": {"type": "H", "source": "Investing.com"}
+    },
+    {
+      "quarter": "unspecified_recent_1",
+      "eps_actual": 0.61,
+      "eps_estimate": 0.55,
+      "surprise_pct": 10.91,
+      "dm": {"type": "H", "source": "Zacks"}
+    },
+    {
+      "quarter": "unspecified_recent_2",
+      "eps_actual": 0.51,
+      "eps_estimate": 0.33,
+      "surprise_pct": 54.55,
+      "dm": {"type": "H", "source": "Zacks"}
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-03-04",
+      "firm": "Bernstein",
+      "action": "Maintained",
+      "rating": "Outperform",
+      "price_target": null,
+      "dm": {"type": "H", "source": "Meyka"}
+    },
+    {
+      "date": "2026-02-02",
+      "firm": "Citigroup",
+      "action": "Maintained",
+      "rating": "Neutral",
+      "price_target": 92,
+      "prev_target": 94,
+      "dm": {"type": "H", "source": "StockAnalysis/public.com"}
+    },
+    {
+      "date": "2026-01-23",
+      "firm": "William Blair",
+      "action": "Upgraded",
+      "rating": "Outperform",
+      "prev_rating": "Market Perform",
+      "price_target": null,
+      "dm": {"type": "H", "source": "Fintel"}
+    },
+    {
+      "date": "2026-01-09",
+      "firm": "Mizuho",
+      "action": "Maintained",
+      "rating": "Neutral",
+      "price_target": 86,
+      "dm": {"type": "H", "source": "Fintel"}
+    },
+    {
+      "date": null,
+      "firm": "Guggenheim",
+      "action": "Maintained",
+      "rating": "Neutral",
+      "price_target": 95,
+      "prev_target": 90,
+      "dm": {"type": "H", "source": "GuruFocus"}
+    },
+    {
+      "date": null,
+      "firm": "Barclays",
+      "action": "Maintained",
+      "rating": "Overweight",
+      "price_target": 116,
+      "prev_target": 110,
+      "dm": {"type": "H", "source": "StockAnalysis"}
+    },
+    {
+      "date": null,
+      "firm": "BTIG",
+      "action": "Reiterated",
+      "rating": "Buy",
+      "price_target": 105,
+      "dm": {"type": "H", "source": "StockAnalysis"}
+    },
+    {
+      "date": null,
+      "firm": "Piper Sandler",
+      "action": "Maintained",
+      "rating": "Overweight",
+      "price_target": 103,
+      "prev_target": 100,
+      "dm": {"type": "H", "source": "StockAnalysis"}
+    },
+    {
+      "date": null,
+      "firm": "TD Cowen",
+      "action": "Maintained",
+      "rating": "Hold",
+      "price_target": 89,
+      "prev_target": 84,
+      "dm": {"type": "H", "source": "TipRanks"}
+    },
+    {
+      "date": null,
+      "firm": "Deutsche Bank",
+      "action": "Reiterated",
+      "rating": "Buy",
+      "price_target": 113,
+      "dm": {"type": "H", "source": "MarketBeat"}
+    },
+    {
+      "date": null,
+      "firm": "Royal Bank of Canada",
+      "action": "Reiterated",
+      "rating": "Outperform",
+      "price_target": 105,
+      "dm": {"type": "H", "source": "MarketBeat"}
+    }
+  ],
+  "bull_bear_summary": {
+    "bull_case": "Niccol turnaround gaining traction (first positive U.S. traffic in 8 quarters, +3% transaction growth Q1 FY2026). Powerful brand with 30.9% U.S. market share (2.7x Dunkin). Massive store growth runway to 55K by 2030. Menu innovation (Cold Foam = $1B+ customization biz). China JV with Boyu Capital to go asset-light. FY2028 EPS target $3.35-$4.00 implies significant margin recovery. Bull valuation ~$120/share assumes P/E >36x and stronger margins.",
+    "bear_case": "Forward P/E ~40x prices in perfect execution of turnaround still in early innings. Operating margins compressed in Q1 FY2026 despite revenue beat — turnaround costs front-loaded. FY2026 EPS guidance $2.15-$2.40 implies only modest improvement. China comp sales were -8% in FY2024, intense Luckin Coffee competition. Coffee/tariff cost headwinds squeezing margins. Dutch Bros and 7 Brew fragmenting U.S. market. DCF-based bear valuation ~$67-$73/share (Simply Wall St). Stagnant margin expansion over the last decade (FY2013 16.5% vs FY2023 16.3%).",
+    "dm": {"type": "S", "source": "Motley Fool, Simply Wall St, CNBC, Axios, TheStreet", "note": "Synthesized from multiple analyst/media sources. Bull/bear framing is editorial synthesis, not a single analyst's view."}
+  },
+  "industry_specific": {
+    "niccol_turnaround": {
+      "status": "Early traction confirmed",
+      "key_metrics": {
+        "us_transaction_growth_q1_fy2026": "+3% (first positive in 8 quarters)",
+        "global_comp_sales_q1_fy2026": "+5%",
+        "us_comp_sales_q1_fy2026": "+4%",
+        "revenue_growth_q1_fy2026": "+6% to $9.9B"
+      },
+      "strategy": "Back to Starbucks — simplify stores/menu, 5-metric store measurement, traffic before profit, food daypart expansion, China JV (Boyu Capital)",
+      "analyst_sentiment": "Cautiously optimistic — top-line recovery ahead of schedule but bottom-line still lagging. CFO says 'topline first, earnings follow'.",
+      "dm": {"type": "H", "source": "CNBC/Axios/investor.starbucks.com"}
+    },
+    "us_market_share": {
+      "starbucks": 0.309,
+      "dunkin": 0.26,
+      "note": "Starbucks 30.9% vs Dunkin 26% in U.S. coffee & snack shops",
+      "dm": {"type": "H", "source": "DeepResearchGlobal SWOT"}
+    },
+    "china_jv": {
+      "partner": "Boyu Capital",
+      "model": "Asset-light JV",
+      "impact": "Lower international revenue but higher profit margins long-term",
+      "dm": {"type": "H", "source": "Axios/investor.starbucks.com"}
+    },
+    "cost_headwinds": {
+      "items": ["coffee prices", "tariffs", "labor costs", "rent"],
+      "timing": "Peaking Q2 FY2026, expected to ease H2 FY2026",
+      "dm": {"type": "R", "source": "Company guidance + analyst commentary", "reasoning": "Company guided Q2 as lowest-margin quarter with H2 improvement. If coffee/tariff costs don't ease or new tariffs imposed, margin recovery timeline extends.", "falsification": "Q2 margins worse than Q1 AND no improvement in Q3 would falsify the H2 recovery thesis."}
+    },
+    "forward_pe": {
+      "value": 40,
+      "note": "Prices in margin expansion + earnings growing faster than revenue over next 5 years",
+      "dm": {"type": "H", "source": "Seeking Alpha/Fintel"}
+    },
+    "ytd_stock_performance": {
+      "ytd_return_pct": 16.4,
+      "as_of": "2026-03-02",
+      "dm": {"type": "H", "source": "Fintel"}
+    }
+  },
+  "dm_anchors": [
+    {"id": "DM-AC-001", "type": "H", "field": "consensus.rating", "value": "Moderate Buy (15B/8H/2S)", "source": "StockAnalysis/TipRanks/public.com", "fetched": "2026-03-06"},
+    {"id": "DM-AC-002", "type": "H", "field": "consensus.avg_price_target", "value": "$100.83", "source": "StockAnalysis (23 analysts)", "fetched": "2026-03-06"},
+    {"id": "DM-AC-003", "type": "H", "field": "consensus.high_target", "value": "$120.00", "source": "GuruFocus/TipRanks", "fetched": "2026-03-06"},
+    {"id": "DM-AC-004", "type": "H", "field": "consensus.low_target", "value": "$59.00 (TipRanks) / $74.00 (GuruFocus)", "source": "TipRanks/GuruFocus", "fetched": "2026-03-06"},
+    {"id": "DM-AC-005", "type": "H", "field": "earnings_estimates.q2_fy2026.eps", "value": "$0.40-$0.41", "source": "Zacks ($0.40) / TipRanks ($0.41)", "fetched": "2026-03-06"},
+    {"id": "DM-AC-006", "type": "H", "field": "earnings_estimates.fy2026.eps_guidance", "value": "$2.15-$2.40", "source": "investor.starbucks.com Q1 FY2026 release", "fetched": "2026-03-06"},
+    {"id": "DM-AC-007", "type": "H", "field": "earnings_estimates.fy2026.rev", "value": "$39.13B", "source": "StockAnalysis/public.com", "fetched": "2026-03-06"},
+    {"id": "DM-AC-008", "type": "H", "field": "most_recent_quarter.eps_actual", "value": "$0.56 (non-GAAP) / $0.26 (GAAP)", "source": "investor.starbucks.com", "fetched": "2026-03-06"},
+    {"id": "DM-AC-009", "type": "H", "field": "most_recent_quarter.revenue", "value": "$9.92B (+6% YoY)", "source": "investor.starbucks.com", "fetched": "2026-03-06"},
+    {"id": "DM-AC-010", "type": "H", "field": "most_recent_quarter.us_transaction_growth", "value": "+3% (first positive in 8 quarters)", "source": "Axios/CNBC", "fetched": "2026-03-06"},
+    {"id": "DM-AC-011", "type": "H", "field": "earnings_estimates.fy2028.eps", "value": "$3.35-$4.00", "source": "investor.starbucks.com Investor Day 2026", "fetched": "2026-03-06"},
+    {"id": "DM-AC-012", "type": "H", "field": "industry_specific.us_market_share", "value": "30.9% (2.7x Dunkin)", "source": "DeepResearchGlobal SWOT 2026", "fetched": "2026-03-06"},
+    {"id": "DM-AC-013", "type": "R", "field": "industry_specific.cost_headwinds.timing", "value": "Peak Q2, ease H2 FY2026", "source": "Company guidance synthesis", "reasoning": "Company explicitly guided Q2 lowest-margin quarter. Assumes coffee prices stabilize and no new tariff escalation.", "falsification": "Q3 FY2026 margins fail to improve sequentially over Q2."},
+    {"id": "DM-AC-014", "type": "H", "field": "industry_specific.forward_pe", "value": "~40x", "source": "Seeking Alpha/Fintel", "fetched": "2026-03-06"},
+    {"id": "DM-AC-015", "type": "H", "field": "recent_changes.william_blair_upgrade", "value": "Market Perform → Outperform (2026-01-23)", "source": "Fintel", "fetched": "2026-03-06"},
+    {"id": "DM-AC-016", "type": "H", "field": "recent_changes.barclays", "value": "Overweight, PT $110→$116", "source": "StockAnalysis", "fetched": "2026-03-06"}
+  ],
+  "sources": [
+    {"name": "StockAnalysis", "url": "https://stockanalysis.com/stocks/sbux/forecast/", "used_for": "consensus rating, price targets, analyst actions"},
+    {"name": "TipRanks", "url": "https://www.tipranks.com/stocks/sbux/forecast", "used_for": "consensus rating, price targets, Q2 EPS estimate"},
+    {"name": "public.com", "url": "https://public.com/stocks/sbux/forecast-price-target", "used_for": "consensus rating, revenue estimates"},
+    {"name": "GuruFocus", "url": "https://www.gurufocus.com/news/8681501/starbucks-sbux-analyst-rating-guggenheim-raises-price-target-to-95-sbux-stock-news", "used_for": "Guggenheim rating, broader analyst coverage"},
+    {"name": "MarketBeat", "url": "https://www.marketbeat.com/stocks/NASDAQ/SBUX/forecast/", "used_for": "price target, Deutsche Bank/RBC ratings"},
+    {"name": "Zacks", "url": "https://www.zacks.com/stock/research/SBUX/price-target-stock-forecast", "used_for": "Q2 EPS estimate, earnings surprise history, FY2026 EPS"},
+    {"name": "Fintel", "url": "https://fintel.io/s/us/sbux", "used_for": "William Blair upgrade, Mizuho rating, YTD performance"},
+    {"name": "Nasdaq", "url": "https://www.nasdaq.com/market-activity/stocks/sbux/earnings", "used_for": "earnings dates, EPS estimates"},
+    {"name": "Starbucks IR", "url": "https://investor.starbucks.com/news/financial-releases/news-details/2026/Starbucks-Reports-Q1-Fiscal-Year-2026-Results/default.aspx", "used_for": "Q1 FY2026 actuals, FY2026/FY2028 guidance"},
+    {"name": "CNBC", "url": "https://www.cnbc.com/2026/01/29/starbucks-investor-day-updates-brian-niccol-turnaround.html", "used_for": "Investor Day details, Niccol turnaround"},
+    {"name": "Axios", "url": "https://www.axios.com/2026/01/28/starbucks-earnings-traffic-growth-turnaround", "used_for": "U.S. traffic growth, China JV"},
+    {"name": "Motley Fool", "url": "https://www.fool.com/investing/2024/03/10/starbucks-stock-bull-vs-bear/", "used_for": "bull/bear case framework"},
+    {"name": "Simply Wall St", "url": "https://simplywall.st/stocks/us/consumer-services/nasdaq-sbux/starbucks/news/is-starbucks-sbux-share-price-justified-after-recent-turnaro", "used_for": "DCF valuation, bear case"},
+    {"name": "Seeking Alpha", "url": "https://seekingalpha.com/article/4867852-starbucks-the-growth-story-is-not-compelling-enough-at-the-current-valuation-rating-downgrade", "used_for": "downgrade rationale, forward PE"},
+    {"name": "DeepResearchGlobal", "url": "https://www.deepresearchglobal.com/p/starbucks-swot-analysis-report", "used_for": "U.S. market share data"},
+    {"name": "Meyka", "url": "https://meyka.com/blog/bernstein-maintains-outperform-on-starbucks-corporation-sbux-march-2026-0503/", "used_for": "Bernstein rating"},
+    {"name": "Bloomberg/Yahoo", "url": "https://finance.yahoo.com/video/starbucks-ceo-growth-plans-pricing-163208559.html", "used_for": "CEO pricing/growth commentary"}
+  ]
+}
