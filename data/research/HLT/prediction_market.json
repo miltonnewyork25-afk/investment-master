@@ -1,0 +1,168 @@
+{
+  "metadata": {
+    "ticker": "HLT",
+    "agent": "Agent-B (Prediction Markets)",
+    "collected_date": "2026-03-06",
+    "queries_executed": 6,
+    "data_freshness": "2026-03-06 snapshot, markets are live-priced"
+  },
+  "macro_events": [
+    {
+      "event": "US Recession by End of 2026",
+      "platform": "Polymarket",
+      "probability": "23-31% (range reflects recent trading volatility; ~31% as of early March 2026)",
+      "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "resolution": "Yes if 2 consecutive quarters of negative real GDP (Q2 2025-Q4 2026) or NBER announces recession in 2025-2026",
+      "hlt_relevance": "HIGH - recession directly compresses business/leisure travel demand; HLT RevPAR is cyclically sensitive"
+    },
+    {
+      "event": "Negative GDP Growth in 2026 (Full Year)",
+      "platform": "Polymarket",
+      "probability": "10%",
+      "url": "https://polymarket.com/event/negative-gdp-growth-in-2026",
+      "resolution": "Yes if full-year 2026 GDP growth below 0% per BEA advance estimate for Q4 2026",
+      "hlt_relevance": "MEDIUM - full-year negative GDP is a tail scenario; even mild slowdown impacts hotel pricing power"
+    },
+    {
+      "event": "US Inflation Above 3% in 2026 (any month CPI YoY)",
+      "platform": "Polymarket",
+      "probability": "29-30%",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "resolution": "Yes if CPI increases >3% over any 12-month period ending in any month of 2026",
+      "hlt_relevance": "HIGH - elevated inflation supports HLT pricing power (ADR growth) but erodes consumer discretionary spending; net effect depends on wage growth"
+    },
+    {
+      "event": "US Inflation Above 4% in 2026",
+      "platform": "Polymarket",
+      "probability": "11%",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "resolution": "Same as above, >4% threshold",
+      "hlt_relevance": "MEDIUM - at >4% CPI, Fed likely pauses/reverses cuts, strengthening USD and pressuring international travel demand"
+    },
+    {
+      "event": "US Inflation Above 5% in 2026",
+      "platform": "Polymarket",
+      "probability": "9%",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "resolution": "Same as above, >5% threshold",
+      "hlt_relevance": "LOW probability but HIGH impact - stagflation scenario would hit hotel demand and margins simultaneously"
+    },
+    {
+      "event": "Fed Rate Cuts in 2026 (count)",
+      "platform": "Kalshi",
+      "probability": "Market split: consensus ~1-2 cuts in 2026; near-zero probability of March 2026 cut",
+      "url": "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31",
+      "resolution": "Based on actual FOMC decisions through December 2026",
+      "context": "Fed funds rate at 3.50-3.75% as of Jan 2026 meeting; officials split on further cuts, pausing to assess inflation",
+      "hlt_relevance": "MEDIUM - lower rates reduce HLT's interest expense on ~$10B debt and support asset valuations; higher-for-longer compresses hotel transaction multiples"
+    },
+    {
+      "event": "US Unemployment Reaches 7.0% in 2026",
+      "platform": "Polymarket",
+      "probability": "Low (exact % not available from search; market exists but thinly traded)",
+      "url": "https://polymarket.com/event/how-high-will-us-unemployment-go-in-2026/will-us-unemployment-reach-at-least-7pt0-in-2026",
+      "resolution": "Yes if any monthly unemployment rate reaches 7.0%+ in 2026",
+      "hlt_relevance": "HIGH - unemployment >5.5% historically correlates with 10-15% RevPAR declines; 7%+ implies deep recession"
+    },
+    {
+      "event": "CPI Monthly Tracking (Feb 2026)",
+      "platform": "Kalshi",
+      "probability": "Multiple brackets traded; specific odds require live market check",
+      "url": "https://kalshi.com/markets/kxcpi/cpi/kxcpi-26feb",
+      "resolution": "Based on BLS CPI release for each month",
+      "hlt_relevance": "LOW (monthly granularity) - useful for tracking inflation trajectory real-time"
+    },
+    {
+      "event": "How High Will CPI Get in 2026 (Peak)",
+      "platform": "Kalshi",
+      "probability": "Multiple brackets; exact odds require live market check",
+      "url": "https://kalshi.com/markets/kxhighinflation/highest-inflation/kxhighinflation-26dec",
+      "resolution": "Based on highest CPI YoY reading in any month of 2026",
+      "hlt_relevance": "MEDIUM - peak CPI level determines Fed reaction function and consumer confidence trajectory"
+    }
+  ],
+  "company_specific": [
+    {
+      "note": "No Polymarket or Kalshi markets found specifically for Hilton (HLT), hotel companies, or hospitality sector as of 2026-03-06",
+      "searched_terms": ["hotel", "travel", "hospitality", "Hilton"],
+      "platforms_searched": ["Polymarket", "Kalshi"]
+    }
+  ],
+  "industry_events": [
+    {
+      "note": "No prediction markets found specifically for hotel/travel/hospitality industry metrics",
+      "searched_terms": ["hotel travel", "consumer spending"],
+      "platforms_searched": ["Polymarket", "Kalshi"],
+      "proxy_markets": "Recession, GDP, unemployment, and inflation markets serve as the best available proxies for hotel demand"
+    }
+  ],
+  "synthesis": {
+    "base_case_implied": "Markets price ~70% probability of no recession, ~70% probability inflation stays below 3%, and 1-2 Fed rate cuts in 2026. This implies a 'soft landing' scenario favorable to HLT's pricing power and demand stability.",
+    "bear_scenario_implied": "~30% recession probability × elevated inflation risk = meaningful stagflation tail risk (~5-9%). In this scenario, HLT faces simultaneous RevPAR compression and cost inflation.",
+    "key_watch_items": [
+      "Recession probability trend (currently 23-31%, was lower in Jan 2026 - rising trajectory is a warning signal)",
+      "Fed rate path (3.50-3.75% current; market expects 1-2 cuts but officials are split)",
+      "Inflation trajectory (29% chance of >3% CPI; tariff policy is wildcard)",
+      "Unemployment (currently ~4.0-4.1%; any move above 4.5% would signal travel demand weakness)"
+    ],
+    "tariff_wildcard": "Trump tariff policy (referenced in Polymarket court/refund markets) is a key unpriced risk for international travel demand and supply chain costs for hotel construction/renovation"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-PMK-001",
+      "claim": "Polymarket prices US recession by end of 2026 at 23-31% probability",
+      "source": "Polymarket macro dashboard + event page",
+      "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-002",
+      "claim": "Polymarket prices negative full-year GDP growth in 2026 at 10%",
+      "source": "Polymarket event page",
+      "url": "https://polymarket.com/event/negative-gdp-growth-in-2026",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-003",
+      "claim": "Polymarket prices US inflation above 3% in 2026 at 29-30% probability",
+      "source": "Polymarket inflation event page",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-004",
+      "claim": "Polymarket prices US inflation above 4% in 2026 at 11%, above 5% at 9%",
+      "source": "Polymarket inflation event page",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-005",
+      "claim": "Fed funds rate at 3.50-3.75% after Jan 2026 FOMC; market expects 1-2 cuts in 2026",
+      "source": "Kalshi rate cut count market + FOMC statement Jan 28, 2026",
+      "url": "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-006",
+      "claim": "No prediction markets exist specifically for hotel/travel/hospitality sector on Polymarket or Kalshi",
+      "source": "WebSearch for hotel/travel/consumer spending on both platforms returned no results",
+      "url": null,
+      "confidence": "HIGH",
+      "retrieved": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-007",
+      "claim": "99% of Kalshi traders predicted Fed would hold rates steady at Jan 2026 meeting (confirmed correct)",
+      "source": "Kalshi Fed decision market",
+      "url": "https://kalshi.com/markets/kxfeddecision/fed-meeting/kxfeddecision-26jan",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-06"
+    }
+  ]
+}

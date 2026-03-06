@@ -1,0 +1,237 @@
+{
+  "metadata": {
+    "ticker": "HLT",
+    "company": "Hilton Worldwide Holdings Inc.",
+    "exchange": "NYSE",
+    "data_date": "2026-03-06",
+    "agent": "Data-Prefetch Agent-A (Analyst Consensus)"
+  },
+  "consensus": {
+    "rating": "Moderate Buy",
+    "buy_count": 15,
+    "hold_count": 11,
+    "sell_count": 0,
+    "total_analysts": 26,
+    "avg_price_target": 285.55,
+    "median_price_target": 325.00,
+    "high_target": 340.00,
+    "low_target": 234.00,
+    "notes": "Rating counts vary by source: MarketBeat reports 15 Buy/11 Hold/0 Sell; TipRanks reports 11 Buy/6 Hold/0 Sell from 17 analysts; StockAnalysis reports 15 Buy/11 Hold. Avg PT clusters $285-$289 across sources; median ~$325. High target $340 (some sources cite $332). No sell ratings across any source."
+  },
+  "earnings_estimates": {
+    "Q1_2026": {
+      "eps_guidance_low": 1.91,
+      "eps_guidance_high": 1.97,
+      "consensus_eps": 1.95,
+      "source": "Hilton Q4 2025 earnings release, Feb 2026"
+    },
+    "FY_2026": {
+      "eps_guidance_low": 8.49,
+      "eps_guidance_high": 8.61,
+      "adjusted_ebitda_low_B": 4.00,
+      "adjusted_ebitda_high_B": 4.04,
+      "revpar_growth_low_pct": 1.0,
+      "revpar_growth_high_pct": 2.0,
+      "net_unit_growth_low_pct": 6.0,
+      "net_unit_growth_high_pct": 7.0,
+      "capital_returns_B": 3.5,
+      "eps_guidance_midpoint": 8.55,
+      "consensus_eps_growth_pct": 13.2,
+      "source": "Hilton FY2026 guidance, Feb 2026 investor presentation"
+    },
+    "FY_2025_actual": {
+      "Q4_eps_actual": 2.08,
+      "Q4_eps_estimate": 2.00,
+      "Q4_revenue_B": 3.09,
+      "Q3_eps_actual": 2.11,
+      "Q3_eps_estimate": 2.04,
+      "net_unit_growth_pct": 6.7,
+      "rooms_under_development": 520000,
+      "organic_room_starts": 100000,
+      "source": "Hilton Q4 2025 and Q3 2025 earnings reports"
+    }
+  },
+  "earnings_surprise_history": {
+    "streak": "Beat consensus EPS in each of last 4 quarters",
+    "avg_surprise_last_2Q_pct": 3.51,
+    "quarters": [
+      {
+        "period": "Q4 2025",
+        "eps_actual": 2.08,
+        "eps_estimate": 2.00,
+        "surprise_pct": 3.80,
+        "revenue_B": 3.09,
+        "revenue_surprise_pct": 3.34
+      },
+      {
+        "period": "Q3 2025",
+        "eps_actual": 2.11,
+        "eps_estimate": 2.04,
+        "surprise_pct": 3.43
+      }
+    ],
+    "revenue_beat_rate_last_4Q": "3 of 4 quarters topped revenue estimates"
+  },
+  "recent_changes": {
+    "upgrades_downgrades": [
+      {
+        "date": "2026-02-27",
+        "firm": "UBS",
+        "action": "Price target raise",
+        "detail": "Raised HLT price target on unit growth outlook",
+        "source": "Investing.com"
+      },
+      {
+        "date": "2026-02",
+        "firm": "TipRanks consensus",
+        "action": "Buy reaffirmed",
+        "detail": "Buy rating reaffirmed on improving RevPAR, strong long-term earnings outlook, $350 price target",
+        "source": "TipRanks"
+      }
+    ],
+    "note": "No analyst sell ratings or downgrades found for HLT (parent Hilton Worldwide) in 2026. Some HGV (Hilton Grand Vacations, separate entity) activity: Morgan Stanley downgraded HGV to Equal-Weight on 2026-01-16."
+  },
+  "bull_bear_summary": {
+    "bull_case": {
+      "points": [
+        "Asset-light model: ~95% of adjusted earnings from high-margin management and franchise fees",
+        "FY2026 EPS growth consensus ~13.2%, driven by net unit growth + RevPAR normalization + $4.6B share repurchase program",
+        "Record development pipeline: 520K rooms under development at YE2025, ~100K organic room starts in 2025 (company record)",
+        "Net unit growth guidance 6-7% for 2026, among industry highest",
+        "Fee-based recurring revenue model with minimal capital investment generates strong ROIC",
+        "Global brand portfolio diversification; Europe RevPAR +5.3% Q4, ME&A +15.9%",
+        "Well-insulated from AI disruption and macro policy risks relative to other sectors"
+      ],
+      "price_target_bull": 340.00
+    },
+    "bear_case": {
+      "points": [
+        "Valuation concern: ~36% overvalued vs intrinsic value estimates (AlphaSpread base case)",
+        "RevPAR growth moderating to 1-2% in 2026 from higher levels, flagging pricing power limits",
+        "Shrinking free cash flow margins noted as potential headwind",
+        "ICE/Hampton Inn controversy (Jan 2026) raises brand/franchisee governance questions",
+        "Macro sensitivity: consumer travel demand could soften in economic downturn",
+        "Negative stockholders' equity due to aggressive share buybacks limits balance sheet flexibility"
+      ],
+      "price_target_bear": 234.00
+    }
+  },
+  "growth_outlook": {
+    "net_unit_growth_2025_actual_pct": 6.7,
+    "net_unit_growth_2026_guidance_pct": "6-7",
+    "revpar_growth_2026_guidance_pct": "1-2",
+    "adjusted_ebitda_2026_guidance_B": "4.00-4.04",
+    "capital_returns_2026_B": 3.5,
+    "europe_revpar_Q4_2025_pct": 5.3,
+    "mea_revpar_Q4_2025_pct": 15.9,
+    "earnings_model": "~95% fee-based (management + franchise fees), asset-light",
+    "key_risk": "Weak RevPAR momentum and pricing power erosion amid macro uncertainty"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-CON-001",
+      "value": "Consensus rating: Moderate Buy (15 Buy / 11 Hold / 0 Sell)",
+      "type": "H",
+      "source": "MarketBeat, StockAnalysis, TipRanks aggregation",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-CON-002",
+      "value": "Avg price target $285.55; median $325; range $234-$340",
+      "type": "H",
+      "source": "WallStreetZen, StockAnalysis, MarketBeat, TipRanks",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-CON-003",
+      "value": "Q1 2026 EPS guidance $1.91-$1.97, consensus $1.95",
+      "type": "R",
+      "source": "Hilton Q4 2025 earnings release via DailyPolitical, TickerReport",
+      "date": "2026-02-11"
+    },
+    {
+      "id": "DM-CON-004",
+      "value": "FY2026 EPS guidance $8.49-$8.61; EBITDA $4.00-$4.04B",
+      "type": "R",
+      "source": "Hilton FY2026 guidance, Feb 2026",
+      "date": "2026-02-11"
+    },
+    {
+      "id": "DM-CON-005",
+      "value": "FY2026 consensus EPS growth ~13.2%",
+      "type": "S",
+      "source": "Insider Monkey / Yahoo Finance bull case article",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-006",
+      "value": "Q4 2025 EPS $2.08 vs est $2.00 (+3.80% surprise); Q3 2025 EPS $2.11 vs est $2.04 (+3.43%)",
+      "type": "H",
+      "source": "Nasdaq, Zacks, MarketBeat",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-007",
+      "value": "Beat EPS in all 4 most recent quarters; avg surprise ~3.5%",
+      "type": "H",
+      "source": "Zacks, Yahoo Finance",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-008",
+      "value": "Q4 2025 revenue $3.09B, beat estimate by 3.34%",
+      "type": "H",
+      "source": "Nasdaq, Zacks",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-009",
+      "value": "UBS raised HLT price target on unit growth outlook (Feb 2026)",
+      "type": "S",
+      "source": "Investing.com",
+      "date": "2026-02-27"
+    },
+    {
+      "id": "DM-CON-010",
+      "value": "~95% of adjusted earnings from management and franchise fees (asset-light)",
+      "type": "H",
+      "source": "Insider Monkey, Yahoo Finance",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-011",
+      "value": "Net unit growth 6.7% in 2025; 520K rooms under development at YE2025; guidance 6-7% for 2026",
+      "type": "H",
+      "source": "Hilton press release (stories.hilton.com), Feb 2026",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-012",
+      "value": "RevPAR growth guidance 1-2% for 2026; Europe +5.3% Q4, ME&A +15.9% Q4",
+      "type": "R",
+      "source": "Hilton Q4 2025 earnings, TipRanks, Investing.com",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-013",
+      "value": "Capital returns guidance ~$3.5B for 2026; $4.6B share repurchase program",
+      "type": "R",
+      "source": "Hilton FY2026 guidance, Insider Monkey",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-014",
+      "value": "AlphaSpread base case: HLT ~36% overvalued vs intrinsic value at ~$326.6",
+      "type": "S",
+      "source": "AlphaSpread",
+      "date": "2026-03"
+    },
+    {
+      "id": "DM-CON-015",
+      "value": "ICE/Hampton Inn controversy Jan 2026: franchise governance risk",
+      "type": "S",
+      "source": "Simply Wall St",
+      "date": "2026-01"
+    }
+  ]
+}

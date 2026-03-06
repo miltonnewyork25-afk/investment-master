@@ -1,0 +1,274 @@
+{
+  "meta": {
+    "ticker": "HLT",
+    "company": "Hilton Worldwide Holdings Inc.",
+    "data_date": "2026-03-06",
+    "agent": "Agent-F (Smart Money 13F)",
+    "sources": [
+      "hedgefollow.com/stocks/HLT",
+      "fintel.io/so/us/hlt",
+      "marketbeat.com/stocks/NYSE/HLT/institutional-ownership/",
+      "nasdaq.com/market-activity/stocks/hlt/institutional-holdings",
+      "insidertrades.com",
+      "secform4.com/insider-trading/1585689.htm",
+      "quiverquant.com/stock/HLT/institutions/"
+    ]
+  },
+  "institutional_summary": {
+    "total_institutions": 1406,
+    "total_shares_held": 238259391,
+    "ownership_pct": 95.9,
+    "ownership_pct_note": "Some sources report >100% due to short positions/derivatives; normalized figure ~95.9%",
+    "ownership_pct_trend": {
+      "2025_Q1": 99.84,
+      "2025_Q2": 103.48,
+      "latest_normalized": 95.9,
+      "direction": "high and stable"
+    },
+    "qoq_change": {
+      "added_positions": 534,
+      "reduced_positions": 511,
+      "net_sentiment": "slightly_accumulative",
+      "period": "Q4 2025"
+    }
+  },
+  "top_holders": [
+    {
+      "name": "Vanguard Group Inc.",
+      "shares": 25463196,
+      "ownership_pct": 10.95,
+      "value_usd": 6606172000,
+      "change": "+0.6% (Q3 2025, +151,984 shares)",
+      "type": "index_fund"
+    },
+    {
+      "name": "BlackRock Inc.",
+      "shares": 22319376,
+      "ownership_pct": 9.60,
+      "value_usd": null,
+      "change": "stable",
+      "type": "index_fund"
+    },
+    {
+      "name": "FMR LLC (Fidelity)",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change": "top 3 holder per fintel.io",
+      "type": "active_fund"
+    },
+    {
+      "name": "State Street Corp",
+      "shares": 9595709,
+      "ownership_pct": null,
+      "value_usd": 2555721000,
+      "change": "+0.9% (Q2 2025)",
+      "type": "index_fund"
+    },
+    {
+      "name": "Geode Capital Management LLC",
+      "shares": 6281842,
+      "ownership_pct": null,
+      "value_usd": 1666246000,
+      "change": "+2.8% (Q2 2025)",
+      "type": "quant_fund"
+    },
+    {
+      "name": "Franklin Resources Inc.",
+      "shares": 5442662,
+      "ownership_pct": null,
+      "value_usd": 1449599000,
+      "change": "+4.0% (Q2 2025)",
+      "type": "active_fund"
+    },
+    {
+      "name": "JPMorgan Chase & Co",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change": "top holder per fintel.io",
+      "type": "bank"
+    },
+    {
+      "name": "Principal Financial Group Inc",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change": "-10.6% Q4 2025 (-1,114,602 shares, ~$320M)",
+      "type": "active_fund"
+    }
+  ],
+  "notable_moves": [
+    {
+      "id": "NM-01",
+      "entity": "Bill Ackman / Pershing Square",
+      "action": "EXIT",
+      "detail": "Exited HLT position on Feb 11, 2026 to fund ~$2.0B Meta bet. Ackman was a historically significant holder since Hilton's 2013 IPO era.",
+      "significance": "high",
+      "signal": "bearish_for_HLT"
+    },
+    {
+      "id": "NM-02",
+      "entity": "Lone Pine Capital",
+      "action": "NEW_POSITION",
+      "shares": 57817,
+      "detail": "New 57,817-share stake reported as of Dec 31, 2025.",
+      "significance": "medium",
+      "signal": "bullish"
+    },
+    {
+      "id": "NM-03",
+      "entity": "Jennison Associates LLC",
+      "action": "REDUCE",
+      "shares_change": -1429593,
+      "pct_change": -30.1,
+      "value_usd": 410650589,
+      "detail": "Removed ~30% of position in Q4 2025.",
+      "significance": "high",
+      "signal": "bearish"
+    },
+    {
+      "id": "NM-04",
+      "entity": "Principal Financial Group Inc",
+      "action": "REDUCE",
+      "shares_change": -1114602,
+      "pct_change": -10.6,
+      "value_usd": 320169424,
+      "detail": "Reduced position by 10.6% in Q4 2025.",
+      "significance": "medium",
+      "signal": "bearish"
+    },
+    {
+      "id": "NM-05",
+      "entity": "American Century Companies Inc.",
+      "action": "REDUCE",
+      "shares_change": -225067,
+      "pct_change": -21.6,
+      "detail": "Lessened stake by 21.6% in Q3 2025, now holds 816,081 shares.",
+      "significance": "medium",
+      "signal": "bearish"
+    },
+    {
+      "id": "NM-06",
+      "entity": "Strive Asset Management LLC",
+      "action": "NEW_POSITION",
+      "detail": "Acquired new shares (Mar 2026 filing).",
+      "significance": "low",
+      "signal": "neutral"
+    },
+    {
+      "id": "NM-07",
+      "entity": "Camrose Capital Investment Partners LLP",
+      "action": "INCREASE",
+      "detail": "Boosted holdings (Feb 2026 filing).",
+      "significance": "low",
+      "signal": "bullish"
+    },
+    {
+      "id": "NM-08",
+      "entity": "NewEdge Wealth LLC",
+      "action": "NEW_POSITION",
+      "detail": "Bought shares (Feb 2026 filing).",
+      "significance": "low",
+      "signal": "bullish"
+    }
+  ],
+  "warren_buffett": {
+    "holds_HLT": false,
+    "detail": "No evidence of HLT in Berkshire Hathaway portfolio as of Q4 2025 13F. Berkshire top holdings: AAPL, BAC, AXP, KO, CVX."
+  },
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "insider": "Christopher Nassetta",
+        "title": "CEO",
+        "action": "SELL",
+        "date": "2026-02-17",
+        "shares": 114289,
+        "price_avg": 317.47,
+        "value_usd": 36283329,
+        "pct_of_holdings_sold": 75.82,
+        "significance": "high — CEO sold ~76% of holdings"
+      }
+    ],
+    "director_awards": {
+      "date": "2025-12-29",
+      "count": 8,
+      "type": "common stock awards",
+      "value": 0,
+      "note": "Standard annual director equity compensation"
+    },
+    "net_insider_sentiment": "bearish — large CEO sale dominates",
+    "insider_ownership_pct": null,
+    "insider_ownership_note": "Low single digits; exact figure not confirmed in search results"
+  },
+  "key_observations": [
+    "Ackman exit is the most significant smart money signal — he was a long-term holder and his departure to fund META is a clear capital reallocation away from HLT",
+    "CEO Nassetta selling 76% of holdings at ~$317 is a notable insider bearish signal, though could be personal financial planning",
+    "Q4 2025 net flow is mixed (534 adds vs 511 reduces) but notable reductions are larger in dollar terms (Jennison $411M + Principal $320M = $731M reduced)",
+    "Index funds (Vanguard, BlackRock, State Street) remain stable — these are mechanical, not signal-bearing",
+    "Institutional ownership >95% means float is thin — any further institutional selling could pressure price disproportionately"
+  ],
+  "dm_anchors": [
+    {
+      "id": "DM-SMT-001",
+      "fact": "1,406 institutional owners hold 238,259,391 shares total",
+      "source": "fintel.io/so/us/hlt",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-SMT-002",
+      "fact": "Institutional ownership ~95.9% of shares outstanding",
+      "source": "marketbeat.com/stocks/NYSE/HLT/institutional-ownership/",
+      "confidence": "medium — varies by source (95.9% to 103.48%)"
+    },
+    {
+      "id": "DM-SMT-003",
+      "fact": "Vanguard holds 25,463,196 shares (10.95%), worth $6.61B as of Q3 2025",
+      "source": "marketbeat.com + fintel.io",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-SMT-004",
+      "fact": "BlackRock holds 22,319,376 shares (9.60%)",
+      "source": "fintel.io/so/us/hlt",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-SMT-005",
+      "fact": "Bill Ackman / Pershing Square exited HLT position on Feb 11, 2026 to fund ~$2B META bet",
+      "source": "quiverquant.com (cross-ref with multiple sources)",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-SMT-006",
+      "fact": "CEO Nassetta sold 114,289 shares at $317.47 avg on Feb 17, 2026 (~$36.3M, 75.82% of holdings)",
+      "source": "insidertrades.com/alerts/nyse-hlt-insider-buying-and-selling-2026-02-20/",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-SMT-007",
+      "fact": "Jennison Associates reduced position by 30.1% (-1,429,593 shares, ~$411M) in Q4 2025",
+      "source": "hedgefollow.com/stocks/HLT",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-SMT-008",
+      "fact": "Lone Pine Capital initiated new 57,817-share position as of Dec 31, 2025",
+      "source": "hedgefollow.com/stocks/HLT",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-SMT-009",
+      "fact": "Q4 2025: 534 institutions added shares, 511 decreased positions",
+      "source": "hedgefollow.com/stocks/HLT",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-SMT-010",
+      "fact": "Warren Buffett / Berkshire Hathaway does not hold HLT as of Q4 2025 13F",
+      "source": "stockcircle.com/portfolio/warren-buffett + buffett.online",
+      "confidence": "high"
+    }
+  ]
+}

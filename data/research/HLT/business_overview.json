@@ -1,0 +1,188 @@
+{
+  "ticker": "HLT",
+  "company": "Hilton Worldwide Holdings Inc.",
+  "data_date": "2026-03-06",
+  "agent": "Agent-D (Business & Competition)",
+
+  "segments": {
+    "fiscal_year": 2025,
+    "total_revenue": "$10.81B (estimated, sum of segments)",
+    "breakdown": [
+      {
+        "segment": "Reimbursement Revenue",
+        "revenue": "$7.09B",
+        "pct_of_total": "65.6%",
+        "description": "Cost-reimbursement from hotel owners for operating expenses (payroll, IT, etc.); essentially pass-through with no/low margin"
+      },
+      {
+        "segment": "Management and Franchise Fees",
+        "revenue": "$2.78B",
+        "pct_of_total": "25.7%",
+        "description": "Core high-margin revenue: base management fees + franchise fees from 7,500+ properties"
+      },
+      {
+        "segment": "Management Service — Base",
+        "revenue": "$376M",
+        "pct_of_total": "3.5%",
+        "description": "Base management fees from managed properties"
+      },
+      {
+        "segment": "Management Service — Incentive",
+        "revenue": "$313M",
+        "pct_of_total": "2.9%",
+        "description": "Incentive management fees tied to property-level profitability"
+      },
+      {
+        "segment": "Hotel, Other",
+        "revenue": "$252M",
+        "pct_of_total": "2.3%",
+        "description": "Owned/leased hotel operations and other revenue"
+      }
+    ],
+    "business_model_note": "Asset-light model — Hilton owns/leases very few properties. ~97% of rooms are managed or franchised. High-margin fee revenue (~$3.5B including all management + franchise) is the economic engine; reimbursement revenue inflates top line but contributes minimal profit.",
+    "dm_anchor": "DM-BIZ-001"
+  },
+
+  "geographic_breakdown": {
+    "fiscal_year_2025": {
+      "united_states": {
+        "revenue": "$9.52B",
+        "pct_of_total": "~79%"
+      },
+      "international": {
+        "revenue": "$2.52B",
+        "pct_of_total": "~21%"
+      }
+    },
+    "fiscal_year_2024": {
+      "united_states": {
+        "revenue": "$8.78B",
+        "pct_of_total": "78.6%"
+      },
+      "international": {
+        "revenue": "$2.40B",
+        "pct_of_total": "21.4%"
+      }
+    },
+    "geographic_notes": "Revenue heavily US-concentrated (~79%). International growth is a key strategic lever — Hilton operates in 143 countries/territories as of 2025. US market share ~9% vs global ~6.35%. Asia Pacific and Europe represent underpenetrated regions (~1% market share each).",
+    "dm_anchor": "DM-BIZ-002"
+  },
+
+  "brand_portfolio": {
+    "total_properties": "8,300+ (as of year-end 2025, up from 7,530 at year-end 2023)",
+    "total_rooms": "~1,283,000 (estimated based on 100K net additions in 2025)",
+    "countries_territories": 143,
+    "net_unit_growth_2025": "6.7% (nearly 800 hotels, ~100,000 rooms added)",
+    "development_pipeline": "3,700+ hotels, 520,000+ rooms under development (record level)",
+    "key_brands": [
+      "Waldorf Astoria (ultra-luxury)",
+      "Conrad (luxury)",
+      "LXR Hotels & Resorts (luxury collection)",
+      "Signia by Hilton (premium meetings/events)",
+      "Hilton Hotels & Resorts (full-service flagship)",
+      "Curio Collection by Hilton (upscale collection)",
+      "DoubleTree by Hilton (upscale)",
+      "Tapestry Collection by Hilton (upscale collection)",
+      "Embassy Suites by Hilton (upscale all-suite)",
+      "Tempo by Hilton (lifestyle, new)",
+      "Motto by Hilton (micro-hotel lifestyle)",
+      "Hilton Garden Inn (upper-midscale)",
+      "Hampton by Hilton (midscale, largest brand)",
+      "Tru by Hilton (midscale)",
+      "Homewood Suites by Hilton (upscale extended-stay)",
+      "Home2 Suites by Hilton (midscale extended-stay)",
+      "Spark by Hilton (economy, launched 2023)",
+      "Outset Collection by Hilton (conversion-focused, launched Oct 2025, 60+ hotels in pipeline)",
+      "Apartment Collection by Hilton (furnished apartments, launching H1 2026, Placemakr partnership ~3,000 units)"
+    ],
+    "luxury_lifestyle_milestone": "1,000+ luxury and lifestyle hotels globally, 200+ added in 2025, ~500 more in pipeline",
+    "dm_anchor": "DM-BIZ-003"
+  },
+
+  "financial_highlights_2025": {
+    "diluted_eps": "$6.12",
+    "net_income": "$1.46B",
+    "system_wide_revpar_growth": "+0.4% (currency neutral, full year vs 2024)",
+    "revpar_note": "Modest RevPAR growth reflects industry-wide deceleration; industry forecast for 2026 is +1-2% RevPAR growth driven by rate rather than occupancy",
+    "dm_anchor": "DM-BIZ-004"
+  },
+
+  "supply_chain": {
+    "procurement_arm": "Hilton Supply Management (HSM)",
+    "supplier_network": "3,500+ global suppliers, 17,000+ customers",
+    "key_supplier_partners": [
+      "Sysco (food & beverage distribution)",
+      "Guest Supply (amenities)",
+      "HD Supply (facilities maintenance)",
+      "Grainger (industrial/maintenance supplies)",
+      "Vistar (snacks/beverages distribution)",
+      "Dilmah Tea (premium tea, EMEA & APAC)",
+      "Supergoop! (sunscreen amenity, US/Mexico/Caribbean)",
+      "Procure Impact (local/social impact sourcing)"
+    ],
+    "strategic_focus": "Responsible sourcing, waste reduction, sustainable supply chain practices. HSM leverages Hilton's scale for negotiated commercial terms across the global portfolio.",
+    "dm_anchor": "DM-BIZ-005"
+  },
+
+  "dtc_digital_channels": {
+    "direct_channel_share": "~75% of overall bookings through direct channels",
+    "web_channel_detail": "Web channels represent ~50% of the 75% direct share (~37.5% of total)",
+    "mobile_app_share": "40-50% of web channel traffic from Hilton Honors mobile app",
+    "direct_growth_rate": "Web-direct channels grew 3x the rate of all other channels",
+    "digital_key_penetration": "80%+ of portfolio (~5,400+ properties)",
+    "loyalty_program": "Hilton Honors — used as primary DTC driver with price match guarantee + member discounts",
+    "digital_features": "Mobile booking, room selection, digital check-in, Digital Key, mobile check-out",
+    "dm_anchor": "DM-BIZ-006"
+  },
+
+  "tam": {
+    "global_hospitality_market_2026": "$5.82T",
+    "global_hospitality_market_2030_forecast": "$7.47T",
+    "hospitality_cagr": "6.4% (2026-2030)",
+    "luxury_hotel_market_2030": "$143.19B",
+    "luxury_hotel_cagr": "4.8%",
+    "smart_hospitality_tech_2024": "$36.48B",
+    "smart_hospitality_tech_2032": "$236.20B",
+    "smart_hospitality_cagr": "26.3%",
+    "hilton_implied_market_share": "Hilton's ~$10.8B revenue = ~0.19% of $5.82T total hospitality TAM; ~6.35% of global branded hotel market (narrower TAM definition)",
+    "dm_anchor": "DM-BIZ-007"
+  },
+
+  "dm_anchors": {
+    "DM-BIZ-001": {
+      "claim": "Hilton FY2025 segment revenue: Reimbursement $7.09B (65.6%), Management & Franchise $2.78B (25.7%), Base Mgmt $376M, Incentive Mgmt $313M, Hotel/Other $252M",
+      "sources": ["MacroTrends HLT revenue page", "Bullfincher HLT company profile", "Hilton Q4 2024 earnings release"],
+      "confidence": "HIGH — multiple sources consistent"
+    },
+    "DM-BIZ-002": {
+      "claim": "Hilton FY2025 geographic: US $9.52B (~79%), International $2.52B (~21%); FY2024: US $8.78B (78.6%), Int'l $2.40B (21.4%)",
+      "sources": ["Bullfincher HLT revenue by geography", "MacroTrends HLT revenue"],
+      "confidence": "HIGH"
+    },
+    "DM-BIZ-003": {
+      "claim": "Hilton 2025: 6.7% NUG, ~800 hotels/100K rooms added, 8,300+ properties, 143 countries, 520K+ rooms in pipeline, 1,000+ luxury/lifestyle hotels",
+      "sources": ["Hilton Stories press releases (NUG announcement, luxury milestone)", "Hotel Online"],
+      "confidence": "HIGH — primary source (Hilton IR/press releases)"
+    },
+    "DM-BIZ-004": {
+      "claim": "Hilton FY2025: EPS $6.12, net income $1.46B, system-wide RevPAR +0.4% YoY (currency neutral)",
+      "sources": ["Hilton Q4 2025 earnings release", "Hotel Online"],
+      "confidence": "HIGH"
+    },
+    "DM-BIZ-005": {
+      "claim": "HSM: 3,500+ suppliers, 17,000+ customers; key partners include Sysco, Guest Supply, HD Supply, Grainger, Vistar",
+      "sources": ["mysupplymanagement.com (HSM official)", "SCW Magazine", "Procure Impact press release"],
+      "confidence": "MEDIUM-HIGH — official HSM sources but limited financial detail"
+    },
+    "DM-BIZ-006": {
+      "claim": "75% of Hilton bookings through direct channels; web-direct grew 3x other channels; 40-50% of web traffic from mobile app; Digital Key at 80%+ of portfolio",
+      "sources": ["Hospitality Technology article", "Lexology/OTA distribution update", "AltexSoft direct booking analysis"],
+      "confidence": "MEDIUM — aggregated from multiple secondary sources, exact date of 75% metric unclear (likely 2023-2024)"
+    },
+    "DM-BIZ-007": {
+      "claim": "Global hospitality TAM $5.82T (2026) → $7.47T (2030) at 6.4% CAGR; Luxury hotel $143.19B by 2030 at 4.8% CAGR",
+      "sources": ["Research and Markets hospitality report", "GlobeNewsWire luxury hotel analysis report 2026"],
+      "confidence": "MEDIUM — third-party market research estimates with typical variance"
+    }
+  }
+}

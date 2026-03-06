@@ -1,0 +1,584 @@
+{
+  "version": "4.0",
+  "ticker": "HLT",
+  "company": "Hilton Worldwide Holdings Inc.",
+  "generated_at": "2026-03-06",
+  "total_anchors": 78,
+  "by_type": {
+    "H": 62,
+    "R": 12,
+    "S": 4
+  },
+  "by_category": {
+    "CON": 15,
+    "FIN": 12,
+    "INF": 3,
+    "MGT": 12,
+    "MKT": 3,
+    "OPT": 8,
+    "PMK": 7,
+    "SMT": 10,
+    "VAL": 8
+  },
+  "anchors": [
+    {
+      "id": "DM-CON-001",
+      "value": "Consensus rating: Moderate Buy (15 Buy / 11 Hold / 0 Sell)",
+      "type": "H",
+      "source": "MarketBeat, StockAnalysis, TipRanks aggregation",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-CON-002",
+      "value": "Avg price target $285.55; median $325; range $234-$340",
+      "type": "H",
+      "source": "WallStreetZen, StockAnalysis, MarketBeat, TipRanks",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-CON-003",
+      "value": "Q1 2026 EPS guidance $1.91-$1.97, consensus $1.95",
+      "type": "R",
+      "source": "Hilton Q4 2025 earnings release via DailyPolitical, TickerReport",
+      "date": "2026-02-11"
+    },
+    {
+      "id": "DM-CON-004",
+      "value": "FY2026 EPS guidance $8.49-$8.61; EBITDA $4.00-$4.04B",
+      "type": "R",
+      "source": "Hilton FY2026 guidance, Feb 2026",
+      "date": "2026-02-11"
+    },
+    {
+      "id": "DM-CON-005",
+      "value": "FY2026 consensus EPS growth ~13.2%",
+      "type": "S",
+      "source": "Insider Monkey / Yahoo Finance bull case article",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-006",
+      "value": "Q4 2025 EPS $2.08 vs est $2.00 (+3.80% surprise); Q3 2025 EPS $2.11 vs est $2.04 (+3.43%)",
+      "type": "H",
+      "source": "Nasdaq, Zacks, MarketBeat",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-007",
+      "value": "Beat EPS in all 4 most recent quarters; avg surprise ~3.5%",
+      "type": "H",
+      "source": "Zacks, Yahoo Finance",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-008",
+      "value": "Q4 2025 revenue $3.09B, beat estimate by 3.34%",
+      "type": "H",
+      "source": "Nasdaq, Zacks",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-009",
+      "value": "UBS raised HLT price target on unit growth outlook (Feb 2026)",
+      "type": "S",
+      "source": "Investing.com",
+      "date": "2026-02-27"
+    },
+    {
+      "id": "DM-CON-010",
+      "value": "~95% of adjusted earnings from management and franchise fees (asset-light)",
+      "type": "H",
+      "source": "Insider Monkey, Yahoo Finance",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-011",
+      "value": "Net unit growth 6.7% in 2025; 520K rooms under development at YE2025; guidance 6-7% for 2026",
+      "type": "H",
+      "source": "Hilton press release (stories.hilton.com), Feb 2026",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-012",
+      "value": "RevPAR growth guidance 1-2% for 2026; Europe +5.3% Q4, ME&A +15.9% Q4",
+      "type": "R",
+      "source": "Hilton Q4 2025 earnings, TipRanks, Investing.com",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-013",
+      "value": "Capital returns guidance ~$3.5B for 2026; $4.6B share repurchase program",
+      "type": "R",
+      "source": "Hilton FY2026 guidance, Insider Monkey",
+      "date": "2026-02"
+    },
+    {
+      "id": "DM-CON-014",
+      "value": "AlphaSpread base case: HLT ~36% overvalued vs intrinsic value at ~$326.6",
+      "type": "S",
+      "source": "AlphaSpread",
+      "date": "2026-03"
+    },
+    {
+      "id": "DM-CON-015",
+      "value": "ICE/Hampton Inn controversy Jan 2026: franchise governance risk",
+      "type": "S",
+      "source": "Simply Wall St",
+      "date": "2026-01"
+    },
+    {
+      "id": "DM-MGT-001",
+      "value": "Nassetta CEO since Oct 2007, tenure 18+ years",
+      "type": "H",
+      "source": "Wikipedia, Hilton corporate bio (stories.hilton.com)",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-002",
+      "value": "Nassetta total comp $27.96M in 2024",
+      "type": "H",
+      "source": "SEC proxy filing hlt-20250324, salary.com",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-003",
+      "value": "Kevin Jacobs CFO since 2013, joined Hilton 2008",
+      "type": "H",
+      "source": "Hilton corporate bio, Cornell profile",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-004",
+      "value": "Jacobs total comp $9.09M in 2024",
+      "type": "H",
+      "source": "SEC proxy filing, salary.com",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-005",
+      "value": "5-year TSR 125% under Nassetta",
+      "type": "H",
+      "source": "Hilton 2024 proxy statement",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-006",
+      "value": "Record 154,000 rooms signed for development in 2024",
+      "type": "H",
+      "source": "Hilton 2024 annual report/proxy",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-007",
+      "value": "$3.0B returned to shareholders in 2024",
+      "type": "H",
+      "source": "Hilton 2024 proxy statement",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-008",
+      "value": "Nassetta owns ~1.53% of HLT (~$1.11B value)",
+      "type": "R",
+      "source": "SEC Form 4 filing Feb 2026, fintool.com",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-009",
+      "value": "Jon Gray (Blackstone COO) serves as Board Chair since 2021",
+      "type": "H",
+      "source": "Hilton IR board of directors page",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-010",
+      "value": "Say-on-Pay approval >90% (2023)",
+      "type": "H",
+      "source": "Hilton 2025 proxy statement",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-011",
+      "value": "Christian Charnaux returned as EVP/CDO July 2025",
+      "type": "H",
+      "source": "CoStar hotel C-suite changes 2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MGT-012",
+      "value": "Nassetta exercised/sold 114,289 shares Feb 2026 at $316-319/share",
+      "type": "H",
+      "source": "SEC Form 4 filing 2026-02-17, stocktitan.net",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-OPT-001",
+      "value": "~5.08M shares",
+      "type": "H",
+      "source": "MarketBeat (marketbeat.com/instant-alerts/hilton-worldwide-holdings-inc-nysehlt-sees-significant-decline-in-short-interest-2026-03-04)",
+      "date": "Feb 2026 reporting period"
+    },
+    {
+      "id": "DM-OPT-002",
+      "value": "2.3%",
+      "type": "H",
+      "source": "MarketBeat + Finviz (finviz.com/quote.ashx?t=HLT)",
+      "date": "Feb 2026"
+    },
+    {
+      "id": "DM-OPT-003",
+      "value": "2.0 days",
+      "type": "H",
+      "source": "MarketBeat short interest report",
+      "date": "Feb 2026"
+    },
+    {
+      "id": "DM-OPT-004",
+      "value": "-13.1%",
+      "type": "H",
+      "source": "MarketBeat (significant decline report, 2026-03-04)",
+      "date": "Feb 2026 vs prior period"
+    },
+    {
+      "id": "DM-OPT-005",
+      "value": "2,545,654 shares",
+      "type": "H",
+      "source": "MarketBeat short interest calculation basis",
+      "date": "Feb 2026"
+    },
+    {
+      "id": "DM-OPT-006",
+      "value": "1.84",
+      "type": "R",
+      "source": "Barchart (barchart.com/stocks/quotes/HLT/put-call-ratios)",
+      "date": "Recent session as of early Mar 2026"
+    },
+    {
+      "id": "DM-OPT-007",
+      "value": "N/A",
+      "type": "R",
+      "source": "Not available from web search",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-OPT-008",
+      "value": "N/A",
+      "type": "R",
+      "source": "Not available from web search",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-001",
+      "value": "Polymarket prices US recession by end of 2026 at 23-31% probability",
+      "type": "H",
+      "source": "Polymarket macro dashboard + event page",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-002",
+      "value": "Polymarket prices negative full-year GDP growth in 2026 at 10%",
+      "type": "H",
+      "source": "Polymarket event page",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-003",
+      "value": "Polymarket prices US inflation above 3% in 2026 at 29-30% probability",
+      "type": "H",
+      "source": "Polymarket inflation event page",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-004",
+      "value": "Polymarket prices US inflation above 4% in 2026 at 11%, above 5% at 9%",
+      "type": "H",
+      "source": "Polymarket inflation event page",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-005",
+      "value": "Fed funds rate at 3.50-3.75% after Jan 2026 FOMC; market expects 1-2 cuts in 2026",
+      "type": "H",
+      "source": "Kalshi rate cut count market + FOMC statement Jan 28, 2026",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-006",
+      "value": "No prediction markets exist specifically for hotel/travel/hospitality sector on Polymarket or Kalshi",
+      "type": "H",
+      "source": "WebSearch for hotel/travel/consumer spending on both platforms returned no results",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-PMK-007",
+      "value": "99% of Kalshi traders predicted Fed would hold rates steady at Jan 2026 meeting (confirmed correct)",
+      "type": "H",
+      "source": "Kalshi Fed decision market",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-SMT-001",
+      "value": "",
+      "type": "H",
+      "source": "fintel.io/so/us/hlt",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-SMT-002",
+      "value": "",
+      "type": "R",
+      "source": "marketbeat.com/stocks/NYSE/HLT/institutional-ownership/",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-SMT-003",
+      "value": "",
+      "type": "H",
+      "source": "marketbeat.com + fintel.io",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-SMT-004",
+      "value": "",
+      "type": "H",
+      "source": "fintel.io/so/us/hlt",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-SMT-005",
+      "value": "",
+      "type": "H",
+      "source": "quiverquant.com (cross-ref with multiple sources)",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-SMT-006",
+      "value": "",
+      "type": "H",
+      "source": "insidertrades.com/alerts/nyse-hlt-insider-buying-and-selling-2026-02-20/",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-SMT-007",
+      "value": "",
+      "type": "H",
+      "source": "hedgefollow.com/stocks/HLT",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-SMT-008",
+      "value": "",
+      "type": "H",
+      "source": "hedgefollow.com/stocks/HLT",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-SMT-009",
+      "value": "",
+      "type": "H",
+      "source": "hedgefollow.com/stocks/HLT",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-SMT-010",
+      "value": "",
+      "type": "H",
+      "source": "stockcircle.com/portfolio/warren-buffett + buffett.online",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-001",
+      "value": "FY2025 Revenue $12.04B",
+      "type": "H",
+      "source": "MCP fmp_data income FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-002",
+      "value": "FY2025 Net Income $1.457B",
+      "type": "H",
+      "source": "MCP fmp_data income FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-003",
+      "value": "FY2025 EPS $6.12 (diluted)",
+      "type": "H",
+      "source": "MCP fmp_data income FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-004",
+      "value": "FY2025 EBITDA $2.87B",
+      "type": "H",
+      "source": "MCP fmp_data income FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-005",
+      "value": "FY2025 FCF $2.03B",
+      "type": "H",
+      "source": "MCP fmp_data cashflow FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-006",
+      "value": "FY2025 Total Debt $15.67B",
+      "type": "H",
+      "source": "MCP fmp_data balance FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-007",
+      "value": "FY2025 Net Debt $14.70B",
+      "type": "H",
+      "source": "MCP fmp_data balance FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-008",
+      "value": "FY2025 Equity -$5.39B",
+      "type": "H",
+      "source": "MCP fmp_data balance FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-009",
+      "value": "FY2025 Buybacks $3.254B",
+      "type": "H",
+      "source": "MCP fmp_data cashflow FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-010",
+      "value": "FY2025 Interest Expense $620M",
+      "type": "H",
+      "source": "MCP fmp_data income FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-011",
+      "value": "FY2025 SBC $170M",
+      "type": "H",
+      "source": "MCP fmp_data cashflow FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-FIN-012",
+      "value": "Shares Out 238M (diluted)",
+      "type": "H",
+      "source": "MCP fmp_data income FY2025",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-VAL-001",
+      "value": "P/E TTM 50.2x",
+      "type": "H",
+      "source": "MCP fmp_data ratios TTM",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-VAL-002",
+      "value": "Forward P/E 29.5x",
+      "type": "H",
+      "source": "MCP fmp_data quote",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-VAL-003",
+      "value": "EV/EBITDA 28.7x",
+      "type": "H",
+      "source": "MCP fmp_data key-metrics TTM",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-VAL-004",
+      "value": "Net Debt/EBITDA 5.12x",
+      "type": "H",
+      "source": "MCP fmp_data key-metrics TTM",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-VAL-005",
+      "value": "FMP DCF $153.21",
+      "type": "H",
+      "source": "MCP fmp_data dcf",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-VAL-006",
+      "value": "FCF Yield 2.8%",
+      "type": "H",
+      "source": "MCP fmp_data ratios TTM",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-VAL-007",
+      "value": "ROIC 11.3%",
+      "type": "H",
+      "source": "MCP fmp_data key-metrics TTM",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-VAL-008",
+      "value": "Interest Coverage 4.3x",
+      "type": "H",
+      "source": "MCP fmp_data ratios TTM",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MKT-001",
+      "value": "Stock Price $307.32",
+      "type": "H",
+      "source": "MCP fmp_data quote",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MKT-002",
+      "value": "RSI(14) 34.3 (Near Oversold)",
+      "type": "H",
+      "source": "yfinance technical",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-MKT-003",
+      "value": "VIX 23.75",
+      "type": "H",
+      "source": "MCP get_market_overview",
+      "date": "2026-03-06"
+    },
+    {
+      "id": "DM-INF-001",
+      "value": "EPS CAGR FY25-30E ~21.8% vs Rev CAGR 8.3%",
+      "type": "R",
+      "source": "FMP estimates derived",
+      "date": "2026-03-06",
+      "chain": "EPS CAGR 21.8% >> Rev CAGR 8.3% = buyback shrinkage ~3%/yr + OPM expansion + leverage",
+      "falsifiable": "Buyback pace slows >30% or interest costs exceed EBITDA growth"
+    },
+    {
+      "id": "DM-INF-002",
+      "value": "Buyback/FCF 160% = need ~$1.2B/yr new debt to sustain buybacks",
+      "type": "R",
+      "source": "FMP cashflow derived",
+      "date": "2026-03-06",
+      "chain": "FY2025 buyback $3.25B vs FCF $2.03B = $1.22B gap funded by new debt",
+      "falsifiable": "FCF grows to >buyback level OR buyback pace reduced to <120% FCF"
+    },
+    {
+      "id": "DM-INF-003",
+      "value": "Negative equity worsening: -$821M to -$5,388M (5Y 6.6x)",
+      "type": "R",
+      "source": "FMP balance sheet derived",
+      "date": "2026-03-06",
+      "chain": "Treasury stock -$4.4B to -$14.4B driving negative equity acceleration",
+      "falsifiable": "Buyback pause or significant debt reduction reverses trend"
+    }
+  ],
+  "quality": {
+    "h_pct": 79.5,
+    "r_pct": 15.4,
+    "s_pct": 5.1,
+    "h_target_pct": 50,
+    "passed": true
+  }
+}

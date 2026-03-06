@@ -1,0 +1,134 @@
+{
+  "ticker": "HLT",
+  "company": "Hilton Worldwide Holdings Inc.",
+  "data_date": "2026-03-06",
+  "data_staleness_warning": "Short interest data as of mid-Feb 2026 reporting period; options data is indicative, not real-time",
+
+  "short_interest": {
+    "shares_short": 5080000,
+    "shares_short_note": "~5.08M shares short as of Feb 2026 reporting period",
+    "short_pct_float": 2.3,
+    "short_pct_float_note": "2.3% of float sold short — relatively low",
+    "days_to_cover": 2.0,
+    "days_to_cover_note": "Based on avg daily volume ~2.55M shares",
+    "avg_daily_volume": 2545654,
+    "trend": "declining",
+    "trend_detail": "Short interest fell ~13.1% in Feb 2026 (from ~5.85M to ~5.08M shares), bullish technical signal",
+    "short_squeeze_risk": "low",
+    "short_squeeze_assessment": "SI% of float at 2.3% is well below the 10% threshold typically needed for squeeze potential; days-to-cover at 2.0 is below the 5-day warning level; declining SI trend further reduces squeeze risk"
+  },
+
+  "options_sentiment": {
+    "put_call_ratio": 1.84,
+    "put_call_ratio_note": "Put volume 624 vs call volume 339 — bearish skew in recent session",
+    "put_call_interpretation": "Ratio >1.0 indicates more puts than calls being traded; 1.84 is significantly bearish relative to typical range (0.7-1.0 neutral)",
+    "implied_volatility": null,
+    "implied_volatility_note": "Specific current IV value not available from web search; check Barchart or MarketChameleon for real-time data",
+    "iv_rank": null,
+    "iv_rank_note": "IV Rank (1-year ATM IV relative to high/low) not available — requires real-time options analytics platform",
+    "iv_percentile": null,
+    "iv_percentile_note": "IV Percentile not available from search — check Barchart.com/options/iv-rank-percentile for current HLT data",
+    "unusual_activity": {
+      "detected": true,
+      "details": "Bearish-sentiment call option trade observed: 9 contracts at $270 strike, expiring Mar 20 2026 (92 DTE at time of trade). Activity level modest compared to broader market unusual options flow",
+      "whale_tracking": "UnusualWhales.com tracks HLT flow at unusualwhales.com/flow/ticker_flows/HLT"
+    }
+  },
+
+  "sentiment_summary": {
+    "short_interest_signal": "mildly_bullish",
+    "short_interest_rationale": "Low SI% (2.3%) + declining trend (-13.1% MoM) = minimal short-side pressure",
+    "options_signal": "bearish",
+    "options_rationale": "P/C ratio of 1.84 indicates elevated put buying relative to calls in recent sessions",
+    "combined_signal": "mixed_with_bearish_options_tilt",
+    "combined_rationale": "Short sellers are not aggressively positioned (bullish signal), but options market shows elevated put activity (bearish signal). Divergence may reflect hedging activity by long holders rather than outright bearish conviction"
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-OPT-001",
+      "metric": "Short Interest Shares",
+      "value": "~5.08M shares",
+      "date": "Feb 2026 reporting period",
+      "source": "MarketBeat (marketbeat.com/instant-alerts/hilton-worldwide-holdings-inc-nysehlt-sees-significant-decline-in-short-interest-2026-03-04)",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-OPT-002",
+      "metric": "Short % of Float",
+      "value": "2.3%",
+      "date": "Feb 2026",
+      "source": "MarketBeat + Finviz (finviz.com/quote.ashx?t=HLT)",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-OPT-003",
+      "metric": "Days to Cover",
+      "value": "2.0 days",
+      "date": "Feb 2026",
+      "source": "MarketBeat short interest report",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-OPT-004",
+      "metric": "Short Interest MoM Change",
+      "value": "-13.1%",
+      "date": "Feb 2026 vs prior period",
+      "source": "MarketBeat (significant decline report, 2026-03-04)",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-OPT-005",
+      "metric": "Average Daily Volume",
+      "value": "2,545,654 shares",
+      "date": "Feb 2026",
+      "source": "MarketBeat short interest calculation basis",
+      "confidence": "high"
+    },
+    {
+      "id": "DM-OPT-006",
+      "metric": "Put/Call Ratio",
+      "value": "1.84",
+      "date": "Recent session as of early Mar 2026",
+      "source": "Barchart (barchart.com/stocks/quotes/HLT/put-call-ratios)",
+      "confidence": "medium",
+      "confidence_note": "Single-day P/C ratio is volatile; multi-day average would be more reliable"
+    },
+    {
+      "id": "DM-OPT-007",
+      "metric": "Implied Volatility",
+      "value": "N/A",
+      "date": "2026-03-06",
+      "source": "Not available from web search",
+      "confidence": "none",
+      "confidence_note": "Requires real-time options data feed (Barchart, ThinkorSwim, MarketChameleon)"
+    },
+    {
+      "id": "DM-OPT-008",
+      "metric": "IV Rank / IV Percentile",
+      "value": "N/A",
+      "date": "2026-03-06",
+      "source": "Not available from web search",
+      "confidence": "none",
+      "confidence_note": "Check barchart.com/options/iv-rank-percentile for current data"
+    }
+  ],
+
+  "data_gaps": [
+    "Implied volatility (current ATM IV) — requires real-time options platform",
+    "IV Rank and IV Percentile — requires real-time options platform",
+    "Multi-day put/call ratio trend — single session data only",
+    "Options open interest distribution by strike — not captured",
+    "Institutional vs retail options flow breakdown — not available from web search"
+  ],
+
+  "source_urls": [
+    "https://www.marketbeat.com/instant-alerts/hilton-worldwide-holdings-inc-nysehlt-sees-significant-decline-in-short-interest-2026-03-04/",
+    "https://fintel.io/ss/us/hlt",
+    "https://finviz.com/quote.ashx?t=HLT",
+    "https://www.barchart.com/stocks/quotes/HLT/put-call-ratios",
+    "https://www.barchart.com/stocks/quotes/HLT/unusual-activity",
+    "https://unusualwhales.com/flow/ticker_flows/HLT",
+    "https://shortsqueeze.com//shortinterest/stock/term2.php?s=HLT"
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "ticker": "HLT",
+    "company": "Hilton Worldwide Holdings Inc.",
+    "data_date": "2026-03-06",
+    "agent": "Agent-E (Management)"
+  },
+  "ceo": {
+    "name": "Christopher J. Nassetta",
+    "title": "President & Chief Executive Officer",
+    "tenure_years": 18.4,
+    "tenure_start": "2007-10",
+    "background": "Born 1964, Arlington, VA. UVA + London School of Economics. Started in hospitality at age 16. Co-founded Bailey Capital Corporation (1991, real estate investment/advisory). Joined Host Hotels & Resorts 1995 as EVP, COO by 1997, CEO from 2000-2007. One of longest-serving CEOs in hospitality sector.",
+    "track_record": {
+      "room_growth": "More than doubled brand portfolio, global property and room counts since 2007. Expanded to ~140 countries/territories.",
+      "tsr_5yr": "125% (stock $110.91 to $247.16 over 5-year period ending 2024)",
+      "capital_return_2024": "$3.0B returned to shareholders via buybacks and dividends",
+      "development_record_2024": "Signed record 154,000 rooms for development; opened more rooms than any prior year",
+      "brand_expansion": "Portfolio expanded from ~10 brands to 24 brands under his tenure",
+      "asset_light_transformation": "Led Hilton's transformation to asset-light model post-Blackstone LBO (2007) and IPO (2013), spinning off Park Hotels & Resorts and Hilton Grand Vacations in 2017"
+    },
+    "compensation_2024": {
+      "total": "$27,957,967",
+      "salary": "$1,300,000",
+      "bonus": "$3,221,400",
+      "stock_options": "$5,774,955",
+      "stock_awards": "$17,324,770",
+      "other": "$336,842",
+      "pay_ratio_to_median_worker": "549:1 (2023 data)"
+    },
+    "shares_held": {
+      "direct": "36,445 shares (post Feb 2026 exercise/sale)",
+      "indirect_harwood_road_llc": "801,716 shares",
+      "indirect_revocable_trust": "2,714,228 shares",
+      "total_approximate": "3,552,389 shares",
+      "ownership_pct": "~1.53%",
+      "value_approximate": "$1.11B"
+    },
+    "recent_transactions": {
+      "date": "2026-02-17",
+      "action": "Exercised options for 114,289 shares at $41.41/share; sold 114,289 shares at $316.27-$319.30 weighted average"
+    }
+  },
+  "cfo": {
+    "name": "Kevin J. Jacobs",
+    "title": "Chief Financial Officer & President, Global Development (development role through 2025)",
+    "tenure_start_hilton": "2008",
+    "cfo_since": "2013",
+    "background": "Cornell University School of Hotel Administration ('94). Prior: SVP M&A and Treasurer at Fairmont Raffles Hotels International. 7 years at Host Hotels & Resorts (VP Corporate Strategy & IR). Earlier: PwC Hospitality Consulting, Cushman & Wakefield Hospitality Valuation Group.",
+    "career_at_hilton": "Joined 2008 as SVP Corporate Strategy → Treasurer (2009) → EVP & Chief of Staff (2012) → CFO (2013). Also served as President, Global Development (2020-2025).",
+    "board_memberships": "Board of Directors, Omega Healthcare Investors; Trustee, Cornell University; Dean's Advisory Board, Cornell SHA; Immediate Past Chair, American Hotel & Lodging Association",
+    "compensation_2024": {
+      "total": "$9,094,594",
+      "salary": "$1,000,000",
+      "bonus": "$1,241,200",
+      "stock_options": "$1,710,000",
+      "stock_awards": "$5,129,594",
+      "other": "$13,800"
+    }
+  },
+  "key_executives": [
+    {
+      "name": "Christopher W. Silcock",
+      "title": "President, Global Brands & Commercial Services",
+      "compensation_2024": "$6,610,000",
+      "notes": "Leads brand management and commercial operations globally"
+    },
+    {
+      "name": "Laura A. Fuentes",
+      "title": "EVP, Chief Human Resources Officer & Hilton Supply Management",
+      "compensation_2024": "$4,210,000",
+      "notes": "Dual role covering HR and supply chain management"
+    },
+    {
+      "name": "Caroline Krass",
+      "title": "EVP and General Counsel",
+      "notes": "Current general counsel, succeeded Anne-Marie D'Angelo"
+    },
+    {
+      "name": "Christian Charnaux",
+      "title": "EVP and Chief Development Officer",
+      "notes": "Returned to Hilton July 2025. Previously held leadership roles at Hilton in brand management, commercial services, and finance."
+    },
+    {
+      "name": "Anne-Marie D'Angelo",
+      "title": "Former EVP, General Counsel and Secretary",
+      "compensation_2024": "$5,620,000",
+      "notes": "Departed; replaced by Caroline Krass"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2025-07",
+      "change": "Christian Charnaux returned as EVP and Chief Development Officer",
+      "significance": "Development leadership separated from CFO Kevin Jacobs, who had dual-hatted as President Global Development since 2020"
+    },
+    {
+      "date": "2025",
+      "change": "Caroline Krass appointed EVP and General Counsel, replacing Anne-Marie D'Angelo",
+      "significance": "Legal leadership transition"
+    }
+  ],
+  "insider_ownership_pct": {
+    "ceo_nassetta": "~1.53% (~$1.11B value)",
+    "all_insiders_sec_filings": "~1.78% (Jan 2025, TipRanks/TIKR methodology)",
+    "note": "WallStreetZen reports 39.45% insider ownership but likely includes Blackstone-affiliated holdings. The ~1.78% figure from SEC proxy filings is more conservative and reflects direct/indirect holdings of named officers and directors. Blackstone (Jon Gray is Board Chair) remains a significant institutional holder.",
+    "institutional_ownership": "~62-98% depending on source methodology",
+    "data_conflict": "Multiple sources report widely different insider ownership (1.78% vs 39.45%). The discrepancy likely reflects whether Blackstone's ~20%+ stake is classified as 'insider' given Jon Gray's dual role as Board Chair and Blackstone COO."
+  },
+  "compensation_highlights": {
+    "say_on_pay_approval": ">90% stockholder support (2023 vote)",
+    "peer_group": "17 hospitality, travel, and global consumer brands",
+    "program_structure": "Base salary + annual cash bonus + long-term equity (options + restricted stock units)",
+    "total_neo_comp_2024": {
+      "nassetta_ceo": "$27.96M",
+      "jacobs_cfo": "$9.09M",
+      "silcock": "$6.61M",
+      "dangelo_former_gc": "$5.62M",
+      "fuentes_chro": "$4.21M"
+    },
+    "ceo_comp_trend": "Up ~13% YoY from 2023 ($26.6M → $27.96M)",
+    "note": "Nassetta consistently among highest-paid hotel CEOs globally"
+  },
+  "governance_notes": {
+    "board_chair": "Jon Gray (President & COO, Blackstone Group; Chairman since 2021)",
+    "board_independence": "Majority independent directors; Blackstone representation via Gray reflects legacy LBO ownership",
+    "committees": ["Audit Committee", "Compensation Committee", "Nominating and Corporate Governance Committee"],
+    "blackstone_influence": "Blackstone took Hilton private in 2007 ($26B LBO). IPO 2013. Blackstone has gradually reduced stake but Jon Gray remains Board Chair, maintaining strategic influence.",
+    "governance_documents": "Available at ir.hilton.com/corporate-governance/governance-documents",
+    "key_risk": "Board Chair tied to largest PE firm creates potential governance conflict; mitigated by strong independent committee structure and >90% Say-on-Pay approval"
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-MGT-001",
+      "claim": "Nassetta CEO since Oct 2007, tenure 18+ years",
+      "source": "Wikipedia, Hilton corporate bio (stories.hilton.com)",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-002",
+      "claim": "Nassetta total comp $27.96M in 2024",
+      "source": "SEC proxy filing hlt-20250324, salary.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-003",
+      "claim": "Kevin Jacobs CFO since 2013, joined Hilton 2008",
+      "source": "Hilton corporate bio, Cornell profile",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-004",
+      "claim": "Jacobs total comp $9.09M in 2024",
+      "source": "SEC proxy filing, salary.com",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-005",
+      "claim": "5-year TSR 125% under Nassetta",
+      "source": "Hilton 2024 proxy statement",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-006",
+      "claim": "Record 154,000 rooms signed for development in 2024",
+      "source": "Hilton 2024 annual report/proxy",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-007",
+      "claim": "$3.0B returned to shareholders in 2024",
+      "source": "Hilton 2024 proxy statement",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-008",
+      "claim": "Nassetta owns ~1.53% of HLT (~$1.11B value)",
+      "source": "SEC Form 4 filing Feb 2026, fintool.com",
+      "confidence": "MEDIUM-HIGH (value fluctuates with stock price)"
+    },
+    {
+      "id": "DM-MGT-009",
+      "claim": "Jon Gray (Blackstone COO) serves as Board Chair since 2021",
+      "source": "Hilton IR board of directors page",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-010",
+      "claim": "Say-on-Pay approval >90% (2023)",
+      "source": "Hilton 2025 proxy statement",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-011",
+      "claim": "Christian Charnaux returned as EVP/CDO July 2025",
+      "source": "CoStar hotel C-suite changes 2025",
+      "confidence": "HIGH"
+    },
+    {
+      "id": "DM-MGT-012",
+      "claim": "Nassetta exercised/sold 114,289 shares Feb 2026 at $316-319/share",
+      "source": "SEC Form 4 filing 2026-02-17, stocktitan.net",
+      "confidence": "HIGH"
+    }
+  ]
+}

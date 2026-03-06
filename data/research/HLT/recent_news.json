@@ -1,0 +1,231 @@
+{
+  "ticker": "HLT",
+  "company": "Hilton Worldwide Holdings Inc.",
+  "data_collected": "2026-03-06",
+  "agent": "Agent-C (News & Catalysts)",
+
+  "key_news": [
+    {
+      "date": "2026-02-11",
+      "headline": "Hilton Reports Q4/FY2025 Results, Guides Higher Profit with $3.5B Capital Return",
+      "summary": "Q4 diluted adjusted EPS $2.08, FY2025 EPS $8.11. FY2026 net income guidance $1,982M-$2,011M, Adjusted EBITDA $4,000M-$4,040M. Board authorized additional $3.5B share repurchase. Record pipeline of 520,500 rooms under development. Q4 approved 37,400 new rooms. RevPAR guidance +1.0%-2.0% for 2026.",
+      "sentiment": "positive",
+      "source": "stocktitan.net/sec-filings/HLT/8-k",
+      "dm_anchor": "DM-NEW-001"
+    },
+    {
+      "date": "2026-02-11",
+      "headline": "CEO Nassetta: 2026 'Will Be a Lot Better Than 25' After Sluggish Growth",
+      "summary": "CEO Chris Nassetta expressed optimism for 2026 citing favorable data, FIFA World Cup, and US 250th anniversary as travel catalysts. Acknowledged sluggish 2025 growth but sees macro tailwinds ahead.",
+      "sentiment": "positive",
+      "source": "skift.com/2026/02/11/hilton-ceo-2026-will-be-a-lot-better-than-25",
+      "dm_anchor": "DM-NEW-002"
+    },
+    {
+      "date": "2026-02-11",
+      "headline": "Hilton Called 'Gold Standard' of Global Lodging After Record 2025 Earnings",
+      "summary": "Financial analysis piece highlights Hilton's asset-light model dominance, record development pipeline (520,500 rooms), and industry-leading net unit growth of 6.7% in 2025.",
+      "sentiment": "positive",
+      "source": "markets.financialcontent.com/finterra-2026-2-11-deep-dive",
+      "dm_anchor": "DM-NEW-003"
+    },
+    {
+      "date": "2026-02-25",
+      "headline": "Hilton & Explora Journeys Launch Hilton Honors Adventures",
+      "summary": "Partnership expanding Hilton Honors loyalty program to ocean travel. Members will be able to earn and redeem points on Explora Journeys sailings by summer 2026. Extends loyalty ecosystem beyond hotels.",
+      "sentiment": "positive",
+      "source": "stories.hilton.com",
+      "dm_anchor": "DM-NEW-004"
+    },
+    {
+      "date": "2026-03-01",
+      "headline": "Hilton Debuts Apartment Collection Brand",
+      "summary": "Hilton launches new 'Apartment Collection' brand expanding into residential hospitality segment, adding to its portfolio of 24 brands. Targets extended-stay and residential demand.",
+      "sentiment": "positive",
+      "source": "hoteldive.com/news/hilton-debuts-apartment-collection-brand",
+      "dm_anchor": "DM-NEW-005"
+    },
+    {
+      "date": "2026-03-03",
+      "headline": "The Monarch San Antonio Opens — Lifestyle Brand Expansion",
+      "summary": "New lifestyle hotel opens in San Antonio, part of Hilton's push into lifestyle segment. Signals continued execution on new brand launches and premium positioning.",
+      "sentiment": "neutral",
+      "source": "stories.hilton.com/releases/the-highly-awaited-monarch-san-antonio-now-open",
+      "dm_anchor": "DM-NEW-006"
+    },
+    {
+      "date": "2026-01-06",
+      "headline": "Hilton Responds After DHS Says Franchise Hotel Canceled Agents' Stay",
+      "summary": "A Hilton franchise property faced controversy after DHS agents' reservations were reportedly canceled. Hilton corporate distanced itself, highlighting franchise model dynamics. Minor reputational risk.",
+      "sentiment": "negative",
+      "source": "axios.com/2026/01/06/hilton-hotels-dhs-cancellations",
+      "dm_anchor": "DM-NEW-007"
+    },
+    {
+      "date": "2026-02-27",
+      "headline": "Hilton & SLH Partnership Updates — February 2026 Additions and Removals",
+      "summary": "Hilton's Small Luxury Hotels partnership continues evolving with property additions and removals. SLH integration gives Hilton access to independent luxury inventory without capital commitment.",
+      "sentiment": "neutral",
+      "source": "loyaltylobby.com/2026/02/27/hilton-slh-partnership",
+      "dm_anchor": "DM-NEW-008"
+    },
+    {
+      "date": "2026-02-11",
+      "headline": "Hilton Q1 2026 Earnings Guidance Released",
+      "summary": "Hilton provided Q1 2026 earnings guidance alongside FY2025 results. Guidance implies continued but modest RevPAR growth in the near term.",
+      "sentiment": "neutral",
+      "source": "marketbeat.com/instant-alerts/hilton-worldwide-nysehlt-releases-q1-2026-earnings-guidance",
+      "dm_anchor": "DM-NEW-009"
+    },
+    {
+      "date": "2026-01-15",
+      "headline": "Hilton 2026 Trends Report: The Whycation",
+      "summary": "Annual trends report highlights 'Whycation' — purpose-driven travel as the emerging consumer behavior. Positions Hilton as aligned with experience economy shift.",
+      "sentiment": "neutral",
+      "source": "stories.hilton.com/2026-trends",
+      "dm_anchor": "DM-NEW-010"
+    }
+  ],
+
+  "upcoming_catalysts": [
+    {
+      "date": "2026-04-23 (estimated)",
+      "event": "Q1 2026 Earnings Report",
+      "significance": "high",
+      "notes": "First quarter results will validate CEO's '2026 better than 25' thesis. RevPAR trend and pipeline conversion key metrics. Estimated date based on historical pattern (late April).",
+      "dm_anchor": "DM-NEW-011"
+    },
+    {
+      "date": "2026-06-11 to 2026-07-19",
+      "event": "2026 FIFA World Cup (US/Canada/Mexico)",
+      "significance": "high",
+      "notes": "CEO Nassetta explicitly cited as major travel demand catalyst. Hilton's US-heavy portfolio (>60% domestic) well-positioned. RevPAR uplift expected in host cities.",
+      "dm_anchor": "DM-NEW-012"
+    },
+    {
+      "date": "2026-07-04",
+      "event": "US 250th Anniversary (Semiquincentennial)",
+      "significance": "medium",
+      "notes": "CEO cited as demand catalyst alongside World Cup. Tourism boost expected particularly in historical destinations (Philadelphia, DC, Boston).",
+      "dm_anchor": "DM-NEW-013"
+    },
+    {
+      "date": "2026-H1",
+      "event": "Waldorf Astoria London — Admiralty Arch Opening",
+      "significance": "medium",
+      "notes": "One of London's most iconic luxury hotel openings. Signature property for Waldorf Astoria brand positioning in ultra-luxury segment.",
+      "dm_anchor": "DM-NEW-014"
+    },
+    {
+      "date": "2026-Summer",
+      "event": "Hilton Honors Adventures Launch (Explora Journeys)",
+      "significance": "medium",
+      "notes": "Loyalty ecosystem expansion to ocean travel. Tests whether Hilton can monetize loyalty beyond lodging.",
+      "dm_anchor": "DM-NEW-015"
+    },
+    {
+      "date": "2026 (TBD)",
+      "event": "Undergraduate Brand Launch — Midscale Segment Entry",
+      "significance": "medium",
+      "notes": "New midscale brand targeting college towns. Expands TAM downmarket. Competitive with Choice Hotels and Wyndham in economy/midscale.",
+      "dm_anchor": "DM-NEW-016"
+    },
+    {
+      "date": "Ongoing 2026",
+      "event": "$3.5B Share Repurchase Execution",
+      "significance": "high",
+      "notes": "Board authorized additional $3.5B buyback in Jan 2026. At ~$312/share, implies ~11.2M shares or ~4% of float. Accretive to EPS.",
+      "dm_anchor": "DM-NEW-017"
+    }
+  ],
+
+  "insider_activity": [
+    {
+      "date": "2026-02-25",
+      "insider": "Laura Fuentes (Executive)",
+      "transaction": "Award/Acquisition",
+      "details": "Received 6,227 stock options + 8,714 shares common stock + 2,250 additional shares. Under 2017 Omnibus Incentive Plan, vesting begins March 2027.",
+      "dm_anchor": "DM-NEW-018"
+    },
+    {
+      "date": "2026-02-25",
+      "insider": "Christian H. Charnaux (Executive)",
+      "transaction": "Award/Acquisition",
+      "details": "Received 6,169 stock options + 2,229 restricted stock units.",
+      "dm_anchor": "DM-NEW-019"
+    },
+    {
+      "date": "2026-02-25",
+      "insider": "Christopher W. Silcock (Executive)",
+      "transaction": "Award/Acquisition",
+      "details": "Acquired 4,122 shares from vested performance units + 13,448 RSUs + 11,410 stock options.",
+      "dm_anchor": "DM-NEW-020"
+    },
+    {
+      "date": "2026-02-25",
+      "insider": "Kevin J. Jacobs (CFO)",
+      "transaction": "Award/Acquisition",
+      "details": "Received 15,787 stock options + 31,602 common stock award shares. Largest insider grant, consistent with CFO role.",
+      "dm_anchor": "DM-NEW-021"
+    },
+    {
+      "insider_activity_summary": "All recent Form 4 filings show equity awards/grants only — no open market sales detected in 2026. Positive signal: insiders accumulating, not liquidating.",
+      "dm_anchor": "DM-NEW-022"
+    }
+  ],
+
+  "analyst_consensus": {
+    "current_price": 311.80,
+    "price_target_consensus": 325.00,
+    "upside_pct": 4.2,
+    "ratings_breakdown": {
+      "buy": 13,
+      "hold": 12,
+      "sell": 1
+    },
+    "notes": "Consensus implies modest upside. Near-even buy/hold split suggests market sees fair valuation with limited re-rating catalyst near-term.",
+    "dm_anchor": "DM-NEW-023"
+  },
+
+  "key_metrics_from_news": {
+    "fy2025_adj_eps": 8.11,
+    "q4_2025_adj_eps": 2.08,
+    "fy2026_net_income_guidance_low": 1982,
+    "fy2026_net_income_guidance_high": 2011,
+    "fy2026_adj_ebitda_guidance_low": 4000,
+    "fy2026_adj_ebitda_guidance_high": 4040,
+    "fy2026_revpar_growth_guidance": "1.0%-2.0%",
+    "pipeline_rooms": 520500,
+    "net_unit_growth_2025": "6.7%",
+    "share_repurchase_authorization": 3500,
+    "brands_count": 24,
+    "dm_anchor": "DM-NEW-024"
+  },
+
+  "dm_anchors": [
+    "DM-NEW-001: Q4/FY2025 earnings — stocktitan.net 8-K filing",
+    "DM-NEW-002: CEO Nassetta 2026 optimism — Skift 2026-02-11",
+    "DM-NEW-003: Gold Standard analysis — FinancialContent 2026-02-11",
+    "DM-NEW-004: Hilton Honors Adventures — stories.hilton.com",
+    "DM-NEW-005: Apartment Collection launch — Hotel Dive",
+    "DM-NEW-006: Monarch San Antonio opening — stories.hilton.com",
+    "DM-NEW-007: DHS franchise controversy — Axios 2026-01-06",
+    "DM-NEW-008: SLH partnership updates — LoyaltyLobby 2026-02-27",
+    "DM-NEW-009: Q1 2026 guidance — MarketBeat 2026-02-11",
+    "DM-NEW-010: Whycation trends report — stories.hilton.com",
+    "DM-NEW-011: Q1 2026 earnings date estimated — MarketBeat/Zacks",
+    "DM-NEW-012: FIFA World Cup 2026 catalyst — Skift CEO interview",
+    "DM-NEW-013: US 250th Anniversary — Skift CEO interview",
+    "DM-NEW-014: Waldorf Astoria London — stories.hilton.com",
+    "DM-NEW-015: Explora Journeys partnership — stories.hilton.com",
+    "DM-NEW-016: Undergraduate brand — Skift/stories.hilton.com",
+    "DM-NEW-017: $3.5B buyback authorization — stocktitan.net 8-K",
+    "DM-NEW-018: Laura Fuentes Form 4 — stocktitan.net",
+    "DM-NEW-019: Christian Charnaux Form 4 — stocktitan.net",
+    "DM-NEW-020: Christopher Silcock Form 4 — stocktitan.net",
+    "DM-NEW-021: Kevin Jacobs Form 4 — stocktitan.net",
+    "DM-NEW-022: Insider activity summary — nasdaq.com/gurufocus.com",
+    "DM-NEW-023: Analyst consensus — public.com/CNN",
+    "DM-NEW-024: Key financial metrics compilation — multiple sources"
+  ]
+}

@@ -7,9 +7,9 @@ industry: "consumer"
 report_version: "v1.0"
 last_updated: "2026-03-06T14:30:00+08:00"
 
-current_phase: "-0.5"
-phase_status: "lit_recon_complete"
-note: "Phase -1 + -0.5完成。Preflight CLEARED。Planning guide写好。待Phase 0数据预取。"
+current_phase: "0.75"
+phase_status: "thesis_crystallization_complete"
+note: "Phase 0数据预取完成(78 DM锚点, 14文件全OK) + Phase 0.75核心矛盾结晶完成。待Phase 1启动。"
 
 # 目标 (质量突破专项)
 target_chars: 340000
@@ -76,11 +76,22 @@ v18_gates:
 
 # Quick ref
 quick_ref:
-  price: "~326.6"
-  market_cap: "~65B"
-  pe_ttm: "~40x+"
-  ev_ebitda: 29.73
-  fy25_net_income: 1.46B
+  price: "$307.32"
+  market_cap: "~$73B"
+  pe_ttm: "50.2x"
+  ev_ebitda: 28.7
+  fy25_net_income: 1.457B
+  fy25_revenue: 12.04B
+  fy25_fcf: 2.03B
+  fy25_ebitda: 2.87B
+  total_debt_fmp: 15.67B
+  net_debt: 14.70B
+  roic: "11.3%"
+  fcf_yield: "2.8%"
+  buyback_fcf_ratio: "160%"
+  net_debt_ebitda: "5.12x"
+  dm_anchors: 78
+  rsi14: 34.3
   fy26e_eps: "8.65-8.77"
   fy26e_ebitda: "4.00-4.04B"
   revpar_fy25: "+0.4%"
@@ -99,3 +110,8 @@ sessions:
     phase: "-1→-0.5"
     status: complete
     notes: "tier3_launch + 5路lit_recon + preflight CLEARED + planning_guide"
+  - session: "v1.0-S2"
+    date: "2026-03-06"
+    phase: "0→0.75"
+    status: complete
+    notes: "MCP 10calls + 7 WebSearch Agents(9文件81KB) + 78 DM锚点 + thesis_crystallization"

@@ -1,0 +1,47 @@
+{
+  "version": "4.0",
+  "ticker": "HLT",
+  "company": "Hilton Worldwide Holdings Inc.",
+  "industry": "consumer",
+  "timestamp": "2026-03-06T15:30:00+08:00",
+  "data_files": {
+    "stock_full": { "status": "ok", "source": "MCP:analyze_stock+fmp_data(10calls)", "fetched_at": "2026-03-06T14:45:00+08:00", "expires_at": "2026-03-06T18:45:00+08:00" },
+    "peer_comparison": { "status": "ok", "source": "MCP:fmp_data+analyze_stock", "fetched_at": "2026-03-06T14:45:00+08:00", "expires_at": "2026-03-07T14:45:00+08:00" },
+    "market_context": { "status": "ok", "source": "MCP:get_market_overview", "fetched_at": "2026-03-06T14:45:00+08:00", "expires_at": "2026-03-06T18:45:00+08:00" },
+    "dcf_valuation": { "status": "ok", "source": "MCP:fmp_data dcf", "fetched_at": "2026-03-06T14:45:00+08:00", "expires_at": "2026-03-13T14:45:00+08:00" },
+    "comparable_analysis": { "status": "ok", "source": "MCP:fmp_data ratios peer set", "fetched_at": "2026-03-06T14:45:00+08:00", "expires_at": "2026-03-13T14:45:00+08:00" },
+    "analyst_consensus": { "status": "ok", "source": "WebSearch:Agent-A", "fetched_at": "2026-03-06T15:00:00+08:00", "expires_at": "2026-03-09T15:00:00+08:00" },
+    "prediction_market": { "status": "ok", "source": "WebSearch:Agent-B", "fetched_at": "2026-03-06T15:00:00+08:00", "expires_at": "2026-03-07T03:00:00+08:00" },
+    "recent_news": { "status": "ok", "source": "WebSearch:Agent-C", "fetched_at": "2026-03-06T15:00:00+08:00", "expires_at": "2026-03-06T21:00:00+08:00" },
+    "business_overview": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-03-06T15:00:00+08:00", "expires_at": "2026-04-05T15:00:00+08:00" },
+    "competitive_landscape": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-03-06T15:00:00+08:00", "expires_at": "2026-03-13T15:00:00+08:00" },
+    "management_team": { "status": "ok", "source": "WebSearch:Agent-E", "fetched_at": "2026-03-06T15:00:00+08:00", "expires_at": "2026-04-05T15:00:00+08:00" },
+    "smart_money_13f": { "status": "ok", "source": "WebSearch:Agent-F", "fetched_at": "2026-03-06T15:00:00+08:00", "expires_at": "2026-03-13T15:00:00+08:00" },
+    "options_short_interest": { "status": "ok", "source": "WebSearch:Agent-G", "fetched_at": "2026-03-06T15:00:00+08:00", "expires_at": "2026-03-07T03:00:00+08:00" },
+    "dm_anchor_registry": { "status": "ok", "source": "prefetch:aggregator", "fetched_at": "2026-03-06T15:30:00+08:00", "expires_at": "N/A" }
+  },
+  "quality": {
+    "complete_fields": 14,
+    "total_fields": 14,
+    "completeness_pct": 100,
+    "files_ok": 14,
+    "files_error": 0,
+    "files_total": 14
+  },
+  "dm_quality": {
+    "total_anchors": 78,
+    "h_count": 62,
+    "r_count": 12,
+    "s_count": 4,
+    "h_pct": 79.5,
+    "anchors_with_source": 78,
+    "r_with_chain": 3,
+    "r_with_falsifiable": 3,
+    "integrity_check": "passed"
+  },
+  "layer_status": {
+    "layer1_mcp": "ok",
+    "layer2_python": "ok",
+    "layer3_websearch": "ok"
+  }
+}
