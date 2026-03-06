@@ -244,16 +244,19 @@ HLT溢价: vs MAR +43%, vs IHG +82%, vs SPY +83%
 - 亚太: 1,000家运营, Pipeline 915家, 在建份额25%
 
 ### 管理层 (MGT)
-- CEO: Christopher J. Nassetta, 19年任期
-- CFO: Kevin Jacobs, 15年+任期
-- 内部人持股: ~1.2% (Nassetta ~$120M)
-- 高管买入信号: Kevin Silcock $493K公开市场买入
+- CEO: Christopher J. Nassetta, 18.4年任期, 薪酬$27.96M(2024)
+- CFO: Kevin Jacobs, 13年任CFO(2008年加入), 薪酬$9.09M(2024)
+- 内部人持股: SEC口径~1.78% (数据冲突: 部分源报39.45%含Blackstone关联)
+- **CEO Nassetta大额减持**: 2026-02-17, 114,289股@$317.47(~$36.3M), 减持其持仓75.82% (重大负面信号)
+- 高管Silcock $493K公开市场买入(正面信号, 但量级远小于CEO减持)
+- 董事会主席Jon Gray = Blackstone COO (2007 LBO遗留)
 
 ### 聪明钱 (SMT)
 - 机构持有: ~96%
-- Top holders: Vanguard(10.3%), BlackRock(8.5%), Capital Group(6.1%), Fidelity(5.8%)
+- Top holders: Vanguard(10.95%), BlackRock(9.6%), Capital Group(6.1%), Fidelity(5.8%)
 - 近期动向: Fidelity/JPM加仓, BlackRock微减
-- 新建仓: Citadel $450M新仓 (Q4 2025)
+- **Ackman/Pershing Square清仓HLT** (2026-02-11) → 转投$2B META (重大信号)
+- Q4 2025: 534家增持 vs 511家减持, 但美元计减持更大(Jennison -$411M, Principal -$320M)
 
 ### 期权做空 (OPT)
 - Short interest: 2.82% (极低)
