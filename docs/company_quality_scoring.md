@@ -375,6 +375,14 @@ IHG真实OPM 65% → 实际和FICO同级(68%)
 
 ---
 
+## 与Top20 Screener的关系
+
+> 本框架用于**单股深度分析**(Tier 1-3, 人工评分)。
+> 自动批量筛选使用 `Top20_Screener/scoring/moat_framework.md`(Python驱动, Morningstar 5类/25分)。
+> 两者互补: Screener筛出候选 → 本框架逐只深度评估。不合并, 因为自动化需要代理指标, 深度分析需要直接证据。
+
+---
+
 ## 版本记录
 
 | 版本 | 日期 | 变化 |
