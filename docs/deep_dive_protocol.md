@@ -1,6 +1,7 @@
-# Deep-Dive 分析协议 v18.0 (Tier 3)
+# Deep-Dive 分析协议 v18.1 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
+> **v18.1变化**: 品质量化评估框架集成——Phase 0新增A品质门控+D修正因子, Phase 1/2/3分阶段评估B商业模型+C护城河21个子维度, Phase 5汇总品质评分卡+复利路径分类。详见`docs/company_quality_scoring.md`。
 > **v18.0变化**: 战略报告框架回流——Phase 1新增CEO沉默分析(QG-01.5)+Phase 3新增Playing to Win量化评分(QG-07.5, 含寡头行业博弈论条件增强)+Phase 5 Kill Switch从9字段→12字段(新增单独触发行动/协同触发/评级影响)。源自SEMI_EQUIPMENT_STRATEGY报告(4.2/5)的3个框架创新验证。
 > **v14.1变化**: Phase 0新增SGI速判(专才-通才光谱诊断)。
 > **v14.0变化**: 知识层(Phase -1知识库检索+Phase -0.5外部文献侦察)+knowledge_index.yaml+planning_archives+搜索模板。
@@ -138,7 +139,16 @@
      - 工业: ITW(SGI~6) vs 3M(SGI~3) | P/E溢价+1%(品类边界不刚性)
    - **详细方法论**: `docs/a_score_v2.md` §4.4
 
-**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算 + SGI已计算
+11. **品质门控评分 (CQ-Score Phase 0)** — 数据预取完成后，立即执行 `docs/company_quality_scoring.md` 中A+D维度:
+   - **A品质门控(QG-1~7)**: 用FMP数据逐项评估CapEx/Rev, FCF/NI, Rev CAGR, Rev下降次数, ROIC, 流动比率, 净债务/EBITDA
+   - **D1周期性**: 评估公司在反周期/非周期/弱周期/强周期中的位置 → 确定乘数
+   - **D2收入纯度**: 检查报告收入 vs 费用收入比例 → 决定后续Phase是否需要OPM还原
+   - **D3被忽视度**: 市值+分析师覆盖度 → 加分/减分
+   - **行业修正**: 应用worktree CLAUDE.md中的行业特定修正(如半导体QG-1放宽至20%, 金融QG-1/QG-6豁免)
+   - **输出**: `reports/{TICKER}/data/quality_scorecard.md` 初版(A+D已填, B+C留空待Phase 1-3填入)
+   - **路由影响**: D1=强周期 → Phase 2需额外周期性税分析; D2<50% → Phase 2必须做收入纯度还原
+
+**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算 + SGI已计算 + quality_scorecard.md初版已创建(A+D完成)
 
 **Research Scorecard (v13.1)**: Phase 0/0.5完成后运行 `bash tests/research_scorecard.sh pre {TICKER}` 记录基线分数(典型15-25分)。分数写入checkpoint.yaml的`scorecard.pre`节。
 
@@ -334,6 +344,17 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 - **ETN验证**: Ch9A贡献+0.2分质量提升, 产出GOES脆弱点+Hyperscaler集中度+恐惧囤积等非共识洞见
 - 触发判断: `L0_index.yaml` 中行业标签为半导体/工业 **且** 公司有≥3个业务板块
 
+**品质评分 Phase 1维度 (v18.1新增)**:
+Phase 1公司定位分析中，同步评估以下品质维度(写入quality_scorecard.md):
+- **B1 收入引擎清晰度**: 在业务模型分析中评估有机增长率+引擎可追踪性 → 评分/5
+- **B2 客户锁定深度**: 在客户分析中评估锁定类型(标准/运营/网络/渠道) → 评分/5
+- **B3 收入经常性**: 在收入结构分析中评估合同/订阅/消耗品/一次性占比 → 评分/5
+- **B8 管理层质量**: 在管理层评估中评估创始人/持股/文化传承 → 评分/5
+- **C1 制度/标准嵌入**: 在产业链映射中评估监管强制/行业标准地位 → 评分/5
+- **C3 生态锁定**: 在竞争分析中评估多产品/数据/流程嵌入深度 → 评分/5
+- **C6 密度/物理壁垒**: 在产业链映射中评估不可复制物理资产 → 评分/5
+行业加权: 应用worktree修正(如消费品B4×1.5, 生态科技C2×2.0)
+
 **CEO沉默分析 (v18.0新增 — EVO-STRATEGY-001)**:
 管理层评估中新增**"沉默分析"子模块**——系统性识别CEO在公开沟通中刻意回避或未曾提及的话题。CEO不说的东西往往比说的更有信息量。
 
@@ -378,6 +399,10 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 ```
 **脆弱度判定**: 高=隐含值超历史/行业参考50%+ | 中=超10-50% | 低=在参考范围内
 
+- **品质评分 Phase 2维度**: 财务分析中同步评估(写入quality_scorecard.md):
+  - **B5 利润弹性**: OPM 10年趋势 — 扩张>500bps=5分, 稳定=3分, 收缩=1分。若D2<50%用真实OPM
+  - **B6 资本配置纪律**: 回购+股息/FCF比例 + SBC/Rev + 稀释率 → 评分/5
+  - **D2收入纯度还原**(如Phase 0标记需要): 计算费用收入基础OPM, 更新B5评分
 - 周期定位（行业周期模型，定位当前位置）
 - 5年财务趋势分析（收入/利润/现金流/资产负债）— 数据组织，不下估值结论
 - 三情景财务推演（Bull/Base/Bear的关键变量范围）
@@ -398,6 +423,13 @@ bash tests/research_fast.sh reports/{TICKER}/{file} {min_chars} 3
 
 **必做模块**:
 - 护城河类型识别与量化（品牌/网络效应/转换成本/成本优势/规模）
+- **品质评分 Phase 3维度**: 竞争/护城河分析中同步评估(写入quality_scorecard.md):
+  - **B4 定价权证据**: 历史提价记录+客户流失率 → 评分/5 (消费品行业×1.5权重)
+  - **B7 TAM与增长跑道**: TAM规模+渗透率+结构性增长 → 评分/5 (生态科技×1.5权重)
+  - **C2 网络效应**: 双边/多边网络强度 → 评分/5 (生态科技×2.0权重)
+  - **C4 数据飞轮**: 数据排他性+累积壁垒 → 评分/5
+  - **C5 规模经济**: 行业排名+成本不可逾越性 → 评分/5
+  - 汇总: B合计/40 + C合计/30 + 加权分=(B+C)×D1 → 复利路径分类 → 估值框架选择
 - 技术路线图与替代威胁
 - 五引擎协同分析（周期+股权+聪明钱+信号+预测市场）
 - PPDA概率-价格背离分析（≥3个显著背离）
@@ -602,6 +634,15 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
 | **数据审计** | DM覆盖率X% · 锚点N个 · 详见文末审计摘要 |
 | **AI能力边界** | 深挖区(技术/供应链/周期) · 诚实区(管理层/预测/时机) |
 ```
+
+**0.5. 品质评分卡终版 (v18.1新增)**
+- 汇总Phase 0(A+D) + Phase 1(B1/B2/B3/B8 + C1/C3/C6) + Phase 2(B5/B6) + Phase 3(B4/B7 + C2/C4/C5) → 完整评分卡
+- 计算加权分 = (B合计 + C合计) × D1
+- 确定复利路径(A-F/耗材型/支付网络) + 预期回报区间
+- 与OPM天花板参考表校准 → 验证估值假设合理性
+- 最终评分卡写入Complete报告(作为核心论点综合的数据基础)
+- **校准**: 对比8家基准公司(`docs/company_quality_scoring.md` §六)，确认评分处于合理区间
+- **详见**: `docs/company_quality_scoring.md` 完整评分标准 + `knowledge/stock_picking/quality_scoring_benchmark.md` 基准参考
 
 **1. 核心论点综合 (深度优先)**
 - **一句话结论**: 用一句话概括这家公司的投资命题（不含买卖信号）

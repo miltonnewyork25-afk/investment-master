@@ -250,6 +250,7 @@ Complete组装必须在单会话内完成: 读Phase产出→组装→质量门�
 | **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
 | **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
 | **规划经验** | `knowledge/planning_archives/{TICKER}.md` (12份报告规划档案) |
+| **品质评估** | `docs/company_quality_scoring.md` (A+B+C+D 21维度) + `knowledge/stock_picking/quality_scoring_benchmark.md` (8家基准) |
 
 **完整索引**: 原CLAUDE.md第204-246行 → `docs/framework_index.md`
 
@@ -257,6 +258,7 @@ Complete组装必须在单会话内完成: 读Phase产出→组装→质量门�
 
 ## 系统升级
 
-**当前版本**: v18.0 (2026-03-03) | **健康监控**: `bash tests/framework_health_check.sh`
-**v18.0变化**: 战略报告框架回流——CEO沉默分析(P1)+PtW量化评分(P3)+KS条件依赖追踪(P5)。详见 `docs/deep_dive_protocol.md` v18.0
+**当前版本**: v18.1 (2026-03-06) | **健康监控**: `bash tests/framework_health_check.sh`
+**v18.1变化**: 品质量化评估框架集成——21个子维度(7QG+8B+6C+D)分阶段嵌入Phase 0/1/2/3/5+Tier 2模块增强+Tier 1品质速判。详见 `docs/company_quality_scoring.md` + `docs/deep_dive_protocol.md` v18.1
+**v18.0变化**: CEO沉默分析(P1)+PtW量化评分(P3)+KS条件依赖追踪(P5)
 **版本详情**: `CHANGELOG.md` + `memory/framework_evolution.md`
