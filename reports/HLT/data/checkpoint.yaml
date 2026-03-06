@@ -1,0 +1,101 @@
+schema_version: "3.0"
+ticker: HLT
+company: "Hilton Worldwide Holdings Inc."
+framework_version: v18.0
+worktree: "消费品"
+industry: "consumer"
+report_version: "v1.0"
+last_updated: "2026-03-06T14:30:00+08:00"
+
+current_phase: "-0.5"
+phase_status: "lit_recon_complete"
+note: "Phase -1 + -0.5完成。Preflight CLEARED。Planning guide写好。待Phase 0数据预取。"
+
+# 目标 (质量突破专项)
+target_chars: 340000
+target_range: "300K-350K"
+hard_floor: 280000
+hard_ceiling: 360000
+target_chapters: 25
+target_appendices: 3
+target_quality: "4.3+/5.0"
+quality_strategy: "密度>体量, 原创方法论≥1, v18.0三门控全通过, 圆桌≤18K"
+
+# Routing
+pw_score: 4.2
+pw_route: traditional_mixed
+sgi_score_estimate: "5.5-6.0"
+a_score_estimate: "7.5-8.0"
+
+# CQ registry
+cq_registry:
+  - id: CQ1
+    question: "溢价之王的脆弱性 — P/E最高(40x+)但ROIC最低(11.3%), NUG减速1pp→估值影响?"
+    type: structural
+    confidence: 45
+  - id: CQ2
+    question: "负权益回购悖论 — 债务$12.5B, 回购$3.3B/年=EBITDA的89%, 理性杠杆还是价值毁灭?"
+    type: structural
+    confidence: 40
+  - id: CQ3
+    question: "Honors=护城河还是天花板? 243M会员(+15%)→定价权? 联名卡金融化?"
+    type: cyclical_structural
+    confidence: 50
+  - id: CQ4
+    question: "RevPAR vs NUG估值权重 — 首次非衰退RevPAR下滑, 增长引擎切换何时被证伪?"
+    type: cyclical
+    confidence: 55
+  - id: CQ5
+    question: "亚太集中度风险 — Pipeline 35%在亚太, 增长来源=风险来源"
+    type: structural
+    confidence: 50
+
+# 原创方法论追踪
+methodology_tracker:
+  - id: A
+    name: "NUG弹性函数"
+    source: "ARM-CDS迁移"
+    target_phase: 3
+    status: planned
+  - id: B
+    name: "RevPAR纯度分解"
+    source: "RCL-YPD迁移"
+    target_phase: 2
+    status: planned
+  - id: C
+    name: "回购效率边际递减函数"
+    source: "原创"
+    target_phase: 2
+    status: planned
+
+# v18.0三门控追踪
+v18_gates:
+  ceo_silence: { phase: 1, chapter: 7, status: pending }
+  ptw_scoring: { phase: 3, chapter: 18, status: pending }
+  ks_dependency: { phase: 4, chapter: 23, status: pending }
+
+# Quick ref
+quick_ref:
+  price: "~326.6"
+  market_cap: "~65B"
+  pe_ttm: "~40x+"
+  ev_ebitda: 29.73
+  fy25_net_income: 1.46B
+  fy26e_eps: "8.65-8.77"
+  fy26e_ebitda: "4.00-4.04B"
+  revpar_fy25: "+0.4%"
+  revpar_fy26e: "+1-2%"
+  nug_fy26e: "6-7%"
+  honors_members: 243M
+  pipeline: "520K rooms"
+  total_debt: 12.5B
+  equity: negative
+  franchise_pct: "88%"
+
+# Session tracking
+sessions:
+  - session: "v1.0-S1"
+    date: "2026-03-06"
+    phase: "-1→-0.5"
+    status: complete
+    notes: "tier3_launch + 5路lit_recon + preflight CLEARED + planning_guide"
