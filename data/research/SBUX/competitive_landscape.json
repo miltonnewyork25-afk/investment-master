@@ -1,0 +1,242 @@
+{
+  "ticker": "SBUX",
+  "fetched_at": "2026-03-06",
+  "market_position": {
+    "global_rank": 1,
+    "us_retail_coffee_market_share_pct": 39.3,
+    "us_coffee_snack_shop_industry_share_pct": 31.0,
+    "us_industry_revenue_share_pct": 30.0,
+    "global_store_count": 40990,
+    "trend": "Dominant globally but losing share in China (34% -> 14% from 2019-2024). US market mature. Six consecutive quarters of negative same-store sales before Q4 FY25 turnaround. Drive-thru challengers gaining traffic.",
+    "dm": { "type": "R", "source": "IBISWorld, yourdreamcoffee.com, csimarket.com, investor.starbucks.com" }
+  },
+  "competitors": [
+    {
+      "name": "Luckin Coffee",
+      "ticker": "LKNCY",
+      "market_share_context": "Surpassed Starbucks in China by store count (29,214 vs 8,011) and revenue. China market share growing as SBUX fell from 34% to 14%",
+      "stores": 29214,
+      "q3_2025_revenue_B": 1.55,
+      "q3_2025_revenue_growth_pct": 48,
+      "key_advantage": "App-based low-cost model, hyper-aggressive expansion, localized flavors, digital franchising. Now expanding to US (10 stores in NYC) and SE Asia. Opening premium flagship stores to compete upmarket.",
+      "dm": { "type": "H", "source": "Yahoo Finance, NRN, CNBC, Fortune" }
+    },
+    {
+      "name": "Dunkin' (Inspire Brands)",
+      "ticker": "Private (Inspire Brands)",
+      "global_stores": 13200,
+      "market_share_context": "Second-largest global coffee chain by outlets. Also saw negative traffic in recent quarters alongside Starbucks.",
+      "key_advantage": "Value positioning, strong breakfast daypart, franchise model. Part of Inspire Brands (private).",
+      "dm": { "type": "R", "source": "Statista, NRN" }
+    },
+    {
+      "name": "Dutch Bros",
+      "ticker": "BROS",
+      "stores_2025": 1136,
+      "store_growth_yoy_pct": 16,
+      "target_stores_2029": 2029,
+      "us_market_share_pct": "1-2% (estimated)",
+      "revenue_growth_2025_pct": 25.1,
+      "eps_growth_2025_pct": 34.7,
+      "forward_ps": 6.44,
+      "key_advantage": "Drive-thru-only model, youth brand appeal, 19 consecutive years positive same-shop sales growth, expanding from 25 states. High growth trajectory vs SBUX maturity.",
+      "dm": { "type": "H", "source": "Motley Fool, Yahoo Finance, Nasdaq, mmcginvest.com" }
+    },
+    {
+      "name": "7 Brew Coffee",
+      "ticker": "Private",
+      "key_stats": "Fastest-growing foodservice chain 2024 per Technomic. Traffic +80.4%, same-store visits +19.4%",
+      "key_advantage": "Drive-thru focused, extreme speed, rapid unit growth. Dutch Bros competitor reshaping regional coffee landscape.",
+      "dm": { "type": "R", "source": "NRN citing Technomic Top 500" }
+    },
+    {
+      "name": "Cotti Coffee",
+      "ticker": "Private",
+      "stores": 7000,
+      "countries": 28,
+      "key_advantage": "Founded by former Luckin execs. Fastest-growing global coffee chain. Low-cost aggressive expansion model.",
+      "dm": { "type": "R", "source": "QSR Magazine, MediaPost" }
+    },
+    {
+      "name": "Tim Hortons",
+      "ticker": "QSR (Restaurant Brands International)",
+      "market_share_context": "~80% of brewed coffee market in Canada",
+      "key_advantage": "Canadian dominance, value positioning, expanding internationally but facing pressure in US from specialty players.",
+      "dm": { "type": "R", "source": "QSR Magazine" }
+    },
+    {
+      "name": "McDonald's (McCafe)",
+      "ticker": "MCD",
+      "key_advantage": "Scale, value pricing, leveraging existing QSR infrastructure for coffee. Major competitor in value-conscious segment.",
+      "dm": { "type": "S", "source": "cheddarflow.com, northmarq.com" }
+    },
+    {
+      "name": "Costa Coffee (Coca-Cola)",
+      "ticker": "KO (parent)",
+      "key_advantage": "Acquired by Coca-Cola for $5.1B (2019). Strong UK presence, expanding globally via vending machines and retail.",
+      "dm": { "type": "S", "source": "northmarq.com, Statista" }
+    },
+    {
+      "name": "Black Rock Coffee",
+      "ticker": "Private (potential IPO candidate)",
+      "revenue_2024_M": 161,
+      "revenue_2027_forecast_M": 314,
+      "revenue_cagr_pct": 25,
+      "key_advantage": "Drive-thru focused, expanding into Phoenix/Denver/Boise/Austin/California. 20% annual unit growth target through 2027.",
+      "dm": { "type": "R", "source": "QSR Magazine" }
+    }
+  ],
+  "competitive_dynamics": {
+    "summary": "The coffee competitive landscape is bifurcating: (1) In the US, Starbucks faces traffic erosion from drive-thru-focused challengers (Dutch Bros, 7 Brew, Black Rock) that emphasize speed, customization, and value. Legacy players (SBUX, Dunkin) both saw negative traffic while regional brands surged. (2) In China, Starbucks has lost dramatic market share (34% -> 14%) to Luckin and Cotti's hyper-aggressive low-cost digital models. SBUX responded by selling 60% China stake to Boyu Capital. (3) Globally, Chinese coffee chains are the fastest-growing segment, outpacing traditional QSR expansion rates. (4) Functional beverages (protein coffee) and mobile/drive-thru ordering are reshaping consumer expectations.",
+    "key_trends": [
+      "Drive-thru dominance: 59% of US out-of-home coffee via drive-thru (2024, up from 55% prior year)",
+      "Mobile ordering: 36% of coffee drinkers using apps",
+      "Functional beverages (protein-forward coffee) gaining traction",
+      "US market maturing (0.6% CAGR to 2030)",
+      "China + Asia-Pacific fastest-growing coffee markets",
+      "Coffee/tea specialists outpacing burger and pizza QSR chains globally",
+      "Value vs premium tension: bifurcated consumption with lower-income consumers trading down"
+    ],
+    "dm": { "type": "R", "source": "NRN, QSR Magazine, Numerator, MediaPost" }
+  },
+  "moat_indicators": [
+    {
+      "type": "Brand",
+      "strength": "Strong",
+      "evidence": "Second-highest brand value among global restaurant companies. 39.3% US retail coffee market share. Global recognition across 80+ markets.",
+      "dm": { "type": "R", "source": "Statista, IBISWorld" }
+    },
+    {
+      "type": "Scale",
+      "strength": "Strong",
+      "evidence": "40,990 stores globally, largest coffee chain by far. 738 Tier 1 supplier connections. Vertically integrated supply chain with 6 roasting hubs and 70,000+ weekly pallet shipments.",
+      "dm": { "type": "H", "source": "investor.starbucks.com, data.ark.ai" }
+    },
+    {
+      "type": "Ecosystem/Loyalty",
+      "strength": "Moderate-Strong",
+      "evidence": "Starbucks Rewards program is industry-leading loyalty platform. Mobile ordering at 36% adoption. Digital flywheel (app + rewards + personalization).",
+      "dm": { "type": "R", "source": "QSR Magazine, NRN" }
+    },
+    {
+      "type": "Switching Costs",
+      "strength": "Weak-Moderate",
+      "evidence": "Coffee is inherently low switching cost. Loyalty program creates some stickiness but competitors offer similar programs. Drive-thru convenience can be replicated.",
+      "dm": { "type": "S", "source": "Analyst assessment based on industry dynamics" }
+    },
+    {
+      "type": "CPG Distribution",
+      "strength": "Strong",
+      "evidence": "Nestle Global Coffee Alliance provides asset-light CPG distribution across 80 markets. $7.15B upfront payment + ongoing royalties. 14B+ cups brewed at home.",
+      "dm": { "type": "H", "source": "nestle.com, investor.starbucks.com" }
+    },
+    {
+      "type": "Real Estate / Store Network",
+      "strength": "Moderate",
+      "evidence": "Premium locations but high occupancy costs. Company-operated model gives control but requires capital. Licensed model used for non-traditional venues.",
+      "dm": { "type": "S", "source": "fourweekmba.com, steadycompounding.com" }
+    }
+  ],
+  "valuation_context": {
+    "sbux_forward_pe": 40.8,
+    "sbux_forward_ps": 2.52,
+    "industry_avg_ps": 3.78,
+    "bros_forward_ps": 6.44,
+    "note": "SBUX trading below industry avg P/S (2.52 vs 3.78). BROS at 6.44x reflecting growth premium. SBUX at 40.8x forward PE suggests market pricing in turnaround under CEO Niccol.",
+    "dm": { "type": "H", "source": "Yahoo Finance, Motley Fool (Oct 2025)" }
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-D-COMP-01",
+      "claim": "SBUX US retail coffee market share 39.3%; coffee/snack shop industry share 31.0%",
+      "type": "R",
+      "source": "IBISWorld, yourdreamcoffee.com"
+    },
+    {
+      "id": "DM-D-COMP-02",
+      "claim": "Luckin 29,214 stores vs SBUX 8,011 in China (3.5:1 ratio)",
+      "type": "H",
+      "source": "Yahoo Finance, NRN, CNBC"
+    },
+    {
+      "id": "DM-D-COMP-03",
+      "claim": "SBUX China market share fell 34% (2019) to 14% (2024) per Euromonitor",
+      "type": "R",
+      "source": "Reuters citing Euromonitor International"
+    },
+    {
+      "id": "DM-D-COMP-04",
+      "claim": "Dutch Bros 1,136 stores, +16% YoY, 19 consecutive years positive comp sales",
+      "type": "H",
+      "source": "Motley Fool, Dutch Bros Q4 2025 earnings"
+    },
+    {
+      "id": "DM-D-COMP-05",
+      "claim": "7 Brew: fastest-growing foodservice chain 2024, traffic +80.4%",
+      "type": "R",
+      "source": "NRN citing Technomic Top 500"
+    },
+    {
+      "id": "DM-D-COMP-06",
+      "claim": "Cotti Coffee: 7,000 stores across 28 countries, fastest-growing global coffee chain",
+      "type": "R",
+      "source": "QSR Magazine, MediaPost"
+    },
+    {
+      "id": "DM-D-COMP-07",
+      "claim": "59% of US out-of-home coffee purchased via drive-thru (2024, up from 55%)",
+      "type": "R",
+      "source": "National Coffee Association via QSR Magazine"
+    },
+    {
+      "id": "DM-D-COMP-08",
+      "claim": "SBUX forward P/E 40.8x; forward P/S 2.52x vs industry avg 3.78x",
+      "type": "H",
+      "source": "Yahoo Finance, Motley Fool"
+    },
+    {
+      "id": "DM-D-COMP-09",
+      "claim": "SBUX six consecutive quarters negative same-store sales before Q4 FY25 positive turn",
+      "type": "H",
+      "source": "Motley Fool, investor.starbucks.com"
+    },
+    {
+      "id": "DM-D-COMP-10",
+      "claim": "Dunkin' 13,200 global outlets, second-largest global coffee chain",
+      "type": "R",
+      "source": "Statista"
+    },
+    {
+      "id": "DM-D-COMP-11",
+      "claim": "SBUX selling 60% China stake to Boyu Capital for ~$4B, targeting 20,000 stores",
+      "type": "H",
+      "source": "Fortune, CNBC (Nov 2025)"
+    },
+    {
+      "id": "DM-D-COMP-12",
+      "claim": "Black Rock Coffee: $161M revenue (2024), 25% CAGR target to $314M by 2027",
+      "type": "R",
+      "source": "QSR Magazine"
+    }
+  ],
+  "sources": [
+    "https://investor.starbucks.com/news/financial-releases/news-details/2025/Starbucks-Reports-Q4-and-Full-Fiscal-Year-2025-Results/default.aspx",
+    "https://www.northmarq.com/insights/research/coffee-wars-market-share-battles-and-investment-opportunities-starbucks-startups",
+    "https://csimarket.com/stocks/competitionSEG2.php?code=SBUX",
+    "https://yourdreamcoffee.com/how-big-is-starbucks-market-share/",
+    "https://www.ibisworld.com/us/company/starbucks-corporation/347821/",
+    "https://www.nrn.com/quick-service/7-brew-leads-coffee-industry-in-traffic-as-qsr-segment-continues-to-struggle",
+    "https://www.qsrmagazine.com/story/coffee-trends-shaping-2026-from-the-president-of-a-rising-beverage-chain/",
+    "https://www.qsrmagazine.com/story/the-case-for-black-rock-as-americas-next-big-coffee-chain/",
+    "https://www.numerator.com/resources/blog/qsr-growth-playbook/",
+    "https://finance.yahoo.com/news/does-surpassing-starbucks-china-signal-231317654.html",
+    "https://www.nrn.com/restaurant-segments/luckin-overtakes-starbucks-as-top-coffee-chain-in-china",
+    "https://www.cnbc.com/2026/02/08/chinas-luckin-coffee-opens-its-first-high-end-store.html",
+    "https://fortune.com/2025/11/04/starbucks-china-boyu-luckin-brian-niccol/",
+    "https://247wallst.com/companies-and-brands/2025/08/03/starbucks-vs-luckin-u-s-icon-slows-as-chinese-company-surges-with-119-new-drinks-and-24000-stores/",
+    "https://www.fool.com/investing/2025/10/12/better-buy-dutch-bros-vs-starbucks/",
+    "https://www.mmcginvest.com/post/a-tale-of-two-coffee-chains-dutch-bros-vs-starbucks",
+    "https://www.fool.com/investing/2026/02/20/best-stock-buy-hold-forever-dutch-bros-starbucks/",
+    "https://www.mordorintelligence.com/industry-reports/china-coffee-market"
+  ]
+}
