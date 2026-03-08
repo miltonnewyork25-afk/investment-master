@@ -1,7 +1,7 @@
-# Deep-Dive 分析协议 v18.1 (Tier 3)
+# Deep-Dive 分析协议 v18.2 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
-> **v18.1变化**: 品质量化评估框架集成——Phase 0新增A品质门控+D修正因子, Phase 1/2/3分阶段评估B商业模型+C护城河21个子维度, Phase 5汇总品质评分卡+复利路径分类。详见`docs/company_quality_scoring.md`。
+> **v18.2变化**: 品质量化评估框架集成(Phase 0/1/2/3/5分阶段评估21维度) + 投资大师圆桌v2.0集成(Phase 3.8方法论碰撞深化引擎, QG-09.8门控)。详见`docs/company_quality_scoring.md` + `.claude/skills/investment-committee/SKILL.md`。
 > **v18.0变化**: 战略报告框架回流——Phase 1新增CEO沉默分析(QG-01.5)+Phase 3新增Playing to Win量化评分(QG-07.5, 含寡头行业博弈论条件增强)+Phase 5 Kill Switch从9字段→12字段(新增单独触发行动/协同触发/评级影响)。源自SEMI_EQUIPMENT_STRATEGY报告(4.2/5)的3个框架创新验证。
 > **v14.1变化**: Phase 0新增SGI速判(专才-通才光谱诊断)。
 > **v14.0变化**: 知识层(Phase -1知识库检索+Phase -0.5外部文献侦察)+knowledge_index.yaml+planning_archives+搜索模板。
@@ -512,6 +512,56 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
 - 所有主要分部(占营收≥90%)已完成AI冲击评分
 - L×S坐标已定位且有≥3条证据支撑
 - AI调整估值与基线估值差异已量化并解释
+
+### Phase 3.8: 投资大师圆桌 (v18.2新增 — 方法论碰撞深化)
+
+> **定位**: 分析深化引擎，不是审查工具。用7位大师的方法论工具箱碰撞产出更深洞见。不替代Phase 4红队(RT-1~RT-7)。
+> **详见**: `.claude/skills/investment-committee/SKILL.md` v2.0
+
+**触发条件**:
+- Tier 3: Phase 3完成后 + controversy_score ≥ 4 → **自动触发** Standard模式(5大师)
+- Tier 3: controversy_score ≥ 7 或用户指定 → Full模式(7大师)
+- Tier 2: 用户要求"深入分析"时 → Lite模式(3大师)
+
+**模式选择**:
+| 模式 | 大师数 | 轮次 | 耗时 | 产出 |
+|------|--------|------|------|------|
+| Lite | 权重Top2+Bear=3 | Round 1 | ~8min | ~3K字符 |
+| Standard | 权重Top4+Bear=5 | R1+R2+R3 | ~20min | ~8-12K字符 |
+| Full | 全部7位 | R1+R2+R3+R4 | ~30min | ~15-20K字符 |
+
+**动态权重**: 按公司类型自动适配(成熟价值/高增长/转型/周期股等8种)。Bear floor永远≥12%。
+
+**行业默认圆桌**:
+- 半导体: dalio+druck+bear (周期位置×估值时点×下行风险)
+- 消费品: buffett+li_lu+ackman (护城河持久性×关键变量×运营改善)
+- 科技平台: li_lu+cathie+bear (关键变量×非线性上行×叙事解构)
+- 金融: dalio+buffett+bear (债务周期×生意质量×会计质量)
+
+**螺旋深化协议**:
+1. **Round 1**(并行): 每位大师独立用方法论工具箱分析，产出≥200字+≥3个数据点
+2. **Round 2**(串行): 大师互相追问，必须引用Round 1数据点。方法论冲突=最有价值发现
+3. **Round 3**: 提炼碰撞洞见(单一视角无法产出的)，每个标注碰撞来源+估值影响量化
+4. **Round 4**(仅Full): 最终裁决——共识/分歧/催化剂日历/Kill Switch/深化建议
+
+**产出文件**:
+- `reports/{TICKER}/data/roundtable_config.yaml` — 公司类型+权重+大师选配
+- `reports/{TICKER}/data/roundtable_transcript.md` — 完整圆桌记录
+- `reports/{TICKER}/data/roundtable_insights.md` — 精炼洞见(进入报告)
+
+**产出融入方式**: 不是独立章节。洞见融入现有章节:
+- 护城河深化 → 护城河章节
+- 催化剂日历 → 催化剂/情景章节
+- 方法论冲突 → 估值敏感性分析
+- Kill Switch → 风险章节
+- 融入时标注: `[圆桌: {大师A}框架×{大师B}框架碰撞]`
+
+**质量门控 QG-09.8**:
+- 每位大师Round 1含≥3个数据点 (BLOCK)
+- Round 2追问引用Round 1数据 (BLOCK)
+- Round 3洞见标注碰撞来源A×B (BLOCK)
+- 方法论冲突≥1个 (WARN)
+- Bear权重≥12% (BLOCK)
 
 ### Phase 4: 对抗审查（v6.0 — 纠错回流机制）
 

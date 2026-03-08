@@ -258,7 +258,8 @@ Complete组装必须在单会话内完成: 读Phase产出→组装→质量门�
 
 ## 系统升级
 
-**当前版本**: v18.1 (2026-03-06) | **健康监控**: `bash tests/framework_health_check.sh`
-**v18.1变化**: 品质量化评估框架集成——21个子维度(7QG+8B+6C+D)分阶段嵌入Phase 0/1/2/3/5+Tier 2模块增强+Tier 1品质速判。详见 `docs/company_quality_scoring.md` + `docs/deep_dive_protocol.md` v18.1
+**当前版本**: v18.2 (2026-03-06) | **健康监控**: `bash tests/framework_health_check.sh`
+**v18.2变化**: 品质量化评估框架(21维度A+B+C+D分阶段嵌入Phase 0/1/2/3/5) + 投资大师圆桌v2.0(Phase 3.8方法论碰撞深化引擎)。详见 `docs/company_quality_scoring.md` + `.claude/skills/investment-committee/SKILL.md`
+**v18.1变化**: DM标注强制执行器+DM密度早期警告+消费品复杂估值框架
 **v18.0变化**: CEO沉默分析(P1)+PtW量化评分(P3)+KS条件依赖追踪(P5)
 **版本详情**: `CHANGELOG.md` + `memory/framework_evolution.md`
