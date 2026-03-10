@@ -1,19 +1,37 @@
 schema_version: "2.0"
 ticker: CPRT
-company: "CPRT"
-framework_version: v17.0
-worktree: "B2B平台"
+company: "Copart, Inc."
+framework_version: v18.0
+worktree: "消费品"
 industry: "B2B平台"
-last_updated: "2026-03-10T09:37:45+00:00"
+last_updated: "2026-03-10T11:00:00+00:00"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: 0
+phase_status: in_progress
+phases_completed: ["-1", "-0.5"]
 
 target_chars: 300000
 target_range: "240K-375K"
 hard_floor: 200000
 
+possibility_width: 3.8
+method_route: "traditional"
+
+quality_scores:
+  a_score: 55.55
+  a_gates: "7/7 (with QG-2修正)"
+  b_business: 30.5
+  c_moat: 20.0
+  d1_cyclicality: 1.1
+  ixl_i: 20
+  ixl_l: 24
+  infra_premium: "~63%"
+
 quick_ref:
-  total_chars: 0
-  latest_phase_chars: 0
+  total_chars: 41947
+  latest_phase_chars: 41947
+  price: 37.57
+  market_cap: "~$36.7B"
+  forward_pe: 22.4
+  ev_ebitda: 17.5
+  fcf_yield: "3.5%"
