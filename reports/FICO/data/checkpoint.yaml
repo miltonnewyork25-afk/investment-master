@@ -1,14 +1,26 @@
 schema_version: "2.0"
 ticker: FICO
 company: "FICO"
-framework_version: v17.0
+framework_version: v18.2
 worktree: "金融"
 industry: "金融"
-last_updated: "2026-03-10T04:34:43+00:00"
+last_updated: "2026-03-10"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: "0.75"
+phase_status: "Phase 0.75完成, 待Phase 1启动"
+phases_completed:
+  - phase: "-1"
+    date: "2026-03-10"
+    output: "launch_brief.md + knowledge_context.md"
+  - phase: "-0.5"
+    date: "2026-03-10"
+    output: "lit_recon_memo.md (7/7 scout完成)"
+  - phase: "0"
+    date: "2026-03-10"
+    output: "MCP数据+温度+SGI+A-Score+DOJ护城河研究"
+  - phase: "0.75"
+    date: "2026-03-10"
+    output: "thesis_crystallization.md (4个CI假说+CQ声明+PW=5.2)"
 
 target_chars: 294669
 target_range: "235K-368K"
@@ -17,3 +29,15 @@ hard_floor: 200000
 quick_ref:
   total_chars: 0
   latest_phase_chars: 0
+  temperature: "+0.62 偏热"
+  sgi: 9.5
+  a_score: 51.1
+  pw: 5.2
+  core_contradiction: "制度垄断 vs 制度风险"
+  next_phase: "Phase 1 — 商业模式深潜"
+
+ci_hypotheses:
+  CI-01: "制度垄断自我加固悖论 (60%)"
+  CI-02: "定价权投资期权的时间衰减 (75%)"
+  CI-03: "Scores-Software价值断裂 (80%)"
+  CI-04: "FICO Direct License攻守转换 (55%)"
