@@ -25,11 +25,14 @@ FICO绕过征信局直接向贷款机构授权评分。这一结构性变化可�
 
 ## B. 风险盲点
 
-### B1. 监管热度加速上升
-- 10+反垄断集体诉讼进行中
-- Senator Hawley呼吁DOJ调查FICO定价
-- CFPB公开批评FICO定价不透明
-- Equifax Q4 2025: FICO版税=零利润pass-through, 吞噬200bps EBITDA margin
+### B1. 监管风险的双面性 — CFPB瘫痪但诉讼活跃
+- **CFPB威胁已崩塌**: Trump政府下88%裁员, 67份指导文件撤回, 16/34执法行动撤销, 功能性瘫痪
+- **但私人诉讼活跃**: In re FICO Antitrust Litigation(N.D. Illinois, 10个集体诉讼)存活FICO驳回动议(2024.11), Sherman Act垄断指控推进中
+- Senator Hawley两次呼吁DOJ调查(2024+2025), DOJ均未行动
+- 2020年DOJ反垄断调查9个月内关闭, 无执法
+- **短期**: CFPB瘫痪=FICO定价自由度创多年新高
+- **中期**: 私人诉讼如获集体认证, 500%提价的三倍赔偿可能构成实质风险
+- **州级监管**: 2025.10 CFPB FCRA解释性规则扩大联邦优先权 → 阻止州级信用评分监管
 
 ### B2. VantageScore获得GSE准入 — FICO史上最大竞争威胁
 - FHFA Director Pulte 2025年7月8日宣布**立即**接受VantageScore 4.0用于GSE按揭
@@ -133,5 +136,5 @@ $55→$1,441(26x)的分解: 收入2.5x × OPM 2.8x × 回购1.4x × PE扩张2.8x
 
 ---
 
-## 待补充 (CFPB scout完成后)
-- [ ] CFPB监管行动完整追踪+Trump政府影响(核心内容已在AI scout中覆盖)
+## 全部Scout完成 (7/7 ✓)
+所有侦察任务已完成。核心数据锚点和分析框架已就位，可进入Phase 0。
