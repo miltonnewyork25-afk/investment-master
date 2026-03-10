@@ -10,9 +10,9 @@ current_phase: 0
 phase_status: in_progress
 phases_completed: ["-1", "-0.5"]
 
-target_chars: 300000
-target_range: "240K-375K"
-hard_floor: 200000
+target_chars: 370000
+target_range: "350K-450K"
+hard_floor: 350000
 
 possibility_width: 3.8
 method_route: "traditional"
