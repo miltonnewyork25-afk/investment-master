@@ -56,7 +56,10 @@
 | KO, PG, NKE, COST, WMT, MCD, SBUX | 消费品 | 消费品 | ×1.1 |
 | AAPL, MSFT, GOOG, META, AMZN | 科技平台 | 生态科技 | ×1.1 |
 | JPM, GS, BAC, V, MA, BRK, SOFI | 金融 | 金融 | ×1.2 |
+| CPRT, ICE, MCO, SPGI, CSGP | B2B平台 | 消费品* | ×1.0 |
 | 特斯拉, 比亚迪, 跨行业公司 | 询问用户 | — | — |
+
+*B2B平台暂用消费品worktree执行，框架见 `docs/industry/b2b_platform_deep.md`
 
 行业增强标准详见 `docs/industry/` 目录。
 
@@ -114,6 +117,8 @@
 ---
 
 ## 会话规范
+
+**每个会话第一条消息**: 无论用户说什么，先执行 `pwd` + `git branch --show-current`，在回复开头报告当前位置。不问用户，直接做。
 
 **继续/恢复**: 用户说"继续"时 → ①`git branch --show-current` + `pwd` 确认位置 → ②读 `reports/{TICKER}/data/checkpoint.yaml` → ③`git log --oneline -5` → 立即恢复执行，不问澄清问题
 
@@ -228,7 +233,7 @@ Complete组装必须在单会话内完成: 读Phase产出→组装→质量门�
 |------|----------|
 | **Tier 3启动** | `docs/deep_dive_protocol.md` |
 | **温度计算** | `docs/investment_thermometer_strategy.md` |
-| **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech,tech_platform}_deep.md` |
+| **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech,tech_platform,b2b_platform}_deep.md` |
 | **期权估值** | `docs/optionality_valuation.md` (高期权公司: TSLA/PLTR/GOOGL/META等) |
 | **发现系统** | `docs/paradigm_research_framework.md` (可能性宽度≥7分: TSLA/PLTR等) |
 | **演绎分析** | `docs/deductive_analysis.md` (因果链推演+跨行业传导, 范式变革公司必读) |
