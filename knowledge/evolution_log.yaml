@@ -485,3 +485,21 @@ entries:
     top_lesson: null  # AI填入
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "SPGI"
+    date: "2026-03-11"
+    report: "SPGI_Complete_v1.0.md"
+    chars: "160K"
+    cg_result: "PASSED(0E/3W)"
+    compliance: "FAILED"
+    dm_anchors: 70
+    mermaid_count: 23
+    pw: 3.8
+    method: "传统框架+AI情景附录"
+    scorecard: "35.5/50"
+    near_miss_score: 0
+    quality: 3.55
+    top_technique: "AI焦虑税量化(3.3x放大) — 市场对100%业务打AI折扣但仅<30%利润面临风险, 可迁移所有AI焦虑B2B平台"
+    top_lesson: "多会话扩写加叙述不加DM锚点→DM密度0.44/千字(历史最低); 国际收入>30%缺地理分析=最大结构遗漏; 续约率推断无硬数据=论文基础脆弱"
+    evolution_proposed: "EVO-SPGI-001(地理强制)+002(续约率门控)+003(扩写DM同步)+004(R&D量化)+005(去重检查)"
+    evolution_status: pending
