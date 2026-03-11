@@ -157,8 +157,8 @@ class FMPClient:
 
     # symbol + period + limit (标准财报)
     STANDARD_ENDPOINTS = {"income", "balance", "cashflow", "ratios", "key-metrics", "estimates"}
-    # symbol + limit (TTM)
-    LIMIT_ONLY_ENDPOINTS = {"income-ttm", "balance-ttm", "cashflow-ttm"}
+    # symbol + limit (TTM + 其他支持limit的)
+    LIMIT_ONLY_ENDPOINTS = {"income-ttm", "balance-ttm", "cashflow-ttm", "insider-trading", "employee-count", "price-light"}
     # 无需 symbol (市场级数据)
     NO_SYMBOL_ENDPOINTS = {"sector-pe", "industry-pe", "market-risk-premium"}
     # 支持 date 参数
@@ -179,8 +179,8 @@ class FMPClient:
             # 使用自定义路径
             api_path = path
             endpoint_key = f"custom:{path}"
-            # 自定义路径时，symbol要求更灵活
-            require_symbol = "/stable/" in path and "sector-pe" not in path and "industry-pe" not in path and "market-risk-premium" not in path
+            # 自定义路径时，不强制要求symbol（用户自行决定）
+            require_symbol = False
         elif endpoint and endpoint in self.ENDPOINT_MAP:
             # 使用预定义endpoint
             api_path = self.ENDPOINT_MAP[endpoint]
@@ -202,8 +202,8 @@ class FMPClient:
         # 构建请求参数
         params: Dict[str, Any] = {"apikey": self.api_key}
 
-        # 添加symbol（如果需要）
-        if symbol and require_symbol:
+        # 添加symbol（预定义endpoint强制；自定义path如果传了也加上）
+        if symbol and (require_symbol or path):
             params["symbol"] = symbol
 
         # 添加标准参数（仅对预定义endpoint）
