@@ -4,15 +4,16 @@ company: "Copart, Inc."
 framework_version: v18.0
 worktree: "消费品"
 industry: "B2B平台"
-last_updated: "2026-03-11T09:00:00+00:00"
+last_updated: "2026-03-11T10:30:00+00:00"
 
-current_phase: 5
-phase_status: in_progress
-phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2", "3", "4"]
+current_phase: complete
+phase_status: done
+phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2", "3", "4", "5", "complete"]
 
 target_chars: 370000
 target_range: "350K-450K"
 hard_floor: 350000
+actual_chars: 355834
 
 possibility_width: 3.8
 method_route: "traditional"
@@ -22,28 +23,30 @@ quality_scores:
   a_gates: "7/7 (with QG-2修正)"
   b_business: 30.5
   c_moat: 20.0
-  d1_cyclicality: 1.1
+  d1_cyclicality: 1.05
   ixl_i: 20
   ixl_l: 24
   infra_premium: "~63%"
 
+rating: "中性关注(偏正面)"
+expected_return: "+2.7%"
+probability_weighted_ev: 38.6
+current_price: 37.57
+
+quality_gate:
+  result: PASSED
+  errors: 0
+  warnings: 5
+  mermaid: 26
+  dm_anchors: 53
+  kill_switches: 14
+  ci_count: 7
+
 quick_ref:
-  total_chars: 282509
-  staging_files: 13
-  latest_phase_chars: 26925
+  total_chars: 355834
+  staging_files: 16
   price: 37.57
   market_cap: "~$36.7B"
   forward_pe: 22.4
   ev_ebitda: 17.5
   fcf_yield: "3.5%"
-
-phase_5_plan:
-  agents: ["A-综合评估", "B-KS/TS注册", "C-CQ闭环"]
-  assembly_target: "≥350K Complete"
-  key_inputs:
-    valuation_range: "$38-42 (6方法收敛)"
-    bear_independent: "$35.2 (-6.3%)"
-    bear_target: "$26.1 (-30.5%)"
-    probability_weighted: "$41.5 (+10.4%)"
-    d1_revised: "×1.05 (条件反周期)"
-    progressive_impact: "-$80-215M (-2~4.6%)"
