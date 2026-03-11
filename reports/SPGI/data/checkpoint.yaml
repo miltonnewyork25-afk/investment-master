@@ -1,19 +1,60 @@
 schema_version: "2.0"
 ticker: SPGI
-company: "SPGI"
-framework_version: v17.0
+company: "S&P Global Inc."
+framework_version: v18.0
 worktree: "金融"
-industry: "金融"
-last_updated: "2026-03-11T06:12:15+00:00"
+industry: "金融/B2B平台"
+last_updated: "2026-03-11T14:40:00+08:00"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: 0
+phase_status: completed
+phases_completed: ["-1", "-0.5", "0"]
 
 target_chars: 294669
 target_range: "235K-368K"
 hard_floor: 200000
 
+pw_score: 3.8
+methodology: "传统框架+AI情景附录"
+a_score: 56.0
+
+cq_list:
+  - id: CQ-1
+    name: "两个生意割裂"
+    weight: 30
+    confidence: 40
+  - id: CQ-2
+    name: "增速拐点 vs AI投资期"
+    weight: 25
+    confidence: 35
+  - id: CQ-3
+    name: "定价权悖论 Stage 1.0"
+    weight: 20
+    confidence: 45
+  - id: CQ-4
+    name: "商誉炸弹与ROIC真相"
+    weight: 15
+    confidence: 50
+  - id: CQ-5
+    name: "双寡头Nash均衡稳定性"
+    weight: 10
+    confidence: 55
+
 quick_ref:
+  price: 435.44
+  pe_ttm: 29.68
+  forward_pe: 19.73
+  opm: 42.24
+  fcf_yield: 4.31
+  ixl: "22×18"
   total_chars: 0
   latest_phase_chars: 0
+
+data_files:
+  mcp: [stock_full, peer_comparison, market_context, income_5y, balance_5y, cashflow_5y, estimates]
+  agents: [analyst_consensus, prediction_market, recent_news, business_overview, competitive_landscape, management_team, smart_money_13f, options_short_interest]
+  phase0: [quality_scorecard, ixl_prescoring, cq_routing, lit_recon_memo, knowledge_context, launch_brief, SPGI_market_intel_raw]
+
+next_steps:
+  - "Phase 0.75: thesis_crystallization.md (异常狩猎+约束碰撞+非共识假说)"
+  - "Phase 1: 公司深潜6-7章 (商业模式+分部拆解+制度嵌入+管理层+CEO沉默)"
