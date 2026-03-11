@@ -74,6 +74,21 @@
 
 ---
 
+## 公司品质量化评估
+
+**通用框架**: `docs/company_quality_scoring.md`
+**执行时机**: Phase 0数据预取完成后, Phase 1开始前
+**产出**: `reports/{TICKER}/data/quality_scorecard.md`
+
+**消费品行业修正**:
+- B4权重×1.5(品牌定价权是消费品核心竞争力)
+- C3+C5权重×1.2(品牌忠诚度+规模经济)
+- D1: 弱-中周期(餐饮/酒店偏周期, 日用品偏防御)
+- D2: **特许商(MCD/IHG/MAR)必须做收入纯度还原**, 系统基金过手收入可占50%+
+- 特殊: 同店增长+客单价趋势纳入B1评估
+
+---
+
 ## 行业增强模块
 
 **相关文档**: `docs/industry/consumer_deep.md` + `docs/optionality_valuation.md`

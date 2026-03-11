@@ -226,6 +226,31 @@ fi
 echo ""
 echo "--- [5/8] 生成 Launch Brief ---"
 
+# --- 预构建框架清单 ---
+FRAMEWORK_INDUSTRY=""
+case "$TARGET_IND" in
+    半导体) FRAMEWORK_INDUSTRY="- [ ] 半导体周期分析 — docs/industry/semiconductor_deep.md
+- [ ] 技术路线图评估 (制程/封装/架构)
+- [ ] 客户集中度+设计胜出(Design Win)追踪" ;;
+    消费品) FRAMEWORK_INDUSTRY="- [ ] 消费品5模块(ACDE必选B可选) — docs/industry/consumer_deep.md
+- [ ] 品牌弹性半径 + 意愿×能力双轴
+- [ ] 稳健比率(Nomad框架) — Phase 3必选" ;;
+    科技平台) FRAMEWORK_INDUSTRY="- [ ] 生态科技适配 — docs/industry/eco_tech_deep.md
+- [ ] 平台经济学(网络效应+转换成本量化)
+- [ ] AI CapEx追踪 + 货币化路径" ;;
+    金融) FRAMEWORK_INDUSTRY="- [ ] 金融行业框架 — docs/industry/financial_deep.md
+- [ ] 利率敏感性 + 信用周期定位
+- [ ] 资本充足率(CET1/杠杆率)分析" ;;
+    *) FRAMEWORK_INDUSTRY="- [ ] 查找最接近行业框架并适配" ;;
+esac
+
+FRAMEWORK_CHAMPIONS=""
+if [ -f "knowledge/excellence_catalog.yaml" ]; then
+    FRAMEWORK_CHAMPIONS=$({ grep -A2 "$TARGET_IND" knowledge/excellence_catalog.yaml 2>/dev/null | grep 'name:' | head -3 | sed 's/.*name: *"*/- [ ] /' | sed 's/"$//' || echo "- [ ] 查看 knowledge/excellence_catalog.yaml"; })
+else
+    FRAMEWORK_CHAMPIONS="- [ ] excellence_catalog.yaml 未找到"
+fi
+
 cat > "$LAUNCH_BRIEF" << BRIEF
 # Launch Brief: $TICKER
 > 自动生成 by tier3_launch.sh v1.0 | $(date '+%Y-%m-%d %H:%M')
@@ -252,6 +277,25 @@ $EVOLUTION_LESSONS
 ## 已知失败抗体 (Adaptive Immunity)
 > 以下教训来自历史报告的失败模式。AI必须在分析过程中主动避免。
 $AB_RELEVANT
+
+## 必用框架清单 (Framework Absorption Checklist)
+> AI必须在Phase 0阅读本清单，Phase 1开始前确认每项已吸收。
+> 来源: insights报告发现"missing 9/12 frameworks"是系统性问题。
+
+### 通用必选 (所有行业)
+- [ ] 逆向估值 (Reverse DCF → 隐含假设) — /assumption-audit M1
+- [ ] A-Score品质评分 (21维度) — docs/company_quality_scoring.md
+- [ ] 风险拓扑 (协同/反协同矩阵) — /risk-topology
+- [ ] Kill Switch (>=12个, KS-N格式) — docs/deep_dive_protocol.md
+- [ ] 非共识洞察注册表 (CI-N格式) — Phase 1-3持续注册
+- [ ] DM锚点体系 — docs/confidence_system.md
+
+### 行业专用 (${TARGET_IND})
+${FRAMEWORK_INDUSTRY}
+
+### 历史冠军方法 (可选复用)
+> 从excellence_catalog.yaml中与本公司最相关的方法:
+${FRAMEWORK_CHAMPIONS}
 
 ## Pre-mortem: 本报告最可能的失败模式
 > 假设6个月后回顾,本报告质量很差。最可能的原因是什么?
