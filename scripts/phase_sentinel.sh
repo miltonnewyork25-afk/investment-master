@@ -264,6 +264,32 @@ if [ "$PHASE" -ge 1 ]; then
         check_fail "DM锚点严重不足: $DM_COUNT (Phase $PHASE需≥$DM_EXPECTED)"
         echo "         → Agent prompt是否遗漏DM标注要求? 每Phase应≥30个DM引用"
     fi
+
+    # EVO-SPGI-003: Phase 5 DM密度比检查 (扩写同步规则)
+    if [ "$PHASE" -ge 5 ]; then
+        COMPLETE_FILE=""
+        for f in reports/${TICKER}/${TICKER}_Complete*.md; do
+            [ -f "$f" ] && COMPLETE_FILE="$f" && break
+        done
+        if [ -n "$COMPLETE_FILE" ]; then
+            CHAR_COUNT=$(wc -m < "$COMPLETE_FILE" | tr -d ' ')
+            CHAR_COUNT="${CHAR_COUNT:-0}"
+            COMPLETE_DM=$({ grep -oE '\[DM-[A-Za-z0-9]+-[0-9]+\]' "$COMPLETE_FILE" 2>/dev/null | sort -u | wc -l || echo "0"; } | head -1 | tr -d ' ')
+            COMPLETE_DM="${COMPLETE_DM:-0}"
+            if [ "$CHAR_COUNT" -gt 0 ]; then
+                # 密度 = DM数 / (字符数/1000), 目标≥0.8/千字
+                DM_PER_K=$(( COMPLETE_DM * 100 / (CHAR_COUNT / 1000) ))
+                if [ "$DM_PER_K" -ge 80 ]; then
+                    check_pass "DM密度: ${COMPLETE_DM}个/${CHAR_COUNT}字 = $(echo "scale=2; $COMPLETE_DM / ($CHAR_COUNT / 1000)" | bc)/千字 (≥0.8目标)"
+                elif [ "$DM_PER_K" -ge 50 ]; then
+                    check_warn "DM密度偏低: ${COMPLETE_DM}个/${CHAR_COUNT}字 = $(echo "scale=2; $COMPLETE_DM / ($CHAR_COUNT / 1000)" | bc)/千字 (目标≥0.8, 标杆VRT=1.49)"
+                else
+                    check_fail "DM密度严重不足: ${COMPLETE_DM}个/${CHAR_COUNT}字 (目标≥0.8/千字, 当前<0.5)"
+                    echo "         → EVO-SPGI-003: 扩写期间未同步DM锚点, 需补充后重新检查"
+                fi
+            fi
+        fi
+    fi
 fi
 
 # ============================================================

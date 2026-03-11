@@ -826,6 +826,7 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
 - **分析框架注册表**: 使用/改进/首创的框架已登记
 - **零操作建议**: 全文无持仓/减仓/加仓/仓位%/操作触发
 - **数据审计**: 文末审计摘要存在 + DM覆盖率声明
+- **DM扩写同步 (v18.3新增 — EVO-SPGI-003)**: Phase 5扩写时每≥500字符必须同步新增DM锚点(≥1个/千字), 连续3次扩写无DM→强制停止。详见 `docs/dm_annotation_enforcer.md` "Phase 5扩写DM同步规则"
 - **DM附录化 (v17.2新增 — EVO-ETN-001)**: Complete组装时必须生成DM锚点附录:
   - 从`data/research/{TICKER}/shared_context.md`提取DM锚点 → 按FIN/VAL/SEG/MKT/SC分组
   - 每组1个`<details>`折叠源表 → 目标≥5个fold table
