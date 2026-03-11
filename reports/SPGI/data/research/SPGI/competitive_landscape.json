@@ -1,0 +1,229 @@
+{
+  "company": "S&P Global Inc.",
+  "ticker": "SPGI",
+  "analysis_date": "2026-03-11",
+
+  "market_position": {
+    "overall": "Dominant financial infrastructure provider. #1 or #2 position in every segment it operates in. Post-IHS Markit merger (2022) created the broadest data/analytics platform among pure-play financial data companies.",
+    "by_segment": {
+      "ratings": "#1 or #1-tied with Moody's. ~40% market share each in global credit ratings. Combined Big Two control ~80% of rated debt issuance.",
+      "indices": "#1 global index provider. S&P 500 is the most widely tracked equity benchmark globally. >$20T AUM benchmarked to S&P indices.",
+      "market_intelligence": "#3 in financial data terminals. Bloomberg ~33% market share, LSEG/Refinitiv ~19.6%, Capital IQ ~6%. But strong in credit analytics niche.",
+      "commodity_insights_energy": "#1 in commodity price benchmarks via Platts. De facto standard for oil (Brent/Dubai), metals, petrochemicals pricing.",
+      "mobility": "#1 in automotive data (CARFAX brand). Dominant in vehicle history reports and dealer analytics."
+    }
+  },
+
+  "competitors": [
+    {
+      "name": "Moody's Corporation",
+      "ticker": "MCO",
+      "market_share_pct": 40,
+      "segment_overlap": ["Ratings", "Market Intelligence (Moody's Analytics)"],
+      "key_advantage": "Pure-play credit/risk focus. Moody's Analytics growing faster than SPGI Market Intelligence. Stronger brand in bank risk management tools (RiskCalc, CreditEdge).",
+      "revenue_2024_B": 7.09,
+      "competitive_dynamic": "Duopoly partner in ratings (not zero-sum). Competes in analytics. Moody's forecast 7-9% revenue growth in 2025 vs SPGI's 5-7% guidance."
+    },
+    {
+      "name": "Bloomberg LP",
+      "ticker": "Private",
+      "market_share_pct": 33,
+      "segment_overlap": ["Market Intelligence", "Indices (Bloomberg Barclays)"],
+      "key_advantage": "Terminal dominance with ~33% market share in financial data. Integrated terminal ecosystem creates extreme switching costs. Bloomberg Barclays indices strong in fixed income.",
+      "revenue_2024_B": 13.0,
+      "competitive_dynamic": "Competes with Capital IQ on data/analytics. Different go-to-market: Bloomberg = terminal-first, SPGI = data feeds and platform-agnostic."
+    },
+    {
+      "name": "LSEG (London Stock Exchange Group)",
+      "ticker": "LSEG.L",
+      "market_share_pct": 19.6,
+      "segment_overlap": ["Market Intelligence (Refinitiv/Eikon)", "Indices (FTSE Russell)"],
+      "key_advantage": "Refinitiv/Eikon platform ~19.6% market share. FTSE Russell indices strong in UK/Europe. Workspace platform modernization underway.",
+      "revenue_2024_B": 9.4,
+      "competitive_dynamic": "Post-Refinitiv integration still ongoing. Microsoft partnership for data/AI. Competes on indices (FTSE Russell vs S&P DJI) and data terminals."
+    },
+    {
+      "name": "Fitch Ratings (Hearst/FIMALAC)",
+      "ticker": "Private",
+      "market_share_pct": 15,
+      "segment_overlap": ["Ratings"],
+      "key_advantage": "Third-largest rating agency. Preferred by some issuers as alternative to Big Two. Owned by Hearst (80%) and FIMALAC (20%).",
+      "revenue_2024_B": 2.2,
+      "competitive_dynamic": "Distant #3 but entrenched. Some regulatory jurisdictions require 2+ ratings, guaranteeing Fitch a floor. Cannot threaten Big Two duopoly structurally."
+    },
+    {
+      "name": "FactSet Research Systems",
+      "ticker": "FDS",
+      "market_share_pct": 4.5,
+      "segment_overlap": ["Market Intelligence"],
+      "key_advantage": "Strong in buy-side analytics and portfolio management. Open architecture approach. Growing in wealth management segment.",
+      "revenue_2024_B": 2.2,
+      "competitive_dynamic": "Niche competitor to Capital IQ. Competes on usability and buy-side workflow integration. Much smaller scale."
+    },
+    {
+      "name": "MSCI Inc.",
+      "ticker": "MSCI",
+      "market_share_pct": null,
+      "segment_overlap": ["Indices", "ESG Ratings"],
+      "key_advantage": "Dominant in international/EM equity indices. MSCI World, MSCI EM are global standards. Strong ESG ratings franchise.",
+      "revenue_2024_B": 2.7,
+      "competitive_dynamic": "Complementary more than competitive in indices (MSCI = international, S&P = US). Directly competes in ESG ratings and factor indices."
+    },
+    {
+      "name": "Morningstar Inc.",
+      "ticker": "MORN",
+      "market_share_pct": null,
+      "segment_overlap": ["Market Intelligence", "Ratings (DBRS Morningstar)", "Indices"],
+      "key_advantage": "Strong retail investor brand. DBRS Morningstar growing in credit ratings. PitchBook dominant in PE/VC data.",
+      "revenue_2024_B": 2.3,
+      "competitive_dynamic": "Competes across multiple segments but at much smaller scale. DBRS acquisition gave it NRSRO status. PitchBook competes with Capital IQ in alternatives data."
+    },
+    {
+      "name": "Verisk Analytics",
+      "ticker": "VRSK",
+      "market_share_pct": null,
+      "segment_overlap": ["Commodity Insights/Energy (partial)"],
+      "key_advantage": "Dominant in insurance analytics. Wood Mackenzie (divested by Verisk, now owned by Genstar) competes with Platts in energy research.",
+      "revenue_2024_B": 2.9,
+      "competitive_dynamic": "Limited direct overlap. Competes mainly through adjacent analytics in energy and insurance sectors."
+    }
+  ],
+
+  "competitive_dynamics": {
+    "ratings_duopoly": {
+      "structure": "Natural duopoly with massive barriers to entry. NRSRO designation required. Issuer-pays model creates network effects: issuers need ratings from agencies investors trust, investors trust agencies with track records.",
+      "barrier_to_entry": "Regulatory (NRSRO), reputational (decades of track record), network effects (issuer-investor feedback loop), data moat (historical default databases).",
+      "disruption_risk": "LOW. No new NRSRO has gained meaningful share in 30+ years. Regulatory capture reinforces incumbents. Even post-2008 criticism did not dislodge Big Two.",
+      "pricing_power": "HIGH. Ratings fees have consistently grown above inflation. Issuers have no viable alternative for investment-grade debt placement."
+    },
+    "index_oligopoly": {
+      "structure": "S&P DJI, MSCI, and FTSE Russell form a tight oligopoly. S&P 500 is the most important single index globally.",
+      "barrier_to_entry": "Brand (S&P 500 brand = irreplaceable), regulatory embedding (many mandates reference S&P indices by name), switching costs (ETF ecosystem built around specific indices).",
+      "disruption_risk": "VERY LOW. Index brand loyalty is quasi-permanent. New index providers exist but cannot displace S&P 500 as the benchmark.",
+      "asset_linked_fee_model": "Revenue grows automatically with market appreciation and passive fund inflows. Zero marginal cost per additional dollar of AUM benchmarked."
+    },
+    "data_analytics_competition": {
+      "structure": "Fragmented and competitive. Bloomberg dominant in terminals. SPGI, LSEG, FactSet, MSCI compete on data feeds, analytics platforms.",
+      "trend": "Consolidation wave: SPGI+IHS Markit (2022), LSEG+Refinitiv (2021). AI/ML integration becoming key differentiator.",
+      "disruption_risk": "MEDIUM. AI-native startups (AlphaSense, Visible Alpha) could erode traditional data terminal models. But proprietary data moats remain strong."
+    },
+    "commodity_benchmarks": {
+      "structure": "Platts is the de facto global standard for energy/commodity pricing. Argus Media is the primary competitor.",
+      "barrier_to_entry": "IOSCO compliance, market adoption, liquidity network effects. Traders and contracts reference Platts by name.",
+      "disruption_risk": "LOW. Benchmark switching costs are enormous (contracts, trading systems, regulatory references all embed Platts)."
+    }
+  },
+
+  "moat_indicators": {
+    "overall_moat_rating": "WIDE",
+    "moat_sources": [
+      {
+        "type": "Regulatory Capture / Institutional Embedding",
+        "strength": "VERY STRONG",
+        "description": "NRSRO designation in ratings. Index references in investment mandates, regulations, and ETF structures. Platts benchmark references in commodity contracts. All three create quasi-governmental entrenchment.",
+        "segments_affected": ["Ratings", "Indices", "Commodity Insights/Energy"]
+      },
+      {
+        "type": "Network Effects",
+        "strength": "STRONG",
+        "description": "Ratings: issuer-pays model creates virtuous cycle (more issuers rated → more investor trust → more issuers need rating). Indices: more AUM benchmarked → more liquidity → more AUM benchmarked.",
+        "segments_affected": ["Ratings", "Indices"]
+      },
+      {
+        "type": "Switching Costs",
+        "strength": "STRONG",
+        "description": "Capital IQ/SNL deeply embedded in analyst workflows. Platts benchmarks referenced in physical contracts. CARFAX brand recognition in automotive. Changing data providers = retraining + data migration + workflow disruption.",
+        "segments_affected": ["Market Intelligence", "Commodity Insights/Energy", "Mobility"]
+      },
+      {
+        "type": "Intangible Assets / Brand",
+        "strength": "VERY STRONG",
+        "description": "S&P 500 brand is arguably the most valuable brand in financial infrastructure. 'S&P rating' is synonymous with creditworthiness. Platts is synonymous with commodity pricing. CARFAX is synonymous with vehicle history.",
+        "segments_affected": ["Indices", "Ratings", "Commodity Insights/Energy", "Mobility"]
+      },
+      {
+        "type": "Data Moat / Proprietary Datasets",
+        "strength": "STRONG",
+        "description": "Decades of historical default data (ratings). 100+ years of index history (S&P 500 since 1957, Dow since 1896). Platts price assessment database. CARFAX vehicle history records. Irreplicable proprietary datasets.",
+        "segments_affected": ["All"]
+      },
+      {
+        "type": "Cost Advantages / Scale Economies",
+        "strength": "MODERATE",
+        "description": "Near-zero marginal cost for additional rating, index license, or data subscription. Fixed cost base (analysts, technology) spread over growing revenue. But competitors like Bloomberg also have scale.",
+        "segments_affected": ["All"]
+      }
+    ],
+    "moat_risks": [
+      "Regulatory backlash: Post-2008 reforms could eventually break issuer-pays model (though 16 years later, still intact)",
+      "AI disruption: Could commoditize basic data analytics, pressuring Market Intelligence margins",
+      "Passive investing backlash: Regulatory scrutiny of index provider power (antitrust concerns around 'common ownership')",
+      "China/EM local rating agencies: Could erode international market share in emerging markets over long term"
+    ]
+  },
+
+  "key_competitive_insights": [
+    "SPGI operates a portfolio of toll-booth businesses: you must pay S&P to issue rated debt, benchmark assets, price commodities, or check vehicle history. Each is a different toll booth with different competitive dynamics.",
+    "Ratings and Indices together are ~50% of revenue but likely >70% of economic profit due to 61-66% operating margins vs 16-19% for MI/Mobility.",
+    "The IHS Markit merger (2022) added Commodity Insights and Mobility but diluted the overall margin profile. Market Intelligence margin at 19% remains a drag — management target is expansion toward 30%+ over time.",
+    "Biggest competitive threat is not displacement but margin compression in Market Intelligence from AI-native alternatives and Bloomberg's continued dominance.",
+    "Indices segment is the hidden jewel: 66% margins, 14% growth, and revenue that scales automatically with global equity market appreciation and passive investing trends."
+  ],
+
+  "dm_anchors": {
+    "DM-BIZ-010": {
+      "claim": "S&P and Moody's each ~40% market share in credit ratings; combined ~80%. Fitch ~15-20%.",
+      "source": "Wikipedia Big Three (credit rating agencies); multiple industry reports",
+      "confidence": "HIGH",
+      "url": "https://en.wikipedia.org/wiki/Big_Three_(credit_rating_agencies)"
+    },
+    "DM-BIZ-011": {
+      "claim": "Bloomberg ~33% market share in financial data terminals, LSEG/Refinitiv ~19.6%, Capital IQ ~6%, FactSet ~4.5%",
+      "source": "Wall Street Prep Bloomberg vs Capital IQ vs FactSet comparison",
+      "confidence": "MEDIUM",
+      "url": "https://www.wallstreetprep.com/knowledge/bloomberg-vs-capital-iq-vs-factset-vs-thomson-reuters-eikon/"
+    },
+    "DM-BIZ-012": {
+      "claim": "Global credit rating market $7.32B (2025) growing at 6.1% CAGR to $13.07B by 2035",
+      "source": "Business Research Insights Credit Rating Market Report",
+      "confidence": "MEDIUM",
+      "url": "https://www.businessresearchinsights.com/market-reports/credit-rating-market-113053"
+    },
+    "DM-BIZ-013": {
+      "claim": "S&P influenced over 60% of international investors monitoring corporate and sovereign credit",
+      "source": "Market Research Future Credit Agency Market Report",
+      "confidence": "MEDIUM",
+      "url": "https://www.marketresearchfuture.com/reports/credit-agency-market-24072"
+    },
+    "DM-BIZ-014": {
+      "claim": "North America holds ~45% of global credit agency market share",
+      "source": "Verified Market Research Credit Rating Market Report",
+      "confidence": "MEDIUM",
+      "url": "https://www.verifiedmarketresearch.com/product/credit-rating-market/"
+    },
+    "DM-BIZ-015": {
+      "claim": "US ETF industry AUM reached all-time high of $13.46T at year-end 2025; record 962 active ETFs launched in 2025",
+      "source": "American Century ETF industry report",
+      "confidence": "HIGH",
+      "url": "https://www.americancentury.com/insights/etfs-defying-gravity/"
+    },
+    "DM-BIZ-016": {
+      "claim": "Credit risk management services market projected to reach $16.48B by 2030",
+      "source": "GlobeNewsWire industry report, Feb 2026",
+      "confidence": "MEDIUM",
+      "url": "https://www.globenewswire.com/news-release/2026/02/20/3241789/28124/en/Credit-Risk-Management-Services-Research-Report-2026-2035-A-16-48-Billion-Market-by-2030-Driven-by-Real-time-Risk-Monitoring-AI-driven-Analytics-and-Cloud-based-Services.html"
+    },
+    "DM-BIZ-017": {
+      "claim": "Moody's 2024 revenue showed 19.8% growth driven by transactional ratings",
+      "source": "Financial industry analysis, multiple sources",
+      "confidence": "HIGH",
+      "url": "https://arbalistmoney.com/sp-global-vs-moodys-better-investment-in-2025/"
+    },
+    "DM-BIZ-018": {
+      "claim": "Securities credit ratings = 50% of credit rating demand, corporate = 35%, sovereign = 15% (2025)",
+      "source": "Business Research Insights market segmentation",
+      "confidence": "MEDIUM",
+      "url": "https://www.businessresearchinsights.com/market-reports/credit-rating-market-113053"
+    }
+  }
+}

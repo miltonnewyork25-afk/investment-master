@@ -1,0 +1,154 @@
+{
+  "ticker": "SPGI",
+  "data_date": "2026-03-11",
+  "report_period": "Feb 2026 settlement",
+
+  "short_interest": {
+    "shares_short": 3120000,
+    "short_pct_float": 1.03,
+    "days_to_cover": 1.93,
+    "vs_sector_avg": {
+      "sector_avg_pct_float": 6.12,
+      "ratio_to_sector": 0.17,
+      "interpretation": "SPGI short interest is ~83% below its financial-sector peer group average, indicating minimal bearish positioning"
+    },
+    "trend": {
+      "direction": "declining",
+      "change_pct": -24.82,
+      "period": "vs prior settlement (Jan 2026)",
+      "interpretation": "Short interest fell ~25% since last report, suggesting shorts are covering, not building positions"
+    }
+  },
+
+  "options_sentiment": {
+    "put_call_ratio": {
+      "by_open_interest": 0.33,
+      "by_volume": 0.54,
+      "composite": 0.96,
+      "interpretation": "OI-based ratio (0.33) strongly bullish; volume-based (0.54) moderately bullish; composite near neutral. Weight OI more for structural positioning"
+    },
+    "implied_volatility": {
+      "current_iv": 26.5,
+      "iv_percentile": 3,
+      "iv_rank": "low",
+      "iv_vs_hv_interpretation": "IV percentile of 3% means options are cheaper than 97% of the past year's range. IV likely sits below HV, implying market expects calm — options are relatively inexpensive"
+    },
+    "unusual_activity": [
+      {
+        "date": "2026-03-09",
+        "description": "SPGI down 3.8% on broad market risk-off tape; no SPGI-specific unusual options flow detected",
+        "significance": "low",
+        "note": "Decline driven by macro sentiment, not company-specific options positioning"
+      },
+      {
+        "date": "2026-01-06",
+        "description": "No significant unusual options activity detected for SPGI",
+        "significance": "none",
+        "note": "Consistent with low IV percentile — no large directional bets being placed"
+      }
+    ]
+  },
+
+  "short_squeeze_assessment": {
+    "squeeze_probability": "very_low",
+    "rationale": [
+      "Short interest at 1.03% of float is negligible — far below the ~20%+ threshold typically associated with squeeze risk",
+      "Days-to-cover of 1.93 means shorts can exit in under 2 days — no liquidity trap",
+      "Short interest declining (-24.82%), meaning shorts are already covering voluntarily",
+      "Peer group average is 6.12% — SPGI is at 17% of peer levels",
+      "No elevated borrow rates or capital constraints reported"
+    ],
+    "fintel_squeeze_score_estimate": "below_average",
+    "note": "SPGI is a $150B+ mega-cap with deep liquidity; short squeezes are structurally improbable at this float size and short interest level"
+  },
+
+  "dm_anchors": [
+    {
+      "id": "DM-OPT-001",
+      "claim": "SPGI short interest: 3.12M shares, 1.03% of float",
+      "source": "MarketBeat / Benzinga (Feb 2026 settlement)",
+      "confidence": "high",
+      "verification": "Cross-confirmed by MarketBeat and Benzinga reports"
+    },
+    {
+      "id": "DM-OPT-002",
+      "claim": "Days to cover: 1.93",
+      "source": "MarketBeat (Feb 2026)",
+      "confidence": "high",
+      "verification": "Single source but standard exchange-reported metric"
+    },
+    {
+      "id": "DM-OPT-003",
+      "claim": "Short interest declined 24.82% vs prior settlement",
+      "source": "Benzinga (Feb 2026)",
+      "confidence": "high",
+      "verification": "Single source, exchange-reported data"
+    },
+    {
+      "id": "DM-OPT-004",
+      "claim": "Peer group average short % of float: 6.12%",
+      "source": "MarketBeat (Feb 2026)",
+      "confidence": "medium",
+      "verification": "Peer group composition not specified; directionally reliable"
+    },
+    {
+      "id": "DM-OPT-005",
+      "claim": "Put/call ratio by OI: 0.33, by volume: 0.54",
+      "source": "Tradestie / Fintel (as of Mar 2026)",
+      "confidence": "medium",
+      "verification": "Two independent sources with different methodologies; OI and volume measures directionally consistent (bullish)"
+    },
+    {
+      "id": "DM-OPT-006",
+      "claim": "Implied volatility: 26.5%, IV percentile: 3%",
+      "source": "Tradestie (as of Mar 2026)",
+      "confidence": "medium",
+      "verification": "Single source; IV percentile of 3% is notably low and should be rechecked closer to analysis date"
+    },
+    {
+      "id": "DM-OPT-007",
+      "claim": "No significant unusual options activity detected for SPGI in Q1 2026",
+      "source": "Tradestie / OptionSonar scan",
+      "confidence": "medium",
+      "verification": "Absence of evidence is not evidence of absence; reflects data available at search time"
+    }
+  ],
+
+  "sources": [
+    {
+      "name": "MarketBeat - SPGI Short Interest",
+      "url": "https://www.marketbeat.com/stocks/NYSE/SPGI/short-interest/",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "Benzinga - SPGI Short Interest Analysis",
+      "url": "https://www.benzinga.com/insights/short-sellers/26/02/50716424/peering-into-s-p-global-incs-recent-short-interest",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "Fintel - SPGI Short Squeeze Data",
+      "url": "https://fintel.io/ss/us/spgi",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "Fintel - SPGI Put/Call Ratio & Options Sentiment",
+      "url": "https://fintel.io/sopt/us/spgi",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "Barchart - SPGI Put/Call Ratios",
+      "url": "https://www.barchart.com/stocks/quotes/SPGI/put-call-ratios",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "Tradestie - SPGI Options Chain & IV Analysis",
+      "url": "https://tradestie.com/stocks/options/SPGI/",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "OptionSonar - SPGI Unusual Options Activity",
+      "url": "https://www.optionsonar.com/unusual-option-activity/spgi/latest-trades",
+      "accessed": "2026-03-11"
+    }
+  ]
+}

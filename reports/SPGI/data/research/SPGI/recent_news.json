@@ -1,0 +1,327 @@
+{
+  "meta": {
+    "ticker": "SPGI",
+    "company": "S&P Global Inc.",
+    "research_date": "2026-03-11",
+    "data_freshness": "2026-03-11",
+    "search_queries": [
+      "S&P Global latest news March 2026",
+      "SPGI stock news 2026",
+      "S&P Global upcoming catalysts events 2026",
+      "SPGI earnings date Q1 2026",
+      "SPGI insider trading activity 2026",
+      "SPGI SEC filing 10-K latest",
+      "S&P Global Mobility spinoff 2026",
+      "S&P Global regulatory action 2026"
+    ]
+  },
+  "key_news": [
+    {
+      "date": "2026-03-12",
+      "headline": "S&P Global to Present at BofA Securities Information and Business Services Conference",
+      "summary": "Mark Grant, SVP of Investor Relations and Treasurer, will participate in the BofA Securities conference in New York. Key investor event for 2026 guidance visibility.",
+      "sentiment": "neutral",
+      "source": "investor.spglobal.com"
+    },
+    {
+      "date": "2026-03-09",
+      "headline": "SPGI slides 3.8% amid risk-off tape",
+      "summary": "Stock declined driven by positioning and macro risk-off sentiment rather than company-specific headlines. Investors repricing after February outlook and medium-term narrative.",
+      "sentiment": "negative",
+      "source": "quiverquant.com"
+    },
+    {
+      "date": "2026-03-06",
+      "headline": "S&P Global Publishes Bitcoin Market Dynamics Research",
+      "summary": "Published 'Bitcoin Volatility Trends: A Deep Dive into Market Dynamics and Risk', examining bitcoin's evolution from niche asset to one with meaningful linkages to traditional financial markets.",
+      "sentiment": "neutral",
+      "source": "disruptionbanking.com"
+    },
+    {
+      "date": "2026-03-03",
+      "headline": "S&P Global presents at Raymond James 47th Annual Institutional Investors Conference",
+      "summary": "CEO Martina Cheung and CFO Eric Aboaf spoke in a webcast fireside chat in Orlando, Florida. Key executive visibility event.",
+      "sentiment": "neutral",
+      "source": "stocktitan.net"
+    },
+    {
+      "date": "2026-02-12",
+      "headline": "Director Hubert Joly purchases 2,500 shares worth ~$997K",
+      "summary": "Notable insider buy by board member signals confidence in company outlook. Purchased at ~$399/share average.",
+      "sentiment": "positive",
+      "source": "tipranks.com"
+    },
+    {
+      "date": "2026-02-10",
+      "headline": "S&P Global files 10-K Annual Report for FY2025",
+      "summary": "Annual report filed with SEC (accession: 0000064040-26-000013) for fiscal year ended December 31, 2025. Accepted February 11, 2026.",
+      "sentiment": "neutral",
+      "source": "sec.gov"
+    },
+    {
+      "date": "2026-02-06",
+      "headline": "SPGI stock drops after Q4 earnings and 2026 guidance disappoint",
+      "summary": "Shares plunged after weak 2026 EPS guidance and Q4 earnings miss. Company guided organic constant-currency revenue growth of 6-8% for 2026.",
+      "sentiment": "negative",
+      "source": "seekingalpha.com"
+    },
+    {
+      "date": "2026-02-01",
+      "headline": "Mobility Global announces new brand name ahead of spinoff",
+      "summary": "S&P Global Mobility rebrands to Mobility Global in preparation for mid-2026 tax-free spinoff. Portfolio includes CARFAX, automotiveMastermind, Polk Automotive Solutions, Market Scan.",
+      "sentiment": "positive",
+      "source": "spglobal.com"
+    },
+    {
+      "date": "2026-01-15",
+      "headline": "William Eager (President, S&P Global Mobility) purchases shares",
+      "summary": "Mobility segment president purchased 23.03 shares at $517.58, modest purchase but signals alignment with spinoff company.",
+      "sentiment": "neutral",
+      "source": "nasdaq.com"
+    },
+    {
+      "date": "2026-01-01",
+      "headline": "S&P Global completes sale of EDM and thinkFolio businesses to STG",
+      "summary": "Completed divestiture of Enterprise Data Management and thinkFolio businesses to private equity firm STG, further streamlining portfolio ahead of Mobility spinoff.",
+      "sentiment": "positive",
+      "source": "marketbeat.com"
+    },
+    {
+      "date": "2026-03-11",
+      "headline": "Quarterly dividend of $0.97/share payable",
+      "summary": "New annualized dividend rate of $3.88 per share. Dividend payable March 11, 2026.",
+      "sentiment": "positive",
+      "source": "marketbeat.com"
+    }
+  ],
+  "upcoming_catalysts": [
+    {
+      "date": "2026-03-12",
+      "event": "BofA Securities Information and Business Services Conference presentation",
+      "expected_impact": "Medium — investor visibility, potential 2026 guidance reiteration or update"
+    },
+    {
+      "date": "2026-04-28 to 2026-05-05",
+      "event": "Q1 2026 Earnings Release (exact date TBD, sources vary between late April and early May)",
+      "expected_impact": "High — first quarter post-guidance disappointment, market watching for organic growth trajectory and Mobility spinoff progress"
+    },
+    {
+      "date": "2026-H1",
+      "event": "Mobility Global spinoff completion (target mid-2026)",
+      "expected_impact": "High — tax-free spinoff of Mobility segment (CARFAX, Polk, automotiveMastermind) into standalone public company Mobility Global. S&P Global retains Market Intelligence, Ratings, Commodity Insights, Dow Jones Indices. CEO Bill Eager to lead new entity."
+    },
+    {
+      "date": "2026-04-22",
+      "event": "S&P Global Sugar Market Conference (Geneva)",
+      "expected_impact": "Low — commodity insights segment visibility"
+    },
+    {
+      "date": "2026-05-11",
+      "event": "Middle East Petroleum & Gas Conference (Dubai)",
+      "expected_impact": "Low-Medium — commodity insights segment visibility"
+    },
+    {
+      "date": "2026-H2",
+      "event": "Post-spinoff RemainCo re-rating potential",
+      "expected_impact": "High — market expected to re-rate S&P Global as pure-play capital markets data/analytics company (Ratings + Indices + Market Intelligence + Commodity Insights)"
+    }
+  ],
+  "insider_activity": {
+    "recent_transactions": [
+      {
+        "date": "2026-02-12",
+        "insider": "Hubert Joly",
+        "title": "Director",
+        "transaction": "Purchase",
+        "shares": 2500,
+        "value_usd": 997459,
+        "price_per_share": 398.98
+      },
+      {
+        "date": "2026-01-15",
+        "insider": "William Eager",
+        "title": "President, S&P Global Mobility",
+        "transaction": "Purchase",
+        "shares": 23.03,
+        "value_usd": 11920,
+        "price_per_share": 517.58
+      }
+    ],
+    "net_insider_sentiment": "Bullish — net buying with no insider sales in last 30 days. Director Joly's ~$1M purchase is a significant signal. No executive selling despite stock decline.",
+    "insider_ownership_note": "Institutional ownership dominant. Insider buying concentrated in board-level purchases."
+  },
+  "sec_filings": [
+    {
+      "form_type": "10-K",
+      "filing_date": "2026-02-10",
+      "acceptance_date": "2026-02-11",
+      "period": "FY2025 (ending 2025-12-31)",
+      "accession_number": "0000064040-26-000013",
+      "description": "Annual report for fiscal year ended December 31, 2025. Key document for Mobility segment financials and spinoff disclosures."
+    }
+  ],
+  "analyst_consensus": {
+    "rating": "Buy",
+    "total_analysts": 32,
+    "buy": 23,
+    "hold": 1,
+    "sell": 0,
+    "median_price_target_usd": 550.00,
+    "current_price_usd": 417.48,
+    "implied_upside_pct": 31.7,
+    "as_of_date": "2026-03-11"
+  },
+  "guidance_2026": {
+    "organic_revenue_growth": "6-8% constant currency",
+    "eps_guidance": "Weak relative to expectations (exact range not specified in search results)",
+    "market_reaction": "Stock dropped significantly on guidance day; seen as disappointing vs. consensus"
+  },
+  "portfolio_changes": {
+    "divestitures_completed": [
+      "EDM (Enterprise Data Management) — sold to STG (private equity), January 2026",
+      "thinkFolio — sold to STG (private equity), January 2026"
+    ],
+    "spinoff_pending": {
+      "segment": "S&P Global Mobility",
+      "new_entity": "Mobility Global",
+      "brands_included": ["CARFAX", "automotiveMastermind", "Polk Automotive Solutions", "Market Scan"],
+      "ceo": "Bill Eager",
+      "expected_completion": "Mid-2026",
+      "structure": "Tax-free spinoff to shareholders"
+    },
+    "remaining_segments": [
+      "S&P Global Market Intelligence",
+      "S&P Global Ratings",
+      "S&P Global Commodity Insights",
+      "S&P Dow Jones Indices"
+    ]
+  },
+  "regulatory_actions": {
+    "against_spgi": "No specific regulatory actions against S&P Global found in 2026 search results.",
+    "regulatory_environment": "S&P Global tracking potential risks from weakening bank regulatory environment, uncertain macro factors (slowing growth, softening labor, tariff policy). No material regulatory headwinds identified for the company itself."
+  },
+  "dm_anchors": {
+    "DM-NEW-001": {
+      "fact": "SPGI stock price $417.48 as of 2026-03-11",
+      "source": "public.com, marketbeat.com",
+      "confidence": "HIGH"
+    },
+    "DM-NEW-002": {
+      "fact": "Analyst consensus: 23 Buy, 1 Hold, 0 Sell, median PT $550",
+      "source": "public.com (32 analysts)",
+      "confidence": "HIGH"
+    },
+    "DM-NEW-003": {
+      "fact": "2026 organic revenue growth guidance: 6-8% constant currency",
+      "source": "seekingalpha.com, marketbeat.com",
+      "confidence": "HIGH"
+    },
+    "DM-NEW-004": {
+      "fact": "Mobility spinoff target mid-2026, new entity Mobility Global",
+      "source": "spglobal.com, stockspinoffs.com, yahoo finance",
+      "confidence": "HIGH"
+    },
+    "DM-NEW-005": {
+      "fact": "Director Hubert Joly purchased 2,500 shares for ~$997K on 2026-02-12",
+      "source": "tipranks.com, marketbeat.com",
+      "confidence": "HIGH"
+    },
+    "DM-NEW-006": {
+      "fact": "10-K filed 2026-02-10 for FY2025, accession 0000064040-26-000013",
+      "source": "sec.gov, last10k.com",
+      "confidence": "HIGH"
+    },
+    "DM-NEW-007": {
+      "fact": "Q1 2026 earnings expected late April / early May 2026",
+      "source": "tipranks.com, marketbeat.com, nasdaq.com",
+      "confidence": "MEDIUM — exact date varies by source (April 28 vs May 5)"
+    },
+    "DM-NEW-008": {
+      "fact": "EDM and thinkFolio sold to STG (PE) in January 2026",
+      "source": "marketbeat.com",
+      "confidence": "HIGH"
+    },
+    "DM-NEW-009": {
+      "fact": "Annualized dividend rate $3.88/share ($0.97/quarter), payable March 11, 2026",
+      "source": "marketbeat.com",
+      "confidence": "HIGH"
+    },
+    "DM-NEW-010": {
+      "fact": "SPGI stock dropped ~3.8% on March 9, 2026 amid risk-off sentiment",
+      "source": "quiverquant.com",
+      "confidence": "HIGH"
+    },
+    "DM-NEW-011": {
+      "fact": "CEO: Martina Cheung; CFO: Eric Aboaf (as of March 2026)",
+      "source": "investor.spglobal.com, stocktitan.net",
+      "confidence": "HIGH"
+    },
+    "DM-NEW-012": {
+      "fact": "Mobility Global brands: CARFAX, automotiveMastermind, Polk Automotive Solutions, Market Scan; CEO Bill Eager",
+      "source": "spglobal.com, autoremarketing.com",
+      "confidence": "HIGH"
+    }
+  },
+  "sources": [
+    {
+      "url": "https://investor.spglobal.com/news-releases/news-details/2026/SP-Global-to-Present-at-the-BofA-Securities-Information-and-Business-Services-Conference-2026-on-March-12-2026/default.aspx",
+      "title": "S&P Global BofA Conference March 12, 2026"
+    },
+    {
+      "url": "https://www.quiverquant.com/news/S&P+Global+(SPGI)+slides+as+investors+continue+to+reassess+2026+outlook+amid+a+risk-off+tape",
+      "title": "SPGI slides amid risk-off tape"
+    },
+    {
+      "url": "https://seekingalpha.com/news/4549419-sp-global-stock-drops-after-q4-earnings-2026-guidance-disappoint",
+      "title": "SPGI stock drops after Q4 earnings, 2026 guidance disappoint"
+    },
+    {
+      "url": "https://www.stockspinoffs.com/2025/09/22/sp-global-plans-sp-mobility-spinoff-for-2026-carfax-and-beyond/",
+      "title": "S&P Global Plans Mobility Spinoff for 2026"
+    },
+    {
+      "url": "https://www.spglobal.com/automotive-insights/en/blogs/2026/02/mobility-global-announces-new-name",
+      "title": "Mobility Global New Name Announcement"
+    },
+    {
+      "url": "https://www.tipranks.com/news/insider-trading/major-insider-move-at-sp-global-signals-growing-confidence-insider-trading",
+      "title": "Major Insider Move at S&P Global"
+    },
+    {
+      "url": "https://www.marketbeat.com/stocks/NYSE/SPGI/insider-trades/",
+      "title": "SPGI Insider Trading Activity"
+    },
+    {
+      "url": "https://www.marketbeat.com/stocks/NYSE/SPGI/earnings/",
+      "title": "SPGI Earnings Date"
+    },
+    {
+      "url": "https://www.tipranks.com/stocks/spgi/earnings",
+      "title": "SPGI Earnings Dates TipRanks"
+    },
+    {
+      "url": "https://last10k.com/sec-filings/spgi",
+      "title": "SPGI 10-K Annual Reports"
+    },
+    {
+      "url": "https://public.com/stocks/spgi/forecast-price-target",
+      "title": "SPGI Analyst Ratings and Price Target"
+    },
+    {
+      "url": "https://www.disruptionbanking.com/2026/03/06/sp-global-publishes-findings-on-bitcoins-evolving-role-in-financial-markets/",
+      "title": "S&P Global Bitcoin Research"
+    },
+    {
+      "url": "https://www.stocktitan.net/news/SPGI/s-p-global-to-present-at-raymond-james-47th-annual-institutional-dsjn8x6nn5cs.html",
+      "title": "S&P Global at Raymond James Conference"
+    },
+    {
+      "url": "https://finance.yahoo.com/news/p-global-reshapes-portfolio-mobility-211222670.html",
+      "title": "S&P Global Reshapes Portfolio With Mobility Spin Off"
+    },
+    {
+      "url": "https://www.nasdaq.com/articles/sp-global-shares-slide-10-after-mobility-unit-rebrand-ahead-spin",
+      "title": "S&P Global Shares Slide After Mobility Rebrand"
+    }
+  ]
+}

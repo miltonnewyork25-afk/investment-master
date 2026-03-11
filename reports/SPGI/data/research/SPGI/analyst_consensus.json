@@ -1,0 +1,358 @@
+{
+  "meta": {
+    "ticker": "SPGI",
+    "company": "S&P Global Inc.",
+    "retrieved_date": "2026-03-11",
+    "stock_price": 435.44,
+    "market_cap_B": 130.07
+  },
+  "consensus": {
+    "rating": "Strong Buy",
+    "avg_numeric_rating": 1.17,
+    "rating_scale": "1=Strong Buy, 5=Strong Sell",
+    "total_analysts": 23,
+    "buy": 20,
+    "hold": 3,
+    "sell": 0,
+    "price_target": {
+      "average": 566.87,
+      "median": 550.00,
+      "high": 635.00,
+      "low": 480.00,
+      "upside_pct": 30.2,
+      "note": "Average varies by source: $537-$567 range across aggregators"
+    }
+  },
+  "earnings_estimates": {
+    "current_quarter": {
+      "period": "Q1 2026",
+      "report_date": "2026-05-05",
+      "eps_estimate": 4.83,
+      "revenue_estimate_B": 4.07
+    },
+    "next_quarter": {
+      "period": "Q2 2026",
+      "report_date": "2026-04-28",
+      "eps_estimate": 4.84,
+      "revenue_estimate_B": null,
+      "note": "Report date from MarketBeat; may be Q1 report date — verify closer to date"
+    },
+    "fy2026": {
+      "eps_guidance_low": 19.40,
+      "eps_guidance_high": 19.65,
+      "eps_consensus": 19.96,
+      "revenue_guidance_low_B": 16.30,
+      "revenue_guidance_high_B": 16.70,
+      "organic_cc_revenue_growth_pct": "6.0-8.0",
+      "gaap_revenue_growth_pct": "6.6-8.6",
+      "eps_yoy_growth_pct": "9-10",
+      "note": "Guidance below consensus $19.96 triggered Feb 2026 sell-off"
+    },
+    "fy2027": {
+      "eps_consensus": 22.72,
+      "eps_low": 21.18,
+      "eps_high": 24.01,
+      "revenue_consensus_B": 18.15,
+      "revenue_low_B": 17.04,
+      "revenue_high_B": 19.25,
+      "num_analysts": 24,
+      "note": "Revenue figures from StockAnalysis; one source showed anomalous $5.4T — likely quarterly misread, annual ~$18B estimated"
+    }
+  },
+  "earnings_surprise_history": [
+    {
+      "quarter": "Q4 2025",
+      "actual_eps": 4.30,
+      "estimate_eps": 4.32,
+      "surprise_pct": -0.46,
+      "actual_revenue_B": 3.92,
+      "revenue_beat": true,
+      "note": "First miss in several quarters; triggered guidance disappointment sell-off"
+    },
+    {
+      "quarter": "Q3 2025",
+      "actual_eps": 4.73,
+      "estimate_eps": 4.38,
+      "surprise_pct": 7.99,
+      "actual_revenue_B": 3.89,
+      "revenue_beat": true,
+      "note": "Strong beat on both EPS and revenue"
+    },
+    {
+      "quarter": "Q2 2025",
+      "actual_eps": 4.43,
+      "estimate_eps": 4.25,
+      "surprise_pct": 4.24,
+      "actual_revenue_B": null,
+      "revenue_beat": true,
+      "note": "EPS surged 9.7% YoY"
+    },
+    {
+      "quarter": "Q1 2025",
+      "actual_eps": 4.37,
+      "estimate_eps": 4.22,
+      "surprise_pct": 3.55,
+      "actual_revenue_B": 3.78,
+      "revenue_beat": true,
+      "note": "Revenue +8.2% YoY, beat by 2%"
+    }
+  ],
+  "trailing_4q_avg_surprise_pct": 3.83,
+  "recent_changes": {
+    "guidance_disappointment": {
+      "date": "2026-02-10",
+      "detail": "FY2026 EPS guidance $19.40-$19.65 vs consensus $19.96; stock dropped ~17% premarket",
+      "context": "Q4 2025 EPS also missed at $4.30 vs $4.32 estimate"
+    },
+    "notable_analyst_actions": [
+      {
+        "firm": "Seeking Alpha / Buy-side",
+        "action": "Upgrade to Buy",
+        "date": "2026-02",
+        "rationale": "Overblown sell-off after guidance miss; buying opportunity"
+      },
+      {
+        "firm": "Evercore ISI",
+        "action": "Maintained Outperform",
+        "date": "2025-10",
+        "rationale": "Continued positive outlook"
+      },
+      {
+        "firm": "Seaport Global",
+        "action": "Initiated Buy",
+        "date": "2025-10-01",
+        "rationale": "New coverage initiation"
+      },
+      {
+        "firm": "JP Morgan",
+        "action": "Maintained Overweight",
+        "date": "2025",
+        "rationale": "Ongoing positive thesis"
+      },
+      {
+        "firm": "Mizuho",
+        "action": "Maintained Outperform",
+        "date": "2025",
+        "rationale": "Ongoing positive thesis"
+      },
+      {
+        "firm": "BMO Capital",
+        "action": "Maintained Outperform",
+        "date": "2025",
+        "rationale": "Ongoing positive thesis"
+      }
+    ],
+    "mobility_spinoff": {
+      "entity": "Mobility Global Inc.",
+      "expected_completion": "mid-2026",
+      "detail": "Spin-off of Mobility segment into standalone public company; 81% recurring revenue, 35.4% adj operating margin"
+    }
+  },
+  "bull_bear_summary": {
+    "bull_case": [
+      "Strong free cash flow growth and attractive valuation post sell-off ($435 vs avg PT $567 = 30% upside)",
+      "Mobility spin-off catalyst: high-margin (35.4% adj OPM), 81% recurring revenue, asset-light model",
+      "Structural growth drivers: EV adoption, dealer SaaS penetration, international expansion",
+      "Consistent earnings beat track record (3 of last 4 quarters beat, avg surprise ~4%)",
+      "Dominant market position in credit ratings, indices, and data analytics — deep moats",
+      "6-8% organic revenue growth guidance with margin expansion trajectory"
+    ],
+    "bear_case": [
+      "AI disruption risk — stock already depreciated ~11% on AI concerns",
+      "ROE of 11.98% in bottom 25% of industry (capital-heavy post-IHS Markit acquisition)",
+      "TTM FCF growth 15% vs 3Y avg 28.8% — decelerating",
+      "PE ratio ~37x in bottom 25% of industry valuation range (expensive for slowing growth)",
+      "FY2026 guidance disappointed consensus ($19.40-$19.65 vs $19.96) — management conservatism or real headwind?",
+      "Regulatory risk to credit rating oligopoly; potential fee compression in index business"
+    ]
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-CON-001",
+      "type": "H",
+      "field": "consensus.rating",
+      "value": "Strong Buy, 20 Buy / 3 Hold / 0 Sell",
+      "source": "public.com/stocks/spgi/forecast-price-target",
+      "date": "2026-03-11"
+    },
+    {
+      "id": "DM-CON-002",
+      "type": "H",
+      "field": "consensus.price_target.average",
+      "value": "$566.87",
+      "source": "public.com/stocks/spgi/forecast-price-target",
+      "date": "2026-03-11"
+    },
+    {
+      "id": "DM-CON-003",
+      "type": "H",
+      "field": "consensus.price_target.range",
+      "value": "$480-$635",
+      "source": "stockanalysis.com/stocks/spgi/forecast",
+      "date": "2026-03-11"
+    },
+    {
+      "id": "DM-CON-004",
+      "type": "R",
+      "field": "earnings_estimates.fy2026.eps_guidance",
+      "value": "$19.40-$19.65",
+      "source": "tickerreport.com; investor.spglobal.com Q4 2025 release",
+      "date": "2026-02-10"
+    },
+    {
+      "id": "DM-CON-005",
+      "type": "R",
+      "field": "earnings_estimates.fy2026.revenue_guidance",
+      "value": "$16.3B-$16.7B",
+      "source": "tickerreport.com; investor.spglobal.com Q4 2025 release",
+      "date": "2026-02-10"
+    },
+    {
+      "id": "DM-CON-006",
+      "type": "H",
+      "field": "earnings_estimates.fy2027.eps_consensus",
+      "value": "$22.72 (range $21.18-$24.01)",
+      "source": "stockanalysis.com/stocks/spgi/forecast",
+      "date": "2026-03-11"
+    },
+    {
+      "id": "DM-CON-007",
+      "type": "R",
+      "field": "earnings_surprise_history.Q4_2025",
+      "value": "$4.30 actual vs $4.32 est (-0.46%)",
+      "source": "investing.com; nasdaq.com/market-activity/stocks/spgi/earnings",
+      "date": "2026-02-10"
+    },
+    {
+      "id": "DM-CON-008",
+      "type": "R",
+      "field": "earnings_surprise_history.Q3_2025",
+      "value": "$4.73 actual vs $4.38 est (+7.99%)",
+      "source": "investing.com earnings transcript; nasdaq.com",
+      "date": "2025-10"
+    },
+    {
+      "id": "DM-CON-009",
+      "type": "R",
+      "field": "earnings_surprise_history.Q2_2025",
+      "value": "$4.43 actual vs $4.25 est (+4.24%)",
+      "source": "zacks.com; yahoo finance",
+      "date": "2025-07"
+    },
+    {
+      "id": "DM-CON-010",
+      "type": "R",
+      "field": "earnings_surprise_history.Q1_2025",
+      "value": "$4.37 actual vs $4.22 est (+3.55%); Revenue $3.78B +8.2% YoY",
+      "source": "gurufocus.com; yahoo finance",
+      "date": "2025-04"
+    },
+    {
+      "id": "DM-CON-011",
+      "type": "H",
+      "field": "earnings_estimates.Q1_2026",
+      "value": "EPS $4.83, Revenue $4.07B",
+      "source": "seekingalpha.com/symbol/SPGI/earnings",
+      "date": "2026-03-11"
+    },
+    {
+      "id": "DM-CON-012",
+      "type": "S",
+      "field": "meta.stock_price",
+      "value": "$435.44",
+      "source": "stockanalysis.com/stocks/spgi",
+      "date": "2026-03-11"
+    },
+    {
+      "id": "DM-CON-013",
+      "type": "S",
+      "field": "recent_changes.guidance_disappointment",
+      "value": "17% premarket drop on Feb 10, 2026",
+      "source": "seekingalpha.com/news/4549419; investing.com",
+      "date": "2026-02-10"
+    },
+    {
+      "id": "DM-CON-014",
+      "type": "H",
+      "field": "bull_bear_summary.bear.ai_disruption",
+      "value": "Stock depreciated ~11.14% on AI disruption concerns",
+      "source": "financecharts.com/stocks/SPGI/bulls-bears",
+      "date": "2026-03"
+    },
+    {
+      "id": "DM-CON-015",
+      "type": "H",
+      "field": "bull_bear_summary.bull.mobility_spinoff",
+      "value": "81% recurring rev, 35.4% adj OPM, mid-2026 completion",
+      "source": "insidermonkey.com/blog/sp-global-inc-spgi-a-bull-case-theory",
+      "date": "2026-03"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Public.com - SPGI Forecast",
+      "url": "https://public.com/stocks/spgi/forecast-price-target",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "StockAnalysis - SPGI Forecast",
+      "url": "https://stockanalysis.com/stocks/spgi/forecast/",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "TipRanks - SPGI Forecast",
+      "url": "https://www.tipranks.com/stocks/spgi/forecast",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "MarketBeat - SPGI Earnings",
+      "url": "https://www.marketbeat.com/stocks/NYSE/SPGI/earnings/",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "Seeking Alpha - SPGI Earnings",
+      "url": "https://seekingalpha.com/symbol/SPGI/earnings",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "Investing.com - Q4 2025 Earnings Transcript",
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-sp-global-q4-2025-results-miss-eps-forecast-stock-drops-93CH-4497191",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "Insider Monkey - SPGI Bull Case Theory",
+      "url": "https://www.insidermonkey.com/blog/sp-global-inc-spgi-a-bull-case-theory-5-1702908/",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "FinanceCharts - SPGI Bull/Bear",
+      "url": "https://www.financecharts.com/stocks/SPGI/bulls-bears",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "Ticker Report - FY2026 Guidance",
+      "url": "https://www.tickerreport.com/banking-finance/13341854/sp-global-nysespgi-releases-fy-2026-earnings-guidance.html",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "S&P Global IR - Q4 2025 Results",
+      "url": "https://investor.spglobal.com/news-releases/news-details/2026/SP-Global-Reports-Fourth-Quarter-and-Full-Year-2025-Results/default.aspx",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "Seeking Alpha - Buy the Overblown Sell-Off",
+      "url": "https://seekingalpha.com/article/4866897-s-and-p-global-buy-the-overblown-sell-off-rating-upgrade",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "GuruFocus - Q1 2025 Earnings",
+      "url": "https://www.gurufocus.com/news/2811027/sp-global-inc-spgi-q1-2025-earnings-eps-of-354-beats-estimate-revenue-surpasses-forecast-at-3777-billion",
+      "accessed": "2026-03-11"
+    },
+    {
+      "name": "WallStreetZen - SPGI Forecast",
+      "url": "https://www.wallstreetzen.com/stocks/us/nyse/spgi/stock-forecast",
+      "accessed": "2026-03-11"
+    }
+  ]
+}

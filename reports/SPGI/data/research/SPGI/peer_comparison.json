@@ -1,0 +1,11 @@
+{
+  "fetched_at": "2026-03-11",
+  "benchmark": "SPY",
+  "peers": {
+    "SPGI": {"pe": 29.68, "pb": 5.10, "roe": 13.09, "opm": 42.24, "rev_growth": 9.0, "fcf": 4878},
+    "MCO":  {"pe": 33.11, "pb": 22.57, "roe": 62.08, "opm": 44.77, "rev_growth": 13.0, "fcf": 2058},
+    "ICE":  {"pe": 27.76, "pb": 3.20, "roe": 11.89, "opm": 38.74, "rev_growth": 7.8, "fcf": 3485},
+    "MSCI": {"pe": 35.08, "pb": -16.68, "roe": null, "opm": 54.67, "rev_growth": 10.6, "fcf": 1165},
+    "FICO": {"pe": 47.62, "pb": -20.78, "roe": null, "opm": 46.45, "rev_growth": 16.4, "fcf": 573}
+  }
+}

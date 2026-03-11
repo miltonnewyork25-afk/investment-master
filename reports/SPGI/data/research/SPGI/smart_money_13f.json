@@ -1,0 +1,484 @@
+{
+  "meta": {
+    "ticker": "SPGI",
+    "company": "S&P Global Inc.",
+    "data_as_of": "2025-12-31",
+    "report_date": "2026-03-11",
+    "filing_period": "Q4 2025 (13F filed Feb 2026)"
+  },
+  "institutional_summary": {
+    "total_institutions": 2348,
+    "total_shares_held": 266000000,
+    "ownership_pct": 88.66,
+    "qoq_change": {
+      "institutions_added": 944,
+      "institutions_reduced": 1038,
+      "net_direction": "slight_net_selling",
+      "note": "More institutions reduced (1,038) than added (944) in Q4 2025, suggesting mild distribution"
+    }
+  },
+  "top_holders": [
+    {
+      "name": "Vanguard Group Inc.",
+      "shares": 30374366,
+      "value_usd": 15873340000,
+      "pct_of_shares_outstanding": 10.02,
+      "change_pct": null,
+      "new_position": false,
+      "filing_date": "2025-12-31"
+    },
+    {
+      "name": "BlackRock Inc.",
+      "shares": 25400000,
+      "value_usd": 13274000000,
+      "pct_of_shares_outstanding": 8.38,
+      "change_pct": null,
+      "new_position": false,
+      "filing_date": "2025-12-31",
+      "note": "SC 13G/A disclosed 24.2M shares (7.6%) as of Jan 2024; estimated ~25.4M shares by Q4 2025"
+    },
+    {
+      "name": "State Street Corp.",
+      "shares": null,
+      "value_usd": null,
+      "pct_of_shares_outstanding": null,
+      "change_pct": null,
+      "new_position": false,
+      "filing_date": "2025-12-31",
+      "note": "Confirmed top-5 holder; exact Q4 2025 share count not retrieved"
+    },
+    {
+      "name": "TCI Fund Management Ltd (Chris Hohn)",
+      "shares": null,
+      "value_usd": null,
+      "pct_of_shares_outstanding": null,
+      "change_pct": "increased_modestly",
+      "new_position": false,
+      "filing_date": "2025-12-31",
+      "portfolio_weight_pct": 11.48,
+      "note": "5th largest holding in TCI portfolio; Hohn added to SPGI in Q4 2025 as part of credit-rating duopoly thesis (alongside Moody's)"
+    },
+    {
+      "name": "Morgan Stanley",
+      "shares": null,
+      "value_usd": null,
+      "pct_of_shares_outstanding": null,
+      "change_pct": null,
+      "new_position": false,
+      "filing_date": "2025-12-31"
+    },
+    {
+      "name": "Geode Capital Management LLC",
+      "shares": null,
+      "value_usd": null,
+      "pct_of_shares_outstanding": null,
+      "change_pct": null,
+      "new_position": false,
+      "filing_date": "2025-12-31"
+    },
+    {
+      "name": "Wellington Management Group LLP",
+      "shares": null,
+      "value_usd": null,
+      "pct_of_shares_outstanding": null,
+      "change_pct": null,
+      "new_position": false,
+      "filing_date": "2025-12-31"
+    },
+    {
+      "name": "Norges Bank (Norway Sovereign Wealth Fund)",
+      "shares": null,
+      "value_usd": null,
+      "pct_of_shares_outstanding": null,
+      "change_pct": null,
+      "new_position": false,
+      "filing_date": "2025-12-31"
+    },
+    {
+      "name": "Bank of America Corp",
+      "shares": null,
+      "value_usd": null,
+      "pct_of_shares_outstanding": null,
+      "change_pct": -14.1,
+      "new_position": false,
+      "filing_date": "2025-12-31",
+      "note": "Reduced by 748,529 shares (-14.1%) in Q4 2025, est. $391M reduction"
+    },
+    {
+      "name": "FMR LLC (Fidelity)",
+      "shares": null,
+      "value_usd": null,
+      "pct_of_shares_outstanding": null,
+      "change_pct": null,
+      "new_position": false,
+      "filing_date": "2025-12-31"
+    }
+  ],
+  "notable_moves": [
+    {
+      "investor": "Rockefeller Capital Management L.P.",
+      "action": "massive_increase",
+      "shares_changed": 1590398,
+      "total_shares_after": 1654000,
+      "value_usd": 831126090,
+      "change_pct": 2487.8,
+      "quarter": "Q4 2025",
+      "thesis": "Largest percentage increase among notable holders; built ~$831M position from near-zero base. Signals strong conviction in SPGI at depressed valuations."
+    },
+    {
+      "investor": "Cardano Risk Management B.V.",
+      "action": "massive_increase",
+      "shares_changed": 1576544,
+      "total_shares_after": null,
+      "value_usd": 824000000,
+      "change_pct": 858.3,
+      "quarter": "Q4 2025",
+      "thesis": "European risk management firm built ~$824M position, +858% increase. Possible structural bet on credit-rating/data oligopoly."
+    },
+    {
+      "investor": "UBS Asset Management",
+      "action": "major_reduction",
+      "shares_changed": -8312857,
+      "total_shares_after": null,
+      "value_usd": -4300000000,
+      "change_pct": -74.9,
+      "quarter": "Q4 2025",
+      "thesis": "Largest single-holder reduction in Q4 2025; removed ~$4.3B. Likely portfolio rebalancing or fund restructuring rather than fundamental thesis change."
+    },
+    {
+      "investor": "Lombard Odier Asset Management (Europe) Ltd",
+      "action": "near_full_exit",
+      "shares_changed": -2438336,
+      "total_shares_after": null,
+      "value_usd": -1270000000,
+      "change_pct": -98.1,
+      "quarter": "Q4 2025",
+      "thesis": "Near-complete exit (~98% reduction); ~$1.27B removed. Possible fund mandate change or European reallocation."
+    },
+    {
+      "investor": "DZ Bank AG",
+      "action": "major_reduction",
+      "shares_changed": -1710698,
+      "total_shares_after": null,
+      "value_usd": -894000000,
+      "change_pct": -66.1,
+      "quarter": "Q4 2025",
+      "thesis": "German cooperative bank reduced by two-thirds; ~$894M removed."
+    },
+    {
+      "investor": "Bank of America Corp",
+      "action": "reduction",
+      "shares_changed": -748529,
+      "total_shares_after": null,
+      "value_usd": -391000000,
+      "change_pct": -14.1,
+      "quarter": "Q4 2025",
+      "thesis": "Moderate trim of ~14%; ~$391M removed."
+    },
+    {
+      "investor": "TCI Fund Management (Chris Hohn)",
+      "action": "modest_increase",
+      "shares_changed": null,
+      "total_shares_after": null,
+      "value_usd": null,
+      "change_pct": null,
+      "quarter": "Q4 2025",
+      "thesis": "Added to SPGI alongside Moody's as part of credit-rating duopoly thesis. SPGI is 11.48% of TCI portfolio. Hohn views upcoming Mobility spin-off as simplifying the business to highest-quality core."
+    },
+    {
+      "investor": "Valley Forge Capital Management (Dev Kantesaria)",
+      "action": "modest_increase",
+      "shares_changed": null,
+      "total_shares_after": null,
+      "value_usd": null,
+      "change_pct": 0.18,
+      "quarter": "Q4 2025",
+      "thesis": "SPGI is 20.83% of portfolio (2nd largest holding). Kantesaria views SPGI as one of most durable capital-light compounders. Added incrementally in Q4."
+    },
+    {
+      "investor": "Schroder Investment Management Group",
+      "action": "increase",
+      "shares_changed": null,
+      "total_shares_after": null,
+      "value_usd": null,
+      "change_pct": 2.5,
+      "quarter": "Q3 2025",
+      "thesis": "Modest position increase of 2.5% during Q3 2025."
+    }
+  ],
+  "smart_money_concentration": {
+    "top_conviction_holders": [
+      {
+        "investor": "Dev Kantesaria (Valley Forge Capital)",
+        "portfolio_weight_pct": 20.83,
+        "conviction_signal": "highest_conviction",
+        "note": "SPGI = 2nd largest holding; concentrated quality compounder strategy"
+      },
+      {
+        "investor": "Chris Hohn (TCI Fund Management)",
+        "portfolio_weight_pct": 11.48,
+        "conviction_signal": "high_conviction",
+        "note": "5th largest holding; credit-rating duopoly thesis with MCO"
+      },
+      {
+        "investor": "William Von Mueffling (Cantillon Capital)",
+        "portfolio_weight_pct": 5.37,
+        "conviction_signal": "moderate_conviction",
+        "note": "Concentrated quality growth manager"
+      },
+      {
+        "investor": "Parnassus Investments (Endeavor Fund)",
+        "portfolio_weight_pct": 3.72,
+        "conviction_signal": "moderate_conviction",
+        "note": "ESG-focused fund"
+      },
+      {
+        "investor": "David Rolfe (Wedgewood Partners)",
+        "portfolio_weight_pct": 3.66,
+        "conviction_signal": "moderate_conviction",
+        "note": "Concentrated value-quality manager"
+      }
+    ],
+    "berkshire_hathaway": {
+      "status": "not_in_top_holdings",
+      "note": "SPGI not among Berkshire's top holdings as of Q4 2025 13F. Buffett's primary financial holdings are AXP (20.46%), BAC (10.38%). Berkshire holds significant stake in Moody's (MCO) but SPGI position if any is small relative to portfolio."
+    }
+  },
+  "insider_activity": {
+    "period": "last_12_months",
+    "summary": {
+      "total_buys": 4,
+      "total_sells": 14,
+      "net_direction": "net_selling",
+      "note": "Insider sales outweigh purchases 14:4 over last 12 months, typical for a stock that traded at elevated valuations through mid-2025"
+    },
+    "notable_transactions": [
+      {
+        "insider": "Hubert Joly",
+        "title": "Director",
+        "action": "buy",
+        "shares": 2500,
+        "price_per_share": 398.98,
+        "total_value_usd": 997459,
+        "date": "2026-02-11",
+        "signal": "bullish",
+        "note": "Largest insider purchase in recent period; bought after Q4 earnings selloff near ~$399. Board member buying at multi-year low = conviction signal."
+      },
+      {
+        "insider": "William W. Eager",
+        "title": "President, S&P Global Mobility",
+        "action": "buy",
+        "shares": 23,
+        "price_per_share": 517.58,
+        "total_value_usd": 11917,
+        "date": "2026-01-15",
+        "signal": "mildly_bullish",
+        "note": "Small purchase, likely automatic investment plan"
+      },
+      {
+        "insider": "Saha Saugata",
+        "title": "President, Market Intelligence",
+        "action": "sell",
+        "shares": 2000,
+        "price_per_share": 560.0,
+        "total_value_usd": 1120000,
+        "date": "2025-08-08",
+        "signal": "neutral",
+        "note": "Sold near highs; routine executive compensation management"
+      },
+      {
+        "insider": "Tavernier Edouard",
+        "title": "President, S&P Global Mobility",
+        "action": "sell",
+        "shares": 1799,
+        "price_per_share": 555.0,
+        "total_value_usd": 998000,
+        "date": "2025-08-06",
+        "signal": "neutral",
+        "note": "Sold near highs; routine"
+      },
+      {
+        "insider": "Ganesan Girish",
+        "title": "EVP, Chief People Officer",
+        "action": "sell",
+        "shares": 73,
+        "price_per_share": 482.0,
+        "total_value_usd": 35200,
+        "date": "2025-10-01",
+        "signal": "neutral",
+        "note": "De minimis sale"
+      }
+    ],
+    "interpretation": "Insider selling concentrated in Aug-Oct 2025 at $480-560 range (near highs). The notable Feb 2026 buy by Director Joly at ~$399 (post-earnings dip) is a positive signal -- board-level buying at depressed prices. Overall pattern: routine selling near highs, selective buying near lows."
+  },
+  "valuation_context": {
+    "current_price_approx": 452,
+    "price_vs_52w_high": "-22%",
+    "forward_pe_approx": 23,
+    "note": "As of early March 2026, SPGI trades around $452, down ~22% from 52-week high. Forward P/E ~23x is the cheapest SPGI has traded on a forward basis in many years. Upcoming Mobility spin-off expected to simplify business."
+  },
+  "key_themes": {
+    "smart_money_signal": "mixed_with_bullish_lean",
+    "bull_signals": [
+      "High-conviction holders (Kantesaria 20.8%, Hohn 11.5%) adding in Q4 2025",
+      "Rockefeller Capital built $831M position from near-zero (+2488%)",
+      "Cardano Risk Mgmt built $824M position (+858%)",
+      "Director Joly bought $1M at post-earnings low (~$399)",
+      "Forward P/E ~23x = multi-year cheapest valuation",
+      "Upcoming Mobility spin-off simplifies to highest-margin core"
+    ],
+    "bear_signals": [
+      "More institutions reduced (1,038) than added (944) in Q4 2025",
+      "UBS AM massive exit of $4.3B (-74.9%)",
+      "Lombard Odier near-complete exit $1.27B (-98.1%)",
+      "DZ Bank reduced $894M (-66.1%)",
+      "Insider sales outweigh buys 14:4 over last 12 months",
+      "Stock down ~22% from highs on 2026 guidance concerns"
+    ],
+    "interpretation": "Institutional ownership shows bifurcation: passive/index holders stable, some large European holders significantly reduced (possibly fund restructuring), while high-conviction quality investors (Kantesaria, Hohn, Rockefeller) are adding. Smart money buying at depressed valuations suggests the selloff may be overdone. The Mobility spin-off catalyst and cheapest-in-years forward P/E provide a tangible re-rating path."
+  },
+  "dm_anchors": {
+    "DM-SMT-001": {
+      "claim": "2,348 institutions hold SPGI with 88.66% institutional ownership",
+      "source": "HedgeFollow/MarketBeat 13F aggregation",
+      "confidence": "high",
+      "as_of": "2025-12-31"
+    },
+    "DM-SMT-002": {
+      "claim": "Vanguard holds 30,374,366 shares (10.02%) worth ~$15.9B",
+      "source": "HoldingsChannel/MarketBeat 13F data",
+      "confidence": "high",
+      "as_of": "2025-12-31"
+    },
+    "DM-SMT-003": {
+      "claim": "944 institutions added, 1,038 reduced in Q4 2025",
+      "source": "HedgeFollow SPGI institutional tracking",
+      "confidence": "high",
+      "as_of": "Q4 2025"
+    },
+    "DM-SMT-004": {
+      "claim": "UBS AM reduced 8,312,857 shares (-74.9%), ~$4.3B in Q4 2025",
+      "source": "HedgeFollow 13F change tracking",
+      "confidence": "high",
+      "as_of": "Q4 2025"
+    },
+    "DM-SMT-005": {
+      "claim": "Rockefeller Capital added 1,590,398 shares (+2487.8%), ~$831M in Q4 2025",
+      "source": "HedgeFollow 13F change tracking",
+      "confidence": "high",
+      "as_of": "Q4 2025"
+    },
+    "DM-SMT-006": {
+      "claim": "Chris Hohn/TCI holds SPGI at 11.48% portfolio weight, added in Q4 2025",
+      "source": "ValuSider/Benzinga TCI 13F analysis",
+      "confidence": "high",
+      "as_of": "2025-12-31"
+    },
+    "DM-SMT-007": {
+      "claim": "Dev Kantesaria/Valley Forge holds SPGI at 20.83% portfolio weight",
+      "source": "ValuSider/HedgeFollow Valley Forge 13F",
+      "confidence": "high",
+      "as_of": "2025-12-31"
+    },
+    "DM-SMT-008": {
+      "claim": "Director Hubert Joly purchased 2,500 shares at ~$399 on Feb 11, 2026 (~$997K)",
+      "source": "MarketBeat/GurufFocus insider trading, SEC Form 4",
+      "confidence": "high",
+      "as_of": "2026-02-11"
+    },
+    "DM-SMT-009": {
+      "claim": "Insider activity last 12 months: 4 buys vs 14 sells",
+      "source": "HedgeFollow/MarketBeat insider trading aggregation",
+      "confidence": "high",
+      "as_of": "2026-03-11"
+    },
+    "DM-SMT-010": {
+      "claim": "SPGI forward P/E ~23x is cheapest on forward basis in many years",
+      "source": "Benzinga/QuiverQuant market analysis",
+      "confidence": "medium",
+      "as_of": "2026-03-11",
+      "note": "Forward P/E depends on consensus estimates which shift; directionally confirmed by multiple sources"
+    },
+    "DM-SMT-011": {
+      "claim": "Lombard Odier reduced 2,438,336 shares (-98.1%), ~$1.27B in Q4 2025",
+      "source": "HedgeFollow 13F change tracking",
+      "confidence": "high",
+      "as_of": "Q4 2025"
+    },
+    "DM-SMT-012": {
+      "claim": "Cardano Risk Management added 1,576,544 shares (+858.3%), ~$824M in Q4 2025",
+      "source": "HedgeFollow 13F change tracking",
+      "confidence": "high",
+      "as_of": "Q4 2025"
+    },
+    "DM-SMT-013": {
+      "claim": "BlackRock held ~24.2M shares (7.6%) per SC 13G/A Jan 2024; estimated ~25.4M by Q4 2025",
+      "source": "Fintel SC 13G/A filing + estimate",
+      "confidence": "medium",
+      "as_of": "2024-01-26 (filing); Q4 2025 (estimate)",
+      "note": "Q4 2025 figure is directional estimate based on typical BlackRock passive growth; exact 13F number not retrieved"
+    }
+  },
+  "sources": [
+    {
+      "name": "HedgeFollow SPGI Institutional Ownership",
+      "url": "https://hedgefollow.com/stocks/SPGI",
+      "data_type": "13F aggregation"
+    },
+    {
+      "name": "MarketBeat SPGI Institutional Ownership",
+      "url": "https://www.marketbeat.com/stocks/NYSE/SPGI/institutional-ownership/",
+      "data_type": "13F aggregation"
+    },
+    {
+      "name": "HoldingsChannel SPGI Institutional Holders",
+      "url": "https://www.holdingschannel.com/institutional/holders-of-spgi/",
+      "data_type": "13F aggregation"
+    },
+    {
+      "name": "Nasdaq SPGI Institutional Holdings",
+      "url": "https://www.nasdaq.com/market-activity/stocks/spgi/institutional-holdings",
+      "data_type": "13F aggregation"
+    },
+    {
+      "name": "ValuSider TCI Fund Management Portfolio",
+      "url": "https://valuesider.com/guru/chris-hohn-tci-fund-management/portfolio",
+      "data_type": "13F portfolio tracking"
+    },
+    {
+      "name": "Benzinga - Chris Hohn TCI Q4 2025 Update",
+      "url": "https://www.benzinga.com/markets/equities/26/02/50680719/chris-hohns-tci-fund-keeps-big-tech-core-intact-while-adding-to-moodys-and-sp-stakes-in-q4",
+      "data_type": "13F analysis"
+    },
+    {
+      "name": "ValuSider Valley Forge Capital Portfolio",
+      "url": "https://valuesider.com/guru/dev-kantesaria-valley-forge-capital-management/portfolio",
+      "data_type": "13F portfolio tracking"
+    },
+    {
+      "name": "MarketBeat SPGI Insider Trades",
+      "url": "https://www.marketbeat.com/stocks/NYSE/SPGI/insider-trades/",
+      "data_type": "SEC Form 4 aggregation"
+    },
+    {
+      "name": "GuruFocus Hubert Joly Insider Buy",
+      "url": "https://www.gurufocus.com/news/8612638/insider-buying-hubert-joly-acquires-shares-of-sp-global-inc-spgi",
+      "data_type": "SEC Form 4"
+    },
+    {
+      "name": "Fintel BlackRock SPGI Ownership",
+      "url": "https://fintel.io/so/us/spgi/blackrock",
+      "data_type": "SC 13G/A filing"
+    },
+    {
+      "name": "StockCircle SPGI Insider Trades",
+      "url": "https://stockcircle.com/insider-trades/SPGI",
+      "data_type": "SEC Form 4 aggregation"
+    },
+    {
+      "name": "Yahoo Finance SPGI Major Holders",
+      "url": "https://finance.yahoo.com/quote/SPGI/holders/",
+      "data_type": "13F aggregation"
+    }
+  ]
+}

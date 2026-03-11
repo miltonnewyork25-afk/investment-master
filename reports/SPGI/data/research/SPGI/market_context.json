@@ -1,0 +1,8 @@
+{
+  "fetched_at": "2026-03-11",
+  "sp500": 6781.48, "sp500_change_pct": -0.21,
+  "djia": 47706.51, "djia_change_pct": -0.07,
+  "nasdaq": 22697.10, "nasdaq_change_pct": 0.01,
+  "vix": 24.93, "vix_change_pct": -2.24,
+  "macro_temp": {"cape": 39.21, "cape_pctile": 98, "buffett_indicator": 217, "buffett_pctile": 99, "erp": 4.5, "erp_pctile": 66}
+}

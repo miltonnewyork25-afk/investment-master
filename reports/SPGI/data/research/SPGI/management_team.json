@@ -1,0 +1,205 @@
+{
+  "ticker": "SPGI",
+  "data_date": "2026-03-11",
+  "ceo": {
+    "name": "Martina L. Cheung",
+    "age": 49,
+    "tenure_years": 1.4,
+    "tenure_start": "2024-11-01",
+    "background": "Joined S&P Global in 2010 as VP of Operations for Ratings. Rose through Chief Strategy Officer, President of Market Intelligence (2019-2022), President of Ratings (2022-2024). Prior: Partner at Mitchell Madison Consulting; Accenture Financial Services Strategy. Education: BA Commerce + MA Business Studies, National University of Ireland Galway.",
+    "track_record": "Led Ratings to $3.3B revenue in 2023 (+9% YoY, 56.5% operating margin). Drove Sustainable1 revenue growth 24% in 2023. Instrumental in IHS Markit merger (2022, ~$44B) and SNL Financial acquisition (2015). Under her CEO tenure, FY2024 revenue $14.2B (+14% YoY), GAAP net income $3.85B (+47% YoY), GAAP diluted EPS $12.35 (+50% YoY), returned >$4.4B to shareholders. Named Barron's 100 Most Influential Women in U.S. Finance (2025), American Banker Most Powerful Women in Finance (2024).",
+    "predecessor": "Douglas L. Peterson (CEO 2013-2024, remained advisor through Dec 2025)"
+  },
+  "cfo": {
+    "name": "Eric W. Aboaf",
+    "age": 60,
+    "tenure_years": 1.1,
+    "tenure_start": "2025-02-19",
+    "background": "CFO and Vice Chairman at State Street Corporation for ~8 years (2016-2025). Prior: CFO of Citizens Financial Group; 12 years at Citigroup including Treasurer managing $1.9T balance sheet; Partner at Bain & Company co-leading US financial services consulting. Education: Wharton (summa cum laude), MS from MIT.",
+    "scope": "Oversees finance, strategy, M&A, ventures, and corporate responsibility disclosures.",
+    "compensation_at_hire": {
+      "base_salary": 825000,
+      "signing_bonus": 2400000,
+      "one_time_equity_award": 5900000,
+      "short_term_incentive_target": 1800000,
+      "annual_equity_target": 6500000
+    },
+    "predecessor": "Ewout Steenbergen (served as interim/prior CFO)"
+  },
+  "key_executives": [
+    {
+      "name": "Yann Le Pallec",
+      "title": "President, S&P Global Ratings",
+      "effective_date": "2024-11-01",
+      "note": "Succeeded Martina Cheung"
+    },
+    {
+      "name": "Saugata Saha",
+      "title": "President, S&P Global Market Intelligence & Chief Enterprise Data Officer",
+      "effective_date": "2024-11-01",
+      "note": "Previously President of Commodity Insights; succeeded Adam Kansler who stayed as advisor through March 2025"
+    },
+    {
+      "name": "Dave Ernsberger",
+      "title": "Co-President, S&P Global Commodity Insights",
+      "effective_date": "2024-11-01"
+    },
+    {
+      "name": "Mark Eramo",
+      "title": "Co-President, S&P Global Commodity Insights",
+      "effective_date": "2024-11-01"
+    },
+    {
+      "name": "Catherine Clay",
+      "title": "CEO, S&P Dow Jones Indices",
+      "effective_date": "2025-11-01",
+      "note": "Replaced Dan Draper"
+    },
+    {
+      "name": "Todd Hyatt",
+      "title": "CEO, S&P Global Mobility",
+      "note": "Leading Mobility division ahead of planned separation/spinoff"
+    },
+    {
+      "name": "Matt Calderone",
+      "title": "CFO, S&P Global Mobility",
+      "effective_date": "2025-12-16",
+      "note": "Former Booz Allen finance veteran; appointed ahead of planned Mobility spinoff"
+    },
+    {
+      "name": "Martin Metzker",
+      "title": "Chief Strategy Officer, S&P Global Mobility",
+      "note": "Oversees strategy, communications, enterprise marketing for Mobility separation"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2024-11-01",
+      "event": "CEO succession: Martina Cheung replaces Douglas Peterson as President & CEO"
+    },
+    {
+      "date": "2024-11-01",
+      "event": "Major leadership reshuffle: Yann Le Pallec to Ratings, Saugata Saha to MI + CEDO, Ernsberger/Eramo co-Presidents of Commodity Insights"
+    },
+    {
+      "date": "2025-02-19",
+      "event": "Eric Aboaf joins as CFO from State Street (with $2.4M signing bonus + $5.9M equity)"
+    },
+    {
+      "date": "2025-11-01",
+      "event": "Catherine Clay appointed CEO of S&P Dow Jones Indices, replacing Dan Draper"
+    },
+    {
+      "date": "2025-12-16",
+      "event": "Mobility spinoff leadership buildout: Matt Calderone CFO, Hubert Joly added to Board"
+    },
+    {
+      "date": "2025-12-31",
+      "event": "Swamy Kocherlakota (Chief Digital Solutions Officer) departed"
+    },
+    {
+      "date": "2026-01-01",
+      "event": "Mobility leadership additions: Larissa Cerqueira (CPO), Tasha Matharu (CLO), Joedy Lenz (CIO)"
+    }
+  ],
+  "insider_ownership_pct": {
+    "total_insider": 2.08,
+    "note": "Sources vary: GuruFocus reports ~2.08%, TipRanks reports ~0.08% (likely different methodology/cutoff). Harold McGraw III is largest individual holder at 3.96M shares (~1.33%).",
+    "largest_individual_holder": "Harold McGraw III (3.96M shares, ~1.33%)"
+  },
+  "compensation_highlights": {
+    "ceo_2024_total": {
+      "amount": 7570000,
+      "breakdown": {
+        "salary": 791667,
+        "bonus": 2615748,
+        "stock_awards": 3745257,
+        "other": 422250,
+        "stock_options": 0
+      },
+      "yoy_change_pct": 27.58,
+      "vs_peer_median": "Below average for similar-size US companies ($7.57M vs $13.43M median)"
+    },
+    "cfo_package_at_hire": {
+      "total_first_year_estimated": 17425000,
+      "note": "Base $825K + signing $2.4M + one-time equity $5.9M + STI target $1.8M + annual equity $6.5M"
+    },
+    "say_on_pay_support": "S&P 500 median 92.7% in 2025 proxy season (SPGI-specific figure not separately confirmed)"
+  },
+  "governance_notes": {
+    "board_size": "~13 members (estimate based on proxy filings)",
+    "board_chair": "Separate from CEO (non-executive chair structure)",
+    "recent_addition": "Hubert Joly (former Best Buy CEO, Harvard Business School lecturer) added Jan 2, 2026, serving on Audit and Compensation committees",
+    "key_committees": "Audit, Compensation and Leadership Development, Corporate Governance, Executive, Finance",
+    "governance_framework": "Annual review of membership criteria including diversity, tenure, independence, industry expertise. Corporate Governance Guidelines adopted and publicly available.",
+    "notable_feature": "Mobility spinoff preparation driving significant governance/leadership buildout in 2025-2026"
+  },
+  "dm_anchors": {
+    "DM-MGT-001": {
+      "fact": "Martina Cheung appointed CEO effective Nov 1, 2024, age 49, joined SPGI in 2010",
+      "source": "S&P Global IR / press release",
+      "confidence": "HIGH"
+    },
+    "DM-MGT-002": {
+      "fact": "Under Cheung's Ratings leadership: $3.3B revenue in 2023, +9% YoY, 56.5% operating margin",
+      "source": "S&P Global corporate bio / American Banker",
+      "confidence": "HIGH"
+    },
+    "DM-MGT-003": {
+      "fact": "FY2024 results: Revenue $14.2B (+14%), GAAP NI $3.85B (+47%), EPS $12.35 (+50%), >$4.4B returned to shareholders",
+      "source": "S&P Global earnings / corporate communications",
+      "confidence": "HIGH"
+    },
+    "DM-MGT-004": {
+      "fact": "Eric Aboaf appointed CFO effective Feb 19, 2025; previously State Street CFO/Vice Chairman ~8 years",
+      "source": "S&P Global press release / SEC filing",
+      "confidence": "HIGH"
+    },
+    "DM-MGT-005": {
+      "fact": "Aboaf signing bonus $2.4M + one-time equity $5.9M + base $825K + STI target $1.8M + annual equity target $6.5M",
+      "source": "SEC filing spgi-20241015, CFO Dive, Banking Dive",
+      "confidence": "HIGH"
+    },
+    "DM-MGT-006": {
+      "fact": "Cheung 2024 total compensation $7.57M (+27.58% YoY), below peer median of $13.43M",
+      "source": "Salary.com / proxy filing",
+      "confidence": "MEDIUM-HIGH"
+    },
+    "DM-MGT-007": {
+      "fact": "Insider ownership ~2.08%; Harold McGraw III largest individual holder at ~1.33% (3.96M shares)",
+      "source": "GuruFocus / Simply Wall St",
+      "confidence": "MEDIUM"
+    },
+    "DM-MGT-008": {
+      "fact": "Hubert Joly (ex-Best Buy CEO) added to board effective Jan 2, 2026",
+      "source": "S&P Global press release Dec 16, 2025",
+      "confidence": "HIGH"
+    },
+    "DM-MGT-009": {
+      "fact": "Mobility spinoff in preparation: dedicated CFO (Calderone), CPO, CLO, CIO, CSO appointed 2025-2026",
+      "source": "S&P Global press releases",
+      "confidence": "HIGH"
+    },
+    "DM-MGT-010": {
+      "fact": "Cheung instrumental in IHS Markit merger (2022) and SNL Financial acquisition (2015)",
+      "source": "S&P Global corporate bio",
+      "confidence": "HIGH"
+    }
+  },
+  "sources": [
+    "https://www.spglobal.com/en/who-we-are/about-sp-global/our-people/martina-cheung",
+    "https://investor.spglobal.com/news-releases/news-details/2024/SP-Global-Announces-Leadership-Succession/default.aspx",
+    "https://investor.spglobal.com/news-releases/news-details/2024/SP-Global-Announces-Executive-Leadership-Team/default.aspx",
+    "https://investor.spglobal.com/news-releases/news-details/2024/SP-Global-Appoints-Eric-Aboaf-as-Chief-Financial-Officer/default.aspx",
+    "https://www.cfodive.com/news/spglobal-swipes-statestreet-cfo-compensation-signingbonus/729906/",
+    "https://www.bankingdive.com/news/sp-global-hires-state-street-cfo-eric-aboaf-compensation-signing-bonus/729954/",
+    "https://www.salary.com/research/executive-compensation/martina-l-cheung-executive-member-of-sandp-global-inc",
+    "https://investor.spglobal.com/corporate-governance/board-of-directors/default.aspx",
+    "https://investor.spglobal.com/news-releases/news-details/2025/SP-Global-Adds-Hubert-Joly-to-its-Board-of-Directors/default.aspx",
+    "https://www.gurufocus.com/term/InsiderOwnership/SPGI/Insider-Ownership/SP-Global-Inc",
+    "https://simplywall.st/stocks/us/diversified-financials/nyse-spgi/sp-global/ownership",
+    "https://www.americanbanker.com/news/2025-the-most-powerful-women-in-finance-no-17-martina-cheung-s-p-global",
+    "https://www.prnewswire.com/news-releases/sp-global-announces-updates-to-the-executive-leadership-team-302573619.html",
+    "https://press.spglobal.com/2025-12-16-S-P-Global-Announces-Mobility-Business-Chief-Financial-Officer"
+  ]
+}

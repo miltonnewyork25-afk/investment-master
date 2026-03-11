@@ -1,0 +1,274 @@
+{
+  "metadata": {
+    "ticker": "SPGI",
+    "collected_at": "2026-03-11",
+    "collection_method": ["polymarket_mcp_tool", "web_search_polymarket", "web_search_kalshi"],
+    "note": "SPGI is a credit rating agency and financial data provider. Prediction markets on credit ratings, recession, inflation, and interest rates are directly relevant to SPGI's business environment and revenue drivers."
+  },
+  "macro_events": [
+    {
+      "event": "US recession by end of 2026",
+      "platform": "Polymarket",
+      "probability": 0.285,
+      "probability_display": "28.5% Yes",
+      "volume_usd": 397001,
+      "status": "active",
+      "last_updated": "2026-03-11",
+      "url": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "spgi_relevance": "Recession reduces debt issuance volume (SPGI Ratings revenue) but increases demand for risk analytics (S&P Global Market Intelligence). Net effect historically negative for SPGI revenue growth."
+    },
+    {
+      "event": "Negative GDP growth in 2026 (full year)",
+      "platform": "Polymarket",
+      "probability": 0.218,
+      "probability_display": "21.8% Yes",
+      "volume_usd": 12973,
+      "status": "active",
+      "last_updated": "2026-03-11",
+      "url": "https://polymarket.com/event/negative-gdp-growth-in-2026",
+      "spgi_relevance": "Negative GDP directly correlates with reduced corporate capital market activity, impacting SPGI Ratings issuance fees."
+    },
+    {
+      "event": "US inflation >3% in 2026",
+      "platform": "Polymarket",
+      "probability": 0.76,
+      "probability_display": "76% Yes",
+      "volume_usd": 109086,
+      "status": "active",
+      "last_updated": "2026-03-11",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "spgi_relevance": "Persistent above-target inflation implies higher-for-longer rates, suppressing bond issuance but boosting demand for inflation-linked analytics and commodity data (Platts)."
+    },
+    {
+      "event": "US inflation >4% in 2026",
+      "platform": "Polymarket",
+      "probability": 0.21,
+      "probability_display": "21% Yes",
+      "volume_usd": 26575,
+      "status": "active",
+      "last_updated": "2026-03-11",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "spgi_relevance": "Tail risk scenario. >4% inflation would likely freeze credit issuance further and pressure SPGI Ratings transaction revenue."
+    },
+    {
+      "event": "US inflation >5% in 2026",
+      "platform": "Polymarket",
+      "probability": 0.14,
+      "probability_display": "14% Yes",
+      "volume_usd": 4399,
+      "status": "active",
+      "last_updated": "2026-03-11",
+      "url": "https://polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "spgi_relevance": "Extreme tail risk. Would signal stagflationary environment with major credit market disruption."
+    },
+    {
+      "event": "Another US debt downgrade before 2027",
+      "platform": "Polymarket",
+      "probability": 0.285,
+      "probability_display": "28.5% Yes",
+      "volume_usd": 6333,
+      "status": "active",
+      "last_updated": "2026-03-11",
+      "url": "https://polymarket.com/event/another-us-debt-downgrade-before-2027",
+      "spgi_relevance": "Directly involves SPGI's core business. S&P already downgraded US in 2011. Another downgrade (likely by Moody's, which downgraded in 2025) validates credit rating agency relevance but invites regulatory scrutiny. Note: US was downgraded in 2025 (resolved Yes on related market)."
+    },
+    {
+      "event": "Federal Reserve interest rate decisions 2026",
+      "platform": "Kalshi",
+      "probability": null,
+      "probability_display": "Multiple markets available — see Kalshi for current odds on number of rate cuts in 2026",
+      "volume_usd": null,
+      "status": "active",
+      "last_updated": "2026-03-11",
+      "url": "https://kalshi.com/markets/kxratecutcount/number-of-rate-cuts/kxratecutcount-26dec31",
+      "spgi_relevance": "Rate cuts stimulate bond issuance (positive for SPGI Ratings transaction revenue). Rate trajectory is the single most important macro variable for SPGI's cyclical revenue component."
+    }
+  ],
+  "company_specific": [
+    {
+      "event": "Will S&P Global (SPGI) beat quarterly earnings? (Q4 2025, Feb 10 2026)",
+      "platform": "Polymarket",
+      "probability": null,
+      "probability_display": "Market closed — resolved No (SPGI did not beat $4.33 non-GAAP EPS consensus)",
+      "volume_usd": 16549,
+      "status": "closed",
+      "resolution": "No",
+      "consensus_eps": 4.33,
+      "last_updated": "2026-02-10",
+      "url": "https://polymarket.com/event/spgi-quarterly-earnings-nongaap-eps-02-10-2026-4pt33",
+      "spgi_relevance": "Direct SPGI earnings prediction. Market resolved No — SPGI missed Q4 2025 consensus of $4.33 non-GAAP EPS."
+    },
+    {
+      "event": "Will S&P Global (SPGI) beat quarterly earnings? (Q3 2025, Oct 30 2025)",
+      "platform": "Polymarket",
+      "probability": null,
+      "probability_display": "Market closed — resolved Yes (SPGI beat $4.41 non-GAAP EPS consensus)",
+      "volume_usd": 10853,
+      "status": "closed",
+      "resolution": "Yes",
+      "consensus_eps": 4.41,
+      "last_updated": "2025-10-30",
+      "url": "https://polymarket.com/event/spgi-quarterly-earnings-nongaap-eps-10-30-2025-4pt41",
+      "spgi_relevance": "Direct SPGI earnings prediction. Market resolved Yes — SPGI beat Q3 2025 consensus."
+    },
+    {
+      "event": "What will S&P Global say during their next earnings call?",
+      "platform": "Polymarket",
+      "probability": null,
+      "probability_display": "Market details not fully available from search",
+      "volume_usd": null,
+      "status": "unknown",
+      "last_updated": "2026-03-11",
+      "url": "https://polymarket.com/event/what-will-sp-global-say-during-their-next-earnings-call",
+      "spgi_relevance": "Earnings call sentiment market — tracks market expectations for SPGI management commentary."
+    }
+  ],
+  "industry_events": [
+    {
+      "event": "US bank failure prediction markets (rolling monthly/quarterly)",
+      "platform": "Polymarket",
+      "probability": null,
+      "probability_display": "102 active markets tracking US bank failures across various timeframes",
+      "volume_usd": null,
+      "status": "active (rolling)",
+      "last_updated": "2026-03-11",
+      "url": "https://polymarket.com/predictions/bank-failure",
+      "spgi_relevance": "Bank failures increase demand for credit risk assessment (positive for SPGI Market Intelligence and Ratings surveillance revenue). SVB-era banking stress in 2023 drove subscription growth."
+    },
+    {
+      "event": "US debt downgrade in 2025",
+      "platform": "Polymarket",
+      "probability": null,
+      "probability_display": "Resolved Yes — US was downgraded in 2025",
+      "volume_usd": 88638,
+      "status": "closed",
+      "resolution": "Yes",
+      "last_updated": "2025-12-31",
+      "url": "https://polymarket.com/event/us-debt-downgrade-in-2025",
+      "spgi_relevance": "Confirms that a major credit rating agency (likely Moody's) downgraded US sovereign debt in 2025. This is directly relevant to SPGI as a peer/competitor in the ratings oligopoly."
+    },
+    {
+      "event": "France debt downgrade by December 31 2025",
+      "platform": "Polymarket",
+      "probability": null,
+      "probability_display": "Market closed",
+      "volume_usd": null,
+      "status": "closed",
+      "last_updated": "2025-12-31",
+      "url": "https://polymarket.com/event/france-debt-downgrade-by-december-31",
+      "spgi_relevance": "Sovereign rating actions by S&P/Moody's/Fitch are core SPGI Ratings business. European sovereign stress drives both ratings activity and risk analytics demand."
+    }
+  ],
+  "no_coverage": [
+    {
+      "search_query": "site:polymarket.com financial crisis",
+      "finding": "No dedicated 'financial crisis' prediction market found. Closest proxies are recession markets and bank failure markets listed above.",
+      "note": "Polymarket structures crisis risk through component markets (recession probability, bank failures, debt downgrades) rather than a single 'financial crisis' event."
+    },
+    {
+      "search_query": "site:polymarket.com credit rating (company-level)",
+      "finding": "No prediction markets found for individual corporate credit rating changes. Only sovereign rating markets exist.",
+      "note": "Corporate credit rating prediction markets would be highly relevant for SPGI but do not exist on current platforms."
+    },
+    {
+      "search_query": "SPGI-specific forward-looking markets",
+      "finding": "No active prediction markets for SPGI future earnings or stock price. Only historical (closed) earnings beat markets found.",
+      "note": "Next SPGI earnings market will likely appear ~2 weeks before the next earnings date."
+    }
+  ],
+  "dm_anchors": {
+    "DM-PMK-001": {
+      "claim": "Polymarket prices US recession by end of 2026 at 28.5% probability",
+      "source": "Polymarket MCP API + polymarket.com/event/us-recession-by-end-of-2026",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-11",
+      "volume_usd": 397001,
+      "note": "Live market, $397K volume. Bid/ask: 0.28/0.29."
+    },
+    "DM-PMK-002": {
+      "claim": "Polymarket prices US inflation >3% in 2026 at 76% probability",
+      "source": "Polymarket MCP API + polymarket.com/event/how-high-will-inflation-get-in-2026",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-11",
+      "volume_usd": 109086,
+      "note": "Live market, $109K volume. Bid/ask: 0.75/0.77."
+    },
+    "DM-PMK-003": {
+      "claim": "Polymarket prices another US debt downgrade before 2027 at 28.5%",
+      "source": "Polymarket MCP API + polymarket.com/event/another-us-debt-downgrade-before-2027",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-11",
+      "volume_usd": 6333,
+      "note": "Live market. Directly relevant to SPGI as credit rating agency."
+    },
+    "DM-PMK-004": {
+      "claim": "SPGI missed Q4 2025 earnings consensus ($4.33 non-GAAP EPS) per Polymarket resolution",
+      "source": "Polymarket MCP API, market resolved 2026-02-10",
+      "confidence": "MEDIUM",
+      "retrieved": "2026-03-11",
+      "note": "Market resolved to No (did not beat). Verify actual reported EPS from SPGI filings."
+    },
+    "DM-PMK-005": {
+      "claim": "SPGI beat Q3 2025 earnings consensus ($4.41 non-GAAP EPS) per Polymarket resolution",
+      "source": "Polymarket MCP API, market resolved 2025-10-30",
+      "confidence": "MEDIUM",
+      "retrieved": "2026-03-11",
+      "note": "Market resolved to Yes. Verify actual reported EPS from SPGI filings."
+    },
+    "DM-PMK-006": {
+      "claim": "Polymarket prices negative US GDP growth for full year 2026 at 21.8%",
+      "source": "Polymarket MCP API + polymarket.com/event/negative-gdp-growth-in-2026",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-11",
+      "volume_usd": 12973,
+      "note": "Live market. Negative full-year GDP would severely impact SPGI Ratings issuance volume."
+    },
+    "DM-PMK-007": {
+      "claim": "US was downgraded by a major credit rating agency in 2025 (Polymarket resolved Yes)",
+      "source": "Polymarket MCP API, market 'US debt downgrade in 2025' resolved Yes",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-11",
+      "volume_usd": 88638,
+      "note": "Confirmed by Polymarket resolution. Cross-verify with S&P/Moody's/Fitch announcements."
+    },
+    "DM-PMK-008": {
+      "claim": "Polymarket prices US inflation >4% in 2026 at 21%, >5% at 14%",
+      "source": "Polymarket MCP API",
+      "confidence": "HIGH",
+      "retrieved": "2026-03-11",
+      "note": "Tail inflation risk. Implied distribution: ~55% chance inflation stays 3-4%, ~21% chance 4-5%, ~7% chance 5-6%."
+    }
+  },
+  "sources": [
+    {
+      "name": "Polymarket MCP API (polymarket_events tool)",
+      "queries": ["S&P Global SPGI", "recession 2026", "how high will inflation get in 2026", "credit rating downgrade", "bank failure 2026", "negative GDP 2026", "US debt downgrade 2026", "federal reserve rate cut 2026"],
+      "retrieved": "2026-03-11"
+    },
+    {
+      "name": "Polymarket.com (web search)",
+      "queries": ["site:polymarket.com recession 2026", "site:polymarket.com S&P Global", "site:polymarket.com inflation 2026", "site:polymarket.com bank", "site:polymarket.com financial crisis", "site:polymarket.com credit rating"],
+      "retrieved": "2026-03-11"
+    },
+    {
+      "name": "Kalshi.com (web search)",
+      "queries": ["site:kalshi.com federal reserve interest rate 2026"],
+      "retrieved": "2026-03-11",
+      "note": "Kalshi hosts granular Fed rate decision markets but specific probabilities require direct platform access."
+    }
+  ],
+  "synthesis": {
+    "macro_backdrop_for_spgi": "Prediction markets paint a moderately stressed macro environment for SPGI: 76% chance inflation stays above 3% (negative for bond issuance volume), 28.5% recession risk (mixed — reduces issuance but boosts risk analytics demand), and 28.5% chance of another US sovereign downgrade (directly involves SPGI's peer group). The implied probability distribution suggests the market consensus is for 'stagflation-lite' — persistent inflation without outright recession — which historically compresses SPGI Ratings transaction revenue while supporting subscription-based Market Intelligence revenue.",
+    "key_risks": [
+      "76% probability of >3% inflation implies higher-for-longer rates, suppressing bond issuance (SPGI Ratings transaction revenue at risk)",
+      "28.5% recession probability — if realized, could reduce SPGI revenue growth by 5-10% based on 2008-2009 precedent",
+      "28.5% chance of another US sovereign downgrade — regulatory/reputational risk for rating agencies",
+      "SPGI missed Q4 2025 earnings consensus — potential negative momentum signal"
+    ],
+    "key_tailwinds": [
+      "Macro uncertainty drives demand for SPGI Market Intelligence subscriptions and risk analytics",
+      "Sovereign downgrades and credit stress increase ratings surveillance activity",
+      "If Fed cuts rates (Kalshi markets track this), bond issuance would rebound sharply — positive for SPGI Ratings"
+    ]
+  }
+}

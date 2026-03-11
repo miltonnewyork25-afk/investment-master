@@ -1,0 +1,195 @@
+{
+  "company": "S&P Global Inc.",
+  "ticker": "SPGI",
+  "fiscal_year": 2025,
+  "total_revenue_B": 15.336,
+  "total_revenue_growth_yoy_pct": 8.0,
+  "gaap_operating_margin_pct": 42.2,
+  "adjusted_operating_margin_pct": 50.4,
+  "adjusted_diluted_eps": 17.83,
+  "adjusted_eps_growth_yoy_pct": 14,
+  "adjusted_net_income_B": 5.441,
+
+  "segments": [
+    {
+      "name": "Market Intelligence",
+      "revenue_B": 4.92,
+      "pct_of_total": 37.14,
+      "growth_rate_pct": 5.83,
+      "operating_margin_pct": 19,
+      "description": "Financial data, analytics, and research. Includes Capital IQ, SNL, and credit analytics platforms. Largest segment by revenue but lowest margin.",
+      "key_products": ["Capital IQ Pro", "SNL Financial", "Credit Analytics", "RatingsXpress", "Leveraged Commentary & Data"]
+    },
+    {
+      "name": "Ratings",
+      "revenue_B": 4.72,
+      "pct_of_total": 35.69,
+      "growth_rate_pct": 8,
+      "operating_margin_pct": 61,
+      "description": "Credit ratings for corporate, sovereign, and structured finance. Duopoly with Moody's (~40% each). Highly cyclical tied to debt issuance volumes. Highest-margin segment after Indices.",
+      "key_products": ["Corporate Credit Ratings", "Sovereign Ratings", "Structured Finance Ratings", "RatingsDirect"]
+    },
+    {
+      "name": "Commodity Insights (renamed S&P Global Energy, Nov 2025)",
+      "revenue_B": 1.85,
+      "pct_of_total": 13.55,
+      "growth_rate_pct": 6,
+      "operating_margin_pct": 38,
+      "description": "Energy and commodities benchmarks, data, and analytics. Home to Platts benchmarks. Renamed to S&P Global Energy in November 2025 to reflect strategic focus on energy intelligence.",
+      "key_products": ["Platts Benchmarks", "Energy Data & Insights", "Petrochemical Analytics", "Metals & Agriculture Data"],
+      "note": "Revenue estimated from total minus other segments. Operating margin from Q4 2025 proxy."
+    },
+    {
+      "name": "Indices",
+      "revenue_B": 1.85,
+      "pct_of_total": 13.98,
+      "growth_rate_pct": 13.64,
+      "operating_margin_pct": 66,
+      "description": "Index licensing, data subscriptions, and asset-linked fees. S&P 500, Dow Jones, and 1M+ indices. >$20T AUM benchmarked globally. Highest-margin segment and fastest-growing.",
+      "key_products": ["S&P 500 Index", "S&P Dow Jones Indices", "ESG Indices", "Custom Indices", "Fixed Income Indices"],
+      "aum_benchmarked_T": 20,
+      "secular_tailwind": "Passive investing shift: global ETF AUM reached $13.74T (mid-2025), CAGR 13-18%. Asset-linked fees grow with market levels and fund inflows."
+    },
+    {
+      "name": "Mobility",
+      "revenue_B": 1.75,
+      "pct_of_total": 13.20,
+      "growth_rate_pct": 8,
+      "operating_margin_pct": 16,
+      "description": "Automotive data and analytics. Includes CARFAX, automotiveMastermind, and dealer solutions. Lowest margin segment. Acquired via IHS Markit merger (2022).",
+      "key_products": ["CARFAX", "automotiveMastermind", "Dealer Solutions", "OEM Analytics", "Recall Data"]
+    }
+  ],
+
+  "geographic_breakdown": {
+    "united_states": {
+      "revenue_B": 9.32,
+      "pct_of_total": 60.79
+    },
+    "europe": {
+      "revenue_B": 3.53,
+      "pct_of_total": 23.02
+    },
+    "asia": {
+      "revenue_B": 1.64,
+      "pct_of_total": 10.69,
+      "note": "Fastest-growing region at +9.99% YoY"
+    },
+    "rest_of_world": {
+      "revenue_B": 0.843,
+      "pct_of_total": 5.50
+    }
+  },
+
+  "supply_chain": {
+    "upstream_inputs": [
+      "Raw financial data from exchanges, issuers, government filings",
+      "Energy/commodity price data from physical markets and traders",
+      "Automotive data from dealers, OEMs, DMVs, insurance companies",
+      "Third-party data feeds (government statistics, regulatory filings)"
+    ],
+    "value_add": [
+      "Credit analysis methodologies and rating frameworks (NRSRO-designated)",
+      "Index construction, maintenance, and governance (S&P 500 committee)",
+      "Data normalization, cleaning, and analytics platform delivery",
+      "Platts price assessment methodology (IOSCO-compliant benchmarks)",
+      "Proprietary analytics models and AI/ML integration"
+    ],
+    "downstream_customers": [
+      "Asset managers and ETF issuers (index licensing)",
+      "Investment banks and corporate issuers (credit ratings)",
+      "Energy traders and utilities (Platts benchmarks)",
+      "Auto dealers, insurers, and OEMs (Mobility/CARFAX)",
+      "Hedge funds, PE firms, corporates (Market Intelligence data)"
+    ]
+  },
+
+  "tam": {
+    "financial_data_services_market": {
+      "size_2025_B": 28.1,
+      "size_2026_B": 30.5,
+      "size_2035_B": 59.0,
+      "cagr_pct": 8.6,
+      "source": "Research Nester Financial Data Services Market Report"
+    },
+    "credit_rating_market": {
+      "size_2025_B": 7.32,
+      "size_2026_B": 7.77,
+      "size_2035_B": 13.07,
+      "cagr_pct": 6.1,
+      "source": "Business Research Insights Credit Rating Market Report"
+    },
+    "us_credit_agency_market": {
+      "size_2025_B": 18.77,
+      "size_2031_B": 26.34,
+      "cagr_pct": 5.82,
+      "source": "Mordor Intelligence US Credit Agency Market Report"
+    },
+    "global_etf_aum": {
+      "size_2025_T": 13.74,
+      "growth_trend": "CAGR 13-18% over recent years; record 962 active ETFs launched in 2025",
+      "relevance": "Drives Indices segment asset-linked fees"
+    },
+    "credit_risk_management_services": {
+      "size_2030_B": 16.48,
+      "source": "GlobeNewsWire Credit Risk Management Services Report 2026-2035"
+    }
+  },
+
+  "dm_anchors": {
+    "DM-BIZ-001": {
+      "claim": "FY2025 total revenue $15.336B, +8% YoY",
+      "source": "SPGI Q4/FY2025 Earnings Release (SEC 8-K filing, Feb 2026)",
+      "confidence": "HIGH",
+      "url": "https://www.stocktitan.net/sec-filings/SPGI/8-k-s-p-global-inc-reports-material-event-0ba82d781779.html"
+    },
+    "DM-BIZ-002": {
+      "claim": "Segment revenue: MI $4.92B (37.14%), Ratings $4.72B (35.69%), Indices $1.85B (13.98%), Mobility $1.75B (13.20%)",
+      "source": "Bullfincher SPGI Revenue Breakdown (derived from SEC filings)",
+      "confidence": "HIGH",
+      "url": "https://bullfincher.io/companies/sp-global/revenue-by-segment"
+    },
+    "DM-BIZ-003": {
+      "claim": "Q4 2025 segment operating margins: MI 19%, Ratings 61%, Energy 38%, Mobility 16%, Indices 66%",
+      "source": "SPGI Q4 2025 Earnings Release Exhibits",
+      "confidence": "HIGH",
+      "url": "https://www.sec.gov/Archives/edgar/data/64040/000006404026000007/a4q2025earningsrelease.htm"
+    },
+    "DM-BIZ-004": {
+      "claim": "Geographic split: US 60.79% ($9.32B), Europe 23.02% ($3.53B), Asia 10.69% ($1.64B), RoW 5.50% ($0.84B)",
+      "source": "Bullfincher SPGI Revenue by Geography (derived from SEC filings)",
+      "confidence": "HIGH",
+      "url": "https://bullfincher.io/companies/sp-global/revenue-by-geography"
+    },
+    "DM-BIZ-005": {
+      "claim": "Adjusted operating margin 50.4% (+140bps YoY), adjusted diluted EPS $17.83 (+14% YoY)",
+      "source": "SPGI Q4/FY2025 Earnings Release",
+      "confidence": "HIGH",
+      "url": "https://www.stocktitan.net/news/SPGI/s-p-global-reports-fourth-quarter-and-full-year-2025-8zd9rlipfv4d.html"
+    },
+    "DM-BIZ-006": {
+      "claim": "Commodity Insights division renamed to S&P Global Energy in November 2025",
+      "source": "S&P Global Press Release, Nov 14, 2025",
+      "confidence": "HIGH",
+      "url": "https://press.spglobal.com/2025-11-14-S-P-Global-Introduces-S-P-Global-Energy"
+    },
+    "DM-BIZ-007": {
+      "claim": "Financial data services TAM: $28.1B (2025) → $59B (2035), CAGR 8.6%",
+      "source": "Research Nester Financial Data Services Market Report",
+      "confidence": "MEDIUM",
+      "url": "https://www.researchnester.com/reports/financial-data-services-market/8310"
+    },
+    "DM-BIZ-008": {
+      "claim": "Credit rating market TAM: $7.32B (2025) → $13.07B (2035), CAGR 6.1%",
+      "source": "Business Research Insights Credit Rating Market Report",
+      "confidence": "MEDIUM",
+      "url": "https://www.businessresearchinsights.com/market-reports/credit-rating-market-113053"
+    },
+    "DM-BIZ-009": {
+      "claim": ">$20T AUM benchmarked to S&P indices globally; global ETF AUM $13.74T (mid-2025)",
+      "source": "S&P Global Wikipedia / ETF industry reports",
+      "confidence": "MEDIUM",
+      "url": "https://en.wikipedia.org/wiki/S&P_Global"
+    }
+  }
+}
