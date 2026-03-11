@@ -322,6 +322,36 @@ if [ "$PHASE" -ge 3 ]; then
 fi
 
 # ============================================================
+# Layer 3.7: 地理分析门控 — Phase 1+ (EVO-SPGI-001)
+# 设计: 国际收入>30%的公司必须含地理分析, 防止M7=0的结构遗漏
+# ============================================================
+if [ "$PHASE" -ge 1 ]; then
+    GEO_REQ=""
+    if [ -f "$DATA/checkpoint.yaml" ]; then
+        GEO_REQ=$({ grep -oE 'geo_analysis_required: [a-z_]+' "$DATA/checkpoint.yaml" 2>/dev/null | cut -d' ' -f2 || echo ""; } | head -1 | tr -d ' ')
+    fi
+    if [ "$GEO_REQ" = "true" ]; then
+        # 检查staging/Phase报告中是否有地理分析内容
+        GEO_MENTIONS=0
+        for f in "$STAGING"/*.md reports/${TICKER}/${TICKER}_Phase*.md reports/${TICKER}/${TICKER}_Complete*.md; do
+            if [ -f "$f" ]; then
+                GC=$({ grep -ciE '地理|geographic|international|region|美洲|欧洲|亚太|EMEA|Americas|Asia' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+                GC="${GC:-0}"
+                GEO_MENTIONS=$((GEO_MENTIONS + GC))
+            fi
+        done
+        if [ "$GEO_MENTIONS" -ge 10 ]; then
+            check_pass "EVO-001: 地理分析存在 (${GEO_MENTIONS}次提及, 国际收入>30%)"
+        elif [ "$GEO_MENTIONS" -ge 3 ]; then
+            check_warn "EVO-001: 地理分析偏薄 (仅${GEO_MENTIONS}次提及) → 国际收入>30%需含地理拆分表"
+        else
+            check_fail "EVO-001: 地理分析缺失 (${GEO_MENTIONS}次提及) → checkpoint标记geo_analysis_required=true但无地理分析"
+            echo "         → 需补充: 地理收入拆分表(≥3地区×≥3年) + 国际增速 + 国际OPM"
+        fi
+    fi
+fi
+
+# ============================================================
 # Layer 4: Phase-specific artifact检查
 # ============================================================
 if [ "$PHASE" -ge 4 ]; then
@@ -371,6 +401,41 @@ if [ "$PHASE" -ge 5 ]; then
             check_warn "薄章节检测: ${THIN_COUNT:-?}个章节<1500字符 → bash scripts/thin_chapter_detector.sh $COMPLETE_FILE"
         else
             check_pass "薄章节检测: 所有章节≥1500字符"
+        fi
+    fi
+fi
+
+# ============================================================
+# Layer 4.7: 重复话题检测 — Phase≥5 (EVO-SPGI-005)
+# 设计: 扫描Complete中高频短语, 防止同一话题≥3处重复
+# ============================================================
+if [ "$PHASE" -ge 5 ]; then
+    COMPLETE_FOR_DEDUP=""
+    for cf in reports/${TICKER}/${TICKER}_Complete*.md; do
+        if [ -f "$cf" ]; then COMPLETE_FOR_DEDUP="$cf"; fi
+    done
+    if [ -n "$COMPLETE_FOR_DEDUP" ]; then
+        echo ""
+        echo "--- Layer 4.7: 重复话题检测 (EVO-SPGI-005) ---"
+        # 统计200字符以上段落中的重复关键短语
+        DEDUP_ISSUES=0
+        DEDUP_DETAILS=""
+        # 检查常见重复模式: 同一概念在不同章节反复展开
+        for keyword in "商誉" "ROIC" "Nash" "被动投资" "定价权" "护城河" "回购" "SBC" "AI冲击" "周期性"; do
+            KCOUNT=$({ grep -ci "$keyword" "$COMPLETE_FOR_DEDUP" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            KCOUNT="${KCOUNT:-0}"
+            # 章节级重复: 同一词在≥15行出现 → 可能是跨章节重复展开
+            if [ "$KCOUNT" -ge 15 ]; then
+                DEDUP_ISSUES=$((DEDUP_ISSUES + 1))
+                DEDUP_DETAILS="${DEDUP_DETAILS} ${keyword}(${KCOUNT})"
+            fi
+        done
+        if [ "$DEDUP_ISSUES" -eq 0 ]; then
+            check_pass "EVO-005: 无高频重复话题"
+        elif [ "$DEDUP_ISSUES" -le 2 ]; then
+            check_warn "EVO-005: ${DEDUP_ISSUES}个话题高频出现:${DEDUP_DETAILS} → 建议检查是否跨章节重复展开"
+        else
+            check_warn "EVO-005: ${DEDUP_ISSUES}个话题高频出现:${DEDUP_DETAILS} → 建议合并重复段落(目标重复度<5%)"
         fi
     fi
 fi

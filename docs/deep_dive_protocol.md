@@ -148,7 +148,24 @@
    - **输出**: `reports/{TICKER}/data/quality_scorecard.md` 初版(A+D已填, B+C留空待Phase 1-3填入)
    - **路由影响**: D1=强周期 → Phase 2需额外周期性税分析; D2<50% → Phase 2必须做收入纯度还原
 
-**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算 + SGI已计算 + quality_scorecard.md初版已创建(A+D完成)
+12. **地理分析门控 (v18.3新增 — EVO-SPGI-001)** — 数据预取完成后，检查国际收入占比:
+   - 从`business_overview.json`的`geographic_breakdown`提取国际收入占比
+   - **国际收入>30%** → 标记`geo_analysis_required: true`写入checkpoint.yaml → Phase 1必须含地理收入拆分表(美/欧/亚/其他, 3年趋势)
+   - **国际收入≤30%** → 标记`geo_analysis_required: false`，地理章节为可选
+   - **数据不可得** → 标记`geo_analysis_required: check_manually`，Phase 1手动确认
+
+13. **续约率硬数据门控 (v18.3新增 — EVO-SPGI-002)** — 订阅/SaaS/平台模式公司:
+   - Phase 0数据预取Agent-A增加关键词搜索: `{TICKER} retention rate`, `{TICKER} renewal rate`, `{TICKER} churn rate`, `{TICKER} net revenue retention`
+   - **有硬数据** → 写入shared_context.md DM-BIZ锚点(H型)
+   - **无硬数据** → 在shared_context.md标注`[数据不可得: 续约率/客户流失率]`，报告中禁止推断具体数字(如"推断95%+")，只允许定性表述(如"管理层未披露续约率数据")
+   - **影响**: 所有订阅/经常性收入>50%的公司
+
+14. **R&D量化标准化 (v18.3新增 — EVO-SPGI-004)** — 所有科技/AI相关公司:
+   - Phase 0数据预取`fmp_data`调用增加R&D字段提取(income statement中的researchAndDevelopmentExpenses)
+   - 计算R&D/Revenue比率(3年趋势) → 写入shared_context.md DM-FIN锚点
+   - **R&D数据不可得**(如金融公司不单列R&D) → 标注`[R&D不适用: {原因}]`
+
+**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算 + SGI已计算 + quality_scorecard.md初版已创建(A+D完成) + 地理门控已标记(EVO-001) + 续约率搜索已执行(EVO-002)
 
 **Research Scorecard (v13.1)**: Phase 0/0.5完成后运行 `bash tests/research_scorecard.sh pre {TICKER}` 记录基线分数(典型15-25分)。分数写入checkpoint.yaml的`scorecard.pre`节。
 
@@ -376,6 +393,7 @@ Phase 1公司定位分析中，同步评估以下品质维度(写入quality_scor
 **门控 QG-01~03**:
 - QG-01: 公司画像完整（业务模型+管理层+历史≥3000字）
 - QG-01.5 **(v18.0)**: CEO沉默分析完成(≥3个沉默领域已识别+风险标注)
+- QG-01.7 **(v18.3 — EVO-SPGI-001)**: 若`geo_analysis_required: true`→ 地理收入拆分表已包含(≥3地区×≥3年+增速+OPM差异)；若false→跳过
 - QG-02: 产业链映射≥10个关键节点
 - QG-03: 预测市场数据≥8个相关事件 + Top 10维度覆盖计划已输出
 
@@ -826,6 +844,9 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
 - **分析框架注册表**: 使用/改进/首创的框架已登记
 - **零操作建议**: 全文无持仓/减仓/加仓/仓位%/操作触发
 - **数据审计**: 文末审计摘要存在 + DM覆盖率声明
+- **地理分析验证 (v18.3新增 — EVO-SPGI-001)**: 若Phase 0标记`geo_analysis_required: true`，Complete必须包含地理收入拆分表(≥3个地区×≥3年)。缺失→CG WARN
+- **续约率诚实标注 (v18.3新增 — EVO-SPGI-002)**: 订阅模式公司，续约率无硬数据时禁止推断具体数字，只允许定性表述+`[数据不可得]`标注
+- **去重检查 (v18.3新增 — EVO-SPGI-005)**: Complete组装完成后，扫描高频分析短语(如同一观点/同一数据在≥3处出现)，合并重复→目标重复度<5%
 - **DM扩写同步 (v18.3新增 — EVO-SPGI-003)**: Phase 5扩写时每≥500字符必须同步新增DM锚点(≥1个/千字), 连续3次扩写无DM→强制停止。详见 `docs/dm_annotation_enforcer.md` "Phase 5扩写DM同步规则"
 - **DM附录化 (v17.2新增 — EVO-ETN-001)**: Complete组装时必须生成DM锚点附录:
   - 从`data/research/{TICKER}/shared_context.md`提取DM锚点 → 按FIN/VAL/SEG/MKT/SC分组
