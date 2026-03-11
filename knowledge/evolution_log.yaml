@@ -502,4 +502,4 @@ entries:
     top_technique: "AI焦虑税量化(3.3x放大) — 市场对100%业务打AI折扣但仅<30%利润面临风险, 可迁移所有AI焦虑B2B平台"
     top_lesson: "多会话扩写加叙述不加DM锚点→DM密度0.44/千字(历史最低); 国际收入>30%缺地理分析=最大结构遗漏; 续约率推断无硬数据=论文基础脆弱"
     evolution_proposed: "EVO-SPGI-001(地理强制)+002(续约率门控)+003(扩写DM同步)+004(R&D量化)+005(去重检查)"
-    evolution_status: "EVO-003=approved+implemented(v18.3), EVO-001/002=P1-pending, EVO-004/005=P2-pending"
+    evolution_status: "ALL 5 EVOs approved+implemented(v18.3): 001(地理门控)+002(续约率)+003(DM同步)+004(R&D)+005(去重)"
