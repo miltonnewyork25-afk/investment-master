@@ -4,11 +4,11 @@ company: "S&P Global Inc."
 framework_version: v18.0
 worktree: "金融"
 industry: "金融/B2B平台"
-last_updated: "2026-03-11T14:40:00+08:00"
+last_updated: "2026-03-11T16:30:00+08:00"
 
-current_phase: 1
+current_phase: 2
 phase_status: completed
-phases_completed: ["-1", "-0.5", "0", "0.75", "1"]
+phases_completed: ["-1", "-0.5", "0", "0.75", "1", "2"]
 
 target_chars: 294669
 target_range: "235K-368K"
@@ -22,39 +22,60 @@ cq_list:
   - id: CQ-1
     name: "两个生意割裂"
     weight: 30
-    confidence: 40
+    confidence: 65
   - id: CQ-2
     name: "增速拐点 vs AI投资期"
     weight: 25
-    confidence: 35
+    confidence: 50
   - id: CQ-3
     name: "定价权悖论 Stage 1.0"
     weight: 20
-    confidence: 45
+    confidence: 58
   - id: CQ-4
     name: "商誉炸弹与ROIC真相"
     weight: 15
-    confidence: 50
+    confidence: 70
   - id: CQ-5
     name: "双寡头Nash均衡稳定性"
     weight: 10
-    confidence: 55
+    confidence: 62
 
 quick_ref:
   price: 435.44
   pe_ttm: 29.68
   forward_pe: 19.73
   opm: 42.24
-  fcf_yield: 4.31
+  fcf_yield: 4.11
   ixl: "22×18"
-  total_chars: 34919
-  latest_phase_chars: 34919
+  total_chars: 59822
+  latest_phase_chars: 24903
+  wacc: 10.29
+  sotp_base: 418
+  reverse_dcf_implied_growth: 9.4
+  probability_weighted_ev: 480
+  expected_return_pct: 10.3
+
+valuation_summary:
+  reverse_dcf: "隐含9.4% FCFF CAGR, 无高脆弱度承重墙"
+  sotp_base: "$418/share (-4%)"
+  sotp_bull: "$503/share (+16%)"
+  sotp_bear: "$324/share (-25%)"
+  convergence_range: "$411-$550"
+  weighted_average: "$472 (+8%)"
+  risk_reward: "4:1 (下行-6% vs 上行+26%)"
+
+b_scores_updated:
+  B5: 4.0
+  B6: 4.5
 
 data_files:
-  mcp: [stock_full, peer_comparison, market_context, income_5y, balance_5y, cashflow_5y, estimates]
+  mcp: [stock_full, peer_comparison, market_context, income_5y, balance_5y, cashflow_5y, estimates, key_metrics, dcf]
   agents: [analyst_consensus, prediction_market, recent_news, business_overview, competitive_landscape, management_team, smart_money_13f, options_short_interest]
   phase0: [quality_scorecard, ixl_prescoring, cq_routing, lit_recon_memo, knowledge_context, launch_brief, SPGI_market_intel_raw]
+  phase2: [phase2_ch8_9, phase2_ch10_11]
+  comps: [MCO_key_metrics, MSCI_key_metrics, VRSK_key_metrics]
 
 next_steps:
-  - "Phase 2: 财务深潜 (Reverse DCF+SOTP+6方法估值+分析师共识对比)"
-  - "Phase 3: 竞争+护城河+寡头博弈+PtW+投资大师圆桌"
+  - "Phase 3: 竞争+护城河量化+双寡头博弈+PtW量化评分+投资大师圆桌v2.0"
+  - "Phase 4: 红队七问(RT-1~RT-7)+双向校准+有效性门控"
+  - "Phase 5: Complete组装(目标235K-368K)"
