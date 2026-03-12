@@ -263,7 +263,9 @@ Complete组装必须在单会话内完成: 读Phase产出→组装→质量门�
 
 ## 系统升级
 
-**当前版本**: v18.2 (2026-03-06) | **健康监控**: `bash tests/framework_health_check.sh`
+**当前版本**: v18.5 (2026-03-12) | **健康监控**: `bash tests/framework_health_check.sh`
+**v18.5变化**: Moat Data Card v1.0→v2.0(6→10字段组)——新增交易策略预备字段(估值三档/E-Score/回撤DNA/流动性)。`scripts/trading_datacard.py`自动填充回撤+流动性+E-Score。CQI排行榜v6.0(+12候选观察)。品牌定位v2.0(51家覆盖)
+**v18.4变化**: Phase 5新增护城河数据卡(Moat Data Card)标准产出——6个YAML字段(垄断纯度/定价权阶段/TAM渗透率/护城河年龄/转换成本/市场隐含假设)，零额外分析成本，为CQI排行榜+跨公司产品提供机器可读数据源。产出位置`reports/{TICKER}/data/moat_datacard.yaml`
 **v18.2变化**: 品质量化评估框架(21维度A+B+C+D分阶段嵌入Phase 0/1/2/3/5) + 投资大师圆桌v2.0(Phase 3.8方法论碰撞深化引擎)。详见 `docs/company_quality_scoring.md` + `.claude/skills/investment-committee/SKILL.md`
 **v18.1变化**: DM标注强制执行器+DM密度早期警告+消费品复杂估值框架
 **v18.0变化**: CEO沉默分析(P1)+PtW量化评分(P3)+KS条件依赖追踪(P5)

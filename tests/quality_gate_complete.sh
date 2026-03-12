@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v6.0
+# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v9.0
 # ============================================================
 # 用法:
 #   ./tests/quality_gate_complete.sh <Complete报告.md> [benchmark_chars] [possibility_width]
@@ -27,8 +27,13 @@
 #   CG16. 市值基准唯一性 (WARN级, v4.0新增)
 #   CG17. P/E一致性 (WARN级, v4.0新增)
 #   CG18. 财务数据交叉验证声明 (WARN级, v5.0新增)
+#   CG19. AI腔检测 (WARN级, v7.0新增) — 检测AI写作模式(不是X而是Y/空洞过渡/伪亲密等)
+#   CG20. 护城河数据卡 (WARN级, v8.0新增/v9.0升级) — 检查moat_datacard.yaml存在+10字段组完整
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v9.0 (2026-03-12) — CG20升级至10字段组(v2.0交易策略预备: 估值三档+E-Score+回撤DNA+流动性)
+# 更新: v8.0 (2026-03-12) — CG20护城河数据卡检查(为CQI排行榜+跨公司产品提供结构化数据)
+# 更新: v7.0 (2026-03-10) — CG19 AI腔检测(insights报告: 用户多次手动修正AI写作模式)
 # 更新: v6.0 (2026-02-19) — CG4/CG5自然语言检测(EVO-AAPL-001: KS/VP内容充分但格式缺失时降级通过)
 # 更新: v5.0 (2026-02-16) — CG18财务数据交叉验证声明(WARN, 深层质量协议L2)
 # 更新: v4.0 (2026-02-16) — CG15 Agent引用FAIL+CG16市值唯一性WARN+CG17 P/E一致性WARN
@@ -519,10 +524,108 @@ else
     echo -e "${GREEN}PASS CG18: 财务数据交叉验证声明 ${CROSS_VAL}次 (要求≥3)${NC}"
 fi
 
+# === CG19: AI腔检测 (v7.0新增, WARN级) ===
+# 检测报告中常见的AI写作模式 (源自insights报告: 用户多次手动修正AI写作模式)
+# 模式清单来自content-engine品味Agent经验
+AI_PATTERN_COUNT=0
+AI_DETAILS=""
+
+# 模式1: "不是X，而是Y" 句式过度使用 (≥5次为过度)
+P1=$(safe_int "$(grep -cE '不是.*而是|不仅仅是.*更是|不只是.*还是' "$FILE" 2>/dev/null || echo 0)")
+if [ "$P1" -ge 5 ]; then
+    AI_PATTERN_COUNT=$((AI_PATTERN_COUNT + P1))
+    AI_DETAILS="${AI_DETAILS}  不是X而是Y=${P1}次"
+fi
+
+# 模式2: 空洞过渡词
+P2=$(safe_int "$(grep -cE '值得注意的是|需要指出的是|不难发现|显而易见|毋庸置疑|综上所述' "$FILE" 2>/dev/null || echo 0)")
+if [ "$P2" -ge 3 ]; then
+    AI_PATTERN_COUNT=$((AI_PATTERN_COUNT + P2))
+    AI_DETAILS="${AI_DETAILS}  空洞过渡=${P2}次"
+fi
+
+# 模式3: 强行升华/感叹 (报告不需要感叹号密集使用)
+P3=$(safe_int "$(grep -cE '！$' "$FILE" 2>/dev/null || echo 0)")
+if [ "$P3" -ge 10 ]; then
+    AI_PATTERN_COUNT=$((AI_PATTERN_COUNT + P3))
+    AI_DETAILS="${AI_DETAILS}  感叹号行=${P3}次"
+fi
+
+# 模式4: "让我们" 伪亲密
+P4=$(safe_int "$(grep -cE '让我们|我们不禁|我们有理由相信' "$FILE" 2>/dev/null || echo 0)")
+if [ "$P4" -ge 3 ]; then
+    AI_PATTERN_COUNT=$((AI_PATTERN_COUNT + P4))
+    AI_DETAILS="${AI_DETAILS}  伪亲密=${P4}次"
+fi
+
+# 模式5: 强行五面墙/排比 (3+个连续"X是Y"同结构)
+P5=$(safe_int "$(grep -cE '本质上是|归根结底|说到底|换言之|一言以蔽之' "$FILE" 2>/dev/null || echo 0)")
+if [ "$P5" -ge 5 ]; then
+    AI_PATTERN_COUNT=$((AI_PATTERN_COUNT + P5))
+    AI_DETAILS="${AI_DETAILS}  归纳套话=${P5}次"
+fi
+
+if [ "$AI_PATTERN_COUNT" -ge 10 ]; then
+    echo -e "${YELLOW}WARN CG19: AI腔检测 ${AI_PATTERN_COUNT}处 —${AI_DETAILS}${NC}"
+    echo "       建议: 像高级分析师写, 不像语言模型写"
+    WARNINGS=$((WARNINGS + 1))
+elif [ "$AI_PATTERN_COUNT" -gt 0 ]; then
+    echo -e "${GREEN}PASS CG19: AI腔检测 ${AI_PATTERN_COUNT}处 (阈值10) —${AI_DETAILS}${NC}"
+else
+    echo -e "${GREEN}PASS CG19: AI腔检测 0处${NC}"
+fi
+
+# === CG20: 护城河数据卡检查 (v8.0新增/v9.0升级, WARN级) ===
+# v9.0: 从6字段组扩展至10字段组(v2.0交易策略预备字段)
+# 从报告路径推断ticker和数据卡路径
+REPORT_DIR=$(dirname "$FILE")
+# 尝试从报告路径中提取ticker目录
+TICKER_DIR=""
+if echo "$REPORT_DIR" | grep -q "reports/"; then
+    TICKER_DIR=$(echo "$REPORT_DIR" | sed 's|.*reports/\([^/]*\).*|\1|')
+fi
+DATACARD_PATH=""
+if [ -n "$TICKER_DIR" ]; then
+    # 在报告同级目录或data子目录查找
+    for candidate in \
+        "$(dirname "$FILE")/data/moat_datacard.yaml" \
+        "$(dirname "$(dirname "$FILE")")/data/moat_datacard.yaml" \
+        "reports/${TICKER_DIR}/data/moat_datacard.yaml"; do
+        if [ -f "$candidate" ]; then
+            DATACARD_PATH="$candidate"
+            break
+        fi
+    done
+fi
+
+if [ -n "$DATACARD_PATH" ] && [ -f "$DATACARD_PATH" ]; then
+    # 检查10个字段组是否存在(允许TBD/0, 不允许完全缺失)
+    # v1.0: monopoly_purity, pricing_power, tam_penetration, moat_age, switching_cost, market_implied
+    # v2.0: valuation_anchors, earnings_predictability, drawdown_profile, liquidity
+    DATACARD_FIELDS=0
+    for field in monopoly_purity pricing_power tam_penetration moat_age switching_cost market_implied valuation_anchors earnings_predictability drawdown_profile liquidity; do
+        if { grep -q "^${field}:" "$DATACARD_PATH" 2>/dev/null || grep -q "^  ${field}:" "$DATACARD_PATH" 2>/dev/null; }; then
+            DATACARD_FIELDS=$((DATACARD_FIELDS + 1))
+        fi
+    done
+    if [ "$DATACARD_FIELDS" -ge 10 ]; then
+        echo -e "${GREEN}PASS CG20: 护城河数据卡 v2.0 (${DATACARD_FIELDS}/10字段组)${NC}"
+    elif [ "$DATACARD_FIELDS" -ge 6 ]; then
+        echo -e "${YELLOW}WARN CG20: 护城河数据卡 v1.0兼容 (${DATACARD_FIELDS}/10字段组, 运行 scripts/trading_datacard.py 补充v2.0字段)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    else
+        echo -e "${YELLOW}WARN CG20: 护城河数据卡字段不完整 (${DATACARD_FIELDS}/10)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    echo -e "${YELLOW}WARN CG20: 护城河数据卡未找到 (moat_datacard.yaml)${NC}"
+    WARNINGS=$((WARNINGS + 1))
+fi
+
 # --- 汇总 ---
 echo ""
 echo "=============================================="
-echo -e " ${CYAN}Complete Quality Gate v6.0 检查完成${NC}"
+echo -e " ${CYAN}Complete Quality Gate v8.0 检查完成${NC}"
 echo "=============================================="
 echo " 文件: $(basename "$FILE")"
 echo " 总字符: ${CHARS} / 基准 ${BENCHMARK_CHARS} (地板 ${FLOOR_COMPLETE})"

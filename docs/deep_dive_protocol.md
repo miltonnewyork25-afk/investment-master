@@ -1,6 +1,8 @@
-# Deep-Dive 分析协议 v18.2 (Tier 3)
+# Deep-Dive 分析协议 v18.5 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
+> **v18.5变化**: Moat Data Card v1.0→v2.0(6→10字段组)——新增交易策略预备字段(估值三档/盈利可预测性E-Score/回撤DNA/流动性)。E-Score在Phase 0自动计算，估值三档从Phase 3标准化提取，回撤+流动性由`scripts/trading_datacard.py`自动填充。零额外分析成本，为未来Sharpe最优组合交易策略做数据铺垫。
+> **v18.4变化**: Phase 5新增护城河数据卡(Moat Data Card)标准产出——6个结构化字段(垄断纯度/定价权阶段/TAM渗透率/护城河年龄/转换成本/市场隐含假设)以YAML格式输出到`reports/{TICKER}/data/moat_datacard.yaml`，零额外分析成本(数据均来自Phase 1-3已有分析)，为跨公司产品(CQI排行榜/筛选器)提供机器可读数据源。
 > **v18.2变化**: 品质量化评估框架集成(Phase 0/1/2/3/5分阶段评估21维度) + 投资大师圆桌v2.0集成(Phase 3.8方法论碰撞深化引擎, QG-09.8门控)。详见`docs/company_quality_scoring.md` + `.claude/skills/investment-committee/SKILL.md`。
 > **v18.0变化**: 战略报告框架回流——Phase 1新增CEO沉默分析(QG-01.5)+Phase 3新增Playing to Win量化评分(QG-07.5, 含寡头行业博弈论条件增强)+Phase 5 Kill Switch从9字段→12字段(新增单独触发行动/协同触发/评级影响)。源自SEMI_EQUIPMENT_STRATEGY报告(4.2/5)的3个框架创新验证。
 > **v14.1变化**: Phase 0新增SGI速判(专才-通才光谱诊断)。
@@ -831,6 +833,112 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
 | [原创框架名] | 本报告首创 | Phase 3 §3.4 | [效果] | ✅/❌ |
 ```
 
+**9. 护城河数据卡 (Moat Data Card v2.0, v18.4新增/v18.5扩展)**
+
+> **设计原则**: 零额外分析成本。10个字段组中，6个是Phase 1-3已有分析的结构化提取，4个是自动计算/标准化提取。
+> **目的**: 为CQI排行榜、跨公司筛选、未来交易策略组合提供机器可读的标准化数据源。
+> **产出位置**: `reports/{TICKER}/data/moat_datacard.yaml`
+
+```yaml
+# 护城河数据卡 v2.0
+ticker: "{TICKER}"
+report_date: "YYYY-MM-DD"
+report_version: "v1.0"
+market_cap_B: 0.0          # 报告时市值($B)
+cqi_score: 0               # CQI评分(0-100)
+moat_trend: "→ Stable"     # ↑Widening/↗Strengthening/→Stable/↘Softening/↓Eroding/⇊Collapsing
+rating: ""                  # 深度关注/关注/中性关注/审慎关注
+expected_return_pct: 0.0    # 期望回报%
+
+# === v1.0 原有字段 (6个字段组) ===
+
+# 1. 垄断纯度 — 垄断/核心业务收入占总收入或总利润的比例
+monopoly_purity:
+  revenue_pct: 0            # 核心垄断业务占总收入%
+  profit_pct: 0             # 核心垄断业务占总利润%(如有)
+  segment_name: ""          # 垄断业务名称
+  note: ""                  # 补充说明(如"按利润口径更准确")
+
+# 2. 定价权阶段 — Stage 1.0(未释放)到3.0(天花板)
+pricing_power:
+  stage: 0.0                # 1.0-3.0
+  ceiling_signal: ""        # 接近天花板的信号(监管反弹/替代品/政治压力)
+  runway: ""                # 剩余空间描述(如"OPM还有10-15pp上行")
+
+# 3. TAM渗透率 — 当前市场渗透程度
+tam_penetration:
+  current_pct: 0            # 当前渗透率%
+  expansion_vector: ""      # 主要扩展方向(如"国际化/新品类/新客群")
+  tam_source: ""            # TAM数据来源
+
+# 4. 护城河年龄 — 核心竞争优势存在的时间
+moat_age:
+  years: 0                  # 护城河存在年数
+  origin: ""                # 起源事件(如"1956年FICO评分诞生")
+  institutional_anchor: ""  # 制度锚点(如"FHFA/Basel/SEC", 无则留空)
+
+# 5. 转换成本量化 — 客户替换的时间和金钱成本
+switching_cost:
+  time_months: 0            # 替换所需时间(月)
+  cost_estimate: ""         # 替换成本估计(如"$500M行业级"或"$50K/客户")
+  lock_in_type: ""          # 锁定类型(合约/技术/数据/习惯/制度)
+
+# 6. 市场隐含假设 — Reverse DCF提取的关键隐含赌注
+market_implied:
+  revenue_cagr_5y: 0.0      # 市场隐含5年收入CAGR%
+  terminal_opm: 0.0         # 市场隐含终端OPM%(如适用)
+  key_bet: ""               # 一句话概括市场在赌什么
+  our_assessment: ""        # 我们的判断(偏乐观/合理/偏保守)
+
+# === v2.0 新增字段 (4个字段组, 交易策略预备) ===
+
+# 7. 估值三档 — Phase 3估值的标准化提取
+valuation_anchors:
+  fair_value: 0             # 合理估值中枢($)
+  margin_of_safety_price: 0 # 安全边际价($) = fair_value × (1 - CQI折扣率)
+  overvaluation_trigger: 0  # 高估触发价($) = fair_value × 1.20
+  discount_rate_used: 0.0   # CQI折扣率: CQI≥70→15%, 50-69→20%, 30-49→30%, <30→40%
+  methodology: ""           # SOTP/DCF/逆向DCF/混合
+  as_of_date: ""            # 估值基准日期
+
+# 8. 盈利可预测性 (E-Score) — Phase 0自动计算
+#    数据来源: data_prefetch已拉取的5年季度财务数据
+#    自动计算: scripts/trading_datacard.py
+earnings_predictability:
+  revenue_cv: 0.0           # 5年季度收入变异系数(越低越稳)
+  opm_range_pct: [0, 0]     # 5年OPM区间[min, max]%
+  miss_rate_pct: 0.0        # 5年EPS miss率%
+  e_score: 0.0              # 加权综合分1-10(10=最可预测)
+
+# 9. 回撤DNA — Post-report脚本自动填充
+#    自动计算: scripts/trading_datacard.py
+drawdown_profile:
+  max_dd_2020_pct: 0.0      # COVID最大回撤%
+  trough_date_2020: ""      # 2020谷底日期
+  recovery_days_2020: 0     # 恢复至前高天数
+  max_dd_2022_pct: 0.0      # 加息周期最大回撤%
+  trough_date_2022: ""      # 2022谷底日期
+  recovery_days_2022: 0     # 恢复至前高天数
+  downside_beta: 0.0        # 下行beta(SPY跌日的相对跌幅)
+
+# 10. 流动性约束 — Post-report脚本自动填充
+#     自动计算: scripts/trading_datacard.py
+liquidity:
+  avg_daily_volume_usd: 0   # 30天日均成交额($)
+  market_cap: 0             # 当前市值($)
+  spread_bps_est: 0.0       # 估算买卖价差(bps)
+```
+
+**执行规则**:
+- **字段1-6** (v1.0): Phase 5组装Complete后、运行quality_gate前手动填写
+  - 数据来源: monopoly_purity→Phase 1收入拆分, pricing_power→Phase 3定价权分析, tam→Phase 1 TAM, moat_age→Phase 1/3护城河分析, switching_cost→Phase 1 C3评分, market_implied→Phase 3 Reverse DCF
+- **字段7** (估值三档): Phase 3完成后从估值产出标准化提取，CQI折扣率公式:
+  - CQI ≥ 70 → 15%折扣 | CQI 50-69 → 20% | CQI 30-49 → 30% | CQI < 30 → 40%
+- **字段8** (E-Score): Phase 0 data_prefetch后自动计算(或post-report脚本)
+- **字段9-10** (回撤+流动性): `python3 scripts/trading_datacard.py {TICKER}` 自动填充
+- 不确定的字段写"TBD"或0，不编造
+- 旧报告: 运行 `python3 scripts/trading_datacard.py --batch` 可批量填充字段8-10
+
 **字数目标**: ≥30,000字符 (wc -m)
 
 **门控 QG-12 (v10.0)**:
@@ -858,6 +966,7 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
   - 输出CI候选列表 → 人工审核 → 写入"附录: CI注册表"
   - 每个CI含: 洞察+共识观点+我们的观点+证据来源+置信度
   - 目标≥5个CI (ETN实测11个)
+- **护城河数据卡 (v18.5升级)**: `reports/{TICKER}/data/moat_datacard.yaml`存在 + 10个字段组已填写(v1.0的6个+v2.0的4个)。字段8-10可用`scripts/trading_datacard.py`自动填充。允许TBD但不允许文件缺失
 - **Phase 5完成后必须组装Complete报告** → 运行 `tests/quality_gate_complete.sh` → 通过后才能标记"全量完成"
 
 ### Phase 5.5: Supplement扩展协议 (v13.0新增)
@@ -1079,7 +1188,7 @@ Step 5: 五引擎协同 → 综合信号+论点验证
 - Phase 0 + 0.5: 数据预取与注意力雷达并行
 - Phase 3各子模块: 护城河/五引擎/热点补丁可并行
 - Phase 3.5: Layer 1(冲击矩阵) + Layer 2(L×S定位)可并行
-- Phase 5: Kill Switch + 预测清单 + 行动清单可并行
+- Phase 5: Kill Switch + 预测清单 + 行动清单 + 护城河数据卡可并行
 
 ### 多Agent协作机制 (v1.1, AMD验证)
 
@@ -1121,7 +1230,7 @@ Step 5: 五引擎协同 → 综合信号+论点验证
 | 3.5 | AI冲击矩阵(≥90%营收)+L×S定位+AI调整估值 + DM-AI写入 |
 | 4 | 偏差检查+核查≥10点+反证≥3条+维度回应100%+**纠错回流清单**+P-G≥8+R-G≥7+DM冻结+KAL全部A级已验证 |
 | 5 | KS 10-15条(9字段)+追踪信号5-8个(特异性测试)+定性评估10维度+CQ≥5个(5要素)+Reverse DCF+零操作建议 |
-| 5.5 | **Complete报告组装** → `quality_gate_complete.sh` exit 0 → 11项CG全部通过 → git commit → 才能标记"全量完成" |
+| 5.5 | **Complete报告组装** → 填写`moat_datacard.yaml` → `quality_gate_complete.sh` exit 0 → 11项CG全部通过 → git commit → 才能标记"全量完成" |
 | 6 | **反思(飞轮)** → 写 `reports/{TICKER}/data/reflection.md` → 提取可泛化教训 → 如有框架提案则更新main的docs/ (详见 `docs/compound_learning_flywheel.md`) |
 
 ---
