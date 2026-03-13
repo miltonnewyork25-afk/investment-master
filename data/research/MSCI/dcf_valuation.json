@@ -1,0 +1,7 @@
+{
+  "fetched_at": "2026-03-13",
+  "source": "MCP:fmp_data:dcf + Layer2:error(Python tool ticker mismatch)",
+  "fmp_dcf": {"fair_value": 339.72, "stock_price": 540.315, "date": "2026-03-12"},
+  "python_dcf": {"status": "error", "reason": "Python dcf_calculator.py resolved to wrong ticker (AAPL)"},
+  "layer2_status": "partial_fail"
+}

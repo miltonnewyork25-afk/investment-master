@@ -1,0 +1,13 @@
+{
+  "fetched_at": "2026-03-13",
+  "source": "MCP:compare_stocks",
+  "target": "MSCI",
+  "peers": {
+    "SPGI": {"pe_ratio": 28.65, "pb_ratio": 5.10, "roe": 0.131},
+    "MCO": {"pe_ratio": 31.15, "pb_ratio": 22.57, "roe": 0.621},
+    "ICE": {"pe_ratio": 27.49, "pb_ratio": 3.20, "roe": 0.119},
+    "VRSK": {"pe_ratio": 30.56, "pb_ratio": 100.66, "roe": 4.379},
+    "FTNT": {"pe_ratio": 34.88, "pb_ratio": 47.68, "roe": 1.357}
+  },
+  "benchmark": {"SPY": {"pe_ratio": 26.42, "pb_ratio": 1.55}}
+}
