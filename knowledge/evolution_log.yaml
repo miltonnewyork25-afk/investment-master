@@ -503,3 +503,21 @@ entries:
     top_lesson: "多会话扩写加叙述不加DM锚点→DM密度0.44/千字(历史最低); 国际收入>30%缺地理分析=最大结构遗漏; 续约率推断无硬数据=论文基础脆弱"
     evolution_proposed: "EVO-SPGI-001(地理强制)+002(续约率门控)+003(扩写DM同步)+004(R&D量化)+005(去重检查)"
     evolution_status: "ALL 5 EVOs approved+implemented(v18.3): 001(地理门控)+002(续约率)+003(DM同步)+004(R&D)+005(去重)"
+
+  - ticker: "MSCI"
+    date: "2026-03-13"
+    report: "MSCI_Complete_v1.0.md"
+    chars: "222K"
+    cg_result: "PASSED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 72
+    mermaid_count: 36
+    pw: 3
+    method: "traditional"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: 3.8
+    top_technique: "D4双半衰期分析(Index>50Y vs ESG<15Y) — 同一公司不同业务护城河耐久性定量分离, 可迁移任何多分部公司"
+    top_lesson: "①DM密度0.32/千字(低于1.0目标)——Phase3扩写期间DM同步不足; ②字符223K(wc-m)vs345K(staging wc-c)——UTF-8中文膨胀导致计量混淆, 应统一wc-m; ③金融行业首用——框架适配良好但quality_gate PW不支持浮点(3.6→fallback最高基准)"
+    evolution_proposed: "EVO-MSCI-001(统一字符计量wc-m)+EVO-MSCI-002(quality_gate PW浮点支持)+EVO-MSCI-003(金融行业R1模块基建)"
+    evolution_status: pending
