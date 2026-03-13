@@ -1,0 +1,48 @@
+{
+  "version": "4.0",
+  "ticker": "MSCI",
+  "company": "MSCI Inc.",
+  "industry": "financial",
+  "timestamp": "2026-03-13T07:10:00+00:00",
+  "data_files": {
+    "stock_full": { "status": "ok", "source": "MCP:analyze_stock", "fetched_at": "2026-03-13T06:50:00Z" },
+    "peer_comparison": { "status": "ok", "source": "MCP:compare_stocks", "fetched_at": "2026-03-13T06:50:00Z" },
+    "market_context": { "status": "ok", "source": "MCP:get_market_overview", "fetched_at": "2026-03-13T06:50:00Z" },
+    "dcf_valuation": { "status": "partial", "source": "MCP:fmp_data:dcf (Python tool failed)", "fetched_at": "2026-03-13T06:50:00Z" },
+    "comparable_analysis": { "status": "error", "source": "Python:comparable_companies (ticker mismatch)", "fetched_at": "2026-03-13T06:52:00Z" },
+    "analyst_consensus": { "status": "ok", "source": "WebSearch:Agent-A", "fetched_at": "2026-03-13T07:00:00Z" },
+    "prediction_market": { "status": "ok", "source": "WebSearch:Agent-B", "fetched_at": "2026-03-13T06:58:00Z" },
+    "recent_news": { "status": "ok", "source": "WebSearch:Agent-C", "fetched_at": "2026-03-13T07:02:00Z" },
+    "business_overview": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-03-13T07:05:00Z" },
+    "competitive_landscape": { "status": "ok", "source": "WebSearch:Agent-D", "fetched_at": "2026-03-13T07:05:00Z" },
+    "management_team": { "status": "ok", "source": "WebSearch:Agent-E", "fetched_at": "2026-03-13T06:58:00Z" },
+    "smart_money_13f": { "status": "ok", "source": "WebSearch:Agent-F", "fetched_at": "2026-03-13T07:00:00Z" },
+    "options_short_interest": { "status": "ok", "source": "WebSearch:Agent-G", "fetched_at": "2026-03-13T06:58:00Z" }
+  },
+  "quality": {
+    "files_ok": 11,
+    "files_partial": 1,
+    "files_error": 1,
+    "files_total": 13
+  },
+  "dm_quality": {
+    "total_anchors": 72,
+    "h_count": 65,
+    "r_count": 5,
+    "s_count": 2,
+    "h_pct": 90.3,
+    "target_h_pct": 50,
+    "passed": true
+  },
+  "layer_status": {
+    "layer1_mcp": "ok",
+    "layer2_python": "fail",
+    "layer3_websearch": "ok"
+  },
+  "supplementary_mcp": {
+    "income_quarterly_8q": "ok",
+    "insider_trading": "ok",
+    "fmp_ratios_5y": "ok",
+    "fmp_key_metrics_5y": "ok"
+  }
+}
