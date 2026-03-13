@@ -1,0 +1,36 @@
+schema_version: "2.0"
+ticker: MSCI
+company: "MSCI Inc"
+framework_version: v18.3
+worktree: "金融"
+industry: "financial"
+last_updated: "2026-03-13T14:38:00+00:00"
+
+current_phase: -1
+phase_status: pre_launch
+phases_completed: []
+
+target_chars: 350000
+target_range: "320K-400K"
+hard_floor: 300000
+
+# EVO门控标记
+geo_analysis_required: true
+retention_data_required: true
+rd_extraction_required: true
+
+# MSCI专属维度
+custom_dimensions:
+  - D1_aum_engine: "AUM三维情景矩阵 (Phase 2, 25-30K)"
+  - D2_esg_deep_dive: "ESG业务独立深潜 (Phase 3, 20-25K)"
+  - D3_private_assets: "Private Assets第二S曲线 (Phase 3, 15-20K)"
+  - D4_dual_half_life: "双半衰期分析 (Phase 3, 10-15K)"
+  - D5_vanguard_2012: "Vanguard 2012复盘 (Phase 1, 10-15K)"
+  - D6_trading_bridge: "交易策略数据桥梁 (Phase 5, 10-15K)"
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
+  pw_estimate: "3.5-4.5"
+  quality_target: "4.5+"
+  industry_coefficient: 1.0
