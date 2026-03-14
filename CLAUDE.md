@@ -256,6 +256,8 @@ Complete组装必须在单会话内完成: 读Phase产出→组装→质量门�
 | **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
 | **规划经验** | `knowledge/planning_archives/{TICKER}.md` (12份报告规划档案) |
 | **品质评估** | `docs/company_quality_scoring.md` (A+B+C+D 21维度) + `knowledge/stock_picking/quality_scoring_benchmark.md` (8家基准) |
+| **A/B文档分离** | `docs/ab_document_protocol.md` (对外报告A vs 内部策略卡B) + `docs/strategy_card_template.md` |
+| **护城河框架** | `knowledge/stock_picking/moat_analysis_framework_v3.1.md` (C1嵌入性质+D1反脆弱+C3锁定载体) |
 
 **完整索引**: 原CLAUDE.md第204-246行 → `docs/framework_index.md`
 
