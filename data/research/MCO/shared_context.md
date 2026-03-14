@@ -573,20 +573,132 @@
 
 ---
 
-## Section K: 锚点汇总统计 (初始版)
+## Section K: 分析师共识与市场情绪 (Agent A/B/G)
 
-| 类型 | 数量 | 占比 |
-|------|------|------|
-| H (硬数据) | 48 | 87% |
-| R (合理推断) | 2 | 4% |
-| S (主观判断) | 0 | 0% |
-| 待补充(Agent返回) | ~5 | 9% |
-| **总计** | **~55** | **100%** |
+### DM-CON-001
+- **值**: 分析师共识评级 Buy (21位分析师: Buy 12 / Hold 8 / Sell 1)
+- **类型**: H
+- **来源**: WebSearch Agent-A, TipRanks/MarketBeat
+- **日期**: 2026-03-14
+- **用于**: Ch13 分析师共识
+
+### DM-CON-002
+- **值**: 共识目标价 $550-$572 (均值~$560)
+- **类型**: H
+- **来源**: WebSearch Agent-A
+- **日期**: 2026-03-14
+- **用于**: Ch14 估值对比
+
+### DM-CON-003
+- **值**: FY2025 Adj. EPS $14.94 (GAAP $13.67), 连续4Q beat
+- **类型**: H
+- **来源**: WebSearch Agent-A, MCO 10-K
+- **日期**: 2026-03-14
+- **用于**: Ch02 盈利质量
+
+### DM-CON-004
+- **值**: 近期PT下调: Mizuho $550→$524, Barclays $580→$550, UBS $515→$490, GS $603→$532
+- **类型**: H
+- **来源**: WebSearch Agent-C
+- **日期**: 2026-03-14
+- **用于**: Ch13 分析师情绪变化
+
+### DM-PMK-001
+- **值**: Polymarket 2025年美国衰退概率 34.5%
+- **类型**: H
+- **来源**: Polymarket via WebSearch Agent-B
+- **日期**: 2026-03-14
+- **用于**: Ch09 宏观风险
+
+### DM-PMK-002
+- **值**: Fed 2025仅1次降息概率 30.5%, 通胀>3% 73%
+- **类型**: H
+- **来源**: Polymarket/Kalshi via Agent-B
+- **日期**: 2026-03-14
+- **用于**: Ch09 利率环境
+
+### DM-PMK-003
+- **值**: 银行倒闭概率 17.5%
+- **类型**: H
+- **来源**: Polymarket via Agent-B
+- **日期**: 2026-03-14
+- **用于**: Ch09 金融系统风险
+
+### DM-OPT-001
+- **值**: 做空比例 1.19% (极低), Put/Call 2.8:1 (财报期间), 无异常期权活动
+- **类型**: H
+- **来源**: WebSearch Agent-G
+- **日期**: 2026-03-14
+- **用于**: Ch13 市场情绪
 
 ---
 
-## Section L: Phase 1-4关键发现 (传统格式保留)
+## Section L: 管理层与Smart Money (Agent E/F)
 
-> 此区域在Phase 0初始生成时为空，随Phase推进由各Phase完成时追加。
+### DM-MGT-003
+- **值**: MA总裁Stephen Tulenko于2025年8月辞职, Andy Frepp临时接管
+- **类型**: H
+- **来源**: WebSearch Agent-C/E
+- **日期**: 2026-03-14
+- **用于**: Ch07 管理层, Ch04 MA风险
+
+### DM-MGT-004
+- **值**: CEO Rob Fauber薪酬$16.97M (FY2024), 任期自2021年
+- **类型**: H
+- **来源**: WebSearch Agent-E, Proxy
+- **日期**: 2026-03-14
+- **用于**: Ch07 管理层
+
+### DM-MGT-005
+- **值**: CFO Noémie Heuland, 前SAP/Dayforce CFO, 2024年加入
+- **类型**: H
+- **来源**: WebSearch Agent-E
+- **日期**: 2026-03-14
+- **用于**: Ch07 管理层
+
+### DM-SMT-001
+- **值**: Berkshire Hathaway持股14.54%, Greg Abel确认为"永久持仓"
+- **类型**: H
+- **来源**: WebSearch Agent-E/F
+- **日期**: 2026-03-14
+- **用于**: Ch08 Smart Money, CI-MCO-004
+
+### DM-SMT-002
+- **值**: TCI (Chris Hohn) +61,500股 Q4 2025; T. Rowe Price +73.5%
+- **类型**: H
+- **来源**: WebSearch Agent-F, 13F
+- **日期**: 2026-03-14
+- **用于**: Ch08 Smart Money
+
+### DM-SMT-003
+- **值**: UBS -74.6% ($2.1B退出) Q4 2025; Citadel -66.5%
+- **类型**: H
+- **来源**: WebSearch Agent-F, 13F
+- **日期**: 2026-03-14
+- **用于**: Ch08 Smart Money, 风险信号
+
+### DM-SMT-004
+- **值**: MIS Q1 2025 Adj. OPM已达66% (高于FY2025全年63.6%)
+- **类型**: H
+- **来源**: WebSearch Agent-D, Q1 2025 Earnings
+- **日期**: 2026-03-14
+- **用于**: Ch03 MIS利润率趋势
+
+---
+
+## Section M: 锚点汇总统计 (完整版)
+
+| 类型 | 数量 | 占比 |
+|------|------|------|
+| H (硬数据) | 65 | 93% |
+| R (合理推断) | 2 | 3% |
+| S (主观判断) | 3 | 4% |
+| **总计** | **70** | **100%** |
+
+---
+
+## Section N: Phase 1-4关键发现
+
+> 随Phase推进追加。
 
 [Phase推进时追加]

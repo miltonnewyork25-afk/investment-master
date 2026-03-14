@@ -1,0 +1,40 @@
+schema_version: "2.0"
+ticker: MCO
+company: "Moody's Corporation"
+framework_version: v18.5
+worktree: "金融"
+industry: "金融"
+last_updated: "2026-03-14T22:00:00+00:00"
+
+current_phase: 0
+phase_status: complete
+phases_completed: ["-1", "-0.5", "0", "0.75"]
+
+target_chars: 294669
+target_range: "235K-368K"
+hard_floor: 200000
+
+pw_score: 3.2
+methodology: traditional
+rating_framework: "SOTP/DCF → 目标价+评级"
+
+cq_candidates:
+  CQ-1: "MIS周期性: 交易性36%收入 → 衰退EPS -25~30%? 周期折价 vs SaaS溢价"
+  CQ-2: "MA是真平台还是数据堆栈? 93%留存+8%增长 vs Tier 1 SaaS 95%+/20%+"
+  CQ-3: "MIS×MA飞轮: 1+1>2真协同 vs 投资者叙事?"
+  CQ-4: "私人信贷净效应: +75%增长是增量还是蚕食MIS核心TAM?"
+  CQ-5: "AI对MCO: 武器(MIS监管保护) vs 威胁(MA面临AI初创竞争)?"
+
+non_consensus:
+  CI-MCO-001: "利润率混合陷阱 — MA越成功, MCO OPM越难突破"
+  CI-MCO-002: "周期记忆衰退 — 31x PE忽略36%交易性收入的周期风险"
+  CI-MCO-003: "私人信贷双面性 — 净效应取决于MIS损失vs MA增量单位经济学"
+  CI-MCO-004: "巴菲特沉默信号 — BRK持仓=护身符+束缚"
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
+  price: 430.01
+  pe_ttm: 31
+  pe_fwd: 26
+  dm_anchors: 70
