@@ -521,3 +521,30 @@ entries:
     top_lesson: "①DM密度0.32/千字(低于1.0目标)——Phase3扩写期间DM同步不足; ②字符223K(wc-m)vs345K(staging wc-c)——UTF-8中文膨胀导致计量混淆, 应统一wc-m; ③金融行业首用——框架适配良好但quality_gate PW不支持浮点(3.6→fallback最高基准)"
     evolution_proposed: "EVO-MSCI-001(统一字符计量wc-m)+EVO-MSCI-002(quality_gate PW浮点支持)+EVO-MSCI-003(金融行业R1模块基建)"
     evolution_status: pending
+
+  - ticker: "MCO"
+    date: "2026-03-15"
+    report: "MCO_Complete_v1.0.md"
+    chars: "205K"
+    cg_result: "PASSED(0E/7W)"
+    compliance: "PASSED"
+    dm_anchors: 56
+    mermaid_count: 36
+    pw: 3.2
+    method: "traditional"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: 3.7
+    top_technique: "CI-MCO-001利润率混合陷阱(MA越成功→OPM越难突破=数学必然, 非运营失败) — 可迁移任何高增长低利润分部占比上升的多分部公司"
+    top_lesson: |
+      ①体量205K仅达目标295K的70%——多Agent ECONNRESET(4/4首批全灭)导致扩写不充分, 降并行度后恢复
+      ②DM密度56/206K=0.27/千字(历史最低)——组装时DM未用[方括号]格式导致CG8初次FAIL
+      ③红队双向校准有效(+13%→+15.1%检测过度悲观, 3CQ上调), 与RCL教训一致
+      ④4个非共识假说质量高(利润率混合/周期记忆/私人信贷/巴菲特沉默)但CI-标记缺失导致CG12=0
+      ⑤金融行业第三份Tier 3: MCO(3.7) vs SPGI(3.55)↑ vs MSCI(3.8)↓, 体量是主要拉低因素
+    evolution_proposed: |
+      EVO-MCO-001: 组装DM方括号格式强制 — Assembly Agent prompt增加"所有DM-xxx-nnn必须用[DM-xxx-nnn]方括号格式" [P1, 格式合规]
+      EVO-MCO-002: CI-标记在报告正文保留 — 非共识假说在正文中保持CI-xxx-nnn标记(当前被组装抹除) [P1, 格式合规]
+      EVO-MCO-003: ECONNRESET自动降级 — 检测到≥2个Agent ECONNRESET时自动从4并行→2并行→1串行 [P2, 鲁棒性]
+      冠军目录待注册: 利润率混合陷阱(8.0/10) + 周期记忆衰退量化(7.5/10) + 巴菲特沉默信号(7.0/10)
+    evolution_status: pending
