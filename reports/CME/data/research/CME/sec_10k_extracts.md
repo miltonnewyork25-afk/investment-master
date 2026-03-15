@@ -34,6 +34,15 @@
 - Commodities trading: +12% volume growth
 - Financials: +5% volume growth
 
+**FY2025 Full-Year ADV by Product (Record Highlights)**:
+- Interest Rates: 14.2M ADV (+4%), record annual — U.S. Treasury F&O 8.3M, SOFR F&O 5.4M
+- Equity Indexes: 7.4M ADV (+8%) — Micro E-mini Nasdaq-100 1.6M(record), Micro E-mini S&P 500 1.2M(+35%)
+- Energy: 2.7M ADV (+8%, record) — Henry Hub Nat Gas F&O 904K(record)
+- Agricultural: 1.9M ADV (+8%, record)
+- Metals: 988K ADV (+34%, record)
+- FX: ~980K ADV
+- International ADV: 8.4M contracts (+8%, record) — Asia +18%, EMEA +6%
+
 ### 1.3 Average Rate Per Contract (RPC) by Asset Class ($)
 
 | Asset Class | Q4 2024 | Q1 2025 | Q2 2025 | Q3 2025 | Q4 2025 |
@@ -183,16 +192,33 @@ Revenue disaggregation by product line is provided in the notes to financial sta
 
 ---
 
-## 6. Customer Concentration
+## 6. Customer Concentration & Clearing Membership
 
-**[10-K NEEDED for exact disclosures]**
+### 6.1 Clearing Member Count
+- **Total clearing firms**: ~69 (per Maoxian.com clearing member directory, cross-referenced)
+- **Member types**: CME/CBOT/NYMEX/COMEX四个交易所分别注册 + OTC IRS清算会员
+- **Representative members**: ABN AMRO, Goldman Sachs, JP Morgan, Morgan Stanley, Wells Fargo等
 
+### 6.2 Revenue Concentration
 - CME does not publicly disclose the percentage of revenue from individual clearing members
 - Clearing member base is concentrated among large global banks and proprietary trading firms
 - Top clearing members include: JP Morgan, Goldman Sachs, Citadel Securities, Morgan Stanley, Bank of America, Barclays, etc.
 - A significant portion of clearing fees comes from a relatively small number of large firms
-- **Market structure**: ~50 clearing members account for the vast majority of volumes
+- **Market structure**: ~69 clearing members account for the vast majority of volumes
 - No single customer disclosed as >10% of revenue in prior filings (standard SEC threshold)
+
+### 6.3 Default Waterfall Structure (Financial Safeguards)
+1. **Layer 1**: 违约会员自身保证金(Performance Bond) + 违约基金贡献
+2. **Layer 2**: CME Clearing自有出资 — Base产品$100M / IRS产品$150M
+3. **Layer 3**: 非违约会员违约基金按比例使用
+4. **Layer 4**: 非违约会员追加评估(Assessment Powers) — 上限为各非违约会员Base基金贡献的2.75倍(单次违约)
+- **基金设计标准**: Cover 2 — 覆盖最大两家清算会员及关联方同时违约的潜在损失
+- **历史违约**: 10-K及公开披露中未报告重大清算会员违约事件; 44年无违约记录(含2008金融危机)
+
+### 6.4 Regulatory Designation
+- **SIFMU**: Systemically Important Financial Market Utility(系统重要金融市场基础设施)
+- **SIDCO**: Systemically Important Derivatives Clearing Organization(系统重要衍生品清算组织)
+- 受CFTC(主要) + SEC + Federal Reserve Board三重监管
 
 ---
 
@@ -301,9 +327,40 @@ Revenue disaggregation by product line is provided in the notes to financial sta
 
 ---
 
-## 11. Items Requiring Full 10-K Access
+## 11. Five-Year Financial Trend (FMP)
 
-The following items could not be fully extracted due to SEC.gov 403 errors and CME website timeouts:
+| Metric | FY2021 | FY2022 | FY2023 | FY2024 | FY2025 | 5Y CAGR |
+|--------|--------|--------|--------|--------|--------|---------|
+| Revenue ($B) | $4.69 | $5.02 | $5.58 | $6.13 | $6.52 | 8.6% |
+| Clearing Fees ($B) | $3.77 | $4.14 | $4.59 | $4.99 | $5.28 | 8.8% |
+| Market Data ($M) | $577 | $611 | $664 | $710 | $803 | 8.6% |
+| Other Revenue ($M) | $348 | $266 | $327 | $432 | $436 | 5.8% |
+| Operating Income ($B) | $2.65 | $3.02 | $3.44 | $3.93 | $4.23 | 12.4% |
+| Net Income ($B) | $2.64 | $2.69 | $3.23 | $3.53 | $4.04 | 11.2% |
+| EPS (Diluted) | $7.29 | $7.40 | $8.86 | $9.67 | $11.16 | 11.2% |
+
+*Source: FMP Income Statement*
+
+## 12. Product Innovation: Event Contracts
+
+- **Launch**: December 2024
+- **Milestone**: 1亿合约(100M contracts)交易量在上线仅8周后达成(2026-02-13)
+- **定位**: 面向零售交易者的低成本、直观格式合约
+- **覆盖范围**: 金融指标、文化事件、体育赛事
+- **收入贡献**: 尚未单独披露(太新)
+- **战略意义**: 拓展零售客户群 + 与Robinhood/Kalshi等新兴平台竞争
+
+## 13. 2026 Revenue Guidance
+
+- 费率调整 + 市场数据价格调整 → 预计在同等交易量下增加总收入1%-1.5%
+- Event Contracts持续扩大产品线
+- Google Cloud迁移持续推进
+
+---
+
+## 14. Items Requiring Full 10-K Access
+
+The following items could not be fully extracted due to SEC.gov 403 errors and CME website timeouts (updated 2026-03-15):
 
 1. **Clearing fee revenue by asset class in dollar terms** — Only ADV and RPC available; revenue by asset class derived (Section 1.4)
 2. **Full operating lease maturity schedule** — Need Note to Financial Statements
