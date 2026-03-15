@@ -56,7 +56,7 @@
 | KO, PG, NKE, COST, WMT, MCD, SBUX | 消费品 | 消费品 | ×1.1 |
 | AAPL, MSFT, GOOG, META, AMZN | 科技平台 | 生态科技 | ×1.1 |
 | JPM, GS, BAC, V, MA, BRK, SOFI | 金融 | 金融 | ×1.2 |
-| CPRT, ICE, MCO, SPGI, CSGP | B2B平台 | 消费品* | ×1.0 |
+| CPRT, ICE, CME, MCO, SPGI, CSGP | B2B平台 | 消费品* | ×1.0 |
 | 特斯拉, 比亚迪, 跨行业公司 | 询问用户 | — | — |
 
 *B2B平台暂用消费品worktree执行，框架见 `docs/industry/b2b_platform_deep.md`
