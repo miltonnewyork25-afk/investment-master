@@ -699,8 +699,9 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
 |------|------|
 | **框架版本** | v10.0 (DM锚定+脚本验证) |
 | **可能性宽度** | X分 → [传统/混合/发现系统] |
-| **报告不包含** | 精确目标价 · 仓位建议 · 操作触发 · 12月后数字预测 |
-| **报告包含** | 价格隐含假设 · 承重墙脆弱度 · 条件估值范围 · 追踪信号 |
+| **报告包含** | 商业模式分析 · 护城河评估 · 风险全景 · 品质评分 · Reverse DCF(市场隐含假设) |
+| **报告不含** | 目标价 · 买卖建议 · 仓位建议 · 评级 · 入场时机 · 投资组合配置 |
+| **策略参考** | 内部策略卡另行存档(不对外发布) |
 | **数据审计** | DM覆盖率X% · 锚点N个 · 详见文末审计摘要 |
 | **AI能力边界** | 深挖区(技术/供应链/周期) · 诚实区(管理层/预测/时机) |
 ```
@@ -968,6 +969,7 @@ liquidity:
   - 目标≥5个CI (ETN实测11个)
 - **护城河数据卡 (v18.5升级)**: `reports/{TICKER}/data/moat_datacard.yaml`存在 + 10个字段组已填写(v1.0的6个+v2.0的4个)。字段8-10可用`scripts/trading_datacard.py`自动填充。允许TBD但不允许文件缺失
 - **Phase 5完成后必须组装Complete报告** → 运行 `tests/quality_gate_complete.sh` → 通过后才能标记"全量完成"
+- **A/B文档分离 (v18.5新增)**: CG通过后执行 → ①从Complete提取估值/评级/策略数据生成`{TICKER}_Strategy_Card_INTERNAL.md`(模板见`docs/strategy_card_template.md`) → ②Complete报告头部改为对外版(详见`docs/ab_document_protocol.md`) → ③Strategy Card存放`reports/{TICKER}/`
 
 ### Phase 5.5: Supplement扩展协议 (v13.0新增)
 
@@ -1231,6 +1233,7 @@ Step 5: 五引擎协同 → 综合信号+论点验证
 | 4 | 偏差检查+核查≥10点+反证≥3条+维度回应100%+**纠错回流清单**+P-G≥8+R-G≥7+DM冻结+KAL全部A级已验证 |
 | 5 | KS 10-15条(9字段)+追踪信号5-8个(特异性测试)+定性评估10维度+CQ≥5个(5要素)+Reverse DCF+零操作建议 |
 | 5.5 | **Complete报告组装** → 填写`moat_datacard.yaml` → `quality_gate_complete.sh` exit 0 → 11项CG全部通过 → git commit → 才能标记"全量完成" |
+| 5.6 | **A/B文档分离** → 生成Strategy Card(`{TICKER}_Strategy_Card_INTERNAL.md`, 模板见`docs/strategy_card_template.md`) → Complete报告头部改为对外版(移除评级/期望回报, 改为品质定位) → 详见`docs/ab_document_protocol.md` |
 | 6 | **反思(飞轮)** → 写 `reports/{TICKER}/data/reflection.md` → 提取可泛化教训 → 如有框架提案则更新main的docs/ (详见 `docs/compound_learning_flywheel.md`) |
 
 ---

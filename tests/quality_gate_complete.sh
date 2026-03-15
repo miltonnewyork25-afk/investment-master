@@ -29,8 +29,10 @@
 #   CG18. 财务数据交叉验证声明 (WARN级, v5.0新增)
 #   CG19. AI腔检测 (WARN级, v7.0新增) — 检测AI写作模式(不是X而是Y/空洞过渡/伪亲密等)
 #   CG20. 护城河数据卡 (WARN级, v8.0新增/v9.0升级) — 检查moat_datacard.yaml存在+10字段组完整
+#   CG21. 入场纪律卡 (WARN级, v10.0新增) — 检查Strategy Card存在+9模块完整(A/B文档分离)
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v10.0 (2026-03-14) — CG21入场纪律卡检查(A/B文档分离: Complete对外+Strategy Card内部)
 # 更新: v9.0 (2026-03-12) — CG20升级至10字段组(v2.0交易策略预备: 估值三档+E-Score+回撤DNA+流动性)
 # 更新: v8.0 (2026-03-12) — CG20护城河数据卡检查(为CQI排行榜+跨公司产品提供结构化数据)
 # 更新: v7.0 (2026-03-10) — CG19 AI腔检测(insights报告: 用户多次手动修正AI写作模式)
@@ -622,10 +624,43 @@ else
     WARNINGS=$((WARNINGS + 1))
 fi
 
+# === CG21: 入场纪律卡(Strategy Card)检查 (v10.0新增, WARN级) ===
+# A/B文档分离: Complete(对外) + Strategy Card(内部)
+STRATEGY_CARD_PATH=""
+if [ -n "$TICKER_DIR" ]; then
+    for candidate in \
+        "$(dirname "$FILE")/${TICKER_DIR}_Strategy_Card_INTERNAL.md" \
+        "reports/${TICKER_DIR}/${TICKER_DIR}_Strategy_Card_INTERNAL.md"; do
+        if [ -f "$candidate" ]; then
+            STRATEGY_CARD_PATH="$candidate"
+            break
+        fi
+    done
+fi
+
+if [ -n "$STRATEGY_CARD_PATH" ] && [ -f "$STRATEGY_CARD_PATH" ]; then
+    # 检查9个核心模块是否存在
+    SC_MODULES=0
+    for module in "估值快照" "入场纪律" "等待期收益" "组合角色" "Kill Switch" "催化剂日历" "温水煮青蛙" "隐含赌注" "Moat Data Card"; do
+        if grep -q "$module" "$STRATEGY_CARD_PATH" 2>/dev/null; then
+            SC_MODULES=$((SC_MODULES + 1))
+        fi
+    done
+    if [ "$SC_MODULES" -ge 8 ]; then
+        echo -e "${GREEN}PASS CG21: 入场纪律卡存在 (${SC_MODULES}/9模块)${NC}"
+    else
+        echo -e "${YELLOW}WARN CG21: 入场纪律卡模块不完整 (${SC_MODULES}/9)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    echo -e "${YELLOW}WARN CG21: 入场纪律卡未找到 (${TICKER_DIR}_Strategy_Card_INTERNAL.md) — 详见docs/ab_document_protocol.md${NC}"
+    WARNINGS=$((WARNINGS + 1))
+fi
+
 # --- 汇总 ---
 echo ""
 echo "=============================================="
-echo -e " ${CYAN}Complete Quality Gate v8.0 检查完成${NC}"
+echo -e " ${CYAN}Complete Quality Gate v10.0 检查完成${NC}"
 echo "=============================================="
 echo " 文件: $(basename "$FILE")"
 echo " 总字符: ${CHARS} / 基准 ${BENCHMARK_CHARS} (地板 ${FLOOR_COMPLETE})"
