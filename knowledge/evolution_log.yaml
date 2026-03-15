@@ -554,3 +554,45 @@ entries:
     top_lesson: null  # AI填入
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "CPRT"
+    date: "2026-03-11"
+    report: "CPRT_Complete_v1.0.md"
+    chars: "355K"
+    cg_result: "PASSED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 55
+    mermaid_count: 26
+    pw: N/A
+    method: "N/A"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "CME"
+    date: "2026-03-15"
+    report: "CME_Complete_v1.0.md"
+    chars: "182K"
+    cg_result: "PASSED(0E/6W)"
+    compliance: "PASSED"
+    dm_anchors: 652
+    mermaid_count: 48
+    pw: 6
+    method: "混合"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: 3.9
+    top_technique: "Core P/E剥离法(CI-04) — 剔除$903M非经营性保证金利息暴露35.7x真实经营倍数, 跨报告首创; D1=1.18反脆弱系数全系列最严谨推导"
+    top_lesson: "E7 OI/ADV系统分析缺失是最大盲区 — ADV 5年创纪录但OI质量未验证; M6会员集中度需替代框架(交易所无合同制); 体量182K vs 300K目标(61%)是主要短板"
+    evolution_proposed: |
+      EVO-CME-001: E7 OI/ADV门控 — 交易所类公司Phase 1自动提取OI/ADV比值5年趋势 [S1, 数据预取]
+      EVO-CME-002: M6无合同替代框架 — 交易所/清算所自动切换"会员集中度+清算关系深度"替代 [S1, 框架适配]
+      EVO-CME-003: 保证金利息估值分层显式化 — 收入质量四象限→SOTP倍数映射必须显式声明 [S1, 估值流程]
+      EVO-CME-004: 国际化分析最低门控 — 国际ADV>20%时M7自动升级为必填 [S2, 覆盖完整性]
+      冠军目录待注册: CI-01影子银行留存率制度化(8.5/10) + CI-04 Core P/E 35.7x(8.0/10) [P2]
+    evolution_status: pending
+    reflection_file: "reports/CME/reflection/upgrade_roadmap.md"
