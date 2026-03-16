@@ -1,0 +1,448 @@
+
+================================================================================
+  低估股筛选排名 | 26只通过 / 1只否决 / 27只总计
+================================================================================
+    # Symbol   Name                  Comp    L1    L2    L3   F  Insider
+  --------------------------------------------------------------------------
+    1 PYPL     PayPal Holdings, Inc   7.6   7.4   7.1   8.7   8        -
+    2 QCOM     QUALCOMM Incorporate   6.9   4.6   8.6   7.4   6        -
+    3 HPQ      HP Inc.                6.8   6.4   6.9   7.2   5        -
+    4 BABA     Alibaba Group Holdin   6.5   7.1   6.4   6.0   7        -
+    5 VRSN     VeriSign, Inc.         6.4   3.7   9.8   4.6   8        -
+    6 NKE      NIKE, Inc.             6.2   4.7   7.2   6.5   4        -
+    7 MO       Altria Group, Inc.     5.9   6.4   8.8   0.7   6        -
+    8 JD       JD.com, Inc.           5.9   3.8   6.6   7.6   6        -
+    9 GM       General Motors Compa   5.9   7.5   5.9   3.5   5        -
+   10 EBAY     eBay Inc.              5.7   6.1   7.6   1.9   6        -
+   11 CI       Cigna Corporation      5.5   5.0   6.3   4.7   7        -
+   12 BMY      Bristol-Myers Squibb   5.4   5.2   8.3   1.2   8        -
+   13 T        AT&T Inc.              5.2   6.1   6.7   1.4   7        -
+   14 DIS      The Walt Disney Comp   4.9   3.6   6.7   4.1   8        -
+   15 GILD     Gilead Sciences, Inc   4.9   3.4   8.3   1.6   9        -
+   16 BTI      British American Tob   4.9   5.6   6.7   1.0   8        -
+   17 STLA     Stellantis N.V.        4.7   4.1   5.9   9.8   3        -
+   18 ALLY     Ally Financial Inc.    4.6   3.7   5.3   4.7   6        -
+   19 TEVA     Teva Pharmaceutical    4.5   1.9   6.7   4.7   8        -
+   20 PFE      Pfizer Inc.            4.4   4.6   6.4   1.0   5        -
+   21 DELL     Dell Technologies In   4.4   5.1   5.2   2.0   6        -
+   22 KHC      The Kraft Heinz Comp   4.0   3.4   6.9   5.5   5        -
+   23 WBA      Walgreens Boots Alli   3.8   4.3   7.5   1.9   6        -
+   24 CVS      CVS Health Corporati   3.6   1.9   5.9   2.1   5        -
+   25 LYB      LyondellBasell Indus   2.9   3.4   6.2   0.9   3        -
+   26 INTC     Intel Corporation      2.6   0.9   5.8   3.2   6        -
+
+  --- 否决 ---
+  ⛔ PARA     Paramount Global     | VETO: 年稀释>15%(大规模增发)
+
+
+================================================================================
+  详细信号卡片
+================================================================================
+============================================================
+  PYPL | PayPal Holdings, Inc.
+  市值: $42.0B | 行业: Financial Services
+  综合得分: 7.6/10
+============================================================
+
+  L1 可能便宜了 [7.4/10]
+    EV/EBITDA: 7.5 | PE: 10.7 | PB: 2.76
+    FCF Yield: N/A% | Shareholder Yield: 6.8%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -6.8%
+
+  L2 便宜不是陷阱 [7.1/10]
+    Accruals: -0.015 | CFO/NI: 1.23x
+    GP/Assets: 0.193 | ROIC: 15.0% | ROE: N/A%
+    Asset Growth(1Y): -1.8%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [8.7/10]
+    52周位置: 56%
+============================================================
+  QCOM | QUALCOMM Incorporated
+  市值: $138.7B | 行业: Technology
+  综合得分: 6.9/10
+============================================================
+
+  L1 可能便宜了 [4.6/10]
+    EV/EBITDA: 12.7 | PE: 32.7 | PB: 8.54
+    FCF Yield: 9.0% | Shareholder Yield: 3.9%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -1.8%
+
+  L2 便宜不是陷阱 [8.6/10]
+    Accruals: -0.169 | CFO/NI: 2.53x
+    GP/Assets: 0.490 | ROIC: 13.2% | ROE: 26.1%
+    Asset Growth(1Y): -9.1%
+    F-Score: 6/9 (roa_positive, cfo_positive, cfo_gt_ni, current_ratio_improving...)
+
+  L3 市场开始纠错 [7.4/10]
+    52周位置: 63%
+============================================================
+  HPQ | HP Inc.
+  市值: $17.4B | 行业: Technology
+  综合得分: 6.8/10
+============================================================
+
+  L1 可能便宜了 [6.4/10]
+    EV/EBITDA: 8.2 | PE: 10.4 | PB: -75.65
+    FCF Yield: 8.4% | Shareholder Yield: 3.4%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -3.4%
+
+  L2 便宜不是陷阱 [6.9/10]
+    Accruals: -0.028 | CFO/NI: 1.46x
+    GP/Assets: 0.264 | ROIC: 25.0% | ROE: N/A%
+    Asset Growth(1Y): 4.7%
+    F-Score: 5/9 (roa_positive, cfo_positive, cfo_gt_ni, current_ratio_improving...)
+
+  L3 市场开始纠错 [7.2/10]
+    52周位置: 64%
+
+  ⚠️  警告: FLAG: 负股东权益(PB<0), 回购/杠杆导致
+============================================================
+  BABA | Alibaba Group Holding Limited
+  市值: $313.6B | 行业: Consumer Cyclical
+  综合得分: 6.5/10
+============================================================
+
+  L1 可能便宜了 [7.1/10]
+    EV/EBITDA: 12.7 | PE: 17.3 | PB: 2.23
+    FCF Yield: 24.6% | Shareholder Yield: 8.2%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -6.9%
+
+  L2 便宜不是陷阱 [6.4/10]
+    Accruals: -0.019 | CFO/NI: 1.27x
+    GP/Assets: 0.220 | ROIC: 7.9% | ROE: 12.9%
+    Asset Growth(1Y): 2.4%
+    F-Score: 7/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [6.0/10]
+    52周位置: 70%
+============================================================
+  VRSN | VeriSign, Inc.
+  市值: $22.1B | 行业: Technology
+  综合得分: 6.4/10
+============================================================
+
+  L1 可能便宜了 [3.7/10]
+    EV/EBITDA: 20.4 | PE: 27.2 | PB: -10.42
+    FCF Yield: 4.5% | Shareholder Yield: 6.8%
+    Insider Buy(6m): 2笔 $0.00M | Cluster: False
+    流通股变化(1Y): -5.8%
+
+  L2 便宜不是陷阱 [9.8/10]
+    Accruals: -0.200 | CFO/NI: 1.32x
+    GP/Assets: 1.101 | ROIC: N/A% | ROE: N/A%
+    Asset Growth(1Y): -5.7%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [4.6/10]
+    52周位置: 77%
+
+  ⚠️  警告: FLAG: 负股东权益(PB<0), 回购/杠杆导致
+============================================================
+  NKE | NIKE, Inc.
+  市值: $79.8B | 行业: Consumer Cyclical
+  综合得分: 6.2/10
+============================================================
+
+  L1 可能便宜了 [4.7/10]
+    EV/EBITDA: 20.7 | PE: 27.9 | PB: 6.81
+    FCF Yield: 4.1% | Shareholder Yield: 4.7%
+    Insider Buy(6m): 4笔 $0.00M | Cluster: True
+    流通股变化(1Y): -2.2%
+
+  L2 便宜不是陷阱 [7.2/10]
+    Accruals: -0.013 | CFO/NI: 1.15x
+    GP/Assets: 0.541 | ROIC: 11.6% | ROE: 24.4%
+    Asset Growth(1Y): -4.0%
+    F-Score: 4/9 (roa_positive, cfo_positive, cfo_gt_ni, no_dilution)
+
+  L3 市场开始纠错 [6.5/10]
+    52周位置: 67%
+============================================================
+  MO | Altria Group, Inc.
+  市值: $114.0B | 行业: Consumer Defensive
+  综合得分: 5.9/10
+============================================================
+
+  L1 可能便宜了 [6.4/10]
+    EV/EBITDA: 10.9 | PE: 13.9 | PB: -27.61
+    FCF Yield: 8.0% | Shareholder Yield: 9.6%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -2.4%
+
+  L2 便宜不是陷阱 [8.8/10]
+    Accruals: -0.067 | CFO/NI: 1.34x
+    GP/Assets: 0.498 | ROIC: 43.0% | ROE: -2.0%
+    Asset Growth(1Y): -0.5%
+    F-Score: 6/9 (roa_positive, cfo_positive, cfo_gt_ni, current_ratio_improving...)
+
+  L3 市场开始纠错 [0.7/10]
+    52周位置: 96%
+
+  ⚠️  警告: FLAG: 负股东权益(PB<0), 回购/杠杆导致
+============================================================
+  JD | JD.com, Inc.
+  市值: $39.8B | 行业: Consumer Cyclical
+  综合得分: 5.9/10
+============================================================
+
+  L1 可能便宜了 [3.8/10]
+    EV/EBITDA: 19.0 | PE: 15.0 | PB: 1.27
+    FCF Yield: N/A% | Shareholder Yield: 3.4%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): N/A%
+
+  L2 便宜不是陷阱 [6.6/10]
+    Accruals: -0.056 | CFO/NI: 3.04x
+    GP/Assets: 0.292 | ROIC: 0.8% | ROE: 8.5%
+    Asset Growth(1Y): -0.4%
+    F-Score: 6/9 (roa_positive, cfo_positive, cfo_gt_ni, no_dilution...)
+
+  L3 市场开始纠错 [7.6/10]
+    52周位置: 62%
+============================================================
+  GM | General Motors Company
+  市值: $67.5B | 行业: Consumer Cyclical
+  综合得分: 5.9/10
+============================================================
+
+  L1 可能便宜了 [7.5/10]
+    EV/EBITDA: 11.6 | PE: 27.7 | PB: 1.22
+    FCF Yield: 16.6% | Shareholder Yield: 18.4%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -17.5%
+
+  L2 便宜不是陷阱 [5.9/10]
+    Accruals: -0.086 | CFO/NI: 9.96x
+    GP/Assets: 0.041 | ROIC: 1.2% | ROE: 4.4%
+    Asset Growth(1Y): 0.5%
+    F-Score: 5/9 (roa_positive, cfo_positive, cfo_gt_ni, current_ratio_improving...)
+
+  L3 市场开始纠错 [3.5/10]
+    52周位置: 83%
+============================================================
+  EBAY | eBay Inc.
+  市值: $41.3B | 行业: Consumer Cyclical
+  综合得分: 5.7/10
+============================================================
+
+  L1 可能便宜了 [6.1/10]
+    EV/EBITDA: 15.7 | PE: 19.3 | PB: 8.51
+    FCF Yield: 4.0% | Shareholder Yield: 10.4%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -9.1%
+
+  L2 便宜不是陷阱 [7.6/10]
+    Accruals: -0.009 | CFO/NI: 1.08x
+    GP/Assets: 0.450 | ROIC: 14.4% | ROE: 44.0%
+    Asset Growth(1Y): -9.1%
+    F-Score: 6/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [1.9/10]
+    52周位置: 90%
+============================================================
+  CI | Cigna Corporation
+  市值: $71.4B | 行业: Healthcare
+  综合得分: 5.5/10
+============================================================
+
+  L1 可能便宜了 [5.0/10]
+    EV/EBITDA: 8.4 | PE: 12.3 | PB: 1.75
+    FCF Yield: N/A% | Shareholder Yield: 5.1%
+    Insider Buy(6m): 1笔 $0.00M | Cluster: False
+    流通股变化(1Y): -5.1%
+
+  L2 便宜不是陷阱 [6.3/10]
+    Accruals: -0.023 | CFO/NI: 1.61x
+    GP/Assets: 0.165 | ROIC: 7.4% | ROE: 14.3%
+    Asset Growth(1Y): 1.3%
+    F-Score: 7/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [4.7/10]
+    52周位置: 76%
+============================================================
+  BMY | Bristol-Myers Squibb Company
+  市值: $120.3B | 行业: Healthcare
+  综合得分: 5.4/10
+============================================================
+
+  L1 可能便宜了 [5.2/10]
+    EV/EBITDA: 10.1 | PE: 15.6 | PB: 5.96
+    FCF Yield: 8.7% | Shareholder Yield: 3.9%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): 0.7%
+
+  L2 便宜不是陷阱 [8.3/10]
+    Accruals: -0.079 | CFO/NI: 2.01x
+    GP/Assets: 0.362 | ROIC: 13.9% | ROE: N/A%
+    Asset Growth(1Y): -2.8%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [1.2/10]
+    52周位置: 94%
+============================================================
+  T | AT&T Inc.
+  市值: $196.5B | 行业: Communication Services
+  综合得分: 5.2/10
+============================================================
+
+  L1 可能便宜了 [6.1/10]
+    EV/EBITDA: 6.1 | PE: 8.1 | PB: 1.61
+    FCF Yield: 5.8% | Shareholder Yield: 5.0%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -0.4%
+
+  L2 便宜不是陷阱 [6.7/10]
+    Accruals: -0.044 | CFO/NI: 1.84x
+    GP/Assets: 0.239 | ROIC: N/A% | ROE: N/A%
+    Asset Growth(1Y): 6.4%
+    F-Score: 7/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [1.4/10]
+    52周位置: 93%
+============================================================
+  DIS | The Walt Disney Company
+  市值: $176.1B | 行业: Communication Services
+  综合得分: 4.9/10
+============================================================
+
+  L1 可能便宜了 [3.6/10]
+    EV/EBITDA: 12.7 | PE: 16.5 | PB: 1.86
+    FCF Yield: 5.6% | Shareholder Yield: 2.0%
+    Insider Buy(6m): 1笔 $0.00M | Cluster: False
+    流通股变化(1Y): -1.2%
+
+  L2 便宜不是陷阱 [6.7/10]
+    Accruals: -0.029 | CFO/NI: 1.46x
+    GP/Assets: 0.181 | ROIC: 8.1% | ROE: 11.3%
+    Asset Growth(1Y): 0.7%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [4.1/10]
+    52周位置: 80%
+============================================================
+  GILD | Gilead Sciences, Inc.
+  市值: $180.0B | 行业: Healthcare
+  综合得分: 4.9/10
+============================================================
+
+  L1 可能便宜了 [3.4/10]
+    EV/EBITDA: 15.7 | PE: 17.9 | PB: 6.75
+    FCF Yield: N/A% | Shareholder Yield: 0.2%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -0.2%
+
+  L2 便宜不是陷阱 [8.3/10]
+    Accruals: -0.026 | CFO/NI: 1.18x
+    GP/Assets: 0.432 | ROIC: 21.7% | ROE: N/A%
+    Asset Growth(1Y): 0.0%
+    F-Score: 9/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [1.6/10]
+    52周位置: 92%
+============================================================
+  BTI | British American Tobacco p.l.c.
+  市值: $130.3B | 行业: Consumer Defensive
+  综合得分: 4.9/10
+============================================================
+
+  L1 可能便宜了 [5.6/10]
+    EV/EBITDA: 10.5 | PE: 11.8 | PB: 1.92
+    FCF Yield: 4.4% | Shareholder Yield: 6.8%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -1.2%
+
+  L2 便宜不是陷阱 [6.7/10]
+    Accruals: 0.013 | CFO/NI: 0.82x
+    GP/Assets: 0.196 | ROIC: 8.0% | ROE: 16.2%
+    Asset Growth(1Y): -8.1%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, debt_decreasing...)
+
+  L3 市场开始纠错 [1.0/10]
+    52周位置: 95%
+============================================================
+  STLA | Stellantis N.V.
+  市值: $18.8B | 行业: Consumer Cyclical
+  综合得分: 4.7/10
+============================================================
+
+  L1 可能便宜了 [4.1/10]
+    EV/EBITDA: -2.3 | PE: -1.2 | PB: 0.50
+    FCF Yield: -29.7% | Shareholder Yield: 9.5%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -2.2%
+
+  L2 便宜不是陷阱 [5.9/10]
+    Accruals: -0.091 | CFO/NI: 0.21x
+    GP/Assets: -0.011 | ROIC: -20.1% | ROE: N/A%
+    Asset Growth(1Y): -6.0%
+    F-Score: 3/9 (cfo_gt_ni, no_dilution, asset_turnover_improving)
+
+  L3 市场开始纠错 [9.8/10]
+    52周位置: 51%
+
+  ⚠️  警告: FLAG: F-Score=3/9(财务体质弱); FLAG: 当前亏损(PE<0); FLAG: ROIC=-20.1%(严重亏损)
+============================================================
+  ALLY | Ally Financial Inc.
+  市值: $11.2B | 行业: Financial Services
+  综合得分: 4.6/10
+============================================================
+
+  L1 可能便宜了 [3.7/10]
+    EV/EBITDA: 10.5 | PE: 16.5 | PB: 0.91
+    FCF Yield: N/A% | Shareholder Yield: 2.2%
+    Insider Buy(6m): 2笔 $0.00M | Cluster: False
+    流通股变化(1Y): 1.3%
+
+  L2 便宜不是陷阱 [5.3/10]
+    Accruals: -0.014 | CFO/NI: 4.26x
+    GP/Assets: 0.032 | ROIC: N/A% | ROE: 5.5%
+    Asset Growth(1Y): 2.2%
+    F-Score: 6/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [4.7/10]
+    52周位置: 76%
+============================================================
+  TEVA | Teva Pharmaceutical Industries Limited
+  市值: $33.3B | 行业: Healthcare
+  综合得分: 4.5/10
+============================================================
+
+  L1 可能便宜了 [1.9/10]
+    EV/EBITDA: 15.8 | PE: 25.4 | PB: 4.53
+    FCF Yield: 2.3% | Shareholder Yield: -1.6%
+    Insider Buy(6m): 1笔 $0.00M | Cluster: False
+    流通股变化(1Y): 1.6%
+
+  L2 便宜不是陷阱 [6.7/10]
+    Accruals: -0.006 | CFO/NI: 1.17x
+    GP/Assets: 0.219 | ROIC: N/A% | ROE: N/A%
+    Asset Growth(1Y): 3.6%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [4.7/10]
+    52周位置: 76%
+============================================================
+  PFE | Pfizer Inc.
+  市值: $151.3B | 行业: Healthcare
+  综合得分: 4.4/10
+============================================================
+
+  L1 可能便宜了 [4.6/10]
+    EV/EBITDA: 13.8 | PE: 18.2 | PB: 1.64
+    FCF Yield: 6.0% | Shareholder Yield: 6.6%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): 0.3%
+
+  L2 便宜不是陷阱 [6.4/10]
+    Accruals: -0.019 | CFO/NI: 1.51x
+    GP/Assets: 0.211 | ROIC: 8.8% | ROE: 9.0%
+    Asset Growth(1Y): -2.5%
+    F-Score: 5/9 (roa_positive, cfo_positive, cfo_gt_ni, gross_margin_improving...)
+
+  L3 市场开始纠错 [1.0/10]
+    52周位置: 95%
