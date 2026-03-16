@@ -64,21 +64,21 @@
 
   含义: 可能是价值陷阱，也可能是CQI尚未覆盖的好公司。需要进一步研究。
 
+  PGR    筛选=6.7 L1=5.7 L2=8.0 F=7   Financial Services
   PYPL   筛选=6.7 L1=8.0 L2=7.1 F=8   Financial Services
   VRSN   筛选=6.6 L1=4.1 L2=9.8 F=8   Technology
   CMCSA  筛选=6.5 L1=7.4 L2=7.0 F=8   Communication Services
   QCOM   筛选=6.4 L1=3.6 L2=8.6 F=6   Technology
   HPQ    筛选=6.4 L1=4.9 L2=6.9 F=5   Technology
+  NEM    筛选=6.4 L1=6.1 L2=7.5 F=9   Basic Materials
   CI     筛选=6.3 L1=6.0 L2=6.3 F=7   Healthcare
   BMY    筛选=6.2 L1=6.4 L2=8.3 F=8   Healthcare
   BABA   筛选=6.2 L1=7.0 L2=6.4 F=7   Consumer Cyclical
+  CTSH   筛选=6.2 L1=5.4 L2=6.8 F=6   Technology
   MO     筛选=6.1 L1=5.8 L2=8.8 F=6   Consumer Defensive
+  UNH    筛选=6.0 L1=2.9 L2=6.3 F=6   Healthcare
   NKE    筛选=6.0 L1=5.1 L2=7.2 F=4   Consumer Cyclical
   DIS    筛选=5.9 L1=4.5 L2=6.7 F=8   Communication Services
-  GILD   筛选=5.8 L1=3.1 L2=8.3 F=9   Healthcare
-  EBAY   筛选=5.7 L1=3.5 L2=7.6 F=6   Consumer Cyclical
-  DELL   筛选=5.2 L1=4.3 L2=5.2 F=6   Technology
-  GM     筛选=5.1 L1=4.7 L2=5.9 F=5   Consumer Cyclical
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   四、关键洞见
@@ -89,10 +89,10 @@
 
   2. 覆盖统计:
      CQI覆盖: 39家
-     筛选通过: 80家
+     筛选通过: 159家
      交叉重叠: 39家
      高品质不便宜: 0家
-     便宜品质未知: 41家
+     便宜品质未知: 120家
 
   3. 交叉中护城河在加强的: CPRT, AMZN, KLAC, GOOGL, COST, ETN, ANET, PLTR, VRT, HLT, RCL
      → 品质在变好+可能便宜 = 最值得研究

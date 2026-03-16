@@ -1,0 +1,245 @@
+{
+  "symbol": "UNH",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "UNH",
+    "price": 282.09,
+    "marketCap": 256046277424,
+    "beta": 0.38,
+    "lastDividend": 8.84,
+    "range": "234.6-606.36",
+    "companyName": "UnitedHealth Group Incorporated",
+    "currency": "USD",
+    "exchange": "NYSE",
+    "industry": "Medical - Healthcare Plans",
+    "ceo": "Stephen J. Hemsley",
+    "sector": "Healthcare",
+    "country": "US",
+    "fullTimeEmployees": "400000",
+    "ipoDate": "1984-10-17",
+    "isActivelyTrading": true
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "symbol": "UNH",
+      "fiscalYear": "2025",
+      "period": "FY",
+      "revenue": 447567000000,
+      "grossProfit": 82917000000,
+      "operatingIncome": 18964000000,
+      "ebitda": 23060000000,
+      "netIncome": 12056000000,
+      "eps": 13.23,
+      "epsDiluted": 13.23,
+      "interestExpense": 4002000000,
+      "depreciationAndAmortization": 4361000000
+    },
+    {
+      "date": "2024-12-31",
+      "symbol": "UNH",
+      "fiscalYear": "2024",
+      "period": "FY",
+      "revenue": 400278000000,
+      "grossProfit": 89399000000,
+      "operatingIncome": 32287000000,
+      "ebitda": 28076000000,
+      "netIncome": 14405000000,
+      "eps": 15.64,
+      "epsDiluted": 15.51,
+      "interestExpense": 3906000000
+    },
+    {
+      "date": "2023-12-31",
+      "symbol": "UNH",
+      "fiscalYear": "2023",
+      "period": "FY",
+      "revenue": 371622000000,
+      "grossProfit": 90958000000,
+      "operatingIncome": 32358000000,
+      "ebitda": 36330000000,
+      "netIncome": 22381000000,
+      "eps": 24.12,
+      "epsDiluted": 23.86,
+      "interestExpense": 3246000000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "symbol": "UNH",
+      "fiscalYear": "2025",
+      "cashAndCashEquivalents": 24365000000,
+      "totalAssets": 309581000000,
+      "totalLiabilities": 207883000000,
+      "totalStockholdersEquity": 94110000000,
+      "totalDebt": 78389000000,
+      "netDebt": 54024000000,
+      "goodwill": 110499000000
+    },
+    {
+      "date": "2024-12-31",
+      "symbol": "UNH",
+      "fiscalYear": "2024",
+      "cashAndCashEquivalents": 25312000000,
+      "totalAssets": 298278000000,
+      "totalLiabilities": 195687000000,
+      "totalStockholdersEquity": 92658000000,
+      "totalDebt": 76904000000,
+      "netDebt": 51592000000
+    },
+    {
+      "date": "2023-12-31",
+      "symbol": "UNH",
+      "fiscalYear": "2023",
+      "cashAndCashEquivalents": 25427000000,
+      "totalAssets": 273720000000,
+      "totalLiabilities": 174801000000,
+      "totalStockholdersEquity": 88756000000,
+      "totalDebt": 67435000000,
+      "netDebt": 42008000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "symbol": "UNH",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 19697000000,
+      "capitalExpenditure": -3622000000,
+      "freeCashFlow": 16075000000,
+      "commonStockRepurchased": -5545000000,
+      "commonDividendsPaid": -7916000000
+    },
+    {
+      "date": "2024-12-31",
+      "symbol": "UNH",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 24204000000,
+      "capitalExpenditure": -3499000000,
+      "freeCashFlow": 20705000000,
+      "commonStockRepurchased": -9000000000,
+      "commonDividendsPaid": -7533000000
+    },
+    {
+      "date": "2023-12-31",
+      "symbol": "UNH",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 29068000000,
+      "capitalExpenditure": -3386000000,
+      "freeCashFlow": 25682000000,
+      "commonStockRepurchased": -8000000000,
+      "commonDividendsPaid": -6761000000
+    }
+  ],
+  "ratios": [
+    {
+      "symbol": "UNH",
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.185,
+      "operatingProfitMargin": 0.042,
+      "netProfitMargin": 0.027,
+      "returnOnEquity": 0.128,
+      "currentRatio": 0.788,
+      "priceToEarningsRatio": 24.92,
+      "dividendYield": 0.0264,
+      "interestCoverageRatio": 4.74
+    },
+    {
+      "symbol": "UNH",
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.223,
+      "operatingProfitMargin": 0.081,
+      "netProfitMargin": 0.036,
+      "returnOnEquity": 0.155,
+      "currentRatio": 0.827,
+      "priceToEarningsRatio": 32.62,
+      "dividendYield": 0.016,
+      "interestCoverageRatio": 8.27
+    },
+    {
+      "symbol": "UNH",
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "grossProfitMargin": 0.245,
+      "operatingProfitMargin": 0.087,
+      "netProfitMargin": 0.06,
+      "returnOnEquity": 0.252,
+      "currentRatio": 0.792,
+      "priceToEarningsRatio": 21.83,
+      "dividendYield": 0.0138,
+      "interestCoverageRatio": 9.97
+    }
+  ],
+  "key_metrics": [
+    {
+      "symbol": "UNH",
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "marketCap": 300400100000,
+      "enterpriseValue": 354424100000,
+      "evToEBITDA": 15.37,
+      "returnOnEquity": 0.128,
+      "returnOnInvestedCapital": 0.082,
+      "freeCashFlowYield": 0.0535
+    },
+    {
+      "symbol": "UNH",
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "marketCap": 469943940000,
+      "enterpriseValue": 521535940000,
+      "evToEBITDA": 18.58,
+      "returnOnEquity": 0.155,
+      "returnOnInvestedCapital": 0.123,
+      "freeCashFlowYield": 0.0441
+    },
+    {
+      "symbol": "UNH",
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "marketCap": 488564160000,
+      "enterpriseValue": 530572160000,
+      "evToEBITDA": 14.6,
+      "returnOnEquity": 0.252,
+      "returnOnInvestedCapital": 0.143,
+      "freeCashFlowYield": 0.0526
+    }
+  ],
+  "insider_trades": [
+    {
+      "symbol": "UNH",
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 0
+    },
+    {
+      "symbol": "UNH",
+      "year": 2025,
+      "quarter": 2,
+      "totalPurchases": 5,
+      "totalSales": 1
+    },
+    {
+      "symbol": "UNH",
+      "year": 2025,
+      "quarter": 1,
+      "totalPurchases": 1,
+      "totalSales": 0
+    }
+  ],
+  "quote": {
+    "symbol": "UNH",
+    "price": 282.09,
+    "marketCap": 256046277424,
+    "yearHigh": 606.36,
+    "yearLow": 234.6,
+    "priceAvg50": 304.22,
+    "priceAvg200": 314.68,
+    "exchange": "NYSE",
+    "previousClose": 277.05
+  }
+}
