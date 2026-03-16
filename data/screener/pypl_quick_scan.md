@@ -54,13 +54,16 @@
 - 增速1%意味着品牌结账正在被替代(Apple Pay/Google Pay)
 - 管理层归因于"美国零售疲软"和"德国竞争"，但结构性因素也在
 
-### Q3: CEO变更
+### Q3: CEO变更 (已确认)
 
-**Alex Chriss已离任** — 搜索结果显示"transition year flops as CEO Chriss departs"
+**Alex Chriss被解雇(2026.02.03)** → Enrique Lores(前HP CEO) 2026.03.01就任
 
-这是重大变量：
-- Chriss做了正确的事(SBC压缩/回购/成本纪律)但branded checkout未见起色
-- 新CEO人选和战略方向将决定下一阶段
+- Chriss任期(2023.09-2026.02): SBC从5%→3%, 回购加速, Fastlane/PPCP推出
+- 被解雇直接原因: Branded checkout增速从7%骤降到1%, FY2025收入仅+4.3%
+- 董事会: "The pace of change and execution did not meet the board's expectations"
+- 股价反应: 当日**-19%**
+- **Stripe收购传闻(2026.03)**: Stripe探索收购PayPal商户资产甚至完整合并, 如果发生=重大催化剂
+- Lores的背景(硬件CEO)是否适合支付平台？存疑
 
 ### Q4: Braintree策略转向
 
@@ -135,10 +138,18 @@ PYPL是一个"利润在涨但市场不信"的经典错杀候选。PE 8x + FCF 13
 
 建议:
 - 放入"深度价值观察名单"
-- 等待条件: (1)新CEO确认 (2)Branded checkout连续2季度>3%增速
+- 等待条件: (1)Lores首次investor day(确认战略方向)
+                (2)Branded checkout连续2季度>3%增速
                 (3)Transaction margin dollars同比正增长
-- 如果条件满足 → 启动Tier 2标准分析
-- 如果Branded继续<2% → 从观察名单移除
+- 额外催化剂: Stripe收购传闻如果实质化 → 重估所有假设
+- 如果Branded继续<2%且Stripe传闻消退 → 从观察名单移除
+
+附加数据(竞争格局Agent):
+- Take rate差距: Branded 2.25% vs Braintree 0.30%(7.5x) → Branded=利润命脉
+- 账户439M停滞, 交易频次-4.79%(casual用户流失), 单笔金额+10.8%
+- Apple Pay online 14% vs PayPal 47% — 差距在缩小但PayPal仍领先
+- Venmo MAU 6700万(+7%), 收入$1.7B(+20%), Pay with Venmo TPV +32%
+- Braintree正主动提价(放弃低利润量), 符合"质>量"转型方向
 
 CQI预评估: 不适合加入CQI(竞争壁垒在弱化, 非制度垄断型)
 ```
