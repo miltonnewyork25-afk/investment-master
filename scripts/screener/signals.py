@@ -24,12 +24,18 @@ from typing import Optional
 @dataclass
 class L1Signals:
     """Layer 1: 可能便宜了"""
-    # Valuation
+    # Valuation (absolute)
     ev_ebit: Optional[float] = None           # 越低越好, <15好
     fcf_yield: Optional[float] = None         # 越高越好, >5%好
     pe_ttm: Optional[float] = None
     pb: Optional[float] = None
     shareholder_yield: Optional[float] = None # dividend + buyback + debt paydown
+
+    # Valuation (self-relative) — 比绝对阈值更重要
+    pe_percentile_10y: Optional[float] = None     # 当前PE在10年PE分布中的百分位(0=历史最低, 100=最高)
+    ev_ebitda_percentile_10y: Optional[float] = None  # EV/EBITDA 10年百分位
+    pe_vs_median: Optional[float] = None          # 当前PE / 10年中位PE - 1 (负=便宜)
+    pe_median_10y: Optional[float] = None         # 10年中位PE (参考)
 
     # Insider Buy
     insider_buy_count_6m: int = 0             # 近6月买入笔数
@@ -144,6 +150,12 @@ class L5Signals:
     # Management Change Catalyst
     new_ceo_within_2y: bool = False                  # 新CEO上任<2年
     new_strategy_signal: bool = False                # 战略转型信号
+
+    # Deleveraging Trend
+    net_debt_ebitda_now: Optional[float] = None      # 当前Net Debt/EBITDA
+    net_debt_ebitda_3y_ago: Optional[float] = None   # 3年前Net Debt/EBITDA
+    deleveraging_rate: Optional[float] = None        # 年化去杠杆速度(负=去杠杆)
+    interest_coverage_trend: Optional[float] = None  # EBIT/Interest变化方向(正=改善)
 
     score: Optional[float] = None
 
@@ -280,15 +292,29 @@ def _normalize(value: float, low: float, high: float, invert: bool = False) -> f
 
 def score_l1(s: L1Signals) -> float:
     """
-    Layer 1 composite: 估值 + Insider + 回购
-    v1.2: 动态权重 — 有insider时25%, 无insider时权重转给估值+回购
-    v1.2: 更陡峭的估值曲线 — EV/EBITDA<10和PE<12区间奖励更大
+    Layer 1 composite: 自身历史相对估值 + 绝对估值 + Insider + 回购
+    v2.0: 自身历史百分位权重最高(35%) — PE在自己10年分布中的位置比绝对PE更重要
     """
     scores = []
     weights = []
 
-    # --- Valuation sub-score ---
-    # 更陡峭的归一化: EV/EBITDA 3-20 (not 5-30), PE 5-25 (not 5-40)
+    # --- Self-Relative Valuation (35%) — 最重要的估值信号 ---
+    # 在自己的10年历史中处于什么位置？低百分位=历史性便宜
+    self_rel_scores = []
+    if s.pe_percentile_10y is not None:
+        # 百分位0-100, 低=便宜. 20百分位 = 历史仅20%时间更便宜
+        self_rel_scores.append(_normalize(s.pe_percentile_10y, 0, 100, invert=True))
+    if s.ev_ebitda_percentile_10y is not None:
+        self_rel_scores.append(_normalize(s.ev_ebitda_percentile_10y, 0, 100, invert=True))
+    if s.pe_vs_median is not None:
+        # pe_vs_median: -0.5 = 比中位便宜50%, 0 = 中位, +0.5 = 贵50%
+        self_rel_scores.append(_normalize(s.pe_vs_median, -0.6, 0.4, invert=True))
+
+    if self_rel_scores:
+        scores.append(sum(self_rel_scores) / len(self_rel_scores))
+        weights.append(0.35)
+
+    # --- Absolute Valuation (25-30%) ---
     val_scores = []
     if s.ev_ebit is not None and s.ev_ebit > 0:
         val_scores.append(_normalize(s.ev_ebit, 3, 20, invert=True))
@@ -300,30 +326,32 @@ def score_l1(s: L1Signals) -> float:
         val_scores.append(_normalize(s.shareholder_yield, -2, 12, invert=False))
 
     has_insider = s.insider_buy_count_6m > 0
+    # 有自身历史数据时绝对估值降权; 无历史数据时绝对估值升权
+    has_self_rel = len(self_rel_scores) > 0
 
     if val_scores:
         scores.append(sum(val_scores) / len(val_scores))
-        weights.append(0.50 if not has_insider else 0.40)
+        weights.append(0.25 if has_self_rel else 0.50)
 
-    # --- Insider sub-score (动态权重: 有买入=25%, 无买入=0%→给估值和回购) ---
+    # --- Insider sub-score (20%) ---
     if has_insider:
         count_s = min(s.insider_buy_count_6m / 5.0, 1.0) * 6
         cluster_s = 3.0 if s.insider_cluster else 0.0
         post_drop_s = 1.0 if s.insider_post_drop else 0.0
         insider_score = min(count_s + cluster_s + post_drop_s, 10.0)
         scores.append(insider_score)
-        weights.append(0.25)
+        weights.append(0.20)
 
-    # --- Buyback/Shrink sub-score ---
+    # --- Buyback/Shrink sub-score (15-20%) ---
     bb_score = 5.0
     if s.shares_change_1y is not None:
         bb_score = _normalize(s.shares_change_1y, -10, 10, invert=True)
         if s.buyback_debt_funded:
             bb_score *= 0.5
     scores.append(bb_score)
-    weights.append(0.25 if not has_insider else 0.20)
+    weights.append(0.15 if has_insider else 0.20)
 
-    # --- Negative valuation penalty: 负EV/EBITDA或负PE = 确实亏损, 估值无意义 ---
+    # --- Negative valuation penalty ---
     if s.ev_ebit is not None and s.ev_ebit < 0:
         scores.append(1.0)
         weights.append(0.15)
@@ -527,31 +555,39 @@ def score_l4(s: L4Signals) -> float:
 def score_l5(s: L5Signals) -> float:
     """
     Layer 5: 逆转拐点
-    收入加速25% + 利润率反转25% + Insider增强20% + 分析师上修15% + 管理层变更15%
+    收入加速20% + 利润率反转20% + 去杠杆15% + Insider15% + 分析师上修15% + 管理层变更15%
     """
     scores = []
     weights = []
 
-    # --- Revenue Acceleration (25%) ---
+    # --- Revenue Acceleration (20%) ---
     if s.rev_acceleration is not None:
-        # acceleration = recent_2q - prior_4q growth rate difference
         scores.append(_normalize(s.rev_acceleration, -10, 15, invert=False))
-        weights.append(0.25)
+        weights.append(0.20)
 
-    # --- Margin Reversal (25%) ---
+    # --- Margin Reversal (20%) ---
     if s.opm_inflection is not None:
-        # positive = margins turning up
         scores.append(_normalize(s.opm_inflection, -5, 5, invert=False))
-        weights.append(0.25)
+        weights.append(0.20)
 
-    # --- Enhanced Insider (20%) ---
-    insider_score = 5.0  # neutral
+    # --- Deleveraging Trend (15%) ---
+    delev_score = 5.0  # neutral
+    if s.deleveraging_rate is not None:
+        # 负=去杠杆(好). -1.0x/yr=很强去杠杆, +0.5=加杠杆(差)
+        delev_score = _normalize(s.deleveraging_rate, -1.5, 0.5, invert=True)
+    if s.interest_coverage_trend is not None and s.interest_coverage_trend > 0:
+        delev_score = min(delev_score + 1.5, 10.0)  # 利息覆盖率改善=加分
+    scores.append(delev_score)
+    weights.append(0.15)
+
+    # --- Enhanced Insider (15%) ---
+    insider_score = 5.0
     if s.insider_buy_large:
         insider_score += 2.5
     if s.insider_multiple_roles:
         insider_score += 2.5
     scores.append(min(insider_score, 10.0))
-    weights.append(0.20)
+    weights.append(0.15)
 
     # --- Analyst Upgrade (15%) ---
     if s.eps_revision_3m_pct is not None:
@@ -916,11 +952,17 @@ def extract_signals_from_fmp(
     if estimates and len(estimates) > 0:
         result.l3.analyst_coverage_count = estimates[0].get('numAnalystsEps')
 
+    # --- L1 Enhanced: Self-Relative Valuation (from 10Y ratios) ---
+    _extract_l1_self_relative(result, ratios_10y, key_metrics_10y)
+
     # --- L4: 品质护城河 (from 10Y annual data) ---
     _extract_l4(result, income_10y, ratios_10y, cashflow_10y, key_metrics_10y, income, cashflow, key_metrics)
 
     # --- L5: 逆转拐点 (from quarterly data) ---
     _extract_l5(result, income_quarterly, ratios_quarterly, earnings_surprises, estimates)
+
+    # --- L5 Enhanced: Deleveraging Trend (from 10Y balance/income) ---
+    _extract_l5_deleveraging(result, income_10y, balance, key_metrics_10y)
 
     # --- L5: Management signals (manually curated) ---
     mgmt = profile.get('_mgmt_signals', {})
@@ -932,6 +974,91 @@ def extract_signals_from_fmp(
         result.l5.new_strategy_signal = mgmt.get('new_strategy_signal', False)
 
     return result
+
+
+def _percentile(value: float, historical: list[float]) -> float:
+    """Calculate what percentile `value` falls in within `historical`. Returns 0-100."""
+    if not historical:
+        return 50.0
+    below = sum(1 for h in historical if h < value)
+    return (below / len(historical)) * 100
+
+
+def _extract_l1_self_relative(
+    result: StockScreenResult,
+    ratios_10y: list[dict],
+    key_metrics_10y: list[dict],
+):
+    """Extract self-relative valuation from 10-year PE/EV-EBITDA history."""
+    s = result.l1
+
+    # --- PE percentile ---
+    if ratios_10y and len(ratios_10y) >= 3:
+        pe_history = []
+        for r in ratios_10y:
+            pe = r.get('priceToEarningsRatio') or r.get('priceEarningsRatio')
+            if pe is not None and 0 < pe < 200:  # filter outliers
+                pe_history.append(pe)
+
+        if pe_history and s.pe_ttm is not None and s.pe_ttm > 0:
+            s.pe_percentile_10y = _percentile(s.pe_ttm, pe_history)
+            median_pe = sorted(pe_history)[len(pe_history) // 2]
+            s.pe_median_10y = median_pe
+            s.pe_vs_median = (s.pe_ttm / median_pe) - 1 if median_pe > 0 else None
+
+    # --- EV/EBITDA percentile ---
+    if key_metrics_10y and len(key_metrics_10y) >= 3:
+        ev_history = []
+        for km in key_metrics_10y:
+            ev_ebitda = km.get('evToEBITDA') or km.get('enterpriseValueOverEBITDA')
+            if ev_ebitda is not None and 0 < ev_ebitda < 100:
+                ev_history.append(ev_ebitda)
+
+        if ev_history and s.ev_ebit is not None and s.ev_ebit > 0:
+            s.ev_ebitda_percentile_10y = _percentile(s.ev_ebit, ev_history)
+
+
+def _extract_l5_deleveraging(
+    result: StockScreenResult,
+    income_10y: list[dict],
+    balance: list[dict],
+    key_metrics_10y: list[dict],
+):
+    """Extract deleveraging trend signals."""
+    s = result.l5
+
+    if not key_metrics_10y or len(key_metrics_10y) < 3:
+        return
+
+    # Net Debt / EBITDA trend
+    nd_ebitda_series = []
+    for km in key_metrics_10y:
+        nd = km.get('netDebtToEBITDA') or km.get('netDebt')
+        ebitda = km.get('ebitda') or km.get('enterpriseValue')
+        # Try netDebtToEBITDA directly first
+        ratio = km.get('netDebtToEBITDA')
+        if ratio is not None:
+            nd_ebitda_series.append(ratio)
+
+    if len(nd_ebitda_series) >= 3:
+        s.net_debt_ebitda_now = nd_ebitda_series[0]
+        if len(nd_ebitda_series) >= 4:
+            s.net_debt_ebitda_3y_ago = nd_ebitda_series[3]
+            if s.net_debt_ebitda_3y_ago is not None and s.net_debt_ebitda_3y_ago != 0:
+                s.deleveraging_rate = (s.net_debt_ebitda_now - s.net_debt_ebitda_3y_ago) / 3.0
+
+    # Interest Coverage trend (EBIT / Interest Expense)
+    if income_10y and len(income_10y) >= 3:
+        ic_series = []
+        for inc in income_10y[:5]:  # recent 5 years
+            ebit = inc.get('operatingIncome', 0)
+            interest = inc.get('interestExpense', 0)
+            if interest and interest != 0 and ebit:
+                ic_series.append(abs(ebit / interest))
+
+        if len(ic_series) >= 2:
+            # Positive slope = improving coverage
+            s.interest_coverage_trend = _linear_slope(list(reversed(ic_series)))
 
 
 def _extract_l4(
