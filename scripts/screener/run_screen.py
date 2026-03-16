@@ -46,6 +46,12 @@ def process_single(data: dict, stage2: bool = False, qrs: float = 0.15) -> Stock
         profile = {}
     if 'mgmt_signals' in data:
         profile['_mgmt_signals'] = data['mgmt_signals']
+    # Normalize quote: may be list or dict
+    quote = data.get('quote', {})
+    if isinstance(quote, list) and len(quote) > 0:
+        quote = quote[0]
+    if not isinstance(quote, dict):
+        quote = {}
     result = extract_signals_from_fmp(
         profile=profile,
         income=data.get('income', []),
@@ -54,7 +60,7 @@ def process_single(data: dict, stage2: bool = False, qrs: float = 0.15) -> Stock
         ratios=data.get('ratios', []),
         key_metrics=data.get('key_metrics', []),
         insider_trades=data.get('insider_trades', []),
-        quote=data.get('quote', {}),
+        quote=quote,
         earnings_surprises=data.get('earnings_surprises', []),
         estimates=data.get('estimates', []),
         # Stage 2 extended data
