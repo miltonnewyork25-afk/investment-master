@@ -568,5 +568,9 @@
     "open": 45.95,
     "previousClose": 45.25,
     "timestamp": 1773432003
+  },
+  "mgmt_signals": {
+    "new_ceo_within_2y": true,
+    "new_strategy_signal": true
   }
 }

@@ -88,6 +88,66 @@ class L3Signals:
     score: Optional[float] = None
 
 @dataclass
+class L4Signals:
+    """Layer 4: 品质护城河 (CQI-Lite, 阶段2深筛)"""
+    # Pricing Power Proxy
+    gross_margin_10y_slope: Optional[float] = None   # 10年GM线性回归斜率, 正=定价权
+    gross_margin_latest: Optional[float] = None      # 最新GM%
+    gross_margin_stability: Optional[float] = None   # GM标准差, 低=稳定
+
+    # Revenue Recurring / Durability
+    revenue_volatility_10y: Optional[float] = None   # 收入YoY增速标准差, 低=经常性
+    revenue_cagr_10y: Optional[float] = None         # 10年收入CAGR
+    revenue_cagr_3y: Optional[float] = None          # 3年收入CAGR (加速/减速)
+
+    # Capital Efficiency
+    roic_5y_mean: Optional[float] = None             # 5年ROIC均值
+    roic_trend: Optional[float] = None               # ROIC趋势(正=改善)
+    sbc_revenue_pct: Optional[float] = None          # SBC/Revenue, 低=纪律
+
+    # Buyback Discipline
+    shares_change_5y: Optional[float] = None         # 5年净股数变化%, 负=缩股
+    fcf_conversion: Optional[float] = None           # FCF/NI均值, >1=高质量
+
+    # Anti-Cyclical (D1 Proxy)
+    revenue_drop_2020: Optional[float] = None        # 2020收入vs2019, 负=受冲击
+    revenue_drop_2022: Optional[float] = None        # 2022收入vs2021, 负=受紧缩
+    max_revenue_drop_10y: Optional[float] = None     # 10年内最大年度收入下降%
+
+    # Growth Durability
+    positive_growth_years: Optional[int] = None      # 10年中收入正增长的年数
+    growth_acceleration: Optional[float] = None      # 3Y CAGR - 10Y CAGR, 正=加速
+
+    score: Optional[float] = None
+
+@dataclass
+class L5Signals:
+    """Layer 5: 逆转拐点 (阶段2深筛)"""
+    # Revenue Acceleration
+    rev_growth_recent_2q: Optional[float] = None     # 最近2季度收入增速均值
+    rev_growth_prior_4q: Optional[float] = None      # 前4季度收入增速均值
+    rev_acceleration: Optional[float] = None         # recent - prior, 正=加速
+
+    # Margin Reversal
+    opm_recent_2q: Optional[float] = None            # 最近2季度OPM均值
+    opm_prior_4q: Optional[float] = None             # 前4季度OPM均值
+    opm_inflection: Optional[float] = None           # OPM变化方向, 正=反转向上
+
+    # Insider Cluster (enhanced)
+    insider_buy_large: bool = False                  # 单笔>$500K
+    insider_multiple_roles: bool = False             # CEO+CFO+Director多角色买入
+
+    # Analyst Upgrade Cycle
+    eps_revision_3m_pct: Optional[float] = None      # 3月EPS预测上修%
+    recommendation_trend: Optional[float] = None     # 分析师评级变化方向
+
+    # Management Change Catalyst
+    new_ceo_within_2y: bool = False                  # 新CEO上任<2年
+    new_strategy_signal: bool = False                # 战略转型信号
+
+    score: Optional[float] = None
+
+@dataclass
 class StockScreenResult:
     symbol: str
     name: str = ""
@@ -96,7 +156,10 @@ class StockScreenResult:
     l1: L1Signals = field(default_factory=L1Signals)
     l2: L2Signals = field(default_factory=L2Signals)
     l3: L3Signals = field(default_factory=L3Signals)
+    l4: L4Signals = field(default_factory=L4Signals)
+    l5: L5Signals = field(default_factory=L5Signals)
     composite_score: Optional[float] = None
+    stage2_score: Optional[float] = None   # 阶段2深筛得分
     vetoes: list = field(default_factory=list)   # 硬否决原因
     flags: list = field(default_factory=list)    # 软警告
 
@@ -353,6 +416,163 @@ def score_l3(s: L3Signals) -> float:
 
 
 # ============================================================
+# L4 Scoring: 品质护城河 (CQI-Lite)
+# ============================================================
+
+def _linear_slope(values: list[float]) -> float:
+    """Simple linear regression slope over index 0..n-1."""
+    n = len(values)
+    if n < 3:
+        return 0.0
+    x_mean = (n - 1) / 2
+    y_mean = sum(values) / n
+    num = sum((i - x_mean) * (v - y_mean) for i, v in enumerate(values))
+    den = sum((i - x_mean) ** 2 for i in range(n))
+    return num / den if den != 0 else 0.0
+
+
+def _cagr(start: float, end: float, years: float) -> Optional[float]:
+    """Compound annual growth rate."""
+    if start <= 0 or end <= 0 or years <= 0:
+        return None
+    return ((end / start) ** (1.0 / years) - 1) * 100
+
+
+def _stdev(values: list[float]) -> float:
+    """Population standard deviation."""
+    if len(values) < 2:
+        return 0.0
+    mean = sum(values) / len(values)
+    return (sum((v - mean) ** 2 for v in values) / len(values)) ** 0.5
+
+
+def score_l4(s: L4Signals) -> float:
+    """
+    Layer 4: 品质护城河 (CQI-Lite)
+    定价权30% + 经常性/持久性20% + 资本效率20% + 反周期15% + 增长持久15%
+    """
+    scores = []
+    weights = []
+
+    # --- Pricing Power (30%) ---
+    pp_scores = []
+    if s.gross_margin_latest is not None:
+        pp_scores.append(_normalize(s.gross_margin_latest, 10, 80, invert=False))
+    if s.gross_margin_10y_slope is not None:
+        # Slope: positive=improving. 0.5%/yr is good, 2%/yr is excellent
+        pp_scores.append(_normalize(s.gross_margin_10y_slope, -1.0, 2.0, invert=False))
+    if s.gross_margin_stability is not None:
+        # Low volatility = stable pricing power
+        pp_scores.append(_normalize(s.gross_margin_stability, 0, 15, invert=True))
+    if pp_scores:
+        scores.append(sum(pp_scores) / len(pp_scores))
+        weights.append(0.30)
+
+    # --- Revenue Durability (20%) ---
+    rd_scores = []
+    if s.revenue_volatility_10y is not None:
+        rd_scores.append(_normalize(s.revenue_volatility_10y, 0, 30, invert=True))
+    if s.positive_growth_years is not None:
+        rd_scores.append(_normalize(s.positive_growth_years, 3, 10, invert=False))
+    if rd_scores:
+        scores.append(sum(rd_scores) / len(rd_scores))
+        weights.append(0.20)
+
+    # --- Capital Efficiency (20%) ---
+    ce_scores = []
+    if s.roic_5y_mean is not None:
+        if s.roic_5y_mean < 0:
+            ce_scores.append(max(0.0, 2.0 + s.roic_5y_mean / 15))
+        else:
+            ce_scores.append(_normalize(s.roic_5y_mean, 0, 30, invert=False))
+    if s.sbc_revenue_pct is not None:
+        ce_scores.append(_normalize(s.sbc_revenue_pct, 0, 10, invert=True))
+    if s.fcf_conversion is not None:
+        ce_scores.append(_normalize(s.fcf_conversion, 0.5, 1.5, invert=False))
+    if ce_scores:
+        scores.append(sum(ce_scores) / len(ce_scores))
+        weights.append(0.20)
+
+    # --- Anti-Cyclical D1 Proxy (15%) ---
+    ac_scores = []
+    if s.max_revenue_drop_10y is not None:
+        # max drop is negative. Closer to 0 = more resilient
+        ac_scores.append(_normalize(s.max_revenue_drop_10y, -40, 5, invert=False))
+    if s.revenue_drop_2020 is not None:
+        ac_scores.append(_normalize(s.revenue_drop_2020, -30, 10, invert=False))
+    if ac_scores:
+        scores.append(sum(ac_scores) / len(ac_scores))
+        weights.append(0.15)
+
+    # --- Growth Durability (15%) ---
+    gd_scores = []
+    if s.revenue_cagr_10y is not None:
+        gd_scores.append(_normalize(s.revenue_cagr_10y, -2, 20, invert=False))
+    if s.growth_acceleration is not None:
+        # 3Y CAGR > 10Y CAGR = accelerating
+        gd_scores.append(_normalize(s.growth_acceleration, -5, 10, invert=False))
+    if gd_scores:
+        scores.append(sum(gd_scores) / len(gd_scores))
+        weights.append(0.15)
+
+    total_weight = sum(weights)
+    s.score = sum(s * w for s, w in zip(scores, weights)) / total_weight if total_weight > 0 else 5.0
+    return s.score
+
+
+# ============================================================
+# L5 Scoring: 逆转拐点
+# ============================================================
+
+def score_l5(s: L5Signals) -> float:
+    """
+    Layer 5: 逆转拐点
+    收入加速25% + 利润率反转25% + Insider增强20% + 分析师上修15% + 管理层变更15%
+    """
+    scores = []
+    weights = []
+
+    # --- Revenue Acceleration (25%) ---
+    if s.rev_acceleration is not None:
+        # acceleration = recent_2q - prior_4q growth rate difference
+        scores.append(_normalize(s.rev_acceleration, -10, 15, invert=False))
+        weights.append(0.25)
+
+    # --- Margin Reversal (25%) ---
+    if s.opm_inflection is not None:
+        # positive = margins turning up
+        scores.append(_normalize(s.opm_inflection, -5, 5, invert=False))
+        weights.append(0.25)
+
+    # --- Enhanced Insider (20%) ---
+    insider_score = 5.0  # neutral
+    if s.insider_buy_large:
+        insider_score += 2.5
+    if s.insider_multiple_roles:
+        insider_score += 2.5
+    scores.append(min(insider_score, 10.0))
+    weights.append(0.20)
+
+    # --- Analyst Upgrade (15%) ---
+    if s.eps_revision_3m_pct is not None:
+        scores.append(_normalize(s.eps_revision_3m_pct, -15, 15, invert=False))
+        weights.append(0.15)
+
+    # --- Management Change (15%) ---
+    mgmt_score = 5.0
+    if s.new_ceo_within_2y:
+        mgmt_score += 3.0
+    if s.new_strategy_signal:
+        mgmt_score += 2.0
+    scores.append(min(mgmt_score, 10.0))
+    weights.append(0.15)
+
+    total_weight = sum(weights)
+    s.score = sum(s * w for s, w in zip(scores, weights)) / total_weight if total_weight > 0 else 5.0
+    return s.score
+
+
+# ============================================================
 # Veto Logic (硬否决)
 # ============================================================
 
@@ -420,7 +640,7 @@ def check_flags(result: StockScreenResult) -> list[str]:
 
 def compute_composite(result: StockScreenResult) -> float:
     """
-    Final composite = L1×0.35 + L2×0.40 + L3×0.25
+    Stage 1 composite = L1×0.35 + L2×0.40 + L3×0.25
     L2权重最大: 避免价值陷阱比发现便宜更重要
 
     修正项:
@@ -448,6 +668,34 @@ def compute_composite(result: StockScreenResult) -> float:
     return result.composite_score
 
 
+def compute_stage2(result: StockScreenResult) -> float:
+    """
+    Stage 2 composite: 五层融合
+    L1(便宜)×15% + L2(不是陷阱)×15% + L3(纠错)×15% + L4(品质)×30% + L5(拐点)×25%
+
+    Stage 2把品质和拐点放在核心(55%)，估值降为辅助(15%)。
+    逻辑: 好公司在拐点 > 便宜的平庸公司
+    """
+    if result.vetoes:
+        result.stage2_score = 0.0
+        return 0.0
+
+    l1 = result.l1.score if result.l1.score is not None else score_l1(result.l1)
+    l2 = result.l2.score if result.l2.score is not None else score_l2(result.l2)
+    l3 = result.l3.score if result.l3.score is not None else score_l3(result.l3)
+    l4 = score_l4(result.l4)
+    l5 = score_l5(result.l5)
+
+    stage2 = l1 * 0.15 + l2 * 0.15 + l3 * 0.15 + l4 * 0.30 + l5 * 0.25
+
+    # 负盈利惩罚
+    if result.l1.pe_ttm is not None and result.l1.pe_ttm < 0:
+        stage2 *= 0.80
+
+    result.stage2_score = stage2
+    return result.stage2_score
+
+
 # ============================================================
 # FMP Data → Signal Extraction
 # ============================================================
@@ -463,6 +711,13 @@ def extract_signals_from_fmp(
     quote: dict = None,
     earnings_surprises: list[dict] = None,
     estimates: list[dict] = None,
+    # Stage 2 extended data
+    income_10y: list[dict] = None,
+    ratios_10y: list[dict] = None,
+    cashflow_10y: list[dict] = None,
+    key_metrics_10y: list[dict] = None,
+    income_quarterly: list[dict] = None,
+    ratios_quarterly: list[dict] = None,
 ) -> StockScreenResult:
     """
     从FMP API返回的原始数据中提取所有信号.
@@ -661,7 +916,197 @@ def extract_signals_from_fmp(
     if estimates and len(estimates) > 0:
         result.l3.analyst_coverage_count = estimates[0].get('numAnalystsEps')
 
+    # --- L4: 品质护城河 (from 10Y annual data) ---
+    _extract_l4(result, income_10y, ratios_10y, cashflow_10y, key_metrics_10y, income, cashflow, key_metrics)
+
+    # --- L5: 逆转拐点 (from quarterly data) ---
+    _extract_l5(result, income_quarterly, ratios_quarterly, earnings_surprises, estimates)
+
+    # --- L5: Management signals (manually curated) ---
+    mgmt = profile.get('_mgmt_signals', {})
+    if not mgmt:
+        # Also check top-level data (from inject_stage2.py)
+        pass  # handled in run_screen.py via process_single
+    if mgmt:
+        result.l5.new_ceo_within_2y = mgmt.get('new_ceo_within_2y', False)
+        result.l5.new_strategy_signal = mgmt.get('new_strategy_signal', False)
+
     return result
+
+
+def _extract_l4(
+    result: StockScreenResult,
+    income_10y: list[dict],
+    ratios_10y: list[dict],
+    cashflow_10y: list[dict],
+    key_metrics_10y: list[dict],
+    income: list[dict],
+    cashflow: list[dict],
+    key_metrics: list[dict],
+):
+    """Extract L4 signals from 10-year annual history."""
+    s = result.l4
+
+    # --- Gross Margin trend (10Y) ---
+    if ratios_10y and len(ratios_10y) >= 3:
+        gm_series = []
+        for r in reversed(ratios_10y):  # oldest first
+            gm = r.get('grossProfitMargin')
+            if gm is not None:
+                gm_pct = gm * 100 if abs(gm) < 1 else gm
+                gm_series.append(gm_pct)
+        if len(gm_series) >= 3:
+            s.gross_margin_latest = gm_series[-1]
+            s.gross_margin_10y_slope = _linear_slope(gm_series)
+            s.gross_margin_stability = _stdev(gm_series)
+
+    # --- Revenue analysis (10Y) ---
+    if income_10y and len(income_10y) >= 3:
+        rev_series = []
+        for inc in reversed(income_10y):  # oldest first
+            rev = inc.get('revenue', 0)
+            if rev and rev > 0:
+                rev_series.append(rev)
+
+        if len(rev_series) >= 3:
+            # YoY growth rates
+            yoy = [(rev_series[i] / rev_series[i-1] - 1) * 100
+                    for i in range(1, len(rev_series)) if rev_series[i-1] > 0]
+
+            if yoy:
+                s.revenue_volatility_10y = _stdev(yoy)
+                s.positive_growth_years = sum(1 for g in yoy if g > 0)
+
+            # CAGR
+            n = len(rev_series)
+            s.revenue_cagr_10y = _cagr(rev_series[0], rev_series[-1], n - 1)
+
+            if n >= 4:
+                s.revenue_cagr_3y = _cagr(rev_series[-4], rev_series[-1], 3)
+
+            if s.revenue_cagr_10y is not None and s.revenue_cagr_3y is not None:
+                s.growth_acceleration = s.revenue_cagr_3y - s.revenue_cagr_10y
+
+            # Max revenue drop
+            if yoy:
+                s.max_revenue_drop_10y = min(yoy)
+
+            # 2020 drop (look for year ~2020)
+            for inc in income_10y:
+                date_str = inc.get('date', '')
+                if '2020' in date_str:
+                    rev_2020 = inc.get('revenue', 0)
+                    # Find 2019
+                    for inc2 in income_10y:
+                        if '2019' in inc2.get('date', ''):
+                            rev_2019 = inc2.get('revenue', 0)
+                            if rev_2019 and rev_2019 > 0:
+                                s.revenue_drop_2020 = (rev_2020 / rev_2019 - 1) * 100
+                            break
+                    break
+
+    # --- ROIC history ---
+    roic_src = key_metrics_10y if key_metrics_10y and len(key_metrics_10y) >= 3 else key_metrics
+    if roic_src and len(roic_src) >= 2:
+        roic_vals = []
+        for km in roic_src:
+            r = km.get('returnOnInvestedCapital')
+            if r is not None:
+                roic_pct = r * 100 if abs(r) < 1 else r
+                roic_vals.append(roic_pct)
+        if roic_vals:
+            # 5Y mean (or whatever we have)
+            recent = roic_vals[:min(5, len(roic_vals))]
+            s.roic_5y_mean = sum(recent) / len(recent)
+            if len(roic_vals) >= 3:
+                s.roic_trend = _linear_slope(list(reversed(roic_vals[-5:])))
+
+    # --- SBC / Revenue ---
+    if income and cashflow and len(income) > 0 and len(cashflow) > 0:
+        rev = income[0].get('revenue', 0)
+        sbc = cashflow[0].get('stockBasedCompensation', 0)
+        if rev and rev > 0 and sbc is not None:
+            s.sbc_revenue_pct = abs(sbc) / rev * 100
+
+    # --- FCF Conversion ---
+    if income and cashflow and len(income) >= 2 and len(cashflow) >= 2:
+        conversions = []
+        for i in range(min(3, len(income), len(cashflow))):
+            ni = income[i].get('netIncome', 0)
+            cfo = cashflow[i].get('operatingCashFlow', 0) or cashflow[i].get('netCashProvidedByOperatingActivities', 0)
+            if ni and ni > 0:
+                conversions.append(cfo / ni)
+        if conversions:
+            s.fcf_conversion = sum(conversions) / len(conversions)
+
+    # --- 5Y Share change ---
+    if income_10y and len(income_10y) >= 5:
+        so_now = income_10y[0].get('weightedAverageShsOut', 0)
+        so_5y = None
+        for inc in income_10y[4:6]:  # ~5 years back
+            so_5y = inc.get('weightedAverageShsOut', 0)
+            if so_5y and so_5y > 0:
+                break
+        if so_now and so_5y and so_5y > 0 and so_now > 0:
+            s.shares_change_5y = (so_now / so_5y - 1) * 100
+
+
+def _extract_l5(
+    result: StockScreenResult,
+    income_quarterly: list[dict],
+    ratios_quarterly: list[dict],
+    earnings_surprises: list[dict],
+    estimates: list[dict],
+):
+    """Extract L5 signals from quarterly data."""
+    s = result.l5
+
+    # --- Revenue Acceleration (quarterly) ---
+    if income_quarterly and len(income_quarterly) >= 6:
+        # Need YoY growth: compare each Q to same Q prior year
+        # income_quarterly[0] = most recent, sorted descending
+        rev_list = [(q.get('date', ''), q.get('revenue', 0)) for q in income_quarterly]
+
+        # Compute YoY growth for recent quarters (need 8Q for 4 YoY comparisons)
+        # Simpler approach: just compare absolute revenue levels
+        recent_2 = [q.get('revenue', 0) for q in income_quarterly[:2]]
+        prior_4 = [q.get('revenue', 0) for q in income_quarterly[2:6]]
+
+        if all(r > 0 for r in recent_2) and all(r > 0 for r in prior_4):
+            avg_recent = sum(recent_2) / 2
+            avg_prior = sum(prior_4) / 4
+            if avg_prior > 0:
+                s.rev_growth_recent_2q = (avg_recent / avg_prior - 1) * 100
+                # Compare to longer trend
+                s.rev_acceleration = s.rev_growth_recent_2q  # simplified: positive = growing faster than prior
+
+    # --- OPM Inflection (quarterly) ---
+    if ratios_quarterly and len(ratios_quarterly) >= 6:
+        opm_recent = []
+        opm_prior = []
+        for i, r in enumerate(ratios_quarterly[:6]):
+            opm = r.get('operatingProfitMargin')
+            if opm is None:
+                opm = r.get('operatingIncomeRatio')
+            if opm is not None:
+                opm_pct = opm * 100 if abs(opm) < 1 else opm
+                if i < 2:
+                    opm_recent.append(opm_pct)
+                else:
+                    opm_prior.append(opm_pct)
+
+        if opm_recent and opm_prior:
+            s.opm_recent_2q = sum(opm_recent) / len(opm_recent)
+            s.opm_prior_4q = sum(opm_prior) / len(opm_prior)
+            s.opm_inflection = s.opm_recent_2q - s.opm_prior_4q
+
+    # --- EPS Revision from estimates ---
+    if estimates and len(estimates) >= 2:
+        # Compare most recent and ~3 month old estimate
+        eps_now = estimates[0].get('epsAvg')
+        eps_prior = estimates[1].get('epsAvg')
+        if eps_now and eps_prior and eps_prior != 0:
+            s.eps_revision_3m_pct = (eps_now / eps_prior - 1) * 100
 
 
 # ============================================================
@@ -761,7 +1206,7 @@ def _fmt_f_components(components: dict) -> str:
 # File I/O
 # ============================================================
 
-def save_results(results: list[StockScreenResult], output_dir: str = "data/screener"):
+def save_results(results: list[StockScreenResult], output_dir: str = "data/screener", stage2: bool = False):
     """保存筛选结果到JSON + 文本报告"""
     out = Path(output_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -775,16 +1220,20 @@ def save_results(results: list[StockScreenResult], output_dir: str = "data/scree
             'market_cap': r.market_cap,
             'sector': r.sector,
             'composite_score': r.composite_score,
+            'stage2_score': r.stage2_score,
             'l1_score': r.l1.score,
             'l2_score': r.l2.score,
             'l3_score': r.l3.score,
+            'l4_score': r.l4.score,
+            'l5_score': r.l5.score,
             'f_score': r.l2.f_score,
-            'insider_buy_value_6m': r.l1.insider_buy_value_6m,
-            'insider_cluster': r.l1.insider_cluster,
-            'accruals': r.l2.accruals_ratio,
-            'gp_assets': r.l2.gross_profit_assets,
-            'roic': r.l2.roic,
-            'asset_growth': r.l2.asset_growth_1y,
+            'gross_margin': r.l4.gross_margin_latest,
+            'gm_slope': r.l4.gross_margin_10y_slope,
+            'roic_5y': r.l4.roic_5y_mean,
+            'rev_cagr_10y': r.l4.revenue_cagr_10y,
+            'rev_cagr_3y': r.l4.revenue_cagr_3y,
+            'opm_inflection': r.l5.opm_inflection,
+            'rev_acceleration': r.l5.rev_acceleration,
             'ev_ebitda': r.l1.ev_ebit,
             'fcf_yield': r.l1.fcf_yield,
             'shareholder_yield': r.l1.shareholder_yield,
@@ -805,7 +1254,7 @@ def save_results(results: list[StockScreenResult], output_dir: str = "data/scree
     with open(out / "screen_report.txt", 'w') as f:
         f.write(format_ranking_table(results))
         f.write("\n\n" + "="*80 + "\n  详细信号卡片\n" + "="*80 + "\n")
-        for r in active[:20]:  # top 20 details
+        for r in active[:20]:
             f.write(format_signal_card(r))
 
     print(f"Results saved to {out}/screen_results.json + screen_report.txt")

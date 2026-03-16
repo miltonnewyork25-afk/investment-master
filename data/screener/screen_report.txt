@@ -8,27 +8,27 @@
     2 QCOM     QUALCOMM Incorporate   6.8   4.6   8.6   7.0   6        -
     3 GM       General Motors Compa   6.8   7.5   5.9   7.1   5        -
     4 EBAY     eBay Inc.              6.6   6.1   7.6   5.7   6        -
-    5 NKE      NIKE, Inc.             6.5   4.7   7.2   8.0   4        -
-    6 PYPL     PayPal Holdings, Inc   6.5   7.4   7.1   4.1   8        -
-    7 VRSN     VeriSign, Inc.         6.4   3.7   9.8   4.8   8        -
-    8 MO       Altria Group, Inc.     6.4   6.4   8.8   2.6   6        -
-    9 BABA     Alibaba Group Holdin   6.2   7.1   6.4   4.7   7        -
-   10 CI       Cigna Corporation      5.9   5.0   6.3   6.5   7        -
-   11 CMCSA    Comcast Corporation    5.4   5.5   7.0   2.9   8        -
-   12 BMY      Bristol-Myers Squibb   5.4   5.2   8.3   1.2   8        -
-   13 T        AT&T Inc.              5.2   6.1   6.7   1.4   7        -
-   14 DIS      The Walt Disney Comp   4.9   3.6   6.7   4.1   8        -
-   15 GILD     Gilead Sciences, Inc   4.9   3.4   8.3   1.6   9        -
-   16 BTI      British American Tob   4.9   5.6   6.7   1.0   8        -
-   17 STLA     Stellantis N.V.        4.7   4.1   5.9   9.8   3        -
-   18 JD       JD.com, Inc.           4.7   3.8   6.6   2.8   6        -
-   19 PRU      Prudential Financial   4.7   4.5   4.8   4.6   6        -
-   20 ALLY     Ally Financial Inc.    4.6   3.7   5.3   4.7   6        -
-   21 TEVA     Teva Pharmaceutical    4.5   1.9   6.7   4.7   8        -
-   22 PFE      Pfizer Inc.            4.4   4.6   6.4   1.0   5        -
-   23 UPS      United Parcel Servic   4.4   3.8   5.1   4.1   5        -
-   24 CSCO     Cisco Systems, Inc.    4.4   2.1   7.6   2.2   9        -
-   25 DELL     Dell Technologies In   4.4   5.1   5.2   2.0   6        -
+    5 CMCSA    Comcast Corporation    6.6   5.5   7.0   7.4   8        -
+    6 NKE      NIKE, Inc.             6.5   4.7   7.2   8.0   4        -
+    7 T        AT&T Inc.              6.5   6.1   6.7   6.5   7        -
+    8 PYPL     PayPal Holdings, Inc   6.5   7.4   7.1   4.1   8        -
+    9 VRSN     VeriSign, Inc.         6.4   3.7   9.8   4.8   8        -
+   10 BMY      Bristol-Myers Squibb   6.4   5.2   8.3   5.2   8        -
+   11 MO       Altria Group, Inc.     6.4   6.4   8.8   2.6   6        -
+   12 BABA     Alibaba Group Holdin   6.2   7.1   6.4   4.7   7        -
+   13 CI       Cigna Corporation      5.9   5.0   6.3   6.5   7        -
+   14 GILD     Gilead Sciences, Inc   5.9   3.4   8.3   5.4   9        -
+   15 DIS      The Walt Disney Comp   5.5   3.6   6.7   6.4   8        -
+   16 DELL     Dell Technologies In   5.5   5.1   5.2   6.5   6        -
+   17 TEVA     Teva Pharmaceutical    5.3   1.9   6.7   8.1   8        -
+   18 CSCO     Cisco Systems, Inc.    5.2   2.1   7.6   5.5   9        -
+   19 BTI      British American Tob   4.9   5.6   6.7   1.0   8        -
+   20 STLA     Stellantis N.V.        4.7   4.1   5.9   9.8   3        -
+   21 JD       JD.com, Inc.           4.7   3.8   6.6   2.8   6        -
+   22 PRU      Prudential Financial   4.7   4.5   4.8   4.6   6        -
+   23 ALLY     Ally Financial Inc.    4.6   3.7   5.3   4.7   6        -
+   24 PFE      Pfizer Inc.            4.4   4.6   6.4   1.0   5        -
+   25 UPS      United Parcel Servic   4.4   3.8   5.1   4.1   5        -
    26 MET      MetLife, Inc.          4.3   3.7   5.0   4.0   7        -
    27 WFC      Wells Fargo & Compan   4.1   4.0   3.8   4.8   3        -
    28 KHC      The Kraft Heinz Comp   4.0   3.4   6.9   5.5   5        -
@@ -145,6 +145,27 @@
     52周位置: 90%
     最近Surprise: 4.4% (连续4次)
 ============================================================
+  CMCSA | Comcast Corporation
+  市值: $109.9B | 行业: Communication Services
+  综合得分: 6.6/10
+============================================================
+
+  L1 可能便宜了 [5.5/10]
+    EV/EBITDA: N/A | PE: 5.1 | PB: N/A
+    FCF Yield: N/A% | Shareholder Yield: 0.0%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): N/A%
+
+  L2 便宜不是陷阱 [7.0/10]
+    Accruals: -0.051 | CFO/NI: 1.70x
+    GP/Assets: 0.273 | ROIC: 6.4% | ROE: 20.4%
+    Asset Growth(1Y): 2.4%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [7.4/10]
+    52周位置: 85%
+    最近Surprise: 15.2% (连续4次)
+============================================================
   NKE | NIKE, Inc.
   市值: $79.8B | 行业: Consumer Cyclical
   综合得分: 6.5/10
@@ -165,6 +186,27 @@
   L3 市场开始纠错 [8.0/10]
     52周位置: 67%
     最近Surprise: 41.4% (连续4次)
+============================================================
+  T | AT&T Inc.
+  市值: $196.5B | 行业: Communication Services
+  综合得分: 6.5/10
+============================================================
+
+  L1 可能便宜了 [6.1/10]
+    EV/EBITDA: 6.1 | PE: 8.1 | PB: 1.61
+    FCF Yield: 5.8% | Shareholder Yield: 5.0%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -0.4%
+
+  L2 便宜不是陷阱 [6.7/10]
+    Accruals: -0.044 | CFO/NI: 1.84x
+    GP/Assets: 0.239 | ROIC: N/A% | ROE: N/A%
+    Asset Growth(1Y): 6.4%
+    F-Score: 7/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [6.5/10]
+    52周位置: 93%
+    最近Surprise: 12.4% (连续4次)
 ============================================================
   PYPL | PayPal Holdings, Inc.
   市值: $42.0B | 行业: Financial Services
@@ -209,6 +251,27 @@
     最近Surprise: -5.1% (连续0次)
 
   ⚠️  警告: FLAG: 负股东权益(PB<0), 回购/杠杆导致
+============================================================
+  BMY | Bristol-Myers Squibb Company
+  市值: $120.3B | 行业: Healthcare
+  综合得分: 6.4/10
+============================================================
+
+  L1 可能便宜了 [5.2/10]
+    EV/EBITDA: 10.1 | PE: 15.6 | PB: 5.96
+    FCF Yield: 8.7% | Shareholder Yield: 3.9%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): 0.7%
+
+  L2 便宜不是陷阱 [8.3/10]
+    Accruals: -0.079 | CFO/NI: 2.01x
+    GP/Assets: 0.362 | ROIC: 13.9% | ROE: N/A%
+    Asset Growth(1Y): -2.8%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [5.2/10]
+    52周位置: 94%
+    最近Surprise: 2.4% (连续4次)
 ============================================================
   MO | Altria Group, Inc.
   市值: $114.0B | 行业: Consumer Defensive
@@ -275,89 +338,9 @@
     52周位置: 76%
     最近Surprise: 2.5% (连续4次)
 ============================================================
-  CMCSA | Comcast Corporation
-  市值: $109.9B | 行业: Communication Services
-  综合得分: 5.4/10
-============================================================
-
-  L1 可能便宜了 [5.5/10]
-    EV/EBITDA: N/A | PE: 5.1 | PB: N/A
-    FCF Yield: N/A% | Shareholder Yield: 0.0%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): N/A%
-
-  L2 便宜不是陷阱 [7.0/10]
-    Accruals: -0.051 | CFO/NI: 1.70x
-    GP/Assets: 0.273 | ROIC: 6.4% | ROE: 20.4%
-    Asset Growth(1Y): 2.4%
-    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [2.9/10]
-    52周位置: 85%
-============================================================
-  BMY | Bristol-Myers Squibb Company
-  市值: $120.3B | 行业: Healthcare
-  综合得分: 5.4/10
-============================================================
-
-  L1 可能便宜了 [5.2/10]
-    EV/EBITDA: 10.1 | PE: 15.6 | PB: 5.96
-    FCF Yield: 8.7% | Shareholder Yield: 3.9%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): 0.7%
-
-  L2 便宜不是陷阱 [8.3/10]
-    Accruals: -0.079 | CFO/NI: 2.01x
-    GP/Assets: 0.362 | ROIC: 13.9% | ROE: N/A%
-    Asset Growth(1Y): -2.8%
-    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [1.2/10]
-    52周位置: 94%
-============================================================
-  T | AT&T Inc.
-  市值: $196.5B | 行业: Communication Services
-  综合得分: 5.2/10
-============================================================
-
-  L1 可能便宜了 [6.1/10]
-    EV/EBITDA: 6.1 | PE: 8.1 | PB: 1.61
-    FCF Yield: 5.8% | Shareholder Yield: 5.0%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): -0.4%
-
-  L2 便宜不是陷阱 [6.7/10]
-    Accruals: -0.044 | CFO/NI: 1.84x
-    GP/Assets: 0.239 | ROIC: N/A% | ROE: N/A%
-    Asset Growth(1Y): 6.4%
-    F-Score: 7/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [1.4/10]
-    52周位置: 93%
-============================================================
-  DIS | The Walt Disney Company
-  市值: $176.1B | 行业: Communication Services
-  综合得分: 4.9/10
-============================================================
-
-  L1 可能便宜了 [3.6/10]
-    EV/EBITDA: 12.7 | PE: 16.5 | PB: 1.86
-    FCF Yield: 5.6% | Shareholder Yield: 2.0%
-    Insider Buy(6m): 1笔 $0.00M | Cluster: False
-    流通股变化(1Y): -1.2%
-
-  L2 便宜不是陷阱 [6.7/10]
-    Accruals: -0.029 | CFO/NI: 1.46x
-    GP/Assets: 0.181 | ROIC: 8.1% | ROE: 11.3%
-    Asset Growth(1Y): 0.7%
-    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [4.1/10]
-    52周位置: 80%
-============================================================
   GILD | Gilead Sciences, Inc.
   市值: $180.0B | 行业: Healthcare
-  综合得分: 4.9/10
+  综合得分: 5.9/10
 ============================================================
 
   L1 可能便宜了 [3.4/10]
@@ -372,8 +355,95 @@
     Asset Growth(1Y): 0.0%
     F-Score: 9/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
 
-  L3 市场开始纠错 [1.6/10]
+  L3 市场开始纠错 [5.4/10]
     52周位置: 92%
+    最近Surprise: 2.8% (连续4次)
+============================================================
+  DIS | The Walt Disney Company
+  市值: $176.1B | 行业: Communication Services
+  综合得分: 5.5/10
+============================================================
+
+  L1 可能便宜了 [3.6/10]
+    EV/EBITDA: 12.7 | PE: 16.5 | PB: 1.86
+    FCF Yield: 5.6% | Shareholder Yield: 2.0%
+    Insider Buy(6m): 1笔 $0.00M | Cluster: False
+    流通股变化(1Y): -1.2%
+
+  L2 便宜不是陷阱 [6.7/10]
+    Accruals: -0.029 | CFO/NI: 1.46x
+    GP/Assets: 0.181 | ROIC: 8.1% | ROE: 11.3%
+    Asset Growth(1Y): 0.7%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [6.4/10]
+    52周位置: 80%
+    最近Surprise: 3.8% (连续4次)
+============================================================
+  DELL | Dell Technologies Inc.
+  市值: $101.6B | 行业: Technology
+  综合得分: 5.5/10
+============================================================
+
+  L1 可能便宜了 [5.1/10]
+    EV/EBITDA: 13.7 | PE: 13.3 | PB: N/A
+    FCF Yield: 8.6% | Shareholder Yield: 2.4%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -0.6%
+
+  L2 便宜不是陷阱 [5.2/10]
+    Accruals: -0.052 | CFO/NI: 1.88x
+    GP/Assets: 0.224 | ROIC: 14.5% | ROE: -2.4%
+    Asset Growth(1Y): 27.0%
+    F-Score: 6/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [6.5/10]
+    52周位置: 90%
+    最近Surprise: 10.2% (连续3次)
+
+  ⚠️  警告: FLAG: 资产增长27%(可能盲目扩张)
+============================================================
+  TEVA | Teva Pharmaceutical Industries Limited
+  市值: $33.3B | 行业: Healthcare
+  综合得分: 5.3/10
+============================================================
+
+  L1 可能便宜了 [1.9/10]
+    EV/EBITDA: 15.8 | PE: 25.4 | PB: 4.53
+    FCF Yield: 2.3% | Shareholder Yield: -1.6%
+    Insider Buy(6m): 1笔 $0.00M | Cluster: False
+    流通股变化(1Y): 1.6%
+
+  L2 便宜不是陷阱 [6.7/10]
+    Accruals: -0.006 | CFO/NI: 1.17x
+    GP/Assets: 0.219 | ROIC: N/A% | ROE: N/A%
+    Asset Growth(1Y): 3.6%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [8.1/10]
+    52周位置: 76%
+    最近Surprise: 49.8% (连续4次)
+============================================================
+  CSCO | Cisco Systems, Inc.
+  市值: $309.5B | 行业: Technology
+  综合得分: 5.2/10
+============================================================
+
+  L1 可能便宜了 [2.1/10]
+    EV/EBITDA: N/A | PE: 26.8 | PB: N/A
+    FCF Yield: N/A% | Shareholder Yield: 0.0%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): N/A%
+
+  L2 便宜不是陷阱 [7.6/10]
+    Accruals: -0.033 | CFO/NI: 1.39x
+    GP/Assets: 0.301 | ROIC: 11.7% | ROE: 21.7%
+    Asset Growth(1Y): -1.7%
+    F-Score: 9/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [5.5/10]
+    52周位置: 89%
+    最近Surprise: 2.0% (连续4次)
 ============================================================
   BTI | British American Tobacco p.l.c.
   市值: $130.3B | 行业: Consumer Defensive
@@ -416,64 +486,3 @@
     52周位置: 51%
 
   ⚠️  警告: FLAG: F-Score=3/9(财务体质弱); FLAG: 当前亏损(PE<0); FLAG: ROIC=-20.1%(严重亏损)
-============================================================
-  JD | JD.com, Inc.
-  市值: $39.8B | 行业: Consumer Cyclical
-  综合得分: 4.7/10
-============================================================
-
-  L1 可能便宜了 [3.8/10]
-    EV/EBITDA: 19.0 | PE: 15.0 | PB: 1.27
-    FCF Yield: N/A% | Shareholder Yield: 3.4%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): N/A%
-
-  L2 便宜不是陷阱 [6.6/10]
-    Accruals: -0.056 | CFO/NI: 3.04x
-    GP/Assets: 0.292 | ROIC: 0.8% | ROE: 8.5%
-    Asset Growth(1Y): -0.4%
-    F-Score: 6/9 (roa_positive, cfo_positive, cfo_gt_ni, no_dilution...)
-
-  L3 市场开始纠错 [2.8/10]
-    52周位置: 62%
-    最近Surprise: -20.5% (连续0次)
-============================================================
-  PRU | Prudential Financial, Inc.
-  市值: $32.0B | 行业: Financial Services
-  综合得分: 4.7/10
-============================================================
-
-  L1 可能便宜了 [4.5/10]
-    EV/EBITDA: N/A | PE: 11.1 | PB: N/A
-    FCF Yield: N/A% | Shareholder Yield: 0.0%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): N/A%
-
-  L2 便宜不是陷阱 [4.8/10]
-    Accruals: -0.003 | CFO/NI: 1.75x
-    GP/Assets: 0.000 | ROIC: N/A% | ROE: 11.0%
-    Asset Growth(1Y): 5.2%
-    F-Score: 6/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [4.6/10]
-    52周位置: 77%
-============================================================
-  ALLY | Ally Financial Inc.
-  市值: $11.2B | 行业: Financial Services
-  综合得分: 4.6/10
-============================================================
-
-  L1 可能便宜了 [3.7/10]
-    EV/EBITDA: 10.5 | PE: 16.5 | PB: 0.91
-    FCF Yield: N/A% | Shareholder Yield: 2.2%
-    Insider Buy(6m): 2笔 $0.00M | Cluster: False
-    流通股变化(1Y): 1.3%
-
-  L2 便宜不是陷阱 [5.3/10]
-    Accruals: -0.014 | CFO/NI: 4.26x
-    GP/Assets: 0.032 | ROIC: N/A% | ROE: 5.5%
-    Asset Growth(1Y): 2.2%
-    F-Score: 6/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [4.7/10]
-    52周位置: 76%
