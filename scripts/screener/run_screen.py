@@ -38,9 +38,13 @@ def load_stock_data(filepath: Path) -> dict:
 
 def process_single(data: dict, stage2: bool = False) -> StockScreenResult:
     """处理单只股票数据 → 完整信号结果"""
-    # Merge mgmt_signals into profile for extraction
+    # Normalize profile: may be list or dict
     profile = data.get('profile', {})
-    if isinstance(profile, dict) and 'mgmt_signals' in data:
+    if isinstance(profile, list) and len(profile) > 0:
+        profile = profile[0]
+    if not isinstance(profile, dict):
+        profile = {}
+    if 'mgmt_signals' in data:
         profile['_mgmt_signals'] = data['mgmt_signals']
     result = extract_signals_from_fmp(
         profile=profile,

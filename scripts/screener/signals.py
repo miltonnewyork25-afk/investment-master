@@ -688,10 +688,13 @@ def check_vetoes(result: StockScreenResult) -> list[str]:
     if result.l1.shares_change_1y is not None and result.l1.shares_change_1y > 15:
         vetoes.append("VETO: 年稀释>15%(大规模增发)")
 
-    # Z-Score极低 = 财务困境 (豁免金融行业, Altman模型不适用于银行/保险)
+    # Z-Score极低 = 财务困境
+    # 豁免: (1) 金融行业(Altman模型不适用) (2) 负权益公司(回购导致,非困境)
     financial_sectors = {'Financial Services', 'Banking', 'Insurance'}
+    is_negative_equity = result.l1.pb is not None and result.l1.pb < 0
     if (result.l2.z_score is not None and result.l2.z_score < 1.0
-            and result.sector not in financial_sectors):
+            and result.sector not in financial_sectors
+            and not is_negative_equity):
         vetoes.append(f"VETO: Z-Score={result.l2.z_score:.2f}(<1.0, 财务困境区)")
 
     result.vetoes = vetoes

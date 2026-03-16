@@ -1,50 +1,89 @@
 
 ================================================================================
-  低估股筛选排名 | 41只通过 / 6只否决 / 47只总计
+  低估股筛选排名 | 80只通过 / 5只否决 / 85只总计
 ================================================================================
     # Symbol   Name                  Comp    L1    L2    L3   F  Insider
   --------------------------------------------------------------------------
-    1 PYPL     PayPal Holdings, Inc   6.7   8.0   7.1   4.1   8        -
-    2 CMCSA    Comcast Corporation    6.5   7.4   7.0   4.2   8        -
-    3 QCOM     QUALCOMM Incorporate   6.4   3.6   8.6   7.0   6        -
-    4 HPQ      HP Inc.                6.4   4.9   6.9   7.8   5        -
-    5 CI       Cigna Corporation      6.3   6.0   6.3   6.5   7        -
-    6 BMY      Bristol-Myers Squibb   6.2   6.4   8.3   2.8   8        -
-    7 BABA     Alibaba Group Holdin   6.2   7.0   6.4   4.7   7        -
-    8 MO       Altria Group, Inc.     6.1   5.8   8.8   2.2   6        -
-    9 NKE      NIKE, Inc.             6.0   5.1   7.2   5.5   4        -
-   10 DIS      The Walt Disney Comp   5.9   4.5   6.7   6.4   8        -
-   11 GILD     Gilead Sciences, Inc   5.8   3.1   8.3   5.4   9        -
-   12 EBAY     eBay Inc.              5.7   3.5   7.6   5.7   6        -
-   13 DELL     Dell Technologies In   5.2   4.3   5.2   6.5   6        -
-   14 GM       General Motors Compa   5.1   4.7   5.9   4.2   5        -
-   15 UPS      United Parcel Servic   5.0   5.5   5.1   4.1   5        -
-   16 JD       JD.com, Inc.           5.0   4.6   6.6   2.8   6        -
-   17 CSCO     Cisco Systems, Inc.    4.9   1.5   7.6   5.5   9        -
-   18 MDT      Medtronic plc          4.8   4.7   5.5   3.6   7        -
-   19 BTI      British American Tob   4.7   5.1   6.7   1.0   8        -
-   20 PRU      Prudential Financial   4.5   4.1   4.8   4.6   6        -
-   21 PFE      Pfizer Inc.            4.5   5.0   6.4   1.0   5        -
-   22 ALLY     Ally Financial Inc.    4.5   3.3   5.3   4.7   6        -
-   23 WFC      Wells Fargo & Compan   4.1   3.9   3.8   4.8   3        -
-   24 MET      MetLife, Inc.          4.0   2.8   5.0   4.0   7        -
-   25 FDX      FedEx Corporation      4.0   4.1   5.0   2.1   0        -
-   26 SLB      SLB N.V.               3.9   3.4   5.0   2.9   0        -
-   27 TGT      Target Corporation     3.8   4.1   5.0   1.4   0        -
-   28 AMGN     Amgen Inc.             3.8   3.1   5.9   1.3   8        -
-   29 C        Citigroup Inc.         3.8   3.7   4.2   3.1   5        -
-   30 WBA      Walgreens Boots Alli   3.7   4.3   7.5   1.9   6        -
-   31 MRK      Merck & Co., Inc.      3.7   3.8   5.0   1.5   0        -
-   32 DVN      Devon Energy Corpora   3.7   4.8   5.0   0.1   0        -
-   33 CVS      CVS Health Corporati   3.5   1.7   5.9   2.1   5        -
-   34 MMM      3M Company             3.4   1.9   5.0   3.0   0        -
-   35 ABBV     AbbVie Inc.            3.2   1.9   5.0   2.1   0        -
-   36 LMT      Lockheed Martin Corp   3.2   2.4   5.0   1.3   0        -
-   37 GD       General Dynamics Cor   3.1   2.5   5.0   1.0   0        -
-   38 LYB      LyondellBasell Indus   2.9   3.4   6.2   0.9   3        -
-   39 F        Ford Motor Company     2.9   2.4   5.0   4.2   0        -
-   40 CAH      Cardinal Health, Inc   2.8   1.9   4.3   1.4   7        -
-   41 INTC     Intel Corporation      2.6   0.9   5.8   3.2   6        -
+    1 CMG      Chipotle Mexican Gri   7.0   4.9   7.7   8.9   6        -
+    2 PYPL     PayPal Holdings, Inc   6.7   8.0   7.1   4.1   8        -
+    3 DPZ      Domino's Pizza, Inc.   6.6   5.7   9.0   3.9   7        -
+    4 VRSN     VeriSign, Inc.         6.6   4.1   9.8   4.8   8        -
+    5 FICO     Fair Isaac Corporati   6.6   2.2   8.4   9.8   7        -
+    6 CMCSA    Comcast Corporation    6.5   7.4   7.0   4.2   8        -
+    7 QCOM     QUALCOMM Incorporate   6.4   3.6   8.6   7.0   6        -
+    8 HPQ      HP Inc.                6.4   4.9   6.9   7.8   5        -
+    9 CI       Cigna Corporation      6.3   6.0   6.3   6.5   7        -
+   10 BMY      Bristol-Myers Squibb   6.2   6.4   8.3   2.8   8        -
+   11 BABA     Alibaba Group Holdin   6.2   7.0   6.4   4.7   7        -
+   12 MO       Altria Group, Inc.     6.1   5.8   8.8   2.2   6        -
+   13 NKE      NIKE, Inc.             6.0   5.1   7.2   5.5   4        -
+   14 CPRT     Copart, Inc.           5.9   3.9   5.6   9.3   6        -
+   15 DIS      The Walt Disney Comp   5.9   4.5   6.7   6.4   8        -
+   16 GILD     Gilead Sciences, Inc   5.8   3.1   8.3   5.4   9        -
+   17 IDXX     IDEXX Laboratories,    5.7   3.1   8.5   5.0   7        -
+   18 EBAY     eBay Inc.              5.7   3.5   7.6   5.7   6        -
+   19 MCO      Moody's Corporation    5.4   3.4   8.0   4.3   8        -
+   20 AAPL     Apple Inc.             5.4   2.2   8.6   5.0   8        -
+   21 V        Visa Inc.              5.4   3.3   7.4   5.0   6        -
+   22 SPGI     S&P Global Inc.        5.3   3.8   6.5   5.4   7        -
+   23 KLAC     KLA Corporation        5.3   2.2   8.1   5.0   8        -
+   24 META     Meta Platforms, Inc.   5.2   4.2   6.5   4.6   5        -
+   25 IHG      InterContinental Hot   5.2   4.7   7.1   2.9   7        -
+   26 DELL     Dell Technologies In   5.2   4.3   5.2   6.5   6        -
+   27 SMCI     Super Micro Computer   5.2   2.4   4.6  10.0   6        -
+   28 AMZN     Amazon.com, Inc.       5.2   5.5   5.6   3.9   5        -
+   29 CTAS     Cintas Corporation     5.2   1.8   8.3   5.0   8        -
+   30 ASML     ASML Holding N.V.      5.1   3.2   8.2   2.6   8        -
+   31 GM       General Motors Compa   5.1   4.7   5.9   4.2   5        -
+   32 ICE      Intercontinental Exc   5.0   3.7   6.3   5.0   8        -
+   33 PG       The Procter & Gamble   5.0   3.0   6.8   5.0   5        -
+   34 LRCX     Lam Research Corpora   5.0   3.0   7.7   3.5   8        -
+   35 UPS      United Parcel Servic   5.0   5.5   5.1   4.1   5        -
+   36 JD       JD.com, Inc.           5.0   4.6   6.6   2.8   6        -
+   37 CSCO     Cisco Systems, Inc.    4.9   1.5   7.6   5.5   9        -
+   38 MSFT     Microsoft Corporatio   4.9   3.0   6.1   5.8   4        -
+   39 RCL      Royal Caribbean Crui   4.9   3.4   6.1   5.1   5        -
+   40 CSGP     CoStar Group, Inc.     4.9   0.7   5.3  10.0   4        -
+   41 ROL      Rollins, Inc.          4.8   2.6   7.6   3.3   5        -
+   42 MAR      Marriott Internation   4.8   3.6   6.9   3.0   7        -
+   43 MDT      Medtronic plc          4.8   4.7   5.5   3.6   7        -
+   44 BTI      British American Tob   4.7   5.1   6.7   1.0   8        -
+   45 NVDA     NVIDIA Corporation     4.7   4.4   4.9   5.0   4        -
+   46 ETN      Eaton Corporation pl   4.7   2.9   6.1   5.0   6        -
+   47 AVGO     Broadcom Inc.          4.6   1.7   7.1   4.5   8        -
+   48 HLT      Hilton Worldwide Hol   4.5   2.8   7.3   2.5   7        -
+   49 PRU      Prudential Financial   4.5   4.1   4.8   4.6   6        -
+   50 PFE      Pfizer Inc.            4.5   5.0   6.4   1.0   5        -
+   51 ALLY     Ally Financial Inc.    4.5   3.3   5.3   4.7   6        -
+   52 AMAT     Applied Materials, I   4.4   2.4   7.2   2.7   6        -
+   53 FAST     Fastenal Company       4.4   2.1   7.9   2.0   7        -
+   54 ARM      Arm Holdings plc Ame   4.4   2.3   5.8   5.0   7        -
+   55 TSM      Taiwan Semiconductor   4.3   2.3   7.2   2.7   8        -
+   56 GOOGL    Alphabet Inc.          4.1   2.9   6.1   2.7   6        -
+   57 WFC      Wells Fargo & Compan   4.1   3.9   3.8   4.8   3        -
+   58 COST     Costco Wholesale Cor   4.0   2.1   7.5   1.1   5        -
+   59 ANET     Arista Networks, Inc   4.0   2.8   5.1   3.8   4        -
+   60 PLTR     Palantir Technologie   4.0   0.6   6.0   5.5   7        -
+   61 MET      MetLife, Inc.          4.0   2.8   5.0   4.0   7        -
+   62 VRT      Vertiv Holdings Co     4.0   4.2   5.4   1.3   4        -
+   63 FDX      FedEx Corporation      4.0   4.1   5.0   2.1   0        -
+   64 SLB      SLB N.V.               3.9   3.4   5.0   2.9   0        -
+   65 TGT      Target Corporation     3.8   4.1   5.0   1.4   0        -
+   66 AMGN     Amgen Inc.             3.8   3.1   5.9   1.3   8        -
+   67 C        Citigroup Inc.         3.8   3.7   4.2   3.1   5        -
+   68 WBA      Walgreens Boots Alli   3.7   4.3   7.5   1.9   6        -
+   69 MRK      Merck & Co., Inc.      3.7   3.8   5.0   1.5   0        -
+   70 DVN      Devon Energy Corpora   3.7   4.8   5.0   0.1   0        -
+   71 SBUX     Starbucks Corporatio   3.7   2.1   6.7   1.1   4        -
+   72 CVS      CVS Health Corporati   3.5   1.7   5.9   2.1   5        -
+   73 MMM      3M Company             3.4   1.9   5.0   3.0   0        -
+   74 ABBV     AbbVie Inc.            3.2   1.9   5.0   2.1   0        -
+   75 LMT      Lockheed Martin Corp   3.2   2.4   5.0   1.3   0        -
+   76 GD       General Dynamics Cor   3.1   2.5   5.0   1.0   0        -
+   77 LYB      LyondellBasell Indus   2.9   3.4   6.2   0.9   3        -
+   78 F        Ford Motor Company     2.9   2.4   5.0   4.2   0        -
+   79 CAH      Cardinal Health, Inc   2.8   1.9   4.3   1.4   7        -
+   80 INTC     Intel Corporation      2.6   0.9   5.8   3.2   6        -
 
   --- 否决 ---
   ⛔ KHC      The Kraft Heinz Comp | VETO: Z-Score=0.54(<1.0, 财务困境区)
@@ -52,12 +91,31 @@
   ⛔ STLA     Stellantis N.V.      | VETO: Z-Score=0.43(<1.0, 财务困境区)
   ⛔ T        AT&T Inc.            | VETO: Z-Score=0.93(<1.0, 财务困境区)
   ⛔ TEVA     Teva Pharmaceutical  | VETO: Z-Score=0.75(<1.0, 财务困境区)
-  ⛔ VRSN     VeriSign, Inc.       | VETO: Z-Score=-5.20(<1.0, 财务困境区)
 
 
 ================================================================================
   详细信号卡片
 ================================================================================
+============================================================
+  CMG | Chipotle Mexican Grill, Inc.
+  市值: $43.0B | 行业: Consumer Cyclical
+  综合得分: 7.0/10
+============================================================
+
+  L1 可能便宜了 [4.9/10]
+    EV/EBITDA: 24.9 | PE: 32.2 | PB: 17.48
+    FCF Yield: 2.5% | Shareholder Yield: 2.3%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -2.3%
+
+  L2 便宜不是陷阱 [7.7/10]
+    Accruals: -0.064 | CFO/NI: 1.38x
+    GP/Assets: 0.296 | ROIC: 18.9% | ROE: N/A%
+    Asset Growth(1Y): -2.3%
+    F-Score: 6/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [8.9/10]
+    52周位置: 56%
 ============================================================
   PYPL | PayPal Holdings, Inc.
   市值: $42.0B | 行业: Financial Services
@@ -79,6 +137,73 @@
   L3 市场开始纠错 [4.1/10]
     52周位置: 56%
     最近Surprise: -4.7% (连续0次)
+============================================================
+  DPZ | Domino's Pizza, Inc.
+  市值: $13.5B | 行业: Consumer Cyclical
+  综合得分: 6.6/10
+============================================================
+
+  L1 可能便宜了 [5.7/10]
+    EV/EBITDA: 18.0 | PE: 23.8 | PB: -3.67
+    FCF Yield: 3.5% | Shareholder Yield: 3.7%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -2.1%
+
+  L2 便宜不是陷阱 [9.0/10]
+    Accruals: -0.106 | CFO/NI: 1.32x
+    GP/Assets: 1.096 | ROIC: 56.7% | ROE: N/A%
+    Asset Growth(1Y): 3.7%
+    F-Score: 7/9 (roa_positive, cfo_positive, cfo_gt_ni, current_ratio_improving...)
+
+  L3 市场开始纠错 [3.9/10]
+    52周位置: 80%
+
+  ⚠️  警告: FLAG: 负股东权益(PB<0), 回购/杠杆导致
+============================================================
+  VRSN | VeriSign, Inc.
+  市值: $22.1B | 行业: Technology
+  综合得分: 6.6/10
+============================================================
+
+  L1 可能便宜了 [4.1/10]
+    EV/EBITDA: 20.4 | PE: 27.2 | PB: -10.42
+    FCF Yield: 4.5% | Shareholder Yield: 6.8%
+    Insider Buy(6m): 2笔 $0.00M | Cluster: False
+    流通股变化(1Y): -5.8%
+
+  L2 便宜不是陷阱 [9.8/10]
+    Accruals: -0.200 | CFO/NI: 1.32x
+    GP/Assets: 1.101 | ROIC: N/A% | ROE: N/A%
+    Asset Growth(1Y): -5.7%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [4.8/10]
+    52周位置: 77%
+    最近Surprise: -5.1% (连续0次)
+
+  ⚠️  警告: FLAG: 负股东权益(PB<0), 回购/杠杆导致
+============================================================
+  FICO | Fair Isaac Corporation
+  市值: $26.8B | 行业: Technology
+  综合得分: 6.6/10
+============================================================
+
+  L1 可能便宜了 [2.2/10]
+    EV/EBITDA: 41.2 | PE: 55.6 | PB: -20.78
+    FCF Yield: 2.8% | Shareholder Yield: 1.8%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -1.8%
+
+  L2 便宜不是陷阱 [8.4/10]
+    Accruals: -0.068 | CFO/NI: 1.19x
+    GP/Assets: 0.876 | ROIC: 90.8% | ROE: -37.3%
+    Asset Growth(1Y): 8.7%
+    F-Score: 7/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [9.8/10]
+    52周位置: 51%
+
+  ⚠️  警告: FLAG: 负股东权益(PB<0), 回购/杠杆导致
 ============================================================
   CMCSA | Comcast Corporation
   市值: $109.9B | 行业: Communication Services
@@ -260,6 +385,26 @@
 
   ⚠️  警告: FLAG: 低基数beat(EPS超预期但同比下降)
 ============================================================
+  CPRT | Copart, Inc.
+  市值: $33.0B | 行业: Industrials
+  综合得分: 5.9/10
+============================================================
+
+  L1 可能便宜了 [3.9/10]
+    EV/EBITDA: 19.5 | PE: 28.2 | PB: 4.76
+    FCF Yield: 3.7% | Shareholder Yield: -0.5%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): 0.5%
+
+  L2 便宜不是陷阱 [5.6/10]
+    Accruals: -0.025 | CFO/NI: 1.16x
+    GP/Assets: 0.208 | ROIC: 18.0% | ROE: 16.9%
+    Asset Growth(1Y): 19.7%
+    F-Score: 6/9 (roa_positive, cfo_positive, cfo_gt_ni, debt_decreasing...)
+
+  L3 市场开始纠错 [9.3/10]
+    52周位置: 53%
+============================================================
   DIS | The Walt Disney Company
   市值: $176.1B | 行业: Communication Services
   综合得分: 5.9/10
@@ -302,6 +447,26 @@
     52周位置: 92%
     最近Surprise: 2.8% (连续4次)
 ============================================================
+  IDXX | IDEXX Laboratories, Inc.
+  市值: $45.8B | 行业: Healthcare
+  综合得分: 5.7/10
+============================================================
+
+  L1 可能便宜了 [3.1/10]
+    EV/EBITDA: 37.5 | PE: 51.1 | PB: 33.75
+    FCF Yield: 1.9% | Shareholder Yield: N/A%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -2.9%
+
+  L2 便宜不是陷阱 [8.5/10]
+    Accruals: -0.035 | CFO/NI: 1.11x
+    GP/Assets: 0.794 | ROIC: 40.3% | ROE: N/A%
+    Asset Growth(1Y): 1.7%
+    F-Score: 7/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [5.0/10]
+    52周位置: N/A
+============================================================
   EBAY | eBay Inc.
   市值: $41.3B | 行业: Consumer Cyclical
   综合得分: 5.7/10
@@ -323,170 +488,42 @@
     52周位置: 90%
     最近Surprise: 4.4% (连续4次)
 ============================================================
-  DELL | Dell Technologies Inc.
-  市值: $101.6B | 行业: Technology
-  综合得分: 5.2/10
+  MCO | Moody's Corporation
+  市值: $76.2B | 行业: Financial Services
+  综合得分: 5.4/10
 ============================================================
 
-  L1 可能便宜了 [4.3/10]
-    EV/EBITDA: 13.7 | PE: 13.3 | PB: N/A
-    FCF Yield: 8.6% | Shareholder Yield: 2.4%
+  L1 可能便宜了 [3.4/10]
+    EV/EBITDA: 24.5 | PE: 37.2 | PB: 22.57
+    FCF Yield: 3.3% | Shareholder Yield: 2.3%
     Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): -0.6%
+    流通股变化(1Y): -1.5%
 
-  L2 便宜不是陷阱 [5.2/10]
-    Accruals: -0.052 | CFO/NI: 1.88x
-    GP/Assets: 0.224 | ROIC: 14.5% | ROE: -2.4%
-    Asset Growth(1Y): 27.0%
-    F-Score: 6/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+  L2 便宜不是陷阱 [8.0/10]
+    Accruals: -0.028 | CFO/NI: 1.18x
+    GP/Assets: 0.332 | ROIC: 26.9% | ROE: 60.7%
+    Asset Growth(1Y): 2.1%
+    F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
 
-  L3 市场开始纠错 [6.5/10]
-    52周位置: 90%
-    最近Surprise: 10.2% (连续3次)
-
-  ⚠️  警告: FLAG: 资产增长27%(可能盲目扩张)
-============================================================
-  GM | General Motors Company
-  市值: $67.5B | 行业: Consumer Cyclical
-  综合得分: 5.1/10
-============================================================
-
-  L1 可能便宜了 [4.7/10]
-    EV/EBITDA: 11.6 | PE: 27.7 | PB: 1.22
-    FCF Yield: 16.6% | Shareholder Yield: 18.4%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): -17.5%
-
-  L2 便宜不是陷阱 [5.9/10]
-    Accruals: -0.086 | CFO/NI: 9.96x
-    GP/Assets: 0.041 | ROIC: 1.2% | ROE: 4.4%
-    Asset Growth(1Y): 0.5%
-    F-Score: 5/9 (roa_positive, cfo_positive, cfo_gt_ni, current_ratio_improving...)
-
-  L3 市场开始纠错 [4.2/10]
-    52周位置: 83%
-    最近Surprise: 11.1% (连续4次)
-
-  ⚠️  警告: FLAG: 低基数beat(EPS超预期但同比下降); FLAG: Z-Score=1.20(灰色区域1.0-1.81, 财务风险偏高)
-============================================================
-  UPS | United Parcel Service, Inc.
-  市值: $82.5B | 行业: Industrials
-  综合得分: 5.0/10
-============================================================
-
-  L1 可能便宜了 [5.5/10]
-    EV/EBITDA: N/A | PE: 15.1 | PB: N/A
-    FCF Yield: N/A% | Shareholder Yield: 0.0%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): N/A%
-
-  L2 便宜不是陷阱 [5.1/10]
-    Accruals: -0.039 | CFO/NI: 1.52x
-    GP/Assets: 0.000 | ROIC: N/A% | ROE: 34.3%
-    Asset Growth(1Y): 4.3%
-    F-Score: 5/9 (roa_positive, cfo_positive, cfo_gt_ni, debt_decreasing...)
-
-  L3 市场开始纠错 [4.1/10]
+  L3 市场开始纠错 [4.3/10]
     52周位置: 79%
 ============================================================
-  JD | JD.com, Inc.
-  市值: $39.8B | 行业: Consumer Cyclical
-  综合得分: 5.0/10
+  AAPL | Apple Inc.
+  市值: $3676.2B | 行业: Technology
+  综合得分: 5.4/10
 ============================================================
 
-  L1 可能便宜了 [4.6/10]
-    EV/EBITDA: 19.0 | PE: 15.0 | PB: 1.27
-    FCF Yield: N/A% | Shareholder Yield: 3.4%
+  L1 可能便宜了 [2.2/10]
+    EV/EBITDA: 27.0 | PE: 34.1 | PB: 51.79
+    FCF Yield: 2.5% | Shareholder Yield: N/A%
     Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): N/A%
+    流通股变化(1Y): -2.6%
 
-  L2 便宜不是陷阱 [6.6/10]
-    Accruals: -0.056 | CFO/NI: 3.04x
-    GP/Assets: 0.292 | ROIC: 0.8% | ROE: 8.5%
-    Asset Growth(1Y): -0.4%
-    F-Score: 6/9 (roa_positive, cfo_positive, cfo_gt_ni, no_dilution...)
-
-  L3 市场开始纠错 [2.8/10]
-    52周位置: 62%
-    最近Surprise: -20.5% (连续0次)
-============================================================
-  CSCO | Cisco Systems, Inc.
-  市值: $309.5B | 行业: Technology
-  综合得分: 4.9/10
-============================================================
-
-  L1 可能便宜了 [1.5/10]
-    EV/EBITDA: N/A | PE: 26.8 | PB: N/A
-    FCF Yield: N/A% | Shareholder Yield: 0.0%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): N/A%
-
-  L2 便宜不是陷阱 [7.6/10]
-    Accruals: -0.033 | CFO/NI: 1.39x
-    GP/Assets: 0.301 | ROIC: 11.7% | ROE: 21.7%
-    Asset Growth(1Y): -1.7%
-    F-Score: 9/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [5.5/10]
-    52周位置: 89%
-    最近Surprise: 2.0% (连续4次)
-============================================================
-  MDT | Medtronic plc
-  市值: $111.9B | 行业: Healthcare
-  综合得分: 4.8/10
-============================================================
-
-  L1 可能便宜了 [4.7/10]
-    EV/EBITDA: N/A | PE: 23.2 | PB: N/A
-    FCF Yield: N/A% | Shareholder Yield: 0.0%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): N/A%
-
-  L2 便宜不是陷阱 [5.5/10]
-    Accruals: -0.026 | CFO/NI: 1.51x
-    GP/Assets: 0.000 | ROIC: N/A% | ROE: 9.7%
-    Asset Growth(1Y): 1.9%
-    F-Score: 7/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [3.6/10]
-    52周位置: 82%
-============================================================
-  BTI | British American Tobacco p.l.c.
-  市值: $130.3B | 行业: Consumer Defensive
-  综合得分: 4.7/10
-============================================================
-
-  L1 可能便宜了 [5.1/10]
-    EV/EBITDA: 10.5 | PE: 11.8 | PB: 1.92
-    FCF Yield: 4.4% | Shareholder Yield: 6.8%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): -1.2%
-
-  L2 便宜不是陷阱 [6.7/10]
-    Accruals: 0.013 | CFO/NI: 0.82x
-    GP/Assets: 0.196 | ROIC: 8.0% | ROE: 16.2%
-    Asset Growth(1Y): -8.1%
+  L2 便宜不是陷阱 [8.6/10]
+    Accruals: 0.001 | CFO/NI: 1.00x
+    GP/Assets: 0.543 | ROIC: 52.0% | ROE: N/A%
+    Asset Growth(1Y): -1.6%
     F-Score: 8/9 (roa_positive, cfo_positive, roa_improving, debt_decreasing...)
 
-  L3 市场开始纠错 [1.0/10]
-    52周位置: 95%
-============================================================
-  PRU | Prudential Financial, Inc.
-  市值: $32.0B | 行业: Financial Services
-  综合得分: 4.5/10
-============================================================
-
-  L1 可能便宜了 [4.1/10]
-    EV/EBITDA: N/A | PE: 11.1 | PB: N/A
-    FCF Yield: N/A% | Shareholder Yield: 0.0%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): N/A%
-
-  L2 便宜不是陷阱 [4.8/10]
-    Accruals: -0.003 | CFO/NI: 1.75x
-    GP/Assets: 0.000 | ROIC: N/A% | ROE: 11.0%
-    Asset Growth(1Y): 5.2%
-    F-Score: 6/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [4.6/10]
-    52周位置: 77%
+  L3 市场开始纠错 [5.0/10]
+    52周位置: N/A
