@@ -1010,7 +1010,7 @@ def _extract_l4(
     if roic_src and len(roic_src) >= 2:
         roic_vals = []
         for km in roic_src:
-            r = km.get('returnOnInvestedCapital')
+            r = km.get('returnOnInvestedCapital') or km.get('roic')
             if r is not None:
                 roic_pct = r * 100 if abs(r) < 1 else r
                 roic_vals.append(roic_pct)
