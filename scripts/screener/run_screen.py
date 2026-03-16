@@ -26,7 +26,7 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).parent))
 from signals import (
     StockScreenResult, extract_signals_from_fmp, compute_composite, compute_stage2,
-    format_ranking_table, format_signal_card, save_results
+    compute_final_score, format_ranking_table, format_signal_card, save_results
 )
 
 
@@ -36,7 +36,7 @@ def load_stock_data(filepath: Path) -> dict:
         return json.load(f)
 
 
-def process_single(data: dict, stage2: bool = False) -> StockScreenResult:
+def process_single(data: dict, stage2: bool = False, qrs: float = 0.15) -> StockScreenResult:
     """处理单只股票数据 → 完整信号结果"""
     # Normalize profile: may be list or dict
     profile = data.get('profile', {})
@@ -68,10 +68,11 @@ def process_single(data: dict, stage2: bool = False) -> StockScreenResult:
     compute_composite(result)
     if stage2:
         compute_stage2(result)
+        compute_final_score(result, qrs=qrs)
     return result
 
 
-def process_batch(data_dir: Path, stage2: bool = False) -> list[StockScreenResult]:
+def process_batch(data_dir: Path, stage2: bool = False, qrs: float = 0.15) -> list[StockScreenResult]:
     """批量处理目录下所有股票数据"""
     results = []
     files = sorted(data_dir.glob("*.json"))
@@ -80,13 +81,13 @@ def process_batch(data_dir: Path, stage2: bool = False) -> list[StockScreenResul
         print(f"No JSON files found in {data_dir}")
         return results
 
-    mode = "Stage 2 (五层)" if stage2 else "Stage 1 (三层)"
+    mode = f"Stage 2 + L6宏观(QRS={qrs:+.2f})" if stage2 else "Stage 1 (三层)"
     print(f"Processing {len(files)} stocks... [{mode}]")
 
     for f in files:
         try:
             data = load_stock_data(f)
-            result = process_single(data, stage2=stage2)
+            result = process_single(data, stage2=stage2, qrs=qrs)
             results.append(result)
         except Exception as e:
             print(f"  Error processing {f.name}: {e}")
@@ -106,19 +107,27 @@ def format_stage2_ranking(results: list[StockScreenResult]) -> str:
     lines.append(f"  Stage 2 深筛排名 | {len(active)}只通过 / {len(vetoed)}只否决 / {len(results)}只总计")
     lines.append(f"  权重: L1(便宜)15% + L2(不是陷阱)15% + L3(纠错)15% + L4(品质)30% + L5(拐点)25%")
     lines.append(f"{'='*95}")
-    lines.append(f"  {'#':>3} {'Symbol':<6} {'S2':>5} {'S1':>5} {'L1':>5} {'L2':>5} {'L3':>5} {'L4':>5} {'L5':>5} {'F':>3} {'FCFm%':>6} {'GM%':>5} {'EPS质量':>10}")
-    lines.append(f"  {'-'*95}")
+    lines.append(f"  {'#':>3} {'Symbol':<6} {'Final':>5} {'S2':>5} {'L4品质':>6} {'L5拐点':>6} {'L6风':>5} {'DNA':>12} {'FCFm%':>6} {'GM%':>5}")
+    lines.append(f"  {'-'*80}")
 
     for i, r in enumerate(active, 1):
+        final = r.final_score if r.final_score else r.stage2_score
         fcfm = f"{r.l4.fcf_margin:.0f}" if r.l4.fcf_margin is not None else "N/A"
         gm = f"{r.l4.gross_margin_latest:.0f}" if r.l4.gross_margin_latest is not None else "N/A"
-        eps_q = r.l4.eps_quality or "N/A"
+        dna_short = {
+            "anti_fragile": "反脆弱",
+            "defensive_compounder": "防御复利",
+            "cyclical_quality": "周期品质",
+            "growth_rate_sensitive": "成长敏感",
+            "consumer_confidence": "消费信心",
+            "turnaround_catalyst": "转折催化",
+        }.get(r.l6.asset_dna, "—")
+        wind = r.l6.tailwind_label or "—"
         lines.append(
             f"  {i:>3} {r.symbol:<6} "
-            f"{r.stage2_score:>5.1f} {r.composite_score:>5.1f} "
-            f"{r.l1.score:>5.1f} {r.l2.score:>5.1f} {r.l3.score:>5.1f} "
-            f"{r.l4.score:>5.1f} {r.l5.score:>5.1f} "
-            f"{r.l2.f_score or 0:>3} {fcfm:>6} {gm:>5} {eps_q:>10}"
+            f"{final:>5.1f} {r.stage2_score:>5.1f} "
+            f"{r.l4.score:>6.1f} {r.l5.score:>6.1f} {wind:>5} "
+            f"{dna_short:>12} {fcfm:>6} {gm:>5}"
         )
 
     if vetoed:

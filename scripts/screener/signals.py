@@ -181,6 +181,17 @@ class L5Signals:
     score: Optional[float] = None
 
 @dataclass
+@dataclass
+class L6Macro:
+    """Layer 6: 宏观顺风/逆风"""
+    asset_dna: str = ""                          # 6种原型之一
+    qrs: float = 0.0                             # QRS评分(-2到+2)
+    regime_signal: int = 0                       # 政体信号(-2到+2)
+    tailwind_score: float = 5.0                  # 顺风得分(0-10)
+    tailwind_label: str = ""                     # "顺风"/"中性"/"逆风"
+
+
+@dataclass
 class StockScreenResult:
     symbol: str
     name: str = ""
@@ -191,8 +202,10 @@ class StockScreenResult:
     l3: L3Signals = field(default_factory=L3Signals)
     l4: L4Signals = field(default_factory=L4Signals)
     l5: L5Signals = field(default_factory=L5Signals)
+    l6: L6Macro = field(default_factory=L6Macro)
     composite_score: Optional[float] = None
     stage2_score: Optional[float] = None   # 阶段2深筛得分
+    final_score: Optional[float] = None    # Stage 2 + L6宏观修正后
     vetoes: list = field(default_factory=list)   # 硬否决原因
     flags: list = field(default_factory=list)    # 软警告
 
@@ -806,6 +819,121 @@ def compute_stage2(result: StockScreenResult) -> float:
 
     result.stage2_score = stage2
     return result.stage2_score
+
+
+# ============================================================
+# L6: Macro Tailwind (宏观顺风)
+# ============================================================
+
+# 资产DNA自动分类规则
+def classify_asset_dna(result: StockScreenResult) -> str:
+    """基于已有数据自动分类为6种资产原型"""
+    sector = result.sector or ""
+    pe = result.l1.pe_ttm
+    rev_vol = result.l4.revenue_volatility_10y
+    max_drop = result.l4.max_revenue_drop_10y
+    rev_drop_2020 = result.l4.revenue_drop_2020
+    gm = result.l4.gross_margin_latest
+    pos_years = result.l4.positive_growth_years
+    new_ceo = result.l5.new_ceo_within_2y
+
+    # 反脆弱型: 危机中收入逆增 (CME, NEM, CPRT)
+    if rev_drop_2020 is not None and rev_drop_2020 > 5:
+        return "anti_fragile"
+
+    # 防御复利型: 低波动+几乎不下跌 (VRSN, FICO, MO, COST)
+    if pos_years is not None and pos_years >= 9 and rev_vol is not None and rev_vol < 10:
+        return "defensive_compounder"
+
+    # 成长利率敏感型: 高PE+高增速 (ADBE, APP, NVDA, PLTR)
+    if pe is not None and pe > 30 and gm is not None and gm > 50:
+        return "growth_rate_sensitive"
+
+    # 消费信心型: Consumer sector (NKE, DIS, SBUX, RCL, HLT)
+    if sector in ('Consumer Cyclical', 'Consumer Defensive') or sector == 'Communication Services':
+        if pe is not None and pe > 0:
+            return "consumer_confidence"
+
+    # 转折催化型: 新CEO或L5高 (INTC, NKE with new CEO)
+    if new_ceo:
+        return "turnaround_catalyst"
+
+    # 周期品质型: 其余有品质但有周期性的 (MCO, LRCX, AVGO)
+    if gm is not None and gm > 35:
+        return "cyclical_quality"
+
+    return "cyclical_quality"  # default
+
+
+# 政体×原型矩阵 (QRS信号 → 资产特定顺风/逆风)
+# 行: QRS信号(+2=甜蜜, +1=有利, 0=中性, -1=逆风, -2=天敌)
+# 值: 该原型在该政体中的顺风得分调整
+REGIME_MATRIX = {
+    "anti_fragile":        {2: -1, 1: 0, 0: 0, -1: +1, -2: +2},  # 危机中最强
+    "defensive_compounder":{2: 0, 1: 0, 0: +1, -1: +1, -2: +1},  # 逆风中相对更优
+    "cyclical_quality":    {2: +1, 1: +1, 0: 0, -1: -1, -2: -1},  # 顺周期
+    "growth_rate_sensitive":{2: +2, 1: +1, 0: 0, -1: -1, -2: -2}, # 最敏感
+    "consumer_confidence": {2: +1, 1: +1, 0: 0, -1: -1, -2: -2},  # 消费相关
+    "turnaround_catalyst": {2: +1, 1: 0, 0: 0, -1: 0, -2: -1},   # 催化剂独立于宏观
+}
+
+
+def compute_l6_tailwind(result: StockScreenResult, qrs: float = 0.15) -> float:
+    """
+    计算L6宏观顺风得分。
+    qrs: 当前QRS评分(全市场统一)
+    返回顺风得分(0-10, 5=中性)
+    """
+    # 分类资产DNA
+    dna = classify_asset_dna(result)
+    result.l6.asset_dna = dna
+
+    # QRS → 政体信号
+    if qrs >= 1.5: regime = 2
+    elif qrs >= 0.5: regime = 1
+    elif qrs >= -0.4: regime = 0
+    elif qrs >= -1.4: regime = -1
+    else: regime = -2
+    result.l6.qrs = qrs
+    result.l6.regime_signal = regime
+
+    # 矩阵查表
+    matrix = REGIME_MATRIX.get(dna, REGIME_MATRIX["cyclical_quality"])
+    adjustment = matrix.get(regime, 0)
+
+    # 顺风得分: 5(中性) + adjustment × 2.5 → 范围0-10
+    tailwind = 5.0 + adjustment * 2.5
+    tailwind = max(0.0, min(10.0, tailwind))
+    result.l6.tailwind_score = tailwind
+
+    if adjustment > 0:
+        result.l6.tailwind_label = "顺风"
+    elif adjustment < 0:
+        result.l6.tailwind_label = "逆风"
+    else:
+        result.l6.tailwind_label = "中性"
+
+    return tailwind
+
+
+def compute_final_score(result: StockScreenResult, qrs: float = 0.15) -> float:
+    """
+    Final Score = Stage 2 × 85% + L6 Tailwind × 15%
+    L6权重15%: 宏观是修正项不是主驱动
+    """
+    if result.vetoes:
+        result.final_score = 0.0
+        return 0.0
+
+    s2 = result.stage2_score
+    if s2 is None or s2 == 0:
+        s2 = compute_stage2(result)
+
+    l6 = compute_l6_tailwind(result, qrs)
+
+    final = s2 * 0.85 + l6 * 0.15
+    result.final_score = final
+    return final
 
 
 # ============================================================
