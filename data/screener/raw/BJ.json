@@ -1,0 +1,173 @@
+{
+  "symbol": "BJ",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "BJ",
+    "price": 97.72,
+    "marketCap": 12874940391,
+    "beta": 0.332,
+    "lastDividend": 0,
+    "range": "86.68-121.1",
+    "companyName": "BJ's Wholesale Club Holdings, Inc.",
+    "exchange": "NYSE",
+    "industry": "Discount Stores",
+    "sector": "Consumer Defensive",
+    "country": "US",
+    "fullTimeEmployees": "33000",
+    "ceo": "Robert W. Eddy"
+  },
+  "income": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2025",
+      "revenue": 21457274000,
+      "grossProfit": 3999622000,
+      "operatingIncome": 846045000,
+      "netIncome": 578377000,
+      "eps": 4.41,
+      "ebitda": 1134639000,
+      "interestExpense": 42393000
+    },
+    {
+      "date": "2025-01-31",
+      "fiscalYear": "2024",
+      "revenue": 20501804000,
+      "operatingIncome": 772206000,
+      "netIncome": 534417000,
+      "eps": 4.04,
+      "ebitda": 1032464000
+    },
+    {
+      "date": "2024-01-31",
+      "fiscalYear": "2023",
+      "revenue": 19968689000,
+      "operatingIncome": 800419000,
+      "netIncome": 523741000,
+      "eps": 3.94,
+      "ebitda": 1025937000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2025",
+      "totalAssets": 7510475000,
+      "totalStockholdersEquity": 2197659000,
+      "cashAndCashEquivalents": 46245000,
+      "totalDebt": 2608731000,
+      "goodwill": 1008816000,
+      "inventory": 1555471000
+    },
+    {
+      "date": "2025-01-31",
+      "fiscalYear": "2024",
+      "totalAssets": 7065305000,
+      "totalStockholdersEquity": 1847454000,
+      "totalDebt": 2843916000
+    },
+    {
+      "date": "2024-01-31",
+      "fiscalYear": "2023",
+      "totalAssets": 6677622000,
+      "totalStockholdersEquity": 1458851000,
+      "totalDebt": 2984440000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 1030056000,
+      "capitalExpenditure": -699053000,
+      "freeCashFlow": 331003000,
+      "netIncome": 578377000,
+      "commonStockRepurchased": -286787000
+    },
+    {
+      "date": "2025-01-31",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 900872000,
+      "freeCashFlow": 312889000
+    },
+    {
+      "date": "2024-01-31",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 718883000,
+      "freeCashFlow": 251808000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.186,
+      "netProfitMargin": 0.027,
+      "returnOnEquity": 0.263,
+      "currentRatio": 0.745,
+      "priceToEarningsRatio": 20.97,
+      "interestCoverageRatio": 19.96
+    },
+    {
+      "date": "2025-01-31",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.184,
+      "priceToEarningsRatio": 24.49
+    },
+    {
+      "date": "2024-01-31",
+      "fiscalYear": "2023",
+      "grossProfitMargin": 0.182,
+      "priceToEarningsRatio": 16.34
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2025",
+      "marketCap": 12127480920,
+      "enterpriseValue": 14689966920,
+      "evToEBITDA": 12.95,
+      "returnOnInvestedCapital": 0.122
+    },
+    {
+      "date": "2025-01-31",
+      "fiscalYear": "2024",
+      "marketCap": 13089457500,
+      "evToEBITDA": 15.4
+    },
+    {
+      "date": "2024-01-31",
+      "fiscalYear": "2023",
+      "marketCap": 8560243980,
+      "evToEBITDA": 11.22
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 1
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 0,
+      "totalSales": 9
+    }
+  ],
+  "quote": {
+    "symbol": "BJ",
+    "name": "BJ's Wholesale Club Holdings, Inc.",
+    "price": 97.72,
+    "changePercentage": -1.07,
+    "volume": 1181817,
+    "yearHigh": 121.1,
+    "yearLow": 86.68,
+    "marketCap": 12874940391,
+    "priceAvg50": 96.05,
+    "priceAvg200": 98.42,
+    "exchange": "NYSE",
+    "previousClose": 98.78
+  }
+}

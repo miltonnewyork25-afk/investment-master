@@ -1,0 +1,123 @@
+{
+  "symbol": "CART",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "CART",
+    "price": 38.23,
+    "marketCap": 10036634602,
+    "beta": 0.987,
+    "companyName": "Instacart (Maplebear Inc.)",
+    "exchange": "NASDAQ",
+    "industry": "Specialty Retail",
+    "sector": "Consumer Cyclical",
+    "ceo": "Chris Rogers"
+  },
+  "income": [
+    {
+      "fiscalYear": "2025",
+      "revenue": 3742000000,
+      "operatingIncome": 576000000,
+      "netIncome": 447000000,
+      "eps": 1.71,
+      "ebitda": 655000000
+    },
+    {
+      "fiscalYear": "2024",
+      "revenue": 3378000000,
+      "netIncome": 457000000,
+      "eps": 1.69
+    },
+    {
+      "fiscalYear": "2023",
+      "revenue": 3042000000,
+      "netIncome": -1622000000,
+      "eps": -12.43
+    }
+  ],
+  "balance": [
+    {
+      "fiscalYear": "2025",
+      "totalAssets": 3687000000,
+      "totalStockholdersEquity": 2518000000,
+      "cashAndCashEquivalents": 637000000,
+      "totalDebt": 36000000
+    },
+    {
+      "fiscalYear": "2024",
+      "totalAssets": 4115000000,
+      "totalStockholdersEquity": 3093000000
+    },
+    {
+      "fiscalYear": "2023",
+      "totalAssets": 4727000000,
+      "totalStockholdersEquity": 3750000000
+    }
+  ],
+  "cashflow": [
+    {
+      "fiscalYear": "2025",
+      "operatingCashFlow": 972000000,
+      "freeCashFlow": 911000000,
+      "commonStockRepurchased": -1386000000
+    },
+    {
+      "fiscalYear": "2024",
+      "operatingCashFlow": 687000000,
+      "freeCashFlow": 623000000
+    },
+    {
+      "fiscalYear": "2023",
+      "operatingCashFlow": 586000000,
+      "freeCashFlow": 530000000
+    }
+  ],
+  "ratios": [
+    {
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.736,
+      "netProfitMargin": 0.119,
+      "returnOnEquity": 0.178,
+      "priceToEarningsRatio": 26.3
+    },
+    {
+      "fiscalYear": "2024",
+      "priceToEarningsRatio": 23.99
+    },
+    {
+      "fiscalYear": "2023",
+      "priceToEarningsRatio": -1.89
+    }
+  ],
+  "key_metrics": [
+    {
+      "fiscalYear": "2025",
+      "marketCap": 11755657940,
+      "evToEBITDA": 17.03
+    },
+    {
+      "fiscalYear": "2024",
+      "evToEBITDA": 17.19
+    },
+    {
+      "fiscalYear": "2023",
+      "evToEBITDA": -0.46
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 5
+    }
+  ],
+  "quote": {
+    "symbol": "CART",
+    "price": 38.23,
+    "yearHigh": 53.5,
+    "yearLow": 32.73,
+    "marketCap": 10036634602,
+    "exchange": "NASDAQ",
+    "previousClose": 37.71
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "symbol": "BG",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "BG",
+    "price": 124.73,
+    "marketCap": 24136377570,
+    "beta": 0.743,
+    "lastDividend": 2.8,
+    "range": "68.33-127.24",
+    "companyName": "Bunge Global S.A.",
+    "exchange": "NYSE",
+    "industry": "Agricultural Farm Products",
+    "sector": "Consumer Defensive",
+    "country": "US",
+    "fullTimeEmployees": "23000",
+    "ceo": "Gregory A. Heckman"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "revenue": 70329000000,
+      "grossProfit": 3409000000,
+      "operatingIncome": 1296000000,
+      "netIncome": 816000000,
+      "eps": 4.91,
+      "ebitda": 2465000000,
+      "interestExpense": 628000000,
+      "depreciationAndAmortization": 703000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "revenue": 53108000000,
+      "operatingIncome": 1617000000,
+      "netIncome": 1137000000,
+      "eps": 8.09,
+      "ebitda": 2463000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "revenue": 59540000000,
+      "operatingIncome": 3130000000,
+      "netIncome": 2243000000,
+      "eps": 15.07,
+      "ebitda": 4018000000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "totalAssets": 44528000000,
+      "totalStockholdersEquity": 17369000000,
+      "cashAndCashEquivalents": 1135000000,
+      "totalDebt": 16952000000,
+      "netDebt": 15817000000,
+      "goodwill": 3450000000,
+      "inventory": 13198000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "totalAssets": 24899000000,
+      "totalStockholdersEquity": 9913000000,
+      "cashAndCashEquivalents": 3311000000,
+      "totalDebt": 7119000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "totalAssets": 25372000000,
+      "totalStockholdersEquity": 10851000000,
+      "cashAndCashEquivalents": 2602000000,
+      "totalDebt": 5756000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 800000000,
+      "capitalExpenditure": -1723000000,
+      "freeCashFlow": -923000000,
+      "netIncome": 819000000,
+      "commonDividendsPaid": -459000000,
+      "commonStockRepurchased": -551000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 1900000000,
+      "freeCashFlow": 524000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 3308000000,
+      "freeCashFlow": 2186000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.0485,
+      "netProfitMargin": 0.0116,
+      "returnOnEquity": 0.047,
+      "currentRatio": 1.612,
+      "debtToEquityRatio": 0.976,
+      "priceToEarningsRatio": 18.12,
+      "dividendYieldPercentage": 3.1,
+      "interestCoverageRatio": 2.06
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.064,
+      "netProfitMargin": 0.021,
+      "priceToEarningsRatio": 9.55
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "grossProfitMargin": 0.081,
+      "netProfitMargin": 0.038,
+      "priceToEarningsRatio": 6.7
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "marketCap": 14787280000,
+      "enterpriseValue": 30604280000,
+      "evToEBITDA": 12.42,
+      "returnOnInvestedCapital": 0.027,
+      "freeCashFlowYield": -0.062
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "marketCap": 10857403607,
+      "evToEBITDA": 5.95
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "marketCap": 15021802868,
+      "evToEBITDA": 4.52
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 1
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 0,
+      "totalSales": 2
+    }
+  ],
+  "quote": {
+    "symbol": "BG",
+    "name": "Bunge Global S.A.",
+    "price": 124.73,
+    "changePercentage": -0.87,
+    "volume": 1796395,
+    "dayLow": 124,
+    "dayHigh": 127.24,
+    "yearHigh": 127.24,
+    "yearLow": 68.33,
+    "marketCap": 24136377570,
+    "priceAvg50": 113.55,
+    "priceAvg200": 92.27,
+    "exchange": "NYSE",
+    "previousClose": 125.83
+  }
+}
