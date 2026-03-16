@@ -4,18 +4,18 @@
 ================================================================================
     # Symbol   Name                  Comp    L1    L2    L3   F  Insider
   --------------------------------------------------------------------------
-    1 PYPL     PayPal Holdings, Inc   6.9   8.6   7.1   4.1   8        -
+    1 PYPL     PayPal Holdings, Inc   6.7   8.0   7.1   4.1   8        -
     2 CMCSA    Comcast Corporation    6.5   7.4   7.0   4.2   8        -
     3 QCOM     QUALCOMM Incorporate   6.4   3.6   8.6   7.0   6        -
     4 HPQ      HP Inc.                6.4   4.9   6.9   7.8   5        -
-    5 BABA     Alibaba Group Holdin   6.4   7.6   6.4   4.7   7        -
-    6 CI       Cigna Corporation      6.3   6.0   6.3   6.5   7        -
-    7 BMY      Bristol-Myers Squibb   6.2   6.4   8.3   2.8   8        -
+    5 CI       Cigna Corporation      6.3   6.0   6.3   6.5   7        -
+    6 BMY      Bristol-Myers Squibb   6.2   6.4   8.3   2.8   8        -
+    7 BABA     Alibaba Group Holdin   6.2   7.0   6.4   4.7   7        -
     8 MO       Altria Group, Inc.     6.1   5.8   8.8   2.2   6        -
     9 NKE      NIKE, Inc.             6.0   5.1   7.2   5.5   4        -
-   10 EBAY     eBay Inc.              5.9   4.2   7.6   5.7   6        -
-   11 DIS      The Walt Disney Comp   5.9   4.5   6.7   6.4   8        -
-   12 GILD     Gilead Sciences, Inc   5.8   3.1   8.3   5.4   9        -
+   10 DIS      The Walt Disney Comp   5.9   4.5   6.7   6.4   8        -
+   11 GILD     Gilead Sciences, Inc   5.8   3.1   8.3   5.4   9        -
+   12 EBAY     eBay Inc.              5.7   3.5   7.6   5.7   6        -
    13 DELL     Dell Technologies In   5.2   4.3   5.2   6.5   6        -
    14 GM       General Motors Compa   5.1   4.7   5.9   4.2   5        -
    15 UPS      United Parcel Servic   5.0   5.5   5.1   4.1   5        -
@@ -61,10 +61,10 @@
 ============================================================
   PYPL | PayPal Holdings, Inc.
   市值: $42.0B | 行业: Financial Services
-  综合得分: 6.9/10
+  综合得分: 6.7/10
 ============================================================
 
-  L1 可能便宜了 [8.6/10]
+  L1 可能便宜了 [8.0/10]
     EV/EBITDA: 7.5 | PE: 10.7 | PB: 2.76
     FCF Yield: N/A% | Shareholder Yield: 6.8%
     Insider Buy(6m): 0笔 $0.00M | Cluster: False
@@ -147,29 +147,6 @@
 
   ⚠️  警告: FLAG: 负股东权益(PB<0), 回购/杠杆导致; FLAG: Z-Score=1.59(灰色区域1.0-1.81, 财务风险偏高)
 ============================================================
-  BABA | Alibaba Group Holding Limited
-  市值: $313.6B | 行业: Consumer Cyclical
-  综合得分: 6.4/10
-============================================================
-
-  L1 可能便宜了 [7.6/10]
-    EV/EBITDA: 12.7 | PE: 17.3 | PB: 2.23
-    FCF Yield: 24.6% | Shareholder Yield: 8.2%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): -6.9%
-
-  L2 便宜不是陷阱 [6.4/10]
-    Accruals: -0.019 | CFO/NI: 1.27x
-    GP/Assets: 0.220 | ROIC: 7.9% | ROE: 12.9%
-    Asset Growth(1Y): 2.4%
-    F-Score: 7/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [4.7/10]
-    52周位置: 70%
-    最近Surprise: -7.6% (连续0次)
-
-  ⚠️  警告: FLAG: Z-Score=1.73(灰色区域1.0-1.81, 财务风险偏高)
-============================================================
   CI | Cigna Corporation
   市值: $71.4B | 行业: Healthcare
   综合得分: 6.3/10
@@ -213,6 +190,29 @@
     最近Surprise: 2.4% (连续4次)
 
   ⚠️  警告: FLAG: 低基数beat(EPS超预期但同比下降)
+============================================================
+  BABA | Alibaba Group Holding Limited
+  市值: $313.6B | 行业: Consumer Cyclical
+  综合得分: 6.2/10
+============================================================
+
+  L1 可能便宜了 [7.0/10]
+    EV/EBITDA: 12.7 | PE: 17.3 | PB: 2.23
+    FCF Yield: 24.6% | Shareholder Yield: 8.2%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -6.9%
+
+  L2 便宜不是陷阱 [6.4/10]
+    Accruals: -0.019 | CFO/NI: 1.27x
+    GP/Assets: 0.220 | ROIC: 7.9% | ROE: 12.9%
+    Asset Growth(1Y): 2.4%
+    F-Score: 7/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [4.7/10]
+    52周位置: 70%
+    最近Surprise: -7.6% (连续0次)
+
+  ⚠️  警告: FLAG: Z-Score=1.73(灰色区域1.0-1.81, 财务风险偏高)
 ============================================================
   MO | Altria Group, Inc.
   市值: $114.0B | 行业: Consumer Defensive
@@ -260,27 +260,6 @@
 
   ⚠️  警告: FLAG: 低基数beat(EPS超预期但同比下降)
 ============================================================
-  EBAY | eBay Inc.
-  市值: $41.3B | 行业: Consumer Cyclical
-  综合得分: 5.9/10
-============================================================
-
-  L1 可能便宜了 [4.2/10]
-    EV/EBITDA: 15.7 | PE: 19.3 | PB: 8.51
-    FCF Yield: 4.0% | Shareholder Yield: 10.4%
-    Insider Buy(6m): 0笔 $0.00M | Cluster: False
-    流通股变化(1Y): -9.1%
-
-  L2 便宜不是陷阱 [7.6/10]
-    Accruals: -0.009 | CFO/NI: 1.08x
-    GP/Assets: 0.450 | ROIC: 14.4% | ROE: 44.0%
-    Asset Growth(1Y): -9.1%
-    F-Score: 6/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
-
-  L3 市场开始纠错 [5.7/10]
-    52周位置: 90%
-    最近Surprise: 4.4% (连续4次)
-============================================================
   DIS | The Walt Disney Company
   市值: $176.1B | 行业: Communication Services
   综合得分: 5.9/10
@@ -322,6 +301,27 @@
   L3 市场开始纠错 [5.4/10]
     52周位置: 92%
     最近Surprise: 2.8% (连续4次)
+============================================================
+  EBAY | eBay Inc.
+  市值: $41.3B | 行业: Consumer Cyclical
+  综合得分: 5.7/10
+============================================================
+
+  L1 可能便宜了 [3.5/10]
+    EV/EBITDA: 15.7 | PE: 19.3 | PB: 8.51
+    FCF Yield: 4.0% | Shareholder Yield: 10.4%
+    Insider Buy(6m): 0笔 $0.00M | Cluster: False
+    流通股变化(1Y): -9.1%
+
+  L2 便宜不是陷阱 [7.6/10]
+    Accruals: -0.009 | CFO/NI: 1.08x
+    GP/Assets: 0.450 | ROIC: 14.4% | ROE: 44.0%
+    Asset Growth(1Y): -9.1%
+    F-Score: 6/9 (roa_positive, cfo_positive, roa_improving, cfo_gt_ni...)
+
+  L3 市场开始纠错 [5.7/10]
+    52周位置: 90%
+    最近Surprise: 4.4% (连续4次)
 ============================================================
   DELL | Dell Technologies Inc.
   市值: $101.6B | 行业: Technology

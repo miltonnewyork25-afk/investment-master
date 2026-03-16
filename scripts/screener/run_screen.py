@@ -102,18 +102,19 @@ def format_stage2_ranking(results: list[StockScreenResult]) -> str:
     lines.append(f"  Stage 2 深筛排名 | {len(active)}只通过 / {len(vetoed)}只否决 / {len(results)}只总计")
     lines.append(f"  权重: L1(便宜)15% + L2(不是陷阱)15% + L3(纠错)15% + L4(品质)30% + L5(拐点)25%")
     lines.append(f"{'='*95}")
-    lines.append(f"  {'#':>3} {'Symbol':<6} {'S2':>5} {'S1':>5} {'L1':>5} {'L2':>5} {'L3':>5} {'L4':>5} {'L5':>5} {'F':>3} {'GM%':>5} {'ROIC5Y':>7}")
-    lines.append(f"  {'-'*88}")
+    lines.append(f"  {'#':>3} {'Symbol':<6} {'S2':>5} {'S1':>5} {'L1':>5} {'L2':>5} {'L3':>5} {'L4':>5} {'L5':>5} {'F':>3} {'FCFm%':>6} {'GM%':>5} {'EPS质量':>10}")
+    lines.append(f"  {'-'*95}")
 
     for i, r in enumerate(active, 1):
+        fcfm = f"{r.l4.fcf_margin:.0f}" if r.l4.fcf_margin is not None else "N/A"
         gm = f"{r.l4.gross_margin_latest:.0f}" if r.l4.gross_margin_latest is not None else "N/A"
-        roic = f"{r.l4.roic_5y_mean:.0f}" if r.l4.roic_5y_mean is not None else "N/A"
+        eps_q = r.l4.eps_quality or "N/A"
         lines.append(
             f"  {i:>3} {r.symbol:<6} "
             f"{r.stage2_score:>5.1f} {r.composite_score:>5.1f} "
             f"{r.l1.score:>5.1f} {r.l2.score:>5.1f} {r.l3.score:>5.1f} "
             f"{r.l4.score:>5.1f} {r.l5.score:>5.1f} "
-            f"{r.l2.f_score or 0:>3} {gm:>5} {roic:>7}"
+            f"{r.l2.f_score or 0:>3} {fcfm:>6} {gm:>5} {eps_q:>10}"
         )
 
     if vetoed:

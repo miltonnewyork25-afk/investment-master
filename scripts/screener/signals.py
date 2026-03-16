@@ -36,6 +36,7 @@ class L1Signals:
     ev_ebitda_percentile_10y: Optional[float] = None  # EV/EBITDA 10年百分位
     pe_vs_median: Optional[float] = None          # 当前PE / 10年中位PE - 1 (负=便宜)
     pe_median_10y: Optional[float] = None         # 10年中位PE (参考)
+    pe_normalized: Optional[float] = None         # 正常化PE(剔除季度NI异常值)
 
     # Insider Buy
     insider_buy_count_6m: int = 0             # 近6月买入笔数
@@ -47,6 +48,7 @@ class L1Signals:
     shares_change_1y: Optional[float] = None  # 流通股变化%, 负=缩股
     shares_change_3y: Optional[float] = None
     buyback_debt_funded: Optional[bool] = None
+    buyback_fcf_ratio: Optional[float] = None # 回购/FCF, >1=靠举债回购(不可持续)
 
     score: Optional[float] = None
 
@@ -116,6 +118,13 @@ class L4Signals:
     roic_trend: Optional[float] = None               # ROIC趋势(正=改善)
     sbc_revenue_pct: Optional[float] = None          # SBC/Revenue, 低=纪律
 
+    # Compounding Speed (复利速度) — 每$1收入有多少变成自由现金
+    fcf_margin: Optional[float] = None               # FCF/Revenue %, 越高=复利越快
+    fcf_margin_trend: Optional[float] = None         # FCF margin 3Y斜率, 正=改善
+    capex_intensity: Optional[float] = None          # CapEx/Revenue %, 低=资本轻
+    reinvestment_need: Optional[float] = None        # (CapEx+R&D)/Revenue %, 低=少再投资
+    compounding_power: Optional[float] = None        # FCF margin × (1+rev_cagr) = 综合复利力
+
     # Buyback Discipline
     shares_change_5y: Optional[float] = None         # 5年净股数变化%, 负=缩股
     fcf_conversion: Optional[float] = None           # FCF/NI均值, >1=高质量
@@ -128,6 +137,13 @@ class L4Signals:
     # Growth Durability
     positive_growth_years: Optional[int] = None      # 10年中收入正增长的年数
     growth_acceleration: Optional[float] = None      # 3Y CAGR - 10Y CAGR, 正=加速
+
+    # EPS Growth Decomposition (EPS增速分解)
+    eps_cagr_5y: Optional[float] = None              # 5年EPS CAGR
+    eps_from_revenue: Optional[float] = None         # 来自收入增长的占比%
+    eps_from_margin: Optional[float] = None          # 来自利润率扩张的占比%
+    eps_from_buyback: Optional[float] = None         # 来自回购的占比%
+    eps_quality: Optional[str] = None                # "revenue_driven"/"margin_driven"/"buyback_driven"
 
     score: Optional[float] = None
 
@@ -353,6 +369,9 @@ def score_l1(s: L1Signals) -> float:
         bb_score = _normalize(s.shares_change_1y, -10, 10, invert=True)
         if s.buyback_debt_funded:
             bb_score *= 0.5
+        # Buyback sustainability: >1.0 = buying back more than FCF (debt-funded)
+        if s.buyback_fcf_ratio is not None and s.buyback_fcf_ratio > 1.0:
+            bb_score *= 0.7  # 30% penalty for unsustainable buyback
     scores.append(bb_score)
     weights.append(0.15 if has_insider else 0.20)
 
@@ -491,27 +510,41 @@ def _stdev(values: list[float]) -> float:
 
 def score_l4(s: L4Signals) -> float:
     """
-    Layer 4: 品质护城河 (CQI-Lite)
-    定价权30% + 经常性/持久性20% + 资本效率20% + 反周期15% + 增长持久15%
+    Layer 4: 品质护城河 (CQI-Lite) v2.0
+    定价权25% + 复利速度20% + 经常性15% + 资本效率15% + 反周期15% + 增长持久10%
+    v2.0: 新增复利速度(FCF margin+CapEx轻度), EPS分解作为质量加分
     """
     scores = []
     weights = []
 
-    # --- Pricing Power (30%) ---
+    # --- Pricing Power (25%) ---
     pp_scores = []
     if s.gross_margin_latest is not None:
         pp_scores.append(_normalize(s.gross_margin_latest, 10, 80, invert=False))
     if s.gross_margin_10y_slope is not None:
-        # Slope: positive=improving. 0.5%/yr is good, 2%/yr is excellent
         pp_scores.append(_normalize(s.gross_margin_10y_slope, -1.0, 2.0, invert=False))
     if s.gross_margin_stability is not None:
-        # Low volatility = stable pricing power
         pp_scores.append(_normalize(s.gross_margin_stability, 0, 15, invert=True))
     if pp_scores:
         scores.append(sum(pp_scores) / len(pp_scores))
-        weights.append(0.30)
+        weights.append(0.25)
 
-    # --- Revenue Durability (20%) ---
+    # --- Compounding Speed 复利速度 (20%) --- NEW
+    cs_scores = []
+    if s.fcf_margin is not None:
+        # FCF margin: VRSN=65%(极高), PYPL=17%, HPQ=6%, GM=5%
+        cs_scores.append(_normalize(s.fcf_margin, 0, 50, invert=False))
+    if s.capex_intensity is not None:
+        # CapEx/Rev: 低=资本轻. VRSN=1.4%, PYPL=2.6%, GM=5%
+        cs_scores.append(_normalize(s.capex_intensity, 0, 15, invert=True))
+    if s.reinvestment_need is not None:
+        # (CapEx+R&D)/Rev: 低=少再投资
+        cs_scores.append(_normalize(s.reinvestment_need, 0, 25, invert=True))
+    if cs_scores:
+        scores.append(sum(cs_scores) / len(cs_scores))
+        weights.append(0.20)
+
+    # --- Revenue Durability (15%) ---
     rd_scores = []
     if s.revenue_volatility_10y is not None:
         rd_scores.append(_normalize(s.revenue_volatility_10y, 0, 30, invert=True))
@@ -519,9 +552,9 @@ def score_l4(s: L4Signals) -> float:
         rd_scores.append(_normalize(s.positive_growth_years, 3, 10, invert=False))
     if rd_scores:
         scores.append(sum(rd_scores) / len(rd_scores))
-        weights.append(0.20)
+        weights.append(0.15)
 
-    # --- Capital Efficiency (20%) ---
+    # --- Capital Efficiency (15%) ---
     ce_scores = []
     if s.roic_5y_mean is not None:
         if s.roic_5y_mean < 0:
@@ -534,12 +567,11 @@ def score_l4(s: L4Signals) -> float:
         ce_scores.append(_normalize(s.fcf_conversion, 0.5, 1.5, invert=False))
     if ce_scores:
         scores.append(sum(ce_scores) / len(ce_scores))
-        weights.append(0.20)
+        weights.append(0.15)
 
     # --- Anti-Cyclical D1 Proxy (15%) ---
     ac_scores = []
     if s.max_revenue_drop_10y is not None:
-        # max drop is negative. Closer to 0 = more resilient
         ac_scores.append(_normalize(s.max_revenue_drop_10y, -40, 5, invert=False))
     if s.revenue_drop_2020 is not None:
         ac_scores.append(_normalize(s.revenue_drop_2020, -30, 10, invert=False))
@@ -547,19 +579,26 @@ def score_l4(s: L4Signals) -> float:
         scores.append(sum(ac_scores) / len(ac_scores))
         weights.append(0.15)
 
-    # --- Growth Durability (15%) ---
+    # --- Growth Durability (10%) ---
     gd_scores = []
     if s.revenue_cagr_10y is not None:
         gd_scores.append(_normalize(s.revenue_cagr_10y, -2, 20, invert=False))
     if s.growth_acceleration is not None:
-        # 3Y CAGR > 10Y CAGR = accelerating
         gd_scores.append(_normalize(s.growth_acceleration, -5, 10, invert=False))
     if gd_scores:
         scores.append(sum(gd_scores) / len(gd_scores))
-        weights.append(0.15)
+        weights.append(0.10)
 
     total_weight = sum(weights)
-    s.score = sum(s * w for s, w in zip(scores, weights)) / total_weight if total_weight > 0 else 5.0
+    base = sum(s * w for s, w in zip(scores, weights)) / total_weight if total_weight > 0 else 5.0
+
+    # EPS Quality Bonus: revenue-driven growth = most durable compounding
+    if s.eps_quality == "revenue_driven":
+        base = min(base + 0.5, 10.0)
+    elif s.eps_quality == "buyback_driven":
+        base = max(base - 0.3, 0.0)
+
+    s.score = base
     return s.score
 
 
@@ -850,6 +889,28 @@ def extract_signals_from_fmp(
         shares_chg = result.l1.shares_change_1y or 0
         buyback_yield = -shares_chg  # 缩股=正
         result.l1.shareholder_yield = div_yield_pct + buyback_yield
+
+    # --- L1: Buyback/FCF sustainability ratio ---
+    if cashflow and len(cashflow) > 0:
+        ocf = cashflow[0].get('operatingCashFlow', 0) or cashflow[0].get('netCashProvidedByOperatingActivities', 0)
+        capex = abs(cashflow[0].get('capitalExpenditure', 0) or 0)
+        buyback_amt = abs(cashflow[0].get('commonStockRepurchased', 0) or 0)
+        fcf = ocf - capex
+        if fcf > 0 and buyback_amt > 0:
+            result.l1.buyback_fcf_ratio = buyback_amt / fcf
+
+    # --- L1: Normalized PE (剔除季度NI异常值) ---
+    if income_quarterly and len(income_quarterly) >= 4:
+        ni_quarters = [q.get('netIncome', 0) for q in income_quarterly[:4] if q.get('netIncome')]
+        if len(ni_quarters) >= 4:
+            # Remove outlier: if max > 3x median, replace with median
+            sorted_ni = sorted(ni_quarters)
+            median_ni = sorted_ni[len(sorted_ni) // 2]
+            if median_ni > 0:
+                normalized = [min(ni, median_ni * 3) for ni in ni_quarters]
+                norm_annual_ni = sum(normalized)
+                if norm_annual_ni > 0 and result.market_cap and result.market_cap > 0:
+                    result.l1.pe_normalized = result.market_cap / norm_annual_ni
 
     # --- L1: Insider Buy ---
     # FMP insider-trading endpoint returns quarterly summaries:
@@ -1233,6 +1294,37 @@ def _extract_l4(
         if rev and rev > 0 and sbc is not None:
             s.sbc_revenue_pct = abs(sbc) / rev * 100
 
+    # --- Compounding Speed: FCF Margin + CapEx Intensity ---
+    src_inc = income_10y if income_10y and len(income_10y) >= 2 else income
+    src_cf = cashflow_10y if cashflow_10y and len(cashflow_10y) >= 2 else (cashflow if cashflow else [])
+    if src_inc and src_cf and len(src_inc) > 0 and len(src_cf) > 0:
+        # Latest year FCF margin
+        rev_latest = src_inc[0].get('revenue', 0)
+        ocf_latest = src_cf[0].get('operatingCashFlow', 0) or src_cf[0].get('netCashProvidedByOperatingActivities', 0)
+        capex_latest = abs(src_cf[0].get('capitalExpenditure', 0) or 0)
+        rnd_latest = src_inc[0].get('researchAndDevelopmentExpenses', 0) or 0
+
+        if rev_latest and rev_latest > 0:
+            fcf_latest = ocf_latest - capex_latest
+            s.fcf_margin = (fcf_latest / rev_latest) * 100
+            s.capex_intensity = (capex_latest / rev_latest) * 100
+            s.reinvestment_need = ((capex_latest + rnd_latest) / rev_latest) * 100
+
+        # FCF margin trend (3Y slope)
+        fcf_margins = []
+        for i in range(min(5, len(src_inc), len(src_cf))):
+            r = src_inc[i].get('revenue', 0)
+            o = src_cf[i].get('operatingCashFlow', 0) or src_cf[i].get('netCashProvidedByOperatingActivities', 0)
+            c = abs(src_cf[i].get('capitalExpenditure', 0) or 0)
+            if r and r > 0:
+                fcf_margins.append(((o - c) / r) * 100)
+        if len(fcf_margins) >= 3:
+            s.fcf_margin_trend = _linear_slope(list(reversed(fcf_margins)))
+
+        # Compounding power: FCF margin × (1 + rev_cagr)
+        if s.fcf_margin is not None and s.revenue_cagr_10y is not None:
+            s.compounding_power = s.fcf_margin * (1 + s.revenue_cagr_10y / 100)
+
     # --- FCF Conversion ---
     if income and cashflow and len(income) >= 2 and len(cashflow) >= 2:
         conversions = []
@@ -1254,6 +1346,50 @@ def _extract_l4(
                 break
         if so_now and so_5y and so_5y > 0 and so_now > 0:
             s.shares_change_5y = (so_now / so_5y - 1) * 100
+
+    # --- EPS Growth Decomposition ---
+    if income_10y and len(income_10y) >= 5:
+        eps_now = income_10y[0].get('epsDiluted') or income_10y[0].get('eps', 0)
+        eps_5y = None
+        for inc in income_10y[4:6]:
+            e = inc.get('epsDiluted') or inc.get('eps', 0)
+            if e and e > 0:
+                eps_5y = e
+                break
+        if eps_now and eps_5y and eps_5y > 0 and eps_now > 0:
+            s.eps_cagr_5y = _cagr(eps_5y, eps_now, 5)
+
+            # Decompose: EPS = (NI/Rev) × (Rev/Shares) = NetMargin × RevPerShare
+            rev_now = income_10y[0].get('revenue', 0) or 0
+            rev_5y = 0
+            so_now_d = income_10y[0].get('weightedAverageShsOutDil') or income_10y[0].get('weightedAverageShsOut', 0) or 1
+            so_5y_d = 1
+            for inc in income_10y[4:6]:
+                r = inc.get('revenue', 0)
+                sod = inc.get('weightedAverageShsOutDil') or inc.get('weightedAverageShsOut', 0)
+                if r and r > 0 and sod and sod > 0:
+                    rev_5y = r
+                    so_5y_d = sod
+                    break
+
+            if rev_now > 0 and rev_5y > 0 and so_5y_d > 0 and so_now_d > 0:
+                rev_growth = (rev_now / rev_5y) ** 0.2 - 1  # annualized
+                share_reduction = 1 - (so_now_d / so_5y_d) ** 0.2  # annualized buyback contribution
+                total_eps_growth = (eps_now / eps_5y) ** 0.2 - 1 if eps_5y > 0 else 0
+                margin_contribution = total_eps_growth - rev_growth - share_reduction if total_eps_growth != 0 else 0
+
+                if total_eps_growth > 0:
+                    s.eps_from_revenue = (rev_growth / total_eps_growth) * 100
+                    s.eps_from_buyback = (share_reduction / total_eps_growth) * 100
+                    s.eps_from_margin = (margin_contribution / total_eps_growth) * 100
+
+                    # Classify
+                    if s.eps_from_revenue >= 50:
+                        s.eps_quality = "revenue_driven"
+                    elif s.eps_from_buyback >= 50:
+                        s.eps_quality = "buyback_driven"
+                    else:
+                        s.eps_quality = "margin_driven"
 
 
 def _extract_l5(
