@@ -679,9 +679,25 @@ def score_l5(s: L5Signals) -> float:
 # Veto Logic (硬否决)
 # ============================================================
 
+# 铁律: 行业排除名单 — 二元信息无法提前验证和量化的赛道
+# 生物制药: 核心驱动是管线二元结果(FDA批准/失败), 无法用财务因子量化
+EXCLUDED_INDUSTRIES = {
+    'Biotechnology',
+    'Drug Manufacturers - General',
+    'Drug Manufacturers - Specialty & Generic',
+    'Medical - Pharmaceuticals',
+}
+
+
 def check_vetoes(result: StockScreenResult) -> list[str]:
     """检查硬否决条件. 返回否决原因列表."""
     vetoes = []
+
+    # 铁律第一条: 生物制药行业硬否决
+    if hasattr(result, '_industry') and result._industry in EXCLUDED_INDUSTRIES:
+        vetoes.append(f"VETO: 生物制药行业排除({result._industry})")
+        result.vetoes = vetoes
+        return vetoes  # 直接返回, 不再检查其他条件
 
     # 高应计 + 低现金流 = 利润质量极差
     if (result.l2.accruals_ratio is not None and result.l2.accruals_ratio > 0.15
@@ -984,6 +1000,8 @@ def extract_signals_from_fmp(
         market_cap=profile.get('marketCap') or profile.get('mktCap', 0),
         sector=profile.get('sector', ''),
     )
+    # Store industry for veto check (not in dataclass to keep it clean)
+    result._industry = profile.get('industry', '')
 
     # --- L1: Valuation ---
     if ratios and len(ratios) > 0:

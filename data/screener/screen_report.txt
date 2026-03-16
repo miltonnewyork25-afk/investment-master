@@ -1,6 +1,6 @@
 
 ================================================================================
-  低估股筛选排名 | 323只通过 / 16只否决 / 339只总计
+  低估股筛选排名 | 307只通过 / 32只否决 / 339只总计
 ================================================================================
     # Symbol   Name                  Comp    L1    L2    L3   F  Insider
   --------------------------------------------------------------------------
@@ -26,84 +26,84 @@
    20 NFLX     Netflix, Inc.          6.3   5.4   7.4   5.8   7        -
    21 MEDP     Medpace Holdings, In   6.3   3.4   9.1   5.7   6        -
    22 PTC      PTC Inc.               6.2   5.2   7.4   5.8   8        -
-   23 BMY      Bristol-Myers Squibb   6.2   6.4   8.3   2.8   8        -
-   24 LUV      Southwest Airlines C   6.2   5.5   6.9   5.9   8        -
-   25 BABA     Alibaba Group Holdin   6.2   7.0   6.4   4.7   7        -
-   26 APP      AppLovin Corporation   6.1   3.6   7.4   7.7   6        -
-   27 NEM      Newmont Corporation    6.1   6.2   7.5   3.8   9        -
-   28 KMB      Kimberly-Clark Corpo   6.1   4.7   7.0   6.6   5        -
-   29 DXCM     DexCom, Inc.           6.1   3.3   8.8   5.7   7        -
-   30 MO       Altria Group, Inc.     6.1   5.8   8.8   2.2   6        -
-   31 THC      Tenet Healthcare Cor   6.1   7.7   7.4   1.6   7        -
-   32 NKE      NIKE, Inc.             6.0   5.1   7.2   5.5   4        -
-   33 UNH      UnitedHealth Group I   6.0   2.9   6.3  10.0   6        -
-   34 NTAP     NetApp, Inc.           6.0   5.8   7.1   4.4   6        -
-   35 ADP      Automatic Data Proce   6.0   3.2   7.6   7.4   8        -
-   36 HUBS     HubSpot, Inc.          6.0   1.6   7.3  10.0   5        -
-   37 CPRT     Copart, Inc.           5.9   3.9   5.6   9.3   6        -
-   38 PODD     Insulet Corporation    5.9   1.9   8.3   7.6   6        -
-   39 INTU     Intuit Inc.            5.9   2.2   7.1   9.2   8        -
-   40 CNC      Centene Corporation    5.9   6.6   7.8   9.6   7        -
-   41 DIS      The Walt Disney Comp   5.9   4.5   6.7   6.4   8        -
-   42 IDXX     IDEXX Laboratories,    5.8   3.3   8.5   5.1   7        -
-   43 GILD     Gilead Sciences, Inc   5.8   3.1   8.3   5.4   9        -
-   44 HUM      Humana Inc.            5.7   2.8   5.9   9.5   5        -
-   45 EBAY     eBay Inc.              5.7   3.5   7.6   5.7   6        -
-   46 EFX      Equifax Inc.           5.7   3.0   7.3   6.9   7        -
-   47 DHI      D.R. Horton, Inc.      5.7   5.8   6.2   4.8   4        -
-   48 MA       Mastercard Incorpora   5.7   4.5   8.1   3.4   8        -
-   49 INCY     Incyte Corporation     5.6   6.5   6.1   3.5   7        -
-   50 OTIS     Otis Worldwide Corpo   5.6   3.3   8.4   4.3   6        -
-   51 UHS      Universal Health Ser   5.6   6.1   5.8   4.4   6        -
-   52 DAL      Delta Air Lines, Inc   5.5   5.5   6.2   4.6   7        -
-   53 ILMN     Illumina, Inc.         5.5   3.9   7.4   4.7   8        -
-   54 CCL      Carnival Corporation   5.5   4.0   6.6   5.9   7        -
-   55 BR       Broadridge Financial   5.5   2.8   7.1   6.9   8        -
-   56 KR       The Kroger Co.         5.5   6.1   8.2   0.3   6        -
-   57 LDOS     Leidos Holdings, Inc   5.5   5.4   7.0   3.1   8        -
-   58 MCO      Moody's Corporation    5.4   3.4   8.0   4.3   8        -
-   59 HIG      The Hartford Financi   5.4   7.3   6.1   1.6   8        -
-   60 ALGN     Align Technology, In   5.4   3.9   7.4   4.2   7        -
-   61 AMP      Ameriprise Financial   5.3   7.4   4.4   3.9   3        -
-   62 KVUE     Kenvue Inc.            5.3   3.8   6.2   6.1   5        -
-   63 MRSH     Marsh & McLennan Com   5.3   3.7   6.2   6.1   6        -
-   64 URI      United Rentals, Inc.   5.3   3.7   6.6   5.6   4        -
-   65 SPGI     S&P Global Inc.        5.3   3.8   6.5   5.4   7        -
-   66 EXPD     Expeditors Internati   5.3   3.8   8.0   2.9   7        -
-   67 LVS      Las Vegas Sands Corp   5.3   4.0   6.6   4.8   7        -
-   68 META     Meta Platforms, Inc.   5.2   4.2   6.5   4.6   5        -
-   69 ROP      Roper Technologies,    5.2   2.9   5.4   8.2   5        -
-   70 IQV      IQVIA Holdings Inc.    5.2   4.2   5.2   6.7   4        -
-   71 IHG      InterContinental Hot   5.2   4.7   7.1   2.9   7        -
-   72 DELL     Dell Technologies In   5.2   4.3   5.2   6.5   6        -
-   73 ODFL     Old Dominion Freight   5.2   2.9   8.1   3.7   6        -
-   74 SMCI     Super Micro Computer   5.2   2.4   4.6  10.0   6        -
-   75 TYL      Tyler Technologies,    5.2   1.5   6.2   8.7   7        -
-   76 AMZN     Amazon.com, Inc.       5.2   5.5   5.6   3.9   5        -
-   77 AFRM     Affirm Holdings, Inc   5.2   1.1   5.7  10.0   6        -
-   78 HCA      HCA Healthcare, Inc.   5.2   4.4   8.5   0.8   7        -
-   79 TMUS     T-Mobile US, Inc.      5.1   4.3   6.6   4.1   6        -
-   80 BDX      Becton, Dickinson an   5.1   4.7   6.8   3.0   8        -
-   81 LII      Lennox International   5.1   3.5   6.0   6.0   4        -
-   82 PSTG     Everpure, Inc          5.1   1.7   6.4   7.8   5        -
-   83 V        Visa Inc.              5.1   3.5   7.4   3.6   6        -
-   84 VEEV     Veeva Systems Inc.     5.1   2.1   5.6   8.5   6        -
-   85 ADSK     Autodesk, Inc.         5.1   2.6   7.5   4.7   6        -
-   86 NOW      ServiceNow, Inc.       5.1   1.9   5.3   9.3   3        -
-   87 PAYX     Paychex, Inc.          5.1   2.8   5.0   8.5   5        -
-   88 TOST     Toast, Inc.            5.1   0.8   6.4   8.9   6        -
-   89 ASML     ASML Holding N.V.      5.1   3.2   8.2   2.6   8        -
-   90 JBHT     J.B. Hunt Transport    5.1   3.7   7.5   3.0   7        -
-   91 GM       General Motors Compa   5.1   4.7   5.9   4.2   5        -
-   92 CARR     Carrier Global Corpo   5.0   3.4   5.7   6.3   4        -
-   93 BSX      Boston Scientific Co   5.0   1.9   6.4   7.4   7        -
-   94 ON       ON Semiconductor Cor   5.0   3.6   6.9   4.1   4        -
-   95 ORCL     Oracle Corporation     5.0   1.2   5.3  10.0   4        -
-   96 COP      ConocoPhillips         5.0   6.1   7.2   0.1   7        -
-   97 AIG      American Internation   5.0   6.1   5.6   2.6   6        -
-   98 MTD      Mettler-Toledo Inter   5.0   2.9   7.1   4.6   5        -
-   99 STT      State Street Corpora   5.0   6.4   5.5   2.3   7        -
-  100 LOW      Lowe's Companies, In   5.0   3.9   6.8   3.8   6        -
+   23 LUV      Southwest Airlines C   6.2   5.5   6.9   5.9   8        -
+   24 BABA     Alibaba Group Holdin   6.2   7.0   6.4   4.7   7        -
+   25 APP      AppLovin Corporation   6.1   3.6   7.4   7.7   6        -
+   26 NEM      Newmont Corporation    6.1   6.2   7.5   3.8   9        -
+   27 KMB      Kimberly-Clark Corpo   6.1   4.7   7.0   6.6   5        -
+   28 DXCM     DexCom, Inc.           6.1   3.3   8.8   5.7   7        -
+   29 MO       Altria Group, Inc.     6.1   5.8   8.8   2.2   6        -
+   30 THC      Tenet Healthcare Cor   6.1   7.7   7.4   1.6   7        -
+   31 NKE      NIKE, Inc.             6.0   5.1   7.2   5.5   4        -
+   32 UNH      UnitedHealth Group I   6.0   2.9   6.3  10.0   6        -
+   33 NTAP     NetApp, Inc.           6.0   5.8   7.1   4.4   6        -
+   34 ADP      Automatic Data Proce   6.0   3.2   7.6   7.4   8        -
+   35 HUBS     HubSpot, Inc.          6.0   1.6   7.3  10.0   5        -
+   36 CPRT     Copart, Inc.           5.9   3.9   5.6   9.3   6        -
+   37 PODD     Insulet Corporation    5.9   1.9   8.3   7.6   6        -
+   38 INTU     Intuit Inc.            5.9   2.2   7.1   9.2   8        -
+   39 CNC      Centene Corporation    5.9   6.6   7.8   9.6   7        -
+   40 DIS      The Walt Disney Comp   5.9   4.5   6.7   6.4   8        -
+   41 IDXX     IDEXX Laboratories,    5.8   3.3   8.5   5.1   7        -
+   42 HUM      Humana Inc.            5.7   2.8   5.9   9.5   5        -
+   43 EBAY     eBay Inc.              5.7   3.5   7.6   5.7   6        -
+   44 EFX      Equifax Inc.           5.7   3.0   7.3   6.9   7        -
+   45 DHI      D.R. Horton, Inc.      5.7   5.8   6.2   4.8   4        -
+   46 MA       Mastercard Incorpora   5.7   4.5   8.1   3.4   8        -
+   47 OTIS     Otis Worldwide Corpo   5.6   3.3   8.4   4.3   6        -
+   48 UHS      Universal Health Ser   5.6   6.1   5.8   4.4   6        -
+   49 DAL      Delta Air Lines, Inc   5.5   5.5   6.2   4.6   7        -
+   50 ILMN     Illumina, Inc.         5.5   3.9   7.4   4.7   8        -
+   51 CCL      Carnival Corporation   5.5   4.0   6.6   5.9   7        -
+   52 BR       Broadridge Financial   5.5   2.8   7.1   6.9   8        -
+   53 KR       The Kroger Co.         5.5   6.1   8.2   0.3   6        -
+   54 LDOS     Leidos Holdings, Inc   5.5   5.4   7.0   3.1   8        -
+   55 MCO      Moody's Corporation    5.4   3.4   8.0   4.3   8        -
+   56 HIG      The Hartford Financi   5.4   7.3   6.1   1.6   8        -
+   57 ALGN     Align Technology, In   5.4   3.9   7.4   4.2   7        -
+   58 AMP      Ameriprise Financial   5.3   7.4   4.4   3.9   3        -
+   59 KVUE     Kenvue Inc.            5.3   3.8   6.2   6.1   5        -
+   60 MRSH     Marsh & McLennan Com   5.3   3.7   6.2   6.1   6        -
+   61 URI      United Rentals, Inc.   5.3   3.7   6.6   5.6   4        -
+   62 SPGI     S&P Global Inc.        5.3   3.8   6.5   5.4   7        -
+   63 EXPD     Expeditors Internati   5.3   3.8   8.0   2.9   7        -
+   64 LVS      Las Vegas Sands Corp   5.3   4.0   6.6   4.8   7        -
+   65 META     Meta Platforms, Inc.   5.2   4.2   6.5   4.6   5        -
+   66 ROP      Roper Technologies,    5.2   2.9   5.4   8.2   5        -
+   67 IQV      IQVIA Holdings Inc.    5.2   4.2   5.2   6.7   4        -
+   68 IHG      InterContinental Hot   5.2   4.7   7.1   2.9   7        -
+   69 DELL     Dell Technologies In   5.2   4.3   5.2   6.5   6        -
+   70 ODFL     Old Dominion Freight   5.2   2.9   8.1   3.7   6        -
+   71 SMCI     Super Micro Computer   5.2   2.4   4.6  10.0   6        -
+   72 TYL      Tyler Technologies,    5.2   1.5   6.2   8.7   7        -
+   73 AMZN     Amazon.com, Inc.       5.2   5.5   5.6   3.9   5        -
+   74 AFRM     Affirm Holdings, Inc   5.2   1.1   5.7  10.0   6        -
+   75 HCA      HCA Healthcare, Inc.   5.2   4.4   8.5   0.8   7        -
+   76 TMUS     T-Mobile US, Inc.      5.1   4.3   6.6   4.1   6        -
+   77 BDX      Becton, Dickinson an   5.1   4.7   6.8   3.0   8        -
+   78 LII      Lennox International   5.1   3.5   6.0   6.0   4        -
+   79 PSTG     Everpure, Inc          5.1   1.7   6.4   7.8   5        -
+   80 V        Visa Inc.              5.1   3.5   7.4   3.6   6        -
+   81 VEEV     Veeva Systems Inc.     5.1   2.1   5.6   8.5   6        -
+   82 ADSK     Autodesk, Inc.         5.1   2.6   7.5   4.7   6        -
+   83 NOW      ServiceNow, Inc.       5.1   1.9   5.3   9.3   3        -
+   84 PAYX     Paychex, Inc.          5.1   2.8   5.0   8.5   5        -
+   85 TOST     Toast, Inc.            5.1   0.8   6.4   8.9   6        -
+   86 ASML     ASML Holding N.V.      5.1   3.2   8.2   2.6   8        -
+   87 JBHT     J.B. Hunt Transport    5.1   3.7   7.5   3.0   7        -
+   88 GM       General Motors Compa   5.1   4.7   5.9   4.2   5        -
+   89 CARR     Carrier Global Corpo   5.0   3.4   5.7   6.3   4        -
+   90 BSX      Boston Scientific Co   5.0   1.9   6.4   7.4   7        -
+   91 ON       ON Semiconductor Cor   5.0   3.6   6.9   4.1   4        -
+   92 ORCL     Oracle Corporation     5.0   1.2   5.3  10.0   4        -
+   93 COP      ConocoPhillips         5.0   6.1   7.2   0.1   7        -
+   94 AIG      American Internation   5.0   6.1   5.6   2.6   6        -
+   95 MTD      Mettler-Toledo Inter   5.0   2.9   7.1   4.6   5        -
+   96 STT      State Street Corpora   5.0   6.4   5.5   2.3   7        -
+   97 LOW      Lowe's Companies, In   5.0   3.9   6.8   3.8   6        -
+   98 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
+   99 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
+  100 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
   101 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
   102 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
   103 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
@@ -124,227 +124,227 @@
   118 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
   119 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
   120 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
-  121 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
-  122 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
-  123 UNKNOWN                         5.0   5.0   5.0   5.0   0        -
-  124 LRCX     Lam Research Corpora   5.0   3.0   7.7   3.5   8        -
-  125 DDOG     Datadog, Inc.          5.0   1.3   6.6   7.7   5        -
-  126 ROK      Rockwell Automation,   5.0   2.7   7.9   3.5   7        -
-  127 ARM      Arm Holdings plc Ame   5.0   2.3   5.8   7.4   7        -
-  128 UPS      United Parcel Servic   5.0   5.5   5.1   4.1   5        -
-  129 BX       Blackstone Inc.        5.0   1.9   5.2   8.8   3        -
-  130 JD       JD.com, Inc.           5.0   4.6   6.6   2.8   6        -
-  131 A        Agilent Technologies   5.0   2.8   6.1   6.1   5        -
-  132 CSCO     Cisco Systems, Inc.    4.9   1.5   7.6   5.5   9        -
-  133 MSFT     Microsoft Corporatio   4.9   3.0   6.1   5.8   4        -
-  134 AAPL     Apple Inc.             4.9   2.4   8.6   2.7   8        -
-  135 PNC      The PNC Financial Se   4.9   4.8   5.9   3.5   8        -
-  136 MSCI     MSCI Inc.              4.9   2.3   8.7   2.5   8        -
-  137 KLAC     KLA Corporation        4.9   2.4   8.1   3.2   8        -
-  138 USB      U.S. Bancorp           4.9   5.4   5.4   3.3   7        -
-  139 RCL      Royal Caribbean Crui   4.9   3.4   6.1   5.1   5        -
-  140 CCI      Crown Castle Inc.      4.9   2.9   6.6   4.9   5        -
-  141 ALNY     Alnylam Pharmaceutic   4.9   1.2   6.6   7.4   6        -
-  142 CSGP     CoStar Group, Inc.     4.9   0.7   5.3  10.0   4        -
-  143 PM       Philip Morris Intern   4.9   4.3   7.3   1.7   7        -
-  144 FTV      Fortive Corporation    4.8   3.5   7.5   2.6   8        -
-  145 KDP      Keurig Dr Pepper Inc   4.8   4.0   5.6   4.8   6        -
-  146 TXN      Texas Instruments In   4.8   2.4   7.8   3.5   7        -
-  147 SYY      Sysco Corporation      4.8   4.6   7.1   1.4   5        -
-  148 CHRW     C.H. Robinson Worldw   4.8   2.4   7.8   3.3   6        -
-  149 UBER     Uber Technologies, I   4.8   3.6   5.3   5.6   6        -
-  150 KKR      KKR & Co. Inc.         4.8   2.5   4.3   8.8   5        -
-  151 ROL      Rollins, Inc.          4.8   2.6   7.6   3.3   5        -
-  152 GWRE     Guidewire Software,    4.8   1.4   5.6   8.2   7        -
-  153 RMD      ResMed Inc.            4.8   2.6   6.9   4.3   8        -
-  154 SSNC     SS&C Technologies Ho   4.8   4.3   5.5   4.2   4        -
-  155 MAR      Marriott Internation   4.8   3.6   6.9   3.0   7        -
-  156 MDT      Medtronic plc          4.8   4.7   5.5   3.6   7        -
-  157 BTI      British American Tob   4.7   5.1   6.7   1.0   8        -
-  158 SHW      The Sherwin-Williams   4.7   3.1   7.1   3.2   6        -
-  159 CTAS     Cintas Corporation     4.7   1.9   8.3   3.1   8        -
-  160 NUE      Nucor Corporation      4.7   4.0   6.1   3.4   6        -
-  161 UTHR     United Therapeutics    4.7   4.6   7.4   0.4   8        -
-  162 AXP      American Express Com   4.7   3.9   5.5   4.5   5        -
-  163 GFS      GLOBALFOUNDRIES Inc.   4.6   3.7   6.1   3.6   6        -
-  164 ICE      Intercontinental Exc   4.6   3.7   6.3   3.2   8        -
-  165 EME      EMCOR Group, Inc.      4.6   4.1   6.0   3.0   6        -
-  166 CEG      Constellation Energy   4.6   2.1   6.3   5.4   7        -
-  167 JBL      Jabil Inc.             4.6   4.4   6.2   2.2   5        -
-  168 ARES     Ares Management Corp   4.6   0.4   5.2   9.6   6        -
-  169 TXT      Textron Inc.           4.6   4.9   5.9   2.1   7        -
-  170 BAC      Bank of America Corp   4.6   4.6   5.1   3.8   6        -
-  171 ITW      Illinois Tool Works    4.6   3.3   7.0   2.4   5        -
-  172 UNP      Union Pacific Corpor   4.6   3.8   6.8   1.9   8        -
-  173 AVGO     Broadcom Inc.          4.6   1.7   7.1   4.5   8        -
-  174 ORLY     O'Reilly Automotive,   4.5   2.2   7.5   3.2   6        -
-  175 EA       Electronic Arts Inc.   4.5   2.7   8.7   0.6   7        -
-  176 HLT      Hilton Worldwide Hol   4.5   2.8   7.3   2.5   7        -
-  177 PRU      Prudential Financial   4.5   4.1   4.8   4.6   6        -
-  178 DHR      Danaher Corporation    4.5   3.1   5.8   4.6   6        -
-  179 PFE      Pfizer Inc.            4.5   5.0   6.4   1.0   5        -
-  180 HD       The Home Depot, Inc.   4.5   2.5   6.5   4.1   3        -
-  181 MKSI     MKS Inc.               4.5   2.6   6.5   4.2   7        -
-  182 FFIV     F5, Inc.               4.5   2.8   6.8   3.3   7        -
-  183 EPD      Enterprise Products    4.5   5.5   6.0   0.6   5        -
-  184 SCCO     Southern Copper Corp   4.5   1.3   7.1   4.7   7        -
-  185 IBM      International Busine   4.5   2.7   5.8   4.8   6        -
-  186 ALLY     Ally Financial Inc.    4.5   3.3   5.3   4.7   6        -
-  187 RPRX     Royalty Pharma plc     4.5   5.4   5.9   0.9   4        -
-  188 CDNS     Cadence Design Syste   4.5   2.0   6.5   4.8   4        -
-  189 DGX      Quest Diagnostics In   4.4   4.1   6.7   1.3   6        -
-  190 ADM      Archer-Daniels-Midla   4.4   4.5   6.9   0.5   5        -
-  191 AMD      Advanced Micro Devic   4.4   1.9   6.0   5.5   7        -
-  192 FCX      Freeport-McMoRan Inc   4.4   3.2   5.9   3.8   5        -
-  193 SNA      Snap-on Incorporated   4.4   4.5   6.4   1.2   5        -
-  194 SCHW     The Charles Schwab C   4.4   4.0   5.9   2.7   9        -
-  195 AMAT     Applied Materials, I   4.4   2.4   7.2   2.7   6        -
-  196 PG       The Procter & Gamble   4.4   2.9   6.8   2.8   5        -
-  197 ENTG     Entegris, Inc.         4.4   2.0   6.2   4.8   5        -
-  198 FAST     Fastenal Company       4.4   2.1   7.9   2.0   7        -
-  199 GEHC     GE HealthCare Techno   4.4   3.9   4.9   4.2   3        -
-  200 REGN     Regeneron Pharmaceut   4.4   4.6   5.8   1.8   4        -
-  201 ADI      Analog Devices, Inc.   4.4   2.5   6.8   3.1   8        -
-  202 AMT      American Tower Corpo   4.4   2.5   6.1   4.3   6        -
-  203 NBIX     Neurocrine Bioscienc   4.4   2.7   6.1   3.8   6        -
-  204 TRMB     Trimble Inc.           4.4   2.2   5.9   4.8   4        -
-  205 NRG      NRG Energy, Inc.       4.3   3.8   5.1   3.9   6        -
-  206 PH       Parker-Hannifin Corp   4.3   2.5   7.0   2.8   7        -
-  207 TSM      Taiwan Semiconductor   4.3   2.3   7.2   2.7   8        -
-  208 COO      The Cooper Companies   4.3   2.4   6.0   4.4   5        -
-  209 TMO      Thermo Fisher Scient   4.3   2.7   5.0   5.6   5        -
-  210 ABT      Abbott Laboratories    4.3   2.2   6.1   4.5   5        -
-  211 LH       Labcorp Holdings Inc   4.3   3.5   6.5   2.0   6        -
-  212 IR       Ingersoll Rand Inc.    4.3   2.8   6.1   3.7   5        -
-  213 HOLX     Hologic, Inc.          4.3   3.9   7.2   0.2   7        -
-  214 HII      Huntington Ingalls I   4.3   3.7   6.3   1.9   8        -
-  215 MCK      McKesson Corporation   4.3   4.2   6.4   1.2   6        -
-  216 TER      Teradyne, Inc.         4.3   1.8   7.0   3.4   6        -
-  217 MS       Morgan Stanley         4.3   4.1   4.7   3.9   7        -
-  218 NVDA     NVIDIA Corporation     4.3   4.5   4.9   3.0   4        -
-  219 NDAQ     Nasdaq, Inc.           4.3   2.5   6.5   3.2   9        -
-  220 CIEN     Ciena Corporation      4.3   2.5   7.5   1.6   8        -
-  221 MPWR     Monolithic Power Sys   4.3   2.3   6.6   3.2   7        -
-  222 BIIB     Biogen Inc.            4.2   4.1   5.7   2.1   4        -
-  223 DE       Deere & Company        4.2   3.1   6.1   2.9   5        -
-  224 PEP      PepsiCo, Inc.          4.2   3.2   6.9   1.4   5        -
-  225 ETN      Eaton Corporation pl   4.2   3.1   6.1   2.6   6        -
-  226 ISRG     Intuitive Surgical,    4.2   1.7   6.2   4.4   6        -
-  227 MLM      Martin Marietta Mate   4.2   2.6   5.9   3.6   6        -
-  228 RBA      RB Global, Inc.        4.2   2.5   6.0   3.5   5        -
-  229 CW       Curtiss-Wright Corpo   4.2   2.6   6.9   2.0   8        -
-  230 HWM      Howmet Aerospace Inc   4.2   2.2   7.0   2.3   8        -
-  231 DOV      Dover Corporation      4.2   3.0   6.0   2.8   5        -
-  232 GOOGL    Alphabet Inc.          4.1   2.9   6.1   2.7   6        -
-  233 HSY      The Hershey Company    4.1   2.6   6.8   1.9   4        -
-  234 WFC      Wells Fargo & Compan   4.1   3.9   3.8   4.8   3        -
-  235 AXON     Axon Enterprise, Inc   4.1   0.6   4.2   8.8   5        -
-  236 TJX      The TJX Companies, I   4.1   2.3   7.6   0.9   6        -
-  237 CAT      Caterpillar Inc.       4.1   3.4   5.6   2.4   5        -
-  238 GS       The Goldman Sachs Gr   4.1   4.0   4.1   4.1   4        -
-  239 PANW     Palo Alto Networks,    4.0   1.4   5.8   5.1   4        -
-  240 HEI      HEICO Corporation      4.0   1.9   5.9   4.0   6        -
-  241 NOC      Northrop Grumman Cor   4.0   4.2   5.7   1.0   5        -
-  242 MU       Micron Technology, I   4.0   3.7   6.0   1.3   6        -
-  243 COST     Costco Wholesale Cor   4.0   2.1   7.5   1.1   5        -
-  244 SYK      Stryker Corporation    4.0   2.2   6.0   3.4   4        -
-  245 ANET     Arista Networks, Inc   4.0   2.8   5.1   3.8   4        -
-  246 COHR     Coherent, Inc.         4.0   1.8   6.0   3.8   7        -
-  247 PLTR     Palantir Technologie   4.0   0.6   6.0   5.5   7        -
-  248 MET      MetLife, Inc.          4.0   2.8   5.0   4.0   7        -
-  249 HON      Honeywell Internatio   4.0   3.4   6.2   1.1   5        -
-  250 EW       Edwards Lifesciences   4.0   2.7   6.7   1.4   5        -
-  251 VRT      Vertiv Holdings Co     4.0   4.2   5.4   1.3   4        -
-  252 IBKR     Interactive Brokers    4.0   3.7   4.6   3.3   5        -
-  253 FDX      FedEx Corporation      4.0   4.1   5.0   2.1   0        -
-  254 BK       The Bank of New York   3.9   4.2   4.9   2.0   7        -
-  255 SLB      SLB N.V.               3.9   3.4   5.0   2.9   0        -
-  256 GLW      Corning Incorporated   3.9   1.9   5.6   4.1   6        -
-  257 VRTX     Vertex Pharmaceutica   3.9   3.0   6.0   1.9   6        -
-  258 IOT      Samsara Inc.           3.9   1.3   7.5   6.9   7        -
-  259 PEG      Public Service Enter   3.9   3.3   5.7   1.7   7        -
-  260 ATI      ATI Inc.               3.9   0.7   7.1   3.1   7        -
-  261 SNOW     Snowflake Inc.         3.8   1.8   6.7   7.3   4        -
-  262 CLH      Clean Harbors, Inc.    3.8   3.2   6.4   0.6   5        -
-  263 AKAM     Akamai Technologies,   3.8   3.4   6.0   1.0   5        -
-  264 TGT      Target Corporation     3.8   4.1   5.0   1.4   0        -
-  265 ECL      Ecolab Inc.            3.8   2.2   6.1   2.3   5        -
-  266 HUBB     Hubbell Incorporated   3.8   2.8   5.4   2.5   6        -
-  267 AMGN     Amgen Inc.             3.8   3.1   5.9   1.3   8        -
-  268 C        Citigroup Inc.         3.8   3.7   4.2   3.1   5        -
-  269 COR      Cencora, Inc.          3.8   3.3   5.5   1.5   6        -
-  270 CBRE     CBRE Group, Inc.       3.7   2.7   4.1   4.6   5        -
-  271 WBA      Walgreens Boots Alli   3.7   4.3   7.5   1.9   6        -
-  272 MCHP     Microchip Technology   3.7   3.2   6.5   5.1   4        -
-  273 MRK      Merck & Co., Inc.      3.7   3.8   5.0   1.5   0        -
-  274 DVN      Devon Energy Corpora   3.7   4.8   5.0   0.1   0        -
-  275 SBUX     Starbucks Corporatio   3.7   2.1   6.7   1.1   4        -
-  276 MCD      McDonald's Corporati   3.7   2.6   6.4   0.9   5        -
-  277 AME      AMETEK, Inc.           3.7   2.4   5.7   2.3   6        -
-  278 FIX      Comfort Systems USA,   3.7   2.3   6.1   1.8   7        -
-  279 VLTO     Veralto Corporation    3.7   2.2   5.0   3.6   0        -
-  280 KO       The Coca-Cola Compan   3.6   2.7   6.0   1.1   7        -
-  281 ITT      ITT Inc.               3.6   3.7   4.5   2.1   6        -
-  282 GE       GE Aerospace           3.6   2.0   5.5   2.8   5        -
-  283 APH      Amphenol Corporation   3.6   1.8   4.9   4.0   6        -
-  284 CPAY     Corpay, Inc.           3.6   4.2   3.7   2.5   4        -
-  285 KEYS     Keysight Technologie   3.5   2.4   5.2   2.3   5        -
-  286 CVS      CVS Health Corporati   3.5   1.7   5.9   2.1   5        -
-  287 LITE     Lumentum Holdings In   3.5   1.1   5.3   4.1   6        -
-  288 MMM      3M Company             3.4   1.9   5.0   3.0   0        -
-  289 RTX      RTX Corporation        3.4   2.1   6.1   0.9   8        -
-  290 SNPS     Synopsys, Inc.         3.4   1.0   3.0   7.3   3        -
-  291 TDY      Teledyne Technologie   3.4   2.0   5.7   1.6   6        -
-  292 MRVL     Marvell Technology,    3.4   1.7   5.1   2.9   7        -
-  293 TPL      Texas Pacific Land C   3.4   2.0   6.2   0.6   5        -
-  294 MTZ      MasTec, Inc.           3.3   2.2   5.6   1.3   8        -
-  295 CACI     CACI International I   3.3   3.3   4.0   2.2   6        -
-  296 UI       Ubiquiti Inc.          3.3   1.9   6.0   1.1   7        -
-  297 LYV      Live Nation Entertai   3.3   1.8   5.2   2.4   4        -
-  298 ED       Consolidated Edison,   3.3   2.9   5.6   0.1   5        -
-  299 PLD      Prologis, Inc.         3.2   2.3   5.0   1.7   4        -
-  300 ABBV     AbbVie Inc.            3.2   1.9   5.0   2.1   0        -
-  301 LMT      Lockheed Martin Corp   3.2   2.4   5.0   1.3   0        -
-  302 TTWO     Take-Two Interactive   3.2   1.0   7.1   4.2   4        -
-  303 BLK      BlackRock, Inc.        3.2   1.4   3.7   4.8   4        -
-  304 GD       General Dynamics Cor   3.1   2.5   5.0   1.0   0        -
-  305 GEV      GE Vernova Inc.        3.1   2.3   4.5   2.0   7        -
-  306 MSI      Motorola Solutions,    3.0   2.5   5.0   0.8   5        -
-  307 LYB      LyondellBasell Indus   2.9   3.4   6.2   0.9   3        -
-  308 F        Ford Motor Company     2.9   2.4   5.0   4.2   0        -
-  309 ETR      Entergy Corporation    2.9   2.2   5.1   0.4   5        -
-  310 NEE      NextEra Energy, Inc.   2.9   2.3   4.9   0.7   5        -
-  311 ENSG     The Ensign Group, In   2.8   1.9   4.9   0.8   4        -
-  312 CAH      Cardinal Health, Inc   2.8   1.9   4.3   1.4   7        -
-  313 EXAS     Exact Sciences Corpo   2.7   1.4   7.8   0.0   6        -
-  314 NTRA     Natera, Inc.           2.7   0.3   5.4   5.3   4        -
-  315 MTSI     MACOM Technology Sol   2.7   1.4   5.7   3.2   5        -
-  316 CRWD     CrowdStrike Holdings   2.7   1.2   5.1   4.4   3        -
-  317 EQIX     Equinix, Inc.          2.6   1.3   5.2   0.5   5        -
-  318 INTC     Intel Corporation      2.6   0.9   5.8   3.2   6        -
-  319 MRNA     Moderna, Inc.          2.6   1.3   5.9   2.3   3        -
-  320 CME      CME Group Inc.         2.6   3.2   2.9   1.1   4        -
-  321 NET      Cloudflare, Inc.       2.4   1.2   4.7   3.7   3        -
-  322 CVX      Chevron Corporation    2.4   2.0   4.1   0.2   4        -
-  323 PWR      Quanta Services, Inc   2.3   1.3   4.1   0.6   4        -
+  121 LRCX     Lam Research Corpora   5.0   3.0   7.7   3.5   8        -
+  122 DDOG     Datadog, Inc.          5.0   1.3   6.6   7.7   5        -
+  123 ROK      Rockwell Automation,   5.0   2.7   7.9   3.5   7        -
+  124 ARM      Arm Holdings plc Ame   5.0   2.3   5.8   7.4   7        -
+  125 UPS      United Parcel Servic   5.0   5.5   5.1   4.1   5        -
+  126 BX       Blackstone Inc.        5.0   1.9   5.2   8.8   3        -
+  127 JD       JD.com, Inc.           5.0   4.6   6.6   2.8   6        -
+  128 A        Agilent Technologies   5.0   2.8   6.1   6.1   5        -
+  129 CSCO     Cisco Systems, Inc.    4.9   1.5   7.6   5.5   9        -
+  130 MSFT     Microsoft Corporatio   4.9   3.0   6.1   5.8   4        -
+  131 AAPL     Apple Inc.             4.9   2.4   8.6   2.7   8        -
+  132 PNC      The PNC Financial Se   4.9   4.8   5.9   3.5   8        -
+  133 MSCI     MSCI Inc.              4.9   2.3   8.7   2.5   8        -
+  134 KLAC     KLA Corporation        4.9   2.4   8.1   3.2   8        -
+  135 USB      U.S. Bancorp           4.9   5.4   5.4   3.3   7        -
+  136 RCL      Royal Caribbean Crui   4.9   3.4   6.1   5.1   5        -
+  137 CCI      Crown Castle Inc.      4.9   2.9   6.6   4.9   5        -
+  138 CSGP     CoStar Group, Inc.     4.9   0.7   5.3  10.0   4        -
+  139 PM       Philip Morris Intern   4.9   4.3   7.3   1.7   7        -
+  140 FTV      Fortive Corporation    4.8   3.5   7.5   2.6   8        -
+  141 KDP      Keurig Dr Pepper Inc   4.8   4.0   5.6   4.8   6        -
+  142 TXN      Texas Instruments In   4.8   2.4   7.8   3.5   7        -
+  143 SYY      Sysco Corporation      4.8   4.6   7.1   1.4   5        -
+  144 CHRW     C.H. Robinson Worldw   4.8   2.4   7.8   3.3   6        -
+  145 UBER     Uber Technologies, I   4.8   3.6   5.3   5.6   6        -
+  146 KKR      KKR & Co. Inc.         4.8   2.5   4.3   8.8   5        -
+  147 ROL      Rollins, Inc.          4.8   2.6   7.6   3.3   5        -
+  148 GWRE     Guidewire Software,    4.8   1.4   5.6   8.2   7        -
+  149 RMD      ResMed Inc.            4.8   2.6   6.9   4.3   8        -
+  150 SSNC     SS&C Technologies Ho   4.8   4.3   5.5   4.2   4        -
+  151 MAR      Marriott Internation   4.8   3.6   6.9   3.0   7        -
+  152 MDT      Medtronic plc          4.8   4.7   5.5   3.6   7        -
+  153 BTI      British American Tob   4.7   5.1   6.7   1.0   8        -
+  154 SHW      The Sherwin-Williams   4.7   3.1   7.1   3.2   6        -
+  155 CTAS     Cintas Corporation     4.7   1.9   8.3   3.1   8        -
+  156 NUE      Nucor Corporation      4.7   4.0   6.1   3.4   6        -
+  157 AXP      American Express Com   4.7   3.9   5.5   4.5   5        -
+  158 GFS      GLOBALFOUNDRIES Inc.   4.6   3.7   6.1   3.6   6        -
+  159 ICE      Intercontinental Exc   4.6   3.7   6.3   3.2   8        -
+  160 EME      EMCOR Group, Inc.      4.6   4.1   6.0   3.0   6        -
+  161 CEG      Constellation Energy   4.6   2.1   6.3   5.4   7        -
+  162 JBL      Jabil Inc.             4.6   4.4   6.2   2.2   5        -
+  163 ARES     Ares Management Corp   4.6   0.4   5.2   9.6   6        -
+  164 TXT      Textron Inc.           4.6   4.9   5.9   2.1   7        -
+  165 BAC      Bank of America Corp   4.6   4.6   5.1   3.8   6        -
+  166 ITW      Illinois Tool Works    4.6   3.3   7.0   2.4   5        -
+  167 UNP      Union Pacific Corpor   4.6   3.8   6.8   1.9   8        -
+  168 AVGO     Broadcom Inc.          4.6   1.7   7.1   4.5   8        -
+  169 ORLY     O'Reilly Automotive,   4.5   2.2   7.5   3.2   6        -
+  170 EA       Electronic Arts Inc.   4.5   2.7   8.7   0.6   7        -
+  171 HLT      Hilton Worldwide Hol   4.5   2.8   7.3   2.5   7        -
+  172 PRU      Prudential Financial   4.5   4.1   4.8   4.6   6        -
+  173 DHR      Danaher Corporation    4.5   3.1   5.8   4.6   6        -
+  174 HD       The Home Depot, Inc.   4.5   2.5   6.5   4.1   3        -
+  175 MKSI     MKS Inc.               4.5   2.6   6.5   4.2   7        -
+  176 FFIV     F5, Inc.               4.5   2.8   6.8   3.3   7        -
+  177 EPD      Enterprise Products    4.5   5.5   6.0   0.6   5        -
+  178 SCCO     Southern Copper Corp   4.5   1.3   7.1   4.7   7        -
+  179 IBM      International Busine   4.5   2.7   5.8   4.8   6        -
+  180 ALLY     Ally Financial Inc.    4.5   3.3   5.3   4.7   6        -
+  181 CDNS     Cadence Design Syste   4.5   2.0   6.5   4.8   4        -
+  182 DGX      Quest Diagnostics In   4.4   4.1   6.7   1.3   6        -
+  183 ADM      Archer-Daniels-Midla   4.4   4.5   6.9   0.5   5        -
+  184 AMD      Advanced Micro Devic   4.4   1.9   6.0   5.5   7        -
+  185 COO      The Cooper Companies   4.4   2.4   6.2   4.4   6        -
+  186 FCX      Freeport-McMoRan Inc   4.4   3.2   5.9   3.8   5        -
+  187 SNA      Snap-on Incorporated   4.4   4.5   6.4   1.2   5        -
+  188 SCHW     The Charles Schwab C   4.4   4.0   5.9   2.7   9        -
+  189 AMAT     Applied Materials, I   4.4   2.4   7.2   2.7   6        -
+  190 PG       The Procter & Gamble   4.4   2.9   6.8   2.8   5        -
+  191 ENTG     Entegris, Inc.         4.4   2.0   6.2   4.8   5        -
+  192 FAST     Fastenal Company       4.4   2.1   7.9   2.0   7        -
+  193 GEHC     GE HealthCare Techno   4.4   3.9   4.9   4.2   3        -
+  194 ADI      Analog Devices, Inc.   4.4   2.5   6.8   3.1   8        -
+  195 AMT      American Tower Corpo   4.4   2.5   6.1   4.3   6        -
+  196 TRMB     Trimble Inc.           4.4   2.2   5.9   4.8   4        -
+  197 NRG      NRG Energy, Inc.       4.3   3.8   5.1   3.9   6        -
+  198 PH       Parker-Hannifin Corp   4.3   2.5   7.0   2.8   7        -
+  199 TSM      Taiwan Semiconductor   4.3   2.3   7.2   2.7   8        -
+  200 TMO      Thermo Fisher Scient   4.3   2.7   5.0   5.6   5        -
+  201 ABT      Abbott Laboratories    4.3   2.2   6.1   4.5   5        -
+  202 LH       Labcorp Holdings Inc   4.3   3.5   6.5   2.0   6        -
+  203 IR       Ingersoll Rand Inc.    4.3   2.8   6.1   3.7   5        -
+  204 HOLX     Hologic, Inc.          4.3   3.9   7.2   0.2   7        -
+  205 HII      Huntington Ingalls I   4.3   3.7   6.3   1.9   8        -
+  206 MCK      McKesson Corporation   4.3   4.2   6.4   1.2   6        -
+  207 TER      Teradyne, Inc.         4.3   1.8   7.0   3.4   6        -
+  208 MS       Morgan Stanley         4.3   4.1   4.7   3.9   7        -
+  209 NVDA     NVIDIA Corporation     4.3   4.5   4.9   3.0   4        -
+  210 NDAQ     Nasdaq, Inc.           4.3   2.5   6.5   3.2   9        -
+  211 CIEN     Ciena Corporation      4.3   2.5   7.5   1.6   8        -
+  212 MPWR     Monolithic Power Sys   4.3   2.3   6.6   3.2   7        -
+  213 DE       Deere & Company        4.2   3.1   6.1   2.9   5        -
+  214 PEP      PepsiCo, Inc.          4.2   3.2   6.9   1.4   5        -
+  215 ETN      Eaton Corporation pl   4.2   3.1   6.1   2.6   6        -
+  216 ISRG     Intuitive Surgical,    4.2   1.7   6.2   4.4   6        -
+  217 MLM      Martin Marietta Mate   4.2   2.6   5.9   3.6   6        -
+  218 RBA      RB Global, Inc.        4.2   2.5   6.0   3.5   5        -
+  219 CW       Curtiss-Wright Corpo   4.2   2.6   6.9   2.0   8        -
+  220 HWM      Howmet Aerospace Inc   4.2   2.2   7.0   2.3   8        -
+  221 DOV      Dover Corporation      4.2   3.0   6.0   2.8   5        -
+  222 GOOGL    Alphabet Inc.          4.1   2.9   6.1   2.7   6        -
+  223 HSY      The Hershey Company    4.1   2.6   6.8   1.9   4        -
+  224 WFC      Wells Fargo & Compan   4.1   3.9   3.8   4.8   3        -
+  225 AXON     Axon Enterprise, Inc   4.1   0.6   4.2   8.8   5        -
+  226 TJX      The TJX Companies, I   4.1   2.3   7.6   0.9   6        -
+  227 CAT      Caterpillar Inc.       4.1   3.4   5.6   2.4   5        -
+  228 GS       The Goldman Sachs Gr   4.1   4.0   4.1   4.1   4        -
+  229 PANW     Palo Alto Networks,    4.0   1.4   5.8   5.1   4        -
+  230 HEI      HEICO Corporation      4.0   1.9   5.9   4.0   6        -
+  231 NOC      Northrop Grumman Cor   4.0   4.2   5.7   1.0   5        -
+  232 MU       Micron Technology, I   4.0   3.7   6.0   1.3   6        -
+  233 COST     Costco Wholesale Cor   4.0   2.1   7.5   1.1   5        -
+  234 SYK      Stryker Corporation    4.0   2.2   6.0   3.4   4        -
+  235 ANET     Arista Networks, Inc   4.0   2.8   5.1   3.8   4        -
+  236 COHR     Coherent, Inc.         4.0   1.8   6.0   3.8   7        -
+  237 PLTR     Palantir Technologie   4.0   0.6   6.0   5.5   7        -
+  238 MET      MetLife, Inc.          4.0   2.8   5.0   4.0   7        -
+  239 HON      Honeywell Internatio   4.0   3.4   6.2   1.1   5        -
+  240 EW       Edwards Lifesciences   4.0   2.7   6.7   1.4   5        -
+  241 VRT      Vertiv Holdings Co     4.0   4.2   5.4   1.3   4        -
+  242 IBKR     Interactive Brokers    4.0   3.7   4.6   3.3   5        -
+  243 FDX      FedEx Corporation      4.0   4.1   5.0   2.1   0        -
+  244 BK       The Bank of New York   3.9   4.2   4.9   2.0   7        -
+  245 SLB      SLB N.V.               3.9   3.4   5.0   2.9   0        -
+  246 GLW      Corning Incorporated   3.9   1.9   5.6   4.1   6        -
+  247 IOT      Samsara Inc.           3.9   1.3   7.5   6.9   7        -
+  248 PEG      Public Service Enter   3.9   3.3   5.7   1.7   7        -
+  249 ATI      ATI Inc.               3.9   0.7   7.1   3.1   7        -
+  250 SNOW     Snowflake Inc.         3.8   1.8   6.7   7.3   4        -
+  251 CLH      Clean Harbors, Inc.    3.8   3.2   6.4   0.6   5        -
+  252 AKAM     Akamai Technologies,   3.8   3.4   6.0   1.0   5        -
+  253 TGT      Target Corporation     3.8   4.1   5.0   1.4   0        -
+  254 ECL      Ecolab Inc.            3.8   2.2   6.1   2.3   5        -
+  255 HUBB     Hubbell Incorporated   3.8   2.8   5.4   2.5   6        -
+  256 C        Citigroup Inc.         3.8   3.7   4.2   3.1   5        -
+  257 COR      Cencora, Inc.          3.8   3.3   5.5   1.5   6        -
+  258 CBRE     CBRE Group, Inc.       3.7   2.7   4.1   4.6   5        -
+  259 MCHP     Microchip Technology   3.7   3.2   6.5   5.1   4        -
+  260 DVN      Devon Energy Corpora   3.7   4.8   5.0   0.1   0        -
+  261 SBUX     Starbucks Corporatio   3.7   2.1   6.7   1.1   4        -
+  262 MCD      McDonald's Corporati   3.7   2.6   6.4   0.9   5        -
+  263 AME      AMETEK, Inc.           3.7   2.4   5.7   2.3   6        -
+  264 FIX      Comfort Systems USA,   3.7   2.3   6.1   1.8   7        -
+  265 VLTO     Veralto Corporation    3.7   2.2   5.0   3.6   0        -
+  266 KO       The Coca-Cola Compan   3.6   2.7   6.0   1.1   7        -
+  267 ITT      ITT Inc.               3.6   3.7   4.5   2.1   6        -
+  268 GE       GE Aerospace           3.6   2.0   5.5   2.8   5        -
+  269 APH      Amphenol Corporation   3.6   1.8   4.9   4.0   6        -
+  270 CPAY     Corpay, Inc.           3.6   4.2   3.7   2.5   4        -
+  271 KEYS     Keysight Technologie   3.5   2.4   5.2   2.3   5        -
+  272 CVS      CVS Health Corporati   3.5   1.7   5.9   2.1   5        -
+  273 LITE     Lumentum Holdings In   3.5   1.1   5.3   4.1   6        -
+  274 MMM      3M Company             3.4   1.9   5.0   3.0   0        -
+  275 RTX      RTX Corporation        3.4   2.1   6.1   0.9   8        -
+  276 SNPS     Synopsys, Inc.         3.4   1.0   3.0   7.3   3        -
+  277 TDY      Teledyne Technologie   3.4   2.0   5.7   1.6   6        -
+  278 MRVL     Marvell Technology,    3.4   1.7   5.1   2.9   7        -
+  279 TPL      Texas Pacific Land C   3.4   2.0   6.2   0.6   5        -
+  280 MTZ      MasTec, Inc.           3.3   2.2   5.6   1.3   8        -
+  281 CACI     CACI International I   3.3   3.3   4.0   2.2   6        -
+  282 UI       Ubiquiti Inc.          3.3   1.9   6.0   1.1   7        -
+  283 LYV      Live Nation Entertai   3.3   1.8   5.2   2.4   4        -
+  284 ED       Consolidated Edison,   3.3   2.9   5.6   0.1   5        -
+  285 PLD      Prologis, Inc.         3.2   2.3   5.0   1.7   4        -
+  286 LMT      Lockheed Martin Corp   3.2   2.4   5.0   1.3   0        -
+  287 TTWO     Take-Two Interactive   3.2   1.0   7.1   4.2   4        -
+  288 BLK      BlackRock, Inc.        3.2   1.4   3.7   4.8   4        -
+  289 GD       General Dynamics Cor   3.1   2.5   5.0   1.0   0        -
+  290 GEV      GE Vernova Inc.        3.1   2.3   4.5   2.0   7        -
+  291 MSI      Motorola Solutions,    3.0   2.5   5.0   0.8   5        -
+  292 LYB      LyondellBasell Indus   2.9   3.4   6.2   0.9   3        -
+  293 F        Ford Motor Company     2.9   2.4   5.0   4.2   0        -
+  294 ETR      Entergy Corporation    2.9   2.2   5.1   0.4   5        -
+  295 NEE      NextEra Energy, Inc.   2.9   2.3   4.9   0.7   5        -
+  296 ENSG     The Ensign Group, In   2.8   1.9   4.9   0.8   4        -
+  297 CAH      Cardinal Health, Inc   2.8   1.9   4.3   1.4   7        -
+  298 EXAS     Exact Sciences Corpo   2.7   1.4   7.8   0.0   6        -
+  299 NTRA     Natera, Inc.           2.7   0.3   5.4   5.3   4        -
+  300 MTSI     MACOM Technology Sol   2.7   1.4   5.7   3.2   5        -
+  301 CRWD     CrowdStrike Holdings   2.7   1.2   5.1   4.4   3        -
+  302 EQIX     Equinix, Inc.          2.6   1.3   5.2   0.5   5        -
+  303 INTC     Intel Corporation      2.6   0.9   5.8   3.2   6        -
+  304 CME      CME Group Inc.         2.6   3.2   2.9   1.1   4        -
+  305 NET      Cloudflare, Inc.       2.4   1.2   4.7   3.7   3        -
+  306 CVX      Chevron Corporation    2.4   2.0   4.1   0.2   4        -
+  307 PWR      Quanta Services, Inc   2.3   1.3   4.1   0.6   4        -
 
   --- 否决 ---
+  ⛔ ABBV     AbbVie Inc.          | VETO: 生物制药行业排除(Drug Manufacturers - General)
+  ⛔ ALNY     Alnylam Pharmaceutic | VETO: 生物制药行业排除(Biotechnology)
+  ⛔ AMGN     Amgen Inc.           | VETO: 生物制药行业排除(Drug Manufacturers - General)
   ⛔ BA       The Boeing Company   | VETO: 年稀释>15%(大规模增发)
+  ⛔ BIIB     Biogen Inc.          | VETO: 生物制药行业排除(Drug Manufacturers - General)
+  ⛔ BMY      Bristol-Myers Squibb | VETO: 生物制药行业排除(Drug Manufacturers - General)
   ⛔ COF      Capital One Financia | VETO: 年稀释>15%(大规模增发)
   ⛔ DUK      Duke Energy Corporat | VETO: Z-Score=0.72(<1.0, 财务困境区)
   ⛔ EQT      EQT Corporation      | VETO: 年稀释>15%(大规模增发)
   ⛔ FIS      Fidelity National In | VETO: Z-Score=0.22(<1.0, 财务困境区)
   ⛔ FTAI     FTAI Aviation Ltd.   | VETO: 高应计项+低现金流(利润质量极差)
+  ⛔ GILD     Gilead Sciences, Inc | VETO: 生物制药行业排除(Drug Manufacturers - General)
   ⛔ GPN      Global Payments Inc. | VETO: Z-Score=0.84(<1.0, 财务困境区)
   ⛔ HPE      Hewlett Packard Ente | VETO: Z-Score=0.81(<1.0, 财务困境区)
+  ⛔ INCY     Incyte Corporation   | VETO: 生物制药行业排除(Biotechnology)
   ⛔ KHC      The Kraft Heinz Comp | VETO: Z-Score=0.54(<1.0, 财务困境区)
   ⛔ KTOS     Kratos Defense & Sec | VETO: 年稀释>15%(大规模增发)
+  ⛔ MRK      Merck & Co., Inc.    | VETO: 生物制药行业排除(Drug Manufacturers - General)
+  ⛔ MRNA     Moderna, Inc.        | VETO: 生物制药行业排除(Biotechnology)
+  ⛔ NBIX     Neurocrine Bioscienc | VETO: 生物制药行业排除(Drug Manufacturers - Specialty & Generic)
   ⛔ PARA     Paramount Global     | VETO: 年稀释>15%(大规模增发)
   ⛔ PCG      PG&E Corporation     | VETO: Z-Score=0.50(<1.0, 财务困境区)
+  ⛔ PFE      Pfizer Inc.          | VETO: 生物制药行业排除(Drug Manufacturers - General)
+  ⛔ REGN     Regeneron Pharmaceut | VETO: 生物制药行业排除(Biotechnology)
+  ⛔ RPRX     Royalty Pharma plc   | VETO: 生物制药行业排除(Biotechnology)
   ⛔ SO       The Southern Company | VETO: Z-Score=0.99(<1.0, 财务困境区)
   ⛔ STLA     Stellantis N.V.      | VETO: Z-Score=0.43(<1.0, 财务困境区)
   ⛔ T        AT&T Inc.            | VETO: Z-Score=0.93(<1.0, 财务困境区)
-  ⛔ TEVA     Teva Pharmaceutical  | VETO: Z-Score=0.75(<1.0, 财务困境区)
+  ⛔ TEVA     Teva Pharmaceutical  | VETO: 生物制药行业排除(Drug Manufacturers - Specialty & Generic)
+  ⛔ UTHR     United Therapeutics  | VETO: 生物制药行业排除(Biotechnology)
+  ⛔ VRTX     Vertex Pharmaceutica | VETO: 生物制药行业排除(Biotechnology)
+  ⛔ WBA      Walgreens Boots Alli | VETO: 生物制药行业排除(Medical - Pharmaceuticals)
 
 
 ================================================================================

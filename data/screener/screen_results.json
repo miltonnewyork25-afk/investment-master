@@ -56,13 +56,13 @@
     "name": "AbbVie Inc.",
     "market_cap": 388431368556,
     "sector": "Healthcare",
-    "composite_score": 3.1918266060560088,
-    "stage2_score": 4.09876943302136,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 1.9387755102040818,
     "l2_score": 5.0,
     "l3_score": 2.0530207099383198,
-    "l4_score": 5.0,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": null,
     "gross_margin": null,
     "gm_slope": null,
@@ -74,7 +74,9 @@
     "ev_ebitda": null,
     "fcf_yield": null,
     "shareholder_yield": 0.0,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: 生物制药行业排除(Drug Manufacturers - General)"
+    ],
     "flags": []
   },
   {
@@ -368,13 +370,13 @@
     "name": "Alnylam Pharmaceuticals, Inc.",
     "market_cap": 41565374117,
     "sector": "Healthcare",
-    "composite_score": 4.877890163919582,
-    "stage2_score": 4.710359480331216,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 1.187243478397763,
     "l2_score": 6.5614972945633365,
     "l3_score": 7.351024114620119,
-    "l4_score": 3.9846491573134433,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 6,
     "gross_margin": null,
     "gm_slope": null,
@@ -386,7 +388,9 @@
     "ev_ebitda": 92.80606349912784,
     "fcf_yield": 0.8999015440035946,
     "shareholder_yield": -2.626693092886072,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: 生物制药行业排除(Biotechnology)"
+    ],
     "flags": []
   },
   {
@@ -472,13 +476,13 @@
     "name": "Amgen Inc.",
     "market_cap": 197411973262,
     "sector": "Healthcare",
-    "composite_score": 3.771082894167983,
-    "stage2_score": 5.223736852287514,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 3.137582024999602,
     "l2_score": 5.881126919690362,
     "l3_score": 1.2819136701679097,
-    "l4_score": 6.85256530406642,
-    "l5_score": 6.491495475355629,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 8,
     "gross_margin": 70.79829073786777,
     "gm_slope": -1.3725651054100785,
@@ -490,7 +494,9 @@
     "ev_ebitda": null,
     "fcf_yield": null,
     "shareholder_yield": 0.0,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: 生物制药行业排除(Drug Manufacturers - General)"
+    ],
     "flags": []
   },
   {
@@ -958,13 +964,13 @@
     "name": "Biogen Inc.",
     "market_cap": 26644010758,
     "sector": "Healthcare",
-    "composite_score": 4.237444143915457,
-    "stage2_score": 4.7034603151053505,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 4.066251314784882,
     "l2_score": 5.747413593090324,
     "l3_score": 2.061162986018477,
-    "l4_score": 5.57412043673766,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 4,
     "gross_margin": null,
     "gm_slope": null,
@@ -976,7 +982,9 @@
     "ev_ebitda": 9.597249887118622,
     "fcf_yield": 6.891769809377102,
     "shareholder_yield": -0.6863417982155113,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: 生物制药行业排除(Drug Manufacturers - General)"
+    ],
     "flags": []
   },
   {
@@ -1066,13 +1074,13 @@
     "name": "Bristol-Myers Squibb Company",
     "market_cap": 120314866491,
     "sector": "Healthcare",
-    "composite_score": 6.2434638660591615,
-    "stage2_score": 5.120529002824969,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 6.390819362715374,
     "l2_score": 8.252268032176081,
     "l3_score": 2.8230795049533923,
-    "l4_score": 5.351379133163278,
-    "l5_score": 3.580760911597035,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 8,
     "gross_margin": 67.64742499066274,
     "gm_slope": -1.8480479389895617,
@@ -1084,10 +1092,10 @@
     "ev_ebitda": 10.108046751460984,
     "fcf_yield": 8.736815027240226,
     "shareholder_yield": 3.8918742457932987,
-    "vetoes": [],
-    "flags": [
-      "FLAG: 低基数beat(EPS超预期但同比下降)"
-    ]
+    "vetoes": [
+      "VETO: 生物制药行业排除(Drug Manufacturers - General)"
+    ],
+    "flags": []
   },
   {
     "symbol": "BR",
@@ -1765,24 +1773,24 @@
     "name": "The Cooper Companies, Inc.",
     "market_cap": 13642398708,
     "sector": "Healthcare",
-    "composite_score": 4.347484359760617,
-    "stage2_score": 4.7148812668233715,
-    "l1_score": 2.3616815277818755,
-    "l2_score": 6.031728597435998,
+    "composite_score": 4.4242499941491165,
+    "stage2_score": 4.839676818815549,
+    "l1_score": 2.3555422168867546,
+    "l2_score": 6.2290145804404755,
     "l3_score": 4.432817544250249,
-    "l4_score": 5.13649038801051,
+    "l4_score": 5.456902225263089,
     "l5_score": 5.000000000000001,
-    "f_score": 5,
+    "f_score": 6,
     "gross_margin": null,
     "gm_slope": null,
-    "roic_5y": 3.9038311361984253,
+    "roic_5y": 3.9,
     "rev_cagr_10y": null,
     "rev_cagr_3y": null,
     "opm_inflection": null,
     "rev_acceleration": null,
-    "ev_ebitda": 15.81070818302639,
-    "fcf_yield": 2.60402281597118,
-    "shareholder_yield": -0.5530417295123178,
+    "ev_ebitda": 15.81,
+    "fcf_yield": null,
+    "shareholder_yield": 0,
     "vetoes": [],
     "flags": []
   },
@@ -3395,13 +3403,13 @@
     "name": "Gilead Sciences, Inc.",
     "market_cap": 179993485800,
     "sector": "Healthcare",
-    "composite_score": 5.756495319371553,
-    "stage2_score": 5.97432587229757,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 3.0932997916100224,
     "l2_score": 8.32531895560116,
     "l3_score": 5.374851240270325,
-    "l4_score": 6.084914655907606,
-    "l5_score": 6.519323909612245,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 9,
     "gross_margin": 86.68613932004212,
     "gm_slope": -0.553230443874133,
@@ -3413,7 +3421,9 @@
     "ev_ebitda": 15.69,
     "fcf_yield": null,
     "shareholder_yield": 0.24057738572574178,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: 生物制药行业排除(Drug Manufacturers - General)"
+    ],
     "flags": []
   },
   {
@@ -4151,13 +4161,13 @@
     "name": "Incyte Corporation",
     "market_cap": 18416755560,
     "sector": "Healthcare",
-    "composite_score": 5.611461758865321,
-    "stage2_score": 5.291435616343064,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 6.503686366295994,
     "l2_score": 6.139380425193805,
     "l3_score": 3.5176774423368062,
-    "l4_score": 5.3910799375635765,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 7,
     "gross_margin": null,
     "gm_slope": null,
@@ -4169,10 +4179,10 @@
     "ev_ebitda": 9.23317420809981,
     "fcf_yield": 8.335211020315958,
     "shareholder_yield": 5.74863599053643,
-    "vetoes": [],
-    "flags": [
-      "FLAG: 资产增长28%(可能盲目扩张)"
-    ]
+    "vetoes": [
+      "VETO: 生物制药行业排除(Biotechnology)"
+    ],
+    "flags": []
   },
   {
     "symbol": "INTC",
@@ -5440,13 +5450,13 @@
     "name": "Merck & Co., Inc.",
     "market_cap": 285857963387,
     "sector": "Healthcare",
-    "composite_score": 3.71769540971255,
-    "stage2_score": 4.301362143786714,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 3.820918367346939,
     "l2_score": 5.0,
     "l3_score": 1.521495924564487,
-    "l4_score": 5.0,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": null,
     "gross_margin": null,
     "gm_slope": null,
@@ -5458,7 +5468,9 @@
     "ev_ebitda": null,
     "fcf_yield": null,
     "shareholder_yield": 0.0,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: 生物制药行业排除(Drug Manufacturers - General)"
+    ],
     "flags": []
   },
   {
@@ -5466,13 +5478,13 @@
     "name": "Moderna, Inc.",
     "market_cap": 20757993840,
     "sector": "Healthcare",
-    "composite_score": 2.5686985505707325,
-    "stage2_score": 2.3098170207714914,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 1.3463760504201678,
     "l2_score": 5.916995049724341,
     "l3_score": 2.3476070528967234,
-    "l4_score": 0.6520818433605974,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 3,
     "gross_margin": null,
     "gm_slope": null,
@@ -5484,12 +5496,10 @@
     "ev_ebitda": -4.227422640031335,
     "fcf_yield": -19.133462619329336,
     "shareholder_yield": -1.3020833333333335,
-    "vetoes": [],
-    "flags": [
-      "FLAG: F-Score=3/9(财务体质弱)",
-      "FLAG: 当前亏损(PE<0)",
-      "FLAG: ROIC=-29.7%(严重亏损)"
-    ]
+    "vetoes": [
+      "VETO: 生物制药行业排除(Biotechnology)"
+    ],
+    "flags": []
   },
   {
     "symbol": "MRSH",
@@ -5767,13 +5777,13 @@
     "name": "Neurocrine Biosciences, Inc.",
     "market_cap": 13025110140,
     "sector": "Healthcare",
-    "composite_score": 4.364445834176856,
-    "stage2_score": 4.65069499283917,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 2.732576114779966,
     "l2_score": 6.147779357528088,
     "l3_score": 3.7957298039705334,
-    "l4_score": 4.997607337991272,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 6,
     "gross_margin": null,
     "gm_slope": null,
@@ -5785,10 +5795,10 @@
     "ev_ebitda": 20.723649864986502,
     "fcf_yield": 5.419712857286082,
     "shareholder_yield": 0.8964143426294822,
-    "vetoes": [],
-    "flags": [
-      "FLAG: 资产增长25%(可能盲目扩张)"
-    ]
+    "vetoes": [
+      "VETO: 生物制药行业排除(Drug Manufacturers - Specialty & Generic)"
+    ],
+    "flags": []
   },
   {
     "symbol": "NDAQ",
@@ -6479,13 +6489,13 @@
     "name": "Pfizer Inc.",
     "market_cap": 151254713665,
     "sector": "Healthcare",
-    "composite_score": 4.522644096529895,
-    "stage2_score": 3.916366834327932,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 4.964138338121959,
     "l2_score": 6.363490269197443,
     "l3_score": 0.9591982820329276,
-    "l4_score": 4.092391965169727,
-    "l5_score": 3.3825008454966583,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 5,
     "gross_margin": 70.33349845794915,
     "gm_slope": -1.0642255158459126,
@@ -6497,7 +6507,9 @@
     "ev_ebitda": 13.764,
     "fcf_yield": 6.00375939849624,
     "shareholder_yield": 6.568802966101695,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: 生物制药行业排除(Drug Manufacturers - General)"
+    ],
     "flags": []
   },
   {
@@ -6927,13 +6939,13 @@
     "name": "Regeneron Pharmaceuticals, Inc.",
     "market_cap": 77487486748,
     "sector": "Healthcare",
-    "composite_score": 4.379526587054725,
-    "stage2_score": 4.282836649574817,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 4.630186631233024,
     "l2_score": 5.750480097753022,
     "l3_score": 1.8350769080878333,
-    "l4_score": 4.001583680045782,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 4,
     "gross_margin": null,
     "gm_slope": null,
@@ -6945,7 +6957,9 @@
     "ev_ebitda": 13.805885325358359,
     "fcf_yield": 5.230904468185909,
     "shareholder_yield": 3.517033665661927,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: 生物制药行业排除(Biotechnology)"
+    ],
     "flags": []
   },
   {
@@ -7057,13 +7071,13 @@
     "name": "Royalty Pharma plc",
     "market_cap": 19557588970,
     "sector": "Healthcare",
-    "composite_score": 4.468934531401313,
-    "stage2_score": 4.908286971760417,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 5.406804729913554,
     "l2_score": 5.864177843819729,
     "l3_score": 0.9235269536147115,
-    "l4_score": 6.097035142194062,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 4,
     "gross_margin": null,
     "gm_slope": null,
@@ -7075,10 +7089,10 @@
     "ev_ebitda": 15.296333257525182,
     "fcf_yield": 12.628668429001744,
     "shareholder_yield": 5.427694152181868,
-    "vetoes": [],
-    "flags": [
-      "FLAG: Z-Score=1.74(灰色区域1.0-1.81, 财务风险偏高)"
-    ]
+    "vetoes": [
+      "VETO: 生物制药行业排除(Biotechnology)"
+    ],
+    "flags": []
   },
   {
     "symbol": "RTX",
@@ -7643,7 +7657,7 @@
     "fcf_yield": 2.310536044362292,
     "shareholder_yield": -1.5915119363395225,
     "vetoes": [
-      "VETO: Z-Score=0.75(<1.0, 财务困境区)"
+      "VETO: 生物制药行业排除(Drug Manufacturers - Specialty & Generic)"
     ],
     "flags": []
   },
@@ -8240,13 +8254,13 @@
     "name": "United Therapeutics Corporation",
     "market_cap": 23496906524,
     "sector": "Healthcare",
-    "composite_score": 4.682171523800754,
-    "stage2_score": 4.18713823653797,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 4.606624998479869,
     "l2_score": 7.400969234233811,
     "l3_score": 0.43786032255710344,
-    "l4_score": 3.567733510824507,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 8,
     "gross_margin": null,
     "gm_slope": null,
@@ -8258,7 +8272,9 @@
     "ev_ebitda": 11.010486531061023,
     "fcf_yield": 4.381873334850238,
     "shareholder_yield": 1.991150442477876,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: 生物制药行业排除(Biotechnology)"
+    ],
     "flags": []
   },
   {
@@ -8454,13 +8470,13 @@
     "name": "Vertex Pharmaceuticals Incorporated",
     "market_cap": 119212360000,
     "sector": "Healthcare",
-    "composite_score": 3.91144533684002,
-    "stage2_score": 4.968323437259907,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 2.9977591036414575,
     "l2_score": 5.998864923010834,
     "l3_score": 1.8507347254447044,
-    "l4_score": 6.970732081484526,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 6,
     "gross_margin": null,
     "gm_slope": null,
@@ -8472,7 +8488,9 @@
     "ev_ebitda": 23.09,
     "fcf_yield": null,
     "shareholder_yield": 0,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: 生物制药行业排除(Biotechnology)"
+    ],
     "flags": []
   },
   {
@@ -8610,13 +8628,13 @@
     "name": "Walgreens Boots Alliance, Inc.",
     "market_cap": 10369421068,
     "sector": "Healthcare",
-    "composite_score": 3.7422050361454415,
-    "stage2_score": 4.03869726280953,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 4.29548056479311,
     "l2_score": 7.517358085410332,
     "l3_score": 1.9169811320754704,
-    "l4_score": 5.796328703900249,
-    "l5_score": 5.000000000000001,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 6,
     "gross_margin": null,
     "gm_slope": null,
@@ -8628,13 +8646,10 @@
     "ev_ebitda": -3.5851813264763255,
     "fcf_yield": -0.8977665275293428,
     "shareholder_yield": 15.793790363968888,
-    "vetoes": [],
-    "flags": [
-      "FLAG: 当前亏损(PE<0)",
-      "FLAG: ROIC=-24.3%(严重亏损)",
-      "FLAG: CFO与NI符号相反(盈利结构异常)",
-      "FLAG: Z-Score=1.62(灰色区域1.0-1.81, 财务风险偏高)"
-    ]
+    "vetoes": [
+      "VETO: 生物制药行业排除(Medical - Pharmaceuticals)"
+    ],
+    "flags": []
   },
   {
     "symbol": "UNKNOWN",
