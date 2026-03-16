@@ -1002,6 +1002,10 @@ def extract_signals_from_fmp(
     )
     # Store industry for veto check (not in dataclass to keep it clean)
     result._industry = profile.get('industry', '')
+    # Data confidence: 10Y data available → high confidence L4
+    has_10y = income_10y and len(income_10y) > 5
+    has_quarterly = income_quarterly and len(income_quarterly) > 3
+    result._data_confidence = "H" if has_10y else "L"  # High/Low
 
     # --- L1: Valuation ---
     if ratios and len(ratios) > 0:

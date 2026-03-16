@@ -113,8 +113,8 @@ def format_stage2_ranking(results: list[StockScreenResult]) -> str:
     lines.append(f"  Stage 2 深筛排名 | {len(active)}只通过 / {len(vetoed)}只否决 / {len(results)}只总计")
     lines.append(f"  权重: L1(便宜)15% + L2(不是陷阱)15% + L3(纠错)15% + L4(品质)30% + L5(拐点)25%")
     lines.append(f"{'='*95}")
-    lines.append(f"  {'#':>3} {'Symbol':<6} {'Final':>5} {'S2':>5} {'L4品质':>6} {'L5拐点':>6} {'L6风':>5} {'DNA':>12} {'FCFm%':>6} {'GM%':>5}")
-    lines.append(f"  {'-'*80}")
+    lines.append(f"  {'#':>3} {'Symbol':<6} {'Final':>5} {'S2':>5} {'L4品质':>6} {'L5拐点':>6} {'L6风':>5} {'DNA':>12} {'FCFm%':>6} {'GM%':>5} {'信':>2}")
+    lines.append(f"  {'-'*84}")
 
     for i, r in enumerate(active, 1):
         final = r.final_score if r.final_score else r.stage2_score
@@ -129,11 +129,12 @@ def format_stage2_ranking(results: list[StockScreenResult]) -> str:
             "turnaround_catalyst": "转折催化",
         }.get(r.l6.asset_dna, "—")
         wind = r.l6.tailwind_label or "—"
+        conf = getattr(r, '_data_confidence', '?')
         lines.append(
             f"  {i:>3} {r.symbol:<6} "
             f"{final:>5.1f} {r.stage2_score:>5.1f} "
             f"{r.l4.score:>6.1f} {r.l5.score:>6.1f} {wind:>5} "
-            f"{dna_short:>12} {fcfm:>6} {gm:>5}"
+            f"{dna_short:>12} {fcfm:>6} {gm:>5} {conf:>2}"
         )
 
     if vetoed:
