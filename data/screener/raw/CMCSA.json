@@ -1,0 +1,159 @@
+{
+  "symbol": "CMCSA",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "CMCSA",
+    "price": 30.16,
+    "marketCap": 109899857909,
+    "beta": 0.78,
+    "companyName": "Comcast Corporation",
+    "sector": "Communication Services",
+    "industry": "Telecommunications Services",
+    "ceo": "Brian L. Roberts",
+    "country": "US",
+    "fullTimeEmployees": "182000",
+    "exchange": "NASDAQ"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 123707000000,
+      "grossProfit": 74306000000,
+      "operatingIncome": 20674000000,
+      "netIncome": 19803000000,
+      "eps": 5.41,
+      "epsDiluted": 5.39
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 123731000000,
+      "grossProfit": 71904000000,
+      "operatingIncome": 23298000000,
+      "netIncome": 16192000000,
+      "eps": 4.17,
+      "epsDiluted": 4.14
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 121572000000,
+      "grossProfit": 70474000000,
+      "operatingIncome": 23313000000,
+      "netIncome": 15388000000,
+      "eps": 3.73,
+      "epsDiluted": 3.71
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "totalAssets": 272631000000,
+      "totalLiabilities": 175254000000,
+      "totalStockholdersEquity": 96904000000,
+      "cashAndCashEquivalents": 9481000000,
+      "totalDebt": 110443000000
+    },
+    {
+      "date": "2024-12-31",
+      "totalAssets": 266211000000,
+      "totalLiabilities": 179937000000,
+      "totalStockholdersEquity": 85560000000,
+      "cashAndCashEquivalents": 7322000000,
+      "totalDebt": 99093000000
+    },
+    {
+      "date": "2023-12-31",
+      "totalAssets": 264811000000,
+      "totalLiabilities": 181344000000,
+      "totalStockholdersEquity": 82703000000,
+      "cashAndCashEquivalents": 6215000000,
+      "totalDebt": 109514000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "operatingCashFlow": 33643000000,
+      "capitalExpenditure": -11750000000,
+      "freeCashFlow": 21893000000
+    },
+    {
+      "date": "2024-12-31",
+      "operatingCashFlow": 27673000000,
+      "capitalExpenditure": -12181000000,
+      "freeCashFlow": 15492000000
+    },
+    {
+      "date": "2023-12-31",
+      "operatingCashFlow": 28501000000,
+      "capitalExpenditure": -15540000000,
+      "freeCashFlow": 12961000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.601,
+      "netProfitMargin": 0.16,
+      "returnOnEquity": 0.204,
+      "currentRatio": 0.882,
+      "debtToEquityRatio": 1.14,
+      "priceToEarningsRatio": 5.14,
+      "dividendYieldPercentage": 4.81
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.581,
+      "netProfitMargin": 0.131,
+      "returnOnEquity": 0.189,
+      "currentRatio": 0.677,
+      "debtToEquityRatio": 1.158,
+      "priceToEarningsRatio": 9.06,
+      "dividendYieldPercentage": 3.28
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.58,
+      "netProfitMargin": 0.127,
+      "returnOnEquity": 0.186,
+      "currentRatio": 0.597,
+      "debtToEquityRatio": 1.324,
+      "priceToEarningsRatio": 11.75,
+      "dividendYieldPercentage": 2.64
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "marketCap": 101808000000,
+      "enterpriseValue": 202770000000,
+      "returnOnInvestedCapital": 0.064,
+      "freeCashFlowYield": 0.215,
+      "earningsYield": 0.195
+    },
+    {
+      "date": "2024-12-31",
+      "marketCap": 146667240000,
+      "enterpriseValue": 238438240000,
+      "returnOnInvestedCapital": 0.086,
+      "freeCashFlowYield": 0.106,
+      "earningsYield": 0.11
+    },
+    {
+      "date": "2023-12-31",
+      "marketCap": 180749700000,
+      "enterpriseValue": 284048700000,
+      "returnOnInvestedCapital": 0.076,
+      "freeCashFlowYield": 0.072,
+      "earningsYield": 0.085
+    }
+  ],
+  "insider_trades": "summarized_quarterly_data",
+  "quote": {
+    "symbol": "CMCSA",
+    "price": 30.16,
+    "marketCap": 109899857909,
+    "yearHigh": 35.35,
+    "yearLow": 24.13,
+    "volume": 18651332
+  }
+}

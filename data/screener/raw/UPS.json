@@ -1,0 +1,130 @@
+{
+  "symbol": "UPS",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "UPS",
+    "price": 97.22,
+    "marketCap": 82549662024,
+    "beta": 1.054,
+    "companyName": "United Parcel Service, Inc.",
+    "sector": "Industrials",
+    "industry": "Integrated Freight & Logistics",
+    "ceo": "Carol Tome",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 88635000000,
+      "operatingIncome": 8473000000,
+      "netIncome": 5572000000,
+      "eps": 6.56
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 90894000000,
+      "operatingIncome": 8685000000,
+      "netIncome": 5782000000,
+      "eps": 6.76
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 90745000000,
+      "operatingIncome": 9371000000,
+      "netIncome": 6708000000,
+      "eps": 7.81
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "totalAssets": 73090000000,
+      "totalLiabilities": 56835000000,
+      "totalStockholdersEquity": 16227000000,
+      "totalDebt": 32290000000
+    },
+    {
+      "date": "2024-12-31",
+      "totalAssets": 70070000000,
+      "totalLiabilities": 53327000000,
+      "totalStockholdersEquity": 16718000000,
+      "totalDebt": 25652000000
+    },
+    {
+      "date": "2023-12-31",
+      "totalAssets": 70857000000,
+      "totalLiabilities": 53543000000,
+      "totalStockholdersEquity": 17306000000,
+      "totalDebt": 26729000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "operatingCashFlow": 8450000000,
+      "freeCashFlow": 4765000000
+    },
+    {
+      "date": "2024-12-31",
+      "operatingCashFlow": 10122000000,
+      "freeCashFlow": 6213000000
+    },
+    {
+      "date": "2023-12-31",
+      "operatingCashFlow": 10238000000,
+      "freeCashFlow": 5080000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.185,
+      "netProfitMargin": 0.063,
+      "returnOnEquity": 0.343,
+      "priceToEarningsRatio": 15.11,
+      "dividendYieldPercentage": 6.41
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.188,
+      "netProfitMargin": 0.064,
+      "returnOnEquity": 0.346,
+      "priceToEarningsRatio": 18.65,
+      "dividendYieldPercentage": 5.01
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.195,
+      "netProfitMargin": 0.074,
+      "returnOnEquity": 0.388,
+      "priceToEarningsRatio": 20.13,
+      "dividendYieldPercentage": 3.98
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "marketCap": 84212310000,
+      "enterpriseValue": 110615310000
+    },
+    {
+      "date": "2024-12-31",
+      "marketCap": 107815500000,
+      "enterpriseValue": 127355500000
+    },
+    {
+      "date": "2023-12-31",
+      "marketCap": 135060570000,
+      "enterpriseValue": 158620570000
+    }
+  ],
+  "quote": {
+    "symbol": "UPS",
+    "price": 97.22,
+    "marketCap": 82549662024,
+    "yearHigh": 122.41,
+    "yearLow": 82
+  },
+  "insider_trades": "summarized_quarterly_data"
+}

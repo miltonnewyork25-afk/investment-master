@@ -1,0 +1,130 @@
+{
+  "symbol": "AMGN",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "AMGN",
+    "price": 366.21,
+    "marketCap": 197411973262,
+    "beta": 0.425,
+    "companyName": "Amgen Inc.",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers - General",
+    "ceo": "Robert A. Bradway",
+    "country": "US",
+    "exchange": "NASDAQ"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 36741000000,
+      "operatingIncome": 10676000000,
+      "netIncome": 7711000000,
+      "eps": 14.33
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 33424000000,
+      "operatingIncome": 7258000000,
+      "netIncome": 4090000000,
+      "eps": 7.62
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 28190000000,
+      "operatingIncome": 7897000000,
+      "netIncome": 6717000000,
+      "eps": 12.56
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "totalAssets": 90586000000,
+      "totalLiabilities": 81928000000,
+      "totalStockholdersEquity": 8658000000,
+      "totalDebt": 54604000000
+    },
+    {
+      "date": "2024-12-31",
+      "totalAssets": 91839000000,
+      "totalLiabilities": 85962000000,
+      "totalStockholdersEquity": 5877000000,
+      "totalDebt": 60099000000
+    },
+    {
+      "date": "2023-12-31",
+      "totalAssets": 97154000000,
+      "totalLiabilities": 90922000000,
+      "totalStockholdersEquity": 6232000000,
+      "totalDebt": 64613000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "operatingCashFlow": 9958000000,
+      "freeCashFlow": 8100000000
+    },
+    {
+      "date": "2024-12-31",
+      "operatingCashFlow": 11490000000,
+      "freeCashFlow": 10394000000
+    },
+    {
+      "date": "2023-12-31",
+      "operatingCashFlow": 8471000000,
+      "freeCashFlow": 7359000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.708,
+      "netProfitMargin": 0.21,
+      "returnOnEquity": 0.891,
+      "priceToEarningsRatio": 22.84,
+      "dividendYieldPercentage": 2.91
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.615,
+      "netProfitMargin": 0.122,
+      "returnOnEquity": 0.696,
+      "priceToEarningsRatio": 34.48,
+      "dividendYieldPercentage": 3.43
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.701,
+      "netProfitMargin": 0.238,
+      "returnOnEquity": 1.078,
+      "priceToEarningsRatio": 22.94,
+      "dividendYieldPercentage": 2.96
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "marketCap": 176092780000,
+      "enterpriseValue": 221567780000
+    },
+    {
+      "date": "2024-12-31",
+      "marketCap": 141006240000,
+      "enterpriseValue": 189132240000
+    },
+    {
+      "date": "2023-12-31",
+      "marketCap": 154090700000,
+      "enterpriseValue": 207759700000
+    }
+  ],
+  "quote": {
+    "symbol": "AMGN",
+    "price": 366.21,
+    "marketCap": 197411973262,
+    "yearHigh": 391.29,
+    "yearLow": 261.43
+  },
+  "insider_trades": "summarized_quarterly_data"
+}

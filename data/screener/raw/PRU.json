@@ -1,0 +1,127 @@
+{
+  "symbol": "PRU",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "PRU",
+    "price": 92,
+    "marketCap": 32016000000,
+    "beta": 0.966,
+    "companyName": "Prudential Financial, Inc.",
+    "sector": "Financial Services",
+    "industry": "Insurance - Life",
+    "ceo": "Andrew Francis Sullivan",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 60774000000,
+      "operatingIncome": 4785000000,
+      "netIncome": 3576000000,
+      "eps": 10.16
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 70675000000,
+      "operatingIncome": 3209000000,
+      "netIncome": 2727000000,
+      "eps": 7.54
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 54265000000,
+      "operatingIncome": 3072000000,
+      "netIncome": 2488000000,
+      "eps": 6.76
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "totalAssets": 773740000000,
+      "totalLiabilities": 738159000000,
+      "totalStockholdersEquity": 32438000000,
+      "totalDebt": 33280000000
+    },
+    {
+      "date": "2024-12-31",
+      "totalAssets": 735587000000,
+      "totalLiabilities": 705461000000,
+      "totalStockholdersEquity": 27872000000,
+      "totalDebt": 21570000000
+    },
+    {
+      "date": "2023-12-31",
+      "totalAssets": 721212000000,
+      "totalLiabilities": 691336000000,
+      "totalStockholdersEquity": 27820000000,
+      "totalDebt": 20874000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "operatingCashFlow": 6271000000,
+      "freeCashFlow": 6271000000
+    },
+    {
+      "date": "2024-12-31",
+      "operatingCashFlow": 8502000000,
+      "freeCashFlow": 8502000000
+    },
+    {
+      "date": "2023-12-31",
+      "operatingCashFlow": 6510000000,
+      "freeCashFlow": 6510000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "netProfitMargin": 0.059,
+      "returnOnEquity": 0.11,
+      "priceToEarningsRatio": 11.1,
+      "dividendYieldPercentage": 4.85
+    },
+    {
+      "date": "2024-12-31",
+      "netProfitMargin": 0.039,
+      "returnOnEquity": 0.098,
+      "priceToEarningsRatio": 15.54,
+      "dividendYieldPercentage": 4.46
+    },
+    {
+      "date": "2023-12-31",
+      "netProfitMargin": 0.046,
+      "returnOnEquity": 0.089,
+      "priceToEarningsRatio": 15.15,
+      "dividendYieldPercentage": 4.9
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "marketCap": 39711184000,
+      "enterpriseValue": 53279184000
+    },
+    {
+      "date": "2024-12-31",
+      "marketCap": 42374475000,
+      "enterpriseValue": 45447475000
+    },
+    {
+      "date": "2023-12-31",
+      "marketCap": 37698585000,
+      "enterpriseValue": 39153585000
+    }
+  ],
+  "quote": {
+    "symbol": "PRU",
+    "price": 92,
+    "marketCap": 32016000000,
+    "yearHigh": 119.76,
+    "yearLow": 90.38
+  },
+  "insider_trades": "summarized_quarterly_data"
+}

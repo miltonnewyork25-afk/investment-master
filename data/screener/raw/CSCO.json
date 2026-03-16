@@ -1,0 +1,159 @@
+{
+  "symbol": "CSCO",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "CSCO",
+    "price": 78.33,
+    "marketCap": 309489237981,
+    "beta": 0.829,
+    "companyName": "Cisco Systems, Inc.",
+    "sector": "Technology",
+    "industry": "Communication Equipment",
+    "ceo": "Charles H. Robbins",
+    "country": "US",
+    "fullTimeEmployees": "90400",
+    "exchange": "NASDAQ"
+  },
+  "income": [
+    {
+      "date": "2025-07-26",
+      "revenue": 56654000000,
+      "grossProfit": 36790000000,
+      "operatingIncome": 11760000000,
+      "netIncome": 10180000000,
+      "eps": 2.56,
+      "epsDiluted": 2.55
+    },
+    {
+      "date": "2024-07-27",
+      "revenue": 53803000000,
+      "grossProfit": 34828000000,
+      "operatingIncome": 12181000000,
+      "netIncome": 10320000000,
+      "eps": 2.55,
+      "epsDiluted": 2.54
+    },
+    {
+      "date": "2023-07-29",
+      "revenue": 56998000000,
+      "grossProfit": 35753000000,
+      "operatingIncome": 15031000000,
+      "netIncome": 12613000000,
+      "eps": 3.08,
+      "epsDiluted": 3.07
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-07-26",
+      "totalAssets": 122291000000,
+      "totalLiabilities": 75448000000,
+      "totalStockholdersEquity": 46843000000,
+      "cashAndCashEquivalents": 8346000000,
+      "totalDebt": 28093000000
+    },
+    {
+      "date": "2024-07-27",
+      "totalAssets": 124413000000,
+      "totalLiabilities": 78956000000,
+      "totalStockholdersEquity": 45457000000,
+      "cashAndCashEquivalents": 7508000000,
+      "totalDebt": 30973000000
+    },
+    {
+      "date": "2023-07-29",
+      "totalAssets": 101852000000,
+      "totalLiabilities": 57499000000,
+      "totalStockholdersEquity": 44353000000,
+      "cashAndCashEquivalents": 10123000000,
+      "totalDebt": 8391000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-07-26",
+      "operatingCashFlow": 14193000000,
+      "capitalExpenditure": -905000000,
+      "freeCashFlow": 13288000000
+    },
+    {
+      "date": "2024-07-27",
+      "operatingCashFlow": 10880000000,
+      "capitalExpenditure": -670000000,
+      "freeCashFlow": 10210000000
+    },
+    {
+      "date": "2023-07-29",
+      "operatingCashFlow": 19886000000,
+      "capitalExpenditure": -849000000,
+      "freeCashFlow": 19037000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-07-26",
+      "grossProfitMargin": 0.649,
+      "netProfitMargin": 0.18,
+      "returnOnEquity": 0.217,
+      "currentRatio": 0.998,
+      "debtToEquityRatio": 0.6,
+      "priceToEarningsRatio": 26.83,
+      "dividendYieldPercentage": 2.36
+    },
+    {
+      "date": "2024-07-27",
+      "grossProfitMargin": 0.647,
+      "netProfitMargin": 0.192,
+      "returnOnEquity": 0.227,
+      "currentRatio": 0.908,
+      "debtToEquityRatio": 0.681,
+      "priceToEarningsRatio": 18.76,
+      "dividendYieldPercentage": 3.3
+    },
+    {
+      "date": "2023-07-29",
+      "grossProfitMargin": 0.627,
+      "netProfitMargin": 0.221,
+      "returnOnEquity": 0.284,
+      "currentRatio": 1.385,
+      "debtToEquityRatio": 0.189,
+      "priceToEarningsRatio": 16.9,
+      "dividendYieldPercentage": 2.96
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-07-26",
+      "marketCap": 273111440000,
+      "enterpriseValue": 292858440000,
+      "returnOnInvestedCapital": 0.117,
+      "freeCashFlowYield": 0.049,
+      "earningsYield": 0.037
+    },
+    {
+      "date": "2024-07-27",
+      "marketCap": 193578840000,
+      "enterpriseValue": 217043840000,
+      "returnOnInvestedCapital": 0.108,
+      "freeCashFlowYield": 0.053,
+      "earningsYield": 0.053
+    },
+    {
+      "date": "2023-07-29",
+      "marketCap": 213204370000,
+      "enterpriseValue": 211472370000,
+      "returnOnInvestedCapital": 0.171,
+      "freeCashFlowYield": 0.089,
+      "earningsYield": 0.059
+    }
+  ],
+  "insider_trades": "summarized_quarterly_data",
+  "quote": {
+    "symbol": "CSCO",
+    "price": 78.33,
+    "marketCap": 309489237981,
+    "yearHigh": 88.19,
+    "yearLow": 52.11,
+    "volume": 19080391
+  }
+}

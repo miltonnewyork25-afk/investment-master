@@ -1,0 +1,150 @@
+{
+  "symbol": "MET",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "MET",
+    "price": 67.97,
+    "marketCap": 44784865247,
+    "beta": 0.745,
+    "companyName": "MetLife, Inc.",
+    "sector": "Financial Services",
+    "industry": "Insurance - Life",
+    "ceo": "Michel Abbas Khalaf",
+    "country": "US",
+    "fullTimeEmployees": "45000",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 77084000000,
+      "grossProfit": 28024000000,
+      "operatingIncome": 4661000000,
+      "netIncome": 3379000000,
+      "eps": 4.8,
+      "epsDiluted": 4.8
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 69939000000,
+      "grossProfit": 18999000000,
+      "operatingIncome": 5622000000,
+      "netIncome": 4426000000,
+      "eps": 5.98,
+      "epsDiluted": 5.94
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 67709000000,
+      "grossProfit": 17289000000,
+      "operatingIncome": 2162000000,
+      "netIncome": 1578000000,
+      "eps": 1.82,
+      "epsDiluted": 1.81
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "totalAssets": 745166000000,
+      "totalLiabilities": 716245000000,
+      "totalStockholdersEquity": 28398000000,
+      "cashAndCashEquivalents": 22032000000,
+      "totalDebt": 20183000000
+    },
+    {
+      "date": "2024-12-31",
+      "totalAssets": 677457000000,
+      "totalLiabilities": 649754000000,
+      "totalStockholdersEquity": 27445000000,
+      "cashAndCashEquivalents": 20068000000,
+      "totalDebt": 18715000000
+    },
+    {
+      "date": "2023-12-31",
+      "totalAssets": 687584000000,
+      "totalLiabilities": 657331000000,
+      "totalStockholdersEquity": 30015000000,
+      "cashAndCashEquivalents": 20639000000,
+      "totalDebt": 18828000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "operatingCashFlow": 18105000000,
+      "freeCashFlow": 18105000000
+    },
+    {
+      "date": "2024-12-31",
+      "operatingCashFlow": 15116000000,
+      "freeCashFlow": 15116000000
+    },
+    {
+      "date": "2023-12-31",
+      "operatingCashFlow": 14260000000,
+      "freeCashFlow": 14260000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.364,
+      "netProfitMargin": 0.044,
+      "returnOnEquity": 0.119,
+      "priceToEarningsRatio": 15.53,
+      "dividendYieldPercentage": 3.24
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.272,
+      "netProfitMargin": 0.063,
+      "returnOnEquity": 0.161,
+      "priceToEarningsRatio": 12.75,
+      "dividendYieldPercentage": 3.06
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.255,
+      "netProfitMargin": 0.023,
+      "returnOnEquity": 0.053,
+      "priceToEarningsRatio": 31.95,
+      "dividendYieldPercentage": 3.5
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "marketCap": 52491705580,
+      "enterpriseValue": 50642705580,
+      "returnOnInvestedCapital": 0.007,
+      "freeCashFlowYield": 0.345,
+      "earningsYield": 0.064
+    },
+    {
+      "date": "2024-12-31",
+      "marketCap": 56432596680,
+      "enterpriseValue": 55079596680,
+      "returnOnInvestedCapital": 0.011,
+      "freeCashFlowYield": 0.268,
+      "earningsYield": 0.078
+    },
+    {
+      "date": "2023-12-31",
+      "marketCap": 50419562030,
+      "enterpriseValue": 48608562030,
+      "returnOnInvestedCapital": 0.004,
+      "freeCashFlowYield": 0.283,
+      "earningsYield": 0.031
+    }
+  ],
+  "insider_trades": "summarized_quarterly_data",
+  "quote": {
+    "symbol": "MET",
+    "price": 67.97,
+    "marketCap": 44784865247,
+    "yearHigh": 85.0,
+    "yearLow": 65.21,
+    "volume": 2425827
+  }
+}

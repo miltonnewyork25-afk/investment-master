@@ -1,0 +1,130 @@
+{
+  "symbol": "MDT",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "MDT",
+    "price": 87.14,
+    "marketCap": 111877735763,
+    "beta": 0.729,
+    "companyName": "Medtronic plc",
+    "sector": "Healthcare",
+    "industry": "Medical - Devices",
+    "ceo": "Geoffrey Straub Martha",
+    "country": "IE",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-04-30",
+      "revenue": 33537000000,
+      "operatingIncome": 5955000000,
+      "netIncome": 4662000000,
+      "eps": 3.63
+    },
+    {
+      "date": "2024-04-30",
+      "revenue": 32364000000,
+      "operatingIncome": 5144000000,
+      "netIncome": 3676000000,
+      "eps": 2.77
+    },
+    {
+      "date": "2023-04-30",
+      "revenue": 31227000000,
+      "operatingIncome": 5485000000,
+      "netIncome": 3758000000,
+      "eps": 2.83
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-04-25",
+      "totalAssets": 91680000000,
+      "totalLiabilities": 43424000000,
+      "totalStockholdersEquity": 48024000000,
+      "totalDebt": 28516000000
+    },
+    {
+      "date": "2024-04-26",
+      "totalAssets": 89981000000,
+      "totalLiabilities": 39561000000,
+      "totalStockholdersEquity": 50214000000,
+      "totalDebt": 25024000000
+    },
+    {
+      "date": "2023-04-28",
+      "totalAssets": 90948000000,
+      "totalLiabilities": 39283000000,
+      "totalStockholdersEquity": 51483000000,
+      "totalDebt": 24364000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-04-30",
+      "operatingCashFlow": 7044000000,
+      "freeCashFlow": 5185000000
+    },
+    {
+      "date": "2024-04-30",
+      "operatingCashFlow": 6787000000,
+      "freeCashFlow": 5200000000
+    },
+    {
+      "date": "2023-04-30",
+      "operatingCashFlow": 6039000000,
+      "freeCashFlow": 4580000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-04-25",
+      "grossProfitMargin": 0.653,
+      "netProfitMargin": 0.139,
+      "returnOnEquity": 0.097,
+      "priceToEarningsRatio": 23.21,
+      "dividendYieldPercentage": 3.32
+    },
+    {
+      "date": "2024-04-26",
+      "grossProfitMargin": 0.653,
+      "netProfitMargin": 0.114,
+      "returnOnEquity": 0.073,
+      "priceToEarningsRatio": 28.8,
+      "dividendYieldPercentage": 3.46
+    },
+    {
+      "date": "2023-04-28",
+      "grossProfitMargin": 0.657,
+      "netProfitMargin": 0.12,
+      "returnOnEquity": 0.073,
+      "priceToEarningsRatio": 32.18,
+      "dividendYieldPercentage": 2.99
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-04-25",
+      "marketCap": 108196096000,
+      "enterpriseValue": 134494096000
+    },
+    {
+      "date": "2024-04-26",
+      "marketCap": 105870798000,
+      "enterpriseValue": 129610798000
+    },
+    {
+      "date": "2023-04-28",
+      "marketCap": 120945310000,
+      "enterpriseValue": 143766310000
+    }
+  ],
+  "quote": {
+    "symbol": "MDT",
+    "price": 87.14,
+    "marketCap": 111877735763,
+    "yearHigh": 106.33,
+    "yearLow": 79.55
+  },
+  "insider_trades": "summarized_quarterly_data"
+}
