@@ -70,6 +70,9 @@ class L2Signals:
     f_score: Optional[int] = None
     f_components: dict = field(default_factory=dict)
 
+    # Altman Z-Score (simplified)
+    z_score: Optional[float] = None              # >2.99=安全, 1.81-2.99=灰色, <1.81=危险
+
     # Red Flags
     short_interest_pct: Optional[float] = None  # >10%红旗
     audit_concern: bool = False
@@ -82,6 +85,8 @@ class L3Signals:
     # Earnings Momentum
     earnings_surprise_last: Optional[float] = None   # 最近一次surprise%
     earnings_surprise_streak: int = 0                 # 连续超预期次数
+    eps_yoy_direction: Optional[float] = None         # 最近EPS vs 去年同期%, 正=增长
+    surprise_quality: Optional[str] = None            # "true_beat"(beat+EPS↑) / "low_bar_beat"(beat+EPS↓) / "miss"
 
     # Analyst Revisions
     estimate_revision_3m: Optional[float] = None     # 3月预测修正方向
@@ -416,11 +421,21 @@ def score_l3(s: L3Signals) -> float:
     scores = []
     weights = []
 
-    # Earnings Surprise (35%)
+    # Earnings Surprise (35%) — with quality adjustment
     if s.earnings_surprise_last is not None:
         surprise_s = _normalize(s.earnings_surprise_last, -20, 30, invert=False)
         streak_bonus = min(s.earnings_surprise_streak * 1.0, 3.0)
-        scores.append(min(surprise_s + streak_bonus, 10.0))
+        raw_score = min(surprise_s + streak_bonus, 10.0)
+
+        # Quality adjustment: low_bar_beat = beat against lowered expectations
+        # True beat (beat + EPS growing YoY) gets full credit
+        # Low bar beat (beat + EPS declining YoY) gets 50% credit
+        if s.surprise_quality == "low_bar_beat":
+            raw_score *= 0.50
+        elif s.surprise_quality == "miss":
+            raw_score = min(raw_score, 3.0)
+
+        scores.append(raw_score)
         weights.append(0.35)
 
     # Analyst Revisions (30%)
@@ -634,6 +649,12 @@ def check_vetoes(result: StockScreenResult) -> list[str]:
     if result.l1.shares_change_1y is not None and result.l1.shares_change_1y > 15:
         vetoes.append("VETO: 年稀释>15%(大规模增发)")
 
+    # Z-Score极低 = 财务困境 (豁免金融行业, Altman模型不适用于银行/保险)
+    financial_sectors = {'Financial Services', 'Banking', 'Insurance'}
+    if (result.l2.z_score is not None and result.l2.z_score < 1.0
+            and result.sector not in financial_sectors):
+        vetoes.append(f"VETO: Z-Score={result.l2.z_score:.2f}(<1.0, 财务困境区)")
+
     result.vetoes = vetoes
     return vetoes
 
@@ -665,6 +686,19 @@ def check_flags(result: StockScreenResult) -> list[str]:
     # CFO/NI 严重不匹配
     if result.l2.cfo_ni_ratio is not None and result.l2.cfo_ni_ratio < 0:
         flags.append("FLAG: CFO与NI符号相反(盈利结构异常)")
+
+    # Earnings surprise quality warning
+    if result.l3.surprise_quality == "low_bar_beat":
+        flags.append("FLAG: 低基数beat(EPS超预期但同比下降)")
+
+    # Z-Score灰色区域警告 (豁免金融行业)
+    if (result.l2.z_score is not None and 1.0 <= result.l2.z_score < 1.81
+            and result.sector not in {'Financial Services', 'Banking', 'Insurance'}):
+        flags.append(f"FLAG: Z-Score={result.l2.z_score:.2f}(灰色区域1.0-1.81, 财务风险偏高)")
+
+    # PE一次性项目扭曲检测 (from quarterly income)
+    # 如果某季度NI > 其他季度均值3倍 → PE被一次性收益扭曲
+    # This is detected during extraction and stored as a flag
 
     result.flags = flags
     return flags
@@ -921,6 +955,25 @@ def extract_signals_from_fmp(
         }
         result.l2.f_score, result.l2.f_components = compute_f_score(f_data)
 
+    # --- L2: Simplified Altman Z-Score ---
+    # Z = 1.2*WC/TA + 1.4*RE/TA + 3.3*EBIT/TA + 0.6*MktCap/TL + 1.0*Rev/TA
+    if balance and income and len(balance) > 0 and len(income) > 0:
+        ta = balance[0].get('totalAssets', 0) or 0
+        tl = balance[0].get('totalLiabilities', 0) or 0
+        if ta > 0 and tl > 0:
+            wc = (balance[0].get('totalCurrentAssets', 0) or 0) - (balance[0].get('totalCurrentLiabilities', 0) or 0)
+            re = balance[0].get('retainedEarnings', 0) or 0
+            ebit = income[0].get('operatingIncome', 0) or 0
+            rev = income[0].get('revenue', 0) or 0
+            mkt_cap = result.market_cap or 0
+
+            z = (1.2 * wc / ta
+                 + 1.4 * re / ta
+                 + 3.3 * ebit / ta
+                 + 0.6 * mkt_cap / tl
+                 + 1.0 * rev / ta)
+            result.l2.z_score = z
+
     # --- L3: Price Position ---
     if quote and isinstance(quote, dict):
         price = quote.get('price', 0)
@@ -928,7 +981,7 @@ def extract_signals_from_fmp(
         if high_52 and high_52 > 0:
             result.l3.price_52w_pct = price / high_52
 
-    # --- L3: Earnings Surprise ---
+    # --- L3: Earnings Surprise + Quality Detection ---
     if earnings_surprises and len(earnings_surprises) > 0:
         # Most recent surprise
         latest = earnings_surprises[0]
@@ -948,12 +1001,37 @@ def extract_signals_from_fmp(
                 break
         result.l3.earnings_surprise_streak = streak
 
+        # Surprise Quality: compare actual EPS to same-quarter prior year
+        # earnings_surprises are sorted newest first
+        if len(earnings_surprises) >= 4 and actual:
+            # Compare latest to ~4 quarters ago (same quarter last year)
+            prior_year = earnings_surprises[3] if len(earnings_surprises) > 3 else earnings_surprises[-1]
+            prior_actual = prior_year.get('actualEarningResult', 0)
+            if prior_actual and prior_actual > 0:
+                result.l3.eps_yoy_direction = ((actual / prior_actual) - 1) * 100
+                beat = actual > estimated if estimated else False
+                if beat and result.l3.eps_yoy_direction > 0:
+                    result.l3.surprise_quality = "true_beat"
+                elif beat and result.l3.eps_yoy_direction <= 0:
+                    result.l3.surprise_quality = "low_bar_beat"
+                else:
+                    result.l3.surprise_quality = "miss"
+
     # --- L3: Analyst Coverage ---
     if estimates and len(estimates) > 0:
         result.l3.analyst_coverage_count = estimates[0].get('numAnalystsEps')
 
     # --- L1 Enhanced: Self-Relative Valuation (from 10Y ratios) ---
     _extract_l1_self_relative(result, ratios_10y, key_metrics_10y)
+
+    # --- PE Distortion Detection (from quarterly income) ---
+    if income_quarterly and len(income_quarterly) >= 4:
+        ni_quarters = [q.get('netIncome', 0) for q in income_quarterly[:4] if q.get('netIncome')]
+        if len(ni_quarters) >= 4:
+            avg_ni = sum(ni_quarters) / len(ni_quarters)
+            max_ni = max(ni_quarters)
+            if avg_ni > 0 and max_ni > avg_ni * 3:
+                result.flags.append(f"FLAG: PE可能被一次性项目扭曲(最大季度NI={max_ni/1e9:.1f}B是均值{avg_ni/1e9:.1f}B的{max_ni/avg_ni:.1f}x)")
 
     # --- L4: 品质护城河 (from 10Y annual data) ---
     _extract_l4(result, income_10y, ratios_10y, cashflow_10y, key_metrics_10y, income, cashflow, key_metrics)

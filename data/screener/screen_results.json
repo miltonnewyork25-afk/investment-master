@@ -101,18 +101,20 @@
     "fcf_yield": 24.605080144901923,
     "shareholder_yield": 8.19228024972748,
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "FLAG: Z-Score=1.73(灰色区域1.0-1.81, 财务风险偏高)"
+    ]
   },
   {
     "symbol": "BMY",
     "name": "Bristol-Myers Squibb Company",
     "market_cap": 120314866491,
     "sector": "Healthcare",
-    "composite_score": 6.839084708631224,
-    "stage2_score": 5.582969150341939,
+    "composite_score": 6.2434638660591615,
+    "stage2_score": 5.225596644798703,
     "l1_score": 6.390819362715374,
     "l2_score": 8.252268032176081,
-    "l3_score": 5.2055628752416405,
+    "l3_score": 2.8230795049533923,
     "l4_score": 5.701604606409056,
     "l5_score": 3.580760911597035,
     "f_score": 8,
@@ -127,7 +129,9 @@
     "fcf_yield": 8.736815027240226,
     "shareholder_yield": 3.8918742457932987,
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "FLAG: 低基数beat(EPS超预期但同比下降)"
+    ]
   },
   {
     "symbol": "BTI",
@@ -238,11 +242,11 @@
     "name": "Comcast Corporation",
     "market_cap": 109899857909,
     "sector": "Communication Services",
-    "composite_score": 7.246624913383518,
-    "stage2_score": 6.209974257395279,
+    "composite_score": 6.451170367928973,
+    "stage2_score": 5.732701530122553,
     "l1_score": 7.399776785714286,
     "l2_score": 6.997132419155402,
-    "l3_score": 7.431400282885431,
+    "l3_score": 4.24958210106725,
     "l4_score": 6.435468858474387,
     "l5_score": 4.020348706758783,
     "f_score": 8,
@@ -257,7 +261,10 @@
     "fcf_yield": null,
     "shareholder_yield": 0.0,
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "FLAG: 低基数beat(EPS超预期但同比下降)",
+      "FLAG: Z-Score=1.08(灰色区域1.0-1.81, 财务风险偏高)"
+    ]
   },
   {
     "symbol": "CSCO",
@@ -528,11 +535,11 @@
     "name": "General Motors Company",
     "market_cap": 67529830376,
     "sector": "Consumer Cyclical",
-    "composite_score": 5.804634491230998,
-    "stage2_score": 4.863423917425846,
+    "composite_score": 5.071830790506944,
+    "stage2_score": 4.423741696991413,
     "l1_score": 4.701254270647653,
     "l2_score": 5.943884952006278,
-    "l3_score": 7.126566062807232,
+    "l3_score": 4.195351259911014,
     "l4_score": 5.0642200583172325,
     "l5_score": 2.7136084284460047,
     "f_score": 5,
@@ -547,7 +554,10 @@
     "fcf_yield": 16.632131509877055,
     "shareholder_yield": 18.41865470852018,
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "FLAG: 低基数beat(EPS超预期但同比下降)",
+      "FLAG: Z-Score=1.20(灰色区域1.0-1.81, 财务风险偏高)"
+    ]
   },
   {
     "symbol": "HPQ",
@@ -574,7 +584,8 @@
     "shareholder_yield": 3.3707865168539324,
     "vetoes": [],
     "flags": [
-      "FLAG: 负股东权益(PB<0), 回购/杠杆导致"
+      "FLAG: 负股东权益(PB<0), 回购/杠杆导致",
+      "FLAG: Z-Score=1.59(灰色区域1.0-1.81, 财务风险偏高)"
     ]
   },
   {
@@ -637,13 +648,13 @@
     "name": "The Kraft Heinz Company",
     "market_cap": 26728956478,
     "sector": "Consumer Defensive",
-    "composite_score": 3.9526412111165556,
-    "stage2_score": 4.508733770222533,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 3.215570525730953,
     "l2_score": 6.922841678297957,
     "l3_score": 5.502407704654897,
-    "l4_score": 5.319371261654728,
-    "l5_score": 6.775931391916703,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 5,
     "gross_margin": 33.31328682543501,
     "gm_slope": 0.2623619165961298,
@@ -655,11 +666,10 @@
     "ev_ebitda": -13.384223796033995,
     "fcf_yield": null,
     "shareholder_yield": 1.9008264462809916,
-    "vetoes": [],
-    "flags": [
-      "FLAG: 当前亏损(PE<0)",
-      "FLAG: CFO与NI符号相反(盈利结构异常)"
-    ]
+    "vetoes": [
+      "VETO: Z-Score=0.54(<1.0, 财务困境区)"
+    ],
+    "flags": []
   },
   {
     "symbol": "LMT",
@@ -800,11 +810,11 @@
     "name": "Altria Group, Inc.",
     "market_cap": 113965014992,
     "sector": "Consumer Defensive",
-    "composite_score": 6.190286158010663,
-    "stage2_score": 5.8725536559890905,
+    "composite_score": 6.079404615310938,
+    "stage2_score": 5.8060247303692565,
     "l1_score": 5.783488277602831,
     "l2_score": 8.77587815923686,
-    "l3_score": 2.62285598861971,
+    "l3_score": 2.1793298178208125,
     "l4_score": 7.2371768511740555,
     "l5_score": 4.496268947271858,
     "f_score": 6,
@@ -854,11 +864,11 @@
     "name": "NIKE, Inc.",
     "market_cap": 79772884406,
     "sector": "Consumer Cyclical",
-    "composite_score": 6.66003315104877,
-    "stage2_score": 6.214330046153488,
+    "composite_score": 6.03503315104877,
+    "stage2_score": 5.839330046153488,
     "l1_score": 5.055605813581709,
     "l2_score": 7.198103493262923,
-    "l3_score": 8.045318875960014,
+    "l3_score": 5.545318875960014,
     "l4_score": 5.9274707114842995,
     "l5_score": 5.564938421150008,
     "f_score": 4,
@@ -873,7 +883,9 @@
     "fcf_yield": 4.077436087439793,
     "shareholder_yield": 4.714717975751187,
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "FLAG: 低基数beat(EPS超预期但同比下降)"
+    ]
   },
   {
     "symbol": "PARA",
@@ -899,7 +911,8 @@
     "fcf_yield": null,
     "shareholder_yield": -66.86746987951807,
     "vetoes": [
-      "VETO: 年稀释>15%(大规模增发)"
+      "VETO: 年稀释>15%(大规模增发)",
+      "VETO: Z-Score=0.99(<1.0, 财务困境区)"
     ],
     "flags": []
   },
@@ -960,11 +973,11 @@
     "name": "PayPal Holdings, Inc.",
     "market_cap": 42010775518,
     "sector": "Financial Services",
-    "composite_score": 6.899961690809921,
-    "stage2_score": 6.078682647221099,
+    "composite_score": 6.891240760577363,
+    "stage2_score": 6.073450089081565,
     "l1_score": 8.639466462738264,
     "l2_score": 7.109746868739698,
-    "l3_score": 4.128998725422594,
+    "l3_score": 4.094115004492362,
     "l4_score": 6.279713780112754,
     "l5_score": 4.852146818608759,
     "f_score": 8,
@@ -1038,13 +1051,13 @@
     "name": "Stellantis N.V.",
     "market_cap": 18833640774,
     "sector": "Consumer Cyclical",
-    "composite_score": 4.67384966037693,
-    "stage2_score": 3.774620663280139,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 4.016666686253103,
     "l2_score": 5.937464537059475,
     "l3_score": 9.803921568627452,
-    "l4_score": 3.0658607949132484,
-    "l5_score": 3.3392386873407767,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 3,
     "gross_margin": 19.6361753307497,
     "gm_slope": 0.3280490883972807,
@@ -1056,25 +1069,23 @@
     "ev_ebitda": -2.3185769854119953,
     "fcf_yield": -29.698040831171866,
     "shareholder_yield": 9.474564864036035,
-    "vetoes": [],
-    "flags": [
-      "FLAG: F-Score=3/9(财务体质弱)",
-      "FLAG: 当前亏损(PE<0)",
-      "FLAG: ROIC=-20.1%(严重亏损)"
-    ]
+    "vetoes": [
+      "VETO: Z-Score=0.43(<1.0, 财务困境区)"
+    ],
+    "flags": []
   },
   {
     "symbol": "T",
     "name": "AT&T Inc.",
     "market_cap": 196519526391,
     "sector": "Communication Services",
-    "composite_score": 6.494286061677899,
-    "stage2_score": 6.060066209183358,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 6.174672778646994,
     "l2_score": 6.7497922016727285,
     "l3_score": 6.532934833929437,
-    "l4_score": 5.865094763767912,
-    "l5_score": 5.527711231662442,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 7,
     "gross_margin": 79.76569463899146,
     "gm_slope": 2.345917463872987,
@@ -1086,7 +1097,9 @@
     "ev_ebitda": 6.1,
     "fcf_yield": 5.824111822947,
     "shareholder_yield": 5.006724545075706,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: Z-Score=0.93(<1.0, 财务困境区)"
+    ],
     "flags": []
   },
   {
@@ -1094,13 +1107,13 @@
     "name": "Teva Pharmaceutical Industries Limited",
     "market_cap": 33273726973,
     "sector": "Healthcare",
-    "composite_score": 5.632556198883982,
-    "stage2_score": 5.757515208556134,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 2.7252055830109088,
     "l2_score": 6.6510463945994465,
     "l3_score": 8.073262747961541,
-    "l4_score": 5.129303435269524,
-    "l5_score": 6.405187876557971,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 8,
     "gross_margin": 51.793475111548936,
     "gm_slope": -0.5169755824829805,
@@ -1112,7 +1125,9 @@
     "ev_ebitda": 15.82,
     "fcf_yield": 2.310536044362292,
     "shareholder_yield": -1.5915119363395225,
-    "vetoes": [],
+    "vetoes": [
+      "VETO: Z-Score=0.75(<1.0, 财务困境区)"
+    ],
     "flags": []
   },
   {
@@ -1172,13 +1187,13 @@
     "name": "VeriSign, Inc.",
     "market_cap": 22118219761,
     "sector": "Technology",
-    "composite_score": 6.579289581641484,
-    "stage2_score": 6.170373712369093,
+    "composite_score": 0.0,
+    "stage2_score": 0.0,
     "l1_score": 4.129416199599857,
     "l2_score": 9.803921568627452,
     "l3_score": 4.849701137322214,
-    "l4_score": 6.96825052892811,
-    "l5_score": 5.04977087143293,
+    "l4_score": null,
+    "l5_score": null,
     "f_score": 8,
     "gross_margin": 88.1504285886756,
     "gm_slope": 0.6085365843211701,
@@ -1190,10 +1205,10 @@
     "ev_ebitda": 20.43,
     "fcf_yield": 4.462293618920125,
     "shareholder_yield": 6.77039755351682,
-    "vetoes": [],
-    "flags": [
-      "FLAG: 负股东权益(PB<0), 回购/杠杆导致"
-    ]
+    "vetoes": [
+      "VETO: Z-Score=-5.20(<1.0, 财务困境区)"
+    ],
+    "flags": []
   },
   {
     "symbol": "WBA",
@@ -1222,7 +1237,8 @@
     "flags": [
       "FLAG: 当前亏损(PE<0)",
       "FLAG: ROIC=-24.3%(严重亏损)",
-      "FLAG: CFO与NI符号相反(盈利结构异常)"
+      "FLAG: CFO与NI符号相反(盈利结构异常)",
+      "FLAG: Z-Score=1.62(灰色区域1.0-1.81, 财务风险偏高)"
     ]
   },
   {
