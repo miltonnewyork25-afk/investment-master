@@ -1,0 +1,208 @@
+{
+  "symbol": "BBY",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "BBY",
+    "price": 62.59,
+    "marketCap": 13150237676,
+    "beta": 1.444,
+    "lastDividend": 3.8,
+    "range": "54.99-84.99",
+    "companyName": "Best Buy Co., Inc.",
+    "currency": "USD",
+    "exchange": "NYSE",
+    "industry": "Specialty Retail",
+    "sector": "Consumer Cyclical",
+    "country": "US",
+    "fullTimeEmployees": "85000",
+    "ceo": "Corie Sue Barry"
+  },
+  "income": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2026",
+      "period": "FY",
+      "revenue": 41691000000,
+      "grossProfit": 9373000000,
+      "operatingIncome": 1389000000,
+      "netIncome": 1069000000,
+      "eps": 5.06,
+      "epsDiluted": 5.04,
+      "ebitda": 2282000000,
+      "interestExpense": 47000000,
+      "depreciationAndAmortization": 831000000
+    },
+    {
+      "date": "2025-02-01",
+      "fiscalYear": "2025",
+      "period": "FY",
+      "revenue": 41528000000,
+      "grossProfit": 9385000000,
+      "operatingIncome": 1721000000,
+      "netIncome": 927000000,
+      "eps": 4.31,
+      "epsDiluted": 4.28,
+      "ebitda": 2212000000
+    },
+    {
+      "date": "2024-02-03",
+      "fiscalYear": "2024",
+      "period": "FY",
+      "revenue": 43452000000,
+      "grossProfit": 9603000000,
+      "operatingIncome": 1574000000,
+      "netIncome": 1241000000,
+      "eps": 5.7,
+      "epsDiluted": 5.68,
+      "ebitda": 2596000000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2026",
+      "totalAssets": 14670000000,
+      "totalLiabilities": 11706000000,
+      "totalStockholdersEquity": 2964000000,
+      "cashAndCashEquivalents": 1738000000,
+      "totalDebt": 4133000000,
+      "netDebt": 2395000000,
+      "goodwill": 790000000,
+      "inventory": 5230000000
+    },
+    {
+      "date": "2025-02-01",
+      "fiscalYear": "2025",
+      "totalAssets": 14782000000,
+      "totalStockholdersEquity": 2808000000,
+      "cashAndCashEquivalents": 1578000000,
+      "totalDebt": 4053000000
+    },
+    {
+      "date": "2024-02-03",
+      "fiscalYear": "2024",
+      "totalAssets": 14967000000,
+      "totalStockholdersEquity": 3053000000,
+      "cashAndCashEquivalents": 1447000000,
+      "totalDebt": 3982000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2026",
+      "operatingCashFlow": 1962000000,
+      "capitalExpenditure": -704000000,
+      "freeCashFlow": 1258000000,
+      "netIncome": 1069000000,
+      "commonDividendsPaid": -801000000,
+      "commonStockRepurchased": -273000000,
+      "stockBasedCompensation": 139000000
+    },
+    {
+      "date": "2025-02-01",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 2098000000,
+      "capitalExpenditure": -706000000,
+      "freeCashFlow": 1392000000
+    },
+    {
+      "date": "2024-02-03",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 1470000000,
+      "capitalExpenditure": -795000000,
+      "freeCashFlow": 675000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2026",
+      "grossProfitMargin": 0.2248,
+      "netProfitMargin": 0.0256,
+      "returnOnEquity": 0.3607,
+      "currentRatio": 1.1074,
+      "debtToEquityRatio": 1.3944,
+      "priceToEarningsRatio": 12.85,
+      "dividendYieldPercentage": 5.83,
+      "interestCoverageRatio": 29.55
+    },
+    {
+      "date": "2025-02-01",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.226,
+      "netProfitMargin": 0.0223,
+      "returnOnEquity": 0.3301,
+      "priceToEarningsRatio": 19.93,
+      "dividendYieldPercentage": 4.37
+    },
+    {
+      "date": "2024-02-03",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.221,
+      "netProfitMargin": 0.0286,
+      "returnOnEquity": 0.4065,
+      "priceToEarningsRatio": 13.28
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2026",
+      "marketCap": 13736100000,
+      "enterpriseValue": 16131100000,
+      "evToEBITDA": 7.07,
+      "returnOnInvestedCapital": 0.1387,
+      "freeCashFlowYield": 0.0916
+    },
+    {
+      "date": "2025-02-01",
+      "fiscalYear": "2025",
+      "marketCap": 18477072000,
+      "evToEBITDA": 9.47
+    },
+    {
+      "date": "2024-02-03",
+      "fiscalYear": "2024",
+      "marketCap": 16477713000,
+      "evToEBITDA": 7.32
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 0,
+      "totalSales": 9
+    },
+    {
+      "year": 2025,
+      "quarter": 3,
+      "totalPurchases": 0,
+      "totalSales": 3
+    },
+    {
+      "year": 2025,
+      "quarter": 2,
+      "totalPurchases": 0,
+      "totalSales": 2
+    }
+  ],
+  "quote": {
+    "symbol": "BBY",
+    "name": "Best Buy Co., Inc.",
+    "price": 62.59,
+    "changePercentage": -0.02,
+    "change": -0.01,
+    "volume": 2332315,
+    "dayLow": 62.35,
+    "dayHigh": 63.74,
+    "yearHigh": 84.99,
+    "yearLow": 54.99,
+    "marketCap": 13150237676,
+    "priceAvg50": 66.31,
+    "priceAvg200": 71.61,
+    "exchange": "NYSE",
+    "previousClose": 62.6
+  }
+}

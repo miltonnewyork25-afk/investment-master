@@ -1,0 +1,172 @@
+{
+  "symbol": "BRO",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "BRO",
+    "price": 68.26,
+    "marketCap": 23305383876,
+    "beta": 0.798,
+    "lastDividend": 0.63,
+    "range": "65.68-125.68",
+    "companyName": "Brown & Brown, Inc.",
+    "exchange": "NYSE",
+    "industry": "Insurance - Brokers",
+    "sector": "Financial Services",
+    "country": "US",
+    "fullTimeEmployees": "17403",
+    "ceo": "J. Powell Brown"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "revenue": 5956000000,
+      "grossProfit": 5222000000,
+      "operatingIncome": 1695000000,
+      "netIncome": 1054000000,
+      "eps": 3.4,
+      "ebitda": 2035000000,
+      "interestExpense": 297000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "revenue": 4705000000,
+      "operatingIncome": 1367000000,
+      "netIncome": 993000000,
+      "eps": 3.48,
+      "ebitda": 1726000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "revenue": 4199000000,
+      "operatingIncome": 1156000000,
+      "netIncome": 870500000,
+      "eps": 3.07,
+      "ebitda": 1549000000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "totalAssets": 29991000000,
+      "totalStockholdersEquity": 12547000000,
+      "cashAndCashEquivalents": 1079000000,
+      "totalDebt": 7918000000,
+      "goodwill": 15087000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "totalAssets": 17612000000,
+      "totalStockholdersEquity": 6437000000,
+      "totalDebt": 4060000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "totalAssets": 14883000000,
+      "totalStockholdersEquity": 5579000000,
+      "totalDebt": 4020000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 1450000000,
+      "capitalExpenditure": -68000000,
+      "freeCashFlow": 1382000000,
+      "netIncome": 1067000000,
+      "commonDividendsPaid": -194000000,
+      "commonStockRepurchased": -100000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 1174000000,
+      "freeCashFlow": 1092000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 1010000000,
+      "freeCashFlow": 941000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.877,
+      "netProfitMargin": 0.177,
+      "returnOnEquity": 0.084,
+      "currentRatio": 1.039,
+      "debtToEquityRatio": 0.631,
+      "priceToEarningsRatio": 23.44,
+      "dividendYieldPercentage": 0.79,
+      "interestCoverageRatio": 5.71
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "priceToEarningsRatio": 28.97
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "priceToEarningsRatio": 22.94
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "marketCap": 24707000000,
+      "enterpriseValue": 31546000000,
+      "evToEBITDA": 15.5
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "marketCap": 28769640000,
+      "evToEBITDA": 18.63
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "marketCap": 19967688000,
+      "evToEBITDA": 15.03
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 0
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 0,
+      "totalSales": 0
+    }
+  ],
+  "quote": {
+    "symbol": "BRO",
+    "name": "Brown & Brown, Inc.",
+    "price": 68.26,
+    "changePercentage": 0.9,
+    "volume": 1498018,
+    "yearHigh": 125.68,
+    "yearLow": 65.68,
+    "marketCap": 23305383876,
+    "priceAvg50": 73.64,
+    "priceAvg200": 88.48,
+    "exchange": "NYSE",
+    "previousClose": 67.65
+  }
+}

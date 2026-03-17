@@ -1,0 +1,128 @@
+{
+  "symbol": "CCK",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "CCK",
+    "price": 105.17,
+    "marketCap": 12131137486,
+    "beta": 0.706,
+    "companyName": "Crown Holdings, Inc.",
+    "exchange": "NYSE",
+    "industry": "Packaging & Containers",
+    "sector": "Consumer Cyclical",
+    "ceo": "Timothy J. Donahue"
+  },
+  "income": [
+    {
+      "fiscalYear": "2025",
+      "revenue": 12365000000,
+      "operatingIncome": 1636000000,
+      "netIncome": 734000000,
+      "eps": 6.41,
+      "ebitda": 2018000000,
+      "interestExpense": 398000000
+    },
+    {
+      "fiscalYear": "2024",
+      "revenue": 11801000000,
+      "netIncome": 424000000,
+      "eps": 3.56
+    },
+    {
+      "fiscalYear": "2023",
+      "revenue": 12010000000,
+      "netIncome": 450000000,
+      "eps": 3.77
+    }
+  ],
+  "balance": [
+    {
+      "fiscalYear": "2025",
+      "totalAssets": 14272000000,
+      "totalStockholdersEquity": 2999000000,
+      "cashAndCashEquivalents": 879000000,
+      "totalDebt": 6174000000,
+      "goodwill": 3155000000
+    },
+    {
+      "fiscalYear": "2024",
+      "totalAssets": 13848000000,
+      "totalDebt": 6422000000
+    },
+    {
+      "fiscalYear": "2023",
+      "totalAssets": 15034000000,
+      "totalDebt": 7700000000
+    }
+  ],
+  "cashflow": [
+    {
+      "fiscalYear": "2025",
+      "operatingCashFlow": 1511000000,
+      "freeCashFlow": 1098000000,
+      "commonDividendsPaid": -120000000,
+      "commonStockRepurchased": -505000000
+    },
+    {
+      "fiscalYear": "2024",
+      "operatingCashFlow": 1192000000,
+      "freeCashFlow": 789000000
+    },
+    {
+      "fiscalYear": "2023",
+      "operatingCashFlow": 1453000000,
+      "freeCashFlow": 660000000
+    }
+  ],
+  "ratios": [
+    {
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.183,
+      "netProfitMargin": 0.059,
+      "returnOnEquity": 0.245,
+      "priceToEarningsRatio": 16.16,
+      "dividendYieldPercentage": 1.01,
+      "interestCoverageRatio": 4.11
+    },
+    {
+      "fiscalYear": "2024",
+      "priceToEarningsRatio": 23.29
+    },
+    {
+      "fiscalYear": "2023",
+      "priceToEarningsRatio": 24.49
+    }
+  ],
+  "key_metrics": [
+    {
+      "fiscalYear": "2025",
+      "marketCap": 11864392453,
+      "evToEBITDA": 8.5
+    },
+    {
+      "fiscalYear": "2024",
+      "evToEBITDA": 8.05
+    },
+    {
+      "fiscalYear": "2023",
+      "evToEBITDA": 9.52
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 5
+    }
+  ],
+  "quote": {
+    "symbol": "CCK",
+    "price": 105.17,
+    "yearHigh": 116.62,
+    "yearLow": 75.98,
+    "marketCap": 12131137486,
+    "exchange": "NYSE",
+    "previousClose": 104.13
+  }
+}

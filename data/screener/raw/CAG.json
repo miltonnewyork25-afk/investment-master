@@ -1,0 +1,125 @@
+{
+  "symbol": "CAG",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "CAG",
+    "price": 16.41,
+    "marketCap": 7850043085,
+    "beta": -0.061,
+    "companyName": "Conagra Brands, Inc.",
+    "exchange": "NYSE",
+    "industry": "Packaged Foods",
+    "sector": "Consumer Defensive",
+    "ceo": "Sean Connolly"
+  },
+  "income": [
+    {
+      "fiscalYear": "2025",
+      "revenue": 11612800000,
+      "operatingIncome": 1364600000,
+      "netIncome": 1152400000,
+      "eps": 2.41,
+      "ebitda": 1965600000
+    },
+    {
+      "fiscalYear": "2024",
+      "revenue": 12050900000,
+      "netIncome": 347200000,
+      "eps": 0.73
+    },
+    {
+      "fiscalYear": "2023",
+      "revenue": 12277000000,
+      "netIncome": 683600000,
+      "eps": 1.43
+    }
+  ],
+  "balance": [
+    {
+      "fiscalYear": "2025",
+      "totalAssets": 20933900000,
+      "totalStockholdersEquity": 8932700000,
+      "cashAndCashEquivalents": 68000000,
+      "totalDebt": 8067600000,
+      "goodwill": 10501900000
+    },
+    {
+      "fiscalYear": "2024",
+      "totalAssets": 20862300000,
+      "totalDebt": 8613500000
+    },
+    {
+      "fiscalYear": "2023",
+      "totalAssets": 22052600000,
+      "totalDebt": 9419200000
+    }
+  ],
+  "cashflow": [
+    {
+      "fiscalYear": "2025",
+      "operatingCashFlow": 1691900000,
+      "freeCashFlow": 1302600000,
+      "commonDividendsPaid": -669200000
+    },
+    {
+      "fiscalYear": "2024",
+      "operatingCashFlow": 2015600000,
+      "freeCashFlow": 1627500000
+    },
+    {
+      "fiscalYear": "2023",
+      "operatingCashFlow": 995400000,
+      "freeCashFlow": 633200000
+    }
+  ],
+  "ratios": [
+    {
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.259,
+      "netProfitMargin": 0.099,
+      "returnOnEquity": 0.129,
+      "priceToEarningsRatio": 9.3,
+      "dividendYieldPercentage": 6.25
+    },
+    {
+      "fiscalYear": "2024",
+      "priceToEarningsRatio": 41.74
+    },
+    {
+      "fiscalYear": "2023",
+      "priceToEarningsRatio": 24.41
+    }
+  ],
+  "key_metrics": [
+    {
+      "fiscalYear": "2025",
+      "marketCap": 10713920000,
+      "evToEBITDA": 9.52
+    },
+    {
+      "fiscalYear": "2024",
+      "evToEBITDA": 15.91
+    },
+    {
+      "fiscalYear": "2023",
+      "evToEBITDA": 15.43
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 0
+    }
+  ],
+  "quote": {
+    "symbol": "CAG",
+    "price": 16.41,
+    "yearHigh": 27.68,
+    "yearLow": 15.96,
+    "marketCap": 7850043085,
+    "exchange": "NYSE",
+    "previousClose": 16.175
+  }
+}

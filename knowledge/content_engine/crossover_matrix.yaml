@@ -1,0 +1,181 @@
+# Celebrity Investor × Report Database Crossover Matrix v1.0
+# 名人投资者操作 × 我们报告库的交叉矩阵
+# 更新时间: 2026-03-08
+# 数据来源: 13F filings (Q4 2025, disclosed 2026-02-17), 雪球, 公开报道
+
+# ============================================================
+# 名人投资者最新操作汇总
+# ============================================================
+celebrities:
+  buffett:
+    name: "Warren Buffett / Berkshire Hathaway"
+    filing: "Q4 2025 13F (2026-02-17)"
+    actions:
+      AAPL: { action: "大幅减持", detail: "继续减持至2.28亿股，自2023年9月累计减持74%，仍为第一大持仓(22.6%)" }
+      AMZN: { action: "大幅减持", detail: "卖出770万股，减持77%，仅剩230万股" }
+      GOOGL: { action: "持有", detail: "Q3新建仓1785万股($4.3B)，Q4未动。退休前最后一个重大建仓" }
+
+  ackman:
+    name: "Bill Ackman / Pershing Square"
+    filing: "Q4 2025 13F"
+    actions:
+      HLT: { action: "完全清仓", detail: "2018年建仓~$84，2026年2月全部卖出均价~$188，收益+248%。持有8年后完全退出" }
+      META: { action: "新建仓", detail: "267万股，$17.6亿，占组合11.37%。称'世界上最伟大的企业之一'" }
+      AMZN: { action: "加仓", detail: "增至960万股，$22.2亿，占组合14.28%" }
+      GOOGL: { action: "大幅减仓", detail: "卖出86%的GOOGL A类股(约$13.5亿)，仍占组合13.83%" }
+      CMG: { action: "持有", detail: "2150万股，$8.44亿" }
+
+  duan_yongping:
+    name: "段永平 / H&H International Investment"
+    filing: "Q4 2025 13F"
+    actions:
+      AAPL: { action: "减持", detail: "Q4减持247万股(约-7%)，仍为第一大持仓，占组合50.3%($88亿)" }
+      NVDA: { action: "暴力加仓", detail: "增持664万股，持仓暴增1110%至724万股，升至第三大持仓(7.72%，$13.5亿)" }
+      GOOGL: { action: "小幅加仓", detail: "小幅增持，维持前五大持仓" }
+
+  cathie_wood:
+    name: "Cathie Wood / ARK Invest"
+    filing: "2025 Q4 - 2026 Q1 交易记录"
+    actions:
+      TSLA: { action: "持续减持", detail: "2025年12月卖出近15万股(约$30M)，将资金转向加密和AI" }
+      PLTR: { action: "来回交易", detail: "卖出7.3万股获利了结，又逢低买入15.2万股。净买入" }
+      AMD: { action: "买入", detail: "从Tesla/PLTR获利中将资金转入AMD和Meta" }
+
+  burry:
+    name: "Michael Burry / Scion Capital"
+    filing: "Q3 2025 13F"
+    actions:
+      PLTR: { action: "做空", detail: "$9.12亿看跌期权" }
+      NVDA: { action: "做空", detail: "$1.87亿看跌期权" }
+
+  tepper:
+    name: "David Tepper / Appaloosa"
+    filing: "Q4 2025 13F"
+    actions:
+      GOOGL: { action: "加仓", detail: "增持，占组合8.1%" }
+      META: { action: "加仓", detail: "增持，占组合5.72%" }
+      AMZN: { action: "减持", detail: "减持，仍占组合7.26%" }
+      NVDA: { action: "减持", detail: "减持" }
+
+  druckenmiller:
+    name: "Stanley Druckenmiller / Duquesne Family Office"
+    filing: "Q4 2025 13F"
+    actions:
+      ARM: { action: "完全清仓", detail: "Q3加仓725%，Q4全部清仓。持有仅1个季度" }
+      META: { action: "完全清仓", detail: "全部卖出" }
+      GOOGL: { action: "大幅加仓", detail: "增持+277%" }
+      AMZN: { action: "加仓", detail: "增持+69%" }
+      NVDA: { action: "早已退出", detail: "2024年底清仓" }
+
+  li_lu:
+    name: "李录 / Himalaya Capital"
+    filing: "Q4 2025 13F ($3.57B, 9 holdings)"
+    actions:
+      GOOGL: { action: "最大持仓", detail: "GOOGL+GOOG合计占组合44%(22.3% A类+21.6% C类)" }
+
+  englander:
+    name: "Israel Englander / Millennium"
+    filing: "Q4 2025 13F"
+    actions:
+      NVDA: { action: "减持", detail: "卖出300万股(-17%)" }
+      PLTR: { action: "加仓", detail: "买入54万股，持仓翻倍" }
+
+# ============================================================
+# 交叉矩阵: 名人操作 × 我们评级
+# ============================================================
+crossover_matrix:
+  # 最强矛盾 (名人挑战我们)
+  high_contrast:
+    - ticker: NVDA
+      our_rating: "审慎关注(-16~20%)"
+      celebrity_action: "段永平暴力加仓+1110%"
+      contrast_score: 10
+      narrative: "中国巴菲特全仓AI芯片，我们却说这是'史上最贵的周期股'"
+      kairos_trigger: "段永平下次13F / NVDA财报 / AI CapEx辩论"
+
+    - ticker: PLTR
+      our_rating: "审慎关注(-40%)"
+      celebrity_split: "Burry做空$9亿 vs Cathie Wood买入 vs Englander翻倍"
+      contrast_score: 8
+      narrative: "大空头和木头姐的终极对决——200倍PE的PLTR到底谁对？"
+      kairos_trigger: "PLTR财报 / 任一方平仓"
+
+    - ticker: TSLA
+      our_rating: "关注(+22%)"
+      celebrity_action: "Cathie Wood减持信仰标的"
+      contrast_score: 7
+      narrative: "当布道者开始卖出教堂——TSLA的信仰和现实"
+      kairos_trigger: "ARK月度交易 / TSLA交付数据"
+
+  # 最强一致 (名人验证我们)
+  high_alignment:
+    - ticker: HLT
+      our_rating: "审慎关注(-46%)"
+      celebrity_action: "Ackman完全清仓(持有8年,+248%后退出)"
+      alignment_score: 10
+      narrative: "Ackman赚了248%就走了。我们的305K报告解释了为什么：$307市值暗示NUG弹性ε=7.04永续增长，这在数学上不可能。最聪明的钱已经行动了。"
+      kairos_trigger: "立即可用! Ackman退出是2026年2月新闻"
+      note: "单一最高价值交叉点——名人退出+我们独立研究(NUG/RPPD/η三个原创方法论)完美验证"
+
+    - ticker: AAPL
+      our_rating: "审慎关注(-14~18%)"
+      celebrity_action: "巴菲特累计减持74% + 段永平减持7%"
+      alignment_score: 9
+      narrative: "当两个最忠实的苹果信徒同时离场，信号是什么？"
+      kairos_trigger: "AAPL财报 / iOS更新 / AI落后消息"
+
+    - ticker: ARM
+      our_rating: "审慎关注(-41%)"
+      celebrity_action: "Druckenmiller持有仅1季度后完全清仓(Q3加725%→Q4全卖)"
+      alignment_score: 8
+      narrative: "Druckenmiller只持有ARM一个季度就全部清仓——不是获利了结，是论文改变。我们的360K报告解释了RISC-V CDS定价权量化为什么连最伟大的宏观交易员都无法忍受。"
+      kairos_trigger: "ARM财报 / RISC-V竞争新闻"
+
+    - ticker: META
+      our_rating: "关注(+15%)"
+      celebrity_action: "Ackman新建仓$17.6B + Tepper加仓"
+      alignment_score: 8
+      narrative: "Ackman用$17.6亿验证了我们花一个月写出的结论"
+      kairos_trigger: "META财报"
+
+  # 极端分裂 (名人之间分裂)
+  celebrity_split:
+    - ticker: GOOGL
+      our_rating: "中性关注(+5%)"
+      bull_camp: "巴菲特$4.3B建仓 + 段永平加仓 + Tepper加仓 + 李录44%仓位 + Druckenmiller+277%"
+      bear_camp: "Ackman砍仓86%"
+      split_score: 10
+      narrative: "五位传奇投资者(巴菲特/段永平/李录/Tepper/Druckenmiller)总计管理$300B+的资金聚焦GOOGL——但Ackman几乎同时砍了86%。我们只给+5%。是集体智慧在碾压我们的分析，还是Google的AI护城河比我们模型捕获的更强？"
+      kairos_trigger: "GOOGL财报 / 反垄断裁决 / AI搜索进展"
+      note: "收敛叙事——当多位传奇一致而我们是孤独怀疑者，智识张力最大"
+
+    - ticker: META
+      our_rating: "关注(+15%)"
+      bull_camp: "Ackman新建$17.6B + Tepper加仓"
+      bear_camp: "Druckenmiller完全清仓"
+      split_score: 7
+      narrative: "Druckenmiller全卖META，Ackman全买。两个传奇，完全相反的判断。我们站在Ackman这边(+15%)——但Druckenmiller的退出让我们重新审视AI CapEx回报率假设。"
+      kairos_trigger: "META财报"
+
+  # 定价矛盾 (市场挑战我们)
+  market_challenge:
+    - ticker: INTC
+      our_rating: "审慎关注(条件性, -72%)"
+      market_action: "股价+161%"
+      challenge_score: 10
+      narrative: "我们说-72%，市场说+161%——到底谁在做梦？"
+      kairos_trigger: "INTC财报 / 18A进展 / 政府补贴消息"
+
+# ============================================================
+# 高价值首批内容排序
+# ============================================================
+content_priority:
+  # v2.0: 林晓薇视角重写 — 程序员妈妈+NYC具体性+Hofstadter范畴重分配
+  1: { title: "Ackman赚了248%就走了——我用三个原创方法论解释了为什么", tickers: [HLT, IHG], celebrity: "Ackman完全退出HLT", engine: "侦探揭秘+先知受难", platforms: [all], contrast: 10, note: "立即可发! NUG弹性ε=7.04+RPPD+η三方法论。范畴重分配:酒店公司→品牌授权公司→数学上不可能的增长假设", voice: "感恩节前订Hampton用积分的个人体验开场" }
+  2: { title: "我在星巴克排队时算出的十亿美元", tickers: [SBUX], celebrity: null, engine: "赋权解密+4拍aha", platforms: [wechat, substack], contrast: 9, note: "4分钟悖论=最佳概念晶体。范畴重分配:品牌零售→制造业吞吐问题", voice: "Mia蹲下看蚂蚁的四分钟——拉着六岁孩子的四分钟是不同的货币" }
+  3: { title: "五位传奇同时押注Google——一个程序员为什么只给+5%?", tickers: [GOOGL], celebrity: "巴菲特+段永平+李录+Tepper+Druckenmiller vs Ackman", engine: "公开论战(收敛)", platforms: [xueqiu, twitter], contrast: 10, note: "收敛叙事。AI Overview吃掉自己的广告库存——Emily搜光合作用方程式的场景", voice: "女儿永远不会学会'在10个结果里判断哪个可信'" }
+  4: { title: "Tony花了$2M买GPU——一个程序员妈妈看'史上最贵的周期股'", tickers: [NVDA], celebrity: "Burry做空$1.87B vs 段永平+1110%", engine: "公开论战(三角)", platforms: [xueqiu, wechat, twitter, substack], contrast: 10, note: "三方视角+CI-01。Mia的Roblox卡顿=NVIDIA算力消费的微观入口", voice: "她见过太多这种曲线:2000 Cisco,2007房地产" }
+  5: { title: "同一个CEO，两种tech stack", tickers: [SBUX, CMG], celebrity: null, engine: "跨域嫁接", platforms: [all], contrast: 9, note: "程序员视角:换了stack,过去经验可能是负资产", voice: "Emily选Chipotle不选外婆炒饭——文化认同的微妙松动" }
+  6: { title: "女儿在Apple里长大——两个信徒的告别", tickers: [AAPL], celebrity: "巴菲特+段永平双减持", engine: "先知受难", platforms: [all], contrast: 9, note: "identity cost > switching cost", voice: "这是护城河还是笼子?" }
+  7: { title: "Druckenmiller只持有ARM一个季度——一个用过ARM芯片的人理解为什么", tickers: [ARM], celebrity: "Druckenmiller 1季度清仓", engine: "侦探揭秘", platforms: [twitter, substack], contrast: 8, note: "RISC-V=免费高速公路。前同事Marcus的第一手证言", voice: "开源达到'够用'阈值,付费版就很难defend定价" }
+  8: { title: "Brooklyn的Tesla越来越少了——当布道者卖出教堂", tickers: [TSLA], celebrity: "Cathie Wood减持", engine: "认知翻转", platforms: [all], contrast: 8, note: "品牌忠诚→身份政治", voice: "Uber司机不在乎Musk,但$400/月油费节省是真金白银" }

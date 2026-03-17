@@ -1,0 +1,73 @@
+{
+  "symbol": "SLB",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "SLB",
+    "price": 44.72,
+    "marketCap": 66871157600,
+    "beta": 0.709,
+    "companyName": "SLB N.V.",
+    "sector": "Energy",
+    "industry": "Oil & Gas Equipment & Services",
+    "ceo": "Olivier Le Peuch",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 35709000000,
+      "operatingIncome": 5456000000,
+      "netIncome": 3350000000,
+      "eps": 2.38
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 36289000000,
+      "operatingIncome": 6326000000,
+      "netIncome": 4461000000,
+      "eps": 3.14
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 33135000000,
+      "operatingIncome": 5499000000,
+      "netIncome": 4203000000,
+      "eps": 2.95
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.182,
+      "netProfitMargin": 0.094,
+      "priceToEarningsRatio": 16.85,
+      "dividendYieldPercentage": 2.84
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.206,
+      "netProfitMargin": 0.123,
+      "priceToEarningsRatio": 12.21,
+      "dividendYieldPercentage": 2.81
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.198,
+      "netProfitMargin": 0.127,
+      "priceToEarningsRatio": 17.64,
+      "dividendYieldPercentage": 1.78
+    }
+  ],
+  "quote": {
+    "symbol": "SLB",
+    "price": 44.72,
+    "marketCap": 66871157600,
+    "yearHigh": 52.45,
+    "yearLow": 31.11
+  },
+  "balance": [],
+  "cashflow": [],
+  "key_metrics": [],
+  "insider_trades": "summarized_quarterly_data"
+}

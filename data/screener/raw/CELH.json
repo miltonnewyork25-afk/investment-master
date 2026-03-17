@@ -1,0 +1,123 @@
+{
+  "symbol": "CELH",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "CELH",
+    "price": 44.57,
+    "marketCap": 11489490910,
+    "beta": 0.956,
+    "companyName": "Celsius Holdings, Inc.",
+    "exchange": "NASDAQ",
+    "industry": "Beverages - Non-Alcoholic",
+    "sector": "Consumer Defensive",
+    "ceo": "John Fieldly"
+  },
+  "income": [
+    {
+      "fiscalYear": "2025",
+      "revenue": 2515269000,
+      "operatingIncome": 468523000,
+      "netIncome": 107999000,
+      "eps": 0.25,
+      "ebitda": 203461000
+    },
+    {
+      "fiscalYear": "2024",
+      "revenue": 1355630000,
+      "netIncome": 145074000,
+      "eps": 0.46
+    },
+    {
+      "fiscalYear": "2023",
+      "revenue": 1318014000,
+      "netIncome": 226801000,
+      "eps": 0.79
+    }
+  ],
+  "balance": [
+    {
+      "fiscalYear": "2025",
+      "totalAssets": 5119621000,
+      "totalStockholdersEquity": 2941442000,
+      "cashAndCashEquivalents": 398866000,
+      "totalDebt": 669926000,
+      "goodwill": 917560000
+    },
+    {
+      "fiscalYear": "2024",
+      "totalAssets": 1766881000,
+      "totalStockholdersEquity": 1224417000
+    },
+    {
+      "fiscalYear": "2023",
+      "totalAssets": 1536396000,
+      "totalStockholdersEquity": 1088528000
+    }
+  ],
+  "cashflow": [
+    {
+      "fiscalYear": "2025",
+      "operatingCashFlow": 359442000,
+      "freeCashFlow": 323375000
+    },
+    {
+      "fiscalYear": "2024",
+      "operatingCashFlow": 262898000,
+      "freeCashFlow": 239508000
+    },
+    {
+      "fiscalYear": "2023",
+      "operatingCashFlow": 141218000,
+      "freeCashFlow": 123785000
+    }
+  ],
+  "ratios": [
+    {
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.504,
+      "netProfitMargin": 0.043,
+      "returnOnEquity": 0.037,
+      "priceToEarningsRatio": 99.61
+    },
+    {
+      "fiscalYear": "2024",
+      "priceToEarningsRatio": 42.43
+    },
+    {
+      "fiscalYear": "2023",
+      "priceToEarningsRatio": 55.48
+    }
+  ],
+  "key_metrics": [
+    {
+      "fiscalYear": "2025",
+      "marketCap": 10757636340,
+      "evToEBITDA": 54.21
+    },
+    {
+      "fiscalYear": "2024",
+      "evToEBITDA": 32.42
+    },
+    {
+      "fiscalYear": "2023",
+      "evToEBITDA": 43.88
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 1
+    }
+  ],
+  "quote": {
+    "symbol": "CELH",
+    "price": 44.57,
+    "yearHigh": 66.74,
+    "yearLow": 27.15,
+    "marketCap": 11489490910,
+    "exchange": "NASDAQ",
+    "previousClose": 43.68
+  }
+}

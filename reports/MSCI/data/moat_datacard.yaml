@@ -1,0 +1,73 @@
+# MSCI Moat Data Card v2.0
+# Generated: 2026-03-13
+# Report: MSCI_Complete_v1.0
+# Framework: v18.3
+
+ticker: "MSCI"
+report_date: "2026-03-13"
+report_version: "v1.0"
+market_cap_B: 40.3
+cqi_score: 66
+moat_trend: "→ Stable"
+rating: "关注(偏中性)"
+expected_return_pct: 13.1
+
+monopoly_purity:
+  revenue_pct: 57.8
+  profit_pct: 70.3
+  segment_name: "Index(指数许可)"
+  note: "全球指数标准制定者, HHI 3,294(高度集中), 三寡头之首"
+
+pricing_power:
+  stage: 1.7
+  ceiling_signal: "OPM 54.7% vs 天花板55-57%, 弹性仅2-3pp"
+  runway: "收入端(AUM复利+新产品)>利润端(OPM天花板)"
+
+tam_penetration:
+  current_pct: 12
+  expansion_vector: "被动化$37T→$70T + Direct Indexing + PA指数化"
+  tam_source: "PwC Global ETF Report 2025"
+
+moat_age:
+  years: 55
+  origin: "1969年Capital International World Index → 1998年MSCI独立 → 2007年IPO"
+  institutional_anchor: "IPS合同锁定+EU BMR许可+SFDR强制+L4/L5制度嵌入"
+
+switching_cost:
+  time_months: 18
+  cost_estimate: "18-24个月迁移+合规重审+追踪误差风险"
+  lock_in_type: "IPS合同+ETF基准+合规框架+技术集成"
+
+market_implied:
+  revenue_cagr_5y: 9.5
+  terminal_opm: 58.0
+  key_bet: "OPM从54.7%→58-60%(从未达到55%+)"
+  our_assessment: "55-57%更合理; 2-3pp差距=估值偏贵5-15%"
+
+valuation_anchors:
+  fair_value: 606
+  margin_of_safety_price: 470
+  overvaluation_trigger: 700
+  discount_rate_used: 7.2
+  methodology: "5情景FCFF+SOTP+Reverse DCF+分析师共识+FMP DCF概率加权"
+  as_of_date: "2026-03-13"
+
+earnings_predictability:
+  revenue_cv: 3.2
+  opm_range_pct: [50, 55]
+  miss_rate_pct: 8.0
+  e_score: 8.5
+
+drawdown_profile:
+  max_dd_2020_pct: -34.2
+  trough_date_2020: "2020-03-23"
+  recovery_days_2020: 120
+  max_dd_2022_pct: -38.5
+  trough_date_2022: "2022-10-13"
+  recovery_days_2022: 280
+  downside_beta: 0.82
+
+liquidity:
+  avg_daily_volume_usd: 420000000
+  market_cap: 40300000000
+  spread_bps_est: 2.0
