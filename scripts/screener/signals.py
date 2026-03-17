@@ -1747,17 +1747,32 @@ def save_results(results: list[StockScreenResult], output_dir: str = "data/scree
     with open(out / "screen_results.json", 'w') as f:
         json.dump(json_data, f, indent=2, ensure_ascii=False)
 
-    # Text report
-    active = sorted(
-        [r for r in results if not r.vetoes],
-        key=lambda r: r.composite_score or 0,
-        reverse=True
-    )
-    with open(out / "screen_report.txt", 'w') as f:
-        f.write(format_ranking_table(results))
-        f.write("\n\n" + "="*80 + "\n  详细信号卡片\n" + "="*80 + "\n")
-        for r in active[:20]:
-            f.write(format_signal_card(r))
+    # Text report — Stage 2模式用stage2_score排序
+    if stage2:
+        active = sorted(
+            [r for r in results if not r.vetoes and r.stage2_score],
+            key=lambda r: r.stage2_score or 0,
+            reverse=True
+        )
+        with open(out / "screen_report.txt", 'w') as f:
+            # Write Stage 2 ranking header
+            f.write(f"\nStage 2 深筛排名 | {len(active)}只通过\n")
+            f.write(f"{'#':>3} {'Symbol':<6} {'S2':>5} {'L4':>5} {'L5':>5} {'信':>2}\n")
+            f.write("-"*30 + "\n")
+            for i, r in enumerate(active[:50], 1):
+                conf = getattr(r, '_data_confidence', '?')
+                f.write(f"{i:>3} {r.symbol:<6} {r.stage2_score:>5.1f} {r.l4.score:>5.1f} {r.l5.score:>5.1f} {conf:>2}\n")
+    else:
+        active = sorted(
+            [r for r in results if not r.vetoes],
+            key=lambda r: r.composite_score or 0,
+            reverse=True
+        )
+        with open(out / "screen_report.txt", 'w') as f:
+            f.write(format_ranking_table(results))
+            f.write("\n\n" + "="*80 + "\n  详细信号卡片\n" + "="*80 + "\n")
+            for r in active[:20]:
+                f.write(format_signal_card(r))
 
     print(f"Results saved to {out}/screen_results.json + screen_report.txt")
     return out / "screen_results.json"

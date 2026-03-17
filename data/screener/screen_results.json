@@ -2328,6 +2328,34 @@
     "flags": []
   },
   {
+    "symbol": "COIN",
+    "name": "Coinbase Global, Inc.",
+    "market_cap": 54826781605,
+    "sector": "Financial Services",
+    "composite_score": 4.548658445718315,
+    "stage2_score": 3.548936889529988,
+    "l1_score": 1.3772057636473012,
+    "l2_score": 3.9165910711043996,
+    "l3_score": 10.0,
+    "l4_score": 5.086134389909809,
+    "l5_score": 5.000000000000001,
+    "f_score": 4,
+    "gross_margin": null,
+    "gm_slope": null,
+    "roic_5y": 7.0,
+    "rev_cagr_10y": null,
+    "rev_cagr_3y": null,
+    "opm_inflection": null,
+    "rev_acceleration": null,
+    "ev_ebitda": 30.83,
+    "fcf_yield": 4.588825496753886,
+    "shareholder_yield": -5.139586213587523,
+    "vetoes": [],
+    "flags": [
+      "FLAG: 资产增长32%(可能盲目扩张)"
+    ]
+  },
+  {
     "symbol": "COKE",
     "name": "Coca-Cola Consolidated, Inc.",
     "market_cap": 18156353073,
