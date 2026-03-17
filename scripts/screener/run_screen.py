@@ -118,7 +118,7 @@ def format_stage2_ranking(results: list[StockScreenResult]) -> str:
 
     for i, r in enumerate(active, 1):
         final = r.final_score if r.final_score else r.stage2_score
-        fcfm = f"{r.l4.fcf_margin:.0f}" if r.l4.fcf_margin is not None else "N/A"
+        fcfm = f"{r.l4.real_fcf_margin:.0f}" if r.l4.real_fcf_margin is not None else (f"{r.l4.fcf_margin:.0f}" if r.l4.fcf_margin is not None else "N/A")
         gm = f"{r.l4.gross_margin_latest:.0f}" if r.l4.gross_margin_latest is not None else "N/A"
         dna_short = {
             "anti_fragile": "反脆弱",

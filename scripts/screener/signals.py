@@ -84,11 +84,17 @@ class L2Signals:
 @dataclass
 class L3Signals:
     """Layer 3: 市场开始纠错"""
-    # Earnings Momentum
+    # Earnings Momentum (external)
     earnings_surprise_last: Optional[float] = None   # 最近一次surprise%
     earnings_surprise_streak: int = 0                 # 连续超预期次数
     eps_yoy_direction: Optional[float] = None         # 最近EPS vs 去年同期%, 正=增长
     surprise_quality: Optional[str] = None            # "true_beat"(beat+EPS↑) / "low_bar_beat"(beat+EPS↓) / "miss"
+    has_external_surprise: bool = False               # 是否有外部surprise数据
+
+    # 3Y Momentum Proxy (from annual data, always available)
+    rev_accel_annual: Optional[float] = None         # FY增速加速度(最新增速-上年增速)
+    opm_direction_annual: Optional[float] = None     # OPM年度变化方向(正=扩张)
+    eps_improving_annual: Optional[bool] = None      # EPS绝对值同比改善?
 
     # Analyst Revisions
     estimate_revision_3m: Optional[float] = None     # 3月预测修正方向
@@ -120,10 +126,11 @@ class L4Signals:
 
     # Compounding Speed (复利速度) — 每$1收入有多少变成自由现金
     fcf_margin: Optional[float] = None               # FCF/Revenue %, 越高=复利越快
+    real_fcf_margin: Optional[float] = None          # (OCF-CapEx-SBC)/Revenue %, 真实复利速度
     fcf_margin_trend: Optional[float] = None         # FCF margin 3Y斜率, 正=改善
     capex_intensity: Optional[float] = None          # CapEx/Revenue %, 低=资本轻
     reinvestment_need: Optional[float] = None        # (CapEx+R&D)/Revenue %, 低=少再投资
-    compounding_power: Optional[float] = None        # FCF margin × (1+rev_cagr) = 综合复利力
+    compounding_power: Optional[float] = None        # real_fcf_margin × (1+rev_cagr) = 综合复利力
 
     # Buyback Discipline
     shares_change_5y: Optional[float] = None         # 5年净股数变化%, 负=缩股
@@ -449,19 +456,20 @@ def score_l2(s: L2Signals) -> float:
 
 
 def score_l3(s: L3Signals) -> float:
-    """Layer 3 composite: EarningsSurprise35% + Revisions30% + Contrarian20% + Coverage15%"""
+    """
+    Layer 3 composite: v2.1 — 外部surprise + 3Y增速拐点 + 反转位
+    当有外部surprise时: Surprise35% + Revisions30% + Contrarian20% + Coverage15%
+    当无外部surprise时: 3Y拐点40% + Contrarian30% + Coverage15% + cap at 7.0
+    """
     scores = []
     weights = []
 
-    # Earnings Surprise (35%) — with quality adjustment
-    if s.earnings_surprise_last is not None:
+    # --- External Earnings Surprise (if available) ---
+    if s.has_external_surprise and s.earnings_surprise_last is not None:
         surprise_s = _normalize(s.earnings_surprise_last, -20, 30, invert=False)
         streak_bonus = min(s.earnings_surprise_streak * 1.0, 3.0)
         raw_score = min(surprise_s + streak_bonus, 10.0)
 
-        # Quality adjustment: low_bar_beat = beat against lowered expectations
-        # True beat (beat + EPS growing YoY) gets full credit
-        # Low bar beat (beat + EPS declining YoY) gets 50% credit
         if s.surprise_quality == "low_bar_beat":
             raw_score *= 0.50
         elif s.surprise_quality == "miss":
@@ -470,23 +478,51 @@ def score_l3(s: L3Signals) -> float:
         scores.append(raw_score)
         weights.append(0.35)
 
-    # Analyst Revisions (30%)
+    # --- 3Y Annual Momentum Proxy (always available from 3Y data) ---
+    proxy_scores = []
+    if s.rev_accel_annual is not None:
+        # 收入加速: 正=增速在加快
+        proxy_scores.append(_normalize(s.rev_accel_annual, -15, 15, invert=False))
+    if s.opm_direction_annual is not None:
+        # OPM方向: 正=利润率扩张
+        proxy_scores.append(_normalize(s.opm_direction_annual, -5, 5, invert=False))
+    if s.eps_improving_annual is not None:
+        proxy_scores.append(7.0 if s.eps_improving_annual else 3.0)
+
+    if proxy_scores:
+        proxy_avg = sum(proxy_scores) / len(proxy_scores)
+        # 如果已有外部surprise, 3Y proxy权重15%; 如果无外部surprise, 权重40%
+        if s.has_external_surprise:
+            scores.append(proxy_avg)
+            weights.append(0.15)
+        else:
+            scores.append(proxy_avg)
+            weights.append(0.40)
+
+    # --- Analyst Revisions ---
     if s.estimate_revision_3m is not None:
         scores.append(_normalize(s.estimate_revision_3m, -20, 20, invert=False))
-        weights.append(0.30)
+        weights.append(0.15 if s.has_external_surprise else 0.15)
 
-    # Contrarian: far from 52w high = potential (20%)
+    # --- Contrarian: far from 52w high ---
     if s.price_52w_pct is not None:
         scores.append(_normalize(s.price_52w_pct, 0.5, 1.0, invert=True))
-        weights.append(0.20)
+        w = 0.20 if s.has_external_surprise else 0.30
+        weights.append(w)
 
-    # Low coverage = more mispricing potential (15%)
+    # --- Low coverage ---
     if s.analyst_coverage_count is not None:
         scores.append(_normalize(s.analyst_coverage_count, 0, 20, invert=True))
         weights.append(0.15)
 
     total_weight = sum(weights)
-    s.score = sum(s * w for s, w in zip(scores, weights)) / total_weight if total_weight > 0 else 5.0
+    raw = sum(s * w for s, w in zip(scores, weights)) / total_weight if total_weight > 0 else 5.0
+
+    # Cap: 无外部surprise数据时L3上限7.0 — "跌了很多"≠"开始纠错"
+    if not s.has_external_surprise:
+        raw = min(raw, 7.0)
+
+    s.score = raw
     return s.score
 
 
@@ -542,16 +578,15 @@ def score_l4(s: L4Signals) -> float:
         scores.append(sum(pp_scores) / len(pp_scores))
         weights.append(0.25)
 
-    # --- Compounding Speed 复利速度 (20%) --- NEW
+    # --- Compounding Speed 复利速度 (20%) --- v2.1: 用real_fcf_margin(扣SBC)
     cs_scores = []
-    if s.fcf_margin is not None:
-        # FCF margin: VRSN=65%(极高), PYPL=17%, HPQ=6%, GM=5%
-        cs_scores.append(_normalize(s.fcf_margin, 0, 50, invert=False))
+    # 优先用real_fcf_margin(扣SBC后的真实复利速度)
+    fcfm = s.real_fcf_margin if s.real_fcf_margin is not None else s.fcf_margin
+    if fcfm is not None:
+        cs_scores.append(_normalize(fcfm, -5, 45, invert=False))
     if s.capex_intensity is not None:
-        # CapEx/Rev: 低=资本轻. VRSN=1.4%, PYPL=2.6%, GM=5%
         cs_scores.append(_normalize(s.capex_intensity, 0, 15, invert=True))
     if s.reinvestment_need is not None:
-        # (CapEx+R&D)/Rev: 低=少再投资
         cs_scores.append(_normalize(s.reinvestment_need, 0, 25, invert=True))
     if cs_scores:
         scores.append(sum(cs_scores) / len(cs_scores))
@@ -834,11 +869,13 @@ def compute_stage2(result: StockScreenResult) -> float:
         stage2 *= 0.80
 
     # 铁律: 数据不完整惩罚 — 宁可错过不可放错
-    # L置信度(缺10Y数据)的L4品质分数不可靠 → Stage 2打70%折
-    # 逻辑: 缺少GM趋势/收入历史/ROIC均值/反周期数据时，品质评分可能虚高
-    # 如CHWY(L4=7.4但实际FCF Margin仅3.8%且无护城河)
+    # H = 有10Y数据 → 无惩罚
+    # M = 有3Y数据+3Y代理指标 → 85%折(15%惩罚)
+    # L = 数据严重不足 → 70%折(30%惩罚)
     data_conf = getattr(result, '_data_confidence', 'L')
-    if data_conf == 'L':
+    if data_conf == 'M':
+        stage2 *= 0.85
+    elif data_conf == 'L':
         stage2 *= 0.70
 
     result.stage2_score = stage2
@@ -1010,10 +1047,16 @@ def extract_signals_from_fmp(
     )
     # Store industry for veto check (not in dataclass to keep it clean)
     result._industry = profile.get('industry', '')
-    # Data confidence: 10Y data available → high confidence L4
+    # Data confidence: H(10Y) / M(3Y+proxy) / L(insufficient)
     has_10y = income_10y and len(income_10y) > 5
+    has_3y = income and len(income) >= 3
     has_quarterly = income_quarterly and len(income_quarterly) > 3
-    result._data_confidence = "H" if has_10y else "L"  # High/Low
+    if has_10y:
+        result._data_confidence = "H"
+    elif has_3y:
+        result._data_confidence = "M"  # 3Y data → proxy indicators available
+    else:
+        result._data_confidence = "L"
 
     # --- L1: Valuation ---
     if ratios and len(ratios) > 0:
@@ -1238,6 +1281,36 @@ def extract_signals_from_fmp(
                     result.l3.surprise_quality = "low_bar_beat"
                 else:
                     result.l3.surprise_quality = "miss"
+
+    # Mark if external surprise data exists
+    result.l3.has_external_surprise = (earnings_surprises and len(earnings_surprises) > 0
+                                        and result.l3.earnings_surprise_last is not None)
+
+    # --- L3: 3Y Annual Momentum Proxy (from income data, always available) ---
+    if income and len(income) >= 2:
+        rev_now = income[0].get('revenue', 0) or 0
+        rev_prev = income[1].get('revenue', 0) or 0
+        growth_now = ((rev_now / rev_prev) - 1) * 100 if rev_prev > 0 else None
+
+        if len(income) >= 3:
+            rev_prev2 = income[2].get('revenue', 0) or 0
+            growth_prev = ((rev_prev / rev_prev2) - 1) * 100 if rev_prev2 > 0 else None
+            if growth_now is not None and growth_prev is not None:
+                result.l3.rev_accel_annual = growth_now - growth_prev
+
+        # OPM direction
+        ni_now = income[0].get('netIncome', 0) or 0
+        ni_prev = income[1].get('netIncome', 0) or 0
+        opm_now = (ni_now / rev_now * 100) if rev_now > 0 else None
+        opm_prev = (ni_prev / rev_prev * 100) if rev_prev > 0 else None
+        if opm_now is not None and opm_prev is not None:
+            result.l3.opm_direction_annual = opm_now - opm_prev
+
+        # EPS improving
+        eps_now = income[0].get('epsDiluted') or income[0].get('eps', 0)
+        eps_prev = income[1].get('epsDiluted') or income[1].get('eps', 0)
+        if eps_now and eps_prev:
+            result.l3.eps_improving_annual = eps_now > eps_prev
 
     # --- L3: Analyst Coverage ---
     if estimates and len(estimates) > 0:
@@ -1467,7 +1540,9 @@ def _extract_l4(
 
         if rev_latest and rev_latest > 0:
             fcf_latest = ocf_latest - capex_latest
+            sbc_latest = abs(src_cf[0].get('stockBasedCompensation', 0) or 0)
             s.fcf_margin = (fcf_latest / rev_latest) * 100
+            s.real_fcf_margin = ((fcf_latest - sbc_latest) / rev_latest) * 100  # 扣SBC后真实复利
             s.capex_intensity = (capex_latest / rev_latest) * 100
             s.reinvestment_need = ((capex_latest + rnd_latest) / rev_latest) * 100
 
@@ -1484,7 +1559,9 @@ def _extract_l4(
 
         # Compounding power: FCF margin × (1 + rev_cagr)
         if s.fcf_margin is not None and s.revenue_cagr_10y is not None:
-            s.compounding_power = s.fcf_margin * (1 + s.revenue_cagr_10y / 100)
+            real = s.real_fcf_margin if s.real_fcf_margin is not None else s.fcf_margin
+            if real is not None:
+                s.compounding_power = real * (1 + s.revenue_cagr_10y / 100)
 
     # --- FCF Conversion ---
     if income and cashflow and len(income) >= 2 and len(cashflow) >= 2:
@@ -1739,6 +1816,12 @@ def save_results(results: list[StockScreenResult], output_dir: str = "data/scree
             'ev_ebitda': r.l1.ev_ebit,
             'fcf_yield': r.l1.fcf_yield,
             'shareholder_yield': r.l1.shareholder_yield,
+            'fcf_margin': r.l4.fcf_margin,
+            'real_fcf_margin': r.l4.real_fcf_margin,
+            'sbc_revenue_pct': r.l4.sbc_revenue_pct,
+            'data_confidence': getattr(r, '_data_confidence', '?'),
+            'asset_dna': r.l6.asset_dna,
+            'tailwind': r.l6.tailwind_label,
             'vetoes': r.vetoes,
             'flags': r.flags,
         }
