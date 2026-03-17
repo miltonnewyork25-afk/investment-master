@@ -4527,8 +4527,115 @@ SaaSpocalypse是否创造了一个新的"估值常态"，还是只是一次过�
 ---
 
 *报告完成日期: 2026年3月17日*
+---
+
+# Appendix Q: Adobe产品定价矩阵 (FY2026)
+
+### Creative Cloud定价
+
+| 产品/计划 | 个人月付 | 个人年付(月均) | 企业(seat/月) | 学生/教师 |
+|----------|---------|-------------|-------------|---------|
+| CC All Apps | $54.99 | $54.99 | $89.99 | $19.99(首年) |
+| Photography Plan (PS+LR) | $9.99 | $9.99 | — | 含在学生版 |
+| Photoshop单应用 | $22.99 | $22.99 | $37.99 | 含在学生版 |
+| Illustrator单应用 | $22.99 | $22.99 | $37.99 | 含在学生版 |
+| Premiere Pro单应用 | $22.99 | $22.99 | $37.99 | 含在学生版 |
+| After Effects单应用 | $22.99 | $22.99 | $37.99 | 含在学生版 |
+| InDesign单应用 | $22.99 | $22.99 | $37.99 | 含在学生版 |
+| **CC Pro (AI增强)** | **$29.99** | **$29.99** | — | — |
+
+### Firefly定价
+
+| 计划 | 月付 | 包含Credits | 超额购买 |
+|------|------|-----------|---------|
+| Firefly Standard | $9.99 | 2,000 premium credits | $19.99/4,000 credits |
+| Firefly Pro | $19.99 | 4,000 premium credits | 同上 |
+| Firefly Premium | $199.99 | 50,000 premium credits | 联系销售 |
+| CC All Apps用户 | 含在订阅中 | 基础生成无限+premium额度 | 购买credit packs |
+
+注：2026.1.23-3.18为"Unlimited Promo"期间，所有付费用户无限AI图像生成。
+
+### Document Cloud定价
+
+| 产品 | 个人月付 | 团队(seat/月) | 企业 |
+|------|---------|-------------|------|
+| Acrobat Standard | $12.99 | — | ETLA定制 |
+| Acrobat Pro | $19.99 | $22.99 | ETLA定制 |
+| Acrobat Pro + AI Assistant | $24.99(估) | $29.99(估) | ETLA定制 |
+| Adobe Sign(电子签名) | 另计 | 另计 | ETLA捆绑 |
+
+### Experience Cloud / GenStudio定价
+
+Experience Cloud采用企业定制定价(ETLA)，不公开标准价格。基于行业信息推测：
+
+| 模块 | 估算年费(中型企业) | 估算年费(大型企业) |
+|------|-----------------|-----------------|
+| AEP(客户数据平台) | $200K-500K | $500K-2M |
+| GenStudio(内容供应链) | $100K-300K | $300K-1M |
+| Campaign(营销自动化) | $100K-300K | $200K-500K |
+| Analytics(分析) | $50K-200K | $200K-500K |
+| Firefly Foundry(定制模型) | $300K-1M | $1M-5M+ |
+| **典型全栈部署** | **$500K-1.5M** | **$2M-10M+** |
+
+### 定价策略分析
+
+**Adobe的定价哲学**是"层级化+锁定升级"：
+1. **免费入口**: Express免费/Acrobat Reader免费/Firefly基础生成免费 → 获取MAU
+2. **低价钩子**: Photography Plan $9.99/Firefly Standard $9.99 → 极低门槛付费转化
+3. **标准付费**: 单应用$22.99/Acrobat Pro $19.99 → 主力ARPU贡献
+4. **高端套件**: CC All Apps $54.99/CC Pro $29.99 → 高ARPU专业用户
+5. **企业级**: ETLA $500K-10M+ → 最高单客户价值
+
+**AI对定价策略的影响**：
+- Firefly Generative Credits = **新的定价维度**（从按seat到按使用量）
+- CC Pro $29.99 = **AI溢价验证**（比标准多$10/月→用户接受=AI有定价权）
+- Foundry $1M+ = **企业AI定制化的高价值锚点**
+- Unlimited Promo = **弹性测试**（免费→收费后观察消费量下降幅度）
+
+### Adobe vs Canva vs Figma定价对比
+
+| 定位 | Adobe | Canva | Figma |
+|------|-------|-------|-------|
+| **免费版** | Express(有限)+Reader | Canva Free(功能强) | Figma Free(3文件) |
+| **入门付费** | $9.99(Photography) | **$12.99/月**(Pro) | $15/月/编辑者 |
+| **专业个人** | $54.99(CC全套) | **$12.99**(Pro=全功能) | $15/月 |
+| **企业(seat/月)** | $89.99 | ~$30(Team估) | $45 |
+| **价格差(个人)** | **4.2x vs Canva** | 基准 | 1.15x |
+| **价格差(企业)** | **3.0x vs Canva** | 基准 | 1.5x |
+
+**Adobe在每个层级都是最贵的——但提供的功能深度也是最大的。** 问题在于：对于不需要"最深功能"的80%用户，Canva的$12.99提供了足够好的体验。这80%正在流失——而Adobe试图用Express(免费)来拦截。
+
+---
+
+# Appendix R: 关键术语表
+
+| 术语 | 定义 | 报告中的使用 |
+|------|------|-----------|
+| **AIAS** | AI Software Impact Assessment System | 本报告首创的AI冲击评估框架(5S+4B) |
+| **分裂体** | 同一公司不同业务线AI净影响方向相反 | Adobe: CC消费(-8) vs Firefly(+13) |
+| **PW** | Possibility Width(可能性宽度) | 评分6.5→混合模式 |
+| **CQ** | Core Question(核心问题) | CQ-1: 分裂体还是统一？CQ-2: 转型交叉点何时？ |
+| **KS** | Kill Switch(终止信号) | 10个监控指标+阈值+条件依赖 |
+| **DM** | Data Mark(数据标记) | 37个锚点(H:30/R:5/S:2) |
+| **SOTP** | Sum of the Parts(分部估值) | 双引擎: Consumer(8-12x)+Enterprise(18-24x) |
+| **ARR** | Annual Recurring Revenue(年化经常性收入) | 总ARR $26.06B |
+| **ETLA** | Enterprise Term License Agreement | Adobe企业多年期许可协议 |
+| **RPO** | Remaining Performance Obligations | $22.22B未履行合同义务 |
+| **GenStudio** | Adobe的AI内容供应链平台 | ARR >$1B, +30% |
+| **Foundry** | Firefly Foundry企业定制AI模型服务 | 早期客户: Home Depot/Disney |
+| **CC** | Content Credentials(内容证书) | 6000+成员, >90%相机厂商 |
+| **CAI** | Content Authenticity Initiative | Adobe联合创建的内容真实性倡议 |
+| **C2PA** | Coalition for Content Provenance and Authenticity | 内容溯源技术标准 |
+| **SaaSpocalypse** | 2026年2月的SaaS股票抛售 | ~$2万亿市值蒸发 |
+| **温水煮青蛙** | 渐进式市场份额流失(不易察觉) | 最危险风险组合(R1+R2+R9, 8%) |
+| **PLG** | Product-Led Growth(产品驱动增长) | Canva的获客模式 vs Adobe的销售驱动 |
+
+---
+
+*报告完成日期: 2026年3月17日*
 *框架版本: v18.5 | AIAS v1.0 | PW=6.5混合模式*
 *数据截止: 2026年3月16日*
 *DM锚点: 37个 (H:30, R:5, S:2, H占比79%)*
 *原创框架: AIAS v1.0 + 主动护城河迁移模型 + 双引擎分化SOTP + Claude Code六路径 + AI分裂体检测*
-*总章节: 16章 + 16附录 (A-P)*
+*总章节: 16章 + 18附录 (A-R)*
+*总字符数: 参见最终统计*
