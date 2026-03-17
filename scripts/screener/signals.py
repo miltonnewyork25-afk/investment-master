@@ -870,11 +870,22 @@ def compute_stage2(result: StockScreenResult) -> float:
 
     # 铁律: 数据不完整惩罚 — 宁可错过不可放错
     # H = 有10Y数据 → 无惩罚
-    # M = 有3Y数据+3Y代理指标 → 85%折(15%惩罚)
-    # L = 数据严重不足 → 70%折(30%惩罚)
+    # M = 有3Y数据 → 按L4核心字段填充度动态惩罚(5-20%)
+    # L = 数据严重不足 → 30%惩罚
     data_conf = getattr(result, '_data_confidence', 'L')
     if data_conf == 'M':
-        stage2 *= 0.85
+        # L4核心字段: GM/ROIC/real_fcf_margin/SBC/rev_cagr — 填充越多惩罚越小
+        core_fields = [
+            result.l4.gross_margin_latest,
+            result.l4.roic_5y_mean,
+            result.l4.real_fcf_margin,
+            result.l4.sbc_revenue_pct,
+            result.l4.revenue_cagr_10y,
+        ]
+        filled = sum(1 for f in core_fields if f is not None)
+        # 5/5填充=5%惩罚, 4/5=8%, 3/5=12%, 2/5=17%, 1/5=22%, 0/5=27%
+        penalty = 0.05 + (5 - filled) * 0.045
+        stage2 *= (1 - penalty)
     elif data_conf == 'L':
         stage2 *= 0.70
 
