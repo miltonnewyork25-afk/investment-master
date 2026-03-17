@@ -833,6 +833,14 @@ def compute_stage2(result: StockScreenResult) -> float:
     if result.l1.pe_ttm is not None and result.l1.pe_ttm < 0:
         stage2 *= 0.80
 
+    # 铁律: 数据不完整惩罚 — 宁可错过不可放错
+    # L置信度(缺10Y数据)的L4品质分数不可靠 → Stage 2打70%折
+    # 逻辑: 缺少GM趋势/收入历史/ROIC均值/反周期数据时，品质评分可能虚高
+    # 如CHWY(L4=7.4但实际FCF Margin仅3.8%且无护城河)
+    data_conf = getattr(result, '_data_confidence', 'L')
+    if data_conf == 'L':
+        stage2 *= 0.70
+
     result.stage2_score = stage2
     return result.stage2_score
 
