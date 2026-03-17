@@ -98,6 +98,55 @@
 - 95%开发者每周用AI; 75%超半数编码由AI辅助
 - Collins Dictionary 2025年度词: "vibe coding"
 
+## 文献侦察补充发现 (5路Agent返回)
+
+### AI商业化关键数据 (升级)
+- **GenStudio ARR**: 超过$1B (Q3 FY2025), 不仅仅是>30%增长
+- **Firefly信用消耗**: QoQ增长>45%, 订阅+credit pack ARR QoQ增长75%
+- **视频AI**: 视频生成操作YoY增长>8x, 音频翻倍
+- **企业AI采纳**: Top 50企业客户中~90%采用1+个AI-first创新
+- **$70M ARR缺口**: 客户用AI生成图像替代购买Stock照片 → AI自蚕食的第一个定量证据
+- **Semrush收购**: 2025.11, ~$1.9B现金, AI SEO/品牌可见度(pending)
+
+### 竞对定量数据 (新增)
+- **Canva**: $4B年化收入, 265M用户, 31M付费 → Adobe CC的30M对比
+- **Figma**: 2025.7 IPO $15B估值(低于Adobe $20B出价), 收入+41% YoY
+  - Q4 2025: $303.8M (+40%), 2026指引$1.37B (+30%)
+  - 75%的>$10K ARR客户每周使用AI credits
+  - Code to Canvas: 开发者将代码推回Figma设计, 集成Anthropic Claude
+- **Magic Layers(3月11日)**: Canva将平面图像转为可编辑多层设计(免费beta)
+
+### 护城河关键发现 (新增)
+- **PDF不再专有**: PDF 2.0 (ISO 32000-2:2020)消除了所有Adobe专有技术 → 护城河从格式所有权迁移到工作流集成
+- **Content Credentials**: 6000+成员, >90%数码相机厂商承诺支持, Samsung Galaxy S25首款支持手机
+  - EU AI Act和NSA/CISA已参考C2PA标准 → 未来可能成为强制要求
+- **Photoshop市场份额**: 全球图形软件42%, InDesign 26%, Illustrator 12%
+- **Fortune 500**: 98%使用CC, 75%采用Firefly, 99% Fortune 100在Adobe应用中使用AI
+- **净留存**: >130% (Morningstar估计)
+- **开发者生态**: 460K开发者/社区成员 (远小于Salesforce/Microsoft的百万级)
+
+### 法律/版权风险 (新增)
+- **Books3集体诉讼(2025.12)**: 指控Adobe使用Books3数据集(含191K版权书)训练SlimLM
+- **Stock摄影师败诉(2026.3)**: 摄影师试图阻止Adobe用其Stock图库训练 → 败诉 → 对Adobe有利先例
+- **Bloomberg调查**: Firefly部分使用AI生成图像训练(含Midjourney输出) → 潜在"洗白"链
+
+### 内部人交易 (新增)
+- CEO Narayen: 5年6笔交易, 全部卖出, 0买入
+- 过去90天: 100% sell-side, 零买入
+- CFO Daniel Durn: 卖出1646股(~$485K)
+
+### Seat定价模式衰退数据 (新增)
+- Seat-based定价采用率: 21% → 15% (12个月内)
+- 混合定价模式: 27% → 41%
+- 纯seat模型公司流失率高2.3x
+- Gartner: 2030年40%企业SaaS转向usage/agent/outcome定价
+- Gartner: 2030年35%点状SaaS被AI agent替代或吸收
+
+### Jevons悖论分析 (新增)
+- **历史类比**: 每波编码抽象层(汇编→C→web框架→no-code→vibe coding)都扩大了开发者群体
+- **分化结论**: TAM在低端扩张(更多人创作) + 在中端收缩(每企业更少seat) = 杠铃形态
+- **Adobe $70M缺口**是收缩端的第一个实证: AI生成→Stock照片购买↓
+
 ## 异常发现 (待深入)
 
 1. **Forward PE vs TTM PE离散度异常**: 9.6x vs 15.7x (离散39%) — 市场预期EPS大幅增长但同时大幅压缩估值?
@@ -105,3 +154,6 @@
 3. **毛利率89% + ROIC 84% + 被定价为价值股**: 这三个数字组合在科技行业极为罕见 — 市场到底在怕什么?
 4. **AI-first ARR >3x增长 但总ARR仅+12%**: AI新增是增量还是替代?
 5. **单一分部合并**: 增强还是隐藏? 可能在掩盖DX低增长
+6. **$70M Stock蚕食**: Firefly正在蚕食Adobe自己的Stock业务 → 第一个定量自蚕食证据
+7. **GenStudio >$1B ARR但鲜少讨论**: 企业AI工作流可能是被低估的增长引擎
+8. **Content Credentials可能成为监管强制**: EU AI Act + NSA/CISA → 从防御性变为进攻性护城河?
