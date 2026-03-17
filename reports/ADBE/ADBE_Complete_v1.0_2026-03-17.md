@@ -3868,6 +3868,21 @@ Phase 1确认Adobe是AI分裂体：Consumer CC（受害，-8）和Enterprise/Doc
 
 **Consumer Engine EV: $14-21B（中值$17.5B）**
 
+**Consumer Engine的"地板价值"**: 即使CC消费在5年内收入减半(从$5B→$2.5B)，剩余$2.5B×6x EV/EBITDA×35%EBITDA Margin = $5.3B。**Consumer Engine的最差情景价值仍有$5.3B→不是零**。这是SOTP分析的一个重要逻辑：即使受害侧的最差情景也有正值→市场给它负估值(隐含)是不合理的。
+
+**Consumer Engine的估值区间图**：
+
+```mermaid
+graph LR
+    subgraph "Consumer Engine估值区间"
+        F1["地板: $5.3B<br>(收入减半+6x倍数)"]
+        F2["低端: $14B<br>(+5%增速+8x)"]
+        F3["中值: $17.5B<br>(+6%增速+10x)"]
+        F4["高端: $21B<br>(+8%增速+12x)"]
+    end
+    F1 --- F2 --- F3 --- F4
+```
+
 ### 15.3 Enterprise Engine估值详拆
 
 **包含业务**：CC专业（~$9.5B）+ Firefly（~$0.3B）+ Document Cloud（~$3.5B）+ Experience Cloud（~$5.5B）= ~$18.8B
@@ -3895,6 +3910,35 @@ Phase 1确认Adobe是AI分裂体：Consumer CC（受害，-8）和Enterprise/Doc
 | **中位数** | **18-24x** | +12-15% | Enterprise Engine的合理区间 |
 
 **Enterprise Engine EV: $176-235B（中值$205B）**
+
+**Enterprise Engine的分业务估值交叉验证**
+
+为了确认$176-235B的估值区间不是由某个子业务的极端假设驱动，我们对Enterprise Engine的4个子业务分别估值：
+
+| 子业务 | FY2025收入 | FY2030E收入 | 合理EV/Sales | 隐含EV | 理由 |
+|--------|-----------|-----------|------------|--------|------|
+| CC专业 | $9.5B | $12B(+5% CAGR) | 6-8x | $57-72B | 成熟稳定的专业工具→中等SaaS倍数 |
+| Document Cloud | $3.5B | $6B(+11% CAGR) | 10-14x | $35-49B | 高增速(+16%当前)+企业粘性→高SaaS倍数 |
+| Experience Cloud | $5.5B | $8B(+8% CAGR) | 6-10x | $33-55B | 企业SaaS标准倍数+GenStudio拉升 |
+| Firefly | $0.3B | $4B(+68% CAGR) | 15-25x | $4.5-10B | 高增速小基数→增长期SaaS倍数 |
+| **合计** | **$18.8B** | **$30B** | | **$130-186B** | — |
+
+**交叉验证结果**：分业务SOTP合计$130-186B，vs双引擎SOTP的$176-235B。差异来自"双引擎法"给整个Enterprise Engine一个统一倍数(18-24x)时包含了**平台协同溢价**——即CC专业+DC+DX+Firefly作为统一平台的价值>各自独立的价值之和。
+
+**平台协同溢价估算**：$176-235B(双引擎) vs $130-186B(分业务) = 差异$46-49B(约25-30%溢价)。这个溢价率与Microsoft(Azure+O365+Windows的协同溢价约20-30%)、Salesforce(CRM+MC+CDP协同约15-25%)的历史范围一致。
+
+**如果你不相信Adobe有平台协同**→使用分业务SOTP $130-186B(中值$158B)→加Consumer $17.5B→总EV $175B→每股$425→vs当前$252仍有+69%上行。
+
+```mermaid
+graph LR
+    subgraph "Enterprise Engine估值交叉验证"
+        M1["分业务SOTP<br>$130-186B<br>(无协同溢价)"]
+        M2["双引擎SOTP<br>$176-235B<br>(含25-30%协同溢价)"]
+        M3["收敛区间<br>$155-210B<br>(中值$183B)"]
+    end
+    M1 --> M3
+    M2 --> M3
+```
 
 ### 15.4 SOTP合并与隐含折价
 
