@@ -181,3 +181,53 @@
 6. **$70M Stock蚕食**: Firefly正在蚕食Adobe自己的Stock业务 → 第一个定量自蚕食证据
 7. **GenStudio >$1B ARR但鲜少讨论**: 企业AI工作流可能是被低估的增长引擎
 8. **Content Credentials可能成为监管强制**: EU AI Act + NSA/CISA → 从防御性变为进攻性护城河?
+
+## FVF一线验证数据 (v2.0新增, 2026-03-18)
+
+### 重大事件: $150M DOJ和解 (2026-03-13)
+- Adobe同意支付$75M现金+$75M免费服务
+- 原因: 隐藏提前终止费(ETF)+阻碍用户取消订阅
+- 影响: 品牌声誉严重受损+可能改变订阅取消流程
+- 投资含义: 短期利空(罚款+PR损害) 但长期可能是中性(强制改善取消体验→反而降低"被困"感→实际churn可能短期上升后稳定)
+
+### Generative Credits 95%削减 (2025.7)
+- 新Single App用户: 500 credits/月→25 credits/月(削减95%)
+- 现有用户保持500不变
+- 用户反应: "slap in the face" "dig even deeper into our pockets"
+- 投资含义: 激进的货币化策略→短期ARPU↑但长期品牌侵蚀
+
+### 用户情绪分裂
+- 产品满意度: G2 4.5/5(55K评价), Capterra PS 4.8/5, Firefly 89%满意+NPS +54
+- 品牌情绪: 负面(DOJ+ToS争议+价格不满+Fstoppers 4篇"离开Adobe"系列)
+- 关键洞见: "用户爱产品但恨公司"——产品功能评4.8但价值评分仅4.3
+
+### 切换行为一手证据
+- 切换意愿: 高(ThePhoblographer/Fstoppers多篇"离开Adobe"内容)
+- 切换完成率: 低(Brent Hall测试Affinity→"falls short for workflow")
+- 原因: Dynamic Link+PSD格式+插件生态→即使不满也很难完全离开
+- 核心发现: "切换叙事的音量远大于切换行为的实际规模"
+
+### AI功能质量对标
+- Firefly vs Midjourney: MJ艺术质量更强, Firefly写实+工作流集成更强
+- Firefly vs GPT-4o: GPT文字渲染更强, Firefly速度+写实更强
+- 专业共识: "Midjourney做灵感, Firefly做生产"
+- 生成式填充: 89%满意率+PS前5使用功能→AI粘性已验证
+- 关键发现: Adobe不是"最强AI"→是"最实用的AI"(实用性>艺术性)
+
+### Adobe战略新发现: "AI模型超市"
+- Photoshop内可选用Firefly/Gemini/FLUX模型→不锁定单一模型
+- Runway Gen-4.5集成进Firefly(合作伙伴非竞争)
+- 战略含义: "模型是商品化的, 工作流才是护城河"的技术实现
+- AIAS校准: B3(基础设施化)可能从+2上调至+3(模型超市策略比预期更深)
+
+### Express vs Canva
+- Canva在几乎所有维度上胜出(模板数/速度/协作/视频)
+- Express唯一优势: CC生态集成+非扁平PDF导出
+- 市场差距: Canva 265M MAU >> Express 80M MAU
+- 结论: Express未能拦截Canva→CC消费S4确认-4
+
+### Acrobat AI vs ChatGPT
+- Acrobat优势: 可点击引用(链接到源文档具体页)+隐私保证(不训练)
+- ChatGPT优势: 更快+更详细的总结+更低成本
+- 企业选择: "每周处理多份合同→Acrobat值得; 偶尔用→ChatGPT够了"
+- AIAS校准: DC B1=+4维持(企业级引用+隐私是真实差异化)

@@ -4,15 +4,24 @@ company: "Adobe Inc."
 framework_version: v18.5
 worktree: "eco_tech"
 industry: "eco_tech"
-last_updated: "2026-03-17T14:30:00+08:00"
+last_updated: "2026-03-18T09:30:00+08:00"
 
-current_phase: 5
-phase_status: complete
-phases_completed: ["-1", "-0.5", "0", "0.75", "1", "2", "3", "4", "5"]
+# v2.0重写 — 基于v1.0教训
+report_version: "2.0"
+v1_lessons:
+  - "禁止骨架扩写(铁律#6): 每Phase写完整正文≥50K"
+  - "禁止Phase内中断(铁律#7): 连续写到Phase完成"
+  - "密度>体量: 250K高密度 > 400K低密度"
+  - "Appendix≤8个: 正文承载分析, Appendix仅存数据"
+  - "估值Python验证: v1.0有2个Major计算错误"
 
-target_chars: 400000
-target_range: "320K-400K"
-hard_floor: 250000
+current_phase: 0
+phase_status: "v2.0_prep"
+phases_completed: ["v1.0_complete"]
+
+# v2.0不设字数目标 — 密度优先
+target_chars: "密度优先,预计250-280K"
+hard_floor: 200000
 
 pw_score: 6.5
 methodology: mixed_mode
@@ -21,22 +30,26 @@ rating_framework: conditional_rating
 cq_primary: "Adobe是AI分裂体还是统一受益者？"
 cq_secondary: "座位→API转型的交叉点在何时？"
 
-hypotheses:
-  - id: H-1
-    content: "Adobe是AI时代的Microsoft, 不是Kodak"
-    non_consensus: 4
-  - id: H-2
-    content: "Forward PE 9.6x是10年一遇的入场机会"
-    non_consensus: 3
-  - id: H-3
-    content: "Content Credentials将成为监管强制→制度级护城河"
-    non_consensus: 5
-  - id: H-4
-    content: "Canva是Adobe的iPhone(TAM扩张), 不是杀手"
-    non_consensus: 3
-  - id: H-5
-    content: "AI推理成本快速下降, 毛利率恐惧被高估"
-    non_consensus: 3
+# v2.0新增分析维度
+v2_new_dimensions:
+  - "FVF一线验证(用户情绪/企业采纳/切换行为)"
+  - "演绎分析5步形式化(触发→因果链→跨行业→时间轴→证伪)"
+  - "B2B I×L双轴(GenStudio基础设施嵌入度)"
+  - "OVM-3期权树定价(Firefly/CC/GenStudio)"
+  - "A-Score 11维度(INTC/SEMI方法)"
+  - "AIAS v1.1→v2.0泛化(CRM/NOW/ADSK预评)"
+  - "品质21维度完整评分(B+C+D量化)"
+  - "Moat Data Card v2.0(接入CQI排行)"
+  - "SPOF信念冲突检验(KLAC冠军方法)"
+  - "C1五层制度嵌入(FICO方法)"
+
+# v1.0估值修正要点
+valuation_fixes:
+  - "S2情景OPM: 37.2%与费用加总不一致→需修复"
+  - "S2情景FCF: 桥接$1.8B缺口→需修复"
+  - "Consumer倍数: 8-12x偏高→下调至6-8x(衰退业务)"
+  - "Firefly增长: 13x($0.3B→$4B)偏激进→需压力测试"
+  - "全部估值需Python验证"
 
 quick_ref:
   price: 251.86
@@ -46,8 +59,3 @@ quick_ref:
   gross_margin: 89%
   roic: 84%
   total_arr: 26.06B
-  firefly_arr: 250M+
-  genstudio_arr: 1B+
-  dm_anchors: 37
-  total_chars: 70010
-  latest_phase_chars: 16001
