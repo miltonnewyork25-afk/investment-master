@@ -73,20 +73,12 @@
 
 **Planning评估: PASS → 可以进入Phase 0** ✅
 
-### 下一步: Phase 0 数据预取
-1. 运行 `/data-prefetch` for FRO — MCP+FMP全量拉取
-2. 中远海能数据: WebSearch为主(FMP可能不覆盖港股)
-3. 并行5个UU探索Agent
-4. Polymarket验证伊朗冲突概率
-5. 运价期货曲线获取(验证CQ2)
+### Phase 0: 完成 ✅ (7个数据文件, 70KB)
+- FRO MCP + 船队/Q4/分析师 + 中远海能 + 航运市场 + 伊朗冲突 + UU二阶+反类比
+- 用户二阶框架整合
 
-### Planning产出清单
-| 文件 | 大小 | 内容 |
-|------|------|------|
-| `edaf_v1.md` | 6.7K | EDAF v1.0框架 |
-| `cq_design.md` | 8.0K | CQ1-8设计 |
-| `report_structure.md` | 5.5K | 33章结构 |
-| `exploration_strategy.md` | 4.7K | UU探索策略 |
-| `comparison_dimensions.md` | 6.0K | 20维度对标 |
-| `scenario_tree.md` | 7.5K | 4情景+EV |
-| **Planning总产出** | **~38.4K** | |
+### Phase 1: 完成 ✅ (Ch2-6, 17K密度型)
+- 核心发现: FRO二阶 | P&I>军事 | Zoltan方向对程度高估 | 阶梯B(55%)
+- 概率修正: S1-25%/S2-40%/S3-10%/S4-25%
+
+### 下一步: Phase 2 双公司深度+对标 (Ch7-20)
