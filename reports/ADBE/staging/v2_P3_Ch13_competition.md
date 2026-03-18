@@ -86,6 +86,30 @@ Figma FY2025 $1.05B(+41%)→IPO后$57B估值[DM-BIZ-012]。Adobe在UI/UX已输�
 
 教育管道验证：Figma已完全替代Adobe XD在UI/UX课程中→但PS/AI/InDesign在图形设计课程中未被替代[DM-FVF-ENT-EDU]→**Figma赢了一个赛道但Adobe的核心赛道仍在**。
 
+### Figma的"向上渗透"风险——Adobe下一个失去的赛道？
+
+Figma目前从4个产品扩展到8个(FY2025)→方向包括Figma Make(AI设计)、Code to Canvas(集成Claude)、Figma Slides(演示)。如果Figma从UI/UX扩展到**品牌设计/营销设计**→这就进入了Adobe CC专业的核心领地。
+
+**但Figma有架构天花板**: 浏览器原生→大型文件(4K+视频/RAW/100+图层复杂合成)的性能有物理限制。Figma扩张到"品牌设计"(静态图+矢量)可能成功→但扩张到"视频后期"或"印刷出版"受限于浏览器架构。
+
+**Figma Make的质量验证**[DM-FVF-AIQA-001]: "Best AI-driven design ideation tool"但"produces generic or unoriginal results, lacks deep UX understanding"→**"junior designer级别"**→概念探索好但无法替代专业设计师的完整工作流。
+
+### 企业MarTech: Adobe vs HubSpot vs Salesforce
+
+| 维度 | Adobe DX | Salesforce MC | HubSpot | 谁赢 |
+|------|---------|-------------|---------|------|
+| 企业(>$500M) | ★★★★★ | ★★★★ | ★★ | Adobe |
+| 中场($50-500M) | ★★★ | ★★★★ | ★★★★ | Salesforce/HubSpot |
+| SMB(<$50M) | ★ | ★★ | ★★★★★ | HubSpot |
+| 创意集成 | ★★★★★ | ★ | ★ | **Adobe独有优势** |
+| CRM数据 | ★★★(AEP) | ★★★★★ | ★★★★ | Salesforce |
+| 易用性 | ★★(AEM"最难用") | ★★★ | ★★★★★ | HubSpot |
+| 定价透明 | ★(ETLA定制) | ★★★ | ★★★★★ | HubSpot |
+
+**Adobe有效地放弃了SMB和中场→集中在大企业**。这是"高ARPU+低覆盖"的战略选择→HubSpot的向上渗透(从SMB→中场→大企业)是长期威胁但目前不紧迫(HubSpot在>$500M企业中几乎无份额)。
+
+**Gartner验证**: Adobe Experience Cloud G2评分4.5/5(55K评价)→行业第一。但AEM被描述为"one of the most difficult and unintuitive content management systems"[DM-FVF-ENT-008]→**产品力强但用户体验差→双刃剑(锁定客户但限制新客获取)**。
+
 ## 13.4 AI-native: Adobe的"模型超市"策略是正确的回应
 
 一线对标结论[DM-FVF-AIQA-003]："Midjourney做灵感，Firefly做生产"→Adobe不需要在艺术质量上赢Midjourney→只需要在"从生成到交付"的全流程中占据关键位置。
