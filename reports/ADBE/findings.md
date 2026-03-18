@@ -231,3 +231,58 @@
 - ChatGPT优势: 更快+更详细的总结+更低成本
 - 企业选择: "每周处理多份合同→Acrobat值得; 偶尔用→ChatGPT够了"
 - AIAS校准: DC B1=+4维持(企业级引用+隐私是真实差异化)
+
+## 10-K原文+Transcript+管理层指引 (v2.0新增)
+
+### 10-K关键披露
+- 单一分部合并原文: "due to changes in how management intends to evaluate results, allocate resources and execute the strategic opportunities"→标准ASC 280触发
+- AI风险因子6项: 监管(EU AI Act明确提及)/第三方模型风险/推理成本压力/货币化不确定/劳动力影响/IP保护困难
+- Firefly训练数据: "licensed content and public domain assets"→未具名数据集/合作方
+- 10-K中未提及"C2PA"→仅用品牌名"Content Credentials"
+- RPO $22.52B: 当前<12月约$14.05B(65%), >12月约$8.47B(35%)
+- 地理: Americas $14.12B(59%)/EMEA $6.29B(27%)/APAC $3.36B(14%)
+
+### Transcript关键发现
+- "AI-first ARR"无精确定义→管理层未给审计边界→透明度问题
+- CC seat增长: 无分析师追问+管理层未主动提及→双方都在回避
+- Narayen继任: "a few months"+"this is not because I have just notified them"→搜索已进行一段时间
+- Canva: 无人提及(分析师也不问)→行业共识是"不同市场"?
+- Firefly Foundry: 2500个定制模型→但未披露付费客户数/收入
+
+### 管理层指引准确度
+- Revenue beat率: 3/3 (100%), 平均beat midpoint +$220M (+1.0%)
+- Non-GAAP EPS beat率: 3/3 (100% beat or in-line)
+- 结论: **系统性under-promise→经典beat-and-raise团队**
+- 投资含义: FY2026指引$25.9-26.1B大概率beat→实际$26.3-26.5B
+
+## 企业采纳+人才信号 (v2.0新增)
+
+### 企业采纳
+- G2: Adobe Experience Cloud 4.5/5(55K评价)→行业第一
+- GenStudio: Top 50客户90%采纳→但中小企业case study缺失→TAM天花板?
+- Gartner: AEM"最难用的CMS之一"→复杂度是双刃剑(锁定但也限制新客获取)
+- Acrobat Gartner 4.5/5但评价数仅687(vs MSFT 5264)→7.6x差距
+
+### 人才市场
+- Figma: LinkedIn 5000+职位→完全主导UI/UX
+- Adobe CC: Indeed 9544职位→仍是生产设计的基线要求
+- Canva: 92%企业领导者要求非设计师有设计技能→Canva服务这个群体
+- Midjourney: 零职位信号→不是雇主要求的技能
+- 设计职位整体+60% YoY→TAM在扩张(支持Jevons悖论)
+
+### 教育管道
+- UI/UX: Figma完全替代Adobe XD(教育者主动换)→**战役已输**
+- 核心CC: PS/AI/InDesign在图形设计/印刷/摄影课程中未被替代
+- Canva: 定位为非设计专业的工具(商科/营销)→不替代设计课程
+
+### 开发者生态
+- Firefly API: 官方JS SDK+API文档→但GitHub stars低+SO问题少→开发者社区早期
+- Adobe+Nvidia战略合作(3月17日!): 用CUDA-X/NeMo/Cosmos构建下一代Firefly模型→模型质量追赶信号
+- 开发者生态评估: 弱于开源生态(Stable Diffusion有大量社区)但企业级更完整
+
+### AI功能质量对标关键结论
+- Firefly: 实用性>艺术性→"Midjourney做灵感,Firefly做生产"
+- Adobe定位: "AI模型超市"(集成Runway/Gemini/FLUX)→不是最强模型而是最强平台
+- 生成式填充: 89%满意率+PS前5功能→AI粘性已验证
+- 但: 仍有不一致性和artifact→"比以前好但不够可靠,专业人员仍需手动检查"
+- AIAS校准: B3可能从+2上调至+3(模型超市比自研模型是更深的护城河)
