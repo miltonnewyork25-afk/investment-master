@@ -15,10 +15,10 @@ last_updated: "2026-03-18T11:50:00+00:00"
 version: "v2.0"
 v1_score: "3.8/5"
 
-current_phase: "v3-P4"
+current_phase: "v3-P5"
 phase_status: "ready"
 phases_completed_update: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3]
-phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, "v3-P1", "v3-P2", "v3-P3"]
+phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, "v3-P1", "v3-P2", "v3-P3", "v3-P4"]
 
 target_chars: 350000
 target_range: "280K-400K"
@@ -68,7 +68,18 @@ quick_ref:
   total_dm_p1p2p3: 462
   total_mermaid_p1p2p3: 45
   total_chapters_p1p2p3: 23
-  valuation_summary: "公允价值$587, 期望回报+4.7%, 评级中性关注"
+  phase4_chars: 15500
+  phase4_dm_count: 44
+  phase4_dm_density: "2.84/千字"
+  phase4_chapters: 3
+  phase4_mermaid: 4
+  phase4_cq_final: "CQ1:70% CQ2:79% CQ3:80% CQ4:78% CQ5:32% CQ6:45% CQ7:55% CQ8:15%"
+  phase4_cq_net_change: "-2.8pp"
+  total_chars_p1p4: 193027
+  total_dm_p1p4: 506
+  total_mermaid_p1p4: 49
+  total_chapters_p1p4: 26
+  valuation_summary: "红队后公允价值$576, 期望回报+2.8%, 评级中性关注"
   sotp_base: "$593"
   pe_base: "$602"
   oey_implied: "$560"
