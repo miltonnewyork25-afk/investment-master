@@ -1,105 +1,57 @@
-schema_version: "2.0"
+schema_version: "3.0"
 ticker: CME
 company: "CME Group"
 framework_version: v19.2
 worktree: "消费品"
 industry: "B2B平台"
-last_updated: "2026-03-18T15:30:00+08:00"
-report_version: "v2.0"
+last_updated: "2026-03-18T17:40:00+08:00"
+report_version: "v3.0"
 
-current_phase: "4"
-phase_status: phase_4_complete
-phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2", "3", "4"]
+current_phase: "0"
+phase_status: phase_0_in_progress
+phases_completed: ["-1"]
 
-phase_4_output:
-  chars_wc_m: 5332
-  dm_count: 9
-  biases_found: 5
-  ev_adjustment: "+$5 ($280→$285)"
-  direction: "Phase 1-3系统性轻微悲观偏差修正"
-  key_finding: "NCH-4从待验证→倾向确认60%; Core P/E从33.8x→30.3x正常化"
-  rating_change: "无(维持审慎关注偏中性, 但更接近中性边界)"
-  k_reconciliation: "7处需Phase 5统一(执行摘要/Ch17/Ch18/Ch19/Ch20/Ch26/温度计)"
+# v3.0 quality gates (v2.0失败修复)
+quality_gates:
+  per_chapter_min_chars: 8000
+  phase_1_min_chars: 86000
+  phase_2_min_chars: 60000
+  phase_3_min_chars: 50000
+  complete_min_chars: 270000
+  dm_min_total: 300
+  mermaid_min: 15
+  phase_4_independent_session: true
+  per_chapter_check: "wc -m ≥ 8000 before next chapter"
 
-phase_1_output:
-  chars_wc_m: 32733
-  bytes_wc_c: 58274
-  dm_count: 155
-  dm_density: "4.7/千字"
-  causal_count: 117
-  causal_density: "35.7/万字"
-  chapters: "Ch1-12 (Part I+II+III)"
-  files:
-    - staging/CME_v2_P1_PartI.md
-    - staging/CME_v2_P1_PartII.md
-    - staging/CME_v2_P1_PartIII.md
-  summary: "Part I=身份+引擎+网络+CBOE(15.8K) | Part II=清算+利息+RPC+数据+OI(10.6K) | Part III=CEO沉默+国际化+会员(6.3K)"
+# v2.0 reusable assets
+v2_reusable:
+  research_files: 15  # data/research/CME/
+  skeleton_as_outline: true  # staging/CME_v2_P*.md作为outline
+  thesis_crystallization: "data/thesis_crystallization.md (9 ANO/5矛盾/5 NCH)"
+  cq_routing: "data/cq_routing.md (PW=6混合模式)"
+  quality_scorecard: "data/quality_scorecard.md (A-Score 68.4)"
 
-# v1.0 artifacts (可复用)
-v1_reference:
-  complete_file: "CME_Complete_v1.0.md"
-  quality_score: 3.9
-  chars: 182000
-  dm_count: 652
-  mermaid_count: 48
-  causal_density: 0.16  # 目标≥5.0
-  module_gate: "19.5/32 (60.9%)"
-  a_score: 68.4
-  cqi: 93
+# v3.0 targets
+target_chars: 300000
+target_range: "270K-375K"
+hard_floor: 270000
 
-# v2.0 目标
-v2_targets:
-  target_chars: 300000
-  target_range: "240K-375K"
-  hard_floor: 200000
-  dm_density: "≥1.5/千字"
-  causal_density: "≥5.0/万字"
-  quality_target: "≥4.3"
-  new_dimensions:
-    - "加密货币趋势深化"
-    - "CBOE vs CME股价分化分析"
-    - "垄断建仓时机框架(MCO v2.0迁移)"
-    - "因果链系统化"
-    - "Python DCF验证"
-    - "GAAP vs Adj桥接"
-    - "E7 OI/ADV系统分析(v1.0缺失)"
-    - "M6会员集中度替代框架(v1.0缺失)"
-    - "M7国际化分析(v1.0缺失)"
-
-data_files:
-  # v1.0 inherited
-  - data/knowledge_context.md
-  - data/launch_brief.md
-  - data/lit_recon_memo.md
-  - data/cq_routing.md
-  - data/quality_scorecard.md
-  - data/thesis_crystallization.md
-  - data/shared_context.md
-  - data/cme_v2_brief.md
-  # v1.0 research (reusable)
-  - data/research/CME/financial_summary.md
-  - data/research/CME/competitive_landscape.md
-  - data/research/CME/segment_revenue_rpc.md
-  - data/research/CME/investment_income_collateral.md
-  - data/research/CME/counter_cyclicality_evidence.md
-  - data/research/CME/technology_infrastructure.md
-  - data/research/CME/strategy_capital_allocation.md
-  - data/research/CME/peer_comparison.md
-  - data/research/CME/baggers_strategy_summary.md
-  - data/research/CME/supplementary_data.md
-  - data/research/CME/sec_10k_extracts.md
-  # v2.0 new
-  - data/research/CME/v2_financial_update.md
+# new data gaps to fill (v2.0未覆盖)
+data_gaps:
+  - "OI/ADV比率5年趋势(SOFR/E-mini/WTI) [S1]"
+  - "HHI计算(衍生品交易所市场) [S1]"
+  - "国际收入口径(vs ADV口径) [S1]"
+  - "会员集中度Top 5 [S1]"
+  - "R&D/Rev趋势 [S2]"
+  - "法律费用/合规成本 [S2]"
+  - "NEX/BrokerTec整合进度 [S2]"
+  - "Python DCF模型 [S1]"
 
 quick_ref:
   stock_price: "$313.33 (2026-03-18)"
   market_cap: "$112.6B"
   pe_ttm: "28.4x"
-  ev_ebitda: "17.1x"
-  fcf_yield: "3.7%"
   rev_fy25: "$6.52B (+6.4%)"
   ni_fy25: "$4.04B (+14.7%)"
-  eps_fy25: "$11.16 (+15.4%)"
-  core_contradiction: "防御性资产定价 vs 波动率周期依赖"
-  v1_rating: "审慎关注(偏中性)"
-  v1_ev: "$273-278"
+  core_contradiction: "防御性资产定价 vs 波动率周期依赖 + 好公司≠好股票"
+  reference_reports: "MCO v2.0(结构) + KLAC(质量) + IHG(CI框架)"
