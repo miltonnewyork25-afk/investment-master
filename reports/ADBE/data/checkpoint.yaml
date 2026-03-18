@@ -15,9 +15,10 @@ v1_lessons:
   - "Appendix≤8个: 正文承载分析, Appendix仅存数据"
   - "估值Python验证: v1.0有2个Major计算错误"
 
-current_phase: 0
-phase_status: "v2.0_prep"
-phases_completed: ["v1.0_complete"]
+current_phase: 1
+phase_status: "complete"
+phases_completed: ["v1.0_complete", "v2.0_P1"]
+p1_chars: 62248
 
 # v2.0不设字数目标 — 密度优先
 target_chars: "密度优先,预计250-280K"
