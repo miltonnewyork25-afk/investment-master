@@ -1,0 +1,39 @@
+schema_version: "2.0"
+ticker: MCO
+company: "Moody's Corporation"
+framework_version: v19.0
+worktree: "消费品"
+industry: "B2B"
+last_updated: "2026-03-18T10:55:00+00:00"
+report_version: "v2.0"
+
+current_phase: 0
+phase_status: phase_0_complete
+phases_completed: [-1, -0.5, 0, 0.5, 0.75]
+
+target_chars: 200000
+target_range: "150K-220K (v19.0密度优先)"
+hard_floor: 120000
+
+v2_rewrite:
+  reason: "v1.0三层估值错误+评级矛盾"
+  v1_report: "MCO_Complete_v1.0.md"
+  v1_chars: 368000
+  target_rating: "审慎关注(已充分定价)"
+  new_modules: ["垄断建仓时机(Ch17-19)", "铁律K估值统一性"]
+
+key_data:
+  price: 441.03
+  pe_ttm: 32.97
+  forward_pe: 26.3
+  fy2025_eps: 13.67
+  fy2026e_eps_mid: 16.70
+  pw: 4.2
+  cq_count: 3
+  ci_count: 4
+  dm_anchors: 36
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
+  chapters_planned: 21
