@@ -1,16 +1,49 @@
 schema_version: "2.0"
 ticker: CME
-company: "CME"
-framework_version: v17.0
-worktree: "B2B平台"
+company: "CME Group"
+framework_version: v19.2
+worktree: "消费品"
 industry: "B2B平台"
-last_updated: "2026-03-15T17:00:00+00:00"
+last_updated: "2026-03-18T15:30:00+08:00"
+report_version: "v2.0"
 
-current_phase: "5"
-phase_status: phase_5_complete
-phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2", "3", "4", "5"]
+current_phase: "0"
+phase_status: phase_0_in_progress
+phases_completed: ["-1"]
+
+# v1.0 artifacts (可复用)
+v1_reference:
+  complete_file: "CME_Complete_v1.0.md"
+  quality_score: 3.9
+  chars: 182000
+  dm_count: 652
+  mermaid_count: 48
+  causal_density: 0.16  # 目标≥5.0
+  module_gate: "19.5/32 (60.9%)"
+  a_score: 68.4
+  cqi: 93
+
+# v2.0 目标
+v2_targets:
+  target_chars: 300000
+  target_range: "240K-375K"
+  hard_floor: 200000
+  dm_density: "≥1.5/千字"
+  causal_density: "≥5.0/万字"
+  quality_target: "≥4.3"
+  new_dimensions:
+    - "加密货币趋势深化"
+    - "CBOE vs CME股价分化分析"
+    - "垄断建仓时机框架(MCO v2.0迁移)"
+    - "因果链系统化"
+    - "Python DCF验证"
+    - "GAAP vs Adj桥接"
+    - "E7 OI/ADV系统分析(v1.0缺失)"
+    - "M6会员集中度替代框架(v1.0缺失)"
+    - "M7国际化分析(v1.0缺失)"
 
 data_files:
+  # v1.0 inherited
   - data/knowledge_context.md
   - data/launch_brief.md
   - data/lit_recon_memo.md
@@ -18,6 +51,8 @@ data_files:
   - data/quality_scorecard.md
   - data/thesis_crystallization.md
   - data/shared_context.md
+  - data/cme_v2_brief.md
+  # v1.0 research (reusable)
   - data/research/CME/financial_summary.md
   - data/research/CME/competitive_landscape.md
   - data/research/CME/segment_revenue_rpc.md
@@ -29,36 +64,18 @@ data_files:
   - data/research/CME/baggers_strategy_summary.md
   - data/research/CME/supplementary_data.md
   - data/research/CME/sec_10k_extracts.md
-
-target_chars: 300000
-target_range: "240K-375K"
-hard_floor: 200000
-
-staging_files:
-  - staging/CME_P1_Agent_A.md
-  - staging/CME_P1_Agent_B.md
-  - staging/CME_P1_Agent_C.md
-  - staging/CME_P2_Agent_A.md
-  - staging/CME_P2_Agent_B.md
-  - staging/CME_P2_Agent_C.md
+  # v2.0 new
+  - data/research/CME/v2_financial_update.md
 
 quick_ref:
-  total_chars: 99538
-  phase_1_chars: 50155
-  phase_2_chars: 49383
-  phase_1_summary: "A=18.2K(身份+竞争+CEO沉默) B=13.5K(清算+风险+10KS) C=18.5K(利息+定价权+ReverseDCF)"
-  phase_2_summary: "A=14.9K(护城河链条+Nash+PtW) B=14.3K(承重墙+ZIRP$150+Treasury$3.7B) C=20.1K(SOTP$243-363+4情景EV$290)"
-  phase_3_chars: 42704
-  phase_3_summary: "A=14.7K(5CI含2冠军候选8.0+/五引擎/圆桌$241) B=15.6K(CQI93/温度69/MoatCard/KS级联) C=12.4K(EV$302+OVM$8.5B/中性关注/CQ闭环)"
-  rating_direction: "中性关注(偏积极)"
-  ev_consensus: "$295-305核心, +OVM$8.5B, +分红→总回报EV$335 vs $311=+7.4%"
-  phase_4_chars: 25719
-  phase_4_summary: "B=11.4K(Bear隔离RT1-7: core P/E 35.7x发现+Bear$220+4偏差) A=14.3K(5偏差+2不一致+看空33%+修正EV$273-278)"
-  red_team_adjustment: "-7.5%净调整, core EV从$302降至$273-278"
-  bear_case: "$220(-29%, 概率15-20%): 波动率均值回归+利率正常化+估值重锚22x"
-  phase_5_chars: 181875
-  phase_5_summary: "Complete v1.0组装: 182K/16ch+8app, QG全PASS(0 FAIL/6 WARN), 652 DM锚点, 48 Mermaid, 12 KS"
-  complete_file: "CME_Complete_v1.0.md"
-  quality_gate: "PASSED (0 errors, 6 warnings)"
-  final_rating: "审慎关注(偏中性)"
-  final_ev: "$273-278 (含分红+OVM总回报$323-328 vs $311)"
+  stock_price: "$313.33 (2026-03-18)"
+  market_cap: "$112.6B"
+  pe_ttm: "28.4x"
+  ev_ebitda: "17.1x"
+  fcf_yield: "3.7%"
+  rev_fy25: "$6.52B (+6.4%)"
+  ni_fy25: "$4.04B (+14.7%)"
+  eps_fy25: "$11.16 (+15.4%)"
+  core_contradiction: "防御性资产定价 vs 波动率周期依赖"
+  v1_rating: "审慎关注(偏中性)"
+  v1_ev: "$273-278"
