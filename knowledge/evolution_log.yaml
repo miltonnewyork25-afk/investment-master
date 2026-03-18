@@ -468,6 +468,28 @@ entries:
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
 
+  - ticker: "CRM"
+    date: "2026-03-18"
+    report: "N/A (v1.0失败, 未组装Complete)"
+    chars: "167K (staging)"
+    cg_result: "N/A"
+    compliance: "N/A"
+    dm_anchors: 401
+    mermaid_count: 23
+    pw: 5.6
+    method: "hybrid"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # 未完成, 无评分
+    top_technique: "DM密度2.40/千字(历史最高) + 因果密度11.68/万字(超KLAC) + P3 v2.0承重墙分析 + P4离散度27.9%首次<30%"
+    top_lesson: "P1预设bullish叙事($235/+34%)→P3红队彻底推翻→P4 neutral($176/+0.6%)→P1/P2叙事与P4不可调和→无法组装。密度高但方向错=更危险的失败模式。单日rush(10 commits/1 day)消除了Phase间纠偏窗口"
+    evolution_proposed: |
+      EVO-CRM-001: Reverse DCF P1 Ch1强制前置 — P1第一章必须包含Reverse DCF结论(市场隐含假设), P1叙事不能比Reverse DCF暗示的方向偏离>1档。防止结论先行偏差 [P0, 流程铁律]
+      EVO-CRM-002: Tier 3禁止单日rush — Tier 3最少跨3个session(P0-P1/P2-P3/P4-P5), Phase间需冷却纠偏窗口。防止bullish动量从P1传导到P2 [P0, 流程铁律]
+      EVO-CRM-003: 最相似可比公司P0强制对标 — Phase 0 shared_context必须包含最相似公司(增速/PE/行业最接近)的估值对比, 作为P1叙事约束。防止ADBE对标迟到(P3才引入)的问题 [P1, 方法论资产]
+    evolution_status: pending
+    reflection_file: "reports/CRM/reflection/CRM_v1_failure_reflection.md"
+
   - ticker: "CMG"
     date: "2026-03-04"
     report: "CMG_v1.0_Complete_2026-03-04.md"
