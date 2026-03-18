@@ -134,7 +134,7 @@ CQI_LOOKUP = {
     'IDXX': 56, 'AAPL': 55, 'V': 53, 'KLAC': 52, 'CTAS': 51,
     'ARM': 49, 'ADBE': 48, 'NVDA': 48, 'ICE': 47, 'PG': 47,
     'ETN': 46, 'TSM': 45, 'AVGO': 44, 'LRCX': 43, 'ANET': 42,
-    'CSGP': 41, 'AMAT': 41, 'PLTR': 39, 'DPZ': 36, 'CMG': 35,
+    'MSCI': 66, 'CSGP': 41, 'AMAT': 41, 'PLTR': 39, 'DPZ': 36, 'CMG': 35,
     'SBUX': 33, 'VRT': 30, 'ROL': 30, 'FAST': 25, 'MAR': 21,
     'HLT': 21, 'RCL': 16, 'INTC': 14, 'IHG': 11, 'SMCI': 8,
     # CME在独立排行中CQI=93但未在主排行榜(待加入)
