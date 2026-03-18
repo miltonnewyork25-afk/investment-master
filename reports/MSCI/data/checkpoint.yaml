@@ -1,15 +1,15 @@
 schema_version: "2.0"
 ticker: MSCI
 company: "MSCI Inc"
-framework_version: v19.1
+framework_version: v19.2
 worktree: "金融基础设施"
 industry: "financial"
 last_updated: "2026-03-18T11:50:00+00:00"
 version: "v2.0"
 v1_score: "3.8/5"
 
-current_phase: "1"
-phase_status: "complete"
+current_phase: "2"
+phase_status: "in_progress"
 phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1]
 
 target_chars: 350000
