@@ -29,8 +29,11 @@ FRO_SHARES = 222.6  # million
 FRO_MKTCAP = FRO_PRICE * FRO_SHARES  # $6,969M
 FRO_NAV_FLOOR = (4910 - 3070) / FRO_SHARES  # $8.27/share
 
-COSCO_PRICE_HK = 19.55
-COSCO_NAV_PER_SHARE = COSCO_PRICE_HK / 1.2  # HK$16.29 (from PB 1.2)
+COSCO_PRICE_HK = 19.59  # updated 2026-03-18
+# v3.1: Use actual accounting BV, not PB-derived NAV
+# FMP: equity CNY 35.87B / 4.59B shares = CNY 7.82 = HKD 8.41
+COSCO_BV_PER_SHARE = 8.41  # HKD, from FMP balance sheet
+COSCO_FY24_EPS_HKD = 0.91  # CNY 0.85 / 0.93 CNY/HKD
 
 # ============================================================
 # Scenario Definitions — TCE = net rates FRO would achieve
@@ -42,8 +45,8 @@ scenarios = {
         "fro_tce_q1": 107.1,  # booked 92%
         "fro_tce_q2q4": 50.0,  # revert toward FY2025 avg
         "fro_pe": 8,  # cycle top → low PE
-        "cosco_pb": 1.05,  # back to pre-conflict
-        "cosco_eps_adj": 0.95,
+        "cosco_pe": 10,
+        "cosco_eps_adj": 0.85,  # below FY2024 (conflict ends)
         "description": "停火3-6月, 运价回归, P&I恢复",
     },
     "S2_stepchange": {
@@ -52,8 +55,8 @@ scenarios = {
         "fro_tce_q1": 107.1,
         "fro_tce_q2q4": 85.0,  # elevated new normal
         "fro_pe": 9,  # market accepts elevated earnings
-        "cosco_pb": 1.35,  # Eastern Pass premium
-        "cosco_eps_adj": 1.25,
+        "cosco_pe": 10,
+        "cosco_eps_adj": 2.0,  # Eastern Pass doubles earnings
         "description": "军事僵持12-18月, 运价新均衡$80-120K",
     },
     "S3_escalation": {
@@ -62,8 +65,8 @@ scenarios = {
         "fro_tce_q1": 107.1,  # already booked
         "fro_tce_q2q4": 65.0,  # recession offsets high spot
         "fro_pe": 5,  # distressed/recession
-        "cosco_pb": 0.85,  # risk-off crash
-        "cosco_eps_adj": 0.80,
+        "cosco_pe": 7,  # recession
+        "cosco_eps_adj": 0.50,  # halved by global recession
         "description": "全面封锁, 全球衰退, 所有船受损",
     },
     "S4_two_universes": {
@@ -72,8 +75,8 @@ scenarios = {
         "fro_tce_q1": 107.1,
         "fro_tce_q2q4": 120.0,  # structural West shortage
         "fro_pe": 10,  # structural re-rate
-        "cosco_pb": 1.65,  # ME-China monopoly
-        "cosco_eps_adj": 1.50,
+        "cosco_pe": 12,  # structural re-rate
+        "cosco_eps_adj": 3.5,  # ME-China monopoly triples earnings
         "description": "选择性封锁长期化, 东西分裂",
     },
 }
@@ -102,8 +105,13 @@ def fro_fair_value(s):
 
 
 def cosco_fair_value(s):
-    """COSCO fair value = NAV × terminal PB × EPS adjustment"""
-    fv = COSCO_NAV_PER_SHARE * s["cosco_pb"] * s["cosco_eps_adj"]
+    """COSCO fair value = EPS × PE, with BV floor (v3.1: PE-based, not PB-based)"""
+    eps_mult = s["cosco_eps_adj"]
+    pe = s.get("cosco_pe", 10)  # default PE 10x for COSCO
+    scenario_eps = COSCO_FY24_EPS_HKD * eps_mult
+    fv = scenario_eps * pe
+    # BV floor:央企不清算
+    fv = max(fv, COSCO_BV_PER_SHARE)
     ret = (fv / COSCO_PRICE_HK - 1) * 100
     return fv, ret
 
@@ -147,9 +155,9 @@ for key, s in scenarios.items():
     print(f"    年化EPS: ${eps_fro:.2f}")
     print(f"    终端PE: {s['fro_pe']}x")
     print(f"    Fair Value: ${fv_fro:.2f}  ({ret_fro:+.1f}% vs ${FRO_PRICE})")
-    print(f"  COSCO:")
-    print(f"    终端PB: {s['cosco_pb']:.2f}x (当前1.20x)")
-    print(f"    EPS调整: ×{s['cosco_eps_adj']:.2f}")
+    print(f"  COSCO (v3.1 PE法+BV底部):")
+    print(f"    终端PE: {s.get('cosco_pe', 10)}x | EPS调整: ×{s['cosco_eps_adj']:.2f}")
+    print(f"    BV底部: HK${COSCO_BV_PER_SHARE}")
     print(f"    Fair Value: HK${fv_cosco:.2f}  ({ret_cosco:+.1f}% vs HK${COSCO_PRICE_HK})")
 
 # ============================================================
