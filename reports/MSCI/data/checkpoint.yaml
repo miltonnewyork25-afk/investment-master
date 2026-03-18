@@ -73,13 +73,13 @@ quick_ref:
   phase4_dm_density: "2.84/千字"
   phase4_chapters: 3
   phase4_mermaid: 4
-  phase4_cq_final: "CQ1:70% CQ2:79% CQ3:80% CQ4:78% CQ5:32% CQ6:45% CQ7:55% CQ8:15%"
-  phase4_cq_net_change: "-2.8pp"
+  phase4_cq_final: "CQ1:72% CQ2:79% CQ3:80% CQ4:78% CQ5:32% CQ6:48% CQ7:60% CQ8:18%"
+  phase4_cq_abs_change: "25pp(7/8 CQ攻击, 双向平衡)"
   total_chars_p1p4: 193027
   total_dm_p1p4: 506
   total_mermaid_p1p4: 49
   total_chapters_p1p4: 26
-  valuation_summary: "红队后公允价值$576, 期望回报+2.8%, 评级中性关注"
+  valuation_summary: "红队后公允价值$579, 期望回报+3.3%, 评级中性关注(双向红队验证)"
   sotp_base: "$593"
   pe_base: "$602"
   oey_implied: "$560"
