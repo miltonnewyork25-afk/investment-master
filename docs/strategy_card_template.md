@@ -1,124 +1,287 @@
-# 入场纪律卡模板 v1.0
+# 策略卡模板 v3.0 — OEY体系 × 量化政体
 
-> **用途**: Phase 5 Complete后生成内部策略参考文档
+> **升级**: v2.0(12模块政体感知) → v3.0(13模块, OEY锚点+QRS量化+永久损失价+风险调整利差)
+> **框架**: `docs/trading_strategy_framework.md` v2.0
 > **命名**: `{TICKER}_Strategy_Card_INTERNAL.md`
 > **存放**: `reports/{TICKER}/`
-> **数据来源**: Complete报告 + Moat Data Card v2.0 + 计算补充
+> **数据来源**: Complete报告 + Moat Data Card v3.0 + FMP实时数据 + 策略框架推导
 
 ---
 
-## 模板结构 (9个模块)
+## 模板结构 (13个模块)
 
 ```markdown
-# {TICKER} ({公司名}) — 入场纪律卡 v1.0
+# {TICKER} ({公司名}) — 策略卡 v3.0
 
 > ⚠️ 内部文档 — 不对外发布
 > 配套报告: `{TICKER}_Complete_v{X}.md`
-> 生成日期: {DATE} | 数据截止: {REPORT_DATE}
+> 框架: trading_strategy_framework.md v2.0
+> 生成日期: {DATE} | 数据截止: {REPORT_DATE} | FMP实时: {FMP_DATE}
 
-## 1. 估值快照
-- 当前股价 / 概率加权公允价值 / 安全边际价 / 高估触发价
-- 期望回报 / 评级
-- 估值方法明细表 (方法/结果/权重/加权贡献)
-→ 来源: Complete Ch16/Ch29
+## 0. 资产DNA
 
-## 2. 入场纪律
-- PE三档框架 (深度价值/合理区间/高估警报)
-- 仓位结构 (核心/弹性, 进入条件/退出条件)
-- 当前入场判断 (PE位置/vs安全边际/E-Score/结论)
-→ 来源: Complete Ch34 + Moat Data Card
+| 维度 | 值 |
+|------|-----|
+| **主原型** | {反脆弱/防御复利/周期品质/成长利率敏感/消费信心/转折催化} |
+| **副原型** | {如有, 含权重%} |
+| **判定依据** | D1={}, CQI={}, drawdown_dna={最大回撤/恢复} |
+| **一句话身份** | {用一句话定义这个资产的本质} |
+| **甜蜜政体** | {6种政体中矩阵信号+2的} |
+| **天敌政体** | {6种政体中矩阵信号-2的} |
 
-## 3. 等待期收益分析
-- 收益分解: 股息率 + 回购yield + 盈利增速
-- 最坏情景年化 (扣PE压缩)
-- vs 国债利差 / vs SPY利差
-- 5年路径概率分布 (4条路径×概率×回报×vs SPY)
-→ 来源: Complete Ch34 + 计算补充
+→ 来源: Moat Data Card d1_category + drawdown_dna + cqi_score 推导
+
+## 1. OEY估值快照  ← UPGRADED v3.0
+
+### 1.1 OEY核心指标
+
+| 指标 | 值 | 说明 |
+|------|-----|------|
+| FCF TTM | ${X}M | Operating CF - CapEx |
+| Enterprise Value | ${X}B | 市值 + 净债务 |
+| **OEY** | X.X% | FCF / EV = 今天能拿走的现金收益率 |
+| **g (可持续增长)** | X% | 报告正常化5年CAGR(保守) |
+| **OEY+g** | X.X% | 所有者总回报率 |
+| T-bill | X.X% | 当前无风险收益率 |
+| **OEY Spread** | X.X% | (OEY+g) - T-bill = 风险补偿 |
+| **历史百分位** | X% | 当前OEY spread在10年分布中的位置 |
+
+### 1.2 报告估值参考 (辅助)
+
+| 指标 | 值 |
+|------|-----|
+| 概率加权公允价值 | ${X} (报告产出, 理解用) |
+| 期望回报 | X.X% |
+| 评级 | {深度关注/关注/中性关注/审慎关注} |
+| 估值方法明细 | {方法/结果/权重} 见报告 |
+
+→ §1.1 = 交易决策锚点, §1.2 = 理解背景
+
+## 2. 入场纪律 (OEY Spread × QRS)  ← UPGRADED v3.0
+
+### 2.1 OEY Spread三档
+
+| 档位 | OEY Spread百分位 | 对应价格区间 | 说明 |
+|------|:----------------:|:-----------:|------|
+| **便宜档** | >75% | ${}~${} | 历史仅25%时间更便宜 |
+| **合理档** | 25-75% | ${}~${} | 正常估值范围 |
+| **贵档** | <25% | ${}以上 | 历史75%时间更便宜 |
+
+→ 替代PE三档。每家公司用自己的10年OEY spread分布定义便宜/贵
+
+### 2.2 六格入场矩阵
+
+|  | QRS信号+2(甜蜜) | QRS信号+1(有利) | QRS信号≤0(中性/逆风) |
+|--|:---:|:---:|:---:|
+| **OEY便宜档(>75%)** | ★满仓(核心+弹性) | 核心仓位 | 试探仓(1-2%) |
+| **OEY合理档(25-75%)** | 核心仓位 | 观望(Sell Put等待) | 不动 |
+| **OEY贵档(<25%)** | 不追高 | Sell CC/减仓 | 减仓 |
+
+### 2.3 仓位结构
+
+| 组件 | 占比 | 进入条件 | 退出条件 |
+|------|:----:|---------|---------|
+| 核心仓位 | 60% | OEY spread>50%百分位 + QRS信号≥+1 | OEY spread<25% 或 KS触发 |
+| 弹性仓位 | 40% | OEY spread>75% + QRS信号=+2 | OEY spread回到中位 或 政体转换 |
+
+### 2.4 Wheel策略锚定
+
+| 层级 | 价格 | 含义 |
+|------|:----:|------|
+| Sell Put行权价 | ${} | OEY spread 75分位对应价格 |
+| 永久损失价 | ${} | 10年Bear FCF累计/股 |
+| 当前价 | ${} | — |
+| Sell CC行权价 | ${} | OEY spread 25分位对应价格 |
+
+### 2.5 当前入场判断
+
+| 维度 | 值 | 判断 |
+|------|-----|------|
+| 当前OEY Spread | X.X% | 百分位X% → {便宜/合理/贵}档 |
+| 当前QRS | X.X | 信号{+2/+1/0/-1/-2} |
+| 资产矩阵信号 | +X | 当前政体对此原型的信号 |
+| 六格定位 | {行,列} | {具体操作} |
+| **操作结论** | {一句话} | |
+
+## 3. 等待期收益分析  ← 微调
+
+| 维度 | 值 |
+|------|-----|
+| OEY (今天的现金) | X.X% |
+| g (增长) | X% |
+| **OEY+g (持有总回报)** | X.X% |
+| vs T-bill利差 | X.X% |
+| vs SPY隐含回报利差 | X.X% |
+| Wheel收益(未行权) | X-X% (Put权利金 + T-bill) |
+
+5年路径概率分布:
+
+| 路径 | 概率 | 5Y年化 | vs SPY | 说明 |
+|------|:----:|:------:|:------:|------|
+| 牛市 | X% | X% | +Xpp | {条件} |
+| 基准 | X% | X% | Xpp | {条件} |
+| 熊市 | X% | X% | Xpp | {条件} |
+| 尾部 | X% | X% | Xpp | {条件} |
+
+→ 来源: Complete + OEY计算
 
 ## 4. 组合角色定位
+
 - CQI / E-Score / Beta / Downside Beta
 - COVID回撤 + 2022回撤 + 恢复天数
 - 相关性警告 (与哪些已覆盖公司高相关)
 - 组合角色标签 (进攻/防守/对冲/现金流)
-→ 来源: Moat Data Card v2.0
+- **政体敏感度雷达**: 6政体信号一览
+→ 来源: Moat Data Card v3.0
 
 ## 5. Kill Switch速查
+
 - 表格: KS# / 触发条件 / 当前距离 / 紧迫度 / 评级影响
 - 协同触发矩阵 (最危险组合)
-→ 来源: Complete Ch31
+→ 来源: Complete KS注册表
 
 ## 6. 催化剂日历 + 验证事件
+
 - 表格: 时间 / 事件 / 影响方向 / 动作触发
 - 年度SPY相对表现审计
-→ 来源: Complete Ch37
+→ 来源: Complete 投资日历
 
 ## 7. 温水煮青蛙防御协议
-- 4道防线 (PE天花板/ESG监控/回购监控/年度审计)
+
+- 4道防线 (OEY spread压缩/核心KS/趋势恶化/年度审计)
 - 年度审计规则 (跑输阈值→动作)
-→ 来源: Complete Ch34
+→ 来源: Complete
 
 ## 8. 隐含赌注清单
+
 - 表格: 赌注 / 置信度 / 验证方法
 - 核心赌注联合概率
-→ 来源: Complete Ch16
+→ 来源: Complete
 
-## 9. Moat Data Card v2.0 (机器可读YAML)
-- 含v3.1新字段: c1_embedding_nature / d1_category / c3_lock_in_carrier
-- 含入场纪律字段: safety_price / fair_value / pe_ranges
-- 含等待期收益字段: holding_return各项
-- 含组合角色字段: portfolio_role / correlation_warning
-→ 来源: moat_datacard.yaml + 策略数据合并
+## 9. Moat Data Card v3.0 (机器可读YAML)
+
+- v2.0字段: c1_embedding_nature / d1_category / c3_lock_in_carrier
+- v2.0字段: safety_price / fair_value / pe_ranges / holding_return
+- v3.0字段: asset_dna / regime_sensitivity / cross_asset / oey_metrics
+→ 来源: moat_datacard.yaml
+
+## 10. 政体敏感度档案
+
+| 政体 | 业务影响 | 股价影响 | 净效果 | 最佳操作 |
+|------|:-------:|:-------:|:-----:|---------|
+| ① 金发姑娘 | ... | ... | {-2到+2} | {具体操作} |
+| ② 过热/紧缩 | ... | ... | ... | ... |
+| ③ 冲击/恐慌 | ... | ... | ... | ... |
+| ④ 衰退 | ... | ... | ... | ... |
+| ⑤ 复苏早期 | ... | ... | ... | ... |
+| ⑥ ZIRP停滞 | ... | ... | ... | ... |
+
+关键: 区分"业务影响"和"股价影响" — 它们经常反向
+→ 来源: Complete D1反周期分析 + drawdown_dna + 行业特性推导
+
+## 11. 跨资产配对
+
+| 类型 | 资产 | 配对逻辑 |
+|------|------|---------|
+| **最佳互补** | {1-2个已覆盖公司} | {政体对冲: 甜蜜/天敌互补} |
+| **回避同持** | {1-2个已覆盖公司} | {高相关ρ>0.8 或 政体同方向} |
+| **组合权重** | {X-Y%} | {基于原型浓度限制≤40%} |
+| **对冲工具** | {ETF/期权} | {政体逆转时的保护} |
+
+→ 来源: trading_strategy_framework.md 配对规则
+
+## 12. 跨公司对齐 (OEY体系)  ← UPGRADED v3.0
+
+| 指标 | {TICKER} | {COMP1} | {COMP2} | 排名 |
+|------|:--------:|:-------:|:-------:|:----:|
+| OEY | X.X% | X.X% | X.X% | N/{总数} |
+| OEY+g | X.X% | X.X% | X.X% | N/{总数} |
+| OEY Spread | X.X% | X.X% | X.X% | N/{总数} |
+| 历史百分位 | X% | X% | X% | N/{总数} |
+| QRS | X.X | X.X | X.X | (统一) |
+| 矩阵信号 | +X | +X | +X | N/{总数} |
+| 永久损失价 | ${X} | ${X} | ${X} | — |
+| RAS | 0.XX | 0.XX | 0.XX | N/{总数} |
+
+决策: {基于OEY spread百分位+QRS信号的当前操作建议}
 ```
 
 ---
 
 ## 数据填充指南
 
-### 必须从Complete报告提取的数据
+### 数据源映射
 
-| 数据 | Complete章节 | Strategy Card模块 |
-|------|:----------:|:----------------:|
-| 概率加权公允价值 | Ch16/Ch29 | §1 |
-| 估值方法明细 | Ch16 | §1 |
-| 评级+期望回报 | Ch29.4 | §1 |
-| PE三档框架 | Ch34.3 | §2 |
-| 仓位结构 | Ch34.2 | §2 |
-| 5年路径概率 | Ch34.9 | §3 |
-| Kill Switch全表 | Ch31 | §5 |
-| 催化剂日历 | Ch37 | §6 |
-| 温水煮青蛙防御 | Ch34.5 | §7 |
-| 隐含赌注 | Ch16.5 | §8 |
+| 数据 | 来源 | Strategy Card模块 |
+|------|------|:----------------:|
+| FCF TTM / EV | FMP实时 cashflow-ttm + key-metrics | §1 |
+| OEY / OEY+g | FCF÷EV + 报告增速 | §1 |
+| T-bill yield | FMP market-risk-premium 或 WebSearch | §1 |
+| OEY spread历史百分位 | 需要10年FCF+EV历史数据计算 | §2 |
+| 永久损失价格 | 报告Bear Case FCF × 10年 / 股数 | §2 |
+| QRS(5指标) | VIX+FFR+PMI+HY spread+曲线 | §2 |
+| 资产矩阵信号 | 框架§三核心矩阵 | §2 |
+| 等待期收益 | OEY+g vs T-bill | §3 |
+| CQI / E-Score / Beta | Moat Data Card v3.0 | §4 |
+| Kill Switch全表 | Complete KS注册表章 | §5 |
+| 催化剂日历 | Complete 投资日历章 | §6 |
+| 温水煮青蛙防御 | Complete 入场纪律章 | §7 |
+| 隐含赌注 | Complete 估值综合章 | §8 |
+| Moat Data Card | moat_datacard.yaml | §9 |
+| 政体敏感度 | Complete D1 + drawdown + 行业特性 | §10 |
+| 配对规则 | 框架§五配对规则 | §11 |
+| 跨公司对齐 | 同期所有策略卡 | §12 |
 
-### 需要计算补充的数据
+### OEY计算方法
 
-| 数据 | 计算方法 | 工具 |
-|------|---------|------|
-| 安全边际价 | 公允价值 × (1 - CQI折扣率) | CQI≥70→15%, 50-69→20%, 30-49→30% |
-| 等待期总回报 | 股息率 + 回购yield + 盈利增速 | 从Complete财务数据 |
-| 最坏年化 | 等待期收益 - PE压缩(5年摊销) | PE从当前→深度价值PE |
-| vs国债利差 | 最坏年化 - 当前10Y Treasury | 当前~4.5% |
-| vs SPY利差 | 期望年化 - SPY历史10% | 固定基准 |
-| 组合相关性 | 与已覆盖公司的行业/beta相似度 | 定性判断 |
+```
+1. FCF TTM = FMP cashflow-ttm → operatingCashFlow + capitalExpenditure
+   (注: FMP的capitalExpenditure是负数, 所以是OCF + CapEx = OCF - |CapEx|)
 
-### 自动填充的数据 (Moat Data Card v2.0)
+2. EV = 当前市值 + 净债务
+   净债务 = FMP key-metrics EV - market_cap (从最近季度取差值, 应用到当前市值)
 
-| 数据 | 来源 |
-|------|------|
-| E-Score | trading_datacard.py |
-| Drawdown DNA | trading_datacard.py |
-| Downside Beta | trading_datacard.py |
-| 流动性 | trading_datacard.py |
-| CQI / 护城河趋势 | Complete报告 |
+3. OEY = FCF / EV × 100
+
+4. g = 报告中的"可持续增长率"或"正常化5年CAGR" (取保守值)
+
+5. OEY+g = OEY + g
+
+6. OEY Spread = OEY+g - T-bill
+
+7. 永久损失价 = Bear Case年化FCF × 10 / 流通股数
+   Bear Case FCF = 报告最悲观情景的FCF (不是末日, 是"可能发生的坏情况")
+   零增长假设 (最保守)
+
+8. RAS = OEY Spread / 最大预期回撤%
+   最大预期回撤 = max(历史最大回撤, 报告Bear Case回撤)
+```
 
 ---
 
 ## 质量标准
 
-Strategy Card必须满足:
-1. **完整性**: 9个模块全部填写, 无空白
-2. **一致性**: 所有数值与Complete报告和Moat Data Card一致
-3. **可执行性**: 每个入场/退出条件都基于公开可观测数据
-4. **诚实性**: 期望回报 vs SPY的比较必须诚实(如MSCI期望7.6% < SPY 10%)
+Strategy Card v3.0必须满足:
+1. **完整性**: 13个模块全部填写(§0/§10/§11/§12不可跳过)
+2. **数据新鲜度**: §1的FCF/EV使用FMP最近TTM数据, 注明日期
+3. **一致性**: §0甜蜜/天敌 = §10中信号+2/-2的政体 = §2矩阵定位
+4. **可执行性**: 所有入场/退出条件基于公开可观测数据(OEY spread百分位, QRS)
+5. **诚实性**: OEY+g vs T-bill利差诚实标注, 利差为负时明确说"不如买国债"
+6. **Wheel锚定**: §2.4必须给出Sell Put行权价 + Sell CC目标价
+7. **跨公司可比**: §12使用统一OEY体系, 不混入其他公式
+
+---
+
+## v2.0→v3.0迁移指南
+
+现有3张v2.x卡(CME/MCO/MSCI)升级路径:
+
+1. **§1升级**: 删除"概率加权公允价值"为核心锚点 → 改为OEY+g + OEY Spread。公允价值保留为§1.2辅助参考
+2. **§2升级**: PE三档 → OEY Spread百分位三档。六格矩阵: "政体信号" → "QRS信号"。新增§2.4 Wheel锚定价格
+3. **§3微调**: 收益分解从"股息+回购+增速" → "OEY+g vs T-bill"
+4. **§7微调**: "PE天花板"防线 → "OEY spread压缩"防线
+5. **§12升级**: 删除CAS/DFV%/QA-PE/RAER → 改为OEY Spread/百分位/QRS/永久损失价/RAS
+6. 其他模块(§0, §4-§6, §8-§11): 不变
 
 ---
 
@@ -126,4 +289,6 @@ Strategy Card必须满足:
 
 | 版本 | 日期 | 变化 |
 |------|------|------|
-| v1.0 | 2026-03-14 | 首版: MSCI Strategy Card为第一个实例 |
+| v1.0 | 2026-03-14 | 首版: 9模块入场纪律卡, MSCI为首个实例 |
+| v2.0 | 2026-03-15 | 宏观政体感知升级: +§0资产DNA +§10政体敏感度 +§2.2六格矩阵 +§11跨资产配对 |
+| v3.0 | 2026-03-15 | OEY体系升级: §1 OEY锚点 +§2 OEY百分位+QRS +§2.4 Wheel锚定 +§12 RAS替代CAS |

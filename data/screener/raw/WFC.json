@@ -1,0 +1,144 @@
+{
+  "symbol": "WFC",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "WFC",
+    "price": 74.115,
+    "marketCap": 232653239381,
+    "beta": 1.071,
+    "companyName": "Wells Fargo & Company",
+    "sector": "Financial Services",
+    "industry": "Banks - Diversified",
+    "ceo": "Charles W. Scharf",
+    "country": "US",
+    "fullTimeEmployees": "215367",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 123529000000,
+      "netInterestIncome": 47484000000,
+      "operatingIncome": 25199000000,
+      "netIncome": 21338000000,
+      "eps": 6.39,
+      "epsDiluted": 6.32
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 125397000000,
+      "netInterestIncome": 47676000000,
+      "operatingIncome": 23364000000,
+      "netIncome": 19722000000,
+      "eps": 5.43,
+      "epsDiluted": 5.37
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 115340000000,
+      "netInterestIncome": 52375000000,
+      "operatingIncome": 21636000000,
+      "netIncome": 19142000000,
+      "eps": 4.88,
+      "epsDiluted": 4.83
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "totalAssets": 2148631000000,
+      "totalLiabilities": 1965593000000,
+      "totalStockholdersEquity": 181117000000,
+      "cashAndCashEquivalents": 174210000000,
+      "totalDebt": 425722000000
+    },
+    {
+      "date": "2024-12-31",
+      "totalAssets": 1929845000000,
+      "totalLiabilities": 1748779000000,
+      "totalStockholdersEquity": 179120000000,
+      "cashAndCashEquivalents": 203361000000,
+      "totalDebt": 281884000000
+    },
+    {
+      "date": "2023-12-31",
+      "totalAssets": 1932468000000,
+      "totalLiabilities": 1745025000000,
+      "totalStockholdersEquity": 185735000000,
+      "cashAndCashEquivalents": 237219000000,
+      "totalDebt": 297147000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "operatingCashFlow": -19001000000,
+      "freeCashFlow": -19001000000
+    },
+    {
+      "date": "2024-12-31",
+      "operatingCashFlow": 3035000000,
+      "freeCashFlow": 3035000000
+    },
+    {
+      "date": "2023-12-31",
+      "operatingCashFlow": 40358000000,
+      "freeCashFlow": 40358000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "netProfitMargin": 0.173,
+      "returnOnEquity": 0.118,
+      "priceToEarningsRatio": 13.89,
+      "dividendYieldPercentage": 2.19
+    },
+    {
+      "date": "2024-12-31",
+      "netProfitMargin": 0.157,
+      "returnOnEquity": 0.11,
+      "priceToEarningsRatio": 12.2,
+      "dividendYieldPercentage": 2.59
+    },
+    {
+      "date": "2023-12-31",
+      "netProfitMargin": 0.166,
+      "returnOnEquity": 0.103,
+      "priceToEarningsRatio": 9.48,
+      "dividendYieldPercentage": 3.27
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "marketCap": 296292120000,
+      "enterpriseValue": 547804120000,
+      "returnOnInvestedCapital": 0.032,
+      "earningsYield": 0.072
+    },
+    {
+      "date": "2024-12-31",
+      "marketCap": 240649264000,
+      "enterpriseValue": 319172264000,
+      "returnOnInvestedCapital": 0.036,
+      "earningsYield": 0.082
+    },
+    {
+      "date": "2023-12-31",
+      "marketCap": 181538126000,
+      "enterpriseValue": 241466126000,
+      "returnOnInvestedCapital": 0.033,
+      "earningsYield": 0.105
+    }
+  ],
+  "insider_trades": "summarized_quarterly_data",
+  "quote": {
+    "symbol": "WFC",
+    "price": 74.115,
+    "marketCap": 232653239381,
+    "yearHigh": 97.76,
+    "yearLow": 58.42,
+    "volume": 15470154
+  }
+}
