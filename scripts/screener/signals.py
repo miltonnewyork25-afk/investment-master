@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
 """
-Undervalued Stock Screener — Signal Computation Engine v1.0
+Undervalued Stock Screener — Signal Computation Engine v3.0
 
-三层信号框架:
+四层信号框架 + CQI分层权重:
   L1: 可能便宜了 (valuation + insider + buyback)
   L2: 便宜不是陷阱 (quality + discipline)
   L3: 市场开始纠错 (catalyst + momentum)
+  L4: 定价合理性 (v3.0新增: growth gap + PE band + fear + buyback timing)
 
-输入: FMP/MCP工具导出的JSON数据文件
-输出: 每只股票的信号得分 + 复合排名
+v3.0教训来源:
+  MCO: Growth Gap=-4pp, 6个估值4个说高估但评级乐观 → 需要隐含增长率 vs 实际
+  MSCI: 5年PE Drag=-14%吃掉EPS+12% → 需要PE Band位置检测
+  ADBE: PE 9.6x隐含FCF永不增长但实际+26% → 需要恐惧合理性分类
+  MCO+ADBE: $14B高位回购 → 需要Buyback Timing Quality
+
+输入: FMP/MCP工具导出的JSON数据文件 + CQI分数(可选)
+输出: 每只股票的信号得分 + CQI分层加权复合排名
 """
 
 import json
@@ -88,6 +95,54 @@ class L3Signals:
     score: Optional[float] = None
 
 @dataclass
+class L4Signals:
+    """Layer 4: 定价合理性 — 市场定价逻辑是否站得住脚 (v3.0新增)
+    源自: MCO估值错误 + MSCI高垄断低回报 + ADBE恐惧过度"""
+
+    # Growth Gap (MCO教训): 实际增长 vs 市场隐含增长
+    implied_growth_rate: Optional[float] = None   # Reverse DCF隐含EPS增长率%
+    actual_growth_3y: Optional[float] = None      # 实际3年EPS CAGR%
+    growth_gap: Optional[float] = None            # 实际-隐含, 正=被低估
+
+    # PE Band Position (MSCI教训): 当前PE在历史分布中的位置
+    pe_5y_mean: Optional[float] = None            # 5年PE均值
+    pe_5y_std: Optional[float] = None             # 5年PE标准差
+    pe_zscore: Optional[float] = None             # (当前PE - 均值) / 标准差
+    pe_percentile_5y: Optional[float] = None      # 0-100百分位
+
+    # Fear Reasonability (ADBE教训): 恐惧过度 vs 合理
+    implied_fcf_growth: Optional[float] = None    # PE隐含的FCF增长率
+    actual_fcf_growth: Optional[float] = None     # 实际FCF增长率
+    fear_gap: Optional[float] = None              # 实际-隐含, 正=恐惧过度
+    fear_classification: str = ""                 # excessive / reasonable / insufficient
+
+    # Buyback Timing Quality (MCO+ADBE教训)
+    buyback_timing_ratio: Optional[float] = None  # 近3年回购均价PE / 当前PE, >1=高买
+
+    # Quality Premium (MSCI教训): 质量是否已被充分定价
+    cqi_score: Optional[float] = None             # CQI排行榜分数(0-100)
+    quality_already_priced: bool = False           # CQI>60 且 PE>行业均值1.5x
+
+    score: Optional[float] = None
+
+
+# CQI查找表 (从 cqi_public_ranking_v4.1.md 手动维护)
+# 只需覆盖已评分的公司, 未在表中的默认None
+CQI_LOOKUP = {
+    'CPRT': 82, 'SPGI': 74, 'FICO': 72, 'MCO': 70, 'MSFT': 67,
+    'GOOGL': 66, 'ASML': 59, 'COST': 59, 'META': 58, 'AMZN': 56,
+    'IDXX': 56, 'AAPL': 55, 'V': 53, 'KLAC': 52, 'CTAS': 51,
+    'ARM': 49, 'ADBE': 48, 'NVDA': 48, 'ICE': 47, 'PG': 47,
+    'ETN': 46, 'TSM': 45, 'AVGO': 44, 'LRCX': 43, 'ANET': 42,
+    'CSGP': 41, 'AMAT': 41, 'PLTR': 39, 'DPZ': 36, 'CMG': 35,
+    'SBUX': 33, 'VRT': 30, 'ROL': 30, 'FAST': 25, 'MAR': 21,
+    'HLT': 21, 'RCL': 16, 'INTC': 14, 'IHG': 11, 'SMCI': 8,
+    # CME在独立排行中CQI=93但未在主排行榜(待加入)
+    'CME': 93,
+}
+
+
+@dataclass
 class StockScreenResult:
     symbol: str
     name: str = ""
@@ -96,6 +151,7 @@ class StockScreenResult:
     l1: L1Signals = field(default_factory=L1Signals)
     l2: L2Signals = field(default_factory=L2Signals)
     l3: L3Signals = field(default_factory=L3Signals)
+    l4: L4Signals = field(default_factory=L4Signals)
     composite_score: Optional[float] = None
     vetoes: list = field(default_factory=list)   # 硬否决原因
     flags: list = field(default_factory=list)    # 软警告
@@ -378,6 +434,12 @@ def check_vetoes(result: StockScreenResult) -> list[str]:
     if result.l1.shares_change_1y is not None and result.l1.shares_change_1y > 15:
         vetoes.append("VETO: 年稀释>15%(大规模增发)")
 
+    # v3.0新增: 质量溢价陷阱 (MSCI教训)
+    if (result.l4.cqi_score is not None and result.l4.cqi_score >= 70
+        and result.l1.pe_ttm is not None and result.l1.pe_ttm > 30
+        and result.l4.growth_gap is not None and result.l4.growth_gap < -5):
+        vetoes.append("VETO: 高CQI+高PE+增长幻觉(Growth Gap<-5pp)")
+
     result.vetoes = vetoes
     return vetoes
 
@@ -410,26 +472,103 @@ def check_flags(result: StockScreenResult) -> list[str]:
     if result.l2.cfo_ni_ratio is not None and result.l2.cfo_ni_ratio < 0:
         flags.append("FLAG: CFO与NI符号相反(盈利结构异常)")
 
+    # v3.0: L4相关警告
+    if result.l4.buyback_timing_ratio is not None and result.l4.buyback_timing_ratio > 1.5:
+        flags.append(f"FLAG: 回购择时差(均价PE/当前PE={result.l4.buyback_timing_ratio:.1f}x, 高买)")
+
+    if result.l4.quality_already_priced:
+        flags.append(f"FLAG: 质量已被充分定价(CQI={result.l4.cqi_score}+PE>25x)")
+
+    if result.l4.fear_classification == "excessive":
+        flags.append(f"FLAG: 恐惧可能过度(Fear Gap={result.l4.fear_gap:+.1f}pp)")
+
+    if result.l4.growth_gap is not None and result.l4.growth_gap < -3:
+        flags.append(f"FLAG: 增长幻觉(Gap={result.l4.growth_gap:+.1f}pp, 市场高估增长)")
+
     result.flags = flags
     return flags
 
 
 # ============================================================
-# Composite Scoring
+# L4 Scoring (v3.0新增: 定价合理性)
 # ============================================================
+
+def score_l4(s: L4Signals) -> float:
+    """Layer 4: 定价合理性 — 市场定价逻辑是否站得住脚
+    Growth Gap 30% + PE Band 20% + Fear 25% + Buyback Timing 10% + Quality Premium 15%"""
+    scores = []
+    weights = []
+
+    # Growth Gap (30%) — MCO教训: 正=被低估, 负=被高估
+    if s.growth_gap is not None:
+        scores.append(_normalize(s.growth_gap, -8, 8, invert=False))
+        weights.append(0.30)
+
+    # PE Band Position (20%) — MSCI教训: 低百分位=便宜
+    if s.pe_zscore is not None:
+        # z-score: -2=极便宜(10分), 0=中性(5分), +2=极贵(0分)
+        scores.append(_normalize(s.pe_zscore, -2.0, 2.0, invert=True))
+        weights.append(0.20)
+    elif s.pe_percentile_5y is not None:
+        scores.append(_normalize(s.pe_percentile_5y, 0, 100, invert=True))
+        weights.append(0.20)
+
+    # Fear Reasonability (25%) — ADBE教训: 正=恐惧过度(低估)
+    if s.fear_gap is not None:
+        scores.append(_normalize(s.fear_gap, -15, 15, invert=False))
+        weights.append(0.25)
+
+    # Buyback Timing (10%) — MCO+ADBE教训: <1=管理层在更便宜时买的(好)
+    if s.buyback_timing_ratio is not None:
+        scores.append(_normalize(s.buyback_timing_ratio, 0.5, 2.5, invert=True))
+        weights.append(0.10)
+
+    # Quality Already Priced (15%) — MSCI教训
+    if s.quality_already_priced is not None:
+        scores.append(2.0 if s.quality_already_priced else 7.0)
+        weights.append(0.15)
+
+    total = sum(weights)
+    s.score = sum(sc * w for sc, w in zip(scores, weights)) / total if total > 0 else 5.0
+    return s.score
+
+
+# ============================================================
+# Composite Scoring (v3.0: CQI分层权重)
+# ============================================================
+
+def get_cqi_weights(cqi: Optional[float]) -> tuple[float, float, float, float]:
+    """根据CQI分数返回L1/L2/L3/L4权重.
+    CQI越高, L4(定价合理性)权重越大 — 因为质量已知, 关键是时机.
+    CQI越低, L2(质量)权重越大 — 因为质量不确定是主要风险."""
+    if cqi is not None and cqi >= 70:
+        # 垄断企业: 质量已知, 关键是"什么价格买"
+        return (0.15, 0.05, 0.15, 0.65)
+    elif cqi is not None and cqi >= 50:
+        # 优质企业: 质量需验证但价格可能已反映
+        return (0.25, 0.15, 0.20, 0.40)
+    elif cqi is not None and cqi >= 30:
+        # 中等企业: 质量和价格都需评估
+        return (0.30, 0.25, 0.20, 0.25)
+    elif cqi is not None:
+        # 普通企业: 质量不确定是主要风险, L4无效
+        return (0.35, 0.40, 0.25, 0.00)
+    else:
+        # 未评CQI: 默认均衡
+        return (0.30, 0.25, 0.20, 0.25)
+
 
 def compute_composite(result: StockScreenResult) -> float:
     """
-    Final composite = L1×0.35 + L2×0.40 + L3×0.25
-    L2权重最大: 避免价值陷阱比发现便宜更重要
+    v3.0: Final composite = CQI分层权重 × (L1, L2, L3, L4)
 
-    修正项:
-    - 负盈利公司(PE<0): composite × 0.75 惩罚
-    - 负ROIC: 已在L2评分中处理
+    CQI≥70 (垄断): L4=65% — 质量已知, 关键是时机
+    CQI<30 (普通): L4=0% — 质量不确定是主要风险
     """
     l1 = score_l1(result.l1)
     l2 = score_l2(result.l2)
     l3 = score_l3(result.l3)
+    l4 = score_l4(result.l4)
 
     vetoes = check_vetoes(result)
     if vetoes:
@@ -438,9 +577,12 @@ def compute_composite(result: StockScreenResult) -> float:
 
     flags = check_flags(result)
 
-    composite = l1 * 0.35 + l2 * 0.40 + l3 * 0.25
+    # CQI分层权重
+    cqi = result.l4.cqi_score
+    w1, w2, w3, w4 = get_cqi_weights(cqi)
+    composite = l1 * w1 + l2 * w2 + l3 * w3 + l4 * w4
 
-    # 负盈利惩罚: 亏损公司的"便宜"可能是陷阱
+    # 负盈利惩罚
     if result.l1.pe_ttm is not None and result.l1.pe_ttm < 0:
         composite *= 0.75
 
@@ -637,6 +779,68 @@ def extract_signals_from_fmp(
     # --- L3: Earnings Surprise (from estimates if available) ---
     # This needs estimates endpoint - marked as None for now
 
+    # --- L4: 定价合理性 (v3.0新增) ---
+
+    # L4.1: CQI lookup
+    result.l4.cqi_score = CQI_LOOKUP.get(symbol)
+
+    # L4.2: Growth Gap — 实际EPS增长 vs 隐含增长
+    if income and len(income) >= 3:
+        eps_now = income[0].get('epsDiluted', 0) or income[0].get('eps', 0)
+        eps_3y = income[2].get('epsDiluted', 0) or income[2].get('eps', 0)
+        if eps_3y and eps_3y > 0 and eps_now and eps_now > 0:
+            result.l4.actual_growth_3y = ((eps_now / eps_3y) ** (1/3) - 1) * 100
+
+    # Implied growth from PE: PE = 1/(r-g) → g = r - 1/PE
+    # Using cost of equity ~10% as rough discount rate
+    if result.l1.pe_ttm is not None and result.l1.pe_ttm > 0:
+        cost_of_equity = 10.0  # rough assumption
+        result.l4.implied_growth_rate = cost_of_equity - (100.0 / result.l1.pe_ttm)
+
+    if result.l4.actual_growth_3y is not None and result.l4.implied_growth_rate is not None:
+        result.l4.growth_gap = result.l4.actual_growth_3y - result.l4.implied_growth_rate
+
+    # L4.3: Fear Reasonability — FCF growth vs PE-implied
+    if cashflow and len(cashflow) >= 3:
+        fcf_now = (cashflow[0].get('operatingCashFlow', 0) or 0) + (cashflow[0].get('capitalExpenditure', 0) or 0)
+        fcf_3y = (cashflow[2].get('operatingCashFlow', 0) or 0) + (cashflow[2].get('capitalExpenditure', 0) or 0)
+        if fcf_3y and fcf_3y > 0 and fcf_now and fcf_now > 0:
+            result.l4.actual_fcf_growth = ((fcf_now / fcf_3y) ** (1/3) - 1) * 100
+
+    if result.l4.actual_fcf_growth is not None and result.l4.implied_growth_rate is not None:
+        result.l4.fear_gap = result.l4.actual_fcf_growth - result.l4.implied_growth_rate
+        if result.l4.fear_gap > 5:
+            result.l4.fear_classification = "excessive"  # 恐惧过度(ADBE型)
+        elif result.l4.fear_gap < -5:
+            result.l4.fear_classification = "insufficient"  # 恐惧不足(过度乐观)
+        else:
+            result.l4.fear_classification = "reasonable"
+
+    # L4.4: Buyback Timing Quality
+    # 近3年回购总额 / 近3年平均市值 → 隐含回购PE
+    if (cashflow and len(cashflow) >= 3 and income and len(income) >= 3
+        and result.l1.pe_ttm is not None and result.l1.pe_ttm > 0):
+        total_buyback = sum(
+            abs(cf.get('commonStockRepurchased', 0) or 0)
+            for cf in cashflow[:3]
+        )
+        total_ni = sum(
+            abs(inc.get('netIncome', 0) or 0)
+            for inc in income[:3]
+        )
+        if total_buyback > 0 and total_ni > 0:
+            # 回购金额/NI ≈ 回购的"隐含PE"
+            avg_buyback_pe = total_buyback / (total_ni / 3)  # rough proxy
+            current_pe = result.l1.pe_ttm
+            if current_pe > 0:
+                result.l4.buyback_timing_ratio = avg_buyback_pe / current_pe
+
+    # L4.5: Quality Already Priced
+    cqi = result.l4.cqi_score
+    pe = result.l1.pe_ttm
+    if cqi is not None and cqi > 60 and pe is not None and pe > 25:
+        result.l4.quality_already_priced = True
+
     return result
 
 
@@ -679,6 +883,20 @@ def format_signal_card(r: StockScreenResult) -> str:
     if r.l3.estimate_revision_3m is not None:
         lines.append(f"    3月盈利修正: {r.l3.estimate_revision_3m:+.1f}%")
 
+    # L4
+    lines.append(f"\n  L4 定价合理性 [{r.l4.score:.1f}/10]" if r.l4.score else "\n  L4 定价合理性 [N/A]")
+    cqi_str = f"CQI={r.l4.cqi_score}" if r.l4.cqi_score else "CQI=未评"
+    w1, w2, w3, w4 = get_cqi_weights(r.l4.cqi_score)
+    lines.append(f"    {cqi_str} → 权重: L1={w1:.0%} L2={w2:.0%} L3={w3:.0%} L4={w4:.0%}")
+    if r.l4.growth_gap is not None:
+        lines.append(f"    Growth Gap: {r.l4.growth_gap:+.1f}pp (实际{_fmt(r.l4.actual_growth_3y, '.1f')}% vs 隐含{_fmt(r.l4.implied_growth_rate, '.1f')}%)")
+    if r.l4.fear_gap is not None:
+        lines.append(f"    Fear Gap: {r.l4.fear_gap:+.1f}pp → {r.l4.fear_classification} (FCF增长{_fmt(r.l4.actual_fcf_growth, '.1f')}%)")
+    if r.l4.buyback_timing_ratio is not None:
+        lines.append(f"    回购择时: {r.l4.buyback_timing_ratio:.1f}x ({'高买' if r.l4.buyback_timing_ratio > 1.2 else '合理' if r.l4.buyback_timing_ratio > 0.8 else '低买(好)'})")
+    if r.l4.quality_already_priced:
+        lines.append(f"    质量溢价: 已被充分定价")
+
     # Flags
     if r.flags:
         lines.append(f"\n  ⚠️  警告: {'; '.join(r.flags)}")
@@ -698,15 +916,17 @@ def format_ranking_table(results: list[StockScreenResult]) -> str:
     lines.append(f"\n{'='*80}")
     lines.append(f"  低估股筛选排名 | {len(active)}只通过 / {len(vetoed)}只否决 / {len(results)}只总计")
     lines.append(f"{'='*80}")
-    lines.append(f"  {'#':>3} {'Symbol':<8} {'Name':<20} {'Comp':>5} {'L1':>5} {'L2':>5} {'L3':>5} {'F':>3} {'Insider':>8}")
-    lines.append(f"  {'-'*74}")
+    lines.append(f"  {'#':>3} {'Symbol':<7} {'Name':<18} {'Comp':>5} {'L1':>5} {'L2':>5} {'L3':>5} {'L4':>5} {'CQI':>4} {'F':>2} {'Gap':>5}")
+    lines.append(f"  {'-'*80}")
 
     for i, r in enumerate(active, 1):
-        insider_str = f"${r.l1.insider_buy_value_6m/1e6:.1f}M" if r.l1.insider_buy_value_6m > 0 else "-"
+        cqi_str = f"{r.l4.cqi_score:>3}" if r.l4.cqi_score else "  -"
+        gap_str = f"{r.l4.growth_gap:+.0f}" if r.l4.growth_gap is not None else "  -"
+        l4_str = f"{r.l4.score:>5.1f}" if r.l4.score else "  N/A"
         lines.append(
-            f"  {i:>3} {r.symbol:<8} {r.name[:20]:<20} "
+            f"  {i:>3} {r.symbol:<7} {r.name[:18]:<18} "
             f"{r.composite_score:>5.1f} {r.l1.score:>5.1f} {r.l2.score:>5.1f} {r.l3.score:>5.1f} "
-            f"{r.l2.f_score or 0:>3} {insider_str:>8}"
+            f"{l4_str} {cqi_str} {r.l2.f_score or 0:>2} {gap_str:>5}"
         )
 
     if vetoed:
@@ -764,6 +984,13 @@ def save_results(results: list[StockScreenResult], output_dir: str = "data/scree
             'ev_ebitda': r.l1.ev_ebit,
             'fcf_yield': r.l1.fcf_yield,
             'shareholder_yield': r.l1.shareholder_yield,
+            'l4_score': r.l4.score,
+            'cqi': r.l4.cqi_score,
+            'growth_gap': r.l4.growth_gap,
+            'fear_gap': r.l4.fear_gap,
+            'fear_class': r.l4.fear_classification,
+            'buyback_timing': r.l4.buyback_timing_ratio,
+            'quality_priced': r.l4.quality_already_priced,
             'vetoes': r.vetoes,
             'flags': r.flags,
         }
