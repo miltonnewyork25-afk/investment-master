@@ -1,0 +1,177 @@
+{
+  "symbol": "BWA",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "BWA",
+    "price": 50.56,
+    "marketCap": 10816205798,
+    "beta": 1.025,
+    "lastDividend": 0.62,
+    "range": "24.4-70.08",
+    "companyName": "BorgWarner Inc.",
+    "exchange": "NYSE",
+    "industry": "Auto - Parts",
+    "sector": "Consumer Cyclical",
+    "country": "US",
+    "fullTimeEmployees": "38300",
+    "ceo": "Joseph F. Fadool"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "revenue": 14316000000,
+      "grossProfit": 2679000000,
+      "operatingIncome": 1377000000,
+      "netIncome": 277000000,
+      "eps": 1.28,
+      "ebitda": 2096000000,
+      "interestExpense": 123000000,
+      "depreciationAndAmortization": 719000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "revenue": 14083000000,
+      "operatingIncome": 1259000000,
+      "netIncome": 338000000,
+      "eps": 1.51,
+      "ebitda": 1319000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "revenue": 14198000000,
+      "operatingIncome": 1233000000,
+      "netIncome": 625000000,
+      "eps": 2.72,
+      "ebitda": 1671000000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "totalAssets": 13769000000,
+      "totalStockholdersEquity": 5442000000,
+      "cashAndCashEquivalents": 2313000000,
+      "totalDebt": 4179000000,
+      "netDebt": 1866000000,
+      "goodwill": 2055000000,
+      "inventory": 1207000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "totalAssets": 13993000000,
+      "totalStockholdersEquity": 5532000000,
+      "totalDebt": 4343000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "totalAssets": 14453000000,
+      "totalStockholdersEquity": 5828000000,
+      "totalDebt": 3929000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 1648000000,
+      "capitalExpenditure": -469000000,
+      "freeCashFlow": 1179000000,
+      "netIncome": 277000000,
+      "commonDividendsPaid": -119000000,
+      "commonStockRepurchased": -508000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 1352000000,
+      "freeCashFlow": 681000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 1309000000,
+      "freeCashFlow": 477000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.187,
+      "netProfitMargin": 0.019,
+      "returnOnEquity": 0.051,
+      "currentRatio": 2.07,
+      "debtToEquityRatio": 0.768,
+      "priceToEarningsRatio": 35.2,
+      "dividendYieldPercentage": 1.22,
+      "interestCoverageRatio": 11.2
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "priceToEarningsRatio": 21.02
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "priceToEarningsRatio": 13.18
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "marketCap": 9750984000,
+      "enterpriseValue": 11616984000,
+      "evToEBITDA": 5.54,
+      "returnOnInvestedCapital": 0.084,
+      "freeCashFlowYield": 0.121
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "marketCap": 7105065000,
+      "evToEBITDA": 7.09
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "marketCap": 8237749051,
+      "evToEBITDA": 6.36
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 9
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 0,
+      "totalSales": 3
+    }
+  ],
+  "quote": {
+    "symbol": "BWA",
+    "name": "BorgWarner Inc.",
+    "price": 50.56,
+    "changePercentage": -3.68,
+    "volume": 1726889,
+    "yearHigh": 70.08,
+    "yearLow": 24.4,
+    "marketCap": 10816205798,
+    "priceAvg50": 52.37,
+    "priceAvg200": 43.47,
+    "exchange": "NYSE",
+    "previousClose": 52.49
+  }
+}

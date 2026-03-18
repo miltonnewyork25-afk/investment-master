@@ -1,0 +1,73 @@
+{
+  "symbol": "LMT",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "LMT",
+    "price": 646,
+    "marketCap": 149482978800,
+    "beta": 0.197,
+    "companyName": "Lockheed Martin Corporation",
+    "sector": "Industrials",
+    "industry": "Aerospace & Defense",
+    "ceo": "James D. Taiclet Jr.",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 75057000000,
+      "operatingIncome": 7731000000,
+      "netIncome": 5017000000,
+      "eps": 21.56
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 71043000000,
+      "operatingIncome": 7013000000,
+      "netIncome": 5336000000,
+      "eps": 22.39
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 67571000000,
+      "operatingIncome": 8507000000,
+      "netIncome": 6920000000,
+      "eps": 27.65
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.102,
+      "netProfitMargin": 0.067,
+      "priceToEarningsRatio": 22.26,
+      "dividendYieldPercentage": 2.8
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.098,
+      "netProfitMargin": 0.075,
+      "priceToEarningsRatio": 21.7,
+      "dividendYieldPercentage": 2.64
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.125,
+      "netProfitMargin": 0.102,
+      "priceToEarningsRatio": 16.39,
+      "dividendYieldPercentage": 2.69
+    }
+  ],
+  "quote": {
+    "symbol": "LMT",
+    "price": 646,
+    "marketCap": 149482978800,
+    "yearHigh": 692,
+    "yearLow": 410.11
+  },
+  "balance": [],
+  "cashflow": [],
+  "key_metrics": [],
+  "insider_trades": "summarized_quarterly_data"
+}

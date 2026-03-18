@@ -114,6 +114,7 @@ mkdir -p data/research/{TICKER}
 | 1 | `analyze_stock` | symbol={TICKER}, data_types="full", period="2y" | `stock_full.json` |
 | 2 | `compare_stocks` | symbols={PEERS}, benchmark="SPY" | `peer_comparison.json` |
 | 3 | `get_market_overview` | — | `market_context.json` |
+| 4 | `fmp_data` | symbol={TICKER}, data_type="income", period="annual", limit=5 | **(EVO-SPGI-004)** 从income中提取`researchAndDevelopmentExpenses`→计算R&D/Revenue 3年趋势→写入DM-FIN锚点。若R&D=0或null→标注`[R&D不适用]` |
 
 ### Step 2.5: WebSearch并行预取（7个Task Agent同时启动）
 
@@ -288,10 +289,12 @@ mkdir -p data/research/{TICKER}
 4. `{COMPANY} geographic revenue breakdown`
 5. `{COMPANY} supply chain key suppliers customers`
 6. `{INDUSTRY} total addressable market TAM forecast`
+7. `{COMPANY} retention rate renewal rate churn {YEAR}` **(EVO-SPGI-002: 续约率硬数据搜索)**
+8. `{COMPANY} net revenue retention NRR {YEAR}` **(EVO-SPGI-002)**
 
 行业追加查询:
 - 半导体: `{COMPANY} technology roadmap process node`, `AI GPU market share {YEAR-1} {YEAR}`
-- 金融: `{COMPANY} loan portfolio credit quality`, `{COMPANY} digital banking fintech`
+- 金融: `{COMPANY} loan portfolio credit quality`, `{COMPANY} digital banking fintech`, `{COMPANY} customer retention deposit stickiness`
 - 消费品: `{COMPANY} brand portfolio`, `{COMPANY} DTC e-commerce channel`
 - 科技平台: `{COMPANY} DAU MAU user metrics`, `{COMPANY} cloud market share`
 
@@ -306,6 +309,13 @@ mkdir -p data/research/{TICKER}
   "geographic_breakdown": [
     { "region": "", "revenue": 0, "pct_of_total": 0 }
   ],
+  "retention_data": {
+    "net_revenue_retention": null,
+    "gross_retention": null,
+    "churn_rate": null,
+    "data_available": false,
+    "_dm_note": "EVO-SPGI-002: null=数据不可得, 报告中禁止推断具体数字"
+  },
   "supply_chain": {
     "key_suppliers": [],
     "key_customers": [],

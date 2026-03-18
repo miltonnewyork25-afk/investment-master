@@ -1,0 +1,62 @@
+moat_datacard:
+  ticker: CME
+  date: 2026-03-15
+
+  monopoly_purity:
+    score: 78%
+    evidence: "利率50%x98% + 股指26%x85% + 能源10%x60% + 其他14%x50% = 78%"
+
+  pricing_power_stage:
+    stage: "成熟期(稳定)"
+    b4_intensity: 3.5
+    b4_durability: 4.5
+    b4_composite: 4.0
+
+  tam_penetration:
+    core: "98%"
+    expansion: "5-10%"
+
+  moat_age:
+    years: 127
+    milestone: "1898成立→1972金融期货→1992 Globex→2007 CBOT→2008 NYMEX→2018 NEX"
+
+  switching_cost:
+    level: "极高"
+    quantified: "一次性$30-65M/大型银行 + 年化$100-300M(交叉offset消失). $500B利率组合银行=CME节省$2-5B保证金, 资本成本8-10%=$160-500M/年"
+
+  market_implied_assumption:
+    assumption: "P/E 28x隐含: VIX 18-25均值 + $903M利息可持续 + Treasury $200-500M + FFR>2.5%"
+    our_view: "波动率部分合理; $903M高估(概率加权$650-750M); Treasury已大部分定价; ZIRP尾部低估"
+
+  valuation_tiers:
+    cheap: "$240-260 (P/E <22x)"
+    fair: "$280-310 (P/E 24-27x)"
+    expensive: "$330+ (P/E >29x, 当前$311接近expensive下沿)"
+
+  e_score:
+    score: 8.0
+    evidence: "三次大并购全部成功(+3); OPM 56%→65%连续扩张(+2); SBC 1.5%(+2); OSTTRA处置纪律(+1); CyrusOne出售致停机(-1); 继任不透明(-1)"
+
+  drawdown_dna:
+    max_drawdown: "-70% (2007.11-2009.03 GFC)"
+    recovery_months: 84
+    pattern: "业务反脆弱(4次危机收入从未降)但股票顺周期(每次都跌). 2008收入+12%股价-70%"
+    recent: "2020 COVID -25%(恢复6月); 2022 -8%(恢复4月)"
+
+  liquidity:
+    daily_volume: "$450-550M"
+    spread: "1-2bps"
+    institutional: ">85%"
+
+  half_life:
+    composite: ">25年"
+    network_effect: ">30年"
+    regulatory: ">20年"
+    benchmark: ">25年"
+    technology: "~10年"
+    data: ">20年"
+
+  cqi:
+    score: 93
+    c1_five_layer: 4.8
+    trend_signal: "净加深+17"

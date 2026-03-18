@@ -1,0 +1,73 @@
+{
+  "symbol": "TGT",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "TGT",
+    "price": 117.36,
+    "marketCap": 53145324346,
+    "beta": 1.105,
+    "companyName": "Target Corporation",
+    "sector": "Consumer Defensive",
+    "industry": "Discount Stores",
+    "ceo": "Michael J. Fiddelke",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2026-01-31",
+      "revenue": 104780000000,
+      "operatingIncome": 5117000000,
+      "netIncome": 3705000000,
+      "eps": 8.16
+    },
+    {
+      "date": "2025-02-01",
+      "revenue": 106566000000,
+      "operatingIncome": 5566000000,
+      "netIncome": 4091000000,
+      "eps": 8.89
+    },
+    {
+      "date": "2024-02-03",
+      "revenue": 107412000000,
+      "operatingIncome": 5707000000,
+      "netIncome": 4138000000,
+      "eps": 8.96
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2026-01-31",
+      "grossProfitMargin": 0.279,
+      "netProfitMargin": 0.035,
+      "priceToEarningsRatio": 12.93,
+      "dividendYieldPercentage": 4.29
+    },
+    {
+      "date": "2025-02-01",
+      "grossProfitMargin": 0.282,
+      "netProfitMargin": 0.038,
+      "priceToEarningsRatio": 15.52,
+      "dividendYieldPercentage": 3.22
+    },
+    {
+      "date": "2024-02-03",
+      "grossProfitMargin": 0.275,
+      "netProfitMargin": 0.039,
+      "priceToEarningsRatio": 16.23,
+      "dividendYieldPercentage": 3.0
+    }
+  ],
+  "quote": {
+    "symbol": "TGT",
+    "price": 117.36,
+    "marketCap": 53145324346,
+    "yearHigh": 126,
+    "yearLow": 83.44
+  },
+  "balance": [],
+  "cashflow": [],
+  "key_metrics": [],
+  "insider_trades": "summarized_quarterly_data"
+}

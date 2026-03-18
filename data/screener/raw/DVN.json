@@ -1,0 +1,73 @@
+{
+  "symbol": "DVN",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "DVN",
+    "price": 46.25,
+    "marketCap": 28687224800,
+    "beta": 0.619,
+    "companyName": "Devon Energy Corporation",
+    "sector": "Energy",
+    "industry": "Oil & Gas Exploration & Production",
+    "ceo": "Clay Gaspar",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 17126000000,
+      "operatingIncome": 3775000000,
+      "netIncome": 2642000000,
+      "eps": 4.21
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 15567000000,
+      "operatingIncome": 3770000000,
+      "netIncome": 2891000000,
+      "eps": 4.57
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 15140000000,
+      "operatingIncome": 4792000000,
+      "netIncome": 3747000000,
+      "eps": 5.86
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.247,
+      "netProfitMargin": 0.154,
+      "priceToEarningsRatio": 8.71,
+      "dividendYieldPercentage": 2.69
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.274,
+      "netProfitMargin": 0.186,
+      "priceToEarningsRatio": 7.05,
+      "dividendYieldPercentage": 4.6
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.343,
+      "netProfitMargin": 0.247,
+      "priceToEarningsRatio": 7.73,
+      "dividendYieldPercentage": 6.42
+    }
+  ],
+  "quote": {
+    "symbol": "DVN",
+    "price": 46.25,
+    "marketCap": 28687224800,
+    "yearHigh": 46.41,
+    "yearLow": 25.89
+  },
+  "balance": [],
+  "cashflow": [],
+  "key_metrics": [],
+  "insider_trades": "summarized_quarterly_data"
+}
