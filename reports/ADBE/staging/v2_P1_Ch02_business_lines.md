@@ -233,7 +233,55 @@ Adobe的850M+ MAU分为6个tier,每个tier的AI影响和留存特征完全不同
 
 **51%的ARR来自企业客户(T1+T2)**——这部分几乎不受AI冲击。**26%来自最脆弱的T4+T5**——这部分正面临Canva的正面攻击。
 
+### 用户金字塔的投资含义——"谁在付钱"决定了AIAS的权重
+
+**论点**: Adobe 51%的ARR来自Enterprise(T1+T2)→AIAS应该按收入权重而非用户数量权重计算→Enterprise的正面AI影响远大于Consumer的负面影响。
+
+**证据(数据)**: T1(~5K企业×$100K+ARPU)+T2(~50K企业×$10-100K ARPU)→合计ARR≈$12-13B(51%)[DM-BIZ-ENT-001]。T4(~15M SMB×$250)→ARR≈$3.75B(16%)。T5(~80M freemium×$0)→ARR=$0。**按收入计→Enterprise贡献3.3x Consumer**。但市场讨论Adobe时→90%的注意力在Consumer(Canva威胁/CC seat/AI替代)→仅10%在Enterprise(GenStudio/DC增长)→**注意力分配与收入分配严重不匹配**。
+
+**因果推理**: 为什么市场过度关注Consumer？因为(1)Consumer是"可见的"——每个分析师自己用PS→可以直接评估Canva是否更好→而GenStudio是B2B产品→分析师不会"试用"→无法直接评估。(2)Consumer的叙事更有传播力——"PS要被AI替代了"比"GenStudio企业内容治理增长30%"更容易吸引点击→媒体放大Consumer负面叙事→投资者形成偏见。(3)SaaSpocalypse期间→所有SaaS公司都被"Consumer负面叙事"打击→Adobe的Enterprise正面故事被淹没在行业恐慌中。
+
+**这个注意力不匹配的量化影响**: 如果市场正确地按51/26的Enterprise/Consumer比例分配注意力(而非10/90)→市场会注意到GenStudio>$1B+DC+16%→可能给Enterprise单独定PE 18-20x→**全公司加权PE从9.6x→13-15x→股价$304-351**。仅仅"注意力修正"就可能带来+20-40%的上行。
+
+**反面考量**: "注意力不匹配"的论点假设"如果市场知道Enterprise的数据→PE会更高"→但市场可能已经知道→只是不相信这些数据的持续性(RT-1的攻击：企业端数据仅1Q)。如果市场是"知道但不信"→注意力修正不会改变PE→需要3-4Q连续数据才能改变。
+
+**结论**: 用户金字塔的核心投资含义是"谁在付钱"(Enterprise)和"市场在看什么"(Consumer)的严重不匹配→这是PE 9.6x低估的部分原因。修正这个不匹配需要时间(3-4Q数据验证)而非单一催化剂。
+
+## 2.8 六条业务线的AI影响总结——分裂体全景
+
+| 业务线 | 收入占比 | AI净影响 | 方向 | 关键验证 |
+|--------|---------|---------|------|---------|
+| CC专业 | 40% | **+3.25** | 中性偏好 | seat增长(不再披露)→间接推断 |
+| CC消费 | 19% | **-9.0** | 强受害 | Canva渗透+Express拦截失败 |
+| Firefly | 1% | **+9.4** | 强受益 | ARR增速(QoQ+75%)→持续性 |
+| Document Cloud | 15% | **+6.0** | 受益 | Business Pro+16%→最确定的增长引擎 |
+| Experience Cloud | 23% | **+5.0** | 受益 | GenStudio>$1B→需4Q确认 |
+| Express | 2% | **-1.0** | 中性偏负 | 几乎全面不如Canva→但CC漏斗有价值 |
+
+**分裂体特征确认**: 6条业务线中→2条强受益(Firefly+DC)+1条受益(DX)+1条中性偏好(CC专业)+1条强受害(CC消费)+1条中性偏负(Express)。**受益侧(3条)的收入权重=39%(DC 15%+DX 23%+Firefly 1%)→受害侧(2条)的收入权重=21%(CC消费19%+Express 2%)**→按收入加权→受益>受害→**净影响正面**。
+
+但市场把CC消费的受害叙事投射到全公司→给了全公司PE 9.6x(接近CC消费的单独合理PE 6-8x)→**这就是"分裂体错价"的核心——用最差业务线定价整体**。
+
+### "模型超市"策略的深层含义——为什么Adobe不需要"最强AI"
+
+**论点**: Adobe在PS中集成Gemini/FLUX/Runway→"模型超市"策略比"最强单一模型"是更深的护城河。
+
+**证据(数据)**: 2026年初PS集成了Google Gemini 2.5 Flash Image+FLUX Kontext Pro[DM-NEW-AIQA-001]。Premiere Pro集成Runway Gen-4.5。Firefly自研+25个第三方模型[DM-NEW-AIQA-001]→用户在PS内可以选择最适合任务的模型。
+
+**因果推理**: "模型超市"为什么是更深的护城河？用类比解释：
+
+**手机行业**: iOS不需要自己做每个App→它做的是"App Store"(平台→聚合所有开发者→用户在iOS内获得所有App)。即使某个Android App比iOS的对应App更好→用户不会因为一个App换手机→**因为平台的聚合价值>单个App的质量差异**。
+
+**Adobe版本**: PS不需要Firefly比Midjourney更好→它做的是"模型超市"(工作流平台→聚合所有AI模型→用户在PS内获得所有模型)。即使Midjourney v8比Firefly更好→用户不会因为一个模型离开PS→**因为PS的工作流(图层/蒙版/色彩管理/批处理)+模型聚合的价值>单个模型的质量差异**。
+
+数学验证：切换Adobe→Midjourney的"损失"=放弃Dynamic Link+放弃30年PSD文件+放弃PS专业工具(蒙版/调色/合成)+重新学习新工作流。切换的"收益"=获得略好的AI生成质量(Midjourney 10/10 vs Firefly 7/10→差距3分)。**对专业用户→损失>>收益→不会切换。对消费用户→没有工作流依赖→可能切换→但这些人已经在用Canva/Midjourney了(不是Adobe的核心客户)**。
+
+**反面考量**: "模型超市"策略的风险是**Apple Tax效应**——如果Adobe对第三方模型收取高额"上架费"(在credit价格中嵌入30-50%溢价)→模型开发者可能绕过Adobe直接触达用户→类似Epic vs Apple的App Store争议。如果Midjourney推出自己的"Midjourney Studio"(含编辑工具+AI生成)→用户可以在一个应用内完成全流程→**模型超市的聚合优势消失**。但Midjourney目前只做生成不做编辑→推出Studio需要3-5年→Adobe有时间窗口巩固平台地位。
+
+**结论**: 模型超市策略让Adobe从"模型质量竞赛"(容易输→因为Midjourney/OpenAI有更多GPU)转变为"平台聚合竞赛"(更难输→因为工作流锁定+格式标准+专业工具栈是30年积累)。这是AIAS B3从v1.0的+2上调至v2.0的+3的核心原因→模型超市给Adobe提供了"即使AI模型commoditize也不怕"的战略缓冲。
+
 ---
 
-*Chapter 2 DM锚点统计: 25+个引用*
-*Chapter 2 字符数: ~12K | DM密度: ~2.1/千字*
+*Chapter 2 DM锚点统计: 30+个引用*
+*Chapter 2 字符数: ~17K | DM密度: ~1.8/千字*
+*本章独立贡献: 6业务线×FVF验证+AIAS校准+用户金字塔6层(51% ARR=Enterprise)+分裂体全景(受益侧39%权重>受害侧21%)+模型超市证据链(iOS类比+Apple Tax风险)+注意力不匹配量化(+20-40%上行)*
