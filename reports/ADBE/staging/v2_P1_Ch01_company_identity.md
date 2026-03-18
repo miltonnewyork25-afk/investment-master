@@ -1,4 +1,4 @@
-# Phase 1 Chapter 1: Adobe到底是什么公司？
+# Chapter 1: Adobe到底是什么公司？
 
 > **本章独立论点**: 市场用"创意软件公司"标签给Adobe定价→Forward PE 9.6x。但Adobe在FY2026已是"从创意生成到企业内容治理的AI工作流基础设施"→正确的标签对应的PE应为15-25x。标签错误=系统性定价错误的根源。
 
@@ -130,6 +130,31 @@ CEO Narayen在2012年做了一个在当时极具争议的决定：将Creative Su
 但Adobe具备转型成功的关键条件——**旧业务的现金流支撑**：CC专业+Document Cloud在转型期间仍将贡献$13B+年收入、$5B+ FCF[DM-FIN-005]。正如Microsoft的Windows/Office在云转型中提供了现金流缓冲，Adobe的CC/DC在AI转型中提供了同样的缓冲。
 
 管理层指引准确度分析证实了执行力的一致性：FY2023-2025连续3年revenue beat率100%，平均beat midpoint +$220M(+1.0%)[DM-MGT-001]。这是一个**系统性under-promise、over-deliver**的管理团队——但CEO正在更换，这个track record能否延续到新CEO是最大的不确定性。
+
+<!-- 图: Adobe三次转型路径 -->
+```mermaid
+flowchart LR
+    A["**Phase 1**\nPostScript→创意工具\n1982-2005"] -->|排版→内容| B["**Phase 2**\n盒装→SaaS订阅\n2012-2017"]
+    B -->|商业模式转型| C["**Phase 3**\n创意工具→AI工作流\n2023-进行中"]
+
+    A --- A1["核心: 排版技术\n风险: 无"]
+    B --- B1["核心: 功能不变\n风险: 收入短暂负增长"]
+    C --- C1["核心: 价值被重定义\n风险: CEO交接+竞争"]
+
+    style C fill:#ff9,stroke:#333,stroke-width:2px
+    style C1 fill:#ffd,stroke:#333
+```
+
+<!-- 图: FY2025收入构成 -->
+```mermaid
+pie title Adobe FY2025收入构成 ($23.8B)
+    "CC专业" : 40
+    "CC消费/SMB" : 19
+    "Document Cloud" : 15
+    "Experience Cloud" : 23
+    "Express" : 2
+    "Firefly" : 1
+```
 
 ## 1.5 拆分测试：平台还是产品集合？
 

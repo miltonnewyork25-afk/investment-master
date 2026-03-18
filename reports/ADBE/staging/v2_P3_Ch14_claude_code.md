@@ -1,4 +1,4 @@
-# Phase 3 Chapter 14: Claude Code/Vibe Coding/AI Agent——软件行业的规则改变者
+# Chapter 14: Claude Code/Vibe Coding/AI Agent——软件行业的规则改变者
 
 > **本章独立论点**: Claude Code/Cursor/vibe coding不是Adobe的直接竞争者——它们改变的是"谁能做软件"的底层规则。6条传导路径分析(演绎法5步形式化)显示：短期3条利空(已发生)+长期1条核心利好(API基础设施化)+2条中性。Adobe在AI编码时代的**净定位是中性偏好**——前提是Firefly API基础设施化在FY2028-2030兑现。
 

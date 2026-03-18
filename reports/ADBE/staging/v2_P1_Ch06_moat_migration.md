@@ -1,4 +1,4 @@
-# Phase 1 Chapter 6: 护城河迁移——从工具到工作流到治理的量化追踪
+# Chapter 6: 护城河迁移——从工具到工作流到治理的量化追踪
 
 > **本章独立论点**: Adobe正在执行一场"主动护城河迁移"——从工具层(Photoshop品牌+PSD格式)向治理层(GenStudio+Content Credentials)。迁移进度约25%，交叉点(新护城河年增量>旧护城河年损失)预计FY2028。跨公司对比显示Adobe的迁移成功概率(50-55%)高于历史基率(33-40%)——因为$10B+ FCF提供了强大的"转型缓冲"。但CEO交接在迁移关键期增加了最大的不确定性。
 
@@ -18,6 +18,28 @@ Adobe的护城河迁移与INTC报告(4.1/5)中分析的Intel制度迁移有本�
 | **Phase 4: 治理标准层** | FY2028+ | Content Credentials→监管强制 | 制度型(企业因法规锁定) | ← 远期愿景(25-35%概率) |
 
 **当前位置**: Phase 1→Phase 2的过渡中(约40%在Phase 1, 50%在Phase 2, 10%在Phase 3)
+
+<!-- 图: 4阶段护城河迁移路径 -->
+```mermaid
+flowchart LR
+    P1["**Phase 1: 工具层**\nPS/AI/Pr品牌锁定\n偏好型嵌入\nFY2015-2022"]
+    P2["**Phase 2: AI增强层**\nFirefly嵌入CC\n功能依赖型\nFY2023-2025"]
+    P3["**Phase 3: 工作流平台**\nGenStudio+Foundry\n契约型锁定\nFY2025-2028"]
+    P4["**Phase 4: 治理标准**\nContent Credentials\n制度型锁定\nFY2028+"]
+
+    P1 ==>|"40%收入仍在此"| P2
+    P2 ==>|"50%正在过渡"| P3
+    P3 -.->|"10%起步\n25-35%概率"| P4
+
+    NOW["📍 当前位置\n迁移进度~25%"]
+    NOW -.-> P2
+
+    style P1 fill:#ddd,stroke:#333
+    style P2 fill:#ff9,stroke:#333,stroke-width:3px
+    style P3 fill:#9cf,stroke:#333
+    style P4 fill:#cfc,stroke:#333
+    style NOW fill:#f66,color:#fff,stroke:#333
+```
 
 ### 迁移进度追踪仪表盘
 
@@ -60,6 +82,25 @@ Adobe的护城河迁移与INTC报告(4.1/5)中分析的Intel制度迁移有本�
 | FY2030E | $12.0B(稳定) | ±0 | $7.0B | +$1.5B | +$1.5B | 显著正 |
 
 **FY2028是护城河价值交叉点**——从这一年起，新护城河的年增量($1.0B+)持续超过旧护城河的年损失($0.5B)。在此之前的FY2026-2027是"真空期"——旧护城河在流失，新护城河的增量刚好抵消(FY2026)或微超(FY2027 +$0.2B)。
+
+<!-- 图: 护城河价值交叉点FY2028 -->
+```mermaid
+gantt
+    title 护城河价值迁移时间线
+    dateFormat YYYY
+    axisFormat %Y
+
+    section 旧护城河(年化损失)
+    $14.0B基年          :done, 2025, 2026
+    -$0.5B/年侵蚀       :active, 2026, 2028
+    $12.0B后稳定        :2028, 2031
+
+    section 新护城河(年化增长)
+    $2.0B基年           :done, 2025, 2026
+    真空期(增量≈损失)    :crit, 2026, 2028
+    交叉点(增量>损失)    :milestone, 2028, 2028
+    加速增长$4.2B→$7.0B :active, 2028, 2031
+```
 
 **真空期的风险**：如果在FY2026-2027期间发生负面催化剂(CEO交接失败/GenStudio增速骤降/Canva企业版突破)——市场可能不会等到FY2028交叉点就对Adobe做出"迁移失败"的判断→PE进一步压缩。
 

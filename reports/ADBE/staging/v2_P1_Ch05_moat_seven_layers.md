@@ -1,4 +1,4 @@
-# Phase 1 Chapter 5: 护城河七层拆解——C1五层制度嵌入+B2B I×L框架
+# Chapter 5: 护城河七层拆解——C1五层制度嵌入+B2B I×L框架
 
 > **本章独立论点**: Adobe的护城河不是"宽且深"——而是"宽但参差不齐"。7层护城河中3层在变弱(L1格式/L2工作流/L5品牌)、3层在变强(L3治理/L6分发/L7信任)、1层持平(L4生态)。FICO式C1五层分析揭示Adobe的嵌入主要是"偏好型"(半衰期5-10年)→除非Content Credentials制度化(升级为"制度型",半衰期>30年)。B2B I×L框架首次应用于GenStudio→量化Enterprise Engine的基础设施嵌入度。
 
@@ -8,13 +8,13 @@
 
 | 层次 | 护城河内容 | FY2025深度 | AI时代趋势 | FY2030E深度 | 方向 |
 |------|----------|-----------|-----------|-----------|------|
-| L1: 格式标准层 | PDF(ISO标准), PSD/AI/INDD事实标准 | ★★★★ | PDF已开放(ISO 32000-2) PSD对新用户锁定力=0 | ★★★ | ↓微降 |
-| L2: 专业工作流层 | PS→AI→Pr→AE Dynamic Link跨产品流 | ★★★★ | AI简化部分工作流 但Dynamic Link仍不可复制 | ★★★ | ↓微降 |
-| L3: 团队协作/治理层 | GenStudio审批+品牌治理+Foundry | ★★★ | AI→内容爆炸→治理需求↑ GenStudio SAP式锁定 | ★★★★ | **↑加深** |
-| L4: 生态/插件层 | 460K开发者, Exchange市场, API | ★★★ | 竞品生态也在增长(Figma/Canva) Adobe API早期 | ★★★ | →持平 |
-| L5: 品牌/学习成本层 | Photoshop=品类名 99%品牌认知 | ★★★★★ | 代际脆弱性(Z世代可能不学PS) Canva教育渗透 | ★★★★ | ↓微降 |
-| L6: 分发/商业化层 | GenStudio→Amazon/Google/Meta | ★★ | 从工具到管道的位移 Adobe独有 | ★★★ | **↑加深** |
-| L7: 信任/版权/合规层 | Content Credentials+IP赔偿+CAI | ★★★ | 监管推进(EU AI Act+NSA/CISA) 可能制度化 | ★★★★(如果H-3) | **↑↑可能显著加深** |
+| L1: 格式标准层 | PDF(ISO标准)[DM-BIZ-013], PSD/AI/INDD事实标准 | ★★★★ | PDF已开放(ISO 32000-2) PSD对新用户锁定力=0 | ★★★ | ↓微降 |
+| L2: 专业工作流层 | PS→AI→Pr→AE Dynamic Link跨产品流[DM-FVF-WORKFLOW-001] | ★★★★ | AI简化部分工作流 但Dynamic Link仍不可复制 | ★★★ | ↓微降 |
+| L3: 团队协作/治理层 | GenStudio审批+品牌治理+Foundry[DM-BIZ-004] | ★★★ | AI→内容爆炸→治理需求↑ GenStudio SAP式锁定 | ★★★★ | **↑加深** |
+| L4: 生态/插件层 | 460K开发者[DM-BIZ-006], Exchange市场, API | ★★★ | 竞品生态也在增长(Figma/Canva) Adobe API早期 | ★★★ | →持平 |
+| L5: 品牌/学习成本层 | Photoshop=品类名 99%品牌认知[DM-BRAND-001] | ★★★★★ | 代际脆弱性(Z世代可能不学PS)[DM-FVF-ENT-EDU] Canva教育渗透 | ★★★★ | ↓微降 |
+| L6: 分发/商业化层 | GenStudio→Amazon/Google/Meta分发[DM-BIZ-009] | ★★ | 从工具到管道的位移 Adobe独有 | ★★★ | **↑加深** |
+| L7: 信任/版权/合规层 | Content Credentials+IP赔偿+CAI[DM-BIZ-010] | ★★★ | 监管推进(EU AI Act+NSA/CISA)[DM-NEW-10K-003] 可能制度化 | ★★★★(如果H-3) | **↑↑可能显著加深** |
 
 **七层综合评分**: FY2025 ~2.9/5(v2.0比v1.0更保守) → FY2030E ~3.2-3.6/5(取决于L3/L7)
 

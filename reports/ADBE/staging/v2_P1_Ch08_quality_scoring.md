@@ -1,4 +1,4 @@
-# Phase 1 Chapter 8: 品质量化评估——A+B+C+D 21维度+A-Score+Moat Data Card
+# Chapter 8: 品质量化评估——A+B+C+D 21维度+A-Score+Moat Data Card
 
 > **本章独立论点**: Adobe的品质综合评分为2.95/5——"良好但面临AI时代结构性风险"。A-Score 6.91/10揭示了"高峰低谷"形态(品牌/成本/财务极强→网络效应/技术领先偏弱)。品质的最大脆弱点不是AI功能竞争——而是C1嵌入性质(偏好型→可侵蚀)。Moat Data Card v2.0输出为CQI排行榜和跨公司对比提供机器可读数据。
 

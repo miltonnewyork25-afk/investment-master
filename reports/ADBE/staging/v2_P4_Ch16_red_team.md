@@ -1,4 +1,4 @@
-# Phase 4 Chapter 16: 红队七问+风险拓扑+KS级联
+# Chapter 16: 红队七问+风险拓扑+KS级联
 
 > **本章独立论点**: 红队将AIAS从+0.60修正至+0.42(区间[-0.35, +1.00])——下调30%。最有力的红队攻击是RT-1"企业端乐观偏差"(GenStudio数据仅1Q)+RT-7"IBM而非Microsoft"类比(40%概率)。风险拓扑的"温水煮青蛙"(R1+R2+R9)联合概率8%是最隐蔽的风险。KS级联分析显示CEO未确定(KS-08)是"主开关"——它提升所有其他KS的条件概率。
 
@@ -176,6 +176,28 @@ Goldman分析师Gabriela Borges的$220 Sell是市场最悲观的观点。需要�
 
 **为什么KS-01(seat负增长)的阈值设得很低(连续2Q即触发)**: 就是为了在温水煮青蛙的早期(Q4 FY2026)而非晚期(FY2028)发出警报。**但Adobe不再披露seat数→KS-01的检测能力被管理层削弱→需要通过ARR vs 收入增速的差异间接推断。**
 
+<!-- 图: 温水煮青蛙传导路径 -->
+```mermaid
+flowchart TD
+    R1["R1: CC seat微负\n每季-1~2%"]
+    R2["R2: Canva企业渗透\n从5%→30% F500"]
+    R9["R9: Figma+Canva闭环\n设计→分发一体化"]
+
+    R1 -->|"季度级\n看似正常"| Q1["Q2 FY2026\n提价掩盖seat=0"]
+    Q1 --> Q2["Q4 FY2026\nseat开始-1%"]
+    Q2 --> Q3["Q2 FY2027\nseat -2%\n3家F500试用Canva"]
+    Q3 --> Q4["FY2028-2030\nCC从$14B→$10B\n累计-30%"]
+
+    R2 --> Q3
+    R9 --> Q4
+
+    Q4 --> RESULT["5年后发现不可逆\n每季度看起来都'还好'\n但累计损失巨大"]
+
+    style RESULT fill:#f66,color:#fff,stroke:#333
+    style Q1 fill:#ffe,stroke:#333
+    style Q4 fill:#fcc,stroke:#c33
+```
+
 ### KS级联传导链
 
 KS-08(CEO未确定)是"主开关"——一旦触发，条件概率提升：
@@ -187,6 +209,21 @@ KS-08(CEO未确定)是"主开关"——一旦触发，条件概率提升：
 | KS-05 Canva渗透>30% F500 | 30% | 35% | +5pp(Adobe内部混乱→Canva趁虚而入) |
 
 **CEO三连锁联合概率**: 30%×35%×45% = 4.7%(vs 独立假设2.25%→放大2.1x)
+
+<!-- 图: KS级联传导链 — CEO作为主开关 -->
+```mermaid
+flowchart TD
+    KS08["**KS-08: CEO未确定**\n(>6月未定=主开关)"]
+
+    KS08 -->|"+10pp\n战略真空→seat优化"| KS01["KS-01: CC seat转负\n独立25%→条件35%"]
+    KS08 -->|"+10pp\n新CEO改方向"| KS09["KS-09: GenStudio<15%\n独立20%→条件30%"]
+    KS08 -->|"+5pp\n内部混乱→趁虚而入"| KS05["KS-05: Canva>30% F500\n独立30%→条件35%"]
+
+    KS01 & KS09 & KS05 -->|"三连锁\n联合概率4.7%"| IMPACT["$252→$172-202\n(-20~32%)"]
+
+    style KS08 fill:#f66,color:#fff,stroke:#333,stroke-width:3px
+    style IMPACT fill:#fcc,stroke:#c33
+```
 
 **三连锁的估值影响**: KS-08(所有计划暂停)+KS-01(CC核心恶化)+KS-05(竞争加速) = **从$252→$172-202(-20~32%)**→接近Goldman $220水平。
 
