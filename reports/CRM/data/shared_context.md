@@ -285,6 +285,75 @@
 
 ---
 
+## Section E2: 分部收入锚点 (DM-SEG-xxx)
+
+### DM-SEG-001
+- **值**: FY2026分部收入: Service Cloud $9.818B(23.6%) | Sales Cloud $9.028B(21.7%) | Platform&Other $8.882B(21.4%) | Integration&Analytics $6.232B(15.0%) | Marketing&Commerce $5.428B(13.1%) | Prof Services $2.137B(5.1%)
+- **类型**: H
+- **来源**: MCP fmp_data revenue-product-segmentation FY2026
+
+### DM-SEG-002
+- **值**: FY2025分部收入: Service $9.054B | Sales $8.322B | Platform $7.247B | I&A $5.775B | M&C $5.281B | PS $2.216B
+- **类型**: H
+- **来源**: MCP fmp_data revenue-product-segmentation FY2025
+
+### DM-SEG-003
+- **值**: 分部4年CAGR(FY22→FY26): Platform&Other 18.5% | I&A 13.3% | Sales 10.8% | Service 11.0% | M&C 8.6% | PS 3.9%
+- **类型**: H
+- **来源**: MCP fmp_data revenue-product-segmentation FY2022-2026 计算
+
+### DM-SEG-004
+- **值**: FY2026 YoY增速: Platform +22.6% | I&A +7.9% | Sales +8.5% | Service +8.4% | M&C +2.8% | PS -3.6%
+- **类型**: H
+- **来源**: MCP fmp_data revenue-product-segmentation FY2025-2026 计算
+
+### DM-SEG-005
+- **值**: 分部集中度: 前2大Cloud(Service+Sales)占收入45.3% | 前3大(+Platform)占66.7%
+- **类型**: H
+- **来源**: DM-SEG-001 计算
+
+### DM-SEG-006
+- **值**: Platform&Other从FY2021的$6.275B降至FY2022的$4.509B(-28%,Slack整合口径变化)→FY2026 $8.882B,含Slack+Agentforce+Heroku
+- **类型**: H
+- **来源**: MCP fmp_data revenue-product-segmentation FY2021-2026
+
+### DM-SEG-007
+- **值**: 同行对标PE: CRM 25.1x | NOW 69.9x | ADBE 14.8x | WDAY N/A | HUBS 312x | ADSK 48.3x | SPY 26.6x
+- **类型**: H
+- **来源**: MCP compare_stocks
+
+### DM-SEG-008
+- **值**: 同行对标OPM: CRM 21.5% | NOW 13.7% | ADBE 36.6% | WDAY 10.7% | HUBS 0.4% | ADSK 24.9%
+- **类型**: H
+- **来源**: MCP compare_stocks
+
+### DM-SEG-009
+- **值**: 同行对标Rev Growth: CRM 12.1% | NOW 20.7% | ADBE 12.0% | HUBS 20.4% | ADSK 19.4%
+- **类型**: H
+- **来源**: MCP compare_stocks
+
+### DM-SEG-010
+- **值**: CRM杜邦拆解: ROE 12.4% = 净利率17.96% × 资产周转0.39x × 权益乘数1.79x | ROIC 13.64% | ROTCE -132.8%(有形权益为负)
+- **类型**: H
+- **来源**: MCP baggers_summary
+
+### DM-SEG-011
+- **值**: CRM现金质量: OCF/NI 2.01x | FCF/NI 1.93x | CapEx覆盖率25.25x | SBC覆盖率4.27x(回购$12.6B>>SBC$3.5B=352%抵消)
+- **类型**: H
+- **来源**: MCP baggers_summary
+
+### DM-SEG-012
+- **值**: CRM季度趋势(EPS): Q1$1.59→Q2$1.96→Q3$2.18→Q4$2.07(FY26) | Q1$1.56→Q2$1.47→Q3$1.58→Q4$1.75(FY25)
+- **类型**: H
+- **来源**: MCP fmp_data income quarterly
+
+### DM-SEG-013
+- **值**: CRM季度OPM: Q1 19.8%→Q2 22.8%→Q3 21.3%→Q4 21.9%(FY26) | 全年趋势:季度波动但年度持续上行
+- **类型**: H
+- **来源**: MCP fmp_data income quarterly 计算
+
+---
+
 ## Section F: 推断锚点 (DM-INF-xxx)
 
 ### DM-INF-001
