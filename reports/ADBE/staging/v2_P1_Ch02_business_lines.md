@@ -203,6 +203,20 @@ GenStudio ARR突破$1B[DM-BIZ-004]，增速>30%。但在分析师电话会上、
 
 **结论**: GenStudio和Salesforce MC**不是直接替代关系——而是互补**。理想的企业部署是两者并存(GenStudio做内容生产+治理, Salesforce做客户运营)。这降低了Salesforce对GenStudio的替代威胁。
 
+### GenStudio vs Salesforce MC的证据链——为什么两者是互补而非替代？
+
+**论点**: GenStudio和Salesforce MC不是直接替代关系→而是互补→因为两者在"创意→治理→分发"链条中占据不同位置。
+
+**证据(数据)**: GenStudio核心能力：创意生成(Firefly)+品牌治理(品牌指南自动检查)+内容适配(多渠道多尺寸自动生成)。Salesforce MC核心能力：客户旅程编排(Journey Builder)+个性化(CDP数据驱动)+分发(跨渠道推送)。**两者的重叠度<20%**(仅在"邮件营销"这个单一环节有直接竞争)。
+
+**因果推理**: 一个完整的企业营销Campaign需要：(1)创意资产创建(GenStudio/Firefly)→(2)品牌合规审查(GenStudio)→(3)多渠道适配(GenStudio)→(4)客户细分(Salesforce CDP)→(5)分发(Salesforce MC)→(6)效果追踪(Adobe AEP/Salesforce Analytics)。**GenStudio覆盖步骤1-3→Salesforce覆盖步骤4-5→步骤6两者都做**。
+
+这意味着：理想的企业部署是**两者并用**(GenStudio做内容+Salesforce做分发)而非**二选一**。事实上→Adobe和Salesforce在多个大客户(如Coca-Cola)中并存→不是"换掉一个装另一个"→而是"各做各的环节"。
+
+**反面考量**: Salesforce在FY2025推出了Einstein Studio(含基础的AI内容生成能力)→如果Einstein Studio的内容生成质量提升(当前约4/10→如果达6/10)→企业可能"用Salesforce做全套"而非"GenStudio+Salesforce并用"→**两者的互补关系可能在3-5年内转变为竞争关系**。但Salesforce没有"创意DNA"(没有PS/AI/Pr级别的创意工具+没有Firefly级别的生成模型+没有Content Credentials信任层)→**Einstein Studio即使达6/10质量→对需要"卓越创意"的品牌来说仍不够**。
+
+**结论**: GenStudio和Salesforce MC的互补性降低了Salesforce对Adobe DX的替代威胁→AIAS的S评分中DX的竞争风险应低于CC消费的竞争风险。这支持了AIAS中DX净影响为正(+5)而CC消费净影响为负(-9)的差异。
+
 ## 2.6 Express + 其他（~$0.5B，2%收入）——战略重要但战术失败
 
 Express的角色是"Canva拦截器"——阻止轻量用户流向Canva。但一线数据[DM-FVF-003]表明**拦截失败**：

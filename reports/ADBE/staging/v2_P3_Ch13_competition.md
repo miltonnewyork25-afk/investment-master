@@ -136,6 +136,22 @@ Figma目前从4个产品扩展到8个(FY2025)→方向包括Figma Make(AI设计)
 
 **结论**: Midjourney当前不是Adobe的直接竞争者(互补关系)→但长期(5年+)可能演进为直接竞争者(如果添加生产级功能)。AIAS的S1评分(-2)已反映了这个"远期但真实"的风险。
 
+### Figma的"向上渗透"风险的证据链——第二个赛道可能丢失？
+
+**论点**: Figma已赢得UI/UX赛道→正在向"品牌设计"渗透→如果渗透成功→Adobe可能失去第二个赛道。
+
+**证据(数据)**: Figma FY2025 $1.05B(+41%)→IPO后$57B估值[DM-BIZ-012]。Figma从4个产品扩展到8个(FY2025)→新产品包括Figma Make(AI设计,用Claude Sonnet 4)、Code to Canvas(代码到设计)、Figma Slides(演示文稿)[DM-FVF-AIQA-001]。**Figma Slides直接挑战PowerPoint和Adobe Express的演示文稿功能→Figma Make直接挑战Illustrator/Photoshop的设计功能**。
+
+**因果推理**: Figma的向上渗透路径是"UI/UX→品牌设计→营销设计"→每一步都在靠近Adobe CC的核心领地。但Figma有架构天花板：浏览器原生→大型文件(4K+视频/RAW/100+图层复杂合成)的性能有物理限制。**Figma可以渗透到"静态设计"(Logo/名片/海报/社媒图)→但无法渗透到"动态创作"(视频后期/3D/动效/RAW处理)**。
+
+Adobe可能丢失的赛道：品牌设计(静态图+矢量)→占CC专业收入的~15%→约$1.4B→**如果Figma在3年内渗透50%→Adobe可能失去$0.7B/年→对总收入影响-3%**。但Adobe不太可能丢失的赛道：视频后期(Pr/AE)+印刷出版(InDesign)+专业摄影(Lr/PS RAW)→合计占CC专业收入的~60%→约$5.7B→**Figma的浏览器架构无法触及这些领域**。
+
+**反面考量**: WebAssembly和WebGPU技术正在快速进步→3-5年后浏览器应用的性能可能接近原生应用→**Figma的架构天花板可能在FY2028-2030被技术进步打破**。如果浏览器性能达到原生的80%→Figma可能从"静态设计"扩展到"轻量视频编辑"(类似CapCut Web版)→**更多的CC专业赛道面临Figma渗透→从$0.7B→$2-3B的潜在损失**。但这需要Figma同时解决(a)性能(WebGPU)、(b)色彩管理(CMYK/ICC profiles)、(c)文件格式(PSD/AI兼容)→三者同时突破的概率<15%。
+
+**Figma Make的质量现状**: 用Claude Sonnet 4驱动→被评为"Best AI-driven design ideation tool"但"produces generic or unoriginal results, lacks deep UX understanding"[DM-FVF-AIQA-001]→**"junior designer级别"→概念探索好但完整设计工作流不行**。这暗示Figma Make在3年内不会替代PS/AI的专业能力→但可能替代"简单设计任务"(Logo概念/社媒图探索)→**恰好是CC消费端的需求(已在Ch2.2中量化为受害)**。
+
+**结论**: Figma向上渗透是真实威胁→但被限制在"静态品牌设计"赛道(~$1.4B at risk, -3%收入)。视频/摄影/出版赛道因浏览器架构天花板暂时安全。**Figma对Adobe的最大影响不是"抢走现有CC专业用户"→而是"成为下一代设计师的默认起点"(Ch13.6 Z世代截流的设计工具版)**。
+
 ## 13.4 AI-native: Adobe的"模型超市"策略是正确的回应
 
 一线对标结论[DM-FVF-AIQA-003]："Midjourney做灵感，Firefly做生产"→Adobe不需要在艺术质量上赢Midjourney→只需要在"从生成到交付"的全流程中占据关键位置。
