@@ -1,25 +1,54 @@
 schema_version: "2.0"
 ticker: CRM
-company: "CRM"
-framework_version: v17.0
+company: "Salesforce"
+framework_version: v19.2
 worktree: "eco_tech"
 industry: "eco_tech"
-last_updated: "2026-03-18T06:39:47+00:00"
+last_updated: "2026-03-18T09:30:00+00:00"
 
-current_phase: 1
+current_phase: 2
 phase_status: completed
-phases_completed: ["-1", "-0.5", "0", "0.75", "1"]
+phases_completed: ["-1", "-0.5", "0", "0.75", "1", "2"]
 
 target_chars: 300000
 target_range: "240K-375K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 61158
-  latest_phase_chars: 61158
+  total_chars: 100644
+  phase1_chars: 61158
+  phase2_chars: 39486
   phase1_dm_count: 111
   phase1_dm_density: 1.81
   phase1_causal_density: 17.0
   phase1_mermaid: 12
   phase1_chapters: 16
   phase1_ci_count: 3
+  phase2_dm_count: 86
+  phase2_dm_density: 2.18
+  phase2_causal_density: 9.1
+  phase2_mermaid: 5
+  phase2_chapters: 12
+  phase2_ci_count: 2
+  cumulative_dm: 102
+  cumulative_ci: 5
+  base_fair_value: "$235"
+  expected_return: "+34%"
+  preliminary_rating: "关注(偏积极)"
+  pw_score: 5.6
+
+valuation_summary:
+  sotp_base: "$238/股"
+  dcf_base: "$179/股"
+  comparable_pe: "$226-265/股"
+  probability_weighted: "$253/股"
+  median: "$238/股"
+  convergence: "4/5方法指向低估(80%一致)"
+  dispersion: "34%(因AI不确定性)"
+
+cq_status:
+  CQ1_agentforce: "55:45偏正面(不变)"
+  CQ2_seat_consumption: "62:38偏正面(上调)"
+  CQ3_asr_25b: "60:40偏正面(上调)"
+  CQ4_opm_structural: "72:28正面(微调)"
+  CQ5_ai_victim_beneficiary: "58:42偏受益(上调)"
