@@ -7,9 +7,23 @@ industry: "B2B平台"
 last_updated: "2026-03-18T15:30:00+08:00"
 report_version: "v2.0"
 
-current_phase: "0"
-phase_status: phase_0_in_progress
-phases_completed: ["-1"]
+current_phase: "1"
+phase_status: phase_1_complete
+phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1"]
+
+phase_1_output:
+  chars_wc_m: 32733
+  bytes_wc_c: 58274
+  dm_count: 155
+  dm_density: "4.7/千字"
+  causal_count: 117
+  causal_density: "35.7/万字"
+  chapters: "Ch1-12 (Part I+II+III)"
+  files:
+    - staging/CME_v2_P1_PartI.md
+    - staging/CME_v2_P1_PartII.md
+    - staging/CME_v2_P1_PartIII.md
+  summary: "Part I=身份+引擎+网络+CBOE(15.8K) | Part II=清算+利息+RPC+数据+OI(10.6K) | Part III=CEO沉默+国际化+会员(6.3K)"
 
 # v1.0 artifacts (可复用)
 v1_reference:
