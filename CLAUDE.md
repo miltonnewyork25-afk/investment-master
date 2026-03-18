@@ -81,6 +81,7 @@
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
 **健康检查**: 会话启动时运行 `bash tests/framework_health_check.sh`
+**质量健康检查 (v19.0)**: `bash scripts/quality_health_check.sh` — 每份报告Complete后自动运行(嵌入autopsy), 检查DM密度趋势+进化系统活跃度+EVO积压+框架合规
 
 ---
 
