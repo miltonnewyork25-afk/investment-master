@@ -63,7 +63,10 @@
 
 **分析方法论核心**:
 - **逆向估值优先 + P1前置(v19.4, CRM教训)** — Reverse DCF翻译"市场在赌什么"，而非正向DCF算"值多少钱"。**P1 Ch1必须包含Reverse DCF结论**(市场隐含增速/利润率/终端价值)，P1叙事不能比Reverse DCF暗示的方向偏离>1档(如Reverse DCF说"合理"，P1不能写"显著低估")。先反推隐含假设，再评估假设合理性。详见 `/assumption-audit` M1信念反演。**源自**: CRM v1.0 P1预设bullish($235)→P4发现市场其实是对的($176)→叙事断裂无法组装
-- **演绎+归纳双轨** — 成熟业务用归纳(历史→外推)，范式变革用演绎(因果链→跨行业传导→二阶效应)。禁止对AI/自动驾驶等未来业务仅用类比。详见 `docs/deductive_analysis.md`
+- **演绎+归纳双轨** — 成熟业务用归纳(历史→外推)，范式变革用演绎(因果链→跨行业传导→二阶效应)。禁止对AI/自动驾驶等未来业务仅用类比。详见 `docs/deductive_analysis.md` + `docs/deductive_analysis_template.md`(5步模板)
+- **SaaS单位经济学强制(v19.6, CRM v2.0教训)** — SaaS公司Phase 1必须包含NRR推断(间接法)+S&M效率趋势+Magic Number。NRR不公开时用间接法: (收入增速-新客贡献)=存量扩展率→推算NRR。**NRR推断<100%=增长质量预警→必须在报告中标注**。**源自**: CRM v2.0 M2=0分(NRR/GRR/CAC全缺→增长质量判断建立在猜测上)
+- **飞轮悖论检测(v19.6, CRM v2.0教训)** — Phase 1飞轮分析增加"悖论检查": 新产品成功是否蚕食核心产品？如果Agent/AI/新业务成功→核心业务seat/用户/收入减少→飞轮净强度需扣除蚕食效应。**飞轮净强度<0=管理层叙事溢价→报告中需量化溢价(PE倍数)**。**源自**: CRM飞轮悖论(Agent成功→seat减少=加速器同时是刹车器) + MCO飞轮验证(3连接中1真1弱1间接)
+- **定价权分层评估(v19.6, CRM+ADBE双验证)** — B4定价权不再给统一Stage→必须按客户层分层: F500/大中型/SMB/微型各自Stage评估→加权B4。**分层后可能发现"定价权剪刀差"**: 高端加强+低端流失→OPM可能反直觉超预期(低利润客户自然流失)。**源自**: CRM(F500 Stage4/SMB Stage2) + ADBE(CC Professional提价/CC Consumer被Canva侵蚀)独立发现相同模式
 
 ---
 
@@ -88,7 +91,7 @@
 
 **第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(见下)
 
-**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议+可比对标(见下)** | **I 知识前置(见下)** | **J 单会话组装(见下)** | **K 估值统一性(见下)** | **L DM密度硬门控(见下)** | **M 反膨胀纪律(见下)** | **N 证据链完整性(见下)** | **O Reverse DCF P1前置(见下)** | **P 禁止单日rush(见下)**
+**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议+可比对标(见下)** | **I 知识前置(见下)** | **J 单会话组装(见下)** | **K 估值统一性(见下)** | **L DM密度硬门控(见下)** | **M 反膨胀纪律(见下)** | **N 证据链完整性(见下)** | **O Reverse DCF P1前置(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
@@ -150,7 +153,7 @@
 
 **Commit前确认分支**: `git add` 前必须 `git branch --show-current` 确认在正确分支。worktree工作→worktree分支commit | 最终报告→main commit
 
-**Tier 3禁止单日rush (v19.4, CRM教训)**: Tier 3分析最少跨**3个独立session** (P0-P1 / P2-P3 / P4-P5)。Phase间的session间隔是纠偏窗口——单日rush导致P1的叙事偏差一路传导到P2，P3红队纠偏代价过大(CRM: P1 $235 bullish→P4 $176 neutral, 60%报告报废)。**禁止**: 同一天内完成>2个Phase | 单session跨越P1→P2(估值方向最易被P1锚定)
+**Tier 3 session建议(非强制)**: 多session有助于纠偏，但不硬性限制单日Phase数量。核心防护已由铁律O(Reverse DCF P1前置)和铁律K(估值统一性)替代。
 
 ---
 
@@ -410,8 +413,10 @@ ADBE反例 (0层):
 
 ## 系统升级
 
-**当前版本**: v19.4 (2026-03-18) | **健康监控**: `bash tests/framework_health_check.sh` + `bash scripts/quality_health_check.sh`
-**v19.4新增**: **CRM失败教训三铁律** — 铁律O: Reverse DCF P1 Ch1强制前置(叙事不能偏离>1档) | 铁律P: Tier 3禁止单日rush(最少3 session) | 铁律H增强: 最相似可比公司P0强制对标。源自CRM v1.0 P1 bullish($235)→P4 neutral($176)叙事断裂无法组装
+**当前版本**: v19.6 (2026-03-19) | **健康监控**: `bash tests/framework_health_check.sh` + `bash scripts/quality_health_check.sh`
+**v19.6新增**: **CRM v2.0成功教训(5个EVO)** — SaaS单位经济学强制(NRR推断+Magic Number) | 飞轮悖论检测(新产品蚕食核心?) | 定价权分层评估(B4按客户层) | 演绎法5步模板(`docs/deductive_analysis_template.md`) | AIAS-PE数据库(`knowledge/aias_pe_database.yaml`)。源自CRM v2.0(4.1/5)反思+ADBE/MCO方法论对标
+**v19.5**: 移除铁律P(单日rush限制)，核心防护已由铁律O+K替代
+**v19.4**: **CRM失败教训** — 铁律O: Reverse DCF P1 Ch1强制前置(叙事不能偏离>1档) | 铁律H增强: 最相似可比公司P0强制对标。源自CRM v1.0叙事断裂教训
 **v19.3**: **4.4分质量标准** `docs/quality_standard_4.4.md` — 8项硬门控(G1-G8)+11维度记分卡(D1-D11, 总分≥88/110)。门控升级: 字符≥270K+DM≥1.5/千字+DM≥450+Mermaid≥25+因果≥5.0+Python必须+离散度≤30%+CQ标记。pre-commit hook同步升级
 **v19.2**: 铁律N证据链完整性。v19.1: 广度+密度双门控。v19.0: 铁律KLM+质量健康检查
 **v18.5变化**: Moat Data Card v1.0→v2.0(6→10字段组)——新增交易策略预备字段(估值三档/E-Score/回撤DNA/流动性)。`scripts/trading_datacard.py`自动填充回撤+流动性+E-Score。CQI排行榜v6.0(+12候选观察)。品牌定位v2.0(51家覆盖)

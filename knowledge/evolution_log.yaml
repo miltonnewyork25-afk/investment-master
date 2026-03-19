@@ -544,4 +544,4 @@ entries:
     top_technique: "飞轮悖论(Agent成功→seat减少=加速器同时是刹车器) + 定价权剪刀差(F500 Stage4/SMB Stage2→OPM反直觉超预期)"
     top_lesson: "v1.0→v2.0验证: 铁律O(Reverse DCF前置)+铁律H(ADBE对标)+铁律K(估值统一)将红队代价从-25%→-8.5%。中性起点比任何分析技术都重要。M2(NRR不公开)是SaaS报告的系统性盲区。"
     evolution_proposed: "EVO-CRM-001(M2 SaaS单位经济学标准化P1) + EVO-CRM-002(飞轮悖论检测P1) + EVO-CRM-003(定价权分层P2) + EVO-CRM-004(演绎法模板P2) + EVO-CRM-005(AIAS-PE数据库P3)"
-    evolution_status: pending
+    evolution_status: "approved+implemented(v19.6)"
