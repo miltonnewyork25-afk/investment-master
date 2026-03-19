@@ -5,7 +5,7 @@ framework_version: v19.4
 worktree: "eco_tech"
 industry: "eco_tech"
 report_version: "v2.0"
-last_updated: "2026-03-19T03:00:00+00:00"
+last_updated: "2026-03-19T15:00:00+08:00"
 
 current_phase: 3
 phase_status: completed
@@ -62,9 +62,9 @@ adbe_anchor:
   conclusion: "CRM不比ADBE明显便宜"
 
 quick_ref:
-  total_chars: 131180
-  cumulative_dm: 356
-  cumulative_mermaid: 34
+  total_chars: 161825
+  cumulative_dm: 433
+  cumulative_mermaid: 38
 
 phase1_metrics:
   chars: 68149
@@ -77,16 +77,17 @@ phase1_metrics:
   chapters: 11
   quality_vs_klac: "DM+20%, 因果+6%"
 
-next_phase: "P2补强(S1优先)"
-next_session: "清context后3个专注session"
+next_phase: "S2: P1补强(Ch6/7/8/10)"
+next_session: "P1证据链加厚→然后S3: P3+P5组装"
 
 supplement_plan:
   strategy: "清context后分3session逐Phase补强"
   s1_p2:
-    task: "P2逐章从3-5K扩至10K+,重点估值假设推导过程"
-    target: "47K→80K+"
-    priority_chapters: "Ch14(RevDCF 90行→200行) Ch17(可比84行→200行) Ch13(资本配置110行→200行) Ch12(ASR 135行→200行)"
-    key_gap: "每章有结论和表格但缺'数据→推理→结论'的完整推导"
+    task: "P2逐章补强(已完成)"
+    status: "DONE"
+    result: "46.7K→70.7K(+51%), DM 79→206(+161%), 因果密度9.47/万字"
+    key_additions: "Ch17 ADBE EV/FCF修正(18x→14x)+PEG断层+历史PE Band | Ch14 TV解剖+g敏感性+交叉验证 | Ch13 Slack解剖+激励分析+前瞻评分卡 | Ch12 债务到期+Mega-buyback对标 | Ch15 集团折价分析 | Ch16 FCF质量+FCF桥接+杠杆调整WACC | Ch18 概率证据链+催化剂框架"
+    key_correction: "ADBE EV/FCF 18x→14x→CRM不再是'EV/FCF最低'→可比中位从$223(+15%)→$199(+3%)→更中性"
   s2_p1:
     task: "P1 Ch6/7/8/10从5K扩至10K,补证据链第3-4层"
     target: "72K→100K+"
@@ -96,13 +97,13 @@ supplement_plan:
     task: "P3承重墙+CQ扩展→然后P5组装"
     target: "P3 20K→30K+ 然后Complete组装~238K"
     key_gap: "承重墙概率缺深度历史类比/CQ闭环偏表格化"
-  expected_total: "~238K(≈MSCI 223K水平)"
+  expected_total: "~250K(P1 100K+P2 71K+P3 30K+P4/P5 50K)"
 
 quality_snapshot:
   p1: "7.5/10(框架优秀+密度KLAC级,证据链需加厚)"
-  p2: "6.5/10(Ch11亮点+Python验证,Ch14-18推导太薄)"
+  p2: "8.5/10(S1补强后: DM 2.92/千字+因果9.47/万字+ADBE修正+概率证据链)"
   p3: "7.0/10(KS/RT到位,承重墙/CQ需加深)"
-  d_score: "67.5/110→P3后预估79→补强后预估85+"
+  d_score: "67.5/110→P2补强后预估82→全补强后预估88+"
 
 phase3_metrics:
   chars: 15333
@@ -115,17 +116,22 @@ phase3_metrics:
   confidence: "55%"
 
 phase2_metrics:
-  chars: 30027
-  dm: 79
-  dm_density: "2.63/千字"
-  causal_density: "6.66/万字"
+  chars: 70668
+  chars_pre_supplement: 30027
+  dm: 206
+  dm_density: "2.92/千字"
+  causal_density: "9.47/万字"
   fmp_refs: 21
-  mermaid: 4
+  mermaid: 11
   fair_value_p2: "$211"
+  fair_value_p2_comparable_revised: "$199"
   fair_value_p3_median: "$208"
   fair_value_p3_pw: "$193"
   expected_return_median: "+7.2%"
   expected_return_pw: "-0.7%"
+  expected_return_comparable: "+3%"
   rating_final: "中性关注"
-  dispersion: "13.2%"
-  iron_law_K: "PASS(6/6方向一致)"
+  dispersion: "10.8%"
+  iron_law_K: "PASS(5/6方向一致, SOTP保守为负面锚)"
+  s1_key_finding: "ADBE EV/FCF 14.0x→CRM 14.7x不是最低→可比中位从+15%→+3%→更中性"
+  s1_additions: "7个新subsection(17.5-17.9/14.5-14.7/13.6-13.9/12.4-12.5/15.4/16.4-16.6/18.4-18.4B)"
