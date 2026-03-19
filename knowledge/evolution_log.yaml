@@ -548,3 +548,21 @@ entries:
       EVO-MCO-003: ECONNRESET自动降级 — 检测到≥2个Agent ECONNRESET时自动从4并行→2并行→1串行 [P2, 鲁棒性]
       冠军目录待注册: 利润率混合陷阱(8.0/10) + 周期记忆衰退量化(7.5/10) + 巴菲特沉默信号(7.0/10)
     evolution_status: pending
+
+  - ticker: "UNH"
+    date: "2026-03-19"
+    report: "UNH_Deep_Dive_Complete_v1.0.md"
+    chars: "272K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 200
+    mermaid_count: 72
+    pw: N/A
+    method: "N/A"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
