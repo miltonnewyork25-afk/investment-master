@@ -1,0 +1,203 @@
+{
+  "ticker": "MSCI",
+  "fetched_at": "2026-03-13",
+  "consensus": {
+    "rating": "Buy",
+    "buy_count": 14,
+    "hold_count": 4,
+    "sell_count": 1,
+    "avg_price_target": 662.53,
+    "high_target": 719.00,
+    "low_target": 535.00,
+    "median_target": 700.00,
+    "_dm_type": "R",
+    "_dm_source": "Zacks/TipRanks/StockAnalysis/MarketBeat aggregate (19 analysts), Mar 2026",
+    "_notes": "Sources vary: Public.com cites 26 analysts median $700; WallStreetZen cites 6 analysts avg $668; Zacks cites 19 analysts avg $662.53; TipRanks/StockAnalysis cite 10 analysts avg $652.7. Used Zacks 19-analyst count as primary, supplemented with high/low from broader set."
+  },
+  "earnings_estimates": {
+    "current_quarter": {
+      "quarter": "Q1 2026 (fiscal Q1, ending Mar 2026)",
+      "eps_est": 4.46,
+      "rev_est_mm": 821,
+      "earnings_date": "2026-04-28",
+      "_dm_type": "R",
+      "_dm_source": "TipRanks/Nasdaq/MarketBeat consensus, Mar 2026",
+      "_notes": "EPS range $4.44-$4.48 across sources; used midpoint $4.46. Revenue ~$821M from Investing.com."
+    },
+    "next_quarter": {
+      "quarter": "Q2 2026 (fiscal Q2, ending Jun 2026)",
+      "eps_est": null,
+      "rev_est_mm": null,
+      "growth_est_eps_yoy_pct": 16.0,
+      "growth_est_rev_yoy_pct": 8.7,
+      "_dm_type": "S",
+      "_dm_source": "MarketBeat growth estimates, Mar 2026",
+      "_notes": "Absolute Q2 figures not found in search results; only YoY growth rates available. Q2 2025 actual EPS ~$3.86 implies Q2 2026E ~$4.48 at 16% growth."
+    },
+    "full_year_2026": {
+      "eps_est": null,
+      "rev_est_mm": null,
+      "_dm_type": "S",
+      "_dm_source": "Not found in search results",
+      "_notes": "FY2026 consensus EPS/rev not surfaced. FY2025 actual: rev $3.134B, adj EPS ~$16.38 (4 quarters). Company guided OpEx $1.49-1.53B, adj EBITDA expenses $1.305-1.335B, interest $274-280M for FY2026."
+    }
+  },
+  "earnings_surprise_history": [
+    {
+      "quarter": "Q4 2025",
+      "reported_date": "2026-01-28",
+      "eps_actual": 4.66,
+      "eps_estimate": 4.58,
+      "surprise_pct": 1.75,
+      "rev_actual_mm": 822.5,
+      "rev_estimate_mm": 820.45,
+      "_dm_type": "H",
+      "_dm_source": "Investing.com/Nasdaq/Zacks earnings transcript, Jan 2026"
+    },
+    {
+      "quarter": "Q3 2025",
+      "eps_actual": 4.16,
+      "eps_estimate": 4.17,
+      "surprise_pct": -0.24,
+      "_dm_type": "H",
+      "_dm_source": "Zacks/Yahoo Finance, Oct 2025"
+    },
+    {
+      "quarter": "Q2 2025",
+      "eps_actual": 3.86,
+      "eps_estimate": 3.77,
+      "surprise_pct": 2.39,
+      "_dm_type": "H",
+      "_dm_source": "Zacks/Nasdaq, Jul 2025"
+    },
+    {
+      "quarter": "Q3 2024",
+      "eps_actual": 4.00,
+      "eps_estimate": 3.87,
+      "surprise_pct": 3.36,
+      "_dm_type": "H",
+      "_dm_source": "Zacks, Oct 2024"
+    }
+  ],
+  "recent_changes": [
+    {
+      "date": "2026-02",
+      "action": "Downgrade to Hold",
+      "firm": "Seeking Alpha analyst",
+      "detail": "Valuation stretched at 32x forward earnings, PEG above 2.5x",
+      "_dm_type": "R",
+      "_dm_source": "Seeking Alpha, Feb 2026"
+    },
+    {
+      "date": "2026-01",
+      "action": "BlackRock ETF license extended to 2035",
+      "firm": "MSCI company announcement",
+      "detail": "Extended iShares ETF licensing agreement + NYSE index options listings secured",
+      "_dm_type": "H",
+      "_dm_source": "ir.msci.com / Insider Monkey, Jan 2026"
+    },
+    {
+      "date": "2026-01",
+      "action": "Dividend raised 13.9% for 2026",
+      "firm": "MSCI company announcement",
+      "detail": "Buybacks: $2.47B / 4.41M shares repurchased in FY2025 through Jan 27 2026",
+      "_dm_type": "H",
+      "_dm_source": "StockTitan/BusinessWire, Jan 2026"
+    }
+  ],
+  "bull_bear_summary": {
+    "bull_case": "Dominant global index franchise with powerful network effects and high client lock-in (93.4% retention). Revenue grew from $1.7B (2020) to $3.13B (2025) with 11 consecutive years of double-digit adj EPS growth (~14% FY2025). BlackRock ETF license extended to 2035 reinforces distribution moat. Record AUM-linked fee run rate ($852M, +26% YoY). Reverse DCF implies market pricing in 15.2% FCF CAGR — achievable given track record. CEO insider buying signals confidence. ~12% annual EPS growth projected through 2029.",
+    "bear_case": "Valuation stretched at 32x forward P/E, PEG >2.5x. AlphaSpread base case shows 20% overvaluation at ~$542. Competition from rival index providers (S&P/FTSE Russell) and fintech disruptors could erode pricing power. ESG regulatory backlash and investor skepticism may undermine MSCI's ESG/Climate product line (already showing retention softness). Revenue growth moderating. Heavy exposure to AUM-linked fees creates procyclicality — market downturn would compress asset-based revenue (~26% of total). Subscription retention dipped from 94.7% (Q3) to 93.4% (FY2025).",
+    "_dm_type": "S",
+    "_dm_source": "Synthesized from Insider Monkey, TIKR, Seeking Alpha, AlphaSpread, MSCI IR, Mar 2026"
+  },
+  "industry_specific": {
+    "business_model": {
+      "recurring_subscription_rev_pct": 71.0,
+      "asset_based_fee_rev_pct": 25.7,
+      "non_recurring_rev_pct": 3.2,
+      "_dm_type": "H",
+      "_dm_source": "Q4 2025 earnings release, ir.msci.com"
+    },
+    "retention_rate": {
+      "fy2025": 93.4,
+      "q3_2025": 94.7,
+      "q3_2024": 94.2,
+      "esg_climate_note": "Softness noted in ESG/Climate product retention",
+      "_dm_type": "H",
+      "_dm_source": "MSCI Q4 2025 / Q3 2025 earnings releases"
+    },
+    "run_rate": {
+      "total_run_rate_mm": 3300,
+      "total_run_rate_growth_pct": 13,
+      "asset_based_fee_run_rate_mm": 852,
+      "abf_run_rate_growth_pct": 26,
+      "recurring_sub_run_rate_mm": 2400,
+      "rec_sub_run_rate_growth_pct": 9,
+      "_dm_type": "H",
+      "_dm_source": "MSCI Q4 2025 earnings release, Jan 2026"
+    },
+    "fy2025_actual": {
+      "revenue_mm": 3134,
+      "revenue_growth_pct": 9.75,
+      "adj_eps": 4.66,
+      "adj_eps_q4_note": "Q4 figure; FY EPS not explicitly stated in search results",
+      "operating_margin_q4_pct": 56.4,
+      "new_recurring_sub_sales_growth_pct": 11.7,
+      "organic_recurring_sub_run_rate_growth_pct": 7.7,
+      "buyback_mm": 2470,
+      "dividend_increase_2026_pct": 13.9,
+      "_dm_type": "H",
+      "_dm_source": "MSCI FY2025 earnings release, ir.msci.com, Jan 28 2026"
+    },
+    "fy2026_company_guidance": {
+      "total_opex_range_mm": "1490-1530",
+      "adj_ebitda_expense_range_mm": "1305-1335",
+      "interest_expense_range_mm": "274-280",
+      "_dm_type": "H",
+      "_dm_source": "MSCI FY2025 earnings release guidance section, Jan 2026"
+    },
+    "valuation_context": {
+      "forward_pe": 32,
+      "peg_ratio": ">2.5x",
+      "alpha_spread_base_overvalued_pct": 20,
+      "reverse_dcf_implied_fcf_cagr_pct": 15.21,
+      "_dm_type": "R",
+      "_dm_source": "Seeking Alpha / AlphaSpread / TIKR, Feb-Mar 2026"
+    }
+  },
+  "dm_anchors": [
+    "DM-P0-001: Analyst consensus Buy, 19 analysts, avg PT $662.53, range $535-$719 [Zacks, Mar 2026]",
+    "DM-P0-002: Q1 2026E EPS $4.44-$4.48, rev ~$821M [TipRanks/Nasdaq, Mar 2026]",
+    "DM-P0-003: Q4 2025 actual EPS $4.66 vs est $4.58 (+1.75%), rev $822.5M [ir.msci.com, Jan 2026]",
+    "DM-P0-004: FY2025 revenue $3.134B (+9.75% YoY), 11th year double-digit adj EPS growth [ir.msci.com]",
+    "DM-P0-005: Retention rate FY2025 93.4%, Q3 2025 94.7% [ir.msci.com]",
+    "DM-P0-006: Total run rate $3.3B (+13%), ABF run rate $852M (+26%), sub run rate $2.4B (+9%) [Q4 2025]",
+    "DM-P0-007: FY2026 guidance OpEx $1.49-1.53B, adj EBITDA exp $1.305-1.335B, interest $274-280M [ir.msci.com]",
+    "DM-P0-008: Buybacks $2.47B in FY2025, dividend +13.9% for 2026 [ir.msci.com]",
+    "DM-P0-009: BlackRock ETF license extended to 2035 + NYSE index options listings [Jan 2026]",
+    "DM-P0-010: Forward P/E ~32x, PEG >2.5x, AlphaSpread base case 20% overvalued [SA/AlphaSpread]",
+    "DM-P0-011: Revenue mix Q4 2025: subscriptions 71% / ABF 25.7% / non-recurring 3.2% [ir.msci.com]",
+    "DM-P0-012: Operating margin Q4 2025 56.4% (+190bps YoY) [ir.msci.com]",
+    "DM-P0-013: ESG/Climate product retention showing softness [Q4 2025 earnings call]",
+    "DM-P0-014: Earnings surprise history: Q4+1.75%, Q3-0.24%, Q2+2.39%, persistent beat pattern [Zacks]"
+  ],
+  "sources": [
+    "https://ir.msci.com/news-releases/news-release-details/msci-reports-financial-results-fourth-quarter-and-full-year-2025",
+    "https://www.zacks.com/stock/research/MSCI/earnings-calendar",
+    "https://www.tipranks.com/stocks/msci/forecast",
+    "https://stockanalysis.com/stocks/msci/forecast/",
+    "https://stockanalysis.com/stocks/msci/ratings/",
+    "https://www.marketbeat.com/stocks/NYSE/MSCI/earnings/",
+    "https://www.investing.com/news/transcripts/earnings-call-transcript-msci-beats-q4-2025-earnings-estimates-stock-rises-93CH-4480872",
+    "https://www.nasdaq.com/articles/msci-q4-earnings-beat-estimates-revenues-rise-y-y-shares-down",
+    "https://finance.yahoo.com/news/msci-inc-msci-bull-case-133507577.html",
+    "https://www.insidermonkey.com/blog/msci-inc-msci-a-bull-case-theory-1427725/",
+    "https://www.tikr.com/blog/heres-why-msci-stocks-recurring-index-fees-support-15-upside-in-2026",
+    "https://seekingalpha.com/article/4865428-msci-market-is-too-excited-about-its-acceleration-downgrade",
+    "https://www.alphaspread.com/security/nyse/msci/summary",
+    "https://www.wallstreetzen.com/stocks/us/nyse/msci/stock-forecast",
+    "https://public.com/stocks/msci/forecast-price-target",
+    "https://www.stocktitan.net/news/MSCI/msci-reports-financial-results-for-fourth-quarter-and-full-year-xnwwag7xtvl4.html"
+  ]
+}
