@@ -1,58 +1,70 @@
 schema_version: "2.0"
 ticker: CRM
 company: "Salesforce"
-framework_version: v19.2
+framework_version: v19.4
 worktree: "eco_tech"
 industry: "eco_tech"
-last_updated: "2026-03-18T11:00:00+00:00"
+report_version: "v2.0"
+last_updated: "2026-03-19T03:00:00+00:00"
 
-current_phase: 4
+current_phase: 0
 phase_status: completed
-phases_completed: ["-1", "-0.5", "0", "0.75", "1", "2", "3", "4"]
+phases_completed: ["0"]
 
-target_chars: 300000
-target_range: "240K-375K"
-hard_floor: 200000
+# v2.0 targets (最高标准版)
+targets:
+  chars: 310000
+  chars_range: "250K-350K"
+  dm_density: "≥1.5/千字"
+  dm_total: "≥450"
+  mermaid: "≥35"
+  causal_density: "≥8/万字"
+  sessions_min: 3
+
+# v2.0 price snapshot
+price_snapshot:
+  date: "2026-03-19"
+  price: 194.34
+  market_cap: "182.7B"
+  ev: "192.5B"
+  forward_pe: 14.7
+  fcf_yield: "8.0%"
+  v1_price: 175.49
+  price_change: "+10.7%"
+
+# Reverse DCF anchor (v2.0核心)
+reverse_dcf:
+  implied_cagr: "3.7%"
+  wacc: "10.0%"
+  organic_growth: "~7%"
+  consensus_cagr: "10.0%"
+  market_gap: "-3.3pp vs organic"
+  narrative_direction: "中性偏积极"
+  v1_implied: "1.4%"
+  v2_vs_v1: "+2.3pp"
+
+# CQ definitions
+cq:
+  CQ1: "Agentforce能否避免Einstein失败模式?"
+  CQ2: "seat→consumption转型净收入效应?"
+  CQ3: "$25B ASR在$194下是天才还是灾难?"
+  CQ4: "OPM从2%→22%是结构性还是一次性?"
+  CQ5: "CRM是AI受害者还是受益者?(AIAS核心)"
+  CQ6: "有机增速的真实底部在哪?"
+  CQ7: "市场隐含定价合理吗?(Reverse DCF)"
+  CQ8: "去供应商化(de-vendoring)风险有多大?"
+
+# ADBE anchor
+adbe_anchor:
+  adbe_forward_pe: "~15x"
+  crm_forward_pe: "14.7x"
+  gap: "CRM略便宜但增速更低"
+  conclusion: "CRM不比ADBE明显便宜"
 
 quick_ref:
-  total_chars: 130491
-  phase1_chars: 61158
-  phase2_chars: 39486
-  phase3_chars: 19285
-  phase4_chars: 10562
-  cumulative_dm: 136
-  cumulative_ci: 5
-  cumulative_mermaid: 23
+  total_chars: 0
+  cumulative_dm: 12
+  cumulative_mermaid: 0
 
-final_valuation:
-  fair_value: "$223"
-  fair_range: "$193-253"
-  expected_return: "+27%"
-  rating: "关注"
-  confidence: "50%"
-  calibration_trail: "P2 $235 → P3 $215 → P4 $223"
-
-probability_weights:
-  bull: "9%"
-  base_up: "19%"
-  base: "33%"
-  bear_mild: "27%"
-  bear_severe: "12%"
-
-convergence:
-  sotp: "$228"
-  dcf: "$170"
-  comparable: "$210-240"
-  probability_weighted: "$232"
-  median: "$228"
-  consistency: "4/5 = 80%"
-  dispersion: "30.8%"
-
-cq_final:
-  CQ1_agentforce: "55:45偏正面"
-  CQ2_seat_consumption: "58:42偏正面"
-  CQ3_asr_25b: "55:45偏正面"
-  CQ4_opm_structural: "68:32正面"
-  CQ5_ai_victim_beneficiary: "55:45偏受益"
-
-next_phase: "Phase 5(Complete组装)"
+next_phase: "Phase -0.5(文献侦察)"
+next_session: "Session 1 continued"
