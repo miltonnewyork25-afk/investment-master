@@ -1,0 +1,88 @@
+schema_version: "2.0"
+ticker: PTC
+company: "PTC Inc"
+framework_version: v19.6
+worktree: "eco_tech"
+industry: "industrial_saas"
+report_version: "v1.0"
+last_updated: "2026-03-19T16:00:00+08:00"
+
+current_phase: "-1"
+phase_status: "planning_complete"
+phases_completed: []
+
+# 计划版本
+plan_version: "v2.0(问题树v1.0整合)"
+plan_file: "reports/PTC/data/ptc_analysis_plan_v2.md"
+
+# 目标
+targets:
+  chars: 350000
+  chars_range: "300K-400K"
+  dm_density: "≥2.0/千字"
+  dm_total: "≥600"
+  mermaid: "≥45(含14强制图谱)"
+  causal_density: "≥8.0/万字"
+  sessions_min: 4
+  score_target: "≥4.4(90/110)"
+
+# 价格快照
+price_snapshot:
+  date: "2026-03-19"
+  price: 159.52
+  market_cap: "18.3B"
+  ev: "~21B"
+  forward_pe: 22.0
+  fcf_yield: "4.7%"
+  fy2025_revenue: "2.74B"
+  arr: "2.45B"
+  arr_growth_cc: "8.5%"
+  opm_gaap: "35.9%"
+  fcf: "857M"
+  recent_event: "IoT(ThingWorx/Kepware)剥离给TPG完成(2026.3.16, $600M+$125M或有)"
+
+# CQ体系(预定义)
+cq:
+  CQ0: "PTC应该被定义为什么?(5种定义→5种估值)"
+  CQ1: "组合还是平台?(digital thread真实性)"
+  CQ2: "部署摩擦是护城河还是天花板?"
+  CQ3: "ARR增速8.5%见底了吗?"
+  CQ4: "工业AI是营销还是结构性?"
+  CQ5: "Siemens能蚕食PTC PLM份额吗?"
+  CQ6: "Onshape能从中小渗透大企业吗?"
+  CQ7: "Forward PE 22x是折价还是合理?"
+  CQ8: "制造业CapEx下行如何影响PTC?"
+
+# 可比对标(P0强制)
+comparable:
+  primary: "ADSK(最相似:CAD竞争+工业客户+类似增速)"
+  secondary: "CDNS(PE参考:工业软件+高PE)"
+  tertiary: "DASTY(PLM竞争:Dassault Systemes)"
+  pe_comparison: "PTC 22x vs ADSK 28x vs CDNS 45x vs DASTY 32x"
+
+# 报告结构
+structure:
+  parts: 8
+  chapters: 45
+  appendices: 5
+  part0: "Ch1-3: 身份+信念+对标"
+  part1: "Ch4-6: 工业客户深拆"
+  part2: "Ch7-14: 7产品独立深拆+组合vs平台+飞轮"
+  part3: "Ch15-19: 竞争+AI"
+  part4: "Ch20-29: 财务+估值"
+  part5: "Ch30-34: 深度分析"
+  part6: "Ch35-40: 红队+校准"
+  part7: "Ch41-43: 追踪+圆桌"
+  part8: "Ch44-45: 跨公司"
+
+# 参考框架
+reference_frameworks:
+  - "Enterprise SaaS模块 v19.6(M1-M10+E1-E3)"
+  - "KLAC(4.5分标杆): 五引擎+信念反演+周期分析"
+  - "SEMI_EQUIPMENT(4.3分): A-Score+配对对决+PtW"
+  - "CRM v2.0(4.1分): 飞轮悖论+定价权剪刀差+演绎法+AIAS-PE"
+  - "FICO: 制度嵌入C1分析(Codebeamer合规)"
+  - "问题树v1.0: 17个维度+14强制Mermaid"
+
+next_action: "tier3_launch.sh PTC eco_tech → Phase -0.5文献侦察 → Phase 0数据预取"
+next_session: "S0: 前置数据收集(tier3_launch+lit_recon+data_prefetch+CQ初始化)"
