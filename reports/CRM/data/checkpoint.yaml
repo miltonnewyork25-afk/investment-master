@@ -7,9 +7,9 @@ industry: "eco_tech"
 report_version: "v2.0"
 last_updated: "2026-03-19T03:00:00+00:00"
 
-current_phase: 1
+current_phase: 2
 phase_status: completed
-phases_completed: ["0", "0.5", "0.75", "1"]
+phases_completed: ["0", "0.5", "0.75", "1", "2"]
 
 # v2.0 targets (最高标准版)
 targets:
@@ -62,9 +62,9 @@ adbe_anchor:
   conclusion: "CRM不比ADBE明显便宜"
 
 quick_ref:
-  total_chars: 68149
-  cumulative_dm: 177
-  cumulative_mermaid: 14
+  total_chars: 99728
+  cumulative_dm: 259
+  cumulative_mermaid: 18
 
 phase1_metrics:
   chars: 68149
@@ -77,6 +77,18 @@ phase1_metrics:
   chapters: 11
   quality_vs_klac: "DM+20%, 因果+6%"
 
-next_phase: "Phase 2(重做)"
-next_session: "当前session继续"
-note: "P2/P3+4因骨架质量被删除,从P2重新开始"
+next_phase: "Phase 3(红队)"
+next_session: "新session"
+
+phase2_metrics:
+  chars: 30027
+  dm: 79
+  dm_density: "2.63/千字"
+  causal_density: "6.66/万字"
+  fmp_refs: 21
+  mermaid: 4
+  fair_value: "$217"
+  expected_return: "+12%"
+  rating_prelim: "中性关注(偏积极)"
+  dispersion: "13.2%"
+  iron_law_K: "PASS(6/6方向一致)"
