@@ -1,0 +1,162 @@
+schema_version: "2.0"
+ticker: CRM
+company: "Salesforce"
+framework_version: v19.4
+worktree: "eco_tech"
+industry: "eco_tech"
+report_version: "v2.0"
+last_updated: "2026-03-19T15:00:00+08:00"
+
+current_phase: 5
+phase_status: complete
+phases_completed: ["0", "0.5", "0.75", "1", "2", "3", "5"]
+
+# v2.0 targets (最高标准版)
+targets:
+  chars: 310000
+  chars_range: "250K-350K"
+  dm_density: "≥1.5/千字"
+  dm_total: "≥450"
+  mermaid: "≥35"
+  causal_density: "≥8/万字"
+  sessions_min: 3
+
+# v2.0 price snapshot
+price_snapshot:
+  date: "2026-03-19"
+  price: 194.34
+  market_cap: "182.7B"
+  ev: "192.5B"
+  forward_pe: 14.7
+  fcf_yield: "8.0%"
+  v1_price: 175.49
+  price_change: "+10.7%"
+
+# Reverse DCF anchor (v2.0核心)
+reverse_dcf:
+  implied_cagr: "3.7%"
+  wacc: "10.0%"
+  organic_growth: "~7%"
+  consensus_cagr: "10.0%"
+  market_gap: "-3.3pp vs organic"
+  narrative_direction: "中性偏积极"
+  v1_implied: "1.4%"
+  v2_vs_v1: "+2.3pp"
+
+# CQ definitions
+cq:
+  CQ1: "Agentforce能否避免Einstein失败模式?"
+  CQ2: "seat→consumption转型净收入效应?"
+  CQ3: "$25B ASR在$194下是天才还是灾难?"
+  CQ4: "OPM从2%→22%是结构性还是一次性?"
+  CQ5: "CRM是AI受害者还是受益者?(AIAS核心)"
+  CQ6: "有机增速的真实底部在哪?"
+  CQ7: "市场隐含定价合理吗?(Reverse DCF)"
+  CQ8: "去供应商化(de-vendoring)风险有多大?"
+
+# ADBE anchor
+adbe_anchor:
+  adbe_forward_pe: "~15x"
+  crm_forward_pe: "14.7x"
+  gap: "CRM略便宜但增速更低"
+  conclusion: "CRM不比ADBE明显便宜"
+
+quick_ref:
+  total_chars: 181115
+  cumulative_dm: 514
+  cumulative_mermaid: 43
+
+phase1_metrics:
+  chars: 68149
+  dm: 177
+  dm_density: "2.59/千字"
+  causal_density: "9.83/万字"
+  mermaid: 14
+  cq_coverage: "8/8"
+  narrative_check: "PASS(中性偏积极,偏差≤1档)"
+  chapters: 11
+  quality_vs_klac: "DM+20%, 因果+6%"
+
+next_phase: "完成"
+next_session: "报告已组装完成→需提交main"
+
+complete_metrics:
+  chars: 211576
+  dm_density: "2.93/千字"
+  dm_unique: 528
+  dm_total: 620
+  mermaid: 54
+  causal_density: "8.1/万字"
+  chapters: 31
+  appendices: 4
+  parts: 5
+  quality_gate: "G1-G8 ALL PASS"
+  supplement_ch25_30: "飞轮摩擦(MCO方法)+定价权剪刀差+护城河迁移量化(ADBE方法)+3D敏感性+竞争弹性+η回购效率"
+  rating: "中性关注"
+  fair_value_median: "$208 (+7.2%)"
+  fair_value_pw: "$193 (-0.7%)"
+  confidence: "55%"
+
+supplement_plan:
+  strategy: "清context后分3session逐Phase补强"
+  s1_p2:
+    task: "P2逐章补强(已完成)"
+    status: "DONE"
+    result: "46.7K→70.7K(+51%), DM 79→206(+161%), 因果密度9.47/万字"
+    key_additions: "Ch17 ADBE EV/FCF修正(18x→14x)+PEG断层+历史PE Band | Ch14 TV解剖+g敏感性+交叉验证 | Ch13 Slack解剖+激励分析+前瞻评分卡 | Ch12 债务到期+Mega-buyback对标 | Ch15 集团折价分析 | Ch16 FCF质量+FCF桥接+杠杆调整WACC | Ch18 概率证据链+催化剂框架"
+    key_correction: "ADBE EV/FCF 18x→14x→CRM不再是'EV/FCF最低'→可比中位从$223(+15%)→$199(+3%)→更中性"
+  s2_p1:
+    task: "P1 Ch6/7/8/10证据链加厚(已完成)"
+    status: "DONE"
+    result: "71.7K→81.6K(+13.8%), DM 177→215(+21%), 因果密度10.17/万字(超KLAC)"
+    key_additions: "Ch6 历史SaaS seat压缩案例(Zoom/Citrix/IBM)+概率校准 | Ch7 Data Cloud变现路径+Platform增速分解 | Ch8 SaaS M&A基准+整合评分卡+商誉质量分层 | Ch10 去供应商化量化(联合概率<0.1%)+NOW财务深度对标(FMP)"
+    chapter_lines: "Ch6 134→177 | Ch7 134→186 | Ch8 126→193 | Ch10 157→233"
+  s3_p3:
+    task: "P3补强(已完成)"
+    status: "DONE"
+    result: "19.5K→28.9K(+48%), DM 52→93(+79%), 因果6.3/万字"
+    key_additions: "Ch19 承重墙W-1/W-2/W-5历史案例校准(AI产品5案例/SaaS压缩4案例/护城河侵蚀4案例) | Ch21 温水煮青蛙NPV量化(5年年化+1.7%跑输S&P 6.3pp) | Ch22 诚实性审计(市场正确vs市场错误3:3)+v1.0→v2.0对比 | Ch23 CQ1/CQ2/CQ5三大CQ叙事闭环 | Ch24 12个月触发时间线+保质期"
+  s4_assembly:
+    task: "P5单会话Complete组装"
+    target: "~230K"
+    strategy: "新session从头读Phase产出→组装→质量门控→修复→提交"
+    status: "DONE"
+    result: "211K/528DM/54Mermaid/G1-G8 ALL PASS (含Ch25-30补强)"
+  expected_total: "~230K(P1 82K+P2 71K+P3 30K+P4/P5 47K)"
+
+quality_snapshot:
+  p1: "8.0/10(S2补强后: DM 2.67/千字+因果10.17/万字+历史案例+量化证据链)"
+  p2: "8.5/10(S1补强后: DM 2.92/千字+因果9.47/万字+ADBE修正+概率证据链)"
+  p3: "8.0/10(S3补强后: 承重墙历史校准+温水煮青蛙NPV+CQ叙事闭环+v1→v2对比)"
+  d_score: "67.5→P1+P2补强后预估85→全补强后预估88+"
+
+phase3_metrics:
+  chars: 15333
+  dm: 52
+  ks: 8
+  ts: 10
+  rt_correction: "-$18(-8.5%)"
+  calibrated_value: "$193(概率加权) / $208(中位)"
+  rating_final: "中性关注"
+  confidence: "55%"
+
+phase2_metrics:
+  chars: 70668
+  chars_pre_supplement: 30027
+  dm: 206
+  dm_density: "2.92/千字"
+  causal_density: "9.47/万字"
+  fmp_refs: 21
+  mermaid: 11
+  fair_value_p2: "$211"
+  fair_value_p2_comparable_revised: "$199"
+  fair_value_p3_median: "$208"
+  fair_value_p3_pw: "$193"
+  expected_return_median: "+7.2%"
+  expected_return_pw: "-0.7%"
+  expected_return_comparable: "+3%"
+  rating_final: "中性关注"
+  dispersion: "10.8%"
+  iron_law_K: "PASS(5/6方向一致, SOTP保守为负面锚)"
+  s1_key_finding: "ADBE EV/FCF 14.0x→CRM 14.7x不是最低→可比中位从+15%→+3%→更中性"
+  s1_additions: "7个新subsection(17.5-17.9/14.5-14.7/13.6-13.9/12.4-12.5/15.4/16.4-16.6/18.4-18.4B)"
