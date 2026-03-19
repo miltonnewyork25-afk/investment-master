@@ -5,10 +5,10 @@ framework_version: v19.4
 worktree: "金融"
 industry: "金融"
 complexity_coefficient: 1.3
-last_updated: "2026-03-19T11:50:00+08:00"
+last_updated: "2026-03-19T15:30:00+08:00"
 
-current_phase: 0.75
-phase_status: scout_complete
+current_phase: 2
+phase_status: p2_complete_awaiting_p3
 phases_completed:
   - phase: -1
     status: complete
@@ -18,60 +18,90 @@ phases_completed:
     status: complete
     date: "2026-03-19"
     notes: "5路WebSearch + MCP数据预取完成, lit_recon_memo 1849字符"
-  - phase: 0.75
-    status: draft
+  - phase: 0
+    status: complete
     date: "2026-03-19"
-    notes: "thesis_crystallization草稿完成, Reverse DCF初步完成"
+    notes: "shared_context.md完成, preflight CLEARED, PW=4.2混合模式"
+  - phase: 0.75
+    status: complete
+    date: "2026-03-19"
+    notes: "thesis_crystallization + Reverse DCF完成"
+  - phase: 1
+    status: complete
+    date: "2026-03-19"
+    notes: "12章73.3K字符, 14 Mermaid, Python验证+数据审计, 3 CI, 5 KS"
+  - phase: 2
+    status: complete
+    date: "2026-03-19"
+    notes: "7章45.4K字符, 15→25 Mermaid(P2含补强), 3新CI, 飞轮/拆分/MLR/资本/竞争"
 
 target_chars: 350000
 target_range: "300K-400K"
 hard_floor: 250000
 
 quick_ref:
-  total_chars: 0
-  latest_phase_chars: 0
+  total_chars_p1p2: 118724
+  p1_chars: 73313
+  p2_chars: 45411
+  chapters: 19
+  mermaid: 39
+  dm_count: 173
+  dm_density: "1.45/千字"
+  causal_density: "30.3/万字"
+  ci_count: 6
+  ks_count: 5
+  ts_count: 8
+  python_scripts: 2
   price_snapshot: "$284.33 (2026-03-19)"
   market_cap: "$258B"
-  pe_ttm: 21.5
-  pe_fwd: 14.3
-  fy2025_eps: "$13.23"
-  mcr_2025: "88.9%"
-  thesis: "身份重定价 — MCR均衡水平决定一切"
 
-cq_structure:
-  CQ0: "UNH到底处在什么时刻? (身份重定价)"
-  CQ1: "UNH到底是什么公司? (保险/平台/基础设施)"
-  CQ2: "真实经济单元 (6分部拆解)"
-  CQ3: "主矛盾: MLR均衡 vs 利润率恢复"
-  CQ4: "飞轮真伪: UHC×Optum协同"
-  CQ5: "增长质量: 价/量/组合/并购"
-  CQ6: "盈利模式+MLR桥接"
-  CQ7: "资本配置: 放大还是掩盖"
-  CQ8: "监管暴露: CMS+PBM+反垄断+Change"
+thesis: "UNH正从'防御成长平台'被重定价为'周期性保险集团'。核心赌注是MCR均衡水平：82-83%→显著低估，85%+(β假说55%概率)→合理定价。Forward P/E 14.3x定价了永久恶化，P2校准后基准估值$255-265。"
+
+p2_valuation_update:
+  p1_fair_value: "$282"
+  p2_fair_value: "$255-265"
+  p2_direction: "审慎关注(偏中性)"
+  p2_change: "下调7-10%, 因飞轮2/5有效+GLP-1结构性+并购ROI<WACC+同行溢价过高"
+
+cq_status:
+  CQ0: { phase: P0.75, status: complete, direction: "身份重定价进行中", confidence: "75%" }
+  CQ1: { phase: P1, status: complete, direction: "35%平台+30%保险+20%监管体+15%混合", confidence: "60%" }
+  CQ2: { phase: P1, status: complete, direction: "6 REU, SOTP $202-274(20%折价)", confidence: "70%" }
+  CQ3: { phase: P1+P2, status: complete, direction: "MCR是主矛盾, β假说55%概率, 均衡≈85%", confidence: "75%" }
+  CQ4: { phase: P2, status: complete, direction: "飞轮2/5有效, $4.4B协同含~半数self-dealing", confidence: "65%" }
+  CQ5: { phase: P1, status: complete, direction: "有毒增长(增量OPM -28%), 2026收缩正确", confidence: "80%" }
+  CQ6: { phase: P2, status: complete, direction: "5层利润结构, 转折期55:45偏恢复", confidence: "60%" }
+  CQ7: { phase: P2, status: complete, direction: "GLP-1解释MCR 50%+, 协同='减速带'非'方向盘'", confidence: "75%" }
+  CQ7.5: { phase: P2, status: complete, direction: "并购ROI<WACC, 复杂度偏负债", confidence: "70%" }
+  CQ8: { phase: pending_P3, status: not_started, direction: "待P3监管深潜", confidence: "N/A" }
+
+non_consensus_insights:
+  CI-01: "反向身份折价-20pp(Optum被保险标签压制)"
+  CI-02: "有毒增长(FY2025增量OPM=-28%)"
+  CI-03: "三时代框架(建设→膨胀→清算→均衡)"
+  CI-04: "飞轮是'减速带'非'方向盘'(2/5环节有效)"
+  CI-05: "GLP-1是MCR均衡的决定性变量(NPV -$30~-60/股)"
+  CI-06: "并购ROI 6-7%<WACC 9%(价值毁灭)"
+
+key_kill_switches:
+  KS-1: { variable: "MCR均衡", threshold: "4Q连续>88%", current: "88.9%", status: "在阈值区间" }
+  KS-2: { variable: "监管路径", threshold: "DOJ分拆诉讼", current: "调查中", status: "远离阈值" }
+  KS-3: { variable: "CEO执行力", threshold: "2026 adj EPS<$16", current: "guidance>$17.75", status: "待验证" }
+  KS-4: { variable: "Optum Health", threshold: "6Q adj OPM<3%", current: "2.3%", status: "在阈值以下" }
+  KS-5: { variable: "竞争(HUM超越)", threshold: "HUM MA>UNH MA", current: "7.0M vs 9.4M", status: "接近中" }
+
+p3_todo:
+  - "CQ8监管深潜: FTC/DOJ/CMS/PBM立法/Change诉讼→5个监管路径量化"
+  - "正向DCF Python: 3情景×5年FCFF→敏感性矩阵"
+  - "5情景概率加权: 完整参数表+Python验证"
+  - "估值离散度收敛: 从64.3%→<30%"
+  - "数据审计摘要: 双源交叉验证覆盖率"
+  - "A-Score品质评分: 21维度"
+  - "投资温度计初稿"
 
 staging_files:
-  - financial_data_10yr.md  # 10年三表+比率+同业对比 (7.3K chars)
-  - regulatory_scout.md     # 8个监管议题深度搜索 (20.9K chars)
-  - business_scout.md       # 10个商业议题搜索 (24.4K chars)
-  - framework_extraction.md # 6报告框架萃取 (10.0K chars)
-  - reverse_dcf_preliminary.md  # Reverse DCF初步 (3.2K chars)
-  - thesis_crystallization_draft.md  # Thesis结晶草稿 (2.7K chars)
-  - industry_scout.md       # 行业背景 (pending)
-  - segment_data.md         # 分部数据 (pending)
-
-key_data_sources:
-  - FMP: income/balance/cashflow/ratios/key-metrics/profile/estimates (10年年度+8季度)
-  - MCP: baggers_summary/analyze_stock/compare_stocks/insider-trading/dcf/financial-scores
-  - WebSearch: 监管/商业/行业 3×并行Agent
-  - Internal: FICO/SPGI/ETN/KLAC/IHG框架萃取
-
-non_consensus_hypotheses:
-  NH-01: "UNH的P/E溢价在当前ROIC(8.2%)下无基础"
-  NH-02: "Q4 2025包含战略性洗大澡 — Hemsley清理为2026创造低基数"
-  NH-03: "全行业MLR恶化的底层驱动力是GLP-1药物成本"
-
-key_risks:
-  - MCR结构性>85% (非周期性)
-  - FTC/DOJ强制拆分Optum
-  - 管理层12个月内无法恢复利润率
-  - GLP-1药物成本压力持续
+  p1_chapters: "P1_Ch01-12 (12章, 73.3K)"
+  p2_chapters: "P2_Ch13-19 (7章, 45.4K)"
+  python: "P1_python_verification.py + P1_data_audit.py"
+  scout: "business_scout.md(24K) + regulatory_scout.md(21K) + framework_extraction.md(10K) + segment_data.md(10K)"
+  data: "financial_data_10yr.md(7K) + reverse_dcf_preliminary.md(3K) + thesis_crystallization_draft.md(3K)"
