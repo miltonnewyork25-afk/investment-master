@@ -7,9 +7,9 @@ industry: "eco_tech"
 report_version: "v2.0"
 last_updated: "2026-03-19T15:00:00+08:00"
 
-current_phase: 3
-phase_status: completed
-phases_completed: ["0", "0.5", "0.75", "1", "2", "3"]
+current_phase: 5
+phase_status: complete
+phases_completed: ["0", "0.5", "0.75", "1", "2", "3", "5"]
 
 # v2.0 targets (最高标准版)
 targets:
@@ -77,8 +77,25 @@ phase1_metrics:
   chapters: 11
   quality_vs_klac: "DM+20%, 因果+6%"
 
-next_phase: "S4: P5单会话Complete组装"
-next_session: "新session从头读P1v2+P2v2+P3v2→组装Complete→质量门控→提交main"
+next_phase: "完成"
+next_session: "报告已组装完成→需提交main"
+
+complete_metrics:
+  chars: 211576
+  dm_density: "2.93/千字"
+  dm_unique: 528
+  dm_total: 620
+  mermaid: 54
+  causal_density: "8.1/万字"
+  chapters: 31
+  appendices: 4
+  parts: 5
+  quality_gate: "G1-G8 ALL PASS"
+  supplement_ch25_30: "飞轮摩擦(MCO方法)+定价权剪刀差+护城河迁移量化(ADBE方法)+3D敏感性+竞争弹性+η回购效率"
+  rating: "中性关注"
+  fair_value_median: "$208 (+7.2%)"
+  fair_value_pw: "$193 (-0.7%)"
+  confidence: "55%"
 
 supplement_plan:
   strategy: "清context后分3session逐Phase补强"
@@ -103,6 +120,8 @@ supplement_plan:
     task: "P5单会话Complete组装"
     target: "~230K"
     strategy: "新session从头读Phase产出→组装→质量门控→修复→提交"
+    status: "DONE"
+    result: "211K/528DM/54Mermaid/G1-G8 ALL PASS (含Ch25-30补强)"
   expected_total: "~230K(P1 82K+P2 71K+P3 30K+P4/P5 47K)"
 
 quality_snapshot:
