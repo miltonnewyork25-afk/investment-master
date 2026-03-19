@@ -62,9 +62,9 @@ adbe_anchor:
   conclusion: "CRM不比ADBE明显便宜"
 
 quick_ref:
-  total_chars: 161825
-  cumulative_dm: 433
-  cumulative_mermaid: 38
+  total_chars: 171818
+  cumulative_dm: 473
+  cumulative_mermaid: 40
 
 phase1_metrics:
   chars: 68149
@@ -77,8 +77,8 @@ phase1_metrics:
   chapters: 11
   quality_vs_klac: "DM+20%, 因果+6%"
 
-next_phase: "S2: P1补强(Ch6/7/8/10)"
-next_session: "P1证据链加厚→然后S3: P3+P5组装"
+next_phase: "S3: P3补强+P5组装"
+next_session: "P3承重墙/CQ扩展→然后P5单会话Complete组装"
 
 supplement_plan:
   strategy: "清context后分3session逐Phase补强"
@@ -89,21 +89,22 @@ supplement_plan:
     key_additions: "Ch17 ADBE EV/FCF修正(18x→14x)+PEG断层+历史PE Band | Ch14 TV解剖+g敏感性+交叉验证 | Ch13 Slack解剖+激励分析+前瞻评分卡 | Ch12 债务到期+Mega-buyback对标 | Ch15 集团折价分析 | Ch16 FCF质量+FCF桥接+杠杆调整WACC | Ch18 概率证据链+催化剂框架"
     key_correction: "ADBE EV/FCF 18x→14x→CRM不再是'EV/FCF最低'→可比中位从$223(+15%)→$199(+3%)→更中性"
   s2_p1:
-    task: "P1 Ch6/7/8/10从5K扩至10K,补证据链第3-4层"
-    target: "72K→100K+"
-    priority_chapters: "Ch7(DataCloud 99行→200行) Ch6(seat压缩134行→200行) Ch8(M&A 126行→200行)"
-    key_gap: "论点正确但证据链只有1-2层(KLAC标杆=4层)"
+    task: "P1 Ch6/7/8/10证据链加厚(已完成)"
+    status: "DONE"
+    result: "71.7K→81.6K(+13.8%), DM 177→215(+21%), 因果密度10.17/万字(超KLAC)"
+    key_additions: "Ch6 历史SaaS seat压缩案例(Zoom/Citrix/IBM)+概率校准 | Ch7 Data Cloud变现路径+Platform增速分解 | Ch8 SaaS M&A基准+整合评分卡+商誉质量分层 | Ch10 去供应商化量化(联合概率<0.1%)+NOW财务深度对标(FMP)"
+    chapter_lines: "Ch6 134→177 | Ch7 134→186 | Ch8 126→193 | Ch10 157→233"
   s3_p3_assembly:
     task: "P3承重墙+CQ扩展→然后P5组装"
     target: "P3 20K→30K+ 然后Complete组装~238K"
     key_gap: "承重墙概率缺深度历史类比/CQ闭环偏表格化"
-  expected_total: "~250K(P1 100K+P2 71K+P3 30K+P4/P5 50K)"
+  expected_total: "~230K(P1 82K+P2 71K+P3 30K+P4/P5 47K)"
 
 quality_snapshot:
-  p1: "7.5/10(框架优秀+密度KLAC级,证据链需加厚)"
+  p1: "8.0/10(S2补强后: DM 2.67/千字+因果10.17/万字+历史案例+量化证据链)"
   p2: "8.5/10(S1补强后: DM 2.92/千字+因果9.47/万字+ADBE修正+概率证据链)"
   p3: "7.0/10(KS/RT到位,承重墙/CQ需加深)"
-  d_score: "67.5/110→P2补强后预估82→全补强后预估88+"
+  d_score: "67.5→P1+P2补强后预估85→全补强后预估88+"
 
 phase3_metrics:
   chars: 15333
