@@ -62,9 +62,9 @@ adbe_anchor:
   conclusion: "CRM不比ADBE明显便宜"
 
 quick_ref:
-  total_chars: 171818
-  cumulative_dm: 473
-  cumulative_mermaid: 40
+  total_chars: 181115
+  cumulative_dm: 514
+  cumulative_mermaid: 43
 
 phase1_metrics:
   chars: 68149
@@ -77,8 +77,8 @@ phase1_metrics:
   chapters: 11
   quality_vs_klac: "DM+20%, 因果+6%"
 
-next_phase: "S3: P3补强+P5组装"
-next_session: "P3承重墙/CQ扩展→然后P5单会话Complete组装"
+next_phase: "S4: P5单会话Complete组装"
+next_session: "新session从头读P1v2+P2v2+P3v2→组装Complete→质量门控→提交main"
 
 supplement_plan:
   strategy: "清context后分3session逐Phase补强"
@@ -94,16 +94,21 @@ supplement_plan:
     result: "71.7K→81.6K(+13.8%), DM 177→215(+21%), 因果密度10.17/万字(超KLAC)"
     key_additions: "Ch6 历史SaaS seat压缩案例(Zoom/Citrix/IBM)+概率校准 | Ch7 Data Cloud变现路径+Platform增速分解 | Ch8 SaaS M&A基准+整合评分卡+商誉质量分层 | Ch10 去供应商化量化(联合概率<0.1%)+NOW财务深度对标(FMP)"
     chapter_lines: "Ch6 134→177 | Ch7 134→186 | Ch8 126→193 | Ch10 157→233"
-  s3_p3_assembly:
-    task: "P3承重墙+CQ扩展→然后P5组装"
-    target: "P3 20K→30K+ 然后Complete组装~238K"
-    key_gap: "承重墙概率缺深度历史类比/CQ闭环偏表格化"
+  s3_p3:
+    task: "P3补强(已完成)"
+    status: "DONE"
+    result: "19.5K→28.9K(+48%), DM 52→93(+79%), 因果6.3/万字"
+    key_additions: "Ch19 承重墙W-1/W-2/W-5历史案例校准(AI产品5案例/SaaS压缩4案例/护城河侵蚀4案例) | Ch21 温水煮青蛙NPV量化(5年年化+1.7%跑输S&P 6.3pp) | Ch22 诚实性审计(市场正确vs市场错误3:3)+v1.0→v2.0对比 | Ch23 CQ1/CQ2/CQ5三大CQ叙事闭环 | Ch24 12个月触发时间线+保质期"
+  s4_assembly:
+    task: "P5单会话Complete组装"
+    target: "~230K"
+    strategy: "新session从头读Phase产出→组装→质量门控→修复→提交"
   expected_total: "~230K(P1 82K+P2 71K+P3 30K+P4/P5 47K)"
 
 quality_snapshot:
   p1: "8.0/10(S2补强后: DM 2.67/千字+因果10.17/万字+历史案例+量化证据链)"
   p2: "8.5/10(S1补强后: DM 2.92/千字+因果9.47/万字+ADBE修正+概率证据链)"
-  p3: "7.0/10(KS/RT到位,承重墙/CQ需加深)"
+  p3: "8.0/10(S3补强后: 承重墙历史校准+温水煮青蛙NPV+CQ叙事闭环+v1→v2对比)"
   d_score: "67.5→P1+P2补强后预估85→全补强后预估88+"
 
 phase3_metrics:
