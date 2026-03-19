@@ -507,3 +507,41 @@ entries:
     top_lesson: null  # AI填入
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "FRO_COSCO_EVENT"
+    date: "2026-03-19"
+    report: "FRO_COSCO_EVENT_Report_v1.0.md"
+    chars: "91K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "FAILED"
+    dm_anchors: 115
+    mermaid_count: 19
+    pw: N/A
+    method: "N/A"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "CRM"
+    date: "2026-03-19"
+    report: "CRM_Complete_v2.0_2026-03-19.md"
+    chars: "230K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 568
+    dm_density: "2.88/千字"
+    causal_density: "8.0/万字"
+    mermaid_count: 59
+    pw: 5.6
+    method: "hybrid"
+    scorecard: "78.8%(20.5/26模块)"
+    near_miss_score: 0
+    quality: 4.1
+    top_technique: "飞轮悖论(Agent成功→seat减少=加速器同时是刹车器) + 定价权剪刀差(F500 Stage4/SMB Stage2→OPM反直觉超预期)"
+    top_lesson: "v1.0→v2.0验证: 铁律O(Reverse DCF前置)+铁律H(ADBE对标)+铁律K(估值统一)将红队代价从-25%→-8.5%。中性起点比任何分析技术都重要。M2(NRR不公开)是SaaS报告的系统性盲区。"
+    evolution_proposed: "EVO-CRM-001(M2 SaaS单位经济学标准化P1) + EVO-CRM-002(飞轮悖论检测P1) + EVO-CRM-003(定价权分层P2) + EVO-CRM-004(演绎法模板P2) + EVO-CRM-005(AIAS-PE数据库P3)"
+    evolution_status: pending
