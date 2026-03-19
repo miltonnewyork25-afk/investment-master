@@ -70,7 +70,7 @@
 | Forward PE | 14.7x | ~15x | ~55x | ~40x |
 | ROE | 12.4% | 58.8% | 15.5% | 8.2% |
 | FCF Yield | 8.0% | ~6% | ~2% | ~3% |
-| AIAS净影响 | +2.30 | +0.51 | — | — |
+| AIAS净影响 | +2.17* | +0.51 | — | — |
 | Forward PE几乎相同(CRM 14.7x ≈ ADBE 15x) → 但ADBE增速12%>CRM 7%, OPM 47%>21%
 
 ### DM-INSIDER-001
@@ -86,8 +86,9 @@
 | FY2030 | 60.78 | +9.4% | $19.62 | 18 |
 
 ### DM-KEY-001 杜邦
-- ROE 12.4% = 净利率18.0% × 资产周转0.39x × 权益乘数1.79x
-- ROIC 13.6% | ROCE 11.9% | Altman Z 2.88 | Piotroski F 6/9
+- ROE 12.6% = 净利率18.0% × 资产周转0.37x × 权益乘数1.90x [FMP key-metrics FY2026]
+- ROIC **8.8%** (FMP: returnOnInvestedCapital) | ROCE 11.9% | Altman Z 2.88 | Piotroski F 6/9
+- *注: P0原始值ROIC 13.6%为FMP ratios口径(可能不含商誉调整)→以key-metrics 8.8%为准*
 
 ### DM-KEY-002 股东回报
 - 3年累计回购: $28.05B(含$25B ASR)
@@ -99,4 +100,5 @@
 
 **Reverse DCF结论**: 市场隐含3.7% CAGR vs 有机~7% → 略悲观(-3.3pp) → **中性偏积极**
 **ADBE锚点**: Forward PE几乎相同 → CRM不比ADBE便宜(增速更低/利润率更低)
+*AIAS +2.17为P1完整6×10矩阵计算(未调整+2.07×M=1.05=+2.17)，P0预评+2.30有误差*
 **关键摆动变量**: CQ1(Agentforce) + CQ6(有机增速底部) 决定最终方向

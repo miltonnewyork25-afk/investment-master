@@ -87,8 +87,8 @@ phase2_metrics:
   causal_density: "6.66/万字"
   fmp_refs: 21
   mermaid: 4
-  fair_value: "$217"
-  expected_return: "+12%"
-  rating_prelim: "中性关注(偏积极)"
+  fair_value: "$211"
+  expected_return: "+8.8%"
+  rating_prelim: "中性关注"
   dispersion: "13.2%"
   iron_law_K: "PASS(6/6方向一致)"
