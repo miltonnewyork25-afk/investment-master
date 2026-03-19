@@ -77,8 +77,32 @@ phase1_metrics:
   chapters: 11
   quality_vs_klac: "DM+20%, 因果+6%"
 
-next_phase: "Phase 5(Complete组装)"
-next_session: "新session(铁律J: 单会话组装)"
+next_phase: "P2补强(S1优先)"
+next_session: "清context后3个专注session"
+
+supplement_plan:
+  strategy: "清context后分3session逐Phase补强"
+  s1_p2:
+    task: "P2逐章从3-5K扩至10K+,重点估值假设推导过程"
+    target: "47K→80K+"
+    priority_chapters: "Ch14(RevDCF 90行→200行) Ch17(可比84行→200行) Ch13(资本配置110行→200行) Ch12(ASR 135行→200行)"
+    key_gap: "每章有结论和表格但缺'数据→推理→结论'的完整推导"
+  s2_p1:
+    task: "P1 Ch6/7/8/10从5K扩至10K,补证据链第3-4层"
+    target: "72K→100K+"
+    priority_chapters: "Ch7(DataCloud 99行→200行) Ch6(seat压缩134行→200行) Ch8(M&A 126行→200行)"
+    key_gap: "论点正确但证据链只有1-2层(KLAC标杆=4层)"
+  s3_p3_assembly:
+    task: "P3承重墙+CQ扩展→然后P5组装"
+    target: "P3 20K→30K+ 然后Complete组装~238K"
+    key_gap: "承重墙概率缺深度历史类比/CQ闭环偏表格化"
+  expected_total: "~238K(≈MSCI 223K水平)"
+
+quality_snapshot:
+  p1: "7.5/10(框架优秀+密度KLAC级,证据链需加厚)"
+  p2: "6.5/10(Ch11亮点+Python验证,Ch14-18推导太薄)"
+  p3: "7.0/10(KS/RT到位,承重墙/CQ需加深)"
+  d_score: "67.5/110→P3后预估79→补强后预估85+"
 
 phase3_metrics:
   chars: 15333
