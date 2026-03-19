@@ -9,6 +9,21 @@
 
 这意味着Optum不是一个独立的市场参与者，而是UNH集团内部的"服务中心"。评估Optum的真实价值需要回答：如果UHC不是它的客户，Optum的外部收入($108B)能否独立支撑其估值？
 
+```mermaid
+graph LR
+    subgraph "UHC-Optum 数据飞轮"
+    A["UHC承保<br/>50M会员"] --> |"理赔数据"| B["Optum Insight<br/>数据湖1.5亿人"]
+    B --> |"AI风控模型"| C["Optum Health<br/>VBC护理优化"]
+    C --> |"降低医疗成本"| D["UHC MCR改善"]
+    D --> |"更低保费<br/>更多会员"| A
+    B --> |"处方优化"| E["Optum Rx<br/>PBM效率"]
+    E --> |"药品成本降低"| D
+    end
+    style A fill:#339af0,color:#fff
+    style B fill:#339af0,color:#fff
+```
+> 飞轮逻辑自洽，但FY2025的现实是：Optum Health亏损$278M(GAAP)→飞轮C环节失效→MCR未改善。飞轮是概念还是现实？CQ4将验证。
+
 ## 5.2 Optum Health: 最大的问号
 
 ### 经济模型

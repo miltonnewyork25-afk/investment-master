@@ -124,6 +124,26 @@ EPS增长17.6%来自三个驱动力:
 
 **资本配置评级**: ★★★★☆ (维持4/5 — 历史记录良好，但当前杠杆上升值得关注)
 
+```mermaid
+graph LR
+    subgraph "5个叙事标签: 2023 vs 2025评级"
+    T1["防御性成长<br/>4→3 ↓"]
+    T2["复利机器<br/>4→2 ↓↓"]
+    T3["最佳管理层<br/>4→2 ↓↓"]
+    T4["不可替代平台<br/>4→3 ↓"]
+    T5["资本配置<br/>4→4 →"]
+
+    T1 --> |"Beta 0.38失效<br/>实际跌53%"| V1["半真半假"]
+    T2 --> |"EPS +18%CAGR→-45%<br/>COVID虚胖"| V2["基础动摇"]
+    T3 --> |"CEO辞职+DOJ<br/>+insider trading"| V3["严重动摇"]
+    T4 --> |"OH亏损+VBC未证<br/>+监管瞄准"| V4["需重新定义"]
+    T5 --> |"SBC覆盖582%<br/>Piotroski 7/9"| V5["仍然成立"]
+    end
+    style V2 fill:#ff6b6b,color:#fff
+    style V3 fill:#ff6b6b,color:#fff
+    style V5 fill:#51cf66,color:#fff
+```
+
 ## 3.3 叙事审计总结
 
 | 叙事标签 | 2023评级 | 2025评级 | 变化方向 | 可恢复性 |

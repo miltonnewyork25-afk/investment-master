@@ -3,7 +3,34 @@
 > **CQ1**: 保险公司、健康服务平台、医疗基础设施、还是监管高暴露复合体？
 > 身份决定估值框架，估值框架决定目标价。定义错一层，估值错一个数量级。
 
-## 2.1 四个候选身份
+## 2.1 集团结构全景
+
+```mermaid
+graph TD
+    UNH["UnitedHealth Group<br/>$448B Revenue | $19B Op Inc"]
+    UNH --> UHC["UnitedHealthcare<br/>$345B | OPM 3.0%"]
+    UNH --> OPT["Optum<br/>$276B(消除前) | adj OPM ~4.5%"]
+
+    UHC --> MR["Medicare & Retirement<br/>$171B | 9.4M MA会员<br/>MCR ~92%"]
+    UHC --> EI["Employer & Individual<br/>$79B | ~28M会员<br/>MCR ~85%"]
+    UHC --> CS["Community & State<br/>$94B | ~8.5M Medicaid<br/>MCR ~91%"]
+
+    OPT --> OH["Optum Health<br/>$102B | adj OPM 2.3%<br/>90K医生 | 4.7M VBC"]
+    OPT --> OI["Optum Insight<br/>$19B | adj OPM 19.1%<br/>Change HC | $31B backlog"]
+    OPT --> OR["Optum Rx<br/>$155B | adj OPM 3.9%<br/>第三大PBM"]
+
+    OH -.->|"内部服务$62B"| UHC
+    OI -.->|"内部服务$9B"| UHC
+    OR -.->|"内部服务$65B"| UHC
+
+    style MR fill:#ff6b6b,color:#fff
+    style OH fill:#ff6b6b,color:#fff
+    style OI fill:#51cf66,color:#fff
+    style EI fill:#51cf66,color:#fff
+```
+> 红色=利润压力区, 绿色=利润韧性区。内部交易$168B(占总收入27%)是协同的载体也是监管的靶心。
+
+## 2.2 四个候选身份
 
 UNH可以用四种完全不同的方式来理解。每种理解对应不同的估值方法、不同的P/E锚、不同的风险权重：
 
@@ -63,7 +90,19 @@ UNH可以用四种完全不同的方式来理解。每种理解对应不同的�
 - 核心风险不是"会不会有监管"而是"监管何时落地、力度多大"
 - **隐含UNH公允价: $200-280** (当前估值区间的低端)
 
-## 2.2 市场当前的标签在哪里？
+```mermaid
+graph LR
+    subgraph "身份→估值映射"
+    A["A: 保险公司<br/>P/E 12-15x<br/>→ $180-270"] --> |"30%概率"| FV
+    B["B: 健康服务平台<br/>SOTP<br/>→ $320-450"] --> |"40%概率"| FV
+    C["C: 医疗基础设施<br/>P/E 25-40x<br/>→ Optum独立时适用"] --> |"10%概率"| FV
+    D["D: 监管高暴露体<br/>P/E 12-14x<br/>→ $200-280"] --> |"20%概率"| FV
+    FV["概率加权<br/>$260-350<br/>当前$284=偏低端"]
+    end
+    style FV fill:#339af0,color:#fff
+```
+
+## 2.3 市场当前的标签在哪里？
 
 使用ETN报告中的身份溢价量化方法(F3框架)：
 

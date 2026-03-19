@@ -33,6 +33,19 @@ M&R是UHC乃至整个UNH最重要的单一业务——$171.3B收入占UHC的50%�
 **利润压力分解**:
 MA业务的MCR是全分部最高的——行业平均~90%(FY2024)，UNH可能更高。[DM-IND-002: business_scout.md, MA MLR ~90% industry]
 
+```mermaid
+graph TD
+    subgraph "MCR传导: 为什么MA最先恶化"
+    L1["层1: 利用率激增"] --> |"COVID延迟释放+GLP-1+行为健康"| MCR["MCR +600bps"]
+    L2["层2: CMS定价滞后"] --> |"费率基于前2年+V28削减RA"| MCR
+    L3["层3: 竞争拉高"] --> |"Humana+21%低保费抢会员"| MCR
+    MCR --> LOSS["规模越大亏越多"]
+    LOSS --> EXIT["主动退出-1.3M会员"]
+    end
+    style MCR fill:#ff6b6b,color:#fff
+    style EXIT fill:#51cf66,color:#fff
+```
+
 为什么MA的MCR恶化最严重？三层因果：
 
 ```

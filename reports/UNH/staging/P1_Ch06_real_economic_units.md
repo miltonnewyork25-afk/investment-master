@@ -111,6 +111,26 @@ FY2025合并GAAP营业利润$19.0B vs Adj $21.7B — 差额$2.7B。
 - **正确可比**: CVS Caremark (within CVS), Express Scripts (within CI)
 - **估值锚**: 10-14x P/E
 
+```mermaid
+graph TD
+    subgraph "6个真实经济单元(REU)"
+    REU1["REU-1 ASO管理费<br/>$12-15B | OPM>15%<br/>P/E 18-22x"]
+    REU2["REU-2 商业承保<br/>$65B | OPM 4-5%<br/>P/E 12-15x"]
+    REU3["REU-3 政府保险<br/>$265B | OPM 2-3%<br/>P/E 10-14x"]
+    REU4["REU-4 医疗服务VBC<br/>$40B外部 | OPM 2-3%<br/>P/E 12-18x"]
+    REU5["REU-5 医疗IT/数据<br/>$10B外部 | OPM 19%<br/>P/E 22-30x ★"]
+    REU6["REU-6 PBM药房<br/>$90B外部 | OPM 3.5%<br/>P/E 10-14x"]
+    end
+    REU1 -.- |"会计上同属UHC E&I"| REU2
+    REU4 -.- |"$62B内部交易"| REU3
+    REU5 -.- |"$9B内部交易"| REU3
+    REU6 -.- |"$65B内部交易"| REU3
+    style REU5 fill:#51cf66,color:#fff
+    style REU1 fill:#51cf66,color:#fff
+    style REU3 fill:#ff6b6b,color:#fff
+```
+> ★ REU-5(Optum Insight)是唯一配得上"平台P/E"的分部。REU-1(ASO)是隐藏的高利润率现金牛。REU-3(政府保险)占收入59%但MCR~90%+。
+
 ## 6.3 SOTP初步估值 (基于真实经济单元)
 
 | REU | Adj OP($B) | P/E锚 | 隐含市值($B) |

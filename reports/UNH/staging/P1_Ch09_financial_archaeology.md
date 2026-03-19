@@ -114,6 +114,40 @@
 
 **一次$10B商誉减值的影响**: 直接冲击NI → EPS减少~$11 → 但不影响现金流(非现金项) → 影响P/B和债务covenant中的权益/杠杆比率
 
+```mermaid
+gantt
+    title UNH三个时代 + 关键事件
+    dateFormat YYYY
+    axisFormat %Y
+    section 时代1:建设期
+    Optum并购+OPM 7-8%     :2016, 2019
+    section 时代2:膨胀期
+    COVID低MCR+EPS虚胖    :2020, 2023
+    Change HC $13B收购       :milestone, 2022, 0d
+    section 时代3:清算期
+    MCR恶化+利润崩塌        :crit, 2024, 2025
+    Change攻击$3B           :milestone, crit, 2024, 0d
+    CEO辞职+DOJ调查         :milestone, crit, 2025, 0d
+    section 时代4:恢复期?
+    MCR均衡重建             :active, 2026, 2028
+```
+
+```mermaid
+graph LR
+    subgraph "杜邦ROE分解(2023→2025)"
+    ROE23["ROE 25.2%"] --> NP23["净利率 6.0%"]
+    ROE23 --> AT23["周转 1.36x"]
+    ROE23 --> EM23["杠杆 3.08x"]
+
+    ROE25["ROE 12.8%"] --> NP25["净利率 2.7%<br/>↓55%★主因"]
+    ROE25 --> AT25["周转 1.45x<br/>↑7%"]
+    ROE25 --> EM25["杠杆 3.29x<br/>↑7%"]
+    end
+    style NP25 fill:#ff6b6b,color:#fff
+    style ROE25 fill:#ff6b6b,color:#fff
+```
+> ROE崩塌100%由净利率(=MCR)驱动。资产效率和杠杆反而在改善。这意味着：修复MCR=修复ROE，无需其他调整。
+
 ## 9.6 10年财务轨迹的三个时代
 
 ```

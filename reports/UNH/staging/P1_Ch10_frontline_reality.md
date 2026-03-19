@@ -86,6 +86,30 @@ UNH在2025年失去路易斯安那州Medicaid合同(330K会员)，原因是**PBM
 - 多州要求PBM回扣100%传递
 - 各州法规不统一 → 增加UNH的合规复杂度和成本
 
+```mermaid
+graph TD
+    subgraph "摩擦累积 → 监管 → 利润传导链"
+    F1["Provider摩擦<br/>PA延迟+claim denial"] --> R1["国会听证<br/>选民压力"]
+    F2["公众愤怒<br/>Thompson事件+数据泄露"] --> R1
+    F3["PBM争议<br/>FTC报告+回扣不透明"] --> R2["FTC行政诉讼"]
+    F4["Self-dealing<br/>多付17-61%"] --> R3["DOJ反垄断"]
+
+    R1 --> L1["Patients Over Profits Act<br/>(2025.9提出)"]
+    R2 --> L2["PBM回扣透明<br/>CAA 2026(已签署)"]
+    R3 --> L3["可能强制分拆<br/>(调查中)"]
+
+    L1 --> |"如通过"| P1["纵向整合受限<br/>利润↓$2-4B/年"]
+    L2 --> |"已生效"| P2["Optum Rx利润↓<br/>$1.5-2.5B/年"]
+    L3 --> |"如执行"| P3["协同消失<br/>利润↓$4-5B/年"]
+    end
+    style F1 fill:#ffd43b,color:#000
+    style F2 fill:#ffd43b,color:#000
+    style P1 fill:#ff6b6b,color:#fff
+    style P2 fill:#ff6b6b,color:#fff
+    style P3 fill:#ff6b6b,color:#fff
+```
+> 四条摩擦源→三条监管路径→三种利润冲击。时间尺度1-5年不等。最快落地的是L2(CAA 2026已签署)。
+
 ## 10.5 管理层叙事 vs 一线现实的GAP分析
 
 | 管理层说的 | 一线现实 | GAP大小 |
