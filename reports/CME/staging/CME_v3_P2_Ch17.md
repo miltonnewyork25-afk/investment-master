@@ -83,6 +83,21 @@ Reverse DCF不是用来"得出目标价"的——它是用来翻译"市场在赌
 
 ---
 
+```mermaid
+graph TB
+    subgraph "六方法估值交叉验证"
+        A["概率加权DCF<br/>$193 (-38%)"] --- B["SOTP<br/>$288 (-8%)"]
+        B --- C["Core P/E<br/>$289 (-8%)"]
+        C --- D["DDM<br/>$272 (-13%)"]
+        D --- E["可比PE<br/>$312 (0%)"]
+        E --- F["Reverse DCF<br/>$313 (定义)"]
+    end
+    G["最佳估计: $289<br/>(Core PE+SOTP均值)"]
+    B --> G
+    C --> G
+    style G fill:#FFD700,stroke:#FF8C00,stroke-width:3px
+```
+
 ## 18.1 SOTP估值: 分部定价
 
 CME可以分解为四个价值来源:
@@ -259,6 +274,20 @@ Python DCF模型已在Phase 2开始时运行并验证(`reports/CME/data/cme_dcf_
 
 如前述(Ch18.2)，$193因WACC偏高而偏保守。调整方法: 如果认为CME的"真实WACC"应该在6.5-7.5%(更接近CAPM暗示)→所有fair value上调30-50%→概率加权EV约$250-290→接近SOTP($288)和Core P/E($289)。**三种方法交汇于$280-290区间**——这可能是CME最合理的公允价值估计[DM-DCF-002]。
 
+```mermaid
+graph TB
+    subgraph "Python DCF六情景分布"
+        A["Bull-H $294<br/>10%概率"] --- B["Bull-L $242<br/>15%概率"]
+        B --- C["Base-H $206<br/>25%概率"]
+        C --- D["Base-L $172<br/>25%概率"]
+        D --- E["Bear-H $143<br/>15%概率"]
+        E --- F["Bear-L $110<br/>10%概率"]
+    end
+    G["PW EV: $193"]
+    H["当前: $313"]
+    style H fill:#FF6347
+```
+
 ## 19.3 利率敏感性矩阵(Python实际运行结果)
 
 | IORB | 现金池($B) | 总利息($M) | 净留存($M, @13%) | EPS | @28x P/E | vs $313 |
@@ -310,6 +339,16 @@ Base-H情景下的fair value对WACC和terminal growth的敏感性:
 **本报告的选择**: 使用行业惯例派(WACC 8.0-9.5%)作为DCF主输出(保守偏差)，但同时呈现SOTP和Core P/E作为交叉验证(这些方法不依赖WACC)。三种方法交汇于**$280-290区间**——这可能是最合理的fair value估计[DM-DCF-006]。
 
 **对投资者的建议**: 如果你是CAPM派→CME在$313被低估→可以买入; 如果你是行业惯例派→CME在$313被高估→应该等待。本报告倾向于后者——因为CME的利率敏感性和波动率依赖确实是CAPM Beta未捕捉的风险[DM-DCF-007]。
+
+```mermaid
+graph LR
+    subgraph "WACC辩论: 两派观点"
+        A["CAPM派<br/>WACC 5.5-6.5%<br/>FV $350-420<br/>(低估!)"] -->|"分歧核心"| B["行业惯例派<br/>WACC 8.0-9.5%<br/>FV $156-230<br/>(高估!)"]
+    end
+    C["本报告: 用行业惯例+<br/>SOTP/CorePE交叉验证<br/>→ FV $280-290"]
+    A --> C
+    B --> C
+```
 
 ## 19.6 五年财务预测(Base-H情景, Python验证)
 

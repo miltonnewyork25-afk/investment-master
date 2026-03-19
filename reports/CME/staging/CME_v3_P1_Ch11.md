@@ -55,6 +55,16 @@ CME的国际ADV增速(+9%)快于国内(+8%)，但面临三个结构性天花板:
 
 基准情景下国际化每年贡献约$125M增量收入(假设ADV +700K/年 × $0.707 × 252)。这占consensus 2026增量的约30%——有意义但不主导。真正的催化剂是: 如果Treasury Clearing吸引了大量海外主权基金和央行将Treasury清算从FICC迁移到CME(因为cross-margining价值对全球最大的债券持有者尤其显著)→国际化增速可能跳升至+15-20%→改变CME的增长叙事[DM-INTL-012]。
 
+```mermaid
+graph TB
+    subgraph "国际化增长引擎"
+        A["美元霸权<br/>(储备59%+外汇88%)"] --> B["全球美元债存量<br/>($4T+ 亚洲)"]
+        B --> C["对冲需求→CME<br/>(SOFR/Treasury期货)"]
+        C --> D["国际ADV 8.3M<br/>(30%, +9% YoY)"]
+        D --> E["亚太最快+18%<br/>(日本carry+中资间接)"]
+    end
+```
+
 ## 11.6 CME vs Eurex: 全球衍生品双寡头
 
 全球交易所衍生品市场本质上是CME(美元)+Eurex(欧元)的双寡头格局。两者的竞争主要在"边缘"(亚洲时区的利率产品)而非核心:
@@ -137,6 +147,16 @@ CME有约60家直接清算会员(General Clearing Members, GCM)——这些是�
 [DM-MEM-002]
 
 Top 5银行(Goldman, JPM, Morgan Stanley, Citi, BofA)在全球OTC衍生品市场占~70%份额。在交易所衍生品中集中度较低(更多中型经纪商参与)，但Top 5仍估计占40-50%的CME清算量。
+
+```mermaid
+graph LR
+    subgraph "CME-Top5银行互锁机制"
+        A["Top5银行<br/>(Goldman/JPM/MS/Citi/BofA)"] -->|"提供做市流动性<br/>40-50% ADV"| B["CME"]
+        B -->|"提供保证金offset<br/>节省$2B+"| A
+        A -.->|"不能离开:<br/>保证金成本+$2B"| B
+        B -.->|"不能失去:<br/>流动性-40%"| A
+    end
+```
 
 ## 12.3 互相锁定: 为什么集中度不等于风险
 
