@@ -12,9 +12,9 @@ last_updated: "2026-03-20"
 # v2.0失败: Phase 2仅13K → 重写后仍浅 → 系统性深度不足
 # v3.0核心改变: 减少章节数+每章写深(≥10K) + 逐章字符硬门控 + 禁止_ext文件
 
-current_phase: "2"
-phase_status: "starting"
-phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1"]
+current_phase: "3"
+phase_status: "not_started"
+phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2"]
 
 # === Phase 1 完成记录 ===
 phase1_results:
@@ -133,4 +133,22 @@ archives:
   v1: "reports/PTC/staging/v1_archive/"
   v2: "reports/PTC/staging/v2_archive/"
 
-next_action: "v3.0 Phase 1 开始 — Ch1 Reverse DCF(≥10K), 数据先行, 逐章硬门控"
+# === Phase 2 完成记录 ===
+phase2_results:
+  chars: 11269
+  dm_count: 14
+  file: "reports/PTC/staging/phase2_v3.md"
+  valuation:
+    dcf_pw: "$128.95 (-14.4%)"
+    sotp: "$183.34 (+21.7%)"
+    comparable: "$135-151"
+    weighted_fv: "$147.47 (-2.1%)"
+    rating: "中性关注"
+    dispersion: "42% (DCF vs SOTP)"
+  key_findings:
+    - "护城河C1=6.6/10, 74%价值来自护城河"
+    - "PLM=60%的SOTP价值($13.9B)"
+    - "估值对WACC最敏感(降息100bp→+29%)"
+    - "长期3-5年EPS CAGR 13-16%→$198-234"
+
+next_action: "Phase 3 红队+校准+风险拓扑 — 新session, 读checkpoint+staging恢复"
