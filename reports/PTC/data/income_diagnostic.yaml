@@ -1,0 +1,49 @@
+# 利润表健康诊断卡 (ISDD v1.2)
+ticker: "PTC"
+date: "2026-03-20"
+period: "FY2025 (截至2025-09-30)"
+path_used: "β逆向(手动覆盖, 原因: GAAP收入失真+M&A整合+IoT剥离)"
+
+# --- 核心诊断 ---
+revenue_quality: "中(价格驱动3:1, 有机增速仅5-6%)"
+operating_leverage: "正向(全面运营杠杆释放, OPM+1,030bps)"
+earnings_quality: "高(GAAP vs 归一化差距3.6%)"
+profit_driver: "毛利率扩张(+320bps) + 费用控制(SGA-750bps)"
+
+# --- 路径β专有 ---
+profit_scale_divergence: "正向脱钩(利润 >> 收入, 但约半数来自Q4稀释效应)"
+primary_profit_destroyer: "无 — 所有费用项增速低于收入"
+cost_problem_type: "无问题(全面结构性+战略性改善)"
+unit_economics_trend: "表面稳定(NRR 100-110%), 底层微收缩(排除SaaS迁移NRR 97-98%)"
+growth_engine: "核心驱动(PLM增速10% > 总ARR 9%)"
+
+# --- EPS分解 ---
+eps_operating_pct: "88%"
+eps_tax_pct: "-1%"
+eps_interest_pct: "10%"
+eps_buyback_pct: "0%"
+
+# --- 现金验证 ---
+fcf_to_ni: "117%"
+cash_conversion: "强"
+sustainability: "持久"
+
+# --- 综合评级 ---
+earnings_power_change: "显著改善(SaaS运营杠杆释放, OPM 14%→36% in 5Y)"
+confidence_level: "中高(盈利质量高+现金强, 但OPM部分来自不可持续的Q4稀释)"
+normalized_opm_range: "33-35%(vs报告35.9%)"
+key_monitoring_items:
+  - "Q2 FY2026: OPM是否回到32-34%(确认标准化水平)"
+  - "ServiceMax churn: FY2026 Q2末是否改善(管理层承诺)"
+  - "SaaS迁移速度: Windchill+渗透率变化(决定提价持续性)"
+  - "R&D/Rev是否维持16-17%(低于15%=竞争力风险)"
+
+# --- ISDD关键发现 ---
+key_findings:
+  - "OPM +1,030bps中约一半(+500bps)来自Q4收入确认峰值的稀释效应→不可持续"
+  - "标准化OPM 33-35%(Q1 FY2026的32.3%更接近真实水平)"
+  - "EPS增长88%来自经营改善→高质量, 但其中40-50%含Q4不可持续效应"
+  - "FCF/NI=117%→现金超利润→盈利保守→高度可信"
+  - "收入质量: 价格驱动3:1→量增长停滞→长期增速取决于定价权持续性"
+  - "底层NRR(排除SaaS迁移)仅97-98%→存量客户经济性微收缩"
+  - "净回购效果仅0.4%(回购$300M vs SBC稀释$216M)→回购尚未成为有效EPS引擎"
