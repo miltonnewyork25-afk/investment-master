@@ -151,4 +151,21 @@ phase2_results:
     - "估值对WACC最敏感(降息100bp→+29%)"
     - "长期3-5年EPS CAGR 13-16%→$198-234"
 
-next_action: "Phase 3 红队+校准+风险拓扑 — 新session, 读checkpoint+staging恢复"
+# === Context优化(v3.1) ===
+# 根因: Phase 2三次失败(v1:8.7K, v2:13K, v3:11K)
+# 诊断: Phase 2 input context 146K(Phase1全文82K+计划41K)→写作空间被挤压
+# 修复: Phase 1摘要(8.5K)替代全文(82K) + 归档冗余计划文件(27K)
+# 效果: Phase 2 input从146K降至~43K
+context_optimization:
+  phase1_summary: "reports/PTC/data/phase1_summary.md"  # 8.5K, Phase 2+读这个
+  phase1_full: "reports/PTC/staging/phase1_v3.md"       # 82K, 仅组装时读
+  archived_files:
+    - "reports/PTC/data/archive/ptc_analysis_plan.md"         # 9K, v1已废弃
+    - "reports/PTC/data/archive/narrative_roadmap_v2.md"      # 10K, 与plan重复
+    - "reports/PTC/data/archive/chapter_data_inventory.yaml"  # 8K, Phase 2不需要
+
+# === 恢复指引 ===
+# Phase 2需要重写: 当前11K严重不足(目标≥50K)
+# 读取顺序: checkpoint.yaml → phase1_summary.md → thesis_crystallization.md → phase2_spec.md
+# 禁止: 读Phase 1全文(82K会挤压写作空间)
+next_action: "Phase 2重写 — 读checkpoint+phase1_summary(8.5K)+thesis(4K)+spec(2K)=~15K input, 目标≥50K output"
