@@ -79,8 +79,26 @@ phase2_summary:
     - "CI-09: AI净影响轻微负面(空)"
     - "CI-10: 分销不力>创新不足, Lores或可修复(多)"
 
+phase3_summary:
+  chars: 22023
+  target: 50000
+  achievement: "44.0%"
+  price_update: "$44.19 (from $58)"
+  chapters:
+    - "Ch17: DCF三情景 Bear$53.5/Base$80.3/Bull$97.6 + Python验证"
+    - "Ch18: SOTP更新 保守$34.3/基准$47.7/乐观$62.1"
+    - "Ch19: 五情景PW $79.5(+80%) + 不对称比18:1 + 离散度检查"
+    - "Ch20: A-Score 67.8/110 = 6.16/10 (低品质+低估值象限)"
+    - "Ch21: 评级=关注(偏深度关注) + 12 Kill Switches + CQ全闭环"
+  key_findings:
+    - "价格$58→$44.19: 市场隐含FCF -0.5%/年(比Bear Case更悲观)"
+    - "PW $79.5 ≈ DCF Base $80.3: 两个独立方法高度一致"
+    - "回报不对称18:1: 上行+84.5%期望 vs 下行-4.7%期望"
+    - "SOTP保守$34.3仍有22%下行→不是铁底"
+    - "评级关注(偏深度关注)→待品牌+3%+ 连续2Q确认后升级"
+
 next_phase:
-  phase: 3
-  target_chars: 50000
-  chapters: "Ch17-Ch21"
-  focus: "正向DCF+SOTP+五情景概率加权+A-Score+温度计"
+  phase: 4
+  target_chars: 40000
+  chapters: "Ch22-Ch24"
+  focus: "红队七问+投资大师圆桌+最终评级"
