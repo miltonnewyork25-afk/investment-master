@@ -194,6 +194,38 @@ Cash App的ARPU高3.2倍，因为它是一个**全栈数字银行**——用户�
 
 **这是潜在的错误定价机会——但需要Venmo用2-3年的数据证明自己。** 投资者买入PYPL等于免费获得了一个"Venmo看涨期权"——如果Venmo货币化成功，有$4-12B的上行空间（每股$4-12）；如果失败，最差也就是维持现状（P2P免费工具不消耗太多资本）。
 
+## 5.5.1 Venmo的10-K硬数据基础
+
+FY2025 10-K和earnings disclosure中Venmo的关键数据（首次单独披露）：
+
+| 指标 | FY2024 | FY2025 | YoY | 来源 |
+|------|--------|--------|:---:|------|
+| Venmo TPV(Q4) | $75.6B | ~$85B(估) | +12% | 10-K/earnings |
+| Venmo年收入 | ~$1.2B | **$1.7B** | +42% | CNBC/earnings(首次披露) |
+| Venmo活跃账户 | ~95M | **100M+** | +5% | 10-K |
+| Debit Card MAU增速 | — | **+65% YoY** | — | Q2 2025 earnings |
+| Pay with Venmo增速 | — | +50% YoY | — | Earnings disclosure |
+| Debit Card新用户(Q2 2025) | — | 200万/季度 | — | Q2 2025 earnings |
+| Fastlane用户构成 | — | 75%新/休眠用户 | — | Q4 2024 earnings call |
+
+[DM-VENMO-016: Venmo FY2025硬数据汇总，首次单独收入披露$1.7B，10-K+earnings]
+[DM-VENMO-017: Venmo 100M+活跃账户，10-K FY2025]
+[DM-VENMO-018: Debit Card MAU +65% YoY, Q2 2025 earnings]
+
+**关键修正**：此前估算Venmo FY2025收入~$1.4B需上调至$1.7B（CNBC首次报道的官方数字）。ARPU相应调整为$1.7B/100M = **$17/年**（全账户基础）或$1.7B/67M MAU = **$25.4/年**（月活基础）。
+
+### Venmo收入增长的来源拆分
+
+FY2024收入增长中(从约$1.2B→$1.7B = +$500M)：
+- **Debit Card交换费**：~$200M增量（Debit Card TPV +60%→交换费0.6-0.8%）[DM-VENMO-019]
+- **Pay with Venmo**：~$150M增量（+50% YoY×~2% take rate）
+- **即时转账费**：~$100M增量（用户增长+频次提升）
+- **其他(商业账户等)**：~$50M
+
+因为Debit Card是Venmo增长最快的分支（+65% MAU），所以它在增量收入中的贡献比最大（~40%）。因为Debit Card用户的ARPU是线上用户的2倍 [DM-VENMO-001]，所以Debit Card的渗透率每提升10pp→Venmo混合ARPU提升约$2.5。因为当前Debit Card渗透率估计~15%（67M MAU中约10M持卡），所以到30%渗透率（~20M持卡）时ARPU可升至$30+→收入$2.0B+。
+
+**这验证了管理层$2.0B 2027收入目标的可行性——Debit Card渗透翻倍(15%→30%) + Pay with Venmo持续+40% = $2.0-2.3B。**
+
 ## 5.6 本章核心发现与CQ3闭环
 
 **CQ3答案：Venmo是低估资产还是货币化陷阱？**

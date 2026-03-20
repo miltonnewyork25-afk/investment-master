@@ -4,6 +4,25 @@
 
 按`docs/company_quality_scoring.md`的A+B+C+D四维度21项指标评分。金融行业修正：B1用ROTCE替代ROE，B4权重×0.8。
 
+## 20.1.1 评分所用的关键数据锚点
+
+| 数据点 | 值 | 来源 | 用于 |
+|--------|-----|------|------|
+| 收入 | $33.2B | 10-K FY2025 | A1/A3 |
+| 交易收入占比 | 90.7% | 10-K FY2024 | A1 |
+| 活跃账户 | 434M→436M | 10-K | A2 |
+| ROTCE | 57% | FMP ratios | B1 |
+| ND/EBITDA | 0.25x | FMP key-metrics | B2 |
+| 商誉 | $11.2B(13.6%总资产) | 10-K | B2 |
+| FCF/NI | 106% | FMP cashflow | B3 |
+| 品牌take rate | ~2.25% | Mizuho estimate | B4 |
+| Braintree take rate | ~0.30% | Management | B4 |
+| 线上支付份额 | 47.4% | Industry data | C3 |
+| 收入增速 | +4.3% | FMP income | D1 |
+| 员工数 | 23,800(-23% from peak) | 10-K FY2025 | 效率 |
+
+[DM-QUAL-002: A-Score评分数据锚点汇总表]
+
 ## 20.2 A维度：商业模式品质 (满分30)
 
 | 指标 | 评分(0-10) | 依据 |
