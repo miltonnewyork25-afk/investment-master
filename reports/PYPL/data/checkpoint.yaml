@@ -51,8 +51,36 @@ phase1_summary:
     - "CI-04: Venmo免费期权$4B+(多)"
     - "CI-05: CEO解雇=董事会认为结构性问题(空)"
 
+phase2_summary:
+  chars: 48325
+  target: 70000
+  achievement: "69.0%"
+  chapters:
+    - "Ch09: 财务考古+ISDD (9.7K)"
+    - "Ch10: 竞争五杀+Stripe深度对标 (10.1K)"
+    - "Ch11: 护城河三轴N×M×P+切换成本 (7.0K)"
+    - "Ch12-13: AI双面+PYUSD+BNPL+二阶效应 (5.9K)"
+    - "Ch14: 新产品审计+执行力评估 (4.8K)"
+    - "Ch15: 回购η函数+隐性风险 (7.2K)"
+    - "Ch16: 投资者争论7论点验证+催化剂 (4.8K)"
+  key_findings:
+    - "OPM 440bps改善中70%来自费用削减(不可重复)"
+    - "正常化FCF yield 9.3%(扣除工作资本波动+利息)"
+    - "Stripe $159B vs PYPL $56B: 增速(40%)+利润率(30%)+叙事(30%)"
+    - "护城河5.2/10窄且侵蚀中, 品牌7/10退化+Braintree3.5/10微增"
+    - "AI净影响轻微负面(Agent时代take rate压缩>数据价值)(CI-09)"
+    - "新产品除Fastlane外均S1阶段=概念>产品(CI-06)"
+    - "η效率0.35(历史低效), 但当前@$58回购合理"
+    - "分销不力>创新不足=PYPL核心问题(CI-10)"
+  new_ci:
+    - "CI-06: 除Fastlane外新产品均S1(空)"
+    - "CI-07: 首次派息=承认高增长结束(空)"
+    - "CI-08: 护城河退化叠加态(空)"
+    - "CI-09: AI净影响轻微负面(空)"
+    - "CI-10: 分销不力>创新不足, Lores或可修复(多)"
+
 next_phase:
-  phase: 2
-  target_chars: 70000
-  chapters: "Ch09-Ch16"
-  focus: "竞争格局+护城河+AI/Crypto+新产品+回购+争论图谱"
+  phase: 3
+  target_chars: 50000
+  chapters: "Ch17-Ch21"
+  focus: "正向DCF+SOTP+五情景概率加权+A-Score+温度计"
