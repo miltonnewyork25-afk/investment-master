@@ -147,7 +147,9 @@
 
 **Worktree导航**: 用户说"进入XX"/"切换到XX" → 直接 `cd` 到对应worktree路径 → `pwd` + `git branch --show-current` 确认。**禁止**: 让用户手动cd/开新session/只打印路径不切换
 
-**行业Worktree模型**: 本项目使用**行业级**worktree(半导体/消费品/生态科技/金融)，不是公司级。每个worktree覆盖一个行业板块
+**行业Worktree模型**: 本项目使用**行业级**worktree(半导体/消费品/生态科技/金融/金融基础设施)，不是公司级。每个worktree覆盖一个行业板块
+
+**CLAUDE.md职责分离(铁律)**: 主CLAUDE.md(系统自动加载)承载通用框架(铁律/门控/Phase流程/评级/工具)。Worktree CLAUDE.md**仅含行业特化增量**(≤120行/≤3K): 行业身份+公司列表+系数+KS/TS/CI+品质修正+行业文档指针。**禁止**: worktree CLAUDE.md复制主CLAUDE.md的任何内容。`bash tests/framework_health_check.sh` 自动检测违规。(PTC Phase 2失败教训: 生态科技复制14.4K主框架→每session浪费~12K context→分析输出被压缩)
 
 **多Agent文件传递**: ≥3个并行Agent时，Agent必须写结果到 `staging/` 文件，completion message只返回状态摘要+文件路径。编排器从文件读取，不从inline context读取。防止context溢出
 
@@ -412,6 +414,7 @@ ADBE反例 (0层):
 | **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
 | **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
 | **规划经验** | `knowledge/planning_archives/{TICKER}.md` (12份报告规划档案) |
+| **利润表诊断** | `knowledge/analysis_modules/income_statement_deep_diagnostic.md` (ISDD v1.0, 正向分解+逆向溯源双路径, Phase 1财务SOP) |
 | **品质评估** | `docs/company_quality_scoring.md` (A+B+C+D 21维度) + `knowledge/stock_picking/quality_scoring_benchmark.md` (8家基准) |
 | **A/B文档分离** | `docs/ab_document_protocol.md` (对外报告A vs 内部策略卡B) + `docs/strategy_card_template.md` |
 | **护城河框架** | `knowledge/stock_picking/moat_analysis_framework_v3.1.md` (C1嵌入性质+D1反脆弱+C3锁定载体) |
