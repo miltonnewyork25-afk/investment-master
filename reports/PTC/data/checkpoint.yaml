@@ -12,9 +12,9 @@ last_updated: "2026-03-20"
 # v2.0失败: Phase 2仅13K → 重写后仍浅 → 系统性深度不足
 # v3.0核心改变: 减少章节数+每章写深(≥10K) + 逐章字符硬门控 + 禁止_ext文件
 
-current_phase: "3"
-phase_status: "not_started"
-phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2"]
+current_phase: "2"
+phase_status: "rewrite_from_scratch"
+phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1"]
 
 # === Phase 1 完成记录 ===
 phase1_results:
@@ -132,24 +132,18 @@ data_files:
 archives:
   v1: "reports/PTC/staging/v1_archive/"
   v2: "reports/PTC/staging/v2_archive/"
+  v3_p2: "reports/PTC/staging/v3_archive/phase2_v3.md"  # 26.3K, 补强3次后归档
 
-# === Phase 2 完成记录 ===
-phase2_results:
-  chars: 11269
-  dm_count: 14
-  file: "reports/PTC/staging/phase2_v3.md"
-  valuation:
-    dcf_pw: "$128.95 (-14.4%)"
-    sotp: "$183.34 (+21.7%)"
-    comparable: "$135-151"
-    weighted_fv: "$147.47 (-2.1%)"
-    rating: "中性关注"
-    dispersion: "42% (DCF vs SOTP)"
-  key_findings:
-    - "护城河C1=6.6/10, 74%价值来自护城河"
-    - "PLM=60%的SOTP价值($13.9B)"
-    - "估值对WACC最敏感(降息100bp→+29%)"
-    - "长期3-5年EPS CAGR 13-16%→$198-234"
+# === Phase 2 先前结果(已归档, 供参考不供复用) ===
+# v3 Phase 2+3最终: 26.3K/37DM, 中性关注, FV $147.47
+# 归档原因: 30 commits跨v1/v2/v3, 多次补强导致缝合痕迹
+# 有价值的数字可参考但文本需从头写
+phase2_prior_reference:
+  rating_direction: "中性关注"
+  dcf_pw: "$128.95"
+  sotp: "$183.34"
+  weighted_fv: "$147.47"
+  key_insight: "PLM=60% SOTP价值, 估值对WACC最敏感"
 
 # === Context优化(v3.1) ===
 # 根因: Phase 2三次失败(v1:8.7K, v2:13K, v3:11K)
@@ -168,4 +162,10 @@ context_optimization:
 # Phase 2需要重写: 当前11K严重不足(目标≥50K)
 # 读取顺序: checkpoint.yaml → phase1_summary.md → thesis_crystallization.md → phase2_spec.md
 # 禁止: 读Phase 1全文(82K会挤压写作空间)
-next_action: "Phase 2重写 — 读checkpoint+phase1_summary(8.5K)+thesis(4K)+spec(2K)=~15K input, 目标≥50K output"
+next_action: |
+  Phase 2+3 从头重写(单session一次写完):
+  1. 读: checkpoint.yaml + phase1_summary.md(8.5K) + thesis_crystallization.md(4K) = ~18K input
+  2. 写: 新的phase2_v4.md, 目标≥60K, 覆盖护城河量化+估值+红队+风险
+  3. 规则: 一次写完不补强 | 每章≥8K | 禁止读Phase 1全文 | 禁止读v3_archive
+  4. 先前估值数字(FV $147.47等)可参考方向,但必须独立重算
+  5. 写完后直接进入Phase 5组装(单session)
