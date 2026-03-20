@@ -1,0 +1,228 @@
+# PTC v2.0 章节数据清单 (Chapter Data Inventory)
+# Session 0产出 | 2026-03-20
+# 规则: 每章写作前确认所有数据就位。缺数据→先补数据再写
+
+---
+
+# ═══ 价格快照 (全报告通用) ═══
+price_snapshot:
+  date: "2026-03-19"
+  price: 150.67
+  market_cap: "~$17.9B"
+  ev: "~$19.1B"
+  shares: "119.3M (Q1 FY2026)"
+  forward_pe: "19.1x (FY2026E EPS $7.87)"
+  trailing_pe: "22.1x (TTM)"
+  fcf_yield: "4.9%"
+  52w_range: "$133.38 - $219.69"
+  beta: 1.042
+  piotroski: 8
+  altman_z: 5.67
+  source: "[FMP quote + analyze_stock]"
+
+# ═══ 分析师共识 ═══
+consensus:
+  fy2026e_rev: "$2.76B"
+  fy2026e_eps: "$7.87 (9 analysts)"
+  fy2027e_rev: "$2.94B"
+  fy2027e_eps: "$8.54 (9 analysts)"
+  fy2028e_rev: "$3.20B"
+  fy2028e_eps: "$9.65 (4 analysts)"
+  source: "[FMP estimates]"
+
+# ═══ Ch1: Reverse DCF + 有机增速 ═══
+ch1_data:
+  hard_data:  # 全部来自FMP/10-K, 可直接用
+    - "FCF FY2025: $857M [FMP cashflow]"
+    - "FCF FY2024: $732M [FMP cashflow]"
+    - "FCF FY2023: $586M [FMP cashflow]"
+    - "FCF FY2022: $409M [FMP cashflow]"
+    - "FCF FY2021: $344M [FMP cashflow]"
+    - "FCF FY2020: $203M [FMP cashflow]"
+    - "Revenue FY2020-2025: $1.46B→$1.81B→$1.93B→$2.10B→$2.30B→$2.74B [FMP income]"
+    - "OPM FY2020-2025: 14.5%→21.1%→23.1%→21.9%→25.6%→35.9% [FMP income]"
+    - "CapEx FY2025: $11M [FMP cashflow]"
+    - "Interest expense FY2025: $77M [FMP income]"
+    - "Net debt FY2025: $1.19B [FMP balance]"
+    - "Q4 FY2025 Rev: $894M, OPM 48.5% [FMP income quarterly]"
+    - "Q1 FY2026 Rev: $686M, OPM 32.3% [FMP income quarterly]"
+  soft_data:  # 需要估算或推断
+    - "ARR FY2025: ~$2.45B, CC增速~8-9% [earnings call, 非10-K披露]"
+    - "Deferred ARR 3x增长 [earnings call commentary]"
+    - "有机增速拆分(价量): 估算价6-8pp/量2-3pp [推导, 无硬来源]"
+    - "SaaS迁移提价贡献: 估算3-4pp ARR增速 [推导]"
+    - "收购贡献: 估算2-3pp [推导, Codebeamer/ServiceMax年化]"
+  missing:  # 需要WebSearch补充
+    - "WACC假设的行业基准(工业软件平均WACC)"
+    - "PTC管理层的FCF/ARR guidance for FY2026"
+
+# ═══ Ch2: PE折价解构 ═══
+ch2_data:
+  hard_data:
+    - "ADSK: PE ~28x, Rev $6.13B, OPM ~25%, FCF Yield 4.5% [FMP]"
+    - "CDNS: PE ~45x, Rev $5.30B, OPM ~31%, FCF Yield 1.9% [FMP]"
+    - "PTC: PE 19.1x (fwd), OPM 35.9%, FCF Yield 4.9% [FMP]"
+    - "PTC R&D/Rev: 16.7%, ADSK 22.8%, CDNS 33.4% [FMP ratios]"
+    - "PTC SBC/Rev: 7.9%, ADSK 10.9%, CDNS 8.6% [FMP key-metrics]"
+  soft_data:
+    - "DASTY: PE ~32x, Rev ~$6.5B [估算, 需要补充FMP数据]"
+    - "PLM市场份额: PTC ~9% vs Siemens ~12% [ABI Research, 需WebSearch确认]"
+    - "CAD市场份额: PTC ~5-8% vs ADSK ~25-30% [估算]"
+  missing:
+    - "DASTY精确财务数据 [需要FMP调用]"
+    - "ANSS(已被Synopsys收购)的参考数据"
+
+# ═══ Ch3: 身份定义+产品矩阵 ═══
+ch3_data:
+  hard_data:
+    - "CAD ARR: $961M (Q1 FY2026, 38.5%) [earnings release]"
+    - "PLM ARR: $1,533M (Q1 FY2026, 61.5%) [earnings release]"
+    - "总ARR: $2,494M (Q1 FY2026) [earnings release]"
+    - "经常性收入占比: ~95% [10-K]"
+    - "Goodwill: $3.49B (FY2025) [FMP balance]"
+    - "Goodwill/总资产: 65.6% [FMP key-metrics]"
+    - "Onshape收购价: $4.7亿 (2019) [10-K]"
+    - "Arena收购价: $7.15亿 (2021) [10-K]"
+    - "Codebeamer收购价: ~$15亿 (2023) [10-K]"
+    - "ServiceMax收购价: ~$14.6亿 (2023) [10-K]"
+    - "IoT剥离价: $600M+$125M或有 (2026.3.16) [8-K]"
+  soft_data:
+    - "Codebeamer独立ARR: 估算$100-200M [PTC不披露]"
+    - "ServiceMax独立ARR: 估算$200-300M [PTC不披露]"
+    - "Onshape独立ARR: 估算<$50M [PTC不披露]"
+    - "Arena独立ARR: 估算$50-100M [PTC不披露]"
+    - "CQ1评分: 组合5.8 vs 平台4.5 [v1分析, 保留]"
+  note: "PTC只披露CAD vs PLM两个分类。所有子产品ARR都是推断→必须在报告中标注[估算]"
+
+# ═══ Ch4: 客户锁定深度 ═══
+ch4_data:
+  hard_data:
+    - "客户数: ~4万家 [10-K]"
+    - "DSO: 133天 (FY2025) [FMP key-metrics]"
+    - "CCC: 124天 (FY2025) [FMP key-metrics]"
+    - "GRR: 不披露 → 用间接法推断"
+  soft_data:
+    - "平均ARR/客户: ~$60K [总ARR/客户数, 推导]"
+    - "切换成本: 5-30x年ARR [推断, 基于行业案例]"
+    - "总锁定价值: ~$12B [4万×$300K, 推导]"
+    - "行业分布: 航空30%/汽车25%/医疗20%/工业20%/电子10% [估算]"
+    - "C1五层评分: L1=4.6/L2=6/L3=9/L4=4/L5=7, 加权6.2 [v1分析]"
+    - "定价权分层: Tier1 Stage4/Tier2 Stage3/Tier3 Stage2 [推导]"
+  missing:
+    - "NRR/GRR: PTC不披露 → 需要间接推断(Ch5)"
+    - "客户按行业的具体收入分布 [10-K可能有线索]"
+
+# ═══ Ch5: SaaS迁移提价 ═══
+ch5_data:
+  hard_data:
+    - "Windchill+ pipeline '可能的历史纪录' [Q1 FY2026 earnings call]"
+    - "SaaS迁移提价1.5-2.5x [management commentary]"
+    - "FY2025 SGA/Rev: 28.9% vs FY2023 36.4% [FMP income]"
+  soft_data:
+    - "SaaS渗透率: 估算15-25% [推导]"
+    - "剩余迁移跑道: 4-6年 [推导]"
+    - "NRR(含SaaS迁移): 100-110% [推导]"
+    - "NRR(排除SaaS迁移): 97-98% [推导]"
+    - "Magic Number(年度): 0.43x [推导]"
+    - "LTV/CAC: 8.5x [推导]"
+  missing:
+    - "Creo+/Windchill+的具体定价阶梯 [需WebSearch]"
+    - "迁移客户的实际续约率 [PTC不披露]"
+
+# ═══ Ch6: Codebeamer+ServiceMax ═══
+ch6_data:
+  hard_data:
+    - "Codebeamer收购价: $15亿 [10-K]"
+    - "ServiceMax收购价: $14.6亿 [10-K]"
+    - "ServiceMax 'unexpected churn' + 'not out of the woods' [Q4 FY2025 earnings call]"
+    - "'有史以来最大Codebeamer订单' [FY2025-26 earnings calls]"
+    - "IoT剥离: $600M+$125M或有 [8-K]"
+    - "FSM市场前5占34-36% [IDC MarketScape]"
+  soft_data:
+    - "Codebeamer回报期: 基准9年 [推导]"
+    - "ServiceMax成功概率: 40-45% [推导]"
+    - "Codebeamer成功概率: 60-65% [推导]"
+  missing:
+    - "ServiceMax的churn具体数据(ARR变化) [PTC不披露]"
+    - "Codebeamer的增速数据 [PTC不披露]"
+    - "汽车SDV ALM市场规模 [需WebSearch]"
+
+# ═══ Ch7: PTC vs Siemens ═══
+ch7_data:
+  hard_data:
+    - "ABI Research 2025: Teamcenter #1, Windchill #2 [WS]"
+    - "Siemens Digital Industries Rev: ~$5.5B [Siemens年报]"
+    - "Siemens收购Altair: $10.6B (2025) [公开]"
+  soft_data:
+    - "PTC PLM份额 ~9%, Siemens ~12% [ABI/估算]"
+    - "每年份额变化: ~-1pp [推导]"
+    - "R&D投入对比: PTC $458M vs Siemens DI >$1.5B [估算]"
+  missing:
+    - "Siemens Teamcenter X的客户数/渗透率 [需WebSearch]"
+    - "PLM市场win/loss数据 [很难获取]"
+
+# ═══ Ch8: AI+慢变量 ═══
+ch8_data:
+  hard_data:
+    - "Creo GDX: ABI生成式设计领导者 [ABI]"
+    - "Windchill AI: 2026.1发布 [press release]"
+    - "Servigistics AI: 2025.9发布 [press release]"
+  soft_data:
+    - "AI NPV: $150-300M [粗略推导]"
+    - "4个慢变量评估 [v1分析]"
+    - "CEO沉默域5项 [v1分析]"
+  missing:
+    - "Siemens Industrial Copilot的具体功能对比 [需WebSearch]"
+
+# ═══ Ch9: ISDD诊断 ═══
+ch9_data:
+  hard_data:  # 全部来自FMP, 质量高
+    - "6年P&L完整数据 [FMP income annual ×6]"
+    - "8季度P&L完整数据 [FMP income quarterly ×8]"
+    - "6年cashflow完整数据 [FMP cashflow annual ×6]"
+    - "6年balance完整数据 [FMP balance annual ×6]"
+    - "SBC FY2025: $216M [FMP cashflow]"
+    - "D&A FY2025: $135M [FMP income]"
+    - "有效税率: ~20% [FMP ratios]"
+    - "ROIC: 14.4% [FMP key-metrics]"
+    - "ROE: 19.2% [FMP key-metrics]"
+    - "FCF/NI: 117% [FMP key-metrics/推导]"
+  soft_data:
+    - "并购摊销: ~$100M [估算, 需10-K验证]"
+    - "归一化税率(3年中位数): ~20% [FMP推导]"
+  python_models:
+    - "EPS四因素分解"
+    - "经营杠杆倍数"
+    - "三版盈利(GAAP/调整/归一化)"
+
+# ═══ Ch10: 资本配置 ═══
+ch10_data:
+  hard_data:
+    - "6年OCF/CapEx/FCF/收购/债务/回购 [FMP cashflow]"
+    - "FY2025回购: $300M [FMP cashflow commonStockRepurchased]"
+    - "FY2025 SBC: $216M [FMP cashflow]"
+    - "FY2025债务偿还(净): $553M [FMP cashflow]"
+    - "净债务变化: $1.66B→$1.19B [FMP balance]"
+  soft_data:
+    - "净回购效果: 0.4% [推导: 回购$300M - SBC稀释$216M]"
+
+# ═══ Ch11: 估值 ═══
+ch11_data:
+  hard_data:
+    - "所有前序章节的硬数据汇总"
+    - "FMP DCF: 参考但不依赖"
+    - "分析师共识EPS: $7.87/$8.54/$9.65 [FMP estimates]"
+  python_models:
+    - "10年DCF(多WACC×多增速)"
+    - "SOTP(PLM+CAD+Codebeamer+ServiceMax)"
+    - "敏感性矩阵(3D: WACC×增速×终端倍数)"
+    - "概率加权5情景"
+    - "估值离散度检验"
+
+# ═══ Ch12: KS+判定 ═══
+ch12_data:
+  hard_data:
+    - "所有CQ闭环结论"
+  soft_data:
+    - "KS触发条件和阈值 [设计]"
+    - "护城河数据卡YAML [产出]"
