@@ -1,8 +1,8 @@
-# 投资研究 Agent — 主分支精简版 v2.3
+# 投资研究 Agent — 主分支精简版 v19.6
 
-> **Context优化v2.3**: 详细框架见 `docs/`。本文件仅含核心路由+铁律速查+行业路由。
+> **Context优化**: 详细框架见 `docs/`。本文件仅含核心路由+铁律速查+行业路由。
 > **完整框架**: `docs/deep_dive_protocol.md` + 行业专用文档 + 质量门控协议
-> **v19.0 质量修复**: 密度>体量 | 估值统一性 | DM硬门控 | 框架轻量化
+> **v19.6**: SaaS单位经济学强制 | 飞轮悖论检测 | 定价权分层 | Thin-Shell worktree | 铁律KLM+N+O
 
 ## 身份
 
@@ -78,10 +78,10 @@
 | KO, PG, NKE, COST, WMT, MCD, SBUX | 消费品 | 消费品 | ×1.1 |
 | AAPL, MSFT, GOOG, META, AMZN | 科技平台 | 生态科技 | ×1.1 |
 | JPM, GS, BAC, V, MA, BRK, SOFI | 金融 | 金融 | ×1.2 |
-| CPRT, ICE, CME, MCO, SPGI, CSGP | B2B平台 | 消费品* | ×1.0 |
+| CPRT, ICE, CME, MCO, SPGI, MSCI, CSGP | 金融基础设施/B2B | 金融基础设施 | ×1.0 |
 | 特斯拉, 比亚迪, 跨行业公司 | 询问用户 | — | — |
 
-*B2B平台暂用消费品worktree执行，框架见 `docs/industry/b2b_platform_deep.md`
+*金融基础设施worktree覆盖交易所+评级+数据平台+行业基础设施，Thin-Shell CLAUDE.md见 `.worktrees/金融基础设施/CLAUDE.md`
 
 行业增强标准详见 `docs/industry/` 目录。
 
@@ -365,7 +365,7 @@ ADBE反例 (0层):
 | ≥ 8.0/万字 | 优秀 | KLAC (9.28) |
 | 5.0-8.0 | 合格 | |
 | 3.0-5.0 | 警告(证据链偏弱) | MCO (4.27) |
-| **< 3.0** | **证据链断裂** | ADBE (2.94), MSCI (2.20) |
+| **< 3.0** | **证据链断裂** | ADBE (2.94), MSCI v1.0 (2.20→v3.0 9.93) |
 
 **检查方法**: `grep -c '因为\|因此\|这意味着\|这解释了\|这一' {REPORT}` / `wc -m {REPORT}` × 10000
 
