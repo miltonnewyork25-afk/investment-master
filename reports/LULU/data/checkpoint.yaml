@@ -6,13 +6,47 @@ worktree: "consumer"
 industry: "consumer"
 last_updated: "2026-03-20T06:05:02+00:00"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: "0.75"
+phase_status: thesis_crystallization_done
+phases_completed: ["-1", "-0.5", "0", "0.75"]
 
-target_chars: 300000
-target_range: "240K-375K"
-hard_floor: 200000
+target_chars: 350000
+target_range: "300K-400K"
+hard_floor: 270000
+
+# Phase 0 data
+quick_ref:
+  stock_price: "$165.57 (2026-03-19)"
+  market_cap: "$19.7B"
+  pe_ttm: "12.0x"
+  pe_10yr_avg: "42x"
+  pe_discount: "-71%"
+  eps_fy25: "$13.26"
+  eps_fy26e: "$12.10-12.30 (guided DOWN)"
+  revenue_fy25: "$11.10B (+4.9%)"
+  gross_margin: "56.6% (-260bps)"
+  opm: "19.9% (-380bps)"
+  roic: "35.0%"
+  fcf: "$960M"
+  z_score: "6.58 (极度健康)"
+  rsi: "23.1 (极度超卖)"
+  52w_decline: "-68% from highs"
+  buyback_yield: "6.2%"
+  core_contradiction: "ROIC 35%的极度健康公司在PE 12x(历史最低)→市场定价永久低增长(g=2%)→如果品牌未死+增速恢复5%→$244(+47%)"
+  reverse_dcf_implied_g: "2.0% (vs 历史15.4%)"
+
+# 5 Core Questions
+cq:
+  CQ1: "美洲同店7连降:周期还是结构?"
+  CQ2: "11x PE:价值陷阱还是世代级机会?"
+  CQ3: "中国增长:真增长还是利润稀释?"
+  CQ4: "三重治理危机:灾难还是催化?"
+  CQ5: "品牌溢价能否撑住?Alo/Vuori的真实威胁"
+
+# 8-chapter structure (depth>breadth)
+chapters: 8
+chapter_avg_target: "25-30K"
+frameworks: "信念反演+ISDD+消费品M+activism案例"
 
 quick_ref:
   total_chars: 0
