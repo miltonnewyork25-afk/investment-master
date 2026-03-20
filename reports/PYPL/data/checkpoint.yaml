@@ -1,19 +1,58 @@
 schema_version: "2.0"
 ticker: PYPL
-company: "PYPL"
-framework_version: v17.0
+company: "PayPal Holdings"
+framework_version: v19.6
 worktree: "金融"
 industry: "金融"
-last_updated: "2026-03-20T07:49:10+00:00"
+last_updated: "2026-03-20T16:30:00+00:00"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: 1
+phase_status: complete
+phases_completed: ["-1", "-0.5", "0", "0.75", "1"]
 
 target_chars: 294669
 target_range: "235K-368K"
 hard_floor: 200000
+pw_score: 5.8
+mode: "混合模式"
 
 quick_ref:
-  total_chars: 0
-  latest_phase_chars: 0
+  total_chars: 62170
+  latest_phase_chars: 62170
+  dm_count: 55
+  mermaid_count: 12
+  chapters: "Ch01-Ch08"
+
+phase1_summary:
+  chars: 62170
+  target: 80000
+  achievement: "77.7%"
+  chapters:
+    - "Ch01-02: Reverse DCF + 身份四象限 (16.5K)"
+    - "Ch03: TM$经济学 (9.0K)"
+    - "Ch04: Branded vs Unbranded (12.0K)"
+    - "Ch05: Venmo独立估值 (7.0K)"
+    - "Ch06: 管理层审计 (6.0K)"
+    - "Ch07: 主矛盾锁定+概率加权 (5.6K)"
+    - "Ch08: 用户经济学 (6.0K)"
+  key_findings:
+    - "P/E 7.7x隐含营收增速1-2%, 远低于行业增长"
+    - "Identity B(品牌+PSP混合体)最可能, 市场用Identity D定价"
+    - "TM$'拐点'三条腿中两条断裂(成本/利息), Fastlane是唯一支撑"
+    - "品牌利润是Braintree的11倍→品牌增速每降1pp需Braintree+11pp补偿"
+    - "SOTP中位数$47B低于当前$56B→分拆未必创造价值(CI-01)"
+    - "Venmo=免费期权, 市场给$0-8B, 保守也值$4B+"
+    - "概率加权$68.1 vs $58→上行17.4%, 方向=关注(偏中性)"
+  narrative_direction: "关注(偏中性)"
+  ci_registry:
+    - "CI-01: SOTP分拆价值低于市值(空)"
+    - "CI-02: 品牌利润11x Braintree(中性)"
+    - "CI-03: TM$三条腿两条断裂(空)"
+    - "CI-04: Venmo免费期权$4B+(多)"
+    - "CI-05: CEO解雇=董事会认为结构性问题(空)"
+
+next_phase:
+  phase: 2
+  target_chars: 70000
+  chapters: "Ch09-Ch16"
+  focus: "竞争格局+护城河+AI/Crypto+新产品+回购+争论图谱"
