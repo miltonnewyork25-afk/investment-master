@@ -1,33 +1,67 @@
-schema_version: "2.0"
+schema_version: "3.0"
 ticker: PTC
 company: "PTC Inc"
 framework_version: v19.6
 worktree: "eco_tech"
 industry: "industrial_saas"
-report_version: "v1.0"
-last_updated: "2026-03-20T14:00:00+08:00"
+report_version: "v3.0"
+last_updated: "2026-03-20"
+
+# === v3.0 重启 ===
+# v1.0失败: 6个碎片文件+3个_ext → Phase 1仅46.7K/目标115K(41%)
+# v2.0失败: Phase 2仅13K → 重写后仍浅 → 系统性深度不足
+# v3.0核心改变: 减少章节数+每章写深(≥10K) + 逐章字符硬门控 + 禁止_ext文件
 
 current_phase: "1"
-phase_status: "v2_session0_complete"
+phase_status: "not_started"
 phases_completed: ["-1", "-0.5", "0", "0.5", "0.75"]
-report_version: "v2.0"
 
-# 计划版本
-plan_version: "v2.0(问题树v1.0整合)"
-plan_file: "reports/PTC/data/ptc_analysis_plan_v2.md"
+# === 执行纪律(v3.0新增) ===
+execution_discipline:
+  rule_1: "每章≥8K字符，核心章≥12K — 写完wc -m校验，不达标不写下一章"
+  rule_2: "禁止_ext文件 — 深度不够当场写深，不是事后补丁"
+  rule_3: "单文件产出 — 每个Phase一个staging文件(phase1_v3.md)"
+  rule_4: "禁止Phase内中断 — 连续写到Phase完成才停"
+  rule_5: "3章一检查 — 每完成3章做字符+DM+因果密度检查点"
 
-# 目标
+# === 精简结构(v2.0 45章→v3.0 20-22章) ===
+# 根因: v1/v2失败不是计划不好，是章节太多导致每章都浅
+# 解决: 砍掉重复/低价值章节，核心问题深挖
+structure:
+  total_chapters: "20-22"
+  phase1_chapters: "10-12章(≥100K)"
+  phase2_chapters: "4-5章(≥50K)"
+  phase3_chapters: "4-5章(≥60K)"
+  phase4_chapters: "2-3章(≥30K)"
+
+  phase1_outline:
+    Ch1: "Reverse DCF + 信念反演(市场在赌什么) — ≥10K"
+    Ch2: "身份定义×估值分叉 + ADSK/CDNS/DASTY对标 — ≥10K"
+    Ch3: "客户深拆(航空/国防/医疗/汽车 × 嵌入深度+增长) — ≥12K"
+    Ch4: "部署摩擦双面性(护城河AND天花板) + NRR推断 + SaaS经济学 — ≥12K"
+    Ch5: "CAD(Creo) + PLM(Windchill) 深拆 — ≥10K"
+    Ch6: "Onshape + Codebeamer + Arena 深拆 — ≥10K"
+    Ch7: "ServiceMax + SLM + IoT剥离Pro-Forma — ≥10K"
+    Ch8: "组合vs平台(CQ1) + 飞轮悖论检测 + 数字主线验证 — ≥10K"
+    Ch9: "竞争格局(Siemens/ADSK/Dassault × 5赛道) — ≥12K"
+    Ch10: "工业AI演绎(5步因果链) + AI护城河评估 — ≥10K"
+    Ch11: "管理层+资本配置+CEO沉默域 — ≥8K"
+    Ch12: "财务深拆(ISDD) + OPM爆发解构 + 周期敏感性 — ≥12K"
+
+  phase1_target: "120K-130K"
+
+# === 目标(v3.0调整) ===
 targets:
-  chars: 350000
-  chars_range: "300K-400K"
-  dm_density: "≥2.0/千字"
-  dm_total: "≥600"
-  mermaid: "≥45(含14强制图谱)"
-  causal_density: "≥8.0/万字"
-  sessions_min: 4
-  score_target: "≥4.4(90/110)"
+  chars: 300000
+  chars_range: "270K-350K"
+  dm_density: "≥1.5/千字"
+  dm_total: "≥450"
+  mermaid: "≥30"
+  causal_density: "≥6.0/万字"
+  sessions: "4-5"
+  score_target: "≥4.3"
 
-# 价格快照
+# === 价格快照(继承，需更新) ===
 price_snapshot:
   date: "2026-03-19"
   price: 150.11
@@ -40,9 +74,9 @@ price_snapshot:
   arr_growth_cc: "8.5%"
   opm_gaap: "35.9%"
   fcf: "857M"
-  recent_event: "IoT(ThingWorx/Kepware)剥离给TPG完成(2026.3.16, $600M+$125M或有)"
+  recent_event: "IoT剥离给TPG完成(2026.3.16, $600M+$125M或有)"
 
-# CQ体系(预定义)
+# === CQ体系(继承) ===
 cq:
   CQ0: "PTC应该被定义为什么?(5种定义→5种估值)"
   CQ1: "组合还是平台?(digital thread真实性)"
@@ -51,87 +85,32 @@ cq:
   CQ4: "工业AI是营销还是结构性?"
   CQ5: "Siemens能蚕食PTC PLM份额吗?"
   CQ6: "Onshape能从中小渗透大企业吗?"
-  CQ7: "Forward PE 22x是折价还是合理?"
+  CQ7: "Forward PE 18x是折价还是合理?"
   CQ8: "制造业CapEx下行如何影响PTC?"
 
-# 可比对标(P0强制)
+# === 可比对标(继承) ===
 comparable:
   primary: "ADSK(最相似:CAD竞争+工业客户+类似增速)"
   secondary: "CDNS(PE参考:工业软件+高PE)"
   tertiary: "DASTY(PLM竞争:Dassault Systemes)"
-  pe_comparison: "PTC 22x vs ADSK 28x vs CDNS 45x vs DASTY 32x"
 
-# 报告结构
-structure:
-  parts: 8
-  chapters: 45
-  appendices: 5
-  part0: "Ch1-3: 身份+信念+对标"
-  part1: "Ch4-6: 工业客户深拆"
-  part2: "Ch7-14: 7产品独立深拆+组合vs平台+飞轮"
-  part3: "Ch15-19: 竞争+AI"
-  part4: "Ch20-29: 财务+估值"
-  part5: "Ch30-34: 深度分析"
-  part6: "Ch35-40: 红队+校准"
-  part7: "Ch41-43: 追踪+圆桌"
-  part8: "Ch44-45: 跨公司"
-
-# 参考框架
-reference_frameworks:
-  - "Enterprise SaaS模块 v19.6(M1-M10+E1-E3)"
-  - "KLAC(4.5分标杆): 五引擎+信念反演+周期分析"
-  - "SEMI_EQUIPMENT(4.3分): A-Score+配对对决+PtW"
-  - "CRM v2.0(4.1分): 飞轮悖论+定价权剪刀差+演绎法+AIAS-PE"
-  - "FICO: 制度嵌入C1分析(Codebeamer合规)"
-  - "问题树v1.0: 17个维度+14强制Mermaid"
-
-next_action: "v2.0 Phase 1全新写作 — 12章单文件, 逐章完成制, 数据先行"
-next_session: "S1: Phase 1 Ch1-12连续写作(100-120K), 产出phase1_v2.md单文件"
-v2_plan: "reports/PTC/data/narrative_roadmap_v2.md"
-v2_data_inventory: "reports/PTC/data/chapter_data_inventory.yaml"
-v1_archive: "reports/PTC/staging/v1_archive/"
-
-# Phase 1进度
-phase1_progress:
-  chars: 100028
-  chars_target: 115000
-  completion: "87%"
-  dm_count: 229
-  dm_density: "2.29/千字(✅)"
-  causal_density: "11.1/万字(✅, KLAC级)"
-  mermaid: 14
-  chapters_done: "Ch1-14全14章补强+Ch15-19前置分析+6维度框架补充(CEO沉默/C1五层/有机增速/护城河速度/慢变量/Bundle审计)"
-  staging_files:
-    - "reports/PTC/staging/phase1_part0.md (16.9K) — Ch1 Reverse DCF+FCF桥接+OPM天花板 | Ch2 5种身份定义+历史演变 | Ch3 PE折价解构+CDNS/DASTY参考"
-    - "reports/PTC/staging/phase1_part1.md (14.7K) — Ch4 客户图谱+采购链+定价权剪刀差 | Ch5 部署摩擦量化($12B锁定) | Ch6 NRR推断+Magic Number"
-    - "reports/PTC/staging/phase1_part1_ext.md (6.0K) — Ch4扩展LTV/CAC(8.5x)+周期敏感性+竞争替换四触发器 | Ch5扩展云化三层经济学 | Ch6扩展季节性+ARR vs GAAP+SBC"
-    - "reports/PTC/staging/phase1_part2.md (21.0K) — Ch7-14产品深拆全14章(Creo/Windchill/Onshape/Arena/Codebeamer/ServiceMax/CQ1组合vs平台/飞轮)"
-    - "reports/PTC/staging/phase1_part2_ext.md (8.4K) — Creo定价阶梯+Windchill CQI评估+护城河寿命+Codebeamer回报期+ServiceMax IoT 2.0类比+组合→平台历史案例+增长接力赛"
-    - "reports/PTC/staging/phase1_part2_ext2.md (9.4K) — 五赛道竞争定位+PTC vs Siemens+工业AI五步演绎+A-Score(5.82/10)+管理层评估+资本配置+IoT剥离Pro-Forma"
-  quality_note: "v19.7框架驱动补充完成。已覆盖CQ0-CQ9全部+CEO沉默域+C1五层+有机增速+护城河速度+慢变量+Bundle审计。关键新发现: 纯有机增速仅5-6%→Reverse DCF需从'偏保守'调整为'可能合理'。剩余扩展: Part I/II深化约28K"
-  framework_driven_additions:
-    - "CEO沉默域5项(FICO QG-01.5): ServiceMax KPI沉默=数据更差/Onshape收入沉默=ARR<$50M"
-    - "C1五层嵌入(FICO): 加权6.2/10, L3数据=9/10核心, Codebeamer正在增强L1"
-    - "真实有机增速(质量框架): 5-6%(剔除SaaS迁移3-4pp+收购2-3pp)→PE 18x可能合理"
-    - "护城河速度(KLAC): 宽度缩小(份额-1pp/年)+深度加深(数据累积)→安全但不兴奋"
-    - "慢变量4项(CRM): PLM标准化/工程师代际/Onshape蚕食/AI降复杂度→5-10年累积"
-    - "Bundle证据审计(CRM): 个案正面+系统数据缺失→组合5.8 vs 平台4.5不变"
-
-# Phase 0.5 CQ路由
+# === 核心矛盾(继承) ===
+core_contradiction: "转型中的优质资产被当作低增长资产定价"
 possibility_width: 4.0
 methodology: "混合模式(传统估值+可能性附录)"
 
-# Phase 0.75 核心矛盾结晶
-core_contradiction: "转型中的优质资产被当作低增长资产定价"
-hypotheses: 4
-thesis_file: "reports/PTC/data/thesis_crystallization.md (4018 chars)"
-
-# Phase 0数据预取产出
+# === 前期研究(全部保留) ===
 data_files:
-  lit_recon: "reports/PTC/data/lit_recon_memo.md (3906 chars)"
+  thesis_crystallization: "reports/PTC/data/thesis_crystallization.md"
+  shared_context: "reports/PTC/data/shared_context.md"
+  lit_recon: "reports/PTC/data/lit_recon_memo.md"
   data_prefetch: "reports/PTC/data/phase0_data_prefetch.md"
   sec_notes: "reports/PTC/data/sec_filing_notes.md"
-  knowledge_context: "reports/PTC/data/knowledge_context.md (1526 chars)"
+  knowledge_context: "reports/PTC/data/knowledge_context.md"
 
-# 价格更新(2026-03-18收盘)
-price_note: "价格从计划时$159.52降至$150.11(-5.9%), Forward PE从22x降至18.2x"
+# === 历史归档 ===
+archives:
+  v1: "reports/PTC/staging/v1_archive/"
+  v2: "reports/PTC/staging/v2_archive/"
+
+next_action: "v3.0 Phase 1 开始 — Ch1 Reverse DCF(≥10K), 数据先行, 逐章硬门控"
