@@ -52,9 +52,14 @@ ch1_data:
     - "有机增速拆分(价量): 估算价6-8pp/量2-3pp [推导, 无硬来源]"
     - "SaaS迁移提价贡献: 估算3-4pp ARR增速 [推导]"
     - "收购贡献: 估算2-3pp [推导, Codebeamer/ServiceMax年化]"
-  missing:  # 需要WebSearch补充
-    - "WACC假设的行业基准(工业软件平均WACC)"
-    - "PTC管理层的FCF/ARR guidance for FY2026"
+  websearch_updates:  # WebSearch补充(2026-03-20)
+    - "CC ARR增速: +9% ex-IoT, +8.4% including [WS-001] → 硬来源确认"
+    - "FCF Q1 FY2026: $267M, +13% YoY [WS-001]"
+    - "Deferred ARR: 3x YoY, contractually secure [WS-002]"
+    - "PLM Rev Q1: $432M +22%, CAD Rev Q1: $254M +20% [WS-003]"
+    - "FY2026回购指引: $1.1-1.3B(含$375M ASR) [WS-010] → 大幅上调!"
+    - "IoT剥离: $523M现金/$375M税后净/$464M GAAP gain [WS-010/011]"
+    - "ARR增速指引FY2026: 7-9% [WS-007]"
 
 # ═══ Ch2: PE折价解构 ═══
 ch2_data:
@@ -204,7 +209,11 @@ ch10_data:
     - "FY2025债务偿还(净): $553M [FMP cashflow]"
     - "净债务变化: $1.66B→$1.19B [FMP balance]"
   soft_data:
-    - "净回购效果: 0.4% [推导: 回购$300M - SBC稀释$216M]"
+    - "净回购效果v1: 0.4% [FY2025: 回购$300M - SBC稀释$216M]"
+  websearch_updates:
+    - "FY2026回购: $1.1-1.3B(含IoT $375M ASR) [WS-010] → 净回购效果大幅改善!"
+    - "$1.2B回购 / $17.9B市值 = 6.7%回购收益率 → 扣除SBC~$220M → 净缩减~5.5%/年"
+    - "这改变了Ch10的核心结论: 回购从'未证明'→'已承诺且规模显著'"
 
 # ═══ Ch11: 估值 ═══
 ch11_data:
