@@ -1,0 +1,68 @@
+schema_version: "2.0"
+ticker: VRSN
+company: "VeriSign, Inc."
+framework_version: v19.6
+worktree: "金融基础设施"
+industry: "financial_infrastructure"
+last_updated: "2026-03-23T16:00:00+08:00"
+
+current_phase: 0
+phase_status: "in_progress"
+phases_completed: [-1, -0.5]
+
+target_chars: 270000
+target_range: "250K-350K"
+hard_floor: 200000
+
+# VRSN核心参数
+price_at_analysis: "$240.78"
+market_cap_B: 22.3
+pe_at_analysis: "27.1x"
+ev_ebitda: "20.4x"
+fcf_yield: "4.8%"
+revenue_fy2025: "$1,657M"
+eps_fy2025: "$8.81"
+fcf_fy2025: "$1,068M"
+opm_fy2025: "67.7%"
+fcf_margin: "64.5%"
+employees: 929
+shares_out: "92.6M"
+net_debt: "$1,490M"
+nd_ebitda: "1.27x"
+
+# 巴菲特持仓
+buffett_entry_avg: "$35.60"
+buffett_shares_peak: "~13.3M"
+buffett_shares_current: "~9.0M (post Q3 2025 sale)"
+buffett_total_return: "+518%"
+buffett_cagr: "~15-16%"
+
+# 域名数据
+com_domains_fy2025: "161M"
+com_wholesale_price: "$10.26"
+com_price_next_increase: "2026-09 → $10.97 (est)"
+contract_expiry: "2030-11-30"
+price_increase_allowed: "7%/year in 4 of 6 years"
+
+# CQ初始
+hypotheses:
+  - CQ1_contract_unbreakable
+  - CQ2_pricing_reflexivity
+  - CQ3_buffett_signal
+  - CQ4_domain_peak
+  - CQ5_buyback_efficiency
+  - CQ6_political_cycle
+  - CQ7_opm_ceiling
+  - CQ8_dns_split
+
+cq_initial: "CQ1:82% CQ2:58% CQ3:50% CQ4:55% CQ5:65% CQ6:60% CQ7:70% CQ8:25%"
+
+# 质量目标
+quality_target: "4.4/5.0 (≥88/110)"
+dm_density_target: "≥2.0/千字"
+causal_density_target: "≥7.0/万字"
+mermaid_target: "≥30"
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
