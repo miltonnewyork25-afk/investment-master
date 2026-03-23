@@ -1,0 +1,66 @@
+schema_version: "2.0"
+ticker: FICO
+company: "FICO"
+framework_version: v18.2
+worktree: "金融"
+industry: "金融"
+last_updated: "2026-03-10"
+
+current_phase: "Complete"
+phase_status: "Complete v1.0 组装完成"
+phases_completed:
+  - phase: "-1"
+    date: "2026-03-10"
+    output: "launch_brief.md + knowledge_context.md"
+  - phase: "-0.5"
+    date: "2026-03-10"
+    output: "lit_recon_memo.md (7/7 scout完成)"
+  - phase: "0"
+    date: "2026-03-10"
+    output: "MCP数据+温度+SGI+A-Score+DOJ护城河研究"
+  - phase: "0.75"
+    date: "2026-03-10"
+    output: "thesis_crystallization.md (4个CI假说+CQ声明+PW=5.2)"
+  - phase: "1"
+    date: "2026-03-10"
+    output: "Ch1-6 商业模式深潜(43K)"
+  - phase: "2"
+    date: "2026-03-10"
+    output: "Ch7-10 财务深潜(27K)+Python DCF验证"
+  - phase: "3"
+    date: "2026-03-10"
+    output: "Ch11-16B 护城河+竞争+风险拓扑+PtW+情景+反垄断(73K)"
+  - phase: "3.8"
+    date: "2026-03-10"
+    output: "Ch16 投资大师圆桌v2.0(1.9/5全员不买)"
+  - phase: "4"
+    date: "2026-03-10"
+    output: "Ch17 红队RT-1~RT-7(+$19校准, 有效性3.75/5)"
+  - phase: "5"
+    date: "2026-03-10"
+    output: "Ch18-19 估值综合+CQI验证+DM注册表"
+
+target_chars: 294669
+target_range: "235K-368K"
+hard_floor: 200000
+
+quick_ref:
+  total_chars: 175000
+  latest_phase_chars: 175000
+  temperature: "+0.62 偏热"
+  sgi: 9.5
+  a_score: 51.1
+  pw: 5.2
+  core_contradiction: "制度垄断 vs 制度风险"
+  rating: "审慎关注(偏中性)"
+  valuation: "$1,222 vs $1,441 = -16%"
+  complete_file: "FICO_Complete_v1.0.md"
+  complete_chars: 175309
+  complete_chapters: 22
+  next_phase: "已完成"
+
+ci_hypotheses:
+  CI-01: "制度垄断自我加固悖论 (70%, P3↑)"
+  CI-02: "定价权投资期权的时间衰减 (80%, P3↑)"
+  CI-03: "Scores-Software价值断裂 (75%, P3↓Falcon修正)"
+  CI-04: "FICO Direct License攻守转换 (60%, P3↑)"

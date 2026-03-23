@@ -1,0 +1,209 @@
+{
+  "symbol": "AIZ",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "AIZ",
+    "price": 218.53,
+    "marketCap": 10944225187,
+    "beta": 0.547,
+    "lastDividend": 3.36,
+    "range": "174.97-246.31",
+    "companyName": "Assurant, Inc.",
+    "currency": "USD",
+    "exchange": "NYSE",
+    "industry": "Insurance - Specialty",
+    "sector": "Financial Services",
+    "country": "US",
+    "fullTimeEmployees": "14200",
+    "ceo": "Keith Warner Demmings"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "period": "FY",
+      "revenue": 12814300000,
+      "grossProfit": 9886500000,
+      "operatingIncome": 1087400000,
+      "netIncome": 872700000,
+      "eps": 17.29,
+      "epsDiluted": 17.39,
+      "ebitda": 1447100000,
+      "interestExpense": 109700000,
+      "depreciationAndAmortization": 250000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "period": "FY",
+      "revenue": 11877500000,
+      "grossProfit": 9111000000,
+      "operatingIncome": 927300000,
+      "netIncome": 760200000,
+      "eps": 14.55,
+      "epsDiluted": 14.46,
+      "ebitda": 1257800000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "period": "FY",
+      "revenue": 11131600000,
+      "grossProfit": 8609800000,
+      "operatingIncome": 806800000,
+      "netIncome": 642500000,
+      "eps": 12.02,
+      "epsDiluted": 11.95,
+      "ebitda": 1111200000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "totalAssets": 36289600000,
+      "totalLiabilities": 30418000000,
+      "totalStockholdersEquity": 5871600000,
+      "cashAndCashEquivalents": 1834100000,
+      "totalDebt": 2206900000,
+      "netDebt": 372800000,
+      "goodwill": 2646300000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "totalAssets": 35020600000,
+      "totalLiabilities": 29913900000,
+      "totalStockholdersEquity": 5106700000,
+      "cashAndCashEquivalents": 1807700000,
+      "totalDebt": 2083100000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "totalAssets": 33635200000,
+      "totalLiabilities": 28825700000,
+      "totalStockholdersEquity": 4809500000,
+      "cashAndCashEquivalents": 1627400000,
+      "totalDebt": 2080400000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 1833900000,
+      "capitalExpenditure": -235500000,
+      "freeCashFlow": 1598400000,
+      "netIncome": 872700000,
+      "commonDividendsPaid": -168400000,
+      "commonStockRepurchased": -303700000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 1332700000,
+      "capitalExpenditure": -221300000,
+      "freeCashFlow": 1111400000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 1138100000,
+      "capitalExpenditure": -202500000,
+      "freeCashFlow": 935600000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.7715,
+      "netProfitMargin": 0.0681,
+      "returnOnEquity": 0.1486,
+      "currentRatio": 0.5504,
+      "debtToEquityRatio": 0.3759,
+      "priceToEarningsRatio": 13.93,
+      "dividendYieldPercentage": 1.39,
+      "interestCoverageRatio": 9.91
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.7671,
+      "netProfitMargin": 0.064,
+      "returnOnEquity": 0.1489,
+      "priceToEarningsRatio": 14.65
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "grossProfitMargin": 0.7735,
+      "netProfitMargin": 0.0577,
+      "returnOnEquity": 0.1336,
+      "priceToEarningsRatio": 14.02
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "marketCap": 12155611108,
+      "enterpriseValue": 12528411108,
+      "evToEBITDA": 8.66,
+      "returnOnInvestedCapital": 0.0704,
+      "freeCashFlowYield": 0.1315
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "marketCap": 11136849257,
+      "enterpriseValue": 11412249257,
+      "evToEBITDA": 9.07
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "marketCap": 9006656370,
+      "enterpriseValue": 9459656370,
+      "evToEBITDA": 8.51
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 0
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 0,
+      "totalSales": 2
+    },
+    {
+      "year": 2025,
+      "quarter": 3,
+      "totalPurchases": 0,
+      "totalSales": 3
+    }
+  ],
+  "quote": {
+    "symbol": "AIZ",
+    "name": "Assurant, Inc.",
+    "price": 218.53,
+    "changePercentage": 1.5,
+    "change": 3.23,
+    "volume": 199103,
+    "dayLow": 216.31,
+    "dayHigh": 218.83,
+    "yearHigh": 246.31,
+    "yearLow": 174.97,
+    "marketCap": 10944225187,
+    "priceAvg50": 231.11,
+    "priceAvg200": 215.89,
+    "exchange": "NYSE",
+    "previousClose": 215.3
+  }
+}

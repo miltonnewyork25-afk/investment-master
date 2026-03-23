@@ -1,0 +1,232 @@
+{
+  "symbol": "USB",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "USB",
+    "price": 51,
+    "marketCap": 79238700000,
+    "beta": 1.041,
+    "lastDividend": 2.04,
+    "range": "35.18-61.19",
+    "companyName": "U.S. Bancorp",
+    "currency": "USD",
+    "exchange": "NYSE",
+    "industry": "Banks - Regional",
+    "ceo": "Gunjan Kedia",
+    "sector": "Financial Services",
+    "country": "US",
+    "fullTimeEmployees": "70000",
+    "ipoDate": "1973-05-03",
+    "isActivelyTrading": true
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "symbol": "USB",
+      "fiscalYear": "2025",
+      "period": "FY",
+      "revenue": 42861000000,
+      "grossProfit": 26931000000,
+      "operatingIncome": 9517000000,
+      "ebitda": 10291000000,
+      "netIncome": 7576000000,
+      "eps": 4.62,
+      "epsDiluted": 4.61,
+      "interestExpense": 14321000000
+    },
+    {
+      "date": "2024-12-31",
+      "symbol": "USB",
+      "fiscalYear": "2024",
+      "period": "FY",
+      "revenue": 42712000000,
+      "grossProfit": 25097000000,
+      "operatingIncome": 7909000000,
+      "ebitda": 8848000000,
+      "netIncome": 6299000000,
+      "eps": 3.79,
+      "epsDiluted": 3.79,
+      "interestExpense": 15377000000
+    },
+    {
+      "date": "2023-12-31",
+      "symbol": "USB",
+      "fiscalYear": "2023",
+      "period": "FY",
+      "revenue": 40624000000,
+      "grossProfit": 25738000000,
+      "operatingIncome": 6865000000,
+      "ebitda": 7883000000,
+      "netIncome": 5429000000,
+      "eps": 3.27,
+      "epsDiluted": 3.27,
+      "interestExpense": 12611000000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "symbol": "USB",
+      "fiscalYear": "2025",
+      "cashAndCashEquivalents": 46890000000,
+      "totalAssets": 692345000000,
+      "totalLiabilities": 626694000000,
+      "totalStockholdersEquity": 65193000000,
+      "totalDebt": 77926000000,
+      "netDebt": 31036000000,
+      "goodwill": 12635000000
+    },
+    {
+      "date": "2024-12-31",
+      "symbol": "USB",
+      "fiscalYear": "2024",
+      "cashAndCashEquivalents": 56502000000,
+      "totalAssets": 678318000000,
+      "totalLiabilities": 619278000000,
+      "totalStockholdersEquity": 58578000000,
+      "totalDebt": 73520000000,
+      "netDebt": 17018000000
+    },
+    {
+      "date": "2023-12-31",
+      "symbol": "USB",
+      "fiscalYear": "2023",
+      "cashAndCashEquivalents": 61192000000,
+      "totalAssets": 663491000000,
+      "totalLiabilities": 607720000000,
+      "totalStockholdersEquity": 55306000000,
+      "totalDebt": 66759000000,
+      "netDebt": 5567000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "symbol": "USB",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 7970000000,
+      "freeCashFlow": 7970000000,
+      "commonDividendsPaid": -3168000000,
+      "commonStockRepurchased": -489000000
+    },
+    {
+      "date": "2024-12-31",
+      "symbol": "USB",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 11273000000,
+      "freeCashFlow": 11273000000,
+      "commonDividendsPaid": -3092000000,
+      "commonStockRepurchased": -173000000
+    },
+    {
+      "date": "2023-12-31",
+      "symbol": "USB",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 8447000000,
+      "freeCashFlow": 8447000000,
+      "commonDividendsPaid": -2970000000,
+      "commonStockRepurchased": -62000000
+    }
+  ],
+  "ratios": [
+    {
+      "symbol": "USB",
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.628,
+      "netProfitMargin": 0.177,
+      "returnOnEquity": 0.116,
+      "priceToEarningsRatio": 10.95,
+      "priceToBookRatio": 1.273,
+      "dividendYield": 0.0422
+    },
+    {
+      "symbol": "USB",
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.588,
+      "netProfitMargin": 0.148,
+      "returnOnEquity": 0.108,
+      "priceToEarningsRatio": 11.85,
+      "priceToBookRatio": 1.274,
+      "dividendYield": 0.0462
+    },
+    {
+      "symbol": "USB",
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "grossProfitMargin": 0.634,
+      "netProfitMargin": 0.134,
+      "returnOnEquity": 0.098,
+      "priceToEarningsRatio": 12.3,
+      "priceToBookRatio": 1.207,
+      "dividendYield": 0.0496
+    }
+  ],
+  "key_metrics": [
+    {
+      "symbol": "USB",
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "marketCap": 82974800000,
+      "enterpriseValue": 114010800000,
+      "evToEBITDA": 11.08,
+      "returnOnEquity": 0.116,
+      "freeCashFlowYield": 0.096
+    },
+    {
+      "symbol": "USB",
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "marketCap": 74614800000,
+      "enterpriseValue": 91632800000,
+      "evToEBITDA": 10.36,
+      "returnOnEquity": 0.108,
+      "freeCashFlowYield": 0.151
+    },
+    {
+      "symbol": "USB",
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "marketCap": 66781040000,
+      "enterpriseValue": 72348040000,
+      "evToEBITDA": 9.18,
+      "returnOnEquity": 0.098,
+      "freeCashFlowYield": 0.126
+    }
+  ],
+  "insider_trades": [
+    {
+      "symbol": "USB",
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 2
+    },
+    {
+      "symbol": "USB",
+      "year": 2025,
+      "quarter": 2,
+      "totalPurchases": 1,
+      "totalSales": 0
+    },
+    {
+      "symbol": "USB",
+      "year": 2023,
+      "quarter": 2,
+      "totalPurchases": 6,
+      "totalSales": 0
+    }
+  ],
+  "quote": {
+    "symbol": "USB",
+    "price": 51,
+    "marketCap": 79238700000,
+    "yearHigh": 61.19,
+    "yearLow": 35.18,
+    "priceAvg50": 55.755,
+    "priceAvg200": 49.621,
+    "exchange": "NYSE",
+    "previousClose": 51.48
+  }
+}

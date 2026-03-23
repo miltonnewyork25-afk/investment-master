@@ -1,0 +1,170 @@
+{
+  "symbol": "BURL",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "BURL",
+    "price": 296.7,
+    "marketCap": 18670442680,
+    "beta": 1.704,
+    "lastDividend": 0,
+    "range": "212.92-332.2",
+    "companyName": "Burlington Stores, Inc.",
+    "exchange": "NYSE",
+    "industry": "Apparel - Retail",
+    "sector": "Consumer Cyclical",
+    "country": "US",
+    "fullTimeEmployees": "17057",
+    "ceo": "Michael O'Sullivan"
+  },
+  "income": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2025",
+      "revenue": 11566910000,
+      "grossProfit": 4662117000,
+      "operatingIncome": 849112000,
+      "netIncome": 610153000,
+      "eps": 9.51,
+      "ebitda": 1266983000,
+      "interestExpense": 71041000
+    },
+    {
+      "date": "2025-01-31",
+      "fiscalYear": "2024",
+      "revenue": 10625782000,
+      "operatingIncome": 1039032000,
+      "netIncome": 503639000,
+      "eps": 7.91,
+      "ebitda": 1048073000
+    },
+    {
+      "date": "2024-01-31",
+      "fiscalYear": "2023",
+      "revenue": 9718150000,
+      "operatingIncome": 838038000,
+      "netIncome": 339649000,
+      "eps": 5.25,
+      "ebitda": 847355000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2025",
+      "totalAssets": 9919057000,
+      "totalStockholdersEquity": 1807259000,
+      "cashAndCashEquivalents": 1232525000,
+      "totalDebt": 6005137000,
+      "inventory": 1311903000
+    },
+    {
+      "date": "2025-01-31",
+      "fiscalYear": "2024",
+      "totalAssets": 8770413000,
+      "totalStockholdersEquity": 1370496000,
+      "totalDebt": 5371525000
+    },
+    {
+      "date": "2024-01-31",
+      "fiscalYear": "2023",
+      "totalAssets": 7706840000,
+      "totalStockholdersEquity": 996932000,
+      "totalDebt": 4804834000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 1231382000,
+      "capitalExpenditure": -1059793000,
+      "freeCashFlow": 171589000,
+      "netIncome": 610153000,
+      "commonStockRepurchased": -278422000
+    },
+    {
+      "date": "2025-01-31",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 863376000,
+      "freeCashFlow": -28607000
+    },
+    {
+      "date": "2024-01-31",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 868735000,
+      "freeCashFlow": 351451000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.403,
+      "netProfitMargin": 0.053,
+      "returnOnEquity": 0.338,
+      "currentRatio": 1.232,
+      "debtToEquityRatio": 3.323,
+      "priceToEarningsRatio": 31.09,
+      "interestCoverageRatio": 11.95
+    },
+    {
+      "date": "2025-01-31",
+      "fiscalYear": "2024",
+      "priceToEarningsRatio": 35.87
+    },
+    {
+      "date": "2024-01-31",
+      "fiscalYear": "2023",
+      "priceToEarningsRatio": 36.4
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2026-01-31",
+      "fiscalYear": "2025",
+      "marketCap": 18972318360,
+      "enterpriseValue": 23744930360,
+      "evToEBITDA": 18.74
+    },
+    {
+      "date": "2025-01-31",
+      "fiscalYear": "2024",
+      "marketCap": 18067601620,
+      "evToEBITDA": 21.41
+    },
+    {
+      "date": "2024-01-31",
+      "fiscalYear": "2023",
+      "marketCap": 12362052800,
+      "evToEBITDA": 19.17
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 19
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 0,
+      "totalSales": 13
+    }
+  ],
+  "quote": {
+    "symbol": "BURL",
+    "name": "Burlington Stores, Inc.",
+    "price": 296.7,
+    "changePercentage": 1.26,
+    "volume": 951528,
+    "yearHigh": 332.2,
+    "yearLow": 212.92,
+    "marketCap": 18670442680,
+    "priceAvg50": 303.85,
+    "priceAvg200": 275.11,
+    "exchange": "NYSE",
+    "previousClose": 293.01
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "symbol": "BALL",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "BALL",
+    "price": 62.19,
+    "marketCap": 16666124279,
+    "beta": 1.115,
+    "lastDividend": 0.8,
+    "range": "43.51-68.29",
+    "companyName": "Ball Corporation",
+    "currency": "USD",
+    "exchange": "NYSE",
+    "industry": "Packaging & Containers",
+    "sector": "Consumer Cyclical",
+    "country": "US",
+    "fullTimeEmployees": "16000",
+    "ceo": "Ronald J. Lewis"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "period": "FY",
+      "revenue": 13161000000,
+      "grossProfit": 1956000000,
+      "operatingIncome": 1390000000,
+      "netIncome": 912000000,
+      "eps": 3.33,
+      "epsDiluted": 3.3,
+      "ebitda": 2091000000,
+      "interestExpense": 314000000,
+      "depreciationAndAmortization": 622000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "period": "FY",
+      "revenue": 11798000000,
+      "grossProfit": 1839000000,
+      "operatingIncome": 992000000,
+      "netIncome": 4008000000,
+      "eps": 13.12,
+      "epsDiluted": 13.0,
+      "ebitda": 1459000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "period": "FY",
+      "revenue": 12019000000,
+      "grossProfit": 1716000000,
+      "operatingIncome": 1176000000,
+      "netIncome": 707000000,
+      "eps": 2.25,
+      "epsDiluted": 2.23,
+      "ebitda": 1760000000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "totalAssets": 19524000000,
+      "totalLiabilities": 14103000000,
+      "totalStockholdersEquity": 5421000000,
+      "cashAndCashEquivalents": 1212000000,
+      "totalDebt": 7012000000,
+      "netDebt": 5800000000,
+      "goodwill": 4379000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "totalAssets": 17628000000,
+      "totalLiabilities": 11698000000,
+      "totalStockholdersEquity": 5862000000,
+      "cashAndCashEquivalents": 893000000,
+      "totalDebt": 6017000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "totalAssets": 19303000000,
+      "totalLiabilities": 15466000000,
+      "totalStockholdersEquity": 3769000000,
+      "cashAndCashEquivalents": 695000000,
+      "totalDebt": 8569000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 1262000000,
+      "capitalExpenditure": -474000000,
+      "freeCashFlow": 788000000,
+      "netIncome": 915000000,
+      "commonDividendsPaid": -220000000,
+      "commonStockRepurchased": -1321000000
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 115000000,
+      "capitalExpenditure": -484000000,
+      "freeCashFlow": -369000000
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 1863000000,
+      "capitalExpenditure": -1045000000,
+      "freeCashFlow": 818000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.1486,
+      "netProfitMargin": 0.0693,
+      "returnOnEquity": 0.1682,
+      "currentRatio": 1.1141,
+      "debtToEquityRatio": 1.2935,
+      "priceToEarningsRatio": 15.93,
+      "dividendYieldPercentage": 1.51,
+      "interestCoverageRatio": 4.43
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.1559,
+      "netProfitMargin": 0.3397,
+      "priceToEarningsRatio": 4.2
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "grossProfitMargin": 0.1428,
+      "netProfitMargin": 0.0588,
+      "priceToEarningsRatio": 25.61
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "marketCap": 14527711110,
+      "enterpriseValue": 20327711110,
+      "evToEBITDA": 9.72,
+      "returnOnInvestedCapital": 0.0783,
+      "freeCashFlowYield": 0.0542
+    },
+    {
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "marketCap": 16839954670,
+      "evToEBITDA": 15.05
+    },
+    {
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "marketCap": 18105858000,
+      "evToEBITDA": 14.76
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 1,
+      "totalSales": 2
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 0,
+      "totalSales": 0
+    }
+  ],
+  "quote": {
+    "symbol": "BALL",
+    "name": "Ball Corporation",
+    "price": 62.19,
+    "changePercentage": 0.81,
+    "change": 0.5,
+    "volume": 1292616,
+    "dayLow": 61.44,
+    "dayHigh": 62.41,
+    "yearHigh": 68.29,
+    "yearLow": 43.51,
+    "marketCap": 16666124279,
+    "priceAvg50": 60.98,
+    "priceAvg200": 54.34,
+    "exchange": "NYSE",
+    "previousClose": 61.69
+  }
+}

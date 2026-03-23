@@ -264,6 +264,32 @@ if [ "$PHASE" -ge 1 ]; then
         check_fail "DM锚点严重不足: $DM_COUNT (Phase $PHASE需≥$DM_EXPECTED)"
         echo "         → Agent prompt是否遗漏DM标注要求? 每Phase应≥30个DM引用"
     fi
+
+    # EVO-SPGI-003: Phase 5 DM密度比检查 (扩写同步规则)
+    if [ "$PHASE" -ge 5 ]; then
+        COMPLETE_FILE=""
+        for f in reports/${TICKER}/${TICKER}_Complete*.md; do
+            [ -f "$f" ] && COMPLETE_FILE="$f" && break
+        done
+        if [ -n "$COMPLETE_FILE" ]; then
+            CHAR_COUNT=$(wc -m < "$COMPLETE_FILE" | tr -d ' ')
+            CHAR_COUNT="${CHAR_COUNT:-0}"
+            COMPLETE_DM=$({ grep -oE '\[DM-[A-Za-z0-9]+-[0-9]+\]' "$COMPLETE_FILE" 2>/dev/null | sort -u | wc -l || echo "0"; } | head -1 | tr -d ' ')
+            COMPLETE_DM="${COMPLETE_DM:-0}"
+            if [ "$CHAR_COUNT" -gt 0 ]; then
+                # 密度 = DM数 / (字符数/1000), 目标≥0.8/千字
+                DM_PER_K=$(( COMPLETE_DM * 100 / (CHAR_COUNT / 1000) ))
+                if [ "$DM_PER_K" -ge 80 ]; then
+                    check_pass "DM密度: ${COMPLETE_DM}个/${CHAR_COUNT}字 = $(echo "scale=2; $COMPLETE_DM / ($CHAR_COUNT / 1000)" | bc)/千字 (≥0.8目标)"
+                elif [ "$DM_PER_K" -ge 50 ]; then
+                    check_warn "DM密度偏低: ${COMPLETE_DM}个/${CHAR_COUNT}字 = $(echo "scale=2; $COMPLETE_DM / ($CHAR_COUNT / 1000)" | bc)/千字 (目标≥0.8, 标杆VRT=1.49)"
+                else
+                    check_fail "DM密度严重不足: ${COMPLETE_DM}个/${CHAR_COUNT}字 (目标≥0.8/千字, 当前<0.5)"
+                    echo "         → EVO-SPGI-003: 扩写期间未同步DM锚点, 需补充后重新检查"
+                fi
+            fi
+        fi
+    fi
 fi
 
 # ============================================================
@@ -291,6 +317,36 @@ if [ "$PHASE" -ge 3 ]; then
             check_pass "前瞻变量: $FWD_COUNT mentions in P3 staging (PW=$PW_VAL)"
         else
             check_warn "前瞻变量偏少: $FWD_COUNT (<3) — PW≥4的AI相关公司应含Token经济/推理/Agent分析"
+        fi
+    fi
+fi
+
+# ============================================================
+# Layer 3.7: 地理分析门控 — Phase 1+ (EVO-SPGI-001)
+# 设计: 国际收入>30%的公司必须含地理分析, 防止M7=0的结构遗漏
+# ============================================================
+if [ "$PHASE" -ge 1 ]; then
+    GEO_REQ=""
+    if [ -f "$DATA/checkpoint.yaml" ]; then
+        GEO_REQ=$({ grep -oE 'geo_analysis_required: [a-z_]+' "$DATA/checkpoint.yaml" 2>/dev/null | cut -d' ' -f2 || echo ""; } | head -1 | tr -d ' ')
+    fi
+    if [ "$GEO_REQ" = "true" ]; then
+        # 检查staging/Phase报告中是否有地理分析内容
+        GEO_MENTIONS=0
+        for f in "$STAGING"/*.md reports/${TICKER}/${TICKER}_Phase*.md reports/${TICKER}/${TICKER}_Complete*.md; do
+            if [ -f "$f" ]; then
+                GC=$({ grep -ciE '地理|geographic|international|region|美洲|欧洲|亚太|EMEA|Americas|Asia' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+                GC="${GC:-0}"
+                GEO_MENTIONS=$((GEO_MENTIONS + GC))
+            fi
+        done
+        if [ "$GEO_MENTIONS" -ge 10 ]; then
+            check_pass "EVO-001: 地理分析存在 (${GEO_MENTIONS}次提及, 国际收入>30%)"
+        elif [ "$GEO_MENTIONS" -ge 3 ]; then
+            check_warn "EVO-001: 地理分析偏薄 (仅${GEO_MENTIONS}次提及) → 国际收入>30%需含地理拆分表"
+        else
+            check_fail "EVO-001: 地理分析缺失 (${GEO_MENTIONS}次提及) → checkpoint标记geo_analysis_required=true但无地理分析"
+            echo "         → 需补充: 地理收入拆分表(≥3地区×≥3年) + 国际增速 + 国际OPM"
         fi
     fi
 fi
@@ -345,6 +401,41 @@ if [ "$PHASE" -ge 5 ]; then
             check_warn "薄章节检测: ${THIN_COUNT:-?}个章节<1500字符 → bash scripts/thin_chapter_detector.sh $COMPLETE_FILE"
         else
             check_pass "薄章节检测: 所有章节≥1500字符"
+        fi
+    fi
+fi
+
+# ============================================================
+# Layer 4.7: 重复话题检测 — Phase≥5 (EVO-SPGI-005)
+# 设计: 扫描Complete中高频短语, 防止同一话题≥3处重复
+# ============================================================
+if [ "$PHASE" -ge 5 ]; then
+    COMPLETE_FOR_DEDUP=""
+    for cf in reports/${TICKER}/${TICKER}_Complete*.md; do
+        if [ -f "$cf" ]; then COMPLETE_FOR_DEDUP="$cf"; fi
+    done
+    if [ -n "$COMPLETE_FOR_DEDUP" ]; then
+        echo ""
+        echo "--- Layer 4.7: 重复话题检测 (EVO-SPGI-005) ---"
+        # 统计200字符以上段落中的重复关键短语
+        DEDUP_ISSUES=0
+        DEDUP_DETAILS=""
+        # 检查常见重复模式: 同一概念在不同章节反复展开
+        for keyword in "商誉" "ROIC" "Nash" "被动投资" "定价权" "护城河" "回购" "SBC" "AI冲击" "周期性"; do
+            KCOUNT=$({ grep -ci "$keyword" "$COMPLETE_FOR_DEDUP" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            KCOUNT="${KCOUNT:-0}"
+            # 章节级重复: 同一词在≥15行出现 → 可能是跨章节重复展开
+            if [ "$KCOUNT" -ge 15 ]; then
+                DEDUP_ISSUES=$((DEDUP_ISSUES + 1))
+                DEDUP_DETAILS="${DEDUP_DETAILS} ${keyword}(${KCOUNT})"
+            fi
+        done
+        if [ "$DEDUP_ISSUES" -eq 0 ]; then
+            check_pass "EVO-005: 无高频重复话题"
+        elif [ "$DEDUP_ISSUES" -le 2 ]; then
+            check_warn "EVO-005: ${DEDUP_ISSUES}个话题高频出现:${DEDUP_DETAILS} → 建议检查是否跨章节重复展开"
+        else
+            check_warn "EVO-005: ${DEDUP_ISSUES}个话题高频出现:${DEDUP_DETAILS} → 建议合并重复段落(目标重复度<5%)"
         fi
     fi
 fi

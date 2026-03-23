@@ -1,6 +1,8 @@
-# Deep-Dive 分析协议 v18.2 (Tier 3)
+# Deep-Dive 分析协议 v18.5 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
+> **v18.5变化**: Moat Data Card v1.0→v2.0(6→10字段组)——新增交易策略预备字段(估值三档/盈利可预测性E-Score/回撤DNA/流动性)。E-Score在Phase 0自动计算，估值三档从Phase 3标准化提取，回撤+流动性由`scripts/trading_datacard.py`自动填充。零额外分析成本，为未来Sharpe最优组合交易策略做数据铺垫。
+> **v18.4变化**: Phase 5新增护城河数据卡(Moat Data Card)标准产出——6个结构化字段(垄断纯度/定价权阶段/TAM渗透率/护城河年龄/转换成本/市场隐含假设)以YAML格式输出到`reports/{TICKER}/data/moat_datacard.yaml`，零额外分析成本(数据均来自Phase 1-3已有分析)，为跨公司产品(CQI排行榜/筛选器)提供机器可读数据源。
 > **v18.2变化**: 品质量化评估框架集成(Phase 0/1/2/3/5分阶段评估21维度) + 投资大师圆桌v2.0集成(Phase 3.8方法论碰撞深化引擎, QG-09.8门控)。详见`docs/company_quality_scoring.md` + `.claude/skills/investment-committee/SKILL.md`。
 > **v18.0变化**: 战略报告框架回流——Phase 1新增CEO沉默分析(QG-01.5)+Phase 3新增Playing to Win量化评分(QG-07.5, 含寡头行业博弈论条件增强)+Phase 5 Kill Switch从9字段→12字段(新增单独触发行动/协同触发/评级影响)。源自SEMI_EQUIPMENT_STRATEGY报告(4.2/5)的3个框架创新验证。
 > **v14.1变化**: Phase 0新增SGI速判(专才-通才光谱诊断)。
@@ -148,7 +150,24 @@
    - **输出**: `reports/{TICKER}/data/quality_scorecard.md` 初版(A+D已填, B+C留空待Phase 1-3填入)
    - **路由影响**: D1=强周期 → Phase 2需额外周期性税分析; D2<50% → Phase 2必须做收入纯度还原
 
-**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算 + SGI已计算 + quality_scorecard.md初版已创建(A+D完成)
+12. **地理分析门控 (v18.3新增 — EVO-SPGI-001)** — 数据预取完成后，检查国际收入占比:
+   - 从`business_overview.json`的`geographic_breakdown`提取国际收入占比
+   - **国际收入>30%** → 标记`geo_analysis_required: true`写入checkpoint.yaml → Phase 1必须含地理收入拆分表(美/欧/亚/其他, 3年趋势)
+   - **国际收入≤30%** → 标记`geo_analysis_required: false`，地理章节为可选
+   - **数据不可得** → 标记`geo_analysis_required: check_manually`，Phase 1手动确认
+
+13. **续约率硬数据门控 (v18.3新增 — EVO-SPGI-002)** — 订阅/SaaS/平台模式公司:
+   - Phase 0数据预取Agent-A增加关键词搜索: `{TICKER} retention rate`, `{TICKER} renewal rate`, `{TICKER} churn rate`, `{TICKER} net revenue retention`
+   - **有硬数据** → 写入shared_context.md DM-BIZ锚点(H型)
+   - **无硬数据** → 在shared_context.md标注`[数据不可得: 续约率/客户流失率]`，报告中禁止推断具体数字(如"推断95%+")，只允许定性表述(如"管理层未披露续约率数据")
+   - **影响**: 所有订阅/经常性收入>50%的公司
+
+14. **R&D量化标准化 (v18.3新增 — EVO-SPGI-004)** — 所有科技/AI相关公司:
+   - Phase 0数据预取`fmp_data`调用增加R&D字段提取(income statement中的researchAndDevelopmentExpenses)
+   - 计算R&D/Revenue比率(3年趋势) → 写入shared_context.md DM-FIN锚点
+   - **R&D数据不可得**(如金融公司不单列R&D) → 标注`[R&D不适用: {原因}]`
+
+**Phase 0 完成标准**: `prefetch_metadata.json` 存在 + Layer 1数据全部OK + ≥11/17文件可用 + DM v1.0已创建 + KAL模板已创建 + 投资温度已计算 + SGI已计算 + quality_scorecard.md初版已创建(A+D完成) + 地理门控已标记(EVO-001) + 续约率搜索已执行(EVO-002)
 
 **Research Scorecard (v13.1)**: Phase 0/0.5完成后运行 `bash tests/research_scorecard.sh pre {TICKER}` 记录基线分数(典型15-25分)。分数写入checkpoint.yaml的`scorecard.pre`节。
 
@@ -376,6 +395,7 @@ Phase 1公司定位分析中，同步评估以下品质维度(写入quality_scor
 **门控 QG-01~03**:
 - QG-01: 公司画像完整（业务模型+管理层+历史≥3000字）
 - QG-01.5 **(v18.0)**: CEO沉默分析完成(≥3个沉默领域已识别+风险标注)
+- QG-01.7 **(v18.3 — EVO-SPGI-001)**: 若`geo_analysis_required: true`→ 地理收入拆分表已包含(≥3地区×≥3年+增速+OPM差异)；若false→跳过
 - QG-02: 产业链映射≥10个关键节点
 - QG-03: 预测市场数据≥8个相关事件 + Top 10维度覆盖计划已输出
 
@@ -679,8 +699,9 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
 |------|------|
 | **框架版本** | v10.0 (DM锚定+脚本验证) |
 | **可能性宽度** | X分 → [传统/混合/发现系统] |
-| **报告不包含** | 精确目标价 · 仓位建议 · 操作触发 · 12月后数字预测 |
-| **报告包含** | 价格隐含假设 · 承重墙脆弱度 · 条件估值范围 · 追踪信号 |
+| **报告包含** | 商业模式分析 · 护城河评估 · 风险全景 · 品质评分 · Reverse DCF(市场隐含假设) |
+| **报告不含** | 目标价 · 买卖建议 · 仓位建议 · 评级 · 入场时机 · 投资组合配置 |
+| **策略参考** | 内部策略卡另行存档(不对外发布) |
 | **数据审计** | DM覆盖率X% · 锚点N个 · 详见文末审计摘要 |
 | **AI能力边界** | 深挖区(技术/供应链/周期) · 诚实区(管理层/预测/时机) |
 ```
@@ -813,6 +834,112 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
 | [原创框架名] | 本报告首创 | Phase 3 §3.4 | [效果] | ✅/❌ |
 ```
 
+**9. 护城河数据卡 (Moat Data Card v2.0, v18.4新增/v18.5扩展)**
+
+> **设计原则**: 零额外分析成本。10个字段组中，6个是Phase 1-3已有分析的结构化提取，4个是自动计算/标准化提取。
+> **目的**: 为CQI排行榜、跨公司筛选、未来交易策略组合提供机器可读的标准化数据源。
+> **产出位置**: `reports/{TICKER}/data/moat_datacard.yaml`
+
+```yaml
+# 护城河数据卡 v2.0
+ticker: "{TICKER}"
+report_date: "YYYY-MM-DD"
+report_version: "v1.0"
+market_cap_B: 0.0          # 报告时市值($B)
+cqi_score: 0               # CQI评分(0-100)
+moat_trend: "→ Stable"     # ↑Widening/↗Strengthening/→Stable/↘Softening/↓Eroding/⇊Collapsing
+rating: ""                  # 深度关注/关注/中性关注/审慎关注
+expected_return_pct: 0.0    # 期望回报%
+
+# === v1.0 原有字段 (6个字段组) ===
+
+# 1. 垄断纯度 — 垄断/核心业务收入占总收入或总利润的比例
+monopoly_purity:
+  revenue_pct: 0            # 核心垄断业务占总收入%
+  profit_pct: 0             # 核心垄断业务占总利润%(如有)
+  segment_name: ""          # 垄断业务名称
+  note: ""                  # 补充说明(如"按利润口径更准确")
+
+# 2. 定价权阶段 — Stage 1.0(未释放)到3.0(天花板)
+pricing_power:
+  stage: 0.0                # 1.0-3.0
+  ceiling_signal: ""        # 接近天花板的信号(监管反弹/替代品/政治压力)
+  runway: ""                # 剩余空间描述(如"OPM还有10-15pp上行")
+
+# 3. TAM渗透率 — 当前市场渗透程度
+tam_penetration:
+  current_pct: 0            # 当前渗透率%
+  expansion_vector: ""      # 主要扩展方向(如"国际化/新品类/新客群")
+  tam_source: ""            # TAM数据来源
+
+# 4. 护城河年龄 — 核心竞争优势存在的时间
+moat_age:
+  years: 0                  # 护城河存在年数
+  origin: ""                # 起源事件(如"1956年FICO评分诞生")
+  institutional_anchor: ""  # 制度锚点(如"FHFA/Basel/SEC", 无则留空)
+
+# 5. 转换成本量化 — 客户替换的时间和金钱成本
+switching_cost:
+  time_months: 0            # 替换所需时间(月)
+  cost_estimate: ""         # 替换成本估计(如"$500M行业级"或"$50K/客户")
+  lock_in_type: ""          # 锁定类型(合约/技术/数据/习惯/制度)
+
+# 6. 市场隐含假设 — Reverse DCF提取的关键隐含赌注
+market_implied:
+  revenue_cagr_5y: 0.0      # 市场隐含5年收入CAGR%
+  terminal_opm: 0.0         # 市场隐含终端OPM%(如适用)
+  key_bet: ""               # 一句话概括市场在赌什么
+  our_assessment: ""        # 我们的判断(偏乐观/合理/偏保守)
+
+# === v2.0 新增字段 (4个字段组, 交易策略预备) ===
+
+# 7. 估值三档 — Phase 3估值的标准化提取
+valuation_anchors:
+  fair_value: 0             # 合理估值中枢($)
+  margin_of_safety_price: 0 # 安全边际价($) = fair_value × (1 - CQI折扣率)
+  overvaluation_trigger: 0  # 高估触发价($) = fair_value × 1.20
+  discount_rate_used: 0.0   # CQI折扣率: CQI≥70→15%, 50-69→20%, 30-49→30%, <30→40%
+  methodology: ""           # SOTP/DCF/逆向DCF/混合
+  as_of_date: ""            # 估值基准日期
+
+# 8. 盈利可预测性 (E-Score) — Phase 0自动计算
+#    数据来源: data_prefetch已拉取的5年季度财务数据
+#    自动计算: scripts/trading_datacard.py
+earnings_predictability:
+  revenue_cv: 0.0           # 5年季度收入变异系数(越低越稳)
+  opm_range_pct: [0, 0]     # 5年OPM区间[min, max]%
+  miss_rate_pct: 0.0        # 5年EPS miss率%
+  e_score: 0.0              # 加权综合分1-10(10=最可预测)
+
+# 9. 回撤DNA — Post-report脚本自动填充
+#    自动计算: scripts/trading_datacard.py
+drawdown_profile:
+  max_dd_2020_pct: 0.0      # COVID最大回撤%
+  trough_date_2020: ""      # 2020谷底日期
+  recovery_days_2020: 0     # 恢复至前高天数
+  max_dd_2022_pct: 0.0      # 加息周期最大回撤%
+  trough_date_2022: ""      # 2022谷底日期
+  recovery_days_2022: 0     # 恢复至前高天数
+  downside_beta: 0.0        # 下行beta(SPY跌日的相对跌幅)
+
+# 10. 流动性约束 — Post-report脚本自动填充
+#     自动计算: scripts/trading_datacard.py
+liquidity:
+  avg_daily_volume_usd: 0   # 30天日均成交额($)
+  market_cap: 0             # 当前市值($)
+  spread_bps_est: 0.0       # 估算买卖价差(bps)
+```
+
+**执行规则**:
+- **字段1-6** (v1.0): Phase 5组装Complete后、运行quality_gate前手动填写
+  - 数据来源: monopoly_purity→Phase 1收入拆分, pricing_power→Phase 3定价权分析, tam→Phase 1 TAM, moat_age→Phase 1/3护城河分析, switching_cost→Phase 1 C3评分, market_implied→Phase 3 Reverse DCF
+- **字段7** (估值三档): Phase 3完成后从估值产出标准化提取，CQI折扣率公式:
+  - CQI ≥ 70 → 15%折扣 | CQI 50-69 → 20% | CQI 30-49 → 30% | CQI < 30 → 40%
+- **字段8** (E-Score): Phase 0 data_prefetch后自动计算(或post-report脚本)
+- **字段9-10** (回撤+流动性): `python3 scripts/trading_datacard.py {TICKER}` 自动填充
+- 不确定的字段写"TBD"或0，不编造
+- 旧报告: 运行 `python3 scripts/trading_datacard.py --batch` 可批量填充字段8-10
+
 **字数目标**: ≥30,000字符 (wc -m)
 
 **门控 QG-12 (v10.0)**:
@@ -826,6 +953,10 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
 - **分析框架注册表**: 使用/改进/首创的框架已登记
 - **零操作建议**: 全文无持仓/减仓/加仓/仓位%/操作触发
 - **数据审计**: 文末审计摘要存在 + DM覆盖率声明
+- **地理分析验证 (v18.3新增 — EVO-SPGI-001)**: 若Phase 0标记`geo_analysis_required: true`，Complete必须包含地理收入拆分表(≥3个地区×≥3年)。缺失→CG WARN
+- **续约率诚实标注 (v18.3新增 — EVO-SPGI-002)**: 订阅模式公司，续约率无硬数据时禁止推断具体数字，只允许定性表述+`[数据不可得]`标注
+- **去重检查 (v18.3新增 — EVO-SPGI-005)**: Complete组装完成后，扫描高频分析短语(如同一观点/同一数据在≥3处出现)，合并重复→目标重复度<5%
+- **DM扩写同步 (v18.3新增 — EVO-SPGI-003)**: Phase 5扩写时每≥500字符必须同步新增DM锚点(≥1个/千字), 连续3次扩写无DM→强制停止。详见 `docs/dm_annotation_enforcer.md` "Phase 5扩写DM同步规则"
 - **DM附录化 (v17.2新增 — EVO-ETN-001)**: Complete组装时必须生成DM锚点附录:
   - 从`data/research/{TICKER}/shared_context.md`提取DM锚点 → 按FIN/VAL/SEG/MKT/SC分组
   - 每组1个`<details>`折叠源表 → 目标≥5个fold table
@@ -836,7 +967,9 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
   - 输出CI候选列表 → 人工审核 → 写入"附录: CI注册表"
   - 每个CI含: 洞察+共识观点+我们的观点+证据来源+置信度
   - 目标≥5个CI (ETN实测11个)
+- **护城河数据卡 (v18.5升级)**: `reports/{TICKER}/data/moat_datacard.yaml`存在 + 10个字段组已填写(v1.0的6个+v2.0的4个)。字段8-10可用`scripts/trading_datacard.py`自动填充。允许TBD但不允许文件缺失
 - **Phase 5完成后必须组装Complete报告** → 运行 `tests/quality_gate_complete.sh` → 通过后才能标记"全量完成"
+- **A/B文档分离 (v18.5新增)**: CG通过后执行 → ①从Complete提取估值/评级/策略数据生成`{TICKER}_Strategy_Card_INTERNAL.md`(模板见`docs/strategy_card_template.md`) → ②Complete报告头部改为对外版(详见`docs/ab_document_protocol.md`) → ③Strategy Card存放`reports/{TICKER}/`
 
 ### Phase 5.5: Supplement扩展协议 (v13.0新增)
 
@@ -1057,7 +1190,7 @@ Step 5: 五引擎协同 → 综合信号+论点验证
 - Phase 0 + 0.5: 数据预取与注意力雷达并行
 - Phase 3各子模块: 护城河/五引擎/热点补丁可并行
 - Phase 3.5: Layer 1(冲击矩阵) + Layer 2(L×S定位)可并行
-- Phase 5: Kill Switch + 预测清单 + 行动清单可并行
+- Phase 5: Kill Switch + 预测清单 + 行动清单 + 护城河数据卡可并行
 
 ### 多Agent协作机制 (v1.1, AMD验证)
 
@@ -1099,7 +1232,8 @@ Step 5: 五引擎协同 → 综合信号+论点验证
 | 3.5 | AI冲击矩阵(≥90%营收)+L×S定位+AI调整估值 + DM-AI写入 |
 | 4 | 偏差检查+核查≥10点+反证≥3条+维度回应100%+**纠错回流清单**+P-G≥8+R-G≥7+DM冻结+KAL全部A级已验证 |
 | 5 | KS 10-15条(9字段)+追踪信号5-8个(特异性测试)+定性评估10维度+CQ≥5个(5要素)+Reverse DCF+零操作建议 |
-| 5.5 | **Complete报告组装** → `quality_gate_complete.sh` exit 0 → 11项CG全部通过 → git commit → 才能标记"全量完成" |
+| 5.5 | **Complete报告组装** → 填写`moat_datacard.yaml` → `quality_gate_complete.sh` exit 0 → 11项CG全部通过 → git commit → 才能标记"全量完成" |
+| 5.6 | **A/B文档分离** → 生成Strategy Card(`{TICKER}_Strategy_Card_INTERNAL.md`, 模板见`docs/strategy_card_template.md`) → Complete报告头部改为对外版(移除评级/期望回报, 改为品质定位) → 详见`docs/ab_document_protocol.md` |
 | 6 | **反思(飞轮)** → 写 `reports/{TICKER}/data/reflection.md` → 提取可泛化教训 → 如有框架提案则更新main的docs/ (详见 `docs/compound_learning_flywheel.md`) |
 
 ---

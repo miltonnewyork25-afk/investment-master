@@ -1,0 +1,185 @@
+{
+  "symbol": "COIN",
+  "fetched_at": "2026-03-17",
+  "profile": {
+    "symbol": "COIN",
+    "price": 203.32,
+    "marketCap": 54826781605,
+    "beta": 3.709,
+    "companyName": "Coinbase Global, Inc.",
+    "sector": "Financial Services",
+    "industry": "Financial - Data & Stock Exchanges",
+    "country": "US"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 7181325000,
+      "costOfRevenue": 1821220000,
+      "grossProfit": 5360105000,
+      "operatingIncome": 1435441000,
+      "netIncome": 1260327000,
+      "eps": 4.85,
+      "epsDiluted": 4.45,
+      "weightedAverageShsOut": 260088000,
+      "weightedAverageShsOutDil": 287209000,
+      "researchAndDevelopmentExpenses": 1670605000,
+      "interestExpense": 85413000
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 6564028000,
+      "costOfRevenue": 1657547000,
+      "grossProfit": 4906481000,
+      "operatingIncome": 2307160000,
+      "netIncome": 2579066000,
+      "eps": 10.42,
+      "epsDiluted": 9.48,
+      "weightedAverageShsOut": 247374000,
+      "weightedAverageShsOutDil": 273377000,
+      "researchAndDevelopmentExpenses": 1468252000,
+      "interestExpense": 80645000
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 3108383000,
+      "costOfRevenue": 1135550000,
+      "grossProfit": 1972833000,
+      "operatingIncome": -161662000,
+      "netIncome": 94871000,
+      "eps": 0.4,
+      "epsDiluted": 0.37,
+      "weightedAverageShsOut": 235796000,
+      "weightedAverageShsOutDil": 254391000,
+      "researchAndDevelopmentExpenses": 1324541000,
+      "interestExpense": 82766000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "totalAssets": 29671832000,
+      "totalLiabilities": 14878774000,
+      "totalStockholdersEquity": 14793058000,
+      "totalCurrentAssets": 20388445000,
+      "totalCurrentLiabilities": 8701282000,
+      "longTermDebt": 5937034000,
+      "retainedEarnings": 6221228000,
+      "goodwill": 4168967000
+    },
+    {
+      "date": "2024-12-31",
+      "totalAssets": 22541951000,
+      "totalLiabilities": 12265109000,
+      "totalStockholdersEquity": 10276842000,
+      "totalCurrentAssets": 18112653000,
+      "totalCurrentLiabilities": 7941320000,
+      "longTermDebt": 4234081000,
+      "retainedEarnings": 4960901000,
+      "goodwill": 1139670000
+    },
+    {
+      "date": "2023-12-31",
+      "totalAssets": 14753901000,
+      "totalLiabilities": 8472252000,
+      "totalStockholdersEquity": 6281649000,
+      "totalCurrentAssets": 11356794000,
+      "totalCurrentLiabilities": 5485079000,
+      "longTermDebt": 2979957000,
+      "retainedEarnings": 1820346000,
+      "goodwill": 1139670000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "operatingCashFlow": 2426383000,
+      "capitalExpenditure": 0,
+      "freeCashFlow": 2426383000,
+      "stockBasedCompensation": 839440000,
+      "commonStockRepurchased": -790195000
+    },
+    {
+      "date": "2024-12-31",
+      "operatingCashFlow": 2556844000,
+      "capitalExpenditure": 0,
+      "freeCashFlow": 2556844000,
+      "stockBasedCompensation": 912838000,
+      "commonStockRepurchased": 0
+    },
+    {
+      "date": "2023-12-31",
+      "operatingCashFlow": 922951000,
+      "capitalExpenditure": 0,
+      "freeCashFlow": 922951000,
+      "stockBasedCompensation": 780668000,
+      "commonStockRepurchased": 0
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.746,
+      "priceToEarningsRatio": 46.67,
+      "priceToBookRatio": 3.98,
+      "currentRatio": 2.34,
+      "returnOnEquity": 0.085,
+      "dividendYield": 0
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.747,
+      "priceToEarningsRatio": 23.82,
+      "priceToBookRatio": 5.98,
+      "currentRatio": 2.28,
+      "returnOnEquity": 0.251,
+      "dividendYield": 0
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.635,
+      "priceToEarningsRatio": 432.27,
+      "priceToBookRatio": 6.53,
+      "currentRatio": 2.07,
+      "returnOnEquity": 0.015,
+      "dividendYield": 0
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "evToEBITDA": 30.83,
+      "returnOnInvestedCapital": 0.052,
+      "freeCashFlowPerShare": 9.33,
+      "stockBasedCompensationToRevenue": 0.117,
+      "marketCap": 58816300320,
+      "enterpriseValue": 55362307320
+    },
+    {
+      "date": "2024-12-31",
+      "evToEBITDA": 18.25,
+      "returnOnInvestedCapital": 0.136,
+      "freeCashFlowPerShare": 10.34,
+      "stockBasedCompensationToRevenue": 0.139,
+      "marketCap": 61422964200,
+      "enterpriseValue": 57508638200
+    },
+    {
+      "date": "2023-12-31",
+      "evToEBITDA": 267.0,
+      "returnOnInvestedCapital": 0.022,
+      "freeCashFlowPerShare": 3.91,
+      "stockBasedCompensationToRevenue": 0.251,
+      "marketCap": 41009640320,
+      "enterpriseValue": 38864969320
+    }
+  ],
+  "insider_trades": [],
+  "quote": {
+    "symbol": "COIN",
+    "price": 203.32,
+    "yearHigh": 444.65,
+    "yearLow": 139.36,
+    "marketCap": 54826781605
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "symbol": "F",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "F",
+    "price": 11.675,
+    "marketCap": 45749888500,
+    "beta": 1.665,
+    "companyName": "Ford Motor Company",
+    "sector": "Consumer Cyclical",
+    "industry": "Auto - Manufacturers",
+    "ceo": "James Duncan Farley Jr.",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 187267000000,
+      "operatingIncome": 2532000000,
+      "netIncome": -8182000000,
+      "eps": -2.06
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 184992000000,
+      "operatingIncome": 5219000000,
+      "netIncome": 5879000000,
+      "eps": 1.48
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 176191000000,
+      "operatingIncome": 5458000000,
+      "netIncome": 4347000000,
+      "eps": 1.09
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.122,
+      "netProfitMargin": -0.044,
+      "priceToEarningsRatio": -6.38,
+      "dividendYieldPercentage": 5.73
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.084,
+      "netProfitMargin": 0.032,
+      "priceToEarningsRatio": 6.7,
+      "dividendYieldPercentage": 7.92
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.092,
+      "netProfitMargin": 0.025,
+      "priceToEarningsRatio": 11.21,
+      "dividendYieldPercentage": 10.25
+    }
+  ],
+  "quote": {
+    "symbol": "F",
+    "price": 11.675,
+    "marketCap": 45749888500,
+    "yearHigh": 14.8,
+    "yearLow": 8.44
+  },
+  "balance": [],
+  "cashflow": [],
+  "key_metrics": [],
+  "insider_trades": "summarized_quarterly_data"
+}
