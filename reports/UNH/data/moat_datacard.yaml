@@ -1,0 +1,56 @@
+# UNH Moat Data Card v2.0
+ticker: UNH
+company: "UnitedHealth Group Incorporated"
+date: "2026-03-19"
+analyst: "Investment Research Agent v19.4"
+report_version: "v1.0"
+
+# Core Moat Fields
+monopoly_purity:
+  score: 0.35
+  rationale: "MA第一(9.4M会员)但Humana追赶, E&I第一, Medicaid第二。寡头但非垄断"
+
+pricing_power_stage:
+  stage: 2
+  description: "受限定价权 — CMS费率决定50%+收入, 商业保费受竞争约束"
+  evidence: "MCR 88.9%说明成本增速>定价能力"
+
+tam_penetration:
+  current: 0.09
+  trajectory: "稳定偏下(MA收缩, Medicaid收缩)"
+  ceiling: 0.12
+
+moat_age:
+  years: 25
+  stage: "成熟期偏晚(监管侵蚀+竞争追赶)"
+
+switching_cost:
+  score: 3.5
+  carrier: "网络绑定(provider+会员双边) + 数据锁定(1.5亿人) + 合同周期(3-5年)"
+  erosion: "MA每年OEP可换 → 个人层面转换成本低; 企业层面高"
+
+market_implied_assumption:
+  forward_pe: 14.3
+  implied_opm: "5.5%"
+  implied_growth: "FCFF CAGR 4.5-5.5%"
+  gap: "市场定价'永久保险化', 忽视Optum平台恢复可能"
+
+# v2.0 Extended Fields
+valuation_tiers:
+  cheap: 240
+  fair: 277
+  expensive: 340
+
+e_score:
+  total: 6.05
+  components: "品质门控5.5/7 + 商业模型24/40 + 护城河17/30 × D修正0.55"
+
+drawdown_dna:
+  max_drawdown_5y: -0.53
+  recovery_time: "未恢复"
+  pattern: "事件驱动(CEO辞职+DOJ)+基本面恶化(MCR)双重打击"
+
+liquidity:
+  avg_volume_90d: "$2.5B/日"
+  bid_ask: "<0.01%"
+  institutional_ownership: 0.88

@@ -9,7 +9,7 @@ WORKTREE_DIR="$REPO_ROOT/.worktrees"
 ISSUES=0
 WARNINGS=0
 
-echo "=== 框架健康检查 v1.0 ==="
+echo "=== 框架健康检查 v2.0 ==="
 echo "时间: $(date '+%Y-%m-%d %H:%M')"
 echo ""
 
@@ -25,17 +25,45 @@ else
     echo "✅ Main CLAUDE.md: ${main_lines}行"
 fi
 
-# 2. Worktree CLAUDE.md 行数检查 (thin-shell应<100行)
+# 2. Worktree CLAUDE.md Thin-Shell检查 (v2.0: 行数+复制检测+字符数)
 echo ""
-echo "--- Worktree CLAUDE.md ---"
+echo "--- Worktree CLAUDE.md Thin-Shell检查 ---"
 for wt_dir in "$WORKTREE_DIR"/*/; do
     wt_name=$(basename "$wt_dir")
-    wt_lines=$(wc -l < "$wt_dir/CLAUDE.md" 2>/dev/null || echo 0)
-    if [ "$wt_lines" -gt 100 ]; then
-        echo "❌ $wt_name: ${wt_lines}行 (thin-shell上限100)"
+    wt_file="$wt_dir/CLAUDE.md"
+    if [ ! -f "$wt_file" ]; then
+        echo "⚠️  $wt_name: CLAUDE.md不存在"
+        WARNINGS=$((WARNINGS + 1))
+        continue
+    fi
+
+    wt_lines=$(wc -l < "$wt_file" 2>/dev/null || echo 0)
+    wt_chars=$(wc -m < "$wt_file" 2>/dev/null || echo 0)
+    is_copy="no"
+
+    # 检测是否是主CLAUDE.md的复制品 (首行含"主分支精简版")
+    first_line=$(head -1 "$wt_file" 2>/dev/null)
+    if echo "$first_line" | grep -q "主分支精简版"; then
+        is_copy="yes"
+    fi
+
+    # 检测是否含Thin-Shell标记
+    has_thinshell=$(grep -c "Thin-Shell" "$wt_file" 2>/dev/null || echo 0)
+
+    if [ "$is_copy" = "yes" ]; then
+        echo "❌ $wt_name: 主CLAUDE.md复制品! ${wt_lines}行/${wt_chars}字符 — 必须改为Thin-Shell"
         ISSUES=$((ISSUES + 1))
+    elif [ "$wt_lines" -gt 120 ]; then
+        echo "❌ $wt_name: ${wt_lines}行/${wt_chars}字符 (Thin-Shell上限120行/3K字符)"
+        ISSUES=$((ISSUES + 1))
+    elif [ "$wt_chars" -gt 4000 ]; then
+        echo "⚠️  $wt_name: ${wt_lines}行/${wt_chars}字符 (字符偏大,建议<3K)"
+        WARNINGS=$((WARNINGS + 1))
+    elif [ "$has_thinshell" -eq 0 ]; then
+        echo "⚠️  $wt_name: ${wt_lines}行 — 缺少Thin-Shell标记"
+        WARNINGS=$((WARNINGS + 1))
     else
-        echo "✅ $wt_name: ${wt_lines}行"
+        echo "✅ $wt_name: ${wt_lines}行/${wt_chars}字符 (Thin-Shell)"
     fi
 done
 
