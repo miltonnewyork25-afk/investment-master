@@ -452,12 +452,12 @@ entries:
 
   - ticker: "SBUX"
     date: "2026-03-03"
-    report: "SBUX_v2.0_Complete_2026-03-03.md"
-    chars: "177K"
+    report: "SBUX_Complete.md"
+    chars: "120K"
     cg_result: "FAILED(0E/1W)"
-    compliance: "FAILED"
+    compliance: "PASSED"
     dm_anchors: 5
-    mermaid_count: 51
+    mermaid_count: 26
     pw: N/A
     method: "N/A"
     scorecard: "N/A"
@@ -467,6 +467,28 @@ entries:
     top_lesson: null  # AI填入
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "CRM"
+    date: "2026-03-18"
+    report: "N/A (v1.0失败, 未组装Complete)"
+    chars: "167K (staging)"
+    cg_result: "N/A"
+    compliance: "N/A"
+    dm_anchors: 401
+    mermaid_count: 23
+    pw: 5.6
+    method: "hybrid"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # 未完成, 无评分
+    top_technique: "DM密度2.40/千字(历史最高) + 因果密度11.68/万字(超KLAC) + P3 v2.0承重墙分析 + P4离散度27.9%首次<30%"
+    top_lesson: "P1预设bullish叙事($235/+34%)→P3红队彻底推翻→P4 neutral($176/+0.6%)→P1/P2叙事与P4不可调和→无法组装。密度高但方向错=更危险的失败模式。单日rush(10 commits/1 day)消除了Phase间纠偏窗口"
+    evolution_proposed: |
+      EVO-CRM-001: Reverse DCF P1 Ch1强制前置 — P1第一章必须包含Reverse DCF结论(市场隐含假设), P1叙事不能比Reverse DCF暗示的方向偏离>1档。防止结论先行偏差 [P0, 流程铁律] → **v19.4铁律O**
+      EVO-CRM-002: Tier 3禁止单日rush — Tier 3最少跨3个session(P0-P1/P2-P3/P4-P5), Phase间需冷却纠偏窗口。防止bullish动量从P1传导到P2 [P0, 流程铁律] → **v19.4铁律P+会话规范**
+      EVO-CRM-003: 最相似可比公司P0强制对标 — Phase 0 shared_context必须包含最相似公司(增速/PE/行业最接近)的估值对比, 作为P1叙事约束。防止ADBE对标迟到(P3才引入)的问题 [P1, 方法论资产] → **v19.4铁律H增强**
+    evolution_status: approved
+    reflection_file: "reports/CRM/reflection/CRM_v1_failure_reflection.md"
 
   - ticker: "CMG"
     date: "2026-03-04"
@@ -486,14 +508,14 @@ entries:
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
 
-  - ticker: "SBUX"
-    date: "2026-03-05"
-    report: "SBUX_v3.0_Complete.md"
-    chars: "356K"
+  - ticker: "FRO_COSCO_EVENT"
+    date: "2026-03-19"
+    report: "FRO_COSCO_EVENT_Report_v1.0.md"
+    chars: "91K"
     cg_result: "FAILED(0E/1W)"
     compliance: "FAILED"
-    dm_anchors: 7
-    mermaid_count: 43
+    dm_anchors: 115
+    mermaid_count: 19
     pw: N/A
     method: "N/A"
     scorecard: "N/A"
@@ -504,95 +526,22 @@ entries:
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
 
-  - ticker: "DPZ"
-    date: "2026-03-05"
-    report: "DPZ_v1.0_Complete_2026-03-05.md"
-    chars: "540K"
+  - ticker: "CRM"
+    date: "2026-03-19"
+    report: "CRM_Complete_v2.0_2026-03-19.md"
+    chars: "230K"
     cg_result: "FAILED(0E/1W)"
     compliance: "PASSED"
-    dm_anchors: 386
-    mermaid_count: 54
-    pw: 2.4
-    method: "traditional"
-    a_score: "5.9/10 (中等, 负权益拖累)"
-    sgi: "7.7 (专才, Pizza单品类)"
-    scorecard: "N/A"
+    dm_anchors: 568
+    dm_density: "2.88/千字"
+    causal_density: "8.0/万字"
+    mermaid_count: 59
+    pw: 5.6
+    method: "hybrid"
+    scorecard: "78.8%(20.5/26模块)"
     near_miss_score: 0
-    quality: 4.0
-    top_technique: "C-1 Supply Chain P&L重建(利润池地图) + C-3 ABS双天花板(DSCR非约束/杠杆约束2.2%余量) + C-2蚕食系数CC模型(15-20%) + C-4 DPZ-CMG 9维镜像(ROIC幻觉56.7%→14.5%)"
-    top_lesson: "体量溢出23%(540K vs 437K目标)是v1.0最大短板——分析原创性4.5但可读性3.5; 悲观偏差大幅收敛(+1.3pp vs RCL+8pp/SBUX+13pp); 模块'差半步'问题(8/15达2分=53%)根因是Phase 0未预取M1-NPS/M2-弹性系数等KPI字段"
-    evolution_proposed: |
-      EVO-DPZ-001: M2-sub促销依赖度QSR强制 — QSR/餐饮公司Phase 1强制promo_mix/discount_depth/price_realization字段 [P1, 方法论]
-      EVO-DPZ-002: Loyalty数据缺口标注 — Loyalty计划<12个月的公司Phase 0标注缺口+设定数据可用时间线 [P2, 流程]
-      EVO-DPZ-003: 体量门控±15% — 目标字符±15%为合格区间, 超出触发精简提醒 [P1, 质量门控]
-      EVO-DPZ-004: 章节标题格式统一 — 组装时强制Ch/Chapter统一化, 加入CG脚本检测 [P1, 工具修复]
-      冠军目录待注册: C-1 Supply Chain P&L重建(4.0) + C-2蚕食系数CC(4.2) + C-3 ABS双天花板(4.3) + C-4 DPZ-CMG镜像(4.1)
-    evolution_status: pending
-    reflection_file: "reports/DPZ/reflection/deep_audit.md"
-
-  # --- 质量趋势更新 ---
-  # INTC(4.1) → ARM(3.5)↓ → RCL(4.2)↑ → IHG(4.3)↑ → NVDA(4.0)↓ → SBUX v2.0(3.8)↓ → DPZ(4.0)↑
-  # DPZ从SBUX回升+0.2: 4个冠军候选 + 5种估值方法收敛 + 悲观偏差收敛至+1.3pp
-  # 但体量溢出(540K/437K=+23%)和模块2分率(53%)限制总分
-  # 消费品第四份Tier 3: RCL(4.2)→IHG(4.3)→SBUX(3.8)→DPZ(4.0) — 平均4.08
-  # 悲观偏差趋势: RCL(+8pp)→SBUX(+13pp)→DPZ(+1.3pp) — 大幅改善, EVO-RCL-001可能不再紧急
-
-  - ticker: "MAR"
-    date: "2026-03-05"
-    report: "MAR_Complete_v1.0.md"
-    chars: "355K"
-    cg_result: "FAILED(0E/1W)"
-    compliance: "PASSED"
-    dm_anchors: 149
-    mermaid_count: 74
-    pw: 2
-    method: "traditional"
-    scorecard: "N/A"
-    near_miss_score: 0
-    quality: null  # AI填入 (1.0-5.0)
-    top_technique: null  # AI填入
-    top_lesson: null  # AI填入
-    evolution_proposed: null  # AI填入
-    evolution_status: pending  # pending/approved/rejected
-
-  - ticker: "CPRT"
-    date: "2026-03-11"
-    report: "CPRT_Complete_v1.0.md"
-    chars: "355K"
-    cg_result: "PASSED(0E/1W)"
-    compliance: "PASSED"
-    dm_anchors: 55
-    mermaid_count: 26
-    pw: N/A
-    method: "N/A"
-    scorecard: "N/A"
-    near_miss_score: 0
-    quality: null  # AI填入 (1.0-5.0)
-    top_technique: null  # AI填入
-    top_lesson: null  # AI填入
-    evolution_proposed: null  # AI填入
-    evolution_status: pending  # pending/approved/rejected
-
-  - ticker: "CME"
-    date: "2026-03-15"
-    report: "CME_Complete_v1.0.md"
-    chars: "182K"
-    cg_result: "PASSED(0E/6W)"
-    compliance: "PASSED"
-    dm_anchors: 652
-    mermaid_count: 48
-    pw: 6
-    method: "混合"
-    scorecard: "N/A"
-    near_miss_score: 0
-    quality: 3.9
-    top_technique: "Core P/E剥离法(CI-04) — 剔除$903M非经营性保证金利息暴露35.7x真实经营倍数, 跨报告首创; D1=1.18反脆弱系数全系列最严谨推导"
-    top_lesson: "E7 OI/ADV系统分析缺失是最大盲区 — ADV 5年创纪录但OI质量未验证; M6会员集中度需替代框架(交易所无合同制); 体量182K vs 300K目标(61%)是主要短板"
-    evolution_proposed: |
-      EVO-CME-001: E7 OI/ADV门控 — 交易所类公司Phase 1自动提取OI/ADV比值5年趋势 [S1, 数据预取]
-      EVO-CME-002: M6无合同替代框架 — 交易所/清算所自动切换"会员集中度+清算关系深度"替代 [S1, 框架适配]
-      EVO-CME-003: 保证金利息估值分层显式化 — 收入质量四象限→SOTP倍数映射必须显式声明 [S1, 估值流程]
-      EVO-CME-004: 国际化分析最低门控 — 国际ADV>20%时M7自动升级为必填 [S2, 覆盖完整性]
-      冠军目录待注册: CI-01影子银行留存率制度化(8.5/10) + CI-04 Core P/E 35.7x(8.0/10) [P2]
-    evolution_status: pending
-    reflection_file: "reports/CME/reflection/upgrade_roadmap.md"
+    quality: 4.1
+    top_technique: "飞轮悖论(Agent成功→seat减少=加速器同时是刹车器) + 定价权剪刀差(F500 Stage4/SMB Stage2→OPM反直觉超预期)"
+    top_lesson: "v1.0→v2.0验证: 铁律O(Reverse DCF前置)+铁律H(ADBE对标)+铁律K(估值统一)将红队代价从-25%→-8.5%。中性起点比任何分析技术都重要。M2(NRR不公开)是SaaS报告的系统性盲区。"
+    evolution_proposed: "EVO-CRM-001(M2 SaaS单位经济学标准化P1) + EVO-CRM-002(飞轮悖论检测P1) + EVO-CRM-003(定价权分层P2) + EVO-CRM-004(演绎法模板P2) + EVO-CRM-005(AIAS-PE数据库P3)"
+    evolution_status: "approved+implemented(v19.6)"

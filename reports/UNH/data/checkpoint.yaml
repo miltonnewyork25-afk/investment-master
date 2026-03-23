@@ -1,0 +1,162 @@
+schema_version: "2.0"
+ticker: UNH
+company: "UnitedHealth Group Incorporated"
+framework_version: v19.4
+worktree: "金融"
+industry: "金融"
+complexity_coefficient: 1.3
+last_updated: "2026-03-19T22:30:00+08:00"
+
+current_phase: 5
+phase_status: complete
+phases_completed:
+  - phase: -1
+    status: complete
+    date: "2026-03-19"
+    notes: "tier3_launch.sh完成, knowledge_context 1712字符"
+  - phase: -0.5
+    status: complete
+    date: "2026-03-19"
+    notes: "5路WebSearch + MCP数据预取完成, lit_recon_memo 1849字符"
+  - phase: 0
+    status: complete
+    date: "2026-03-19"
+    notes: "shared_context.md完成, preflight CLEARED, PW=4.2混合模式"
+  - phase: 0.75
+    status: complete
+    date: "2026-03-19"
+    notes: "thesis_crystallization + Reverse DCF完成"
+  - phase: 1
+    status: complete
+    date: "2026-03-19"
+    notes: "12章73.3K字符, 14 Mermaid, Python验证+数据审计, 3 CI, 5 KS"
+  - phase: 2
+    status: complete
+    date: "2026-03-19"
+    notes: "7章45.4K字符, 15→25 Mermaid(P2含补强), 3新CI, 飞轮/拆分/MLR/资本/竞争"
+  - phase: 3
+    status: complete
+    date: "2026-03-19"
+    notes: "6章59K字符+1Python, CQ8监管5路径+DCF+回购η+5情景PW+A-Score+温度计, CI-07, 离散度53.8%→16.9%"
+  - phase: 4
+    status: complete
+    date: "2026-03-19"
+    notes: "红队七问+双向校准+有效性门控完成(effective, 6.0pp avg, 5/7新发现), PW $302→$293(-3%), 评级从偏积极→正中性"
+  - phase: 3.8
+    status: complete
+    date: "2026-03-19"
+    notes: "投资大师圆桌Standard(5大师3轮,15K字符,8.0/10), 4独特洞见: 维持性CEO(+$34非+$51)/准公用事业化(PE上限16-18x)/衰退盲点(PW→$277)/凸性负(N/M=0.57,等Q1)"
+
+target_chars: 350000
+target_range: "300K-400K"
+hard_floor: 250000
+
+quick_ref:
+  total_chars_all: 219340
+  p1_chars: 73313
+  p2_chars: 45411
+  p3_chars: 65980
+  p4_chars: 19683
+  roundtable_chars: 14953
+  chapters: 26
+  mermaid: 59
+  dm_count: 215
+  dm_density: "1.05/千字"
+  causal_density: "~23/万字"
+  ci_count: 7
+  ks_count: 5
+  ts_count: 8
+  python_scripts: 3
+  price_snapshot: "$284.33 (2026-03-19)"
+  market_cap: "$258B"
+
+thesis: "UNH正从'防御成长平台'被重定价为'医疗准公用事业'。核心赌注是MCR均衡水平。P4红队+圆桌发现: (1)P/E折价-8.1x中可恢复仅-2.1x(认知折价$37.5/股), 制度折价-2.5x永久 (2)凸性为负(N/M=0.57), $284非最优入场 (3)衰退情景盲点。圆桌调整后PW=$277(+3.1%→-2.6%), 但等Q1(4/21)确认MCR方向是更优策略。中性关注。"
+
+p4_valuation_update:
+  p1_fair_value: "$282"
+  p2_fair_value: "$255-265"
+  p3_fair_value: "$302"
+  p4_fair_value: "$293"
+  p4_direction: "中性关注"
+  p4_change: "下调$9(-3.0%), 概率重分配(S2:35→25%, S3:30→35%, S4:18→23%, S5:7→9%)"
+  p4_dispersion: "~18%"
+  p4_thermometer: "4.94→~5.0/10 中性"
+  p4_expected_return: "+3.1%"
+
+p4_probability_distribution:
+  S1_alpha: { value: "$650", prob: "8%", weighted: "$52.0" }
+  S2_premium_catchup: { value: "$378", prob: "25%", weighted: "$94.5" }
+  S3_beta_equilibrium: { value: "$273", prob: "35%", weighted: "$95.6" }
+  S4_regulatory_hit: { value: "$190", prob: "23%", weighted: "$43.7" }
+  S5_gamma_spiral: { value: "$78", prob: "9%", weighted: "$7.0" }
+  total_pw: "$293"
+
+roundtable_adjustments:
+  insight_1_ceo_trap: "激进重建溢价从+$51→+$34(-$17), 维持性CEO激励结构"
+  insight_2_utility: "P/E上限16-18x(非历史25x), 制度折价-2.5x永久, 可恢复仅-2.1x"
+  insight_3_recession: "衰退情景(20%×$215)→PW从$293→$277(-$16)"
+  insight_4_convexity: "N/M=0.57(凸性为负), 等$240-250或Q1确认是更优策略"
+  cognitive_discount: "P/E折价-8.1x = 基本面(-3.5x) + 制度(-2.5x永久) + 认知(-2.1x可恢复=$37.5/股)"
+  roundtable_adjusted_pw: "$277"
+  roundtable_expected_return: "-2.6%"
+  final_rating: "中性关注"
+  action_recommendation: "等待2026Q1(4/21)确认MCR方向, 或等$240-250更优凸性入场"
+
+p4_red_team_summary:
+  verdict: effective
+  avg_cq_change: 6.0pp
+  new_findings: 5/7
+  key_findings:
+    - "RT-1b: S2联合概率8.3% vs P3隐含35%(4.2x差距)→S2从35%→25%"
+    - "RT-3: 共识2026E OPM 7.2%需MCR单年-390bps(历史无先例)"
+    - "RT-3: 平台溢价死亡+倍数压缩→盈利恢复+倍数压缩陷阱"
+    - "RT-6: 12个月非对称(下行-30% > 上行+23%)"
+    - "RT-7: MCR新常态替代解释(GLP-1结构性+利用率永久基线上移)"
+
+cq_status:
+  CQ0: { phase: P4, status: complete, direction: "身份重定价确认", confidence: "75%" }
+  CQ1: { phase: P4, status: complete, direction: "平台溢价减弱", confidence: "60%" }
+  CQ2: { phase: P4, status: complete, direction: "PW $293, 对OPM极端敏感", confidence: "55%" }
+  CQ3: { phase: P4, status: complete, direction: "MCR主矛盾确认, 均衡水平不确定性增大", confidence: "75%" }
+  CQ4: { phase: P4, status: complete, direction: "飞轮2.5/5(药品管理能力被低估)", confidence: "70%" }
+  CQ5: { phase: P4, status: complete, direction: "有毒增长确认", confidence: "80%" }
+  CQ6: { phase: P4, status: complete, direction: "回购差+分红安全=混合", confidence: "60%" }
+  CQ7: { phase: P4, status: complete, direction: "GLP-1不确定性增大(超级周期风险)", confidence: "65%" }
+  CQ7.5: { phase: P4, status: complete, direction: "并购+回购双重价值摧毁(η=0.51)", confidence: "80%" }
+  CQ8: { phase: P4, status: complete, direction: "监管数据质量低, DOJ概率难验证", confidence: "50%" }
+
+non_consensus_insights:
+  CI-01: "反向身份折价-20pp(Optum被保险标签压制)"
+  CI-02: "有毒增长(FY2025增量OPM=-28%)"
+  CI-03: "三时代框架(建设→膨胀→清算→均衡)"
+  CI-04: "飞轮是'减速带'非'方向盘'(2/5环节有效)"
+  CI-05: "GLP-1是MCR均衡的决定性变量(NPV -$30~-60/股)"
+  CI-06: "并购ROI 6-7%<WACC 9%(价值毁灭)"
+  CI-07: "回购顺周期陷阱(η=0.51, 5年摧毁$19.2B=市值7.4%)"
+
+key_kill_switches:
+  KS-1: { variable: "MCR均衡", threshold: "4Q连续>88%", current: "88.9%", status: "在阈值区间" }
+  KS-2: { variable: "监管路径", threshold: "DOJ分拆诉讼", current: "调查中(5路径量化完成)", status: "远离阈值" }
+  KS-3: { variable: "CEO执行力", threshold: "2026 adj EPS<$16", current: "guidance>$17.75", status: "待验证" }
+  KS-4: { variable: "Optum Health", threshold: "6Q adj OPM<3%", current: "2.3%", status: "在阈值以下" }
+  KS-5: { variable: "竞争(HUM超越)", threshold: "HUM MA>UNH MA", current: "7.0M vs 9.4M", status: "接近中" }
+
+p5_todo:
+  - "Complete组装: 读P1-P4+圆桌 staging→组装连贯报告→质量门控→修复→提交"
+  - "铁律K估值统一性: 全报告使用圆桌调整后数字(PW$277/-2.6%/中性关注/等Q1)"
+  - "铁律J单会话: 必须在新会话内完成(当前会话context已满)"
+  - "字符检查: staging合计219K+执行摘要+附录→目标≥250K"
+  - "DM密度: 当前1.05/千字(合格), 组装时防DM损耗"
+  - "Moat Data Card + Strategy Card产出"
+  - "圆桌4洞见融入: 维持性CEO→治理章节/准公用事业化→身份章节/衰退→情景/凸性→执行摘要"
+  - "补充: 规模经济vs网络效应(200字) + 代理问题综合诊断(300字) + 保险基础设施(500字)"
+  - "P4→圆桌估值演化: $302→$293(红队)→$277(圆桌衰退调整)"
+
+staging_files:
+  p1_chapters: "P1_Ch01-12 (12章, 73.3K)"
+  p2_chapters: "P2_Ch13-19 (7章, 45.4K)"
+  p3_chapters: "P3_Ch20-24含21B (6章, 59K)"
+  p4_chapters: "P4_Ch25红队 (1章, 19.7K) + P4_roundtable (15K)"
+  python: "P1_python_verification.py + P1_data_audit.py + P3_dcf_verification.py"
+  scout: "business_scout.md(24K) + regulatory_scout.md(21K) + framework_extraction.md(10K) + segment_data.md(10K)"
+  data: "financial_data_10yr.md(7K) + reverse_dcf_preliminary.md(3K) + thesis_crystallization_draft.md(3K)"

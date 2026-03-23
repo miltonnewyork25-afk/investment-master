@@ -1,0 +1,95 @@
+# AIAS × PE 跨公司数据库 v1.0
+# 源自: EVO-CRM-005
+# 用途: 每份SaaS报告完成后检查AIAS-PE一致性, 发现市场错价
+# 更新频率: 每份SaaS报告完成后追加/更新
+# 最低样本: 10家(当前5家, 需扩充)
+# 统计显著性: 待验证(需>10家)
+
+metadata:
+  version: "1.0"
+  last_updated: "2026-03-19"
+  sample_size: 5
+  min_required: 10
+  regression_valid: false  # 需>10家才能做线性回归
+  source: "CRM v2.0 Ch28 AIAS-PE一致性检验"
+
+# PE/AIAS基准区间 (待回归验证)
+benchmark:
+  pe_per_aias_point:
+    low: 8    # 市场低估AI受益
+    mid: 15   # 正常定价
+    high: 25  # 市场溢价定价AI受益
+  anomaly_threshold: "<8 或 >30 = 异常值需检查"
+
+# 公司数据
+companies:
+
+  - ticker: MSFT
+    aias_net: 3.0  # 估计值(未做完整AIAS)
+    aias_version: "estimate"
+    forward_pe: 33
+    pe_per_aias: 11.0
+    ai_positioning: "AI平台(Copilot+Azure)"
+    aias_confidence: low  # 未经完整评估
+    report: null  # 无深度报告
+    date: "2026-03-19"
+
+  - ticker: NOW
+    aias_net: 2.5  # 估计值
+    aias_version: "estimate"
+    forward_pe: 45
+    pe_per_aias: 18.0
+    ai_positioning: "AI Agent原生"
+    aias_confidence: low
+    report: null
+    date: "2026-03-19"
+
+  - ticker: CRM
+    aias_net: 2.30
+    aias_version: "v2.0"
+    forward_pe: 14.7
+    pe_per_aias: 6.4  # 异常低
+    ai_positioning: "AI Agent+Platform(分裂体Split=22)"
+    aias_confidence: high  # 完整AIAS v2.0评估
+    anomaly: true
+    anomaly_explanation: "正影响+最低PE, 3种解释: AIAS高估(30%)/市场SaaSpocalypse误伤(40%)/其他负面抵消(30%)"
+    report: "CRM_Complete_v2.0_2026-03-19.md"
+    date: "2026-03-19"
+
+  - ticker: ADSK
+    aias_net: 0.75  # 估计值
+    aias_version: "estimate"
+    forward_pe: 25
+    pe_per_aias: 33.3
+    ai_positioning: "AI辅助设计"
+    aias_confidence: low
+    report: null
+    date: "2026-03-19"
+
+  - ticker: ADBE
+    aias_net: 0.42
+    aias_version: "v2.0(FVF校准后)"
+    forward_pe: 15
+    pe_per_aias: 35.7
+    ai_positioning: "AI创作+治理(分裂体)"
+    aias_confidence: high  # 完整AIAS评估
+    anomaly: true
+    anomaly_explanation: "正影响+极低PE, 与CRM相同模式"
+    report: "ADBE_Complete_v2.0_2026-03-18.md"
+    date: "2026-03-18"
+
+# 待补充公司 (扩充至10家+)
+todo:
+  - WDAY  # Workday, 需完整AIAS
+  - HUBS  # HubSpot, 需完整AIAS
+  - VEEV  # Veeva, 需完整AIAS
+  - DDOG  # Datadog, 需完整AIAS
+  - SNOW  # Snowflake, 需完整AIAS
+  - PANW  # Palo Alto, 需完整AIAS
+  - ZS    # Zscaler, 需完整AIAS
+
+# 使用说明
+# 1. 每份SaaS报告Phase 3完成后: 追加该公司的AIAS数据
+# 2. 当sample_size>=10: 运行线性回归, 更新benchmark
+# 3. 新报告中PE/AIAS<8 或 >30: 自动标记为异常→Ch34式检验
+# 4. 异常公司需要3种解释+概率分布(AIAS高估/市场误伤/其他)
