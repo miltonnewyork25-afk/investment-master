@@ -212,3 +212,127 @@ extensions:
     kill_switch:
       threshold: "PE/AIAS比<5x(极端低估) 或 >30x(AIAS可能完全错误)"
       action: "重新审视AIAS评分方法论 或 确认市场严重错价"
+
+# ============================================================
+# 财务分析KPI集成 (CPA v2.0)
+# 当财务分析框架M6模块触发时加载本章节
+# ============================================================
+
+financial_kpi_integration:
+  version: "CPA v2.0"
+  date: "2026-03-23"
+  note: "M2已覆盖NRR/Magic Number/S&M效率, M7已覆盖FCF-SBC/杠杆/回购η。本章节补充M2未展开的SaaS核心指标"
+
+  north_star_kpis:
+    # --- 收入质量指标 ---
+    ARR:
+      definition: "年度经常性收入——所有活跃订阅合同的年化价值"
+      formula: "MRR × 12 (排除一次性/专业服务/消耗型)"
+      healthy_threshold: "YoY增速>15%=高增长; 8-15%=稳健; <8%=成熟期"
+      financial_mapping: "10-K Revenue拆分中Subscription收入×年化。注意: GAAP收入≠ARR(确认时序差异)"
+      red_flag: "ARR增速连续2季低于Revenue增速→积压在消耗(backlog quality下降)"
+
+    MRR:
+      definition: "月度经常性收入——ARR的月度切片"
+      formula: "期初MRR + 新增MRR + 扩展MRR - 收缩MRR - 流失MRR"
+      healthy_threshold: "净新MRR>0且MoM稳定增长"
+      financial_mapping: "多数公司不单独披露MRR→用季度订阅收入/3近似"
+      red_flag: "收缩MRR+流失MRR > 新增MRR+扩展MRR = 净收缩(致命信号)"
+
+    GRR:
+      definition: "毛收入留存率——不含扩展, 仅衡量存量客户'不跑'的比例"
+      formula: "(期初ARR - 收缩 - 流失) / 期初ARR"
+      healthy_threshold: ">90%=优秀(企业级); 80-90%=良好(中端); <80%=高流失"
+      financial_mapping: "极少公司直接披露→用NRR-净扩展率间接推算, 或从cohort disclosure推断"
+      red_flag: "GRR<85%且NRR>120%→增长完全靠扩展掩盖高流失(不可持续)"
+
+    CAC:
+      definition: "客户获取成本——获得一个新客户的全部成本"
+      formula: "(S&M费用 - 客户成功/续费成本) / 新增客户数"
+      healthy_threshold: "CAC Payback<18个月=健康; 18-24=可接受; >24=低效"
+      financial_mapping: "S&M from P&L(需剥离CSM/续费部分); 新增客户数from 管理层披露/反推"
+      red_flag: "CAC Payback逐年拉长+新客占比下降→获客引擎疲劳"
+
+    LTV:
+      definition: "客户终身价值——单客户全生命周期贡献的毛利润"
+      formula: "ARPA × 毛利率 / (1 - GRR) 或 ARPA × 毛利率 × 平均客户寿命"
+      healthy_threshold: "LTV/CAC>3:1=健康; 5:1+=优秀; <2:1=单位经济学不可持续"
+      financial_mapping: "ARPA from Revenue/客户数; 毛利率from P&L; GRR from上述推算"
+      red_flag: "LTV/CAC从>5降至<3(2年内)→竞争加剧or产品PMF衰退"
+
+    Rule_of_40:
+      definition: "SaaS健康度综合指标——增长+盈利的平衡"
+      formula: "收入YoY增速(%) + FCF Margin(%)"
+      healthy_threshold: ">40%=优秀; 25-40%=良好; <25%=需改善"
+      financial_mapping: "收入增速from P&L; FCF Margin=OCF-CapEx/Revenue from CF Statement"
+      red_flag: "Rule of 40<25%且两项均<20%→既不增长也不盈利"
+
+    Billings:
+      definition: "账单金额——期内向客户开票的总金额(含预收)"
+      formula: "Revenue + Δ Deferred Revenue (期末-期初)"
+      healthy_threshold: "Billings增速应≥Revenue增速(否则=需求减速先行指标)"
+      financial_mapping: "Revenue from P&L + Deferred Revenue from Balance Sheet"
+      red_flag: "Billings增速连续2季<Revenue增速→pipeline收缩, 未来2-4季收入将减速"
+
+    Deferred_Revenue:
+      definition: "递延收入——已收款但尚未确认为收入的金额"
+      formula: "Balance Sheet: Current DR + Non-current DR"
+      healthy_threshold: "DR增速应在Revenue增速±5pp内"
+      financial_mapping: "B/S Current Liabilities(短期) + Non-current(长期); 需区分DR vs Contract Liabilities"
+      red_flag: "DR绝对值下降(非季节性)→客户缩短合同期限or预付意愿降低"
+
+    RPO:
+      definition: "剩余履约义务——已签约未交付的总收入(含DR+未开票)"
+      formula: "Deferred Revenue + Unbilled Backlog (ASC 606披露)"
+      healthy_threshold: "cRPO(当前RPO,12个月内确认)增速应在Revenue增速±5pp内"
+      financial_mapping: "ASC 606 Note中Revenue Recognition披露; 区分cRPO vs total RPO"
+      red_flag: "cRPO增速<Revenue增速-5pp且连续2季→有机需求减速确认"
+
+    ARPA:
+      definition: "每账户平均收入——单客户年化贡献"
+      formula: "ARR / 总客户数 (或 总收入 / 平均客户数)"
+      healthy_threshold: "ARPA YoY增长>0(定价权+upsell的综合验证)"
+      financial_mapping: "Revenue from P&L / 管理层披露客户数; 需按segment拆分(Enterprise vs SMB)"
+      red_flag: "ARPA下降+客户数增长→低端客户稀释(revenue quality下降)"
+
+    DBNER:
+      definition: "基于美元的净扩张率——与NRR概念相同, 不同公司的命名差异"
+      formula: "同NRR: 同期存量客户当期收入 / 去年同期收入"
+      healthy_threshold: "同NRR(见M2): >110%=健康; >130%=优秀; <100%=净收缩"
+      financial_mapping: "管理层直接披露 或 用间接法推算(见M2 Q1)"
+      red_flag: "DBNER下降趋势>4季且管理层停止披露→隐藏恶化信号"
+
+    CRC:
+      definition: "客户保留成本——维持存量客户的CSM/support/续费成本"
+      formula: "(客户成功团队成本 + 技术支持成本 + 续费佣金) / 存量客户数"
+      healthy_threshold: "CRC/ARPA<15%=高效; 15-25%=正常; >25%=保留成本过高"
+      financial_mapping: "极少单独披露→从S&M中剥离(S&M总额-新客获取成本); 需管理层commentary辅助"
+      red_flag: "CRC上升+GRR下降→花更多钱但留不住客户(双重恶化)"
+
+  financial_statement_adjustments:
+    income_statement:
+      - "订阅收入vs专业服务收入分开评估——专业服务OPM通常<10%, 拉低整体但支持部署"
+      - "SBC调整: SaaS公司SBC/Revenue通常15-30%→GAAP OPM显著低于Non-GAAP→两者都要看, 但FCF用GAAP"
+      - "Revenue确认时序: ASC 606下多年合同按履约进度确认→Revenue≠Billings≠Cash"
+    balance_sheet:
+      - "递延收入=预付款负债, 实质是'负运营资本'优势→现金流领先利润"
+      - "资本化软件开发成本: R&D中capitalized部分推迟为资产→需加回计算真实研发强度"
+      - "商誉密集型(M&A驱动增长): Goodwill/Total Assets>40%→ROIC计算必须包含商誉"
+    cash_flow:
+      - "SaaS现金流特征: 高预收款→OCF>Net Income(正常); CapEx低(<5% Revenue)→FCF≈OCF"
+      - "警惕CapEx资本化操纵: 软件开发成本从OpEx转CapEx→人为提升OPM+压低FCF Yield"
+      - "SBC现金流影响: GAAP OCF包含SBC加回→真实现金创造=OCF-SBC (与M7 FCF-SBC Yield一致)"
+
+  cpa_module_cross_reference:
+    M1_income_statement:
+      - "Subscription Revenue增速 vs Professional Services增速的剪刀差→产品化程度"
+      - "Gross Margin按segment(Subscription GM通常75-85% vs PS GM 10-30%)→混合GM误导性"
+      - "R&D/Revenue趋势: 下降=成熟期效率提升 或 创新投入不足→需结合M3 AI影响判断"
+    M3_cash_flow:
+      - "Billings-to-Revenue比: >1.1=健康预收; <0.95=需求疲软→与RPO交叉验证"
+      - "FCF Seasonality: SaaS通常Q1最强(年度续约集中)→逐季比较需季节性调整"
+      - "Rule of 40分解: 增长贡献vs利润贡献的演变→判断公司生命周期位置"
+    M4_segment:
+      - "Cloud vs On-premise迁移: Cloud ARR占比趋势→迁移完成度→未来增速天花板"
+      - "按客户层(Enterprise/Mid/SMB)的ARPA和NRR差异→识别定价权分层(与M5交叉)"
+      - "地理分部: 国际ARR占比+国际NRR→国际化增长质量(SPGI EVO-001教训)"
