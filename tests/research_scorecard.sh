@@ -236,10 +236,13 @@ score_post() {
     CHARS="${CHARS// /}"
 
     # 动态基准 (复用quality_gate_complete.sh逻辑)
+    # Fix: 支持浮点PW (如3.6), 截断为整数比较
     local BENCHMARK
-    if [ "$POSS_WIDTH" -le 3 ]; then
+    local PW_INT=${POSS_WIDTH%%.*}
+    PW_INT="${PW_INT:-0}"
+    if [ "$PW_INT" -le 3 ]; then
         BENCHMARK=250000
-    elif [ "$POSS_WIDTH" -le 6 ]; then
+    elif [ "$PW_INT" -le 6 ]; then
         BENCHMARK=200000
     else
         BENCHMARK=350000

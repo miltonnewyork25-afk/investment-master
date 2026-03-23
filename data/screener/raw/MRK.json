@@ -1,0 +1,73 @@
+{
+  "symbol": "MRK",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "MRK",
+    "price": 115.62,
+    "marketCap": 285857963387,
+    "beta": 0.264,
+    "companyName": "Merck & Co., Inc.",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers - General",
+    "ceo": "Robert Davis",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 65011000000,
+      "operatingIncome": 26779000000,
+      "netIncome": 18254000000,
+      "eps": 7.28
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 64168000000,
+      "operatingIncome": 20221000000,
+      "netIncome": 17117000000,
+      "eps": 6.76
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 60115000000,
+      "operatingIncome": 2954000000,
+      "netIncome": 365000000,
+      "eps": 0.14
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.815,
+      "netProfitMargin": 0.281,
+      "priceToEarningsRatio": 14.46,
+      "dividendYieldPercentage": 3.1
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.763,
+      "netProfitMargin": 0.267,
+      "priceToEarningsRatio": 14.72,
+      "dividendYieldPercentage": 3.11
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.732,
+      "netProfitMargin": 0.006,
+      "priceToEarningsRatio": 778.71,
+      "dividendYieldPercentage": 2.62
+    }
+  ],
+  "quote": {
+    "symbol": "MRK",
+    "price": 115.62,
+    "marketCap": 285857963387,
+    "yearHigh": 125.14,
+    "yearLow": 73.31
+  },
+  "balance": [],
+  "cashflow": [],
+  "key_metrics": [],
+  "insider_trades": "summarized_quarterly_data"
+}

@@ -1,0 +1,73 @@
+{
+  "symbol": "ABBV",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "ABBV",
+    "price": 219.68,
+    "marketCap": 388431368556,
+    "beta": 0.334,
+    "companyName": "AbbVie Inc.",
+    "sector": "Healthcare",
+    "industry": "Drug Manufacturers - General",
+    "ceo": "Robert A. Michael",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 61160000000,
+      "operatingIncome": 21214000000,
+      "netIncome": 4226000000,
+      "eps": 2.38
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 56334000000,
+      "operatingIncome": 9137000000,
+      "netIncome": 4278000000,
+      "eps": 2.4
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 54318000000,
+      "operatingIncome": 12757000000,
+      "netIncome": 4863000000,
+      "eps": 2.73
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.837,
+      "netProfitMargin": 0.069,
+      "priceToEarningsRatio": 96.82,
+      "dividendYieldPercentage": 2.85
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.7,
+      "netProfitMargin": 0.076,
+      "priceToEarningsRatio": 73.48,
+      "dividendYieldPercentage": 3.51
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.624,
+      "netProfitMargin": 0.09,
+      "priceToEarningsRatio": 56.34,
+      "dividendYieldPercentage": 3.85
+    }
+  ],
+  "quote": {
+    "symbol": "ABBV",
+    "price": 219.68,
+    "marketCap": 388431368556,
+    "yearHigh": 244.81,
+    "yearLow": 164.39
+  },
+  "balance": [],
+  "cashflow": [],
+  "key_metrics": [],
+  "insider_trades": "summarized_quarterly_data"
+}

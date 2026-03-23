@@ -1,0 +1,73 @@
+{
+  "symbol": "FDX",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "FDX",
+    "price": 351.68,
+    "marketCap": 82980814766,
+    "beta": 1.281,
+    "companyName": "FedEx Corporation",
+    "sector": "Industrials",
+    "industry": "Integrated Freight & Logistics",
+    "ceo": "Rajesh Subramaniam",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-05-31",
+      "revenue": 87926000000,
+      "operatingIncome": 6082000000,
+      "netIncome": 4092000000,
+      "eps": 16.96
+    },
+    {
+      "date": "2024-05-31",
+      "revenue": 87693000000,
+      "operatingIncome": 6355000000,
+      "netIncome": 4331000000,
+      "eps": 17.44
+    },
+    {
+      "date": "2023-05-31",
+      "revenue": 90155000000,
+      "operatingIncome": 5338000000,
+      "netIncome": 3972000000,
+      "eps": 15.61
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-05-31",
+      "grossProfitMargin": 0.216,
+      "netProfitMargin": 0.047,
+      "priceToEarningsRatio": 12.95,
+      "dividendYieldPercentage": 2.53
+    },
+    {
+      "date": "2024-05-31",
+      "grossProfitMargin": 0.216,
+      "netProfitMargin": 0.049,
+      "priceToEarningsRatio": 14.54,
+      "dividendYieldPercentage": 2.0
+    },
+    {
+      "date": "2023-05-31",
+      "grossProfitMargin": 0.213,
+      "netProfitMargin": 0.044,
+      "priceToEarningsRatio": 13.94,
+      "dividendYieldPercentage": 2.13
+    }
+  ],
+  "quote": {
+    "symbol": "FDX",
+    "price": 351.68,
+    "marketCap": 82980814766,
+    "yearHigh": 392.86,
+    "yearLow": 194.3
+  },
+  "balance": [],
+  "cashflow": [],
+  "key_metrics": [],
+  "insider_trades": "summarized_quarterly_data"
+}

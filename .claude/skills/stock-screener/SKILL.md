@@ -132,10 +132,17 @@ fmp_data endpoint="estimates" symbol={SYM}  # 盈利预测 → surprise/revision
 
 ## 硬否决条件 (任一触发 → 直接剔除)
 
+**铁律第一条: 生物制药行业全面排除**
+- Biotechnology / Drug Manufacturers (General/Specialty) / Medical Pharmaceuticals
+- 原因: 核心驱动是管线二元结果(FDA批准/失败), 无法用财务因子提前验证和量化
+- 此规则优先于所有其他条件, 不可豁免
+
+0. **生物制药行业** → 铁律排除(Biotechnology/Drug Manufacturers/Medical Pharma)
 1. 高应计(>0.15) + 低现金流(CFO/NI<0.5) → 利润纸上富贵
 2. 审计意见保留
 3. 极高空头(>20%) + 无insider buy → 知情人在做空
 4. 年稀释>15% → 大规模增发
+5. Z-Score<1.0 (非金融/非负权益) → 财务困境
 
 ## 软警告 (标记但不剔除)
 

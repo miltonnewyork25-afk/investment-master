@@ -1,0 +1,207 @@
+{
+  "symbol": "BEN",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "BEN",
+    "price": 24.13,
+    "marketCap": 12566022000,
+    "beta": 1.461,
+    "lastDividend": 1.29,
+    "range": "16.25-28.32",
+    "companyName": "Franklin Resources, Inc.",
+    "currency": "USD",
+    "exchange": "NYSE",
+    "industry": "Asset Management",
+    "sector": "Financial Services",
+    "country": "US",
+    "fullTimeEmployees": "10000",
+    "ceo": "Jennifer Johnson"
+  },
+  "income": [
+    {
+      "date": "2025-09-30",
+      "fiscalYear": "2025",
+      "period": "FY",
+      "revenue": 8770700000,
+      "grossProfit": 7046700000,
+      "operatingIncome": 604100000,
+      "netIncome": 524900000,
+      "eps": 0.91,
+      "epsDiluted": 0.91,
+      "ebitda": 1413500000,
+      "interestExpense": 94900000,
+      "depreciationAndAmortization": 531800000
+    },
+    {
+      "date": "2024-09-30",
+      "fiscalYear": "2024",
+      "period": "FY",
+      "revenue": 8478000000,
+      "grossProfit": 6791400000,
+      "operatingIncome": 407600000,
+      "netIncome": 464800000,
+      "eps": 0.85,
+      "epsDiluted": 0.85,
+      "ebitda": 1375100000
+    },
+    {
+      "date": "2023-09-30",
+      "fiscalYear": "2023",
+      "period": "FY",
+      "revenue": 7849400000,
+      "grossProfit": 6349900000,
+      "operatingIncome": 1102300000,
+      "netIncome": 882800000,
+      "eps": 1.72,
+      "epsDiluted": 1.72,
+      "ebitda": 1907100000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-09-30",
+      "fiscalYear": "2025",
+      "totalAssets": 32368300000,
+      "totalLiabilities": 18179500000,
+      "totalStockholdersEquity": 12077800000,
+      "cashAndCashEquivalents": 3573900000,
+      "totalDebt": 13299900000,
+      "netDebt": 9726000000,
+      "goodwill": 6206000000
+    },
+    {
+      "date": "2024-09-30",
+      "fiscalYear": "2024",
+      "totalAssets": 32464500000,
+      "totalStockholdersEquity": 12508100000,
+      "cashAndCashEquivalents": 4408900000,
+      "totalDebt": 13086900000
+    },
+    {
+      "date": "2023-09-30",
+      "fiscalYear": "2023",
+      "totalAssets": 30121200000,
+      "totalStockholdersEquity": 11916900000,
+      "cashAndCashEquivalents": 4402400000,
+      "totalDebt": 11752400000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-09-30",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 1066100000,
+      "capitalExpenditure": -154500000,
+      "freeCashFlow": 911600000,
+      "netIncome": 548900000,
+      "stockBasedCompensation": 214800000,
+      "commonDividendsPaid": -683700000,
+      "commonStockRepurchased": -240300000
+    },
+    {
+      "date": "2024-09-30",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 971300000,
+      "capitalExpenditure": -177100000,
+      "freeCashFlow": 794200000
+    },
+    {
+      "date": "2023-09-30",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 1089200000,
+      "capitalExpenditure": -148800000,
+      "freeCashFlow": 940400000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-09-30",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.8034,
+      "netProfitMargin": 0.0598,
+      "returnOnEquity": 0.0435,
+      "currentRatio": 2.7126,
+      "debtToEquityRatio": 1.1012,
+      "priceToEarningsRatio": 22.67,
+      "dividendYieldPercentage": 5.75,
+      "interestCoverageRatio": 6.37
+    },
+    {
+      "date": "2024-09-30",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.8011,
+      "netProfitMargin": 0.0548,
+      "returnOnEquity": 0.0372,
+      "priceToEarningsRatio": 22.09,
+      "dividendYieldPercentage": 6.39
+    },
+    {
+      "date": "2023-09-30",
+      "fiscalYear": "2023",
+      "grossProfitMargin": 0.809,
+      "netProfitMargin": 0.1125,
+      "returnOnEquity": 0.0741,
+      "priceToEarningsRatio": 13.64
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-09-30",
+      "fiscalYear": "2025",
+      "marketCap": 11900385000,
+      "enterpriseValue": 21626385000,
+      "evToEBITDA": 15.3,
+      "returnOnInvestedCapital": 0.0138,
+      "freeCashFlowYield": 0.0766
+    },
+    {
+      "date": "2024-09-30",
+      "fiscalYear": "2024",
+      "marketCap": 10266425000,
+      "evToEBITDA": 13.78
+    },
+    {
+      "date": "2023-09-30",
+      "fiscalYear": "2023",
+      "marketCap": 12044200000,
+      "evToEBITDA": 10.17
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 0
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 2,
+      "totalSales": 0
+    },
+    {
+      "year": 2025,
+      "quarter": 3,
+      "totalPurchases": 0,
+      "totalSales": 0
+    }
+  ],
+  "quote": {
+    "symbol": "BEN",
+    "name": "Franklin Resources, Inc.",
+    "price": 24.13,
+    "changePercentage": 1.51,
+    "change": 0.36,
+    "volume": 6151104,
+    "dayLow": 23.96,
+    "dayHigh": 24.44,
+    "yearHigh": 28.32,
+    "yearLow": 16.25,
+    "marketCap": 12566022000,
+    "priceAvg50": 26.18,
+    "priceAvg200": 24.26,
+    "exchange": "NYSE",
+    "previousClose": 23.77
+  }
+}

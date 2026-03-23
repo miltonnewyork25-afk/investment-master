@@ -1,0 +1,249 @@
+{
+  "symbol": "UI",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "UI",
+    "price": 759.84,
+    "marketCap": 45986120113,
+    "beta": 1.369,
+    "lastDividend": 3,
+    "range": "255-803.6",
+    "companyName": "Ubiquiti Inc.",
+    "currency": "USD",
+    "exchange": "NYSE",
+    "industry": "Communication Equipment",
+    "ceo": "Robert J. Pera",
+    "sector": "Technology",
+    "country": "US",
+    "fullTimeEmployees": "1515",
+    "ipoDate": "2011-10-14",
+    "isActivelyTrading": true
+  },
+  "income": [
+    {
+      "date": "2025-06-30",
+      "symbol": "UI",
+      "fiscalYear": "2025",
+      "period": "FY",
+      "revenue": 2573545000,
+      "grossProfit": 1117451000,
+      "operatingIncome": 836280000,
+      "ebitda": 858181000,
+      "netIncome": 711922000,
+      "eps": 11.77,
+      "epsDiluted": 11.76,
+      "interestExpense": 30628000,
+      "depreciationAndAmortization": 21901000
+    },
+    {
+      "date": "2024-06-30",
+      "symbol": "UI",
+      "fiscalYear": "2024",
+      "period": "FY",
+      "revenue": 1928490000,
+      "grossProfit": 739762000,
+      "operatingIncome": 498997000,
+      "ebitda": 518248000,
+      "netIncome": 349960000,
+      "eps": 5.79,
+      "epsDiluted": 5.79,
+      "interestExpense": 75169000
+    },
+    {
+      "date": "2023-06-30",
+      "symbol": "UI",
+      "fiscalYear": "2023",
+      "period": "FY",
+      "revenue": 1940512000,
+      "grossProfit": 760731000,
+      "operatingIncome": 544566000,
+      "ebitda": 560858000,
+      "netIncome": 407641000,
+      "eps": 6.75,
+      "epsDiluted": 6.74,
+      "interestExpense": 58224000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-06-30",
+      "symbol": "UI",
+      "fiscalYear": "2025",
+      "cashAndCashEquivalents": 149727000,
+      "totalAssets": 1466451000,
+      "totalLiabilities": 798191000,
+      "totalStockholdersEquity": 668260000,
+      "totalDebt": 297416000,
+      "netDebt": 147689000
+    },
+    {
+      "date": "2024-06-30",
+      "symbol": "UI",
+      "fiscalYear": "2024",
+      "cashAndCashEquivalents": 126342000,
+      "totalAssets": 1154412000,
+      "totalLiabilities": 1059352000,
+      "totalStockholdersEquity": 95060000,
+      "totalDebt": 757286000,
+      "netDebt": 630944000
+    },
+    {
+      "date": "2023-06-30",
+      "symbol": "UI",
+      "fiscalYear": "2023",
+      "cashAndCashEquivalents": 114826000,
+      "totalAssets": 1406399000,
+      "totalLiabilities": 1522132000,
+      "totalStockholdersEquity": -115733000,
+      "totalDebt": 1138274000,
+      "netDebt": 1023448000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-06-30",
+      "symbol": "UI",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 640027000,
+      "capitalExpenditure": -12586000,
+      "freeCashFlow": 627441000,
+      "stockBasedCompensation": 7208000,
+      "commonDividendsPaid": -145153000,
+      "commonStockRepurchased": -778000
+    },
+    {
+      "date": "2024-06-30",
+      "symbol": "UI",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 541516000,
+      "capitalExpenditure": -11975000,
+      "freeCashFlow": 529541000,
+      "stockBasedCompensation": 6358000,
+      "commonDividendsPaid": -145091000
+    },
+    {
+      "date": "2023-06-30",
+      "symbol": "UI",
+      "fiscalYear": "2023",
+      "operatingCashFlow": -145428000,
+      "capitalExpenditure": -20934000,
+      "freeCashFlow": -166362000,
+      "stockBasedCompensation": 4734000,
+      "commonDividendsPaid": -145043000
+    }
+  ],
+  "ratios": [
+    {
+      "symbol": "UI",
+      "date": "2025-06-30",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.434,
+      "operatingProfitMargin": 0.325,
+      "netProfitMargin": 0.277,
+      "returnOnEquity": 1.065,
+      "currentRatio": 1.65,
+      "priceToEarningsRatio": 34.97,
+      "priceToFreeCashFlowRatio": 39.68,
+      "dividendYield": 0.0058,
+      "interestCoverageRatio": 27.3
+    },
+    {
+      "symbol": "UI",
+      "date": "2024-06-30",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.384,
+      "operatingProfitMargin": 0.259,
+      "netProfitMargin": 0.181,
+      "returnOnEquity": 3.681,
+      "currentRatio": 3.216,
+      "priceToEarningsRatio": 25.44,
+      "priceToFreeCashFlowRatio": 16.81,
+      "dividendYield": 0.0163,
+      "interestCoverageRatio": 6.64
+    },
+    {
+      "symbol": "UI",
+      "date": "2023-06-30",
+      "fiscalYear": "2023",
+      "grossProfitMargin": 0.392,
+      "operatingProfitMargin": 0.281,
+      "netProfitMargin": 0.21,
+      "returnOnEquity": -3.522,
+      "currentRatio": 3.317,
+      "priceToEarningsRatio": 26.06,
+      "priceToFreeCashFlowRatio": -63.85,
+      "dividendYield": 0.0137,
+      "interestCoverageRatio": 9.35
+    }
+  ],
+  "key_metrics": [
+    {
+      "symbol": "UI",
+      "date": "2025-06-30",
+      "fiscalYear": "2025",
+      "marketCap": 24896592000,
+      "enterpriseValue": 25044281000,
+      "evToEBITDA": 29.18,
+      "returnOnEquity": 1.065,
+      "returnOnInvestedCapital": 0.726,
+      "freeCashFlowYield": 0.0252,
+      "stockBasedCompensationToRevenue": 0.0028
+    },
+    {
+      "symbol": "UI",
+      "date": "2024-06-30",
+      "fiscalYear": "2024",
+      "marketCap": 8903665120,
+      "enterpriseValue": 9534609120,
+      "evToEBITDA": 18.4,
+      "returnOnEquity": 3.681,
+      "returnOnInvestedCapital": 0.448,
+      "freeCashFlowYield": 0.0595
+    },
+    {
+      "symbol": "UI",
+      "date": "2023-06-30",
+      "fiscalYear": "2023",
+      "marketCap": 10621451250,
+      "enterpriseValue": 11644899250,
+      "evToEBITDA": 20.76,
+      "returnOnEquity": -3.522,
+      "returnOnInvestedCapital": 0.413,
+      "freeCashFlowYield": -0.0157
+    }
+  ],
+  "insider_trades": [
+    {
+      "symbol": "UI",
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 0,
+      "totalSales": 1
+    },
+    {
+      "symbol": "UI",
+      "year": 2025,
+      "quarter": 3,
+      "totalPurchases": 0,
+      "totalSales": 0
+    },
+    {
+      "symbol": "UI",
+      "year": 2025,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 1
+    }
+  ],
+  "quote": {
+    "symbol": "UI",
+    "price": 759.84,
+    "marketCap": 45986120113,
+    "yearHigh": 803.6,
+    "yearLow": 255,
+    "priceAvg50": 649.87,
+    "priceAvg200": 567.44,
+    "exchange": "NYSE",
+    "previousClose": 749.88
+  }
+}

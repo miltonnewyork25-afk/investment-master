@@ -1,0 +1,125 @@
+{
+  "symbol": "CASY",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "CASY",
+    "price": 660.87,
+    "marketCap": 24496424012,
+    "beta": 0.646,
+    "companyName": "Casey's General Stores, Inc.",
+    "exchange": "NASDAQ",
+    "industry": "Specialty Retail",
+    "sector": "Consumer Cyclical",
+    "ceo": "Darren Rebelez"
+  },
+  "income": [
+    {
+      "fiscalYear": "2025",
+      "revenue": 15940899000,
+      "operatingIncome": 796400000,
+      "netIncome": 546520000,
+      "eps": 14.72,
+      "ebitda": 1200047000
+    },
+    {
+      "fiscalYear": "2024",
+      "revenue": 14862913000,
+      "netIncome": 501972000,
+      "eps": 13.51
+    },
+    {
+      "fiscalYear": "2023",
+      "revenue": 15094475000,
+      "netIncome": 446691000,
+      "eps": 11.99
+    }
+  ],
+  "balance": [
+    {
+      "fiscalYear": "2025",
+      "totalAssets": 8438155000,
+      "totalStockholdersEquity": 3508670000,
+      "cashAndCashEquivalents": 326662000,
+      "totalDebt": 2957899000,
+      "goodwill": 1244893000
+    },
+    {
+      "fiscalYear": "2024",
+      "totalAssets": 6347433000,
+      "totalDebt": 1635939000
+    },
+    {
+      "fiscalYear": "2023",
+      "totalAssets": 5943270000,
+      "totalDebt": 1673374000
+    }
+  ],
+  "cashflow": [
+    {
+      "fiscalYear": "2025",
+      "operatingCashFlow": 1090854000,
+      "freeCashFlow": 584630000,
+      "commonDividendsPaid": -72309000
+    },
+    {
+      "fiscalYear": "2024",
+      "operatingCashFlow": 892953000,
+      "freeCashFlow": 370949000
+    },
+    {
+      "fiscalYear": "2023",
+      "operatingCashFlow": 881951000,
+      "freeCashFlow": 405383000
+    }
+  ],
+  "ratios": [
+    {
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.235,
+      "netProfitMargin": 0.034,
+      "returnOnEquity": 0.156,
+      "priceToEarningsRatio": 31.42,
+      "dividendYieldPercentage": 0.42
+    },
+    {
+      "fiscalYear": "2024",
+      "priceToEarningsRatio": 23.66
+    },
+    {
+      "fiscalYear": "2023",
+      "priceToEarningsRatio": 19.43
+    }
+  ],
+  "key_metrics": [
+    {
+      "fiscalYear": "2025",
+      "marketCap": 17169490440,
+      "evToEBITDA": 16.5
+    },
+    {
+      "fiscalYear": "2024",
+      "evToEBITDA": 12.56
+    },
+    {
+      "fiscalYear": "2023",
+      "evToEBITDA": 10.47
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 1,
+      "totalSales": 1
+    }
+  ],
+  "quote": {
+    "symbol": "CASY",
+    "price": 660.87,
+    "yearHigh": 696.66,
+    "yearLow": 386.04,
+    "marketCap": 24496424012,
+    "exchange": "NASDAQ",
+    "previousClose": 673.81
+  }
+}
