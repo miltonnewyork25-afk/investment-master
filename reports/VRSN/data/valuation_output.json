@@ -1,0 +1,45 @@
+{
+  "model": "VRSN Toll Booth DCF",
+  "date": "2026-03-23",
+  "current_price": 240.78,
+  "reverse_dcf": {
+    "single_stage_g": 3.78,
+    "two_stage_g2": 3.2
+  },
+  "scenarios": [
+    {
+      "label": "S1: 基准(7%提价→CPI, 域名+1%)",
+      "fair_price": 266,
+      "upside_pct": 10.5,
+      "probability": 0.35
+    },
+    {
+      "label": "S2: 乐观(7%提价持续, 域名+2%)",
+      "fair_price": 358,
+      "upside_pct": 48.7,
+      "probability": 0.15
+    },
+    {
+      "label": "S3: 悲观(CPI限价+域名萎缩)",
+      "fair_price": 215,
+      "upside_pct": -10.8,
+      "probability": 0.25
+    },
+    {
+      "label": "S4: 极端悲观(冻价+域名萎缩)",
+      "fair_price": 161,
+      "upside_pct": -33.0,
+      "probability": 0.05
+    },
+    {
+      "label": "S5: 巴菲特情景(温和提价+增加分红)",
+      "fair_price": 309,
+      "upside_pct": 28.5,
+      "probability": 0.2
+    }
+  ],
+  "weighted_fair_price": 270,
+  "weighted_upside_pct": 12.3,
+  "five_year_annualized_return": 8.9,
+  "verdict": "关注"
+}
