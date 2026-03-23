@@ -48,8 +48,8 @@ if [ ${#recent_reports[@]} -eq 0 ]; then
     done < <(find "$REPORTS_DIR" -name "*Complete*" -type f 2>/dev/null -exec stat -f "%m %N" {} \; | sort -rn | head -10 | awk '{print $2}')
 fi
 
-printf "  %-8s %-10s %-8s %-8s %-8s %-6s\n" "Ticker" "Date" "Size" "DM" "DM/千字" "状态"
-printf "  %-8s %-10s %-8s %-8s %-8s %-6s\n" "------" "--------" "------" "----" "------" "----"
+printf "  %-8s %-10s %-8s %-8s %-8s %-8s %-6s\n" "Ticker" "Date" "Size" "DM" "DM/千字" "因果/万字" "状态"
+printf "  %-8s %-10s %-8s %-8s %-8s %-8s %-6s\n" "------" "--------" "------" "----" "------" "--------" "----"
 
 dm_densities=()
 for report in "${recent_reports[@]}"; do
@@ -62,16 +62,24 @@ for report in "${recent_reports[@]}"; do
         dm_density=$(echo "scale=2; $dm_count * 1000 / $char_count" | bc 2>/dev/null || echo "0")
         dm_densities+=("$dm_density")
 
-        # Status
+        # Causal reasoning density (v19.2)
+        causal_count=$({ grep -c '因为\|因此\|这意味着\|这解释了' "$report" || echo "0"; })
+        causal_density=$(echo "scale=2; $causal_count * 10000 / $char_count" | bc 2>/dev/null || echo "0")
+
+        # Status: check both DM and causal density
         status="✓"
         if (( $(echo "$dm_density < 0.5" | bc -l 2>/dev/null || echo 1) )); then
-            status="${RED}✗ BLOCK${NC}"
+            status="${RED}✗ DM${NC}"
+        elif (( $(echo "$causal_density < 3.0" | bc -l 2>/dev/null || echo 0) )); then
+            status="${RED}✗ 证据链${NC}"
         elif (( $(echo "$dm_density < 0.8" | bc -l 2>/dev/null || echo 0) )); then
-            status="${YELLOW}⚠ WARN${NC}"
+            status="${YELLOW}⚠ DM${NC}"
+        elif (( $(echo "$causal_density < 5.0" | bc -l 2>/dev/null || echo 0) )); then
+            status="${YELLOW}⚠ 推理弱${NC}"
         fi
 
         size_k=$(echo "scale=0; $char_count / 1000" | bc 2>/dev/null || echo "?")
-        printf "  %-8s %-10s %-8s %-8s %-8s " "$ticker" "$mod_date" "${size_k}K" "$dm_count" "$dm_density"
+        printf "  %-8s %-10s %-8s %-8s %-8s %-8s " "$ticker" "$mod_date" "${size_k}K" "$dm_count" "$dm_density" "$causal_density"
         echo -e "$status"
     fi
 done

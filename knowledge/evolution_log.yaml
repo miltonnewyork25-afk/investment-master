@@ -468,6 +468,28 @@ entries:
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
 
+  - ticker: "CRM"
+    date: "2026-03-18"
+    report: "N/A (v1.0失败, 未组装Complete)"
+    chars: "167K (staging)"
+    cg_result: "N/A"
+    compliance: "N/A"
+    dm_anchors: 401
+    mermaid_count: 23
+    pw: 5.6
+    method: "hybrid"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # 未完成, 无评分
+    top_technique: "DM密度2.40/千字(历史最高) + 因果密度11.68/万字(超KLAC) + P3 v2.0承重墙分析 + P4离散度27.9%首次<30%"
+    top_lesson: "P1预设bullish叙事($235/+34%)→P3红队彻底推翻→P4 neutral($176/+0.6%)→P1/P2叙事与P4不可调和→无法组装。密度高但方向错=更危险的失败模式。单日rush(10 commits/1 day)消除了Phase间纠偏窗口"
+    evolution_proposed: |
+      EVO-CRM-001: Reverse DCF P1 Ch1强制前置 — P1第一章必须包含Reverse DCF结论(市场隐含假设), P1叙事不能比Reverse DCF暗示的方向偏离>1档。防止结论先行偏差 [P0, 流程铁律] → **v19.4铁律O**
+      EVO-CRM-002: Tier 3禁止单日rush — Tier 3最少跨3个session(P0-P1/P2-P3/P4-P5), Phase间需冷却纠偏窗口。防止bullish动量从P1传导到P2 [P0, 流程铁律] → **v19.4铁律P+会话规范**
+      EVO-CRM-003: 最相似可比公司P0强制对标 — Phase 0 shared_context必须包含最相似公司(增速/PE/行业最接近)的估值对比, 作为P1叙事约束。防止ADBE对标迟到(P3才引入)的问题 [P1, 方法论资产] → **v19.4铁律H增强**
+    evolution_status: approved
+    reflection_file: "reports/CRM/reflection/CRM_v1_failure_reflection.md"
+
   - ticker: "CMG"
     date: "2026-03-04"
     report: "CMG_v1.0_Complete_2026-03-04.md"
@@ -486,77 +508,14 @@ entries:
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
 
-  - ticker: "SPGI"
-    date: "2026-03-11"
-    report: "SPGI_Complete_v1.0.md"
-    chars: "160K"
-    cg_result: "PASSED(0E/3W)"
-    compliance: "FAILED"
-    dm_anchors: 70
-    mermaid_count: 23
-    pw: 3.8
-    method: "传统框架+AI情景附录"
-    scorecard: "35.5/50"
-    near_miss_score: 0
-    quality: 3.55
-    top_technique: "AI焦虑税量化(3.3x放大) — 市场对100%业务打AI折扣但仅<30%利润面临风险, 可迁移所有AI焦虑B2B平台"
-    top_lesson: "多会话扩写加叙述不加DM锚点→DM密度0.44/千字(历史最低); 国际收入>30%缺地理分析=最大结构遗漏; 续约率推断无硬数据=论文基础脆弱"
-    evolution_proposed: "EVO-SPGI-001(地理强制)+002(续约率门控)+003(扩写DM同步)+004(R&D量化)+005(去重检查)"
-    evolution_status: "ALL 5 EVOs approved+implemented(v18.3): 001(地理门控)+002(续约率)+003(DM同步)+004(R&D)+005(去重)"
-
-  - ticker: "MSCI"
-    date: "2026-03-13"
-    report: "MSCI_Complete_v1.0.md"
-    chars: "222K"
-    cg_result: "PASSED(0E/1W)"
-    compliance: "PASSED"
-    dm_anchors: 72
-    mermaid_count: 36
-    pw: 3
-    method: "traditional"
-    scorecard: "N/A"
-    near_miss_score: 0
-    quality: 3.8
-    top_technique: "D4双半衰期分析(Index>50Y vs ESG<15Y) — 同一公司不同业务护城河耐久性定量分离, 可迁移任何多分部公司"
-    top_lesson: "①DM密度0.32/千字(低于1.0目标)——Phase3扩写期间DM同步不足; ②字符223K(wc-m)vs345K(staging wc-c)——UTF-8中文膨胀导致计量混淆, 应统一wc-m; ③金融行业首用——框架适配良好但quality_gate PW不支持浮点(3.6→fallback最高基准)"
-    evolution_proposed: "EVO-MSCI-001(统一字符计量wc-m)+EVO-MSCI-002(quality_gate PW浮点支持)+EVO-MSCI-003(金融行业R1模块基建)"
-    evolution_status: pending
-
-  - ticker: "MCO"
-    date: "2026-03-15"
-    report: "MCO_Complete_v1.0.md"
-    chars: "205K"
-    cg_result: "PASSED(0E/7W)"
-    compliance: "PASSED"
-    dm_anchors: 56
-    mermaid_count: 36
-    pw: 3.2
-    method: "traditional"
-    scorecard: "N/A"
-    near_miss_score: 0
-    quality: 3.7
-    top_technique: "CI-MCO-001利润率混合陷阱(MA越成功→OPM越难突破=数学必然, 非运营失败) — 可迁移任何高增长低利润分部占比上升的多分部公司"
-    top_lesson: |
-      ①体量205K仅达目标295K的70%——多Agent ECONNRESET(4/4首批全灭)导致扩写不充分, 降并行度后恢复
-      ②DM密度56/206K=0.27/千字(历史最低)——组装时DM未用[方括号]格式导致CG8初次FAIL
-      ③红队双向校准有效(+13%→+15.1%检测过度悲观, 3CQ上调), 与RCL教训一致
-      ④4个非共识假说质量高(利润率混合/周期记忆/私人信贷/巴菲特沉默)但CI-标记缺失导致CG12=0
-      ⑤金融行业第三份Tier 3: MCO(3.7) vs SPGI(3.55)↑ vs MSCI(3.8)↓, 体量是主要拉低因素
-    evolution_proposed: |
-      EVO-MCO-001: 组装DM方括号格式强制 — Assembly Agent prompt增加"所有DM-xxx-nnn必须用[DM-xxx-nnn]方括号格式" [P1, 格式合规]
-      EVO-MCO-002: CI-标记在报告正文保留 — 非共识假说在正文中保持CI-xxx-nnn标记(当前被组装抹除) [P1, 格式合规]
-      EVO-MCO-003: ECONNRESET自动降级 — 检测到≥2个Agent ECONNRESET时自动从4并行→2并行→1串行 [P2, 鲁棒性]
-      冠军目录待注册: 利润率混合陷阱(8.0/10) + 周期记忆衰退量化(7.5/10) + 巴菲特沉默信号(7.0/10)
-    evolution_status: pending
-
-  - ticker: "UNH"
+  - ticker: "FRO_COSCO_EVENT"
     date: "2026-03-19"
-    report: "UNH_Deep_Dive_Complete_v1.0.md"
-    chars: "272K"
+    report: "FRO_COSCO_EVENT_Report_v1.0.md"
+    chars: "91K"
     cg_result: "FAILED(0E/1W)"
-    compliance: "PASSED"
-    dm_anchors: 200
-    mermaid_count: 72
+    compliance: "FAILED"
+    dm_anchors: 115
+    mermaid_count: 19
     pw: N/A
     method: "N/A"
     scorecard: "N/A"
@@ -566,3 +525,23 @@ entries:
     top_lesson: null  # AI填入
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "CRM"
+    date: "2026-03-19"
+    report: "CRM_Complete_v2.0_2026-03-19.md"
+    chars: "230K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 568
+    dm_density: "2.88/千字"
+    causal_density: "8.0/万字"
+    mermaid_count: 59
+    pw: 5.6
+    method: "hybrid"
+    scorecard: "78.8%(20.5/26模块)"
+    near_miss_score: 0
+    quality: 4.1
+    top_technique: "飞轮悖论(Agent成功→seat减少=加速器同时是刹车器) + 定价权剪刀差(F500 Stage4/SMB Stage2→OPM反直觉超预期)"
+    top_lesson: "v1.0→v2.0验证: 铁律O(Reverse DCF前置)+铁律H(ADBE对标)+铁律K(估值统一)将红队代价从-25%→-8.5%。中性起点比任何分析技术都重要。M2(NRR不公开)是SaaS报告的系统性盲区。"
+    evolution_proposed: "EVO-CRM-001(M2 SaaS单位经济学标准化P1) + EVO-CRM-002(飞轮悖论检测P1) + EVO-CRM-003(定价权分层P2) + EVO-CRM-004(演绎法模板P2) + EVO-CRM-005(AIAS-PE数据库P3)"
+    evolution_status: "approved+implemented(v19.6)"
