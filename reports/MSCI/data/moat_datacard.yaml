@@ -1,62 +1,81 @@
-# MSCI Moat Data Card v2.0
-# Generated: 2026-03-13
-# Report: MSCI_Complete_v1.0
-# Framework: v18.3
+# MSCI Moat Data Card v3.0
+# Generated: 2026-03-18
+# Report: MSCI_v3.0_Complete (4.09/5.0)
+# Framework: v19.4
+# Upgrade: v1.0→v3.0, CQI 66→70
 
 ticker: "MSCI"
-report_date: "2026-03-13"
-report_version: "v1.0"
-market_cap_B: 40.3
-cqi_score: 66
+report_date: "2026-03-18"
+report_version: "v3.0"
+market_cap_B: 43.3
+cqi_score: 70
+cqi_rank: 4
+cqi_prev: 66
+cqi_change: "+4 (C1升级+5, 资本配置-2, 净+4, 四重叠加验证)"
 moat_trend: "→ Stable"
-rating: "关注(偏中性)"
-expected_return_pct: 13.1
+rating: "中性关注"
+expected_return_pct: 3.3
 
 monopoly_purity:
-  revenue_pct: 57.8
-  profit_pct: 70.3
+  revenue_pct: 57
+  profit_pct: 83
   segment_name: "Index(指数许可)"
-  note: "全球指数标准制定者, HHI 3,294(高度集中), 三寡头之首"
+  note: "SOTP 83%来自Index, 三寡头之首, HHI高度集中, 35家公司唯一四重叠加护城河"
 
 pricing_power:
   stage: 1.7
+  b4a_strength: 4.0
+  b4b_durability: 3.5
   ceiling_signal: "OPM 54.7% vs 天花板55-57%, 弹性仅2-3pp"
-  runway: "收入端(AUM复利+新产品)>利润端(OPM天花板)"
+  runway: "收入端(AUM复利+PA新引擎)>利润端(OPM天花板)"
+  constraints: "ETF费率传导20%/BlackRock 2035杠杆/监管15%"
 
 tam_penetration:
-  current_pct: 12
-  expansion_vector: "被动化$37T→$70T + Direct Indexing + PA指数化"
-  tam_source: "PwC Global ETF Report 2025"
+  index: 0.95
+  analytics: 0.35
+  sc: 0.25
+  pa: 0.035
+  expansion_vector: "被动化$37T→$70T + PA Burgiss整合 + Climate VaR"
 
 moat_age:
   years: 55
   origin: "1969年Capital International World Index → 1998年MSCI独立 → 2007年IPO"
-  institutional_anchor: "IPS合同锁定+EU BMR许可+SFDR强制+L4/L5制度嵌入"
+  institutional_anchor: "IMA合同锁定+EU BMR许可+SFDR强制+L5制度嵌入(定义型)"
+  c1_level: "L5 (定义型, 半衰期>50年)"
+  c1_nature: "定义型 — 不是嵌入市场, 而是定义市场本身(什么是'新兴市场')"
 
 switching_cost:
+  cost_usd_M: "15-31"
   time_months: 18
-  cost_estimate: "18-24个月迁移+合规重审+追踪误差风险"
-  lock_in_type: "IPS合同+ETF基准+合规框架+技术集成"
+  lock_in_type: "IMA合同+ETF基准+合规框架+技术集成+40年历史数据"
+  c3_carriers: "系统锁定+数据锁定+流程锁定"
 
 market_implied:
-  revenue_cagr_5y: 9.5
-  terminal_opm: 58.0
-  key_bet: "OPM从54.7%→58-60%(从未达到55%+)"
-  our_assessment: "55-57%更合理; 2-3pp差距=估值偏贵5-15%"
+  reverse_dcf_g: 6.2
+  implied_opm: 55
+  pe_warranted: "30-35x (Mauboussin)"
+  key_bet: "OPM天花板55-57%, 永续增长6.2%, PE 36x warranted上沿"
+  our_assessment: "市场信念集合理偏保守, PA optionality未充分定价"
 
 valuation_anchors:
-  fair_value: 606
-  margin_of_safety_price: 470
-  overvaluation_trigger: 700
-  discount_rate_used: 7.2
-  methodology: "5情景FCFF+SOTP+Reverse DCF+分析师共识+FMP DCF概率加权"
-  as_of_date: "2026-03-13"
+  fair_value: 579
+  sotp_base: 593
+  pe_base: 602
+  oey_implied: 560
+  margin_of_safety_price: 475
+  overvaluation_trigger: 650
+  discount_rate_used: 9.5
+  dispersion_pct: 17.1
+  methodology: "SOTP(40%)+PE(40%)+OEY(20%), 三方法三角化, 红队-$11黑天鹅"
+  as_of_date: "2026-03-18"
 
 earnings_predictability:
   revenue_cv: 3.2
-  opm_range_pct: [50, 55]
+  opm_range_pct: [52, 55]
   miss_rate_pct: 8.0
-  e_score: 8.5
+  e_score: 8.55
+  a_score: 8.55
+  survival_quality: 44  # /50, 校准后(后验信号打7折)
 
 drawdown_profile:
   max_dd_2020_pct: -34.2
@@ -69,5 +88,39 @@ drawdown_profile:
 
 liquidity:
   avg_daily_volume_usd: 420000000
-  market_cap: 40300000000
+  market_cap: 43300000000
   spread_bps_est: 2.0
+
+# v3.0新增字段
+dual_half_life:
+  index_years: ">50"
+  sc_years: "<15"
+  analytics_years: "~30"
+  pa_years: "5-50 (不确定, 取决于CQ5)"
+  weighted_pe_implied: 38.6
+  conglomerate_discount_pct: 7
+
+cq_final:
+  CQ1: 72  # OPM天花板+回购递减
+  CQ2: 79  # S&C保险化不可逆
+  CQ3: 80  # 垄断品质已定价(最强结论)
+  CQ4: 78  # 回购幻觉
+  CQ5: 32  # PA第二引擎
+  CQ6: 48  # BlackRock跨维度杠杆
+  CQ7: 60  # 利率路径依赖
+  CQ8: 18  # 被动化监管反弹
+
+buyback_efficiency:
+  eta_2020: 1.54  # %/$B
+  eta_2025: 0.89
+  eta_decline_pct: 42
+  debt_spread_pct: -2.5  # FCF yield 2.8% - borrowing cost 5.5%
+  cumulative_buyback_B: 6.25
+  net_shares_reduction_pct: 8.5
+
+ks_triggers:
+  KS1_rate: "5Y Treasury < 3.0% 持续3个月 → 重评(可能关注)"
+  KS2_pa: "PA run rate > $350M 或 PCS > 40% 持续2季度"
+  KS3_blackrock: "合同谈判报道 → 立即重评, 2030-2032窗口"
+  KS4_credit: "ND/EBITDA > 3.3x(警戒) / > 3.5x(触发)"
+  KS5_price: "股价 < $500(重评) / < $475(关注) / < $420(深度关注)"

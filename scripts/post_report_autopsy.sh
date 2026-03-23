@@ -195,6 +195,10 @@ echo "=== 质量健康检查 (v19.0自动触发) ==="
 bash scripts/quality_health_check.sh 2>/dev/null || echo "  (健康检查脚本不可用, 跳过)"
 echo ""
 
+echo "=== 数据清理 (v19.6自动触发) ==="
+bash scripts/cleanup_report_data.sh "$TICKER" 2>/dev/null || echo "  (清理脚本不可用, 跳过)"
+echo ""
+
 echo "=== AI下一步 ==="
 echo "  1. 填入 quality (1.0-5.0) — 基于4 Agent交叉审计或自评"
 echo "  2. 填入 top_technique / top_lesson"
