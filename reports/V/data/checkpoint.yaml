@@ -1,19 +1,57 @@
 schema_version: "2.0"
 ticker: V
-company: "V"
-framework_version: v17.0
+company: "Visa Inc."
+framework_version: v19.6
 worktree: "金融"
 industry: "金融"
-last_updated: "2026-03-23T04:57:55+00:00"
+last_updated: "2026-03-23T16:00:00+08:00"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: 2
+phase_status: completed
+phases_completed: [1, 2]
 
 target_chars: 294669
-target_range: "235K-368K"
-hard_floor: 200000
+target_range: "250K-368K"
+hard_floor: 250000
 
 quick_ref:
-  total_chars: 0
-  latest_phase_chars: 0
+  total_chars: 82733
+  p1_chars: 64147
+  p2_chars: 18586
+  latest_phase_chars: 18586
+  dm_count: 149
+  mermaid_count: 15
+  cq_count: 8
+  hypothesis_count: 8
+
+narrative_direction: "积极(Phase 2上调)"
+p1_constraint: "中性关注~关注(铁律O)"
+
+key_findings:
+  - "Reverse DCF隐含FCF CAGR 7.6%(市场温和悲观)"
+  - "正常化OPM 66-69%(报告60%是一次性Other Expenses, 90%置信)"
+  - "正常化EPS $11.26(报告$10.20)→正常化P/E 26.8x"
+  - "CI/毛收入可能在FY2025企稳~28%(Settlement+合约周期)"
+  - "FY26Q1收入+14.6%/FCF+26.7%——全面加速"
+  - "护城河3.9/5(中等偏宽)——监管壁垒(3.0)最弱"
+  - "VAS 75%依附卡网络——管理层50%目标不可能"
+  - "概率加权5年年化+10.3%——略超WACC但非显著低估"
+  - "A-Score 6.5/10——收购溢价偏高(10x Revenue)"
+  - "飞轮净强度3.2-3.5(两个A2A悖论→减速非倒转)"
+
+pending_hypotheses:
+  H-04: "VAS增速15% vs 20%——待Phase 3验证"
+  H-05: "监管联合概率20-30%——待Phase 3量化(Trump CCCA因素)"
+  H-07: "飞轮减速程度——待Phase 3"
+  H-08: "MA增速差扩大vs收窄——待Phase 3"
+
+next_phase: 3
+next_phase_focus: "监管三重风险量化(CCCA+DOJ+Settlement) + SOTP/DCF估值 + 投资温度计"
+
+files:
+  phase1: "reports/V/V_Phase1.md"
+  phase2: "reports/V/V_Phase2.md"
+  planning_ref: "reports/V/data/planning_outline.md"
+  shared_context: "reports/V/data/shared_context.md"
+  thesis: "reports/V/data/thesis_crystallization.md"
+  lit_recon: "reports/V/data/lit_recon_memo.md"
