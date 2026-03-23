@@ -1049,6 +1049,22 @@ def extract_signals_from_fmp(
                       totalAcquired, totalPurchases($), disposedTransactions, totalSales($)}
       quote: price, yearHigh, yearLow, marketCap, volume
     """
+    # Defensive: profile may be a list (old data format) or dict
+    if isinstance(profile, list):
+        profile = profile[0] if profile else {}
+    if not isinstance(profile, dict):
+        profile = {}
+
+    # Defensive: quote may be a list (old data format) or dict
+    if isinstance(quote, list):
+        quote = quote[0] if quote else {}
+    if not isinstance(quote, dict):
+        quote = {}
+
+    # Defensive: insider_trades may be a string placeholder
+    if not isinstance(insider_trades, list):
+        insider_trades = []
+
     symbol = profile.get('symbol', 'UNKNOWN')
     result = StockScreenResult(
         symbol=symbol,
