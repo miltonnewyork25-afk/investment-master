@@ -452,12 +452,12 @@ entries:
 
   - ticker: "SBUX"
     date: "2026-03-03"
-    report: "SBUX_Complete.md"
-    chars: "120K"
+    report: "SBUX_v2.0_Complete_2026-03-03.md"
+    chars: "177K"
     cg_result: "FAILED(0E/1W)"
-    compliance: "PASSED"
+    compliance: "FAILED"
     dm_anchors: 5
-    mermaid_count: 26
+    mermaid_count: 51
     pw: N/A
     method: "N/A"
     scorecard: "N/A"
@@ -486,16 +486,127 @@ entries:
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
 
-  - ticker: "MSCI"
-    date: "2026-03-18"
-    report: "MSCI_v3.0_Complete.md"
-    chars: "235K"
+  - ticker: "SBUX"
+    date: "2026-03-05"
+    report: "SBUX_v3.0_Complete.md"
+    chars: "356K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "FAILED"
+    dm_anchors: 7
+    mermaid_count: 43
+    pw: N/A
+    method: "N/A"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "DPZ"
+    date: "2026-03-05"
+    report: "DPZ_v1.0_Complete_2026-03-05.md"
+    chars: "540K"
     cg_result: "FAILED(0E/1W)"
     compliance: "PASSED"
-    dm_anchors: 29
-    mermaid_count: 49
-    pw: 10
-    method: "discovery"
+    dm_anchors: 386
+    mermaid_count: 54
+    pw: 2.4
+    method: "traditional"
+    a_score: "5.9/10 (中等, 负权益拖累)"
+    sgi: "7.7 (专才, Pizza单品类)"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: 4.0
+    top_technique: "C-1 Supply Chain P&L重建(利润池地图) + C-3 ABS双天花板(DSCR非约束/杠杆约束2.2%余量) + C-2蚕食系数CC模型(15-20%) + C-4 DPZ-CMG 9维镜像(ROIC幻觉56.7%→14.5%)"
+    top_lesson: "体量溢出23%(540K vs 437K目标)是v1.0最大短板——分析原创性4.5但可读性3.5; 悲观偏差大幅收敛(+1.3pp vs RCL+8pp/SBUX+13pp); 模块'差半步'问题(8/15达2分=53%)根因是Phase 0未预取M1-NPS/M2-弹性系数等KPI字段"
+    evolution_proposed: |
+      EVO-DPZ-001: M2-sub促销依赖度QSR强制 — QSR/餐饮公司Phase 1强制promo_mix/discount_depth/price_realization字段 [P1, 方法论]
+      EVO-DPZ-002: Loyalty数据缺口标注 — Loyalty计划<12个月的公司Phase 0标注缺口+设定数据可用时间线 [P2, 流程]
+      EVO-DPZ-003: 体量门控±15% — 目标字符±15%为合格区间, 超出触发精简提醒 [P1, 质量门控]
+      EVO-DPZ-004: 章节标题格式统一 — 组装时强制Ch/Chapter统一化, 加入CG脚本检测 [P1, 工具修复]
+      冠军目录待注册: C-1 Supply Chain P&L重建(4.0) + C-2蚕食系数CC(4.2) + C-3 ABS双天花板(4.3) + C-4 DPZ-CMG镜像(4.1)
+    evolution_status: pending
+    reflection_file: "reports/DPZ/reflection/deep_audit.md"
+
+  # --- 质量趋势更新 ---
+  # INTC(4.1) → ARM(3.5)↓ → RCL(4.2)↑ → IHG(4.3)↑ → NVDA(4.0)↓ → SBUX v2.0(3.8)↓ → DPZ(4.0)↑
+  # DPZ从SBUX回升+0.2: 4个冠军候选 + 5种估值方法收敛 + 悲观偏差收敛至+1.3pp
+  # 但体量溢出(540K/437K=+23%)和模块2分率(53%)限制总分
+  # 消费品第四份Tier 3: RCL(4.2)→IHG(4.3)→SBUX(3.8)→DPZ(4.0) — 平均4.08
+  # 悲观偏差趋势: RCL(+8pp)→SBUX(+13pp)→DPZ(+1.3pp) — 大幅改善, EVO-RCL-001可能不再紧急
+
+  - ticker: "MAR"
+    date: "2026-03-05"
+    report: "MAR_Complete_v1.0.md"
+    chars: "355K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 149
+    mermaid_count: 74
+    pw: 2
+    method: "traditional"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "CPRT"
+    date: "2026-03-11"
+    report: "CPRT_Complete_v1.0.md"
+    chars: "355K"
+    cg_result: "PASSED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 55
+    mermaid_count: 26
+    pw: N/A
+    method: "N/A"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "CME"
+    date: "2026-03-15"
+    report: "CME_Complete_v1.0.md"
+    chars: "182K"
+    cg_result: "PASSED(0E/6W)"
+    compliance: "PASSED"
+    dm_anchors: 652
+    mermaid_count: 48
+    pw: 6
+    method: "混合"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: 3.9
+    top_technique: "Core P/E剥离法(CI-04) — 剔除$903M非经营性保证金利息暴露35.7x真实经营倍数, 跨报告首创; D1=1.18反脆弱系数全系列最严谨推导"
+    top_lesson: "E7 OI/ADV系统分析缺失是最大盲区 — ADV 5年创纪录但OI质量未验证; M6会员集中度需替代框架(交易所无合同制); 体量182K vs 300K目标(61%)是主要短板"
+    evolution_proposed: |
+      EVO-CME-001: E7 OI/ADV门控 — 交易所类公司Phase 1自动提取OI/ADV比值5年趋势 [S1, 数据预取]
+      EVO-CME-002: M6无合同替代框架 — 交易所/清算所自动切换"会员集中度+清算关系深度"替代 [S1, 框架适配]
+      EVO-CME-003: 保证金利息估值分层显式化 — 收入质量四象限→SOTP倍数映射必须显式声明 [S1, 估值流程]
+      EVO-CME-004: 国际化分析最低门控 — 国际ADV>20%时M7自动升级为必填 [S2, 覆盖完整性]
+      冠军目录待注册: CI-01影子银行留存率制度化(8.5/10) + CI-04 Core P/E 35.7x(8.0/10) [P2]
+    evolution_status: pending
+    reflection_file: "reports/CME/reflection/upgrade_roadmap.md"
+
+  - ticker: "CME"
+    date: "2026-03-19"
+    report: "CME_Complete_v3.0.md"
+    chars: "270K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "FAILED"
+    dm_anchors: 465
+    mermaid_count: 58
+    pw: N/A
+    method: "N/A"
     scorecard: "N/A"
     near_miss_score: 0
     quality: null  # AI填入 (1.0-5.0)
