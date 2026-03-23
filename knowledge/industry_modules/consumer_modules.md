@@ -496,3 +496,123 @@ v1_1_patches:
     kill_switch:
       threshold: "净化后真实comp < +2% 连续2Q 且 交易量(transaction)转负"
       action: "有机增长熄火——下调增长情景概率, 检查是否为周期性(可恢复)还是结构性(趋势)"
+
+
+# ============================================================
+# 财务分析KPI集成 (CPA v2.0)
+# 当财务分析框架M6模块触发时加载本章节
+# ============================================================
+
+financial_kpi_integration:
+  version: "CPA v2.0"
+  date: "2026-03-23"
+  note: "M6已覆盖SSS/comp, M4已覆盖LTV/留存, M2已覆盖定价弹性, E1已覆盖特许OPM。本章节补充行业特有的财务解读KPI"
+
+  north_star_kpis:
+    # --- 零售/餐饮核心 ---
+    SSS_Comps:
+      definition: "同店销售增长——开业≥1年可比基础的收入YoY变化"
+      formula: "comp_sales = Δprice/mix + Δtransaction_count (或 Δticket + Δtraffic)"
+      healthy_threshold: ">3%=健康有机; 0-3%=温和; <0%连续2季=深挖原因"
+      financial_mapping: "管理层MD&A披露; 与M6 KPI1一致。需区分: 含外卖/不含外卖两个口径"
+      red_flag: "traffic(客流)连续4季为负, 靠ticket(客单价)撑SSS→量价背离(与M2 kill_switch联动)"
+
+    Average_Ticket:
+      definition: "平均客单价——单次交易平均消费金额"
+      formula: "总收入 / 总交易笔数"
+      healthy_threshold: "YoY增速≥CPI(保持实际购买力); 增速>CPI+3pp=真实提价能力"
+      financial_mapping: "管理层季度披露 或 Revenue/Transaction Count反推; 部分公司(DPZ)披露order count"
+      red_flag: "ticket增速>CPI+5pp但traffic为负→提价过度驱走客户"
+
+    Traffic:
+      definition: "客流量/交易笔数——衡量需求的'量'而非'价'"
+      formula: "总交易笔数 (comparable basis)"
+      healthy_threshold: "traffic>0%=需求健康; traffic<0%但SSS>0%=纯靠提价(脆弱)"
+      financial_mapping: "管理层MD&A; 部分公司用'comparable transactions'披露"
+      red_flag: "traffic<-3%连续2季→需求萎缩(提价无法永久弥补)"
+
+    # --- 酒店行业核心 ---
+    RevPAR:
+      definition: "每可用房收入——酒店行业的'同店销售'"
+      formula: "ADR × Occupancy Rate (或 客房总收入 / 可用房晚数)"
+      healthy_threshold: "RevPAR增速>CPI=实际增长; 增速<0%连续2季=周期下行"
+      financial_mapping: "管理层MD&A按区域/品牌/运营模式分拆披露; 特许商=系统级RevPAR"
+      red_flag: "ADR涨但Occupancy降→定价权测试(弹性>1); ADR和Occupancy同降→需求危机"
+
+    ADR:
+      definition: "平均每日房价——已售出客房的平均价格"
+      formula: "客房收入 / 已售客房晚数"
+      healthy_threshold: "ADR增速≥CPI; 奢华>$300; 中端$100-200; 经济<$100"
+      financial_mapping: "管理层按品牌层级披露; 需区分: 含resort fee vs不含"
+      red_flag: "ADR连续降价(非季节性)→竞争加剧or需求弱化"
+
+    Occupancy:
+      definition: "入住率——已售客房占可售客房的比例"
+      formula: "已售客房晚数 / 可用客房晚数"
+      healthy_threshold: ">70%=健康; 60-70%=可接受; <60%=供过于求"
+      financial_mapping: "管理层按区域/类型披露; 特许商=系统级occupancy"
+      red_flag: "occupancy<60%持续2季→检查是否区域性(新供给冲击)还是系统性(需求衰退)"
+
+    # --- 品牌/利润质量 ---
+    Brand_Premium_Decomposition:
+      definition: "品牌溢价分解——将毛利率拆解为品牌溢价、规模效应、品类结构三个来源"
+      formula: "品牌溢价 = 公司GM - 自有品牌GM; 规模效应 = 自有品牌GM - 行业平均GM; 品类结构 = 残差"
+      healthy_threshold: "品牌溢价贡献>50%总溢价=品牌驱动; <30%=规模/品类驱动(护城河不同)"
+      financial_mapping: "公司GM from P&L; 自有品牌/行业GM需外部数据(Euromonitor/Nielsen)"
+      red_flag: "品牌溢价占比YoY下降>5pp→私有品牌侵蚀or消费降级"
+
+    Unit_Economics:
+      definition: "单位经济学——单店/单房间/单客户的投入回报结构"
+      formula: "新店: 首年EBITDA/初始投资(与M6 KPI2一致); 酒店: RevPAR×365×房间数×Flow-through/建造成本"
+      healthy_threshold: "餐饮新店>25%回报; 酒店管理合同IRR>15%; 零售新店payback<3年"
+      financial_mapping: "10-K CapEx披露(新店投资); 管理层Analyst Day(单位经济学); 部分公司FDD文件"
+      red_flag: "新单元回报率连续下降+开店加速→管理层追增长牺牲回报质量"
+
+    Royalty_Rate:
+      definition: "特许权费率——特许商向加盟商收取的收入分成比例"
+      formula: "Franchise/License Revenue / 系统级销售额(System-wide Sales)"
+      healthy_threshold: "QSR 4-6%; 酒店3-6%; 上升趋势=定价权; 下降=竞争让步"
+      financial_mapping: "Revenue(Franchise) from P&L / System-wide Sales from MD&A"
+      red_flag: "费率下调or新签合同费率<存量→加盟商议价力增强"
+
+    System_Fund_Passthrough:
+      definition: "系统基金过手收入——特许商代收代付的广告/技术/忠诚度基金"
+      formula: "System Fund Revenue (= System Fund Expense, 零利润设计)"
+      healthy_threshold: "System Fund收入应=费用(±1%); 占总Revenue比例稳定"
+      financial_mapping: "P&L单独行项(Franchised restaurants - Cost of franchised restaurants); B/S有对应应收/应付"
+      red_flag: "System Fund突增→总Revenue虚增→必须做收入纯度还原(Revenue Purity)"
+
+    Revenue_Purity:
+      definition: "收入纯度还原——剥离过手收入后的'真实经济收入'"
+      formula: "Owned Revenue = Total Revenue - System Fund Revenue - Reimbursed Costs"
+      healthy_threshold: "Owned Revenue占比>50%=经济实质主导; <30%=过手为主(PE需用Owned Revenue重算)"
+      financial_mapping: "P&L逐项拆分; IHG/HLT/MAR的Revenue中50-70%可能是过手→GAAP Revenue夸大规模"
+      red_flag: "Owned Revenue增速<System Fund增速→经济实质增长弱于表面"
+
+  financial_statement_adjustments:
+    income_statement:
+      - "特许商收入纯度: GAAP Revenue中System Fund占30-70%→OPM被稀释→用Fee Revenue/Owned Revenue重算'真实OPM'(通常>50%)"
+      - "餐饮price/mix vs volume拆分: SSS=ticket×traffic, 但P&L只给总数→需MD&A补充或自行推算"
+      - "酒店managed vs franchised: 管理合同=incentive fee(与利润挂钩,高波动)+base fee(与收入挂钩,稳定)→分开评估"
+    balance_sheet:
+      - "负权益公司(SBUX/DPZ/MCD): 大规模回购→股东权益为负→传统ROIC/ROE失效→用EBITDA覆盖率+FCF Yield替代"
+      - "特许商轻资产: PP&E/Total Assets<20%=典型特许商→资产回报率极高但杠杆放大"
+      - "品牌资产表外: 自建品牌不上B/S→ROIC天然偏高(分母缺品牌资产)→与收购成长型公司不可直接比"
+    cash_flow:
+      - "特许商FCF特征: 低CapEx(维护性为主)+高OPM→FCF转化率通常>100%(应付账款正贡献)"
+      - "零售商CapEx周期: 新店CapEx vs维护CapEx拆分→成长期FCF被压低(正常)→用maintenance FCF评估真实现金能力"
+      - "酒店Key Money: 签约新酒店的预付激励→CapEx or OpEx取决于会计处理→需统一口径"
+
+  cpa_module_cross_reference:
+    M1_income_statement:
+      - "SSS拆分(ticket×traffic)→判断增长质量(量驱动vs价驱动)"
+      - "特许商: Fee Revenue增速 vs System-wide Sales增速→费率杠杆or稀释"
+      - "酒店: RevPAR×房间数=客房收入→与Non-room收入(F&B/会议/spa)分开评估OPM贡献"
+    M3_cash_flow:
+      - "CapEx/Revenue: 特许商<3%(轻资产) vs 直营>8%(重资产)→FCF profile本质不同"
+      - "负运营资本: 预收会员费/礼品卡→OCF领先利润→但到期时反转(需追踪余额趋势)"
+      - "维护CapEx vs成长CapEx拆分→maintenance FCF=真实分红/回购能力"
+    M4_segment:
+      - "同店vs新店增长归因→按地域/品牌层/渠道交叉拆分(与M6交叉)"
+      - "特许vs直营分部利润率差异→再特许化对OPM的提升路径(与E1交叉)"
+      - "国际vs北美RevPAR/SSS差异→汇率影响+区域周期错位"
