@@ -4,7 +4,7 @@ company: "Visa Inc."
 framework_version: v19.6
 worktree: "金融"
 industry: "金融"
-last_updated: "2026-03-23T16:00:00+08:00"
+last_updated: "2026-03-23T21:00:00+08:00"
 
 current_phase: 2
 phase_status: completed
@@ -15,12 +15,12 @@ target_range: "250K-368K"
 hard_floor: 250000
 
 quick_ref:
-  total_chars: 82733
+  total_chars: 123217
   p1_chars: 64147
-  p2_chars: 18586
-  latest_phase_chars: 18586
-  dm_count: 149
-  mermaid_count: 15
+  p2_chars: 59070
+  latest_phase_chars: 59070
+  dm_count: 270
+  mermaid_count: 27
   cq_count: 8
   hypothesis_count: 8
 
@@ -35,18 +35,23 @@ key_findings:
   - "FY26Q1收入+14.6%/FCF+26.7%——全面加速"
   - "护城河3.9/5(中等偏宽)——监管壁垒(3.0)最弱"
   - "VAS 75%依附卡网络——管理层50%目标不可能"
-  - "概率加权5年年化+10.3%——略超WACC但非显著低估"
   - "A-Score 6.5/10——收购溢价偏高(10x Revenue)"
   - "飞轮净强度3.2-3.5(两个A2A悖论→减速非倒转)"
+  - "商誉是堡垒(Visa Europe隐含价值7-9x安全垫)"
+  - "EPS增长71%来自经营(回购仅19%——增长质量健康)"
+  - "Take Rate上升20.8→22.9bps(否定A2A侵蚀叙事)"
+  - "三方法估值收敛$320-355(当前$302低估7-13%)"
+  - "增量ROIC数学无穷大(利润增$7.7B/IC缩$5.1B)"
+  - "International跨境交易OPM~80%是'皇冠宝石'"
 
 pending_hypotheses:
-  H-04: "VAS增速15% vs 20%——待Phase 3验证"
+  H-04: "VAS增速15% vs 20%——Ch18初步验证55%置信,待Phase 3深化"
   H-05: "监管联合概率20-30%——待Phase 3量化(Trump CCCA因素)"
   H-07: "飞轮减速程度——待Phase 3"
-  H-08: "MA增速差扩大vs收窄——待Phase 3"
+  H-08: "MA增速差——Ch18初步分析55%置信,待Phase 3深化"
 
 next_phase: 3
-next_phase_focus: "监管三重风险量化(CCCA+DOJ+Settlement) + SOTP/DCF估值 + 投资温度计"
+next_phase_focus: "监管三重风险量化(CCCA+DOJ+Settlement) + 护城河深度验证 + MA竞争对标 + 投资温度计"
 
 files:
   phase1: "reports/V/V_Phase1.md"
