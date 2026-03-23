@@ -457,7 +457,7 @@ ADBE反例 (0层):
 | **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
 | **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
 | **规划经验** | `knowledge/planning_archives/{TICKER}.md` (12份报告规划档案) |
-| **利润表诊断** | `knowledge/analysis_modules/income_statement_deep_diagnostic.md` (ISDD v1.0, 正向分解+逆向溯源双路径, Phase 1财务SOP) |
+| **财务分析框架** | `knowledge/analysis_modules/financial_analysis_framework_v2.md` (CPA×ISDD融合, 12原则+7正常化+6核心模块+6扩展模块+矛盾引擎+12维评分, Phase 1-2财务SOP, 替代ISDD v1.0) |
 | **品质评估** | `docs/company_quality_scoring.md` (A+B+C+D 21维度) + `knowledge/stock_picking/quality_scoring_benchmark.md` (8家基准) |
 | **A/B文档分离** | `docs/ab_document_protocol.md` (对外报告A vs 内部策略卡B) + `docs/strategy_card_template.md` |
 | **护城河框架** | `knowledge/stock_picking/moat_analysis_framework_v3.1.md` (C1嵌入性质+D1反脆弱+C3锁定载体) |
