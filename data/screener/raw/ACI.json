@@ -1,0 +1,248 @@
+{
+  "symbol": "ACI",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "ACI",
+    "price": 17.27,
+    "marketCap": 9486540784,
+    "beta": 0.254,
+    "lastDividend": 0.6,
+    "range": "15.8-23.2",
+    "companyName": "Albertsons Companies, Inc.",
+    "currency": "USD",
+    "exchange": "NYSE",
+    "industry": "Grocery Stores",
+    "sector": "Consumer Defensive",
+    "country": "US",
+    "fullTimeEmployees": "108300",
+    "ceo": "Susan D. Morris",
+    "ipoDate": "2020-06-26"
+  },
+  "income": [
+    {
+      "date": "2025-02-22",
+      "fiscalYear": "2024",
+      "period": "FY",
+      "revenue": 80390900000,
+      "grossProfit": 22255600000,
+      "operatingIncome": 1546100000,
+      "netIncome": 958600000,
+      "eps": 1.65,
+      "epsDiluted": 1.64,
+      "ebitda": 4082400000,
+      "interestExpense": 469900000,
+      "depreciationAndAmortization": 2499100000,
+      "weightedAverageShsOutDil": 583800000
+    },
+    {
+      "date": "2024-02-28",
+      "fiscalYear": "2023",
+      "period": "FY",
+      "revenue": 79237700000,
+      "grossProfit": 22045700000,
+      "operatingIncome": 2068900000,
+      "netIncome": 1296000000,
+      "eps": 2.25,
+      "epsDiluted": 2.23,
+      "ebitda": 4525600000,
+      "interestExpense": 508000000,
+      "depreciationAndAmortization": 2444200000,
+      "weightedAverageShsOutDil": 581100000
+    },
+    {
+      "date": "2023-02-28",
+      "fiscalYear": "2022",
+      "period": "FY",
+      "revenue": 77649700000,
+      "grossProfit": 21755600000,
+      "operatingIncome": 2307100000,
+      "netIncome": 1513500000,
+      "eps": 2.29,
+      "epsDiluted": 2.27,
+      "ebitda": 4851600000,
+      "interestExpense": 404600000,
+      "depreciationAndAmortization": 2459800000,
+      "weightedAverageShsOutDil": 534000000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-02-22",
+      "fiscalYear": "2024",
+      "totalAssets": 29307500000,
+      "totalLiabilities": 25921600000,
+      "totalStockholdersEquity": 3385900000,
+      "cashAndCashEquivalents": 297900000,
+      "totalDebt": 14182800000,
+      "netDebt": 13884900000,
+      "inventory": 4989000000,
+      "totalCurrentAssets": 6559000000,
+      "totalCurrentLiabilities": 7251000000,
+      "goodwill": 1201000000
+    },
+    {
+      "date": "2024-02-24",
+      "fiscalYear": "2023",
+      "totalAssets": 28794700000,
+      "totalLiabilities": 26047200000,
+      "totalStockholdersEquity": 2747500000,
+      "cashAndCashEquivalents": 188700000,
+      "totalDebt": 14239400000,
+      "netDebt": 14050700000
+    },
+    {
+      "date": "2023-02-25",
+      "fiscalYear": "2022",
+      "totalAssets": 28754100000,
+      "totalLiabilities": 27143400000,
+      "totalStockholdersEquity": 1610700000,
+      "cashAndCashEquivalents": 455800000,
+      "totalDebt": 15006800000,
+      "netDebt": 14551000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-02-22",
+      "fiscalYear": "2024",
+      "operatingCashFlow": 2680600000,
+      "capitalExpenditure": -1931200000,
+      "freeCashFlow": 749400000,
+      "netIncome": 958600000,
+      "stockBasedCompensation": 106200000,
+      "commonDividendsPaid": -295100000,
+      "commonStockRepurchased": -82500000
+    },
+    {
+      "date": "2024-02-24",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 2659500000,
+      "capitalExpenditure": -2031300000,
+      "freeCashFlow": 628200000,
+      "netIncome": 1296000000
+    },
+    {
+      "date": "2023-02-25",
+      "fiscalYear": "2022",
+      "operatingCashFlow": 2853900000,
+      "capitalExpenditure": -2153900000,
+      "freeCashFlow": 700000000,
+      "netIncome": 1513500000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-02-22",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.2768,
+      "netProfitMargin": 0.0119,
+      "returnOnEquity": 0.2831,
+      "returnOnAssets": 0.0327,
+      "currentRatio": 0.9046,
+      "debtToEquityRatio": 4.1888,
+      "priceToEarningsRatio": 12.44,
+      "dividendYieldPercentage": 2.48,
+      "interestCoverageRatio": 3.29,
+      "freeCashFlowOperatingCashFlowRatio": 0.28
+    },
+    {
+      "date": "2024-02-24",
+      "fiscalYear": "2023",
+      "grossProfitMargin": 0.2782,
+      "netProfitMargin": 0.0164,
+      "returnOnEquity": 0.4717,
+      "currentRatio": 0.843,
+      "priceToEarningsRatio": 9.52
+    },
+    {
+      "date": "2023-02-25",
+      "fiscalYear": "2022",
+      "grossProfitMargin": 0.2802,
+      "netProfitMargin": 0.0195,
+      "returnOnEquity": 0.9397,
+      "currentRatio": 0.744,
+      "priceToEarningsRatio": 7.18
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-02-22",
+      "fiscalYear": "2024",
+      "marketCap": 11921055000,
+      "enterpriseValue": 25805955000,
+      "evToEBITDA": 6.32,
+      "evToSales": 0.321,
+      "freeCashFlowYield": 0.0629,
+      "earningsYield": 0.0804,
+      "returnOnInvestedCapital": 0.0575,
+      "revenuePerShare": 138.58,
+      "netIncomePerShare": 1.65,
+      "bookValuePerShare": 5.84
+    },
+    {
+      "date": "2024-02-24",
+      "fiscalYear": "2023",
+      "marketCap": 12336576000,
+      "enterpriseValue": 26387276000,
+      "evToEBITDA": 5.83
+    },
+    {
+      "date": "2023-02-25",
+      "fiscalYear": "2022",
+      "marketCap": 10865660000,
+      "enterpriseValue": 25416660000,
+      "evToEBITDA": 5.24
+    }
+  ],
+  "insider_trades": [
+    {
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 5,
+      "totalAcquired": 1017450,
+      "totalDisposed": 831280.75
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "totalPurchases": 0,
+      "totalSales": 3
+    },
+    {
+      "year": 2025,
+      "quarter": 3,
+      "totalPurchases": 0,
+      "totalSales": 0
+    },
+    {
+      "year": 2025,
+      "quarter": 2,
+      "totalPurchases": 0,
+      "totalSales": 2
+    },
+    {
+      "year": 2025,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 0
+    }
+  ],
+  "quote": {
+    "symbol": "ACI",
+    "name": "Albertsons Companies, Inc.",
+    "price": 17.27,
+    "changePercentage": 2.37,
+    "change": 0.4,
+    "volume": 3626543,
+    "dayLow": 16.9,
+    "dayHigh": 17.31,
+    "yearHigh": 23.2,
+    "yearLow": 15.8,
+    "marketCap": 9486540784,
+    "priceAvg50": 17.4,
+    "priceAvg200": 18.72,
+    "exchange": "NYSE",
+    "previousClose": 16.87
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "symbol": "VRTX",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "VRTX",
+    "price": 469.34,
+    "marketCap": 119212360000,
+    "beta": 0.315,
+    "lastDividend": 0,
+    "range": "362.5-517.2",
+    "companyName": "Vertex Pharmaceuticals Incorporated",
+    "currency": "USD",
+    "exchange": "NASDAQ",
+    "industry": "Biotechnology",
+    "ceo": "Reshma Kewalramani",
+    "sector": "Healthcare",
+    "country": "US",
+    "fullTimeEmployees": "6100",
+    "ipoDate": "1991-07-24",
+    "isActivelyTrading": true
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "symbol": "VRTX",
+      "fiscalYear": "2025",
+      "period": "FY",
+      "revenue": 12074600000,
+      "grossProfit": 10267500000,
+      "operatingIncome": 4760700000,
+      "ebitda": 4967900000,
+      "netIncome": 3953200000,
+      "eps": 15.46,
+      "epsDiluted": 15.32,
+      "interestExpense": 13300000,
+      "depreciationAndAmortization": 207200000
+    },
+    {
+      "date": "2024-12-31",
+      "symbol": "VRTX",
+      "fiscalYear": "2024",
+      "period": "FY",
+      "revenue": 11020100000,
+      "grossProfit": 9489600000,
+      "operatingIncome": -232900000,
+      "ebitda": 486300000,
+      "netIncome": -535600000,
+      "eps": -2.08,
+      "epsDiluted": -2.08,
+      "interestExpense": 30600000
+    },
+    {
+      "date": "2023-12-31",
+      "symbol": "VRTX",
+      "fiscalYear": "2023",
+      "period": "FY",
+      "revenue": 9869200000,
+      "grossProfit": 8607000000,
+      "operatingIncome": 3832000000,
+      "ebitda": 4605200000,
+      "netIncome": 3619600000,
+      "eps": 14.05,
+      "epsDiluted": 13.89,
+      "interestExpense": 44100000
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "symbol": "VRTX",
+      "fiscalYear": "2025",
+      "cashAndCashEquivalents": 5087800000,
+      "totalAssets": 26142800000,
+      "totalLiabilities": 7477000000,
+      "totalStockholdersEquity": 18665800000,
+      "totalDebt": 3882500000,
+      "netDebt": -1205300000
+    },
+    {
+      "date": "2024-12-31",
+      "symbol": "VRTX",
+      "fiscalYear": "2024",
+      "cashAndCashEquivalents": 4569600000,
+      "totalAssets": 22533200000,
+      "totalLiabilities": 6123600000,
+      "totalStockholdersEquity": 16409600000,
+      "totalDebt": 1749500000,
+      "netDebt": -2820100000
+    },
+    {
+      "date": "2023-12-31",
+      "symbol": "VRTX",
+      "fiscalYear": "2023",
+      "cashAndCashEquivalents": 10369100000,
+      "totalAssets": 22730200000,
+      "totalLiabilities": 5149800000,
+      "totalStockholdersEquity": 17580400000,
+      "totalDebt": 808400000,
+      "netDebt": -9560700000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "symbol": "VRTX",
+      "fiscalYear": "2025",
+      "operatingCashFlow": 3631400000,
+      "capitalExpenditure": -437600000,
+      "freeCashFlow": 3193800000,
+      "commonStockRepurchased": -2017400000
+    },
+    {
+      "date": "2024-12-31",
+      "symbol": "VRTX",
+      "fiscalYear": "2024",
+      "operatingCashFlow": -492600000,
+      "capitalExpenditure": -297700000,
+      "freeCashFlow": -790300000,
+      "commonStockRepurchased": -1177100000,
+      "stockBasedCompensation": 698500000
+    },
+    {
+      "date": "2023-12-31",
+      "symbol": "VRTX",
+      "fiscalYear": "2023",
+      "operatingCashFlow": 3537300000,
+      "capitalExpenditure": -258400000,
+      "freeCashFlow": 3278900000,
+      "commonStockRepurchased": -427600000,
+      "stockBasedCompensation": 581200000
+    }
+  ],
+  "ratios": [
+    {
+      "symbol": "VRTX",
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "grossProfitMargin": 0.85,
+      "operatingProfitMargin": 0.394,
+      "netProfitMargin": 0.327,
+      "returnOnEquity": 0.212,
+      "currentRatio": 2.901,
+      "priceToEarningsRatio": 29.32,
+      "dividendYield": 0,
+      "interestCoverageRatio": 357.9
+    },
+    {
+      "symbol": "VRTX",
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "grossProfitMargin": 0.861,
+      "operatingProfitMargin": -0.021,
+      "netProfitMargin": -0.049,
+      "returnOnEquity": -0.033,
+      "currentRatio": 2.692,
+      "priceToEarningsRatio": -193.6,
+      "dividendYield": 0
+    },
+    {
+      "symbol": "VRTX",
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "grossProfitMargin": 0.872,
+      "operatingProfitMargin": 0.388,
+      "netProfitMargin": 0.367,
+      "returnOnEquity": 0.206,
+      "currentRatio": 3.987,
+      "priceToEarningsRatio": 28.97,
+      "dividendYield": 0,
+      "interestCoverageRatio": 86.89
+    }
+  ],
+  "key_metrics": [
+    {
+      "symbol": "VRTX",
+      "date": "2025-12-31",
+      "fiscalYear": "2025",
+      "marketCap": 115924152000,
+      "enterpriseValue": 114718852000,
+      "evToEBITDA": 23.09,
+      "returnOnEquity": 0.212,
+      "returnOnInvestedCapital": 0.181,
+      "freeCashFlowYield": 0.0276
+    },
+    {
+      "symbol": "VRTX",
+      "date": "2024-12-31",
+      "fiscalYear": "2024",
+      "marketCap": 103695250000,
+      "enterpriseValue": 100875150000,
+      "evToEBITDA": 207.43,
+      "freeCashFlowYield": -0.0076
+    },
+    {
+      "symbol": "VRTX",
+      "date": "2023-12-31",
+      "fiscalYear": "2023",
+      "marketCap": 104855553000,
+      "enterpriseValue": 95294853000,
+      "evToEBITDA": 20.69,
+      "returnOnEquity": 0.206,
+      "returnOnInvestedCapital": 0.164,
+      "freeCashFlowYield": 0.0313
+    }
+  ],
+  "insider_trades": [
+    {
+      "symbol": "VRTX",
+      "year": 2026,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 54
+    },
+    {
+      "symbol": "VRTX",
+      "year": 2025,
+      "quarter": 3,
+      "totalPurchases": 4,
+      "totalSales": 1
+    },
+    {
+      "symbol": "VRTX",
+      "year": 2025,
+      "quarter": 1,
+      "totalPurchases": 0,
+      "totalSales": 21
+    }
+  ],
+  "quote": {
+    "symbol": "VRTX",
+    "price": 469.34,
+    "marketCap": 119212360000,
+    "yearHigh": 517.2,
+    "yearLow": 362.5,
+    "priceAvg50": 469.47,
+    "priceAvg200": 438.18,
+    "exchange": "NASDAQ",
+    "previousClose": 478.13
+  }
+}

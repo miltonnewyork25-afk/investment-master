@@ -1,0 +1,157 @@
+{
+  "probability_weighted_ev": 192.6,
+  "vs_current_pct": -38.5,
+  "core_pe": {
+    "gaap_eps": 11.16,
+    "interest_eps_contribution": 1.89,
+    "core_eps": 9.27,
+    "gaap_pe": 28.1,
+    "core_pe": 33.8,
+    "normalized_scenarios": {
+      "ZIRP": {
+        "net_interest": 70,
+        "eps": 9.42,
+        "pe": 33.3
+      },
+      "Low": {
+        "net_interest": 200,
+        "eps": 9.69,
+        "pe": 32.3
+      },
+      "Mid": {
+        "net_interest": 500,
+        "eps": 10.32,
+        "pe": 30.4
+      },
+      "Current": {
+        "net_interest": 900,
+        "eps": 11.16,
+        "pe": 28.1
+      }
+    }
+  },
+  "interest_sensitivity": [
+    {
+      "iorb": 5.25,
+      "cash_pool_B": 120,
+      "gross_interest_M": 6300,
+      "net_retained_M": 819,
+      "eps_interest": 1.72,
+      "total_eps": 10.99,
+      "price_at_28x": 308,
+      "vs_current": -1.8
+    },
+    {
+      "iorb": 4.4,
+      "cash_pool_B": 130,
+      "gross_interest_M": 5720,
+      "net_retained_M": 744,
+      "eps_interest": 1.56,
+      "total_eps": 10.83,
+      "price_at_28x": 303,
+      "vs_current": -3.2
+    },
+    {
+      "iorb": 3.5,
+      "cash_pool_B": 125,
+      "gross_interest_M": 4375,
+      "net_retained_M": 569,
+      "eps_interest": 1.19,
+      "total_eps": 10.46,
+      "price_at_28x": 293,
+      "vs_current": -6.5
+    },
+    {
+      "iorb": 2.5,
+      "cash_pool_B": 120,
+      "gross_interest_M": 3000,
+      "net_retained_M": 390,
+      "eps_interest": 0.82,
+      "total_eps": 10.09,
+      "price_at_28x": 282,
+      "vs_current": -9.8
+    },
+    {
+      "iorb": 1.5,
+      "cash_pool_B": 115,
+      "gross_interest_M": 1725,
+      "net_retained_M": 224,
+      "eps_interest": 0.47,
+      "total_eps": 9.74,
+      "price_at_28x": 273,
+      "vs_current": -12.9
+    },
+    {
+      "iorb": 0.25,
+      "cash_pool_B": 110,
+      "gross_interest_M": 275,
+      "net_retained_M": 36,
+      "eps_interest": 0.08,
+      "total_eps": 9.35,
+      "price_at_28x": 262,
+      "vs_current": -16.5
+    }
+  ],
+  "scenarios": {
+    "Bull-H": {
+      "scenario": "Bull-H",
+      "fair_value": 293.8,
+      "vs_current": -6.2,
+      "terminal_eps": 15.05,
+      "terminal_rev": 9583,
+      "pv_fcfs": 18658,
+      "pv_terminal": 87033,
+      "ev": 105691
+    },
+    "Bull-L": {
+      "scenario": "Bull-L",
+      "fair_value": 241.5,
+      "vs_current": -22.9,
+      "terminal_eps": 13.44,
+      "terminal_rev": 9097,
+      "pv_fcfs": 16957,
+      "pv_terminal": 69778,
+      "ev": 86735
+    },
+    "Base-H": {
+      "scenario": "Base-H",
+      "fair_value": 206.1,
+      "vs_current": -34.2,
+      "terminal_eps": 12.5,
+      "terminal_rev": 8311,
+      "pv_fcfs": 16245,
+      "pv_terminal": 57702,
+      "ev": 73947
+    },
+    "Base-L": {
+      "scenario": "Base-L",
+      "fair_value": 171.8,
+      "vs_current": -45.2,
+      "terminal_eps": 11.06,
+      "terminal_rev": 7884,
+      "pv_fcfs": 14810,
+      "pv_terminal": 46729,
+      "ev": 61538
+    },
+    "Bear-H": {
+      "scenario": "Bear-H",
+      "fair_value": 143.3,
+      "vs_current": -54.3,
+      "terminal_eps": 9.83,
+      "terminal_rev": 7145,
+      "pv_fcfs": 13607,
+      "pv_terminal": 37583,
+      "ev": 51189
+    },
+    "Bear-L": {
+      "scenario": "Bear-L",
+      "fair_value": 109.8,
+      "vs_current": -65.0,
+      "terminal_eps": 8.34,
+      "terminal_rev": 6727,
+      "pv_fcfs": 12051,
+      "pv_terminal": 27023,
+      "ev": 39074
+    }
+  }
+}

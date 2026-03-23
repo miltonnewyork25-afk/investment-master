@@ -6,6 +6,35 @@
 
 ---
 
+## [v18.2] - 2026-03-06
+
+### 品质量化评估框架 + 投资大师圆桌 v2.0
+
+基于12家公司实证回测(FICO/CPRT/CTAS/ROL/IDXX/Visa/FAST/IHG + HEI/DHR/CSU/GE)和品味框架v1.2的提炼，建立通用品质量化评估体系。同时将投资大师圆桌从独立Skill升级为Tier 3流程的正式Phase。
+
+**品质量化评估框架 v1.0**:
+- **新增** `docs/company_quality_scoring.md` — 21维度评估体系: A品质门控(7项Pass/Fail) + B商业模型(8维度/40分) + C护城河(6维度/30分) + D回报修正因子(乘数)
+- **新增** `knowledge/stock_picking/quality_scoring_benchmark.md` — 8家基准公司完整评分卡(逐维度依据)
+- **集成** `docs/deep_dive_protocol.md` — Phase 0(A+D) → Phase 1(B1/B2/B3/B8+C1/C3/C6) → Phase 2(B5/B6) → Phase 3(B4/B7+C2/C4/C5) → Phase 5(终版汇总+复利路径)
+- **集成** Tier 2 `standard-analysis` — S2模块(A品质门控+B5+B6) + S10模块(完整评分卡+加权分+复利路径)
+- **集成** Tier 1 `quick-company-scan` — 品质速判(X/7通过+关键失败项)
+- **核心发现**: B4(定价权)是最强单一预测因子(每降1分回报近似折半); 非周期性比高OPM更重要(IHG真实OPM 65%+强周期→4x vs FAST OPM 20%+弱周期→5x)
+
+**投资大师圆桌 v2.0**:
+- **新增** `.claude/skills/investment-committee/SKILL.md` v2.0 — 从审查式委员会→方法论碰撞深化引擎
+- **集成** `docs/deep_dive_protocol.md` Phase 3.8 — Phase 3后、Phase 4前的正式深化层
+- **7位大师**: 巴菲特(护城河) + 李录(变量提纯) + 阿克曼(运营改善) + 德鲁肯米勒(赔率时点) + 达里奥(宏观周期) + Cathie(非线性上行) + Bear检察官(叙事解构)
+- **3种模式**: Lite(3人/8min) / Standard(5人/20min, controversy≥4自动触发) / Full(7人/30min)
+- **螺旋深化**: Round 1独立方法论→Round 2互相追问→Round 3碰撞洞见→Round 4最终裁决
+- **新增门控**: QG-09.8(数据点/引用/碰撞来源/Bear≥12%)
+- **不替代红队**: RT-1~RT-7全部保留，圆桌洞见作为Phase 4的补充输入
+
+### Changed
+- **CLAUDE.md** — 版本号更新至v18.2, 文档索引新增品质评估条目
+- **deep_dive_protocol.md** — v18.1→v18.2, Phase 0完成标准新增quality_scorecard.md
+
+---
+
 ## [v18.1] - 2026-03-03
 
 ### Added

@@ -1,0 +1,73 @@
+{
+  "symbol": "MMM",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "MMM",
+    "price": 150.96,
+    "marketCap": 79510632000,
+    "beta": 1.131,
+    "companyName": "3M Company",
+    "sector": "Industrials",
+    "industry": "Conglomerates",
+    "ceo": "William Brown",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 24948000000,
+      "operatingIncome": 4563000000,
+      "netIncome": 3250000000,
+      "eps": 6.04
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 24575000000,
+      "operatingIncome": 4931000000,
+      "netIncome": 4173000000,
+      "eps": 7.58
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 24610000000,
+      "operatingIncome": 4047000000,
+      "netIncome": -6995000000,
+      "eps": -12.63
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "grossProfitMargin": 0.396,
+      "netProfitMargin": 0.13,
+      "priceToEarningsRatio": 26.32,
+      "dividendYieldPercentage": 1.37
+    },
+    {
+      "date": "2024-12-31",
+      "grossProfitMargin": 0.41,
+      "netProfitMargin": 0.17,
+      "priceToEarningsRatio": 17.04,
+      "dividendYieldPercentage": 2.79
+    },
+    {
+      "date": "2023-12-31",
+      "grossProfitMargin": 0.389,
+      "netProfitMargin": -0.284,
+      "priceToEarningsRatio": -7.24,
+      "dividendYieldPercentage": 6.54
+    }
+  ],
+  "quote": {
+    "symbol": "MMM",
+    "price": 150.96,
+    "marketCap": 79510632000,
+    "yearHigh": 177.41,
+    "yearLow": 121.98
+  },
+  "balance": [],
+  "cashflow": [],
+  "key_metrics": [],
+  "insider_trades": "summarized_quarterly_data"
+}

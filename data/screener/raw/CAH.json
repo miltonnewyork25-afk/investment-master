@@ -1,0 +1,127 @@
+{
+  "symbol": "CAH",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "CAH",
+    "price": 217.08,
+    "marketCap": 51082400753,
+    "beta": 0.616,
+    "companyName": "Cardinal Health, Inc.",
+    "sector": "Healthcare",
+    "industry": "Medical - Distribution",
+    "ceo": "Jason Hollar",
+    "country": "US",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-06-30",
+      "revenue": 222578000000,
+      "operatingIncome": 2275000000,
+      "netIncome": 1561000000,
+      "eps": 6.48
+    },
+    {
+      "date": "2024-06-30",
+      "revenue": 226827000000,
+      "operatingIncome": 1243000000,
+      "netIncome": 852000000,
+      "eps": 3.48
+    },
+    {
+      "date": "2023-06-30",
+      "revenue": 204979000000,
+      "operatingIncome": 752000000,
+      "netIncome": 330000000,
+      "eps": 1.26
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-06-30",
+      "totalAssets": 53122000000,
+      "totalLiabilities": 55756000000,
+      "totalStockholdersEquity": -2781000000,
+      "totalDebt": 9345000000
+    },
+    {
+      "date": "2024-06-30",
+      "totalAssets": 45121000000,
+      "totalLiabilities": 48333000000,
+      "totalStockholdersEquity": -3213000000,
+      "totalDebt": 5609000000
+    },
+    {
+      "date": "2023-06-30",
+      "totalAssets": 43349000000,
+      "totalLiabilities": 46306000000,
+      "totalStockholdersEquity": -2958000000,
+      "totalDebt": 5176000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-06-30",
+      "operatingCashFlow": 2397000000,
+      "freeCashFlow": 1850000000
+    },
+    {
+      "date": "2024-06-30",
+      "operatingCashFlow": 3762000000,
+      "freeCashFlow": 3251000000
+    },
+    {
+      "date": "2023-06-30",
+      "operatingCashFlow": 2844000000,
+      "freeCashFlow": 2363000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-06-30",
+      "grossProfitMargin": 0.037,
+      "netProfitMargin": 0.007,
+      "priceToEarningsRatio": 25.94,
+      "dividendYieldPercentage": 1.22
+    },
+    {
+      "date": "2024-06-30",
+      "grossProfitMargin": 0.033,
+      "netProfitMargin": 0.004,
+      "priceToEarningsRatio": 28.11,
+      "dividendYieldPercentage": 2.08
+    },
+    {
+      "date": "2023-06-30",
+      "grossProfitMargin": 0.034,
+      "netProfitMargin": 0.002,
+      "priceToEarningsRatio": 74.8,
+      "dividendYieldPercentage": 2.13
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-06-30",
+      "marketCap": 40488000000,
+      "enterpriseValue": 45959000000
+    },
+    {
+      "date": "2024-06-30",
+      "marketCap": 23951200000,
+      "enterpriseValue": 24427200000
+    },
+    {
+      "date": "2023-06-30",
+      "marketCap": 24682770000,
+      "enterpriseValue": 25782770000
+    }
+  ],
+  "quote": {
+    "symbol": "CAH",
+    "price": 217.08,
+    "marketCap": 51082400753,
+    "yearHigh": 233.6,
+    "yearLow": 120.72
+  },
+  "insider_trades": "summarized_quarterly_data"
+}

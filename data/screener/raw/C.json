@@ -1,0 +1,150 @@
+{
+  "symbol": "C",
+  "fetched_at": "2026-03-16",
+  "profile": {
+    "symbol": "C",
+    "price": 105.67,
+    "marketCap": 184850644400,
+    "beta": 1.131,
+    "companyName": "Citigroup Inc.",
+    "sector": "Financial Services",
+    "industry": "Banks - Diversified",
+    "ceo": "Jane Nind Fraser",
+    "country": "US",
+    "fullTimeEmployees": "229000",
+    "exchange": "NYSE"
+  },
+  "income": [
+    {
+      "date": "2025-12-31",
+      "revenue": 168302000000,
+      "netInterestIncome": 59792000000,
+      "operatingIncome": 19828000000,
+      "netIncome": 14268000000,
+      "eps": 7.23,
+      "epsDiluted": 6.99
+    },
+    {
+      "date": "2024-12-31",
+      "revenue": 170707000000,
+      "netInterestIncome": 54095000000,
+      "operatingIncome": 17046000000,
+      "netIncome": 12682000000,
+      "eps": 6.03,
+      "epsDiluted": 5.95
+    },
+    {
+      "date": "2023-12-31",
+      "revenue": 155382000000,
+      "netInterestIncome": 54900000000,
+      "operatingIncome": 12910000000,
+      "netIncome": 9228000000,
+      "eps": 4.07,
+      "epsDiluted": 4.04
+    }
+  ],
+  "balance": [
+    {
+      "date": "2025-12-31",
+      "totalAssets": 2657202000000,
+      "totalLiabilities": 2443380000000,
+      "totalStockholdersEquity": 212291000000,
+      "cashAndCashEquivalents": 349579000000,
+      "totalDebt": 715803000000
+    },
+    {
+      "date": "2024-12-31",
+      "totalAssets": 2352945000000,
+      "totalLiabilities": 2143579000000,
+      "totalStockholdersEquity": 208598000000,
+      "cashAndCashEquivalents": 276532000000,
+      "totalDebt": 590560000000
+    },
+    {
+      "date": "2023-12-31",
+      "totalAssets": 2411834000000,
+      "totalLiabilities": 2205583000000,
+      "totalStockholdersEquity": 205453000000,
+      "cashAndCashEquivalents": 260932000000,
+      "totalDebt": 602183000000
+    }
+  ],
+  "cashflow": [
+    {
+      "date": "2025-12-31",
+      "operatingCashFlow": 28803000000,
+      "capitalExpenditure": -6520000000,
+      "freeCashFlow": 22283000000
+    },
+    {
+      "date": "2024-12-31",
+      "operatingCashFlow": -19669000000,
+      "capitalExpenditure": -6500000000,
+      "freeCashFlow": -26169000000
+    },
+    {
+      "date": "2023-12-31",
+      "operatingCashFlow": -73416000000,
+      "capitalExpenditure": -6583000000,
+      "freeCashFlow": -79999000000
+    }
+  ],
+  "ratios": [
+    {
+      "date": "2025-12-31",
+      "netProfitMargin": 0.085,
+      "returnOnEquity": 0.067,
+      "priceToEarningsRatio": 14.89,
+      "priceToBookRatio": 1.0,
+      "dividendYieldPercentage": 2.53
+    },
+    {
+      "date": "2024-12-31",
+      "netProfitMargin": 0.074,
+      "returnOnEquity": 0.061,
+      "priceToEarningsRatio": 10.55,
+      "priceToBookRatio": 0.64,
+      "dividendYieldPercentage": 3.88
+    },
+    {
+      "date": "2023-12-31",
+      "netProfitMargin": 0.059,
+      "returnOnEquity": 0.045,
+      "priceToEarningsRatio": 10.76,
+      "priceToBookRatio": 0.48,
+      "dividendYieldPercentage": 5.25
+    }
+  ],
+  "key_metrics": [
+    {
+      "date": "2025-12-31",
+      "marketCap": 212410807000,
+      "enterpriseValue": 578634807000,
+      "returnOnInvestedCapital": 0.009,
+      "earningsYield": 0.067
+    },
+    {
+      "date": "2024-12-31",
+      "marketCap": 133839546000,
+      "enterpriseValue": 447867546000,
+      "returnOnInvestedCapital": 0.015,
+      "earningsYield": 0.095
+    },
+    {
+      "date": "2023-12-31",
+      "marketCap": 99284344000,
+      "enterpriseValue": 440535344000,
+      "returnOnInvestedCapital": 0.011,
+      "earningsYield": 0.093
+    }
+  ],
+  "insider_trades": "summarized_quarterly_data",
+  "quote": {
+    "symbol": "C",
+    "price": 105.67,
+    "marketCap": 184850644400,
+    "yearHigh": 125.16,
+    "yearLow": 55.51,
+    "volume": 10096370
+  }
+}
