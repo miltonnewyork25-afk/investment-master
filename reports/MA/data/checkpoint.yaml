@@ -16,9 +16,9 @@ hard_floor: 200000
 quality_target: 4.4
 
 quick_ref:
-  total_chars: 29813
-  latest_phase_chars: 29813
-  dm_count: 60
+  total_chars: 42791
+  latest_phase_chars: 42791
+  dm_count: 90
   shared_context_chars: 13568
   lit_recon_chars: 3326
   thesis_chars: 3942
@@ -28,12 +28,12 @@ narrative_direction: "偏积极——Reverse DCF隐含9% CAGR远低于共识12-1
 p1_constraint: "中性起点→Phase 1后偏积极，但受限于WACC弹性(±22%/100bps)+CI分层+A2A长期威胁"
 
 phase1_summary:
-  chars: 29813
-  dm_count: 60
-  dm_density: 2.01
-  causal_density: 7.0
-  mermaid_count: 5
-  chapters: 10
+  chars: 42791
+  dm_count: 90
+  dm_density: 2.10
+  causal_density: 23.4
+  mermaid_count: 8
+  chapters: "10 + 7补强模块(A-G)"
   key_discoveries:
     - "市场隐含FCF CAGR仅9%, 远低于共识12-16%"
     - "MA vs V PE溢价从+20%压缩至+2.8%, EV/EBITDA MA更便宜(-12%)"
