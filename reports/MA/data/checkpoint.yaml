@@ -93,11 +93,11 @@ next_phase: 3
 next_phase_focus: "护城河量化+五引擎+A2A/稳定币冲击建模+Playing to Win+品质B4/B7/C2/C4/C5"
 
 phase2_summary:
-  chars: 32670
-  dm_count: 66
-  dm_density: 2.02
-  mermaid_count: 4
-  chapters: "10 + 5补强模块(H-L)"
+  chars: 39603
+  dm_count: 78
+  dm_density: 1.97
+  mermaid_count: 5
+  chapters: "10 + 9补强模块(H-P)"
   key_discoveries:
     - "经营杠杆真实(EBITDA验证-3.8pp lag)但被费用重分类放大"
     - "正常化OPM=56.8%(非59.2%),3年均值每年+0.5-1pp"
