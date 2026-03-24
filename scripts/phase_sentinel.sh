@@ -352,6 +352,23 @@ if [ "$PHASE" -ge 1 ]; then
 fi
 
 # ============================================================
+# Layer 3.8: ISDD利润表诊断卡 — Phase 1+ (ISDD v1.0)
+# 设计: Phase 1财务分析必须产出income_diagnostic.yaml, 防止利润表分析流于表面
+# ============================================================
+if [ "$PHASE" -ge 2 ]; then
+    if [ -f "$DATA/income_diagnostic.yaml" ]; then
+        ISDD_CHARS=$(wc -m < "$DATA/income_diagnostic.yaml" | tr -d ' ')
+        if [ "$ISDD_CHARS" -ge 200 ]; then
+            check_pass "ISDD: 利润表诊断卡存在 (${ISDD_CHARS} chars)"
+        else
+            check_warn "ISDD: 诊断卡过短 (${ISDD_CHARS} chars < 200) → 可能未完整执行ISDD框架"
+        fi
+    else
+        check_warn "ISDD: income_diagnostic.yaml缺失 → Phase 1应执行利润表深度诊断(knowledge/analysis_modules/income_statement_deep_diagnostic.md)"
+    fi
+fi
+
+# ============================================================
 # Layer 4: Phase-specific artifact检查
 # ============================================================
 if [ "$PHASE" -ge 4 ]; then
