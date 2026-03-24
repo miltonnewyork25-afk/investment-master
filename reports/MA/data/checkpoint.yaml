@@ -93,10 +93,10 @@ next_phase: 5
 next_phase_focus: "Complete组装(铁律J单会话)+P4.5参考扫描+质量门控+评级"
 
 phase4_summary:
-  chars: 16833
-  dm_count: 31
-  mermaid_count: 1
-  chapters: 13
+  chars: 23041
+  dm_count: 40
+  mermaid_count: 3
+  chapters: "13 + 6补强模块(AA-FF)"
   key_corrections:
     - "偏差校正-6.3%(与V -6.2%一致)"
     - "P4公允价值$485(-3.0%期望回报)"
@@ -112,10 +112,10 @@ phase4_summary:
   v_ma_relative: "MA优V+2.10分(增速/估值/CI), 但宏观敏感更高"
 
 phase3_summary:
-  chars: 25049
-  dm_count: 52
-  mermaid_count: 3
-  chapters: "11 + 6补强模块(Q-V)"
+  chars: 33625
+  dm_count: 64
+  mermaid_count: 6
+  chapters: "11 + 10补强模块(Q-Z)"
   key_discoveries:
     - "护城河4.2/5, 久期~12年, 网络效应>15年/令牌化5-10年"
     - "飞轮净强度4.05/5(优于V 3.41)——VAS多元化减少悖论"
