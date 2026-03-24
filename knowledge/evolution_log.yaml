@@ -581,3 +581,22 @@ entries:
     top_lesson: "完全垄断公司的B2B模块(M2/M3/M6)需要改造——双边市场/寡头博弈/客户集中度在HHI=10000时全部失效。最大盲区是渠道商视角(M6)——分析垄断者必须分析垄断者的客户(注册商GoDaddy=35%收入集中)。核心分析(M1嵌入+M5定价+M9资本+M10监管)达满分。"
     evolution_proposed: "EVO-VRSN-01(完全垄断模块改造) + EVO-VRSN-02(定价权反身性临界点) + EVO-VRSN-03(渠道商视角标准化)"
     evolution_status: approved
+
+  - ticker: "INTU"
+    date: "2026-03-24"
+    quality: 4.0
+    chars: "309K"
+    compliance: "PASS (8/8)"
+    dm_anchors: 494
+    dm_density: "1.59/千字"
+    causal_density: "18.4/万字"
+    mermaid: 37
+    top_technique: "双重身份估值框架+AI竞品2x2矩阵+温水煮青蛙联合概率"
+    top_lesson: "多Agent CQ漂移(SBC事实错误)+WACC论证不能一句话+管理层评估需6维度硬门控"
+    evolution_proposed: "EVO-INTU-01(WACC决策树) | EVO-INTU-02(多Agent CQ一致性) | EVO-INTU-03(管理层6维度门控)"
+    evolution_status: proposed
+    internal_score: "92/110 (4.18)"
+    independent_score: "88/110 (4.0)"
+    inflation: "+4分膨胀(D5估值+1.0/D7管理层+1.5/累计+1.5)"
+    rating: "中性关注(偏积极)"
+    expected_return: "+5-8%"
