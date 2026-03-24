@@ -1,19 +1,59 @@
 schema_version: "2.0"
 ticker: DDOG
-company: "DDOG"
-framework_version: v17.0
+company: "Datadog, Inc."
+framework_version: v19.7
 worktree: "其他"
-industry: "其他"
-last_updated: "2026-03-24T11:14:34+00:00"
+industry: "Enterprise SaaS / Cloud Infrastructure"
+last_updated: "2026-03-24T08:00:00+00:00"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: 0.75
+phase_status: phase_0.75_complete
+phases_completed: ["-1", "-0.5", "0", "0.75"]
 
-target_chars: 312266
-target_range: "249K-390K"
+target_chars: 270000
+target_range: "270K-320K"
 hard_floor: 200000
+
+pw_score: 4.4
+methodology: "mixed_mode"
+
+quality_target: "4.4 (≥97/110)"
+
+cq_list:
+  CQ1: "增速加速(25→29%): 结构性AI驱动 vs 周期性恢复?"
+  CQ2: "使用计费: AI时代增长弹性 vs 客户削减风险?"
+  CQ3: "SBC 22%/rev: 人才壁垒 vs 股东毁灭(真实PE 200x)?"
+  CQ4: "开源Grafana+OTel: 威胁采集层 vs 扩大分析层TAM?"
+  CQ5: "安全产品线: 第二增长引擎($5B期权) vs 被CRWD/PANW阻击?"
+  CQ6: "49x PE: 隐含20%增速+35% FCF合理 vs DT 30x更对?"
+
+cq_confidence:
+  CQ1: "55% positive"
+  CQ2: "55% positive"
+  CQ3: "50% cautious"
+  CQ4: "45% cautious"
+  CQ5: "50% neutral"
+  CQ6: "50% neutral"
+
+comparable_anchor: "Dynatrace DT (30x fwd PE, 18% growth, 115% NRR)"
 
 quick_ref:
   total_chars: 0
-  latest_phase_chars: 0
+  dm_count: 0
+  mermaid_count: 0
+
+phase_0_outputs:
+  shared_context: "reports/DDOG/data/shared_context.md (5.9K)"
+  cq_routing: "reports/DDOG/data/cq_routing.md (3.1K)"
+  thesis_crystallization: "reports/DDOG/data/thesis_crystallization.md (5.5K)"
+  lit_recon: "reports/DDOG/data/lit_recon_memo.md (2.3K)"
+  launch_brief: "reports/DDOG/data/launch_brief.md (3.8K)"
+  knowledge_context: "reports/DDOG/data/knowledge_context.md (1.8K)"
+
+data_files:
+  fmp_income: "reports/DDOG/data/fmp_income.md"
+  fmp_balance: "reports/DDOG/data/fmp_balance.md"
+  fmp_cashflow: "reports/DDOG/data/fmp_cashflow.md"
+  moat_competition: "reports/DDOG/data/moat_competition_research.md (12.7K)"
+  management: "reports/DDOG/data/management_capital_research.md (8.5K)"
+  valuation: "reports/DDOG/data/valuation_scenarios.md (9.5K)"
