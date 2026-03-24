@@ -4,11 +4,11 @@ company: "Intuit Inc."
 framework_version: v19.7
 worktree: "金融基础设施"
 industry: "金融基础设施"
-last_updated: "2026-03-24T05:00:00+00:00"
+last_updated: "2026-03-24T05:45:00+00:00"
 
-current_phase: 1
-phase_status: phase_1_complete
-phases_completed: ["-1", "-0.5", "0", "0.75", "1"]
+current_phase: 2
+phase_status: phase_2_complete
+phases_completed: ["-1", "-0.5", "0", "0.75", "1", "2"]
 
 target_chars: 300000
 target_range: "240K-375K"
@@ -25,40 +25,48 @@ cq_list:
   CQ5: "TurboTax定价权: 产品 vs 监管保护"
 
 cq_confidence:
-  CQ1: "60% bullish (+5)"
+  CQ1: "65% bullish (+5 from P1)"
   CQ2: "50% neutral (±0)"
-  CQ3: "45% cautious (±0)"
-  CQ4: "65% market_too_pessimistic (+5)"
+  CQ3: "52% cautious-neutral (+7 from P1)"
+  CQ4: "68% market_too_pessimistic (+3 from P1)"
   CQ5: "50% mixed (±0)"
 
 comparable_anchor: "ADBE (14.4x forward PE, 12% growth, 59% ROE)"
 
+preliminary_rating: "关注 (期望回报+10.5%, 弱信号)"
+sotp_midpoint: "$503/share (+10%)"
+probability_weighted_ev: "$528/share (+15.6%)"
+
 quick_ref:
-  total_chars: 59219
-  latest_phase_chars: 59219
-  dm_count: 138
-  dm_density: "2.33/千字"
-  causal_density: "27.35/万字"
-  mermaid_count: 0
+  total_chars: 125654
+  phase1_chars: 59219
+  phase2_chars: 66467
+  dm_count: 262
+  dm_density: "2.08/千字"
+  causal_density: "21.6/万字"
+  mermaid_count: 8
+
+phase_2_outputs:
+  agent_a: "reports/INTU/staging/P2_AgentA.md (15.3K — CK深潜+Mailchimp)"
+  agent_b: "reports/INTU/staging/P2_AgentB.md (15.0K — IES+承重墙+管理层)"
+  agent_c: "reports/INTU/staging/P2_AgentC.md (36.2K — SOTP+概率加权)"
+  combined: "reports/INTU/staging/INTU_P2_combined.md (66.5K)"
+  scorecard: "reports/INTU/data/phase2_scorecard.yaml"
+
+phase_2_key_findings:
+  - "CK独立估值$11.5-16.1B, 收购已创造价值"
+  - "Mailchimp毁灭$5.2-7.9B, 减值概率30-40%"
+  - "IES SAM $5-15B, 承重墙4/4概率仅12-17%"
+  - "SOTP $503, 概率加权$528, 初步评级关注"
+  - "管理层7.2/10, CEO终止卖出=强信心信号"
 
 phase_1_outputs:
   agent_a: "reports/INTU/staging/P1_AgentA.md (20.4K)"
   agent_b: "reports/INTU/staging/P1_AgentB.md (18.0K)"
   agent_c: "reports/INTU/staging/P1_AgentC.md (20.8K)"
   combined: "reports/INTU/staging/INTU_P1_combined.md (59.2K)"
-  scorecard: "reports/INTU/data/phase1_scorecard.yaml"
-
-phase_1_key_findings:
-  - "身份危机是估值核心: 税务软件18x vs 金融平台30x+"
-  - "ADBE约束: 不能写严重低估"
-  - "护城河7.3/10, 飞轮净正(+2~+3)"
-  - "定价权Stage 2.9, NRR隐含109-112%"
-  - "OPM +600bps是恢复不是新扩张"
 
 phase_0_outputs:
   shared_context: "reports/INTU/data/shared_context.md"
   cq_routing: "reports/INTU/data/cq_routing.md"
   thesis_crystallization: "reports/INTU/data/thesis_crystallization.md"
-  lit_recon: "reports/INTU/data/lit_recon_memo.md"
-  launch_brief: "reports/INTU/data/launch_brief.md"
-  knowledge_context: "reports/INTU/data/knowledge_context.md"
