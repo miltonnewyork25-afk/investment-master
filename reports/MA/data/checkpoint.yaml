@@ -6,9 +6,9 @@ worktree: "金融"
 industry: "金融"
 last_updated: "2026-03-24T03:35:00+08:00"
 
-current_phase: 1
+current_phase: 2
 phase_status: completed
-phases_completed: [1]
+phases_completed: [1, 2]
 
 target_chars: 282487
 target_range: "225K-353K"
@@ -89,8 +89,26 @@ data_gaps_identified:
   - "M5: 监管信息仅在lit_recon,未结构化"
   - "M6: V对标预留为空"
 
-next_phase: 2
-next_phase_focus: "CPA×ISDD财务深挖 + 完整Reverse DCF承重墙 + CI分层 + 三情景推演 + ROIC/收购ROI(CQ-5)"
+next_phase: 3
+next_phase_focus: "护城河量化+五引擎+A2A/稳定币冲击建模+Playing to Win+品质B4/B7/C2/C4/C5"
+
+phase2_summary:
+  chars: 24988
+  dm_count: 52
+  dm_density: 2.08
+  mermaid_count: 3
+  chapters: 10
+  key_discoveries:
+    - "经营杠杆真实(EBITDA验证-3.8pp lag)但被费用重分类放大"
+    - "正常化OPM=56.8%(非59.2%),3年均值每年+0.5-1pp"
+    - "EPS增长82%来自收入(高质量)+19%来自回购+0%利润率"
+    - "有效税率跳至19.4%——如果是新常态→EPS下修3-4%"
+    - "承重墙: 4低/1中高(WACC), Beta是最大不确定性"
+    - "Recorded Future ROIC 2.3%<<WACC 9.01%, 短期摧毁价值"
+    - "三情景: Bull+109%/Base+69%/Bear+7%, PW$796(+59%)"
+    - "综合估值$480-870, 当前$500处于第12百分位"
+    - "CI定价权分层: F500 Stage3/中型Stage4/SMB Stage4-5"
+    - "周期P3(成熟增长), P4风险→-17%, P2机会→+52%"
 
 files:
   shared_context: "reports/MA/data/shared_context.md"
