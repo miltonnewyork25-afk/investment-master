@@ -6,9 +6,9 @@ worktree: "金融"
 industry: "金融"
 last_updated: "2026-03-24T03:35:00+08:00"
 
-current_phase: 3
+current_phase: 4
 phase_status: completed
-phases_completed: [1, 2, 3]
+phases_completed: [1, 2, 3, 4]
 
 target_chars: 282487
 target_range: "225K-353K"
@@ -89,8 +89,27 @@ data_gaps_identified:
   - "M5: 监管信息仅在lit_recon,未结构化"
   - "M6: V对标预留为空"
 
-next_phase: 4
-next_phase_focus: "红队七问+偏差校正+事实核查+纠错回流P1-3+Python估值验证"
+next_phase: 5
+next_phase_focus: "Complete组装(铁律J单会话)+P4.5参考扫描+质量门控+评级"
+
+phase4_summary:
+  chars: 16833
+  dm_count: 31
+  mermaid_count: 1
+  chapters: 13
+  key_corrections:
+    - "偏差校正-6.3%(与V -6.2%一致)"
+    - "P4公允价值$485(-3.0%期望回报)"
+    - "MC中位$535(+7%), $500=P35(65%>$500)"
+    - "真实区间$485-535, 中点$510(+2%)"
+    - "概率重新加权: Bull15/Base50/Bear30/DB5"
+    - "叙事从偏积极→中性偏积极"
+    - "OPM前瞻: 59%→56%(VAS稀释-3pp)"
+    - "CI转折点升级🔴(仅1.8pp)"
+    - "最强做空: VAS利润率陷阱(8/10)"
+    - "最优持有期6-12月(Q1'26首催化)"
+  rating_direction: "偏向中性关注(期望回报-3%至+7%,中点+2%)"
+  v_ma_relative: "MA优V+2.10分(增速/估值/CI), 但宏观敏感更高"
 
 phase3_summary:
   chars: 25049
