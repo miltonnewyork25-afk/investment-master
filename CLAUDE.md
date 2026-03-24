@@ -398,95 +398,24 @@ ADBE反例 (0层):
 > **读者画像**: 专业投资者，财务基础扎实，但不一定熟悉每个行业。把他们当成"聪明的外行"——不需要解释PE是什么，但需要解释NRR为什么重要。
 > **风格锚**: Howard Marks备忘录(机制解释) × Economist杂志(首提定义) = 既不科普也不堆术语
 
-**规则1 — 首提全称**: 缩写/公式/行业术语**第一次出现时**用"全称(缩写)"或括号说明，后续全文用简称。
-
-```
-❌ "FCF/NI=117%，现金质量高"
-✅ "自由现金流与净利润之比(FCF/NI)达到117%——每赚1元利润就收回1.17元现金，说明盈利扎实、不靠会计美化"
-   → 之后全文直接写"FCF/NI"
-```
-
-**规则2 — 公式必须说人话**: 每个首次出现的公式，用一句话解释"这个数字在衡量什么"。
-
-```
-❌ "WACC 9.5%, ERP 6%, Rf 4.3%"
-✅ "加权平均资本成本(WACC)取9.5%——这是投资者要求的最低回报率。构成: 无风险利率4.3%(10年期美国国债) + 股权风险溢价6%(市场对股票额外要求的补偿) × beta调整"
-```
-
-**规则3 — 行业术语一句话内联**: 不写长段落科普，用破折号或括号嵌入一句话解释。
-
-```
-❌ "NRR推断105-106%"
-✅ "净收入留存率(NRR，衡量存量客户每年多花还是少花钱——超过100%说明老客户在扩大采购)推断为105-106%"
-```
-
-**规则4 — 解释机制，不堆指标**: 不要连续列5个指标然后说"综合判断良好"。每个指标解释它为什么重要。
-
-```
-❌ "A-Score 6.5/10, FCF/NI 117%, ROIC 14.4%, DSO 133天"
-✅ "管理层综合评分(A-Score)6.5/10——执行力强但愿景偏保守。现金流质量优秀: 每元利润收回1.17元现金(FCF/NI 117%)。资本回报率(ROIC)14.4%首次超过资本成本(WACC 9.5%)——这意味着公司终于开始为股东创造价值而非摧毁价值"
-```
-
-**规则5 — 不过度解释**: 通用财务术语(PE、市值、毛利率、收入增速)不需要解释。只解释**行业特有的**或**不直观的**术语。
-
-```
-不需要解释: PE, 市值, 收入, 毛利率, 净利润, EPS, 市盈率
-需要解释: NRR, ARR, SOTP, WACC, Magic Number, Rule of 40, η函数, FCF Yield, A-Score
-```
-
-**规则6 — 术语表前置**: 每份Complete报告在执行摘要后加一个"关键术语速查"表(10-15个核心术语)，读者可以随时回查。
+**规则1 — 首提全称**: 缩写/公式/行业术语首次出现用"全称(缩写, 一句话解释)"，后续用简称
+**规则2 — 公式说人话**: 首次出现的公式解释"在衡量什么"
+**规则3 — 行业术语内联**: 破折号/括号嵌入一句话，不写长段落科普
+**规则4 — 解释机制不堆指标**: 每个指标说为什么重要，不列清单
+**规则5 — 不过度解释**: PE/市值/毛利率等通用术语免解释；NRR/WACC/Magic Number等需解释
+**规则6 — 术语表前置**: Complete报告执行摘要后加"关键术语速查"(10-15个)
 
 ---
 
-## 文档索引（按需加载）
+## 文档索引（按需加载，完整版见 `docs/framework_index.md`）
 
-| 场景 | 核心文档 |
-|------|----------|
-| **Tier 3启动** | `docs/deep_dive_protocol.md` |
-| **温度计算** | `docs/investment_thermometer_strategy.md` |
-| **行业增强** | `docs/industry/{semiconductor,consumer,financial,eco_tech,tech_platform,b2b_platform}_deep.md` |
-| **期权估值** | `docs/optionality_valuation.md` (高期权公司: TSLA/PLTR/GOOGL/META等) |
-| **发现系统** | `docs/paradigm_research_framework.md` (可能性宽度≥7分: TSLA/PLTR等) |
-| **演绎分析** | `docs/deductive_analysis.md` (因果链推演+跨行业传导, 范式变革公司必读) |
-| **上下文架构** | `docs/context_architecture.md` (L0/L1/L2三层加载策略) |
-| **质量门控** | `docs/quality_benchmarks.md` + `tests/quality_gate_complete.sh` |
-| **研究记分卡** | `tests/research_scorecard.sh` (Pre/Post/Compare, 10维度×0-10分) |
-| **数据验证** | `tests/verify_data_sources.sh` (DM交叉验证) |
-| **Context恢复** | `docs/checkpoint_protocol.md` |
-| **并行Agent** | `docs/parallel_execution.md` |
-| **数据可信度** | `docs/confidence_system.md` v3.0 (DM锚定+脚本验证) |
-| **红队协议** | `docs/red_team_protocol.md` (Phase 4 RT-1~RT-7) + `/red-team-suite` + `/risk-topology` |
-| **分析深度** | `/assumption-audit`(信念反演+共识解构+约束分类) (v17.0) |
-| **DAG编排** | `docs/dag_orchestrator.md` (DAG-0~7问题树+EC绑定) |
-| **Evidence Cards** | `docs/evidence_card_schema.md` (EC原子证据单元+CoVe验证) |
-| **确定性门禁** | `docs/deterministic_gates.md` (31约束迁移表+P0脚本) |
-| **进化系统** | `docs/evolution_system.md` + `scripts/post_report_autopsy.sh` + `/deep-reflection` (3步深度反思) |
-| **评级校准** | `docs/rating_alignment_protocol.md` + `scripts/rating_calibration.sh` |
-| **框架升级** | `CHANGELOG.md` + `docs/compound_learning_flywheel.md` |
-| **知识管理** | `knowledge/knowledge_index.yaml` + `scripts/find_relevant_knowledge.sh` |
-| **文献侦察** | `knowledge/external_refs/search_templates.yaml` |
-| **规划经验** | `knowledge/planning_archives/{TICKER}.md` (12份报告规划档案) |
-| **财务分析框架** | `knowledge/analysis_modules/financial_analysis_framework_v2.md` (CPA×ISDD融合, 12原则+7正常化+6核心模块+6扩展模块+矛盾引擎+12维评分, Phase 1-2财务SOP, 替代ISDD v1.0) |
-| **品质评估** | `docs/company_quality_scoring.md` (A+B+C+D 21维度) + `knowledge/stock_picking/quality_scoring_benchmark.md` (8家基准) |
-| **A/B文档分离** | `docs/ab_document_protocol.md` (对外报告A vs 内部策略卡B) + `docs/strategy_card_template.md` |
-| **护城河框架** | `knowledge/stock_picking/moat_analysis_framework_v3.1.md` (C1嵌入性质+D1反脆弱+C3锁定载体) |
-
-**完整索引**: 原CLAUDE.md第204-246行 → `docs/framework_index.md`
+**高频**: `docs/deep_dive_protocol.md`(Tier 3) | `docs/industry/*.md`(行业) | `knowledge/analysis_modules/financial_analysis_framework_v2.md`(财务CPA×ISDD)
+**估值**: `docs/optionality_valuation.md`(期权) | `docs/paradigm_research_framework.md`(发现系统) | `docs/rating_alignment_protocol.md`(评级校准)
+**质量**: `tests/quality_gate_complete.sh` | `tests/research_scorecard.sh` | `docs/checkpoint_protocol.md`
+**知识**: `knowledge/knowledge_index.yaml` | `scripts/find_relevant_knowledge.sh` | `knowledge/planning_archives/{TICKER}.md`
 
 ---
 
 ## 系统升级
 
-**当前版本**: v19.7 (2026-03-24) | **健康监控**: `bash tests/framework_health_check.sh` + `bash scripts/quality_health_check.sh`
-**v19.7新增**: **"低估观察"评级类别(LULU/PYPL教训)** — 评级从4档→5档: 深度关注/关注/**低估观察**/中性关注/审慎关注。适用于期望回报>+10%但核心反转信号缺失的公司。必须包含反转信号监控清单+上调路径。核心理念: 低估≠即将修复, 诚实标注方向不确定性。详见 `docs/rating_alignment_protocol.md` 3.5节
-**v19.6**: **CRM v2.0成功教训(5个EVO)** — SaaS单位经济学强制(NRR推断+Magic Number) | 飞轮悖论检测(新产品蚕食核心?) | 定价权分层评估(B4按客户层) | 演绎法5步模板(`docs/deductive_analysis_template.md`) | AIAS-PE数据库(`knowledge/aias_pe_database.yaml`)。源自CRM v2.0(4.1/5)反思+ADBE/MCO方法论对标
-**v19.5**: 移除铁律P(单日rush限制)，核心防护已由铁律O+K替代
-**v19.4**: **CRM失败教训** — 铁律O: Reverse DCF P1 Ch1强制前置(叙事不能偏离>1档) | 铁律H增强: 最相似可比公司P0强制对标。源自CRM v1.0叙事断裂教训
-**v19.3**: **4.4分质量标准** `docs/quality_standard_4.4.md` — 8项硬门控(G1-G8)+11维度记分卡(D1-D11, 总分≥88/110)。门控升级: 字符≥270K+DM≥1.5/千字+DM≥450+Mermaid≥25+因果≥5.0+Python必须+离散度≤30%+CQ标记。pre-commit hook同步升级
-**v19.2**: 铁律N证据链完整性。v19.1: 广度+密度双门控。v19.0: 铁律KLM+质量健康检查
-**v18.5变化**: Moat Data Card v1.0→v2.0(6→10字段组)——新增交易策略预备字段(估值三档/E-Score/回撤DNA/流动性)。`scripts/trading_datacard.py`自动填充回撤+流动性+E-Score。CQI排行榜v6.0(+12候选观察)。品牌定位v2.0(51家覆盖)
-**v18.4变化**: Phase 5新增护城河数据卡(Moat Data Card)标准产出——6个YAML字段(垄断纯度/定价权阶段/TAM渗透率/护城河年龄/转换成本/市场隐含假设)，零额外分析成本，为CQI排行榜+跨公司产品提供机器可读数据源。产出位置`reports/{TICKER}/data/moat_datacard.yaml`
-**v18.2变化**: 品质量化评估框架(21维度A+B+C+D分阶段嵌入Phase 0/1/2/3/5) + 投资大师圆桌v2.0(Phase 3.8方法论碰撞深化引擎)。详见 `docs/company_quality_scoring.md` + `.claude/skills/investment-committee/SKILL.md`
-**v18.1变化**: DM标注强制执行器+DM密度早期警告+消费品复杂估值框架
-**v18.0变化**: CEO沉默分析(P1)+PtW量化评分(P3)+KS条件依赖追踪(P5)
-**版本详情**: `CHANGELOG.md` + `memory/framework_evolution.md`
+**当前版本**: v19.7 (2026-03-24) | **版本历史**: `CHANGELOG.md`
