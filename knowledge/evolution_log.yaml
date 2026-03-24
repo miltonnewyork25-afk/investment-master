@@ -580,4 +580,4 @@ entries:
     top_technique: "PE因子分解(8C章): 将PE拆解为增速/确定性/TAM/政治/FCF质量/Core PE 6个因子, 与4家可比逐一对标, 完全解释VRSN 27x PE的构成。可复用于任何B2B基础设施公司。"
     top_lesson: "完全垄断公司的B2B模块(M2/M3/M6)需要改造——双边市场/寡头博弈/客户集中度在HHI=10000时全部失效。最大盲区是渠道商视角(M6)——分析垄断者必须分析垄断者的客户(注册商GoDaddy=35%收入集中)。核心分析(M1嵌入+M5定价+M9资本+M10监管)达满分。"
     evolution_proposed: "EVO-VRSN-01(完全垄断模块改造) + EVO-VRSN-02(定价权反身性临界点) + EVO-VRSN-03(渠道商视角标准化)"
-    evolution_status: pending
+    evolution_status: approved
