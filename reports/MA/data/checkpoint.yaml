@@ -1,19 +1,84 @@
 schema_version: "2.0"
 ticker: MA
-company: "MA"
-framework_version: v17.0
+company: "Mastercard Incorporated"
+framework_version: v19.8
 worktree: "金融"
 industry: "金融"
-last_updated: "2026-03-24T06:39:56+00:00"
+last_updated: "2026-03-24T03:00:00+08:00"
 
-current_phase: -1
-phase_status: pre_launch
+current_phase: 0
+phase_status: data_collection
 phases_completed: []
 
 target_chars: 282487
 target_range: "225K-353K"
 hard_floor: 200000
+quality_target: 4.4
 
 quick_ref:
   total_chars: 0
   latest_phase_chars: 0
+  dm_count: 20
+  shared_context_chars: 13568
+  lit_recon_chars: 3326
+  thesis_chars: 3942
+  v_lessons_chars: 2304
+
+narrative_direction: "待定(Phase 0.75 CQ路由后确定)"
+p1_constraint: "中性起点(铁律O — V教训: 中性起点比任何分析技术都重要)"
+
+key_findings:
+  - "FY2025收入$32.8B(+16.4%), Q4加速+17.6%, EPS +18.9%"
+  - "OPM 59.2%(FY2025), 但费用分类有重大调整(COGS↓$1.2B, SGA↑$2.9B)需验证"
+  - "FCF $16.9B, FCF/NI 113%, CapEx仅2.8%OCF"
+  - "ROIC 48.6%(vs V 28.4%, 但含商誉差异)"
+  - "PE 33x处于5年区间低端(33-41x)"
+  - "VAS占收入~45%, 增速+26%(Q4), 接近'身份转变'临界点"
+  - "分析师EPS CAGR 17%(FY25→27E)"
+  - "Capital One-Discover合并=第三网络威胁(非共识)"
+  - "RSI 33.7接近超卖"
+
+hypotheses:
+  H-01: "MA增速溢价主要来自跨境恢复红利(偏空)"
+  H-02: "MA的ROIC优势在Recorded Future收购后会消失(偏空)"
+  H-03: "MA的SGA高效率可能在增速放缓时释放OPM(偏多)"
+  H-04: "MA的VAS占比>45%需混合估值框架(中性)"
+  H-05: "MA的PE溢价(34x vs V 28x)在增速差缩小时不可持续(偏空)"
+  H-06: "MA的CI/毛收入趋势比V更陡(偏空)"
+
+cq_list:
+  CQ-1: "市场在34x PE中定价了什么假设?(Reverse DCF)"
+  CQ-2: "16%增速中跨境贡献多少?正常化后回落多少?"
+  CQ-3: "CI/毛收入趋势斜率vs V(+210bps/年)?"
+  CQ-4: "VAS对核心网络依附度——独立性多高?"
+  CQ-5: "Recorded Future收购ROI vs WACC?"
+  CQ-6: "PE溢价(+5.9x)是否由增速差完全解释?"
+  CQ-7: "监管风险vs V——相同还是差异?"
+  CQ-8: "公允价值区间和期望回报?"
+
+v_lessons_applied:
+  - "L1: OPM正常化用3年均值(N6教训)"
+  - "L2: CI分层=支付NRR(EVO-V-02)"
+  - "L3: 巨头估值方法独立性审计(EVO-V-01)"
+  - "L4: VAS有机vs无机拆分"
+  - "L5: 宏观代理标的声明(WACC弹性>15%)"
+
+data_gaps_identified:
+  - "M1: 无GDV/TPV/凭证数/交易笔数(运营指标缺失)"
+  - "M2: 无Rebates&Incentives/毛收入比率(CI等价物)"
+  - "M3: 无分部收入拆解(Payment Network/VAS)"
+  - "M4: FY2025费用重分类未解释"
+  - "M5: 监管信息仅在lit_recon,未结构化"
+  - "M6: V对标预留为空"
+
+next_phase: 1
+next_phase_focus: "Reverse DCF前置(铁律O) + 业务深度9章"
+
+files:
+  shared_context: "reports/MA/data/shared_context.md"
+  lit_recon: "reports/MA/data/lit_recon_memo.md"
+  thesis: "reports/MA/data/thesis_crystallization.md"
+  v_lessons: "reports/MA/data/v_lessons_for_ma.md"
+  checkpoint: "reports/MA/data/checkpoint.yaml"
+  launch_brief: "reports/MA/data/launch_brief.md"
+  knowledge_context: "reports/MA/data/knowledge_context.md"
