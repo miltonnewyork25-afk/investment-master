@@ -4,11 +4,11 @@ company: "Mastercard Incorporated"
 framework_version: v19.8
 worktree: "金融"
 industry: "金融"
-last_updated: "2026-03-24T03:00:00+08:00"
+last_updated: "2026-03-24T03:35:00+08:00"
 
-current_phase: 0
-phase_status: data_collection
-phases_completed: []
+current_phase: 1
+phase_status: completed
+phases_completed: [1]
 
 target_chars: 282487
 target_range: "225K-353K"
@@ -16,16 +16,34 @@ hard_floor: 200000
 quality_target: 4.4
 
 quick_ref:
-  total_chars: 0
-  latest_phase_chars: 0
-  dm_count: 20
+  total_chars: 29813
+  latest_phase_chars: 29813
+  dm_count: 60
   shared_context_chars: 13568
   lit_recon_chars: 3326
   thesis_chars: 3942
   v_lessons_chars: 2304
 
-narrative_direction: "待定(Phase 0.75 CQ路由后确定)"
-p1_constraint: "中性起点(铁律O — V教训: 中性起点比任何分析技术都重要)"
+narrative_direction: "偏积极——Reverse DCF隐含9% CAGR远低于共识12-16%, PE溢价vs V已消失(+2.8%), PEG 1.77低于V 2.27"
+p1_constraint: "中性起点→Phase 1后偏积极，但受限于WACC弹性(±22%/100bps)+CI分层+A2A长期威胁"
+
+phase1_summary:
+  chars: 29813
+  dm_count: 60
+  dm_density: 2.01
+  causal_density: 7.0
+  mermaid_count: 5
+  chapters: 10
+  key_discoveries:
+    - "市场隐含FCF CAGR仅9%, 远低于共识12-16%"
+    - "MA vs V PE溢价从+20%压缩至+2.8%, EV/EBITDA MA更便宜(-12%)"
+    - "VAS 40.6%收入, +23%增速, 75-85%有机"
+    - "跨境正常化仅影响-1.5pp, VAS已替代跨境成为第一引擎"
+    - "BVNK $1.8B收购=MA积极布局稳定币"
+  hypotheses_updated:
+    H-01: "部分成立——跨境有红利但VAS更大(5.6pp vs 8.0pp)"
+    H-05: "不成立——溢价已消失，MA增速调整后更便宜"
+    H-06: "不成立——FY2025 CI趋势比V更稳定"
 
 key_findings:
   - "FY2025收入$32.8B(+16.4%), Q4加速+17.6%, EPS +18.9%"
@@ -71,8 +89,8 @@ data_gaps_identified:
   - "M5: 监管信息仅在lit_recon,未结构化"
   - "M6: V对标预留为空"
 
-next_phase: 1
-next_phase_focus: "Reverse DCF前置(铁律O) + 业务深度9章"
+next_phase: 2
+next_phase_focus: "CPA×ISDD财务深挖 + 完整Reverse DCF承重墙 + CI分层 + 三情景推演 + ROIC/收购ROI(CQ-5)"
 
 files:
   shared_context: "reports/MA/data/shared_context.md"
