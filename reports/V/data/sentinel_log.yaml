@@ -1,0 +1,23 @@
+# Sentinel Log — 质量哨兵事件记录
+events:
+  - phase: 3
+    timestamp: "2026-03-24T02:38:57+00:00"
+    pass: 7
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 294669
+  - phase: 3
+    timestamp: "2026-03-24T02:57:05+00:00"
+    pass: 7
+    warn: 1
+    fail: 0
+    block: 0
+    target_chars: 294669
+  - phase: 4
+    timestamp: "2026-03-24T03:11:57+00:00"
+    pass: 7
+    warn: 2
+    fail: 0
+    block: 0
+    target_chars: 294669
