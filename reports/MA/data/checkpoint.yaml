@@ -1,0 +1,19 @@
+schema_version: "2.0"
+ticker: MA
+company: "MA"
+framework_version: v17.0
+worktree: "金融"
+industry: "金融"
+last_updated: "2026-03-24T06:39:56+00:00"
+
+current_phase: -1
+phase_status: pre_launch
+phases_completed: []
+
+target_chars: 282487
+target_range: "225K-353K"
+hard_floor: 200000
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
