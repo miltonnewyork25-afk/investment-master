@@ -211,7 +211,7 @@ question_dag:
 | Phase | DAG | Agent分配 | EC Target |
 |-------|-----|-----------|-----------|
 | P0+0.5 | DAG-0+1 | 编排器 + 数据预取Agent×3 | EC-FIN/MKT draft |
-| P1 | DAG-2 | Agent A+B+C + QSA + **`/moat-evaluate`(护城河章节时触发)** | EC集合(draft) + 口径锁定 + **quality_scorecard.md** |
+| P1 | DAG-2 | Agent A+B+C + QSA + **`/moat-evaluate`(护城河章节)** + **`/ai-impact`(AI章节, M6跳过)** | EC集合(draft) + 口径锁定 + **quality_scorecard.md** |
 | P2 | DAG-3 | Agent C(估值) + Agent B(承重墙) + QSA | Reverse DCF + SOTP |
 | P3 | DAG-2+3 | Agent A(叙事) + Agent C(引擎) + QSA | 护城河+五引擎 |
 | P4 | DAG-4 | Agent B(**Bear隔离**) + QSA(验证) | RT-1~7 + KS |
