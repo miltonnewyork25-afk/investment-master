@@ -600,3 +600,45 @@ entries:
     inflation: "+4分膨胀(D5估值+1.0/D7管理层+1.5/累计+1.5)"
     rating: "中性关注(偏积极)"
     expected_return: "+5-8%"
+
+  - ticker: "MA"
+    date: "2026-03-25"
+    report: "MA_Complete.md"
+    chars: "234K"
+    cg_result: "PASSED"
+    compliance: "PASSED"
+    dm_anchors: 414
+    dm_density: "1.76/千字"
+    causal_density: "~5.0/万字"
+    mermaid: 25
+    pw: 3
+    method: "traditional"
+    scorecard: "86/110 (3.9)"
+    quality: 3.9
+    top_technique: "CI转折点精确定量(14.65%阈值+1.8pp安全边际) + VAS OPM混合效应建模(47%→56%混合) + A2A PIX案例验证(冲击从-6%修正至-3.5%) + V-MA 25指标深度对标"
+    top_lesson: "414个DM锚点但零数学交叉验证=一致性检验0/10(最大系统性缺陷); 77个补强模块打断阅读流且格式不统一; M5监管纯叙事零量化KPI; V对标×4/VAS独立性×3/做空×3/CI×4重复=信息密度浪费"
+    evolution_proposed: |
+      EVO-MA-01: 一致性检验层标准化 — 每份报告Complete前嵌入≥10条数学交叉验证(Take Rate/CI/OI/FCF平衡/EPS), 检验公式模板化入knowledge/analysis_modules/ [P0, 质量门控]
+      EVO-MA-02: 监管量化矩阵模板 — M5监管分析强制概率×EPS影响矩阵+联合概率(≥2事件同时发生), 防止纯叙事 [P1, 方法论资产]
+      EVO-MA-03: 补强合并标准化流程 — Phase产出到Complete组装时,补强模块必须合并入对应主章节(禁止独立补强标签), 统一编号 [P1, 流程改进]
+      EVO-MA-04: 去重检查清单 — Complete组装前扫描V对标/竞争/做空/CI等高频主题, 同一主题≤2处出现(1主论述+1附录引用) [P1, 反膨胀]
+    evolution_status: proposed
+
+  - ticker: "DDOG"
+    date: "2026-03-25"
+    quality: 4.18
+    chars: "323K"
+    compliance: "PASS (G1✅ G2⚠️ G3⚠️ G4✅ G5✅ G6✅ G7✅ G8✅)"
+    dm_anchors: 374
+    dm_density: "1.15/千字"
+    causal_density: "14.3/万字"
+    mermaid: 26
+    ks_count: 17
+    cq_count: 6
+    top_technique: "SBC三层盈利框架(GAAP/NonGAAP/Owner)+NRR隐含有机增速+飞轮计费单元解耦+偏差累积漂移检测"
+    top_lesson: "SBC口径选择比财务模型更决定估值(离散度2.73x全部来自哲学分歧)。CQI校准样本缺高增长SaaS导致低估2-5分。AI冲击分析应从Phase 1嵌入(非Appendix补强)"
+    evolution_proposed: "EVO-DDOG-01(SBC三层盈利标准化) | EVO-DDOG-02(偏差漂移检测器) | EVO-DDOG-03(飞轮悖论解耦矩阵)"
+    evolution_status: proposed
+    rating: "审慎关注"
+    expected_return: "-26%"
+    skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/cq-lifecycle-tracker/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/ai-impact-analyzer/valuation-builder"
