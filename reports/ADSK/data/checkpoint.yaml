@@ -1,0 +1,106 @@
+ticker: ADSK
+company: Autodesk Inc.
+industry: Enterprise SaaS / AEC+MFG Software
+worktree: 金融基础设施
+tier: 3
+target_score: 4.4
+target_chars: 311000
+framework_version: v19.7
+
+current_phase: "Phase 0"
+current_status: "P0 data collection complete, 7 blockers resolved, Reverse DCF done"
+
+phases:
+  phase_minus1:
+    status: skipped
+    note: "Manual launch — tier3_launch.sh not run"
+  phase_0:
+    status: in_progress
+    started: 2026-03-25
+    data_master: reports/ADSK/data/phase0_data_master.md
+    shared_context: reports/ADSK/data/shared_context.md
+    reverse_dcf: reports/ADSK/data/reverse_dcf_output.txt
+    planning_v1: reports/ADSK/data/ADSK_research_planning.md
+    planning_v2: reports/ADSK/data/ADSK_planning_reflection_v2.md
+    raw_financials: reports/ADSK/data/ADSK_raw_financials.md
+    blockers_resolved: 7/7
+    remaining:
+      - "Phase 0.5: CQ routing + possibility width"
+      - "Phase 0.75: thesis crystallization"
+      - "preflight_gate.sh"
+  phase_1:
+    status: not_started
+    target_chars: 151000
+    target_dm_density: 1.7
+    target_causal_density: 10.0
+    sessions_planned: 4
+    chapters: 16
+
+cq_registry:
+  CQ1:
+    question: "计费转型的真实影响——FY2026有机增速是多少?"
+    weight: 18%
+    p0_direction: "有机增速12-13%, 一次性追赶已计入FY2026"
+    confidence: 65%
+  CQ2:
+    question: "AI净影响——Neural CAD是增强还是自我颠覆?"
+    weight: 18%
+    p0_direction: "分裂: Fusion/Revit增强, AutoCAD低端可能蚕食"
+    confidence: 40%
+  CQ3:
+    question: "定价权可持续性——连续提价到叛逃临界点了吗?"
+    weight: 14%
+    p0_direction: "Flex溢价=正面, NRR仅100-110%=高端扩展有限"
+    confidence: 50%
+  CQ4:
+    question: "AEC vs MFG双引擎增长质量差异"
+    weight: 10%
+    p0_direction: "AECO(+22%)明显强于其他"
+    confidence: 70%
+  CQ5:
+    question: "SBC与真实盈利"
+    weight: 8%
+    p0_direction: "SBC收敛中但Owner FCF Yield仅3.4%"
+    confidence: 60%
+  CQ6:
+    question: "护城河迁移——DWG→APS平台"
+    weight: 8%
+    p0_direction: "DWG仍在, APS早期, 迁移~15-20%"
+    confidence: 45%
+  CQ7:
+    question: "竞争格局四路围攻弹性"
+    weight: 6%
+    p0_direction: "AECO稳固, MFG弱, 基建弱"
+    confidence: 55%
+  CQ8:
+    question: "Forward 19x Non-GAAP PE意味着什么?"
+    weight: 5%
+    p0_direction: "标准FCF温和悲观, Owner角度苛刻"
+    confidence: 60%
+  CQ9:
+    question: "管理层资本配置——$2B收购ROIC + 治理质量"
+    weight: 8%
+    p0_direction: "2024 SEC调查已结案, CEO零买入, 收购待审计"
+    confidence: 35%
+
+key_data:
+  revenue_fy2026: 7206
+  revenue_growth: 18%
+  organic_growth_est: 12-13%
+  gaap_opm: 21.9%
+  gaap_opm_ex_restructuring: 24.9%
+  nongaap_opm: 38.0%
+  fcf: 2409
+  fcf_margin: 33.4%
+  sbc: 788
+  sbc_rev: 10.9%
+  etr_fy2026: 29.9%
+  etr_fy2027e: ~20%
+  restructuring_fy2026: 216
+  nrr_range: "100-110%, Q2-Q4 FY2026 >110%"
+  reverse_dcf_implied_cagr: 10.9%
+  owner_implied_cagr: 18.4%
+  price: 239.39
+  fwd_nongaap_pe: 19.2x
+  international_rev_pct: 56%
+  goodwill_assets: 34.4%
