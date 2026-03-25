@@ -293,6 +293,55 @@ if [ "$PHASE" -ge 1 ]; then
 fi
 
 # ============================================================
+# Layer 3.3: 断言密度检查 — Phase 1+ (v3.0, MA教训)
+# 设计: 检测"有结论无证据"的偷懒模式——脚本级强制，AI无法绕过
+# 断言=没有数据支撑的结论性判断，证据=有DM锚点/因果链/数据的段落
+# 断言密度>50%=太多"空话"→FAIL
+# ============================================================
+if [ "$PHASE" -ge 1 ]; then
+    echo ""
+    echo "--- Layer 3.3: 断言密度检查 (MA教训) ---"
+
+    TOTAL_ASSERTIONS=0
+    TOTAL_EVIDENCE=0
+
+    for f in "$STAGING"/*.md; do
+        if [ -f "$f" ]; then
+            # 断言模式: "X很强/X优秀/X显著/X领先/X稳定/X健康" 等结论性判断
+            ASSERT=$({ grep -ciE '很强|极强|优秀|显著|领先|稳定|健康|良好|突出|核心优势|明显|无疑|毋庸置疑|不可替代|绝对|必然' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            TOTAL_ASSERTIONS=$((TOTAL_ASSERTIONS + ${ASSERT:-0}))
+
+            # 证据模式: 有DM锚点/具体数字/因果推理的段落
+            EVID=$({ grep -ciE 'DM-[A-Z]|[0-9]+%|[0-9]+\.[0-9]+x|\$[0-9]+|因为|因此|这意味着|这是因为|数据显示|根据' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            TOTAL_EVIDENCE=$((TOTAL_EVIDENCE + ${EVID:-0}))
+        fi
+    done
+
+    if [ "$TOTAL_EVIDENCE" -eq 0 ]; then
+        TOTAL_EVIDENCE=1  # 避免除零
+    fi
+
+    # 断言/证据比
+    if [ "$TOTAL_ASSERTIONS" -gt 0 ] && [ "$TOTAL_EVIDENCE" -gt 0 ]; then
+        AE_RATIO_PCT=$((TOTAL_ASSERTIONS * 100 / (TOTAL_ASSERTIONS + TOTAL_EVIDENCE)))
+    else
+        AE_RATIO_PCT=0
+    fi
+
+    echo "  断言=${TOTAL_ASSERTIONS} 证据=${TOTAL_EVIDENCE} 断言占比=${AE_RATIO_PCT}%"
+
+    if [ "$AE_RATIO_PCT" -le 30 ]; then
+        check_pass "断言密度: ${AE_RATIO_PCT}%(≤30% = 证据充分)"
+    elif [ "$AE_RATIO_PCT" -le 50 ]; then
+        check_warn "断言密度: ${AE_RATIO_PCT}%(30-50% = 部分段落缺证据链，建议补充DM锚点)"
+    else
+        check_fail "断言密度: ${AE_RATIO_PCT}%(>50% = 断言多于证据，需回补数据支撑)"
+        echo "         → 查找无证据段落: grep -n '很强\|极强\|优秀\|显著\|领先' staging/*.md"
+        echo "         → 每个断言后补: [DM-xxx] + 因为X→所以Y + 反面:什么条件下不成立"
+    fi
+fi
+
+# ============================================================
 # Layer 3.5: 前瞻完整性检查 — Phase 3+ AI相关公司 (EVO-ANET-005)
 # 设计: 防止前瞻视角缺失导致v1.1补丁
 # ============================================================
