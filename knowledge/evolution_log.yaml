@@ -642,3 +642,22 @@ entries:
     rating: "审慎关注"
     expected_return: "-26%"
     skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/cq-lifecycle-tracker/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/ai-impact-analyzer/valuation-builder"
+
+  - ticker: "NOW"
+    date: "2026-03-25"
+    quality: 4.0
+    chars: "272K"
+    compliance: "PASS (G1✅ G2⚠️ G3⚠️ G4✅ G5✅ G6-G8✅)"
+    dm_anchors: 260
+    dm_density: "0.95/千字"
+    causal_density: "13.9/万字"
+    mermaid: 27
+    ks_count: 19
+    cq_count: 7
+    top_technique: "SBC收敛$9B临界点机制+三层盈利SaaS终态标杆+NRR第一性原理+CQ全线上调2.8%概率检测+CEO $20M买入信号解读"
+    top_lesson: "DM密度(0.95)与因果密度(13.9)的悖论——分析深度最高但引用纪律最差。CQ全线上调(7/7)≈确认偏差(2.8%概率)→需要自动检测机制。SBC收敛有$9B收入临界点→可泛化至所有SaaS公司"
+    evolution_proposed: "EVO-NOW-01(SBC临界点模型泛化) | EVO-NOW-02(CQ方向一致性自动检测) | EVO-NOW-03(DM/因果密度权衡框架)"
+    evolution_status: proposed
+    rating: "中性关注"
+    expected_return: "-14%"
+    skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/cq-lifecycle-tracker/ai-impact-analyzer/valuation-builder/SBC三层盈利框架"
