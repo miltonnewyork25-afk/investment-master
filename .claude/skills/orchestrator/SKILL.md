@@ -192,7 +192,7 @@ question_dag:
 | 代号 | 角色 | Phase 1-3 | Phase 4 | Phase 5 |
 |------|------|-----------|---------|---------|
 | Agent A | 叙事策略 | 公司定义+竞争格局+行业定位 | 行为偏差检查 | 综合评估 |
-| Agent B | 风险竞争 | 护城河量化+Kill Switch | **Bear隔离模式**(RT-1~7) | KS/TS注册+投资日历 |
+| Agent B | 风险竞争 | 护城河量化(**`/moat-evaluate`触发: 44因子+飞轮**)+Kill Switch | **Bear隔离模式**(RT-1~7) | KS/TS注册+投资日历 |
 | Agent C | 估值综合 | 财务分析+Reverse DCF+SOTP | 承重墙压力测试 | CQ闭环+框架注册 |
 | QSA | 质量哨兵 | 每Agent产出后脚本检查 | EC验证+合规检查 | Complete门控 |
 
@@ -211,7 +211,7 @@ question_dag:
 | Phase | DAG | Agent分配 | EC Target |
 |-------|-----|-----------|-----------|
 | P0+0.5 | DAG-0+1 | 编排器 + 数据预取Agent×3 | EC-FIN/MKT draft |
-| P1 | DAG-2 | Agent A+B+C + QSA | EC集合(draft) + 口径锁定 |
+| P1 | DAG-2 | Agent A+B+C + QSA + **`/moat-evaluate`(护城河章节时触发)** | EC集合(draft) + 口径锁定 + **quality_scorecard.md** |
 | P2 | DAG-3 | Agent C(估值) + Agent B(承重墙) + QSA | Reverse DCF + SOTP |
 | P3 | DAG-2+3 | Agent A(叙事) + Agent C(引擎) + QSA | 护城河+五引擎 |
 | P4 | DAG-4 | Agent B(**Bear隔离**) + QSA(验证) | RT-1~7 + KS |

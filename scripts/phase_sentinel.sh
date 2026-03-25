@@ -369,6 +369,83 @@ if [ "$PHASE" -ge 2 ]; then
 fi
 
 # ============================================================
+# Layer 3.7: 财务六能力检查 — Phase≥1 (v3.0, 财务框架升级)
+# 检查: 因果拆解/三表联动/质量分级/跨周期/证伪/商业映射
+# ============================================================
+if [ "$PHASE" -ge 1 ]; then
+    echo ""
+    echo "--- Layer 3.7: 财务六能力检查 ---"
+
+    # 统计所有staging产出
+    FIN_TOTAL=0
+    FIN_CAUSAL=0   # 因果桥(价×量/OPM分解/FCF桥)
+    FIN_CROSS=0    # 三表联动(OCF/NI, AR vs Rev, CapEx/DA)
+    FIN_GRADE=0    # 质量分级(增长质量/利润质量/现金质量+A-F)
+    FIN_NORMAL=0   # 正常化(正常化OPM/正常化盈利/中周期)
+    FIN_FALSIFY=0  # 证伪(峰值OPM/SBC/GAAP≠有机)
+    FIN_BIZ=0      # 商业映射(定价权/议价力/战略方向)
+
+    for f in "$STAGING"/*.md; do
+        if [ -f "$f" ]; then
+            FIN_TOTAL=$((FIN_TOTAL + 1))
+            # 能力1: 因果拆解
+            C1=$({ grep -ci '价格.*贡献\|量.*贡献\|mix.*效应\|价.*量.*拆\|因果.*桥\|OPM.*分解\|FCF.*桥' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_CAUSAL=$((FIN_CAUSAL + ${C1:-0}))
+            # 能力2: 三表联动
+            C2=$({ grep -ci 'OCF/NI\|FCF/NI\|应收.*收入\|AR.*Revenue\|CapEx.*折旧\|三表\|交叉验证' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_CROSS=$((FIN_CROSS + ${C2:-0}))
+            # 能力3: 质量分级
+            C3=$({ grep -ci '增长质量\|利润质量\|现金质量\|质量.*[A-F]级\|质量分级' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_GRADE=$((FIN_GRADE + ${C3:-0}))
+            # 能力4: 正常化
+            C4=$({ grep -ci '正常化.*OPM\|正常化.*盈利\|中周期\|跨周期\|峰值.*谷底\|normalize' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_NORMAL=$((FIN_NORMAL + ${C4:-0}))
+            # 能力5: 证伪
+            C5=$({ grep -ci '峰值OPM\|SBC.*侵蚀\|GAAP.*有机\|FCF.*陷阱\|ROIC.*商誉\|证伪\|最容易错' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_FALSIFY=$((FIN_FALSIFY + ${C5:-0}))
+            # 能力6: 商业映射
+            C6=$({ grep -ci '定价权.*信号\|议价力\|战略.*方向\|商业.*含义\|财务.*商业\|这意味着.*业务\|这说明.*竞争' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_BIZ=$((FIN_BIZ + ${C6:-0}))
+        fi
+    done
+
+    FIN_SCORE=0
+    for v in $FIN_CAUSAL $FIN_CROSS $FIN_GRADE $FIN_NORMAL $FIN_FALSIFY $FIN_BIZ; do
+        if [ "${v:-0}" -ge 1 ]; then FIN_SCORE=$((FIN_SCORE + 1)); fi
+    done
+
+    echo "  因果拆解=$FIN_CAUSAL 三表联动=$FIN_CROSS 质量分级=$FIN_GRADE 正常化=$FIN_NORMAL 证伪=$FIN_FALSIFY 商业映射=$FIN_BIZ"
+
+    if [ "$FIN_SCORE" -ge 5 ]; then
+        check_pass "财务六能力: ${FIN_SCORE}/6 维度覆盖"
+    elif [ "$FIN_SCORE" -ge 3 ]; then
+        check_warn "财务六能力: ${FIN_SCORE}/6 维度覆盖 — 缺失维度需要在后续Phase补齐"
+    else
+        check_fail "财务六能力: ${FIN_SCORE}/6 维度覆盖 — 严重不足，财务章节质量风险"
+    fi
+fi
+
+# ============================================================
+# Layer 3.8: 圆桌痕迹检查 — Phase≥3 (v3.1, 无痕融入)
+# ============================================================
+if [ "$PHASE" -ge 3 ]; then
+    ROUNDTABLE_TRACE=0
+    for f in "$STAGING"/*.md; do
+        if [ -f "$f" ]; then
+            RT=$({ grep -ci '巴菲特\|芒格\|李录\|阿克曼\|德鲁肯米勒\|达里奥\|Cathie\|Bear检察官\|【陈述】\|【质疑】\|【补充】\|【反驳】\|圆桌讨论\|大师认为\|大师们' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            ROUNDTABLE_TRACE=$((ROUNDTABLE_TRACE + ${RT:-0}))
+        fi
+    done
+
+    if [ "$ROUNDTABLE_TRACE" -eq 0 ]; then
+        check_pass "圆桌无痕: staging中0处圆桌痕迹"
+    else
+        check_fail "圆桌痕迹: staging中${ROUNDTABLE_TRACE}处未清除的大师名字/行动标签 — 必须改写为报告正文口吻"
+        echo "         → 运行: grep -in '巴菲特|李录|阿克曼|【陈述】|【质疑】|圆桌' staging/*.md"
+    fi
+fi
+
+# ============================================================
 # Layer 4: Phase-specific artifact检查
 # ============================================================
 if [ "$PHASE" -ge 4 ]; then
