@@ -6,9 +6,9 @@ worktree: "生态科技"
 industry: "生态科技"
 last_updated: "2026-03-26T06:40:16+00:00"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: 1
+phase_status: in_progress
+phases_completed: [-1, -0.5, 0, 0.5, 0.75]
 
 target_chars: 300000
 target_range: "240K-375K"
