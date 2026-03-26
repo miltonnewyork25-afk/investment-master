@@ -29,10 +29,12 @@ quick_ref:
   phase2_chapters: 8
   phase2_supplements: [ch10A_wacc_decision_tree, ch11A_working_capital, ch11B_roic_return_framework, ch12A_sotp_killswitch]
   sentinel_phase2: CLEARED
-  phase3_dm_density: 3.47
-  phase3_causal_density: 28.15
-  phase3_dm_count: 83
-  phase3_chapters: 5
+  phase3_dm_density: 2.89
+  phase3_causal_density: 25.13
+  phase3_dm_count: 105
+  phase3_chapters: 8
+  phase3_supplements: [ch14A_grr_sbc_waterfall, ch15A_cq_evolution_valuation_audit, ch16A_valuation_calibration_calendar]
+  phase3_score: 7.9
   sentinel_phase3: CLEARED
 
 last_updated: "2026-03-26T05:44:00+00:00"
