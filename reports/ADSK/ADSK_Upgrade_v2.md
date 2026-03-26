@@ -53,27 +53,29 @@ ADSK不披露Win Rate。但G2(企业软件评测平台)和Gartner Peer Insights�
 
 **AEC BIM市场(战场1)**:
 
-| 工具 | G2评分(est) | 满意度 | 推荐率 | Market Presence | 综合Win Rate代理 |
+| 工具 | G2评分(实际) | Reviews数 | FinancesOnline | Market Presence | 综合Win Rate代理 |
 |------|:--------:|:------:|:-----:|:--------------:|:--------------:|
-| **Revit** | 4.1/5 | 78% | 80% | #1(最大用户量) | **65-70%** |
-| ArchiCAD | 4.3/5 | 85% | 88% | #2(但用户量1/4) | 15-20% |
-| Vectorworks | 4.0/5 | 76% | 75% | #4 | 5-8% |
-| Allplan | 3.8/5 | 72% | 70% | 地区性(德语区) | 3-5% |
-[DM-WINRATE-AEC-001] 来源: G2/Gartner Peer Insights AEC BIM类别(2025-2026数据估算)
+| **Revit** | **4.6/5** | **929** | 9.5/10(100%满意) | #1(最大用户量) | **65-70%** |
+| ArchiCAD | ~4.2/5 | ~200(est) | 9.2/10 | #2(但用户量1/4) | 15-20% |
+| Vectorworks | ~4.0/5 | <100 | — | #4 | 5-8% |
+| Allplan | ~3.8/5 | <50 | — | 地区性(德语区) | 3-5% |
+[DM-WINRATE-AEC-001] 来源: G2 Revit Reviews(929条, 4.6/5) + FinancesOnline(9.5/10, 100%满意度) + Capterra对比
 
-**解读**: Revit的G2评分(4.1)略低于ArchiCAD(4.3)——用户对Revit性能不满(公开事实)。但Revit的Market Presence远超对手→**Win Rate主要由"市场惯性+制度嵌入"而非"产品满意度"驱动**。这与Phase 1 Ch11(护城河=转换成本+制度嵌入,而非产品卓越性)完全一致。
+**解读**: Revit的G2评分(**4.6/5, 929条review**)远强于预期——不仅Market Presence领先,**产品满意度也领先**。ArchiCAD在易用性(Capterra 4.2 vs Revit 4.0)上略胜,但总体满意度和review量差距巨大(929 vs ~200)。**Revit的Win Rate由"产品满意度+市场惯性+制度嵌入"三重驱动**——比v1.0判断(仅靠惯性+嵌入)更强。这是A-Score的正面修正信号。
 
 **MFG CAD市场(战场3)**:
 
-| 工具 | G2评分(est) | 目标客户 | Market Presence | Win Rate代理 |
-|------|:--------:|---------|:--------------:|:-----------:|
-| **Fusion 360** | 4.2/5 | SMB/Mid | 中 | **25-35%(SMB), 10-15%(Mid)** |
-| SOLIDWORKS | 4.4/5 | Mid/Enterprise | #1 | 40-45% |
-| PTC Onshape | 4.3/5 | Mid(云端) | 上升中 | 15-20% |
-| Siemens NX | 4.0/5 | Enterprise | Enterprise领导者 | 15-20%(Enterprise) |
-[DM-WINRATE-MFG-001] 来源: G2 CAD类别(2025-2026数据估算)
+| 工具 | G2对比 | Gartner评分(实际) | 目标客户 | Win Rate代理 |
+|------|:------:|:--------:|---------|:-----------:|
+| **Fusion 360** | 功能更全(CAM+仿真) | 4.3/5(182 reviews) | SMB/Mid | **25-35%(SMB), 10-15%(Mid)** |
+| SOLIDWORKS | — | — | Mid/Enterprise | 40-45% |
+| PTC Onshape | UX更好+Roadmap偏好更高 | 4.4/5(49 reviews) | Mid(云端) | 15-20%↑ |
+| Siemens NX | — | **4.6/5**(45 reviews) | Enterprise | 15-20%(Enterprise) |
+[DM-WINRATE-MFG-001] 来源: G2 Fusion vs Onshape对比 + Gartner Peer Insights CAD类别(实际数据)
 
-**解读**: Fusion 360的G2评分(4.2)不差,但SOLIDWORKS(4.4)和Onshape(4.3)均高于Fusion→**MFG战场ADSK不是满意度领导者**。Fusion的Win Rate主要靠价格($680 vs SOLIDWORKS $3,995)→如果竞品降价(Onshape已推免费tier),Fusion的价格优势消失→Win Rate可能下滑。
+**解读**: Gartner CAD评分ADSK 4.3 < PTC 4.4 < Siemens **4.6**——但ADSK review量182远超PTC(49)+Siemens(45)=安装基数优势。**关键风险**: G2对比中**Onshape的Roadmap preference高于Fusion**[DM-WINRATE-MFG-002]——这是云CAD领域"心智份额转移"的前瞻信号。如果mid-market客户在3-5年内从"Fusion最便宜"转向"Onshape最云原生",Fusion的Win Rate可能从30%降至20%。
+
+[DM-WINRATE-MFG-002] 来源: G2 Autodesk Fusion vs Onshape对比页(2026年数据)
 
 ### U2.2 弹性测试量化: "4路同攻5年→收入损失多少?"
 
