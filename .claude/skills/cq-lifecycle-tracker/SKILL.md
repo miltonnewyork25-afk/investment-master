@@ -157,6 +157,22 @@ CQ-Weighted Confidence = Sum(CQi最终置信度 x CQi注意力权重) / Sum(CQi�
 行动: Phase 5必须讨论内部矛盾并给出解释
 ```
 
+**异常D: CQ方向一致性 (v1.1新增, EVO-NOW-02)**
+```
+检测: 从P0.5到当前Phase, 有多少CQ在同一方向移动(全上调或全下调)?
+计算: direction_uniformity = 同方向CQ数 / 总CQ数
+阈值:
+  ≥5/N(N≥6)同方向且连续≥3 Phase → WARNING(概率<10%)
+  ≥N-1同方向且连续≥3 Phase → BLOCK(概率<3%, 如NOW 7/7=2.8%)
+含义: 健康的分析应该有CQ上调和下调混合——全部同方向意味着可能只看到了一面
+行动:
+  WARNING → Phase 4红队强制优先攻击方向一致的CQ
+  BLOCK → 暂停进入Phase 5, 要求至少2个CQ被独立反方向校正
+
+来源: NOW v1.0反思 — 7/7 CQ全线上调(P0→P3), 概率仅2.8%, P4偏差审计才检出
+教训: 如果Phase 3就能自动检测→节省1个Phase的偏差传播
+```
+
 **异常信号输出格式**:
 ```markdown
 ## 异常信号检测

@@ -18,7 +18,7 @@ ENDPOINTS = [
     ('cashflow',        '/stable/cash-flow-statement',  {'limit': 3}),
     ('ratios',          '/stable/ratios',               {'limit': 3}),
     ('key_metrics',     '/stable/key-metrics',          {'limit': 3}),
-    ('insider_trades',  '/api/v4/insider-trading',       {'limit': 20}),
+    ('insider_trades',  '/api/v4/insider-trading',       {'limit': 50}),
     ('quote',           '/stable/quote',                {'limit': 1}),
 ]
 

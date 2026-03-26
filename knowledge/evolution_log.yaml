@@ -468,6 +468,28 @@ entries:
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
 
+  - ticker: "CRM"
+    date: "2026-03-18"
+    report: "N/A (v1.0失败, 未组装Complete)"
+    chars: "167K (staging)"
+    cg_result: "N/A"
+    compliance: "N/A"
+    dm_anchors: 401
+    mermaid_count: 23
+    pw: 5.6
+    method: "hybrid"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # 未完成, 无评分
+    top_technique: "DM密度2.40/千字(历史最高) + 因果密度11.68/万字(超KLAC) + P3 v2.0承重墙分析 + P4离散度27.9%首次<30%"
+    top_lesson: "P1预设bullish叙事($235/+34%)→P3红队彻底推翻→P4 neutral($176/+0.6%)→P1/P2叙事与P4不可调和→无法组装。密度高但方向错=更危险的失败模式。单日rush(10 commits/1 day)消除了Phase间纠偏窗口"
+    evolution_proposed: |
+      EVO-CRM-001: Reverse DCF P1 Ch1强制前置 — P1第一章必须包含Reverse DCF结论(市场隐含假设), P1叙事不能比Reverse DCF暗示的方向偏离>1档。防止结论先行偏差 [P0, 流程铁律] → **v19.4铁律O**
+      EVO-CRM-002: Tier 3禁止单日rush — Tier 3最少跨3个session(P0-P1/P2-P3/P4-P5), Phase间需冷却纠偏窗口。防止bullish动量从P1传导到P2 [P0, 流程铁律] → **v19.4铁律P+会话规范**
+      EVO-CRM-003: 最相似可比公司P0强制对标 — Phase 0 shared_context必须包含最相似公司(增速/PE/行业最接近)的估值对比, 作为P1叙事约束。防止ADBE对标迟到(P3才引入)的问题 [P1, 方法论资产] → **v19.4铁律H增强**
+    evolution_status: approved
+    reflection_file: "reports/CRM/reflection/CRM_v1_failure_reflection.md"
+
   - ticker: "CMG"
     date: "2026-03-04"
     report: "CMG_v1.0_Complete_2026-03-04.md"
@@ -486,16 +508,16 @@ entries:
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
 
-  - ticker: "MSCI"
-    date: "2026-03-18"
-    report: "MSCI_v3.0_Complete.md"
-    chars: "235K"
+  - ticker: "FRO_COSCO_EVENT"
+    date: "2026-03-19"
+    report: "FRO_COSCO_EVENT_Report_v1.0.md"
+    chars: "91K"
     cg_result: "FAILED(0E/1W)"
-    compliance: "PASSED"
-    dm_anchors: 29
-    mermaid_count: 49
-    pw: 10
-    method: "discovery"
+    compliance: "FAILED"
+    dm_anchors: 115
+    mermaid_count: 19
+    pw: N/A
+    method: "N/A"
     scorecard: "N/A"
     near_miss_score: 0
     quality: null  # AI填入 (1.0-5.0)
@@ -503,3 +525,139 @@ entries:
     top_lesson: null  # AI填入
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "CRM"
+    date: "2026-03-19"
+    report: "CRM_Complete_v2.0_2026-03-19.md"
+    chars: "230K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 568
+    dm_density: "2.88/千字"
+    causal_density: "8.0/万字"
+    mermaid_count: 59
+    pw: 5.6
+    method: "hybrid"
+    scorecard: "78.8%(20.5/26模块)"
+    near_miss_score: 0
+    quality: 4.1
+    top_technique: "飞轮悖论(Agent成功→seat减少=加速器同时是刹车器) + 定价权剪刀差(F500 Stage4/SMB Stage2→OPM反直觉超预期)"
+    top_lesson: "v1.0→v2.0验证: 铁律O(Reverse DCF前置)+铁律H(ADBE对标)+铁律K(估值统一)将红队代价从-25%→-8.5%。中性起点比任何分析技术都重要。M2(NRR不公开)是SaaS报告的系统性盲区。"
+    evolution_proposed: "EVO-CRM-001(M2 SaaS单位经济学标准化P1) + EVO-CRM-002(飞轮悖论检测P1) + EVO-CRM-003(定价权分层P2) + EVO-CRM-004(演绎法模板P2) + EVO-CRM-005(AIAS-PE数据库P3)"
+    evolution_status: "approved+implemented(v19.6)"
+
+  - ticker: "V"
+    date: "2026-03-24"
+    report: "V_Complete.md"
+    chars: "273K"
+    cg_result: "PASSED(0E/8W)"
+    compliance: "PASS"
+    dm_anchors: 552
+    mermaid_count: 57
+    pw: "$283"
+    method: "traditional"
+    scorecard: "88/110"
+    near_miss_score: 0
+    quality: 4.0
+    top_technique: "支付栈四层模型(Ch39): 将V/MA/Stripe/ADYEN/GPN定位在L1-L4层，解释利润率鸿沟(L2 60-70%>L4 2-10%)的结构性原因，证明Stripe不是V的竞争者而是互补。反脆弱性5维评估(Ch54): 用5个历史案例证明Visa的技术适应力(8/10)——每次'颠覆'最终被Visa整合为收入来源。2030三面貌概率加权(Ch49E): 进化成功35%/$530 vs 缓慢侵蚀45%/$350 vs 结构性衰退20%/$200→年化5.9%<WACC=不创造超额价值。"
+    top_lesson: "巨头估值(市值>$500B)的核心挑战不是'值多少钱'而是'市场是否已经正确定价'。V的6种方法离散度仅10.3%但实际独立方法约2.5种(共享增速假设)→低离散度=伪精确非真收敛。CI分层是支付网络的NRR等价物——CI不按客户层拆分就像SaaS不看NRR(CRM v2.0 M2=0分的教训在支付网络重现)。李录框架揭示WACC决定80%价值→Visa是'宏观代理'非'个股机会'→个股Alpha有限。"
+    evolution_proposed: "EVO-V-01(巨头估值方法独立性审计) + EVO-V-02(CI分层=支付NRR) + EVO-V-03(宏观代理标的声明) + EVO-V-04(Phase小结下沉) + EVO-V-05(AI腔检测门控)"
+    evolution_status: approved
+
+  - ticker: "VRSN"
+    date: "2026-03-24"
+    report: "VRSN_Complete_v1.2_2026-03-24.md"
+    chars: "270K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "FAILED"
+    dm_anchors: 69
+    mermaid_count: 45
+    pw: 0
+    method: "traditional"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: 4.0
+    top_technique: "PE因子分解(8C章): 将PE拆解为增速/确定性/TAM/政治/FCF质量/Core PE 6个因子, 与4家可比逐一对标, 完全解释VRSN 27x PE的构成。可复用于任何B2B基础设施公司。"
+    top_lesson: "完全垄断公司的B2B模块(M2/M3/M6)需要改造——双边市场/寡头博弈/客户集中度在HHI=10000时全部失效。最大盲区是渠道商视角(M6)——分析垄断者必须分析垄断者的客户(注册商GoDaddy=35%收入集中)。核心分析(M1嵌入+M5定价+M9资本+M10监管)达满分。"
+    evolution_proposed: "EVO-VRSN-01(完全垄断模块改造) + EVO-VRSN-02(定价权反身性临界点) + EVO-VRSN-03(渠道商视角标准化)"
+    evolution_status: approved
+
+  - ticker: "INTU"
+    date: "2026-03-24"
+    quality: 4.0
+    chars: "309K"
+    compliance: "PASS (8/8)"
+    dm_anchors: 494
+    dm_density: "1.59/千字"
+    causal_density: "18.4/万字"
+    mermaid: 37
+    top_technique: "双重身份估值框架+AI竞品2x2矩阵+温水煮青蛙联合概率"
+    top_lesson: "多Agent CQ漂移(SBC事实错误)+WACC论证不能一句话+管理层评估需6维度硬门控"
+    evolution_proposed: "EVO-INTU-01(WACC决策树) | EVO-INTU-02(多Agent CQ一致性) | EVO-INTU-03(管理层6维度门控)"
+    evolution_status: proposed
+    internal_score: "92/110 (4.18)"
+    independent_score: "88/110 (4.0)"
+    inflation: "+4分膨胀(D5估值+1.0/D7管理层+1.5/累计+1.5)"
+    rating: "中性关注(偏积极)"
+    expected_return: "+5-8%"
+
+  - ticker: "MA"
+    date: "2026-03-25"
+    report: "MA_Complete.md"
+    chars: "234K"
+    cg_result: "PASSED"
+    compliance: "PASSED"
+    dm_anchors: 414
+    dm_density: "1.76/千字"
+    causal_density: "~5.0/万字"
+    mermaid: 25
+    pw: 3
+    method: "traditional"
+    scorecard: "86/110 (3.9)"
+    quality: 3.9
+    top_technique: "CI转折点精确定量(14.65%阈值+1.8pp安全边际) + VAS OPM混合效应建模(47%→56%混合) + A2A PIX案例验证(冲击从-6%修正至-3.5%) + V-MA 25指标深度对标"
+    top_lesson: "414个DM锚点但零数学交叉验证=一致性检验0/10(最大系统性缺陷); 77个补强模块打断阅读流且格式不统一; M5监管纯叙事零量化KPI; V对标×4/VAS独立性×3/做空×3/CI×4重复=信息密度浪费"
+    evolution_proposed: |
+      EVO-MA-01: 一致性检验层标准化 — 每份报告Complete前嵌入≥10条数学交叉验证(Take Rate/CI/OI/FCF平衡/EPS), 检验公式模板化入knowledge/analysis_modules/ [P0, 质量门控]
+      EVO-MA-02: 监管量化矩阵模板 — M5监管分析强制概率×EPS影响矩阵+联合概率(≥2事件同时发生), 防止纯叙事 [P1, 方法论资产]
+      EVO-MA-03: 补强合并标准化流程 — Phase产出到Complete组装时,补强模块必须合并入对应主章节(禁止独立补强标签), 统一编号 [P1, 流程改进]
+      EVO-MA-04: 去重检查清单 — Complete组装前扫描V对标/竞争/做空/CI等高频主题, 同一主题≤2处出现(1主论述+1附录引用) [P1, 反膨胀]
+    evolution_status: proposed
+
+  - ticker: "DDOG"
+    date: "2026-03-25"
+    quality: 4.18
+    chars: "323K"
+    compliance: "PASS (G1✅ G2⚠️ G3⚠️ G4✅ G5✅ G6✅ G7✅ G8✅)"
+    dm_anchors: 374
+    dm_density: "1.15/千字"
+    causal_density: "14.3/万字"
+    mermaid: 26
+    ks_count: 17
+    cq_count: 6
+    top_technique: "SBC三层盈利框架(GAAP/NonGAAP/Owner)+NRR隐含有机增速+飞轮计费单元解耦+偏差累积漂移检测"
+    top_lesson: "SBC口径选择比财务模型更决定估值(离散度2.73x全部来自哲学分歧)。CQI校准样本缺高增长SaaS导致低估2-5分。AI冲击分析应从Phase 1嵌入(非Appendix补强)"
+    evolution_proposed: "EVO-DDOG-01(SBC三层盈利标准化) | EVO-DDOG-02(偏差漂移检测器) | EVO-DDOG-03(飞轮悖论解耦矩阵)"
+    evolution_status: proposed
+    rating: "审慎关注"
+    expected_return: "-26%"
+    skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/cq-lifecycle-tracker/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/ai-impact-analyzer/valuation-builder"
+
+  - ticker: "NOW"
+    date: "2026-03-25"
+    quality: 4.0
+    chars: "272K"
+    compliance: "PASS (G1✅ G2⚠️ G3⚠️ G4✅ G5✅ G6-G8✅)"
+    dm_anchors: 260
+    dm_density: "0.95/千字"
+    causal_density: "13.9/万字"
+    mermaid: 27
+    ks_count: 19
+    cq_count: 7
+    top_technique: "SBC收敛$9B临界点机制+三层盈利SaaS终态标杆+NRR第一性原理+CQ全线上调2.8%概率检测+CEO $20M买入信号解读"
+    top_lesson: "DM密度(0.95)与因果密度(13.9)的悖论——分析深度最高但引用纪律最差。CQ全线上调(7/7)≈确认偏差(2.8%概率)→需要自动检测机制。SBC收敛有$9B收入临界点→可泛化至所有SaaS公司"
+    evolution_proposed: "EVO-NOW-01(SBC临界点模型泛化) | EVO-NOW-02(CQ方向一致性自动检测) | EVO-NOW-03(DM/因果密度权衡框架)"
+    evolution_status: proposed
+    rating: "中性关注"
+    expected_return: "-14%"
+    skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/cq-lifecycle-tracker/ai-impact-analyzer/valuation-builder/SBC三层盈利框架"

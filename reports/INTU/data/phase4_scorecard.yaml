@@ -1,0 +1,61 @@
+# Phase 4 Score Card — INTU
+phase: 4
+date: 2026-03-24
+chars: 45525 / 30000 (151.8%) ✅ 超额
+dm_density: 1.35/千字 ✅ (门控≥0.8)
+dm_count: 77 (P4)
+causal_density: 20.13/万字 ✅
+mermaid: 5 (P4新增)
+agent_balance: A=15.8K / B=16.0K / C=13.7K (max/min=1.17x ✅)
+
+# 红队效果量化
+red_team_impact:
+  pre_red_team_ev: "$495-$510 (+8-12%)"
+  red_team_bear_ev: "$373 (-18%, Agent B重赋权)"
+  post_calibration_ev: "$445-$480 (-3% to +5%)"
+  red_team_cost: "-$30 to -$65 per share (-6% to -13%)"
+  direction_change: "关注→可能下调至中性关注"
+
+# 偏差审计结果
+bias_audit:
+  overall_direction: "偏多 (5/10)"
+  key_biases:
+    - "锚定偏差: $457让我们无意识认为'已经便宜'"
+    - "叙事偏差: '双重身份'框架可能是虚构的看多叙事"
+    - "WACC选择偏差: 10%偏低, CAPM算出11.3%"
+    - "CK恢复偏差: 恢复性增长≠结构性增长"
+
+# CQ红队校准
+cq_red_team_calibration:
+  CQ1: "55-58% (from 65%, 红队-7~10pp) — CK增速恢复性回到基线,非超额增长"
+  CQ2: "45-55% (from 55%, 区间扩大) — AI颠覆时间不确定但路径清晰"
+  CQ3: "45-50% (from 52%, -2~7pp) — IES留存率有早期采用者偏差"
+  CQ4: "55-58% (from 62%, -4~7pp) — WACC 10%偏低,校正后安全边际缩窄"
+  CQ5: "50-53% (from 55%, -2~5pp) — 政治保护非结构性"
+
+# 风险拓扑
+risk_topology:
+  total_risks: 11
+  top3_risks: "R1 AI颠覆TT(30-40%) | R5 IES失败(45-55%) | R8 SBC膨胀(40-50%)"
+  worst_combo: "R1+R3 双重打击TurboTax"
+  boiling_frog: "5年后Rev$28B/OPM28%/FCF$7B → $378/股(-17%)"
+  kill_switches: 8
+  valuation_floor: "$350-$400 (非极端下行)"
+
+# 累计指标
+cumulative:
+  total_chars: 262239 / 300000 (87.4%)
+  total_dm: 355 / 450 (78.9%)
+  total_mermaid: 37 / 25 (148%)
+  causal_density: "20.13/万字"
+  on_track: YES
+
+# 评级决策输入
+rating_decision:
+  pre_red_team: "关注 (+8-12%)"
+  post_red_team: "中性关注 至 关注 边界 (+4-8%)"
+  key_swing: "WACC选择(10% vs 11.3%)决定评级"
+  agent_b_extreme: "审慎关注 ($373, -18%)"
+  final_range: "中性关注(偏积极) — 期望回报+4-8%"
+
+next_phase: "Phase 5 组装+门控"
