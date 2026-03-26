@@ -36,14 +36,20 @@ quick_ref:
   phase3_supplements: [ch14A_grr_sbc_waterfall, ch15A_cq_evolution_valuation_audit, ch16A_valuation_calibration_calendar]
   phase3_score: 7.9
   sentinel_phase3: CLEARED
-  phase4_dm_density: 3.09
-  phase4_causal_density: 38.94
-  phase4_dm_count: 59
-  phase4_chapters: 4
+  total_chars: 198047
+  phase4_dm_density: 3.25
+  phase4_causal_density: 8.72
+  phase4_dm_count: 138
+  phase4_chapters: 7
   phase4_effectiveness: Effective
   phase4_avg_cq_change: 3.75
-  phase4_calibrated_fv_fcf: 263
-  phase4_calibrated_fv_sbc: 146
-  sentinel_phase4: CAUTION
+  phase4_calibrated_fv_fcf: 256
+  phase4_calibrated_fv_sbc: 141
+  phase4_supplements: [ch21A_risk_topology_supplement, ch22A_assumption_audit, ch23_omission_scanner]
+  phase4_new_findings: [sbc_eta_0.45, circular_dependency_B1_B2, flywheel_net_0.76, fasb_sbc_rule, sap_migration_60pct]
+  phase4_score_d6: 9.0
+  phase4_score_d7: 8.5
+  phase4_total_score: 87.5
+  sentinel_phase4: CLEARED
 
-last_updated: "2026-03-26T06:16:00+00:00"
+last_updated: "2026-03-26T08:30:00+00:00"
