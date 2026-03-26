@@ -594,7 +594,7 @@ entries:
     top_technique: "双重身份估值框架+AI竞品2x2矩阵+温水煮青蛙联合概率"
     top_lesson: "多Agent CQ漂移(SBC事实错误)+WACC论证不能一句话+管理层评估需6维度硬门控"
     evolution_proposed: "EVO-INTU-01(WACC决策树) | EVO-INTU-02(多Agent CQ一致性) | EVO-INTU-03(管理层6维度门控)"
-    evolution_status: proposed
+    evolution_status: "EVO-01+02 APPROVED+IMPLEMENTED | EVO-03~05 proposed"
     internal_score: "92/110 (4.18)"
     independent_score: "88/110 (4.0)"
     inflation: "+4分膨胀(D5估值+1.0/D7管理层+1.5/累计+1.5)"
@@ -622,7 +622,7 @@ entries:
       EVO-MA-02: 监管量化矩阵模板 — M5监管分析强制概率×EPS影响矩阵+联合概率(≥2事件同时发生), 防止纯叙事 [P1, 方法论资产]
       EVO-MA-03: 补强合并标准化流程 — Phase产出到Complete组装时,补强模块必须合并入对应主章节(禁止独立补强标签), 统一编号 [P1, 流程改进]
       EVO-MA-04: 去重检查清单 — Complete组装前扫描V对标/竞争/做空/CI等高频主题, 同一主题≤2处出现(1主论述+1附录引用) [P1, 反膨胀]
-    evolution_status: proposed
+    evolution_status: "EVO-01+02 APPROVED+IMPLEMENTED | EVO-03~05 proposed"
 
   - ticker: "DDOG"
     date: "2026-03-25"
@@ -638,7 +638,7 @@ entries:
     top_technique: "SBC三层盈利框架(GAAP/NonGAAP/Owner)+NRR隐含有机增速+飞轮计费单元解耦+偏差累积漂移检测"
     top_lesson: "SBC口径选择比财务模型更决定估值(离散度2.73x全部来自哲学分歧)。CQI校准样本缺高增长SaaS导致低估2-5分。AI冲击分析应从Phase 1嵌入(非Appendix补强)"
     evolution_proposed: "EVO-DDOG-01(SBC三层盈利标准化) | EVO-DDOG-02(偏差漂移检测器) | EVO-DDOG-03(飞轮悖论解耦矩阵)"
-    evolution_status: proposed
+    evolution_status: "EVO-01+02 APPROVED+IMPLEMENTED | EVO-03~05 proposed"
     rating: "审慎关注"
     expected_return: "-26%"
     skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/cq-lifecycle-tracker/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/ai-impact-analyzer/valuation-builder"
@@ -657,7 +657,7 @@ entries:
     top_technique: "SBC收敛$9B临界点机制+三层盈利SaaS终态标杆+NRR第一性原理+CQ全线上调2.8%概率检测+CEO $20M买入信号解读"
     top_lesson: "DM密度(0.95)与因果密度(13.9)的悖论——分析深度最高但引用纪律最差。CQ全线上调(7/7)≈确认偏差(2.8%概率)→需要自动检测机制。SBC收敛有$9B收入临界点→可泛化至所有SaaS公司"
     evolution_proposed: "EVO-NOW-01(SBC临界点模型泛化) | EVO-NOW-02(CQ方向一致性自动检测) | EVO-NOW-03(DM/因果密度权衡框架)"
-    evolution_status: proposed
+    evolution_status: "EVO-01+02 APPROVED+IMPLEMENTED | EVO-03~05 proposed"
     rating: "中性关注"
     expected_return: "-14%"
     skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/cq-lifecycle-tracker/ai-impact-analyzer/valuation-builder/SBC三层盈利框架"
@@ -701,5 +701,5 @@ entries:
     top_technique: "Standard/Owner双视角估值($45鸿沟=SBC资本化成本≈Bear PW拖累) | 回购η=0.11(72%回购=SBC填坑) | GRR交叉验证v2(DR变化率法) | 护城河迁移S曲线+脆弱窗口3.2年 | SBC敏感性双变量矩阵($130-$340)"
     top_lesson: "DM密度4.06/千字(历史最高)但G1字符195K(72%)=密度vs广度tradeoff需框架层面解决 | 回购η=0.11是SaaS最低→高SBC公司回购本质是SBC抵消非股东回报 | FY2026 PSU扣SBC是治理改善硬信号(可作为基准事件) | G2 review量差异(929 vs 200)比评分差异(4.6 vs 4.2)更有Win Rate信息量"
     evolution_proposed: "EVO-ADSK-01(SBC瀑布驱动因素分解→所有SaaS模板化) | EVO-ADSK-02(GRR间接验证v2 DR变化率法→不披露GRR的SaaS) | EVO-ADSK-03(Win Rate代理G2/Gartner→所有B2B/SaaS) | EVO-ADSK-04(护城河迁移S曲线模板→护城河迁移公司) | EVO-ADSK-05(圆桌CQ<70%自动触发→所有Tier3)"
-    evolution_status: proposed
+    evolution_status: "EVO-01+02 APPROVED+IMPLEMENTED | EVO-03~05 proposed"
     skills_used: "data-prefetch/assumption-audit/deep-reflection(R2+R3)/competitive-benchmarking(G2/Gartner代理)"
