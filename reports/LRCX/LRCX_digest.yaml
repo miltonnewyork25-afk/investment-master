@@ -1,0 +1,436 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Lam Research
+# 压缩比: 375K → ~12K (31x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式映射 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: LRCX
+  company: "Lam Research"
+  report_date: "2026-02-19"
+  stock_price: "$240.09"
+  market_cap: "~$302B"
+  report_version: "v3.0"
+  report_path: "reports/LRCX/LRCX_Complete_v3.0_2026-02-19.md"
+  quality_score: "3.8/5.0"
+  cqi: 43
+  framework_version: "v17.0"
+  industry: "半导体"
+  archetype: "周期成长+设备服务飞轮"
+  chars: 374903
+  dm_count: 766
+  dm_density: "2.04/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "LRCX是全球刻蚀绝对领导者(45%份额)+第二强护城河(4.38/5),CSBG安装基数赋予类SaaS经常性收入特征——但P/E 49.3x已充分定价最优路径,6个信念零安全边际,温水煮青蛙路径24个月可致-29%至-46%,典型'好公司/坏价格'"
+  rating: "审慎关注"
+  fair_value: "概率加权EV $213B (隐含股价~$169)"
+  expected_return: "-29.5%"
+
+  key_arguments:
+    - claim: "P/E 49.3x隐含6个信念全部成立,安全边际为零"
+      direction: bearish
+      magnitude: 5  # Reverse DCF反推6信念+40年WFE历史统计反证
+      mechanism: "Reverse DCF隐含5Y Revenue CAGR 17%+连续5年无WFE下行→B6在WFE 40年历史中从未发生→零安全边际"
+      kill_switch: "WFE CY2026>$145B + CY2027>$160B(远超假设)→AI结构性延长周期"
+
+    - claim: "CSBG 100K腔室安装基数创造类SaaS经常性收入,是被低估的隐性价值"
+      direction: bullish
+      magnitude: 4  # ARPU扩张+增速差可量化+SaaS估值框架交叉验证
+      mechanism: "CSBG增速(+16%)持续快于安装基数增速(~5-7%)→ARPU持续扩张→设备15-20年生命周期锁定服务→类SaaS估值$108-144B vs 市场隐含~$110B"
+      kill_switch: "CSBG中国服务中断(出口管制扩展至服务合同)→经常性收入可被地缘政治切断"
+
+    - claim: "温水煮青蛙24个月路径: 渐进恶化无单一止损触发,累计-29%至-46%"
+      direction: bearish
+      magnitude: 4  # 6时间节点×4维度量化建模
+      mechanism: "T+6M P/E 40-42x(-3~8%)→T+12M P/E 30-35x(-17~27%)→T+24M P/E 22-28x(-29~46%) | 每步恶化不足以触发止损→共识从Buy到Hold时大部分下跌已完成"
+      kill_switch: "WFE CY2027确认增长>5% + CSBG占比突破42%(结构转型确认)"
+
+    - claim: "TEL Certas平台以2.5x速度挑战NAND通道刻蚀100%份额"
+      direction: bearish
+      magnitude: 3  # 市场从$500M扩至$2B, TEL技术路径可见但商业化不确定
+      mechanism: "TEL 2.5x刻蚀速度→400层+NAND通道→TAM $500M→$2B | 若TEL获20%份额→LRCX年损$400M(收入2.2%)→信号意义大于财务意义(首次护城河实质性侵蚀)"
+      kill_switch: "TEL连续2年无法获得第2个POR(工艺记录)→技术路径失败"
+
+    - claim: "刻蚀alpha不对称: 上行1.20-1.35x但下行仅0.5-0.8x"
+      direction: bearish
+      magnitude: 4  # 否定'下行也能跑赢'的简单叙事
+      mechanism: "NAND暴露度驱动不对称→WFE上行时刻蚀内容增长超线性(alpha 1.2-1.35x)→WFE下行时NAND首当其冲(alpha 0.5-0.8x)→否定'LRCX在WFE下行中也能跑赢'叙事"
+      kill_switch: "GAA转换加速使逻辑刻蚀权重超过NAND→下行alpha改善"
+
+  moat:
+    composite_score: 8.8  # 4.38/5 → 8.76/10
+    half_life: "10-20年(复合) | 转换成本>15年 | 安装基数15-20年 | 技术领先5-7年(需持续R&D)"
+    dimensions:
+      - type: switching_cost
+        strength: 5  # 4.8/5
+        evidence: "NAND通道刻蚀100%独占+单台设备切换成本$12-44M+工艺验证周期12-18个月"
+        vulnerability: "TEL Certas平台如果商业化成功→提供替代切换路径(仅限NAND)"
+      - type: ip
+        strength: 5  # 安装基数锁定 4.6/5
+        evidence: "100K+安装腔室→$7.2B/年CSBG收入→ARPU $72K/腔室/年持续扩张→服务合同绑定原厂配件"
+        vulnerability: "CSBG渗透率天花板+中国服务中断风险(地缘政治切断经常性收入基数)"
+      - type: ip
+        strength: 4  # 技术壁垒 4.5/5
+        evidence: "Cryo Etch 3.0+23K专利+Akara/ALTUS Halo/Prestis三平台覆盖GAA+3D NAND+HBM"
+        vulnerability: "R&D投入$2.1B(11.4%)需持续才能维持5-7年技术窗口"
+      - type: scale
+        strength: 4  # 3.8/5
+        evidence: "EBITDA Margin 34.4% + GM从44.6%提升至48.7%(FY2023-FY2025)"
+        vulnerability: "margin已进入高位,扩张空间有限"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含5Y Revenue CAGR 17%(WACC 10%)至22%(WACC 12.5%),要求WFE连续5年无>10%下行——WFE 40年历史中从未发生"
+    methods_used: ["Reverse DCF", "SOTP", "DCF(Python)", "概率加权五情景", "可比公司", "历史P/E回归"]
+    dispersion: "1.34x方法级(四方法收敛$173-232B) | 3.5x情景极端($75B-$380B)"
+    consensus_vs_ours: "卖方共识$274(+14%) 27位中24位Buy | 我们五情景概率加权$169(-29.5%) | 分歧源: 卖方忽略WFE周期性+P/E均值回归"
+    entry_zone: "P/E 22-28x ($130-$170)"
+    catalyst: "温水煮青蛙T+12-24M: WFE指引转弱+递延收入连续下降+P/E从49x压缩至25-30x"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "等待——好公司但坏价格,需等P/E从49x回归至22-28x区间"
+    buy_triggers:
+      - trigger: "温水煮青蛙T+24M: P/E压缩至22-28x + WFE出清"
+        price_zone: "$130-170"
+        reasoning: "历史P/E均值22.8x + CSBG结构性支撑硬底 + FCF Yield>4%"
+      - trigger: "WFE CY2027确认增长>5% + P/E回落至30-35x(中间价位)"
+        price_zone: "$175-200"
+        reasoning: "AI周期延长确认 + P/E部分修正 + 递延收入重新加速"
+    hold_conditions:
+      - "CSBG占收入比>37%且增速>10%(结构性价值持续)"
+      - "NAND通道刻蚀100%份额维持(TEL未获第2个POR)"
+      - "WFE无>20%下行(CSBG可缓冲温和下行)"
+    sell_triggers:
+      - signal: "红灯R1+R2同时亮起: B/B<0.95连续2Q + 递延收入连续3Q环比下降"
+        severity: "action"
+        action: "减仓50%,温水煮青蛙启动确认"
+      - signal: "中国出口管制扩展至CSBG服务合同"
+        severity: "emergency"
+        action: "全部卖出,经常性收入基数假设被颠覆,CSBG护城河核心受损"
+      - signal: "TEL获得第2个NAND channel hole POR + AMAT份额>20%"
+        severity: "warning"
+        action: "减仓25%,重新评估护城河持久性"
+    position_sizing: "当前Kelly为负(期望回报-29.5%) | Kelly为正需P/E<28x(约$170以下)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "安装基数飞轮: Systems→CSBG→锁定→Systems"
+    chain: >
+      Systems业务以技术领先(Cryo Etch/Akara/ALTUS)赢得新设备订单
+      → 每台新设备加入100K+腔室安装基数
+      → CSBG在设备15-20年生命周期内持续产生备件+服务收入($72K/腔室/年)
+      → 服务合同绑定原厂配件(第三方替代有良率风险)
+      → CSBG增速(+16%)>安装基数增速(~5-7%)→ARPU持续扩张
+      → 经常性收入降低整体周期性→支撑更高估值倍数
+      → 更高估值→更强研发投入→维持技术领先→继续赢得新设备订单
+    transferable_to: "所有'设备+服务'飞轮模型: 电梯(OTIS)、喷气引擎(GE Aerospace)、医疗设备(ISRG)"
+    reasoning_habit: "看到设备公司时追问'安装基数货币化深度在增加还是停滞'——ARPU扩张>安装基数增速=飞轮加速;反之=飞轮减速"
+
+  - id: "CC-2"
+    name: "零安全边际的识别: 信念全数→单点即崩"
+    chain: >
+      观察: P/E 49.3x(历史极端) → 追问: 这个价格在赌什么?
+      → Reverse DCF反推: 需要6个信念(WFE 8-10% CAGR+份额扩张+OPM 34-35%+CSBG 12-15%+FCF 28-30%+连续5年无下行)全部成立
+      → 检验信念相关性: B1(WFE)+B6(不下行)高度相关→双杀概率40-50%
+      → 历史检验B6: WFE 40年从未连续5年无>10%下行→B6是统计级反证
+      → 结论: 安全边际=0,单一信念失败(B6)即触发-42%下行
+      → 投资含义: 即使对公司完全看多,在P/E 49.3x入场期望值仍为负
+    transferable_to: "所有P/E>30x的周期性公司(半导体/大宗/航运)"
+    reasoning_habit: "高P/E时不问'公司好不好'而问'价格在赌几个信念同时成立'——信念数越多,零安全边际概率越高"
+
+  - id: "CC-3"
+    name: "温水煮青蛙: 渐进恶化为何比急跌更危险"
+    chain: >
+      起点: P/E 49.3x + WFE晚期扩张(P2.7)
+      → T+6M: WFE增速放缓→P/E降至40-42x→股价跌3-8%(没有人发警报)
+      → T+12M: WFE指引flat→P/E降至30-35x→跌幅17-27%(分析师下调但仍维持Buy)
+      → T+24M: WFE确认下行→P/E降至22-28x→跌幅29-46%(共识转Hold但大部分下跌已完成)
+      → 关键: 没有单一事件触发止损→每步都'可以忍受'→累积致命
+      → 对比急跌: 急跌(如COVID)反而触发止损+V型恢复;温水煮青蛙没有V型
+    transferable_to: "所有P/E>30x面临均值回归的周期股: SaaS成长股从40x→20x, 半导体设备从50x→25x"
+    reasoning_habit: "对高估值周期股,建立6个时间节点×4维度的渐进恶化路径表——如果每步跌幅都不触发止损,那就是温水煮青蛙"
+
+  - id: "CC-4"
+    name: "AI溢价分解: 叙事驱动vs实质驱动"
+    chain: >
+      LRCX $302B市值中$189B(63%)是AI溢价(vs非AI基线~$113B)
+      → 追问: AI溢价中多少有硬数据支撑?
+      → 分解: 80%叙事驱动(AI CapEx→先进制程→刻蚀增长的传导逻辑) + 20%实质驱动(已确认的ALD/GAA订单)
+      → LRCX在AI不可替代性评分3/5(二阶受益者: Hyperscaler→fab→设备)
+      → AI溢价的叙事依赖度越高→叙事裂缝时估值冲击越大
+      → 类比: 如果AI CapEx增速从+40%降至+15%(非下降,仅放缓)→叙事受损→$189B AI溢价可能缩水30-50%
+    transferable_to: "所有AI受益者的溢价分解: GPU(NVDA直接)vs 半导体设备(LRCX/AMAT二阶)vs 基础设施(VRT/EATON三阶)"
+    reasoning_habit: "对AI溢价追问'多少是叙事驱动'——叙事占比>50%时,估值对AI CapEx增速(非绝对值)的边际变化高度敏感"
+
+  - id: "CC-5"
+    name: "刻蚀alpha不对称的发现过程"
+    chain: >
+      假设: LRCX在WFE上行时跑赢(alpha>1)→是否在下行时也跑赢?
+      → 数据: 上行alpha 1.20-1.35x(AI+3D NAND内容增长驱动)
+      → 追问下行: NAND是WFE下行中削减最深的领域→LRCX NAND暴露度>50%
+      → 发现: 下行alpha仅0.5-0.8x(NAND拖累>逻辑支撑)
+      → 推论: LRCX不是'无论环境都跑赢',而是'上行超线性/下行超线性衰减'
+      → 投资含义: 不能用上行alpha外推下行保护→在WFE顶部买LRCX=买一个下行杠杆
+    transferable_to: "所有在细分领域有差异化暴露的设备/周期股"
+    reasoning_habit: "看到上行alpha时立刻追问下行alpha——不对称性比平均值更重要"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "P1初稿评级中性关注(期望回报-9.0%)"
+      final: "P5最终评级审慎关注(期望回报-29.5%)"
+      pivot: "P2概率加权目标$187(-22%)显著拉低期望值+P4红队发现看空确认偏误但校准后仍在审慎区间+P5五情景模型纳入更极端尾部"
+
+    - initial: "CSBG以SaaS框架估值可达$108-144B,是隐性价值"
+      final: "CSBG修正后估值$30-70B(方法依赖3x跨度),经常性收入可被地缘政治切断"
+      pivot: "SaaS估值仅在分拆时实现→控股折价30-40% | CSBG'真正经常性'仅60-67%(C级数据) | 中国CSBG服务中断路径暴露"
+
+    - initial: "LRCX在WFE下行中也能跑赢(刻蚀内容增长保护)"
+      final: "下行alpha仅0.5-0.8x,NAND暴露度使LRCX在WFE下行中反而跑输"
+      pivot: "NAND是WFE下行削减最深领域+LRCX NAND收入暴露度>50%→上行/下行alpha不对称"
+
+  surprises:
+    - finding: "AI溢价$189B占市值63%,其中80%叙事驱动——LRCX当前市值本质上是一张AI CapEx看涨期权"
+      implication: "AI CapEx增速(非绝对值)的边际变化直接决定$189B溢价的存亡→增速从+40%降至+15%即可触发溢价缩水30-50%"
+
+    - finding: "递延收入$2.57B YoY+81%与Q2环比-18%的矛盾信号——最强领先指标同时给出双向信号"
+      implication: "YoY+81%支撑FY2026-27收入可见性,但Q2环比-18%可能是WFE周期转向的早期信号→需Q3确认方向"
+
+    - finding: "CSBG中国服务中断是管理层风险披露中几乎不被提及的隐性风险"
+      implication: "出口管制扩展至服务合同→直接打击LRCX最核心差异化资产(经常性收入基数)→CSBG的'类SaaS'叙事崩塌"
+
+    - finding: "WFE 40年历史从未实现连续5年无>10%下行——B6是统计级反证"
+      implication: "当前P/E隐含的增长连续性假设在历史上概率为零→零安全边际是数学事实而非主观判断"
+
+  blind_spots:
+    - area: "CSBG真正经常性收入占比(60-67%是C级推断)"
+      why_matters: "决定CSBG独立估值$30B还是$70B→跨度$40B=LRCX市值的13%"
+      monitor: "LRCX是否开始披露CSBG子分类(备件vs升级vs服务合同)数据"
+
+    - area: "AI CapEx CY2027增速"
+      why_matters: "AI溢价$189B的存续取决于CapEx增速维持>20%→放缓至<15%即触发溢价缩水"
+      monitor: "META/MSFT/GOOG季度CapEx指引 | NVIDIA数据中心收入增速"
+
+    - area: "TEL Certas商业化进度"
+      why_matters: "TEL若获第2个POR=LRCX刻蚀护城河首次实质性侵蚀→信号意义远大于财务影响"
+      monitor: "TEL季报中Certas收入披露 | 行业会议NAND客户工具选型"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "P/E 49.3x时不减仓→温水煮青蛙24个月→-29%至-46%"
+      lesson: "周期性设备股在P/E>历史均值2x时,渐进下行比急跌更常见也更致命。建立6时间节点监控矩阵,任意2个红灯亮起=减仓50%"
+      transferable: "所有P/E>30x的周期性公司(半导体/工业/大宗商品)"
+    - scenario: "AI叙事最强时不锁利→AI CapEx增速放缓→叙事驱动溢价缩水30-50%"
+      lesson: "AI受益者的估值溢价本质是看涨期权——看涨期权在隐含波动率最高时卖出,不是持有到期"
+      transferable: "所有AI二阶/三阶受益者(设备/基础设施/电力)"
+    - scenario: "CSBG经常性收入叙事被地缘政治切断——'类SaaS'护城河并非不可逆转"
+      lesson: "经常性收入的持久性假设需要包含地缘政治情景——服务合同可以被出口管制终止"
+      transferable: "所有在地缘敏感地区有大量经常性收入的公司(半导体设备/软件/咨询)"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "递延收入环比变化"
+      why_alpha: "递延收入是WFE周期最早的领先指标——Q2环比-18%是温水煮青蛙的第一步检测信号,卖方几乎不追踪环比"
+      current_reading: "Q2 FY2026 环比-18%(红灯R2已触发1/3)"
+    - signal: "CSBG占收入比趋势"
+      why_alpha: "CSBG占比持续提升=结构转型确认→支撑更高估值倍数。突破42%=评级翻转触发器之一"
+      current_reading: "FY2025 37.7%(趋势向上但距42%仍有距离)"
+    - signal: "B/B(订单出货比)"
+      why_alpha: "B/B<0.95连续2Q=温水煮青蛙启动确认——比WFE数据早2-3个季度"
+      current_reading: "待Q3 FY2026数据(当前未触发)"
+
+  confirmation_signals:
+    - signal: "WFE CY2027增长指引"
+      bullish_threshold: ">5% YoY(周期延长/AI结构性验证)"
+      bearish_threshold: "'flat to down'(温水煮青蛙T+12M确认)"
+    - signal: "AI CapEx大厂(META/MSFT/GOOG)指引"
+      bullish_threshold: "维持+30% YoY以上(AI结构性需求)"
+      bearish_threshold: "下调>10%(AI CapEx放缓→二阶传导至设备)"
+    - signal: "LRCX P/E相对同业(AMAT/KLAC)溢价"
+      bullish_threshold: "溢价维持且同业P/E也扩张(行业重估值)"
+      bearish_threshold: "同业P/E回落>15%但LRCX尚未→收敛风险"
+
+  noise_signals:
+    - signal: "单季度WFE绝对值波动"
+      why_noise: "WFE季度数据受大单时间影响波动大→看滚动4Q趋势而非单季"
+    - signal: "卖方目标价调整"
+      why_noise: "27位中24位Buy(89%一致性)→拥挤信号→目标价调整反映共识漂移而非独立判断"
+    - signal: "中国短期revenue占比波动"
+      why_noise: "33.7%中含大量成熟制程订单前置→季度波动是订单结构而非趋势变化"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: AMAT
+      similarity: "同为WFE前三+刻蚀/沉积竞争+中国暴露度>30%"
+      key_difference: "AMAT更分散(PVD/ECD/CMP) vs LRCX更集中(刻蚀+ALD) | AMAT P/E 37.9x较低→温水煮青蛙下行幅度更小"
+
+    - ticker: KLAC
+      similarity: "同为WFE敏感半导体设备+高ROE+类似估值框架(本系列报告)"
+      key_difference: "KLAC=检测/量测近垄断(55%份额) vs LRCX=刻蚀领先(45%份额) | KLAC下行Beta更低(检测削减<刻蚀)"
+
+    - ticker: ASML
+      similarity: "P/E 50x区间+AI叙事溢价+护城河4.5+级别"
+      key_difference: "ASML=EUV绝对垄断(0竞争者) vs LRCX=刻蚀领先(TEL挑战) | ASML护城河4.55>LRCX 4.38"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "ASML (4.55) > LRCX (4.38) > KLAC (~4.2) > AMAT (~3.8) > TEL (~3.0)"
+      reasoning: "ASML EUV绝对垄断>LRCX刻蚀+CSBG锁定>KLAC检测垄断>AMAT分散领先>TEL追赶者"
+
+    - dimension: "WFE下行保护"
+      position: "KLAC (检测削减最少) > ASML (EUV不可替代) > AMAT (分散缓冲) > LRCX (NAND暴露高)"
+      reasoning: "LRCX下行alpha 0.5-0.8x是前三中最差的→NAND在下行中首当其冲"
+
+    - dimension: "估值风险(P/E vs 历史均值)"
+      position: "LRCX (49.3x/均值22.8x=2.16倍) > ASML (50x/均值35x=1.43倍) > AMAT (37.9x/均值20x=1.90倍)"
+      reasoning: "LRCX当前P/E偏离历史均值倍数最大→均值回归压力最大"
+
+    - dimension: "CSBG/服务收入质量"
+      position: "LRCX (37.7%占比+16%增速) > AMAT (~30%占比+稳定) > KLAC (~25%占比)"
+      reasoning: "LRCX安装基数100K腔室最大→CSBG飞轮效应最强→经常性收入占比行业最高"
+
+  industry_position:
+    quadrant: "最高护城河(#2) × 最高P/E × 最高CSBG质量 × 最高下行beta"
+    archetype: "周期成长+设备服务飞轮 — 上行杠杆最大但下行也最大"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→6个市场隐含信念→B6统计级反证(WFE 40年无连续5年不下行)→零安全边际"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "★冠军(5.0/5.0)★ 温水煮青蛙24月量化路径: T+6M(-3~8%)→T+12M(-17~27%)→T+24M(-29~46%)+6检测信号+红黄绿灯"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-2检测看空确认偏误2.9:1→4/6 CQ上调(counter-bearish)→CQ6最大校正+6pp→但不足以翻转评级"
+
+    - pattern_id: "competitive_benchmarking.chinese_competitor_deep_dive"
+      application: "不适用(刻蚀无中国竞争者)——但TEL深度分析(Certas 2.5x速度/POR进度/TAM扩张)使用了类似竞品量化框架"
+
+  novel_patterns:
+    - name: "CSBG安装基数经济学(设备+服务飞轮量化)"
+      description: "100K+安装腔室→ARPU $72K/年→CSBG增速(+16%)>基数增速(~5-7%)→ARPU扩张证明飞轮加速→三方法(SaaS/修正/梯度)交叉估值暴露$30-126B的3x跨度"
+      transferable_to: ["电梯维保(OTIS)", "喷气引擎服务(GE)", "医疗设备耗材(ISRG)", "所有安装基数>10万台的设备公司"]
+
+    - name: "温水煮青蛙24月量化路径(★excellence_catalog冠军★)"
+      description: "6时间节点×4维度(P/E+WFE+CSBG+股价)渐进恶化建模+6检测信号(3红3黄4绿)+论文完全失效条件。核心洞见:没有单一事件触发止损但累积致命"
+      transferable_to: ["所有P/E>30x的周期股", "SaaS从40x→20x的去泡沫", "任何面临均值回归的高估值资产"]
+
+    - name: "刻蚀alpha不对称量化"
+      description: "上行alpha 1.20-1.35x(刻蚀内容超线性增长)vs 下行alpha 0.5-0.8x(NAND暴露度拖累)→否定'WFE下行也跑赢'的简单叙事"
+      transferable_to: ["刻蚀/沉积设备", "所有在细分领域有差异化暴露的周期股"]
+
+    - name: "AI溢价三层分解(实质vs叙事vs传导)"
+      description: "$189B AI溢价=市值63%→80%叙事驱动→不可替代性3/5(二阶受益者)→叙事裂缝=估值重灾区"
+      transferable_to: ["所有AI受益公司的溢价分解", "GPU(一阶)→设备(二阶)→基础设施(三阶)"]
+
+    - name: "承重墙协同脆弱度矩阵(7面墙+双杀节点)"
+      description: "7面承重墙+8x8关系矩阵→B1+B6双杀概率40-50%(3年)→联合影响-40%至-55%→2个风险簇识别"
+      transferable_to: ["所有多信念支撑的高估值公司"]
+
+    - name: "WFE六层雷达周期定位"
+      description: "六维度(WFE绝对值+增速+库存+递延收入+订单+估值)综合定位P2.7(晚期扩张)→比单一指标判断更稳健"
+      transferable_to: ["所有WFE敏感的半导体设备公司"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "安装基数护城河从'防守型'→'进攻型': CSBG增速>基数增速=ARPU扩张=货币化深度增加"
+        implication: "评估安装基数护城河时,追踪ARPU变化率而非仅安装数量——ARPU扩张=护城河加宽,ARPU停滞=护城河仅维持"
+      - insight: "经常性收入可被地缘政治切断——CSBG中国服务中断路径暴露'类SaaS'假设的脆弱性"
+        implication: "评估'经常性收入'护城河时,必须包含地缘政治情景——服务合同的持久性≠产品锁定的持久性"
+
+    valuation_insights:
+      - insight: "温水煮青蛙路径将抽象的'均值回归'转化为6时间节点×4维度的可追踪矩阵"
+        implication: "对所有P/E>30x的周期股,建立时间节点路径表作为入场/退出纪律——替代'感觉贵了就卖'的模糊判断"
+      - insight: "AI溢价分解(实质vs叙事)量化了估值中'故事溢价'的占比"
+        implication: "对AI受益者估值时,先分离AI溢价→再评估叙事占比→叙事>50%时估值对CapEx增速边际变化极度敏感"
+      - insight: "WFE 40年统计反证B6——用历史频率检验隐含假设的可行性"
+        implication: "Reverse DCF反推的增长假设,应用历史频率检验'这种连续性是否有先例'——无先例=零安全边际"
+
+    screening_insights:
+      - insight: "P/E/历史均值倍数>2.0 = 均值回归压力最大的候选(LRCX 2.16x)"
+        implication: "选股筛选增加'P/E偏离度'指标: 当前P/E÷10年均值P/E>2.0→标记为温水煮青蛙候选"
+      - insight: "CSBG占比>35% + CSBG增速>基数增速 = 设备公司中的'隐性SaaS'"
+        implication: "选股时扫描设备公司的服务收入占比和增速——占比>35%且加速的公司可能被低估"
+      - insight: "刻蚀alpha不对称→不能用上行表现选周期低谷买入对象"
+        implication: "选设备股时,区分上行alpha和下行alpha——在WFE顶部,选下行alpha最高(削减最少)的标的而非上行表现最好的"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "高P/E时数信念而非评公司"
+      trigger: "P/E>历史均值2x"
+      origin: "LRCX P/E 49.3x需6个信念全部成立→任一失败即翻转→零安全边际"
+      generalization: "高估值的风险不是公司变差,而是价格要求的信念数太多——信念数>4且高度相关=零安全边际"
+
+    - habit: "建立温水煮青蛙时间节点表"
+      trigger: "周期性公司P/E>30x + 周期位置偏晚期"
+      origin: "LRCX T+6M(-3~8%)→T+12M(-17~27%)→T+24M(-29~46%)的渐进路径量化"
+      generalization: "急跌触发止损→可控;渐进跌不触发止损→致命。量化每个时间节点的跌幅,如果没有一步触发止损=温水煮青蛙"
+
+    - habit: "追问上行alpha时立刻追问下行alpha"
+      trigger: "发现公司在行业上行时跑赢"
+      origin: "LRCX上行alpha 1.2-1.35x但下行仅0.5-0.8x→NAND暴露度驱动不对称"
+      generalization: "上行alpha和下行alpha可以完全不对称——在细分暴露度不同的周期股中尤其如此"
+
+    - habit: "对经常性收入追问地缘政治中断场景"
+      trigger: "公司在地缘敏感地区(中国/俄罗斯)有>15%经常性收入"
+      origin: "CSBG中国服务中断路径——出口管制可扩展至服务合同"
+      generalization: "经常性收入的'经常性'假设需包含政策情景——服务合同不是物理锁定,可被法规终止"
+
+  quality_feedback:
+    strengths:
+      - "温水煮青蛙24月路径获excellence_catalog冠军(5.0/5.0) — 情景分析的标杆方法"
+      - "DM密度2.04/千字+766个锚点 — 数据锚定扎实(A/B级覆盖92%)"
+      - "10个框架体系(F1-F10)完整覆盖全分析维度 — v17.0全套方法最完整应用"
+      - "Mermaid 44张 — 可视化分析覆盖全章节"
+      - "能力边界标注(深挖区/诚实区)5/5 — 最佳实践"
+    weaknesses:
+      - "P5双模型冲突: P5_A(-11.3%)和P5_C(-29.5%)独立建模→43处修复 — 根因: Agent间无数值锚定协议"
+      - "Phase 1未压缩: 70K中~30K是已有6份报告覆盖的半导体通识 — 未利用知识库引用机制"
+      - "CSBG估值未调和: 三方法给出$30-126B的3x跨度未真正收敛 — 缺少客户调研法自下而上验证"
+      - "看空偏误残余: P4校准后仍2.1:1偏空 — 期望回报逐Phase恶化(-9→-11→-29.5%)"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "Reverse DCF必须P1前置(铁律O)"
+        evidence: "Ch9 Reverse DCF有效识别了6信念零安全边际,防止了P1结论先行偏差"
+        confidence_after: "高(KLAC+LRCX双报告确认)"
+
+      - hypothesis: "温水煮青蛙比急跌更危险(CME犯错模式4)"
+        evidence: "LRCX量化路径表证明每步跌幅不触发止损但累积-29%至-46%"
+        confidence_after: "高(从CME利息正常化扩展到半导体设备P/E压缩)"
+
+    extended:
+      - hypothesis: "安装基数护城河可以是'进攻型'而非仅'防守型'(KLAC insights)"
+        extension: "LRCX CSBG增速>基数增速→ARPU扩张→从'备件替换'升级为'服务+升级+智能制造'→安装基数货币化深度持续增加"
+
+      - hypothesis: "AI溢价分解适用于一阶受益者(NVDA)"
+        extension: "扩展到二阶受益者(LRCX)→发现AI溢价63%/叙事80%→二阶受益者的叙事依赖度>一阶"
+
+    refuted:
+      - hypothesis: "LRCX在WFE下行中也能跑赢(因为刻蚀内容增长)"
+        evidence: "下行alpha仅0.5-0.8x(NAND暴露度驱动)→上行/下行完全不对称"
+        lesson: "不能用上行表现推导下行保护——需分别检验上行和下行alpha"
+
+  limitations:
+    - "CSBG'真正经常性'收入占比60-67%是C级推断(LRCX不披露子分类)→CSBG独立估值精度受限"
+    - "P5双模型(-11.3% vs -29.5%)差距过大→概率分配的主观性是最终评级的最大不确定性源"
+    - "看空确认偏误残余2.1:1→期望回报可能偏悲观10-15pp→实际评级可能在'审慎'与'中性'边界"
+    - "AI CapEx CY2027增速不可预测→$189B AI溢价的估值敏感度极高但无法量化精确概率"
+    - "TEL Certas商业化时间表不确定→NAND通道刻蚀护城河的半衰期可能是5年也可能是15年"

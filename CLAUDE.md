@@ -1,4 +1,4 @@
-# 投资研究 Agent — 主分支精简版 v19.7
+# 投资研究 Agent — 主分支精简版 v19.8
 
 > **Context优化**: 详细框架见 `docs/`。本文件仅含核心路由+铁律速查+行业路由。
 > **完整框架**: `docs/deep_dive_protocol.md` + 行业专用文档 + 质量门控协议
@@ -96,11 +96,11 @@
 
 ---
 
-## 铁律速查 (A-J)
+## 铁律速查 (A-P)
 
 **第零律: 发布合规** — 台海中性表述+回流无痕+报告连贯(见下)
 
-**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议+可比对标(见下)** | **I 知识前置(见下)** | **J 单会话组装+P4.5扫描+凑数禁令(见下)** | **K 估值统一性(见下)** | **L DM密度硬门控(见下)** | **M 反膨胀纪律(见下)** | **N 证据链完整性(见下)** | **O Reverse DCF P1前置(见下)**
+**基础** A单会话禁跨Phase | B阶段完成=Commit | C目标≤1主+1小 | D会话预检+健康检查 | E报告→main `reports/{T}/` | F质量不可回退CG门控 | **G Context主动管理(见下)** | **H 参考协议+可比对标(见下)** | **I 知识前置(见下)** | **J 单会话组装+P4.5扫描+凑数禁令(见下)** | **K 估值统一性(见下)** | **L DM密度硬门控(见下)** | **M 反膨胀纪律(见下)** | **N 证据链+三PE并列+概率三重锚定(见下)** | **O Reverse DCF P1前置(见下)** | **P 卖出框架标准化(见下)**
 
 **执行细节**: `docs/deep_dive_protocol.md` + `docs/checkpoint_protocol.md` + `docs/quality_benchmarks.md`
 
@@ -122,9 +122,10 @@
 | **K** | 估值统一性: 全报告数字一版+Phase 4修正必回流 | `rule-K-valuation.md` |
 | **L** | DM密度≥0.8硬门控, <0.5阻断 | `rule-L-dm-density.md` |
 | **M** | 反膨胀: 按需加载skill+章节独立+密度>流程+单章≤15% | `rule-M-anti-bloat.md` |
-| **N** | 证据链: 每论点≥1数据+1因果+1反面 + 专业友好型写作风格 | `rule-N-evidence-style.md` |
+| **N** | 证据链+三PE并列+概率三重锚定 | `rule-N-evidence-style.md` |
+| **P** | 卖出框架标准化: PE上限+周期高点+内部人+回购η | `rule-P-sell-framework.md` |
 
-**触发规则**: 写Phase正文时自动读取相关铁律。Phase 1-3读G/H/I/M/N。Phase 4读J/K。Phase 5读全部。
+**触发规则**: 写Phase正文时自动读取相关铁律。Phase 1-3读G/H/I/M/N。Phase 4读J/K/P。Phase 5读全部。
 
 ---
 
@@ -200,4 +201,4 @@ Layer 3: quality_gate_complete.sh — 最终质量门控
 
 ## 系统升级
 
-**当前版本**: v19.7 (2026-03-24) | **版本历史**: `CHANGELOG.md`
+**当前版本**: v19.8 (2026-03-26) | **版本历史**: `CHANGELOG.md`

@@ -1,0 +1,442 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Roblox (RBLX)
+# 压缩比: 383K → ~12K (32x)
+# 六层 + 三个重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: RBLX
+  company: "Roblox Corporation"
+  report_date: "2026-02-16"
+  stock_price: "$63.17"
+  market_cap: "$44.3B"
+  report_version: "v1.2"
+  report_path: "reports/RBLX/RBLX_Complete_v1.2_2026-02-16.md"
+  quality_score: "报告未覆盖"
+  cqi: "报告未覆盖"
+  framework_version: "v10.0+Scout+ERM"
+  industry: "UGC游戏平台/互动娱乐"
+  archetype: "平台飞轮(双边网络效应)"
+  chars: 383800
+  dm_count: 613
+  dm_density: "1.60/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "Roblox的$44.3B市值建立在报告FCF $1.36B的幻觉上——扣除SBC后真实FCF仅+$231M,8/8核心风险全部被数据确认,概率加权EV $35.6B指向-19.6%下行"
+  rating: "审慎关注"
+  fair_value: "$35.6B (综合EV) / 隐含股价$50.7"
+  expected_return: "-19.6%"
+
+  key_arguments:
+    - claim: "SBC是估值的薛定谔开关——含SBC→$10-20B, 不含→$32-46B"
+      direction: bearish
+      magnitude: 5
+      mechanism: "SBC $1.13B(23.1% of Rev)是报告FCF $1.36B的0.83倍→扣除后真实FCF仅+$231M→SBC处理方式单独贡献离散度65%"
+      kill_switch: "SBC/Revenue连续2季<20%且绝对值增速<Revenue增速→真实FCF转正→估值框架根本性改变"
+
+    - claim: "8/8 CQ全部确认风险——加权置信度75%,零虚假警报"
+      direction: bearish
+      magnitude: 5
+      mechanism: "8个核心问题经四Phase逐层验证全部从50%基线上升至68-80%→风险全方位+相互关联→市值中的乐观假设缺乏数据支撑"
+      kill_switch: "FY2026Q1-Q2财报中≥3个CQ方向翻转(如SBC<20%+广告>$500M+18+>35%)"
+
+    - claim: "监管是最确定性风险——概率加权EV影响-$9.7B(占EV 22%)"
+      direction: bearish
+      magnitude: 5
+      mechanism: "COPPA 2.0(4/22硬截止)+MDL 3166(80-115起诉讼)+6州AG+10国封禁→四层叠加正相关→级联崩塌概率8-12%终态$13-20B"
+      kill_switch: "FTC温和执行(罚款<$500M)+MDL和解<$2B+COPPA合规反而淘汰小型竞品"
+
+    - claim: "护城河在收窄而非加宽——品牌忠诚度<20%,50%+用户无实质锁定"
+      direction: bearish
+      magnitude: 4
+      mechanism: "DAU增长空心化(情感忠诚仅15-20%)→网络效应更近内容平台(非通信平台)→UEFN 74%分成掐尖头部开发者→护城河4.5/10且3年预测4.0/10"
+      kill_switch: "DAU>200M且新增主要来自现有年龄段渗透(非低龄下探)+Top 100开发者零净迁移"
+
+    - claim: "市场隐含Revenue CAGR 20%与结构性压力系统性矛盾"
+      direction: bearish
+      magnitude: 4
+      mechanism: "Reverse DCF:$44.7B隐含10Y Rev CAGR 20%+FCF Margin 25%→但SBC 23.1%/开发者分成压力/监管悬剑→6项假设中4项高/极高矛盾"
+      kill_switch: "FY2026有机Bookings增速>30%(剔除价格效应)+SBC/Rev趋势性下降"
+
+  moat:
+    composite_score: 4.5
+    half_life: "3-5年(收窄趋势)"
+    dimensions:
+      - type: network_effect
+        strength: 3
+        evidence: "双边网络效应(97.8M DAU↔500万注册开发者)仍然存在,但更接近内容平台(可多平台使用)而非通信平台(赢家通吃)"
+        vulnerability: "Fortnite UEFN 74%分成掐尖头部开发者+用户注意力被TikTok/YouTube分散→网络效应从6/10下降趋势"
+      - type: switching_cost
+        strength: 2
+        evidence: "用户侧2/10(免费游戏零切换成本)+开发者侧5/10(Luau不可迁移性创造6-12月迁移成本)→加权3.5/10"
+        vulnerability: "AI代码翻译工具将Luau→其他引擎迁移成本从6-12月压缩至2-4月→开发者锁定效应衰减"
+      - type: brand
+        strength: 3
+        evidence: "美国9-12岁儿童渗透率>75%,品牌=品类→获客成本低"
+        vulnerability: "品牌与'儿童游戏'强绑定限制年龄扩展+儿童安全诉讼可能翻转品牌为净负债(类比JUUL)"
+      - type: scale
+        strength: 3
+        evidence: "97.8M DAU+$6.8B Bookings提供规模优势,垂直整合引擎降低边际成本"
+        vulnerability: "SBC $1.13B+DevEx $1.5B+基础设施22%→规模效应被成本结构侵蚀"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含Revenue CAGR 20%+FCF Margin 25%组合恰好justify $44.7B→但需DAU 5-8亿+ARPU大幅提升+广告规模化同时成立"
+    methods_used: ["DCF Track A(不含SBC)", "DCF Track B(含SBC)", "EV/Revenue可比", "EV/Bookings可比", "SOTP", "Reverse DCF"]
+    dispersion: "4.3x (Track B $9.5B → EV/Bookings $40.8B; SBC处理贡献65%)"
+    consensus_vs_ours: "卖方共识$145(隐含$102B) vs 实证$18-30B → 130%+定价鸿沟; 核心分歧在SBC是否算真实成本"
+    entry_zone: "S2偏空$43(基准)→S1熊市$21→关注SBC/Rev<20%+广告>$500M+18+>35%满足2/3时重新评估"
+    catalyst: "COPPA 4/22硬截止+MDL CMC 2/27+GTA 6 ROME→三大二元催化剂集中在2026H1"
+
+  action_framework:
+    verdict: "不建议建仓 — 概率加权EV $35.6B vs 市值$44.3B, 期望回报-19.6%, 8/8 CQ全确认风险"
+    buy_triggers:
+      - trigger: "SBC/Revenue连续2季<20% + 广告Revenue突破$500M + 18+用户占比>35% (满足2/3)"
+        price_zone: "$30-40 (S2偏空情景)"
+        reasoning: "评级升级条件触发→核心风险开始缓解→估值框架需重新评估"
+      - trigger: "监管软着陆(COPPA温和+MDL和解<$2B) + SBC趋势性下降"
+        price_zone: "$35-45"
+        reasoning: "最大单一风险(-$9.7B)大幅缩水→概率加权EV上修$5-10B"
+    hold_conditions:
+      - "SBC/Revenue呈下降趋势(不恶化至>30%)"
+      - "DAU增速维持>15% YoY"
+      - "Top 100开发者无净迁移至UEFN"
+      - "监管折价不升级(MDL Discovery无重大内部文件泄露)"
+    sell_triggers:
+      - signal: "MDL Discovery揭露de-alting内部证据→DAU质量崩塌叙事"
+        severity: "emergency"
+        action: "全部卖出, 级联崩塌路径激活(终态$13-20B)"
+      - signal: "FTC选择RBLX为COPPA首个执法对象(非和解)"
+        severity: "emergency"
+        action: "全部卖出, 品牌翻转为'儿童危害'叙事"
+      - signal: "SBC/Revenue恶化至>30%且无回购对冲"
+        severity: "action"
+        action: "减仓100%, SBC稀释进入不可逆阶段"
+      - signal: "GTA 6 ROME发布季RBLX DAU环比下降"
+        severity: "warning"
+        action: "减仓50%, 护城河论文受挑战"
+    position_sizing: "当前不适合建仓(负期望回报); 若满足升级条件且价格回落至$30-40区间,最多5%仓位(高不确定性限制仓位)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "SBC薛定谔估值开关"
+    chain: >
+      SBC $1.13B(23.1% of Rev)→报告FCF $1.36B但真实FCF仅+$231M
+      → SBC处理方式单独贡献估值离散度65%
+      → 含SBC世界: Track B概率加权EV $9.5B(隐含$13.5)
+      → 不含SBC世界: Track A EV $32.0B(隐含$46)
+      → 没有中间立场: 投资者必须在两种SBC经济本质理解中选择其一
+      → 这一选择比增长假设/监管预测都更能决定估值
+      → 卖方用报告FCF(不含SBC)→$145目标价; 含SBC→$145不可能存在
+    transferable_to: "所有SBC/Revenue>15%的科技公司(尤其SNAP/UBER/LYFT等亏损+高SBC公司)"
+    reasoning_habit: "看到报告FCF时立刻追问'SBC占多少'——如果SBC/Revenue>20%, 报告FCF几乎必然是幻觉"
+
+  - id: "CC-2"
+    name: "监管级联崩塌的正相关陷阱"
+    chain: >
+      COPPA 2.0 + MDL 3166 + 州AG + 国际封禁→四层叠加
+      → 市场将各项独立定价(各5-10%概率)→简单加总
+      → 但四层同源(全球儿童保护立法浪潮)→正相关
+      → 独立概率加总低估系统性风险
+      → 级联路径: SW-5(监管)→SW-2(DAU质量)→SW-1(FCF叙事崩塌)
+      → 概率8-12%, 终态$13-20B(-54%~-71%)
+      → 概率加权EV影响-$9.7B(占EV 22%)
+    transferable_to: "所有面临多维度同源监管压力的公司(社交媒体/加密/AI安全)"
+    reasoning_habit: "多个监管风险来自同一立法浪潮时, 不能用独立概率相乘——必须评估正相关性后用条件概率"
+
+  - id: "CC-3"
+    name: "开发者怨恨性留存vs热情性留存"
+    chain: >
+      Roblox叙事: 500万开发者生态是护城河核心
+      → 实际: 仅29K(0.58%)通过DevEx变现
+      → 分成率25-30% vs UEFN 74%(推广期)→44-49pp差距为行业最大
+      → Luau不可迁移性创造6-12月迁移成本→锁定而非忠诚
+      → 头部开发者因沉没成本留存(怨恨性)而非因回报优势留存(热情性)
+      → AI代码翻译降低迁移成本→锁定效应半衰期3-5年
+      → 一旦UEFN工具链成熟→中产开发者流失进入不可逆阶段
+    transferable_to: "所有依赖专有语言/工具链锁定开发者的平台(Salesforce Apex/Apple Swift)"
+    reasoning_habit: "区分'留存是因为离不开'还是'留存是因为不想离开'——前者的护城河会随技术进步衰减, 后者不会"
+
+  - id: "CC-4"
+    name: "Bookings vs Revenue的口径陷阱"
+    chain: >
+      Roblox FY2025: Bookings $6.8B(+55%) vs Revenue $4.89B(+28.5%)
+      → 递延收入$5.1B(105% of Revenue), 27个月确认周期
+      → 多头用Bookings(增速快/倍数低), 空头用Revenue(增速慢/倍数高)
+      → 口径选择本身是"立场声明"而非分析选择
+      → 更深一层: Bookings +55%中价格上调贡献15-20ppt→有机增速+35-40%
+      → "加速增长"叙事变为"强劲增长+一次性价格效应"
+      → 长期可持续Bookings CAGR锚定13-18%(全球游戏8-10%+份额溢价5-8%)
+    transferable_to: "所有递延收入占比>50%的SaaS/订阅/游戏公司(如Salesforce/ServiceNow/Unity)"
+    reasoning_habit: "看到Bookings增速远超Revenue增速时, 追问(1)有没有价格上调的一次性效应(2)长期可持续增速锚在哪里"
+
+  - id: "CC-5"
+    name: "品牌忠诚度分层暴露DAU空心化"
+    chain: >
+      表面: DAU 97.8M(+27%)→看似网络效应加强
+      → 分层: 情感忠诚15-20% / 习惯使用30-35% / 免费锁定15-20%
+      → 50%+用户无实质锁定(Level 1-2)→可随时迁移
+      → DAU增长由低龄下探+地理扩张(APAC设备渗透)驱动
+      → 付费渗透率25.5%→74.5%从未消费→"活跃"不产生经济价值
+      → 网络效应更接近内容平台(可多平台使用)而非通信平台(赢家通吃)
+      → 终端增长率应使用2.5-3.0%(低于行业标准3-4%)
+    transferable_to: "所有免费增值(F2P)平台的DAU质量评估"
+    reasoning_habit: "看到DAU高增长时, 追问'这些新用户的经济价值是什么'——免费用户≠经济价值, 必须分层评估忠诚度和付费率"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "Roblox FCF $1.36B证明盈利拐点已到——EV/FCF 32.9x对标高增长SaaS合理"
+      final: "扣除SBC后真实FCF仅+$231M——报告FCF是会计幻觉, EV/真实FCF为无意义高值"
+      pivot: "SBC $1.13B是报告FCF的0.83倍→SBC处理方式是估值核心变量而非噪音"
+
+    - initial: "42%用户为17+, 年龄扩展策略有效, TAM对标社交平台"
+      final: "独立验证仅27%(18+), 第三方数据是Roblox自报的转引非独立验证"
+      pivot: "面部年龄验证(唯一独立数据源)27% + 设备行为数据(80%移动端暗示低龄为主)"
+
+    - initial: "500万开发者生态是不可替代的护城河核心"
+      final: "仅29K(0.58%)通过DevEx变现, 开发者是'被锁定'不是'被吸引', 怨恨性留存"
+      pivot: "分成率25-30% vs UEFN 74%差距44-49pp + Luau不可迁移性=锁定而非忠诚 + 论坛'半数可信创作者已离开'"
+
+    - initial: "SBC $2.65B(v1.0/v1.1基于MacroTrends数据)"
+      final: "SBC $1.13B(v1.2经四源交叉验证修正)——MacroTrends将DevEx/创作者支付与员工SBC混合"
+      pivot: "APIC变动+$1.22B作为硬约束→$2.65B不可能→FMP季度数据确认$1.13B"
+
+  surprises:
+    - finding: "分析师共识$145 vs 实证公允$18-30B——130%+定价鸿沟, 为历史罕见级别分歧"
+      implication: "卖方普遍用报告FCF+管理层口径定价→如果市场转向SBC调整口径, RBLX可能经历类似WeWork的估值方法论范式转换"
+
+    - finding: "8/8 CQ全部确认风险且无一翻转——统计上极端结果"
+      implication: "市场定价隐含'至少部分风险被高估', 但分析未找到支持这一信念的证据→以当前价格买入需同时反对全部8个CQ"
+
+    - finding: "Bookings +55%中价格上调贡献15-20ppt→有机增速+35-40%(非+55%)"
+      implication: "'加速增长'叙事需修正为'强劲增长+一次性价格效应'→DCF基准增速应下调15-20%"
+
+    - finding: "护城河评分4.5/10且3年预测4.0/10——收窄趋势而非共识的'加宽'"
+      implication: "终端价值假设动摇→终端增长率应低于行业标准→DCF终端价值需施加5-10%护城河折价"
+
+  blind_spots:
+    - area: "COPPA 2.0执法力度"
+      why_matters: "温和执行(罚款)vs严格执行(FTC执法行动)之间EV差距$5-7B"
+      monitor: "2026年4月22日后FTC首批执法动作+处罚金额"
+
+    - area: "MDL Discovery内部文件"
+      why_matters: "如果揭露de-alting证据→DAU质量叙事崩塌→级联路径概率从8-12%可能跳升"
+      monitor: "2026年6-8月Discovery阶段文件公开"
+
+    - area: "GTA 6 ROME对UGC生态的影响"
+      why_matters: "Rockstar进入UGC领域=对Roblox护城河的终极压力测试"
+      monitor: "GTA 6 ROME发布后RBLX DAU是否环比下降+开发者迁移数据"
+
+    - area: "SBC收敛路径的真实可见性"
+      why_matters: "管理层承诺2027年GAAP盈利但SBC历史从未下降(FY2021 $342M→FY2025 $1.13B, CAGR +35%)"
+      monitor: "FY2026 Q1-Q2 SBC/Revenue季度趋势——连续2季<20%=正面信号"
+
+  sell_lessons:
+    - scenario: "高SBC/Rev公司报告FCF转正→市场欢呼'盈利拐点'→但扣SBC后仍亏损"
+      lesson: "报告FCF转正不等于真实盈利——必须检查SBC/FCF比值, >50%时报告FCF是幻觉"
+      transferable: "所有SBC/Revenue>15%且报告FCF刚转正的科技公司"
+    - scenario: "分析师共识与实证估值差距>100%→持有者认为'市场更聪明'→但叙事可以持续到崩塌"
+      lesson: "130%+定价鸿沟意味着市场在赌一组低概率假设同时成立——当催化剂逐一否定假设时,股价非线性下跌"
+      transferable: "所有卖方一致看多但基本面存在核心争议的高估值公司"
+    - scenario: "多层监管风险正相关→市场分别定价各10%概率→实际联合概率远高于独立假设"
+      lesson: "监管风险的正相关性是最被低估的尾部放大器——同源风险不能独立定价"
+      transferable: "面临多维度同源监管压力的科技/社交/AI公司"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "SBC/Revenue季度趋势"
+      why_alpha: "SBC处理方式决定65%估值离散度→SBC/Rev是否趋势性下降=估值开关信号; 多数分析师仅看报告FCF不追踪SBC/Rev"
+      current_reading: "23.1%(FY2025), 历史CAGR +35%且从未下降"
+    - signal: "MDL Discovery文件内容"
+      why_alpha: "如果揭露de-alting内部证据→DAU质量从'存疑'变为'确认造假'→级联路径激活; 2026年6-8月是关键窗口"
+      current_reading: "首次CMC 2/27, Discovery预计2026年6-8月"
+    - signal: "真实FCF(扣除SBC)的符号和趋势"
+      why_alpha: "从-$1.29B(v1.1错误)到+$231M(v1.2修正)→符号翻转, 但绝对值微小→趋势方向比绝对值更重要"
+      current_reading: "+$231M(FY2025), 需要Revenue翻倍或SBC削减50%才能实质性改善"
+
+  confirmation_signals:
+    - signal: "有机Bookings增速(剔除价格效应)"
+      bullish_threshold: ">30% YoY连续2季(有机增速强劲确认)"
+      bearish_threshold: "<20% YoY(增速正常化快于预期→长期CAGR 13-18%锚定)"
+    - signal: "18+用户占比(独立验证口径)"
+      bullish_threshold: ">35%(年龄扩展叙事获验证→TAM对标社交平台)"
+      bearish_threshold: "<25%(品牌锁定在'儿童游戏'→TAM锚定儿童娱乐)"
+    - signal: "广告Revenue季度规模"
+      bullish_threshold: "年化>$500M(增长引擎叙事获部分验证)"
+      bearish_threshold: "年化<$200M(三重约束压制天花板确认)"
+
+  noise_signals:
+    - signal: "DAU绝对数增长"
+      why_noise: "DAU增长可能由低龄下探+地理扩张驱动→不代表经济价值增长; 74.5%从未消费→看付费渗透率比看DAU更有信息量"
+    - signal: "卖方目标价调整"
+      why_noise: "卖方普遍用报告FCF+管理层年龄口径→130%+定价鸿沟说明卖方框架系统性偏乐观"
+    - signal: "Bookings绝对增速(含价格效应)"
+      why_noise: "FY2025 +55%含15-20ppt价格上调→有机增速+35-40%更有信息量→看有机增速而非报告增速"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: SNAP
+      similarity: "同为年轻用户社交/内容平台, 同样高SBC/Revenue(SNAP ~30%), 同样面临广告变现和年龄验证挑战"
+      key_difference: "SNAP已盈利但增速更低 | RBLX有UGC内容飞轮但SBC问题更根本(23.1% vs 30%但RBLX从未压缩)"
+
+    - ticker: META
+      similarity: "卖方类比标杆——'RBLX是下一个META'。双边平台+广告变现+网络效应"
+      key_difference: "META SBC/Rev起点18%→降至9%路径短且可见 | RBLX从23.1%降至合理水平需Revenue翻倍→类比不成立"
+
+    - ticker: U
+      similarity: "同为游戏平台/引擎, 同样面临开发者生态和变现挑战"
+      key_difference: "Unity是工具(卖铲子) vs RBLX是平台(运营矿场) | Unity开发者技能可迁移 vs Luau不可迁移"
+
+  comparative:
+    - dimension: "开发者分成率"
+      position: "Fortnite UEFN 74% >> Steam 70% >> YouTube 55% >> Roblox 25-30%"
+      reasoning: "Roblox分成率为行业最低, 44-49pp差距构成开发者叛逃的经济动力"
+
+    - dimension: "DAU质量(付费渗透率)"
+      position: "Roblox 25.5%付费 < 多数F2P基准(30-40%)"
+      reasoning: "74.5%从未消费的DAU不产生直接经济价值→DAU增长≠收入增长"
+
+    - dimension: "SBC/Revenue"
+      position: "SNAP ~30% > RBLX 23.1% > META ~18% > GOOG ~12%"
+      reasoning: "RBLX处于中偏高位置, 但关键在于RBLX是唯一一家SBC历史从未下降的"
+
+    - dimension: "估值吸引力(SBC调整后)"
+      position: "含SBC: RBLX EV/真实FCF 无意义 >> 不含SBC: EV/FCF 32.9x(可比高增长SaaS)"
+      reasoning: "SBC处理方式决定RBLX是'合理估值的高增长股'还是'不可估值的亏损股'"
+
+  industry_position:
+    quadrant: "高增长 × 高SBC × 窄护城河(收窄中) × 密集监管压力"
+    archetype: "UGC平台飞轮——增长强劲但真实盈利力存疑, 护城河依赖锁定而非忠诚"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF双轨(Revenue+Bookings口径)→市场隐含Rev CAGR 20%+FCF Margin 25%→与SBC/开发者分成/监管结构性压力系统性矛盾"
+
+    - pattern_id: "scenario_analysis.four_scenario_framework"
+      application: "S1熊市(20%,$15B)→S2偏空(40%,$30B)→S3偏多(30%,$65B)→S4牛市(10%,$110B)→概率加权$45.5B"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~RT-7七问独立审计→承重墙脆弱度从3.50上调至3.65→监管影响从-$11.4B因确认偏差下调15%至-$9.7B"
+
+  novel_patterns:
+    - name: "SBC薛定谔估值开关"
+      description: "当SBC/Revenue>20%且SBC绝对值增速>Revenue增速时, SBC处理方式成为估值的核心变量——含SBC和不含SBC产生2-3倍估值差距, 比增长假设和折现率更能决定估值"
+      transferable_to: ["SNAP", "UBER", "LYFT", "DASH", "所有SBC/Rev>20%的科技公司"]
+
+    - name: "怨恨性留存vs热情性留存"
+      description: "区分开发者/用户留在平台是因为离不开(专有语言/迁移成本)还是因为不想离开(回报优势/忠诚度)——前者的护城河会随技术进步(AI翻译)衰减, 后者不会"
+      transferable_to: ["Salesforce(Apex)", "Apple(Swift锁定)", "所有依赖专有工具链的平台"]
+
+    - name: "监管正相关尾部放大器"
+      description: "多维度同源监管风险(来自同一立法浪潮)不能用独立概率相乘→正相关性使联合概率远高于独立假设→市场系统性低估同源监管的尾部风险"
+      transferable_to: ["TikTok(儿童安全+国安)", "META(隐私+反垄断+AI)", "加密行业(SEC+CFTC+IRS)"]
+
+    - name: "DAU空心化检测(品牌忠诚度分层)"
+      description: "将DAU按忠诚度分层(情感/习惯/免费锁定)→50%+无实质锁定=DAU增长不等于护城河加宽→付费渗透率比DAU更有信息量"
+      transferable_to: ["所有F2P平台", "所有报告MAU/DAU作为核心指标的公司"]
+
+    - name: "口径选择本身是立场声明"
+      description: "当Revenue和Bookings差距>30%时, 使用哪个口径不是分析选择而是投资立场——必须同时展示两种口径的估值结果并解释差异"
+      transferable_to: ["SaaS(ARR vs GAAP Rev)", "游戏(Bookings vs Rev)", "所有递延收入占比>50%的公司"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "怨恨性留存(锁定)和热情性留存(忠诚)的护城河半衰期完全不同——AI代码翻译正在瓦解Luau锁定"
+        implication: "评估开发者/用户护城河时, 必须区分留存驱动力是锁定还是忠诚——锁定型护城河的半衰期需单独估算且随技术进步缩短"
+      - insight: "DAU品牌忠诚度分层揭示50%+用户无实质锁定——DAU增长≠护城河加宽"
+        implication: "评估网络效应时, 必须检查DAU质量(忠诚度分布+付费渗透率)而非仅看DAU数量"
+      - insight: "护城河4.5/10且3年预测4.0/10——收窄趋势对终端价值影响>对近期收入影响"
+        implication: "DCF终端价值应反映护城河趋势方向——收窄护城河的终端增长率应低于行业标准"
+
+    valuation_insights:
+      - insight: "SBC/Revenue>20%时报告FCF是幻觉——SBC处理方式贡献估值离散度65%"
+        implication: "高SBC公司必须同时展示含/不含SBC两种估值, 并明确标注SBC是估值核心变量而非假设输入"
+      - insight: "Bookings +55%中价格上调贡献15-20ppt→有机增速+35-40%"
+        implication: "DCF建模应使用有机增速(剔除价格效应)作为基准→对递延确认模式的公司尤其重要"
+      - insight: "方法离散度4.3x(含Track B)→估值结论本身的置信度有限→评级应反映不确定性"
+        implication: "离散度>3x时评级应降格为'跟踪但不行动'类型, 不适合给明确方向性建议"
+
+    screening_insights:
+      - insight: "SBC/Revenue>20% + 报告FCF刚转正 = 'FCF幻觉'信号——需要SBC调整后FCF才能判断真实盈利力"
+        implication: "选股筛选增加'SBC幻觉过滤器': SBC/FCF>0.5时标记为'报告FCF不可靠'"
+      - insight: "8/8 CQ全确认=统计极端结果——以当前价格买入需同时反对全部8个风险"
+        implication: "当系统性分析确认全部核心风险时, 无论增速多高都不应建仓——等待至少2/8翻转"
+      - insight: "分析师共识与实证估值差距>100%=极端信号——要么市场错了要么分析框架有根本分歧"
+        implication: "选股时标注'共识分歧>50%'的标的——不是买入/卖出信号, 而是'需要独立判断SBC立场'的信号"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "看到报告FCF转正时立刻检查SBC/FCF比值"
+      trigger: "公司宣布FCF转正/盈利拐点且SBC/Revenue>15%"
+      origin: "RBLX报告FCF $1.36B但真实FCF仅+$231M——SBC/FCF=0.83x暴露幻觉"
+      generalization: "高SBC公司的报告FCF是最常见的估值陷阱之一——SBC/FCF>0.5时必须用调整后口径"
+
+    - habit: "区分怨恨性留存和热情性留存"
+      trigger: "平台声称有强大的开发者/用户生态且使用专有技术栈"
+      origin: "RBLX 500万注册开发者叙事 vs 29K实际变现 + Luau锁定≠忠诚"
+      generalization: "专有语言/工具链创造的锁定随技术进步衰减——AI代码翻译正在瓦解所有专有语言壁垒"
+
+    - habit: "评估多源监管风险时检查正相关性"
+      trigger: "公司面临≥3个来自同一立法浪潮的监管压力"
+      origin: "RBLX四层监管(COPPA+MDL+州AG+国际)来自全球儿童保护浪潮→不能用独立概率定价"
+      generalization: "同源监管风险的联合概率远高于独立假设→是最被低估的尾部放大器"
+
+    - habit: "对管理层选择汇报最有利口径保持警惕"
+      trigger: "管理层口径与独立验证数据差距>10%"
+      origin: "RBLX '42%用户17+'(自报) vs 27%(独立验证)→15pp差距中核心不可解释差距3-5pp"
+      generalization: "口径选择本身就是信号——当管理层持续选择最有利口径时, 实际情况通常比最有利口径更差"
+
+  quality_feedback:
+    strengths:
+      - "CI注册表8个CI全部含'共识观点/我们的发现/如果我们错了/投资行动含义'四层结构——标杆: 非共识洞察应该到这个完整度"
+      - "SBC数据v1.2经四源交叉验证修正(FMP+AlphaQuery+MotleyFool+APIC)——标杆: 异常数据必须多源校验"
+      - "Reverse DCF双轨(Revenue+Bookings)暴露口径选择的估值影响——标杆: 递延收入公司需双口径估值"
+      - "DM锚点613个,密度1.60/千字(超1.5/千字门控)——数据锚定扎实"
+      - "方法离散度4.3x被诚实报告并降低评级置信度——不掩盖不确定性"
+    weaknesses:
+      - "v1.0/v1.1 SBC数据$2.65B严重错误——MacroTrends口径混淆未被即时发现→教训: 异常值必须即时标红"
+      - "护城河评估4.5/10的拆分权重有主观成分——网络效应/转换成本/品牌的权重缺乏量化依据"
+      - "广告TAM天花板$500M-$1.0B的精度有限——COPPA执法力度未知使上界不确定"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "报告FCF转正不等于真实盈利力(SBC幻觉假说)"
+        evidence: "RBLX报告FCF $1.36B→真实FCF仅+$231M, SBC/FCF=0.83x"
+        confidence_after: "高(极端案例, SBC/Rev 23.1%)"
+      - hypothesis: "管理层口径选择系统性偏乐观(年龄/增速/生态规模)"
+        evidence: "42% vs 27%年龄差距 + Bookings +55%含价格效应 + 500万注册vs29K变现"
+        confidence_after: "高(三个维度独立确认)"
+
+    extended:
+      - hypothesis: "平台网络效应可以是收窄而非加宽的(与多数平台叙事相反)"
+        extension: "RBLX证明DAU高增长+护城河收窄可以共存→DAU增长由低质量用户驱动时网络效应反而被稀释"
+
+    refuted:
+      - hypothesis: "Meta类比对所有高SBC科技公司成立(SBC终将收敛)"
+        evidence: "META SBC/Rev起点18%且5年内降至9% | RBLX 23.1%且CAGR +35%从未下降→收敛路径不存在"
+        lesson: "Meta类比需要验证收敛路径的可见性——没有可见路径的SBC收敛承诺不可信"
+
+  limitations:
+    - "SBC $1.13B为估算级(v1.2修正后), 精确值可能在$1.0-1.3B区间→23.1%比率的结论不受精确值波动影响但存在量级误差"
+    - "监管概率(级联8-12%)基于历史类比和主观判断→COPPA 2.0和MDL是前所未有的组合, 无直接可比案例"
+    - "广告TAM天花板$500M-$1.0B高度依赖COPPA执法力度假设——如果上下文定向广告突破COPPA约束, 天花板可能提升至$1.5-2.0B"
+    - "护城河3年预测4.0/10的置信度低(★☆☆)——GTA 6 ROME和AI工具对UGC生态的影响无法可靠预测"
+    - "报告框架版本v10.0(非最新v19.7)——部分分析模块和质量门控尚未应用"

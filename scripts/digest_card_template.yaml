@@ -1,0 +1,194 @@
+# ============================================================
+# 投资研究摘要卡模板 v1.2
+# 压缩比目标: 20-30x
+#
+# 六层 + 三个新增重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+#
+# 使用说明:
+#   - 每个字段用一句话填写，不写段落
+#   - direction只用: bullish / bearish / neutral / conditional
+#   - magnitude: 1-5 (1=弱猜测 5=多源硬数据确认)
+#   - 因果链用 → 连接，一条链一行
+#   - transferable_to 用列表格式
+#   - 如果报告中缺失某个信息，写 "报告未覆盖" 而非编造
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: ""
+  company: ""
+  report_date: ""         # YYYY-MM-DD
+  stock_price: ""         # 分析时股价
+  market_cap: ""
+  report_version: ""      # e.g. "v3.0"
+  report_path: ""         # 完整报告相对路径
+  quality_score: ""       # e.g. "4.42/5.0"
+  cqi: ""                 # CQI评分(如有)
+  framework_version: ""   # 当时的框架版本
+  industry: ""            # 行业分类
+  archetype: ""           # 商业模式原型: 垄断收费站/平台飞轮/周期成长/订阅复利/品牌溢价/...
+  chars: 0                # 报告字符数
+  dm_count: 0             # DM锚点数
+  dm_density: ""          # /千字
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: ""  # 一句话核心判断(最重要的一句)
+  rating: ""        # 评级(深度关注/关注/低估观察/中性关注/审慎关注)
+  fair_value: ""    # 公允价值或区间
+  expected_return: ""
+
+  key_arguments:    # 3-5个核心论点, 每个含方向×强度×机制×kill_switch
+    - claim: ""
+      direction: ""    # bullish/bearish/neutral/conditional
+      magnitude: 0     # 1-5
+      mechanism: ""    # 因果机制一句话
+      kill_switch: ""  # 什么条件下失效
+
+  moat:
+    composite_score: 0  # 0-10
+    half_life: ""
+    dimensions:         # 按强度排序, 通常3-5个
+      - type: ""        # network_effect/switching_cost/scale/brand/regulatory/data/ip/pricing_power
+        strength: 0     # 1-5
+        evidence: ""
+        vulnerability: ""
+
+  valuation:
+    reverse_dcf_implied: ""  # 市场在赌什么
+    methods_used: []
+    dispersion: ""           # 估值离散度
+    consensus_vs_ours: ""    # 核心分歧
+    entry_zone: ""
+    catalyst: ""             # 什么创造入场机会
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: ""              # "当前可买@区间" / "等待买入@条件" / "持有" / "考虑减仓"
+    buy_triggers:            # 触发买入的具体事件/价格
+      - trigger: ""
+        price_zone: ""
+        reasoning: ""
+    hold_conditions:         # 持有需要保持为真的前提
+      - ""
+    sell_triggers:           # 触发卖出的具体信号
+      - signal: ""
+        severity: ""         # warning / action / emergency
+        action: ""           # 减仓X% / 全部卖出 / 观察N个季度
+    position_sizing: ""      # Kelly结果或定性建议
+
+# --- Layer 1.5: 因果链保真 ---
+# 每条链: 起点→传导→终点 + reasoning_habit(可迁移思维模式) + transferable_to
+causal_chains:
+  - id: ""
+    name: ""
+    chain: ""               # 用 → 连接的因果链
+    transferable_to: ""
+    reasoning_habit: ""      # 这条链教会的可复用思维习惯
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:     # 分析过程中假设被推翻
+    - initial: ""
+      final: ""
+      pivot: ""             # 什么证据导致翻转
+
+  surprises:                # 反直觉发现(不能从行业常识推导)
+    - finding: ""
+      implication: ""
+
+  blind_spots:              # 承认不知道的
+    - area: ""
+      why_matters: ""
+      monitor: ""           # 跟踪什么信号
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:             # 报告中关于退出时机的洞见
+    - scenario: ""          # 什么情境下应该卖
+      lesson: ""            # 教训是什么
+      transferable: ""      # 适用于什么类型的公司
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+# 区分哪些数据点真正影响判断，哪些是噪音
+signal_hierarchy:
+  alpha_signals:            # 最高价值: 非共识、前瞻、可量化
+    - signal: ""
+      why_alpha: ""         # 为什么这个信号比别人看的更有价值
+      current_reading: ""   # 当前读数
+
+  confirmation_signals:     # 验证方向: 确认或否定thesis
+    - signal: ""
+      bullish_threshold: ""
+      bearish_threshold: ""
+
+  noise_signals:            # 市场关注但实际不影响判断的
+    - signal: ""
+      why_noise: ""         # 为什么这个信号是噪音
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: ""
+      similarity: ""
+      key_difference: ""
+
+  comparative:              # 方向性排序, 不存绝对值
+    - dimension: ""         # 定价权/增长质量/护城河深度/估值吸引力/...
+      position: ""          # "A > B > C" 排序
+      reasoning: ""
+
+  industry_position:
+    quadrant: ""            # 二维定位
+    archetype: ""
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:           # 引用excellence_catalog中的已知模式
+    - pattern_id: ""
+      application: ""
+
+  novel_patterns:           # 本报告贡献的新模式
+    - name: ""
+      description: ""
+      transferable_to: []
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:          # 对护城河分析框架的升级
+      - insight: ""
+        implication: ""     # 改变了什么分析方式
+    valuation_insights:     # 对估值框架的升级
+      - insight: ""
+        implication: ""
+    screening_insights:     # 对选股/筛选框架的升级
+      - insight: ""
+        implication: ""     # 改变了什么筛选条件
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired: # 可迁移的思维习惯
+    - habit: ""
+      trigger: ""           # 什么场景触发这个思维
+      origin: ""            # 从什么发现中提炼
+      generalization: ""    # 推广到什么范围
+
+  quality_feedback:
+    strengths: []           # 做对了什么(D1-D11高分项)
+    weaknesses: []          # 做错了什么(低分项)
+
+  hypothesis_tested:        # 跨报告假说验证
+    confirmed: []
+    extended: []
+    refuted: []
+
+  limitations: []           # 报告局限性
