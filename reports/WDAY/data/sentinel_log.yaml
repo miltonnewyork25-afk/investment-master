@@ -14,3 +14,10 @@ events:
     fail: 0
     block: 0
     target_chars: 300000
+  - phase: 3
+    timestamp: "2026-03-26T09:44:30+00:00"
+    pass: 7
+    warn: 2
+    fail: 0
+    block: 0
+    target_chars: 300000
