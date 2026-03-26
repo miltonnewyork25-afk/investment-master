@@ -7,8 +7,8 @@ target_score: 4.4
 target_chars: 311000
 framework_version: v19.7
 
-current_phase: "Phase 1 COMPLETE"
-current_status: "Phase 1全部完成(4 sessions, 16章). 85K / 337 DM / 10 Mermaid. DM密度3.96/千字. Ready for Phase 2."
+current_phase: "Phase 2 COMPLETE"
+current_status: "Phase 2完成(1 session, 5章 Ch17-Ch21). 累计111K / 529 DM / 12 Mermaid. Phase 2: 26K/192DM/因果6.1. Ready for Phase 3."
 
 phases:
   phase_minus1:
