@@ -232,6 +232,62 @@ if [ "$PHASE" -ge 1 ]; then
 fi
 
 # ============================================================
+# Layer 2.5: 关键铁律脚本化检查 — prompt→script升级 (v3.0, 2026-03-25复盘)
+# 原则: "质量来自更硬的约束"——把可忽略的prompt规则变成不可绕过的脚本检查
+# ============================================================
+
+# 铁律O: Reverse DCF必须在Phase 1出现 (CRM v1.0教训)
+if [ "$PHASE" -ge 1 ]; then
+    RDCF_FOUND=0
+    for f in "$STAGING"/*.md; do
+        if [ -f "$f" ]; then
+            RC=$({ grep -ci 'Reverse DCF\|逆向.*DCF\|隐含.*CAGR\|市场.*隐含\|市场.*在.*定价\|反推.*增速' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            RDCF_FOUND=$((RDCF_FOUND + ${RC:-0}))
+        fi
+    done
+    if [ "$RDCF_FOUND" -ge 2 ]; then
+        check_pass "铁律O: Reverse DCF已出现(${RDCF_FOUND}处)"
+    elif [ "$RDCF_FOUND" -ge 1 ]; then
+        check_warn "铁律O: Reverse DCF仅${RDCF_FOUND}处 — 建议在Ch1深入展开"
+    else
+        check_fail "铁律O: Reverse DCF未出现! Phase 1必须含'市场在$XX隐含什么假设'"
+        echo "         → 先翻译市场(隐含增速/利润率), 再提出自己观点"
+        echo "         → CRM v1.0教训: 不做Reverse DCF→预设bullish→叙事断裂"
+    fi
+fi
+
+# 铁律G6: Python验证必须在Phase 2后存在 (PTC/MA教训)
+if [ "$PHASE" -ge 2 ]; then
+    PY_COUNT=$(find "$DATA" -name "*.py" 2>/dev/null | wc -l | tr -d ' ')
+    if [ "${PY_COUNT:-0}" -ge 1 ]; then
+        check_pass "铁律G6: Python验证已存在(${PY_COUNT}个.py文件)"
+    else
+        check_warn "铁律G6: data/目录无.py文件 — Phase 2估值必须有Python DCF验证"
+        echo "         → LLM不能做算术(铁律#3): DCF/SOTP/敏感性矩阵必须Python计算"
+        echo "         → 产出: reports/${TICKER}/data/${TICKER}_dcf_model.py"
+    fi
+fi
+
+# 铁律K: 估值统一性检查 — Phase 5前 (MCO教训)
+if [ "$PHASE" -ge 4 ]; then
+    # 检查staging中是否存在多个不一致的公允价值数字
+    FV_NUMBERS=0
+    FV_UNIQUE=0
+    for f in "$STAGING"/*.md; do
+        if [ -f "$f" ]; then
+            # 提取"公允价值/fair value/FV"后面的$数字
+            FVN=$({ grep -oE '公允.*\$[0-9]+|fair.*\$[0-9]+|FV.*\$[0-9]+' "$f" 2>/dev/null | wc -l || echo "0"; } | head -1 | tr -d ' ')
+            FV_NUMBERS=$((FV_NUMBERS + ${FVN:-0}))
+        fi
+    done
+    if [ "$FV_NUMBERS" -ge 2 ]; then
+        check_warn "铁律K: 发现${FV_NUMBERS}处公允价值引用 — Phase 5前必须确认全报告数字一致"
+        echo "         → 检查: 估值章节/执行摘要/评级的FV是否完全相同"
+        echo "         → MCO教训: 6个估值中4个说高估但评级说低估=自相矛盾"
+    fi
+fi
+
+# ============================================================
 # Layer 3: DM锚点密度 — Phase 1+ (EVO-ANET-003: 从Phase 3前移至Phase 1)
 # 设计: 检测"有文字但无数据支撑"的情况，越早发现越好
 # ============================================================
