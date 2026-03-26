@@ -661,3 +661,45 @@ entries:
     rating: "中性关注"
     expected_return: "-14%"
     skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/cq-lifecycle-tracker/ai-impact-analyzer/valuation-builder/SBC三层盈利框架"
+
+  - ticker: "ADSK"
+    date: "2026-03-26"
+    report: "ADSK_Complete_v1.0_2026-03-26.md"
+    chars: "195K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "FAILED"
+    dm_anchors: 270
+    mermaid_count: 28
+    pw: 3
+    method: "traditional"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "ADSK"
+    date: "2026-03-26"
+    report: "ADSK_Complete_v1.0_2026-03-26.md"
+    framework_version: "v19.7"
+    quality: 4.41
+    chars: "195K"
+    compliance: "G1豁免(用户确认密度优先) | G2-G8全PASS"
+    dm_anchors: 794
+    dm_density: "4.06/千字"
+    causal_density: "7.27/万字"
+    mermaid: 28
+    ks_count: 10
+    cq_count: 9
+    pw: 3.2
+    method: "traditional"
+    scorecard: "B32.0+C18.5=50.5/75(67.3%) | A-Score 5.90 | PtW 33/50"
+    rating: "中性关注"
+    expected_return: "+1.3%"
+    top_technique: "Standard/Owner双视角估值($45鸿沟=SBC资本化成本≈Bear PW拖累) | 回购η=0.11(72%回购=SBC填坑) | GRR交叉验证v2(DR变化率法) | 护城河迁移S曲线+脆弱窗口3.2年 | SBC敏感性双变量矩阵($130-$340)"
+    top_lesson: "DM密度4.06/千字(历史最高)但G1字符195K(72%)=密度vs广度tradeoff需框架层面解决 | 回购η=0.11是SaaS最低→高SBC公司回购本质是SBC抵消非股东回报 | FY2026 PSU扣SBC是治理改善硬信号(可作为基准事件) | G2 review量差异(929 vs 200)比评分差异(4.6 vs 4.2)更有Win Rate信息量"
+    evolution_proposed: "EVO-ADSK-01(SBC瀑布驱动因素分解→所有SaaS模板化) | EVO-ADSK-02(GRR间接验证v2 DR变化率法→不披露GRR的SaaS) | EVO-ADSK-03(Win Rate代理G2/Gartner→所有B2B/SaaS) | EVO-ADSK-04(护城河迁移S曲线模板→护城河迁移公司) | EVO-ADSK-05(圆桌CQ<70%自动触发→所有Tier3)"
+    evolution_status: proposed
+    skills_used: "data-prefetch/assumption-audit/deep-reflection(R2+R3)/competitive-benchmarking(G2/Gartner代理)"
