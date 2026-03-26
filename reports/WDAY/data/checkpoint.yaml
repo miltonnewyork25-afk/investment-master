@@ -15,18 +15,19 @@ target_range: "240K-375K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 97034
-  latest_phase_chars: 25974
+  total_chars: 119366
+  latest_phase_chars: 48306
   phase1_dm_density: 4.19
   phase1_causal_density: 21.81
   phase1_dm_count: 298
   phase1_chapters: 14
   sentinel_phase1: CLEARED
   phase1_supplements: [ch02A_fm_second_curve, ch03A_cohort_analysis, ch04A_flywheel_verification, ch05A_pricing_migration, ch06A_opex_leverage]
-  phase2_dm_density: 3.42
-  phase2_causal_density: 23.93
-  phase2_dm_count: 89
-  phase2_chapters: 4
+  phase2_dm_density: 2.98
+  phase2_causal_density: 25.25
+  phase2_dm_count: 144
+  phase2_chapters: 8
+  phase2_supplements: [ch10A_wacc_decision_tree, ch11A_working_capital, ch11B_roic_return_framework, ch12A_sotp_killswitch]
   sentinel_phase2: CLEARED
 
-last_updated: "2026-03-26T05:01:00+00:00"
+last_updated: "2026-03-26T05:30:00+00:00"
