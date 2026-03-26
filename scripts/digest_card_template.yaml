@@ -1,5 +1,5 @@
 # ============================================================
-# 投资研究摘要卡模板 v1.2
+# 投资研究摘要卡模板 v1.3
 # 压缩比目标: 20-30x
 #
 # 六层 + 三个新增重点区域:
@@ -72,7 +72,7 @@ thesis:
     entry_zone: ""
     catalyst: ""             # 什么创造入场机会
 
-  # ★ v1.2新增: 买卖决策框架 ★
+  # ★ v1.2新增, v1.3升级: 买卖决策框架 (内部专属, 不对外展示) ★
   action_framework:
     verdict: ""              # "当前可买@区间" / "等待买入@条件" / "持有" / "考虑减仓"
     buy_triggers:            # 触发买入的具体事件/价格
@@ -81,11 +81,32 @@ thesis:
         reasoning: ""
     hold_conditions:         # 持有需要保持为真的前提
       - ""
-    sell_triggers:           # 触发卖出的具体信号
+    position_sizing: ""      # Kelly结果或定性建议
+
+    # ★ v1.3新增: 完整卖出框架 (从报告迁入digest card, 避免对外误导) ★
+    sell_framework:
+      pe_ceiling:            # PE>Xx → 减仓Y% (59次验证, 最强信号)
+        threshold: ""        # 具体PE上限
+        action: ""           # 减仓比例
+        reasoning: ""        # 为什么这个PE是上限
+      cycle_peak:            # 周期高点信号 (20次验证)
+        signal: ""           # 什么指标到什么水平
+        action: ""
+      insider_signal:        # 内部人行为信号 (14次验证)
+        signal: ""           # CEO卖出/零买入/言行矛盾
+        action: ""
+      buyback_waste:         # 回购效率信号 (10次验证)
+        signal: ""           # eta<0.8
+        action: ""
+      thesis_break:          # 核心论点断裂 (Kill Switch — 此项可在报告中保留)
+        signal: ""           # 哪个承重墙断裂
+        action: ""           # 通常是全部卖出
+
+    sell_triggers:           # 具体卖出信号清单 (可多条)
       - signal: ""
         severity: ""         # warning / action / emergency
         action: ""           # 减仓X% / 全部卖出 / 观察N个季度
-    position_sizing: ""      # Kelly结果或定性建议
+        reasoning: ""        # 为什么这个信号重要
 
 # --- Layer 1.5: 因果链保真 ---
 # 每条链: 起点→传导→终点 + reasoning_habit(可迁移思维模式) + transferable_to

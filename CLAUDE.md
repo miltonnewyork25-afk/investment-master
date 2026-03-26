@@ -1,4 +1,4 @@
-# 投资研究 Agent — 主分支精简版 v19.8
+# 投资研究 Agent — 主分支精简版 v19.9
 
 > **Context优化**: 详细框架见 `docs/`。本文件仅含核心路由+铁律速查+行业路由。
 > **完整框架**: `docs/deep_dive_protocol.md` + 行业专用文档 + 质量门控协议
@@ -123,7 +123,7 @@
 | **L** | DM密度≥0.8硬门控, <0.5阻断 | `rule-L-dm-density.md` |
 | **M** | 反膨胀: 按需加载skill+章节独立+密度>流程+单章≤15% | `rule-M-anti-bloat.md` |
 | **N** | 证据链+三PE并列+概率三重锚定 | `rule-N-evidence-style.md` |
-| **P** | 卖出框架标准化: PE上限+周期高点+内部人+回购η | `rule-P-sell-framework.md` |
+| **P** | 卖出框架→内部digest card(不对外展示), 报告仅保留KS | `rule-P-sell-framework.md` |
 
 **触发规则**: 写Phase正文时自动读取相关铁律。Phase 1-3读G/H/I/M/N。Phase 4读J/K/P。Phase 5读全部。
 
@@ -201,4 +201,4 @@ Layer 3: quality_gate_complete.sh — 最终质量门控
 
 ## 系统升级
 
-**当前版本**: v19.8 (2026-03-26) | **版本历史**: `CHANGELOG.md`
+**当前版本**: v19.9 (2026-03-26) | **版本历史**: `CHANGELOG.md`
