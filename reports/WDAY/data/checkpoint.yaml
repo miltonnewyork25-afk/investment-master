@@ -15,12 +15,13 @@ target_range: "240K-375K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 51928
-  latest_phase_chars: 51928
-  phase1_dm_density: 4.12
-  phase1_causal_density: 17.90
-  phase1_dm_count: 214
-  phase1_chapters: 9
+  total_chars: 71060
+  latest_phase_chars: 71060
+  phase1_dm_density: 4.19
+  phase1_causal_density: 21.81
+  phase1_dm_count: 298
+  phase1_chapters: 14
   sentinel_phase1: CLEARED
+  phase1_supplements: [ch02A_fm_second_curve, ch03A_cohort_analysis, ch04A_flywheel_verification, ch05A_pricing_migration, ch06A_opex_leverage]
 
-last_updated: "2026-03-26T04:14:00+00:00"
+last_updated: "2026-03-26T04:30:00+00:00"
