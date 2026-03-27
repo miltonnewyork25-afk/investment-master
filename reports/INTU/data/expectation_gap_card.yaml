@@ -1,0 +1,238 @@
+# 预期差分析卡 v2.0 — Intuit (INTU)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "INTU"
+  company: "Intuit Inc."
+  analysis_date: "2026-03-27"
+  stock_price: "$432.55"
+  market_cap: "$120.4B"
+  data_snapshot: "FY2026 H1 (截至2026-01-31)"
+  tier: "tier2"
+  framework_version: "v2.0"
+
+core_judgment: "INTU是SaaS板块中另一个'叙事错误归因'案例——市场按'AI杀SaaS'叙事给INTU打了-47%折扣,但INTU的护城河本质是监管复杂度(7.5万页税法+年度变化)+CPA分发网络(4.6万家)+SMB数据锁定(3-7年会计历史)——这恰恰是AI最难commoditize的领域。增速在加速(13%→17-18%),FCF $6.1B(32% margin),品质基金(Fundsmith/Norges Bank)在买入,但SBC/Rev 10.5%使Owner PE(51x)远高于GAAP PE(25.6x),且FMP DCF认为当前价格高估18%——不如ADBE/CRM/WDAY便宜"
+gap_type: "underpriced_improvement"
+confidence: "medium"
+confidence_reasoning: "高置信: 监管护城河+CPA网络+SMB切换成本不受AI颠覆(事实级推理)。增速加速至17-18%(事实)。中等置信: GAAP PE 25.6x不算极端便宜(NOW/DDOG更贵但WDAY/CRM/ADBE P/FCF 10-12x更便宜)。降低置信: Mailchimp拖累(流失8%)+IRS Direct File政策风险+SBC/Rev 10.5%较高+FMP DCF说高估"
+
+expectations:
+  price_implied:
+    implied_fcf_cagr: "~8-10%"
+    p_fcf: "19.8x"
+    owner_pe_adjusted: "50.8x (NI $4.34B - SBC $1.97B = $2.37B → 120.4/2.37 = 50.8x — 显著高于GAAP PE)"
+    judgment: "reasonable_to_slightly_conservative"
+    judgment_reasoning: "P/FCF 19.8x对一个15%+增长者不算极度低估,但对比INTU自身历史PE(35-45x)确实处于历史低位。关键: Owner PE 51x提醒我们SBC负担重——真实盈利能力不如GAAP PE暗示的强"
+
+  consensus:
+    eps_next_fy: "$26.41 (FY27E, 24家分析师)"
+    revenue_next_fy: "$23.9B (FY27E, +27%)"
+    target_price_range: "$540 - $810(分析师,但已大幅下调)"
+    dispersion: "medium"
+    recent_revision_direction: "down — Barclays $785→$540, BMO $810→$624"
+
+  dominant_narrative: "INTU是AI恐惧中被错杀的'SaaS'——但市场没有区分税法复杂度护城河vs通用SaaS护城河"
+  bull_case_core: "监管护城河(7.5万页税法)+CPA网络(4.6万家)+2.8M AI用户+TT Live +20%+中端扩展(QBO Advanced +40%)+增速加速至17-18%"
+  bear_case_core: "Mailchimp流失8%(行业6%)+IRS Direct File扩展+SBC 10.5%(Owner PE 51x)+AI免费报税工具(ChatGPT)潜在替代"
+  market_most_confident_about: "SaaS板块整体面临AI重估(行业级叙事)"
+  market_most_uncertain_about: "IRS Direct File是否会规模化——如果政府推免费报税,TurboTax的DIY端TAM将结构性缩小"
+
+  smart_money:
+    institutional_ownership_trend: "increasing — 品质基金在买入"
+    notable_positions:
+      - investor: "Norges Bank(挪威主权基金)"
+        action: "新建仓$3.3B"
+        size: "$3.3B"
+        thesis: "长期品质持仓"
+        evidence_grade: "fact"
+      - investor: "Fundsmith LLP(品质复合基金)"
+        action: "增仓64%"
+        size: "未披露"
+        thesis: "品质复合器在折扣价买入"
+        evidence_grade: "fact"
+      - investor: "AllianceBernstein"
+        action: "增仓184%"
+        size: "未披露"
+        thesis: "N/A"
+        evidence_grade: "fact"
+    insider_behavior: "零买入,例行卖出(RSU vesting)。-47%跌幅中无insider conviction buy=轻度负面"
+    company_buyback:
+      amount: "$2.77B(FY25) + $3.5B加速回购(新宣布)"
+      sbc_coverage: "141%"
+      share_count_change: "-0.7%/年(基本持平,因SBC抵消大部分回购)"
+      trend: "accelerating — $3.5B新ASR在-27% YTD后宣布"
+    smart_money_signal: "bullish"
+    signal_reasoning: "Norges Bank($3.3B新建仓)+Fundsmith(+64%)+AllianceBernstein(+184%)=三家品质导向基金同时买入,这不是量化因子驱动而是基本面判断。$3.5B加速回购=管理层也认为便宜。但insider零买入削弱信号"
+
+reality:
+  company:
+    overall_trend: "accelerating"
+    trend_confidence: "high"
+    structural_vs_cyclical: "structural growth — 税务数字化+SMB软件化是长期趋势"
+    key_variables:
+      - name: "收入增速"
+        state: "accelerating"
+        data: "FY23 +12.9% → FY24 +13.3% → FY25 +15.6% | 近4Q: +15.1%→+20.3%→+18.3%→+17.4%"
+        evidence_grade: "fact"
+      - name: "GAAP OPM"
+        state: "accelerating"
+        data: "FY22 20.2% → FY23 21.9% → FY24 22.3% → FY25 26.2% (+600bps/3yr)"
+        evidence_grade: "fact"
+      - name: "FCF"
+        state: "accelerating"
+        data: "FY22 $3.66B → FY25 $6.08B (CAGR 18.4%)"
+        evidence_grade: "fact"
+      - name: "AI产品牵引"
+        state: "accelerating"
+        data: "2.8M客户使用Intuit Assist AI | TurboTax Live bookings +20% | AI增加assisted filing TAM"
+        evidence_grade: "fact"
+      - name: "Mailchimp"
+        state: "deteriorating"
+        data: "客户增长仅1%, 流失率8%(行业6%). $12B收购underperforming"
+        evidence_grade: "fact"
+      - name: "SBC负担"
+        state: "stable"
+        data: "SBC/Rev ~10.5%。回购$2.77B覆盖141%但股本仅-0.7%/yr=SBC几乎吃掉全部回购"
+        evidence_grade: "fact"
+
+    quality_signals:
+      revenue_driver: "价格+量双驱动——TurboTax提价+QBO Advanced上移(ARPU提升)+AI assistant增加assisted filing渗透"
+      customer_concentration_risk: "极低——1亿+报税用户,百万级SMB"
+      cash_flow_match: "OCF/NI 1.60x(健康)"
+      sbc_burden: "10.5%/Rev——高于ADBE(8.2%)/PTC(7.9%),与CRM(8.5%)接近。回购仅覆盖141%→股本几乎不缩=SBC是真实成本不是'可忽略的非现金项'"
+      organic_vs_acquired: "Mailchimp($12B)是负面案例——收购后增长停滞+流失超行业"
+
+    most_telling_facts:
+      - fact: "增速从13%加速到17-18%——在-47%的跌幅中,基本面在改善而非恶化"
+        why_telling: "市场定价'AI将减速INTU增长',但实际增速在加速。如果Q3-Q4持续>15%,市场叙事将被事实推翻"
+      - fact: "Norges Bank($3.3B)+Fundsmith(+64%)同时在-47%位置买入——品质基金的行为是最贵的'护城河仍在'声明"
+        why_telling: "Fundsmith是全球最挑剔的品质基金之一(持仓<30只,周转率<5%)。它加仓64%=经过深度调研后认为护城河完好+估值吸引"
+
+  industry:
+    total_market_trend: "growing"
+    total_market_source: "税务数字化+SMB软件化+AI assisted filing扩大TAM"
+    structural_shifts:
+      - shift: "AI降低报税门槛→从DIY向assisted filing迁移"
+        evidence_grade: "fact"
+        irreversibility: 4
+        speed: "medium"
+        company_position: "beneficiary — INTU的Intuit Assist让复杂报税变简单→扩大assisted filing TAM(更高ARPU)"
+      - shift: "IRS Direct File(政府免费报税)"
+        evidence_grade: "fact"
+        irreversibility: 3
+        speed: "slow"
+        company_position: "potential_victim — 但目前覆盖州少+功能简单(仅W-2工薪),不影响复杂报税(自雇/投资/多州)"
+    key_industry_fact: "★ 税法复杂度是AI不能commoditize的监管护城河。美国税法7.5万页,每年变化,错误有法律后果。AI让报税'更容易'但不能让报税'不需要专业工具'——因为税法不允许你错"
+
+  trend_price_divergence:
+    exists: true
+    description: "增速加速(13%→17-18%)+OPM扩张(20%→26%)+品质基金买入,但股价-47%"
+    most_likely_explanation: "SaaS板块一刀切恐慌——市场没有区分'INTU的监管护城河'vs'CRM/NOW的工作流护城河'(后者确实受AI威胁,前者不受)"
+
+gap:
+  scoring:
+    direction_clarity: 3
+    magnitude: 3
+    persistence: 4
+    verifiability: 4
+    industry_trend_support: 4
+    smart_money_alignment: 4
+    composite_score: 3.67
+
+  core_mispriced_variables:
+    - variable: "叙事错误归因——监管护城河≠通用SaaS护城河"
+      market_assumes: "'AI杀SaaS'适用于所有软件,包括INTU"
+      reality_shows: "TurboTax/QuickBooks的护城河是监管复杂度(7.5万页税法)+CPA网络(4.6万家)+SMB数据锁定。这是AI最难攻破的护城河类型——AI可以让报税更容易(INTU受益),但不能让报税不需要(因为税法不允许错)"
+      evidence_grade: "fact(税法复杂度)+inference(AI影响方向)"
+      valuation_sensitivity: "如果市场重新认识到INTU的护城河类型不同于通用SaaS,PE从25x→35x(历史均值)=上行40%"
+    - variable: "增速加速被估值压缩遮蔽"
+      market_assumes: "INTU增速将随SaaS板块减速"
+      reality_shows: "增速从13%加速到17-18%,AI(Intuit Assist)是加速器不是减速器"
+      evidence_grade: "fact"
+    - variable: "SBC/Owner PE矛盾——表面便宜但真实成本高"
+      market_assumes: "GAAP PE 25.6x=便宜"
+      reality_shows: "Owner PE 51x因SBC $1.97B。回购$2.77B覆盖SBC 141%但股本仅-0.7%/yr→SBC几乎完全对冲回购效果。这一点与ADBE(580%覆盖/-5%缩股)和CRM(359%/-3.1%)有本质差距"
+      evidence_grade: "fact"
+
+  one_sentence_judgment: "INTU是'叙事错误归因'的温和案例——监管护城河使其不受'AI杀SaaS'打击,增速在加速,品质基金在买入,但P/FCF 20x+Owner PE 51x意味着安全边际不如ADBE(10x)/CRM(12x)/WDAY(12x)大。在SaaS板块中INTU是'比市场认为的好,但不是最便宜的'"
+
+  same_narrative_comparison:
+    narrative: "AI杀SaaS"
+    peers:
+      - ticker: "ADBE"
+        p_fcf: "10.0x"
+        fcf_growth: "+27%"
+        sbc_coverage: "580%"
+        opm_direction: "+36.6%"
+      - ticker: "CRM"
+        p_fcf: "12.1x"
+        fcf_growth: "+16%"
+        sbc_coverage: "359%"
+        opm_direction: "+21.5%"
+      - ticker: "INTU"
+        p_fcf: "19.8x"
+        fcf_growth: "+18%"
+        sbc_coverage: "141%"
+        opm_direction: "+26.2%"
+    most_mispriced: "在估值维度,ADBE/CRM/WDAY(P/FCF 10-12x)比INTU(20x)更便宜。INTU的优势在护城河质量(监管护城河>工作流护城河),但估值折扣小于前三者"
+
+paradigm_shift:
+  signals_triggered: 2
+  company_role: "beneficiary"
+  role_evidence: "AI降低报税门槛→更多人从DIY升级到assisted filing(更高ARPU)→INTU是最大受益者(Intuit Assist 2.8M用户)。不需要'转型'——AI加强而非威胁核心模式"
+  pricing_error_pattern: "narrative_misattribution"
+  pattern_description: "与PTC相同——市场把适用于水平SaaS(CRM/NOW)的'AI杀seats'叙事错误应用于监管护城河型软件(INTU/PTC)。但INTU的折扣(-47%)比PTC(-34.5%)更大,可能因为(1)市值更大更受板块ETF影响 (2)IRS Direct File增加了不在PTC的政策风险维度"
+  pattern_confidence: "medium"
+  impact_on_gap_judgment: "叙事错误归因强化了underpriced判断,但INTU P/FCF 20x(vs ADBE 10x)的估值差距限制了上行弹性。如果SaaS板块修复,INTU会涨但涨幅可能小于ADBE/CRM/WDAY"
+
+triggers:
+  company_signals:
+    - signal: "FY26 Q3(税季)收入增速"
+      current_reading: "FY25 Q3 +15.1%"
+      bullish_threshold: ">17%(加速持续)"
+      bearish_threshold: "<13%(回到旧增速)"
+      why_matters: "Q3是INTU最大季度(TurboTax税季),验证AI加速假设"
+      next_data_point: "FY26 Q3(2026年5月)"
+    - signal: "Mailchimp流失率"
+      current_reading: "8%(行业6%)"
+      bullish_threshold: "<7%(改善)"
+      bearish_threshold: ">9%(继续恶化)"
+      why_matters: "$12B收购能否转正——如果Mailchimp继续拖累,管理层资本配置能力被质疑"
+      next_data_point: "逐季"
+    - signal: "IRS Direct File覆盖范围"
+      current_reading: "少数州,仅W-2简单报税"
+      bullish_threshold: "维持小范围+功能简单(不影响复杂报税)"
+      bearish_threshold: "扩展至>25州+增加自雇/投资功能"
+      why_matters: "唯一能结构性缩小TurboTax TAM的政策风险"
+      next_data_point: "IRS年度公告(每年1月)"
+
+  smart_money_signals:
+    - signal: "Fundsmith/Norges Bank持仓变化"
+      current_reading: "Fundsmith +64%, Norges Bank新建仓$3.3B"
+      bullish_threshold: "继续增持或持平"
+      bearish_threshold: "开始减持=品质基金改变判断"
+      why_matters: "品质基金的持续性比建仓更重要——它们买入的理由仍然成立吗?"
+      next_data_point: "Q1 2026 13F(2026年5月)"
+
+  falsification:
+    - condition: "连续2Q收入增速<12%且TurboTax市占率下降>2pp"
+      implication: "AI/IRS Direct File确实在侵蚀核心业务"
+      time_window: "6-9个月"
+    - condition: "SBC/Rev上升至>12%且股本增速>1%/yr"
+      implication: "SBC负担恶化+回购效果被完全对冲"
+      time_window: "12个月"
+
+  monitoring_horizon: "2-3季度"
+  next_reassessment_trigger: "FY26 Q3税季(2026年5月) — 验证AI加速+IRS Direct File影响"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 3.67(>3.5但不突出)。INTU的护城河确实优于大多数SaaS,但P/FCF 20x+Owner PE 51x意味着安全边际不如ADBE(10x)/CRM(12x)大。在有限研究资源下,优先深挖ADBE/CRM/WDAY(估值更极端),INTU等税季数据后再评估"
+  priority_research:
+    - "IRS Direct File深度分析: 政治动态+技术能力+用户采用率——这是INTU唯一的结构性政策风险"
+    - "Mailchimp诊断: $12B收购的ROI——是否应该剥离?(对比PTC剥离IoT的逻辑)"
+    - "INTU vs H&R Block在AI时代的竞争动态: Block的AI策略是什么?"
+  position_implication: "SaaS板块中的'稳健选择'而非'最大预期差'。护城河最强但估值折扣最小。适合已有ADBE/CRM/WDAY仓位后的补充配置"
+
+post_mortem:
+  verified: false

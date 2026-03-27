@@ -1,0 +1,150 @@
+# 预期差分析卡 v2.0 — PTC Inc (PTC)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "PTC"
+  company: "PTC Inc."
+  analysis_date: "2026-03-27"
+  stock_price: "$144.01"
+  market_cap: "$17.1B"
+  data_snapshot: "FY2025 (截至2025-09-30)"
+  tier: "tier2"
+  framework_version: "v2.0"
+
+core_judgment: "PTC暴露了框架最重要的新发现——'AI杀SaaS seats'叙事在CAD/PLM领域根本不适用。PTC的客户是机械工程师和制造企业,不是知识工作者;产品受物理约束和法规合规驱动,AI是增值工具(更高ASP)不是替代工具。市场按SaaS板块叙事一刀切给PTC打了-34.5%折扣,但P/FCF 20x对一个FCF margin 31%+OPM 36%+增速19%的工业软件垄断来说偏低。核心不确定性: 剥离IoT后有机增速是10%还是6%——这决定20x P/FCF是'合理'还是'低估'"
+gap_type: "underpriced_improvement"
+confidence: "medium"
+confidence_reasoning: "高置信: AI叙事不适用于CAD/PLM(物理约束+法规+切换成本)=事实。OPM从22%→36%的经营杠杆释放=事实。中等置信: 剥离IoT后有机增速不确定(10% vs 6%)。降低置信: Goodwill 65.6%资产=并购依赖+宏观/制造周期暴露"
+
+expectations:
+  price_implied:
+    implied_fcf_cagr: "~5-8%"
+    p_fcf: "20.0x"
+    owner_pe_adjusted: "33x (NI-SBC较高因SBC仅7.9%)"
+    judgment: "slightly_conservative"
+    judgment_reasoning: "可比ADSK ~30x P/FCF, ANSS ~35x。PTC 20x包含了IoT剥离不确定性折扣,但如果核心CAD/PLM增速维持10%+,应向ADSK收敛(24-28x)"
+
+  consensus:
+    eps_next_fy: "$7.73 (FY2026E) → Forward PE 18.6x"
+    revenue_next_fy: "$2.71B (FY2026E, 含IoT剥离影响)"
+    dispersion: "medium"
+    recent_revision_direction: "down — Mizuho/JPM降级+目标价下调,反映剥离+需求不确定性"
+
+  dominant_narrative: "PTC剥离IoT聚焦CAD/PLM, 但市场在消化~$135M收入缺口+制造业CapEx不确定性"
+  bull_case_core: "OPM 36%经营杠杆+FCF 31%+极高切换成本+AI是增值(Creo GenAI)不是替代+可比折价30-40%"
+  bear_case_core: "剥离后增速可能降至6-8%+制造周期/关税风险+Goodwill 65.6%+债务5.7x EBITDA"
+  market_most_uncertain_about: "核心有机增速post-divestiture: 10%+(bull) vs 6%(bear)"
+
+  smart_money:
+    insider_behavior: "零买入,例行卖出"
+    company_buyback:
+      amount: "$300M(FY25) + $375M ASR新宣布 = $675M"
+      sbc_coverage: "139%"
+      share_count_change: "+0.7%/年(微幅稀释,但ASR将改善)"
+      trend: "accelerating — 剥离收入用于加速回购"
+    smart_money_signal: "neutral_to_positive"
+    signal_reasoning: "管理层用剥离收入做ASR而非留现金=认为股票便宜。但没有insider买入+no大型基金建仓=缺乏强确认"
+
+reality:
+  company:
+    overall_trend: "inflecting_up"
+    trend_confidence: "medium-high"
+    key_variables:
+      - name: "GAAP OPM"
+        state: "accelerating"
+        data: "FY23 21.9% → FY24 25.6% → FY25 35.9% (+1400bps/2yr!)"
+        evidence_grade: "fact"
+      - name: "FCF"
+        state: "accelerating"
+        data: "FY22 $409M → FY25 $857M (CAGR 28%)"
+        evidence_grade: "fact"
+      - name: "毛利率"
+        state: "accelerating"
+        data: "FY22 80% → FY25 83.8% — 订阅转型完成释放毛利"
+        evidence_grade: "fact"
+      - name: "后IoT有机增速"
+        state: "uncertain"
+        data: "FY25含IoT +19.2%, 剥离后核心~10-12%, 但市场担忧降至6-8%"
+        evidence_grade: "inference"
+
+  industry:
+    total_market_trend: "growing"
+    total_market_source: "制造业数字化/Industry 4.0持续推进"
+    structural_shifts:
+      - shift: "AI赋能工程设计(生成式设计/拓扑优化)"
+        evidence_grade: "fact"
+        irreversibility: 4
+        speed: "medium"
+        company_position: "beneficiary — AI增加功能→justify更高ASP, 不是替代工具"
+    key_industry_fact: "★关键发现: CAD/PLM不在'AI杀SaaS'的打击范围内——工程设计受物理定律约束, 航空/汽车/医疗需要可审计设计记录, 切换成本是多年多百万美元级别。AI在这里是增值,不是替代"
+
+  trend_price_divergence:
+    exists: true
+    description: "OPM从22%→36%(3年翻倍)+FCF CAGR 28%,但股价-34.5%=被SaaS板块叙事拖累"
+    most_likely_explanation: "市场按'SaaS行业标签'定价PTC,但PTC的客户/产品/竞争动态与水平SaaS(CRM/WDAY/NOW)根本不同"
+
+gap:
+  scoring:
+    direction_clarity: 3
+    magnitude: 3
+    persistence: 4
+    verifiability: 4
+    industry_trend_support: 4
+    smart_money_alignment: 3
+    composite_score: 3.50
+
+  core_mispriced_variables:
+    - variable: "AI叙事的错误归因——CAD/PLM不是水平SaaS"
+      market_assumes: "'AI杀SaaS seats'适用于所有软件公司"
+      reality_shows: "CAD/PLM客户是工程师不是知识工作者;产品受物理约束+法规合规;切换成本极高(迁移20年产品数据=多年项目);AI增加功能(生成式设计)而非替代工具"
+      evidence_grade: "fact"
+      valuation_sensitivity: "如果市场区分'工业软件'vs'水平SaaS',PTC P/FCF应从20x向ADSK 30x收敛=上行50%"
+
+  one_sentence_judgment: "PTC是框架测试中最重要的'叙事错误归因'案例——市场把'AI杀SaaS seats'的水平叙事强加于CAD/PLM工业软件,但AI在这个领域是增值工具而非替代威胁。20x P/FCF对一个OPM 36%、FCF CAGR 28%、极高切换成本的工业垄断来说可能偏低"
+
+  same_narrative_comparison:
+    narrative: "AI杀SaaS"
+    peers:
+      - ticker: "ADSK"
+        p_fcf: "~30x"
+      - ticker: "PTC"
+        p_fcf: "20x"
+    most_mispriced: "PTC vs ADSK折价30-40%,但PTC OPM更高(36% vs ~25%)且FCF margin相近(31%)"
+
+paradigm_shift:
+  signals_triggered: 2
+  company_role: "beneficiary"
+  role_evidence: "AI在CAD/PLM是增值工具(Creo GenAI, 生成式设计)。不需要'转型'——旧模式不被AI颠覆"
+  pricing_error_pattern: "新模式: narrative_misattribution — 把适用于A行业的叙事错误应用于B行业"
+  pattern_confidence: "medium-high"
+  impact_on_gap_judgment: "PTC暴露了框架需要增加的新维度: '叙事适用性检验'——在判断预期差之前,先问'这个行业叙事是否真的适用于这家公司?'"
+
+triggers:
+  company_signals:
+    - signal: "FY26 Q2-Q3有机ARR增速(剥离IoT后)"
+      current_reading: "未知(首次post-divestiture报告)"
+      bullish_threshold: ">10%(核心业务强劲)"
+      bearish_threshold: "<7%(可能真的减速)"
+      why_matters: "唯一能验证'10% vs 6%有机增速'争论的数据"
+      next_data_point: "FY26 Q2(预计2026年4月)"
+
+  falsification:
+    - condition: "连续2Q有机ARR增速<6%且新ACV下降"
+      implication: "核心CAD/PLM需求恶化,不只是IoT剥离影响"
+      time_window: "6个月"
+    - condition: "AI工程设计工具(如纯AI CAD)开始获得制造企业采用"
+      implication: "AI从增值变成替代=叙事错误归因判断被证伪"
+      time_window: "18个月"
+
+  monitoring_horizon: "2-3季度"
+  next_reassessment_trigger: "FY26 Q2(首次剥离后有机数据)"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 3.50(临界值)。核心不确定性(post-divestiture增速)需要1-2季度数据验证。等待FY26 Q2后评估是否升级"
+  priority_research:
+    - "ADSK vs PTC估值对比深度分析: 为什么30-40%折价?公司质量差距还是市场错判?"
+    - "CAD/PLM行业AI影响专题: Creo GenAI vs AutoCAD AI vs SolidWorks AI的真实客户采用情况"
+
+post_mortem:
+  verified: false
