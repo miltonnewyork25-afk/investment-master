@@ -661,3 +661,22 @@ entries:
     rating: "中性关注"
     expected_return: "-14%"
     skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/cq-lifecycle-tracker/ai-impact-analyzer/valuation-builder/SBC三层盈利框架"
+
+  - ticker: "WDAY"
+    date: "2026-03-27"
+    quality: 4.41
+    chars: "312K"
+    compliance: "PASS (G1✅ G2✅ G3✅ G4✅ G5✅)"
+    dm_anchors: 1099
+    dm_density: "3.52/千字"
+    causal_density: "10.59/万字"
+    mermaid: 42
+    ks_count: 10
+    cq_count: 8
+    top_technique: "SBC η效率(0.45)瀑布分解+M1.4b循环依赖检测(尾部3.3x修正)+GRR分层推断(F500 99.5%/中端96.2%/SMB 91%)+增速三维分解(新客6.5pp/提价4.8pp/扩展3.0pp)+飞轮净强度量化(0.76)+管理层决策ROIC(2.63/5)+衰退压力测试(CRM 2008→SaaS韧性)+E1演绎法AI传导(5步链+窗口期4年)+定价转型弹性(ε=0.45)"
+    top_lesson: "SBC是系统性问题(非参数调整)——η/瀑布/循环/FASB/飞轮5维形成网络。FCF口径vs FCF-SBC口径=$115/share差异=评级翻转变量。NRR队列自然衰减→整体NRR FY2031可能降至100%。Rippling侵蚀$808M/5年但对总收入<5%。管理层回购@$226毁灭$1.3B价值。衰退测试反而利好(Bear FV从$71→$80)。演绎法发现AI安全期4年+过渡期2年。定价转型ε=0.45验证了提价4.8pp贡献"
+    evolution_proposed: "EVO-WDAY-01(SaaS定价转型模块: seat→consumption过渡建模) | EVO-WDAY-02(衰退压力测试标准化: 2008/2020→SaaS韧性基准率) | EVO-WDAY-03(AI演绎法5步链标准化模板) | EVO-WDAY-04(AI迁移成本评估框架: Layer 3削弱量化) | EVO-WDAY-05(GRR分层推断标准化: 从整体→客户层独立GRR)"
+    evolution_status: proposed
+    rating: "关注"
+    expected_return: "+12% (FCF-SBC口径)"
+    skills_used: "data-prefetch/assumption-audit(M1+M1.4b+M2+M3)/red-team-suite(RT1-7+Part B+C)/risk-topology(MVP 10+3+1)/omission-scanner(Part A+B)/cq-lifecycle-tracker/valuation-quality-gate(G1)/competitive-benchmarking/deep-reflection(R1复用+R2+R3)"
