@@ -1,7 +1,7 @@
 ticker: CRWD
 tier: 3
-current_phase: "Phase 1 Complete"
-status: "Phase 1完成(53.5K字符/116 DM/9章+4附录)+三大质量修复, 待Phase 2"
+current_phase: "Phase 2 Complete"
+status: "Phase 2完成(25.3K字符/51 DM/4章)+Python估值模型, 待Phase 3"
 last_updated: "2026-03-27"
 branch: "生态科技"
 
@@ -47,37 +47,63 @@ completed:
       dm_anchors: 116
       causal_markers: 32
       chapters: "9章+4附录"
-      terminology_explanations: 15+
-      probability_triple_anchors: 2
+  - phase: "Phase 2 财务与价格含义"
+    date: "2026-03-27"
+    outputs:
+      - "reports/CRWD/CRWD_Deep_Dive_Phase2.md"
+      - "reports/CRWD/data/crwd_phase2_dcf.py"
+      - "reports/CRWD/data/crwd_phase2_valuation.json"
+    metrics:
+      characters: 25288
+      dm_anchors: 51
+      dm_density: "2.01/千字"
+      causal_density: "10.31/万字"
+      chapters: "4章(Ch10-Ch13)+附录E"
+      python_verified: true
 
 next_steps:
-  - "Phase 2: 财务与价格含义"
-  - "  - Reverse DCF完整信念反演(6信念+脆弱度+翻转)"
-  - "  - Python估值模型(DCF+SOTP+可比+概率加权)"
-  - "  - SBC收敛路径定量建模"
-  - "  - 内核移除对PE中枢的定量影响"
   - "Phase 3: 竞争与深挖"
+  - "  - 护城河重估: 内核移除后五引擎强度变化量化"
+  - "  - PANW XSIAM vs LogScale直接对标"
+  - "  - Microsoft E5+Copilot SMB份额蚕食速度"
+  - "  - Kill Switch定义(可监控指标+阈值)"
   - "Phase 4: 红队"
+  - "  - RT-1: 正面挑战$164 vs分析师$548"
   - "Phase 5: 组装"
 
-cq_confidence_after_p1:
-  CQ1_SBC: "65%偏Owner PE — 三版盈利+SBC剪刀差+FCF-SBC Yield证据链"
-  CQ2_outage: "75%已恢复 — GRR 97%+NRR 115%+净新ARR创纪录$1.01B"
-  CQ3_logscale: "55%可达 — $585M+75%增速+Splunk窗口, 但XSIAM竞争"
-  CQ4_kernel: "60%风险真实(三锚后校准至20-36%联合概率)"
-  CQ5_valuation: "55%偏高估 — Reverse DCF隐含条件苛刻+Owner PE 468x"
-  CQ6_charlotte: "45%将货币化 — AgentWorks生态利好但零定价已>2年"
+cq_confidence_after_p2:
+  CQ1_SBC: "75%偏Owner PE — Python模型: 即使FCF DCF也高估41%; B3唯一可单独翻转的信念"
+  CQ2_outage: "80%已恢复 — RPO+38%确认合同承诺加速; NRR仍低于宕机前5pp"
+  CQ3_logscale: "55%可达(不变) — Phase 2未新增数据"
+  CQ4_kernel: "60%风险真实(不变) — SOTP量化端点折扣15%"
+  CQ5_valuation: "80%偏高估 — 9子情景+SOTP+敏感性全面指向高估; 混合$164(-58%); 无参数组合支撑$393"
+  CQ6_charlotte: "40%将货币化 — SOTP期权价值仅$2.25B(EV的2.4%)"
 
 hypotheses:
-  H1: "SBC无收敛意愿 — 三锚概率: A(主动纪律)15%/B(分母驱动)45%/C(零收敛)40%"
-  H2: "内核移除→功能趋同 — 三锚联合概率20-36%"
-  H3: "Charlotte AI+LogScale估值之锚 — 待FY2027-2028验证"
+  H1: "SBC无收敛意愿 — B3脆弱度4.7/5, 唯一可单独翻转评级的承重墙"
+  H2: "内核移除→功能趋同 — 端点SOTP折扣15%已量化"
+  H3: "Charlotte AI+LogScale估值之锚 — Charlotte AI期权值仅$2.25B, 即使成功难改大局"
 
 key_discoveries:
-  - "Owner PE 468x (FCF-SBC Yield 0.21%) — 股东真实回报极低"
-  - "SBC剪刀差: 4年中3年SBC增速>收入增速, 且FY2024收敛后立即反弹"
-  - "Windows内核移除: 联合概率20-36%, 3-5年渐进, Linux实验提供部分安慰"
-  - "Charlotte AI: 使用量6x但零独立定价=飞轮第三连接点断裂"
-  - "叙事错误归因: CRWD -22% YTD中~5-8%来自AI一刀切(CRWD实为AI净受益者)"
-  - "P/(FCF-SBC)对标: CRWD 468x vs FTNT 31x vs ADBE 13x"
-  - "FCF 3年+41%但Owner FCF零增长(SBC完全吞噬增长)"
+  phase1:
+    - "Owner PE 468x (FCF-SBC Yield 0.21%)"
+    - "SBC 5年零收敛+管理层行为否定收敛叙事"
+    - "Windows内核移除→端点功能趋同+MSFT不对称优势"
+    - "Charlotte AI零独立定价=飞轮第三连接点断裂"
+    - "FCF 3年+41%但Owner FCF零增长(SBC完全吞噬增长)"
+  phase2:
+    - "隐含FCF CAGR 24.7% — 超当前收入增速22%"
+    - "隐含Owner FCF CAGR 50%+ — 数学不现实"
+    - "B3(SBC)是唯一可单独翻转评级的信念"
+    - "B1×B3制度性矛盾: CEO PSU鼓励增长但阻碍SBC纪律"
+    - "概率加权混合$164, 无任何参数组合支撑$393"
+    - "即使不扣SBC的FCF DCF也仅$230(-41%)"
+    - "3年Owner FCF下降16% — 增长未创造股东价值"
+
+valuation_summary:
+  dcf_fcf: "$230 (-41%)"
+  dcf_owner: "$98 (-75%)"
+  blended: "$164 (-58%)"
+  sotp: "$217 (-45%)"
+  analyst_consensus: "$548 (+40%)"
+  morningstar: "$460 (+17%)"
