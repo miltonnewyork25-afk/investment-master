@@ -1,0 +1,124 @@
+# 预期差分析卡 v2.1 — Applied Materials (AMAT)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "AMAT"
+  company: "Applied Materials, Inc."
+  analysis_date: "2026-03-27"
+  stock_price: "$338.55"
+  market_cap: "$269B"
+  data_snapshot: "FY2025 (FY ends Oct)"
+  tier: "tier2"
+  framework_version: "v2.1"
+  linked_report: "reports/AMAT/AMAT_Complete_v1.0_2026-02-16.md"
+
+core_judgment: "AMAT是三家设备中'周期风险最小但估值溢价仍过高'的——38x峰值PE是历史区间(12-22x)的1.7-3.2倍,但比KLAC(49x)和LRCX(51x)便宜。AMAT的独特优势: (1)收入在2022-2024下行周期几乎持平(vs LRCX -14%) (2)OPM仅压缩1-2pp(最稳定) (3)服务收入~30%(经常性,抗周期)。如果必须在三家中选一家长期持有,AMAT风险回报最好——但38x峰值PE仍然意味着在周期回调中下行空间巨大(-70%到谷值PE)"
+gap_type: "overpriced_optimism"
+confidence: "medium"
+confidence_reasoning: "高置信: 38x PE vs 历史12-22x=过高。中等置信: AMAT多元化(逻辑+存储+服务+先进封装)确实使其比KLAC/LRCX更防守——'最不过高'不等于'不过高'"
+
+expectations:
+  price_implied:
+    p_fcf: "47x"
+    judgment: "aggressive — 但三家中最合理(KLAC 49x, LRCX 51x)"
+
+  dominant_narrative: "AMAT是最多元化的设备商——GAA+先进封装+服务=结构性增长层叠在周期之上"
+  bull_case_core: "GAA转型增加沉积步骤+先进封装(CoWoS)翻倍增长+服务30%收入(抗周期)+收入在下行周期几乎不跌"
+  bear_case_core: "38x峰值PE仍是历史极值+共识期望+32%增长需要周期持续+中国限制"
+
+reality:
+  company:
+    overall_trend: "stable_growing — 三家中最平稳"
+    key_variables:
+      - name: "收入稳定性"
+        state: "stable"
+        data: "FY22 $25.8B → FY23 $26.5B(+3%) → FY24 $27.2B(+2%) → FY25 $28.4B(+4%) — 下行周期几乎没跌!"
+        evidence_grade: "fact"
+      - name: "OPM稳定性"
+        state: "stable"
+        data: "30.2% → 28.9% → 28.9% → 29.2% — 仅1-2pp波动,三家最稳定"
+        evidence_grade: "fact"
+      - name: "服务收入(抗周期)"
+        state: "stable"
+        data: "~30%收入来自服务/零件(经常性,不受WFE周期影响)"
+        evidence_grade: "fact"
+      - name: "先进封装"
+        state: "accelerating"
+        data: "CoWoS/先进封装是AI芯片瓶颈→AMAT是设备供应商。TAM从$5B→$10B+(2024-2027)"
+        evidence_grade: "fact"
+
+  industry:
+    key_industry_fact: "AMAT在2022-2024下行周期中收入几乎持平——这在半导体设备中极罕见。原因: 多元化(逻辑30%+存储25%+服务30%+其他15%)使任一终端市场下行都被其他市场缓冲"
+
+gap:
+  scoring:
+    direction_clarity: 3
+    magnitude: 3
+    persistence: 3
+    verifiability: 3
+    industry_trend_support: 3
+    smart_money_alignment: 2
+    composite_score: 2.83
+
+  core_mispriced_variables:
+    - variable: "38x峰值PE仍过高但下行风险小于KLAC/LRCX"
+      market_assumes: "AI结构性增长justify更高PE"
+      reality_shows: "AMAT的多元化确实降低了周期风险(收入不跌+OPM不压缩)。但38x vs历史12-22x仍然意味着在严重下行中回到$100-$130(15x×$6.75谷值EPS)"
+      evidence_grade: "fact"
+    - variable: "三家相对排序: AMAT是'最不过高'的"
+      market_assumes: "三家设备定价相似"
+      reality_shows: "AMAT 38x < KLAC 49x < LRCX 51x。考虑到AMAT的收入稳定性最强+OPM波动最小+服务30%抗周期,AMAT的相对折价有基本面支撑"
+      evidence_grade: "fact"
+
+  one_sentence_judgment: "AMAT是半导体设备中的'最不坏选择'——38x峰值PE仍过高(历史12-22x),但多元化(逻辑+存储+服务+封装)+收入在下行周期几乎不跌+OPM仅压缩1-2pp使其风险回报优于KLAC和LRCX。如果必须在WFE周期峰值持有设备股,选AMAT"
+
+  same_narrative_comparison:
+    narrative: "AI驱动WFE超级周期"
+    peers:
+      - ticker: "KLAC"
+        pe_peak: "49x"
+        pe_history: "15-30x"
+        cycle_beta: "0.5x(最防守)"
+        downside_to_trough: "-72%"
+      - ticker: "LRCX"
+        pe_peak: "51x"
+        pe_history: "12-25x"
+        cycle_beta: "1.0x(最高)"
+        downside_to_trough: "-81%"
+      - ticker: "AMAT"
+        pe_peak: "38x"
+        pe_history: "12-22x"
+        cycle_beta: "0.7x(中间)"
+        downside_to_trough: "-70%"
+    most_mispriced: "相对而言AMAT最合理(最低PE+最强多元化)。绝对而言三家都在周期峰值+历史PE极端——不是买入时机"
+
+paradigm_shift:
+  company_role: "beneficiary — GAA+先进封装是结构性增长,但不改变WFE周期性"
+  pricing_error_pattern: "cycle_peak_premium — 三家都犯同一个错误:在周期峰值给增长公司估值"
+  impact_on_gap_judgment: "★框架新发现: 'cycle_peak_premium'是半导体设备的独特定价错误模式——市场在景气周期用增长股PE给周期股估值,忽视了收入/利润的均值回归性。这是PEP-006"
+
+triggers:
+  company_signals:
+    - signal: "WFE总支出方向(SEMI季度更新)"
+      bullish_threshold: "2027E >$160B(第4年增长=超级周期确认)"
+      bearish_threshold: "<$140B(见顶信号)"
+    - signal: "AMAT积压订单变化"
+      bullish_threshold: "增长(需求仍强)"
+      bearish_threshold: "下降(前瞻恶化)"
+    - signal: "先进封装收入增速"
+      bullish_threshold: ">40%(结构性增长引擎)"
+      bearish_threshold: "<15%(CoWoS瓶颈缓解=需求正常化)"
+  falsification:
+    - condition: "WFE 2027实际增速>10%且AMAT收入+20%+(连续第4年)"
+      implication: "AI超级周期打破历史规律——overpriced判断被证伪,38x可能合理"
+      time_window: "12-18个月"
+  monitoring_horizon: "4-6季度(周期需要更长验证)"
+  next_reassessment_trigger: "SEMI 2026年中WFE预测更新"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 2.83。overpriced方向(三家都是)。已有v1.0报告(291K)。当前是观察而非买入时机"
+  position_implication: "三家中如果只能持有一家→AMAT(最多元化+最低PE+最强抗周期)。但绝对而言: 等待WFE回调再入场"
+
+post_mortem:
+  verified: false
