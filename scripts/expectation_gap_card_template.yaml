@@ -242,6 +242,53 @@ triggers:
   monitoring_horizon: ""
   next_reassessment_trigger: ""
 
+# === P域: 范式转移检测 (v2.0新增) ===
+paradigm_shift:
+  # P1: 五信号检测
+  signals:
+    pricing_unit_shift:
+      status: ""                       # not_triggered / early / mid / late
+      old_unit: ""                     # 旧定价单元
+      new_unit: ""                     # 新定价单元
+      penetration: ""                  # 新模式渗透率
+      evidence: ""
+
+    new_vocabulary_density:
+      status: ""                       # low / medium / high
+      examples: []                     # 近2年出现的新术语
+      evidence: ""
+
+    investment_intensity:
+      status: ""                       # low / threshold / breakthrough / explosion
+      ratio: ""                        # 投资/TAM比率
+      evidence: ""
+
+    adoption_penetration:
+      status: ""                       # <10% / 10-25%(sweet_spot) / 25-50% / >50%
+      current_rate: ""
+      acceleration: ""                 # 加速/稳定/减速
+      evidence: ""
+
+    reflexivity_loop:
+      status: ""                       # none / weak / strong / bubble
+      loop_description: ""             # 自强化循环描述
+      break_risk: ""                   # 什么可能打断循环
+
+  signals_triggered: 0                 # 触发数量(≥3=范式转移可能)
+
+  # P2: 公司定位
+  company_role: ""                     # self_disruptor / adapter / resister / disruptor
+  role_evidence: ""
+  historical_analog: ""                # 最接近的历史类比(Adobe/Siebel/Salesforce等)
+
+  # P3: 定价错误模式匹配
+  pricing_error_pattern: ""            # pattern_A / pattern_B / pattern_C / pattern_D / none
+  pattern_description: ""
+  pattern_confidence: ""               # high / medium / low
+
+  # P4: 范式转移对预期差的影响
+  impact_on_gap_judgment: ""           # 范式转移视角如何改变/加强/削弱E→R→G的判断
+
 # === 后续行动 ===
 next_actions:
   deep_dive_worthy: false
