@@ -1,0 +1,183 @@
+# ============================================================
+# 预期差模式库 v1.0
+# Expectation Gap Pattern Registry
+#
+# 用途: 每次执行/expectation-gap时,Step 0强制加载本文件
+# 更新: 每完成一次分析后,如发现新模式,追加到对应section
+# 索引: 按pattern_id引用,在YAML卡片中标注匹配的模式
+# ============================================================
+
+# --- 已发现的定价错误模式 (Pricing Error Patterns) ---
+pricing_error_patterns:
+
+  - id: "PEP-001"
+    name: "叙事错误归因 (Narrative Misattribution)"
+    discovered_from: "PTC + INTU vs CRM/NOW/WDAY (2026-03-27)"
+    description: "市场把适用于A子行业的叙事错误应用于B子行业。例如'AI杀SaaS seats'适用于工作流SaaS但不适用于CAD/PLM(物理约束)和税务软件(监管护城河)"
+    detection_rule: "在Step 0检查: 行业主流叙事是否真的适用于本公司的护城河类型?"
+    check_questions:
+      - "本公司的护城河类型是什么? (监管/物理约束型 vs 数据/切换成本型 vs 创意/工作流型)"
+      - "行业主流恐惧叙事(如'AI杀seats')对本公司的护城河有实际影响吗?"
+      - "有没有与本公司护城河类型相同但估值不同的可比公司?"
+    examples:
+      - "PTC: 市场按'AI杀SaaS'打折34.5%,但CAD/PLM受物理约束,AI是增值工具不是替代"
+      - "INTU: 市场按'AI杀SaaS'打折47%,但税法复杂度是AI不能commoditize的监管护城河"
+    applicable_to: "任何行业中存在'一刀切叙事'的情况"
+
+  - id: "PEP-002"
+    name: "资本回报分层盲区 (Capital Return Blindness)"
+    discovered_from: "ADBE(580%) vs DDOG(0%) — 7家SaaS对比 (2026-03-27)"
+    description: "市场按行业标签统一定价,忽视同行业公司间资本回报行为(SBC覆盖率/净缩股率)的巨大差异。年化差距可达15pp(ADBE +10%/yr vs DDOG -5%/yr)"
+    detection_rule: "在Step 1计算: SBC覆盖率 + 净缩股率,与同行业对比是否有异常值"
+    check_questions:
+      - "回购覆盖SBC多少倍? (>200%=强, 100-200%=中, <100%=弱, 0%=无)"
+      - "股本是在缩还是在膨? 年化速率多少?"
+      - "管理层是用FCF回购(常规)还是举债回购(极强信号)?"
+      - "同行业中谁的资本回报最强/最弱? 估值是否反映了这个差异?"
+    examples:
+      - "ADBE回购580%覆盖+缩股5%/yr → 年回报市值9.4%"
+      - "DDOG零回购+稀释4.8%/yr → 年损失市值~5%"
+      - "差距15pp/yr,3年复合50% — 但市场给DDOG 44x,给ADBE 10x"
+    applicable_to: "所有SBC比重大的行业(科技/生物医药),以及任何有回购差异的行业"
+
+  - id: "PEP-003"
+    name: "范式转移速度溢价 (Paradigm Shift Speed Premium)"
+    discovered_from: "SaaS per-seat→outcome转型 40%渗透 vs 市场按100%定价 (2026-03-27)"
+    description: "市场正确识别了范式转移方向但错估了速度——按'已完成'定价'进行中'的转型。历史先例(Adobe 2012)显示转型需3-5年,但市场在Year 1就给了Year 5的折价"
+    detection_rule: "在R域评估: 范式转移的实际渗透率 vs 市场隐含的渗透假设"
+    check_questions:
+      - "当前渗透率是多少? (<10%=太早, 10-25%=拐点区, 25-50%=主流化, >50%=晚期)"
+      - "市场定价隐含的渗透率是多少? (从估值反推)"
+      - "历史上类似转型用了多久? (Adobe: 3年, Oracle云: 5年)"
+      - "如果转型速度比市场隐含的慢2-3x,估值应该多少?"
+    examples:
+      - "SaaS板块: 40%渗透但股价按100%转型定价 = 时间套利2-3年"
+      - "Adobe 2012: 转型宣布→收入低谷→反弹用了3年,期间P/FCF底部15x"
+    applicable_to: "任何行业的范式转移: EV/云/AI/从产品到服务等"
+
+  - id: "PEP-004"
+    name: "转型阵痛当永久衰退 (Pattern B — Transition Pain as Permanent Decline)"
+    discovered_from: "WDAY/CRM vs Adobe 2012先例 (2026-03-27)"
+    description: "市场看到增速放缓+定价模型变化→定价'永久衰退'。但历史显示自我颠覆者的收入低谷持续2-3年后反弹(Adobe股价3x)"
+    detection_rule: "当公司增速放缓但同时有: (1)主动投资新模式 (2)OPM在扩张 (3)FCF在增长 → 可能是模式B而非真衰退"
+    check_questions:
+      - "公司是否在主动投资新定价/新产品模式? (是=自我颠覆,可能是模式B)"
+      - "OPM是在恶化还是在扩张? (扩张=转型中但效率在改善)"
+      - "FCF是在增长还是在萎缩? (增长=业务健康,增速放缓不等于衰退)"
+    examples:
+      - "WDAY: 增速13%(减速)但OPM -3.6%→+10.7%(大幅扩张)+FCF +27%+回购208% = 不是衰退是转型"
+      - "CRM: 增速10%(减速)但FCF $14.4B(增长)+Agentforce $1.4B(新模式) = 同上"
+    applicable_to: "任何正在经历商业模式转型的公司"
+
+  - id: "PEP-005"
+    name: "催化剂验证金字塔 (Catalyst Verification Pyramid)"
+    discovered_from: "INTC 18A HVM vs 市场定价 (2026-03-27)"
+    description: "对于转型/turnaround公司,催化剂有四层验证: 技术可行→经济可行→商业可行→规模可行。市场经常在Level 1验证后就按Level 4定价"
+    detection_rule: "当公司有重大技术/产品里程碑时,检查: 市场在哪一层验证上定价?"
+    check_questions:
+      - "催化剂处于金字塔的哪一层? (技术/经济/商业/规模)"
+      - "市场定价隐含的是哪一层成功? (如果隐含Level 4但实际只在Level 1=高估)"
+      - "从当前层到下一层需要什么条件和多长时间?"
+    examples:
+      - "INTC: 18A达HVM(Level 1技术可行)但市场按$220B定价(隐含Level 3-4商业+规模可行)"
+    applicable_to: "所有转型/turnaround公司,以及有重大新产品发布的公司"
+
+# --- 行业特定检查清单 (Industry-Specific Checklists) ---
+industry_checklists:
+
+  saas:
+    name: "SaaS行业专用检查"
+    mandatory_metrics:
+      - "P/FCF(替代P/E作为主估值锚)"
+      - "Owner PE = 市值 / (NI - SBC + 净回购)"
+      - "SBC覆盖率 = 回购 / SBC"
+      - "净缩股率 = 年化股本变化"
+      - "同叙事P/FCF排序(面对同一AI叙事的可比公司)"
+    moat_type_classification:
+      - type: "regulatory_physical"
+        description: "监管复杂度/物理约束型(INTU/PTC)"
+        ai_resistance: "high"
+        typical_mispricing: "叙事错误归因(PEP-001)"
+      - type: "data_switching_cost"
+        description: "数据锁定/切换成本型(WDAY/CRM)"
+        ai_resistance: "medium"
+        typical_mispricing: "转型阵痛当衰退(PEP-004)"
+      - type: "creative_workflow"
+        description: "创意工具/工作流型(ADBE/NOW)"
+        ai_resistance: "low-medium"
+        typical_mispricing: "可能合理但可能过度(需逐案分析)"
+    capital_return_benchmarks:
+      excellent: "SBC覆盖>200% + 缩股>2%/yr (ADBE/CRM)"
+      good: "SBC覆盖>150% + 缩股>1%/yr (WDAY)"
+      adequate: "SBC覆盖100-150% + 股本持平 (INTU/PTC/NOW)"
+      poor: "SBC覆盖<100% 或 零回购 (DDOG)"
+
+  # 未来行业模板占位
+  semiconductor:
+    name: "半导体行业专用检查(待建)"
+    note: "需要: WFE周期位置/库存天数/CapEx周期/地缘政治溢价"
+
+  consumer:
+    name: "消费品行业专用检查(待建)"
+    note: "需要: 定价权分层/渠道份额/品牌价值/PL竞争"
+
+# --- 已完成的预期差分析卡索引 ---
+completed_cards:
+  - ticker: "ADBE"
+    gap_type: "excessive_pessimism"
+    composite_score: 3.83
+    key_pattern: "PEP-002(资本回报盲区) + PEP-003(速度溢价)"
+    card_path: "reports/ADBE/data/expectation_gap_card.yaml"
+
+  - ticker: "CRM"
+    gap_type: "underpriced_improvement"
+    composite_score: 4.33
+    key_pattern: "PEP-004(转型阵痛当衰退) + PEP-002(资本回报盲区)"
+    card_path: "reports/CRM/data/expectation_gap_card.yaml"
+
+  - ticker: "WDAY"
+    gap_type: "excessive_pessimism"
+    composite_score: 4.17
+    key_pattern: "PEP-004(转型阵痛当衰退) + PEP-003(速度溢价)"
+    card_path: "reports/WDAY/data/expectation_gap_card.yaml"
+
+  - ticker: "INTU"
+    gap_type: "underpriced_improvement"
+    composite_score: 3.67
+    key_pattern: "PEP-001(叙事错误归因)"
+    card_path: "reports/INTU/data/expectation_gap_card.yaml"
+
+  - ticker: "PTC"
+    gap_type: "underpriced_improvement"
+    composite_score: 3.50
+    key_pattern: "PEP-001(叙事错误归因)"
+    card_path: "reports/PTC/data/expectation_gap_card.yaml"
+
+  - ticker: "NOW"
+    gap_type: "excessive_pessimism"
+    composite_score: 3.33
+    key_pattern: "PEP-003(速度溢价)"
+    card_path: "reports/NOW/data/expectation_gap_card.yaml"
+
+  - ticker: "DDOG"
+    gap_type: "overpriced_optimism"
+    composite_score: 3.00
+    key_pattern: "PEP-002(资本回报盲区,反向——市场忽视DDOG的弱资本回报)"
+    card_path: "reports/DDOG/data/expectation_gap_card.yaml"
+
+  - ticker: "INTC"
+    gap_type: "overpriced_optimism"
+    composite_score: 3.00
+    key_pattern: "PEP-005(催化剂验证金字塔)"
+    card_path: "reports/INTC/data/expectation_gap_card.yaml"
+
+# --- 横向报告索引 ---
+sector_reports:
+  - industry: "SaaS/企业软件"
+    report_path: "reports/SAAS_SECTOR/SaaS_Expectation_Gap_Sector_Report_v1.0.md"
+    companies: ["ADBE", "CRM", "WDAY", "INTU", "PTC", "NOW", "DDOG"]
+    date: "2026-03-27"
+    key_findings:
+      - "市场定价与基本面质量方向相反(ADBE最强=最便宜,DDOG最弱=最贵)"
+      - "三种护城河AI抗性分层: 监管型>数据型>创意型"
+      - "资本回报差距15pp/yr被市场完全忽视"
