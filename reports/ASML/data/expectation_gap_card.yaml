@@ -1,0 +1,174 @@
+# 预期差分析卡 v2.1 — ASML Holding (ASML)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "ASML"
+  company: "ASML Holding N.V."
+  analysis_date: "2026-03-27"
+  stock_price: "$1,329.50"
+  market_cap: "$512.4B"
+  data_snapshot: "FY2025 (截至2025-12-31)"
+  tier: "tier2"
+  framework_version: "v2.1"
+  linked_report: "reports/ASML/ASML_Complete_v1.0_2026-02-13.md"
+
+core_judgment: "ASML是物理垄断(全球唯一EUV制造商)被精确定价的案例——P/FCF 44x几乎完美匹配共识12.8% Rev CAGR,留下零安全边际。垄断是真的(不可逆性5/5),AI是纯利好(更多芯片→更多EUV),但54x P/E在'共识完美执行'的假设上没有余量。最佳入场不在当前价位,而在中国DUV禁令恐慌或WFE周期回调时(25-28x forward PE,~$1,050-$1,180)。这暴露了框架的新维度: '正确的公司+正确的趋势≠正确的价格'"
+gap_type: "no_significant_gap"
+confidence: "medium-high"
+confidence_reasoning: "高置信: 垄断地位+AI利好+WFE中周期=事实。高置信: 54x P/E精确定价共识=事实。降低置信: 中国DUV禁令概率和WFE周期持续性是真实不确定性"
+
+expectations:
+  price_implied:
+    implied_fcf_cagr: "~12-13%"
+    p_fcf: "44.4x"
+    owner_pe_adjusted: "~54x (SBC极小,欧洲公司,Owner PE≈GAAP PE)"
+    judgment: "reasonable — 精确匹配共识,不激进也不保守"
+    judgment_reasoning: "共识Rev CAGR 12.8%(FY25-30)→隐含FCF CAGR ~12-13%→44x P/FCF在25x终端基础上需要~12% CAGR=完美对齐"
+
+  consensus:
+    eps_next_fy: "EUR 39.15 (2027E)"
+    revenue_next_fy: "EUR 45.1B (2027E, +38% vs 2025)"
+    target_price_range: "$1,475 - $1,632"
+    rating_distribution: "绝大多数Buy"
+    recent_revision_direction: "up — SK Hynix $7.9B订单强化信心"
+
+  dominant_narrative: "AI pick-and-shovel play——每颗先进芯片都需要EUV,ASML是终极AI受益者"
+  bull_case_core: "AI驱动结构性WFE超级周期+High-NA倍增ASP+DRAM EUV扩TAM"
+  bear_case_core: "中国DUV禁令(EUR 3-4B收入风险)+WFE周期正常化(从未连续3年>7%增长无回调)+54x PE无容错空间"
+  market_most_uncertain_about: "超级周期vs正常周期——如果AI让WFE永不低于$120B,ASML值更高;如果2027-28回调,当前估值偏贵"
+
+  smart_money:
+    institutional_ownership_trend: "stable-high — '必须持有'的半导体名字"
+    notable_positions:
+      - investor: "Capital Group / Baillie Gifford"
+        action: "长期持有"
+        thesis: "垄断+AI=长期复合"
+        evidence_grade: "fact"
+    insider_behavior: "N/A(荷兰上市,非SEC披露)"
+    company_buyback:
+      amount: "EUR 5.7B(FY2025,从EUR 0.5B加速11倍!)"
+      sbc_coverage: "N/A(SBC极小,覆盖率~138x)"
+      share_count_change: "-0.9%/年"
+      trend: "accelerating — 管理层开始积极回购"
+    smart_money_signal: "neutral — 广泛持有但无显著逆向建仓信号"
+
+reality:
+  company:
+    overall_trend: "accelerating"
+    trend_confidence: "high"
+    key_variables:
+      - name: "收入增速"
+        state: "accelerating"
+        data: "FY23 +30.2% → FY24 +2.5%(中国pull-forward低谷) → FY25 +15.6%(恢复)"
+        evidence_grade: "fact"
+      - name: "毛利率"
+        state: "accelerating"
+        data: "FY23 51.3% → FY25 52.8%(EUV mix提升)"
+        evidence_grade: "fact"
+      - name: "FCF"
+        state: "accelerating"
+        data: "FY24 EUR 9.5B → FY25 EUR 10.6B | FCF margin 32.6%"
+        evidence_grade: "fact"
+      - name: "High-NA EUV"
+        state: "early_ramp"
+        data: "ASP EUR 350M+(vs标准EUV EUR 200M),正在向Intel/TSMC出货2nm开发"
+        evidence_grade: "fact"
+    most_telling_facts:
+      - fact: "SK Hynix $7.9B单笔订单(2026年3月)——DRAM EUV采用确认TAM扩展"
+        why_telling: "EUV从纯逻辑芯片扩展到存储芯片=ASML的可寻址市场在结构性扩大,不只是周期性增长"
+
+  industry:
+    total_market_trend: "growing — WFE $145B(2026E), $156B(2027E, SEMI预测)"
+    total_market_source: "SEMI"
+    structural_shifts:
+      - shift: "EUV从逻辑扩展到DRAM(1-alpha/1-beta节点)"
+        evidence_grade: "fact"
+        irreversibility: 5
+        speed: "medium"
+        company_position: "sole_beneficiary — 唯一EUV制造商"
+      - shift: "High-NA EUV进入量产(ASP翻倍)"
+        evidence_grade: "fact"
+        irreversibility: 5
+        speed: "slow"
+        company_position: "sole_beneficiary"
+    key_industry_fact: "WFE从未连续3年增速>7%不回调——如果2026-2027都是记录年,2028可能面临调整"
+
+  trend_price_divergence:
+    exists: false
+    description: "趋势方向和价格方向一致——AI利好+收入增长+股价上涨。没有背离"
+    most_likely_explanation: "市场正确反映了ASML的垄断地位和AI顺风"
+
+gap:
+  scoring:
+    direction_clarity: 2
+    magnitude: 2
+    persistence: 3
+    verifiability: 3
+    industry_trend_support: 4
+    smart_money_alignment: 3
+    composite_score: 2.83
+
+  core_mispriced_variables:
+    - variable: "中国DUV禁令风险可能被低估"
+      market_assumes: "DUV禁令是尾部风险(低概率)"
+      reality_shows: "欧洲智库已提议全面DUV禁令。如果实施,EUR 3-4B年收入(~10%)面临风险。但ASML积压订单深到可能1-2季度内被非中国客户吸收"
+      evidence_grade: "inference"
+    - variable: "WFE周期正常化风险"
+      market_assumes: "AI驱动的'超级周期'打破传统3-4年周期模式"
+      reality_shows: "WFE历史上从未连续3年>7%增长。如果2028回调,54x P/E的ASML可能面临20-30%估值压缩"
+      evidence_grade: "inference"
+
+  one_sentence_judgment: "ASML是'正确的公司+正确的趋势+精确的价格'——垄断和AI利好被完美定价(P/FCF 44x=共识CAGR 12.8%),留下零安全边际。不是'高估'也不是'低估',是'没有余量'。最佳策略: 等待中国恐慌或WFE回调创造入场窗口"
+
+  same_narrative_comparison:
+    narrative: "AI驱动半导体需求"
+    peers:
+      - ticker: "ASML"
+        p_fcf: "44.4x"
+        fcf_growth: "+12%"
+        moat: "物理垄断(EUV唯一制造商)"
+        geo_risk: "中等(荷兰,但受中国禁令影响)"
+      - ticker: "TSM"
+        p_fcf: "50.1x(CapEx扭曲)"
+        forward_pe: "23.4x"
+        moat: "制造垄断(>80%先进制程)"
+        geo_risk: "高(台湾)"
+      - ticker: "INTC"
+        p_fcf: "N/A(负值)"
+        moat: "x86遗产+CHIPS Act"
+        geo_risk: "低(美国)"
+
+paradigm_shift:
+  signals_triggered: 4
+  company_role: "sole_beneficiary"
+  role_evidence: "AI→更多芯片→更多EUV工具。ASML不需要转型——它的旧模式(卖EUV设备)天然受益于新范式"
+  pricing_error_pattern: "none — 正确定价"
+  pattern_confidence: "high"
+  impact_on_gap_judgment: "范式转移对ASML是纯利好但已被定价。这是框架的重要发现: '在范式转移的正确一边'不等于'被低估'——如果市场已经知道你在正确一边,价格已经反映了"
+
+triggers:
+  company_signals:
+    - signal: "2026 Q2-Q3订单(backlog验证)"
+      bullish_threshold: "季度订单>EUR 7B(超级周期持续)"
+      bearish_threshold: "<EUR 4B(需求放缓)"
+    - signal: "High-NA出货量"
+      bullish_threshold: ">4台/季度(加速)"
+      bearish_threshold: "<2台(延迟)"
+  industry_signals:
+    - signal: "SEMI WFE预测更新"
+      bullish_threshold: "2027 >$160B(上调)"
+      bearish_threshold: "<$140B(下调=周期见顶)"
+  falsification:
+    - condition: "欧盟实施全面DUV禁令且非中国客户无法在2Q内吸收产能"
+      implication: "收入缺口真实化,估值需下调10-15%"
+      time_window: "12个月"
+  monitoring_horizon: "4-6季度(WFE周期需要更长观察)"
+  next_reassessment_trigger: "2026 Q2财报+SEMI年中WFE预测更新"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 2.83(<3.5)。ASML被精确定价,没有显著预期差。等待WFE回调或中国恐慌创造入场机会"
+  position_implication: "如果已持有: 持有(垄断品质不卖)。如果未持有: 等待$1,050-$1,180(25-28x forward PE)再入场"
+
+post_mortem:
+  verified: false
