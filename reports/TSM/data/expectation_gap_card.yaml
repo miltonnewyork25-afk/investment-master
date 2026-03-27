@@ -1,0 +1,202 @@
+# 预期差分析卡 v2.1 — TSMC (TSM)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "TSM"
+  company: "Taiwan Semiconductor Manufacturing Co."
+  analysis_date: "2026-03-27"
+  stock_price: "$326.11"
+  market_cap: "$1.69T"
+  data_snapshot: "FY2025 (截至2025-12-31)"
+  tier: "tier2"
+  framework_version: "v2.1"
+  linked_report: "reports/TSM/TSM_Complete_v2.0_2026-02-10.md"
+
+core_judgment: "TSM是半导体板块中最清晰的'地缘政治折价过度'案例——Forward PE 23.4x(PEG 0.75)定价一个OPM 50.8%/ROIC 56%/收入+33%的世界级垄断,隐含5-8个PE点的地缘折价。Arizona fab良率92%(匹配台湾)+4座fab全部满订=地缘风险在实质性降低但估值折价未收窄。与INTC对照更清晰: INTC市值$220B/FCF负/ROIC负 vs TSM市值$1.69T/NI $53B/ROIC 56%——TSM赚的钱比INTC的市值还多,但市场给TSM的PE(23x)比ASML(54x)低一半=地缘折价是主因"
+gap_type: "underpriced_improvement"
+confidence: "medium"
+confidence_reasoning: "高置信: OPM 50.8%/ROIC 56%/收入+33%/垄断地位=事实级。Arizona良率92%匹配台湾=事实级地缘风险降低。中等置信: 地缘折价5-8个PE是否'过度'取决于台海冲突概率评估——这不可建模。降低置信: P/FCF 50x被CapEx扭曲(年$56B投资),不反映正常化FCF"
+
+expectations:
+  price_implied:
+    implied_fcf_cagr: "~25% (但P/FCF被CapEx扭曲——P/E更有意义)"
+    p_fcf: "50.1x (误导——$56B/yr CapEx投资期)"
+    owner_pe_adjusted: "~31x GAAP PE (SBC极低)"
+    judgment: "slightly_conservative — PEG 0.75对此质量的垄断偏低"
+    judgment_reasoning: "Forward PE 23.4x(2026E)+19x(2027E)。不带地缘折价的同质量公司(ASML)交易在54x。差距=31个PE点,其中5-8点是合理地缘折价,剩余~23点来自'TSM体量太大'和'增速将减速'预期"
+
+  consensus:
+    eps_next_fy: "共识NI +36%(FY2026E)"
+    revenue_next_fy: "~$154B(FY2026E, +31%)"
+    target_price_range: "$330 - $450 (中位$405, +24%upside)"
+    rating_distribution: "17/18 Buy, 0 Sell"
+    recent_revision_direction: "up"
+
+  dominant_narrative: "TSM是AI的唯一制造瓶颈——但台湾地缘风险是永远的折价因子"
+  bull_case_core: "AI需求→先进制程满产→定价权5-10%提价/年→OPM 50%+→Forward PE 23x太便宜"
+  bear_case_core: "台海冲突是二元不可对冲风险+$56B/yr CapEx不可持续+ASIC多元化可能降低客户集中度"
+  market_most_uncertain_about: "地缘风险: Arizona降低了多少风险? 80%产能仍在台湾"
+
+  smart_money:
+    institutional_ownership_trend: "stable — Buffett 2023卖出后机构重新买入"
+    notable_positions:
+      - investor: "Warren Buffett"
+        action: "2023年全部卖出(因地缘风险)"
+        thesis: "业务品质无瑕但地缘不可对冲"
+        evidence_grade: "fact"
+    insider_behavior: "极少交易(台湾上市,ADR内部人交易不活跃)"
+    company_buyback:
+      amount: "有限(台湾公司偏向现金股息)"
+      sbc_coverage: "N/A(SBC极低)"
+      share_count_change: "稳定"
+      trend: "stable"
+    smart_money_signal: "neutral — Buffett卖出是最大负面信号,但基于地缘而非基本面"
+
+reality:
+  company:
+    overall_trend: "accelerating"
+    trend_confidence: "high"
+    key_variables:
+      - name: "收入增速"
+        state: "accelerating"
+        data: "FY2023 flat → FY2024 +34% → FY2025 +33% (连续2年30%+)"
+        evidence_grade: "fact"
+      - name: "OPM/GPM"
+        state: "accelerating"
+        data: "OPM: FY23 42.6% → FY25 50.8% | GPM: FY23 54.4% → FY25 59.9% — 世界级"
+        evidence_grade: "fact"
+      - name: "ROIC"
+        state: "stable_at_peak"
+        data: "56% — 对重资产制造业而言近乎不可能的数字"
+        evidence_grade: "fact"
+      - name: "CapEx强度"
+        state: "accelerating"
+        data: "$56B(FY2026E指引,+42%),占收入33.4%。OCF/CapEx=1.85x(内部融资有余)"
+        evidence_grade: "fact"
+      - name: "Arizona fab进展"
+        state: "accelerating"
+        data: "Fab 1(4nm)量产中,良率88-92%匹配台湾。Fab 2(3nm)2027H2量产。Fab 3(2nm)开工。4座全满订。总投资$165B"
+        evidence_grade: "fact"
+    most_telling_facts:
+      - fact: "TSM年NI $53.4B > INTC全部市值$220B的24%——盈利能力差距是数量级的"
+        why_telling: "INTC试图挑战TSM的代工地位,但TSM一年赚的钱=INTC市值的1/4。市场给INTC P/FCF ∞(负值)但给TSM P/E 23x——相对而言TSM被低估"
+      - fact: "Arizona良率92%匹配台湾GigaFab效率——'TSMC不能在美国制造'的论点被数据推翻"
+        why_telling: "地缘折价的核心假设是'所有产能集中在台湾'。Arizona证明TSMC可以在美国复制台湾品质——这应该缩小地缘折价,但PE仍是23x(vs ASML 54x)"
+
+  industry:
+    total_market_trend: "growing — 半导体趋向$1T(2026)"
+    total_market_source: "SIA / SEMI"
+    structural_shifts:
+      - shift: "AI芯片需求爆发→先进制程产能结构性短缺"
+        evidence_grade: "fact"
+        irreversibility: 5
+        speed: "fast"
+        company_position: "sole_manufacturer — >80%先进制程市场份额"
+      - shift: "制造地理多元化(台湾→美国/日本/欧洲)"
+        evidence_grade: "fact"
+        irreversibility: 4
+        speed: "slow"
+        company_position: "adapter — 主动建设海外fab但核心仍在台湾"
+      - shift: "ASIC多元化(Google TPU/Amazon Trainium/Meta MTIA)"
+        evidence_grade: "fact"
+        irreversibility: 4
+        speed: "medium"
+        company_position: "beneficiary — 无论GPU还是ASIC,都需要TSMC代工"
+    key_industry_fact: "ASIC多元化不是TSM的威胁——无论客户设计什么芯片(GPU/ASIC/CPU),最终都需要TSMC在3nm/2nm上制造。TSM是'卖铲子的人'"
+
+  trend_price_divergence:
+    exists: true
+    description: "OPM从42.6%→50.8%,收入+33%,ROIC 56%,Arizona良率验证=基本面全面改善。但Forward PE 23x仅是ASML(54x)的43%——差距主要来自地缘折价"
+    most_likely_explanation: "地缘折价可能过度——Arizona进展已实质性降低了'所有产能在台湾'的假设,但市场折价未收窄。这是一个缓慢修复的预期差(不是事件驱动,是信心渐进恢复)"
+
+gap:
+  scoring:
+    direction_clarity: 3
+    magnitude: 3
+    persistence: 4
+    verifiability: 3
+    industry_trend_support: 5
+    smart_money_alignment: 2
+    composite_score: 3.33
+
+  core_mispriced_variables:
+    - variable: "地缘政治折价可能过度1-2个PE点(因Arizona进展)"
+      market_assumes: "台湾风险=永久5-8个PE折价(vs ASML/NVDA)"
+      reality_shows: "Arizona Fab 1良率92%+4座全满订+$165B投资=<20%产能已在美国。虽然80%仍在台湾,但'TSMC只能在台湾制造'的核心假设已被推翻"
+      evidence_grade: "fact(Arizona数据) + inference(折价应收窄)"
+      valuation_sensitivity: "如果地缘折价从8个PE点收窄至5个,Forward PE 23→26x=上行11%($362)"
+    - variable: "ASIC多元化是利好而非威胁"
+      market_assumes: "部分投资者担心ASIC替代GPU→减少NVDA对TSM的依赖→TSM客户集中度降低"
+      reality_shows: "ASIC多元化=更多设计公司需要代工=TSM的客户基础更多元+产能利用率更稳定。每个ASIC设计公司都需要TSMC,因为只有TSMC能量产3nm/2nm"
+      evidence_grade: "fact"
+
+  one_sentence_judgment: "TSM是半导体板块中'地缘折价可能过度'的案例——Forward PE 23x(PEG 0.75)对OPM 50%/ROIC 56%/+33%增速的全球垄断来说偏低,Arizona 92%良率正在实质性削弱地缘折价的核心假设。但地缘风险是不可建模的二元事件,所以这个预期差只对'认为台海冲突概率<10%'的投资者有意义"
+
+  same_narrative_comparison:
+    narrative: "AI驱动半导体需求"
+    peers:
+      - ticker: "ASML"
+        forward_pe: "31.4x(2027E)"
+        opm: "34.6%"
+        moat: "EUV物理垄断"
+        geo_risk: "中(荷兰/中国禁令)"
+      - ticker: "TSM"
+        forward_pe: "23.4x(2026E)"
+        opm: "50.8%"
+        moat: "制造垄断(>80%先进制程)"
+        geo_risk: "高(台湾)"
+      - ticker: "INTC"
+        forward_pe: "~88x(2026E EPS $0.50)"
+        opm: "-0.04%"
+        moat: "x86+CHIPS Act"
+        geo_risk: "低(美国)"
+    most_mispriced: "TSM vs ASML: TSM OPM更高(50.8% vs 34.6%)+增速更快(33% vs 16%)+ROIC更强(56% vs ~25%),但PE低43%(23x vs 54x)。差距只能用地缘折价解释——如果你相信Arizona降低了这个折价,TSM是三者中被低估的那个"
+
+paradigm_shift:
+  signals_triggered: 4
+  company_role: "sole_manufacturer — AI范式转移的制造瓶颈"
+  role_evidence: "无论AI芯片是GPU(NVDA)还是ASIC(Google/Amazon/Meta),都需要TSMC在先进制程上代工。TSM是'卖铲子给所有淘金者'的角色"
+  pricing_error_pattern: "地缘政治折价可能是一种特殊的PEP — 市场正确识别了风险但可能过度定价了折扣"
+  pattern_confidence: "medium — 地缘是不可建模的"
+  impact_on_gap_judgment: "范式转移(AI)对TSM是纯利好且正在财务中验证(+33%收入,50% OPM)。但范式转移的价值被地缘折价遮蔽——投资者看到了好生意但不敢给高估值"
+
+triggers:
+  company_signals:
+    - signal: "Arizona Fab 2(3nm)良率数据"
+      bullish_threshold: "良率>85%(接近台湾水平)"
+      bearish_threshold: "<70%(美国制造仍有差距)"
+      why_matters: "验证'TSMC可以在台湾以外量产先进制程'的核心假设"
+      next_data_point: "2027 Q1-Q2(量产时)"
+    - signal: "FY2026收入增速"
+      bullish_threshold: ">28%(AI需求持续)"
+      bearish_threshold: "<20%(需求开始正常化)"
+    - signal: "CapEx/Rev比率变化"
+      bullish_threshold: "<30%(投资期见顶→FCF释放)"
+      bearish_threshold: ">35%(继续加码→FCF被压)"
+
+  industry_signals:
+    - signal: "台海地缘政治温度(Polymarket/新闻)"
+      bullish_threshold: "紧张缓和→折价收窄"
+      bearish_threshold: "紧张升级→折价扩大"
+      source: "Polymarket + 地缘新闻"
+
+  falsification:
+    - condition: "台海军事对峙升级(封锁演习/导弹试射)"
+      implication: "地缘折价从5-8个PE点扩大到15-20个PE点,股价可能-40-50%"
+      time_window: "不可预测"
+    - condition: "INTC 18A在3个以上大客户实现量产良率>80%"
+      implication: "TSM垄断地位首次面临真实竞争=估值重新评估"
+      time_window: "18-24个月"
+
+  monitoring_horizon: "4-6季度"
+  next_reassessment_trigger: "FY2026 Q1(收入+CapEx+Arizona更新)"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 3.33(<3.5)。预期差方向(地缘折价过度)是对的但幅度有限(+10-20%),且不可对冲的二元地缘风险降低了置信度。已有v2.0深度报告(451K)覆盖充分"
+  priority_research:
+    - "Arizona fab经济性分析: 美国制造成本比台湾高多少?客户愿意付溢价吗?溢价对TSM利润率影响?"
+    - "TSM vs ASML估值差距归因: 54x vs 23x中多少是地缘(可量化)vs体量(不可消除)vs增速预期?"
+
+post_mortem:
+  verified: false

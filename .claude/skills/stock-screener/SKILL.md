@@ -1,10 +1,13 @@
 ---
 name: stock-screener
-description: 低估股多信号筛选Agent — 三层信号框架(便宜/不是陷阱/纠错)
+description: 低估股多信号筛选Agent v1.2 — 三层信号框架(便宜/不是陷阱/纠错)+预期差信号
 trigger: /screen
 ---
 
-# 低估股筛选Agent v1.0
+# 低估股筛选Agent v1.2
+
+> v1.2 (2026-03-27): 预期差三因子(FCF Yield/SBC覆盖率/品质基金买入) + insider翻正信号。源自7家SaaS预期差横向分析。
+> v1.1 (2026-03-26): PEG替代PE作为主估值信号(48份报告验证)
 
 ## 三层信号框架
 
@@ -24,7 +27,7 @@ L3: 市场开始纠错 (25%) — 盈利超预期+分析师修正+价格位置
 
 ```
 三路并行获取:
-1. fmp_data path="/stable/stock-screener?marketCapMoreThan=2000000000&marketCapLowerThan=500000000000&priceEarningsRatioLowerThan=15&betaMoreThan=0&limit=50" → 低PE中盘
+1. fmp_data path="/stable/stock-screener?marketCapMoreThan=2000000000&marketCapLowerThan=500000000000&priceEarningsRatioLowerThan=25&betaMoreThan=0&limit=50" → 低PE中盘 (放宽PE≤25, PEG<2.0在Phase 3信号计算中检查)
 2. fmp_data path="/stable/stock-screener?marketCapMoreThan=2000000000&priceToBookRatioLowerThan=2&limit=50" → 低PB
 3. fmp_data path="/stable/stock-screener?marketCapMoreThan=5000000000&dividendYieldMoreThan=2&limit=50" → 高股息(shareholder yield代理)
 ```
@@ -72,6 +75,44 @@ fmp_data endpoint="quote"        symbol={SYM}
 ```
 
 #### Phase 3: 信号计算
+
+**PEG筛选 (v1.1, 48份报告验证)**:
+```
+PEG < 1.5          → L1 +1.0分 (增速被低估)
+PEG 1.5-2.0        → L1 +0.5分 (合理)
+PEG 2.0-3.0        → L1  0分   (中性)
+PEG > 3.0 且 PE<20 → L1 -0.5分 (低增速陷阱)
+PEG > 4.0          → L1 -1.0分 (品质陷阱候选)
+```
+
+**★ FCF Yield信号 (v1.2新增, 7家SaaS验证 — 对高SBC行业比PE更有意义)**:
+```
+来源: ADBE(9.3%)/CRM(8.0%)/WDAY(8.2%)在-40%~-54%跌幅中FCF yield创历史新高
+      P/E对SaaS失真(SBC使NI偏低), P/FCF和FCF yield更能反映真实盈利能力
+
+计算: FCF Yield = (OCF - CapEx) / Market Cap × 100%
+
+FCF Yield > 8%    → L1 +1.5分 (极罕见=极度低估, ADBE/CRM/WDAY级别)
+FCF Yield 5-8%    → L1 +1.0分 (显著低估)
+FCF Yield 3-5%    → L1 +0.5分 (偏低估)
+FCF Yield 2-3%    → L1  0分   (中性)
+FCF Yield < 2%    → L1 -0.5分 (可能仍偏贵, DDOG 2.2%级别)
+FCF Yield < 0%    → L1 -2.0分 (FCF为负=现金消耗型, INTC级别)
+
+适用: 所有公司, 但对SBC/Rev>8%的高SBC公司特别重要(替代PE作为主估值锚)
+不适用: 金融/银行(FCF定义不同)
+```
+
+**★ Insider A/D翻正信号 (v1.2新增, CRM验证)**:
+```
+来源: CRM Q1'26 insider A/D比首次翻正(2008年以来首次) — 极罕见+极强
+
+检测: 最近1Q的insider acquired/disposed比率 vs 前4Q均值
+  如果前4Q A/D < 0.5(一直卖) → 最近1Q A/D > 1.0(首次翻正)
+  → L1 +2.0分 (极罕见信号, 比单笔insider buy强数倍)
+
+逻辑: 长期净卖出的公司突然出现净买入 = 内部人看到了市场没看到的拐点
+```
 
 ```bash
 python scripts/screener/run_screen.py data/screener/raw/ --output data/screener --detail
@@ -146,10 +187,80 @@ fmp_data endpoint="estimates" symbol={SYM}  # 盈利预测 → surprise/revision
 
 ## 软警告 (标记但不剔除)
 
+- PEG > 3.0 + 有机增速 < 7% → "品质陷阱"警告 (CQI高但增速低, 14份报告验证)
 - 债务驱动回购 (net debt增加 + shares减少)
 - F-Score ≤ 3 (财务体质弱)
 - 资产增长 > 20% (可能在盲目扩张)
 - 单一insider buy金额 < $100K (信号弱)
+- 全管理层零买入 > 6个月 + 净卖出 > $5M → "内部人沉默"警告 (-0.5分, 10份报告验证)
+- 全管理层零买入 > 12个月 → "强沉默"信号 (-1.0分, COST/ANET发现: 零买入比净卖出信息量更高)
+- CEO言辞看好 + CEO个人净卖出 > $1M → "言行矛盾"警告 (-0.5分, HLT/ANET验证)
+
+## ★ SBC覆盖率信号 (v1.2新增, 7家SaaS+8家已有报告验证)
+
+> **来源**: ADBE(580%覆盖/-5%缩股) vs DDOG(0%/+4.8%稀释) = 年化差距15pp
+> **核心**: 同行业中SBC覆盖率和净缩股率的差异被市场完全忽视——这是最被低估的区分因子
+
+```
+计算:
+  SBC覆盖率 = 年回购金额 / 年SBC费用 × 100%
+  净缩股率 = (本年稀释股数 - 上年稀释股数) / 上年稀释股数
+
+评分 (嵌入L2"便宜不是陷阱"):
+  回购/SBC > 200% + 缩股 > 2%/yr  → L2 +1.5分 (净增厚股东, ADBE/CRM级)
+  回购/SBC 150-200% + 缩股 > 1%   → L2 +1.0分 (强覆盖, WDAY级)
+  回购/SBC 100-150% + 缩股 ≥ 0%   → L2 +0.5分 (覆盖, INTU/PTC级)
+  回购/SBC 50-100%                 → L2  0分   (部分覆盖, NOW级)
+  回购/SBC < 50% 或零回购          → L2 -1.0分 (不覆盖/净稀释)
+  零回购 + 稀释 > 3%/yr            → L2 -1.5分 (持续损害股东, DDOG级)
+
+适用: SBC/Rev > 5%的公司(主要是科技/SaaS)。SBC/Rev < 3%的公司此信号权重减半
+```
+
+## ★ 品质基金买入信号 (v1.2新增, INTU验证)
+
+> **来源**: INTU在-47%时Norges Bank($3.3B新仓)+Fundsmith(+64%)+AllianceBernstein(+184%)同时买入
+> **核心**: 品质/主权基金的建仓比insider更早、覆盖面更广、调研更深
+
+```
+检测方法:
+  WebSearch "{TICKER} 13F institutional ownership hedge fund {YEAR}"
+  或 fmp_data path="/api/v4/institutional-ownership/..."
+
+品质基金定义(低周转+长期持有+选股严格):
+  Tier 1: 主权基金 (Norges Bank/GIC/ADIA) — 最长期的钱
+  Tier 1: 品质复合基金 (Fundsmith/Lindsell Train/Baillie Gifford) — 最挑剔的钱
+  Tier 2: 知名价值投资者 (Berkshire/Ackman/Klarman/Marks) — 最深度的研究
+  Tier 2: 量化逆向基金 (RenTech/AQR/Two Sigma) — 因子驱动但有信号价值
+
+评分 (嵌入L3"市场纠错"):
+  ≥2家Tier 1/2基金新建仓或增仓>50%  → L3 +1.5分 (强信号: 多个独立研究者同时看到价值)
+  1家Tier 1基金建仓或增仓>30%       → L3 +1.0分
+  仅量化基金(Tier 2)建仓             → L3 +0.5分 (可能是因子驱动非基本面)
+  品质基金减仓                       → L3 -1.0分 (品质判断改变)
+
+注意: 需区分"主动买入"vs"ETF被动流入"。Vanguard/BlackRock/State Street的变化通常是被动的,不计入
+```
+
+## 回购效率检测 (v1.1, 30份报告验证)
+
+高PE下的回购可能毁灭股东价值:
+
+```
+简化η检测 (不需要Fair PE):
+  PE > 30x + 年回购 > FCF的30% → 标记"回购可能毁灭价值"(-0.5分)
+  PE > 40x + 年回购 > FCF的20% → 强警告(-1.0分)
+
+完整η计算 (如果有Fair PE估计):
+  η = 1 - (当前PE - 公允PE) / 当前PE
+  η > 1.0 → 价值创造
+  η 0.8-1.0 → 中性
+  η < 0.8 → 价值毁灭
+
+标杆: CME η=0.59@28x | HLT η=0.80@50x | MCO η<0.7@35x
+```
+
+验证案例: CME(41%毁灭)/MCO/MSCI/HLT/AAPL(IRR<国债)独立确认
 
 ## 数据新鲜度
 

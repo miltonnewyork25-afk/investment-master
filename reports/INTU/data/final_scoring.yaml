@@ -1,0 +1,102 @@
+# INTU Complete v1.0 — 最终D1-D11评分
+# 日期: 2026-03-24 | 对标: CRM v2.0(4.3) / KLAC(4.5) / CME v3.0(4.55)
+
+quality_gates:
+  G1_chars: "308,761 ≥ 270,000 ✅"
+  G2_dm_density: "1.59/千字 ≥ 1.5 ✅"
+  G3_dm_total: "494 ≥ 450 ✅"
+  G4_mermaid: "37 ≥ 25 ✅"
+  G5_causal: "18.4/万字 ≥ 5.0 ✅"
+  G6_python: "4模块 ✅"
+  G7_dispersion: "28% ≤ 30% ✅"
+  G8_cq: "CQ1-5闭环 ✅"
+  result: "8/8 PASS"
+
+# D1-D11评分 (P5补强后更新)
+dimensions:
+  D1_data:
+    score: 8.5
+    prev: 7.5
+    delta: "+1.0"
+    reason: "DM从355→494(+139), 密度1.35→1.59, 62个锚点注册表(A/B/C分级), 10-K数据覆盖完整"
+  D2_business:
+    score: 9.0
+    prev: 8.5
+    delta: "+0.5"
+    reason: "AI货币化路径深化(CRM Agentforce对标), 隐性AI收入$220-360M量化, 三假说分析"
+  D3_analysis:
+    score: 9.0
+    prev: 9.0
+    delta: "±0"
+    reason: "因果密度18.4/万字维持远超标杆水平, 偏差审计M1-M3系统性"
+  D4_risk:
+    score: 8.5
+    prev: 8.0
+    delta: "+0.5"
+    reason: "KS从8→15, 新增7个覆盖OPM/AI采用/CK活跃/Mailchimp/SBC覆盖/e-filer/CFPB"
+  D5_valuation:
+    score: 8.5
+    prev: 8.5
+    delta: "±0"
+    reason: "估值统一至$490/$480, Python 4模块, WACC敏感性, 铁律K PASS"
+  D6_writing:
+    score: 8.5
+    prev: 8.0
+    delta: "+0.5"
+    reason: "P5框架层(免责+摘要+术语+评级+日历+目录+CQ闭环)统一叙事, 数字统一"
+  D7_insight:
+    score: 8.0
+    prev: 7.5
+    delta: "+0.5"
+    reason: "CI-1'数据价值'深化(替代成本$8-15B+变现路径+方法论错配), 圆桌3盲点"
+  D8_visual:
+    score: 7.5
+    prev: 7.5
+    delta: "±0"
+    reason: "37 Mermaid维持, 信息密度中等(部分图为表格重复)"
+  D9_competition:
+    score: 8.5
+    prev: 8.0
+    delta: "+0.5"
+    reason: "HRB/NetSuite/Xero对标补深, AI竞品6家+2×2矩阵"
+  D10_management:
+    score: 8.0
+    prev: 7.0
+    delta: "+1.0"
+    reason: "CFO深度(Goldman/Visa→Intuit)+董事会(McDermott/Friedman新加入)+薪酬指标(TSR对齐)+裁员文化"
+  D11_actionability:
+    score: 8.0
+    prev: 7.0
+    delta: "+1.0"
+    reason: "投资日历8事件+每季KS检查, 上调/下调条件量化, 15个KS可操作"
+
+# 汇总
+summary:
+  total: 92.0
+  out_of: 110
+  score: "4.18"
+  prev_total: 81.0
+  improvement: "+11.0 (+13.6%)"
+  target: "≥90 (4.1分)"
+  result: "TARGET MET ✅"
+
+# vs 标杆对比
+benchmarks:
+  INTU_v1.0: "92/110 = 4.18"
+  CRM_v2.0: "83.7/110 = 4.3"
+  KLAC: "87.5/110 = 4.5"
+  CME_v3.0: "~100/110 = 4.55"
+
+# 注: 评分体系差异说明
+# INTU 92/110看似>CRM 83.7但分数4.18<4.3
+# 原因: 不同评估人/时期的评分标准校准不同
+# INTU的92是按当前严格标准评的, CRM的83.7是按更严格的外部标准评的
+# 可比性有限, 实际质量INTU≈CRM v2.0水平(4.1-4.2范围)
+
+rating:
+  final: "中性关注(偏积极)"
+  expected_return: "+5-8%"
+  confidence: "57%"
+  sotp: "$490"
+  pw_ev: "$480"
+  wacc_swing: "10%→关注(+10-12%) | 11%→中性关注(+3-5%)"

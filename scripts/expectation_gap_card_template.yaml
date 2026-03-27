@@ -1,0 +1,311 @@
+# ============================================================
+# 预期差分析卡模板 v2.0
+# Expectation Gap Card Template
+#
+# v2.0升级: 从纯财务视角扩展为"财务×行业趋势×聪明钱"三层信号
+# 四域结构: E(预期) → R(现实) → G(偏差) → T(拐点)
+#
+# 使用说明:
+#   - gap_type只用五类: underpriced_improvement / overpriced_optimism /
+#     excessive_pessimism / excessive_optimism / no_significant_gap
+#   - trend_state只用六类: accelerating / decelerating / stable /
+#     inflecting_up / inflecting_down / deteriorating
+#   - evidence_grade: fact(事实) / inference(推断) / narrative(叙事)
+#   - confidence: high / medium / medium-high / low
+#   - irreversibility: 1(短期情绪) ~ 5(技术代际跳跃)
+#   - 如果数据不可得, 写 "N/A — [原因]" 而非编造
+# ============================================================
+
+# --- 坐标 ---
+meta:
+  ticker: ""
+  company: ""
+  analysis_date: ""        # YYYY-MM-DD
+  stock_price: ""
+  market_cap: ""
+  data_snapshot: ""        # 数据截止日期
+  tier: ""                 # tier1 / tier2 / tier3
+  framework_version: "v2.0"
+  linked_report: ""
+
+# === 核心判断 (一句话, 必须回答"市场错在哪里") ===
+core_judgment: ""
+gap_type: ""               # 五类之一
+confidence: ""             # high / medium-high / medium / low
+confidence_reasoning: ""
+
+# === E域: 市场预期 (Expectations) ===
+expectations:
+  # E1: 价格隐含预期
+  price_implied:
+    implied_revenue_cagr_5y: ""
+    implied_terminal_margin: ""
+    implied_growth_duration: ""
+    implied_fcf_cagr: ""
+    p_fcf: ""                          # v2.0: 替代P/E作为主锚(SaaS必填)
+    owner_pe_adjusted: ""              # v2.0: 市值/(NI-SBC+净回购)
+    judgment: ""                       # conservative / reasonable / aggressive / extreme
+    judgment_reasoning: ""
+
+  # E2: 共识预期
+  consensus:
+    eps_current_fy: ""
+    eps_next_fy: ""
+    revenue_current_fy: ""
+    revenue_next_fy: ""
+    target_price_median: ""
+    target_price_range: ""
+    dispersion: ""
+    rating_distribution: ""
+    recent_revision_direction: ""
+    revision_magnitude: ""
+
+  # E3: 市场叙事
+  dominant_narrative: ""
+  bull_case_core: ""
+  bear_case_core: ""
+  market_most_confident_about: ""
+  market_most_uncertain_about: ""
+  narrative_vs_price_consistency: ""
+
+  # E4: 聪明钱定位 (v2.0新增)
+  smart_money:
+    institutional_ownership_trend: ""  # increasing / stable / decreasing
+    notable_positions:
+      - investor: ""
+        action: ""                     # initiated / increased / decreased / exited
+        size: ""
+        thesis: ""                     # 公开理由(如有)
+        evidence_grade: ""             # fact(13F数据) / inference(推测)
+    insider_behavior: ""               # 零买入/计划性卖出/加速卖出/有买入
+    company_buyback:
+      amount: ""
+      sbc_coverage: ""                 # 回购/SBC百分比
+      share_count_change: ""           # 年化股本变化
+      trend: ""                        # accelerating / stable / decelerating
+    smart_money_signal: ""             # bullish / neutral / bearish / divergent
+    signal_reasoning: ""
+
+# === R域: 企业+行业现实 (Reality) ===
+reality:
+  # R1: 公司层面
+  company:
+    overall_trend: ""
+    trend_confidence: ""
+    structural_vs_cyclical: ""
+    key_variables:
+      - name: ""
+        state: ""                      # 六类状态标签
+        data: ""
+        source: ""
+        evidence_grade: ""
+    quality_signals:
+      revenue_driver: ""
+      customer_concentration_risk: ""
+      cash_flow_match: ""
+      sbc_burden: ""                   # 含SBC覆盖率对比
+      organic_vs_acquired: ""
+    most_telling_facts:
+      - fact: ""
+        why_telling: ""
+
+  # R2: 行业层面 (v2.0新增)
+  industry:
+    total_market_trend: ""             # "growing X%" / "stable" / "shrinking"
+    total_market_data: ""              # 具体数据+来源
+    total_market_source: ""            # Gartner / IDC / Forrester
+    structural_shifts:
+      - shift: ""                      # 描述结构性变化
+        evidence_grade: ""             # fact / inference / narrative
+        irreversibility: 0             # 1-5
+        speed: ""                      # slow / medium / fast
+        current_penetration: ""        # 已发生多少(例: "40%合同已转型")
+        company_position: ""           # beneficiary / neutral / victim
+    budget_flow_direction: ""          # 预算从哪里流向哪里
+    competitive_threat_reality: ""     # 竞争威胁是实际的还是叙事的
+    key_industry_fact: ""              # 行业层面最关键的一个事实
+    key_industry_fact_source: ""
+
+  # R3: 趋势-价格背离 (v2.0新增)
+  trend_price_divergence:
+    exists: false
+    description: ""                    # 例: "行业支出+14.7%但板块-25%"
+    possible_explanations:
+      - explanation: ""
+        likelihood: ""                 # high / medium / low
+      - explanation: ""
+        likelihood: ""
+    most_likely_explanation: ""
+
+  # R4: 趋势不可逆性评估 (v2.0新增)
+  trend_irreversibility:
+    - trend: ""
+      irreversibility_score: 0         # 1-5
+      speed: ""                        # slow / medium / fast
+      evidence_grade: ""               # fact / inference / narrative
+      already_priced: ""               # yes / partially / no
+      reasoning: ""
+
+# === G域: 剪刀差 (Gap) ===
+gap:
+  # G1: 逐变量偏差对比 (v2.0: 增加行业+聪明钱变量)
+  variable_comparison:
+    - factor: ""
+      expectation: ""
+      reality: ""
+      gap_direction: ""                # E>R / E<R / aligned
+      gap_size: ""                     # large / medium / small / negligible
+      evidence_grade: ""               # v2.0: 每个变量标注
+
+  # G2: 偏差评分 (v2.0: 6维)
+  scoring:
+    direction_clarity: 0               # 1-5
+    magnitude: 0                       # 1-5
+    persistence: 0                     # 1-5
+    verifiability: 0                   # 1-5
+    industry_trend_support: 0          # v2.0: 行业大趋势是否支持
+    smart_money_alignment: 0           # v2.0: 聪明钱是否一致
+    composite_score: 0                 # 六维均值
+
+  # G3: 核心错配变量
+  core_mispriced_variables:
+    - variable: ""
+      market_assumes: ""
+      reality_shows: ""
+      why_market_wrong: ""
+      evidence_grade: ""
+      valuation_sensitivity: ""
+
+  # G4: 一句话判断
+  one_sentence_judgment: ""
+
+  # G5: 同叙事跨公司对比 (v2.0新增)
+  same_narrative_comparison:
+    narrative: ""                      # 共同面对的行业叙事
+    peers:
+      - ticker: ""
+        p_fcf: ""
+        fcf_growth: ""
+        sbc_coverage: ""
+        opm_direction: ""
+        owner_pe: ""
+    most_mispriced: ""                 # 同叙事中被过度惩罚/过度乐观的
+    reasoning: ""
+
+# === T域: 拐点信号与证伪 (Triggers) ===
+triggers:
+  # T1: 公司级领先指标
+  company_signals:
+    - signal: ""
+      current_reading: ""
+      bullish_threshold: ""
+      bearish_threshold: ""
+      why_matters: ""
+      next_data_point: ""
+
+  # T2: 行业级领先指标 (v2.0新增)
+  industry_signals:
+    - signal: ""
+      current_reading: ""
+      bullish_threshold: ""
+      bearish_threshold: ""
+      why_matters: ""
+      source: ""                       # Gartner / IDC / CIO Survey等
+
+  # T3: 聪明钱信号 (v2.0新增)
+  smart_money_signals:
+    - signal: ""
+      current_reading: ""
+      bullish_threshold: ""
+      bearish_threshold: ""
+      why_matters: ""
+      next_data_point: ""              # 13F披露日期等
+
+  # T4: 确认指标
+  confirming_indicators:
+    - signal: ""
+      expected_if_thesis_correct: ""
+      expected_if_thesis_wrong: ""
+
+  # T5: 证伪条件 (必填)
+  falsification:
+    - condition: ""
+      implication: ""
+      time_window: ""
+
+  # T6: 趋势反转条件 (v2.0新增 — "行业趋势本身变了才会改变判断")
+  trend_reversal_conditions:
+    - condition: ""                    # 什么行业级变化会让判断翻转
+      implication: ""
+      monitoring_source: ""            # 从哪里监控
+
+  monitoring_horizon: ""
+  next_reassessment_trigger: ""
+
+# === P域: 范式转移检测 (v2.0新增) ===
+paradigm_shift:
+  # P1: 五信号检测
+  signals:
+    pricing_unit_shift:
+      status: ""                       # not_triggered / early / mid / late
+      old_unit: ""                     # 旧定价单元
+      new_unit: ""                     # 新定价单元
+      penetration: ""                  # 新模式渗透率
+      evidence: ""
+
+    new_vocabulary_density:
+      status: ""                       # low / medium / high
+      examples: []                     # 近2年出现的新术语
+      evidence: ""
+
+    investment_intensity:
+      status: ""                       # low / threshold / breakthrough / explosion
+      ratio: ""                        # 投资/TAM比率
+      evidence: ""
+
+    adoption_penetration:
+      status: ""                       # <10% / 10-25%(sweet_spot) / 25-50% / >50%
+      current_rate: ""
+      acceleration: ""                 # 加速/稳定/减速
+      evidence: ""
+
+    reflexivity_loop:
+      status: ""                       # none / weak / strong / bubble
+      loop_description: ""             # 自强化循环描述
+      break_risk: ""                   # 什么可能打断循环
+
+  signals_triggered: 0                 # 触发数量(≥3=范式转移可能)
+
+  # P2: 公司定位
+  company_role: ""                     # self_disruptor / adapter / resister / disruptor
+  role_evidence: ""
+  historical_analog: ""                # 最接近的历史类比(Adobe/Siebel/Salesforce等)
+
+  # P3: 定价错误模式匹配
+  pricing_error_pattern: ""            # pattern_A / pattern_B / pattern_C / pattern_D / none
+  pattern_description: ""
+  pattern_confidence: ""               # high / medium / low
+
+  # P4: 范式转移对预期差的影响
+  impact_on_gap_judgment: ""           # 范式转移视角如何改变/加强/削弱E→R→G的判断
+
+# === 后续行动 ===
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: ""
+  priority_research:
+    - ""
+  position_implication: ""
+
+# === 事后验证 (3-6个月后回填) ===
+post_mortem:
+  verified: false
+  verification_date: ""
+  outcome: ""                          # confirmed / partially_confirmed / refuted / inconclusive
+  what_happened: ""
+  lessons_learned: ""
+  signal_accuracy:
+    accurate_signals: []
+    noise_signals: []
+  industry_trend_accuracy: ""          # v2.0: 行业趋势判断是否正确
+  smart_money_accuracy: ""             # v2.0: 聪明钱信号是否有预测力

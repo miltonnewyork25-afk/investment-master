@@ -1,0 +1,433 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — IHG (InterContinental Hotels Group)
+# 压缩比: 315K → ~12K (26x)
+# 六层结构:
+#   Layer 0 = 坐标
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: IHG
+  company: "InterContinental Hotels Group PLC"
+  report_date: "2026-02-27"
+  stock_price: "$143.06"
+  market_cap: "$21.6B"
+  report_version: "v1.0"
+  report_path: "reports/IHG/IHG_Complete_2026-02-27.md"
+  quality_score: "4.3/5.0 (估)"
+  cqi: "报告未覆盖"
+  framework_version: "v17.0"
+  industry: "消费品/酒店特许经营"
+  archetype: "品牌特许收费站"
+  chars: 315102
+  dm_count: 899
+  dm_density: "1.78/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "IHG不是折价修复故事,而是EPS复利增长(9-12%)+温和重估双轨回报——43%对HLT折价中约40%是可修复的认知偏差,但修复需要2-5年耐心"
+  rating: "关注"
+  fair_value: "$167.5 (六方法加权) | RT校准后$163-170"
+  expected_return: "~13.5%/年(概率加权5年EV $251.8)"
+
+  key_arguments:
+    - claim: "43%对HLT的P/E折价中约40%是非基本面折价(制度+情绪+叙事)"
+      direction: bullish
+      magnitude: 4
+      mechanism: "A-Score差距仅12%(6.78 vs ~7.8) << P/E差距34%(29x vs 52x) → ~20pp无法用品质差距解释 → 非S&P500+仅5人覆盖+LSE主上市+老三叙事"
+      kill_switch: "HLT/MAR P/E回归至35-40x → IHG相对折价机械缩小但绝对上行消失"
+
+    - claim: "系统增长4.7%是管线锁定的高确定性引擎"
+      direction: bullish
+      magnitude: 4
+      mechanism: "连续4年加速(2.5%→4.7%) + 管线342K中60%已开工 + 57%转换品牌缩短周期 → 2-3年可见度极高"
+      kill_switch: "全球经济衰退导致加盟商延迟开业 + NUG降至<3%连续2年"
+
+    - claim: "4引擎增长实为1.8个有效独立引擎,完整周期CAGR 9-12%而非管理层宣称的12-15%"
+      direction: bearish
+      magnitude: 4
+      mechanism: "引擎间相关系数均值0.408 → 有效独立引擎=4/(1+3×0.408)=1.80 → 简单加法高估~3pp"
+      kill_switch: "引擎相关性显著下降(如中国独立复苏+美国衰退=负相关) → 有效引擎数上升"
+
+    - claim: "回购效率在低P/E下是价值增值的,IHG效率是HLT的1.8倍"
+      direction: bullish
+      magnitude: 3
+      mechanism: "IHG@29x每$1回购消灭4.2%股本 vs HLT@52x仅2.3% → 低估值=高回购价值复利"
+      kill_switch: "杠杆升至4.0x+触发BBB-降级警告 → 被迫去杠杆削减回购"
+
+    - claim: "特许模型尾部风险被市场高估——ZREIP仅$0.08/股/年(邮轮的1/25)"
+      direction: bullish
+      magnitude: 3
+      mechanism: "特许经营不承担客房运营成本 → 零收入事件中fee收入降但不归零 → 隐含保险成本极低"
+      kill_switch: "全球大流行持续>2年+政府强制关闭酒店(2020已证明特许模型有韧性)"
+
+  moat:
+    composite_score: 6.78
+    half_life: "10-15年(品牌+忠诚度+分销系统复合)"
+    dimensions:
+      - type: brand
+        strength: 4
+        evidence: "Holiday Inn全球知名度极高+InterContinental 1946年历史底蕴; 21品牌全谱系覆盖"
+        vulnerability: "奢华段深度不及MAR(Ritz-Carlton/St.Regis)/HLT(Waldorf); Holiday Inn品牌老化风险"
+      - type: network_effect
+        strength: 3
+        evidence: "IHG One Rewards 160M+会员, 66%忠诚度房晚, 忠诚度系统价值~$11.5B(53%市值)"
+        vulnerability: "MAR Bonvoy 220M+/HLT Honors 243M+, 规模差距27-34%; 三大计划同质化限制"
+      - type: switching_cost
+        strength: 3
+        evidence: "加盟商PIP翻新投资高+3-7年品牌合约锁定; 消费者端忠诚度积分沉没成本"
+        vulnerability: "消费者端切换成本中等(积分可兑换/OTA降低搜索成本); 加盟商合约到期可换牌"
+      - type: scale
+        strength: 2
+        evidence: "全球第三(1.03M rooms), 管线342K; Fee Margin 64.8%(三巨头最高)"
+        vulnerability: "MAR大55%(1.6M rooms)/HLT大15%(1.18M rooms); 管线差距意味着规模差距可能扩大"
+      - type: pricing_power
+        strength: 3
+        evidence: "Fee费率从9%逐步提升+信用卡联名费+忠诚度积分销售(2028E $237M+利润)"
+        vulnerability: "加盟商NOI被压缩(费率9%→12%时现金回报率从10%降至8.5%) → 加盟商可能用脚投票"
+
+  valuation:
+    reverse_dcf_implied: "隐含系统增长5%+终端倍数19x+RevPAR +1.5% — 修正为4%/16x后隐含$170-180"
+    methods_used: ["Reverse DCF", "双层SOTP", "EV/EBITDA", "P/E可比", "FCF Yield", "DDM"]
+    dispersion: "23%(核心区间$150-185) | 59%(扩展区间$124-209)"
+    consensus_vs_ours: "分析师中位目标$128.69(低于当前价) vs 我们$167.5(+17%) — 分歧源于仅5人覆盖+远期估计断层"
+    entry_zone: "$130-140 (P/E 27-29x)"
+    catalyst: "加入S&P 500(被动资金流入) | Fee Margin持续扩张 | NUG突破5% | 信用卡协议翻倍"
+
+  action_framework:
+    verdict: "关注 — 当前$143可建观察仓, 理想加仓区$130以下(P/E 27x)"
+    buy_triggers:
+      - trigger: "RevPAR转正+NUG维持>4.5%确认增长质量"
+        price_zone: "$130-140 (P/E 27-29x)"
+        reasoning: "增长确认+折价维持=风险回报不对称; 年化回报15%+"
+      - trigger: "系统性市场下跌导致P/E跌破25x"
+        price_zone: "$120以下 (P/E <25x)"
+        reasoning: "特许模型在衰退中EPS降幅有限(2020/2008验证) + 回购在低PE下效率倍增"
+    hold_conditions:
+      - "净系统增长>3.5%/年"
+      - "Fee Margin>60%"
+      - "信用评级维持BBB/Baa2稳定"
+      - "回购可持续(FCF/总分配>65%)"
+    sell_triggers:
+      - signal: "NUG连续2年<3%且管线萎缩"
+        severity: "action"
+        action: "减仓50%, 增长引擎失速"
+      - signal: "净债务/EBITDA>4.0x或评级下调至BBB-"
+        severity: "action"
+        action: "减仓50%, 回购庞氏风险实质化"
+      - signal: "P/E>35x(历史天花板)且无增速改善"
+        severity: "warning"
+        action: "减仓25%, 锁定估值修复利润"
+      - signal: "Airbnb在商务差旅市场份额>15%"
+        severity: "warning"
+        action: "重新评估特许模型护城河"
+    position_sizing: "观察仓2-3% | 全仓5%@P/E<27x | 不适合集中持仓(老三地位+增速中等)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "品质差距<估值差距 = 非基本面折价的识别方法"
+    chain: >
+      A-Score量化品质差距: IHG 6.78 vs HLT ~7.8 = 差距12%
+      → P/E差距: 29x vs 52x = 差距34%
+      → 12% << 34% → ~20pp无法用品质差距解释
+      → 追问: 这20pp来自哪里?
+      → 制度折价(非S&P500+LSE+5人覆盖) ~5pp
+      → 叙事折价(老三标签+增速不及HLT) ~8pp
+      → 情绪折价(Holiday Inn品牌老化感知) ~5-7pp
+      → 推论: 非基本面折价是可修复的,但需要催化剂和时间(2-5年)
+    transferable_to: "所有行业内存在显著估值差距的同业比较(A-Score差距vs P/E差距的不对称=筛选信号)"
+    reasoning_habit: "看到大P/E折价时,先量化品质差距(A-Score/CQI) — 如果品质差距<估值差距的一半,存在非基本面折价机会"
+
+  - id: "CC-2"
+    name: "有效独立引擎数量化(打破管理层增长叙事)"
+    chain: >
+      管理层宣称4引擎(系统增长+RevPAR+费率+回购) = 12-15% CAGR
+      → 但引擎间不独立: RevPAR↓ → 加盟商延迟开业 → 系统增长↓
+      → 计算引擎间相关系数: 均值0.408
+      → 有效独立引擎 = 4/(1+3×0.408) = 1.80
+      → 完整周期CAGR = 9-12%(非12-15%)
+      → 简单加法高估了约3pp
+      → 投资含义: 市场给29x P/E可能已经隐含了这个下调,而非共识的12-15%
+    transferable_to: "所有宣称多引擎增长的公司(SaaS多产品/平台多变现/多品牌集团)"
+    reasoning_habit: "听到管理层列举多个增长引擎时,立刻追问引擎间相关性 — 高相关=有效引擎少于宣称=增速被高估"
+
+  - id: "CC-3"
+    name: "特许经营模型的尾部风险定价(ZREIP行业比较)"
+    chain: >
+      特许经营不承担客房运营固定成本(房租/人工/水电)
+      → 零收入事件中: 邮轮=100%停航→收入归零; 酒店=RevPAR暴跌但不归零
+      → 2020验证: IHG RevPAR -52%但fee收入仅-35%(弹性系数0.67)
+      → ZREIP年化保险费: IHG $0.08/股 vs RCL $2.2/股 (差异27x)
+      → 推论: 市场对酒店尾部风险的定价可能参照了邮轮/航空,严重高估
+      → 每降低1pp风险溢价 = P/E+0.5x = +$2.5/share
+    transferable_to: "所有轻资产特许经营(QSR/物业管理/品牌授权) vs 重资产运营商的尾部风险比较"
+    reasoning_habit: "评估尾部风险时,追问'零收入事件中这家公司的成本结构会怎样' — 固定成本越低,尾部风险越小"
+
+  - id: "CC-4"
+    name: "低P/E下回购效率的复利优势"
+    chain: >
+      IHG年回购~$907M @ P/E 29x → 消灭4.2%股本/年
+      → HLT年回购~$2B @ P/E 52x → 仅消灭2.3%股本/年
+      → 同样$1回购,IHG消灭的股本是HLT的1.8倍
+      → 复利效应: 5年后IHG累计消灭~19%股本 vs HLT ~11%
+      → 如果P/E不变, 仅回购贡献EPS CAGR: IHG ~4.4% vs HLT ~2.4%
+      → 推论: 低估值下的回购是沉默的价值创造引擎,但前提是杠杆可持续
+    transferable_to: "所有PE<30x且积极回购的公司(回购效率=f(1/PE),PE越低效率越高)"
+    reasoning_habit: "评估回购时,不只看金额看效率 — 用'股本消灭率'(回购金额/市值)而非回购金额本身"
+
+  - id: "CC-5"
+    name: "信用卡联名费+忠诚度积分=隐形利润催化剂"
+    chain: >
+      IHG与Chase联名信用卡→持卡人购物→IHG获得积分销售收入
+      → 2024起积分收入从System Fund转入报告分部(会计重分类)
+      → 2028E信用卡+积分贡献$237M+利润(占EBIT 18%)
+      → 这是100%增量、高margin(~80%)、与RevPAR无关的收入
+      → 市场可能尚未为此给予信用(因为变化刚发生1-2年)
+      → 推论: 如果市场开始定价信用卡增量,P/E可从29x修复至32-35x
+    transferable_to: "所有拥有忠诚度计划的消费品/零售公司(Starbucks Rewards/Amazon Prime/航空里程)"
+    reasoning_habit: "追问忠诚度计划的直接变现路径 — 会员数不重要,变现效率(ARPU×margin)才重要"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "43%折价主要由基本面差距驱动,估值基本合理"
+      final: "基本面差距仅解释55-60%的折价,剩余40%是制度+情绪+叙事折价"
+      pivot: "A-Score差距12% vs P/E差距34% → 品质不能解释一半以上的估值差距"
+
+    - initial: "管理层12-15% EPS CAGR目标可信"
+      final: "引擎间相关性导致有效CAGR 9-12%,高估约3pp"
+      pivot: "引擎间相关系数0.408 → 有效独立引擎1.80而非4 → 简单加法高估增速"
+
+    - initial: "负权益(-$2.7B)是资产负债表危机信号"
+      final: "负权益是激进回购的数学结果而非资不抵债; 真实资产(品牌/忠诚度/合约)不在表上"
+      pivot: "Altman Z 4.83(安全区) + Piotroski F 7/9 + BBB稳定评级 + 利息覆盖6.0x"
+
+  surprises:
+    - finding: "IHG Fee Margin 64.8%是三巨头中最高的,高于HLT ~62%和MAR ~57%"
+      implication: "市场给IHG最低P/E但IHG fee效率最高 → 效率被规模叙事掩盖 → 潜在重估催化"
+
+    - finding: "RevPAR增长中结构性成分占73%,周期性仅27%"
+      implication: "市场将RevPAR+0.6%视为纯周期疲软,实际增长质量远好于表面数字 → 增长折价过度"
+
+    - finding: "IHG员工仅12,587人(MAR的3%/HLT的7%)管理100万间客房"
+      implication: "资产轻模式推到极致 → 每员工管理80间客房(MAR仅4间) → 运营杠杆极高"
+
+    - finding: "忠诚度系统总价值~$11.5B(53%市值),基于40M活跃会员×$288 LTV"
+      implication: "忠诚度不只是积分计划而是经济引擎 → 如果市场单独为忠诚度定价,剩余业务几乎是免费的"
+
+  blind_spots:
+    - area: "折价修复的催化剂时间表"
+      why_matters: "40%非基本面折价存在但修复可能需1年(加入S&P500)也可能5年+"
+      monitor: "S&P 500纳入公告 | 分析师覆盖人数变化(5人→10人+) | 英国→美国主上市迁移信号"
+
+    - area: "Greater China RevPAR恢复力度"
+      why_matters: "占收入~14%但RevPAR -1.6%; 复苏至+3%可贡献全球+0.4pp → P/E+0.5-1x"
+      monitor: "Q1-Q2 2026 Greater China RevPAR(Q4已转正+1.1%) | 华住/锦江定价行为"
+
+    - area: "回购可持续性(负权益持续恶化)"
+      why_matters: "总权益-$2.7B且FCF/总分配仅74% → 缺口$307M/年靠发债填补 → 利率上升可压缩回购空间"
+      monitor: "年度FCF/总分配比率(跌破65%=预警) | 净债务/EBITDA(升破3.5x=行动)"
+
+    - area: "Airbnb向高端商务差旅渗透的速度"
+      why_matters: "当前Airbnb对IHG RevPAR拖累仅0.1-0.2pp/年,但Chesky已宣布进军酒店领域"
+      monitor: "Airbnb高端住宿收入增速 | 企业差旅政策变化 | 短租监管方向"
+
+  sell_lessons:
+    - scenario: "特许经营公司在RevPAR冻土上用借债回购维持EPS增长 → 一旦利率/评级约束触发,增长引擎骤停"
+      lesson: "回购驱动的EPS增长要检查可持续性: FCF/总分配<65%+净债务/EBITDA>3.5x=回购庞氏预警信号"
+      transferable: "所有借债回购的轻资产公司(QSR/品牌授权/平台)"
+    - scenario: "P/E从29x修复到35x(历史天花板)后不卖 → 折价修复一次性收益消失,回归EPS增速驱动"
+      lesson: "折价修复的利润是一次性的。估值修复完成=战略review时点,不是加仓时点"
+      transferable: "所有估值折价修复型投资(制度折价/情绪折价/老三折价)"
+    - scenario: "持有老三等待超越老二/老一 → 规模差距可能因管线不足而继续扩大"
+      lesson: "老三有alpha但有天花板。如果管线增速持续落后(342K vs 515K vs 596K),规模差距扩大→永久折价合理化"
+      transferable: "所有行业第三名公司的长期持有决策"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "A-Score vs P/E差距的不对称度"
+      why_alpha: "量化非基本面折价——大多数分析师用绝对PE比较而非品质调整后PE → 我们的A-Score方法暴露了20pp隐藏折价"
+      current_reading: "A-Score差距12% vs P/E差距34% → 不对称度22pp(2.8:1)"
+    - signal: "信用卡+忠诚度积分收入增速"
+      why_alpha: "会计重分类刚发生1-2年,市场尚未充分定价 → 2028E贡献EBIT 18%但P/E未反映"
+      current_reading: "积分销售从$0(Fund内)→~$50M→$120M+(3x增长)"
+    - signal: "有效独立引擎数(引擎相关性)"
+      why_alpha: "管理层宣称4引擎12-15%但引擎间高相关→有效1.8引擎9-12%。大多数分析师不做引擎独立性测试"
+      current_reading: "相关系数均值0.408 → 有效引擎1.80"
+
+  confirmation_signals:
+    - signal: "季度净系统增长(NUG)"
+      bullish_threshold: ">4.5%(加速确认 → 管线价值提升)"
+      bearish_threshold: "<3.5%连续2季(增速失速 → 管线差距扩大)"
+    - signal: "Fee Margin趋势"
+      bullish_threshold: ">66%(运营杠杆+信用卡收入确认)"
+      bearish_threshold: "<62%(系统基金分摊增加/新品牌拖累)"
+    - signal: "IHG对HLT的P/E折价比"
+      bullish_threshold: "折价<35%(修复启动)"
+      bearish_threshold: "折价>50%(叙事恶化/基本面差距扩大)"
+
+  noise_signals:
+    - signal: "季度RevPAR波动"
+      why_noise: "RevPAR高度依赖宏观+季节性; 系统增长(4.7%)对RevPAR弹性系数仅0.85 → Fee Revenue增长对RevPAR依赖度低于认知"
+    - signal: "总IFRS收入增速"
+      why_noise: "50%+是System Fund过手收入(收支平衡) → 看Fee Revenue(+7%)而非总收入"
+    - signal: "负权益的绝对值"
+      why_noise: "资产轻模型+激进回购的数学结果 → Altman Z 4.83证明偿付无虞 → 看利息覆盖率和FCF/分配比"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: HLT
+      similarity: "同为酒店特许经营轻资产模型, 品牌矩阵+忠诚度计划结构高度相似"
+      key_difference: "HLT=最聚焦执行(24品牌/6.7% NUG) vs IHG=追赶者(21品牌/4.7% NUG) | HLT P/E 52x vs IHG 29x"
+
+    - ticker: MAR
+      similarity: "全球酒店三巨头, 特许+管理混合模型, 类似宏观敏感性"
+      key_difference: "MAR=最大规模(1.6M rooms/30+品牌) vs IHG=最高fee效率(64.8% margin) | MAR增速来自规模惯性, IHG需加速增长"
+
+    - ticker: QSR
+      similarity: "同为轻资产品牌特许经营(餐饮vs酒店), 类似回购驱动EPS增长模式"
+      key_difference: "QSR=更分散的加盟商基础+更短合约周期 | IHG=更集中的大业主+更长PIP投资周期"
+
+  comparative:
+    - dimension: "Fee效率(Margin)"
+      position: "IHG (64.8%) > HLT (~62%) > MAR (~57%)"
+      reasoning: "IHG特许经营纯度最高(99%非自有) → 成本结构最轻 → Fee margin三巨头最高"
+
+    - dimension: "规模/管线"
+      position: "MAR (1.6M rooms/596K管线) > HLT (1.18M/515K) > IHG (1.03M/342K)"
+      reasoning: "规模差距=采购议价力+企业合同谈判力+忠诚度网络密度的差距"
+
+    - dimension: "增长质量(NUG)"
+      position: "HLT (6.7%) > IHG (4.7%) > MAR (4.3%)"
+      reasoning: "HLT在美国新建+印度/中国先发 → IHG加速中但基数小 → MAR规模大增速慢"
+
+    - dimension: "估值吸引力(PEG)"
+      position: "IHG (2.5x) > MAR (2.8x) > HLT (3.1x)"
+      reasoning: "IHG PE最低且增速中等 → PEG三巨头最优 → 市场可能过度惩罚老三标签"
+
+    - dimension: "忠诚度规模"
+      position: "HLT (243M+) > MAR (220M+) > IHG (160M+)"
+      reasoning: "忠诚度网络效应=会员数×酒店密度 → IHG在两个维度都是第三"
+
+  industry_position:
+    quadrant: "最高fee效率 × 最低规模 × 中等增速 × 最低估值"
+    archetype: "效率追赶者 — 单位经济最优但总量最小,估值反映了规模折价+叙事折价"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF → 市场隐含系统增长5%+终端19x → 修正为4%/16x → 隐含$170-180(vs当前$143)"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~RT-7双向校准: 偏多-$5~-8(WACC/SOTP/引擎交互) vs 偏空+$15~+27(RevPAR/NUG/A-Score) → 净偏悲观+$3~7"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "不适用(IHG无温水煮青蛙路径) — 但'回购庞氏'(BB-3)是慢性风险: 负权益-$1.5B→-$2.7B的2年恶化"
+
+  novel_patterns:
+    - name: "A-Score vs P/E差距筛选器"
+      description: "量化品质差距(A-Score)与估值差距(P/E)的不对称度 → 不对称度>1.5x = 非基本面折价信号"
+      transferable_to: ["任何行业同业比较", "价值投资筛选器", "制度折价/情绪折价识别"]
+
+    - name: "有效独立引擎计算"
+      description: "用引擎间相关系数矩阵计算有效独立引擎数 → 打破管理层多引擎叙事的加法幻觉"
+      transferable_to: ["SaaS多产品增长", "平台多变现模式", "多品牌集团", "所有宣称N个增长引擎的公司"]
+
+    - name: "ZREIP行业比较(特许vs运营)"
+      description: "将保险精算移植到权益估值 → 量化特许经营vs重资产运营的尾部风险差异(IHG 1/27 RCL)"
+      transferable_to: ["QSR(特许)vs餐饮运营(自营)", "物业管理(轻)vs REIT(重)", "品牌授权vs自营零售"]
+
+    - name: "回购效率的估值函数"
+      description: "回购效率=f(1/PE) → PE越低每$1回购消灭越多股本 → 低估值公司的回购是复利加速器,高估值公司的回购是价值毁灭器"
+      transferable_to: ["所有有回购计划的公司", "与CME报告的回购eta值互为验证"]
+
+    - name: "忠诚度系统LTV估值法"
+      description: "活跃会员数×单会员LTV → 忠诚度系统总价值 → 占市值比例 → 揭示'免费'获得剩余业务"
+      transferable_to: ["航空里程计划", "Starbucks Rewards", "Amazon Prime", "所有订阅/会员制公司"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "酒店特许经营的护城河是'宽而浅'——品牌+忠诚度+分销覆盖面广,但在每个单一维度都不是最强"
+        implication: "护城河评估应区分'广度型'(多维度中等强度)和'深度型'(单维度极强) — 广度型更难被单点攻破但也更难建立差异化"
+      - insight: "特许经营模型的尾部风险本质上低于重资产运营(ZREIP 1/27倍) — 市场可能系统性高估了轻资产模型的下行风险"
+        implication: "轻资产特许经营的风险溢价应低于重资产运营商 → P/E折价中应扣除尾部风险错定价部分"
+
+    valuation_insights:
+      - insight: "A-Score差距vs P/E差距的不对称度是识别非基本面折价的通用工具"
+        implication: "不对称度>1.5x = 筛选信号 → 可作为quantitative screen加入选股框架"
+      - insight: "多引擎增长公司的CAGR应使用有效独立引擎数(非名义引擎数)计算"
+        implication: "管理层guidance的简单加法应除以引擎相关性修正因子 → 避免3-5pp的增速高估"
+
+    screening_insights:
+      - insight: "P/E最低+Fee Margin最高+PEG最优 = 被叙事惩罚的效率领先者"
+        implication: "选股筛选加入'效率折价过滤器': fee margin行业最高但P/E行业最低 → 标记为叙事折价候选"
+      - insight: "ZREIP<$0.2/股/年的轻资产公司 = 尾部风险被高估的候选"
+        implication: "量化尾部风险成本并与同行重资产公司比较 → 差异>10x = 市场错定价信号"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "A-Score差距vs估值差距的不对称度分析"
+      trigger: "同行业公司间存在>20%的P/E差距"
+      origin: "IHG品质差距12% vs P/E差距34% → 2.8:1不对称度暴露了20pp非基本面折价"
+      generalization: "品质差距/估值差距比值<0.5 = 非基本面折价>50% → 值得深入调查折价来源"
+
+    - habit: "追问多引擎增长的引擎间相关性"
+      trigger: "管理层宣称3+个增长引擎的简单加法CAGR"
+      origin: "IHG 4引擎12-15%被修正为1.8有效引擎9-12% — 相关系数0.408导致3pp高估"
+      generalization: "不做引擎独立性测试就接受管理层CAGR = 系统性高估增速。越多引擎越需要测试"
+
+    - habit: "用ZREIP量化轻资产vs重资产的尾部风险差异"
+      trigger: "评估轻资产特许经营公司的下行风险"
+      origin: "IHG ZREIP $0.08 vs RCL $2.2 (27x差异) — 特许模型尾部风险远低于认知"
+      generalization: "对轻资产模型的尾部风险评估不应套用重资产模型的框架 → 需要单独量化"
+
+    - habit: "检查回购效率的PE函数而非只看回购金额"
+      trigger: "公司年回购>FCF的30%"
+      origin: "IHG@29x消灭4.2%股本/年 vs HLT@52x仅2.3% → 同样$1回购效率差1.8x"
+      generalization: "与CME报告的eta值概念互为验证 — 回购效率是PE的递减函数,高PE回购是价值毁灭"
+
+  quality_feedback:
+    strengths:
+      - "DM密度1.78/千字(优秀级别) — 数据锚定扎实,899个DM锚点覆盖全报告"
+      - "CI-02(A-Score筛选器)和CI-03(有效独立引擎) — 高度可迁移的通用分析框架"
+      - "红队双向校准完整 — RT-1~RT-7覆盖数据验证+逻辑一致+乐观检测+悲观检测+概率校准"
+      - "ZREIP从RCL报告成功移植至酒店行业 — 方法论跨行业迁移的标杆"
+    weaknesses:
+      - "分析师覆盖仅5人导致共识质量低 — 估值锚定缺乏足够外部验证"
+      - "Greater China前景的数据深度不足 — 仅用-1.6%和Q4 +1.1%判断拐点,缺乏华住/锦江竞品深度对标"
+      - "折价修复催化剂时间表高度不确定 — 无法区分1年修复和5年+修复→持有期成本被低估"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "回购@低PE是价值增值的(CME CI-005的反面验证)"
+        evidence: "IHG@29x回购效率4.2%/年 vs HLT@52x仅2.3% → 低PE下回购确实高效"
+        confidence_after: "高(CME+IHG双向验证: 高PE回购毁灭价值, 低PE回购创造价值)"
+
+      - hypothesis: "ZREIP可跨行业迁移(从RCL邮轮→IHG酒店)"
+        evidence: "IHG ZREIP $0.08成功计算且与RCL $2.2形成27x差异的经济直觉一致"
+        confidence_after: "高(两个行业独立验证)"
+
+    extended:
+      - hypothesis: "品质最高≠回报最高(CME垄断三角)"
+        extension: "IHG作为老三品质最低但PEG最优→投资回报不仅不等于品质,甚至可能负相关(品质溢价被过度定价)"
+
+    refuted: []
+
+  limitations:
+    - "催化剂时间表不可预测 — 40%非基本面折价的修复可能需1-5年+,持有期机会成本无法量化"
+    - "Greater China RevPAR预测依赖宏观假设 — 中国消费复苏路径高度不确定"
+    - "回购可持续性取决于利率环境 — 如果利率长期维持>5%, FCF/分配缺口将扩大→回购引擎可能被迫缩减"
+    - "WACC 9.5% vs 8.5%的1pp差异对应$15-20/share估值差 — 单参数敏感性过高"
+    - "HLT/MAR的估值本身可能回归(PE压缩) — IHG的相对折价缩小但绝对回报可能同步下降"

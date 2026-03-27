@@ -1,0 +1,93 @@
+# 预期差分析卡 v2.1 — KLA Corporation (KLAC)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "KLAC"
+  company: "KLA Corporation"
+  analysis_date: "2026-03-27"
+  stock_price: "$1,451"
+  market_cap: "$191B"
+  data_snapshot: "FY2025 (FY ends June)"
+  tier: "tier2"
+  framework_version: "v2.1"
+  linked_report: "reports/KLAC/KLAC_Complete_v1.0_2026-02-17.md"
+
+core_judgment: "KLAC是半导体设备中品质最高(最防守型)但也是'品质溢价已满载'的案例——49x峰值PE在历史区间(15-30x)的上端2倍位置。检测设备确实是最后被砍的(fab CapEx仅占5-7%,不检测=良率崩塌),但'防守性已被定价'意味着向上空间极小而周期下行风险被完全忽视。如果WFE在2027-28回调-20%(历史规律),KLAC谷值EPS~$27→15x谷值PE=$405(vs当前$1,451=-72%)。市场在定价'AI超级周期永不回调'——这是WFE历史上从未发生过的事"
+gap_type: "overpriced_optimism"
+confidence: "medium-high"
+confidence_reasoning: "高置信: 49x PE vs 历史15-30x=事实级过高。WFE从未连续3年>7%增长不回调=事实。中等置信: AI可能真的延长周期(前所未有)——如果AI改变了半导体周期性,那49x可能合理。降低置信: KLAC防守性确实最强(下行仅-7% vs LRCX -14%)"
+
+expectations:
+  price_implied:
+    p_fcf: "51x"
+    judgment: "extreme — 历史PE区间(15-30x)的1.6-3.3倍"
+    judgment_reasoning: "49x峰值PE意味着市场在定价: (1)周期永不回调 (2)AI结构性扩展检测TAM。即使(2)是真的,(1)从未在WFE历史中发生过"
+
+  dominant_narrative: "KLAC是AI半导体检测的'保险单'——每颗芯片都需要检测,AI芯片更复杂=更多检测"
+  bull_case_core: "检测不可削减(5-7% CapEx)+AI芯片复杂度↑+EUV/High-NA需要更多计量检测"
+  bear_case_core: "49x峰值PE=历史最高+WFE从未3年不回调+中国限制影响"
+
+  smart_money:
+    company_buyback:
+      sbc_coverage: "N/A(SBC仅$265M vs FCF $3.7B=极小)"
+      share_count_change: "-0.8%/年"
+
+reality:
+  company:
+    overall_trend: "accelerating — 但在峰值周期位置"
+    key_variables:
+      - name: "收入"
+        state: "accelerating"
+        data: "FY23 $10.5B → FY24 $9.8B(-7%,温和下行) → FY25 $12.2B(+24%恢复)"
+        evidence_grade: "fact"
+      - name: "FCF韧性"
+        state: "stable"
+        data: "下行周期FCF从$3.3B仅降至$3.0B(-9%)——7家设备中最稳定"
+        evidence_grade: "fact"
+      - name: "OPM"
+        state: "stable_near_peak"
+        data: "当前42.4% vs 下行谷值37% → 仅5pp压缩(行业最窄)"
+        evidence_grade: "fact"
+
+  industry:
+    total_market_trend: "growing — WFE $145B(2026E), $156B(2027E)"
+    key_industry_fact: "★ WFE从未连续3年增速>7%不回调。当前是第3年。如果历史规律成立,2027-28面临调整"
+    structural_shifts:
+      - shift: "AI芯片复杂度增加→检测需求结构性增长"
+        irreversibility: 4
+        speed: "medium"
+        company_position: "sole_beneficiary — 检测垄断"
+      - shift: "WFE周期性"
+        irreversibility: 2
+        speed: "unknown — 可能被AI延长但历史上总会回调"
+        company_position: "exposed — 虽然是最防守的但仍受周期影响"
+
+gap:
+  scoring:
+    direction_clarity: 4
+    magnitude: 4
+    persistence: 3
+    verifiability: 3
+    industry_trend_support: 2
+    smart_money_alignment: 2
+    composite_score: 3.0
+
+  core_mispriced_variables:
+    - variable: "周期性被完全忽视——49x峰值PE定价'永不回调'"
+      market_assumes: "AI超级周期打破传统3-4年周期模式"
+      reality_shows: "WFE历史上从未连续3年>7%增长不回调。KLAC下行周期EPS可降至~$27。49x×峰值EPS vs 可能到来的15x×谷值EPS=巨大风险"
+      evidence_grade: "fact(历史规律)+inference(AI是否改变规律)"
+
+  one_sentence_judgment: "KLAC是'品质溢价满载+周期风险被忽视'的经典案例——检测垄断+AI利好是真的,但49x峰值PE在定价'历史规律被打破',如果规律成立→下行空间远大于上行空间"
+
+paradigm_shift:
+  company_role: "beneficiary — AI芯片复杂度增加检测需求,但不改变周期性"
+  pricing_error_pattern: "cycle_peak_premium — 在周期峰值给增长公司估值而非周期公司估值"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 3.0。overpriced_optimism方向。已有4.5分标杆报告(254K)。当前不是买入时机——等待WFE回调信号"
+  position_implication: "如果已持有: 考虑在当前水平减仓(保护利润)。如果未持有: 等待WFE回调(12-18x谷值PE=$324-$486)再入场"
+
+post_mortem:
+  verified: false

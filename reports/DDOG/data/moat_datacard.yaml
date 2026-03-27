@@ -1,0 +1,234 @@
+# DDOG Moat Datacard — moat-evaluator v1.0
+# Generated: 2026-03-25
+# Source: P2_moat_supplement.md (飞轮分析模块 Step 3)
+
+ticker: DDOG
+company: Datadog Inc.
+industry: SaaS / Cloud Observability
+cqi_score: 47
+moat_version: P2_v1.0
+
+# ── C维度评分 ──
+moat_scores:
+  C1_institutional_embedding: 2.0
+  C2_network_effects: 2.5
+  C3_ecosystem_lock_in: 4.5
+  C4_data_flywheel: 3.0  # P2下调: OTel 48%+技术摩擦削弱数据独占性 (P1: 3.5)
+  C5_scale_economics: 4.0
+  C6_physical_barriers: 0.5
+  C7_self_sustaining: 2.0
+  total: 18.5
+  max: 35.0
+  pct: 52.9
+
+# ── 飞轮拓扑 ──
+flywheel:
+  topology: "用户→数据→AI更准→少误报→信任→产品渗透→更多数据"
+  connection_count: 6
+  connections:
+    - id: C1
+      from: 用户
+      to: 数据(telemetry)
+      mechanism: 使用计费模式=使用即采集
+      strength: 0.85
+      rating: strong
+      confidence: high
+      evidence: "每天数万亿遥测事件 [DM-MOAT-007]"
+    - id: C2
+      from: 数据
+      to: AI检测更准
+      mechanism: 更多基线数据→异常检测更精准
+      strength: 0.80
+      rating: strong
+      confidence: medium
+      evidence: "Bits AI 2000+企业客户 [DM-BIZ-004]"
+    - id: C3
+      from: AI检测更准
+      to: 更少误报/更快MTTR
+      mechanism: AI减少告警噪音
+      strength: 0.65
+      rating: moderate_strong
+      confidence: low
+      evidence: "Watchdog异常检测(管理层宣称), 缺第三方验证"
+    - id: C4
+      from: 更少误报
+      to: 用户信任
+      mechanism: 体验→续约(但与锁定效应混淆)
+      strength: 0.45
+      rating: weak
+      confidence: low
+      evidence: "GRR mid-to-high 90s [DM-CUS-002], 但锁定vs信任不可分离"
+    - id: C5
+      from: 用户信任
+      to: 更多产品渗透
+      mechanism: Land-and-Expand, 统一平台降低边际决策成本
+      strength: 0.85
+      rating: strong
+      confidence: high
+      evidence: "84% 2+产品, 55% 4+产品, 13% 8+产品 [DM-CUS-005~009]"
+    - id: C6
+      from: 更多产品
+      to: 更多数据
+      mechanism: 每个产品=新数据维度
+      strength: 0.80
+      rating: strong
+      confidence: medium_high
+      evidence: "17产品线覆盖metrics/traces/logs/security/AI spans"
+  avg_strength: 0.733
+
+# ── 飞轮悖论检测 ──
+cannibalization:
+  hypothesis: "AI observability成功→传统monitoring自动化→host可能减少→Infrastructure收入下降"
+  comparison: CRM_agent_paradox
+  key_difference: "usage-based(弹性缓冲) vs seat-based(直接线性蚕食)"
+  scenarios:
+    bull:
+      rate: 0.00
+      judgment: normal
+      assumption: "AI不减少host需求"
+    base:
+      rate: 0.48
+      judgment: warning
+      assumption: "AI自动化减少10% host需求, 含缓冲因素"
+    bear:
+      rate: 0.96
+      judgment: danger
+      assumption: "AI自动化减少20% host需求, 无缓冲"
+  buffer_factors:
+    - "Usage-based计费: host减少但per-host数据量可增加"
+    - "云基础设施年增15-20%: 新workload覆盖效率提升"
+    - "AI workload本身需要monitoring: LLM Observability新增需求"
+  adjusted_base_rate: 0.29  # 含缓冲因素调整: 0.48 × 0.6
+
+# ── 飞轮摩擦力 ──
+friction:
+  forces:
+    - type: competitive
+      source: "Grafana Labs ($400M ARR, 60%增速) + OTel标准化"
+      strength: 0.50
+      weight: 0.30
+      evidence: "Grafana定价低60-80% [DM-COMP-GF]; OTel 48%采纳 [DM-COMP-OT]"
+      ks: "KS-7: Grafana ARR>$1B"
+    - type: scale_diseconomy
+      source: "R&D/Rev从41%升至45%(SBC驱动)"
+      strength: 0.10
+      weight: 0.20
+      evidence: "SGA/Rev 9.2%→8.2%改善; R&D膨胀主要SBC [DM-FIN-SGA]"
+      ks: "KS-8: Non-GAAP OPM<15%"
+    - type: regulatory
+      source: "GDPR数据主权/EU AI Act潜在影响"
+      strength: 0.10
+      weight: 0.10
+      evidence: "当前无实质影响, 多区域部署应对"
+      ks: null
+    - type: technical
+      source: "OTel标准化绕过DDOG Agent采集层"
+      strength: 0.30
+      weight: 0.25
+      evidence: "34%新客户携带OTel [DM-COMP-OT]; DDOG策略'进来容易出去难'"
+      ks: "KS-13: OTel纯替代>60%"
+    - type: cognitive
+      source: "客户感知'飞轮价值' vs '被锁定'不清晰"
+      strength: 0.30
+      weight: 0.15
+      evidence: "GRR high-90s但usage模式=可随时削减; FY2023/FY2025 cost optimization"
+      ks: "KS-1: NRR<110%"
+  weighted_total: 0.300
+
+# ── 飞轮净效应 ──
+net_flywheel:
+  formula: "强度 - 摩擦 - 蚕食(调整后)"
+  raw_strength: 3.67  # 4.40/6×5
+  friction_score: 1.50  # 0.30×5
+  cannibalization_score: 1.44  # 0.48×0.6×5 (base, adjusted)
+  scenarios:
+    bull:
+      value: 1.87
+      judgment: positive_strong
+    base:
+      value: 0.73
+      judgment: positive_weak
+    bear:
+      value: -1.40
+      judgment: negative
+  base_judgment: "正飞轮(弱) — 护城河在缓慢自动加深, 但依赖持续R&D投入(45% Rev)"
+  threshold: 0.50
+  above_threshold: true
+
+# ── C4下调论证 ──
+c4_adjustment:
+  from: 3.5
+  to: 3.0
+  delta: -0.5
+  reasons:
+    - "OTel 48%采纳率→数据采集层独占性被标准化侵蚀"
+    - "DDOG策略'拥抱OTel输入,锁定分析输出'→部分缓冲但数据层护城河从'独占'变'共享'"
+    - "3.0(非更低): 17产品线跨维度数据整合仍是差异化"
+
+# ── 关键监控信号 ──
+key_signals:
+  - id: KS-1
+    metric: NRR
+    threshold: "<110%"
+    current: "~115% (推算)"
+    status: green
+  - id: KS-7
+    metric: Grafana ARR
+    threshold: ">$1B"
+    current: "~$400M"
+    status: green
+  - id: KS-8
+    metric: Non-GAAP OPM
+    threshold: "<15%"
+    current: "~27%"
+    status: green
+  - id: KS-13
+    metric: OTel纯替代客户占比
+    threshold: ">60%"
+    current: "~34% (新客户)"
+    status: green
+  - id: KS-NEW-1
+    metric: Infrastructure收入增速 vs 总增速
+    threshold: "<50%比率"
+    current: "待确认"
+    status: monitor
+    note: "蚕食率核心监控指标"
+
+# ── DM锚点索引 ──
+dm_anchors:
+  - id: DM-MOAT-007
+    desc: 每天数万亿遥测事件
+    source: 管理层earnings call
+    confidence: medium
+  - id: DM-BIZ-004
+    desc: Bits AI 2000+企业客户
+    source: 管理层披露
+    confidence: medium_high
+  - id: DM-CUS-002
+    desc: GRR mid-to-high 90s
+    source: 管理层guidance
+    confidence: medium_high
+  - id: DM-CUS-005~009
+    desc: 多产品渗透(84%/55%/13%)
+    source: 10-K/earnings
+    confidence: high
+  - id: DM-CUS-NRR
+    desc: 多产品客户NRR>120%
+    source: 推算(非直接披露)
+    confidence: medium
+  - id: DM-COMP-GF
+    desc: Grafana Cloud ARR$400M/增速60%
+    source: 行业报道
+    confidence: medium
+  - id: DM-COMP-OT
+    desc: OTel采纳率48%/新客户34%携带OTel
+    source: CNCF Survey+管理层
+    confidence: medium_high
+  - id: DM-FIN-SGA
+    desc: SGA/Rev 9.2%→8.2%
+    source: 10-K
+    confidence: high
+  - id: DM-FIN-OPT
+    desc: Cost optimization行为
+    source: 管理层earnings call
+    confidence: medium_high

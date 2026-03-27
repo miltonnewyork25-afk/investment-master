@@ -1,0 +1,448 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — lululemon athletica
+# 压缩比: 242K → ~12K (20x)
+# 六层 + 三个新增重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: LULU
+  company: "lululemon athletica"
+  report_date: "2026-03-24"
+  stock_price: "$165.57"
+  market_cap: "$18.6B"
+  report_version: "v1.1"
+  report_path: "reports/LULU/LULU_v1.1_Complete.md"
+  quality_score: "报告未覆盖(无独立记分卡)"
+  cqi: "报告未覆盖"
+  a_score: "47.8/70"
+  framework_version: "v19.6"
+  industry: "消费品"
+  archetype: "品牌溢价"
+  chars: 242188
+  dm_count: 355
+  dm_density: "1.47/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "PE 12x是IPO以来最低(历史2.3%分位), 6种估值方法中5种指向上行(公允$228/+37%), 但美洲comp 7连降+CEO空缺+DTC份额流失=反转信号尚未出现——低估是事实, 修复时间未知"
+  rating: "低估观察（等待反转信号）"
+  fair_value: "$228 (+37%)"
+  expected_return: "+37% (含催化期权$254/+53%)"
+
+  key_arguments:
+    - claim: "PE 12x定价了品牌永久衰退(Reverse DCF隐含永续增速仅2-3%), 但五层护城河中四层完好"
+      direction: bullish
+      magnitude: 4  # 6种估值方法5种指向上行, 但品牌L3层确实在被侵蚀
+      mechanism: "市场将comp -3%+CEO空缺外推为永久衰退→PE从42x均值压缩至12x(-71%)→但面料技术(L1)+数据飞轮(L4)+规模经济(L5)仍完好→Gap式全面崩塌概率仅8-12%"
+      kill_switch: "DTC份额跌破20%(KS-01) → 品牌在核心渠道边缘化 → 护城河4/5判断需全面修正"
+
+    - claim: "美洲comp连续7季度负增长且FY2026 guidance继续为负(-1%至-3%), 反转信号缺失"
+      direction: bearish
+      magnitude: 4  # 硬数据确认, guidance也悲观
+      mechanism: "comp -3%分解: 客流-5%+客单价+2%→问题是'没人来'而非'来了不买'→品牌吸引力下降→DTC份额10个月从30%→24%(-6pp)被Alo 1:1替代"
+      kill_switch: "Americas comp ≥-1%连续2Q + DTC份额企稳≥22% → 边缘客户清洗完成 → 上调评级"
+
+    - claim: "中国Segment Margin 37.5%≈Americas, 国际扩张是利润增厚而非稀释"
+      direction: bullish
+      magnitude: 4  # 审计级10-K数据, 置信度A
+      mechanism: "127家门店(vs美国~350)仍在填充空白期→comp +36%/+24%→NPS +57(全球最高)→门店密度低=每家新店利润贡献正→中国从成本中心变为利润引擎"
+      kill_switch: "中国comp跌破+10%且加速放缓(KS-05) | 中美关系恶化导致品牌被制裁"
+
+    - claim: "Elliott activism是$20-40/share的离散催化事件(SBUX先例)"
+      direction: conditional
+      magnitude: 3  # 依赖CEO身份和时间, 不确定性高
+      mechanism: "Elliott track record(SBUX +25%宣布日)→CEO宣布消除治理折价→PE从12x恢复至16-19x→概率加权催化价值~$20/share→催化期权公允$254"
+      kill_switch: "CEO搜索延至2027(KS-04) | 找到的CEO是过渡型而非明星型 → 催化效应衰减至+5-8%"
+
+    - claim: "定价权剪刀差——低端客户流失反而提升加权OPM"
+      direction: conditional
+      magnitude: 2  # 仅60%置信度, 取决于侵蚀是否止于边缘层
+      mechanism: "底部30%客户(促销驱动/低频)流失→加权毛利率从混合56.6%→核心客户58%→OPM改善~50bps→量缩价稳"
+      kill_switch: "如果侵蚀从边缘层扩散到核心层(Top 20%留存率<90%) → 剪刀差逻辑失效 → OPM崩塌"
+
+  moat:
+    composite_score: 4.0  # 5分制, 加权(L3权重更高)
+    half_life: "L1面料>5年 | L2 DTC>5年 | L3品牌身份~2-3年(正在被侵蚀) | L4数据>5年 | L5规模>10年"
+    dimensions:
+      - type: scale
+        strength: 5
+        evidence: "$11.1B收入 vs Alo ~$1B/Vuori ~$1.3B = 10-20x规模差; 采购议价力+811家门店+全球供应链, 竞品需5-10年接近"
+        vulnerability: "规模本身不能阻止品牌老化——Gap有更大规模但品牌仍死了"
+      - type: brand
+        strength: 3
+        evidence: "NPS从+50+降至+32(美国); DTC份额10个月-6pp; Alo在18-28岁群体中成为'更酷'选择; 品牌正在'中年化'"
+        vulnerability: "L3是最脆弱层——Alo正在偷走年轻客户酷感; 如果品牌身份层继续恶化→连锁反应影响其他层"
+      - type: switching_cost
+        strength: 4
+        evidence: "3000万Essential Membership会员(美国成年人~12%); Top 20%客户留存92%; 80%客户注册忠诚计划; DTC数字渗透39-42%→直接掌握客户数据"
+        vulnerability: "线上时代门店体验的锁定效应减弱; 忠诚计划是防御性而非进攻性(不能吸引新客)"
+      - type: ip
+        strength: 4
+        evidence: "Nulu/Everlux/Nulux/PowerLu/SenseKnit自研面料系列; 估计R&D $150-200M/年 vs Alo整体收入~$1B; 面料技术领先但非不可逾越"
+        vulnerability: "Alo Airbrush/Vuori DreamKnit在缩小差距; 消费者对面料差异的感知有限(leggings功能差异<品牌差异)"
+      - type: data
+        strength: 4
+        evidence: "DTC渗透39-42%→直接客户数据(购买历史/尺码/偏好); 个性化推荐+再营销提升复购; 竞品作为私有公司数据积累远远落后"
+        vulnerability: "数据价值取决于是否被有效利用——如果产品团队不根据数据调整→数据是沉没资产"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含永续增速仅2-3%, 要求美洲永久负增长+品牌溢价被完全侵蚀+无CEO改善——四个极端假设同时成立的概率偏低"
+    methods_used: ["Reverse DCF", "DCF(Python)", "PE Band 18x", "EV/EBITDA 12x", "SOTP修正", "概率加权EV(5情景)"]
+    dispersion: "24.4% ($186-$287) PASS"
+    consensus_vs_ours: "市场看LULU=品牌永久衰退(PE 12x) | 我们看LULU=暂时受伤但护城河4/5完好的品牌(公允PE 16-20x)"
+    entry_zone: "$140-165 (PE 10-12x, 含关税+品牌双重折价)"
+    catalyst: "CEO宣布(概率65% in 2026 H2, SBUX先例+12-25%) | Americas comp回正(60%概率18-24月)"
+
+  action_framework:
+    verdict: "等待反转信号 — 低估已确认(+37%), 但方向不明确, 等待≥2个反转信号确认后再行动"
+    buy_triggers:
+      - trigger: "CEO宣布+市场正面反应(+10%+) 且 DTC份额企稳≥22%"
+        price_zone: "$165-185 (PE 12-14x)"
+        reasoning: "两个反转信号同时确认→品牌修复路径可信度大幅上升→PE恢复至16-19x的概率>65%"
+      - trigger: "股价跌至$130-140(关税恐慌或季报miss)但基本面未恶化"
+        price_zone: "$130-140 (PE 10-11x)"
+        reasoning: "安全边际扩大至+63-75%→即使品牌修复概率仅50%→PW EV仍显著>买入价→赔率极有吸引力"
+    hold_conditions:
+      - "护城河综合评分≥3.5/5(当前4.0)"
+      - "FCF >$500M/年(当前$960M)"
+      - "中国comp >+10%(当前+24%)"
+      - "Gross Margin >53%(当前56.6%)"
+    sell_triggers:
+      - signal: "DTC份额跌破20%(KS-01触发)"
+        severity: "action"
+        action: "减仓50%, CQ-5下调至<50%→评级降至中性关注→公允从$228→$185"
+      - signal: "Americas comp连续4Q恶化至<-5% 且 DTC份额继续下降"
+        severity: "emergency"
+        action: "全部卖出, 品牌进入UA式永久衰退路径"
+      - signal: "CEO搜索延至2027年Q2且无明确候选人"
+        severity: "warning"
+        action: "减仓25%, 催化窗口衰减→持有成本上升"
+      - signal: "中国+越南双关税加码(新增>$250M/年)"
+        severity: "warning"
+        action: "重新计算OPM→如果OPM<17%且无价格转嫁能力→减仓"
+    position_sizing: "当前不建入仓 | 信号确认后半Kelly=10-15%仓位(品牌消费品波动率大)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "品牌护城河五层分层诊断法"
+    chain: >
+      品牌不是单一壁垒→拆分为5层(面料技术/DTC体验/品牌身份/数据忠诚/规模经济)
+      → 逐层评估健康度+被侵蚀速度+修复难度
+      → 发现L3(品牌身份)是唯一被快速侵蚀的层(3/5)
+      → 其余4层仍完好(4-5/5)
+      → 因此品牌不是Gap式全面崩塌(5层同时衰退)而是局部受伤(1层恶化)
+      → 但L3是PE乘数最大的层(心智=溢价)→L3衰退对估值的影响>其余4层之和
+      → 修复L3需要品牌重塑(高难度/2-3年)→催化来自新CEO
+    transferable_to: "所有品牌型消费品公司(NKE/SBUX/EL/LVMH)的品牌健康诊断"
+    reasoning_habit: "品牌不是'强/弱'的二元判断——必须拆层检验, 因为不同层被侵蚀的速度和可修复性完全不同"
+
+  - id: "CC-2"
+    name: "DTC份额作为品牌护城河的领先指标"
+    chain: >
+      观察: 美洲comp -3%(滞后指标)看似温和
+      → 但DTC份额10个月从30%→24%(-6pp)才是真正信号
+      → 因为DTC是护城河载体(直接客户关系→数据→个性化→忠诚度循环)
+      → 份额丢失=正反馈循环被打断
+      → 而Alo从8%→14%(+6pp)=近乎1:1替代
+      → 但线性外推危险: 初期流失可能是边缘客户(价格敏感/低频/低利润)快速清洗
+      → 真正检验: FY2026 Q1 DTC份额是否在22-24%企稳
+      → 企稳=侵蚀止于边缘层→空头减弱 | 继续下降=侵蚀扩散至核心→论点坍塌
+    transferable_to: "所有DTC占比>50%的品牌(NKE/DECK/EL)——DTC份额变化比总comp更早揭示品牌健康"
+    reasoning_habit: "别只看comp(滞后)——找渠道份额变化(领先)。谁在抢你的客户比你卖了多少更重要"
+
+  - id: "CC-3"
+    name: "低估观察评级——低估≠即将修复的逻辑"
+    chain: >
+      数学: 6种方法5种指向上行, PW EV $227(+37%)→量化触发"深度关注"(>+30%)
+      → 但定性检查: 品牌可修复65%(非90%)、CEO空缺、comp仍在恶化
+      → 历史基准率: 消费品牌负comp恢复成功率仅56%(8案例)
+      → PYPL先例: +66%但同样"低估观察"——品牌checkout仍收缩/CEO刚换
+      → 因此: 低估是必要条件但非充分条件——修复需要催化(CEO+comp回正)
+      → 在催化出现前→低估可能持续数年(NKE 2024-2026)
+      → 正确姿态: 承认数学事实+保持方向敬畏→跟踪信号而非赌反转
+    transferable_to: "所有PW EV>+30%但核心业务指标仍在恶化的公司——CME/PYPL/LULU同类处理"
+    reasoning_habit: "估值吸引力和投资时机是两个独立问题——前者用数学, 后者用信号。混淆二者=抄底抄在半山腰"
+
+  - id: "CC-4"
+    name: "品牌消费品的comp→PE传导机制"
+    chain: >
+      comp从+15%降至-3%→市场线性外推→PE从40x压缩至12x
+      → 但comp和PE的关系不是线性的——comp -3%不应该对应PE 12x(NKE comp -3%仍有PE 28x)
+      → 差异源: CEO空缺+activist+DTC份额流失三重恐惧叠加→叙事性超调
+      → 如果三重恐惧中任意两个消除(CEO确定+comp企稳)→PE可能从12x→19-24x(+50-100%)
+      → 因此LULU的PE压缩中→基本面恶化只解释~30%→叙事恐慌解释~70%
+    transferable_to: "所有经历多重负面事件叠加的品牌消费品——分解PE压缩中'基本面vs叙事'的贡献"
+    reasoning_habit: "PE压缩时追问'基本面恶化解释了多少+叙事恐慌解释了多少'——叙事恐慌部分是可逆的"
+
+  - id: "CC-5"
+    name: "定价权剪刀差(低端流失=OPM利好的反直觉逻辑)"
+    chain: >
+      份额丢失→市场默认=坏事
+      → 但分层看: 底部30%客户(促销驱动/低频)平均毛利率仅40%(vs全价58%)
+      → 这些客户流失→收入-5.4%但利润仅-3.8%→OPM因mix改善上升~50bps
+      → 但危险: 如果侵蚀从边缘层(Phase 1)扩散到核心层(Phase 2)→定价权崩塌(Phase 3)→OPM崩
+      → 因此剪刀差只在"边缘清洗"情景成立(60%)→在"核心侵蚀"情景失效(40%)
+    transferable_to: "所有经历客户流失的品牌公司——分层看'谁在流失'比'流失多少'更重要"
+    reasoning_habit: "客户流失不是均匀的——追问'流失的是高利润还是低利润客户'→答案决定流失是利好还是利空"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "PE 12x是世代级买入机会(初评倾向'关注/偏积极')"
+      final: "PE 12x是显著低估但反转信号缺失→'低估观察'(从Phase 1-2的'关注'降级)"
+      pivot: "红队RT-1发现DTC份额-6pp是最强空头论据(4/5)→CQ-1从65%→60%、CQ-5从70%→65%→定性下调"
+
+    - initial: "国际扩张=利润稀释(消费品行业共识)"
+      final: "中国Segment Margin 37.5%≈Americas→国际扩张是利润增厚"
+      pivot: "10-K审计级地理分部数据→不是管理层口头承诺→市场嵌入的国际扩张利润折价是定价错误"
+
+    - initial: "Alo/Vuori是生存级威胁(可能重演UA颠覆NKE的故事)"
+      final: "Alo是品牌叙事威胁但非产品/规模威胁——5条件分析仅1条待观察, UA完整路径概率8-12%"
+      pivot: "UA路径需5个条件中≥4个同时满足→LULU仅管理层1项待观察→联合概率极低"
+
+  surprises:
+    - finding: "品质-估值脱钩66pp是报告库中最大的——A-Score 68th percentile vs PE 2nd percentile"
+      implication: "市场定价隐含'品质将大幅恶化'(A-Score从48降至35)→如果品质稳定→PE恢复空间巨大"
+
+    - finding: "男装+14%($2.7B)增量$380M已超过美洲女装comp -5%造成的~$250M损失——男装在对冲女装"
+      implication: "LULU不是单引擎公司→男装+中国双引擎可部分对冲美洲女装→comp回正的门槛比表面低"
+
+    - finding: "CEO宣布日期望回报+10.7%且正偏态(上行50%概率/下行仅10%)——经典不对称催化"
+      implication: "催化事件的期权价值~$20/share→市场可能未price-in这个不对称性"
+
+    - finding: "Alo 63%客户同时浏览LULU——这些双栖客户在Alo完成首购→转化率下降本质是竞品截流而非需求消失"
+      implication: "需求端没死→品牌切换是可逆的(如果产品力/品牌刷新成功)→与Gap(需求消失)本质不同"
+
+  blind_spots:
+    - area: "DTC份额是企稳还是继续下降"
+      why_matters: "KS-01=整个论点的承重墙→份额跌破20%=论点坍塌→公允从$228→$185"
+      monitor: "FY2026 Q1财报(2026年6月) | Bloomberg Second Measure月度跟踪"
+
+    - area: "新CEO身份与市场预期的偏差"
+      why_matters: "品牌型CEO催化+12-25% vs 财务型CEO催化+5-8%→CEO类型决定催化幅度差3-4x"
+      monitor: "Elliott公开声明 | 猎头行业消息 | 2026年AGM(6月)"
+
+    - area: "关税政策走向(最弱假设A6)"
+      why_matters: "越南(35%产能)如果也被加税→冲击$250-350M/年→远超当前$167M→OPM压缩至17-18%"
+      monitor: "美国贸易政策声明 | USTR行动 | 越南对美贸易顺差数据"
+
+    - area: "品牌在Z世代中的吸引力(慢变量)"
+      why_matters: "Z世代是未来10年核心消费群→如果LULU在Z世代中永久丧失心智→品牌S曲线进入衰退期"
+      monitor: "Google Trends(LULU vs Alo搜索量) | TikTok内容量 | NPS分龄段数据"
+
+  sell_lessons:
+    - scenario: "品牌消费品PE从40x降至12x时未在PE 22-25x减仓→持有人经历-70%回撤"
+      lesson: "品牌溢价PE(30-50x)不是永久的——当comp转负+竞品崛起→PE压缩可能极其剧烈。品牌消费品应在comp首次转负时review仓位, 而非等待comp恢复"
+      transferable: "所有PE>30x且增速依赖品牌溢价(而非技术壁垒)的消费品公司"
+    - scenario: "低估但无反转信号时过早建仓→持有成本(时间+波动)可能消耗期望回报"
+      lesson: "低估观察类公司(PYPL/LULU)的正确姿态是等待信号而非赌反转——NKE从PE 22x到恢复花了12个月, 期间波动剧烈"
+      transferable: "所有PW EV>+20%但核心业务指标仍在恶化的公司"
+    - scenario: "品牌消费品的DTC份额开始快速下降时是关键卖出窗口"
+      lesson: "DTC份额是品牌健康的领先指标——在comp还看似温和时DTC份额已在崩塌(LULU comp -3%但DTC -6pp)→DTC是更早的预警"
+      transferable: "所有DTC占比>50%的品牌消费品——DTC份额变化应纳入卖出纪律"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "Americas DTC高端运动服饰份额(季度)"
+      why_alpha: "比comp更早揭示品牌健康→10个月-6pp时comp仅-3%→DTC份额是2-3个季度的领先指标。大多数分析师只看comp"
+      current_reading: "24%(从30%下降6pp, 10个月)"
+    - signal: "品质-估值脱钩度(A-Score percentile vs PE percentile)"
+      why_alpha: "66pp脱钩是报告库最大→如果品质稳定则PE必须恢复→可量化的均值回归空间"
+      current_reading: "A-Score 68th vs PE 2nd = 66pp脱钩"
+    - signal: "中国Segment Margin趋势"
+      why_alpha: "市场默认国际=利润稀释→37.5% Margin颠覆共识→如果Margin维持→每$1B中国增收=$375M利润增厚"
+      current_reading: "37.5%(≈Americas, 审计级数据)"
+
+  confirmation_signals:
+    - signal: "Americas quarterly comp"
+      bullish_threshold: "≥-1% 连续2Q(企稳确认)"
+      bearish_threshold: "≤-5% 连续2Q(加速恶化)"
+    - signal: "新品全价售罄率"
+      bullish_threshold: "≥70%(产品力恢复, vs历史80%+)"
+      bearish_threshold: "<50%(创新机器失灵)"
+    - signal: "美国NPS"
+      bullish_threshold: "企稳≥+25(当前+32, 从+50+下降)"
+      bearish_threshold: "<+15(品牌心智崩塌)"
+
+  noise_signals:
+    - signal: "日度股价波动(特别是meme stock关联)"
+      why_noise: "LULU短期价格受activist新闻/关税消息驱动→与基本面脱钩→看季度数据不看日度"
+    - signal: "Alo估值/融资消息"
+      why_noise: "Alo私有融资估值被VC膨胀→不反映真实竞争力→看DTC份额变化而非Alo估值"
+    - signal: "Wilson公开批评"
+      why_noise: "Wilson的批评('LULU lost its cool')虽然刺耳但诊断可能对→关键是board能否行动, 不是Wilson说了什么"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: NKE
+      similarity: "同为运动服饰品牌遭遇增长危机+PE压缩+CEO更替, 结构最相似"
+      key_difference: "NKE已找到新CEO(Elliott Hill)+PE恢复中(22→28x) vs LULU CEO仍空缺+PE仍在12x | NKE更多批发 vs LULU 95% DTC"
+
+    - ticker: SBUX
+      similarity: "品牌消费品+同店下滑+activist介入(Elliott)+CEO催化先例"
+      key_difference: "SBUX在Niccol之前comp只是'平淡'→LULU comp已连续7Q为负→品牌受伤更深 | SBUX中国是拖累→LULU中国是亮点"
+
+    - ticker: PYPL
+      similarity: "好公司+低估值+方向不明=同类'低估观察'处理(+66% vs +37%)"
+      key_difference: "PYPL是技术平台(护城河不同维度) | LULU品牌恢复依赖消费者心智(更难量化)"
+
+  comparative:
+    - dimension: "估值吸引力(PE/增速)"
+      position: "LULU (PE 12x/+5%) > NKE (28x/-3%) > DECK (22x/+17%) > On (65x/+30%)"
+      reasoning: "LULU的PE/增速组合在运动服饰板块极端偏低——OPM 20%(板块最高之一)但PE 12x(板块最低)"
+
+    - dimension: "品牌健康度"
+      position: "On > DECK > NKE ≈ LULU > Columbia > UA > VF"
+      reasoning: "LULU品牌身份层(L3)被侵蚀但面料+规模+数据层仍强→整体约NKE水平→远好于UA/VF"
+
+    - dimension: "护城河深度"
+      position: "LULU (4.0/5) > NKE (~3.5) > DECK (~3.0) > On (~2.5) > UA (~1.5)"
+      reasoning: "LULU五层嵌套+3000万会员+95% DTC = 竞品需5-10年接近的结构性壁垒"
+
+    - dimension: "催化明确度"
+      position: "NKE (CEO已到位) > LULU (CEO待定+Elliott) > DECK (无需催化) > UA (无催化)"
+      reasoning: "LULU有明确催化路径(CEO宣布)但时间不确定→位于NKE(已催化)和UA(无催化)之间"
+
+  industry_position:
+    quadrant: "最低估值 × 中等品牌健康 × 高运营效率 × 待催化"
+    archetype: "受伤的品牌溢价公司 — 品牌生病但不致命, 等待手术(新CEO)"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含永续增速2-3%→翻译为'品牌永久衰退'→但4/5护城河完好+中国增长引擎→隐含假设脆弱度高"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "7问红队→概率修正仅-3~6%(Phase 1-2已平衡)→Reverse DCF P1前置(铁律O)有效防止了结论先行偏差"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "品牌消费品的PE压缩不是一次性→而是comp持续为负→每季财报确认→PE逐步下行→从40x到12x用了2年=温水煮青蛙"
+
+  novel_patterns:
+    - name: "品牌护城河五层分层诊断(L1-L5)"
+      description: "面料技术/DTC体验/品牌身份/数据忠诚/规模经济五层分别评估健康度+侵蚀速度+修复难度→综合判断品牌是'全面崩塌'还是'局部受伤'"
+      transferable_to: ["NKE", "SBUX", "EL", "LVMH", "所有品牌型消费品"]
+
+    - name: "DTC份额作为品牌领先指标(比comp早2-3Q)"
+      description: "comp是滞后指标(反映已发生的交易)→DTC份额是领先指标(反映品牌选择偏好)→LULU DTC份额-6pp时comp仅-3%"
+      transferable_to: ["NKE", "DECK", "EL", "所有DTC>50%的品牌"]
+
+    - name: "低估观察评级方法论(PYPL/LULU双验证)"
+      description: "当PW EV>+30%(数学低估)但核心业务指标仍在恶化+催化时间不确定→评级应为'低估观察'而非'深度关注'→等待≥2个反转信号确认"
+      transferable_to: ["所有PW EV>+20%但核心KPI恶化的公司"]
+
+    - name: "定价权剪刀差(低端流失=OPM利好)"
+      description: "客户流失不均匀→底部客户(低利润/促销驱动)先走→加权利润率反而上升→但仅在'边缘清洗'阶段成立→核心侵蚀开始后失效"
+      transferable_to: ["所有经历客户流失的品牌", "SaaS公司SMB流失"]
+
+    - name: "叙事性PE超调量化(基本面vs恐慌分解)"
+      description: "LULU PE压缩-71%中→基本面恶化仅解释~30%→叙事恐慌(CEO+activist+comp三重)解释~70%→恐慌部分可逆"
+      transferable_to: ["所有经历多重负面事件叠加的公司"]
+
+    - name: "CEO催化期权定价(SBUX先例法)"
+      description: "activist介入+CEO空窗→CEO宣布=离散催化→用SBUX先例(+25%)+概率加权→量化催化期权价值→LULU约$20/share"
+      transferable_to: ["所有activist介入+CEO更替的公司"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "品牌护城河应拆为5层分别评估——不同层被侵蚀速度和修复难度完全不同"
+        implication: "品牌分析从'强/弱'二元判断→升级为五层矩阵(健康度×侵蚀速度×修复难度)"
+      - insight: "品牌身份层(L3)虽然分数最低但PE影响最大——心智=溢价定价权"
+        implication: "护城河评估应对L3(品牌身份/心智)给予更高权重, 因为PE乘数主要由心智层驱动"
+      - insight: "3000万会员+95% DTC是Alo/Vuori最难复制的部分——数据飞轮是隐性护城河"
+        implication: "DTC品牌的护城河评估应包含会员基数+数据积累深度——这比品牌酷感更持久"
+
+    valuation_insights:
+      - insight: "消费品牌负comp恢复历史基准率56%(8案例)——应作为CQ概率赋值的锚"
+        implication: "品牌恢复概率不能凭感觉→必须锚定历史基准率→高于/低于基准的偏差需要具体理由"
+      - insight: "CEO催化期权可以被量化(SBUX先例法)并加入公允价值"
+        implication: "activist+CEO空窗公司的估值应包含催化期权附加值→不纳入=低估了不对称性"
+      - insight: "品质-估值脱钩度(A-Score percentile vs PE percentile)是筛选候选的有效信号"
+        implication: "选股框架增加'脱钩度>50pp'筛选条件→高品质+低估值=深度调研候选"
+
+    screening_insights:
+      - insight: "DTC份额变化应纳入消费品品牌监控——比comp早2-3Q预警品牌侵蚀"
+        implication: "选股跟踪清单增加DTC份额季度监控——份额-3pp/季度=进入KS警戒"
+      - insight: "品质-估值脱钩>50pp + 反转信号缺失 = '低估观察'候选池"
+        implication: "建立低估观察watchlist: 季度检查反转信号→≥2个确认→升级为'关注'→研究买入"
+      - insight: "多重负面事件叠加(CEO+activist+comp+竞品)时PE超调概率极高——恐慌部分可逆"
+        implication: "选股时关注'三重恐惧叠加'的公司——如果恐惧中仅1个是基本面驱动→PE恢复空间大"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "对品牌消费品拆5层评估护城河而非整体打分"
+      trigger: "分析任何品牌溢价型公司(PE中含品牌溢价>30%)"
+      origin: "LULU品牌身份层(L3)3/5但其余4层4-5/5→整体打分掩盖了局部脆弱性"
+      generalization: "品牌护城河分析应拆层→每层独立评估→加权(L3权重最高)→识别'局部受伤'vs'全面崩塌'"
+
+    - habit: "看到comp下滑时立刻追问DTC份额变化(领先指标)"
+      trigger: "消费品公司comp连续2Q为负"
+      origin: "LULU comp -3%看似温和但DTC份额-6pp揭示更严重的品牌侵蚀——comp是滞后指标"
+      generalization: "对DTC占比>50%的公司→DTC份额变化比comp更早反映品牌健康→应优先跟踪"
+
+    - habit: "低估+方向不明时选择'等待信号'而非'赌反转'"
+      trigger: "PW EV>+20%但核心业务指标仍在恶化"
+      origin: "LULU+37%但反转信号缺失→如果Phase 1-2就给'深度关注'→可能让投资者在半山腰抄底"
+      generalization: "低估观察是一种纪律: 承认数学事实+保持方向敬畏→等待信号确认后再行动"
+
+    - habit: "对客户流失分层看'谁在流失'——边缘vs核心决定利空程度"
+      trigger: "品牌/SaaS公司出现客户流失或份额下降"
+      origin: "LULU定价权剪刀差: 底部30%客户(低利润)流失→OPM反而上升→但仅在边缘清洗阶段成立"
+      generalization: "客户流失=坏事是默认假设→但要追问: 流失的客户贡献多少利润?→低利润客户流失可能是净利好"
+
+  quality_feedback:
+    strengths:
+      - "Reverse DCF P1前置有效——红队修正仅-3~6%, 远小于RCL(+8-16pp), 证明铁律O消除了结论先行偏差"
+      - "品牌护城河五层分层诊断原创且可迁移——逐层量化健康度+侵蚀速度+修复难度"
+      - "DTC份额领先指标发现——揭示了comp作为滞后指标的局限性"
+      - "低估观察评级方法论与PYPL校准——建立了'低估但无方向'的系统处理方式"
+      - "DM密度1.47/千字(合格), 355个DM锚点覆盖品牌/竞争/财务/治理/估值"
+    weaknesses:
+      - "DM总数355低于450门控——数据锚定密度有提升空间(特别是竞品定量数据)"
+      - "品牌'酷感'量化深度有限——Google Trends/TikTok数据仅定性描述, 未建立可跟踪的量化指标"
+      - "关税影响(A6, 最弱假设)的概率赋值主观性高——政治走向无信息优势"
+      - "无独立质量记分卡(D1-D11)→无法精确定位薄弱维度"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "低估观察评级适用于'低估+无方向'的公司(v19.7, PYPL首创)"
+        evidence: "LULU +37%但反转信号缺失→与PYPL(+66%)同类处理→评级校准一致"
+        confidence_after: "高(两份报告独立确认同一评级方法论)"
+
+      - hypothesis: "Reverse DCF P1前置(铁律O)消除结论先行偏差(CRM v1.0教训)"
+        evidence: "红队修正仅-3~6%→Phase 1-2已均衡→无需大幅上调/下调"
+        confidence_after: "高(CME + LULU双确认)"
+
+      - hypothesis: "定价权分层评估(v19.6)揭示隐藏的客户经济学(CRM+ADBE)"
+        evidence: "LULU定价权: Top 20% Stage4 / 50% Stage2.5 / 底部30% Stage1-2→加权Stage ~3→发现'剪刀差'"
+        confidence_after: "高(CRM/ADBE/LULU三确认, 不同行业均适用)"
+
+    extended:
+      - hypothesis: "品牌消费品的PE压缩含大量叙事成分(可逆)"
+        extension: "LULU PE压缩-71%中叙事恐慌占~70%(三重恐惧叠加)→从NKE单一案例扩展为可量化的分解框架"
+
+    refuted: []
+
+  limitations:
+    - "DTC份额数据来自第三方(Bloomberg Second Measure), 非官方→可能有口径偏差"
+    - "品牌恢复概率(65%)锚定于8个历史案例→样本量小→统计置信度有限"
+    - "CEO催化效应依赖SBUX单一先例→LULU与SBUX的可比性有限(品牌受伤程度不同)"
+    - "关税情景概率完全为分析师判断→政治走向无信息优势→可能显著偏离实际"
+    - "中国Segment Margin 37.5%可能未完全分摊全球总部费用→真实Margin可能低3-5pp"
+    - "无独立D1-D11质量记分卡→报告质量评分缺乏精确性"
