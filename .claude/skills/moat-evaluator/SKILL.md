@@ -68,7 +68,7 @@
 | C7 | 自维持性 | ? | **停止投入后护城河多快消失** | |
 ```
 
-#### C-Extra: 护城河类型标注 (v1.1新增, AMD/NVDA对比验证)
+#### C-Extra: 护城河类型标注 (v1.1, AMD/NVDA对比验证)
 
 C1-C7评分后，标注整体护城河类型:
 
@@ -77,6 +77,66 @@ C1-C7评分后，标注整体护城河类型:
 | **防御型** | 存量锁定,不需持续投入 | PE溢价 | ≥4 |
 | **进攻型** | 执行依赖,每代需重新证明 | PE折价10-15% | <2 |
 | **混合型** | 核心防御+增量进攻 | 分引擎估值 | 2-4 |
+
+#### ★ C-AI: AI抗性评级 (v1.2新增, 7家SaaS预期差分析验证)
+
+> **来源**: INTU/PTC的护城河(监管/物理约束)对AI免疫,但市场按"AI杀SaaS"一刀切定价给了同样折扣(-35%~-47%)。三种护城河类型对AI的抗性完全不同,但C1-C7评分不区分这一点。
+> **核心**: 同一个C1-C7高分的护城河,如果AI抗性低,未来可能快速贬值;如果AI抗性高,当前折扣可能是错杀。
+
+**C1-C7评分完成后,对每个维度额外标注AI_resistance:**
+
+```markdown
+| # | 维度 | 分 | AI_resistance | AI影响路径 |
+|---|------|:--:|:------------:|-----------|
+| C1 | 制度嵌入 | ? | high/medium/low | AI是否能绕过制度要求? |
+| C2 | 网络效应 | ? | high/medium/low | AI是否能替代网络? |
+| C3 | 生态锁定 | ? | high/medium/low | AI是否降低迁移成本? |
+| C4 | 数据飞轮 | ? | high/medium/low | AI是否让数据优势贬值? |
+| C5 | 规模经济 | ? | high/medium/low | AI是否改变最低有效规模? |
+| C6 | 物理壁垒 | ? | high/medium/low | AI无法改变物理现实 |
+| C7 | 自维持性 | ? | high/medium/low | AI加速还是减缓护城河衰减? |
+```
+
+**三种护城河原型的AI抗性基准:**
+
+```
+Type A: 监管/物理约束型 — 整体AI_resistance = HIGH
+  典型: 税法复杂度(INTU) / CAD物理约束(PTC) / 交易所监管(CME/ICE)
+  逻辑: AI不能改变法规, 不能违反物理定律, 不能绕过监管牌照
+  AI影响: AI增强(更高ASP)而非替代 → 护城河评分不因AI调低
+  C-AI总分: 4-5
+
+Type B: 数据/切换成本型 — 整体AI_resistance = MEDIUM
+  典型: HR/Finance数据锁定(WDAY) / CRM客户数据(CRM) / ERP系统(SAP)
+  逻辑: AI需要数据(利好数据拥有者), 但AI可能降低切换成本(利空锁定)
+  AI影响: 双刃剑 — 数据价值上升但锁定可能松动 → 护城河评分±0.5
+  C-AI总分: 3
+
+Type C: 创意/工作流型 — 整体AI_resistance = LOW-MEDIUM
+  典型: 创意工具(ADBE) / 工作流平台(NOW) / 知识管理(SNOW)
+  逻辑: AI直接替代部分创意/工作流功能(Canva/AI agents)
+  AI影响: 部分功能被替代 → 护城河评分可能下调0.5-1.5分
+  C-AI总分: 1-2
+
+Type D: AI基础设施型 — 整体AI_resistance = N/A(AI是利好)
+  典型: 可观测性(DDOG) / GPU(NVDA) / 云平台(AMZN/MSFT/GOOG)
+  逻辑: AI创造更多需求(更多基础设施=更多监控/计算)
+  AI影响: 纯利好 → 护城河评分不调,但需检查"AI利好是否已定价"
+  C-AI总分: 5(但不是因为"抗性"而是因为"顺风")
+```
+
+**输出**: moat_datacard.yaml新增字段:
+
+```yaml
+ai_resistance:
+  overall: "high/medium/low"
+  moat_type: "regulatory_physical / data_switching / creative_workflow / ai_infrastructure"
+  c_ai_score: 0  # 1-5
+  adjustment: 0  # 对C1-C7总分的调整值(-1.5 ~ +0.5)
+  reasoning: ""
+```
+
+**与CQI的集成**: C-AI总分可作为CQI的调整因子——高AI抗性(4-5分)不调整,低AI抗性(1-2分)对CQI打折5-10%。具体公式待更多数据验证后确定。
 
 标注格式: `护城河类型: 防御型(C7=4.5) | 代表: CME/FICO/TSM`
 
