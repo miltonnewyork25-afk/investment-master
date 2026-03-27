@@ -1,7 +1,5 @@
-# ============================================================
-# 预期差分析卡 v1.0 — Datadog (DDOG)
-# 分析日期: 2026-03-27
-# ============================================================
+# 预期差分析卡 v2.0 — Datadog (DDOG)
+# 分析日期: 2026-03-27 (从v1.0升级至v2.0)
 
 meta:
   ticker: "DDOG"
@@ -10,220 +8,202 @@ meta:
   stock_price: "$124.30"
   market_cap: "$44.0B"
   data_snapshot: "FY2025 (截至2025-12-31)"
-  tier: "tier1"
-  framework_version: "v1.0"
+  tier: "tier2"
+  framework_version: "v2.0"
   linked_report: ""
 
-# === 核心判断 ===
-core_judgment: "市场定价大致合理——Reverse DCF隐含18-20% FCF CAGR，与管理层FY2026指引吻合。但DDOG暴露了一个关键模板问题：收入增速28%加速中，GAAP OPM却在恶化(-1.3%)，SBC占收入22%使Owner PE为深度负值——'高增长'表象下藏着'不赚钱'的现实，P/FCF 44x对一个ROIC为负的公司定价偏贵"
+core_judgment: "DDOG是7家SaaS中唯一的'overpriced_optimism'(非INTC转型型)——P/FCF 44x定价一个GAAP OPM为负(-1.3%)、SBC 22%无回购、ROIC -8.3%的公司。收入增速28%在加速,但'买增长'模式(研发/毛利比57%)意味着每$1收入需要更多投入。市场用P/FCF估值DDOG(44x)时隐含假设'SBC不是成本',但如果按Owner PE(深度负值)估值,DDOG无法被任何合理DCF justify。在7家横向对比中,DDOG是唯一仍在净稀释股东(+4.8%/yr)且OPM为负的公司——其他6家要么在缩股要么OPM在扩张"
 gap_type: "overpriced_optimism"
 confidence: "medium"
-confidence_reasoning: "收入加速是事实(高置信)，但GAAP OPM恶化+SBC极高也是事实(高置信)。偏差判断为medium是因为FCF仍健康($1B)，只是FCF的'质量'取决于你是否把SBC当成本——这是SaaS估值中最有争议的会计问题"
+confidence_reasoning: "高置信: OPM为负+SBC 22%+零回购+ROIC -8.3%+稀释+4.8%/yr=事实。中等置信: 收入加速(28%)是真实的+技术领先是真实的——问题不是'DDOG是不是好公司'而是'44x P/FCF是否已经充分定价了增长'。降低置信: FY2026指引18-20%可能保守(SaaS惯例beat),如果实际>25%则44x可能合理"
 
-# === E域: 市场预期 ===
 expectations:
   price_implied:
-    implied_revenue_cagr_5y: "~18-20%"
-    implied_terminal_margin: "~28-30% FCF margin"
-    implied_growth_duration: "8-10年持续高增长"
-    implied_fcf_cagr: "~18-20% (WACC 10%, 终端增长3%, EV $44B, FCF $1.0B)"
-    judgment: "reasonable — 如果接受FCF(不扣SBC)作为盈利衡量; aggressive — 如果用Owner Earnings(扣SBC)"
-    judgment_reasoning: "Reverse DCF隐含增速与管理层FY2026指引(18-20%)大致吻合，但前提是市场接受'FCF=真实盈利'这一假设。如果按Owner Earnings(NI-SBC=-$642M)衡量，当前价格无法被任何合理DCF justfy"
+    implied_fcf_cagr: "~18-20%"
+    p_fcf: "44x — 7家中最高(ADBE的4.4倍!)"
+    owner_pe_adjusted: "深度负值 (NI $108M - SBC ~$750M = -$642M)"
+    judgment: "reasonable_if_sbc_ignored; aggressive_if_sbc_counted"
+    judgment_reasoning: "Reverse DCF隐含增速与指引(18-20%)一致——如果接受P/FCF框架(忽略SBC)则合理。但如果按Owner PE框架(计入SBC),DDOG是7家中唯一'真实亏损'的公司"
 
   consensus:
-    eps_current_fy: "$0.30 (FY2025实际)"
-    eps_next_fy: "$2.63 (FY2027E, 33家分析师)"
-    revenue_current_fy: "$3.43B (FY2025实际)"
+    eps_next_fy: "$2.63 (FY2027E)"
     revenue_next_fy: "$4.91B (FY2027E)"
-    target_price_median: "~$160 (多数分析师仍在下调)"
-    target_price_range: "$123 - $221"
-    dispersion: "高 — FY2028E EPS从$1.93到$5.00(离散度159%!)"
-    rating_distribution: "多数Buy/Strong Buy, 但Truist下调至Hold"
-    recent_revision_direction: "down — Truist下调+多家削减目标价(BMO $215→$170, CapitalOne $219→$156)"
-    revision_magnitude: "目标价平均下调20-30%"
+    dispersion: "极高 — FY2028E EPS $1.93-$5.00(159%!)"
+    recent_revision_direction: "down — Truist降级,多家削减目标价"
 
-  dominant_narrative: "DDOG是云可观测性的赢家，但FY2026指引暗示增速从28%放缓至18-20%，AI相关收入的客户集中度引发担忧"
-  bull_case_core: "AI基础设施越复杂→越需要监控→DDOG是必选工具，平台整合趋势有利"
-  bear_case_core: "增速减速+AI收入集中在少数大客户+开源/云厂商原生工具竞争→难以维持高估值"
-  market_most_confident_about: "DDOG在可观测性领域的技术领先地位(这一点几乎没有争议)"
-  market_most_uncertain_about: "AI相关收入的持久性和客户集中度风险——'单一大客户依赖'是关键未知"
-  narrative_vs_price_consistency: "一致——增速放缓叙事+估值下调。分析师目标价仍高于市价=仍有希望但信心下降"
+  dominant_narrative: "DDOG是云可观测性赢家,但FY2026指引暗示增速减速+AI客户集中度高"
+  bull_case_core: "AI基础设施越复杂→越需要监控→DDOG是必选。平台整合趋势有利"
+  bear_case_core: "增速减速+GAAP亏损+SBC 22%+AI客户集中+开源竞争"
+  market_most_uncertain_about: "AI相关收入的持久性和客户集中度"
 
-# === R域: 企业现实 ===
+  smart_money:
+    institutional_ownership_trend: "stable"
+    notable_positions: []
+    insider_behavior: "零买入,每季度50-100+笔卖出(最重的内部人卖出模式)"
+    company_buyback:
+      amount: "$0"
+      sbc_coverage: "0% — 7家中唯一完全不回购"
+      share_count_change: "+4.8%/年(3年+14.5%)"
+      trend: "stable — 持续稀释,无回购计划"
+    smart_money_signal: "bearish"
+    signal_reasoning: "零回购+零insider买入+大量insider卖出+hedge fund无显著建仓。7家中聪明钱信号最负面。对比CRM(insider翻正+$25B)+ADBE(580%覆盖)——DDOG管理层没有用任何行动表达'被低估'"
+
 reality:
-  overall_trend: "mixed — 收入加速但利润率恶化，形成剪刀差"
-  trend_confidence: "high"
-  structural_vs_cyclical: "mixed — 云可观测性需求是结构性的，但当前增速部分由AI客户周期驱动"
+  company:
+    overall_trend: "mixed — 收入加速但利润率恶化"
+    trend_confidence: "high"
+    structural_vs_cyclical: "mixed"
+    key_variables:
+      - name: "收入增速"
+        state: "accelerating"
+        data: "Q1-Q4'25: +24.6%→+28.1%→+28.3%→+29.2%"
+        evidence_grade: "fact"
+      - name: "GAAP OPM"
+        state: "deteriorating"
+        data: "FY23 -1.6% → FY24 +2.0% → FY25 -1.3% (转正又转负)"
+        evidence_grade: "fact"
+      - name: "FCF增速"
+        state: "decelerating"
+        data: "FY23 +79% → FY24 +32% → FY25 +20%。FCF margin: 31.1% → 29.2%(收缩)"
+        evidence_grade: "fact"
+      - name: "SBC负担"
+        state: "stable — stably bad"
+        data: "SBC ~$750M = ~22%/Rev,无改善趋势。零回购。3年稀释14.5%"
+        evidence_grade: "fact"
+      - name: "ROIC"
+        state: "deteriorating"
+        data: "-8.3% (负值因GAAP OPM为负)"
+        evidence_grade: "fact"
+    most_telling_facts:
+      - fact: "收入+29%但OPM -1.3%且FCF margin收缩=在'买增长',每$1收入需要更多投入"
+        why_telling: "增长质量在下降。对比WDAY(增速13%但OPM从-3.6%→+10.7%)——WDAY增速低但在'赚钱的增长',DDOG增速高但在'烧钱的增长'"
+      - fact: "7家中唯一:零回购+OPM为负+ROIC为负+净稀释——同时收入增速最高(29%)"
+        why_telling: "市场为29%增速付44x P/FCF。问题是:当增速降到18-20%(指引),44x是否还合理?而且这个FCF的'质量'(不扣SBC)在7家中最差"
 
-  key_variables:
-    - name: "收入增速"
-      state: "accelerating"
-      data: "Q1'25 +24.6% → Q2 +28.1% → Q3 +28.3% → Q4 +29.2% (季度环比加速)"
-      source: "10-K/FMP quarterly income"
-      evidence_grade: "fact"
+  industry:
+    total_market_trend: "growing +14.7%"
+    total_market_source: "Gartner"
+    structural_shifts:
+      - shift: "AI基础设施扩张→可观测性需求增加"
+        evidence_grade: "fact"
+        irreversibility: 4
+        speed: "fast"
+        company_position: "beneficiary — 更多AI基础设施=更多需要监控=DDOG受益"
+    key_industry_fact: "DDOG是7家中唯一'AI是纯利好'的——AI不替代可观测性,AI创造更多可观测性需求"
 
-    - name: "GAAP OPM"
-      state: "deteriorating"
-      data: "FY22 -3.5% → FY23 -1.6% → FY24 +2.0% → FY25 -1.3% (刚转正又转负)"
-      source: "10-K"
-      evidence_grade: "fact"
+  trend_price_divergence:
+    exists: false
+    description: "DDOG的估值压缩(-38%)与基本面矛盾程度较小——P/FCF 44x对一个OPM为负的公司来说可能仍然偏高而非偏低"
+    most_likely_explanation: "市场从过度乐观(P/FCF 60x+)回调到仍然乐观(44x),不是从合理跌到恐慌"
 
-    - name: "FCF增速与FCF margin"
-      state: "decelerating"
-      data: "FCF: FY23 $632M(+79%) → FY24 $836M(+32%) → FY25 $1.00B(+20%) | FCF margin: 29.7% → 31.1% → 29.2%(略收缩)"
-      source: "10-K cash flow"
-      evidence_grade: "fact"
-
-    - name: "SBC负担"
-      state: "stable"
-      data: "SBC~$750M = ~22%/Rev (基本未改善) | Owner earnings = NI $108M - SBC $750M = -$642M | OCF/SBC仅1.40x(NOW是2.78x) | 零回购,100%净稀释"
-      source: "10-K + baggers_summary"
-      evidence_grade: "fact"
-
-    - name: "ROIC"
-      state: "deteriorating"
-      data: "ROIC TTM -8.33% (负值! 因GAAP营业利润为负)"
-      source: "FMP key-metrics"
-      evidence_grade: "fact"
-
-  quality_signals:
-    revenue_driver: "用量驱动(usage-based) — 客户越用越多,但也意味着缩减时收入立即下降"
-    customer_concentration_risk: "high — AI相关大客户集中度高(管理层承认,市场已注意)"
-    cash_flow_match: "OCF/NI = 9.75x — 极高,意味着GAAP NI几乎被SBC完全吞噬,FCF高度依赖'加回SBC'这一会计处理"
-    sbc_burden: "SBC/Rev ~22%且无改善趋势 | 零回购 | 3年股份增长14.5% | 这是DDOG与NOW最大区别——NOW的SBC/Rev在下降且有回购覆盖94%"
-    organic_vs_acquired: "以有机增长为主,收购规模小($118M FY2025)"
-
-  most_telling_facts:
-    - fact: "收入增速在加速(Q4 +29%)但GAAP OPM在恶化(-1.3%)且FCF margin在收缩(29.2%)"
-      why_telling: "这意味着DDOG在'买增长'——每多赚1美元收入需要投入更多的研发和销售费用。研发/毛利比高达56.5%,是NOW(28.7%)的近2倍。增长质量在下降"
-    - fact: "FY2026指引$4.06-4.10B暗示增速从28%骤降至18-20%,管理层自己在管理预期"
-      why_telling: "管理层主动引导增速预期下降,可能是诚实的(真的会减速),也可能是保守指引然后beat(SaaS公司的老套路)。关键是分辨哪种情况"
-
-# === G域: 剪刀差 ===
 gap:
-  variable_comparison:
-    - factor: "增长速度"
-      expectation: "市场隐含18-20% FCF CAGR(与FY26指引一致)"
-      reality: "FY25收入增速28%且加速中,但管理层指引18-20%=管理层自己确认减速"
-      gap_direction: "aligned"
-      gap_size: "small — 市场定价与指引一致,除非认为指引保守(SaaS公司常见)"
-
-    - factor: "盈利质量"
-      expectation: "P/FCF 44x隐含市场信任FCF作为真实盈利"
-      reality: "GAAP OPM为负(-1.3%),SBC $750M远超NI $108M,Owner earnings深度负值,ROIC负值"
-      gap_direction: "E>R"
-      gap_size: "large — 市场定价了'高质量增长',但利润率和资本回报数据讲的是另一个故事"
-
-    - factor: "估值水位"
-      expectation: "P/FCF 44x,EV/Sales 13.7x,FMP DCF $19.55"
-      reality: "对一个ROIC为负、OPM为负、FCF增速减速至20%的公司而言,P/FCF 44x需要持续20%增长10年+才能回本"
-      gap_direction: "E>R"
-      gap_size: "medium — 估值已从高位大幅下调(-38%),但绝对水平仍然要求完美执行"
-
   scoring:
-    direction_clarity: 3       # 收入加速vs利润恶化=方向混杂,不如NOW清晰
-    magnitude: 3               # P/FCF 44x对20% FCF grower不算极端高估,但也不便宜
-    persistence: 3             # 如果SBC持续22%+且OPM不转正,问题会持续
-    verifiability: 4           # Q1'26财报可验证增速是否真的减速至指引水平
-    composite_score: 3.25      # <3.5 = 证据尚不足以做强判断
+    direction_clarity: 3
+    magnitude: 3
+    persistence: 3
+    verifiability: 4
+    industry_trend_support: 4
+    smart_money_alignment: 1
+    composite_score: 3.0
 
   core_mispriced_variables:
-    - variable: "盈利质量(SBC vs FCF的本质矛盾)"
-      market_assumes: "FCF $1.0B = 真实盈利能力,SBC是'非现金费用'可忽略"
-      reality_shows: "SBC $750M远超NI $108M → 公司的'利润'几乎全部以股权稀释形式付给了员工。3年股份增长14.5%,零回购。Owner PE为深度负值"
-      why_market_wrong: "市场用P/FCF(44x)定价,但如果用P/Owner-Earnings定价,DDOG的估值接近无穷大。这不是'谁对谁错'的问题——而是'你如何定义盈利'的问题。但14.5%的股份稀释是真实的价值转移,投资者的持股比例每年缩减~4%"
-      evidence_grade: "fact (财务数据) + inference (估值框架选择)"
-      valuation_sensitivity: "如果市场开始对SaaS公司的SBC进行更严格的估值调整(类似2022年),DDOG的估值可能需要进一步压缩30-50%"
-
-    - variable: "收入增速转折点(指引保守 vs 真实减速)"
-      market_assumes: "18-20%增速(按指引定价)"
-      reality_shows: "FY25收入增速28%且加速中——管理层指引可能保守(SaaS公司beat&raise常规操作)"
-      why_market_wrong: "如果DDOG持续以25%+增速增长(而非18-20%),当前P/FCF 44x就合理了。但这是'推断'而非'事实'——赌指引保守的风险是如果指引是真的就没有安全边际"
+    - variable: "盈利质量——SBC vs FCF的本质矛盾"
+      market_assumes: "P/FCF 44x=合理(SBC不算成本)"
+      reality_shows: "SBC $750M>NI $108M→Owner PE负值。零回购+稀释4.8%/yr。7家中唯一仍在净稀释的公司"
+      evidence_grade: "fact"
+    - variable: "AI行业顺风是真实的但可能已定价"
+      market_assumes: "AI→更多可观测性需求→DDOG增长加速"
+      reality_shows: "AI顺风真实(收入+29%)但P/FCF 44x已经定价了这个顺风。如果增速降至指引18-20%,44x可能需要压缩至30x"
       evidence_grade: "inference"
-      valuation_sensitivity: "25%增速 vs 18%增速,5年后收入差异40%,估值影响巨大"
 
-    - variable: "AI客户集中度"
-      market_assumes: "AI相关收入有集中度风险但仍在增长"
-      reality_shows: "管理层承认,Truist因此下调评级,但具体数据不公开"
-      why_market_wrong: "无法确定市场是否错了——这是真正的信息不对称区域"
-      evidence_grade: "assumption"
-      valuation_sensitivity: "如果单一大客户贡献>10%收入且该客户削减支出,可能造成季度miss"
+  one_sentence_judgment: "DDOG是7家中'基本面最好的坏估值'——AI顺风真实+收入加速+技术领先,但P/FCF 44x+OPM负+零回购+4.8%稀释使其成为唯一'高增长掩盖低质量'的公司。在7家横向对比中,DDOG是唯一你不应该因为'SaaS被错杀'而买入的——因为它的估值可能没有被错杀"
 
-  one_sentence_judgment: "DDOG的预期差不在增速(市场定价已与指引一致),而在盈利质量——市场用P/FCF 44x定价一个GAAP亏损、SBC/Rev 22%、ROIC为负、零回购的公司,隐含着'SBC不算成本'的激进假设。如果这个假设被挑战(如2022年SaaS de-rating重演),当前价格仍有30-50%下行空间"
+  same_narrative_comparison:
+    narrative: "AI对SaaS的影响"
+    peers:
+      - ticker: "ADBE"
+        p_fcf: "10.0x"
+        fcf_growth: "+27%"
+        sbc_coverage: "580%"
+        shrink_rate: "-5%/yr"
+        ai_threat: "高"
+      - ticker: "CRM"
+        p_fcf: "12.1x"
+        fcf_growth: "+16%"
+        sbc_coverage: "359%"
+        shrink_rate: "-3.1%/yr"
+        ai_threat: "中"
+      - ticker: "WDAY"
+        p_fcf: "12.2x"
+        fcf_growth: "+27%"
+        sbc_coverage: "208%"
+        shrink_rate: "-2.5%/yr"
+        ai_threat: "中"
+      - ticker: "INTU"
+        p_fcf: "19.8x"
+        fcf_growth: "+18%"
+        sbc_coverage: "141%"
+        shrink_rate: "-0.7%/yr"
+        ai_threat: "低"
+      - ticker: "PTC"
+        p_fcf: "20.0x"
+        fcf_growth: "+17%"
+        sbc_coverage: "139%"
+        shrink_rate: "+0.7%/yr"
+        ai_threat: "极低"
+      - ticker: "NOW"
+        p_fcf: "23.7x"
+        fcf_growth: "+34%"
+        sbc_coverage: "94%"
+        shrink_rate: "~0%"
+        ai_threat: "中"
+      - ticker: "DDOG"
+        p_fcf: "44x"
+        fcf_growth: "+20%"
+        sbc_coverage: "0%"
+        shrink_rate: "+4.8%/yr"
+        ai_threat: "低(AI增需求)"
+    most_mispriced: "DDOG不是被错杀——它是7家中唯一P/FCF仍>40x、OPM为负、且完全不回报股东的公司。如果SaaS板块真的在被一刀切恐慌,DDOG是唯一可能'被正确定价或仍偏高'的"
 
-# === T域: 拐点信号与证伪 ===
+paradigm_shift:
+  signals_triggered: 3
+  company_role: "beneficiary"
+  role_evidence: "AI基础设施扩张=更多需要可观测性。DDOG不需要'转型'——旧模式(usage-based monitoring)天然受益于AI"
+  pricing_error_pattern: "none_or_inverse_pattern_B"
+  pattern_description: "与其他6家相反——DDOG不是'转型阵痛被当永久衰退'。DDOG是'增长被高估但估值仍在高位'。市场已经从极度高估(P/FCF 60x+)回调,但可能尚未回调到位"
+  pattern_confidence: "medium"
+  impact_on_gap_judgment: "范式转移对DDOG是纯利好(AI→更多监控需求)。但这不改变估值判断——44x P/FCF对一个OPM为负的公司仍然激进"
+
 triggers:
-  leading_indicators:
+  company_signals:
     - signal: "FY2026 Q1收入增速 vs 指引"
-      current_reading: "FY2025全年+27.7%, Q4加速至+29.2%"
-      bullish_threshold: ">24% (beat指引=保守证实)"
-      bearish_threshold: "<20% (与指引一致或更差=真实减速)"
-      why_matters: "分辨'指引保守'(SaaS常规)还是'真实减速'(结构性)的关键数据点"
+      bullish_threshold: ">24%(beat指引,保守证实)"
+      bearish_threshold: "<20%(真实减速)"
       next_data_point: "Q1'26财报"
-
-    - signal: "Non-GAAP OPM趋势"
-      current_reading: "Non-GAAP OPM约20%+(需从earnings call确认)"
-      bullish_threshold: "Non-GAAP OPM >22%且GAAP OPM转正"
-      bearish_threshold: "Non-GAAP OPM <18%或GAAP OPM继续恶化"
-      why_matters: "如果收入增长但利润率不扩张,说明增长是'买来的'而非'飞轮驱动的'"
-      next_data_point: "Q1'26财报"
-
+    - signal: "GAAP OPM方向"
+      bullish_threshold: "转正且>2%(盈利能力改善)"
+      bearish_threshold: "继续为负(增长质量未改善)"
     - signal: "SBC/Rev趋势"
-      current_reading: "~22% (基本未改善)"
-      bullish_threshold: "<20% (开始压缩=管理层重视股权稀释)"
-      bearish_threshold: ">23% (继续扩大=增长优先于盈利质量)"
-      why_matters: "NOW的SBC/Rev从19.3%降至14.7%=走在正确方向。DDOG的22%持平=还没开始这个旅程"
-      next_data_point: "逐季跟踪"
-
-    - signal: "大客户流失/集中度数据"
-      current_reading: "管理层承认AI客户集中,但未公开具体数字"
-      bullish_threshold: "前10大客户贡献<20%收入"
-      bearish_threshold: "单一客户>10%收入,或AI客户增速放缓"
-      why_matters: "Truist下调评级的核心原因——如果大客户砍支出,usage-based模型会立即反映"
-      next_data_point: "10-K客户集中度披露"
-
-  confirming_indicators:
-    - signal: "Q1-Q2'26 FCF margin"
-      expected_if_thesis_correct: "FCF margin <28% (利润率压缩继续=高估乐观被确认)"
-      expected_if_thesis_wrong: "FCF margin >32% (利润率扩张=增长质量改善)"
-
-    - signal: "股份稀释率"
-      expected_if_thesis_correct: "稀释>3%/年且零回购=价值转移继续"
-      expected_if_thesis_wrong: "启动回购或稀释<2%=管理层开始关注股东回报"
+      bullish_threshold: "<20%(开始压缩)"
+      bearish_threshold: ">23%(继续扩大)"
+    - signal: "回购启动"
+      bullish_threshold: "宣布>$500M回购计划"
+      bearish_threshold: "继续零回购"
 
   falsification:
-    - condition: "GAAP OPM连续2Q转正且SBC/Rev降至<20%"
-      implication: "DDOG正在从'增长优先'转向'盈利增长'模式,盈利质量偏差判断被证伪"
-      time_window: "FY2026 H1(6个月)"
+    - condition: "GAAP OPM连续2Q>3%且SBC/Rev<20%且宣布回购"
+      implication: "DDOG从'增长优先'转向'盈利增长'——overpriced判断被证伪"
+      time_window: "6个月"
 
-    - condition: "收入增速连续2Q >25%且FCF margin >32%"
-      implication: "管理层指引过于保守,增长质量在改善而非恶化,overpriced_optimism判断被证伪"
-      time_window: "FY2026 H1"
+  monitoring_horizon: "2-3季度"
+  next_reassessment_trigger: "Q1'26财报"
 
-    - condition: "管理层宣布>$1B回购计划"
-      implication: "信号转变: 从纯增长模式转向平衡股东回报,降低SBC稀释担忧"
-      time_window: "12个月"
-
-  monitoring_horizon: "2-3个季度(6-9个月)"
-  next_reassessment_trigger: "Q1'26财报 — 验证增速是否真的减速至指引水平,以及OPM是否转正"
-
-# === 后续行动 ===
 next_actions:
   deep_dive_worthy: false
-  deep_dive_reason: "composite_score 3.25(<3.5阈值)。DDOG的预期差不像NOW那样清晰——增速方向积极但盈利质量消极,两者部分抵消。等待Q1'26财报后再评估是否值得深挖"
+  deep_dive_reason: "composite 3.0(7家中最低)。overpriced_optimism方向+不是'被错杀'=当前不值得深挖。等待盈利质量改善信号(OPM转正/SBC下降/启动回购)后再评估"
   priority_research:
-    - "SBC问题: 对比DDOG/NOW/CRM/WDAY的SBC/Rev趋势和股份稀释率——建立'SaaS SBC健康度'对比框架"
-    - "Usage-based vs Seat-based定价模型在AI时代的韧性差异——DDOG(usage)和NOW(seat)面对的AI风险本质不同"
-    - "AI客户集中度: 尝试从公开数据推算DDOG前10大客户收入占比"
-  position_implication: "当前不建议优先研究。P/FCF 44x+GAAP亏损+SBC 22%=需要完美执行才能justify当前估值。等待盈利质量改善信号(OPM转正/SBC下降/启动回购)后再重新评估"
+    - "DDOG vs ADBE/CRM估值差异根因: 为什么市场给DDOG 44x但给ADBE 10x? 纯增速差异能解释4.4倍吗?"
+    - "Usage-based vs seat-based在AI时代的韧性对比——DDOG的模型是否天然优于seat?"
 
-# === 事后验证 ===
 post_mortem:
   verified: false
-  verification_date: ""
-  outcome: ""
-  what_happened: ""
-  lessons_learned: ""
-  signal_accuracy:
-    accurate_signals: []
-    noise_signals: []

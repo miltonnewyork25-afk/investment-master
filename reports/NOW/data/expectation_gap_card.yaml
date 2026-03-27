@@ -1,7 +1,5 @@
-# ============================================================
-# 预期差分析卡 v1.0 — ServiceNow (NOW)
-# 分析日期: 2026-03-27
-# ============================================================
+# 预期差分析卡 v2.0 — ServiceNow (NOW)
+# 分析日期: 2026-03-27 (从v1.0升级至v2.0)
 
 meta:
   ticker: "NOW"
@@ -10,242 +8,214 @@ meta:
   stock_price: "$103.64"
   market_cap: "$108.5B"
   data_snapshot: "FY2025 (截至2025-12-31)"
-  tier: "tier1"
-  framework_version: "v1.0"
+  tier: "tier2"
+  framework_version: "v2.0"
   linked_report: ""
 
-# === 核心判断 ===
-core_judgment: "市场按'AI颠覆SaaS定价模型'定价，隐含FCF仅~10% CAGR；但NOW的FCF实际以34%速度增长，FCF margin在扩张而非收缩，20%+收入增速稳定——市场把'AI可能颠覆'当作'AI正在颠覆'来定价，形成过度悲观型预期差"
+core_judgment: "市场按'AI颠覆SaaS定价模型'给NOW打了-51%折扣，隐含FCF仅~10% CAGR，但NOW的FCF实际以34%速度增长、margin在扩张(30%→34.5%)、收入增速20%+稳定。NOW是SaaS板块中增速最高(21%)但资本回报最弱(回购仅覆盖SBC 94%)的矛盾体——高增长但不回报股东。在7家SaaS横向对比中,NOW的P/FCF 23.7x是ADBE(10x)/CRM(12x)/WDAY(12x)的2倍,说明市场仍给NOW增长溢价,但这个溢价在AI恐惧中正在被压缩"
 gap_type: "excessive_pessimism"
 confidence: "medium"
-confidence_reasoning: "收入增速20%+稳定+FCF加速是事实(高置信)；但AI对SaaS定价模型的长期影响是真实的结构性不确定性(降低置信)；零内部人买入也削弱了'管理层认为被低估'的信号"
+confidence_reasoning: "高置信: FCF +34%/margin扩张/增速20%+稳定=事实。中等置信: AI对SaaS的长期定价影响是真实的结构性不确定性。降低置信: 零insider买入+SBC覆盖仅94%=资本回报在7家中最弱"
 
-# === E域: 市场预期 ===
 expectations:
   price_implied:
-    implied_revenue_cagr_5y: "~10-12%"
-    implied_terminal_margin: "~30% FCF margin (低于当前34.5%)"
-    implied_growth_duration: "5-7年 (vs历史一贯的长增长期)"
-    implied_fcf_cagr: "~10% (反推: WACC 10%, 终端增长3%, 当前EV $108B, FCF $4.58B)"
+    implied_fcf_cagr: "~10%"
+    p_fcf: "23.7x"
+    owner_pe_adjusted: "负值 (NI $1.75B - SBC $1.96B = -$207M; 回购$1.84B覆盖94%)"
     judgment: "conservative"
-    judgment_reasoning: "市场隐含10% FCF CAGR远低于实际34% FCF增速和18%共识收入CAGR。即使保守假设收入CAGR放缓至15%+FCF margin持平34.5%，FCF CAGR也应~15%——比市场隐含高50%"
+    judgment_reasoning: "隐含10% FCF CAGR远低于实际34%增速和18%共识Rev CAGR。但P/FCF 23.7x在7家中排第4(不是最便宜)——市场仍给NOW增长溢价"
 
   consensus:
-    eps_current_fy: "$1.67 (FY2025实际)"
-    eps_next_fy: "$5.05 (FY2027E，33家分析师)"
-    revenue_current_fy: "$13.28B (FY2025实际)"
+    eps_next_fy: "$5.05 (FY2027E)"
     revenue_next_fy: "$18.94B (FY2027E)"
-    target_price_median: "N/A — 多数分析师仍在调整模型"
-    target_price_range: "N/A"
-    dispersion: "高 — FY2028E EPS从$4.96到$7.87(离散度58%)"
-    rating_distribution: "26 buy / 3 hold / 1 sell (Strong Buy共识)"
-    recent_revision_direction: "mixed — KeyBanc下调(结构性AI风险), 但Guggenheim从卖出上调至中性"
-    revision_magnitude: "近3个月多数维持，少数大幅下调"
+    dispersion: "高 — FY2028E EPS $4.96-$7.87(58%)"
+    rating_distribution: "26 buy / 3 hold / 1 sell"
+    recent_revision_direction: "mixed — KeyBanc下调, Guggenheim上调"
 
-  dominant_narrative: "AI是NOW最大的机会也是最大的存在性威胁——AI agents可能绕过SaaS工作流软件，压缩per-seat定价模型"
-  bull_case_core: "NOW是AI agents需要的编排层(orchestration layer)——工作流、审计、跨系统集成只会更复杂，不会消失"
-  bear_case_core: "AI agents可能直接绕过工作流软件——为什么还要为seat license付费？更少的知识工人=更少的seat=结构性收入压力"
-  market_most_confident_about: "SaaS行业整体面临AI定价压力(行业级重估)"
-  market_most_uncertain_about: "NOW到底是AI的受害者还是受益者——这个问题的答案决定估值差异可能>100%"
-  narrative_vs_price_consistency: "一致——悲观叙事+低估值。但26/30分析师仍给Buy评级=共识行为与价格信号矛盾(分析师没有下调目标价到这么低)"
+  dominant_narrative: "AI是NOW最大的机会也是最大的存在性威胁——AI agents可能绕过SaaS工作流软件"
+  bull_case_core: "NOW是AI agents的编排层(orchestration layer)——工作流越复杂越需要NOW"
+  bear_case_core: "AI agents可能直接绕过工作流软件——为什么还要为seat付费?"
+  market_most_confident_about: "SaaS行业整体面临AI定价压力"
+  market_most_uncertain_about: "NOW到底是AI受害者还是AI受益者"
 
-# === R域: 企业现实 ===
+  smart_money:
+    institutional_ownership_trend: "stable"
+    notable_positions:
+      - investor: "Renaissance Technologies"
+        action: "新建仓$204M(1.33M股)"
+        size: "$204M"
+        thesis: "量化逆向建仓——在SaaS板块恐慌中买入增速最高的名字"
+        evidence_grade: "fact"
+    insider_behavior: "零买入(8个季度连续totalPurchases=0)。管理层在-51%位置不用个人钱买入=不认为极度低估"
+    company_buyback:
+      amount: "$1.84B (FY2025)"
+      sbc_coverage: "94% — 7家中最低(勉强覆盖SBC)"
+      share_count_change: "~0% (持平)"
+      trend: "stable"
+    smart_money_signal: "neutral"
+    signal_reasoning: "RenTech建仓$204M(弱正面,量化驱动)。但零insider买入+回购仅94%覆盖=管理层没有用行动说'被低估'。对比CRM($25B回购+insider翻正)和ADBE(580%覆盖),NOW的聪明钱信号在7家中最弱"
+
 reality:
-  overall_trend: "stable"
-  trend_confidence: "high"
-  structural_vs_cyclical: "mixed — 收入增长是结构性的(企业数字化+AI需求)，但估值压缩是行业周期性的(SaaS板块整体de-rating)"
+  company:
+    overall_trend: "stable"
+    trend_confidence: "high"
+    structural_vs_cyclical: "mixed"
+    key_variables:
+      - name: "收入增速"
+        state: "stable"
+        data: "FY22-FY25 CAGR 22.3% | Q1-Q4'25: +18.6%→+22.4%→+21.8%→+20.7%"
+        evidence_grade: "fact"
+      - name: "FCF增速与margin"
+        state: "accelerating"
+        data: "FCF: FY22 $2.17B → FY25 $4.58B(+34%) | FCF margin: 30%→34.5%"
+        evidence_grade: "fact"
+      - name: "GAAP OPM"
+        state: "accelerating"
+        data: "FY22 4.9% → FY25 13.7%"
+        evidence_grade: "fact"
+      - name: "SBC负担"
+        state: "stable"
+        data: "SBC/Rev 14.7%(下降中)。回购$1.84B覆盖SBC 94%。股本~持平"
+        evidence_grade: "fact"
+      - name: "ROIC"
+        state: "stable"
+        data: "27.2% — 对SaaS优秀"
+        evidence_grade: "fact"
+    most_telling_facts:
+      - fact: "FCF +34%且margin扩张——如果AI真在压缩SaaS价值,最先反映在FCF/margin,但事实相反"
+        why_telling: "恐惧在价格中但不在财务中"
 
-  key_variables:
-    - name: "收入增速"
-      state: "stable"
-      data: "FY22 +23.8% → FY23 +23.8% → FY24 +22.4% → FY25 +20.9% | Q1'25 +18.6% → Q2 +22.4% → Q3 +21.8% → Q4 +20.7%"
-      source: "10-K/FMP income statements"
+  industry:
+    total_market_trend: "growing +14.7%"
+    total_market_data: "企业软件$1.4T(Gartner)"
+    total_market_source: "Gartner"
+    structural_shifts:
+      - shift: "per-seat → outcome/consumption定价转型"
+        evidence_grade: "fact"
+        irreversibility: 4
+        speed: "medium"
+        current_penetration: "40%合同含outcome-based定价"
+        company_position: "adapter — AI Control Tower定位但尚未改变定价模型"
+    key_industry_fact: "软件支出+14.7%但SaaS板块-25% = 历史性趋势-价格背离"
+
+  trend_price_divergence:
+    exists: true
+    description: "行业+14.7% vs 板块-25% vs NOW -51%"
+    most_likely_explanation: "SaaS板块一刀切恐慌。NOW因增速最高(21%)也跌得最多(-51%)——市场在惩罚'高增长但高估值'的SaaS"
+
+  trend_irreversibility:
+    - trend: "per-seat → outcome定价"
+      irreversibility_score: 4
+      speed: "medium"
       evidence_grade: "fact"
+      already_priced: "over-priced — 40%渗透但市场按完成定价"
 
-    - name: "FCF增速与FCF margin"
-      state: "accelerating"
-      data: "FCF: FY22 $2.17B → FY23 $2.70B(+24%) → FY24 $3.42B(+27%) → FY25 $4.58B(+34%) | FCF margin: 30.0% → 30.1% → 31.1% → 34.5%"
-      source: "10-K/FMP cash flow statements"
-      evidence_grade: "fact"
-
-    - name: "GAAP OPM"
-      state: "accelerating"
-      data: "FY22 4.9% → FY23 8.5% → FY24 12.4% → FY25 13.7%"
-      source: "10-K"
-      evidence_grade: "fact"
-
-    - name: "SBC负担"
-      state: "stable"
-      data: "SBC/Rev: FY22 19.3% → FY23 17.9% → FY24 15.9% → FY25 14.7% (持续下降)。但Owner PE为负(NI $1.75B - SBC $1.96B = -$207M)。公司回购$1.84B覆盖SBC 94%"
-      source: "10-K cash flow / income"
-      evidence_grade: "fact"
-
-    - name: "ROIC"
-      state: "stable"
-      data: "ROIC TTM 27.2% — 对SaaS公司而言非常强，说明资本效率高"
-      source: "FMP key-metrics"
-      evidence_grade: "fact"
-
-  quality_signals:
-    revenue_driver: "主要是量驱动(新客户+产品扩展)，辅以定价——FY2026指引$15.5B+订阅收入"
-    customer_concentration_risk: "low — 大型企业客户基础广泛(Fortune 500覆盖率高)"
-    cash_flow_match: "OCF/NI = 3.11x (非常健康——SBC是最大非现金调整项，不影响现金)"
-    sbc_burden: "SBC/Rev 14.7%下降中，但SBC绝对额$1.96B>NI $1.75B → Owner PE为负。回购$1.84B覆盖94%缓解稀释"
-    organic_vs_acquired: "以有机增长为主，FY2025收购$1.08B(Armis等)，占FCF 24%，规模可控"
-
-  most_telling_facts:
-    - fact: "FCF FY2025 $4.58B，同比+34%，FCF margin从31.1%扩张到34.5%"
-      why_telling: "如果AI真的在压缩SaaS价值，最先反映的应该是FCF减速或margin收缩——但事实恰恰相反，两者都在加速。市场的'AI颠覆'叙事尚未在财务数据中得到任何验证"
-    - fact: "FY2026指引订阅收入$15.5B+，隐含~17%增速——管理层对增长持续性有信心"
-      why_telling: "管理层愿意给出强指引说明近期管线能见度高。但零内部人买入与强指引形成微妙矛盾"
-
-# === G域: 剪刀差 ===
 gap:
-  variable_comparison:
-    - factor: "FCF增速"
-      expectation: "市场隐含~10% CAGR (反推自当前EV/FCF 23.7x)"
-      reality: "实际FCF增速34%(FY25)，共识收入CAGR 18%+margin稳定/扩张→FCF CAGR应≥15%"
-      gap_direction: "E<R"
-      gap_size: "large"
-
-    - factor: "利润率方向"
-      expectation: "市场隐含margin压缩(AI竞争→定价权下降)"
-      reality: "GAAP OPM加速扩张(4.9%→13.7%), FCF margin扩张(30%→34.5%), SBC/Rev持续下降"
-      gap_direction: "E<R"
-      gap_size: "medium"
-
-    - factor: "增长持续性"
-      expectation: "市场隐含增长快速减速(AI替代seat→收入结构性下降)"
-      reality: "收入增速稳定在20%+，管理层指引FY26 $15.5B+(~17%增速)"
-      gap_direction: "E<R"
-      gap_size: "medium"
-
-    - factor: "竞争护城河持续性"
-      expectation: "市场认为AI可能侵蚀NOW的工作流平台价值"
-      reality: "尚无证据。NOW正在将自己定位为AI Control Tower/编排层"
-      gap_direction: "uncertain"
-      gap_size: "unknown — 这是真正的未知项，可能需要2-3年验证"
-
   scoring:
-    direction_clarity: 4       # 财务数据方向非常清晰——FCF加速、margin扩张、增速稳定
-    magnitude: 4               # P/FCF 24x对20%+增长者historically极便宜
-    persistence: 3             # 需要持续2-3Q确认增速不减速
-    verifiability: 4           # 下季财报(Q1'26)即可初步验证
-    composite_score: 3.75      # ≥3.5 = 值得深挖
+    direction_clarity: 4
+    magnitude: 3
+    persistence: 3
+    verifiability: 4
+    industry_trend_support: 4
+    smart_money_alignment: 2
+    composite_score: 3.33
 
   core_mispriced_variables:
-    - variable: "FCF增速与FCF margin方向"
-      market_assumes: "AI竞争将压缩SaaS利润率，FCF增速将放缓至10%"
-      reality_shows: "FCF增速34%且margin在扩张(30%→34.5%)，没有任何财务指标显示压缩正在发生"
-      why_market_wrong: "市场把'AI可能在未来颠覆SaaS'当作'AI正在颠覆SaaS'来定价。恐惧在价格中，但恐惧的证据不在财务中"
-      evidence_grade: "fact (财务数据) + inference (市场定价逻辑)"
-      valuation_sensitivity: "如果FCF CAGR是15%而非市场隐含的10%，5年后FCF ~$9.2B vs $7.4B，差异25%+终端倍数可能重估"
-
-    - variable: "NOW在AI时代的定位"
-      market_assumes: "SaaS per-seat模型将被AI agents淘汰"
-      reality_shows: "NOW正在将自己重新定位为AI编排层(AI Control Tower)，收购Armis/Veza加强安全/权限。AI agents越多，跨系统工作流编排可能越重要"
-      why_market_wrong: "KeyBanc的'结构性AI颠覆'论点是有道理的，但把所有SaaS一刀切地de-rating忽视了'谁编排AI agents'这个问题——NOW是最强候选"
-      evidence_grade: "inference — AI编排层的价值尚未被收入验证"
-      valuation_sensitivity: "如果NOW成功转型为AI编排平台，估值可能从P/FCF 24x重估至35-40x(历史中位数)"
-
-    - variable: "内部人行为与市场底部信号"
-      market_assumes: "管理层不认为股价便宜(零买入)"
-      reality_shows: "零内部人买入(过去8个季度purchases=0)。公司层面回购$1.84B(FY25)，但主要用于抵消SBC而非增厚每股价值"
-      why_market_wrong: "这一点市场可能没错——内部人不买是真实的谨慎信号"
+    - variable: "FCF增速vs价格隐含增速的剪刀差"
+      market_assumes: "FCF CAGR ~10%"
+      reality_shows: "FCF +34%,共识Rev CAGR 18%+margin扩张→FCF CAGR ≥15%"
       evidence_grade: "fact"
-      valuation_sensitivity: "如果内部人开始买入，将成为强确认信号"
+    - variable: "资本回报弱——7家中排名垫底"
+      market_assumes: "N/A"
+      reality_shows: "回购94%覆盖(最低)+零缩股+零insider买入。对比CRM(359%/$25B/insider翻正)和ADBE(580%/-5%缩股)——NOW不用行动表达信心"
+      evidence_grade: "fact"
 
-  one_sentence_judgment: "市场以P/FCF 24x定价一个FCF增速34%、margin扩张中、收入增速20%+的公司——隐含的AI颠覆恐惧在财务数据中找不到任何支撑，属于'叙事领先于现实'的过度悲观，但AI的长期定价影响是真实的未知项，需要持续监控"
+  one_sentence_judgment: "NOW是7家中'增速最高但资本回报最弱'的矛盾体——FCF +34%/增速21%说明业务健康,但P/FCF 23.7x(不是最便宜)+回购仅94%(最弱)+零insider买入意味着在ADBE/CRM/WDAY面前,NOW的预期差吸引力排第4-5位而非前3"
 
-# === T域: 拐点信号与证伪 ===
+  same_narrative_comparison:
+    narrative: "AI杀SaaS per-seat定价模型"
+    peers:
+      - ticker: "ADBE"
+        p_fcf: "10.0x"
+        fcf_growth: "+27%"
+        sbc_coverage: "580%"
+        shrink_rate: "-5%/yr"
+        ai_threat: "高(Canva 200M)"
+      - ticker: "CRM"
+        p_fcf: "12.1x"
+        fcf_growth: "+16%"
+        sbc_coverage: "359%"
+        shrink_rate: "-3.1%/yr"
+        ai_threat: "中(飞轮悖论)"
+      - ticker: "WDAY"
+        p_fcf: "12.2x"
+        fcf_growth: "+27%"
+        sbc_coverage: "208%"
+        shrink_rate: "-2.5%/yr"
+        ai_threat: "中(seat压力)"
+      - ticker: "INTU"
+        p_fcf: "19.8x"
+        fcf_growth: "+18%"
+        sbc_coverage: "141%"
+        shrink_rate: "-0.7%/yr"
+        ai_threat: "低(监管护城河)"
+      - ticker: "PTC"
+        p_fcf: "20.0x"
+        fcf_growth: "+17%"
+        sbc_coverage: "139%"
+        shrink_rate: "+0.7%/yr"
+        ai_threat: "极低(物理约束)"
+      - ticker: "NOW"
+        p_fcf: "23.7x"
+        fcf_growth: "+34%"
+        sbc_coverage: "94%"
+        shrink_rate: "~0%"
+        ai_threat: "中(编排层vs seat)"
+      - ticker: "DDOG"
+        p_fcf: "44x"
+        fcf_growth: "+20%"
+        sbc_coverage: "0%"
+        shrink_rate: "+4.8%/yr"
+        ai_threat: "低(AI增需求)"
+    most_mispriced: "按P/FCF: ADBE(10x)>CRM(12x)>WDAY(12x)最便宜。NOW(23.7x)在中间——不是最被错杀的"
+
+paradigm_shift:
+  signals_triggered: 5
+  company_role: "adapter"
+  role_evidence: "NOW推出AI Control Tower概念但尚未改变核心定价模型(仍是per-seat subscription)"
+  historical_analog: "类似Oracle在云转型中的角色——大型平台,后发但凭借客户锁定最终跟上"
+  pricing_error_pattern: "pattern_B"
+  pattern_description: "市场把'转型不确定性'当'永久衰退'定价。但NOW的FCF在加速增长——如果真的在衰退,FCF应该恶化"
+  pattern_confidence: "medium"
+  impact_on_gap_judgment: "范式转移视角维持excessive_pessimism但降低了优先级——NOW在7家中不是预期差最大的标的(ADBE/CRM/WDAY更便宜+信号更强)"
+
 triggers:
-  leading_indicators:
-    - signal: "FY2026 Q1订阅收入增速"
-      current_reading: "FY2025全年订阅收入增速~21%"
-      bullish_threshold: ">18% (确认增速稳定)"
-      bearish_threshold: "<15% (确认AI导致减速)"
-      why_matters: "订阅收入是NOW核心(占~85%)。如果AI真的在侵蚀per-seat模型，最先反映在这里"
-      next_data_point: "Q1'26财报(预计2026年4月)"
-
-    - signal: "cRPO(current Remaining Performance Obligation)增速"
-      current_reading: "Q4'25 cRPO增速~22%(推测，基于FY2026指引)"
-      bullish_threshold: ">20% (订单管线健康)"
-      bearish_threshold: "<15% (订单管线减速=收入前瞻恶化)"
-      why_matters: "cRPO是收入的领先指标(通常领先1-2Q)。如果cRPO在收入之前减速，说明AI影响正在显现"
-      next_data_point: "Q1'26财报"
-
-    - signal: "AI相关产品(Now Assist/AI Control Tower)贡献的ACV(年合同价值)"
-      current_reading: "管理层在FY2025报告中开始披露AI产品traction"
-      bullish_threshold: "AI产品ACV占新签ACV >10%"
-      bearish_threshold: "AI产品增长停滞或蚕食传统产品"
-      why_matters: "这直接回答'NOW是AI受益者还是受害者'的核心问题"
-      next_data_point: "Q1-Q2'26 earnings calls"
-
-    - signal: "内部人买入动向"
-      current_reading: "过去8个季度零买入(totalPurchases=0)"
-      bullish_threshold: "CEO/CFO开放市场买入>$500K"
-      bearish_threshold: "持续零买入+管理层加速卖出"
-      why_matters: "内部人行为是管理层对公司价值最诚实的表达。在-51%的位置上仍然零买入=管理层不认为被严重低估"
-      next_data_point: "SEC Form 4 持续监控"
-
-    - signal: "SaaS板块整体估值重估"
-      current_reading: "SaaS板块处于熊市，整体de-rating"
-      bullish_threshold: "板块止跌+资金回流"
-      bearish_threshold: "板块继续创新低"
-      why_matters: "NOW的下跌50%有~40%来自板块re-rating而非公司特定因素。板块回暖是NOW重估的必要(非充分)条件"
-      next_data_point: "IGV ETF / BVP Cloud Index 持续监控"
-
-  confirming_indicators:
-    - signal: "FY2026全年收入指引"
-      expected_if_thesis_correct: "上调或维持$15.5B+ → 管理层对增长有信心"
-      expected_if_thesis_wrong: "下调至<$15B → 增速正在减速"
-
-    - signal: "FCF margin FY2026"
-      expected_if_thesis_correct: "维持>33% → 利润率扩张趋势持续"
-      expected_if_thesis_wrong: "<30% → 开始出现margin压缩"
-
-    - signal: "大型企业客户的AI采购行为"
-      expected_if_thesis_correct: "企业增加NOW支出(AI需要更多工作流编排) → 价格vs量都增长"
-      expected_if_thesis_wrong: "企业减少NOW seat数(AI替代人工=更少seat需求) → 量下降"
+  company_signals:
+    - signal: "Q1'26订阅收入增速"
+      bullish_threshold: ">18%"
+      bearish_threshold: "<15%"
+      next_data_point: "2026年4月财报"
+    - signal: "cRPO增速"
+      bullish_threshold: ">20%"
+      bearish_threshold: "<15%"
+    - signal: "AI产品(Now Assist)ACV贡献"
+      bullish_threshold: ">10%新签ACV"
+      bearish_threshold: "停滞"
 
   falsification:
-    - condition: "连续2Q订阅收入增速<15%且cRPO增速<14%"
-      implication: "增速放缓是结构性而非季节性的，AI确实在压缩SaaS需求。预期差判断被证伪"
-      time_window: "2026 Q1-Q2(未来6个月)"
+    - condition: "连续2Q订阅增速<15%且cRPO<14%"
+      implication: "AI压缩真实化"
+      time_window: "6个月"
 
-    - condition: "FCF margin连续2Q收缩>200bps且GAAP OPM下降"
-      implication: "AI竞争正在压缩定价权/利润率——市场的恐惧正在变成现实"
-      time_window: "2026 Q1-Q3(未来9个月)"
+  monitoring_horizon: "2-3季度"
+  next_reassessment_trigger: "Q1'26财报(2026年4月)"
 
-    - condition: "管理层大幅下调FY2026收入指引(>5%)"
-      implication: "内部人看到了市场看到的问题，指引下调=认输信号"
-      time_window: "下一次财报(Q1'26)"
-
-    - condition: "主要竞争对手(Microsoft/Salesforce)推出直接替代NOW工作流的AI原生产品，且获得显著企业客户牵引"
-      implication: "NOW的护城河(工作流平台锁定)正在被AI原生竞品绕过——结构性风险从'可能'变成'正在发生'"
-      time_window: "12个月"
-
-  monitoring_horizon: "2-3个季度(6-9个月)"
-  next_reassessment_trigger: "Q1'26财报发布(预计2026年4月)——这是最重要的单一验证事件"
-
-# === 后续行动 ===
 next_actions:
-  deep_dive_worthy: true
-  deep_dive_reason: "composite_score 3.75(≥3.5阈值)。P/FCF 24x定价一个FCF增速34%的公司——如果AI恐惧被证伪，重估空间>50%。但AI对SaaS的长期影响是真正的结构性未知项，值得Tier 2/3级别深挖"
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 3.33(<3.5)。NOW在7家中composite排第6——增速最高但估值不是最便宜+资本回报最弱。有限资源应优先ADBE/CRM/WDAY"
   priority_research:
-    - "NOW的AI产品(Now Assist/AI Control Tower)实际客户采用率和ACV数据——这决定NOW是受益者还是受害者"
-    - "深度调研per-seat SaaS定价模型在AI时代的演变路径——从价格机制层面理解而非只是叙事层面"
-    - "同行对比: SNOW/CRM/WDAY在同一轮AI恐惧中的表现——是否NOW被不合理地一刀切"
-    - "NRR(净收入留存率)间接推算——NOW不公开NRR，需用间接法(收入增速-新客贡献)"
-  position_implication: "如果未持有: 值得在Q1'26财报前建立观察仓。如果已持有: 核心观察是cRPO+AI产品贡献——两者同时恶化=减仓，两者维持=加仓"
+    - "NOW vs CRM: 同为工作流平台,为什么P/FCF差2倍(23.7x vs 12.1x)?增速溢价是否合理?"
+  position_implication: "如果要买SaaS板块暴露,ADBE/CRM/WDAY的风险回报更优。NOW的优势是增速但劣势是估值和资本回报"
 
-# === 事后验证 (3-6个月后回填) ===
 post_mortem:
   verified: false
-  verification_date: ""
-  outcome: ""
-  what_happened: ""
-  lessons_learned: ""
-  signal_accuracy:
-    accurate_signals: []
-    noise_signals: []
