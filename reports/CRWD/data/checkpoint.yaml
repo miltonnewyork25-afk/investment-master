@@ -1,0 +1,49 @@
+ticker: CRWD
+tier: 3
+current_phase: "Phase -0.5"
+status: "数据收集完成, 待Phase 0数据预取"
+last_updated: "2026-03-27"
+branch: "生态科技"
+
+completed:
+  - phase: "Phase -1"
+    date: "2026-03-27"
+    commit: "0eb94ab"
+    outputs:
+      - "reports/CRWD/data/financial_data.md"
+      - "reports/CRWD/data/knowledge_context.md"
+      - "reports/CRWD/data/launch_brief.md"
+  - phase: "Phase -0.5 数据收集"
+    date: "2026-03-27"
+    outputs:
+      - "reports/CRWD/data/research_sbc_nrr.md"
+      - "reports/CRWD/data/research_logscale_siem.md"
+      - "reports/CRWD/data/research_competition.md"
+      - "reports/CRWD/data/research_ai_strategy.md"
+      - "reports/CRWD/data/research_10k_management.md"
+      - "reports/CRWD/data/research_moat_pricing.md"
+      - "reports/CRWD/data/research_industry_valuation.md"
+
+next_steps:
+  - "Phase -0.5: 文献侦察 → lit_recon_memo.md"
+  - "Phase 0: /data-prefetch 结构化数据预取"
+  - "Phase 0.5: CQ路由"
+  - "Phase 0.75: 核心矛盾结晶 → thesis_crystallization.md"
+  - "Phase 1: 围绕CQ1-CQ5组织分析"
+
+cq_candidates:
+  CQ1: "SBC估值分叉 — Owner PE深度负值 vs Non-GAAP PE 106x"
+  CQ2: "宕机后复苏真实性 — NRR 115%恢复 vs Customer Commitment Package"
+  CQ3: "LogScale SIEM能否成为第二曲线 — $585M→$3B可达性"
+  CQ4: "AI是护城河增强还是威胁 — Charlotte AI飞轮 vs MSFT Copilot捆绑"
+  CQ5: "估值合理性 — Forward PE 64x隐含什么假设"
+
+key_findings:
+  sbc: "22.8% SBC/Rev无收敛趋势, η=0(零回购), Owner PE深度负值"
+  nrr: "115%恢复中(宕机前120%+), 间接法验证可信, GRR 97%一流"
+  logscale: "$585M ARR +75% YoY, Gartner SIEM MQ Visionary(首年), $3B@FY2031需35-40% CAGR"
+  competition: "MSFT E5+Copilot免费对SMB威胁大; PANW延期收入策略; S不构成重大威胁"
+  ai_strategy: "Charlotte AI无独立定价(使用量6x YoY); 飞轮净强度强正向(按端点计费免蚕食)"
+  moat: "Wide Moat(Morningstar 2025升级); 转换成本6-12月; 数据飞轮4万亿事件/周; C-AI=净增强"
+  valuation: "~14x forward P/S(3年低端); 分析师共识$548-559(+40%上行); 0个Sell评级"
+  industry: "TAM $213B→$323B(2029); AI威胁+72%; 网安抗衰退(2x other software in 2008)"
