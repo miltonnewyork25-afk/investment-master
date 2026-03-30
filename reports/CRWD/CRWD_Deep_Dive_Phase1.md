@@ -104,6 +104,24 @@ CrowdStrike FY2026(截至2026-01-31)实现收入$4.81B, 同比+22%。这个数�
 
 端点增速(~15%)与LogScale增速(75%)之间的剪刀差高达**60个百分点**。这揭示了一个关键事实: CrowdStrike的22%增速中, 核心端点贡献的增量在递减, LogScale和云安全正在接棒。
 
+```mermaid
+pie title CRWD FY2026 ARR结构 ($5.25B)
+    "端点保护 $3.1B (59%)" : 59
+    "Cloud+Identity $1.3B (25%)" : 25
+    "LogScale SIEM $0.585B (11%)" : 11
+    "其他 $0.25B (5%)" : 5
+```
+
+```mermaid
+graph LR
+    A[端点 ~15%增速] -->|贡献~9pp| T[总增速 22%]
+    B[LogScale +75%] -->|贡献~8pp| T
+    C[Cloud+Identity +30%] -->|贡献~5pp| T
+    style A fill:#ffcccc
+    style B fill:#ccffcc
+    style C fill:#ccffcc
+```
+
 用M1框架量化:
 - **分部增速标准差σ**: ~30pp (>10pp = 高分裂)
 - **新兴业务贡献**: Cloud+LogScale+Identity占ARR 36%, 但贡献了增量ARR的~60%+
@@ -130,6 +148,19 @@ CrowdStrike FY2026(截至2026-01-31)实现收入$4.81B, 同比+22%。这个数�
 | FY2027E | 5.87-5.93 | +22% | 1.21-1.26 | +20-25% |
 
 收入增速从66%→22%的减速看似严重, 但净新ARR在FY2026创纪录$1.01B(+25%)。这个"剪刀差"需要解释:
+
+```mermaid
+graph LR
+    subgraph 增速减速_法则大数
+        FY22["FY22 +66%"] --> FY23["FY23 +54%"] --> FY24["FY24 +36%"] --> FY25["FY25 +29%"] --> FY26["FY26 +22%"]
+    end
+    subgraph 净新ARR_加速
+        N24["FY24 $880M"] --> N25["FY25 $800M<br>宕机"] --> N26["FY26 $1.01B★"]
+    end
+    FY26 -->|基数效应| EXP["22%增速=<br>$1B+ 净新ARR<br>质量不差"]
+    style N25 fill:#ffcccc
+    style N26 fill:#ccffcc
+```
 
 **收入增速下降 + 净新ARR加速 = ?**
 
@@ -270,6 +301,25 @@ SaaS横向报告建立了一个清晰的SBC三梯队分类:
   DDOG: SBC 22% → 回购0%  → 股本+4.8%/yr → P/FCF 44x
   ★CRWD: SBC 23% → 回购0% → 股本+3.9%/yr → P/FCF 76x★
   ZS:   SBC 25% → 回购0%  → 股本+3.1%/yr → P/FCF 61x
+```
+
+```mermaid
+graph TD
+    subgraph 第一梯队_净增厚
+        ADBE[ADBE SBC 10% η=5.8x 缩股-5%/yr]
+        CRM[CRM SBC 9% η=3.6x 缩股-3.1%/yr]
+    end
+    subgraph 第二梯队_基本覆盖
+        PANW[PANW SBC 14% η≈1x 持平]
+        FTNT[FTNT SBC 4.1% η=16.3x 缩股-3.7%/yr]
+    end
+    subgraph 第三梯队_净稀释
+        CRWD[★CRWD SBC 23% η=0 膨胀+3.9%/yr★]
+        DDOG[DDOG SBC 22% η=0 膨胀+4.8%/yr]
+        ZS[ZS SBC 25% η=0 膨胀+3.1%/yr]
+    end
+    style CRWD fill:#ff6b6b
+    style FTNT fill:#ccffcc
 ```
 
 **CRWD处于第三梯队(净稀释)**:
@@ -491,6 +541,17 @@ SBC能否收敛是支撑当前估值的**最关键假设**。建模三种路径:
 - 三情景概率和: 15%+45%+40% = 100% ✓
 [DM-FIN-015: PANW/NOW/DDOG SBC convergence data from FMP]
 
+```mermaid
+graph TD
+    NOW["FY2026<br>SBC/Rev 22.8%"]
+    NOW -->|15%概率| A["情景A: FTNT路径<br>22.8%→15%→12%<br>Owner PE: 468x→80x"]
+    NOW -->|45%概率| B["情景B: NOW路径<br>22.8%→18%→16%<br>Owner PE: 468x→135x"]
+    NOW -->|40%概率| C["情景C: 零收敛<br>22.8%→23%→22%<br>Owner PE: 维持400x+"]
+    style A fill:#ccffcc
+    style B fill:#ffffcc
+    style C fill:#ff6b6b
+```
+
 **概率加权Owner PE (FY2030)**: 0.15×80 + 0.45×135 + 0.40×400 = **233x**
 
 即使在概率加权下, FY2030的Owner PE仍然极高(233x), 说明SBC收敛是一个**慢变量** — 即使发生, 也需要4-5年才能显著改善股东回报。对于今天以$393买入的投资者, 这意味着4-5年的低Owner Yield期。[DM-FIN-010: scenario modeling based on FMP + NOW/FTNT comps]
@@ -542,6 +603,21 @@ CrowdStrike的定价权不是均匀的, 按客户层呈现明显差异:
 - CrowdStrike SMB: Falcon Go $59.99/设备/年(限100台) — 有竞争力但规模受限
 - **关键判断**: SMB市场对CRWD的战略重要性有限(大客户ARR贡献占绝对多数), 但SMB流失可能影响客户总数指标(已停止披露)
 [DM-BIZ-004: IDC Modern Endpoint Security 2024 + Microsoft E5 pricing]
+
+```mermaid
+graph TD
+    subgraph 定价权分层
+        F500[F500 Stage 3.5/5<br>渗透50%+ 提价5-8%/yr<br>FedRAMP锁定]
+        MID[Mid-Market Stage 2.5/5<br>PANW平台化竞争<br>S价格差$5-20]
+        SMB[SMB Stage 1.5/5<br>MSFT E5免费威胁<br>Defender 28.6%市占]
+    end
+    F500 -->|权重40%| B4[加权B4 = 2.75/5]
+    MID -->|权重35%| B4
+    SMB -->|权重25%| B4
+    style F500 fill:#ccffcc
+    style MID fill:#ffffcc
+    style SMB fill:#ffcccc
+```
 
 **加权B4定价权**: F500(40%权重) × 3.5 + Mid(35%) × 2.5 + SMB(25%) × 1.5 = **2.75/5** (中等偏上)
 
@@ -655,6 +731,18 @@ AIAS(AI Impact Assessment Score——AI影响评估分, 量化AI对公司是净�
 
 CrowdStrike的数据飞轮被Morningstar引用为Wide Moat的核心依据。逐连接点验证:
 
+```mermaid
+graph TD
+    A[更多端点/客户] -->|自动贡献遥测| B[更多数据 15PB+]
+    B -->|训练Charlotte AI| C[更好检测 MITRE 100%]
+    C -->|品牌+口碑| D[更多客户采纳]
+    D -->|正反馈| A
+    C -->|��断点★| E[更高价值→定价?]
+    E -.->|零独立定价>2年| F[价值未捕获]
+    style E fill:#ff6b6b
+    style F fill:#ff6b6b
+```
+
 **连接点1: 更多端点 → 更多遥测数据**
 - 验证指标: Threat Graph规模(15+PB, 2万亿+顶点), 日处理1万亿+事件
 - 判断: **真实**(数据在持续增长, 且每个新客户的Agent自动贡献遥测)
@@ -722,6 +810,24 @@ CrowdStrike的数据飞轮被Morningstar引用为Wide Moat的核心依据。逐�
 (c) 身份安全/云安全/LogScale完全不受内核限制影响
 
 **Step 4 — 时间线**:
+
+```mermaid
+gantt
+    title Windows内核移除时间线 vs CRWD护城河迁移
+    dateFormat  YYYY
+    section Microsoft
+    Private Preview        :2025, 2026
+    GA + 渐进强制          :2027, 2028
+    全面生效               :2029, 2030
+    section CRWD护城河
+    旧护城河60%权重        :2025, 2027
+    脆弱窗口期★            :crit, 2027, 2029
+    ��护城河70%权重         :2029, 2031
+    section 验证事件
+    MITRE Round 7          :milestone, 2027, 0d
+    Charlotte AI定价?      :milestone, 2028, 0d
+```
+
 - 2025-2026: Private preview + 合作伙伴测试
 - 2027-2028: 预计GA + 渐进式强制执行
 - 2029+: 全面生效
@@ -868,6 +974,23 @@ CQI(Company Quality Index——公司质量指数, 从嵌入性/网络效应/规
 | **B4定价权** | **2.75/5** | **2.5** | ↓ | 内核趋同→端点定价权承压; Flex部分对冲; MSFT SMB威胁持续 |
 | **D1周期抗性** | **4.0/5** | **4.0** | → | 网安2008衰退中收入增速2x其他软件; 监管底线(SEC/NIS2/DORA) |
 
+```mermaid
+graph LR
+    subgraph CQI五维度 当前vs3年后
+        E1["E1嵌入性<br>4.0→3.0 ↓"]
+        E2["E2数据飞轮<br>3.5→4.0 ↑"]
+        E3["E3规模经济<br>3.0→3.0 →"]
+        E4["E4定价权<br>2.75→2.5 ↓"]
+        E5["E5周期抗性<br>4.0→4.0 →"]
+    end
+    E1 -->|内核移除| DOWN1[技术嵌入↓]
+    E2 -->|云端不受影响| UP1[数据规模↑]
+    E4 -->|功能趋同| DOWN2[端点定价↓]
+    style E1 fill:#ffcccc
+    style E2 fill:#ccffcc
+    style E4 fill:#ffcccc
+```
+
 **CQI综合** (C1×30%+C2×15%+C3×15%+B4×25%+D1×15%):
 - 当前: 4.0×30%+3.5×15%+3.0×15%+2.75×25%+4.0×15% = **3.47/5 = 69.3/100**
 - 3年后: 3.25×30%+4.0×15%+3.0×15%+2.5×25%+4.0×15% = **3.23/5 = 64.5/100**
@@ -894,6 +1017,26 @@ CrowdStrike的护城河正在经历一次**底层迁移**:
   ├── AI模型: Charlotte AI的标注数据集是竞争壁垒
   ├── 平台生态: AgentWorks上的第三方安全Agent
   └── 身份+云+SIEM: 非端点业务不受内核影响
+```
+
+```mermaid
+graph LR
+    subgraph 旧护城河_退化中
+        K[内核嵌入<br>400+事件类型]
+        K -->|移除| U[用户模式<br>300-350事件]
+    end
+    subgraph 新护城河_建设中
+        D[数据飞轮<br>15PB ✅建成]
+        AI[Charlotte AI<br>❌未货币化]
+        C[合规壁垒<br>FedRAMP ✅存在]
+        F[Flex锁定<br>$1.69B ✅运行中]
+    end
+    K -.->|权重60%→30%| OLD[旧护城河]
+    D & AI & C & F -->|权重40%→70%| NEW[新护城河]
+    OLD -->|迁移中| CQI[CQI 69→64]
+    NEW -->|取决于AI货币化| CQI
+    style AI fill:#ff6b6b
+    style D fill:#ccffcc
 ```
 
 **迁移进度**: ~40% (数据飞轮已建立, AI平台初成, 但Charlotte AI未货币化)
@@ -956,6 +1099,22 @@ Morningstar 2025年将CRWD从Narrow Moat升级至Wide Moat, 公允价值$410→$
 ---
 
 ## Ch7: 竞争格局与弹性 (M8)
+
+```mermaid
+quadrantChart
+    title 网安竞争格局定位 (规模 vs 增速)
+    x-axis "小规模" --> "大规模"
+    y-axis "低增速" --> "高增速"
+    quadrant-1 "高增长+大规模"
+    quadrant-2 "高增长+小规模"
+    quadrant-3 "低增长+小规模"
+    quadrant-4 "低增长+大规模"
+    "CRWD $4.8B +22%": [0.55, 0.75]
+    "PANW $9.2B +15%": [0.85, 0.50]
+    "FTNT $6.8B +14%": [0.70, 0.45]
+    "ZS $2.7B +26%": [0.30, 0.85]
+    "S $1.0B +22%": [0.10, 0.73]
+```
 
 ### 7.1 四路竞争矩阵
 
@@ -1181,6 +1340,19 @@ CRWD YTD -22%。拆解这22%的下跌归因:
 **核心判断**: CRWD的-22% YTD中, ~5-8%可能来自"AI杀SaaS"叙事的错误归因。因为CRWD的endpoint计费模式不受AI自动化威胁(与CRM seat模式根本不同), 且AI扩大了安全TAM(攻击+89%)。
 
 **但这不意味着CRWD被低估5-8%**: 因为SBC问题(Owner PE 468x)和内核移除风险是真实的独立负面因素, 可能抵消甚至超过叙事纠偏的上行空间。叙事错误归因是**一个维度的正面信号**, 不是整体估值结论。[DM-IND-005: SaaS sector report + CRWD AIAS scoring]
+
+```mermaid
+graph TD
+    subgraph CRWD平台拼图
+        EP["端点 ✅核心"] --- SIEM["SIEM ✅LogScale"]
+        SIEM --- CLOUD["云安全 ✅"]
+        CLOUD --- ID["身份 ✅SGNL"]
+        ID --- BRW["浏览器 →Seraphic"]
+        BRW --- APP["应用 ✅Bionic"]
+    end
+    NET["网络安全 ❌<br>PANW核心领域"] -.->|缺口| CRWD平台拼图
+    style NET fill:#ff6b6b
+```
 
 **CRWD的平台完整度** (收购填补):
 ```

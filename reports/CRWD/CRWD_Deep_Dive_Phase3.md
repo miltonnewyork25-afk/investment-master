@@ -21,6 +21,29 @@ Phase 1 CQI估算69→65(3年后)基于定性判断。Phase 3用数据和结构�
 | **E4 规模经济** | **3.0/5** | **3.0/5** | **0** | 收入$4.8B(#3)但GAAP OPM最低(-3.4%); 规模优势被SBC吞噬 |
 | **E5 定价权(加权)** | **2.75/5** | **2.25/5** | **-0.5** | 端点趋同→SMB/Mid定价权↓; F500合规壁垒维持 |
 
+```mermaid
+graph TD
+    subgraph 当前_CQI69
+        E1A["E1转换成本 4.0"]
+        E2A["E2数据飞轮 3.5"]
+        E3A["E3品牌 4.0"]
+        E4A["E4规模 3.0"]
+        E5A["E5定价权 2.75"]
+    end
+    subgraph FY2029_CQI64
+        E1B["E1: 3.3 ↓0.7"]
+        E2B["E2: 3.5 →"]
+        E3B["E3: 3.5 ↓0.5"]
+        E4B["E4: 3.0 →"]
+        E5B["E5: 2.45 ↓0.3"]
+    end
+    E1A -->|内核移除| E1B
+    E5A -->|功能趋同| E5B
+    E3A -->|技术叙事弱化| E3B
+    style E1B fill:#ffcccc
+    style E5B fill:#ffcccc
+```
+
 **CQI精确计算** (权重: E1×30%+E2×15%+E4×15%+E5×25%+E3×15%):
 - **当前**: 4.0×0.30+3.5×0.15+3.0×0.15+2.75×0.25+4.0×0.15 = **3.46 = CQI 69.3**
 - **FY2029+**: 3.0×0.30+3.5×0.15+3.0×0.15+2.25×0.25+3.5×0.15 = **2.99 = CQI 59.8**
@@ -225,6 +248,13 @@ PANW不是抢Splunk客户(Splunk是SIEM, XSIAM是全栈SOC), 而是在告诉客�
 
 ### 15.3 SIEM市场终局推演
 
+```mermaid
+pie title SIEM市场终局概率
+    "双寡头(LogScale+XSIAM) 40%" : 40
+    "XSIAM主导 30%" : 30
+    "碎片化 30%" : 30
+```
+
 **情景A — 双寡头(40%概率)**: LogScale和XSIAM各占25-30%, Splunk(Cisco)缩至15-20%, 其余(Elastic/Datadog/SentinelOne)分享剩余。这是最利好CRWD的情景, LogScale可达$2-3B ARR(FY2029-2030)。
 
 **情景B — XSIAM主导(30%概率)**: PANW的全栈策略证明"SOC平台>SIEM"论点, XSIAM达35-40%份额, LogScale稳在15-20%。LogScale ARR上限~$1.5B。因为XSIAM的差异化在网络+端点+SOC一体化, 而CRWD缺少网络安全层。
@@ -238,6 +268,17 @@ PANW不是抢Splunk客户(Splunk是SIEM, XSIAM是全栈SOC), 而是在告诉客�
 ### 15.6 LogScale后窗口期: FY2028+增速悬崖风险
 
 Cisco Splunk整合预计FY2028前基本完成——届时LogScale的最大增长引擎(Splunk迁移红利)消失。这对CrowdStrike的总增速有什么影响?
+
+```mermaid
+graph LR
+    FY26["FY26<br>$585M +75%"] --> FY27["FY27<br>$940M +60%"]
+    FY27 --> FY28["FY28<br>$1.3B +38%<br>窗口关闭中"]
+    FY28 -->|★增速悬崖★| FY29["FY29<br>$1.6B +22%"]
+    FY29 --> FY30["FY30<br>$1.9B +18%"]
+    FY28 -.->|Splunk窗口关闭| CLIFF["增速从75%→22%<br>对总ARR -4.3pp"]
+    style CLIFF fill:#ff6b6b
+    style FY28 fill:#ffffcc
+```
 
 **LogScale增速路径建模**:
 
@@ -269,6 +310,19 @@ PPDA(Price-Performance Divergence Analysis——价格-绩效背离分析): 对�
 | **D3** | Charlotte AI价值 | 隐含AI溢价$5-10B(P/S差额推断) | 零定价>2年, 五不变量1/5, SOTP期权值仅$2.25B | **2-4x高估** | ★市场过度乐观 |
 | **D4** | LogScale增速持续性 | 共识隐含20%+增速至FY2031 | Splunk窗口FY2028关闭后增速骤降至20-25%, 非持续75% | **~20%** | 市场略乐观 |
 | **D5** | 竞争格局稳定性 | 0%卖出评级, 78%买入评级 | MSFT内核不对称+PANW XSIAM+SMB侵蚀三重压力 | **~15%** | 市场中性/略乐观 |
+
+```mermaid
+graph LR
+    D1["D1 SBC收敛<br>背离>50%★"] -->|根因| NG["Non-GAAP框架<br>(统一解释)"]
+    D3["D3 AI溢价<br>背离2-4x★"] -->|根因| NG
+    D2["D2 护城河<br>背离~18%"] -->|根因| NG
+    D4["D4 LogScale<br>背离~20%"] -->|根因| NG
+    D5["D5 竞争<br>背离~15%"] -->|根因| NG
+    NG -->|结论| OVER["市场系统性<br>过度乐观"]
+    style D1 fill:#ff6b6b
+    style D3 fill:#ff6b6b
+    style NG fill:#ffffcc
+```
 
 **背离总结**: 5个背离中, **D1(SBC)和D3(AI溢价)是>2倍的极端背离**, D2/D4/D5是15-20%的中等背离。背离方向**全部指向市场过度乐观** — 无一维度是市场过度悲观的。这与Phase 2的定量结论(混合估值$164 vs 市价$393 = 市场高估58%)完全一致。
 
@@ -404,6 +458,20 @@ A-Score高(>7)    "卓越"               "方向迷失的堡垒"
 A-Score低(<7)    "有方向的追赶者"      ★"结构性张力"★
 ```
 
+```mermaid
+quadrantChart
+    title A-Score × PtW 战略矩阵
+    x-axis "PtW低(<35)" --> "PtW高(>40)"
+    y-axis "A-Score低(<7)" --> "A-Score高(>7)"
+    quadrant-1 "卓越"
+    quadrant-2 "方向迷失的堡垒"
+    quadrant-3 "结构性困境"
+    quadrant-4 "有方向的追赶者"
+    "CRWD (6.9, 32)": [0.35, 0.48]
+    "FTNT (7.3, 37)": [0.65, 0.60]
+    "PANW (7.2, 35)": [0.45, 0.55]
+```
+
 **定位: "结构性张力"** — A-Score接近7但PtW仅32, 位于四象限交界处。因为护城河(6.9)强但管理系统(L5=4)弱, CrowdStrike有好牌但打牌方式有问题。Phase 2发现的B3(SBC)承重墙脆弱性正是L5低分的直接反映: 管理层选择了"增长>效率"的打法, 这在ARR<$3B时是正确的, 但在$5.25B时开始伤害股东回报。[DM-STRAT-002: A-Score × PtW matrix positioning]
 
 **PtW对标: CRWD vs PANW vs FTNT**:
@@ -430,6 +498,26 @@ A-Score低(<7)    "有方向的追赶者"      ★"结构性张力"★
 | **C2 网络效应** | **2.0** | Threat Graph是数据飞轮(单向), 不是双边网络效应(用户↔用户); AgentWorks可能创建轻量平台效应但零adoption数据 [DM-MOAT-005] |
 | **C4 数据飞轮** | **4.0** | 15PB+4万亿事件/周+2万亿顶点; 数据排他性高(专有格式); 累积壁垒强(新进入者无法复制15年历史数据); Charlotte AI 98%准确率验证数据价值 [DM-AI-003] |
 | **C5 规模经济** | **2.5** | 收入#3($4.8B<PANW $9.2B<FTNT $6.8B); GAAP OPM最差(-3.4% vs FTNT +30.6%); 规模未转化为成本优势(SBC吞噬) [DM-FIN-001] |
+
+```mermaid
+graph TD
+    subgraph B商业模型_29.65_40
+        B1["B1引擎 4.0"] --- B2["B2锁定 4.5"]
+        B3["B3经常性 4.5"] --- B4["B4定价权 2.65★"]
+        B5["B5利润弹性 4.5"] --- B6["B6资本配置 2.5★"]
+        B7["B7 TAM 4.0"] --- B8["B8管理层 3.0"]
+    end
+    subgraph C护城河_16.5_30
+        C2["C2网络 2.0★"] --- C4["C4飞轮 4.0"]
+        C5["C5规模 2.5★"]
+    end
+    B4 & B6 -->|拖累| LOW["加权分<br>36.9/56"]
+    C2 & C5 -->|拖累| LOW
+    style B4 fill:#ffcccc
+    style B6 fill:#ffcccc
+    style C2 fill:#ffcccc
+    style C5 fill:#ffcccc
+```
 
 **Phase 3品质汇总** (B: 4项/20 + C: 3项/15):
 - B分: 2.65+4.0+4.5(B5, Phase 2)+2.5(B6, Phase 2) = 13.65/20
@@ -478,6 +566,20 @@ A-Score低(<7)    "有方向的追赶者"      ★"结构性张力"★
 
 *仅展示5个代表性KS的5×5子矩阵; ++强协同, +弱协同, 0独立*
 
+```mermaid
+graph TD
+    V01["V01 SBC↑ 🟡"] -->|++强协同| V03["V03 ROIC<WACC 🟡"]
+    V03 -->|++| V05["V05 η低 🟡"]
+    V01 & V03 & V05 -->|累积5年| FROG["温水煮青蛙<br>稀释18%+毁灭$2.5B"]
+    C01["C01 MSFT>35% 🟢"] -->|++| M01["M01 GRR<95% 🟢"]
+    M01 -->|+| M03["M03 LogScale<30% 🟢"]
+    M03 -->|+| V03
+    style FROG fill:#ff6b6b
+    style V01 fill:#ffffcc
+    style V03 fill:#ffffcc
+    style V05 fill:#ffffcc
+```
+
 **最危险组合(协同链)**:
 1. **"温水煮青蛙"链**: V01(SBC↑)→V03(ROIC↓)→V05(η低) — 三个估值KS互相强化, 每年都在恶化但每年都不致命, 5年累积后Owner FCF可能降至零
 2. **"内核冲击波"链**: C01(MSFT>35%)→M01(GRR<95%)→M03(LogScale<30%) — MSFT端点市占突破后, 客户开始重评全平台→GRR下降→LogScale交叉销售受阻
@@ -524,6 +626,21 @@ A-Score低(<7)    "有方向的追赶者"      ★"结构性张力"★
 - PANW XSIAM: (L2.5, S2) — 更深自动化+已货币化($470M ARR)
 - MSFT Copilot for Security: (L1, S1) — 功能简单但已包含在E5(免费=S1)
 - S Purple AI: (L2, S0.5) — 高自主性但零独立收入
+
+```mermaid
+quadrantChart
+    title AI实施 L×S 定位图
+    x-axis "S0 叙事期权" --> "S3 成熟变现"
+    y-axis "L0 观察" --> "L3 自主运营"
+    quadrant-1 "AI领先+已变现"
+    quadrant-2 "AI领先+未变现"
+    quadrant-3 "AI初期+未变现"
+    quadrant-4 "AI初期+已变现"
+    "CRWD (L1.5,S0.5)": [0.17, 0.50]
+    "PANW XSIAM (L2.5,S2)": [0.67, 0.83]
+    "MSFT Copilot (L1,S1)": [0.33, 0.33]
+    "S Purple AI (L2,S0.5)": [0.17, 0.67]
+```
 
 **CRWD的AI实施弱于PANW(L1.5 vs L2.5)但商业兑现相当(S0.5 vs S2,考虑XSIAM计入SOC整合收入而非纯AI收入)**。
 

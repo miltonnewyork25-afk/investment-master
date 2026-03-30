@@ -35,6 +35,20 @@ Phase 1确立了"Owner PE 468x vs Non-GAAP PE 64x"的估值分叉(CQ1)和"Window
 
 **对比共识**: 分析师远期共识仅到FY2031 $11.5B。隐含假设要求FY2036达到$34-48B — 这意味着市场在为FY2031之后的5年**无共识覆盖**的增长付全价。[DM-VAL-003: consensus estimates from research_analyst_views.md]
 
+```mermaid
+graph TD
+    PRICE["$392.62<br>EV $95.2B"]
+    PRICE -->|WACC 10%| B1["B1: 收入CAGR 17-19%<br>脆弱度 3.3"]
+    PRICE -->|终端| B2["B2: FCF Margin 30-35%<br>脆弱度 3.0"]
+    PRICE -->|SBC| B3["B3: SBC→10-12%<br>★脆弱度 4.7★"]
+    PRICE -->|倍数| B4["B4: P/FCF 20-25x<br>脆弱度 3.7"]
+    B1 -->|矛盾| B3
+    B1 -->|协同| B6["B6: 增长≥10年"]
+    B3 -->|若失败| FLIP["评级翻转<br>-35~40% EV"]
+    style B3 fill:#ff6b6b
+    style FLIP fill:#ff6b6b
+```
+
 ### 10.2 六个隐含信念: 提取与脆弱度三维评分
 
 从Reverse DCF结果中提取市场必须**同时**相信的六个假设, 并用假设审计框架M1.3评分:
@@ -178,6 +192,19 @@ FY2024是关键"自然实验" — SBC/Rev降至20.7%(5年最低), 证明短期�
 | 内核移除风险"可管理" | 大多数分析师未量化影响 | ★未被定价 |
 | Charlotte AI创造增量 | Wedbush"AI Inflection"评级$600 | 零定价>2年=过早乐观 |
 
+```mermaid
+graph TD
+    A["分析师$548"] -->|用Non-GAAP| NG["Non-GAAP NI $960M<br>×Forward PE 58x"]
+    B["我们$177"] -->|用Owner FCF| OWN["Owner FCF $213M<br>×概率加权"]
+    NG -->|差距根因| SBC["SBC处理分歧<br>$1,097M/年"]
+    OWN -->|差距根因| SBC
+    SBC -->|扣除?| SPLIT{"SBC是真实成本?"}
+    SPLIT -->|是| LOW["$98-$190"]
+    SPLIT -->|否| HIGH["$400-$548"]
+    style SBC fill:#ff6b6b
+    style SPLIT fill:#ffffcc
+```
+
 **$548 vs $164的5.6倍差距根因诊断**:
 
 差距的93%来自**单一变量**: SBC处理方式。
@@ -267,6 +294,17 @@ profit_lag = Rev增速(+22%) vs GAAP OPM变化(-3.0%→-3.4%, 恶化0.4pp)
 
 因此, GAAP OPM从FY2024的-0.07%恶化到FY2026的-3.4%, **唯一原因是SBC增速(27%)高于收入增速(22%)**。如果SBC增速等于收入增速(22%), SBC/Rev将保持在21.9%(FY2025水平), GAAP OPM将改善至约-2.4%而非恶化至-3.4%。[DM-FIN-003: 5-year expense attribution from FMP]
 
+```mermaid
+graph TD
+    REV["收入+22%"] -->|经营杠杆| NGOPM["Non-GAAP OPM<br>11%→23% ✅改善"]
+    REV -->|SBC吞噬| GOPM["GAAP OPM<br>-9.8%→-3.4% ❌恶化"]
+    SBC["SBC+27%>收入+22%"] -->|结构性吞噬| GOPM
+    NGOPM -->|Non-GAAP世界| STORY1["经营杠杆在显现"]
+    GOPM -->|GAAP世界| STORY2["利润率在倒退"]
+    style NGOPM fill:#ccffcc
+    style GOPM fill:#ffcccc
+```
+
 **利润正常化层(CPA N1-N4)**:
 
 | 正常化层 | 调整项 | 影响 | 判断 |
@@ -352,6 +390,15 @@ CPA×ISDD v2.0 M5资本配置六维审计:
 - WACC: ~10.5%(Beta 1.12, 风险溢价~5.5%, Rf ~4.5%)
 - **判决**: Non-GAAP ROIC 8.6% < WACC 10.5% → **新增投资未能覆盖资本成本, 正在毁灭价值**
 
+```mermaid
+graph LR
+    ROIC["增量ROIC 8.6%"] -->|差距-1.9pp| WACC["WACC 10.5%"]
+    WACC -->|每$1投入| DESTROY["产出$0.86<br>毁灭$0.14/年"]
+    DESTROY -->|3年累计$3.5B投资| TOTAL["~$490M价值毁灭"]
+    style ROIC fill:#ffcccc
+    style DESTROY fill:#ff6b6b
+```
+
 这意味着CrowdStrike每投入$1新资本(R&D/收购), 仅产出$0.86回报(Non-GAAP), 或产出负回报(GAAP)。在增量ROIC<WACC的环境下, 理性的资本配置应该是减少有机投资并加速回购(因为回购$1至少消除了$1的稀释价值)。但管理层选择了相反方向: 加速收购($931M/3年) + 不回购(η=0)。[DM-FIN-023: incremental ROIC vs WACC, CPA M5]
 
 ### 11.5b M7财务韧性综合评分
@@ -404,6 +451,15 @@ Python模型的Base情景(50%概率) × 分母驱动SBC路径(45%概率)是联�
 [DM-VAL-019: Base × 分母驱动 10-year projection from Python model]
 
 **关键拐点**: Owner FCF在**FY2030**达到$0.81B — 首次超过$0.5B。按当前市值$99.6B计算, FY2030 Owner PE约123x。虽然比当前468x显著改善, 但仍远高于FTNT当前的30x。因此即使在"最可能"的子情景中, CrowdStrike到FY2030也无法提供与FTNT相当的Owner回报率。
+
+```mermaid
+graph LR
+    FY26["FY26<br>OwnerFCF $0.21B"] --> FY28["FY28<br>$0.41B"] --> FY30["FY30<br>★$0.81B拐点★"] --> FY33["FY33<br>$1.65B"] --> FY36["FY36<br>$2.91B"]
+    FY30 -->|Owner PE| PE30["~123x<br>vs当前468x"]
+    style FY26 fill:#ffcccc
+    style FY30 fill:#ffffcc
+    style FY36 fill:#ccffcc
+```
 
 **SBC/Rev路径**: 从22.8%缓慢降至16%(FY2036), 10年降6.8pp。对比NOW的历史(5年仅降3pp), 这个假设已经偏乐观——意味着收入需要维持15%+ CAGR来"稀释"SBC。如果收入增速低于预期(Bear情景), SBC/Rev不会降反而可能维持22%+。
 
@@ -506,6 +562,23 @@ CrowdStrike的商业模式有一个被低估的正面特征: **负营运资本�
 
 **Owner FCF视角的估值极其惨淡** — 即使在最乐观的子情景(Bull+收敛), 隐含价格也仅$181, 低于当前$393超过一半。
 
+```mermaid
+graph TD
+    subgraph 9子情景_EV范围
+        BullConv["Bull+收敛<br>EV $41.6B"]
+        BaseDenom["Base+分母<br>★22.5%概率★<br>EV $23.5B"]
+        BearZero["Bear+零收敛<br>EV $5.3B"]
+    end
+    BullConv -->|概率加权| FCF["方法A FCF: $230"]
+    BaseDenom -->|概率加权| FCF
+    BearZero -->|概率加权| FCF
+    FCF -->|70%权重| BLEND["混合估值 $177"]
+    OWN["方法B Owner: $98"] -->|30%权重| BLEND
+    BLEND -->|vs $393| GAP["-55%��估"]
+    style GAP fill:#ff6b6b
+    style BLEND fill:#ffffcc
+```
+
 ### 12.4 概率加权: 两种视角的估值
 
 | 方法 | 概率加权EV | 隐含价格 | vs当前$393 |
@@ -569,6 +642,18 @@ CrowdStrike的商业模式有一个被低估的正面特征: **负营运资本�
 | **隐含价格** | | | | | | **$217** |
 
 [DM-VAL-016: SOTP analysis]
+
+```mermaid
+graph LR
+    EP["���� $26.3B"] --> TOTAL["SOTP EV $50.5B"]
+    LS["LogScale $7.9B"] --> TOTAL
+    CI["Cloud+ID $14.0B"] --> TOTAL
+    CH["Charlotte AI $2.2B<br>(期权)"] --> TOTAL
+    TOTAL -->|+净现金$4.4B| EQ["Equity $54.9B<br>$217/股"]
+    EQ -->|vs $393| GAP["-45%"]
+    style CH fill:#ffffcc
+    style GAP fill:#ff6b6b
+```
 
 **Charlotte AI期权价值**: 假设30%概率FY2028独立定价→$500M ARR, 以15x EV/Sales估值 = $7.5B × 30% = **$2.25B期望值**。这是一个保守估计——如果Charlotte AI + AgentWorks生态真正成为平台级产品(类Salesforce Agent Force), 期权价值可能达到$5-10B。但零独立定价>2年的事实压缩了这个概率。
 
