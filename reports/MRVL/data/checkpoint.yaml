@@ -7,9 +7,9 @@ industry: "semiconductor"
 last_updated: "2026-03-30"
 
 current_phase: 5
-phase_status: "Phase 5 进行中 — Complete v1.0框架25.6K已写，需扩展至270K+"
+phase_status: "Phase 5 进行中 — Complete v1.0 225K/25Mermaid/404DM/因果8.17 → 还差45K+46DM达门控"
 phases_completed: [0, 1, 2, 3, 4]
-next_phase: "Phase 5 续写 (扩展Complete到270K+)"
+next_phase: "Phase 5 续写 (225K→270K+: 补充分析+DM backfill)"
 
 target_chars: 300000
 target_range: "240K-375K"
@@ -91,23 +91,32 @@ artifacts:
   launch_brief: "reports/MRVL/data/launch_brief.md"
 
 p5_status:
-  complete_draft: "reports/MRVL/staging/MRVL_P5_WIP_draft.md"
-  complete_draft_chars: 25601
-  structure: "10部分26章完成(框架+核心结论+估值统一+评级)"
+  complete_draft: "reports/MRVL/staging/MRVL_Complete_Deep_Dive_v1.0.md"
+  complete_draft_chars: 225075
+  dm_count: 404
+  dm_density: "1.79/千字 ✓"
+  causal_density: "8.17/万字 ✓"
+  mermaid_count: 25
+  structure: "10部分+4个深度补充(光学壁垒/ASIC演变/估值交叉/竞争五方)"
+  quality_passed: "G2✓ G5✓ G4✓(25 Mermaid)"
+  quality_blocked: "G1(225K<270K) G3(404<450)"
   remaining: |
-    Complete框架已写(25.6K), 需要扩展到270K+:
-    1. 融入P1详细内容(Ch2-7业务+财务+竞争+护城河+周期+预期差): ~44K可用
-    2. 融入P2详细内容(Ch1-9估值全部方法): ~23K可用
-    3. 融入P3详细内容(Ch1-7护城河量化+AVGO对标+CPO): ~40K可用
-    4. 融入P4详细内容(Ch1-12红队+偏差+场景): ~40K可用
-    5. 新写补充内容: 行业深度+Mermaid图+OPM路径分析: ~80K
+    225K→270K需要约45K新内容:
+    1. DM backfill: 46个DM锚点需补充(当前404→目标450)
+    2. 新分析内容建议:
+       - MRVL vs AVGO估值鸿沟更详细分解(~10K)
+       - 光学DSP TAM bottom-up验证(~8K)
+       - 管理层叙事可信度系统化审计(~8K)
+       - 风险拓扑协同矩阵详细版(~8K)
+       - CQ闭环详细展开(每个CQ的证据链)(~11K)
+    3. 编辑: 去重复内容(补充部分与正文有重叠)+统一格式
   统一数字: "FV $80-81 | 评级=中性关注(偏审慎) | 护城河=5.0-5.2/10"
 
 resume_instructions: |
   1. pwd + git branch --show-current 确认在半导体worktree
-  2. 读取本文件 — Phase 5进行中
-  3. 读取Complete WIP: reports/MRVL/staging/MRVL_P5_WIP_draft.md (25.6K)
-  4. 读取P1-P4报告(按需): 每次读1个Phase的关键章节→融入WIP→commit staging
-  5. 目标: 将WIP从25.6K扩展到270K+(融入P1-P4全量内容+写新分析)
-  6. 关键: 不是复制P1-P4→是重排+去重+统一数字+降认知负荷
-  7. 完成后: mv staging/MRVL_P5_WIP_draft.md → MRVL_Complete_Deep_Dive_v1.0.md → 质量门控
+  2. 读取本文件 — Phase 5进行中(225K/270K)
+  3. 读取Complete: reports/MRVL/staging/MRVL_Complete_Deep_Dive_v1.0.md
+  4. 续写约45K新内容(DM backfill+5个新分析段落)
+  5. 去重: "补充部分"与正文章节有重叠→合并到正文→删补充重复段
+  6. 统一格式: 确保章节编号连续+DM锚点索引更新
+  7. 质量门控: G1≥270K+G3≥450→通过后mv到reports/MRVL/→提交main
