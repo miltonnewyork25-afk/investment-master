@@ -1,38 +1,42 @@
 # ============================================================
-# 预期差分析卡模板 v2.0
-# Expectation Gap Card Template
+# 预期差分析卡模板 v3.0
+# Expectation Gap Card — High Decision Density Mechanism Migration Framework
 #
-# v2.0升级: 从纯财务视角扩展为"财务×行业趋势×聪明钱"三层信号
-# 四域结构: E(预期) → R(现实) → G(偏差) → T(拐点)
+# v3.0: 高决策密度机制迁移框架
+# 核心变化: 状态×迁移分离 + 变量四分法 + 动作绑定 + 4层置信度 + "不行动"合法
 #
-# 使用说明:
-#   - gap_type只用五类: underpriced_improvement / overpriced_optimism /
-#     excessive_pessimism / excessive_optimism / no_significant_gap
-#   - trend_state只用六类: accelerating / decelerating / stable /
-#     inflecting_up / inflecting_down / deteriorating
-#   - evidence_grade: fact(事实) / inference(推断) / narrative(叙事)
-#   - confidence: high / medium / medium-high / low
-#   - irreversibility: 1(短期情绪) ~ 5(技术代际跳跃)
-#   - 如果数据不可得, 写 "N/A — [原因]" 而非编造
+# gap_type: underpriced_improvement / overpriced_optimism /
+#   excessive_pessimism / excessive_optimism / no_significant_gap /
+#   insufficient_evidence (v3.0新增: 证据不足→合法不行动)
+# evidence_grade: fact(事实) / inference(推断) / assumption(假设) / unknown(未知)
+# variable_class: controllable(可控) / constraint(约束) / migration(迁移) / validation(校验)
 # ============================================================
 
 # --- 坐标 ---
 meta:
   ticker: ""
   company: ""
-  analysis_date: ""        # YYYY-MM-DD
+  analysis_date: ""
   stock_price: ""
   market_cap: ""
-  data_snapshot: ""        # 数据截止日期
-  tier: ""                 # tier1 / tier2 / tier3
-  framework_version: "v2.0"
+  data_snapshot: ""
+  tier: ""
+  framework_version: "v3.0"
   linked_report: ""
+  problem_type: ""         # v3.0: state / migration / both
+  action_space: []         # v3.0: Step 0定义的合法动作列表
 
-# === 核心判断 (一句话, 必须回答"市场错在哪里") ===
-core_judgment: ""
-gap_type: ""               # 五类之一
-confidence: ""             # high / medium-high / medium / low
-confidence_reasoning: ""
+# === 核心判断 ===
+core_judgment: ""          # 一句话,必须回答"市场错在哪里"或"证据不足以判断"
+gap_type: ""               # 六类之一(含insufficient_evidence)
+
+# === 置信度分层 (v3.0: 4层替代3级) ===
+confidence:
+  overall: ""              # high / medium-high / medium / low
+  fact_judgments: []        # 基于事实的判断(可强表达)
+  inference_judgments: []   # 基于推断的判断(适度表达)
+  assumption_judgments: []  # 基于假设的判断(弱表达,标注"假设")
+  unknown_items: []        # 当前无法判断的(显式保留,不得用叙事补平)
 
 # === E域: 市场预期 (Expectations) ===
 expectations:
@@ -148,49 +152,57 @@ reality:
 
 # === G域: 剪刀差 (Gap) ===
 gap:
-  # G1: 逐变量偏差对比 (v2.0: 增加行业+聪明钱变量)
-  variable_comparison:
-    - factor: ""
-      expectation: ""
-      reality: ""
-      gap_direction: ""                # E>R / E<R / aligned
-      gap_size: ""                     # large / medium / small / negligible
-      evidence_grade: ""               # v2.0: 每个变量标注
+  # G1: 状态层 — "现在在哪" (v3.0: 基于事实级证据)
+  state_assessment:
+    current_valuation_vs_fundamentals: ""  # 偏高/偏低/合理(基于当前可观测数据)
+    structural_strength: ""               # 护城河/定价权/FCF质量的当前快照
+    market_implied_assumptions: ""        # Reverse DCF隐含了什么
+    state_score: 0                        # 1-5(纯事实驱动)
 
-  # G2: 偏差评分 (v2.0: 6维)
-  scoring:
-    direction_clarity: 0               # 1-5
-    magnitude: 0                       # 1-5
-    persistence: 0                     # 1-5
-    verifiability: 0                   # 1-5
-    industry_trend_support: 0          # v2.0: 行业大趋势是否支持
-    smart_money_alignment: 0           # v2.0: 聪明钱是否一致
-    composite_score: 0                 # 六维均值
+  # G2: 迁移层 — "往哪走" (v3.0: 标注证据层级)
+  migration_assessment:
+    direction: ""                         # improving / deteriorating / stable / uncertain
+    key_drivers:                          # 推动迁移的变量(必须标注四分法)
+      - variable: ""
+        class: ""                         # controllable / constraint / migration / validation
+        direction: ""                     # improving / worsening / stable
+        evidence_grade: ""                # fact / inference / assumption / unknown
+        action_impact: ""                 # 如果这个变量变化,动作如何改变?
+    migration_score: 0                    # 1-5(可含推断,但必须标注)
+    migration_confidence_breakdown:       # 迁移判断中各层级占比
+      fact_based: ""                      # 基于事实的部分
+      inference_based: ""                 # 基于推断的部分
+      assumption_based: ""                # 基于假设的部分(必须弱表达)
 
-  # G3: 核心错配变量
+  # G3: 核心错配变量 (保留,增加四分法标注)
   core_mispriced_variables:
     - variable: ""
+      class: ""                           # controllable / constraint / migration / validation
       market_assumes: ""
       reality_shows: ""
       why_market_wrong: ""
-      evidence_grade: ""
+      evidence_grade: ""                  # fact / inference / assumption / unknown
       valuation_sensitivity: ""
+      causal_mechanism: ""                # v3.0: 不只给结论,给因果路径
 
   # G4: 一句话判断
   one_sentence_judgment: ""
 
-  # G5: 同叙事跨公司对比 (v2.0新增)
+  # G5: 同叙事跨公司对比 (保留v2.0)
   same_narrative_comparison:
-    narrative: ""                      # 共同面对的行业叙事
-    peers:
-      - ticker: ""
-        p_fcf: ""
-        fcf_growth: ""
-        sbc_coverage: ""
-        opm_direction: ""
-        owner_pe: ""
-    most_mispriced: ""                 # 同叙事中被过度惩罚/过度乐观的
+    narrative: ""
+    peers: []
+    most_mispriced: ""
     reasoning: ""
+
+  # G6: ★ 动作绑定 (v3.0新增, BLOCK级)
+  action_binding:
+    current_action: ""                    # 从动作空间选择
+    action_reasoning: ""                  # 为什么是这个动作而非其他
+    trigger_to_upgrade: ""                # 什么让动作升级(观察→行动)
+    trigger_to_downgrade: ""              # 什么让动作降级(行动→排除)
+    invalidation_condition: ""            # 什么推翻整个判断框架
+    time_horizon: ""                      # 这个动作的有效期
 
 # === T域: 拐点信号与证伪 (Triggers) ===
 triggers:
