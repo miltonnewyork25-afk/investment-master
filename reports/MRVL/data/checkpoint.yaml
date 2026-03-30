@@ -6,10 +6,10 @@ worktree: "半导体"
 industry: "semiconductor"
 last_updated: "2026-03-30"
 
-current_phase: 4
-phase_status: "Phase 4 完成"
+current_phase: 5
+phase_status: "Phase 5 进行中 — Complete v1.0框架25.6K已写，需扩展至270K+"
 phases_completed: [0, 1, 2, 3, 4]
-next_phase: "Phase 5 (组装+质量门控+提交)"
+next_phase: "Phase 5 续写 (扩展Complete到270K+)"
 
 target_chars: 300000
 target_range: "240K-375K"
@@ -90,17 +90,24 @@ artifacts:
   shared_context: "reports/MRVL/data/shared_context.md (101+34=135 DM锚点)"
   launch_brief: "reports/MRVL/data/launch_brief.md"
 
-p5_instructions:
-  - "P4.5参考扫描: AVGO(客户集中管理) + INTC(执行失败) + ADSK(转型估值)"
-  - "单会话组装: 读P1-P4→重排→铁律K统一→质量门控→提交"
-  - "FV统一: 全报告$80-81 | 评级=中性关注(偏审慎) | Amazon=确认事实 | 护城河=4.8/10"
-  - "字符缺口: 当前131K vs 目标270K → 需补充~140K实质内容"
-  - "优先补充: 行业对标(MediaTek深度)+管理层评估(叙事vs现实)+风险量化(承重墙B场景)"
-  - "禁止凑数: 用P4.5参考框架写新分析, 不加备注/重复/空话"
+p5_status:
+  complete_draft: "reports/MRVL/staging/MRVL_P5_WIP_draft.md"
+  complete_draft_chars: 25601
+  structure: "10部分26章完成(框架+核心结论+估值统一+评级)"
+  remaining: |
+    Complete框架已写(25.6K), 需要扩展到270K+:
+    1. 融入P1详细内容(Ch2-7业务+财务+竞争+护城河+周期+预期差): ~44K可用
+    2. 融入P2详细内容(Ch1-9估值全部方法): ~23K可用
+    3. 融入P3详细内容(Ch1-7护城河量化+AVGO对标+CPO): ~40K可用
+    4. 融入P4详细内容(Ch1-12红队+偏差+场景): ~40K可用
+    5. 新写补充内容: 行业深度+Mermaid图+OPM路径分析: ~80K
+  统一数字: "FV $80-81 | 评级=中性关注(偏审慎) | 护城河=5.0-5.2/10"
 
 resume_instructions: |
-  1. git branch --show-current + pwd 确认位置
-  2. 读取本文件(checkpoint.yaml) — Phase 4已完成
-  3. 进入Phase 5组装: 先执行P4.5参考扫描(缺口清单在P4 Ch8.1)
-  4. 单会话组装: 读P1-P4产出→结构重排→铁律K统一→质量门控
-  5. 字符目标: 270K+, 当前131K, 需补充~140K实质内容
+  1. pwd + git branch --show-current 确认在半导体worktree
+  2. 读取本文件 — Phase 5进行中
+  3. 读取Complete WIP: reports/MRVL/staging/MRVL_P5_WIP_draft.md (25.6K)
+  4. 读取P1-P4报告(按需): 每次读1个Phase的关键章节→融入WIP→commit staging
+  5. 目标: 将WIP从25.6K扩展到270K+(融入P1-P4全量内容+写新分析)
+  6. 关键: 不是复制P1-P4→是重排+去重+统一数字+降认知负荷
+  7. 完成后: mv staging/MRVL_P5_WIP_draft.md → MRVL_Complete_Deep_Dive_v1.0.md → 质量门控
