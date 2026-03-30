@@ -452,11 +452,76 @@
 
 ## Section K: 关键发现预览 (Phase 1-4追加)
 
-### 初步异常信号
-1. **DSO暴增**: FY2026 DSO 97天 vs FY2025 65天(+49%)——AR翻倍但收入仅+42%，需调查是否收入确认激进
-2. **GAAP NI异常高**: FY2026 NI $2.67B包含$1.71B非经营收入(Q3含$1.86B异常项)——Core Operating Income仅$1.34B
-3. **ROIC仅7%**: 尽管ROE 19.3%, ROIC被$11B商誉拖低——需区分真实资本效率vs收购溢价
-4. **Forward PE 17.4x vs TTM PE 25x**: 市场定价FY2028E EPS $5.43(vs FY2026 $3.07)——隐含77%增长
-5. **FMP DCF $22 vs 股价$95**: 4.2x差距——FMP模型可能未捕获AI增长，需独立验证
+### 初步异常信号 (已补强)
+1. **DSO Q4暴增**: AR $2.19B(+$641M单季), DSO 90天(Q3仅68天)——主因: Q4末大量发货+hyperscaler长付款周期(60-90天)。**监控**: Q1 FY27 OCF是否>$500M+AR回落至$1.6-1.8B [DM-FIN-026补强]
+2. **GAAP vs Non-GAAP巨大鸿沟**: Non-GAAP OPM 35.3% vs GAAP 16.1%(差19pp)。主因: $942M/yr收购无形资产摊销+$591M SBC。Non-GAAP是正确经营镜头。Infineon出售$1.83B一次性收益扭曲Q3 [DM-VAL-007补强]
+3. **ROIC仅7%**: $11B商誉(49%总资产)是Inphi($10B)+Cavium($6B)收购遗产。ROTCE 179%是真实资本效率。商誉无减值风险(DCF>carrying value)但未来收购可能重复此模式(Celestial AI $3.25B) [DM-VAL-005补强]
+4. **Custom Silicon GM稀释**: Non-GAAP GM从Q2 FY25 61.9%降至Q4 FY26 59.0%。管理层确认custom silicon毛利率低于标准产品，但OPM accretive(NRE抵消+低销售成本)。随custom从25%→40%+ DC收入，GM可能降至56-57% [新增DM-BIZ-011]
+5. **增长100%有机**: FY2026 +42%全部有机(Celestial AI/XConn均在FY26年末后才close)。Infineon汽车剥离后pro-forma有机增速实际+47% [新增DM-FIN-019]
+
+---
+
+## Section L: 补强数据锚点 (Phase 0.5, 2026-03-30)
+
+### DM-FIN-019
+- **值**: FY2026有机增速+47%(pro-forma剥离汽车后), 100%有机(无并购贡献)
+- **类型**: H
+- **来源**: 10-K + earnings call确认Celestial/XConn均FY26后close
+- **日期**: 2026-03-30
+
+### DM-BIZ-011
+- **值**: Non-GAAP GM趋势: Q2 FY25 61.9% → Q4 FY26 59.0%, custom silicon GM低于标准产品, 管理层确认OPM accretive
+- **类型**: H/R
+- **推理链**: custom silicon占DC比重从~15%→25%→FY28 40%+, GM稀释约2-3pp/年
+- **证伪条件**: 如果GM稳定在59%+同时custom silicon增长，说明NRE/attach chips补偿了GM稀释
+- **来源**: earnings call + 管理层commentary
+- **日期**: 2026-03-30
+
+### DM-BIZ-012
+- **值**: DC季度收入: Q1 $1,441M(+76%) → Q2 $1,491M(+69%) → Q3 $1,518M(+38%) → Q4 $1,651M(+21%)
+- **类型**: H
+- **来源**: Marvell IR quarterly results
+- **日期**: 2026-03-30
+
+### DM-BIZ-013
+- **值**: Custom silicon pipeline: 18 active programs, $75B lifetime revenue, >50 new opportunities beyond active
+- **类型**: H
+- **来源**: earnings call FY2026 Q4
+- **日期**: 2026-03-30
+
+### DM-BIZ-014
+- **值**: Optical DSP/interconnect FY27指引: >50% YoY增长。1.6T PAM4进入量产Q4 FY26
+- **类型**: H
+- **来源**: earnings call guidance
+- **日期**: 2026-03-30
+
+### DM-VAL-008
+- **值**: Non-GAAP metrics: GM 59.5%, OPM 35.3%, EPS $2.84. GAAP-Non-GAAP gap主因: $942M无形摊销+$591M SBC
+- **类型**: H
+- **来源**: Marvell FY2026 earnings press release + 10-K reconciliation
+- **日期**: 2026-03-30
+
+### DM-MKT-005
+- **值**: AVGO对比: Revenue $63.9B(8x MRVL), GAAP GM 67.8%(+17pp), AI Rev $8.4B/Q(~5.6x MRVL annual), Non-GAAP OPM ~60%(+25pp)
+- **类型**: H
+- **来源**: MCP fmp_data AVGO income + WebSearch
+- **日期**: 2026-03-30
+
+### DM-CON-007
+- **值**: FY27指引: Rev ~$11B(+30%+), Q4 exit rate >$3B, DC +40%, custom silicon >20%, optical >50%
+- **类型**: H
+- **来源**: FY2026 Q4 earnings call guidance
+- **日期**: 2026-03-30
+
+---
+
+## Section J更新: 锚点汇总统计
+
+| 类型 | 数量 | 占比 |
+|------|------|------|
+| H (硬数据) | 55 | 84% |
+| R (合理推断) | 9 | 14% |
+| S (主观判断) | 1 | 2% |
+| **总计** | **65** | **100%** |
 
 [Phase推进时追加]
