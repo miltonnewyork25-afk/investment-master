@@ -886,6 +886,317 @@ vs 当前$82B → **隐含+6.6%上行**。
 - AI CapEx急刹(Hyperscaler指引下调>30%)——整个"AI利好Layer 1"假设失效
 - 中国出口管制扩展至所有5nm以下芯片——38%收入面临突然断裂
 
-### 16.3 Phase 1字符统计与质量自检
+---
 
-[待commit后统计]
+## Ch17: 经营杠杆量化分解 (ISDD S1α)
+
+### 17.1 季度经营杠杆倍数
+
+| 季度 | Rev QoQ | Non-GAAP GP QoQ | Non-GAAP OI QoQ | 毛利杠杆 | 运营杠杆 |
+|------|---------|-----------------|-----------------|---------|---------|
+| Q1→Q2 FY26 | +5.8% | +5.1% | +7.5% | 0.88x(负) | 1.29x |
+| Q2→Q3 FY26 | +3.4% | +7.2% | +8.7% | 2.12x(正) | 2.56x |
+| Q3→Q4 FY26 | +6.9% | +0.9% | +5.0% | 0.13x(负) | 0.72x |
+
+Q3→Q4的毛利杠杆崩塌(0.13x)是关键信号——Non-GAAP GM从59.7%降至59.0%，在收入+6.9%的情况下毛利几乎没增长。根因: Q4 custom silicon出货量更大(确认管理层"custom silicon GM低于标准产品")，且可能有新客户NRE费用摊销。
+
+**费用归因(S3)**:
+| 费用项 | Q1 FY26 | Q4 FY26 | 变化 | Rev增速对比 | 分类 |
+|--------|---------|---------|------|-----------|------|
+| R&D | $508M | $536M | +5.5% | +17.1%(Q1→Q4) | ★战略性(低于Rev，杠杆释放) |
+| SGA | $186M | $123M | -33.9% | +17.1% | ★效率改善(大幅压缩) |
+| D&A | $330M | $317M | -3.9% | +17.1% | 结构性(摊销自然递减) |
+
+**核心发现**: MRVL的经营杠杆**几乎全部来自OpEx端**(R&D+SGA效率)而非毛利端。这意味着:
+- 短期正面: OpEx leverage还有空间(SGA可能从9.4%降至7-8%随规模扩大)
+- 长期风险: 如果new product cycles需要R&D再投资(Celestial AI整合、2nm设计启动)，OpEx leverage可能逆转
+- GM稀释是结构性的、不可逆的(除非custom silicon占比下降——但这与增长战略矛盾)
+
+### 17.2 费用结构vs同行
+
+| 指标 | MRVL | AVGO | AMD | QCOM | 行业含义 |
+|------|------|------|-----|------|---------|
+| R&D/Rev | 25.3% | 17.2% | 23.0% | 21.5% | MRVL偏高(投资期) |
+| SGA/Rev | 9.4% | 6.6% | 8.5% | 8.2% | MRVL偏高(有压缩空间) |
+| D&A/Rev | 15.7% | 13.7% | 5.2% | 7.8% | MRVL极高(收购遗产) |
+| SBC/Rev | 7.2% | 4.5%* | 8.0% | 5.1% | 中等(*AVGO不含VMware) |
+
+R&D/Rev 25.3%看起来高，但这包含了custom silicon的设计成本(部分被NRE回收)——实际"净"R&D投入约20-22%。随收入增长，R&D/Rev应继续下降至22-23%(FY2028E)，释放2-3pp OPM。
+
+SGA/Rev 9.4%有明显压缩空间——AVGO在更大规模上做到6.6%。如果MRVL收入达$15B(FY2028E)，SGA可能稳定在$900M-1B(6-7%)，再释放2-3pp OPM。
+
+**OPM扩张路径(FY2026→FY2028)**:
+- Non-GAAP GM: 59.5% → 57%(custom silicon稀释-2.5pp)
+- R&D leverage: +2pp(25.3%→23%)
+- SGA leverage: +2pp(9.4%→7.5%)
+- 净OPM变化: -2.5+2+2 = **+1.5pp → FY2028E Non-GAAP OPM ~37%**
+
+市场隐含OPM 40%+可能过于乐观——37%更现实。这对估值意味着FCF margin约27-28%而非市场隐含的30%+。
+
+---
+
+## Ch18: 光学DSP市场定量分析
+
+### 18.1 TAM演进
+
+| 年份 | 800G DSP TAM | 1.6T DSP TAM | 总光学DSP TAM | MRVL份额(估) | MRVL收入(估) |
+|------|-------------|-------------|-------------|-----------|-----------|
+| CY2024 | $3.5B | $0.2B | $3.7B | ~55% | ~$2.0B |
+| CY2025 | $4.0B | $1.5B | $5.5B | ~50% | ~$2.8B |
+| CY2026E | $3.5B | $4.0B | $7.5B | ~48% | ~$3.6B |
+| CY2027E | $2.5B | $7.0B | $9.5B | ~45% | ~$4.3B |
+| CY2028E | $1.5B | $10B | $11.5B | ~42% | ~$4.8B |
+
+数据来源: LightCounting/Yole/Dell'Oro + 分析师估算合成。份额下降反映Broadcom/Credo进入1.6T市场。
+
+**因果推理**: 为什么份额会下降但收入仍然增长？→因为TAM增速(CAGR 32%)远超份额流失速度(-3pp/yr)。这是典型的"领先者份额从垄断向寡头演化"模式——MRVL从55%降至42%但绝对收入从$2.0B增至$4.8B。关键是份额不能降到<35%(低于这个水平，MRVL失去对光模块厂商的设计影响力)。
+
+**反面**: 如果铜互联技术突破(如NVIDIA NVLink铜缆延伸到5米+)，光学TAM增速可能从32%降至15-20%——MRVL的光学收入增速从50%+降至20-25%。但物理定律限制铜缆在112Gbps+速率下的距离，NVLink 6.0仍然需要光学(NVIDIA已在OFC 2026展示光学NVLink)。
+
+### 18.2 1.6T Ara的竞争壁垒量化
+
+Ara DSP是3nm工艺，竞争者追赶需要:
+1. **设计时间**: 3nm光学DSP从架构到tape-out约18-24个月→Credo/Broadcom最快CY2027才能出1.6T DSP
+2. **验证时间**: 光模块厂商(Coherent/II-VI/Lumentum)需要12-18个月集成验证
+3. **总领先时间**: 30-42个月→**MRVL在1.6T上至少领先到CY2028**
+
+这个时间窗口价值多少？如果1.6T TAM CY2026-CY2028累计~$21.5B，MRVL拿45-50%=$9.7-10.8B——仅1.6T一个产品就可能产生$10B累计收入。
+
+### 18.3 Celestial AI — 下一代光互联的"买入期权"
+
+$3.25B收购(可升至$5.5B含earnout)买的是什么？
+
+**技术**: 光子计算互联(Photonic Fabric)——用光而非电信号在芯片间传输数据，不只是芯片→光模块→光纤→光模块→芯片(当前路径)，而是直接芯片→光→芯片(消除两次光电转换)。
+
+**经济模型**:
+| 指标 | 值 | 来源 |
+|------|-----|------|
+| 收购价 | $3.25B(+$2.25B earnout) | 公告 |
+| 预期收入启动 | H2 FY2028 | 管理层 |
+| Q4 FY2028 ARR目标 | $500M | 管理层 |
+| Q4 FY2029 ARR目标 | $1B | 管理层 |
+| 达到盈亏平衡 | FY2029E | 估算(Rev>$800M+, 假设40% GM) |
+| 收购回本 | FY2031E | 估算(累计contribution margin > $3.25B) |
+
+**风险**: 光子互联是实验室技术→量产的鸿沟巨大。$3.25B对一个零收入技术的支付代价高昂——如果延迟2年(很可能)，收购IRR从预期15-20%降至5-8%。这是**U04(不可知)**——在FY2028产品发布前无法判断。
+
+---
+
+## Ch19: Custom Silicon单元经济深度
+
+### 19.1 单个ASIC Program经济模型(基于行业数据+MRVL推断)
+
+**Tier 1 XPU Program(如Amazon Trainium)**:
+
+| 阶段 | 持续时间 | MRVL收入 | GM | 累计 |
+|------|---------|---------|-----|------|
+| 架构定义+RTL | 6-12月 | $0(客户自有) | N/A | $0 |
+| NRE(IP授权+物理设计) | 12-18月 | $50-100M | 55-65% | $50-100M |
+| 工程样品(A0/A1) | 6-12月 | $20-40M | 40-50% | $70-140M |
+| 小批量验证(B0) | 3-6月 | $30-60M | 35-45% | $100-200M |
+| 量产Year 1 | 12月 | $200-400M | 30-40% | $300-600M |
+| 量产Year 2-3 | 24月 | $400-800M | 30-40% | $700-1,400M |
+| 下一代(如果retain) | 重来NRE | — | — | — |
+
+**关键洞见**: NRE阶段GM最高(55-65%)但收入最小；量产阶段GM最低(30-40%)但收入最大。这意味着:
+- MRVL报告的blended custom silicon GM约35-45%是合理的
+- 随着更多programs进入量产(从NRE转向mass production)，custom silicon GM会继续承压
+- 每一代芯片都是新的NRE周期→MRVL必须持续赢得"下一代"才能维持收入，没有"装机量自动续约"
+
+### 19.2 MRVL vs AVGO单元经济对比
+
+| 维度 | MRVL | AVGO | 差异原因 |
+|------|------|------|---------|
+| NRE定价 | $50-100M/program | $100-200M/program | AVGO规模溢价+Google TPU设计更复杂 |
+| 量产per-chip margin | 估计30-40% | 估计40-50% | AVGO有更多标准化IP复用 |
+| Attach ratio | ~3 attach/XPU | ~2 attach/XPU | MRVL光学DSP是额外attach |
+| Program retention rate | 估计~70%(1代→2代) | 估计~85% | AVGO客户更粘(Google TPU已7代) |
+| IP授权模式 | NRE+per-chip | NRE+per-chip+royalty | AVGO有更多royalty组件 |
+
+AVGO的竞争优势核心不是技术(MRVL在SerDes/光学上可能更强)——而是**客户关系的深度**。Google从TPU v1到v6都用AVGO(7+年合作)→AVGO深度理解Google架构需求→每代redesign成本更低→margin更高。MRVL与Amazon的关系从Trainium 1才开始(~3年)——积累不够深，且Amazon自有Annapurna Labs有能力替代部分MRVL工作。
+
+### 19.3 Custom Silicon收入预测(三情景)
+
+| 情景 | FY2027E | FY2028E | FY2029E | 假设 |
+|------|---------|---------|---------|------|
+| **Bull** | $2.2B | $4.5B | $6.0B | Amazon全续约+MSFT Maia量产+2个新Tier 1 |
+| **Base** | $1.8B | $3.2B | $4.5B | Amazon续约但Tier 2慢+MSFT延迟6月 |
+| **Bear** | $1.5B | $2.0B | $2.5B | Amazon Trn4流失+MSFT仅小批量+无新Tier 1 |
+
+Bear情景下custom silicon增长从"翻倍"降至"平缓"——但即使Bear，attach chips($300-500M)和existing programs仍提供底部。关键变量是Amazon(占custom silicon估计50%+)。
+
+---
+
+## Ch20: FCF桥接模型 (Phase 2估值输入)
+
+### 20.1 FY2026→FY2028E FCF Bridge
+
+```
+FY2026 FCF: $1,396M
+
+收入增长效应:
+  Rev: $8.2B → FY2028E $14.9B (+82%)
+  假设FCF margin维持17%: $14.9B × 17% = $2,533M
+  FCF增长: +$1,137M
+
+OPM扩张效应:
+  Non-GAAP OPM: 35.3% → 37% (+1.7pp)
+  对FCF的增量: $14.9B × 1.7% × (1-10%税) = +$228M
+
+GM稀释对冲:
+  GM: 59.5% → 57% (-2.5pp)
+  但被OpEx leverage抵消(计入OPM扩张)
+
+摊销下降效应(GAAP改善但不影响FCF):
+  无形摊销: $942M → ~$500M (-$442M)
+  影响: GAAP NI大幅改善但FCF不变(非现金)
+
+Working Capital正常化:
+  FY2026 WC消耗$516M(异常) → FY2028假设$100M(正常)
+  一次性FCF释放: +$416M(但分摊到FY2027-28)
+
+CapEx增加:
+  FY2026 $354M → FY2028E $500M(Celestial AI产线+2nm设计工具)
+  FCF减少: -$146M
+
+FY2028E FCF估算:
+  Base: $2,533M + $228M + $200M(WC) - $146M(CapEx) = ~$2,815M
+  FCF margin: $2,815M / $14,900M = 18.9%
+
+SBC调整:
+  FY2028E SBC估算: $700M (7%×$14.9B×67% retention rate)
+  FCF-SBC: $2,815M - $700M = $2,115M
+  FCF-SBC margin: 14.2%
+  FCF-SBC Yield(@$82B市值): 2.6%
+```
+
+**关键发现**: 即使在Base情景下，FY2028E FCF-SBC Yield也只有2.6%——这对growth stock合理但不"便宜"。要justify当前$82B市值(FCF-SBC Yield 3.5%的"合理"水平)，需要FY2029-2030 FCF-SBC继续增长至$2.8-3.0B——这需要custom silicon如期翻倍且optical持续>40%增长。
+
+### 20.2 回购效率η函数
+
+η = (intrinsic value per share) / (buyback price per share)
+
+FY2026回购$2,040M(主要来自Infineon出售现金)，估算均价~$95 [DM-FIN-013]。
+
+如果我们的Base SOTP估值$100-108B → per share $116-125:
+- η = $116/$95 = 1.22 → **η>1.0 = 价值创造**(回购价低于内在价值)
+
+如果Bear情景$60-75B → per share $70-87:
+- η = $70/$95 = 0.74 → **η<1.0 = 价值毁灭**
+
+**判断**: η是否>1取决于Amazon是否流失。如果续约，FY2026回购是以$0.78买$1(好交易)。如果流失，是以$1买$0.74(坏交易)。这再次回到CQ1——一个变量决定了几乎所有判断的方向。
+
+---
+
+## Ch21: AVGO半导体-only估值分离
+
+### 21.1 AVGO SOTP拆分
+
+| 分部 | Revenue(FY2025) | 估算OPM | 估算NI | 给什么倍数 | 隐含价值 |
+|------|----------------|---------|--------|----------|---------|
+| VMware/软件 | ~$21B | ~60% | ~$10B | 35x PE | $350B |
+| AI/Custom Silicon | ~$25B | ~50% | ~$10B | 35x PE | $350B |
+| Standard Semi | ~$18B | ~35% | ~$5B | 25x PE | $125B |
+| 债务净值 | | | | | -$50B |
+| **AVGO SOTP** | | | | | **~$775B** |
+
+当前AVGO市值~$1,070B vs SOTP $775B → AVGO自身有~38%溢价(控股溢价+VMware协同)。
+
+**AVGO AI/Custom Silicon PE: ~35x**。MRVL custom silicon PE(如果单独估值): 用$1.5B收入、假设40% OPM、$600M NI → $82B市值中custom silicon贡献约$9B(15x PE)。
+
+**AVGO custom silicon给35x而MRVL只给15x**——2.3x差距。原因:
+1. 规模(AVGO AI $25B vs MRVL $1.5B): 8x差距→规模溢价~40%
+2. 客户分散(AVGO 5+ vs MRVL 2-3): 集中风险折价~30%
+3. Retention rate(AVGO 85% vs MRVL 70%估算): ~15%折价
+4. 总计: 35x × (1-0.4×0.3-0.3×0.3-0.15×0.3) ≈ 35x × 0.745 = **26x**
+
+如果MRVL custom silicon"应该"给26x而非15x → 隐含多$6.6B价值(+8%市值)。但这个"应该"需要Amazon确认不流失才能实现。
+
+---
+
+## Ch22: 半导体周期适配 — MRVL的"非典型周期性"
+
+### 22.1 MRVL不是典型周期股——但不完全脱钩
+
+传统半导体周期(WFE驱动)对MRVL的适用性评估:
+
+| 周期因素 | 适用? | 理由 |
+|---------|--------|------|
+| WFE支出周期 | ❌ 不适用 | MRVL是fabless，不买设备 |
+| DRAM/NAND价格周期 | ❌ 不适用 | MRVL不做存储 |
+| 企业IT支出周期 | ⚠️ 部分适用 | Enterprise Networking分部(~$1B)受影响 |
+| **AI CapEx周期** | ✅ **高度适用** | DC $6.1B(73%收入)直接挂钩hyperscaler CapEx |
+| 半导体库存周期 | ⚠️ 部分适用 | DIO 126天(偏高)，但fabless存货含义不同于IDM |
+
+**MRVL的"周期"不是传统3-4年WFE周期，而是"AI CapEx周期"**——这是一个尚未完成一个完整cycle的新周期(始于2023年ChatGPT)。没有人知道这个周期何时结束，因为没有历史先例(X01不可知项)。
+
+### 22.2 AI CapEx周期的领先指标(MRVL适配版)
+
+| 指标 | 当前 | 看多 | 看空 | MRVL特异性 |
+|------|------|------|------|-----------|
+| Hyperscaler CapEx指引 | >$470B(加速) | >$500B | <$350B | 直接决定custom silicon订单量 |
+| 设计win公告频率 | 18 active | 新增>5/yr | 新增<2/yr | MRVL特有(AVGO/NVDA不适用) |
+| Custom silicon NRE订单 | 强(50+pipeline) | pipeline转化>30% | 取消>20% | MRVL特有 |
+| 光模块出货量(800G+1.6T) | 加速中 | 1.6T出货>100K/Q | 800G去库存 | 光学DSP收入领先指标 |
+| MRVL自身DC Revenue QoQ | +8.8%(Q4) | 连续>5%QoQ | <0%QoQ连续2Q | 最直接的验证指标 |
+
+### 22.3 PEP-001适用性深化
+
+之前标注"部分匹配"——深化分析:
+
+市场叙事: "GPU是AI唯一赢家，ASIC是GPU的替代→如果ASIC赢GPU输"
+实际情况: MRVL两边都做——(1)为hyperscaler做ASIC(替代GPU) (2)为NVDA GPU集群做attach chips(光互联/网络)
+
+如果GPU赢: MRVL的attach chips收入增长(每个GPU集群需要光互联+网络芯片)
+如果ASIC赢: MRVL的custom silicon收入增长(更多hyperscaler选择自研ASIC)
+
+**MRVL是GPU vs ASIC的"路径不可知"投资**——类似AVGO在横向报告中的定位。但市场可能仍在按"纯ASIC play"给MRVL定价，忽略了attach chips在GPU方案中的收入贡献。
+
+如果attach chips(网络+光互联)贡献~$4.6B(DC $6.1B - custom $1.5B)，且这部分在GPU方案中同样增长——那么"ASIC输给GPU"情景下MRVL的收入底部不是$1.5B而是$4.6B+。这是PEP-001"叙事错误归因"的具体表现。
+
+---
+
+## Ch23: Phase 1质量自检
+
+### 23.1 字符与密度统计
+
+[待commit后用wc -m统计]
+
+### 23.2 CPA×ISDD检查清单
+
+| 步骤 | 状态 | 章节 |
+|------|------|------|
+| S0 收入质量 | ✅ | Ch2.3 |
+| S1α 经营杠杆 | ✅ | Ch17.1-17.2 |
+| S2 盈利质量 | ✅ | Ch3.2 (三版对比) |
+| S3 费用归因 | ✅ | Ch17.1 |
+| S5 分部归因 | ✅ | Ch2.2 (三引擎) |
+| S7 EPS归一化 | ✅ | Ch3.2 (三PE) |
+| S8 现金验证 | ✅ | Ch3.5 |
+| M2 资产负债表 | ✅ | Ch3.4+Ch11.3 |
+| M5 经营杠杆 | ✅ | Ch3.6+Ch17 |
+
+### 23.3 半导体框架检查清单
+
+| 要求 | 状态 | 章节 |
+|------|------|------|
+| 周期位置判断 | ✅ | Ch6.1+Ch22 |
+| AI利好衰减Layer | ✅ | Ch6.2 (Layer 1-1.5) |
+| PEP检测 | ✅ | Ch6.3+Ch22.3 (PEP-001部分匹配) |
+| 7领先指标 | ✅ | Ch6.1 |
+| 变量四分法 | ✅ | Ch7.3+Ch14.3 |
+| 动作绑定 | ✅ | Ch16.2 |
+| 子行业分类 | ✅ | Ch2(设计/制造垄断→Layer 1-1.5) |
+| 估值锚选择 | ✅ | Ch1(Forward PE主锚) |
+
+### 23.4 Harness v2检查清单
+
+| 要求 | 状态 |
+|------|------|
+| Reverse DCF Ch1前置(铁律O) | ✅ Ch1 |
+| 三PE展示(铁律N) | ✅ Ch3.2 |
+| 证据链(数据+因果+反面) | ✅ 每章 |
+| question_tree更新 | 待Phase 1 commit后 |
+| evidence_registry更新 | 待Phase 1 commit后 |
+| unknowns.md更新 | 待Phase 1 commit后 |
+| skeptic审计 | 待Phase 1完成后 |
