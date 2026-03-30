@@ -6,23 +6,25 @@ worktree: "半导体"
 industry: "semiconductor"
 last_updated: "2026-03-30"
 
-current_phase: 3
-phase_status: "Phase 3 完成"
-phases_completed: [0, 1, 2, 3]
-next_phase: "Phase 4 (红队+偏差校准+估值更新)"
+current_phase: 4
+phase_status: "Phase 4 完成"
+phases_completed: [0, 1, 2, 3, 4]
+next_phase: "Phase 5 (组装+质量门控+提交)"
 
 target_chars: 300000
 target_range: "240K-375K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 107703
+  total_chars: 131069
   p1_chars: 44343
   p2_chars: 23320
   p3_chars: 40040
+  p4_chars: 23366
   p1_file: "reports/MRVL/MRVL_Deep_Dive_Phase1.md"
   p2_file: "reports/MRVL/MRVL_Deep_Dive_Phase2.md"
   p3_file: "reports/MRVL/MRVL_Deep_Dive_Phase3.md"
+  p4_file: "reports/MRVL/MRVL_Deep_Dive_Phase4.md"
   dcf_script: "reports/MRVL/data/mrvl_dcf.py"
 
 key_findings:
@@ -49,33 +51,56 @@ key_findings:
     SerDes"不可替代"神话破灭: Synopsys IP许可已在Trn3中替代MRVL SerDes
     风险温度: 55°C→65°C(审慎区间边缘) | 3个PPDA背离 | PMSI分析师vs聪明钱分歧
     P3质量: 40K字符 | 120 DM锚点(密度2.99/千字) | 因果密度9.74/万字
+  p4: |
+    ★Q14回答: MRVL记全芯片收入(turnkey模式), Maia 300 $0.5-1.5B(2026)/$3-8B(2027有风险)
+    ★Amazon流失升级≥90%确认: 根因=MRVL Trn2执行不力(RDL interposer问题)
+    ★MediaTek-Google联盟确认: TPU v7 I/O设计+$1B ASIC目标2026→第三玩家入场
+    ★Celestial AI≠CPO替代(不同市场: scale-up vs scale-out), 收入FY2028 $500M目标
+    红队七问完成: 承重墙B(ASIC份额)最脆弱 | Bull-1~5校正P3偏空5-8%
+    Python DCF: GAAP $74 / Owner $93 / SOTP $76 / PW $80.5
+    评级维持"中性关注(偏审慎)" | 条件评级: Q1>$2.6B→上调 / Q1<$2.4B→下调
+    内部人: Q1 2026 0购买/3卖出(偏负面)
+    34个新DM锚点(DM-P4-001~034)
 
-  judgment: "中性关注(偏审慎→可能下调至审慎关注) — Amazon流失高概率确认+护城河降级→FV可能<$78"
+  judgment: "中性关注(偏审慎) — PW FV $80.5 vs $94.88(-15.1%) | Owner DCF $93(接近市价) | 方向不明确等Q1验证"
 
 cq_status:
-  CQ1_ASIC_growth: "40% (P3↓↓) — Alchip Trn3/4多源确认, 份额→8%, 但MSFT+emerging部分补偿"
-  CQ2_optical_moat: "65% (P3↓) — 仍领先60-80%但CPO 2027-2028+Credo/Broadcom追赶"
-  CQ3_PE_17x: "55% (P3↓) — 护城河4.61(vs 6.3)→折价更合理, PE可能需进一步压缩"
+  CQ1_ASIC_growth: "45% (P4↑5%) — $11B指引+第二XPU offset Amazon确认丢失"
+  CQ2_optical_moat: "65% (不变) — 仍强但CPO+Broadcom追赶"
+  CQ3_PE_17x: "50% (P4↓5%) — 正常化PE 73x(非headline 25x)→17x Forward需大幅增长"
   CQ4_china_38pct: "45% (不变) — 无新证据"
   CQ5_goodwill_ROIC: "60% (不变) — 无新证据"
+
+valuation_summary:
+  gaap_dcf: "$74/share"
+  owner_dcf: "$93/share"
+  sotp: "$76/share"
+  pw_fv: "$80.5/share"
+  weighted_fv: "$81/share"
+  current_price: "$94.88"
+  implied_return: "-15.1%"
+  rating: "中性关注(偏审慎)"
+  conditional_upgrade: "FY2027 Q1 >$2.6B + Custom silicon +15% QoQ"
+  conditional_downgrade: "FY2027 Q1 <$2.4B 或 MSFT转AVGO确认"
 
 artifacts:
   question_tree: "reports/MRVL/data/question_tree.md"
   evidence_registry: "reports/MRVL/data/evidence_registry.md"
   unknowns: "reports/MRVL/data/unknowns.md"
-  shared_context: "reports/MRVL/data/shared_context.md (101 DM锚点)"
+  shared_context: "reports/MRVL/data/shared_context.md (101+34=135 DM锚点)"
   launch_brief: "reports/MRVL/data/launch_brief.md"
 
-p4_priorities:
-  - "Amazon流失精确量化: 修正后assumptions重跑估值模型(SOTP+概率加权)"
-  - "MSFT Maia 300收入结构验证: $2.4B(全芯片) vs $0.5-0.7B(设计费+royalty) — Q14"
-  - "双向校准: 检查P3是否过度看空(是否忽略正面证据?)"
-  - "Kill Switch确定: 什么单一事件能让论点彻底翻转"
-  - "评级决定: 维持'中性关注(偏审慎)'还是下调至'审慎关注'"
+p5_instructions:
+  - "P4.5参考扫描: AVGO(客户集中管理) + INTC(执行失败) + ADSK(转型估值)"
+  - "单会话组装: 读P1-P4→重排→铁律K统一→质量门控→提交"
+  - "FV统一: 全报告$80-81 | 评级=中性关注(偏审慎) | Amazon=确认事实 | 护城河=4.8/10"
+  - "字符缺口: 当前131K vs 目标270K → 需补充~140K实质内容"
+  - "优先补充: 行业对标(MediaTek深度)+管理层评估(叙事vs现实)+风险量化(承重墙B场景)"
+  - "禁止凑数: 用P4.5参考框架写新分析, 不加备注/重复/空话"
 
 resume_instructions: |
   1. git branch --show-current + pwd 确认位置
-  2. 读取本文件(checkpoint.yaml) — 重点看p3 key_findings和p4_priorities
-  3. 读取P3报告Ch7(CQ更新+新衍生问题Q14-Q17)
-  4. 加载红队skill: /red-team-suite + /risk-topology
-  5. 直接启动Phase 4红队，不问澄清问题
+  2. 读取本文件(checkpoint.yaml) — Phase 4已完成
+  3. 进入Phase 5组装: 先执行P4.5参考扫描(缺口清单在P4 Ch8.1)
+  4. 单会话组装: 读P1-P4产出→结构重排→铁律K统一→质量门控
+  5. 字符目标: 270K+, 当前131K, 需补充~140K实质内容
