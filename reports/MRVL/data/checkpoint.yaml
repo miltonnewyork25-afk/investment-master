@@ -1,19 +1,69 @@
 schema_version: "2.0"
 ticker: MRVL
-company: "MRVL"
-framework_version: v17.0
-worktree: "semiconductor"
+company: "Marvell Technology"
+framework_version: v20.0
+worktree: "半导体"
 industry: "semiconductor"
-last_updated: "2026-03-30T03:12:50+00:00"
+last_updated: "2026-03-30"
 
-current_phase: -1
-phase_status: pre_launch
-phases_completed: []
+current_phase: 2
+phase_status: "Phase 2 完成+补强"
+phases_completed: [0, 1, 2]
+next_phase: "Phase 3 (竞争对标+护城河深化+红队准备)"
 
 target_chars: 300000
 target_range: "240K-375K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 0
-  latest_phase_chars: 0
+  total_chars: 67663
+  p1_chars: 44343
+  p2_chars: 23320
+  p1_file: "reports/MRVL/MRVL_Deep_Dive_Phase1.md"
+  p2_file: "reports/MRVL/MRVL_Deep_Dive_Phase2.md"
+  dcf_script: "reports/MRVL/data/mrvl_dcf.py"
+
+key_findings:
+  p1: |
+    双引擎非对称定价: 光学DSP值25-30x PE但被custom silicon客户集中拖到17x
+    因果密度27.5/万字(KLAC 3倍) | 23章 | 46 DM引用
+    SOTP $100-108B vs $82B(+18-24%) | 概率加权$87.4B(+6.6%)
+    5大异常: DSO暴增90天/GAAP-NonGAAP 19pp鸿沟/ROIC 7% vs ROTCE 179%/GM稀释/FMP DCF $22 vs $95
+  p2: |
+    PW FV $78(-18%) | 加权FV $86(-9%) | 中性关注(偏审慎)
+    OPM第三条路33%(非27也非37) — 剪刀差(GM-2pp)被OpEx leverage(+3.9pp)抵消
+    Core PE 62x揭示当期盈利偏薄 | Owner PE 105x | Forward PE真实22x(非表面17.4x)
+    FCF Owner桥接: FY2028E Owner FCF Yield 3.25% | 概率三重锚定5情景
+    Python DCF验证$72 | 离散度26.7%<30%合规 | M&A验证SOTP倍数
+    修正EPS $4.34(vs初版$2.86/共识$5.43)
+
+  judgment: "中性关注(偏审慎) — FV $78-86 vs $95, 无安全边际 | Amazon流失=单一最大swing factor"
+
+cq_status:
+  CQ1_ASIC_growth: "55% (P1↑) — 18 programs+$75B pipeline支撑，但Amazon U01未解"
+  CQ2_optical_moat: "70% (P1↑) — Inphi遗产+3nm壁垒+30-42月领先"
+  CQ3_PE_17x: "60% (P2↑) — 表面17x但真实22x(基于修正EPS $4.34)，接近合理非低估"
+  CQ4_china_38pct: "45% (P1↓) — 出口管制趋缓但38%占比仍是系统性风险"
+  CQ5_goodwill_ROIC: "60% (P1↑) — ROTCE 179%是真实效率，FY2028摊销下降将改善GAAP"
+
+artifacts:
+  question_tree: "reports/MRVL/data/question_tree.md"
+  evidence_registry: "reports/MRVL/data/evidence_registry.md"
+  unknowns: "reports/MRVL/data/unknowns.md"
+  shared_context: "reports/MRVL/data/shared_context.md (65 DM锚点)"
+  launch_brief: "reports/MRVL/data/launch_brief.md"
+
+p3_priorities:
+  - "AVGO OPM路径对标(35%→55%用了几年? MRVL能复制吗?)"
+  - "CQ置信度更新(P2 judgment翻转影响)"
+  - "红队准备(市场最大误解 vs 我们最大误解)"
+  - "竞争对标深化(Alchip时间线+ASIC份额演进)"
+  - "skeptic subagent审计(P1+P2核心结论)"
+  - "question_tree/evidence_registry/unknowns三文件更新"
+
+resume_instructions: |
+  1. git branch --show-current + pwd 确认位置
+  2. 读取本文件(checkpoint.yaml)
+  3. 读取P1和P2报告头部摘要
+  4. 读取question_tree.md了解未回答问题
+  5. 直接启动Phase 3，不问澄清问题
