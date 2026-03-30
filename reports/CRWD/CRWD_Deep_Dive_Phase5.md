@@ -462,7 +462,34 @@ pie title CRWD品质评分分布 (36.9/56)
 ```
 
 **加权分**: (29.65 + 16.5) × (4.0/5) = **36.9/56**
-**复利路径**: **B-级**(SaaS数据平台型, 有飞轮但利润不出来)
+**复利���径**: **B-级**(SaaS数据平台型, 有飞轮但利润不出来)
+
+### 深度反思补齐: 3个关键缺口 (R2审计发现)
+
+**补齐1 — M2 CAC Payback**(原完全缺失):
+
+推算: S&M ~$1.8B × 60%(获客) = $1.08B → 新客~2,500(净新ARR $1.01B × 40-45%) → **CAC ~$432K/新客** → Payback **~40个月**(行业基准18个月的2.2倍)。因为Enterprise安全销售周期长(6-12个月)+POV竞争+S&M 37%/Rev偏高。LTV:CAC ~3.0x(>3x仍健康但低于行业5-7x)。这解释了Magic Number 0.56x的根因: **获客成本确实偏高, 不仅是基数效应**。[DM-SaaS-004: CAC Payback estimation]
+
+**补齐2 — M9 不对称比**(原完全缺失):
+
+买入错误: $393→Bear均值$105(-73%) vs 不买错误: 错过$393→Bull均值$288(+27%) → **不对称比2.7:1**。即使用分析师共识Bull $548: 73%/40%=1.8:1。**无论哪个Bull假设, 不对称比均>1.5(偏观望)** → 与"审慎关注"评级一致。[DM-VAL-025: risk-reward asymmetry ratio]
+
+**补齐3 — M6 飞轮叙事溢价PE**(原完全缺失):
+
+CRWD P/FCF 76x - FTNT 27x(无飞轮基线) = 49x差距。扣除增速溢价~18x(CRWD 22% vs FTNT 14%) → **叙事溢价~31x, 占P/FCF的41%**(远超M6建议的20%上限)。叙事溢价组成: 飞轮10-15x + Charlotte AI 8-12x + 平台整合5-8x。**如果飞轮断裂(净强度<0.3), P/FCF可能从76x压缩至56-64x(-15~25%)**。[DM-VAL-026: narrative premium quantification]
+
+```mermaid
+graph LR
+    FTNT["FTNT P/FCF 27x<br>(无飞轮基线)"] -->|+增速溢价18x| GROWTH["45x"]
+    GROWTH -->|+叙事溢价31x| CRWD["CRWD P/FCF 76x"]
+    subgraph 叙事溢价41%
+        FLY["飞轮 10-15x"]
+        CHAI["Charlotte AI 8-12x"]
+        PLAT["平台整合 5-8x"]
+    end
+    FLY & CHAI & PLAT -->|若断裂| COMPRESS["压缩至56-64x<br>(-15~25%)"]
+    style COMPRESS fill:#ffcccc
+```
 
 ---
 
