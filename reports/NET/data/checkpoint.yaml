@@ -6,7 +6,7 @@ worktree: "生态科技"
 industry: "生态科技"
 last_updated: "2026-03-30T08:30:00+00:00"
 
-current_phase: 3
+current_phase: 4
 phase_status: complete
 phases_completed:
   - phase: -1
@@ -58,17 +58,23 @@ phases_completed:
     chars: 21987
     status: complete
     note: "P2补强(信念反演+方法审计+CapEx传导+债务+ROIC+会计质量)+P3补强(护城河分离+交叉验证+预期差v3.0). CQ均值36.9%(↓2.2%)"
+  - phase: 4
+    date: "2026-03-30"
+    chars: 13399
+    status: complete
+    note: "RT-1~7完整红队. 双向校准修正15/0单向偏差→4CQ上调. 估值$64→$101(WACC+概率修正). CQ 39.9%. 评级:审慎关注"
 
 target_chars: 300000
 target_range: "270K-330K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 112457
-  latest_phase_chars: 21987
-  valuation_composite: "$64.09/股 (-68.4%); 概率加权$143.5/股 (-29%)"
-  direction_consistency: "2.5/2.5偏空 (100%, 方法独立性调整后)"
-  cq_mean: "36.9% (偏cautious, 补强后↓2.2%)"
+  total_chars: 125856
+  latest_phase_chars: 13399
+  valuation_composite: "$101/股 (-50%, P4双向校准后); 区间$64-146"
+  direction_consistency: "2.5/2.5偏空→P4双向校准后11/16=68%偏空"
+  cq_mean: "39.9% (cautious, 双向校准后↑3.0%)"
+  rating_preliminary: "审慎关注"
   stock_price: 203.07
   market_cap: "71.5B"
   ev_sales: 33.0
@@ -121,6 +127,12 @@ key_findings:
   - "P3.5: 存量护城河8.1/10 vs 增量护城河4.1/10——守成型"
   - "P3.5: WACC/Beta是我们与卖方估值分歧的最大来源"
   - "P3.5: 概率加权期望值$143.5/股(vs $203=-29%)"
+  - "P4: 双向校准检测到15/0单向偏差→修正4个CQ"
+  - "P4: WACC修正(13%→10.5%敏感性)→估值从$64升至$64-90区间"
+  - "P4: 综合估值$101(-50%, WACC+概率加权修正)"
+  - "P4: SBC从SPOF降级为核心风险因子(收敛有历史先例)"
+  - "P4: 增速再加速是真实信号(5独立指标确认)"
+  - "P4: 评级预判: 审慎关注(期望回报-28%至-61%)"
 
 comparable_companies:
   primary:
