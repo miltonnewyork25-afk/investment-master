@@ -1,0 +1,83 @@
+schema_version: "2.0"
+ticker: NET
+company: "Cloudflare, Inc."
+framework_version: v19.9
+worktree: "生态科技"
+industry: "生态科技"
+last_updated: "2026-03-30T06:40:00+00:00"
+
+current_phase: -0.5
+phase_status: in_progress
+phases_completed:
+  - phase: -1
+    date: "2026-03-30"
+    chars: 1723
+    status: complete
+
+target_chars: 300000
+target_range: "270K-330K"
+hard_floor: 200000
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
+  stock_price: 203.07
+  market_cap: "71.5B"
+  ev_sales: 33.0
+  sbc_rev: "20.8%"
+  fcf_margin: "15.0%"
+  owner_fcf: "-127M (negative)"
+  growth_rate: "30% YoY"
+  deferred_rev_growth: "+45%"
+
+data_master:
+  file: "reports/NET/data/shared_context.md"
+  dm_count: 63
+  version: "1.0"
+  status: complete
+
+mece_plan:
+  file: "reports/NET/data/mece_data_plan.md"
+  status: complete
+
+key_findings:
+  - "SBC/Rev 20.8% x4年零收敛 → Owner FCF为负(-$127M)"
+  - "增速加速(Q4 +34% YoY) + 递延收入+45% = 强劲领先指标"
+  - "毛利率下滑(77.3%→74.4%) = COGS异常需调查"
+  - "EV/Sales 33x + FCF Yield 0.47% = 极度昂贵"
+  - "内部人6年零公开市场购买 = 负面信号"
+  - "FY2025新增$2.2B债务"
+
+comparable_companies:
+  primary:
+    - ticker: DDOG
+      match: "SaaS+高增长+SBC+使用计费"
+      pe_non_gaap: "~49x"
+      growth: "28%"
+    - ticker: CRWD
+      match: "安全+平台化+SBC+高估值"
+      pe_non_gaap: "~64x"
+      growth: "24%"
+    - ticker: ZS
+      match: "零信任安全+高增长"
+      pe_non_gaap: "~60x"
+      growth: "30%"
+  secondary:
+    - ticker: AKAMAI
+      match: "CDN传统龙头"
+      pe: "~15x"
+      growth: "5%"
+    - ticker: FSLY
+      match: "CDN纯竞争对手"
+      pe: "亏损"
+      growth: "10%"
+
+cq_candidates:
+  CQ1: "增速可持续性: 安全+Workers双引擎 vs CDN天花板"
+  CQ2: "安全平台化成功度"
+  CQ3: "SBC/盈利路径: FCF正+杠杆 vs Owner FCF负"
+  CQ4: "开发者平台飞轮"
+  CQ5: "AI机会vs风险"
+  CQ6: "估值合理性"
+  CQ7: "竞争壁垒持久性"
+  CQ8: "管理层资本配置"
