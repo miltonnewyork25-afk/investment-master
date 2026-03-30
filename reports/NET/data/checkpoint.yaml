@@ -63,14 +63,19 @@ phases_completed:
     chars: 13399
     status: complete
     note: "RT-1~7完整红队. 双向校准修正15/0单向偏差→4CQ上调. 估值$64→$101(WACC+概率修正). CQ 39.9%. 评级:审慎关注"
+  - phase: 4.5
+    date: "2026-03-30"
+    chars: 10006
+    status: complete
+    note: "P4补强: RT-1b联合概率0.3%+RT-2偏差审计(3检出)+信念矩阵+翻转分析+共识解构(TAM膨胀A级)+有效性门控(4.0/5). CQ不变39.9%"
 
 target_chars: 300000
 target_range: "270K-330K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 125856
-  latest_phase_chars: 13399
+  total_chars: 135862
+  latest_phase_chars: 10006
   valuation_composite: "$101/股 (-50%, P4双向校准后); 区间$64-146"
   direction_consistency: "2.5/2.5偏空→P4双向校准后11/16=68%偏空"
   cq_mean: "39.9% (cautious, 双向校准后↑3.0%)"
@@ -133,6 +138,10 @@ key_findings:
   - "P4: SBC从SPOF降级为核心风险因子(收敛有历史先例)"
   - "P4: 增速再加速是真实信号(5独立指标确认)"
   - "P4: 评级预判: 审慎关注(期望回报-28%至-61%)"
+  - "P4.5: 6信念联合概率仅0.3%(B-1×B-2反相关矛盾)"
+  - "P4.5: TAM膨胀A级(管理层$196B vs 实际$55-100B)"
+  - "P4.5: 翻转需≥2信念失败, B-1(增速)是枢纽信念"
+  - "P4.5: 红队有效性4.0/5(3指标PASS, 5个新发现)"
 
 comparable_companies:
   primary:
