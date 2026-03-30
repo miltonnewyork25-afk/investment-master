@@ -143,16 +143,33 @@
 - **二阶效应**: 算力需求→电力消耗→散热需求→新材料机会
 
 ### Skill按需加载 (铁律M)
-- **Phase 0**: `/data-prefetch` `/expectation-gap {TICKER}` (Step 0强制加载patterns.yaml)
+- **Phase 0**: `/data-prefetch` `/expectation-gap {TICKER}` v3.0(Step 0问题闸门+知识前置+动作空间)
 - **Phase 1-3**: `/investment-logic-toolkit` `/assumption-audit` `/competitive-benchmarking` `/moat-evaluator`
 - **Phase 4**: `/red-team-suite` `/risk-topology` `/omission-scanner`
 - **Phase 5**: `/valuation-quality-gate` `/deep-reflection`
 - **禁止**: 预加载全部skill | Phase 1加载红队 | Phase 5加载数据预取
 
+### 预期差v3.0半导体适配 (变量四分法)
+
+**半导体变量分类参考**(分析时标注每个变量类型):
+
+| 类型 | 半导体典型变量 | 说明 |
+|------|-------------|------|
+| **[可控]** | 回购/CapEx纪律/定价策略/产品路线图 | 公司能改变的 |
+| **[约束]** | WFE周期/AI CapEx/地缘政治/出口管制 | 公司改变不了的 |
+| **[迁移]** | DIO拐点/B-to-B/DRAM现货价/Forward PE收敛 | 推动状态→新状态 |
+| **[校验]** | 季度beat/miss/分析师修正/股价反应 | 验证判断,不驱动动作 |
+
+**半导体动作绑定模板**:
+- 设备(late_cycle): 动作=等待拐点 | 触发=WFE<0%+DIO下降2Q | 退出=WFE第4年>7% | 失效=AI彻底打破WFE周期(需3+周期验证)
+- 存储(峰值): 动作=等待拐点 | 触发=CapEx/D&A>1.2x+毛利率<40% | 退出=毛利率>60%+低PE | 失效=HBM合同结构永久改变周期性
+- 设计垄断: 动作=当前可行动(或必须打折) | 触发=N/A(已可行动) | 退出=ASIC>40%推理份额 | 失效=AI CapEx急刹>20%
+
 ---
 
 ## 框架版本
 
-**当前版本**: v19.9 (2026-03-27)
-**与主框架同步**: 参考 `/Users/milton/投资大师/CLAUDE.md` v19.9
-**v19.9新增**: 预期差识别器v2.1(PEP-005/006/007) + 穿越周期7领先指标(SEMI-L1~L7) + AI利好衰减模型(6层) + 子行业估值锚 + 信号发现方法论v1.0 + 护城河C-AI模块 + 13家横向报告基线
+**当前版本**: v20.0 (2026-03-30)
+**与主框架同步**: 参考 `/Users/milton/投资大师/CLAUDE.md`
+**v20.0新增**: 预期差v3.0集成(状态×迁移分离+变量四分法+动作绑定+置信度4层+"不行动"合法输出) + 半导体变量分类参考 + 子行业动作绑定模板
+**v19.9**: PEP-005/006/007 + 穿越周期7领先指标(SEMI-L1~L7) + AI利好衰减模型(6层) + 子行业估值锚 + 信号发现方法论v1.0 + 护城河C-AI模块 + 13家横向报告基线
