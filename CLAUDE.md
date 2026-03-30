@@ -202,3 +202,27 @@ Layer 3: quality_gate_complete.sh — 最终质量门控
 ## 系统升级
 
 **当前版本**: v19.9 (2026-03-26) | **版本历史**: `CHANGELOG.md`
+---
+
+## 投资Harness系统 (v19.9+新增)
+
+**四大核心模块**:
+- **不确定性管理**: 数据失败→智能fallback，分析矛盾→预期差机会
+- **市场制度检测**: 实时环境感知，动态权重调整
+- **成本智能控制**: 复杂度评估，预算监控，优化建议
+- **合规风险防护**: 自动检测，修正建议，披露生成
+
+**自动集成点**:
+- Tier 3启动时自动初始化harness环境
+- 工具失败时自动触发fallback策略
+- Phase完成时自动成本追踪和质量评估
+- 最终输出时自动合规检查
+
+**使用方式**:
+```bash
+# 启动时指定harness模式
+bash scripts/tier3_launch.sh AAPL TECHNOLOGY production
+# 模式: development|production|cost_optimized|research_intensive
+```
+
+详见: `.claude/harness/README.md`
