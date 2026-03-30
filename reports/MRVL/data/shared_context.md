@@ -515,13 +515,132 @@
 
 ---
 
-## Section J更新: 锚点汇总统计
+## Section M: Phase 3竞争/AI锚点 (DM-P3-xxx)
 
-| 类型 | 数量 | 占比 |
-|------|------|------|
-| H (硬数据) | 55 | 84% |
-| R (合理推断) | 9 | 14% |
-| S (主观判断) | 1 | 2% |
-| **总计** | **65** | **100%** |
+### DM-P3-001
+- **值**: Credo Bluebird 1.6T DSP, 3nm, sub-20W, Sep 2025发布; Cardinal 2nd-gen 2026
+- **类型**: H
+- **来源**: Credo IR press release
+- **日期**: 2026-03-30
 
-[Phase推进时追加]
+### DM-P3-002
+- **值**: Marvell Ara 1.6T批量出货中(mass volume shipping), 2025
+- **类型**: H
+- **来源**: Marvell IR press release Mar 2026
+- **日期**: 2026-03-30
+
+### DM-P3-003
+- **值**: Marvell PAM4 DSP市占率60-80%(50-100G/lane), 20-30%(400G/800G模块)
+- **类型**: R
+- **推理链**: Inphi历史垄断+代际锁定→但高速率(1.6T)份额尚未确立
+- **来源**: 多源估算(Futurum/Klover AI)
+- **日期**: 2026-03-30
+
+### DM-P3-004
+- **值**: Broadcom >50,000 Tomahawk 5-Bailly CPO交换芯片已出货(2025)
+- **类型**: H
+- **来源**: Siemens CPO Trends 2026
+- **日期**: 2026-03-30
+
+### DM-P3-005
+- **值**: Alchip赢得Trainium 3 bakeoff vs MRVL; MRVL Trn2 RDL interposer执行不佳, Alchip介入救场
+- **类型**: R
+- **推理链**: SemiAnalysis一手工程细节+Global Tech Research交叉验证
+- **证伪条件**: MRVL/Amazon官方否认+提供替代证据
+- **来源**: SemiAnalysis, Global Tech Research
+- **日期**: 2026-03-30
+
+### DM-P3-006
+- **值**: Trainium 3前端PCIe SerDes来自Synopsys(非MRVL), MRVL content极少
+- **类型**: R
+- **推理链**: SemiAnalysis详细芯片架构分析
+- **证伪条件**: MRVL披露Trn3 SerDes IP来源
+- **来源**: SemiAnalysis
+- **日期**: 2026-03-30
+
+### DM-P3-009
+- **值**: Synopsys 224G SerDes在N5/N3E/N3P production-ready, 29.7%接口IP市占率
+- **类型**: H
+- **来源**: Synopsys, Electronics Weekly
+- **日期**: 2026-03-30
+
+### DM-P3-011
+- **值**: Alchip FY2025 Rev $992M(-37% YoY hiccup), 78%北美, 83% HPC/AI, 3nm active, 2nm开发中
+- **类型**: H
+- **来源**: Alchip IR Q4 FY2025 results (GlobeNewsWire)
+- **日期**: 2026-03-30
+
+### DM-P3-012
+- **值**: AVGO 6年财务: FY2020 Rev$23.9B GM56.6% OPM16.8% → FY2025 Rev$63.9B GM67.8% OPM39.9%
+- **类型**: H
+- **来源**: FMP income data
+- **日期**: 2026-03-30
+
+### DM-P3-014
+- **值**: Counterpoint: MRVL ASIC份额从~35%(FY2025)→~8%(FY2027), TAM膨胀+Amazon流失
+- **类型**: R
+- **推理链**: 份额下降≠收入下降(TAM从$13B→$150B+)
+- **来源**: Counterpoint Research Jan 2026
+- **日期**: 2026-03-30
+
+### DM-P3-015
+- **值**: AI ASIC市场$13B(2024)→$150B+(2030), ~50% CAGR
+- **类型**: R
+- **来源**: Counterpoint, Bloomberg Intelligence
+- **日期**: 2026-03-30
+
+### DM-P3-016
+- **值**: Trainium 4 (Maverick) = Annapurna+Alchip设计, 量产目标Q4 2027
+- **类型**: R
+- **来源**: SemiAnalysis, Global Tech Research
+- **日期**: 2026-03-30
+
+### DM-P3-020
+- **值**: Maia 300: 升级2nm+HBM4, 初始300-400K颗, 扩展至1.5M/yr, ASP ~$8K, MRVL为主要co-designer
+- **类型**: R
+- **推理链**: 分析师估计MRVL收入$2.4B(全芯片ASP)但实际MRVL可能只收设计费+royalty($0.5-0.7B)
+- **来源**: Techi, GuruFocus, analyst estimates
+- **日期**: 2026-03-30
+
+### DM-P3-027
+- **值**: 2026 hyperscaler AI CapEx $600-690B (+36-67% YoY), ~75% AI-related (~$450B)
+- **类型**: R
+- **来源**: Goldman Sachs, CNBC, Futurum, IEEE ComSoc
+- **日期**: 2026-03-30
+
+### DM-P3-030
+- **值**: Omdia: AI数据中心芯片市场增速可能在2026达峰, 绝对值至$286B(2030)
+- **类型**: R
+- **来源**: Omdia Aug 2025
+- **日期**: 2026-03-30
+
+### DM-P3-032
+- **值**: Insider A/D ratio <0.70连续5+季度, 零open-market purchase in Q1/Q4 2025 & Q1 2026
+- **类型**: H
+- **来源**: Benzinga, MarketBeat insider trades
+- **日期**: 2026-03-30
+
+### DM-P3-033
+- **值**: ASIC增速44.6% vs GPU增速16.1%(2026年), ASIC in inference占37%部署份额
+- **类型**: R
+- **来源**: TrendForce
+- **日期**: 2026-03-30
+
+### DM-P3-035
+- **值**: CPO市场$95M(2025)→$1,055M(2034), CAGR 30.66%; CPO端口>18M(2029)
+- **类型**: R
+- **来源**: Precedence Research
+- **日期**: 2026-03-30
+
+---
+
+## Section J更新: 锚点汇总统计 (Phase 3后)
+
+| 类型 | P0-P2 | P3新增 | 合计 | 占比 |
+|------|-------|--------|------|------|
+| H (硬数据) | 55 | 18 | 73 | 76% |
+| R (合理推断) | 9 | 18 | 27 | 28% |
+| S (主观判断) | 1 | 0 | 1 | 1% |
+| **总计** | **65** | **36** | **101** | **100%** |
+
+注: P3新增DM锚点完整列表见 `MRVL_Deep_Dive_Phase3.md` Ch7.4。上方仅选录Phase 4+需要引用的关键锚点。

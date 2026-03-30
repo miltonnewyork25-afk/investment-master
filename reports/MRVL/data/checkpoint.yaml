@@ -6,21 +6,23 @@ worktree: "半导体"
 industry: "semiconductor"
 last_updated: "2026-03-30"
 
-current_phase: 2
-phase_status: "Phase 2 完成+补强"
-phases_completed: [0, 1, 2]
-next_phase: "Phase 3 (竞争对标+护城河深化+红队准备)"
+current_phase: 3
+phase_status: "Phase 3 完成"
+phases_completed: [0, 1, 2, 3]
+next_phase: "Phase 4 (红队+偏差校准+估值更新)"
 
 target_chars: 300000
 target_range: "240K-375K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 67663
+  total_chars: 107703
   p1_chars: 44343
   p2_chars: 23320
+  p3_chars: 40040
   p1_file: "reports/MRVL/MRVL_Deep_Dive_Phase1.md"
   p2_file: "reports/MRVL/MRVL_Deep_Dive_Phase2.md"
+  p3_file: "reports/MRVL/MRVL_Deep_Dive_Phase3.md"
   dcf_script: "reports/MRVL/data/mrvl_dcf.py"
 
 key_findings:
@@ -36,34 +38,44 @@ key_findings:
     FCF Owner桥接: FY2028E Owner FCF Yield 3.25% | 概率三重锚定5情景
     Python DCF验证$72 | 离散度26.7%<30%合规 | M&A验证SOTP倍数
     修正EPS $4.34(vs初版$2.86/共识$5.43)
+  p3: |
+    ★Alchip确认赢得Trainium 3+4 bakeoff — CQ1从55%→40%大幅下调
+    护城河C1-C6量化: 加权4.61/10(vs P1定性6.3) — "增长侵蚀护城河"悖论
+    AVGO OPM对标: MRVL天花板35-38%(GM稀释抵消OpEx leverage), 不可复制AVGO 45%+
+    ASIC锁定衰减L(t): L₀=32%→L_floor=8-12%, 份额递减但收入可能仍增长(TAM膨胀)
+    MSFT Maia 300升级2nm+HBM4: 潜在$500-700M/yr, 部分补偿Amazon流失
+    PtW 7.0/10(vs AVGO 8.2) — "优秀执行+中等护城河"象限
+    CPO 2027-2028结构性威胁, Celestial AI($3.25B)是关键对冲(成功概率40-50%)
+    SerDes"不可替代"神话破灭: Synopsys IP许可已在Trn3中替代MRVL SerDes
+    风险温度: 55°C→65°C(审慎区间边缘) | 3个PPDA背离 | PMSI分析师vs聪明钱分歧
+    P3质量: 40K字符 | 120 DM锚点(密度2.99/千字) | 因果密度9.74/万字
 
-  judgment: "中性关注(偏审慎) — FV $78-86 vs $95, 无安全边际 | Amazon流失=单一最大swing factor"
+  judgment: "中性关注(偏审慎→可能下调至审慎关注) — Amazon流失高概率确认+护城河降级→FV可能<$78"
 
 cq_status:
-  CQ1_ASIC_growth: "55% (P1↑) — 18 programs+$75B pipeline支撑，但Amazon U01未解"
-  CQ2_optical_moat: "70% (P1↑) — Inphi遗产+3nm壁垒+30-42月领先"
-  CQ3_PE_17x: "60% (P2↑) — 表面17x但真实22x(基于修正EPS $4.34)，接近合理非低估"
-  CQ4_china_38pct: "45% (P1↓) — 出口管制趋缓但38%占比仍是系统性风险"
-  CQ5_goodwill_ROIC: "60% (P1↑) — ROTCE 179%是真实效率，FY2028摊销下降将改善GAAP"
+  CQ1_ASIC_growth: "40% (P3↓↓) — Alchip Trn3/4多源确认, 份额→8%, 但MSFT+emerging部分补偿"
+  CQ2_optical_moat: "65% (P3↓) — 仍领先60-80%但CPO 2027-2028+Credo/Broadcom追赶"
+  CQ3_PE_17x: "55% (P3↓) — 护城河4.61(vs 6.3)→折价更合理, PE可能需进一步压缩"
+  CQ4_china_38pct: "45% (不变) — 无新证据"
+  CQ5_goodwill_ROIC: "60% (不变) — 无新证据"
 
 artifacts:
   question_tree: "reports/MRVL/data/question_tree.md"
   evidence_registry: "reports/MRVL/data/evidence_registry.md"
   unknowns: "reports/MRVL/data/unknowns.md"
-  shared_context: "reports/MRVL/data/shared_context.md (65 DM锚点)"
+  shared_context: "reports/MRVL/data/shared_context.md (101 DM锚点)"
   launch_brief: "reports/MRVL/data/launch_brief.md"
 
-p3_priorities:
-  - "AVGO OPM路径对标(35%→55%用了几年? MRVL能复制吗?)"
-  - "CQ置信度更新(P2 judgment翻转影响)"
-  - "红队准备(市场最大误解 vs 我们最大误解)"
-  - "竞争对标深化(Alchip时间线+ASIC份额演进)"
-  - "skeptic subagent审计(P1+P2核心结论)"
-  - "question_tree/evidence_registry/unknowns三文件更新"
+p4_priorities:
+  - "Amazon流失精确量化: 修正后assumptions重跑估值模型(SOTP+概率加权)"
+  - "MSFT Maia 300收入结构验证: $2.4B(全芯片) vs $0.5-0.7B(设计费+royalty) — Q14"
+  - "双向校准: 检查P3是否过度看空(是否忽略正面证据?)"
+  - "Kill Switch确定: 什么单一事件能让论点彻底翻转"
+  - "评级决定: 维持'中性关注(偏审慎)'还是下调至'审慎关注'"
 
 resume_instructions: |
   1. git branch --show-current + pwd 确认位置
-  2. 读取本文件(checkpoint.yaml)
-  3. 读取P1和P2报告头部摘要
-  4. 读取question_tree.md了解未回答问题
-  5. 直接启动Phase 3，不问澄清问题
+  2. 读取本文件(checkpoint.yaml) — 重点看p3 key_findings和p4_priorities
+  3. 读取P3报告Ch7(CQ更新+新衍生问题Q14-Q17)
+  4. 加载红队skill: /red-team-suite + /risk-topology
+  5. 直接启动Phase 4红队，不问澄清问题
