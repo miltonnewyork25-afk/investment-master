@@ -55,22 +55,27 @@ phases:
       - CQ1偏增量(RPO证据), CQ2双平台共存(非零和), CQ3方向对窗口紧
       - CI偏空3个/偏多2个 → 叙事方向: 合理偏贵
   phase_2:
-    status: complete
+    status: complete_v2
     date: 2026-03-31
-    output: staging/phase2_ch8-10 + phase2_synthesis.md
-    chars: 14642
-    dm_count: 35
+    output: staging/phase2_v2_ch8-11 + phase2_v2_synthesis.md
+    chars: 37472
+    dm_count: 111 (FACT:26, EST:45, REF:40)
+    causal_density: 6.88
     chapters:
-      - ch8: 财务剪刀差+SBC五维 (η=0.88<1.0, 覆盖率55%, Owner FCF=-$480M)
-      - ch9: 5年财务模型+三PE+可转债 (Owner FCF FY30转正, 可转债2027 $1.15B偿还)
-      - ch10: 利润率轨迹+运营杠杆 (毛利率天花板71-72%, GAAP盈利FY32)
+      - ch8: SBC五维深度+6家先例 (12.7K, η=0.88, 4收敛路径+概率)
+      - ch9: 5年模型+三PE+敏感性 (9.2K, DCF局限性分析, 退出法矩阵)
+      - ch10: 利润率+运营杠杆+员工效率 (8.3K, S&M杠杆NOW/CRM先例)
+      - ch11: 可转债+资本配置+Observe (6.1K, 三难困境, 5家可转债先例)
     key_findings:
-      - Owner FCF Base Case FY30才转正(比P1预估推迟2年)
-      - SBC绝对金额$1.6B→$1.59B几乎不降(率降额不降)
-      - η=0.88同行最低(PLTR 4.99, DDOG 1.36)
-      - 可转债2027 Oct $1.15B现金偿还风险(流动性24%)
-      - 正常化P/FCF ~110x(非headline 46x, 因Q4占68%)
-      - 估值核心分歧: FCF view($154合理) vs Owner FCF view($154高估)
+      - SBC收敛中位数IPO+7年(6家先例), 最强因子=收入增速
+      - 纯DCF不适合SNOW(近期负Owner FCF拖垮NPV), EV/Sales可比更可靠
+      - S&M杠杆是利润率改善最大来源(44%→33%), NOW/CRM -1.7pp/年先例
+      - 可转债创造资本配置三难困境, 回购可能被挤压至35-40%覆盖率
+      - 增速对估值的边际影响是SBC的2倍(敏感性矩阵验证)
+    quality_vs_v1:
+      - 字符: 14.6K→37.5K (2.5x)
+      - DM: 35(扁平)→111(FACT/EST/REF分级)
+      - 历史先例: 0→6家公司10年数据
   phase_3:
     status: complete
     date: 2026-03-31
