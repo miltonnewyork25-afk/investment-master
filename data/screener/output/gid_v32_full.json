@@ -217,8 +217,8 @@
     "market_cap": 84335648763,
     "sector": "Industrials",
     "industry": "Staffing & Employment Services",
-    "composite_score": 3.22,
-    "raw_acceleration": 2.68,
+    "composite_score": 2.37,
+    "raw_acceleration": 1.87,
     "quality_multiplier": 0.87,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -249,9 +249,10 @@
     "sm_efficiency_delta": 0.4801149377228455,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "FCF扩张",
+    "signal_summary": "FCF扩张 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$1187M vs Rev增$1311M (比率91%))",
       "以价换量"
     ]
   },
@@ -518,8 +519,8 @@
     "market_cap": 49376427862,
     "sector": "Industrials",
     "industry": "Industrial - Machinery",
-    "composite_score": 5.86,
-    "raw_acceleration": 3.53,
+    "composite_score": 4.6,
+    "raw_acceleration": 2.47,
     "quality_multiplier": 1.048,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -550,9 +551,11 @@
     "sm_efficiency_delta": 0.7772096637379473,
     "persistence_count": 1,
     "multi_metric_confirm": 2,
-    "signal_summary": "隐形复利 | +11pp | 低基数",
+    "signal_summary": "隐形复利 | +11pp | 低基数 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1448M vs Rev增$460M (比率315%))"
+    ]
   },
   {
     "symbol": "AMGN",
@@ -730,8 +733,8 @@
     "market_cap": 164616463426,
     "sector": "Technology",
     "industry": "Hardware, Equipment & Parts",
-    "composite_score": 8.19,
-    "raw_acceleration": 6.24,
+    "composite_score": 6.98,
+    "raw_acceleration": 4.37,
     "quality_multiplier": 1.642,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -762,9 +765,11 @@
     "sm_efficiency_delta": -1.1956141458199738,
     "persistence_count": 4,
     "multi_metric_confirm": 3,
-    "signal_summary": "超级扩张 | 3指标确认 | 销售效率↑ | 持续4维",
+    "signal_summary": "超级扩张 | 3指标确认 | 销售效率↑ | 持续4维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$3356M vs Rev增$7872M (比率43%))"
+    ]
   },
   {
     "symbol": "APP",
@@ -816,8 +821,8 @@
     "market_cap": 33419505923,
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "composite_score": 4.5,
-    "raw_acceleration": 5.25,
+    "composite_score": 3.55,
+    "raw_acceleration": 3.67,
     "quality_multiplier": 0.953,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -848,9 +853,10 @@
     "sm_efficiency_delta": null,
     "persistence_count": 1,
     "multi_metric_confirm": 2,
-    "signal_summary": "动量陷阱⚠",
+    "signal_summary": "动量陷阱⚠ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$3431M vs Rev增$1978M (比率174%))",
       "稀释9.7%",
       "收入波动大(lumpy)",
       "重组反弹? SGA/Rev降40pp"
@@ -1036,8 +1042,8 @@
     "market_cap": 39891718382,
     "sector": "Industrials",
     "industry": "Aerospace & Defense",
-    "composite_score": 4.94,
-    "raw_acceleration": 3.48,
+    "composite_score": 3.79,
+    "raw_acceleration": 2.43,
     "quality_multiplier": 1.068,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -1068,10 +1074,11 @@
     "sm_efficiency_delta": 0.37173772883940615,
     "persistence_count": 1,
     "multi_metric_confirm": 2,
-    "signal_summary": "杠杆突破 | OCF转正",
+    "signal_summary": "杠杆突破 | OCF转正 | ⚠并购加速",
     "vetoes": [],
     "flags": [
       "SBC/Rev=22.8%",
+      "并购加速⚠(商誉+IA增$635M vs Rev增$697M (比率91%))",
       "稀释6.1%"
     ]
   },
@@ -1081,8 +1088,8 @@
     "market_cap": 164836481830,
     "sector": "Industrials",
     "industry": "Aerospace & Defense",
-    "composite_score": 8.04,
-    "raw_acceleration": 7.18,
+    "composite_score": 6.81,
+    "raw_acceleration": 5.03,
     "quality_multiplier": 1.362,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -1113,9 +1120,10 @@
     "sm_efficiency_delta": -2.266572818157771,
     "persistence_count": 3,
     "multi_metric_confirm": 4,
-    "signal_summary": "杠杆突破 | FCF转正★ | +17pp | 4指标确认 | 销售效率↑ | 持续3维",
+    "signal_summary": "杠杆突破 | FCF转正★ | +17pp | 4指标确认 | 销售效率↑ | 持续3维 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$8801M vs Rev增$22945M (比率38%))",
       "稀释17.8%",
       "收入波动大(lumpy)"
     ]
@@ -1170,8 +1178,8 @@
     "market_cap": 16666124279,
     "sector": "Consumer Cyclical",
     "industry": "Packaging & Containers",
-    "composite_score": 6.97,
-    "raw_acceleration": 4.57,
+    "composite_score": 5.67,
+    "raw_acceleration": 3.2,
     "quality_multiplier": 1.425,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -1202,9 +1210,11 @@
     "sm_efficiency_delta": -5.177860417873931,
     "persistence_count": 1,
     "multi_metric_confirm": 2,
-    "signal_summary": "隐形复利 | FCF转正★ | 销售效率↑",
+    "signal_summary": "隐形复利 | FCF转正★ | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$4379M vs Rev增$1345M (比率326%))"
+    ]
   },
   {
     "symbol": "BDX",
@@ -1254,8 +1264,8 @@
     "market_cap": 12566022000,
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "composite_score": 7.38,
-    "raw_acceleration": 5.81,
+    "composite_score": 6.09,
+    "raw_acceleration": 4.07,
     "quality_multiplier": 0.968,
     "leverage_phase": "mature",
     "growth_quality": "stable_moat",
@@ -1286,9 +1296,10 @@
     "sm_efficiency_delta": 0.4908127955671091,
     "persistence_count": 0,
     "multi_metric_confirm": 4,
-    "signal_summary": "+7pp | 低基数 | 4指标确认",
+    "signal_summary": "+7pp | 低基数 | 4指标确认 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$6206M vs Rev增$108M (比率5762%))",
       "加速但基数低(<5%)"
     ]
   },
@@ -1342,8 +1353,8 @@
     "market_cap": 12874940391,
     "sector": "Consumer Defensive",
     "industry": "Discount Stores",
-    "composite_score": 6.17,
-    "raw_acceleration": 4.71,
+    "composite_score": 4.89,
+    "raw_acceleration": 3.29,
     "quality_multiplier": 1.112,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -1374,9 +1385,11 @@
     "sm_efficiency_delta": 0.31096771264024703,
     "persistence_count": 1,
     "multi_metric_confirm": 3,
-    "signal_summary": "杠杆突破 | 3指标确认",
+    "signal_summary": "杠杆突破 | 3指标确认 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1009M vs Rev增$955M (比率106%))"
+    ]
   },
   {
     "symbol": "BKNG",
@@ -1429,8 +1442,8 @@
     "market_cap": 143737488833,
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "composite_score": 3.63,
-    "raw_acceleration": 3.33,
+    "composite_score": 2.7,
+    "raw_acceleration": 2.33,
     "quality_multiplier": 0.706,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -1461,9 +1474,10 @@
     "sm_efficiency_delta": -0.17936420129932285,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "成熟再加速 | FCF扩张 | +12pp | 低基数",
+    "signal_summary": "成熟再加速 | FCF扩张 | +12pp | 低基数 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$16559M vs Rev增$3809M (比率435%))",
       "以价换量"
     ]
   },
@@ -1561,8 +1575,8 @@
     "market_cap": 23305383876,
     "sector": "Financial Services",
     "industry": "Insurance - Brokers",
-    "composite_score": 7.83,
-    "raw_acceleration": 6.62,
+    "composite_score": 6.57,
+    "raw_acceleration": 4.63,
     "quality_multiplier": 1.095,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -1593,9 +1607,10 @@
     "sm_efficiency_delta": null,
     "persistence_count": 1,
     "multi_metric_confirm": 3,
-    "signal_summary": "杠杆突破 | FCF扩张 | +34pp | 低基数 | 3指标确认",
+    "signal_summary": "杠杆突破 | FCF扩张 | +34pp | 低基数 | 3指标确认 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$15087M vs Rev增$1243M (比率1214%))",
       "收入波动大(lumpy)"
     ]
   },
@@ -1605,8 +1620,8 @@
     "market_cap": 102581001573,
     "sector": "Healthcare",
     "industry": "Medical - Devices",
-    "composite_score": 5.97,
-    "raw_acceleration": 3.82,
+    "composite_score": 4.7,
+    "raw_acceleration": 2.67,
     "quality_multiplier": 1.427,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -1637,9 +1652,11 @@
     "sm_efficiency_delta": -0.6477046382567195,
     "persistence_count": 3,
     "multi_metric_confirm": 2,
-    "signal_summary": "杠杆突破 | 销售效率↑ | 持续3维",
+    "signal_summary": "杠杆突破 | 销售效率↑ | 持续3维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1528M vs Rev增$3329M (比率46%))"
+    ]
   },
   {
     "symbol": "BTI",
@@ -1779,8 +1796,8 @@
     "market_cap": 13399880801,
     "sector": "Technology",
     "industry": "Information Technology Services",
-    "composite_score": 5.29,
-    "raw_acceleration": 3.81,
+    "composite_score": 4.1,
+    "raw_acceleration": 2.67,
     "quality_multiplier": 1.078,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -1811,9 +1828,11 @@
     "sm_efficiency_delta": null,
     "persistence_count": 1,
     "multi_metric_confirm": 2,
-    "signal_summary": "杠杆突破",
+    "signal_summary": "杠杆突破 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1484M vs Rev增$846M (比率175%))"
+    ]
   },
   {
     "symbol": "CART",
@@ -1865,8 +1884,8 @@
     "market_cap": 24496424012,
     "sector": "Consumer Cyclical",
     "industry": "Specialty Retail",
-    "composite_score": 6.48,
-    "raw_acceleration": 5.57,
+    "composite_score": 5.18,
+    "raw_acceleration": 3.9,
     "quality_multiplier": 1.021,
     "leverage_phase": "mature",
     "growth_quality": "pricing_power",
@@ -1897,9 +1916,11 @@
     "sm_efficiency_delta": null,
     "persistence_count": 2,
     "multi_metric_confirm": 3,
-    "signal_summary": "3指标确认",
+    "signal_summary": "3指标确认 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1245M vs Rev增$1434M (比率87%))"
+    ]
   },
   {
     "symbol": "CAT",
@@ -1951,8 +1972,8 @@
     "market_cap": 12131137486,
     "sector": "Consumer Cyclical",
     "industry": "Packaging & Containers",
-    "composite_score": 4.06,
-    "raw_acceleration": 4.25,
+    "composite_score": 3.15,
+    "raw_acceleration": 2.97,
     "quality_multiplier": 1.001,
     "leverage_phase": "release",
     "growth_quality": "margin_sacrifice",
@@ -1983,9 +2004,10 @@
     "sm_efficiency_delta": 0.07757487842985444,
     "persistence_count": 1,
     "multi_metric_confirm": 2,
-    "signal_summary": "动量陷阱⚠",
+    "signal_summary": "动量陷阱⚠ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$3155M vs Rev增$564M (比率559%))",
       "以价换量"
     ]
   },
@@ -1995,8 +2017,8 @@
     "market_cap": 78259016530,
     "sector": "Technology",
     "industry": "Software - Application",
-    "composite_score": 2.86,
-    "raw_acceleration": 2.2,
+    "composite_score": 2.1,
+    "raw_acceleration": 1.54,
     "quality_multiplier": 0.917,
     "leverage_phase": "investment",
     "growth_quality": "pricing_power",
@@ -2027,10 +2049,11 @@
     "sm_efficiency_delta": -0.42096400298441594,
     "persistence_count": 2,
     "multi_metric_confirm": 1,
-    "signal_summary": "⚠堆货 | 净现金",
+    "signal_summary": "⚠堆货 | ⚠并购加速 | 净现金",
     "vetoes": [],
     "flags": [
-      "渠道堆货风险!"
+      "渠道堆货风险!",
+      "并购加速⚠(商誉+IA增$494M vs Rev增$655M (比率75%))"
     ]
   },
   {
@@ -2081,8 +2104,8 @@
     "market_cap": 11489490910,
     "sector": "Consumer Defensive",
     "industry": "Beverages - Non-Alcoholic",
-    "composite_score": 3.7,
-    "raw_acceleration": 5.27,
+    "composite_score": 2.83,
+    "raw_acceleration": 3.69,
     "quality_multiplier": 0.781,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -2113,9 +2136,10 @@
     "sm_efficiency_delta": -23.173940555320144,
     "persistence_count": 1,
     "multi_metric_confirm": 2,
-    "signal_summary": "动量陷阱⚠ | EBITDA转正 | +107pp | 销售效率↑",
+    "signal_summary": "动量陷阱⚠ | EBITDA转正 | +107pp | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$918M vs Rev增$1160M (比率79%))",
       "收入波动大(erratic)",
       "重组反弹? SGA/Rev降23pp"
     ]
@@ -2126,8 +2150,8 @@
     "market_cap": 16483844440,
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "composite_score": 3.6,
-    "raw_acceleration": 3.99,
+    "composite_score": 2.75,
+    "raw_acceleration": 2.79,
     "quality_multiplier": 0.687,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -2158,10 +2182,11 @@
     "sm_efficiency_delta": null,
     "persistence_count": 0,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠ | FCF扩张 | +8pp | 低基数",
+    "signal_summary": "动量陷阱⚠ | FCF扩张 | +8pp | 低基数 | ⚠并购加速",
     "vetoes": [],
     "flags": [
       "可能并购驱动",
+      "并购加速⚠(商誉+IA增$404M vs Rev增$519M (比率78%))",
       "以价换量",
       "收入波动大(erratic)",
       "重组反弹? SGA/Rev降17pp"
@@ -2769,8 +2794,8 @@
     "market_cap": 22213781204,
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "composite_score": 3.58,
-    "raw_acceleration": 4.75,
+    "composite_score": 2.75,
+    "raw_acceleration": 3.33,
     "quality_multiplier": 0.648,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -2801,9 +2826,10 @@
     "sm_efficiency_delta": 1.6309482029034061,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠ | FCF扩张 | +7pp | 低基数",
+    "signal_summary": "动量陷阱⚠ | FCF扩张 | +7pp | 低基数 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$2407M vs Rev增$554M (比率435%))",
       "以价换量"
     ]
   },
@@ -2897,8 +2923,8 @@
     "market_cap": 180681719642,
     "sector": "",
     "industry": "",
-    "composite_score": 6.39,
-    "raw_acceleration": 4.48,
+    "composite_score": 5.1,
+    "raw_acceleration": 3.14,
     "quality_multiplier": 1.364,
     "leverage_phase": "release",
     "growth_quality": "stable_moat",
@@ -2929,9 +2955,11 @@
     "sm_efficiency_delta": 1.1285553668480333,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "杠杆突破",
+    "signal_summary": "杠杆突破 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$9045M vs Rev增$3630M (比率249%))"
+    ]
   },
   {
     "symbol": "CRWD",
@@ -2939,8 +2967,8 @@
     "market_cap": 112041592920,
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "composite_score": 6.57,
-    "raw_acceleration": 5.18,
+    "composite_score": 5.27,
+    "raw_acceleration": 3.62,
     "quality_multiplier": 1.241,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -2971,10 +2999,11 @@
     "sm_efficiency_delta": 7.693353024522921,
     "persistence_count": 1,
     "multi_metric_confirm": 4,
-    "signal_summary": "杠杆突破 | EBITDA转正 | 4指标确认 | 净现金",
+    "signal_summary": "杠杆突破 | EBITDA转正 | 4指标确认 | ⚠并购加速 | 净现金",
     "vetoes": [],
     "flags": [
-      "SBC/Rev=22.8%"
+      "SBC/Rev=22.8%",
+      "并购加速⚠(商誉+IA增$454M vs Rev增$858M (比率53%))"
     ]
   },
   {
@@ -3062,6 +3091,7 @@
       "VETO: 板块排除(Real Estate)"
     ],
     "flags": [
+      "并购加速⚠(商誉+IA增$3754M vs Rev增$511M (比率735%))",
       "以价换量"
     ]
   },
@@ -3239,8 +3269,8 @@
     "market_cap": 8691474430,
     "sector": "Consumer Defensive",
     "industry": "Packaged Foods",
-    "composite_score": 5.1,
-    "raw_acceleration": 4.71,
+    "composite_score": 4.12,
+    "raw_acceleration": 3.29,
     "quality_multiplier": 0.894,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -3271,9 +3301,10 @@
     "sm_efficiency_delta": 1.302636834649995,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠ | +16pp | 低基数",
+    "signal_summary": "动量陷阱⚠ | +16pp | 低基数 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$136M vs Rev增$421M (比率32%))",
       "以价换量"
     ]
   },
@@ -3369,8 +3400,8 @@
     "market_cap": 101612402110,
     "sector": "Technology",
     "industry": "Computer Hardware",
-    "composite_score": 4.81,
-    "raw_acceleration": 5.76,
+    "composite_score": 3.83,
+    "raw_acceleration": 4.03,
     "quality_multiplier": 0.927,
     "leverage_phase": "inflection",
     "growth_quality": "volume",
@@ -3401,10 +3432,11 @@
     "sm_efficiency_delta": -2.25905455338167,
     "persistence_count": 3,
     "multi_metric_confirm": 2,
-    "signal_summary": "动量陷阱⚠ | +13pp | 低基数 | 销售效率↑ | 持续3维 | ⚠堆货",
+    "signal_summary": "动量陷阱⚠ | +13pp | 低基数 | 销售效率↑ | 持续3维 | ⚠堆货 | ⚠并购加速",
     "vetoes": [],
     "flags": [
       "渠道堆货风险!",
+      "并购加速⚠(季度跳变: Q0 +40% vs Q1 +11% (>2x))",
       "收入波动大(lumpy)"
     ]
   },
@@ -3498,8 +3530,8 @@
     "market_cap": 132461277480,
     "sector": "Healthcare",
     "industry": "Medical - Diagnostics & Research",
-    "composite_score": 4.62,
-    "raw_acceleration": 3.76,
+    "composite_score": 3.52,
+    "raw_acceleration": 2.63,
     "quality_multiplier": 0.762,
     "leverage_phase": "mature",
     "growth_quality": "volume",
@@ -3530,9 +3562,11 @@
     "sm_efficiency_delta": 3.596120540291327,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "成熟再加速 | +3pp | 低基数",
+    "signal_summary": "成熟再加速 | +3pp | 低基数 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1903M vs Rev增$693M (比率275%))"
+    ]
   },
   {
     "symbol": "DIS",
@@ -3671,8 +3705,8 @@
     "market_cap": 27969654727,
     "sector": "Industrials",
     "industry": "Industrial - Machinery",
-    "composite_score": 7.88,
-    "raw_acceleration": 4.99,
+    "composite_score": 6.62,
+    "raw_acceleration": 3.49,
     "quality_multiplier": 1.304,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -3703,9 +3737,11 @@
     "sm_efficiency_delta": -0.6985643400602157,
     "persistence_count": 3,
     "multi_metric_confirm": 4,
-    "signal_summary": "杠杆突破 | +5pp | 低基数 | 4指标确认 | 销售效率↑ | 持续3维",
+    "signal_summary": "杠杆突破 | +5pp | 低基数 | 4指标确认 | 销售效率↑ | 持续3维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$703M vs Rev增$347M (比率203%))"
+    ]
   },
   {
     "symbol": "DPZ",
@@ -3841,8 +3877,8 @@
     "market_cap": 77657546678,
     "sector": "Basic Materials",
     "industry": "Chemicals - Specialty",
-    "composite_score": 7.65,
-    "raw_acceleration": 5.98,
+    "composite_score": 6.37,
+    "raw_acceleration": 4.19,
     "quality_multiplier": 1.116,
     "leverage_phase": "mature",
     "growth_quality": "volume",
@@ -3873,9 +3909,11 @@
     "sm_efficiency_delta": -0.9798677353377698,
     "persistence_count": 3,
     "multi_metric_confirm": 4,
-    "signal_summary": "成熟再加速 | +5pp | 低基数 | 4指标确认 | 销售效率↑ | 持续3维",
+    "signal_summary": "成熟再加速 | +5pp | 低基数 | 4指标确认 | 销售效率↑ | 持续3维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1699M vs Rev增$340M (比率500%))"
+    ]
   },
   {
     "symbol": "EFX",
@@ -3927,8 +3965,8 @@
     "market_cap": 4377935359,
     "sector": "Consumer Defensive",
     "industry": "Household & Personal Products",
-    "composite_score": 8.49,
-    "raw_acceleration": 6.44,
+    "composite_score": 7.33,
+    "raw_acceleration": 4.51,
     "quality_multiplier": 1.082,
     "leverage_phase": "release",
     "growth_quality": "stable_moat",
@@ -3959,9 +3997,10 @@
     "sm_efficiency_delta": -4.223613974791185,
     "persistence_count": 1,
     "multi_metric_confirm": 2,
-    "signal_summary": "杠杆突破 | FCF扩张 | +20pp | 低基数 | 销售效率↑",
+    "signal_summary": "杠杆突破 | FCF扩张 | +20pp | 低基数 | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(季度跳变: Q0 +38% vs Q1 +14% (>2x))",
       "收入波动大(lumpy)"
     ]
   },
@@ -4013,8 +4052,8 @@
     "market_cap": 31779733092,
     "sector": "Industrials",
     "industry": "Engineering & Construction",
-    "composite_score": 7.12,
-    "raw_acceleration": 6.21,
+    "composite_score": 5.82,
+    "raw_acceleration": 4.34,
     "quality_multiplier": 1.095,
     "leverage_phase": "inflection",
     "growth_quality": "volume",
@@ -4045,9 +4084,11 @@
     "sm_efficiency_delta": -0.8294427267284075,
     "persistence_count": 1,
     "multi_metric_confirm": 4,
-    "signal_summary": "隐形复利 | +3pp | 4指标确认 | 销售效率↑",
+    "signal_summary": "隐形复利 | +3pp | 4指标确认 | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$855M vs Rev增$2424M (比率35%))"
+    ]
   },
   {
     "symbol": "ENSG",
@@ -4144,8 +4185,8 @@
     "market_cap": 137859660000,
     "sector": "Industrials",
     "industry": "Industrial - Machinery",
-    "composite_score": 4.25,
-    "raw_acceleration": 3.3,
+    "composite_score": 3.21,
+    "raw_acceleration": 2.31,
     "quality_multiplier": 1.005,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -4176,9 +4217,11 @@
     "sm_efficiency_delta": -0.4416762070908078,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "信号不足",
+    "signal_summary": "⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1453M vs Rev增$2570M (比率57%))"
+    ]
   },
   {
     "symbol": "EW",
@@ -4399,8 +4442,8 @@
     "market_cap": 16436017027,
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "composite_score": 3.22,
-    "raw_acceleration": 2.11,
+    "composite_score": 2.39,
+    "raw_acceleration": 1.48,
     "quality_multiplier": 1.006,
     "leverage_phase": "investment",
     "growth_quality": "stable_moat",
@@ -4431,9 +4474,11 @@
     "sm_efficiency_delta": 0.4493139371746757,
     "persistence_count": 1,
     "multi_metric_confirm": 0,
-    "signal_summary": "隐形复利 | 净现金",
+    "signal_summary": "隐形复利 | ⚠并购加速 | 净现金",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$116M vs Rev增$254M (比率46%))"
+    ]
   },
   {
     "symbol": "FICO",
@@ -5042,8 +5087,8 @@
     "market_cap": 14710771700,
     "sector": "Consumer Cyclical",
     "industry": "Specialty Retail",
-    "composite_score": 3.7,
-    "raw_acceleration": 3.51,
+    "composite_score": 2.76,
+    "raw_acceleration": 2.46,
     "quality_multiplier": 0.717,
     "leverage_phase": "mature_improving",
     "growth_quality": "volume",
@@ -5074,9 +5119,11 @@
     "sm_efficiency_delta": 1.870164427203246,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "信号不足",
+    "signal_summary": "⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$348M vs Rev增$814M (比率43%))"
+    ]
   },
   {
     "symbol": "GWRE",
@@ -5128,8 +5175,8 @@
     "market_cap": 13303889404,
     "sector": "Consumer Cyclical",
     "industry": "Travel Lodging",
-    "composite_score": 2.95,
-    "raw_acceleration": 4.7,
+    "composite_score": 2.21,
+    "raw_acceleration": 3.29,
     "quality_multiplier": 0.579,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -5160,9 +5207,10 @@
     "sm_efficiency_delta": -10.14041006286734,
     "persistence_count": 2,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠ | +25pp | 销售效率↑",
+    "signal_summary": "动量陷阱⚠ | +25pp | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$975M vs Rev增$2025M (比率48%))",
       "以价换量",
       "收入波动大(erratic)"
     ]
@@ -5173,8 +5221,8 @@
     "market_cap": 13140049797,
     "sector": "Consumer Cyclical",
     "industry": "Leisure",
-    "composite_score": 6.65,
-    "raw_acceleration": 7.33,
+    "composite_score": 5.87,
+    "raw_acceleration": 5.13,
     "quality_multiplier": 1.246,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -5205,9 +5253,10 @@
     "sm_efficiency_delta": -3.3983019273238133,
     "persistence_count": 3,
     "multi_metric_confirm": 4,
-    "signal_summary": "动量陷阱⚠ | FCF转正★ | +12pp | 低基数 | 4指标确认 | 销售效率↑ | 持续3维",
+    "signal_summary": "动量陷阱⚠ | FCF转正★ | +12pp | 低基数 | 4指标确认 | 销售效率↑ | 持续3维 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(季度跳变: Q0 +31% vs Q1 +8% (>2x))",
       "收入波动大(lumpy)",
       "重组反弹? SGA/Rev降36pp"
     ]
@@ -5262,8 +5311,8 @@
     "market_cap": 40146146205,
     "sector": "Industrials",
     "industry": "Aerospace & Defense",
-    "composite_score": 3.75,
-    "raw_acceleration": 3.85,
+    "composite_score": 2.88,
+    "raw_acceleration": 2.69,
     "quality_multiplier": 0.982,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -5294,9 +5343,10 @@
     "sm_efficiency_delta": -0.4625021008407373,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠",
+    "signal_summary": "动量陷阱⚠ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$418M vs Rev增$642M (比率65%))",
       "以价换量"
     ]
   },
@@ -5348,8 +5398,8 @@
     "market_cap": 67766468566,
     "sector": "Consumer Cyclical",
     "industry": "Travel Lodging",
-    "composite_score": 7.06,
-    "raw_acceleration": 4.51,
+    "composite_score": 5.76,
+    "raw_acceleration": 3.16,
     "quality_multiplier": 1.253,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -5380,9 +5430,11 @@
     "sm_efficiency_delta": -0.40802591419676215,
     "persistence_count": 3,
     "multi_metric_confirm": 3,
-    "signal_summary": "成熟再加速 | +4pp | 低基数 | 3指标确认 | 持续3维",
+    "signal_summary": "成熟再加速 | +4pp | 低基数 | 3指标确认 | 持续3维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$533M vs Rev增$865M (比率62%))"
+    ]
   },
   {
     "symbol": "HPE",
@@ -5390,8 +5442,8 @@
     "market_cap": 28799223802,
     "sector": "Technology",
     "industry": "Communication Equipment",
-    "composite_score": 7.02,
-    "raw_acceleration": 6.2,
+    "composite_score": 5.71,
+    "raw_acceleration": 4.34,
     "quality_multiplier": 1.065,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -5422,9 +5474,11 @@
     "sm_efficiency_delta": 2.0205061039379935,
     "persistence_count": 1,
     "multi_metric_confirm": 3,
-    "signal_summary": "杠杆突破 | +4pp | 3指标确认",
+    "signal_summary": "杠杆突破 | +4pp | 3指标确认 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$11542M vs Rev增$4640M (比率249%))"
+    ]
   },
   {
     "symbol": "HPQ",
@@ -5474,8 +5528,8 @@
     "market_cap": 44022619964,
     "sector": "Consumer Defensive",
     "industry": "Food Confectioners",
-    "composite_score": 1.66,
-    "raw_acceleration": 2.29,
+    "composite_score": 1.19,
+    "raw_acceleration": 1.6,
     "quality_multiplier": 0.432,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -5506,9 +5560,10 @@
     "sm_efficiency_delta": 1.8041998235515742,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "信号不足",
+    "signal_summary": "⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$525M vs Rev增$490M (比率107%))",
       "以价换量",
       "收入波动大(erratic)"
     ]
@@ -5519,8 +5574,8 @@
     "market_cap": 24846669543,
     "sector": "Industrials",
     "industry": "Electrical Equipment & Parts",
-    "composite_score": 8.17,
-    "raw_acceleration": 5.79,
+    "composite_score": 6.95,
+    "raw_acceleration": 4.05,
     "quality_multiplier": 1.23,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -5551,9 +5606,11 @@
     "sm_efficiency_delta": -0.1174001465002732,
     "persistence_count": 3,
     "multi_metric_confirm": 4,
-    "signal_summary": "隐形复利 | +8pp | 低基数 | 4指标确认 | 持续3维",
+    "signal_summary": "隐形复利 | +8pp | 低基数 | 4指标确认 | 持续3维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$874M vs Rev增$216M (比率405%))"
+    ]
   },
   {
     "symbol": "HUBS",
@@ -5731,8 +5788,8 @@
     "market_cap": 231019013520,
     "sector": "Technology",
     "industry": "Information Technology Services",
-    "composite_score": 3.31,
-    "raw_acceleration": 4.33,
+    "composite_score": 2.51,
+    "raw_acceleration": 3.03,
     "quality_multiplier": 0.731,
     "leverage_phase": "investment",
     "growth_quality": "pricing_power",
@@ -5763,9 +5820,10 @@
     "sm_efficiency_delta": 0.062399081057129324,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "动量陷阱⚠ | +7pp | 低基数",
+    "signal_summary": "动量陷阱⚠ | +7pp | 低基数 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$7741M vs Rev增$4785M (比率162%))",
       "收入波动大(lumpy)"
     ]
   },
@@ -5859,8 +5917,8 @@
     "market_cap": 19313606596,
     "sector": "Consumer Cyclical",
     "industry": "Travel Lodging",
-    "composite_score": 3.77,
-    "raw_acceleration": 3.29,
+    "composite_score": 2.81,
+    "raw_acceleration": 2.3,
     "quality_multiplier": 0.784,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -5891,9 +5949,10 @@
     "sm_efficiency_delta": -24.815618054434008,
     "persistence_count": 1,
     "multi_metric_confirm": 0,
-    "signal_summary": "销售效率↑",
+    "signal_summary": "销售效率↑ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(季度跳变: Q0 +37% vs Q1 +14% (>2x))",
       "以价换量",
       "收入波动大(lumpy)",
       "重组反弹? SGA/Rev降30pp"
@@ -5993,8 +6052,8 @@
     "market_cap": 19722720250,
     "sector": "Consumer Cyclical",
     "industry": "Packaging & Containers",
-    "composite_score": 3.16,
-    "raw_acceleration": 5.06,
+    "composite_score": 2.39,
+    "raw_acceleration": 3.54,
     "quality_multiplier": 0.59,
     "leverage_phase": "investment",
     "growth_quality": "pricing_power",
@@ -6025,9 +6084,10 @@
     "sm_efficiency_delta": 1.4427057658498708,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠",
+    "signal_summary": "动量陷阱⚠ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$6186M vs Rev增$6277M (比率99%))",
       "稀释52.1%",
       "收入波动大(lumpy)"
     ]
@@ -6038,8 +6098,8 @@
     "market_cap": 27952984000,
     "sector": "Healthcare",
     "industry": "Medical - Diagnostics & Research",
-    "composite_score": 4.45,
-    "raw_acceleration": 3.87,
+    "composite_score": 3.5,
+    "raw_acceleration": 2.71,
     "quality_multiplier": 0.973,
     "leverage_phase": "inflection",
     "growth_quality": "margin_sacrifice",
@@ -6070,9 +6130,10 @@
     "sm_efficiency_delta": -0.7210680059969725,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "动量陷阱⚠ | +4pp | 低基数 | 销售效率↑",
+    "signal_summary": "动量陷阱⚠ | +4pp | 低基数 | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$2369M vs Rev增$905M (比率262%))",
       "以价换量"
     ]
   },
@@ -6082,8 +6143,8 @@
     "market_cap": 32450416577,
     "sector": "Industrials",
     "industry": "Industrial - Machinery",
-    "composite_score": 5.13,
-    "raw_acceleration": 4.08,
+    "composite_score": 4.16,
+    "raw_acceleration": 2.86,
     "quality_multiplier": 1.184,
     "leverage_phase": "release",
     "growth_quality": "margin_sacrifice",
@@ -6114,9 +6175,10 @@
     "sm_efficiency_delta": -0.39444810972818445,
     "persistence_count": 1,
     "multi_metric_confirm": 2,
-    "signal_summary": "动量陷阱⚠ | +4pp | 低基数",
+    "signal_summary": "动量陷阱⚠ | +4pp | 低基数 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$204M vs Rev增$416M (比率49%))",
       "以价换量"
     ]
   },
@@ -6338,8 +6400,8 @@
     "market_cap": 48066204000,
     "sector": "Technology",
     "industry": "Hardware, Equipment & Parts",
-    "composite_score": 6.39,
-    "raw_acceleration": 3.85,
+    "composite_score": 5.1,
+    "raw_acceleration": 2.7,
     "quality_multiplier": 1.109,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -6370,9 +6432,11 @@
     "sm_efficiency_delta": 0.1254815100154083,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "隐形复利 | FCF扩张 | +8pp | 低基数",
+    "signal_summary": "隐形复利 | FCF扩张 | +8pp | 低基数 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1725M vs Rev增$659M (比率262%))"
+    ]
   },
   {
     "symbol": "KHC",
@@ -6509,8 +6573,8 @@
     "market_cap": 22228901769,
     "sector": "Technology",
     "industry": "Information Technology Services",
-    "composite_score": 5.13,
-    "raw_acceleration": 4.99,
+    "composite_score": 3.96,
+    "raw_acceleration": 3.5,
     "quality_multiplier": 0.785,
     "leverage_phase": "mature_improving",
     "growth_quality": "negative",
@@ -6541,9 +6605,11 @@
     "sm_efficiency_delta": -1.5917525773195873,
     "persistence_count": 1,
     "multi_metric_confirm": 3,
-    "signal_summary": "FCF扩张 | 3指标确认",
+    "signal_summary": "FCF扩张 | 3指标确认 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$199M vs Rev增$512M (比率39%))"
+    ]
   },
   {
     "symbol": "LH",
@@ -6551,8 +6617,8 @@
     "market_cap": 21869018945,
     "sector": "Healthcare",
     "industry": "Medical - Diagnostics & Research",
-    "composite_score": 6.56,
-    "raw_acceleration": 4.04,
+    "composite_score": 5.27,
+    "raw_acceleration": 2.83,
     "quality_multiplier": 1.441,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -6583,9 +6649,11 @@
     "sm_efficiency_delta": -2.5576797607353363,
     "persistence_count": 3,
     "multi_metric_confirm": 1,
-    "signal_summary": "杠杆突破 | 销售效率↑ | 持续3维",
+    "signal_summary": "杠杆突破 | 销售效率↑ | 持续3维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$527M vs Rev增$943M (比率56%))"
+    ]
   },
   {
     "symbol": "LITE",
@@ -6679,8 +6747,8 @@
     "market_cap": 133276456669,
     "sector": "Consumer Cyclical",
     "industry": "Home Improvement",
-    "composite_score": 4.51,
-    "raw_acceleration": 5.55,
+    "composite_score": 3.57,
+    "raw_acceleration": 3.89,
     "quality_multiplier": 0.767,
     "leverage_phase": "investment",
     "growth_quality": "pricing_power",
@@ -6711,9 +6779,10 @@
     "sm_efficiency_delta": 0.3927682186278254,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "动量陷阱⚠ | FCF扩张 | +7pp | 低基数",
+    "signal_summary": "动量陷阱⚠ | FCF扩张 | +7pp | 低基数 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$9853M vs Rev增$2613M (比率377%))",
       "收入波动大(lumpy)"
     ]
   },
@@ -6723,8 +6792,8 @@
     "market_cap": 23145574714,
     "sector": "Financial Services",
     "industry": "Financial - Capital Markets",
-    "composite_score": 4.54,
-    "raw_acceleration": 4.29,
+    "composite_score": 3.46,
+    "raw_acceleration": 3.01,
     "quality_multiplier": 0.769,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -6755,10 +6824,11 @@
     "sm_efficiency_delta": 8.723821367811606,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "FCF扩张 | +13pp",
+    "signal_summary": "FCF扩张 | +13pp | ⚠并购加速",
     "vetoes": [],
     "flags": [
       "FCF margin=-5.8%",
+      "并购加速⚠(商誉+IA增$2320M vs Rev增$4604M (比率50%))",
       "稀释5.3%"
     ]
   },
@@ -6982,8 +7052,8 @@
     "market_cap": 83154942850,
     "sector": "Consumer Cyclical",
     "industry": "Travel Lodging",
-    "composite_score": 4.77,
-    "raw_acceleration": 3.96,
+    "composite_score": 3.65,
+    "raw_acceleration": 2.77,
     "quality_multiplier": 0.983,
     "leverage_phase": "mature_improving",
     "growth_quality": "volume",
@@ -7014,9 +7084,11 @@
     "sm_efficiency_delta": -0.8928642425333075,
     "persistence_count": 2,
     "multi_metric_confirm": 0,
-    "signal_summary": "FCF扩张 | 销售效率↑",
+    "signal_summary": "FCF扩张 | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1024M vs Rev增$1086M (比率94%))"
+    ]
   },
   {
     "symbol": "MCD",
@@ -7108,8 +7180,8 @@
     "market_cap": 76240773000,
     "sector": "Financial Services",
     "industry": "Financial - Data & Stock Exchanges",
-    "composite_score": 7.85,
-    "raw_acceleration": 4.81,
+    "composite_score": 6.59,
+    "raw_acceleration": 3.37,
     "quality_multiplier": 1.474,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -7140,9 +7212,11 @@
     "sm_efficiency_delta": -1.6005848516087866,
     "persistence_count": 3,
     "multi_metric_confirm": 4,
-    "signal_summary": "成熟再加速 | FCF扩张 | +6pp | 低基数 | 4指标确认 | 销售效率↑ | 持续3维",
+    "signal_summary": "成熟再加速 | FCF扩张 | +6pp | 低基数 | 4指标确认 | 销售效率↑ | 持续3维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$350M vs Rev增$630M (比率56%))"
+    ]
   },
   {
     "symbol": "MDT",
@@ -7408,8 +7482,8 @@
     "market_cap": 9941939882,
     "sector": "Consumer Cyclical",
     "industry": "Auto - Parts",
-    "composite_score": 8.13,
-    "raw_acceleration": 5.86,
+    "composite_score": 6.91,
+    "raw_acceleration": 4.1,
     "quality_multiplier": 1.058,
     "leverage_phase": "inflection",
     "growth_quality": "volume",
@@ -7440,9 +7514,11 @@
     "sm_efficiency_delta": -2.3958076548162826,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "隐形复利 | +16pp | 低基数 | 销售效率↑",
+    "signal_summary": "隐形复利 | +16pp | 低基数 | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(季度跳变: Q0 +31% vs Q1 +12% (>2x))"
+    ]
   },
   {
     "symbol": "MPWR",
@@ -7494,8 +7570,8 @@
     "market_cap": 84337950551,
     "sector": "Financial Services",
     "industry": "Insurance - Brokers",
-    "composite_score": 3.64,
-    "raw_acceleration": 2.65,
+    "composite_score": 2.72,
+    "raw_acceleration": 1.86,
     "quality_multiplier": 1.024,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -7526,9 +7602,11 @@
     "sm_efficiency_delta": null,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "FCF扩张",
+    "signal_summary": "FCF扩张 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$957M vs Rev增$2523M (比率38%))"
+    ]
   },
   {
     "symbol": "MRVL",
@@ -7706,8 +7784,8 @@
     "market_cap": 78800494503,
     "sector": "Technology",
     "industry": "Communication Equipment",
-    "composite_score": 3.8,
-    "raw_acceleration": 2.93,
+    "composite_score": 2.84,
+    "raw_acceleration": 2.05,
     "quality_multiplier": 0.753,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -7738,9 +7816,11 @@
     "sm_efficiency_delta": -1.4107149524720999,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "成熟再加速 | +5pp | 低基数 | 销售效率↑",
+    "signal_summary": "成熟再加速 | +5pp | 低基数 | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$5129M vs Rev增$864M (比率594%))"
+    ]
   },
   {
     "symbol": "MTD",
@@ -7748,8 +7828,8 @@
     "market_cap": 23977680687,
     "sector": "Healthcare",
     "industry": "Medical - Diagnostics & Research",
-    "composite_score": 3.95,
-    "raw_acceleration": 2.79,
+    "composite_score": 2.96,
+    "raw_acceleration": 1.95,
     "quality_multiplier": 0.756,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -7780,9 +7860,11 @@
     "sm_efficiency_delta": 0.28964301365169476,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "+8pp | 低基数",
+    "signal_summary": "+8pp | 低基数 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$92M vs Rev增$154M (比率60%))"
+    ]
   },
   {
     "symbol": "MTSI",
@@ -7876,8 +7958,8 @@
     "market_cap": 479613261390,
     "sector": "Technology",
     "industry": "Semiconductors",
-    "composite_score": 7.53,
-    "raw_acceleration": 8.95,
+    "composite_score": 6.24,
+    "raw_acceleration": 6.27,
     "quality_multiplier": 1.101,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -7908,9 +7990,10 @@
     "sm_efficiency_delta": -2.097310265009817,
     "persistence_count": 4,
     "multi_metric_confirm": 4,
-    "signal_summary": "杠杆突破 | +85pp | 4指标确认 | 销售效率↑ | 持续4维",
+    "signal_summary": "杠杆突破 | +85pp | 4指标确认 | 销售效率↑ | 持续4维 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(季度跳变: Q0 +196% vs Q1 +57% (>2x))",
       "收入波动大(erratic)"
     ]
   },
@@ -8181,8 +8264,8 @@
     "market_cap": 118846520000,
     "sector": "Technology",
     "industry": "Software - Application",
-    "composite_score": 4.5,
-    "raw_acceleration": 3.11,
+    "composite_score": 3.42,
+    "raw_acceleration": 2.18,
     "quality_multiplier": 1.153,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -8213,9 +8296,11 @@
     "sm_efficiency_delta": -2.500204728158913,
     "persistence_count": 2,
     "multi_metric_confirm": 1,
-    "signal_summary": "销售效率↑",
+    "signal_summary": "销售效率↑ | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$3217M vs Rev增$2294M (比率140%))"
+    ]
   },
   {
     "symbol": "NTAP",
@@ -8265,8 +8350,8 @@
     "market_cap": 26624168350,
     "sector": "Healthcare",
     "industry": "Medical - Diagnostics & Research",
-    "composite_score": 7.62,
-    "raw_acceleration": 5.79,
+    "composite_score": 6.33,
+    "raw_acceleration": 4.05,
     "quality_multiplier": 1.351,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -8297,9 +8382,10 @@
     "sm_efficiency_delta": -5.574086347466313,
     "persistence_count": 2,
     "multi_metric_confirm": 4,
-    "signal_summary": "隐形复利 | EBITDA转正 | 4指标确认 | 销售效率↑ | 净现金",
+    "signal_summary": "隐形复利 | EBITDA转正 | 4指标确认 | 销售效率↑ | ⚠并购加速 | 净现金",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$515M vs Rev增$609M (比率85%))",
       "稀释9.6%"
     ]
   },
@@ -8568,8 +8654,8 @@
     "market_cap": 9610737618,
     "sector": "Consumer Cyclical",
     "industry": "Auto - Dealerships",
-    "composite_score": 4.14,
-    "raw_acceleration": 3.44,
+    "composite_score": 3.12,
+    "raw_acceleration": 2.41,
     "quality_multiplier": 0.745,
     "leverage_phase": "mature",
     "growth_quality": "volume",
@@ -8600,9 +8686,11 @@
     "sm_efficiency_delta": 11.371688963190863,
     "persistence_count": 0,
     "multi_metric_confirm": 1,
-    "signal_summary": "信号不足",
+    "signal_summary": "⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$217M vs Rev增$276M (比率79%))"
+    ]
   },
   {
     "symbol": "PANW",
@@ -8610,8 +8698,8 @@
     "market_cap": 113822613778,
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "composite_score": 5.91,
-    "raw_acceleration": 4.16,
+    "composite_score": 4.65,
+    "raw_acceleration": 2.91,
     "quality_multiplier": 1.29,
     "leverage_phase": "release",
     "growth_quality": "stable_moat",
@@ -8642,9 +8730,11 @@
     "sm_efficiency_delta": -1.8646802610436275,
     "persistence_count": 2,
     "multi_metric_confirm": 3,
-    "signal_summary": "杠杆突破 | 3指标确认 | 销售效率↑",
+    "signal_summary": "杠杆突破 | 3指标确认 | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1604M vs Rev增$1323M (比率121%))"
+    ]
   },
   {
     "symbol": "PAYX",
@@ -8652,8 +8742,8 @@
     "market_cap": 33243975545,
     "sector": "Industrials",
     "industry": "Staffing & Employment Services",
-    "composite_score": 5.13,
-    "raw_acceleration": 3.95,
+    "composite_score": 3.96,
+    "raw_acceleration": 2.77,
     "quality_multiplier": 0.863,
     "leverage_phase": "investment",
     "growth_quality": "pricing_power",
@@ -8684,9 +8774,11 @@
     "sm_efficiency_delta": 3.8963550409266112,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "+6pp | 低基数",
+    "signal_summary": "+6pp | 低基数 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$4384M vs Rev增$894M (比率490%))"
+    ]
   },
   {
     "symbol": "PEP",
@@ -8784,8 +8876,8 @@
     "market_cap": 13852987263,
     "sector": "Consumer Defensive",
     "industry": "Food Distribution",
-    "composite_score": 5.59,
-    "raw_acceleration": 4.66,
+    "composite_score": 4.36,
+    "raw_acceleration": 3.26,
     "quality_multiplier": 0.959,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -8816,9 +8908,11 @@
     "sm_efficiency_delta": null,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "信号不足",
+    "signal_summary": "⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1779M vs Rev增$5665M (比率31%))"
+    ]
   },
   {
     "symbol": "PG",
@@ -8826,8 +8920,8 @@
     "market_cap": 351982174486,
     "sector": "Consumer Defensive",
     "industry": "Household & Personal Products",
-    "composite_score": 3.05,
-    "raw_acceleration": 3.27,
+    "composite_score": 2.25,
+    "raw_acceleration": 2.29,
     "quality_multiplier": 0.787,
     "leverage_phase": "mature",
     "growth_quality": "volume",
@@ -8858,9 +8952,11 @@
     "sm_efficiency_delta": 0.8993976600192717,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "信号不足",
+    "signal_summary": "⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1210M vs Rev增$913M (比率133%))"
+    ]
   },
   {
     "symbol": "PGR",
@@ -8914,8 +9010,8 @@
     "market_cap": 19300079585,
     "sector": "Consumer Cyclical",
     "industry": "Packaging & Containers",
-    "composite_score": 4.58,
-    "raw_acceleration": 3.98,
+    "composite_score": 3.48,
+    "raw_acceleration": 2.78,
     "quality_multiplier": 0.84,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -8946,9 +9042,11 @@
     "sm_efficiency_delta": 0.14393491161938687,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "FCF扩张",
+    "signal_summary": "FCF扩张 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$860M vs Rev增$606M (比率142%))"
+    ]
   },
   {
     "symbol": "PLTR",
@@ -9217,8 +9315,8 @@
     "market_cap": 83640013380,
     "sector": "Industrials",
     "industry": "Engineering & Construction",
-    "composite_score": 3.59,
-    "raw_acceleration": 3.61,
+    "composite_score": 2.68,
+    "raw_acceleration": 2.53,
     "quality_multiplier": 0.74,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -9249,9 +9347,11 @@
     "sm_efficiency_delta": -1.2771826439278122,
     "persistence_count": 1,
     "multi_metric_confirm": 0,
-    "signal_summary": "销售效率↑",
+    "signal_summary": "销售效率↑ | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$3046M vs Rev增$4679M (比率65%))"
+    ]
   },
   {
     "symbol": "PYPL",
@@ -9474,8 +9574,8 @@
     "market_cap": 39931560562,
     "sector": "Financial Services",
     "industry": "Financial - Mortgages",
-    "composite_score": 1.72,
-    "raw_acceleration": 3.94,
+    "composite_score": 1.25,
+    "raw_acceleration": 2.76,
     "quality_multiplier": 0.36,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -9506,10 +9606,11 @@
     "sm_efficiency_delta": -0.7439677201216259,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠ | +97pp | 销售效率↑ | 净现金",
+    "signal_summary": "动量陷阱⚠ | +97pp | 销售效率↑ | ⚠并购加速 | 净现金",
     "vetoes": [],
     "flags": [
       "FCF margin=-58.4%",
+      "并购加速⚠(商誉+IA增$3974M vs Rev增$1438M (比率276%))",
       "以价换量",
       "稀释837.6%",
       "收入波动大(erratic)",
@@ -9566,8 +9667,8 @@
     "market_cap": 33694856999,
     "sector": "Healthcare",
     "industry": "Medical - Instruments & Supplies",
-    "composite_score": 6.1,
-    "raw_acceleration": 3.57,
+    "composite_score": 4.82,
+    "raw_acceleration": 2.5,
     "quality_multiplier": 1.437,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -9598,9 +9699,11 @@
     "sm_efficiency_delta": 0.7214001595594972,
     "persistence_count": 3,
     "multi_metric_confirm": 3,
-    "signal_summary": "隐形复利 | 3指标确认 | 持续3维 | 净现金",
+    "signal_summary": "隐形复利 | 3指标确认 | 持续3维 | ⚠并购加速 | 净现金",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$184M vs Rev增$471M (比率39%))"
+    ]
   },
   {
     "symbol": "ROL",
@@ -9608,8 +9711,8 @@
     "market_cap": 26522614144,
     "sector": "Consumer Cyclical",
     "industry": "Personal Products & Services",
-    "composite_score": 1.89,
-    "raw_acceleration": 2.24,
+    "composite_score": 1.38,
+    "raw_acceleration": 1.57,
     "quality_multiplier": 0.706,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -9640,9 +9743,10 @@
     "sm_efficiency_delta": 15.495455421146696,
     "persistence_count": 1,
     "multi_metric_confirm": 0,
-    "signal_summary": "动量陷阱⚠",
+    "signal_summary": "动量陷阱⚠ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$254M vs Rev增$372M (比率68%))",
       "以价换量",
       "收入波动大(lumpy)"
     ]
@@ -9653,8 +9757,8 @@
     "market_cap": 37780737930,
     "sector": "Industrials",
     "industry": "Industrial - Machinery",
-    "composite_score": 4.83,
-    "raw_acceleration": 3.57,
+    "composite_score": 3.7,
+    "raw_acceleration": 2.5,
     "quality_multiplier": 1.009,
     "leverage_phase": "inflection",
     "growth_quality": "pricing_power",
@@ -9685,9 +9789,11 @@
     "sm_efficiency_delta": 0.5220229317127689,
     "persistence_count": 1,
     "multi_metric_confirm": 2,
-    "signal_summary": "隐形复利",
+    "signal_summary": "隐形复利 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$2733M vs Rev增$863M (比率317%))"
+    ]
   },
   {
     "symbol": "RTX",
@@ -9818,6 +9924,7 @@
       "VETO: 行业排除(Copper)"
     ],
     "flags": [
+      "并购加速⚠(季度跳变: Q0 +39% vs Q1 +15% (>2x))",
       "稀释6.6%"
     ]
   },
@@ -9999,8 +10106,8 @@
     "market_cap": 79233489500,
     "sector": "Basic Materials",
     "industry": "Chemicals - Specialty",
-    "composite_score": 6.56,
-    "raw_acceleration": 4.84,
+    "composite_score": 5.27,
+    "raw_acceleration": 3.39,
     "quality_multiplier": 1.018,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -10031,9 +10138,10 @@
     "sm_efficiency_delta": -1.1304693018461691,
     "persistence_count": 2,
     "multi_metric_confirm": 4,
-    "signal_summary": "成熟再加速 | +5pp | 低基数 | 4指标确认 | 销售效率↑",
+    "signal_summary": "成熟再加速 | +5pp | 低基数 | 4指标确认 | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$889M vs Rev增$476M (比率187%))",
       "收入波动大(lumpy)"
     ]
   },
@@ -10177,8 +10285,8 @@
     "market_cap": 79044228060,
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "composite_score": 3.72,
-    "raw_acceleration": 4.53,
+    "composite_score": 2.86,
+    "raw_acceleration": 3.17,
     "quality_multiplier": 0.907,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -10209,9 +10317,10 @@
     "sm_efficiency_delta": 2.080476534623987,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠ | FCF扩张 | +40pp",
+    "signal_summary": "动量陷阱⚠ | FCF扩张 | +40pp | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$35935M vs Rev增$1936M (比率1856%))",
       "以价换量"
     ]
   },
@@ -10267,8 +10376,8 @@
     "market_cap": 127929966508,
     "sector": "Financial Services",
     "industry": "Financial - Data & Stock Exchanges",
-    "composite_score": 7.55,
-    "raw_acceleration": 5.68,
+    "composite_score": 6.27,
+    "raw_acceleration": 3.98,
     "quality_multiplier": 1.485,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -10299,9 +10408,11 @@
     "sm_efficiency_delta": 1.1007607417231782,
     "persistence_count": 3,
     "multi_metric_confirm": 4,
-    "signal_summary": "杠杆突破 | 4指标确认 | 持续3维",
+    "signal_summary": "杠杆突破 | 4指标确认 | 持续3维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1273M vs Rev增$1129M (比率113%))"
+    ]
   },
   {
     "symbol": "SSNC",
@@ -10309,8 +10420,8 @@
     "market_cap": 17526048730,
     "sector": "Technology",
     "industry": "Software - Application",
-    "composite_score": 4.36,
-    "raw_acceleration": 3.01,
+    "composite_score": 3.31,
+    "raw_acceleration": 2.11,
     "quality_multiplier": 1.038,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -10341,9 +10452,11 @@
     "sm_efficiency_delta": 0.38259575613022356,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "隐形复利 | FCF扩张",
+    "signal_summary": "隐形复利 | FCF扩张 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1346M vs Rev增$390M (比率345%))"
+    ]
   },
   {
     "symbol": "STLA",
@@ -10395,8 +10508,8 @@
     "market_cap": 33891772319,
     "sector": "Financial Services",
     "industry": "Asset Management",
-    "composite_score": 5.28,
-    "raw_acceleration": 4.12,
+    "composite_score": 4.09,
+    "raw_acceleration": 2.89,
     "quality_multiplier": 0.994,
     "leverage_phase": "mature",
     "growth_quality": "negative",
@@ -10427,9 +10540,11 @@
     "sm_efficiency_delta": 0.38493235423989847,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "信号不足",
+    "signal_summary": "⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$314M vs Rev增$655M (比率48%))"
+    ]
   },
   {
     "symbol": "STZ",
@@ -10481,8 +10596,8 @@
     "market_cap": 128878065080,
     "sector": "Healthcare",
     "industry": "Medical - Devices",
-    "composite_score": 4.32,
-    "raw_acceleration": 3.09,
+    "composite_score": 3.28,
+    "raw_acceleration": 2.17,
     "quality_multiplier": 1.099,
     "leverage_phase": "release",
     "growth_quality": "pricing_power",
@@ -10513,9 +10628,11 @@
     "sm_efficiency_delta": 0.22904040244271684,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "杠杆突破",
+    "signal_summary": "杠杆突破 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$4722M vs Rev增$2521M (比率187%))"
+    ]
   },
   {
     "symbol": "SYY",
@@ -10607,8 +10724,8 @@
     "market_cap": 29588090772,
     "sector": "Technology",
     "industry": "Hardware, Equipment & Parts",
-    "composite_score": 3.48,
-    "raw_acceleration": 3.02,
+    "composite_score": 2.65,
+    "raw_acceleration": 2.11,
     "quality_multiplier": 1.126,
     "leverage_phase": "release",
     "growth_quality": "margin_sacrifice",
@@ -10639,9 +10756,10 @@
     "sm_efficiency_delta": 13.354165635475457,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠",
+    "signal_summary": "动量陷阱⚠ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$784M vs Rev增$445M (比率176%))",
       "以价换量"
     ]
   },
@@ -10651,8 +10769,8 @@
     "market_cap": 44840769520,
     "sector": "Technology",
     "industry": "Semiconductors",
-    "composite_score": 8.05,
-    "raw_acceleration": 5.99,
+    "composite_score": 6.82,
+    "raw_acceleration": 4.19,
     "quality_multiplier": 1.146,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -10683,9 +10801,10 @@
     "sm_efficiency_delta": -5.658794283899313,
     "persistence_count": 0,
     "multi_metric_confirm": 2,
-    "signal_summary": "杠杆突破 | +22pp | 低基数 | 销售效率↑",
+    "signal_summary": "杠杆突破 | +22pp | 低基数 | 销售效率↑ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$161M vs Rev增$370M (比率43%))",
       "收入波动大(lumpy)"
     ]
   },
@@ -10731,7 +10850,9 @@
     "vetoes": [
       "VETO: 行业排除(Drug Manufacturers - Specialty & Generic)"
     ],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$216M vs Rev增$715M (比率30%))"
+    ]
   },
   {
     "symbol": "THC",
@@ -10739,8 +10860,8 @@
     "market_cap": 20005263233,
     "sector": "Healthcare",
     "industry": "Medical - Care Facilities",
-    "composite_score": 6.91,
-    "raw_acceleration": 4.59,
+    "composite_score": 5.6,
+    "raw_acceleration": 3.21,
     "quality_multiplier": 1.074,
     "leverage_phase": "investment",
     "growth_quality": "pricing_power",
@@ -10771,9 +10892,11 @@
     "sm_efficiency_delta": null,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "隐形复利 | FCF扩张 | +6pp | 低基数",
+    "signal_summary": "隐形复利 | FCF扩张 | +6pp | 低基数 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$458M vs Rev增$645M (比率71%))"
+    ]
   },
   {
     "symbol": "TJX",
@@ -10825,8 +10948,8 @@
     "market_cap": 172506138386,
     "sector": "Healthcare",
     "industry": "Medical - Diagnostics & Research",
-    "composite_score": 4.22,
-    "raw_acceleration": 3.15,
+    "composite_score": 3.18,
+    "raw_acceleration": 2.2,
     "quality_multiplier": 0.804,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -10857,9 +10980,11 @@
     "sm_efficiency_delta": 0.169222018044767,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "成熟再加速 | +4pp | 低基数",
+    "signal_summary": "成熟再加速 | +4pp | 低基数 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$3814M vs Rev增$1677M (比率227%))"
+    ]
   },
   {
     "symbol": "TMUS",
@@ -11340,8 +11465,8 @@
     "market_cap": 15035842079,
     "sector": "Technology",
     "industry": "Software - Application",
-    "composite_score": 4.49,
-    "raw_acceleration": 2.66,
+    "composite_score": 3.42,
+    "raw_acceleration": 1.87,
     "quality_multiplier": 1.219,
     "leverage_phase": "investment",
     "growth_quality": "pricing_power",
@@ -11372,9 +11497,11 @@
     "sm_efficiency_delta": -15.878178744698817,
     "persistence_count": 3,
     "multi_metric_confirm": 1,
-    "signal_summary": "隐形复利 | FCF扩张 | 销售效率↑ | 持续3维",
+    "signal_summary": "隐形复利 | FCF扩张 | 销售效率↑ | 持续3维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$907M vs Rev增$195M (比率466%))"
+    ]
   },
   {
     "symbol": "UAL",
@@ -11550,8 +11677,8 @@
     "market_cap": 24020807291,
     "sector": "Consumer Cyclical",
     "industry": "Specialty Retail",
-    "composite_score": 4.6,
-    "raw_acceleration": 4.08,
+    "composite_score": 3.5,
+    "raw_acceleration": 2.86,
     "quality_multiplier": 0.633,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -11582,9 +11709,10 @@
     "sm_efficiency_delta": 2.3468250036797507,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "FCF扩张 | +5pp | 低基数",
+    "signal_summary": "FCF扩张 | +5pp | 低基数 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$419M vs Rev增$1097M (比率38%))",
       "收入波动大(lumpy)"
     ]
   },
@@ -11594,8 +11722,8 @@
     "market_cap": 256046277424,
     "sector": "Healthcare",
     "industry": "Medical - Healthcare Plans",
-    "composite_score": 2.94,
-    "raw_acceleration": 3.03,
+    "composite_score": 2.16,
+    "raw_acceleration": 2.12,
     "quality_multiplier": 0.81,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -11626,9 +11754,11 @@
     "sm_efficiency_delta": null,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "FCF扩张",
+    "signal_summary": "FCF扩张 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$110499M vs Rev增$47289M (比率234%))"
+    ]
   },
   {
     "symbol": "UPS",
@@ -11762,8 +11892,8 @@
     "market_cap": 592178118372,
     "sector": "Financial Services",
     "industry": "Financial - Credit Services",
-    "composite_score": 3.77,
-    "raw_acceleration": 2.99,
+    "composite_score": 2.81,
+    "raw_acceleration": 2.09,
     "quality_multiplier": 1.116,
     "leverage_phase": "investment",
     "growth_quality": "pricing_power",
@@ -11794,9 +11924,11 @@
     "sm_efficiency_delta": 0.5434572176256807,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "信号不足",
+    "signal_summary": "⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$1695M vs Rev增$4589M (比率37%))"
+    ]
   },
   {
     "symbol": "VEEV",
@@ -11932,8 +12064,8 @@
     "market_cap": 28044549944,
     "sector": "Industrials",
     "industry": "Consulting Services",
-    "composite_score": 3.72,
-    "raw_acceleration": 3.44,
+    "composite_score": 2.86,
+    "raw_acceleration": 2.41,
     "quality_multiplier": 1.087,
     "leverage_phase": "release",
     "growth_quality": "margin_sacrifice",
@@ -11964,9 +12096,10 @@
     "sm_efficiency_delta": 2.3766852588706744,
     "persistence_count": 2,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠",
+    "signal_summary": "动量陷阱⚠ | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$106M vs Rev增$191M (比率55%))",
       "以价换量"
     ]
   },
@@ -11976,8 +12109,8 @@
     "market_cap": 22118219761,
     "sector": "Technology",
     "industry": "Software - Infrastructure",
-    "composite_score": 6.75,
-    "raw_acceleration": 4.79,
+    "composite_score": 5.45,
+    "raw_acceleration": 3.36,
     "quality_multiplier": 1.279,
     "leverage_phase": "release",
     "growth_quality": "stable_moat",
@@ -12008,9 +12141,11 @@
     "sm_efficiency_delta": 0.5387669461444755,
     "persistence_count": 2,
     "multi_metric_confirm": 3,
-    "signal_summary": "杠杆突破 | 3指标确认",
+    "signal_summary": "杠杆突破 | 3指标确认 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$145M vs Rev增$99M (比率146%))"
+    ]
   },
   {
     "symbol": "VRT",
@@ -12018,8 +12153,8 @@
     "market_cap": 99046970240,
     "sector": "Industrials",
     "industry": "Electrical Equipment & Parts",
-    "composite_score": 4.51,
-    "raw_acceleration": 4.03,
+    "composite_score": 3.43,
+    "raw_acceleration": 2.82,
     "quality_multiplier": 0.894,
     "leverage_phase": "inflection",
     "growth_quality": "pricing_power",
@@ -12050,9 +12185,10 @@
     "sm_efficiency_delta": 0.6169356366253744,
     "persistence_count": 2,
     "multi_metric_confirm": 2,
-    "signal_summary": "信号不足",
+    "signal_summary": "⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$1120M vs Rev增$2218M (比率51%))",
       "收入波动大(lumpy)"
     ]
   },
@@ -12062,8 +12198,8 @@
     "market_cap": 40475819806,
     "sector": "Industrials",
     "industry": "Railroads",
-    "composite_score": 6.12,
-    "raw_acceleration": 4.64,
+    "composite_score": 4.85,
+    "raw_acceleration": 3.25,
     "quality_multiplier": 0.856,
     "leverage_phase": "investment",
     "growth_quality": "volume",
@@ -12094,9 +12230,11 @@
     "sm_efficiency_delta": 2.2176260789348454,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "FCF扩张 | +8pp | 低基数",
+    "signal_summary": "FCF扩张 | +8pp | 低基数 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$2410M vs Rev增$780M (比率309%))"
+    ]
   },
   {
     "symbol": "WAT",
@@ -12274,8 +12412,8 @@
     "market_cap": 29187069834,
     "sector": "Industrials",
     "industry": "Industrial - Machinery",
-    "composite_score": 8.06,
-    "raw_acceleration": 4.71,
+    "composite_score": 6.82,
+    "raw_acceleration": 3.3,
     "quality_multiplier": 1.458,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -12306,9 +12444,11 @@
     "sm_efficiency_delta": -2.198060075093867,
     "persistence_count": 4,
     "multi_metric_confirm": 4,
-    "signal_summary": "杠杆突破 | +3pp | 低基数 | 4指标确认 | 销售效率↑ | 持续4维",
+    "signal_summary": "杠杆突破 | +3pp | 低基数 | 4指标确认 | 销售效率↑ | 持续4维 | ⚠并购加速",
     "vetoes": [],
-    "flags": []
+    "flags": [
+      "并购加速⚠(商誉+IA增$245M vs Rev增$474M (比率52%))"
+    ]
   },
   {
     "symbol": "YUM",
@@ -12316,8 +12456,8 @@
     "market_cap": 44535512970,
     "sector": "Consumer Cyclical",
     "industry": "Restaurants",
-    "composite_score": 4.84,
-    "raw_acceleration": 3.57,
+    "composite_score": 3.71,
+    "raw_acceleration": 2.5,
     "quality_multiplier": 1.011,
     "leverage_phase": "release",
     "growth_quality": "volume",
@@ -12348,9 +12488,10 @@
     "sm_efficiency_delta": 0.1357343836412781,
     "persistence_count": 1,
     "multi_metric_confirm": 3,
-    "signal_summary": "杠杆突破 | 3指标确认",
+    "signal_summary": "杠杆突破 | 3指标确认 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$726M vs Rev增$664M (比率109%))",
       "收入波动大(lumpy)"
     ]
   },
@@ -12360,8 +12501,8 @@
     "market_cap": 18470520740,
     "sector": "Healthcare",
     "industry": "Medical - Devices",
-    "composite_score": 3.77,
-    "raw_acceleration": 3.78,
+    "composite_score": 2.9,
+    "raw_acceleration": 2.64,
     "quality_multiplier": 0.777,
     "leverage_phase": "investment",
     "growth_quality": "margin_sacrifice",
@@ -12392,9 +12533,10 @@
     "sm_efficiency_delta": 1.727498674701394,
     "persistence_count": 1,
     "multi_metric_confirm": 1,
-    "signal_summary": "动量陷阱⚠ | FCF扩张 | +6pp | 低基数",
+    "signal_summary": "动量陷阱⚠ | FCF扩张 | +6pp | 低基数 | ⚠并购加速",
     "vetoes": [],
     "flags": [
+      "并购加速⚠(商誉+IA增$1115M vs Rev增$553M (比率202%))",
       "以价换量"
     ]
   },

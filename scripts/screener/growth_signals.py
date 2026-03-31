@@ -154,6 +154,8 @@ class G3Signals:
 
     # Organic Growth Check (有机增长检查)
     potential_acquisition_flag: Optional[bool] = None  # 收入跳增>50%但无季度持续=可能并购
+    acquisition_boost_flag: Optional[bool] = None     # v3.2: 并购驱动增长(商誉跳增或季度YoY跳变)
+    acquisition_boost_detail: str = ""                # 触发原因
 
     # v3.0: Sales Efficiency (销售效率 — 产品市场契合度的最硬证据)
     sm_rev_q0: Optional[float] = None             # S&M/Rev最新季%(或SGA/Rev)
@@ -879,9 +881,8 @@ def extract_g3(income_q: list, ratios_q: list, balance: list) -> G3Signals:
                     if g3.deferred_rev_growth is not None and rev_g is not None:
                         g3.deferred_faster_than_rev = g3.deferred_rev_growth > rev_g
 
-    # --- Organic Growth Check ---
+    # --- Organic Growth Check + v3.2 Acquisition Boost Detection ---
     if income_q and len(income_q) >= 6:
-        # If revenue jumped >50% in one quarter but adjacent quarters are flat = acquisition
         r0 = _get_q_field(income_q, 0, 'revenue')
         r1 = _get_q_field(income_q, 1, 'revenue')
         r4 = _get_q_field(income_q, 4, 'revenue')
@@ -890,8 +891,42 @@ def extract_g3(income_q: list, ratios_q: list, balance: list) -> G3Signals:
             yoy_q0 = _yoy(r0, r4)
             yoy_q1 = _yoy(r1, r5)
             if yoy_q0 is not None and yoy_q1 is not None:
+                # Original check: massive single-quarter jump
                 if yoy_q0 > 50 and yoy_q1 < 10:
                     g3.potential_acquisition_flag = True
+
+                # v3.2: Refined acquisition boost detection
+                # Condition A: 最新季YoY > 2× 次新季YoY 且 >25%
+                # (ELF模式: 38% vs 14% — 某季开始并表)
+                if (yoy_q0 > 25 and yoy_q1 is not None and yoy_q1 > 0
+                    and yoy_q0 > yoy_q1 * 2.0):
+                    g3.acquisition_boost_flag = True
+                    g3.acquisition_boost_detail = (
+                        f"季度跳变: Q0 +{yoy_q0:.0f}% vs Q1 +{yoy_q1:.0f}% (>{2.0:.0f}x)"
+                    )
+
+    # v3.2: Condition B: 商誉+无形资产大幅增加(年度数据)
+    if balance and len(balance) >= 2 and isinstance(balance[0], dict) and isinstance(balance[1], dict):
+        gw_ia_0 = (balance[0].get('goodwill', 0) or 0) + (balance[0].get('intangibleAssets', 0) or 0)
+        gw_ia_1 = (balance[1].get('goodwill', 0) or 0) + (balance[1].get('intangibleAssets', 0) or 0)
+        gw_delta = gw_ia_0 - gw_ia_1
+
+        if income_q and len(income_q) >= 5:
+            # Use annual revenue delta
+            inc_data = [_get_q_field(income_q, i, 'revenue') for i in range(min(8, len(income_q)))]
+            # Sum latest 4Q vs prior 4Q
+            sum_recent = sum(r for r in inc_data[:4] if r) if len(inc_data) >= 4 else 0
+            sum_prior = sum(r for r in inc_data[4:8] if r) if len(inc_data) >= 8 else 0
+            rev_delta = sum_recent - sum_prior if sum_prior > 0 else 0
+
+            if gw_delta > 50e6 and rev_delta > 0:
+                ratio = gw_delta / rev_delta
+                if ratio > 0.30:
+                    g3.acquisition_boost_flag = True
+                    g3.acquisition_boost_detail = (
+                        f"商誉+IA增${gw_delta/1e6:.0f}M vs Rev增${rev_delta/1e6:.0f}M "
+                        f"(比率{ratio:.0%})"
+                    )
 
     # --- v3.0: Sales Efficiency (产品市场契合度的财务证据) ---
     sm_ratios = []  # S&M/Rev or SGA/Rev per quarter
@@ -1702,6 +1737,8 @@ def check_gid_flags(result: GIDResult) -> list[str]:
         flags.append("渠道堆货风险!")
     if result.g3.potential_acquisition_flag:
         flags.append("可能并购驱动")
+    if result.g3.acquisition_boost_flag:
+        flags.append(f"并购加速⚠({result.g3.acquisition_boost_detail})")
     if result.g3.growth_type == "margin_sacrifice":
         flags.append("以价换量")
     if (result.g1.rev_yoy and result.g1.rev_yoy[0] is not None
@@ -1767,6 +1804,11 @@ def compute_gid_composite(result: GIDResult) -> float:
         raw = min(raw + 0.8, 10.0)
     elif result.g1.multi_metric_confirm >= 3:
         raw = min(raw + 0.5, 10.0)
+
+    # v3.2: Acquisition boost penalty — 并购驱动的加速不等于有机加速
+    # G1的"加速"如果来自并购→打7折(ELF/BRO验证)
+    if result.g3.acquisition_boost_flag:
+        raw = round(raw * 0.70, 2)
 
     result.raw_acceleration_score = round(raw, 2)
 
@@ -1855,6 +1897,8 @@ def _generate_summary(r: GIDResult) -> str:
         parts.append(f"持续{r.g3.persistence_count}维")
     if r.g3.channel_stuffing_risk:
         parts.append("⚠堆货")
+    if r.g3.acquisition_boost_flag:
+        parts.append("⚠并购加速")
     if r.g4.balance_sheet_grade == "fortress":
         parts.append("净现金")
 
