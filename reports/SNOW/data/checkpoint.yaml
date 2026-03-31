@@ -122,30 +122,42 @@ phases:
       - 新增: Python 5方法验证(G6门控通过)
       - 概率校准: Bear 30%→25%(Iceberg样本偏差), Base 30%→35%
   phase_5:
-    status: in_progress_v0.7
+    status: in_progress_v0.85
     date: 2026-03-31
     output: SNOW_Complete_v1.0.md
-    chars: 89000
-    dm_count: 255
-    mermaid_count: 24
-    dm_density: 2.87
+    chars: 112382
+    dm_count: 332
+    mermaid_count: 25
+    dm_density: 2.95
     progress:
       executive_summary: complete
-      part1_ch1_7: complete (staging fully incorporated)
-      part2_ch8_11: 85% (Ch11 convertible detail partially missing)
-      part3_ch12_14: complete (staging fully incorporated + Win Rate/弹性测试/多云溢价/数据邻近衰减)
-      part4_ch15_18: 80% (Ch16 red team detail + Ch17 valuation detail partially missing)
+      part1_ch1_7: needs_expansion (每章~2-4.6K, 目标14.4K, 需历史先例+深度展开)
+      part2_ch8_11: 95% (Ch8完整12.8K, Ch9展开至8.8K, Ch10 7.8K, Ch11完整10.7K)
+      part3_ch12_14: needs_expansion (每章5-6K, staging有12K+未全纳入)
+      part4_ch15_18: 90% (Ch15 6.4K+约束分类+聪明钱, Ch16 9.2K完整, Ch17 7K完整, Ch18 3.3K)
       framework_gaps_fixed:
         - B2_PEP_narrative: embedded in Ch15.0
-        - C1_belief_inversion: embedded in Ch16.3 (循环依赖B1↔B3 + 翻转分析)
-        - C3_constraint_classification: embedded in CQ注册表 (S/C/I for each CQ)
+        - C1_belief_inversion: embedded in Ch16.4 (循环依赖B1↔B3 + 翻转分析)
+        - C3_constraint_classification: embedded in Ch15.5 (S/C/I for each CQ)
+        - B3_variable_taxonomy: embedded in Ch15 T1-T5 (迁移/约束/校验)
+        - smart_money: embedded in Ch15.6 (内部人零买入+Berkshire退出)
+        -承重墙联合概率: embedded in Ch16.5
+        - 三维离散度: embedded in Ch17.6
+        - Kill Switch: embedded in Ch17.7
       cognitive_boundary_scoring: complete (Ch18.2 六维评分表)
+    session1_completed:
+      - Ch11: 1.9K→10.7K (可转债5先例+三策略现金流瀑布+压力测试+敏感性)
+      - Ch15: +3K (M3约束分类+聪明钱定位)
+      - Ch16: 3.1K→9.2K (三偏差深度+RT-1~7+方法论碰撞+承重墙+校准可视化)
+      - Ch17: 1.9K→7K (5方法逐一+三维离散度+Kill Switch+统一性)
+      - Ch9: +2K (假设驱动分析+完整P&L)
     remaining_work:
-      - Ch11 convertible: 可转债5家先例完整展开+资本配置trade-off详细
-      - Ch16 red team: RT-1~RT-7 七问完整展开+承重墙Mermaid
-      - Ch17 valuation: SOTP详细计算+5方法Python验证过程
-      - Mermaid: 需+1张达到≥25门控
-      - 整体: 89K→需继续扩展到≥142K(staging内容完整纳入)
+      - Part I深度展开: Ch1-7每章需+8-12K (历史先例+FACT数据+Mermaid) = ~70K
+      - Part III staging纳入: Ch12-14每章需+4-8K (staging v2未完全纳入) = ~18K
+      - Ch9/Ch10/Ch18: 每章需+4-7K = ~18K
+      - 执行摘要扩展: +3K
+      - 新增Mermaid: ~10张 (DM目标450差118个)
+      - 总缺口: 112K→270K = 158K (需2个session)
 
 quality_targets:
   min_chars: 270000  # G1
