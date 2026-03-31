@@ -1,0 +1,104 @@
+{
+  "ticker": "SNOW",
+  "fetched_at": "2026-03-31",
+  "short_interest": {
+    "shares_short": 12170000,
+    "short_pct_float": 3.75,
+    "days_to_cover": 1.38,
+    "trend": "declining — fell from 12.26M to 12.17M in last reporting period; days-to-cover range 1.2-3.9 over past year with 94.5% YoY increase in ratio",
+    "short_sale_ratio_fintel": 21.14,
+    "note": "short_pct_float varies by source: MarketBeat 3.75%, StockAnalysis 3.44% (11.15M shares). Relatively low vs heavily-shorted stocks."
+  },
+  "options_sentiment": {
+    "put_call_ratio": 0.83,
+    "put_call_ratio_5d_trend": "decreased -1.1% to 0.9 (Market Chameleon)",
+    "implied_volatility": 42.85,
+    "iv_unit": "annualized percentage (30-day mean IV as of 2026-01-16)",
+    "iv_rank": null,
+    "iv_rank_note": "IV rank/percentile not available from free sources for March 2026. Check Barchart/Market Chameleon for real-time data.",
+    "unusual_activity": [
+      "No specific unusual options trades reported for March 2026 in free sources. Barchart Premium or Benzinga Pro required for detailed flow data."
+    ],
+    "sentiment_summary": "Mildly bullish — put/call ratio <1.0 indicates more call than put open interest"
+  },
+  "analyst_context": {
+    "stock_price_approx": 162.58,
+    "stock_price_date": "2026-03-26",
+    "market_cap_B": 57.6,
+    "avg_price_target": 237.26,
+    "upside_to_target_pct": 40,
+    "analyst_coverage": {
+      "strong_buy": 36,
+      "moderate_buy": 3,
+      "hold": 4,
+      "strong_sell": 2,
+      "total": 45
+    },
+    "product_revenue_yoy_growth_pct": 30,
+    "rpo_B": 9.77,
+    "rpo_growth_pct": 42,
+    "net_new_customers_quarter": 740,
+    "net_new_customers_yoy_growth_pct": 40
+  },
+  "short_squeeze_assessment": {
+    "potential": "low",
+    "rationale": "Short interest at 3.75% of float is modest. Days-to-cover of 1.38 is very low, meaning shorts can exit quickly without driving price spikes. No indication SNOW is on major short-squeeze watchlists. The 40%+ analyst upside is driven by fundamental re-rating expectations (AI/Cortex), not squeeze mechanics."
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-OPT-001",
+      "value": "12.17M shares short, 3.75% of float",
+      "type": "H",
+      "source": "MarketBeat / FINRA short interest report",
+      "date": "2026-03-15"
+    },
+    {
+      "id": "DM-OPT-002",
+      "value": "Days to cover: 1.38 (avg vol 8.78M/day)",
+      "type": "H",
+      "source": "MarketBeat",
+      "date": "2026-03-15"
+    },
+    {
+      "id": "DM-OPT-003",
+      "value": "OI Put/Call ratio: 0.83",
+      "type": "H",
+      "source": "Fintel",
+      "date": "2026-03-30"
+    },
+    {
+      "id": "DM-OPT-004",
+      "value": "30-day mean IV: 42.85%",
+      "type": "H",
+      "source": "AlphaQuery",
+      "date": "2026-01-16"
+    },
+    {
+      "id": "DM-OPT-005",
+      "value": "Short sale ratio (Fintel): 21.14%",
+      "type": "H",
+      "source": "Fintel",
+      "date": "2026-03-05"
+    },
+    {
+      "id": "DM-OPT-006",
+      "value": "Analyst consensus: 36 Strong Buy / 45 total, avg PT $237.26",
+      "type": "H",
+      "source": "Barchart / Wall Street consensus",
+      "date": "2026-03-26"
+    }
+  ],
+  "sources": [
+    "https://www.marketbeat.com/stocks/NYSE/SNOW/short-interest/",
+    "https://fintel.io/ss/us/snow",
+    "https://fintel.io/sopt/us/snow",
+    "https://stockanalysis.com/stocks/snow/statistics/",
+    "https://www.benzinga.com/quote/SNOW/short-interest",
+    "https://www.barchart.com/stocks/quotes/SNOW/put-call-ratios",
+    "https://marketchameleon.com/Overview/SNOW/OpenInterestTrends/",
+    "https://www.alphaquery.com/stock/SNOW/volatility-option-statistics/30-day/iv-mean",
+    "https://marketchameleon.com/Overview/SNOW/IV/",
+    "https://www.barchart.com/story/news/562796/wall-street-thinks-hard-hit-snow-stock-can-gain-40-in-2026-should-you-buy-snowflake-now",
+    "https://www.benzinga.com/markets/tech/26/03/51490046/snowflake-reclaims-the-ai-throne-why-cortex-is-a-total-game-changer"
+  ]
+}

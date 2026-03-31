@@ -1,0 +1,316 @@
+{
+  "ticker": "SNOW",
+  "fetched_at": "2026-03-31",
+  "institutional_summary": {
+    "total_institutions": 1447,
+    "ownership_pct": 64.3,
+    "total_shares_held": 262098991,
+    "hedge_funds_holding": 90,
+    "hedge_funds_prior_quarter": 102,
+    "hedge_fund_net_share_change": -682200,
+    "note": "Hedge fund count dropped from 102 to 90 in Q4 2025; net selling of ~682K shares"
+  },
+  "top_holders": [
+    {
+      "name": "Vanguard Group Inc",
+      "shares": 28650000,
+      "ownership_pct": 8.58,
+      "value_usd": 5540000000,
+      "change_pct": null,
+      "note": "Largest institutional holder"
+    },
+    {
+      "name": "BlackRock Inc",
+      "shares": 23520000,
+      "ownership_pct": 7.04,
+      "value_usd": 2420000000,
+      "change_pct": null,
+      "note": "Second largest holder; some sources report 12.1M shares (3.6%) under narrower entity definition"
+    },
+    {
+      "name": "Tudor Investment Corp et al",
+      "shares": 18500000,
+      "ownership_pct": 5.54,
+      "value_usd": null,
+      "change_pct": null,
+      "note": "Third largest per HedgeFollow"
+    },
+    {
+      "name": "Altimeter Capital Management LP",
+      "shares": 15503498,
+      "ownership_pct": 4.71,
+      "value_usd": null,
+      "change_pct": -17.0,
+      "note": "SC 13G/A filed Feb 2024; sold 2.1M shares in Q1 2024 but SNOW remains largest position in fund"
+    },
+    {
+      "name": "FMR LLC (Fidelity)",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change_pct": 53.0,
+      "note": "53% increase in position reported; exact share count not confirmed"
+    },
+    {
+      "name": "Jennison Associates LLC",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change_pct": 20.0,
+      "note": "20% addition to position"
+    },
+    {
+      "name": "JPMorgan Chase & Co",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change_pct": null,
+      "note": "Top 10 holder"
+    },
+    {
+      "name": "Morgan Stanley",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change_pct": null,
+      "note": "Trimmed position; direction negative"
+    },
+    {
+      "name": "State Street Corp",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change_pct": null,
+      "note": "Top 10 holder"
+    },
+    {
+      "name": "Susquehanna International Group LLP",
+      "shares": null,
+      "ownership_pct": null,
+      "value_usd": null,
+      "change_pct": null,
+      "note": "Top 10 holder"
+    }
+  ],
+  "notable_moves": [
+    {
+      "investor": "Berkshire Hathaway",
+      "action": "FULL EXIT",
+      "quarter": "Q2 2024",
+      "shares_sold": 6000000,
+      "value_usd": 989000000,
+      "entry_price_approx": "IPO era (Sep 2020)",
+      "exit_price_approx": 135,
+      "return_pct": 12.5,
+      "thesis": "Exited ~$989M position at ~$135/share after 4 years for only ~12.5% gain. Concerns cited: slowing growth, distance from profitability, data breach damage, inability to compete with MSFT/AMZN in cloud. Stock subsequently rose ~47% after exit."
+    },
+    {
+      "investor": "Tiger Global Management",
+      "action": "FULL EXIT",
+      "quarter": "2023",
+      "shares_sold": null,
+      "value_usd": null,
+      "thesis": "Tiger Global sold entire SNOW position in 2023 during broader tech portfolio deleveraging. Was an early private investor. No re-entry as of Q1 2026."
+    },
+    {
+      "investor": "Altimeter Capital (Brad Gerstner)",
+      "action": "REDUCED 17%",
+      "quarter": "Q1 2024",
+      "shares_sold": 2100000,
+      "value_usd": null,
+      "thesis": "Trimmed by 17% (sold 2.1M shares) but SNOW remains fund's largest position with ~$8B cumulative profit. Still holds ~15.5M shares (4.71%). High-conviction long-term holder despite trim."
+    },
+    {
+      "investor": "ICONIQ Capital LLC",
+      "action": "REDUCED 42%",
+      "quarter": "Q1 2023",
+      "shares_sold": null,
+      "value_usd": null,
+      "thesis": "42.43% decrease in ownership disclosed May 2023; held 6.58M shares ($1.01B) as of Mar 2023. Early pre-IPO investor taking profits."
+    },
+    {
+      "investor": "FMR LLC (Fidelity)",
+      "action": "INCREASED 53%",
+      "quarter": "Recent (2025)",
+      "shares_sold": null,
+      "value_usd": null,
+      "thesis": "Major 53% increase signals active manager conviction in SNOW's AI data cloud transition and long-term growth trajectory."
+    },
+    {
+      "investor": "Jennison Associates LLC",
+      "action": "INCREASED 20%",
+      "quarter": "Recent (2025)",
+      "shares_sold": null,
+      "value_usd": null,
+      "thesis": "Growth-oriented manager adding to position, consistent with view that SNOW's AI/ML workload acceleration justifies premium valuation."
+    },
+    {
+      "investor": "Morgan Stanley",
+      "action": "TRIMMED",
+      "quarter": "Recent (2025)",
+      "shares_sold": null,
+      "value_usd": null,
+      "thesis": "Trimmed position; not all institutional managers convinced of near-term outlook."
+    },
+    {
+      "investor": "Hedge Fund Community (aggregate)",
+      "action": "NET REDUCTION",
+      "quarter": "Q4 2025",
+      "shares_sold": 682200,
+      "value_usd": null,
+      "thesis": "Hedge fund holders dropped from 102 to 90 (-12 funds); net sold 682K shares. Coincided with stock's -25.44% one-month decline to $161.06 by Feb 24, 2026."
+    }
+  ],
+  "insider_activity": {
+    "net_insider_sentiment": "NEGATIVE",
+    "insider_buying_12m": 0,
+    "insider_selling_12m_usd": 13420993,
+    "recent_90d_net_usd": -2970000,
+    "ceo_activity": "NO DISCRETIONARY SALES",
+    "recent_transactions": [
+      {
+        "name": "Multiple insiders",
+        "title": "Various Officers",
+        "date": "2026-01-02",
+        "action": "SELL",
+        "shares": null,
+        "value_usd": 13420993,
+        "type": "open_market",
+        "note": "15 stock sale transactions totaling $13.4M on single day; 3 sales were notably larger than historical patterns"
+      },
+      {
+        "name": "Vivek Raghunathan",
+        "title": "SVP Engineering & Support",
+        "date": "2026-Q1",
+        "action": "SELL",
+        "shares": null,
+        "value_usd": 2600000,
+        "type": "open_market",
+        "note": "Largest individual insider sale in recent period"
+      },
+      {
+        "name": "Sridhar Ramaswamy",
+        "title": "CEO",
+        "date": "2026-03-16",
+        "action": "TAX WITHHOLDING",
+        "shares": 3975,
+        "value_usd": 710324,
+        "type": "rsu_tax_withholding",
+        "note": "3,975 shares withheld at $178.66 for RSU tax obligations; NOT a discretionary sale. CEO has made no open-market sales in 18+ months. Only acquisition was 31,542 shares bought ~$5M in Mar 2024."
+      }
+    ]
+  },
+  "smart_money_signal_summary": {
+    "overall_signal": "MIXED_TO_CAUTIOUS",
+    "bullish_signals": [
+      "Fidelity +53% increase -- large active manager adding conviction",
+      "Jennison +20% addition -- growth manager still believes",
+      "Altimeter still holds SNOW as #1 position despite 17% trim (~$8B cumulative profit)",
+      "CEO Ramaswamy: zero discretionary sales in 18+ months, bought $5M in Mar 2024",
+      "Stock rose 47% after Berkshire exit -- may have been mispriced exit"
+    ],
+    "bearish_signals": [
+      "Hedge fund count dropped 102 -> 90 in Q4 2025 (-12%)",
+      "Net hedge fund selling of 682K shares",
+      "Berkshire Hathaway full exit Q2 2024 (~$989M, citing competitive/profitability concerns)",
+      "Tiger Global full exit 2023 (no re-entry)",
+      "ICONIQ Capital -42% reduction",
+      "Zero insider buying in past 12 months; $13.4M insider selling",
+      "$2.97M net insider selling in last 90 days",
+      "15 insider sales on single day (Jan 2, 2026) -- coordinated selling signal"
+    ],
+    "interpretation": "Smart money is divided. Pre-IPO/early investors (Berkshire, Tiger, ICONIQ) have exited or heavily reduced -- consistent with 'original thesis played out' rather than bearish conviction. Growth-oriented active managers (Fidelity, Jennison) are adding, suggesting belief in AI data cloud transition. Hedge fund community net reducing exposure. Insider selling is meaningful but CEO is notably NOT selling. Overall: institutional ownership stable at ~64% but composition shifting from early/value investors to growth/momentum managers."
+  },
+  "dm_anchors": [
+    {
+      "id": "DM-SMT-001",
+      "value": "1,447 institutions hold 262.1M shares; ownership ~64.3%",
+      "type": "H",
+      "source": "MarketBeat/HedgeFollow 13F aggregation",
+      "date": "2026-03"
+    },
+    {
+      "id": "DM-SMT-002",
+      "value": "Vanguard 28.65M shares (8.58%), BlackRock 23.52M shares (7.04%)",
+      "type": "H",
+      "source": "HedgeFollow 13F data",
+      "date": "2026-03"
+    },
+    {
+      "id": "DM-SMT-003",
+      "value": "Berkshire Hathaway full exit Q2 2024, ~6M shares, ~$989M",
+      "type": "H",
+      "source": "SEC 13F filing Aug 2024; Fortune/Nasdaq reporting",
+      "date": "2024-08"
+    },
+    {
+      "id": "DM-SMT-004",
+      "value": "Hedge funds holding SNOW dropped from 102 to 90 in Q4 2025; net -682K shares",
+      "type": "H",
+      "source": "Insider Monkey/TipRanks 13F aggregation",
+      "date": "2025-Q4"
+    },
+    {
+      "id": "DM-SMT-005",
+      "value": "Altimeter Capital holds 15.5M shares (4.71%); reduced 17% in Q1 2024",
+      "type": "H",
+      "source": "SEC SC 13G/A filing Feb 14, 2024; Fintel",
+      "date": "2024-02"
+    },
+    {
+      "id": "DM-SMT-006",
+      "value": "Zero insider buys in 12 months; $13.4M insider selling (15 transactions on Jan 2, 2026)",
+      "type": "H",
+      "source": "MarketBeat insider trades; SEC Form 4",
+      "date": "2026-01"
+    },
+    {
+      "id": "DM-SMT-007",
+      "value": "CEO Ramaswamy: no discretionary sales 18+ months; bought 31,542 shares ($5M) Mar 2024",
+      "type": "H",
+      "source": "GuruFocus insider tracking; SEC Form 4",
+      "date": "2026-03"
+    },
+    {
+      "id": "DM-SMT-008",
+      "value": "Fidelity (FMR) increased SNOW position by 53%",
+      "type": "H",
+      "source": "TIKR/MarketBeat 13F tracking",
+      "date": "2025"
+    },
+    {
+      "id": "DM-SMT-009",
+      "value": "Tiger Global fully exited SNOW in 2023; no re-entry as of Q1 2026",
+      "type": "H",
+      "source": "StockCircle Tiger Global portfolio; 13F filings",
+      "date": "2023"
+    },
+    {
+      "id": "DM-SMT-010",
+      "value": "ICONIQ Capital reduced SNOW position by 42.43%; held 6.58M shares ($1.01B) as of Q1 2023",
+      "type": "H",
+      "source": "Fintel 13F-HR filing May 15, 2023",
+      "date": "2023-05"
+    }
+  ],
+  "sources": [
+    "https://www.marketbeat.com/stocks/NYSE/SNOW/institutional-ownership/",
+    "https://hedgefollow.com/stocks/SNOW",
+    "https://fintel.io/so/us/snow",
+    "https://www.insidermonkey.com/insider-trading/company/snowflake+inc/1640147/hedge-funds/",
+    "https://fortune.com/2024/08/15/warren-buffett-berkshire-hathaway-snowflake-apple-tech/",
+    "https://www.nasdaq.com/articles/warren-buffett-just-dumped-beaten-down-ai-stock-should-you",
+    "https://stockcircle.com/portfolio/warren-buffett/snow/transactions",
+    "https://www.gurufocus.com/stock/SNOW/ownership",
+    "https://www.gurufocus.com/term/InstitutionalOwnership/NYSE:SNOW",
+    "https://www.marketbeat.com/stocks/NYSE/SNOW/insider-trades/",
+    "https://www.gurufocus.com/insider/98965/sridhar-ramaswamy",
+    "https://fintel.io/so/us/snow/altimeter-capital-management-lp",
+    "https://fintel.io/so/us/snow/iconiq-capital-llc",
+    "https://stockcircle.com/portfolio/tiger-global",
+    "https://www.tipranks.com/stocks/snow/hedge-funds",
+    "https://www.tikr.com/blog/who-owns-snowflake-top-shareholders-and-recent-insider-trades",
+    "https://finance.yahoo.com/quote/SNOW/holders/",
+    "https://finance.yahoo.com/quote/SNOW/insider-transactions/"
+  ]
+}

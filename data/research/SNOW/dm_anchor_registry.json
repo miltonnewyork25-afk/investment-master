@@ -1,0 +1,19 @@
+{
+  "version": "4.0",
+  "ticker": "SNOW",
+  "company": "Snowflake Inc.",
+  "generated_at": "2026-03-31",
+  "total_anchors": 51,
+  "by_type": { "H": 35, "R": 11, "S": 5 },
+  "by_category": {
+    "FIN": 20, "VAL": 9, "MKT": 2, "CON": 4, "PMK": 3,
+    "BIZ": 13, "MGT": 3, "COMP": 3, "INF": 4, "SUB": 1
+  },
+  "quality": {
+    "h_pct": 68.6,
+    "r_pct": 21.6,
+    "s_pct": 9.8,
+    "h_target_pct": 50,
+    "passed": true
+  }
+}

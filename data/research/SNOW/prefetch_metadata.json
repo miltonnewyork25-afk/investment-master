@@ -1,0 +1,46 @@
+{
+  "version": "4.0",
+  "ticker": "SNOW",
+  "company": "Snowflake Inc.",
+  "industry": "ECO_TECH",
+  "timestamp": "2026-03-31T00:30:00Z",
+  "data_files": {
+    "stock_full": { "status": "ok", "source": "MCP:analyze_stock+baggers_summary", "fetched_at": "2026-03-31" },
+    "peer_comparison": { "status": "ok", "source": "MCP:fmp_data(key-metrics×6peers)", "fetched_at": "2026-03-31" },
+    "market_context": { "status": "ok", "source": "MCP:get_market_overview", "fetched_at": "2026-03-30" },
+    "dcf_valuation": { "status": "pending", "source": "Python:dcf_calculator" },
+    "comparable_analysis": { "status": "ok", "source": "reports/SNOW/data/comparable_companies.md", "fetched_at": "2026-03-31" },
+    "analyst_consensus": { "status": "ok", "source": "WebSearch:Agent-A→web_analyst.md", "fetched_at": "2026-03-31" },
+    "prediction_market": { "status": "ok", "source": "MCP:polymarket_events→polymarket_signals.md", "fetched_at": "2026-03-31" },
+    "recent_news": { "status": "ok", "source": "WebSearch:Agent-C→web_earnings.md", "fetched_at": "2026-03-31" },
+    "business_overview": { "status": "ok", "source": "WebSearch:Agent-D→web_competition.md", "fetched_at": "2026-03-31" },
+    "competitive_landscape": { "status": "ok", "source": "WebSearch:Agent-D→web_competition.md", "fetched_at": "2026-03-31" },
+    "management_team": { "status": "ok", "source": "WebSearch:Agent-E(inline web_competition.md §4-5)", "fetched_at": "2026-03-31" },
+    "smart_money_13f": { "status": "pending", "source": "WebSearch:Agent-F(background)" },
+    "options_short_interest": { "status": "pending", "source": "WebSearch:Agent-G(background)" },
+    "dm_anchor_registry": { "status": "ok", "source": "prefetch:aggregator", "fetched_at": "2026-03-31" },
+    "shared_context": { "status": "ok", "source": "prefetch:v4.0_template", "fetched_at": "2026-03-31" }
+  },
+  "quality": {
+    "complete_fields": 12,
+    "total_fields": 15,
+    "completeness_pct": 80,
+    "files_ok": 12,
+    "files_pending": 3,
+    "files_error": 0,
+    "files_total": 15
+  },
+  "dm_quality": {
+    "total_anchors": 51,
+    "h_count": 35,
+    "r_count": 11,
+    "s_count": 5,
+    "h_pct": 68.6,
+    "integrity_check": "passed"
+  },
+  "layer_status": {
+    "layer1_mcp": "ok",
+    "layer2_python": "pending",
+    "layer3_websearch": "ok"
+  }
+}

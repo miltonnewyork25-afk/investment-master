@@ -1,0 +1,72 @@
+ticker: SNOW
+company: Snowflake Inc.
+industry: ECO_TECH
+worktree: 生态科技
+framework_version: v20.0
+tier: 3
+coefficient: 1.1
+possibility_width: 5.4
+method_route: mixed  # 传统估值+可能性附录
+
+phases:
+  phase_minus1:
+    status: complete
+    date: 2026-03-31
+    output: knowledge_context.md
+  phase_minus05:
+    status: complete
+    date: 2026-03-31
+    output: lit_recon_memo.md
+  phase_0:
+    status: complete
+    date: 2026-03-31
+    output: shared_context.md (51 DM anchors)
+    dm_count: 51
+    h_pct: 68.6
+  phase_075:
+    status: complete
+    date: 2026-03-31
+    output: inline in shared_context.md §Section I
+    core_question: "Databricks $134B+65%增速下, SNOW的核心不可替代性在哪?"
+    cq_candidates:
+      - CQ1: AI Data Cloud是增量TAM还是consumption转移
+      - CQ2: Databricks竞争是否正在实质性侵蚀护城河
+      - CQ3: CEO转型(Slootman→Ramaswamy)战略影响
+      - CQ4: SBC收敛速度与Owner FCF转正时间
+      - CQ5: Consumption模型的估值方法论
+  phase_1:
+    status: not_started
+  phase_2:
+    status: not_started
+  phase_3:
+    status: not_started
+  phase_4:
+    status: not_started
+  phase_5:
+    status: not_started
+
+quality_targets:
+  min_chars: 270000  # G1
+  dm_density: 1.5    # G2
+  dm_count: 450      # G3
+  mermaid: 25        # G4
+  causal_density: 5.0 # G5
+  python_verification: true  # G6
+  valuation_dispersion: 0.30 # G7
+  cq_tags: CQ1-CQ8  # G8
+  cognitive_boundary: true  # G9
+
+reference_reports:
+  primary: DDOG_Complete_v2.0 (343K, 1.35DM)
+  secondary: NOW_Complete_v2.0 (311K, 1.47DM)
+  tertiary: ADSK_Complete_v1.0 (196K, 4.05DM)
+
+scout_data:
+  files: 7
+  total_chars: 68691
+  key_findings:
+    - RPO +42% >> Revenue +30% = demand acceleration
+    - Owner FCF ≈ 0, positive by FY2028
+    - Databricks $5.4B/$134B vs SNOW $4.7B/$50B
+    - SBC 34% → 27% FY27E convergence confirmed
+    - Analyst consensus $245 vs current $154 (+60%)
