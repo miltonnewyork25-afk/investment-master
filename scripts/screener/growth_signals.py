@@ -1704,6 +1704,10 @@ def check_gid_flags(result: GIDResult) -> list[str]:
     # v3.1: Cyclicality warning
     if result.g3.rev_path_grade in ("lumpy", "erratic"):
         flags.append(f"收入波动大({result.g3.rev_path_grade})")
+    # v3.2: Restructuring rebound detection
+    # SGA/Rev单季大幅下降(>15pp) = 可能裁员驱动而非效率提升
+    if (result.g2.sga_absorption is not None and result.g2.sga_absorption < -15):
+        flags.append(f"重组反弹? SGA/Rev降{abs(result.g2.sga_absorption):.0f}pp")
     result.flags = flags
     return flags
 
@@ -1981,6 +1985,9 @@ def classify_archetype(result: GIDResult) -> str:
     if g3.rev_path_grade in ("lumpy", "erratic"):
         trap_signals += 1  # 收入波动大=可能周期性
     if quality_mult < 0.85:
+        trap_signals += 1
+    # v3.2: 重组反弹检测(SGA大幅下降=裁员驱动不是效率提升)
+    if g2.sga_absorption is not None and g2.sga_absorption < -15:
         trap_signals += 1
     # 需要2+个陷阱信号才标记(避免单个信号误判)
     if trap_signals >= 2 and g1.score is not None and g1.score > 3:
