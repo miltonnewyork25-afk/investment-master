@@ -122,13 +122,13 @@ phases:
       - 新增: Python 5方法验证(G6门控通过)
       - 概率校准: Bear 30%→25%(Iceberg样本偏差), Base 30%→35%
   phase_5:
-    status: in_progress_v0.85
+    status: in_progress_v0.92
     date: 2026-03-31
     output: SNOW_Complete_v1.0.md
-    chars: 112382
-    dm_count: 332
+    chars: 125699
+    dm_count: 369
     mermaid_count: 25
-    dm_density: 2.95
+    dm_density: 2.94
     progress:
       executive_summary: complete
       part1_ch1_7: needs_expansion (每章~2-4.6K, 目标14.4K, 需历史先例+深度展开)
@@ -145,6 +145,12 @@ phases:
         - 三维离散度: embedded in Ch17.6
         - Kill Switch: embedded in Ch17.7
       cognitive_boundary_scoring: complete (Ch18.2 六维评分表)
+    session2_completed:
+      - Ch5: 1.9K→6.2K (Bloomberg/PLTR网络效应对标+飞轮悖论CRM对比+动态预测)
+      - Ch6: 2.4K→5.8K (MSFT CEO转型先例+四维经济含义+沉默域交叉验证)
+      - Ch7: 2.1K→5.0K (三层分层详细评分+定价权估值映射+Iceberg渐进侵蚀)
+      - Ch1: +1K (27% CAGR历史可行性验证)
+      - Ch12: +3.2K (NRR三层因果+功能矩阵+Fabric底部蚕食+ARPU)
     session1_completed:
       - Ch11: 1.9K→10.7K (可转债5先例+三策略现金流瀑布+压力测试+敏感性)
       - Ch15: +3K (M3约束分类+聪明钱定位)
@@ -152,12 +158,14 @@ phases:
       - Ch17: 1.9K→7K (5方法逐一+三维离散度+Kill Switch+统一性)
       - Ch9: +2K (假设驱动分析+完整P&L)
     remaining_work:
-      - Part I深度展开: Ch1-7每章需+8-12K (历史先例+FACT数据+Mermaid) = ~70K
-      - Part III staging纳入: Ch12-14每章需+4-8K (staging v2未完全纳入) = ~18K
-      - Ch9/Ch10/Ch18: 每章需+4-7K = ~18K
+      - Part I继续: Ch1-4每章需+6-10K (历史先例+FACT数据+Mermaid) = ~30K
+      - Part III继续: Ch13-14每章需+4-8K = ~12K
+      - Part II: Ch9/Ch10每章需+4-6K = ~10K
+      - Ch15/Ch18: 每章需+5-8K = ~13K
       - 执行摘要扩展: +3K
-      - 新增Mermaid: ~10张 (DM目标450差118个)
-      - 总缺口: 112K→270K = 158K (需2个session)
+      - DM补充: 369→450 = +81个
+      - 因果密度: 需提升到5.0+
+      - 总缺口: 126K→270K = 144K (需2个session，每session ~70K)
 
 quality_targets:
   min_chars: 270000  # G1
