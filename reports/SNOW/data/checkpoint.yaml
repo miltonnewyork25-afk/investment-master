@@ -55,7 +55,22 @@ phases:
       - CQ1偏增量(RPO证据), CQ2双平台共存(非零和), CQ3方向对窗口紧
       - CI偏空3个/偏多2个 → 叙事方向: 合理偏贵
   phase_2:
-    status: not_started
+    status: complete
+    date: 2026-03-31
+    output: staging/phase2_ch8-10 + phase2_synthesis.md
+    chars: 14642
+    dm_count: 35
+    chapters:
+      - ch8: 财务剪刀差+SBC五维 (η=0.88<1.0, 覆盖率55%, Owner FCF=-$480M)
+      - ch9: 5年财务模型+三PE+可转债 (Owner FCF FY30转正, 可转债2027 $1.15B偿还)
+      - ch10: 利润率轨迹+运营杠杆 (毛利率天花板71-72%, GAAP盈利FY32)
+    key_findings:
+      - Owner FCF Base Case FY30才转正(比P1预估推迟2年)
+      - SBC绝对金额$1.6B→$1.59B几乎不降(率降额不降)
+      - η=0.88同行最低(PLTR 4.99, DDOG 1.36)
+      - 可转债2027 Oct $1.15B现金偿还风险(流动性24%)
+      - 正常化P/FCF ~110x(非headline 46x, 因Q4占68%)
+      - 估值核心分歧: FCF view($154合理) vs Owner FCF view($154高估)
   phase_3:
     status: not_started
   phase_4:
