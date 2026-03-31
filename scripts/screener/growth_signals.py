@@ -481,9 +481,10 @@ def extract_g1(income_q: list, ratios_q: list) -> G1Signals:
         elif g1.base_growth_level < 20 and g1.rev_acceleration > 5:
             g1.accel_from_low_base = True
             g1.accel_multiplier = 1.15
-        elif g1.base_growth_level > 40:
+        elif g1.base_growth_level > 50:
+            # v3.2: 只有>50%才惩罚(DDOG 25%不应被罚)
             g1.accel_from_low_base = False
-            g1.accel_multiplier = 0.85
+            g1.accel_multiplier = 0.90
         else:
             g1.accel_from_low_base = False
 
@@ -841,12 +842,15 @@ def extract_g3(income_q: list, ratios_q: list, balance: list) -> G3Signals:
                 elif g3.gm_delta_yoy > 1.0:
                     g3.growth_type = "pricing_power"
                 elif g3.gm_delta_yoy > -1.0:
-                    g3.growth_type = "volume"
+                    # v3.2: 高GM(>70%)+稳定 = "stable_moat"(比普通volume更好)
+                    if gm0 > 70:
+                        g3.growth_type = "stable_moat"
+                    else:
+                        g3.growth_type = "volume"
                 else:
-                    # v3.1: 高GM公司(>65%)的GM微降是正常mix shift，不是以价换量
-                    # 真正的margin sacrifice是低GM公司(如硬件)的GM持续收缩
+                    # v3.1: 高GM公司(>65%)的GM微降是正常mix shift
                     if gm0 > 65 and g3.gm_delta_yoy > -3.0:
-                        g3.growth_type = "volume"  # 高GM微降=mix shift
+                        g3.growth_type = "volume"
                     else:
                         g3.growth_type = "margin_sacrifice"
 
@@ -1425,7 +1429,7 @@ def score_g3(g3: G3Signals) -> float:
 
     # Price vs Volume (25%)
     type_map = {
-        "pricing_power": 9.0, "volume": 6.0,
+        "pricing_power": 9.0, "stable_moat": 7.5, "volume": 6.0,
         "margin_sacrifice": 2.5, "negative": 1.0,
     }
     if g3.growth_type:
@@ -1658,8 +1662,13 @@ def score_g6(g6: G6Signals) -> float:
 GID_EXCLUDED_SECTORS = {
     'Biotechnology', 'Drug Manufacturers - General',
     'Drug Manufacturers - Specialty & Generic',
+    # v3.2: 大宗商品行业(收入由商品价格驱动,非业务能力)
+    'Gold', 'Silver', 'Copper', 'Steel',
+    'Other Industrial Metals & Mining', 'Other Precious Metals & Mining',
+    'Coking Coal', 'Thermal Coal',
+    'Agricultural Inputs',
 }
-GID_EXCLUDED_SECTOR_GROUPS = {'Utilities', 'Real Estate'}
+GID_EXCLUDED_SECTOR_GROUPS = {'Utilities', 'Real Estate', 'Energy'}
 
 
 def check_gid_vetoes(result: GIDResult) -> list[str]:
@@ -1763,9 +1772,17 @@ def compute_gid_composite(result: GIDResult) -> float:
         result.quality_multiplier = round(result.quality_multiplier * 1.08, 3)
 
     # --- v3.1: Cyclicality penalty (周期性惩罚) ---
-    # 高QoQ波动 = 增长可能是周期/大单驱动而非有机
     cyclicality_mult = result.g3.cyclicality_penalty
     result.quality_multiplier = round(result.quality_multiplier * cyclicality_mult, 3)
+
+    # --- v3.2: Profitability discount (亏损公司折扣) ---
+    # 亏损公司的信号不确定性更高：可能是真拐点，也可能是假信号
+    if result.g2.profit_transition == "pre_ebitda":
+        result.quality_multiplier = round(result.quality_multiplier * 0.80, 3)
+    elif result.g2.profit_transition in ("ebitda_turn", "ocf_turn"):
+        # 刚转正=好信号但需要确认，轻微折扣
+        pass  # No discount — transition itself is the signal
+    # Note: fcf_turn gets no discount, it's a confirmed inflection
 
     # --- Discovery multiplier ---
     result.discovery_multiplier = round(result.g7.discovery_multiplier, 3)
@@ -1973,7 +1990,7 @@ def classify_archetype(result: GIDResult) -> str:
     if (mcap_b < 50
         and rev_g is not None and 10 < rev_g < 40
         and quality_mult > 1.1
-        and g3.growth_type in ("pricing_power", "volume")
+        and g3.growth_type in ("pricing_power", "volume", "stable_moat")
         and (g4.self_funding or (g4.balance_sheet_grade in ("fortress", "healthy")))):
         return "stealth_compounder"
 
@@ -2120,6 +2137,7 @@ def format_gid_card(r: GIDResult) -> str:
     if r.g3.growth_type:
         type_explain = {
             "pricing_power": "GM扩+Rev增 = 靠定价权增长(高质量)",
+            "stable_moat": "高GM(>70%)+稳定 = 护城河增长(高质量)",
             "volume": "GM平+Rev增 = 靠量增长(可持续性需验证)",
             "margin_sacrifice": "GM缩+Rev增 = 以价换量(低质量⚠)",
             "negative": "收入萎缩",
