@@ -77,19 +77,27 @@ phases:
       - DM: 35(扁平)→111(FACT/EST/REF分级)
       - 历史先例: 0→6家公司10年数据
   phase_3:
-    status: complete
+    status: complete_v2
     date: 2026-03-31
-    output: staging/phase3_ch11-13 + phase3_synthesis.md
-    chars: 9742
-    dm_count: 20
+    output: staging/phase3_v2_ch12-14
+    chars: 20383
+    dm_count: 60 (FACT:6, EST:44, REF:10)
+    causal_density: 6.86
     chapters:
-      - ch11: 竞争格局 (双平台共存→渐进重叠, Fabric结构性威胁, 开源价格锚)
-      - ch12: 护城河迁移 (CQI 57/100偏弱, C1从7→5, 中空期FY27-29)
-      - ch13: 风险拓扑 (完美风暴17%→$80, 温水煮青蛙40-50%→$110-130)
+      - ch12: 竞争格局深度 (8.9K, DBR已超越SNOW收入, Fabric $2B/31K客户, 重叠度63%)
+      - ch13: 护城河CQI (5.7K, CQI 57→49, C1从7→4, 4个开放标准先例)
+      - ch14: 风险拓扑+AI冲击 (5.8K, 协同三角34%, 温水煮青蛙55%, 三方AI矩阵)
     key_findings:
-      - 新增CQ6: 护城河中空期是否成功过渡(最关键CQ)
-      - Fabric竞争可能未充分price in
-      - 7个KS注册+协同矩阵
+      - DBR ARR $4.8B已超SNOW $4.6B, NRR 140%>125%(最大竞争发现)
+      - Fabric $2B ARR/60%增速=从"未来威胁"升级为"当前竞争者"
+      - Iceberg 78.6% exclusive→数据锁定侵蚀确认(C1从7→4)
+      - CQI 49/100(弱)→SNOW护城河在同行中仅高于MDB
+      - 温水煮青蛙概率上调至35%(最可能场景)
+      - 概率加权FV预估需下调至$120-130
+    quality_vs_v1:
+      - 字符: 9.7K→20.4K (2.1x)
+      - DM: 20→60 (3x+分级)
+      - 新增: Gartner MQ数据+Iceberg调研+Fabric硬指标+AI冲击矩阵
   phase_4:
     status: complete
     date: 2026-03-31
