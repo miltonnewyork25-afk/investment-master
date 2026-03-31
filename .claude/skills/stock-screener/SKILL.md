@@ -1,11 +1,12 @@
 ---
 name: stock-screener
-description: 低估股多信号筛选Agent v1.2 — 三层信号框架(便宜/不是陷阱/纠错)+预期差信号
+description: 低估股多信号筛选Agent v1.3 — 三层信号框架(便宜/不是陷阱/纠错)+预期差信号+叙事溢价检测
 trigger: /screen
 ---
 
-# 低估股筛选Agent v1.2
+# 低估股筛选Agent v1.3
 
+> v1.3 (2026-03-30): Owner FCF Yield信号(SBC>10%替代FCF Yield) + 叙事溢价检测(P/FCF>50x) + CapEx分类信号。源自NET v2.0分析(叙事溢价51.5%/Owner Yield -0.18%/CapEx 15.8%)。
 > v1.2 (2026-03-27): 预期差三因子(FCF Yield/SBC覆盖率/品质基金买入) + insider翻正信号。源自7家SaaS预期差横向分析。
 > v1.1 (2026-03-26): PEG替代PE作为主估值信号(48份报告验证)
 
@@ -240,6 +241,69 @@ fmp_data endpoint="estimates" symbol={SYM}  # 盈利预测 → surprise/revision
   品质基金减仓                       → L3 -1.0分 (品质判断改变)
 
 注意: 需区分"主动买入"vs"ETF被动流入"。Vanguard/BlackRock/State Street的变化通常是被动的,不计入
+```
+
+## ★ Owner FCF Yield信号 (v1.3新增, EVO-NET-003, NET+DDOG+CRWD验证)
+
+> **来源**: NET FCF Yield 0.45%(看似中性) vs Owner FCF Yield -0.18%(实际负回报)
+> **核心**: 对SBC/Rev>10%的公司, FCF Yield严重高估真实回报——Owner FCF Yield才是股东真实收益
+
+```
+当SBC/Rev > 10%时, 启用Owner FCF Yield检测:
+
+计算: Owner FCF Yield = (FCF - SBC) / Market Cap × 100%
+
+  Owner Yield > 3%    → L2 +1.0分 (真实回报高, 极罕见)
+  Owner Yield 1-3%    → L2 +0.5分 (覆盖SBC后仍有回报)
+  Owner Yield 0-1%    → L2  0分   (勉强覆盖)
+  Owner Yield -1%~0%  → L2 -0.5分 (SBC侵蚀全部FCF)
+  Owner Yield < -1%   → L2 -1.0分 (持续毁灭股东价值)
+
+与现有FCF Yield信号的关系:
+  SBC/Rev < 5%  → 仅用FCF Yield(SBC可忽略)
+  SBC/Rev 5-10% → 两者取平均
+  SBC/Rev > 10% → Owner FCF Yield权重2x(主导)
+
+验证: NET(-0.18%→-0.5), CRWD(0.24%→0), DDOG(估~-0.5%→-0.5), ADBE(~5%→+1.0)
+```
+
+## ★ 叙事溢价检测 (v1.3新增, EVO-NET-002, NET验证叙事溢价51.5%)
+
+> **来源**: NET P/FCF 220x中51.5%是不可验证的叙事溢价(>30%警告线, 超CRWD 41%)
+> **核心**: 高增长股的估值中有多少来自"可验证的增速"vs"不可验证的叙事"？
+
+```
+当P/FCF > 50x时, 触发叙事溢价检测:
+
+计算:
+  同行基线P/FCF = 同行业低增速成熟公司的P/FCF(代表"零叙事"估值)
+  PEG溢价 = (目标增速/基线增速) × 基线P/FCF
+  叙事溢价% = 1 - (基线 + PEG溢价) / 当前P/FCF
+
+评分 (嵌入L1"可能便宜了"):
+  叙事溢价 < 15%   → L1  0分   (合理, 增速可解释)
+  叙事溢价 15-30%  → L1 -0.5分 (关注)
+  叙事溢价 30-50%  → L1 -1.0分 (警告, 估值高度脆弱于叙事破灭)
+  叙事溢价 > 50%   → L1 -1.5分 (强警告, 接近纯概念股)
+
+验证: NET(51.5%→-1.5), CRWD(41%→-1.0), DDOG(估~35%→-1.0)
+注意: 仅对P/FCF>50x触发。P/FCF<50x通常叙事溢价<15%
+```
+
+## ★ CapEx分类信号 (v1.3新增, EVO-NET-006, NET验证CapEx/Rev=AKAMAI级)
+
+> **来源**: NET被标记为"Software-Infrastructure"但CapEx/Rev 15.8%=AKAMAI级(基础设施), 远高于ZS(3%)/CRWD(6%)
+> **核心**: "SaaS"标签下可能藏着基础设施公司——后者的合理倍数低3-5倍
+
+```
+CapEx/Rev检测(对行业标签含"Software"/"SaaS"/"Cloud"的公司):
+
+  CapEx/Rev < 5%    → 纯软件(确认SaaS倍数合理)
+  CapEx/Rev 5-10%   → 软件+轻资产(正常)
+  CapEx/Rev 10-15%  → ⚠️ L2 -0.25分 + 标注"CapEx强度偏高"
+  CapEx/Rev > 15%   → ⚠️ L2 -0.5分 + 标注"基础设施级CapEx, 可能错误分类"
+
+验证: NET(15.8%→-0.5), AKAMAI(15%→-0.5), ZS(3%→0), CRWD(6%→0)
 ```
 
 ## 回购效率检测 (v1.1, 30份报告验证)
