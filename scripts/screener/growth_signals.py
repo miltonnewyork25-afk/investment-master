@@ -1683,7 +1683,12 @@ def score_g6(g6: G6Signals) -> float:
         weights.append(0.20)
 
     if g6.shares_change_1y is not None:
-        scores.append(_norm(g6.shares_change_1y, -8, 10, invert=True))
+        s = _norm(g6.shares_change_1y, -8, 10, invert=True)
+        # v3.2: 大额回购conviction bonus
+        # shares_change < -2% = 管理层用真金白银表达信心
+        if g6.shares_change_1y < -2:
+            s = min(s + 1.5, 10.0)
+        scores.append(s)
         weights.append(0.15)
 
     quality_s = 5.0
