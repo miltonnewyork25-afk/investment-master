@@ -848,8 +848,16 @@ def extract_g3(income_q: list, ratios_q: list, balance: list) -> G3Signals:
                     else:
                         g3.growth_type = "volume"
                 else:
-                    # v3.1: 高GM公司(>65%)的GM微降是正常mix shift
+                    # v3.2: margin_sacrifice阈值按GM水平分层
+                    # 高GM(>65%): -3pp以内=mix shift
+                    # 中GM(35-65%): -3pp以内=正常季节波动
+                    # 低GM(<35%): -5pp以内=正常(工业/零售GM波动大)
+                    # 真正的margin sacrifice = 超过阈值的持续收缩
                     if gm0 > 65 and g3.gm_delta_yoy > -3.0:
+                        g3.growth_type = "volume"
+                    elif gm0 > 35 and g3.gm_delta_yoy > -3.0:
+                        g3.growth_type = "volume"
+                    elif gm0 <= 35 and g3.gm_delta_yoy > -5.0:
                         g3.growth_type = "volume"
                     else:
                         g3.growth_type = "margin_sacrifice"
@@ -1803,6 +1811,11 @@ def compute_gid_composite(result: GIDResult) -> float:
     result.profit_transition = result.g2.profit_transition or "unknown"
     result.archetype = classify_archetype(result)
 
+    # v3.2: Momentum trap penalty — 标签和分数必须一致
+    # 被标为陷阱的公司应该被明确降级，否则排名会误导用户
+    if result.archetype == "momentum_trap":
+        result.composite_score = round(result.composite_score * 0.75, 2)
+
     result.signal_summary = _generate_summary(result)
 
     return result.composite_score
@@ -2243,6 +2256,10 @@ def save_gid_results(results: list[GIDResult], output_path: str):
             'quality_multiplier': r.quality_multiplier,
             'leverage_phase': r.leverage_phase,
             'growth_quality': r.growth_quality,
+            'archetype': r.archetype,
+            'profit_transition': r.profit_transition,
+            'discovery_multiplier': r.discovery_multiplier,
+            'rev_path_grade': r.g3.rev_path_grade,
             'g1': r.g1.score, 'g2': r.g2.score, 'g3': r.g3.score,
             'g4': r.g4.score, 'g5': r.g5.score, 'g6': r.g6.score,
             'rev_yoy_q0': r.g1.rev_yoy[0] if r.g1.rev_yoy else None,
