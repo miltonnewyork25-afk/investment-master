@@ -181,4 +181,66 @@
 
 ---
 
-*本章DM锚点统计: 23个 (FACT: 4, EST: 16, REF: 3) | 因果链: 8条 | 反面考量: 7处*
+---
+
+## 16.5 承重墙联合概率测试 (RT-1b, 重要缺口补强)
+
+Bull Case依赖4个条件同时成立: 增速维持≥20%(B1) + SBC收敛(B2) + AI规模化(B3) + 护城河不崩(B4)
+
+**独立性检验**: B1和B3有循环依赖(Ch15.5已检测)→不独立。B2依赖B1(增速越快→SBC比率下降越快)→不独立。B4部分独立(取决于Iceberg而非SNOW增速)。
+
+```
+如果视为独立: P(Bull) = P(B1)×P(B2)×P(B3)×P(B4) = 0.6×0.7×0.35×0.5 = 7.4%
+实际(含依赖): P(Bull) ≈ min(P(B1), P(B3))×P(B4) ≈ 0.35×0.5 = 17.5%
+
+差距: 独立假设7.4% vs 依赖校正17.5% → 依赖结构反而提高了Bull概率
+原因: B1-B3正反馈循环意味着"要么一起成功要么一起失败"
+→ Bull Case不是"四个小概率事件碰巧同时发生"
+→ 而是"AI成功这一个大事件触发了连锁正面反应"
+```
+[DM-RT-063-EST]
+
+**对评级的影响**: Bull Case概率17.5%(联合概率)vs 当前赋值20%→当前赋值合理(略偏乐观但在误差范围内)。不需要修正。
+
+---
+
+## 16.6 红队可视化
+
+```mermaid
+graph TD
+    subgraph 承重墙脆弱度
+    B1[B1: 增速≥20%<br>脆弱度: 中<br>依赖: AI+竞争]
+    B2[B2: SBC收敛<br>脆弱度: 低<br>依赖: B1增速]
+    B3[B3: AI规模化<br>脆弱度: 高<br>依赖: B1增速+产品]
+    B4[B4: 护城河存续<br>脆弱度: 高<br>依赖: Iceberg+竞争]
+    end
+
+    B1 <-->|循环依赖| B3
+    B1 -->|单向依赖| B2
+    B4 -.->|部分独立| B1
+
+    style B3 fill:#ea4335,color:white
+    style B4 fill:#ea4335,color:white
+    style B1 fill:#fbbc04,color:black
+    style B2 fill:#34a853,color:white
+```
+
+```mermaid
+graph LR
+    subgraph 双向校准前后
+    A1[P3偏空方向<br>Bear 30%最可能<br>FV $115] -->|校准| A2[校准后<br>Base=Bear各30-35%<br>FV $117]
+    end
+
+    subgraph 校准因素
+    C1[偏差1: Iceberg样本偏差<br>78.6%→实际20-30%] --> A2
+    C2[偏差2: Owner FCF过度严苛<br>Amazon先例] --> A2
+    C3[偏差3: 温水煮青蛙叙事放大<br>35%→30%] --> A2
+    end
+
+    style A1 fill:#ea4335,color:white
+    style A2 fill:#fbbc04,color:black
+```
+
+---
+
+*本章DM锚点统计: 24个 (FACT: 4, EST: 17, REF: 3) | 因果链: 9条 | 反面考量: 8处 | Mermaid: 2*
