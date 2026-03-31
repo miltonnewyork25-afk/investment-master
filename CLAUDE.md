@@ -1,7 +1,7 @@
 # 投资研究 Agent — 半导体行业版 v19.9
 
 > **Thin-Shell设计**: 本文件仅含行业特定配置。**通用框架请参考** `/Users/milton/投资大师/CLAUDE.md` + `/Users/milton/投资大师/docs/`
-> **v19.9 质量修复**: 密度>体量 | 铁律K估值统一性 | 铁律L DM硬门控 | 铁律M反膨胀纪律 | 铁律N证据链+三PE+概率锚定 | 铁律O Reverse DCF P1前置 | 铁律P卖出框架内部化
+> **v19.9 重大修复**: Thin-Shell合规化，移除重复的铁律规则系统
 
 ## 身份
 
@@ -48,128 +48,74 @@
 
 | ID | 名称 | 领先度 | 看多信号 | 看空信号 |
 |----|------|--------|---------|---------|
-| SEMI-L1 | 库存天数(DIO) | 2-3Q | DIO连降2Q | DIO连升2Q |
-| SEMI-L2 | CapEx/D&A | 1-2年 | <1.0x(投资不足) | >1.5x(过度扩产) |
-| SEMI-L3 | 订单积压/B-to-B | 1-2Q | B/B>1回升 | B/B<1回落 |
-| SEMI-L4 | DRAM/NAND现货价 | 1Q | 连涨3月 | 连跌3月 |
-| SEMI-L5 | WFE预测方向 | 年度 | 下调→上调 | **3年连增>7%=回调前夜** |
-| SEMI-L6 | Hyperscaler AI CapEx | 源头 | >$500B | 指引下调>20% |
-| SEMI-L7 | 地缘政治温度 | 非财务 | 台海降温+Arizona验证 | 出口限制升级 |
+| **SEMI-L1** | 台积电CoWoS/先进封装订单 | 6-9月 | 排产饱满+涨价 | 订单延期+产能空置 |
+| **SEMI-L2** | 三星Foundry份额变化 | 3-6月 | 夺回份额+苹果订单 | 持续流失客户 |
+| **SEMI-L3** | 中国Fab建设/设备采购 | 9-12月 | 新Fab开工+设备招标 | 停建延期+禁运冲击 |
+| **SEMI-L4** | PC/手机库存去化 | 3-6月 | 渠道库存回落+备货 | 库存持续堆积 |
+| **SEMI-L5** | HBM/AI芯片需求 | 6-9月 | 新产品发布+涨价 | 需求饱和+替代威胁 |
+| **SEMI-L6** | 汽车电气化渗透 | 12-18月 | EV销量超预期 | 电动化放缓 |
+| **SEMI-L7** | 数据中心资本开支 | 6-12月 | CapEx指引上调 | 云巨头削减支出 |
 
-**AI利好衰减模型 (6层价值链)**:
+### 预期差模式 (PEP标准化)
 
-| Layer | 位置 | 衰减度 | 核心风险 | 估值锚 |
-|-------|------|--------|---------|--------|
-| 1 | 芯片设计(NVDA/AMD) | 0% | 竞争(ASIC vs GPU) | Forward PE |
-| 2 | 制造(TSM) | ~5% | 地缘(台海) | Forward PE+地缘折价 |
-| 3 | 设备(ASML/KLAC/LRCX/AMAT) | 30-50% | **周期(PEP-006)** | **Mid-cycle PE** |
-| 4 | 存储(MU) | 50-70% | **产能过剩(PEP-007)** | **反转PE** |
-| 5 | 基础设施(VRT/SMCI) | 10-60% | 有IP/无IP | P/E+毛利率 |
-| 6 | 转型(INTC) | 不可估 | 催化剂金字塔(PEP-005) | SOTP |
+**PEP-005 催化剂陷阱** (转型股):
+- **模式**: 市场提前6-12月price in转型成功，但催化剂验证需要18-24月
+- **典型股票**: INTC, GFS, 其他重组/转型半导体股
+- **信号**: 高估值+远期催化剂+近期无增长动力 → 时间套利失效
+- **投资逻辑**: 避开"故事估值期"，等催化剂验证后介入
 
-**3个强制检查 (BLOCK级)**:
-1. **Phase 0**: 判断WFE周期位置(early/mid/late/downturn) → 设备/存储禁止late_cycle用峰值PE
-2. **Phase 1**: 标注公司AI利好Layer位置 → Layer 3-4必须Mid-cycle PE或反转PE
-3. **Phase 2**: 检查PEP-005(催化剂)/PEP-006(周期峰值溢价)/PEP-007(反转PE陷阱)
+**PEP-006 峰值PE陷阱** (设备股):
+- **模式**: 周期峰值EPS创造历史低PE → 看起来便宜但实际最贵
+- **典型股票**: KLAC, LRCX, AMAT等所有设备股
+- **信号**: P/E<15x但库存高+订单下滑+WFE增速负 → PE陷阱确认
+- **投资逻辑**: 用Mid-cycle PE(25-30x)估值，避开Peak PE误导
 
-### 特异性测试 (TS注册表)
+**PEP-007 存储反转悖论** (存储股):
+- **模式**: 最低PE时往往是最差买点(价格战激烈期) / 最高PE时是最好买点(供需紧张期)
+- **典型股票**: MU, WDC等存储股
+- **信号**: PE<8x+价格战激烈 → 继续下跌概率高 / PE>40x+涨价潮 → 可能持续超预期
+- **投资逻辑**: 存储股用供需平衡而非传统PE判断买点
 
-| 测试 | 应用 | 方法 |
-|------|------|------|
-| TS-01 摩尔定律 | 先进制程 | 物理极限分析 |
-| TS-02 替代威胁 | 成熟产品 | 技术路径对比 |
-| TS-03 地缘风险 | 中国敞口 | 收入分布+地缘折价量化(TSM vs ASML) |
-| TS-04 周期位置 | 所有 | ★SEMI-L1~L7(patterns.yaml) |
-| TS-05 产能过剩 | 制造端 | CapEx/D&A>1.3x=警告, >1.5x=危险 |
-| TS-06 AI利好衰减 | 所有 | ★Layer 1-6+对应估值锚 |
-| TS-07 有IP/无IP | AI基础设施 | VRT(34%毛利率) vs SMCI(6%毛利率)模式 |
-| TS-08 ASIC/GPU | 设计公司 | NVDA(CUDA锁定) vs AVGO(ASIC双赢) |
+### 竞争情报关注 (CI注册表)
 
-### 承重墙分析 (CI注册表)
+| 级别 | 事件类型 | 监控目标 | 触发阈值 |
+|------|---------|---------|---------|
+| **CI-SEMI-01** | 技术突破 | 先进工艺/新架构 | 2个节点跳跃 |
+| **CI-SEMI-02** | 产能变化 | 新Fab/关停 | >10%产能影响 |
+| **CI-SEMI-03** | 地缘政治 | 禁运/政策变化 | 法规生效 |
+| **CI-SEMI-04** | 并购整合 | 行业并购 | >$1B交易 |
 
-| 承重墙 | 脆弱度测试 | 倒塌影响 |
-|--------|-----------|---------|
-| **CI-SEMI-01 AI需求** | Hyperscaler CapEx方向 | ±30-50% |
-| **CI-SEMI-02 先进制程** | 技术演进+良率 | ±20-40% |
-| **CI-SEMI-03 产业链完整性** | 供应链中断/地缘 | ±15-30% |
-| **CI-SEMI-04 资本支出周期** | WFE连续3年>7%(历史回调点) | ±25-45% |
+### 特色分析模块 (半导体专用)
 
-### CEO沉默分析 (P1 QG-01.5)
+**模块1: 周期定位分析** — `knowledge/semiconductor_cycle_framework.md`
+- WFE周期vs Memory周期vs Logic周期异步性分析
+- 领先指标→滞后指标传导链条验证
+- Mid-cycle估值vs Peak/Trough估值模型
 
-| 沉默域 | 触发条件 | 信号解读 |
-|--------|---------|---------|
-| **工艺良率** | 新产品量产期 | 技术风险 |
-| **客户集中度** | Q&A回避具体客户 | 依赖风险 |
-| **产能利用率** | 周期下行期 | 需求疲软 |
-| **地缘政治** | 中国业务问题 | 合规风险 |
+**模块2: 地缘政治影响** — `knowledge/geopolitical_semiconductor_analysis.md`
+- 供应链重组对各环节影响评估
+- 禁运政策演化预测框架
+- 台海风险量化模型(基于Polymarket+供应链数据)
 
----
-
-## 公司品质量化评估
-
-**通用框架**: `docs/company_quality_scoring.md`
-**执行时机**: Phase 0数据预取完成后, Phase 1开始前
-**产出**: `reports/{TICKER}/data/quality_scorecard.md`
-
-**半导体行业修正**:
-- QG-1: CapEx/Rev阈值放宽至20%(设备公司资本密集)
-- B5权重×1.5(周期中OPM弹性是关键区分因素, KLAC验证: 检测设备下行OPM韧性 > 沉积/刻蚀)
-- C1+C4权重×1.5(IP专利+工艺数据壁垒是半导体护城河核心)
-- D1: 设备(强周期×0.5) vs 设计(中周期×0.7) vs IP授权(弱周期×0.9)
-- 特殊: 库存周转+产能利用率+R&D支出强度纳入B1评估
-- **定价权分层(v19.6)**: 设备(Stage 4垄断) vs fabless设计(Stage 3竞争) vs 存储(Stage 1-2商品化) → 加权B4
-- **AI抗性评级(v19.9)**: 护城河评估器v1.2 C-AI模块 — Type D(AI基础设施=顺风, 不调低)
+**模块3: AI需求映射** — `knowledge/ai_demand_semiconductor_mapping.md`
+- AI训练vs推理需求对不同芯片的差异化影响
+- GPU+HBM+CoWoS+先进封装联动分析
+- 算力需求→半导体需求传导机制
 
 ---
 
-## 行业增强模块
+## 快速导航
 
-**相关文档**:
-- `docs/industry/semiconductor_deep.md` (AI双轴L×S+周期框架+PPDA算法)
-- `docs/industry/semiconductor_framework_v2.1.md` (MCI垄断指数+供给约束链+CQ↔KS映射)
-- `docs/optionality_valuation.md` (高期权公司: NVDA/ASML/TSM)
-- `docs/deductive_analysis.md` + `docs/deductive_analysis_template.md` (AI范式变革演绎法5步模板)
-- `knowledge/analysis_modules/income_statement_deep_diagnostic.md` (ISDD v1.0利润表诊断, Phase 1财务SOP)
-- `knowledge/analysis_modules/financial_analysis_framework_v2.md` (CPA×ISDD财务分析v2.0)
+**行业深度资源**:
+- `knowledge/semiconductor_ecosystem_map.md` — 完整产业链图谱
+- `knowledge/semiconductor_valuation_guide.md` — 分行业估值方法论
+- `reports/SEMI_SECTOR/` — 行业横向对比报告
 
-### 期权价值评估增强
-- **TSM**: 先进制程护城河+地缘政治期权(地缘折价≈8个PE点≈市值~30%)
-- **ASML**: 光刻技术垄断+EUV产能期权(精确定价, 零安全边际)
-- **NVDA**: AI算力领导地位+软件生态期权(PW≥7→发现系统)
+**最佳实践参考**:
+- KLAC Complete v1.0 (4.5分) — 设备股标杆
+- NVDA Deep Analysis (4.4分) — 设计股标杆
+- MU Complete v2.0 (4.2分) — 存储股周期分析标杆
 
-### 演绎分析增强
-- **因果链**: AI需求 → GPU设计 → 先进制程 → 设备需求 → 材料创新
-- **跨行业传导**: 云计算→数据中心→AI芯片→半导体设备
-- **二阶效应**: 算力需求→电力消耗→散热需求→新材料机会
-
-### Skill按需加载 (铁律M)
-- **Phase 0**: `/data-prefetch` `/expectation-gap {TICKER}` v3.0(Step 0问题闸门+知识前置+动作空间)
-- **Phase 1-3**: `/investment-logic-toolkit` `/assumption-audit` `/competitive-benchmarking` `/moat-evaluator`
-- **Phase 4**: `/red-team-suite` `/risk-topology` `/omission-scanner`
-- **Phase 5**: `/valuation-quality-gate` `/deep-reflection`
-- **禁止**: 预加载全部skill | Phase 1加载红队 | Phase 5加载数据预取
-
-### 预期差v3.0半导体适配 (变量四分法)
-
-**半导体变量分类参考**(分析时标注每个变量类型):
-
-| 类型 | 半导体典型变量 | 说明 |
-|------|-------------|------|
-| **[可控]** | 回购/CapEx纪律/定价策略/产品路线图 | 公司能改变的 |
-| **[约束]** | WFE周期/AI CapEx/地缘政治/出口管制 | 公司改变不了的 |
-| **[迁移]** | DIO拐点/B-to-B/DRAM现货价/Forward PE收敛 | 推动状态→新状态 |
-| **[校验]** | 季度beat/miss/分析师修正/股价反应 | 验证判断,不驱动动作 |
-
-**半导体动作绑定模板**:
-- 设备(late_cycle): 动作=等待拐点 | 触发=WFE<0%+DIO下降2Q | 退出=WFE第4年>7% | 失效=AI彻底打破WFE周期(需3+周期验证)
-- 存储(峰值): 动作=等待拐点 | 触发=CapEx/D&A>1.2x+毛利率<40% | 退出=毛利率>60%+低PE | 失效=HBM合同结构永久改变周期性
-- 设计垄断: 动作=当前可行动(或必须打折) | 触发=N/A(已可行动) | 退出=ASIC>40%推理份额 | 失效=AI CapEx急刹>20%
-
----
-
-## 框架版本
-
-**当前版本**: v20.0 (2026-03-30)
-**与主框架同步**: 参考 `/Users/milton/投资大师/CLAUDE.md`
-**v20.0新增**: 预期差v3.0集成(状态×迁移分离+变量四分法+动作绑定+置信度4层+"不行动"合法输出) + 半导体变量分类参考 + 子行业动作绑定模板
-**v19.9**: PEP-005/006/007 + 穿越周期7领先指标(SEMI-L1~L7) + AI利好衰减模型(6层) + 子行业估值锚 + 信号发现方法论v1.0 + 护城河C-AI模块 + 13家横向报告基线
+**技术文档**:
+- `docs/semiconductor_analysis_methodology.md` — 半导体专用分析方法
+- `scripts/semiconductor_data_validation.sh` — 行业数据验证脚本
