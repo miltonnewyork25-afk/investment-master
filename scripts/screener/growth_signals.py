@@ -1874,7 +1874,7 @@ def _generate_summary(r: GIDResult) -> str:
 
     # Archetype first
     archetype_labels = {
-        "stealth_compounder": "隐形复利", "leverage_breakout": "杠杆突破",
+        "stealth_compounder": "隐形复利", "leverage_breakout": "杠杆突破", "turnaround_recovery": "利润修复",
         "hyper_scaler": "超级扩张", "mature_reaccel": "成熟再加速",
         "momentum_trap": "动量陷阱⚠",
     }
@@ -2023,9 +2023,10 @@ def extract_g7(result: GIDResult) -> G7Discovery:
 
 def classify_archetype(result: GIDResult) -> str:
     """
-    五种原型:
+    六种原型:
       stealth_compounder  : 中速增长+高质量+小市值+低关注 → 最有alpha
       leverage_breakout   : 盈利转折刚发生+运营杠杆释放 → 戴维斯双击候选
+      turnaround_recovery : 收入低增+利润暴增=利润修复(非增长加速) → 价值候选
       hyper_scaler        : 高速增长+市场已知+质量极高 → 确定性高但alpha低
       mature_reaccel      : 大公司增长再加速 → 市值大但预期修正大
       momentum_trap       : 高加速+低质量 → 危险,可能是假阳性
@@ -2063,6 +2064,13 @@ def classify_archetype(result: GIDResult) -> str:
         and g3.growth_type in ("pricing_power", "volume", "stable_moat")
         and (g4.self_funding or (g4.balance_sheet_grade in ("fortress", "healthy")))):
         return "stealth_compounder"
+
+    # v3.2: Turnaround Recovery: low revenue growth + massive profit recovery (DG模式)
+    # 不是增长加速——是利润修复。合法投资逻辑但不是GID核心目标
+    if (rev_g is not None and rev_g < 10
+        and g2.incremental_vs_average_opm is not None and g2.incremental_vs_average_opm > 20
+        and g1.oi_yoy and g1.oi_yoy[0] is not None and g1.oi_yoy[0] > 50):
+        return "turnaround_recovery"
 
     # Leverage Breakout: profitability inflection + operating leverage
     if (g2.phase == "release"
@@ -2116,7 +2124,7 @@ def format_gid_ranking(results: list[GIDResult], top_n: int = 30) -> str:
 
     for i, r in enumerate(ranked, 1):
         archetype_short = {
-            "stealth_compounder": "隐形复利", "leverage_breakout": "杠杆突破",
+            "stealth_compounder": "隐形复利", "leverage_breakout": "杠杆突破", "turnaround_recovery": "利润修复",
             "hyper_scaler": "超级扩张", "mature_reaccel": "再加速",
             "momentum_trap": "陷阱⚠", "unclassified": "—",
         }.get(r.archetype, "—")
