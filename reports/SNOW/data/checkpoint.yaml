@@ -72,7 +72,19 @@ phases:
       - 正常化P/FCF ~110x(非headline 46x, 因Q4占68%)
       - 估值核心分歧: FCF view($154合理) vs Owner FCF view($154高估)
   phase_3:
-    status: not_started
+    status: complete
+    date: 2026-03-31
+    output: staging/phase3_ch11-13 + phase3_synthesis.md
+    chars: 9742
+    dm_count: 20
+    chapters:
+      - ch11: 竞争格局 (双平台共存→渐进重叠, Fabric结构性威胁, 开源价格锚)
+      - ch12: 护城河迁移 (CQI 57/100偏弱, C1从7→5, 中空期FY27-29)
+      - ch13: 风险拓扑 (完美风暴17%→$80, 温水煮青蛙40-50%→$110-130)
+    key_findings:
+      - 新增CQ6: 护城河中空期是否成功过渡(最关键CQ)
+      - Fabric竞争可能未充分price in
+      - 7个KS注册+协同矩阵
   phase_4:
     status: not_started
   phase_5:
