@@ -1,8 +1,15 @@
-# 护城河评估器 v1.0 (Moat Evaluator)
+# 护城河评估器 v2.0 (Moat Evaluator)
 
 > **定位**: 44因子CQI评分+飞轮分析的一键执行skill。确保每份Tier 3报告都有完整、标准化的护城河评估。
 > **权威标准**: `docs/company_quality_scoring.md` v1.4 (44因子定义) + `knowledge/stock_picking/cqi_scoring_formula.md` v2.0 (公式)
 > **产出**: `reports/{T}/data/quality_scorecard.md` + `reports/{T}/data/moat_datacard.yaml`
+>
+> **v2.0核心升级** (源自NET/MRVL分析洞察):
+> - EVO-01: 多业务线异质性处理(MDI检查+分部评分)
+> - EVO-02: 护城河方向性标签(↑↑/↑/→/↓/↓↓动态评估)
+> - EVO-03: IP可许可性降级机制(核心/部分/独占分层)
+> - EVO-04: 增长侵蚀护城河预警(高增速业务低护城河检测)
+> - EVO-05: 护城河衰减函数建模(动力学评估+半衰期计算)
 
 ---
 
@@ -52,7 +59,18 @@
 
 **行业加权**: 根据行业路由自动应用(半导体B5×1.5, 消费品B4×1.5等)
 
-#### C. 护城河 (C1-C8, 各0-5分) — v1.6含MRVL升级
+#### ★ v2.0 Pre-Step: 多业务线预检
+在进行44因子评分前，执行**业务线异质性预检**:
+```
+1. 业务线识别: 收入占比>15%的独立业务单元
+2. 异质性快速检测: 不同业务线的护城河特征差异
+3. 评分模式选择:
+   - 单一业务主导(>80%收入) → 标准44因子流程
+   - 多业务均衡但同质 → 标准流程 + MDI验证
+   - 多业务异质(预期MDI>3.5) → 分业务线评分 + SOTP整合
+```
+
+#### C. 护城河 (C1-C8, 各0-5分) — v2.0含5个EVO升级
 
 每项必须包含: **分数 + 依据 + 标注(C1嵌入性质+方向/C3载体+IP可许可检查)**
 
@@ -65,16 +83,68 @@
 | C4 | 数据飞轮 | ? | | |
 | C5 | 规模经济 | ? | | |
 | C6 | 物理壁垒 | ? | | ★IP可许可检查 |
-| C7 | 自维持性 | ? | **停止投入后多快消失** | |
+| C7 | 自维持性 | ? | **停止投入后多快消失** | 衰减函数 |
 | C8 | **价值传递** | ? | **Owner Yield+η+ROIC>WACC** | 梯队 |
 ```
 
-**★ v1.6新增步骤 (EVO-MRVL, 多业务线公司必须)**:
+#### ★ v2.0 EVO升级执行流程
 
-Step 2a **MDI检查**(业务线≥2条且收入>15%时): MDI=max-min, >3.5→CQI失效→分部评分+SOTP
-Step 2b **C1方向标签**: ↑↑强递增/↑弱递增/→稳定/↓弱衰减/↓↓强衰减。方向分裂→触发MDI
-Step 2c **IP可许可降级**: 核心IP可许可→C3/C6 cap 3.0; 部分→cap 4.0; 独占→不限
-Step 2d **增长侵蚀预警**: 增速最快业务护城河<加权均值→标注"增长侵蚀护城河"
+**Step 2a: EVO-01多业务线异质性检测(MDI)**
+```
+触发条件: 业务线≥2条且任一收入占比>15%
+检测公式: MDI = max(C1-C8) - min(C1-C8)
+阈值判定: MDI >3.5 → CQI失效 → 必须分业务线评分+SOTP
+异质性标注: 标识导致异质性的维度(例: "C3异质:数据业务4.5 vs 硬件1.5")
+```
+
+**Step 2b: EVO-02护城河方向性标签(全部C1-C8维度)**
+```
+↑↑ 强递增: 护城河快速加深(年化提升>0.5分)
+↑  弱递增: 护城河缓慢加深(年化提升0.2-0.5分)
+→  稳定: 护城河维持现状(±0.2分)
+↓  弱衰减: 护城河缓慢削弱(年化衰减0.2-0.5分)
+↓↓ 强衰减: 护城河快速削弱(年化衰减>0.5分)
+
+方向分裂触发: 如C1↑↑但C3↓↓ → 重新评估MDI
+异常模式: 全维度↓但CQI仍高 → "后视镜护城河"警告
+```
+
+**Step 2c: EVO-03 IP可许可性降级机制**
+```
+IP可许可性检查(C3生态锁定 + C6物理壁垒):
+1. 核心IP可许可: 关键专利/技术对外授权 → C3/C6 cap at 3.0
+2. 部分IP可许可: 非核心专利授权/标准FRAND → C3/C6 cap at 4.0
+3. 独占IP: 专利/know-how严格保护 → C3/C6 无上限
+
+触发案例:
+- ARM: CPU架构大量授权 → C6 cap 3.0
+- Qualcomm: 5G/WiFi标准FRAND → C6 cap 4.0
+- ASML: EUV技术独占 → C6 无上限
+```
+
+**Step 2d: EVO-04增长侵蚀护城河预警**
+```
+检测逻辑: 增速最快业务的护城河分数 < 整体加权平均护城河分数
+警告触发: 差距>1.0分且高增速业务收入贡献>20%
+
+例: NET边缘云增速50%(护城河3.2) vs 安全增速15%(护城河4.8)
+→ 高增速业务拖累整体护城河 → 标注"增长侵蚀护城河"
+含义: 增长来自低护城河业务 → 未来定价权/留存可能恶化
+```
+
+**Step 2e: EVO-05护城河衰减函数建模**
+```
+为每个C1-C7维度建模衰减函数:
+
+衰减类型:
+- 指数衰减: C4数据飞轮(算法更新快) → 半衰期1-2年
+- 线性衰减: C2网络效应(替代网络出现) → 固定年化衰减
+- 阶跃衰减: C1制度嵌入(监管突变) → 突然归零
+- 无衰减: C6物理壁垒(地理位置) → 理论永续
+
+衰减函数: C(t) = C(0) × decay_function(t, half_life, decay_type)
+综合评估: 加权平均各维度的期望护城河价值(3年/5年/10年)
+```
 
 **C8评分速查**(v1.5 EVO-CRWD-001):
 - Owner FCF Yield = (FCF-SBC)/市值; η = 回购/SBC
@@ -263,6 +333,35 @@ CQI = round((加权分 - 10) / 60 × 100)
 
 标杆: ARM 19.8x(极端) | NVDA ~5x | CME ~3x | IHG ~2.1x
 
+#### ★ v2.0 EVO估值含义整合
+
+**EVO-01 MDI异质性→估值方法选择**:
+- MDI ≤3.5: 统一CQI × PE倍数定价
+- MDI >3.5: **必须SOTP分业务线估值**, 整体CQI仅作参考
+- 异质性溢价/折价: 管理难度增加的estimated impact
+
+**EVO-02 方向性→动态估值调整**:
+- 全维度↑↑/↑: 护城河加深 → PE溢价合理 (+10-15%)
+- 全维度↓/↓↓: 护城河衰减 → PE折价必要 (-15-25%)
+- 方向分裂: 混合信号 → 概率加权估值
+- 后视镜护城河: 历史PE不适用当前护城河
+
+**EVO-03 IP可许可性→估值上限调整**:
+- 核心IP可许可: 预期PE乘数 cap降低20-30%
+- 部分IP可许可: 预期PE乘数 cap降低10-15%
+- 许可收入依赖度评估: 授权业务vs自营业务估值差异
+
+**EVO-04 增长侵蚀→质量调整**:
+- 增长侵蚀确认: 增长的"质量折价" (Lower Quality Growth Multiple)
+- 侵蚀幅度>1.5分: 估值方法从"增长×质量"转向"分阶段估值"
+- 高增速低护城河业务: 单独建模，不享受整体护城河估值溢价
+
+**EVO-05 衰减函数→时间价值调整**:
+- 加权半衰期<5年: DCF中护城河溢价递减 (时间加权)
+- 加权半衰期>15年: 永续价值中护城河溢价稳定
+- 衰减不确定性: 护城河价值的期权特征评估
+- 场景分析: 快衰减vs慢衰减的估值敏感性
+
 ### Step 3: 飞轮分析 (新增模块)
 
 > 不是每家公司都有飞轮。只有当公司宣称有"平台效应""网络效应""数据飞轮"或有多产品交叉销售时才执行。
@@ -376,7 +475,72 @@ pricing_power_type: "市场/合同/制度"
 pricing_power_stage: X.X
 moat_trend: "↑/↗/→/↘/↓/⇊"
 leaderboard_rank: XX
-  # v1.1新增: 多引擎半衰期 (27份报告验证)
+
+  # v2.0 EVO新增字段
+  mdi_heterogeneity:
+    mdi_score: X.X          # 护城河异质性指数(0-5)
+    is_heterogeneous: false # >3.5为true
+    dominant_dimension: ""  # 导致异质性的主要维度
+    requires_sotp: false    # 是否需要分业务线估值
+
+  moat_directionality:
+    c1_direction: "→"       # ↑↑/↑/→/↓/↓↓
+    c2_direction: "→"
+    c3_direction: "→"
+    c4_direction: "→"
+    c5_direction: "→"
+    c6_direction: "→"
+    c7_direction: "→"
+    c8_direction: "→"
+    direction_consensus: "stable"  # strengthening/stable/weakening/fragmented
+
+  ip_licensability:
+    c3_ip_status: "exclusive"      # core_licensed/partial_licensed/exclusive
+    c6_ip_status: "exclusive"
+    c3_cap_applied: false          # 是否应用了上限
+    c6_cap_applied: false
+    licensing_risk: "low"          # low/medium/high
+
+  growth_moat_erosion:
+    has_erosion: false             # 是否存在增长侵蚀护城河
+    fastest_growth_segment: ""     # 最快增长业务
+    fastest_growth_moat: X.X       # 该业务护城河分数
+    avg_moat_score: X.X            # 整体加权平均
+    erosion_magnitude: X.X         # 侵蚀幅度
+    erosion_warning: ""           # 风险说明
+
+  moat_decay_function:
+    c1_decay:
+      type: "none/linear/exponential/step"
+      half_life: XX                # 年数，"infinite"或数字
+      decay_rate: X.XX             # 年化衰减率
+    c2_decay:
+      type: ""
+      half_life: XX
+      decay_rate: X.XX
+    c3_decay:
+      type: ""
+      half_life: XX
+      decay_rate: X.XX
+    c4_decay:
+      type: ""
+      half_life: XX
+      decay_rate: X.XX
+    c5_decay:
+      type: ""
+      half_life: XX
+      decay_rate: X.XX
+    c6_decay:
+      type: ""
+      half_life: XX
+      decay_rate: X.XX
+    c7_decay:
+      type: ""
+      half_life: XX
+      decay_rate: X.XX
+    weighted_half_life: XX         # 整体护城河加权半衰期
+
+  # v1.1保留: 多引擎半衰期
   half_life_by_engine:
     - engine: ""        # 收入引擎名称
       revenue_pct: ""   # 占总收入比例
@@ -405,8 +569,43 @@ leaderboard_rank: XX
 
 ---
 
-## 版本
+### ★ v2.0 EVO集成要点
+
+#### EVO-01实施检查清单
+- [ ] **MDI触发检查**: 业务线数量≥2且任一收入占比>15%
+- [ ] **异质性计算**: MDI = max(C1-C8) - min(C1-C8)
+- [ ] **失效判断**: MDI >3.5 → 标注"CQI失效，需分业务线评估"
+- [ ] **异质维度识别**: 记录导致MDI过高的具体维度
+
+#### EVO-02方向性评估清单
+- [ ] **8维度方向标签**: C1-C8各自标注↑↑/↑/→/↓/↓↓
+- [ ] **时间锚点**: 基于3年历史+2年前瞻评估
+- [ ] **方向一致性**: 检查是否存在方向分裂(如C1↑但C3↓)
+- [ ] **后视镜预警**: 全维度↓但CQI仍高 → "护城河惯性"警告
+
+#### EVO-03 IP降级执行清单
+- [ ] **IP分类**: 核心/部分/独占三档判断
+- [ ] **降级应用**: 核心可许可→cap 3.0, 部分→cap 4.0
+- [ ] **影响评估**: 计算降级对整体CQI的影响
+- [ ] **案例标注**: 参考ARM/QCOM/ASML等标杆案例
+
+#### EVO-04增长侵蚀检测清单
+- [ ] **业务分解**: 识别各业务线增速+护城河分数
+- [ ] **侵蚀检测**: 最高增速业务护城河 < 整体平均
+- [ ] **阈值判断**: 差距>1.0分且高增速业务贡献>20%
+- [ ] **影响预测**: 标注对未来定价权/留存的潜在影响
+
+#### EVO-05衰减建模清单
+- [ ] **衰减类型识别**: 为C1-C7各选择衰减模型
+- [ ] **半衰期估算**: 基于行业经验+公司特性
+- [ ] **动态因子**: 考虑竞争/技术/监管变化
+- [ ] **期望价值**: 计算3/5/10年护城河期望值
+
+---
+
+## 版本历史
 
 | 版本 | 日期 | 变更 |
 |------|------|------|
 | v1.0 | 2026-03-25 | 初版: 44因子一键评分+飞轮分析(映射+悖论+摩擦力+净效应)+双产出(scorecard+datacard) |
+| **v2.0** | **2026-03-30** | **5个EVO升级**: (1)MDI异质性检测+分部评分触发 (2)8维护城河方向性标签 (3)IP可许可性降级机制 (4)增长侵蚀护城河预警 (5)护城河衰减函数建模。源自NET/MRVL深度分析洞察。新增6个moat_datacard字段组，保持44因子结构不变。 |
