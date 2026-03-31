@@ -1,0 +1,423 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Micron Technology (MU)
+# 压缩比: 178K → ~11K (16x)
+# 六层 + 三个新增重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: MU
+  company: "Micron Technology, Inc."
+  report_date: "2026-02-10"
+  stock_price: "$383.50"
+  market_cap: "~$86B"
+  report_version: "v1.0"
+  report_path: "reports/MU/MU_Complete_v1.0_2026-02-10.md"
+  quality_score: "报告未含D1-D11记分卡"
+  cqi: "报告未覆盖"
+  framework_version: "v6.0 (Deep-Dive Protocol)"
+  industry: "半导体 — 存储芯片(DRAM/NAND/HBM)"
+  archetype: "周期成长(AI转型中)"
+  chars: 178506
+  dm_count: 21
+  dm_density: "0.12/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "MU是好公司在错误价格和错误时间点——周期P3中后段+内部人极端卖出+正常化PE 27x并不便宜，等待$300-340"
+  rating: "回避 (51.8/100)"
+  fair_value: "$329 (50% CI: $307-365)"
+  expected_return: "-14.2% (当前$383.50溢价16.6%于公允价值$329)"
+
+  key_arguments:
+    - claim: "Forward P/E 8.71x是周期峰值的光学幻觉，正常化P/E 24-32x并不便宜"
+      direction: bearish
+      magnitude: 5  # 硬数据: MU历史0/5次维持峰值EPS超过2年
+      mechanism: "峰值EPS $44→正常化EPS $12-16→$383.50/$14=27.4x正常化P/E vs 行业正常化18-22x"
+      kill_switch: "FY27 EPS维持$44+(0/5历史概率) → 市场重估MU为成长股 → P/E 12-15x合理 → $528-$660"
+
+    - claim: "内部人A/D 0.14精确复刻2018年周期顶部(92%匹配度)"
+      direction: bearish
+      magnitude: 5  # 硬数据: FMP insider 153卖/3买, 20年回测4/4命中
+      mechanism: "A/D<0.2出现4次→后12月股价均跌-35%以上 | 2018年MU从$64跌至$28.39(-55.6%)"
+      kill_switch: "内部人开始Open Market Buy(当前仅3笔/过去5季) → 信号翻转"
+
+    - claim: "HBM降低了周期波幅但未消除周期性——三个预期差均指向下行"
+      direction: bearish
+      magnitude: 4  # 合理推断: HBM毛利率/AI CapEx/周期免疫三预期差
+      mechanism: "HBM毛利率>60%不可持续(SKH HBM4竞争) + AI CapEx增速+35%→+15% + 传统DRAM仍占60-65%受库存周期驱动"
+      kill_switch: "HBM份额>25%且毛利率>50%连续3年 → 证明商业模式转型成功 → P/E 14-18x合理"
+
+    - claim: "PPDA四重背离同时看跌——MU历史上极为罕见"
+      direction: bearish
+      magnitude: 5  # 四个独立信号源全部背离, 历史收敛率4/4
+      mechanism: "内部人A/D 0.14 + PMSI 48.4(冷)vs价格(热)脱钩22-32分 + DCF $148-166(131%+溢价) + 正常化PE高估20-50%"
+      kill_switch: "任一背离信号修复(如内部人A/D回升至>0.5 或 PMSI>60)"
+
+    - claim: "地缘风险被过度定价3-5%——反直觉上行空间$50-70"
+      direction: bullish
+      magnitude: 3  # 唯一看多论点, MU地缘暴露客观低于TSM
+      mechanism: "MU台湾无工厂+中国收入<10%+Idaho新工厂+CHIPS Act $6.1B → 地缘折价高于TSM不合理"
+      kill_switch: "中国全面禁售MU产品(概率<5%) → 影响营收$4B(~10%)"
+
+  moat:
+    composite_score: 7.2  # M09加权: 技术8×35% + 规模6×20% + 客户锁定7×25% + IP 6×10% + 成本8×10%
+    half_life: "5-8年(HBM护城河扩大中, 但高度依赖AI需求持续性)"
+    dimensions:
+      - type: ip
+        strength: 4  # 技术壁垒拆分为ip(技术创新力8/10但量产滞后6-9月)
+        evidence: "HBM4样品11Gbps领先(vs SKH 10Gbps), 1γ DRAM领先Samsung半代, R&D/毛利21.19%三寡头最高"
+        vulnerability: "量产规模化能力落后SKH 6-9个月 — 技术领先但制造滞后是MU核心矛盾"
+      - type: switching_cost
+        strength: 4  # HBM切换成本$22-68M/平台, 认证周期12-18月
+        evidence: "HBM切换成本3-5x传统DRAM($22-68M vs $5-15M) + 12-18月GPU认证周期 + 已进入NVIDIA供应链"
+        vulnerability: "客户多元化采购策略(大客户通常维持2-3家供应商) → MU份额有天花板"
+      - type: scale
+        strength: 3  # 三寡头最小, DRAM 23-25%份额
+        evidence: "DRAM份额~25%(vs Samsung ~40%, SKH ~33%) + PP&E $49.18B + 但IDM模式在HBM时代有协同优势"
+        vulnerability: "每bit成本比Samsung高10-15% + CapEx/Rev最高(39.5%) → 下行周期最脆弱"
+      - type: pricing_power
+        strength: 3  # HBM高定价权但传统DRAM/NAND是商品
+        evidence: "HBM毛利率>70%(已售罄状态) + 但传统DRAM/NAND仍占60-65%营收, 受行业价格周期驱动"
+        vulnerability: "HBM4量产后SKH/Samsung竞争加剧 → 定价权从卖方转向买方"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含HBM>70%毛利率持续3年 + Hyperscaler AI CapEx>30%/年至2028 + AI让MU摆脱传统周期"
+    methods_used: ["五引擎协同", "AI调整SOTP", "三情景加权", "多方法收敛(ex-DCF)", "DCF基准", "看空等权重"]
+    dispersion: "极高($157-$408, DCF到三情景加权)"
+    consensus_vs_ours: "市场看Forward P/E 8.71x='AI最便宜标的' | 我们看正常化P/E 27.4x='周期顶部光学幻觉'"
+    entry_zone: "$300-340 (Phase 4校准区间下沿)"
+    catalyst: "周期回调: P3见顶(6-12月) → 2027Q2-Q3供需翻转 → EPS从$44→$12-16 → 价格回调至$250-340"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "回避/观望 — 好公司@错误价格+错误时机, 等待周期回调"
+    buy_triggers:
+      - trigger: "周期回调至P4/P5阶段 + 正常化PE回落至14-18x"
+        price_zone: "$300-340 (首次建仓)"
+        reasoning: "Phase 4校准下沿 + 正常化P/E回到行业中枢 + 内部人信号改善"
+      - trigger: "深度衰退: EPS跌至$5-10 + 供给纪律恢复"
+        price_zone: "$180-250 (极端机会)"
+        reasoning: "MU历史最佳买点在P5(如2022年谷底/2018年底) + 逆周期收购能力"
+    hold_conditions:
+      - "HBM份额维持>20%(当前21-22%)"
+      - "毛利率维持>35%(正常化底线)"
+      - "净现金状态/无生存风险(Altman Z 12.57)"
+    sell_triggers:
+      - signal: "内部人A/D回升至>0.5(信号翻转=买点而非卖点)"
+        severity: "报告未覆盖(当前处于回避状态,无持仓需卖)"
+        action: "N/A — 当前建议0%仓位"
+      - signal: "若已建仓@$300-340: HBM份额跌破15% + 传统DRAM价格连跌3季"
+        severity: "action"
+        action: "减仓50%, 周期恶化超预期"
+      - signal: "若已建仓: AI CapEx大幅放缓(>30%削减) + HBM价格崩跌"
+        severity: "emergency"
+        action: "全部卖出, AI需求假设被颠覆"
+    position_sizing: "当前0%仓位(回避) | 目标: $300-340首次5-10%仓位 | $250以下可加至15-20%"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "周期股Forward P/E陷阱的识别逻辑"
+    chain: >
+      观察: MU Forward P/E 8.71x vs 半导体行业51.97x → 看似极度便宜
+      → 追问: 这个EPS是正常化还是峰值?
+      → 发现: FY23 EPS -$5.34 → FY26E $44 = 跨越$49的波幅
+      → 追问: 历史上MU维持峰值EPS超过2年的次数?
+      → 答案: 0/5次(1999/2006/2010/2018/2021)
+      → 因此: 正常化EPS $12-16 → 正常化P/E 24-32x → 并不便宜
+      → 投资含义: Forward P/E在周期股中是反指标——越低越危险,因为它隐含了峰值盈利永续
+    transferable_to: "所有周期性行业: 航运/钢铁/化工/能源 — Forward P/E低≠便宜, 需用正常化EPS"
+    reasoning_habit: "看到周期股极低Forward P/E时, 立刻追问'EPS的正常化水平是多少'和'历史上维持峰值EPS的次数' — 0/N次=价值陷阱"
+
+  - id: "CC-2"
+    name: "内部人交易的周期预测力(20年回测)"
+    chain: >
+      数据: MU过去5季153卖/3买, A/D 0.14
+      → 追问: 历史上A/D<0.2出现几次?结果如何?
+      → 回测: 4次出现, 后12月均跌-35%以上, 平均-42%
+      → 2018年匹配度: P/E区间(7-9x vs 8.71x)✓ + A/D(<0.2)✓ + 周期位置(P3后)✓ = 92%
+      → 追问: 可能是'常规薪酬变现'吗?
+      → 剥离: RSU自动出售+10b5-1计划后, Open Market自主买入仅3笔/149笔卖出=0.020
+      → 结论: 内部人在周期极端值时的集体行为具有高度预测性, 噪音已被过滤
+    transferable_to: "所有周期股的内部人交易分析 — 关键是剥离计划性交易后看自主买入比率"
+    reasoning_habit: "看到内部人卖出时, 不急于下结论 — 先剥离计划性交易, 再看Open Market自主买入比率, 最后回测历史极端值的预测命中率"
+
+  - id: "CC-3"
+    name: "HBM挤出效应的双面性"
+    chain: >
+      事实: MU将30%晶圆产能转产HBM(从传统DRAM)
+      → 正面: HBM毛利率>70% vs 传统DRAM ~35-40% → 混合毛利率提升5-8pp
+      → 反面: 传统DRAM供给减少 → 短期DRAM价格上涨 → 但长期Samsung/SKH也转产 → 供给恢复
+      → 关键不对称: 上行(HBM成功) = 净增量$5-6B | 下行(HBM需求放缓) = 30%产能无法快速转回 = EPS风险-34%
+      → 投资含义: HBM挤出效应让MU上下行不对称 — 上行有限(已定价), 下行放大(转产不可逆)
+    transferable_to: "所有产能转移/mix shift故事 — 转产不可逆时, 下行风险被放大"
+    reasoning_habit: "看到产品mix shift叙事时, 追问'转产是否可逆' — 不可逆mix shift = 下行放大器"
+
+  - id: "CC-4"
+    name: "AI确定性衰减曲线(远期AI故事的折扣方法)"
+    chain: >
+      问题: AI对MU的增长贡献能持续多久?
+      → 分层: 1年(FY26)确定性85%(已有合同) → 3年(FY28)55%(技术路线已知但竞争未定) → 5年(FY30)30%(HBM5/CXL不确定)
+      → 市场行为: DCF终值权重>40%但用线性外推AI收入
+      → 修正: 应用确定性折扣因子后, 有效终值贡献<25%
+      → 投资含义: 远期AI故事应大幅折扣, 不是因为AI是假的, 而是因为5年后的技术路径和竞争格局高度不确定
+    transferable_to: "所有AI受益者估值 — 对远期AI收入应用确定性衰减因子(1年85%/3年55%/5年30%)"
+    reasoning_habit: "看到长期AI叙事时, 追问'每一年的确定性分别是多少' — 确定性衰减是AI估值最被忽视的风险因子"
+
+  - id: "CC-5"
+    name: "PPDA四重背离的合流效应"
+    chain: >
+      单独看: 内部人看跌(常见) / PMSI偏冷(常见) / DCF偏低(周期股常见) / 正常化PE偏高(可争议)
+      → 合流看: 四个独立信号源同时看跌 = 极其罕见
+      → 历史: 三重以上背离收敛率4/4(100%)
+      → 关键: 单一信号可以忽略, 多信号合流不可忽略 — 独立信号的联合概率远低于单一信号
+      → 投资含义: PPDA合流 = 系统性高估信号, 收敛方式大概率是价格下行
+    transferable_to: "所有估值分析 — 建立多信号背离检测系统(内部人+情绪+基本面+相对), 三重以上合流=高置信度信号"
+    reasoning_habit: "永远不只看一个估值信号 — 构建至少3个独立信号源, 当≥3个同时背离时 = 系统性信号"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "Forward P/E 8.71x = AI周期中最便宜的半导体标的"
+      final: "正常化P/E 24-32x并不便宜, 8.71x是峰值盈利的光学幻觉"
+      pivot: "MU历史0/5次维持峰值EPS超过2年 + 正常化EPS $12-16暴露真实估值水平"
+
+    - initial: "HBM改变了MU的商业模式——'这次不一样'"
+      final: "HBM降低周期波幅但未消除周期性 — 传统DRAM仍占60-65%收入受库存周期驱动"
+      pivot: "三个预期差(HBM毛利率/AI CapEx/周期免疫)全部指向下行 + 30%转产不可逆=放大下行风险"
+
+    - initial: "Phase 1温度计+0.26(中性偏冷→倾向加仓)"
+      final: "Phase 5温度计-0.45(偏冷→回避), 评级从'持有观望'翻转至'回避'"
+      pivot: "Phase 2-4逐步揭示: 正常化PE陷阱 + PPDA四重背离 + 内部人2018复刻 + 看空说服力6.8>看多5.2"
+
+  surprises:
+    - finding: "AI溢价已被精确定价 — AI调整后公允价值$391 vs 当前$383.50(+2%)"
+      implication: "不应期待'AI重估'带来超额收益, 市场已有效反映AI期权价值。投资MU=赌周期延续而非AI发现"
+
+    - finding: "DCF估值$148-166仅为当前价格的39-43% — 即便考虑系统性低估, 差距仍极端"
+      implication: "DCF与市价131%+的差距是所有估值方法中最大的, 暗示市场隐含了极强的HBM永续增长假设"
+
+    - finding: "看空等权重分析(9论点)→期望下行-22%→看空说服力6.8/10 > 看多5.2/10"
+      implication: "Phase 4对抗审查后, 看空案比看多案更有说服力 — 这在AI概念股中极为罕见"
+
+    - finding: "地缘风险被过度定价3-5%(反直觉) — MU地缘暴露低于TSM但折价更大"
+      implication: "CHIPS Act $6.1B + Idaho新工厂 = MU是地缘去风险受益者而非受害者, 修复空间$50-70"
+
+  blind_spots:
+    - area: "HBM4量产良率和市场份额"
+      why_matters: "HBM4是2026H2的关键变量 — 份额从21%→30%=bull案, 停滞在20%=bear案"
+      monitor: "2026年6月MU FY26Q3财报HBM收入占比 + 2026H2 Samsung HBM4认证结果"
+
+    - area: "AI CapEx周期拐点时间"
+      why_matters: "Hyperscaler AI CapEx放缓22%概率(Polymarket) — 一旦发生HBM需求崩塌速度可能快于传统DRAM"
+      monitor: "NVIDIA/AMD/Google/Microsoft季度CapEx指引 + 数据中心租赁活动"
+
+    - area: "供需翻转精确时间"
+      why_matters: "Phase 3预测2027Q2-Q3, 但SK海力士/Samsung CapEx扩张节奏可能加速或延迟翻转"
+      monitor: "TrendForce季度供需模型 + 各公司CapEx实际执行vs指引"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "在周期股P3顶部持有 → Forward P/E看似极低实则是陷阱"
+      lesson: "周期股的卖出纪律=正常化P/E而非Forward P/E。Forward P/E在盈利峰值时系统性失效"
+      transferable: "所有强周期行业(航运/钢铁/化工/存储) — 在Forward P/E最低时考虑卖出而非买入"
+    - scenario: "内部人极端卖出(A/D<0.2)时未减仓 → 后12月均跌-35%+"
+      lesson: "内部人交易在周期极端值时预测力最强。A/D<0.2 + 周期P3 = 高置信度卖出信号"
+      transferable: "半导体/大宗商品等所有管理层能感知周期拐点的行业"
+    - scenario: "AI概念溢价已被充分定价(+2%上行)时继续持有等'AI重估'"
+      lesson: "AI溢价一旦被市场充分定价, 持有的理由只剩周期延续 — 不要把已定价的AI溢价当成未来上行空间"
+      transferable: "所有AI受益者 — 用AI调整后公允价值vs市价检验AI溢价是否已定价"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "正常化P/E vs Forward P/E差距"
+      why_alpha: "市场用Forward P/E定价周期股→系统性低估周期回归风险。正常化P/E暴露真实估值。大多数投资者不做正常化分析"
+      current_reading: "Forward P/E 8.71x vs 正常化P/E 24-32x — 差距3-4倍说明市场在赌峰值盈利永续"
+    - signal: "内部人Open Market自主买入比率(剥离计划性交易后)"
+      why_alpha: "剥离RSU/10b5-1后的自主买入=管理层真实态度。MU仅3/149=0.020, 极端看跌"
+      current_reading: "Open Market Buy/Sell 0.020 — 20年历史最低区间之一"
+    - signal: "AI确定性衰减曲线(1Y/3Y/5Y确定性)"
+      why_alpha: "卖方DCF线性外推AI收入但不折扣远期不确定性。我们的衰减曲线: 85%/55%/30%"
+      current_reading: "市场隐含>40% DCF终值来自AI — 应用衰减后有效贡献<25%"
+
+  confirmation_signals:
+    - signal: "季度HBM收入占比及毛利率"
+      bullish_threshold: "HBM收入占比>35% + 毛利率>55%(HBM mix shift成功)"
+      bearish_threshold: "HBM收入占比增速放缓 + 毛利率<50%(竞争侵蚀)"
+    - signal: "DRAM合约价季度变化(TrendForce)"
+      bullish_threshold: "连续2季度QoQ>5%(上行周期延续)"
+      bearish_threshold: "QoQ转负(周期见顶确认)"
+    - signal: "Hyperscaler AI CapEx季度同比"
+      bullish_threshold: ">25% YoY(AI需求持续)"
+      bearish_threshold: "<10% YoY或QoQ转负(AI CapEx减速)"
+
+  noise_signals:
+    - signal: "日度/周度股价波动"
+      why_noise: "MU Beta 1.505=高波动性天然, 日度波动不改变周期定位和正常化估值"
+    - signal: "单季度EPS beat/miss"
+      why_noise: "周期顶部EPS beat只意味着峰值更高→正常化回落更深。Beat不改变周期位置"
+    - signal: "卖方目标价调整"
+      why_noise: "卖方用Forward P/E线性外推→系统性忽视周期回归。用正常化P/E自行计算比看卖方更准"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: "SKH (SK Hynix)"
+      similarity: "同为DRAM/HBM三寡头, 同样受Memory周期驱动, 同时参与AI存储竞赛"
+      key_difference: "SKH=HBM份额50-55%(霸主)+NVIDIA首选 vs MU=21%(追赶者) | SKH量产领先MU 6-9个月"
+
+    - ticker: "Samsung (005930.KS)"
+      similarity: "DRAM三寡头第一(40%份额), 同样混合商品DRAM+高端HBM"
+      key_difference: "Samsung=规模最大/成本最低但HBM良率问题 vs MU=规模最小但HBM技术追赶快 | Samsung业务分散(存储仅30%集团营收)"
+
+    - ticker: "NVDA"
+      similarity: "AI受益链上下游 — NVDA是MU HBM最大客户"
+      key_difference: "NVDA=AI平台/算力(定价权极强) vs MU=AI零件/存储(定价权依赖周期) | NVDA护城河(CUDA)远深于MU"
+
+  comparative:
+    - dimension: "HBM市场份额(2025)"
+      position: "SKH (~50-55%) > Samsung (~25-30%) > MU (~21-22%)"
+      reasoning: "SKH先发优势+NVIDIA深度绑定 > Samsung规模但良率差 > MU技术追赶但量产滞后"
+
+    - dimension: "周期性(收入波动幅度)"
+      position: "MU (最高, Beta 1.505) > Samsung (较高, 但被分散化对冲) > SKH (中等, HBM合同保护)"
+      reasoning: "MU=纯存储+规模最小=下行周期最脆弱 | SKH HBM合同>50%收入=部分去周期化"
+
+    - dimension: "AI转型进度"
+      position: "SKH (最前, HBM份额50%+) > MU (追赶中, HBM份额21%但HBM4速度领先) > Samsung (滞后, HBM良率问题)"
+      reasoning: "AI转型=HBM实际出货而非技术路线图 | MU有技术但缺规模"
+
+    - dimension: "估值吸引力(正常化P/E)"
+      position: "Samsung (~12-15x, 集团折价) > SKH (~18-22x, HBM溢价) > MU (~24-32x, 看似最低Forward但正常化最贵)"
+      reasoning: "MU Forward P/E最低但正常化最贵 = 经典周期陷阱"
+
+  industry_position:
+    quadrant: "Q2: 质优但贵(F=6.08, D=-1.7) — 好公司@错误价格"
+    archetype: "周期成长(AI转型中) — 从'商品制造商'向'定制化AI供应商'转型, 但转型证据不足"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.cycle_trap"
+      application: "Forward P/E 8.71x是经典周期股价值陷阱 — 峰值盈利下P/E最低=最危险时刻, 非便宜货"
+
+    - pattern_id: "insider.extreme_selling"
+      application: "A/D 0.14 + Open Market Buy仅0.020 → 20年回测4/4命中后12月-35%+ → 高置信度周期顶部信号"
+
+    - pattern_id: "scenario_analysis.this_time_is_different"
+      application: "'HBM改变了MU'叙事 vs 1999/2006/2018/2022四次'这次不一样'全部以周期回归告终"
+
+    - pattern_id: "red_team.ppda_convergence"
+      application: "四重背离(内部人/PMSI/DCF/正常化PE)同时看跌 — 历史收敛率4/4"
+
+  novel_patterns:
+    - name: "AI确定性衰减曲线"
+      description: "对AI收入按时间维度赋确定性折扣: 1年85%/3年55%/5年30% — 远期AI故事应大幅折扣DCF终值"
+      transferable_to: ["所有AI受益者估值", "所有技术路线不确定的高增长公司"]
+
+    - name: "HBM挤出效应不对称性"
+      description: "产能转产HBM=不可逆mix shift → 上行有限(已定价) + 下行放大(30%产能无法快速转回) → 下行EPS风险-34%"
+      transferable_to: ["所有产能mix shift故事", "晶圆代工先进制程转移", "任何不可逆产能重配置"]
+
+    - name: "正常化P/E vs Forward P/E周期检验"
+      description: "对周期股用正常化EPS($12-16)而非峰值EPS($44)计算P/E → 暴露Forward P/E 8.71x实为正常化27.4x的幻觉"
+      transferable_to: ["航运/钢铁/化工/能源等所有强周期行业"]
+
+    - name: "PPDA四重背离信号系统"
+      description: "Price/People(内部人)/Data(DCF+正常化)/Atmosphere(PMSI)四维独立信号, ≥3个同时背离=系统性信号, 收敛率100%"
+      transferable_to: ["所有个股估值分析", "系统性超买/超卖检测"]
+
+    - name: "温度计校准路径(Phase 1→5渐进修正)"
+      description: "投资温度计从+0.26→-0.45的渐进校准路径 — 每Phase增量信息修正温度, 防止锚定效应"
+      transferable_to: ["所有多Phase深度研究", "避免Phase 1结论锚定后续分析"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "存储行业护城河本质是'技术+客户锁定'而非'品牌+网络效应' — HBM正在将商品护城河升级为定制化护城河"
+        implication: "存储/半导体公司护城河评估应以技术领先度+客户认证壁垒为核心权重(60%), 而非传统的品牌/网络效应"
+      - insight: "HBM切换成本$22-68M(3-5x传统DRAM)构成了存储行业前所未有的客户锁定"
+        implication: "HBM认证通过=5-8年级别的客户粘性 — 改变了'存储=纯商品'的传统判断"
+
+    valuation_insights:
+      - insight: "周期股必须用正常化EPS而非Forward EPS — Forward P/E在盈利峰值时是反指标"
+        implication: "所有周期股估值默认使用正常化P/E作为主指标, Forward P/E仅作为市场情绪参考"
+      - insight: "AI确定性衰减曲线(85%/55%/30%)为远期AI收入提供了系统性折扣方法"
+        implication: "AI受益者DCF中终值权重应从>40%降至<25% — 显著改变AI概念股的公允价值计算"
+
+    screening_insights:
+      - insight: "内部人A/D<0.2 + 周期P3 = 高置信度周期顶部信号(4/4命中, 平均-42%)"
+        implication: "周期股筛选增加'内部人周期信号'过滤器: A/D<0.2 + 正常化P/E>行业均值 = 回避"
+      - insight: "Forward P/E最低的周期股反而最危险(正常化后最贵)"
+        implication: "筛选器应排除Forward P/E排名前10%的周期股 — 它们大概率处于盈利峰值"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "周期股看到极低Forward P/E时, 立刻计算正常化P/E"
+      trigger: "Forward P/E < 行业均值50% + 行业属于强周期"
+      origin: "MU Forward P/E 8.71x(55%行业折价) → 正常化P/E 24-32x(实际高于行业正常化均值)"
+      generalization: "Forward P/E在周期股中是'反指标' — 越低=盈利越接近峰值=越危险"
+
+    - habit: "看到内部人大量卖出时, 先剥离计划性交易再判断"
+      trigger: "A/D<0.3 或 年内卖出>100笔"
+      origin: "MU 153卖/3买看似极端 → 剥离RSU/10b5-1后Open Market自主买入仅0.020 → 真信号"
+      generalization: "内部人交易分析的质量取决于能否剥离噪音(计划性卖出) — 自主买入比率才是真信号"
+
+    - habit: "看到'这次不一样'叙事时, 立刻列举历史前例"
+      trigger: "'结构性变化'/'新范式'/'永久性提升'等措辞出现在投资论述中"
+      origin: "HBM='这次不一样' → 但MU历史上1999/2006/2018/2022四次'不一样'全以周期回归告终"
+      generalization: "'这次不一样'是金融史上最危险的四个字 — 必须列举≥3个历史前例并逐条验证差异点"
+
+    - habit: "对AI受益者的远期收入应用确定性衰减因子"
+      trigger: "DCF终值权重>30% + AI收入假设线性外推"
+      origin: "MU AI收入确定性1年85%/3年55%/5年30% → 有效终值贡献从>40%降至<25%"
+      generalization: "技术迭代+竞争格局变化使远期AI收入高度不确定 — 必须分年赋确定性折扣"
+
+  quality_feedback:
+    strengths:
+      - "NCI非共识洞察注册表(6个)结构化且有'如果我们错了'闭环 — 标杆: 非共识分析的系统化方法"
+      - "PPDA四重背离分析 — 多信号合流比单一信号更有说服力, 历史验证4/4"
+      - "温度计从+0.26→-0.45的渐进校准 — 展示了Phase间信息增量如何修正初始判断"
+      - "内部人交易20年回测(4次极端值/命中率100%) — 量化而非定性判断内部人信号"
+    weaknesses:
+      - "DM密度仅0.12/千字(21个DM锚点/178K字符) — 远低于框架要求的0.8/千字最低门控"
+      - "10维度评分体系(51.8/100)与框架v19.7的D1-D11记分卡不一致 — 使用了旧版评分方法"
+      - "缺少Python验证估值 — DCF/SOTP计算未见代码验证(违反G6门控)"
+      - "报告使用了旧框架版本(v6.0 vs 当前v19.7) — 多项v19.x新增要求未覆盖"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "周期股Forward P/E低≠便宜(通用周期分析经验)"
+        evidence: "MU Forward P/E 8.71x vs 正常化P/E 24-32x → 差距3-4倍 + 历史0/5次维持峰值EPS"
+        confidence_after: "高(MU是教科书级案例)"
+
+      - hypothesis: "内部人极端卖出预测周期顶部(通用内部人分析经验)"
+        evidence: "A/D 0.14 匹配2018年92% + 20年回测4/4命中 + 平均跌幅-42%"
+        confidence_after: "高(MU特异性数据强化通用假说)"
+
+    extended:
+      - hypothesis: "'这次不一样'叙事通常以周期回归告终"
+        extension: "HBM案例新增了'不可逆产能转移放大下行'维度 — 即使AI是真的增量需求, 转产不可逆=下行风险更大"
+
+    refuted: []
+
+  limitations:
+    - "框架版本v6.0(旧版) — 多项v19.x门控/铁律/方法论未覆盖, 与当前标杆CME v3.0不可直接比较"
+    - "DM密度0.12/千字极低 — 大量数据引用未用DM锚点标注, 数据可追溯性差"
+    - "缺少Reverse DCF前置(铁律O) — Phase 1未系统性解构'市场在赌什么'"
+    - "评分体系(10维度/100分)与当前D1-D11/110分体系不兼容 — 跨报告比较受限"
+    - "HBM份额/良率数据大量依赖TrendForce估算(合理推断) — 硬数据锚点不足"
+    - "报告日期2026-02-10 → 数据可能已过时, 尤其HBM4进展和CapEx指引"

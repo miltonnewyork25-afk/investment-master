@@ -484,3 +484,25 @@ usage_guide:
   phase_1to3: ["实施具体分析方法", "对标质量基准", "执行中国对标/历史类比深度分析"]
   phase_4: ["参考最佳红队实践", "避免系统性偏差"]
   phase_5: ["应用最佳估值技术", "质量门控对标"]
+# VRSN v1.2新增 (2026-03-24)
+vrsn_pe_factor_decomposition:
+  champion: "VRSN v1.2 Ch8C"
+  quality: 4.0
+  technique: "PE因子分解: 将PE拆解为6个因子(增速/确定性/TAM/政治/FCF质量/Core PE)×4家可比逐一对标"
+  reuse_for: "任何B2B基础设施公司的可比估值分析"
+  key_insight: "VRSN 27x PE = 基础25x + 确定性溢价4x - 增速折价1x - TAM折价3x - 政治折价5x + FCF溢价1x + Core PE修正6x"
+
+vrsn_interest_rate_duration:
+  champion: "VRSN v1.2 Ch31EB"
+  quality: 4.0
+  technique: "利率久期9格矩阵: 3个利率×3个提价情景交叉→9个公允价, 概率加权后发现利率是被系统性低估的最大风险"
+  reuse_for: "类债券型低增速高确定性公司(公用事业/基础设施)"
+  key_insight: "概率加权从$249→$221, 利率维度贡献-$28, 是所有风险因子中最大的单一调整"
+
+vrsn_ten_year_path_analysis:
+  champion: "VRSN v1.2 Ch39C"
+  quality: 4.0
+  technique: "4路径×10年全路径推演: 基准/乐观/悲观/极端, 含买入价敏感性表和概率加权年化回报"
+  reuse_for: "有确定性窗口+尾部不确定性的公司(合同到期/专利到期等)"
+  key_insight: "$241买入10年年化仅4.7%(超额0.4%), $200买入年化8.2% — 精确支持大师共识买入区"
+

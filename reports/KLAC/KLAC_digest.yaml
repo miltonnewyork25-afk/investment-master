@@ -1,0 +1,446 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — KLA Corporation
+# 压缩比: 254K → ~12K (21x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式映射 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: KLAC
+  company: "KLA Corporation"
+  report_date: "2026-02-17"
+  stock_price: "$1,464.13"
+  market_cap: "$192.4B"
+  report_version: "v1.0"
+  report_path: "reports/KLAC/KLAC_Complete_v1.0_2026-02-17.md"
+  quality_score: "4.5/5.0 (框架标杆)"
+  cqi: "报告未覆盖(v16.0无CQI评分体系)"
+  framework_version: "v16.0"
+  industry: "半导体设备"
+  archetype: "积累型垄断(数据+算法+验证壁垒)"
+  chars: 254279
+  dm_count: 553
+  dm_density: "2.17/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "半导体过程控制最深护城河(8.40/10),但P/E 42.5x已透支未来3-5年增长——用2028年的价格买2025年的公司"
+  rating: "审慎关注"
+  fair_value: "概率加权EV ~$900/share (-38.2%)"
+  expected_return: "-38.2% (概率加权EV $119B vs 市值$192.4B)"
+
+  key_arguments:
+    - claim: "过程控制63%份额+光掩模>80%垄断+30年数据壁垒构成8-12年追赶壁垒"
+      direction: bullish
+      magnitude: 5
+      mechanism: "BBP光源独占+30年缺陷数据库+Klarity算法→准确率>99.5%→客户切换成本$250-500M/fab→TSMC全面切换需$2.5-5.0B"
+      kill_switch: "通用AI大模型将缺陷识别准确率差距从4%缩小到1%→数据网络效应评分从9.0降至7.0→护城河从8.40降至7.90"
+
+    - claim: "P/E 42.5x是历史中位数20x的2.1倍,Reverse DCF隐含WFE份额28-32%不可能实现"
+      direction: bearish
+      magnitude: 5
+      mechanism: "Reverse DCF隐含10Y FCF CAGR 15%→FY2035收入$45B→需占WFE 28-32%→KLA是过程控制公司(WFE占12-15%)→80%份额也仅$19-26B→$45B不可能"
+      kill_switch: "连续3Q beat共识>5%→FY2027E EPS上修至$50+→Forward P/E回落至29x→估值压力显著缓解"
+
+    - claim: "WFE零增长下KLA增长叙事不成立: 5/5次WFE下行期有机收入均为负增长"
+      direction: bearish
+      magnitude: 5
+      mechanism: "管理层声称WFE零增长下自有引擎驱动+8-10%→历史5/5次WFE下行期(2009/2013/2016/2019/2023)均负增长→实际基准增速+0~+4%→抗周期性被高估"
+      kill_switch: "先进封装+服务订阅在下一次WFE下行中首次证明独立性(即WFE负增长时KLA仍正增长)"
+
+    - claim: "先进封装增长真实但绝对金额偏小,TAM被管理层高估25-33%"
+      direction: conditional
+      magnitude: 4
+      mechanism: "CY2025先进封装$925M(+85% YoY)→但占总收入仅7.3%→TAM $8-10B(非管理层$12B)→CY2026增速递减至15-19%"
+      kill_switch: "HBM4/CoWoS产能扩张超预期→先进封装占比突破15%→增长引擎从'补充'变'主导'"
+
+    - claim: "WACC敏感性极端: Forward DCF在WACC 9.5%下$835 vs WACC 7.8%下匹配市价,差170bps=估值差75%"
+      direction: bearish
+      magnitude: 4
+      mechanism: "当前无风险利率4.5%→WACC 7.8%意味着股权风险溢价仅3.3%(历史低位)→市场隐含的低WACC不可持续→利率上行或风险溢价回归将压缩估值"
+      kill_switch: "Fed降息至3%以下→无风险利率下行→WACC 7.8%变得合理→当前估值可持续"
+
+  moat:
+    composite_score: 8.40
+    half_life: ">10年(积累型)——数据网络效应最敏感,通用AI威胁可能在5-10年内将其从9.0降至7.0"
+    dimensions:
+      - type: data
+        strength: 5
+        evidence: "30年缺陷数据库+15,000台装机基地+>99.5%准确率→竞争者需8-12年追赶"
+        vulnerability: "通用AI大模型缩小准确率差距从4%到1%→数据壁垒价值下降"
+      - type: switching_cost
+        strength: 5
+        evidence: "单fab切换成本$250-500M(硬件替换+模型重训+良率验证)→TSMC全面切换$2.5-5.0B"
+        vulnerability: "竞品推出免费迁移工具或兼容接口→降低切换成本"
+      - type: ip
+        strength: 4
+        evidence: "BBP光源(LSP技术全球极少数供应商)+算法降分辨率补吞吐量策略+EUV print check闭环"
+        vulnerability: "e-beam multi-beam技术成熟(2028+)可能绕过光学检测路径"
+      - type: scale
+        strength: 4
+        evidence: "CapEx/Revenue仅3%(行业最低)+服务装机基地→R&D摊薄+95%续约率"
+        vulnerability: "margin已接近物理上限(FCF Margin 31%→提升空间有限)"
+      - type: pricing_power
+        strength: 4
+        evidence: "检测设备占fab CapEx仅5-7%→不买检测的代价(良率崩塌)远大于检测成本→经济不对称"
+        vulnerability: "DRAM客户成本压力传导至ASP→定价权在成熟制程端弱于先进制程端"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含10Y FCF CAGR 15%+FCF margin 34%→39%+FY2035收入$45B(当前$12.7B的3.5x)——要求WFE份额28-32%(不现实)"
+    methods_used: ["SOTP ($897)", "Forward DCF ($691-$835)", "Reverse DCF", "相对估值 ($1,000-$1,200)", "调整DCF", "概率加权 ($900)"]
+    dispersion: "2.35x ($691 vs $1,624) — 极高离散度,精确目标价无意义"
+    consensus_vs_ours: "市场看42.5x PE的AI受益者 | 我们看WACC 9.5%下仅值$835的周期性设备商,需WACC压缩至7.8%才能合理化市价"
+    entry_zone: "$900-$1,000 (P/E 25-27x, 接近Forward DCF基准值)"
+    catalyst: "WFE周期见顶(CY2027-2028)+AI CapEx环比放缓→P/E压缩→边际定价者(趋势跟随型/被动ETF)退出→入场窗口"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "不建议新建仓位@$1,464 — 概率加权期望回报-38.2%,等待P/E回归至25-27x"
+    buy_triggers:
+      - trigger: "股价回落至P/E 25-27x(接近Forward DCF基准值)"
+        price_zone: "$900-$1,000"
+        reasoning: "期望回报接近0%,但基本面(护城河8.40+服务订阅)提供安全边际"
+      - trigger: "股价回落至Forward DCF保守值以下(基本面未恶化)"
+        price_zone: "$700-$800"
+        reasoning: "低于DCF保守值→期望回报>+15%→显著低估区间"
+      - trigger: "WFE周期下行+P/E压缩至20x(历史中位数)"
+        price_zone: "$690-$750"
+        reasoning: "P/E回归历史中位数→如果基本面仍完整(护城河+服务增长),是周期性买入机会"
+    hold_conditions:
+      - "护城河评分维持>7.5(Wide级别)"
+      - "服务业务续约率>90%且订阅占比>70%"
+      - "过程控制份额>55%(当前63%)"
+      - "管理层维持'深度优于广度'战略(不向AMAT式全品类扩张)"
+    sell_triggers:
+      - signal: "FQ3 miss共识>3%(FY2026年4月是关键验证点)"
+        severity: "action"
+        action: "已持有者设定跟踪止盈位$1,250;若连续2Q miss则减仓50%"
+      - signal: "WFE连续2季度YoY负增长且KLA有机收入也为负"
+        severity: "warning"
+        action: "确认WFE下行→P/E压缩启动→已持有者部分止盈30-50%"
+      - signal: "e-beam multi-beam通过TSMC概念验证(替代光学检测路径)"
+        severity: "emergency"
+        action: "重新评估护城河→数据网络效应失效=护城河从8.40降至<7.5→考虑全部卖出"
+      - signal: "CEO Rick Wallace退休+外部空降CEO改变战略方向"
+        severity: "warning"
+        action: "观察2-3Q,如果转向全品类扩张→减仓25%"
+    position_sizing: "Kelly@$1,464=强烈负值(不买) | Kelly@$900=接近0%(等待) | Kelly@$700=正值(可建仓)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "积累型垄断如何变成不可追赶"
+    chain: >
+      30年fab缺陷数据持续积累(15,000台装机基地)
+      → 数据训练Klarity算法→准确率>99.5%(竞品96%)
+      → 客户用KLA数据建立良率模型(6-18月验证)
+      → 新fab默认选KLA(避免重新验证)
+      → 更多数据回流→算法更准→份额从50%→63%(2010→2024)
+      → 竞争者需8-12年积累同等数据→追赶窗口被锁死
+    transferable_to: "所有靠数据积累形成壁垒的公司(Palantir/Veeva/CSGP/检测类)"
+    reasoning_habit: "问'数据壁垒的时间维度是什么'——如果需要10年积累且数据不可购买,这比任何专利都强"
+
+  - id: "CC-2"
+    name: "WFE零增长叙事的历史证伪"
+    chain: >
+      管理层声称: WFE零增长下自有引擎仍可驱动+8-10%增速
+      → 追问: 历史上WFE下行时KLA表现如何?
+      → 5/5次WFE下行期(2009/2013/2016/2019/2023)KLA有机收入均为负增长
+      → 追问: 为什么5引擎独立性假设失败?
+      → 因为检测需求=f(WFE规模)×f(技术复杂度)→WFE下行时第一项抵消第二项
+      → 修正: WFE零增长下真实基准增速+0~+4%(非+8-10%)
+      → 投资含义: 下行情景估值需大幅下调,抗周期性被市场高估
+    transferable_to: "所有声称有'独立增长引擎'对冲行业周期的公司——历史验证是最硬的证据"
+    reasoning_habit: "管理层的增长叙事必须用历史下行周期数据交叉验证——如果从未在下行中生效,就不能假设未来会生效"
+
+  - id: "CC-3"
+    name: "WACC敏感性暴露估值的真实锚点"
+    chain: >
+      Forward DCF@WACC 9.5%=$835/share(-43%)
+      → Forward DCF@WACC 7.8%=$1,464(刚好匹配市价)
+      → 差距仅170bps但估值差75%
+      → 追问: WACC 7.8%合理吗?
+      → 无风险利率4.5%→WACC 7.8%意味着ERP仅3.3%(历史低位)
+      → 推论: 当前市价几乎完全取决于折现率假设而非基本面预测
+      → 投资含义: 利率上行50bps就能让估值下跌20%+(无需基本面恶化)
+    transferable_to: "所有P/E>30x的高估值公司——DCF在高估值时对WACC极端敏感"
+    reasoning_habit: "高P/E公司必须做WACC敏感性分析——如果结论在WACC变100bps时翻转,估值锚点不可靠"
+
+  - id: "CC-4"
+    name: "检测设备的不对称定价权逻辑"
+    chain: >
+      检测设备占fab CapEx仅5-7%
+      → 不买检测的代价=良率崩塌(一条先进产线每月潜在损失数千万美元)
+      → 不买检测的代价远大于检测成本(不对称)
+      → 因此fab不会在检测上砍预算
+      → 在WFE下行周期中检测削减幅度<沉积/刻蚀
+      → KLA的周期性Beta<1(相对WFE整体)
+      → 但Beta<1不等于正增长——5/5次仍为负增长,只是跌得少
+    transferable_to: "所有成本占比低但失败代价极高的必需品(检测/安全/合规类)"
+    reasoning_habit: "追问'不买的代价是什么'——如果不买的代价>>买入成本,定价权受保护;但定价权保护不等于收入增长"
+
+  - id: "CC-5"
+    name: "被动资金正反馈循环的可逆性"
+    chain: >
+      半导体ETF(SOXX/SMH)净流入$35-40B(3年)→KLA获~$1.0-1.2B被动买入
+      → ETF流入→推高股价→提升ETF权重→更多流入=正反馈
+      → 追问: 正反馈可逆吗?
+      → 可逆: 板块情绪转向→卖压→股价下跌→降低权重→减少配置→更多卖压=反向螺旋
+      → 投资含义: KLA的边际定价者是趋势跟随型(非基本面驱动)→情绪转向时P/E压缩快且不连续
+    transferable_to: "所有在主题ETF中权重较高的公司(AI/半导体/新能源)"
+    reasoning_habit: "追问'边际定价者是谁'——如果边际定价者是被动资金/趋势跟随者,估值的脆弱性远高于基本面暗示的水平"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "KLA自有增长引擎(5引擎)可在WFE零增长下驱动8-10%增速"
+      final: "5/5次WFE下行期均负增长,修正后基准增速仅+0~+4%"
+      pivot: "历史回测5/5次WFE下行——最硬的证据直接否定管理层叙事"
+
+    - initial: "先进封装TAM $12B(管理层声称),KLA增长空间广阔"
+      final: "SEMI($5-6B)/TechInsights($8-10B)交叉验证后TAM $8-10B,增长空间缩小25-33%"
+      pivot: "口径差异(设备vs设备+材料+测试)导致管理层高估TAM"
+
+    - initial: "分析框架系统性偏空(2/3结论偏空)——可能低估了KLA"
+      final: "偏差审计后上调CQ+1pp(58.2%→59.2%),但核心结论不变——系统性悲观≠结论错误"
+      pivot: "DCF方法论天然低估高增长公司是已知缺陷,但修正WACC至8.5%后仍仅$1,175(vs市价$1,464)"
+
+  surprises:
+    - finding: "CD-SEM份额口径混淆: 市场引用45%含OCD,纯SEM口径仅15-20%(Hitachi 70%)"
+      implication: "e-beam攻击的是SEM市场→KLA在纯SEM口径的真实份额远低于市场认知→竞争威胁被低估"
+
+    - finding: "Forward DCF $691与FMP机械DCF $692几乎完全一致"
+      implication: "两个'独立'模型共享了相同的保守假设→不是互相验证而是共振偏差→$692不应被视为公允价值,而是保守底线"
+
+    - finding: "服务业务SaaS化被低估: 75%订阅+95%续约+52Q连续增长+独立估值$19.7B(占市值10%)"
+      implication: "服务业务是隐藏的高质量资产——在WFE下行时提供真正的底部支撑"
+
+    - finding: "温水煮青蛙路径概率最高(30-40%): 非突然崩跌而是P/E渐进压缩+毛利率缓慢侵蚀"
+      implication: "最可能路径=缓慢均值回归→没有明确的卖出信号→持有者容易温水煮青蛙"
+
+  blind_spots:
+    - area: "WFE周期顶部的精确时间点"
+      why_matters: "CY2027-2028可能是第4-5年(接近历史均值)→决定P/E压缩何时启动"
+      monitor: "TSMC/三星CapEx指引同比变化 | SEMI设备账单数据月度趋势"
+
+    - area: "先进封装检测在下一次WFE下行中的独立性"
+      why_matters: "如果先进封装需求在WFE下行中仍增长→5引擎叙事首次部分验证→改变周期性判断"
+      monitor: "先进封装检测收入在WFE下行季度的同比表现"
+
+    - area: "通用AI对检测算法壁垒的侵蚀速度"
+      why_matters: "数据网络效应是护城河最强也最敏感的维度(9.0分)→AI缩小差距=护城河核心受损"
+      monitor: "AMAT/竞品的AI检测产品发布 | 客户验证通过率 | 准确率差距变化"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "P/E 42.5x(历史中位2.1倍)持有→温水煮青蛙→P/E渐进压缩→回报被估值均值回归吞噬"
+      lesson: "周期性设备商在P/E>2x历史中位数时,盈利增长可能无法跑赢估值压缩。应设定P/E上限纪律"
+      transferable: "所有周期性公司在P/E显著超过历史中位数时——即使基本面完好"
+    - scenario: "大量获利盘(成本<$800)未止盈→概率加权期望回报-38.5%意味着持有期望值为负"
+      lesson: "当概率加权期望回报<0时,持有是在用确定性收益赌不确定性上行。税务成本是止盈唯一合理理由"
+      transferable: "所有已大幅获利且期望回报转负的持仓"
+    - scenario: "边际定价者是被动ETF资金→情绪转向时P/E压缩快且不连续"
+      lesson: "判断'谁是边际定价者'比判断'基本面如何'更能预测短期下行幅度。被动资金占比高=波动率被低估"
+      transferable: "所有主题ETF权重较高的公司(AI/半导体/新能源)"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "WACC隐含(市场需假设WACC多少来合理化当前市价)"
+      why_alpha: "大多数分析师用固定WACC做DCF→忽略了市场隐含WACC 7.8%(需ERP 3.3%历史低位)→暴露估值的真实脆弱性"
+      current_reading: "隐含WACC 7.8% — ERP 3.3%为历史极低值,不可持续"
+    - signal: "WFE下行期KLA有机收入增速(历史基准率)"
+      why_alpha: "管理层叙事(+8-10%)与历史(5/5次负增长)直接矛盾→卖方普遍接受管理层叙事→知道历史就有信息优势"
+      current_reading: "最近一次WFE下行(CY2023)KLA有机收入负增长——基准率仍为5/5"
+    - signal: "先进封装TAM的口径校正($8-10B vs管理层$12B)"
+      why_alpha: "管理层$12B被广泛引用→校正后增长空间缩小25-33%→影响长期估值模型"
+      current_reading: "SEMI/Yole验证$8-10B,口径差异已量化"
+
+  confirmation_signals:
+    - signal: "季度Revenue beat/miss vs共识"
+      bullish_threshold: "连续3Q beat>5%→FY2027E EPS上修至$50+→P/E(FY2027E)降至29x"
+      bearish_threshold: "FQ3 miss>3%→增长放缓信号→P/E压缩启动"
+    - signal: "服务业务季度增速(连续增长记录)"
+      bullish_threshold: "52Q+连续增长延续→SaaS化叙事增强→估值质量溢价合理"
+      bearish_threshold: "增长中断→服务独立性假设受质疑"
+    - signal: "先进封装收入占比"
+      bullish_threshold: ">15%→从'补充引擎'变'主导引擎'→增长叙事质变"
+      bearish_threshold: "<5%且增速<10%→先进封装增长故事破产"
+
+  noise_signals:
+    - signal: "卖方目标价调整($1,612-$1,715)"
+      why_noise: "卖方普遍用Forward P/E且不做WACC敏感性→目标价系统性偏乐观→自己做Reverse DCF更准"
+    - signal: "日度/周度股价波动"
+      why_noise: "半导体设备高Beta→日度波动主要反映板块情绪而非KLA特有信息→看季度级别趋势"
+    - signal: "AI CapEx总额新闻(Hyperscaler announcements)"
+      why_noise: "KLA是AI的间接受益者(传导延迟2-4Q)→AI CapEx新闻对NVDA是alpha,对KLA是噪音"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: AMAT
+      similarity: "同为半导体设备前道,类似客户群(TSMC/三星/Intel)"
+      key_difference: "AMAT=全品类(沉积+刻蚀+检测) vs KLA=聚焦检测→KLA利润率更高(FCF 31% vs AMAT ~25%)但增速更依赖检测TAM扩张"
+
+    - ticker: LRCX
+      similarity: "同为半导体设备专注型(刻蚀聚焦),类似市值体量"
+      key_difference: "LRCX PEG 0.74x vs KLA PEG 1.57x→LRCX估值效率2倍于KLA→同等增长敞口下LRCX性价比显著更高"
+
+    - ticker: ASML
+      similarity: "同为半导体设备垄断(护城河>8.0),P/E都显著高于行业均值"
+      key_difference: "ASML=物理极限垄断(EUV唯一)不可复制 vs KLA=积累型垄断(数据)理论上可追赶"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "ASML (8.80) > KLAC (8.40) > AMAT (6.70) > LRCX (6.30)"
+      reasoning: "ASML物理垄断>KLA数据积累>AMAT/LRCX规模+技术"
+
+    - dimension: "估值效率(PEG)"
+      position: "LRCX (0.74x) > AMAT (1.05x) > KLAC (1.57x) > ASML (1.66x)"
+      reasoning: "KLA P/E最高(42.5x)但增速不是最快→PEG暴露估值效率低下"
+
+    - dimension: "利润率质量"
+      position: "KLAC (FCF 31%, CapEx/Rev 3%) > ASML > AMAT > LRCX"
+      reasoning: "KLA极轻资产模式+服务订阅=行业最优财务质量(ROE 100.7%, ROIC 78.3%)"
+
+    - dimension: "抗周期能力"
+      position: "KLAC(检测必需品) > ASML(EUV不可替代) > AMAT > LRCX"
+      reasoning: "检测占fab CapEx仅5-7%→经济不对称→WFE下行时检测削减幅度最小(但仍为负增长)"
+
+  industry_position:
+    quadrant: "最高利润率 × 最高估值 × 中等增速"
+    archetype: "积累型垄断 — 数据飞轮+检测必需品+被动资金推升"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含WFE份额28-32%→在过程控制TAM约束下不可能→暴露P/E 42.5x的不可持续性"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "CI-007温水煮青蛙: P/E渐进压缩+毛利率缓慢侵蚀→最可能路径(30-40%)=没有明确卖出信号"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "系统性悲观校正: 2/3分析偏空→上调CQ +1pp(58.2%→59.2%)→但核心结论(高估)不变"
+
+  novel_patterns:
+    - name: "管理层叙事的历史证伪法"
+      description: "用全部历史下行周期交叉验证管理层的'抗周期'声称——5/5次负增长直接否定'+8-10%基准增速'"
+      transferable_to: ["所有声称有独立增长引擎抗周期的公司", "半导体设备全行业"]
+
+    - name: "TAM口径解构(管理层vs第三方)"
+      description: "管理层TAM常包含更广口径(设备+材料+测试)→用SEMI/Yole等第三方窄口径交叉→真实TAM通常小25-40%"
+      transferable_to: ["所有管理层宣传TAM的高增长公司", "特别是新兴领域(先进封装/AI基础设施)"]
+
+    - name: "WACC隐含法(市场在赌什么折现率)"
+      description: "不是用WACC算目标价,而是反推市场隐含WACC→检验隐含ERP是否在历史合理区间→如果ERP过低=估值脆弱"
+      transferable_to: ["所有P/E>30x且DCF敏感性极高的公司"]
+
+    - name: "被动资金正反馈的可逆性评估"
+      description: "ETF流入→股价→权重→更多流入的正反馈循环是可逆的→识别边际定价者是谁决定了估值脆弱性"
+      transferable_to: ["所有主题ETF权重较高的公司(AI/半导体/新能源/ESG)"]
+
+    - name: "服务业务SaaS化的隐藏估值"
+      description: "半导体设备的服务业务(75%订阅+95%续约)可按SaaS估值方法独立定价→揭示被市场忽视的经常性收入价值"
+      transferable_to: ["所有有高续约率服务业务的工业/设备公司"]
+
+    - name: "CQ确定性分裂诊断"
+      description: "CQ离散度31pp(73%垄断持久性 vs 42%估值合理性)→投资回报高度依赖单一变量(估值)→护城河确定性≠回报确定性"
+      transferable_to: ["所有高CQI但高估值的公司(品质确定但价格不确定)"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "积累型垄断(数据+算法+验证)理论上可追赶但需8-12年——与物理垄断(ASML EUV)性质不同"
+        implication: "护城河评估应区分'不可复制'(物理垄断)和'可追赶但时间极长'(积累垄断)——后者需监控追赶者进度"
+      - insight: "数据网络效应是最强也最敏感的维度——通用AI可能在5-10年内将其削弱"
+        implication: "对数据壁垒型公司,必须加入'AI侵蚀速度'作为护城河半衰期的核心变量"
+      - insight: "检测设备的不对称定价权(占CapEx 5-7%但不买=良率崩塌)保护周期性Beta但不保护绝对增长"
+        implication: "区分'定价权保护'(不砍预算)和'增长驱动'(增加预算)——前者只降低下行幅度,不保证上行"
+
+    valuation_insights:
+      - insight: "方法离散度2.35x说明精确目标价无意义——价值在于揭示'所有方法都低于市价'"
+        implication: "极高离散度时,报告的价值不是给目标价,而是揭示估值方向(全部方法指向同一方向=信号强)"
+      - insight: "WACC隐含法比正向DCF更能暴露估值脆弱性——170bps差异=75%估值差异"
+        implication: "高P/E公司必须做WACC隐含分析作为估值的第一步(而非最后一步)"
+      - insight: "Forward DCF与FMP机械DCF高度一致可能是'共享保守假设'而非'互相验证'"
+        implication: "两个模型结果一致时要追问'假设是否独立'——共享假设的一致性没有信息量"
+
+    screening_insights:
+      - insight: "PEG>1.5x + P/E>2x历史中位数 = 估值效率极低的高品质公司(品质陷阱的设备版)"
+        implication: "选股筛选增加'P/E vs 历史中位数'倍数过滤——>2x时即使品质优秀也应等待"
+      - insight: "边际定价者是被动ETF资金时,估值脆弱性被常规波动率指标低估"
+        implication: "选股时检查'被动资金占比'——主题ETF权重>4%的公司估值脆弱性需额外折扣"
+      - insight: "服务业务75%订阅+95%续约=隐藏的SaaS资产→可按SaaS估值独立定价"
+        implication: "设备公司选股时增加'服务收入占比×续约率'作为质量因子——高值公司底部更有支撑"
+
+# --- Layer 5: Meta-learning (这份报告教了AI什么) ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "管理层增长叙事必须用全部历史下行周期验证"
+      trigger: "管理层声称'即使行业下行,我们的独立引擎仍能增长'"
+      origin: "KLA 5引擎叙事在5/5次WFE下行中全部失败——管理层从未在下行周期中兑现承诺"
+      generalization: "任何'抗周期'声称都必须有≥1次实际下行期的正增长证据→否则只是未经验证的营销话术"
+
+    - habit: "高P/E公司的第一步是WACC隐含分析而非正向DCF"
+      trigger: "P/E>30x或显著超过历史中位数"
+      origin: "KLA Forward DCF在WACC 9.5%下$835 vs 7.8%下$1,464→170bps=75%→折现率假设比增长假设更重要"
+      generalization: "高P/E公司的估值辩论本质上是折现率辩论而非增长辩论→先锁定'市场在赌什么折现率'"
+
+    - habit: "追问边际定价者是谁"
+      trigger: "公司在主题ETF中权重>3%或所在板块有大量主题资金流入"
+      origin: "KLA被动ETF资金$1.0-1.2B(3年)→边际定价者是趋势跟随型→情绪转向时P/E压缩快且不连续"
+      generalization: "边际定价者类型决定了估值下行的速度和形态——被动/趋势型=快速不连续,基本面型=缓慢连续"
+
+    - habit: "TAM口径必须多源交叉验证"
+      trigger: "管理层在电话会上宣布TAM数字且市场广泛引用"
+      origin: "KLA管理层声称先进封装TAM $12B→SEMI($5-6B)/Yole($8-10B)验证后仅$8-10B→高估25-33%"
+      generalization: "管理层TAM通常用最广口径(利于叙事)→第三方窄口径通常小25-40%→影响长期增长模型"
+
+  quality_feedback:
+    strengths:
+      - "因果推理密度9.28/万字(全报告最高标杆)——每个论点有完整的数据+逻辑+反面证据链"
+      - "DM密度2.17/千字(553个锚点)——数据锚定极其扎实"
+      - "护城河分析五维度量化+竞品横向对比+敏感性分析+5年预期变化——护城河分析深度标杆"
+      - "偏差审计系统性+量化(识别2/3偏空并修正)——红队不是表演而是真正校准"
+      - "Reverse DCF暴露WFE份额28-32%隐含假设的荒谬性——估值分析最有区分度的洞见"
+    weaknesses:
+      - "DCF未用Python验证(v16.0框架限制)——FCFF/折现因子基于手动推算可能有舍入误差"
+      - "WFE周期25年仅5-6次完整周期→样本量不足以支撑统计推断"
+      - "CQ概率校准含主观判断——不同分析师可能得出不同结论"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "检测设备定价权在WFE下行中受保护(占CapEx 5-7%的不对称性)"
+        evidence: "5/5次WFE下行期检测削减幅度<沉积/刻蚀→Beta<1确认"
+        confidence_after: "高(5/5历史一致)"
+
+      - hypothesis: "服务订阅业务跨周期稳定(52Q连续增长)"
+        evidence: "52个季度连续增长跨越多个WFE上下行周期→周期独立性最强的引擎"
+        confidence_after: "高(52Q跨多周期验证)"
+
+    extended:
+      - hypothesis: "积累型数据壁垒>专利壁垒(知识经济类公司)"
+        extension: "KLA的30年缺陷数据库构成8-12年追赶壁垒→从软件(CSGP/Veeva)扩展到硬件+软件混合(检测设备)"
+
+    refuted:
+      - hypothesis: "管理层声称的'独立增长引擎'可抗周期"
+        evidence: "5/5次WFE下行期KLA有机收入负增长→五引擎在下行中不独立"
+        lesson: "周期性公司的'独立引擎'声称几乎从不在下行中兑现——需历史验证不能信口头叙事"
+
+  limitations:
+    - "WFE周期预测本质上不可靠——25年仅5-6次完整周期,样本量不足以做统计推断"
+    - "地缘政治风险(台湾30%+中国26%收入集中)无法精确概率化——台海冲突概率和出口管制演进都是deep uncertainty"
+    - "通用AI对检测壁垒的侵蚀速度是5-10年级别的不确定性——可能是最重要的长期变量但最难预测"
+    - "DCF未用Python验证(v16.0框架限制),WACC选择有较大主观性(合理范围7.8-12.3%)"
+    - "系统性悲观偏差已识别并部分校正(+1pp CQ),但校正本身可能引入反向偏差"

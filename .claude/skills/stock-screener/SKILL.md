@@ -4,7 +4,9 @@ description: 低估股多信号筛选Agent — 三层信号框架(便宜/不是�
 trigger: /screen
 ---
 
-# 低估股筛选Agent v1.0
+# 低估股筛选Agent v1.1
+
+> v1.1 (2026-03-26): PEG替代PE作为主估值信号(48份报告验证)
 
 ## 三层信号框架
 
@@ -24,7 +26,7 @@ L3: 市场开始纠错 (25%) — 盈利超预期+分析师修正+价格位置
 
 ```
 三路并行获取:
-1. fmp_data path="/stable/stock-screener?marketCapMoreThan=2000000000&marketCapLowerThan=500000000000&priceEarningsRatioLowerThan=15&betaMoreThan=0&limit=50" → 低PE中盘
+1. fmp_data path="/stable/stock-screener?marketCapMoreThan=2000000000&marketCapLowerThan=500000000000&priceEarningsRatioLowerThan=25&betaMoreThan=0&limit=50" → 低PE中盘 (放宽PE≤25, PEG<2.0在Phase 3信号计算中检查)
 2. fmp_data path="/stable/stock-screener?marketCapMoreThan=2000000000&priceToBookRatioLowerThan=2&limit=50" → 低PB
 3. fmp_data path="/stable/stock-screener?marketCapMoreThan=5000000000&dividendYieldMoreThan=2&limit=50" → 高股息(shareholder yield代理)
 ```
@@ -72,6 +74,15 @@ fmp_data endpoint="quote"        symbol={SYM}
 ```
 
 #### Phase 3: 信号计算
+
+**PEG筛选 (v1.1新增, 48份报告验证)**:
+```
+PEG < 1.5          → L1 +1.0分 (增速被低估)
+PEG 1.5-2.0        → L1 +0.5分 (合理)
+PEG 2.0-3.0        → L1  0分   (中性)
+PEG > 3.0 且 PE<20 → L1 -0.5分 (低增速陷阱)
+PEG > 4.0          → L1 -1.0分 (品质陷阱候选)
+```
 
 ```bash
 python scripts/screener/run_screen.py data/screener/raw/ --output data/screener --detail
@@ -146,10 +157,34 @@ fmp_data endpoint="estimates" symbol={SYM}  # 盈利预测 → surprise/revision
 
 ## 软警告 (标记但不剔除)
 
+- PEG > 3.0 + 有机增速 < 7% → "品质陷阱"警告 (CQI高但增速低, 14份报告验证)
 - 债务驱动回购 (net debt增加 + shares减少)
 - F-Score ≤ 3 (财务体质弱)
 - 资产增长 > 20% (可能在盲目扩张)
 - 单一insider buy金额 < $100K (信号弱)
+- 全管理层零买入 > 6个月 + 净卖出 > $5M → "内部人沉默"警告 (-0.5分, 10份报告验证)
+- 全管理层零买入 > 12个月 → "强沉默"信号 (-1.0分, COST/ANET发现: 零买入比净卖出信息量更高)
+- CEO言辞看好 + CEO个人净卖出 > $1M → "言行矛盾"警告 (-0.5分, HLT/ANET验证)
+
+## 回购效率检测 (v1.1新增, 30份报告验证)
+
+高PE下的回购可能毁灭股东价值:
+
+```
+简化η检测 (不需要Fair PE):
+  PE > 30x + 年回购 > FCF的30% → 标记"回购可能毁灭价值"(-0.5分)
+  PE > 40x + 年回购 > FCF的20% → 强警告(-1.0分)
+
+完整η计算 (如果有Fair PE估计):
+  η = 1 - (当前PE - 公允PE) / 当前PE
+  η > 1.0 → 价值创造
+  η 0.8-1.0 → 中性
+  η < 0.8 → 价值毁灭
+
+标杆: CME η=0.59@28x | HLT η=0.80@50x | MCO η<0.7@35x
+```
+
+验证案例: CME(41%毁灭)/MCO/MSCI/HLT/AAPL(IRR<国债)独立确认
 
 ## 数据新鲜度
 

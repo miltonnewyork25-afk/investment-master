@@ -1,0 +1,441 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — AppLovin
+# 压缩比: 525K → ~12K (44x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式映射 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: APP
+  company: "AppLovin Corporation"
+  report_date: "2026-02-17"
+  stock_price: "$390.67"
+  market_cap: "$132.0B"
+  report_version: "v2.0"
+  report_path: "reports/APP/APP_Complete_v2.0_2026-02-17.md"
+  quality_score: "4.1/5.0"
+  cqi: "报告未覆盖"
+  framework_version: "v10.0"
+  industry: "广告科技"
+  archetype: "AI中介平台(供给侧垂直整合)"
+  chars: 525684
+  dm_count: 1258
+  dm_density: "2.39/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "AXON是真实的AI壁垒但护城河在MAX中介层而非算法本身——$132B市值接近概率加权公允价值$136.5B,但下行不对称性(-40.8%期望回报)使当前价格不值得承担风险"
+  rating: "审慎关注"
+  fair_value: "概率加权EV $136.5B ($404/股); 五方法中位数$79-90B"
+  expected_return: "概率加权期望回报 -40.8%"
+
+  key_arguments:
+    - claim: "护城河在MAX中介层(60%份额+SDK锁定)而非AXON AI引擎"
+      direction: bearish
+      magnitude: 4
+      mechanism: "AXON算法可在3-5年被Moloco/开源RL追平,但MAX的SDK锁定(6-12个月迁移)+MoPub遗产(50K+应用)+数据独占是先有鸡还是先有蛋的问题——复制需同时获60%+中介份额"
+      kill_switch: "AXON在电商中证明不可替代的跨品类优化能力(超越MAX数据优势)"
+
+    - claim: "电商引擎面临D30归因偏差的结构性天花板,真实增量性仅30-50%"
+      direction: bearish
+      magnitude: 5
+      mechanism: "游戏D7即有ROAS信号→电商D30才有初步信号→反馈循环慢4-5倍; MW指控增量性仅25-35%→多数品类Decision ROAS<1.0x; 6,400客户中活跃付费约3,000-5,000"
+      kill_switch: "Ads Manager GA后非CPG品类D30 ROAS持续>100%且6个月活跃广告主>3,000"
+
+    - claim: "市值从$228B→$132B已消化大部分风险,Fwd P/E 19.0x表面便宜"
+      direction: conditional
+      magnitude: 4
+      mechanism: "P/E从32.9x降至19.0x(低于META 27.2x/TTD 29.3x)→但便宜建立在FY2027E共识$10.2B不下修前提上→TAM天花板分析显示FY2028E $12.9B已触及边缘"
+      kill_switch: "FY2027E共识被上调至$11B+,电商贡献验证"
+
+    - claim: "Apple隐私政策是存亡级威胁——AXON的ATT红利可能被逆转"
+      direction: bearish
+      magnitude: 4
+      mechanism: "ATT伤害了依赖IDFA的竞品(Meta AN)→AXON上下文信号架构获得相对优势→但下一轮收紧(应用内fingerprinting禁令)可能消除这一优势; 3年内实质性收紧概率35-45%"
+      kill_switch: "WWDC 2026未宣布应用内fingerprinting限制,Apple执行力度持续温和"
+
+    - claim: "SEC调查是时间成本而非致命打击,概率加权影响-8.5%"
+      direction: bearish
+      magnitude: 3
+      mechanism: "MW部分正确概率50-55%(灰色地带实践确实存在)→最可能$50-200M和解+行为限制→12-24个月不确定期的机会成本15-25%"
+      kill_switch: "SEC在2026 Q4前仍未发出Wells Notice→关闭概率升至30-40%"
+
+  moat:
+    composite_score: 6.5
+    half_life: "MAX中介层>5年 | AXON算法2-3年 | SDK锁定3-5年"
+    dimensions:
+      - type: network_effect
+        strength: 4
+        evidence: "MAX 60%中介份额+100K+应用SDK覆盖+25+网络适配器创造供需双边网络效应"
+        vulnerability: "Unity LevelPlay复苏或Moloco推出中介层可分流; DPO 360天引发开发者集体迁移"
+      - type: switching_cost
+        strength: 4
+        evidence: "MAX SDK深度集成到应用代码,迁移需工程团队数周至数月; 历史竞价数据不可迁移"
+        vulnerability: "行业数据可移植标准出台; 竞品提供免迁移成本工具"
+      - type: data
+        strength: 4
+        evidence: "MAX中介层独占100K+应用的竞价/用户行为数据→AXON训练数据优势; Adjust自有归因进一步闭环"
+        vulnerability: "Apple应用内SDK层面数据采集限制→数据源被切断"
+      - type: scale
+        strength: 3
+        evidence: "EBITDA margin 75.8%+FCF margin 72.5%→增量margin极高; R&D仅4.1%收入"
+        vulnerability: "R&D 4.1%可能不足以维持持续创新型护城河; 电商扩展需增加基础设施投入"
+      - type: ip
+        strength: 3
+        evidence: "AXON 2.0强化学习引擎使营业利润率从-1.7%跃升至75.8%; D7 ROAS领先竞品"
+        vulnerability: "AI模型是持续创新型护城河(需不断升级证明优越性); 开源RL模型使算法差异化缩窄"
+
+  valuation:
+    reverse_dcf_implied: "当前EV $229B隐含10年FCF CAGR 28.5%(WACC 14%),需FCF从$3.97B增至$45.7B——历史上仅极少数公司实现; 隐含收入需达FY2035 $63-76B(CAGR 28-30%)"
+    methods_used: ["Reverse DCF(引擎级分解)", "概率加权DCF(四情景)", "SoTP", "可比公司(Fwd P/E)", "TAM天花板概率"]
+    dispersion: "3-8x (B型Discovery System正常范围: $55B-$350B+)"
+    consensus_vs_ours: "市场看APP=19x Fwd P/E的高增长AI公司 | 我们看APP=电商期权$32-49B被高估50-150%的中介平台公司"
+    entry_zone: "$200-250 (对应$67-85B市值, S1-S2重叠区)"
+    catalyst: "SEC关闭/轻罚 + Ads Manager GA后电商验证 + WWDC 2026温和收紧"
+
+  action_framework:
+    verdict: "等待 — 概率加权期望回报-40.8%,下行不对称性显著; 等待2026年H1催化剂明确方向"
+    buy_triggers:
+      - trigger: "SEC调查关闭或轻罚和解(<$75M)+WWDC未实质收紧fingerprinting"
+        price_zone: "$250-300 (市值$85-100B, S2下沿)"
+        reasoning: "两大悬剑同时解除→风险溢价消除→Fwd P/E 12-15x对30%增速极有吸引力"
+      - trigger: "Ads Manager GA后6个月活跃广告主>3,000且非CPG D30 ROAS>100%"
+        price_zone: "$300-350 (市值$100-120B)"
+        reasoning: "电商从信仰变为验证→S3概率从25%上调至40%+→概率加权EV显著上升"
+      - trigger: "系统性市场恐慌导致APP跌至$200以下"
+        price_zone: "$150-200 (市值$50-67B)"
+        reasoning: "纯游戏业务合理估值$83-100B→50%安全边际→即使电商完全失败也有上行"
+    hold_conditions:
+      - "MAX中介份额维持>55%"
+      - "季度广告收入YoY增速>20%"
+      - "SEC调查未发出Wells Notice"
+      - "Apple未实施应用内fingerprinting全面禁令"
+    sell_triggers:
+      - signal: "MAX中介份额连续2季下降>3%(Unity LevelPlay/Moloco侵蚀)"
+        severity: "action"
+        action: "减仓50%,CI-1护城河在MAX论点被挑战"
+      - signal: "WWDC宣布应用内SDK fingerprinting禁令+6个月执行期"
+        severity: "emergency"
+        action: "全部卖出,ERM断点1触发,AXON数据基础被切断"
+      - signal: "SEC发出Wells Notice+正式指控(非和解)"
+        severity: "action"
+        action: "减仓50%,重新评估SEC影响概率分布"
+      - signal: "连续2季广告收入YoY增速<15%且电商未能弥补"
+        severity: "warning"
+        action: "观察1季,若持续减仓25%"
+    position_sizing: "当前不建立头寸(期望回报-40.8%); 入场需等待催化剂重置概率分布"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "护城河错位定价——市场看算法,壁垒在中介"
+    chain: >
+      市场叙事: AXON AI引擎是核心竞争力→给AI公司估值(P/E 38.9x)
+      → 但AXON的技术领先可在3-5年被Moloco/开源RL追平
+      → 而MAX中介层60%份额来自MoPub收购并关闭(非有机增长)
+      → SDK锁定(6-12个月迁移)+历史数据不可迁移+25+网络适配器
+      → 复制MAX需同时获60%+中介份额(先有鸡还是先有蛋)
+      → 真正的护城河是中介平台属性而非AI属性
+      → 投资者应追踪MAX份额(而非AXON效果指标)作为护城河领先指标
+    transferable_to: "所有AI驱动平台公司——区分'AI是产品'还是'AI是分发渠道的附属'"
+    reasoning_habit: "看到AI公司时,追问'如果AI被追平,还剩什么' — 如果答案是网络效应/分发/数据,则真实壁垒不在AI"
+
+  - id: "CC-2"
+    name: "D30归因偏差——电商增量性幻觉"
+    chain: >
+      游戏: 用户点击→安装→72h内IAP→D7有明确ROAS信号(反馈快)
+      → 电商: 点击→浏览→加购→离开→回来→购买(5-12天路径)→D30才有初步信号
+      → AXON反馈循环慢4-5倍→模型优化效率显著下降
+      → 30天最后点击归因天然高估APP贡献(其他渠道辅助转化被忽略)
+      → 真实增量性仅30-50%(MW指控25-35%)
+      → 广告主初期看报告ROAS兴奋→规模化后发现Decision ROAS<1.0x→流失
+      → 电商天花板不是技术问题而是归因窗口与品类复购周期的结构性不适配
+    transferable_to: "所有跨品类扩展的广告平台——归因窗口与品类匹配度决定天花板"
+    reasoning_habit: "看到广告公司跨品类扩展时,问'新品类的归因窗口和核心品类一样吗' — 不一样则反馈循环变慢,模型优势衰减"
+
+  - id: "CC-3"
+    name: "ATT红利的双刃剑——同一股力量既成就也毁灭"
+    chain: >
+      Apple ATT(2021)→打击依赖IDFA的竞品(Meta Audience Network eCPM下降)
+      → AXON的上下文信号架构获得相对优势(不依赖IDFA)
+      → MAX中介数据替代IDFA→信息优势增加→CI-6成立
+      → 但: ATT红利的15-25%可能来自灰色地带实践(fingerprinting绕过ATT)
+      → 下一轮隐私收紧(应用内SDK限制)可能逆转相对优势
+      → 同一股力量(平台隐私收紧)既能成就APP也能毁灭APP
+      → APP的命运取决于一个它无法控制的变量: Apple对应用内数据采集的政策走向
+    transferable_to: "所有从平台政策变化中获益的公司——今天的政策红利是明天的政策风险"
+    reasoning_habit: "看到公司从平台政策中获益时,追问'如果政策力度再加一档会怎样' — 单向受益往往意味着反向脆弱"
+
+  - id: "CC-4"
+    name: "边际ROAS衰减——规模化的数学陷阱"
+    chain: >
+      小花费($5-25K/月): AXON选择性竞价Tier 1库存(CTR 3-5%)→ROAS 4-5.5x
+      → 中花费($100-500K/月): 被迫混入Tier 2库存(CTR 1-2%)→ROAS 2.2-3.0x
+      → 大花费(>$1M/月): 消耗Tier 3库存(CTR 0.3-0.8%)→ROAS 1.6-1.9x
+      → 同时受众耗竭: 高购买倾向用户约占MAU 10-15%,3-4周被完全触达
+      → 增量调整后(x40%): 月度>$500K的Decision ROAS<1.0x(亏损)
+      → 核心渠道化($500K+/月)在数学上不可行→APP电商只能是补充渠道(3-8%预算)
+      → 补充渠道TAM天花板$0.45-1.2B/年
+    transferable_to: "所有广告平台的规模化分析——ROAS随规模对数递减是广告效率的基本定律"
+    reasoning_habit: "看到广告公司的小规模ROAS惊人时,追问'这个ROAS在10倍花费下还能维持吗' — 用边际衰减模型验证"
+
+  - id: "CC-5"
+    name: "概率加权EV精确定价——市场效率的验证"
+    chain: >
+      四情景概率赋值: S1 Bear 20%($67.5B) + S2 Base 45%($115B) + S3 Bull 25%($175B) + S4 Moon 10%($275B)
+      → 概率加权EV = $136.5B
+      → 当前市值$132B, 差距仅+3.4%
+      → 市场在$132B水平已接近效率定价
+      → 但概率分布极宽($55B-$350B+)→任何单一催化剂可触发显著重估
+      → 2026年H1有5个转折点集中→密集验证窗口→高波动
+      → 不对称性偏向下行: S1+S2合计65%概率,加权下行-37.7%
+    transferable_to: "高不确定性公司的估值——概率加权EV接近市价不等于'合理',需看不对称性方向"
+    reasoning_habit: "概率加权EV≈市价时,不要急于判断'合理'——看上行vs下行概率的不对称性"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "Phase 1-3: APP在$228B市值下高估40-50%"
+      final: "Phase 4: 市值跌至$132B后,接近概率加权公允价值$136.5B,高估幅度修正为15-30%"
+      pivot: "市值-42%($228B→$132B)消化了大部分下行风险; Fwd P/E从32.9x降至19.0x(低于所有可比)"
+
+    - initial: "DPO 360天是制度性优势=免费浮存金$1.5B+(CI-4)"
+      final: "经济DPO仅120-180天,实际浮存金$249M(非$747M),年化价值约$12M——竞争性优势而非制度性优势"
+      pivot: "会计DPO vs 经济DPO区分; 无合同保障/无监管认可→DPO持续性取决于竞争格局而非制度安排"
+
+    - initial: "SEC调查是买入信号(CI-3)——Google放宽fingerprinting=追溯合法化"
+      final: "低概率成立(25%)——Android侧部分合理但iOS侧Apple立场相反; SEC聚焦'披露充分性'而非'fingerprinting合法性'"
+      pivot: "SEC调查范围偏离CI-3假设前提; 即使实践合法,未充分披露仍可被处罚"
+
+  surprises:
+    - finding: "6,400电商客户中活跃付费约3,000-5,000,平均ARPU $240-360K/年——少数超大客户驱动收入"
+      implication: "电商$1B ARR的质量比数量更脆弱; 头部客户流失1家=数百个SMB客户的贡献; Ads Manager GA后ARPU将被稀释"
+
+    - finding: "AXON在小规模下ROAS优势来自选择性竞价顶级库存——规模化后边际ROAS对数递减71%"
+      implication: "小规模试点的惊人ROAS不可外推; 月度>$500K的增量Decision ROAS<1.0x=亏损; 核心渠道化数学上不可行"
+
+    - finding: "R&D仅占收入4.1%——广告科技行业最低(META 28%,Unity 50%)"
+      implication: "持续创新型护城河+极低R&D投入=隐含风险; 要么AXON团队效率极高,要么AI优势将在18-24个月内被追赶"
+
+    - finding: "FY2023→2025净利润CAGR 205%, 营业利润率从19.7%→75.8%——AdTech史上最快的利润率跃迁"
+      implication: "Apps剥离+AXON 2.0部署双重催化; 但利润率已接近天花板(pure-play AdTech物理上限约80-85%OPM)"
+
+  blind_spots:
+    - area: "电商真实留存率和ROAS"
+      why_matters: "APP从未单独披露电商收入/广告主数/留存率; $1B ARR来自管理层口头声明——是估值中最大的信仰跳跃"
+      monitor: "Ads Manager GA后的季度电商广告主净增数量; 品类构成变化; 第三方(Haus/Northbeam)ROAS数据"
+
+    - area: "AXON技术黑箱——灰色地带实践的真实程度"
+      why_matters: "决定SEC和解金额和行为限制程度; 决定合规化后AXON效果下降幅度(5-15%还是40-60%)"
+      monitor: "SEC Wells Notice; 独立技术审计结果; 合规化后季度ROAS变化"
+
+    - area: "中国关联风险"
+      why_matters: "Culper指出APP与中国AdTech的代理协议+Orient Hontai Capital背景; CFIUS/国会调查风险未被充分定价"
+      monitor: "CFIUS审查动态; 国会听证会是否涉及APP; 中国业务收入占比变化"
+
+  sell_lessons:
+    - scenario: "从$746高点持有到$391(-47.7%)而不减仓——做空报告+SEC+估值压缩三重打击"
+      lesson: "B型高不确定性公司在催化剂密集期(做空+SEC+隐私政策)应设置硬止损; 持有成本=不确定性折价的消化速度取决于外部变量(SEC/Apple),而非管理层"
+      transferable: "所有面临多重外部不确定性的高beta(>2.0)科技公司"
+    - scenario: "电商$1B ARR叙事推高估值,但D30归因偏差未被验证"
+      lesson: "广告平台跨品类扩展的早期数据(小规模ROAS/客户增速)具有系统性乐观偏差——等规模化验证而非试点数据再给期权估值"
+      transferable: "所有广告科技公司的新品类扩展故事"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "MAX中介层市占率(季度)"
+      why_alpha: "CI-1核心——护城河在MAX不在AXON; 份额下降=护城河开始侵蚀,比AXON效果指标更前瞻"
+      current_reading: "~60% (稳定,但Unity LevelPlay和Moloco趋势需监控)"
+    - signal: "Ads Manager GA后电商活跃广告主净增量"
+      why_alpha: "CQ2的唯一可量化验证点; 6,400→30,000+需要self-serve平台成功; 净增<1,000/月=规模化失败"
+      current_reading: "GA未完成,预计2026 H1"
+    - signal: "非CPG品类D30 ROAS数据(第三方验证)"
+      why_alpha: "决定电商天花板是$1-2B(仅CPG)还是$3-5B(多品类); 市场未区分品类差异"
+      current_reading: "数据空白——等待GA后Haus/Northbeam数据"
+
+  confirmation_signals:
+    - signal: "季度广告收入YoY增速"
+      bullish_threshold: ">30% YoY(S3路径验证)"
+      bearish_threshold: "<20% YoY连续2季(增速拐点)"
+    - signal: "SEC调查进展(Wells Notice有/无)"
+      bullish_threshold: "2026 Q4仍无Wells Notice(关闭概率升至30-40%)"
+      bearish_threshold: "Wells Notice发出+正式指控(S1概率上调)"
+    - signal: "WWDC 2026 Apple隐私政策更新"
+      bullish_threshold: "未宣布应用内fingerprinting限制"
+      bearish_threshold: "宣布应用内SDK层面数据采集禁令+12个月执行期"
+
+  noise_signals:
+    - signal: "短期股价波动(日度/周度)"
+      why_noise: "Beta 2.49意味着宏观因素(利率/大盘情绪)对短期股价影响>基本面; 做空报告引发的单日波动是情绪而非信号"
+    - signal: "管理层电商ARR口头声明"
+      why_noise: "从未在财报中单独披露电商收入; 口头声明的定义标准不明(注册vs活跃vs付费); 等第三方验证"
+    - signal: "Sell-side目标价调整"
+      why_noise: "分析师共识隐含电商期权$32-49B→远超基本面估值$5-25B→sell-side定价含大量叙事溢价"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: META
+      similarity: "同为AI驱动广告平台,都从ATT中获益(不同方式),都有高margin结构"
+      key_difference: "META=围墙花园(自有30亿用户数据) vs APP=开放网络中介(依赖第三方SDK); META规模是APP的37倍但增速接近"
+
+    - ticker: TTD
+      similarity: "同为独立广告科技公司,类似P/E区间,都面临围墙花园竞争"
+      key_difference: "TTD=纯需求侧DSP(不控制供给) vs APP=供给侧垂直整合(MAX+AXON+Adjust); TTD增速更低但商业模式更透明"
+
+    - ticker: GOOGL
+      similarity: "Google AdX+DFP捆绑与MAX-AXON捆绑结构类似(CI-5的反垄断类比)"
+      key_difference: "Google已被裁定广告捆绑非法垄断→为APP创造潜在判例; 但APP营收规模远低于DMA门槛"
+
+  comparative:
+    - dimension: "AI广告效率"
+      position: "APP AXON > Moloco > META Advantage+ > TTD > Unity"
+      reasoning: "AXON在移动游戏内D7 ROAS领先——但仅限于游戏品类; 电商品类中APP评分仅18/40(远低于META/Google)"
+
+    - dimension: "数据护城河深度"
+      position: "META (30亿用户) >> Google (搜索意图) > APP (MAX中介数据) > TTD (cookies依赖) > Unity"
+      reasoning: "APP的数据优势局限于移动游戏应用内行为→跨品类扩展时数据基础不足"
+
+    - dimension: "估值吸引力"
+      position: "APP Fwd P/E 19.0x < META 27.2x < GOOGL 28.3x < TTD 29.3x < APP TTM P/E 39.6x"
+      reasoning: "Fwd P/E看似最便宜但依赖FY2027E共识不下修; TTM P/E仍最贵→两个P/E讲述截然不同的故事"
+
+    - dimension: "平台依赖风险"
+      position: "APP (100% iOS+Android) > TTD (cookies) > Unity (平台SDK) >> META (自有平台) >> Google (自有平台)"
+      reasoning: "APP是所有上市广告科技中平台依赖度最高的——100%收入依赖Apple+Google允许SDK运行"
+
+  industry_position:
+    quadrant: "高增速 × 高不确定性 × 供给侧垄断 × 平台依赖"
+    archetype: "AI中介平台——广告科技的中间层垄断者,控制供给侧分发但不拥有流量/用户"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF引擎级分解→市场隐含10年CAGR 28.5%→需收入达$63-76B→在移动广告TAM中需复制META级增速→不现实"
+
+    - pattern_id: "scenario_analysis.probability_weighted"
+      application: "四情景概率加权EV $136.5B精确对应当前$132B→市场已效率定价→但概率分布宽度($55-350B)意味着催化剂敏感度极高"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-2发现Phase 1-3存在bearish确认偏差→做空报告在文献中占比过高(30%)→市值-42%后未充分调整bullish证据"
+
+    - pattern_id: "competitive_benchmarking.chinese_competitor_deep_dive"
+      application: "五方对决(META/Google/TTD/Moloco/Unity)×6维度矩阵→非对称竞争框架(不同位置争夺同一钱包不同切片)"
+
+  novel_patterns:
+    - name: "护城河错位定价(算法vs中介)"
+      description: "市场将公司定价为AI公司(算法溢价),但真正的壁垒在中介层网络效应(分发+数据+SDK锁定)→估值锚点错位"
+      transferable_to: ["AI驱动的SaaS公司(AI是产品还是渠道?)", "平台型广告公司(自有流量vs中介)", "所有AI概念股(区分AI算法壁垒vs数据壁垒)"]
+
+    - name: "D30归因偏差——跨品类扩展的数学陷阱"
+      description: "广告平台在核心品类(短反馈循环)成功→跨品类(长反馈循环)时,归因窗口不匹配导致模型效率下降,真实增量性被系统性高估"
+      transferable_to: ["所有广告科技跨品类扩展", "AI模型从高频数据场景迁移到低频场景的效率衰减"]
+
+    - name: "边际ROAS对数衰减模型"
+      description: "广告花费规模化时,ROAS按对数递减(库存质量分层+受众耗竭+竞价密度三层机制)→小规模试点ROAS不可线性外推"
+      transferable_to: ["所有广告平台的规模化分析", "任何边际收益递减的平台经济学分析"]
+
+    - name: "MoPub式'收购并关闭'——份额来源决定护城河性质"
+      description: "通过收购并关闭最大竞品获得份额(MAX从MoPub获得60%)→份额结构性稳固但在反垄断审查下可能被追溯质疑"
+      transferable_to: ["所有通过'消灭竞品'而非有机增长获得市场份额的公司"]
+
+    - name: "平台政策红利的双刃剑"
+      description: "从平台政策变化中获益(ATT→AXON相对优势)的公司,同一方向的更深收紧可能逆转优势——成就和毁灭来自同一股力量"
+      transferable_to: ["所有依赖平台生态的公司(iOS/Android/AWS/Azure)", "监管变化的受益者(受益可逆转)"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "AI公司的护城河应区分算法壁垒(可追赶,半衰期2-3年)和中介/数据壁垒(网络效应,半衰期5+年)"
+        implication: "护城河评估不能统一给'AI壁垒'一个分数——应按壁垒层分别评估,加权计算"
+      - insight: "供给侧垂直整合(MAX中介+AXON优化+Adjust归因)创造六维交叉锁定——比任何单一维度更持久"
+        implication: "垂直整合公司的护城河评估应检测'交叉锁定'(解绑一层不够,需同时解绑全部)的冗余度"
+      - insight: "持续创新型护城河(需不断升级证明优越性)与结构型护城河(一次建成长期有效)的估值应不同"
+        implication: "持续创新型给shorter half-life和higher discount rate; R&D/收入比值是持续创新型护城河的健康度指标"
+
+    valuation_insights:
+      - insight: "B型Discovery System中概率加权EV≈市价不等于'合理'——需看概率分布的不对称性方向"
+        implication: "高不确定性公司的估值需补充不对称性分析(上行概率×幅度 vs 下行概率×幅度)作为决策变量"
+      - insight: "引擎级Reverse DCF分解(游戏$58B+电商$12-27B+CTV$3-5B+期权$42-59B)使投资者能独立评估每个引擎"
+        implication: "多引擎公司应引擎级分解→使隐含期权定价显性化→与基本面估值对比检测'信仰溢价'"
+      - insight: "Fwd P/E和TTM P/E讲述截然不同故事时(19x vs 40x),需追问哪个更可信——答案取决于共识是否会被下修"
+        implication: "选股筛选应标记Fwd P/E和TTM P/E差距>50%的公司为'共识敏感型'——需评估下修风险"
+
+    screening_insights:
+      - insight: "平台依赖度100%(iOS+Android)的公司面临存亡级政策风险——应在筛选中折价"
+        implication: "筛选增加'平台依赖度'维度: 100%依赖单一/双平台→标记为高风险; 自有平台→折价更小"
+      - insight: "R&D/收入<5%的科技公司要么效率极高,要么在消耗护城河存量而非投资增量"
+        implication: "筛选增加'R&D可持续性'检查: 持续创新型护城河+R&D<5%=红旗"
+      - insight: "电商期权隐含定价可通过SoTP反推(市值-核心业务合理估值=隐含期权)→与基本面期权估值对比"
+        implication: "SoTP反推隐含期权定价应成为多引擎公司的标准筛选步骤——隐含/基本面>2x=信仰溢价警告"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "看到AI公司时,追问'如果AI被追平还剩什么'"
+      trigger: "公司被市场定价为AI公司(P/E溢价归因于AI能力)"
+      origin: "CI-1: AXON可在3-5年被追平,但MAX中介60%份额+SDK锁定不可复制→真实壁垒不在AI"
+      generalization: "区分'AI是产品'vs'AI是分发渠道的附属'——后者的壁垒在渠道不在AI"
+
+    - habit: "广告平台跨品类扩展时,检查归因窗口与品类复购周期的匹配度"
+      trigger: "广告公司宣布从核心品类(游戏/社交)扩展到新品类(电商/CTV)"
+      origin: "D30归因偏差: 游戏D7→电商D30, 反馈慢4-5x, 真实增量性仅30-50%"
+      generalization: "归因窗口与品类复购周期不匹配→模型效率下降→增量性被高估→规模化后客户流失"
+
+    - habit: "小规模ROAS不可线性外推——用边际衰减模型验证规模化潜力"
+      trigger: "看到惊人的广告ROAS数据(尤其是试点/beta阶段)"
+      origin: "AXON电商ROAS 5.5x(@$5K)→1.6x(@$2.5M), 衰减71%——库存分层+受众耗竭+竞价密度三层机制"
+      generalization: "所有广告平台的ROAS都按对数递减——scale时永远比trial差"
+
+    - habit: "从平台政策获益时,同时评估'政策再加一档'的反向风险"
+      trigger: "公司从Apple/Google/AWS等平台政策变化中获益"
+      origin: "CI-6: APP从ATT获益→但下一轮收紧(应用内fingerprinting)可能逆转红利"
+      generalization: "平台政策红利是反脆弱的反面——成就和毁灭来自同一股力量"
+
+  quality_feedback:
+    strengths:
+      - "Discovery System B型方法论——概率加权四情景替代单一目标价,承认了真实不确定性"
+      - "引擎级Reverse DCF分解——将$229B EV拆至游戏/电商/CTV/期权四层,使隐含假设显性化"
+      - "7个CI从Phase 0到Phase 5的完整验证演化——每个非共识假说都有明确的验证/弱化/否定路径"
+      - "DM密度2.39/千字(1258个锚点)——数据基础扎实,远超1.5/千字门槛"
+      - "做空报告钢人检验(Ch20)——假设做空者完全正确的方法论提供了概率框架而非情绪反应"
+    weaknesses:
+      - "Phase 1-3的$228B锚定→Phase 4发现市值已-42%→叙事需大幅修正——市场速度快于分析节奏"
+      - "电商数据空白——$1B ARR来自管理层口头声明,CQ2置信度仅30%——基础数据可靠性本身不确定"
+      - "AXON技术黑箱——算法架构基于公开专利/招聘JD/第三方评论推理重构,非直接代码/架构文档"
+      - "中国关联风险评估较浅(DM-REG-044)——CFIUS/国会风险可能被低估"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "护城河在中介平台而非AI算法(CI-1)"
+        evidence: "Moloco可3-5年追平AXON算法但推出中介层需更长时间; MAX SDK锁定+MoPub遗产是更持久壁垒"
+        confidence_after: "中(55%——需MAX份额未来2年维持55%+确认)"
+
+      - hypothesis: "概率加权EV可精确定价高不确定性公司"
+        evidence: "四情景加权EV $136.5B vs 当前$132B差距仅3.4%——市场已接近效率定价"
+        confidence_after: "高(方法论验证,数学清晰)"
+
+    extended:
+      - hypothesis: "平台政策双刃剑(从ATT红利推广)"
+        extension: "ATT不仅帮助了APP(CI-6),其15-25%的红利可能来自灰色实践→合规化将缩小红利→政策红利和政策风险是同一枚硬币的两面"
+
+    refuted:
+      - hypothesis: "DPO 360天是制度性优势=免费浮存金(CI-4)"
+        evidence: "经济DPO仅120-180天,实际浮存金$249M(非$747M),年化价值约$12M; 无合同/监管保障"
+        lesson: "会计指标(DPO)与经济现实(实际浮存金)可能差异巨大——不能直接将会计DPO等价于经济优势"
+
+  limitations:
+    - "电商核心数据(收入/留存/ROAS)来自管理层口头声明而非财报披露——CQ2的基础不可靠"
+    - "AXON算法黑箱——技术分析基于推理重构而非直接架构文档,灰色实践程度不确定"
+    - "SEC调查信息极度有限——概率建模基于历史案例统计,每个SEC调查有独特因素"
+    - "Moloco作为未上市公司数据不完整——竞争格局中最大不确定性来源"
+    - "中国关联风险未充分评估——CFIUS/国会调查是未定价的尾部风险"
+    - "报告跨越$228B→$132B市值周期——Phase 1-3的bearish基调在$132B下可能过度,Phase 4修正但叙事连贯性受影响"

@@ -232,6 +232,62 @@ if [ "$PHASE" -ge 1 ]; then
 fi
 
 # ============================================================
+# Layer 2.5: 关键铁律脚本化检查 — prompt→script升级 (v3.0, 2026-03-25复盘)
+# 原则: "质量来自更硬的约束"——把可忽略的prompt规则变成不可绕过的脚本检查
+# ============================================================
+
+# 铁律O: Reverse DCF必须在Phase 1出现 (CRM v1.0教训)
+if [ "$PHASE" -ge 1 ]; then
+    RDCF_FOUND=0
+    for f in "$STAGING"/*.md; do
+        if [ -f "$f" ]; then
+            RC=$({ grep -ci 'Reverse DCF\|逆向.*DCF\|隐含.*CAGR\|市场.*隐含\|市场.*在.*定价\|反推.*增速' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            RDCF_FOUND=$((RDCF_FOUND + ${RC:-0}))
+        fi
+    done
+    if [ "$RDCF_FOUND" -ge 2 ]; then
+        check_pass "铁律O: Reverse DCF已出现(${RDCF_FOUND}处)"
+    elif [ "$RDCF_FOUND" -ge 1 ]; then
+        check_warn "铁律O: Reverse DCF仅${RDCF_FOUND}处 — 建议在Ch1深入展开"
+    else
+        check_fail "铁律O: Reverse DCF未出现! Phase 1必须含'市场在$XX隐含什么假设'"
+        echo "         → 先翻译市场(隐含增速/利润率), 再提出自己观点"
+        echo "         → CRM v1.0教训: 不做Reverse DCF→预设bullish→叙事断裂"
+    fi
+fi
+
+# 铁律G6: Python验证必须在Phase 2后存在 (PTC/MA教训)
+if [ "$PHASE" -ge 2 ]; then
+    PY_COUNT=$(find "$DATA" -name "*.py" 2>/dev/null | wc -l | tr -d ' ')
+    if [ "${PY_COUNT:-0}" -ge 1 ]; then
+        check_pass "铁律G6: Python验证已存在(${PY_COUNT}个.py文件)"
+    else
+        check_warn "铁律G6: data/目录无.py文件 — Phase 2估值必须有Python DCF验证"
+        echo "         → LLM不能做算术(铁律#3): DCF/SOTP/敏感性矩阵必须Python计算"
+        echo "         → 产出: reports/${TICKER}/data/${TICKER}_dcf_model.py"
+    fi
+fi
+
+# 铁律K: 估值统一性检查 — Phase 5前 (MCO教训)
+if [ "$PHASE" -ge 4 ]; then
+    # 检查staging中是否存在多个不一致的公允价值数字
+    FV_NUMBERS=0
+    FV_UNIQUE=0
+    for f in "$STAGING"/*.md; do
+        if [ -f "$f" ]; then
+            # 提取"公允价值/fair value/FV"后面的$数字
+            FVN=$({ grep -oE '公允.*\$[0-9]+|fair.*\$[0-9]+|FV.*\$[0-9]+' "$f" 2>/dev/null | wc -l || echo "0"; } | head -1 | tr -d ' ')
+            FV_NUMBERS=$((FV_NUMBERS + ${FVN:-0}))
+        fi
+    done
+    if [ "$FV_NUMBERS" -ge 2 ]; then
+        check_warn "铁律K: 发现${FV_NUMBERS}处公允价值引用 — Phase 5前必须确认全报告数字一致"
+        echo "         → 检查: 估值章节/执行摘要/评级的FV是否完全相同"
+        echo "         → MCO教训: 6个估值中4个说高估但评级说低估=自相矛盾"
+    fi
+fi
+
+# ============================================================
 # Layer 3: DM锚点密度 — Phase 1+ (EVO-ANET-003: 从Phase 3前移至Phase 1)
 # 设计: 检测"有文字但无数据支撑"的情况，越早发现越好
 # ============================================================
@@ -289,6 +345,55 @@ if [ "$PHASE" -ge 1 ]; then
                 fi
             fi
         fi
+    fi
+fi
+
+# ============================================================
+# Layer 3.3: 断言密度检查 — Phase 1+ (v3.0, MA教训)
+# 设计: 检测"有结论无证据"的偷懒模式——脚本级强制，AI无法绕过
+# 断言=没有数据支撑的结论性判断，证据=有DM锚点/因果链/数据的段落
+# 断言密度>50%=太多"空话"→FAIL
+# ============================================================
+if [ "$PHASE" -ge 1 ]; then
+    echo ""
+    echo "--- Layer 3.3: 断言密度检查 (MA教训) ---"
+
+    TOTAL_ASSERTIONS=0
+    TOTAL_EVIDENCE=0
+
+    for f in "$STAGING"/*.md; do
+        if [ -f "$f" ]; then
+            # 断言模式: "X很强/X优秀/X显著/X领先/X稳定/X健康" 等结论性判断
+            ASSERT=$({ grep -ciE '很强|极强|优秀|显著|领先|稳定|健康|良好|突出|核心优势|明显|无疑|毋庸置疑|不可替代|绝对|必然' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            TOTAL_ASSERTIONS=$((TOTAL_ASSERTIONS + ${ASSERT:-0}))
+
+            # 证据模式: 有DM锚点/具体数字/因果推理的段落
+            EVID=$({ grep -ciE 'DM-[A-Z]|[0-9]+%|[0-9]+\.[0-9]+x|\$[0-9]+|因为|因此|这意味着|这是因为|数据显示|根据' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            TOTAL_EVIDENCE=$((TOTAL_EVIDENCE + ${EVID:-0}))
+        fi
+    done
+
+    if [ "$TOTAL_EVIDENCE" -eq 0 ]; then
+        TOTAL_EVIDENCE=1  # 避免除零
+    fi
+
+    # 断言/证据比
+    if [ "$TOTAL_ASSERTIONS" -gt 0 ] && [ "$TOTAL_EVIDENCE" -gt 0 ]; then
+        AE_RATIO_PCT=$((TOTAL_ASSERTIONS * 100 / (TOTAL_ASSERTIONS + TOTAL_EVIDENCE)))
+    else
+        AE_RATIO_PCT=0
+    fi
+
+    echo "  断言=${TOTAL_ASSERTIONS} 证据=${TOTAL_EVIDENCE} 断言占比=${AE_RATIO_PCT}%"
+
+    if [ "$AE_RATIO_PCT" -le 30 ]; then
+        check_pass "断言密度: ${AE_RATIO_PCT}%(≤30% = 证据充分)"
+    elif [ "$AE_RATIO_PCT" -le 50 ]; then
+        check_warn "断言密度: ${AE_RATIO_PCT}%(30-50% = 部分段落缺证据链，建议补充DM锚点)"
+    else
+        check_fail "断言密度: ${AE_RATIO_PCT}%(>50% = 断言多于证据，需回补数据支撑)"
+        echo "         → 查找无证据段落: grep -n '很强\|极强\|优秀\|显著\|领先' staging/*.md"
+        echo "         → 每个断言后补: [DM-xxx] + 因为X→所以Y + 反面:什么条件下不成立"
     fi
 fi
 
@@ -365,6 +470,83 @@ if [ "$PHASE" -ge 2 ]; then
         fi
     else
         check_warn "ISDD: income_diagnostic.yaml缺失 → Phase 1应执行利润表深度诊断(knowledge/analysis_modules/income_statement_deep_diagnostic.md)"
+    fi
+fi
+
+# ============================================================
+# Layer 3.7: 财务六能力检查 — Phase≥1 (v3.0, 财务框架升级)
+# 检查: 因果拆解/三表联动/质量分级/跨周期/证伪/商业映射
+# ============================================================
+if [ "$PHASE" -ge 1 ]; then
+    echo ""
+    echo "--- Layer 3.7: 财务六能力检查 ---"
+
+    # 统计所有staging产出
+    FIN_TOTAL=0
+    FIN_CAUSAL=0   # 因果桥(价×量/OPM分解/FCF桥)
+    FIN_CROSS=0    # 三表联动(OCF/NI, AR vs Rev, CapEx/DA)
+    FIN_GRADE=0    # 质量分级(增长质量/利润质量/现金质量+A-F)
+    FIN_NORMAL=0   # 正常化(正常化OPM/正常化盈利/中周期)
+    FIN_FALSIFY=0  # 证伪(峰值OPM/SBC/GAAP≠有机)
+    FIN_BIZ=0      # 商业映射(定价权/议价力/战略方向)
+
+    for f in "$STAGING"/*.md; do
+        if [ -f "$f" ]; then
+            FIN_TOTAL=$((FIN_TOTAL + 1))
+            # 能力1: 因果拆解
+            C1=$({ grep -ci '价格.*贡献\|量.*贡献\|mix.*效应\|价.*量.*拆\|因果.*桥\|OPM.*分解\|FCF.*桥' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_CAUSAL=$((FIN_CAUSAL + ${C1:-0}))
+            # 能力2: 三表联动
+            C2=$({ grep -ci 'OCF/NI\|FCF/NI\|应收.*收入\|AR.*Revenue\|CapEx.*折旧\|三表\|交叉验证' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_CROSS=$((FIN_CROSS + ${C2:-0}))
+            # 能力3: 质量分级
+            C3=$({ grep -ci '增长质量\|利润质量\|现金质量\|质量.*[A-F]级\|质量分级' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_GRADE=$((FIN_GRADE + ${C3:-0}))
+            # 能力4: 正常化
+            C4=$({ grep -ci '正常化.*OPM\|正常化.*盈利\|中周期\|跨周期\|峰值.*谷底\|normalize' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_NORMAL=$((FIN_NORMAL + ${C4:-0}))
+            # 能力5: 证伪
+            C5=$({ grep -ci '峰值OPM\|SBC.*侵蚀\|GAAP.*有机\|FCF.*陷阱\|ROIC.*商誉\|证伪\|最容易错' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_FALSIFY=$((FIN_FALSIFY + ${C5:-0}))
+            # 能力6: 商业映射
+            C6=$({ grep -ci '定价权.*信号\|议价力\|战略.*方向\|商业.*含义\|财务.*商业\|这意味着.*业务\|这说明.*竞争' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            FIN_BIZ=$((FIN_BIZ + ${C6:-0}))
+        fi
+    done
+
+    FIN_SCORE=0
+    for v in $FIN_CAUSAL $FIN_CROSS $FIN_GRADE $FIN_NORMAL $FIN_FALSIFY $FIN_BIZ; do
+        if [ "${v:-0}" -ge 1 ]; then FIN_SCORE=$((FIN_SCORE + 1)); fi
+    done
+
+    echo "  因果拆解=$FIN_CAUSAL 三表联动=$FIN_CROSS 质量分级=$FIN_GRADE 正常化=$FIN_NORMAL 证伪=$FIN_FALSIFY 商业映射=$FIN_BIZ"
+
+    if [ "$FIN_SCORE" -ge 5 ]; then
+        check_pass "财务六能力: ${FIN_SCORE}/6 维度覆盖"
+    elif [ "$FIN_SCORE" -ge 3 ]; then
+        check_warn "财务六能力: ${FIN_SCORE}/6 维度覆盖 — 缺失维度需要在后续Phase补齐"
+    else
+        check_fail "财务六能力: ${FIN_SCORE}/6 维度覆盖 — 严重不足，财务章节质量风险"
+    fi
+fi
+
+# ============================================================
+# Layer 3.8: 圆桌痕迹检查 — Phase≥3 (v3.1, 无痕融入)
+# ============================================================
+if [ "$PHASE" -ge 3 ]; then
+    ROUNDTABLE_TRACE=0
+    for f in "$STAGING"/*.md; do
+        if [ -f "$f" ]; then
+            RT=$({ grep -ci '巴菲特\|芒格\|李录\|阿克曼\|德鲁肯米勒\|达里奥\|Cathie\|Bear检察官\|【陈述】\|【质疑】\|【补充】\|【反驳】\|圆桌讨论\|大师认为\|大师们' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+            ROUNDTABLE_TRACE=$((ROUNDTABLE_TRACE + ${RT:-0}))
+        fi
+    done
+
+    if [ "$ROUNDTABLE_TRACE" -eq 0 ]; then
+        check_pass "圆桌无痕: staging中0处圆桌痕迹"
+    else
+        check_fail "圆桌痕迹: staging中${ROUNDTABLE_TRACE}处未清除的大师名字/行动标签 — 必须改写为报告正文口吻"
+        echo "         → 运行: grep -in '巴菲特|李录|阿克曼|【陈述】|【质疑】|圆桌' staging/*.md"
     fi
 fi
 

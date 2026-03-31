@@ -1,0 +1,452 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Arista Networks
+# 压缩比: 279K → ~12K (23x)
+# 六层 + 三个新增重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: ANET
+  company: "Arista Networks"
+  report_date: "2026-02-20"
+  stock_price: "$137.23"
+  market_cap: "$172.8B"
+  report_version: "v1.0"
+  report_path: "reports/ANET/ANET_Complete_v1.0.md"
+  quality_score: "报告未给出数字评分(定性D1-D10评估)"
+  cqi: "报告未覆盖"
+  framework_version: "v17.0"
+  industry: "生态科技"
+  archetype: "AI基础设施受益者(硬件+软件平台混合)"
+  chars: 278713
+  dm_count: 478
+  dm_density: "1.72/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "EOS护城河(转换成本4.5/5)和47% FCF margin的优质公司, 但PE 52x定价了接近完美的AI兑现, 42%客户集中度和NVIDIA份额侵蚀使安全边际不足"
+  rating: "审慎关注"
+  fair_value: "$100-107 (5方法加权$97, 概率加权$105-107)"
+  expected_return: "-23%至-24% (vs $137.23)"
+
+  key_arguments:
+    - claim: "PE 52x隐含市场赌70% Bull概率, 我们评估仅15-20%"
+      direction: bearish
+      magnitude: 5  # 概率反演+5方法交叉验证
+      mechanism: "Reverse DCF隐含10年Revenue CAGR 18.9% → 需7个信念同时成立 → 联合概率仅~6.7%"
+      kill_switch: "AI确为10年超级周期+ANET在推理前端网络建立主导地位 → FY2028 EPS $5.50+ justify当前PE"
+
+    - claim: "NVIDIA Spectrum-X正以相变速度侵蚀ANET DC份额"
+      direction: bearish
+      magnitude: 5  # 硬数据: 0→25.9%份额, +647% YoY
+      mechanism: "GPU+网络捆绑销售 → 超大规模客户买GB200时顺便配Spectrum-X → ANET份额从21.3%降至19.2%(2季-2.1pp)"
+      kill_switch: "Spectrum-X天花板28-33%(仅限AI新增) + ESUN标准化利好品牌Ethernet + Enterprise Campus安全区NVIDIA无产品"
+
+    - claim: "42%收入集中于MSFT(26%)+Meta(16%), 集中度在恶化而非改善"
+      direction: bearish
+      magnitude: 4  # 硬数据+PPDA确认市场低估
+      mechanism: "MSFT CapEx+82%导致权重被动上升 → 剥离前2客户后ANET增速仅13% → 内部化概率5年内25-35%"
+      kill_switch: "Campus分散化成功使前2客户浓度3年降至<30% + AI CapEx持续增长抵消内部化风险"
+
+    - claim: "EOS+DR锁定构成真实但非永久的护城河(3.5/5, 半衰期7.5年)"
+      direction: bullish
+      magnitude: 4  # DR $5.37B(8.3x增长)+转换成本$2-5M量化
+      mechanism: "DR从$651M→$5.37B(5年8.3x) → 客户预付多年EOS/CloudVision合同 → 锁定效应+技术粘性双重护城河"
+      kill_switch: "SONiC+LLM网络管理工具在3-5年内缩小功能差距 → EOS人力转换成本护城河被AI替代"
+
+    - claim: "Token经济Jevons悖论为推理基础设施创造结构性需求, ANET在前端网络有先发优势"
+      direction: conditional
+      magnitude: 3  # 结构性趋势明确但ANET份额捕获不确定
+      mechanism: "Token单价降1000x但总支出+320% → 推理>训练(2026年首超) → 推理集群分布式特征天然适合Ethernet(非InfiniBand)"
+      kill_switch: "NVIDIA将捆绑策略扩展至推理网络(ConnectX-8+Spectrum-X800全覆盖) → ANET连推理前端也失守"
+
+  moat:
+    composite_score: 7.0  # 3.5/5换算
+    half_life: "7.5年(EOS>5年, DR合同1-3年, 技术差异化3-5年)"
+    dimensions:
+      - type: switching_cost
+        strength: 4.5  # 4.5/5
+        evidence: "eAPI/Python脚本>10K行不可跨平台复用, 迁移需重写自动化+重培训团队+重集成监控, 成本$2-5M"
+        vulnerability: "SONiC成熟+LLM网络管理Agent可能在5年内降低人力转换成本"
+      - type: data
+        strength: 4  # DR锁定效应
+        evidence: "DR $5.37B(DR/Revenue 59.7%), 5年增长8.3x, CloudVision渗透3K+客户"
+        vulnerability: "DR合同期限未披露, 若1-2年期则锁定效应远弱于3-5年期"
+      - type: scale
+        strength: 3  # EOS单一代码库规模效应
+        evidence: "R&D费用率从22.5%降至13.7%, 绝对值从$521M增至$1.24B"
+        vulnerability: "merchant silicon策略降低了硬件差异化壁垒"
+      - type: network_effect
+        strength: 2.5  # 有限的数据反馈飞轮
+        evidence: "超大规模客户部署→EOS功能优化→更好产品→更多客户, GitHub EOS相关repo 2000+(vs SONiC ~500)"
+        vulnerability: "网络效应远弱于CME/Visa级别, 更多是技术领先而非真正的网络锁定"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含10年Revenue CAGR 18.9%, 需7个信念同时成立(AI持续+Ethernet赢+份额稳+客户不流失+margin维持+campus成功+EOS锁定)"
+    methods_used: ["Reverse DCF", "3阶段DCF(Python)", "SOTP", "可比公司", "情景加权(P4红队调整)"]
+    dispersion: "1.41x方法离散度($78-$110), 2.25x情景离散度($68-$153)"
+    consensus_vs_ours: "市场隐含70% Bull概率+18.9% CAGR | 我们评估15-20% Bull+15-18% CAGR → 核心分歧在情景概率分配"
+    entry_zone: "$85-100 (PE 25-30x, 对应Base-Bear区间)"
+    catalyst: "FY2026 Q1财报(2026年5月)鉴别AI需求结构vs周期 | NVIDIA份额数据确认天花板 | AI CapEx ROI首批量化报告"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "审慎观望 — 品质确认(FCF 47%+EOS护城河)但估值过高(PE 52x vs 公允$97-107), 等待PE压缩至25-30x"
+    buy_triggers:
+      - trigger: "AI CapEx周期见顶+NVIDIA份额侵蚀叙事导致PE压缩"
+        price_zone: "$85-100 (PE 25-30x)"
+        reasoning: "Base情景DCF $106+Campus增长缓冲 → PE 25-30x提供安全边际 + FCF Yield>4%"
+      - trigger: "FY2026增速连续2季<15%导致成长股投资者抛售"
+        price_zone: "$70-85 (PE 20-25x)"
+        reasoning: "Bear情景但EOS护城河完整+Campus增长解耦AI → 被过度抛售的优质公司"
+    hold_conditions:
+      - "EOS转换成本有效(DR/Revenue>50%且持续增长)"
+      - "Campus增速>30%(AI解耦缓冲有效)"
+      - "DC Ethernet份额>15%(NVIDIA未突破天花板)"
+      - "毛利率>60%(硬件溢价未被白盒/SONiC瓦解)"
+    sell_triggers:
+      - signal: "NVIDIA Spectrum-X DC Ethernet季度份额突破35%且ANET<15%"
+        severity: "action"
+        action: "减仓50%, NVIDIA捆绑优势扩展至非AI领域=护城河基础动摇"
+      - signal: "MSFT宣布类似Nitro的内部网络硬件项目"
+        severity: "action"
+        action: "减仓50%, 26%收入客户内部化=收入断崖风险"
+      - signal: "PE>65x且无增速加速催化"
+        severity: "warning"
+        action: "减仓25%, Cisco 1998教训: PE从65x→12x"
+      - signal: "DR/Revenue比率连续2季下降>5pp"
+        severity: "warning"
+        action: "重新评估EOS锁定效应, 若DR质量下降则减仓"
+    position_sizing: "当前PE下Kelly为负(强烈不买) | PE 25-30x时重新评估"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "Token经济Jevons悖论 → 推理基础设施结构性需求"
+    chain: >
+      Token单价下降1000x(GPT-4→GPT-4o-mini)
+      → 但总支出反增320%(Jevons悖论)
+      → 三重乘数: 推理时计算缩放(3-172x) × Agent循环(15x) × 企业渗透(5→40%)
+      → 推理占AI计算从33%→67%(2027)→75%(2028)
+      → 推理集群特征: 分布式+小规模+前端密集 ≠ 训练集群(集中+大规模+后端密集)
+      → Ethernet的延迟劣势在推理中几乎不存在
+      → 推理前端网络是净新市场(CAGR>40%)
+      → ANET的campus+enterprise+CloudVision统一管理能力天然契合推理分布式特征
+    transferable_to: "所有AI基础设施受益者的需求结构分析 — 区分训练vs推理的不同受益逻辑"
+    reasoning_habit: "看到AI需求时追问'训练还是推理' — 两者的基础设施需求/竞争格局/受益者完全不同"
+
+  - id: "CC-2"
+    name: "Cisco 1998多维类比 → 高增长网络公司估值天花板"
+    chain: >
+      Cisco 1998 = 互联网基础设施之王, PE ~55x, 流量全过路由器
+      → ANET 2025 = AI基础设施关键节点, PE 52x, 数据全过交换机
+      → 4维类比评分: PE区间(★★★★★) + 增速(★★★★) + 份额(★★★★) + 估值结构(★★★★★)
+      → 但3个结构差异阻止Cisco式泡沫化:
+        差异1: 42%客户集中度(Cisco分散) → 增长天花板更低
+        差异2: NVIDIA Spectrum-X(Cisco无同级对手) → 份额下降是现实
+        差异3: AI CapEx周期(Cisco是长期趋势) → 周期性更强
+      → 结论: ANET 2025≈Cisco 1998但不会走向200x PE → 52x可能就是顶部附近
+    transferable_to: "任何当前高增长公司vs历史同类的类比分析 — 需4维定量匹配+结构差异标注"
+    reasoning_habit: "历史类比不是找相似点就够了 — 必须定量匹配度+结构差异分析, 否则类比是确认偏差的温床"
+
+  - id: "CC-3"
+    name: "DR锁定效应 vs EOS技术锁定 → 护城河本质判断"
+    chain: >
+      共识: EOS单一代码库是ANET核心护城河
+      → 但DR从$651M→$5.37B(8.3x)增速远超收入增速
+      → 追问: 客户留下是因为EOS好还是因为已预付多年合同?
+      → 验证: 两种锁定并存, 但EOS技术锁定持久性>5年 > DR合同锁定1-3年
+      → 关键: DR锁定是可观测的(财务指标), EOS技术锁定是推断的(技术架构)
+      → 投资含义: DR/Revenue比率是护城河健康度的实时仪表盘
+    transferable_to: "所有高DR/Revenue的SaaS/平台公司 — DR是锁定效应的硬证据, 但需区分合同锁定vs技术锁定"
+    reasoning_habit: "看到高DR时追问'客户是被锁住还是自愿续费' — 前者是防守型护城河(可能流失), 后者是进攻型护城河(会扩展)"
+
+  - id: "CC-4"
+    name: "内部人行为-言辞矛盾 → 信息不对称信号"
+    chain: >
+      管理层言辞: "AI变革性机会""网络是AI基础设施核心"
+      → 但CEO Ullal卖出70.8%直接持股, CTO Duda卖出69.8%
+      → R&D/Revenue从22.5%降至13.7%(AI机会这么大为什么不加大研发?)
+      → CapEx从$32M增至$120M但仍仅1.33%(fabless模型几乎未变)
+      → $10.7B现金囤积不分红不大收购(VeloCloud仅~$300M级别)
+      → 结论: 行为-言辞矛盾评级中度 — 更像"顺势搭车"而非"全力押注AI"
+    transferable_to: "所有管理层声称看到重大机会但投资行为不匹配的公司"
+    reasoning_habit: "管理层说什么不重要, 看他们做什么 — R&D方向/持股变化/CapEx投入三维度交叉验证言辞"
+
+  - id: "CC-5"
+    name: "温水煮青蛙 → 高增长股最危险的下跌模式"
+    chain: >
+      概率35%的渐进恶化路径(非黑天鹅):
+      → 2026: AI增速从28%放缓至22%(仍看似强劲) → PE维持45-48x
+      → 2027: NVIDIA份额扩至30%+campus增速放缓 → 增速降至15% → PE压缩至35x
+      → 2028: AI CapEx开始正常化+白盒渗透加速 → 增速降至12% → PE压缩至28x
+      → 累计效果: 股价从$137缓跌至$95-105(-23-31%), 但过程无明确"卖出信号"
+    transferable_to: "所有PE>40x的成长股估值分析 — 温水煮青蛙比黑天鹅更可能发生且更难应对"
+    reasoning_habit: "对成长股不要只问'什么会崩盘' — 更要问'什么会缓慢恶化到投资者来不及反应'"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "ANET是AI基础设施的核心赢家, AI网络TAM扩大利好ANET"
+      final: "AI TAM扩大但NVIDIA捆绑销售使ANET在AI领域份额萎缩, TAM扩大的主要受益者是NVIDIA"
+      pivot: "NVIDIA Spectrum-X从0到25.9%份额仅6个月, +647% YoY — 这是相变而非渐进竞争"
+
+    - initial: "FY2025收入增长28.6%证明AI需求结构性强劲"
+      final: "增长的三种竞争性解释(结构性/周期叠加/峰值捕获)中, 后两者数据支撑更强"
+      pivot: "RT-7替代解释挑战: 剥离前2客户后增速仅13% + AI网络$1.5B边界定义模糊"
+
+    - initial: "EOS技术粘性是ANET核心护城河"
+      final: "DR合同锁定效应(8.3x增长)可能比EOS技术粘性更重要 — 真正护城河是预付合同而非技术"
+      pivot: "NCH-1: DR增速远超收入增速 = 客户被合同锁住而非被技术吸引"
+
+  surprises:
+    - finding: "NVIDIA DC Ethernet份额在6个月内从0→25.9%, 增速是ANET的22倍 — 这是相变级别"
+      implication: "GPU+网络捆绑改变了竞争规则, ANET在AI后端集群的结构性劣势可能不可逆"
+
+    - finding: "CEO/CTO 2025年分别减持70%+直接持股, 全年零公开市场买入"
+      implication: "最有信息优势的人在高位系统性减仓 — 行为-言辞矛盾是不可伪造的信号"
+
+    - finding: "Token经济Jevons悖论: 单价降1000x但总支出+320%, 推理将在2026年首超训练"
+      implication: "推理基础设施是净新市场(CAGR>40%), 推理集群的分布式特征天然适合Ethernet — 这是ANET最强的结构性论点"
+
+    - finding: "DIO 230天(vs行业60-90天, Cisco 50天) — 战略性超额备货还是消化不良?"
+      implication: "Purchase Commitments从$4.8B升至$6.8B证实备货激进, 但若AI CapEx见顶则变为库存风险"
+
+  blind_spots:
+    - area: "NVIDIA Spectrum-X增长来源: 增量蚕食还是存量替换"
+      why_matters: "若仅AI新增(增量), ANET传统DC安全; 若存量替换, 份额压缩将远快于预期"
+      monitor: "Dell'Oro Q1-Q2 2026季度份额报告(2026年7-10月) — NVIDIA份额来源拆分"
+
+    - area: "DR合同平均期限分布"
+      why_matters: "1-2年期则锁定效应远弱于3-5年期 — NCH-1假设的可验证性完全取决于此"
+      monitor: "ANET 10-K/投资者日是否披露DR期限结构"
+
+    - area: "AI CapEx ROI何时从信仰变为证据"
+      why_matters: "决定AI CapEx是3-5年持续周期还是2年脉冲 → PE能否维持40x+的核心问题"
+      monitor: "McKinsey/Gartner 2026年中AI ROI量化报告 + 超大规模客户FY2026 H2 CapEx指引"
+
+    - area: "MSFT网络设备内部化时间表"
+      why_matters: "26%收入客户 × 内部化 = 收入断崖$1.1-1.3B/年, 对应市值损失$20-26B"
+      monitor: "MSFT Azure网络ASIC项目公开信息 + Amazon Nitro类比进展"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "温水煮青蛙(概率35%): 增速从28%→22%→15%→12%缓慢下降, 无明确卖出信号"
+      lesson: "高增长股最危险的下跌不是崩盘而是缓慢恶化 — 每个阶段看起来'还行'但累计效果是-23~31%"
+      transferable: "所有PE>40x的成长股 — 需预设增速阈值作为卖出纪律(如连续2季<15%)"
+    - scenario: "内部人系统性减持70%+但机构仍在买入 — 谁对了?"
+      lesson: "当最有信息优势的人和最有资金的人方向相反, 历史基础率显示内部人12个月预测力优于卖方评级"
+      transferable: "CEO/CTO同时大幅减持>50%+全年零买入 = 应该review仓位而非找理由解释"
+    - scenario: "Cisco 1998教训: PE从65x→12x, 即使公司基本面最终没问题"
+      lesson: "网络设备商PE>50x的历史先例结局都是估值压缩 — 问题不是公司好不好, 是你买的贵不贵"
+      transferable: "企业IT领域PE>50x且能5年后维持的案例几乎不存在"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "市场隐含Bull概率 vs 分析师评估Bull概率的差距"
+      why_alpha: "概率反演揭示市场隐含70% Bull vs 我们15% — 55%的概率差距是估值争议的数学根源, 大多数分析师不做这个计算"
+      current_reading: "70% vs 15-20%, 差距约50pp — 市场系统性高估AI全面兑现概率"
+    - signal: "CEO/CTO持股变化(零买入+系统性减持)"
+      why_alpha: "最有信息优势群体的行为信号 — 学术研究支持内部人12个月预测力 > 卖方评级"
+      current_reading: "CEO减持70.8%, CTO减持69.8%, 全年零公开市场买入"
+    - signal: "DR/Revenue比率季度变化"
+      why_alpha: "DR是EOS锁定效应的实时仪表盘 — DR增速vs收入增速的比值直接反映护城河健康度"
+      current_reading: "59.7%(FY2025), 从FY2020的28.1%持续上升 — 锁定效应在增强"
+
+  confirmation_signals:
+    - signal: "NVIDIA Spectrum-X DC Ethernet季度份额"
+      bullish_threshold: "份额增速放缓至<+50% YoY且<30%(天花板确认)"
+      bearish_threshold: "份额>35%且开始渗透非AI DC(存量替换启动)"
+    - signal: "ANET季度Revenue增速"
+      bullish_threshold: ">22% YoY(结构性增长确认, 解释A获支撑)"
+      bearish_threshold: "<15% YoY连续2季(增速失速, Bear case启动)"
+    - signal: "单季Hyperscaler CapEx同比增速"
+      bullish_threshold: ">20% YoY(AI投资周期持续)"
+      bearish_threshold: "同比下降>15%(脉冲假设获支撑)"
+
+  noise_signals:
+    - signal: "卖方目标价调整(82%买入评级)"
+      why_noise: "卖方普遍使用GAAP PE+共识增速 → 不区分增长质量+概率分配 → 目标价集体偏乐观"
+    - signal: "单季AI网络收入绝对值"
+      why_noise: "AI网络收入$1.5B的边界定义模糊(ANET未单独披露) → 绝对值波动是噪音, 看份额趋势"
+    - signal: "日度/周度股价波动"
+      why_noise: "PE 52x在成长因子轮动中波动极大 → 看季度基本面变化而非价格"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: CSCO
+      similarity: "网络设备龙头, 企业+DC全覆盖, 历史类比核心参照(Cisco 1998)"
+      key_difference: "CSCO=成熟+多系统分裂+campus统治 vs ANET=成长+EOS单一代码库+DC领先但campus进攻中"
+
+    - ticker: NVDA
+      similarity: "AI基础设施核心受益者, DC硬件供应商"
+      key_difference: "NVDA=GPU+网络垂直整合+AI训练主导 vs ANET=纯网络+Ethernet+推理/非AI更有优势 | Spectrum-X使二者从合作变为直接竞争"
+
+    - ticker: PANW
+      similarity: "网络安全平台化转型(硬件→软件订阅), 可比估值区间"
+      key_difference: "PANW已实现软件订阅化分拆(ARR>$4B) vs ANET的EOS软件价值仍嵌入硬件售价中"
+
+  comparative:
+    - dimension: "AI基础设施受益强度"
+      position: "NVDA (GPU+网络全栈) > ANET (Ethernet网络) > CSCO (传统DC/campus)"
+      reasoning: "NVIDIA在AI训练主导+捆绑扩展推理 | ANET在推理前端有优势但后端失守 | Cisco几乎缺席AI"
+
+    - dimension: "护城河深度"
+      position: "CSCO (campus统治30年) > ANET (EOS 3.5/5, 7.5年半衰期) > NVDA网络 (Spectrum-X 2年历史)"
+      reasoning: "Cisco的campus嵌入=制度级 | ANET的EOS有真实但可衰减的转换成本 | NVIDIA网络太新缺乏护城河"
+
+    - dimension: "估值吸引力"
+      position: "CSCO (PE 16x) > ANET (PE 52x但增速28%) > NVDA (PE 30x但增速120%+)"
+      reasoning: "CSCO便宜但增速低 | ANET贵且增速质量存疑 | NVDA贵但增速无争议"
+
+    - dimension: "客户集中度风险"
+      position: "ANET (42%前2客户) >> NVDA (~35%但分散性更好) > CSCO (高度分散)"
+      reasoning: "ANET的MSFT(26%)+Meta(16%)集中度在恶化 | 客户集中=脆弱性而非优势"
+
+  industry_position:
+    quadrant: "高增速 × 高估值 × 护城河中等 × 客户集中"
+    archetype: "AI基础设施受益者 — 搭车而非造车(顺势搭车vs全力押注)"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF → 市场隐含CAGR 18.9% → 需7信念同时成立 → 联合概率仅6.7%"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "温水煮青蛙场景: 增速28%→22%→15%→12%缓慢下降, PE 52x→35x→28x渐进压缩"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~RT-7红队七问 + 承重墙脆弱度3.82/5.0 + 认知偏差6/8类 + 双向校准(空方倾向7:3)"
+
+    - pattern_id: "competitive_benchmarking.chinese_competitor_deep_dive"
+      application: "不适用(非中国竞争者) — 但NVIDIA Spectrum-X深度分析(5路径×概率)使用了类似竞品量化框架"
+
+  novel_patterns:
+    - name: "Cisco 1998多维类比评分 (★★★★★冠军技术)"
+      description: "4维度(PE区间/增速/份额/估值结构)定量匹配评分(★系统) + 3结构差异标注 — 防止类比成为确认偏差工具"
+      transferable_to: ["任何当前高增长公司vs历史同类的类比分析", "PE>40x的企业IT公司泡沫检测"]
+
+    - name: "Token经济Jevons悖论框架"
+      description: "单价暴跌但总量爆炸的三重乘数模型(推理时计算缩放×Agent循环×企业渗透) → 区分训练vs推理的受益逻辑"
+      transferable_to: ["所有AI基础设施投资分析", "云计算/CDN/边缘计算等按量计费的基础设施"]
+
+    - name: "行为-言辞矛盾三维检测"
+      description: "R&D/Revenue方向 × CEO/CTO持股方向 × CapEx投入方向的三维矛盾评分 — 言辞看多但行为不匹配=信号"
+      transferable_to: ["所有管理层声称看到重大机会的公司", "内部人交易信号分析"]
+
+    - name: "B3/B7矛盾四象限映射"
+      description: "将两个强矛盾信念(-2关系)拆解为离散概率空间(NVIDIA赢/输 × AI周期长/短)而非二元判断"
+      transferable_to: ["任何信念矩阵中存在-2(强矛盾)关系的分析"]
+
+    - name: "DR锁定效应护城河假设(NCH-1)"
+      description: "非共识: DR增速远超收入增速 = 护城河本质是合同锁定而非技术粘性 — DR/Revenue比率是护城河实时仪表盘"
+      transferable_to: ["高DR/Revenue比率的SaaS/平台公司", "转换成本量化分析"]
+
+    - name: "概率反演(scipy.optimize)"
+      description: "从4情景×价格×约束求解市场隐含概率分布 → 70% Bull vs 15%揭示55%概率差距"
+      transferable_to: ["PW4+情景模式分析", "任何需要还原市场隐含假设的估值分析"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "护城河本质可能是合同锁定(DR)而非技术粘性(EOS) — DR增速8.3x vs 收入增速3x的不对称揭示了真正的锁定机制"
+        implication: "评估软件公司护城河时, DR/Revenue比率趋势可能比技术架构分析更能揭示真实锁定强度"
+      - insight: "EOS护城河在现有客户'防守'有效(转换成本4.5/5)但在AI新增客户'进攻'端严重不足"
+        implication: "护城河评估应区分存量防守vs增量进攻 — 存量强不代表增量也强, 两者的半衰期不同"
+      - insight: "LLM/AI Agent可能在5年内降低软件转换成本(替代人力运维=降低EOS的人力锁定)"
+        implication: "评估技术护城河时需考虑AI对转换成本本身的侵蚀 — 'AI让一切更容易'包括让切换供应商更容易"
+
+    valuation_insights:
+      - insight: "概率反演揭示市场隐含概率(70% Bull) vs 分析师评估(15%) — 55%差距比绝对估值更有诊断价值"
+        implication: "高PE成长股的估值争议本质是概率分配争议而非模型参数争议 — 概率反演比调参数更有信息量"
+      - insight: "方法离散度(1.41x)和情景离散度(2.25x)衡量不同类型的不确定性 — 前者可通过更好分析缩小, 后者不可"
+        implication: "报告应区分方法论不确定性和事件不确定性 — 混淆二者会高估分析的精度"
+      - insight: "PE/AI比(每1%AI相关性获得的PE倍数)是衡量AI估值溢价的新指标 — ANET 2.5x是L3层最高"
+        implication: "AI受益者估值分析应计算PE/AI比 — 区分合理AI溢价和过度AI溢价"
+
+    screening_insights:
+      - insight: "CEO+CTO同时大幅减持>50%+全年零买入 = 信息不对称红旗 — 内部人12月预测力>卖方"
+        implication: "选股筛选应增加'内部人行为矛盾'过滤器: 管理层大幅减持+言辞看多=标记为review"
+      - insight: "42%客户集中度 + 前2客户增速占总增速>60% = 增长质量虚高"
+        implication: "高增速公司应计算'剥离大客户后增速' — 若差距>10pp则增长质量存疑"
+      - insight: "PE>50x + 历史先例(Cisco 1998)PE压缩概率极高 — 企业IT领域PE>50x维持5年案例几乎不存在"
+        implication: "选股时企业IT/网络设备PE>45x应自动标记为'估值泡沫检测'"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "看到AI受益者时立刻区分训练vs推理受益逻辑"
+      trigger: "公司被标签为'AI基础设施受益者'"
+      origin: "Token经济Jevons悖论 — 推理基础设施需求结构与训练完全不同, 受益者也不同"
+      generalization: "AI不是单一主题 — 训练/推理/Agent各有不同基础设施需求, 不能用'AI利好'一刀切"
+
+    - habit: "看到PE>45x时立刻做概率反演而非正向DCF"
+      trigger: "成长股PE>45x且市场共识看多"
+      origin: "ANET Reverse DCF → 市场隐含70% Bull vs 我们15% → 揭示55%概率差距是估值争议的数学根源"
+      generalization: "高PE成长股的核心问题不是'值多少钱'而是'市场在赌什么概率' — 概率反演比目标价更有诊断价值"
+
+    - habit: "看到管理层'AI变革'言辞时交叉验证R&D/持股/CapEx三维行为"
+      trigger: "管理层在earnings call中频繁提及AI/变革/历史机遇"
+      origin: "ANET管理层言辞看多但CEO/CTO减持70%+ + R&D费用率下降 + CapEx仅1.33%"
+      generalization: "言辞免费, 行为有成本 — 当两者矛盾时, 信行为不信言辞"
+
+    - habit: "历史类比必须4维定量+结构差异, 否则是确认偏差"
+      trigger: "分析中需要引用历史类比(如Cisco 1998/1999年互联网泡沫)"
+      origin: "Cisco 1998类比4维高度匹配但3个结构差异阻止了Cisco式泡沫化路径 — 不做差异分析就会错误推导"
+      generalization: "类比是最强大也最危险的分析工具 — 强大因为直觉强, 危险因为选择性记忆"
+
+  quality_feedback:
+    strengths:
+      - "Reverse DCF信念反演(7信念闭环+概率反演) — 本报告最核心洞见, 有效防止结论先行偏差"
+      - "Cisco 1998多维类比(4维★评分+3差异) — 冠军级历史类比方法论(4.5/5)"
+      - "Token经济Jevons悖论(三重乘数模型) — 前沿变量分析, 区分训练vs推理受益逻辑"
+      - "DM密度1.72/千字(478个锚点) — 数据锚定扎实"
+      - "红队七问+双向校准 — 承重墙3.82/5.0和温水煮青蛙35%是关键产出"
+    weaknesses:
+      - "D1估值弱 + D6催化弱 + D7风险弱 + D10时机弱 — 不是分析不到位而是基本面确实不支持"
+      - "情景概率分配为D级(纯主观) — 核心估值方法(M5权重25%)依赖最弱数据环"
+      - "时间框架不一致(用10年DCF估值但EOS有效性假设5年后高度不确定) — 方法论层面矛盾"
+      - "Campus市场分析相对薄弱(Phase 1-3中被系统性忽视, P4红队才识别) — 被忽视的多头因素"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "Reverse DCF必须P1前置(CRM v2.0铁律O)"
+        evidence: "Ch9 Reverse DCF有效防止了从Bull $150-175开始分析的确认偏差"
+        confidence_after: "高(连续执行确认有效)"
+
+      - hypothesis: "温水煮青蛙比黑天鹅更可能发生(MCO报告)"
+        evidence: "35%概率的渐进恶化路径vs12-15%概率的黑天鹅 — 温水煮青蛙是最高概率的看空情景"
+        confidence_after: "高(ANET和MCO独立确认)"
+
+    extended:
+      - hypothesis: "Cisco 1998类比框架"
+        extension: "从定性类比扩展为4维定量匹配(★系统)+3结构差异标注 — 成为可复用的冠军技术"
+
+      - hypothesis: "内部人行为分析"
+        extension: "从单维度(买/卖)扩展为三维矛盾检测(R&D方向×持股方向×CapEx方向)"
+
+    refuted:
+      - hypothesis: "AI利好网络设备商一刀切"
+        evidence: "训练集群利好NVIDIA(捆绑优势), 推理集群利好ANET(Ethernet优势) — 不能笼统说'AI利好ANET'"
+        lesson: "AI受益分析必须区分训练/推理/Agent不同场景, 每个场景的竞争格局完全不同"
+
+  limitations:
+    - "NVIDIA Spectrum-X份额增长来源(增量vs存量)无法从公开数据区分 → 核心竞争判断悬而未决"
+    - "DR合同期限结构未披露 → NCH-1(DR锁定效应护城河假设)可验证性受限"
+    - "AI CapEx ROI尚处于'信仰'而非'证据'阶段 → 周期长度判断本质上是猜测"
+    - "管理层减持动机不可观测 → 可能是理性套现/税务规划而非悲观信号"
+    - "时间框架不一致: 10年DCF但EOS有效性/AI周期/NVIDIA竞争的关键假设在3-5年内面临验证"
+    - "概率分配(Bull 20%/Base 45%/Bear 35%)无量化基础率校准 → M5估值权重25%依赖最弱数据环"

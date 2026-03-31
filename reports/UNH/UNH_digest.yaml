@@ -1,0 +1,443 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — UnitedHealth Group
+# 压缩比: 304K → ~12K (25x)
+# 六层 + 三个新增重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向x强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: UNH
+  company: "UnitedHealth Group"
+  report_date: "2026-03-19"
+  stock_price: "$284.33"
+  market_cap: "$258B"
+  report_version: "v2.0"
+  report_path: "reports/UNH/UNH_Deep_Dive_Complete_v2.0.md"
+  quality_score: "报告未覆盖(无11维度记分卡)"
+  cqi: "报告未覆盖"
+  a_score: "22.6/38.5 (58.7%)"
+  framework_version: "v19.4"
+  industry: "医疗保险/健康服务"
+  archetype: "垂直整合寡头(保险+服务+PBM+数据)"
+  chars: 304312
+  dm_count: 343
+  dm_density: "1.13/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "MCR均衡水平决定一切——$284定价了永久性OPM压缩(-6x PE折价)，等2026Q1确认MCR方向后再决策是严格优于现在入场的策略"
+  rating: "中性关注"
+  fair_value: "$277 (-2.6%)"
+  expected_return: "-2.6% (圆桌修正后PW $277 vs $284)"
+
+  key_arguments:
+    - claim: "MCR从79%飙升至89%吞噬全部增长——收入+74%但利润反降15%"
+      direction: bearish
+      magnitude: 5  # 硬数据,直接决定估值
+      mechanism: "后COVID利用率追赶+GLP-1结构性成本+CMS V28编码调整→MCR均衡从82%上移至85-87%→OPM从8-9%压缩至4-7%"
+      kill_switch: "2026Q1-Q2 MCR<86%→均衡85%确认→OPM恢复路径明确→评级可升至关注"
+
+    - claim: "Forward P/E 14.3x隐含~6x永久折价(MLR-3x + 监管-2x + CEO-1x)"
+      direction: bearish
+      magnitude: 4  # 市场可能过度悲观2-3x但有合理基础
+      mechanism: "市场重定价UNH从'健康平台'(20-25x)→'准公用事业'(14-16x)→制度折价-2.5x永久(SIFI+PBM立法)"
+      kill_switch: "Hemsley恢复盈利+稳定guidance→管理层折价-1x消失; MCR稳定→MLR折价缩小→P/E到16-18x"
+
+    - claim: "反向身份折价-20pp——Optum利润占53%但市场只给31%平台权重"
+      direction: bullish
+      magnitude: 3  # 结构性但释放需催化
+      mechanism: "卖方将UNH归入Managed Care板块→用保险P/E(12-15x)定价→Optum Insight(OPM 19%)被保险标签压制→身份折价$37.5/股"
+      kill_switch: "DOJ证实Optum只是UHC利润放大器(非独立平台)→身份折价实为正确定价→折价无法释放"
+
+    - claim: "飞轮仅2/5环节有效——协同$4.4B/年中约50%可能是自交易(DOJ标靶)"
+      direction: bearish
+      magnitude: 4  # 多环节量化验证
+      mechanism: "UHC→Optum转介62%内部收入→自交易溢价61%(Health Affairs)→DOJ调查焦点→飞轮是'减速带'而非'方向盘'"
+      kill_switch: "DOJ和解金额<$3B+不要求结构性分离→飞轮运作空间保留"
+
+    - claim: "回购顺周期陷阱——η=0.51,5年摧毁$19.2B(市值7.4%)"
+      direction: bearish
+      magnitude: 4  # 数学推导,独立可验证
+      mechanism: "管理层在高位($450-550)大量回购→ROIC 8.2%<WACC 9%→每$1回购只创造$0.51价值→49%被摧毁"
+      kill_switch: "停止回购转向减债→利息节省$640M/年→EPS+$0.70(阿克曼运营改善路径)"
+
+  moat:
+    composite_score: 6  # 中等,整体衰减趋势
+    half_life: "规制>15年 | 规模~10年 | 数据5-8年(互操作性法规侵蚀) | 飞轮已失效"
+    dimensions:
+      - type: regulatory
+        strength: 4
+        evidence: "50州牌照+Star Rating管理(77%会员在4+星)+CMS合规基础设施→新进入者需3-5年建立"
+        vulnerability: "DOJ强制拆分(概率<20%)→规制资产留在UHC但复杂度税消失→拆分后纯UHC可能估值更高(悖论)"
+      - type: scale
+        strength: 4
+        evidence: "9.4M MA会员(#1,28%份额)→provider折扣率15-20%(vs对手12.5%)→年化$2-3B成本优势"
+        vulnerability: "主动退出亏损市场→会员9.4M→8.0M(-15%)→议价能力对数递减降5-8%(非线性)"
+      - type: data
+        strength: 3
+        evidence: "1.5亿人健康数据+14亿张处方/年→HCC编码优势2-4%=额外$2.4-4.7B CMS支付"
+        vulnerability: "21世纪治愈法案FHIR API标准化+信息阻塞禁令→数据壁垒3-5年内被结构性侵蚀"
+      - type: switching_cost
+        strength: 3.5
+        evidence: "企业客户合同3-5年+provider网络绑定+1.5亿人数据锁定→企业层面转换成本高"
+        vulnerability: "MA个人会员每年OEP可换→个人层面转换成本低; Amazon Health等新进入者提供便捷迁移"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含FCFF CAGR 4.5-5.5%(vs历史10%) + OPM永久压缩至5.5% + Forward P/E 14.3x(历史最低)"
+    methods_used: ["Reverse DCF", "SOTP(6 REU)", "MCR概率加权", "竞争对标", "三情景DCF(Python)", "五情景PW", "红队修正", "圆桌修正"]
+    dispersion: "~18% (P4红队后)"
+    consensus_vs_ours: "市场看UNH=14x的永久受损保险公司 | 我们看UNH=制度折价-2.5x永久+认知折价-2.1x可恢复+基本面折价-3.5x取决于MCR"
+    entry_zone: "$240-250 (N/M翻转至1.5+的凸性入场区)"
+    catalyst: "2026Q1(4月21日)MCR<87%→评级升级 | MCR>89%→评级降级 | 等Q1确认后再入场"
+
+  # v1.2新增: 买卖决策框架
+  action_framework:
+    verdict: "等待买入 — 凸性为负(N/M=0.57), 等Q1确认MCR方向或等$240-250更优凸性入场"
+    buy_triggers:
+      - trigger: "2026Q1 MCR<87% + Optum Health adj OPM改善"
+        price_zone: "$270-290 (当前价区间, 但需MCR确认)"
+        reasoning: "MCR方向确认→β均衡85%概率提升→P/E从14x到16-17x→评级升至关注"
+      - trigger: "股价跌至$240-250(衰退/恐慌驱动)"
+        price_zone: "$240-250"
+        reasoning: "N/M翻转至1.5+ + FCF Yield>8% + 分红>3% → 即使MCR不完全恢复也有足够安全边际"
+      - trigger: "DOJ和解确认(<$8B) + MCR连续2Q改善"
+        price_zone: "$260-280"
+        reasoning: "去除监管不确定性折价-2x + MCR方向确认→P/E向17-18x修复"
+    hold_conditions:
+      - "MCR环比改善趋势持续(4Q滚动下降)"
+      - "Optum Health adj OPM>3%(当前2.3%,在阈值以下)"
+      - "DOJ未升级至刑事起诉"
+      - "管理层回购η>0.7或转向分红/减债"
+    sell_triggers:
+      - signal: "MCR连续4Q>88%(KS-1触发)"
+        severity: "action"
+        action: "减仓50%, γ螺旋概率上升→评级降至审慎关注"
+      - signal: "DOJ发起分拆诉讼(KS-2触发)"
+        severity: "emergency"
+        action: "全部卖出, 协同归零→SOTP仅$150-210"
+      - signal: "2026 adj EPS<$16(KS-3触发)"
+        severity: "action"
+        action: "减仓50%, 管理层可信度崩溃→股价$175"
+      - signal: "Optum Health连续6Q adj OPM<3%(KS-4触发)"
+        severity: "warning"
+        action: "减仓25%, VBC模型证伪→估值-$30-50"
+    position_sizing: "当前N/M=0.57(不买) | @$250 N/M>1.5(半Kelly=10-15%仓位) | 等Q1后重新评估"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "MCR传导链: 医疗成本→利润→估值的四阶段崩塌"
+    chain: >
+      后COVID利用率追赶(递延手术/诊断释放)
+      → GLP-1药物(Ozempic/Wegovy)成为结构性成本+80-130bps
+      → CMS V28编码调整削减MA支付
+      → MCR从79%(2020)飙升至89%(2025)
+      → OPM从8.7%压缩至4.2%
+      → 收入+74%但利润反降15%
+      → MCR每变100bps→EPS变$2.96(Python验证)
+      → MCR均衡落点(82%? 85%? 87%?)直接决定估值区间($668→$95)
+    transferable_to: "所有MCR/loss ratio驱动的保险公司(HUM/ELV/CI/CNC)及再保险"
+    reasoning_habit: "对保险公司永远先问'loss ratio的均衡水平是什么' — 收入增长在loss ratio恶化时不创造价值反而摧毁价值"
+
+  - id: "CC-2"
+    name: "有毒增长: 逆规模效应的识别逻辑"
+    chain: >
+      MA会员增长+755K(FY2025)
+      → 新会员MCR比预期高2x
+      → 增量保费<增量医疗成本
+      → 增量OPM=-28%(每多$1收入亏$0.28)
+      → 这是逆规模效应: 规模→亏损而非规模→利润
+      → 因此2026年主动收缩(退出109个县)是正确策略
+      → 收入下降是好消息(止血)而非坏消息
+    transferable_to: "所有loss ratio恶化期的保险公司 + 增长但亏损的互联网/SaaS公司(GMV增长但unit economics为负)"
+    reasoning_habit: "计算增量OPM而非平均OPM — 如果增量OPM为负,增长=毁灭价值,收缩=创造价值"
+
+  - id: "CC-3"
+    name: "身份决定估值框架的双向案例"
+    chain: >
+      保险标签→用MCR模型分析→P/E 12-15x(CI/ELV)
+      平台标签→用SaaS模型分析→P/E 20-30x(Veeva/Evolent)
+      → UNH当前Optum利润占53%但市场只给31%平台权重
+      → 反向身份折价-22pp(vs ETN正向身份溢价+38.5pp)
+      → 但Optum Health OPM仅2.3%不配平台标签
+      → 只有Optum Insight(OPM 19%)接近平台级别,但仅占Optum收入7%
+      → 结论: 折价部分合理(60%概率)部分过度(40%概率)
+    transferable_to: "所有混合业务被单一标签定价的公司(CVS/Amazon/Berkshire) + 所有身份重定价中的转型公司"
+    reasoning_habit: "追问'市场用什么模型给这家公司定价' — 模型选错=估值基础错=价格错"
+
+  - id: "CC-4"
+    name: "飞轮真伪检验: 5环节逐一量化"
+    chain: >
+      UNH声称飞轮: UHC会员→Optum数据→精算优势→更好产品→更多会员
+      → 逐一检验5环节: 仅2/5有效(UHC→数据, 数据→精算)
+      → 3/5失效: 精算→产品(MCR恶化证伪) + 产品→会员(主动退出) + 会员→利润(逆规模效应)
+      → 更重要: 62%内部收入=自交易, 溢价61%(Health Affairs)=DOJ标靶
+      → 飞轮是"减速带"(线性价值)而非"方向盘"(指数价值)
+      → 协同$4.4B/年中约50%可能是自交易而非真实协同
+    transferable_to: "所有声称有飞轮效应的垂直整合公司 — 尤其内部交易占比>50%的"
+    reasoning_habit: "飞轮检验必须逐环节: (1)每环节有硬数据支持吗 (2)内部交易占比多少 (3)去除自交易后飞轮还转吗"
+
+  - id: "CC-5"
+    name: "三时代框架: 建设→膨胀→清算的周期识别"
+    chain: >
+      建设期(2016-2019): Optum投资期, ROE稳步提升, 护城河深化
+      → 膨胀期(2020-2023): COVID利用率抑制→MCR异常低→利润膨胀→并购加速→回购加速
+      → 清算期(2024-2025): 利用率反弹→MCR飙升→膨胀利润被清算→利润崩塌
+      → 当前处于清算期尾声→下一阶段=均衡期(MCR 85-87%, OPM 5-7%)
+      → 这不是能力丧失而是虚胖被挤出
+    transferable_to: "所有后COVID利润膨胀后正在经历正常化的公司 — 识别'膨胀利润'vs'真实能力'的框架"
+    reasoning_habit: "对任何利润大幅波动先问: '这是能力变化还是周期位置变化?' — 后COVID的利润高峰往往是膨胀而非能力"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "UNH跌53%是超卖,Forward P/E 14.3x是历史最低=买入机会"
+      final: "P/E折价-6x中约-2.5x是永久的(制度折价), 仅-2.1x是可恢复的认知折价"
+      pivot: "李录三层折价分解: 基本面-3.5x+制度-2.5x+认知-2.1x → P/E上限16-18x而非历史25x"
+
+    - initial: "Optum是UNH护城河的核心——UHC+Optum飞轮创造超额利润"
+      final: "飞轮仅2/5有效, 62%内部收入是自交易, 协同约50%可能是DOJ标靶"
+      pivot: "Ch13逐环节量化验证 + Health Affairs自交易溢价61%研究 + Optum Health FY2025 GAAP亏损$278M"
+
+    - initial: "收入增长12%是正面信号"
+      final: "增量OPM=-28%意味着增长在毁灭价值, 2026收缩才是正面信号"
+      pivot: "分部增量利润分解: UHC增量OPM=-11%, Optum Health N/A, Rx仅+1.4%, 仅Insight=+100%"
+
+  surprises:
+    - finding: "回购η=0.51, 5年摧毁$19.2B(市值7.4%) — 管理层在高位($450-550)大量回购而在低位($250-300)只象征性买入"
+      implication: "回购顺周期陷阱是UNH级别公司的系统性问题 — 管理层追随盈利(有钱就买)而非估值(便宜才买)"
+
+    - finding: "拆分后合计SOTP仅$147-207B vs 当前EV $312B — 30-50%的'整合溢价'可能不存在"
+      implication: "DOJ强制拆分对股东可能是中性至温和负面(非灾难) — UHC-Standalone甩掉复杂度税后可能估值更高"
+
+    - finding: "P/E恢复上限16-18x(非历史25x) — 即使MCR恢复+恐慌消退, 制度折价-2.5x是永久的"
+      implication: "UNH的'准公用事业化'是结构性的(DOJ/SIFI/PBM立法) — 投资者不应期待P/E回到2020-2023水平"
+
+    - finding: "并购ROI 6-7% < WACC 9% — 10年并购史中$100B+的收购创造的是复杂度而非协同"
+      implication: "大型保险公司的垂直整合并购往往毁灭价值 — ROI<WACC应成为所有并购审计的第一道门控"
+
+  blind_spots:
+    - area: "GLP-1对MCR的精确影响(80-130bps还是200-300bps)"
+      why_matters: "GLP-1是MCR均衡水平的决定性变量 — 如果影响200-300bps, MCR均衡86-87%而非85%→整体估值下移$30-50"
+      monitor: "GLP-1渗透率季度数据 + biosimilar FDA批准时间线 + OTC场景($100/月)是否实现"
+
+    - area: "DOJ刑事调查严重性(和解vs起诉)"
+      why_matters: "和解$5-8B(S2)vs刑事起诉$15B+(S4) — 差距>$10B(~$11/share)"
+      monitor: "DOJ正式指控/和解动态 + Hemsley个人法律风险 + 2026年下半年可能有重大进展"
+
+    - area: "Hemsley的'维持性CEO'激励结构"
+      why_matters: "期权行权价$350-500(全部水下)→最佳策略是稳态优化而非激进重建→S1($650)所需的激进重建被激励结构阻断"
+      monitor: "2026 proxy filing中的薪酬结构变化 + 是否下调行权价或授予新RSU"
+
+  # v1.2新增: 卖出时机教训
+  sell_lessons:
+    - scenario: "MCR连续4Q>88%不卖→γ螺旋激活→股价从$284到$95(-67%)"
+      lesson: "保险公司的MCR/loss ratio是Kill Switch级别指标 — 连续恶化不是'周期性'而可能是结构性转变"
+      transferable: "所有保险公司(HUM/ELV/CI) + 任何loss ratio驱动的业务"
+    - scenario: "等待MCR恢复但P/E继续压缩→'盈利恢复+倍数压缩'陷阱→$17.85×12x=$214"
+      lesson: "盈利恢复不等于股价恢复 — 如果市场同时在重定价倍数(从平台→公用事业), 利润恢复可能被倍数压缩完全抵消"
+      transferable: "所有正在经历身份重定价的公司(从成长→价值, 从平台→传统)"
+    - scenario: "高位不卖→insider在$450-550大量卖出时未作为信号→跌53%"
+      lesson: "insider大规模净卖出(尤其是异常规模/频率)应作为仓位审查触发器 — 内部人对恢复的信心可能远低于市场"
+      transferable: "所有insider交易数据公开的公司 — 尤其是C-suite级别的异常减持"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "季度MCR环比变化(而非绝对值)"
+      why_alpha: "MCR均衡水平是第一主矛盾, 每100bps→EPS $2.96。环比变化比绝对值更能预测方向。大部分分析师关注绝对值而非趋势转折"
+      current_reading: "FY2025=88.9%(恶化中), 2026Q1(4月21日)是关键确认点"
+    - signal: "Optum Health adj OPM趋势"
+      why_alpha: "VBC模型成败是Optum平台叙事的核心证据。OPM<3%持续→平台溢价应消失→P/E进一步压缩至12-13x"
+      current_reading: "FY2025 adj OPM 2.3%(在KS-4阈值以下), GAAP亏损$278M"
+    - signal: "回购η值(=回购创造价值/回购金额)"
+      why_alpha: "高PE+大额回购=价值摧毁信号, 但几乎没有卖方分析师跟踪η值。η<0.7时应质疑资本配置纪律"
+      current_reading: "η=0.51(5年加权), 累计摧毁$19.2B"
+
+  confirmation_signals:
+    - signal: "CMS年度MA费率调整"
+      bullish_threshold: ">+4%(覆盖成本上升)"
+      bearish_threshold: "<+2%(保费追赶失败)"
+    - signal: "GLP-1 biosimilar FDA审批进展"
+      bullish_threshold: "2027年前获批→MCR结构性压力缓解"
+      bearish_threshold: "推迟至2029+→MCR均衡86-87%"
+    - signal: "DOJ/FTC动态(和解vs升级)"
+      bullish_threshold: "和解<$8B + 无结构性分离要求"
+      bearish_threshold: "刑事起诉高管 或 要求Optum Rx/Health结构性分离"
+
+  noise_signals:
+    - signal: "季度收入增速"
+      why_noise: "收入增速在MCR恶化时是负面信号(有毒增长) — 2026收入下降2%实际上是正面(止血)"
+    - signal: "MA会员总数变化"
+      why_noise: "主动退出亏损市场→会员下降是战略正确(止血) — 会员增长在MCR>保费增长时=更多亏损"
+    - signal: "卖方目标价"
+      why_noise: "卖方用GAAP PE+历史均值回归→系统性忽略制度折价永久性。自己做三层折价分解比看卖方更准"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: ELV
+      similarity: "同为大型MCO, 类似MCR压力, 有Carelon(类Optum)垂直整合"
+      key_difference: "Carelon规模远小于Optum → P/E 11.7x(无平台溢价) | UNH vs ELV的P/E差(21.5x vs 11.7x)几乎全部来自Optum溢价"
+
+    - ticker: HUM
+      similarity: "纯MA专家, MCR同样恶化(甚至更严重~92%), P/E 17.3x"
+      key_difference: "HUM是纯MCR play(无Optum复杂度) | 如果只想赌MCR恢复, HUM是更纯的标的(但下行也更大)"
+
+    - ticker: CI
+      similarity: "同为保险+PBM, P/E 11.9x, DOJ/FTC同样面临PBM监管压力"
+      key_difference: "CI=纯保险+PBM(无Optum Health类VBC), 结构更简单 | CI是UNH'如果没有Optum'的参照——$284×(11.9/21.5)=$157"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "UNH (6/10, 规模+规制) > ELV (~5/10) > CI (~4/10) > HUM (~4/10) > CNC (~3/10)"
+      reasoning: "UNH的9.4M MA会员+50州牌照+1.5亿人数据是行业最强, 但数据壁垒在被互操作性法规侵蚀"
+
+    - dimension: "MCR管理能力"
+      position: "HUM (最差, ~92%) < CNC (~94%) < UNH (~89%) < ELV (~87%) < CI (~84%)"
+      reasoning: "CI MCR最低因为MA占比小(E&I为主); UNH MCR恶化幅度最大(从79%→89%=+10pp)"
+
+    - dimension: "估值吸引力(Forward P/E)"
+      position: "ELV (11.7x) ≈ CI (11.9x) < UNH (14.3x) < HUM (17.3x)"
+      reasoning: "UNH的Optum溢价是否合理取决于飞轮真伪 — 如果飞轮证伪→P/E应向CI/ELV收敛"
+
+    - dimension: "监管风险暴露"
+      position: "UNH (最高: DOJ+FTC+PBM+分拆) > CVS/Aetna (PBM) > CI (PBM) > HUM (MA only) > ELV"
+      reasoning: "UNH的垂直整合使其成为'两党都想打'的目标(民主党反垄断+共和党PBM改革)"
+
+  industry_position:
+    quadrant: "最大规模 x 最高监管暴露 x 中等护城河(衰减中)"
+    archetype: "垂直整合寡头正被重定价为准公用事业"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含FCFF CAGR 4.5-5.5%(历史的一半)+OPM永久压缩至5.5%+永久折价-6x"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "7个RT红队 + 联合概率测试(8.3% vs P3隐含35%) + 6偏差审计 + 圆桌4洞见 → PW从$302→$277"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "MCR渐进恶化(79%→89%跨5年)=温水煮青蛙 + 管理层叙事(利润率会恢复)掩盖结构性变化"
+
+  novel_patterns:
+    - name: "有毒增长(增量OPM为负的识别)"
+      description: "当loss ratio恶化时收入增长=价值摧毁(增量OPM负)→收缩是创造价值的正确策略"
+      transferable_to: ["所有保险公司loss ratio恶化期", "GMV增长但unit economics为负的互联网公司", "利用率超载的医院系统"]
+
+    - name: "反向身份折价(混合业务被单一标签低估)"
+      description: "高利润业务(Optum 53%利润)被低P/E标签(保险)系统性压制→实际平台权重31%远低于利润占比53%"
+      transferable_to: ["CVS(药店标签压制保险+PBM)", "Amazon(电商标签压制AWS+广告)", "Berkshire(保险标签压制实业+投资)"]
+
+    - name: "三层P/E折价分解(基本面+制度+认知)"
+      description: "P/E折价不是单一原因→分解为基本面折价(取决于恢复)+制度折价(永久)+认知折价(可恢复)→精确估计P/E恢复上限"
+      transferable_to: ["所有面临监管结构性变化的公司", "所有经历身份重定价的公司"]
+
+    - name: "回购顺周期陷阱(η函数扩展)"
+      description: "管理层在高位大量回购→η<0.7→价值摧毁; 但在低位(真正该买时)却减少或停止回购→系统性逆效率"
+      transferable_to: ["所有大额回购的公司", "尤其PE>20x且回购占FCF>30%的"]
+
+    - name: "飞轮自交易检测(内部收入占比>50%=警告)"
+      description: "声称飞轮效应但内部收入占62%+自交易溢价61%→'协同'可能是强制转介而非真实效率提升"
+      transferable_to: ["所有垂直整合集团(内部交易占比>50%)", "零售+金融混合体(Walmart/Amazon)"]
+
+    - name: "准公用事业化识别(制度折价永久性判断)"
+      description: "SIFI级监管+两党政治靶心+PBM立法=P/E上限永久下移→不可用历史均值回归做估值"
+      transferable_to: ["大型银行(SIFI)", "大型科技公司(潜在反垄断)", "烟草公司(永久监管折价)"]
+
+  # v1.2新增: 框架升级贡献
+  framework_contributions:
+    moat_insights:
+      - insight: "护城河三轴量化(规模x数据x规制)比单一评分更精确 — UNH综合6/10但规制8.0/数据6.5/飞轮2.0差异巨大"
+        implication: "护城河评估应拆分为独立轴+各自衰减速度 — 统一评分掩盖了最脆弱的轴(数据被互操作性侵蚀)"
+      - insight: "垂直整合不一定是护城河增强 — 内部交易>50%时可能是复杂度税(净负值)而非协同"
+        implication: "评估垂直整合时必须检测'自交易占比'和'去除自交易后各业务独立盈利能力'"
+      - insight: "飞轮失效后规制壁垒成为核心资产 — 讽刺的是拆分可能释放更多价值(甩掉复杂度税)"
+        implication: "当DOJ/FTC要求拆分时, 不应自动假设负面 — 需要做SOTP vs 整合估值的严格对比"
+
+    valuation_insights:
+      - insight: "MCR敏感性量化(每100bps→EPS $2.96)+Python验证 — 比定性'MCR恶化是负面'有效10倍"
+        implication: "所有保险公司估值应首先做loss ratio敏感性建模, 用Python验证而非手工计算"
+      - insight: "三层P/E折价分解精确估计了恢复上限(16-18x vs 天真的25x) — 防止被历史均值回归误导"
+        implication: "面临监管结构变化的公司, 不能用历史P/E均值做目标 — 需要分离永久折价和可恢复折价"
+      - insight: "五情景联合概率测试(8.3% vs 隐含35%) — 暴露了情景分析中的概率幻觉"
+        implication: "所有情景分析应做条件依赖分析 — 多条件联合概率远低于单因素概率乘积"
+
+    screening_insights:
+      - insight: "增量OPM为负 = '有毒增长'信号 — 增长在摧毁而非创造价值"
+        implication: "选股筛选应加入'增量OPM检测': 收入增长>0但增量OPM<0→标记为减持信号而非增长信号"
+      - insight: "回购η<0.7 + 大额回购(>FCF 30%) = 资本配置价值摧毁"
+        implication: "选股时增加'回购效率'筛选: 计算η值而非仅看回购金额 — η<0.7标记资本配置风险"
+      - insight: "insider异常净卖出+恢复叙事=信息不对称警告"
+        implication: "选股增加insider行为与卖方叙事一致性检查 — 严重分歧时降低信心"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "保险公司首先看loss ratio均衡水平而非收入增速"
+      trigger: "分析任何保险/MCO公司"
+      origin: "UNH收入+74%但利润-15% — 增长在MCR恶化时不创造价值"
+      generalization: "对所有利润率高度敏感的行业(保险/航空/零售), 利润率趋势比增速更重要"
+
+    - habit: "计算增量OPM而非关注平均OPM"
+      trigger: "公司收入增长但利润增速不同步"
+      origin: "UNH增量OPM=-28%暴露了'增长越多亏越多'的逆规模效应"
+      generalization: "增量OPM为负=stop sign。适用于所有行业 — 成本结构恶化中的增长是有毒的"
+
+    - habit: "对P/E折价做三层分解(基本面+制度+认知)"
+      trigger: "P/E大幅低于历史均值(>30%折价)"
+      origin: "UNH P/E从25x→14x, 三层分解证明仅-2.1x(33%)是可恢复的"
+      generalization: "不是所有折价都是买入机会 — 识别永久折价是防止价值陷阱的关键"
+
+    - habit: "对飞轮叙事逐环节验证+检测自交易占比"
+      trigger: "公司声称垂直整合创造飞轮效应"
+      origin: "UNH飞轮5环节中仅2有效+62%内部收入是自交易"
+      generalization: "飞轮叙事是最常被高估的护城河类型 — 大部分'协同'是强制转介而非效率提升"
+
+  quality_feedback:
+    strengths:
+      - "MCR敏感性量化(每100bps→$2.96 EPS) + Python验证 — 将核心变量精确到可投资的精度"
+      - "五情景概率加权+条件依赖分析(联合概率8.3% vs 35%) — 暴露概率幻觉的系统性方法"
+      - "红队7问有效(5/7新发现) + 圆桌4独特洞见(维持性CEO/准公用事业/衰退盲点/凸性) — PW从$302→$277"
+      - "DM密度1.13/千字, 343个锚点 — 超合格门控"
+    weaknesses:
+      - "GLP-1对MCR的精确影响是C级数据(80-130bps范围过宽) — 核心变量的数据质量不足"
+      - "Optum内部经济学依赖大量推算(内部交易额/自交易溢价) — 10-K披露不足导致推断多于事实"
+      - "缺少11维度记分卡(D1-D11) — 无法与其他报告直接比较质量分数"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "回购@高PE毁灭价值 (CME CI, η=0.59)"
+        evidence: "UNH η=0.51@更高PE, 5年摧毁$19.2B — 更极端的确认"
+        confidence_after: "高(三份报告独立确认: CME/MCO/UNH)"
+
+      - hypothesis: "飞轮叙事通常被高估 (CME飞轮摩擦力45%)"
+        evidence: "UNH飞轮仅2/5有效+自交易溢价61% — 更严重的失效"
+        confidence_after: "高(CME飞轮摩擦+UNH飞轮失效=飞轮质疑应成为默认检查)"
+
+    extended:
+      - hypothesis: "身份决定估值框架 (ETN身份溢价+38.5pp)"
+        extension: "UNH反向身份折价-22pp — 从正向(ETN被高估)扩展到反向(UNH被低估) → 身份错配是双向的"
+
+      - hypothesis: "Core PE剥离非经营性收入 (CME利息$900M)"
+        extension: "UNH不需要Core PE, 但三层折价分解是同一思路的升级 — 从单一调整扩展到多因子折价分解"
+
+    refuted: []
+
+  limitations:
+    - "MCR均衡水平预测本质上依赖对未来医疗利用率的判断 — 这是一个不可精确预测的变量(置信区间极宽)"
+    - "DOJ调查结果不可预测 — 和解$5B vs 刑事$15B+的差距巨大, 但概率赋值(55%和解)缺乏硬锚定"
+    - "Optum内部经济学严重依赖推算 — 10-K不披露内部转移定价/VBC合约级盈利/自交易溢价的精确数据"
+    - "缺少11维度记分卡 — 无法给出与其他Tier 3报告可比的质量分数"
+    - "圆桌修正后PW $277 vs P4 $293 — $16差额来自衰退情景叠加, 但衰退概率(20%)本身是主观判断"
