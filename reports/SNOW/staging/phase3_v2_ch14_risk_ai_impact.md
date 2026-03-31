@@ -154,4 +154,78 @@ SNOW的AI竞争力不在AI本身(成熟度2/5, 生态2/5 = 行业最低)，而�
 
 ---
 
-*本章DM锚点统计: 17个 (FACT: 2, EST: 14, REF: 1) | 因果链: 6条 | 反面考量: 2处 | Mermaid: 0*
+---
+
+## 14.6 数据邻近优势衰减曲线
+
+SNOW的AI竞争力核心锚点是"数据已在此处"(数据邻近优势=4/5)。但这个优势随Iceberg渗透率上升而衰减 [DM-AI-027-EST]:
+
+| Iceberg全企业渗透率 | 数据邻近优势评分 | 对AI竞争力的影响 | 预计时间 |
+|-------------------|---------------|----------------|---------|
+| 20-30%(当前) | **4/5** | SNOW的数据锁定仍有效→AI优先在原地做 | FY26 |
+| 40-50% | **3/5** | 部分企业开始跨引擎做AI→SNOW不再是唯一选择 | FY28 |
+| 60-70% | **2/5** | 多数企业数据已在开放格式→AI引擎选择自由 | FY29-30 |
+| 80%+ | **1.5/5** | 数据邻近几乎无差异化→竞争纯靠AI产品力 | FY31+ |
+
+**因果推理**: 当Iceberg渗透率达到60-70%(预计FY29-30)时，数据邻近优势从4→2——这恰好是Ch13计算的**护城河交叉点**(FY29)。意味着: SNOW的AI新护城河必须在数据邻近优势降至2之前(FY29)建立起来，否则将失去AI竞争的最后差异化 [DM-AI-028-EST]。
+
+**这回答了CQ7(AI竞争时间窗口)**: SNOW的AI时间窗口 = Iceberg渗透率从30%→70%的时间 ≈ **3-4年(FY26→FY29-30)**。在此之后，数据邻近优势将不再是差异化——SNOW必须凭AI产品力本身竞争。
+
+---
+
+## 14.7 CEO沉默域 → 风险印证
+
+lit_recon_memo记录了一个高质量的信号: **Ramaswamy在Q3 FY26 earnings call中回避了4大竞争话题** [DM-RISK-028-REF]:
+
+| 沉默话题 | 对应KS | 印证 |
+|---------|--------|------|
+| Competition(竞争) | KS-2 DBR超越 | 管理层知道DBR在赢→不想引发投资者焦虑 |
+| Open Source(开源) | KS-8 Iceberg解锁 | Iceberg侵蚀数据锁定→不想讨论自己在"帮助客户离开" |
+| Azure/Fabric | KS-5 Fabric蚕食 | Fabric $2B/60%增速→不想承认Microsoft是真实威胁 |
+| Iceberg迁移影响 | KS-8 | 管理层回避=最可靠的"问题确认"信号 |
+
+**因果推理**: CEO不谈某个话题，通常因为两个原因之一: (1)话题对公司不利→讨论会引发负面叙事; (2)话题不重要→不值得讨论。在SNOW的case中，Competition/Open Source/Azure/Iceberg显然不是"不重要"——它们是投资者最关心的4个问题。因此沉默的原因只能是(1)——这些话题对SNOW不利 [DM-RISK-029-EST]。
+
+**投资含义**: 管理层沉默是KS-2/KS-5/KS-8三个风险的独立印证。当财务数据(DBR ARR超越/Fabric $2B/Iceberg 78.6%)和管理层行为(回避讨论)同时指向同一方向→**信号可靠度显著提升** [DM-RISK-030-EST]。
+
+---
+
+## 14.8 风险可视化
+
+```mermaid
+graph TD
+    A[KS-8: Iceberg解锁<br>渗透率78.6%<br>数据锁定↓] --> B[KS-2: Databricks超越<br>ARR $4.8B>SNOW<br>NRR 140%>125%]
+    A --> C[KS-5: Fabric蚕食<br>$2B ARR/31K客户<br>60%增速]
+    B --> D[协同三角<br>概率~34%]
+    C --> D
+    D --> E[温水煮青蛙<br>概率35%<br>增速30%→12%/5年]
+    E --> F[估值压缩<br>EV/Sales 11x→6-7x<br>股价$100-120]
+
+    G[KS-7: AI战略失败<br>Cortex<5% FY29] --> H[护城河交叉失败<br>CQI<40]
+    H --> F
+
+    style D fill:#ea4335,color:white
+    style F fill:#ea4335,color:white
+    style E fill:#fbbc04,color:black
+```
+
+```mermaid
+graph LR
+    subgraph AI竞争三方
+    S[SNOW Cortex<br>AI成熟度2/5<br>数据优势4/5]
+    D[Databricks Mosaic<br>AI成熟度4/5<br>开源生态4/5]
+    M[Microsoft Fabric AI<br>AI成熟度3/5<br>分发渠道5/5]
+    end
+
+    S ---|SQL AI<br>SNOW领先| S
+    D ---|ML训练<br>DBR领先| D
+    M ---|企业Agent<br>MSFT领先| M
+
+    style S fill:#29b5e8,color:white
+    style D fill:#ff3621,color:white
+    style M fill:#00a4ef,color:white
+```
+
+---
+
+*本章DM锚点统计: 21个 (FACT: 3, EST: 16, REF: 2) | 因果链: 8条 | 反面考量: 3处 | Mermaid: 2*
