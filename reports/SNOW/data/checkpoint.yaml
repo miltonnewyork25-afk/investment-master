@@ -86,7 +86,17 @@ phases:
       - Fabric竞争可能未充分price in
       - 7个KS注册+协同矩阵
   phase_4:
-    status: not_started
+    status: complete
+    date: 2026-03-31
+    output: staging/phase4_ch14-15 + phase4_synthesis.md
+    chars: 6554
+    dm_count: 9
+    chapters:
+      - ch14: 红队七问+双向校准 (系统性偏空→校准为中性, RPO权重上调, M&A补充)
+      - ch15: 估值5情景+概率加权 (P/FCF $152合理, Owner FCF $126偏高, 评级中性关注)
+    rating: 中性关注
+    fair_value_range: $126-152 (口径依赖)
+    expected_return: -10% (中间值$139)
   phase_5:
     status: not_started
 
