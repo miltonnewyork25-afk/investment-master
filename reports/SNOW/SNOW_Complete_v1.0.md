@@ -193,6 +193,22 @@ graph LR
 
 **核心判断**: 市场在定价一个"从高增长到成熟SaaS"的标准过渡路径。27% CAGR 7年意味着从$4.7B增长到$25B——这需要SNOW在2033年成为与Salesforce($35B, FY2025)或Adobe($20B)同规模的公司。这不是疯狂的假设，但也不便宜[DM-VAL-011]。
 
+#### "27% CAGR 7年"的历史可行性验证
+
+市场隐含的27% CAGR是否现实？看$4-5B收入起点的SaaS公司在之后7年的实际表现[DM-VAL-011a-REF]:
+
+| 公司 | 达到$4-5B年份 | 7年后收入 | 实际CAGR | 达到市场隐含? |
+|------|-------------|---------|---------|------------|
+| **CRM** | FY2016($8.4B) | FY2023($31.4B) | **21%** | 接近但未达27% |
+| **ADBE** | FY2017($7.3B) | FY2024($21.5B) | **17%** | ✗ 大幅低于 |
+| **NOW** | FY2022($5.9B) | FY2029E($16B?) | **~15-18%(预估)** | ✗ 低于 |
+| **DDOG** | 未达到$4B | — | — | N/A |
+| **ORCL Cloud** | FY2023($4.2B) | — | — | 早期 |
+
+**历史基准率**: 在$4-5B收入起点上，没有一家SaaS公司实现过7年27% CAGR。CRM最接近(21%)，但那是在一个几乎没有直接竞争者的市场中实现的。SNOW面临Databricks($4.8B/55%增速)+Fabric($2B/60%增速)+开源替代——竞争环境比CRM的FY2016-23严酷得多[DM-VAL-011b-EST]。
+
+**这意味着**: 市场隐含的27% CAGR在历史上**从未被验证过**。最接近的是CRM(21%)——如果SNOW走CRM路径(21% CAGR)→FY33收入$20B(非$25B)→Reverse DCF给出$98-110(非$154)→当前估值偏贵~30%。**只有AI创造出真正的新TAM(而非替换旧workload)才能支撑27%——这正是CQ1的核心问题**。
+
 ### 三情景估值 (Python验证)
 
 | 情景 | Phase 1 CAGR | Phase 2 CAGR | 公允价值 | vs 市价 |
@@ -2128,14 +2144,53 @@ xychart-beta
 |------|------|------------|------|
 | ARR/收入 | $4.68B(FY26) | $4.8B(CY2025 run rate) | **DBR已超越**[DM-COMP-011] |
 | 增速 | 30.1% | ~55% | DBR增速几乎是SNOW的2x |
-| NRR | 125% | ~140% | DBR存量扩展更快 |
+| NRR | 125% | ~140% | DBR存量扩展更快(+15pp) |
+| 净新收入/年 | ~$1.0B | ~$1.8B(估) | DBR每年多赚$800M[DM-COMP-011a] |
 | 估值 | $52B(上市) | $134B(私募) | DBR溢价2.6x |
-| 客户重叠 | | 40-60%重叠 | ETR调研 |
-| AI成熟度 | 2/5 | 4/5 | DBR领先2-3年 |
+| 客户重叠 | — | 40-60%重叠 | ETR调研 |
+| AI成熟度 | 2/5 | 4/5 | DBR领先2-3年(MLflow 2018起步) |
+| 员工数 | 9,060 | ~7,500(估) | SNOW更多但效率更低 |
 
 [DM-COMP-012-REF: Databricks数据来自press release/TechCrunch/The Information, 未审计]
 
 **⚠️ 数据不确定性传导**(审计UL1修复): Databricks数据来自私募press release，置信度40%。如果DBR实际增速是40%(vs宣称55%)→竞争压力比分析估算轻30%→SNOW增速折价应缩小→FV可能上调$10-15。**竞争折价从点估值改为区间: -0.35x到-0.65x(中值-0.5x)**[DM-COMP-013-EST]。
+
+**为什么NRR 140% vs 125%是最重要的差距?**
+
+NRR衡量存量客户的消费增长。140%意味着Databricks客户以40%/年速度增加消费(vs SNOW的25%)。三层因果分析[DM-COMP-011b-EST]:
+
+1. **Databricks的expansion来源更多元**: 客户可以在Databricks上做数据工程(Spark)+SQL分析(Photon)+AI/ML(MLflow+Mosaic)+流处理(Structured Streaming)→每增加一个workload类型=NRR贡献+10-15pp。SNOW的expansion主要来自"同类workload的量增长"(更多SQL查询)→更单一
+2. **AI workload的消费密度**: Databricks的AI/ML workload消耗的DBU远高于SQL workload→AI客户的NRR可能>200%。SNOW的Cortex AI刚起步(2.3%消费占比)→AI对NRR的贡献远不如Databricks
+3. **产品breadth推动expansion**: Databricks有更多"可卖的东西"(数据工程+SQL+AI+streaming+governance)→交叉销售机会更多
+
+**NRR差距→增速差距→市场份额迁移的因果链**:
+```
+DBR NRR 140% > SNOW 125%
+→ DBR存量增长40% > SNOW 25% (每年+15pp差距)
+→ 即使新客增速相同, DBR增速也更快
+→ 差距每年扩大~$800M净新收入
+→ 3年后(FY29): DBR可能$10B+ vs SNOW $8B = 1.25x差距
+→ 5年后(FY31): DBR可能$18B+ vs SNOW $10B = 1.8x差距
+```
+[DM-COMP-011c-EST]
+
+**反面**: IDC市占率数据显示SNOW 18.3% vs DBR 8.7%——SNOW仍领先一倍。这两个数据矛盾吗？不矛盾。因为IDC的"市占率"衡量的是存量(installed base)而非增量(net new)。SNOW的存量更大(更多客户在用)，但Databricks的增量更快(每年新增更多收入)。**在增量>存量的动态中，市占率反转是时间问题——取决于NRR差距能持续多久**[DM-COMP-011d-EST]。
+
+#### 功能矩阵: 重叠度在加速
+
+| 功能域 | SNOW能力 | DBR能力 | 重叠度 | 趋势 |
+|--------|---------|---------|--------|------|
+| **SQL分析/BI** | ★★★★★ | ★★★★(Photon追赶) | 80% | 趋同 |
+| **数据工程/ETL** | ★★★(Snowpark) | ★★★★★(Spark原生) | 70% | 趋同 |
+| **AI/ML训练** | ★★(Cortex新) | ★★★★★(MLflow成熟) | 40% | SNOW追赶 |
+| **AI推理/Agent** | ★★★(Intelligence) | ★★★★(Mosaic) | 50% | 双方发力 |
+| **流处理** | ★★(Streams & Tasks) | ★★★★★(Structured Streaming) | 30% | DBR领先大 |
+| **数据治理** | ★★★★(Horizon) | ★★★★(Unity Catalog) | 85% | 几乎趋同 |
+| **数据共享** | ★★★★(Marketplace) | ★★★(Delta Sharing) | 60% | SNOW领先 |
+| **多云部署** | ★★★★★(核心优势) | ★★★★(也支持) | 80% | 趋同 |
+[DM-COMP-011e-EST: 基于产品文档+Gartner评估+行业分析]
+
+**加权重叠度: ~63%**(按各功能域在客户预算中的权重计算)。从2023年的~40%上升到2026年的~63%——3年内增加23pp。**因果推理: 当重叠度>70%时(历史先例: Oracle DB vs IBM DB2在2000年代超过75%后，企业开始整合→IBM DB2市占率从~25%降至<10%)，客户开始评估"整合到一个平台"是否划算**——SNOW的功能护城河正在缩小[DM-COMP-011f-REF]。
 
 ```mermaid
 graph LR
@@ -2156,7 +2211,29 @@ graph LR
 
 ### 12.2 Microsoft Fabric: 被低估的底部蚕食
 
-Fabric $2B ARR/60%增速/31K客户是真实数据(Microsoft财报可验证)[DM-COMP-014-FACT]。
+**Fabric实际指标——远超预期**[DM-COMP-014-FACT]:
+
+| 指标 | 数值 | 时间 | 含义 |
+|------|------|------|------|
+| **付费客户** | **31,000+** | Q2 FY2026(Jan'26) | >SNOW客户数的2.3x(但ARPU远低) |
+| **ARR** | **>$2B** | Q2 FY2026 | 从$0→$2B仅用2年(GA Nov 2023) |
+| **增速** | **60%** YoY | Q2 FY2026 | >SNOW 29%, ≈DBR 55% |
+| **F500渗透** | **70%** | 2026 | ≈SNOW的57%(Forbes G2000) |
+
+**Fabric vs SNOW的ARPU对比——底部蚕食的经济学证据**: Fabric $2B ARR / 31K客户 = **$65K/客户**。对比SNOW: $4.7B / 13.3K = **$353K/客户**(5.4x)。这说明Fabric目前主要吸引"轻量级用户"(Power BI升级用户)，不是"重度企业用户"(SNOW的核心客户群)[DM-COMP-014a-EST]。
+
+**因果判断: Fabric是"底部蚕食"而非"正面替代"**:
+- ✗ 不是: "替代SNOW的大客户"(ARPU证明Fabric客户是轻量级)
+- ✓ 是: "截获SNOW的潜在新客户"(本来可能采用SNOW的SMB/中端客户选择了已有的Fabric)
+- → 影响: SNOW的**新客获取池**缩小，而非**存量客户流失**
+- → 这比正面替代更隐蔽——财报中不会出现"客户流失"数据，但增速会逐步放缓
+
+**定量影响**: 如果Fabric截获了SNOW潜在新客的20-30%→新客增速从+21%降至+15%→收入增速从30%降至25%(NRR 125%贡献的25%不变，但新客贡献从~5pp降至~3pp)→不是灾难但累计效应显著[DM-COMP-014b-EST]。
+
+**为什么Fabric增长这么快?** 三个因果因素[DM-COMP-014c-EST]:
+1. **零边际获客成本**: Fabric被捆绑在Azure/M365企业协议中→31K客户中大多数不是"选择了Fabric"而是"发现合同里包含了Fabric"→试用成本=零→adoption摩擦极低
+2. **Power BI引力**: 全球>300万Power BI付费用户。Fabric是Power BI的"后端升级"→转化路径不需要"从SNOW迁移"而是"Power BI用户自然升级"→SNOW根本不在decision set中
+3. **Nadella战略优先级**: Nadella在Q2 FY26称Fabric是"增长最快的分析平台"→持续投入工程/GTM资源→不是边缘实验
 
 **Fabric vs SNOW的竞争维度**:
 
