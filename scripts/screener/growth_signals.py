@@ -1639,7 +1639,8 @@ def score_g6(g6: G6Signals) -> float:
             s = min(s + 2.0, 10.0)
         scores.append(s)
     else:
-        scores.append(3.0)
+        # v3.2: 零买入不是中性——是轻微负面(公司在加速但管理层不买=信心存疑)
+        scores.append(2.5)
     weights.append(0.50)
 
     if g6.sell_reduction is not None:
@@ -2273,6 +2274,12 @@ def save_gid_results(results: list[GIDResult], output_path: str):
             'incremental_roic': r.g4.incremental_roic,
             'fcf_margin_delta': r.g4.fcf_margin_delta,
             'rule_of_40': r.g4.rule_of_40_latest,
+            'ev_sales': r.g5.ev_sales,
+            'balance_sheet': r.g4.balance_sheet_grade,
+            'gm_delta_yoy': r.g3.gm_delta_yoy,
+            'sm_efficiency_delta': r.g3.sm_efficiency_delta,
+            'persistence_count': r.g3.persistence_count,
+            'multi_metric_confirm': r.g1.multi_metric_confirm,
             'signal_summary': r.signal_summary,
             'vetoes': r.vetoes, 'flags': r.flags,
         })

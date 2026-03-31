@@ -95,9 +95,9 @@ def generate_watchlist(results: list, prev_results: list = None):
             lines.append("  (无)")
             continue
 
-        lines.append(f"  {'Sym':<7} {'GID':>5} {'MCap':>7} {'原型':<8} "
-                     f"{'阶段':<6} {'增长':>6} {'RevΔ':>6} {'信号摘要'}")
-        lines.append(f"  {'-'*100}")
+        lines.append(f"  {'Sym':<7} {'GID':>5} {'MCap':>7} {'EV/S':>5} "
+                     f"{'原型':<8} {'阶段':<6} {'增长':>6} {'RevΔ':>6} {'信号摘要'}")
+        lines.append(f"  {'-'*105}")
 
         for r in stocks[:20] if tier_name != 'A' else stocks:
             sym = r['symbol']
@@ -129,8 +129,11 @@ def generate_watchlist(results: list, prev_results: list = None):
                 else:
                     change = " ★NEW"
 
-            lines.append(f"  {sym:<7} {score:>5.2f} {mcap_s:>7} {arch:<8} "
-                        f"{phase:<6} {rev_s:>6} {acc_s:>6} {summary}{change}")
+            evs = r.get('ev_sales')
+            evs_s = f"{evs:.0f}x" if evs else "N/A"
+
+            lines.append(f"  {sym:<7} {score:>5.2f} {mcap_s:>7} {evs_s:>5} "
+                        f"{arch:<8} {phase:<6} {rev_s:>6} {acc_s:>6} {summary}{change}")
 
     # --- Summary stats ---
     lines.append("")
