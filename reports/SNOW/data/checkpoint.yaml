@@ -99,17 +99,28 @@ phases:
       - DM: 20→60 (3x+分级)
       - 新增: Gartner MQ数据+Iceberg调研+Fabric硬指标+AI冲击矩阵
   phase_4:
-    status: complete
+    status: complete_v2
     date: 2026-03-31
-    output: staging/phase4_ch14-15 + phase4_synthesis.md
-    chars: 6554
-    dm_count: 9
+    output: staging/phase4_v2_ch15-18
+    chars: 22976
+    dm_count: 63 (FACT:3, EST:53, REF:7)
+    causal_density: 5.65
     chapters:
-      - ch14: 红队七问+双向校准 (系统性偏空→校准为中性, RPO权重上调, M&A补充)
-      - ch15: 估值5情景+概率加权 (P/FCF $152合理, Owner FCF $126偏高, 评级中性关注)
-    rating: 中性关注
-    fair_value_range: $126-152 (口径依赖)
-    expected_return: -10% (中间值$139)
+      - ch15: 预期差E→R→G→T (4.8K, 增速高估9pp, Fabric未定价, 5触发器)
+      - ch16: 红队方法论碰撞 (6.9K, 3偏差审计+RT1-7+3碰撞+校准)
+      - ch17: 5方法估值+Python验证 (6.5K, FV $134, 75%方向一致, 离散度32%)
+      - ch18: 认知边界G9 (4.8K, 可推演度54, 黑箱38%, 评级置信区间-25%~+5%)
+    rating: 审慎关注
+    fair_value: $134 (5方法加权)
+    fair_value_range: $115-159 (M3-M2)
+    expected_return: -13%
+    key_changes_vs_v1:
+      - 评级: 中性关注→审慎关注(P3竞争数据推动)
+      - 方法: 2种→5种(+EV/Sales可比+SOTP+CQI映射)
+      - 新增: E→R→G→T预期差(G-P4-03门控通过)
+      - 新增: G9认知边界(可推演度54, 黑箱38%)
+      - 新增: Python 5方法验证(G6门控通过)
+      - 概率校准: Bear 30%→25%(Iceberg样本偏差), Base 30%→35%
   phase_5:
     status: not_started
 
