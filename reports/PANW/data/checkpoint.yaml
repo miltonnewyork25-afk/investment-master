@@ -3,8 +3,8 @@ industry: 网络安全/Software-Infrastructure
 worktree: 生态科技
 target_score: 4.4
 target_chars: 270000
-current_phase: phase_1_complete
-status: ready_for_phase_2
+current_phase: phase_4_complete
+status: ready_for_phase_5
 
 # Phase -1 ✅
 reference_reports:
@@ -124,5 +124,25 @@ phase3:
     - 定价权剪刀差(F500 3.5/5 vs SMB 1.5/5), 加权B4=2.6/5
     - Phase 3不改变估值方向 — FV仍$144-155, 当前$157处于上沿
   next_session: Phase 4 红队+偏差校准
+
+# Phase 4 ✅
+phase4:
+  file: reports/PANW/staging/phase4_red_team_calibration.md
+  chars: 40074
+  dm_count: ~69 unique DMs (Phase 4新增)
+  chapters: 6 (Ch23红队七问 / Ch24财务剪刀差 / Ch25预期差 / Ch26双向校准+KS+回流 / Ch27认知边界v3.0 / Ch28 CQ更新)
+  sentinel: PASS=6/WARN=3/FAIL=0/BLOCK=0
+  cq_coverage: CQ1(52↓) CQ2(68↓) CQ3(45↓) CQ4(47↓) CQ5(45↓) CQ6(40 new) CQ7(58↑) CQ8(35 new)
+  cq_weighted_avg: 51.1/100
+  key_findings:
+    - 概率加权FV从$144修正至$132(-8.6%) — 牛市概率20%↓/熊市25%↑
+    - 评级: 审慎关注(期望回报-17.9%)
+    - 最大预期差Gap 1: FY2026有机增速仅~13%(非22%), 含CyberArk无机注水
+    - 5组财务剪刀差: FCF-NI 28pp/NGS-总营收 18pp/平台-全公司NRR 9pp/GAAP-NonGAAP 16pp/F500-SMB定价权 2.0
+    - 风险回报比2.5:1偏下行, 下行-25%~-53% vs 上行+6%~+15%
+    - 认知边界评级B-(黑箱45%, 业务复杂度7.8/10, 可推演度6.3/10)
+    - Kill Switch 10项+反转信号6项定义完成
+    - 入场价格建议: 核心$105-115, 激进$120-130
+  next_session: Phase 5 组装+质量门控
 
 last_updated: 2026-04-01
