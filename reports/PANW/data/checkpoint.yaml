@@ -2,9 +2,9 @@ ticker: PANW
 industry: 网络安全/Software-Infrastructure
 worktree: 生态科技
 target_score: 4.4
-target_chars: 270000
-current_phase: phase_4_complete
-status: ready_for_phase_5
+target_chars: 200000
+current_phase: phase_5_in_progress
+status: assembly_started
 
 # Phase -1 ✅
 reference_reports:
