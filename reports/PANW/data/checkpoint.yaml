@@ -85,4 +85,26 @@ phase1:
     - CEO $10M买入=6年来首次=中-强正面信号
   next_session: Phase 2 财务深度+FCF分解+SBC+估值情景
 
+# Phase 2 ✅
+phase2:
+  file: reports/PANW/staging/phase2_financial_deep_dive.md
+  chars: 55000
+  dm_count: ~139 unique DMs (Phase 2新增)
+  chapters: 16 (Ch8收入结构 / Ch9盈利FCF分解 / Ch10单位经济学 / Ch11资本配置SBC / Ch12估值情景 / Ch13 CQ更新 / Ch13B行业背景 / Ch14 ROIC / Ch15盈利质量 / Ch16竞争对标 / Ch17敏感性 / Ch18税务 / Ch19估值综合 / Ch19B成熟态 / Ch20 CyberArk / Ch21-23补充)
+  python_validated: true (PANW_dcf_model.py)
+  sentinel: PASS=7/WARN=4/FAIL=0/BLOCK=1(已修复)
+  cq_coverage: CQ1(58/100↑) CQ2(68/100↑) CQ3(50/100 new) CQ4(48/100↑) CQ5(55/100↓)
+  key_findings:
+    - FCF 41%含~28pp"美化"(SBC 14pp+DR加速14pp), Owner FCF margin 24%才是真实
+    - 概率加权公允价值$144, 加权$154 vs 股价$160 → 期望回报-4%至-10%
+    - Owner PE为负(SBC>NI) — 与CRWD/ZS同类, FTNT是异类(4% SBC)
+    - ROIC含商誉12.0%(CyberArk后可能降至8-10%), ex商誉27.3%
+    - S&M效率5年改善11pp — 平台化最大财务回报
+    - Magic Number 0.43偏低(平台化免费期+存量维护)
+    - CyberArk整合成功概率55%, 失败15%, FQ3首个完整季度=关键验证
+    - Forward PE 40x中60%基本面支撑+20%叙事溢价
+    - 成熟态(FY2030E) GAAP OPM可达24-30%, EPS $4.10-8.50
+    - 当前估值定价"完美执行无意外" — 任何偏差→PE压缩
+  next_session: Phase 4 红队+偏差校准
+
 last_updated: 2026-03-31
