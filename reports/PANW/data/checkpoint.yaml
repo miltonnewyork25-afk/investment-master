@@ -1,0 +1,72 @@
+ticker: PANW
+industry: 网络安全/Software-Infrastructure
+worktree: 生态科技
+target_score: 4.4
+target_chars: 270000
+current_phase: phase_0_complete
+status: ready_for_phase_1
+
+# Phase -1 ✅
+reference_reports:
+  - CRWD: 162K/296DMs
+  - DDOG: 343K/462DMs
+  - NOW: 311K/457DMs
+comparable: FTNT (增速15%接近, PE 33x vs PANW 89x)
+
+# Phase -0.5 ✅
+lit_recon: reports/PANW/data/lit_recon_memo.md
+
+# Phase 0 ✅
+data_files: 20
+total_chars: 222453
+mcp_data:
+  - baggers_summary (7维度38指标)
+  - income_annual (FY2021-FY2025)
+  - income_quarterly (FQ4'24-FQ2'26, 8季度)
+  - balance_sheet (FY2021-FQ2'26)
+  - cashflow (FY2021-FQ2'26)
+  - key_metrics (估值+盈利+效率趋势)
+  - peer_comparison (PANW vs CRWD/FTNT/ZS/S)
+  - peer_detailed (三巨头深度对比)
+  - insider_trading (2020-2026)
+  - employee_count (5年)
+  - estimates (FY2027-FY2030)
+  - financial_scores (Z-Score/F-Score)
+  - profile + DCF + industry_PE
+websearch_data:
+  - research_platformization (平台化+XSIAM, 31K)
+  - research_competition (竞争格局, 28K)
+  - research_competition_ai (AI安全, 15K)
+  - research_financials (财务趋势, 23K)
+  - research_financials_unit_economics (单位经济学, 26K)
+  - research_management (管理层+M&A, 19K)
+  - research_management_moat_risk (护城河+风险, 24K)
+  - research_products (产品组合, 22K)
+  - research_risks_valuation (风险+估值, 11K)
+
+# Phase 0.75 ✅
+thesis_crystallization: reports/PANW/data/thesis_crystallization.md
+one_question: "平台化客户从免费试用到付费转换的实际比率和时间表,能否支撑FY2026 22%的营收加速指引?"
+possibility_width: 5 (中) → 混合模式(传统估值+可能性附录)
+cq_count: 8
+
+# 关键发现摘要
+key_findings:
+  - NGS_ARR: $6.33B (+33% YoY) vs 总营收增速15% → 增速分裂
+  - platformization_customers: ~1,550 (+120% 2年)
+  - NRR: ~119-120% (平台化客户)
+  - FCF_margin: 41% vs 净利率13% → 28pp gap需分解
+  - CEO_buy: $10M personal purchase 2026-03-30 → 强正面信号
+  - CyberArk: $25B收购完成2026-02-11 → 第四支柱+短期EPS稀释
+  - FY2026_guidance: 营收$11.3B (+22-23%) → 增速re-acceleration
+  - FMP_DCF: $143.63 vs 股价$160.32 → 溢价12%
+  - forward_PE: 40.3x vs 行业43.3x → 接近合理
+
+# Session规划
+session_plan:
+  S1: "Phase 1 — 业务理解+平台化深度+CQ1-CQ4 (≥60K)"
+  S2: "Phase 2 — 财务深度+FCF分解+估值 (≥70K)"
+  S3: "Phase 4 — 红队+偏差校准 (≥40K)"
+  S4: "Phase 5 — 组装+质量门控 (≥100K)"
+
+last_updated: 2026-03-31
