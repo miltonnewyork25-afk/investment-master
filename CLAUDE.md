@@ -38,11 +38,11 @@
 
 **Tier 3质量标准: 4.4分基线** — 详见 `docs/quality_standard_4.4.md`
 
-**8项硬门控 (Complete前全部PASS, 任一FAIL=禁止提交)**:
+**9项硬门控 (Complete前全部PASS, 任一FAIL=禁止提交)**:
 
 | 门控 | 阈值 | 防止什么 |
 |------|------|---------|
-| G1 字符 | **≥270K** | 广度不足/遗漏关键维度 |
+| G1 字符 | **动态基准** | 广度不足/遗漏关键维度 |
 | G2 DM密度 | **≥1.5/千字** | 数据无源 |
 | G3 DM总数 | **≥450** | 关键数字缺锚点 |
 | G4 Mermaid | **≥25** | 缺乏可视化 |
@@ -50,9 +50,16 @@
 | G6 Python验证 | **必须** | 估值算术错误(MCO教训) |
 | G7 估值离散度 | **≤30%** | 方法间矛盾未解决 |
 | G8 CQ标记 | **CQ1-CQ8** | 问题定义不清/无闭环 |
+| **G9 认知边界评估** | **必须** | 缺乏分析局限性认知/假装全知 |
 
 **11维度记分卡 (D1-D11)**: 每项0-10分, 总分≥88/110 = 4.4分。详细评分细则见文档。
 **致命缺陷**: D5估值<5 或 D1数据<5 或 D3分析<5 → 总分自动降至3.5以下
+
+**G1字符动态基准** (基于可能性宽度自动调整，覆盖历史270K硬编码错误):
+- **传统框架**(0-3分): 250K×80%=200K基准
+- **混合模式**(4-6分): 200K×80%=160K基准
+- **发现系统**(7-10分): 350K×80%=280K基准
+- **执行**: `quality_gate_complete.sh`自动按PW计算，无需手动指定
 
 **Tier 3方法论路由**: Phase 0完成后评估"可能性宽度"(5项打分，0-10)：
 - **0-3分(窄)**: 传统框架 — SOTP/DCF → 目标价+评级
@@ -154,9 +161,10 @@
 | 等级 | 工具类型 | 代表工具 |
 |------|----------|----------|
 | **P0** | MCP数据工具 | `baggers_summary` `fmp_data` `analyze_stock` `polymarket_events` |
+| **P0.5** | 元级系统 (v21.0) | 框架健康监测 / 时间维度分析 / 反身性检测 / 元级控制器 |
 | **P1** | 专业投资skill | `/investment-logic-toolkit` `/data-prefetch` |
 | **P1** | 分析深度skill (v17.0) | `/assumption-audit` `/risk-topology` `/red-team-suite` |
-| **P1** | 质量保障skill (v17.0) | `/valuation-quality-gate` `/omission-scanner` `/deep-reflection` |
+| **P1** | 质量保障skill (v20.0) | `/valuation-quality-gate` `/omission-scanner` `/cognitive-boundary-assessor` `/deep-reflection` |
 | **P2** | Agent协作工具 | `/dispatching-parallel-agents` `/cross-validation` `/bear-case-generator` |
 
 **完整列表**: 各行业worktree CLAUDE.md
@@ -189,6 +197,9 @@
 **启动门控**: `bash scripts/preflight_gate.sh {TICKER} {INDUSTRY}` — **Phase 0前必须CLEARED，有FAIL则阻断**
 **一键Phase**: `bash scripts/phase_complete.sh {TICKER} {PHASE} {REPORT} {MIN_CHARS}` — **内含sentinel自动检查**
 **质量哨兵**: `bash scripts/phase_sentinel.sh {TICKER} {PHASE} [TARGET]` — **phase_complete自动调用，无需手动记住**
+**预期差识别**: `/expectation-gap {TICKER}` — **Phase 1+后自动检查，E→R→G→T四步强制**
+**认知边界评估**: `/cognitive-boundary-assessor {TICKER}` — **Phase 4完成后自动执行，G9门控强制**
+**元级系统分析**: `python .claude/meta/meta_system_controller.py analyze [TICKER]` — **框架健康+时间维度+反身性的统一分析**
 **紧急保存**: `bash scripts/context_save.sh [TICKER]`
 **报告验尸**: `bash scripts/post_report_autopsy.sh {TICKER} {REPORT}` — Complete后自动执行，启动进化循环
 
