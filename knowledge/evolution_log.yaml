@@ -680,3 +680,39 @@ entries:
     rating: "关注"
     expected_return: "+12% (FCF-SBC口径)"
     skills_used: "data-prefetch/assumption-audit(M1+M1.4b+M2+M3)/red-team-suite(RT1-7+Part B+C)/risk-topology(MVP 10+3+1)/omission-scanner(Part A+B)/cq-lifecycle-tracker/valuation-quality-gate(G1)/competitive-benchmarking/deep-reflection(R1复用+R2+R3)"
+
+  - ticker: "MRVL"
+    date: "2026-03-30"
+    report: "MRVL_Complete_Deep_Dive_v1.0.md"
+    chars: "270K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 50
+    mermaid_count: 31
+    pw: N/A
+    method: "N/A"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
+
+  - ticker: "PANW"
+    date: "2026-04-02"
+    report: "PANW_Complete_v1.0.md"
+    chars: "236K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 256
+    mermaid_count: 30
+    pw: 5
+    method: "mixed"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
