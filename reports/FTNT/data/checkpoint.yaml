@@ -4,11 +4,11 @@ company: "Fortinet, Inc."
 framework_version: v22.1
 worktree: "cybersecurity"
 industry: "cybersecurity"
-last_updated: "2026-04-03T08:00:00+00:00"
+last_updated: "2026-04-03T10:00:00+00:00"
 
-current_phase: 1
+current_phase: 2
 phase_status: completed
-phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1"]
+phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2"]
 
 target_chars: 250000
 target_range: "240K-375K"
@@ -29,26 +29,58 @@ cq_list:
 complexity_modifiers: ["M0", "M2", "M5", "M7", "M12"]
 
 hypotheses:
-  H1: "ASIC是可移植护城河而非遗产包袱(偏多)"
-  H2: "估值压缩创造不对称机会(偏多)"
-  H3: "内部人零买入是系统性治理问题(偏空)"
+  H1: "ASIC是可移植护城河而非遗产包袱(偏多, 55%)"
+  H2: "估值压缩创造不对称机会 → Phase 2修正: 当前定价≈共识, 不对称性较弱"
+  H3: "内部人零买入是系统性治理问题(偏空, 55%)"
 
 initial_3d_state:
-  value: "possibly_undervalued"
+  value: "fairly_valued_to_slightly_undervalued"
   direction: "improving"
   catalyst: "possible"
 
+cq_confidence:
+  CQ1: {direction: "偏正", confidence: 55, change: "+10 from P0.5"}
+  CQ2: {direction: "偏正", confidence: 60, change: "+5 from P0.5"}
+  CQ3: {direction: "中性", confidence: 40, change: "= from P0.5"}
+  CQ4: {direction: "中性偏正", confidence: 70, change: "+20 from P0.5, Phase 2主力回答"}
+  CQ5: {direction: "偏负", confidence: 35, change: "= from P0.5"}
+  CQ6: {direction: "中性", confidence: 40, change: "= from P0.5"}
+  CQ7: {direction: "偏正", confidence: 40, change: "= from P0.5"}
+  CQ8: {direction: "偏正", confidence: 60, change: "+10 from P0.5, 有机增长11-12%确认"}
+
 quick_ref:
-  total_chars: 24200
-  latest_phase_chars: 24200
-  dm_count: 31
-  mermaid_count: 4
+  total_chars: 48556
+  p1_chars: 24200
+  p2_chars: 24356
+  dm_count_total: 127
+  dm_p1: 38
+  dm_p2: 89
+  mermaid_count: 6
   price: 82.53
-  market_cap_B: 59.0
-  pe_ttm: 34.1
+  market_cap_B: 61.37
+  ev_B: 58.8
+  pe_ttm: 33.1
+  owner_pe: 31.5
+  core_pe: 35.9
+  p_fcf: 27.6
+  fwd_pe: 27.8
   fcf_margin: "32.7%"
   sbc_rev: "4.1%"
-  owner_pe: 30.3
+  reverse_dcf_implied_cagr: "12.0%"
+  fair_value_weighted: "$81"
+  bull_fv: "$89-99"
+  bear_fv: "$53-67"
+
+phase2_key_findings:
+  - "Reverse DCF隐含12% CAGR ≈ 共识 → 精确定价共识路径"
+  - "隐含信念脆弱度1.7/5(低) — 不依赖英雄式假设"
+  - "6方法加权公允价值$81 ≈ 当前$82.53"
+  - "SBC仅吞噬12.6% FCF, 网安行业最健康的Owner Economics"
+  - "ROIC 28.7%/ROCE 38.9%, 增量ROIC >60%"
+  - "递延收入增速(+12%) < 收入增速(+14%) → 合同期缩短信号"
+  - "D&A跳升174%($123M→$336M) → 未来FCF压力黄色信号"
+  - "NRR间接推算115-125% (弱结论)"
+  - "回购平均价格$96 > 当前$82.53 → 短期回购效率欠佳"
 
 data_files_status:
   shared_context: "completed"
@@ -57,3 +89,5 @@ data_files_status:
   thesis_crystallization: "completed"
   key_assumptions: "completed"
   preflight_gate: "CLEARED"
+  phase2_valuation_py: "completed"
+  phase2_valuation_json: "completed"

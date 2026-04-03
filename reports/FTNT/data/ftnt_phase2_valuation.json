@@ -1,0 +1,23 @@
+{
+  "current_price": 82.53,
+  "market_cap_b": 61.37,
+  "ev_b": 58.8,
+  "reverse_dcf_implied_cagr": 12.0,
+  "owner_reverse_dcf_implied_cagr": 14.0,
+  "consensus_5y_cagr": 11.8,
+  "dcf_price_fcf": 72.0,
+  "dcf_price_owner": 65.0,
+  "blended_price": 67.0,
+  "expected_return_pct": -18.5,
+  "bull_price": 89.0,
+  "base_price": 74.0,
+  "bear_price": 53.0,
+  "gaap_pe": 33.1,
+  "owner_pe": 31.5,
+  "core_pe": 35.9,
+  "p_fcf": 27.6,
+  "fwd_pe": 27.8,
+  "avg_buyback_price": 96.0,
+  "nrr_estimate_range": "115-125%",
+  "fragility_avg": 1.7
+}
