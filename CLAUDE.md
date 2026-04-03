@@ -174,7 +174,13 @@
 **首条消息**: `pwd` + `git branch --show-current`, 报告当前位置
 **继续/恢复**: ①确认位置 → ②读checkpoint.yaml → ③git log → ④**读handoff note** → 恢复执行
 **Phase自动化**: `tier3_launch.sh` → `preflight_gate.sh` → `phase_complete.sh`(含sentinel) → `quality_gate_complete.sh`
-**EVO刹车**: 话题浓度上限(2×均值) | 进化衰减(6个月) | 正面EVO强制 | 季度审计
+**EVO生命周期** (借鉴Claude Code行为缓解管道):
+- **发现**: 报告验尸发现问题 → PR式记录(来源/量化指标/解除条件)
+- **引入**: 写入evolution_log.yaml, **ant-only灰度**(先在1-2份报告验证)
+- **验证**: A/B对比(有EVO vs 无EVO的报告质量差异) → 确认有效
+- **推广/移除**: 有效→写入铁律 | 无效/过期→移除 | 不确定→延长灰度
+- **刹车**: 话题浓度上限(2×均值) | 进化衰减(6个月未引用→候选删除) | 正面EVO强制 | 季度审计
+- **安全默认值**: 宁可多一条EVO也不漏掉教训, 但**NEVER**让EVO密度导致注意力稀释(SBC锚定Bug教训)
 
 ---
 
