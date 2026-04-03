@@ -4,11 +4,11 @@ company: "Fortinet, Inc."
 framework_version: v22.1
 worktree: "cybersecurity"
 industry: "cybersecurity"
-last_updated: "2026-04-03T03:45:00+00:00"
+last_updated: "2026-04-03T08:00:00+00:00"
 
-current_phase: 0.75
+current_phase: 1
 phase_status: completed
-phases_completed: ["-1", "-0.5", "0", "0.5", "0.75"]
+phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1"]
 
 target_chars: 250000
 target_range: "240K-375K"
@@ -39,10 +39,10 @@ initial_3d_state:
   catalyst: "possible"
 
 quick_ref:
-  total_chars: 0
-  latest_phase_chars: 0
-  dm_count: 0
-  mermaid_count: 0
+  total_chars: 24200
+  latest_phase_chars: 24200
+  dm_count: 31
+  mermaid_count: 4
   price: 82.53
   market_cap_B: 59.0
   pe_ttm: 34.1

@@ -294,7 +294,71 @@
 
 ---
 
-## Section H: P0-P3前置识别 (初步)
+## Section H-BIZ: Phase 1新增业务锚点 (DM-BIZ-xxx)
+
+### DM-BIZ-006
+- **值**: FortiSP5: 7nm SoC, 防火墙17x/加密32x/NGFW 3.5x于通用CPU, 40Gbps防火墙/37Gbps IPsec/2.5Gbps SSL/2.8Gbps威胁防护
+- **类型**: H
+- **来源**: WebSearch Agent - Fortinet FortiSP5 press release + ServeTheHome review
+
+### DM-BIZ-007
+- **值**: FortiSASE云PoP运行FortiOS VM(不使用ASIC), on-prem设备使用NP7/SP5 ASIC; 100+全球PoP, 与Google Cloud合作扩展
+- **类型**: H
+- **来源**: WebSearch Agent - Fortinet SASE architecture docs
+
+### DM-BIZ-008
+- **值**: FortiOS 8.0(2026.03发布): SASE Outpost + Sovereign SASE + Fabric AI Agents + 量子安全能力
+- **类型**: H
+- **来源**: WebSearch Agent - Fortinet FortiOS 8.0 press release
+
+### DM-BIZ-009
+- **值**: Unified SASE ARR: $1.28B (+11% YoY)
+- **类型**: H
+- **来源**: WebSearch Agent - Q4 FY2025 earnings
+
+### DM-BIZ-010
+- **值**: FortiSASE ARR增速 >90% YoY
+- **类型**: H
+- **来源**: WebSearch Agent - Q4 FY2025 earnings
+
+### DM-BIZ-011
+- **值**: 91%的SASE billings来自存量客户(交叉销售)
+- **类型**: H
+- **来源**: WebSearch Agent - Q4 FY2025 earnings
+
+### DM-BIZ-012
+- **值**: FTNT在Gartner Critical Capabilities SASE中排名#1 (Secure Branch Network Modernization用例)
+- **类型**: H
+- **来源**: WebSearch Agent - Gartner SASE 2025
+
+### DM-BIZ-013
+- **值**: Q4 FY2025: Billings $2.37B (+18%), Revenue $1.91B (+15%), EPS $0.81 (beat $0.74), Product Rev +20%
+- **类型**: H
+- **来源**: WebSearch Agent - Q4 FY2025 earnings release
+
+### DM-COMP-005
+- **值**: IDC Security Appliance Q4'23: PANW $901M (18.2% #1), FTNT $878M (17.7% #2), 差距<1pp
+- **类型**: H
+- **来源**: WebSearch Agent - IDC Security Appliance Tracker
+
+### DM-COMP-006
+- **值**: Gartner 2025 SASE MQ Leaders: Cato Networks, Fortinet, Netskope, PANW; ZS为Visionary
+- **类型**: H
+- **来源**: WebSearch Agent - Gartner MQ SASE 2025
+
+### DM-COMP-007
+- **值**: Microsoft Defender Endpoint: 25.8%市占率(#1), +40.7% YoY份额增长; Security Copilot已bundled入M365 E5
+- **类型**: H
+- **来源**: WebSearch Agent - IDC + Microsoft Ignite 2025
+
+### DM-INS-003
+- **值**: Ken Xie持有~51.4M股($4.2B), 年卖出~$28M(0.7%持仓); Michael Xie 12个月卖出~$75M+
+- **类型**: H
+- **来源**: WebSearch Agent - SEC insider filings
+
+---
+
+## Section I: P0-P3前置识别 (初步)
 
 ### P0 原型识别
 **混合体**: 硬件ASIC(FortiGate设备) + 软件订阅(FortiGuard安全服务) + 平台(Security Fabric)
