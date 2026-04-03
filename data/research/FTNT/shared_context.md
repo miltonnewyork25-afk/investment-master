@@ -356,6 +356,41 @@
 - **类型**: H
 - **来源**: WebSearch Agent - SEC insider filings
 
+### DM-BIZ-014
+- **值**: 管理层估计每$1防火墙收入可撬动$12增量收入($5安全网络+$3 SASE+$4 SecOps)
+- **类型**: R
+- **来源**: WebSearch Agent - Constellation Research / Nasdaq cross-sell analysis
+
+### DM-BIZ-015
+- **值**: 70%大企业已采用SD-WAN; 70%+企业整合防火墙+交换机+AP(3+模块); 60%部署混合VM
+- **类型**: H
+- **来源**: WebSearch Agent - Constellation Research
+
+### DM-BIZ-016
+- **值**: 97%的SecOps billings来自存量客户
+- **类型**: H
+- **来源**: WebSearch Agent - Q4 FY2025 earnings
+
+### DM-BIZ-017
+- **值**: 采用统一平台的组织OpEx减少高达28%
+- **类型**: R
+- **来源**: WebSearch Agent - Fortinet platform analysis
+
+### DM-BIZ-018
+- **值**: 2025-2026年5+个关键CVE(CVSS≥9.0)被野外利用: CVE-2026-24858(SSO绕过,9.4), CVE-2025-59718/59719(SAML绕过), CVE-2025-25249(RCE), CVE-2025-64446/58034(路径遍历)
+- **类型**: H
+- **来源**: WebSearch Agent - CISA + CyberScoop + Rapid7
+
+### DM-BIZ-019
+- **值**: Fortinet在11个Gartner MQ报告中获认可——所有厂商中覆盖最广; Hybrid Mesh Firewall MQ中"Ability to Execute"最高
+- **类型**: H
+- **来源**: WebSearch Agent - Gartner MQ 2025系列
+
+### DM-BIZ-020
+- **值**: Fortinet Accelerate 2026宣布提价——定价权信号
+- **类型**: H
+- **来源**: WebSearch Agent - Accelerate 2026 coverage
+
 ---
 
 ## Section I: P0-P3前置识别 (初步)
