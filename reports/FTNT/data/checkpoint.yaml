@@ -6,9 +6,9 @@ worktree: "cybersecurity"
 industry: "cybersecurity"
 last_updated: "2026-04-03T10:00:00+00:00"
 
-current_phase: 2
+current_phase: 3
 phase_status: completed
-phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2"]
+phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2", "3"]
 
 target_chars: 250000
 target_range: "240K-375K"
@@ -39,23 +39,25 @@ initial_3d_state:
   catalyst: "possible"
 
 cq_confidence:
-  CQ1: {direction: "偏正", confidence: 55, change: "+10 from P0.5"}
-  CQ2: {direction: "偏正", confidence: 60, change: "+5 from P0.5"}
-  CQ3: {direction: "中性", confidence: 40, change: "= from P0.5"}
-  CQ4: {direction: "中性偏正", confidence: 70, change: "+20 from P0.5, Phase 2主力回答"}
-  CQ5: {direction: "偏负", confidence: 35, change: "= from P0.5"}
-  CQ6: {direction: "中性", confidence: 40, change: "= from P0.5"}
-  CQ7: {direction: "偏正", confidence: 40, change: "= from P0.5"}
-  CQ8: {direction: "偏正", confidence: 60, change: "+10 from P0.5, 有机增长11-12%确认"}
+  CQ1: {direction: "偏正", confidence: 65, change: "+10 from P2, ASIC成本优势验证+可移植性40-60%"}
+  CQ2: {direction: "偏正", confidence: 65, change: "+5 from P2, SASE ARR+22%但绝对值未披露"}
+  CQ3: {direction: "中性偏正", confidence: 55, change: "+15 from P2, 55%出货量壁垒+ASP天花板"}
+  CQ4: {direction: "中性偏正", confidence: 70, change: "= from P2"}
+  CQ5: {direction: "中性", confidence: 50, change: "+15 from P2, 核心收入>80%不在MSFT射程"}
+  CQ6: {direction: "中性", confidence: 40, change: "= from P2"}
+  CQ7: {direction: "偏正", confidence: 45, change: "+5 from P2, ASIC vs AI矛盾识别"}
+  CQ8: {direction: "偏正→中性", confidence: 55, change: "-5 from P2, 刷新驱动占比大"}
 
 quick_ref:
-  total_chars: 48556
+  total_chars: 77756
   p1_chars: 24200
   p2_chars: 24356
-  dm_count_total: 127
+  p3_chars: 29200
+  dm_count_total: 236
   dm_p1: 38
   dm_p2: 89
-  mermaid_count: 6
+  dm_p3: 109
+  mermaid_count: 11
   price: 82.53
   market_cap_B: 61.37
   ev_B: 58.8
@@ -70,6 +72,22 @@ quick_ref:
   fair_value_weighted: "$81"
   bull_fv: "$89-99"
   bear_fv: "$53-67"
+
+phase3_key_findings:
+  - "FTNT是网安唯一利润机器: OPM 30.6% vs PANW 13.5% vs CRWD/ZS负"
+  - "ASIC护城河真实但衰减中: on-prem强(5-10年), cloud中等(2-5年), 可移植性40-60%"
+  - "R&D效率8.3x收入/$1 R&D = 行业最高, 是ASIC复用经济学的直接产物"
+  - "三条平台路径可共存: PANW并购型/CRWD云原生型/FTNT硬件基底服务叠加型"
+  - "MSFT威胁被高估: 核心收入>80%不在微软射程, 5年加权影响仅-3~5%"
+  - "护城河综合评分3.66/5: 成本优势4.5+转换成本4.0+无形资产2.5+网络效应2.5"
+  - "刷新周期后概率加权增速7.8%, 基准情景8% — 是最大的估值变量"
+  - "55%出货量份额 vs 19%收入份额 = 量的统治者, 价的落后者"
+  - "SBC/Rev 4.1%是行业最低 — 真实Owner Economics远优于GAAP显示"
+  - "CVE频繁(CVSS 9.8×多个)是慢性品牌风险, 阻碍enterprise上攻"
+  - "SASE: Gartner Leader 2025 but Forrester非Leader — 技术路线对但执行速度不够"
+  - "OT安全是ASIC不会衰减的差异化赛道"
+  - "PANW收购CyberArk扩大平台覆盖度差距"
+  - "CRWD宕机验证: 即使灾难级事故客户也不大规模流失→转换成本极高"
 
 phase2_key_findings:
   - "Reverse DCF隐含12% CAGR ≈ 共识 → 精确定价共识路径"
