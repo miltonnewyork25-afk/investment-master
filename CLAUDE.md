@@ -167,6 +167,12 @@
 **铁律**: 第零律(合规) | 数据诚信 | H参考 | I知识前置 | J组装 | K估值统一 | M反膨胀 | N证据链 | O逆向估值 | G/L/P质量 | 详见`.claude/rules/`按需加载
 **工具**: P0(MCP数据) > P1(分析+质量skill) > P2(Agent协作) | 完整列表见worktree CLAUDE.md
 
+**Skill/工具治理** (Ch8七原则):
+- **双向闭环**: Skill A说"用B处理X"，Skill B说"X必须用我" — 单向约束有漏洞
+- **预算意识**: 每Phase仅激活需要的3-5个skill，不预加载全部23+ — 因为: skill描述消耗context
+- **Never delegate understanding**: 并行Agent执行数据收集，**NEVER**委托thesis形成或评级判断
+- **前置条件双层防御**: Phase依赖在提示词中声明+sentinel运行时强制 — 单层防御不够可靠
+
 ---
 
 ## 会话规范
