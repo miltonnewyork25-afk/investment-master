@@ -6,50 +6,14 @@ worktree: "生态科技"
 industry: "生态科技"
 last_updated: "2026-03-26T06:40:16+00:00"
 
-current_phase: 5
-phase_status: pending
-phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4]
+current_phase: -1
+phase_status: pre_launch
+phases_completed: []
 
 target_chars: 300000
 target_range: "240K-375K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 119366
-  latest_phase_chars: 48306
-  phase1_dm_density: 4.19
-  phase1_causal_density: 21.81
-  phase1_dm_count: 298
-  phase1_chapters: 14
-  sentinel_phase1: CLEARED
-  phase1_supplements: [ch02A_fm_second_curve, ch03A_cohort_analysis, ch04A_flywheel_verification, ch05A_pricing_migration, ch06A_opex_leverage]
-  phase2_dm_density: 2.98
-  phase2_causal_density: 25.25
-  phase2_dm_count: 144
-  phase2_chapters: 8
-  phase2_supplements: [ch10A_wacc_decision_tree, ch11A_working_capital, ch11B_roic_return_framework, ch12A_sotp_killswitch]
-  sentinel_phase2: CLEARED
-  phase3_dm_density: 2.89
-  phase3_causal_density: 25.13
-  phase3_dm_count: 105
-  phase3_chapters: 8
-  phase3_supplements: [ch14A_grr_sbc_waterfall, ch15A_cq_evolution_valuation_audit, ch16A_valuation_calibration_calendar]
-  phase3_score: 7.9
-  sentinel_phase3: CLEARED
-  total_chars: 198047
-  phase4_dm_density: 3.25
-  phase4_causal_density: 8.72
-  phase4_dm_count: 138
-  phase4_chapters: 7
-  phase4_effectiveness: Effective
-  phase4_avg_cq_change: 3.75
-  phase4_calibrated_fv_fcf: 256
-  phase4_calibrated_fv_sbc: 141
-  phase4_supplements: [ch21A_risk_topology_supplement, ch22A_assumption_audit, ch23_omission_scanner]
-  phase4_new_findings: [sbc_eta_0.45, circular_dependency_B1_B2, flywheel_net_0.76, fasb_sbc_rule, sap_migration_60pct]
-  phase4_score_d6: 9.0
-  phase4_score_d7: 8.5
-  phase4_total_score: 87.5
-  sentinel_phase4: CLEARED
-
-last_updated: "2026-03-26T08:30:00+00:00"
+  total_chars: 0
+  latest_phase_chars: 0

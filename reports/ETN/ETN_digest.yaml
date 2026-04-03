@@ -1,0 +1,442 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Eaton Corporation
+# 压缩比: 331K → ~12K (28x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: ETN
+  company: "Eaton Corporation plc"
+  report_date: "2026-02-21"
+  stock_price: "$373.38"
+  market_cap: "$145B"
+  report_version: "v1.0"
+  report_path: "reports/ETN/ETN_Complete_深度研究报告.md"
+  quality_score: "3.9/5.0 (78/100)"
+  cqi: "报告未覆盖"
+  framework_version: "v17.0"
+  industry: "电力管理/数据中心基础设施"
+  archetype: "周期成长(身份转型中: 传统工业→AI基础设施)"
+  chars: 331068
+  dm_count: 79
+  dm_density: "0.24/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "ETN是一家正在被AI叙事重新定价的百年工业公司——当前$373已把66.5%的AI权重定价进去，但实际DC收入仅占28%，你买的不是低估而是一个尚未完成的身份转型赌注，安全边际很薄"
+  rating: "中性关注(偏审慎)"
+  fair_value: "$336 (三锚加权) / $353 (概率加权)"
+  expected_return: "-3.5%(情景加权) / -8.2%(三锚加权)"
+
+  key_arguments:
+    - claim: "身份溢价38pp缺口——市场给予66.5%AI权重但DC收入仅占28%"
+      direction: bearish
+      magnitude: 5
+      mechanism: "AI叙事→P/E从25x扩至35.7x→溢价由叙事而非基本面驱动→每股$90(24%)是纯身份溢价"
+      kill_switch: "DC收入占比突破35%+，缺口缩小至合理范围(<15pp)"
+
+    - claim: "Boyd $9.5B收购概率加权NPV为负(-$0.77B)，IRR 6.6%<WACC 8.5%"
+      direction: bearish
+      magnitude: 4
+      mechanism: "22.5x EBITDA是液冷并购最高倍数→在DC CapEx可能的周期高位支付→容错空间远小于Cooper(12x)"
+      kill_switch: "Boyd Year 2实现>$160M年化协同+EBITDA>$500M→NPV翻正"
+
+    - claim: "航空板块是被DC叙事遮蔽的优质引擎"
+      direction: bullish
+      magnitude: 4
+      mechanism: "11.5% CAGR+610bps利润率改善+FAA认证壁垒(3-5年+$500万-$2000万)→MRO经常性收入→护城河最深的板块"
+      kill_switch: "全球航空旅行需求结构性下降(极端黑天鹅)"
+
+    - claim: "利润率3-5pp可能是周期性而非结构性"
+      direction: bearish
+      magnitude: 3
+      mechanism: "供不应求→超额定价权→29.8% EA OPM→供需2027-28平衡后正常化至25-27%→同业天花板SE 18%/ABB 15%"
+      kill_switch: "EA OPM在供需平衡后仍维持>28%(结构性效率提升确认)"
+
+    - claim: "PEG 2.18x比AI纯粹玩家VRT(1.80x)更贵——增长调整后ETN估值更高"
+      direction: bearish
+      magnitude: 4
+      mechanism: "绝对P/E 35.7x看似'便宜于VRT 71x'但增长率更低→增长调整后ETN反而更贵→市场额外为身份转型期权付费"
+      kill_switch: "ETN有机增长率持续>15%使PEG降至<1.8x"
+
+  moat:
+    composite_score: 7.5
+    half_life: "10-15年(复合) | 转换成本>20年 | 认证壁垒>15年 | 供应约束2-4年 | 软件<3年"
+    dimensions:
+      - type: switching_cost
+        strength: 5
+        evidence: "安全关键行业+15-25年嵌入式安装基础+更换需全系统停机→经济成本+系统性风险双重锁定"
+        vulnerability: "低压电气产品转换成本相对较低(标准化程度高)"
+      - type: scale
+        strength: 4
+        evidence: "分销800+独立经销商+100年品牌→全球top-3覆盖; EBITDA margin 21.5%"
+        vulnerability: "Schneider在全球规模更大(€36B vs $27B)且软件领先"
+      - type: regulatory
+        strength: 4
+        evidence: "UL/IEC/FAA全覆盖,新进入者需4-6年; FAA认证尤其强大($500万-$2000万+3-5年)"
+        vulnerability: "低压电气产品认证壁垒相对较低"
+      - type: ip
+        strength: 3
+        evidence: "供应约束(开关柜24-36月/变压器36-72月)给在位者超常定价权——暂时但强大"
+        vulnerability: "持久性有限2-4年; 供应缓解后壁垒消失,定价权回归正常"
+      - type: network_effect
+        strength: 1
+        evidence: "Brightlayer软件平台远落后于Schneider EcoStruxure(4年晚,部署量差10-100x)"
+        vulnerability: "最薄弱环节——软件差距可能被竞争者利用为突破口"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含FCF 18% CAGR(固定10年) 或 Phase1 25%+Phase2 10% CAGR→增长溢价占当前EV的72%(工业公司通常40-60%,更接近科技股70-85%)"
+    methods_used: ["Reverse DCF(三阶段)", "SOTP(Post-spin)", "FMP DCF", "简化DCF", "相对估值(Schneider可比)", "Boyd协同IRR", "双重身份框架", "四情景概率加权"]
+    dispersion: "锚点离散度1.10x(三锚高度收敛) | 方法离散度1.59x(FMP DCF $233 vs SOTP $370)"
+    consensus_vs_ours: "市场给ETN 66.5% AI权重(P/E 35.7x) | 我们认为合理AI权重应与DC收入占比(28%)更接近→身份溢价38pp由叙事驱动"
+    entry_zone: "$265-300 (P/E 22-25x, 工业身份定价)"
+    catalyst: "SLB式叙事蒸发: DC CapEx放缓→订单增速正常化→P/E从35x回归22-25x→2027-2028入场窗口"
+
+  action_framework:
+    verdict: "等待买入 — 基本面健康但估值已充分定价共识预期,安全边际薄弱"
+    buy_triggers:
+      - trigger: "DC CapEx放缓导致P/E回归工业均值(SLB式叙事降温)"
+        price_zone: "$265-300 (P/E 22-25x)"
+        reasoning: "身份溢价蒸发后,核心业务(电气+航空)仍值$265-300;在此价位PEG降至合理区间"
+      - trigger: "宏观衰退导致全面性下跌(非ETN特有问题)"
+        price_zone: "$220-250 (P/E 18-21x)"
+        reasoning: "危机倍数下买入→航空MRO+电气更换需求提供收入底线→反弹潜力>50%"
+      - trigger: "Boyd整合失败+商誉减值$3-4B导致恐慌性卖出"
+        price_zone: "$250-280"
+        reasoning: "减值是非现金一次性冲击,核心电气+航空业务不受影响→市场过度反应=买入机会"
+    hold_conditions:
+      - "DC收入占比持续提升(每季度>0.5pp)"
+      - "EA margin维持>27%(供需平衡后不崩塌)"
+      - "Boyd协同年化>$60M(正轨信号)"
+      - "B2B ratio维持>1.0x(积压质量健康)"
+      - "Net Debt/EBITDA<3.5x(杠杆可控)"
+    sell_triggers:
+      - signal: "DC收入占比连续2Q下降至<25%"
+        severity: "action"
+        action: "减仓50%,AI身份论文失效"
+      - signal: "B2B ratio连续2Q<0.90(积压质量恶化)"
+        severity: "warning"
+        action: "减仓25%,下调积压质量假设"
+      - signal: "Boyd商誉减值>$2B"
+        severity: "action"
+        action: "重新评估整体论文,考虑全部卖出"
+      - signal: "Hyperscaler CapEx同比下降>15%(全行业)"
+        severity: "emergency"
+        action: "全部卖出,DC超级周期结束确认"
+      - signal: "PE>40x且无增速改善催化"
+        severity: "action"
+        action: "减仓50%,估值泡沫区"
+    position_sizing: "当前$373: 不买(期望回报为负) | $280: 半Kelly~15%仓位 | $250: 半Kelly~25%仓位"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "身份溢价的量化与脆弱性"
+    chain: >
+      传统工业公司获得AI叙事加持
+      → P/E从工业锚22x扩至AI锚37x的中间值35.7x
+      → 反推隐含AI权重=66.5%(P/E法)
+      → 但DC收入实际仅占28%→缺口38.5pp
+      → 缺口=纯叙事溢价(每股$90)
+      → 叙事需要每季度DC数据维护→"每年续约"的估值合约
+      → 一旦DC增速放缓→叙事违约→P/E崩塌→$90/share蒸发
+    transferable_to: "所有传统行业公司被赋予科技/AI溢价的案例(工业/能源/材料被AI叙事重估)"
+    reasoning_habit: "看到P/E溢价时,量化'市场隐含权重'与'实际收入占比'的缺口——缺口越大,叙事依赖越强,估值越脆弱"
+
+  - id: "CC-2"
+    name: "SLB历史类比——叙事驱动的周期顶部估值"
+    chain: >
+      页岩革命2012→SLB被重估为'结构性增长'→P/E从16x升至22x
+      → 长线基金将SLB从周期股重分类为成长股
+      → 2014年OPEC不减产→油价腰斩→SLB收入-43%
+      → P/E无缓冲(EPS下降比P/E压缩更快)→2016年亏损
+      → ETN与SLB的65%相似度: 传统工业+新叙事+定价太满太快
+      → AI版OPEC冲击=Hyperscaler同步削减CapEx
+    transferable_to: "所有因行业超级周期被重估的工业公司(能源服务/矿业/设备制造)"
+    reasoning_habit: "任何'这次不一样'的身份转型叙事,都要找到最接近的历史类比并量化相似度——65%以上应高度警惕"
+
+  - id: "CC-3"
+    name: "并购估值的'周期顶部陷阱'"
+    chain: >
+      DC CapEx超级周期→液冷需求爆发→Boyd EBITDA高速增长
+      → Eaton在需求高点以22.5x EBITDA收购(历史最高液冷倍数)
+      → 概率加权NPV $8.73B < 收购价$9.5B → IRR 6.6% < WACC 8.5%
+      → 如果2027-28年CapEx放缓→Boyd收入增速下降→隐含倍数飙升至30x+
+      → Cooper(2012)成功因为12x买入→容错空间大; Boyd 22.5x→容错空间极小
+      → Net Debt/EBITDA从1.79x升至3.2-3.4x→限制下行灵活性
+    transferable_to: "所有在行业需求高点进行大型收购的工业公司"
+    reasoning_habit: "评估并购时,先算'如果需求回归均值,这个倍数还合理吗'——在周期高点买入需要>2x的容错空间"
+
+  - id: "CC-4"
+    name: "增长溢价占比暴露估值属性"
+    chain: >
+      ETN零增长EV=$43.9B vs 实际EV=$156B
+      → 增长溢价$112B(占72%)
+      → 工业公司通常40-60%,ETN的72%更接近科技股(70-85%)
+      → 这意味着买ETN=用科技股的价格买工业股的增长
+      → 工业股增长的可预测性远低于SaaS/订阅→风险错配
+      → 如果增长率miss 3pp(15%→12%)→增长溢价蒸发$25-30B→股价-$65-80
+    transferable_to: "所有增长溢价占EV>60%的非科技公司"
+    reasoning_habit: "做Reverse DCF时,计算'增长溢价占EV比例'——如果>60%但公司不是高可预测性模式(SaaS/订阅),标记风险错配"
+
+  - id: "CC-5"
+    name: "积压订单的'恐惧囤积'风险"
+    chain: >
+      供应约束→交期从6-8月延至24-36月→客户恐惧性下单
+      → 积压增速31%>>收入增速10%→B/R ratio持续攀升
+      → 但可靠积压可能仅50-60%(Tier 2/3存在取消风险)
+      → 半导体2021先例: 积压创纪录→供应缓解后大规模取消
+      → 如果积压缩减30%($4.6B取消)→FY2027-28收入-$2.3B/年
+      → 更关键: ETN从未披露取消率→首次披露非零取消数=信息冲击
+    transferable_to: "所有供应约束行业中积压创纪录的公司(半导体设备/变压器/工业设备)"
+    reasoning_habit: "积压增速>>收入增速时,追问'有多少是恐惧囤积'——用半导体2021作为基准率检验"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "ETN 35.7x P/E合理——AI数据中心增长justify溢价"
+      final: "66.5% AI权重 vs 28% DC收入=38pp身份溢价缺口，由叙事而非基本面驱动"
+      pivot: "双重身份框架量化: 工业锚22x→AI锚37x→反推隐含AI权重→与实际DC收入对比暴露缺口"
+
+    - initial: "Boyd收购是战略必需品+合理价格"
+      final: "概率加权NPV为负(-$0.77B)，22.5x是液冷并购历史最高倍数"
+      pivot: "四情景概率加权(Bull/Base/Bear/Worst)→NPV<收购价→IRR<WACC→价值摧毁"
+
+    - initial: "$15.3B积压是坚如磐石的收入保障"
+      final: "积压增速31%>>收入10%，可靠积压可能仅50-60%，恐惧囤积风险真实存在"
+      pivot: "半导体2021类比+积压分层(Tier 1仅50-60%)+ETN从未披露取消率→不透明本身是风险"
+
+  surprises:
+    - finding: "ETN增长溢价占EV的72%——工业公司中极为罕见，更接近科技股水平"
+      implication: "买ETN实际上是用科技股价格买工业股增长→增长率每miss 3pp,股价可能跌$65-80"
+
+    - finding: "PEG 2.18x比VRT(1.80x)更贵——ETN在增长调整基础上比AI纯粹玩家更贵"
+      implication: "绝对P/E的'便宜'是幻觉→市场额外为身份转型期权付费约+20-30%溢价"
+
+    - finding: "RT-2发现Phase 1-3存在系统性看空偏差(CQ调整9:1看空vs看多)"
+      implication: "CQ连续4Phase下降可能部分由确认偏误驱动→真实置信度可能比36.4%略高(38-42%)"
+
+    - finding: "Boyd EBITDA $420M是C级数据(可能虚增)——如果实际为$360M,减值概率从25%升至40%"
+      implication: "Boyd投资论文的关键变量(EBITDA)数据质量最低→结论脆弱度极高"
+
+  blind_spots:
+    - area: "Hyperscaler CapEx可持续性(2027-2028)"
+      why_matters: "DC收入占比28%但增长溢价占EV 72%→CapEx放缓=估值基础崩塌"
+      monitor: "Big Tech季度earnings中CapEx指引; AWS/Azure/GCP CapEx YoY增速"
+
+    - area: "Boyd真实EBITDA及整合协同"
+      why_matters: "C级数据($420M vs可能$360M)→IRR从8%恶化至6.3%→决定收购是'争议'还是'确定价值毁灭'"
+      monitor: "FY2026 Q3-Q4 Boyd segment disclosure; 年化协同进度($60M+=正轨)"
+
+    - area: "积压取消率(ETN从未披露)"
+      why_matters: "不透明本身是风险——首次披露非零取消数=信息冲击→可能触发积压质量重估"
+      monitor: "季度earnings call订单/积压数据; B2B ratio趋势"
+
+    - area: "EA利润率正常化幅度"
+      why_matters: "29.8%中3-5pp可能是周期性超额定价权→供需平衡后回吐→EPS影响-$0.50-1.00"
+      monitor: "开关柜/变压器交期缩短趋势; 季度EA segment margin"
+
+  sell_lessons:
+    - scenario: "身份溢价38pp时不卖→DC增速放缓→P/E从35x回归22-25x→-30-38%"
+      lesson: "身份转型中的工业公司,当隐含AI权重(66.5%)远超实际收入占比(28%)时,P/E的叙事维护成本极高——每季度都需要DC数据confirm"
+      transferable: "所有因行业超级周期获得身份重估溢价的传统行业公司"
+    - scenario: "并购在行业需求高点以历史最高倍数完成→需求回落→减值$3-4B"
+      lesson: "在周期高点看到'战略必需品'叙事时,先算概率加权NPV——22.5x在需求回落后可能变成30x+"
+      transferable: "所有在CapEx超级周期中进行大型并购的公司"
+    - scenario: "积压创纪录但不减仓→供应缓解后恐惧囤积取消→收入miss"
+      lesson: "积压增速>>收入增速(31% vs 10%)本身是预警信号——不透明的取消率比已知风险更危险"
+      transferable: "所有供应约束行业中积压B/R持续攀升的公司"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "DC收入占比vs隐含AI权重缺口(当前38pp)"
+      why_alpha: "市场用绝对P/E定价→忽略AI权重与实际收入的错配→缺口缩小/扩大直接驱动P/E方向"
+      current_reading: "66.5% AI权重 vs 28% DC收入 = 38pp缺口(每5pp缩小→P/E支撑+10pp)"
+    - signal: "B2B ratio(订单/收入比)季度趋势"
+      why_alpha: "B2B从1.2x降至<1.0x=积压增长见顶→增长叙事动能枯竭的最早信号"
+      current_reading: "当前>1.0x(健康但需监控加速方向)"
+    - signal: "Boyd协同年化进度"
+      why_alpha: "Boyd是NPV为负的收购→协同是唯一翻正路径→$60M+年化=正轨/$40M以下=警告"
+      current_reading: "待FY2026 Q3-Q4首次披露"
+
+  confirmation_signals:
+    - signal: "季度DC订单同比增速"
+      bullish_threshold: ">100% YoY(超级周期延续)"
+      bearish_threshold: "<30% YoY(正常化启动,叙事降温)"
+    - signal: "EA segment margin季度趋势"
+      bullish_threshold: ">30%(结构性效率提升确认)"
+      bearish_threshold: "<27%连续2Q(周期性回吐确认)"
+    - signal: "Net Debt/EBITDA"
+      bullish_threshold: "<2.5x(管理层承诺兑现)"
+      bearish_threshold: ">4.0x(信用评级下调风险)"
+
+  noise_signals:
+    - signal: "Sell-side目标价调整"
+      why_noise: "卖方普遍用GAAP P/E且未区分身份溢价→目标价反映共识而非独立分析"
+    - signal: "短期股价波动(日度/周度)"
+      why_noise: "ETN与VRT高度相关→AI板块情绪波动是噪音,看季度DC收入趋势"
+    - signal: "ESG评级变化"
+      why_noise: "ESG对ETN估值贡献间接且温和——ETN获高P/E是因为DC增长不是ESG评级"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: VRT
+      similarity: "同为数据中心电力基础设施,同受AI CapEx驱动"
+      key_difference: "VRT=AI纯粹玩家(DC占比>70%,P/E 71x) vs ETN=混合身份(DC 28%,P/E 35.7x) | VRT PEG 1.80x < ETN 2.18x"
+
+    - ticker: SNSE.PA
+      similarity: "最接近可比对象: 电力管理全球巨头,类似产品组合"
+      key_difference: "Schneider软件领先(EcoStruxure vs Brightlayer差10-100x) | SE P/E 28x为ETN估值的外部锚"
+
+    - ticker: ABB
+      similarity: "电气化/自动化全球巨头,类似终端市场"
+      key_difference: "ABB护城河~7.0(vs ETN 7.5) | ABB P/E 30x | ABB自动化比重更高"
+
+    - ticker: SLB
+      similarity: "最佳历史类比(65%相似度): 传统工业+新叙事+定价太满太快"
+      key_difference: "SLB是已完成案例(叙事崩塌→P/E从22x跌至10x) | ETN处于可能重演的中段"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "Schneider (~8.0) > ETN (7.5) > ABB (~7.0) > VRT (~6.0)"
+      reasoning: "Schneider软件锁定+全球规模优势; ETN转换成本最强但软件最弱"
+
+    - dimension: "AI纯度(DC收入占比)"
+      position: "VRT (>70%) >> ETN (28%) > Schneider (~20%) > ABB (~15%)"
+      reasoning: "VRT是纯DC玩家; ETN DC增长快但仍是混合身份"
+
+    - dimension: "估值吸引力(PEG)"
+      position: "VRT (1.80) > ETN (2.18) > ABB (2.75) > HON (3.33)"
+      reasoning: "VRT增长率高→PEG反而最低; ETN绝对P/E看似便宜但增长调整后更贵"
+
+    - dimension: "增长质量"
+      position: "VRT (20%+ CAGR) > ETN (13% Rev Growth) > Schneider (~8%) > ABB (~5%)"
+      reasoning: "ETN增长在工业同业中优异但与VRT差距大→AI溢价与增长差不匹配"
+
+  industry_position:
+    quadrant: "高估值 × 中等增长 × 身份模糊区"
+    archetype: "周期成长转型中: 工业收费站(电气分配/保护)被AI叙事溢价重估——类似2014年页岩重估SLB"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF三阶段→市场隐含FCF 18% CAGR→增长溢价占72%(科技股水平)→暴露工业公司被科技定价的风险错配"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "SLB类比: DC CapEx渐进放缓→订单增速正常化→每季度叙事小幅弱化→P/E温水煮青蛙从35x滑至22-25x→2027-28入场窗口"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~RT-7全覆盖+双向校准→发现Phase 1-3系统性看空偏差(9:1)→CQ上调2-5pp→最终36.4%"
+
+  novel_patterns:
+    - name: "双重身份估值框架(AI权重-收入占比缺口)"
+      description: "用工业锚和AI锚反推隐含AI权重→与实际DC收入占比对比→缺口=叙事驱动的身份溢价→量化每股美元值"
+      transferable_to: ["所有被AI/新能源/自动驾驶叙事重估的传统工业公司", "电力设备/工业自动化/能源服务"]
+
+    - name: "增长溢价占比作为估值属性探针"
+      description: "零增长EV vs 实际EV→增长溢价占比→>60%的非科技公司标记'风险错配'→增长率miss的股价敏感性远高于科技公司"
+      transferable_to: ["所有Reverse DCF中增长溢价>60%的非SaaS/订阅公司"]
+
+    - name: "并购周期顶部NPV概率加权"
+      description: "四情景(Bull/Base/Bear/Worst)概率加权→如果概率加权NPV<收购价→在周期高点买贵了→量化容错空间与Cooper类比"
+      transferable_to: ["所有在行业CapEx高点进行大型并购的公司"]
+
+    - name: "积压恐惧囤积量化(B/R divergence)"
+      description: "积压增速>>收入增速→B/R ratio持续攀升→半导体2021作为基准率→分层可靠积压(Tier 1/2/3)→量化取消风险"
+      transferable_to: ["供应约束行业(变压器/半导体设备/工业设备)积压创纪录的公司"]
+
+    - name: "SLB-ETN历史类比框架(65%相似度评分)"
+      description: "传统工业+行业超级周期+身份重估→多维度相似度评分(收入结构/估值/基金行为/叙事)→65%以上高度警惕"
+      transferable_to: ["所有经历行业超级周期身份重估的工业公司"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "护城河有多重半衰期且层级差异极大: 转换成本>20年 vs 供应约束2-4年 vs 软件<3年"
+        implication: "综合评分7.5掩盖了软件层(<3年)和供应层(2-4年)的脆弱性——分层评估比综合评分更有信息量"
+      - insight: "Morningstar'宽护城河'升级可能基于暂时性壁垒(供应约束)的贡献——如果剔除,评分从7.5降至6.5-7.0(窄护城河边界)"
+        implication: "评估第三方护城河评级时,检查评级是否包含暂时性成分——如果是,该评级的持久性低于表面"
+
+    valuation_insights:
+      - insight: "双重身份框架: 反推隐含AI权重并与实际收入占比对比,量化叙事驱动的身份溢价"
+        implication: "对所有被新叙事(AI/电动化/自动驾驶)重估的传统公司,建立'权重-占比缺口'作为估值脆弱度指标"
+      - insight: "增长溢价占EV>60%的非科技公司存在'风险错配'——工业增长的可预测性不支撑科技级溢价"
+        implication: "Reverse DCF后必须检查增长溢价占比——>60%且非订阅模式=标记额外风险贴水"
+
+    screening_insights:
+      - insight: "PEG比绝对P/E更能暴露真实估值水平——ETN P/E 35.7x看似<VRT 71x但PEG 2.18x>VRT 1.80x"
+        implication: "选股筛选中绝对P/E的'便宜'可能是幻觉——PEG是增长调整后的正确比较工具"
+      - insight: "身份溢价38pp+SLB 65%相似度=高度警惕区——传统公司被赋予科技溢价时,叙事维护成本极高"
+        implication: "选股时增加'叙事依赖度'筛选: 隐含权重-实际占比>25pp→标记叙事风险"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "量化身份溢价: 隐含权重vs实际收入占比"
+      trigger: "传统行业公司P/E大幅高于行业均值+有新叙事加持(AI/电动化/etc)"
+      origin: "ETN 66.5% AI权重 vs 28% DC收入=38pp缺口=每股$90纯叙事溢价"
+      generalization: "所有因新叙事被重估的传统公司——量化缺口后可判断叙事脆弱度,缺口>25pp=高风险"
+
+    - habit: "Reverse DCF后计算增长溢价占比"
+      trigger: "做完Reverse DCF反推隐含增长率后"
+      origin: "ETN增长溢价占EV 72%——工业公司中极为罕见,暴露科技级定价风险"
+      generalization: "增长溢价>60%的非订阅模式公司都应被标记——增长率每miss 1pp的敏感性远高于预期"
+
+    - habit: "并购估值锚定历史倍数而非当前交易倍数"
+      trigger: "公司宣布大型收购且行业处于CapEx高点"
+      origin: "Boyd 22.5x vs Cooper 12x→容错空间从极大缩至极小→概率加权NPV为负"
+      generalization: "周期高点的'战略溢价'往往在周期回落后变成'愚蠢溢价'——用上一周期低点倍数作为检验锚"
+
+    - habit: "积压增速>>收入增速时,追问恐惧囤积比例"
+      trigger: "积压同比增速>收入同比增速2x以上"
+      origin: "ETN积压+31% vs 收入+10%→半导体2021类比→可靠积压可能仅50-60%"
+      generalization: "供应约束行业的积压创纪录≠需求创纪录——分层评估可靠性(Tier 1/2/3)是必要步骤"
+
+  quality_feedback:
+    strengths:
+      - "D3竞争格局9/10 — Schneider/ABB/VRT/Delta五维对标+产业链上下游全覆盖"
+      - "D5非共识8/10 — 11个CI注册; 身份溢价38pp+SLB类比+Boyd近中性为强洞见"
+      - "D10可操作性9/10 — KS/TS/VP覆盖完整; 估值独立三条洞见; 投资日历明确"
+      - "D8风险拓扑8/10 — 温水煮青蛙情景量化; 产业链风险传导图; 矛盾组合识别"
+    weaknesses:
+      - "DM密度0.24/千字(远低于0.8门控) — 79个DM锚点对331K报告严重不足"
+      - "D2估值方法7/10 — 8种方法全面但FMP DCF为黑箱+WACC敏感性主导评级→部分方法独立性存疑"
+      - "D4红队7/10 — RT-2发现看空偏差(9:1)→Phase 1-3可能系统性偏空→置信度可能被低估"
+      - "产业链章节(9A)是强补充但可进一步量化GOES供应对利润率的传导路径"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "Reverse DCF P1前置有效防止结论先行 (铁律O)"
+        evidence: "Ch18 Reverse DCF有效翻译'市场在赌什么'→避免了正向DCF的假设决定结论陷阱"
+        confidence_after: "高(又一次执行确认)"
+
+      - hypothesis: "PEG比PE更能暴露真实估值水平 (CME发现)"
+        evidence: "ETN P/E 35.7x看似<VRT 71x但PEG 2.18x>VRT 1.80x→绝对PE是幻觉"
+        confidence_after: "高(跨行业验证: 金融基础设施CME+工业ETN)"
+
+    extended:
+      - hypothesis: "SLB 2014是工业身份溢价最佳历史类比"
+        extension: "ETN报告系统性构建了65%相似度评分框架→可复用于其他被行业超级周期重估的工业公司"
+
+      - hypothesis: "Boyd并购周期顶部风险"
+        extension: "四情景NPV概率加权+Cooper历史倍数对照→从定性'可能买贵了'升级为定量'NPV为负$0.77B'"
+
+    refuted: []
+
+  limitations:
+    - "DM密度0.24/千字远低于门控标准(0.8)→数据锚定严重不足,部分定量判断缺乏可追溯性"
+    - "Boyd EBITDA为C级数据($420M可能虚增至$360M)→收购论文的关键输入变量不可靠"
+    - "Hyperscaler CapEx 2027-2028路径不可预测→DC收入预测在S1和S4之间相差3.5x"
+    - "利润率正常化幅度(3-5pp)基于合理推断而非硬数据→管理层32%目标可能对也可能错"
+    - "Phase 1-3存在系统性看空偏差(RT-2发现)→置信度36.4%可能低估2-5pp→真实区间可能38-42%"
+    - "积压取消率ETN从未披露→'恐惧囤积'判断基于类比(半导体2021)而非直接证据"

@@ -1,0 +1,433 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — S&P Global (SPGI)
+# 压缩比: 160K → ~11K (15x)
+# 六层 + 三个重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: SPGI
+  company: "S&P Global"
+  report_date: "2026-03-11"
+  stock_price: "$435.44"
+  market_cap: "~$135B"
+  report_version: "v1.0"
+  report_path: "reports/SPGI/SPGI_Complete_v1.0.md"
+  quality_score: "报告未含记分卡"
+  cqi: "报告未含CQI"
+  a_score: "56.0/70"
+  framework_version: "v18.0"
+  industry: "金融基础设施"
+  archetype: "垄断收费站(双轨: 收费公路+数据业务)"
+  chars: 160000
+  dm_count: 71
+  dm_density: "0.44/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "SPGI是金融世界的私有化度量衡局——制度嵌入半衰期>50年+4:1上行/下行不对称性, 但+10.3%期望回报处于关注/中性边界, 3pp即翻转"
+  rating: "关注(偏中性)"
+  fair_value: "加权$472 | 概率加权EV $480"
+  expected_return: "+10.3% (Bull $576×25% + Base $490×50% + Bear $365×25%)"
+
+  key_arguments:
+    - claim: "两个生意是理解SPGI的钥匙——收费公路贡献63%利润应得32-37x P/E, 统一估值低估收费公路"
+      direction: bullish
+      magnitude: 4
+      mechanism: "Ratings OPM 61% + Indices OPM 66% = 收费公路层, 应得32-37x → SOTP证实混合折价10-15% → 分拆释放价值"
+      kill_switch: "分拆延迟>6个月 或 残余SPGI P/E分拆后仍<27x(说明折价是结构性非暂时性)"
+
+    - claim: "市场对AI风险定价放大3.3x——对100%业务打折但仅<30%利润面临AI威胁"
+      direction: bullish
+      magnitude: 4
+      mechanism: "2月暴跌-18%是AI焦虑税 → Ratings+Indices受NRSRO/品牌保护几乎免疫AI → 仅MI(37%收入, <30%利润)面临真实威胁"
+      kill_switch: "AI评级工具获得NRSRO认证(历史未发生) 或 GenAI直接替代Capital IQ专有数据(LCD/评级历史)"
+
+    - claim: "制度嵌入护城河是人类金融史上最深的之一, A-Score 56.0/70已评估公司最高"
+      direction: bullish
+      magnitude: 5
+      mechanism: "NRSRO 51年+Basel III全球嵌入+债券契约强制评级 → 2008危机后Dodd-Frank反而加深护城河 → 半衰期>50年"
+      kill_switch: "全球金融监管框架重建废除强制评级(概率<3%, 需全球协同)"
+
+    - claim: "定价权Stage 1.0几乎未释放, 距FICO路径有14pp OPM空间"
+      direction: bullish
+      magnitude: 3
+      mechanism: "评级费仅+2.5%/yr → FICO用8年从Stage 1.0到2.3, OPM 45%→68% → SPGI Ratings OPM可从61%→70%+"
+      kill_switch: "投行客户结构约束释放速度(投行集中度高→议价权强于FICO面对的分散消费者)"
+
+    - claim: "Kensho 7年$550M投入无突破性产品=AI赋能叙事最大弱点"
+      direction: bearish
+      magnitude: 3
+      mechanism: "管理层沉默=没有好数据可展示 → SparkAIR/RegGPT如果FY2027<$30M=Kensho失败确认 → MI AI投资期可能是沉没成本"
+      kill_switch: "SparkAIR/RegGPT FY2027贡献>$100M(逆转Kensho叙事)"
+
+  moat:
+    composite_score: 9.0
+    half_life: ">50年(制度嵌入) | >25年(品牌) | >15年(数据) | 5-10年(转换成本/MI)"
+    dimensions:
+      - type: regulatory
+        strength: 5
+        evidence: "NRSRO 51年+Basel III+Dodd-Frank+债券契约强制, 五层制度嵌入22.5/25分, 2008危机后反而强化"
+        vulnerability: "全球金融监管框架重建(<3%概率)"
+      - type: brand
+        strength: 5
+        evidence: "S&P 500=$20T+ AUM基准化, 117年信用评级历史不可复制, 基础设施品牌非消费品牌"
+        vulnerability: "S&P 500品牌几乎不可替代; 评级品牌需>20年历史积累"
+      - type: data
+        strength: 4
+        evidence: "117年信用评级历史+LCD杠杆贷款数据+SNL金融机构数据, 不可复制; AI训练数据资产"
+        vulnerability: "AI可能改变数据价值链(主要影响MI而非Ratings/Indices)"
+      - type: switching_cost
+        strength: 4
+        evidence: "Capital IQ嵌入金融机构workflow, Platts嵌入能源交易合约, 评级嵌入债券契约"
+        vulnerability: "MI转换成本不是不可能——Bloomberg是有效替代; AI可能降低迁移成本"
+      - type: network_effect
+        strength: 3
+        evidence: "Indices飞轮(AUM→标准化→更多AUM); Ratings弱双边(发行人→投资者); 间接网络效应非平台级"
+        vulnerability: "双寡头(MCO)分流; MSCI/FTSE Russell在国际市场竞争"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含FCFF CAGR 9.4%(10年) — 对有机FCFF CAGR ~15%的垄断者偏保守; 隐含收入CAGR 11.4%"
+    methods_used: ["Reverse DCF", "SOTP", "FCFF-DCF", "可比公司(中位P/E)", "可比公司(FY26E×25x)", "历史均值P/E", "分析师共识"]
+    dispersion: "29.4% ($411-$550)"
+    consensus_vs_ours: "市场看SPGI=AI威胁+商誉负担的金融公司 | 我们看SPGI=制度垄断收费站+AI焦虑税放大3.3x+隐形SOTP套利"
+    entry_zone: "当前$435已在可关注区间; 理想入场<$400 (P/E<20x, 强安全边际)"
+    catalyst: "Mobility分拆mid-2026(6个月内) → SOTP价值释放 | 再融资潮$6-8T到期债 → 评级确定性收入"
+
+  action_framework:
+    verdict: "当前可关注@$435 — 品质最高(A-Score 56.0), 期望回报+10.3%处于边界, 等待催化剂确认"
+    buy_triggers:
+      - trigger: "Mobility分拆完成 + FY2026 Q1-Q2 MI收入>+5% + EPS on-track"
+        price_zone: "$420-450 (当前区间, 催化剂确认后)"
+        reasoning: "三重验证同时满足=评级升至关注(偏积极), 下行有限(制度垄断保底)"
+      - trigger: "市场恐慌(非SPGI基本面)推动P/E<20x"
+        price_zone: "$380以下"
+        reasoning: "A-Score最高公司在P/E<20x=历史性入场机会, Kelly转正"
+    hold_conditions:
+      - "NRSRO制度完整(任何挑战=重新评估)"
+      - "MI续约率不连续恶化(2Q以上<90%=触发KS)"
+      - "FY2026 EPS落在$19.20-$19.80区间"
+      - "被动投资占比继续上升(>57%到2027年)"
+    sell_triggers:
+      - signal: "MI续约率连续2Q<90% + MI OPM<15%"
+        severity: "action"
+        action: "减仓50%, CQ-2下调至40%, 可能降至审慎关注"
+      - signal: "FY2026 EPS miss>5% (即<$18.65)"
+        severity: "action"
+        action: "减仓50%, 重新评估AI投资期是否已变成结构性减速"
+      - signal: "AI评级工具获得NRSRO认证"
+        severity: "emergency"
+        action: "全部卖出, 制度护城河基础假设被颠覆"
+      - signal: "P/E>33x且无增速改善催化(分拆失败+MI减速)"
+        severity: "warning"
+        action: "减仓25%, 品质溢价过度定价"
+    position_sizing: "边界关注=试探性仓位(5-8%); 催化剂确认后可加至12-15%"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "制度嵌入的反脆弱悖论——危机强化护城河"
+    chain: >
+      金融危机爆发(2008) → 评级机构被批评"评级泡沫"
+      → 逻辑上应削弱评级机构 → 但Dodd-Frank的应对是加强监管而非取消强制评级
+      → 提高NRSRO准入门槛(认证2-3年+方法论+10年track record)
+      → 新进入者几乎为零 → 在位者护城河反而加深
+      → 推论: 每次金融危机后监管扩张=SPGI护城河的加速器
+    transferable_to: "所有受监管保护的基础设施(清算所CME/支付网络V/MA/评级机构MCO)"
+    reasoning_habit: "追问'危机后监管会加强还是削弱' — 如果加强=反脆弱护城河, 如果削弱=脆弱护城河"
+
+  - id: "CC-2"
+    name: "两个生意的混合估值陷阱"
+    chain: >
+      SPGI有两种截然不同的业务: 收费公路(Ratings 61%OPM + Indices 66%OPM)和数据(MI 19%OPM)
+      → 市场用统一P/E 29.7x定价 → 收费公路应得32-37x, 数据应得18-22x
+      → 统一定价=对收费公路打折10-15% → 这是典型集团折价
+      → 分拆Mobility=减少业务线复杂度→折价收窄
+      → SOTP证实: 收费公路占74.6%价值但被统一定价低估
+      → 分拆催化剂=SOTP套利机会
+    transferable_to: "所有含高利润率+低利润率分部的集团(如GOOG广告vs云, AMZN电商vs AWS)"
+    reasoning_habit: "看到混合业务公司时, 立刻拆分部算SOTP — 统一P/E可能系统性低估高利润率分部"
+
+  - id: "CC-3"
+    name: "AI焦虑税的放大效应量化"
+    chain: >
+      2月暴跌$0.02 EPS miss → -18%市值蒸发
+      → 追问: $0.02 miss怎么值-18%?
+      → 发现: 市场将AI焦虑映射到100%业务 → 但仅<30%经济利润(MI)真正面临AI风险
+      → Ratings受NRSRO制度保护(AI评级需获NRSRO认证+10年track record)
+      → Indices受品牌保护(S&P 500不可替代)
+      → AI焦虑税放大3.3x(100%/30%) → $75折价 vs 合理影响~$0
+      → 这就是非共识机会的量化基础
+    transferable_to: "所有被AI恐慌影响但核心业务有制度/品牌保护的公司"
+    reasoning_habit: "当市场因AI恐慌全面打折时, 立刻量化'真正暴露面积' — 放大效应越大=套利机会越大"
+
+  - id: "CC-4"
+    name: "ROIC商誉幻觉——量化筛选系统性错过"
+    chain: >
+      SPGI报告ROIC仅12% → 量化筛选系统排除(要求>15%)
+      → 追问: 12%的分母是什么?
+      → 投入资本$42B中商誉$36.5B(IHS收购)=87%的分母是买价不是运营资产
+      → 剔除商誉: 经营ROIC = $5.07B / ~$5.5B = >90%
+      → 差距8倍! → 量化系统看到的12%是幻觉
+      → 推论: 所有做过大型收购的优质公司都可能被量化筛选系统性错过
+    transferable_to: "所有商誉占总资产>50%的收购型公司(MCO/MSCI/FICO/ADBE)"
+    reasoning_habit: "看到ROIC<15%但OPM>40%时, 立刻检查商誉占比 — 如果>50%则需计算经营ROIC"
+
+  - id: "CC-5"
+    name: "双寡头Nash均衡的稳定性证据"
+    chain: >
+      S&P+MCO合计~80%评级市场份额已超20年 → Fitch ~15%且停滞
+      → 追问: 为什么不是赢家通吃?
+      → 关键机制: 投资者要求"两家评级"(Investment Policy Statement)
+      → 双评级标准=制度化的双寡头共存
+      → 2008年危机中两家同时受政治攻击 → 但份额几乎不变
+      → Nash均衡稳态8/10 → 私募信贷是增量蓝海(共赢非零和)
+    transferable_to: "评级/审计/咨询等专业服务双寡头(MCO-SPGI/EY-Deloitte/Visa-MA)"
+    reasoning_habit: "双寡头比垄断更稳定 — 追问'什么制度安排锁定了两家共存'而非'谁会赢'"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "SPGI ROIC仅12%说明资本配置效率平庸"
+      final: "经营ROIC>90%, 12%是商誉$36.5B(IHS收购价)造成的幻觉"
+      pivot: "商誉占总资产86.2% → 剔除后分母从$42B降至~$5.5B → ROIC跳升8倍"
+
+    - initial: "AI将颠覆评级行业(2月暴跌的隐含信念)"
+      final: "AI评级需NRSRO认证+10年track record+债券契约嵌入 → 替代周期>20年, 概率<5%"
+      pivot: "制度嵌入五层分析(法律→合约→会计→经济→认知)=AI需逐层突破, 每层需年级别时间"
+
+    - initial: "P/E 29.7x买入全球最好的金融基础设施是合理的"
+      final: "SOTP拆分后, 收费公路应得32-37x而数据仅18-22x → 统一P/E掩盖了混合折价10-15%"
+      pivot: "Ratings+Indices贡献63%利润但被MI(19% OPM)拖累统一估值"
+
+  surprises:
+    - finding: "A-Score 56.0/70是已评估40+公司中最高分 — 超过FICO(51.1)/CME(48.2)"
+      implication: "SPGI的品质不是单维度最强, 而是所有维度无致命缺陷+制度嵌入C1满分(5.0) → 选股框架中'最不可能出问题'比'增速最快'更稀缺"
+
+    - finding: "AI焦虑税放大3.3x — 市场对100%业务打AI折扣但仅<30%利润面临风险"
+      implication: "2月-18%暴跌中$75折价vs合理影响~$0 → 这是情绪定价而非基本面定价, 创造了CI-02套利机会"
+
+    - finding: "定价权Stage 1.0未释放 — 评级费仅+2.5%/yr, 距FICO路径有14pp OPM空间"
+      implication: "隐形期权: Stage 1.0→1.5释放=EPS增厚+估值倍数双击=$150/股潜力, 但时间不确定(5-10年)"
+
+    - finding: "Kensho 7年$550M投入无突破性产品 — AI赋能叙事缺乏track record"
+      implication: "管理层沉默=没有好数据可展示 → 如果SparkAIR/RegGPT FY2027<$30M则确认Kensho为沉没成本"
+
+  blind_spots:
+    - area: "MI续约率(管理层未披露)"
+      why_matters: "MI占收入37%, 续约率是判断AI侵蚀速度的最直接指标; 不披露=可能不够好"
+      monitor: "FY2026 Q1-Q2 earnings call分析师提问频率+管理层回应质量"
+
+    - area: "Mobility分拆后残余SPGI的实际P/E重估幅度"
+      why_matters: "分拆是当前论文最大催化剂, 但重估幅度不确定(可能P/E>30x验证论文, 也可能<27x说明折价结构性)"
+      monitor: "SEC Form 10/S-1 filing → 独立上市日 → 分拆后12个月P/E变化"
+
+    - area: "被动投资是否在55%见顶(红队RT-3发现)"
+      why_matters: "Indices分部14%收入但~20%利润+13.6%增速依赖被动投资趋势持续 → 见顶=增速引擎熄火"
+      monitor: "ICI/Morningstar年度被动投资占比数据; 如果2027年<57%=见顶信号"
+
+  sell_lessons:
+    - scenario: "2月暴跌$0.02 EPS miss → -18%: 高品质公司在情绪驱动暴跌中的安全边际"
+      lesson: "高品质垄断在情绪暴跌后是买入机会而非卖出信号 — 但需要验证暴跌原因是情绪(可逆)还是基本面(结构性)"
+      transferable: "所有A-Score>50的制度垄断型公司(CME/MCO/MSCI/FICO)"
+    - scenario: "评级稳定性极低(3pp即翻转) → 边界评级的仓位管理"
+      lesson: "期望回报处于评级门槛边界时, 仓位应反映不确定性(试探性5-8%而非conviction 15%+)"
+      transferable: "所有期望回报在评级门槛±5pp以内的公司"
+    - scenario: "集团折价长期存在(MI拖累) → 催化剂(分拆)是解锁的关键"
+      lesson: "混合折价不会自然消失——需要具体催化剂(分拆/剥离)才能实现SOTP价值。没有催化剂的SOTP套利可能永远是纸上富贵"
+      transferable: "所有含低利润率分部拖累整体估值的集团公司"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "MI有机收入增速(排除M&A)"
+      why_alpha: "Bull/Bear分水岭: >5%=AI投资期暂时压缩(Base), <3%=结构性下滑(Bear) → 直接影响评级方向"
+      current_reading: "FY2025约+4-5%, 需FY2026 Q1确认趋势"
+    - signal: "Mobility分拆进度(SEC filing里程碑)"
+      why_alpha: "分拆是最大确定性催化剂 → 延迟>6个月直接触发评级下调 → 其他分析师可能低估分拆对估值重塑的影响"
+      current_reading: "mid-2026目标, SEC filing待确认"
+    - signal: "SparkAIR/RegGPT可量化收入贡献"
+      why_alpha: "Kensho 7年叙事的终极验证 → >$100M=AI赋能真实, <$30M=沉没成本确认 → CQ-2大幅调整"
+      current_reading: "FY2025无公开数据(管理层沉默)"
+
+  confirmation_signals:
+    - signal: "FY2026 EPS"
+      bullish_threshold: ">$19.50 (Base上端)"
+      bearish_threshold: "<$19.00 (miss>3%)"
+    - signal: "评级费率年度调整"
+      bullish_threshold: "≥+3.0%/yr (Stage 1.0→1.5进入)"
+      bearish_threshold: "<+2.0%/yr (Stage 1.0停滞)"
+    - signal: "被动投资占比(年度)"
+      bullish_threshold: ">57% (2027, 趋势持续)"
+      bearish_threshold: "<55% (见顶信号)"
+
+  noise_signals:
+    - signal: "GAAP ROIC水平(12%)"
+      why_noise: "商誉$36.5B造成的幻觉, 经营ROIC>90% → 量化筛选系统性误读, 不反映真实运营效率"
+    - signal: "Sell-side目标价(中位$550)"
+      why_noise: "卖方普遍用统一P/E → 不区分收费公路vs数据业务的不同应得倍数 → 自己做SOTP比看卖方更准"
+    - signal: "日度股价波动(2月暴跌后波动放大)"
+      why_noise: "情绪驱动(AI焦虑+暴跌惯性) → 基本面(制度垄断)季度级变化才是信号"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: MCO
+      similarity: "评级双寡头伙伴, 相同制度嵌入(NRSRO+Basel III), 类似OPM(60%级)"
+      key_difference: "MCO=纯评级+分析(更纯粹) vs SPGI=评级+指数+数据+能源(更复杂) | MCO无MI拖累→P/E溢价+21%"
+
+    - ticker: MSCI
+      similarity: "同为金融基础设施指数/数据垄断, 类似轻资产模式, 类似制度嵌入"
+      key_difference: "MSCI=纯指数/数据(增速最快~12%) vs SPGI=多分部(增速~8%) | MSCI P/E 35x溢价+28% → 纯度溢价"
+
+    - ticker: FICO
+      similarity: "同为制度嵌入垄断, A-Score接近(51.1 vs 56.0), 定价权释放路径可参考"
+      key_difference: "FICO=消费信用垄断(定价权已释放到Stage 2.3) vs SPGI=B2B评级(Stage 1.0) | FICO杠杆极端(8.5x vs 1.62x)"
+
+  comparative:
+    - dimension: "品质(A-Score)"
+      position: "SPGI (56.0) > FICO (51.1) > MSCI (~50) > CME (48.2) > MCO (~45)"
+      reasoning: "SPGI所有维度无致命缺陷+制度嵌入C1满分(5.0)=最高综合品质"
+
+    - dimension: "护城河深度(制度嵌入)"
+      position: "SPGI (9.5) ≈ CME (9.3) > FICO (~9.0) > MCO (~8.5) > MSCI (~8.0)"
+      reasoning: "NRSRO 51年+Basel III全球嵌入+117年历史=金融基础设施最深制度嵌入"
+
+    - dimension: "估值吸引力(P/E vs 增速)"
+      position: "SPGI (29.7x, ~8%增速) > MCO (33.1x, ~10%) > MSCI (35.1x, ~12%) > FICO (47.6x, ~15%)"
+      reasoning: "SPGI P/E溢价仅+9%(同行最低) vs FICO +74% → 品质折价最大"
+
+    - dimension: "AI风险暴露"
+      position: "MSCI (低) < SPGI (低-中, MI暴露) < MCO (低) < VRSK (中)"
+      reasoning: "SPGI因MI分部(37%收入)有实质AI暴露, 但核心收费公路(Ratings+Indices)几乎免疫"
+
+    - dimension: "5年总回报(2020-2025)"
+      position: "CBOE (+208%) > SPGI (+145%) > ICE (+120%) > CME (+91%) > MCO (+85%)"
+      reasoning: "SPGI排名第二得益于IHS协同兑现+被动投资趋势"
+
+  industry_position:
+    quadrant: "最高品质 × 中等估值 × 中等增速 × 最低P/E溢价"
+    archetype: "垄断收费站(双轨) — 收费公路(评级+指数)高确定性+数据业务面临竞争"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF → 市场隐含FCFF CAGR 9.4% vs 有机~15% → 市场定价偏保守 → AI焦虑+2月情绪惯性"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1到RT-7七问审查: 0个严重发现(>10%影响), CQ全面下调-2.4pp, 最大发现=Kensho 7年反驳AI赋能叙事"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "CI-05温水煮青蛙: MI渐进恶化3年=原地踏步(非暴跌)是最可能的熊方路径 → 不是急跌而是机会成本"
+
+  novel_patterns:
+    - name: "AI焦虑税放大效应"
+      description: "市场因AI恐慌对100%业务打折, 但量化真正AI暴露面积后发现放大3.3x — 暴露面积越小, 套利机会越大"
+      transferable_to: ["所有被AI恐慌全面打折但有制度/品牌保护的公司", "ADBE(Creative Cloud vs Document Cloud风险差异化)"]
+
+    - name: "ROIC商誉幻觉识别"
+      description: "大型收购导致商誉膨胀→ROIC 12%(幻觉) vs 经营ROIC>90%(真实) → 量化筛选系统性错过 → 定价效率低下"
+      transferable_to: ["所有商誉占总资产>50%的收购型公司(MCO/MSCI/FICO/ADBE/CRM)"]
+
+    - name: "定价权Stage模型跨公司对标"
+      description: "用FICO的Stage 0→2.3路径(8年, OPM +23pp)作为SPGI定价权释放的参考基准, 量化隐形期权价值"
+      transferable_to: ["所有制度垄断但定价权未释放的公司", "垄断公用事业的费率审查周期"]
+
+    - name: "双寡头制度化共存机制"
+      description: "投资者要求'两家评级'=制度化的双寡头共存, Nash均衡稳态8/10, 2008危机验证 → 比垄断更稳定"
+      transferable_to: ["V/MA支付双寡头", "审计四大", "指数双寡头(SPGI vs MSCI)"]
+
+    - name: "承重墙脆弱度测试(8面墙)"
+      description: "将市场定价拆解为8面承重墙, 逐一测试脆弱度 → 0面高脆弱度=定价合理(非过度乐观)"
+      transferable_to: ["所有Reverse DCF后需要验证隐含假设合理性的公司"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "制度嵌入的反脆弱性: 2008危机后Dodd-Frank加强(非废除)强制评级 → 危机=护城河加速器"
+        implication: "护城河评估增加'危机后监管会加强还是削弱'维度 — 加强型是反脆弱护城河, 半衰期接近无限"
+      - insight: "品牌分类: 基础设施品牌(SPGI/S&P 500) vs 消费品牌(Coke) → 前者护城河深度远超后者"
+        implication: "品牌评估应区分'必须使用'和'选择使用' — 必须使用的品牌不需要营销费维持"
+
+    valuation_insights:
+      - insight: "统一P/E对混合业务公司系统性低估高利润率分部 — SOTP差额=隐形套利"
+        implication: "所有含高/低利润率分部的集团, 必须做SOTP估值 → 统一P/E是懒惰定价"
+      - insight: "ROIC商誉幻觉: 大型收购后ROIC被商誉稀释 → 需计算经营ROIC作为真实效率指标"
+        implication: "选股筛选中ROIC门槛应区分'有机增长公司'和'收购驱动公司' → 后者用经营ROIC"
+
+    screening_insights:
+      - insight: "A-Score>50 + P/E溢价<15% = 品质折价(SPGI 56.0但溢价仅9%)"
+        implication: "选股增加'品质折价'筛选: A-Score/P/E溢价比值越高=市场越低估品质"
+      - insight: "AI焦虑税>2x放大 = 制度保护型公司的情绪套利机会"
+        implication: "AI恐慌期间, 筛选'AI暴露面积<50%但股价跌幅>15%'的制度垄断公司"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "看到混合业务集团时, 立刻拆SOTP"
+      trigger: "公司有≥2个分部且OPM差>20pp"
+      origin: "SPGI收费公路OPM 63% vs MI OPM 19% → 统一P/E低估收费公路10-15%"
+      generalization: "统一P/E是市场懒惰定价的产物 → SOTP差额=可量化的套利机会 → 需要催化剂(分拆)才能实现"
+
+    - habit: "AI恐慌打折时, 量化真实暴露面积"
+      trigger: "股价因AI恐慌下跌>10%"
+      origin: "SPGI 2月-18%暴跌 vs 真实AI暴露仅<30%利润 → 放大3.3x"
+      generalization: "AI恐慌创造的套利机会大小=放大倍数 → 放大越大, 套利越确定 → 前提是核心业务有制度/品牌保护"
+
+    - habit: "看到ROIC<15%但OPM>40%时, 立刻检查商誉占比"
+      trigger: "ROIC和OPM矛盾(高OPM应产生高ROIC)"
+      origin: "SPGI ROIC 12%(商誉$36.5B) vs 经营ROIC>90% → 8倍差距"
+      generalization: "大型收购后商誉占总资产>50%=ROIC幻觉 → 量化筛选可能系统性错过 → 用经营ROIC替代"
+
+    - habit: "评级在门槛边界时, 执行概率敏感性分析"
+      trigger: "期望回报在评级门槛±5pp以内"
+      origin: "SPGI +10.3%刚过+10%门槛 → Bear概率+3pp即翻转 → 评级稳定性低"
+      generalization: "边界评级的仓位应反映不确定性 — 试探性仓位而非conviction仓位, 等催化剂确认"
+
+  quality_feedback:
+    strengths:
+      - "制度嵌入五层分析(法律→合约→会计→经济→认知) → 护城河量化标杆"
+      - "AI焦虑税量化(放大3.3x) → 创造性地连接了市场情绪与基本面暴露差异"
+      - "ROIC商誉幻觉的诊断(12% vs >90%) → 高度可迁移的分析视角"
+      - "CQ系统从P0到P4的置信度演化跟踪(46.3%→64.8%) → 分析纪律的体现"
+    weaknesses:
+      - "DM密度0.44/千字(远低于0.8门控) → 数据锚定严重不足, 许多核心数字缺乏来源标注"
+      - "报告160K字符(低于270K门控) → 覆盖广度可能不足(特别是Platts/CI分部深度不够)"
+      - "因果链密度未达标 → 部分章节断言多于论证"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "制度嵌入在危机中加深(CME CC-1中的推论)"
+        evidence: "2008年评级危机后Dodd-Frank强化NRSRO准入 → 新进入者几乎为零 → SPGI独立验证"
+        confidence_after: "高(两份金融基础设施报告独立确认)"
+
+      - hypothesis: "混合折价可通过分拆释放(通用集团折价理论)"
+        evidence: "SOTP $418 vs 统一P/E估值~$435 → 分拆后潜力+$60-80/股"
+        confidence_after: "中(需要分拆后实际数据验证)"
+
+      - hypothesis: "品质最高≠回报最高(CME CC-3)"
+        evidence: "SPGI A-Score最高(56.0)但P/E溢价最低(+9%) → 品质折价存在"
+        confidence_after: "高(CME+SPGI双验证: 品质定价不充分)"
+
+    extended:
+      - hypothesis: "ROIC商誉幻觉(跨报告)"
+        extension: "从单个案例扩展到系统性现象: MCO/MSCI/FICO/SPGI都可能被量化筛选因商誉幻觉系统性错过"
+
+    refuted: []
+
+  limitations:
+    - "DM密度0.44/千字远低于门控(0.8), 数据可信度依赖读者自行验证而非锚点追溯"
+    - "MI续约率未披露 → CQ-2(增速拐点)置信度仅53%, 是最大信息缺口"
+    - "Kensho/SparkAIR/RegGPT的实际收入贡献无公开数据 → AI赋能叙事评估依赖间接推断"
+    - "报告字符160K未达270K门控 → Platts/CI分部深度分析可能不足"
+    - "概率敏感性显示评级稳定性低(3pp即翻转) → 投资决策应视为tentative而非definitive"

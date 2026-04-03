@@ -1,0 +1,440 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Reddit (RDDT)
+# 压缩比: 245K → ~12K (20x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式映射 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: RDDT
+  company: "Reddit, Inc."
+  report_date: "2026-02-14"
+  stock_price: "$139.65"
+  market_cap: "$26.7B"
+  report_version: "v1.1"
+  report_path: "reports/RDDT/RDDT_Complete_v1.1_2026-02-14.md"
+  quality_score: "报告未给出数字评分(v10.0框架, 混合模式)"
+  cqi: "报告未覆盖"
+  framework_version: "v10.0"
+  industry: "社交平台/数据基础设施"
+  archetype: "平台飞轮(早期变现阶段) + 数据资产"
+  chars: 244870
+  dm_count: 813
+  dm_density: "3.32/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "Reddit基本面极强(FY25营收+70%, 利润率从0→32%), 但多方法估值收敛$104-118 vs 市价$140——买入当前价格意味着你在赌Bull Case而非Base Case"
+  rating: "中性关注"
+  fair_value: "$104-118 (SOTP $104, OVM $112, 概率加权 $118)"
+  expected_return: "-15%至-25% @$139.65 (vs 多方法中位$112)"
+
+  key_arguments:
+    - claim: "广告引擎经营杠杆教科书级释放——4季度OPM从1%→32%"
+      direction: bullish
+      magnitude: 4
+      mechanism: "收入增速+85%远超费用增速+21% → 剪刀差驱动利润率跃升 → 毛利率91.9%接近纯平台"
+      kill_switch: "收入增速降至<30%时剪刀差收窄, 利润率扩张显著放缓(Q1'26指引OPM~36%已暗示减速)"
+
+    - claim: "Google流量依赖是被严重低估的结构性风险——55%+DAU来自Google搜索"
+      direction: bearish
+      magnitude: 5
+      mechanism: "Google Organic占63%流量 → AI Overview零点击率58%+上升 → 有机CTR暴跌61% → Reddit命脉在Google手中且控制力为零"
+      kill_switch: "Reddit Direct流量占比持续上升至>50% + Reddit Answers成为独立搜索入口 → 降低Google依赖"
+
+    - claim: "AI数据授权更接近一次性收入而非SaaS——Q4'25增速仅+8%"
+      direction: bearish
+      magnitude: 4
+      mechanism: "Google+OpenAI年费合计~$130M占Other Revenue 93%(客户极度集中) → 大模型已训练过核心数据 → 增量需求边际递减 → LLM引用率从14%骤降至2%"
+      kill_switch: "新增≥3个AI客户且单客户年费>$30M → 证明数据授权需求持续"
+
+    - claim: "版主经济学是Reddit最被忽视的尾部风险——10万无偿版主支撑$2.2B营收"
+      direction: bearish
+      magnitude: 3
+      mechanism: "版主创造核心价值但获零经济回报 → 假设补偿每人$5K/年=成本$500M(接近全年营业利润) → 2023年API危机证明版主有组织能力且愿意行动 → 2026.3版主上限新政可能触发新一轮冲突"
+      kill_switch: "Reddit推出版主激励计划(收入分成) + AI审核工具大幅减轻版主负担 → 风险降级"
+
+    - claim: "SBC稀释掩盖了真实估值——扣SBC后P/FCF 78x远非表面39x那么便宜"
+      direction: bearish
+      magnitude: 4
+      mechanism: "SBC FY25 $343M → 真实FCF $341M(vs GAAP $684M) → 真实P/FCF 78x → 股份年+10.13% → $10亿回购仅覆盖1/3年化稀释 → 5年净稀释~30%"
+      kill_switch: "SBC/Revenue降至<10% + 回购完全覆盖稀释 → 真实FCF收敛GAAP FCF"
+
+  moat:
+    composite_score: 6.5
+    half_life: "社区网络效应>10年 | 内容资产5-10年(AI污染侵蚀中) | Google整合<3年(不可控)"
+    dimensions:
+      - type: data
+        strength: 4
+        evidence: "19年人类创建内容+投票排序=结构化意见索引, AI引用#1(Wikipedia 3倍), 550万次AI引用"
+        vulnerability: "AI slop已占14.7%且上升, 仅1.2%社区有AI政策, 60%版主报告质量下降——护城河水正被从内部污染"
+      - type: network_effect
+        strength: 3
+        evidence: "100K+自治社区各自独立网络效应, Q4'25活跃广告主+75%, 15/15最大广告垂直中11个>50%增速"
+        vulnerability: "网络效应是社区级(非平台级), 不阻止用户同时使用Discord/Twitter, 新社区冷启动困难"
+      - type: brand
+        strength: 3
+        evidence: "'X reddit'搜索行为已成标准范式, 用户主动在搜索词添加reddit以获取真实意见"
+        vulnerability: "品牌心智依附于Google搜索生态, 非独立品牌忠诚度; 匿名=低用户忠诚度(无不可迁移社会资本)"
+      - type: switching_cost
+        strength: 2
+        evidence: "版主在Reddit积累的AutoModerator脚本/CSS/社区管理经验不可迁移, 社区订阅历史不可导出"
+        vulnerability: "匿名用户零切换成本(无个人品牌/社交图谱绑定), Logged-out用户(55%+)粘性接近零"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含5年营收CAGR 30-31% + 终端FCF利润率35% — 非极端但需完美执行"
+    methods_used: ["Reverse DCF", "SOTP", "OVM期权估值", "三情景概率加权", "P/S可比", "EV/Revenue可比", "Forward P/E(FY26)", "Forward P/E(FY27)", "EV/DAU可比", "EV/DAU等效调整"]
+    dispersion: "2.91x ($56-$163, 10种方法)"
+    consensus_vs_ours: "卖方共识$228(+63%溢价) | 我们多方法收敛$104-118(-15%~-25%) | 差距核心=卖方用GAAP FCF, 我们扣SBC后真实FCF"
+    entry_zone: "$90-100 (Base × 0.85安全边际)"
+    catalyst: "FY26H1增速<30% + 利润率平台期确认 → 成长股估值压缩 → 可能回落至$100附近"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "等待买入 — 基本面极强但估值溢价20-25%, 等待增速减速/Google风险兑现创造入场窗口"
+    buy_triggers:
+      - trigger: "增速减速确认: FY26H1营收<$1.5B或营业利润率<25%"
+        price_zone: "$90-100"
+        reasoning: "增速下修→成长股PE压缩→价格回归Base Case估值$104-118区间的安全边际以下"
+      - trigger: "Google算法降权事件: 搜索流量季度环比下降>15%"
+        price_zone: "$80-100 (类似2025年$208→$110的重演)"
+        reasoning: "短期过度恐慌→创造买入窗口, 前提是Direct流量+Logged-in用户增长仍健康"
+      - trigger: "版主危机事件: 大规模社区锁定/版主罢工"
+        price_zone: "$70-90 (尾部场景)"
+        reasoning: "2023年先例表明危机后版主最终回归(退出成本高), 但需确认平台数据未受根本性损害"
+    hold_conditions:
+      - "DAUq Logged-in用户增速>10% YoY"
+      - "广告ARPU持续提升(US>$10, 国际>$2.5)"
+      - "Google搜索流量占比不跌破50%"
+      - "AI内容渗透率<25%"
+    sell_triggers:
+      - signal: "Google搜索流量连续2季度下降>10%且Direct流量未补偿"
+        severity: "action"
+        action: "减仓50%, 流量核承重墙断裂"
+      - signal: "Logged-in DAU占比跌破40%(当前41.3%, 仅1.3pp缓冲)"
+        severity: "warning"
+        action: "减仓25%, 用户质量恶化信号"
+      - signal: "AI内容渗透率突破30%且版主流失加速"
+        severity: "action"
+        action: "减仓50%, 内容资产护城河被污染"
+      - signal: "3核Kill Switch同时WARN(流量+变现+内容)"
+        severity: "emergency"
+        action: "全部卖出, 投资论文根本失效"
+    position_sizing: "当前$139.65不建议建仓 | @$100 可试探性建仓(2-3%组合) | @$90 可加仓至5%"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "Google依赖如何从护城河变成绞索"
+    chain: >
+      Google算法提升Reddit搜索权重(2023-2024)
+      → Reddit Organic流量暴增至63%来自Google
+      → 用户增长故事好看(DAUq+19%)
+      → 但55%+是Logged-out搜索用户(粘性接近零, 10分钟停留)
+      → "真实活跃用户"仅Logged-in 50.2M(+14%), 远低于标题数字
+      → 同时Google部署AI Overview → 零点击率58%且上升 → 有机CTR暴跌61%
+      → Reddit的最大流量来源正在系统性截流Reddit
+      → 2025年初算法更新已证明: 一次调整=-47%市值
+    transferable_to: "所有依赖单一流量来源>50%的平台(SEO依赖型内容站/eHow/About.com先例)"
+    reasoning_habit: "看到DAU增长时, 追问'增长质量': 多少是自驱(Direct/App)vs外部导入(搜索/推荐)? 外部导入的粘性如何?"
+
+  - id: "CC-2"
+    name: "版主经济学的零和悖论"
+    chain: >
+      Reddit商业化成功(FY25营收$2.2B, OPM 32%)
+      → 但版主经济回报=$0(创造核心价值但不分享收益)
+      → YouTube在类似体量时已向创作者分成数十亿美元
+      → 版主供给函数依赖非货币激励(社区认同/权力/技能)
+      → 但AI内容增加14.7%→审核负担指数增长→非货币激励不变→供给函数承压
+      → 2023年API危机证明版主有组织能力且愿意行动(8,000社区锁定)
+      → 假设补偿$5K/人=成本$500M(接近全年营业利润)→补偿成本极高
+      → Reddit处于两难: 不补偿→版主离心; 补偿→利润率崩塌
+    transferable_to: "所有依赖无偿UGC贡献者的平台(Wikipedia/Stack Overflow/开源社区)"
+    reasoning_habit: "看到平台高利润率时, 追问'谁在免费工作': 如果核心价值由无偿贡献者创造, 这是利润率还是未支付的负债?"
+
+  - id: "CC-3"
+    name: "SBC作为隐形估值陷阱"
+    chain: >
+      Reddit报告FCF $684M → P/FCF 39x → 看似合理
+      → 但SBC $343M(FY25) → 真实FCF(扣SBC)=$341M → 真实P/FCF=78x
+      → 同时股份年+10.13% → $10亿回购仅覆盖1/3年化稀释
+      → 5年复合净稀释~30% → 即使EV不变, 每股价值被稀释23%
+      → 管理层行为强化: 2025全年零开市购买, 6个月368笔卖出/0笔买入
+      → GAAP FCF创造了"便宜"的幻觉, 真实估值是GAAP口径的2倍
+    transferable_to: "所有高SBC科技公司(SBC/Revenue>15%时必须计算真实FCF)"
+    reasoning_habit: "看到'P/FCF看起来合理'时, 立刻追问SBC占比 — 如果>15%Revenue, 用扣SBC后的真实FCF重算"
+
+  - id: "CC-4"
+    name: "AI数据资产的衰减曲线"
+    chain: >
+      Reddit签下Google($60M)+OpenAI($70M)数据授权 → 市场视为"AI数据引擎"
+      → 但Q4'25 Other Revenue增速+8%(远低于Q1'25 +66%) → 增速骤降
+      → 根因: 大模型已训练过Reddit核心19年数据 → 增量数据的边际训练价值递减
+      → LLM引用率从2025年9月~14%骤降至10月~2% → AI公司可能已提取主要价值
+      → 合成数据崛起(63%受访者使用部分合成数据集) → 真实数据的不可替代性下降
+      → 数据授权更像"教科书一次性采购"而非"SaaS持续订阅"
+    transferable_to: "所有将数据授权作为增长叙事的公司 — 追问'数据的边际价值是递增还是递减'"
+    reasoning_habit: "看到'AI数据变现'叙事时, 追问数据消耗模式: 训练数据是一次性消耗(边际递减)还是持续需要(边际不变)?"
+
+  - id: "CC-5"
+    name: "经营杠杆的不对称性——上升快但减速也快"
+    chain: >
+      Reddit收入+85%但费用仅+21% → 利润率从1%跃升至32%(4个季度)
+      → 这是经营杠杆的教科书案例: 高毛利率(92%)+固定成本基础
+      → 但反向同样成立: 当收入增速从70%降至30% → 剪刀差收窄 → 利润率扩张骤停
+      → Q1'26指引OPM~36%暗示管理层已在管理利润率预期
+      → 历史先例: SNAP利润率跃升后增速减速→利润率从正转负
+      → 经营杠杆是双刃剑, 上行路径≠下行路径的镜像
+    transferable_to: "所有处于经营杠杆释放初期的高增长平台(收入增速>50%)"
+    reasoning_habit: "看到利润率快速跃升时, 追问'反向杠杆': 如果收入增速减半, 利润率会稳定还是回落?"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "Reddit是社交媒体, 应与META/SNAP直接对标"
+      final: "Reddit是结构化人类意见索引, 更接近去中心化维基百科, 对标应区分Logged-in(社区用户)和Logged-out(搜索访客)"
+      pivot: "DAU中55%+是Logged-out搜索用户(粘性零, 10分钟停留)——'社交媒体'框架掩盖了用户质量的巨大差异"
+
+    - initial: "AI数据授权是Reddit的第二增长引擎"
+      final: "AI数据授权更接近一次性大额合同确认, Q4'25增速仅+8%远低于Q1'25 +66%"
+      pivot: "LLM引用率从14%骤降至2% + 合成数据崛起63% → 增量数据需求边际递减已在数据中可见"
+
+    - initial: "P/FCF 39x对高增长平台合理"
+      final: "扣SBC后真实P/FCF=78x, 是GAAP口径的2倍, 加上年稀释10%——远不如表面便宜"
+      pivot: "SBC $343M几乎等于GAAP FCF的一半 + 管理层6个月368笔卖出/0笔买入"
+
+  surprises:
+    - finding: "Reddit的'护城河4'(Google搜索整合)在Swap Test中不通过——它不是内部能力而是外部恩惠"
+      implication: "护城河分析应区分'自建壁垒'和'有利外部条件'——后者不应计入护城河评分, 而应归类为'依赖风险'"
+
+    - finding: "版主补偿成本$500M接近全年营业利润——Reddit的高利润率部分来自未支付的'版主负债'"
+      implication: "平台利润率分析应检查'谁在免费创造价值'——未支付的贡献者是隐形负债而非效率证明"
+
+    - finding: "Logged-in DAUq仅50.2M(+14%)vs 总DAUq 121.4M(+19%)——真实活跃社区用户增速远低于标题数字"
+      implication: "高DAU增长可能掩盖用户质量分化——分层分析(Logged-in vs Logged-out)比总量更有信息价值"
+
+    - finding: "黑天鹅联合概率52.7%——至少一个尾部风险在3年内发生的概率过半, 但市价未计入任何折价"
+      implication: "高增长公司的尾部风险容易被增速叙事掩盖——联合概率计算是必要的纠偏工具"
+
+  blind_spots:
+    - area: "Google算法变更的具体时机和幅度"
+      why_matters: "63%流量依赖 → Google任何权重调整直接影响DAU → 但算法是黑箱"
+      monitor: "季度搜索流量占比趋势 | AI Overview零点击率变化 | Google-Reddit数据授权续约信号"
+
+    - area: "AI内容渗透率的增速——从14.7%到30%需要多久"
+      why_matters: "30%+可能触发内容资产护城河崩塌(人类内容稀缺性叙事失效) + 广告品牌安全降级"
+      monitor: "学术/第三方AI检测研究 | 版主反馈调查 | Reddit官方AI政策更新"
+
+    - area: "版主新政(2026.3每人最多5个10万+社区)的实际影响"
+      why_matters: "可能触发经验丰富版主退出大型社区 → 内容质量下降级联效应"
+      monitor: "2026年Q2-Q3大型社区版主流失率 | 新一轮版主抗议信号"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "从$208暴跌至$110(-47%)因一次Google算法更新——单一依赖的惩罚"
+      lesson: "流量来源集中度>50%的平台, 任何依赖方的政策变更=市值级别事件。在依赖度降低前, 应控制仓位规模"
+      transferable: "所有单一渠道流量依赖>50%的互联网公司(SEO型/应用商店型/社交分发型)"
+    - scenario: "RSI 16.81超卖但多方法估值仍高于市价20-34%——技术超卖≠基本面低估"
+      lesson: "技术面信号(RSI/超卖)不等于估值信号。SNAP也曾从IPO高点跌70%看起来'便宜'然后又跌80%。价格信号和估值信号必须分开处理"
+      transferable: "所有从高点大幅回调的高估值成长股"
+    - scenario: "内部人6个月368笔卖出/0笔买入——管理层行为与市场叙事背离"
+      lesson: "当管理层用'AI数据平台'叙事推高估值但零开市购买时, 跟随管理层行为(卖出)而非叙事(持有)"
+      transferable: "所有高SBC+内部人净卖出的高增长公司"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "Logged-in DAU占比 vs 总DAU增速"
+      why_alpha: "市场用总DAU(+19%)定价, 但真实社区用户仅Logged-in 50.2M(+14%) — 差距暴露用户质量问题, 大多数分析师不做此拆分"
+      current_reading: "Logged-in占比41.3%, 仅1.3pp高于Q3'26停止披露的窗口 — 且Q3'26后信号将消失"
+    - signal: "Other Revenue(AI数据授权)季度增速趋势"
+      why_alpha: "市场仍视AI数据为增长引擎, 但Q4'25 +8%骤降暗示一次性而非持续性 — 增速趋势比绝对值更有信息量"
+      current_reading: "Q1'25 +66% → Q4'25 +8% — 加速衰减"
+    - signal: "扣SBC后真实P/FCF vs GAAP P/FCF"
+      why_alpha: "卖方普遍用GAAP FCF → P/FCF 39x → '合理'; 扣SBC后78x → '昂贵' — 两倍差距是分析师盲区"
+      current_reading: "真实P/FCF 78x, GAAP P/FCF 39x"
+
+  confirmation_signals:
+    - signal: "季度广告ARPU同比增速(US + 国际)"
+      bullish_threshold: "US ARPU>$12 + 国际ARPU>$3 (收敛加速)"
+      bearish_threshold: "US ARPU增速<20% + 国际ARPU持平(收敛停滞)"
+    - signal: "活跃广告主YoY增速"
+      bullish_threshold: ">50% YoY(广告主生态扩张持续)"
+      bearish_threshold: "<20% YoY(广告主增长失速→ARPU天花板)"
+    - signal: "FY26H1营收 vs 共识$3.12B(年化)"
+      bullish_threshold: "H1>$1.7B(年化>$3.4B, 超共识9%+) → 上修估值至$130+"
+      bearish_threshold: "H1<$1.5B(年化<$3.0B) → Bear路径概率上升, 下行至$70-80"
+
+  noise_signals:
+    - signal: "RSI/技术面超卖信号"
+      why_noise: "技术超卖≠基本面低估。多方法估值$104-118远低于市价, 即使RSI 16.81也不改变估值结论"
+    - signal: "分析师目标价上调/下调"
+      why_noise: "17买入/11持有/1卖出的共识均值$228远高于基本面估值 — 卖方用GAAP FCF且不扣SBC, 目标价有系统性偏高"
+    - signal: "Reddit NFT/虚拟商品交易量"
+      why_noise: "占营收<1%, 即使10x增长也不影响估值。Q1'25数字收藏品头像累计1300万但收入贡献可忽略"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: PINS
+      similarity: "同为兴趣导向平台(非社交图谱), 类似IPO后增速减速曲线, 早期广告变现阶段"
+      key_difference: "PINS是个人策展(静态图片收藏) vs RDDT是社区讨论(动态意见流) | PINS利润率更稳定但增速更低 | RDDT有AI数据授权+版主风险(PINS没有)"
+
+    - ticker: SNAP
+      similarity: "同为非META阵营社交平台, 类似SBC稀释问题, IPO后增速衰减先例"
+      key_difference: "SNAP仍亏损(OPM -11%) vs RDDT已盈利(OPM 32%) | SNAP的AR/硬件投入=更低效率 | SNAP的IPO后减速曲线(IPO+3年增速-40pp)是RDDT的预警参照"
+
+    - ticker: META
+      similarity: "同为广告变现平台, RDDT的终端利润率对标"
+      key_difference: "META ARPU $60+ vs RDDT $6(10x差距) | META有平台级网络效应(38亿用户) vs RDDT是社区级(10万+独立社区) | META自主流量 vs RDDT 63%依赖Google"
+
+  comparative:
+    - dimension: "用户变现效率(ARPU)"
+      position: "META ($60+) >> SNAP ($12) > PINS ($7.7) > RDDT ($6)"
+      reasoning: "Reddit ARPU最低但增速最高(+42% YoY), 提升空间3-4x(收敛至SNAP水平$18-24)"
+
+    - dimension: "利润率质量"
+      position: "META (42%) > RDDT (32%, 快速上升) > PINS (23%) >> SNAP (-11%)"
+      reasoning: "Reddit利润率跃升速度在社交平台历史上罕见, 但受益于收入增速(分母膨胀)而非费用控制"
+
+    - dimension: "估值水平(Forward P/E FY26)"
+      position: "RDDT (34.6x) > META (~25x) > PINS (~20x) > SNAP (亏损)"
+      reasoning: "Reddit估值溢价源于增速(+70% vs META +20%+), 但增速减速时倍数压缩风险最大"
+
+    - dimension: "流量自主性"
+      position: "META (>90%自主) >> SNAP (~70%自主) > PINS (~60%自主) >> RDDT (37%自主, 63% Google)"
+      reasoning: "Reddit的流量自主性在主要社交平台中最低, 是核心估值风险"
+
+  industry_position:
+    quadrant: "最高增速 × 最高估值 × 最低流量自主性"
+    archetype: "早期变现平台 — 广告引擎正加速但护城河含外部依赖"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含CAGR 30-31%→非极端但需完美执行→四座承重墙逐墙施压"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~RT-7完整七问: 承重墙压力测试+偏差审计(6项)+空头钢人(5论点)+黑天鹅(6事件, 联合52.7%)+替代解释(3指标双读)"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "Google AI Overview渐进截流: 零点击率58%→65%→75% → Reddit搜索流量温水煮青蛙式萎缩"
+
+  novel_patterns:
+    - name: "版主经济学建模(供给函数+级联风险)"
+      description: "对无偿UGC贡献者的经济学建模: 4因子供给函数(社区认同/权力感/技能积累/替代成本) + 级联风险因果链 + 经济量化(10万版主×$5K=$500M)"
+      transferable_to: ["Wikipedia", "Stack Overflow", "开源社区", "所有依赖志愿者贡献的平台"]
+
+    - name: "DAU质量分层(Logged-in vs Logged-out)"
+      description: "总DAU增速可能掩盖用户质量分化——分层后发现真实社区用户增速(+14%)远低于标题数字(+19%), Logged-out用户粘性接近零(搜索单次访问)"
+      transferable_to: ["所有DAU中含大量非注册/搜索导入用户的平台", "Google搜索流量依赖型公司"]
+
+    - name: "SBC隐形估值陷阱(GAAP FCF vs 真实FCF 2x差距)"
+      description: "SBC>Revenue 15%时, GAAP P/FCF产生系统性误导——扣SBC后真实估值可能是GAAP口径的2倍, 加上稀释效应进一步侵蚀每股价值"
+      transferable_to: ["所有SBC/Revenue>15%的高增长科技公司"]
+
+    - name: "护城河分类: 自建壁垒 vs 外部恩惠"
+      description: "Google搜索整合不通过Swap Test——它是外部平台的恩惠而非内部能力构建的壁垒。应区分两类并给予不同的持久性评估"
+      transferable_to: ["所有依赖外部平台分发的公司(应用商店依赖/社交分发依赖/SEO依赖)"]
+
+    - name: "AI数据衰减曲线(训练数据的一次性消耗特征)"
+      description: "AI训练数据消耗模式更接近一次性采购(边际递减)而非SaaS持续订阅——LLM引用率从14%骤降至2%是实证信号"
+      transferable_to: ["所有将'AI数据授权'作为增长叙事的数据资产公司"]
+
+    - name: "Kill Switch三核监控体系(流量核/变现核/内容核)"
+      description: "12个KS分组为3个核心(每核4个), 单核WARN/双核WARN/三核FAIL的递进式风险响应框架"
+      transferable_to: ["所有多风险源公司的监控体系设计"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "护城河应区分'自建壁垒'和'外部恩惠'——Google搜索整合看似护城河实为依赖, Swap Test可有效识别"
+        implication: "护城河评估增加'控制力'维度: 自建(高控制)→给分 | 外部恩惠(零控制)→归入风险而非护城河"
+      - insight: "无偿贡献者支撑的高利润率包含'未支付负债'——版主$500M隐含成本说明OPM 32%部分来自外部化成本"
+        implication: "平台利润率分析增加'隐含贡献者成本'检查: 如果补偿贡献者=OPM降X%, 则X%是隐形负债"
+      - insight: "社区级网络效应弱于平台级但崩溃也是局部的——Reddit 10万社区独立运作=风险分散但增长不聚合"
+        implication: "网络效应评估增加'粒度'维度: 平台级(强但全局风险)/社区级(弱但局部风险)"
+
+    valuation_insights:
+      - insight: "扣SBC后真实FCF可以是GAAP口径的一半——RDDT的78x vs 39x是最极端的案例之一"
+        implication: "高增长科技公司估值必须计算SBC-adjusted FCF, SBC/Revenue>15%时GAAP P/FCF有系统性误导"
+      - insight: "OVM期权估值仅$8/股(vs $28/股市场缺口)——证明溢价不能被期权解释, 市场在支付情绪溢价"
+        implication: "当OVM无法解释市价-SOTP缺口的>50%时, 缺口大概率是情绪溢价而非隐含期权"
+
+    screening_insights:
+      - insight: "流量来源集中度>50%=系统性风险因子——Reddit 63%Google依赖导致一次算法更新-47%市值"
+        implication: "选股筛选增加'流量来源集中度'过滤: 单一来源>50%→标记为高依赖风险, 要求更高安全边际"
+      - insight: "SBC/Revenue>15%+内部人净卖出=估值质量警告信号"
+        implication: "选股时组合检查: SBC/Rev>15% AND 内部人6个月净卖出>净买入 → 标记估值质量风险"
+      - insight: "IPO后社交平台增速衰减有规律可循: SNAP IPO+3年增速-40pp, PINS类似"
+        implication: "社交平台选股应建立'IPO后增速衰减曲线模板', 对标减速规律评估当前估值隐含的增速假设"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "DAU增长时立刻追问用户质量分层"
+      trigger: "平台报告DAU增长>15%且依赖外部流量来源"
+      origin: "RDDT总DAU +19%但Logged-in仅+14%, 55%+是零粘性搜索访客——标题数字掩盖了真实增长质量"
+      generalization: "所有DAU增长都应分层(注册/匿名/搜索导入/深度/一次性)——单一DAU数字的信息量极低"
+
+    - habit: "看到高利润率时追问'谁在免费工作'"
+      trigger: "平台OPM>25%且核心内容由用户/志愿者创造"
+      origin: "Reddit OPM 32%但版主回报$0——补偿成本$500M接近全年利润 → 利润率含'未支付负债'"
+      generalization: "UGC平台的利润率分析必须检查贡献者经济学——未支付的贡献=隐形负债, 不是运营效率"
+
+    - habit: "P/FCF合理时立刻检查SBC占比"
+      trigger: "科技公司P/FCF<40x且SBC/Revenue>15%"
+      origin: "RDDT GAAP P/FCF 39x看似合理, 扣SBC后78x → 2倍差距完全改变估值结论"
+      generalization: "高SBC公司的GAAP FCF有系统性误导——扣SBC后真实FCF才是股东可分配的现金流"
+
+    - habit: "区分护城河自建 vs 外部恩惠"
+      trigger: "公司最大竞争优势依赖外部平台(搜索/分发/监管)"
+      origin: "Reddit Google搜索整合不通过Swap Test——不是内部能力而是'地主给的好租约'"
+      generalization: "护城河评估增加Swap Test+'控制力'维度: 外部恩惠不计入护城河评分"
+
+  quality_feedback:
+    strengths:
+      - "DM密度3.32/千字(极高水平) — 813个DM锚点覆盖全报告核心数据"
+      - "方法论创新: 版主经济学建模(首创) + DAU质量分层 + SBC真实FCF调整 — 三个独立洞见构成非共识CI基础"
+      - "红队七问(RT-1~7)完整执行 — 承重墙压力测试+偏差审计+空头钢人+黑天鹅+替代解释, 对抗性深度充分"
+      - "10种估值方法交叉验证 — 离散度2.91x反映核心广告业务确定性较高, 不确定性集中在增速和倍数"
+      - "Kill Switch三核监控体系(12个KS分3核) — 递进式风险响应框架, 可迁移设计"
+    weaknesses:
+      - "框架版本v10.0(报告时间2026-02) — 早于v19.x多项改进(铁律N证据链/铁律M反膨胀/CQI体系)"
+      - "无CQI评分 — 报告未使用v17.0+的CQI量化品质框架"
+      - "概率赋值主观性较强(特别是Google SEO 4场景概率和版主风险) — 缺乏三重锚定(历史基准率/反例分析/压力测试)"
+      - "报告未给出质量数字评分(D1-D11) — 无法与后续报告横向比较"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "SBC扣除后真实估值远高于GAAP口径(AMD先例)"
+        evidence: "RDDT P/FCF 39x(GAAP) vs 78x(真实) — 2倍差距是AMD之后的又一极端案例"
+        confidence_after: "高(两份报告独立确认SBC隐形估值陷阱模式)"
+
+      - hypothesis: "IPO后社交平台增速衰减有规律(SNAP/PINS先例)"
+        evidence: "RDDT FY25 +70% → 共识FY26 +41% → FY30 +20% — 衰减曲线与SNAP/PINS高度一致"
+        confidence_after: "高(SNAP/PINS/RDDT三例确认)"
+
+    extended:
+      - hypothesis: "Reverse DCF承重墙分析(v10.0标准方法)"
+        extension: "四墙中增加'用户增长质量'分层(Logged-in vs Logged-out)——传统承重墙用总DAU, 分层后墙3脆弱度从'中-高'升至'高'"
+
+    refuted:
+      - hypothesis: "AI数据授权是SaaS式经常性收入(市场共识)"
+        evidence: "Q4'25增速骤降至+8% + LLM引用率从14%→2% + 合成数据崛起63% → 更接近一次性消耗"
+        lesson: "训练数据的消耗模式应分类: 持续需要(如实时数据feed)vs 一次性训练(如历史语料) — 大部分AI数据授权是后者"
+
+  limitations:
+    - "Google算法是黑箱——63%流量依赖的最大风险源不可预测, AI只能概率范围而非精确时间"
+    - "版主行为不可建模——10万+去中心化志愿者群体的集体行动不能用历史频率推断"
+    - "AI内容渗透速度不可精确预判——14.7%到30%的时间线取决于AI工具进化和Reddit检测能力, 两者都在快速变化"
+    - "所有前瞻性财务预测来自卖方共识——AI无独立预测能力优于卖方, 估值精度受限于输入假设质量"
+    - "CQ加权置信度仅29.6%(P0.5 40.7%→P5 29.6%, -11.1pp)——报告本身承认对结论的置信度较低"

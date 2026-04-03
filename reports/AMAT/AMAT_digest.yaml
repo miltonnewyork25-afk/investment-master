@@ -1,0 +1,422 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Applied Materials
+# 压缩比: 304K → ~12K (25x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: AMAT
+  company: "Applied Materials"
+  report_date: "2026-02-17"
+  stock_price: "$354.91"
+  market_cap: "$283.5B"
+  report_version: "v1.1"
+  report_path: "reports/AMAT/AMAT_Complete_v1.1_2026-02-17.md"
+  quality_score: "报告未标注(早期报告, 无记分卡)"
+  cqi: "报告未覆盖"
+  framework_version: "v16-17(推断)"
+  industry: "半导体"
+  archetype: "周期成长(广度型通才)"
+  chars: 304443
+  dm_count: 658
+  dm_density: "2.16/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "AMAT市值隐含FCF CAGR 18.8%远超历史4.5%, 广度护城河是保险而非利剑, 当前$355定价了一切顺利的最佳路径"
+  rating: "中性关注"
+  fair_value: "$260-340区间(概率加权$347.5, 风险调整$257.6)"
+  expected_return: "-2.1%(概率加权) | -27.4%(风险调整)"
+
+  key_arguments:
+    - claim: "广度护城河是保险(下行保护)而非利剑(上行弹性)"
+      direction: neutral
+      magnitude: 5  # WFE 19%份额5年持平=硬证据
+      mechanism: "八产品线覆盖→组合波动率σ从20%降至16%→但通才折价30-40% P/E→$3.57B R&D分散八线每线仅50-60%专注型竞对"
+      kill_switch: "GAA工艺步骤从40→80+使系统级整合从可选变必需→通才折价从30-40%收窄至15-20%"
+
+    - claim: "市场隐含FCF CAGR 18.8%远超历史可实现水平"
+      direction: bearish
+      magnitude: 5  # Reverse DCF硬推导
+      mechanism: "Reverse DCF: $5.70B FCF→$13.4B FY2030E需CAGR 18.8% | 历史FCF CAGR仅4.5% | 概率加权FY2027E收入$32.2B低于共识$37.1B达13.2%"
+      kill_switch: "WFE突破$170B+且AMAT份额从19%升至21%+→实际增速接近隐含增速"
+
+    - claim: "NVDA桥梁和AGS是被低估的结构性资产"
+      direction: bullish
+      magnitude: 4  # 数据支撑充分但集团埋没折价难兑现
+      mechanism: "先进封装设备$1.5-2.0B通过CoWoS→HBM→GPU传导链产生50-100x价值放大 | AGS $6.39B反周期服务收入独立估值$19-26B"
+      kill_switch: "HBM4未如期带来新增设备需求 | AGS中国敞口$1.5-2.0B因出口管制加速流失"
+
+    - claim: "中国30%收入面临单向棘轮+国产替代双重不可逆压力"
+      direction: bearish
+      magnitude: 4  # 出口管制从未放松(2022/2023/2025三次加严)
+      mechanism: "出口管制单向棘轮(只紧不松) + 国产替代自给率每年+10pp + $253M罚款后合规更保守 → 中国收入五年CAGR -12%至-16%"
+      kill_switch: "中美贸易缓和+BIS放松管制(概率5-10%) | 国产替代在先进节点遭遇技术瓶颈"
+
+    - claim: "DRAM 34%敞口从HBM催化剂即将变为周期风险"
+      direction: conditional
+      magnitude: 3  # 时间窗口有限, CY2025-2026H1受益, CY2027H2后风险
+      mechanism: "DRAM占SSG从22%攀升至创纪录34% | HBM驱动当前上行 | 但DRAM周期历史振幅σ>25%最大 | HBM CapEx峰值CY2027-28后34%变纯风险"
+      kill_switch: "HBM4延长DRAM CapEx周期至CY2028-2029 | DRAM设备支出CY2027连续两季环比降>15%"
+
+  moat:
+    composite_score: 5.5  # 广度型, 非深度型——每线#2-#3而非#1
+    half_life: "15-20年(广度组合) | 三利润堡垒(PVD/CMP/离子注入)>20年 | 刻蚀/检测<10年(份额承压)"
+    dimensions:
+      - type: scale
+        strength: 4
+        evidence: "$3.57B R&D绝对值Big 5最高之一, 八产品线覆盖全晶圆制造流程"
+        vulnerability: "R&D分散→每线仅50-60%专注型竞对→份额持平19%而非增长"
+      - type: switching_cost
+        strength: 4
+        evidence: "AGS $6.39B服务收入锁定装机基础 + 工艺整合跨产品线互锁"
+        vulnerability: "国产替代在成熟节点(28nm+)提供可接受替代, 切换成本降低"
+      - type: ip
+        strength: 3
+        evidence: "PVD/CMP/离子注入三大利润堡垒贡献SSG营业利润45-50%"
+        vulnerability: "KLA在检测领域>80%份额, LRCX在刻蚀领域深度护城河→AMAT在非堡垒产品线IP弱势"
+      - type: pricing_power
+        strength: 3
+        evidence: "毛利率48.7%稳定 | 先进节点工艺复杂度非线性增长创造需求"
+        vulnerability: "通才定位→客户可逐产品线比价→无单线垄断定价权"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含FCF CAGR 18.8%(需$5.70B→$13.4B FY2030E), 远超历史4.5%, 需WFE份额扩张+利润率突破28%+中国不进一步恶化同时成立"
+    methods_used: ["Reverse DCF", "DCF(三场景)", "SOTP", "可比公司法", "概率加权四场景"]
+    dispersion: "5.3x ($72.6-$382) — 历史报告中最高(GOOGL 2.1x/PLTR 3.8x/APP 3.3x)"
+    consensus_vs_ours: "市场看$37.1B FY2027E | 我们概率加权$32.2B(-13.2%) — 差距源于WFE周期见顶概率25%+中国出口管制尾部"
+    entry_zone: "$260-290 (Forward P/E 19-21x FY2027E)"
+    catalyst: "WFE周期回调至$130-140B | 出口管制情景明朗化 | EPIC Center新增2+客户(TSMC/Intel加入)"
+
+  action_framework:
+    verdict: "等待买入 — 品质尚可(广度保险)但当前$355定价了最佳路径, 等WFE周期或出口管制提供入场窗口"
+    buy_triggers:
+      - trigger: "WFE周期回调→AMAT收入低于预期→P/E压缩至19-21x"
+        price_zone: "$260-290"
+        reasoning: "概率加权EV $277.6B对应~$347, 在$260-290区间有10-30%安全边际"
+      - trigger: "EPIC Center新增TSMC/Intel为founding member"
+        price_zone: "$300-320(若同时P/E回调)"
+        reasoning: "EPIC从$0收入的期权变为可量化催化剂→通才折价收窄叙事获实质支撑"
+    hold_conditions:
+      - "WFE份额维持≥18%(低于18%=广度策略失败)"
+      - "AGS年增速≥5%(服务收入是下行保护核心)"
+      - "中国收入占比>15%(低于15%=出口管制冲击超预期)"
+      - "OPM>27%(低于27%=mix恶化+价格竞争超预期)"
+    sell_triggers:
+      - signal: "WFE连续两季度环比下降(周期见顶确认)"
+        severity: "warning"
+        action: "减仓25-50%, 锁定周期利润"
+      - signal: "中国收入占比跌破15%(出口管制加速恶化)"
+        severity: "action"
+        action: "减仓50%, 重新评估结构性收入基线"
+      - signal: "FCF连续两年低于$5B(CapEx失控或收入下滑)"
+        severity: "action"
+        action: "全面重新评估, 考虑清仓"
+      - signal: "DRAM设备支出连续两季环比降>15%(Memory周期逆转)"
+        severity: "warning"
+        action: "减仓25%, 34%敞口从催化剂变纯风险"
+    position_sizing: "当前@$355不建仓(期望回报-2.1%) | @$280目标半仓(期望回报~+20%)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "广度保险vs深度利剑——通才折价的永久性检验"
+    chain: >
+      AMAT八产品线覆盖全流程→每线#2-#3→R&D $3.57B分散八线=每线仅50-60%专注型竞对
+      → 组合波动率σ从20%降至16%(保险价值=13%波动率优势)
+      → 但WFE份额19%五年持平=广度未转化为增量(利剑失效)
+      → 市场定价: P/E 29.9x vs LRCX 48.3x/KLAC 42.5x/ASML 48.1x=30-40%通才折价
+      → 通才折价60%合理+40%过度——在广度创造增量的证据出现前, 市场可能完全正确
+    transferable_to: "所有多产品线公司的广度vs深度权衡(3M/Honeywell/Danaher)"
+    reasoning_habit: "看到多线覆盖时追问: 广度带来了份额增长还是仅防御了份额下滑? 如果后者, 广度是保险而非资产"
+
+  - id: "CC-2"
+    name: "方法独立性审计——看似收敛实则共享假设"
+    chain: >
+      五方法估值: DCF $127 / SOTP $191 / 产品线 $177 / 可比 $310-335 / Reverse DCF隐含$355
+      → 表面看"五方法交叉验证"——实则DCF/SOTP/产品线法共享90%+核心假设(同一套收入/利润率/WACC/终值)
+      → 它们是"同一个分析做了三遍"而非三个独立视角
+      → 真正独立的方法只有2.5个: 内生价值锚(DCF族)和市场定价锚(可比法)和Reverse DCF(桥梁)
+      → $150-170(内生) vs $310(市场) = $140-180/股"隐性溢价"才是核心张力
+      → 方法收敛≠结论可靠——要检查假设独立性而非结论一致性
+    transferable_to: "所有使用多方法估值的报告——方法独立性审计应该是标准步骤"
+    reasoning_habit: "每次估值收敛时追问: 这些方法共享了多少假设? 如果>50%共享, 收敛是幻觉不是验证"
+
+  - id: "CC-3"
+    name: "出口管制单向棘轮——中国收入的不可逆下行"
+    chain: >
+      BIS出口管制: 2022加严→2023加严→2025加严(附属公司规则)→从未放松
+      → $253M罚款=合规漏洞被堵+合规团队更保守审查
+      → 即使管制不再加严, 国产替代以每年+10pp自给率推进(北方华创PVD/中微刻蚀/华海清科CMP)
+      → 双重不可逆: 政策只紧不松 + 国产替代一旦突破就不会回头
+      → 中国收入从30%→low-20s%→可能18%=五年CAGR -12%至-16%
+      → 投资含义: 不应把中国收入恢复作为乐观情景, 它是确定性下行曲线
+    transferable_to: "所有面临出口管制的半导体公司(LRCX/KLAC/ASML/LAM) + 中国收入占比>20%的科技公司"
+    reasoning_habit: "看到地缘风险时检查是否有'棘轮效应': 政策是否只在一个方向移动? 如果是, 概率加权应偏保守"
+
+  - id: "CC-4"
+    name: "FCF隐含增速vs历史增速的巨大缺口"
+    chain: >
+      Reverse DCF: 当前$283.5B市值隐含FCF CAGR 18.8%(5年)
+      → 历史FCF CAGR仅4.5%(FY2021-2025)
+      → 差距=14.3pp——需要WFE份额扩张+利润率突破28%+中国不恶化同时成立
+      → 任何单一信念失败即将评级推入审慎关注(信念反演分析)
+      → 当前定价对负面意外几乎零容忍
+    transferable_to: "所有市场隐含增速远超历史增速的高估值公司"
+    reasoning_habit: "Reverse DCF后立刻对比历史增速——差距>10pp=市场在赌结构性变化, 要追问变化证据"
+
+  - id: "CC-5"
+    name: "NVDA桥梁——传导链价值放大50-100x"
+    chain: >
+      AMAT先进封装设备$1.5-2.0B → CoWoS产能 → HBM制造 → GPU算力
+      → HBM4的19步新增工序中AMAT覆盖75%
+      → AMAT $1设备产出→对应$50-100的GPU算力价值
+      → 这意味着AMAT是AI算力供应链的关键瓶颈节点
+      → 但市场将此视为TSMC/NVDA的故事而非AMAT的故事→埋没折价
+    transferable_to: "所有处于关键供应链瓶颈位置但被市场归因于下游公司的上游供应商"
+    reasoning_habit: "识别传导链中的瓶颈节点——如果上游$1投入产出下游$50+价值, 上游可能被低估"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "EPIC Center $5B投资是近期正面催化剂"
+      final: "EPIC当前收入贡献=$0, Samsung合作仅一个月, 正向期望应延迟至FY2028——是FY2028+期权而非当期资产"
+      pivot: "红队RT-2创新溢价偏差审计: $0收入事实 + 报告PDRM将+$1.11B/yr与已materialized的负向风险抵消是不审慎的"
+
+    - initial: "五方法估值收敛验证了结论可靠性"
+      final: "DCF/SOTP/产品线法共享90%+假设=同一个分析做了三遍, 真正独立方法仅2.5个"
+      pivot: "方法独立性审计发现: 真正的张力是内生$150-170 vs 市场$310的二元分歧, 不是五个方法的多元交叉"
+
+    - initial: "AGS独立估值可达$31.9B(EV/Revenue 5x)"
+      final: "AGS含40-50%硬件备件, 不应享有纯服务公司倍数, 合理区间$19-26B(3-4x)"
+      pivot: "红队AGS估值审计: 5x倍数适用于纯SaaS/订阅服务, 不适用于含大量硬件备件的混合服务"
+
+  surprises:
+    - finding: "通才折价可能是永久性结构特征而非暂时性错误定价——WFE 19%份额5年持平是最硬的证据"
+      implication: "不应期待通才折价'等周期好转就消失'——19%持平是结构特征, 市场定价可能完全正确"
+
+    - finding: "红队原始建议8个CQ全部下调0个上调——暴露系统性悲观偏差"
+      implication: "红队审计本身也有偏差, 需要双向校准机制(过度悲观检测)防止红队成为系统性看空工具"
+
+    - finding: "方法离散度5.3x是已完成报告中最高的(GOOGL 2.1x/PLTR 3.8x/APP 3.3x)"
+      implication: "高离散度=估值不确定性极高→应降低仓位sizing而非选择最乐观或最悲观的方法"
+
+    - finding: "BW2+BW8双崩塌极端场景市值$89B(vs报告估计的$130-150B)——报告低估了乘数效应"
+      implication: "利润率压缩+估值倍数压缩在同时发生时有乘数效应, 不能简单线性加总"
+
+  blind_spots:
+    - area: "WFE周期精确拐点"
+      why_matters: "六层雷达73%ile=P3中后期, 但见顶时间差6个月→收入差$3-5B→估值差$40-60/股"
+      monitor: "TSMC/Samsung/Intel CapEx季度指引 + SEMI WFE季度更新"
+
+    - area: "EPIC Center实际商业化时间表"
+      why_matters: "EPIC是$5B赌注, 从$0到可量化收入需2-3年 | Samsung首家→是否有TSMC/Intel跟进决定期权价值"
+      monitor: "EPIC Center客户公告 + FY2027-28是否有独立收入披露"
+
+    - area: "HBM4是否延长DRAM CapEx周期"
+      why_matters: "如果HBM4需全新设备(非升级)→DRAM CapEx峰值推迟至CY2028-2029→34%敞口多受益12-18月"
+      monitor: "HBM4量产时间表(CY2026H2) + DRAM设备季度支出趋势"
+
+  sell_lessons:
+    - scenario: "WFE周期P3中后期(73%ile)仍持有→周期见顶后P/E从30x压缩至18-20x"
+      lesson: "周期股在超级周期中后期的卖出纪律=不等见顶确认就开始减仓。73%ile≈开始警惕, 85%ile≈开始减仓"
+      transferable: "所有半导体设备股(LRCX/KLAC/ASML) + 周期性资本品公司"
+    - scenario: "持有高估值周期股等待催化剂(EPIC/GAA)兑现→催化剂延迟而周期先到"
+      lesson: "催化剂有时间表(EPIC 2-3年), 周期也有时间表(WFE 12-18月有效期)——如果周期时间表更短, 周期风险先到"
+      transferable: "所有有长期催化剂但短期面临周期风险的公司"
+    - scenario: "中国收入从45%Q1峰值→30%→low-20s%仍未减仓——单向棘轮下每次等都错过最佳卖点"
+      lesson: "面对单向棘轮风险(出口管制), 应在第一次加严时就部分减仓, 而非等待'缓和信号'(不会来)"
+      transferable: "所有面临地缘政治单向棘轮风险的跨国公司"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "WFE份额变化(从19%持平→是否突破20%)"
+      why_alpha: "19%五年持平是通才折价的核心证据——如果突破20%则广度策略首次创造增量, 叙事根本改变"
+      current_reading: "~19%持平(FY2021-2025)"
+    - signal: "概率加权FY2027E收入vs共识差距"
+      why_alpha: "我们$32.2B vs 共识$37.1B差13.2%——谁对决定期望回报方向。跟踪季度收入是否沿哪条路径演进"
+      current_reading: "FY2025 $28.37B, 差距待FY2026-2027验证"
+    - signal: "EPIC Center客户数量变化"
+      why_alpha: "从Samsung 1家→2-3家=期权价值从$0变为可量化——但0→1已发生, 1→3才是真正催化"
+      current_reading: "1家(Samsung, 2026-02-11)"
+
+  confirmation_signals:
+    - signal: "季度OPM趋势"
+      bullish_threshold: ">30%(利润率突破确认)"
+      bearish_threshold: "<27%(mix恶化+价格竞争)"
+    - signal: "中国收入占比季度变化"
+      bullish_threshold: "企稳在20-22%(管理层指引兑现)"
+      bearish_threshold: "<18%(出口管制超预期加严)"
+    - signal: "AGS收入年增速"
+      bullish_threshold: ">8%(服务飞轮加速)"
+      bearish_threshold: "<3%(中国服务合同流失加速)"
+
+  noise_signals:
+    - signal: "季度EPS beat/miss"
+      why_noise: "半导体设备EPS高度周期性, 单季beat/miss不改变结构性判断。看3-4季趋势"
+    - signal: "卖方目标价调整"
+      why_noise: "卖方普遍用Forward P/E+共识收入→未考虑方法独立性和概率加权→目标价偏乐观"
+    - signal: "$253M罚款后续(已结案)"
+      why_noise: "DOJ和SEC调查已关闭, 法律风险终结。罚款仅占年收入0.89%"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: LRCX
+      similarity: "同为WFE #2-#3, 类似周期敞口, 中国收入占比类似"
+      key_difference: "LRCX=深度型(刻蚀/沉积垄断) vs AMAT=广度型(八线通才) | LRCX P/E 48.3x vs AMAT 29.9x=通才折价直观体现"
+
+    - ticker: KLAC
+      similarity: "同为前道设备, 类似WFE周期敞口"
+      key_difference: "KLAC=极致专注(过程控制63%份额且持续增长) vs AMAT=广度覆盖 | KLAC五维评分37 vs AMAT 32=专注>广度"
+
+    - ticker: ASML
+      similarity: "同为WFE前三, 类似规模($283B vs $340B+)"
+      key_difference: "ASML=物理定律级垄断(EUV 100%份额) vs AMAT=无单线垄断 | 二者互补而非竞争(光刻vs沉积/刻蚀)"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "ASML (EUV 100%) > KLAC (检测63%) > LRCX (刻蚀~50%) > AMAT (每线#2-#3)"
+      reasoning: "不可替代性(深度)在半导体设备行业的估值溢价远高于覆盖度(广度)"
+
+    - dimension: "周期防御性"
+      position: "AMAT (σ 16%) > LRCX (σ 20%) ≈ KLAC > ASML"
+      reasoning: "广度唯一被证实的价值=组合波动率降低13%, WFE下行中收入跌幅小于专注型"
+
+    - dimension: "估值水平(P/E)"
+      position: "LRCX (48.3x) ≈ ASML (48.1x) > KLAC (42.5x) >> AMAT (29.9x)"
+      reasoning: "30-40%通才折价=市场对深度vs广度的明确投票"
+
+    - dimension: "中国风险敞口"
+      position: "AMAT (30%, $253M罚款) > LRCX (25-30%) > KLAC (15-20%) > ASML (10-15%)"
+      reasoning: "AMAT中国风险最高: 绝对占比最高+唯一有重大罚款记录"
+
+  industry_position:
+    quadrant: "中等护城河 × 最低估值 × 最高广度 × 最高中国风险"
+    archetype: "周期成长通才 — 八线覆盖换来下行保险但牺牲了上行弹性和估值溢价"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→隐含FCF CAGR 18.8% vs 历史4.5%→七项信念中任一失败即触发评级下调"
+
+    - pattern_id: "scenario_analysis.probability_weighted"
+      application: "四场景概率加权(周期逆转15%/现状45%/延续30%/超级周期10%)→EV $277.6B vs $283.5B市值"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1至RT-7七问全覆盖 + 双向校准识别系统性悲观偏差(8个CQ原始全下调→校准后2个上调)"
+
+  novel_patterns:
+    - name: "方法独立性审计(Method Independence Audit)"
+      description: "DCF/SOTP/产品线法共享90%+假设→看似三方法收敛实则'同一个分析做了三遍'→真正独立方法仅2.5个(内生锚+市场锚+Reverse DCF桥梁)"
+      transferable_to: ["所有使用多方法估值的报告", "估值框架方法论升级"]
+
+    - name: "通才折价永久性检验"
+      description: "多线覆盖公司的估值折价是暂时性错误定价还是永久性结构特征? 关键证据=份额是否随时间增长。AMAT 19%五年持平=广度未转化为增量=折价可能永久"
+      transferable_to: ["3M/Honeywell/Danaher等多元化工业公司", "多线覆盖vs聚焦型的战略选择评估"]
+
+    - name: "红队全下调偏差检测(All-Downward Bias)"
+      description: "红队原始建议8个CQ全部下调0个上调→暴露系统性悲观偏差→需要'过度悲观检测'作为红队的红队"
+      transferable_to: ["所有使用红队审计的报告", "红队方法论设计"]
+
+    - name: "传导链价值放大倍数(Supply Chain Value Multiplier)"
+      description: "上游$1设备投入→下游$50-100算力价值→AMAT是AI算力瓶颈节点但市场归因给TSMC/NVDA→埋没折价"
+      transferable_to: ["所有处于关键供应链瓶颈但被市场忽视的上游公司"]
+
+    - name: "出口管制单向棘轮效应"
+      description: "地缘政策从未放松(2022/2023/2025三次加严)→概率分布应反映棘轮特征(加严概率远高于放松)→不应给放松>15%概率"
+      transferable_to: ["所有面临地缘管制的跨国公司", "地缘风险概率评估框架"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "广度护城河的价值=组合波动率降低(保险功能), 不是份额增长(进攻功能)"
+        implication: "评估多线覆盖公司时, 应先确认广度是否转化为份额增长——如果没有, 广度的估值溢价应仅限于下行保护"
+      - insight: "WFE份额多年持平=广度策略零增量效果的硬证据, 且可能是永久性结构特征"
+        implication: "多线覆盖公司的通才折价是否合理, 最直接的检验=份额是否随时间增长"
+
+    valuation_insights:
+      - insight: "方法独立性审计: 共享假设>50%的方法'收敛'是幻觉不是验证"
+        implication: "多方法估值时必须检查假设独立性——真正独立=使用不同输入源(自己的假设 vs 市场的定价)"
+      - insight: "5.3x离散度=估值不确定性极高→仓位sizing应比正常更保守"
+        implication: "离散度>3x时, Kelly公式会给出很低的仓位——应尊重数学而非强行建仓"
+
+    screening_insights:
+      - insight: "通才折价(P/E 30%+低于同业)可能是永久性而非暂时性——需要份额增长证据才能赌折价收窄"
+        implication: "选股时通才折价公司不应自动视为'被低估'——先检查份额趋势"
+      - insight: "中国收入>25% + 出口管制棘轮=结构性收入下行→应在筛选时给负分"
+        implication: "地缘风险筛选: 中国收入占比>25% + 已有罚款记录→标记为高风险"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "方法独立性审计——估值收敛时追问假设共享度"
+      trigger: "多方法估值看似收敛(差距<20%)"
+      origin: "AMAT DCF/SOTP/产品线法共享90%+假设→'三方法收敛'实为同一分析做三遍→真正独立方法仅2.5个"
+      generalization: "每次多方法估值收敛时, 检查: (1)输入数据是否来自同一来源 (2)假设是否可以独立变化 (3)真正独立的方法有几个"
+
+    - habit: "红队偏差检测——检查红队是否有系统性方向偏差"
+      trigger: "红队建议全部或绝大多数指向同一方向(全下调/全上调)"
+      origin: "AMAT红队8个CQ原始全下调0上调→暴露系统性悲观偏差→双向校准后2个上调+1.0pp"
+      generalization: "红队也有偏差。如果所有调整方向一致(全看空或全看多), 需要'红队的红队'——过度悲观/乐观检测"
+
+    - habit: "Reverse DCF隐含增速vs历史增速的差距检验"
+      trigger: "Reverse DCF完成后"
+      origin: "AMAT隐含18.8% vs 历史4.5%→差距14.3pp=市场在赌结构性变化但证据不足"
+      generalization: "差距>10pp=市场在赌结构性变化, 要追问(1)变化的具体驱动(2)历史有无先例(3)联合概率是否合理"
+
+    - habit: "出口管制棘轮检验——判断地缘风险是否单向"
+      trigger: "公司面临出口管制且中国收入>20%"
+      origin: "AMAT出口管制2022/2023/2025三次加严从未放松→棘轮效应→概率分布应偏保守"
+      generalization: "检查政策历史: 如果过去N次调整全部同一方向, 不应给反向>15%概率"
+
+  quality_feedback:
+    strengths:
+      - "方法独立性审计是报告最大方法论创新——首次系统性揭示多方法收敛的假设共享问题"
+      - "红队RT-1至RT-7七问全覆盖+双向校准提升了对抗审查的平衡性"
+      - "DM密度2.16/千字——数据锚定扎实(658个DM锚点)"
+      - "Reverse DCF信念反演(七项信念×碎裂分析)是估值章节亮点——追问'几块信念碎裂改变评级'"
+      - "CQ系统从P0(50.5%)→P4(63.1%)的完整演化记录——每个调整都有数据支撑"
+    weaknesses:
+      - "EPIC Center创新溢价偏差——将$0收入项目的+$1.11B/yr期望与已materialized的负向风险在PDRM中抵消"
+      - "AGS估值上限偏高(5x EV/Revenue不适用于含硬件服务)——最终被红队修正至$19-26B"
+      - "无质量记分卡(D1-D11)——早期报告缺少标准化质量评估"
+      - "离散度5.3x是历史最高——说明估值不确定性管理有改善空间"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "Reverse DCF必须P1前置(CRM教训)"
+        evidence: "Ch10 Reverse DCF有效揭示市场隐含FCF CAGR 18.8%→防止了正向DCF先入为主"
+        confidence_after: "高(执行确认)"
+
+      - hypothesis: "红队需要双向校准(防止系统性偏差)"
+        evidence: "原始红队8个CQ全下调→双向校准识别2个上调→校准后更平衡(+1.0pp)"
+        confidence_after: "高(AMAT是首个发现并系统性修正红队偏差的报告)"
+
+    extended:
+      - hypothesis: "通才折价在半导体设备行业中存在"
+        extension: "不仅存在(30-40%折价), 而且可能是永久性结构特征——19%份额5年持平是关键新证据"
+
+      - hypothesis: "多方法估值提高可靠性"
+        extension: "仅在方法假设独立时成立——AMAT揭示共享假设>90%的方法'收敛'是幻觉→引入方法独立性审计概念"
+
+    refuted:
+      - hypothesis: "五方法收敛=结论可靠(传统估值假设)"
+        evidence: "DCF/SOTP/产品线法共享90%+假设→收敛反映假设一致性而非结论可靠性"
+        lesson: "方法独立性比方法数量更重要——2个真正独立的方法>5个共享假设的方法"
+
+  limitations:
+    - "WFE周期精确拐点不可预测(六层雷达73%ile是位置不是时间)——12-18月有效期"
+    - "EPIC Center商业化时间表不确定——$0到可量化收入需2-3年, 期间估值只能按期权处理"
+    - "出口管制政策变动有效期仅6-12个月——政策风险不可长期预测"
+    - "方法离散度5.3x=估值不确定性极高——概率加权EV $277.6B的置信区间很宽"
+    - "无标准化质量记分卡(D1-D11)——无法与后续报告直接比较质量"

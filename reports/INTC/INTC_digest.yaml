@@ -1,0 +1,428 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Intel Corporation
+# 压缩比: 270K → ~12K (22x)
+# 六层 + 三个新增重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: INTC
+  company: "Intel Corporation"
+  report_date: "2026-02-25"
+  stock_price: "$45.91"
+  market_cap: "$175.8B"
+  report_version: "v2.1"
+  report_path: "reports/INTC/INTC_Complete_v2.1_2026-02-25.md"
+  quality_score: "报告未覆盖(无记分卡)"
+  cqi: "报告未覆盖"
+  framework_version: "v17.3"
+  industry: "半导体"
+  archetype: "衰退中的IDM帝国 — 身份危机型转型实验"
+  chars: 269896
+  dm_count: 365
+  dm_density: "1.35/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "Intel是一个被$175.8B标价的$60-100B商业实体, 差额是尚未兑现的IFS期权+地缘溢价+散户情绪——三者中只有地缘溢价有锚, 其余可能蒸发"
+  rating: "审慎关注(条件评级, PW=8发现系统)"
+  fair_value: "概率加权~$13/股; 收敛区$14-30/股; 当前$46仅在8%最乐观情景上沿才合理"
+  expected_return: "-72%(概率加权 vs $46.12)"
+
+  key_arguments:
+    - claim: "Products盈利 vs IFS烧钱的割裂——市场用一个价格给两个完全不同的实体定价"
+      direction: bearish
+      magnitude: 5
+      mechanism: "Intel Products $49.1B收入/$12.7B营业利润(25.8%) 但IFS年亏$10.3B + $5.5B公司费用 → 合并后变亏损实体"
+      kill_switch: "IFS FY2028外部收入>$3B或宣布全面拆分 → 分部定价清晰化"
+
+    - claim: "五面承重墙联合概率仅2-3%——$46隐含的信念组合几乎不可能同时成立"
+      direction: bearish
+      magnitude: 5
+      mechanism: "Reverse DCF隐含$15-18B稳态FCF需五墙全立(收入+利润率+IFS+FCF+稀释) → W3(IFS 13%)是钥匙墙 → W3倒塌→W2→W4连锁"
+      kill_switch: "IFS盈亏平衡(W3成功) → 条件概率使联合概率跳升至5-8%"
+
+    - claim: "护城河从技术壁垒(30%)迁移到制度壁垒(70%)——Intel的价值不在于能做什么, 而在于不能被允许消失"
+      direction: conditional
+      magnitude: 4
+      mechanism: "A-Score 4.74/10, 12维中9维下降 → 三座残存堡垒(输入自主权/切换成本/合规门槛)全是制度性壁垒 → CHIPS Act+Secure Enclave锚定"
+      kill_switch: "美中关系根本性缓和 + TSMC Arizona完全替代Intel的美国先进制程角色 + CHIPS Act被削减"
+
+    - claim: "僵尸轨道(IBM式缓慢衰减)是最可能路径, 概率~55%"
+      direction: bearish
+      magnitude: 4
+      mechanism: "Products维持正利润但份额缓慢流失 + IFS持续烧钱但政府不允许放弃 + 股价$20-40区间震荡3-5年 → 僵尸轨道公允值$14-18/股"
+      kill_switch: "IFS FY2028外部收入>$3B(代工真的起来了) 或 Intel宣布全面拆分"
+
+    - claim: "AI对Intel净效应为负(-0.12)——违反'AI利好半导体'直觉"
+      direction: bearish
+      magnitude: 3
+      mechanism: "DCAI受GPU替代冲击(-3)被CCG/IFS/Altera微小正面(+1~+2)勉强抵消 → Intel在AI链条中是被替代者, 非受益者"
+      kill_switch: "Crescent Island GPU性能接近NVIDIA B100/B200 → 改变AI格局定位"
+
+  moat:
+    composite_score: 4.74  # A-Score, 置信度调整后4.27
+    half_life: "制度壁垒>10年 | x86切换成本5-8年(衰减中) | 技术壁垒<3年"
+    dimensions:
+      - type: regulatory
+        strength: 4
+        evidence: "CHIPS Act $7.86B+Secure Enclave $3B+税收抵免$25B → 唯一美国先进制程厂商 → A11=7(唯一上升维度)"
+        vulnerability: "TSMC Arizona完全量产 → Intel不再是唯一选择; 政治环境变化削减CHIPS Act"
+      - type: switching_cost
+        strength: 3
+        evidence: "x86企业IT迁移成本$2-5M(F500) → 5年平均留存高 → A2=7"
+        vulnerability: "ARM架构在数据中心25%且年增70% → x86生态围墙正在被侵蚀; 按11%/年衰减率"
+      - type: ip
+        strength: 2
+        evidence: "RibbonFET+PowerVia是真正工程成就(全球首个量产GAA+背面供电)"
+        vulnerability: "良率65-75%(需>80%盈利) + 密度落后TSMC N2 31% + IP库几乎为零"
+      - type: scale
+        strength: 2
+        evidence: "IDM模式: 全球少数同时拥有设计+制造能力的公司 → A1=7"
+        vulnerability: "规模反噬: PP&E $105.4B资产负担 + IFS CapEx占总CapEx 60% → 固定成本过高"
+
+  valuation:
+    reverse_dcf_implied: "$46.12隐含$15-18B稳态FCF → 需五面承重墙同时站立(联合概率2-3%) → 市场在赌一个当前不存在的Intel"
+    methods_used: ["Reverse DCF承重墙", "SOTP", "概率加权四情景", "护城河量化", "AI调整SOTP", "FMP DCF"]
+    dispersion: "2.1x ($14-$30收敛区, 高于2.0x阈值 → 高度不确定)"
+    consensus_vs_ours: "市场隐含IFS成功概率25-30% | 我们评估15%; 市场FY2029E收入$74.7B | 我们$58-65B; 分析师目标$20.4-71.5(离散度3.5x)"
+    entry_zone: "$14-30/股收敛区; 政府入股锚$20-23; 僵尸轨道值$14-18"
+    catalyst: "多数催化剂概率加权净期望值为负(-4%) — 催化剂丰富不等于利好"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "回避 — 概率加权下行72%, 即使去偏差修正后仍有~46%下行空间"
+    buy_triggers:
+      - trigger: "IFS季度外部收入突破$500M(年化$2B+)"
+        price_zone: "$20-25(接近SOTP中值)"
+        reasoning: "IFS商业化获初步验证 → 钥匙墙W3概率上修 → 联合概率跳升"
+      - trigger: "Apple 18A正式确认签约"
+        price_zone: "$25-30"
+        reasoning: "IFS叙事获实质支撑 → 估值逻辑从僵尸轨道切换到部分成功路径"
+      - trigger: "股价跌至$20-23(政府入股锚区间)"
+        price_zone: "$20-23"
+        reasoning: "政府底线提供安全边际 + 护城河量化$14/股已覆盖 → 下行有限"
+    hold_conditions:
+      - "IFS外部季度收入持续增长(非单季跳升)"
+      - "18A良率突破80%(商业可行确认)"
+      - "x86服务器份额维持>65%"
+      - "Tan战略方向12个月+未变"
+    sell_triggers:
+      - signal: "18A良率确认<50%(Panther Lake延迟或低量出货)"
+        severity: "action"
+        action: "全部卖出, IFS叙事核心塌陷"
+      - signal: "x86服务器份额跌破65%"
+        severity: "warning"
+        action: "减仓50%, 负反馈循环启动"
+      - signal: "CEO第四次战略重大转向"
+        severity: "action"
+        action: "全部卖出, 组织耗散不可逆"
+      - signal: "毛利率<35%连续4个季度"
+        severity: "warning"
+        action: "减仓50%, 盈利能力结构性恶化"
+    position_sizing: "当前价位不建议建仓; $20-23区间可配置1-2%探索性仓位(政府底线保护)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "承重墙连锁反应: W3是钥匙墙"
+    chain: >
+      IFS盈亏平衡(W3)是整个估值体系的钥匙
+      → W3倒塌(IFS亏损持续): IFS CapEx占总CapEx 60%不可削减
+      → W2倒塌: 合并营业利润率天花板~15%(IFS拖累), 达不到18-25%
+      → W4倒塌: 营业利润率是FCF利润率前置条件, W2倒→W4必然不达标
+      → 三面连锁倒塌: 估值从$34-47/股→$12-18/股
+      → 联合概率从独立假设0.23%→条件建模2-3%(远低于直觉10-15%)
+    transferable_to: "所有多分部公司(一个亏损分部拖累合并报表) — 如GE拆分前/Sony娱乐+电子"
+    reasoning_habit: "看到多分部公司估值, 追问'哪个分部是钥匙墙' — 找到单点故障后做条件概率而非独立乘积"
+
+  - id: "CC-2"
+    name: "护城河迁移: 技术壁垒→制度壁垒"
+    chain: >
+      观察: Intel A-Score 4.74但三座堡垒(A1/A2/A11)仍在7分
+      → 追问: 这三座堡垒的性质是什么?
+      → A1输入自主权(IDM)+A2切换成本(x86企业)=传统技术壁垒, 但在衰减
+      → A11合规门槛(CHIPS Act+国防)=制度壁垒, 且是唯一上升维度
+      → 发现: 护城河核心已从技术(70%→30%)迁移到制度(30%→70%)
+      → 估值含义: 锚点从"盈利能力"转向"政治意志+期权"
+      → 方法: DCF不适用→应用"期权+溢价"框架
+    transferable_to: "所有从市场竞争力转向政策保护的公司(波音/通用汽车/部分国防承包商)"
+    reasoning_habit: "当护城河中多数维度下降但个别维度反升时, 追问'哪种壁垒在替代哪种' — 这决定了估值方法选择"
+
+  - id: "CC-3"
+    name: "联合概率远低于直觉的数学教训"
+    chain: >
+      市场参与者倾向独立评估每个假设: IFS 50/50, 良率 50/50, 份额 50/50...
+      → 直觉: 整体也大约50/50
+      → 但五个假设需同时成立→联合概率是乘积不是平均
+      → 且假设间有因果依赖(W3→W2→W4) → 条件概率进一步压低
+      → 结果: 直觉10-15% vs 实际2-3%
+      → 含义: 市场本质上在赌"不需要所有信念成立"——但$46定价确实需要大部分成立
+    transferable_to: "所有turnaround故事(需要多个条件同时满足才能兑现目标估值)"
+    reasoning_habit: "turnaround公司估值时, 列出所有隐含信念→逐一赋概率→做联合概率(条件非独立) — 直觉与数学的偏差通常>5x"
+
+  - id: "CC-4"
+    name: "政府期权>商业价值的估值框架倒置"
+    chain: >
+      传统框架: 收入×利润率×倍数 = 商业价值, 政府补贴是加分项
+      → 但Intel SOTP退守$14-24/股时, 商业价值$50-80B vs 政府确定性支持$38-57B
+      → 政府支持价值≈商业价值 → 市值~50%由"政府不能让Intel倒"支撑
+      → 框架应反转: 先锚定政府底线, 再叠加商业竞争力溢价/折价
+      → 证伪需三条件同时: 美中缓和+CHIPS Act削减+TSMC Arizona替代(联合<5%)
+    transferable_to: "所有国家安全关键企业(国防承包商/关键基础设施/唯一供应商)"
+    reasoning_habit: "当政府支持占企业价值>30%时, 估值框架需要倒置——政府底线是锚, 商业能力是变量"
+
+  - id: "CC-5"
+    name: "催化剂丰富≠利好——概率加权期望值为负"
+    chain: >
+      市场叙事: Intel 2026-2027催化剂丰富=故事利好
+      → 逐个催化剂概率加权: Apple 18A否认影响>确认影响(不对称)
+      → 多数催化剂失败概率>成功概率, 且失败下行>成功上行
+      → 净期望值约-4%
+      → 含义: "催化剂多"是叙事优势但非数学优势; 时间是turnaround的敌人
+    transferable_to: "所有催化剂密集的turnaround/speculative公司"
+    reasoning_habit: "看到'催化剂丰富'时, 逐个算概率×impact而非简单列举 — 如果净EV为负, 催化剂其实是风险源"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "AI浪潮利好整个半导体行业, Intel作为芯片巨头也将受益"
+      final: "AI净效应-0.12(中性微负): DCAI受GPU替代冲击(-3)抵消了其他分部微小正面"
+      pivot: "6分部×5维度矩阵分析 → Intel在AI链条中是被替代者, 非受益者"
+
+    - initial: "Intel转型成功取决于18A技术追赶TSMC"
+      final: "护城河核心已从技术壁垒迁移到制度壁垒——真正的支撑是'不能被允许消失'"
+      pivot: "A-Score 12维分析: A11(合规门槛)是唯一上升维度, 且护城河70%已来自制度壁垒"
+
+    - initial: "催化剂丰富意味着turnaround可期"
+      final: "概率加权催化剂净期望值-4%, 大多数催化剂失败概率>成功概率"
+      pivot: "逐个催化剂概率×非对称影响计算: Apple 18A否认的下行>确认的上行"
+
+  surprises:
+    - finding: "五墙联合概率仅2-3%(vs直觉10-15%) — 条件概率建模揭示因果依赖的威力"
+      implication: "turnaround估值中, 独立概率乘积是数学下界, 条件概率才是现实估计, 但结果通常令人不安地低"
+
+    - finding: "机构(扣被动)Q3净减持18.6%, 对冲基金偏空 — 但散户通过期权P/C 0.64推高股价"
+      implication: "聪明钱和散户的方向性分歧=定价脆弱性; 散户mania退潮窗口6-12个月"
+
+    - finding: "Ohio旗舰工厂延迟5-6年(2025→2030-31), 比TSMC Arizona Phase 2晚3-4年"
+      implication: "Intel可能在自己最大的差异化优势(美国本土先进制程)上被TSMC追平, 制度壁垒基础受损"
+
+    - finding: "现有股东4年内被稀释近20%(4.06B→4.86B股) — 政府入股给管理层不给股东"
+      implication: "政府入股@$20-23锚定买盘, 但资金用于Intel运营而非现有股东→稀释是隐性成本"
+
+  blind_spots:
+    - area: "18A真实良率"
+      why_matters: "单一最大已知未知: <50%→所有IFS估值下调30-50%; >75%→IFS叙事获实质支撑"
+      monitor: "Panther Lake量产出货量(H1 2026) + TrendForce季度更新"
+
+    - area: "Apple 18A是否真正签约"
+      why_matters: "IFS估值的单一最大催化剂: 签约=+$10-15B; 不签=叙事核心塌陷"
+      monitor: "Apple供应链消息 + Intel IFS季度外部收入突变"
+
+    - area: "Tan的真实战略意图"
+      why_matters: "Cadence背景暗示可能转向设计优先/制造轻资产 → 估值逻辑根本改变"
+      monitor: "12个月战略一致性 + Investor Day路线图 + IFS独立实体进展"
+
+    - area: "政府支持的持久性"
+      why_matters: "CHIPS Act是法律但拨付进度取决于政治; 2028新政府可能削减→$20-35B地缘溢价缩水"
+      monitor: "国会年度拨款审议(2026.06) + 选举周期政策走向"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "turnaround股催化剂等待期超过12个月且基本面未改善 → turnaround疲劳"
+      lesson: "催化剂等待期=时间成本。如果关键催化剂(18A良率/Apple签约)在12个月内未兑现, 市场叙事会从'即将好转'变成'又在画饼'"
+      transferable: "所有turnaround故事 — 设定明确的催化剂验证时间窗口, 超时=重新评估"
+    - scenario: "散户驱动+161%涨幅后机构持续减持 → 散户mania退潮导致均值回归"
+      lesson: "散户多头vs机构空头的方向性分歧是定价脆弱性信号, 通常6-12个月内解决(向机构方向)"
+      transferable: "所有散户持仓占比高且机构减持的股票(GME/AMC模式的温和版)"
+    - scenario: "IFS烧钱但政府不允许关闭 → 持续价值毁灭但无止损触发"
+      lesson: "政府支持的公司可能进入'不死不活'状态(IBM式) — 这比倒闭更危险, 因为投资者会持续等待永不到来的turnaround"
+      transferable: "'太大不能倒'的公司(银行/国防/关键基础设施)"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "IFS季度外部收入趋势"
+      why_alpha: "IFS商业化是整个投资论文的核心变量(钥匙墙W3), 季度趋势比年度更早反映客户管线变化"
+      current_reading: "FY2025外部~$0.9B(~$225M/季), 趋势平坦"
+    - signal: "机构vs散户持仓方向性分歧"
+      why_alpha: "机构减持18.6%+对冲基金偏空 vs 散户期权P/C 0.64+低空头比 → 分歧解决方向决定中期股价"
+      current_reading: "分歧最大化, 散户主导短期定价"
+    - signal: "CQ置信度加权平均(7个CQ)"
+      why_alpha: "37.9%且趋势下降(-6.4pp全程) → 研究越深入越不乐观, 信息量高于单一指标"
+      current_reading: "37.9%, 唯一上升CQ是地缘溢价(CQ6)"
+
+  confirmation_signals:
+    - signal: "18A良率(间接: Panther Lake出货量+管理层措辞)"
+      bullish_threshold: "措辞升级到'exceeding expectations' + 大规模OEM铺货"
+      bearish_threshold: "Panther Lake延迟>3个月 或 措辞降级到'challenges'"
+    - signal: "x86服务器份额季度变化"
+      bullish_threshold: "Intel>72%(回升)→论文修正"
+      bearish_threshold: "Intel<65%或ARM>20%→加速恶化"
+    - signal: "IFS季度外部收入"
+      bullish_threshold: "季度>$500M(年化$2B+)=突破"
+      bearish_threshold: "季度<$150M(下降)=恶化"
+
+  noise_signals:
+    - signal: "分析师目标价调整"
+      why_noise: "离散度3.5x($20.4-71.5), 70%持有=最大分歧股 → 共识不存在, 单一目标价无信息量"
+    - signal: "日度股价波动"
+      why_noise: "散户情绪驱动+叙事投资 → 日度波动反映情绪而非基本面"
+    - signal: "Intel管理层对IFS的乐观表态"
+      why_noise: "前任CEO也曾高度乐观(IDM 2.0愿景), 3年后被解职 → 管理层表态的预测价值极低"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: IBM
+      similarity: "身份危机+缓慢衰减+转型叙事+CEO频繁更替 — Intel僵尸轨道的最佳参照"
+      key_difference: "IBM无制造业务=轻资产衰减; Intel IFS=重资产赌注→下行更深但上行也更高"
+
+    - ticker: AMD
+      similarity: "x86生态同一赛道, 直接竞争"
+      key_difference: "AMD纯设计(fabless)+专注CPU/GPU两条线 vs Intel IDM+六条线全铺 → AMD在每个竞争的维度上都更专注"
+
+    - ticker: TSMC
+      similarity: "先进制程代工直接竞争"
+      key_difference: "TSMC 70.2%代工份额+15年客户积累+IP库完整 vs Intel IFS外部$0.9B+IP库几乎为零 → 竞争力差距可能不可逾越"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "TSMC (A-Score ~8+) > ASML (~8.2) > KLAC (~7.5) > AMD (~6) > INTC (4.74)"
+      reasoning: "Intel A-Score在半导体行业后25%分位, 12维中9维下降趋势"
+
+    - dimension: "turnaround成功概率"
+      position: "INTC僵尸轨道(55%) > 部分成功(17%) > 管理层目标(8%)"
+      reasoning: "五墙联合概率2-3% vs IBM转型用了10年从$73B→$57B收入+Kyndryl分拆"
+
+    - dimension: "估值吸引力"
+      position: "概率加权$13 vs 市价$46 = -72% → 极不吸引"
+      reasoning: "Forward PE ~92x, 即使FY2028E PE ~35x仍高于合理区间; SOTP中值$30(-35%)"
+
+    - dimension: "政策保护强度"
+      position: "INTC (A11=7, 唯一美国先进制程) > 其他半导体公司"
+      reasoning: "CHIPS Act+Secure Enclave+政府入股=系统性重要实体, 但政策保护≠股东回报"
+
+  industry_position:
+    quadrant: "最高政策保护 × 最低竞争力 × 最宽可能性空间"
+    archetype: "衰退帝国+政策托底 — 收入在萎缩但政府不允许倒闭"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→$46隐含$15-18B稳态FCF→五面承重墙联合概率2-3% → 市场在赌一个当前不存在的实体"
+
+    - pattern_id: "scenario_analysis.zombie_path"
+      application: "IBM 2012-2020参照→僵尸轨道概率55%→收入缓降+IFS烧钱+政策维持→$14-18/股"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "8模块偏差审计→净偏差仅0.5pp→双向抵消 → 即使去偏差修正, 下行仍~46%"
+
+    - pattern_id: "competitive_benchmarking.multi_front_war"
+      application: "五面同时进攻(AMD/NVIDIA/ARM/云自研/TSMC)→无一战场领先→A-Score 12维9维下降"
+
+  novel_patterns:
+    - name: "护城河迁移映射(技术→制度)"
+      description: "当技术壁垒系统性衰退但制度壁垒强化时, 护城河核心从'能做什么'变成'不能被允许消失' → 估值方法需从DCF转向期权+溢价框架"
+      transferable_to: ["波音(航空安全)", "通用汽车(就业)", "国防承包商(安全)", "所有政策依赖型公司"]
+
+    - name: "承重墙连锁反应(钥匙墙分析)"
+      description: "多面承重墙的因果依赖使联合概率远低于独立乘积 → 找到钥匙墙后做条件概率, 结果通常比直觉低5-10倍"
+      transferable_to: ["所有多分部公司估值", "所有turnaround故事的隐含信念检验"]
+
+    - name: "催化剂净期望值(丰富≠利好)"
+      description: "逐个催化剂概率×非对称影响求和 → 当失败概率>成功概率且下行>上行时, 催化剂丰富反而是风险源"
+      transferable_to: ["所有催化剂密集的speculative公司", "biotech pipeline分析"]
+
+    - name: "散户vs机构方向性分歧指标"
+      description: "期权P/C ratio+空头比(散户工具)vs 机构持仓变化+目标价(机构工具)的方向性分歧 → 分歧最大化时=定价脆弱性峰值"
+      transferable_to: ["所有散户持仓占比高的meme/turnaround股"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "护城河可以'迁移'——技术壁垒衰退时制度壁垒可能接棒, 但两种壁垒的估值方法完全不同"
+        implication: "护城河分析需追踪壁垒类型的构成变化, 不仅是强度变化; 制度壁垒用期权框架, 技术壁垒用DCF"
+      - insight: "A-Score形态分析('堡垒型衰退': 少数维度极高+多数下降)比单一分数更有信息量"
+        implication: "护城河评估报告应包含12维雷达图形态分析, 识别'堡垒'和'陷落阵地'"
+
+    valuation_insights:
+      - insight: "turnaround公司的隐含信念需做联合概率(条件非独立)而非直觉评估 — 直觉与数学的偏差通常>5x"
+        implication: "所有turnaround估值应包含'承重墙联合概率测试', 列出隐含信念→逐一赋概率→条件概率建模"
+      - insight: "发现系统(PW>=7)公司应提供条件评级而非单一评级 — 信息量在条件矩阵而非方向判断"
+        implication: "高不确定性公司的报告格式应从'评级+目标价'改为'条件×评级矩阵+Kill Switch'"
+
+    screening_insights:
+      - insight: "Forward PE>50x + 机构减持>15% + 散户期权偏多 = turnaround叙事过热信号"
+        implication: "选股筛选应加入'叙事温度'过滤器: PE极端+机构散户分歧→标记为叙事驱动而非基本面驱动"
+      - insight: "政策保护强度(A11)作为独立筛选维度 — 高A11+低其他A-Score维度='政策托底型'"
+        implication: "选股框架增加'政策保护度'维度, 与传统品质/估值/增速三维并列"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "turnaround公司的隐含信念做联合概率, 不信直觉"
+      trigger: "分析turnaround/转型/多条件故事"
+      origin: "五墙联合概率2-3% vs 直觉10-15% — 差距5x"
+      generalization: "所有需要多个条件同时成立的投资论文, 联合概率=最诚实的估值校验"
+
+    - habit: "护城河分析不仅看强度, 还要看类型构成变化"
+      trigger: "护城河各维度方向不一致(部分上升部分下降)"
+      origin: "Intel A-Score 12维中9维下降但A11上升 → 护城河从技术迁移到制度"
+      generalization: "壁垒类型决定估值方法: 技术壁垒→DCF, 制度壁垒→期权, 混合→分部定价"
+
+    - habit: "催化剂丰富时, 逐个算概率×非对称影响再求和"
+      trigger: "看到'催化剂丰富'叙事"
+      origin: "Intel催化剂净期望值-4% — 丰富但每个都失败概率>成功概率"
+      generalization: "叙事优势≠数学优势。催化剂清单的净EV可能为负"
+
+    - habit: "区分散户vs机构持仓信号的方向"
+      trigger: "股价大涨但基本面未改善"
+      origin: "Intel +161%涨幅但机构减持18.6%+对冲基金偏空 → 散户驱动"
+      generalization: "散户与机构方向分歧最大化时, 中期解决通常向机构方向(6-12个月)"
+
+  quality_feedback:
+    strengths:
+      - "发现系统(PW=8)应用出色 — 条件评级矩阵+Kill Switch+可能性空间映射比单一目标价信息量高一个量级"
+      - "承重墙联合概率分析(CC-1) — 五墙因果依赖建模是报告最有区分度的分析工具"
+      - "认知偏差系统审计(Ch.16) — 8模块逐章扫描+去偏差修正+诚实承认系统性悲观偏差"
+      - "DM密度1.35/千字 — 97个锚点覆盖率90%+, 数据基础扎实"
+    weaknesses:
+      - "报告框架版本v17.3 — 早期框架, 缺少后续版本的SaaS单位经济学/飞轮悖论等分析维度"
+      - "无正式记分卡(D1-D11) — 无法量化评估各维度质量"
+      - "DM总数97偏低(vs 后期报告450+标准) — Phase 1-2数据锚定可以更密"
+      - "概率赋值主观性较高 — 部分CQ置信度缺乏外部锚定(如CQ2 15%的基准率来源不够硬)"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "Reverse DCF P1前置有效防止结论先行偏差"
+        evidence: "Ch.6 Reverse DCF→五面承重墙→后续分析始终围绕检验隐含信念"
+        confidence_after: "高(多份报告验证)"
+      - hypothesis: "联合概率远低于独立概率乘积(因果依赖)"
+        evidence: "独立0.23% vs 条件概率2-3% — 因果链(W3→W2→W4)是关键传导"
+        confidence_after: "高(首次量化验证)"
+
+    extended:
+      - hypothesis: "护城河评估需多维度形态分析(非单一分数)"
+        extension: "Intel发现'堡垒型衰退'形态 → A-Score形态分析作为独立分析工具的价值"
+
+    refuted: []
+
+  limitations:
+    - "18A良率使用TrendForce估计(55-65%), Intel从不公开确认 → 偏差可达10-15pp, 是单一最大不确定性"
+    - "Apple 18A签约信息为媒体传闻(来源★★) → IFS估值单一最大催化剂无法独立验证"
+    - "概率加权估值$13/股 vs 去偏差修正后$20-30 → 真实值可能在两者之间, 报告承认可能存在系统性悲观偏差"
+    - "政治环境(CHIPS Act持久性/选举周期)无法可靠预测 → 制度壁垒估值有高度不确定性"
+    - "框架版本v17.3, 早于多项框架改进(铁律K估值统一性/铁律N证据链等) → 方法论完备性低于后期报告"

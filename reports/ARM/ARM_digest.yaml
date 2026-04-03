@@ -1,0 +1,443 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — ARM Holdings
+# 压缩比: 360K → ~12K (30x)
+# 六层 + 三个重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: ARM
+  company: "ARM Holdings plc"
+  report_date: "2026-02-27"
+  stock_price: "$128.14"
+  market_cap: "$136.1B"
+  report_version: "v2.0"
+  report_path: "reports/ARM/ARM_Complete_v2.0_2026-02-27.md"
+  quality_score: "报告未覆盖(无D1-D11记分卡)"
+  cqi: "报告未覆盖"
+  framework_version: "v17.0"
+  industry: "半导体"
+  archetype: "IP税务局(版税收费站)"
+  chars: 359978
+  dm_count: 258
+  dm_density: "0.72/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "ARM是半导体行业最强的IP授权商，但$136B市值已预支10年增长——141x PE隐含的6项承重墙联合概率仅2%，93%的净利率/PE组合下ARM高估"
+  rating: "审慎关注"
+  fair_value: "$80.4B (~$76/股, -41%)"
+  expected_return: "-41% (概率加权期望值$60.7B; 校准公允值$100B; 最终锚$80.4B)"
+
+  key_arguments:
+    - claim: "141x PE是预支了10年增长的远期支票——Reverse DCF隐含6项承重墙假设全部成立的联合概率仅2%"
+      direction: bearish
+      magnitude: 5
+      mechanism: "FY2030净利润需达$3-4B(当前$0.97B的3-4x) + 6×6条件评级矩阵中93%的组合下ARM高估 → 估值极度拉伸"
+      kill_switch: "GAAP NM在FY2028突破30% + DC收入超$2B + SBC/Rev降至8%以下 → PE压缩可能被盈利增长抵消"
+
+    - claim: "RISC-V是信用违约互换(CDS)而非替代者——不需要替代ARM就能永久限制其定价权"
+      direction: bearish
+      magnitude: 4
+      mechanism: "QCOM $2.4B收购Ventana + Google Android GKI适配RISC-V + 中国强制国产替代 → ARM定价权黄金窗口2028-2032逐市场关闭 → 弹性ε从-0.3恶化至-1.5"
+      kill_switch: "RISC-V DC份额在FY2028仍<2% + v10版税成功实现1.5x+ → CDS效应推迟5年"
+
+    - claim: "盈利质量比表面差30-40%——SBC/DSO/关联交易三重扭曲"
+      direction: bearish
+      magnitude: 4
+      mechanism: "SBC/Rev 15%(行业高位) + DSO 173天(同行70-80天) + GAAP/Non-GAAP差距2.6x + SoftBank贡献授权收入~40% → 剔除SoftBank后授权增长实际为负(-5%)"
+      kill_switch: "SBC正常化至8%(FY2028路径清晰) + DSO降至120天以下 + SoftBank关联收入占比降至15%"
+
+    - claim: "承重墙B3(定价权)是唯一千斤顶——单信念翻转即导致34-45%下行"
+      direction: bearish
+      magnitude: 5
+      mechanism: "B3失败→版税年增长率从15%降至5-8%→FY2030版税$4.5B(vs隐含$7B+)→估值影响最大(-34~45%)"
+      kill_switch: "v10版税率成功翻倍且无客户大规模流失 → B3确认 → PE压缩速度慢于盈利增长"
+
+    - claim: "SBC鸡生蛋困境——增长与利润率扩张不可兼得(CI-02)"
+      direction: bearish
+      magnitude: 3
+      mechanism: "高增长需要人才→人才需要SBC→SBC侵蚀NM→FY2028 NM可能22-25%而非共识28-30%"
+      kill_switch: "ARM成功用现金薪酬替代SBC(需股价稳定+盈利提升) → SBC/Rev降至8%以下"
+
+  moat:
+    composite_score: 7.17
+    half_life: "5-10年(不确定) — A-Score预计2030年降至~5.9(RISC-V基准情景)"
+    dimensions:
+      - type: ip
+        strength: 4  # A1(9)+A2(8) 平均8.5, 但趋势下行 → 综合4/5
+        evidence: "35年ISA标准 + 2800亿颗累计出货 + 6000+专利 + 99%手机份额"
+        vulnerability: "RISC-V开源ISA绕过了ISA壁垒; Tenstorrent Ascalon-X证明RISC-V可达ARM级性能"
+      - type: switching_cost
+        strength: 4  # A3=8/10
+        evidence: "全栈迁移需3-7年+数十亿美元; 驱动/固件/认证层切换成本极高"
+        vulnerability: "切换成本是递减资产——每个RISC-V成功案例降低下一个迁移者的成本(阿里云C930先例)"
+      - type: network_effect
+        strength: 3  # A4=7/10
+        evidence: "2000万+开发者 + 100亿+行ARM原生代码 + 500+被授权方生态飞轮"
+        vulnerability: "单边网络效应(非双边平台); RISC-V International 4000+会员建立平行生态; ARM网络效应比Visa薄一个量级(生态可分叉)"
+      - type: pricing_power
+        strength: 3  # A7=7/10
+        evidence: "v8→v9版税翻倍成功执行, CSS进一步2-3x; 当前弹性ε≈-0.3(强定价权)"
+        vulnerability: "RISC-V构成长期价格天花板; 2030年弹性可能恶化至ε≈-1.5; 定价权黄金窗口2028-2032关闭"
+      - type: scale
+        strength: 2  # A5=6/10
+        evidence: "R&D $2.01B摊销至280亿芯片→每芯片仅$0.07"
+        vulnerability: "RISC-V开源模型R&D成本分布式化→对大客户(Apple/Google/QCOM)规模优势最小"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含: 收入CAGR>14%(10年) + GAAP NM→30% + 终态PE 25-35x → 6项承重墙全部成立联合概率仅2%"
+    methods_used: ["Reverse DCF(三情景)", "半导体IP同行可比", "版税TAM终态(五情景)", "情景加权DCF(Python)", "支付网络框架"]
+    dispersion: "29%(变异系数) — 40%来自GAAP vs Non-GAAP口径分歧(最大单一来源)"
+    consensus_vs_ours: "卖方中位$160(+25%) | 买方中位$120(-6%) | 本报告$80.4B(-41%) — 差异核心: GAAP优先(40%) + PE压缩假设(35%) + 尾部风险包含(25%)"
+    entry_zone: "~$55/股 (温度计从-0.94翻转至+1.5冷区)"
+    catalyst: "GAAP NM突破25% + DC收入超$2B + SBC/Rev降至10% → 条件评级翻转为中性关注"
+
+  action_framework:
+    verdict: "等待 — 品质确认(A-Score 7.17)但估值极度拉伸(PE 141x), 需跌至$55才进入冷区"
+    buy_triggers:
+      - trigger: "股价回落至$55/股(温度计翻转点)"
+        price_zone: "$50-60"
+        reasoning: "温度计从-0.94→+1.5, PE压缩至~60x, 在S2(稳健)情景下接近公允"
+      - trigger: "基本面翻转: GAAP NM>25% + DC收入>$2B + SBC/Rev<10%"
+        price_zone: "$90-100 (基本面改善后可接受更高价格)"
+        reasoning: "三条件同时满足→盈利质量证实→PE压缩被盈利增长覆盖"
+    hold_conditions:
+      - "A-Score维持>6.5(RISC-V渗透不超过基准情景)"
+      - "GAAP NM持续扩张(每年+2pp以上)"
+      - "SoftBank持股稳定(无大规模减持>5%/6月)"
+      - "v10架构路线图按时推进(无延迟信号)"
+    sell_triggers:
+      - signal: "RISC-V DC份额突破10%(KS-1)"
+        severity: "emergency"
+        action: "全部卖出 — 定价权根基被动摇"
+      - signal: "SoftBank强制减持>5%/6月(KS-2)"
+        severity: "action"
+        action: "减仓50% — 浮筹9.7%下大额抛售将严重冲击股价"
+      - signal: "GAAP/Non-GAAP差距扩大至>3x(KS-3)"
+        severity: "warning"
+        action: "重新评估盈利质量 — SBC失控信号"
+      - signal: "超大规模客户宣布RISC-V服务器替代(KS-4)"
+        severity: "action"
+        action: "减仓50% — 定价权CDS效应加速"
+      - signal: "授权管道(ATA)连续3Q下滑(KS-5)"
+        severity: "warning"
+        action: "重新评估增长假设 — 版税先行指标恶化"
+    position_sizing: "当前不买(温度计-0.94=偏热) | $55以下开始建仓"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "RISC-V CDS定价权弹性函数——开源替代如何限价而非替代"
+    chain: >
+      RISC-V ISA免费开源→大客户(QCOM/Google/阿里)投资RISC-V(非为替代,为买谈判筹码)
+      → ARM每次提价(v9=2x v8, CSS=2-3x TLA)增加客户迁移经济激励
+      → 当ARM版税>RISC-V迁移成本摊销时,客户开始实质迁移
+      → ARM的定价权不是二元(有/无)而是RISC-V渗透率的连续函数
+      → 弹性ε从-0.3(强定价权)→-1.0(临界点)→-1.5(丧失定价权)
+      → 关键洞察: ARM不会"消失",但版税增速会被RISC-V天花板永久限制
+      → 这是"阴跌"而非"崩盘"路径——估值渐进压缩
+    transferable_to: "所有面临开源替代的IP公司(Synopsys vs OpenROAD, Dolby vs 开源编解码)"
+    reasoning_habit: "看到IP授权商提价时,追问'客户自建替代的摊销成本是多少'——如果版税>摊销成本,定价权有硬天花板"
+
+  - id: "CC-2"
+    name: "承重墙联合概率——为什么高PE成长股的估值比表面更脆弱"
+    chain: >
+      ARM 141x PE隐含6项承重墙假设全部成立
+      → 每项假设独立概率40-60%(看似合理)
+      → 但联合概率=各项概率相乘(假设独立)=0.5^6≈2%
+      → 即使放宽至最乐观角落(每项60-70%),联合概率仅6.6%
+      → 单信念翻转(B3定价权)即导致34-45%下行
+      → 投资含义: 高PE股票不是"押注增长"而是"押注所有假设同时成立"
+      → 风险不对称: 上行需要全部正确,下行只需一个错误
+    transferable_to: "所有PE>80x的成长股(SNOW/PLTR/ARM类)"
+    reasoning_habit: "看到高PE时,列出'维持当前PE需要相信什么'的信念清单→计算联合概率→如果<10%则高估是数学结论"
+
+  - id: "CC-3"
+    name: "Intel护城河坍塌的非线性——份额不变不等于护城河不变"
+    chain: >
+      Intel 2005-2017服务器份额>95%(看似牢不可破)
+      → 但AMD Zen开发+ARM Neoverse准备+Apple M1设计同期在水面下进行
+      → 2017-2020护城河坍塌速度超所有人预期→2020-2024市值-67%
+      → 核心模式: 份额是滞后指标,真正的前瞻指标是"替代品的准备完成度"
+      → ARM可能重演: 2025-2028份额数据看起来很好,但RISC-V准备工作已在进行
+      → 提价是护城河坍塌催化剂(Intel提高x86授权费→推动ARM崛起,ARM提高v9/v10版税→推动RISC-V崛起)
+    transferable_to: "所有面临新兴替代技术但当前份额仍高的垄断者"
+    reasoning_habit: "看到高份额时不看份额本身,追问'替代品的准备完成度到哪了'——前瞻指标比滞后指标更有价值"
+
+  - id: "CC-4"
+    name: "PE压缩>盈利增长的数学——高PE股票的估值陷阱"
+    chain: >
+      ARM盈利增长+26% YoY(看似强劲)
+      → 但如果PE从141x→28x(5年正常化)=PE压缩-80%
+      → 即使盈利3x(从$0.97B→$3B),市值仍从$136B→$84B(-38%)
+      → 数学证明: PE压缩(-80%)完全吞噬了盈利增长(+200%)
+      → S2(稳健增长,最乐观的"合理"情景)下仍亏损-49%
+      → 投资含义: 在141x PE买入,需要盈利增长4x以上才能保本→概率极低
+    transferable_to: "所有PE>80x的高估值成长股"
+    reasoning_habit: "对高PE股票先算'PE正常化后需要多少盈利增长才能保本'——如果>3x,概率已经很低"
+
+  - id: "CC-5"
+    name: "温水煮青蛙——护城河侵蚀为什么不像想象的那样戏剧性"
+    chain: >
+      RISC-V不会一夜之间替代ARM(切换成本3-7年)
+      → 而是按市场逐个渗透: IoT(已25%)→汽车(Quintauris)→DC(Tenstorrent)→手机(最后)
+      → 每6个月回头看变化微小(份额仅下降1-2%)
+      → 但24个月后累积效应: 护城河从"不可替代"变成"有替代品但还领先"
+      → ARM管理层可以在每个季度都说"RISC-V威胁有限"且技术上正确
+      → 投资者在"当前季度确认"中逐渐丧失警惕
+      → 当变化变得显而易见时(RISC-V DC>10%),定价权已经被侵蚀
+    transferable_to: "所有面临渐进式替代(非颠覆式)的垄断公司"
+    reasoning_habit: "对渐进式威胁不看季度变化,看5年累积——每季度-1%份额=5年-20%,但每季度看起来都是'噪音'"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "ARM的95%毛利率+26%增速=梦幻业务模型,值得高PE"
+      final: "95%毛利率被SBC(15%)、DSO(173天)、SoftBank关联交易(~40%授权)三重扭曲——盈利质量比表面差30-40%"
+      pivot: "剔除SoftBank后授权收入增长实际为负(-5%); GAAP/Non-GAAP差距2.6x暴露SBC黑洞"
+
+    - initial: "RISC-V是ARM的生存威胁(替代风险)"
+      final: "RISC-V是ARM的定价权天花板(CDS效应)——不需要替代ARM就能永久限制其版税增速"
+      pivot: "CDS弹性函数模型: 弹性ε从-0.3→-1.5的连续路径比二元替代更可能; QCOM/Google/阿里的RISC-V投资是'买保险'而非'搬家'"
+
+    - initial: "ARM可以像Visa一样成为计算支付网络(H3)"
+      final: "ARM与Visa的DNA相似度78%但关键差异: ARM生态可分叉(RISC-V用同一套工具链/OS)而Visa网络排他性——ARM的网络效应比Visa薄一个量级"
+      pivot: "开发者不需要'离开ARM'就能'同时支持RISC-V'——双栈兼容性消除了排他性锁定"
+
+  surprises:
+    - finding: "ARM的估值/护城河比率(PE÷A-Score=19.8x)是整个半导体行业最高——远超ASML(4.2x)、TSMC(2.9x)、NVIDIA(5.6x)"
+      implication: "市场不是在为护城河宽度付费,而是在为护城河扩展预期付费——如果护城河稳定或收窄,19.8x将急剧压缩"
+
+    - finding: "五情景概率加权期望值$60.7B(-55%),即S2(稳健增长,28%概率)下仍亏损-49%——因为PE压缩(-80%)吞噬了盈利增长(+200%)"
+      implication: "在141x PE买入ARM,在所有'合理'情景下都亏损——唯一盈利的S1(芯片税帝国)概率仅12%"
+
+    - finding: "SoftBank贡献Q3 FY2026授权收入~40%($200M/$505M)——剔除后授权增长为负(-5%)"
+      implication: "授权收入的加速增长部分是'自买自卖'效应——关联交易掩盖了外部客户授权需求的放缓"
+
+    - finding: "Qualcomm诉讼裁定ARM授权可通过M&A转让——新客户可通过收购小公司获得ARM授权而非按标价签约"
+      implication: "ARM的'逐客户独立定价'模式被削弱——授权二级市场形成价格天花板"
+
+  blind_spots:
+    - area: "v10版税率(预计2027-2028)"
+      why_matters: "单一变量锁定CQ-1(版税经济学)和CQ-4(RISC-V)两个核心问题的置信度天花板——决定ARM是'6%增速IP公司'还是'15%增速成长股'"
+      monitor: "ARM TechCon架构预发布(TS-14) | 管理层对v10路线图的言论变化"
+
+    - area: "SBC精确值(OQ-1)——ARM作为FPI免除部分SEC披露"
+      why_matters: "GAAP vs Non-GAAP框架选择是整个分析中最大的单一方法论风险——如果Non-GAAP是'真实盈利',估值差异收窄至-10%"
+      monitor: "FY2026年报(2026年6月)详细SBC披露 | RSU授予量×FMV估算"
+
+    - area: "SoftBank保证金贷款条款和减持意图"
+      why_matters: "SoftBank已质押$85亿ARM股票→如果ARM股价<$90触发margin call→被迫抛售→浮筹仅9.7%下价格冲击巨大"
+      monitor: "SoftBank季报(ARM持股比例变化, TS-6) | 保证金提取额度变化"
+
+    - area: "Phoenix计划商业化进展"
+      why_matters: "ARM从IP授权商→芯片设计商的转型可能蚕食自身授权业务(H4,45%概率)——五终态概率加权净效果仅+$1.75B(接近中性)"
+      monitor: "Phoenix管道/收入(TS-12) | 大客户对Phoenix的采购反应"
+
+  sell_lessons:
+    - scenario: "在PE>100x时持有'伟大公司'→PE正常化(→28-35x)导致市值-60~80%即使盈利翻倍"
+      lesson: "高PE成长股的核心风险不是业务恶化而是PE压缩——PE压缩的数学威力远大于盈利增长"
+      transferable: "所有PE>80x的成长股(SNOW/PLTR/CRWD类)"
+    - scenario: "忽略盈利质量扭曲(SBC/DSO/关联交易)因为'收入增长强劲'"
+      lesson: "收入增长可以掩盖盈利质量恶化——永远先检查GAAP/Non-GAAP差距和SBC/Rev比率"
+      transferable: "所有IPO<5年的高增长科技公司"
+    - scenario: "相信'护城河很深所以RISC-V不是威胁'→护城河渐进侵蚀(温水煮青蛙)"
+      lesson: "护城河深度是当前快照,不是未来保证——要看替代品的'准备完成度'而非当前份额差距"
+      transferable: "所有面临开源/低成本替代的IP/许可型公司"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "RISC-V DC出货量份额(TS-7)"
+      why_alpha: "市场讨论RISC-V聚焦于'能否替代'(二元),忽视'已在限价'(连续)——DC份额是CDS效应的最早前瞻指标"
+      current_reading: "<2%(噪音级别, 但Tenstorrent+阿里云C930已部署)"
+    - signal: "ARM版税弹性ε(通过v10定价推断)"
+      why_alpha: "弹性函数是量化定价权的精确工具——ε从-0.3→-1.0是从'有定价权'到'无定价权'的临界点"
+      current_reading: "ε≈-0.3(仍有强定价权, 但2030年预计恶化至ε≈-0.087净增量递减40%)"
+    - signal: "SoftBank保证金贷款额度vs ARM股价"
+      why_alpha: "浮筹仅9.7%→SoftBank任何减持都是核弹级供给冲击; $85亿质押→margin call触发价约$90"
+      current_reading: "$85亿已质押, 当前股价$128(缓冲~42%)"
+
+  confirmation_signals:
+    - signal: "GAAP净利率(NM)季度趋势"
+      bullish_threshold: ">22%持续2Q+(盈利质量改善确认)"
+      bearish_threshold: "<16%持续2Q+(SBC鸡生蛋困境确认)"
+    - signal: "DC收入占版税比(TS-3)"
+      bullish_threshold: ">20%(增长引擎验证)"
+      bearish_threshold: "<8%(DC叙事失败)"
+    - signal: "v9/v10占版税比(TS-1)"
+      bullish_threshold: ">70%(定价权执行确认)"
+      bearish_threshold: "<40%(提价受阻)"
+
+  noise_signals:
+    - signal: "季度授权收入波动"
+      why_noise: "授权确认高度集中于大客户签约节奏(OPM从7.6%到33.1%)——季度数据几乎无信息量,看年度趋势"
+    - signal: "卖方目标价调整($130-200)"
+      why_noise: "卖方普遍用Non-GAAP→系统性高估NM→目标价偏乐观; 多数不做RISC-V CDS定价分析"
+    - signal: "ARM在AI主题ETF中的权重变化"
+      why_noise: "被动资金流反映AI叙事热度而非基本面——ARM的AI受益(DC royalty)被PE已充分定价"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: QCOM
+      similarity: "同为ARM生态核心参与者; Qualcomm QTL是最接近的版税收入类比(税率~3.3%)"
+      key_difference: "QCOM PE 33x vs ARM 141x; QCOM面临ARM提价+自研RISC-V(Ventana $2.4B); ARM面临QCOM用RISC-V绕过版税"
+
+    - ticker: ASML
+      similarity: "同为半导体行业不可替代的IP/设备供应商; 类似税收站模型"
+      key_difference: "ASML A-Score~9.0(无开源替代) vs ARM 7.17(RISC-V); ASML PE 38x vs ARM 141x → ARM每单位护城河溢价4.7x于ASML"
+
+    - ticker: NVDA
+      similarity: "同为半导体IP/设计公司; 同受AI叙事驱动; 同有生态锁定(CUDA vs ARM ISA)"
+      key_difference: "NVDA CUDA是当前无替代品的(OpenAI/Google无法不用CUDA); ARM ISA有RISC-V替代; NVDA增速更高(>60% vs 26%)"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "ASML (~9.0) > TSMC (~8.5) > NVDA (~8.0) > Synopsys (~7.5) = Cadence (~7.5) > ARM (7.17) > QCOM (~6.5)"
+      reasoning: "ARM排名偏低因为RISC-V是唯一有结构性开源替代的半导体护城河——其他公司无此威胁"
+
+    - dimension: "估值/护城河比率(PE÷A-Score)"
+      position: "ARM (19.8x) >> Cadence (10.1x) > Synopsys (7.3x) > NVDA (5.6x) > QCOM (5.1x) > ASML (4.2x) > TSMC (2.9x)"
+      reasoning: "ARM市场为每单位护城河支付的溢价远超所有同行——要么市场在为护城河扩展预期付费,要么严重高估"
+
+    - dimension: "RISC-V暴露度(定价权受限风险)"
+      position: "ARM (极高) >> QCOM (高,但是受益方) > MediaTek (中) > NVDA (低,CUDA不受影响)"
+      reasoning: "ARM是RISC-V唯一的直接受害者; QCOM反而是RISC-V受益方(降低对ARM版税的依赖)"
+
+  industry_position:
+    quadrant: "最高增速 × 最高估值 × 护城河下行方向 × 唯一面临开源替代"
+    archetype: "IP税务局 — 税基极广但税率面临开源天花板"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→141x PE隐含6项承重墙→联合概率2%→市场在做极端乐观赌注"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "RISC-V温水煮青蛙情景: IoT→汽车→DC→手机逐市场渗透,每季度变化微小但5年累积致命"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "10个RT(7多头+3空头)双向红队; RT-5(SoftBank)修正了1个核心假设; $27.4B→$100B校准公允值"
+
+  novel_patterns:
+    - name: "CDS定价弹性函数(开源替代限价模型)"
+      description: "IP授权商的定价权不是二元(有/无)而是替代品渗透率的连续函数; 弹性ε从-0.3→-1.0(临界点)→-1.5(丧失定价权)的非线性路径"
+      transferable_to: ["Synopsys vs OpenROAD", "Dolby vs 开源编解码", "所有面临开源替代的IP许可公司"]
+
+    - name: "承重墙联合概率测试(高PE成长股估值鲁棒性)"
+      description: "将高PE翻译为'需要同时相信的N项假设'→计算联合概率→如果<10%则高估是数学结论; 单信念翻转的下行幅度量化"
+      transferable_to: ["所有PE>80x的成长股", "任何隐含多重乐观假设的估值"]
+
+    - name: "估值/护城河比率(PE÷A-Score)"
+      description: "衡量市场为每单位护城河支付的溢价——高比率=市场在为护城河扩展预期付费; 如果护城河稳定或收窄,比率将急剧压缩"
+      transferable_to: ["所有A-Score>6的高PE公司", "跨行业护城河估值对标"]
+
+    - name: "SBC鸡生蛋困境(增长与利润率的人才矛盾)"
+      description: "高增长需要人才→人才需要SBC→SBC侵蚀NM→NM扩张不能与收入增长并行——对IPO<5年的高增长公司尤其适用"
+      transferable_to: ["SNOW", "PLTR", "CRWD", "所有SBC/Rev>10%的成长股"]
+
+    - name: "6×6条件评级矩阵(替代单一目标价)"
+      description: "用NM路径×PE区间构建6×6矩阵→93%组合下ARM高估→比单一目标价更诚实地表达不确定性"
+      transferable_to: ["所有PW≥5的高不确定性公司"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "护城河可以被'架空'而非'攻破'——RISC-V不需要正面攻击ARM的生态,只需在特定市场建立'足够好'的替代"
+        implication: "护城河评估应增加'架空路径分析'——替代品是否可以绕过而非攻破护城河"
+      - insight: "切换成本是递减资产——每个成功迁移案例降低后续迁移者的成本(类比Windows→Linux企业IT转型)"
+        implication: "切换成本评估应建模'递减曲线'——前5年看似不可动摇,临界点后快速瓦解"
+      - insight: "单边网络效应在面对'足够好'替代品时比双边平台效应更容易被侵蚀"
+        implication: "网络效应评分应区分单边(ARM/开发者生态)vs双边(Visa商户-持卡人)——给不同的持久性折扣"
+
+    valuation_insights:
+      - insight: "承重墙联合概率是检验高PE估值鲁棒性的精确工具——不问'合不合理'而问'需要同时相信什么'"
+        implication: "所有PE>50x的公司应做承重墙分析——列出隐含假设+计算联合概率+识别千斤顶(最脆弱的单一假设)"
+      - insight: "GAAP vs Non-GAAP框架选择可能导致30-40%估值差异——这不是方法分歧而是会计口径分歧"
+        implication: "高SBC公司估值应同时报告GAAP和Non-GAAP两套数字——明确标注差异来源和哪个更代表'真实盈利'"
+      - insight: "条件评级矩阵(6×6 NM×PE)比单一目标价更诚实地表达高不确定性公司的估值"
+        implication: "PW≥5的公司应用条件评级矩阵替代单一目标价——让投资者根据自己的假设定位"
+
+    screening_insights:
+      - insight: "估值/护城河比率(PE÷A-Score)>15x=极度拉伸信号——ARM 19.8x vs 行业均值5-7x"
+        implication: "选股筛选加入'估值/护城河比率'——排除PE÷A-Score>15x的公司(除非增速>40%)"
+      - insight: "面临开源替代的IP公司应额外折价——A-Score中的A10(可持续性)在开源威胁下应大幅降权"
+        implication: "选股时标记'开源替代暴露度'——有结构性开源替代品的IP公司给护城河折扣20-30%"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "看到高PE时列承重墙清单并计算联合概率"
+      trigger: "PE>80x"
+      origin: "ARM 141x PE隐含6项假设→联合概率2%→93%条件矩阵下高估"
+      generalization: "高PE是对'多重假设同时成立'的赌注——联合概率<10%=数学上高估; 单信念翻转幅度量化下行风险"
+
+    - habit: "对IP授权商提价时立即问'替代品迁移成本的摊销是多少'"
+      trigger: "IP/许可公司提价>50%"
+      origin: "ARM v9=2x v8, CSS=2-3x TLA→QCOM $2.4B Ventana摊销至10亿芯片=$0.48/chip→如果ARM版税>$0.50则RISC-V有经济激励"
+      generalization: "定价权有硬天花板=替代品的摊销成本; 弹性函数量化天花板的精确位置"
+
+    - habit: "检查最大客户是否同时是控股股东"
+      trigger: "关联交易收入>20%"
+      origin: "SoftBank贡献ARM授权收入~40%→剔除后授权增长为负(-5%)→'客户签约'的商业独立性存疑"
+      generalization: "关联交易收入应从增长分析中分离——用'ex-related party'增速衡量真实有机增长"
+
+    - habit: "对渐进式威胁看5年累积而非季度变化"
+      trigger: "新兴替代品当前份额<5%但年增>30%"
+      origin: "RISC-V IoT从0→25%用了5年; 每季度变化微小但累积后Intel式护城河坍塌不可逆"
+      generalization: "温水煮青蛙最危险——管理层每季度说'威胁有限'技术上正确但战略上误导"
+
+  quality_feedback:
+    strengths:
+      - "RISC-V CDS弹性函数是全报告最有价值的分析框架——从'能否替代'升级为'如何限价'的连续模型"
+      - "承重墙联合概率测试(2%)和6×6条件评级矩阵精确量化了141x PE的脆弱性"
+      - "五情景概率加权+P&L Build-out提供了完整的估值地图而非单一目标价"
+      - "Intel护城河坍塌15年映射+Visa网络效应对比提供了深度历史锚定"
+      - "10个RT红队(7多头+3空头)实现了真正的双向校准"
+    weaknesses:
+      - "DM密度0.72/千字偏低(门控0.8) — 分析深度高但数据锚定标注不足"
+      - "无D1-D11记分卡/CQI — 缺少标准化质量评价(v17.0框架限制)"
+      - "SBC精确值因FPI豁免不可得(OQ-1) — 整个GAAP vs Non-GAAP分析建立在估算基础上"
+      - "CQ加权置信度仅56.4%, 无CQ>70% — 反映ARM分析的结构性不确定性天花板"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "PE压缩数学>盈利增长(高PE股票通用)"
+        evidence: "141x→28x PE压缩(-80%)完全吞噬盈利3x(+200%)→S2下仍亏损-49%"
+        confidence_after: "高(数学证明,非假设依赖)"
+
+      - hypothesis: "提价是护城河坍塌的催化剂(Intel模式)"
+        evidence: "ARM v9=2x v8→QCOM $2.4B投资RISC-V→Intel提高授权费→推动ARM崛起的历史映射"
+        confidence_after: "高(两次独立验证: Intel→ARM, ARM→RISC-V)"
+
+    extended:
+      - hypothesis: "CDS定价框架(从金融衍生品迁移至IP授权)"
+        extension: "从二元(有/无替代)扩展为连续弹性函数ε→-1.0临界点→可量化天花板位置"
+
+      - hypothesis: "盈利质量三重扭曲"
+        extension: "SBC鸡生蛋困境是新发现——增长与NM扩张通过人才需求形成结构性矛盾,非仅是IPO过渡期问题"
+
+    refuted:
+      - hypothesis: "ARM可完全类比Visa支付网络(H3)"
+        evidence: "DNA相似度78%但核心差异: ARM生态可分叉(同一工具链/OS), Visa网络排他性; TAM天花板$16B vs $100B+"
+        lesson: "类比分析必须检验'排他性'——可分叉的生态不能给支付网络级PE"
+
+  limitations:
+    - "DM密度0.72/千字未达0.8门控——分析深度高但数据锚定标注系统性不足"
+    - "v10版税率未确认(预计2027-2028)——这个单一未知数锁定了CQ-1和CQ-4的置信度天花板"
+    - "SBC精确值因FPI豁免不可得——GAAP vs Non-GAAP框架选择是最大单一方法论风险(可导致30-40%估值差异)"
+    - "SoftBank保证金贷款条款未公开——螺旋风险(H5)概率赋值高度不确定"
+    - "Phoenix计划未出货——CQ-6(45%)是置信度最低的问题,纯推测"
+    - "GAAP优先方法可能系统性低估ARM——如果市场共识转向Non-GAAP,估值锚需上调30-40%"

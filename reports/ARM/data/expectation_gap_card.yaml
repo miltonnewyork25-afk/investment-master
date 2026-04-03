@@ -1,0 +1,86 @@
+# 预期差分析卡 v2.1 — Arm Holdings (ARM)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "ARM"
+  company: "Arm Holdings plc"
+  analysis_date: "2026-03-27"
+  stock_price: "$154.80"
+  market_cap: "$164B"
+  data_snapshot: "FY2025 (FY ends Mar)"
+  tier: "tier2"
+  framework_version: "v2.1"
+  linked_report: "reports/ARM/ARM_Complete_v1.0_2026-02-25.md"
+
+core_judgment: "ARM是半导体中'最极端估值+最独特护城河'的矛盾体——140x PE/$164B市值对一个Rev $4B/NI $800M的公司,意味着市场在定价2031年的$25B收入($9 EPS)。ARM的'收费站'模式(每颗芯片付版税)确实独一无二且不可替代,但AGI CPU(自己做芯片)改变了游戏: 从95%毛利率的IP许可→50%毛利率的芯片销售=收入大增但利润率结构性下降。核心风险: ARM开始与自己的客户(Qualcomm/MediaTek)竞争→可能加速RISC-V替代"
+gap_type: "overpriced_optimism"
+confidence: "medium"
+confidence_reasoning: "高置信: 140x PE/$4B Rev=估值极端(事实)。PR(PE/ROE)=12.4x vs NVDA 1.5x=估值效率极低。中等置信: ARM的收费站模式确实不可替代(每颗芯片需要指令集),但AGI CPU意味着ARM从'中立平台'变成'客户的竞争者'——这在历史上总是导致客户寻找替代(RISC-V)"
+
+expectations:
+  price_implied:
+    p_fcf: "N/A(FCF仅$200M,波动大)"
+    judgment: "extreme — 140x PE定价2031年$9 EPS(需收入6倍增长)"
+
+  dominant_narrative: "ARM是半导体的收费站——每颗芯片都需要ARM指令集,AI更多芯片=更多版税"
+  bull_case_core: "收费站模式不可替代+版税率提升+AGI CPU $15B收入(2031)+每个AI芯片用ARM核心(含NVDA Grace)"
+  bear_case_core: "140x PE=需要6x收入增长justify+AGI CPU与客户竞争→RISC-V加速+芯片业务50%毛利率稀释95%版税利润率+SBC>15%/Rev"
+  market_most_uncertain_about: "AGI CPU是'收入翻倍器'还是'利润率毁灭器+客户关系破坏器'"
+
+reality:
+  company:
+    overall_trend: "accelerating — 但从极小基数"
+    key_variables:
+      - name: "收入"
+        state: "accelerating"
+        data: "FY22-25 CAGR 14%: $2.7B→$4.0B | 但共识FY30 $11.2B需要CAGR 30%=加速3倍"
+        evidence_grade: "fact(当前)+inference(未来)"
+      - name: "毛利率"
+        state: "peak — 但将结构性下降"
+        data: "当前94.9%(纯IP)。AGI CPU 50%毛利率→混合毛利率将从95%降至70-80%"
+        evidence_grade: "fact(当前)+inference(AGI影响)"
+      - name: "AGI CPU"
+        state: "early"
+        data: "刚宣布(2026年3月)。CEO预期2031年$15B收入。Meta/OpenAI/Cloudflare首批客户"
+        evidence_grade: "fact(宣布)+assumption($15B目标)"
+      - name: "RISC-V威胁"
+        state: "early_but_growing"
+        data: "ARM做自己的芯片=与Qualcomm/MediaTek竞争→这些客户有动力转向RISC-V作为对冲"
+        evidence_grade: "inference"
+
+  industry:
+    structural_shifts:
+      - shift: "ARM从中立平台→芯片竞争者"
+        evidence_grade: "fact"
+        irreversibility: 4
+        speed: "medium"
+        company_position: "self_disruptor_with_risk — 类似Amazon推出自有品牌(增收但伤害第三方卖家)"
+
+gap:
+  scoring:
+    direction_clarity: 3
+    magnitude: 4
+    persistence: 3
+    verifiability: 2
+    industry_trend_support: 3
+    smart_money_alignment: 2
+    composite_score: 2.83
+
+  core_mispriced_variables:
+    - variable: "AGI CPU的利润率稀释效应"
+      market_assumes: "ARM收入从$4B→$25B = 股价从$155→$270(HSBC目标)"
+      reality_shows: "AGI CPU 50%毛利率 vs 版税95%。如果$15B芯片+$10B版税,混合毛利率≈70%(vs当前95%=下降25pp)。收入增长的代价是利润率结构性下降"
+      evidence_grade: "inference"
+    - variable: "客户竞争→RISC-V替代加速"
+      market_assumes: "ARM指令集不可替代(历史确实如此)"
+      reality_shows: "ARM做自己的芯片=与Qualcomm等客户直接竞争。历史先例: 每次'平台变成竞争者'都加速替代方案(Android→Harmony, AWS→Azure)"
+      evidence_grade: "inference"
+
+  one_sentence_judgment: "ARM的收费站模式是半导体最独特的护城河(每颗芯片付版税),但140x PE定价的是2031年$9 EPS——需要6x收入增长+AGI CPU成功+客户不转向RISC-V全部成立。AGI CPU是一把双刃剑: 增收但稀释利润率+激怒客户"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 2.83。overpriced方向+估值极端。已有v1.0报告(173K)。等待AGI CPU商业验证(2027-28)"
+
+post_mortem:
+  verified: false

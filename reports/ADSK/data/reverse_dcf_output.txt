@@ -1,0 +1,159 @@
+================================================================================
+AUTODESK (ADSK) — REVERSE DCF MODEL
+Stock: $239.39 | Shares: 213M | Market Cap: $51.0B | EV: $51.5B
+FY2026 Rev: $7.2B | FCF: $2.4B (33.4%) | SBC: $788M (10.9%)
+FY2027 Guidance: Rev $8.1B (+12.8%) | FCF $2.8B
+Tax rate: 18% | Terminal growth (base): 3.0%
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+1. IMPLIED 5-YEAR REVENUE CAGR — STANDARD FCF
+   (What revenue growth does $239 require at each WACC × Terminal Margin?)
+────────────────────────────────────────────────────────────────────────────────
+
+WACC \ Margin |   25%    |   30%    |   35%    |   40%    |
+-----------------------------------------------------------
+    9%       |   14.5%  |   10.4%  |    7.1%  |    4.3%  |
+    10%       |   18.6%  |   14.4%  |   10.9%  |    8.0%  |
+    11%       |   22.3%  |   18.0%  |   14.4%  |   11.4%  |
+    12%       |   25.8%  |   21.4%  |   17.7%  |   14.6%  |
+
+INTERPRETATION (base case: WACC=10%, Terminal FCF Margin=35%, g=3%):
+  → Market implies 10.9% revenue CAGR over 5 years
+  → FY2027 guidance: +12.5%
+  → Historical organic: ~11-12%
+  → Analyst consensus: ~12%
+  ⇒ PRICING IN PESSIMISM: implied CAGR is 1.6pp BELOW guidance
+
+────────────────────────────────────────────────────────────────────────────────
+2. IMPLIED 5-YEAR REVENUE CAGR — OWNER ECONOMICS
+   (Using FCF - SBC×(1-tax) as true cash flow to equity)
+   SBC = 10.9% of revenue, tax-effected at 18%
+   Effective SBC drag: 9.0% of revenue
+────────────────────────────────────────────────────────────────────────────────
+
+WACC \ Margin |   25%    |   30%    |   35%    |   40%    |
+-----------------------------------------------------------
+    9%       |   25.8%  |   19.2%  |   14.3%  |   10.3%  |
+    10%       |   N/A    |   23.5%  |   18.4%  |   14.3%  |
+    11%       |   N/A    |   27.5%  |   22.2%  |   17.9%  |
+    12%       |   N/A    |   N/A    |   25.7%  |   21.3%  |
+
+OWNER ECONOMICS IMPACT (WACC=10%, Margin=35%):
+  Standard implied CAGR:       10.9%
+  Owner Economics implied CAGR: 18.4%
+  SBC tax shield adds: +7.5pp to required growth
+  → SBC dilution makes the stock MORE expensive on owner economics basis
+
+────────────────────────────────────────────────────────────────────────────────
+3. IMPLIED TERMINAL GROWTH RATE (PERPETUITY)
+   (If revenue grows at benchmark CAGRs, what terminal g is priced in?)
+────────────────────────────────────────────────────────────────────────────────
+
+CAGR \ Margin |   25%    |   30%    |   35%    |   40%    |
+-----------------------------------------------------------
+    8%       |    5.8%  |    4.9%  |    4.0%  |    3.0%  |
+    10%       |    5.4%  |    4.4%  |    3.3%  |    2.2%  |
+    12%       |    4.9%  |    3.8%  |    2.6%  |    1.4%  |
+    14%       |    4.4%  |    3.1%  |    1.8%  |    0.5%  |
+  (WACC fixed at 10%)
+
+────────────────────────────────────────────────────────────────────────────────
+4. IMPLIED TERMINAL FCF MARGIN
+   (If revenue grows at X%, what FCF margin is needed?)
+────────────────────────────────────────────────────────────────────────────────
+
+CAGR \ WACC  |   9%    |   10%    |   11%    |   12%    |
+---------------------------------------------------------
+    8%       |   33.6%  |   40.0%  |   46.6%  |   53.5%  |
+    10%       |   30.6%  |   36.5%  |   42.6%  |   48.9%  |
+    12%       |   28.0%  |   33.3%  |   38.9%  |   44.7%  |
+    14%       |   25.6%  |   30.5%  |   35.7%  |   41.0%  |
+  (Terminal growth fixed at 3.0%)
+
+────────────────────────────────────────────────────────────────────────────────
+5. IMPLIED REVENUE CAGR — TERMINAL GROWTH SENSITIVITY
+   (WACC=10%, Terminal FCF Margin=35%)
+────────────────────────────────────────────────────────────────────────────────
+
+  g \ WACC    |   9%    |   10%    |   11%    |   12%    |
+----------------------------------------------------------
+   2.0%       |   10.1%  |   13.6%  |   16.8%  |   19.9%  |
+   2.5%       |    8.6%  |   12.3%  |   15.7%  |   18.8%  |
+   3.0%       |    7.1%  |   10.9%  |   14.4%  |   17.7%  |
+   3.5%       |    5.4%  |    9.5%  |   13.1%  |   16.5%  |
+  (Terminal FCF Margin fixed at 35%)
+
+────────────────────────────────────────────────────────────────────────────────
+6. FORWARD PROJECTION WATERFALL (Base: WACC=10%, Margin=35%, g=3%)
+────────────────────────────────────────────────────────────────────────────────
+
+Year          Revenue   FCF Margin          FCF      PV(FCF)
+----------------------------------------------------------
+FY2027        $8.0B       34.0%         $2.7B        $2.5B
+FY2028        $8.9B       34.3%         $3.0B        $2.5B
+FY2029        $9.8B       34.5%         $3.4B        $2.6B
+FY2030       $10.9B       34.8%         $3.8B        $2.6B
+FY2031       $12.1B       35.0%         $4.2B        $2.6B
+----------------------------------------------------------
+PV(Explicit)                         $12.8B
+Terminal Value                       $62.3B
+PV(Terminal)                         $38.7B
+Enterprise Value                     $51.5B
+Market EV                            $51.5B
+TV as % of EV                        75.2%
+
+────────────────────────────────────────────────────────────────────────────────
+7. OWNER ECONOMICS WATERFALL (Base: WACC=10%, Margin=35%, g=3%)
+   FCF adjusted for SBC: -9.0% of revenue
+────────────────────────────────────────────────────────────────────────────────
+
+Year          Revenue          FCF      SBC(AT)    Owner FCF           PV
+------------------------------------------------------------------------
+FY2027        $8.5B        $2.9B        $0.8B        $2.1B        $1.9B
+FY2028       $10.1B        $3.5B        $0.9B        $2.6B        $2.1B
+FY2029       $12.0B        $4.1B        $1.1B        $3.1B        $2.3B
+FY2030       $14.2B        $4.9B        $1.3B        $3.7B        $2.5B
+FY2031       $16.8B        $5.9B        $1.5B        $4.4B        $2.7B
+------------------------------------------------------------------------
+PV(Explicit)                         $11.6B
+PV(Terminal)                         $39.9B
+Enterprise Value                     $51.5B
+Owner FCF Yield (Y5)                  8.5%
+
+────────────────────────────────────────────────────────────────────────────────
+8. MULTIPLES SANITY CHECK
+────────────────────────────────────────────────────────────────────────────────
+
+  EV/Revenue (TTM):      7.1x
+  EV/Revenue (FY27E):    6.3x
+  EV/FCF (TTM):          21.4x
+  EV/FCF (FY27E):        18.7x
+  EV/Owner FCF (TTM):    29.2x
+  FCF Yield (TTM):       4.7%
+  Owner FCF Yield:       3.4%
+  SBC as % of FCF:       32.7%
+
+================================================================================
+VERDICT: WHAT DOES $239 PRICE IN?
+================================================================================
+
+┌─────────────────────────────────────────────────────────┐
+│ Standard Reverse DCF (WACC=10%, Margin=35%, g=3%):     │
+│   Implied 5Y Revenue CAGR:  10.9%                      │
+│                                                         │
+│ Owner Economics (FCF - SBC after tax):                  │
+│   Implied 5Y Revenue CAGR:  18.4%                      │
+│                                                         │
+│ Benchmarks:                                             │
+│   FY2027 Guidance:       +12.5%                         │
+│   Analyst Consensus 5Y:  +12.0%                        │
+│   Historical Organic:    +10-12%                        │
+│                                                         │
+│ → Market is pricing MILD PESSIMISM                      │
+│   Below guidance, near historical organic range          │
+│                                                         │
+│ Key risk: SBC at 10.9% of revenue means Owner FCF     │
+│   yield is only 3.4% vs reported 4.7% FCF yield     │
+└─────────────────────────────────────────────────────────┘
+

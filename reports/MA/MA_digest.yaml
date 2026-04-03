@@ -1,0 +1,449 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Mastercard
+# 压缩比: 244K → ~12K (20x)
+# 六层 + 三个重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: MA
+  company: "Mastercard"
+  report_date: "2026-03-25"
+  stock_price: "$500.38"
+  market_cap: "$449.3B"
+  report_version: "v2.0"
+  report_path: "reports/MA/MA_Complete.md"
+  quality_score: "报告未显式给出总分"
+  cqi: 91
+  framework_version: "v19.7"
+  industry: "支付网络/金融基础设施"
+  archetype: "双寡头收费站"
+  chars: 243678
+  dm_count: 454
+  dm_density: "1.86/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "MA当前$500基本合理定价(公允$491-535),温和偏低估约2%——增速调整后比Visa更便宜(PEG 1.77 vs 2.27),但Beta 1.07意味着宏观风险主导价格波动,个股Alpha有限"
+  rating: "中性关注(偏积极)"
+  fair_value: "$509 (+1.8%) — P4公允$491/MC中位$535/加权(60/40)$509"
+  expected_return: "-1.9%~+7%(取决于宏观)"
+
+  key_arguments:
+    - claim: "Reverse DCF隐含FCF CAGR仅9%——远低于实际16%+和共识12-16%"
+      direction: bullish
+      magnitude: 4  # 依赖Beta假设,Beta±0.15可使结论从'保守'变'合理'
+      mechanism: "Python Reverse DCF反推→市场只定价9%FCF增速→如果MA维持共识12%+,当前价格有安全边际"
+      kill_switch: "Beta实际应为0.93而非1.07→WACC↓→隐含CAGR降至5.8%→市场定价变合理"
+
+    - claim: "VAS(增值服务)是真引擎:占收入40.6%,增速+23%,75-85%有机"
+      direction: bullish
+      magnitude: 4  # 有机增速有数据支撑但VAS OPM仅47%
+      mechanism: "网络安全+数据分析+数字身份+忠诚度四支柱→从'支付管道'转型'支付+数据平台'→打开第二增长曲线"
+      kill_switch: "VAS OPM=47%(远低于核心65%)→VAS占比↑50%时混合OPM下降3pp→EPS增速<收入增速"
+
+    - claim: "MA vs V PE溢价从+20%压缩至+2.8%,PEG 1.77 vs 2.27——增速调整后MA更便宜"
+      direction: bullish
+      magnitude: 3  # 数学上成立但PE压缩可能反映结构性风险定价
+      mechanism: "MA收入增速16.4% > V 10-12%→PEG更低→市场可能低估增速差→PE重估空间"
+      kill_switch: "MA增速回落至与V相同水平(12%)→PEG差消失→当前PE合理"
+
+    - claim: "WACC贡献MA总估值风险的59%——MA本质上是宏观代理标的"
+      direction: bearish
+      magnitude: 5  # Beta 1.07 vs V 0.79,WACC±100bps=价格±22%
+      mechanism: "Beta 1.07→利率/衰退每变100bps→MA价格波动±22%→个股Alpha有限,80%价格波动由折现率驱动"
+      kill_switch: "Beta下降至0.9以下(5年滚动)→WACC弹性降低→个股Alpha回归"
+
+    - claim: "CI(客户回扣)转折点仅1.8pp安全边际——跨境正常化就可能触发"
+      direction: bearish
+      magnitude: 4  # V走过的路(CI/毛收入从21.5%→28%),MA当前16%
+      mechanism: "净收入增速降至14.65%以下时→CI增速超过收入增速→定价权侵蚀循环启动(V过去5年走过的路)"
+      kill_switch: "VAS增速维持18%+→拉高净收入增速至>CI增速→转折点持续推迟"
+
+  moat:
+    composite_score: 8.5  # CQI 91, 护城河综合4.2/5
+    half_life: "~12年(加权: 网络效应>15年/数据10-15年/转换8-12年/令牌化5-10年)"
+    dimensions:
+      - type: network_effect
+        strength: 5
+        evidence: "31.6亿卡/1.5亿+商户/210+国家/V+MA占全球卡支付90%——经典双边平台效应,冷启动问题几乎不可克服"
+        vulnerability: "Capital One收购Discover证明'收购而非从零建设'可绕过冷启动;A2A创建并行网络"
+      - type: data
+        strength: 4
+        evidence: "1750亿笔/年×20年+历史=全球最大消费支出数据集;排他性+实时性(毫秒级)"
+        vulnerability: "AI合成数据+迁移学习可能在5-10年内缩小部分差距(20%概率)"
+      - type: switching_cost
+        strength: 3
+        evidence: "发卡行IT系统集成6-12月/CI绑定3-5年/VAS多供应商绑定"
+        vulnerability: "转换成本是对称的:MA提高费率→发卡行可以用同样时间切换到V;Capital One已证明可行"
+      - type: regulatory
+        strength: 5
+        evidence: "EMV/PCI-DSS标准强制嵌入;每家银行/POS机/电商都内嵌V/MA协议——制度级标准嵌入"
+        vulnerability: "CCCA可能要求双网络路由→打破定价权法律基础;DOJ可能要求开放token解密"
+      - type: pricing_power
+        strength: 3
+        evidence: "制度型定价权(监管框架+双寡头HHI>2500);F500 Stage3/中型Stage4/SMB Stage4-5→加权3.5"
+        vulnerability: "大客户CI可能以20%+增速上升(Capital One-Discover给大行更多议价筹码)→定价权分化"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含FCF CAGR 9%持续10年——远低于实际16%和共识12-16%,但高度依赖Beta=1.07假设"
+    methods_used: ["Reverse DCF(Python)", "DCF(Python)", "Monte Carlo(10K)", "可比公司/PEG", "历史PE回归", "Owner Earnings"]
+    dispersion: "5.5% ($517-$547三方法) — 低离散度可能反映共享假设而非真实收敛"
+    consensus_vs_ours: "市场定价'宏观代理标的'(Beta溢价)|我们认为增速调整后温和偏低估但程度极小(+1.8%)"
+    entry_zone: "$420-460 (衰退恐慌+CI转折确认=深度入场)"
+    catalyst: "FY2026Q1 earnings beat(收入≥14%+OPM≥57%+VAS≥20%)→确认增速持续→评级上调"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "持有/观望 — 基本合理定价(+1.8%),无明显入场机会,等待催化或回调"
+    buy_triggers:
+      - trigger: "FY2026Q1三指标同时beat(收入≥14%+OPM≥57%+VAS≥20%)+Polymarket衰退<20%"
+        price_zone: "$480-520"
+        reasoning: "确认增速持续→评级上调至'关注'→PE维持30x+合理"
+      - trigger: "衰退恐慌导致Beta放大下跌(非基本面问题)"
+        price_zone: "$400-440 (PE 24-26x)"
+        reasoning: "MA衰退后V型恢复(2020 EPS-20%→1年新高)→恐慌=买入窗口"
+      - trigger: "CI转折确认+VAS OPM=47%双重利空→市场过度反应"
+        price_zone: "$420-460"
+        reasoning: "VAS利润率稀释是3pp(非致命)→如果市场定价>5pp恐慌→超跌"
+    hold_conditions:
+      - "VAS有机增速维持15%+(当前18-20%)"
+      - "CI/毛收入<20%(当前16%,V已28%)"
+      - "Beta<1.2(当前1.07)"
+      - "商誉/总资产<30%(当前~21%+BVNK后~24%)"
+    sell_triggers:
+      - signal: "CI增速连续2Q超过净收入增速>2pp→CI转折确认"
+        severity: "action"
+        action: "减仓30%,重新评估定价权"
+      - signal: "VAS有机增速<12%连续2Q(排除收购)"
+        severity: "warning"
+        action: "下调增速假设,重新估值"
+      - signal: "CCCA通过委员会投票→双网络路由法案推进"
+        severity: "action"
+        action: "减仓25%,估值下调-$40"
+      - signal: "JPM/BAC效仿Capital One收购第三方网络→双寡头结构面临真正威胁"
+        severity: "emergency"
+        action: "减仓50%,护城河假设需根本重评"
+    position_sizing: "当前$500→期望回报+1.8%→Kelly接近零(不建议新建仓);$440以下→Kelly为正(可建仓10-15%)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "CI转折点的定量识别逻辑"
+    chain: >
+      观察: MA CI/毛收入~16%(远低于V 28%)
+      → 但FY2024 CI增速+16%超过净收入增速12.2%→差+3.8pp=CI侵蚀中
+      → FY2025收入加速至16.4%追上CI增速16%→差仅-0.4pp→暂时企稳
+      → 追问: 企稳是CI减速还是收入加速?
+      → 答案: 收入加速(非CI减速)→如果FY2026收入回落至12-13%→CI仍16%→差+3~4pp→侵蚀重启
+      → 转折点计算: 当净收入增速<14.65%→CI增速必然>净收入增速→定价权侵蚀循环启动
+      → 当前安全边际仅1.8pp(16.4%-14.65%)→跨境正常化就可能触发
+      → V先例: CI/毛收入从21.5%→28%(5年+210bps/年,无逆转)
+    transferable_to: "所有存在客户回扣/返点机制的双寡头(V/MA/网络平台/供应商回扣)"
+    reasoning_habit: "看到'CI暂时企稳'时,追问'是CI减速还是收入加速'——后者是暂时的,前者才是结构性改善"
+
+  - id: "CC-2"
+    name: "VAS利润率稀释的数学必然"
+    chain: >
+      VAS OPM反推: 核心支付OPM~65% + VAS OPM=47%(反推精确匹配)
+      → VAS占比从40%→50%→混合OPM计算: 65%×50%+47%×50%=56%(vs当前59%)
+      → 结论: VAS增长越快→OPM下降越确定→EPS增速必然<收入增速
+      → 市场隐含: 如果市场期望OPM持续扩张→VAS结构证伪这个预期
+      → 反面: VAS OPM可能随规模扩张(SaaS逻辑)→从47%→55%→稀释效应减弱
+      → 但即使55%仍低于核心65%→方向不变只是幅度减小
+    transferable_to: "所有高利润率核心业务+低利润率新业务的增长型公司(MSFT Azure/GOOG Cloud)"
+    reasoning_habit: "看到'新业务高增速'时,立刻追问新业务利润率vs核心业务——混合效应可能使增速故事变成利润率陷阱"
+
+  - id: "CC-3"
+    name: "Beta作为宏观代理的估值含义"
+    chain: >
+      MA Beta 1.07 vs V Beta 0.79→差异0.28
+      → WACC差: MA 9.01% vs V假设7.76%→差125bps
+      → WACC±100bps=估值±22%→MA的估值不确定性比V高28%(1.07/0.79-1)
+      → 追问: Beta差异反映什么基本面?
+      → MA跨境占比更高(6-7x费率差)+国际收入56%→汇率/地缘风险敞口更大→Beta更高是合理的
+      → 投资含义: 买MA本质上是赌全球消费周期好转→个股Alpha有限,80%价格波动由折现率驱动
+    transferable_to: "所有高Beta(>1.0)的大盘成长股——WACC主导估值时,宏观判断比个股分析更重要"
+    reasoning_habit: "Beta>1.0时,先算'WACC贡献总风险多少%'——如果>50%,这不是个股研究标的而是宏观表达工具"
+
+  - id: "CC-4"
+    name: "A2A冲击的PIX校准"
+    chain: >
+      问题: A2A(如PIX/UPI/FedNow)会替代多少卡支付?
+      → 巴西PIX实证: 43个月1.6亿用户,月交易量超所有卡交易
+      → 但: 借记卡YoY-12%,信用卡不受影响(因为parcelamento分期付款PIX不提供)
+      → 推论: A2A替代借记(低利润)而非信用(高利润)→EPS影响远小于交易量影响
+      → 校准: A2A 5-10年EPS冲击从-6%修正为-3.5%(概率加权)
+      → MA对冲: VocaLink(A2A基础设施)+BVNK(稳定币)+A2A Protect(安全)→不是抵抗A2A而是参与A2A
+    transferable_to: "所有面临低成本替代品的双寡头(替代品更可能蚕食低利润业务而非高利润业务)"
+    reasoning_habit: "看到'替代技术爆发增长'时,追问'替代的是高利润业务还是低利润业务'——交易量冲击≠EPS冲击"
+
+  - id: "CC-5"
+    name: "令牌化三层价值模型"
+    chain: >
+      L1防御: 令牌化后Apple/Google的数字钱包无法绕过MA网络→令牌需MA验证才能授权→保护现有市值
+      → L2锁定增强: 每卡映射2-3个数字令牌→迁移成本指数级增加→转换成本↑50%
+      → L3 AI期权: 1750亿笔实时数据是AI支付决策的基础设施→MA不仅是'支付管道'更是'AI支付基础设施'
+      → 但反面: 如果AI agents选择最低成本通道→令牌化数据无法阻止A2A→L3期权可能永远不兑现
+      → 估值含义: L1+L2已在定价(保护现有价值),L3未定价($5-15B期权价值)
+    transferable_to: "所有通过技术标准锁定客户的平台(Apple生态/云厂商容器化/SaaS API集成)"
+    reasoning_habit: "技术壁垒分三层评估: 防御(保护现有)/锁定(增加迁移成本)/期权(创造新价值)——前两层可靠,第三层看条件"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "MA PE溢价于V反映增速优势,溢价合理"
+      final: "PE溢价从+20%压缩至+2.8%(几乎消失),EV/EBITDA MA反而更便宜(-12%)"
+      pivot: "实时FMP数据确认增速差收窄+市场已定价MA增速优势→溢价已充分反映"
+
+    - initial: "A2A(PIX/UPI/FedNow)是卡网络的重大威胁,冲击-6% EPS"
+      final: "A2A冲击修正为-3.5% EPS——A2A更多是'扩大数字支付总盘'而非'替代卡支付'"
+      pivot: "巴西PIX实证: 借记YoY-12%但信用不受影响(parcelamento)→A2A替代低利润借记非高利润信用"
+
+    - initial: "VAS高增速(+23%)是纯正面——增长引擎健康"
+      final: "VAS OPM=47%(远低于核心65%)→VAS增长是'低质量增长'→混合OPM必然↓3pp"
+      pivot: "分部OPM反推精确匹配47%→VAS占比↑50%时数学确定OPM下降→市场不应期望利润率持续扩张"
+
+  surprises:
+    - finding: "MA CI/毛收入仅~16%,远低于V的~28%——差12pp"
+      implication: "MA在CI博弈中处于更优位置(有14bps缓冲),但这也意味着MA的CI上升周期可能刚开始(V 2018-2019年也是16%水平)"
+
+    - finding: "CI偏多14/偏空14完美平衡——30个CI中方向完全对称"
+      implication: "报告结论'中性关注(偏积极)'准确反映了证据的对称性;对偏多方向仅有51-55%信心而非60%+"
+
+    - finding: "WACC贡献MA总估值风险的59%——个股Alpha极其有限"
+      implication: "买MA本质上是赌全球消费周期——不是个股研究标的而是宏观表达工具;V的低Beta(0.79)提供更好的下行保护"
+
+    - finding: "飞轮净效应仅2.05/5(含摩擦力)——监管(3/5)是最大结构性摩擦"
+      implication: "MA的增长不是自驱动飞轮而是受监管约束的半飞轮;每次利润率扩张都会引发新一轮监管压力"
+
+  blind_spots:
+    - area: "VAS OPM真实值"
+      why_matters: "影响±$20/股;47%是单组假设反推,置信度B级(60%)"
+      monitor: "SGA/Rev>20%连续2Q→下调VAS OPM;FY2027(18月)首次可验证"
+
+    - area: "Beta应该是多少"
+      why_matters: "影响±$70/股(最大不确定性);1.07 vs 0.93→估值差$140"
+      monitor: "5年滚动Beta<0.95→WACC下调50bps→+$35"
+
+    - area: "FY2025是峰值还是加速起点"
+      why_matters: "影响±$25/股;'FY2025是峰值'叙事概率45%——几乎是抛硬币"
+      monitor: "FY2026Q1有机增速<11%→确认峰值;≥14%→确认加速"
+
+    - area: "CCCA(Credit Card Competition Act)通过概率"
+      why_matters: "影响±$40/股,置信度C级(45%);通过后双网络路由可能动摇定价权法律基础"
+      monitor: "委员会投票排期→概率上调至35%→Bear+10pp"
+
+    - area: "CI按客户层分化"
+      why_matters: "CEO从未按客户层拆分CI——平均数可能掩盖大客户定价权侵蚀;F500 CI可能+20%而SMB仅+8%"
+      monitor: "10-K CI分层披露(可能永远不披露)或大行切换信号"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "CI增速连续超过净收入增速>2pp——V走过的路(21.5%→28%无逆转)"
+      lesson: "CI转折一旦确认几乎不可逆——V 5年无逆转;MA当前1.8pp安全边际说明应在CI转折确认前而非确认后行动"
+      transferable: "所有存在客户回扣/返点压力的双寡头(V/MA/云平台折扣/SaaS企业折扣)"
+    - scenario: "VAS OPM<40%被确认——利润率稀释比预期严重"
+      lesson: "高增速新业务如果利润率持续低于核心业务,增速越快→混合利润率下降越快→'增长陷阱'"
+      transferable: "所有核心高利润率+新业务低利润率的成长型公司(MSFT Azure初期/GOOG Cloud)"
+    - scenario: "PE>35x但增速回落至10%以下——宏观代理标的的PE上限"
+      lesson: "Beta>1的宏观代理标的,在PE>35x时回购和增长都无法覆盖估值下行风险;应设PE上限纪律"
+      transferable: "所有Beta>1.0且PE>30x的大盘成长股"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "CI增速 vs 净收入增速差(pp)"
+      why_alpha: "转折点14.65%——差>0持续2Q=定价权侵蚀确认。大多数分析师只看绝对CI水平而非增速差"
+      current_reading: "FY2025差-0.4pp(暂时企稳,但FY2024差+3.8pp=侵蚀中)"
+    - signal: "VAS有机增速(扣除收购)"
+      why_alpha: "75-85%有机是核心增长质量指标——如果有机降至<12%则增长叙事动摇"
+      current_reading: "~18-20%(扣除Recorded Future后)"
+    - signal: "PEG MA vs V差距"
+      why_alpha: "PE溢价已消失但PEG差距仍在(1.77 vs 2.27)——市场可能尚未完全定价增速差"
+      current_reading: "MA PEG 1.77 vs V 2.27 — MA增速调整后便宜22%"
+
+  confirmation_signals:
+    - signal: "季度GDV增速"
+      bullish_threshold: ">8% YoY(全球数字化渗透持续)"
+      bearish_threshold: "<5% YoY(消费放缓+A2A替代加速)"
+    - signal: "VAS季度增速"
+      bullish_threshold: ">20%(VAS引擎加速)"
+      bearish_threshold: "<15%(VAS减速→增长叙事减弱)"
+    - signal: "跨境交易mix"
+      bullish_threshold: "占比维持25%+(高利润引擎)"
+      bearish_threshold: "占比降至20%以下(跨境正常化+关税冲击)"
+
+  noise_signals:
+    - signal: "MA vs V日度PE差"
+      why_noise: "PE溢价已压缩至+2.8%——在误差范围内,日度波动无信息量"
+    - signal: "稳定币交易量"
+      why_noise: "BVNK收购是'便宜的保险'($1.8B)——稳定币目前对MA收入影响<1%"
+    - signal: "BNPL渗透率"
+      why_noise: "量化冲击<0.06% EPS——BNPL更多是卡网络的分销渠道而非替代品"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: V
+      similarity: "双寡头对手,几乎相同的商业模式(四方模型收费站),相同的客户和监管环境"
+      key_difference: "V份额70%/MA 30%→V更防守/MA更进攻|V Beta 0.79/MA 1.07→V更稳/MA更波动|V CI/毛收入28%/MA 16%→MA定价权缓冲更大|V OPM 66%/MA 59%→V运营效率更高"
+
+    - ticker: CME
+      similarity: "同为金融基础设施垄断收费站,类似的高margin+反脆弱特征"
+      key_difference: "CME=纯垄断(CQI 93)+低增速(5-7%)|MA=双寡头(CQI 91)+高增速(16%)|CME利息敏感/MA消费周期敏感"
+
+    - ticker: PYPL
+      similarity: "同在支付行业,面临类似的A2A/BNPL竞争"
+      key_difference: "PYPL在Layer 3(钱包层)竞争/MA在Layer 2(网络层)→MA护城河更深|PYPL是MA的客户而非竞争者"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "V (CQI ~95) > MA (CQI 91) > CME (CQI 93但不同行业)"
+      reasoning: "V份额70%→网络效应更强;但MA VAS差异化可能在10年内缩小差距"
+
+    - dimension: "增长质量"
+      position: "MA (PEG 1.77) > V (PEG 2.27)"
+      reasoning: "MA收入+16.4%/VAS+23% vs V +10-12%→MA增速调整后估值更便宜"
+
+    - dimension: "定价权"
+      position: "V (CI/毛收入28%已饱和) ≈ MA (CI/毛收入16%但在上升中)"
+      reasoning: "V定价权已被侵蚀(5年+210bps/年);MA当前更优但可能走V的老路"
+
+    - dimension: "衰退抗性"
+      position: "V (Beta 0.79) > MA (Beta 1.07)"
+      reasoning: "V低Beta+高OPM→衰退中跌幅更小;MA跨境占比高→汇率+地缘风险敞口更大"
+
+    - dimension: "估值吸引力(期望回报)"
+      position: "MA (+1.8%) ≈ V (~合理)"
+      reasoning: "两者都接近合理定价——支付双寡头的品质溢价已被市场充分定价"
+
+  industry_position:
+    quadrant: "高品质 × 高增速 × 合理估值 × 高Beta"
+    archetype: "双寡头收费站 — 收费确定+车流高增速,但红绿灯(监管+Beta)主导节奏"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含CAGR 9% vs 实际16%→表面'保守'但高度依赖Beta假设→实际是'Beta赌注'"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-2偏差审计: 6类中5类检测到,总校正-$55(交互修正后-$42),确认偏差(-$20)和锚定(-$15)最大"
+
+    - pattern_id: "scenario_analysis.monte_carlo"
+      application: "10K次蒙特卡洛模拟→$500=P35→65%概率被低估→温和偏低估但非深度低估"
+
+  novel_patterns:
+    - name: "CI转折点量化(客户回扣侵蚀阈值)"
+      description: "精确计算净收入增速阈值(14.65%),低于此→CI增速超过收入增速→定价权侵蚀循环不可逆。安全边际=当前增速-阈值=1.8pp"
+      transferable_to: ["V(同框架)", "所有存在客户回扣/返点的双寡头", "SaaS企业折扣压力"]
+
+    - name: "VAS OPM反推(分部利润率推断)"
+      description: "当公司不披露分部利润率时,用全公司OPM-核心业务OPM×核心占比→反推新业务OPM=47%"
+      transferable_to: ["所有不披露分部利润率但有混合效应的公司", "MSFT(Azure OPM)", "GOOG(Cloud OPM)"]
+
+    - name: "双寡头CI博弈矩阵"
+      description: "V+MA在CI上的Nash均衡: 两者都提高CI→份额不变但利润都降→囚徒困境。MA当前CI 16%有14bps缓冲→博弈空间更大"
+      transferable_to: ["所有双寡头(SPGI/MCO, Boeing/Airbus)", "客户回扣/折扣竞争"]
+
+    - name: "宏观代理标的识别(WACC风险占比)"
+      description: "当WACC贡献>50%总估值风险→个股Alpha有限→本质上是宏观赌注。MA WACC占59%→Beta是比增速更重要的估值变量"
+      transferable_to: ["所有Beta>1.0的大盘成长股", "消费/跨境敞口大的全球平台"]
+
+    - name: "令牌化三层价值(防御/锁定/期权)"
+      description: "技术标准壁垒分三层: L1防御(保护现有)→L2锁定(增加迁移成本)→L3期权(创造新价值)。前两层已定价,第三层条件性"
+      transferable_to: ["Apple生态(iOS锁定)", "云厂商(容器化+API集成)", "所有通过技术标准锁定客户的平台"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "双寡头护城河的转换成本是对称的——保护份额但不保护定价权(发卡行可以用同样时间切到另一家)"
+        implication: "评估双寡头时,转换成本的真正壁垒不在技术而在经济激励——只有当切换后的经济收益>切换成本时才发生"
+      - insight: "飞轮摩擦力中监管是结构性最大(3/5)——支付网络高OPM(>55%)是政治目标,每次利润率扩张都引发新监管"
+        implication: "高利润率平台的飞轮分析必须纳入'监管摩擦'——利润率越高→政治关注度越高→监管压力越大→飞轮有天花板"
+
+    valuation_insights:
+      - insight: "Reverse DCF结论高度依赖Beta假设——Beta±0.15可使结论从'保守'变'合理',单一Beta点估计的Reverse DCF有虚假精确性"
+        implication: "Reverse DCF应报告Beta敏感性区间而非单点结论;对高Beta(>1.0)标的,应同时用Beta=报告值和Beta=0.9做双Reverse DCF"
+      - insight: "低离散度(5.5%)可能反映'在同一错误下的一致性'而非真实收敛——真实不确定区间应为$460-560(远大于5.5%暗示)"
+        implication: "估值方法独立性审计应成为标准步骤——如果方法共享>50%输入假设,低离散度是虚假信号"
+
+    screening_insights:
+      - insight: "PEG比PE更能暴露双寡头的真实估值关系——MA PE仅比V高2.8%但PEG低22%"
+        implication: "筛选同行业双寡头时用PEG而非PE——PE误导性极强(不反映增速差异)"
+      - insight: "CI/毛收入比率是定价权的前瞻指标——V 28%(已饱和)vs MA 16%(仍有缓冲)→MA在博弈中位置更优"
+        implication: "对存在回扣机制的公司,增加'CI/毛收入'筛选: >25%=高风险(V), <18%=有缓冲(MA)"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "CI暂时企稳时追问'是CI减速还是收入加速'"
+      trigger: "CI增速差从正变为接近零"
+      origin: "MA FY2025 CI差-0.4pp(看似好转)但原因是收入加速而非CI减速→FY2026收入回落则侵蚀重启"
+      generalization: "所有'暂时好转'的指标都应追问是分子改善还是分母变化——分母变化是暂时的"
+
+    - habit: "看到新业务高增速时立刻算混合利润率影响"
+      trigger: "新业务增速>核心业务2倍+且利润率低于核心"
+      origin: "VAS +23%/OPM 47% vs 核心+10%/OPM 65%→VAS占比↑10pp=混合OPM↓3pp→增速故事变利润率陷阱"
+      generalization: "增长的'质量'不仅看增速本身,还看增量利润率——增速×(增量OPM-报告OPM)才是对EPS的真实贡献"
+
+    - habit: "WACC占总风险>50%时,先做宏观判断再做个股分析"
+      trigger: "Beta>1.0 + 大盘成长股"
+      origin: "MA WACC贡献59%估值风险→花80%时间分析基本面但80%价格波动由宏观决定=资源错配"
+      generalization: "对宏观代理标的,最重要的分析不是个股而是利率/衰退/汇率——个股分析的边际贡献递减"
+
+    - habit: "双寡头分析必须包含博弈论——不是两个独立公司而是一个博弈系统"
+      trigger: "HHI>2500的双寡头市场"
+      origin: "MA vs V在CI上的囚徒困境——两者都提高CI→份额不变但利润都降→理解Nash均衡比单独分析更重要"
+      generalization: "双寡头估值不是'公司A值多少'而是'在博弈均衡下A的最优策略是什么+均衡会被打破吗'"
+
+  quality_feedback:
+    strengths:
+      - "CI注册表30个,偏多14/偏空14完美平衡——方向性偏差控制到位"
+      - "DM密度1.86/千字(454个DM)——数据锚定扎实,超过1.5/千字标准"
+      - "V教训贯穿始终(L1-L5)——充分利用可比公司先例约束分析偏差"
+      - "CI转折点14.65%和VAS OPM=47%两个核心量化发现具有高区分度"
+      - "10条一致性检验全部通过——内部逻辑一致性强"
+    weaknesses:
+      - "Beta不确定性(±0.15)导致Reverse DCF结论可在'保守'和'合理'之间切换——核心结论的稳健性不足"
+      - "VAS OPM仅单组假设反推——置信度B级(60%),缺乏独立验证源"
+      - "CI按客户层分化无法从公开数据验证——CEO沉默使关键不确定性永久悬置"
+      - "P1初版CI 5/5偏多(后修正)——分析起始偏差需要更早的mini-RT纠偏"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "宏观代理标的: 大盘支付公司80%价格波动由WACC/宏观驱动 (V报告教训L5)"
+        evidence: "MA WACC贡献59%估值风险+Beta 1.07→比V更极端地验证了这一假说"
+        confidence_after: "高(两份报告独立确认)"
+
+      - hypothesis: "CI侵蚀是双寡头结构性特征而非暂时现象 (V报告)"
+        evidence: "MA CI/毛收入从12%(FY2020)→16%(FY2025)年均+1pp(V为+1.6pp/年)→方向一致仅速度不同"
+        confidence_after: "高(V+MA双验证)"
+
+      - hypothesis: "Reverse DCF必须P1前置 (铁律O, CRM教训)"
+        evidence: "Ch01 Reverse DCF有效建立'市场隐含9% CAGR'基线→后续分析围绕'9%合理吗'展开→防止结论先行"
+        confidence_after: "高(执行确认,无反例)"
+
+    extended:
+      - hypothesis: "VAS利润率低于核心→混合OPM必然下降 (V报告VAS分析)"
+        extension: "精确量化: VAS OPM=47%(V未给出精确值)→占比每+10pp=混合OPM-3pp→数学公式化"
+
+    refuted: []  # 本报告未明确推翻任何前报告假说
+
+  limitations:
+    - "VAS OPM=47%仅单组假设反推,置信度60%——如果真实OPM为35-40%→利润率陷阱更严重→目标价应下调$15-20"
+    - "Beta 1.07→WACC 9.01%是最大估值变量(±$70/股)——但Beta本身有±0.15不确定性→核心结论不稳健"
+    - "CI按客户层分化是最高风险沉默域——CEO从未拆分,公开数据无法验证→关键假设建立在推断上"
+    - "'FY2025是峰值'叙事概率45%——几乎是抛硬币→如果峰值成立则整个增长叙事需重写"
+    - "CCCA通过概率(C级置信度45%)——如果通过则定价权法律基础动摇→影响±$40/股"

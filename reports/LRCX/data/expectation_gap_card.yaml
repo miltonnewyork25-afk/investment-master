@@ -1,0 +1,73 @@
+# 预期差分析卡 v2.1 — Lam Research (LRCX)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "LRCX"
+  company: "Lam Research Corporation"
+  analysis_date: "2026-03-27"
+  stock_price: "$211.62"
+  market_cap: "$264B"
+  data_snapshot: "FY2025 (FY ends June)"
+  tier: "tier2"
+  framework_version: "v2.1"
+  linked_report: "reports/LRCX/LRCX_Complete_Analysis_v6.1_2026-01-29.md"
+
+core_judgment: "LRCX是三家设备中周期暴露最大+当前估值最危险的组合——51x峰值PE(历史区间12-25x的2-4倍)定价一个下行周期收入跌14%的高beta公司。NAND恢复叙事支撑了短期(LRCX ~35%收入来自NAND),但WFE周期第3年+51x峰值PE+历史上15x谷值PE=$40(vs当前$212)=如果周期回调,下行空间最大。三家中风险回报最差"
+gap_type: "overpriced_optimism"
+confidence: "high"
+confidence_reasoning: "高置信: 51x PE vs历史12-25x=事实级极端。下行周期收入-14%/OPM压缩6pp=事实级高beta。计算: 谷值EPS $2.65×15x=$40 vs当前$212=81%下行。即使AI延长周期,51x对周期股是历史罕见"
+
+expectations:
+  price_implied:
+    p_fcf: "47x"
+    judgment: "extreme — 历史PE区间(12-25x)的2-4倍,三家中最极端vs历史"
+
+  dominant_narrative: "NAND CapEx恢复+AI刻蚀需求增长→LRCX从下行周期强势反弹"
+  bull_case_core: "NAND恢复(35%收入)+GAA需要更多刻蚀步骤+AI结构性扩展刻蚀TAM"
+  bear_case_core: "51x峰值PE=历史极值+NAND过度投资风险+刻蚀比检测更commoditized+中国限制"
+
+reality:
+  company:
+    overall_trend: "accelerating_from_trough — 但当前是反弹中段不是起点"
+    key_variables:
+      - name: "收入"
+        state: "accelerating"
+        data: "FY23 $17.4B → FY24 $14.9B(-14%下行!) → FY25 $18.4B(+24%反弹)"
+        evidence_grade: "fact"
+      - name: "周期Beta"
+        state: "high"
+        data: "下行周期收入-14%(三家最高)。WFE下降时LRCX跌幅1.0x WFE跌幅"
+        evidence_grade: "fact"
+      - name: "OPM"
+        state: "near_peak"
+        data: "当前33.8% vs 下行谷值28.6% → 5-6pp压缩"
+        evidence_grade: "fact"
+
+  industry:
+    key_industry_fact: "LRCX的NAND暴露(~35%)是双刃剑——NAND恢复时弹性最大,但NAND过度投资时跌幅也最大"
+
+gap:
+  scoring:
+    direction_clarity: 4
+    magnitude: 5
+    persistence: 3
+    verifiability: 3
+    industry_trend_support: 2
+    smart_money_alignment: 2
+    composite_score: 3.17
+
+  core_mispriced_variables:
+    - variable: "峰值PE×峰值EPS = 双重峰值定价"
+      market_assumes: "NAND恢复+AI刻蚀=增长故事(给增长PE)"
+      reality_shows: "LRCX是周期股不是增长股。51x×峰值EPS在历史上每次都伴随着后续的50-70%回撤(2018, 2022)"
+      evidence_grade: "fact(历史PE)+fact(周期性)"
+
+  one_sentence_judgment: "LRCX是三家设备中'风险回报最差'的——最高周期beta(收入-14%)+最极端估值(51x vs历史12-25x)+最高NAND暴露(35%)=如果周期回调,首先被卖出且跌幅最大"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 3.17。overpriced方向+高置信。已有v6.1报告(264K)。当前应避免新建仓"
+  position_implication: "如果持有: 强烈考虑在$200+减仓。如果未持有: 等待$60-$80区间(下行周期+15-18x谷值PE)"
+
+post_mortem:
+  verified: false
