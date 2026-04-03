@@ -574,6 +574,41 @@ if [ "$PHASE" -ge 4 ]; then
 fi
 
 # ============================================================
+# Layer 4.1: G9认知边界5维分解检测 — Phase≥4 (EVO-SNOW-001)
+# 设计: 确保cognitive_boundary_assessment包含v3.0的5维业务复杂度分解
+# 而非仅输出总分。防止Phase 4 context压力下跳过Step 2详细评估
+# ============================================================
+if [ "$PHASE" -ge 4 ]; then
+    echo ""
+    echo "--- Layer 4.1: G9认知边界5维分解 ---"
+
+    CB_FILE=""
+    for cf in "reports/${TICKER}/cognitive_boundary_assessment"*.md; do
+        if [ -f "$cf" ]; then CB_FILE="$cf"; fi
+    done
+
+    if [ -n "$CB_FILE" ]; then
+        # 检查是否包含5维分解的关键词
+        DIM_COUNT=0
+        for kw in "收入引擎" "护城河异质性\|MDI" "变量耦合" "财务透明" "外部依赖"; do
+            if grep -qE "$kw" "$CB_FILE" 2>/dev/null; then
+                DIM_COUNT=$((DIM_COUNT + 1))
+            fi
+        done
+
+        if [ "$DIM_COUNT" -ge 4 ]; then
+            check_pass "G9 v3.0: 业务复杂度5维分解 ${DIM_COUNT}/5维 in $(basename $CB_FILE)"
+        elif [ "$DIM_COUNT" -ge 2 ]; then
+            check_warn "G9 v3.0: 仅${DIM_COUNT}/5维 → 缺少业务复杂度分项评估，请补充收入引擎/MDI/耦合度/透明度/依赖性"
+        else
+            check_fail "G9 v3.0: 业务复杂度5维分解缺失(仅${DIM_COUNT}/5维) → /cognitive-boundary ${TICKER} 需重新执行Step 2"
+        fi
+    else
+        check_warn "G9: 认知边界评估文件未找到 → Phase 4完成后执行 /cognitive-boundary ${TICKER}"
+    fi
+fi
+
+# ============================================================
 # Layer 4.5: 薄章节检测 — Phase≥5 (EVO-ARM-002)
 # 设计: Complete组装前检测<1500字符章节,防止章节厚度极不均匀
 # ============================================================

@@ -1,0 +1,427 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Chipotle Mexican Grill (CMG)
+# 压缩比: 402K → ~12K (34x)
+# 六层 + 三个重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: CMG
+  company: "Chipotle Mexican Grill"
+  report_date: "2026-03-04"
+  stock_price: "$36.93"
+  market_cap: "$49.5B"
+  report_version: "v1.0"
+  report_path: "reports/CMG/CMG_v1.0_Complete_2026-03-04.md"
+  quality_score: "报告未覆盖"
+  cqi: "报告未覆盖"
+  a_score: "6.88/10"
+  framework_version: "v18.0"
+  industry: "消费品 (快休闲餐饮)"
+  archetype: "品牌溢价 + 单品牌直营"
+  chars: 402000
+  dm_count: 659
+  dm_density: "~1.64/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "CMG以32x P/E交易于5年估值底部，零负债+高ROIC构成安全边际，但comp转负(-1.7%)+Niccol离任折价+WACC悖论使期望回报-7.0%——等待FY2026 H1 comp数据确认方向"
+  rating: "中性关注(偏审慎)"
+  fair_value: "~$34.3 (红队调整后PWV)"
+  expected_return: "-7.0%"
+
+  key_arguments:
+    - claim: "WACC悖论——零负债在DCF中是'劣势', 在风险中是'优势'"
+      direction: neutral
+      magnitude: 5
+      mechanism: "零金融负债→WACC=纯权益成本9.5%→DCF结构性偏低(vs高杠杆同业SBUX WACC 5.6%)→390bps缺口无法用模型消除→估值争论被纯化为comp能否恢复这一个变量"
+      kill_switch: "如果市场持续以5-6%隐含折现率定价CMG, WACC悖论将被'投票'而非'称重'解决"
+
+    - claim: "Niccol折价~8.0x P/E可量化, 约10.6x(49%)具备修复条件"
+      direction: conditional
+      magnitude: 4
+      mechanism: "P/E从53.8x压缩至32x, 四因子归因: comp减速(5.5x)+宏观(3.6x)+Niccol折价(8.0x)+叙事转换(4.5x)→comp+宏观可修复(9.1x), Niccol折价中2.6x取决于Boatwright证明, 叙事4.5x大概率永久"
+      kill_switch: "Boatwright连续2Q战略沉默+comp<-2%→折价从'暂时'转为'结构性'"
+
+    - claim: "回购数学不可持续——FY2026是身份定义时刻"
+      direction: bearish
+      magnitude: 4
+      mechanism: "FY2025回购$2.43B=FCF的167%→现金从$1.42B降至$1.05B→FY2026维持同节奏年底现金归零→必须减速至FCF水平或破零负债原则举债→无论哪条路径都改变叙事"
+      kill_switch: "FCF大幅恢复至$1.8B+→回购空间重新打开→身份危机延后"
+
+    - claim: "定价权存在但正在收窄——2021-2023强(累计涨价20%客流正增长), 2024-2025拐点出现"
+      direction: bearish
+      magnitude: 3
+      mechanism: "2021-2023累计涨价~20%客流正增长(需求弹性<1)→2024加州6-7%涨价后客流放缓→CEO承诺'尽可能不提价'暗示定价权边界被测试→关税+工资成本只能由OPM吸收"
+      kill_switch: "comp恢复+2%以上→证明消费者价格敏感度是周期性而非结构性"
+
+    - claim: "HEEP(自动化设备)是comp恢复和OPM扩张的核心杠杆, 但规模化未验证"
+      direction: conditional
+      magnitude: 3
+      mechanism: "双面烤盘将鸡肉烹饪时间减67%→管理层声称'数百bps'利润率改善→偏差修正后真实增量~150-200bps→FY2026从350家扩至2,000家(覆盖率8.6%→49%)→2,000店是规模化验证最低阈值"
+      kill_switch: "HEEP 2,000店覆盖后comp仍负+OPM无改善→证明效率被成本完全对冲"
+
+  moat:
+    composite_score: 7.0
+    half_life: "~10-15年(运营体系可学习, 非专利型)"
+    dimensions:
+      - type: brand
+        strength: 4
+        evidence: "全美快休闲品牌第一, NPS行业领先, 'Food With Integrity'差异化深入人心, 24.6%品类份额"
+        vulnerability: "单品牌风险——任何影响Chipotle品牌的事件直接冲击100%收入(2015 E.coli: comp-20.4%, 市值-$8B)"
+      - type: scale
+        strength: 4
+        evidence: "4,056家直营店, AUV $2.94M远高于行业均值, G&A/Rev 5.5%接近结构性下限"
+        vulnerability: "G&A杠杆接近耗尽(4.5-5.0%下限), 未来OPM改善只能来自门店层面效率或收入增长"
+      - type: switching_cost
+        strength: 3
+        evidence: "21M忠诚会员+数字化渗透37%+Chipotlane 1,100家创造习惯黏性"
+        vulnerability: "CAVA/Sweetgreen可复制运营方法论, 数字化渗透率已进入平台期(不再增长)"
+      - type: pricing_power
+        strength: 3
+        evidence: "2021-2023累计涨价20%客流正增长, 客单价$10.31在快休闲中仍属高性价比"
+        vulnerability: "2024-2025拐点: 弹性明显上升(|ε|>1), CEO承诺不提价=定价权边界被测试"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含comp恢复至低单位数正增长(B1)+OPM扩张至19-21%(B2)+门店扩张8%/年(B3)+FCF CAGR 16-18%(B4)——B2是最脆弱信念(需创造CMG从未达到的利润率水平)"
+    methods_used: ["Reverse DCF", "DCF(4情景概率加权)", "可比估值(9公司)", "Lynch法", "PEG法", "EV/EBITDA法"]
+    dispersion: "极高——DCF $20.06(-46%) vs 可比$38.4(+4%), 根源是WACC悖论(390bps缺口)"
+    consensus_vs_ours: "市场看32x P/E=5年最低可能修复 | 我们看32x仍高于成熟同业(MCD 25.5x/DPZ 23.8x)+WACC悖论使真实定价不透明"
+    entry_zone: "$28-30 (P/E ~25-27x)"
+    catalyst: "FY2026 H1 comp转正+HEEP 2,000店OPM增量验证——两个催化剂需同时出现才能触发评级上调"
+
+  action_framework:
+    verdict: "等待信号——不是买入信号也不是卖出信号, comp转正前观望"
+    buy_triggers:
+      - trigger: "FY2026 H1 comp >+1% + HEEP 2,000店验证OPM +50bps"
+        price_zone: "$33-36 (P/E 29-32x, 确认后当前价位附近可建仓)"
+        reasoning: "comp转正证明Niccol折价是周期性→10.6x P/E修复空间→评级升至'关注'"
+      - trigger: "P/E压缩至25-27x(宏观/行业恐慌)"
+        price_zone: "$28-30"
+        reasoning: "零负债+品牌力8.0提供安全边际→在成熟同业估值水平买入高品质资产"
+    hold_conditions:
+      - "品牌力维持(NPS不降>10分, 年轻客群占比不降>3pp)"
+      - "OPM ≥16%(零负债公司的利润率底线)"
+      - "ROIC维持>15%(真实运营回报而非ROE幻觉)"
+      - "管理层不举债回购(破零负债原则=身份危机)"
+    sell_triggers:
+      - signal: "连续3Q comp < -3%(品牌结构性衰退信号)"
+        severity: "action"
+        action: "减仓50%, 重新评估护城河"
+      - signal: "OPM < 15% + comp负增长(利润率死亡螺旋)"
+        severity: "emergency"
+        action: "全部卖出, 温水煮青蛙加速"
+      - signal: "管理层为维持回购而举债(零负债身份破坏)"
+        severity: "warning"
+        action: "减仓25%, 重新计算资本结构安全边际"
+      - signal: "CAVA连续4Q comp > CMG comp + 10pp(品类替代加速)"
+        severity: "warning"
+        action: "观察2个季度, 如持续则减仓"
+    position_sizing: "当前不建仓(期望回报-7.0%) | comp转正后半仓(~15%仓位) | P/E<27x全仓(~25%仓位)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "WACC悖论——零负债公司的DCF陷阱"
+    chain: >
+      零金融负债→WACC=纯权益成本9.5%(无债务税盾拉低)
+      → 高杠杆同业(SBUX)WACC仅5.6%→DCF对CMG系统性偏低
+      → CAPM推导9.5% vs 市场隐含折现率5.6%→390bps缺口
+      → 缺口来源: 品质溢价(~100bps)+增长期权(~100bps)+模型局限(~200bps)
+      → 结论: DCF在零负债公司上不可信→必须降权+多方法交叉验证
+      → 投资含义: 零负债在风险视角是优势(无信用风险/再融资风险)但在估值视角是劣势(WACC偏高)
+    transferable_to: "所有零/低负债高品质公司(BRK/GOOG/部分科技公司)的DCF估值"
+    reasoning_habit: "看到零负债公司DCF大幅低于市价时, 先检查WACC是否因缺少债务税盾而结构性偏高——不要急于判断'高估'"
+
+  - id: "CC-2"
+    name: "P/E压缩归因法——四因子拆解修复空间"
+    chain: >
+      P/E从53.8x压缩至32x, 总幅度21.6x
+      → 拆解: comp减速(5.5x)+宏观(3.6x)+CEO折价(8.0x)+叙事转换(4.5x)
+      → 分类: 可修复(comp+宏观=9.1x) vs 需验证(CEO折价中2.6x) vs 永久(叙事4.5x)
+      → 投资含义: 49%(10.6x)有修复条件, 但需两个催化剂同时兑现
+      → 如果仅comp恢复而CEO未验证, P/E修复仅3-5x(至35-37x), 不改变评级
+    transferable_to: "所有经历P/E大幅压缩的公司——区分可修复/需验证/永久, 比简单'均值回归'更精确"
+    reasoning_habit: "P/E压缩时不要笼统说'便宜了'——拆解每一块压缩的原因, 分别评估修复概率"
+
+  - id: "CC-3"
+    name: "回购可持续性的物理约束"
+    chain: >
+      FY2025回购$2.43B/FCF$1.45B=167%→差额$0.98B消耗现金储备
+      → 现金从$1.42B降至$1.05B→按此节奏1.2年耗尽
+      → 零负债身份=不会举债→回购必须减速至FCF水平
+      → 回购减速→EPS增长贡献从~2.5%降至~1.4%→信号效应: 市场解读为'增长选项匮乏'
+      → 正反馈循环: comp负→减速回购→市场'连管理层都不看好'→P/E压缩→更不敢回购→螺旋
+    transferable_to: "所有回购/FCF>100%的公司——物理约束比管理层意愿更可靠"
+    reasoning_habit: "看到回购大幅超过FCF时, 计算'现金耗尽时间'——这比讨论回购意愿更有预测力"
+
+  - id: "CC-4"
+    name: "食品通胀传导的两难——不提价=OPM吸收, 提价=客流风险"
+    chain: >
+      牛油果关税25%→+60bps成本+劳动力成本+50-100bps→合计+110-160bps
+      → CEO承诺'尽可能不提价'→成本由OPM吸收
+      → 但comp已负(-1.7%)→提价→更多客流损失(需求弹性2024后>1)
+      → 两难: 吸收=利润率下降 vs 提价=客流加速流失
+      → 在comp负增长环境下, 定价权是理论上存在但实操上不敢用的'纸面武器'
+    transferable_to: "所有面临成本上升+需求疲软双重压力的消费品公司——定价权的实际可用性取决于需求弹性"
+    reasoning_habit: "评估定价权时追问'在当前需求环境下敢不敢用'——牛市定价权和熊市定价权是两种完全不同的资产"
+
+  - id: "CC-5"
+    name: "温水煮青蛙——最可能的下行路径不是崩盘而是缓慢低于预期"
+    chain: >
+      品牌老化(每年-0.5pp年轻客群)+数字化停滞(37%平台期)+G&A杠杆耗尽+权益侵蚀(ROE幻觉)
+      → 每个因素单独不触发KS→五年累积: EPS $1.14→$1.20(vs共识$1.40), P/E 32x→25x→$30(-19%)
+      → 投资者既不止损(没有明确恶化)也不获利(没有明确改善)
+      → 5年持有回报-10%至-20%, 远不如指数基金
+    transferable_to: "所有成熟品牌公司——温水煮青蛙比戏剧性崩盘更难防御, 因为没有单一触发信号"
+    reasoning_habit: "对成熟品牌不仅问'什么会让它崩盘', 更要问'什么会让它每年微弱地低于预期'——后者的累积危害更大"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "32x P/E = 5年最低 = 便宜"
+      final: "32x仍高于MCD(25.5x)/DPZ(23.8x)/DRI(22.8x)等成熟同业, 且WACC悖论使DCF无法确认低估"
+      pivot: "WACC悖论: CAPM 9.5% vs 市场隐含5.6%→390bps缺口使'便宜'判断不可靠"
+
+    - initial: "Phase 1-3评级'审慎关注(偏中性)', 期望回报-10.7%"
+      final: "红队校准后上调至'中性关注(偏审慎)', 期望回报-7.0%"
+      pivot: "RT-2悲观偏差(+4.5pp): 基于RCL/SBUX/IHG三份报告的系统性悲观模式外推, 但依赖meta-judgment而非CMG特定证据"
+
+    - initial: "HEEP能带来'数百bps'利润率改善(管理层声称)"
+      final: "偏差修正后真实增量~150-200bps, 且需规模化验证"
+      pivot: "管理层声称的效率数据存在选择偏差(最佳门店展示)→Phase 1对CQ-3做了偏差修正"
+
+  surprises:
+    - finding: "去掉财务健康维度后, CMG与SBUX的A-Score几乎完全相同(5.88 vs 5.86)"
+      implication: "CMG相对SBUX的全部品质优势来自零负债——运营品质相当。但零负债在DCF中反而是劣势(WACC高)→品质优势和估值劣势来自同一个源头"
+
+    - finding: "ROE 47.4%是回购缩小权益基数的数学膨胀, ROIC(18.9%)才是真实运营回报"
+      implication: "量化筛选器看到ROE 47%会标记为'高质量成长股'——但分子(利润)停滞、分母(权益)缩小=增长幻觉"
+
+    - finding: "P/E四因子归因中, 叙事转换(成长→成熟)的4.5x大概率永久——CMG已被市场重新归类"
+      implication: "即使comp恢复+CEO验证, P/E也很难回到50x+→CMG的投资回报将从P/E扩张驱动转向EPS增长驱动"
+
+    - finding: "CMG与SBUX是WACC悖论的镜像: SBUX用杠杆让DCF看起来便宜但风险高, CMG零负债让DCF看起来贵但风险低"
+      implication: "两家公司评级相似但投资论点完全相反——'安全但不便宜' vs '便宜但风险高'"
+
+  blind_spots:
+    - area: "FY2026 H1 comp(最关键单一变量)"
+      why_matters: "同时验证/否定comp是周期性还是结构性, 决定评级向上还是向下迁移"
+      monitor: "FY2026 Q1财报(2026年4月) | Q1 comp >+1%=积极信号 | <-2%=下调触发"
+
+    - area: "HEEP规模化效果(350→2,000店)"
+      why_matters: "决定OPM是扩张(HEEP+150-200bps)还是收缩(成本压力+110-160bps净效应)"
+      monitor: "HEEP覆盖门店的comp vs 非HEEP门店的comp差异 | FY2026 Q2-Q3分步验证"
+
+    - area: "Boatwright的战略能力(CEO沉默分析: 国际化/品牌扩展均沉默)"
+      why_matters: "决定Niccol折价8.0x中2.6x的修复可能性 | 运营稳定≠战略引领"
+      monitor: "FY2026 earnings call中是否出现独立战略愿景(非Niccol延续)"
+
+  sell_lessons:
+    - scenario: "P/E从53.8x压缩至32x期间不止损——持有者承受-37%下跌"
+      lesson: "消费品高P/E(>40x)依赖明星CEO叙事时, CEO离任=叙事崩塌=P/E立即重定价。在CEO变动时至少减仓30%"
+      transferable: "所有P/E>40x且高度依赖单一管理者叙事的公司(TSLA/SBUX/NKE CEO变动期)"
+
+    - scenario: "comp转负后等待恢复——历史恢复需3-4年(2015 E.coli先例), 期间资本被锁定"
+      lesson: "品牌公司comp恢复的时间线通常比市场预期长2-3x。comp转负后应降低仓位, 等确认信号后再回补"
+      transferable: "所有经历comp转负的餐饮/零售公司——恢复时间是最常被低估的变量"
+
+    - scenario: "回购超过FCF 167%不减仓——物理约束1.2年内必须减速→信号效应压P/E"
+      lesson: "回购/FCF>130%是不可持续的数学信号——不管管理层怎么说, 物理约束会迫使减速, 减速时市场通常过度反应"
+      transferable: "所有积极回购但回购速度超过FCF的公司"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "FY2026 Q1 comp (同店销售增长)"
+      why_alpha: "同时验证三个关键假设: comp是否触底(CQ-1), HEEP是否规模化有效(CQ-3), Niccol折价是否可修复。单一数据点解决三个问题"
+      current_reading: "FY2025全年-1.7%, Q4约-2.5%, 管理层指引FY2026 'approximately flat'"
+
+    - signal: "HEEP覆盖门店vs非HEEP门店的comp差异"
+      why_alpha: "隔离HEEP的真实增量效应——如果HEEP门店comp明显优于非HEEP门店, 证明150-200bps假设成立"
+      current_reading: "尚未披露, FY2026 Q2-Q3起可比较(覆盖率达49%后)"
+
+    - signal: "FY2026回购金额vs FCF比率"
+      why_alpha: "揭示管理层是否正视回购不可持续的数学约束——减速=诚实但P/E承压, 不减速=现金耗尽"
+      current_reading: "FY2025回购/FCF=167%, 现金$1.05B(仅够1.2年)"
+
+  confirmation_signals:
+    - signal: "季度comp趋势(Q-by-Q)"
+      bullish_threshold: ">+1%连续2Q(周期性恢复确认)"
+      bearish_threshold: "<-2%连续2Q(结构性恶化确认)"
+    - signal: "OPM季度趋势"
+      bullish_threshold: ">17%(HEEP效率兑现)"
+      bearish_threshold: "<15%(成本压力失控)"
+    - signal: "SBUX在Niccol领导下的comp恢复速度"
+      bullish_threshold: "SBUX comp恢复至+2%以上→压缩CMG P/E 2-3x(Niccol叙事溢价)"
+      bearish_threshold: "SBUX持续恶化→修复CMG P/E 2-4x(Niccol证伪)"
+
+  noise_signals:
+    - signal: "ROE绝对水平"
+      why_noise: "回购缩小权益基数→ROE数学膨胀(47%→可能60%)——但ROIC才是真实运营回报。ROE改善≠运营改善"
+    - signal: "CAVA季度comp(短期)"
+      why_noise: "CAVA 439家店vs CMG 4,056家, 短期comp差异主要反映规模差异和新店蜜月期, 非直接竞争替代。3-5年时间框架才有实质意义"
+    - signal: "日度/周度app下载量波动"
+      why_noise: "季节性+LTO活动驱动的短期波动, 需看年度趋势才有品牌力诊断价值"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: SBUX
+      similarity: "同一变量(Niccol)的镜像对比, 估值困境的双向映射"
+      key_difference: "CMG='安全但不便宜'(零负债+WACC高) vs SBUX='便宜但风险高'(负权益+WACC低) | CMG失去Niccol vs SBUX获得Niccol"
+
+    - ticker: CAVA
+      similarity: "同为快休闲品类, 客群重叠60-70%, 菜单定位(地中海vs墨西哥)互补但胃口份额竞争"
+      key_difference: "CAVA=高增长初创阶段(439店→1,500+, comp +13.4%) vs CMG=成熟放缓(4,056店, comp -1.7%) | CAVA是品类扩张者, CMG是品类守成者"
+
+    - ticker: MCD
+      similarity: "全球餐饮龙头, 经历类似comp周期(FY2023 comp减速→FY2024恢复)"
+      key_difference: "MCD=特许经营(轻资产, 高margin) vs CMG=直营(重资产, 品控一致) | MCD多品类分散 vs CMG单品牌集中"
+
+  comparative:
+    - dimension: "定价权"
+      position: "DRI > CMG ≈ MCD > SBUX > CAVA(未测试)"
+      reasoning: "CMG 2021-2023累计涨价20%客流正增长, 但2024-2025拐点出现; DRI在通胀中更稳定"
+
+    - dimension: "财务安全性"
+      position: "CMG (Z-Score 7.28) >> MCD >> DRI >> SBUX (负权益)"
+      reasoning: "CMG零金融负债, 行业唯一; SBUX负权益-$8.4B"
+
+    - dimension: "增长动能"
+      position: "CAVA (+13.4% comp) >> WING (+22.5% comp) >> DPZ >> MCD ≈ CMG (-1.7%)"
+      reasoning: "CMG从增长龙头(FY2024 +7.4%)变为行业落后者(FY2025 -1.7%)"
+
+    - dimension: "估值吸引力"
+      position: "DRI (22.8x) > DPZ (23.8x) > MCD (25.5x) > CMG (32x) > CAVA (>100x)"
+      reasoning: "CMG P/E 5年最低但仍高于成熟同业; 有品质溢价但不再有增长溢价"
+
+  industry_position:
+    quadrant: "高品质 × 中高估值 × 低增速 (品类领导者转型期)"
+    archetype: "品牌溢价公司——品牌力创造定价权但增长依赖comp周期"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含comp恢复+OPM扩张至19-21%→B2(OPM)是最脆弱信念(CMG从未达到)"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "7个RT红队双向校准, 净修正+3.75pp(向上7.75pp-向下4.00pp), 将评级从审慎关注上调至中性关注"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "温水煮青蛙四因素(品牌老化+数字化停滞+G&A耗尽+权益侵蚀)→5年-19%"
+
+  novel_patterns:
+    - name: "WACC悖论(零负债公司的DCF陷阱)"
+      description: "零负债→WACC=纯Ke→DCF系统性偏低→必须降DCF权重+多方法验证。负债不是唯一的估值视角: 零负债在风险中是优势但在DCF中是劣势"
+      transferable_to: ["BRK", "GOOG/GOOGL", "所有零/低负债高品质公司"]
+
+    - name: "P/E压缩四因子归因(可修复/需验证/永久分类)"
+      description: "P/E压缩不是统一归因——拆解为周期性(可修复)、事件驱动(需验证)、叙事转换(永久)三类, 分别评估修复概率, 比'均值回归'更精确"
+      transferable_to: ["所有经历P/E大幅压缩的公司", "NKE/SBUX/PYPL等CEO变动+增速放缓叠加案例"]
+
+    - name: "定价权双态模型(牛市定价权vs熊市定价权)"
+      description: "同一家公司在需求强劲时弹性<1(可涨价), 需求疲软时弹性>1(不敢涨)——定价权评估必须区分环境, 不能用牛市证据推断熊市能力"
+      transferable_to: ["所有消费品公司的定价权评估", "特别是周期性消费品"]
+
+    - name: "回购物理约束时间表"
+      description: "回购/FCF>100%时计算'现金耗尽时间'→预测回购减速的必然时点→预判信号效应对P/E的冲击"
+      transferable_to: ["所有回购激进的公司(回购/FCF>130%)"]
+
+    - name: "承重墙联合概率分析"
+      description: "识别商业模式的4面承重墙(品牌/运营/供应链/趋势)→独立开裂概率×影响→联合概率54%至少一面开裂, 双墙同裂概率3-5%→聚焦最脆弱的墙(供应链25%)"
+      transferable_to: ["所有单品牌消费品公司", "品牌驱动型商业模式"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "直营模式的护城河是运营一致性(品控+创新速度)而非专利/网络效应——可学习但学习周期长(3-5年)"
+        implication: "评估直营餐饮护城河时, 关注运营体系的制度化程度(是否依赖个人), 而非是否有专利壁垒"
+      - insight: "单品牌是品质的保障也是风险的集中——2015 E.coli证明单点故障可损失37%市值"
+        implication: "单品牌公司的护城河评估需包含'品牌信任崩塌'的尾部风险定价"
+      - insight: "定价权在需求环境中呈双态: 2021-2023强(弹性<1) vs 2024-2025弱(弹性>1)——同一个品牌, 同一个定价权, 环境改变后完全不同"
+        implication: "护城河中的定价权维度应标注'需求环境'条件, 而非给一个静态评分"
+
+    valuation_insights:
+      - insight: "WACC悖论: 零负债公司WACC=纯Ke, 导致DCF结构性偏低——需降权DCF, 以可比法为主锚"
+        implication: "所有零负债公司的估值框架应降低DCF权重至15-25%, 避免被WACC结构性偏差误导"
+      - insight: "红队悲观偏差+4.5pp是基于meta-judgment(3份历史报告外推)而非公司特定证据——置信度应相应降低"
+        implication: "红队修正中区分'公司特定证据驱动'和'框架统计外推驱动'的修正, 对后者给更低置信度"
+      - insight: "P/E四因子归因比简单'便宜了/贵了'更有预测力——可修复/需验证/永久分类直接指导仓位"
+        implication: "估值框架增加'P/E压缩归因'步骤: 拆解每一块压缩, 分类评估修复概率"
+
+    screening_insights:
+      - insight: "回购/FCF>130% = 不可持续信号——计算现金耗尽时间比分析回购意愿更有预测力"
+        implication: "选股筛选增加'回购可持续性'指标: 回购/FCF>130%标记为'回购减速在即'"
+      - insight: "去掉财务健康维度后CMG与SBUX品质几乎相同——说明A-Score中资本结构权重可能过高"
+        implication: "A-Score权重审查: 财务健康20%可能过度奖励零负债, 考虑降至15%或增加运营品质权重"
+      - insight: "comp<0+P/E>30x = 估值-增长错配——筛选器应标记此组合为'等待型'"
+        implication: "选股增加'增长-估值匹配度'筛选: comp负增长但P/E>行业中位数1.2x = 等待信号"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "零负债公司DCF偏低时先检查WACC结构而非急于判断高估"
+      trigger: "DCF隐含价格 < 市价30%+ 且 公司零/低负债"
+      origin: "CMG DCF $20.06(-46%) vs 市价$36.93→发现390bps WACC缺口→不是高估而是DCF局限"
+      generalization: "DCF大幅偏离市价时, 先诊断模型输入(WACC/g)的合理性, 再判断市场是否错误"
+
+    - habit: "P/E压缩时拆解归因而非笼统说'便宜了'"
+      trigger: "P/E年度压缩 > 30%"
+      origin: "CMG P/E从53.8x→32x, 拆解后发现4.5x(叙事转换)大概率永久→修复空间比表面小"
+      generalization: "P/E是多维变量的压缩——不拆解就无法评估修复概率"
+
+    - habit: "回购超过FCF时计算物理约束而非分析意愿"
+      trigger: "年度回购 > FCF × 130%"
+      origin: "CMG回购$2.43B/FCF$1.45B=167%→1.2年现金耗尽→物理约束比管理层声明更可靠"
+      generalization: "现金是有限资源——'能持续多久'比'想不想持续'更重要"
+
+    - habit: "消费品定价权评估区分需求环境"
+      trigger: "历史涨价成功但当前comp为负"
+      origin: "CMG 2021-2023涨价20%客流正增长→2024-2025弹性>1, CEO不敢提价→同一品牌在不同环境下定价权完全不同"
+      generalization: "定价权不是静态属性——必须在当前需求弹性下评估可用性"
+
+  quality_feedback:
+    strengths:
+      - "DM密度1.64/千字(659个锚点)——数据锚定扎实"
+      - "Reverse DCF+4方法+红队7问——估值方法论完整度高"
+      - "WACC悖论的识别和处理——核心洞见有区分度"
+      - "四因子P/E归因+承重墙分析——创造了可迁移的分析框架"
+      - "温水煮青蛙情景——超越传统bull/bear二元, 刻画最可能的中间路径"
+    weaknesses:
+      - "HEEP效率评估依赖管理层声称的'数百bps'——偏差修正后仍有主观性"
+      - "RT-2悲观偏差+4.5pp是meta-judgment而非公司特定证据——评级上调的关键依据置信度不够高"
+      - "国际扩张期权($1.6-2.9B)评估粗略——仅~100家国际门店, 数据太少无法精确估值"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "LLM分析框架对消费品公司存在系统性悲观偏差(RCL/SBUX/IHG先例)"
+        evidence: "CMG Phase 3→Phase 4悲观偏差修正+4.5pp(第四个消费品报告确认)"
+        confidence_after: "中(模式持续但CMG修正幅度小于均值, 可能因Phase 3已预修正)"
+
+      - hypothesis: "Reverse DCF P1前置有效防止结论先行偏差(铁律O)"
+        evidence: "Ch13 Reverse DCF揭示B2(OPM扩张)是最脆弱信念→后续分析围绕验证B2展开, 未出现预设bias"
+        confidence_after: "高(连续多报告确认)"
+
+    extended:
+      - hypothesis: "WACC悖论(CME报告中Core PE vs GAAP PE的延伸)"
+        extension: "CME是'非经营性收入扭曲PE'→CMG是'资本结构扭曲WACC'——不同机制但同一个教训: 表面数字可能系统性误导"
+
+    refuted: []
+
+  limitations:
+    - "WACC悖论的390bps缺口无法精确分割(品质溢价/增长期权/模型局限各占多少)→估值不确定性是结构性的"
+    - "FY2026 H1 comp是最关键变量但报告时点无法获取→评级高度依赖未来数据"
+    - "RT-2悲观偏差修正是统计外推而非公司特定分析→如果CMG是模式例外, 评级应维持审慎关注"
+    - "Boatwright战略能力无法从运营数据判断→需等待独立战略决策(如国际扩张/新品牌)才能评估"
+    - "CAVA竞争动态在3-5年时间框架内不确定性极高→替代比例30-35%是粗略估计"

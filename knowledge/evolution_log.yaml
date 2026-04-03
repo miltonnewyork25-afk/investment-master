@@ -594,7 +594,7 @@ entries:
     top_technique: "双重身份估值框架+AI竞品2x2矩阵+温水煮青蛙联合概率"
     top_lesson: "多Agent CQ漂移(SBC事实错误)+WACC论证不能一句话+管理层评估需6维度硬门控"
     evolution_proposed: "EVO-INTU-01(WACC决策树) | EVO-INTU-02(多Agent CQ一致性) | EVO-INTU-03(管理层6维度门控)"
-    evolution_status: "EVO-01+02 APPROVED+IMPLEMENTED | EVO-03~05 proposed"
+    evolution_status: proposed
     internal_score: "92/110 (4.18)"
     independent_score: "88/110 (4.0)"
     inflation: "+4分膨胀(D5估值+1.0/D7管理层+1.5/累计+1.5)"
@@ -622,7 +622,7 @@ entries:
       EVO-MA-02: 监管量化矩阵模板 — M5监管分析强制概率×EPS影响矩阵+联合概率(≥2事件同时发生), 防止纯叙事 [P1, 方法论资产]
       EVO-MA-03: 补强合并标准化流程 — Phase产出到Complete组装时,补强模块必须合并入对应主章节(禁止独立补强标签), 统一编号 [P1, 流程改进]
       EVO-MA-04: 去重检查清单 — Complete组装前扫描V对标/竞争/做空/CI等高频主题, 同一主题≤2处出现(1主论述+1附录引用) [P1, 反膨胀]
-    evolution_status: "EVO-01+02 APPROVED+IMPLEMENTED | EVO-03~05 proposed"
+    evolution_status: proposed
 
   - ticker: "DDOG"
     date: "2026-03-25"
@@ -638,7 +638,7 @@ entries:
     top_technique: "SBC三层盈利框架(GAAP/NonGAAP/Owner)+NRR隐含有机增速+飞轮计费单元解耦+偏差累积漂移检测"
     top_lesson: "SBC口径选择比财务模型更决定估值(离散度2.73x全部来自哲学分歧)。CQI校准样本缺高增长SaaS导致低估2-5分。AI冲击分析应从Phase 1嵌入(非Appendix补强)"
     evolution_proposed: "EVO-DDOG-01(SBC三层盈利标准化) | EVO-DDOG-02(偏差漂移检测器) | EVO-DDOG-03(飞轮悖论解耦矩阵)"
-    evolution_status: "EVO-01+02 APPROVED+IMPLEMENTED | EVO-03~05 proposed"
+    evolution_status: proposed
     rating: "审慎关注"
     expected_return: "-26%"
     skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/cq-lifecycle-tracker/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/ai-impact-analyzer/valuation-builder"
@@ -657,21 +657,40 @@ entries:
     top_technique: "SBC收敛$9B临界点机制+三层盈利SaaS终态标杆+NRR第一性原理+CQ全线上调2.8%概率检测+CEO $20M买入信号解读"
     top_lesson: "DM密度(0.95)与因果密度(13.9)的悖论——分析深度最高但引用纪律最差。CQ全线上调(7/7)≈确认偏差(2.8%概率)→需要自动检测机制。SBC收敛有$9B收入临界点→可泛化至所有SaaS公司"
     evolution_proposed: "EVO-NOW-01(SBC临界点模型泛化) | EVO-NOW-02(CQ方向一致性自动检测) | EVO-NOW-03(DM/因果密度权衡框架)"
-    evolution_status: "EVO-01+02 APPROVED+IMPLEMENTED | EVO-03~05 proposed"
+    evolution_status: proposed
     rating: "中性关注"
     expected_return: "-14%"
     skills_used: "data-prefetch/assumption-audit/competitive-benchmarking/moat-evaluator/investment-committee-v3.1/omission-scanner/red-team-suite/risk-topology/cq-lifecycle-tracker/ai-impact-analyzer/valuation-builder/SBC三层盈利框架"
 
-  - ticker: "ADSK"
-    date: "2026-03-26"
-    report: "ADSK_Complete_v1.0_2026-03-26.md"
-    chars: "195K"
+  - ticker: "WDAY"
+    date: "2026-03-27"
+    quality: 4.41
+    chars: "312K"
+    compliance: "PASS (G1✅ G2✅ G3✅ G4✅ G5✅)"
+    dm_anchors: 1099
+    dm_density: "3.52/千字"
+    causal_density: "10.59/万字"
+    mermaid: 42
+    ks_count: 10
+    cq_count: 8
+    top_technique: "SBC η效率(0.45)瀑布分解+M1.4b循环依赖检测(尾部3.3x修正)+GRR分层推断(F500 99.5%/中端96.2%/SMB 91%)+增速三维分解(新客6.5pp/提价4.8pp/扩展3.0pp)+飞轮净强度量化(0.76)+管理层决策ROIC(2.63/5)+衰退压力测试(CRM 2008→SaaS韧性)+E1演绎法AI传导(5步链+窗口期4年)+定价转型弹性(ε=0.45)"
+    top_lesson: "SBC是系统性问题(非参数调整)——η/瀑布/循环/FASB/飞轮5维形成网络。FCF口径vs FCF-SBC口径=$115/share差异=评级翻转变量。NRR队列自然衰减→整体NRR FY2031可能降至100%。Rippling侵蚀$808M/5年但对总收入<5%。管理层回购@$226毁灭$1.3B价值。衰退测试反而利好(Bear FV从$71→$80)。演绎法发现AI安全期4年+过渡期2年。定价转型ε=0.45验证了提价4.8pp贡献"
+    evolution_proposed: "EVO-WDAY-01(SaaS定价转型模块: seat→consumption过渡建模) | EVO-WDAY-02(衰退压力测试标准化: 2008/2020→SaaS韧性基准率) | EVO-WDAY-03(AI演绎法5步链标准化模板) | EVO-WDAY-04(AI迁移成本评估框架: Layer 3削弱量化) | EVO-WDAY-05(GRR分层推断标准化: 从整体→客户层独立GRR)"
+    evolution_status: proposed
+    rating: "关注"
+    expected_return: "+12% (FCF-SBC口径)"
+    skills_used: "data-prefetch/assumption-audit(M1+M1.4b+M2+M3)/red-team-suite(RT1-7+Part B+C)/risk-topology(MVP 10+3+1)/omission-scanner(Part A+B)/cq-lifecycle-tracker/valuation-quality-gate(G1)/competitive-benchmarking/deep-reflection(R1复用+R2+R3)"
+
+  - ticker: "MRVL"
+    date: "2026-03-30"
+    report: "MRVL_Complete_Deep_Dive_v1.0.md"
+    chars: "270K"
     cg_result: "FAILED(0E/1W)"
-    compliance: "FAILED"
-    dm_anchors: 270
-    mermaid_count: 28
-    pw: 3
-    method: "traditional"
+    compliance: "PASSED"
+    dm_anchors: 50
+    mermaid_count: 31
+    pw: N/A
+    method: "N/A"
     scorecard: "N/A"
     near_miss_score: 0
     quality: null  # AI填入 (1.0-5.0)
@@ -680,26 +699,20 @@ entries:
     evolution_proposed: null  # AI填入
     evolution_status: pending  # pending/approved/rejected
 
-  - ticker: "ADSK"
-    date: "2026-03-26"
-    report: "ADSK_Complete_v1.0_2026-03-26.md"
-    framework_version: "v19.7"
-    quality: 4.41
-    chars: "195K"
-    compliance: "G1豁免(用户确认密度优先) | G2-G8全PASS"
-    dm_anchors: 794
-    dm_density: "4.06/千字"
-    causal_density: "7.27/万字"
-    mermaid: 28
-    ks_count: 10
-    cq_count: 9
-    pw: 3.2
-    method: "traditional"
-    scorecard: "B32.0+C18.5=50.5/75(67.3%) | A-Score 5.90 | PtW 33/50"
-    rating: "中性关注"
-    expected_return: "+1.3%"
-    top_technique: "Standard/Owner双视角估值($45鸿沟=SBC资本化成本≈Bear PW拖累) | 回购η=0.11(72%回购=SBC填坑) | GRR交叉验证v2(DR变化率法) | 护城河迁移S曲线+脆弱窗口3.2年 | SBC敏感性双变量矩阵($130-$340)"
-    top_lesson: "DM密度4.06/千字(历史最高)但G1字符195K(72%)=密度vs广度tradeoff需框架层面解决 | 回购η=0.11是SaaS最低→高SBC公司回购本质是SBC抵消非股东回报 | FY2026 PSU扣SBC是治理改善硬信号(可作为基准事件) | G2 review量差异(929 vs 200)比评分差异(4.6 vs 4.2)更有Win Rate信息量"
-    evolution_proposed: "EVO-ADSK-01(SBC瀑布驱动因素分解→所有SaaS模板化) | EVO-ADSK-02(GRR间接验证v2 DR变化率法→不披露GRR的SaaS) | EVO-ADSK-03(Win Rate代理G2/Gartner→所有B2B/SaaS) | EVO-ADSK-04(护城河迁移S曲线模板→护城河迁移公司) | EVO-ADSK-05(圆桌CQ<70%自动触发→所有Tier3)"
-    evolution_status: "EVO-01+02 APPROVED+IMPLEMENTED | EVO-03~05 proposed"
-    skills_used: "data-prefetch/assumption-audit/deep-reflection(R2+R3)/competitive-benchmarking(G2/Gartner代理)"
+  - ticker: "PANW"
+    date: "2026-04-02"
+    report: "PANW_Complete_v1.0.md"
+    chars: "236K"
+    cg_result: "FAILED(0E/1W)"
+    compliance: "PASSED"
+    dm_anchors: 256
+    mermaid_count: 30
+    pw: 5
+    method: "mixed"
+    scorecard: "N/A"
+    near_miss_score: 0
+    quality: null  # AI填入 (1.0-5.0)
+    top_technique: null  # AI填入
+    top_lesson: null  # AI填入
+    evolution_proposed: null  # AI填入
+    evolution_status: pending  # pending/approved/rejected
