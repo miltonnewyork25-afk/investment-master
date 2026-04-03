@@ -1,0 +1,442 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — META Platforms Inc.
+# 压缩比: 317K → ~12K (26x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: META
+  company: "Meta Platforms Inc."
+  report_date: "2026-02-08"
+  stock_price: "$661.46"
+  market_cap: "$1.673T"
+  report_version: "v3.0"
+  report_path: "reports/META/META_Complete_v3.0_FULL_534K_2026-02-13.md"
+  quality_score: "67.35/100"
+  cqi: "报告未覆盖"
+  framework_version: "v24.0"
+  industry: "科技平台"
+  archetype: "平台飞轮(广告双边网络)"
+  chars: 317054
+  dm_count: 427
+  dm_density: "1.35/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "META在$661是一台正在从'印钞机'切换为'烧钱机'的优质公司——$125B AI赌注使其从确定性高回报变为方向性赌注，回报取决于2027年前AI CapEx能否证明自己"
+  rating: "推荐(67.35/100，推荐区间中段)"
+  fair_value: "$675-$711 (Phase 4行为金融校准后$675 / 多方法加权$711)"
+  expected_return: "+2%~+8% @ $661 | 概率加权四情景目标$700"
+
+  key_arguments:
+    - claim: "FoA广告业务是全球最高效的印钞机——51.6%利润率+22%增速+DAP 33.6亿"
+      direction: bullish
+      magnitude: 5
+      mechanism: "三重网络效应(用户-用户/用户-广告主/数据飞轮) + Advantage+ AI广告套件ROAS +22%/CPA -17% → 广告量价双升(展示+12%/单价+9%)"
+      kill_switch: "TikTok时长差距持续扩大(81min vs 55min)且IG互动率暴跌-79% → 广告主预算迁移"
+
+    - claim: "AI CapEx $115-135B中60-70%可在FY2027前验证ROI，30-40%是战略赌注"
+      direction: conditional
+      magnitude: 4
+      mechanism: "广告AI($35-40B直接投入) → Advantage+ ROAS +22%已验证 | 通用AI/Superintelligence($40-50B) → 回报周期5-10年且Avocado尚未发布"
+      kill_switch: "ARPP增速连续2季度<10%(KS-AI-01) → AI CapEx ROI叙事破裂 → 成熟广告公司重估"
+
+    - claim: "FCF从$52B暴跌至~$6B(FY2026E基准)，转负概率20-25%"
+      direction: bearish
+      magnitude: 4
+      mechanism: "CapEx从$39B→$72B→$125B(FY2026E中位) | CFO $131B(+13%)但CapEx $125B → FCF仅$6B | Barclays预测2027-2028持续为负"
+      kill_switch: "管理层下调CapEx至<$100B或CFO加速至>$140B → FCF修复提前"
+
+    - claim: "Llama 4基准造假+Avocado执行三重风险 → AI信誉受损"
+      direction: bearish
+      magnitude: 3
+      mechanism: "LeCun确认fudged → 开源信任受损 + Avocado由28岁Wang领导(团队<6个月) + Polymarket前沿AI中Meta未入榜(Anthropic 67%/Google 19%)"
+      kill_switch: "Avocado按时发布且MMLU-Pro≥80(对标GPT-5) → AI叙事彻底扭转"
+
+    - claim: "当前$661安全边际接近零——不是低估买入机会而是公允定价等待方向"
+      direction: neutral
+      magnitude: 4
+      mechanism: "Phase 2的+18%上行经Phase 4对抗审查后压缩至+2~8% | SOTP $747 vs DCF $482偏差36.3%未完全解决 | 分析师0 Sell是拥挤信号"
+      kill_switch: "股价回落至$600以下 → 安全边际扩大至>12%至$675 → 从中性变为积极"
+
+  moat:
+    composite_score: 8.68
+    half_life: ">15年(数据+网络效应) | 5-10年(AI广告优势, 竞品追赶中) | <5年(Llama开源生态)"
+    dimensions:
+      - type: data
+        strength: 5
+        evidence: "DAP 33.58亿用户数据 + 全球43%互联网用户每天使用META产品 + 跨平台重叠度80%"
+        vulnerability: "EU DMA数据共享要求 + COPPA 2.0限制青少年数据收集"
+      - type: network_effect
+        strength: 5
+        evidence: "三重网络效应: 用户-用户(WhatsApp通讯基础设施化) + 用户-广告主(1100万+广告主) + 数据飞轮(更多用户→更好广告→更多广告主)"
+        vulnerability: "TikTok日均81min vs IG 55min(+47%差距) + IG互动率从2.94%暴跌至0.61%"
+      - type: switching_cost
+        strength: 4
+        evidence: "广告主深度依赖Advantage+ AI黑盒优化(重建投放方法论成本极高) + 用户跨平台社交图谱锁定"
+        vulnerability: "Google PMax/Amazon/TikTok Smart+均提供类似AI广告优化 → 转换成本可能被侵蚀"
+      - type: scale
+        strength: 4
+        evidence: "FoA运营利润率51.6%(行业最高) + 边际成本趋零 + ROIC 34.86% vs WACC 7.5%(利差27pp)"
+        vulnerability: "CapEx $125B暂时压缩规模经济效益 → FoA利润率FY2026E可能降至38-42%"
+      - type: brand
+        strength: 3
+        evidence: "品牌认知度全球最高之一 + Morningstar Wide Moat评级"
+        vulnerability: "青少年安全诉讼(NM案+2243件MDL) + Llama造假 + 隐私争议持续损害品牌"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含AI溢价$100/股 vs 我们估算仅$36/股 — 市场对AI变现预期高于分析支撑"
+    methods_used: ["SOTP(6分部)", "DCF", "概率加权SOTP(3情景)", "AI调整SOTP", "可比公司P/E", "分析师共识"]
+    dispersion: "36.3% (SOTP $747 vs DCF $482)"
+    consensus_vs_ours: "分析师共识$859(+30%上行, 0 Sell) | 我们$675-711(+2~8%上行) — 差距$148反映对AI CapEx ROI的分歧"
+    entry_zone: "$600-620 (SMA200下方~10%, 提供>12%安全边际至$675)"
+    catalyst: "Q1 2026财报(4月29日) — ARPP增速≥12%确认AI ROI | Avocado发布(Q1-Q2) — AI平台层叙事验证"
+
+  action_framework:
+    verdict: "持有观望 — 公允定价(+2~8%上行), 等催化剂确认方向后分批建仓"
+    buy_triggers:
+      - trigger: "Q1 2026财报超指引上限(>$56.5B) + ARPP≥15%"
+        price_zone: "$650-680"
+        reasoning: "AI ROI首次验证 → 估值上行空间打开至$750+"
+      - trigger: "股价回调至$600-620(SMA200下方)"
+        price_zone: "$600-620"
+        reasoning: "安全边际从0%扩大至>12%至$675 + 技术支撑位"
+      - trigger: "Avocado按时发布且性能≥GPT-5(MMLU-Pro>80)"
+        price_zone: "$650-700"
+        reasoning: "AI全栈叙事重建 → AI溢价从$36/股可能扩至$60-80/股"
+    hold_conditions:
+      - "FoA运营利润率>38%(当前51.6%)"
+      - "DAP增速维持>5%(当前+7%)"
+      - "无Kill Switch触发L2或L3"
+      - "Polymarket衰退概率<35%"
+    sell_triggers:
+      - signal: "ARPP增速连续2季度<10%(KS-AI-01 L2)"
+        severity: "action"
+        action: "减仓30%, AI CapEx ROI叙事破裂"
+      - signal: "FCF连续2季度为负且CapEx未下调(KS-FIN-01 L3)"
+        severity: "action"
+        action: "减仓至≤2%, 价值毁灭信号"
+      - signal: "NM案赔偿>$10B或FTC发回重审(KS-REG-01/02)"
+        severity: "action"
+        action: "减仓50%, 监管尾部风险实质化"
+      - signal: "Polymarket衰退>40% + 广告CPM同比转负(KS-MACRO-01)"
+        severity: "emergency"
+        action: "减仓至1%, 压力估值$270-$400"
+      - signal: "Zuckerberg宣布>$20B未验证单一投资(KS-GOV-01)"
+        severity: "emergency"
+        action: "清仓, 治理失控(参考FY2022 -77%先例)"
+    position_sizing: "3.5%组合权重(5.0%基础×0.85周期×0.80置信度×1.05 AI调整) | 分3批建仓"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "AI CapEx的两面性——广告AI已验证vs通用AI是赌注"
+    chain: >
+      Advantage+覆盖400万广告主(30%广告收入)
+      → ROAS +22%/CPA -17% → 广告主深度依赖AI黑盒 → 转换成本上升
+      → 但$125B CapEx中仅$35-40B直接服务广告AI
+      → 剩余$40-50B流向通用AI(5-10年回报周期) + Avocado团队<6个月
+      → 广告AI ROI被通用AI投入稀释
+      → 投资者为整体CapEx买单但仅60-70%有明确回报路径
+      → 关键验证: FY2026 ARPP增速≥12%证明广告AI持续创造增量
+    transferable_to: "所有大额CapEx投入中混合短期ROI可验证项目和长期战略赌注的公司(如GOOGL Waymo/AWS AI基建)"
+    reasoning_habit: "追问CapEx中有多少比例有明确的短期ROI路径 — 混合CapEx公司需要拆分评估而非统一PE"
+
+  - id: "CC-2"
+    name: "FCF断崖如何从'暂时性'恶化为'结构性'"
+    chain: >
+      FY2025 FCF $43.6B(-16.3%) → FY2026E FCF ~$6B(-86%)
+      → 如果ARPP增速放缓至<10%(S型曲线效应)
+      → CFO增速从+27%降至+8-10% → 但CapEx已签约锁定($27B Blue Owl + $14.2B CoreWeave)
+      → CapEx不可逆 + CFO放缓 = FCF持续为负
+      → 回购从$26B→$10-20B → SBC $18B抵消回购 → 净稀释转正
+      → 量化基金FCF因子触发自动卖出 → 估值双杀(EPS下+PE压缩)
+    transferable_to: "所有处于重资本投入周期的科技公司(AMZN AWS扩张期/GOOGL数据中心建设期)"
+    reasoning_habit: "看到FCF断崖时追问'CapEx有多少已锁定不可逆' — 签约义务将暂时性FCF下降变为结构性"
+
+  - id: "CC-3"
+    name: "RL累计亏损$84B的期权思维vs沉没成本"
+    chain: >
+      RL累计亏损$83.6B → FY2026E再亏$19B → 年底$102.6B
+      → 沉没成本谬误: 过去的$84B不应影响未来决策
+      → 正确框架: RL关停期权价值 = 关停后EPS增量+$5.89(约$150/股) - 已投入但可回收的资产
+      → 关停SOTP: $71.4B(概率25%) vs 2029扭亏$28.5B(50%) vs Metaverse成功$487.5B(25%)
+      → 概率加权RL值$107B → 隐含市场定价仅$40B(占市值2.4%)
+      → 投资含义: RL是免费期权(市场已几乎完全折价) → 真正风险不在RL而在CapEx
+    transferable_to: "所有拥有大额亏损但有关停期权的业务线(如AMZN Alexa/GOOGL Other Bets)"
+    reasoning_habit: "面对累计巨亏业务线时用期权框架(关停价值vs持续价值)而非情绪判断 — 市场可能已完全折价=免费期权"
+
+  - id: "CC-4"
+    name: "分析师0 Sell作为逆向指标的概率机制"
+    chain: >
+      62 Buy / 5 Hold / 0 Sell → 95%看多
+      → 历史研究: 0 Sell时未来12个月跑输大盘概率55-60%
+      → 机制: 所有正面因素已被充分定价 → 增量信息只能是负面 → 非对称下行
+      → 目标价$700-$1,144(离散度63.4%)反映AI ROI的巨大分歧
+      → 共识$859隐含P/E ~34x → 远超我们$675-711(P/E ~27-28x)
+      → 卖方推荐偏差 + 极端共识 = 应作为估值上限约束而非锚点
+    transferable_to: "所有分析师覆盖>30人且0 Sell的大盘股"
+    reasoning_habit: "看到极端看多共识(0 Sell)时立刻启动逆向思维 — 问'如果共识是错的, 错在哪'"
+
+  - id: "CC-5"
+    name: "Zuckerberg双层股权的非线性风险"
+    chain: >
+      61%投票权 + 无日落条款 → 外部股东无制衡
+      → 牛市时被解读为"远见领导力溢价"(2023效率年纠偏)
+      → 熊市时被解读为"独裁治理折价"(2021-2022元宇宙豪赌-77%)
+      → 治理风险是凸性的: 正面有限(5-8%溢价) vs 负面巨大(15-20%折价)
+      → FY2025 insider selling $2B/年 + 92%外部股东反对 → 信号矛盾
+      → 投资含义: 治理折价应按最差情景计算而非平均值
+    transferable_to: "所有创始人控制型公司(GOOGL/SNAP/Zillow)"
+    reasoning_habit: "创始人控制型公司的治理风险评估用凸性而非线性 — 正面天花板低但负面无底线"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "Phase 1-3估值: +18%上行空间, META被温和低估"
+      final: "Phase 4校准后: 仅+2~8%上行空间, 接近公允定价"
+      pivot: "行为金融校准(-5%锚定效应) + 反证概率加权(-$64/股) + 诉讼准备金上调(-$2/股) 共压缩$105/股"
+
+    - initial: "AI CapEx全部是价值创造投入"
+      final: "仅60-70%有明确ROI路径, 30-40%是回报不确定的战略赌注"
+      pivot: "Phase 4 CapEx拆解: $35-40B直接广告AI vs $40-50B通用AI/Superintelligence, 回报周期相差3-5倍"
+
+    - initial: "Reality Labs $84B亏损是重大负面"
+      final: "RL是免费期权——市场已折价至仅$40B(市值2.4%), 关停期权价值+$5.89 EPS"
+      pivot: "SOTP三情景概率加权: RL值$107B但市场仅定价$40B → 风险不在RL而在主业CapEx"
+
+  surprises:
+    - finding: "Instagram互动率从2.94%暴跌至0.61%(-79% YoY) — 降幅远超预期"
+      implication: "即使DAP仍在增长(+7%), 用户参与质量正在恶化 → 广告单位价值的可持续性存疑"
+
+    - finding: "AI广告(Advantage+)年化$60B但可能含大量旧收入重归因而非真增量"
+      implication: "ROAS +22%的边际效应可能从0-30%渗透率(+22%)到30-60%(+5-8%)急剧递减(S型曲线)"
+
+    - finding: "SOTP $747 vs DCF $482偏差36.3% — META估值方法间矛盾是所有Mag7中最大的"
+      implication: "偏差来源: RL在SOTP中贡献$107B期权价值但在DCF中表现为持续现金流出 → 估值框架选择本身就是投资观点"
+
+    - finding: "市场隐含AI溢价$100/股 vs 分析估算仅$36/股 — 差额$64/股"
+      implication: "市场对META的AI变现预期远超基本面支撑 → 若AI叙事受挫(Avocado失败), $64/股溢价蒸发风险"
+
+  blind_spots:
+    - area: "Advantage+$60B中真实增量vs重归因的比例"
+      why_matters: "如果50%是重归因 → 实际AI广告增量仅$30B → CapEx ROI降低一半"
+      monitor: "第三方ROAS审计(Measured/Northbeam); Advantage+关闭后A/B测试广告效果差异"
+
+    - area: "Avocado实际性能和发布时间"
+      why_matters: "决定META是'AI平台公司'还是'AI应用公司' → 估值框架完全不同"
+      monitor: "LMSYS Chatbot Arena排名; HuggingFace下载量; 企业采用率调查(a16z/Retool)"
+
+    - area: "IG互动率暴跌是算法切换还是真实参与下降"
+      why_matters: "算法优先Saves/Shares → 互动率指标变化不代表真实参与下降; 但若是真实下降 → 广告价值基础动摇"
+      monitor: "IG日均使用时长(vs TikTok); 广告CPM季度趋势; 18-24岁MAU同比变化"
+
+    - area: "FY2026实际CapEx执行节奏($115B vs $135B差距$20B)"
+      why_matters: "$20B差距=FCF从$15B(正)到-$5B(负)的分水岭"
+      monitor: "季度CapEx实际支出 vs 线性化指引; 数据中心建设进度(Blue Owl/Hyperion/CoreWeave)"
+
+  sell_lessons:
+    - scenario: "FoA利润率从53.7%拐头向下至51.6%时不重新评估 → 趋势延续至38-42%(FY2026E)"
+      lesson: "利润率拐点是周期信号——第一次下降是预警, 第二次下降是确认。对于CapEx扩张期公司, 利润率拐头=重新计算FCF的信号"
+      transferable: "所有处于CapEx扩张周期且利润率拐头的科技公司"
+    - scenario: "分析师共识0 Sell + P/E接近5年均值 = 拥挤多头, 增量只能是负面"
+      lesson: "极端看多共识时不该追高——安全边际为零意味着任何负面催化剂都直接冲击持仓"
+      transferable: "所有分析师覆盖>30人且0 Sell的大盘蓝筹"
+    - scenario: "CapEx不可逆性(数据中心签约)在衰退来临时变成经营杠杆陷阱"
+      lesson: "评估CapEx时必须区分'可取消'和'已锁定'——已锁定的CapEx在衰退中是双杀因子(收入降+成本刚性)"
+      transferable: "所有签有长期基建合同的公司(云基础设施/半导体/电信)"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "ARPP增速(广告展示量×单价)"
+      why_alpha: "最直接量化AI广告变现效率的指标——ARPP加速=AI CapEx有ROI, ARPP放缓=S型曲线到顶。大多数分析师只看营收总量不拆ARPP"
+      current_reading: "FY2025 +15%(展示+12%×价格+9%), Q1 2026指引+26~34%是近期最强"
+    - signal: "SOTP-DCF偏差幅度"
+      why_alpha: "36.3%偏差暴露META估值的最大分歧点——偏差来源(RL期权价值)直接映射到投资者对AI/Metaverse的信念差异"
+      current_reading: "36.3%(SOTP $747 vs DCF $482), 远超15%正常阈值"
+    - signal: "市场隐含AI溢价 vs 分析估算"
+      why_alpha: "差额$64/股($100 vs $36)=市场对AI变现的过度乐观程度, 溢价越大回调风险越高"
+      current_reading: "$64/股过度定价, Avocado是溢价是否合理的验证事件"
+
+  confirmation_signals:
+    - signal: "季度FCF(自由现金流)"
+      bullish_threshold: ">$10B/季度(年化>$40B, 接近FY2025水平)"
+      bearish_threshold: "<$0连续2季度(KS-FIN-01 L3触发)"
+    - signal: "Advantage+渗透率(广告主采用比例)"
+      bullish_threshold: ">40%(从30%加速 → AI飞轮强化)"
+      bearish_threshold: ">60%但ROAS增量<+10%(commodity化 → 差异化消失)"
+    - signal: "Polymarket美国衰退概率"
+      bullish_threshold: "<20%(宏观安全)"
+      bearish_threshold: ">40%(KS-MACRO-01触发)"
+
+  noise_signals:
+    - signal: "Reality Labs季度亏损波动"
+      why_noise: "市场已将RL折价至仅$40B(市值2.4%) → 季度亏损波动($4-6B)不改变估值方向 → 真正重要的是关停/转型决策而非亏损金额"
+    - signal: "分析师目标价上调/下调"
+      why_noise: "62 Buy/0 Sell的极端共识 → 目标价调整是滞后信号 → 我们的$675-711比共识$859更接近Phase 4校准值"
+    - signal: "Quest/VR出货量"
+      why_noise: "VR市场2025萎缩14% → Quest出货170万(-16%) → VR市场太小($3-5B)影响不了$1.67T市值"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: GOOGL
+      similarity: "同为广告双边平台 + AI基建巨额投入 + 类似P/E区间"
+      key_difference: "GOOGL FCF更强(FCF Yield更高) + P/E略高(29.9x vs 28.2x) + 搜索广告转换率更高但增速偏低(+18% vs +22%)"
+
+    - ticker: AMZN
+      similarity: "同为Mag7 + AI CapEx军备竞赛参与者 + 平台飞轮模式"
+      key_difference: "AMZN=电商+云(两大引擎) vs META=广告(单一引擎) | AMZN CapEx绝对值更高但CapEx/营收比更低(~18% vs ~50%)"
+
+    - ticker: SNAP
+      similarity: "同为社交广告平台 + 面临TikTok竞争 + 依赖ARPU增长"
+      key_difference: "SNAP规模差100倍 + 无WhatsApp/Threads等多产品组合 + 不可比的护城河深度"
+
+  comparative:
+    - dimension: "广告变现效率(ARPU)"
+      position: "META ($17.48全球) > GOOGL ($~15) > SNAP ($~4) > PINS ($~2)"
+      reasoning: "META的三重网络效应+AI广告优化使单用户变现效率行业最高"
+
+    - dimension: "FCF健康度(FCF Yield)"
+      position: "GOOGL (~5%) > MSFT (~4.5%) > AAPL (~4%) > META (2.6%) > AMZN (~2%)"
+      reasoning: "META CapEx $72B→$125B导致FCF Yield从Mag7中上游跌至底部"
+
+    - dimension: "护城河宽度(Moat)"
+      position: "AAPL (生态锁定) ≈ META (网络效应) > GOOGL (搜索垄断) > AMZN (物流+云) > NVDA (GPU垄断)"
+      reasoning: "META Wide Moat 8.68/10 + DAP 33.6亿用户是不可复制的规模壁垒"
+
+    - dimension: "估值吸引力(PEG)"
+      position: "AMZN (2.2x) > GOOGL (1.7x) > META (1.3x调整后) > NVDA (1.5x) > AAPL (2.8x)"
+      reasoning: "META调整后PEG 1.0x(以调整后EPS $29.69/+22%增速)处于合理区间"
+
+  industry_position:
+    quadrant: "高增速(+22%) × 公允估值(P/E 28x) × 高CapEx风险"
+    archetype: "广告双边平台飞轮 — 印钞机暂时切换为烧钱机"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "市场隐含AI溢价$100/股 vs 分析估算$36/股 → 市场对AI变现的信念远超基本面支撑"
+
+    - pattern_id: "scenario_analysis.probability_weighted_sotp"
+      application: "RL三情景概率加权(关停25%/扭亏50%/成功25%) → $107B → 市场仅定价$40B = 免费期权"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "Phase 4行为金融校准: 锚定效应-5% + 确认偏误(DCF被淡化) + 情绪评分6.4 → 从$780压缩至$675"
+
+    - pattern_id: "competitive_benchmarking.tiktok_threat"
+      application: "TikTok日均81min vs IG 55min → 时长差距+47%但META DAP仍增长+7% → '赢了用户数但输了时间份额'"
+
+  novel_patterns:
+    - name: "印钞机→烧钱机切换期的估值框架"
+      description: "高利润率公司进入大规模CapEx投入期时, FCF断崖但CFO仍强 → 应区分'造现金能力(CFO)'和'可分配现金(FCF)' → 用CFO估值验证长期价值, 用FCF估值确定短期入场风险"
+      transferable_to: ["GOOGL(AI CapEx扩张)", "AMZN(AWS扩张期)", "所有CFO强/FCF弱的CapEx周期公司"]
+
+    - name: "AI CapEx拆分评估(直接ROI vs 战略赌注)"
+      description: "总CapEx中需拆分有明确短期ROI的部分(广告AI)和回报不确定的战略赌注(通用AI) → 分别给PE → 加权得混合估值"
+      transferable_to: ["GOOGL(搜索AI vs DeepMind)", "MSFT(Azure AI vs OpenAI投资)", "所有AI CapEx大户"]
+
+    - name: "SOTP-DCF偏差作为信念分歧指标"
+      description: "SOTP含期权价值(看涨假设)而DCF仅反映当期现金流(保守假设) → 偏差>30%说明公司内含高度不确定的期权性业务 → 偏差本身是投资观点的映射"
+      transferable_to: ["所有含高不确定性业务线的多元化公司"]
+
+    - name: "16个Kill Switch三级阈值体系"
+      description: "L1(预警/加强监控) → L2(升级/减仓) → L3(执行/最小持仓) → 将模糊的风险管理转化为可执行的仓位调整规则"
+      transferable_to: ["所有复杂多风险维度的大盘股分析"]
+
+    - name: "分析师0 Sell逆向信号量化"
+      description: "覆盖>50人且0 Sell → 历史上未来12个月跑输大盘概率55-60% → 极端共识本身是逆向指标 → 安全边际应从共识折价而非溢价"
+      transferable_to: ["所有分析师覆盖>30人且极端看多的大盘股"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "IG互动率-79%揭示了网络效应'用户数增长'和'用户参与质量'可以背离"
+        implication: "护城河评估需区分'用户规模护城河'(MAU/DAP)和'用户深度护城河'(时长/互动率) — 前者可能掩盖后者的恶化"
+      - insight: "AI广告工具(Advantage+)创造了新型转换成本——广告主对AI黑盒的依赖"
+        implication: "AI时代的转换成本从'数据迁移'升级为'方法论重建' — 评估转换成本时需加入'AI依赖度'维度"
+
+    valuation_insights:
+      - insight: "SOTP-DCF偏差36.3%不是需要'解决'的问题, 而是投资观点的映射"
+        implication: "对含高不确定性业务线的公司, 应同时呈现SOTP和DCF而非强制取一个 — 偏差本身是对投资者的有用信息"
+      - insight: "Phase 4行为金融校准从+18%压缩至+2~8% — Phase 1-3系统性高估了上行空间"
+        implication: "深度研究的Phase 4对抗审查应成为标准 — 未经对抗审查的估值系统性偏乐观"
+
+    screening_insights:
+      - insight: "CapEx/营收比率>50% + FCF断崖 = 'CapEx周期风险'信号"
+        implication: "选股筛选应加入'CapEx/营收比率'上限过滤 — >40%时标记为'CapEx投入期, 等FCF回复再入场'"
+      - insight: "分析师0 Sell + 目标价离散度>50% = 极端不确定性但被单边定价"
+        implication: "选股时加入'共识矛盾指标' — 0 Sell但目标价极度分散 = 市场在赌而非在定价"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "对CapEx拆分评估——短期ROI可验证部分 vs 长期战略赌注部分"
+      trigger: "CapEx/营收>30%且含AI/R&D等回报不确定的投入"
+      origin: "META $125B CapEx中仅$35-40B(28-32%)直接服务广告AI有明确ROI → 整体CapEx ROI被稀释"
+      generalization: "不拆分CapEx就无法判断ROI — 适用于所有混合短期/长期投入的大额资本支出"
+
+    - habit: "看到0 Sell极端共识时启动逆向思维"
+      trigger: "分析师覆盖>30人且卖出评级为0"
+      origin: "META 62 Buy/0 Sell但Phase 4将上行从+18%压缩至+2~8% → 共识与深度分析差距达$148/股"
+      generalization: "极端共识=所有正面已定价 → 增量只能是负面 → 安全边际从共识折价而非溢价"
+
+    - habit: "用Phase 4对抗审查校准Phase 1-3的系统性乐观偏差"
+      trigger: "Phase 1-3估值完成后、最终评级前"
+      origin: "META Phase 1-3 +18%上行经Phase 4压缩至+2~8% → 证明未对抗审查的估值偏乐观12-16pp"
+      generalization: "所有深度研究需要Phase 4级别的行为金融+红队校准 — 否则结论系统性偏多"
+
+    - habit: "区分'造现金能力(CFO)'和'可分配现金(FCF)'"
+      trigger: "CFO强劲(+27%)但FCF断崖(-16%)"
+      origin: "META CFO $116B(史新高)但FCF $44B(-16%)→$6B(FY2026E) → 造现金能力无问题, 问题是CapEx吞噬"
+      generalization: "对CapEx周期公司, CFO验证长期价值(业务本质), FCF确定短期风险(入场时机)"
+
+  quality_feedback:
+    strengths:
+      - "10维度评分体系覆盖全面——从6维度升级至10维度后捕获催化剂/聪明钱/时机等原框架遗漏的信号"
+      - "16个Kill Switch × 三级阈值体系 — 风险管理从定性变为可执行的仓位调整规则"
+      - "22个可验证预测(P-META-001至022) — 每个预测含概率/时间窗/验证方式/若成真若不成真, 报告可被事后验证"
+      - "Phase 4行为金融校准有效——将+18%上行压缩至+2~8%, 防止了确认偏差导致的过度乐观"
+    weaknesses:
+      - "SOTP-DCF偏差36.3%未完全解决 — 两种方法给出截然不同的结论($747 vs $482), 取加权平均是折衷而非解答"
+      - "Advantage+$60B中真增量vs重归因比例缺乏硬数据 — 这是估值的关键假设但依赖合理推断而非硬数据"
+      - "框架版本v24.0与当前项目框架v19.7不一致 — 报告使用的评分体系(0-100/100)与当前标准(D1-D11/110)不同, 不可直接对比"
+      - "DM密度1.35/千字合格但非优秀 — 低于标杆CME v3.0的2.82/千字"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "Phase 4对抗审查能有效压缩Phase 1-3的乐观偏差"
+        evidence: "META +18%→+2~8%, 压缩12-16pp; CME报告同样经Phase 4校准"
+        confidence_after: "高(两份独立报告确认)"
+
+      - hypothesis: "RL期权框架(关停/扭亏/成功概率加权)优于简单NPV"
+        evidence: "SOTP中RL概率加权$107B vs DCF中RL为负值 → 期权框架捕获了关停期权的正面价值"
+        confidence_after: "高(META RL是最极端的测试案例——$84B亏损但仍有正期权价值)"
+
+    extended:
+      - hypothesis: "AI广告是差异化优势(非commodity)"
+        extension: "META Advantage+ ROAS +22%但Google PMax/TikTok Smart+均提供类似功能 → AI广告可能从'差异化'→'基准线'(commodity化趋势)"
+
+    refuted:
+      - hypothesis: "FCF断崖=价值毁灭(简单映射)"
+        evidence: "CFO $116B(+27%)证明造现金能力史上最强 → FCF断崖纯粹是CapEx节奏问题而非业务恶化 → 不能简单映射为'毁灭价值'"
+        lesson: "区分'业务恶化导致的FCF下降'(真危险)和'战略投入导致的FCF下降'(可能是机会) — 看CFO趋势区分"
+
+  limitations:
+    - "所有数据截止2026-02-08, AI领域技术迭代极快, 报告中的前沿模型对比可能在数月内过时"
+    - "Advantage+$60B增量vs重归因的比例缺乏第三方硬数据, 这是估值的关键假设"
+    - "报告使用v24.0评分体系(0-100), 与项目当前标准不同, 质量分数不可与其他报告直接对比"
+    - "Avocado发布时间和性能完全取决于Meta内部执行, 无法从外部数据预测"
+    - "NM青少年案判决+MDL连锁效应的赔偿区间极宽($2-17.6B), 法律风险量化置信度低"

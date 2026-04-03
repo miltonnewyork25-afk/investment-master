@@ -1,0 +1,433 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Procter & Gamble
+# 压缩比: 250K → ~12K (21x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式映射 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: PG
+  company: "Procter & Gamble"
+  report_date: "2026-02-07"
+  stock_price: "$158.61"
+  market_cap: "~$371B"
+  report_version: "v1.0"
+  report_path: "reports/PG/PG_Complete_Deep_Research.md"
+  quality_score: "报告未覆盖"
+  cqi: "报告未覆盖"
+  framework_version: "v21.0"
+  industry: "消费品"
+  archetype: "品牌溢价型防御复利机器"
+  chars: 250707
+  dm_count: 873
+  dm_density: "3.48/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "PG是一台正在减速的印钞机——机器本身坚固(ROE 31.6%, 69年Dividend King), 但燃料(有机增长)正在耗尽, 以当前价格买入赌的不是增长恢复而是衰退不会比预期更快"
+  rating: "中性 (NEUTRAL)"
+  fair_value: "$163 概率加权 (Bull $188 / Base $164 / Bear $136)"
+  expected_return: "+5.5%/年(含股息) — 几乎全部回报来自股息而非价格上行"
+
+  key_arguments:
+    - claim: "有机增长从4%降至0%是公司特定问题而非行业宿命"
+      direction: bearish
+      magnitude: 5
+      mechanism: "UL量增+3.5%/CL+5.8%/CHD量增+4%同期PG量跌 → 59%收入(F&HC+BFF)品类成熟+自有品牌蚕食 → 品类组合结构性不利"
+      kill_switch: "Q3 FY2026有机增长>3.5% + Beauty板块拉动量增转正 → 证明品类结构可被创新克服"
+
+    - claim: "定价权正在从公司级碎片化为品类级"
+      direction: bearish
+      magnitude: 4
+      mechanism: "Beauty弹性正(可提价+量增) / Grooming弹性-1.0(提价=丢量) / BFF定价权归零(0%价格-5%量) → 59%收入来自定价权最弱的板块 → 无法再像FY2022-24全面提价消化成本"
+      kill_switch: "F&HC+BFF定价弹性改善至>-0.5 → 关税成本可被传导 → 利润率保护恢复"
+
+    - claim: "自有品牌份额迁移是结构性的单向棘轮而非周期性波动"
+      direction: bearish
+      magnitude: 4
+      mechanism: "认为品牌更好的消费者从44%降至38% + 88%自有品牌购买者计划维持/增加 + 自有品牌增速3x品牌商 → 份额从20%→24%是不可逆 → DCF终值需降15-20%"
+      kill_switch: "自有品牌份额增速放缓至<0.3ppt/年 + 质量感知差距重新拉大 → 迁移减速"
+
+    - claim: "69年Dividend King + ROE 31.6% + 最低D/E提供坚实估值底部"
+      direction: bullish
+      magnitude: 5
+      mechanism: "年化股东回报$150亿(股息$100亿+回购$50亿) + 派息率仅57%(安全边际充足) + 行业最健康资产负债表 → 下行有底"
+      kill_switch: "Core EPS跌至<$5.24使派息率>77% → Dividend King地位威胁 → 估值基础崩塌(概率8%)"
+
+    - claim: "PE 23.5x的折价可能只是低增长的合理定价而非买入机会"
+      direction: neutral
+      magnitude: 4
+      mechanism: "PEG 4.47x远超合理区间(1-2x) + DDM隐含长期增长4.7-5.2%vs实际可持续2-3% → 每股包含$15-25增长幻觉溢价 → 折价合理而非低估"
+      kill_switch: "重组+创新推动FY2027有机增长>3% → PE从低增长定价切换至增长恢复定价"
+
+  moat:
+    composite_score: 6.2
+    half_life: "品牌10-15年(侵蚀中) | 规模>20年(稳定) | 分销5-10年(快速侵蚀) | 创新10-15年(稳定) | 转换成本<5年(极弱)"
+    dimensions:
+      - type: scale
+        strength: 4
+        evidence: "$84.3B收入规模带来行业最低采购成本 + Supply Chain 3.0累计节省$15亿 + AI采购优化再节省$2-3亿 + 品牌利润密度$1.3B/品牌是UL的8.7x"
+        vulnerability: "规模优势不直接受消费者偏好变化影响, 但收入基数缩小会逐步削弱议价权"
+      - type: brand
+        strength: 3
+        evidence: "Tide~20%洗衣液份额/Pampers>30%全球纸尿裤/Gillette>45%剃须 + 37.41%个人家庭用品总份额 + 20年品类#1"
+        vulnerability: "认为品牌更好的消费者从44%降至38% + 纸品品类溢价>50%接近切换临界点 + 同质化品类品牌壁垒快速侵蚀"
+      - type: pricing_power
+        strength: 3
+        evidence: "品类级分化: Beauty仍可提价+量增 / BFF定价权归零 / 加权平均约3.2/5"
+        vulnerability: "62%消费者价格优先于品牌 + 关税$1B强制提价将加速消费者向自有品牌迁移"
+      - type: network_effect
+        strength: 2
+        evidence: "全渠道分销覆盖(WMT 16%/AMZN~9%/COST~6%) + 65个品牌无法被零售商一次性替换"
+        vulnerability: "AI推荐引擎重塑隐形货架 + 电商增长12%但利润率低2-4pp + 零售商从分销伙伴变为自有品牌竞争者"
+      - type: switching_cost
+        strength: 1
+        evidence: "仅Oral-B电动牙刷有硬件-耗材锁定 + Pampers pH技术创造心理转换成本"
+        vulnerability: "71%消费者愿为更好价格切换 + 57%已永久切换至自有品牌 + 核心品类转换成本接近零"
+
+  valuation:
+    reverse_dcf_implied: "当前$158.61隐含长期增长4.7-5.2% vs 可持续增长率2-3% → 隐含增长假设偏乐观, 安全边际有限"
+    methods_used: ["DDM(三场景)", "可比PE", "EV/EBITDA", "PEG", "概率加权目标价", "PPDA(定价背离分析)"]
+    dispersion: "~28% ($136-$188)"
+    consensus_vs_ours: "卖方共识Moderate Buy@$170 | 我们看中性@$163 — 核心分歧在自有品牌份额迁移是周期性还是结构性"
+    entry_zone: "$145-$152 (PE 20-22x, 对应5年低位)"
+    catalyst: "Q3 FY2026(2026年4月)有机增长数据 — 多空分歧的决胜点"
+
+  action_framework:
+    verdict: "等待买入 — 品质确认但增长方向不明, 等待$148-$152或增长数据确认"
+    buy_triggers:
+      - trigger: "股价回调至PE 20-22x区间"
+        price_zone: "$145-$152"
+        reasoning: "接近5年PE低位 + 股息率升至2.8%+ + DDM基准场景下行有限"
+      - trigger: "Q3 FY2026有机增长>2.5% + 量增长转正"
+        price_zone: "当时市价"
+        reasoning: "趋势逆转确认 → PE有从22x扩张至24-25x的空间 → $170-175目标"
+    hold_conditions:
+      - "有机增长维持≥1.5%(不连续3季<1%)"
+      - "毛利率维持>50%(当前51.4%)"
+      - "自有品牌份额增速<0.5ppt/年(当前~0.44ppt)"
+      - "Core EPS/股息覆盖率>1.3x(当前1.74x)"
+    sell_triggers:
+      - signal: "连续3季有机增长<1%(KS-01)"
+        severity: "action"
+        action: "减仓30%, 叠加KS-02则减仓50%"
+      - signal: "毛利率跌破50%(KS-03)"
+        severity: "action"
+        action: "减仓20%, 成本结构性恶化确认"
+      - signal: "自有品牌美元份额突破24%(KS-07)"
+        severity: "warning"
+        action: "减仓25%, DCF终值需系统性下调15-20%"
+      - signal: "派息率>77%即Core EPS<$5.24(KS-05)"
+        severity: "emergency"
+        action: "清仓, 69年Dividend King地位威胁=投资逻辑根基动摇"
+    position_sizing: "建议仓位1.6% (3.0%基础×0.85周期×0.70置信×0.90AI调整)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "定价权碎片化的品类级传导"
+    chain: >
+      PG五板块PVM拆解
+      → Beauty弹性正(创新驱动消费者愿付溢价)
+      → Grooming弹性恶化至-1.0(DTC竞争侵蚀品牌溢价)
+      → BFF定价权归零(出生率下降+自有品牌纸尿裤+10%=双重结构性压力)
+      → F&HC弹性稳定但mix恶化(消费者降级到低价线)
+      → 59%收入来自定价权最弱的两大板块
+      → 无法再全面提价消化关税$1B
+      → 利润率保护只能依赖效率而非定价
+    transferable_to: "所有多品类消费品公司(UL/KMB/CLX/CHD)的定价权评估应按品类拆分而非公司级"
+    reasoning_habit: "看到'PG有定价权'时追问'哪个品类的定价权' — 公司级定价权可能掩盖品类级分裂"
+
+  - id: "CC-2"
+    name: "自有品牌单向棘轮效应"
+    chain: >
+      通胀+关税推高品牌产品价格
+      → 消费者首次尝试自有品牌
+      → 60%认为质量等同或更好+88%计划维持/增加购买
+      → 品牌溢价的前提(质量显著更好)被系统性瓦解
+      → 自有品牌份额从19.1%→21.3%且加速(增速3x品牌)
+      → 即使通胀回落消费者也不回头(单向棘轮)
+      → 每一次提价都在永久推出边际消费者
+      → DCF终值需反映永久性份额流失
+    transferable_to: "所有面临自有品牌竞争的消费品公司 — 测试'消费者尝试后留存率'决定威胁是周期性还是结构性"
+    reasoning_habit: "看到自有品牌威胁时追问留存率 — 留存>80%=结构性迁移, <50%=周期性波动"
+
+  - id: "CC-3"
+    name: "PE折价陷阱的识别逻辑"
+    chain: >
+      观察: PG PE 23.5x vs 5年均值25.5x = -8%折价 → 看似低估
+      → 追问: 增长呢? 有机增长0% vs 5年均值4% = -100%下降
+      → PEG 4.47x暴露真实估值水平(为低增长付高价)
+      → DDM逆推: 当前股价隐含增长4.7-5.2%, 实际可持续2-3%
+      → 结论: 折价是低增长的合理定价而非买入机会
+      → 真正的买入机会需要增长恢复确认, 而非仅PE低于历史
+    transferable_to: "所有PE低于历史均值的成熟消费品公司 — PE低不等于便宜, 需要PEG交叉验证"
+    reasoning_habit: "看到PE历史低位时立刻算PEG — PEG>3x=低增长定价合理, PEG<1.5x=真正低估"
+
+  - id: "CC-4"
+    name: "重组是利润补丁而非增长引擎的历史证明"
+    chain: >
+      PG三轮重组(2012/$10B成本削减, 2014/100+品牌剥离, 2017/聚焦战略)
+      → 每次重组后: 短期利润率改善 + 有机增长未加速
+      → 2012重组后FY2013-14增长3%(低于目标4-5%)
+      → 2014剥离后FY2016增长仅1%
+      → 2017聚焦后FY2018-19增长4-5%(归因于全球通胀定价红利而非重组)
+      → 定价红利耗尽后增长再次回落
+      → 模式: 重组节省→利润率缓冲 | 但不注入增长引擎
+      → 最新$1.5B重组大概率重复: EPS+$0.20-0.30但有机增长不会突破2%
+    transferable_to: "所有宣布大规模重组的成熟消费品公司 — 重组历史记录是预测未来重组效果的最佳指标"
+    reasoning_habit: "看到重组公告时追问'这家公司过去重组的增长转化率是多少' — 如果历史转化率<30%则不应建模为增长催化剂"
+
+  - id: "CC-5"
+    name: "防御性溢价与基本面恶化的悖论"
+    chain: >
+      衰退概率上升
+      → 资金涌入低Beta防御股(PG Beta~0.5)
+      → 股价因防御性溢价上涨10-15%
+      → 但衰退同时=消费降级=自有品牌份额加速+有机增长进一步下滑
+      → 基本面恶化→PE压缩→股价回吐全部涨幅甚至更多
+      → "先涨后跌"的陷阱(2008年PG从$72跌至$46=-36%)
+      → 结论: 防御性在轻度放缓中有效, 在真正衰退中被基本面击穿
+    transferable_to: "所有低Beta消费必需品股在衰退中的表现评估"
+    reasoning_habit: "看到'PG是避风港'时区分'轻度放缓'vs'真正衰退' — 后者会击穿消费品的品牌壁垒"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "PE 23.5x vs 5年均值25.5x说明PG被低估"
+      final: "PEG 4.47x说明PG为低增长付高价, 23.5x可能是合理定价甚至略贵"
+      pivot: "有机增长从4%降至0%, 增长降幅(-100%)远大于PE降幅(-8%) → 增长调整后估值不便宜"
+
+    - initial: "自有品牌威胁是周期性的, 通胀回落后消费者会回归品牌"
+      final: "88%自有品牌购买者计划维持/增加=单向棘轮, 结构性而非周期性"
+      pivot: "质量感知收敛(仅38%仍认为品牌更好, 从44%下降) + 留存率>80% → 切换不可逆"
+
+    - initial: "$1.5B重组将催化增长恢复"
+      final: "2012/2014/2017三轮重组均未加速有机增长, 重组=利润补丁而非增长引擎"
+      pivot: "历史模式: 节省→利润率但非增长 | FY2018-19增长恢复归因于通胀定价红利而非重组"
+
+  surprises:
+    - finding: "PG是唯一有机增长为零且量跌的消费品巨头 — UL/CL/CHD同期均正向量增长"
+      implication: "零增长是PG公司特定问题(品类组合老化)而非行业宿命 → 不应以行业逆风为借口"
+
+    - finding: "BFF板块量跌-5%由人口结构(出生率下降)和竞争(自有品牌纸尿裤+10%)双重驱动, 经济周期无法拯救"
+      implication: "BFF应建模为持续收缩业务(-2%至-4%/年), 非等待恢复的周期低谷 → 24%收入永久拖累"
+
+    - finding: "12个月内CEO+Beauty CEO+HC CEO三重高管更替, 同步发生在7,000人裁员期间"
+      implication: "市场给予有序交接中性定价低估了摩擦成本 → 应给予3-5%执行折价"
+
+    - finding: "增长最快的渠道(电商19%, +12% YoY)恰恰是利润率最低的渠道(低2-4pp)"
+      implication: "渠道组合系统性向低利润率端迁移 → 分析师应将渠道mix变化纳入利润率预测"
+
+  blind_spots:
+    - area: "Q3 FY2026有机增长是否确认周期性vs结构性"
+      why_matters: "周期性→PE恢复至25x=$170+ | 结构性→PE压缩至20x=$140 → 方向性差异$30/股(20%)"
+      monitor: "2026年4月PG Q3财报: 有机增长>2.5%+量转正=周期性确认 | <1.5%+量继续跌=结构性确认"
+
+    - area: "自有品牌份额加速速度"
+      why_matters: "线性外推2028年23.1% | 关税加速可能提前至2027年24% → 触发DCF终值下调15-20%"
+      monitor: "PLMA/Circana年度报告 + Nielsen月度品类追踪 | 关注纸尿裤/纸品品类(侵蚀最快)"
+
+    - area: "Tide EVO规模化效果"
+      why_matters: "如果Tide EVO创造真正增量(非品类内迁移) → F&HC增长提速1-2pp → 整体增长叙事改变"
+      monitor: "F&HC板块有机增长中量贡献 | Tide品类份额变化(增量=份额增 | 迁移=份额平)"
+
+  sell_lessons:
+    - scenario: "PE低于历史均值但有机增长同时大幅下降 → 不卖 → PE继续收缩"
+      lesson: "PE折价需要PEG交叉验证。PE/历史均值比值<PEG/行业均值时=折价合理, 不是卖出信号但也不是买入信号"
+      transferable: "所有PE触历史低位的成熟消费品公司(KMB/CLX类)"
+    - scenario: "管理层说'最差已过'但BFF结构性因素(出生率/自有品牌)不会因季度改善"
+      lesson: "不要将管理层的期望管理话术当作买入信号。等待数据确认再行动, 尤其是结构性变量不受周期影响时"
+      transferable: "所有面临结构性逆风但管理层仍给乐观指引的公司"
+    - scenario: "衰退初期防御股上涨10-15%后基本面恶化→回吐全部涨幅"
+      lesson: "低Beta消费品在轻度放缓中是避风港, 在真正衰退中防御性被击穿。不要在衰退恐慌时追入消费品防御股"
+      transferable: "所有低Beta消费必需品股(PG/KO/CL/GIS)"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "有机增长中'定价'vs'量'的品类级拆解"
+      why_alpha: "卖方通常报告公司级有机增长, 忽略品类级定价权碎片化 → 品类PVM暴露59%收入定价权极弱"
+      current_reading: "Beauty弹性正 / Grooming -1.0 / BFF定价权归零 / 加权~3.2/5"
+    - signal: "自有品牌份额增速+消费者留存率"
+      why_alpha: "市场仍以周期性框架看待, 但留存率88%+质量感知收敛→结构性 → 最大的未定价风险"
+      current_reading: "份额21.3%向24%迈进, 年增$9B, 增速3x品牌商"
+    - signal: "PPDA三大背离(增长/自有品牌/重组)"
+      why_alpha: "从股价反推隐含假设→对比外部数据→量化背离度 → 三个背离均指向下行"
+      current_reading: "增长过度乐观33% | 自有品牌未定价 | 重组→增长转化假设中度背离40%"
+
+  confirmation_signals:
+    - signal: "季度有机增长(整体+分板块)"
+      bullish_threshold: ">2.5% + 量转正(增长恢复确认)"
+      bearish_threshold: "<1%连续3季(结构性确认 → KS-01触发)"
+    - signal: "毛利率季度趋势"
+      bullish_threshold: ">52%(关税成本被成功传导+效率改善)"
+      bearish_threshold: "<50%(成本结构性恶化 → KS-03触发)"
+    - signal: "自有品牌年度美元份额(PLMA/Circana)"
+      bullish_threshold: "增速放缓至<$5B/年(侵蚀减速)"
+      bearish_threshold: ">24%(欧洲化轨迹确认 → KS-07触发)"
+
+  noise_signals:
+    - signal: "RSI超买/超卖"
+      why_noise: "消费必需品在利率下降环境中经常长期维持高RSI — 2019年PG RSI多次>70持续数月不回落, 不适合作为长期投资判断依据"
+    - signal: "单季EPS beat/miss"
+      why_noise: "关税影响的季度分布不均匀 → 单季EPS波动不改变结构性增长轨迹, 看全年趋势"
+    - signal: "卖方目标价调整"
+      why_noise: "22位分析师0 Sell → 系统性偏多 | 目标价$148-$186差距26%=共识分散 | 卖方不区分周期性vs结构性增长放缓"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: UL
+      similarity: "同为全球消费品巨头, 类似品类覆盖(洗涤/个护/美容)"
+      key_difference: "UL有机增长+4.5%(量+3.5%) vs PG 0%(量-1%) → UL新兴市场渗透创造PG缺乏的增量空间"
+
+    - ticker: KMB
+      similarity: "同为纸品/纸尿裤核心品类, 类似自有品牌威胁暴露"
+      key_difference: "KMB PE 21.5x更符合低增长定价 | PG 23.5x可能仍包含增长溢价 → KMB是PG重新定价的参照"
+
+    - ticker: CHD
+      similarity: "同为美国消费品, 类似品类(洗涤/个护)"
+      key_difference: "CHD量增+4%证明消费品行业量增长并非不可能 → CHD用创新敏捷性弥补品牌规模差距"
+
+  comparative:
+    - dimension: "有机增长质量"
+      position: "CL (+5.8%) > UL (+4.5%) > CHD (+3.9%) >> PG (0%)"
+      reasoning: "PG是唯一有机增长为零且量跌的消费品巨头 → 品类组合结构性不利"
+
+    - dimension: "定价权"
+      position: "CL (口腔护理强定价) > UL (新兴市场定价空间) > CHD (量驱动不依赖提价) > PG (品类级碎片化)"
+      reasoning: "PG 59%收入来自定价权最弱的板块 → 加权定价权行业垫底"
+
+    - dimension: "自有品牌抗性"
+      position: "CL (口腔护理技术壁垒高) > CHD (品类聚焦+创新快) > PG (纸品/洗涤暴露最大) > KMB (纸品核心)"
+      reasoning: "PG的F&HC+BFF(59%收入)恰是自有品牌替代最容易的品类"
+
+    - dimension: "估值吸引力(PEG)"
+      position: "CHD < CL < UL < PG (4.47x最高)"
+      reasoning: "PG PE最低(23.5x)但增速也最低→PEG暴露为低增长付高价"
+
+  industry_position:
+    quadrant: "最大规模 × 最低增速 × 中等估值"
+    archetype: "减速中的防御复利机器 — 品牌坚固但燃料(有机增长)耗尽"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "DDM逆推→市场隐含增长4.7-5.2% vs 可持续2-3% → 当前价格隐含增长假设偏乐观"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "自有品牌份额每年+0.44ppt缓慢侵蚀→不触发单次恐慌→但累计到24%时DCF终值需系统性下调→温水煮青蛙"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "8个Bear Case + 行为金融4项偏差检查 + PPDA 3大背离 + Smart Money立场验证 → 5引擎50:50中性"
+
+  novel_patterns:
+    - name: "定价权品类级碎片化评估"
+      description: "CPG公司定价权不再是公司级属性 — 应按品类拆解PVM弹性系数, 加权得出真实定价权水平"
+      transferable_to: ["UL", "KMB", "CLX", "CHD", "所有多品类消费品公司"]
+
+    - name: "自有品牌单向棘轮效应量化"
+      description: "通过留存率(尝试后维持/增加购买比例)判断自有品牌威胁是周期性还是结构性 → 留存>80%=不可逆迁移"
+      transferable_to: ["KMB", "CLX", "GIS", "K", "所有面临自有品牌竞争的品牌商"]
+
+    - name: "重组→增长转化历史率"
+      description: "用公司自身历史重组记录校准未来重组效果预测 → 3次重组增长转化率<30%=第4次不应建模为增长催化剂"
+      transferable_to: ["UL", "KMB", "所有宣布重组的成熟消费品公司"]
+
+    - name: "K型消费分化下的品牌组合困境"
+      description: "高端化(26%收入)和大众市场(59%收入)战略互相矛盾 → 无法同时服务上层和中间市场 → 夹心层定位最脆弱"
+      transferable_to: ["所有同时拥有高端线和大众线的消费品公司"]
+
+    - name: "防御性溢价击穿模型"
+      description: "低Beta消费品在轻度放缓中获得防御溢价, 但真正衰退中基本面恶化(消费降级→自有品牌加速)击穿防御→先涨后跌陷阱"
+      transferable_to: ["KO", "CL", "GIS", "所有低Beta消费必需品"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "CPG护城河应按品类评估而非公司级 — PG整体'中强'掩盖了分销护城河'快速崩塌'(-3至4分/年)的事实"
+        implication: "消费品护城河评估增加品类分层维度, 找出侵蚀速度最快的单一护城河类型"
+      - insight: "自有品牌威胁的判断标准是消费者留存率而非份额水平 — 留存>80%=结构性迁移"
+        implication: "自有品牌风险评估从份额跟踪升级为留存率跟踪, 后者是前瞻指标"
+      - insight: "AI推荐引擎是分销护城河的最大中期威胁 — 物理货架优势被数字化绕过"
+        implication: "消费品护城河评估增加'AI推荐渗透率'维度, 电商占比>20%时分销护城河应显著折价"
+
+    valuation_insights:
+      - insight: "PE折价需要PEG交叉验证 — PE低于历史但PEG>3x时折价是合理定价而非低估"
+        implication: "成熟消费品估值比较应用PEG而非PE, 防止'低PE陷阱'"
+      - insight: "DDM对消费品极度敏感(ke-g利差) — g从5%降至3%估值跌50% → 增长假设是最关键变量"
+        implication: "消费品DDM必须做增长率±1%敏感性测试, 且长期g不应超过最近3年有机增长均值"
+
+    screening_insights:
+      - insight: "PEG>3.5x + 有机增长<2% + 自有品牌暴露>50%收入 = '品牌溢价陷阱'"
+        implication: "消费品筛选增加'品牌溢价陷阱过滤器': PEG/有机增长/自有品牌暴露三维筛选"
+      - insight: "同行对比中量增长>0%是消费品增长质量的最低门槛 — 量跌=定价权可能已过度使用"
+        implication: "消费品选股增加'量增长为正'硬门槛, 量跌的消费品公司不应获得增长溢价"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "CPG定价权按品类拆解而非公司级评估"
+      trigger: "分析师说'PG有定价权'时"
+      origin: "PG五板块PVM拆解: Beauty正弹性 vs BFF定价权归零 → 59%收入定价权极弱"
+      generalization: "多品类公司的任何公司级属性(定价权/增速/margin)都可能掩盖品类级分裂 → 永远按品类/分部拆分"
+
+    - habit: "自有品牌威胁判断看留存率而非份额"
+      trigger: "评估自有品牌对品牌商的威胁时"
+      origin: "88%自有品牌购买者计划维持/增加+质量感知收敛→结构性而非周期性"
+      generalization: "消费行为的持久性由留存率决定 — 高留存(>80%)=不可逆 | 低留存(<50%)=周期性"
+
+    - habit: "PE折价立刻用PEG交叉验证"
+      trigger: "PE低于历史均值5%以上时"
+      origin: "PG PE -8% vs 历史但PEG 4.47x → 折价是低增长的合理定价"
+      generalization: "PE低不等于便宜 — PE/增长联动判断才有效, 尤其对低增速消费品"
+
+    - habit: "重组效果用历史转化率校准"
+      trigger: "公司宣布大规模重组/成本节省计划时"
+      origin: "PG三轮重组(2012/2014/2017)均未加速有机增长 → 节省→利润率但非增长"
+      generalization: "公司过去重组的增长转化率是预测未来重组效果的最佳基准率"
+
+  quality_feedback:
+    strengths:
+      - "873个数据标注, DM密度3.48/千字 — 远超1.5门控, 数据锚定极为扎实"
+      - "13张反常识洞察卡系统性挑战传统认知 — 品类级定价权碎片化和自有品牌棘轮效应是最高价值洞见"
+      - "8个Bear Case+极端压力测试+18个Kill Switch — 对抗审查覆盖全面"
+      - "PPDA(定价背离分析)从股价反推隐含假设并量化背离 — 方法论有高度迁移价值"
+    weaknesses:
+      - "报告使用旧版框架(v21.0争议驱动), 评分体系(55/100)与当前5档评级标准不完全对齐"
+      - "Reverse DCF未作为独立模块前置(铁律O) — DDM逆推隐含增长是最接近的替代但不如完整Reverse DCF"
+      - "因果推理密度未量化检测 — 洞察卡和Bear Case因果链扎实但正文部分可能有断言未论证"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "品牌溢价在消费降级时代面临结构性而非周期性侵蚀"
+        evidence: "自有品牌留存率88% + 质量感知收敛(仅38%仍认为品牌更好) + 份额增速3x品牌商"
+        confidence_after: "高(多源硬数据确认)"
+
+      - hypothesis: "重组不创造增长(MCO/ADBE类推)"
+        evidence: "PG三轮重组(2012/14/17)增长转化率<30%, 最新$1.5B重组大概率重复"
+        confidence_after: "高(PG自身3次历史验证)"
+
+    extended:
+      - hypothesis: "PEG比PE更能暴露真实估值(CME发现)"
+        extension: "PG中进一步确认: PE 23.5x看似便宜但PEG 4.47x暴露为低增长付高价 → 消费品中PEG>3.5x=品牌溢价陷阱"
+
+    refuted:
+      - hypothesis: "消费必需品在衰退中总是跑赢(传统认知)"
+        evidence: "PG 2008年从$72跌至$46(-36%) → 真正衰退中防御性被基本面恶化击穿"
+        lesson: "低Beta消费品的防御性有条件限制 — 仅在轻度放缓中有效, 深度衰退中无效"
+
+  limitations:
+    - "使用旧版框架(v21.0), 未执行当前v19.7标准的Reverse DCF P1前置和Phase 0.75核心矛盾结晶"
+    - "无Python验证的DCF/FCFF模型 → 估值区间($136-$188)离散度较高(28%)"
+    - "中国市场恢复潜力(Greater China)的分析受限于本土消费品竞争数据可得性"
+    - "Tide EVO真正的增量vs品类内迁移效应无法从当前公开数据中区分 → 需等F&HC品类份额数据"
+    - "AI推荐引擎对CPG分销的实际影响目前仍是早期推测 → 3-5年内可量化验证"

@@ -1,0 +1,407 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — ASML Holding
+# 压缩比: 423K → ~12K (35x)
+# 六层结构:
+#   Layer 0 = 坐标
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: ASML
+  company: "ASML Holding NV"
+  report_date: "2026-02-13"
+  stock_price: "€1,407"
+  market_cap: "€541.8B"
+  report_version: "v1.0"
+  report_path: "reports/ASML/ASML_Complete_v1.0_2026-02-13.md"
+  quality_score: "报告未含D1-D11记分卡(v10.0框架, 早于记分卡体系)"
+  cqi: "报告未覆盖"
+  framework_version: "v10.0"
+  industry: "半导体"
+  archetype: "技术垄断收费站"
+  chars: 422923
+  dm_count: 712
+  dm_density: "1.68/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "ASML是全球最稀缺的技术垄断企业, 但€1,407股价隐含了'完美执行+AI永续繁荣'的极端乐观假设, 高估23-29%"
+  rating: "审慎关注"
+  fair_value: "€993-1,172/股 (核心估值中位数€1,083); 风险调整后€618-763/股"
+  expected_return: "概率加权期望收益-3.0% @ €1,407 | Bull(25%): +25-30% | Base(40%): 持平~-15% | Bear(35%): -40~-55%"
+
+  key_arguments:
+    - claim: "EUV垄断护城河极深, 5-10年内无实质威胁"
+      direction: bullish
+      magnitude: 5
+      mechanism: "15年+€数百亿研发→10万零件精密集成→全球唯一EUV供应商→90%市占率→客户(TSM/Samsung/Intel)无替代→绝对定价权"
+      kill_switch: "中国EUV量产成功(35%概率2026-2027) 或 xLight FEL技术在2028年实现硅里程碑(25%概率)"
+
+    - claim: "48.8x PE隐含了显著激进的增长假设, 当前价格缺乏安全边际"
+      direction: bearish
+      magnitude: 5
+      mechanism: "Reverse DCF隐含: 营收CAGR 22-25%(10年) + OPM 38-40% + 永续增长4-4.5% → 需WFE市场扩张12-14倍 → 多个乐观假设必须同时成立"
+      kill_switch: "AI超级周期持续超预期(CapEx $700B+持续3年+) → 隐含增长假设变为合理"
+
+    - claim: "AI超级周期可能是周期性繁荣而非结构性变化"
+      direction: bearish
+      magnitude: 4
+      mechanism: "半导体设备历史强周期性→2022年ASML营收曾大幅下滑→当前库存前置可能透支未来需求→资本纪律回归信号已出现"
+      kill_switch: "AI应用落地持续加速(企业AI采用率>50%) → 结构性需求确认"
+
+    - claim: "地缘政治是双刃剑: 中国业务损失vs战略稀缺性溢价"
+      direction: conditional
+      magnitude: 4
+      mechanism: "出口管制→中国收入从40%+降至<30%→直接收入损失 | 但ASML='芯片战争'核心武器→获军工类战略溢价 | 台海冲突概率10.5%(Polymarket)→核心客户TSM风险"
+      kill_switch: "台海军事冲突实际发生 → TSM产能中断 → ASML收入断崖"
+
+    - claim: "市场隐含期权价值€916/股(Core价值187%溢价)严重高估"
+      direction: bearish
+      magnitude: 4
+      mechanism: "Core业务(EUV+DUV+服务)仅值€491/股→差额€916来自High-NA/Hyper-NA/新市场期权→期权实现需技术+市场+政治多重条件同时满足"
+      kill_switch: "High-NA EUV 2027年量产顺利+订单>20台/年 → 期权价值部分确认"
+
+  moat:
+    composite_score: 9.0
+    half_life: "EUV核心>15年 | DUV>10年 | 服务>10年 | 但受中国自主化+替代技术侵蚀"
+    dimensions:
+      - type: ip
+        strength: 5
+        evidence: "38,000项专利+15年EUV研发+10万零件系统集成→全球唯一商业EUV供应商→90%市占率"
+        vulnerability: "中国LDP技术路径绕过LPP架构 | xLight FEL技术$150M美政府投资 | 核心专利到期风险"
+      - type: switching_cost
+        strength: 5
+        evidence: "客户EUV产线投资数十亿→工艺参数深度绑定ASML设备→迁移成本=重建整条产线"
+        vulnerability: "3D封装/Chiplet可能减少对先进制程EUV的依赖"
+      - type: scale
+        strength: 4
+        evidence: "ROE 48.5% | ROIC 135.6% | EUV毛利率85%+ → 规模经济优势随产量增长持续加强"
+        vulnerability: "High-NA复杂度提升可能短期压低良率和margin"
+      - type: network_effect
+        strength: 3
+        evidence: "半导体产业链标准化→ASML=事实标准制定者→供应商/客户/研究机构形成共生网络"
+        vulnerability: "网络效应弱于平台型公司, 更像技术锁定而非自增强循环"
+      - type: regulatory
+        strength: 3
+        evidence: "美国出口管制使ASML成为地缘战略资产→政府保护→难被替代"
+        vulnerability: "荷兰/欧盟技术主权诉求可能限制对美配合度 | 反垄断调查风险"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含: 营收CAGR 22-25%(10年)+OPM 38-40%+永续增长4-4.5% → 需WFE市场扩张12-14倍 → 判定: 显著激进"
+    methods_used: ["DCF(权重30%)", "SOTP(25%)", "P/E(20%)", "EV/EBITDA", "PEG", "可比公司", "Reverse DCF", "期权定价(OVM)", "蒙特卡罗模拟"]
+    dispersion: "35.0% (€993-1,172核心区间)"
+    consensus_vs_ours: "市场看ASML=AI永续繁荣+垄断永续=48.8x PE合理 | 我们看ASML=Core €491/股+€916期权溢价=极端乐观定价"
+    entry_zone: "€800-1,000 (P/E ~28-35x, 对应€310-390B市值)"
+    catalyst: "半导体CapEx下行周期+AI投资纪律化→EPS miss→PE压缩→2027年可能出现买点"
+
+  action_framework:
+    verdict: "等待买入 — 护城河极深但估值严重透支, 等待PE压缩至28-35x"
+    buy_triggers:
+      - trigger: "半导体设备下行周期到来, ASML营收指引miss"
+        price_zone: "€800-1,000 (PE 28-35x)"
+        reasoning: "Core PE回归合理+垄断地位不变+AI需求基底仍在→安全边际充足"
+      - trigger: "AI投资纪律化导致CapEx放缓, 市场恐慌性抛售"
+        price_zone: "€600-800 (PE 20-28x)"
+        reasoning: "蒙特卡罗P10=€561→接近极端低估→垄断企业在恐慌中买入的经典机会"
+    hold_conditions:
+      - "EUV垄断地位未被实质性挑战(无竞品量产EUV)"
+      - "前3大客户(TSM/Samsung/Intel)持续采购"
+      - "High-NA商业化按计划推进"
+      - "台海局势未显著恶化"
+    sell_triggers:
+      - signal: "中国EUV设备实现7nm及以下量产(不是原型, 是量产)"
+        severity: "emergency"
+        action: "全部卖出, 垄断护城河基础假设被颠覆"
+      - signal: "PE>55x且无增速加速催化(AI需求见顶信号出现)"
+        severity: "action"
+        action: "减仓50%, 估值严重脱离基本面"
+      - signal: "台海军事冲突升级(Polymarket概率>25%)"
+        severity: "action"
+        action: "减仓至<2%仓位, 核心客户TSM面临直接威胁"
+      - signal: "半导体CapEx连续2季度下滑>20%"
+        severity: "warning"
+        action: "减仓25%, 重新评估周期位置"
+    position_sizing: "当前价位不建议建仓(期望收益-3%) | €800-1,000区间开始分批(3-5%仓位)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "技术垄断的自强化与脆弱性悖论"
+    chain: >
+      ASML 15年+€数百亿研发→10万零件精密集成→全球唯一EUV商业化
+      → 客户(TSM/Samsung/Intel)产线深度绑定→迁移成本=重建产线
+      → 定价权绝对(EUV单台€200M+, High-NA €350M+)
+      → 高利润再投入R&D(€4.3B/年)→技术领先持续扩大
+      → 但: 出口管制刺激中国"不对称资源动员"→LDP绕过LPP
+      → 且: 每一代技术复杂度指数增长→成本递增→客户ROI递减
+      → 悖论: 技术越领先→价格越贵→客户越想找替代→替代投入越大
+    transferable_to: "所有技术垄断企业(光刻/检测/先进材料) — 越强的垄断催生越强的替代动力"
+    reasoning_habit: "对技术垄断追问'垄断本身是否在加速替代?' — 定价权的极限就是客户寻找替代的起点"
+
+  - id: "CC-2"
+    name: "隐含期权价值的泡沫检测"
+    chain: >
+      市价€1,407 × 389M股 = €547.3B
+      → Core业务(EUV+DUV+服务)估值: €190.9B = €491/股
+      → 差额€916/股 = 隐含期权价值 = Core价值的187%溢价
+      → 期权内容: High-NA商业化 + Hyper-NA + 新应用市场 + 地理扩张
+      → 检验: High-NA需2026-2028量产+客户>20台/年+良率达标
+      → 且: Hyper-NA仅研发阶段(2030年代) → 时间折现后价值有限
+      → 结论: 市场为不确定的远期期权支付了确定性的高溢价
+    transferable_to: "所有高PE科技公司的'Core vs Option'分离分析(NVDA/TSLA/PLTR类)"
+    reasoning_habit: "看到PE>40x时,先做Core vs Option分离 — 如果期权价值>Core价值, 追问期权实现条件是否合理"
+
+  - id: "CC-3"
+    name: "出口管制的非线性反作用"
+    chain: >
+      美国出口管制→ASML禁售EUV给中国
+      → 短期: 中国收入下降(40%+→<30%)→收入损失可量化
+      → 但: 制裁压力→中国启动"曼哈顿计划"式EUV研发→LDP技术路径绕过LPP
+      → 2026年中国LDP进入量产阶段(超预期)
+      → 且: DUV多次曝光工艺创新→在某些应用绕过EUV需求
+      → 长期: 出口管制≠保护ASML垄断, 可能=加速替代技术诞生
+      → 关键变量: 中国方案的良率和成本→如果达到EUV 70%性能@50%成本→颠覆开始
+    transferable_to: "所有受出口管制保护的技术垄断(半导体设备/EDA/先进材料)"
+    reasoning_habit: "制裁保护垄断是短期逻辑; 长期追问'制裁是否在培养竞争者' — 压力是创新最强的催化剂"
+
+  - id: "CC-4"
+    name: "周期性vs结构性的识别框架"
+    chain: >
+      ASML 2026年营收指引€44.2B(+35.4%)→看似结构性增长
+      → 但: AI CapEx $700B+可能包含前置需求(恐慌性采购)
+      → 历史: 2022年ASML营收大幅下滑→设备投资强周期性是铁律
+      → 检验: 如果2027年CapEx增速放缓→ASML营收可能回落20-30%
+      → 关键区分: 看订单/收入比 — >1.2x=需求超供给=结构性 | <0.8x=前置消化=周期性
+      → 当前: 供应紧缺掩盖了真实需求信号→周期顶部特征
+    transferable_to: "所有受AI周期驱动的半导体设备/基础设施公司(LRCX/KLAC/AMAT)"
+    reasoning_habit: "在行业繁荣期问'这是需求拉动还是恐慌囤货?' — 订单/收入比是最直接的区分指标"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "EUV垄断不可突破, 中国至少需10年"
+      final: "中国LDP技术2026年已进入量产, 可能比预期提前5年"
+      pivot: "LDP绕过LPP架构→不需要复制ASML全栈→技术路径创新降低了突破难度"
+
+    - initial: "48.8x PE反映EUV垄断溢价是合理的"
+      final: "Reverse DCF显示需22-25% CAGR维持10年+WFE市场扩张12-14倍 — 隐含假设显著激进"
+      pivot: "Core vs Option分离后发现: 核心仅值€491/股, 期权溢价187%=市场为远期不确定性支付确定性价格"
+
+  surprises:
+    - finding: "隐含期权价值€916/股 — 超过Core价值€491/股的187%"
+      implication: "市场本质上在为High-NA/Hyper-NA等未量产技术支付比已验证垄断业务更高的价格 → 典型的远期叙事过度定价"
+
+    - finding: "中国LDP技术2026年量产(比行业预期提前) — 架构绕过而非正面突破"
+      implication: "技术垄断的突破方式不是正面复制(10年+)而是路径创新(5年) — 改变EUV垄断窗口评估"
+
+    - finding: "概率加权期望收益为负(-3.0%) — 即使考虑Bull情景仍然不值得在当前价位投资"
+      implication: "ASML是极好的公司但极差的投资(在当前价格) — 品质≠回报的又一个案例"
+
+    - finding: "承重墙LBW-1(EUV不可颠覆)脆弱度从HIGH升至CRITICAL"
+      implication: "红队攻击后, EUV垄断的持久性假设被显著削弱 — 中国+xLight+NIL三重路径同时推进"
+
+  blind_spots:
+    - area: "High-NA EUV良率和客户采纳进度"
+      why_matters: "High-NA商业化是期权价值€916/股中最大的单一组成部分 → 延迟1年可能削减期权价值30%+"
+      monitor: "2026 Q4 High-NA订单数 | Intel/TSM采纳时间表 | 良率公开数据"
+
+    - area: "中国LDP量产的实际良率和成本"
+      why_matters: "决定中国替代是'实验室成果'还是'商业威胁' → 良率>80%@成本<EUV 60%=真实威胁"
+      monitor: "中国Fab先进制程良率报告 | SMIC/YMTC产品节点进展"
+
+    - area: "AI CapEx周期的实际持续时间"
+      why_matters: "ASML 2026年+35%增长完全建立在AI CapEx持续假设上 → 如果2027年放缓, 营收可能下滑20-30%"
+      monitor: "微软/Google/Meta季度CapEx指引 | 数据中心利用率趋势"
+
+  sell_lessons:
+    - scenario: "在PE>45x且增长假设需'完美执行'才能支撑时不卖 → 周期下行时面临PE+EPS双杀"
+      lesson: "技术垄断不免疫周期性。在设备周期顶部, 即使护城河完好, PE压缩+营收下滑可以造成40%+跌幅"
+      transferable: "所有半导体设备公司(LRCX/KLAC/AMAT)和周期性科技垄断"
+    - scenario: "因为'垄断溢价'而忽视期权价值>Core价值的异常 → 期权未兑现时估值崩塌"
+      lesson: "当期权价值>Core价值时, 你买的不是垄断而是期权 — 期权有时间衰减, 垄断没有"
+      transferable: "所有PE>40x且增长依赖未量产技术的公司(TSLA自动驾驶/NVDA机器人)"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "Core vs Option价值分离比"
+      why_alpha: "大多数分析师用统一PE估值ASML, 不拆分核心业务vs期权→Core仅€491/股暴露真实运营价值"
+      current_reading: "期权/Core = 187% (极端高位, 历史上期权>Core通常预示估值回调)"
+    - signal: "中国替代技术实际进展(LDP良率/成本)"
+      why_alpha: "市场给予EUV垄断'永续'假设→任何中国量产进展都会重新定价垄断持续期→最大的非共识风险"
+      current_reading: "LDP 2026年量产(超预期), 但商业良率未确认"
+    - signal: "AI CapEx增速的二阶导数(加速度)"
+      why_alpha: "ASML营收滞后于CapEx决策12-18个月→CapEx增速放缓=ASML订单见顶的前瞻信号"
+      current_reading: "2026年$700B+(仍加速), 但资本纪律回归信号已出现"
+
+  confirmation_signals:
+    - signal: "ASML季度订单金额(Book-to-Bill)"
+      bullish_threshold: ">1.2x (需求>供给=结构性增长确认)"
+      bearish_threshold: "<0.8x连续2季 (前置需求消化=周期下行确认)"
+    - signal: "High-NA EUV年度交付台数"
+      bullish_threshold: ">15台/年 (商业化成功→期权价值部分确认)"
+      bearish_threshold: "<5台/年 (良率/成本问题→期权价值需下调)"
+    - signal: "中国区收入占比变化"
+      bullish_threshold: "回升>35% (出口管制松动→收入恢复)"
+      bearish_threshold: "<20% (管制加严+国产替代→永久性收入损失)"
+
+  noise_signals:
+    - signal: "日/周股价波动"
+      why_noise: "ASML高beta(~1.3)→宏观/情绪驱动短期波动, 与基本面关系弱。看季度订单而非日线"
+    - signal: "分析师目标价调整"
+      why_noise: "90%+分析师给买入评级→共识过于拥挤→卖方目标价缺乏区分度, 做自己的Core PE分析更有价值"
+    - signal: "Hyper-NA技术论文/专利"
+      why_noise: "Hyper-NA是2030年代产品→对当前估值影响极小→市场过度关注远期叙事"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: LRCX
+      similarity: "同为半导体设备垄断, 类似周期特征, 报告使用LRCX v2.0 CQ结构作为参考标杆"
+      key_difference: "LRCX=刻蚀/沉积(多竞品) vs ASML=光刻(无竞品) | ASML护城河更深但估值溢价更高"
+
+    - ticker: KLAC
+      similarity: "同为半导体设备技术垄断, 高margin, 受AI周期驱动"
+      key_difference: "KLAC=检测(份额60%) vs ASML=光刻(份额90%) | KLAC估值更合理(PE ~25x vs 48.8x)"
+
+    - ticker: TSM
+      similarity: "半导体生态核心节点, 台海风险共享, ASML最大客户"
+      key_difference: "TSM=制造(客户) vs ASML=设备(供应商) | 关系互依但ASML有定价权优势"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "ASML (EUV垄断90%) > KLAC (检测60%) > LRCX (刻蚀~40%) > AMAT (多元化~25%)"
+      reasoning: "ASML是唯一真正的'无替代'垄断→技术不可复制性最强"
+
+    - dimension: "估值吸引力(PE/PEG)"
+      position: "AMAT (PE~20x) > KLAC (PE~25x) > LRCX (PE~30x) >> ASML (PE~49x)"
+      reasoning: "ASML垄断溢价已充分定价→PEG最高→风险收益最差"
+
+    - dimension: "周期脆弱性"
+      position: "ASML (EUV需求集中) > AMAT (多元化缓冲) > LRCX (安装基础服务) > KLAC (检测刚需)"
+      reasoning: "ASML营收高度集中于EUV新机台→周期下行时跌幅最大"
+
+    - dimension: "地缘政治暴露度"
+      position: "ASML (出口管制核心) > LRCX/AMAT (部分限制) > KLAC (限制较少)"
+      reasoning: "ASML是'芯片战争'的中心节点→政策变化影响最大"
+
+  industry_position:
+    quadrant: "最高护城河 × 最高估值 × 最高地缘风险"
+    archetype: "技术垄断收费站 — 收费绝对但估值已透支, 地缘政治是外生风险变量"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含CAGR 22-25% vs 历史最佳14%→差距8-11pp=AI永续溢价+垄断永续溢价"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~RT-6六轮红队→承重墙LBW-1(EUV不可颠覆)从HIGH→CRITICAL→最大纠偏"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "AI CapEx纪律化是温水煮青蛙路径→不会突然崩塌而是逐季放缓→ASML订单滞后12-18月传导"
+
+  novel_patterns:
+    - name: "Core vs Option分离(垄断版)"
+      description: "将垄断企业市值拆分为已验证Core业务+未量产技术期权→当Option>Core=叙事泡沫信号"
+      transferable_to: ["NVDA(数据中心Core vs机器人/自动驾驶期权)", "TSLA(汽车Core vs FSD/Robotaxi期权)", "所有PE>40x的科技垄断"]
+
+    - name: "出口管制反作用加速器"
+      description: "制裁短期保护垄断但长期培养替代者→替代者采用路径创新(绕过)而非正面突破(复制)→突破时间比'正面攻克'预期短50%+"
+      transferable_to: ["EDA工具(Synopsys/Cadence vs 中国替代)", "先进材料(日本光刻胶vs中国替代)", "所有受出口管制影响的技术垄断"]
+
+    - name: "垄断脆弱度升级机制"
+      description: "红队攻击中承重墙脆弱度可以升级(HIGH→CRITICAL)→多条独立攻击路径汇聚时风险非线性叠加→中国+xLight+NIL三路径效应"
+      transferable_to: ["所有面临多路径替代威胁的技术垄断", "任何单一护城河面临多维度攻击的公司"]
+
+    - name: "期望收益为负的品质公司"
+      description: "即使公司品质极高(ROE 48.5%/ROIC 135.6%), 当估值隐含完美执行时期望收益可以为负→品质≠回报在极端PE下更为显著"
+      transferable_to: ["所有CQI>80但PE>40x的公司", "品质陷阱的极端版本"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "技术垄断的'自毁悖论': 定价权越强→客户替代动力越大→替代投入越多→垄断窗口缩短"
+        implication: "评估技术垄断时增加'替代压力指标': ASP年涨幅>10%且持续>3年=替代加速信号"
+      - insight: "出口管制不保护垄断, 长期可能加速替代(中国LDP案例)"
+        implication: "评估受政策保护的护城河时, 必须考虑'政策反作用'维度 — 保护越强, 替代越快"
+
+    valuation_insights:
+      - insight: "Core vs Option分离暴露垄断企业的'叙事泡沫'→ASML Core仅€491 vs 市价€1,407"
+        implication: "所有PE>40x的科技垄断应强制执行Core vs Option分离, 当Option/Core>100%=叙事泡沫警告"
+      - insight: "Reverse DCF隐含假设需WFE市场扩张12-14倍 — 用市场容量约束检验增长假设合理性"
+        implication: "增加'TAM约束检验': 隐含增长要求TAM扩张>5倍且无明确驱动因素=假设不可靠"
+
+    screening_insights:
+      - insight: "品质极高(ROE>40%)+期望收益为负(-3%)=典型的'品质陷阱'在极端PE下的表现"
+        implication: "选股筛选加入'品质陷阱过滤器v2': ROE>30%但PE>40x且期望收益<0%→标记为纯等待型"
+      - insight: "半导体设备周期性铁律: 即使AI驱动, 设备投资的周期特征不会消失"
+        implication: "半导体设备选股时机>选股标的 — 在下行周期买入胜于在上行周期选择'最好的'公司"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "看到PE>40x的垄断企业, 立刻做Core vs Option分离"
+      trigger: "PE>40x 且 公司被描述为'不可替代的垄断'"
+      origin: "ASML Core仅€491/股 vs 市价€1,407→期权占市值65%→不是买垄断而是买期权"
+      generalization: "对所有高估值科技公司: 先分离已验证收入和未量产技术→看你实际在为什么付钱"
+
+    - habit: "对出口管制保护的垄断追问'制裁是否在培养竞争者'"
+      trigger: "公司受益于出口管制/制裁 且 被限制方有国家意志支持"
+      origin: "中国LDP绕过LPP架构→路径创新比正面突破快→出口管制加速了替代时间表"
+      generalization: "制裁=短期保护+长期催化。保护窗口通常<10年, 而市场常按'永续'定价"
+
+    - habit: "在行业繁荣顶部用Reverse DCF检验'隐含假设的荒谬性'"
+      trigger: "行业处于繁荣期 且 公司PE>历史均值+1σ"
+      origin: "ASML隐含需WFE市场扩张12-14倍→物理约束检验暴露假设不可能性"
+      generalization: "将隐含增长翻译成TAM扩张倍数→如果需要整个行业不合理扩张=估值泡沫"
+
+    - habit: "追问'垄断脆弱度能否升级' — 多条独立攻击路径汇聚时风险非线性"
+      trigger: "垄断企业面临>2条独立的技术替代路径"
+      origin: "中国LDP+xLight FEL+Canon NIL三路径独立推进→单独看概率低→组合概率>40%"
+      generalization: "单一替代路径概率可能只有15-25%, 但3条独立路径的'至少一条成功'概率=1-(1-p)^3→远高于直觉"
+
+  quality_feedback:
+    strengths:
+      - "DM密度1.68/千字(超1.5目标) — 数据锚定扎实, 712个DM覆盖全报告"
+      - "Reverse DCF+Core vs Option双框架 — 从两个独立角度得出相同结论(高估)"
+      - "RT-1~RT-6六轮红队 — 承重墙脆弱度升级机制是有效的新贡献"
+      - "9种估值方法7种低于市价 — 估值结论高度收敛, 稳健性强"
+      - "非共识注册表+概率影响矩阵 — 风险量化系统性强"
+    weaknesses:
+      - "v10.0框架(早期版本) — 无D1-D11记分卡/CQI/因果密度门控等后续改进"
+      - "部分估值数字不一致 — 报告中出现€1,091和€1,407两个'当前市价'(可能写作过程中股价变动)"
+      - "中国LDP量产35%概率赋值缺乏足够锚定 — 需要历史基准率+压力测试三重验证"
+      - "对AI需求结构性vs周期性的判断偏模糊 — 未给出明确的区分框架"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "品质最高≠回报最高 (CME垄断三角)"
+        evidence: "ASML ROE 48.5%/ROIC 135.6%(品质极高)但期望收益-3%(回报为负)→品质陷阱的极端案例"
+        confidence_after: "高(CME+ASML两个独立案例确认)"
+
+      - hypothesis: "Reverse DCF P1前置有效防止结论先行偏差 (CRM铁律O)"
+        evidence: "Reverse DCF率先暴露隐含22-25% CAGR的荒谬性→定调为审慎关注而非盲目乐观"
+        confidence_after: "高(执行确认)"
+
+    extended:
+      - hypothesis: "Core vs Option分离 (通用技术)"
+        extension: "ASML案例将分离从财务工具升级为'叙事泡沫检测器'→当Option>Core=市场在为故事而非业务付钱"
+
+    refuted:
+      - hypothesis: "出口管制=垄断保护伞(行业常识)"
+        evidence: "中国LDP路径绕过EUV架构→制裁刺激路径创新→保护窗口比'永续'假设短得多"
+        lesson: "制裁保护有半衰期。保护越严格→被保护方创新动力越弱+被限制方创新动力越强→保护半衰期越短"
+
+  limitations:
+    - "v10.0框架(2026-02), 无后续质量改进(记分卡/因果密度门控/铁律N证据链等) — 分析方法论有代际差距"
+    - "报告中股价基准不一致(€1,091和€1,407交替出现) — 可能影响部分估值结论的精度"
+    - "中国EUV进展数据主要来自新闻报道而非技术评审 — 量产良率/成本的核心变量缺乏硬数据"
+    - "AI CapEx周期持续性判断依赖定性分析 — 未建立量化的周期位置指标(如Book-to-Bill趋势模型)"
+    - "台海风险使用Polymarket概率(10.5%)但未做独立校准 — 预测市场在尾部风险定价上可能失准"

@@ -1,0 +1,55 @@
+# Token Budget配置 v21.0
+# 基于Claude Code启示的自主执行参数
+
+# 基础配置
+mode: proactive_research
+auto_continue: true
+focus_aware: true
+
+# Token预算配置
+token_budget:
+  tier_1: 20000     # Tier 1快速扫描
+  tier_2: 80000     # Tier 2标准分析
+  tier_3: 200000    # Tier 3深度研究
+  emergency: 300000 # 紧急情况上限
+
+# 自动推进设置
+auto_progression:
+  enabled: true
+  idle_threshold_seconds: 300  # 5分钟无activity触发
+  progress_check_interval: 60  # 每分钟检查进度
+  max_consecutive_retries: 3   # 最大重试次数
+
+# 焦点感知配置
+focus_detection:
+  enabled: true
+  terminal_check_interval: 30  # 30秒检查终端焦点
+  user_present_mode: collaborative
+  user_absent_mode: autonomous
+
+# 断点配置 (重大决策暂停)
+breakpoints:
+  major_contradiction: true
+  valuation_complete: true
+  user_input_required: true
+  rating_assignment: true
+  commit_operations: true
+  external_api_calls: false
+
+# 成本控制
+cost_controls:
+  max_tokens_per_hour: 100000
+  warning_threshold: 0.8
+  emergency_brake_threshold: 0.95
+
+# 进度监控
+progress_tracking:
+  save_checkpoints: true
+  checkpoint_interval_tokens: 20000
+  auto_save_enabled: true
+
+# 实验性功能
+experimental:
+  parallel_agent_budget: 50000
+  intelligent_batching: true
+  predictive_compression: false

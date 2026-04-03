@@ -1,0 +1,439 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — NVIDIA Corporation
+# 压缩比: 217K → ~12K (18x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: NVDA
+  company: "NVIDIA Corporation"
+  report_date: "2026-03-02"
+  stock_price: "$177.19"
+  market_cap: "$4.31T"
+  report_version: "v2.0"
+  report_path: "reports/NVDA/NVDA_Complete_v2.0_2026-03-02.md"
+  quality_score: "报告未覆盖(无D1-D11记分卡)"
+  cqi: "报告未覆盖"
+  framework_version: "v19.x"
+  industry: "半导体"
+  archetype: "周期成长(市场定价为永续平台)"
+  chars: 217231
+  dm_count: 291
+  dm_density: "1.5/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "NVIDIA是人类历史上最赚钱的半导体公司(A-Score 8.1, ROE 101.5%), 但$4.31T市值以永续AI平台定价了一家本质上仍依赖CapEx周期的公司——好公司, 不是好价格"
+  rating: "审慎关注偏中性 (52:48)"
+  fair_value: "$3.43-3.6T (概率加权+红队修正)"
+  expected_return: "-16~20% (概率加权估值vs当前市值)"
+
+  key_arguments:
+    - claim: "史上最贵的周期股——$4.31T以永续平台定价, 但CapEx周期从不永续"
+      direction: bearish
+      magnitude: 5  # CI-01综合8.0/10, 多源硬数据确认
+      mechanism: "CapEx周期历史4-6年+分析师FY2030E收入↓2.8%+PPDA -20~28%+B-4 SPOF→当前P/E 36x隐含的永续增长假设脆弱"
+      kill_switch: "AI确为第三次通用技术革命(如电力/互联网)→CapEx不遵循历史周期→永续平台叙事成立"
+
+    - claim: "分析师共识与市场定价逻辑不兼容——FY2030E收入↓2.8%却给P/E 36x"
+      direction: bearish
+      magnitude: 5  # CI-05综合9.0/10, 两个FMP硬数据点的逻辑矛盾
+      mechanism: "分析师预期FY2030收入下降→但P/E 36x隐含增长永续→要么分析师错(收入不降)要么市场错(P/E过高)"
+      kill_switch: "FY2027-2028连续超预期→分析师上调FY2030E→矛盾消解"
+
+    - claim: "B-4(CapEx续增)是估值的SPOF——单点失败即连锁崩塌"
+      direction: bearish
+      magnitude: 4  # RT-1确认, 75%置信度
+      mechanism: "B-4失败→训练收入断崖→毛利率下降(推理占比升)→P/E从36x重新定价至20-25x→市值可能腰斩"
+      kill_switch: "推理需求弹性>3(CI-04确认)→即使CapEx增速放缓, 推理需求爆发维持总收入"
+
+    - claim: "CUDA护城河仍是半导体最强但方向是衰减——半衰期5-8年"
+      direction: conditional
+      magnitude: 4  # RT-4上调后, 非灾难性但确定性衰减
+      mechanism: "AMD ROCm差距从40-50%→10-30%+Triton让Python开发者绕过CUDA+大客户推理自研优先→综合份额从>95%可能降至70%"
+      kill_switch: "NVIDIA软件收入(AI Enterprise)ARR>$3B→CUDA从硬件溢价转为独立收入流→护城河变现模式升级"
+
+    - claim: "主权AI=去中心化保险, 降低Big 5集中风险"
+      direction: bullish
+      magnitude: 3  # CI-03置信度60%, 方向正确但量化不足
+      mechanism: "50+国家AI基建创造非Big-5需求→HHI从1,620→~1,350→客户分散化=收入韧性提升"
+      kill_switch: "出口管制扩大→主权AI需求被切断→反而加速客户去NVIDIA化"
+
+  moat:
+    composite_score: 7.5  # A-Score护城河维度7/10, Phase 3评估8.0(红队修正前9.0→-1.0)
+    half_life: "5-8年(综合, RT-4修正后) | CUDA 5-7年 | NVLink 6-10年 | 迭代速度 5-8年 | 切换成本 3-5年"
+    dimensions:
+      - type: ip
+        strength: 5
+        evidence: "CUDA 20年+4M开发者+1800库+600框架, 年化溢价$50-75B, 综合竞争优势仍>95%"
+        vulnerability: "AMD ROCm差距缩窄至10-30%+Triton绕过CUDA+大客户推理自研优先→方向确定, 速度不确定"
+      - type: switching_cost
+        strength: 4
+        evidence: "NVLink 1.8TB/s(以太网4500倍)+训练份额90%+切换成本$22-180M+12-24月时间"
+        vulnerability: "推理不需要NVLink(单GPU/少量GPU+以太网即可)→推理市场切换成本远低于训练"
+      - type: scale
+        strength: 4
+        evidence: "CoWoS占60%产能+台积电第一大客户(22%收入)+每代3.3x性能提升=1年领先优势"
+        vulnerability: "台积电扩产CoWoS 4x(35K→130K片/月)→产能瓶颈缓解后AMD也能拿到产能"
+      - type: network_effect
+        strength: 3
+        evidence: "CUDA生态正反馈: 更多开发者→更多优化→更好性能→更多用户→更多开发者"
+        vulnerability: "PyTorch/Triton正在抽象化底层硬件差异→生态锁定力随抽象层上移而稀释"
+
+  valuation:
+    reverse_dcf_implied: "$4.31T隐含5Y CAGR~35%+毛利率恢复75%+CUDA>10年+CapEx永续增长——6个承重墙中B-4(CapEx续增)是SPOF"
+    methods_used: ["Reverse DCF", "三情景DCF(Python)", "可比估值", "期权价值", "AI Tax框架", "五情景概率加权"]
+    dispersion: "30-35% (五引擎离散度, 反映平台vs周期核心矛盾未解)"
+    consensus_vs_ours: "市场看NVDA=永续AI基础设施平台(P/E 36x) | 我们看NVDA=史上最大规模基建周期股, 概率加权$3.43T(下行20%)"
+    entry_zone: "P/E<28x 或 ~$130-140/股(情景B FY2029+周期回落)"
+    catalyst: "CapEx周期见顶(FY2028-2029)→超大规模减速→P/E从36x压缩至20-25x→入场窗口"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "等待买入 — 公司极其优秀(A-Score 8.1), 但$4.31T已为所有好消息买单, 等待P/E<28x"
+    buy_triggers:
+      - trigger: "CapEx周期见顶→超大规模减速→P/E压缩至22-28x"
+        price_zone: "$100-140 (P/E 22-28x, 基于FY2029E EPS $5-6)"
+        reasoning: "NVIDIA的优秀不因周期回落而改变, 周期低点是最佳入场时机——类似2022年加密崩盘后的FY2023底部"
+      - trigger: "推理弹性确认>3(CI-04验证)+软件ARR>$3B(护城河变现升级)"
+        price_zone: "当前价格附近可试探(P/E 36x如果被增长justify)"
+        reasoning: "如果推理需求弹性确认→总收入不随CapEx周期下降→永续平台叙事部分成立→P/E 30-35x合理"
+      - trigger: "黑天鹅恐慌(DeepSeek事件/反垄断调查)→市场过度反应"
+        price_zone: "$80-120 (P/E<25x)"
+        reasoning: "NVIDIA的基本面在恐慌中不变(ROE 101%, FCF $97B)→恐慌卖出=价格错配"
+    hold_conditions:
+      - "AI训练市场份额>80%(当前~90%)"
+      - "毛利率>68%(当前71.1%, CI-02监控中)"
+      - "Big 5 CapEx指引无大规模下调(B-4 SPOF监控)"
+      - "Jensen仍担任CEO(SGI 8.9关键人风险)"
+    sell_triggers:
+      - signal: "KS-1: 2+家Big 5同季下调CapEx>20%"
+        severity: "emergency"
+        action: "减仓至≤2%, B-4 SPOF触发=连锁崩塌启动"
+      - signal: "KS-2: GPT-5/Gemini 3训练使用>30%非NVIDIA硬件"
+        severity: "action"
+        action: "减仓50%, CUDA护城河实质性侵蚀确认"
+      - signal: "KS-3: 连续2季毛利率<68%"
+        severity: "warning"
+        action: "减仓25%, CI-02确认→估值下调5-10%"
+      - signal: "P/E>45x且无增速改善催化(纯情绪驱动)"
+        severity: "action"
+        action: "减仓50%, 估值泡沫风险>基本面支撑"
+      - signal: "Jensen离任且无明确继任计划"
+        severity: "warning"
+        action: "减仓25%, 重新评估治理风险"
+    position_sizing: "当前P/E 36x→不建议新建仓 | P/E 28x→2-3%试探 | P/E 22x→5%+配置"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "永续平台vs周期巨头的核心矛盾"
+    chain: >
+      市场给P/E 36x→隐含永续增长假设
+      → 但AI CapEx依赖超大规模客户资本支出周期
+      → 历史上所有基建周期(铁路/电信/光纤)最终都经历过度建设→产能过剩→CapEx削减
+      → 超大规模CapEx/Revenue已达45-57%(超越2000年电信泡沫峰值32%)
+      → 分析师自己都预期FY2030收入下降2.8%——卖方不信永续增长
+      → 但市场P/E 36x隐含永续增长→分析师与市场逻辑不兼容(CI-05)
+      → 要么分析师错(收入不降)要么市场错(P/E过高)
+    transferable_to: "所有AI基建受益股(VRT/ETN/SMCI/ANET)+任何分析师预期增速转负但P/E仍30x+的股票"
+    reasoning_habit: "看到极高P/E时, 检查分析师远期预期是否与P/E隐含增速兼容——不兼容=市场或分析师有一方错了"
+
+  - id: "CC-2"
+    name: "B-4 SPOF连锁崩塌机制"
+    chain: >
+      NVIDIA收入>90%来自数据中心→数据中心收入取决于超大规模CapEx
+      → B-4(CapEx续增>20%/年)是所有其他信念(B-1增速/B-2毛利率/B-3 CUDA)的前提
+      → B-4失败→训练收入断崖(-$30-50B)→推理占比上升→毛利率从71%→65-68%(推理利润率更低)
+      → 收入下降+毛利率下降=EPS双杀→P/E从36x重定价至20-25x→市值可能从$4.3T→$1.3-2T
+      → SGI 8.9(极端专才)= 收入高度集中于单一驱动因素→SPOF风险与SGI成正比
+    transferable_to: "所有SGI>8的极端专才公司——收入越集中, SPOF越致命"
+    reasoning_habit: "对SGI>8的公司追问'哪一个假设失败会导致全部崩塌'——找到SPOF比列10个风险更有价值"
+
+  - id: "CC-3"
+    name: "CUDA护城河折旧表——从定性到定量"
+    chain: >
+      CUDA 4M+开发者+20年生态→当前溢价$10-15K/颗GPU→年化$50-75B
+      → 但AMD ROCm差距从40-50%缩窄至10-30%+Triton绕过CUDA+大客户推理自研
+      → 各层半衰期: 性能领先2-3年 / 工具链5-7年 / 人才池8-10年 / NVLink 6-10年
+      → 综合半衰期5-8年→每年~$5-7B利润侵蚀(护城河折旧)
+      → 但一半的CUDA仍然很强→问题是75%毛利率还是65%毛利率(10pp差距=$20B+利润)
+      → 关键: 护城河从"绝对垄断"向"相对优势"迁移, 过程像Intel(15年渐进)而非悬崖
+    transferable_to: "所有依赖软件生态锁定的公司(MSFT Windows/ADBE Creative Suite/CRM平台)"
+    reasoning_habit: "对任何护城河追问'半衰期是多少年'并建折旧表——护城河不是永久资产, 是有折旧的无形资产"
+
+  - id: "CC-4"
+    name: "CapEx周期类比的正确使用方法"
+    chain: >
+      三类比: Cisco 2000(周期崩塌15%) / Intel 2005(护城河坍塌) / Visa 2010(永续平台)
+      → Cisco教训: 互联网确实改变世界, 但基建CapEx仍有周期→即使AI成功, NVIDIA仍可能经历CapEx下行
+      → Intel教训: 没有永远不可攻破的护城河, 但侵蚀是15年渐进过程
+      → Visa教训: 纯交易收税模式才能真正永续, NVIDIA每年需推出新硬件→不是Visa
+      → 但AI可能是独特的(非光纤/无线/云)→类比有限→五情景覆盖"独特性"
+      → 最可能: 混合态(25-30%)——既不像Cisco崩塌也不像Visa永续, 收入$400-500B平台期+P/E 20-25x
+    transferable_to: "所有基建受益股的周期判断——必须至少三类比+混合态情景"
+    reasoning_habit: "用历史类比时, 同时找正面和负面类比+一个混合态——单一类比是叙事谬误"
+
+  - id: "CC-5"
+    name: "推理弹性决定长期命运"
+    chain: >
+      Jensen押注: Rubin降低10x推理成本→如果需求弹性>1→总收入反升(CI-04)
+      → 云计算类比: 价格每降10x→需求20-50x→总消费5-20x→弹性1.5-3.0
+      → 移动数据类比: 弹性约2.0-3.0
+      → 如果弹性>1→降价=正确策略→推理市场爆发→份额损失被总量增长覆盖
+      → 如果弹性<1→降价=收入下降→份额损失加速→B-4 SPOF更快触发
+      → 核心: 推理弹性是不可知变量(无历史数据直接参考)→这是NVIDIA故事中真正的不确定性
+    transferable_to: "所有平台公司面临'降价换量'决策的场景(AWS/Azure/GCP定价策略)"
+    reasoning_habit: "当公司面临'降价换量'选择时, 估算需求弹性——弹性>1是降价前提, 弹性<1时降价是自杀"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "CUDA护城河半衰期4-6年"
+      final: "半衰期上调至5-8年(RT-4红队修正)"
+      pivot: "CUDA软件锁定比硬件性能领先更持久——人才池和工具链的惯性被低估, 即使性能差距缩窄, 切换行为滞后2-3年"
+
+    - initial: "NVIDIA面临系统性悲观偏差"
+      final: "确认存在5-9pp系统性悲观偏差(RT-2), 但不足以改变评级方向"
+      pivot: "LLM对$4T+估值天然怀疑(先验偏差)+Cisco 2000记忆可得性偏差→修正后从55:45收窄为52:48"
+
+    - initial: "反垄断分拆对NVIDIA是负面的"
+      final: "反垄断实际影响取决于类型——强制开放NVLink/解绑CUDA才是真正威胁, 罚款式处罚影响有限"
+      pivot: "NVLink解绑→训练壁垒直接下降; CUDA解绑→软件护城河被拆除。但这需要极端监管行动, 概率<15%"
+
+  surprises:
+    - finding: "超大规模CapEx/Revenue比率45-57%——超越2000年电信泡沫峰值32%"
+      implication: "当前AI基建投资强度史无前例→要么AI确实是第三次通用技术革命, 要么过度建设程度远超历史→没有中间态"
+
+    - finding: "分析师FY2030E收入↓2.8%——卖方自己不信永续增长, 但市场给36x P/E"
+      implication: "CI-05: 市场定价与分析师预期之间存在逻辑矛盾→这是方法论级别洞察, 可量化验证, 可迁移到所有高P/E股"
+
+    - finding: "护城河总价值$519-910B仅占市值12-21%——80%市值建立在增长预期上"
+      implication: "NVIDIA的估值不是'为护城河付费', 而是'为增长预期付费'→增长预期一旦转向, 80%市值暴露在风险中"
+
+    - finding: "NVIDIA毛利率71.1%可能是新常态而非低谷(CI-02)——推理份额上升=结构性压低"
+      implication: "市场期待毛利率恢复至75%→如果CI-02正确→EPS预期需下调5-8%→P/E进一步承压"
+
+  blind_spots:
+    - area: "推理需求弹性的真实值"
+      why_matters: "弹性>1=降价换量成功=永续平台叙事部分成立; 弹性<1=降价=收入下降=周期崩塌加速"
+      monitor: "Rubin出货后推理需求增速——如果>2x增长则弹性>1(KS-10)"
+
+    - area: "AI Agent商业化ROI"
+      why_matters: "Agent是AI从训练投资→推理变现的关键桥梁——ROI确认=CapEx持续性上升, ROI存疑=CapEx悬崖"
+      monitor: "KS-9: AI Agent企业采用率+成本节省量化案例"
+
+    - area: "中国AI去NVIDIA化的速度"
+      why_matters: "中国占NVIDIA收入约15%→去NVIDIA化速度决定$20-30B/年收入的衰减曲线"
+      monitor: "华为Ascend 910C性能benchmark+国产大模型训练硬件占比变化"
+
+    - area: "Jensen继任计划"
+      why_matters: "SGI 8.9=极端依赖创始人→无公开#2人物→Apple(Tim Cook明确继任)形成对比"
+      monitor: "管理层变动公告+内部晋升vs外部空降信号"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "P/E 36x + 分析师预期FY2030收入下降 = 好消息已全部定价"
+      lesson: "当P/E隐含的增长假设与分析师远期预期矛盾时, 市场至少有一方是错的——这是减仓信号而非加仓信号"
+      transferable: "所有P/E>30x且分析师预期远期增速<10%的公司"
+    - scenario: "CapEx周期见顶前6-12个月是最佳卖出窗口——不要等确认"
+      lesson: "基建周期股(Cisco/Nortel/2000年电信)的教训: 等CapEx确认下降时股价已跌30-50%。领先指标(CapEx guidance/订单backlog)比确认数据重要10倍"
+      transferable: "所有CapEx周期受益股(VRT/ETN/SMCI/ANET)"
+    - scenario: "内部人全卖零买——管理层用行动而非语言表达判断"
+      lesson: "当CEO/CFO在公司前景'最好'时大量卖出, 这比任何分析师报告都更值得关注"
+      transferable: "所有高成长公司——内部人卖出模式是最便宜的alpha信号"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "超大规模CapEx guidance(季度)"
+      why_alpha: "B-4(CapEx续增)是SPOF——CapEx guidance是NVIDIA收入的最强领先指标, 领先1-2季度, 大多数投资者只看NVIDIA自己的guidance"
+      current_reading: "Q1 2026 guidance $78B暗示全年~$310B run rate, 略低于共识$356B"
+    - signal: "分析师FY2030E收入变化方向"
+      why_alpha: "CI-05核心: 分析师预期方向与P/E隐含方向的兼容性——不兼容=定价矛盾。大多数投资者不检查这个"
+      current_reading: "FY2030E↓2.8% vs P/E 36x = 逻辑矛盾(当前不兼容)"
+    - signal: "推理/训练收入占比变化"
+      why_alpha: "推理利润率<训练利润率→推理占比上升=毛利率结构性下行(CI-02)。市场假设毛利率恢复至75%"
+      current_reading: "推理占比约45%且上升中→CI-02方向确认"
+
+  confirmation_signals:
+    - signal: "NVIDIA季度毛利率"
+      bullish_threshold: ">73%连续2季(毛利率恢复至75%路径)"
+      bearish_threshold: "<68%连续2季(CI-02确认, KS-3触发)"
+    - signal: "AMD MI350/MI450部署数据"
+      bullish_threshold: "AMD AI GPU份额<8%(CUDA护城河稳固)"
+      bearish_threshold: "AMD份额>15%(CUDA侵蚀加速)"
+    - signal: "NVIDIA软件ARR(AI Enterprise)"
+      bullish_threshold: ">$3B(平台化转型成功信号)"
+      bearish_threshold: "<$1B(硬件公司身份不变)"
+
+  noise_signals:
+    - signal: "日度/周度股价波动"
+      why_noise: "NVDA是全球最拥挤的多头仓位→短期波动=情绪驱动而非基本面变化。看季度趋势"
+    - signal: "GTC发布会芯片性能数字"
+      why_noise: "每代3.3x提升已成预期→性能提升不改变估值。真正重要的是需求弹性和CapEx持续性"
+    - signal: "单季度beat/miss幅度"
+      why_noise: "FY2024-2026每季度都大幅beat→beat已成基线预期→beat不再创造正面惊喜。miss才有信号价值"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: AMD
+      similarity: "唯一直接GPU竞争者, 同为fabless+TSM代工, 同一AI CapEx周期受益"
+      key_difference: "AMD利润率34pp低于NVDA(37% vs 71%)→缺乏CUDA定价权 | AMD推理优势在成本而非性能 | CoWoS产能仅17.6% vs NVDA 60%"
+
+    - ticker: TSM
+      similarity: "100%供应链依赖+AI CapEx同周期受益+半导体行业"
+      key_difference: "TSM=代工垄断(全客户分散)→周期性更低 | NVDA对TSM依赖100%但TSM对NVDA仅22%→不对称依赖"
+
+    - ticker: AVGO
+      similarity: "高利润率半导体+AI受益+定制芯片(ASIC)能力"
+      key_difference: "AVGO通过定制ASIC绕过CUDA→是NVIDIA在推理市场的间接竞争者 | AVGO P/E 67x vs NVDA 36x→市场对AVGO增速预期更高"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "NVDA (CUDA+NVLink) > TSM (制造垄断) > AVGO (客户锁定) > AMD (无护城河)"
+      reasoning: "CUDA 20年生态+NVLink物理标准=最深软件+硬件复合护城河, 但半衰期5-8年意味着优势在衰减"
+
+    - dimension: "估值吸引力"
+      position: "AMD (P/E 77x但增速更高) ≈ NVDA (P/E 36x但周期风险) > AVGO (P/E 67x) > TSM (P/E合理但地缘风险)"
+      reasoning: "NVDA P/E表面最低但隐含永续增长假设→真实风险调整后估值吸引力不高"
+
+    - dimension: "CapEx周期敏感度"
+      position: "NVDA (90% DC) > AMD (60% DC) > AVGO (40% AI) > TSM (分散客户)"
+      reasoning: "NVDA收入>90%来自数据中心→CapEx周期下行时冲击最大, SGI 8.9=极端集中"
+
+    - dimension: "5年总回报潜力(当前价格)"
+      position: "AMD > AVGO > TSM > NVDA"
+      reasoning: "NVDA概率加权下行16-20%→除非入场价格大幅降低, 否则5年回报被P/E压缩限制"
+
+  industry_position:
+    quadrant: "最高品质 × 最高估值 × 增速减速中"
+    archetype: "周期成长(市场定价为永续平台) — 类比Cisco 2000但P/E温和得多(36x vs 200x)"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→6个承重墙→B-4(CapEx续增)是SPOF→单点失败即连锁崩塌"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "五情景(光纤15%/无线25%/云35%/超预期15%/黑天鹅10%)→概率加权$3.43T→渐进减速比突然崩塌更可能"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~RT-7: +5pp净上调, 发现5-9pp系统性悲观偏差→52:48(vs初始55:45)"
+
+    - pattern_id: "competitive_benchmarking.chinese_competitor_deep_dive"
+      application: "华为Ascend+国产生态→中国15%收入的去NVIDIA化趋势量化"
+
+  novel_patterns:
+    - name: "分析师-市场不兼容检测(CI-05)"
+      description: "检查分析师远期预期增速方向与当前P/E隐含增速是否兼容——FY2030E↓2.8%但P/E 36x=逻辑矛盾→至少一方是错的"
+      transferable_to: ["所有P/E>30x的高估值股票", "任何分析师预期增速转负的公司"]
+
+    - name: "SPOF识别法(SGI×信念集)"
+      description: "SGI(专才指数)越高→收入越集中→信念集中某一个假设失败即触发全部崩塌=SPOF。对NVDA, B-4(CapEx续增)是SPOF"
+      transferable_to: ["所有SGI>8的极端专才公司", "单一驱动因素占收入>80%的公司"]
+
+    - name: "护城河折旧表(从定性到定量)"
+      description: "将护城河各层拆分→赋半衰期→计算年化折旧金额→纳入DCF的持续费用而非一次性减值"
+      transferable_to: ["所有依赖技术壁垒的公司", "软件生态锁定型公司(MSFT/ADBE/CRM)"]
+
+    - name: "CapEx/Revenue比率作为周期预警"
+      description: "超大规模CapEx/Revenue 45-57%已超越2000年电信泡沫峰值32%→绝对水平史无前例→要么AI独特要么过度建设"
+      transferable_to: ["所有CapEx周期判断", "AI基建受益股的周期性评估"]
+
+    - name: "周期三类比框架+混合态"
+      description: "对任何可能是周期股的公司, 至少找崩塌类比(Cisco)+护城河坍塌类比(Intel)+永续平台类比(Visa)+最可能的混合态"
+      transferable_to: ["所有面临'平台vs周期'争论的公司"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "护城河应该建折旧表——各层半衰期不同, 年化折旧$5-7B"
+        implication: "护城河不是永久资产。对所有技术驱动的护城河, 应计算半衰期并纳入估值的持续费用"
+      - insight: "护城河价值仅占市值12-21%时, 估值的真正驱动力是增长预期而非护城河"
+        implication: "高增速公司的护城河分析权重应降低——增长预期变化的影响远大于护城河变化"
+      - insight: "切换成本$22-180M对$10B采购的大客户仅占2-18%→切换成本不阻止大客户迁移, 只延缓12-24个月"
+        implication: "切换成本评估应区分客户规模——大客户切换成本/采购比远低于小客户→SMB更被锁定"
+
+    valuation_insights:
+      - insight: "分析师远期预期方向 vs P/E隐含增速的兼容性检测(CI-05)——方法论级别工具"
+        implication: "选股/减仓决策增加一步: 检查FMP远期估计方向是否与当前PE兼容。不兼容=定价矛盾=有人错了"
+      - insight: "SPOF导致估值离散度30-35%时, 概率加权比单一估值更重要"
+        implication: "高不确定性公司(PW>7)的估值应使用概率加权而非中值——离散度>25%时中值没有意义"
+
+    screening_insights:
+      - insight: "SGI>8 + P/E>30x = SPOF风险极端公司——需要验证信念集中是否存在单点故障"
+        implication: "选股筛选增加'SPOF检测': SGI>8且P/E>30x→标记为需要信念反演的高风险公司"
+      - insight: "CapEx/Revenue>40%的行业可能处于周期高点——历史上从未在此水平持续"
+        implication: "行业筛选增加CapEx/Revenue比率→>40%=周期预警信号→相关供应商估值需打折"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "检查分析师远期预期与P/E隐含增速的兼容性"
+      trigger: "P/E>30x且分析师有远期(3年+)预估数据"
+      origin: "FY2030E↓2.8%但P/E 36x→逻辑矛盾(CI-05)"
+      generalization: "不兼容=至少一方错了→这是最便宜的定价错误检测方法(仅需2个FMP数据点)"
+
+    - habit: "对SGI>8的公司立刻做SPOF(单点故障)分析"
+      trigger: "SGI指标>8(收入高度集中于单一驱动因素)"
+      origin: "NVIDIA收入>90%来自DC→B-4(CapEx续增)单点失败即连锁崩塌"
+      generalization: "SGI越高→收入越集中→SPOF越致命。列10个风险不如找到1个SPOF"
+
+    - habit: "用CapEx/Revenue比率判断基建周期位置"
+      trigger: "分析任何CapEx周期受益公司"
+      origin: "超大规模CapEx/Rev 45-57%超越2000年电信泡沫峰值32%"
+      generalization: "历史数据提供周期极端值的锚——超越历史极端不一定错, 但需要额外证据(如AI独特性)"
+
+    - habit: "对护城河追问半衰期并建折旧表"
+      trigger: "看到'护城河很强/生态锁定/不可替代'等定性描述"
+      origin: "CUDA护城河各层半衰期2-10年不等→年化折旧$5-7B→必须纳入估值"
+      generalization: "护城河是有折旧的无形资产, 不是永久资产。半衰期问题比'强不强'问题更有投资含义"
+
+  quality_feedback:
+    strengths:
+      - "信念反演完整(B-1~B-6 + SPOF确认)——标杆: 每份报告都应该做到这个深度的信念拆解"
+      - "五情景覆盖+详细P&L——标杆: 高不确定性公司应该用概率加权而非单一估值"
+      - "红队有效(+5pp净修正, RT-2发现悲观偏差)——标杆: 红队应该能改变数字, 不只是确认"
+      - "DM密度1.5/千字——合格但不突出, 291个锚点覆盖93%"
+    weaknesses:
+      - "无正式D1-D11记分卡——报告质量无量化评分, 无法与其他报告直接比较"
+      - "估值离散度30-35%偏高——五引擎共享假设过多(RT-5确认仅3引擎有效而非5)"
+      - "推理弹性=核心不可知变量, 报告承认但未提供替代框架——这是分析天花板"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "Reverse DCF必须P1前置(铁律O)"
+        evidence: "Ch 1 Reverse DCF有效锚定后续分析——未出现CRM v1.0式叙事偏移"
+        confidence_after: "高(三份报告独立确认: CRM/CME/NVDA)"
+      - hypothesis: "LLM对高估值天然悲观(RT-2)"
+        evidence: "5-9pp系统性悲观偏差确认——与RCL报告(8-16pp)方向一致但幅度更小"
+        confidence_after: "高(两份报告独立确认: RCL/NVDA)"
+
+    extended:
+      - hypothesis: "品质最高≠回报最高(CME垄断三角)"
+        extension: "NVDA版本: 公司品质极高(A-Score 8.1)但估值透支→好公司不是好价格。从CME的'垄断三角'扩展为更通用的'品质-价格分离'原则"
+      - hypothesis: "SGI与SPOF的关系"
+        extension: "SGI 8.9(NVDA)→SPOF = B-4(CapEx续增)。SGI越高, SPOF越容易识别且越致命。从CME的'专才风险'扩展为量化的'SGI×SPOF'框架"
+
+    refuted: []
+
+  limitations:
+    - "推理需求弹性无历史数据直接参考——这是NVIDIA长期估值中最大的不可知变量"
+    - "CapEx周期类比有限——AI可能是独特的(非光纤/无线/云), 三类比框架可能低估或高估风险"
+    - "LLM先验偏差——对$4T+估值天然怀疑, RT-2修正后仍可能存在残余偏差"
+    - "单分析师无同行审阅——红队RT-1~RT-10是替代, 但无法完全替代人类团队讨论"
+    - "数据时效: FMP数据截至FY2026 Q4, AI领域变化极快——报告结论半衰期约3-6个月"

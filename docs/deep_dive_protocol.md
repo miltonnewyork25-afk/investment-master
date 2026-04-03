@@ -956,6 +956,8 @@ liquidity:
 - **地理分析验证 (v18.3新增 — EVO-SPGI-001)**: 若Phase 0标记`geo_analysis_required: true`，Complete必须包含地理收入拆分表(≥3个地区×≥3年)。缺失→CG WARN
 - **续约率诚实标注 (v18.3新增 — EVO-SPGI-002)**: 订阅模式公司，续约率无硬数据时禁止推断具体数字，只允许定性表述+`[数据不可得]`标注
 - **去重检查 (v18.3新增 — EVO-SPGI-005)**: Complete组装完成后，扫描高频分析短语(如同一观点/同一数据在≥3处出现)，合并重复→目标重复度<5%
+- **Phase小结下沉 (v19.7新增 — EVO-V-04)**: Phase小结(章节标题含"小结"/"传递"/"P→P传递")在Complete组装时自动下沉到附录或删除。Phase小结是过程产物，不属于对外报告的正文叙事
+- **AI腔检测门控 (v19.7新增 — EVO-V-05)**: CG19(AI腔检测)>30处→必须手动改写最严重的15处后才能提交Complete。AI腔特征: "值得注意的是"/"不可忽视"/"综上所述"等模板化表述
 - **DM扩写同步 (v18.3新增 — EVO-SPGI-003)**: Phase 5扩写时每≥500字符必须同步新增DM锚点(≥1个/千字), 连续3次扩写无DM→强制停止。详见 `docs/dm_annotation_enforcer.md` "Phase 5扩写DM同步规则"
 - **DM附录化 (v17.2新增 — EVO-ETN-001)**: Complete组装时必须生成DM锚点附录:
   - 从`data/research/{TICKER}/shared_context.md`提取DM锚点 → 按FIN/VAL/SEG/MKT/SC分组
