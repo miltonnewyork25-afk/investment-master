@@ -167,11 +167,12 @@
 **铁律**: 第零律(合规) | 数据诚信 | H参考 | I知识前置 | J组装 | K估值统一 | M反膨胀 | N证据链 | O逆向估值 | G/L/P质量 | 详见`.claude/rules/`按需加载
 **工具**: P0(MCP数据) > P1(分析+质量skill) > P2(Agent协作) | 完整列表见worktree CLAUDE.md
 
-**Skill/工具治理** (Ch8七原则):
+**Skill/工具治理** (Ch8+Ch25):
 - **双向闭环**: Skill A说"用B处理X"，Skill B说"X必须用我" — 单向约束有漏洞
 - **预算意识**: 每Phase仅激活需要的3-5个skill，不预加载全部23+ — 因为: skill描述消耗context
 - **Never delegate understanding**: 并行Agent执行数据收集，**NEVER**委托thesis形成或评级判断
 - **前置条件双层防御**: Phase依赖在提示词中声明+sentinel运行时强制 — 单层防御不够可靠
+- **失败关闭**: 新Skill/EVO/Agent产出默认"不信任"直到验证。EVO默认灰度不默认铁律。Agent结论默认需人工确认不默认采纳。**宁可保守降级，不可默认开放**
 
 ---
 
@@ -180,13 +181,31 @@
 **首条消息**: `pwd` + `git branch --show-current`, 报告当前位置
 **继续/恢复**: ①确认位置 → ②读checkpoint.yaml → ③git log → ④**读handoff note** → 恢复执行
 **Phase自动化**: `tier3_launch.sh` → `preflight_gate.sh` → `phase_complete.sh`(含sentinel) → `quality_gate_complete.sh`
-**EVO生命周期** (借鉴Claude Code行为缓解管道):
+**EVO生命周期** (借鉴Claude Code行为缓解管道+Ch24互补频率设计):
 - **发现**: 报告验尸发现问题 → PR式记录(来源/量化指标/解除条件)
 - **引入**: 写入evolution_log.yaml, **ant-only灰度**(先在1-2份报告验证)
 - **验证**: A/B对比(有EVO vs 无EVO的报告质量差异) → 确认有效
 - **推广/移除**: 有效→写入铁律 | 无效/过期→移除 | 不确定→延长灰度
 - **刹车**: 话题浓度上限(2×均值) | 进化衰减(6个月未引用→候选删除) | 正面EVO强制 | 季度审计
 - **安全默认值**: 宁可多一条EVO也不漏掉教训, 但**NEVER**让EVO密度导致注意力稀释(SBC锚定Bug教训)
+- **互补频率**: 每份报告高频捕获教训(容忍误报) + 季度低频全局整合(修剪噪音/消除矛盾/合并重复)
+- **知识分层**: CLAUDE.md=不变指令(免疫压缩) | memory/*.md=可演化知识(feedback类型最优先) | evolution_log.yaml=原始信号
+
+---
+
+## Compact Instructions
+
+When summarizing this conversation, prioritize retaining:
+1. Current research target (ticker + industry + core question)
+2. Main thesis and its evidence chain — include specific numbers and DM anchors
+3. Kill Switch conditions — what would break the thesis
+4. Rejected alternatives and WHY they were rejected (not just what was chosen)
+5. User's explicit corrections and preferences from this session
+6. Current Phase progress and exact completion state
+7. Unresolved conflicts or questions that need follow-up
+8. File paths of all staging/data/report outputs created this session
+9. Any Python valuation results (exact numbers, not summaries)
+Do NOT summarize code snippets — keep them complete. Do NOT lose cross-Phase reasoning chains.
 
 ---
 
