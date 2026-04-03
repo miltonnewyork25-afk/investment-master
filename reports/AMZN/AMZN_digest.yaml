@@ -1,0 +1,433 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Amazon.com
+# 压缩比: 237K → ~12K (20x)
+# 六层 + 三个重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: AMZN
+  company: "Amazon.com"
+  report_date: "2026-02-18"
+  stock_price: "$201.15"
+  market_cap: "$2,159B"
+  report_version: "v1.0"
+  report_path: "reports/AMZN/AMZN_Complete_v1.0_2026-02-18.md"
+  quality_score: "报告未含显式评分"
+  cqi: "报告未覆盖"
+  framework_version: "v18.x"
+  industry: "科技平台"
+  archetype: "平台飞轮(三引擎: 云+零售+广告)"
+  chars: 236766
+  dm_count: 383
+  dm_density: "1.62/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "AMZN在$201是效率定价——$200B CapEx的增量ROIC是唯一决定低估或高估的变量, 市场已合理定价双向不确定性"
+  rating: "中性关注(条件性)"
+  fair_value: "$219.6/sh (概率加权EV $2,355.5B)"
+  expected_return: "+9.1%"
+
+  key_arguments:
+    - claim: "$200B CapEx是科技史上最大资本重置赌注, P/E 28x在D&A追赶前具有欺骗性"
+      direction: bearish
+      magnitude: 5
+      mechanism: "FY2025 CapEx $131.8B→FY2026指引$200B→CapEx/D&A=2.0x→FY2027-28增量D&A $30-40B可能使Net Income下降40-50%→P/E从28x推至40-50x"
+      kill_switch: "增量ROIC>15%且CapEx在FY2027-28回落至$120-140B"
+
+    - claim: "FCF已从$32.9B崩塌至$7.7B(-76%), FCF Yield 0.34%为科技巨头最低"
+      direction: bearish
+      magnitude: 5
+      mechanism: "CapEx/OCF从62%升至94.5%→FY2026概率加权FCF约-$50B→FCF真空期12-18个月→估值完全依赖信仰而非现金流"
+      kill_switch: "FY2027 FCF回升至$40B+(CapEx回归+OCF增速>CapEx增速)"
+
+    - claim: "AWS仍是全球最大云平台, RPO $244B(+40% YoY)提供2-3年收入可见性"
+      direction: bullish
+      magnitude: 4
+      mechanism: "AWS Q4 $35.6B(+24% YoY)→年化$142B→RPO $244B锁定未来收入→自研芯片Graviton/Trainium $10B+三位数增长"
+      kill_switch: "Azure在AI工作负载份额绝对反超AWS, 或AWS份额跌破25%"
+
+    - claim: "广告业务$85B年化是被低估的利润引擎, OPM推断>50%"
+      direction: bullish
+      magnitude: 3
+      mechanism: "广告高margin利润补贴零售薄利→SOTP中广告独立估值$565B(占27%)→零售扣除广告后实际亏损$6B"
+      kill_switch: "广告OPM实际仅40%(D级数据质量, Amazon不披露)→独立估值下调$130B"
+
+    - claim: "FTC分拆悖论——分拆反而可能释放股东价值"
+      direction: conditional
+      magnitude: 3
+      mechanism: "AWS独立$1,472B + 广告独立$630B + 零售独立$350B = $2,452B > 当前EV $2,225B→分拆是正面事件"
+      kill_switch: "FTC要求行为补救而非结构分拆→最恐怖情景不发生, 但慢性监管摩擦持续"
+
+  moat:
+    composite_score: 8.0
+    half_life: ">10年(AWS迁移成本) | >15年(物流规模) | <5年(监管维度恶化中)"
+    dimensions:
+      - type: switching_cost
+        strength: 5
+        evidence: "AWS企业迁移成本$5-20M, 耗时12-24月, 数百种API/S3/IAM深度嵌入; 零售端Prime会员200M+用户生态锁定"
+        vulnerability: "多云战略(Terraform/K8s)降低AWS锁定; Prime价格上涨弹性未知"
+      - type: scale
+        strength: 5
+        evidence: "FY2025 Revenue $716.9B; AWS年化$142B; 物流网络覆盖全球; 低WACC(AA信用评级)→资本成本优势"
+        vulnerability: "规模不等于效率——OPM 11.2%远低于MSFT 45.6%, 零售拖累整体利润率"
+      - type: network_effect
+        strength: 4
+        evidence: "3P卖家→更多选择→更多买家→更多卖家飞轮运转近30年; 数据飞轮(AI时代放大)"
+        vulnerability: "Temu/Shein用极致低价形成另一种飞轮; 价格网络效应可能被低价平台分流"
+      - type: data
+        strength: 4
+        evidence: "AWS上PB级客户数据形成数据引力; 零售+广告交叉数据训练Rufus等AI工具"
+        vulnerability: "数据隐私法规(GDPR/DMA)可能限制跨业务数据使用"
+      - type: regulatory
+        strength: 2
+        evidence: "FTC反垄断诉讼(Oct 2026)可能限制FBA捆绑+价格匹配惩罚; AI监管不确定"
+        vulnerability: "监管维度趋势恶化——从保护变为威胁, 合规成本上升"
+
+  valuation:
+    reverse_dcf_implied: "从实际FCF $7.7B出发需41% CAGR(不可能); 从正常化FCF $35B出发需20% CAGR(可辩护但乐观); 市场定价完全取决于'$200B CapEx是暂时性投资周期'这一单一信念"
+    methods_used: ["Reverse DCF", "SOTP", "条件估值(四档情景)", "DCF双锚"]
+    dispersion: "方法级1.22x($185-$225), 端点级3.78x($103-$389)"
+    consensus_vs_ours: "共识Strong Buy目标$287 | 我们概率加权$219.6(+9.1%)中性关注 | 共识用P/E规避FCF近零事实, 概率加权后应下调~16%至$241"
+    entry_zone: "$170以下(S3/S4情景, 需承重墙倒塌)"
+    catalyst: "2027年2月FY2026全年财报+FY2027 CapEx指引——同时验证CapEx ROIC/AWS份额/FCF趋势"
+
+  action_framework:
+    verdict: "等待——效率定价, 非alpha机会; 决策优势仅来自对CapEx ROIC的独立判断"
+    buy_triggers:
+      - trigger: "增量ROIC>15%初步验证 + AWS份额企稳≥28% + OPM>13%"
+        price_zone: "$200-$220 (当前区间, 但需3/4条件同时满足)"
+        reasoning: "概率加权EV上移至$2,500-$2,700B, 期望回报跃升至+16%~+25%, 评级升格至关注"
+      - trigger: "AI泡沫恐慌导致股价跌至$150以下(S3偏下)"
+        price_zone: "$140-$160"
+        reasoning: "非AI资产(零售+广告+存量AWS)提供$1,200-$1,500B底部支撑→$112-$140/sh, 安全边际充分"
+    hold_conditions:
+      - "AWS收入增速>20%且Azure增速差<15pp"
+      - "CapEx/Revenue季度趋势不升破25%"
+      - "合并OPM维持>10%(D&A未吞噬效率改善)"
+      - "FTC未发出结构性分拆命令"
+    sell_triggers:
+      - signal: "FY2027 CapEx指引>$180B且FY2026 ROIC<10%"
+        severity: "action"
+        action: "降格至审慎关注, CapEx回归叙事破裂"
+      - signal: "AWS份额连续2季<26%或Azure绝对收入反超"
+        severity: "warning"
+        action: "重新评估AWS利润引擎叙事, S3概率上升"
+      - signal: "连续3季度FCF<0且OCF增速<10%"
+        severity: "action"
+        action: "资本黑洞风险实质化, 减仓"
+      - signal: "AI泡沫破裂(NVIDIA季度收入同比下降+AI CapEx行业周期拐点)"
+        severity: "emergency"
+        action: "全面重新评估, S4概率跃升"
+    position_sizing: "期望回报+9.1%置信度52.45%→Kelly建议小仓位或等待; 不确定性结构中30%为无法消除的结构性不确定"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "CapEx→D&A延时炸弹的利润幻觉逻辑"
+    chain: >
+      FY2025 CapEx $131.8B→FY2026指引$200B
+      → CapEx/D&A比率2.0x(资产基础膨胀速度是折旧速度2倍)
+      → D&A将在未来2-3年追赶上来→增量D&A $30-40B/年
+      → 假设OPM不变, FY2027-28 Net Income可能下降40-50%
+      → P/E从28x推至40-50x→市场重新定价
+      → 因此P/E 28x是"D&A延时炸弹爆发前"的快照, 不是稳态估值
+    transferable_to: "所有处于CapEx重投资周期的公司(AI基础设施/半导体fab/物流扩张)"
+    reasoning_habit: "看到P/E低于历史均值时, 追问'利润基础是否处于峰值或CapEx低谷' — CapEx/D&A比率>1.5x是利润不可持续的信号"
+
+  - id: "CC-2"
+    name: "飞轮的过载测试——投资加速但利润增速放缓"
+    chain: >
+      Amazon飞轮假设: 更多投资→更好体验→更多用户→更多利润→更多投资
+      → 但CapEx/OCF从62%升至94.5%(逼近100%)
+      → 飞轮的'投资→利润'转化环节出现断裂: 投资加速而OPM仅提升0.4pp
+      → 如果CapEx/OCF突破100%, 飞轮从'正向循环'变为'资本消耗器'
+      → 飞轮弱化还会反向放大: 零售薄利→减少投资→体验下降→用户流失→飞轮反转
+    transferable_to: "所有声称有飞轮效应但CapEx/OCF>80%的公司"
+    reasoning_habit: "飞轮分析不能只看正向循环——必须测试'过载点': 投资增速>利润增速持续多久飞轮会断裂"
+
+  - id: "CC-3"
+    name: "SOTP揭示零售的真实角色——流量基础设施而非利润中心"
+    chain: >
+      SOTP分部拆分: 总OI $80B - AWS OI $48.3B - 广告OI $37.7B(推断) = 零售OI -$6.0B
+      → 零售扣除广告利润后是亏损的
+      → 零售不是利润来源, 而是AWS和广告的流量基础设施
+      → 因此零售的估值不应基于P/E, 而应基于'为广告和AWS带来的流量价值'
+      → SOTP中零售残值$300B主要反映物流资产和Prime会员价值, 不是运营利润
+    transferable_to: "所有有'亏损获客引擎+高margin变现引擎'结构的平台公司(拼多多/Uber/DoorDash)"
+    reasoning_habit: "看到多业务公司时, 用SOTP剥离各业务真实贡献——表面最大收入的业务可能是亏损的流量基建"
+
+  - id: "CC-4"
+    name: "承重墙不可能三角——CapEx回归+D&A见顶+高ROIC最多满足两个"
+    chain: >
+      BW#1: CapEx在FY2027-28回归至$120-140B(CapEx回归)
+      BW#7: D&A在FY2030左右见顶(利润率改善)
+      CQ1: AI CapEx的增量ROIC>12%(投资回报)
+      → 如果CapEx回归→D&A基数停止增长→D&A见顶→OPM可以扩张(#1+#7满足)
+      → 但CapEx回归意味着AI投资减少→ROIC样本不足以验证→#1和#7排斥CQ1
+      → 如果持续高CapEx($180B+)→ROIC可能验证→但D&A持续攀升→OPM扩张延迟→#7不满足
+      → 三者最多同时满足两个=估值的结构性不可知
+    transferable_to: "所有面临'投资回报期望vs利润率改善路径vs投资强度维持'三角矛盾的重资本公司"
+    reasoning_habit: "识别投资论文中的不可能三角——如果三个关键假设逻辑上最多满足两个, 论文的隐含乐观度比表面高"
+
+  - id: "CC-5"
+    name: "巨头DCF的WACC主导定律"
+    chain: >
+      WACC从8.5%到9.5%(仅100bps)
+      → DCF估值从$214/sh变为$152/sh→$390B市值差异(相当于一个Netflix)
+      → 20小时深度业务分析的累计估值影响 < WACC选择中一个主观假设(ERP 4.5% vs 5.5%)
+      → 因此巨头DCF点估值是伪精度→有价值的输出是WACC双锚区间和条件映射
+    transferable_to: "所有$500B+市值的巨头公司(MSFT/GOOG/META/AAPL)"
+    reasoning_habit: "对巨头公司, 永远先做WACC敏感性→如果WACC±50bps导致估值变动>15%, DCF点估值无决策价值"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "P/E 28x vs 5年均值44x = 历史性低估"
+      final: "P/E 28x建立在CapEx高峰前的利润峰值上, FY2027增量D&A $30-40B可能将P/E推至40-50x"
+      pivot: "CapEx/D&A比率2.0x暴露了D&A延时炸弹——利润基础不是稳态而是峰值"
+
+    - initial: "FTC分拆是最大威胁"
+      final: "SOTP分拆价值$2,452B > 当前EV $2,225B, 分拆反而是正面事件"
+      pivot: "AWS独立$1,472B + 广告独立$630B + 零售独立$350B的加总超过当前合并估值"
+
+    - initial: "红队校准前期望回报+11.4%(关注评级)"
+      final: "红队校准后期望回报+9.1%(中性关注), S2从45%→42%, S3从30%→33%"
+      pivot: "RT-2偏差审计识别4/5种偏差指向系统性偏乐观→概率再分配→评级翻转"
+
+  surprises:
+    - finding: "零售扣除广告利润后实际亏损$6.0B——零售不是利润中心而是流量基建"
+      implication: "Amazon的估值叙事应从'三引擎利润'改为'AWS+广告双引擎利润+零售流量补贴'"
+
+    - finding: "端点级离散度3.78x(全系列第二高, 仅次于APP)——确定性假象"
+      implication: "方法中值收敛($185-$225)是'确定性假象', 真实不确定性远大于表面"
+
+    - finding: "0/44卖方分析师给Sell评级——这是$2T+市值的结构性偏差而非基本面信号"
+      implication: "卖方共识对Megacap天然偏多→共识目标价应系统性下调~16%"
+
+    - finding: "Buffett减持AMZN的方法论不兼容——'10年FCF折现'框架拒绝为$200B CapEx周期付28x P/E"
+      implication: "价值投资框架与AI军备竞赛公司存在方法论冲突→不同投资框架对同一公司可得出截然相反结论"
+
+  blind_spots:
+    - area: "增量CapEx ROIC——本报告最大的不确定性来源"
+      why_matters: "ROIC>15%→显著低估; ROIC<10%→当前偏高; CQ1权重25%且置信度仅42%"
+      monitor: "FY2026全年财报(2027年2月)首次可间接推算; AWS AI收入占比披露"
+
+    - area: "广告OPM(50-65%)为D级数据质量推断"
+      why_matters: "SOTP中广告贡献$565B(27%), OPM每变动15pp→SOTP净影响$65B"
+      monitor: "Amazon未来是否单独披露广告分部利润率"
+
+    - area: "D&A见顶时间——红队新增的第七面承重墙(BW#7)"
+      why_matters: "OPM从11.2%→16%的路径隐含D&A在FY2030见顶, 如AI军备竞赛使CapEx维持$180-200B→D&A见顶延至FY2032+"
+      monitor: "FY2027-2028 CapEx指引 + D&A年度增速趋势"
+
+  sell_lessons:
+    - scenario: "FCF从$32.9B崩塌至$7.7B(-76%)但股价未同步下跌"
+      lesson: "市场对FCF崩塌的容忍度取决于叙事强度——'AI投资'叙事可以让市场忽略FCF 1-2年, 但不能忽略3年+"
+      transferable: "所有处于CapEx重投资周期且FCF大幅下降的公司(TSM fab扩张/MSFT AI投资)"
+    - scenario: "温水煮青蛙——概率加权影响最大的路径(25%×-28%=-7%市值)"
+      lesson: "极端风险(分拆/崩溃)吸引注意力, 但渐进侵蚀(每季-0.5%份额+-30bps OPM)的概率加权影响更大"
+      transferable: "所有有'每季度微小恶化'模式的公司——不触发警报但24个月累积致命"
+    - scenario: "P/E处于5年低位不等于便宜——利润基础可能在峰值"
+      lesson: "P/E低位的安全性取决于E的可持续性。CapEx/D&A>1.5x时, E正在被CapEx周期暂时推高"
+      transferable: "所有CapEx/D&A>1.5x且P/E看似'便宜'的重资本公司"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "增量CapEx ROIC(间接推算)"
+      why_alpha: "CQ1权重25%, 决定评级方向, 但Amazon不披露→需要从AWS收入增速/AI收入占比/OPM变化间接推算"
+      current_reading: "不可观测——FY2026全年数据(2027年2月)将首次提供推算基础"
+    - signal: "AWS AI收入占比(如管理层披露)"
+      why_alpha: "验证$200B中AI投资的商业化进度——占比>10%且增速>80%是S1/S2情景的关键区分"
+      current_reading: "未披露——仅定性声明'AI是增长最快业务'; Bedrock/Trainium增速强劲但规模不明"
+    - signal: "CapEx/Revenue比率季度趋势"
+      why_alpha: "直接测试BW#1(CapEx回归)——从24.8%向20%回落=暂时性验证; 升破25%=永久性风险"
+      current_reading: "FY2025: CapEx/Rev=18.4%, FY2026指引隐含24.8%"
+
+  confirmation_signals:
+    - signal: "AWS季度收入增速"
+      bullish_threshold: ">25%且Azure增速差收窄至<10pp(份额企稳)"
+      bearish_threshold: "<20%或Azure绝对收入反超(温水煮青蛙加速)"
+    - signal: "季度FCF与OCF增速"
+      bullish_threshold: "季度FCF>$5B且OCF增速>CapEx增速(FCF底部已过)"
+      bearish_threshold: "连续2季FCF<-$10B(资本黑洞)"
+    - signal: "合并OPM季度轨迹"
+      bullish_threshold: "OPM>12%(新季度高点, D&A被抵消)"
+      bearish_threshold: "OPM<10%(D&A冲击超预期)"
+
+  noise_signals:
+    - signal: "日度/周度股价波动"
+      why_noise: "$2T市值的公司日度波动是流动性噪音, 看季度基本面变化"
+    - signal: "卖方目标价调整"
+      why_noise: "0/44 Sell评级是结构性偏差→卖方共识不含增量信息; 共识用P/E规避FCF近零"
+    - signal: "Rivian等投资公允价值变动"
+      why_noise: "FY2025其他收入$16.8B中大量来自投资公允价值变动(Rivian等), 非经常性, 不反映核心运营"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: MSFT
+      similarity: "同为$2T+科技巨头, 同时大举投资AI基础设施(MSFT $120B vs AMZN $200B), 云业务直接竞争"
+      key_difference: "MSFT OPM 45.6% vs AMZN 11.2% | MSFT有OpenAI独占→AI叙事主导权 | AMZN FCF崩塌而MSFT FCF健康"
+
+    - ticker: GOOG
+      similarity: "同为三引擎科技平台(云+广告+消费者), 同时面临AI投资回报不确定性"
+      key_difference: "GOOG广告OPM公开透明 vs AMZN广告OPM为D级推断 | GCP第三(份额~12%) vs AWS第一(29%)"
+
+    - ticker: META
+      similarity: "广告业务类比锚(META OPM~40%用于推断AMZN广告OPM), 同为AI重投资者"
+      key_difference: "META FCF充裕 vs AMZN FCF近零 | META单一引擎(广告) vs AMZN三引擎"
+
+  comparative:
+    - dimension: "云计算份额"
+      position: "AWS (29%) > Azure (~24%) > GCP (~12%)"
+      reasoning: "AWS份额从33%(2021)持续降至29%, Azure以39% vs AWS 20%的增速差距追赶"
+
+    - dimension: "利润率质量"
+      position: "MSFT (45.6%) > GOOG (~30%) > META (~40%) >> AMZN (11.2%)"
+      reasoning: "AMZN零售拖累整体OPM; 即便AWS OPM ~38%也远低于MSFT整体"
+
+    - dimension: "FCF健康度"
+      position: "META > MSFT > GOOG >> AMZN"
+      reasoning: "AMZN FCF Yield 0.34%为科技巨头最低; MSFT ~2.5%, GOOG ~3.8%, META ~3.2%"
+
+    - dimension: "AI基础设施投资强度"
+      position: "AMZN ($200B) > MSFT ($120B) > GOOG (~$75B) > META (~$40B)"
+      reasoning: "AMZN投资强度最大但包含物流+Kuiper非AI部分; 苹果对苹果比AWS AI $150B vs Azure $100B"
+
+    - dimension: "估值吸引力(P/E)"
+      position: "AMZN (28x) < GOOG (~22x) < MSFT (~32x) < META (~25x)"
+      reasoning: "AMZN P/E最低但利润基础最脆弱(D&A延时炸弹); P/E低不等于便宜"
+
+  industry_position:
+    quadrant: "最大规模 × 最低利润率 × 最高投资强度"
+    archetype: "平台飞轮 — 三引擎协同但CapEx过载风险正在测试飞轮极限"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF揭示: 实际FCF $7.7B需41% CAGR(不可能); 正常化FCF $35B需20% CAGR(乐观); 市场定价=赌CapEx暂时性"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "温水煮青蛙(S3): 每季-0.5%份额+-30bps OPM→24个月累积蒸发$460-760B→概率加权影响(-7%)远超极端风暴(-4%)"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-2检测5/6种偏差中4种偏向乐观→S2从45%→42%, 期望回报从+11.4%→+9.1%→评级从关注翻转至中性关注"
+
+  novel_patterns:
+    - name: "D&A延时炸弹(CapEx/D&A>1.5x利润幻觉)"
+      description: "CapEx/D&A比率>1.5x时, 当前利润被CapEx周期暂时推高, P/E低位是假象——D&A将在2-3年追赶导致利润大幅下降"
+      transferable_to: ["AI基础设施重投资公司(MSFT/GOOG)", "半导体fab扩张(TSM/INTC)", "所有CapEx/D&A>1.5x的公司"]
+
+    - name: "承重墙不可能三角"
+      description: "CapEx回归+D&A见顶+高ROIC三个关键假设最多同时满足两个→投资论文的隐含乐观度比表面高"
+      transferable_to: ["所有重资本投资周期中的公司", "投资论文依赖>2个相互排斥假设的情况"]
+
+    - name: "SOTP揭示隐藏亏损引擎"
+      description: "多引擎公司用SOTP剥离各业务真实贡献→表面最大收入的业务可能是亏损的流量基建"
+      transferable_to: ["平台公司(亏损获客+高margin变现)", "拼多多/Uber/DoorDash类模式"]
+
+    - name: "巨头WACC主导定律"
+      description: "$500B+市值公司DCF估值中, WACC选择(±100bps)的影响大于所有业务分析的累计影响→DCF点估值是伪精度"
+      transferable_to: ["所有$500B+市值巨头", "MSFT已独立确认"]
+
+    - name: "条件评级(巨头估值框架)"
+      description: "对$2T+市值公司, 不给精确目标价→给'什么条件下变便宜/贵'的条件映射+投资者决策树"
+      transferable_to: ["所有Megacap分析", "不确定性结构中>30%为结构性不可知的公司"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "飞轮有过载点——CapEx/OCF>80%时飞轮的'投资→利润'环节可能断裂"
+        implication: "飞轮分析增加'过载测试': 投资增速>利润增速持续2年+→飞轮可能从加速器变为资本消耗器"
+      - insight: "SOTP可揭示'表面最大业务实际亏损'——零售$575B收入扣除广告利润后=-$6B"
+        implication: "多引擎公司护城河评估应分业务做SOTP利润归因, 避免被合并报表的混合利润率误导"
+
+    valuation_insights:
+      - insight: "CapEx/D&A>1.5x是P/E不可持续的前瞻信号——D&A延时炸弹将在2-3年内推高P/E"
+        implication: "所有处于CapEx重投资周期的公司, 应计算'D&A追赶后的P/E'作为稳态估值锚"
+      - insight: "巨头DCF中WACC±100bps的影响>所有业务分析累计→DCF点估值无决策价值"
+        implication: "巨头估值输出应为WACC双锚区间+条件映射, 不是单一目标价"
+      - insight: "方法级离散度1.22x是'确定性假象', 端点级3.78x才是真实不确定性"
+        implication: "报告离散度应同时报告方法级和端点级——前者容易误导投资者以为估值确定"
+
+    screening_insights:
+      - insight: "CapEx/OCF>90%且FCF Yield<1% = '资本黑洞'警示信号"
+        implication: "选股筛选加入'FCF健康度'过滤: CapEx/OCF>80%且FCF Yield<1%→标记需深度审视CapEx回报率"
+      - insight: "0/44卖方给Sell = 结构性偏差信号, 非基本面信号"
+        implication: "对$1T+市值公司, 卖方共识Strong Buy不含增量信息→选股不应依赖卖方评级分布"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "P/E看似历史低位时, 立刻检查CapEx/D&A比率"
+      trigger: "P/E<历史均值30%+且公司处于CapEx重投资周期"
+      origin: "AMZN P/E 28x vs 5年均44x→看似便宜→但CapEx/D&A 2.0x暴露D&A延时炸弹"
+      generalization: "CapEx/D&A>1.5x=利润基础可能在峰值, P/E低位是假象"
+
+    - habit: "识别投资论文中的不可能三角"
+      trigger: "估值依赖≥3个关键假设时"
+      origin: "RT-3发现CapEx回归+D&A见顶+高ROIC最多满足两个"
+      generalization: "如果论文的3个关键假设逻辑上互斥, 投资者在不自觉地为'最多实现2/3'支付'3/3全实现'的价格"
+
+    - habit: "用SOTP做利润归因——找出表面最大业务是否实际亏损"
+      trigger: "多引擎公司的合并OPM模糊各业务真实贡献时"
+      origin: "SOTP剥离后发现零售OI=-$6B→零售是流量基建而非利润中心"
+      generalization: "混合利润率掩盖了业务间的交叉补贴→SOTP利润归因比合并报表更接近真相"
+
+    - habit: "红队后立刻检查是否翻转评级——边界案例对概率微调极敏感"
+      trigger: "期望回报在评级边界(如+10%)附近"
+      origin: "AMZN红队校准: S2 -3pp→期望回报从+11.4%降至+9.1%→评级从'关注'翻转至'中性关注'"
+      generalization: "期望回报在评级门槛±5pp内=边界案例→红队调整即使很小也可能翻转结论→必须做概率敏感性表"
+
+  quality_feedback:
+    strengths:
+      - "Reverse DCF双方法(实际FCF+正常化FCF)暴露了市场信念的数学边界——最有区分度的洞见"
+      - "SOTP揭示零售隐藏亏损是全报告最反直觉的发现"
+      - "红队七问+双向校准有效翻转了评级(关注→中性关注)——红队不是走过场"
+      - "DM密度1.62/千字合格, 383个DM锚点覆盖全报告"
+      - "条件评级框架+投资者决策树为巨头估值提供了新范式"
+      - "32个Mermaid图表, 可视化充分"
+    weaknesses:
+      - "广告OPM 55%为D级数据质量——SOTP中27%的价值建立在未验证估计上"
+      - "无Python验证DCF/SOTP计算——MSFT教训(8/9格计算错误)的风险未消除"
+      - "CQ1(CapEx ROIC)置信度42%意味着核心判断本质上是猜测——分析深度受限于Amazon不披露"
+      - "报告未含显式质量记分卡(D1-D11评分)"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "巨头DCF中WACC主导估值(MSFT首次发现)"
+        evidence: "WACC±100bps→AMZN估值变动$390B(一个Netflix)→MSFT结论在AMZN独立确认"
+        confidence_after: "高(两份巨头报告独立确认)"
+
+      - hypothesis: "Reverse DCF是巨头分析最有价值的工具(KLAC首次发现)"
+        evidence: "41% CAGR(不可能)和20% CAGR(乐观)精确定义了市场信念的上下界"
+        confidence_after: "高(KLAC+AMZN独立确认)"
+
+    extended:
+      - hypothesis: "飞轮摩擦力量化(CME首次提出)"
+        extension: "AMZN飞轮增加'过载测试'——不仅量化摩擦力, 还测试CapEx/OCF是否突破飞轮断裂点"
+
+      - hypothesis: "Core PE剥离非经营性收入(CME首次提出)"
+        extension: "AMZN版本: 不是剥离利息, 而是剥离D&A延时效应→'D&A追赶后P/E'是类似Core PE的概念"
+
+    refuted: []
+
+  limitations:
+    - "$200B CapEx的增量ROIC完全不可观测——Amazon不披露, 市场无数据源, FY2026全年数据才能间接推算"
+    - "广告OPM 55%是D级推断——SOTP中$565B(27%)建立在未验证假设上"
+    - "概率分配(S1 12%/S2 43%/S3 33%/S4 12%)无频率统计基础——$200B CapEx周期在商业史上没有先例(样本量为零)"
+    - "LLM数学计算基于模式匹配非精确运算——敏感性矩阵/概率加权EV应独立Excel验证"
+    - "报告是2026-02-18数据快照, 非持续监控——新财报/监管裁决后可能即刻失效"

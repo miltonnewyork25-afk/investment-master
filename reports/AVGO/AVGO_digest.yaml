@@ -1,0 +1,442 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Broadcom (AVGO)
+# 压缩比: 208K → ~12K (17x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式映射 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: AVGO
+  company: "Broadcom Inc."
+  report_date: "2026-03-08"
+  stock_price: "$332.77"
+  market_cap: "$1,578B"
+  report_version: "v2.0"
+  report_path: "reports/AVGO/AVGO_Complete_v2.0_2026-03-08.md"
+  quality_score: "报告未明确给出综合评分"
+  cqi: "56.4%"
+  a_score: "7.1/10"
+  framework_version: "v18.2"
+  industry: "半导体"
+  archetype: "三层嵌套基础设施收费站(AI ASIC设计+VMware企业软件+Hock Tan资产优化平台)"
+  chars: 208597
+  dm_count: 353
+  dm_density: "1.69/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "Broadcom是一台三层收费站——市场按'双引擎AI增长'定价(62x PE)，但实际只有1.5个引擎在运转，Owner PE 80.5x暴露了2.7倍的Non-GAAP幻觉"
+  rating: "审慎关注(偏中性)"
+  fair_value: "$224 (-33%)"
+  expected_return: "-12%(Non-GAAP框架) 至 -33%(Owner FCF框架), 中位数约-22%"
+
+  key_arguments:
+    - claim: "AI ASIC是唯一真增长引擎，但市场按'双引擎'定价"
+      direction: bearish
+      magnitude: 5
+      mechanism: "剥除VMware并购效应后有机增长仅~6.4% CAGR，VMware Q1 FY2026同比仅+1%，传统半导体近零增长→增长引擎覆盖率仅43.5%"
+      kill_switch: "VMware有机增长恢复至>5% YoY + AI ASIC保持>35% CAGR→双引擎叙事成立"
+
+    - claim: "SBC制造2.7倍PE幻觉——Non-GAAP PE ~30x vs Owner PE 80.5x"
+      direction: bearish
+      magnitude: 5
+      mechanism: "SBC/Revenue 11.8%且Q1 YoY +70%(收入仅+29%=增速剪刀差2.4倍)，$27B未确认余额锁定至少5年，Owner FCF $19.3B vs 报告FCF $26.9B差距11.9pp"
+      kill_switch: "FY2027Q1 VMware保留到期后SBC/Rev回落至<8%→过渡性确认，Non-GAAP接近真实"
+
+    - claim: "网络芯片是最深护城河但仅占15%收入——护城河-收入-估值错配"
+      direction: conditional
+      magnitude: 4
+      mechanism: "Tomahawk/Jericho 90%份额+UEC标准主导+SONiC生态锁定→衰减函数近零→但ASIC(衰减lambda=0.07/yr)占42%收入锚定估值"
+      kill_switch: "NVIDIA Spectrum-X在开放以太网市场份额>10%→网络垄断假设需重估"
+
+    - claim: "Hock Tan是不可复制的核心资产也是最大单点故障"
+      direction: bearish
+      magnitude: 4
+      mechanism: "73岁CEO合同延至2030年，6次收购eta均值1.37(标准差0.09)，三板斧未制度化→继任折价约$110B(~7%)"
+      kill_switch: "明确内部继任计划+继任者展示独立收购整合能力→key-man折价消除"
+
+    - claim: "62x PE隐含联合概率仅5-8%的完美执行情景"
+      direction: bearish
+      magnitude: 4
+      mechanism: "Reverse DCF隐含AI ASIC 18-22% CAGR持续十年+SBC回归6-8%+VMware 5-8%有机增长→三赌注中两个半可能错"
+      kill_switch: "AI推理S曲线如移动互联网般创造永久性算力需求基座→增长叙事不破裂"
+
+  moat:
+    composite_score: 6.0  # C维度18.0/30
+    half_life: "网络>15年 | ASIC~8-10年(衰减中) | VMware~5-7年(提价侵蚀中) | 传统半导体<3年"
+    dimensions:
+      - type: switching_cost
+        strength: 4
+        evidence: "四层加权4.0/5: 网络5.0(Arista $6.8B采购+SONiC锁定)+ASIC 4.5(NRE $50-150M沉没+18-24月替代周期)+VMware 3.5(18-24月迁移)+传统2.0(Apple已自研WiFi)"
+        vulnerability: "VMware提价150-1500%系统性降低锁定，Nutanix单季新增1000+客户创8年新高；ASIC外围层已被MediaTek突破"
+      - type: scale
+        strength: 4
+        evidence: "全球最大Fabless半导体$64B收入，R&D/Rev仅17.2% vs Marvell 40-50%，可同时推进6+前沿ASIC项目"
+        vulnerability: "规模优势在传统半导体层(Apple WiFi自研)已不构成壁垒"
+      - type: ip
+        strength: 3.5
+        evidence: "20年+定制芯片设计know-how+客户芯片架构spec数据(Google TPU/Meta MTIA/OpenAI Titan核心架构细节)=隐性IP壁垒"
+        vulnerability: "知识存在于团队而非制度中→人才流失=知识流失"
+      - type: network_effect
+        strength: 2.5
+        evidence: "网络芯片间接生态效应: 更多OEM用Tomahawk→更多SONiC兼容→更多ISV支持，接近OS级生态锁定"
+        vulnerability: "ASIC设计几乎无网络效应(0.5/5)，VMware ISV生态正弱化(ISV同时认证Nutanix+K8s)"
+
+  valuation:
+    reverse_dcf_implied: "62x TTM PE隐含AI ASIC 18-22% CAGR持续10年(Non-GAAP口径)/22-25% CAGR(Owner口径)——联合概率仅5-8%"
+    methods_used: ["Reverse DCF", "双层SOTP", "三情景P&L Build-out", "四方法加权"]
+    dispersion: "25.1% CV, $147-$285/股(低确定性)"
+    consensus_vs_ours: "市场用Non-GAAP PE ~30x看'AI双引擎增长' | 我们用Owner PE 80.5x看'1.5引擎收费站+SBC永久成本'"
+    entry_zone: "$225-245 (Forward Non-GAAP PE 18-20x)"
+    catalyst: "(a) FY2027H1 Hyperscaler CapEx增速首次放缓至+10-15% (b) VMware软件确认负增长 (c) SBC/Rev突破12%连续2季"
+
+  # v1.2新增: 买卖决策框架
+  action_framework:
+    verdict: "等待买入 — 所有四种估值方法均低于市价，当前Owner PE 80.5x零安全边际"
+    buy_triggers:
+      - trigger: "Hyperscaler CapEx周期底部+估值压缩至Forward PE 18-20x"
+        price_zone: "$225-245"
+        reasoning: "15-20%安全边际+$73B backlog提供收入底+CapEx周期底部反弹催化"
+      - trigger: "市场系统性下跌(非AVGO基本面问题)导致PE压缩至<25x"
+        price_zone: "$200以下"
+        reasoning: "Owner PE降至<50x+AI S曲线长期趋势仍向上=价值投资者入场点"
+    hold_conditions:
+      - "AI ASIC增速>15% CAGR(承重墙阈值)"
+      - "SBC/Rev<12%(未确认永久化)"
+      - "Hock Tan仍在任(或继任者已展示整合能力)"
+      - "网络芯片份额>75%(KS-06阈值)"
+    sell_triggers:
+      - signal: "AI ASIC收入增速<40%连续2季(KS-01触发)"
+        severity: "action"
+        action: "减仓50%, 周期性暴露确认"
+      - signal: "VMware收入确认负增长(KS-02触发, 当前仅+1% YoY距阈值1pp)"
+        severity: "warning"
+        action: "减仓25%, 重新评估双引擎叙事"
+      - signal: "Hock Tan宣布退休且无明确继任者(KS-11触发)"
+        severity: "action"
+        action: "减仓50%, key-man风险从理论变现实"
+      - signal: "CapEx放缓+SBC>12%+Hock Tan离任三重触发(联合概率1-2%但影响-55%至-65%)"
+        severity: "emergency"
+        action: "全部卖出, 三维同时恶化=非线性破坏"
+    position_sizing: "当前价格Kelly为负(不买) | $225-245区间Kelly估计为正但仓位应<10%(高不确定性CV 25.1%)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "1.5引擎解剖——并购+提价增长幻觉的穿透方法"
+    chain: >
+      总增长+29% YoY → 剥除VMware并购效应(FY2024 $17B新增)
+      → 剥除VMware订阅转换提价(150-1500%一次性效应)
+      → 有机增长仅~6.4% CAGR(FY2022-2024)
+      → AI ASIC是唯一真增长引擎(43.5%收入贡献100%有机增长)
+      → 市场按"双引擎"定价(62x PE)实际是"1.5引擎"定价
+      → 增长引擎覆盖率<50% = 估值倍数应打折
+    transferable_to: "任何通过并购+提价制造增长叙事的公司(Danaher, CSU, Roper)"
+    reasoning_habit: "看到高增速时立刻追问'有机增速是多少'——剥除并购效应和一次性提价后的增速才是真实增长引擎的强度"
+
+  - id: "CC-2"
+    name: "SBC三层OPM瀑布——2.7倍PE幻觉的识别"
+    chain: >
+      Non-GAAP OPM 65.6% → 减摊销13pp(会计噪音, 可争议)
+      → Owner OPM 52.9% → 减SBC 12pp(真实经济成本)
+      → GAAP OPM 39.9%
+      → 三层差距=22pp=PE从~30x到80.5x(2.7倍)
+      → $232B的"分析师共谋成本"(29/31 Buy评级用Non-GAAP)
+      → 投资者必须选择世界观: SBC是零成本还是真实稀释?
+    transferable_to: "所有高SBC科技公司(Snowflake, Palantir, ServiceNow, NVDA)"
+    reasoning_habit: "对每家科技公司计算Non-GAAP与GAAP的PE差距倍数——如果>1.5x说明SBC是'房间里的大象'"
+
+  - id: "CC-3"
+    name: "护城河收入占比错配——最强壁垒贡献最少收入"
+    chain: >
+      网络芯片: 定价权4.5/5, 衰减函数近零, 份额90%, UEC标准主导
+      → 但仅占约15%收入
+      → ASIC: 份额60-70%, +106% YoY, 但衰减lambda=0.07/yr, 定价权3.5/5
+      → 占约42%收入 = 估值锚定在最脆弱层
+      → 管理层合并AI收入披露掩盖了这个错配
+      → 如果网络独立估值=基础设施垄断者定价(更高倍数)
+    transferable_to: "任何多层业务公司的层间护城河-收入-估值错配分析"
+    reasoning_habit: "分析多业务公司时逐层评估护城河强度vs收入贡献——估值锚定在哪一层决定了风险特征"
+
+  - id: "CC-4"
+    name: "收购整合效率函数eta(t)——serial acquirer的量化评估"
+    chain: >
+      定义: eta(t) = (OPM_post - OPM_pre) / (OPM_target - OPM_pre)
+      → Hock Tan 6次收购eta均值1.37, 标准差0.09
+      → eta>1.0 = 整合后OPM超越华尔街目标(收购超额完成)
+      → 标准差极低(0.09) = 方法论高度可复制
+      → 但三板斧未制度化(存在于Tan个人判断中)
+      → eta的边界条件: 当被收购资产已是高margin(>60%)时提升空间受限
+      → 73岁CEO = eta函数的存续时间有限
+    transferable_to: "任何serial acquirer评估(CSU, DHR, ROP, TransDigm)"
+    reasoning_habit: "评估收购型CEO时用eta函数量化整合能力——均值衡量能力强度, 标准差衡量可复制性, 个人依赖度衡量持续性"
+
+  - id: "CC-5"
+    name: "S曲线预消费风险——增长如期实现但投资者回报为零"
+    chain: >
+      AI推理ASIC S曲线当前在5-10%渗透率
+      → 62x PE已经隐含S曲线从5%展开到50%+的全部价值
+      → 即使增长完全如期实现, 投资者回报约等于零
+      → 因为市场已经"预消费"了未来增长
+      → 只有增长超越隐含假设(CAGR>25%)才能创造正回报
+      → 这等于赌一个联合概率5-8%的完美执行情景
+    transferable_to: "任何处于S曲线早期但估值已反映终局的AI基建股(NVDA推理GPU, VRT液冷)"
+    reasoning_habit: "看到'S曲线早期'的成长故事时, 立刻计算'当前PE已经预消费了S曲线的多少百分比'——预消费>50%=增长兑现也无回报"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "Broadcom是AI双引擎增长公司(市场共识)"
+      final: "实际是'1.5引擎收费站'——AI ASIC是唯一真引擎, VMware提价红利已近耗尽"
+      pivot: "剥除并购效应后有机增长仅~6.4% CAGR + VMware Q1 FY2026同比仅+1%"
+
+    - initial: "Non-GAAP PE ~30x是合理估值(29/31分析师共识)"
+      final: "Owner PE 80.5x暴露真实估值水平, 2.7倍差距是世界观选择而非技术争论"
+      pivot: "SBC/Rev 11.8%且Q1 YoY +70%增速剪刀差2.4倍 + $27B未确认余额 + R&D人员占SBC 66%"
+
+    - initial: "ASIC设计锁定=永续护城河(市场叙事)"
+      final: "ASIC锁定有衰减函数(lambda=0.07/yr, 每年2-3%份额结构性流失), 网络芯片才是真正的永续护城河"
+      pivot: "MediaTek已获Google TPU I/O模块订单 + Google正在系统性降低Broadcom依赖度 + 网络UEC标准锁定无衰减"
+
+  surprises:
+    - finding: "Owner PE 80.5x vs Non-GAAP PE ~30x的2.7倍差距——$232B的'分析师共谋成本'"
+      implication: "29个Buy分析师选择性使用Non-GAAP可能是AI时代最大的集体估值盲区"
+
+    - finding: "最强护城河(网络, 衰减近零)仅贡献15%收入, 估值锚定在最脆弱层(ASIC, lambda=0.07/yr)"
+      implication: "管理层合并AI收入披露恰恰掩盖了最有价值的竞争优势——分拆披露可能释放价值"
+
+    - finding: "Hock Tan三板斧eta均值1.37标准差仅0.09——收购整合能力高度可复制但完全个人化"
+      implication: "当方法论高度可复制但未制度化时, key-man风险不是'可能'而是'确定'的定价因子"
+
+    - finding: "Arista CEO公开称Broadcom定价'horrendous'但仍签下$6.8B采购——抱怨但无法离开"
+      implication: "B2B定价权的最强实证不是客户满意而是客户不满但不离开"
+
+  blind_spots:
+    - area: "AI CapEx周期拐点的精确时间"
+      why_matters: "决定B1承重墙何时受压——FY2028(Bear) vs FY2030+(Bull)的差异是$100B+估值差距"
+      monitor: "Hyperscaler季度CapEx指引+AI ASIC订单补充速率"
+
+    - area: "市场估值regime是否会从Non-GAAP迁移到Owner FCF"
+      why_matters: "-14%(Non-GAAP) vs -33%(Owner FCF)的差距完全由框架选择决定, 框架迁移概率不可预测"
+      monitor: "卖方分析师是否开始引用Owner Earnings口径 + 机构投资者讨论中SBC出现频率"
+
+    - area: "ASIC锁定衰减函数lambda=0.07/yr的准确性"
+      why_matters: "基于Qualcomm/Intel历史推算, AI ASIC缺乏直接历史先例, 真实衰减可能更快或更慢"
+      monitor: "MediaTek在Google TPU的份额扩展速度 + 客户自研团队规模变化"
+
+    - area: "Hock Tan继任的实际影响"
+      why_matters: "10-15% key-man折价是理论估计, 实际影响取决于继任者身份和市场情绪"
+      monitor: "管理层继任计划声明 + 内部晋升 vs 外部空降信号"
+
+  # v1.2新增: 卖出时机教训
+  sell_lessons:
+    - scenario: "温水煮青蛙引擎联动——每一步都'正常'但终点-39%"
+      lesson: "AI ASIC份额缓慢从65%降至50% + VMware增长+1%→0%→负 + Hock Tan 73→78岁→继任折价——没有任何单一事件触发卖出信号, 但累积效应-39%"
+      transferable: "所有多层业务中各层缓慢同步衰减的公司——永远不会有'明确卖出信号'的渐进恶化最危险"
+
+    - scenario: "PE>95百分位+有机增速被并购掩盖→估值透支增长"
+      lesson: "62x PE处于历史>95百分位, 5年PE均值仅约35x(偏离均值+77%)——均值回归的统计概率显著偏向下行"
+      transferable: "所有通过并购制造高增速但有机增速平庸的公司"
+
+    - scenario: "SBC增速剪刀差2.4x(SBC +70% vs 收入+29%)持续恶化"
+      lesson: "当SBC增速持续超过收入增速时, 表面盈利质量在系统性恶化——等到市场发现时可能已晚"
+      transferable: "所有AI人才密集型公司——SBC-to-Rev加速度是盈利质量恶化的先行指标"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "Owner PE vs Non-GAAP PE差距倍数"
+      why_alpha: "29/31分析师用Non-GAAP→市场定价完全忽略SBC成本→Owner PE暴露2.7倍真实估值差距"
+      current_reading: "2.7倍(Owner PE 80.5x / Non-GAAP PE ~30x) — 差距在扩大(SBC Q1 YoY +70%)"
+
+    - signal: "AI ASIC有机增速(剥除并购+提价效应)"
+      why_alpha: "市场看+29%总增速→实际有机CAGR仅~6.4%→增长引擎覆盖率43.5%暴露'1.5引擎'真相"
+      current_reading: "有机CAGR ~6.4%(FY2022-2024), AI ASIC占收入43.5%贡献100%有机增长"
+
+    - signal: "ASIC客户自研团队规模变化"
+      why_alpha: "OpenAI芯片团队已扩至约40人, Google分流I/O给MediaTek——客户内化趋势是ASIC份额衰减的先行信号"
+      current_reading: "Google核心XPU留守+外围分流 | OpenAI Titan 2已规划A16 | MediaTek确认获得I/O+SerDes订单"
+
+  confirmation_signals:
+    - signal: "Hyperscaler季度CapEx增速"
+      bullish_threshold: ">30% YoY(AI投资加速→ASIC需求确认)"
+      bearish_threshold: "<10% YoY连续2季(CapEx放缓→B1承重墙受压)"
+    - signal: "VMware软件收入YoY增速"
+      bullish_threshold: ">5%(有机增长恢复→双引擎叙事部分成立)"
+      bearish_threshold: "负增长(KS-02触发→双引擎叙事完全破裂, 当前仅+1%距阈值1pp)"
+    - signal: "SBC/Revenue季度趋势"
+      bullish_threshold: "<8%(正常化确认→Non-GAAP接近真实)"
+      bearish_threshold: ">12%连续2季(KS-03触发→永久成本确认→估值框架迁移)"
+
+  noise_signals:
+    - signal: "Non-GAAP EPS beats"
+      why_noise: "Non-GAAP剥除SBC+摊销→人为抬高EPS→beat只说明卖方模型也用Non-GAAP→循环论证"
+    - signal: "AI收入绝对值(合并披露)"
+      why_noise: "管理层合并ASIC+网络报告AI收入→掩盖了最有价值的网络层+最脆弱的ASIC层的分化→看分项趋势比看总量更重要"
+    - signal: "卖方目标价调整"
+      why_noise: "29/31 Buy评级+1.2% FCF Yield < 无风险利率→卖方共识过度乐观→目标价的信息量接近零"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: NVDA
+      similarity: "同为AI半导体赛道, 类似PE区间(62x vs 65x), 同属Hyperscaler供应商"
+      key_difference: "NVDA=窄而极深(GPU+CUDA不可替代), AVGO=宽而分散(3层混合体)。NVDA护城河是'唯一选择', AVGO是'最佳选择但有替代'。NVDA SBC/Rev仅4-5%(AVGO的1/3)"
+
+    - ticker: MRVL
+      similarity: "同为ASIC设计服务商, 直接竞争AI定制芯片市场"
+      key_difference: "MRVL仅做ASIC设计(无网络芯片全栈co-design), R&D/Rev 40-50%(AVGO 17.2%), 只能聚焦2-3个客户(AVGO 6+)"
+
+    - ticker: TXN
+      similarity: "同为多元化半导体, 但'多元化'含义完全不同"
+      key_difference: "TXN=宽而浅(10万+SKU长尾), AVGO=窄而深(3-4高价值节点各垄断)。TXN 28x PE是通才定价, AVGO 62x PE需要AI增长溢价支撑"
+
+  comparative:
+    - dimension: "护城河持久性(10年视角)"
+      position: "AVGO网络层 > NVDA CUDA > AVGO ASIC层 > AVGO VMware > AVGO传统半导体"
+      reasoning: "网络UEC标准+SONiC锁定衰减近零; CUDA用户锁定深但开源替代渐起; ASIC lambda=0.07/yr结构衰减"
+
+    - dimension: "估值透支度(PE/有机增速)"
+      position: "AVGO (62x/6.4%有机=9.7x) > NVDA (65x/高增速=较低PEG) > TXN (28x/中增速=合理PEG)"
+      reasoning: "AVGO看似与NVDA PE接近, 但有机增速远低→估值透支最严重"
+
+    - dimension: "SBC对估值的扭曲度"
+      position: "AVGO (2.7x差距) >> NVDA (~1.3x差距) > TXN (~1.1x差距)"
+      reasoning: "SBC/Rev: AVGO 11.8% >> NVDA 4-5% > TXN ~1%→AVGO的会计口径选择对估值影响最大"
+
+  industry_position:
+    quadrant: "高估值 × 中护城河 × 高SBC扭曲 × 单承重墙(AI ASIC增速)"
+    archetype: "三层嵌套收费站——收费权分层衰减, 估值锚定在最脆弱层"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→62x PE隐含AI ASIC 18-22% CAGR十年→联合概率仅5-8%=完美执行定价"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "温水煮青蛙引擎联动: ASIC份额65→50% + VMware +1→负 + Hock Tan继任折价→累计-39%无单一触发点"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "5类偏差全偏悲观方向, 系统性低估约5-10pp, 与RCL教训一致→期望回报从-19.8%上修至-14%"
+
+  novel_patterns:
+    - name: "1.5引擎解剖(增长引擎覆盖率)"
+      description: "对高增速公司剥除并购效应+一次性提价效应→计算有机增长引擎覆盖率(真引擎收入/总收入)→覆盖率<50%=估值倍数应打折"
+      transferable_to: ["Danaher", "Constellation Software", "Roper Technologies", "所有并购+提价驱动增长的公司"]
+
+    - name: "三层OPM瀑布(Non-GAAP→Owner→GAAP的PE差距倍数)"
+      description: "计算Non-GAAP PE / Owner PE / GAAP PE三层→差距倍数>1.5x=SBC是'房间里的大象'→投资者必须选择世界观"
+      transferable_to: ["Snowflake", "Palantir", "ServiceNow", "所有SBC/Rev>8%的科技公司"]
+
+    - name: "收购整合效率函数eta(t)"
+      description: "eta = (OPM_post - OPM_pre) / (OPM_target - OPM_pre)。eta>1.0=超额整合, 标准差<0.15=高度可复制。量化serial acquirer的整合能力"
+      transferable_to: ["CSU", "DHR", "ROP", "TransDigm", "所有serial acquirer"]
+
+    - name: "护城河-收入-估值错配分析"
+      description: "按业务层拆分护城河强度×衰减率×收入贡献→识别'估值锚定在最脆弱层'的结构性风险"
+      transferable_to: ["所有多层业务公司"]
+
+    - name: "S曲线预消费风险"
+      description: "计算当前PE已隐含S曲线展开到多少百分比→预消费>50%=即使增长如期实现投资者回报约零"
+      transferable_to: ["NVDA推理GPU", "VRT液冷", "所有S曲线早期但估值已反映终局的AI基建股"]
+
+    - name: "ASIC锁定衰减函数(lambda)"
+      description: "参照Qualcomm/Intel历史推算定制芯片设计锁定的年化衰减率→lambda=0.07/yr意味着每年约2-3%份额结构性流失"
+      transferable_to: ["Marvell", "ARM CDS弹性函数校准", "所有面临客户内化风险的ASIC/IP供应商"]
+
+  # v1.2新增: 框架升级贡献
+  framework_contributions:
+    moat_insights:
+      - insight: "异质性混合体护城河需要按层独立评估——四层壁垒来源不同、衰减速度不同、应对策略不同"
+        implication: "加权平均不够, 必须判断'稳定的X分还是正在向Y分滑落的X分'"
+      - insight: "巴菲特真伪护城河测试: 真护城河=客户主动选择(网络层) vs 锁定租金=客户被困(VMware提价后)"
+        implication: "区分'客户不走因为你好'和'客户不走因为走不了'——后者的护城河半衰期更短"
+      - insight: "最强护城河贡献最小收入是结构性估值陷阱——估值锚定在脆弱层而非持久层"
+        implication: "多层公司应按层做SOTP估值, 用不同倍数反映不同衰减率"
+
+    valuation_insights:
+      - insight: "Non-GAAP与Owner PE的差距倍数是科技公司估值的'照妖镜'——2.7倍差距=$232B的分析师共谋成本"
+        implication: "对所有SBC/Rev>5%的科技公司, 双口径估值应成为标配"
+      - insight: "S曲线预消费风险量化: 当前PE隐含的S曲线展开比例决定了'即使增长如期的回报上限'"
+        implication: "增长投资的核心问题不是'增长是否真实'而是'增长是否已被定价'"
+      - insight: "多估值方法间25%+ CV = 低确定性→条件评级比单一评级更有信息量"
+        implication: "估值离散度>20%时, 'if A then X, if B then Y'格式比'目标价$Z'更诚实"
+
+    screening_insights:
+      - insight: "有机增长引擎覆盖率<50% + PE>40x = '增长叙事脆弱'信号"
+        implication: "选股筛选增加'有机增长引擎覆盖率'维度——剥除并购后有机增速<10%且PE>40x→标记为高风险"
+      - insight: "SBC-to-Revenue加速度(SBC增速/收入增速>1.5x) = 盈利质量恶化先行指标"
+        implication: "选股时增加SBC增速剪刀差筛选——持续>1.5x的公司Non-GAAP估值不可信"
+      - insight: "eta函数标准差<0.15 + 个人依赖度高 = 可量化的key-man风险"
+        implication: "serial acquirer筛选增加'方法论制度化程度'维度——高eta+低标准差+高个人依赖=定价必须包含继任折价"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "看到高增速时立刻剥除并购效应计算有机增速"
+      trigger: "总收入增速>20%且近期有大型并购"
+      origin: "AVGO +29% YoY→剥除VMware→有机仅~6.4% CAGR, '双引擎'实为'1.5引擎'"
+      generalization: "并购型增长和有机增长应获得不同PE倍数——高增速不等于高质量增长"
+
+    - habit: "对科技公司计算Non-GAAP与Owner PE的差距倍数"
+      trigger: "SBC/Revenue>5%"
+      origin: "AVGO Non-GAAP PE ~30x vs Owner PE 80.5x=2.7倍差距=$232B估值争议"
+      generalization: "差距倍数>1.5x时, 估值结论完全取决于框架选择——应双口径并行而非选边站"
+
+    - habit: "多层业务公司按层评估护城河衰减率而非给统一评分"
+      trigger: "公司有3+个业务层且壁垒来源不同"
+      origin: "AVGO网络衰减近零 vs ASIC lambda=0.07/yr vs VMware被提价侵蚀→统一评分掩盖层间分化"
+      generalization: "加权平均护城河分数是信息损失——需要知道每层的独立衰减函数才能判断趋势方向"
+
+    - habit: "serial acquirer用eta函数量化整合能力+追问制度化程度"
+      trigger: "CEO以收购整合为核心价值创造方式"
+      origin: "Hock Tan eta=1.37(标准差0.09)但三板斧完全个人化→高能力+高风险"
+      generalization: "eta高+标准差低+未制度化=定价必须包含继任折价; 对比CSU(已制度化)→折价应更低"
+
+  quality_feedback:
+    strengths:
+      - "CI洞见质量高——CI-03 S曲线预消费风险(8.5/10)和CI-02 SBC盲区量化(8.0/10)是强原创贡献"
+      - "DM密度1.69/千字, 超过1.5/千字基线"
+      - "三个非共识假说全部有完整5阶段证据演化(置信度从P0.75到P5的追踪)"
+      - "估值四方法加权+明确的不确定性区间(CV 25.1%)比给单一目标价更诚实"
+    weaknesses:
+      - "A-Score仅7.1/10, CQI 56.4%——品质并非顶级, 与62x PE定价不匹配"
+      - "估值确定性低(CV 25.1%), -14%到-33%的区间过宽→对投资者的操作指导有限"
+      - "5年P&L预测精度约+/-30%, $175B Base vs $253B Bull在误差范围内重叠"
+      - "圆桌v2.0的7位大师框架是AI模拟思想实验而非真实对话"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "Non-GAAP PE vs Owner PE差距在高SBC公司制造估值幻觉"
+        evidence: "AVGO 2.7倍差距(Non-GAAP ~30x vs Owner 80.5x), SBC增速剪刀差2.4x"
+        confidence_after: "高(AVGO是最极端案例, 可推广到所有SBC/Rev>8%的科技公司)"
+
+      - hypothesis: "并购型增长获得与有机增长相同PE是定价错误"
+        evidence: "总增速+29%但有机CAGR仅~6.4%, 增长引擎覆盖率43.5%"
+        confidence_after: "高(可推广到Danaher/CSU/Roper等serial acquirer)"
+
+    extended:
+      - hypothesis: "护城河衰减函数可量化(KLAC/MCO先例)"
+        extension: "AVGO展示了同一公司内不同业务层有截然不同的衰减函数——从近零(网络)到lambda=0.07/yr(ASIC)到加速侵蚀(VMware)——从单一衰减率扩展到层间异质性"
+
+      - hypothesis: "key-man风险可通过eta函数定量评估(新方法)"
+        extension: "eta均值量化能力强度, 标准差量化可复制性, 制度化程度量化持续性——三维key-man评估框架"
+
+    refuted: []
+
+  limitations:
+    - "框架版本v18.2(非最新v19.7), 部分质量门控标准(如G1 270K字符)未达到(报告208K)"
+    - "估值区间-14%到-33%由框架选择(Non-GAAP vs Owner FCF)决定, 非基本面不确定性——报告无法替投资者做这个世界观选择"
+    - "ASIC衰减函数lambda=0.07/yr基于Qualcomm/Intel历史, AI ASIC无直接先例→可能系统性偏高或偏低"
+    - "Hock Tan继任折价$110B(~7%)是理论估计, 无法用历史数据校准(样本量=0)"

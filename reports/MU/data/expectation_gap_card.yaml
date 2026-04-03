@@ -1,0 +1,89 @@
+# 预期差分析卡 v2.1 — Micron Technology (MU)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "MU"
+  company: "Micron Technology, Inc."
+  analysis_date: "2026-03-27"
+  stock_price: "$355.46"
+  market_cap: "$401B"
+  data_snapshot: "FY2025 (FY ends Aug) + FQ2'26"
+  tier: "tier2"
+  framework_version: "v2.1"
+
+core_judgment: "MU暴露了框架的第七种定价错误模式: '周期反转PE陷阱'——存储股PE动态与所有其他股票相反: 低PE=峰值(卖出信号),高PE=谷值(买入信号)。当前21x PE看起来'便宜'但实际在峰值利润上(FQ2收入$24B/毛利率74%/NI $14B创记录),是历史上存储周期峰值的典型信号。关键变量: HBM是否真的打破了传统存储周期性——如果是,21x合理;如果周期重新发威(2027-28产能过剩),EPS可能从$12回落至$2-3,PE会'便宜地'从21x飙升到120x+'
+"
+gap_type: "overpriced_optimism"
+confidence: "medium"
+confidence_reasoning: "高置信: 21x×峰值EPS=典型存储峰值信号(历史多次验证)。中等置信: HBM可能真的不同(绑定合同+仅3家供应商+5年战略协议=前所未有的能见度)。CapEx/D&A仅0.98x=目前没有过度投资(vs历史峰值>1.5x)。降低置信: FQ2毛利率74%是极端值——即使HBM不过剩,竞争也会压缩回50-60%"
+
+expectations:
+  price_implied:
+    p_fcf: "~24x(但FCF波动极大——FY23 FCF=-$6.1B)"
+    judgment: "dangerous — 21x看起来便宜但在峰值利润上=存储周期经典陷阱"
+
+  dominant_narrative: "HBM超级周期——AI需要的高带宽存储只有3家能做(MU/SK Hynix/Samsung),供需紧张"
+  bull_case_core: "HBM产能2026全部售罄+绑定合同+5年战略协议+HBM4即将量产+CapEx纪律好(0.98x D&A)"
+  bear_case_core: "21x×峰值EPS=历史卖出信号+FQ2毛利率74%不可持续+Samsung/SK Hynix产能扩张+2027-28可能过剩"
+  market_most_uncertain_about: "HBM是否打破了传统存储周期——这是一个$250B的赌注(401B市值-150B谷值)"
+
+reality:
+  company:
+    overall_trend: "peak_cycle — 收入/利润/毛利率全部在历史峰值或附近"
+    key_variables:
+      - name: "收入"
+        state: "peak"
+        data: "FY23 $15.5B(谷底!) → FY24 $25.1B → FY25 $37.4B | FQ2'26 $23.9B(年化$96B!) — 从谷底翻6倍"
+        evidence_grade: "fact"
+      - name: "毛利率"
+        state: "extreme_peak"
+        data: "FY23 -9.1%(亏损!) → FY25 39.8% → FQ2'26 74%(!) — 从负到74%=极端周期"
+        evidence_grade: "fact"
+      - name: "FCF波动"
+        state: "peak"
+        data: "FY23 -$6.1B → FY25 $1.7B → FQ2'26单季度估计$5B+ — 波动幅度$11B+"
+        evidence_grade: "fact"
+      - name: "CapEx纪律(关键!)"
+        state: "disciplined"
+        data: "CapEx/D&A=0.98x — 历史峰值时此比率>1.5x。目前投资仅在替换水平=管理层没有疯狂扩产"
+        evidence_grade: "fact — 这是HBM周期可能真的不同的最强证据"
+
+  industry:
+    structural_shifts:
+      - shift: "HBM从商品存储→战略AI基础设施"
+        evidence_grade: "fact"
+        irreversibility: 3
+        speed: "fast"
+        company_position: "beneficiary — 全球仅3家HBM供应商"
+    key_industry_fact: "★ 存储PE反转动态: 低PE=峰值(卖出), 高PE=谷值(买入)。当前21x=历史上的'卖出区域'——除非HBM真的改变了这个规律"
+
+gap:
+  scoring:
+    direction_clarity: 3
+    magnitude: 4
+    persistence: 3
+    verifiability: 3
+    industry_trend_support: 3
+    smart_money_alignment: 2
+    composite_score: 3.0
+
+  core_mispriced_variables:
+    - variable: "PEP-007: 周期反转PE陷阱(存储专属)"
+      market_assumes: "21x PE=便宜(用正常股票逻辑)"
+      reality_shows: "存储股21x×峰值EPS=历史卖出信号。FY23 EPS=-$5.34→FY25 $7.59→FQ2'26年化$48+ | 从-$5到+$48的波动=这不是增长而是周期"
+      evidence_grade: "fact(历史规律)+inference(HBM是否改变规律)"
+
+  one_sentence_judgment: "MU是'看起来便宜(21x PE)但在峰值利润上'的存储周期经典案例——唯一能改变这个判断的是'HBM绑定合同+仅3家供应商'真的打破了传统周期性。CapEx纪律(0.98x)是支持'这次不同'的最强证据,但74%毛利率不可持续是确定的"
+
+paradigm_shift:
+  company_role: "potential_structural_winner — 如果HBM改变存储经济学"
+  pricing_error_pattern: "PEP-007: inverse_PE_trap — 存储独有的PE反转动态"
+  impact_on_gap_judgment: "HBM可能是存储行业的范式转移(从商品→战略),但定价需要验证2-3个周期(目前是第1个)"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 3.0。overpriced方向+存储周期峰值。关键监控: CapEx/D&A是否突破1.2x(=过度投资开始)和HBM价格趋势"
+  position_implication: "如果持有: 在$350+获利了结部分。如果未持有: 等待下一次存储下行周期(PE>100x时)买入"
+
+post_mortem:
+  verified: false

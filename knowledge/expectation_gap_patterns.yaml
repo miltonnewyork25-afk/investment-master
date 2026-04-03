@@ -1,0 +1,475 @@
+# ============================================================
+# 预期差模式库 v1.0
+# Expectation Gap Pattern Registry
+#
+# 用途: 每次执行/expectation-gap时,Step 0强制加载本文件
+# 更新: 每完成一次分析后,如发现新模式,追加到对应section
+# 索引: 按pattern_id引用,在YAML卡片中标注匹配的模式
+# ============================================================
+
+# --- 已发现的定价错误模式 (Pricing Error Patterns) ---
+pricing_error_patterns:
+
+  - id: "PEP-001"
+    name: "叙事错误归因 (Narrative Misattribution)"
+    discovered_from: "PTC + INTU vs CRM/NOW/WDAY (2026-03-27)"
+    description: "市场把适用于A子行业的叙事错误应用于B子行业。例如'AI杀SaaS seats'适用于工作流SaaS但不适用于CAD/PLM(物理约束)和税务软件(监管护城河)"
+    detection_rule: "在Step 0检查: 行业主流叙事是否真的适用于本公司的护城河类型?"
+    check_questions:
+      - "本公司的护城河类型是什么? (监管/物理约束型 vs 数据/切换成本型 vs 创意/工作流型)"
+      - "行业主流恐惧叙事(如'AI杀seats')对本公司的护城河有实际影响吗?"
+      - "有没有与本公司护城河类型相同但估值不同的可比公司?"
+    examples:
+      - "PTC: 市场按'AI杀SaaS'打折34.5%,但CAD/PLM受物理约束,AI是增值工具不是替代"
+      - "INTU: 市场按'AI杀SaaS'打折47%,但税法复杂度是AI不能commoditize的监管护城河"
+    applicable_to: "任何行业中存在'一刀切叙事'的情况"
+
+  - id: "PEP-002"
+    name: "资本回报分层盲区 (Capital Return Blindness)"
+    discovered_from: "ADBE(580%) vs DDOG(0%) — 7家SaaS对比 (2026-03-27)"
+    description: "市场按行业标签统一定价,忽视同行业公司间资本回报行为(SBC覆盖率/净缩股率)的巨大差异。年化差距可达15pp(ADBE +10%/yr vs DDOG -5%/yr)"
+    detection_rule: "在Step 1计算: SBC覆盖率 + 净缩股率,与同行业对比是否有异常值"
+    check_questions:
+      - "回购覆盖SBC多少倍? (>200%=强, 100-200%=中, <100%=弱, 0%=无)"
+      - "股本是在缩还是在膨? 年化速率多少?"
+      - "管理层是用FCF回购(常规)还是举债回购(极强信号)?"
+      - "同行业中谁的资本回报最强/最弱? 估值是否反映了这个差异?"
+    examples:
+      - "ADBE回购580%覆盖+缩股5%/yr → 年回报市值9.4%"
+      - "DDOG零回购+稀释4.8%/yr → 年损失市值~5%"
+      - "差距15pp/yr,3年复合50% — 但市场给DDOG 44x,给ADBE 10x"
+    applicable_to: "所有SBC比重大的行业(科技/生物医药),以及任何有回购差异的行业"
+
+  - id: "PEP-003"
+    name: "范式转移速度溢价 (Paradigm Shift Speed Premium)"
+    discovered_from: "SaaS per-seat→outcome转型 40%渗透 vs 市场按100%定价 (2026-03-27)"
+    description: "市场正确识别了范式转移方向但错估了速度——按'已完成'定价'进行中'的转型。历史先例(Adobe 2012)显示转型需3-5年,但市场在Year 1就给了Year 5的折价"
+    detection_rule: "在R域评估: 范式转移的实际渗透率 vs 市场隐含的渗透假设"
+    check_questions:
+      - "当前渗透率是多少? (<10%=太早, 10-25%=拐点区, 25-50%=主流化, >50%=晚期)"
+      - "市场定价隐含的渗透率是多少? (从估值反推)"
+      - "历史上类似转型用了多久? (Adobe: 3年, Oracle云: 5年)"
+      - "如果转型速度比市场隐含的慢2-3x,估值应该多少?"
+    examples:
+      - "SaaS板块: 40%渗透但股价按100%转型定价 = 时间套利2-3年"
+      - "Adobe 2012: 转型宣布→收入低谷→反弹用了3年,期间P/FCF底部15x"
+    applicable_to: "任何行业的范式转移: EV/云/AI/从产品到服务等"
+
+  - id: "PEP-004"
+    name: "转型阵痛当永久衰退 (Pattern B — Transition Pain as Permanent Decline)"
+    discovered_from: "WDAY/CRM vs Adobe 2012先例 (2026-03-27)"
+    description: "市场看到增速放缓+定价模型变化→定价'永久衰退'。但历史显示自我颠覆者的收入低谷持续2-3年后反弹(Adobe股价3x)"
+    detection_rule: "当公司增速放缓但同时有: (1)主动投资新模式 (2)OPM在扩张 (3)FCF在增长 → 可能是模式B而非真衰退"
+    check_questions:
+      - "公司是否在主动投资新定价/新产品模式? (是=自我颠覆,可能是模式B)"
+      - "OPM是在恶化还是在扩张? (扩张=转型中但效率在改善)"
+      - "FCF是在增长还是在萎缩? (增长=业务健康,增速放缓不等于衰退)"
+    examples:
+      - "WDAY: 增速13%(减速)但OPM -3.6%→+10.7%(大幅扩张)+FCF +27%+回购208% = 不是衰退是转型"
+      - "CRM: 增速10%(减速)但FCF $14.4B(增长)+Agentforce $1.4B(新模式) = 同上"
+    applicable_to: "任何正在经历商业模式转型的公司"
+
+  - id: "PEP-005"
+    name: "催化剂验证金字塔 (Catalyst Verification Pyramid)"
+    discovered_from: "INTC 18A HVM vs 市场定价 (2026-03-27)"
+    description: "对于转型/turnaround公司,催化剂有四层验证: 技术可行→经济可行→商业可行→规模可行。市场经常在Level 1验证后就按Level 4定价"
+    detection_rule: "当公司有重大技术/产品里程碑时,检查: 市场在哪一层验证上定价?"
+    check_questions:
+      - "催化剂处于金字塔的哪一层? (技术/经济/商业/规模)"
+      - "市场定价隐含的是哪一层成功? (如果隐含Level 4但实际只在Level 1=高估)"
+      - "从当前层到下一层需要什么条件和多长时间?"
+    examples:
+      - "INTC: 18A达HVM(Level 1技术可行)但市场按$220B定价(隐含Level 3-4商业+规模可行)"
+    applicable_to: "所有转型/turnaround公司,以及有重大新产品发布的公司"
+
+  - id: "PEP-006"
+    name: "周期峰值增长溢价 (Cycle Peak Growth Premium)"
+    discovered_from: "KLAC(49x)/LRCX(51x)/AMAT(38x) vs 历史12-25x — 半导体设备 (2026-03-27)"
+    description: "市场在行业景气期给周期股增长公司的估值(PE 38-51x),忘记了收入和利润会均值回归。峰值PE×峰值EPS=双重峰值→当两者都回归均值时=50-80%下行。WFE从未连续3年>7%增长不回调,但市场在第3年给了历史最高PE"
+    detection_rule: "当周期股的当前PE超过历史5年PE区间上沿的150%→触发PEP-006警告"
+    check_questions:
+      - "当前PE在历史5年区间的什么位置? (>80%分位=危险)"
+      - "当前EPS是峰值还是中间值? (峰值EPS×高PE=双重峰值)"
+      - "行业CapEx/投资周期处于什么位置? (WFE第3年增长=历史上的回调前夜)"
+      - "谷值EPS×15x谷值PE=多少? 与当前价格差多少? (=最大下行风险)"
+    examples:
+      - "KLAC: 49x(峰值PE) × $29.7(峰值EPS), 历史15-30x → 谷值PE×谷值EPS=$405, 当前$1,451→下行72%"
+      - "LRCX: 51x(历史12-25x) → 下行81%到谷值"
+    applicable_to: "所有强周期行业: 半导体设备/能源设备/航运/大宗商品/建筑机械"
+    cross_cycle_validity: "★穿越周期适用——每个周期都会重复这个错误。市场在景气期系统性忘记均值回归"
+
+  - id: "PEP-007"
+    name: "周期反转PE陷阱 (Inverse PE Trap — Memory Specific)"
+    discovered_from: "MU 21x PE在峰值利润 vs FY23亏损$5.8B — 存储周期 (2026-03-27)"
+    description: "存储(DRAM/NAND)股的PE动态与所有正常股票相反: 低PE=峰值利润(卖出信号),高PE或负PE=谷值利润(买入信号)。这是因为存储是纯商品周期——利润在供不应求时飙升(低PE)、在供过于求时崩塌(高PE或亏损)。用正常'低PE=便宜'逻辑买存储股=在峰值买入"
+    detection_rule: "当存储公司PE<15x+毛利率>40%+CapEx/D&A>1.2x→触发卖出警告。当PE>80x或亏损+毛利率<20%+库存天数下降→触发买入信号"
+    check_questions:
+      - "当前毛利率在5年区间的什么位置? (>70%=极端峰值, 如MU FQ2 74%)"
+      - "PE低是因为'便宜'还是因为'峰值利润'? (存储中低PE=后者)"
+      - "CapEx/D&A是否>1.2x? (>1.2x=过度投资开始→产能过剩→周期下行)"
+      - "DRAM/NAND现货价趋势? (连续3月下跌=供过于求信号)"
+    examples:
+      - "MU 2026: PE 21x, 毛利率74%, CapEx/D&A 0.98x — 利润在峰值但投资仍纪律→HBM可能延长周期"
+      - "MU 2023: PE负(亏损$5.8B), 毛利率-9% — 看起来'极贵'但实际是最佳买入点(之后股价+476%)"
+    applicable_to: "存储半导体(MU/SK Hynix/Samsung Memory), 部分适用于面板/太阳能等强商品周期"
+    cross_cycle_validity: "★穿越周期适用——存储的每个周期都重复反转PE动态。唯一可能的例外: HBM绑定合同是否真的改变了周期性(需2-3个周期验证)"
+    hbm_exception_note: "HBM可能是存储历史上首次出现'绑定长期合同+仅3家供应商'的产品。如果HBM合同结构持续,PEP-007在HBM上可能不完全适用——但在传统DRAM/NAND上仍然适用"
+
+# --- 行业特定检查清单 (Industry-Specific Checklists) ---
+industry_checklists:
+
+  saas:
+    name: "SaaS行业专用检查"
+    mandatory_metrics:
+      - "P/FCF(替代P/E作为主估值锚)"
+      - "Owner PE = 市值 / (NI - SBC + 净回购)"
+      - "SBC覆盖率 = 回购 / SBC"
+      - "净缩股率 = 年化股本变化"
+      - "同叙事P/FCF排序(面对同一AI叙事的可比公司)"
+    moat_type_classification:
+      - type: "regulatory_physical"
+        description: "监管复杂度/物理约束型(INTU/PTC)"
+        ai_resistance: "high"
+        typical_mispricing: "叙事错误归因(PEP-001)"
+      - type: "data_switching_cost"
+        description: "数据锁定/切换成本型(WDAY/CRM)"
+        ai_resistance: "medium"
+        typical_mispricing: "转型阵痛当衰退(PEP-004)"
+      - type: "creative_workflow"
+        description: "创意工具/工作流型(ADBE/NOW)"
+        ai_resistance: "low-medium"
+        typical_mispricing: "可能合理但可能过度(需逐案分析)"
+    capital_return_benchmarks:
+      excellent: "SBC覆盖>200% + 缩股>2%/yr (ADBE/CRM)"
+      good: "SBC覆盖>150% + 缩股>1%/yr (WDAY)"
+      adequate: "SBC覆盖100-150% + 股本持平 (INTU/PTC/NOW)"
+      poor: "SBC覆盖<100% 或 零回购 (DDOG)"
+
+  # ============================================================
+  # 半导体行业专用检查 v1.0 (12家公司验证)
+  # ============================================================
+  semiconductor:
+    name: "半导体行业专用检查"
+    version: "v1.0 (2026-03-27, 12家验证: NVDA/TSM/ASML/AMD/AVGO/KLAC/LRCX/AMAT/MU/ARM/SMCI/VRT/INTC)"
+
+    # --- 周期位置判断(穿越周期的核心框架) ---
+    cycle_framework:
+      description: "半导体是强周期行业——在景气期看起来'便宜'(低PE×高EPS)但可能是最危险的时刻;在衰退期看起来'贵'(高PE×低EPS)但可能是最好的买入点。此框架帮助识别当前周期位置。"
+
+      # 周期位置判断信号(按领先→滞后排序)
+      leading_indicators:
+        - id: "SEMI-L1"
+          name: "库存天数变化(最领先,领先收入2-3Q)"
+          description: "半导体客户的库存天数(DIO)是最可靠的领先指标。DIO上升=客户在囤货=需求可能见顶;DIO下降=去库存=需求可能触底"
+          detection:
+            bullish: "行业平均DIO连续2Q下降(去库存接近尾声)"
+            bearish: "行业平均DIO连续2Q上升(囤货=见顶信号)"
+          data_source: "fmp_data endpoint=ratios → 计算DIO变化趋势"
+          cycle_history:
+            - "2018 Q3: DIO开始上升 → 2019 H1收入下滑(领先2Q)"
+            - "2022 Q2: DIO开始上升 → 2022 H2收入下滑(领先2Q)"
+            - "2023 Q3: DIO开始下降 → 2024 H1收入恢复(领先2Q)"
+
+        - id: "SEMI-L2"
+          name: "CapEx/D&A比率(领先1-2年)"
+          description: "行业CapEx/折旧比率衡量投资强度。>1.3x=扩产激进(可能导致产能过剩);0.8-1.0x=替换水平(健康);<0.8x=投资不足(未来供给短缺)"
+          detection:
+            bullish: "行业CapEx/D&A < 1.0x(投资不足→未来供给紧张→价格上涨)"
+            bearish: "行业CapEx/D&A > 1.5x(过度扩产→未来产能过剩→价格下跌)"
+            current_signal: "MU CapEx/D&A=0.98x(纪律好), TSM=1.3x(扩产但有需求支撑)"
+          cycle_history:
+            - "2017-2018: 存储CapEx/D&A>1.8x → 2019产能过剩→价格暴跌"
+            - "2021-2022: 全行业CapEx/D&A>1.4x → 2023库存修正"
+            - "2025-2026: 混合(AI投资高但NAND纪律好)→TBD"
+
+        - id: "SEMI-L3"
+          name: "订单/积压变化率(领先1-2Q)"
+          description: "设备公司的book-to-bill比率和订单积压变化。B/B>1=需求超供给;B/B<1=需求放缓"
+          detection:
+            bullish: "B/B从<1回升至>1(需求拐点向上)"
+            bearish: "B/B从>1回落至<1(需求拐点向下)"
+          data_source: "SEMI月度数据 / 设备公司财报"
+
+        - id: "SEMI-L4"
+          name: "DRAM/NAND现货价格(领先1Q)"
+          description: "存储现货价格是最敏感的供需信号。价格上涨=供不应求;下跌=供过于求"
+          detection:
+            bullish: "DRAM/NAND现货价连续3月上涨"
+            bearish: "DRAM/NAND现货价连续3月下跌"
+          data_source: "TrendForce/DRAMeXchange"
+
+        - id: "SEMI-L5"
+          name: "WFE总支出预测方向(SEMI/Gartner)"
+          description: "SEMI和Gartner的WFE年度预测。历史规律: WFE从未连续3年增速>7%不回调"
+          detection:
+            bullish: "WFE预测从下调→上调(周期底部确认)"
+            bearish: "WFE预测从上调→下调(周期顶部确认)"
+            current_reading: "WFE 2026E $145B(+10%), 2027E $156B(+7.3%) — 第3年增长,历史上总在此处回调"
+
+        - id: "SEMI-L6"
+          name: "Hyperscaler AI CapEx指引(半导体需求的需求)"
+          description: "MSFT/GOOG/META/AMZN的AI CapEx指引是半导体需求的源头信号。增速>30%=需求持续;增速放缓至<10%=需求将减速"
+          detection:
+            bullish: "Hyperscaler AI CapEx指引上调或维持>$400B"
+            bearish: "Hyperscaler AI CapEx指引下调>20%(AI ROI失望→急刹)"
+          current_reading: "2026 ~$470B+(仍在加速)"
+
+        - id: "SEMI-L7"
+          name: "地缘政治温度计(半导体独有)"
+          description: "台海紧张/中国出口管制/CHIPS Act进展——影响TSM/ASML/INTC估值的非财务因子"
+          detection:
+            bullish: "台海降温+Arizona fab良率验证+CHIPS Act资金到位"
+            bearish: "台海升温+新增出口限制+CHIPS Act执行延迟"
+          data_source: "Polymarket台海概率 + 政策新闻"
+
+      # 周期位置分层(基于以上信号综合判断)
+      cycle_positions:
+        - position: "early_recovery"
+          description: "下行周期底部→开始恢复"
+          signals: "DIO下降+B/B>1+现货价上涨+WFE预测上调"
+          typical_multiples: "P/E 20-30x(看似贵但在谷值EPS上→实际便宜)"
+          action: "★最佳买入点 — 15-20x谷值PE入场"
+          historical: "2019 Q4, 2023 Q3"
+
+        - position: "mid_cycle"
+          description: "恢复中段,增速高但估值还未极端"
+          signals: "收入增长中+库存正常+CapEx温和扩张"
+          typical_multiples: "P/E 15-25x(均衡)"
+          action: "持有,开始监控见顶信号"
+
+        - position: "late_cycle"
+          description: "景气高位,增速仍正但可能即将见顶"
+          signals: "WFE连续3年>7%增长+CapEx/D&A>1.3x+库存开始上升"
+          typical_multiples: "P/E 10-15x(看似便宜但在峰值EPS上→PEP-006陷阱)"
+          action: "★减仓或对冲 — 不要被低PE迷惑"
+          historical: "2018 H1, 2021 H2, 2026现在(?)"
+          current_assessment: "当前可能处于此位置——WFE第3年增长+设备PE创历史新高"
+
+        - position: "downturn"
+          description: "周期下行,收入/利润正在下降"
+          signals: "DIO上升+B/B<1+现货价下跌+WFE预测下调"
+          typical_multiples: "P/E 30-100x+(在谷值EPS上看起来极贵→但历史上是最佳买入区)"
+          action: "★为入场做准备 — 等待DIO拐点"
+          historical: "2019 H1, 2022 H2-2023 H1"
+
+    # --- 子行业分层(12家公司的经验) ---
+    sub_sectors:
+      - name: "设计/制造垄断"
+        companies: ["NVDA", "TSM", "AVGO", "AMD"]
+        characteristics: "AI需求直接受益,管线能见度高,Forward PE 15-24x"
+        cycle_sensitivity: "低-中(AI需求部分脱钩WFE周期)"
+        typical_gap_type: "underpriced_improvement(市场定价减速但实际可能更慢)"
+        key_metric: "Forward PE + 订单管线 + ASIC vs GPU份额"
+
+      - name: "设备(周期型)"
+        companies: ["KLAC", "LRCX", "AMAT", "ASML"]
+        characteristics: "强周期,PE在峰值看起来便宜在谷值看起来贵"
+        cycle_sensitivity: "高(LRCX最高,KLAC最低,ASML特殊)"
+        typical_gap_type: "overpriced_optimism(在景气期) / underpriced(在衰退期)"
+        key_metric: "PE vs历史周期区间 + WFE预测方向 + B/B比率"
+        critical_rule: "★永远不要在峰值PE×峰值EPS上买入设备股"
+        defensive_ranking: "ASML > KLAC > AMAT > LRCX (按下行周期收入跌幅排序)"
+
+      - name: "存储(超强周期)"
+        companies: ["MU"]
+        characteristics: "PE动态与所有其他股票相反(PEP-007)"
+        cycle_sensitivity: "极高(收入可跌50%+,毛利率可从+40%变-10%)"
+        typical_gap_type: "overpriced_optimism(低PE=峰值) / underpriced(高PE=谷值)"
+        key_metric: "CapEx/D&A(投资纪律) + DRAM/NAND现货价 + HBM合同结构"
+        critical_rule: "★存储股低PE=卖出信号,高PE=买入信号(与所有正常股票相反)"
+
+      - name: "IP/平台"
+        companies: ["ARM"]
+        characteristics: "版税模式抗周期,但估值极端(140x PE)"
+        cycle_sensitivity: "低(版税按芯片出货收,不按CapEx周期)"
+        typical_gap_type: "overpriced_optimism(当前估值定价6x收入增长)"
+        key_metric: "版税率趋势 + RISC-V竞争 + AGI CPU进展"
+
+      - name: "AI基础设施"
+        companies: ["VRT", "SMCI"]
+        characteristics: "AI CapEx直接受益,但品质差异巨大"
+        cycle_sensitivity: "高(与Hyperscaler CapEx高度相关)"
+        typical_gap_type: "varies — VRT(品质满价), SMCI(增长陷阱)"
+        key_metric: "毛利率(VRT 34% vs SMCI 8%) + 订单积压 + FCF质量"
+        critical_rule: "★同一趋势中有IP的赚钱(VRT),没IP的不赚钱(SMCI)"
+
+      - name: "转型型"
+        companies: ["INTC"]
+        characteristics: "二元结局,催化剂验证金字塔(PEP-005)"
+        cycle_sensitivity: "N/A(不是周期驱动,是转型驱动)"
+        typical_gap_type: "overpriced_optimism(希望跳过验证)"
+        key_metric: "IFS外部客户收入 + 18A良率 + 稀释速度"
+
+    # --- 穿越周期的行业估值锚 ---
+    valuation_anchors:
+      description: "半导体估值不能只用当前PE——必须周期调整"
+      methods:
+        - name: "mid-cycle PE"
+          description: "用过去5-7年的平均EPS(覆盖完整周期)计算PE"
+          formula: "Mid-cycle PE = 当前价格 / 5年平均EPS"
+          use_case: "设备股+存储股(强周期)的主估值锚"
+        - name: "peak-to-trough PE range"
+          description: "对比当前PE在历史峰值PE和谷值PE中的位置"
+          formula: "位置 = (当前PE - 谷值PE) / (峰值PE - 谷值PE)"
+          use_case: "判断是否在'危险区'(>0.8)或'机会区'(<0.2)"
+          current_readings:
+            KLAC: "49x在15-30x区间中: 位置=1.0+(极端!)"
+            LRCX: "51x在12-25x区间中: 位置=1.0+(极端!)"
+            AMAT: "38x在12-22x区间中: 位置=1.0+(极端!)"
+        - name: "Forward PE + PEG"
+          description: "对设计/制造垄断(非周期部分)更有意义"
+          use_case: "NVDA/TSM/AVGO/AMD——增速较稳定,forward PE更有参考价值"
+          current_readings:
+            NVDA: "15.4x forward, PEG 0.5(偏低)"
+            TSM: "23.4x forward, PEG 0.7(偏低)"
+        - name: "EV/EBITDA(CapEx扭曲时)"
+          description: "当CapEx极高(如TSM $56B/yr)扭曲P/FCF时,用EV/EBITDA替代"
+          use_case: "TSM和所有重CapEx半导体"
+
+    # --- 半导体必检指标(每次分析必填) ---
+    mandatory_metrics:
+      - "当前WFE周期位置(early/mid/late/downturn)"
+      - "PE vs历史5年周期区间(百分位)"
+      - "CapEx/D&A比率(投资纪律)"
+      - "库存天数(DIO)趋势(领先指标)"
+      - "地缘政治暴露度(台湾/中国收入占比)"
+      - "Forward PE + PEG(设计/制造层) 或 Mid-cycle PE(设备/存储层)"
+      - "同子行业PE排序(异常值检测)"
+
+  consumer:
+    name: "消费品行业专用检查(待建)"
+    note: "需要: 定价权分层/渠道份额/品牌价值/PL竞争"
+
+# --- 已完成的预期差分析卡索引 ---
+completed_cards:
+  - ticker: "ADBE"
+    gap_type: "excessive_pessimism"
+    composite_score: 3.83
+    key_pattern: "PEP-002(资本回报盲区) + PEP-003(速度溢价)"
+    card_path: "reports/ADBE/data/expectation_gap_card.yaml"
+
+  - ticker: "CRM"
+    gap_type: "underpriced_improvement"
+    composite_score: 4.33
+    key_pattern: "PEP-004(转型阵痛当衰退) + PEP-002(资本回报盲区)"
+    card_path: "reports/CRM/data/expectation_gap_card.yaml"
+
+  - ticker: "WDAY"
+    gap_type: "excessive_pessimism"
+    composite_score: 4.17
+    key_pattern: "PEP-004(转型阵痛当衰退) + PEP-003(速度溢价)"
+    card_path: "reports/WDAY/data/expectation_gap_card.yaml"
+
+  - ticker: "INTU"
+    gap_type: "underpriced_improvement"
+    composite_score: 3.67
+    key_pattern: "PEP-001(叙事错误归因)"
+    card_path: "reports/INTU/data/expectation_gap_card.yaml"
+
+  - ticker: "PTC"
+    gap_type: "underpriced_improvement"
+    composite_score: 3.50
+    key_pattern: "PEP-001(叙事错误归因)"
+    card_path: "reports/PTC/data/expectation_gap_card.yaml"
+
+  - ticker: "NOW"
+    gap_type: "excessive_pessimism"
+    composite_score: 3.33
+    key_pattern: "PEP-003(速度溢价)"
+    card_path: "reports/NOW/data/expectation_gap_card.yaml"
+
+  - ticker: "DDOG"
+    gap_type: "overpriced_optimism"
+    composite_score: 3.00
+    key_pattern: "PEP-002(资本回报盲区,反向——市场忽视DDOG的弱资本回报)"
+    card_path: "reports/DDOG/data/expectation_gap_card.yaml"
+
+  - ticker: "INTC"
+    gap_type: "overpriced_optimism"
+    composite_score: 3.00
+    key_pattern: "PEP-005(催化剂验证金字塔)"
+    card_path: "reports/INTC/data/expectation_gap_card.yaml"
+
+  # 半导体 (12家, 2026-03-27)
+  - ticker: "NVDA"
+    gap_type: "underpriced_improvement"
+    composite_score: 3.50
+    key_pattern: "Forward PE 15.4x定价减速17%但实际40%+($1T管线)"
+    card_path: "reports/NVDA/data/expectation_gap_card.yaml"
+
+  - ticker: "TSM"
+    gap_type: "underpriced_improvement"
+    composite_score: 3.33
+    key_pattern: "地缘折价可能过度(OPM 51%但PE仅23x vs ASML 54x)"
+    card_path: "reports/TSM/data/expectation_gap_card.yaml"
+
+  - ticker: "AVGO"
+    gap_type: "underpriced_improvement"
+    composite_score: 3.33
+    key_pattern: "ASIC #1+NVDA对冲(GPU→ASIC趋势受益)"
+    card_path: "reports/AVGO/data/expectation_gap_card.yaml"
+
+  - ticker: "AMD"
+    gap_type: "underpriced_improvement"
+    composite_score: 3.17
+    key_pattern: "推理份额机会(推理中CUDA锁定弱+价格优势强)"
+    card_path: "reports/AMD/data/expectation_gap_card.yaml"
+
+  - ticker: "ASML"
+    gap_type: "no_significant_gap"
+    composite_score: 2.83
+    key_pattern: "精确定价零安全边际(P/FCF 44x=共识CAGR 12.8%)"
+    card_path: "reports/ASML/data/expectation_gap_card.yaml"
+
+  - ticker: "KLAC"
+    gap_type: "overpriced_optimism"
+    composite_score: 3.00
+    key_pattern: "PEP-006(周期峰值增长溢价: 49x vs历史15-30x)"
+    card_path: "reports/KLAC/data/expectation_gap_card.yaml"
+
+  - ticker: "LRCX"
+    gap_type: "overpriced_optimism"
+    composite_score: 3.17
+    key_pattern: "PEP-006(51x vs历史12-25x)+最高周期beta"
+    card_path: "reports/LRCX/data/expectation_gap_card.yaml"
+
+  - ticker: "AMAT"
+    gap_type: "overpriced_optimism"
+    composite_score: 2.83
+    key_pattern: "PEP-006(38x vs历史12-22x,但三家中最防守)"
+    card_path: "reports/AMAT/data/expectation_gap_card.yaml"
+
+  - ticker: "MU"
+    gap_type: "overpriced_optimism"
+    composite_score: 3.00
+    key_pattern: "PEP-007(反转PE陷阱: 21x=峰值信号+毛利率74%极端)"
+    card_path: "reports/MU/data/expectation_gap_card.yaml"
+
+  - ticker: "ARM"
+    gap_type: "overpriced_optimism"
+    composite_score: 2.83
+    key_pattern: "140x PE定价2031年EPS+AGI CPU双刃剑"
+    card_path: "reports/ARM/data/expectation_gap_card.yaml"
+
+  - ticker: "SMCI"
+    gap_type: "no_significant_gap"
+    composite_score: 2.17
+    key_pattern: "增长陷阱(收入+340%但毛利率6.3%+治理危机)"
+    card_path: "reports/SMCI/data/expectation_gap_card.yaml"
+
+  - ticker: "VRT"
+    gap_type: "no_significant_gap"
+    composite_score: 3.17
+    key_pattern: "品质最高但72x PE已充分定价"
+    card_path: "reports/VRT/data/expectation_gap_card.yaml"
+
+# --- 横向报告索引 ---
+sector_reports:
+  - industry: "SaaS/企业软件"
+    report_path: "reports/SAAS_SECTOR/SaaS_Expectation_Gap_Sector_Report_v1.0.md"
+    companies: ["ADBE", "CRM", "WDAY", "INTU", "PTC", "NOW", "DDOG"]
+    date: "2026-03-27"
+    key_findings:
+      - "市场定价与基本面质量方向相反(ADBE最强=最便宜,DDOG最弱=最贵)"
+      - "三种护城河AI抗性分层: 监管型>数据型>创意型"
+      - "资本回报差距15pp/yr被市场完全忽视"

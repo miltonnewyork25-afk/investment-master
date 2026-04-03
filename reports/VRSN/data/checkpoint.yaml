@@ -1,0 +1,174 @@
+schema_version: "2.0"
+ticker: VRSN
+company: "VeriSign, Inc."
+framework_version: v19.6
+worktree: "金融基础设施"
+industry: "financial_infrastructure"
+last_updated: "2026-03-23T20:30:00+08:00"
+
+current_phase: 5
+phase_status: "in_progress"
+phases_completed: [-1, -0.5, 0, 0.5, 0.75, 1, 2, 3, 4]
+complete_version: "v1.2"
+complete_chars: 270018
+complete_gates: "G1-G5 ALL PASS"
+complete_notes: "v1.1整合Phase2/4深化(+49K), v1.2 P4.5参考扫描+10章节扩展(+27K)"
+
+target_chars: 270000
+target_range: "250K-350K"
+hard_floor: 200000
+
+# VRSN核心参数
+price_at_analysis: "$240.78"
+market_cap_B: 22.3
+pe_at_analysis: "27.1x"
+ev_ebitda: "20.4x"
+fcf_yield: "4.8%"
+revenue_fy2025: "$1,657M"
+eps_fy2025: "$8.81"
+fcf_fy2025: "$1,068M"
+opm_fy2025: "67.7%"
+fcf_margin: "64.5%"
+employees: 929
+shares_out: "92.6M"
+net_debt: "$1,490M"
+nd_ebitda: "0.79x"
+
+# 巴菲特持仓
+buffett_entry_avg: "$35.60"
+buffett_shares_peak: "~13.3M"
+buffett_shares_current: "~9.0M (post Q3 2025 sale)"
+buffett_total_return: "+518%"
+buffett_cagr: "~15-16%"
+
+# 域名数据
+com_domains_fy2025: "161M"
+com_wholesale_price: "$10.26"
+com_price_next_increase: "2026-09 → $10.97 (est)"
+contract_expiry: "2030-11-30"
+price_increase_allowed: "7%/year in 4 of 6 years"
+
+# CQ初始+Phase 1更新
+hypotheses:
+  - CQ1_contract_unbreakable
+  - CQ2_pricing_reflexivity
+  - CQ3_buffett_signal
+  - CQ4_domain_peak
+  - CQ5_buyback_efficiency
+  - CQ6_political_cycle
+  - CQ7_opm_ceiling
+  - CQ8_dns_split
+
+cq_initial: "CQ1:82% CQ2:58% CQ3:50% CQ4:55% CQ5:65% CQ6:60% CQ7:70% CQ8:25%"
+cq_phase1: "CQ1:84% CQ2:55% CQ3:45% CQ4:58% CQ5:68% CQ6:62% CQ7:72% CQ8:23%"
+
+# Phase 1产出
+phase1_output: "staging/phase1_draft.md"
+phase1_chars: 62373
+phase1_dm_count: 132
+phase1_dm_density: "2.12/千字"
+phase1_causal_density: "11.1/万字"
+phase1_mermaid: 10
+phase1_chapters: 15
+
+# Reverse DCF结论(铁律O)
+reverse_dcf_g: "3.3-4.1%"
+reverse_dcf_verdict: "合理偏保守"
+p1_narrative_constraint: "不超过1档, 禁止写显著低估"
+
+# PW评估
+pw_score: 2.4
+methodology: "传统框架(SOTP/DCF→目标价+评级)"
+
+# SGI
+sgi_score: 10.0
+sgi_route: "极端专才模型"
+
+# 品质门控
+a_score: 8.0
+b_score_weighted: 8.3
+monopoly_purity: 9.6
+
+# 质量目标
+quality_target: "4.4/5.0 (≥88/110)"
+dm_density_target: "≥2.0/千字"
+causal_density_target: "≥7.0/万字"
+mermaid_target: "≥30"
+
+# Phase 2产出
+phase2_output: "staging/phase2_draft.md"
+phase2_chars: 16575
+phase2_dm_count: 40
+phase2_dm_density: "2.41/千字"
+phase2_causal_density: "7.2/万字"
+phase2_mermaid: 4
+
+# Python估值核心结果
+valuation_weighted_fair_price: "$270"
+valuation_weighted_upside: "+12.3%"
+valuation_5yr_annualized: "8.9%"
+valuation_verdict: "关注(偏积极)"
+valuation_dispersion: "19.0%"
+six_method_weighted: "$263"
+rating_preliminary: "关注"
+
+cq_phase2: "CQ1:85% CQ2:52% CQ3:44% CQ4:58% CQ5:66% CQ6:63% CQ7:73% CQ8:22%"
+
+# Phase 3产出
+phase3_output: "staging/phase3_draft.md"
+phase3_chars: 30407
+phase3_dm_count: 58
+phase3_dm_density: "1.91/千字"
+phase3_causal_density: "6.6/万字"
+phase3_mermaid: 10
+phase3_ks_count: 14
+
+# RT-4调整后估值
+valuation_post_rt4: "$265"
+valuation_post_rt4_upside: "+10.1%"
+rating_post_rt4: "关注(边界)"
+masters_roundtable_fair: "$202"
+
+cq_phase3: "CQ1:82% CQ2:50% CQ3:42% CQ4:60% CQ5:64% CQ6:58% CQ7:73% CQ8:22%"
+
+# Phase 4产出
+phase4_output: "staging/phase4_draft.md"
+phase4_chars: 16553
+phase4_dm_count: 37
+phase4_dm_density: "2.23/千字"
+phase4_causal_density: "8.4/万字"
+phase4_mermaid: 1
+phase4_fact_checks: 15
+phase4_bear_cases: 8
+phase4_black_swans: 5
+
+# Phase 4最终估值
+valuation_final: "$249"
+valuation_final_upside: "+3.4%"
+rating_final: "中性关注"
+rating_change: "从关注(边界)下调至中性关注"
+rating_reason: "系统性修正: RT-4+$123M+黑天鹅+利率累计-$21"
+
+cq_final: "CQ1:82% CQ2:50% CQ3:42% CQ4:60% CQ5:64% CQ6:58% CQ7:73% CQ8:22%"
+
+# 纠错回流
+corrections:
+  - "C1: $123M非现金项影响-$3(非-$15)"
+  - "C2: ND/EBITDA双口径(0.79x/1.27x)"
+  - "C3: S2概率15%→10%"
+  - "C6: Bear-6利率风险可能被低估"
+
+quick_ref:
+  total_chars: 142369
+  latest_phase_chars: 16553
+  phase1_key_findings:
+    - "增长引擎从量价双驱变为纯价格驱动"
+    - "CQ2(提价权政治容忍度)是单一最重要变量"
+    - "VRSN反身性比FICO慢2-3倍(替代成本不对称)"
+    - "巴菲特减仓=估值纪律(PE 14x→33x)"
+    - "财务质量极致: FCF/NI 1.12x, DSO 1天"
+  phase2_priorities:
+    - "Python估值模型(收费站DCF)"
+    - "信念反演(/assumption-audit M1)"
+    - "回购效率η函数定量"
+    - "政治风险2030场景化"

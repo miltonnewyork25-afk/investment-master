@@ -1,0 +1,42 @@
+# 重大决策断点配置 v21.0
+
+# 估值相关断点
+valuation_breakpoints:
+  rating_assignment: true      # 评级分配
+  target_price_setting: true  # 目标价设定
+  valuation_method_choice: true # 估值方法选择
+  dcf_assumptions: true       # DCF关键假设
+
+# 投资决策断点
+investment_breakpoints:
+  recommendation_change: true  # 投资建议变更
+  risk_rating_change: true   # 风险评级变更
+  portfolio_sizing: true     # 仓位建议
+  exit_strategy: true        # 退出策略
+
+# 操作断点
+operational_breakpoints:
+  git_commit: true           # Git提交操作
+  report_publish: true       # 报告发布
+  external_api_calls: false # 外部API调用
+  file_deletion: true       # 文件删除
+
+# 分析断点
+analytical_breakpoints:
+  major_contradiction: true  # 重大矛盾发现
+  assumption_change: true    # 关键假设变更
+  data_quality_issues: true # 数据质量问题
+  methodology_change: true  # 方法论变更
+
+# 协作断点
+collaboration_breakpoints:
+  multi_agent_launch: false # 多Agent启动
+  skill_execution: false    # 重要skill执行
+  user_input_required: true # 明确需要用户输入
+  session_handover: true    # 会话交接
+
+# 全局设置
+global_settings:
+  auto_recovery: true        # 自动恢复机制
+  timeout_seconds: 1800     # 30分钟超时
+  notification_enabled: true # 启用通知

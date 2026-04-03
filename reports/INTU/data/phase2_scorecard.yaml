@@ -1,0 +1,46 @@
+# Phase 2 Score Card — INTU
+phase: 2
+date: 2026-03-24
+chars: 66467 / 50000 (132.9%) ✅ 超额
+dm_density: 1.86/千字 ✅ (门控≥0.8)
+dm_count: 124
+causal_density: 16.39/万字 ✅ (门控≥5.0)
+mermaid: 8 ✅ (Phase 2新增8个)
+agent_balance: A=15.3K / B=15.0K / C=36.2K (max/min=2.41x ⚠️ C超额产出)
+
+cq_evolution:
+  CQ1: 65% (+5%) — CK独立估值$11.5-16.1B vs 收购价$8.1B=已创造价值; 但增速减速27→23%
+  CQ2: 50% (±0%) — AI护城河悖论待Phase 3深化
+  CQ3: 52% (+7%) — IES SAM $5-15B可行; 留存88%+ARPC 20x验证; 但承重墙联合概率仅12-17%
+  CQ4: 68% (+3%) — SOTP中枢$503(+10%), 概率加权$528(+15.6%), 7个估值5/7一致
+  CQ5: 50% (±0%) — 待Phase 3竞争格局深化
+
+d_scores_preview:
+  D1: 7.5/10 — DM累计262个, 密度持续>1.5/千字
+  D3: 8.5/10 — 因果密度16.39/万字, 证据链完整
+  D5: 7.5/10 — SOTP+Reverse DCF+概率加权三角交叉, Python验证, 铁律K PASS
+  D7: 7/10 — CI-1~4维持, 新增CK恢复减速 vs 正常化辩论
+  D8: 5/10 — Mermaid从0→8, Phase 3需继续补充
+
+trajectory:
+  cumulative_chars: 125.7K / 300K (41.9%) — Phase 2目标30%→超标✅
+  cumulative_dm: 262 / 450 (58.2%) — 远领先轨迹✅
+  cumulative_mermaid: 8 / 25 (32%) — 接近轨迹
+  on_track: YES
+
+key_findings_p2:
+  - "CK独立估值$11.5-16.1B, 收购已创造$3.4-8.0B价值"
+  - "Mailchimp价值毁灭$5.2-7.9B(每股$37-56), 减值概率30-40%"
+  - "CK×Mailchimp合计: 一好一坏持平, 均不如直接回购"
+  - "IES SAM $5-15B, 10%转化率=年$1.6B ARR"
+  - "承重墙联合概率: 4/4成功仅12-17%, 3/4成功35-45%"
+  - "管理层综合7.2/10, CEO终止卖出=最强估值信心信号"
+  - "SOTP中枢$503(+10%), 概率加权EV $528(+15.6%)"
+  - "初步评级: 关注 — 期望回报+10.5%刚过阈值, 弱信号"
+  - "铁律K: PASS (7个估值5/7=71%方向一致)"
+
+next_phase_priorities:
+  - "Phase 3: 竞争格局深化(SMB+中端+AI原生)"
+  - "Phase 3: 护城河深化(C4数据飞轮+AI增强验证)"
+  - "Phase 3: 投资大师五人圆桌"
+  - "Phase 3: 估值校准(护城河发现→估值调整)"

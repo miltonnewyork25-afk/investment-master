@@ -1,0 +1,63 @@
+# DDOG Phase 1 Score Card
+phase: 1
+date: 2026-03-25
+
+# 门控检查
+gates:
+  chars: "78,638 / 70,000 (112%) ✅"
+  dm_count: "91 / 150 ⚠️ 低于目标(P2需补强至累计280+)"
+  dm_density: "1.15/千字 ⚠️ 低于1.8目标"
+  causal_density: "14.11/万字 ✅ (目标≥8.0, 但需校准质量vs数量)"
+  mermaid: "12 ✅ (P1目标≥10)"
+  agent_balance: "A=25.3K / B=28.3K / C=25.0K (max/min=1.13x ✅)"
+
+# Agent产出
+agents:
+  A_business: "25,334 chars — Reverse DCF+产品矩阵+使用计费+竞争+Splunk类比"
+  B_moat: "28,301 chars — 护城河C1-C7(18.5/35)+飞轮(+1.5~+3.0)+SaaS经济学(NRR 120%/MN 0.90)"
+  C_cpa: "25,003 chars — M1三层盈利+M3 FCF真假+M4利润基座+E4会计质量"
+
+# CQ演化
+cq_evolution:
+  CQ1_growth: "60% (+5) — 增速加速25→29%确认+AI工作负载驱动+RPO +52%前瞻"
+  CQ2_usage: "55% (±0) — 使用计费弹性验证但2023腰斩前车之鉴"
+  CQ3_sbc: "45% (-5) — 三层盈利暴露真实OPM仅7%, SBC 5年无收敛趋势"
+  CQ4_opensource: "48% (+3) — OTel标准化实际利好分析层, Grafana定位差异化(非正面替代)"
+  CQ5_security: "55% (+5) — 安全通过3.5/4第二曲线检验, 70% of $1M+客户使用"
+  CQ6_valuation: "50% (±0) — DT PEG平价(1.75 vs 1.67), SBC调整后P/FCF 120-200x"
+
+# 6个根本问题初步回答
+fundamental_questions:
+  Q1_靠什么赚钱: "Infra+APM+Logs三支柱(>$2.5B, 73% rev), 估算Non-GAAP OPM 25-35%"
+  Q2_利润真假: "GAAP亏损→Non-GAAP 22%→Owner 7% — SBC是唯一利润吞噬者, Non-GAAP调整干净(仅SBC)"
+  Q3_增长质量: "NRR 120%+多产品84%→高质量。但NRR从130%+下降, Magic Number 0.90(健康)"
+  Q4_透支未来: "SBC 3年稀释14.5%=每年4.6%透支股东。SBC/Rev 5年无收敛(16%→22%→22%)"
+  Q5_会计包装: "C4矛盾严重(GAAP-NonGAAP 23pp), 但调整项干净(仅SBC)。GAAP NI含$171M投资收益掩饰"
+  Q6_谈判权: "上游弱(客户可削减用量)+下游强(竞品难替代)=矛盾体"
+
+# 关键发现
+key_findings:
+  - "Reverse DCF: $129隐含15-19% 5年CAGR, ≈分析师共识→可能合理定价而非低估"
+  - "DT PEG平价: DDOG 1.75x vs DT 1.67x → 63% PE溢价几乎全被增速差解释"
+  - "三层盈利真相: GAAP -1.3% / Non-GAAP 22% / Owner 7% → SBC是估值判断的分水岭"
+  - "护城河18.5/35: C3生态锁定(4.5)最强, C7自维持(2.0)最弱=宽但贵"
+  - "飞轮净正+1.5~+3.0: AI增量TAM > SRE减少蚕食(与CRM净负不同)"
+  - "SBC-adj Rule of 40=35(低于40!) vs headline 57 → 两个DDOG的故事"
+  - "Splunk类比仅20%相似 — DDOG有机生长vs Splunk并购碎片化"
+  - "安全3.5/4第二曲线验证, AI仅2/4(太早)"
+
+# 轨迹
+trajectory:
+  cumulative_chars: "78,638 / 270,000 (29.1%) ✅ 目标30%基本达标"
+  cumulative_dm: "91 / 530 (17.2%) ⚠️ 落后(P2需加速)"
+  cumulative_mermaid: "12 / 35 (34.3%) ✅ 正常轨迹"
+
+# P2优先级
+next_phase:
+  - "DM密度补强: P2每章节DM≥15(目标累计280+)"
+  - "WACC决策树(EVO-1): CAPM推导+同行对标"
+  - "M5税务+M6行业SaaS插槽"
+  - "E1资本配置(η回购效率→DDOG η=0因无回购)"
+  - "E2回报框架(增量ROIC)"
+  - "管理层6维度(已有7.8/10初评, P2深化)"
+  - "信念反演(assumption-audit M1): 49x PE隐含信念集"

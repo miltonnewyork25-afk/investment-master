@@ -1,0 +1,432 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Walmart Inc.
+# 压缩比: 357K → ~12K (30x)
+# 六层 + 三个重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: WMT
+  company: "Walmart Inc."
+  report_date: "2026-02-25"
+  stock_price: "$126.75"
+  market_cap: "~$1.01T"
+  report_version: "v1.0"
+  report_path: "reports/WMT/WMT_Complete_Deep_Dive_2026-02-25.md"
+  quality_score: "报告未含记分卡评分"
+  cqi: "报告未覆盖"
+  framework_version: "v17.3"
+  industry: "消费品 — 大众综合零售"
+  archetype: "通才型零售飞轮(EDLP规模+平台化萌芽)"
+  chars: 356960
+  dm_count: 0
+  dm_density: "0/千字(v17.3未强制DM锚点)"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "零售商利润率(4.18%) vs 科技平台估值(PE 46x) — 市场为尚未验证的身份转型预付了44%溢价，8个隐含信念的联合概率仅0.3%"
+  rating: "审慎关注 (Cautious Watch)"
+  fair_value: "$88 (八源概率加权)"
+  expected_return: "-30.6%"
+
+  key_arguments:
+    - claim: "身份溢价超调3倍 — IPI=308%，市场定价3x'完全平台成功'"
+      direction: bearish
+      magnitude: 5  # ETN身份溢价法+KLAC信念反演法双重量化确认
+      mechanism: "SGI 3.6(通才) × PE 46x(专才级) → 75pp+不匹配 → A-Score 5.54仅支撑PE 28-35x → 超出部分=纯叙事溢价"
+      kill_switch: "广告占营收>3%且OPM>6%(身份C验证) — 概率15%"
+
+    - claim: "广告飞轮是'利润维持器'而非'利润提升器' — $6.4B广告对OPM增量仅47bps"
+      direction: bearish
+      magnitude: 4  # 数学可量化但广告仍在高速增长
+      mechanism: "广告毛利率70%→每$1B提升OPM~10bps → 但核心零售成本通胀(人工+关税+自动化折旧)年均吞噬30-50bps → 广告增量被杂货稀释力基本对冲"
+      kill_switch: "广告有机增速持续>35%且SGA率开始下降(自动化替代人工见效) — 预计FY2029+"
+
+    - claim: "OPM逆转-13bps(4.31→4.18%)是最被忽视的警告信号"
+      direction: bearish
+      magnitude: 4  # FY2026实际数据确认
+      mechanism: "广告$6.4B+46%增速 → 按理应推高OPM → 但OPM反降13bps → 说明核心零售利润率恶化速度超过广告利润贡献 → Delta OPM是单一判断指标"
+      kill_switch: "FY2027连续2季OPM>4.5%(证明广告效应开始主导)"
+
+    - claim: "EDLP飞轮在危机中反脆弱 — 杂货31.6%线上份额+4,600门店物理网络不可复制"
+      direction: bullish
+      magnitude: 5  # 2008/2020/2022三次危机验证
+      mechanism: "经济衰退→消费降级→客流向EDLP迁移+竞争对手退出 → 份额提升+采购规模扩大 → 飞轮加速转动 → $500-635B核心零售价值有高韧性"
+      kill_switch: "关税导致EDLP涨价>5%且与Hi-Lo策略价差缩小 → 飞轮'价格领导力'引擎减弱"
+
+    - claim: "温水煮青蛙(概率35-40%)比黑天鹅更危险 — 5年静默蒸发$200B+"
+      direction: bearish
+      magnitude: 4  # 概率最高的不利路径
+      mechanism: "广告增速自然S曲线减速→OPM停在4.4-4.6%→PE从46x渐进压缩至32x(每年-2~3x) → 不触发恐慌但5年后股价$70-85"
+      kill_switch: "广告增速持续>30%打破S曲线减速预期"
+
+  moat:
+    composite_score: 5.54  # A-Score v2.0
+    half_life: "物理网络>20年 | EDLP品牌>30年 | 供应链>15年 | 广告技术2-3年"
+    dimensions:
+      - type: scale
+        strength: 5
+        evidence: "4,600门店覆盖93%美国人口+$713B营收=全球最大采购规模→比竞争对手低5-15%定价"
+        vulnerability: "规模保护的是4%利润率的杂货池(A4仅5分)——壁垒最强处恰是利润最薄处"
+      - type: brand
+        strength: 4
+        evidence: "EDLP心智62年积累→87%的$100K+家庭在WMT购物→品牌从'穷人超市'向全收入段渗透"
+        vulnerability: "功能性品牌(低价)而非情感品牌——关税涨价>5%将直接侵蚀品牌核心承诺"
+      - type: switching_cost
+        strength: 2
+        evidence: "消费者随时可切COST/TGT/AMZN(A2仅3分)——Walmart+提供初步锁定但权益远薄于Prime"
+        vulnerability: "Walmart+仅免配送+会员价 vs Prime(视频+音乐+阅读+购物+医疗)——生态锁定2/10"
+      - type: network_effect
+        strength: 2
+        evidence: "Marketplace 20万卖家/4.2亿SKU初具跨边效应(A7=4分)——但vs Amazon 200万+卖家飞轮尚在早期"
+        vulnerability: "广告数据飞轮需要更大数据量才能自我强化——当前$6.4B不足以形成闭环"
+      - type: data
+        strength: 3
+        evidence: "2亿+消费者购物数据→Walmart Luminate向供应商出售洞察→Walmart Connect精准广告基础"
+        vulnerability: "数据半衰期3-5年+广告技术落后Amazon 2-3年(A5数字资产评估)"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含FCF CAGR 11-12%+营收CAGR 4.3%+OPM从4.18%扩至7.3%(年均+31bps持续10年)——OPM从未超5.5%，隐含增速比历史快50%"
+    methods_used: ["DCF(Python验证)", "Reverse DCF", "可比PE", "PEG", "FCF Yield", "SOTP身份拆解", "信念反演", "红队校准"]
+    dispersion: "~27% ($76-$101，含红队校准$76.8和独立看空$101)"
+    consensus_vs_ours: "市场看WMT=消费科技平台(PE 46x) | 我们看WMT=身份转型30%完成的零售商(合理PE 28-35x)，$38.75/股溢价=纯叙事定价"
+    entry_zone: "$82-$92 (PE 30-34x)"
+    catalyst: "温水煮青蛙路径: 广告增速自然减速+OPM持平→PE渐进压缩→FY2028-2029可能触及$85-95入场区"
+
+  # v1.2新增: 买卖决策框架
+  action_framework:
+    verdict: "不要在当前价位建仓 — 下行30% vs 上行15%(身份C)严重不对称"
+    buy_triggers:
+      - trigger: "PE回落至37-40x(部分溢价消化)，可能因单季度广告增速<20%触发"
+        price_zone: "$100-$108"
+        reasoning: "溢价从44%缩小至14-23%，风险回报开始改善"
+      - trigger: "PE回落至30-34x(接近合理估值)，可能因连续2季OPM<4.0%+广告减速"
+        price_zone: "$82-$92"
+        reasoning: "核心建仓区 — A-Score 5.54支撑的合理PE区间+安全边际"
+      - trigger: "PE回落至25-28x(零售商估值+安全边际)，宏观冲击叠加"
+        price_zone: "$68-$75"
+        reasoning: "EDLP飞轮反脆弱在衰退中验证→极端低估→激进买点"
+    hold_conditions:
+      - "广告有机增速>20%(黄灯以上)"
+      - "OPM>4.0%(未进入衰退区)"
+      - "同店销售正增长(EDLP飞轮正常运转)"
+      - "Walmart+会员数>22M且未流失"
+    sell_triggers:
+      - signal: "PE>50x(股价>$136)且无OPM突破催化"
+        severity: "action"
+        action: "减仓50%+，锁定涨幅——历史上PE>35x入场3年回报中位数约0%"
+      - signal: "广告有机增速连续2季<15%(红灯)"
+        severity: "action"
+        action: "减仓至≤2%组合权重，触发全面估值重评"
+      - signal: "OPM连续低于4.0%+同店销售转负"
+        severity: "emergency"
+        action: "清仓——EDLP飞轮可能失效，核心零售价值受损"
+      - signal: "沃顿家族加速抛售(连续4季+净卖出加速)"
+        severity: "warning"
+        action: "密切关注——内部人士用脚投票信号加强(已连续8季净卖出)"
+    position_sizing: "当前价位: 不建仓(期望回报-30.6%) | @$90: 组合2-3% | @$75: 组合4-5%"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "身份溢价的数学不可能性"
+    chain: >
+      Reverse DCF → 市场隐含OPM需从4.18%扩至7.3%(年均+31bps×10年)
+      → WMT 62年上市历史中OPM从未超过5.9%(FY2021 COVID超额)
+      → 信念反演: 8个隐含信念需全部同时成立→联合概率0.3%
+      → 身份溢价量化: IPI=308%=市场定价3倍"完全平台成功"
+      → 即使身份B(过渡态35%概率)成立→合理价$93仍低于$126.75
+      → 结论: 当前价格为"从未发生过的完美执行"全额预付
+    transferable_to: "所有经历'身份转型叙事'的传统公司(零售→平台、银行→金融科技等)"
+    reasoning_habit: "当PE远超行业均值时→Reverse DCF翻译'市场在赌什么'→检验每个隐含假设的历史基准率→联合概率暴露脆弱性"
+
+  - id: "CC-2"
+    name: "壁垒-利润池错配(A4陷阱)"
+    chain: >
+      WMT壁垒最强处=杂货(25-26%份额)→但杂货利润率仅2-4%
+      → 利润池最厚处=零售媒体广告(40-60%利润率)→但壁垒最弱(远落后AMZN)
+      → A4仅5/10=壁垒保护的恰恰是最不值钱的东西
+      → 对比ASML(A4=10分): 壁垒(EUV唯一供应)恰好保护最高利润池(高端节点)
+      → 推论: 如果把杂货视为"获客成本"→壁垒位置逻辑成立→但变现链条更长且不确定性更高
+      → 46x PE赌的是"长链条变现成功"→而长链条每一环都可能断裂
+    transferable_to: "所有壁垒保护低利润池、高利润池无壁垒的公司(传统零售商、物流公司)"
+    reasoning_habit: "评估护城河时→不只问'壁垒有多强'→还要问'壁垒保护的利润池有多厚'→A4<5分=壁垒-利润池错配信号"
+
+  - id: "CC-3"
+    name: "广告是OPM的唯一判官(充分统计量)"
+    chain: >
+      广告毛利率~70% vs 杂货~25%→每$1B广告增量提升OPM~10bps
+      → 但核心零售成本通胀(人工4-5%/年+关税+自动化折旧)年均消耗30-50bps
+      → 广告$6.4B→OPM理应上升→但实际FY2026 OPM反降13bps=核心恶化速度>广告贡献
+      → 广告→OPM→PE→身份的传导链→广告增速编码了全部关键信息
+      → 因此: 只需跟踪广告有机增速一个变量→就能做出80%正确决策
+    transferable_to: "所有'高利润新业务+低利润核心业务'混合公司——判断新业务能否改变公司身份"
+    reasoning_habit: "在多变量公司中→寻找'充分统计量'(一个编码其他变量信息的指标)→减少跟踪噪音"
+
+  - id: "CC-4"
+    name: "EDLP飞轮的反脆弱证明"
+    chain: >
+      2008危机: WMT同店+3.0% vs TGT -2.6%(差距590bps)→消费降级加速客流迁移
+      → 竞争对手6,100家破产→市场空间被WMT吸收→份额提升
+      → 供应商其他渠道销量暴跌→WMT稳定出货量成为"避风港"→供应商主动给更优价格
+      → 飞轮不仅在危机中"维持运转"而是"加速运转"
+      → 2020疫情: 杂货目的地地位被放大+电商习惯养成(300%+需求暴增)
+      → 推论: 经济越差WMT越强→EDLP是零售定价策略中唯一的反脆弱模式
+      → 但!2022通胀暴露脆弱性: 成本端不可控时飞轮也会短路(OPM从5.9→3.8%)
+    transferable_to: "所有EDLP/低价领导者(COST/ALDI/Dollar General)的危机韧性评估"
+    reasoning_habit: "评估反脆弱时→必须同时检验'受益于什么冲击'和'受害于什么冲击'→单向反脆弱不是真反脆弱"
+
+  - id: "CC-5"
+    name: "增速-估值剪刀差的PE压缩必然性"
+    chain: >
+      EPS增速: FY2024 +34.5%→FY2025 +26.2%→FY2026 +13.3%→FY2028E CAGR ~9.8%
+      → PE却从30x(10年均值)膨胀至46x→增速减速+PE扩张=经典剪刀差
+      → PEG = 46/13.3 = 3.5x(vs合理1.5-2.0x)→估值倍数与增速严重脱节
+      → 历史验证: WMT在PE>35x时入场的3年回报中位数约0%
+      → 推论: 不需要"坏消息"→只需要"好消息不够好"→PE自然向均值压缩
+    transferable_to: "所有增速减速但PE逆势扩张的公司——PEG>3x是通用警告信号"
+    reasoning_habit: "看到PE创历史新高时→立刻追问'增速能支撑吗'→PEG>2.5x+增速减速=剪刀差警告"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "广告+46%增长将推动OPM持续改善"
+      final: "FY2026 OPM反降13bps→核心零售成本通胀完全抵消广告增量利润"
+      pivot: "OPM逆转+广告对OPM增量仅47bps的数学计算"
+
+    - initial: "负营运资本-$22.6B是平台型资本效率优势"
+      final: "负WC是供应商融资飞轮，证明WMT仍是零售商而非平台(CI-04)"
+      pivot: "红队RT-3修正: 真实'零息浮存金'仅$4-6B而非$22.6B→永续价值差-$3.2/股"
+
+    - initial: "WMT的护城河'宽且深'"
+      final: "A-Score 5.54='宽而浅'——偏科形状: 5个7-8分强项+3个3分谷值=双峰双谷"
+      pivot: "A4壁垒-利润池匹配仅5分(壁垒保护薄利润)+A2切换成本仅3分+A7网络效应仅4分"
+
+  surprises:
+    - finding: "8个隐含信念的联合概率仅0.3% — 信念反演法暴露的估值脆弱性"
+      implication: "当前$126.75需要全部信念同时成立→任何单一信念失败都意味着PE应大幅低于46x→估值结构极端脆弱"
+
+    - finding: "沃顿家族连续8个季度净卖出自家股票"
+      implication: "最了解公司的内部人士在$80-$126区间持续减持→与97%买入评级的sell-side共识形成鲜明反差"
+
+    - finding: "杂货60%收入占比是物理天花板而非可调变量 — '杂货陷阱'"
+      implication: "即使广告从0.9%升至3%→杂货稀释力仍使公司级OPM<6%→身份转型有结构性数学约束"
+
+    - finding: "WMT在PE>35x时入场的3年回报中位数约0%(62年历史)"
+      implication: "当前46x是20年来绝对峰值→高PE零售商的历史先验回报极差"
+
+  blind_spots:
+    - area: "广告有机增速(剔除VIZIO)"
+      why_matters: "FY2026的46%含VIZIO 13-16pp无机贡献→FY2027Q1有机增速是判断广告飞轮真实强度的第一个干净数据点"
+      monitor: "FY2027Q1(2026年5月)管理层披露有机广告增速→<25%=黄灯→<15%=红灯"
+
+    - area: "自动化对SGA率的实际影响"
+      why_matters: "210万员工的人工成本年增4-5%是'反杠杆'→55%履约自动化目标能否逆转SGA/Rev上升趋势决定OPM上限"
+      monitor: "FY2027-2028 SGA/Rev趋势→如果开始下降=自动化见效→A3从5分升级"
+
+    - area: "AI Agent Commerce对EDLP的颠覆时间表"
+      why_matters: "如果购物决策交给AI Agent→品牌认知和EDLP定位可能被绕过→5-10年远期风险但影响护城河根基"
+      monitor: "AI购物助手渗透率(Google/Amazon/Apple动向)+消费者购物决策AI依赖度调研"
+
+  # v1.2新增: 卖出时机教训
+  sell_lessons:
+    - scenario: "PE>35x零售商持有3年→回报中位数0%(WMT 62年数据)"
+      lesson: "零售商有PE天花板——增速减速后高PE不可持续。PEG>3x是卖出/不买信号"
+      transferable: "所有净利率<5%的零售商(TGT/KR/DG类)"
+    - scenario: "增速从34%→13%但PE从30x→46x — 增速-估值剪刀差"
+      lesson: "增速减速+PE逆势扩张=最危险的组合。不需要坏消息→只需要好消息不够好→PE压缩"
+      transferable: "所有从高增速减速但PE未调整的公司"
+    - scenario: "内部人士连续8季净卖出而sell-side 97%买入"
+      lesson: "当管理层/大股东行为与分析师共识严重背离时→内部人士通常对时机更敏感"
+      transferable: "所有存在内部人士持续减持+sell-side极度共识拥挤的公司"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "Delta OPM YoY (营业利润率年度变化)"
+      why_alpha: "OPM编码了广告贡献vs核心零售成本通胀的净效应——比单独跟踪广告增速或成本更全面。报告确认OPM是'单一判断指标'"
+      current_reading: "-13bps YoY (FY2025 4.31% → FY2026 4.18%) = 警告区间"
+    - signal: "广告有机增速(剔除VIZIO/并购)"
+      why_alpha: "广告是身份转型的'充分统计量'——编码了OPM走向、PE合理性、身份转型概率的全部信息。大多数分析师只看总增速(含并购)"
+      current_reading: "FY2026有机增速~30%(总增速46%含VIZIO 13-16pp)"
+    - signal: "沃顿家族季度净买卖"
+      why_alpha: "控股家族的交易行为是最强的内部人士信号——连续8季净卖出与97%买入评级形成极端背离"
+      current_reading: "连续8季净卖出(accelerating)"
+
+  confirmation_signals:
+    - signal: "季度同店销售增速"
+      bullish_threshold: ">4% (EDLP飞轮加速)"
+      bearish_threshold: "<0% (需求萎缩)"
+    - signal: "Walmart+估计活跃会员数"
+      bullish_threshold: ">35M (加速)"
+      bearish_threshold: "<22M (流失)"
+    - signal: "电商渗透率"
+      bullish_threshold: ">22% (广告TAM扩大)"
+      bearish_threshold: "<16% (全渠道ROI质疑)"
+
+  noise_signals:
+    - signal: "Sell-side目标价调整"
+      why_noise: "97%买入率=极端共识拥挤→目标价只能上调不能下调(群体锚定)→参考价值极低"
+    - signal: "FMP DCF模型输出($199.76)"
+      why_noise: "FMP模型隐含15%永续FCF增长率→对零售企业过于激进→输出严重偏高"
+    - signal: "单日/单周股价波动"
+      why_noise: "被动指数资金流入+动量交易主导短期价格→与基本面脱节→看季度趋势"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: COST
+      similarity: "同为大型零售商+会员经济模式+低利润率高周转"
+      key_difference: "COST=专才(会员制仓储,SGI~6)→PE 50x有会员锁定支撑(92.7%续费) | WMT=通才(SGI 3.6)→PE 46x缺乏锁定(切换成本3/10)"
+
+    - ticker: AMZN
+      similarity: "WMT试图复制AMZN的'零售→平台'路径(广告+Marketplace+会员)"
+      key_difference: "AMZN广告占营收~10%且已盈利+Prime生态8-9分网络效应 | WMT广告仅0.9%+Walmart+生态锁定2/10→差距5-10年"
+
+    - ticker: TGT
+      similarity: "同为美国大型综合零售商+直接竞争关系"
+      key_difference: "TGT PE仅14x(WMT的3.3倍溢价)→两者增速相近→WMT的溢价完全来自平台化叙事，而TGT没有这个叙事"
+
+  comparative:
+    - dimension: "护城河宽度(规模+渗透)"
+      position: "WMT (A-Score 5.54) > TGT (~4.5) ≈ AMZN(零售, ~5) | 但 AMZN(平台) >> WMT"
+      reasoning: "WMT物理网络不可复制+$713B采购规模无可匹敌→宽度第一；但深度(切换成本/网络效应)远逊AMZN平台"
+
+    - dimension: "估值合理性(PEG)"
+      position: "TGT (~1.2x PEG) >> WMT (3.5x) ≈ COST (~3.8x)"
+      reasoning: "WMT和COST同样PE高企但增速不匹配→PEG暴露真实估值水平→TGT反而最合理"
+
+    - dimension: "增长质量(利润率改善路径)"
+      position: "AMZN (AWS+广告双引擎) > COST (会员提价+电商增速) > WMT (广告增量被成本吞噬)"
+      reasoning: "WMT OPM反降13bps证明增长质量存疑——收入增长≠利润率改善"
+
+    - dimension: "防御属性(衰退韧性)"
+      position: "WMT (Beta 0.67, 衰退反脆弱) > COST (Beta 0.79, 会员稳定) > TGT (Beta 1.1, 可选消费敞口)"
+      reasoning: "EDLP飞轮在2008/2020危机中加速转动→WMT是零售板块最佳防御标的"
+
+  industry_position:
+    quadrant: "最大规模 × 最高PE × 最低利润率(4.18% OPM)"
+    archetype: "通才型零售飞轮试图变身平台 — 身份转型30%完成(CI-01)"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "KLAC信念反演法→8个隐含信念→联合概率0.3%→暴露$126.75的脆弱结构"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "温水煮青蛙路径(P=35-40%): 广告减速+OPM停滞+PE渐进压缩→5年后$70-85"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~RT-7双向校准→净下修-$10~-15/股→3个乐观偏差(广告天花板/身份进度/OPM)被量化修正"
+
+    - pattern_id: "competitive_benchmarking.identity_premium"
+      application: "ETN身份溢价量化法→IPI=308%→三重身份假设(零售商50%/过渡态35%/平台15%)概率加权"
+
+  novel_patterns:
+    - name: "壁垒-利润池错配(A4陷阱)"
+      description: "壁垒最强处保护最薄利润池(杂货2-4%)、利润池最厚处(广告40-60%)壁垒最弱→护城河'宽而浅'→A4<5分=通才型公司不配专才级PE"
+      transferable_to: ["传统零售商转型", "物流公司(壁垒在配送网络但利润在增值服务)", "银行(壁垒在牌照但利润在财富管理)"]
+
+    - name: "广告充分统计量(单变量判断指标)"
+      description: "在多变量公司中识别一个编码其他全部关键变量信息的指标→广告增速同时编码OPM走向/PE合理性/身份转型概率→跟踪1个指标替代20个"
+      transferable_to: ["所有有'新利润引擎+旧利润基座'结构的公司", "DIS(流媒体是Disney身份转型的充分统计量)"]
+
+    - name: "身份溢价定量指标(IPI)"
+      description: "Identity Premium Index=当前PE/身份匹配PE→IPI>200%=市场为尚未验证的身份转型支付>2倍溢价→高度脆弱"
+      transferable_to: ["所有经历身份叙事的公司(银行→金融科技、车企→科技公司)"]
+
+    - name: "SGI-PE不匹配检测"
+      description: "SGI(通才-专才指数)与PE倍数的不匹配度→通才(SGI<4)获专才级PE(>行业1.5x)=身份定价错误→回归均值概率极高"
+      transferable_to: ["所有多元化集团获溢价估值的公司"]
+
+    - name: "增速-估值剪刀差"
+      description: "EPS增速递减+PE逆势扩张→PEG>3x→历史验证高PE入场3年回报约0%→剪刀差是PE压缩的先行指标"
+      transferable_to: ["所有增速见顶但momentum推高PE的公司"]
+
+  # v1.2新增: 框架升级贡献
+  framework_contributions:
+    moat_insights:
+      - insight: "A4壁垒-利润池匹配是护城河分析中最被忽视但最关键的维度——壁垒强+利润薄=宽而浅护城河"
+        implication: "护城河评估应增加'壁垒保护的利润池厚度'维度——A4<5分自动标记'通才陷阱'风险"
+      - insight: "多引擎半衰期差异极大(物理网络>20年 vs 广告技术2-3年)——不能用统一半衰期评估"
+        implication: "护城河半衰期应按资产拆分评估——如果高PE依赖短半衰期资产(数字/技术)→估值风险更高"
+
+    valuation_insights:
+      - insight: "身份不确定性是估值离散的主要来源——三重身份假设下估值差距高达$50/股(67%)"
+        implication: "对身份转型公司→应先锁定身份概率再估值→而非用单一身份假设做DCF"
+      - insight: "PEG比PE更能暴露零售商的真实估值水平——WMT PE 46x看似不算离谱但PEG 3.5x暴露严重失配"
+        implication: "低利润率公司(OPM<5%)的估值比较应强制使用PEG——PE在增速减速时极具误导性"
+
+    screening_insights:
+      - insight: "SGI<4 + PE>行业1.5x = '身份溢价过载'信号——通才获专才级PE必然回归"
+        implication: "选股筛选增加'SGI-PE匹配度'过滤器→不匹配>50pp=标记为高风险"
+      - insight: "内部人士行为与sell-side共识的背离度→连续8季净卖出+97%买入率=极端信号"
+        implication: "选股时增加'insider-consensus divergence'指标→背离>6个月=红旗"
+
+# --- Layer 5: Meta-learning (这份报告教了AI什么) ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "身份不确定性公司先做身份概率分配再估值"
+      trigger: "PE远超行业均值且公司正在'转型叙事'中"
+      origin: "WMT三重身份假设(零售商50%/过渡态35%/平台15%)的概率加权估值远低于单一'平台'假设"
+      generalization: "所有'传统公司→新身份'转型中的公司→先锁定身份概率→再在每个身份下独立估值→概率加权"
+
+    - habit: "追问'壁垒保护的东西值多少钱'"
+      trigger: "看到'护城河很宽'的结论时"
+      origin: "WMT壁垒最强(杂货25%份额)但利润最薄(2-4%)→A4仅5分→护城河宽≠护城河深"
+      generalization: "护城河分析不能只评宽度——A4壁垒-利润池匹配度低于5分=壁垒在保护不值钱的东西"
+
+    - habit: "寻找编码多变量信息的'充分统计量'"
+      trigger: "公司有>10个可跟踪指标且投资者注意力有限"
+      origin: "WMT广告增速同时编码OPM/PE/身份转型概率→跟踪1个替代20个"
+      generalization: "每个公司都有1-2个'充分统计量'→找到它=减少80%跟踪噪音"
+
+    - habit: "PEG>3x + 增速减速 = 立即追问PE可持续性"
+      trigger: "PE创历史新高但EPS增速在递减"
+      origin: "WMT PE 46x但增速从34%→13%(PEG 3.5x)→历史上PE>35x入场回报约0%"
+      generalization: "增速-估值剪刀差是PE压缩的最可靠先行指标——适用于所有行业"
+
+  quality_feedback:
+    strengths:
+      - "身份溢价量化(Ch16+Ch17) — ETN法+KLAC信念反演法双重独立验证得出高度一致结论($84-93)"
+      - "风险拓扑(Ch20) — 温水煮青蛙路径是全报告最有决策价值的产出，概率量化(35-40%)而非定性罗列"
+      - "估值多源收敛(Ch26) — 8个独立估值中5个落在$76-90区间(62.5%集群度)→结论稳健"
+      - "A-Score 12维度全量化(Ch14) — 偏科形状分析(双峰双谷)是理解'宽而浅'护城河的关键可视化"
+    weaknesses:
+      - "DM密度0/千字 — v17.3框架未强制DM锚点→数据来源追溯困难(v19.0+已修复)"
+      - "因果密度未量化 — 报告撰写时铁律N尚未建立(v19.2+才引入因果密度门控)"
+      - "部分概率赋值缺乏三重锚定 — 如身份C概率15%的基准率锚定不够硬"
+      - "VIZIO并购对广告增速的影响拆分不够精确 — 13-16pp范围较宽"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "壁垒-利润池错配导致通才估值折价(多报告验证)"
+        evidence: "WMT A4=5分(壁垒保护薄利润)→PE应折价非溢价→对比ASML(A4=10)、KLAC(A4=9)"
+        confidence_after: "高(WMT是A4陷阱的教科书案例)"
+      - hypothesis: "身份转型叙事可以推高PE远超基本面支撑(ETN验证)"
+        evidence: "IPI=308%→市场为30%完成的转型支付了3倍完全成功的价格"
+        confidence_after: "高(ETN+WMT两份报告独立确认身份溢价现象)"
+
+    extended:
+      - hypothesis: "Reverse DCF P1前置防止结论先行(铁律O)"
+        extension: "WMT报告中Reverse DCF有效揭示了'市场隐含OPM 7.3%→从未实现'→防止了被广告增速叙事带偏"
+
+    refuted: []
+
+  limitations:
+    - "v17.3框架无DM锚点→数据可追溯性差→数字来源需回溯原始10-K/WebSearch验证"
+    - "广告有机增速vs VIZIO贡献的拆分依赖估算(13-16pp)→需FY2027Q1干净数据验证"
+    - "身份C(平台)概率15%可能偏低——如果WMT在AI购物领域获得先发优势(尚未可见)→概率需上修"
+    - "AI Agent Commerce对EDLP的颠覆风险为5-10年远期定性评估→无法精确量化"
+    - "报告写于2026-02-25→FY2027数据将对关键假设(广告增速/OPM趋势)提供首次验证"

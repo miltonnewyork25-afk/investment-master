@@ -1,0 +1,448 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Super Micro Computer (SMCI)
+# 压缩比: 333K → ~12K (28x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式映射 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: SMCI
+  company: "Super Micro Computer, Inc."
+  report_date: "2026-02-21"
+  stock_price: "$32.42"
+  market_cap: "~$19.4B"
+  report_version: "v1.0"
+  report_path: "reports/SMCI/SMCI_Complete_深度研究报告.md"
+  quality_score: "报告未覆盖"
+  cqi: "报告未覆盖"
+  framework_version: "v17.0"
+  industry: "AI服务器系统集成 / 数据中心基础设施"
+  archetype: "低毛利组装商(GPU过路资金模式)"
+  chars: 333422
+  dm_count: 187
+  dm_density: "0.56/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "收入增长了6倍但价值没有增加——增长完全真实但经济价值被NVIDIA和竞争彻底榨取，市场定价已大致准确反映这一现实"
+  rating: "中性关注"
+  fair_value: "~$33.9 (概率加权) / $32.0 (五方法加权) / 综合区间$32-34"
+  expected_return: "+2.1~4.6% (中性关注区间)"
+
+  key_arguments:
+    - claim: "组装商估值陷阱——EV/Sales 0.75x极便宜是幻觉,EV/GP 9.4x才是真实估值,较Dell溢价114%"
+      direction: bearish
+      magnitude: 5  # CI-01核心非共识,强确认,行业通用方法论贡献
+      mechanism: "92%收入是GPU'过路资金'(COGS) → 仅8%是SMCI增值(GP) → EV/Sales系统性低估组装商真实估值 → EV/GP暴露SMCI比Dell贵一倍"
+      kill_switch: "FY27收入增速>25%使增速调整后EV/GP溢价缩水至<40%——但增速放缓后估值将面临倍数压缩"
+
+    - claim: "毛利率从18%结构性压缩至6-8%均衡区间是组装商宿命而非周期波动"
+      direction: bearish
+      magnitude: 5  # CI-02浪潮镜像跨生态确认+CI-03反向经营杠杆数据支撑
+      mechanism: "GPU占BOM 70-80%→SMCI增值空间物理压缩在10-15%→浪潮(Ascend生态)GM 6.85%独立验证→边际GM 4.3%<平均GM 6.3%=规模越大越不赚钱"
+      kill_switch: "连续2Q GM>10%证伪结构性假说——Q3 FY26(2026-05-05)是第一个硬验证点"
+
+    - claim: "治理惯犯模式(两次会计丑闻+DOJ调查+CEO零买入)构成15-25%永久折价"
+      direction: bearish
+      magnitude: 4  # 数据A级(SEC filing)+D级(DOJ概率纯主观)混合
+      mechanism: "2017-20丑闻($17.5M罚款)+2024-26丑闻(EY辞任/退市警告/DOJ传票) → 惯犯模式 → CFO搜索14月未果 → CEO 5年23次卖出零买入 → 机构ESG/合规限制"
+      kill_switch: "DOJ正式宣布不起诉或关闭调查 → 治理折价快速收窄至<5%"
+
+    - claim: "DLC液冷是唯一可能持久的护城河但存在于价值链边缘,无法改变组装商命运"
+      direction: neutral
+      magnitude: 3  # DLC领先12-18月但对总GM贡献仅+1.5-3pp
+      mechanism: "DLC-2 120kW/rack领先Dell 12-18月 → 但DLC仅占BOM 5-10% → 即使DLC实现30% GM也仅贡献总GM 1.5-3pp → 将6-7%提升至8-10%而非15%+"
+      kill_switch: "NVIDIA在GTC指定SMCI DLC为NVL72/144标准散热方案=DLC标准化利好; Dell/HPE 12-18月内追平=DLC窗口关闭"
+
+    - claim: "市场定价($32.42)精确反映了概率加权现实($33.9),是不稳定均衡——任何催化剂都会导致剧烈波动"
+      direction: neutral
+      magnitude: 4  # 五方法+红队+情景三锚高度收敛于$32-34
+      mechanism: "路径A(GM恢复,$61)×25% + 路径B(GM结构性低,$15)×38% + 路径C(折中,$35)×37% = $33.9 → 方法离散度47%+情景离散度276%=不稳定均衡"
+      kill_switch: "Q3 FY26 GM是硬分叉点: >9%→概率加权跃升至$40+(关注); <6%→概率加权降至$25以下(审慎关注)"
+
+  moat:
+    composite_score: 2.5  # 单维度弱护城河,存在于错误的维度
+    half_life: "DLC 12-18月(正在倒计时) | 速度优势<12月(被Dell侵蚀) | 转换成本~0"
+    dimensions:
+      - type: ip
+        strength: 3
+        evidence: "DLC-2 120kW/rack, 45%液冷率, 月产能3000 DLC racks, 领先Dell/HPE 12-18月"
+        vulnerability: "DLC仅占BOM 5-10%,对总GM贡献1.5-3pp; Dell/HPE/Lenovo正在追赶; 窗口期12-18月后可能关闭"
+      - type: scale
+        strength: 2
+        evidence: "Building Block模块化架构<6周新GPU上新,FY26E收入$40B+"
+        vulnerability: "速度优势从'数月'缩至'数周'; NVIDIA参考设计标准化降低门槛; 规模带来收入但不带来利润(反向经营杠杆)"
+      - type: switching_cost
+        strength: 1
+        evidence: "Hyperscaler转换成本几乎为零——标准化PCIe/NVLink/InfiniBand接口,客户关心GPU不关心谁组装"
+        vulnerability: "市场份额从50%降至7-10%证明零转换成本; Dell单季AI订单$12.3B证明替代完全可行"
+      - type: pricing_power
+        strength: 1
+        evidence: "GPU占BOM 70-80%由NVIDIA定价,SMCI无议价权; 毛利率从18%降至6.3%"
+        vulnerability: "组装商定价权真空是结构性的——BOM中75%由单一供应商控制"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含5Y Revenue CAGR~14%(对共识30%打五折) + Terminal OPM~5.5%(低于FY2025) + GM回升至8-10%但不超过10%"
+    methods_used: ["Reverse DCF", "SOTP(EV/GP)", "DCF", "可比公司(EV/GP基准)", "情景加权(4路径)"]
+    dispersion: "方法离散度46.6%($21.8-$36.4) | 情景离散度276%($5-$99)"
+    consensus_vs_ours: "市场看SMCI=EV/Sales 0.75x的廉价AI概念股 | 我们看SMCI=EV/GP 9.4x的高估组装商,增速一旦放缓将面临倍数压缩"
+    entry_zone: "Q3 GM>9%且股价<$30 → 考虑建仓 | 当前$32.42=精确无人区,不适合方向性押注"
+    catalyst: "Q3 FY26 GM(2026-05-05)是唯一高置信度催化剂——GM>9%触发升级,GM<6%触发降级"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "不建立新头寸——期望回报+2.1~4.6%不足以补偿46.6%方法离散度暗示的风险,等待Q3 FY26 GM硬分叉"
+    buy_triggers:
+      - trigger: "Q3 FY26 GM>9% + DOJ不起诉(联合概率~12%)"
+        price_zone: "$28-32(如果股价未先行反应)"
+        reasoning: "路径A概率上调至35-40%,概率加权值跃升至$38-42,期望回报+17-30%进入'关注'区间"
+      - trigger: "Q3 GM>10% + DOJ不起诉 + DLC被NVIDIA指定为标准方案(联合概率~5%)"
+        price_zone: "任何<$40的价格"
+        reasoning: "路径A概率上调至50%+,概率加权值上修至$45-55,进入'深度关注'区间"
+    hold_conditions:
+      - "毛利率维持或回升至>8%(CI-02行业均衡区间下限)"
+      - "DOJ调查无刑事起诉升级"
+      - "NVIDIA维持GPU分配(不前向整合)"
+      - "季度收入>$10B(非积压释放)"
+    sell_triggers:
+      - signal: "连续2Q GM<5%(浪潮终局确认)"
+        severity: "emergency"
+        action: "全部卖出——GM<5%意味着每$100收入仅$5增值,商业模式可持续性面临根本质疑"
+      - signal: "NVIDIA宣布DGX直销Hyperscaler或DGX Cloud收入超$10B"
+        severity: "emergency"
+        action: "全部卖出——集成商角色彻底失效,收入2-3年内萎缩40-60%"
+      - signal: "BDO(第二家审计师)辞任或出具保留意见"
+        severity: "emergency"
+        action: "全部卖出——存续问题而非估值问题,退市历史可能重演"
+      - signal: "Q3 GM<7% + DOJ起诉(联合概率~8%)"
+        severity: "action"
+        action: "全部卖出或做空——概率加权值降至$25-28,降级至'审慎关注'"
+      - signal: "单季收入环比-30%(排除季节性)"
+        severity: "action"
+        action: "减仓50%——需求拐点确认"
+    position_sizing: "当前: 零仓位(期望回报不足以补偿风险) | Q3 GM>9%后: 小仓位探索性建仓(高波动性要求小头寸)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "组装商估值陷阱的识别逻辑(CI-01)"
+    chain: >
+      观察: EV/Sales 0.75x看似极便宜
+      → 追问: 收入中多少是SMCI自己的增值?
+      → 发现: GM仅8%=92%收入是GPU过路资金(COGS)
+      → 因此: 投资者实际购买的是GP而非Revenue
+      → EV/GP = $20.3B/$2.16B = 9.4x
+      → Dell EV/GP = $93.1B/$21.3B = 4.4x
+      → 结论: EV/Sales显示SMCI比Dell便宜23%; EV/GP显示SMCI比Dell贵114%
+      → 投资含义: 对低GM公司,EV/Sales是系统性误导指标,必须用EV/GP
+    transferable_to: "所有GM<15%的组装商/分销商/EMS代工: Flex/Jabil/Foxconn/伟创力等"
+    reasoning_habit: "看到EV/Sales极低时,立刻追问'收入中多少是自己的增值' — GM越低,EV/Sales越不可信,必须切换到EV/GP"
+
+  - id: "CC-2"
+    name: "浪潮镜像——跨生态GM收敛确认行业宿命(CI-02)"
+    chain: >
+      问题: SMCI的GM从18%降至6.3%是暂时的还是永久的?
+      → 寻找独立验证: 浪潮信息(不同芯片Ascend/不同市场中国/不同监管)
+      → 发现: 浪潮GM从6.85%进一步降至3.45%
+      → 关键推理: 不同芯片+不同市场+不同监管 → 相同的GM 6-7%
+      → 排除公司特异性: 不是SMCI的管理问题,是组装商的结构性命运
+      → 均衡GM应设定为8-10%上限/5-7%下限,而非共识的12-15%恢复
+    transferable_to: "任何需要验证利润率压缩是公司特异还是行业结构时——在不同生态/市场找到独立样本比较"
+    reasoning_habit: "当一家公司利润率恶化时,找一个不同生态但相同行业位置的公司对照——如果收敛,说明是行业结构而非公司问题"
+
+  - id: "CC-3"
+    name: "反向经营杠杆——规模越大越不赚钱(CI-03)"
+    chain: >
+      传统假设: 收入增长→固定成本分摊→OPM提升(正向经营杠杆)
+      → 检验: Q2 FY26收入$12.68B(环比+153%)但GM从9.3%降至6.3%
+      → 边际收入GP贡献率: (Q2 GP - Q1 GP)/(Q2 Rev - Q1 Rev) = ~4.3%
+      → 4.3%远低于平均6.3% → 边际收入的利润率更低
+      → 原因: 大订单(Hyperscaler)议价权极端不对称+积压订单以更低价签约
+      → 结论: 这不是正向经营杠杆而是反向经营杠杆——收入增长加速利润率下降
+    transferable_to: "所有依赖大客户的低毛利业务——检查边际GM vs 平均GM,如果边际<平均=增长在稀释利润"
+    reasoning_habit: "不要假设收入增长自动改善利润率——计算边际GP贡献率,如果<平均则增长是价值破坏性的"
+
+  - id: "CC-4"
+    name: "护城河在错误维度的BOM构成分析"
+    chain: >
+      SMCI有两个差异化: DLC液冷(BOM 5-10%) + 速度/模块化(BOM ~5%)
+      → 合计可影响BOM ~10-15%
+      → GPU占BOM 75%,定价权100%在NVIDIA
+      → 即使DLC实现30% GM(极乐观),对总GM贡献仅30%×5-10% = 1.5-3pp
+      → 所以DLC将GM从6-7%提升至8-10%而非15%+
+      → 对比: Dell的优势维度(品牌/服务/渠道)利润贡献更高+持久性更强
+      → 结论: 护城河的位置比护城河的深度更重要——在价值链边缘的护城河无法改变利润结构
+    transferable_to: "所有组件型/组装型公司——检查护城河覆盖的BOM比例,如果<30%则护城河难以改变利润结构"
+    reasoning_habit: "评估护城河时,追问'这个优势影响BOM的多少比例' — 在价值链边缘的强护城河不如在核心的弱护城河"
+
+  - id: "CC-5"
+    name: "CEO言行不一致作为治理风险的高信噪比信号(CI-04)"
+    chain: >
+      表面叙事: CEO $1年薪 → 利益一致
+      → 检验: 5年交易记录 — 23次卖出、0次买入、6个月卖出$36.8M
+      → 矛盾: 如果CEO真信$32是极度低估,为什么不买入?
+      → 加重: 关联方交易$983M(Ablecom/Compuware)
+      → 推论: $1薪酬是叙事管理而非利益一致
+      → 投资含义: CEO内部人交易记录是治理质量的高信噪比信号——言辞可以包装,交易不会说谎
+    transferable_to: "所有管理层声称'利益一致'但实际交易记录矛盾的公司——看Form 4而非PR"
+    reasoning_habit: "看到管理层发出利好信号(低薪/增持声明)时,立刻查SEC Form 4实际交易记录——如果言行不一致,信交易不信言辞"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "EV/Sales 0.75x意味着SMCI极度低估"
+      final: "EV/GP 9.4x显示SMCI比Dell贵114%——极低EV/Sales是低GM公司的结构性幻觉"
+      pivot: "CI-01组装商估值陷阱: 92%收入是GPU过路资金,仅8%是增值"
+
+    - initial: "Phase 1-3对GM结构性恶化的判断是准确的"
+      final: "红队校准后CQ1从68%下调至63%——Phase 1-3可能将Q2 6.3%过度外推为新常态"
+      pivot: "RT-1+RT-2+RT-3+RT-7均指向CQ1过度悲观; Q2含积压释放脉冲+大客户价格锁定的异常性"
+
+    - initial: "DOJ刑事起诉概率20%"
+      final: "红队校准后I3(刑事起诉)概率下调至10-15%,I1(不起诉)上调至40-45%"
+      pivot: "特别委员会9000+小时调查结论有利 + NASDAQ已恢复合规 + DOJ 2年无公开动作暗示证据不够强"
+
+  surprises:
+    - finding: "收入4年增长6倍($3.6B→$40B)但2年股价回报-55.84%——增长完全真实但价值为零"
+      implication: "这是'增收不增利'的教科书极端案例——GPU供应链位置决定了收入增长无法转化为股东价值"
+
+    - finding: "边际GM仅4.3%(Q2 FY26),远低于平均GM 6.3%——反向经营杠杆的完美数据证据"
+      implication: "传统'规模→利润改善'逻辑完全失效; 大订单议价权不对称使增长成为价值破坏而非创造"
+
+    - finding: "浪潮信息在完全不同生态(华为Ascend芯片/中国市场)下GM收敛至6.85%→3.45%——与SMCI命运惊人一致"
+      implication: "组装商GM<10%是产业链位置决定的结构性命运,而非公司/生态/市场的特异性问题"
+
+    - finding: "市场份额从50%暴跌至7-10%(3年)但收入绝对值仍在增长——TAM增速掩盖了份额崩塌"
+      implication: "在高速增长的市场中,份额下降可以被总量增长掩盖——不能只看收入增长,必须看份额趋势"
+
+  blind_spots:
+    - area: "DOJ调查最终结果"
+      why_matters: "D级数据质量的概率分配(40-45%/40-45%/10-15%)是整个估值框架最主观的输入——5pp概率误判就足以翻转投资结论"
+      monitor: "SEC/DOJ公告 | PACER法院系统 | 10-Q法律风险披露变更"
+
+    - area: "Q3 FY26 GM——Q2的6.3%是底部还是新常态"
+      why_matters: "GM是全报告的硬分叉点: >9%可能触发评级升级至'关注'; <6%可能降至'审慎关注'"
+      monitor: "Q3 FY26财报(2026-05-05)——管理层指引+30bps至~6.6%"
+
+    - area: "NVIDIA DGX Cloud发展轨迹和前向整合意愿"
+      why_matters: "如果NVIDIA跳过OEM直销Hyperscaler,SMCI集成商角色彻底失效——收入2-3年萎缩40-60%"
+      monitor: "NVIDIA GTC | NVIDIA财报DGX Cloud收入 | 行业渠道信息"
+
+    - area: "Hyperscaler自研芯片替代GPU的速度"
+      why_matters: "Google TPU/Amazon Trainium/Microsoft Maia等自研芯片可能绕过NVIDIA→绕过SMCI,估算$51-71B但C级数据"
+      monitor: "Hyperscaler财报中自研芯片部署进度 | NVIDIA数据中心收入增速变化"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "收入高速增长但毛利率持续下降时未减仓——增收不增利的陷阱"
+      lesson: "收入增长不等于价值创造。对低GM组装商,必须追踪边际GM而非总收入——边际GM<平均GM=增长在毁灭价值"
+      transferable: "所有低GM(<15%)的分销/组装/代工公司(Flex/Jabil/Foxconn/伟创力)"
+    - scenario: "CEO持续减持但市场忽视——从$118跌至$32期间CEO零买入23次卖出"
+      lesson: "管理层内部交易记录是治理质量的最高信噪比信号。如果CEO在股价暴跌时不买反卖,这比任何分析师评级都更有信息量"
+      transferable: "所有CEO/CFO内部交易与股价走势矛盾的公司"
+    - scenario: "市场份额从50%暴跌至7-10%但因TAM增长收入仍涨——份额崩塌被总量掩盖"
+      lesson: "高速增长市场中,必须同时追踪绝对收入和市场份额。只看收入增长会错过竞争力恶化的信号"
+      transferable: "所有处于高速增长行业(AI/EV/云)但面临竞争加剧的公司"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "EV/GP vs EV/Sales的估值视角切换"
+      why_alpha: "市场和大多数卖方用EV/Sales定价→系统性低估低GM公司的真实估值水平。EV/GP暴露SMCI比Dell贵114%而非便宜23%"
+      current_reading: "EV/GP 9.4x vs Dell 4.4x — 在FY26超高增速下勉强合理,FY27+增速放缓后将显得昂贵"
+    - signal: "边际GM vs 平均GM(反向经营杠杆检测)"
+      why_alpha: "大多数分析师只看平均GM趋势而不计算边际GM——边际GM 4.3%<平均6.3%暴露了增长的价值破坏性质"
+      current_reading: "Q2 FY26边际GM 4.3%(需Q3验证是否为积压脉冲异常)"
+    - signal: "CEO Form 4交易记录(5年23卖0买)"
+      why_alpha: "市场关注$1薪酬的叙事而忽视实际交易——交易记录的信息量远大于薪酬结构"
+      current_reading: "6个月卖出$36.8M | 股价-73%时仍零买入=极强负信号"
+
+  confirmation_signals:
+    - signal: "季度毛利率趋势"
+      bullish_threshold: ">9% 连续2Q(证伪结构性恶化)"
+      bearish_threshold: "<5% 连续2Q(确认浪潮终局)"
+    - signal: "NVIDIA GPU分配等级变化"
+      bullish_threshold: "恢复Tier 1(NVIDIA认可技术+治理)"
+      bearish_threshold: "进一步降至Tier 3或被排除(前向整合启动)"
+    - signal: "DOJ调查进展"
+      bullish_threshold: "不起诉或温和DPA(<$200M)"
+      bearish_threshold: "刑事起诉或SEC Wells Notice"
+
+  noise_signals:
+    - signal: "EV/Sales绝对水平(0.75x)"
+      why_noise: "对GM 8%的组装商,EV/Sales是系统性误导——92%收入是过路资金。必须用EV/GP"
+    - signal: "单季度收入环比波动"
+      why_noise: "Q1→Q2从$5B到$12.7B(+153%)——积压释放+季节性使季度波动极大,看年度趋势更可靠"
+    - signal: "分析师目标价中位($43)"
+      why_noise: "卖方目标价行动滞后于基本面恶化(先调价后调级);多数使用EV/Sales而非EV/GP=系统性偏乐观"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: Dell(ISG)
+      similarity: "同为GPU服务器OEM,竞争AI基础设施订单"
+      key_difference: "Dell=全平台(品牌+服务+渠道30%+收入) vs SMCI=纯组装(速度+DLC但GM 6% vs Dell ISG 10%+) | Dell护城河在利润高区域,SMCI在利润低区域"
+
+    - ticker: "浪潮信息(Inspur)"
+      similarity: "GPU服务器组装商,不同生态(Ascend vs CUDA)但相同产业链位置"
+      key_difference: "浪潮GM从6.85%→3.45%=SMCI的前瞻性样本 | CI-02跨生态验证的核心参照"
+
+    - ticker: Flex
+      similarity: "EMS代工/组装,类似低GM profile(7.8%)"
+      key_difference: "Flex EV/GP 6.6x < SMCI 9.4x | Flex更多元化,不依赖单一供应商"
+
+  comparative:
+    - dimension: "毛利率/增值能力"
+      position: "Dell ISG (~22%) > HPE (~31%) > SMCI (~8%) ≈ 浪潮 (~6.85%) > Foxconn (~5%)"
+      reasoning: "SMCI的GM正在向纯EMS代工水平收敛——产业链位置而非管理能力决定GM天花板"
+
+    - dimension: "护城河深度"
+      position: "Dell (品牌+服务+渠道) >> HPE (企业关系) > SMCI (DLC+速度) > ODM (纯成本)"
+      reasoning: "Dell在9个维度中7个等于或超过SMCI,且强势区域利润贡献更高"
+
+    - dimension: "EV/GP估值(真实估值)"
+      position: "SMCI (9.4x) > Flex (6.6x) > Dell (4.4x) > HPE (3.2x)"
+      reasoning: "增速调整后SMCI溢价7-40%而非114%——但增速放缓后溢价将扩大"
+
+    - dimension: "治理质量"
+      position: "Dell > HPE >> SMCI"
+      reasoning: "SMCI是唯一的两次会计丑闻惯犯+DOJ活跃调查+CEO零买入的公司"
+
+  industry_position:
+    quadrant: "最高增速 × 最低利润率 × 最弱护城河 × 最差治理"
+    archetype: "低毛利组装商——增长的搬运工,价值链的打工者"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含5Y CAGR 14%(共识30%打五折) + Terminal OPM 5.5% + GM 8-10%上限"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~7双向对抗→识别Phase 1-3系统性偏空头3-5pp→CQ1从68%修正至63%,CQ3从62%修正至57%"
+
+    - pattern_id: "scenario_analysis.probability_weighted_paths"
+      application: "4路径情景(AI冠军$61/勤劳中间商$35/组装商宿命$15/崩溃$5) × 概率加权 = $33.9"
+
+  novel_patterns:
+    - name: "组装商估值陷阱(EV/GP vs EV/Sales)"
+      description: "对GM<15%的组装商/分销商,EV/Sales系统性低估真实估值——必须用EV/GP衡量'为每单位增值支付多少'"
+      transferable_to: ["所有低GM组装商(Flex/Jabil/Foxconn)", "分销商(Arrow/Avnet)", "EMS代工"]
+
+    - name: "浪潮镜像(跨生态GM收敛验证)"
+      description: "在不同芯片/市场/监管生态中找到相同产业链位置的公司,如果GM收敛则确认为行业结构性而非公司特异性"
+      transferable_to: ["任何需要区分'公司问题'vs'行业问题'的利润率分析"]
+
+    - name: "反向经营杠杆(边际GM<平均GM)"
+      description: "计算边际GP贡献率并与平均GM比较——如果边际<平均,则规模增长在稀释而非提升利润率"
+      transferable_to: ["依赖大客户的低毛利业务", "B2B大单驱动型公司"]
+
+    - name: "护城河位置>护城河深度(BOM覆盖比例分析)"
+      description: "护城河覆盖BOM比例决定其对利润结构的影响力——在价值链边缘(5-10% BOM)的强护城河不如在核心(70%+ BOM)的弱护城河"
+      transferable_to: ["所有组件型/组装型公司", "供应链中间环节企业"]
+
+    - name: "CEO交易记录信噪比>薪酬结构"
+      description: "管理层实际SEC Form 4交易记录(买/卖频次+金额)的信息量远大于薪酬结构包装——言辞可包装,交易不会说谎"
+      transferable_to: ["所有管理层评估", "特别是声称'利益一致'但有大额减持的公司"]
+
+    - name: "不稳定均衡估值(概率加权收敛但情景极端分化)"
+      description: "当多种估值方法高度收敛于市价($32-34)但底层情景离散度极高(276%,$5-$99),表明市价是'概率精确但方向不确定'的不稳定均衡——任何催化剂都会导致剧烈偏离"
+      transferable_to: ["所有处于重大不确定性节点的公司(等待监管裁定/技术验证/客户验证)"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "护城河位置比深度更重要——SMCI在BOM 5-10%区域有强DLC护城河,但对总利润结构几乎无影响"
+        implication: "护城河评估增加'BOM覆盖比例'维度: 护城河覆盖BOM<30%→降级其对利润和估值的影响权重"
+      - insight: "零转换成本+标准化接口=市场份额从50%→7-10%的3年崩塌速度"
+        implication: "当行业使用标准化接口(PCIe/NVLink)时,转换成本评分应直接给1/5——不要被'定制化'叙事误导"
+      - insight: "速度优势(time-to-market)在每代GPU重置竞争时无法累积——每次都要重新证明"
+        implication: "非累积性优势不构成护城河——评估时区分'可累积优势'(数据/网络效应)和'需重新证明优势'(速度/成本)"
+
+    valuation_insights:
+      - insight: "EV/GP对低GM公司是必须的主估值指标——EV/Sales系统性误导(23%便宜 vs 114%昂贵的翻转)"
+        implication: "选股筛选中GM<15%的公司必须用EV/GP替代EV/Sales,否则会系统性买入'看似便宜实则昂贵'的组装商"
+      - insight: "方法离散度46.6%+情景离散度276%='不稳定均衡'——不适合方向性押注,适合期权策略"
+        implication: "当方法离散度>40%且方法中值≈市价时,不建仓(方向不确定)但可考虑跨式期权(波动确定)"
+      - insight: "概率加权估值对概率分配极其敏感——5pp变化翻转投资结论"
+        implication: "期望回报<5%时,概率加权估值框架的实用性下降——微小概率误判就足以翻转结论,应标注为'无人区'"
+
+    screening_insights:
+      - insight: "收入增长6倍+股价-55%=增收不增利的教科书案例——低GM+单一供应商依赖是价值陷阱信号"
+        implication: "选股过滤器增加: GM<15% + 单一供应商采购占比>50% → 标记为'价值陷阱风险'即使收入高增长"
+      - insight: "CEO 5年零买入=强负面信号——治理过滤器"
+        implication: "选股增加'CEO交易记录'筛选: 股价YTD<-20%但CEO零买入 → 标记'管理层信心缺失'"
+      - insight: "两次会计丑闻='惯犯模式'——第二次的折价应比第一次更高"
+        implication: "治理筛选增加'惯犯系数': 单次丑闻折价10-15%; 两次15-25%; 三次排除"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "对低GM公司立刻切换到EV/GP估值"
+      trigger: "GM<15%且EV/Sales看似极低"
+      origin: "SMCI EV/Sales 0.75x(看似极便宜) → EV/GP 9.4x(实际溢价Dell 114%)"
+      generalization: "GM越低,EV/Sales与真实估值的偏离越大。GM<15%时EV/Sales基本不可信"
+
+    - habit: "计算边际GM而非仅看平均GM来诊断增长质量"
+      trigger: "收入高速增长但利润率不升反降"
+      origin: "SMCI Q2边际GM 4.3% < 平均GM 6.3% → 规模越大越不赚钱"
+      generalization: "边际GM<平均GM=增长在稀释利润=价值破坏性增长。这比'GM下降'更精确地诊断问题"
+
+    - habit: "用跨生态对照来区分公司问题和行业问题"
+      trigger: "公司利润率恶化,需要判断是暂时还是永久"
+      origin: "浪潮(Ascend生态)GM 6.85%与SMCI(CUDA生态)GM 6.3%收敛 → 行业结构性命运"
+      generalization: "找不同芯片/平台/市场但相同产业链位置的对照公司——GM收敛=行业宿命,GM分化=公司特异"
+
+    - habit: "追问护城河覆盖BOM的比例"
+      trigger: "公司声称有技术差异化/护城河"
+      origin: "SMCI DLC护城河强但仅覆盖BOM 5-10% → 对总GM贡献仅1.5-3pp → 护城河在错误维度"
+      generalization: "护城河的位置(覆盖BOM比例)比深度更重要——在BOM边缘的强护城河可能毫无意义"
+
+    - habit: "查CEO实际交易记录而非薪酬叙事"
+      trigger: "管理层声称利益一致/对公司有信心"
+      origin: "SMCI CEO $1薪酬(叙事=利益一致) vs 5年23卖0买(现实=零信心) + 关联方$983M"
+      generalization: "SEC Form 4是管理层真实信心的最高信噪比信号。言辞免费,交易有成本"
+
+  quality_feedback:
+    strengths:
+      - "CI-01组装商估值陷阱——全报告最强非共识洞见,具有行业通用方法论价值"
+      - "CI-02浪潮镜像——独创的跨生态验证方法,说服力极强"
+      - "红队7轮双向对抗有效——识别并修正Phase 1-3的系统性偏空头3-5pp"
+      - "CQ框架演化追踪完整——5个CQ从P0到P5的置信度变化路径清晰可审计"
+      - "因果链密度高——每个核心论点都有数据+逻辑+反面考量"
+    weaknesses:
+      - "DM密度0.56/千字偏低(警告区间)——187个DM锚点对333K报告不够密"
+      - "DOJ概率分配为D级数据质量——概率加权估值的核心输入最主观"
+      - "DCF对负FCF公司适用性有限——$21.8与其他方法偏离35%已知但未充分解决"
+      - "报告头部评级/公允价值字段显示'待确定'未回填——组装时前后一致性问题"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "低GM组装商的EV/Sales系统性误导(新假说)"
+        evidence: "EV/Sales显示SMCI便宜23%,EV/GP显示贵114%——方向完全翻转"
+        confidence_after: "高(数学推导+Dell/HPE/Flex四家对比确认)"
+
+      - hypothesis: "Reverse DCF P1前置有效防止结论先行(铁律O)"
+        evidence: "Ch12 Reverse DCF有效建立了市场隐含假设的客观锚点,防止了'看多叙事主导'"
+        confidence_after: "高(继CME后再次执行确认)"
+
+    extended:
+      - hypothesis: "护城河评估需要量化'位置'维度"
+        extension: "从CME的'护城河在正确维度(清算=核心)'扩展到SMCI的'护城河在错误维度(DLC=边缘)' → 引入BOM覆盖比例量化"
+
+    refuted: []
+
+  limitations:
+    - "DOJ调查结果不可预测——40-45%/40-45%/10-15%概率分配是D级主观判断,5pp误差可翻转结论"
+    - "Q3 FY26 GM是全报告的硬分叉点,但报告无法预测其值——需等待2026-05-05数据"
+    - "NVIDIA内部GPU分配策略是商业机密——SMCI的Tier 2B状态是否可逆无法从外部判断"
+    - "DCF在负FCF公司上失灵——$21.8偏离其他方法35%,DCF结果应降权"
+    - "自研芯片替代速度$51-71B为C级数据——Hyperscaler自研进展对SMCI的间接影响高度不确定"
+    - "治理折价15-25%基于5个历史案例类比推断,样本量过小且无惯犯先例,置信区间极宽"

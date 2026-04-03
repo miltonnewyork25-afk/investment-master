@@ -1,0 +1,69 @@
+# 预期差分析卡 v2.1 — Super Micro Computer (SMCI)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "SMCI"
+  company: "Super Micro Computer, Inc."
+  analysis_date: "2026-03-27"
+  stock_price: "$22.21"
+  market_cap: "$13.3B"
+  data_snapshot: "FY2025 (FY ends June)"
+  tier: "tier2"
+  framework_version: "v2.1"
+  linked_report: "reports/SMCI/SMCI_Complete_深度研究报告.md"
+
+core_judgment: "SMCI是半导体/AI基础设施中的'增长陷阱'——收入从$5B爆炸至$22B(+340%/3yr)但毛利率从15%压缩至8%(最新季度6.3%!),FCF周期性为负(FY24 -$2.6B),审计师辞职+走私起诉+SEC调查=治理危机。P/S 0.47x看起来'便宜'但3.1%净利率意味着P/E 23x——对一个毛利率在崩塌的组装商来说不便宜。-64%从高点=市场已识别问题,在$22附近可能接近底部——但底部的反弹需要: 治理问题清除+毛利率>12%稳定"
+gap_type: "no_significant_gap"
+confidence: "medium"
+confidence_reasoning: "高置信: 毛利率崩塌(15%→6.3%)+治理危机(审计师辞职+起诉)=事实级负面。中等置信: 在$22(-64%)可能已定价了最坏情况——但'可能定价了'不等于'确认了底部'。如果治理问题导致更严重后果(SEC制裁/退市风险),还有下行"
+
+expectations:
+  price_implied:
+    p_fcf: "~47x(但FCF不稳定)"
+    judgment: "uncertain — $22定价可能是'过度悲观'也可能是'正确定价治理风险'"
+
+  dominant_narrative: "SMCI是'最便宜的AI服务器概念股'——但治理危机让价值投资者回避"
+  bull_case_core: "收入$22B(+47%)+Forward PE 10x+AI服务器需求不减+治理问题解决=翻倍"
+  bear_case_core: "毛利率6.3%(崩塌)+FCF负值+审计师辞职+走私起诉+8%稀释/yr+与Dell/HPE竞争"
+  market_most_uncertain_about: "治理问题的最终影响: 罚款/限制 vs 退市/刑事"
+
+reality:
+  company:
+    overall_trend: "revenue_exploding_but_quality_collapsing"
+    key_variables:
+      - name: "收入"
+        state: "accelerating"
+        data: "FY22 $5.2B → FY25 $22B (+340%/3yr)"
+        evidence_grade: "fact"
+      - name: "毛利率"
+        state: "deteriorating"
+        data: "FY22 15.4% → FY25 11.1% → 最新季度6.3% — 结构性崩塌"
+        evidence_grade: "fact"
+      - name: "FCF"
+        state: "unstable"
+        data: "FY23 +$627M → FY24 -$2.6B → FY25 +$1.5B — 巨幅波动"
+        evidence_grade: "fact"
+      - name: "治理"
+        state: "crisis"
+        data: "EY辞职(2024)+BDO审计重大缺陷+走私起诉(2026.3)+SEC调查未结"
+        evidence_grade: "fact"
+
+gap:
+  scoring:
+    direction_clarity: 2
+    magnitude: 2
+    persistence: 2
+    verifiability: 2
+    industry_trend_support: 4
+    smart_money_alignment: 1
+    composite_score: 2.17
+
+  one_sentence_judgment: "SMCI是'收入爆炸但价值毁灭'的教科书案例——收入从$5B→$22B但毛利率从15%→6%+治理崩塌=增长没有转化为股东价值。在$22可能接近底部但需要治理清除+毛利率恢复才能重新评估"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 2.17(全系列最低)。治理风险不可建模——等待SEC调查结果"
+  position_implication: "回避。即使AI服务器需求强劲,SMCI的组装模式(无定价权+无IP)意味着价值被上游(NVDA)和下游(客户)挤压"
+
+post_mortem:
+  verified: false

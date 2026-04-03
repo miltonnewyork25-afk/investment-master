@@ -1,0 +1,180 @@
+schema_version: "2.0"
+ticker: NET
+company: "Cloudflare, Inc."
+framework_version: v19.9
+worktree: "生态科技"
+industry: "生态科技"
+last_updated: "2026-03-30T08:30:00+00:00"
+
+current_phase: 5
+phase_status: complete
+phases_completed:
+  - phase: -1
+    date: "2026-03-30"
+    chars: 1723
+    status: complete
+  - phase: -0.5
+    date: "2026-03-30"
+    chars: 8000
+    status: complete
+    note: "lit_recon_memo PASS, preflight CLEARED"
+  - phase: 0
+    date: "2026-03-30"
+    chars: 0
+    status: complete
+    note: "温度+0.67偏热, SGI 0.47半通才, PW 4.8混合模式"
+  - phase: 0.5
+    date: "2026-03-30"
+    chars: 0
+    status: complete
+    note: "CQ1-8路由确认, 2positive/4cautious/2neutral"
+  - phase: 0.75
+    date: "2026-03-30"
+    chars: 7500
+    status: complete
+    note: "thesis_crystallization: 6异常+3碰撞+4假说"
+  - phase: 1
+    date: "2026-03-30"
+    chars: 35938
+    status: complete
+    note: "15章/49DM/7CI/6Mermaid. Sentinel CLEARED. CQ均值46.8%(偏cautious)"
+  - phase: 1.5
+    date: "2026-03-30"
+    chars: 10602
+    status: complete
+    note: "补强A: 术语注释18个+剪刀差+二阶效应+Win Rate"
+  - phase: 2
+    date: "2026-03-30"
+    chars: 17695
+    status: complete
+    note: "9章/Ch16-24. 4方法估值: 综合$64(-68%). 方向100%偏空. CQ均值45.4%"
+  - phase: 3
+    date: "2026-03-30"
+    chars: 26235
+    status: complete
+    note: "9章/Ch25-33. 竞争对标+护城河迁移+TAM+管理层+AI冲击+风险拓扑. CQ均值39.1%(↓3.4%)"
+  - phase: 3.5
+    date: "2026-03-30"
+    chars: 21987
+    status: complete
+    note: "P2补强(信念反演+方法审计+CapEx传导+债务+ROIC+会计质量)+P3补强(护城河分离+交叉验证+预期差v3.0). CQ均值36.9%(↓2.2%)"
+  - phase: 4
+    date: "2026-03-30"
+    chars: 13399
+    status: complete
+    note: "RT-1~7完整红队. 双向校准修正15/0单向偏差→4CQ上调. 估值$64→$101(WACC+概率修正). CQ 39.9%. 评级:审慎关注"
+  - phase: 4.5
+    date: "2026-03-30"
+    chars: 10006
+    status: complete
+    note: "P4补强: RT-1b联合概率0.3%+RT-2偏差审计(3检出)+信念矩阵+翻转分析+共识解构(TAM膨胀A级)+有效性门控(4.0/5). CQ不变39.9%"
+
+target_chars: 300000
+target_range: "270K-330K"
+hard_floor: 200000
+
+quick_ref:
+  total_chars: 135862
+  latest_phase_chars: 10006
+  valuation_composite: "$101/股 (-50%, P4双向校准后); 区间$64-146"
+  direction_consistency: "2.5/2.5偏空→P4双向校准后11/16=68%偏空"
+  cq_mean: "39.9% (cautious, 双向校准后↑3.0%)"
+  rating_preliminary: "审慎关注"
+  stock_price: 203.07
+  market_cap: "71.5B"
+  ev_sales: 33.0
+  sbc_rev: "20.8%"
+  fcf_margin: "15.0%"
+  owner_fcf: "-127M (negative)"
+  growth_rate: "30% YoY"
+  deferred_rev_growth: "+45%"
+
+phase0_results:
+  temperature: "+0.67 (偏热)"
+  sgi: "0.47 (半通才)"
+  possibility_width: "4.8 (混合模式)"
+  framework_route: "传统估值 + 可能性附录"
+  cq_bias: "2 positive / 4 cautious / 2 neutral → 偏cautious"
+
+core_contradiction: "增长引擎 × SBC枷锁 × 估值极端 三角悖论"
+
+hypotheses:
+  H1: "NET是基础设施公司伪装成软件公司 (25%概率)"
+  H2: "SBC收敛窗口在FY2027-2028 (35%概率)"
+  H3: "Workers AI将创造第二曲线 (30%概率)"
+  H4: "Agentic Internet是真实TAM扩张 (20%概率)"
+
+data_master:
+  file: "reports/NET/data/shared_context.md"
+  dm_count: 83
+  version: "1.1"
+  status: complete
+
+mece_plan:
+  file: "reports/NET/data/mece_data_plan.md"
+  status: complete
+
+key_findings:
+  - "SBC/Rev 20.8% x4年零收敛 → Owner FCF为负(-$127M)"
+  - "增速加速(Q4 +34% YoY) + 递延收入+45% = 强劲领先指标"
+  - "毛利率下滑(77.3%→74.4%) = COGS异常需调查"
+  - "EV/Sales 33x + FCF Yield 0.47% = 极度昂贵"
+  - "内部人6年零公开市场购买 = 负面信号"
+  - "FY2025新增$2.2B债务"
+  - "P3: 安全Win Rate两极分化(中小50-70%, 企业15-25%)"
+  - "P3: 市场隐含TAM($150B+)处于极端乐观端"
+  - "P3: 护城河代际转换风险(Layer 1侵蚀>Layer 2/3建设)"
+  - "P3: 管理层资本配置评分4.2/10(SBC纪律+治理短板)"
+  - "P3: 温水煮青蛙是最可能的负面路径(30-35%)"
+  - "P3.5: B-3(SBC收敛)是SPOF——6条信念中最脆弱"
+  - "P3.5: 有效独立估值方法仅2.5个(非4个), 仍全偏空"
+  - "P3.5: ROIC GAAP=-8.9%(毁灭价值), 增量ROIC恶化(42%→11%)"
+  - "P3.5: 存量护城河8.1/10 vs 增量护城河4.1/10——守成型"
+  - "P3.5: WACC/Beta是我们与卖方估值分歧的最大来源"
+  - "P3.5: 概率加权期望值$143.5/股(vs $203=-29%)"
+  - "P4: 双向校准检测到15/0单向偏差→修正4个CQ"
+  - "P4: WACC修正(13%→10.5%敏感性)→估值从$64升至$64-90区间"
+  - "P4: 综合估值$101(-50%, WACC+概率加权修正)"
+  - "P4: SBC从SPOF降级为核心风险因子(收敛有历史先例)"
+  - "P4: 增速再加速是真实信号(5独立指标确认)"
+  - "P4: 评级预判: 审慎关注(期望回报-28%至-61%)"
+  - "P4.5: 6信念联合概率仅0.3%(B-1×B-2反相关矛盾)"
+  - "P4.5: TAM膨胀A级(管理层$196B vs 实际$55-100B)"
+  - "P4.5: 翻转需≥2信念失败, B-1(增速)是枢纽信念"
+  - "P4.5: 红队有效性4.0/5(3指标PASS, 5个新发现)"
+  - "P5: Complete v1.0组装完成 — 18.3K精炼版 + 14个staging文件(136K详细版)"
+  - "P5: 评级=审慎关注, 综合估值$101(-50%), CQ 39.9%"
+
+comparable_companies:
+  primary:
+    - ticker: DDOG
+      match: "SaaS+高增长+SBC+使用计费"
+      pe_non_gaap: "~49x"
+      growth: "28%"
+    - ticker: CRWD
+      match: "安全+平台化+SBC+高估值"
+      pe_non_gaap: "~64x"
+      growth: "24%"
+    - ticker: ZS
+      match: "零信任安全+高增长"
+      pe_non_gaap: "~60x"
+      growth: "30%"
+  secondary:
+    - ticker: AKAMAI
+      match: "CDN传统龙头"
+      pe: "~15x"
+      growth: "5%"
+    - ticker: FSLY
+      match: "CDN纯竞争对手"
+      pe: "亏损"
+      growth: "10%"
+
+cq_candidates:
+  CQ1: "增速可持续性: 安全+Workers双引擎 vs CDN天花板"
+  CQ2: "安全平台化成功度"
+  CQ3: "SBC/盈利路径: FCF正+杠杆 vs Owner FCF负"
+  CQ4: "开发者平台飞轮"
+  CQ5: "AI机会vs风险"
+  CQ6: "估值合理性"
+  CQ7: "竞争壁垒持久性"
+  CQ8: "管理层资本配置"

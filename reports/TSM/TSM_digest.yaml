@@ -1,0 +1,439 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — TSMC (台积电)
+# 压缩比: 451K → ~12K (38x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: TSM
+  company: "TSMC (台积电)"
+  report_date: "2026-02-10"
+  stock_price: "$355.41"
+  market_cap: "$1.843T"
+  report_version: "v2.0"
+  report_path: "reports/TSM/TSM_Complete_v2.0_2026-02-10.md"
+  quality_score: "报告未覆盖"
+  cqi: "报告未覆盖"
+  framework_version: "v26.0"
+  industry: "半导体"
+  archetype: "垄断收费站 + AI算力节流阀"
+  chars: 451341
+  dm_count: 128
+  dm_density: "0.28/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "全球最优秀的半导体公司，但$355买入=公允价格买顶级品质，安全边际不足——等$280-340再建标准仓"
+  rating: "中性关注"
+  fair_value: "$370/ADR (+4.2%)"
+  expected_return: "~4%@$355(公允) | ~15%/年@$280-340(标准仓)"
+
+  key_arguments:
+    - claim: "AI算力节流阀——全球90%先进芯片+100%CoWoS封装必须经过TSM"
+      direction: bullish
+      magnitude: 5  # 硬数据: 3nm ~90%份额, CoWoS 130K wpm全售罄, 护城河8.98/10
+      mechanism: "制程垄断(90%先进节点) + CoWoS封装垄断(无替代) + $590M设计成本转换壁垒 → 客户锁定18-36月 → 4年连续涨价3-10%"
+      kill_switch: "Samsung 2nm良率>80% + Intel 18A获2+大客户 → 垄断溢价侵蚀(概率15-20%)"
+
+    - claim: "AI增长70-75%是结构性的，受制程垄断和封装瓶颈保护"
+      direction: bullish
+      magnitude: 4  # CEO确认AI收入2026翻倍, 超算CapEx $650-725B
+      mechanism: "训练→推理转换创造第二增长引擎 + CoWoS瓶颈使TSM成为AI供应链速率决定步骤 → FY2026E营收+28-30%"
+      kill_switch: "超算CapEx增速<15% + NVIDIA DIO>160天 → AI消化期提前到来(概率20-25%)"
+
+    - claim: "当前$355已充分定价品质——Reverse DCF隐含预期合理，无显著低估"
+      direction: bearish
+      magnitude: 4  # Reverse DCF隐含5年FCF CAGR 19.3% vs 共识19.1%
+      mechanism: "Forward PE 28x + EV/Sales 12.4x(历史新高) + FCF Yield 1.88%(远低于10Y美债4.3%) → 安全边际<5%"
+      kill_switch: "AI溢价从3.5%扩张至12.5% → 目标$416(+17%)"
+
+    - claim: "台海地缘风险定价不足——概率加权损失-16.7% vs 隐含折价仅10-15%"
+      direction: bearish
+      magnitude: 3  # Polymarket 11.5%, 低概率但高影响
+      mechanism: "87%正常+13%极端的二元分布 → 封锁=-40~-50%/冲突=-80~-90% → 期望损失-16.7% → 当前PE隐含折价不足"
+      kill_switch: "海外产能2028达20%'生存线' + Polymarket持续<10% → 折价结构性收窄"
+
+    - claim: "2027-2028年竞争格局从'TSM独占'转向'TSM主导+有限替代'"
+      direction: conditional
+      magnitude: 3  # Samsung SF2P 70%良率是信号, Intel 18A获Apple
+      mechanism: "Samsung 2nm良率突破70% + Intel 18A获Apple赢单 → 先发规模优势非不可复制 → 定价权边际弱化"
+      kill_switch: "Samsung/Intel 2026年底良率均<70% → 追赶再延迟2年 → 垄断窗口延长"
+
+  moat:
+    composite_score: 8.98  # Phase 3 M10五维量化
+    half_life: "制程领先2-4年 | 封装(CoWoS/SoIC)>5年 | 客户锁定18-36月/设计周期"
+    dimensions:
+      - type: ip
+        strength: 5
+        evidence: "3nm良率差40pp(TSM >90% vs Samsung ~50%); N2率先量产良率70-80%; R&D效率7% vs Intel 31%"
+        vulnerability: "先发规模优势而非不可复制技术——Samsung掌握GAA理论基础, 问题是工程执行"
+      - type: switching_cost
+        strength: 5
+        evidence: "$590M 3nm设计成本 + 18-36月PDK锁定 + 30年DTCO数据积累不可复制"
+        vulnerability: "客户多元化动力(NVIDIA投资Intel Foundry $5B)可能在2-3年内削弱绝对定价权"
+      - type: scale
+        strength: 5
+        evidence: "$52-56B CapEx(全球最高) + 毛利率58-65% + CoWoS 130K wpm产能无可匹敌"
+        vulnerability: "海外fab成本高30-50% → 混合毛利率承压2-3pp(2028年海外占比达20%)"
+      - type: network_effect
+        strength: 4
+        evidence: "EDA三巨头优先适配 + CoWoS生态 + IP优先验证 → 设计生态正反馈"
+        vulnerability: "Samsung/Intel若获大客户量产验证, 可启动自身生态循环"
+      - type: brand
+        strength: 4
+        evidence: "纯代工模式(不与客户竞争) + 71%总份额 + ~100%客户保留率"
+        vulnerability: "纯代工承诺若因自研芯片诱惑打破(极低概率), 信任基础崩塌"
+
+  valuation:
+    reverse_dcf_implied: "隐含5年FCF CAGR 19.3%, 营收CAGR ~20%, 终端净利率~43% — 均在共识±20%内, 定价合理"
+    methods_used: ["SOTP v3.0(4分部)", "AI调整SOTP", "偏差修正SOTP", "DCF概率加权", "分析师共识", "Bear-adjusted", "Reverse DCF", "OVM期权估值"]
+    dispersion: "29.6% ($317-$652, 传统$349 vs AI增强$519)"
+    consensus_vs_ours: "市场看TSM=28x PE半导体周期股 | 我们看TSM=传统估值$349公允+AI期权$53-$170待兑现+地缘折价不足"
+    entry_zone: "$280-340 (标准仓) | $220-280 (核心仓)"
+    catalyst: "回调窗口: AI消化期(2027H2) | 地缘恐慌(Polymarket spike) | 竞争噪音(Samsung 2nm量产消息)"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "等待买入 — 品质已确认(护城河8.98/10), 等待价格回落到$280-340建标准仓"
+    buy_triggers:
+      - trigger: "AI消化期: 超算CapEx增速放缓→TSM指引下调→sell-side下调"
+        price_zone: "$280-340 (PE 20-24x)"
+        reasoning: "AI结构性需求不变但周期性回调→PE压缩→安全边际>15%"
+      - trigger: "地缘恐慌: Polymarket台海概率spike但未实质恶化"
+        price_zone: "$220-280 (PE 16-20x)"
+        reasoning: "市场过度反应地缘噪音→实质风险不变→反脆弱入场"
+      - trigger: "竞争噪音: Samsung 2nm量产消息引发市场担忧"
+        price_zone: "$300-340"
+        reasoning: "良率达标到大规模量产+客户验证还需2-3年→短期噪音"
+    hold_conditions:
+      - "先进节点(<=7nm)份额>80%"
+      - "毛利率>55%(连续2Q)"
+      - "CoWoS利用率>80%"
+      - "Polymarket台海入侵概率<25%"
+      - "NVIDIA占比<30%且无可行替代方案"
+    sell_triggers:
+      - signal: "Polymarket台海入侵概率>25%"
+        severity: "action"
+        action: "减仓50%, Polymarket>40%则清仓"
+      - signal: "Samsung 2nm良率>80% + Qualcomm/AMD转单>10%"
+        severity: "warning"
+        action: "重评护城河, 如份额降至<80%则减仓30%"
+      - signal: "超算CapEx增速<0%(AI需求断崖)"
+        severity: "action"
+        action: "减仓50%, 重评AI结构性论点"
+      - signal: "毛利率连续2Q<55%"
+        severity: "warning"
+        action: "重评估值, 检查良率/海外fab/定价权问题"
+      - signal: "PE>35x且无增速提升催化(AI溢价过度定价)"
+        severity: "action"
+        action: "减仓50%, 锁定利润"
+    position_sizing: "当前$355: 1%观察仓(安全边际不足) | $280-340: 标准仓3-5% | $220-280: 核心仓5-8%(组合上限, 地缘风险)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "CoWoS从'附加服务'到'系统集成商'的价值重估"
+    chain: >
+      AI模型规模化→单芯片算力不足→需要多芯片封装(chiplet)
+      → CoWoS是唯一能将HBM+GPU+互连集成的先进封装技术
+      → TSM垄断CoWoS>80%产能(130K wpm, 全年售罄)
+      → 客户选TSM不仅看制程, 更看"制程+封装+测试"全栈能力
+      → TSM从"代工商"变为"AI算力系统集成商"
+      → 封装护城河追赶5年+(vs 制程2-4年), 更持久
+      → 市场仍按"代工商"估值(PE 28x), 未反映系统集成商溢价
+    transferable_to: "所有从单一供应转向全栈集成的垄断企业(如从组件供应商升级为平台)"
+    reasoning_habit: "追问'客户选你到底买的是什么' — 如果买的不仅是产品而是整合能力, 护城河性质从'技术领先'升级为'生态锁定'"
+
+  - id: "CC-2"
+    name: "地缘风险的二元定价模型(非线性折价)"
+    chain: >
+      台海风险是低概率高影响事件 → 线性折价(如PE打8折)不适合
+      → 应用二元模型: 87%正常(PE应=行业40x) + 13%极端(PE→0-5x)
+      → 概率加权期望损失-16.7% → 当前PE 28x隐含折价10-15% → 定价不足
+      → 但海外产能扩张(2026 10%→2028 20%)每年收窄折价1.5-2.5%
+      → Arizona fab不是利润最优选择而是"市场准入条件"(投资换准入)
+      → 地缘风险不可对冲只可管理 → 仓位控制(上限5-8%)+期权对冲
+    transferable_to: "所有面临低概率高影响政治风险的公司(俄罗斯上市公司/中东石油/南海航运)"
+    reasoning_habit: "低概率高影响风险用二元概率模型而非线性折价 — PE打折掩盖了真实的尾部风险分布"
+
+  - id: "CC-3"
+    name: "垄断定价权的'绝对窗口'有限论"
+    chain: >
+      TSM先进节点90%份额 → 2026-2029四年连续涨价3-10%
+      → 但NVIDIA投资Intel Foundry $5B(供应链培育)
+      → 先用低价值I/O die验证Intel工艺 → 如果成功则迁移compute die
+      → 一旦NVIDIA有可信Plan B → TSM涨价谈判筹码弱化
+      → "绝对定价权"窗口可能只剩2-3年(vs 市场假设5年+)
+      → 定价权从Stage 5(绝对垄断)可能降至Stage 4(强但有替代)
+    transferable_to: "所有客户正在培育替代供应商的垄断企业(如单一来源合同到期前)"
+    reasoning_habit: "客户培育替代供应商的投资(即使很小)是定价权天花板的领先信号 — 看动作不看金额"
+
+  - id: "CC-4"
+    name: "AI周期的'高原期'而非'尖峰期'判断"
+    chain: >
+      传统半导体周期: V型或倒V型(快速见顶→快速衰退)
+      → AI周期不同: 客户投资基于FOMO而非纯ROI → 触发下行的条件更苛刻
+      → 训练→推理转换创造第二增长引擎(推理需求从1/3→2/3)
+      → 高原期(plateau)而非尖峰(spike): AI CapEx增速放缓但不暴跌
+      → TSM影响: 利用率从95%降至80-85%而非<70%(传统周期底部)
+      → 毛利率温和收窄(3-5pp)而非断崖(10pp+)
+    transferable_to: "所有受新范式驱动的周期性行业(如2000年互联网基础设施/2010年移动通信基站)"
+    reasoning_habit: "周期分析先判断驱动力性质(FOMO vs ROI) — FOMO驱动的周期下行更慢但恢复也更难"
+
+  - id: "CC-5"
+    name: "海外扩产的'投资换准入'定价模型"
+    chain: >
+      美国政府要求TSM在Arizona建厂 → 不是商业最优而是市场准入条件
+      → Arizona成本比台湾高30-50% → 海外产能20%目标(2028年)
+      → 混合毛利率承压2-3pp(结构性, 非周期性)
+      → 但换来: 关税豁免(20%→15%) + 政府背书("不能让TSM失败")
+      → 地缘折价每年收窄1.5-2.5% → 5-10年后PE修复可能>毛利率损失
+      → 短期EPS损失 vs 长期PE扩张 = 时间维度的价值交换
+    transferable_to: "所有被政府要求本地化生产的全球垄断企业(如汽车/能源/药品供应链回流)"
+    reasoning_habit: "强制本地化的成本不止看毛利率损失 — 同时计算PE折价收窄的长期价值"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "TSM先进节点~90%份额使护城河不可攻破"
+      final: "护城河极强但'先发规模'而非'不可复制技术' — Samsung掌握GAA理论, Intel获Apple赢单"
+      pivot: "Samsung SF2P 2nm良率突破70% + Intel 18A获Apple里程碑协议 → Phase 4下调置信度10pp"
+
+    - initial: "AI增长85%置信度可持续3-5年"
+      final: "AI增长75-78%置信度, 18-24月安全窗口, 2028年后面临ROI审视"
+      pivot: "Phase 4对抗审查: AI泡沫概率20-25% + DeepSeek效率冲击的Jevons Paradox未被硬数据证实"
+
+    - initial: "地缘风险被市场过度定价(PE折价14-21% vs 概率加权-11.4%)"
+      final: "地缘风险定价不足(概率加权EL -16.7% vs 隐含折价10-15%)"
+      pivot: "Phase 4更新Polymarket→11.5% + Buffett完全退出TSM + 概率模型从线性折价修正为二元分布"
+
+  surprises:
+    - finding: "封装护城河(CoWoS/SoIC)比制程更持久: 追赶5年+ vs 制程2-4年"
+      implication: "市场用'制程代差'给TSM估值, 但真正的长期价值在封装垄断 → CoWoS独立估值可能$50-80B"
+
+    - finding: "NVIDIA投资Intel Foundry $5B是定价权天花板的领先信号"
+      implication: "TSM的'绝对定价权'窗口可能只剩2-3年 → 4年涨价计划的后半段面临阻力"
+
+    - finding: "Phase 1-3系统性低估竞争追赶速度 → Phase 4下调6个CQ置信度3-12pp"
+      implication: "分析AI受益者时存在结构性确认偏误 → 对抗审查不是可选而是必须"
+
+    - finding: "AI收入覆盖61%(广义)而非市场常引用的'high-teens%'(狭义加速器)"
+      implication: "TSM的AI暴露度被市场低估约3x → AI周期下行对TSM的冲击也被低估"
+
+  blind_spots:
+    - area: "CoWoS供需何时平衡"
+      why_matters: "供不应求=定价权极强; 供需平衡=定价权回归正常 → 毛利率差3-5pp"
+      monitor: "季度法说会CoWoS利用率披露; 竞品封装产能(ASE/Amkor)扩张进度"
+
+    - area: "DeepSeek效率冲击的实质影响"
+      why_matters: "如果高效模型使训练需求'见顶更早', HPC营收拐点可能提前至2027H2"
+      monitor: "NVIDIA DIO趋势; 超算AI CapEx占总CapEx比; 推理量增速vs单次推理成本下降率"
+
+    - area: "Intel 18A从Apple入门级扩展到旗舰级的概率"
+      why_matters: "入门级=噪音; 旗舰级=实质竞争 → 先进节点份额可能从90%降至80-85%"
+      monitor: "Intel 18A良率(>80%?); Apple之外第二大外部客户公告; Qualcomm/AMD分单信号"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "PE 28x + EV/Sales 12.4x历史新高 + FCF Yield 1.88% — 品质极高但价格已充分定价"
+      lesson: "品质极高的垄断企业在估值历史新高时, 唯一的意外方向是向下。安全边际<5%时不应追入"
+      transferable: "所有CQI>80且PE处于5年高位的垄断型公司"
+    - scenario: "AI周期高点持有→如果AI消化期到来→PE从28x压缩至22-24x→下行20-30%"
+      lesson: "AI受益股在周期高点应review仓位规模。结构性受益≠不受周期影响——70%结构性仍有30%周期性"
+      transferable: "所有'结构性增长'叙事中含周期性成分的公司(AI/新能源/云计算)"
+    - scenario: "地缘恐慌中未买入→错过折价入场→后续PE修复创造超额回报"
+      lesson: "低概率高影响风险的恐慌性抛售是最佳入场窗口 — 前提是基本面论点不变且有仓位管理"
+      transferable: "所有面临二元政治风险的高品质公司"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "CoWoS供需状态(利用率/交期/涨价幅度)"
+      why_alpha: "CoWoS是AI供应链物理瓶颈, 供需状态直接决定TSM定价权强度。大多数分析师关注制程节点而非封装"
+      current_reading: "2026全年售罄, 扩产至130K/月, 涨价10-20% — 极度供不应求"
+    - signal: "NVIDIA对Intel Foundry的订单扩展(从I/O die到compute die)"
+      why_alpha: "TSM'绝对定价权'窗口的最佳前瞻指标。$5B投资是开始不是终点"
+      current_reading: "仅I/O die(低价值), compute die未转移 — 窗口仍开放"
+    - signal: "Polymarket台海冲突概率趋势方向"
+      why_alpha: "地缘折价的市场定价锚。概率方向(上升/下降)比绝对值更重要"
+      current_reading: "11.5%, 从30%(2025-10)持续下降 — 趋势利好但绝对值仍高"
+
+  confirmation_signals:
+    - signal: "季度毛利率(指引vs实际)"
+      bullish_threshold: ">64%(超指引上沿=定价权+良率双确认)"
+      bearish_threshold: "<60%(低于指引下沿=N2良率或海外fab问题)"
+    - signal: "超算CapEx增速(季度YoY)"
+      bullish_threshold: ">30% YoY(AI投资加速)"
+      bearish_threshold: "<15%(AI消化期启动) | <0%(AI需求断崖)"
+    - signal: "NVIDIA DIO(天数)"
+      bullish_threshold: "<140天(需求强劲, 库存健康)"
+      bearish_threshold: ">160天(库存积压, AI需求放缓信号)"
+
+  noise_signals:
+    - signal: "日度/周度ADR价格波动"
+      why_noise: "TSM受宏观/地缘/AI情绪三重驱动→日度波动是噪音, 看季度基本面"
+    - signal: "Sell-side目标价调整"
+      why_noise: "17位分析师范围$200-$450, 离散度极大→个别调整无信息量。用自建Reverse DCF替代"
+    - signal: "成熟节点(28nm+)需求/价格变化"
+      why_noise: "成熟节点毛利率远低于先进节点→对利润影响<5%。AI投资者应只关注<=7nm动态"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: ASML
+      similarity: "同为半导体垄断基础设施, 类似'不可绕过'地位"
+      key_difference: "ASML=设备垄断(EUV独家) vs TSM=制造垄断(先进代工独家) | ASML无地缘风险 → PE溢价合理"
+
+    - ticker: NVDA
+      similarity: "AI供应链互锁(NVIDIA 22%客户+60% CoWoS产能)"
+      key_difference: "NVDA=AI软件生态平台(设计) vs TSM=AI硬件制造平台(生产) | TSM定价权受制于NVDA替代培育"
+
+    - ticker: Samsung(非上市对标)
+      similarity: "直接竞争者, 同为先进代工+封装"
+      key_difference: "Samsung=IDM(自产自销冲突) vs TSM=纯代工(客户信任) | 良率差40pp(3nm) | Samsung追赶速度是TSM估值的最大变量"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "TSM (8.98/10) > ASML (~9.0) > NVDA (~8.5) > AMD (~6.0) > Intel (~5.0)"
+      reasoning: "TSM五维护城河(技术+转换+规模+网络+品牌)全部>8.0, 半导体行业最全面"
+
+    - dimension: "地缘风险暴露"
+      position: "TSM (最高) >> Samsung (中) > Intel (低) > ASML (极低)"
+      reasoning: "TSM 80%+产能在台湾, 唯一的'归零级'地缘风险持有者"
+
+    - dimension: "AI受益纯度"
+      position: "NVDA > TSM > AMD > ASML > Intel"
+      reasoning: "TSM AI广义覆盖61%收入但含大量间接受益; NVDA数据中心>80%直接AI"
+
+    - dimension: "估值吸引力(当前)"
+      position: "Intel (历史低位) > AMD (合理) > TSM (公允偏贵) > NVDA (溢价) > ASML (溢价)"
+      reasoning: "TSM PE 28x在历史高位, FCF Yield 1.88%, 安全边际不足"
+
+  industry_position:
+    quadrant: "最高品质 × 公允估值 × 高增速(受AI驱动)"
+    archetype: "AI算力节流阀 — 全球AI增长的物理瓶颈, 收费确定但地缘风险不可消除"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含5年FCF CAGR 19.3% vs 共识19.1%→定价合理, 无显著错误定价"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "AI消化期: 超算CapEx增速逐步放缓→TSM指引下调→sell-side下调→PE压缩→$280-340入场窗口(2027H2)"
+
+    - pattern_id: "competitive_benchmarking.chinese_competitor_deep_dive"
+      application: "Samsung+Intel双线追赶: 5情景×概率(Samsung 2nm良率/Intel 18A客户/组合场景)量化竞争格局演变"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "8个独立Bear Case + 行为金融偏差校正(确认偏误-$45, 锚定+$6) → Phase 4将6个CQ置信度下调3-12pp"
+
+  novel_patterns:
+    - name: "封装护城河>制程护城河(半衰期倒置)"
+      description: "市场关注制程代差(2-4年可追赶), 但封装垄断(CoWoS/SoIC)追赶需5年+且无EUV类设备可缩短差距"
+      transferable_to: ["所有制造业中'集成能力'比'单一技术'更重要的垄断企业", "汽车(整车vs零部件)/航空(发动机总装)"]
+
+    - name: "二元地缘风险定价(非线性折价)"
+      description: "低概率高影响地缘风险不应用线性PE折价, 应用概率加权二元模型(正常态×概率 + 极端态×概率)计算期望损失"
+      transferable_to: ["所有面临政治二元风险的上市公司", "新兴市场ADR(俄罗斯/中东)", "台湾/韩国半导体"]
+
+    - name: "投资换准入(强制本地化的隐含价值交换)"
+      description: "政府强制本地化=短期成本(毛利率-2~3pp)+长期价值(地缘折价收窄+政府背书)的时间维度交换"
+      transferable_to: ["CHIPS Act受益/受损者", "欧洲绿色供应链本地化", "印度制造业强制本地化"]
+
+    - name: "AI暴露度的广义vs狭义测量"
+      description: "管理层披露的狭义AI收入(加速器占high-teens%)严重低估AI实际辐射(广义61%=HPC+CoWoS+间接)"
+      transferable_to: ["所有自称'AI受益'的公司", "需要区分直接/间接AI收入的估值分析"]
+
+    - name: "绝对定价权窗口(客户培育替代信号)"
+      description: "垄断定价权的有效期=客户培育出可信替代供应商的时间。$5B投资不看金额看意图"
+      transferable_to: ["单一来源依赖的客户-供应商关系", "药品/军工独家供应商"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "封装护城河半衰期>制程护城河——市场定价关注制程代差, 真正的长期壁垒在封装集成"
+        implication: "半导体护城河评估应增加'集成能力'维度, 权重≥20%(当前框架未单独列出)"
+      - insight: "护城河8.98/10但置信度从P3 90%降至P5 78% — '先发规模'而非'不可复制'意味着护城河有衰减速率"
+        implication: "极高护城河评分不等于永久——应附加'衰减速率'指标(年化多少pp份额流失)"
+
+    valuation_insights:
+      - insight: "二元地缘风险用概率加权模型比线性PE折价更准确——期望损失可量化"
+        implication: "所有含政治二元风险的公司应用(正常态PE×概率 + 极端态PE×概率)替代简单PE折价"
+      - insight: "传统估值$349 vs AI增强估值$519 — AI期权价值是分歧核心($170/ADR差距)"
+        implication: "AI受益者的估值应明确分离'Core营运价值'和'AI期权价值'两部分, 分别给PE"
+
+    screening_insights:
+      - insight: "广义AI暴露度(61%)远高于狭义(high-teens%) — 需要自建AI收入测量而非依赖管理层披露"
+        implication: "AI选股筛选应建立'广义AI收入占比'指标(直接+间接), 管理层披露往往低估实际暴露"
+      - insight: "地缘折价结构性收窄(海外产能从10%→20%)是可量化的催化剂"
+        implication: "面临地缘折价的高品质公司, '折价收窄路径'(本地化进度)是独立的买入信号维度"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "对垄断企业追问'绝对定价权还剩几年'"
+      trigger: "客户投资替代供应商(不论金额大小)"
+      origin: "NVIDIA投资Intel Foundry $5B — 金额小但意图大, TSM绝对定价权窗口可能只剩2-3年"
+      generalization: "任何客户培育Plan B的行动都是定价权天花板的领先信号, 看动作不看金额"
+
+    - habit: "低概率高影响风险用二元模型定价"
+      trigger: "地缘/政治/监管等不可预测的'开关型'风险"
+      origin: "台海风险线性折价(PE打8折)掩盖了13%概率下ADR→$50的真实分布"
+      generalization: "二元风险的'期望损失'比'折价幅度'更能量化真实风险暴露"
+
+    - habit: "区分广义vs狭义业务暴露度"
+      trigger: "管理层给出狭义收入占比(如'AI占high-teens%')"
+      origin: "TSM广义AI 61% vs 狭义high-teens% — 3x差距改变了AI周期下行的冲击估计"
+      generalization: "管理层有动力低报某些暴露度(降低周期性感知) — 自建广义测量是必须的"
+
+    - habit: "Phase 4对抗审查后系统性下调置信度"
+      trigger: "Phase 1-3完成后、所有CQ看起来都很'确定'时"
+      origin: "TSM 6个CQ在Phase 4后下调3-12pp — 确认偏误在AI受益者分析中尤为严重"
+      generalization: "对抗审查不是形式——每次应至少让1/3的CQ置信度下降, 如果全部不变说明审查不够严格"
+
+  quality_feedback:
+    strengths:
+      - "D3护城河86/100 — 五维量化8.98/10, 封装vs制程持久性差异化发现"
+      - "D2增长质量82/100 — AI结构性70-75%/周期性25-30%的精确拆分"
+      - "D5管理层88/100 — 刘德音战略评估+纯代工承诺分析"
+      - "8个CQ全闭环, 平均置信度73.9%, Phase 4下调反映了审慎"
+    weaknesses:
+      - "DM密度0.28/千字(远低于0.8门控) — DM锚点标注严重不足, 需backfill"
+      - "D1估值吸引力52/100 — 在$355入场安全边际不足, 'buy right'纪律得分低"
+      - "D10时机因素38/100 — 52周新高+RSI 65.8+EV/Sales历史新高=时机不利"
+      - "D7风险可控性48/100 — 台海地缘风险不可对冲, 只能通过仓位管理"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "品质最高≠入场时机最佳 (CME垄断三角)"
+        evidence: "TSM护城河8.98/10但估值吸引力52/100, 综合评级'中性关注'而非'推荐'"
+        confidence_after: "高(两份报告独立确认: CME CQI 93=中性关注, TSM 8.98=中性关注)"
+
+      - hypothesis: "Reverse DCF必须P1前置 (CRM v2.0铁律O)"
+        evidence: "Reverse DCF隐含CAGR 19.3%与共识匹配 → 有效防止了'TSM被低估'的确认偏误"
+        confidence_after: "高(连续执行确认)"
+
+    extended:
+      - hypothesis: "护城河有多重半衰期 (CME双半衰期)"
+        extension: "TSM的多重半衰期: 封装>5年 / 制程2-4年 / 定价权2-3年(绝对)→5年(相对) — 从'双'进一步细化为'按维度差异化'"
+
+    refuted:
+      - hypothesis: "地缘风险被市场过度定价 (Phase 1-3初始判断)"
+        evidence: "Phase 4修正: 概率加权EL -16.7% > 隐含折价10-15% → 实际是定价不足"
+        lesson: "分析地缘风险时存在'理性化偏差' — 倾向于认为市场过度恐慌, 但二元模型显示市场可能还不够恐慌"
+
+  limitations:
+    - "DM密度0.28/千字严重不足(框架要求≥0.8) → 数据锚定可追溯性差, 需在v3.0中backfill"
+    - "Phase 4无独立红队标注(RT-编号缺失) → 对抗审查结构化程度不如CME v3.0"
+    - "台海地缘概率依赖Polymarket(单一来源) → 如果Polymarket自身被操纵, 概率锚失效"
+    - "广义AI收入61%的测量依赖主观分类(哪些间接受益算AI?) → 可能高估或低估实际暴露"
+    - "DCF概率加权$652因地缘调整方法差异导致范围极宽($465-$1,315) → 权重仅10%合理但说明估值确定性有限"

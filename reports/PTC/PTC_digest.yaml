@@ -1,0 +1,432 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — PTC Inc.
+# 压缩比: 125K → ~12K (10x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式映射 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: PTC
+  company: "PTC Inc."
+  report_date: "2026-03-23"
+  stock_price: "$149.81"
+  market_cap: "$17.93B"
+  report_version: "v3.0"
+  report_path: "reports/PTC/PTC_Complete_v3.0_2026-03-23.md"
+  quality_score: "报告未覆盖(无正式记分卡)"
+  cqi: "报告未覆盖"
+  framework_version: "v19.7"
+  industry: "生态科技"
+  archetype: "订阅制工业软件(制度嵌入型现金牛)"
+  chars: 125279
+  dm_count: 191
+  dm_density: "1.52/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "PTC的护城河价值占EV的54-80%提供了强下行保护, 但PE折价28%(vs ADSK)是会计幻觉——EV/FCF和PEG完全相同, 当前价格已充分定价"
+  rating: "中性关注(偏审慎)"
+  fair_value: "~$142(红队调整后)"
+  expected_return: "-5.2%"
+
+  key_arguments:
+    - claim: "PE折价28%是会计幻觉——EV/FCF 22.3x vs ADSK 22.6x几乎相同, PEG均为2.3x"
+      direction: bearish
+      magnitude: 5
+      mechanism: "PE差异来自资本结构(40%)+SBC差异(30%)+增速差异(30%) → EV/FCF中和后无折价 → '便宜'是错觉"
+      kill_switch: "PTC ARR加速到12%+(与ADSK持平) → PEG差距出现 → PE折价变成真折价"
+
+    - claim: "护城河双层蛋糕: 底层(制度嵌入55-60%)几乎不可替代, 表层(商业嵌入40-45%)替代成本3-9x年付费"
+      direction: bullish
+      magnitude: 5
+      mechanism: "ITAR(国防)+EU MDR(医疗器械)法规强制使用 → 40-45% ARR受制度保护 → 零增长永续值$10.4B(EV的54%)"
+      kill_switch: "法规变更允许替代产品通过合规(极低概率) | 国防/医疗占比因其他行业增速更快而被稀释"
+
+    - claim: "有机增速剔除SaaS迁移提价后仅3.9%, 迁移跑道剩余3-4年"
+      direction: bearish
+      magnitude: 4
+      mechanism: "SaaS迁移提价贡献~2.5pp → 迁移65%完成 → FY2028后迁移提价贡献<1pp → ARR增速从8.5%缓降至6%"
+      kill_switch: "Deferred ARR 3x兑现 → FY2027 ARR加速到11%+ | AI附加模块创造新提价来源1-2pp"
+
+    - claim: "WACC是决定性变量: 9.5%(工业股)→审慎 vs 8.5%(SaaS)→中性, 1%差异=$22/sh(15%)"
+      direction: conditional
+      magnitude: 4
+      mechanism: "下行beta从2018年1.28升至最近2.09 → 市场越来越把PTC当工业股定价 → 9.5% WACC合理甚至偏低"
+      kill_switch: "Fed降息>150bp + PTC证明ARR在衰退中韧性(下行beta降至<1.0) → 市场重分类为SaaS"
+
+    - claim: "回购效率η=0.51: EPS增长71%来自回购, 仅29%来自业务增长"
+      direction: bearish
+      magnitude: 3
+      mechanism: "FCF Yield 4.8% < WACC 9.5% → 每$1回购仅创造$0.51价值 → 但回购是'最不坏的选择'(无更好配置)"
+      kill_switch: "股价跌至$75(FCF Yield>9.5%) → η>1 → 回购变高效"
+
+  moat:
+    composite_score: 7.25
+    half_life: "制度嵌入(A&D/医疗): >20年 | 商业嵌入(汽车/工业): 10-15年 | 技能锁定(CAD): 5-8年(代际衰减)"
+    dimensions:
+      - type: switching_cost
+        strength: 5
+        evidence: "五层嵌入叠加: 技能$1-2M+数据$3-5M+流程$10-15M+合规$5-20M+生态$2-5M = 总替代成本$21-47M vs 年付费$5-15M = 3-9x"
+        vulnerability: "新项目时客户可选竞品(增量市场护城河弱于存量市场)"
+      - type: regulatory
+        strength: 5
+        evidence: "ITAR(国防)+EU MDR(医疗)+CMMC 2.0(国防供应链) → 40-45% ARR受制度保护, 合规追溯链断裂成本$50-100M"
+        vulnerability: "法规只保护存量部署, 不阻止竞品在新项目中赢单"
+      - type: data
+        strength: 4
+        evidence: "30年积累的.prt/.asm专有格式设计数据+BOM结构+变更管理历史无法无损迁移, STEP/IGES导出丢失参数化关系"
+        vulnerability: "新一代AI工具可能实现格式无关的设计数据管理"
+      - type: ip
+        strength: 3
+        evidence: "参数化建模先驱(1987年Pro/ENGINEER)+Windchill PLM行业#2+Codebeamer ALM新秀Leader"
+        vulnerability: "Siemens Teamcenter超越至PLM #1(ABI 2025)+Siemens AI Copilot领先12-18个月"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含FCF CAGR 8.0% — 定价'当前状态永续化'(ARR 8-9%, OPM维持, 持续10年), 既没定价加速也没定价崩溃"
+    methods_used: ["Reverse DCF", "DCF三情景(Python)", "SOTP", "可比公司法(EV/FCF)", "EPS路径"]
+    dispersion: "DCF $118.2 vs SOTP $127 vs 可比 $148.5 vs EPS路径 $153.2 — 离散度较高"
+    consensus_vs_ours: "市场看PE 19x便宜(vs ADSK 27x) | 我们看EV/FCF 22.3x≈ADSK 22.6x, PE折价是会计幻觉"
+    entry_zone: "$110-125(DCF Base-SOTP区间, EV/FCF 16-18x)"
+    catalyst: "FY2027 Q1 ARR>10%(Deferred ARR兑现) 或 Fed累计降息>150bp(WACC效应) 或 收购事件(30-40%溢价)"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "等待 — 护城河确认但估值无安全边际, 等价格回落或增速加速"
+    buy_triggers:
+      - trigger: "FY2027 ARR>10%(CC)连续2Q + Deferred ARR兑现"
+        price_zone: "$130-145(EV/FCF 18-20x)"
+        reasoning: "增速反转确认→PEG改善→PE扩张合理化"
+      - trigger: "制造业衰退恐慌→PTC跌破$120"
+        price_zone: "$105-120(EV/FCF 14-17x)"
+        reasoning: "护城河$10.4B(EV 54%)提供硬底→恐慌时买入制度嵌入型资产"
+      - trigger: "Fed累计降息≥150bp"
+        price_zone: "当前价格附近($140-150)"
+        reasoning: "WACC从9.5%降至8.5%→公允值从$131升至$153→变为中性/关注"
+    hold_conditions:
+      - "ARR增速(CC)≥7%"
+      - "OPM(Q1-Q3均值)≥28%"
+      - "PLM排名≥#2(ABI/Gartner)"
+      - "ServiceMax ARR不同比下降"
+    sell_triggers:
+      - signal: "ARR<7%连续2Q(增长引擎熄火)"
+        severity: "action"
+        action: "减仓50%, 重新评估是否进入'基础设施化'身份重分类"
+      - signal: "ServiceMax ARR同比下降(SLM结构性问题)"
+        severity: "warning"
+        action: "减仓25%, 监控SLM是否成为估值黑洞"
+      - signal: "OPM<28%连续2Q(利润率悬崖确认)"
+        severity: "action"
+        action: "减仓50%——OPM 35.9%是峰值非新常态"
+      - signal: "PLM排名降至#3(Siemens+Dassault超越)"
+        severity: "warning"
+        action: "减仓25%, 重新评估护城河深度"
+    position_sizing: "当前价格Kelly为负(不买) | $120附近Kelly可能转正但仓位应≤10%(WACC争议=高不确定性)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "PE折价会计幻觉的识别逻辑"
+    chain: >
+      观察: PTC Forward PE 19.4x vs ADSK ~27x → 看似28%折价
+      → 追问: 同样的业务为什么PE差这么多?
+      → 分解: 资本结构差异(PTC净债务$1.2B vs ADSK净现金)贡献~40%
+      → SBC差异(PTC 7.9% vs ADSK 10.9%)贡献~30%
+      → 增速差异(PTC 8.5% vs ADSK 12%)贡献~30%
+      → 验证: EV/FCF(22.3x vs 22.6x)中和了资本结构和SBC差异→几乎相同
+      → 验证: PEG(2.3x vs 2.3x)中和了增速差异→完全相同
+      → 结论: PE折价不是真折价, 市场定价已经精确, 以PE低为买入理由=为会计幻觉买单
+    transferable_to: "所有PE看起来比可比公司便宜的情况——必须用EV/FCF和PEG交叉验证PE折价的真实性"
+    reasoning_habit: "看到PE折价时, 立刻做三步验证: (1)EV/FCF是否也折价 (2)PEG是否也折价 (3)分解PE差异的来源(结构/SBC/增速/风险)"
+
+  - id: "CC-2"
+    name: "五层制度嵌入如何创造估值底部"
+    chain: >
+      PTC 40-45% ARR来自A&D(30-35%)和医疗器械(8-10%)
+      → 这些行业受ITAR/EU MDR/CMMC法规强制
+      → 合规追溯链断裂成本$50-100M >> 年付费$5-15M
+      → 即使PTC产品变差, 客户也无法在不违反法规的情况下迁移
+      → 40-45% ARR按零增长永续贴现(WACC 9.5%) = $10.4B
+      → 仅制度嵌入部分就支撑EV的52-58%
+      → 即使表层(商业嵌入)全部流失, 底层仍在
+      → PTC的下行底部比一般SaaS公司高得多
+    transferable_to: "所有受合规法规保护的B2B软件(医疗IT/国防IT/金融合规) — 分层评估制度嵌入vs商业嵌入的占比"
+    reasoning_habit: "评估护城河时区分'制度嵌入(法规强制)'和'商业嵌入(客户选择)' — 两者的持久性和下行保护完全不同"
+
+  - id: "CC-3"
+    name: "SaaS迁移提价是一次性红利而非永续增长"
+    chain: >
+      PTC ARR增速8.5% = 有机3.9% + 迁移提价2.5pp + 新产品2.1pp
+      → SaaS迁移已完成65%, 剩余3-4年跑道
+      → 迁移提价从2.5pp逐年递减至FY2030的0.2pp
+      → 需要新引擎(AI提价+Codebeamer合规)替代, 但置信度中等
+      → ARR增速从8.5%→6.2%是'斜坡'非'悬崖', 但市场隐含8% FCF CAGR在FY2028后需OPM扩张补偿
+      → Forward PE 19.4x可能不是折价, 而是市场正确定价了迁移红利窗口期
+    transferable_to: "所有经历商业模式转型(永久→订阅/on-prem→SaaS)的软件公司 — 迁移提价贡献必须单独拆解, 不计入有机增速"
+    reasoning_habit: "看到高增速SaaS转型公司, 追问'增速中有多少是迁移提价(一次性) vs 真实有机(可持续)' — 迁移提价终将归零"
+
+  - id: "CC-4"
+    name: "下行beta揭示身份认知争议"
+    chain: >
+      PTC财务特征像SaaS(95%经常性+84%毛利率+31% FCF margin)
+      → 但下行beta从2018年1.28加速到最近2.09
+      → 下跌时表现像工业股(beta>1), 上涨时表现像SaaS(beta<1)
+      → 非对称风险特征 → 估值应用下行beta定价
+      → WACC 9.5%(工业股)而非8.5%(SaaS)
+      → 1%的WACC差异=$22/sh(15%估值差距)
+      → 评级取决于'你认为PTC更像工业股还是SaaS' — 这不是对错问题, 是投资哲学
+    transferable_to: "所有'软件壳+周期性核'的公司(工业SaaS/金融科技/能源科技) — 用下行beta而非上行beta选择WACC"
+    reasoning_habit: "看到SaaS指标好但客户周期性强的公司, 分析上行和下行beta是否对称 — 不对称时用下行beta定价风险"
+
+  - id: "CC-5"
+    name: "温水煮青蛙: 最危险的场景不触发任何单一预警"
+    chain: >
+      Siemens每年PLM蚕食1-2%市占 + AI领先12-18月 + PTC R&D最低(16.7%)
+      → 每季度ARR增速仅降0.3-0.5pp → 从8%到5%需5年
+      → 每季度看起来'还行', 管理层说'下一季度会好转'
+      → 5年累计: 股价-30~37%, 年化-7~-9%
+      → 不触发任何单一KS信号 → 投资者反复补仓 → 价值陷阱
+      → 检测方法: 用趋势线而非阈值 — 连续4Q增速环比下降即使绝对值>7%也应警惕
+    transferable_to: "所有面临强大竞争对手慢性蚕食的市场#2/#3公司 — 温水煮青蛙比急性冲击更危险"
+    reasoning_habit: "对市场#2/#3公司, 除了设KS阈值, 还要设趋势线检测 — 4Q连续环比下降=温水煮青蛙早期信号"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "PE 19x比ADSK 27x便宜28% → PTC被低估"
+      final: "EV/FCF 22.3x≈ADSK 22.6x, PEG 2.3x=2.3x → PE折价是会计幻觉, 不存在真实折价"
+      pivot: "分解PE差异: 资本结构(40%)+SBC(30%)+增速(30%) → EV/FCF中和后差异消失"
+
+    - initial: "ARR增速8.5%是健康的中高增速"
+      final: "有机增速仅3.9%, 迁移提价贡献2.5pp是一次性红利, 3-4年后消退"
+      pivot: "定价权分层加权(F500 4.5%+中端4%+SMB 0%)=3.9% → 与8.5%差距全部来自迁移提价+新产品"
+
+    - initial: "FY2025 OPM 35.9%是SaaS转型收割期的新常态"
+      final: "35.9%含ASC 606时点效应和Q4季节性, 正常化Pro-forma约33-34%"
+      pivot: "FY2026共识OPM仅26.4%(含IoT剥离), Pro-forma正常化33-34%更接近真实水平"
+
+  surprises:
+    - finding: "护城河价值占EV 54-80%——即使零增长也支撑$10.4B EV"
+      implication: "PTC的下行主要来自增长期望重定价而非业务崩溃→Bear Case底部$95-107而非归零"
+
+    - finding: "回购贡献EPS增长的71%——业务增长仅贡献29%"
+      implication: "EPS CAGR 8%中5.7pp来自回购→EPS增长质量低→不应给高PE"
+
+    - finding: "Onshape教育pipeline 1.5M学生/年的直接ARR贡献仅$6-12M(0.3-0.5%)"
+      implication: "教育渗透的短期价值被严重高估, 真正价值是5-10年的代际替代(类似Solidworks 2000年代击败Pro/ENGINEER的历史)"
+
+    - finding: "PTC R&D/Revenue 16.7%是四家可比公司中最低——CDNS 33.4%, ADSK 22%, DASTY 24.3%"
+      implication: "短期OPM好看, 但长期AI竞争力存在系统性隐患→Siemens AI Copilot领先12-18个月的根因"
+
+  blind_spots:
+    - area: "产品级ARR(CEO沉默域)"
+      why_matters: "不知道PLM/CAD/Onshape/Codebeamer各自ARR→无法验证增长故事→只能看总ARR"
+      monitor: "管理层是否开始披露Onshape ARR(>$200M时没理由不展示)"
+
+    - area: "SaaS迁移精确进度"
+      why_matters: "迁移完成65%是推断值→实际可能50%或75%→直接影响剩余跑道估算"
+      monitor: "PTC是否在投资者日披露SaaS渗透率数据"
+
+    - area: "FY2026 Pro-forma OPM真实水平"
+      why_matters: "33-34%还是26-28%决定了估值差$15-20/sh"
+      monitor: "FY2026 Q2(Mar 2026季度)=首个完全不含IoT的报告→Pro-forma OPM答案"
+
+  sell_lessons:
+    - scenario: "PE看起来便宜但EV/FCF与可比相同→以为是折价其实是会计幻觉"
+      lesson: "永远用EV/FCF和PEG交叉验证PE折价→如果只有PE便宜, 不是真便宜"
+      transferable: "所有有债务/高SBC/非现金摊销的软件公司→PE系统性失真"
+    - scenario: "SaaS迁移提价推高ARR增速→以为是有机增长"
+      lesson: "拆解增速中的一次性成分(迁移提价) vs 可持续成分(有机+新产品)→迁移终将结束"
+      transferable: "所有永久→订阅转型中的软件公司(Adobe, Autodesk历史, PTC当前)"
+    - scenario: "温水煮青蛙: 每季度微miss但5年累计-30%"
+      lesson: "设趋势线检测而非仅阈值——连续4Q增速环比下降是最早的预警"
+      transferable: "所有市场#2/#3面临慢性蚕食的公司"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "有机增速(剔除SaaS迁移提价后)"
+      why_alpha: "市场看总ARR增速8.5%→但3.9%有机增速暴露真实增长能力。大多数分析师不做迁移提价拆分"
+      current_reading: "~3.9%(FY2025推算)"
+    - signal: "Deferred ARR/ARR比值变化"
+      why_alpha: "Deferred ARR 3x是PTC独特的前瞻指标——如果兑现意味着FY2027加速到11%+"
+      current_reading: "3.0x(历史上仅1.5-2.0x→异常高=潜在催化)"
+    - signal: "R&D/Revenue趋势"
+      why_alpha: "16.7%是可比中最低→如果继续下降暗示管理层放弃AI竞争→长期护城河侵蚀加速"
+      current_reading: "16.7%(FY2025, 低于ADSK 22%, CDNS 33.4%, DASTY 24.3%)"
+
+  confirmation_signals:
+    - signal: "ARR增速(CC, ex-IoT)"
+      bullish_threshold: ">10%连续2Q(增速反转确认)"
+      bearish_threshold: "<7%连续2Q(增长引擎熄火)"
+    - signal: "Pro-forma OPM(Q1-Q3均值, ex-IoT)"
+      bullish_threshold: ">33%(正常化水平确认)"
+      bearish_threshold: "<28%(利润率悬崖确认)"
+    - signal: "PLM ABI/Gartner排名"
+      bullish_threshold: "回到#1(竞争力恢复)"
+      bearish_threshold: "降至#3(Siemens+Dassault超越)"
+
+  noise_signals:
+    - signal: "GAAP Revenue YoY变化(FY2026)"
+      why_noise: "FY2026 Revenue下降-2.2%是IoT剥离造成的会计假象→Pro-forma增速才有意义"
+    - signal: "PE vs ADSK的折价幅度"
+      why_noise: "28%的PE折价100%来自资本结构+SBC+利润率差异→EV/FCF才是真实锚"
+    - signal: "管理层Non-GAAP EPS指引"
+      why_noise: "Non-GAAP加回$386M(GAAP NI的52%)→美化幅度极大→用GAAP或FCF定价更诚实"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: ADSK
+      similarity: "CAD直接竞争, 同为工业软件SaaS转型, EV/FCF几乎相同(22.3x vs 22.6x), PEG完全相同(2.3x)"
+      key_difference: "ADSK更轻资产(净现金vs PTC净债务)+增速更高(12% vs 8.5%)+客户偏建筑/中小 vs PTC偏制造/大型"
+
+    - ticker: DASTY
+      similarity: "PLM直接竞争, Dassault ENOVIA vs PTC Windchill, 同为欧洲+美国制造业客户基"
+      key_difference: "DASTY规模2.5x但增速0.4%(vs PTC 8.5%)+3DEXPERIENCE转型更慢+地域折价5-10%"
+
+    - ticker: CDNS
+      similarity: "同为工业设计软件垄断, 都有深度嵌入型护城河"
+      key_difference: "CDNS TAM增速2-3x(AI芯片驱动)+寡头垄断(90%份额)+PE 45x vs PTC 19x——不是合理对标, 增速/TAM/周期完全不同"
+
+  comparative:
+    - dimension: "护城河深度(替代成本/年付费)"
+      position: "CDNS (~10x) > PTC (3-9x) > ADSK (~2-3x) > DASTY (~2x)"
+      reasoning: "EDA工具链不可替代 > PLM合规嵌入 > CAD中端可替代性高"
+
+    - dimension: "增长质量(有机增速)"
+      position: "CDNS (12-15%) > ADSK (~12%) > PTC (3.9%) > DASTY (~0.4%)"
+      reasoning: "PTC的8.5%总增速含2.5pp一次性迁移提价→剔除后仅3.9%"
+
+    - dimension: "估值吸引力(EV/FCF)"
+      position: "DASTY (20.3x) < PTC (22.3x) ≈ ADSK (22.6x) << CDNS (53.1x)"
+      reasoning: "PTC和ADSK定价几乎相同, DASTY因增速极低更便宜, CDNS因AI溢价极贵"
+
+    - dimension: "R&D投入强度(竞争力前瞻)"
+      position: "CDNS (33.4%) > DASTY (24.3%) > ADSK (~22%) > PTC (16.7%)"
+      reasoning: "PTC R&D最低→短期OPM好看但长期AI竞争力存在系统性隐患"
+
+  industry_position:
+    quadrant: "中等护城河 × 合理估值 × 低有机增速"
+    archetype: "制度嵌入型现金牛——底层(A&D/医疗)不可替代, 表层(汽车/工业)慢性被蚕食, 靠回购维持EPS增长"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含FCF CAGR 8%≈当前ARR增速8.5%→市场定价'当前状态永续化'"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "7个RT红队→偏差从-12.2%修正至-5.2%(+7pp)→与历史偏差(+8-16pp)一致"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "温水煮青蛙15%概率: Siemens慢性蚕食+AI落后→5年从$150到$95-105但不触发任何单一KS"
+
+  novel_patterns:
+    - name: "PE折价会计幻觉检测(三步验证法)"
+      description: "PE折价→(1)EV/FCF是否也折价(2)PEG是否也折价(3)分解PE差异来源→如果只有PE折价=会计幻觉"
+      transferable_to: ["所有有债务/高SBC/非现金摊销的软件公司", "PE看似便宜的价值陷阱候选"]
+
+    - name: "护城河双层蛋糕(制度嵌入vs商业嵌入)"
+      description: "将护城河按'法规强制(不可选择)'和'商业选择(可替代)'分层→制度嵌入部分按零增长永续贴现=估值硬底"
+      transferable_to: ["国防IT(ITAR)", "医疗IT(FDA/EU MDR)", "金融合规(SOX/Basel)", "所有B2B合规软件"]
+
+    - name: "SaaS迁移提价拆分(一次性vs可持续增速)"
+      description: "总ARR增速 = 有机(可持续) + 迁移提价(一次性) + 新产品(不确定)→拆分后暴露真实增长能力"
+      transferable_to: ["所有永久→订阅转型中的软件公司"]
+
+    - name: "下行beta非对称性(工业SaaS身份争议)"
+      description: "财务像SaaS但下行像工业股→用下行beta选WACC→身份认知争议直接决定估值"
+      transferable_to: ["工业SaaS/金融科技/能源科技等'软件壳+周期性核'公司"]
+
+    - name: "回购η函数应用(低FCF Yield下的价值毁灭)"
+      description: "η = FCF Yield / WACC → η<1时回购毁灭价值, 但可能仍是'最不坏的选择'"
+      transferable_to: ["所有PE>20x且积极回购的软件公司"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "护城河应按'制度嵌入(法规强制)'和'商业嵌入(客户选择)'分层评估——两者持久性差10x+"
+        implication: "护城河估值不应给统一分数, 应分层计算→制度嵌入按基础设施(永续)估值, 商业嵌入按SaaS(有增速)估值"
+      - insight: "五层嵌入叠加(技能→数据→流程→合规→生态)创造了替代成本/年付费3-9x的超级锁定"
+        implication: "评估软件护城河时, 逐层量化替代成本→单层弱不致命, 多层叠加才是真壁垒"
+
+    valuation_insights:
+      - insight: "PE折价必须用EV/FCF和PEG三步验证——PE独立看可能100%是会计幻觉"
+        implication: "选股/估值时, 永远不要仅凭PE折价做判断→EV/FCF+PEG交叉验证是必须步骤"
+      - insight: "WACC是工业SaaS估值的决定性变量——1%差异=15%估值差距"
+        implication: "对'软件壳+周期核'公司, WACC选择比增速假设更影响结论→下行beta分析必须前置"
+
+    screening_insights:
+      - insight: "SaaS转型中的软件公司, ARR增速中迁移提价成分可能占30-50%——剔除后有机增速可能令人失望"
+        implication: "筛选SaaS转型公司时, 增加'有机增速'过滤: 总增速-迁移提价估算→有机<5%=低增长伪装"
+      - insight: "R&D/Revenue是AI竞争力的前瞻指标——最低的公司在3-5年后面临最大竞争风险"
+        implication: "筛选时增加'R&D强度'下限: 同业R&D排名末位→标记AI竞争风险"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "PE折价三步验证(EV/FCF→PEG→分解来源)"
+      trigger: "任何公司PE看起来比可比便宜>15%"
+      origin: "PTC PE 19x vs ADSK 27x看似28%折价→EV/FCF几乎相同→幻觉"
+      generalization: "有债务/高SBC/利润率结构差异的公司, PE系统性失真→必须用现金流指标验证"
+
+    - habit: "拆解SaaS转型中的增速成分"
+      trigger: "ARR增速>7%的SaaS转型公司"
+      origin: "PTC ARR 8.5% = 有机3.9%+迁移提价2.5pp+新产品2.1pp → 剔除一次性后增速减半"
+      generalization: "所有永久→订阅转型公司的增速都应拆分: 有机+迁移提价+收购→迁移终将归零"
+
+    - habit: "用下行beta而非平均beta选WACC"
+      trigger: "SaaS财务特征但客户是周期性行业"
+      origin: "PTC下行beta 2.09(工业股)vs上行beta<1.0(SaaS)→非对称→用下行beta"
+      generalization: "'软件壳+周期核'公司的风险被低估如果用平均beta→下行beta是更诚实的风险衡量"
+
+    - habit: "护城河分层(制度vs商业)量化估值底"
+      trigger: "B2B软件公司有合规驱动的客户(国防/医疗/金融)"
+      origin: "PTC 40-45% ARR制度嵌入→零增长永续$10.4B→下行有底"
+      generalization: "合规型B2B软件的估值底部=制度嵌入ARR的永续贴现, 比一般SaaS高得多"
+
+  quality_feedback:
+    strengths:
+      - "Ch1 Reverse DCF + ADSK对标揭示PE幻觉 — 全报告最有区分度的洞见"
+      - "Ch13护城河五层量化+双层蛋糕结构 — 从定性到定价锚的完整推导"
+      - "Ch17温水煮青蛙场景+趋势线检测方法 — 比简单KS阈值更实用"
+      - "Ch20 SaaS迁移跑道+增速拆分 — 揭示8.5%增速中一次性成分"
+      - "DM密度1.52/千字 — 数据锚定合格"
+    weaknesses:
+      - "产品级ARR黑箱——Onshape/Codebeamer/Arena/ServiceMax各自ARR全是推断, 精度有限"
+      - "21章但仅125K字符——密度合理但Tier 3标准(270K+)下覆盖广度受限"
+      - "无正式11维度记分卡评分——质量基线无法量化对比"
+      - "NRR推断仅给出105-106%范围——缺乏间接法详细推导(SaaS单位经济学偏弱)"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "回购@高PE毁灭价值(CME CC-5)"
+        evidence: "η=0.51@PE 19x(GAAP), 即使公允值$120→η=0.63仍<1"
+        confidence_after: "高(三份报告独立确认: CME+MCO+PTC)"
+
+      - hypothesis: "Reverse DCF P1前置有效防止叙事偏差(铁律O)"
+        evidence: "Ch1 Reverse DCF立即揭示'市场定价基本合理'→后续分析未预设低估方向"
+        confidence_after: "高(持续确认)"
+
+    extended:
+      - hypothesis: "Core PE剥离非经营性收入(CME CC-2)"
+        extension: "PTC不需要Core PE(无大额利息)→但需要'有机增速'拆分来暴露一次性成分→同样的'剥离不可持续成分'思维"
+
+      - hypothesis: "温水煮青蛙模式(CME犯错模式4)"
+        extension: "CME的温水煮青蛙是利率正常化→PTC的是竞争蚕食→相同模式不同驱动因素→趋势线检测通用"
+
+    refuted: []
+
+  limitations:
+    - "产品级ARR全为推断(PTC不披露)→SOTP和产品级护城河量化精度受限"
+    - "FY2026是过渡年(IoT剥离)→Pro-forma数字不确定→OPM真实水平需Q2验证"
+    - "WACC 8.5% vs 9.5%争议无法在本报告中解决→评级的条件性高于通常水平"
+    - "SaaS迁移进度是推断值→实际完成率可能±15pp→直接影响跑道估算"
+    - "Siemens Copilot AI vs PTC AI的能力差距是定性判断(12-18个月)→需要产品级测评验证"
