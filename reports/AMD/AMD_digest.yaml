@@ -1,0 +1,449 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — AMD (Advanced Micro Devices)
+# 压缩比: 341K → ~12K (28x)
+# 六层 + 三个新增重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: AMD
+  company: "Advanced Micro Devices"
+  report_date: "2026-02-11"
+  stock_price: "$213.57"
+  market_cap: "~$348B"
+  report_version: "v2.0"
+  report_path: "reports/AMD/AMD_Complete_v2.0_2026-02-11.md"
+  quality_score: "报告未含正式评分(v9.0框架, 无D1-D11记分卡)"
+  cqi: "报告未覆盖"
+  framework_version: "v9.0"
+  industry: "半导体"
+  archetype: "架构创新者(快速跟随者)"
+  chars: 341212
+  dm_count: 8
+  dm_density: "0.02/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "AMD是执行力出众但护城河未固化的'架构创新者'，当前$213已完全定价共识路径的完全兑现，对AI GPU利润率、EPYC份额、ASIC侵蚀三个承重墙几乎零容错"
+  rating: "中性关注"
+  fair_value: "概率加权$151.6 | SOTP $142.6 | P4偏差修正后$163-175"
+  expected_return: "概率加权vs当前价溢价+41% | 下行空间-40%~-60% vs 上行+20%"
+
+  key_arguments:
+    - claim: "AI GPU业务是'辛苦钱'而非'护城河钱' — Non-GAAP OpMargin天花板30-35% vs NVDA 62%"
+      direction: bearish
+      magnitude: 4
+      mechanism: "ROCm vs CUDA 50:1开发者差距 → AMD被迫折价30-40%销售 → GPU利润率永久低于NVDA"
+      kill_switch: "MI400定价权超预期 + ROCm vLLM通过率>95% + Multi-GPU差距缩至<15%"
+
+    - claim: "EPYC是AMD真正的护城河 — 7年验证(0%→41%份额), $15B+营收, OpMargin ~50%"
+      direction: bullish
+      magnitude: 5
+      mechanism: "Zen架构7代零跳票 + Intel 14nm+++延迟 + x86双寡头ISA壁垒 → 份额持续增长至45-50%"
+      kill_switch: "Intel 18A Clearwater Forest良率>80% + 3家以上云厂商Design-Win"
+
+    - claim: "$213定价零容错 — 隐含10年CAGR 15-17%, FCF margin 25-30%, FY2025→FY2027 EPS +300%"
+      direction: bearish
+      magnitude: 5
+      mechanism: "Reverse DCF四个承重墙(增长、利润率、持续期、终端价值)需全部成立 → 任一倒塌价格回落至$140-170"
+      kill_switch: "FY2026-2027连续两年beat共识EPS >10% → 增长路径被确认"
+
+    - claim: "ASIC增速2.76x GPU增速 — 四大Hyperscaler全部押注自研 → GPU TAM结构性收缩"
+      direction: bearish
+      magnitude: 4
+      mechanism: "ASIC 44.6% YoY vs GPU 16.1% → JPMorgan 2028年ASIC 45%份额 → AMD Instinct TAM天花板$15-18B"
+      kill_switch: "ASIC通用性不足导致增速放缓至<20% YoY | AI新应用爆发超出ASIC定制化范围"
+
+    - claim: "方法离散度4.42x — 半导体已分析公司中最高, 不确定性本身是风险信号"
+      direction: bearish
+      magnitude: 4
+      mechanism: "6种方法产出$68-$300 → 分析师连数量级都无共识 → 任何点估计置信度极低"
+      kill_switch: "FY2026 EPS兑现缩窄Forward PE离散 → 离散度降至<2x"
+
+  moat:
+    composite_score: 5.5
+    half_life: "CPU护城河>10年(x86 ISA) | GPU护城河<3年(依赖每代执行) | FPGA 5-8年(设计周期锁定)"
+    dimensions:
+      - type: ip
+        strength: 5
+        evidence: "x86 ISA双寡头壁垒 — 2000年以来零新进入者, AMD+Intel授权互锁"
+        vulnerability: "ARM在服务器市场渗透(AWS Graviton ~15%份额), RISC-V长期威胁"
+      - type: ip
+        strength: 4
+        evidence: "Zen架构7代零跳票, 每代IPC提升10-17%, 连续领先Intel"
+        vulnerability: "人才驱动(Jim Keller遗产+Mike Clark团队) — 核心架构团队流失则2-3代内侵蚀"
+      - type: switching_cost
+        strength: 3
+        evidence: "EPYC企业验证周期3-6个月, Xilinx FPGA设计周期12-24个月"
+        vulnerability: "x86内迁移成本低(EPYC↔Xeon同ISA) — 对AMD既是护城河也是攻城锤"
+      - type: scale
+        strength: 3
+        evidence: "Fabless模式CapEx仅$0.97B(2.8%营收) vs Intel $20B+ — 资本效率极高"
+        vulnerability: "Fabless=100%依赖TSMC, CoWoS分配仅11%(NVDA 60%), 产能受制于人"
+      - type: network_effect
+        strength: 2
+        evidence: "ROCm开源生态 — vLLM通过率93%(ROCm 7.0), 但CUDA 50:1开发者差距"
+        vulnerability: "开源不产生锁定; CUDA闭源+庞大生态才是真正网络效应; ROCm未达临界质量"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含10年Revenue CAGR 15.3-17.4% + 终端FCF margin 25-30% + FY2025-2027 EPS从$2.65到$10.62(+300%)"
+    methods_used: ["Reverse DCF", "SOTP", "Forward P/E", "FMP DCF", "可比公司", "分析师共识"]
+    dispersion: "4.42x ($67.89-$300+) — HIGH UNCERTAINTY"
+    consensus_vs_ours: "市场看AMD=AI GPU第二赢家(25x+ P/E) | 我们看AMD=成长型半导体(15-20x P/E), AI溢价+53%可能不合理"
+    entry_zone: "概率加权$151.6附近 | SOTP $142.6 | P4修正后$163-175"
+    catalyst: "MI400量产确认(2026H2) | EPYC Venice份额推进 | ROCm生态质变"
+
+  # ★ v1.2新增: 买卖决策框架 ★
+  action_framework:
+    verdict: "等待 — 好公司但不是好价格, 当前零容错, 等估值回归概率加权区间"
+    buy_triggers:
+      - trigger: "AI CapEx周期调整 → AMD跟随板块回调至$140-170"
+        price_zone: "$140-170 (Forward P/E 13-16x FY2027E)"
+        reasoning: "接近SOTP $142.6和概率加权$151.6, 安全边际出现"
+      - trigger: "MI400量产确认+ROCm Multi-GPU差距<15% → GPU护城河质变信号"
+        price_zone: "当前价可接受(护城河升级改变估值框架)"
+        reasoning: "进攻型护城河转向生态锁定型 → P/E中枢上移至25-30x合理"
+    hold_conditions:
+      - "EPYC份额维持>35%且持续增长(Mercury Research季度确认)"
+      - "Instinct GPU季度营收保持YoY>30%增速"
+      - "ROCm vLLM通过率维持>90%且Multi-GPU差距持续缩小"
+      - "DIO维持<180天(库存不失控)"
+    sell_triggers:
+      - signal: "ASIC占AI加速器份额突破40%(Broadcom/Marvell合计)"
+        severity: "action"
+        action: "减仓50% — GPU TAM结构性收缩确认"
+      - signal: "MI400 vs Vera Rubin性能差距>3x(MLPerf标准负载)"
+        severity: "emergency"
+        action: "全部卖出 — '追上NVDA'叙事彻底破灭"
+      - signal: "DC分部Non-GAAP OpMargin连续2Q<25%"
+        severity: "action"
+        action: "减仓50% — 利润率天花板确认, 估值框架需降级"
+      - signal: "Lisa Su宣布离职/角色转变"
+        severity: "emergency"
+        action: "减仓75% — 所有CQ底层假设(执行力)被颠覆"
+    position_sizing: "当前价不建议建仓 — 下行/上行不对称(3:1), 等待$140-170区间"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "进攻型护城河的双刃剑逻辑"
+    chain: >
+      AMD护城河本质是架构创新驱动而非生态锁定
+      → 每一代(Zen N)都需重新证明(IPC提升+按时交付)
+      → 成功时=份额增长引擎(EPYC 0%→41%)
+      → 失败时=护城河1-2年内侵蚀(推土机时代2012-2016教训)
+      → 估值应获增长溢价但不应获垄断溢价
+      → Forward P/E 20x vs NVDA 47x部分反映此差异
+      → 但如果ROCm追赶失败, 合理P/E应回落至15-18x(传统半导体)
+    transferable_to: "所有依赖持续执行而非存量锁定的公司(晶圆厂/药企pipeline/内容创作)"
+    reasoning_habit: "区分'进攻型护城河'(需持续证明)和'防御型护城河'(存量保护) — 两者的估值倍数和风险特征完全不同"
+
+  - id: "CC-2"
+    name: "GAAP vs Non-GAAP的巨大鸿沟如何误导估值"
+    chain: >
+      AMD TTM P/E 91x → 看似极度高估
+      → 追问: 为什么TTM和Forward差距这么大?
+      → 发现: GAAP EPS $2.65被Xilinx无形资产摊销$3B/年压低
+      → Non-GAAP EPS约$5.6 → 调整后P/E约38x
+      → Forward P/E 20.2x又隐含EPS从$2.65到$10.62(+300%)
+      → 三个P/E(91x/38x/20x)讲了三个不同的故事
+      → 投资含义: 用哪个P/E决定你在赌什么 — 91x赌现在, 38x赌正常化, 20x赌完全兑现
+    transferable_to: "所有重大收购后GAAP利润被摊销扭曲的公司(AVGO/IBM/任何大型M&A)"
+    reasoning_habit: "遇到GAAP和Non-GAAP巨大差距时, 追问'差距来自哪里' — 摊销/SBC/重组各有不同持久性"
+
+  - id: "CC-3"
+    name: "方法离散度本身是风险信号"
+    chain: >
+      6种估值方法产出$68-$300(4.42x离散)
+      → 追问: 为什么离散这么大?
+      → 根因: AMD双重身份 — TTM仅赚$2.65(DCF说$68)但共识两年后赚$10.62(Forward说$213)
+      → 离散度反映的不是方法论缺陷而是对未来的真实分歧
+      → 投资含义: 离散度>2x时任何单一目标价都是伪精度
+      → 最诚实的方法是Reverse DCF(呈现假设, 不输出结论)
+    transferable_to: "所有处于业务转型期、利润尚未正常化的公司"
+    reasoning_habit: "计算多种方法的离散度 — 离散度>2x说明不确定性本身比任何估值结论都重要"
+
+  - id: "CC-4"
+    name: "ASIC替代而非补充的判断逻辑"
+    chain: >
+      市场共识: ASIC是GPU的补充品(特定工作负载)
+      → 数据: ASIC增速44.6% vs GPU 16.1%(2.76倍)
+      → 数据: 四大Hyperscaler全部押注自研ASIC(Google TPU v7/Amazon Trainium/Microsoft Maia/Meta MTIA)
+      → 推断: 如果仅是补充为什么所有大客户都在做?
+      → 关键分化: 训练(GPU仍主导) vs 推理(ASIC优势明显)
+      → 推理占AI CapEx比例上升(30%→50%+)= ASIC可寻址市场持续扩大
+      → 投资含义: AMD推理市场面临NVDA(上)+ASIC(下)双重挤压
+    transferable_to: "所有面临客户纵向整合威胁的供应商(云厂商自研/车厂自研芯片/零售商自有品牌)"
+    reasoning_habit: "当客户集体投入自研替代品时, 默认解读为'替代'而非'补充' — 除非有硬证据证明自研ROI不足"
+
+  - id: "CC-5"
+    name: "内部人信号与分析师评级的矛盾如何解读"
+    chain: >
+      分析师: 82% Buy评级, 0% Sell, PT均值$257
+      → 内部人: A/D ratio 0.102(极度偏空), Lisa Su零买入
+      → 机构: Fisher -$23.4B, Jennison -$9.3B, Baillie Gifford -$6.5B系统性清仓
+      → 矛盾: 最了解公司的人在卖, 覆盖公司的人在推荐
+      → 解读: 卖方Buy评级有系统性乐观偏差(55-60%覆盖率); 内部人有信息优势
+      → 投资含义: 内部人信号权重应高于卖方评级
+    transferable_to: "所有内部人系统性卖出但卖方仍推荐的公司"
+    reasoning_habit: "当内部人和外部分析师方向矛盾时, 默认信内部人 — 他们有信息优势且用真金白银投票"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "AMD是AI周期第二赢家, Forward P/E 20x合理"
+      final: "AMD AI GPU是'辛苦钱'(OpMargin天花板30-35%), 合理P/E 15-20x(成长型半导体)而非25x+(AI平台赢家)"
+      pivot: "NVDA OpMargin 62% vs AMD ~20% — 34pp差距源自CUDA生态定价权, 非暂时性"
+
+    - initial: "市场注意力在AI GPU(Instinct), 这是AMD的核心价值"
+      final: "EPYC才是AMD真正的护城河 — 7年验证、50%+ OpMargin, GPU完全失败仍支撑$80-100底部"
+      pivot: "EPYC份额0%→41%是硬数据验证的增长引擎; Instinct依赖ROCm(CUDA 50:1差距)不确定性极高"
+
+    - initial: "AMD Q4暴跌-17%创造了买入机会"
+      final: "暴跌是'从Bull回归Base'而非创造折价 — 概率加权$151.6 vs当前$213仍有+41%溢价"
+      pivot: "Phase 4偏差修正: 锚定偏差(围绕$213收敛) + 确认偏差(ROCm数据选择性引用) + 叙事偏差(追赶成功线性外推)"
+
+  surprises:
+    - finding: "AMD AI溢价(~58%收入归因于AI)接近NVDA水平, 但AI护城河宽度远不及NVDA"
+      implication: "市场为AMD的AI潜力支付了接近NVDA级别的溢价, 但AMD缺乏CUDA式生态锁定 — AI溢价可能定价过高"
+
+    - finding: "Fisher Investments清仓$23.4B(全球最大单笔AMD减持之一), 持有周期5-10年的长期价值投资者"
+      implication: "长期价值投资者集体撤退可能暗示: AI CapEx周期见顶预判 或 NVDA护城河不可逾越的判断"
+
+    - finding: "存货$7.92B环比+38%为5年最高增幅, DIO 165天创新高, 但'备货'和'积压'两种解读均成立"
+      implication: "库存歧义是AMD当前最重要的待解信号 — Q1-Q2 FY2026财报将决定是MI400备货(利好)还是需求放缓(利空)"
+
+    - finding: "GPU利润率~20% vs CPU ~50% — GPU占比上升可能导致DC分部'增收不增利'"
+      implication: "市场假设的利润率扩张路径与产品结构变化矛盾 — GPU权重越高混合利润率越低"
+
+  blind_spots:
+    - area: "MI400实际量产时间与良率"
+      why_matters: "MI400是验证'AI GPU第二平台'叙事的核心事件 — 按时且性能达标→+20%; 延迟3月+良率60%→-30%"
+      monitor: "AMD 2026 Q2财报(4月) — MI400时间表确认; GTC 2026(3月) — Vera Rubin benchmark对比"
+
+    - area: "AI CapEx周期的位置(早期还是中后期)"
+      why_matters: "决定$213隐含的15-17% 10年CAGR是否可信 — 早期=可信, 中后期=过度外推"
+      monitor: "2026 H2四大Hyperscaler CapEx指引 — 任一下调>15%为预警"
+
+    - area: "ROCm能否达到'生态临界质量'"
+      why_matters: "决定AMD在AI GPU市场是'永久折价竞争者'(15-20x P/E)还是'第二生态平台'(25-30x P/E)"
+      monitor: "ROCm 7.x release(2026 H1) — Multi-GPU差距是否从29-46%缩至<15%"
+
+  # ★ v1.2新增: 卖出时机教训 ★
+  sell_lessons:
+    - scenario: "Forward P/E看似合理(20x)但TTM P/E极高(91x) — 被Forward P/E锚定忽视了EPS+300%假设的脆弱性"
+      lesson: "当Forward和TTM P/E差距>3倍时, 市场在赌极端增长 — 任何miss都会引发Forward P/E跳升。不应被Forward P/E的表面合理性迷惑"
+      transferable: "所有利润正在高速正常化的成长型公司(SaaS从亏损到盈利/周期股底部翻转)"
+
+    - scenario: "内部人系统性卖出(A/D 0.102) + 长期机构清仓($39B) 但卖方仍82% Buy"
+      lesson: "内部人和长期机构的行为比卖方评级更有信息含量。当两者持续矛盾时, 应降低持仓置信度"
+      transferable: "所有内部人A/D<0.2且大型价值机构同时减持的公司"
+
+    - scenario: "好公司+坏价格的矛盾 — 10维度中'公司质量'偏强但'价格合理性'偏弱"
+      lesson: "好公司≠好投资。估值吸引力和风险可控性比公司质量更直接决定回报。价格错误比分析错误更常见"
+      transferable: "所有CQI>70但PE>25x的高品质成长股"
+
+# --- Layer 2.5: 信号分级 (v1.2新增) ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "DC分部GPU/CPU收入占比变化 — GPU首次超过CPU(49% vs 46%)"
+      why_alpha: "GPU占比上升+GPU利润率低于CPU → 混合利润率方向的领先指标。大多数分析师看DC总收入不拆GPU/CPU"
+      current_reading: "Q4'25 GPU 48.8% vs CPU 46.3% — GPU首次超越, 趋势方向对利润率不利"
+
+    - signal: "ROCm Multi-GPU训练性能差距(vs CUDA)"
+      why_alpha: "决定AMD能进入训练市场(高利润)还是被锁在推理市场(低利润) — CUDA差距是整个投资论文的关键变量"
+      current_reading: "8-GPU差距29-46%(视模型), 缓慢改善但改善速度慢于NVDA迭代"
+
+    - signal: "Broadcom+Marvell AI ASIC季度营收增速"
+      why_alpha: "ASIC增速/GPU增速比值是TAM侵蚀的最直接代理 — 比任何分析师预测都更实时"
+      current_reading: "Broadcom AI +65% YoY(FY2025) — 显著快于AMD Instinct增速"
+
+  confirmation_signals:
+    - signal: "AMD DC季度营收YoY增速"
+      bullish_threshold: ">40% YoY(AI引擎持续强劲)"
+      bearish_threshold: "<20% YoY(增速失速, Forward P/E重估)"
+
+    - signal: "EPYC服务器CPU季度份额(Mercury Research)"
+      bullish_threshold: ">45%(接近Venice路径, CQ5确认)"
+      bearish_threshold: "<35%(Intel反攻成功, 份额拐点)"
+
+    - signal: "四大Hyperscaler合计AI CapEx YoY增速"
+      bullish_threshold: ">20% YoY(需求持续)"
+      bearish_threshold: "<0% YoY(CapEx周期拐点, AMD全线受压)"
+
+  noise_signals:
+    - signal: "卖方目标价调整"
+      why_noise: "82% Buy + 0% Sell = 系统性乐观偏差。卖方暴跌后不降目标反升EPS, 信息含量低"
+
+    - signal: "AMD日度股价波动"
+      why_noise: "AMD Beta>1.5, 日度波动主要跟随NVDA和AI板块情绪, 非AMD特异性信号"
+
+    - signal: "Gaming/Embedded季度营收波动"
+      why_noise: "合计仅占营收17%, 且处于结构性衰退周期底部 — 对DC主导的估值几乎无影响"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: NVDA
+      similarity: "同为AI GPU供应商, 共享DC增长叙事, 高相关性(r>0.65)"
+      key_difference: "NVDA=生态锁定型护城河(CUDA)+62% OPM vs AMD=架构创新型(ROCm)+10.7% OPM | NVDA是标准, AMD是替代方案"
+
+    - ticker: INTC
+      similarity: "x86双寡头, EPYC vs Xeon直接竞争, 共享服务器CPU TAM"
+      key_difference: "Intel=IDM模式(自有晶圆厂)+亏损中 vs AMD=Fabless(依赖TSMC)+盈利中 | AMD进攻, Intel防御"
+
+    - ticker: AVGO
+      similarity: "均受益于AI基础设施CapEx, 均面临Hyperscaler定制化趋势"
+      key_difference: "AVGO=ASIC代工(高转换成本/高OPM 40%) vs AMD=GPU通用计算(低转换成本/低OPM 11%) | AVGO是AMD的竞争威胁(ASIC替代GPU)"
+
+  comparative:
+    - dimension: "AI GPU护城河深度"
+      position: "NVDA (CUDA生态锁定) >> AMD (ROCm追赶中) > INTC (Gaudi边缘化)"
+      reasoning: "CUDA 50:1开发者差距 + NVLink机架级系统 + 18年生态积累 = 不可复制"
+
+    - dimension: "x86 CPU竞争力"
+      position: "AMD (Zen架构领先) > INTC (18A未验证)"
+      reasoning: "Zen 7代零跳票 + TSMC 3nm制程红利 vs Intel 10nm延迟遗产 + 18A良率未知"
+
+    - dimension: "利润率质量"
+      position: "NVDA (62%) >> AVGO (40%) >> AMD (10.7%) > INTC (亏损)"
+      reasoning: "NVDA平台垄断溢价 + AVGO定制ASIC高转换成本 + AMD无生态锁定被迫折价"
+
+    - dimension: "估值吸引力(风险调整)"
+      position: "INTC (如果18A成功) > AMD (如果ROCm突破) > NVDA (已充分定价)"
+      reasoning: "均为条件性 — INTC最高期望回报但最高执行风险; AMD中等; NVDA最确定但最贵"
+
+  industry_position:
+    quadrant: "高增长 × 中护城河 × 高不确定性"
+    archetype: "架构创新者/快速跟随者 — 多市场第二名(L2×S2)"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF → $213隐含CAGR 15-17%+FCF margin 25-30% → 拆解四个承重墙评估合理性"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "13个Bear论点钢人论证 + 3个认知偏差检测(锚定/确认/叙事) + 独立估值中枢$139.87"
+
+    - pattern_id: "competitive_benchmarking.chinese_competitor_deep_dive"
+      application: "不适用(中国竞争者非核心); NVDA/ASIC深度分析使用了量化竞品框架"
+
+  novel_patterns:
+    - name: "进攻型vs防御型护城河估值框架"
+      description: "区分依赖持续执行的进攻型护城河(AMD Zen)和依赖存量锁定的防御型护城河(NVDA CUDA) — 两者应获得不同估值倍数"
+      transferable_to: ["药企(pipeline vs专利)", "内容公司(持续创作vs IP库)", "所有'执行依赖型'公司"]
+
+    - name: "方法离散度作为不确定性量化指标"
+      description: "6种估值方法的极差/中位数比=离散度指标 — >2x说明不确定性本身比任何估值结论都重要, 应给区间而非点估计"
+      transferable_to: ["所有业务转型期公司", "利润未正常化的高增长公司"]
+
+    - name: "GPU/CPU Mix利润率敏感性模型"
+      description: "DC分部GPU/CPU占比变化→混合利润率方向: GPU占比每+10pp→DC混合OpMargin -2~3pp. 三情景(50/50→35%, 60/40→31%, 70/30→28%)"
+      transferable_to: ["所有多产品线利润率差异>15pp的公司", "业务结构转型中的混合利润率预测"]
+
+    - name: "ROCm生态折价模型"
+      description: "软件生态功能对等%→定价权%→margin%的三层传导链: ROCm 93%通过率→仍需30-40%折价→GPU OpMargin天花板30-35%"
+      transferable_to: ["所有依赖软件生态的硬件公司(Android vs iOS设备商)", "云计算IaaS定价"]
+
+    - name: "ASIC侵蚀传导模型"
+      description: "ASIC份额→GPU可寻址市场→AMD份额三层传导: 2028年ASIC 45%→GPU TAM缩40%→AMD Instinct天花板$15-18B"
+      transferable_to: ["所有面临客户纵向整合的供应商"]
+
+    - name: "6层半导体周期雷达"
+      description: "存储价格/CapEx/设备/库存/利用率/终端需求六层信号叠加判断周期位置 — 各层领先滞后关系不同"
+      transferable_to: ["所有半导体公司的周期定位"]
+
+  # ★ v1.2新增: 框架升级贡献 ★
+  framework_contributions:
+    moat_insights:
+      - insight: "进攻型护城河(持续执行依赖) vs 防御型护城河(存量锁定)是两个完全不同的物种"
+        implication: "护城河评估需先分类再评分 — 进攻型给增长溢价, 防御型给垄断溢价, 不能用同一把尺子"
+      - insight: "同一公司不同分部可以有性质完全不同的护城河(AMD: CPU进攻强/GPU防御弱/FPGA中)"
+        implication: "SOTP估值时每个分部应独立评估护城河类型和对应PE倍数"
+      - insight: "x86 ISA双寡头壁垒是'生存权护城河'而非'竞争力护城河' — 保证不消失但不保证份额"
+        implication: "评估制度性壁垒时区分'准入壁垒'和'竞争壁垒' — 准入壁垒决定底部, 竞争壁垒决定upside"
+
+    valuation_insights:
+      - insight: "方法离散度>2x时给区间比给点估计更诚实 — 4.42x离散度下任何单一目标价都是伪精度"
+        implication: "对高不确定性公司, 报告核心产出应从'目标价'转向'假设映射+条件范围'"
+      - insight: "Reverse DCF对快速增长但利润未正常化的公司尤其有价值 — 翻转问题从'值多少'到'价格赌什么'"
+        implication: "TTM P/E和Forward P/E差距>3x的公司, 强制使用Reverse DCF作为主估值框架"
+      - insight: "GAAP/Non-GAAP/Forward三个P/E讲三个不同故事 — 用哪个决定你在赌什么"
+        implication: "对大型M&A后公司, 必须拆解GAAP vs Non-GAAP差距来源(摊销/SBC/重组)并评估各自持久性"
+
+    screening_insights:
+      - insight: "内部人A/D<0.2 + 长期价值机构集体减持 = 高权重负面信号, 即使卖方仍推荐"
+        implication: "选股筛选加入'聪明钱一致性'过滤器: 内部人+长期机构+卖方三者方向一致时信号最强"
+      - insight: "AI溢价/AI护城河宽度比值 — AMD获得~58% AI溢价但AI护城河远不及NVDA"
+        implication: "对AI受益股, 计算'AI溢价效率': 溢价%/护城河评分 — 比值过高=AI溢价定价过高"
+      - insight: "进攻型护城河公司的估值应有'执行折价' — 每一代需重新证明, 失败概率≠0"
+        implication: "选股时对进攻型护城河公司给5-15%的P/E折价(vs防御型同行)"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "区分进攻型和防御型护城河, 给不同估值倍数"
+      trigger: "分析到公司护城河依赖持续执行(每代新产品/每年新内容)而非存量锁定(生态/专利/制度)"
+      origin: "AMD EPYC(进攻: 7代Zen需代代胜出) vs NVDA CUDA(防御: 18年生态+数百万开发者锁定)"
+      generalization: "进攻型护城河→增长溢价(15-20x) | 防御型护城河→垄断溢价(25-40x) | 不同物种不同估值"
+
+    - habit: "Forward和TTM P/E差距>3x时自动触发Reverse DCF"
+      trigger: "公司利润正在快速正常化, GAAP利润被非经常性项目扭曲"
+      origin: "AMD TTM 91x vs Forward 20.2x → 差距4.5x → Reverse DCF揭示+300% EPS假设的脆弱性"
+      generalization: "差距越大, Forward P/E越不可信, Reverse DCF越有价值 — 因为它暴露的是假设而非给出结论"
+
+    - habit: "内部人和卖方矛盾时, 默认信内部人"
+      trigger: "内部人A/D<0.2 且 卖方Buy%>70%"
+      origin: "AMD A/D 0.102 + Lisa Su零买入 vs 82% Buy评级 + 0% Sell → 最了解公司的人在用真金白银投票"
+      generalization: "内部人有信息优势且有skin in the game; 卖方有结构性乐观偏差(55-60%永远是Buy)"
+
+    - habit: "对多分部公司拆解利润率mix效应"
+      trigger: "公司高增长分部和高利润分部不是同一个"
+      origin: "AMD DC增长靠GPU(OpMargin ~20%)但利润靠CPU(~50%) → GPU占比↑= 混合利润率↓ = 增收不增利"
+      generalization: "增长引擎和利润引擎分离时, 收入增速不等于利润增速 — 必须按分部拆解验证"
+
+  quality_feedback:
+    strengths:
+      - "Reverse DCF承重墙分析 — 将$213拆解为四个可独立验证的假设, 是整个报告最有区分度的章节"
+      - "13个Bear论点钢人论证 — 每个都有概率/影响/验证路径, Phase 4红队质量扎实"
+      - "非共识洞察CI-01~05 — 每个都有数据支撑且与市场共识明确对标"
+      - "12个Kill Switch + 8个追踪信号 — 全部通过特异性测试, 可操作性强"
+    weaknesses:
+      - "DM锚点仅8个(0.02/千字) — 远低于v19.0标准(1.5/千字), v9.0框架未强制DM标注"
+      - "无正式D1-D11质量记分卡 — v9.0框架, 无法与后续报告直接比较"
+      - "Phase 5组装缺乏降认知负荷结构 — 执行摘要过于密集, 正文章节排列按Phase而非读者认知流"
+      - "库存歧义(DIO 165天)未给出明确决策框架 — Ch19补充了决策树但可更早呈现"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "进攻型护城河需代代验证(推土机时代教训)"
+        evidence: "AMD 2012-2016推土机失败→份额跌至低个位数; 2017-2025 Zen成功→41%份额 — 同一公司护城河可在5年内从弱到强再从强到弱"
+        confidence_after: "高(AMD自身历史双向验证)"
+
+      - hypothesis: "Reverse DCF对高不确定性公司最诚实(v9.0框架核心)"
+        evidence: "4.42x方法离散度下, Reverse DCF是唯一不输出点估计而暴露假设的方法 — 读者自行判断"
+        confidence_after: "高(AMD是最极端的验证场景: 离散度最高的公司最需要Reverse DCF)"
+
+    extended:
+      - hypothesis: "ASIC对GPU的威胁(半导体行业通识)"
+        extension: "AMD报告量化了'替代而非补充'的证据链: 增速2.76x差距+四大客户全部押注 → 从定性认知升级为定量模型"
+
+    refuted: []
+
+  limitations:
+    - "MI400量产时间和良率无硬数据 — 所有分析基于合理推断, 2026 Q2-Q3才有验证"
+    - "AI CapEx周期位置判断低置信度 — 'AI是新电力'和'AI是新DRAM周期'两种解读均成立"
+    - "ROCm生态临界质量无法精确定义 — '够用'和'首选'之间的阈值是模糊的"
+    - "内部人卖出动机无法确认 — 税务/多元化/信息不对称均可能, 无法区分"
+    - "报告使用v9.0框架(2026-02), 缺乏v19.x的DM密度门控/因果密度门控/CQI评分 — 与后续报告不直接可比"

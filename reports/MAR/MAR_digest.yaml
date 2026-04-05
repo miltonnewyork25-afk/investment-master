@@ -1,0 +1,426 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Marriott International
+# 压缩比: 356K → ~12K (30x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式映射 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: MAR
+  company: "Marriott International"
+  report_date: "2026-03-05"
+  stock_price: "$335.94"
+  market_cap: "$89.0B"
+  report_version: "v1.0"
+  report_path: "reports/MAR/MAR_Complete_v1.0.md"
+  quality_score: "报告未显式评分"
+  cqi: "报告未覆盖"
+  framework_version: "v18.0"
+  industry: "消费品(酒店)"
+  archetype: "品牌特许经营平台"
+  chars: 355781
+  dm_count: 625
+  dm_density: "1.76/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "MAR是品类之王但非估值之王——P/E折价于HLT是NUG差距的精确映射(2.4pp×6x=14.4x)，当前$336大致合理但无安全边际"
+  rating: "中性关注"
+  fair_value: "$324/股 (合理范围$309-$339)"
+  expected_return: "-2% ~ +5%"
+
+  key_arguments:
+    - claim: "P/E = f(NUG)而非f(规模)——品类之王折价是合理定价而非市场错误"
+      direction: bearish
+      magnitude: 5
+      mechanism: "NUG每差1pp≈P/E差6x | MAR NUG 4.3% vs HLT 6.7% → 预测P/E差14.4x = 实际差14.4x(35.4 vs 49.8)"
+      kill_switch: "MAR NUG连续2季>5.0% → P/E向40x收敛 → 当前价格变便宜"
+
+    - claim: "Bonvoy 271M会员是真护城河——保守估值占市值~32%"
+      direction: bullish
+      magnitude: 4
+      mechanism: "双环飞轮(住宿外环+信用卡内环) → 75%+直订率 → 渠道成本5.5% vs OTA 12% → 每年节省数亿"
+      kill_switch: "活跃率持续下降+积分贬值+HLT Honors追上规模 → Bonvoy估值缩水"
+
+    - claim: "杠杆回购永动机短期可持续但中期需减速"
+      direction: conditional
+      magnitude: 4
+      mechanism: "年回购$3.5-4.5B > FCF $2.6B → 差额$0.9-1.9B靠新增债务 → Net Debt/EBITDA 3.73x, 距4.0x上限仅$1.25-4.8B空间"
+      kill_switch: "衰退→EBITDA下降→杠杆突破4.5x→评级下调→再融资危机→回购被迫暂停→EPS负增长"
+
+    - claim: "信用卡金融化是未被充分定价的慢变量"
+      direction: bullish
+      magnitude: 3
+      mechanism: "信用卡费$716M→2026E +35% → 占Gross Fee Rev 15%+ → Bonvoy从忠诚度工具演变为金融产品定价权载体"
+      kill_switch: "联名卡合约到期不续签(已续至2029) | 消费者信贷周期恶化 | 监管限制积分变现"
+
+    - claim: "30+品牌的复杂度成本正在侵蚀品牌力"
+      direction: bearish
+      magnitude: 3
+      mechanism: "品牌熵MAR 2.8 > HLT 2.3 > IHG 2.1 → ACSI 78 < HLT 80 → NPS 15 vs 行业均值44 → A-Score 6.40 < IHG 6.78"
+      kill_switch: "MAR主动精简品牌组合(战略放弃低效品牌) + ACSI/NPS回升"
+
+  moat:
+    composite_score: 6.4
+    half_life: ">15年(特许经营合同15-20年) | Bonvoy >10年 | 信用卡合约~3-5年续签周期"
+    dimensions:
+      - type: scale
+        strength: 4
+        evidence: "1.78M rooms全球#1, 采购/分销/技术固定成本摊薄最优, 但规模边际估值在~500K rooms后递减趋零"
+        vulnerability: "规模溢价递减律——从500K到1.78M rooms未带来P/E扩张"
+      - type: network_effect
+        strength: 4
+        evidence: "271M Bonvoy会员=全球最大酒店忠诚度网络, 75%+直订率, 双环飞轮(住宿+信用卡)"
+        vulnerability: "活跃率未披露——271M可能含大量沉睡会员; HLT Honors 243M在缩小差距"
+      - type: switching_cost
+        strength: 3.5
+        evidence: "业主切换品牌需PIP翻新$1-10M+系统迁移+18个月过渡期; 会员积分+精英等级迁移成本高"
+        vulnerability: "非绝对锁定——合同到期后业主可选择不续约(取消率~2.5%/年)"
+      - type: brand
+        strength: 3.5
+        evidence: "Ritz-Carlton/St.Regis/W=奢华三叉戟全球#1, 30+品牌覆盖全谱系"
+        vulnerability: "品牌熵2.8(行业最高) → ACSI 78 < HLT 80 → NPS 15 vs 行业44 → 量≠质"
+      - type: pricing_power
+        strength: 3
+        evidence: "高端组合(Ritz/St.Regis)有定价权, 但中端占比高拉低均值; RevPAR增长接近停滞(US +0.7%)"
+        vulnerability: "经济型/中端面临Hampton Inn(HLT)强力竞争, Airbnb在休闲场景有替代性"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含5年FCFF CAGR ~7.0%(WACC 8.25%), 需NUG 4.5-5%+RevPAR 2.5-3%+margin扩张1-2pp — RevPAR和margin假设偏乐观"
+    methods_used: ["双层SOTP", "DCF", "Reverse DCF", "可比公司", "BME(信念互斥)"]
+    dispersion: "≤10% ($310-$333中值范围)"
+    consensus_vs_ours: "市场看MAR=35x PE的品类之王 | 我们看MAR=NUG驱动定价下合理但无安全边际的夹心层公司"
+    entry_zone: "$240-$280 (衰退折价, P/E 22-25x)"
+    catalyst: "Path C衰退→RevPAR -5~-10%→IMF-50%+→P/E压缩至22-25x→EPS $8.50→$187-$213入场窗口"
+
+  action_framework:
+    verdict: "观望 — 基本面健康但估值充分定价,无安全边际,等待衰退折价或NUG加速信号"
+    buy_triggers:
+      - trigger: "全球衰退→RevPAR负增长→IMF大幅下降→P/E压缩至22-25x"
+        price_zone: "$200-$240"
+        reasoning: "asset-light模型抗衰退能力被市场低估(2020年未违约), 信用卡费在衰退中仅降15%(远小于IMF的-84%)"
+      - trigger: "NUG连续2季>5.0%+RevPAR >+3%+信用卡持续超预期"
+        price_zone: "当前价格合理 → 向$400+看"
+        reasoning: "NUG加速→P/E向HLT收敛至40x → $401(Path A)"
+    hold_conditions:
+      - "NUG维持>4.0%"
+      - "Net Debt/EBITDA <4.0x"
+      - "信用评级BBB或以上"
+      - "Bonvoy会员净增长为正"
+      - "ACSI ≥76"
+    sell_triggers:
+      - signal: "NUG<3.0%连续2季度"
+        severity: "action"
+        action: "减仓50% — NUG是估值锚,跌破3%意味着增长引擎失速"
+      - signal: "Net Debt/EBITDA >4.5x"
+        severity: "action"
+        action: "减仓40% — 杠杆突破上限,评级下调风险急升"
+      - signal: "RevPAR连续两季负增长"
+        severity: "warning"
+        action: "启动衰退情景模型,评估S1(衰退螺旋)概率"
+      - signal: "ACSI<76 + NPS<10"
+        severity: "warning"
+        action: "品牌恶化确认,长期估值下调5-10%"
+      - signal: "信用评级下调至BBB-"
+        severity: "emergency"
+        action: "全部卖出 — 再融资风险+回购暂停=双杀"
+    position_sizing: "当前价格不建议建仓(期望回报-2%~+5%, 无Kelly优势) | 衰退折价至$240以下可考虑中等仓位"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "NUG单因子定价机制(夹心层物理学)"
+    chain: >
+      观察: MAR规模#1(1.78M rooms)但P/E #2(35.4x) — HLT规模#2但P/E #1(49.8x)
+      → 追问: 为什么规模第一不是估值第一?
+      → 数据: NUG与P/E呈强正相关 — 每差1pp NUG ≈ P/E差6x
+      → MAR NUG 4.3% vs HLT 6.7% → 差2.4pp × 6x = 14.4x → 实际差14.4x(完美拟合)
+      → 进一步: 规模弹性在500K rooms后趋零(MAR从500K→1.78M三次大收购未推升P/E)
+      → 因此: 市场为增量(NUG)支付溢价,不为存量(规模)支付溢价
+      → 投资含义: 除非NUG加速至5%+,MAR的P/E折价是结构性的
+    transferable_to: "所有'规模第一但估值不第一'的公司: Intel/Toyota/Samsung/Walmart"
+    reasoning_habit: "看到规模最大但估值不最高时,立刻追问'增量增速是多少' — 存量只是成本的分母,增量才是估值的分子"
+
+  - id: "CC-2"
+    name: "品牌熵侵蚀护城河的非线性效应"
+    chain: >
+      观察: MAR 31品牌, A-Score 6.40 vs IHG 16品牌, A-Score 6.78
+      → 品牌数量↑ → 品牌熵↑(MAR 2.8 > HLT 2.3 > IHG 2.1)
+      → 品牌熵↑ → 品牌定位重叠↑ → 内部蚕食率↑ → 单品牌投入↓
+      → 结果: ACSI 78<HLT 80, NPS 15<行业44
+      → 因此: 品牌增殖超过阈值后,品牌资产开始侵蚀护城河质量
+      → 品类之王(品牌最多) ≠ 护城河之王(A-Score最高)
+    transferable_to: "所有多品牌消费品公司: YUM/PVH/Tapestry/LVMH — 计算品牌熵判断是否越过侵蚀临界点"
+    reasoning_habit: "看到多品牌战略时,不要默认'品牌多=护城河宽' — 计算品牌熵,检查品牌质量指标是否与品牌数量背离"
+
+  - id: "CC-3"
+    name: "忠诚度金融化三阶段模型"
+    chain: >
+      数据: 信用卡费占Gross Fee Rev从10%(2020)→15%(2026E), 增速+35%远超RevPAR+2%
+      → 阶段1(2010-2020): 积分作为客户留存工具(成本中心)
+      → 阶段2(2020-2025): 积分作为利润来源(与信用卡公司分成上升)
+      → 阶段3(2026+): 积分作为准货币(信用卡费成为增长主引擎)
+      → 当金融产品收入>15%总收入时,估值框架需重新定义 — 竞争对手不再只是HLT/IHG,还包括AmEx/Capital One
+      → 但风险: 信用卡飞轮高度依赖Bonvoy会员基数和开发管线(E2-E3强耦合)
+    transferable_to: "所有拥有大规模忠诚度+联名信用卡的公司: DAL/UAL/COST/AMZN/SBUX"
+    reasoning_habit: "对任何>5000万会员忠诚度计划,追踪'金融产品收入占比年度变化' — 年增>2pp触发金融化转型审查"
+
+  - id: "CC-4"
+    name: "杠杆回购永动机的天花板诊断"
+    chain: >
+      观察: FY22-25连续4年回购>FCF, 差额由新增债务弥补, 债务+52%
+      → 追问: Asset-light模式下传统杠杆指标是否失效?
+      → 分析: Fee stream稳定性确实高于传统酒店(合同15-20年,取消率<2%)
+      → 但: 剩余杠杆空间仅$1.25-4.8B(取决于EBITDA口径) vs 年缺口$0.9-1.9B
+      → 短期(2-3年)可持续,中期需要EBITDA增长匹配或回购减速
+      → 一旦衰退→EBITDA下降→杠杆被动上升→评级下调→再融资成本上升→恶性循环
+    transferable_to: "所有asset-light高回购公司: 评估FCF覆盖率+剩余杠杆空间+衰退压力测试"
+    reasoning_habit: "看到回购持续超FCF时,计算'杠杆空间÷年缺口=可持续年数' — 如果<3年,杠杆风险已在累积"
+
+  - id: "CC-5"
+    name: "红队悲观偏差校准(消费品系统性+10~15pp)"
+    chain: >
+      数据: RT净调整+13.4pp(单向向上) | 硬性修正+6.0pp
+      → 对比: RCL +8~16pp, SBUX +13pp — 消费品Tier 3报告系统性悲观偏差约+10~15pp
+      → 根因: (1)CQ提问方式隐含负面前提 (2)NPS 15的情绪传染 (3)持续与HLT最佳实践对标放大劣势
+      → Phase 1-3期望回报-0.4% → 红队修正后+2%~+8% → 最终取保守端: -2%~+5%
+    transferable_to: "所有消费品Tier 3报告 — 默认预留+10~15pp的悲观偏差修正空间"
+    reasoning_habit: "消费品分析中,品牌质量担忧容易过度外推 — 完成Phase 1-3后,主动检查负面结论占比是否>65%"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "MAR P/E折价于HLT可能是市场定价错误(品类之王应该估值更高)"
+      final: "P/E折价是NUG差距(4.3% vs 6.7%)的精确数学映射, 不是定价错误"
+      pivot: "NUG-P/E传导系数6x → 预测差14.4x = 实际差14.4x(R²极高)"
+
+    - initial: "30+品牌覆盖全谱系是竞争优势"
+      final: "品牌熵2.8(行业最高)正在侵蚀品牌力 → 品类之王≠护城河之王, A-Score 6.40 < IHG 6.78"
+      pivot: "ACSI 78 < HLT 80 + NPS 15 vs 行业44 → 品牌数量与品牌质量背离"
+
+    - initial: "Phase 1-3评级'中性关注(偏审慎)', 期望回报-5%~-15%"
+      final: "红队修正+13.4pp后评级维持'中性关注'但上调至-2%~+5%"
+      pivot: "消费品系统性悲观偏差+10~15pp — 信用卡费结构升级被低估, NUG标签过度放大相对劣势"
+
+  surprises:
+    - finding: "ROIC与P/E在酒店行业呈负相关(IHG 22.6%/27.7x → MAR 15.6%/35.4x → HLT 11.3%/49.8x)"
+      implication: "市场定价NUG(增长)而非ROIC(效率) — ROIC不是酒店行业的有效估值因子"
+
+    - finding: "信用卡费2026E +35%跳升 — 不是线性增长而是结构性拐点(联名卡合约重大修订)"
+      implication: "MAR正从'酒店管理公司'向'品牌金融化平台'迁移, 5年后收入结构将显著不同"
+
+    - finding: "规模弹性在~500K rooms处达峰后趋零 — MAR从500K→1.78M的三次大型收购带来收入增长但未带来P/E扩张"
+      implication: "通过并购获取NUG的策略在估值端是净中性/净负面的 — 有机NUG才是唯一被市场定价的增长"
+
+    - finding: "MAR 2020年Net Debt/EBITDA飙至8x+但未违约 — asset-light模型抗衰退能力被低估"
+      implication: "衰退情景中杠杆突破4.5x不等于违约 — 但回购暂停+EPS下降的双杀仍会发生"
+
+  blind_spots:
+    - area: "Bonvoy会员活跃率"
+      why_matters: "271M中真正活跃的可能只有25-50% — 活跃率决定Bonvoy估值在$16.5B(悲观)到$38B(乐观)之间"
+      monitor: "季报中直订占比变化 | 信用卡新增持卡人数 | 积分兑换率趋势"
+
+    - area: "MAR单品牌RevPAR未披露"
+      why_matters: "无法精确量化品牌间蚕食的财务影响 — 30+品牌的内部蚕食可能被总RevPAR数字掩盖"
+      monitor: "STR细分数据 | 竞品单品牌公开数据对比"
+
+    - area: "印度/东南亚pipeline转化率"
+      why_matters: "NUG加速至5%+的关键依赖 — 新兴市场开发周期长且不确定性高"
+      monitor: "季报管线更新 | 区域NUG拆分 | 当地品牌化渗透率变化"
+
+  sell_lessons:
+    - scenario: "P/E >35x且NUG <4.5%时持有 → 回报仅等于EPS增长(~10%=回购驱动)"
+      lesson: "asset-light酒店公司的P/E上限由NUG决定。NUG不加速→P/E不扩张→持有回报=EPS增长(大部分来自回购)"
+      transferable: "所有P/E由增速单因子驱动的行业(品类之王不代表估值之王)"
+    - scenario: "衰退前不减仓 → IMF可跌-50~-84%(2020年-84%) → P/E同步压缩 → 双杀"
+      lesson: "含激励管理费(IMF)的酒店公司,在周期高点应评估IMF占比和衰退敏感性。IMF占比越高,周期风险越大"
+      transferable: "所有含高周期性收入组成的asset-light公司(如管理咨询的绩效费/PE的carry)"
+    - scenario: "品牌熵持续上升(31→35品牌)而ACSI/NPS持续下降 → 长期品牌侵蚀不可逆"
+      lesson: "品牌数量增加但品质指标恶化是慢性毒药 — 不会导致突然崩溃但会持续侵蚀定价权和估值倍数"
+      transferable: "所有多品牌消费品公司(特别是通过收购扩张品牌组合的)"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "NUG季度数据(净单位增长率)"
+      why_alpha: "NUG是MAR P/E的单因子定价锚 — NUG每变1pp→P/E变~6x→股价变~$60。市场可能对短期NUG波动反应不足"
+      current_reading: "4.3%(三巨头最慢), 管理层指引4.5-5%, pipeline 610K rooms"
+    - signal: "信用卡费年度增速和占比变化"
+      why_alpha: "金融化转型信号尚未被市场充分定价 — 2026E +35%跳升可能是结构性拐点而非一次性"
+      current_reading: "$716M(FY25), 2026E +35%至~$966M, 占Gross Fee Rev ~15%"
+    - signal: "品牌熵变化(新增品牌/品牌退出)"
+      why_alpha: "品牌熵>3.5可能触发A-Score质变 — 大多数分析师不追踪这个指标"
+      current_reading: "2.8(31品牌), KS-10阈值3.5"
+
+  confirmation_signals:
+    - signal: "季度RevPAR(全球+美国)"
+      bullish_threshold: ">+3%(需求加速确认)"
+      bearish_threshold: "<0%连续2季(衰退确认)"
+    - signal: "Net Debt/EBITDA"
+      bullish_threshold: "<3.0x(杠杆减压)"
+      bearish_threshold: ">4.0x(杠杆压力)"
+    - signal: "Pipeline签约/开业速度"
+      bullish_threshold: "季度签约>25K rooms(NUG加速前兆)"
+      bearish_threshold: "签约<15K rooms连续2季(管线枯竭)"
+
+  noise_signals:
+    - signal: "日度/周度RevPAR波动"
+      why_noise: "受节假日/天气/事件驱动,看季度趋势而非短期波动"
+    - signal: "Sell-side目标价调整"
+      why_noise: "共识PT $343几乎等于股价 — 卖方普遍不做NUG单因子定价分析,目标价缺乏区分度"
+    - signal: "单次品牌发布/退出消息"
+      why_noise: "品牌熵变化是缓慢过程 — 单次增减不改变结构性趋势,看年度品牌数量净变化"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: HLT
+      similarity: "同为asset-light酒店特许经营巨头, 直接竞争, 品牌/会员/管线全维度对标"
+      key_difference: "HLT NUG 6.7% > MAR 4.3% → P/E 49.8x vs 35.4x | HLT 26品牌聚焦度更高(ACSI 80 > MAR 78) | MAR规模更大但增速更慢"
+
+    - ticker: IHG
+      similarity: "酒店三巨头之一, asset-light模型, 忠诚度飞轮, 全球运营"
+      key_difference: "IHG ROIC 22.6%(三巨头最高)但P/E 27.7x(最低) → 效率最优但增速折价 | IHG 16品牌更聚焦, A-Score 6.78 > MAR 6.40"
+
+    - ticker: WH
+      similarity: "酒店特许经营, 偏经济型/中端定位"
+      key_difference: "WH纯特许经营(无管理合同) → 更纯的asset-light | MAR品牌矩阵更宽(luxury→economy全覆盖)"
+
+  comparative:
+    - dimension: "规模(房间数)"
+      position: "MAR (1.78M) > HLT (1.3M) > IHG (1.01M) > WH (~0.9M)"
+      reasoning: "MAR通过SPG/Delta/LHR三次大收购建立规模优势,但规模未转化为P/E溢价"
+
+    - dimension: "增长质量(NUG)"
+      position: "HLT (6.7%) > IHG (~4.7%) > MAR (4.3%)"
+      reasoning: "NUG是P/E单因子定价锚 — HLT pipeline占比55% > MAR 38%,前瞻增长优势明显"
+
+    - dimension: "运营效率(ROIC)"
+      position: "IHG (22.6%) > MAR (15.6%) > HLT (11.3%)"
+      reasoning: "ROIC与P/E呈负相关——市场不为效率支付溢价,只为增速支付溢价"
+
+    - dimension: "护城河质量(A-Score)"
+      position: "HLT (~6.85) > IHG (6.78) > MAR (6.40)"
+      reasoning: "品类之王≠护城河之王 — 品牌数量多导致品牌熵高,拉低品牌力和运营效率评分"
+
+    - dimension: "估值吸引力(P/E)"
+      position: "IHG (27.7x, 偏低估) > MAR (35.4x, 合理) > HLT (49.8x, 增速溢价)"
+      reasoning: "酒店三巨头P/E阶梯精确映射NUG差距 — 非定价错误"
+
+  industry_position:
+    quadrant: "最大规模 × 中等增速 × 中等估值"
+    archetype: "品类之王夹心层 — 规模第一但增速不第一,被夹在增速溢价(HLT)和效率折价(IHG)之间"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含CAGR 7.0%(WACC 8.25%) → 翻译为NUG 4.5-5%+RevPAR 2.5-3%+margin扩张 → RevPAR和margin假设偏乐观"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~RT-7净调整+13.4pp(单向向上) | 消费品系统性悲观偏差+10~15pp | 硬性修正+6.0pp取保守端"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "温水煮青蛙: NUG逐年-0.3pp+ACSI-0.5pt/年+杠杆+0.11x/年 → 5年后KS-01(NUG<3%)和KS-02(杠杆>4.0x)同时触发"
+
+  novel_patterns:
+    - name: "夹心层估值物理学(规模溢价递减+NUG传导系数)"
+      description: "规模弹性在~500K rooms后趋零+NUG-P/E传导系数~6x → 品类之王规模#1但估值#2因增速#3"
+      transferable_to: ["Intel(制造规模vs设计增速)", "Toyota(产量vs EV转型速度)", "Walmart(收入规模vs会员增速)", "Samsung(出货量vs利润率增速)"]
+
+    - name: "品牌熵量化(信息论方法)"
+      description: "品牌数量取对数加权定位重叠度→品牌熵>2.5触发护城河质量警告→品类之王≠护城河之王"
+      transferable_to: ["所有多品牌消费品公司", "品牌收购型集团(LVMH/Tapestry/PVH)"]
+
+    - name: "忠诚度金融化三阶段模型"
+      description: "积分从成本中心→利润来源→准货币 | 金融产品收入占比>15%时估值框架需重定义"
+      transferable_to: ["航空(DAL/UAL)", "零售(COST/AMZN)", "餐饮(SBUX储值卡)"]
+
+    - name: "双层SOTP(收入流质量分层估值)"
+      description: "特许经营费(18-22x)>管理费(14-17x)>信用卡(12-15x)>O&L(8-10x) — 同一公司不同收入流给不同倍数"
+      transferable_to: ["所有asset-light特许经营公司(QSR/酒店/健身)", "多引擎收入结构公司"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "品类之王(规模#1)≠护城河之王(A-Score最高) — 品牌熵超过阈值后护城河被侵蚀"
+        implication: "多品牌公司护城河评估应加入品牌熵计算,不能默认'品牌多=护城河宽'"
+      - insight: "规模溢价递减律 — asset-light模型中规模的边际估值贡献在~500K units后趋零"
+        implication: "评估规模驱动的护城河时,需计算规模弹性而非绝对规模 — 超大规模可能是估值中性的"
+
+    valuation_insights:
+      - insight: "NUG是酒店行业P/E的单因子定价锚(传导系数~6x/pp),ROIC不是有效定价因子"
+        implication: "酒店行业估值比较应用NUG-adjusted P/E而非raw P/E — 类似PEG对PE的修正"
+      - insight: "双层SOTP按收入流质量分层给倍数 — 特许经营费值18-22x但IMF只值10-14x"
+        implication: "asset-light公司不应用单一倍数估值 — IMF占比越高,周期风险折价越大"
+
+    screening_insights:
+      - insight: "规模#1+NUG<行业中位数='夹心层陷阱' — 规模优势无法转化为估值溢价"
+        implication: "选股筛选应加入'规模弹性过滤器': 规模弹性<0.5x且增长传导系数>5x→标记为夹心层"
+      - insight: "金融产品收入占比年增>2pp = 金融化转型信号 → 估值框架可能需要重定义"
+        implication: "对含大规模忠诚度计划的公司,增加金融化占比追踪 — 突破15%触发审查"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "规模最大时立刻追问增速排名"
+      trigger: "行业规模#1的公司,P/E不是#1"
+      origin: "MAR规模1.78M rooms(#1)但P/E 35.4x(#2) — 因为NUG 4.3%(#3)"
+      generalization: "在任何成熟行业中,规模第一+增速不第一=夹心层。市场为增量支付溢价,不为存量支付溢价"
+
+    - habit: "多品牌时计算品牌熵而非数品牌数量"
+      trigger: "公司品牌数>15且持续扩张"
+      origin: "MAR 31品牌熵2.8 vs IHG 16品牌熵2.1 → A-Score反转(品类之王≠护城河之王)"
+      generalization: "品牌数量与护城河质量的关系是非线性的 — 存在一个阈值(品牌熵~2.5)之后开始侵蚀"
+
+    - habit: "金融产品收入占比变化速度比绝对值更重要"
+      trigger: "忠诚度/联名信用卡收入增速显著快于核心业务"
+      origin: "MAR信用卡费+35%(2026E) vs RevPAR +2% → 静默的商业模式迁移"
+      generalization: "当边际增长引擎从核心业务转向金融产品,公司的估值可比对象集合需要重新定义"
+
+    - habit: "消费品报告完成Phase 1-3后,检查负面结论占比"
+      trigger: "消费品Tier 3报告,负面占比>65%"
+      origin: "MAR/RCL/SBUX三份报告都出现+10~15pp系统性悲观偏差 — 品牌质量担忧过度外推"
+      generalization: "消费品分析中,品质指标(NPS/ACSI)的情绪传染效应需要量化校准,不能让单一差指标定义整体叙事"
+
+  quality_feedback:
+    strengths:
+      - "DM密度1.76/千字 — 超过1.5/千字门控,数据锚定扎实(625个DM锚点)"
+      - "估值离散度≤10%(5种方法聚敛于$315-$335) — 方法间高度一致,结论可信度高"
+      - "CI-01夹心层物理学(8/10) — NUG-P/E传导系数6x的精确量化,可迁移4+行业"
+      - "红队系统性(RT-1~RT-7 +13.4pp) — 识别出消费品系统性悲观偏差,与RCL/SBUX交叉验证"
+    weaknesses:
+      - "Bonvoy会员活跃率数据缺失 — 271M会员的真实质量无法精确评估,估值范围过宽($16.5B-$38B)"
+      - "单品牌RevPAR不可得 — 品牌间蚕食只能定性判断,无法精确量化"
+      - "Phase 1-3悲观偏差+13.4pp — 需要框架级修复(CQ提问方式+HLT对标基准选择)"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "消费品Tier 3存在系统性悲观偏差+10~15pp"
+        evidence: "MAR +13.4pp = RCL +12pp中值 = SBUX +13pp — 三份报告独立确认"
+        confidence_after: "高(三重验证)"
+      - hypothesis: "Reverse DCF P1前置有效防止结论先行(铁律O)"
+        evidence: "Ch15 Reverse DCF翻译出市场隐含CAGR 7.0%后,确认市场定价偏乐观但非不合理 → 防止了'品类之王被低估'的叙事先行"
+        confidence_after: "高(持续验证)"
+
+    extended:
+      - hypothesis: "品质最高≠回报最高(CME垄断三角)"
+        extension: "MAR将此扩展为'规模最大≠估值最高' — 从'品质-回报'脱钩扩展到'规模-估值'脱钩"
+
+    refuted:
+      - hypothesis: "ROIC是酒店行业有效的估值定价因子"
+        evidence: "ROIC与P/E在酒店三巨头中呈负相关(IHG 22.6%/27.7x → MAR 15.6%/35.4x → HLT 11.3%/49.8x)"
+        lesson: "酒店行业市场定价NUG(增速)而非ROIC(效率) — 不同行业的有效定价因子不同,不能套用通用框架"
+
+  limitations:
+    - "Bonvoy会员活跃率未披露 → 271M会员的真实价值范围过宽(2x)"
+    - "单品牌RevPAR不可得 → 品牌间蚕食只能定性(品牌熵是间接指标)"
+    - "NUG-P/E传导系数基于仅4家大型asset-light酒店公司 → 样本量有限,极端NUG值处线性假设可能失效"
+    - "信用卡费2026E +35%的持续性无法确认 → 可能是合约一次性调整而非持续加速"
+    - "印度/东南亚pipeline转化率高度不确定 → NUG加速(Path A)的概率赋值30%含较大主观性"

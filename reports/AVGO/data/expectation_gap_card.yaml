@@ -1,0 +1,162 @@
+# 预期差分析卡 v2.1 — Broadcom (AVGO)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "AVGO"
+  company: "Broadcom Inc."
+  analysis_date: "2026-03-27"
+  stock_price: "$309.42"
+  market_cap: "$1.47T"
+  data_snapshot: "FY2025 + FQ1'26 (FY ends ~Nov)"
+  tier: "tier2"
+  framework_version: "v2.1"
+  linked_report: "reports/AVGO/AVGO_Complete_v2.0_2026-03-08.md"
+
+core_judgment: "AVGO是半导体中的'ASIC反面赌注'——如果AI计算从GPU垄断→ASIC多元化(趋势方向),AVGO是最大受益者(60-80%定制芯片份额)。Forward PE 17.5x(FY27)对一个AI收入+106%/ASIC市场#1的公司看起来合理偏便宜。但Owner PE 84x(SBC 12%/Rev扭曲)提醒真实成本远高于headline。AVGO的核心矛盾: 它是'NVDA的对冲'(ASIC替代GPU)但同时需要TSMC代工(与NVDA共享瓶颈)——这使得'AVGO涨+NVDA跌'的对冲逻辑不完全成立"
+gap_type: "underpriced_improvement"
+confidence: "medium"
+confidence_reasoning: "高置信: ASIC市场#1(60-80%份额)/AI收入+106%/Google+Meta+OpenAI客户=事实。中等置信: FY27共识Rev $157B(vs FY25 $64B=+146%)需要AI CapEx持续$470B+级别——如果AI ROI失望→这个增速不可能。降低置信: Owner PE 84x+SBC 12%+insider零买入+客户集中3-4家"
+
+expectations:
+  price_implied:
+    implied_fcf_cagr: "~20-25%"
+    p_fcf: "51x (trailing, FCF ~$29B)"
+    owner_pe_adjusted: "84x (NI $25B - SBC $7.6B = $17.4B → 1,467/17.4 = 84x)"
+    judgment: "aggressive_on_trailing; reasonable_on_forward"
+    judgment_reasoning: "Trailing 62x/Owner 84x看起来贵。但Forward PE 17.5x(FY27 EPS $17.63)对40%+增速看起来合理——如果FY27共识能实现"
+
+  consensus:
+    eps_next_fy: "$17.63 (FY2027E, 27家)"
+    revenue_next_fy: "$157B (FY2027E, +146% vs FY25)"
+    target_price_range: "$435均值 (+41% upside)"
+    rating_distribution: "绝大多数Buy"
+    recent_revision_direction: "up"
+
+  dominant_narrative: "AVGO是定制AI芯片(ASIC)的赢家——如果hyperscaler从GPU转向自研芯片,AVGO是最大受益者"
+  bull_case_core: "ASIC份额60-80%+Google/Meta/OpenAI客户+AI收入+106%+VMware margin扩张+网络拉动"
+  bear_case_core: "客户集中3-4家+SBC 12%+Owner PE 84x+竞争(Marvell/in-house)+VMware中国/EU风险"
+  market_most_uncertain_about: "FY27 Rev $157B(从$64B翻2.5倍)是否真的能实现——这需要AI CapEx不减速"
+
+  smart_money:
+    insider_behavior: "零买入。A/D比0.05(Q1'26: 78笔卖出vs 4笔获取)——持续大量卖出"
+    company_buyback:
+      amount: "$6.3B(FY25) + 股息$11.1B = 总回报$17.4B"
+      sbc_coverage: "141% (回购>SBC但差距不大)"
+      share_count_change: "+14.5%/3yr(VMware换股稀释)+稳定中"
+      trend: "stable — VMware稀释是一次性,正在通过回购吸收"
+    smart_money_signal: "neutral — 分析师极看好($435目标)但insider大量卖出"
+
+reality:
+  company:
+    overall_trend: "accelerating"
+    trend_confidence: "high"
+    key_variables:
+      - name: "AI半导体收入"
+        state: "accelerating"
+        data: "FQ1'26 AI收入$8.4B(占总43%, +106% YoY) — 从FY24 ~$7B→FY25 ~$20B→FQ1'26年化$33B+"
+        evidence_grade: "fact"
+      - name: "ASIC客户管线"
+        state: "accelerating"
+        data: "Google TPU(多代)+Meta MTIA+ByteDance+OpenAI($100B+报道)。设计周期2-3年=高锁定"
+        evidence_grade: "fact(现有客户)+inference(OpenAI规模)"
+      - name: "VMware整合"
+        state: "accelerating"
+        data: "从永久许可转订阅,OPM目标从30%→65%+。已提价+精简产品线"
+        evidence_grade: "fact"
+      - name: "FCF"
+        state: "accelerating"
+        data: "FCF margin 42.3%, FQ1'26 FCF $8.0B(年化$32B)"
+        evidence_grade: "fact"
+      - name: "SBC负担"
+        state: "elevated"
+        data: "SBC/Rev 11.8%, Owner PE 84x vs GAAP PE 62x。回购141%覆盖(勉强)"
+        evidence_grade: "fact"
+    most_telling_facts:
+      - fact: "ASIC市场份额60-80%=如果'GPU→ASIC'趋势持续,AVGO是最大单一受益者"
+        why_telling: "这使AVGO成为'NVDA对冲'——但不是完美对冲(AVGO和NVDA都需要TSMC代工,共享瓶颈)"
+      - fact: "FQ1'26 AI收入$8.4B(占总43%)+106% YoY——AI已从'增量'变成'核心引擎'"
+        why_telling: "AVGO不再是'有AI概念的半导体公司',而是'AI芯片公司+附带传统业务'"
+
+  industry:
+    structural_shifts:
+      - shift: "GPU垄断→ASIC多元化"
+        evidence_grade: "fact"
+        irreversibility: 4
+        speed: "fast"
+        company_position: "primary_beneficiary — 每个hyperscaler的自研芯片都需要AVGO设计"
+      - shift: "AI网络带宽指数增长"
+        evidence_grade: "fact"
+        irreversibility: 5
+        speed: "fast"
+        company_position: "dominant — Tomahawk/Jericho是AI集群网络标准"
+    key_industry_fact: "ASIC设计周期2-3年=一旦客户选择AVGO,2-3年内不会切换。这是工程服务型锁定,不如CUDA强但足够持久"
+
+gap:
+  scoring:
+    direction_clarity: 3
+    magnitude: 3
+    persistence: 4
+    verifiability: 3
+    industry_trend_support: 5
+    smart_money_alignment: 2
+    composite_score: 3.33
+
+  core_mispriced_variables:
+    - variable: "ASIC vs GPU趋势的受益程度"
+      market_assumes: "AVGO受益于ASIC趋势(已定价部分)"
+      reality_shows: "60-80%ASIC市场份额+每个新hyperscaler客户=$5-15B生命周期收入。OpenAI $100B报道如果属实=改变量级"
+      evidence_grade: "fact(份额)+inference(OpenAI规模)"
+    - variable: "SBC/Owner PE被headline掩盖"
+      market_assumes: "GAAP PE 62x→Forward PE 17.5x=便宜"
+      reality_shows: "Owner PE 84x因SBC $7.6B。回购仅141%覆盖=SBC几乎完全对冲回购效果。真实股东回报<headline暗示"
+      evidence_grade: "fact"
+
+  one_sentence_judgment: "AVGO是半导体中的'ASIC趋势赌注'——如果GPU→ASIC是5年大趋势(证据支持),Forward PE 17.5x对ASIC #1来说偏便宜;但Owner PE 84x+SBC 12%+客户集中3家提醒这个'便宜'有很大的SBC泡沫。核心不确定性: FY27 Rev能否从$64B→$157B——这需要AI CapEx不减速"
+
+  same_narrative_comparison:
+    narrative: "AI半导体需求"
+    peers:
+      - ticker: "NVDA"
+        forward_pe: "15.4x(FY28)"
+        role: "GPU垄断者(训练)"
+        risk: "ASIC分流推理"
+      - ticker: "AVGO"
+        forward_pe: "17.5x(FY27)"
+        role: "ASIC #1(定制芯片)"
+        risk: "客户集中+SBC"
+      - ticker: "AMD"
+        forward_pe: "18.7x(FY27)"
+        role: "#2 GPU+#1 CPU"
+        risk: "CUDA锁定+利润率天花板"
+    most_mispriced: "三者Forward PE接近(15-19x)但角色完全不同。如果AI计算从GPU垄断→ASIC多元化,AVGO受益最大;如果GPU维持训练+推理垄断,NVDA受益最大。这是同一趋势的两种可能结局的对赌"
+
+paradigm_shift:
+  signals_triggered: 5
+  company_role: "paradigm_beneficiary_of_diversification"
+  role_evidence: "AVGO受益于'AI计算多元化'(GPU→ASIC)。不是范式转移的领导者(那是NVDA),而是范式转移的B面受益者——如果客户从NVDA一家独大转向多供应商,AVGO是最大替代"
+  pricing_error_pattern: "possible — Forward PE 17.5x对ASIC #1可能偏便宜,但Owner PE 84x提醒真实成本高"
+  impact_on_gap_judgment: "AVGO在范式转移中的独特定位: 它同时受益于'NVDA赢'(更多AI基础设施→更多AVGO网络)和'NVDA输'(ASIC替代GPU→AVGO设计芯片)。这种双赢定位在半导体中独一无二"
+
+triggers:
+  company_signals:
+    - signal: "AI半导体季度收入"
+      bullish_threshold: ">$10B/Q(年化$40B+)"
+      bearish_threshold: "<$7B/Q(增速放缓)"
+    - signal: "新hyperscaler ASIC客户公告"
+      bullish_threshold: "确认OpenAI+新增1-2个客户"
+      bearish_threshold: "客户流失或暂停"
+    - signal: "VMware OPM进展"
+      bullish_threshold: ">50%(接近65%目标)"
+      bearish_threshold: "<35%(整合不顺)"
+  falsification:
+    - condition: "ASIC市场份额从60-80%降至<50%(竞争侵蚀)"
+      implication: "Marvell/in-house设计蚕食→AVGO的ASIC垄断被打破"
+      time_window: "18个月"
+  monitoring_horizon: "3-4季度"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 3.33(<3.5)。已有v2.0报告(209K)。AVGO的预期差条件性强(依赖AI CapEx不减速),等FY26 Q2-Q3验证增速趋势"
+
+post_mortem:
+  verified: false

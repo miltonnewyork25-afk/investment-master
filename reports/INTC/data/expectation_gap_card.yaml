@@ -1,0 +1,401 @@
+# ============================================================
+# 预期差分析卡 v2.0 — Intel (INTC)
+# 分析日期: 2026-03-27 (结合v2.1报告深度认知)
+# ============================================================
+
+meta:
+  ticker: "INTC"
+  company: "Intel Corporation"
+  analysis_date: "2026-03-27"
+  stock_price: "$44.10"
+  market_cap: "$220B"
+  data_snapshot: "FY2025 (截至2025-12-27)"
+  tier: "tier2"
+  framework_version: "v2.0"
+  linked_report: "reports/INTC/INTC_Deep_Dive_v2.1.md"
+
+# === 核心判断 ===
+core_judgment: "INTC是本轮测试中唯一的'overpriced_optimism'——市场在120%反弹后按'转型成功'定价($220B),但我们的深度报告概率加权公允价值仅$13(5个承重墙联合概率2-3%)。新催化剂(18A HVM+NVIDIA合作+CPU复兴叙事)部分验证了CQ1,但核心问题(IFS外部客户/良率经济性/$4.9B负FCF/$46.6B债务/12%年稀释)仍未解决。市场从'绝望'跳到'希望'但跳过了'验证'——这是典型的'叙事领先于基本面'的高估乐观"
+gap_type: "overpriced_optimism"
+confidence: "medium"
+confidence_reasoning: "高置信: FCF深度负值(-$4.9B)+IFS季度亏损$2.5B+12%稀释=财务事实严峻。中等置信: 18A HVM是真实进展(事实),但从HVM到经济性竞争力需要良率持续提升(推断)。降低置信: CPU复兴叙事和NVIDIA合作的影响规模不确定(推断)。最大不确定性: 地缘政治溢价(CHIPS Act政府担保)可能给估值一个'非经济底部',很难用传统方法定价"
+
+# === E域: 市场预期 ===
+expectations:
+  price_implied:
+    implied_revenue_cagr_5y: "~7-10%"
+    implied_terminal_margin: "~15-20% OPM (需要从-0.04%大幅改善)"
+    implied_fcf_cagr: "N/A — 当前FCF为负,隐含的是FCF转正的时间点和幅度"
+    p_fcf: "N/A (FCF为负)"
+    owner_pe_adjusted: "N/A (NI为负+大量稀释)"
+    judgment: "aggressive"
+    judgment_reasoning: "$220B市值要求: (1)IFS从亏损$10B/yr转为盈利 (2)产品OPM从4%恢复到15%+ (3)CapEx从$15B/yr降至$10B以下 (4)外部代工客户贡献$3-5B+收入——全部同时实现的概率根据我们的分析仅2-3%"
+
+  consensus:
+    eps_current_fy: "-$0.06 (FY2025实际)"
+    eps_next_fy: "$0.50 (FY2026E, 34家), $0.95 (FY2027E)"
+    revenue_current_fy: "$52.9B"
+    revenue_next_fy: "$53.9B (FY2026E), $57.9B (FY2027E)"
+    target_price_median: "N/A"
+    target_price_range: "$18 - $65 (极宽——反映二元结局)"
+    dispersion: "极高 — FY2028E EPS从$0.55到$2.52(离散度358%!)"
+    rating_distribution: "深度分裂"
+    recent_revision_direction: "up (从$20低点反弹带动分析师上调)"
+    revision_magnitude: "大幅,但起点极低"
+
+  dominant_narrative: "Intel在Lip-Bu Tan领导下正在执行史上最大半导体转型——18A已到HVM+NVIDIA合作+CHIPS Act补贴+CPU复兴=转型正在成功"
+  bull_case_core: "18A工艺领先TSMC 2nm数周+NVIDIA合作验证代工能力+CPU复兴(agentic AI需要CPU编排)+CHIPS Act $7.86B+$100B美国投资"
+  bear_case_core: "IFS亏$2.5B/Q+零规模化外部代工客户+FCF -$4.9B+12%年稀释+良率经济竞争力未验证+5个承重墙联合概率极低"
+  market_most_confident_about: "CHIPS Act政府不会让Intel倒闭(地缘政治底部)"
+  market_most_uncertain_about: "18A能否在经济性上追上TSMC——HVM≠客户愿意付钱买"
+  narrative_vs_price_consistency: "一致——乐观叙事+股价+120%。但Motley Fool警告'stock has gotten way ahead of turnaround plans'"
+
+  smart_money:
+    institutional_ownership_trend: "increasing — 从底部反弹吸引了量化基金"
+    notable_positions:
+      - investor: "AQR Capital Management (quant)"
+        action: "增仓至15.5M股($346M)"
+        size: "$346M"
+        thesis: "量化因子驱动(可能是价值/反转因子)"
+        evidence_grade: "fact"
+      - investor: "Capital International Investors"
+        action: "新建仓"
+        size: "未披露"
+        thesis: "N/A"
+        evidence_grade: "fact"
+    insider_behavior: "Q1'26有1笔买入(罕见!INTC近年极少有insider purchase)。但量级需确认——如果是CEO Tan买入,信号极强"
+    company_buyback:
+      amount: "$0 (零回购)"
+      sbc_coverage: "N/A — 不仅没回购,还发行$13.5B新股"
+      share_count_change: "+11.8%/年 (大幅稀释)"
+      trend: "恶化 — 从回购转为净发行"
+    smart_money_signal: "divergent"
+    signal_reasoning: "量化基金买入(弱正面,可能是因子驱动非基本面)+1笔insider purchase(如果是高管=正面)。但零回购+$13.5B发行=公司在用股权融资转型(中性到负面——管理层选择稀释而非举债,说明不确定性高到不愿加杠杆)"
+
+# === R域: 企业+行业现实 ===
+reality:
+  company:
+    overall_trend: "inflecting_up — 从巨亏企稳,但距离健康盈利还很远"
+    trend_confidence: "medium"
+    structural_vs_cyclical: "structural turnaround — 这不是周期复苏,是商业模式重塑(从IDM到IDM+Foundry)"
+    key_variables:
+      - name: "收入"
+        state: "stable"
+        data: "FY22 $63B → FY23 $54B → FY24 $53B → FY25 $53B (企稳但不增长)"
+        source: "10-K"
+        evidence_grade: "fact"
+      - name: "IFS(代工)亏损"
+        state: "deteriorating"
+        data: "Q4'25亏损$2.51B。全年IFS烧钱$10B+。代工盈亏平衡预计2027年"
+        source: "10-K segment reporting"
+        evidence_grade: "fact"
+      - name: "产品部门OPM"
+        state: "inflecting_up"
+        data: "产品收入$49.1B,OPM 25.8% — 实际上产品业务相当健康,被IFS亏损拖累"
+        source: "v2.1报告segment分析"
+        evidence_grade: "fact"
+      - name: "FCF"
+        state: "deteriorating"
+        data: "FY22 -$9.6B → FY23 -$14.3B → FY24 -$15.7B → FY25 -$4.9B (改善但仍深度负值)"
+        source: "10-K cash flow"
+        evidence_grade: "fact"
+      - name: "资本结构/稀释"
+        state: "deteriorating"
+        data: "股份+11.8%/yr(发行$13.5B股权), 债务$46.6B, 零回购。转型成本=股东稀释"
+        source: "10-K"
+        evidence_grade: "fact"
+      - name: "18A工艺进展"
+        state: "accelerating"
+        data: "18A达到HVM,Fab 52量产中。良率每月提升~7%。号称领先TSMC 2nm数周"
+        source: "Intel新闻稿 + 行业报道"
+        evidence_grade: "fact(HVM) + inference(领先TSMC)"
+
+    quality_signals:
+      revenue_driver: "CPU仍占核心——PC+数据中心CPU约$40B, AI相关GPU/加速器极小"
+      customer_concentration_risk: "medium — PC端依赖OEM,数据中心端正在被AMD蚕食"
+      cash_flow_match: "OCF $9.7B但CapEx $14.6B → FCF深度负值=转型期现金消耗型公司"
+      sbc_burden: "SBC $2.4B (4.5%/Rev,相对SaaS很低) 但叠加$13.5B股权发行=真实稀释远大于SBC"
+      organic_vs_acquired: "出售资产(Altera 51%卖$4.3B, Mobileye部分)为转型融资——方向正确但代价高"
+
+    most_telling_facts:
+      - fact: "$220B市值对应一个FCF=-$4.9B、NI=-$267M、每年稀释12%的公司"
+        why_telling: "在WDAY,P/FCF 12x定价一个FCF $2.8B的公司=可能太便宜。在INTC,$220B定价一个FCF为负的公司=完全基于'未来可能盈利'的预期。差异: WDAY有现金流支撑,INTC是纯粹的期权定价"
+      - fact: "产品部门OPM 25.8%但公司整体OPM -0.04% — IFS每年烧$10B+"
+        why_telling: "Intel不是一个'烂公司'——产品业务相当赚钱。它是一个'好公司+巨额赌注'的组合体。如果把IFS独立出来,产品公司值$130-160B(按25% OPM的半导体估值),IFS值0到-$50B(取决于你是否相信代工故事)"
+
+  industry:
+    total_market_trend: "growing — 半导体行业趋向$1T(2026年)"
+    total_market_data: "全球半导体销售2026年趋向$1T,AI是最大增长驱动力"
+    total_market_source: "SIA / SEMI / 行业报道"
+    structural_shifts:
+      - shift: "计算范式: CPU → GPU → AI ASIC → 异构计算"
+        evidence_grade: "fact"
+        irreversibility: 5
+        speed: "fast"
+        current_penetration: "GPU主导AI训练(>80%), ASIC开始量产(2026是ASIC年)"
+        company_position: "mixed — CPU业务被GPU侵蚀(victim),但CPU在推理/编排中仍关键(partial_beneficiary),代工可能受益于ASIC多元化(potential_beneficiary)"
+      - shift: "制造地理: 亚洲集中 → 美国/欧洲回流(CHIPS Act)"
+        evidence_grade: "fact"
+        irreversibility: 4
+        speed: "slow"
+        current_penetration: "美国先进制程产能从<5%开始建设,Intel是最大受益者"
+        company_position: "primary_beneficiary — CHIPS Act $7.86B + 9.9%政府股权 + 'too important to fail'定位"
+      - shift: "代工市场结构: TSMC垄断 → 需求多元化"
+        evidence_grade: "inference"
+        irreversibility: 3
+        speed: "slow"
+        current_penetration: "TSMC仍占先进制程>80%,Intel IFS外部收入极小"
+        company_position: "challenger — 有技术(18A)但缺客户验证和良率经济性"
+    budget_flow_direction: "从传统CPU → AI加速器($470B+投资) | 但CPU在agentic AI中的角色可能回升"
+    competitive_threat_reality: "AMD在x86服务器蚕食(事实,份额已达20-25%); NVIDIA在AI计算垄断(事实); TSMC在制造垄断(事实)。三面受压,但在每个领域都有特定利基"
+    key_industry_fact: "NVIDIA CEO说'CPU正在成为AI和agentic工作流增长的瓶颈'——如果CPU复兴叙事成立,Intel的$40B CPU业务可能重新获得增长动力"
+    key_industry_fact_source: "NVIDIA GTC 2026, Jensen Huang keynote"
+
+  trend_price_divergence:
+    exists: true
+    description: "INTC从$17.67反弹至$44.10(+150%)期间,基本面改善有限: 收入持平$53B,FCF仍为-$4.9B,IFS仍亏$10B+/yr。股价涨幅远超基本面改善幅度"
+    possible_explanations:
+      - explanation: "市场在定价'18A成功+代工转型+CPU复兴'的未来期权价值——期权定价可以在基本面之前大幅上涨"
+        likelihood: "high"
+      - explanation: "空头回补+零售投资者情绪驱动的投机性反弹(meme化倾向)"
+        likelihood: "medium"
+      - explanation: "CHIPS Act创造的'政府担保底部'吸引了之前回避INTC的机构资金"
+        likelihood: "medium"
+    most_likely_explanation: "三者兼有——期权价值驱动(18A是真进展)+政府担保底部(CHIPS Act)+情绪驱动(散户)=估值从'绝望折价'跳到'希望溢价',但跳过了'验证'步骤"
+
+  trend_irreversibility:
+    - trend: "CPU → GPU → ASIC计算范式转移"
+      irreversibility_score: 5
+      speed: "fast"
+      evidence_grade: "fact"
+      already_priced: "partially — 市场知道GPU主导但可能低估了ASIC和CPU复兴"
+      reasoning: "AI计算从GPU垄断→ASIC多元化是2026年确定趋势。但CPU在推理/编排中的角色回升是新叙事,尚未充分定价"
+    - trend: "半导体制造回流美国"
+      irreversibility_score: 4
+      speed: "slow"
+      evidence_grade: "fact"
+      already_priced: "over-priced — $220B市值中包含大量地缘溢价,但CHIPS Act资金$7.86B vs Intel每年烧$15B CapEx=杯水车薪"
+      reasoning: "政府意志不可逆,但从意志到能力需要5-10年。市场可能过度定价了短期影响"
+
+# === G域: 剪刀差 ===
+gap:
+  variable_comparison:
+    - factor: "估值vs基本面"
+      expectation: "$220B市值隐含转型成功"
+      reality: "FCF -$4.9B, NI -$267M, IFS亏$10B+/yr, 12%年稀释"
+      gap_direction: "E>>R"
+      gap_size: "large"
+      evidence_grade: "fact"
+    - factor: "18A进展"
+      expectation: "市场定价'18A成功=代工崛起'"
+      reality: "18A达HVM(事实)但零规模化外部客户+良率经济性未验证(推断)"
+      gap_direction: "E>R"
+      gap_size: "medium"
+      evidence_grade: "fact(HVM)+inference(经济性)"
+    - factor: "CPU复兴叙事"
+      expectation: "NVIDIA说CPU重要→Intel CPU业务复兴"
+      reality: "CPU在agentic AI中角色可能增加,但AMD在服务器蚕食20-25%份额,Intel份额仍在下降"
+      gap_direction: "E>R"
+      gap_size: "small — CPU复兴不等于Intel复兴"
+      evidence_grade: "narrative(CPU复兴)+fact(AMD蚕食份额)"
+    - factor: "地缘政治溢价"
+      expectation: "CHIPS Act→Intel不会倒"
+      reality: "CHIPS Act $7.86B是真的,但每年CapEx $15B→政府补贴仅覆盖半年CapEx"
+      gap_direction: "aligned — 地缘溢价可能是合理的底部锚"
+      gap_size: "small"
+      evidence_grade: "fact"
+
+  scoring:
+    direction_clarity: 4
+    magnitude: 4
+    persistence: 3
+    verifiability: 3
+    industry_trend_support: 2
+    smart_money_alignment: 2
+    composite_score: 3.0
+
+  core_mispriced_variables:
+    - variable: "转型期权被过度定价——'希望'跳过了'验证'"
+      market_assumes: "18A HVM=代工成功=Intel重生,值$220B"
+      reality_shows: "从HVM到经济性竞争力有巨大鸿沟: (1)零规模外部客户 (2)良率经济性未验证 (3)IFS每年亏$10B+ (4)TSMC的客户关系和生态壁垒未被突破"
+      why_market_wrong: "市场犯了'催化剂=成功'的推理错误。18A达HVM是必要条件不是充分条件——就像建了一座工厂不等于有人来买你的产品。我们的分析显示5个承重墙同时成立的概率仅2-3%"
+      evidence_grade: "fact(HVM,IFS亏损) + inference(概率估计)"
+      valuation_sensitivity: "如果IFS不能在2027年前获得$3-5B外部收入,估值可能从$220B回落至$100-130B(产品业务单独估值)"
+
+    - variable: "稀释成本被忽视"
+      market_assumes: "关注EPS改善方向(从-$4.38到-$0.06)=好转"
+      reality_shows: "股份+11.8%/yr→EPS改善中约1/3被稀释吃掉。发行$13.5B股权+零回购=管理层自己不确定到需要用股权融资而非债务——如果管理层真的相信转型能成功,应该举债而非稀释(更便宜)"
+      why_market_wrong: "市场看EPS方向(改善!)但忽视分母变化(股份膨胀)。对比WDAY(稀释-2.5%/yr)和INTC(稀释+11.8%/yr)——INTC投资者每年自动缩水12%"
+      evidence_grade: "fact"
+      valuation_sensitivity: "如果稀释持续3年(+12%×3=+40%股份),每股价值自动缩减30%"
+
+    - variable: "地缘政治溢价可能是合理的但被误解"
+      market_assumes: "CHIPS Act=Intel值$220B"
+      reality_shows: "CHIPS Act确实给了Intel一个'不会死'的底部——但'不会死'≠'会繁荣'。政府保命≠政府保利润"
+      why_market_wrong: "市场可能对了一半——地缘溢价给$100-130B估值底部是合理的(产品业务+政府担保)。但从$130B到$220B的$90B=纯IFS期权价值——这要求IFS成功,概率在我们看来很低"
+      evidence_grade: "inference"
+      valuation_sensitivity: "地缘底部~$100-130B,当前$220B→下行空间40-55%"
+
+  one_sentence_judgment: "INTC从$17反弹至$44是从'绝望折价'到'希望溢价'——18A HVM是真进展,但市场从'谁都不信Intel'跳到'Intel代工将成功'而跳过了'验证'步骤。$220B定价一个FCF=-$4.9B、年稀释12%、IFS年亏$10B的公司,隐含的是2-3%概率事件被当作基准情景定价"
+
+  same_narrative_comparison:
+    narrative: "半导体制造回流+先进制程竞争"
+    peers:
+      - ticker: "TSM"
+        p_fcf: "~25x"
+        fcf_growth: "~20%"
+        sbc_coverage: "N/A(台积电SBC极低)"
+        opm_direction: "~45%(世界顶级)"
+        owner_pe: "~25x"
+      - ticker: "INTC"
+        p_fcf: "N/A(负值)"
+        fcf_growth: "N/A(负值)"
+        sbc_coverage: "0% + 净发行$13.5B"
+        opm_direction: "-0.04%(几乎为零)"
+        owner_pe: "N/A(亏损)"
+    most_mispriced: "INTC可能被过度乐观定价——TSM有真实的45% OPM和$25B+ FCF,INTC有零FCF和亏损,但INTC市值($220B)已达TSM($900B)的25%——考虑到基本面差距,这个比例可能过高"
+    reasoning: "TSM是全球最赚钱的半导体公司,INTC是一个正在亏损的转型公司。INTC市值=TSM的25%,但盈利能力=TSM的0%——市场给INTC的估值几乎完全基于'未来可能追上TSM',而非当前能力"
+
+# === P域: 范式转移检测 ===
+paradigm_shift:
+  signals:
+    pricing_unit_shift:
+      status: "mid"
+      old_unit: "CPU性能/核心数/频率"
+      new_unit: "AI推理性能/每瓦效率/异构计算能力"
+      penetration: "GPU+ASIC已占AI计算>90%, CPU在推理中角色可能回升(10-25%)"
+      evidence: "NVIDIA GTC + 行业数据"
+
+    new_vocabulary_density:
+      status: "high"
+      examples: ["agentic AI", "AI ASIC", "RibbonFET", "PowerVia", "Equity for Subsidies", "silicon sovereignty", "CPU renaissance", "heterogeneous compute"]
+      evidence: "2年前这些术语大部分不存在"
+
+    investment_intensity:
+      status: "explosion"
+      ratio: "AI半导体投资$470B+ / 半导体TAM $1T = ~47%"
+      evidence: "Hyperscaler CapEx + CHIPS Act"
+
+    adoption_penetration:
+      status: "10-25%(sweet_spot)"
+      current_rate: "AI加速器在数据中心渗透~15-20%"
+      acceleration: "加速中,但从训练转向推理+edge"
+      evidence: "行业报告"
+
+    reflexivity_loop:
+      status: "strong"
+      loop_description: "AI应用→更多AI硬件需求→更多半导体投资→更先进工艺→更强AI→更多应用"
+      break_risk: "AI泡沫破裂/scaling laws失效/监管"
+
+  signals_triggered: 5
+
+  company_role: "adapter_attempting_challenger"
+  role_evidence: "Intel试图同时做两件事: (1)保卫CPU业务(适应者) (2)建立代工业务挑战TSMC(挑战者)。两者都还没有决定性证据表明成功。不是'自我颠覆者'(没有主动放弃旧模式),也不是'抵抗者'(在积极投资新方向)"
+  historical_analog: "最接近IBM 2012(Ginni Rometty转型期)——从硬件公司转型为服务公司的尝试。IBM转型用了8年,期间股价从$210跌至$120再回$140。最终算'半成功'——公司没死但也没恢复昔日辉煌"
+
+  pricing_error_pattern: "pattern_A_inverse"
+  pattern_description: "不是'按旧规则给新世界定价'——而是'按新世界的期望给旧世界的公司定价'。市场看到18A HVM+CHIPS Act+CPU复兴叙事,就按'Intel将成为新世界的赢家'定价,但Intel目前的财务现实($220B市值/FCF -$4.9B)完全是旧世界的数字"
+  pattern_confidence: "medium"
+
+  impact_on_gap_judgment: "范式转移视角增加了复杂性而非清晰度: (1)CPU→GPU→ASIC转移不利于Intel核心CPU业务(负面) (2)但ASIC多元化可能创造代工需求(正面) (3)CPU复兴叙事可能真实但Intel不等于CPU(AMD也受益) (4)制造回流是真趋势但速度远慢于市场定价。净效果: 范式转移对INTC是双刃剑,市场可能只看到了正面而忽视了负面"
+
+# === T域: 拐点信号与证伪 ===
+triggers:
+  company_signals:
+    - signal: "IFS外部客户收入"
+      current_reading: "~$225M/季度(极小)"
+      bullish_threshold: ">$500M/季度(开始规模化)"
+      bearish_threshold: "持平或下降(无客户牵引)"
+      why_matters: "这是整个$90B IFS期权价值的唯一硬验证——没有外部客户=IFS是内部成本中心不是业务"
+      next_data_point: "Q1'26财报"
+    - signal: "18A良率(间接指标: 毛利率变化)"
+      current_reading: "整体毛利率35.6%(vs历史55-60%)"
+      bullish_threshold: "毛利率连续2Q >38%(良率改善→成本下降)"
+      bearish_threshold: "毛利率<33%(良率未改善或恶化)"
+      why_matters: "良率直接决定18A的经济性——HVM+低良率=赔钱生产"
+      next_data_point: "Q1'26财报"
+    - signal: "CapEx强度变化"
+      current_reading: "$14.6B/年(OCF的151%)"
+      bullish_threshold: "CapEx/Rev<25%(投资减速=建设期结束)"
+      bearish_threshold: "CapEx/Rev>30%持续(还在烧钱=建设期延长)"
+      why_matters: "CapEx是FCF为负的主因——什么时候CapEx开始下降=什么时候FCF转正"
+      next_data_point: "逐季"
+    - signal: "稀释速度"
+      current_reading: "+11.8%/年"
+      bullish_threshold: "<5%/年(减速=融资需求下降)"
+      bearish_threshold: ">15%/年(加速=需要更多钱=转型更贵)"
+      why_matters: "稀释是转型的隐性成本——每多稀释1%=每股价值自动降1%"
+      next_data_point: "逐季"
+
+  industry_signals:
+    - signal: "TSMC先进制程价格/交期变化"
+      current_reading: "TSMC 3nm/2nm价格持续上涨,交期6-12月"
+      bullish_threshold: "TSMC涨价>20%→客户寻找替代→Intel受益"
+      bearish_threshold: "TSMC降价或交期缩短→客户无动力切换"
+      why_matters: "Intel代工的唯一真实机会是TSMC'太贵/太拥挤'推动客户多元化"
+      source: "行业供应链数据"
+    - signal: "ASIC设计公司数量和代工需求"
+      current_reading: "Google/Amazon/Meta/Microsoft/OpenAI都在做自研芯片"
+      bullish_threshold: "这些公司开始与Intel签代工合同"
+      bearish_threshold: "全部选择TSMC或三星"
+      why_matters: "ASIC多元化=更多代工需求=Intel IFS的唯一增长路径"
+      source: "13F + 行业新闻"
+
+  smart_money_signals:
+    - signal: "Lip-Bu Tan个人买入INTC股票"
+      current_reading: "Q1'26有1笔insider purchase(需确认是否是Tan)"
+      bullish_threshold: "CEO买入>$1M(最强正面信号)"
+      bearish_threshold: "CEO卖出或零买入"
+      why_matters: "新CEO用自己的钱投票=最昂贵的信心信号"
+      next_data_point: "SEC Form 4"
+
+  confirming_indicators:
+    - signal: "FY2027 IFS盈亏平衡"
+      expected_if_thesis_correct: "IFS继续亏$2B+/Q → overpriced确认"
+      expected_if_thesis_wrong: "IFS亏损缩窄至<$1B/Q → 转型在加速"
+
+  falsification:
+    - condition: "IFS季度外部收入>$1B且毛利率>40%"
+      implication: "代工业务开始获得经济性验证——overpriced判断被证伪,需要重新估值"
+      time_window: "12-18个月"
+    - condition: "股价持续>$50且FCF转正"
+      implication: "市场看到了我们没看到的东西——需要更新报告假设"
+      time_window: "FY2026"
+    - condition: "主要云厂商(MSFT/GOOG/META)公开宣布使用Intel 18A代工量产"
+      implication: "IFS不再是'概念',而是'商业验证'——概率重估"
+      time_window: "12个月"
+
+  trend_reversal_conditions:
+    - condition: "AI硬件投资增速从>50%骤降至<10%(AI泡沫破裂)"
+      implication: "整个半导体增长叙事崩塌,Intel的转型融资来源(股权市场+政府)可能收紧"
+      monitoring_source: "Hyperscaler CapEx指引"
+    - condition: "TSMC在美国建厂成功且良率与台湾一致"
+      implication: "Intel'唯一美国先进制程'的独特性消失,地缘溢价缩水"
+      monitoring_source: "TSMC Arizona fab报道"
+
+  monitoring_horizon: "4-6个季度(12-18个月) — 比SaaS公司需要更长验证窗口"
+  next_reassessment_trigger: "Q1'26财报(IFS外部收入+毛利率+稀释速度)"
+
+# === 后续行动 ===
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "我们已有v2.1深度报告(270K),结论仍然有效: 概率加权公允价值~$13,5个承重墙联合概率2-3%。新催化剂(18A HVM)部分验证CQ1但不改变整体概率分布。composite_score 3.0(<3.5)——overpriced_optimism方向清晰但幅度取决于IFS验证速度,当前不值得追加深度研究,等待IFS外部客户数据"
+  priority_research:
+    - "更新v2.1报告的CQ1概率(18A HVM后从55%上调至多少?)"
+    - "Intel insider purchase Q1'26详情: 是Tan还是其他高管?金额?"
+    - "NVIDIA-Intel合作的具体规模和内容——是真实代工订单还是战略姿态?"
+    - "对比IBM 2012-2020转型路径: 时间线/股价/财务/稀释的逐年对标"
+  position_implication: "如果未持有: 不建议在$44建仓——上行需要5个承重墙同时成立(2-3%),下行回到$20-25是55%概率的僵尸路径。如果已持有: 考虑在$44-50区间减仓——从$17.67反弹+150%已经超出概率加权值"
+
+# === 事后验证 ===
+post_mortem:
+  verified: false
+  verification_date: ""
+  outcome: ""
+  what_happened: ""
+  lessons_learned: ""
+  signal_accuracy:
+    accurate_signals: []
+    noise_signals: []
+  industry_trend_accuracy: ""
+  smart_money_accuracy: ""

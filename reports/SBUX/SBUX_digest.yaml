@@ -1,0 +1,440 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Starbucks Corporation
+# 压缩比: 357K → ~12K (30x)
+# 六层 + 三个重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向x强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: SBUX
+  company: "Starbucks Corporation"
+  report_date: "2026-03-05"
+  stock_price: "$96.76"
+  market_cap: "$110.7B"
+  report_version: "v3.0"
+  report_path: "reports/SBUX/SBUX_v3.0_Complete_2026-03-05.md"
+  quality_score: "报告未覆盖(无记分卡评分)"
+  cqi: "报告未覆盖"
+  a_score: "6.78/10"
+  framework_version: "v18.0"
+  industry: "消费品"
+  archetype: "品牌溢价+会员平台(三重身份: 门店零售商+会员金融平台+品牌授权商)"
+  chars: 356948
+  dm_count: 525
+  dm_density: "1.47/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "全球第一咖啡品牌以78x P/E交易, 但RT-1/RT-7锁定OPM在13-14%使得$2B成本削减净贡献仅+45bps — 估值领先基本面改善约35%"
+  rating: "审慎关注(偏中性)"
+  fair_value: "$71.5(概率加权) / $87(目标价)"
+  expected_return: "-8%~-15% (风险调整后)"
+
+  key_arguments:
+    - claim: "78x TTM P/E是误导性指标, 正常化后仍为46x(QSR最贵)"
+      direction: bearish
+      magnitude: 5
+      mechanism: "FY2025异常税率41.1%压低EPS至$1.63→正常化EPS $2.10→46x P/E vs MCD 28x/YUM 26x/DPZ 30x→隐含OPM 15%+收入CAGR 5%联合成立"
+      kill_switch: "Q2+Q3 FY2026 comp均>+5%→叙事升级为'确认转型'→PE扩张合理化"
+
+    - claim: "RT-1/RT-7锁定机制: OPM终态被'钉住'在13-14%的狭窄区间"
+      direction: bearish
+      magnitude: 5
+      mechanism: "$2B成本削减×60%实现率=+275bps(RT-1向上) 但4分钟出杯成本$1.0B=-230bps(RT-7向下)→净效果仅+45bps→OPM从9.6%恢复至13-14%需全靠收入杠杆"
+      kill_switch: "AI点单+机器人制作释放50-80bps→突破14.5%上限"
+
+    - claim: "Niccol迁移率仅52.5% — CMG playbook被SBUX组织复杂度打五折"
+      direction: conditional
+      magnitude: 4
+      mechanism: "CMG 3,700店/零工会/零债务 vs SBUX 38,000店/550+工会店/-$8.4B权益→菜单简化(70%)和数字化(80%)可迁移, 人才密度(30%)和资本配置(40%)受硬约束"
+      kill_switch: "Workers United达成全面合同→管理自主权恢复→迁移率可提升至65-70%"
+
+    - claim: "中国市场份额崩塌不可逆, JV化是唯一体面退出"
+      direction: bearish
+      magnitude: 4
+      mechanism: "中国市占从42%(2017)→14%(2025)→瑞幸29,000+店vs SBUX 8,011店→3.6:1门店比+$5.50 vs $3.50定价差→品牌力不等于市场份额"
+      kill_switch: "JV首年份额企稳或回升(Boyu Capital执行超预期)"
+
+    - claim: "品牌力8/10是SBUX唯一突出的护城河维度, 但定价权正在侵蚀"
+      direction: conditional
+      magnitude: 3
+      mechanism: "Interbrand #6+95%认知度+$7.2B Nestle授权→品牌影子价值=$46.5B。但弹性系数从FY2022的-0.6恶化至FY2024的-2.0(每提价1%流失2%客流)→品牌强≠定价权强"
+      kill_switch: "弹性系数回到-1.0以内(Niccol产品创新恢复感知价值)"
+
+  moat:
+    composite_score: 6.78  # A-Score调整后5.86/10, 含复杂度调整
+    half_life: "品牌>15年 | 门店密度5-10年 | Rewards粘性<5年 | 定价权正在缩短"
+    dimensions:
+      - type: brand
+        strength: 4  # 8/10映射到1-5
+        evidence: "Interbrand #6, 95%+认知度, $7.2B Nestle CPG授权, 品牌支撑47% SOTP"
+        vulnerability: "Gen Z偏好迁移(BROS渗透率72% vs SBUX 57%), 中国品牌价值缩水(42%→14%市占)"
+      - type: switching_cost
+        strength: 2  # 4/10
+        evidence: "35.5M Rewards会员+$1.84B预存卡浮存金创造轻度锁定"
+        vulnerability: "咖啡切换成本结构性偏低, BROS Dutch Rewards证明忠诚度计划可复制"
+      - type: data
+        strength: 3  # 6/10
+        evidence: "35.5M会员数据+Deep Brew AI推荐, QSR行业数字化领先"
+        vulnerability: "Deep Brew尚未变现, 推荐算法锦上添花而非不可或缺"
+      - type: scale
+        strength: 2  # 5/10 规模经济
+        evidence: "38,000+门店全球最大咖啡连锁, $500M+年度营销分摊"
+        vulnerability: "门店过密(627关店)→去规模化趋势, 劳动力30%成本无规模优势"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含OPM恢复至15%+收入CAGR 5%联合成立; 隐含Path C(半转型)成功概率~60%——我们估计~40%"
+    methods_used: ["Reverse DCF", "Forward DCF(四情景)", "SOTP(三身份)", "可比公司", "BME信念互斥", "P&L Build-out"]
+    dispersion: "高 — DCF $92 vs SOTP $51 vs 可比$83"
+    consensus_vs_ours: "市场定价Path C 60%成功概率+OPM 15%→我们认为40%+OPM 13-14%(RT-1/RT-7锁定)"
+    entry_zone: "$75-80 (20-25%回调)"
+    catalyst: "Q2+Q3 FY2026 comp miss→PE压缩至30-35x / 分红削减恐慌→$75-80入场窗口"
+
+  # v1.2新增: 买卖决策框架
+  action_framework:
+    verdict: "等待买入 — 品牌资产真实但估值领先基本面35%, 等待PE压缩或转型确认"
+    buy_triggers:
+      - trigger: "PE压缩至30-35x(正常化EPS基准): comp miss或分红削减恐慌"
+        price_zone: "$75-80"
+        reasoning: "30-35x PE对应QSR合理区间+Niccol溢价→安全边际20%+"
+      - trigger: "转型确认: Q2+Q3 FY2026 comp均>+3%且OPM>11%"
+        price_zone: "当前价位附近(如转型确认则46x合理化)"
+        reasoning: "3Q连续正增长→后验概率跳升至70%+→支持中性关注评级升级"
+    hold_conditions:
+      - "OPM持续恢复趋势(每季度环比改善)"
+      - "FCF覆盖率>100%(分红可持续)"
+      - "Rewards活跃率维持>65%"
+      - "中国JV未出现品牌损害事件"
+    sell_triggers:
+      - signal: "FY2027E EPS<$2.80 (低于共识5%+) → 分红覆盖率<0.9x持续3年"
+        severity: "action"
+        action: "减仓50%, 分红削减概率升至>50%"
+      - signal: "comp连续2Q为负(转型失败信号)"
+        severity: "action"
+        action: "全部卖出, Niccol失败的证据确认"
+      - signal: "Workers United全面罢工 + 最低工资$22"
+        severity: "emergency"
+        action: "全部卖出, OPM将被压缩至<11%永久性"
+      - signal: "PE>50x且OPM<11%(纯叙事定价无基本面支撑)"
+        severity: "warning"
+        action: "减仓25%, 重新评估估值假设"
+    position_sizing: "当前不建议建仓(期望回报为负)。$75-80区间可考虑半仓"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "RT-1/RT-7锁定机制: 为什么OPM恢复被钉住"
+    chain: >
+      Niccol承诺$2B成本削减→但同时承诺4分钟出杯
+      → 4分钟需要每店+2.5人(20hr/wk)→年成本$1.0B(实际工资$19/hr)
+      → $1.0B = $2B成本削减×60%实现率的83%
+      → 净OPM贡献从+275bps降至+45bps
+      → 剩余OPM恢复(9.6%→13-14%)必须全靠收入杠杆(comp>+2%才能维持)
+      → 两个CEO核心承诺在算术上互相抵消→OPM被锁定在13-14%
+    transferable_to: "任何CEO同时承诺'降成本'和'提体验'的公司(航空、酒店、零售)"
+    reasoning_habit: "当CEO做出两个看似独立的承诺时, 算算它们是否在成本端互相抵消——'成本削减AND服务升级'的联合叙事需要验证净效果"
+
+  - id: "CC-2"
+    name: "三重身份估值错配: 收入来源vs市场定价的断裂"
+    chain: >
+      SBUX收入90%+来自门店零售(身份A, 合理PE 15-20x)
+      → 但市场以46x正常化PE定价→隐含用身份B(数字平台25-30x)或身份C(品牌授权28-35x)的倍数给整体公司定价
+      → 按身份A收入贡献加权→合理倍数仅32x→$14/股差额是'身份溢价错配'
+      → 身份B(Rewards平台)和身份C(CPG授权)贡献收入<10%但享受了30%+的估值溢价
+      → 投资者以为买的是平台/品牌公司, 实际买的是咖啡零售运营商+品牌附加值
+    transferable_to: "所有多身份公司——AMZN(电商vs AWS), GOOG(广告vs Cloud), TSLA(汽车vs FSD)"
+    reasoning_habit: "看到高PE时追问'收入的主体来源配得上这个倍数吗'——如果核心收入的合理PE远低于当前PE, 差额就是叙事溢价"
+
+  - id: "CC-3"
+    name: "CSSPD同店纯度分解: 从标题数字到真实增长"
+    chain: >
+      SBUX报告Q1 FY2026 comp +4%→市场庆祝'转型成功'
+      → CSSPD五维分解: 价格(+0.5) + 交易量(+3.5) + Mix(0) - 关店蚕食(-2.4) - 基数效应(-0.6) - 方法论偏差(-0.5)
+      → 调整后纯comp: +0.4%至+1.6%(vs 标题+4%)
+      → 与CMG的-1.7%比较: 标题差距+5.7pp→实际差距仅+2.1pp
+      → 市场用标题数字判断转型进度→系统性高估复苏动能
+    transferable_to: "所有报告同店增长的QSR/零售(MCD, CMG, NKE, COST)"
+    reasoning_habit: "永远不要接受管理层报告的comp面值——追问'这个数字的纯度是多少', 特别关注关店蚕食和方法论偏差"
+
+  - id: "CC-4"
+    name: "BME信念互斥: 高PE转型公司的路径概率分配"
+    chain: >
+      78x PE(或46x正常化)隐含什么?→分解为3条逻辑路径
+      → Path A(EPS最大化, 自营+OPM 15%, $91) vs Path B(倍数最大化, 特许化+OPM 20%, $98) vs Path C(半转型, OPM 13-14%, $80-90)
+      → 关键发现: Path A和Path B所需组织能力几乎相反(强运营执行 vs 强战略转型)→一个CEO不太可能同时追求
+      → 市场定价Path C成功概率~60%→我们估计~40%→差距=估值溢价来源
+    transferable_to: "任何转型期高PE公司(INTC, BA, DIS)的估值拆解"
+    reasoning_habit: "高PE+转型叙事→不要问'值多少'→问'市场在赌哪条路径, 这条路径需要什么条件'"
+
+  - id: "CC-5"
+    name: "Rewards去货币化陷阱: 忠诚度项目的S曲线后段"
+    chain: >
+      SBUX Rewards渗透率57%→向65%推进时边际成本急升
+      → 每1pp渗透率提升需+$15M/年Star成本, 仅带来$60-80M增量收入
+      → 边际Star成本/收入比从~50%恶化至~70%
+      → 进一步推至70%+需要接近'买一送一'频率→彻底侵蚀品牌溢价
+      → 增长引擎在高渗透率后变成margin压缩器
+    transferable_to: "所有高渗透率忠诚度项目(Costco会员, 航空FFP, 酒店loyalty)"
+    reasoning_habit: "忠诚度项目在增长早期是增长引擎, 在高渗透率后变成成本中心——追问'当前处于S曲线的哪一段'"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "78x P/E = 泡沫"
+      final: "正常化后46x, 仍贵但没有78x暗示的那么荒谬"
+      pivot: "FY2025异常税率41.1%(vs 正常23%)压低EPS→78x是税率扭曲后的幻觉"
+
+    - initial: "Q1 FY2026 comp +4% = 转型确认"
+      final: "CSSPD纯度分解后实际有机comp仅+0.4%至+1.6%"
+      pivot: "关店蚕食(-2.4pp) + 基数效应(-0.6pp) + 方法论偏差(-0.5pp)吞噬了标题增长的大部分"
+
+    - initial: "v2.0 WACC 6.3%是合理的保守估计"
+      final: "v2.0 RT-5使用账面权重(73% debt / 27% equity)搞反了→CAPM精确计算应为7.5-8.0%"
+      pivot: "发现v2.0红队用负权益的账面D/E比而非市值D/E比→权重错误→WACC被低估190bps"
+
+  surprises:
+    - finding: "SBUX展现正价格弹性(+0.33)——提价伴随需求增长, Veblen商品特征"
+      implication: "品牌在特定消费场景下具有'越贵越受欢迎'的反直觉属性→定价策略应更大胆(但FY2024弹性已恶化至-2.0)"
+
+    - finding: "4分钟悖论: Niccol两大核心承诺在算术上互相抵消"
+      implication: "$2B成本削减的净OPM贡献仅+45bps→'降成本+提体验'的联合叙事是算术上的矛盾→没有卖方模型包含这一项"
+
+    - finding: "CSSPD v3.0将同店纯度从v2.0的9/10下修至5/10"
+      implication: "增加关店通胀/蚕食调整/基数效应三个维度后, comp的真实纯度远低于表面→v2.0系统性高估了增长质量"
+
+    - finding: "负$8.4B权益 + 分红149% payout ratio = 延时引爆的炸弹"
+      implication: "Johnson时代$19B+回购将健康公司变成负权益实体, FY2025已借债付分红→FY2027E EPS不达$2.95+则被迫削减分红"
+
+  blind_spots:
+    - area: "Niccol转型的真实执行力(仅1Q数据)"
+      why_matters: "CMG复刻率52.5%的估计基于结构分析而非执行数据→3Q连续确认将是关键"
+      monitor: "Q2 FY2026(2026-05-05) + Q3 FY2026(2026-08): comp和OPM趋势"
+
+    - area: "新三层Rewards体系效果(2026-03-10刚上线)"
+      why_matters: "CQ5(Rewards=天花板?)置信度停滞在55%正是因为无数据→新体系成败将决定增长天花板高度"
+      monitor: "Q2+Q3 FY2026的活跃率/频次/ARPU变化"
+
+    - area: "Workers United谈判结果"
+      why_matters: "每$1/hr全面加薪=$750M/yr=~200bps OPM→工会合同是OPM恢复路径的最大不确定性"
+      monitor: "集体谈判进展, 罢工风险升级信号"
+
+    - area: "中国JV执行(Boyu Capital运营能力)"
+      why_matters: "JV化后品牌控制力从100%降至40%→品牌损害风险无法直接干预"
+      monitor: "JV close后首次报告(预计Q3 FY2026) + 中国市场份额趋势"
+
+  # v1.2新增: 卖出时机教训
+  sell_lessons:
+    - scenario: "46x正常化PE+OPM仍在9.6%时不卖→如果comp miss则PE+EPS双杀"
+      lesson: "转型故事中'估值领先基本面'是最危险的持仓状态——转型确认前的高PE=纯叙事溢价"
+      transferable: "所有转型期公司(CEO新上任+高PE+基本面未改善)"
+    - scenario: "分红payout ratio>100%但管理层声称'暂时性'→延迟卖出→最终被迫削减"
+      lesson: "分红>NI或>FCF连续2年=结构性不可持续, 不要被'暂时性'叙事欺骗"
+      transferable: "所有高杠杆+高分红公司(AT&T 2022削减分红模式)"
+    - scenario: "品牌力8/10但定价权弹性从-0.6恶化至-2.0→品牌认知≠定价权"
+      lesson: "品牌力和定价权是两个不同维度。品牌力反映认知度, 定价权反映经济转化效率——两者可以背离"
+      transferable: "消费品行业(特别是面临低价替代品侵蚀的品牌)"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "CSSPD纯度分解后的有机comp(而非标题comp)"
+      why_alpha: "市场用标题comp判断转型进度→CSSPD剥离蚕食/基数/方法论后的纯comp才是真实信号, 可领先市场判断1-2个季度"
+      current_reading: "标题+4% vs 纯有机+0.4%至+1.6%(差距2.4-3.6pp)"
+    - signal: "OPM季度趋势(vs 13-14%锁定区间)"
+      why_alpha: "RT-1/RT-7锁定在13-14%→如果OPM连续突破14%或跌破12%=锁定假设被打破→重新评估整个thesis"
+      current_reading: "FY2025 OPM 9.63%, 目标FY2028 13-14%"
+    - signal: "分红FCF覆盖率"
+      why_alpha: "149% NI payout + 88% FCF覆盖率=延时炸弹→一旦<80%连续2Q→削减概率跳升至>50%→触发收益型投资者被迫卖出"
+      current_reading: "FY2025 FCF覆盖率88%(借债付分红)"
+
+  confirmation_signals:
+    - signal: "季度comp(标题数字)"
+      bullish_threshold: ">+3%连续3Q(转型确认→评级升级至中性关注)"
+      bearish_threshold: "连续2Q为负(转型失败→评级维持或下调)"
+    - signal: "Rewards活跃会员数YoY增速"
+      bullish_threshold: ">5% YoY(增长引擎确认)"
+      bearish_threshold: "<0%(天花板确认→CQ5闭合为'天花板')"
+    - signal: "工会门店数量增速"
+      bullish_threshold: "增速放缓至<5%/年(管理层控制力回复)"
+      bearish_threshold: "加速至>15%/年(全面工会化风险→OPM永久压缩)"
+
+  noise_signals:
+    - signal: "日度/周度客流数据(第三方)"
+      why_noise: "季节性/天气/假期噪音极大, 单周数据无信号价值, 看季度趋势"
+    - signal: "Sell-side目标价调整"
+      why_noise: "多数卖方用78x TTM PE而非正常化46x→目标价系统性偏离→自己做正常化PE计算更准"
+    - signal: "CEO媒体采访/品牌活动"
+      why_noise: "Niccol叙事能力9/10→媒体采访传递的'信心'不等于执行力数据→只看财报数字"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: CMG
+      similarity: "同为QSR, Niccol前东家, 数字化领先, 品牌导向"
+      key_difference: "CMG零债务/3,700店/无工会 vs SBUX负权益/38,000店/550+工会店→CMG是SBUX'如果没有历史包袱'的样子"
+
+    - ticker: MCD
+      similarity: "全球QSR双巨头, 品牌力顶级, 门店密度最高"
+      key_difference: "MCD 93%特许化(资产轻)→OPM 46% vs SBUX 45%自营(资产重)→OPM 9.6%→MCD是SBUX身份C(品牌授权)的终局对标"
+
+    - ticker: NKE
+      similarity: "全球消费品牌, 品牌溢价模型, 中国市场挑战, 新CEO转型"
+      key_difference: "NKE DTC转型失败 vs SBUX Rewards平台相对成功→但两者都面临Gen Z偏好迁移"
+
+  comparative:
+    - dimension: "品牌力"
+      position: "MCD (9) > SBUX (8) > CMG (7) > DPZ (5)"
+      reasoning: "MCD全球化最深+本地化最强; SBUX品牌认知度极高但定价权正在侵蚀"
+
+    - dimension: "运营效率(OPM)"
+      position: "MCD (46%) >> CMG (16.8%) > SBUX终态 (13-14%) > SBUX当前 (9.6%)"
+      reasoning: "特许化模式(MCD)的margin是自营模式(SBUX)的3-5倍→商业模式差异是根本原因"
+
+    - dimension: "估值吸引力"
+      position: "DPZ (30x) > MCD (28x) > YUM (26x) > SBUX (46x正常化)"
+      reasoning: "SBUX PE最高但OPM和增速均不是QSR最强→PEG暴露真实估值水平"
+
+    - dimension: "资本结构健康度"
+      position: "CMG (零债务) >> MCD (可控杠杆) >> SBUX (-$8.4B权益)"
+      reasoning: "SBUX是QSR行业中唯一负权益公司, Johnson时代回购摧毁了资本结构"
+
+  industry_position:
+    quadrant: "最高品牌力 × 最差资本结构 × 最高估值"
+    archetype: "品牌溢价型 — 品牌极强但运营效率和财务纪律严重不足"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含OPM 15%+CAGR 5%→vs 我们的13-14%+3-4%=核心分歧"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "7个RT红队→3向上4向下→净效应+1.5pp→双向校准确认'审慎关注'方向正确"
+
+    - pattern_id: "competitive_benchmarking.chinese_competitor_deep_dive"
+      application: "瑞幸29,000+店vs SBUX 8,011→3.6:1门店比+3x价格差→中国市场份额崩塌不可逆"
+
+  novel_patterns:
+    - name: "BME信念互斥量化(CI-01)"
+      description: "将高PE转型公司的隐含假设分解为2-3条逻辑上互斥的路径, 量化每条路径的隐含OPM/EPS/市值, 计算市场的隐含概率分配"
+      transferable_to: ["INTC(IDM→Foundry)", "BA(Max危机恢复)", "DIS(流媒体vs乐园vs线性TV)"]
+
+    - name: "CSSPD同店纯度分解(CI-02)"
+      description: "将SSS分解为交易量+客单价+Mix+关店蚕食+基数效应+方法论偏差, 赋予纯度评分0-10, 区分'真实增长'和'统计幻觉'"
+      transferable_to: ["MCD", "CMG", "NKE", "COST", "所有报告同店增长的零售/餐饮"]
+
+    - name: "4分钟悖论(CI-03): 服务承诺隐含成本量化"
+      description: "当CEO做出具体服务承诺时, 精确量化承诺的隐含成本=受影响站点数×增量人力×工时×时薪×52周, 揭示'体验升级'和'成本削减'的算术矛盾"
+      transferable_to: ["航空(行李交付)", "酒店(快速入住)", "电商(次日达)"]
+
+    - name: "身份溢价错配(CI-04)"
+      description: "多身份公司中, 市场以高价值身份的倍数给整体定价, 但收入主体来自低价值身份→差额是'身份溢价错配'"
+      transferable_to: ["AMZN(电商vs AWS)", "GOOG(广告vs Cloud)", "TSLA(汽车vs FSD)"]
+
+    - name: "Rewards去货币化陷阱(CI-05)"
+      description: "忠诚度项目在S曲线后段, 边际会员获取成本上升快于边际收入贡献, 从增长引擎变为margin压缩器"
+      transferable_to: ["Costco会员费", "航空FFP", "酒店loyalty项目"]
+
+    - name: "OPM缝合假说(CI-06): 红队双向修正的净效果"
+      description: "当两个红队修正方向相反且幅度接近时, 缝合为一个锁定区间→将注意力从低价值争论(OPM能到多少)转向高价值争论(WACC和概率分配)"
+      transferable_to: ["制造业(自动化投资vs人工节省)", "科技(AI基建投资vs生产力提升)"]
+
+  # v1.2新增: 框架升级贡献
+  framework_contributions:
+    moat_insights:
+      - insight: "品牌力8/10但A-Score裸分仅4.97→单维度突出不能弥补11维度中7维度≤5的整体脆弱"
+        implication: "消费品品牌公司的护城河评估不能只看品牌力——资本配置/财务堡垒/切换成本的低分会系统性侵蚀品牌优势"
+      - insight: "咖啡品类的切换成本结构性偏低(4/10)→忠诚度计划是table stakes而非护城河"
+        implication: "评估QSR/消费品护城河时, Rewards渗透率不应被视为护城河——它是可复制的竞争工具(BROS 72%渗透已证明)"
+      - insight: "正价格弹性(+0.33, Veblen效应)可以与定价权恶化(-2.0弹性系数)共存"
+        implication: "区分'品牌感知价值'(Veblen)和'实际定价空间'(弹性系数)——前者是品牌资产, 后者是竞争结果"
+
+    valuation_insights:
+      - insight: "三重身份SOTP暴露'身份溢价错配'——收入90%+来自身份A(15-20x PE), 但市场以46x定价"
+        implication: "多身份公司应计算'收入加权合理PE'作为估值锚, 与市场PE的差额=叙事溢价的精确度量"
+      - insight: "WACC在负权益公司中极度敏感——190bps差距决定了'审慎关注'vs'深度审慎'评级"
+        implication: "负权益/高杠杆公司的WACC应使用市值权重(非账面权重), 并做情景化处理(多个WACC)而非单一估计"
+      - insight: "RT-1/RT-7缝合后OPM被锁定→WACC和概率分配才是真正的价值驱动因素"
+        implication: "当关键运营变量被'锁定'时, 分析精力应从争论运营细节转向争论折现率和情景概率"
+
+    screening_insights:
+      - insight: "PE(TTM)在异常年份极度误导——SBUX 78x vs 正常化46x差距32x纯属税率扭曲"
+        implication: "选股筛选应使用正常化PE(标准化税率+排除一次性项目), 而非TTM PE"
+      - insight: "分红payout ratio>100%持续2年+负权益=高概率分红削减信号"
+        implication: "选股时增加'分红可持续性'过滤器: NI payout>100%连续2年+FCF覆盖<90%→标记分红风险"
+      - insight: "CSSPD纯度<5/10的'增长'可能是统计幻觉"
+        implication: "选股时对同店增长为正的零售/QSR, 检查是否有大规模关店(>5%门店)——如果有, 标题comp可能高估2-4pp"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "CEO两个承诺之间做算术: 净效果而非各自效果"
+      trigger: "CEO同时承诺降成本和提体验/提速度/提质量"
+      origin: "4分钟悖论: $2B成本削减和4分钟出杯在成本端互相抵消→净贡献仅+45bps"
+      generalization: "任何CEO做出的两个看似独立的战略承诺都应该被量化净效果——特别当它们共享同一个成本池(人工/资本/时间)时"
+
+    - habit: "对同店增长做纯度分解, 不接受管理层面值"
+      trigger: "公司报告正comp且近期有大规模关店(>5%门店)"
+      origin: "SBUX Q1 FY2026标题+4%→CSSPD后纯有机仅+0.4%至+1.6%→关店蚕食占2.4pp"
+      generalization: "任何公司在大规模关店后报告comp改善→先扣除蚕食效应再判断。公式: 关店蚕食≈关店数×(该店收入÷邻店数÷原comp基数)"
+
+    - habit: "高PE转型公司先做BME路径分解, 再判断合理性"
+      trigger: "PE>30x且公司处于CEO变更/战略转型/利润腰斩的任何一种"
+      origin: "SBUX 46x PE可被分解为Path A/B/C三条逻辑上所需能力不同的路径→市场的隐含赌注变得可检验"
+      generalization: "高PE不是一个数字而是对未来路径的概率分配——拆解路径→验证每条路径的条件链→计算市场隐含概率→与自己的估计比较"
+
+    - habit: "负权益公司WACC用市值权重而非账面权重"
+      trigger: "公司股东权益为负"
+      origin: "v2.0 RT-5用账面D/E(73%/27%)→WACC 5.6%→v3.0用市值D/E(19%/81%)→WACC 7.5%→190bps差距决定评级"
+      generalization: "负权益=账面D/E无意义→必须用市值权重。这个错误在所有高杠杆/负权益公司(如航空、部分零售)中都可能出现"
+
+  quality_feedback:
+    strengths:
+      - "6个Crown Insights(CI-01至CI-06)平均评分4.25/5——方法论原创性极高, CI-03(4分钟悖论)和CI-02(CSSPD)已写入excellence_catalog"
+      - "DM密度1.47/千字, 525个锚点——数据锚定扎实"
+      - "RT-1/RT-7锁定机制是估值分析的精华——将模糊的OPM争论收敛为可检验的窄区间"
+      - "CQ置信度演化矩阵(P0.5→P5)展示了判断形成的完整过程——CQ2的非单调性(P4 63%回落至P5 60%)是诚实分析的标杆"
+      - "WACC方法论修正(v2.0权重错误发现)——从技术错误中挽回了$17-24/股的估值偏差"
+    weaknesses:
+      - "报告~540K字符(标注)但实际~357K——字符数与标注不一致需核实"
+      - "SOTP $51 vs DCF $92的巨大离散度(45%)未能完全调和——需要更好的方法论桥梁"
+      - "CQ5(Rewards)置信度从P2到P5几乎不变(55%)——说明分析未能实质推进该问题"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "CEO叙事溢价有半衰期(KLAC/IHG报告)"
+        evidence: "Niccol光环$23B但半衰期~18个月——仅Q1正向数据不足以延长半衰期"
+        confidence_after: "高(三份报告独立确认)"
+
+      - hypothesis: "Reverse DCF必须P1前置(铁律O, CRM教训)"
+        evidence: "Ch17 Reverse DCF有效暴露了市场隐含Path C 60%概率→约束了后续分析方向"
+        confidence_after: "高(执行确认)"
+
+    extended:
+      - hypothesis: "身份溢价错配(新模式)"
+        extension: "从SBUX的'门店vs平台vs授权'三身份推广→任何收入来源与估值叙事不匹配的多身份公司"
+
+      - hypothesis: "回购@高PE毁灭价值(MCO/CME CI)"
+        extension: "SBUX验证了更极端版本: 回购不仅毁灭价值, 还摧毁了整个资本结构(-$8.4B权益)"
+
+    refuted:
+      - hypothesis: "高品牌力=强定价权(行业常识)"
+        evidence: "SBUX品牌力8/10但弹性系数恶化至-2.0→品牌认知度和定价权可以背离"
+        lesson: "品牌力是必要但不充分条件——定价权还取决于竞争格局(瑞幸/BROS低价替代)和消费环境"
+
+  limitations:
+    - "Niccol仅上任6个月, 仅1Q正向数据→CMG复刻率52.5%估计的置信度有限"
+    - "新三层Rewards体系(2026-03-10上线)效果完全未知→CQ5无法闭合"
+    - "中国JV条款和Boyu Capital执行能力→JV估值($10-13B)的不确定性仍高"
+    - "WACC 5.6%(前瞻性)vs 7.5%(CAPM精确)之间的巨大差距未完全裁决→估值结论对WACC假设极度敏感"
+    - "工会谈判结果完全不可预测→OPM恢复路径的最大不确定性→定性处理"

@@ -1,0 +1,44 @@
+# Phase 1 Score Card — INTU
+phase: 1
+date: 2026-03-24
+chars: 59219 / 60000 (98.7%) ✅
+dm_density: 2.33/千字 ✅ (门控≥0.8)
+dm_count: 138
+causal_density: 27.35/万字 ✅ (门控≥5.0, 标杆KLAC 9.28)
+mermaid: 0 ⚠️ (Phase 1可接受, Phase 5需≥25)
+agent_balance: A=20.4K / B=18.0K / C=20.8K (max/min=1.16x ✅ ≤2.0x)
+
+cq_evolution:
+  CQ1: 60% (+5%) — CK收入已翻倍至$2.3B, Q1+27%/Q2+23%恢复趋势确认, 收购回本
+  CQ2: 50% (±0%) — 飞轮净强度判断为净正(+2~+3), 但AI颠覆深度未验证
+  CQ3: 45% (±0%) — IES 88%留存+$20K ARPC积极, 但客户规模数据缺
+  CQ4: 65% (+5%) — 4-5% FCF CAGR vs 实际18%差距过大, OPM结构性扩张确认
+  CQ5: 50% (±0%) — Direct File关闭短期利好, 政治周期风险持续
+
+d_scores_preview:
+  D1: 7/10 — DM密度2.33优秀, 但缺乏10-K原文直引
+  D3: 8/10 — 因果密度27.35远超标杆, 证据链完整
+  D5: 5/10 — 仅Reverse DCF初步, SOTP/概率加权待Phase 2
+  D7: 7/10 — 4个CI登记(数据价值/AI颠覆定价/递延收入信号/IES=AWS)
+  D8: 3/10 — 零Mermaid, Phase 2-3需大量补充
+
+trajectory:
+  cumulative_chars: 59.2K / 300K (19.7%) — Phase 1目标15%→超标✅
+  cumulative_dm: 138 / 450 (30.7%) — 领先轨迹✅
+  on_track: YES
+
+key_findings:
+  - "INTU身份危机是估值核心: 税务软件(18x)vs金融平台(30x+)"
+  - "Reverse DCF: 市场隐含FCF CAGR 4-5% vs 实际18% = 巨大gap"
+  - "ADBE约束: INTU不能写'严重低估'(ADBE更优质但PE更低)"
+  - "护城河综合7.3/10: C3锁定8/C4数据7/C2网络6/C1制度8"
+  - "飞轮净正(+2~+3): 与CRM净负不同, 因为INTU锚定数据访问权非seat"
+  - "定价权Stage 2.9: IES 3.5→Micro 1.5, 存在剪刀差"
+  - "NRR隐含109-112%: 健康但不惊艳"
+  - "OPM +600bps实际是回到Mailchimp整合前水平, 非真正新扩张"
+
+next_phase_priorities:
+  - "Phase 2: CK独立估值+SOTP+Reverse DCF交叉"
+  - "Phase 2: IES承重墙联合概率计算"
+  - "Phase 2: Mailchimp减值风险量化"
+  - "补充: Mermaid图表(业务架构/飞轮/估值瀑布)"

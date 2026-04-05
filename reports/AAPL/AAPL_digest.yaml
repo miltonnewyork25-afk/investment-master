@@ -1,0 +1,432 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Apple Inc.
+# 压缩比: 303K → ~12K (25x)
+# 六层 + 三个新增重点区域:
+#   Layer 1 = PolarQuant (主信号: 方向x强度)
+#     └─ 新增: action_framework (买/卖/持有决策框架)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#     └─ 新增: sell_lessons (卖出时机教训)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式 + 新模式)
+#     └─ 新增: framework_contributions (护城河/估值/选股框架升级)
+#   Layer 5 = Meta-learning (AI自训练素材)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: AAPL
+  company: "Apple Inc."
+  report_date: "2026-02-19"
+  stock_price: "$264.35"
+  market_cap: "$3.82T"
+  report_version: "v2.0"
+  report_path: "reports/AAPL/AAPL_Deep_Analysis_Complete_2026-02-19.md"
+  quality_score: "报告未覆盖(无记分卡评分)"
+  cqi: "报告未覆盖"
+  framework_version: "v17.0"
+  industry: "生态科技"
+  archetype: "平台飞轮(硬件入口+服务变现+芯片自研)"
+  chars: 303009
+  dm_count: 261
+  dm_density: "0.86/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "Apple仍是全球最优秀的消费科技公司之一，但$3.82T市值已将乐观假设提前计入——33.46x PE隐含的永续FCF CAGR 6.35%是历史实际1.5%的4倍以上"
+  rating: "审慎关注"
+  fair_value: "$217-228 (校准后概率加权)"
+  expected_return: "-14%至-18%"
+
+  key_arguments:
+    - claim: "Google搜索协议是Apple最脆弱的承重墙——$20-26B零成本纯利润占净利润18-23%"
+      direction: bearish
+      magnitude: 5
+      mechanism: "DOJ反垄断裁决+AI搜索范式转变+Google支付意愿变化三重威胁 → 概率加权年化利润损失$8.1B(7.2%净利润) → 同时断裂收入+数据+AI战略三条线"
+      kill_switch: "Google协议在2027年前确认续约且金额不变"
+
+    - claim: "33.46x PE隐含永续FCF CAGR 6.35% vs 历史实际1.5%——需加速4倍才能维持当前估值"
+      direction: bearish
+      magnitude: 5
+      mechanism: "Reverse DCF反推 → 需收入加速+利润率扩张+回购增厚三者同时兑现 → AI期权溢价$430-580B建立在完整链条上(New Siri成功→AI差异化→换机+新订阅→EPS加速)，任一环断裂蒸发$30-40/股"
+      kill_switch: "FY2027E EPS>$10.5(vs共识$9.29) + Services维持12%+增速"
+
+    - claim: "iPhone AI换机周期已启动但持续性未验证——Q1+23%创纪录但5G超级周期先例发出警告"
+      direction: conditional
+      magnitude: 3
+      mechanism: "315M+台4年以上旧iPhone提供理论换机跑道 → 但5G先例(iPhone 12 +39%后两年连续负增长) + 仅38%消费者有意识使用AI功能 → Q1噪声60-70%"
+      kill_switch: "Q2 FY2026 iPhone增速<8% = 噪声确认; >10% = 信号成立"
+
+    - claim: "中国三重风险是最大非线性放大器——地缘+竞争+监管阈值式跳变"
+      direction: bearish
+      magnitude: 4
+      mechanism: "华为重夺中国#1(16.4% vs Apple 16.2%) + HarmonyOS超越iOS成中国第二OS → 概率加权中国收入$58.8B(vs FY2025 $64.4B, -8.7%) → 阈值式非线性: 一旦地缘触发可能数周内跳至悲观情景"
+      kill_switch: "中国连续3季度正增长 + 华为份额见顶回落"
+
+    - claim: "Services增长面临结构性制约——25-30%收入属脆弱质量(Google协议+广告)"
+      direction: bearish
+      magnitude: 4
+      mechanism: "EU DMA已将欧盟App Store增速压至~6% + 全球佣金率从30%降至15-20%趋势不可逆 → Services增速可能从12%+降至7-10% → 动摇Apple被按平台公司而非消费电子公司估值的逻辑"
+      kill_switch: "Services增速连续4季>12% + AI订阅渗透率>5%"
+
+  moat:
+    composite_score: 8.4  # 五巨头对比中AAPL领先(8.4 vs MSFT/GOOG/AMZN 7.4, META 6.4)
+    half_life: "品牌/生态锁定>10年 | 芯片/供应链~5年 | 定价权/隐私~3年"
+    dimensions:
+      - type: switching_cost
+        strength: 5
+        evidence: "生态锁定5.0/5 — 深度用户转换成本$2,000-3,500(硬件折价+数据迁移+App重购+社交压力+生态断裂); iMessage Blue Bubble效应锁定85%美国青少年"
+        vulnerability: "DMA/DOJ反垄断可能强制开放生态 — EU第三方商店渗透>15%时开始侵蚀"
+      - type: brand
+        strength: 5
+        evidence: "品牌4.5/5 — 全球#1品牌价值; iPhone ASP~$900(溢价显著); Pro系列美国占比38%"
+        vulnerability: "中国华为民族情绪侵蚀 — 中国份额连续3季<14%为证伪信号"
+      - type: scale
+        strength: 4
+        evidence: "24亿活跃设备基数 + 850M+周活开发者生态 + FCF $98.8B/年 + EBITDA margin领先"
+        vulnerability: "智能手机市场CAGR仅+2%，设备基数增长放缓"
+      - type: pricing_power
+        strength: 4
+        evidence: "iPhone ASP接近$1,000(US-WARP $971); Services毛利率~75%"
+        vulnerability: "ASP增速放缓接近天花板; iPhone ASP连续2年下降为证伪信号"
+      - type: ip
+        strength: 4
+        evidence: "A18/M系列芯片自研性能领先; Neural Engine端侧AI推理效率领先; R&D $31.4B/年"
+        vulnerability: "隐私标准限制AI训练数据 → New Siri落后竞品18月+"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含永续FCF CAGR 6.35%(单阶段) / 5年FCF CAGR 27%(两阶段) vs 历史实际1.5% — 差距4-18倍"
+    methods_used: ["Reverse DCF(单阶段+两阶段)", "分部SOTP", "SOTP+溢价", "条件估值(4场景概率加权)", "空头钢人", "FMP DCF"]
+    dispersion: "3.18x端点级($93-$296) / 校准后$217-228"
+    consensus_vs_ours: "市场看33x PE的AI换机故事 | 我们看4x FCF CAGR缺口+Google承重墙脆弱+Services增速结构性放缓"
+    entry_zone: "报告未给出明确入场区间 — 6种方法无一支持$264.35，最接近SOTP+溢价$224(-15%)"
+    catalyst: "犯错窗口: Q2财报(2026-05) + WWDC(2026-06) + DOJ救济方案(2026H2) — 任一事件催化PE压缩"
+
+  action_framework:
+    verdict: "等待 — 6种估值方法无一支持当前股价，等待PE压缩至28-30x(后Services重估均值)"
+    buy_triggers:
+      - trigger: "PE回调至28-30x(后Services重估合理区间)"
+        price_zone: "$220-240 (基于FY2025 EPS $7.91 x 28-30x)"
+        reasoning: "PE溢价从+40.7%缩小至+11-19%(参照系修正后合理区间) + 安全边际出现"
+      - trigger: "Google协议确认续约+中国连续正增长+AI订阅渗透>5%"
+        price_zone: "$240-260"
+        reasoning: "三大悲观假设同时解除 → CQ加权置信度可能从39%升至55%+ → 评级上调至中性关注"
+    hold_conditions:
+      - "Services增速维持>10%"
+      - "iPhone换机周期Q2确认(增速>10%)"
+      - "Google协议未被终止"
+      - "中国份额>14%"
+    sell_triggers:
+      - signal: "Google搜索协议被终止且无等价替代"
+        severity: "emergency"
+        action: "全部卖出 — 净利润-18-23%+AI战略基础设施断裂+PE压缩3-5x → 估值下行20-35%"
+      - signal: "Services增速降至<8%持续两季"
+        severity: "action"
+        action: "减仓50% — 平台公司叙事崩塌→PE从33x→28-30x→每-1x PE=-$7.91/股"
+      - signal: "中国iPhone收入连续2季YoY下降>10%"
+        severity: "warning"
+        action: "减仓25% — 重新评估中国收入基线+供应链风险暴露"
+      - signal: "Apple Intelligence采用率<5%(发布12月后)"
+        severity: "action"
+        action: "减仓50% — AI期权溢价$319B大部分蒸发→$30-40/股下行"
+    position_sizing: "当前不建议新建仓位(期望回报-14%至-18%)"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "Google协议是承重墙而非收入线"
+    chain: >
+      Google支付$20-26B/年维持Safari默认搜索 → 几乎零成本纯利润 → 占净利润18-23%
+      → 但不仅是收入: Google协议=Apple AI战略的隐性基础设施(搜索意图数据)
+      → DOJ反垄断+AI搜索范式转变+Google支付意愿变化=三重威胁
+      → 协议终止的二阶效应(轻资本模式动摇+PE叙事削弱)市值影响$300-500B > 直接收入损失影响$200-300B
+      → Google协议同时连接Services收入链+估值脆弱链, 是风险网络的核心节点
+    transferable_to: "所有依赖单一大客户/合同贡献超过净利润15%的公司"
+    reasoning_habit: "对每笔大额收入追问'如果明天消失会发生什么' — 不仅看直接收入损失，更看二阶效应(叙事/估值/战略)是否更大"
+
+  - id: "CC-2"
+    name: "PE溢价分解暴露脆弱层"
+    chain: >
+      当前33.46x PE vs 10年均值23.78x → 溢价40.7%
+      → 溢价分解: 生态锁定4-5x(坚实) + AI期权3-4x(脆弱) + 回购增厚1.5-2x(可计算) + 利率0.5-1x
+      → AI期权溢价$430-580B建立在完整链条上(New Siri成功→AI差异化→换机+订阅→EPS加速)
+      → 链条任一环断裂 → $30-40/股蒸发(12-15%)
+      → 但RT-7发现: 10Y均值含2015-19"硬件误定价期", 后Services重估均值28-30x更合理
+      → 修正后溢价从+40.7%缩小至+11.5-19.5% — 减轻但不消除bearish
+    transferable_to: "所有PE显著高于历史均值的公司 — 溢价分解(哪部分坚实/哪部分脆弱)比总溢价百分比更有信息量"
+    reasoning_habit: "PE溢价不是一个数字——拆解成分后检查每一层的持久性和证伪条件"
+
+  - id: "CC-3"
+    name: "飞轮的脆弱点在增长引擎切换"
+    chain: >
+      iPhone获客(24亿设备) → Services变现($109.2B) → 高利润率(~75%) → FCF($98.8B) → 回购增厚EPS → 高PE → R&D($31.4B) → 芯片领先 → 循环
+      → 飞轮运转良好, 但增长引擎正从硬件销量→ARPU提升
+      → 设备基数增长放缓(智能手机CAGR +2%) → Services增长越来越依赖ARPU而非用户扩张
+      → ARPU提升难度>>用户扩张 → 增速可能从11.8%降至7-9%
+      → 如果AI驱动Apple Intelligence Pro订阅成功 → ARPU跳跃式增长(但完全未验证)
+    transferable_to: "所有平台型公司在用户基数饱和后面临的'从量到价'转型挑战"
+    reasoning_habit: "飞轮分析不止看循环是否闭合 — 更看增长引擎正在从哪一层切换到哪一层，切换是否已验证"
+
+  - id: "CC-4"
+    name: "回购IRR在高PE下的价值毁灭"
+    chain: >
+      FY2025回购$90.7B(占FCF 107% — Apple在借债回购)
+      → 33.46x PE下每$1回购回报率仅1/33.46=2.99%
+      → 2.99% < 10年国债4.48% → 纯财务角度回购毁灭价值
+      → 负股东权益($73.7B)使ROIC 518%/ROE 162%看似惊人, 但原始投入资本计算ROIC仅30-35%
+      → 但压力场景下股价下跌 → 回购IRR提升(3.0%→4.4%) → 形成内生稳定器
+    transferable_to: "所有PE>30x且年回购>FCF 50%的公司"
+    reasoning_habit: "回购IRR = 1/PE — 与无风险利率比较。如果<无风险利率，回购是毁灭价值的，不管管理层怎么包装"
+
+  - id: "CC-5"
+    name: "中国风险的阈值式非线性放大"
+    chain: >
+      中国三重风险: 地缘(台海/关税) + 竞争(华为#1/HarmonyOS) + 监管(数据本地化)
+      → 三维互相强化而非独立叠加
+      → 关键特征: 阈值式而非渐变式 — 一旦地缘触发, 可在数周内从中性跳至悲观
+      → 概率加权中国收入$58.8B(3情景) vs 9格矩阵$53.5B(捕捉联合恶化) → 差值$5.3B=联动额外下行
+      → 印度市场部分对冲(份额3%→5-6%, 2028年可能$15B) → 但ASP$500-550远低于中国
+    transferable_to: "所有在地缘敏感市场有>10%收入的公司 — 风险不是线性的，需测试联合恶化场景"
+    reasoning_habit: "对地缘风险用9格矩阵(3风险x3强度)而非简单3情景 — 联合恶化概率往往被低估"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "Q1 FY2026 +15.7%确认Apple增长加速"
+      final: "Q1噪声成分60-70%(季节性+基数+补贴), 真实有机加速仅+1-6pp"
+      pivot: "RT-6信噪分离 + 历史先例FY2024 Q1 +22.8% vs 全年+0.03% — Q1数据外推极其危险"
+
+    - initial: "33.46x PE vs 10年均值23.78x = 溢价40.7%偏高"
+      final: "后Services重估(2020年后)均值28-30x才是合理参照 → 溢价缩小至11.5-19.5%"
+      pivot: "RT-7替代解释: 10Y均值含2015-19硬件误定价期, 混入了Apple被错误定价为纯硬件公司的时段"
+
+    - initial: "估值校准因子+7-10pp使期望回报从-22%改善至-10%~-14%"
+      final: "校准因子中因子1(SOTP低估)构成循环论证/因子3(AI非线性)缺乏定量基础 → 缩窄至+3-5pp → 期望回报-14%至-18%"
+      pivot: "RT-2认知偏差审计发现校准过程存在锚定效应和循环论证"
+
+  surprises:
+    - finding: "SOTP中间值$1,971B vs 市值$3,820B → 生态系统溢价$1,829B(市值的48%) → 溢价倍率1.92x"
+      implication: "即使在最乐观SOTP假设下(iPhone 4.5x+Services 9.0x=$2,248B), 仍比市值低$1,572B(41%) → SOTP天然低估平台但48%的溢价规模值得追问: 多少是合理的生态系统价值, 多少是AI叙事泡沫?"
+
+    - finding: "Apple隐性AI总成本$30-39B(R&D中AI占比+OpenAI/Google合作+芯片设计+Private Cloud Compute) — 并不轻"
+      implication: "轻资本AI战略悖论: 维持轻资本→AI能力受制于竞争对手 | 追求AI自主→破坏被高度估值的轻资本模式 — 33.46x PE隐含Apple可以'搭便车', 这一假设的脆弱性被低估"
+
+    - finding: "黑天鹅事件概率加权合计对期望值拖累约-14pp — 几乎被当前分析完全忽略"
+      implication: "台海冲突(5-15%概率)+AI泡沫破裂(10-15%)+全球衰退(23.5%)等尾部风险的联合影响远超直觉"
+
+    - finding: "6种估值方法无一支持$264.35的当前定价 — 一致性悲观"
+      implication: "不是单一方法的偏差, 而是Reverse DCF/SOTP/条件估值/空头钢人/FMP DCF的趋同判断, 增强审慎关注评级的稳健性"
+
+  blind_spots:
+    - area: "New Siri产品质量和Apple Intelligence真实采用率"
+      why_matters: "AI期权溢价$430-580B建立在AI换机+AI订阅成功的假设上 — 如果采用率<5%则$319B溢价蒸发"
+      monitor: "WWDC 2026(2026-06) New Siri演示质量 + iOS版本分布 + 第三方采用率调研"
+
+    - area: "Google协议谈判实际进展"
+      why_matters: "决定$20-26B零成本利润和AI战略基础设施的存亡 — 报告分析完全基于公开信息"
+      monitor: "DOJ救济方案草案(2026H2) + Apple-Google谈判信号"
+
+    - area: "Apple分部利润率(Apple不披露)"
+      why_matters: "Services毛利率74.7%是反推值 — Hardware毛利率假设每1pp变化使Services毛利率变化1.3pp → 影响SOTP和整体估值判断"
+      monitor: "管理层电话会议措辞变化 + 税务文件间接推断"
+
+  sell_lessons:
+    - scenario: "PE>30x且永续FCF CAGR隐含>>历史实际(4x+缺口) — 估值预支了未验证的增长"
+      lesson: "Reverse DCF隐含增速vs历史实际的倍数差距是最硬的估值锚 — 差距>2x时应考虑减仓, >4x时应积极减仓"
+      transferable: "所有PE>30x的大型科技公司"
+    - scenario: "大额回购@高PE(IRR<无风险利率) — Apple FY2025回购$90.7B@33.46x PE, IRR仅2.99%<国债4.48%"
+      lesson: "回购IRR<无风险利率=价值毁灭的数学信号。管理层继续回购是代理人问题而非价值创造"
+      transferable: "所有PE>25x且回购>FCF 50%的公司(参考CME eta值框架)"
+    - scenario: "单一承重墙(Google协议)连接多条风险链且有可验证的崩塌路径"
+      lesson: "投资组合中应对'承重墙脆弱度极高'的公司降低仓位 — 承重墙分析比传统风险矩阵更能揭示非线性下行"
+      transferable: "所有有单一大客户/合同贡献>15%净利润的公司"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "Reverse DCF隐含永续FCF CAGR vs 历史实际的倍数差距"
+      why_alpha: "大多数分析师用正向DCF算目标价 — Reverse DCF翻译'市场在赌什么'更能揭示预期差。4x缺口说明市场在赌范式级加速"
+      current_reading: "隐含6.35% vs 实际1.5% = 4.2x差距 — 需AI换机+Services加速+回购增厚三者同时兑现"
+    - signal: "Google协议DOJ裁决进展"
+      why_alpha: "占净利润18-23%的单一风险源, 且连接Services收入链+估值脆弱链 — 是Apple风险网络的核心节点"
+      current_reading: "DOJ已判定违法(Kalshi 32-35%概率认定垄断), 救济方案2026H2预计公布"
+    - signal: "Services增速(含AI货币化渗透)"
+      why_alpha: "Services增速是Apple被按平台公司vs消费电子公司估值的核心分水岭 — >12%支撑33x PE, <8%触发PE压缩至28x"
+      current_reading: "3Y CAGR 11.8%, 但25-30%属脆弱质量(Google+广告); DMA已压欧盟增速至~6%"
+
+  confirmation_signals:
+    - signal: "iPhone季度收入YoY增速"
+      bullish_threshold: ">10% YoY(Q2确认AI换机周期非噪声)"
+      bearish_threshold: "<5% YoY(5G翻版确认 — 1季暴增后快速回落)"
+    - signal: "中国Greater China季度收入"
+      bullish_threshold: "连续3季正增长(结构性复苏确认)"
+      bearish_threshold: "连续2季YoY下降>10%(KS-1触发)"
+    - signal: "Apple Intelligence采用率(第三方调研)"
+      bullish_threshold: ">10%(12月后) — AI差异化被用户认可"
+      bearish_threshold: "<5%(12月后) — AI叙事瓦解(KS-4触发)"
+
+  noise_signals:
+    - signal: "Q1 FY2026单季度创纪录数据"
+      why_noise: "季节性+基数+补贴噪声成分60-70%。历史先例: FY2024 Q1 +22.8% vs 全年+0.03% — Q1数据外推危险性极高"
+    - signal: "ROIC 518% / ROE 162%"
+      why_noise: "负股东权益导致的数学幻觉 — 原始投入资本计算ROIC仅30-35%(仍优秀但不极端)"
+    - signal: "Sell-side目标价(普遍$280-350)"
+      why_noise: "大多使用正向DCF+乐观增速假设 — 不做Reverse DCF也不分离AI期权溢价的脆弱性"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: MSFT
+      similarity: "同为科技平台巨头, 类似PE区间(33x vs 32x), 都面临AI投资回报验证"
+      key_difference: "MSFT=AI基础设施卖铲人(Copilot/Azure有收入) vs AAPL=AI消费端(AI收入=$0) | MSFT CapEx/OCF 47%重资产 vs AAPL 11%轻资本"
+
+    - ticker: GOOG
+      similarity: "AAPL最大单一客户(搜索协议) + 同为移动生态双寡头(iOS/Android)"
+      key_difference: "GOOG=搜索广告垄断(AI颠覆风险) vs AAPL=硬件+服务飞轮 | 两者通过Google协议深度绑定, DOJ裁决同时影响两家"
+
+    - ticker: META
+      similarity: "同为消费端科技平台, 类似用户基数量级(30亿级)"
+      key_difference: "META=社交广告(数据丰富/隐私劣势) vs AAPL=隐私优先(品牌优势/AI数据不足) | ATT政策使两者成为竞争关系"
+
+  comparative:
+    - dimension: "护城河深度"
+      position: "AAPL (8.4) > MSFT=GOOG=AMZN (7.4) > META (6.4)"
+      reasoning: "AAPL品牌+转换成本双维度领先; 但属被动防御型(品牌+转换成本)而非主动进攻型(网络效应+技术壁垒)"
+
+    - dimension: "AI投资强度"
+      position: "META (60.2%) > GOOGL (55.5%) > MSFT (47.4%) >> AAPL (11.4%)"
+      reasoning: "AAPL轻资本AI战略 — CapEx/OCF最低但隐性AI成本$30-39B并不轻 — 悖论在于不能同时搭便车和差异化"
+
+    - dimension: "估值吸引力"
+      position: "6种方法无一支持AAPL当前估值 — AAPL在五巨头中FCF Yield 3.30%最高但调整CapEx后降至1.8-2.0%"
+      reasoning: "FCF Yield高部分反映低再投资率而非绝对盈利能力更强"
+
+    - dimension: "FCF品质"
+      position: "AAPL OCF/NI 1.15x(极优) > 同行平均"
+      reasoning: "盈利质量9/10 — 现金转换效率在全球大型企业中属顶级"
+
+  industry_position:
+    quadrant: "最高品牌溢价 x 最低AI投资强度"
+    archetype: "平台飞轮 — 硬件入口+服务变现, 但增长引擎正从量(设备基数)切换到价(ARPU), 切换尚未验证"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF反推隐含永续FCF CAGR 6.35% vs 历史1.5% → 4x缺口=市场在赌范式级加速, 但5G先例警告单季创纪录不代表趋势"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "RT-1~RT-7七问对抗 + 双向校准(3下调+3上调+1维持) + 有效性门控(3/3 PASS) + 校准因子缩窄(+7-10pp→+3-5pp)"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "四场景条件估值(S1牛$287/S2基准$223/S3承压$163/S4极端$98) + 概率加权$205.3(未校准)→$217-228(校准后)"
+
+  novel_patterns:
+    - name: "承重墙脆弱度分析(5墙依赖链)"
+      description: "从Reverse DCF反推五面承重墙 → 按脆弱度排序 → 发现3面(Services-Google-PE)互相依赖形成传导链 → 单一核心节点(Google协议)倒塌可触发二阶+三阶效应"
+      transferable_to: ["所有估值隐含多个假设的高PE公司", "有单一大客户/合同依赖的公司"]
+
+    - name: "PE溢价层级分解(坚实层vs脆弱层)"
+      description: "将PE溢价拆解为4层(生态锁定4-5x坚实/AI期权3-4x脆弱/回购1.5-2x可计算/利率0.5-1x) → 按持久性和证伪条件分级 → 量化每层蒸发时的股价影响"
+      transferable_to: ["所有PE显著高于历史均值的公司"]
+
+    - name: "Q1信噪分离(季度数据外推的危险性量化)"
+      description: "将Q1创纪录增速分解为信号(有机加速)和噪声(季节性+基数+补贴) → 历史先例锚定(FY2024 Q1+22.8%→全年+0.03%) → 噪声占比60-70%"
+      transferable_to: ["所有依赖单季度创纪录数据做投资决策的场景"]
+
+    - name: "轻资本AI战略悖论"
+      description: "CapEx/OCF最低但隐性AI成本$30-39B → 轻资本是估值溢价来源(FCF高) → 但AI自主需要变重 → 变重则破坏溢价叙事 → 不变重则AI受制于竞品 → 二选一困境"
+      transferable_to: ["所有轻资本模式公司面临AI投资压力时的战略悖论"]
+
+    - name: "地缘风险9格矩阵(捕捉联合恶化)"
+      description: "3x3矩阵(地缘强度x竞争强度x监管强度) vs 简单3情景 → 9格矩阵概率加权$53.5B < 3情景$58.8B → 差值$5.3B=联动额外下行被3情景低估"
+      transferable_to: ["所有在地缘敏感市场有多重叠加风险的公司"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "护城河复合性是最强防线(5层叠加, 竞品无法同时攻破) — 但要区分被动防御型(品牌+转换成本)和主动进攻型(网络效应+技术壁垒)"
+        implication: "被动防御型护城河在竞品功能差距足够大时可能被克服(BlackBerry先例) — 评估护城河时应区分防御性质"
+      - insight: "护城河有多重时间维度: 品牌/生态>10年, 芯片/供应链~5年, 定价权/隐私~3年"
+        implication: "不同半衰期的护城河对估值的支撑力不同 — 短半衰期层面的恶化需更快反应"
+      - insight: "AI可能重定义锁定层 — 从App Store中心切换到AI助手中心, 旧护城河被新护城河替代"
+        implication: "平台型公司的护城河不是静态的 — 需评估'护城河迁移'的概率和时间表"
+
+    valuation_insights:
+      - insight: "SOTP天然低估平台型公司(1.92x溢价倍率) — 但溢价规模($1.83T)可分解为可验证部分和纯叙事部分"
+        implication: "平台公司SOTP不应作为估值锚, 但SOTP+合理溢价(1.3-2.0x)可作为辅助方法"
+      - insight: "6种估值方法一致性悲观 > 单一方法的精确度 — 方法间的趋同判断增强评级稳健性"
+        implication: "估值结论的稳健性应看方法间一致性, 而非单一方法的精确假设"
+      - insight: "PE参照系选择偏差显著改变结论 — 10Y均值(含硬件误定价期)vs后Services重估均值差异+20pp"
+        implication: "PE参照系应明确标注使用哪个时段的均值以及为什么 — 参照系选择本身就是一个核心假设"
+
+    screening_insights:
+      - insight: "Reverse DCF隐含CAGR vs 历史实际CAGR的倍数差距是最硬的估值锚 — AAPL差距4x+"
+        implication: "选股筛选加入'隐含vs实际CAGR差距': >3x标记为高风险(市场在赌未验证的加速), <1.5x标记为合理定价"
+      - insight: "回购IRR < 无风险利率 = 价值毁灭信号 — AAPL IRR 2.99% < 国债4.48%"
+        implication: "选股时计算回购IRR(=1/PE): 如果<无风险利率且回购>FCF 50%, 标记资本配置不当"
+      - insight: "承重墙脆弱度极高(单一客户/合同>15%净利润) = 组合层面需降低仓位"
+        implication: "选股加入'承重墙集中度'检查: 单一来源>15%净利润 → 标记非线性下行风险"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "对创纪录季度数据做信噪分离再外推"
+      trigger: "任何季度收入/利润创历史新高"
+      origin: "Q1 FY2026 +15.7%中60-70%是噪声 + 历史先例FY2024 Q1+22.8%→全年+0.03%"
+      generalization: "单季度创纪录几乎永远不代表趋势 — 必须分离季节性/基数/一次性因素后才能判断有机加速"
+
+    - habit: "Reverse DCF隐含增速vs历史实际增速的倍数差距判断估值合理性"
+      trigger: "PE>25x 或 估值争议大"
+      origin: "AAPL隐含6.35% vs 实际1.5% = 4.2x差距 → 6种方法无一支持当前估值"
+      generalization: "倍数差距>2x=高风险(市场在赌加速), >4x=极高风险(市场在赌范式转变). 差距越大, 对催化剂验证的要求越高"
+
+    - habit: "对大额收入源做承重墙分析而非简单风险矩阵"
+      trigger: "单一收入源/客户/合同>15%净利润"
+      origin: "Google协议占净利润18-23%且连接Services+估值+AI战略三条线 → 二阶效应(市值$300-500B)>直接效应($200-300B)"
+      generalization: "风险矩阵(概率x影响)低估非线性传导 — 承重墙分析(直接+二阶+三阶效应)更能揭示真实下行幅度"
+
+    - habit: "PE溢价做层级分解, 区分坚实层和脆弱层"
+      trigger: "PE显著高于历史均值或同行"
+      origin: "AAPL 33.46x PE溢价分解: 生态4-5x(坚实)+AI 3-4x(脆弱)+回购1.5-2x(可计算)+利率0.5-1x"
+      generalization: "总溢价百分比是噪音 — 拆解后按持久性分级才有决策价值. 脆弱层的蒸发速度>>坚实层"
+
+  quality_feedback:
+    strengths:
+      - "承重墙脆弱度分析(5墙+依赖链+核心节点识别) — 原创框架, 比传统风险矩阵更有信息量"
+      - "Reverse DCF P1前置有效防止结论先行 — 4x CAGR缺口早期就锁定了偏bearish方向"
+      - "红队对抗有效(RT-1~RT-7, 双向校准3↓3↑1→, 校准因子缩窄) — 避免了系统性悲观和表演性红队"
+      - "DM锚点261个, 密度0.86/千字(合格) — H类55%/R类37%/S类9%数据分层透明"
+      - "Mermaid图46个(远超25门控) — 可视化覆盖传导链/决策树/时间线/四象限"
+    weaknesses:
+      - "DM密度0.86/千字仅为合格线 — 距优秀(>1.0)仍有差距, 尤其Phase 1-2可提升"
+      - "Apple不披露分部利润率 → Services毛利率74.7%是反推值 → SOTP估值基础存在不可消除的不确定性"
+      - "AI期权溢价$319B属S类数据(主观判断) — 驱动最关键估值判断但精度最低"
+      - "估值校准过程存在循环论证(因子1)和缺乏定量基础(因子3) — 被RT-2发现并修正, 但暴露了初始分析的偏差"
+      - "CQ体系6/7偏空(系统性空头倾斜) — 虽经双向校准修正但初始设定已偏悲观"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "回购@高PE毁灭价值(CME CI-004, eta值框架)"
+        evidence: "AAPL IRR 2.99%@33.46x PE < 国债4.48% — 数学上确认价值毁灭"
+        confidence_after: "高(第三份报告独立确认: CME eta=0.59x + AAPL IRR<无风险利率)"
+
+      - hypothesis: "Reverse DCF必须P1前置(CRM v2.0铁律O)"
+        evidence: "AAPL Reverse DCF揭示4x CAGR缺口, 有效防止了被Q1创纪录数据锚定的bullish偏差"
+        confidence_after: "高(连续多份报告执行确认)"
+
+    extended:
+      - hypothesis: "PE溢价可分解(CME Core PE vs GAAP PE)"
+        extension: "从CME的'剥离非经营性收入'扩展到AAPL的'PE溢价层级分解(4层按持久性分级)' — 不仅看什么收入应该分离, 还看什么估值溢价是脆弱的"
+
+      - hypothesis: "地缘风险9格矩阵比3情景更准确"
+        extension: "AAPL中国风险: 9格矩阵$53.5B < 3情景$58.8B, 差值$5.3B证明联合恶化被简单模型低估"
+
+    refuted: []
+
+  limitations:
+    - "Apple不披露分部利润率 → 所有分部级估值建立在推算基础上(Services毛利率~75%是反推值, 精度约+/-1.5pp)"
+    - "无法获取Apple管理层对AI战略的内部评估、Google协议谈判进展、供应链一手调研 — 报告AI分析完全基于公开信息"
+    - "概率加权假设S1-S4互斥且穷尽 — 实际市场结果可能落在场景之间或之外"
+    - "CQ置信度30-56%的精度为+/-5-10pp — 伪精度风险"
+    - "时间衰减: 基于2026-02-19数据快照, 关键验证窗口集中在2026年5-9月(Q2财报/WWDC/DOJ/iPhone 18)"

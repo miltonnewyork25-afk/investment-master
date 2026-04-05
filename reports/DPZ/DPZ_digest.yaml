@@ -1,0 +1,431 @@
+# ============================================================
+# 投资研究摘要卡 v1.2 — Domino's Pizza (DPZ)
+# 压缩比: 339K → ~12K (28x)
+# 设计原理: TurboQuant两阶段压缩
+#   Layer 1 = PolarQuant (主信号: 方向×强度)
+#   Layer 1.5 = 因果链保真 (推理过程, 非结论)
+#   Layer 2 = QJL (残差: 反直觉修正)
+#   Layer 2.5 = 信号分级 (alpha/确认/噪音)
+#   Layer 3 = 内积保真 (跨公司关系)
+#   Layer 4 = 基向量 (已知模式映射 + 新模式)
+#   Layer 5 = Meta-learning (这份报告教了AI什么)
+# ============================================================
+
+# --- Layer 0: 坐标 ---
+meta:
+  ticker: DPZ
+  company: "Domino's Pizza, Inc."
+  report_date: "2026-03-05"
+  stock_price: "$406.62"
+  market_cap: "$13.8B"
+  report_version: "v1.0"
+  report_path: "reports/DPZ/DPZ_v1.0_Complete_2026-03-05.md"
+  quality_score: "报告未覆盖(无独立评分)"
+  cqi: "报告未覆盖"
+  framework_version: "v18.0"
+  industry: "消费品(QSR餐饮)"
+  archetype: "特许经营现金流机器"
+  chars: 338966
+  dm_count: 520
+  dm_density: "1.53/千字"
+
+# --- Layer 1: 主信号 (PolarQuant) ---
+thesis:
+  one_sentence: "DPZ的17%估值折价大部分合理(基本面+制度+认知三层解释13-15%)，小部分(2-5pp)是ABS风险过度定价的Alpha——以$406.62买入获得+9.4%期望回报的fair deal，不是被严重低估的宝藏"
+  rating: "中性关注(偏关注)"
+  fair_value: "$445 (概率加权E[V])"
+  expected_return: "+9.4% (位于中性区间上沿，距'关注'仅0.6pp)"
+
+  key_arguments:
+    - claim: "Supply Chain 22个配送中心是被系统性低估的物理护城河"
+      direction: bullish
+      magnitude: 4
+      mechanism: "22个面团工厂覆盖6,900+门店→单位配送成本行业最低→加盟商100%采购锁定→复制需$660M-$1.1B+3-5年→竞对不可能追赶"
+      kill_switch: "国际市场Supply Chain由master franchisee负责(不可迁移)→仅保护美国业务"
+
+    - claim: "17%估值折价被特许经营模式的结构性特征合理解释"
+      direction: bearish
+      magnitude: 4
+      mechanism: "5因子归因: 增长光学压缩(~2.5x PE)+利润率不透明(~1.5x)+ABS负权益(~2.0x)+增长期权差(~2.0x)+ROIC幻觉修正(~1.0x)=~9x PE差距(vs CMG)"
+      kill_switch: "信息透明度提升(如单独披露Supply Chain P&L)+activist介入推动重估→折价收窄5-7%"
+
+    - claim: "ROIC 56.7%是杠杆放大的幻觉，调整后14.5%"
+      direction: bearish
+      magnitude: 5
+      mechanism: "负权益-$3.9B使invested capital人为缩小→ROIC数学性膨胀→调整后(IC+|负权益|)ROIC=14.5%<CMG 18.9%→逆转ROIC叙事"
+      kill_switch: "如果将ABS杠杆视为结构性特征(非暂时性)→市场可能不做此调整→56.7%作为headline数字继续支撑叙事"
+
+    - claim: "Fortressing蚕食系数~15-20%远低于临界点，增长引擎仍有充足空间"
+      direction: bullish
+      magnitude: 3
+      mechanism: "CC 15-20% vs 理论临界点35-40%→自取距离缩短激活新消费者(2英里临界点)→Carryout comp +5.8%验证→Pizza Hut关店250+释放增量需求"
+      kill_switch: "高密度市场(纽约/洛杉矶)CC接近30%+→如果占比提升→系统CC加速上升→12年跑道可能缩短"
+
+    - claim: "ABS covenant headroom仅2.2%是回购天花板，杠杆回购实质暂停"
+      direction: bearish
+      magnitude: 4
+      mechanism: "Leverage ratio 4.89x vs 5.0x cap=仅$330M额外举债空间→杠杆回购暂停→EPS增长引擎从3%降至1.5%→但有机FCF回购$500-550M/年仍可持续"
+      kill_switch: "ABS再融资成功降低利率→headroom从2.2%扩至5-8%→重新打开杠杆回购空间"
+
+  moat:
+    composite_score: 5.9  # A-Score v2.0
+    half_life: ">15年(Supply Chain物理壁垒) | >10年(数字化领先) | ~5年(品牌偏好)"
+    dimensions:
+      - type: scale
+        strength: 4  # A-Score成本优势维度8/10，但整体moat中等
+        evidence: "22个配送中心覆盖全美，平均每中心313家门店，复制需$660M-$1.1B+3-5年"
+        vulnerability: "国际Supply Chain不可迁移(由master franchisee负责)→仅保护美国市场"
+      - type: switching_cost
+        strength: 4
+        evidence: "加盟协议要求100%食材从Supply Chain采购+设备标准化→加盟商锁定→加盟商平均持有9家店(沉没成本高)"
+        vulnerability: "加盟商如果不满Supply Chain定价→collective action风险(虽然历史上从未发生)"
+      - type: brand
+        strength: 3
+        evidence: "Pizza品类第一联想='Domino's'+数字化渗透85%+→但品牌忠诚度低于MCD/SBUX(QSR品牌粘性天然较弱)"
+        vulnerability: "$6.99价格点依赖→如果促销退出后comp无法维持→品牌价值可能虚高"
+      - type: data
+        strength: 3
+        evidence: "85%+数字化订单→消费者行为数据→精准营销+DOM AI+Pinpoint选址→但科技能力vs DoorDash/Uber仍有差距"
+        vulnerability: "第三方平台如果获取客户关系控制权→数据优势被侵蚀"
+
+  valuation:
+    reverse_dcf_implied: "市场隐含终端增长率3.3%(两阶段模型)→定价comp将减速至+0-2.5%→隐含回购每年贡献EPS~2.0pp→国际净增预期仅为管理层指引的一半"
+    methods_used: ["双层SOTP", "Reverse DCF", "可比公司", "显式DCF", "概率加权", "BME信念竞争"]
+    dispersion: "极高 — SOTP $687(+69%) vs DCF $413(+1.6%)→身份估值溢价:版税帝国vs杠杆比萨公司"
+    consensus_vs_ours: "市场看DPZ=杠杆比萨公司(23x PE) | 我们看DPZ=55%概率成熟窄护城河+20%版税帝国+25%杠杆约束体→偏市场但承认2-5pp ABS过度定价"
+    entry_zone: "$370-380 (更审慎入场) | $406.62 (偏便宜如果ABS再融资顺利)"
+    catalyst: "ABS再融资利率下降→杠杆headroom扩大→回购重启+折价收窄→升级至'关注'"
+
+  action_framework:
+    verdict: "持有/观望 — 期望回报+9.4%位于中性上沿，等待催化剂或更好价格"
+    buy_triggers:
+      - trigger: "ABS再融资成功且利率显著低于当前水平"
+        price_zone: "$406或以下"
+        reasoning: "折价从17%收窄至10-12%→P/E扩至24.5-25x→触发评级升级至'关注'"
+      - trigger: "US comp连续2Q超+4%或FY2026 EPS beat consensus >3%"
+        price_zone: "$380-420"
+        reasoning: "增长加速叙事改变→Fortressing成功进一步验证→PE扩张合理化"
+      - trigger: "宏观恐慌导致价格回落至$370以下"
+        price_zone: "$370以下 (P/E<21x)"
+        reasoning: "Pizza delivery在衰退中有反周期特征(2020 COVID验证)→下行保护+FCF yield>5%"
+    hold_conditions:
+      - "US comp保持正增长(≥+1.5%)"
+      - "DSCR维持>2.5x"
+      - "Supply Chain 22个配送中心网络完整运营"
+      - "数字化渠道占比维持>80%"
+    sell_triggers:
+      - signal: "US comp连续2Q≤+1.0%"
+        severity: "action"
+        action: "降级至审慎关注，减仓50%"
+      - signal: "Leverage ratio触及5.0x covenant ceiling"
+        severity: "warning"
+        action: "确认杠杆回购完全暂停，重新评估EPS增长路径"
+      - signal: "3P平台占比5年内超过20%"
+        severity: "warning"
+        action: "重新评估渠道经济学，检查OPM影响"
+      - signal: "DSCR降至<2.0x"
+        severity: "emergency"
+        action: "ABS refinancing风险升级，EV下调5-8%，考虑全部卖出"
+    position_sizing: "中性仓位 — 期望回报+9.4%不支持大仓位，等催化剂确认后再加仓"
+
+# --- Layer 1.5: 因果链保真 ---
+causal_chains:
+  - id: "CC-1"
+    name: "Fortressing通过缩短自取距离激活新消费者"
+    chain: >
+      Fortressing加密门店网络
+      → 消费者到最近DPZ门店的距离从>3英里降至<2英里
+      → 跨越自取意愿"悬崖"(2英里临界点: 意愿从40→90, 2.25倍跳跃)
+      → 激活此前不愿自取的消费者(增量而非转移)
+      → Carryout comp +5.8%(远超Delivery)
+      → Carryout毛利率65% >> Delivery 55%(省配送成本+零平台佣金)
+      → 加盟商利润率提升 → 加盟商更愿意开新店 → 正向循环
+      → DPZ从"配送依赖品类"转化为"便利自取品类"
+    transferable_to: "所有通过门店加密提升便利性的连锁企业(SBUX/CMG/MCD密集化市场)"
+    reasoning_habit: "分析连锁扩张时，先问'新店激活的增量需求vs转移的存量需求各占多少'——蚕食系数是关键变量"
+
+  - id: "CC-2"
+    name: "ROIC幻觉: 负权益如何数学性放大资本回报率"
+    chain: >
+      DPZ通过ABS融资+激进回购→将equity从正值推至-$3.9B
+      → invested capital被数学性缩小(分母变小)
+      → ROIC从14.5%(调整后)膨胀至56.7%(报告值)
+      → 投资者看到56.7%→认为DPZ资本效率极高
+      → 但实际运营效率14.5% < CMG 18.9%(无杠杆直营模式)
+      → 同样的幻觉适用于MCD(-$6.3B)/SBUX(-$8.7B)/YUM(-$7.7B)
+      → 在比较QSR公司时用报告ROIC→杠杆最高的看起来最好=系统性选择偏差
+    transferable_to: "所有负权益公司(通过杠杆回购将equity压至负值的公司)"
+    reasoning_habit: "看到ROIC>30%时，立刻检查equity是否为负——如果是，必须'回到零权益'重算adjusted ROIC"
+
+  - id: "CC-3"
+    name: "特许经营模式的估值透明度代价"
+    chain: >
+      DPZ选择98%特许经营模式→资本极轻+风险转移至加盟商
+      → 但收入结构变为: 60.5% Supply Chain pass-through + 22% US Franchise + 12% International
+      → P&L看起来像"批发+零售混合体"而非纯版税公司
+      → OPM 19.3%因pass-through收入被稀释(真实franchise OPM>50%)
+      → 投资者用混合OPM估值→给更低PE
+      → 同时revenue growth被royalty压缩(系统销售+8%→报告收入+5%)
+      → 双重光学压缩: OPM看低+增长看慢→PE折价17% vs 直营模式CMG
+      → 折价是模式选择的必然结果，不是市场错误
+    transferable_to: "所有重资产特许经营公司(YUM/QSR/IHG)的估值折价分析"
+    reasoning_habit: "分析特许经营公司时，先拆解'pass-through收入'对OPM和增长率的光学压缩——用system sales增速和franchise部分OPM才是真实画面"
+
+  - id: "CC-4"
+    name: "ABS covenant如何从保护变成约束"
+    chain: >
+      DPZ发行Whole Business Securitization(WBS)→获得BBB+评级(WBS最高)→利率仅3.9%
+      → 但ABS有leverage covenant: Total Debt/EBITDA ≤ 5.0x
+      → 当前4.89x → headroom仅2.2%(=$330M)
+      → 杠杆回购实质暂停(不能借新债回购)
+      → EPS增长的"回购引擎"从年均~3%降至~1.5%(仅有机FCF回购)
+      → 市场将回购放缓解读为"管理层对前景不确定"(错误归因)
+      → 实际是covenant驱动的技术性放缓→ABS再融资后可能重启
+      → 但DSCR ~3.4x vs 1.75x minimum = 48.7% headroom → 偿债能力远超要求
+      → 关键不对称: leverage covenant是binding constraint，DSCR不是
+    transferable_to: "所有WBS/ABS融资公司的covenant分析(区分哪个covenant是binding)"
+    reasoning_habit: "分析高杠杆公司时，不要笼统说'杠杆高有风险'——精确识别哪个covenant是binding constraint，headroom多少"
+
+  - id: "CC-5"
+    name: "BME信念竞争: 估值分歧是认知分歧而非模型误差"
+    chain: >
+      四种估值方法给出极端分散结果: SOTP $687(+69%) vs DCF $413(+1.6%)
+      → 追问: 差距来自模型误差还是认知分歧?
+      → 发现: 差距来自"DPZ是什么"的身份定义不同
+      → 信念A(版税帝国): 如果分拆Supply Chain+franchise → SOTP $687
+      → 信念B(杠杆约束体): 如果聚焦ABS风险+负权益 → DCF $413
+      → 信念C(成熟窄护城河): 如果按QSR同业定价 → 可比 $483
+      → 市场当前由信念C定价(55%概率)→除非catalyst改变叙事
+      → 投资机会不在"算得更准"而在"信念转换的概率和催化剂"
+    transferable_to: "所有SOTP vs DCF有巨大分歧的控股/多业务/隐含价值公司"
+    reasoning_habit: "当估值方法间分歧>30%时，不要取均值了事——识别分歧背后的信念差异，评估信念转换的催化剂和概率"
+
+# --- Layer 2: 残差修正 (QJL) ---
+residuals:
+  hypothesis_reversals:
+    - initial: "DPZ 17%估值折价是市场错误定价的Alpha机会"
+      final: "折价13-15%可被3层因素解释(基本面+制度+认知)，仅2-5pp是Alpha"
+      pivot: "IHG三层折价分解方法论迁移+DPZ-CMG 9维度镜像的5因子PE归因→折价是模式选择的结构性结果"
+
+    - initial: "DPZ ROIC 56.7%证明其资本效率极高"
+      final: "调整后ROIC仅14.5%，低于直营模式CMG的18.9%→ROIC叙事逆转"
+      pivot: "负权益-$3.9B使IC分母人为缩小→回到零权益重算→杠杆放大幻觉被量化"
+
+    - initial: "回购放缓是管理层对前景不确定的信号"
+      final: "是ABS leverage covenant(2.2% headroom)的技术性约束，非管理层判断"
+      pivot: "ABS trustee报告和10-K交叉验证→leverage ratio 4.89x vs 5.0x cap=binding constraint"
+
+  surprises:
+    - finding: "即使DPZ完全停止回购(零回购情景)，公允价值约$437——仍高于当前$406.62"
+      implication: "回购是EPS增长的'bonus'而非'necessity'→回购暂停的风险被市场高估→这是2-5pp alpha的来源之一"
+
+    - finding: "Pizza蚕食系数在自取和配送渠道中不对称: 自取CC~15% vs 配送CC~30%"
+      implication: "随着自取占比提升(Carryout comp +5.8%)→系统加权CC自然下降→Fortressing的可持续性比均匀假设更强"
+
+    - finding: "SOTP估值$687(+69%)暴露了DPZ作为'版税帝国'的隐含价值"
+      implication: "Supply Chain+Franchise分别估值→巨大的结构性上行→但需催化剂(activist介入/分拆)才能释放"
+
+    - finding: "GLP-1对Pizza可能是利好而非利空——减重药物用户反馈'更想吃comfort food'作为奖励"
+      implication: "红队RT-2反向挑战→GLP-1的Pizza影响被高估→Bear Case中GLP-1权重应从25%降至15%"
+
+  blind_spots:
+    - area: "Cannibalization真实值(CC)"
+      why_matters: "CC从15%变到30%→comp影响从-0.37pp到-0.75pp→对长期增长叙事影响显著"
+      monitor: "Franchisee调研/行业会议旁听获取独立数据点 + 高密度市场(纽约/LA)的单店comp趋势"
+
+    - area: "Supply Chain真实OPM"
+      why_matters: "DPZ不单独披露SC segment margin→如果SC OPM从~6.5%扩至8%→EPS隐含上行"
+      monitor: "未来2-3Q的segment margin趋势 + 10-K脚注中SC相关成本变化"
+
+    - area: "ABS再融资条件"
+      why_matters: "2029年大批ABS到期→如果利率环境>5.5%→利息从$196M跳至$250-290M→EPS拖累$1.5-2.5"
+      monitor: "利率环境 + DPZ ABS refinancing公告 + WBS市场利差走势"
+
+  sell_lessons:
+    - scenario: "ABS covenant接近上限时不减仓→如果利率跳升导致refinancing困难→双杀"
+      lesson: "高杠杆公司的卖出纪律=covenant headroom。headroom<3%时应review仓位，不等breach"
+      transferable: "所有WBS/ABS融资的公司(QSR行业尤其常见)"
+    - scenario: "P/E从40x→23x持续压缩4年→底部未确认就抄底"
+      lesson: "PE压缩趋势中，等确认信号(2Q comp加速/ABS再融资)比猜底更安全"
+      transferable: "所有从高增长估值向成熟估值迁移的成长股"
+
+# --- Layer 2.5: 信号分级 ---
+signal_hierarchy:
+  alpha_signals:
+    - signal: "ABS leverage covenant headroom"
+      why_alpha: "直接决定杠杆回购是否可能→影响EPS增长引擎的1.5pp/年→但大多数分析师只看GAAP杠杆不看covenant细节"
+      current_reading: "4.89x vs 5.0x cap = 2.2% headroom (极紧)"
+    - signal: "Carryout vs Delivery comp差异"
+      why_alpha: "Carryout是Fortressing成功的最直接验证+渠道mix改善的lead indicator→但市场只看总comp"
+      current_reading: "Carryout comp +5.8% vs Delivery comp +1.2% (FY2025Q4)→结构性渠道转移已启动"
+    - signal: "SOTP隐含价值vs市场价的gap"
+      why_alpha: "如果出现catalyst(activist/分拆)→$687 SOTP提供69%上行→但概率目前仅~20%"
+      current_reading: "$687 SOTP vs $406.62市场价 = 69%隐含折价"
+
+  confirmation_signals:
+    - signal: "US同店销售增长(quarterly)"
+      bullish_threshold: ">+3.5%(Fortressing+消费韧性确认)"
+      bearish_threshold: "<+1.5%连续2Q(增长减速确认)"
+    - signal: "国际门店净增数(quarterly)"
+      bullish_threshold: ">275家/Q(年化1,100+，管理层指引上沿)"
+      bearish_threshold: "<200家/Q(年化<800，国际增长失速)"
+    - signal: "ABS refinancing公告/利率"
+      bullish_threshold: "再融资利率<当前3.9%(降低利息负担)"
+      bearish_threshold: "再融资利率>5.5%(利息跳升至$250M+)"
+
+  noise_signals:
+    - signal: "ROIC报告值波动"
+      why_noise: "56.7%是杠杆放大幻觉→调整后14.5%才是真实信号→ROIC变动多反映回购节奏而非运营改善"
+    - signal: "GLP-1相关新闻/减重药物渗透率"
+      why_noise: "红队分析→GLP-1对Pizza的实际影响仅-2~-3%(非25%)→市场对此噪音过度反应"
+    - signal: "内部人卖出"
+      why_noise: "QSR行业管理层薪酬结构以股票为主→定期卖出是薪酬套现而非看空信号"
+
+# --- Layer 3: 关系网络 (内积保真) ---
+relationships:
+  nearest_neighbors:
+    - ticker: MCD
+      similarity: "同为QSR特许经营龙头，负权益结构，全球门店网络"
+      key_difference: "MCD=多品牌多品类+ground lease控制(地产护城河) vs DPZ=单品类+Supply Chain控制(物理护城河) | MCD PE 27.8x vs DPZ 23.1x"
+
+    - ticker: CMG
+      similarity: "同为美国QSR品类领导者，强执行+高ROIC叙事"
+      key_difference: "CMG=直营模式(控制力+透明度→32x PE) vs DPZ=特许模式(轻资产+不透明→23x PE) | 9x PE差距可被5因子完全归因"
+
+    - ticker: YUM
+      similarity: "同为特许经营QSR，多品牌(KFC/Pizza Hut/Taco Bell)，高杠杆"
+      key_difference: "YUM=多品牌分散(SGI ~4) vs DPZ=单品类专才(SGI 7.7) | YUM PE 28.6x反映多品类对冲价值"
+
+  comparative:
+    - dimension: "护城河深度(A-Score)"
+      position: "MCD (~6.5) > DPZ (5.9) > YUM (~5.0) > QSR (~4.5)"
+      reasoning: "MCD品牌+地产双护城河最深; DPZ Supply Chain物理护城河是差异化; YUM/QSR分散弱化"
+
+    - dimension: "估值吸引力(FCF Yield)"
+      position: "WEN (5.1%) > DPZ (4.7%) > QSR (3.8%) > YUM (3.5%) > MCD (3.2%)"
+      reasoning: "DPZ在核心可比组(排除WEN)中FCF Yield最高→但折价的合理性限制了alpha空间"
+
+    - dimension: "增长质量(comp纯度)"
+      position: "DPZ (7.5/10全量驱动) > CMG (~7/10价+量) > MCD (~6/10价格依赖) > YUM (~5/10)"
+      reasoning: "DPZ零定价贡献=最纯的量驱动comp; CMG有价格贡献; MCD更依赖提价"
+
+    - dimension: "资本效率(Adjusted ROIC)"
+      position: "CMG (18.9%) > DPZ (14.5%) > MCD (~10-12%) > SBUX (~8-10%)"
+      reasoning: "回到零权益后重排→直营CMG真实效率最高; 负权益公司报告ROIC全部虚高"
+
+  industry_position:
+    quadrant: "中等护城河 x 强战略执行"
+    archetype: "特许经营现金流机器 — Pizza专才(SGI 7.7)在QSR行业中独树一帜"
+
+# --- Layer 4: 基向量映射 (稀疏表示) ---
+pattern_decomposition:
+  known_patterns:
+    - pattern_id: "valuation.belief_inversion"
+      application: "Reverse DCF→市场隐含终端增长3.3%→定价comp减速+回购贡献2pp/yr→整体偏保守"
+
+    - pattern_id: "red_team.systematic_bias_calibration"
+      application: "7问红队+悲观偏差校准(历史均值+8pp)→七问净-6.7pp+偏差+8pp=总+1.3pp→Phase 3结论方向正确"
+
+    - pattern_id: "scenario_analysis.boiling_frog_path"
+      application: "ABS到期再融资时间表→2029年大批到期→如果利率>5.5%→利息跳升→温水煮青蛙式EPS侵蚀"
+
+  novel_patterns:
+    - name: "蚕食系数模型 (Cannibalization Coefficient Model)"
+      description: "CC = 新店导致老店收入损失 / 新店总收入。区分自取CC(~15%)和配送CC(~30%)的不对称性。包含临界点分析(35-40%)和距离摩擦函数(2英里悬崖)"
+      transferable_to: ["SBUX密集化", "CMG扩张", "MCD自然密集", "所有Fortressing型连锁企业"]
+
+    - name: "ROIC幻觉调整 (负权益公司)"
+      description: "负权益公司的ROIC=杠杆放大幻觉。调整方法: IC + |负权益| 作为adjusted IC→重算ROIC→横向可比。DPZ 56.7%→14.5%"
+      transferable_to: ["MCD", "SBUX", "YUM", "所有通过回购将equity压至负值的公司"]
+
+    - name: "BME信念竞争估值框架"
+      description: "当估值方法间分歧>30%时，将分歧定义为信念竞争(版税帝国vs杠杆比萨vs成熟窄护城河)→概率加权信念而非模型→投资机会在信念转换催化剂"
+      transferable_to: ["多业务线控股公司", "SOTP vs DCF有巨大gap的公司"]
+
+    - name: "ABS covenant双天花板分析"
+      description: "区分leverage covenant(binding/紧)vs DSCR covenant(non-binding/宽)→精确定位哪个约束在实际限制公司行为→避免笼统的'高杠杆=高风险'判断"
+      transferable_to: ["所有WBS/ABS融资公司", "杠杆收购后的公司"]
+
+    - name: "特许经营PE折价5因子归因"
+      description: "特许vs直营的PE差距可归因为: 增长光学+利润透明度+资本结构清洁度+增长期权+ROIC修正→结构性解释而非市场不理性"
+      transferable_to: ["IHG/MAR等酒店特许经营", "YUM/QSR等QSR特许经营"]
+
+  framework_contributions:
+    moat_insights:
+      - insight: "Supply Chain物理护城河被系统性低估: 22个面团工厂的复制壁垒($660M-$1.1B+3-5年)比品牌/数字化更持久"
+        implication: "分析QSR/连锁企业时，物理基础设施(配送中心/中央厨房/ground lease)可能比品牌/技术更重要——因为更难复制"
+      - insight: "A-Score 5.9(中等) vs SGI 7.7(专才)的gap: 专才不等于护城河强——DPZ是窄护城河+极致专注的组合"
+        implication: "SGI高分可能意味着'定位独特'而非'壁垒高'→在估值时应区分专注度溢价和护城河溢价"
+
+    valuation_insights:
+      - insight: "ROIC幻觉: 负权益公司的报告ROIC全部虚高→必须调整后才能横向比较"
+        implication: "选股筛选时如果用ROIC>30%过滤→会系统性选入高杠杆负权益公司→这是筛选框架的结构性偏差"
+      - insight: "BME信念竞争: 估值巨大分歧不是模型误差而是认知分歧→投资机会在催化剂"
+        implication: "当SOTP vs DCF差距>30%时，与其优化模型不如评估信念转换的催化剂概率"
+
+    screening_insights:
+      - insight: "特许经营公司的PE折价有结构性成因→不能简单用'低PE=便宜'筛选"
+        implication: "QSR/酒店等特许经营行业筛选时，应用adjusted PE(扣除pass-through收入影响)而非GAAP PE"
+      - insight: "ABS covenant headroom是杠杆公司的隐藏约束→影响回购/增长/资本配置的灵活性"
+        implication: "选股时增加'covenant headroom'筛选: headroom<5%→标记为'灵活性受限'→期望回报应加covenant风险溢价"
+
+# --- Layer 5: Meta-learning ---
+meta_learning:
+  reasoning_habits_acquired:
+    - habit: "看到ROIC>30%时立刻检查equity正负"
+      trigger: "ROIC异常高 + 负权益/高杠杆回购"
+      origin: "DPZ 56.7% ROIC经调整后仅14.5% < CMG 18.9%→ROIC叙事完全逆转"
+      generalization: "任何通过杠杆回购将equity压至负值的公司→报告ROIC都是幻觉→必须回到零权益重算"
+
+    - habit: "分析连锁扩张时先算蚕食系数"
+      trigger: "连锁企业门店加密/Fortressing/密集化策略"
+      origin: "DPZ蚕食系数模型→自取CC 15% vs 配送CC 30%的不对称性→解释了Carryout comp持续优于Delivery"
+      generalization: "蚕食系数因渠道/品类/距离不同而不同→不要用统一CC→分渠道估算→加权后判断"
+
+    - habit: "估值方法间分歧>30%时，定义为信念竞争而非模型误差"
+      trigger: "SOTP vs DCF或多方法间出现巨大分歧"
+      origin: "DPZ SOTP $687(+69%) vs DCF $413(+1.6%)→差距是'DPZ是什么'的认知分歧"
+      generalization: "大分歧时不要取均值→识别信念(版税/杠杆/成熟)→评估每个信念的概率→投资机会在信念转换催化剂"
+
+    - habit: "精确区分哪个covenant是binding constraint"
+      trigger: "分析高杠杆/ABS/WBS融资公司"
+      origin: "DPZ leverage ratio 4.89x vs 5.0x(2.2% headroom, binding) vs DSCR 3.4x vs 1.75x(48.7%, non-binding)"
+      generalization: "不要笼统说'杠杆高有风险'→找到binding covenant→测headroom→这才是真实约束→据此评估回购/资本配置/风险"
+
+  quality_feedback:
+    strengths:
+      - "DM密度1.53/千字(合格以上)→520个DM锚点覆盖338K报告→数据锚定扎实"
+      - "DPZ-CMG 9维度镜像+5因子PE归因→竞品分析不是列清单而是量化归因→冠军级分析"
+      - "蚕食系数模型(CC)→原创可迁移框架→包含敏感性/跨公司/局限性→完整度高"
+      - "BME信念竞争→将估值分歧从模型误差转化为认知分歧→高级估值方法论"
+      - "红队7问+悲观偏差校准(基于4份历史报告实证)→非主观调整→|绝对值总效果|19.9pp通过有效性门控"
+    weaknesses:
+      - "报告框架版本v18.0(较旧)→未启用v19.x的部分门控(如因果密度脚本强制)"
+      - "CQ-4最终置信度仅55%(5个CQ中最低)→相对于'极高重要性'研究投入不足"
+      - "Supply Chain OPM未能独立验证(DPZ不披露segment margin)→核心护城河的利润率仍是黑箱"
+
+  hypothesis_tested:
+    confirmed:
+      - hypothesis: "特许经营模式的PE折价可被结构性因子解释(非市场不理性)"
+        evidence: "5因子(增长光学+利润透明+资本结构+增长期权+ROIC修正)合计~9x PE完全归因DPZ-CMG差距"
+        confidence_after: "高(DPZ-CMG独立验证，可推广至所有特许vs直营对比)"
+
+      - hypothesis: "Reverse DCF必须P1前置(铁律O)"
+        evidence: "Ch12 Reverse DCF有效揭示市场隐含假设→防止了'DPZ被严重低估'的结论先行偏差"
+        confidence_after: "高(连续确认)"
+
+    extended:
+      - hypothesis: "ROIC幻觉(SBUX/MCD已知)"
+        extension: "DPZ将幻觉量化为56.7%→14.5%(4倍差距)→建立了可复用的调整方法论→推广至全部负权益QSR"
+
+    refuted:
+      - hypothesis: "SGI高分(专才)=应获PE溢价"
+        evidence: "DPZ SGI 7.7但PE折价17%→SGI高分反映定位独特性而非护城河→专才不等于值钱"
+        lesson: "SGI框架不能直接映射为PE溢价→需结合A-Score(护城河)才能判断估值→两者分离时说明市场在定价护城河而非定位"
+
+  limitations:
+    - "Cannibalization真实值依赖管理层声称(80%增量)的逆向验证→无独立一手数据源→CC 15-20%的估计精度有限"
+    - "Supply Chain真实OPM是黑箱→DPZ不单独披露→所有SC利润分析基于估算"
+    - "ABS covenant的精确定义需精读trustee report→10-K中的描述可能有EBITDA调整项差异"
+    - "国际Master Franchisee的财务健康和unit economics依赖间接推断→DPC Dash(中国)是唯一公开数据源"
+    - "BME信念概率(55%/25%/20%)含主观判断→无基准率校准"
