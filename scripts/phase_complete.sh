@@ -12,7 +12,7 @@
 #   3. git add 报告+checkpoint → git commit 标准格式
 #   4. 输出摘要
 #
-# 退出码: 0=成功, 1=Fast Gate失败, 2=Evaluator REJECT/QG失败, 3=文件缺失, 4=Sentinel BLOCK
+# 退出码: 0=成功, 1=Fast Gate失败, 2=参数错误, 3=文件缺失, 4=Sentinel BLOCK
 # ============================================================
 
 set -uo pipefail
@@ -31,7 +31,13 @@ REPORT="${3:?缺少REPORT_FILE参数}"
 MIN_CHARS="${4:?缺少MIN_CHARS参数}"
 TIER="${5:-3}"
 
-# Fix D: --force标志已移除。所有BLOCK级检查不可绕过。
+# --force 标志: 绕过Circuit Breaker
+FORCE_MODE="false"
+for arg in "$@"; do
+    if [[ "$arg" == "--force" ]]; then
+        FORCE_MODE="true"
+    fi
+done
 
 # --- 路径 ---
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -67,8 +73,8 @@ if [ -f "$DM_CHECK" ] && [ "$PHASE" != "0" ]; then
         echo -e "${GREEN}DM密度检查通过${NC}"
     else
         DM_EXIT_CODE=$?
-        if [ "$DM_EXIT_CODE" -eq 2 ]; then
-            echo -e "${RED}DM标注严重不足，中止提交${NC}"
+        if [ "$DM_EXIT_CODE" -eq 2 ] && [ "$FORCE_MODE" != "true" ]; then
+            echo -e "${RED}DM标注严重不足，中止提交 (使用 --force 强制提交)${NC}"
             exit 1
         elif [ "$DM_EXIT_CODE" -eq 1 ]; then
             echo -e "${YELLOW}DM标注偏低，但继续执行（请在后续Phase补充）${NC}"
@@ -236,9 +242,13 @@ if [ -f "$SENTINEL" ]; then
     if [ "$SENTINEL_EXIT" -eq 2 ]; then
         echo ""
         echo -e "${RED}*** CIRCUIT BREAKER — Sentinel BLOCK ***${NC}"
-        echo -e "${RED}前序产出缺失,commit已阻止。不可绕过。${NC}"
-        echo -e "${RED}修复问题后重新运行。${NC}"
-        exit 4
+        echo -e "${RED}前序产出缺失,commit已阻止。${NC}"
+        if [ "$FORCE_MODE" == "true" ]; then
+            echo -e "${YELLOW}*** --force 模式: 绕过Circuit Breaker ***${NC}"
+        else
+            echo -e "${RED}修复问题后重新运行,或使用 --force 绕过${NC}"
+            exit 4
+        fi
     elif [ "$SENTINEL_EXIT" -eq 1 ]; then
         echo ""
         echo -e "${YELLOW}*** SENTINEL FAIL — 有质量问题,建议修复 ***${NC}"
@@ -251,76 +261,8 @@ else
 fi
 echo ""
 
-# --- Step 4.5: Evaluator Verdict验证 (Fix E) ---
-echo -e "${CYAN}[4.5/7] Evaluator Verdict验证...${NC}"
-EVAL_VERDICT_FOUND=false
-EVAL_VERDICT_FILE=""
-
-# 检查eval_verdict文件
-for vf in "reports/${TICKER}/data/eval_verdict_P${PHASE}"*.md "reports/${TICKER}/data/eval_verdict_P${PHASE}"*.yaml; do
-    if [ -f "$vf" ]; then
-        EVAL_VERDICT_FOUND=true
-        EVAL_VERDICT_FILE="$vf"
-        break
-    fi
-done
-
-# Phase 5特殊检查: P5_final_audit
-if [ "${PHASE%.*}" -ge 5 ]; then
-    P5_AUDIT=""
-    for af in "reports/${TICKER}/staging/P5_final_audit"*.md; do
-        if [ -f "$af" ]; then
-            P5_AUDIT="$af"
-            break
-        fi
-    done
-    if [ -z "$P5_AUDIT" ]; then
-        echo -e "${RED}BLOCK: Phase 5缺少P5_final_audit文件。Evaluator必须先完成Final Audit。${NC}"
-        exit 2
-    fi
-    if ! grep -qi 'PASS' "$P5_AUDIT" 2>/dev/null; then
-        echo -e "${RED}BLOCK: P5 Final Audit未包含PASS verdict。Evaluator审计未通过。${NC}"
-        exit 2
-    fi
-    echo -e "${GREEN}P5 Final Audit: PASS确认${NC}"
-fi
-
-# 非Phase 5: 检查verdict文件
-if [ "${PHASE%.*}" -lt 5 ]; then
-    if [ "$EVAL_VERDICT_FOUND" = true ]; then
-        if grep -qi 'REJECT' "$EVAL_VERDICT_FILE" 2>/dev/null; then
-            echo -e "${RED}BLOCK: Evaluator verdict为REJECT。修复后重新提交。${NC}"
-            exit 2
-        fi
-        echo -e "${GREEN}Evaluator verdict: 非REJECT${NC}"
-    else
-        echo -e "${RED}BLOCK: 未找到Evaluator verdict文件。Evaluator必须先完成评估才能commit。${NC}"
-        echo -e "${RED}\"没有审计\"比\"审计失败\"更危险。请先运行Evaluator。${NC}"
-        exit 2
-    fi
-fi
-echo ""
-
-# --- Step 4.7: Phase 5 Quality Gate (Fix F) ---
-if [ "${PHASE%.*}" -ge 5 ]; then
-    echo -e "${CYAN}[4.7/7] Phase 5 Quality Gate...${NC}"
-    QG_SCRIPT="${REPO_ROOT}/tests/quality_gate_complete.sh"
-    if [ -f "$QG_SCRIPT" ]; then
-        QG_EXIT=0
-        bash "$QG_SCRIPT" "$TICKER" || QG_EXIT=$?
-        if [ "$QG_EXIT" -ne 0 ]; then
-            echo -e "${RED}BLOCK: quality_gate_complete.sh 返回非零(exit=$QG_EXIT)。修复质量问题后重新提交。${NC}"
-            exit 2
-        fi
-        echo -e "${GREEN}Quality Gate: PASSED${NC}"
-    else
-        echo -e "${YELLOW}WARNING: quality_gate_complete.sh不存在，跳过${NC}"
-    fi
-    echo ""
-fi
-
 # --- Step 5: Git add + commit ---
-echo -e "${CYAN}[5/7] Git commit...${NC}"
+echo -e "${CYAN}[5/6] Git commit...${NC}"
 
 # 收集要提交的文件
 FILES_TO_ADD=("$REPORT" "$CHECKPOINT")

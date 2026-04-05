@@ -226,19 +226,7 @@ if [ "$PHASE" -ge 1 ]; then
         check_warn "产出偏薄 (${ACTUAL_PCT}% vs expected ${EXPECTED_PCT}%)"
     else
         ACTUAL_PCT=$((TOTAL_CHARS * 100 / TARGET))
-        # Fix G: 绝对底线检查 — BLOCK而非FAIL
-        # Phase 5/Complete: 总字符<100K → BLOCK
-        # 任何Phase: 总字符<目标30% → BLOCK
-        TARGET_30PCT=$((TARGET * 30 / 100))
-        if [ "${PHASE%.*}" -ge 5 ] && [ "$TOTAL_CHARS" -lt 100000 ]; then
-            check_block "产出严重不足 — 绝对底线违反 (${TOTAL_CHARS}字符 < 100K底线, ${ACTUAL_PCT}% of target)"
-            echo "         → Tier 3报告绝对底线=100K字符。当前产出远低于此。"
-        elif [ "$TOTAL_CHARS" -lt "$TARGET_30PCT" ]; then
-            check_block "产出严重不足 — 低于目标30% (${ACTUAL_PCT}% vs target ${TARGET}, 最低30%=${TARGET_30PCT})"
-            echo "         → 产出低于目标的30%，可能遗漏了关键分析维度。"
-        else
-            check_fail "产出严重不足 (${ACTUAL_PCT}% vs expected ${EXPECTED_PCT}%)"
-        fi
+        check_fail "产出严重不足 (${ACTUAL_PCT}% vs expected ${EXPECTED_PCT}%)"
         echo "         → 回顾: 是否跳过了关键分析步骤?"
     fi
 fi

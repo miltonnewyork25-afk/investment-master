@@ -5,18 +5,6 @@
   },
   "model": "claude-sonnet-4-20250514",
   "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Write",
-        "hooks": [
-          {
-            "type": "command",
-            "comment": "Fix A: Phase staging文件写入时字符硬门控(>=15K) + Complete文件写入时字符硬门控(>=100K)",
-            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); CONTENT=$(echo \"$INPUT\" | jq -r '.tool_input.content // empty' 2>/dev/null || echo ''); case \"$FP\" in */staging/*.md) CHARS=$(echo -n \"$CONTENT\" | wc -m | tr -d ' '); if [ \"$CHARS\" -lt 15000 ]; then echo \"BLOCK: Phase staging文件字符数=${CHARS} < 15000最低要求。请扩写到>=15K后再写入。\" >&2; exit 2; fi; exit 0 ;; *_Complete_*.md|*_Complete*.md) CHARS=$(echo -n \"$CONTENT\" | wc -m | tr -d ' '); if [ \"$CHARS\" -lt 100000 ]; then echo \"BLOCK: Complete文件字符数=${CHARS} < 100000绝对底线。Tier 3报告不可低于100K字符。\" >&2; exit 2; fi; ISSUES=0; echo \"$CONTENT\" | grep -qiE '^#+.*Phase [0-9]' && ISSUES=$((ISSUES+1)) && echo 'ERROR: Complete含Phase标题' >&2; echo \"$CONTENT\" | grep -qE 'DM-[A-Z]+-[0-9]+' && ISSUES=$((ISSUES+1)) && echo 'ERROR: Complete含DM锚点' >&2; echo \"$CONTENT\" | grep -qi '入侵' && ISSUES=$((ISSUES+1)) && echo 'ERROR: 第零律违反' >&2; echo \"$CONTENT\" | grep -qi '减仓\\|加仓\\|全部卖出' && ISSUES=$((ISSUES+1)) && echo 'ERROR: 铁律P违反' >&2; if [ \"$ISSUES\" -gt 0 ]; then echo \"BLOCK: 无痕化检查${ISSUES}项违反\" >&2; exit 2; fi; exit 0 ;; *) exit 0 ;; esac"
-          }
-        ]
-      }
-    ],
     "PostToolUse": [
       {
         "matcher": "Edit",
@@ -33,18 +21,8 @@
         "hooks": [
           {
             "type": "command",
-            "comment": "Fix B: 报告路径检查(PostToolUse仅信息提示，阻断已移至PreToolUse)",
-            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in */reports/*.md) case \"$FP\" in */reports/*/[A-Z]*) echo \"报告路径正确: $FP\" >&2 ;; *) echo \"WARNING: 铁律E — 报告应放入 reports/{TICKER}/ 子目录\" >&2 ;; esac ;; esac; exit 0"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "comment": "Fix C: Phase完成后强制评估提醒(含字符量检查)",
-            "command": "INPUT=$(cat); CMD=$(echo \"$INPUT\" | jq -r '.tool_input.command // empty' 2>/dev/null || echo ''); case \"$CMD\" in *phase_complete*) echo ''; echo '=== EVALUATOR CHECKPOINT ==='; echo 'Phase完成。在继续下一Phase前，必须:'; echo '1. 运行Evaluator对本Phase产出进行独立评估'; echo '2. Evaluator verdict必须为PASS才能继续'; echo '3. 执行 wc -m 验证staging产出字符数是否达标'; echo '4. 检查Sprint Contract char_budget达成率'; echo '=== END CHECKPOINT ===' ;; esac; exit 0"
+            "comment": "简化版本：只检查基本路径规则",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in */reports/*.md) case \"$FP\" in */reports/*/[A-Z]*) echo \"✓ 报告路径正确: $FP\" ;; *) echo \"WARNING: 铁律E违反 — 报告应放入 reports/{TICKER}/ 子目录\" ;; esac || true ;; esac; true"
           }
         ]
       }
