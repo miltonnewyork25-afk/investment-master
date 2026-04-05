@@ -12,7 +12,7 @@
 #   3. git add 报告+checkpoint → git commit 标准格式
 #   4. 输出摘要
 #
-# 退出码: 0=成功, 1=Fast Gate失败, 2=参数错误, 3=文件缺失, 4=Sentinel BLOCK
+# 退出码: 0=成功, 1=Fast Gate失败, 2=Evaluator REJECT/QG失败, 3=文件缺失, 4=Sentinel BLOCK
 # ============================================================
 
 set -uo pipefail
@@ -31,13 +31,7 @@ REPORT="${3:?缺少REPORT_FILE参数}"
 MIN_CHARS="${4:?缺少MIN_CHARS参数}"
 TIER="${5:-3}"
 
-# --force 标志: 绕过Circuit Breaker
-FORCE_MODE="false"
-for arg in "$@"; do
-    if [[ "$arg" == "--force" ]]; then
-        FORCE_MODE="true"
-    fi
-done
+# Fix D: --force标志已移除。所有BLOCK级检查不可绕过。
 
 # --- 路径 ---
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -73,8 +67,8 @@ if [ -f "$DM_CHECK" ] && [ "$PHASE" != "0" ]; then
         echo -e "${GREEN}DM密度检查通过${NC}"
     else
         DM_EXIT_CODE=$?
-        if [ "$DM_EXIT_CODE" -eq 2 ] && [ "$FORCE_MODE" != "true" ]; then
-            echo -e "${RED}DM标注严重不足，中止提交 (使用 --force 强制提交)${NC}"
+        if [ "$DM_EXIT_CODE" -eq 2 ]; then
+            echo -e "${RED}DM标注严重不足，中止提交${NC}"
             exit 1
         elif [ "$DM_EXIT_CODE" -eq 1 ]; then
             echo -e "${YELLOW}DM标注偏低，但继续执行（请在后续Phase补充）${NC}"
@@ -242,13 +236,9 @@ if [ -f "$SENTINEL" ]; then
     if [ "$SENTINEL_EXIT" -eq 2 ]; then
         echo ""
         echo -e "${RED}*** CIRCUIT BREAKER — Sentinel BLOCK ***${NC}"
-        echo -e "${RED}前序产出缺失,commit已阻止。${NC}"
-        if [ "$FORCE_MODE" == "true" ]; then
-            echo -e "${YELLOW}*** --force 模式: 绕过Circuit Breaker ***${NC}"
-        else
-            echo -e "${RED}修复问题后重新运行,或使用 --force 绕过${NC}"
-            exit 4
-        fi
+        echo -e "${RED}前序产出缺失,commit已阻止。不可绕过。${NC}"
+        echo -e "${RED}修复问题后重新运行。${NC}"
+        exit 4
     elif [ "$SENTINEL_EXIT" -eq 1 ]; then
         echo ""
         echo -e "${YELLOW}*** SENTINEL FAIL — 有质量问题,建议修复 ***${NC}"
@@ -261,143 +251,79 @@ else
 fi
 echo ""
 
-# --- Step 4.25: 预期差识别器强制检查 (Phase 1+完成后) ---
-if [ "$PHASE" -ge "1" ] && [ "$TIER" = "3" ]; then
-    echo -e "${CYAN}[4.25/6] 预期差识别器执行检查...${NC}"
+# --- Step 4.5: Evaluator Verdict验证 (Fix E) ---
+echo -e "${CYAN}[4.5/7] Evaluator Verdict验证...${NC}"
+EVAL_VERDICT_FOUND=false
+EVAL_VERDICT_FILE=""
 
-    EG_ENFORCER="${REPO_ROOT}/scripts/expectation_gap_enforcer.sh"
-    if [ -f "$EG_ENFORCER" ]; then
-        if bash "$EG_ENFORCER" "$TICKER" "$PHASE" "auto"; then
-            echo -e "${GREEN}  ✓ 预期差分析检查通过${NC}"
-        else
-            echo -e "${YELLOW}  ⚠️  预期差分析需要执行/补全${NC}"
-            echo -e "${YELLOW}  📋 查看提醒: reports/${TICKER}/data/expectation_gap_todo.txt${NC}"
+# 检查eval_verdict文件
+for vf in "reports/${TICKER}/data/eval_verdict_P${PHASE}"*.md "reports/${TICKER}/data/eval_verdict_P${PHASE}"*.yaml; do
+    if [ -f "$vf" ]; then
+        EVAL_VERDICT_FOUND=true
+        EVAL_VERDICT_FILE="$vf"
+        break
+    fi
+done
+
+# Phase 5特殊检查: P5_final_audit
+if [ "${PHASE%.*}" -ge 5 ]; then
+    P5_AUDIT=""
+    for af in "reports/${TICKER}/staging/P5_final_audit"*.md; do
+        if [ -f "$af" ]; then
+            P5_AUDIT="$af"
+            break
         fi
-    else
-        echo -e "${YELLOW}  预期差强制器脚本不存在，跳过检查${NC}"
+    done
+    if [ -z "$P5_AUDIT" ]; then
+        echo -e "${RED}BLOCK: Phase 5缺少P5_final_audit文件。Evaluator必须先完成Final Audit。${NC}"
+        exit 2
     fi
-    echo ""
+    if ! grep -qi 'PASS' "$P5_AUDIT" 2>/dev/null; then
+        echo -e "${RED}BLOCK: P5 Final Audit未包含PASS verdict。Evaluator审计未通过。${NC}"
+        exit 2
+    fi
+    echo -e "${GREEN}P5 Final Audit: PASS确认${NC}"
 fi
 
-# --- Step 4.5: 认知边界评估器 (Phase 4完成后自动执行) ---
-if [ "$PHASE" = "4" ] && [ "$TIER" = "3" ]; then
-    echo -e "${CYAN}[4.5/6] 执行认知边界评估 (G9门控)...${NC}"
-
-    # 检查是否已存在认知边界评估
-    COGNITIVE_BOUNDARY="reports/${TICKER}/cognitive_boundary_assessment_v3.md"
-    if [ -f "$COGNITIVE_BOUNDARY" ]; then
-        echo -e "${YELLOW}  认知边界评估已存在，跳过重复生成${NC}"
+# 非Phase 5: 检查verdict文件
+if [ "${PHASE%.*}" -lt 5 ]; then
+    if [ "$EVAL_VERDICT_FOUND" = true ]; then
+        if grep -qi 'REJECT' "$EVAL_VERDICT_FILE" 2>/dev/null; then
+            echo -e "${RED}BLOCK: Evaluator verdict为REJECT。修复后重新提交。${NC}"
+            exit 2
+        fi
+        echo -e "${GREEN}Evaluator verdict: 非REJECT${NC}"
     else
-        echo "  调用 /cognitive-boundary-assessor..."
-        # 注意：这里实际执行时会调用Claude的skill系统
-        # 在实际部署时，这里应该是调用Claude API或skill系统
-        echo "  🧠 认知边界评估器将在AI session中自动执行"
-        echo "  📍 输出位置: ${COGNITIVE_BOUNDARY}"
+        echo -e "${RED}BLOCK: 未找到Evaluator verdict文件。Evaluator必须先完成评估才能commit。${NC}"
+        echo -e "${RED}\"没有审计\"比\"审计失败\"更危险。请先运行Evaluator。${NC}"
+        exit 2
     fi
-    echo ""
 fi
+echo ""
 
-# --- Step 4.7: 确认偏差修复检查 (Phase 4完成后自动执行, Priority 1修复) ---
-if [ "$PHASE" = "4" ] && [ "$TIER" = "3" ]; then
-    echo -e "${CYAN}[4.7/6] 确认偏差修复检查 (元级系统Priority 1)...${NC}"
-
-    BIAS_FIX_SUITE="${REPO_ROOT}/scripts/confirmation_bias_fix_suite.sh"
-    if [ -f "$BIAS_FIX_SUITE" ]; then
-        echo "  🔍 执行确认偏差检测与修复..."
-        BIAS_EXIT_CODE=0
-        bash "$BIAS_FIX_SUITE" "$TICKER" quick "$REPORT" || BIAS_EXIT_CODE=$?
-
-        case $BIAS_EXIT_CODE in
-            0)
-                echo -e "${GREEN}  ✅ 确认偏差风险: LOW - 分析质量良好${NC}"
-                ;;
-            1)
-                echo -e "${YELLOW}  ⚠️  确认偏差风险: MEDIUM - 建议执行改进措施${NC}"
-                echo -e "${YELLOW}  📋 查看详情: reports/${TICKER}/data/confirmation_bias_fix_assessment.yaml${NC}"
-                ;;
-            2)
-                echo -e "${RED}  🚨 确认偏差风险: HIGH - 需要强制反向论证${NC}"
-                echo -e "${RED}  📋 立即执行: reports/${TICKER}/data/mandatory_contrarian_checklist.md${NC}"
-                ;;
-            3)
-                echo -e "${RED}  ❌ 确认偏差风险: CRITICAL - 必须立即修复${NC}"
-                echo -e "${RED}  🛑 建议暂停提交，先修复偏差问题${NC}"
-                ;;
-            *)
-                echo -e "${YELLOW}  ❓ 确认偏差检测异常 (退出码: $BIAS_EXIT_CODE)${NC}"
-                ;;
-        esac
-
+# --- Step 4.7: Phase 5 Quality Gate (Fix F) ---
+if [ "${PHASE%.*}" -ge 5 ]; then
+    echo -e "${CYAN}[4.7/7] Phase 5 Quality Gate...${NC}"
+    QG_SCRIPT="${REPO_ROOT}/tests/quality_gate_complete.sh"
+    if [ -f "$QG_SCRIPT" ]; then
+        QG_EXIT=0
+        bash "$QG_SCRIPT" "$TICKER" || QG_EXIT=$?
+        if [ "$QG_EXIT" -ne 0 ]; then
+            echo -e "${RED}BLOCK: quality_gate_complete.sh 返回非零(exit=$QG_EXIT)。修复质量问题后重新提交。${NC}"
+            exit 2
+        fi
+        echo -e "${GREEN}Quality Gate: PASSED${NC}"
     else
-        echo -e "${YELLOW}  确认偏差修复套件脚本不存在，跳过检查${NC}"
-    fi
-    echo ""
-fi
-
-# --- Step 4.8: 注意力平衡检查 (元级系统Priority 2修复) ---
-if [ "$PHASE" = "4" ] && [ "$TIER" = "3" ]; then
-    echo -e "${CYAN}[4.8/6] 注意力平衡检查 (元级系统Priority 2)...${NC}"
-
-    ATTENTION_BALANCE="${REPO_ROOT}/scripts/attention_balance_quick.sh"
-    if [ -f "$ATTENTION_BALANCE" ]; then
-        echo "  📊 执行注意力分布分析..."
-        ATTENTION_EXIT_CODE=0
-        bash "$ATTENTION_BALANCE" recent || ATTENTION_EXIT_CODE=$?
-
-        case $ATTENTION_EXIT_CODE in
-            0)
-                echo -e "${GREEN}  ✅ 注意力分布: LOW风险 - 概念使用相对均衡${NC}"
-                ;;
-            1)
-                echo -e "${YELLOW}  ⚠️  注意力分布: MEDIUM风险 - 部分概念适度集中${NC}"
-                echo -e "${YELLOW}  📋 查看详情: .claude/meta/attention_balance_quick_plan.md${NC}"
-                ;;
-            2)
-                echo -e "${RED}  🚨 注意力分布: HIGH风险 - 多个概念过度集中${NC}"
-                echo -e "${RED}  📋 立即执行: 增加概念表述多样性${NC}"
-                ;;
-            3)
-                echo -e "${RED}  💥 注意力分布: CRITICAL - 严重概念过度集中${NC}"
-                echo -e "${RED}  📋 强制修复: 实施概念使用配额制度${NC}"
-                echo -e "${RED}  🔧 建议使用: scripts/concept_quick_monitor.sh${NC}"
-                ;;
-            *)
-                echo -e "${YELLOW}  ⚠️  注意力平衡检查器执行异常 (退出码: $ATTENTION_EXIT_CODE)${NC}"
-                ;;
-        esac
-    else
-        echo -e "${YELLOW}  注意力平衡检查器脚本不存在，跳过检查${NC}"
+        echo -e "${YELLOW}WARNING: quality_gate_complete.sh不存在，跳过${NC}"
     fi
     echo ""
 fi
 
 # --- Step 5: Git add + commit ---
-echo -e "${CYAN}[5/6] Git commit...${NC}"
+echo -e "${CYAN}[5/7] Git commit...${NC}"
 
 # 收集要提交的文件
 FILES_TO_ADD=("$REPORT" "$CHECKPOINT")
-
-# 确认偏差修复相关文件 (如果存在)
-BIAS_ASSESSMENT="reports/${TICKER}/data/confirmation_bias_fix_assessment.yaml"
-if [ -f "$BIAS_ASSESSMENT" ]; then
-    FILES_TO_ADD+=("$BIAS_ASSESSMENT")
-fi
-
-BIAS_VALIDATION="reports/${TICKER}/data/validation_matrix_simple.yaml"
-if [ -f "$BIAS_VALIDATION" ]; then
-    FILES_TO_ADD+=("$BIAS_VALIDATION")
-fi
-
-# 注意力平衡修复相关文件 (如果存在)
-ATTENTION_PLAN=".claude/meta/attention_balance_quick_plan.md"
-if [ -f "$ATTENTION_PLAN" ]; then
-    FILES_TO_ADD+=("$ATTENTION_PLAN")
-fi
-
-ATTENTION_CRITICAL=".claude/meta/attention_balance_critical_fix.md"
-if [ -f "$ATTENTION_CRITICAL" ]; then
-    FILES_TO_ADD+=("$ATTENTION_CRITICAL")
-fi
 
 # 如果 shared_context.md 有变化也加入
 if [ -f "$DM_FILE" ] && git diff --name-only | grep -q "$DM_FILE" 2>/dev/null; then
@@ -419,12 +345,6 @@ fi
 # sentinel_log也加入提交
 if [ -f "reports/${TICKER}/data/sentinel_log.yaml" ]; then
     FILES_TO_ADD+=("reports/${TICKER}/data/sentinel_log.yaml")
-fi
-
-# 认知边界评估文件 (Phase 4完成后)
-COGNITIVE_BOUNDARY="reports/${TICKER}/cognitive_boundary_assessment_v3.md"
-if [ -f "$COGNITIVE_BOUNDARY" ]; then
-    FILES_TO_ADD+=("$COGNITIVE_BOUNDARY")
 fi
 
 echo "  提交文件:"

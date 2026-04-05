@@ -5,6 +5,18 @@
   },
   "model": "claude-sonnet-4-20250514",
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "Fix A: Phase staging文件写入时字符硬门控(>=15K) + Complete文件写入时字符硬门控(>=100K)",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); CONTENT=$(echo \"$INPUT\" | jq -r '.tool_input.content // empty' 2>/dev/null || echo ''); case \"$FP\" in */staging/*.md) CHARS=$(echo -n \"$CONTENT\" | wc -m | tr -d ' '); if [ \"$CHARS\" -lt 15000 ]; then echo \"BLOCK: Phase staging文件字符数=${CHARS} < 15000最低要求。请扩写到>=15K后再写入。\" >&2; exit 2; fi; exit 0 ;; *_Complete_*.md|*_Complete*.md) CHARS=$(echo -n \"$CONTENT\" | wc -m | tr -d ' '); if [ \"$CHARS\" -lt 100000 ]; then echo \"BLOCK: Complete文件字符数=${CHARS} < 100000绝对底线。Tier 3报告不可低于100K字符。\" >&2; exit 2; fi; ISSUES=0; echo \"$CONTENT\" | grep -qiE '^#+.*Phase [0-9]' && ISSUES=$((ISSUES+1)) && echo 'ERROR: Complete含Phase标题' >&2; echo \"$CONTENT\" | grep -qE 'DM-[A-Z]+-[0-9]+' && ISSUES=$((ISSUES+1)) && echo 'ERROR: Complete含DM锚点' >&2; echo \"$CONTENT\" | grep -qi '入侵' && ISSUES=$((ISSUES+1)) && echo 'ERROR: 第零律违反' >&2; echo \"$CONTENT\" | grep -qi '减仓\\|加仓\\|全部卖出' && ISSUES=$((ISSUES+1)) && echo 'ERROR: 铁律P违反' >&2; if [ \"$ISSUES\" -gt 0 ]; then echo \"BLOCK: 无痕化检查${ISSUES}项违反\" >&2; exit 2; fi; exit 0 ;; *) exit 0 ;; esac"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit",
@@ -21,13 +33,8 @@
         "hooks": [
           {
             "type": "command",
-            "comment": "报告路径规范检查",
-            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in */reports/*.md) case \"$FP\" in */reports/*/[A-Z]*) echo \"✓ 报告路径正确: $FP\" ;; *) echo \"WARNING: 铁律E违反 — 报告应放入 reports/{TICKER}/ 子目录\" ;; esac || true ;; esac; true"
-          },
-          {
-            "type": "command",
-            "comment": "前台成品无痕化检查 — Complete文件写入时自动检查内部标签残留",
-            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in *_Complete_*.md) ISSUES=''; C1=$(grep -ciE '^#+.*Phase [0-9]' \"$FP\" 2>/dev/null || echo 0); C2=$(grep -cE 'DM-[A-Z]+-[0-9]+' \"$FP\" 2>/dev/null || echo 0); C3=$(grep -ciE 'RT-[0-9]|CQ[0-9]|KS-[0-9]' \"$FP\" 2>/dev/null || echo 0); C4=$(grep -ci '回流\\|校正后\\|修正前\\|旧版本' \"$FP\" 2>/dev/null || echo 0); C5=$(grep -ciE 'v22|v23|harness|framework v|框架版本' \"$FP\" 2>/dev/null || echo 0); C6=$(grep -cE '[0-9]+\\.?[0-9]*/[0-9]+(分|score)' \"$FP\" 2>/dev/null || echo 0); C7=$(grep -ci '减仓\\|加仓\\|全部卖出\\|买入' \"$FP\" 2>/dev/null || echo 0); C8=$(grep -ci '入侵\\|invade\\|invasion' \"$FP\" 2>/dev/null || echo 0); [ \"$C1\" -gt 0 ] && ISSUES=\"${ISSUES}Phase标签残留($C1) \"; [ \"$C2\" -gt 0 ] && ISSUES=\"${ISSUES}DM锚点残留($C2) \"; [ \"$C3\" -gt 0 ] && ISSUES=\"${ISSUES}RT/CQ/KS残留($C3) \"; [ \"$C4\" -gt 0 ] && ISSUES=\"${ISSUES}回流痕迹残留($C4) \"; [ \"$C5\" -gt 0 ] && ISSUES=\"${ISSUES}框架版本残留($C5) \"; [ \"$C6\" -gt 0 ] && ISSUES=\"${ISSUES}评分系统残留($C6) \"; [ \"$C7\" -gt 0 ] && ISSUES=\"${ISSUES}仓位建议残留($C7) \"; [ \"$C8\" -gt 0 ] && ISSUES=\"${ISSUES}台海合规违反($C8) \"; if [ -n \"$ISSUES\" ]; then echo \"BLOCK: 前台成品无痕化检查失败 — $ISSUES\"; else echo \"✓ 前台成品无痕化检查通过\"; fi ;; esac; true"
+            "comment": "Fix B: 报告路径检查(PostToolUse仅信息提示，阻断已移至PreToolUse)",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in */reports/*.md) case \"$FP\" in */reports/*/[A-Z]*) echo \"报告路径正确: $FP\" >&2 ;; *) echo \"WARNING: 铁律E — 报告应放入 reports/{TICKER}/ 子目录\" >&2 ;; esac ;; esac; exit 0"
           }
         ]
       },
@@ -36,30 +43,8 @@
         "hooks": [
           {
             "type": "command",
-            "comment": "Phase完成时自动触发Evaluator提醒",
-            "command": "INPUT=$(cat); CMD=$(echo \"$INPUT\" | jq -r '.tool_input.command // empty' 2>/dev/null || echo ''); case \"$CMD\" in *phase_complete.sh*) PHASE=$(echo \"$CMD\" | grep -oE '[0-9]+' | tail -1 2>/dev/null || echo ''); TICKER=$(echo \"$CMD\" | grep -oE '[A-Z]{2,5}' | head -1 2>/dev/null || echo ''); if [ -n \"$TICKER\" ] && [ -n \"$PHASE\" ]; then echo \"{\\\"systemMessage\\\": \\\"Phase $PHASE 完成 — 请调用Evaluator Agent进行独立审计。读取sprint_contract_P${PHASE}.yaml和staging产出，产出eval_verdict_P${PHASE}.yaml\\\"}\"; fi ;; esac; true"
-          }
-        ]
-      },
-      {
-        "matcher": "Skill",
-        "hooks": [
-          {
-            "type": "command",
-            "comment": "监控关键skill执行并记录",
-            "command": "INPUT=$(cat); SKILL=$(echo \"$INPUT\" | jq -r '.tool_input.skill // empty' 2>/dev/null || echo ''); case \"$SKILL\" in expectation-gap) echo \"{\\\"systemMessage\\\": \\\"预期差识别器已执行，请验证E→R→G→T四步输出\\\"}\" ;; lens-crystallization) echo \"{\\\"systemMessage\\\": \\\"Lens Crystallization完成，请验证Top 5 Quality Gate (6条)和Late Angle Gate\\\"}\" ;; editorial-frontend) echo \"{\\\"systemMessage\\\": \\\"Editorial Frontend完成，请确认双版本产出(Complete+Audit)并运行无痕化检查\\\"}\" ;; sprint-contract) echo \"{\\\"systemMessage\\\": \\\"Sprint Contract已生成，Generator和Evaluator请读取contract文件\\\"}\" ;; esac; true"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Write",
-        "hooks": [
-          {
-            "type": "command",
-            "comment": "Phase staging字符门控 — 写入staging时检查字符是否达到预算50%",
-            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); CONTENT=$(echo \"$INPUT\" | jq -r '.tool_input.content // empty' 2>/dev/null || echo ''); case \"$FP\" in */staging/*_P[0-9]*.md) CHARS=$(echo \"$CONTENT\" | wc -m | tr -d ' '); if [ \"$CHARS\" -lt 10000 ]; then echo \"WARNING: staging文件仅${CHARS}字符，请确认Phase输出是否充分（密度达标则允许提交）\"; fi ;; esac; true"
+            "comment": "Fix C: Phase完成后强制评估提醒(含字符量检查)",
+            "command": "INPUT=$(cat); CMD=$(echo \"$INPUT\" | jq -r '.tool_input.command // empty' 2>/dev/null || echo ''); case \"$CMD\" in *phase_complete*) echo ''; echo '=== EVALUATOR CHECKPOINT ==='; echo 'Phase完成。在继续下一Phase前，必须:'; echo '1. 运行Evaluator对本Phase产出进行独立评估'; echo '2. Evaluator verdict必须为PASS才能继续'; echo '3. 执行 wc -m 验证staging产出字符数是否达标'; echo '4. 检查Sprint Contract char_budget达成率'; echo '=== END CHECKPOINT ===' ;; esac; exit 0"
           }
         ]
       }

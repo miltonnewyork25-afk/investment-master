@@ -63,6 +63,20 @@ tools:
 - 证据链：每核心论点≥1硬数据 + ≥1因果推理 + ≥1反面考量
 - DM锚点密度≥0.8/千字（后台版本）
 
+**逐章字符硬门控（过程中评估 — 最关键的纪律）**:
+
+每章写完后，立即执行：
+1. 计算本章字符数。如果 < 8,000字符 → **停止，扩写到≥8,000后再写下一章**
+2. 如果本Phase累计字符 < Phase目标的30% 且已写完50%的章节 → 停止，回顾是否写得太浅
+
+每Phase写完后，staging文件写入前执行：
+1. 计算总字符数
+2. 与Sprint Contract的char_budget对比
+3. 如果 < 50%预算 → **不提交，扩写核心章节**
+4. 如果 < 80%预算 → 标注哪些章节偏浅，决定是否扩写
+
+**这不是可选步骤。PreToolUse hook会在staging文件写入时强制检查：低于15,000字符的staging文件将被hook阻断写入。**
+
 ### Phase 3: Adversarial Response Mode
 
 **读取**: Evaluator产出的红队攻击结果 + `revision_backflow_table.yaml`
@@ -100,6 +114,12 @@ tools:
 3. 后台审计版：保留所有DM/Phase/backflow/verdict
 4. assembly_manifest.yaml：双版本映射关系
 **产出**: {TICKER}_Complete_v{X}.md + {TICKER}_Audit_v{X}.md + assembly_manifest.yaml
+
+**Phase 5交付前必须执行**:
+1. `wc -m` 验证Complete文件字符数 ≥ 100,000（绝对底线）
+2. 读取launch_brief.md中的pre-mortem，逐条检查当前产出是否触发了预测的失败模式
+3. 如果命中任何pre-mortem → 在Complete中补救，或向用户报告异常
+4. PreToolUse hook会在Complete写入时强制检查：低于100K字符的Complete文件将被阻断写入
 
 ## Cross-Phase Rules
 
