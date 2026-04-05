@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v9.0
+# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v12.0
 # ============================================================
 # 用法:
 #   ./tests/quality_gate_complete.sh <Complete报告.md> [benchmark_chars] [possibility_width]
@@ -30,8 +30,12 @@
 #   CG19. AI腔检测 (WARN级, v7.0新增) — 检测AI写作模式(不是X而是Y/空洞过渡/伪亲密等)
 #   CG20. 护城河数据卡 (WARN级, v8.0新增/v9.0升级) — 检查moat_datacard.yaml存在+10字段组完整
 #   CG21. 入场纪律卡 (WARN级, v10.0新增) — 检查Strategy Card存在+9模块完整(A/B文档分离)
+#   CG22. 认知边界评估 (WARN级, v11.0新增) — 检查cognitive_boundary_assessment_v3.md存在+格式完整
+#   CG23. 预期差分析 (WARN级, v12.0新增) — 检查E→R→G→T四步完整性+动作判断
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v12.0 (2026-03-31) — CG23预期差分析检查(E→R→G→T四步+动作判断, 提升执行率修复)
+# 更新: v11.0 (2026-03-30) — CG22认知边界评估检查(G9门控强制, 确保所有深度报告包含认知局限性评估)
 # 更新: v10.0 (2026-03-14) — CG21入场纪律卡检查(A/B文档分离: Complete对外+Strategy Card内部)
 # 更新: v9.0 (2026-03-12) — CG20升级至10字段组(v2.0交易策略预备: 估值三档+E-Score+回撤DNA+流动性)
 # 更新: v8.0 (2026-03-12) — CG20护城河数据卡检查(为CQI排行榜+跨公司产品提供结构化数据)
@@ -655,6 +659,57 @@ if [ -n "$STRATEGY_CARD_PATH" ] && [ -f "$STRATEGY_CARD_PATH" ]; then
 else
     echo -e "${YELLOW}WARN CG21: 入场纪律卡未找到 (${TICKER_DIR}_Strategy_Card_INTERNAL.md) — 详见docs/ab_document_protocol.md${NC}"
     WARNINGS=$((WARNINGS + 1))
+fi
+
+# === CG22: 认知边界评估检查 (v11.0新增, WARN级) ===
+# 检查认知边界评估文件是否存在
+COGNITIVE_BOUNDARY="${TICKER_DIR}cognitive_boundary_assessment_v3.md"
+if [ -f "$COGNITIVE_BOUNDARY" ]; then
+    # 检查必要字段是否存在
+    CB_READABILITY=$(grep -c "可推演度：" "$COGNITIVE_BOUNDARY" || echo 0)
+    CB_COMPLEXITY=$(grep -c "业务复杂度：" "$COGNITIVE_BOUNDARY" || echo 0)
+    CB_BLACKBOX=$(grep -c "黑箱比例：" "$COGNITIVE_BOUNDARY" || echo 0)
+    CB_INSIGHTS=$(grep -c "关键洞察" "$COGNITIVE_BOUNDARY" || echo 0)
+
+    if [ "$CB_READABILITY" -gt 0 ] && [ "$CB_COMPLEXITY" -gt 0 ] && [ "$CB_BLACKBOX" -gt 0 ] && [ "$CB_INSIGHTS" -gt 0 ]; then
+        echo -e "${GREEN}PASS CG22: 认知边界评估完整 (v3.0格式)${NC}"
+    else
+        echo -e "${YELLOW}WARN CG22: 认知边界评估格式不完整${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    echo -e "${YELLOW}WARN CG22: 认知边界评估未找到 (cognitive_boundary_assessment_v3.md) — 请在Phase 4后执行 /cognitive-boundary-assessor${NC}"
+    WARNINGS=$((WARNINGS + 1))
+fi
+
+# === CG23: 预期差分析检查 (v12.0新增, WARN级) ===
+# 检查预期差分析完整性(E→R→G→T四步+动作判断)
+EG_FILE="${TICKER_DIR}data/expectation_gap_analysis.yaml"
+if [ -f "$EG_FILE" ]; then
+    # 检查E→R→G→T四个域
+    EG_E_DOMAIN=$(grep -c "E_domain:" "$EG_FILE" || echo 0)
+    EG_R_DOMAIN=$(grep -c "R_domain:" "$EG_FILE" || echo 0)
+    EG_G_DOMAIN=$(grep -c "G_domain:" "$EG_FILE" || echo 0)
+    EG_T_DOMAIN=$(grep -c "T_domain:" "$EG_FILE" || echo 0)
+    EG_ACTION=$(grep -c "action_recommendation:" "$EG_FILE" || echo 0)
+
+    EG_TOTAL_DOMAINS=$((EG_E_DOMAIN + EG_R_DOMAIN + EG_G_DOMAIN + EG_T_DOMAIN))
+
+    if [ "$EG_TOTAL_DOMAINS" -ge 4 ] && [ "$EG_ACTION" -gt 0 ]; then
+        echo -e "${GREEN}PASS CG23: 预期差分析完整 (E→R→G→T四步 + 动作判断)${NC}"
+    else
+        echo -e "${YELLOW}WARN CG23: 预期差分析不完整 (域: ${EG_TOTAL_DOMAINS}/4, 动作: ${EG_ACTION}/1)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    # 检查是否在报告正文中有预期差分析
+    EG_INLINE=$(grep -ciE "预期差|expectation.*gap|E→R→G→T|市场隐含.*vs.*实际|Reverse.*DCF.*隐含" "$FILE" || echo 0)
+    if [ "$EG_INLINE" -ge 3 ]; then
+        echo -e "${GREEN}PASS CG23: 预期差分析存在 (内联于报告, ${EG_INLINE}次提及)${NC}"
+    else
+        echo -e "${YELLOW}WARN CG23: 预期差分析缺失 — 请执行 /expectation-gap ${TICKER} 或补充Reverse DCF分析${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
 fi
 
 # --- 汇总 ---

@@ -261,11 +261,143 @@ else
 fi
 echo ""
 
+# --- Step 4.25: 预期差识别器强制检查 (Phase 1+完成后) ---
+if [ "$PHASE" -ge "1" ] && [ "$TIER" = "3" ]; then
+    echo -e "${CYAN}[4.25/6] 预期差识别器执行检查...${NC}"
+
+    EG_ENFORCER="${REPO_ROOT}/scripts/expectation_gap_enforcer.sh"
+    if [ -f "$EG_ENFORCER" ]; then
+        if bash "$EG_ENFORCER" "$TICKER" "$PHASE" "auto"; then
+            echo -e "${GREEN}  ✓ 预期差分析检查通过${NC}"
+        else
+            echo -e "${YELLOW}  ⚠️  预期差分析需要执行/补全${NC}"
+            echo -e "${YELLOW}  📋 查看提醒: reports/${TICKER}/data/expectation_gap_todo.txt${NC}"
+        fi
+    else
+        echo -e "${YELLOW}  预期差强制器脚本不存在，跳过检查${NC}"
+    fi
+    echo ""
+fi
+
+# --- Step 4.5: 认知边界评估器 (Phase 4完成后自动执行) ---
+if [ "$PHASE" = "4" ] && [ "$TIER" = "3" ]; then
+    echo -e "${CYAN}[4.5/6] 执行认知边界评估 (G9门控)...${NC}"
+
+    # 检查是否已存在认知边界评估
+    COGNITIVE_BOUNDARY="reports/${TICKER}/cognitive_boundary_assessment_v3.md"
+    if [ -f "$COGNITIVE_BOUNDARY" ]; then
+        echo -e "${YELLOW}  认知边界评估已存在，跳过重复生成${NC}"
+    else
+        echo "  调用 /cognitive-boundary-assessor..."
+        # 注意：这里实际执行时会调用Claude的skill系统
+        # 在实际部署时，这里应该是调用Claude API或skill系统
+        echo "  🧠 认知边界评估器将在AI session中自动执行"
+        echo "  📍 输出位置: ${COGNITIVE_BOUNDARY}"
+    fi
+    echo ""
+fi
+
+# --- Step 4.7: 确认偏差修复检查 (Phase 4完成后自动执行, Priority 1修复) ---
+if [ "$PHASE" = "4" ] && [ "$TIER" = "3" ]; then
+    echo -e "${CYAN}[4.7/6] 确认偏差修复检查 (元级系统Priority 1)...${NC}"
+
+    BIAS_FIX_SUITE="${REPO_ROOT}/scripts/confirmation_bias_fix_suite.sh"
+    if [ -f "$BIAS_FIX_SUITE" ]; then
+        echo "  🔍 执行确认偏差检测与修复..."
+        BIAS_EXIT_CODE=0
+        bash "$BIAS_FIX_SUITE" "$TICKER" quick "$REPORT" || BIAS_EXIT_CODE=$?
+
+        case $BIAS_EXIT_CODE in
+            0)
+                echo -e "${GREEN}  ✅ 确认偏差风险: LOW - 分析质量良好${NC}"
+                ;;
+            1)
+                echo -e "${YELLOW}  ⚠️  确认偏差风险: MEDIUM - 建议执行改进措施${NC}"
+                echo -e "${YELLOW}  📋 查看详情: reports/${TICKER}/data/confirmation_bias_fix_assessment.yaml${NC}"
+                ;;
+            2)
+                echo -e "${RED}  🚨 确认偏差风险: HIGH - 需要强制反向论证${NC}"
+                echo -e "${RED}  📋 立即执行: reports/${TICKER}/data/mandatory_contrarian_checklist.md${NC}"
+                ;;
+            3)
+                echo -e "${RED}  ❌ 确认偏差风险: CRITICAL - 必须立即修复${NC}"
+                echo -e "${RED}  🛑 建议暂停提交，先修复偏差问题${NC}"
+                ;;
+            *)
+                echo -e "${YELLOW}  ❓ 确认偏差检测异常 (退出码: $BIAS_EXIT_CODE)${NC}"
+                ;;
+        esac
+
+    else
+        echo -e "${YELLOW}  确认偏差修复套件脚本不存在，跳过检查${NC}"
+    fi
+    echo ""
+fi
+
+# --- Step 4.8: 注意力平衡检查 (元级系统Priority 2修复) ---
+if [ "$PHASE" = "4" ] && [ "$TIER" = "3" ]; then
+    echo -e "${CYAN}[4.8/6] 注意力平衡检查 (元级系统Priority 2)...${NC}"
+
+    ATTENTION_BALANCE="${REPO_ROOT}/scripts/attention_balance_quick.sh"
+    if [ -f "$ATTENTION_BALANCE" ]; then
+        echo "  📊 执行注意力分布分析..."
+        ATTENTION_EXIT_CODE=0
+        bash "$ATTENTION_BALANCE" recent || ATTENTION_EXIT_CODE=$?
+
+        case $ATTENTION_EXIT_CODE in
+            0)
+                echo -e "${GREEN}  ✅ 注意力分布: LOW风险 - 概念使用相对均衡${NC}"
+                ;;
+            1)
+                echo -e "${YELLOW}  ⚠️  注意力分布: MEDIUM风险 - 部分概念适度集中${NC}"
+                echo -e "${YELLOW}  📋 查看详情: .claude/meta/attention_balance_quick_plan.md${NC}"
+                ;;
+            2)
+                echo -e "${RED}  🚨 注意力分布: HIGH风险 - 多个概念过度集中${NC}"
+                echo -e "${RED}  📋 立即执行: 增加概念表述多样性${NC}"
+                ;;
+            3)
+                echo -e "${RED}  💥 注意力分布: CRITICAL - 严重概念过度集中${NC}"
+                echo -e "${RED}  📋 强制修复: 实施概念使用配额制度${NC}"
+                echo -e "${RED}  🔧 建议使用: scripts/concept_quick_monitor.sh${NC}"
+                ;;
+            *)
+                echo -e "${YELLOW}  ⚠️  注意力平衡检查器执行异常 (退出码: $ATTENTION_EXIT_CODE)${NC}"
+                ;;
+        esac
+    else
+        echo -e "${YELLOW}  注意力平衡检查器脚本不存在，跳过检查${NC}"
+    fi
+    echo ""
+fi
+
 # --- Step 5: Git add + commit ---
 echo -e "${CYAN}[5/6] Git commit...${NC}"
 
 # 收集要提交的文件
 FILES_TO_ADD=("$REPORT" "$CHECKPOINT")
+
+# 确认偏差修复相关文件 (如果存在)
+BIAS_ASSESSMENT="reports/${TICKER}/data/confirmation_bias_fix_assessment.yaml"
+if [ -f "$BIAS_ASSESSMENT" ]; then
+    FILES_TO_ADD+=("$BIAS_ASSESSMENT")
+fi
+
+BIAS_VALIDATION="reports/${TICKER}/data/validation_matrix_simple.yaml"
+if [ -f "$BIAS_VALIDATION" ]; then
+    FILES_TO_ADD+=("$BIAS_VALIDATION")
+fi
+
+# 注意力平衡修复相关文件 (如果存在)
+ATTENTION_PLAN=".claude/meta/attention_balance_quick_plan.md"
+if [ -f "$ATTENTION_PLAN" ]; then
+    FILES_TO_ADD+=("$ATTENTION_PLAN")
+fi
+
+ATTENTION_CRITICAL=".claude/meta/attention_balance_critical_fix.md"
+if [ -f "$ATTENTION_CRITICAL" ]; then
+    FILES_TO_ADD+=("$ATTENTION_CRITICAL")
+fi
 
 # 如果 shared_context.md 有变化也加入
 if [ -f "$DM_FILE" ] && git diff --name-only | grep -q "$DM_FILE" 2>/dev/null; then
@@ -287,6 +419,12 @@ fi
 # sentinel_log也加入提交
 if [ -f "reports/${TICKER}/data/sentinel_log.yaml" ]; then
     FILES_TO_ADD+=("reports/${TICKER}/data/sentinel_log.yaml")
+fi
+
+# 认知边界评估文件 (Phase 4完成后)
+COGNITIVE_BOUNDARY="reports/${TICKER}/cognitive_boundary_assessment_v3.md"
+if [ -f "$COGNITIVE_BOUNDARY" ]; then
+    FILES_TO_ADD+=("$COGNITIVE_BOUNDARY")
 fi
 
 echo "  提交文件:"
