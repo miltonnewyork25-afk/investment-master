@@ -1,6 +1,7 @@
-# Deep-Dive 分析协议 v18.5 (Tier 3)
+# Deep-Dive 分析协议 v18.6 (Tier 3)
 
 > 仅在 `/deep-dive [公司代码]` 时加载。多会话Phase制，机构级深度研究。
+> **Skill调度权威源**: 所有Skill的触发时机、条件、产出以 `.claude/skills/orchestrator/SKILL.md` v22.1 "Sub-Agent Assignments + Skill调度清单" 表为准。本文件描述Skill的功能和门控，orchestrator决定何时触发。两处冲突时以orchestrator为准。
 > **v18.5变化**: Moat Data Card v1.0→v2.0(6→10字段组)——新增交易策略预备字段(估值三档/盈利可预测性E-Score/回撤DNA/流动性)。E-Score在Phase 0自动计算，估值三档从Phase 3标准化提取，回撤+流动性由`scripts/trading_datacard.py`自动填充。零额外分析成本，为未来Sharpe最优组合交易策略做数据铺垫。
 > **v18.4变化**: Phase 5新增护城河数据卡(Moat Data Card)标准产出——6个结构化字段(垄断纯度/定价权阶段/TAM渗透率/护城河年龄/转换成本/市场隐含假设)以YAML格式输出到`reports/{TICKER}/data/moat_datacard.yaml`，零额外分析成本(数据均来自Phase 1-3已有分析)，为跨公司产品(CQI排行榜/筛选器)提供机器可读数据源。
 > **v18.2变化**: 品质量化评估框架集成(Phase 0/1/2/3/5分阶段评估21维度) + 投资大师圆桌v2.0集成(Phase 3.8方法论碰撞深化引擎, QG-09.8门控)。详见`docs/company_quality_scoring.md` + `.claude/skills/investment-committee/SKILL.md`。
@@ -399,6 +400,10 @@ Phase 1公司定位分析中，同步评估以下品质维度(写入quality_scor
 - QG-02: 产业链映射≥10个关键节点
 - QG-03: 预测市场数据≥8个相关事件 + Top 10维度覆盖计划已输出
 
+**Phase 1→2过渡必触发Skill** (v18.6新增, 详见orchestrator v22.1调度表):
+- **`/expectation-gap`**: E→R→G→T四步流程, 7种PEP模式。识别市场定价中的预期差
+- **`/cq-lifecycle-tracker`**: P1后CQ置信度首次更新
+
 ### Phase 2: 财务与价格含义
 
 **产出**: 财务数据组织 + Reverse DCF(价格隐含假设) + [深挖]问题深入分析
@@ -592,9 +597,11 @@ A-Score评估护城河存量质量("堡垒有多坚固")，PtW评估战略方向
 > **原则**: Phase 4的价值在于**对抗思维过程**（认知偏差检测、看空钢人论证、结构性风险），不在于展示"我找到了N个错误"。错误被修正后，读者不需要知道它们曾经存在。
 
 **必做模块**:
-- **红队七问 (v10.0新增)**: RT-1~RT-7固定问题逐一回答。详见 `docs/red_team_protocol.md`
+- **`/red-team-suite` (v2.0)**: RT-1~RT-7执行+双向校准+有效性门控。一次调用完成全部对抗审查。详见 `.claude/skills/red-team-suite/SKILL.md`
   - RT-1 承重墙测试 | RT-2 认知偏差审计 | RT-3 空头钢人 | RT-4 数据质量审计
   - RT-5 黑天鹅压力测试 | RT-6 时间框架挑战 | RT-7 替代解释
+- **`/risk-topology` (v2.0)**: RT-5完成后强制执行。MVP模式(8+3+1)。详见 `.claude/skills/risk-topology/SKILL.md`
+- **`/omission-scanner` (v1.0)**: Phase 3→4过渡时执行。详见 `.claude/skills/omission-scanner/SKILL.md`
 - **Cross-Agent验证 (v13.0新增)**: Phase 4的Agent B**必须读Phase 1-3的staging文件**。
   - 读取范围: staging/phase1_*.md + staging/phase2_*.md + staging/phase3_*.md
   - 验证目标: Agent A叙事推理链逻辑跳跃, Agent C估值参数一致性
@@ -940,6 +947,15 @@ liquidity:
 - 不确定的字段写"TBD"或0，不编造
 - 旧报告: 运行 `python3 scripts/trading_datacard.py --batch` 可批量填充字段8-10
 
+**Phase 4→5过渡必触发Skill** (v18.6新增, 详见orchestrator v22.1调度表):
+- **`/cognitive-boundary-assessor`** Full版: 可推演度/业务复杂度/黑箱比例量化 → 嵌入Phase 5报告
+- **`/assumption-audit M1+M2+M3`** 完整版: 信念反演+共识解构+约束分类 → 验证估值假设链
+- **`/cq-lifecycle-tracker`** P4后更新: 红队校准后的CQ置信度演化
+
+**Phase 5必触发Skill**:
+- **`/valuation-quality-gate`**: 离散度诚实性检查 + 巨头估值框架(>$500B) → 估值完成后执行
+- **`/cq-lifecycle-tracker`** 最终闭环: Phase 5 CQ终版
+
 **字数目标**: ≥30,000字符 (wc -m)
 
 **门控 QG-12 (v10.0)**:
@@ -1236,7 +1252,7 @@ Step 5: 五引擎协同 → 综合信号+论点验证
 | 5 | KS 10-15条(9字段)+追踪信号5-8个(特异性测试)+定性评估10维度+CQ≥5个(5要素)+Reverse DCF+零操作建议 |
 | 5.5 | **Complete报告组装** → 填写`moat_datacard.yaml` → `quality_gate_complete.sh` exit 0 → 11项CG全部通过 → git commit → 才能标记"全量完成" |
 | 5.6 | **A/B文档分离** → 生成Strategy Card(`{TICKER}_Strategy_Card_INTERNAL.md`, 模板见`docs/strategy_card_template.md`) → Complete报告头部改为对外版(移除评级/期望回报, 改为品质定位) → 详见`docs/ab_document_protocol.md` |
-| 6 | **反思(飞轮)** → 写 `reports/{TICKER}/data/reflection.md` → 提取可泛化教训 → 如有框架提案则更新main的docs/ (详见 `docs/compound_learning_flywheel.md`) |
+| 6 | **`/deep-reflection`**(3步反思: R1行业基建+R2报告审计+R3评分升级) → 写 `reports/{TICKER}/data/reflection.md` → 提取可泛化教训 → 如有框架提案则更新main的docs/ (详见 `docs/compound_learning_flywheel.md`) |
 
 ---
 
