@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v7.0
+# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v12.0
 # ============================================================
 # 用法:
 #   ./tests/quality_gate_complete.sh <Complete报告.md> [benchmark_chars] [possibility_width]
@@ -28,8 +28,17 @@
 #   CG17. P/E一致性 (WARN级, v4.0新增)
 #   CG18. 财务数据交叉验证声明 (WARN级, v5.0新增)
 #   CG19. AI腔检测 (WARN级, v7.0新增) — 检测AI写作模式(不是X而是Y/空洞过渡/伪亲密等)
+#   CG20. 护城河数据卡 (WARN级, v8.0新增/v9.0升级) — 检查moat_datacard.yaml存在+10字段组完整
+#   CG21. 入场纪律卡 (WARN级, v10.0新增) — 检查Strategy Card存在+9模块完整(A/B文档分离)
+#   CG22. 认知边界评估 (WARN级, v11.0新增) — 检查cognitive_boundary_assessment_v3.md存在+格式完整
+#   CG23. 预期差分析 (WARN级, v12.0新增) — 检查E→R→G→T四步完整性+动作判断
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v12.0 (2026-03-31) — CG23预期差分析检查(E→R→G→T四步+动作判断, 提升执行率修复)
+# 更新: v11.0 (2026-03-30) — CG22认知边界评估检查(G9门控强制, 确保所有深度报告包含认知局限性评估)
+# 更新: v10.0 (2026-03-14) — CG21入场纪律卡检查(A/B文档分离: Complete对外+Strategy Card内部)
+# 更新: v9.0 (2026-03-12) — CG20升级至10字段组(v2.0交易策略预备: 估值三档+E-Score+回撤DNA+流动性)
+# 更新: v8.0 (2026-03-12) — CG20护城河数据卡检查(为CQI排行榜+跨公司产品提供结构化数据)
 # 更新: v7.0 (2026-03-10) — CG19 AI腔检测(insights报告: 用户多次手动修正AI写作模式)
 # 更新: v6.0 (2026-02-19) — CG4/CG5自然语言检测(EVO-AAPL-001: KS/VP内容充分但格式缺失时降级通过)
 # 更新: v5.0 (2026-02-16) — CG18财务数据交叉验证声明(WARN, 深层质量协议L2)
@@ -572,10 +581,141 @@ else
     echo -e "${GREEN}PASS CG19: AI腔检测 0处${NC}"
 fi
 
+# === CG20: 护城河数据卡检查 (v8.0新增/v9.0升级, WARN级) ===
+# v9.0: 从6字段组扩展至10字段组(v2.0交易策略预备字段)
+# 从报告路径推断ticker和数据卡路径
+REPORT_DIR=$(dirname "$FILE")
+# 尝试从报告路径中提取ticker目录
+TICKER_DIR=""
+if echo "$REPORT_DIR" | grep -q "reports/"; then
+    TICKER_DIR=$(echo "$REPORT_DIR" | sed 's|.*reports/\([^/]*\).*|\1|')
+fi
+DATACARD_PATH=""
+if [ -n "$TICKER_DIR" ]; then
+    # 在报告同级目录或data子目录查找
+    for candidate in \
+        "$(dirname "$FILE")/data/moat_datacard.yaml" \
+        "$(dirname "$(dirname "$FILE")")/data/moat_datacard.yaml" \
+        "reports/${TICKER_DIR}/data/moat_datacard.yaml"; do
+        if [ -f "$candidate" ]; then
+            DATACARD_PATH="$candidate"
+            break
+        fi
+    done
+fi
+
+if [ -n "$DATACARD_PATH" ] && [ -f "$DATACARD_PATH" ]; then
+    # 检查10个字段组是否存在(允许TBD/0, 不允许完全缺失)
+    # v1.0: monopoly_purity, pricing_power, tam_penetration, moat_age, switching_cost, market_implied
+    # v2.0: valuation_anchors, earnings_predictability, drawdown_profile, liquidity
+    DATACARD_FIELDS=0
+    for field in monopoly_purity pricing_power tam_penetration moat_age switching_cost market_implied valuation_anchors earnings_predictability drawdown_profile liquidity; do
+        if { grep -q "^${field}:" "$DATACARD_PATH" 2>/dev/null || grep -q "^  ${field}:" "$DATACARD_PATH" 2>/dev/null; }; then
+            DATACARD_FIELDS=$((DATACARD_FIELDS + 1))
+        fi
+    done
+    if [ "$DATACARD_FIELDS" -ge 10 ]; then
+        echo -e "${GREEN}PASS CG20: 护城河数据卡 v2.0 (${DATACARD_FIELDS}/10字段组)${NC}"
+    elif [ "$DATACARD_FIELDS" -ge 6 ]; then
+        echo -e "${YELLOW}WARN CG20: 护城河数据卡 v1.0兼容 (${DATACARD_FIELDS}/10字段组, 运行 scripts/trading_datacard.py 补充v2.0字段)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    else
+        echo -e "${YELLOW}WARN CG20: 护城河数据卡字段不完整 (${DATACARD_FIELDS}/10)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    echo -e "${YELLOW}WARN CG20: 护城河数据卡未找到 (moat_datacard.yaml)${NC}"
+    WARNINGS=$((WARNINGS + 1))
+fi
+
+# === CG21: 入场纪律卡(Strategy Card)检查 (v10.0新增, WARN级) ===
+# A/B文档分离: Complete(对外) + Strategy Card(内部)
+STRATEGY_CARD_PATH=""
+if [ -n "$TICKER_DIR" ]; then
+    for candidate in \
+        "$(dirname "$FILE")/${TICKER_DIR}_Strategy_Card_INTERNAL.md" \
+        "reports/${TICKER_DIR}/${TICKER_DIR}_Strategy_Card_INTERNAL.md"; do
+        if [ -f "$candidate" ]; then
+            STRATEGY_CARD_PATH="$candidate"
+            break
+        fi
+    done
+fi
+
+if [ -n "$STRATEGY_CARD_PATH" ] && [ -f "$STRATEGY_CARD_PATH" ]; then
+    # 检查9个核心模块是否存在
+    SC_MODULES=0
+    for module in "估值快照" "入场纪律" "等待期收益" "组合角色" "Kill Switch" "催化剂日历" "温水煮青蛙" "隐含赌注" "Moat Data Card"; do
+        if grep -q "$module" "$STRATEGY_CARD_PATH" 2>/dev/null; then
+            SC_MODULES=$((SC_MODULES + 1))
+        fi
+    done
+    if [ "$SC_MODULES" -ge 8 ]; then
+        echo -e "${GREEN}PASS CG21: 入场纪律卡存在 (${SC_MODULES}/9模块)${NC}"
+    else
+        echo -e "${YELLOW}WARN CG21: 入场纪律卡模块不完整 (${SC_MODULES}/9)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    echo -e "${YELLOW}WARN CG21: 入场纪律卡未找到 (${TICKER_DIR}_Strategy_Card_INTERNAL.md) — 详见docs/ab_document_protocol.md${NC}"
+    WARNINGS=$((WARNINGS + 1))
+fi
+
+# === CG22: 认知边界评估检查 (v11.0新增, WARN级) ===
+# 检查认知边界评估文件是否存在
+COGNITIVE_BOUNDARY="${TICKER_DIR}cognitive_boundary_assessment_v3.md"
+if [ -f "$COGNITIVE_BOUNDARY" ]; then
+    # 检查必要字段是否存在
+    CB_READABILITY=$(grep -c "可推演度：" "$COGNITIVE_BOUNDARY" || echo 0)
+    CB_COMPLEXITY=$(grep -c "业务复杂度：" "$COGNITIVE_BOUNDARY" || echo 0)
+    CB_BLACKBOX=$(grep -c "黑箱比例：" "$COGNITIVE_BOUNDARY" || echo 0)
+    CB_INSIGHTS=$(grep -c "关键洞察" "$COGNITIVE_BOUNDARY" || echo 0)
+
+    if [ "$CB_READABILITY" -gt 0 ] && [ "$CB_COMPLEXITY" -gt 0 ] && [ "$CB_BLACKBOX" -gt 0 ] && [ "$CB_INSIGHTS" -gt 0 ]; then
+        echo -e "${GREEN}PASS CG22: 认知边界评估完整 (v3.0格式)${NC}"
+    else
+        echo -e "${YELLOW}WARN CG22: 认知边界评估格式不完整${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    echo -e "${YELLOW}WARN CG22: 认知边界评估未找到 (cognitive_boundary_assessment_v3.md) — 请在Phase 4后执行 /cognitive-boundary-assessor${NC}"
+    WARNINGS=$((WARNINGS + 1))
+fi
+
+# === CG23: 预期差分析检查 (v12.0新增, WARN级) ===
+# 检查预期差分析完整性(E→R→G→T四步+动作判断)
+EG_FILE="${TICKER_DIR}data/expectation_gap_analysis.yaml"
+if [ -f "$EG_FILE" ]; then
+    # 检查E→R→G→T四个域
+    EG_E_DOMAIN=$(grep -c "E_domain:" "$EG_FILE" || echo 0)
+    EG_R_DOMAIN=$(grep -c "R_domain:" "$EG_FILE" || echo 0)
+    EG_G_DOMAIN=$(grep -c "G_domain:" "$EG_FILE" || echo 0)
+    EG_T_DOMAIN=$(grep -c "T_domain:" "$EG_FILE" || echo 0)
+    EG_ACTION=$(grep -c "action_recommendation:" "$EG_FILE" || echo 0)
+
+    EG_TOTAL_DOMAINS=$((EG_E_DOMAIN + EG_R_DOMAIN + EG_G_DOMAIN + EG_T_DOMAIN))
+
+    if [ "$EG_TOTAL_DOMAINS" -ge 4 ] && [ "$EG_ACTION" -gt 0 ]; then
+        echo -e "${GREEN}PASS CG23: 预期差分析完整 (E→R→G→T四步 + 动作判断)${NC}"
+    else
+        echo -e "${YELLOW}WARN CG23: 预期差分析不完整 (域: ${EG_TOTAL_DOMAINS}/4, 动作: ${EG_ACTION}/1)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    # 检查是否在报告正文中有预期差分析
+    EG_INLINE=$(grep -ciE "预期差|expectation.*gap|E→R→G→T|市场隐含.*vs.*实际|Reverse.*DCF.*隐含" "$FILE" || echo 0)
+    if [ "$EG_INLINE" -ge 3 ]; then
+        echo -e "${GREEN}PASS CG23: 预期差分析存在 (内联于报告, ${EG_INLINE}次提及)${NC}"
+    else
+        echo -e "${YELLOW}WARN CG23: 预期差分析缺失 — 请执行 /expectation-gap ${TICKER} 或补充Reverse DCF分析${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+fi
+
 # --- 汇总 ---
 echo ""
 echo "=============================================="
-echo -e " ${CYAN}Complete Quality Gate v7.0 检查完成${NC}"
+echo -e " ${CYAN}Complete Quality Gate v10.0 检查完成${NC}"
 echo "=============================================="
 echo " 文件: $(basename "$FILE")"
 echo " 总字符: ${CHARS} / 基准 ${BENCHMARK_CHARS} (地板 ${FLOOR_COMPLETE})"
