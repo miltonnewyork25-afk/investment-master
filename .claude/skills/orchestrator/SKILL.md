@@ -215,6 +215,7 @@ question_dag:
 | P2 | DAG-3 | Agent C(**`/valuation-build`触发**) + Agent B(承重墙) + QSA | Reverse DCF + SOTP + **Python DCF + 敏感性矩阵** |
 | P3 | DAG-2+3 | Agent A(叙事) + Agent C(引擎) + QSA | 护城河+五引擎 |
 | P4 | DAG-4 | Agent B(**Bear隔离**) + QSA(验证) | RT-1~7 + KS |
+| **P4.5** | **Lens** | **编排器(不dispatch Agent)** | **Top 5结晶 + 前台重组计划** |
 | P5 | DAG-5 | Agent A+B+C(铁律3A) + QSA | Complete + 审计包 |
 | P6 | DAG-7 | 编排器 | reflection.md |
 
@@ -258,6 +259,7 @@ question_dag:
 - Artifact: 写入哪些EC字段 (写入 staging/{TICKER}_P{N}_{Agent}.md)
 - Stop: 你认为问题已回答的理由
 - Metric: 可量化的完成指标
+- **Lens Seed**: 本模块最可能贡献的深层投资视角是什么？改变了哪些变量排序？（2句话，写在staging文件末尾）
 
 ### Evidence Card 规则:
 - 每个数字必须有EC (claim_type + source + method)
@@ -274,6 +276,63 @@ question_dag:
 完整内容写入 staging 文件。返回≤500字符摘要:
 agent/{角色}/file/{文件路径}/chars/{字符数}/ec_count/{EC数}/stop/{停止理由}
 ```
+
+### Step 6.5: Phase 4.5 — Top 5 Lens Crystallization (v22.1新增)
+
+> **原则**: 先研究，再结晶，再前置。Top 5是后发现产物，不是预设。
+> **时机**: Phase 4红队完成后、Phase 5组装前。不dispatch Agent，编排器自己执行。
+
+**输入**: 所有staging产出(P0-P4) + 红队修正结果 + Kill Switch + 承重墙表
+
+**执行清单**:
+
+1. **扫描全稿**: 找出反复出现但未被前置的底层变量
+2. **提炼Top 10候选**: 每个候选必须满足——
+   - 整合了≥2个Phase的发现（不是单章节观点）
+   - 改变了承重墙排序 或 估值假设 或 市场预期理解
+   - 有清晰的验证/证伪路径
+3. **筛选Top 5**: 从Top 10中选最值钱的5个，按以下标准排序——
+   - 是否是整篇报告最深的一刀
+   - 是否能压缩多个章节
+   - 是否是最有价值的非共识结晶
+4. **写成判断而非问题**:
+   ```
+   ❌ "AI对公司的影响如何？"
+   ✅ "AI推理需求使公司从周期股变为成长股——但市场已在107x PE中定价了这个转变"
+   ```
+5. **每个Top 5产出Lens Card**:
+   - 视角标题（一句话判断）
+   - 市场是否已定价
+   - 关键投资含义
+   - 打在哪个一阶变量（收入/利润率/资本效率/估值倍数）
+   - 验证条件
+
+**产出**: `staging/{TICKER}_P4.5_top5_lenses.md`
+
+### Step 6.75: Phase 5前台开头结构规则 (v22.1新增)
+
+> **原则**: 先结果后解释，先压缩后展开，先给读者答案再给研究过程。
+
+**Phase 5组装Complete时，开头必须按以下顺序**:
+
+```
+1. 一句话结论（评级+公允价值+核心判断）
+2. Top 5 Core Investment Lenses（来自P4.5的Lens Cards）
+3. 市场在定价什么 / 市场可能错在哪里
+4. 3-5个最重要数字或最重要矛盾
+5. 承重墙与失效条件摘要（Kill Switch）
+6. 正文主体
+```
+
+**正文章节必须服务Top 5**: 每章开头一句话说明"本章证明Top 5中的哪一个"。
+如果某章不服务任何Top 5 → 压缩到≤500字 或 移到附录。
+
+**禁止出现在开头的内容**:
+- 方法论自述/框架版本说明
+- Phase编号/阶段说明
+- 冗长目录解释
+- 详细评分系统说明
+- 过多口径说明
 
 ### Step 7: DAG-7 复利闭环
 
