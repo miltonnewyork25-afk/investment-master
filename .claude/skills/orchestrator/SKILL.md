@@ -3,7 +3,7 @@ name: orchestrator
 description: 投资分析框架编排器。识别公司行业，组装通用模块+行业适配模块，生成执行清单和进度追踪。当用户要求分析任何公司时自动触发。
 ---
 
-# 投资分析框架编排器 v22.2 (DAG-Aware + 三层自主调度)
+# 投资分析框架编排器 v22.0 (DAG-Aware)
 
 > **核心指令**: 你是无答案编排器。你只能输出问题。每个问题必须绑定 Proof/Artifact/Owner/Stop/Metric。关键约束优先用脚本/checkpoint强制，不靠prompt记忆。
 > **完整DAG规范**: `docs/dag_orchestrator.md`
@@ -67,15 +67,14 @@ env_fingerprint:
 
 ### Step 1.25: 单一入口启动 + Pre-Flight Gate (Phase -1/-0.5)
 
-> **单一入口**: `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY} production {TARGET_CHARS}`
+> **单一入口**: `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY}`
 > **触发条件**: Tier 3分析时**无条件执行** — 即使用户只说"分析XX"也必须先运行
 > **纵深防御**: `phase_sentinel.sh` 在每个Phase完成后自动重新验证前序产出
-> **字符目标优先级**: 用户指定 > 行业推算 > 全局默认。用户说"200K"则传入200000，AI**禁止**擅自提高。
 
 **执行流程** (AI必须按顺序完成):
-1. `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY} production {TARGET_CHARS}` → 自动完成:
+1. `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY}` → 自动完成:
    - 创建 data/ + staging/ 目录
-   - 扫描同行业报告 → 计算目标字符范围 (用户指定时以用户值为准)
+   - 扫描同行业报告 → 计算目标字符范围 (复杂度估计)
    - Phase -1 知识检索 → data/knowledge_context.md (≥500字符)
    - 提取进化教训 (最近3份报告的成功/失败经验)
    - 生成 data/launch_brief.md (**AI必须阅读**)
@@ -177,7 +176,7 @@ question_dag:
 ## 行业：{行业类型}
 ## 框架版本：v12.0 (DAG-Aware)
 ## 环境指纹：{env_fingerprint}
-## 目标字数：checkpoint.yaml的target_chars (用户指定优先，否则行业推算)
+## 最低字数：85,000 × {行业系数} = {目标字数} (wc -m)
 
 ### Scope Lock
 - Goal: {task.goal}
@@ -208,88 +207,16 @@ question_dag:
 | P5 | **3** | **3** | **铁律: 恰好3 Agent**(A评估+B KS/TS+C CQ闭环) |
 | **合计** | **≥20** | **22-29** | 实证安全区(10报告验证) |
 
-### Sub-Agent Assignments + Skill调度清单 (v22.2 — 三层自主调度)
-
-> **设计原则**: Agent对公司的理解 > 预设清单。框架负责**不让你忘记评估**，Agent负责**决定是否执行**。
-> **v22.2核心**: v22.0静默跳过(Bug) → v22.1全部强制(过度矫正) → v22.2三层自主调度(平衡点)
-> **铁律M兼容**: 每Phase仍然只加载3-5个Skill，不预加载全部。A类除外(A类是分析骨架，不是额外负担)。
-
-#### 三层分类标准
-
-| 层级 | 含义 | Agent权限 | 跳过代价 |
-|------|------|----------|---------|
-| **🔴 A 硬性必触发** | 缺了=分析框架残缺，读者会发现缺失 | **无权跳过** | 报告不完整 |
-| **🟡 B 必须评估** | 有明确触发条件，满足则跑，不满足可跳过 | **有权跳过，必须写1句理由到checkpoint** | 可能遗漏洞见 |
-| **🟢 C 按需加载** | Agent根据公司特性自主判断是否有价值 | **完全自主，不需要记录跳过** | 可接受 |
-
-#### Phase-Skill调度表
-
-| Phase | Agent分配 | 🔴A 硬性必触发 | 🟡B 必须评估 | 🟢C 按需加载 |
-|-------|-----------|---------------|-------------|-------------|
-| P0+0.5 | 编排器 + 数据预取Agent×3 | **`/data-prefetch`** | — | — |
-| P0.75 | 编排器 | — | — | `/cognitive-boundary-assessor` Lite预评 |
-| P1 | Agent A+B+C + QSA | **`/moat-evaluate`** | `/ai-impact`(跳过条件: AI与主业无关) | — |
-| P1→P2间 | 编排器 | **`/expectation-gap`** | — | — |
-| P2 | Agent C + Agent B + QSA | **`/valuation-build`** | `/assumption-audit M1`(触发: Reverse DCF完成后) | — |
-| P3 | Agent A + Agent C + QSA | — | `/competitive-benchmarking`(触发: 有可比公司或历史类比需求) · `/investment-committee`(触发: controversy_score≥4) | — |
-| P3→P4间 | 编排器 | — | `/omission-scanner`(评估: 是否有近期重大行业事件可能遗漏) | — |
-| P4 | Agent B(Bear隔离) + QSA | **`/red-team-suite`** | `/risk-topology`(评估: 风险间是否存在协同关系值得映射) | — |
-| P4→P5间 | 编排器 | **`/cognitive-boundary-assessor`** Full版 | `/assumption-audit M2+M3`(评估: 是否有管理层叙事需要解构/CQ需要约束分类) | — |
-| P5 | Agent A+B+C + QSA | **`/valuation-quality-gate`** | — | — |
-| P6 | 编排器 | **`/deep-reflection`** | — | — |
-
-#### CQ置信度追踪 — 独立规则
-
-`/cq-lifecycle-tracker` 不绑定单一Phase。规则: **P1/P3/P4完成后必须更新(🔴A级)，P2/P5完成后建议更新(🟡B级)**。
-- P1后: CQ首次量化(必须)
-- P2后: 估值数据可能改变CQ(评估)
-- P3后: 护城河深度分析后调整(必须)
-- P4后: 红队校准后调整(必须，通常调幅最大)
-- P5后: 最终闭环(评估)
-
-### Skill调度自检 (v22.2)
-
-> **核心变化**: 从"检查是否全部执行"变为"检查是否全部评估过"。
-
-```
-Phase完成自检 (写入checkpoint.yaml):
-skill_log:
-  executed: [列出已执行的Skill]
-  skipped_with_reason:      # 🟡B级跳过必须有
-    - skill: "/investment-committee"
-      reason: "controversy_score=2, <4阈值"
-  # 🟢C级跳过不需要记录
-  # 🔴A级不允许出现在skipped中
-```
-
-**8个🔴A级Skill (无权跳过)**:
-| # | Skill | Phase | 为什么是A级 |
-|---|-------|-------|-----------|
-| 1 | `/data-prefetch` | P0 | 数据基础，后续全部依赖 |
-| 2 | `/moat-evaluate` | P1 | 护城河是报告三大支柱之一 |
-| 3 | `/expectation-gap` | P1→P2 | 预期差是投资判断核心——找到市场错看的那一层 |
-| 4 | `/valuation-build` | P2 | 估值是报告三大支柱之一 |
-| 5 | `/red-team-suite` | P4 | 对抗审查防确认偏差，缺了=单边论证 |
-| 6 | `/cognitive-boundary-assessor` Full | P4→P5 | 认知边界是质量门控G9硬性要求 |
-| 7 | `/valuation-quality-gate` | P5 | 估值一致性检查，防铁律K违反 |
-| 8 | `/deep-reflection` | P6 | 复利飞轮闭环，学习机制 |
-
-**5个🟡B级Skill (必须评估，可跳过+写理由)**:
-| # | Skill | Phase | 典型跳过理由 |
-|---|-------|-------|------------|
-| 9 | `/ai-impact` | P1 | "公司主业与AI无关(如消费食品/公用事业)" |
-| 10 | `/assumption-audit` | P2/P4→P5 | "Reverse DCF假设简单透明，无需深度反演" |
-| 11 | `/competitive-benchmarking` | P3 | "独占市场/无直接可比公司" |
-| 12 | `/investment-committee` | P3 | "controversy_score<4，分歧度不足以支撑圆桌" |
-| 13 | `/omission-scanner` | P3→P4 | "行业近3月无重大事件" |
-| 14 | `/risk-topology` | P4 | "风险独立性强，无协同放大效应" |
-
-**1个🟢C级Skill (完全自主)**:
-| # | Skill | Phase | 何时有价值 |
-|---|-------|-------|----------|
-| 15 | `/cognitive-boundary-assessor` Lite | P0.75 | 复杂/黑箱公司(算法驱动/多层控股)预评有用，简单公司可跳过 |
-
-**自主权边界**: Agent对🟡B/🟢C的判断权是完整的。但如果Phase 5质量门控发现某个被跳过的B级Skill**本应执行**(如遗漏扫描跳过但Complete缺少重大行业事件)，这算**Agent判断失误**而非框架问题——Phase 5门控会拦住它。
+### Sub-Agent Assignments
+| Phase | DAG | Agent分配 | EC Target |
+|-------|-----|-----------|-----------|
+| P0+0.5 | DAG-0+1 | 编排器 + 数据预取Agent×3 | EC-FIN/MKT draft |
+| P1 | DAG-2 | Agent A+B+C + QSA + **`/moat-evaluate`(护城河章节)** + **`/ai-impact`(AI章节, M6跳过)** | EC集合(draft) + 口径锁定 + **quality_scorecard.md** |
+| P2 | DAG-3 | Agent C(**`/valuation-build`触发**) + Agent B(承重墙) + QSA | Reverse DCF + SOTP + **Python DCF + 敏感性矩阵** |
+| P3 | DAG-2+3 | Agent A(叙事) + Agent C(引擎) + QSA | 护城河+五引擎 |
+| P4 | DAG-4 | Agent B(**Bear隔离**) + QSA(验证) | RT-1~7 + KS |
+| P5 | DAG-5 | Agent A+B+C(铁律3A) + QSA | Complete + 审计包 |
+| P6 | DAG-7 | 编排器 | reflection.md |
 
 ### 看空分析计划
 - 目标篇幅: ≥18% (硬性) / ≥30% (目标)
@@ -305,21 +232,19 @@ skill_log:
 | Complete | quality_gate_complete.sh | CG1-14任一FAIL |
 ```
 
-### Step 6: 执行 — DAG节点遍历 (v22.2 — 三层自主调度)
+### Step 6: 执行 — DAG节点遍历
 
 **每个Phase执行时**:
 
-1. **Skill调度扫描**: 查阅Phase-Skill调度表 → 🔴A级直接执行 → 🟡B级评估触发条件 → 🟢C级自主判断
-2. **PreFlect检查**: 该Phase有预定的PreFlect节点吗? → 执行事前批判
-3. **问题dispatch**: 将该Phase的L2问题分配给Agent A/B/C(按角色分工)
-4. **EC收集**: Agent产出EC(轻量EC写入staging, 完整EC写入shared_context.md)
-5. **QSA检查**: 质量哨兵脚本对每个staging产出自动检查(数值一致性/密度/合规)
-6. **门禁检查**: 运行对应的确定性门禁脚本
-7. **Skill日志写入**: checkpoint.yaml记录 `executed` + `skipped_with_reason`(🟡B级跳过必须有理由)
-8. **Checkpoint写入**: 更新checkpoint.yaml + ec_stats
-9. **Git Commit**: 门禁通过后commit
+1. **PreFlect检查**: 该Phase有预定的PreFlect节点吗? → 执行事前批判
+2. **问题dispatch**: 将该Phase的L2问题分配给Agent A/B/C(按角色分工)
+3. **EC收集**: Agent产出EC(轻量EC写入staging, 完整EC写入shared_context.md)
+4. **QSA检查**: 质量哨兵脚本对每个staging产出自动检查(数值一致性/密度/合规)
+5. **门禁检查**: 运行对应的确定性门禁脚本
+6. **Checkpoint写入**: 更新checkpoint.yaml + ec_stats
+7. **Git Commit**: 门禁通过后commit
 
-**子代理dispatch模板 (v22.1)**:
+**子代理dispatch模板 (v22.0)**:
 
 ```markdown
 ## 任务: {Phase} — {L2问题列表}
@@ -333,13 +258,6 @@ skill_log:
 - Artifact: 写入哪些EC字段 (写入 staging/{TICKER}_P{N}_{Agent}.md)
 - Stop: 你认为问题已回答的理由
 - Metric: 可量化的完成指标
-
-### 本Phase Skill调度 (v22.2三层):
-{从Phase-Skill调度表查询本Phase行，注入:}
-- 🔴A 必须执行: {skill列表}
-- 🟡B 评估后决定: {skill列表 + 触发条件}
-- 🟢C 自主决定: {skill列表}
-- **🟡B跳过时写1句理由到checkpoint。🔴A不允许跳过。**
 
 ### Evidence Card 规则:
 - 每个数字必须有EC (claim_type + source + method)
@@ -371,7 +289,7 @@ Phase 5 完成+Complete组装+CG通过后:
 
 | 指标 | v22.0 要求 | 来源 |
 |------|-----------|------|
-| **总字数** | ≥ target_chars 且 **≤ target_chars×120%**(超20%=膨胀禁止提交) | CG1 |
+| **总字数** | ≥85,000 × 行业系数 (wc -m) | CG1 |
 | **EC completeness** | ≥95% 必填字段完备 | DAG-2 |
 | **EC verification rate** | ≥80% verified | DAG-2 |
 | **EC fact ratio** | ≥50% fact类型 | DAG-2 |
