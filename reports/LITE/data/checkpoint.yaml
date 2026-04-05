@@ -1,0 +1,39 @@
+schema_version: "2.0"
+ticker: LITE
+company: "Lumentum Holdings Inc."
+framework_version: v22.1
+worktree: "SEMICONDUCTOR"
+industry: "SEMICONDUCTOR"  # More precisely: Optical Communications / Photonics
+last_updated: "2026-04-05T10:05:00+00:00"
+
+current_phase: 0
+phase_status: in_progress
+phases_completed: ["-1", "-0.5"]
+
+target_chars: 300000
+target_range: "240K-375K"
+hard_floor: 200000
+quality_target: 4.4
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
+  price: 826.88
+  market_cap_diluted_B: 72.6
+  ev_diluted_B: 75.3
+  pw_fair_value: 51
+  expected_return: "-93.8%"
+  core_signal: "EXTREME OVERVALUATION — Reverse DCF implies $42-57B revenue needed vs consensus peak $6.6B"
+
+sessions:
+  - session: 1
+    date: 2026-04-05
+    phases: ["-1", "-0.5", "0"]
+    notes: "Phase 0 data collection + valuation model + thesis crystallization"
+
+pre_mortem:
+  pm1_prep_sufficient: true
+  pm2_output_thin: "MONITOR"
+  pm3_single_source: "FLAGGED — FMP FY2021=FY2022 duplicate"
+  pm4_independent_methods: "PENDING"
+  pm5_red_team_genuine: "PENDING"

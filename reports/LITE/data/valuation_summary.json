@@ -1,0 +1,34 @@
+{
+  "ticker": "LITE",
+  "model_date": "2026-04-05",
+  "current_price": 826.88,
+  "shares_basic_M": 71.1,
+  "shares_diluted_M": 87.8,
+  "market_cap_B": 72.6,
+  "ev_diluted_B": 75.3,
+  "net_debt_B": 2.7,
+  "scenarios": {
+    "bull": {
+      "probability": 0.2,
+      "fair_value": 148.0,
+      "terminal_pct": 79.0,
+      "key_assumption": "AI structural demand, peak revenue $7.5B, 18% FCF margin"
+    },
+    "base": {
+      "probability": 0.5,
+      "fair_value": 53.0,
+      "terminal_pct": 73.0,
+      "key_assumption": "Consensus path, peak $6.6B then decline to $4.2B, 15% peak FCF margin"
+    },
+    "bear": {
+      "probability": 0.3,
+      "fair_value": -17.0,
+      "terminal_pct": 62.0,
+      "key_assumption": "Cyclical bust/overbuild, peak $3.5B, negative FCF in downturn"
+    }
+  },
+  "probability_weighted_fv": 51.0,
+  "expected_return_pct": -93.8,
+  "wacc": 0.1,
+  "terminal_growth": 0.03
+}
