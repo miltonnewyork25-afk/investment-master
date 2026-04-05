@@ -5,6 +5,18 @@
   },
   "model": "claude-sonnet-4-20250514",
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "Sprint 1: Complete文件>=100K硬阻断 (exit 2=阻断)",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); CONTENT=$(echo \"$INPUT\" | jq -r '.tool_input.content // empty' 2>/dev/null || echo ''); case \"$FP\" in *_Complete_*.md|*_Complete*.md) CHARS=$(echo -n \"$CONTENT\" | wc -m | tr -d ' '); if [ \"$CHARS\" -lt 100000 ]; then echo \"BLOCK: Complete文件${CHARS}字符 < 100K底线。请扩写后重试。\" >&2; exit 2; fi; exit 0 ;; *) exit 0 ;; esac"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit",
