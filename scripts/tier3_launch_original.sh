@@ -20,8 +20,9 @@
 
 set -uo pipefail
 
-TICKER="${1:?用法: $0 <TICKER> [INDUSTRY]}"
+TICKER="${1:?用法: $0 <TICKER> [INDUSTRY] [TARGET_CHARS]}"
 INDUSTRY="${2:-auto}"
+USER_TARGET="${3:-0}"  # 用户指定目标字符数(如200000)，0=使用行业推算
 
 DATA_DIR="reports/${TICKER}/data"
 STAGING_DIR="reports/${TICKER}/staging"
@@ -113,16 +114,26 @@ if [ "$SAME_IND_COUNT" -gt 0 ]; then
     IND_AVG=$((SAME_IND_SUM / SAME_IND_COUNT))
 else
     # 无同行业报告时用全局默认
-    IND_AVG=300000
+    IND_AVG=250000
 fi
 
-# 目标范围: 平均值 ±20%
-TARGET_LOW=$((IND_AVG * 80 / 100))
-TARGET_HIGH=$((IND_AVG * 125 / 100))
+# 用户指定目标时: 用户值优先，行业推算仅作参考
+if [ "$USER_TARGET" -gt 0 ] 2>/dev/null; then
+    FINAL_TARGET=$USER_TARGET
+    TARGET_LOW=$((USER_TARGET * 90 / 100))   # 用户目标 -10%
+    TARGET_HIGH=$((USER_TARGET * 110 / 100)) # 用户目标 +10%
+    TARGET_SOURCE="user_specified"
+    echo "  ★ 用户指定目标: ${USER_TARGET} chars (行业推算参考: ${IND_AVG})"
+else
+    FINAL_TARGET=$IND_AVG
+    TARGET_LOW=$((IND_AVG * 80 / 100))
+    TARGET_HIGH=$((IND_AVG * 120 / 100))
+    TARGET_SOURCE="industry_average"
+fi
 
-# 硬底线: 不低于200K
-if [ "$TARGET_LOW" -lt 200000 ]; then
-    TARGET_LOW=200000
+# 硬底线: 不低于120K (v22.2: 从200K降至120K, 因为密度>体量)
+if [ "$TARGET_LOW" -lt 120000 ]; then
+    TARGET_LOW=120000
 fi
 
 TARGET_LOW_K=$((TARGET_LOW / 1000))
@@ -190,15 +201,17 @@ current_phase: -1
 phase_status: pre_launch
 phases_completed: []
 
-target_chars: ${IND_AVG}
+target_chars: ${FINAL_TARGET}
 target_range: "${TARGET_LOW_K}K-${TARGET_HIGH_K}K"
-hard_floor: 200000
+target_source: "${TARGET_SOURCE}"
+industry_reference: ${IND_AVG}
+hard_floor: 120000
 
 quick_ref:
   total_chars: 0
   latest_phase_chars: 0
 CKPT
-    echo "  checkpoint.yaml 已自动创建 (target_chars: ${IND_AVG})"
+    echo "  checkpoint.yaml 已自动创建 (target_chars: ${FINAL_TARGET}, source: ${TARGET_SOURCE})"
 else
     echo "  checkpoint.yaml 已存在, 保留现有"
 fi
