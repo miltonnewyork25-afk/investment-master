@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v7.0
+# quality_gate_complete.sh — Tier 3 Complete报告质量门控 v9.0
 # ============================================================
 # 用法:
 #   ./tests/quality_gate_complete.sh <Complete报告.md> [benchmark_chars] [possibility_width]
@@ -28,8 +28,13 @@
 #   CG17. P/E一致性 (WARN级, v4.0新增)
 #   CG18. 财务数据交叉验证声明 (WARN级, v5.0新增)
 #   CG19. AI腔检测 (WARN级, v7.0新增) — 检测AI写作模式(不是X而是Y/空洞过渡/伪亲密等)
+#   CG20. 护城河数据卡 (WARN级, v8.0新增/v9.0升级) — 检查moat_datacard.yaml存在+10字段组完整
+#   CG21. 入场纪律卡 (WARN级, v10.0新增) — 检查Strategy Card存在+9模块完整(A/B文档分离)
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v10.0 (2026-03-14) — CG21入场纪律卡检查(A/B文档分离: Complete对外+Strategy Card内部)
+# 更新: v9.0 (2026-03-12) — CG20升级至10字段组(v2.0交易策略预备: 估值三档+E-Score+回撤DNA+流动性)
+# 更新: v8.0 (2026-03-12) — CG20护城河数据卡检查(为CQI排行榜+跨公司产品提供结构化数据)
 # 更新: v7.0 (2026-03-10) — CG19 AI腔检测(insights报告: 用户多次手动修正AI写作模式)
 # 更新: v6.0 (2026-02-19) — CG4/CG5自然语言检测(EVO-AAPL-001: KS/VP内容充分但格式缺失时降级通过)
 # 更新: v5.0 (2026-02-16) — CG18财务数据交叉验证声明(WARN, 深层质量协议L2)
@@ -572,10 +577,129 @@ else
     echo -e "${GREEN}PASS CG19: AI腔检测 0处${NC}"
 fi
 
+# === CG20: 护城河数据卡检查 (v8.0新增/v9.0升级, WARN级) ===
+# v9.0: 从6字段组扩展至10字段组(v2.0交易策略预备字段)
+# 从报告路径推断ticker和数据卡路径
+REPORT_DIR=$(dirname "$FILE")
+# 尝试从报告路径中提取ticker目录
+TICKER_DIR=""
+if echo "$REPORT_DIR" | grep -q "reports/"; then
+    TICKER_DIR=$(echo "$REPORT_DIR" | sed 's|.*reports/\([^/]*\).*|\1|')
+fi
+DATACARD_PATH=""
+if [ -n "$TICKER_DIR" ]; then
+    # 在报告同级目录或data子目录查找
+    for candidate in \
+        "$(dirname "$FILE")/data/moat_datacard.yaml" \
+        "$(dirname "$(dirname "$FILE")")/data/moat_datacard.yaml" \
+        "reports/${TICKER_DIR}/data/moat_datacard.yaml"; do
+        if [ -f "$candidate" ]; then
+            DATACARD_PATH="$candidate"
+            break
+        fi
+    done
+fi
+
+if [ -n "$DATACARD_PATH" ] && [ -f "$DATACARD_PATH" ]; then
+    # 检查10个字段组是否存在(允许TBD/0, 不允许完全缺失)
+    # v1.0: monopoly_purity, pricing_power, tam_penetration, moat_age, switching_cost, market_implied
+    # v2.0: valuation_anchors, earnings_predictability, drawdown_profile, liquidity
+    DATACARD_FIELDS=0
+    for field in monopoly_purity pricing_power tam_penetration moat_age switching_cost market_implied valuation_anchors earnings_predictability drawdown_profile liquidity; do
+        if { grep -q "^${field}:" "$DATACARD_PATH" 2>/dev/null || grep -q "^  ${field}:" "$DATACARD_PATH" 2>/dev/null; }; then
+            DATACARD_FIELDS=$((DATACARD_FIELDS + 1))
+        fi
+    done
+    if [ "$DATACARD_FIELDS" -ge 10 ]; then
+        echo -e "${GREEN}PASS CG20: 护城河数据卡 v2.0 (${DATACARD_FIELDS}/10字段组)${NC}"
+    elif [ "$DATACARD_FIELDS" -ge 6 ]; then
+        echo -e "${YELLOW}WARN CG20: 护城河数据卡 v1.0兼容 (${DATACARD_FIELDS}/10字段组, 运行 scripts/trading_datacard.py 补充v2.0字段)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    else
+        echo -e "${YELLOW}WARN CG20: 护城河数据卡字段不完整 (${DATACARD_FIELDS}/10)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    echo -e "${YELLOW}WARN CG20: 护城河数据卡未找到 (moat_datacard.yaml)${NC}"
+    WARNINGS=$((WARNINGS + 1))
+fi
+
+# === CG21: 入场纪律卡(Strategy Card)检查 (v10.0新增, WARN级) ===
+# A/B文档分离: Complete(对外) + Strategy Card(内部)
+STRATEGY_CARD_PATH=""
+if [ -n "$TICKER_DIR" ]; then
+    for candidate in \
+        "$(dirname "$FILE")/${TICKER_DIR}_Strategy_Card_INTERNAL.md" \
+        "reports/${TICKER_DIR}/${TICKER_DIR}_Strategy_Card_INTERNAL.md"; do
+        if [ -f "$candidate" ]; then
+            STRATEGY_CARD_PATH="$candidate"
+            break
+        fi
+    done
+fi
+
+if [ -n "$STRATEGY_CARD_PATH" ] && [ -f "$STRATEGY_CARD_PATH" ]; then
+    # 检查9个核心模块是否存在
+    SC_MODULES=0
+    for module in "估值快照" "入场纪律" "等待期收益" "组合角色" "Kill Switch" "催化剂日历" "温水煮青蛙" "隐含赌注" "Moat Data Card"; do
+        if grep -q "$module" "$STRATEGY_CARD_PATH" 2>/dev/null; then
+            SC_MODULES=$((SC_MODULES + 1))
+        fi
+    done
+    if [ "$SC_MODULES" -ge 8 ]; then
+        echo -e "${GREEN}PASS CG21: 入场纪律卡存在 (${SC_MODULES}/9模块)${NC}"
+    else
+        echo -e "${YELLOW}WARN CG21: 入场纪律卡模块不完整 (${SC_MODULES}/9)${NC}"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    echo -e "${YELLOW}WARN CG21: 入场纪律卡未找到 (${TICKER_DIR}_Strategy_Card_INTERNAL.md) — 详见docs/ab_document_protocol.md${NC}"
+    WARNINGS=$((WARNINGS + 1))
+fi
+
+# === CG22: 铁律R 四大必备分析 (v22.1新增, FAIL级) ===
+# R-1 财务归因 / R-2 剪刀差 / R-3 圆桌讨论 / R-4 认知圈量化
+set +e
+R1_COUNT=$(grep -cE '收入归因|毛利率Bridge|EPS瀑布|attribution|贡献分解' "$FILE" 2>/dev/null)
+R1_COUNT=${R1_COUNT:-0}
+R2_COUNT=$(grep -cE '剪刀差|scissor' "$FILE" 2>/dev/null)
+R2_COUNT=${R2_COUNT:-0}
+R3_COUNT=$(grep -cE '巴菲特|芒格|Klarman|Druckenmiller|Howard Marks|圆桌讨论' "$FILE" 2>/dev/null)
+R3_COUNT=${R3_COUNT:-0}
+R4_COUNT=$(grep -cE '可推演度|业务复杂度|黑箱比例' "$FILE" 2>/dev/null)
+R4_COUNT=${R4_COUNT:-0}
+
+R_FAIL=0
+if [ "$R1_COUNT" -lt 3 ]; then
+    echo -e "${RED}FAIL CG22-R1: 财务归因 ${R1_COUNT}/3 (收入瀑布+毛利Bridge+EPS瀑布)${NC}"
+    R_FAIL=$((R_FAIL+1)); ERRORS=$((ERRORS+1))
+else
+    echo -e "${GREEN}PASS CG22-R1: 财务归因 ${R1_COUNT}/3${NC}"
+fi
+if [ "$R2_COUNT" -lt 3 ]; then
+    echo -e "${RED}FAIL CG22-R2: 剪刀差分析 ${R2_COUNT}/3 (量价/CapEx-FCF/价值链至少3个)${NC}"
+    R_FAIL=$((R_FAIL+1)); ERRORS=$((ERRORS+1))
+else
+    echo -e "${GREEN}PASS CG22-R2: 剪刀差分析 ${R2_COUNT}/3${NC}"
+fi
+if [ "$R3_COUNT" -lt 5 ]; then
+    echo -e "${RED}FAIL CG22-R3: 圆桌讨论 ${R3_COUNT}/5 (调用investment-committee, 5位大师)${NC}"
+    R_FAIL=$((R_FAIL+1)); ERRORS=$((ERRORS+1))
+else
+    echo -e "${GREEN}PASS CG22-R3: 圆桌讨论 ${R3_COUNT}/5${NC}"
+fi
+if [ "$R4_COUNT" -lt 3 ]; then
+    echo -e "${RED}FAIL CG22-R4: 认知圈量化 ${R4_COUNT}/3 (调用cognitive-boundary-assessor v3.0)${NC}"
+    R_FAIL=$((R_FAIL+1)); ERRORS=$((ERRORS+1))
+else
+    echo -e "${GREEN}PASS CG22-R4: 认知圈量化 ${R4_COUNT}/3${NC}"
+fi
+set -e
+
 # --- 汇总 ---
 echo ""
 echo "=============================================="
-echo -e " ${CYAN}Complete Quality Gate v7.0 检查完成${NC}"
+echo -e " ${CYAN}Complete Quality Gate v10.0 检查完成${NC}"
 echo "=============================================="
 echo " 文件: $(basename "$FILE")"
 echo " 总字符: ${CHARS} / 基准 ${BENCHMARK_CHARS} (地板 ${FLOOR_COMPLETE})"

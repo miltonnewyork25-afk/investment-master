@@ -94,6 +94,31 @@ echo "--- [4/6] DM Anchors ---"
 DM_COUNT=$({ grep -oE 'DM-[A-Z]*-?[0-9]+' "$REPORT" 2>/dev/null | sort -u | wc -l || echo "0"; } | tr -d ' ')
 echo "  Unique DM anchors: $DM_COUNT"
 
+# --- [4.5/6] 铁律R: 四大必备分析模块检查 ---
+echo ""
+echo "--- [4.5/6] 铁律R: 四大必备分析 ---"
+set +e
+R1_COUNT=$(grep -cE '收入归因|毛利率Bridge|EPS瀑布|attribution|贡献分解' "$REPORT" 2>/dev/null)
+R1_COUNT=${R1_COUNT:-0}
+R2_COUNT=$(grep -cE '剪刀差|scissor' "$REPORT" 2>/dev/null)
+R2_COUNT=${R2_COUNT:-0}
+R3_COUNT=$(grep -cE '巴菲特|芒格|Klarman|Druckenmiller|Howard Marks|圆桌讨论' "$REPORT" 2>/dev/null)
+R3_COUNT=${R3_COUNT:-0}
+R4_COUNT=$(grep -cE '可推演度|业务复杂度|黑箱比例' "$REPORT" 2>/dev/null)
+R4_COUNT=${R4_COUNT:-0}
+
+R_FAIL=0
+if [ "$R1_COUNT" -lt 3 ]; then echo "  R-1 财务归因: $R1_COUNT (要求≥3) ✗ FAIL"; R_FAIL=$((R_FAIL+1)); else echo "  R-1 财务归因: $R1_COUNT (要求≥3) ✓"; fi
+if [ "$R2_COUNT" -lt 3 ]; then echo "  R-2 剪刀差分析: $R2_COUNT (要求≥3) ✗ FAIL"; R_FAIL=$((R_FAIL+1)); else echo "  R-2 剪刀差分析: $R2_COUNT (要求≥3) ✓"; fi
+if [ "$R3_COUNT" -lt 5 ]; then echo "  R-3 圆桌讨论: $R3_COUNT (要求≥5) ✗ FAIL"; R_FAIL=$((R_FAIL+1)); else echo "  R-3 圆桌讨论: $R3_COUNT (要求≥5) ✓"; fi
+if [ "$R4_COUNT" -lt 3 ]; then echo "  R-4 认知圈量化: $R4_COUNT (要求≥3) ✗ FAIL"; R_FAIL=$((R_FAIL+1)); else echo "  R-4 认知圈量化: $R4_COUNT (要求≥3) ✓"; fi
+if [ "$R_FAIL" -gt 0 ]; then
+    echo "  ⚠ 铁律R: $R_FAIL/4 失败 → 报告不达标"
+else
+    echo "  ✓ 铁律R: 全部通过"
+fi
+set -e
+
 # --- [5/6] Research Scorecard ---
 echo ""
 echo "--- [5/6] Research Scorecard ---"
