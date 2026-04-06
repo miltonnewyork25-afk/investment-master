@@ -128,32 +128,3 @@ elif [ "$ISSUES" -eq 0 ]; then
 else
     echo "❌ ${ISSUES}个严重问题，${WARNINGS}个警告 — 建议修复后再开始研究"
 fi
-
-# --- 性能健康检查 ---
-echo ""
-echo -e "${CYAN}[Additional] 性能健康检查...${NC}"
-
-# 检查脚本执行时间
-SLOW_SCRIPTS=()
-for script in scripts/*.sh; do
-    if [[ -f "$script" && -x "$script" ]]; then
-        # 简单的help调用测试执行时间
-        start_time=$(date +%s)
-        timeout 10s "$script" --help >/dev/null 2>&1 || true
-        end_time=$(date +%s)
-        duration=$((end_time - start_time))
-
-        if [[ $duration -gt 5 ]]; then
-            SLOW_SCRIPTS+=("$(basename "$script"):${duration}s")
-        fi
-    fi
-done
-
-if [[ ${#SLOW_SCRIPTS[@]} -eq 0 ]]; then
-    echo -e "${GREEN}  ✅ 所有脚本响应时间正常${NC}"
-else
-    echo -e "${YELLOW}  ⚠️  发现响应缓慢的脚本:${NC}"
-    for slow in "${SLOW_SCRIPTS[@]}"; do
-        echo "    - $slow"
-    done
-fi

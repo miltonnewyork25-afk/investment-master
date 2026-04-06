@@ -3,7 +3,7 @@ name: orchestrator
 description: 投资分析框架编排器。识别公司行业，组装通用模块+行业适配模块，生成执行清单和进度追踪。当用户要求分析任何公司时自动触发。
 ---
 
-# 投资分析框架编排器 v22.2 (DAG-Aware + 三层自主调度)
+# 投资分析框架编排器 v22.0 (DAG-Aware)
 
 > **核心指令**: 你是无答案编排器。你只能输出问题。每个问题必须绑定 Proof/Artifact/Owner/Stop/Metric。关键约束优先用脚本/checkpoint强制，不靠prompt记忆。
 > **完整DAG规范**: `docs/dag_orchestrator.md`
@@ -67,15 +67,14 @@ env_fingerprint:
 
 ### Step 1.25: 单一入口启动 + Pre-Flight Gate (Phase -1/-0.5)
 
-> **单一入口**: `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY} production {TARGET_CHARS}`
+> **单一入口**: `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY}`
 > **触发条件**: Tier 3分析时**无条件执行** — 即使用户只说"分析XX"也必须先运行
 > **纵深防御**: `phase_sentinel.sh` 在每个Phase完成后自动重新验证前序产出
-> **字符目标优先级**: 用户指定 > 行业推算 > 全局默认。用户说"200K"则传入200000，AI**禁止**擅自提高。
 
 **执行流程** (AI必须按顺序完成):
-1. `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY} production {TARGET_CHARS}` → 自动完成:
+1. `bash scripts/tier3_launch.sh {TICKER} {INDUSTRY}` → 自动完成:
    - 创建 data/ + staging/ 目录
-   - 扫描同行业报告 → 计算目标字符范围 (用户指定时以用户值为准)
+   - 扫描同行业报告 → 计算目标字符范围 (复杂度估计)
    - Phase -1 知识检索 → data/knowledge_context.md (≥500字符)
    - 提取进化教训 (最近3份报告的成功/失败经验)
    - 生成 data/launch_brief.md (**AI必须阅读**)
@@ -177,7 +176,7 @@ question_dag:
 ## 行业：{行业类型}
 ## 框架版本：v12.0 (DAG-Aware)
 ## 环境指纹：{env_fingerprint}
-## 目标字数：checkpoint.yaml的target_chars (用户指定优先，否则行业推算)
+## 最低字数：85,000 × {行业系数} = {目标字数} (wc -m)
 
 ### Scope Lock
 - Goal: {task.goal}
@@ -208,88 +207,18 @@ question_dag:
 | P5 | **3** | **3** | **铁律: 恰好3 Agent**(A评估+B KS/TS+C CQ闭环) |
 | **合计** | **≥20** | **22-29** | 实证安全区(10报告验证) |
 
-### Sub-Agent Assignments + Skill调度清单 (v22.2 — 三层自主调度)
-
-> **设计原则**: Agent对公司的理解 > 预设清单。框架负责**不让你忘记评估**，Agent负责**决定是否执行**。
-> **v22.2核心**: v22.0静默跳过(Bug) → v22.1全部强制(过度矫正) → v22.2三层自主调度(平衡点)
-> **铁律M兼容**: 每Phase仍然只加载3-5个Skill，不预加载全部。A类除外(A类是分析骨架，不是额外负担)。
-
-#### 三层分类标准
-
-| 层级 | 含义 | Agent权限 | 跳过代价 |
-|------|------|----------|---------|
-| **🔴 A 硬性必触发** | 缺了=分析框架残缺，读者会发现缺失 | **无权跳过** | 报告不完整 |
-| **🟡 B 必须评估** | 有明确触发条件，满足则跑，不满足可跳过 | **有权跳过，必须写1句理由到checkpoint** | 可能遗漏洞见 |
-| **🟢 C 按需加载** | Agent根据公司特性自主判断是否有价值 | **完全自主，不需要记录跳过** | 可接受 |
-
-#### Phase-Skill调度表
-
-| Phase | Agent分配 | 🔴A 硬性必触发 | 🟡B 必须评估 | 🟢C 按需加载 |
-|-------|-----------|---------------|-------------|-------------|
-| P0+0.5 | 编排器 + 数据预取Agent×3 | **`/data-prefetch`** | — | — |
-| P0.75 | 编排器 | — | — | `/cognitive-boundary-assessor` Lite预评 |
-| P1 | Agent A+B+C + QSA | **`/moat-evaluate`** | `/ai-impact`(跳过条件: AI与主业无关) | — |
-| P1→P2间 | 编排器 | **`/expectation-gap`** | — | — |
-| P2 | Agent C + Agent B + QSA | **`/valuation-build`** | `/assumption-audit M1`(触发: Reverse DCF完成后) | — |
-| P3 | Agent A + Agent C + QSA | — | `/competitive-benchmarking`(触发: 有可比公司或历史类比需求) · `/investment-committee`(触发: controversy_score≥4) | — |
-| P3→P4间 | 编排器 | — | `/omission-scanner`(评估: 是否有近期重大行业事件可能遗漏) | — |
-| P4 | Agent B(Bear隔离) + QSA | **`/red-team-suite`** | `/risk-topology`(评估: 风险间是否存在协同关系值得映射) | — |
-| P4→P5间 | 编排器 | **`/cognitive-boundary-assessor`** Full版 | `/assumption-audit M2+M3`(评估: 是否有管理层叙事需要解构/CQ需要约束分类) | — |
-| P5 | Agent A+B+C + QSA | **`/valuation-quality-gate`** | — | — |
-| P6 | 编排器 | **`/deep-reflection`** | — | — |
-
-#### CQ置信度追踪 — 独立规则
-
-`/cq-lifecycle-tracker` 不绑定单一Phase。规则: **P1/P3/P4完成后必须更新(🔴A级)，P2/P5完成后建议更新(🟡B级)**。
-- P1后: CQ首次量化(必须)
-- P2后: 估值数据可能改变CQ(评估)
-- P3后: 护城河深度分析后调整(必须)
-- P4后: 红队校准后调整(必须，通常调幅最大)
-- P5后: 最终闭环(评估)
-
-### Skill调度自检 (v22.2)
-
-> **核心变化**: 从"检查是否全部执行"变为"检查是否全部评估过"。
-
-```
-Phase完成自检 (写入checkpoint.yaml):
-skill_log:
-  executed: [列出已执行的Skill]
-  skipped_with_reason:      # 🟡B级跳过必须有
-    - skill: "/investment-committee"
-      reason: "controversy_score=2, <4阈值"
-  # 🟢C级跳过不需要记录
-  # 🔴A级不允许出现在skipped中
-```
-
-**8个🔴A级Skill (无权跳过)**:
-| # | Skill | Phase | 为什么是A级 |
-|---|-------|-------|-----------|
-| 1 | `/data-prefetch` | P0 | 数据基础，后续全部依赖 |
-| 2 | `/moat-evaluate` | P1 | 护城河是报告三大支柱之一 |
-| 3 | `/expectation-gap` | P1→P2 | 预期差是投资判断核心——找到市场错看的那一层 |
-| 4 | `/valuation-build` | P2 | 估值是报告三大支柱之一 |
-| 5 | `/red-team-suite` | P4 | 对抗审查防确认偏差，缺了=单边论证 |
-| 6 | `/cognitive-boundary-assessor` Full | P4→P5 | 认知边界是质量门控G9硬性要求 |
-| 7 | `/valuation-quality-gate` | P5 | 估值一致性检查，防铁律K违反 |
-| 8 | `/deep-reflection` | P6 | 复利飞轮闭环，学习机制 |
-
-**5个🟡B级Skill (必须评估，可跳过+写理由)**:
-| # | Skill | Phase | 典型跳过理由 |
-|---|-------|-------|------------|
-| 9 | `/ai-impact` | P1 | "公司主业与AI无关(如消费食品/公用事业)" |
-| 10 | `/assumption-audit` | P2/P4→P5 | "Reverse DCF假设简单透明，无需深度反演" |
-| 11 | `/competitive-benchmarking` | P3 | "独占市场/无直接可比公司" |
-| 12 | `/investment-committee` | P3 | "controversy_score<4，分歧度不足以支撑圆桌" |
-| 13 | `/omission-scanner` | P3→P4 | "行业近3月无重大事件" |
-| 14 | `/risk-topology` | P4 | "风险独立性强，无协同放大效应" |
-
-**1个🟢C级Skill (完全自主)**:
-| # | Skill | Phase | 何时有价值 |
-|---|-------|-------|----------|
-| 15 | `/cognitive-boundary-assessor` Lite | P0.75 | 复杂/黑箱公司(算法驱动/多层控股)预评有用，简单公司可跳过 |
-
-**自主权边界**: Agent对🟡B/🟢C的判断权是完整的。但如果Phase 5质量门控发现某个被跳过的B级Skill**本应执行**(如遗漏扫描跳过但Complete缺少重大行业事件)，这算**Agent判断失误**而非框架问题——Phase 5门控会拦住它。
+### Sub-Agent Assignments
+| Phase | DAG | Agent分配 | EC Target |
+|-------|-----|-----------|-----------|
+| P0+0.5 | DAG-0+1 | 编排器 + 数据预取Agent×3 | EC-FIN/MKT draft |
+| P1 | DAG-2 | Agent A+B+C + QSA + **`/moat-evaluate`(护城河章节)** + **`/ai-impact`(AI章节, M6跳过)** | EC集合(draft) + 口径锁定 + **quality_scorecard.md** |
+| **P1.5** | **颠覆扫描** | **编排器(不dispatch Agent)** | **颠覆路径扫描 + 阈值判断** |
+| P2 | DAG-3 | Agent C(**`/valuation-build`触发**) + Agent B(承重墙) + QSA | Reverse DCF + SOTP + **Python DCF + 敏感性矩阵** |
+| P3 | DAG-2+3 | Agent A(叙事) + Agent C(引擎) + QSA | 护城河+五引擎 |
+| P4 | DAG-4 | Agent B(**Bear隔离**) + QSA(验证) | RT-1~7 + KS |
+| **P4.5** | **Lens** | **编排器(不dispatch Agent)** | **Top 5结晶 + 前台重组计划** |
+| P5 | DAG-5 | Agent A+B+C(铁律3A) + QSA | Complete + 审计包 |
+| P6 | DAG-7 | 编排器 | reflection.md |
 
 ### 看空分析计划
 - 目标篇幅: ≥18% (硬性) / ≥30% (目标)
@@ -305,21 +234,19 @@ skill_log:
 | Complete | quality_gate_complete.sh | CG1-14任一FAIL |
 ```
 
-### Step 6: 执行 — DAG节点遍历 (v22.2 — 三层自主调度)
+### Step 6: 执行 — DAG节点遍历
 
 **每个Phase执行时**:
 
-1. **Skill调度扫描**: 查阅Phase-Skill调度表 → 🔴A级直接执行 → 🟡B级评估触发条件 → 🟢C级自主判断
-2. **PreFlect检查**: 该Phase有预定的PreFlect节点吗? → 执行事前批判
-3. **问题dispatch**: 将该Phase的L2问题分配给Agent A/B/C(按角色分工)
-4. **EC收集**: Agent产出EC(轻量EC写入staging, 完整EC写入shared_context.md)
-5. **QSA检查**: 质量哨兵脚本对每个staging产出自动检查(数值一致性/密度/合规)
-6. **门禁检查**: 运行对应的确定性门禁脚本
-7. **Skill日志写入**: checkpoint.yaml记录 `executed` + `skipped_with_reason`(🟡B级跳过必须有理由)
-8. **Checkpoint写入**: 更新checkpoint.yaml + ec_stats
-9. **Git Commit**: 门禁通过后commit
+1. **PreFlect检查**: 该Phase有预定的PreFlect节点吗? → 执行事前批判
+2. **问题dispatch**: 将该Phase的L2问题分配给Agent A/B/C(按角色分工)
+3. **EC收集**: Agent产出EC(轻量EC写入staging, 完整EC写入shared_context.md)
+4. **QSA检查**: 质量哨兵脚本对每个staging产出自动检查(数值一致性/密度/合规)
+5. **门禁检查**: 运行对应的确定性门禁脚本
+6. **Checkpoint写入**: 更新checkpoint.yaml + ec_stats
+7. **Git Commit**: 门禁通过后commit
 
-**子代理dispatch模板 (v22.1)**:
+**子代理dispatch模板 (v22.0)**:
 
 ```markdown
 ## 任务: {Phase} — {L2问题列表}
@@ -333,13 +260,7 @@ skill_log:
 - Artifact: 写入哪些EC字段 (写入 staging/{TICKER}_P{N}_{Agent}.md)
 - Stop: 你认为问题已回答的理由
 - Metric: 可量化的完成指标
-
-### 本Phase Skill调度 (v22.2三层):
-{从Phase-Skill调度表查询本Phase行，注入:}
-- 🔴A 必须执行: {skill列表}
-- 🟡B 评估后决定: {skill列表 + 触发条件}
-- 🟢C 自主决定: {skill列表}
-- **🟡B跳过时写1句理由到checkpoint。🔴A不允许跳过。**
+- **Lens Seed**: 本模块最可能贡献的深层投资视角是什么？改变了哪些变量排序？（2句话，写在staging文件末尾）
 
 ### Evidence Card 规则:
 - 每个数字必须有EC (claim_type + source + method)
@@ -357,6 +278,213 @@ skill_log:
 agent/{角色}/file/{文件路径}/chars/{字符数}/ec_count/{EC数}/stop/{停止理由}
 ```
 
+### Step 6.25: Phase 1.5 — 颠覆路径扫描 (v22.2新增, 强制执行)
+
+> **原理**: 犀利的投资见解 = 识别隐藏依赖 + 质疑依赖的长期持久性。
+> **目的**: 防止AI漏掉"AV颠覆CPRT"这类二阶非共识视角。
+> **时机**: Phase 1业务分析完成后、Phase 2估值前。不dispatch Agent，编排器自己执行。
+> **核心原则**: **后台必做，前台按阈值显性化**。不是所有公司都面临近期颠覆威胁——扫描是普遍的，但输出位置由严重度决定。
+
+#### 执行步骤
+
+**步骤1: 识别隐藏依赖链**
+```
+直接收入来源 → 客户付费逻辑 → 底层外部变量(不可控) → 长期趋势方向
+```
+例(CPRT):
+```
+保险公司付拍卖费 → 保险公司要处置totaled车 → 车祸率×修理成本比 → AV降低车祸率
+```
+
+**步骤2: 10大长期趋势强制扫描**
+
+对以下每个趋势，评估对"底层外部变量"的影响：
+
+| # | 趋势 | 时间窗 | 对本公司底层依赖的影响(方向+机制) |
+|---|------|--------|---------------------------------|
+| 1 | L4自动驾驶 | 2030-2040 | |
+| 2 | 生成式AI对白领/认知工作颠覆 | 2025-2035 | |
+| 3 | GLP-1类药物对消费/食品影响 | 2025-2035 | |
+| 4 | 机器人/具身智能 | 2030-2045 | |
+| 5 | 人口老龄化+少子化 | 持续 | |
+| 6 | 电动化/能源转型 | 持续 | |
+| 7 | 气候变化+碳税制度 | 2030+ | |
+| 8 | 去美元化/全球化逆转 | 2020+ | |
+| 9 | 行业监管颠覆 | 看行业 | |
+| 10 | 技术范式切换(看行业具体) | 看行业 | |
+
+**要求**:
+- 每个趋势必须填写，不能跳过（"无关"也要说为什么无关）
+- 至少5条必须是"公司管理层不会在财报电话会上承认"的那种
+
+**步骤3: 评分每条路径**
+
+对每条扫描出的路径，打分：
+
+| 字段 | 含义 | 取值 |
+|------|------|------|
+| **P (Probability)** | 该情景10年内发生的概率 | 0.0-1.0 |
+| **I (Impact)** | 如果发生，对公司收入的影响占比 | 0.0-1.0 (负面取正值) |
+| **T (Time)** | 开始显著影响的年份 | 具体年份 |
+| **Score** | P × I | 0.0-1.0 |
+
+**步骤4: 阈值判断 + 前台显性化决策**
+
+| 分数区间 | 处理方式 | 前台位置 |
+|---------|---------|---------|
+| Score ≥ 0.15 | **致命威胁** | 改变评级+承重墙+执行摘要开头 |
+| 0.09 ≤ Score < 0.15 | **高威胁** | 进入Kill Switch + 执行摘要提及 + 影响Bear case估值 |
+| 0.045 ≤ Score < 0.09 | **中威胁** | 仅进入Kill Switch列表 |
+| Score < 0.045 | **低威胁** | **不进前台** |
+
+**步骤5: 后台记录 (始终产出)**
+
+文件: `staging/{TICKER}_P1.5_disruption_paths.md`
+
+结构:
+```markdown
+# {TICKER} 颠覆路径扫描
+
+## 隐藏依赖链
+[直接收入→客户逻辑→底层外部变量]
+
+## 10大趋势扫描矩阵
+[10行表格，每行含: 趋势名/P/I/T/Score/机制描述]
+
+## 按Score排序的路径
+[降序列表]
+
+## 前台决策
+- 致命威胁(若有): [列表]
+- 高威胁(若有): [列表]
+- 中威胁(若有): [列表]
+- 低威胁/无威胁: "经扫描10条结构性威胁路径，最高评分X分，未达显性化阈值(0.045)"
+```
+
+**步骤6: 若无高分路径 — 前台无痕化**
+
+若全部路径Score < 0.045，则:
+- Complete报告**不创建**专门的"颠覆路径"章节
+- Kill Switch部分**不列入**这些低分路径
+- 仅在后台staging保留完整扫描记录（供未来审计/复盘）
+- 执行摘要**不提及**颠覆扫描
+
+这是关键设计：**扫描普遍，显性选择**。PG/COST这类老牌消费品的报告不会被迫写无意义的"AV颠覆PG"分析；CPRT这类报告则会自然把AV威胁放到显眼位置。
+
+#### 质量门控
+
+Phase 1.5完成后，验证:
+- [ ] 10大趋势全部扫描（即使判定无关）
+- [ ] 隐藏依赖链追溯到≥3层
+- [ ] 至少2条路径属于"管理层不会公开承认的那类"
+- [ ] 每个Score都有P和I的明确依据
+- [ ] 前台决策规则已应用
+
+---
+
+### Step 6.5: Phase 4.5 — Top 5 Lens Crystallization (v22.1新增)
+
+> **原则**: 先研究，再结晶，再前置。Top 5是后发现产物，不是预设。
+> **时机**: Phase 4红队完成后、Phase 5组装前。不dispatch Agent，编排器自己执行。
+
+**输入**: 所有staging产出(P0-P4) + 红队修正结果 + Kill Switch + 承重墙表
+
+**执行清单**:
+
+1. **扫描全稿**: 找出反复出现但未被前置的底层变量
+2. **提炼Top 10候选**: 每个候选必须满足——
+   - 整合了≥2个Phase的发现（不是单章节观点）
+   - 改变了承重墙排序 或 估值假设 或 市场预期理解
+   - 有清晰的验证/证伪路径
+3. **筛选Top 5**: 从Top 10中选最值钱的5个，按以下标准排序——
+   - 是否是整篇报告最深的一刀
+   - 是否能压缩多个章节
+   - 是否是最有价值的非共识结晶
+4. **写成判断而非问题**:
+   ```
+   ❌ "AI对公司的影响如何？"
+   ✅ "AI推理需求使公司从周期股变为成长股——但市场已在107x PE中定价了这个转变"
+   ```
+5. **每个Top 5产出Lens Card**:
+   - 视角标题（一句话判断）
+   - 市场是否已定价
+   - 关键投资含义
+   - 打在哪个一阶变量（收入/利润率/资本效率/估值倍数）
+   - 验证条件
+
+**产出**: `staging/{TICKER}_P4.5_top5_lenses.md`
+
+### Step 6.75: Phase 5前台开头结构规则 (v22.1新增)
+
+> **原则**: 先结果后解释，先压缩后展开，先给读者答案再给研究过程。
+
+**Phase 5组装Complete时，开头必须按以下顺序**:
+
+```
+1. 一句话结论（评级+公允价值+核心判断）
+2. Top 5 Core Investment Lenses（来自P4.5的Lens Cards）
+3. 市场在定价什么 / 市场可能错在哪里
+4. 3-5个最重要数字或最重要矛盾
+5. 承重墙与失效条件摘要（Kill Switch）
+6. 正文主体
+```
+
+**正文章节与Top 5的关系**: 每章开头一句话说明"本章证明Top 5中的哪一个"。
+
+**铁律: Phase 5只做重组，NEVER删除Phase 1-4的核心分析内容。**
+- ✅ 允许: 调整章节顺序、加Top 5开头、压缩重复段落
+- ❌ 禁止: 删除章节、丢弃分析内容、大幅压缩核心论证
+- Phase 1-4写的每一段核心分析都必须保留在Complete中
+
+**开头优先展示（不删除其他内容，只调整顺序）**:
+- 一句话结论和Top 5放最前面
+- 方法论/框架说明放最后或附录
+
+### Step 6.9: Skill Sentinel 强制验证 (v22.3新增)
+
+> **原理**: 声明式Skill清单 + 独立哨兵脚本 = 防止关键Skill被静默丢弃
+> **源自**: LITE/CPRT等报告中财务归因/剪刀差/圆桌/认知边界反复丢失的系统性bug
+> **清单**: `.claude/skill_manifest.yaml` (10个核心skill + 触发条件 + artifact模式)
+> **哨兵**: `scripts/skill_sentinel.sh` (独立验证, 不依赖AI自报)
+
+**每个Phase完成后必须执行**:
+
+```bash
+bash scripts/skill_sentinel.sh {TICKER} all
+```
+
+**哨兵返回码**:
+- `0` = 全部通过 或 仅MEDIUM/LOW警告 → 可继续
+- `1` = HIGH级缺失 → 建议修复后再进入下一Phase
+- `2` = CRITICAL级缺失 → **BLOCK**, 不可继续下一Phase
+
+**缺失的处理**:
+1. 哨兵报告哪个Skill缺失 + rationale
+2. AI必须回到staging文件补充该Skill的产出
+3. 重新运行哨兵验证
+4. 通过后才能进入下一Phase
+
+**CRITICAL级Skill (必须存在)**:
+- Reverse DCF 信念反演 (market implied assumptions)
+- Kill Switch 失效信号注册 (证伪条件)
+
+**HIGH级Skill (丢失=质量明显下降)**:
+- 财务归因分析 (量×价×混合×并购)
+- 护城河44因子评估
+- 认知边界量化
+- 预期差显式分析
+- 颠覆路径扫描 (P1.5)
+- 三情景估值 (Bull/Base/Bear)
+
+**MEDIUM级Skill (条件触发)**:
+- 剪刀差/定价权分层 (多层客户公司)
+- 投资大师圆桌讨论
+- AI冲击分析 (非M6行业)
+
+**不可绕过**: 哨兵是独立脚本, 不接受AI的"我做了"自述, 只检查staging文件中的artifact模式是否存在。
+
+---
+
 ### Step 7: DAG-7 复利闭环
 
 Phase 5 完成+Complete组装+CG通过后:
@@ -371,7 +499,7 @@ Phase 5 完成+Complete组装+CG通过后:
 
 | 指标 | v22.0 要求 | 来源 |
 |------|-----------|------|
-| **总字数** | ≥ target_chars 且 **≤ target_chars×120%**(超20%=膨胀禁止提交) | CG1 |
+| **总字数** | ≥85,000 × 行业系数 (wc -m) | CG1 |
 | **EC completeness** | ≥95% 必填字段完备 | DAG-2 |
 | **EC verification rate** | ≥80% verified | DAG-2 |
 | **EC fact ratio** | ≥50% fact类型 | DAG-2 |
