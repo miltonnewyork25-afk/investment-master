@@ -1,0 +1,56 @@
+schema_version: "2.0"
+ticker: LITE
+company: "Lumentum Holdings Inc."
+framework_version: v22.1
+worktree: "SEMICONDUCTOR"
+industry: "SEMICONDUCTOR"  # More precisely: Optical Communications / Photonics
+last_updated: "2026-04-05T12:30:00+00:00"
+
+current_phase: 3
+phase_status: completed
+phases_completed: ["-1", "-0.5", "0", "1", "2", "3"]
+
+target_chars: 300000
+target_range: "240K-375K"
+hard_floor: 200000
+quality_target: 4.4
+
+quick_ref:
+  total_chars: 127000
+  p1_chars: 56019
+  p2_chars: 45900
+  p3_chars: 25000
+  price: 826.88
+  market_cap_diluted_B: 72.6
+  ev_diluted_B: 75.3
+  pw_fair_value: 269
+  expected_return: "-67%"
+  a_score: "2.8/5.0"
+  ptw_score: "35/50"
+  pmsi: "-4/25"
+  core_signal: "EXTREME OVERVALUATION — Red team confirmed. $270-$420 fair range vs $827. 76% of price is AI perpetuity premium."
+
+sessions:
+  - session: 1
+    date: 2026-04-05
+    phases: ["-1", "-0.5", "0"]
+    notes: "Phase 0 data collection + valuation model + thesis crystallization"
+  - session: 2
+    date: 2026-04-05
+    phases: ["1"]
+    notes: "Phase 1 business understanding + moat analysis. 56K chars."
+  - session: 3
+    date: 2026-04-05
+    phases: ["2"]
+    notes: "Phase 2 financial depth + Non-GAAP valuation. 45.9K chars. PW FV $269."
+  - session: 4
+    date: 2026-04-05
+    phases: ["3"]
+    notes: "Phase 3 red team + competition + moat scoring. 25K chars. A-Score 2.8/5, PtW 35/50, PMSI -4/25."
+
+pre_mortem:
+  pm1_prep_sufficient: true
+  pm2_output_thin: "OK"
+  pm3_single_source: "FLAGGED — FMP FY2021=FY2022 duplicate"
+  pm4_independent_methods: "PASS — DCF/SOTP/Multiples/Reverse DCF cross-validated"
+  pm5_red_team_genuine: "PASS — Phase 3 red team found $270-$420 range (not just confirming $269)"

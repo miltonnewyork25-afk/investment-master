@@ -39,3 +39,4 @@ mcp_server/.venv/
 
 # Git worktrees
 .worktrees/
+reports/LITE/archive/
