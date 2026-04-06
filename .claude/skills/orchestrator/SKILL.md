@@ -440,6 +440,51 @@ Phase 1.5完成后，验证:
 - 一句话结论和Top 5放最前面
 - 方法论/框架说明放最后或附录
 
+### Step 6.9: Skill Sentinel 强制验证 (v22.3新增)
+
+> **原理**: 声明式Skill清单 + 独立哨兵脚本 = 防止关键Skill被静默丢弃
+> **源自**: LITE/CPRT等报告中财务归因/剪刀差/圆桌/认知边界反复丢失的系统性bug
+> **清单**: `.claude/skill_manifest.yaml` (10个核心skill + 触发条件 + artifact模式)
+> **哨兵**: `scripts/skill_sentinel.sh` (独立验证, 不依赖AI自报)
+
+**每个Phase完成后必须执行**:
+
+```bash
+bash scripts/skill_sentinel.sh {TICKER} all
+```
+
+**哨兵返回码**:
+- `0` = 全部通过 或 仅MEDIUM/LOW警告 → 可继续
+- `1` = HIGH级缺失 → 建议修复后再进入下一Phase
+- `2` = CRITICAL级缺失 → **BLOCK**, 不可继续下一Phase
+
+**缺失的处理**:
+1. 哨兵报告哪个Skill缺失 + rationale
+2. AI必须回到staging文件补充该Skill的产出
+3. 重新运行哨兵验证
+4. 通过后才能进入下一Phase
+
+**CRITICAL级Skill (必须存在)**:
+- Reverse DCF 信念反演 (market implied assumptions)
+- Kill Switch 失效信号注册 (证伪条件)
+
+**HIGH级Skill (丢失=质量明显下降)**:
+- 财务归因分析 (量×价×混合×并购)
+- 护城河44因子评估
+- 认知边界量化
+- 预期差显式分析
+- 颠覆路径扫描 (P1.5)
+- 三情景估值 (Bull/Base/Bear)
+
+**MEDIUM级Skill (条件触发)**:
+- 剪刀差/定价权分层 (多层客户公司)
+- 投资大师圆桌讨论
+- AI冲击分析 (非M6行业)
+
+**不可绕过**: 哨兵是独立脚本, 不接受AI的"我做了"自述, 只检查staging文件中的artifact模式是否存在。
+
+---
+
 ### Step 7: DAG-7 复利闭环
 
 Phase 5 完成+Complete组装+CG通过后:
