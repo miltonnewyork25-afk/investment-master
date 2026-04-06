@@ -291,6 +291,15 @@ class GIDResult:
     has_quarterly_data: bool = False
     quarterly_periods: int = 0
 
+    # v3.3: 反直觉提醒上下文(WWD反思——避免忽略关键警示信号)
+    price_context_year_high: Optional[float] = None
+    price_context_pct_from_ath: Optional[float] = None  # 距52W高点%(负=低于)
+    price_context_year_low: Optional[float] = None
+    price_context_pct_from_low: Optional[float] = None  # 距52W低点%(正=反弹)
+    opm_at_8q_peak: Optional[bool] = None              # 当前OPM是否=8季peak
+    opm_peak_8q: Optional[float] = None
+    opm_current: Optional[float] = None
+
     g1: G1Signals = field(default_factory=G1Signals)
     g2: G2Signals = field(default_factory=G2Signals)
     g3: G3Signals = field(default_factory=G3Signals)
@@ -1943,6 +1952,30 @@ def extract_gid_signals(
     result.g6 = extract_g6(insider_trades, quote, income)
     result.g7 = extract_g7(result)
 
+    # v3.3: Price + OPM peak context (反直觉提醒)
+    if isinstance(quote, dict):
+        price = quote.get('price', 0) or 0
+        yh = quote.get('yearHigh', 0) or 0
+        yl = quote.get('yearLow', 0) or 0
+        if price > 0 and yh > 0:
+            result.price_context_year_high = yh
+            result.price_context_pct_from_ath = (price - yh) / yh * 100
+        if price > 0 and yl > 0:
+            result.price_context_year_low = yl
+            result.price_context_pct_from_low = (price - yl) / yl * 100
+
+    # OPM peak detection from 8Q quarterly data
+    opms = []
+    for q in income_quarterly[:8]:
+        rev = q.get('revenue', 0) or 0
+        oi = q.get('operatingIncome', 0) or 0
+        if rev > 0:
+            opms.append(oi / rev * 100)
+    if opms:
+        result.opm_current = opms[0]
+        result.opm_peak_8q = max(opms)
+        result.opm_at_8q_peak = (opms[0] == max(opms))
+
     return result
 
 
@@ -2337,6 +2370,14 @@ def save_gid_results(results: list[GIDResult], output_path: str):
             'sm_efficiency_delta': r.g3.sm_efficiency_delta,
             'persistence_count': r.g3.persistence_count,
             'multi_metric_confirm': r.g1.multi_metric_confirm,
+            # v3.3 反直觉提醒上下文
+            'price_context_year_high': r.price_context_year_high,
+            'price_context_pct_from_ath': r.price_context_pct_from_ath,
+            'price_context_year_low': r.price_context_year_low,
+            'price_context_pct_from_low': r.price_context_pct_from_low,
+            'opm_at_8q_peak': r.opm_at_8q_peak,
+            'opm_peak_8q': r.opm_peak_8q,
+            'opm_current': r.opm_current,
             'signal_summary': r.signal_summary,
             'vetoes': r.vetoes, 'flags': r.flags,
         })
