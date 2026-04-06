@@ -5,6 +5,18 @@
   },
   "model": "claude-sonnet-4-20250514",
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "Sprint 1: Complete文件>=100K硬阻断 (exit 2=阻断)",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); CONTENT=$(echo \"$INPUT\" | jq -r '.tool_input.content // empty' 2>/dev/null || echo ''); case \"$FP\" in *_Complete_*.md|*_Complete*.md) CHARS=$(echo -n \"$CONTENT\" | wc -m | tr -d ' '); if [ \"$CHARS\" -lt 100000 ]; then echo \"BLOCK: Complete文件${CHARS}字符 < 100K底线。请扩写后重试。\" >&2; exit 2; fi; exit 0 ;; *) exit 0 ;; esac"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit",
@@ -21,8 +33,13 @@
         "hooks": [
           {
             "type": "command",
-            "comment": "简化版本：只检查基本路径规则",
+            "comment": "报告路径检查",
             "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in */reports/*.md) case \"$FP\" in */reports/*/[A-Z]*) echo \"✓ 报告路径正确: $FP\" ;; *) echo \"WARNING: 铁律E违反 — 报告应放入 reports/{TICKER}/ 子目录\" ;; esac || true ;; esac; true"
+          },
+          {
+            "type": "command",
+            "comment": "Sprint 3: Complete文件写入后自动生成无痕化版本 (_seamless.md)",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in *_seamless.md) exit 0 ;; *_Complete_*.md|*_Complete*.md) if [ -f \"$FP\" ] && [ -x \"${CLAUDE_PROJECT_DIR:-.}/scripts/seamless_translator.sh\" ]; then bash \"${CLAUDE_PROJECT_DIR:-.}/scripts/seamless_translator.sh\" \"$FP\" >&2 2>&1 || echo \"WARNING: seamless_translator失败 (非阻断)\" >&2; fi ;; esac; exit 0"
           }
         ]
       }
