@@ -1,0 +1,164 @@
+# 投资研究框架 — 关键Skill强制应用清单 v1.0
+# 源自: LITE/CPRT等报告中关键skill反复丢失的系统性问题
+# 原则: 声明Skill应用位置 + 验证artifact存在 + 缺失触发告警
+#
+# 每个skill条目字段:
+#   id: 唯一标识
+#   name: 中文名
+#   required_phases: 应该出现在哪些Phase
+#   trigger: 触发条件 (always/conditional)
+#   expected_artifacts: grep模式, 任意一个匹配即通过
+#   severity: critical(BLOCK) / high(WARN响亮) / medium(WARN) / low(INFO)
+#   rationale: 为什么重要
+#   seamless_handling: 在前台翻译后如何处理
+
+version: 1.0
+last_updated: "2026-04-06"
+
+skills:
+
+  # ========== CRITICAL (丢失→影响投资判断) ==========
+
+  - id: reverse_dcf
+    name: Reverse DCF 信念反演
+    required_phases: [P0, P2]
+    trigger: always
+    expected_artifacts:
+      - "Reverse DCF"
+      - "隐含假设"
+      - "市场在定价"
+      - "implied.*assumption"
+      - "隐含.*增长|隐含.*利润率|隐含.*WACC"
+    severity: critical
+    rationale: "不知道市场在定价什么=不知道自己在买什么。Reverse DCF是投资研究的基础"
+
+  - id: kill_switch_registration
+    name: Kill Switch 失效信号注册
+    required_phases: [P4, P5]
+    trigger: always
+    expected_artifacts:
+      - "Kill Switch|失效信号"
+      - "KS-?[0-9]"
+      - "触发条件.*观察频率|trigger.*monitor"
+    severity: critical
+    rationale: "没有Kill Switch=没有证伪条件=信念无法被检验"
+
+  # ========== HIGH (丢失→分析质量明显下降) ==========
+
+  - id: financial_attribution
+    name: 财务归因分析 (量×价×混合×并购)
+    required_phases: [P1, P2]
+    trigger: always
+    expected_artifacts:
+      - "量.*价.*混合|volume.*price.*mix"
+      - "归因分解|attribution"
+      - "[0-9]+%.*量.*[0-9]+%.*价"
+      - "organic.*acquisition|有机.*并购"
+    severity: high
+    rationale: "没有量价分解=不知道增长驱动=无法判断可持续性。收入增长10%必须拆成量×价×混合×并购"
+
+  - id: moat_evaluate
+    name: 护城河44因子评估
+    required_phases: [P1, P3]
+    trigger: always
+    expected_artifacts:
+      - "44.*因子|moat.*score|护城河评分"
+      - "C1.*C2.*C3|转换成本.*规模|网络效应.*品牌"
+      - "/moat-evaluate"
+    severity: high
+    rationale: "没有护城河量化=主观判断=无法跨报告对比"
+
+  - id: cognitive_boundary
+    name: 认知边界量化
+    required_phases: [P4, P5]
+    trigger: always
+    expected_artifacts:
+      - "可推演度|deducibility"
+      - "黑箱比例|black.?box"
+      - "认知边界.*[0-9]+|cognitive.*boundary.*score"
+      - "业务复杂度"
+    severity: high
+    rationale: "不量化认知边界=研究者自己不知道自己在哪不懂=过度自信"
+
+  - id: expectation_gap
+    name: 预期差显式分析
+    required_phases: [P1, P2]
+    trigger: always
+    expected_artifacts:
+      - "预期差|expectation.*gap"
+      - "市场在定价.*我们认为|consensus.*vs.*our"
+      - "共识.*假设.*我们.*不同"
+    severity: high
+    rationale: "没有预期差=不知道自己的alpha来源=在赌硬币"
+
+  - id: disruption_path_scan
+    name: 颠覆路径扫描 (Phase 1.5)
+    required_phases: [P1, P2]
+    trigger: always
+    expected_artifacts:
+      - "颠覆路径|disruption.*path"
+      - "结构性威胁|structural.*threat"
+      - "P1.5.*扫描|disruption_paths"
+    severity: high
+    rationale: "防止漏掉AV颠覆CPRT这类二阶非共识视角"
+
+  # ========== MEDIUM (条件触发) ==========
+
+  - id: pricing_power_layering
+    name: 剪刀差/定价权分层
+    required_phases: [P1, P3]
+    trigger:
+      grep_phase0_staging:
+        - "企业|enterprise"
+        - "SMB|中小|small.?medium"
+        - "高端|低端|premium|entry"
+    expected_artifacts:
+      - "剪刀差|pricing.*scissor"
+      - "高端.*低端.*分层|tier.*pricing"
+      - "企业.*SMB.*定价差|enterprise.*SMB.*price"
+    severity: medium
+    rationale: "多层客户公司忽略剪刀差=定价权判断失准"
+
+  - id: masters_roundtable
+    name: 投资大师圆桌讨论
+    required_phases: [P3, P4]
+    trigger: always
+    expected_artifacts:
+      - "巴菲特|Buffett|芒格|Munger"
+      - "Burry|Klarman|Einhorn|Ackman|Marks|Greenblatt"
+      - "圆桌|roundtable|大师.*视角"
+    min_matches_required: 3  # 至少3位不同大师
+    severity: medium
+    rationale: "单一视角容易偏差。多大师交叉验证提供不同框架的压力测试"
+    seamless_handling: "前台保留分析内容, 去除'大师X认为'的外壳标记"
+
+  - id: ai_impact_analyzer
+    name: AI冲击分析
+    required_phases: [P1, P3]
+    trigger:
+      industries: [semiconductor, software, content, service, finance]
+      exclude_modifiers: [M6]  # M6=AI无关(基础材料/矿业等)
+    expected_artifacts:
+      - "AI冲击|AI.*impact"
+      - "被AI颠覆|AI.*disrupt"
+      - "/ai-impact"
+    severity: medium
+    rationale: "2025年后几乎所有白领/认知密集行业都需要评估AI冲击"
+
+  - id: scenario_valuation
+    name: 三情景估值(Bull/Base/Bear)
+    required_phases: [P2]
+    trigger: always
+    expected_artifacts:
+      - "Bull.*Base.*Bear"
+      - "乐观.*中性.*悲观"
+      - "概率加权.*公允价值"
+      - "probability.*weighted.*valuation"
+    severity: high
+    rationale: "单点估值=伪精确。必须Bull/Base/Bear + 概率加权"
+
+  # ========== 未来可扩展 ==========
+  # - assumption_audit (假设审计)
+  # - risk_topology (风险拓扑)
+  # - competitive_benchmarking (竞争对标)
+  # - omission_scanner (遗漏扫描)

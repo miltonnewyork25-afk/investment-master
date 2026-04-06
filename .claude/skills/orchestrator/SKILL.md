@@ -212,6 +212,7 @@ question_dag:
 |-------|-----|-----------|-----------|
 | P0+0.5 | DAG-0+1 | 编排器 + 数据预取Agent×3 | EC-FIN/MKT draft |
 | P1 | DAG-2 | Agent A+B+C + QSA + **`/moat-evaluate`(护城河章节)** + **`/ai-impact`(AI章节, M6跳过)** | EC集合(draft) + 口径锁定 + **quality_scorecard.md** |
+| **P1.5** | **颠覆扫描** | **编排器(不dispatch Agent)** | **颠覆路径扫描 + 阈值判断** |
 | P2 | DAG-3 | Agent C(**`/valuation-build`触发**) + Agent B(承重墙) + QSA | Reverse DCF + SOTP + **Python DCF + 敏感性矩阵** |
 | P3 | DAG-2+3 | Agent A(叙事) + Agent C(引擎) + QSA | 护城河+五引擎 |
 | P4 | DAG-4 | Agent B(**Bear隔离**) + QSA(验证) | RT-1~7 + KS |
@@ -277,6 +278,110 @@ question_dag:
 agent/{角色}/file/{文件路径}/chars/{字符数}/ec_count/{EC数}/stop/{停止理由}
 ```
 
+### Step 6.25: Phase 1.5 — 颠覆路径扫描 (v22.2新增, 强制执行)
+
+> **原理**: 犀利的投资见解 = 识别隐藏依赖 + 质疑依赖的长期持久性。
+> **目的**: 防止AI漏掉"AV颠覆CPRT"这类二阶非共识视角。
+> **时机**: Phase 1业务分析完成后、Phase 2估值前。不dispatch Agent，编排器自己执行。
+> **核心原则**: **后台必做，前台按阈值显性化**。不是所有公司都面临近期颠覆威胁——扫描是普遍的，但输出位置由严重度决定。
+
+#### 执行步骤
+
+**步骤1: 识别隐藏依赖链**
+```
+直接收入来源 → 客户付费逻辑 → 底层外部变量(不可控) → 长期趋势方向
+```
+例(CPRT):
+```
+保险公司付拍卖费 → 保险公司要处置totaled车 → 车祸率×修理成本比 → AV降低车祸率
+```
+
+**步骤2: 10大长期趋势强制扫描**
+
+对以下每个趋势，评估对"底层外部变量"的影响：
+
+| # | 趋势 | 时间窗 | 对本公司底层依赖的影响(方向+机制) |
+|---|------|--------|---------------------------------|
+| 1 | L4自动驾驶 | 2030-2040 | |
+| 2 | 生成式AI对白领/认知工作颠覆 | 2025-2035 | |
+| 3 | GLP-1类药物对消费/食品影响 | 2025-2035 | |
+| 4 | 机器人/具身智能 | 2030-2045 | |
+| 5 | 人口老龄化+少子化 | 持续 | |
+| 6 | 电动化/能源转型 | 持续 | |
+| 7 | 气候变化+碳税制度 | 2030+ | |
+| 8 | 去美元化/全球化逆转 | 2020+ | |
+| 9 | 行业监管颠覆 | 看行业 | |
+| 10 | 技术范式切换(看行业具体) | 看行业 | |
+
+**要求**:
+- 每个趋势必须填写，不能跳过（"无关"也要说为什么无关）
+- 至少5条必须是"公司管理层不会在财报电话会上承认"的那种
+
+**步骤3: 评分每条路径**
+
+对每条扫描出的路径，打分：
+
+| 字段 | 含义 | 取值 |
+|------|------|------|
+| **P (Probability)** | 该情景10年内发生的概率 | 0.0-1.0 |
+| **I (Impact)** | 如果发生，对公司收入的影响占比 | 0.0-1.0 (负面取正值) |
+| **T (Time)** | 开始显著影响的年份 | 具体年份 |
+| **Score** | P × I | 0.0-1.0 |
+
+**步骤4: 阈值判断 + 前台显性化决策**
+
+| 分数区间 | 处理方式 | 前台位置 |
+|---------|---------|---------|
+| Score ≥ 0.15 | **致命威胁** | 改变评级+承重墙+执行摘要开头 |
+| 0.09 ≤ Score < 0.15 | **高威胁** | 进入Kill Switch + 执行摘要提及 + 影响Bear case估值 |
+| 0.045 ≤ Score < 0.09 | **中威胁** | 仅进入Kill Switch列表 |
+| Score < 0.045 | **低威胁** | **不进前台** |
+
+**步骤5: 后台记录 (始终产出)**
+
+文件: `staging/{TICKER}_P1.5_disruption_paths.md`
+
+结构:
+```markdown
+# {TICKER} 颠覆路径扫描
+
+## 隐藏依赖链
+[直接收入→客户逻辑→底层外部变量]
+
+## 10大趋势扫描矩阵
+[10行表格，每行含: 趋势名/P/I/T/Score/机制描述]
+
+## 按Score排序的路径
+[降序列表]
+
+## 前台决策
+- 致命威胁(若有): [列表]
+- 高威胁(若有): [列表]
+- 中威胁(若有): [列表]
+- 低威胁/无威胁: "经扫描10条结构性威胁路径，最高评分X分，未达显性化阈值(0.045)"
+```
+
+**步骤6: 若无高分路径 — 前台无痕化**
+
+若全部路径Score < 0.045，则:
+- Complete报告**不创建**专门的"颠覆路径"章节
+- Kill Switch部分**不列入**这些低分路径
+- 仅在后台staging保留完整扫描记录（供未来审计/复盘）
+- 执行摘要**不提及**颠覆扫描
+
+这是关键设计：**扫描普遍，显性选择**。PG/COST这类老牌消费品的报告不会被迫写无意义的"AV颠覆PG"分析；CPRT这类报告则会自然把AV威胁放到显眼位置。
+
+#### 质量门控
+
+Phase 1.5完成后，验证:
+- [ ] 10大趋势全部扫描（即使判定无关）
+- [ ] 隐藏依赖链追溯到≥3层
+- [ ] 至少2条路径属于"管理层不会公开承认的那类"
+- [ ] 每个Score都有P和I的明确依据
+- [ ] 前台决策规则已应用
+
+---
+
 ### Step 6.5: Phase 4.5 — Top 5 Lens Crystallization (v22.1新增)
 
 > **原则**: 先研究，再结晶，再前置。Top 5是后发现产物，不是预设。
@@ -324,15 +429,235 @@ agent/{角色}/file/{文件路径}/chars/{字符数}/ec_count/{EC数}/stop/{停�
 6. 正文主体
 ```
 
-**正文章节必须服务Top 5**: 每章开头一句话说明"本章证明Top 5中的哪一个"。
-如果某章不服务任何Top 5 → 压缩到≤500字 或 移到附录。
+**正文章节与Top 5的关系**: 每章开头一句话说明"本章证明Top 5中的哪一个"。
 
-**禁止出现在开头的内容**:
-- 方法论自述/框架版本说明
-- Phase编号/阶段说明
-- 冗长目录解释
-- 详细评分系统说明
-- 过多口径说明
+**铁律: Phase 5只做重组，NEVER删除Phase 1-4的核心分析内容。**
+- ✅ 允许: 调整章节顺序、加Top 5开头、压缩重复段落
+- ❌ 禁止: 删除章节、丢弃分析内容、大幅压缩核心论证
+- Phase 1-4写的每一段核心分析都必须保留在Complete中
+
+**开头优先展示（不删除其他内容，只调整顺序）**:
+- 一句话结论和Top 5放最前面
+- 方法论/框架说明放最后或附录
+
+### Step 6.9: Skill Sentinel 强制验证 (v22.3新增)
+
+> **原理**: 声明式Skill清单 + 独立哨兵脚本 = 防止关键Skill被静默丢弃
+> **源自**: LITE/CPRT等报告中财务归因/剪刀差/圆桌/认知边界反复丢失的系统性bug
+> **清单**: `.claude/skill_manifest.yaml` (10个核心skill + 触发条件 + artifact模式)
+> **哨兵**: `scripts/skill_sentinel.sh` (独立验证, 不依赖AI自报)
+
+**每个Phase完成后必须执行**:
+
+```bash
+bash scripts/skill_sentinel.sh {TICKER} all
+```
+
+**哨兵返回码**:
+- `0` = 全部通过 或 仅MEDIUM/LOW警告 → 可继续
+- `1` = HIGH级缺失 → 建议修复后再进入下一Phase
+- `2` = CRITICAL级缺失 → **BLOCK**, 不可继续下一Phase
+
+**缺失的处理**:
+1. 哨兵报告哪个Skill缺失 + rationale
+2. AI必须回到staging文件补充该Skill的产出
+3. 重新运行哨兵验证
+4. 通过后才能进入下一Phase
+
+**CRITICAL级Skill (必须存在)**:
+- Reverse DCF 信念反演 (market implied assumptions)
+- Kill Switch 失效信号注册 (证伪条件)
+
+**HIGH级Skill (丢失=质量明显下降)**:
+- 财务归因分析 (量×价×混合×并购)
+- 护城河44因子评估
+- 认知边界量化
+- 预期差显式分析
+- 颠覆路径扫描 (P1.5)
+- 三情景估值 (Bull/Base/Bear)
+
+**MEDIUM级Skill (条件触发)**:
+- 剪刀差/定价权分层 (多层客户公司)
+- 投资大师圆桌讨论
+- AI冲击分析 (非M6行业)
+
+**不可绕过**: 哨兵是独立脚本, 不接受AI的"我做了"自述, 只检查staging文件中的artifact模式是否存在。
+
+---
+
+### Step 6.95: Phase 4.8 — Blank Page Protocol (v22.4实验版, 半导体分支)
+
+> **状态**: 🧪 实验性 (可快速回滚到 commit 96069bea)
+> **原理**: 可读性差的根因是AI在"assemble staging"而不是"从空白页write"。Blank Page强制分离研究和写作两种认知模式。
+> **时机**: Phase 4.5 (Top 5结晶) 完成后、Phase 5 (组装) 开始前。
+> **核心规则**: Phase 5写Complete时以`insights.yaml`为骨架, **禁止按Phase 1-4顺序copy-paste staging**。
+
+#### 为什么需要这一步
+
+观察: 当前所有报告读起来像"研究笔记带封面"——因为它们就是。Phase 5把Phase 1-4的staging按顺序拼起来, 保留了**研究过程的结构**, 而不是创造了**论证的结构**。
+
+类比: 真正的投资写作者(Howard Marks/Burry/Klarman)做完研究后会"合上笔记本, 走进空房间", 从零开始写, 只在需要citation时回翻笔记。他们产出的是**叙事**, 不是**组装**。
+
+#### 执行步骤
+
+**Step 1: 产出 insights.yaml (合上笔记本)**
+
+**关键约束**: 写insights时**不能grep/cat staging文件**。靠AI对研究的内化理解回答。如果回答不出来, 说明研究本身有问题, 不是写作问题。
+
+文件: `reports/{TICKER}/staging/{TICKER}_insights.yaml`
+
+模板:
+```yaml
+# Blank Page Protocol — 空白页洞察提取
+# 规则: 不依赖staging文件, 靠内化理解回答
+
+ticker: "{TICKER}"
+date: "{YYYY-MM-DD}"
+
+# ========== 核心10问 ==========
+
+the_one_thing:
+  # 如果读者只能记住一件事, 是什么?
+  # 要求: 一句话, 具体, 可证伪
+  # 反例: "估值偏高" (太模糊)
+  # 正例: "107x PE在定价一个永续AI光学需求, 但历史周期peak只有2-3年"
+
+target_reader:
+  # 想象一个具体的读者
+  # 反例: "投资者"
+  # 正例: "管理$2B科技基金的PM, 10分钟决定是否让分析师深入研究"
+
+what_reader_doesnt_know:
+  # 读完研究后你知道但一般读者不知道的最重要一件事
+  # 要求: 非共识, 具体
+
+the_surprise:
+  # 哪个finding会让读者"哦!"的一下
+  # 要求: 反直觉, 且有数据支持
+
+strongest_single_evidence:
+  # 支持你thesis的一条最强证据 (不是10条, 就一条)
+  # 要求: 具体数据 + 为什么这一条最强
+
+strongest_counter:
+  # 反方最强的一条 + 你的回应
+  # 要求: 真正的strong counter, 不是稻草人
+
+confidence:
+  level: "high / medium / low"
+  why: |
+    # 为什么是这个置信度
+    # 要求: 具体原因, 不是"数据充分"这种套话
+
+what_changes_my_mind:
+  # 真正会让你翻转判断的信号
+  # 要求: 可观测, 可跟踪, 具体
+  # 反例: "基本面恶化"
+  # 正例: "连续2个季度Hyperscaler CapEx同比增速<10%"
+
+time_horizon:
+  # 判断的时间框架
+  # 要求: 具体月/季/年
+
+what_reader_should_do:
+  # 读完后具体应该做什么
+  # 反例: "关注"
+  # 正例: "现价不建仓, 等待$400-500或连续2Q beat作为重评信号"
+
+# ========== 自检 ==========
+
+self_check:
+  can_i_explain_in_bar_in_5min: "yes/no"
+  # 能否在酒吧对朋友用5分钟讲清楚?
+
+  am_i_hedging: "yes/no"
+  # 上述答案里有没有"可能/或许/某种程度"这种hedging?
+  # 如果yes, 重写
+
+  is_this_non_consensus: "yes/no + 一句话"
+  # 这个判断是共识还是非共识? 为什么市场没有定价?
+```
+
+**Step 2: Phase 5写作规则改变**
+
+Phase 5的组装指令由"读staging拼接"变为:
+
+```
+Phase 5写作输入优先级:
+  1. insights.yaml (主骨架, 必读)
+  2. P4.5 top5_lenses (前台结构)
+  3. Phase 1-4 staging (仅作为证据库, 需要citation时回查)
+
+禁止行为:
+  - 直接copy-paste staging段落到Complete
+  - 按Phase 1-4顺序组织Complete的章节
+  - 在Complete里保留staging的小节标题
+
+要求行为:
+  - 开头先写insights.yaml的the_one_thing, 不是"执行摘要"套话
+  - 叙事结构跟随"the_surprise → strongest_evidence → strongest_counter"的逻辑
+  - 每个大段落先给判断, 再给证据
+  - voice要明确: 对着insights.yaml里的target_reader说话, 不是对"所有投资者"说话
+```
+
+**Step 3: 写完后的diff check (code层验证)**
+
+Phase 5 Complete写完后运行:
+```bash
+# 伪代码: 检查Complete是否过度copy-paste staging
+python3 scripts/blank_page_check.py {TICKER}
+# 逻辑: 对Complete的每个段落, 找staging中最相似的段落
+# 相似度>70%的段落 / 总段落 > 30% → FAIL (说明还在assemble)
+```
+
+注: 此脚本v1版可后置。第一次实验先靠AI自律 + 事后人工对比。
+
+#### 实验策略 (半导体分支)
+
+**目的**: 在一份新报告上验证Blank Page Protocol是否真的提升了可读性。
+
+**流程**:
+1. 半导体分支选一个新公司开始分析 (比如 MU / LRCX / AMAT)
+2. Phase 0-4.5 按现有流程走
+3. Phase 4.8 强制产出 insights.yaml
+4. Phase 5 按Blank Page规则写Complete
+5. 产出后对比: Complete的"读感" vs 之前LITE/FTNT的"读感"
+
+**失败信号 (任一触发 → 回滚)**:
+- AI无法产出有意义的insights.yaml (hedging严重 / 填不满 / 循环)
+- Phase 5写作比原来慢3倍以上
+- Complete字符数严重不达标 (<100K)
+- 新报告可读性**没有**明显改善
+
+**回滚命令** (一条命令恢复到Sprint 5.1状态):
+```bash
+# 方式A: revert (保留历史, 更安全)
+git revert HEAD --no-edit
+git push origin 半导体
+
+# 方式B: hard reset (直接回退, 仅当实验commit未被其他commit依赖时使用)
+git reset --hard 96069bea
+git push origin 半导体 --force-with-lease
+```
+
+**成功信号**:
+- insights.yaml的10问都有实质内容, 没有套话
+- Phase 5 Complete开头直接给核心thesis, 没有"执行摘要"铺垫
+- 读者在前500字就能判断要不要继续读
+- 无hedging满篇
+- 有明显的voice (能感觉到"有个人在说话")
+
+#### 简化版回答 (给AI的操作说明)
+
+如果你是执行这份新报告的AI, 你需要:
+
+1. Phase 0-4.5按现有orchestrator流程做, 不变
+2. Phase 4.5完成后, 先停下来写 `insights.yaml`, 不依赖staging grep
+3. Phase 5写Complete时, insights.yaml是主骨架。像给朋友写信一样写。
+4. 需要具体数据时才回staging查引用。
+5. 不按Phase 1→5顺序组织章节, 按 one_thing → surprise → evidence → counter → math → details 组织
+
+---
 
 ### Step 7: DAG-7 复利闭环
 
