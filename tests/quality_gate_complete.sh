@@ -657,6 +657,45 @@ else
     WARNINGS=$((WARNINGS + 1))
 fi
 
+# === CG22: 铁律R 四大必备分析 (v22.1新增, FAIL级) ===
+# R-1 财务归因 / R-2 剪刀差 / R-3 圆桌讨论 / R-4 认知圈量化
+set +e
+R1_COUNT=$(grep -cE '收入归因|毛利率Bridge|EPS瀑布|attribution|贡献分解' "$FILE" 2>/dev/null)
+R1_COUNT=${R1_COUNT:-0}
+R2_COUNT=$(grep -cE '剪刀差|scissor' "$FILE" 2>/dev/null)
+R2_COUNT=${R2_COUNT:-0}
+R3_COUNT=$(grep -cE '巴菲特|芒格|Klarman|Druckenmiller|Howard Marks|圆桌讨论' "$FILE" 2>/dev/null)
+R3_COUNT=${R3_COUNT:-0}
+R4_COUNT=$(grep -cE '可推演度|业务复杂度|黑箱比例' "$FILE" 2>/dev/null)
+R4_COUNT=${R4_COUNT:-0}
+
+R_FAIL=0
+if [ "$R1_COUNT" -lt 3 ]; then
+    echo -e "${RED}FAIL CG22-R1: 财务归因 ${R1_COUNT}/3 (收入瀑布+毛利Bridge+EPS瀑布)${NC}"
+    R_FAIL=$((R_FAIL+1)); ERRORS=$((ERRORS+1))
+else
+    echo -e "${GREEN}PASS CG22-R1: 财务归因 ${R1_COUNT}/3${NC}"
+fi
+if [ "$R2_COUNT" -lt 3 ]; then
+    echo -e "${RED}FAIL CG22-R2: 剪刀差分析 ${R2_COUNT}/3 (量价/CapEx-FCF/价值链至少3个)${NC}"
+    R_FAIL=$((R_FAIL+1)); ERRORS=$((ERRORS+1))
+else
+    echo -e "${GREEN}PASS CG22-R2: 剪刀差分析 ${R2_COUNT}/3${NC}"
+fi
+if [ "$R3_COUNT" -lt 5 ]; then
+    echo -e "${RED}FAIL CG22-R3: 圆桌讨论 ${R3_COUNT}/5 (调用investment-committee, 5位大师)${NC}"
+    R_FAIL=$((R_FAIL+1)); ERRORS=$((ERRORS+1))
+else
+    echo -e "${GREEN}PASS CG22-R3: 圆桌讨论 ${R3_COUNT}/5${NC}"
+fi
+if [ "$R4_COUNT" -lt 3 ]; then
+    echo -e "${RED}FAIL CG22-R4: 认知圈量化 ${R4_COUNT}/3 (调用cognitive-boundary-assessor v3.0)${NC}"
+    R_FAIL=$((R_FAIL+1)); ERRORS=$((ERRORS+1))
+else
+    echo -e "${GREEN}PASS CG22-R4: 认知圈量化 ${R4_COUNT}/3${NC}"
+fi
+set -e
+
 # --- 汇总 ---
 echo ""
 echo "=============================================="

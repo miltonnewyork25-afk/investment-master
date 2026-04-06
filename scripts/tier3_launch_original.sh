@@ -267,6 +267,32 @@ $AB_RELEVANT
 3. [ ] 运行 preflight_gate.sh 验证 → 必须CLEARED
 4. [x] checkpoint.yaml 已自动创建 (target_chars: ${IND_AVG})
 
+## 🔴 铁律R: 四大必备分析 (v22.1, 任何一项=0 → CG22 FAIL)
+
+> **下次报告强制执行**。LITE v1.0审计教训: 4/4全部缺失。
+> 详见: \`.claude/rules/rule-R-four-mandatory.md\` + \`memory/feedback_four_mandatory_analysis.md\`
+
+| # | 模块 | Phase | 调用Skill | 必备产出 | grep门控 |
+|---|------|------|---------|---------|---------|
+| R-1 | **财务归因** | P2 | 手动 | 收入瀑布(量/价/mix/M&A) + 毛利Bridge(各驱动pp) + EPS瀑布(到目标的路径) | ≥3次 |
+| R-2 | **剪刀差分析** | P2-P3 | 手动 | 5种类型至少3个: 量价/CapEx-FCF/R&D-收入/GAAP-NonGAAP/价值链利润转移 | ≥3次 |
+| R-3 | **圆桌讨论** | P4后 | \`investment-committee\` v2.0 | 5位大师对抗(同意/反对/新角度) | ≥5次 |
+| R-4 | **认知圈量化** | P5 | \`cognitive-boundary-assessor\` v3.0 | 可推演度% + 复杂度1-5级 + 黑箱比例% | ≥3次 |
+
+## 🔴 铁律Q: 供应链交叉验证 (v22.1)
+
+> **触发条件**: 公司有明确上下游(半导体/制造业/汽车/消费电子等)
+> 详见: \`knowledge/industry_modules/semiconductor_modules.md\` M11+M12
+
+- **M11 供应链交叉验证**: 上游供应商业绩 vs 公司增速一致性 (偏差<10%=一致)
+- **M12 真实出货vs渠道库存**: sell-in vs sell-out区分, 客户DIO趋势, 公司DSO异常
+
+**强制规则**: 4条一致性检验
+- A: 公司YoY增速 vs 关键上游YoY增速, 偏差<10%=一致
+- B: 公司下游分部增速 vs 主要下游客户增速, 偏差<15%=一致
+- C: 价值链利润是否"转移"(一方GM改善另一方恶化)
+- D: 同行业可比公司季度收入方向应一致(差距>20pp=异常)
+
 ## 纵深防御提醒
 - **Layer 0**: tier3_launch.sh [已完成] — 复杂度估计+知识检索+checkpoint
 - **Layer 1**: preflight_gate.sh [待执行] — Phase 0前硬阻断
