@@ -1,9 +1,9 @@
-# Launch Brief: LITE
-> 自动生成 by tier3_launch.sh v1.0 | 2026-04-05 05:59
+# Launch Brief: WWD
+> 自动生成 by tier3_launch.sh v1.0 | 2026-04-06 04:29
 > **AI必须在Phase 0开始前完整阅读本文件**
 
 ## 复杂度评估
-- **行业**: SEMICONDUCTOR
+- **行业**: aerospace_defense
 - **同行业报告数**: 0 份
 - **同行业参考**: 
 - **同行业平均**: 300K chars
@@ -33,6 +33,7 @@
   - INTC: 269K chars / 448KB (半导体)
   - INTU: 337K chars / 614KB (其他)
   - KLAC: 254K chars / 442KB (半导体)
+  - LITE: 181K chars / 312KB (其他)
   - LRCX: 470K chars / 717KB (半导体)
   - MA: 243K chars / 394KB (金融)
   - MAR: 355K chars / 586KB (其他)
@@ -69,12 +70,12 @@
   - WMT: 356K chars / 631KB (消费品)
 
 ## 进化教训 (最近3份报告)
-  - SBC是系统性问题(非参数调整)——η/瀑布/循环/FASB/飞轮5维形成网络。FCF口径vs FCF-SBC口径=$115/share差异=评级翻转变量。NRR队列自然衰减→整体NRR FY2031可能降至100%。Rippling侵蚀$808M/5年但对总收入<5%。管理层回购@$226毁灭$1.3B价值。衰退测试反而利好(Bear FV从$71→$80)。演绎法发现AI安全期4年+过渡期2年。定价转型ε=0.45验证了提价4.8pp贡献
+  - null  # AI填入
   - null  # AI填入
   - null  # AI填入
 
 ## Phase -1 知识检索
-- knowledge_context.md: 1637 chars
+- knowledge_context.md: 1443 chars
 - 状态: ✓ 完成
 
 ## 已知失败抗体 (Adaptive Immunity)
@@ -98,6 +99,32 @@
 2. [ ] Phase -0.5 文献侦察 — 5路WebSearch → data/lit_recon_memo.md (≥1000 chars)
 3. [ ] 运行 preflight_gate.sh 验证 → 必须CLEARED
 4. [x] checkpoint.yaml 已自动创建 (target_chars: 300000)
+
+## 🔴 铁律R: 四大必备分析 (v22.1, 任何一项=0 → CG22 FAIL)
+
+> **下次报告强制执行**。LITE v1.0审计教训: 4/4全部缺失。
+> 详见: `.claude/rules/rule-R-four-mandatory.md` + `memory/feedback_four_mandatory_analysis.md`
+
+| # | 模块 | Phase | 调用Skill | 必备产出 | grep门控 |
+|---|------|------|---------|---------|---------|
+| R-1 | **财务归因** | P2 | 手动 | 收入瀑布(量/价/mix/M&A) + 毛利Bridge(各驱动pp) + EPS瀑布(到目标的路径) | ≥3次 |
+| R-2 | **剪刀差分析** | P2-P3 | 手动 | 5种类型至少3个: 量价/CapEx-FCF/R&D-收入/GAAP-NonGAAP/价值链利润转移 | ≥3次 |
+| R-3 | **圆桌讨论** | P4后 | `investment-committee` v2.0 | 5位大师对抗(同意/反对/新角度) | ≥5次 |
+| R-4 | **认知圈量化** | P5 | `cognitive-boundary-assessor` v3.0 | 可推演度% + 复杂度1-5级 + 黑箱比例% | ≥3次 |
+
+## 🔴 铁律Q: 供应链交叉验证 (v22.1)
+
+> **触发条件**: 公司有明确上下游(半导体/制造业/汽车/消费电子等)
+> 详见: `knowledge/industry_modules/semiconductor_modules.md` M11+M12
+
+- **M11 供应链交叉验证**: 上游供应商业绩 vs 公司增速一致性 (偏差<10%=一致)
+- **M12 真实出货vs渠道库存**: sell-in vs sell-out区分, 客户DIO趋势, 公司DSO异常
+
+**强制规则**: 4条一致性检验
+- A: 公司YoY增速 vs 关键上游YoY增速, 偏差<10%=一致
+- B: 公司下游分部增速 vs 主要下游客户增速, 偏差<15%=一致
+- C: 价值链利润是否"转移"(一方GM改善另一方恶化)
+- D: 同行业可比公司季度收入方向应一致(差距>20pp=异常)
 
 ## 纵深防御提醒
 - **Layer 0**: tier3_launch.sh [已完成] — 复杂度估计+知识检索+checkpoint

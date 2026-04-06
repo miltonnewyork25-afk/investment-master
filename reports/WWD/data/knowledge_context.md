@@ -1,7 +1,7 @@
 
 ═══════════════════════════════════════════════════
-  Knowledge Retrieval: LITE
-  行业: SEMICONDUCTOR
+  Knowledge Retrieval: WWD
+  行业: aerospace_defense
   状态: 新公司 (不在索引中)
 ═══════════════════════════════════════════════════
 
@@ -37,12 +37,12 @@ Top-3 相似公司:
   Evolution Context (最近3份报告)
 ═══════════════════════════════════════════════════
 
-  趋势: WDAY(4.41)->DN->MRVL(null#AI填入(1.0-5.0))->DN->PANW(null#AI填入(1.0-5.0))
+  趋势: LITE(null#AI填入(1.0-5.0))->DN->LITE(null#AI填入(1.0-5.0))->DN->LITE(null#AI填入(1.0-5.0))
 
   最近教训:
-    [WDAY] SBC是系统性问题(非参数调整)——η/瀑布/循环/FASB/飞轮5维形成网络。FCF口径vs FCF-SBC口径=$115/share差异=评级翻转变量。NRR队列自然衰减→整体NRR FY2031可能降至100%。Rippling侵蚀$808M/5年但对总收入<5%。管理层回购@$226毁灭$1.3B价值。衰退测试反而利好(Bear FV从$71→$80)。演绎法发现AI安全期4年+过渡期2年。定价转型ε=0.45验证了提价4.8pp贡献
-    [MRVL] null  # AI填入
-    [PANW] null  # AI填入
+    [LITE] null  # AI填入
+    [LITE] null  # AI填入
+    [LITE] null  # AI填入
 
   待审批进化提议:
     [SEMI_EQUIPMENT_COMPARATIVE] |
