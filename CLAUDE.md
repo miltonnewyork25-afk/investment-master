@@ -165,6 +165,7 @@
 
 **行业路由**: 半导体(×1.0) | 消费品(×1.1) | 科技平台(×1.1) | 金融(×1.2) | 金融基础设施(×1.0) | 详见行业worktree
 **铁律**: 第零律(合规) | 数据诚信 | H参考 | I知识前置 | J组装 | K估值统一 | M反膨胀 | N证据链 | O逆向估值 | G/L/P质量 | 详见`.claude/rules/`按需加载
+**Q 供应链交叉验证**: 当公司有明确上下游时(半导体/制造业/汽车/消费电子等)，**必须**设立独立模块验证上下游公司业绩、库存、订单——避免管理层叙事失真。详见`memory/feedback_supply_chain_validation.md` + `knowledge/industry_modules/semiconductor_modules.md` M11+M12
 **工具**: P0(MCP数据) > P1(分析+质量skill) > P2(Agent协作) | 完整列表见worktree CLAUDE.md
 
 **Skill/工具治理** (Ch8+Ch25):
