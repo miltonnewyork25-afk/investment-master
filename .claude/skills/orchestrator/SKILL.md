@@ -485,6 +485,180 @@ bash scripts/skill_sentinel.sh {TICKER} all
 
 ---
 
+### Step 6.95: Phase 4.8 — Blank Page Protocol (v22.4实验版, 半导体分支)
+
+> **状态**: 🧪 实验性 (可快速回滚到 commit 96069bea)
+> **原理**: 可读性差的根因是AI在"assemble staging"而不是"从空白页write"。Blank Page强制分离研究和写作两种认知模式。
+> **时机**: Phase 4.5 (Top 5结晶) 完成后、Phase 5 (组装) 开始前。
+> **核心规则**: Phase 5写Complete时以`insights.yaml`为骨架, **禁止按Phase 1-4顺序copy-paste staging**。
+
+#### 为什么需要这一步
+
+观察: 当前所有报告读起来像"研究笔记带封面"——因为它们就是。Phase 5把Phase 1-4的staging按顺序拼起来, 保留了**研究过程的结构**, 而不是创造了**论证的结构**。
+
+类比: 真正的投资写作者(Howard Marks/Burry/Klarman)做完研究后会"合上笔记本, 走进空房间", 从零开始写, 只在需要citation时回翻笔记。他们产出的是**叙事**, 不是**组装**。
+
+#### 执行步骤
+
+**Step 1: 产出 insights.yaml (合上笔记本)**
+
+**关键约束**: 写insights时**不能grep/cat staging文件**。靠AI对研究的内化理解回答。如果回答不出来, 说明研究本身有问题, 不是写作问题。
+
+文件: `reports/{TICKER}/staging/{TICKER}_insights.yaml`
+
+模板:
+```yaml
+# Blank Page Protocol — 空白页洞察提取
+# 规则: 不依赖staging文件, 靠内化理解回答
+
+ticker: "{TICKER}"
+date: "{YYYY-MM-DD}"
+
+# ========== 核心10问 ==========
+
+the_one_thing:
+  # 如果读者只能记住一件事, 是什么?
+  # 要求: 一句话, 具体, 可证伪
+  # 反例: "估值偏高" (太模糊)
+  # 正例: "107x PE在定价一个永续AI光学需求, 但历史周期peak只有2-3年"
+
+target_reader:
+  # 想象一个具体的读者
+  # 反例: "投资者"
+  # 正例: "管理$2B科技基金的PM, 10分钟决定是否让分析师深入研究"
+
+what_reader_doesnt_know:
+  # 读完研究后你知道但一般读者不知道的最重要一件事
+  # 要求: 非共识, 具体
+
+the_surprise:
+  # 哪个finding会让读者"哦!"的一下
+  # 要求: 反直觉, 且有数据支持
+
+strongest_single_evidence:
+  # 支持你thesis的一条最强证据 (不是10条, 就一条)
+  # 要求: 具体数据 + 为什么这一条最强
+
+strongest_counter:
+  # 反方最强的一条 + 你的回应
+  # 要求: 真正的strong counter, 不是稻草人
+
+confidence:
+  level: "high / medium / low"
+  why: |
+    # 为什么是这个置信度
+    # 要求: 具体原因, 不是"数据充分"这种套话
+
+what_changes_my_mind:
+  # 真正会让你翻转判断的信号
+  # 要求: 可观测, 可跟踪, 具体
+  # 反例: "基本面恶化"
+  # 正例: "连续2个季度Hyperscaler CapEx同比增速<10%"
+
+time_horizon:
+  # 判断的时间框架
+  # 要求: 具体月/季/年
+
+what_reader_should_do:
+  # 读完后具体应该做什么
+  # 反例: "关注"
+  # 正例: "现价不建仓, 等待$400-500或连续2Q beat作为重评信号"
+
+# ========== 自检 ==========
+
+self_check:
+  can_i_explain_in_bar_in_5min: "yes/no"
+  # 能否在酒吧对朋友用5分钟讲清楚?
+
+  am_i_hedging: "yes/no"
+  # 上述答案里有没有"可能/或许/某种程度"这种hedging?
+  # 如果yes, 重写
+
+  is_this_non_consensus: "yes/no + 一句话"
+  # 这个判断是共识还是非共识? 为什么市场没有定价?
+```
+
+**Step 2: Phase 5写作规则改变**
+
+Phase 5的组装指令由"读staging拼接"变为:
+
+```
+Phase 5写作输入优先级:
+  1. insights.yaml (主骨架, 必读)
+  2. P4.5 top5_lenses (前台结构)
+  3. Phase 1-4 staging (仅作为证据库, 需要citation时回查)
+
+禁止行为:
+  - 直接copy-paste staging段落到Complete
+  - 按Phase 1-4顺序组织Complete的章节
+  - 在Complete里保留staging的小节标题
+
+要求行为:
+  - 开头先写insights.yaml的the_one_thing, 不是"执行摘要"套话
+  - 叙事结构跟随"the_surprise → strongest_evidence → strongest_counter"的逻辑
+  - 每个大段落先给判断, 再给证据
+  - voice要明确: 对着insights.yaml里的target_reader说话, 不是对"所有投资者"说话
+```
+
+**Step 3: 写完后的diff check (code层验证)**
+
+Phase 5 Complete写完后运行:
+```bash
+# 伪代码: 检查Complete是否过度copy-paste staging
+python3 scripts/blank_page_check.py {TICKER}
+# 逻辑: 对Complete的每个段落, 找staging中最相似的段落
+# 相似度>70%的段落 / 总段落 > 30% → FAIL (说明还在assemble)
+```
+
+注: 此脚本v1版可后置。第一次实验先靠AI自律 + 事后人工对比。
+
+#### 实验策略 (半导体分支)
+
+**目的**: 在一份新报告上验证Blank Page Protocol是否真的提升了可读性。
+
+**流程**:
+1. 半导体分支选一个新公司开始分析 (比如 MU / LRCX / AMAT)
+2. Phase 0-4.5 按现有流程走
+3. Phase 4.8 强制产出 insights.yaml
+4. Phase 5 按Blank Page规则写Complete
+5. 产出后对比: Complete的"读感" vs 之前LITE/FTNT的"读感"
+
+**失败信号 (任一触发 → 回滚)**:
+- AI无法产出有意义的insights.yaml (hedging严重 / 填不满 / 循环)
+- Phase 5写作比原来慢3倍以上
+- Complete字符数严重不达标 (<100K)
+- 新报告可读性**没有**明显改善
+
+**回滚命令** (一条命令恢复到Sprint 5.1状态):
+```bash
+# 方式A: revert (保留历史, 更安全)
+git revert HEAD --no-edit
+git push origin 半导体
+
+# 方式B: hard reset (直接回退, 仅当实验commit未被其他commit依赖时使用)
+git reset --hard 96069bea
+git push origin 半导体 --force-with-lease
+```
+
+**成功信号**:
+- insights.yaml的10问都有实质内容, 没有套话
+- Phase 5 Complete开头直接给核心thesis, 没有"执行摘要"铺垫
+- 读者在前500字就能判断要不要继续读
+- 无hedging满篇
+- 有明显的voice (能感觉到"有个人在说话")
+
+#### 简化版回答 (给AI的操作说明)
+
+如果你是执行这份新报告的AI, 你需要:
+
+1. Phase 0-4.5按现有orchestrator流程做, 不变
+2. Phase 4.5完成后, 先停下来写 `insights.yaml`, 不依赖staging grep
+3. Phase 5写Complete时, insights.yaml是主骨架。像给朋友写信一样写。
+4. 需要具体数据时才回staging查引用。
+5. 不按Phase 1→5顺序组织章节, 按 one_thing → surprise → evidence → counter → math → details 组织
+
+---
+
 ### Step 7: DAG-7 复利闭环
 
 Phase 5 完成+Complete组装+CG通过后:
