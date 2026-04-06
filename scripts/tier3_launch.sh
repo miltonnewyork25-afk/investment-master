@@ -7,12 +7,10 @@ set -e
 TICKER="${1}"
 INDUSTRY="${2}"
 MODE="${3:-production}"
-TARGET_CHARS="${4:-0}"  # 用户指定目标字符数，0=使用行业推算
 
 if [ -z "$TICKER" ] || [ -z "$INDUSTRY" ]; then
-    echo "Usage: $0 <TICKER> <INDUSTRY> [MODE] [TARGET_CHARS]"
+    echo "Usage: $0 <TICKER> <INDUSTRY> [MODE]"
     echo "MODE: development|production|cost_optimized|research_intensive"
-    echo "TARGET_CHARS: 用户指定目标字符数(如200000)，省略则使用行业推算"
     exit 1
 fi
 
@@ -59,7 +57,7 @@ echo "🔧 Running original analysis pipeline with harness supervision..."
 mkdir -p "reports/${TICKER}/data"
 
 # Run the original tier3_launch.sh but with harness context
-bash scripts/tier3_launch_original.sh "${TICKER}" "${INDUSTRY}" "${TARGET_CHARS}"
+bash scripts/tier3_launch_original.sh "${TICKER}" "${INDUSTRY}"
 
 echo "✅ Tier 3 Analysis with Harness completed successfully"
 echo "📋 Check reports/${TICKER}/data/harness_context.json for harness session details"

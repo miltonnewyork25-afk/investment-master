@@ -5,6 +5,18 @@
   },
   "model": "claude-sonnet-4-20250514",
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "comment": "Sprint 1: Complete文件>=100K硬阻断 (exit 2=阻断)",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); CONTENT=$(echo \"$INPUT\" | jq -r '.tool_input.content // empty' 2>/dev/null || echo ''); case \"$FP\" in *_Complete_*.md|*_Complete*.md) CHARS=$(echo -n \"$CONTENT\" | wc -m | tr -d ' '); if [ \"$CHARS\" -lt 100000 ]; then echo \"BLOCK: Complete文件${CHARS}字符 < 100K底线。请扩写后重试。\" >&2; exit 2; fi; exit 0 ;; *) exit 0 ;; esac"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit",
@@ -21,45 +33,18 @@
         "hooks": [
           {
             "type": "command",
-            "comment": "报告路径规范检查",
+            "comment": "报告路径检查",
             "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in */reports/*.md) case \"$FP\" in */reports/*/[A-Z]*) echo \"✓ 报告路径正确: $FP\" ;; *) echo \"WARNING: 铁律E违反 — 报告应放入 reports/{TICKER}/ 子目录\" ;; esac || true ;; esac; true"
           },
           {
             "type": "command",
-            "comment": "前台成品无痕化检查 — Complete文件写入时自动检查内部标签残留",
-            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in *_Complete_*.md) ISSUES=''; C1=$(grep -ciE '^#+.*Phase [0-9]' \"$FP\" 2>/dev/null || echo 0); C2=$(grep -cE 'DM-[A-Z]+-[0-9]+' \"$FP\" 2>/dev/null || echo 0); C3=$(grep -ciE 'RT-[0-9]|CQ[0-9]|KS-[0-9]' \"$FP\" 2>/dev/null || echo 0); C4=$(grep -ci '回流\\|校正后\\|修正前\\|旧版本' \"$FP\" 2>/dev/null || echo 0); C5=$(grep -ciE 'v22|v23|harness|framework v|框架版本' \"$FP\" 2>/dev/null || echo 0); C6=$(grep -cE '[0-9]+\\.?[0-9]*/[0-9]+(分|score)' \"$FP\" 2>/dev/null || echo 0); C7=$(grep -ci '减仓\\|加仓\\|全部卖出\\|买入' \"$FP\" 2>/dev/null || echo 0); C8=$(grep -ci '入侵\\|invade\\|invasion' \"$FP\" 2>/dev/null || echo 0); [ \"$C1\" -gt 0 ] && ISSUES=\"${ISSUES}Phase标签残留($C1) \"; [ \"$C2\" -gt 0 ] && ISSUES=\"${ISSUES}DM锚点残留($C2) \"; [ \"$C3\" -gt 0 ] && ISSUES=\"${ISSUES}RT/CQ/KS残留($C3) \"; [ \"$C4\" -gt 0 ] && ISSUES=\"${ISSUES}回流痕迹残留($C4) \"; [ \"$C5\" -gt 0 ] && ISSUES=\"${ISSUES}框架版本残留($C5) \"; [ \"$C6\" -gt 0 ] && ISSUES=\"${ISSUES}评分系统残留($C6) \"; [ \"$C7\" -gt 0 ] && ISSUES=\"${ISSUES}仓位建议残留($C7) \"; [ \"$C8\" -gt 0 ] && ISSUES=\"${ISSUES}台海合规违反($C8) \"; if [ -n \"$ISSUES\" ]; then echo \"BLOCK: 前台成品无痕化检查失败 — $ISSUES\"; else echo \"✓ 前台成品无痕化检查通过\"; fi ;; esac; true"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
+            "comment": "Sprint 3: Complete文件写入后自动生成无痕化版本 (_seamless.md)",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in *_seamless.md) exit 0 ;; *_Complete_*.md|*_Complete*.md) if [ -f \"$FP\" ] && [ -x \"${CLAUDE_PROJECT_DIR:-.}/scripts/seamless_translator.sh\" ]; then bash \"${CLAUDE_PROJECT_DIR:-.}/scripts/seamless_translator.sh\" \"$FP\" >&2 2>&1 || echo \"WARNING: seamless_translator失败 (非阻断)\" >&2; fi ;; esac; exit 0"
+          },
           {
             "type": "command",
-            "comment": "Phase完成时自动触发Evaluator提醒",
-            "command": "INPUT=$(cat); CMD=$(echo \"$INPUT\" | jq -r '.tool_input.command // empty' 2>/dev/null || echo ''); case \"$CMD\" in *phase_complete.sh*) PHASE=$(echo \"$CMD\" | grep -oE '[0-9]+' | tail -1 2>/dev/null || echo ''); TICKER=$(echo \"$CMD\" | grep -oE '[A-Z]{2,5}' | head -1 2>/dev/null || echo ''); if [ -n \"$TICKER\" ] && [ -n \"$PHASE\" ]; then echo \"{\\\"systemMessage\\\": \\\"Phase $PHASE 完成 — 请调用Evaluator Agent进行独立审计。读取sprint_contract_P${PHASE}.yaml和staging产出，产出eval_verdict_P${PHASE}.yaml\\\"}\"; fi ;; esac; true"
-          }
-        ]
-      },
-      {
-        "matcher": "Skill",
-        "hooks": [
-          {
-            "type": "command",
-            "comment": "监控关键skill执行并记录",
-            "command": "INPUT=$(cat); SKILL=$(echo \"$INPUT\" | jq -r '.tool_input.skill // empty' 2>/dev/null || echo ''); case \"$SKILL\" in expectation-gap) echo \"{\\\"systemMessage\\\": \\\"预期差识别器已执行，请验证E→R→G→T四步输出\\\"}\" ;; lens-crystallization) echo \"{\\\"systemMessage\\\": \\\"Lens Crystallization完成，请验证Top 5 Quality Gate (6条)和Late Angle Gate\\\"}\" ;; editorial-frontend) echo \"{\\\"systemMessage\\\": \\\"Editorial Frontend完成，请确认双版本产出(Complete+Audit)并运行无痕化检查\\\"}\" ;; sprint-contract) echo \"{\\\"systemMessage\\\": \\\"Sprint Contract已生成，Generator和Evaluator请读取contract文件\\\"}\" ;; esac; true"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Write",
-        "hooks": [
-          {
-            "type": "command",
-            "comment": "Phase staging字符门控 — 写入staging时检查字符是否达到预算50%",
-            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); CONTENT=$(echo \"$INPUT\" | jq -r '.tool_input.content // empty' 2>/dev/null || echo ''); case \"$FP\" in */staging/*_P[0-9]*.md) CHARS=$(echo \"$CONTENT\" | wc -m | tr -d ' '); if [ \"$CHARS\" -lt 10000 ]; then echo \"WARNING: staging文件仅${CHARS}字符，请确认Phase输出是否充分（密度达标则允许提交）\"; fi ;; esac; true"
+            "comment": "Sprint 5.1: staging文件写入后自动运行Skill Sentinel (不依赖AI记忆)",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in */reports/*/staging/*_P[0-9]*.md) TICKER=$(echo \"$FP\" | sed -E 's|.*/reports/([^/]+)/.*|\\1|'); if [ -n \"$TICKER\" ] && [ -x \"${CLAUDE_PROJECT_DIR:-.}/scripts/skill_sentinel.sh\" ]; then echo \"=== Skill Sentinel 自动触发: $TICKER ===\" >&2; bash \"${CLAUDE_PROJECT_DIR:-.}/scripts/skill_sentinel.sh\" \"$TICKER\" all >&2 2>&1 || echo \"(哨兵检测到缺失,见上方报告)\" >&2; fi ;; esac; exit 0"
           }
         ]
       }
