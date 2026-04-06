@@ -1,0 +1,125 @@
+schema_version: "2.0"
+ticker: FTNT
+company: "Fortinet, Inc."
+framework_version: v22.1
+worktree: "cybersecurity"
+industry: "cybersecurity"
+last_updated: "2026-04-03T16:00:00+00:00"
+
+current_phase: 4
+phase_status: completed
+phases_completed: ["-1", "-0.5", "0", "0.5", "0.75", "1", "2", "3", "4"]
+
+target_chars: 250000
+target_range: "240K-375K"
+hard_floor: 200000
+
+core_question: "FTNT的ASIC硬件优势在云优先/平台化的网安行业中是持久护城河还是贬值资产?"
+
+cq_list:
+  CQ1: "ASIC优势是持久护城河还是贬值资产"
+  CQ2: "硬件→订阅/平台转型能否成功"
+  CQ3: "中端市场主导是优势还是天花板"
+  CQ4: "当前股价隐含了什么假设"
+  CQ5: "微软捆绑威胁有多真实"
+  CQ6: "创始人领导模式是溢价还是折价"
+  CQ7: "AI如何重塑FTNT竞争地位"
+  CQ8: "真实有机增长率和质量如何"
+
+complexity_modifiers: ["M0", "M2", "M5", "M7", "M12"]
+
+hypotheses:
+  H1: "ASIC是可移植护城河而非遗产包袱(偏多, 55%→P4修正50%)"
+  H2: "当前定价轻微高估~8%(P4修正: $82.53 vs 修正公允$76)"
+  H3: "内部人零买入是系统性治理问题(偏空, 55%→P4弱化至弱空信号1.5/5)"
+
+initial_3d_state:
+  value: "fairly_valued_to_slightly_undervalued"
+  direction: "improving"
+  catalyst: "possible"
+
+p4_3d_state:
+  value: "slightly_overvalued_8pct"
+  direction: "improving_but_deceleration_signals_strengthening"
+  catalyst: "insufficient"
+
+cq_confidence:
+  CQ1: {direction: "中性偏正", confidence: 58, change: "-7 from P3, ASIC可移植性下调至30-45%"}
+  CQ2: {direction: "偏正", confidence: 60, change: "-5 from P3, SASE绝对规模不确定"}
+  CQ3: {direction: "中性偏正", confidence: 55, change: "= from P3"}
+  CQ4: {direction: "中性", confidence: 60, change: "-10 from P3, 从≈公允修正为轻微高估"}
+  CQ5: {direction: "中性", confidence: 50, change: "= from P3"}
+  CQ6: {direction: "中性", confidence: 38, change: "-2 from P3, 零买入弱化"}
+  CQ7: {direction: "偏正", confidence: 45, change: "= from P3, AI未被红队攻击"}
+  CQ8: {direction: "中性偏空", confidence: 45, change: "-10 from P3, 有机增速为零是最大下调"}
+
+quick_ref:
+  total_chars: 97956
+  p1_chars: 24200
+  p2_chars: 24356
+  p3_chars: 29200
+  p4_chars: 19912
+  dm_count_total: 324
+  dm_p1: 38
+  dm_p2: 89
+  dm_p3: 109
+  dm_p4: 88
+  mermaid_count: 12
+  price: 82.53
+  market_cap_B: 61.37
+  ev_B: 58.8
+  pe_ttm: 33.1
+  owner_pe: 31.5
+  core_pe: 35.9
+  p_fcf: 27.6
+  fwd_pe: 27.8
+  fcf_margin: "32.7%"
+  sbc_rev: "4.1%"
+  reverse_dcf_implied_cagr: "12.0%"
+  fair_value_weighted: "$76 (P4修正, 原$81)"
+  bull_fv: "$89-99"
+  bear_fv: "$53-67"
+  scenario_probabilities: "Bull 20% / Base 50% / Bear 30% (P4修正)"
+
+phase4_key_findings:
+  - "KeyBanc: H1 2025有机产品增速(剔除刷新)flat-to-down — 红队最重要发现"
+  - "CHKP 10年CAGR仅5.3% — 防火墙公司刷新后增速的最佳历史类比"
+  - "5家卖方降级: MS/KeyBanc/Rosenblatt/Evercore/Erste集体转中性"
+  - "Morgan Stanley: 后刷新=高个位数增长者, PT $78"
+  - "FortiSASE独立ARR估算$380-475M — 规模不足以完全接力刷新悬崖"
+  - "ASIC可移植性从40-60%下调至30-45% — SASE份额5-7%是市场投票"
+  - "CVE: 补丁→再绕过模式(2025.12→2026.1), 198个CVE vs PANW ~20个"
+  - "Ken Xie: 20笔交易0买入, 2026.2在$81卖出$14.3M"
+  - "递延收入4季度持续低于收入增速2-3pp, DR/Rev 4.28x→3.74x"
+  - "护城河评分红队校准后3.68/5 ≈ 不变"
+  - "概率加权公允价值: $81→$76(Bear概率25%→30%)"
+  - "12%CAGR假设脆弱度3.5/5, 后刷新最佳估计8.5-9.0%"
+  - "论点独立性: 4/5依赖ASIC保值, 仅FCF质量独立"
+  - "温水煮青蛙场景概率20-25%: 增速放缓+PE压缩+标签退化"
+  - "CQ加权平均: 55.6%→51.4%(-4.2pp)"
+
+phase3_key_findings:
+  - "FTNT是网安唯一利润机器: OPM 30.6% vs PANW 13.5% vs CRWD/ZS负"
+  - "ASIC护城河真实但衰减中: on-prem强(5-10年), cloud中等(2-5年), 可移植性40-60%"
+  - "R&D效率8.3x收入/$1 R&D = 行业最高, 是ASIC复用经济学的直接产物"
+  - "三条平台路径可共存: PANW并购型/CRWD云原生型/FTNT硬件基底服务叠加型"
+  - "MSFT威胁被高估: 核心收入>80%不在微软射程, 5年加权影响仅-3~5%"
+  - "护城河综合评分3.66/5: 成本优势4.5+转换成本4.0+无形资产2.5+网络效应2.5"
+  - "刷新周期后概率加权增速7.8%, 基准情景8% — 是最大的估值变量"
+
+phase2_key_findings:
+  - "Reverse DCF隐含12% CAGR ≈ 共识 → 精确定价共识路径"
+  - "隐含信念脆弱度1.7/5(低) — 不依赖英雄式假设"
+  - "6方法加权公允价值$81 ≈ 当前$82.53"
+  - "SBC仅吞噬12.6% FCF, 网安行业最健康的Owner Economics"
+
+data_files_status:
+  shared_context: "completed"
+  lit_recon_memo: "completed"
+  knowledge_context: "completed"
+  thesis_crystallization: "completed"
+  key_assumptions: "completed"
+  preflight_gate: "CLEARED"
+  phase2_valuation_py: "completed"
+  phase2_valuation_json: "completed"
+  phase4_red_team: "completed"

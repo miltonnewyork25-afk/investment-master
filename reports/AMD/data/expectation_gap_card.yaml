@@ -1,0 +1,153 @@
+# 预期差分析卡 v2.1 — AMD (AMD)
+# 分析日期: 2026-03-27
+
+meta:
+  ticker: "AMD"
+  company: "Advanced Micro Devices, Inc."
+  analysis_date: "2026-03-27"
+  stock_price: "$203.77"
+  market_cap: "$332B"
+  data_snapshot: "FY2025 (截至2025-12-27)"
+  tier: "tier2"
+  framework_version: "v2.1"
+  linked_report: "reports/AMD/AMD_Complete_v2.0_2026-02-11.md"
+
+core_judgment: "AMD是'永远的第二名'叙事下被部分低估的推理芯片机会——Forward PE 18.7x(FY27)对一个收入CAGR 31%/数据中心AI增速>80%的公司看起来合理偏便宜。关键发现: 市场过度关注'AMD vs NVDA在训练上的差距(CUDA锁定)',但低估了'推理workload中AMD价格/性能优势'。如果推理在2027-28占AI计算65-70%(趋势方向),AMD的可寻址优势大幅扩展。但OPM 10.7% vs NVDA 60% = 6倍差距=AMD可能永远赚不了同样多的钱,即使卖同样多的芯片"
+gap_type: "underpriced_improvement"
+confidence: "medium"
+confidence_reasoning: "高置信: 收入+34%/数据中心AI加速/EPYC服务器份额30%+=事实。中等置信: 推理市场份额路径15%→25%是推断(MI300X基准测试支持但商业验证不足)。降低置信: OPM 10.7%可能是结构性天花板(价格竞争模式) — '第二名'可能意味着'第二等利润率'"
+
+expectations:
+  price_implied:
+    implied_fcf_cagr: "~20-25%"
+    p_fcf: "49x"
+    owner_pe_adjusted: "~95x (NI $4.34B - SBC $1.64B = $2.7B → 332/2.7 = 123x; 但含回购调整~95x)"
+    judgment: "reasonable_on_forward — Forward PE 18.7x(FY27)合理,但trailing 91x反映当前利润率仍低"
+    judgment_reasoning: "共识Rev 4x到2030($135.6B)→如果OPM达20%则NI~$27B→PE 12x。关键变量: OPM能否从10.7%扩至20%+"
+
+  consensus:
+    eps_next_fy: "$10.92 (FY2027E, 33家)"
+    revenue_next_fy: "$67.2B (FY2027E)"
+    target_price_range: "$274均值 (高$358 Evercore)"
+    rating_distribution: "多数Buy"
+    recent_revision_direction: "up"
+
+  dominant_narrative: "AMD是NVDA的唯一替代——但CUDA锁定是否让AMD永远困在'第二名'?"
+  bull_case_core: "MI300X推理竞争力+Meta/OpenAI大单+EPYC CPU #1+推理市场价格敏感=AMD优势区"
+  bear_case_core: "CUDA锁定+价格折扣25%(需4x量才=NVDA收入)+OPM 10.7% vs NVDA 60%=利润率差距可能永不收敛"
+  market_most_uncertain_about: "AMD数据中心GPU份额能否超过15-20%——15%=合理估值,25%=显著低估"
+
+  smart_money:
+    insider_behavior: "零买入,持续卖出(Lisa Su例行10b5-1)"
+    company_buyback:
+      amount: "$1.32B"
+      sbc_coverage: "77%(不覆盖SBC)"
+      share_count_change: "+1.4%/yr(净稀释)"
+      trend: "stable"
+    smart_money_signal: "neutral — 广泛持有的共识名字,无逆向信号"
+
+reality:
+  company:
+    overall_trend: "accelerating"
+    trend_confidence: "high"
+    key_variables:
+      - name: "收入增速"
+        state: "accelerating"
+        data: "FY23 -4% → FY24 +14% → FY25 +34% | Q3-Q4'25加速(QoQ +20%/+11%)"
+        evidence_grade: "fact"
+      - name: "OPM"
+        state: "inflecting_up"
+        data: "FY23 1.8% → FY24 7.4% → FY25 10.7% — 方向正确但绝对值仍低"
+        evidence_grade: "fact"
+      - name: "FCF"
+        state: "accelerating"
+        data: "FY24 $2.4B → FY25 $6.7B (+179%)"
+        evidence_grade: "fact"
+      - name: "数据中心AI GPU"
+        state: "accelerating"
+        data: "MI300X获Meta(6GW)/OpenAI(6GW)大单。数据中心AI收入指引CAGR >80%"
+        evidence_grade: "fact"
+      - name: "服务器CPU(EPYC)"
+        state: "accelerating"
+        data: "份额从~5%(2019)→30%+(2025),Turin代继续蚕食Intel"
+        evidence_grade: "fact"
+    most_telling_facts:
+      - fact: "Forward PE 18.7x(FY27)对收入CAGR 31%=PEG 0.6——如果共识对,这比NVDA(PEG 0.5)稍贵但比大多数科技股便宜"
+        why_telling: "AMD的估值合理性完全取决于共识增速能否实现。如果能→便宜;如果不能(CUDA锁死份额)→贵"
+      - fact: "OPM 10.7% vs NVDA 60% — 6倍差距"
+        why_telling: "即使AMD收入追上NVDA的50%,利润率差距意味着AMD的NI可能只有NVDA的8-10%。'第二名在收入'≠'第二名在利润'"
+
+  industry:
+    structural_shifts:
+      - shift: "训练→推理的AI计算重心转移"
+        evidence_grade: "fact"
+        irreversibility: 4
+        speed: "medium"
+        company_position: "potential_beneficiary — 推理更价格敏感,CUDA锁定更弱,AMD的价格/性能优势更明显"
+    key_industry_fact: "推理将占AI计算60-70%(2027-28)。如果AMD能在推理中拿20-25%份额(vs训练中<10%),总收入影响巨大"
+
+gap:
+  scoring:
+    direction_clarity: 3
+    magnitude: 3
+    persistence: 3
+    verifiability: 4
+    industry_trend_support: 4
+    smart_money_alignment: 2
+    composite_score: 3.17
+
+  core_mispriced_variables:
+    - variable: "推理vs训练的份额差异"
+      market_assumes: "AMD在AI GPU整体份额<15%(CUDA限制)"
+      reality_shows: "在推理workload中AMD MI300X价格/性能匹配H100。推理将是60-70%市场,CUDA锁定在推理中弱于训练"
+      evidence_grade: "fact(benchmark)+inference(份额预测)"
+    - variable: "OPM扩张路径"
+      market_assumes: "OPM将从10.7%提升(共识)"
+      reality_shows: "AMD竞争策略是'价格折扣25%',这结构性限制OPM上限。可能达20%但不可能达NVDA的60%"
+      evidence_grade: "inference"
+
+  one_sentence_judgment: "AMD是半导体中的'条件性低估'——如果推理超过训练成为AI计算主战场(趋势支持)+AMD在推理中拿到20%+份额,Forward PE 18.7x偏便宜;但如果CUDA锁定持续限制GPU份额<15%+OPM停滞在12%,当前估值是合理的。核心变量: OPM轨迹(从10.7%→20%=低估,停在12%=合理)"
+
+  same_narrative_comparison:
+    narrative: "AI芯片竞争"
+    peers:
+      - ticker: "NVDA"
+        forward_pe: "15.4x(FY28)"
+        opm: "60.4%"
+        moat: "CUDA+训练垄断"
+      - ticker: "AMD"
+        forward_pe: "18.7x(FY27)"
+        opm: "10.7%"
+        moat: "价格/性能+EPYC CPU捆绑"
+      - ticker: "AVGO"
+        forward_pe: "TBD"
+        opm: "TBD"
+        moat: "ASIC定制设计+网络"
+    most_mispriced: "NVDA Forward PE(15.4x)比AMD(18.7x)更低但OPM高6倍——NVDA在forward基础上可能比AMD更'便宜'"
+
+paradigm_shift:
+  company_role: "challenger — 在GPU训练是#2,在CPU服务器正在变#1,在推理可能成为#1.5"
+  pricing_error_pattern: "possible — 市场可能过度锚定'训练份额'(AMD弱项)而低估'推理份额'(AMD强项)"
+  impact_on_gap_judgment: "推理vs训练的重心转移是AMD最大的潜在催化剂——但需要12-18个月验证"
+
+triggers:
+  company_signals:
+    - signal: "数据中心AI GPU收入增速"
+      bullish_threshold: ">80% CAGR持续"
+      bearish_threshold: "<40%(份额获取放缓)"
+      next_data_point: "FY2026 Q1"
+    - signal: "OPM轨迹"
+      bullish_threshold: ">15%(FY26)"
+      bearish_threshold: "<12%(利润率天花板确认)"
+  falsification:
+    - condition: "数据中心GPU份额2年后仍<12%且OPM<13%"
+      implication: "'永远第二名'确认——估值需要下调"
+      time_window: "18个月"
+  monitoring_horizon: "3-4季度"
+
+next_actions:
+  deep_dive_worthy: false
+  deep_dive_reason: "composite 3.17(<3.5)。已有v2.0深度报告(341K)。AMD的预期差取决于推理份额(不确定性高)——等MI350发布+推理市场数据后再评估"
+
+post_mortem:
+  verified: false
