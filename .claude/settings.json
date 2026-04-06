@@ -38,13 +38,18 @@
           },
           {
             "type": "command",
-            "comment": "Sprint 3: Complete文件写入后自动生成无痕化版本 (_seamless.md)",
-            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in *_seamless.md) exit 0 ;; *_Complete_*.md|*_Complete*.md) if [ -f \"$FP\" ] && [ -x \"${CLAUDE_PROJECT_DIR:-.}/scripts/seamless_translator.sh\" ]; then bash \"${CLAUDE_PROJECT_DIR:-.}/scripts/seamless_translator.sh\" \"$FP\" >&2 2>&1 || echo \"WARNING: seamless_translator失败 (非阻断)\" >&2; fi ;; esac; exit 0"
+            "comment": "Sprint 3 (v2修复路径bug): Complete文件写入后自动生成无痕化版本 (_seamless.md)",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in *_seamless.md) exit 0 ;; *_Complete_*.md|*_Complete*.md) REPO=$(echo \"$FP\" | sed -E 's|(/.*/(\\.claude/worktrees/[^/]+|\\.worktrees/[^/]+|投资大师))/reports/.*|\\1|'); [ -z \"$REPO\" ] && REPO=\"${CLAUDE_PROJECT_DIR:-/Users/milton/投资大师}\"; SCRIPT=\"$REPO/scripts/seamless_translator.sh\"; if [ ! -x \"$SCRIPT\" ]; then SCRIPT=\"/Users/milton/投资大师/scripts/seamless_translator.sh\"; fi; if [ -f \"$FP\" ] && [ -x \"$SCRIPT\" ]; then bash \"$SCRIPT\" \"$FP\" >&2 2>&1 || echo \"WARNING: seamless_translator失败 (非阻断)\" >&2; else echo \"WARNING: seamless_translator.sh未找到 ($SCRIPT)\" >&2; fi ;; esac; exit 0"
+          },
+          {
+            "type": "command",
+            "comment": "Sprint 7 v2 (代码级): Complete写入后运行Phase 5写作质量检查 (5减法规则)",
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in *_seamless.md) exit 0 ;; *_Complete_*.md|*_Complete*.md) REPO=$(echo \"$FP\" | sed -E 's|(/.*/(\\.claude/worktrees/[^/]+|\\.worktrees/[^/]+|投资大师))/reports/.*|\\1|'); [ -z \"$REPO\" ] && REPO=\"${CLAUDE_PROJECT_DIR:-/Users/milton/投资大师}\"; SCRIPT=\"$REPO/scripts/phase5_writing_check.sh\"; if [ ! -x \"$SCRIPT\" ]; then SCRIPT=\"/Users/milton/投资大师/scripts/phase5_writing_check.sh\"; fi; if [ -f \"$FP\" ] && [ -x \"$SCRIPT\" ]; then bash \"$SCRIPT\" \"$FP\" 2>&1 || true; fi ;; esac; exit 0"
           },
           {
             "type": "command",
             "comment": "Sprint 5.1: staging文件写入后自动运行Skill Sentinel (不依赖AI记忆)",
-            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in */reports/*/staging/*_P[0-9]*.md) TICKER=$(echo \"$FP\" | sed -E 's|.*/reports/([^/]+)/.*|\\1|'); if [ -n \"$TICKER\" ] && [ -x \"${CLAUDE_PROJECT_DIR:-.}/scripts/skill_sentinel.sh\" ]; then echo \"=== Skill Sentinel 自动触发: $TICKER ===\" >&2; bash \"${CLAUDE_PROJECT_DIR:-.}/scripts/skill_sentinel.sh\" \"$TICKER\" all >&2 2>&1 || echo \"(哨兵检测到缺失,见上方报告)\" >&2; fi ;; esac; exit 0"
+            "command": "INPUT=$(cat); FP=$(echo \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null || echo ''); case \"$FP\" in */reports/*/staging/*_P[0-9]*.md) TICKER=$(echo \"$FP\" | sed -E 's|.*/reports/([^/]+)/.*|\\1|'); REPO=$(echo \"$FP\" | sed -E 's|(/.*/(\\.claude/worktrees/[^/]+|\\.worktrees/[^/]+|投资大师))/reports/.*|\\1|'); [ -z \"$REPO\" ] && REPO=\"${CLAUDE_PROJECT_DIR:-/Users/milton/投资大师}\"; SCRIPT=\"$REPO/scripts/skill_sentinel.sh\"; if [ ! -x \"$SCRIPT\" ]; then SCRIPT=\"/Users/milton/投资大师/scripts/skill_sentinel.sh\"; fi; if [ -n \"$TICKER\" ] && [ -x \"$SCRIPT\" ]; then echo \"=== Skill Sentinel 自动触发: $TICKER ===\" >&2; bash \"$SCRIPT\" \"$TICKER\" all >&2 2>&1 || echo \"(哨兵检测到缺失,见上方报告)\" >&2; fi ;; esac; exit 0"
           }
         ]
       }
