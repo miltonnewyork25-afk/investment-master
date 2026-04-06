@@ -1,0 +1,19 @@
+schema_version: "2.0"
+ticker: WWD
+company: "WWD"
+framework_version: v17.0
+worktree: "aerospace_defense"
+industry: "aerospace_defense"
+last_updated: "2026-04-06T08:29:25+00:00"
+
+current_phase: -1
+phase_status: pre_launch
+phases_completed: []
+
+target_chars: 300000
+target_range: "240K-375K"
+hard_floor: 200000
+
+quick_ref:
+  total_chars: 0
+  latest_phase_chars: 0
