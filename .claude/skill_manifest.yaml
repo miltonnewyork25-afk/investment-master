@@ -1,6 +1,11 @@
-# 投资研究框架 — 关键Skill强制应用清单 v1.0
-# 源自: LITE/CPRT等报告中关键skill反复丢失的系统性问题
+# 投资研究框架 — 关键Skill强制应用清单 v1.1
+# 源自: LITE/CPRT/WWD等报告中关键skill反复丢失的系统性问题
 # 原则: 声明Skill应用位置 + 验证artifact存在 + 缺失触发告警
+#
+# v1.1更新 (2026-04-06): WWD实验暴露Pattern精度问题
+#   - 多个真实做了的skill被误报为缺失 (财务归因/AI冲击/管理层激励)
+#   - 修复: 每个skill扩充3-5条近义pattern, 任一匹配即通过
+#   - 新增: 内部人交易/管理层credibility/aero defense split等专项检查
 #
 # 每个skill条目字段:
 #   id: 唯一标识
@@ -12,7 +17,7 @@
 #   rationale: 为什么重要
 #   seamless_handling: 在前台翻译后如何处理
 
-version: 1.0
+version: 1.1
 last_updated: "2026-04-06"
 
 skills:
@@ -50,10 +55,19 @@ skills:
     required_phases: [P1, P2]
     trigger: always
     expected_artifacts:
+      # 严格量×价 (旧)
       - "量.*价.*混合|volume.*price.*mix"
       - "归因分解|attribution"
       - "[0-9]+%.*量.*[0-9]+%.*价"
       - "organic.*acquisition|有机.*并购"
+      # WWD教训: 近义写法
+      - "量驱动|价驱动|价/量|量/价"
+      - "销量.*价格|价格.*销量"
+      - "organic growth|有机增长|net.*acquisition"
+      - "量价剪刀差|量价分解|量价拆解"
+      - "增长.*分解|增长.*拆解|growth.*decomposition"
+      - "量.*贡献.*[0-9]|价.*贡献.*[0-9]"
+      - "并购贡献|inorganic|无机增长"
     severity: high
     rationale: "没有量价分解=不知道增长驱动=无法判断可持续性。收入增长10%必须拆成量×价×混合×并购"
 
@@ -65,6 +79,11 @@ skills:
       - "44.*因子|moat.*score|护城河评分"
       - "C1.*C2.*C3|转换成本.*规模|网络效应.*品牌"
       - "/moat-evaluate"
+      # 近义pattern
+      - "护城河.*评级|护城河.*强度|护城河.*分级"
+      - "moat.*rating|moat.*strength"
+      - "转换成本|规模经济|网络效应|无形资产|成本优势"
+      - "moat.*intensity|economic.*moat"
     severity: high
     rationale: "没有护城河量化=主观判断=无法跨报告对比"
 
@@ -116,6 +135,11 @@ skills:
       - "剪刀差|pricing.*scissor"
       - "高端.*低端.*分层|tier.*pricing"
       - "企业.*SMB.*定价差|enterprise.*SMB.*price"
+      # 近义pattern
+      - "定价权.*分层|定价.*分级"
+      - "OEM.*Aftermarket|AM.*OEM"  # 航空类公司常用
+      - "Tier 1.*Tier 2|tier-1.*tier-2"
+      - "高端.*份额|低端.*份额"
     severity: medium
     rationale: "多层客户公司忽略剪刀差=定价权判断失准"
 
@@ -142,6 +166,12 @@ skills:
       - "AI冲击|AI.*impact"
       - "被AI颠覆|AI.*disrupt"
       - "/ai-impact"
+      # WWD教训: 近义写法
+      - "AI对.*影响|AI.*替代"
+      - "AI数据中心|AI.*周期|AI.*CapEx"
+      - "人工智能.*影响|generative.*AI"
+      - "LLM.*替代|LLM.*影响"
+      - "AI.*威胁|AI.*受益"
     severity: medium
     rationale: "2025年后几乎所有白领/认知密集行业都需要评估AI冲击"
 
@@ -156,6 +186,49 @@ skills:
       - "probability.*weighted.*valuation"
     severity: high
     rationale: "单点估值=伪精确。必须Bull/Base/Bear + 概率加权"
+
+  # ========== v1.1新增 (WWD教训) ==========
+
+  - id: insider_trading_quant
+    name: 内部人交易量化分析
+    required_phases: [P1, P2, P3]
+    trigger: always
+    expected_artifacts:
+      - "A/D.*[Rr]atio|A/D.*[0-9]\\.[0-9]"
+      - "内部人.*买入.*卖出|insider.*buy.*sell"
+      - "10b5-1.*持续卖出|预定卖出"
+      - "内部人.*季度.*[0-9]"
+      - "高管.*[买卖].*[0-9]+M|exec.*purchase.*[0-9]"
+    severity: medium
+    rationale: "WWD教训: 只提'CEO持续卖出'不够。需要A/D ratio数字+季度变化+历史基准。内部人交易是高质量信号"
+
+  - id: management_credibility
+    name: 管理层credibility track record
+    required_phases: [P1, P2]
+    trigger: always
+    expected_artifacts:
+      - "track.*record|管理层.*历史"
+      - "连续.*季度.*beat|consecutive.*beat"
+      - "指引.*达成|guidance.*achievement"
+      - "过去.*[0-9].*季度.*超|past.*[0-9].*quarters"
+      - "达成率|hit.*rate"
+    severity: medium
+    rationale: "管理层是否值得信任不是定性问题。看过去N季度beat/miss/in-line的具体记录"
+
+  - id: segment_split_quantification
+    name: 分部细分量化 (Defense/Commercial/Industrial等)
+    required_phases: [P1]
+    trigger: always
+    expected_artifacts:
+      - "Defense.*[0-9]+%.*Commercial.*[0-9]+%"
+      - "[0-9]+%.*Defense.*[0-9]+%.*Commercial"
+      - "OEM.*[0-9]+%.*[Aa]ftermarket.*[0-9]+%"
+      - "[Aa]ftermarket.*[0-9]+%.*OEM.*[0-9]+%"
+      - "AM.*占比.*[0-9]+%|AM.*share.*[0-9]+%"
+      - "分部.*[0-9]+%.*分部.*[0-9]+%"
+      - "segment.*[0-9]+%.*segment.*[0-9]+%"
+    severity: medium
+    rationale: "WWD教训: 知道'Aero占64%'不够, 需要Aero的Defense vs Commercial split。否则无法判断周期敏感度"
 
   # ========== 未来可扩展 ==========
   # - assumption_audit (假设审计)
