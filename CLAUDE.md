@@ -182,7 +182,10 @@
 
 **首条消息**: `pwd` + `git branch --show-current`, 报告当前位置
 **继续/恢复**: ①确认位置 → ②读checkpoint.yaml → ③git log → ④**读handoff note** → 恢复执行
-**Phase自动化**: `tier3_launch.sh` → `preflight_gate.sh` → `phase_complete.sh`(含sentinel) → `quality_gate_complete.sh`
+**Phase自动化**: `tier3_launch.sh` → `preflight_gate.sh` → `phase_complete.sh`(含sentinel) → **`mid_assembly_check.sh` (Phase 5 每50K强制)** → `quality_gate_complete.sh`
+**Phase 5 中场检测 (v22.2, PDD v2.0教训)**: 单会话组装写满 50K/100K/150K/200K **必须**调用 `bash scripts/mid_assembly_check.sh {REPORT}`。BLOCK = voice/审美词/范畴重分配; WARN = hedging/箭头链/DM/Mermaid。任一 BLOCK 必须当场修复, 不得"先写完再补"。详见 rule-J-assembly.md J-4
+**P4.5 → P5 工程清单 (v22.2)**: P4.5 handoff 必须含 `phase5_engineering_requirements` (DM 锚点≥30 + Mermaid≥10 + 中场检测时点≥4), 否则 P5 不得启动。详见 J-3
+**R-3/R-4 硬约束 (v22.2, PDD v2.0验证)**: 黑箱 ≥30% → 禁止单点目标价 + 必须区间; 圆桌异议 ≥3/5 → 评级标注"(临界)" + 必须公开披露异议章节。详见 rule-R-four-mandatory.md
 **EVO生命周期** (借鉴Claude Code行为缓解管道+Ch24互补频率设计):
 - **发现**: 报告验尸发现问题 → PR式记录(来源/量化指标/解除条件)
 - **引入**: 写入evolution_log.yaml, **ant-only灰度**(先在1-2份报告验证)
