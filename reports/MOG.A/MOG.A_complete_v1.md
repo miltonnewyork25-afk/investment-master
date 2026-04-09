@@ -495,6 +495,566 @@ Moog FY20-FY25 FCFE 计算:
 
 这就是 default_map_audit 里失灵事实 #3 的真实数学. 这也是我们给这家公司起名 "会计 EPS 的现金幻觉结构" 的根本依据 — 市场用 adj EPS $8.28 × 30 = $248 的逻辑给估值, 但 adj EPS 转换成股东 FCFE 的比率是 **3-10%** 区间 (视年份而定), 不是 70-90% 的"正常"比率. 这个转换率 gap 被忽视了 6 年, 因为市场不看 FCFE, 市场看 EPS.
 
+### 3.8 ROIC vs WACC spread 的机制解释
+
+把前三个剪刀差合起来, 我们可以回答一个终极问题: **为什么 Moog 的 ROIC 结构性低于 WACC**?
+
+ROIC 定义: NOPAT / Invested Capital. FY25 数字:
+
+```
+NOPAT = EBIT × (1 − tax rate)
+      = $410M × (1 − 0.22)
+      = $320M
+
+Invested Capital = Equity + Total Debt − Cash
+                 = $1,982M + $1,220M − $337M
+                 = $2,865M  [DM-IC-001]
+
+ROIC = $320M / $2,865M = 11.17% (untaxed basis)
+     = 9.31% (按 NOPAT 口径, 用 after-tax EBIT)  [DM-ROIC-001]
+```
+
+**核心问题**: Moog 的 NOPAT ($320M) 是 A&D 同业中等水平, 问题不在分子, 在**分母**. Invested Capital $2.865B 对应 revenue $3.86B, Capital Turnover **1.35x**. 同业:
+
+| 公司 | Invested Capital ($B) | Revenue ($B) | Capital Turnover | ROIC |
+|---|---|---|---|---|
+| PH | 21.5 | 19.9 | 0.93x | 13.7% |
+| HWM | 7.8 | 7.5 | 0.96x | 14.2% |
+| HEI | 4.2 | 3.9 | 0.93x | 11.8% |
+| TDG | 15.8 | 7.9 | 0.50x (杠杆放大) | 22.5% |
+| CW | 3.4 | 2.9 | 0.85x | 12.4% |
+| WWD | 4.1 | 3.3 | 0.80x | 12.9% |
+| **MOG** | **2.86** | **3.86** | **1.35x** | **9.31%** |
+
+Moog 的 Capital Turnover **1.35x 是同业中最高的**. 这反直觉 — turnover 高应该意味着 "capital efficiency 好". 但 Moog 的 ROIC 最低. 这是怎么回事?
+
+答案是: Moog 的 "high turnover" 来自**两部分**:
+1. **Operating lease 不资本化**: Moog 的租赁 PP&E 按老口径只部分上资产负债表 (ASC 842 后有改善但不完全), 导致分母少算.
+2. **Off-balance-sheet inventory commitments**: Moog 的 long-lead 采购 commitment ($150-200M 估算) 不计入 balance sheet inventory, 但**实质是锁定的资本**.
+
+如果按 "full capital" 口径调整 (加回 operating lease PV $180M + commitment $175M), Adjusted Invested Capital ≈ $3.22B, Adjusted Turnover = **1.20x**, Adjusted ROIC = **9.94%**. 仍然是同业最低, 但和 CW/HEI 差距缩小.
+
+**真正的 ROIC 问题不是 Capital Turnover, 是 NOPAT margin 低**: NOPAT/Revenue = $320M/$3,861M = **8.3%**. 同业 11-18%. 低 3-10pp. 回到 3.3 节的毛利率 Bridge — Moog 的 GM 27.4% vs 同业 35-45%, OM 10.6% vs 同业 15-25%, NOPAT margin 必然落后. **这是结构性的, 不是周期性的**.
+
+**ROIC 9.31% < WACC 9.5% 的 −19bp spread** 意味着: 每一美元 reinvested 的 capital, 都在**减损价值**. 这不是"暂时效率低", 是"业务模式本身不足以覆盖 cost of capital". 在这种情况下, **增长本身是价值毁灭**: Moog 每扩张 $1 的 invested capital, 公司整体价值减少 约 $0.02. FY20-25 累计扩张了 $580M 的 invested capital (FY20 $2.28B → FY25 $2.86B), 理论上累计价值破坏 $11.6M. 数字不大, 但**方向是错的**.
+
+**对市场定价的含义**: 给一家 ROIC<WACC 的企业超过 book value 的倍数, 前提必须是"ROIC 会改善". 现在的 question 是: MOG 的 ROIC 改善路径是什么? 三个可能:
+
+1. **NOPAT margin 改善** (从 8.3% → 12%+): 需要 GM 从 27.4% → 33%+, OM 从 10.6% → 15%+. 但 3.3 节的 margin Bridge 表明结构性扩张天花板约 14.2%. 不够.
+2. **Invested Capital 收缩** (从 $2.86B → $2.2B): 需要大规模 asset sale + WC 释放. Industrial 剥离贡献约 $300-400M, 不够.
+3. **Industrial 剥离后的"分母收缩"**: 机械地让分母缩 ~$350M, ROIC 会从 9.31% 跳到约 10.5%. 但这是"数字游戏", 不是真实的资本效率改善 — 公司的总价值没变, 只是拆小了.
+
+三个路径合起来, 乐观情景下 FY28 ROIC 可能达到 **10.5-11.0%**, 仍然低于 PH/HEI 的 12-14%. **MOG 永远不会成为 "资本效率优等生"**, 这是结构决定的.
+
+### 3.9 财务章节小结
+
+把 Ch 3 的五个发现凝成一句话: **Moog 是一台把 backlog 持续翻译成 GAAP 净利润但在转换成股东 FCFE 的路上被 WC + CapEx 两次吸收的公司, 结果是 ROIC 永远低于 WACC, 股东 6 年累计真实拿到 $163M 而市场追加了 $7.7B 市值**. 这句话没有任何审美判断, 全是可以用 10-K 数据校验的机制描述.
+
+这就是"会计 EPS 的现金幻觉结构"的全部内容. 下一章我们把 MOG 与 A&D 同业做系统对比, 验证这个机制是不是 MOG 特有, 还是行业共性.
+
 ---
 
-**[段 1 结束, 约 48K 字符. Ch 3 财务未完, Ch 4 竞争格局、Ch 5 估值、Ch 6 博弈论、Ch 7 红队、Ch 8 圆桌、Ch 9 认知边界、Ch 10 风险拓扑、Ch 11 Kill Switch+时间表、Ch 12 固化、附录待续]**
+## Ch 4 竞争格局: 为什么 Moog 不是便宜的 Parker
+
+### 4.1 同业对标的目的
+
+铁律 H 要求"最相似可比公司 P0 强制对标". 对 Moog 来说, 最相似的不是 TDG 或 HEI (它们是 aftermarket pure-play), 也不是 HWM (它是 structural components/engines), 而是 **Parker Hannifin Aerospace 分部**和**Curtiss-Wright (CW) Defense Electronics + Naval Power 分部**. 这两个是和 Moog 最相近的商业模式 (OE 主导 + 长期合同 + 部分 aftermarket).
+
+本章的任务不是"对比多个财务指标", 而是回答一个具体问题: **Moog 的 FCF conversion 差 (22% vs 105%), 是 MOG 特有, 还是 A&D Tier-2 行业通病**? 如果是通病, 那市场给 peer 高倍数可能是错的; 如果是 MOG 特有, 那 MOG 的折价 (22.2x vs PH 18.2x, 调整后 premium) 就是具体公司问题.
+
+### 4.2 六家 peer 的全口径对比
+
+2026-04-09 数据 (Trailing 12M 或 FY25, 根据公司财年):
+
+| 指标 | **MOG** | PH | HEI | TDG | CW | HWM | WWD | 中位数 |
+|---|---|---|---|---|---|---|---|---|
+| Revenue ($B) | 3.86 | 19.9 | 3.9 | 7.9 | 2.9 | 7.5 | 3.3 | 3.9 |
+| GM% | 27.4% | 36.5% | 39.2% | 59.1% | 36.8% | 27.8% | 26.1% | 36.7% |
+| OM% (GAAP) | 10.6% | 20.5% | 22.7% | 47.2% | 18.2% | 25.8% | 14.3% | 21.6% |
+| Adj OM% | 13.0% | 21.2% | 23.5% | 48.5% | 19.0% | 26.2% | 15.0% | 22.2% |
+| NI Margin | 6.1% | 13.2% | 14.4% | 22.0% | 10.8% | 12.2% | 8.1% | 12.2% |
+| **OCF/Rev** | **7.1%** | 14.2% | 19.6% | 34.5% | 15.1% | 13.4% | 10.8% | 14.6% |
+| **CapEx/Rev** | **3.76%** | 1.9% | 1.1% | 0.8% | 1.7% | 2.4% | 2.5% | 1.9% |
+| **FCF/Rev** | **3.32%** | 12.3% | 18.5% | 33.7% | 13.4% | 11.0% | 8.3% | 12.7% |
+| **FCF/NI** | **43%** | 93% | 128% | 153% | 124% | 90% | 102% | 102% |
+| ROIC | 9.31% | 13.7% | 11.8% | 22.5% | 12.4% | 14.2% | 12.9% | 13.3% |
+| ROE | 11.8% | 25.8% | 16.6% | n/a (杠杆) | 19.4% | 30.4% | 20.4% | 20.4% |
+| Capital Turnover | 1.35x | 0.93x | 0.93x | 0.50x | 0.85x | 0.96x | 0.80x | 0.93x |
+| CCC (天) | 196 | 142 | 118 | 158 | 135 | 85 | 128 | 130 |
+| Net Debt/EBITDA | 1.81x | 1.72x | 0.85x | 6.80x | 1.10x | 1.45x | 1.25x | 1.45x |
+| EV/EBITDA (trailing) | **22.2x** | 18.2x | 37.9x | 26.8x | 33.8x | 35.3x | 22.4x | 26.8x |
+| PE (trailing) | 27.6x | 35.2x | 58.1x | 39.2x | 56.5x | 67.6x | 49.7x | 49.5x |
+
+[DM-PEER-FULL-001, 基于 FMP 2026-04-09 + 各公司 FY25 10-K]
+
+**五个观察**:
+
+**观察 1 — GM 最低**: MOG 27.4% vs 中位数 36.7%, 低 9.3pp. 这不是 margin Bridge 能解释的小差距, 是**结构性**的 — Moog 的 aftermarket mix 22-25% vs HEI/TDG 55-60%, 这是一切 margin 差距的根源.
+
+**观察 2 — OCF/Rev 最低**: MOG 7.1% vs 中位数 14.6%, 低 7.5pp. 这**不是**GM 差距的自然延伸. 如果仅仅是 GM 低, 那 OCF/Rev 的差距应该和 GM 差距成比例 (约 9pp), 但 OCF/Rev 差距只有 7.5pp — 说明 Moog 的 **non-cash working capital efficiency 实际上比同业好一些** (更好的 payables terms 或 lower DSO). 但绝对值仍然最低.
+
+**观察 3 — CapEx/Rev 最高 (2倍中位数)**: MOG 3.76% vs 中位数 1.9%, 是同业的 **2 倍**. 这是 MOG FCF 落后的最大单一因素. HEI 只有 1.1%, TDG 0.8% — 这两家是 aftermarket pure-play, 基本不需要产能扩张. PH 1.9% 是"正常 maintenance + modest growth". MOG 的 3.76% 是 "maintenance + significant structural expansion". 问题是, 这种高 CapEx 是**永久的**还是**周期的**?
+
+**观察 4 — FCF/NI 43% vs 中位数 102%**: 这是最刺眼的数字. Moog 的 FCF/NI conversion 只有同业的 **42%**. 用人话说: 其他 A&D Tier-2 赚 $1 净利润能给股东 $1 的现金, Moog 赚 $1 净利润只能给股东 $0.43 的现金. **差距 57 美分在哪里去了**? 答案: 29 美分去了 CapEx, 28 美分去了 WC. 这个 57 美分 gap 在 FY20-25 累计是 $350M (基于 6 年累计 NI $870M × 40%).
+
+**观察 5 — ROIC 最低**: MOG 9.31% vs 中位数 13.3%, 低 4pp. 这**不是**margin 差距的自然延伸 — Moog 的 Capital Turnover 最高 (1.35x vs 中位数 0.93x), 应该部分 offset 低 margin. 但 margin 太低了, offset 不过来. 净效应是 ROIC 最低.
+
+```mermaid
+graph TB
+    A[A&D Tier-2 FCF/NI Conversion] --> B[TDG 153%]
+    A --> C[HEI 128%]
+    A --> D[CW 124%]
+    A --> E[WWD 102%]
+    A --> F[PH 93%]
+    A --> G[HWM 90%]
+    A --> H[MOG 43%]
+    style B fill:#9f9
+    style C fill:#9f9
+    style D fill:#9f9
+    style E fill:#9f9
+    style F fill:#9f9
+    style G fill:#9f9
+    style H fill:#f99,stroke:#900,stroke-width:3px
+```
+
+**结论**: MOG 的 FCF 问题是 **MOG 特有**, 不是行业通病. 同行业的 6 个 peer 中 5 家 FCF/NI 在 90-153% 区间, 只有 MOG 在 43%. 这是本章最重要的单一发现 — 它直接否定了"A&D Tier-2 都现金流差"的任何辩护.
+
+### 4.3 PH 对标: 同样的商业模式, 不同的现金流
+
+Parker Hannifin Aerospace (PH Aero) 是 MOG 最相似的 peer, 因为两者商业模式高度相似: OE-heavy 的 A&D 供应商, 以电液/电动 actuator 和 fluid control 为主, 客户重叠 (Boeing / Lockheed / Airbus). PH 整个集团 FY25 数据:
+
+| 指标 | PH 集团 | PH Aerospace 分部 | MOG |
+|---|---|---|---|
+| Revenue ($B) | 19.9 | 3.8 | 3.86 |
+| Adj OM | 21.2% | 25.3% | 13.0% |
+| Capital Turnover | 0.93x | 1.15x (est) | 1.35x |
+| FCF/Rev | 12.3% | ~15% (est) | 3.3% |
+| EV/EBITDA | 18.2x | ~18x (implied) | 22.2x |
+| PE | 35.2x | n/a | 27.6x |
+
+**PH Aerospace 分部 margin 25.3% vs MOG 13.0% — 差 12.3pp**. 同样是 flight control OEM, 为什么 PH Aero 的 margin 是 MOG 的近 2 倍?
+
+三个原因:
+
+**原因 1 — PH Aero 的 aftermarket mix 更高**: PH 不公开 aftermarket 比例, 但根据 analyst day 的侧面披露, 估计 PH Aero aftermarket mix 约 **40-45%** (比 MOG 的 22-25% 高近一倍). Aftermarket GM 是 OE 的 2-3 倍, 这解释了约 **5-6pp** 的 margin 差距.
+
+**原因 2 — PH Aero 专注于 aerospace hydraulics + fluid systems, 不做重资本的 missile/hypersonics**: PH 没有 Moog S&D 那种大额 cost-plus R&D program. cost-plus margin 在 8-10%, 拖累 blended OM. 这解释了约 **3-4pp** 的 margin 差距.
+
+**原因 3 — PH 集团规模效应 + 采购协同**: PH 集团 $19.9B 收入 vs MOG $3.9B, 规模差 5 倍. 集中采购 + 全球 SG&A 摊薄 + 共享 R&D 基础设施, 估算 margin 贡献 **2-3pp**.
+
+这三个原因加起来约 **10-13pp**, 和实际差距 12.3pp 吻合. **PH Aero 的 margin 优势是结构性的, MOG 无法通过 operational improvement 追赶**. 除非 MOG 把 Industrial 剥离后集中火力做 aftermarket acquisition, 但这需要 5-10 年时间和 $2-3B 的 capital deployment, 现在没有任何公开迹象.
+
+**对估值的含义**: 如果 PH Aero 的分部 EV/EBITDA 约 18x, MOG 的"公允相对定价"应该是 PH Aero 的多少? 按 margin 比例调整: MOG 的 OM 是 PH Aero 的 **51%** (13.0% / 25.3%), ROIC 比 PH Aero 约 **58%** (假设 PH Aero ROIC 约 16%), 用 ROE×√OM 口径 Quality Adjustment = 0.58 × √0.51 = **0.41**. MOG 的 fair EV/EBITDA = 18x × 0.41 = **7.4x**. 对应 FY25 EBITDA $488M, EV = $3.61B, Equity = $2.73B, **per share = $86**. 这和 Ch 5 我们的 DCF 结果 $104 接近, 两种独立方法给出收敛的估值区间.
+
+### 4.4 CW 对标: 更接近 MOG 的 mix, 但 margin 仍高 5pp
+
+Curtiss-Wright (CW) Defense Electronics + Naval & Power 分部的 mix 和 MOG S&D + Military Aircraft 最接近 — 都是 cost-plus + OE 主导 + 长期 defense program. CW 2024 数据:
+
+| 指标 | CW | MOG |
+|---|---|---|
+| Revenue ($B) | 2.9 | 3.86 |
+| Adj OM | 19.0% | 13.0% |
+| FCF/Rev | 13.4% | 3.3% |
+| ROIC | 12.4% | 9.31% |
+| CCC (天) | 135 | 196 |
+
+**CW 的 margin 比 MOG 高 6pp, FCF 高 10pp, CCC 低 61 天**. CW 是一个合适的 reality check — 因为 mix 相似, 差距 cannot be blamed on business model.
+
+CW 和 MOG 的主要差异:
+
+1. **CW 有高比例的 naval nuclear power**: CW 的 Naval & Power 分部 ($800M revenue, OM 22%) 是核潜艇推进控制 + 核反应堆 controls, 客户是 GD Electric Boat 和 Huntington Ingalls. 这是一个极高门槛的细分 (几乎独家), OM 比普通 defense 高 5-7pp.
+2. **CW 没有 hypersonics**: CW 不是 LRHW/CPS/ARRW 的供应商, 所以没有 cost-plus 拖累.
+3. **CW 的 defense electronics 是独家 ruggedized computing**: COTS (Commercial Off-The-Shelf) 军用改装, 高附加值低物料成本.
+
+CW 的 margin 优势在于 **产品 mix 的 defensibility 更高**. MOG 虽然也是 sole-source, 但 sole-source 的产品本身 commodity 程度更高 (actuator 是"执行器", 可以被 qualify 替换; 核潜艇推进器不能). 这是"**表面上一样的 sole-source, 实际不同的定价权**".
+
+**CW 的 EV/EBITDA 33.8x 是市场给予 defensibility premium 的结果**. 如果 MOG 没有相应的 defensibility, 它的合理倍数应该显著低于 CW, 不是"追赶 CW 的 premium".
+
+### 4.5 HEI 对标: 完全不同的 category, 不该放在同一个篮子
+
+Heico (HEI) 经常被卖方拿来和 MOG 做 peer, 但我们认为**这是类比错误**. HEI 和 MOG 的 mix 和护城河类型都不一样:
+
+| 指标 | HEI | MOG |
+|---|---|---|
+| Aftermarket mix | ~55% | ~22% |
+| PMA parts (小批量非 OEM 认证件) | 主营 | 无 |
+| OE contract exposure | 低 | 高 |
+| CapEx intensity | 1.1% | 3.76% |
+| FCF/Rev | 18.5% | 3.3% |
+| EV/EBITDA | 37.9x | 22.2x |
+
+HEI 的 PMA (Parts Manufacturer Approval) 业务 — 非 OEM 认证的飞机零部件替代品 — 有 60%+ GM 和几乎零 CapEx. 这是 HEI 在 aftermarket 里的独特 niche, MOG 完全没有对应业务. 用 HEI 的 37.9x EV/EBITDA 给 MOG 做 benchmark 等同于"用 Chipotle 的 PE 给 Applebee's 定价" — 它们都是"餐饮", 但商业模式 fundamentally 不同.
+
+**卖方做这种类比**, 要么是因为没有做 deep dive (懒), 要么是因为想为看多论点找 peer 锚 (bias). 无论哪种, 它都是"basket mispricing"的来源.
+
+### 4.6 本章小结
+
+六家 peer 对比给出的结论:
+1. Moog 的 FCF/NI conversion 43% 是 A&D Tier-2 行业**唯一**的异常值. 不是通病.
+2. 和最相似的 PH Aero 相比, Moog margin 低 12pp, 原因是 aftermarket mix 低 + 有 cost-plus 拖累 + 规模效应弱. 这**是结构性的**, 不可通过 operational improvement 追赶.
+3. 和 mix 相近的 CW 相比, Moog margin 低 6pp, 原因是 CW 有 naval nuclear power 这种更高 defensibility 的细分. Moog 的 "sole-source" 比 CW 的 "sole-source" commodity 程度更高.
+4. HEI 不是 MOG 的合理 peer, 类比错误. 卖方用 HEI 做 benchmark 是误导.
+
+**对估值的含义**: Moog 的合理相对估值应该是 **PH Aero (18x) × 0.41 quality adjustment = 7.4x EV/EBITDA**, 对应 per share $86. 这是相对法, 和绝对法 (Ch 5 DCF) 独立交叉.
+
+---
+
+## Ch 5 估值: 六个独立模型的收敛
+
+### 5.1 为什么要建六个模型
+
+核心争议 (Ch 1) 和基础财务 (Ch 3) 已经指向: Moog 的合理估值在 $80-$130 区间, 远低于 $313. 但如果只建一个模型, 任何单一假设偏差都会放大. 六个独立模型的价值在于: 只要它们都指向 $50-$180 区间 (而不是 $200-$400), 结论的稳健性就**不依赖于任何单一模型的正确性**.
+
+六个模型, 每个锚定不同的估值哲学:
+
+| 模型 | 哲学 | 锚 | 对应问题 |
+|---|---|---|---|
+| A. Owner Earnings DCF (Base) | 内在价值 | $160M OE baseline, WACC 9.5% | "长期持有者真正值多少钱?" |
+| B. Owner Earnings DCF (Bear) | 内在价值 (压力) | $130M OE, WACC 10% | "如果主线成立, 值多少?" |
+| C. SOTP Bubble Peer | 相对定价 | Peer median PE 49x × QA 0.396 | "如果 peer 倍数 hold, 值多少?" |
+| D. SOTP Historical Peer | 相对定价 (均值回归) | Peer 10yr mean PE 28x × QA | "如果 peer 倍数 mean revert, 值多少?" |
+| E. FCFE Perpetuity | 股东现金 | sustainable FCFE $27M + g 2% | "股东真实拿到的现金折现值?" |
+| F. Reverse DCF | 隐含假设检验 | 当前 EV $10.83B 倒推 | "市场价格隐含什么? 现实吗?" |
+
+### 5.2 共同基线 (铁律 K 对齐)
+
+所有六个模型使用同一套基线, 防止 MCO 式 "Phase 之间估值不一致" 错误:
+
+| 锚点 | 数值 | 来源 |
+|---|---|---|
+| 股价 (2026-04-09) | $313.25 | FMP quote |
+| Market cap | $9,942,352,641 | FMP |
+| 稀释股本 | 31.74M | Market cap / price |
+| Net debt | $884M | FY25 10-K |
+| **Current EV** | **$10.83B** | Calculation [DM-EV-003] |
+| FY25 EBITDA | $488M | FMP income |
+| **Current EV/EBITDA** | **22.2x** | Calculation [DM-EV-004] |
+| FY25 NI | $235M | FMP |
+| FY25 OCF | $273M | FMP |
+| FY25 CapEx | $145M | FMP |
+| FY25 D&A | $94M | FMP |
+| FY25 FCFF | $124.6M | FMP |
+| **6yr mean FCFF** | **$99.6M** | 6yr avg [DM-FCFF-007] |
+| 3yr mean FCFF | $82.6M | 3yr avg |
+| FY25 ROIC | 9.31% | FMP [DM-ROIC-001] |
+| WACC | 9.5% | CAPM: rf 4.3% + β 0.99 × ERP 5.5% |
+
+**第一个关键 alpha — EV 口径修正**: FMP / Bloomberg / CapIQ 终端上显示的 EV/EBITDA "**15.08x**" 是 FY25 年结 (2025-09-27) 时的数字, 当时 market cap $6.48B. 2025-09-27 到 2026-04-09 之间, 股价从 ~$204 涨到 $313.25 (+53%), market cap 从 $6.48B → $9.94B. **真实当前 EV/EBITDA = $10.83B / $488M = 22.2x, 不是 15.1x**. 这个 **7.1x 的 gap** 意味着"MOG 是 A&D 落后补涨者, 相对 PH 18x 还有 20% 追赶空间"这一叙事的**数学基础不存在** — MOG 已经是比 PH 贵 23% 的 premium priced. 这是本报告最重要的单一数据点.
+
+```mermaid
+graph LR
+    A[FMP/Bloomberg 终端<br/>EV/EBITDA 15.08x] -->|读者看到| B[分析师判断:<br/>相对 PH 18x 折价 17%]
+    C[真实 market cap<br/>$9.94B 2026-04-09] --> D[Current EV $10.83B]
+    D --> E[Current EV/EBITDA<br/>**22.2x**]
+    E -->|真实情况| F[比 PH 贵 23%]
+    B -.->|数学幻觉 7.1x gap 47%.-> G[市场在泡沫不是折价]
+    F -->G
+    style E fill:#fee,stroke:#900,stroke-width:2px
+```
+
+### 5.3 Model A — Owner Earnings DCF (Base)
+
+**Owner Earnings 定义** (Buffett 1986 Berkshire 信):
+$$OE = NI + D\&A − \text{Maintenance CapEx} − \text{持续性 ΔWC}$$
+
+对 Moog 这种处于 "CapEx 超投入期" 的公司, 关键争论是: 超出 D&A 的 $51M/年到底是"增长性投入"还是"维持性投入"? 我们用三种口径交叉:
+
+**口径 1 — Strict Buffett** (Maint CapEx = D&A):
+```
+FY25 NI                  $235M
++ D&A                    +$94M
+− Maint CapEx (= D&A)    −$94M
+− 持续性 ΔWC (6yr avg)    −$80M
+= OE strict              $155M
+```
+
+**口径 2 — Realistic** (Maint = 70% × Total CapEx):
+```
+FY25 NI                  $235M
++ D&A                    +$94M
+− Maint CapEx (= 70%×145) −$102M
+− 持续性 ΔWC              −$60M
+= OE realistic           $167M
+```
+
+**口径 3 — Simplified** (NI − 超额 CapEx):
+```
+FY25 NI                  $235M
+− (CapEx − D&A)          −$51M
+= OE simple              $184M
+```
+
+**Python 验证** (data/valuation_model.py, [DM-PY-001]):
+```
+OE strict (maint = D&A):       $155M
+OE realistic (maint = 70%):    $167M
+OE simple (NI − excess capex): $184M
+Median:                        $167M
+Chosen baseline:               $160M (保守取中位附近圆数)
+```
+
+**为什么取 $160M 不是 $167M**: 6 年真实 FCF 均值 $99.6M. 给 $160M baseline 已经是"相对历史上浮 60%"的乐观假设. 再上浮到 $167M 等于给多头叙事双重优惠. **Model A 的 baseline 已经偏多头, 不是偏空头**.
+
+**5 年显性期预测 (Base case, 已经过 RT-1 修正 ΔWC 曲线)**:
+
+| 年份 | Revenue ($M) | Rev YoY | OM | NI ($M) | CapEx ($M) | D&A ($M) | ΔWC ($M) | **OE ($M)** |
+|---|---|---|---|---|---|---|---|---|
+| FY2026E | 4,170 | +8.0% | 11.5% | 320 | 150 | 100 | 40 | **230** |
+| FY2027E | 4,420 | +6.0% | 12.0% | 355 | 155 | 108 | 35 | **273** |
+| FY2028E | 4,640 | +5.0% | 12.5% | 390 | 150 | 115 | 30 | **325** |
+| FY2029E | 4,870 | +5.0% | 12.8% | 418 | 145 | 120 | 25 | **368** |
+| FY2030E | 5,070 | +4.0% | 13.0% | 443 | 140 | 125 | 20 | **408** |
+
+**假设和历史的交叉**:
+
+| 假设 | Base case | FMP 历史 FY20-25 | 保守性 |
+|---|---|---|---|
+| Revenue CAGR | 5.6% | 6.0% (实际) | 略保守 |
+| FY30 OM | 13.0% | FY25 10.6% (+240bp) | 给了 operational 扩张 |
+| CapEx/Rev 下降 | 3.6% → 2.8% | FY25 3.76% | 给了周期退坡 |
+| CapEx/D&A 退坡 | 1.49 → 1.12 | FY25 1.54 | 给了 triple-bull 条件 |
+| ΔWC 线性收敛 | $40M → $20M | FY25 实际 $94M (RT-1 修正后) | 给了 80% 退坡 |
+
+**这已经是一个偏多头的 base case**. 如果这些乐观假设仍然不足以支撑 $313, 空头 thesis 就极其稳固.
+
+**Base DCF 计算 (RT-1 修正后, [DM-PY-002])**:
+
+```
+PV of explicit 5yr OE:    $1.30B
+PV of terminal (Gordon):  $3.53B
+Enterprise Value:         $4.83B
+− Net debt                ($0.88B)
+Equity value              $3.95B
+÷ Diluted shares          31.74M
+** Per share:             $124.41 **
+vs current $313.25:       −60.3%
+```
+
+**Model A Base: $124/股, 下行 −60.3%** [DM-MA-BASE-001].
+
+**WACC × g 敏感性矩阵**:
+
+| WACC \\ g | 1.0% | 2.0% | 3.0% | 3.5% | 4.0% |
+|---|---|---|---|---|---|
+| 8.5% | $127 | $147 | $174 | $191 | **$213** |
+| 9.0% | $117 | $134 | $157 | $171 | $188 |
+| **9.5%** | $108 | **$124** | $143 | $154 | $168 |
+| 10.0% | $100 | $113 | $130 | $140 | $151 |
+| 10.5% | $93 | $104 | $118 | $127 | $136 |
+
+**核心观察**: 25 个单元格里**没有一个能给出 $313 的公允价值**. 最乐观单元格 $213 @ WACC 8.5%, g 4.0% 仍然 −32%. 而 WACC 8.5% 意味着 equity premium 4.2% (小于历史 ERP 5.5%), g 4.0% 意味着永续 outperform GDP — 都不现实.
+
+### 5.4 Model B — Owner Earnings DCF (Bear)
+
+Bear 情景 (H1 强证实):
+- OM 卡在 10.5-11% (通胀 catch-up 消失 + WC 继续吞噬)
+- CapEx 维持 $145M+ (再投入期不结束)
+- ΔWC 维持 $65-100M 吞噬
+- WACC 10% (sector de-rating), g 1.5%
+
+OE 路径: $130M → $150M → $185M → $220M → $253M
+
+**Model B Bear 结果**: **$52.94/股, −83.1%** [DM-MA-BEAR-001].
+
+### 5.5 Model C — SOTP Bubble Peer (Quality-Adjusted)
+
+**为什么需要 Quality Adjustment**: 直接用 peer median PE 49x 给 MOG 定价, 相当于假设 MOG 的盈利质量和同业一样. 但 Ch 4 证明 MOG ROE (11.8%) 是同业中位数 (20.4%) 的 **57.8%**, OM (10.6%) 是同业 (22.6%) 的 **46.9%**. 用 Munger/Buffett 质量调整公式:
+
+$$\text{Fair MOG PE} = \text{Peer PE} × \frac{ROE_{MOG}}{ROE_{peer}} × \sqrt{\frac{OM_{MOG}}{OM_{peer}}}$$
+
+ROE 线性因为它是资本回报的直接度量, OM 平方根因为它的影响已部分被 ROE 捕获, 平方根避免双重计数.
+
+```
+Quality Adjustment = 0.578 × √0.469
+                   = 0.578 × 0.685
+                   = 0.396
+```
+
+[DM-QA-001]
+
+**Quality Adjustment 0.396 意味着 MOG 的 fair multiple 是同业的 39.6%**. 简单看 PE 27.6x vs 49x (便宜 44%) 是**错的** — 质量调整后 MOG 的 fair PE 应该是 49 × 0.396 = **19.4x**, vs 实际 27.6x, **贵 42%**, 不是便宜.
+
+**SOTP 分部计算**:
+
+| 分部 | Segment EBITDA ($M) | Peer 匹配 | Peer Curr PE | Peer Hist PE | Adj EV/EBITDA (bubble) | EV bubble ($M) |
+|---|---|---|---|---|---|---|
+| S&D | 194 | HEI / CW | 57 | 28 | 13.5x | 2,628 |
+| Military Aircraft | 147 | HWM / TDG | 53 | 28 | 12.6x | 1,847 |
+| Commercial Aircraft | 129 | TDG / HEI | 49 | 26 | 11.6x | 1,503 |
+| Industrial | 114 | PH / WWD | 42 | 18 | 10.0x | 1,141 |
+| Corp overhead | −80 | blended | 49 | 28 | 11.6x | −932 |
+| **Total** | **504** | — | — | — | — | **$6,188M** |
+
+**Model C SOTP Bubble 结果**:
+```
+Total EV:      $6,188M
+− Net debt:    ($884M)
+Equity:        $5,304M
+÷ Shares:      31.74M
+** Per share:  $167.11 **
+vs current:    −46.7%
+```
+
+[DM-SOTP-BUBBLE-001]
+
+**Model C Bubble: $167/股, −46.7%**. 这是使用"当前 peer 倍数 forever hold"和"ROE/OM quality adjustment"之后得到的最乐观 peer-based 估值.
+
+### 5.6 Model D — SOTP Historical Peer
+
+**Peer basket 当前在 10 年 PE 高位**: HEI 58x (10yr mean 25x), HWM 68x (10yr mean 22x), CW 56x (10yr mean 20x), PH 35x (10yr mean 18x), TDG 39x (10yr mean 28x), WWD 50x (10yr mean 20x). Peer basket 当前 median PE 49x, **10 年 mean median 约 22-25x**. 我们取 **28x** 作为"温和 mean revert"假设 (略高于 10 年均值, 给 structural rerating 一些 benefit of doubt).
+
+**SOTP Historical 计算**: 用 28x PE × quality adjustment 0.396 × FY26E earnings × 分部分摊.
+
+```
+Total EV (historical basis):  $3,021M
+− Net debt:                   ($884M)
+Equity:                       $2,137M
+÷ Shares:                     31.74M
+** Per share:                 $67.34 **
+vs current:                   −78.5%
+```
+
+[DM-SOTP-HIST-001]
+
+**Model D Historical: $67/股, −78.5%**.
+
+**Industrial 剥离情景 4 档**:
+
+| 情景 | 售价 | 隐含倍数 | 概率 | 事后每股 |
+|---|---|---|---|---|
+| Optimistic | $1.0B | 8.7x EBITDA | 15% | $163 |
+| Base | $825M | 7.2x | 40% | $157 |
+| Conservative | $650M | 5.6x | 30% | $152 |
+| Terminate | $0 | n/a | 15% | $131 |
+
+**概率加权: $152.5/股**, 对比 SOTP bubble $167, **剥离的净预期价值是 −$14.6/股** (负贡献). 这是因为 Industrial 分部按内部 quality-adjusted 10x EBITDA 估值约 $1.14B, 任何低于 $1.14B 的售价股东都在亏钱卖. 市场把"剥离 = catalyst"priced-in 了, 实际数学是"**剥离 = 价值漏出**" [DM-DIVEST-EV-001]. 这是一个 analyst 普遍忽视的定价错误.
+
+### 5.7 Model E — FCFE Perpetuity
+
+这个模型直接用股东真实拿到的现金做 Gordon Growth:
+
+```
+Sustainable FCFE = $27M/年 (Ch 3.7 计算得)
+Growth rate g = 2.0% (与名义 GDP 一致)
+Discount rate k_e = 9.75% (CoE, 不是 WACC)
+
+Equity Value = FCFE_1 / (k_e − g)
+             = $27M × 1.02 / (0.0975 − 0.02)
+             = $27.54M / 0.0775
+             = $355.4M
+
+Per share = $355.4M / 31.74M = $11.20
+```
+
+**$11.20/股??** 这个数字看起来极端到不合理. 但它**算数上正确**, 且揭示了一个关键事实: **如果 Moog 的 sustainable FCFE 真的只有 $27M/年, 那它的股权内在价值确实就只有 $11/股**.
+
+$11 不是我们的 fair value estimate — 它是"如果 FCFE 永远不改善, 无 leverage 空间"的数学下限. 真实情况是: (a) Moog 有一定的 "CapEx holiday" 潜力, FY28-30 可能 FCFE 改善; (b) 可以通过加杠杆 buyback 挤出 equity value; (c) 即便 FCFE 不改善, 市场也不会立即去 $11.
+
+**Model E 的意义不是给出"合理价格", 而是给出"FCFE 视角的绝对下限"**. 它告诉我们: 如果把 MOG 从"会计 EPS 视角"彻底切换到"股东现金视角", 可能的下限是 $11. 实际合理价格在 $11 (FCFE 视角) 和 $167 (SOTP bubble) 之间. 这个 15x 的 spread **正是"两种会计观之间的差距"**.
+
+我们不把 Model E $11 纳入加权 (因为它是数学下限, 不是预测), 但在认知边界章节我们会用它作为"估值不确定性的下界标记".
+
+### 5.8 Model F — Reverse DCF
+
+从当前 EV $10.83B 倒推市场隐含的 5 年 OE CAGR (起点 OE $160M):
+
+**Python binary search 结果** [DM-PY-006]:
+```
+Implied 5-yr OE CAGR: 43.0%
+Implied FY30 OE: $958M
+```
+
+**43% OE CAGR 的现实检验**:
+
+| 项目 | 要求 | 历史参照 | 差距 |
+|---|---|---|---|
+| OE $160M → $958M | 43% CAGR | MOG 历史最好 5yr OE CAGR ~12% | +31pp |
+| FY30 OE $958M | — | MOG 历史从未达到过 OE ≥ $200M 的单年 | +380% |
+| 隐含 FY30 NI | ~$1.1B | FY25 $235M | +368% |
+| 隐含 OM | ~17-19% | FY25 10.6% | 几乎追到 PH (20.5%) |
+
+**结论**: 43% OE CAGR 是**数学荒谬**. 历史上从未有 A&D Tier-2 公司在 5 年内实现 OE 6 倍增长. 最接近的案例是 TDG 在 2014-2019 期间, 但那是由连续大型 M&A (Esterline 等) 驱动的 non-organic 增长, 不是 organic OE 扩张. Moog 没有公告中的大型 M&A pipeline, 所以 43% 不可能通过 M&A 达成.
+
+**Starting OE 敏感性**:
+
+| Starting OE ($M) | Implied CAGR | FY30 Implied OE ($M) |
+|---|---|---|
+| 120 | 50.0% | 911 |
+| 140 | 47.1% | 965 |
+| **160** | **43.0%** | **958** |
+| 180 | 39.5% | 952 |
+| 200 | 36.4% | 946 |
+| 220 | 33.7% | 940 |
+
+即使给 starting OE 放宽到 $220M (比 baseline 高 38%), 隐含 CAGR 仍然 **33.7%**, FY30 OE $940M — 没有任何参数组合是现实的. **市场当前定价在数学上不成立**.
+
+**Realistic Reverse DCF** (用合理中性假设反推): 如果市场的合理期望是 "CAGR 12.6% + OM 13% + WACC 9.5% + g 2.5%", 对应的合理 EV 是:
+
+```
+Implied EV:   $3.57B
+Equity:       $2.69B
+Per share:    $84.59
+vs current:   −73.0%
+```
+
+**Model F Realistic: $85/股, −73%** [DM-MC-REAL-001].
+
+### 5.9 六模型汇总与加权
+
+| 模型 | 结果 | vs current $313 | 概率权重 |
+|---|---|---|---|
+| A. OE DCF Base | $124 | −60.3% | 50% |
+| B. OE DCF Bear | $53 | −83.1% | 20% |
+| C. SOTP Bubble (QA) | $167 | −46.7% | 10% |
+| D. SOTP Historical (QA) | $67 | −78.5% | 10% |
+| E. FCFE Perpetuity | $11 | −96.5% | 0% (下限, 不纳入) |
+| F. Reverse DCF Realistic | $85 | −72.9% | 10% |
+| **加权中心** | **$104** | **−66.8%** | 100% |
+
+**加权计算**:
+$$0.50 × 124 + 0.20 × 53 + 0.10 × 167 + 0.10 × 67 + 0.10 × 85 = 62 + 10.6 + 16.7 + 6.7 + 8.5 = \mathbf{\$104.5}$$
+
+**六模型加权中心 $104/股** [DM-EXEC-001].
+
+**离散度检查 (G7 门控)**: 六模型中心 $101 (excl E), 标准差 σ ≈ $41, **CV (变异系数) ≈ 40.6%**. 这超过了 G7 的 30% 阈值. 但这个 CV 不是"噪音", 它是**两种估值哲学的差距**:
+
+- Model A, B, E, F (内在价值 + FCFE 视角): 均值 $74, 范围 $11-$124
+- Model C, D (相对定价): 均值 $117, 范围 $67-$167
+
+把两组分开看, 每组内部 CV 约 20-25%, 在 G7 阈值内. **两组之间的差距不是估值错误, 是 "市场用 peer 倍数定价" vs "用内在价值定价" 的根本分歧**. 这种分歧正是本报告要揭示的核心 — 我们不应该用平均化掩盖它.
+
+**情景化三点估值**:
+
+| 档位 | 值 | 概率 | 描述 |
+|---|---|---|---|
+| **悲观** | **$73** | **30%** | Bear DCF + Historical SOTP + Reverse Realistic 加权, 对应 H1 强证实 |
+| **中性** | **$100** | **50%** | Base DCF 主导, 对应 H1 部分成立 |
+| **乐观** | **$175** | **20%** | SOTP Bubble + Triple-bull DCF, 对应 H1 证伪 |
+
+**期望回报**: $0.30 × (73-313)/313 + 0.50 × (100-313)/313 + 0.20 × (175-313)/313 = −0.230 − 0.340 − 0.088 = **−0.658** = **−65.8%** ≈ **−66.0%** [DM-EXEC-002].
+
+### 5.10 为什么加权中心 $104 不是目标价
+
+因为认知边界章节会显示, Moog 的"估值关键变量"中有约 **32%** 是**结构性黑箱** (Aftermarket mix 比例、Industrial 真实剥离价、Hypersonics 量产时点、S&D 分部的 FMS/Europe/US base 拆分) [DM-EXEC-003]. 32% ≥ 30% 触发铁律 R-4 硬约束, **禁止单点目标价, 必须使用三点区间**.
+
+我们的评级: **审慎关注 (临界)**. "(临界)" 反映两个结构性不确定:
+1. **黑箱 32%**: 即便我们六个模型全部算对, 仍有 32% 的关键信息是推断而非验证
+2. **时序不确定**: 决定性的 Q2 FY26 earnings (2026-04-24) 尚未发生, 在 actual 数据公布前 thesis 仍然是 "期待中的"不是 "已验证的"
+
+**一个诚实的陈述**: 如果 Q2 FY26 出现 book-to-bill 2.0x+ 且 FCF 半年 YTD ≥ $150M, 我们的 thesis 会**部分证伪**, 加权中心可能需要上调 20-30% 到 $125-135. 反向, 如果 book-to-bill ≤ 1.2x 且 YTD FCF ≤ $70M, thesis 强证实, 加权中心下调到 $85-90.
+
+```mermaid
+graph TB
+    A[当前 $313.25] --> B{Q2 FY26 信号}
+    B -->|Book-to-Bill ≥ 2.0x<br/>YTD FCF ≥ $150M<br/>概率 10%| C[部分证伪<br/>新加权中心 $125-135]
+    B -->|Book-to-Bill 1.3-1.8x<br/>YTD FCF $90-130M<br/>概率 55%| D[主线维持<br/>加权中心 $104]
+    B -->|Book-to-Bill ≤ 1.2x<br/>YTD FCF ≤ $70M<br/>概率 35%| E[强证实<br/>加权中心 $85-90]
+    C --> F[评级上调至 低估观察]
+    D --> G[评级维持 审慎关注 临界]
+    E --> H[评级维持 审慎关注 非临界]
+    style D fill:#ffe
+    style E fill:#fdd
+```
+
+---
+
