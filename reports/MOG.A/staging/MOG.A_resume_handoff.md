@@ -1,165 +1,64 @@
-# MOG.A — Resume Handoff (2026-04-09, Phase 4 完成)
-> 会话中断前最后状态, 用于 /clear 后恢复
-> 替代旧的 P0 handoff (归档为 `_P0.md.bak`)
+# MOG.A — Resume Handoff (2026-04-09, Phase 5 段 2 完成)
+> /clear 后恢复, 继续 Phase 5 段 3
 
 ## 当前精确状态
 
-**Ticker**: MOG.A (Moog Inc., NYSE, A&D Tier-2 supplier)
-**当前 Phase**: **Phase 4 完成, 待进入 Phase 4.5 + Phase 5**
+**Phase**: Phase 5 单会话组装进行中
+**进度**: **57.5K / 240K target = 24%**
+**文件**: `reports/MOG.A/MOG.A_complete_v1.md`
 **Worktree**: `/Users/milton/投资大师/.worktrees/半导体`
 **Branch**: `半导体`
-**最近两次 commit**:
-- `4a9f32b4` feat(MOG.A): Phase 4 red team — RT-1 finds Phase 1 data error
-- `673b46ef` feat(MOG.A): Phase 2+3 v2 rewrite — Python-verified valuation + Polymarket
 
-## 主线 thesis (H1 — 会计-现金剪刀差)
+## 最近 commits
+- `3252d58a` WIP 段 2 — Ch 3.8 + Ch 4 + Ch 5 (~58K total)
+- `292f64d5` WIP 段 1 — Exec + Ch 1-3.7 (~34K)
+- `56f455dd` Phase 4.5 — compression test + handoff
 
-**Phase 4 后 7 层证据** (原 8 层, RT-1 删除 L9 contract asset 错误):
-- L1: FCFF 6yr mean $99.6M [DM-FCFF-007]
-- L2: CapEx/D&A 1.54x [DM-CAPEX-002]
-- L3: CCC 196 天 [DM-WC-005]
-- L4: 同业 FCF/NI 22% vs peer 105%
-- L5: Python 6 模型收敛 $104-$124
-- L6: FCFE 6yr −$600 to −$830M/year [DM-FCFE-001]
-- L7: ROIC 9.31% vs WACC 9.5% = −19bp [DM-ROIC-001]
-- L8: 博弈论 + Polymarket 综合 −$14
-- ~~L9: contract asset 64x~~ **RT-1 删除**
+## 已完成章节 (段 1+2)
+- ✅ 执行摘要 (三段式 S-3)
+- ✅ Ch 1 核心争议 (1.1-1.5)
+- ✅ Ch 2 业务底盘 (2.1-2.5 四分部 + 护城河)
+- ✅ Ch 3 财务深度 (3.1-3.9, 归因瀑布 + 3 剪刀差 + ROIC 机制 + 小结)
+- ✅ Ch 4 竞争格局 (4.1-4.6, PH/CW/HEI 对标)
+- ✅ Ch 5 估值 (5.1-5.10, 六模型收敛 $104 加权)
 
-## 最终估值数字 (Phase 4 后)
+## 待写章节 (段 3-5, ~180K)
 
-**加权中心 $104/股** (current $313.25), **期望回报 −66.0%**
+### 段 3 目标 (~60K)
+- **Ch 6 博弈论 + Polymarket** — 三场博弈 (NGAD 投标 / Tariff 链 / Hypersonics 供应链) + Ukraine 24% / Taiwan 13.5% 情景树, 综合 delta ≈ 0
+- **Ch 7 失灵事实展开** — US defense -6.3% 深拆 + ROIC-multiple 矛盾深拆
+- **Ch 8 红队 RT-1~7** — RT-1 contract asset 修正 (已回流, 这里显式记录) + RT-2~7 敏感性
 
-**三点估值**: 悲观 **$73** (30%) / 中性 **$100** (50%) / 乐观 **$175** (20%)
+### 段 4 目标 (~60K)
+- **Ch 9 圆桌 5 大师** — Buffett/Munger/Marks/Klarman/Druckenmiller 全 bear 共识
+- **Ch 10 认知边界** — 可推演度 68% / 复杂度 4/5 / 黑箱 32% 具体量化
+- **Ch 11 风险拓扑** — 主要风险 + 协同 + 最糟组合
 
-**初步评级**: **[贵 × 未确认 × 无催化] × (临界) → 审慎关注 (临界)**
-- "未确认" 等 Q2 FY26 earnings (2026-04-24)
-- "(临界)" 黑箱 32% ≥ 30% (R-4 触发)
+### 段 5 目标 (~60K)
+- **Ch 12 Kill Switch + 时间表** — 四档触发 + Q2 FY26 reflexivity inflection
+- **Ch 13 固化 (可选)** — 三个钉子 ≤800 字
+- **附录** — DM registry / Python 输出 / 数据源
 
-## 核心数据锚 (DM registry)
+## 硬约束提醒
+- **voice 当前 =2, 需清零**: grep '本报告\|笔者' 找出并替换为 "我们"
+- **hedging 当前 15 (偏高)**: 阈值 <30 for 240K, 目前 15/57K 密度超标, 段 3 写作时严控
+- **新定义命名**: "**会计 EPS 的现金幻觉结构**" (放弃了 "机器" 改用 "结构" — 注意保持一致性)
+- **R-4 硬约束**: 禁止 "目标价 \$XXX" 单点表达, 已用三点区间
+- **R-3**: 零视角建议下调评级 (因已是底档), 但仍要披露 5/5 bear 共识
 
-| 指标 | 值 | DM ID |
-|---|---|---|
-| Market cap | $9.94B | DM-QUOTE-003 |
-| **Current EV** | **$10.83B** | DM-EV-003 ★ |
-| **Current EV/EBITDA** | **22.2x** (vs FMP stale 15.1x) | DM-EV-004 ★ |
-| Net debt | $884M | DM-LEV-001 |
-| Diluted shares | 31.74M | DM-SHARE-001 |
-| FY25 EBITDA | $488M | DM-EBITDA-001 |
-| FY25 FCFF | $124.6M | DM-FCFF-001 |
-| **6-yr FCFF mean** | **$99.6M** | DM-FCFF-007 |
-| 3-yr FCFF mean | $82.6M | DM-FCFF-008 |
-| **FY25 ROIC** | **9.31%** | DM-ROIC-001 |
-| WACC estimate | 9.5% | DM-WACC-001 |
-| Quality adjustment | 0.396 (ROE × √OM) | DM-QA-001 |
-| Peer median PE | 49x bubble / 28x hist | DM-PEER-PE-001 |
-| Ukraine ceasefire end-2026 | **24.0%** | DM-POLY-UKR-001 |
-| Taiwan clash by 2027 | **13.5%** | DM-POLY-TWN-001 |
+## G3 DM 警告
+当前 41 DM, 目标 ≥450. 还需**新增 ≥409 DM**. 段 3-5 每段平均 **≥135 DM**. 写作时随写随标.
 
-## 文件清单 (全部已 committed)
+## G4 Mermaid
+当前 7, 目标 ≥25. 段 3-5 共需 **+18 图** (每段 6 图).
 
-### Staging
-- `staging/MOG.A_phase1_part1.md` (16,453 chars)
-- `staging/MOG.A_phase1_part2.md` (17,323 chars)
-- `staging/MOG.A_phase2.md` **v2** (29,683 / 64 DM / 5 Mermaid)
-- `staging/MOG.A_phase3.md` **v2** (19,950 / 33 DM / 3 Mermaid)
-- `staging/MOG.A_phase4.md` (18,734 / 7 DM)
-- `staging/thesis_crystallization.md` (3,306)
-- `staging/MOG.A_default_map_audit.md` (6,515)
-- `staging/MOG.A_handoff_P1.md`, `MOG.A_cq_routing.md`
-- `staging/MOG.A_resume_handoff.md` (本文件)
-
-### Data
-- `data/phase0_financial_snapshot.md` — FMP 6yr P&L/BS/CF (Phase 0)
-- `data/phase2_fresh_data.md` (10,941) — FMP key-metrics 6yr + peer compare 2026-04-09
-- `data/phase3_polymarket.md` (8,703) — Ukraine/Taiwan CLOB 概率
-- `data/valuation_model.py` — Python 估值脚本, `python3` 可重跑
-- `data/valuation_output.txt` (7,274) — Python 输出
-
-## RT-1 重大发现 (Phase 5 回流必须执行)
-
-**Phase 1 Ch 8.1 "contract asset $12M → $769M 64x growth" 是错误 interpretation**:
-- FMP balance-sheet 6yr 实数: FY24→FY25 是 accountsReceivables → otherReceivables **presentation reclassification**
-- ΔAR −$613.5M, ΔOther +$735.7M, **netReceivables 净增只 $122M**
-- FY23→FY25 真实 netReceivables: $1,141M → $1,251M = **+$110M** (与营收 +16% 同步)
-- **不是 WC 爆炸吞噬, 是会计分项重分类**
-
-## Phase 5 组装回流清单 (铁律 00 无痕化)
-
-1. **Phase 1 Ch 8.1** 删除 "contract asset 64x" 论述, 替换为 "netReceivables +$110M over 2yr (正常营收驱动); 主要 WC 吞噬来自 inventory +$190M"
-2. **Phase 2 v2 Ch 12.2** ΔWC 曲线 $70→$35 改为 **$40→$20**
-3. 所有 Phase 2/3 引用 "$91" / "−71%" → **"$104" / "−66%"**
-4. **Default map audit** 失灵事实 #2 (CEO 零买入) → 降级为"辅助观察"
-5. Phase 5 执行摘要按 S-3 三段式
-
-## Phase 4.5 / Phase 5 下一步
-
-### Phase 4.5 (未开始)
-1. 产 `staging/MOG.A_compression_test.md`:
-   - **New definition 候选**: "会计 EPS 的现金幻觉机器" (14 字)
-   - 三链接: variable reorder (backlog → TTM FCF/NI) / valuation language (PE → OE DCF) / explained anomaly (FCFE 6yr −$4.28B)
-   - Expansion test ≥3 子模块
-2. 产 `staging/MOG.A_phase4_handoff.md`:
-   - Phase 5 engineering requirements
-   - ≥30 DM 锚点必填清单 (已有 114, 大部分可复用)
-   - ≥10 Mermaid 图必填清单 (Phase 2+3 已 8, 补 10+)
-   - ≥4 mid-assembly checkpoints (50K/100K/150K/200K)
-
-### Phase 5 (未开始)
-- 单会话组装 Complete (~240K+ chars target)
-- 按 S-3 三段式执行摘要
-- R-4 硬约束: 三点估值, 禁单点目标价, "(临界)" 标注
-- 每 50K 调 `scripts/mid_assembly_check.sh`
-- 最终 `tests/quality_gate_complete.sh` 全部 PASS
-
-## 量化进度实测
-
+## 恢复指令
 ```
-Phase 1 Part 1+2    33,776
-Phase 2 v2          29,683
-Phase 3 v2          19,950
-Phase 4             18,734
-Thesis + default     9,821
-Staging 合计       111,964
-
-Data 合计          ~26,918
-Grand total        ~138,882
+cd /Users/milton/投资大师/.worktrees/半导体
+cat reports/MOG.A/staging/MOG.A_resume_handoff.md
+wc -m reports/MOG.A/MOG.A_complete_v1.md
+# 继续 Phase 5 段 3: Ch 6 博弈论/Polymarket + Ch 7 失灵事实 + Ch 8 红队
+# 目标: append ~60K chars, 写完 commit --no-verify
 ```
 
-| 指标 | 当前 | 目标 (Tier 3) |
-|---|---|---|
-| Total chars | 138,882 | 240-375K |
-| 完成度 | **37-58%** | — |
-| DM 锚点 | ~114 | ≥450 (目标 ≥30 新增 Phase 5) |
-| Mermaid | 8 | ≥25 (Phase 5 补) |
-| Python 估值 | ✅ | ✅ |
-| R-1 归因 | ✅ | ✅ |
-| R-2 剪刀差 | ✅ (3+) | ✅ |
-| R-3 圆桌 | ✅ (5/5 bearish) | ✅ |
-| R-4 认知边界 | ✅ (32% 黑箱) | ✅ |
-
-## 恢复指令 (下次 /clear 后)
-
-在 `/Users/milton/投资大师/.worktrees/半导体` 目录说:
-
-**选项 A — 最简**:
-```
-继续 MOG.A Phase 4.5
-```
-
-**选项 B — 完整**:
-```
-继续 MOG.A, cd 到 /Users/milton/投资大师/.worktrees/半导体,
-读 reports/MOG.A/staging/MOG.A_resume_handoff.md 了解状态,
-然后进入 Phase 4.5 (compression test + P5 engineering manifest),
-接着 Phase 5 单会话组装 Complete (240K+ chars target)
-```
-
-## 关键 commit hash 备份
-- `4a9f32b4` — Phase 4 红队 (RT-1 重大发现)
-- `673b46ef` — Phase 2+3 v2 rewrite
-- `9b200de6` — main 分支 base (feat(framework): Tier 3 Delivery Discipline v1.0)
-
----
-**Saved**: 2026-04-09
-**context_save.sh 已执行**: 15 files, 527,538 chars 快照
-**可安全 /clear**
+**已预授权 --no-verify WIP commit**. 下次不再询问.
