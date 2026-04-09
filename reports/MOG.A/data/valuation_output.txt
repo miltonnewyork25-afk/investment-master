@@ -1,0 +1,176 @@
+======================================================================
+MOG.A VALUATION MODEL — Phase 2 (2026-04-09)
+======================================================================
+
+Market cap:          $9.94B
+Shares (diluted):    31.74M
+Net debt:            $0.88B
+Current EV:          $10.83B
+FMP-reported EV (stale, FY25 close): $7.37B
+Current EV/EBITDA:   22.19x (vs FMP stale 15.08x)
+FY25 FCFF:           $124.6M
+6-yr mean FCFF:      $99.6M
+3-yr mean FCFF:      $82.6M  <- worse than 6yr trend
+FY25 ROIC:           9.31%  vs WACC 9.5% (spread -19bp)
+
+======================================================================
+MODEL A — Owner Earnings DCF (main model)
+======================================================================
+
+OE strict (maint = D&A):       $155.0M
+OE realistic (maint = 70%cx):  $167.5M
+OE simple (NI - excess capex): $184.0M
+Median:                        $167.5M
+Chosen OE baseline:            $160.0M
+
+5-year explicit forecast (Base case):
+Year    Rev         OM      EBIT      NI        CapEx     D&A     ΔWC       OE        
+FY2026  4170        11.5    480       320       150       100     70        200       
+FY2027  4420        12.0    530       355       155       108     65        243       
+FY2028  4640        12.5    580       390       150       115     55        300       
+FY2029  4870        12.8    623       418       145       120     45        348       
+FY2030  5070        13.0    659       443       140       125     35        393       
+
+Base DCF (WACC 9.5%, g 2.0%):
+  PV of explicit 5yr OE:   $1.11B
+  PV of terminal (Gordon): $3.40B
+  Enterprise Value:        $4.50B
+  Equity (- net debt):     $3.62B
+  ** Per share:            $113.95 **
+  vs current $313.25:      -63.6%
+
+Sensitivity (WACC × terminal g):
+WACC / g        1.0%      2.0%      3.0%      3.5%      4.0%
+8.5%            $119      $137      $162      $178      $198
+9.0%            $109      $125      $146      $159      $175
+9.5%            $100      $114      $132      $143      $156
+10.0%            $93      $105      $120      $129      $140
+10.5%            $86       $96      $109      $117      $126
+
+Triple-bull scenario (OM→14%, WC release, CapEx taper, g=2.5%):
+  OE series: ['$245M', '$328M', '$405M', '$480M', '$535M']
+  Price: $175.55
+  vs current $313.25: -44.0%
+
+Bear scenario (H1 confirmed — WC eats, OM stuck at 10.5-11%):
+  OE series: ['$130M', '$150M', '$185M', '$220M', '$253M']
+  Price: $52.94
+  vs current $313.25: -83.1%
+
+======================================================================
+MODEL B — SOTP (Segment-based, quality-adjusted peer multiples)
+======================================================================
+
+Quality adjustment factor:
+  ROE ratio (MOG/peer):         0.578
+  sqrt(OM ratio):               0.685
+  Combined quality adj:         0.396
+
+Segment               Rev     OI      D&A     EBITDA    PeerPE_cur  PeerPE_hist 
+Space & Defense       1108    167     27      194       57.0        28.0        
+  → EV (bubble):          $2628M at 13.5x EBITDA (quality adj)
+  → EV (hist):            $1291M at 6.7x EBITDA
+Military Aircraft     888     125     22      147       53.0        28.0        
+  → EV (bubble):          $1847M at 12.6x EBITDA (quality adj)
+  → EV (hist):            $976M at 6.7x EBITDA
+Commercial Aircraft   904     107     22      129       49.0        26.0        
+  → EV (bubble):          $1503M at 11.6x EBITDA (quality adj)
+  → EV (hist):            $797M at 6.2x EBITDA
+Industrial Systems    956     91      23      114       42.0        18.0        
+  → EV (bubble):          $1141M at 10.0x EBITDA (quality adj)
+  → EV (hist):            $489M at 4.3x EBITDA
+
+Corporate overhead: EBITDA -$80M
+  EV drag (bubble): $-932M
+  EV drag (hist):   $-532M
+
+Total EV (bubble peer multiples):  $6188M
+Total EV (historical peer multi): $3021M
+
+Equity (bubble):     $5.30B
+Equity (historical): $2.14B
+** SOTP (bubble peers):    $167.11/share  (-46.7%)
+** SOTP (historical peers): $67.34/share  (-78.5%)
+
+Industrial divestiture scenarios (after sale):
+  Optimistic sale $1.0B @ 8.7x        prob 15%  → $163/share
+  Base sale $825M @ 7.2x              prob 40%  → $157/share
+  Conservative $650M @ 5.6x           prob 30%  → $152/share
+  Hold / terminate deal               prob 15%  → $131/share
+
+======================================================================
+MODEL C — Reverse DCF (implicit market assumptions)
+======================================================================
+
+Given current EV $10.83B:
+  Implied 5-yr OE CAGR (from $160M base, WACC 9.5%, g=2.5%): 43.0%
+  Implied FY30 OE: $958M
+  vs our Base case FY30 OE: $393M (implies CAGR 19.7%)
+
+Sensitivity of implied CAGR to starting OE:
+  Start OE $120M → implied CAGR 50.0%, FY30 OE $911M
+  Start OE $140M → implied CAGR 47.1%, FY30 OE $965M
+  Start OE $160M → implied CAGR 43.0%, FY30 OE $958M
+  Start OE $180M → implied CAGR 39.5%, FY30 OE $952M
+  Start OE $200M → implied CAGR 36.4%, FY30 OE $946M
+  Start OE $220M → implied CAGR 33.7%, FY30 OE $940M
+
+For the market's $313 to equal intrinsic value, one of these must be true:
+  (a) FY30 OE ≥ $520M  (vs our base $393M, +32%)
+      = needs OM 14%+ + WC release + CapEx taper (triple-bull)
+  (b) Terminal g ≥ 4% (vs historical 2-2.5%)
+      = permanent above-GDP growth for a mature A&D Tier-2
+  (c) WACC ≤ 8% (vs 9.5% base)
+      = beta < 0.7 (vs current 0.99) AND rf decline
+  Joint probability of (a) AND (b) AND (c) together ≈ 2-3%
+
+Reverse DCF with realistic assumptions (no triple miracle):
+  Base $160M → FY30 $290M (CAGR 12.6%, OM 13%, partial WC relief)
+  Implied EV: $3.57B
+  ** Price: $84.59/share **
+
+======================================================================
+THREE-MODEL CONVERGENCE
+======================================================================
+
+  Model A — OE DCF Base                      $ 113.95  (-63.6%)
+  Model A — Bear scenario                    $  52.94  (-83.1%)
+  Model A — Triple-bull                      $ 175.55  (-44.0%)
+  Model B — SOTP (bubble peers)              $ 167.11  (-46.7%)
+  Model B — SOTP (historical peers)          $  67.34  (-78.5%)
+  Model C — Reverse DCF realistic            $  84.59  (-73.0%)
+
+Probability-weighted center:  $105.95/share
+  vs current $313.25:          -66.2%
+
+R-4 compliant three-point valuation (blackbox 32% ≥30% → no single point):
+  Bear  (30%): $69
+  Base  (50%): $96
+  Bull  (20%): $171
+
+Expected return: -67.2%
+
+======================================================================
+APPENDIX — PE cross-check (fresh peer PE 2026-04-09)
+======================================================================
+Peer current median PE:       56.5x
+Peer historical median PE:    28x
+Quality adjustment:           0.396
+Fair PE (current peer basis): 22.4x
+Fair PE (historical basis):   11.1x
+
+Fair price @ FY25 EPS $7.33:
+  Current-peer basis: $164
+  Historical basis:   $81
+
+Fair price @ FY26E EPS $10.18 (consensus):
+  Current-peer basis: $228
+  Historical basis:   $113
+
+Fair price @ normalized EPS $6.85 (Phase 1 adjusted for non-op):
+  Current-peer basis: $153
+  Historical basis:   $76
+
+======================================================================
+END OF VALUATION MODEL
+======================================================================
