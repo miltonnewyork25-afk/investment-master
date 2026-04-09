@@ -1,139 +1,165 @@
-# MOG.A Tier 3 v2.0 — Resume Handoff
-> 2026-04-09 | Phase 0 完成 → Phase 1 待启动
-> **/compact 或 /clear 后用本文件恢复**
+# MOG.A — Resume Handoff (2026-04-09, Phase 4 完成)
+> 会话中断前最后状态, 用于 /clear 后恢复
+> 替代旧的 P0 handoff (归档为 `_P0.md.bak`)
 
-## 首条动作 (resume 时立即执行)
+## 当前精确状态
 
-```bash
-cd /Users/milton/投资大师/.worktrees/半导体
-pwd && git branch --show-current
-# 应该显示: 半导体 worktree, 半导体 branch
+**Ticker**: MOG.A (Moog Inc., NYSE, A&D Tier-2 supplier)
+**当前 Phase**: **Phase 4 完成, 待进入 Phase 4.5 + Phase 5**
+**Worktree**: `/Users/milton/投资大师/.worktrees/半导体`
+**Branch**: `半导体`
+**最近两次 commit**:
+- `4a9f32b4` feat(MOG.A): Phase 4 red team — RT-1 finds Phase 1 data error
+- `673b46ef` feat(MOG.A): Phase 2+3 v2 rewrite — Python-verified valuation + Polymarket
+
+## 主线 thesis (H1 — 会计-现金剪刀差)
+
+**Phase 4 后 7 层证据** (原 8 层, RT-1 删除 L9 contract asset 错误):
+- L1: FCFF 6yr mean $99.6M [DM-FCFF-007]
+- L2: CapEx/D&A 1.54x [DM-CAPEX-002]
+- L3: CCC 196 天 [DM-WC-005]
+- L4: 同业 FCF/NI 22% vs peer 105%
+- L5: Python 6 模型收敛 $104-$124
+- L6: FCFE 6yr −$600 to −$830M/year [DM-FCFE-001]
+- L7: ROIC 9.31% vs WACC 9.5% = −19bp [DM-ROIC-001]
+- L8: 博弈论 + Polymarket 综合 −$14
+- ~~L9: contract asset 64x~~ **RT-1 删除**
+
+## 最终估值数字 (Phase 4 后)
+
+**加权中心 $104/股** (current $313.25), **期望回报 −66.0%**
+
+**三点估值**: 悲观 **$73** (30%) / 中性 **$100** (50%) / 乐观 **$175** (20%)
+
+**初步评级**: **[贵 × 未确认 × 无催化] × (临界) → 审慎关注 (临界)**
+- "未确认" 等 Q2 FY26 earnings (2026-04-24)
+- "(临界)" 黑箱 32% ≥ 30% (R-4 触发)
+
+## 核心数据锚 (DM registry)
+
+| 指标 | 值 | DM ID |
+|---|---|---|
+| Market cap | $9.94B | DM-QUOTE-003 |
+| **Current EV** | **$10.83B** | DM-EV-003 ★ |
+| **Current EV/EBITDA** | **22.2x** (vs FMP stale 15.1x) | DM-EV-004 ★ |
+| Net debt | $884M | DM-LEV-001 |
+| Diluted shares | 31.74M | DM-SHARE-001 |
+| FY25 EBITDA | $488M | DM-EBITDA-001 |
+| FY25 FCFF | $124.6M | DM-FCFF-001 |
+| **6-yr FCFF mean** | **$99.6M** | DM-FCFF-007 |
+| 3-yr FCFF mean | $82.6M | DM-FCFF-008 |
+| **FY25 ROIC** | **9.31%** | DM-ROIC-001 |
+| WACC estimate | 9.5% | DM-WACC-001 |
+| Quality adjustment | 0.396 (ROE × √OM) | DM-QA-001 |
+| Peer median PE | 49x bubble / 28x hist | DM-PEER-PE-001 |
+| Ukraine ceasefire end-2026 | **24.0%** | DM-POLY-UKR-001 |
+| Taiwan clash by 2027 | **13.5%** | DM-POLY-TWN-001 |
+
+## 文件清单 (全部已 committed)
+
+### Staging
+- `staging/MOG.A_phase1_part1.md` (16,453 chars)
+- `staging/MOG.A_phase1_part2.md` (17,323 chars)
+- `staging/MOG.A_phase2.md` **v2** (29,683 / 64 DM / 5 Mermaid)
+- `staging/MOG.A_phase3.md` **v2** (19,950 / 33 DM / 3 Mermaid)
+- `staging/MOG.A_phase4.md` (18,734 / 7 DM)
+- `staging/thesis_crystallization.md` (3,306)
+- `staging/MOG.A_default_map_audit.md` (6,515)
+- `staging/MOG.A_handoff_P1.md`, `MOG.A_cq_routing.md`
+- `staging/MOG.A_resume_handoff.md` (本文件)
+
+### Data
+- `data/phase0_financial_snapshot.md` — FMP 6yr P&L/BS/CF (Phase 0)
+- `data/phase2_fresh_data.md` (10,941) — FMP key-metrics 6yr + peer compare 2026-04-09
+- `data/phase3_polymarket.md` (8,703) — Ukraine/Taiwan CLOB 概率
+- `data/valuation_model.py` — Python 估值脚本, `python3` 可重跑
+- `data/valuation_output.txt` (7,274) — Python 输出
+
+## RT-1 重大发现 (Phase 5 回流必须执行)
+
+**Phase 1 Ch 8.1 "contract asset $12M → $769M 64x growth" 是错误 interpretation**:
+- FMP balance-sheet 6yr 实数: FY24→FY25 是 accountsReceivables → otherReceivables **presentation reclassification**
+- ΔAR −$613.5M, ΔOther +$735.7M, **netReceivables 净增只 $122M**
+- FY23→FY25 真实 netReceivables: $1,141M → $1,251M = **+$110M** (与营收 +16% 同步)
+- **不是 WC 爆炸吞噬, 是会计分项重分类**
+
+## Phase 5 组装回流清单 (铁律 00 无痕化)
+
+1. **Phase 1 Ch 8.1** 删除 "contract asset 64x" 论述, 替换为 "netReceivables +$110M over 2yr (正常营收驱动); 主要 WC 吞噬来自 inventory +$190M"
+2. **Phase 2 v2 Ch 12.2** ΔWC 曲线 $70→$35 改为 **$40→$20**
+3. 所有 Phase 2/3 引用 "$91" / "−71%" → **"$104" / "−66%"**
+4. **Default map audit** 失灵事实 #2 (CEO 零买入) → 降级为"辅助观察"
+5. Phase 5 执行摘要按 S-3 三段式
+
+## Phase 4.5 / Phase 5 下一步
+
+### Phase 4.5 (未开始)
+1. 产 `staging/MOG.A_compression_test.md`:
+   - **New definition 候选**: "会计 EPS 的现金幻觉机器" (14 字)
+   - 三链接: variable reorder (backlog → TTM FCF/NI) / valuation language (PE → OE DCF) / explained anomaly (FCFE 6yr −$4.28B)
+   - Expansion test ≥3 子模块
+2. 产 `staging/MOG.A_phase4_handoff.md`:
+   - Phase 5 engineering requirements
+   - ≥30 DM 锚点必填清单 (已有 114, 大部分可复用)
+   - ≥10 Mermaid 图必填清单 (Phase 2+3 已 8, 补 10+)
+   - ≥4 mid-assembly checkpoints (50K/100K/150K/200K)
+
+### Phase 5 (未开始)
+- 单会话组装 Complete (~240K+ chars target)
+- 按 S-3 三段式执行摘要
+- R-4 硬约束: 三点估值, 禁单点目标价, "(临界)" 标注
+- 每 50K 调 `scripts/mid_assembly_check.sh`
+- 最终 `tests/quality_gate_complete.sh` 全部 PASS
+
+## 量化进度实测
+
+```
+Phase 1 Part 1+2    33,776
+Phase 2 v2          29,683
+Phase 3 v2          19,950
+Phase 4             18,734
+Thesis + default     9,821
+Staging 合计       111,964
+
+Data 合计          ~26,918
+Grand total        ~138,882
 ```
 
-然后**按顺序读**这 4 个文件(不要多读):
-1. `CLAUDE.md` 第 44-100 行 — **Tier 3 Delivery Discipline v1.0** (新 Discipline 的三个动作 + 禁止 + 承诺)
-2. `reports/MOG.A/staging/MOG.A_default_map_audit.md` — **Phase 0.75 产出, 新 Discipline 核心**
-3. `reports/MOG.A/data/lit_recon_refresh_2026-04-09.md` — 2026-04-09 fresh 事实层
-4. `reports/MOG.A/data/phase0_peer_comps.md` — 7 peer 对比表
+| 指标 | 当前 | 目标 (Tier 3) |
+|---|---|---|
+| Total chars | 138,882 | 240-375K |
+| 完成度 | **37-58%** | — |
+| DM 锚点 | ~114 | ≥450 (目标 ≥30 新增 Phase 5) |
+| Mermaid | 8 | ≥25 (Phase 5 补) |
+| Python 估值 | ✅ | ✅ |
+| R-1 归因 | ✅ | ✅ |
+| R-2 剪刀差 | ✅ (3+) | ✅ |
+| R-3 圆桌 | ✅ (5/5 bearish) | ✅ |
+| R-4 认知边界 | ✅ (32% 黑箱) | ✅ |
 
-**不要读**:
-- `archive_v1_failed/*` — 污染锚定
-- `data/knowledge_context.md` — 无关公司硬匹配
-- `data/lit_recon_memo.md` (旧版) — 已被 refresh 替代
-- `knowledge/output_side_audit_rubric.md` 或任何 `rule-S-delivery.md` — **新 Discipline 明文禁止**
+## 恢复指令 (下次 /clear 后)
 
-## 项目状态
+在 `/Users/milton/投资大师/.worktrees/半导体` 目录说:
 
-| 项 | 状态 |
-|---|---|
-| Ticker | **MOG.A (FMP: MOG-A)** |
-| 行业 | 航空防务 / 精密运动控制 |
-| Tier | 3 |
-| Version | **v2.0** (v1.0 已 archive, 状态 GAVE_UP_AT_QG) |
-| 目标字符 | **200K** (用户指定, 非 launch brief 默认 240-375K) |
-| 目标分数 | **4.4** |
-| **Delivery Discipline** | **v1.0 原生验证中** (首份报告) |
-| Phase | **Phase 0 完成, Phase 1 待启动** |
-| 价格锚 | **$313.25 (2026-04-09)**, 市值 $9.9B |
+**选项 A — 最简**:
+```
+继续 MOG.A Phase 4.5
+```
 
-## 核心矛盾 (Phase 0.75 结晶)
+**选项 B — 完整**:
+```
+继续 MOG.A, cd 到 /Users/milton/投资大师/.worktrees/半导体,
+读 reports/MOG.A/staging/MOG.A_resume_handoff.md 了解状态,
+然后进入 Phase 4.5 (compression test + P5 engineering manifest),
+接着 Phase 5 单会话组装 Complete (240K+ chars target)
+```
 
-**市场默认看法**: MOG 是 A&D rerating 篮子里最便宜的落后补涨者, 追赶 PH 到 EV/EBITDA 18x 就能到 $400。核心变量: backlog (+30%) × book-to-bill (2.1x) × adj OM 扩张 (10.9→13.0%)。
+## 关键 commit hash 备份
+- `4a9f32b4` — Phase 4 红队 (RT-1 重大发现)
+- `673b46ef` — Phase 2+3 v2 rewrite
+- `9b200de6` — main 分支 base (feat(framework): Tier 3 Delivery Discipline v1.0)
 
-**3 个失灵事实**:
-1. **[强]** FY2026 美国国防 base budget $838.7B, 比 FY25 $895.2B **下降 6.3%** — 叙事归因错 (真实驱动是欧洲 €800B + 导弹 supplemental, 不是美国 base)
-2. **[中]** CEO Roche 18 个月零买入, 但股价翻 2.4x — 管理层信号 vs 市场信号不对称
-3. **[中]** ROIC 9.3% 配 EV/EBITDA 隐含 18x, 数学对不上 — 除非 margin 扩张是结构性 (非周期)
-
-**新 thesis 种子问题** (Phase 1-4 待回答):
-- **A**: 欧洲 + 导弹 supplemental 占 S&D 分部真实比例? (结构 vs 一次性)
-- **B**: Q1 FY26 adj OM 12.3% 来源? (production rate vs mix/pricing)
-- **C**: 2026-04-24 Q2 FY26 earnings book-to-bill / CA OM 双信号 → thesis 断裂点
-
-## Phase 0 产出清单 (39KB 全部落盘)
-
-| 文件 | 字符 | 作用 |
-|---|---:|---|
-| `data/checkpoint.yaml` | - | v2.0 状态 + 事实锚 + prior v1 meta |
-| `data/phase0_financials.md` | 4.8K | MOG 10Y 财务 + Q1 FY26 + 分析师估计 FY26-28 |
-| `data/phase0_peer_comps.md` | 4.9K | PH/WWD/CW/HWM/TDG/HEI 对比 (PE/EV-EBITDA/GM/OPM/ROIC) |
-| `data/lit_recon_refresh_2026-04-09.md` | 6.3K | Phase -0.5 fresh (4 agents): 价格跳因 / Q1 FY26 segments / 国防预算 / 欧洲 / 公司治理 |
-| **`staging/MOG.A_default_map_audit.md`** | **10.8K** | **新 Discipline 必备产出 #1** |
-
-## 关键事实锚 (不要重查)
-
-**FY25 (年结 2025-09-27)**:
-- Rev $3,861M, GM 27.4%, Op Inc $410M, OPM 10.6%, Net Inc $235M, EPS $7.42 GAAP
-- FCF $128M (conversion 55%), CapEx $145M
-- Net debt $884M, Net Debt/EBITDA 1.81x, ROIC 9.3%
-- Shares 32.1M diluted
-
-**Q1 FY26 (2026-01-03, 报告 2026-01-30)**:
-- Rev **$1,100M (+21%)**, GM 26.7%, adj OM **12.3% (+90bps)**, Adj EPS **$2.63 (+38%)**
-- Segments: S&D $324M +31% (OM 14.8% +160bps) / MA $247M +16% (OM 11.4%) / CA $268M +23% (OM 10.6% -120bps 关税) / Ind $261M +14% (OM 13.9% +270bps)
-- **Backlog $3.26B (+30% YoY)**, Bookings $2.3B, **Book-to-Bill 2.1x**
-- FY26 guide: Rev $4.3B, Adj EPS **$10.20 ± $0.20**, adj OM 13.0%
-
-**Peer 倍数** (FY25 基数):
-- MOG.A: PE 27.6x, EV/EBITDA **15.1x (最低)**, ROIC 9.3%, GM 27.4%
-- PH: PE 25.4x, EV/EBITDA 18.2x, ROIC 13.7%, GM 36.9% (**最佳镜像**)
-- WWD: PE 34.0x, EV/EBITDA 22.7x
-- CW: PE 42.6x, EV/EBITDA 33.8x
-- HWM: PE 54.9x, EV/EBITDA 35.3x
-- TDG: PE 37.0x, EV/EBITDA 22.8x (aftermarket 垄断, **不可硬对标**)
-- HEI: PE 64.0x, EV/EBITDA 37.9x
-
-**分析师估计**:
-- FY26E EPS $10.18, FY27E $11.49 (+13%), FY28E $12.35 (+7%) — **增速急剧递减**
-- FY26 与管理层指引 $10.20 对齐
-
-**公司治理**:
-- Dual-class 10:1 投票权 (Class B 强)
-- ESOT 527,425 股 Class B = 11.5% B 类 (非家族直接控制)
-- CEO Patrick Roche 2023-02 上任, 2024 comp $10.2M
-- 18 个月内部人零买入, 21,598 股卖出 (routine vesting)
-- 年会 2026-02-10 已过, 无活跃 activist, 无 class consolidation 提案
-
-**下一关键事件**: **2026-04-24 Q2 FY26 earnings** (fiscal Q2 ends March 28/29)
-
-## 待否决方案及原因 (压缩易丢, 显式记录)
-
-- ❌ **读 v1.0 144K 正文** — 会被 -39% ER 锚定, 违反 Discipline
-- ❌ **读 thesis_crystallization.md** (archive) — prior thesis, 锚定
-- ❌ **把 knowledge_context.md 当参考** — TSM/TSLA/SOFI 硬匹配, 与 MOG 无关
-- ❌ **从"它值多少"起点** — 新 Discipline 核心: 对齐+失灵在先, 估值在后
-- ❌ **把 TDG 当 peer** — TDG 是 aftermarket 垄断商 (GM 60%), 与 MOG OEM 不同范畴
-- ❌ **用自身历史 PE 15-20x 作锚** (v1.0 死因) — 应用 peer basket 当前倍数
-- ❌ **机械套用 6 拍叙事重排 / 新定义延迟 25% / 三个钉子** — Discipline 已砍
-- ❌ **读 output_side_audit_rubric.md / rule-S-delivery.md** — 明文禁止 FM2 污染
-- ❌ **修补 v1.0 的"审慎关注"frame** — 应从失灵事实重构, 不是另起炉灶
-
-## Phase 1 执行计划 (resume 后首动作)
-
-**已达成用户同意**: "立即进入 Phase 1, 不暂停审议"
-
-**Phase 1 结构**:
-- **1A**: S&D 分部客户/地理/资金来源拆解 (种子问题 A) — 10-K footnotes + Q1 FY26 call transcript + Lockheed/RTX/Northrop commentary + ReArm Europe 流向
-- **1B**: adj OM 12.3% 来源拆解 — 量价/mix/产能利用率/关税/Industrial divestiture 净影响 (种子问题 B)
-- **1C**: 护城河 (sole-source actuators 证据) + 竞争格局 vs PH/CW/WWD
-
-**产出**: `staging/MOG.A_P1_business_moat.md`, 目标 30-40K 字符
-
-**前置动作** (可选): `bash scripts/find_best_reference.sh MOG.A` 找 A&D 同类 reference 方法论
-
-**关键纪律** (resume 时一定记住):
-1. 不读 v1.0 正文 / thesis_crystallization
-2. 不从"估值过高/审慎关注"起点
-3. **围绕 3 个失灵事实 + 3 个种子问题组织 Phase 1**
-4. 写作时禁止出现 "handoff / 附件 / P1→P2 / staging" 等过程痕迹 (用户要求)
-5. Phase 5 执行摘要必须是三段式(市场怎么看 + 失灵 / 实际是什么 + 新范畴 / 评级), **不是** checklist
-
-## 用户显式指令记录 (跨 session 易丢)
-
-1. **本次 Tier 3 用新 Delivery Discipline v1.0** (CLAUDE.md 第 44 行起)
-2. **200K 目标 / 4.4 分目标** (覆盖 launch brief 默认值)
-3. **handoff / 附件 / 备注禁止出现在最终报告正文**
-4. **prior v1.0 的 $182 / -39% 不作为任何估值起点**
-5. **写报告时若感觉某动作不自然, 必须说出来** (新 Discipline 最重要的一条)
-6. **AI 不自评分, 写完后用户独立 skeptic 盲读审计**
-7. **不要陷入提问怪圈** — 用户明确反馈过, 能按最优解处理的就不问
+---
+**Saved**: 2026-04-09
+**context_save.sh 已执行**: 15 files, 527,538 chars 快照
+**可安全 /clear**
