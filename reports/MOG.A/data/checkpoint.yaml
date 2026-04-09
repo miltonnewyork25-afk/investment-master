@@ -1,173 +1,38 @@
 schema_version: "2.0"
 ticker: MOG.A
-company: "MOG.A"
-framework_version: v22.1
-worktree: "aerospace_defense"
-industry: aerospace_defense
+company: "Moog Inc"
+framework_version: v22.3+Delivery_Discipline_v1.0
+worktree: aerospace_defense
+industry: 航空防务 / 精密运动控制
 tier: 3
-report_version: v1.0
-date: 2026-04-07
-status: PHASE_5_COMPLETE_QG_FAILED_GAVE_UP
+report_version: v2.0
+date: 2026-04-09
+status: PHASE_0_PREFETCH
 
-current_phase: 5
-phase_5_state: gave_up_pending_framework_update
-next_action: framework_update_then_v2_rewrite
+target_chars: 200000  # 用户指定 (非 launch_brief 默认 240-375K)
+target_score: 4.4
+delivery_discipline: v1.0_native_validation  # 首次原生验证
 
-# === 核心数字 (P4 校准后, P5 v1.0 沿用) ===
+# === 事实锚 (仅事实, 不含前次 thesis) ===
 price_anchor:
-  current_price: 298.93
+  current_price_usd: 298.93
   price_date: 2026-04-06
+  note: "待 Phase 0 MCP 复验"
 
-valuation:
-  fair_value_mid: 182
-  fair_value_range_low: 165
-  fair_value_range_high: 200
-  stress_floor: 169  # 圆桌洞见1+3全采纳
-  expected_return: -0.39
-  rating: "审慎关注"
-  rating_stability: high
-  base_prob_flip_threshold: 0.60  # base 突破60%即翻转
-  cq_weighted: 0.73
-  wacc_governance_adjusted: 0.1063
+dual_class:
+  class_a: limited_vote
+  class_b: family_controlled
 
-three_dim_state:
-  value: "贵"
-  direction: "改善"
-  catalyst: "有催化"
+prior_v1_meta:
+  status: GAVE_UP_AT_QG
+  v1_target: audit_frame="估值过高/审慎关注"
+  lesson_for_v2: "默认看法不应从'它值多少'起点, 而应从'市场为什么在 $299 买它'起点"
+  v1_file: archive_v1_failed/MOG.A_深度研究_v1.0_2026-04-07.md
+  rule: DO_NOT_READ_v1_body
 
-rating_time_attribute:
-  short_term_3_6m: "hold (等KPMG MW restate + Q2 OCF)"
-  mid_term_6_18m: "评级真正起作用窗口"
-  long_term_18m_plus: "论文obsolete需重做"
-
-# === CQ 演化 (P0→P4) ===
-cq_evolution:
-  CQ1_周期vs结构: {p0: "50/50", p1: "60/40", p2: "65/35", p3: "65/35", p4: "55/45"}
-  CQ2_PE略贵: {p0: "待定", p1: "倾向贵", p2: "极高+27%", p3: "极高", p4: "极高维持"}
-  CQ3_现金诅咒: {p0: "待定", p1: "推断", p2: "75%结构", p3: "80%", p4: "75%"}
-  CQ4_治理折价: {p0: "-10%", p1: "-12%", p2: "-18~-22%", p3: "-18~-22%", p4: "-18~-22% 中值-20%"}
-  CQ5_sole_source: {p0: "待", p1: "真", p2: "真", p3: "真但弱", p4: "真但弱"}
-  CQ6_shaping速度: {p0: "待", p1: "待", p2: "不够", p3: "不够", p4: "边际不够60/40"}
-  CQ7_NGAD入场券: {p3: "new中", p4: "维持中"}
-  CQ8_FLRAA: {p2: "$4-7", p3: "$4-6", p4: "$4-10 中值$7"}
-
-# === Top 5 Lens (P4 + 圆桌洞见3替换L1) ===
-top_5_lens:
-  L1: "MOG.A不是28x折价的TDG小一号,是28x公允的program-locked Stage 2 sole-source(圆桌洞见3替换P4原L1)"
-  L2: "MOG.A不是低估的A&D龙头,是承重墙合取概率被严重低估的binary bet组合(10-15x mispricing)"
-  L3: "MOG.A不是long-term 10年DCF论文,是6-18月催化剂窗口的short-term setup"
-  L4: "MOG.A不是单一'低估或高估'的二元下注,是Investment Phase收割期(25%) vs结构性折价(65%)的概率混合"
-  L5: "MOG.A不是同行PE折价,是ROE/FCF/双层股权/MW/R&D五重折价的合成"
-
-# === 圆桌5洞见 (DM-RT-001~005, 已无痕融入v1.0) ===
-roundtable_insights:
-  RT_001_承重墙簇结构: "5个承重墙拆会计簇+运营簇,簇内0.5-0.7簇间0.1-0.2,真实合取5-7%(vs Naive 0.76% / P4 Adjusted 3.78%),mispricing 10-15x而非5-20x"
-  RT_002_凸性0_4: "上行+9%/下行-22%, N/M=0.4 → 即使方向对65%概率, 期望回报-1.85%, 凸性不允许下注"
-  RT_003_范畴重分配: "Moog是Stage 2 program-locked sole-source而非Stage 4 platform like TDG, 28x是公允不是折价 (-$8/股结构性)"
-  RT_004_识别概率35: "6-18月内市场识别错误的概率35%而非默认50%, 因机构持仓78%粘性+双层股权阻止激进+KPMG信息释放节奏慢"
-  RT_005_curtiss_wright类比: "Curtiss-Wright 2014-19镜像反例75%相似度: ROE 12% / 双层 / sole-source多但浅 / 4 program ramp / 5年累计-8% vs 同业+35%, 跑输43pp"
-
-# === 认知边界 (R-4) ===
-cognitive_boundary:
-  derivability: 58
-  business_complexity: "4/5"
-  blackbox_pct: 42
-  asymmetric_downside: true
-  weakest_3:
-    - "FLRAA content $/架 (D级, $0.5-3M, ±50% PV)"
-    - "KPMG MW restate金额 (E级, <$50M到>$200M)"
-    - "治理折价主观赋值 (D级, -18%到-22%, ±$15)"
-  rating_implication: "需要折价但不下调, 禁止上修触发直到KPMG出数"
-
-# === 文件路径 ===
-files:
-  complete_report: reports/MOG.A/MOG.A_深度研究_v1.0_2026-04-07.md
-  staging:
-    - reports/MOG.A/staging/MOG.A_Phase1_business_moat.md  # 38.7K
-    - reports/MOG.A/staging/MOG.A_Phase2_financial_depth.md  # 37.1K
-    - reports/MOG.A/staging/MOG.A_Phase3_competitive_ecosystem.md  # 25.8K
-    - reports/MOG.A/staging/MOG.A_Phase4_red_team.md  # 36.5K
-  handoffs:
-    - reports/MOG.A/staging/MOG.A_P[1-4]_handoff.md
-  data:
-    - reports/MOG.A/data/shared_context.md
-    - reports/MOG.A/data/p1_data_gaps_filled.md
-    - reports/MOG.A/data/lit_recon_memo.md
-    - reports/MOG.A/data/thesis_crystallization.md
-    - reports/MOG.A/data/launch_brief.md
-    - reports/MOG.A/data/knowledge_context.md
-
-# === 质量门控状态 (8错→5错→2错, 给框架升级用) ===
-quality_gate_v10:
-  total_chars: 90791
-  errors: 2
-  warnings: 10
-  passed:
-    - CG3_评分维度: 10
-    - CG4_kill_switch: 16
-    - CG5_可验证预测: 7
-    - CG6_VP三情景
-    - CG7_CQ数量: 8
-    - CG11_必需章节
-    - CG15_agent清零
-    - CG16_市值一致
-    - CG17_PE一致
-    - CG22_R1_财务归因: 3/3
-    - CG22_R2_剪刀差: 10/3
-    - CG22_R3_圆桌: 5/5
-    - CG22_R4_认知边界: 8/3
-  failed:
-    - CG1_字符: 90791 vs 160000 (差70K, backfill即可)
-    - CG8_内联标注密度: 0 vs 25/万字 (与voice规则结构性冲突)
-
-# === 给框架升级的5个修复建议 ===
-framework_fix_recommendations:
-  - CG8_voice冲突: "内联[硬数据]/[推断]/[判断]标签与专业友好型voice+降认知负荷规则冲突, 建议改可选或与DM锚点二选一"
-  - CG1_字符卡死: "字符门控应降为WARN, 改用密度×因果×覆盖复合得分(铁律M反膨胀实证: KLAC 248K 4.5分 > APP 452K 4.1分)"
-  - CG22_R3_圆桌检测: "用大师名字grep与R-3 skill无痕融入冲突, 应改检测DM-RT锚点或附录yaml元数据"
-  - CG22_R1_关键词过严: "收入归因|毛利率Bridge|EPS瀑布要求精确空格, 不容变体, 建议fuzzy match"
-  - CG19_5减法冲突: "范畴重分配天然句式'不是X而是Y'被CG19 AI腔检测扣分, 鼓励的同时扣分,需协调"
-
-# === Phase 4 Kill Switch (P5 内已写入) ===
-kill_switch_summary:
-  red_lights:
-    - "NGAD F-47 sub-system 公布 MOG 完全未入选 → $150"
-    - "KPMG MW restate >$200M → $140"
-    - "BS6+BS1 协同 → $130-140"
-  yellow_lights:
-    - "FY26 Q2 OCF 季度年化 <$300M → $165"
-    - "KPMG 在 FY26 Q3 之前未出 restate → 维持$182 watch heightened"
-    - "F-35 LRIP→sustainment mix shift -1pp+ → $170"
-  upside_triggers:
-    - "KPMG <$50M + FY26 Q3 ROIC ≥14% → $200"
-    - "三引擎 FY26 全年验证 → $195"
-    - "Class B collapse 到 single-class → +$15"
-
-# === 数据缺口 (无法在P5解决, 等未来披露) ===
-data_gaps:
-  - "FLRAA content $/架 (10-K未披露)"
-  - "KPMG MW restate具体金额 (待Q3 FY26)"
-  - "Boeing 787 月产实际进度 (季度更新)"
-
-# === 关键日期/催化剂日历 ===
-catalyst_calendar:
-  - "2026-04-23/24: FY26 Q2 earnings (核心)"
-  - "2026-05-01 to 2026-07-31: KPMG MW restate窗口"
-  - "2026-07-25: FY26 Q3 earnings"
-  - "2026-09-27: FY26 fiscal year end"
-  - "2026-12-01 to 2028-12-01: NGAD sub-system公布窗口"
-  - "2027-04 to 2027-10: 当前论文有效期结束, 必须重做"
-
-# === 用户决策 ===
-user_decision_2026_04_07:
-  action: "give up v1.0, update framework first then write v2.0"
-  reason: "门控冲突需先修, 不值得在v1.0死磕CG1+CG8"
-  v1_disposition: "保留在worktree, 不commit到main, 不进入report_registry"
-
-# === 下次启动 v2.0 时的优先事项 ===
-next_session_v2_priorities:
-  1: "先执行5个框架修复 (CG8 voice / CG1 字符 / CG22-R3 / CG22-R1 / CG19 减法)"
-  2: "v2.0 写作时直接读本checkpoint + 4个staging文件 + v1.0 complete作参考"
-  3: "v2.0 不要重新做P1-P4分析, 直接复用所有CQ/Lens/Kill Switch/圆桌洞见/认知边界"
-  4: "v2.0 重点是: (a)字符backfill到160K+ (b)结构与新框架对齐 (c)voice保持专业友好"
-  5: "公允中位 $182 / 评级审慎关注 / -39% 期望回报 是 P4 校准结果, v2.0除非有新信息否则不变"
+current_phase: 0
+phase_0_actions:
+  - refresh_lit_recon_memo: Phase -0.5 WebSearch 刷新 (2026-04-09 新闻/价格/卖方)
+  - mcp_data_prefetch: fmp_data income/balance/cash/ratios/insider
+  - polymarket_scan: 台海/俄乌/国防预算相关
+  - parallel_agents: supply_chain (Boeing/Airbus build rate), sell_side_consensus, insider
