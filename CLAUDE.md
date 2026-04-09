@@ -41,6 +41,61 @@
 
 ---
 
+## Tier 3 Delivery Discipline v1.0 (原生验证版, 输出端递送 > 过程合规)
+
+> **状态**: v1.0 原生验证中, **非铁律**, 反馈后升级。与其他铁律冲突时**本节胜出**(仅限 Tier 3)。
+> **核心哲学**: 强研究 = 发现 × 递送。对齐 + 失灵在先, 新定义在后。
+
+### 一个核心原则
+
+写任何 thesis 之前, 先显式回答两件事:
+1. **市场现在把这家公司当什么?** 看什么变量? 用什么估值方法?
+2. **这个默认看法解释不通哪几件具体事实?** (不是判断, 是事实)
+
+- (2) 答不出 → 你还没有 alpha, 继续挖
+- (2) 答得出 → 新 thesis **必须从这里长出来**, 不是另起炉灶
+
+### 三个新动作 (只这三个)
+
+**[1] Phase 0.75 产 `staging/{TICKER}_default_map_audit.md`**
+- 内容: 上面两问的答案
+- 至少 **2 个失灵事实**, 每个说明"为什么旧框架解释不通"
+
+**[2] Phase 4.5 产 `staging/{TICKER}_compression_test.md`**
+- 一个**命名** (3-15 字, **不要大词**) + 一句话回答"这家公司实际上是什么"
+- 必须显式说明: 这个新定义如何 (a) 改变第一变量 (b) 改变估值方法 (c) 解释 [1] 里的失灵事实
+- **三件事缺任一 = 命名失败, 重写**
+
+**[3] Phase 5 执行摘要按此顺序写 (800-1200 字)**
+- **段1 (250-350字)**: 市场现在怎么看 + 解释不通的几件事
+- **段2 (350-450字)**: 所以实际是什么(新定义) + 第一变量 + 估值方法相应切换
+- **段3 (200-300字)**: 评级 + 公允价值(区间/单点按 R-4 决定) + Kill Switch + 圆桌异议
+- **不是** "结论+目标价+变量表" 的 checklist 格式
+
+### 一个禁止
+
+**NEVER 读** `knowledge/output_side_audit_rubric.md` 或任何 `rule-S-delivery.md` 相关审计文档。
+- 理由: 这是写完后的审计标准, 读了会优化 rubric 而不是优化报告 (FM2 污染)
+
+### 一个承诺
+
+写完报告告诉用户, 由独立 skeptic 盲读审计, **AI 不自评分**。
+
+### 最重要的一条
+
+**任一新动作在这份报告上感觉不自然, 必须说出来**。这是新框架的第一次原生验证, **真实体验 > 机械合规**。
+
+### 已砍掉的 (不要自作主张加回)
+
+- ❌ 6 拍叙事章节重排 (机械执行导致章节名变怪)
+- ❌ 新定义延迟 25% 的机械规则 (PDD v3.0 实测让 Ch 1 写得更绕)
+- ❌ "三个钉子"固化章节强制 (v3.0 实测退化为复述执行摘要)
+- ❌ 读 rule-S-delivery.md (12K 字, 读完更混乱)
+- ❌ 参考 PDD staging 模板 (引入"文件必须同步"新问题)
+- ❌ feedback memory 引用 rubric (会间接触发 FM2)
+
+---
+
 ## 研究纪律 (11条边界规则, 详见 `docs/research_discipline.md`)
 
 > **设计原则**: "NEVER做X"比"做Y"更精确 | 数字替代形容词 | 因果解释促进泛化
@@ -78,6 +133,7 @@
 > **详见**: `docs/research_philosophy.md`
 
 **P0 原型识别** — 先认物种: 软件平台/网络基础设施/制度垄断/运营密度/技术IP/混合/单点瓶颈/黑箱算法/会员复利/重资本再投资
+**P0 范畴预测试 (v22.2新增, PDD v2.0教训, P1 升级)** — P0 阶段必须列 ≥3 个候选范畴 (例如 PDD: "中国电商成长股 / 三段式组合 / 现金主导黑箱"), 每个范畴写出对应的估值方法 + 关键变量 + 隐含假设, 选择"最能解释股价/分歧"的范畴作为 Lens 1 候选。P4.5 验证/修正。**避免**: 让范畴重分配拖到 P4.5 才发现 → P1-P4 按错范畴写 → P5 重写代价大 (PDD v1.0 失败模式)。
 **P1 行业定价公式** — 先看裁判怎么打分: 这个行业市场按什么变量定价? (NRR/Rule of 40/fee stream/take rate/技术卡位/效果归因/续费率...)
 **P2 资产身份识别** — 先看市场贴的标签: 高增长/复利/债券替代/周期/修复/平台/瓶颈/现金牛/期权资产? 经营身份≠市场身份
 **P3 时间框架识别** — 先看市场买的是哪个时间层: 2季度/1-2年/3-5年/永续? "这个未来是不是已经被买得太满了?"
@@ -159,12 +215,19 @@
 
 **详见**: `docs/quality_standard_4.4.md` | `tests/quality_gate_complete.sh`
 
+**超长报告写作纪律 (v22.2新增, PDD v2.0教训, P1 升级)** — 报告 ≥200K 时, 写作疲劳风险大 (PDD/KLAC/CME 都有"后段 voice 退化"模式):
+- **每写 30K 强制 grep voice**: `grep -cE "本报告|笔者" {REPORT}` 必须 = 0, 当场清除不积压
+- **每写 50K 强制调用 mid_assembly_check.sh** (rule-J-assembly.md J-4)
+- **≥250K 强制分会话**: context_save.sh → /clear → 新会话续写, 不在单会话写 300K+
+- **执行顺序**: 写满阈值 → 不允许"先写完再补" → 必须当场清除 → 才能继续写
+
 ---
 
 ## 行业路由 + 铁律速查
 
 **行业路由**: 半导体(×1.0) | 消费品(×1.1) | 科技平台(×1.1) | 金融(×1.2) | 金融基础设施(×1.0) | 详见行业worktree
-**铁律**: 第零律(合规) | 数据诚信 | H参考 | I知识前置 | J组装 | K估值统一 | M反膨胀 | N证据链 | O逆向估值 | G/L/P质量 | 详见`.claude/rules/`按需加载
+**铁律**: 第零律(合规) | 数据诚信 | H参考 | I知识前置 | J组装 | K估值统一 | M反膨胀 | N证据链 | O逆向估值 | G/L/P质量 | **S递送(输出端)** | 详见`.claude/rules/`按需加载
+**S 递送(输出端硬约束, v22.3新增)**: 强研究=发现×递送。现有铁律是过程端约束,铁律 S 是**输出端**约束——读者读完后默认定义/默认变量/默认估值语言是否被替换。包含 S-1 对齐(Phase 0.75 产 default_map_audit) + S-2 压缩(Phase 4.5 产 compression_test, 三链接验证防假压缩) + S-3 节奏(执行摘要三段式+正文 6 拍叙事+新定义延迟出场) + S-4 固化(倒数第二章"三个钉子",4 元素)。**优先级**: L0 > L1 > 铁律 S > 其他铁律 > L2/L3。详见 `.claude/rules/rule-S-delivery.md`
 **Q 供应链交叉验证**: 当公司有明确上下游时(半导体/制造业/汽车/消费电子等)，**必须**设立独立模块验证上下游公司业绩、库存、订单——避免管理层叙事失真。详见`memory/feedback_supply_chain_validation.md` + `knowledge/industry_modules/semiconductor_modules.md` M11+M12
 **R 四大必备分析模块** (v22.1, LITE教训): 任何深度报告必须包含 (1)**财务归因**(收入瀑布+毛利Bridge+EPS瀑布,Phase 2) (2)**剪刀差分析**(量价/CapEx-FCF/R&D-收入/价值链利润转移,Phase 2-3,至少3个) (3)**圆桌讨论**(调用`investment-committee` Skill,5位大师视角,Phase 4后) (4)**认知圈量化**(调用`cognitive-boundary-assessor` v3.0,输出可推演度%/复杂度1-5级/黑箱比例%,Phase 5)。**任何一项=0 → 报告不达标**。详见`.claude/rules/rule-R-four-mandatory.md`
 **工具**: P0(MCP数据) > P1(分析+质量skill) > P2(Agent协作) | 完整列表见worktree CLAUDE.md
@@ -182,7 +245,10 @@
 
 **首条消息**: `pwd` + `git branch --show-current`, 报告当前位置
 **继续/恢复**: ①确认位置 → ②读checkpoint.yaml → ③git log → ④**读handoff note** → 恢复执行
-**Phase自动化**: `tier3_launch.sh` → `preflight_gate.sh` → `phase_complete.sh`(含sentinel) → `quality_gate_complete.sh`
+**Phase自动化**: `tier3_launch.sh` → `preflight_gate.sh` → `phase_complete.sh`(含sentinel) → **`mid_assembly_check.sh` (Phase 5 每50K强制)** → `quality_gate_complete.sh`
+**Phase 5 中场检测 (v22.2, PDD v2.0教训)**: 单会话组装写满 50K/100K/150K/200K **必须**调用 `bash scripts/mid_assembly_check.sh {REPORT}`。BLOCK = voice/审美词/范畴重分配; WARN = hedging/箭头链/DM/Mermaid。任一 BLOCK 必须当场修复, 不得"先写完再补"。详见 rule-J-assembly.md J-4
+**P4.5 → P5 工程清单 (v22.2)**: P4.5 handoff 必须含 `phase5_engineering_requirements` (DM 锚点≥30 + Mermaid≥10 + 中场检测时点≥4), 否则 P5 不得启动。详见 J-3
+**R-3/R-4 硬约束 (v22.2, PDD v2.0验证)**: 黑箱 ≥30% → 禁止单点目标价 + 必须区间; 圆桌异议 ≥3/5 → 评级标注"(临界)" + 必须公开披露异议章节。详见 rule-R-four-mandatory.md
 **EVO生命周期** (借鉴Claude Code行为缓解管道+Ch24互补频率设计):
 - **发现**: 报告验尸发现问题 → PR式记录(来源/量化指标/解除条件)
 - **引入**: 写入evolution_log.yaml, **ant-only灰度**(先在1-2份报告验证)
