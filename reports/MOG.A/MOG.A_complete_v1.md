@@ -223,6 +223,120 @@ Industrial Systems 分部 OM 9.5% 是最低的, FY25 YoY 收入是**下降 4%** 
 
 **市场是否 priced-in 了这个反直觉**? 答案: 我们判断**没有**. 卖方研究的剥离叙事全部停留在第三步的"rerating +17.5x", 不讨论第四步的"EV/Sales 一致性". 这是一个**信息套利机会**, 但它对 thesis 的贡献很小 (大约 +$5 到 +$10 的 fair value 下调), 不足以 flip 评级. 我们在 Ch 5 估值章节会具体量化.
 
+#### 2.3.4 Military Aircraft 分部的 program 经济学
+
+Military Aircraft (MA) 分部 FY25 收入 ~$888M, segment OM 14.1%, 是四分部中 margin **第二高**. 但 MA 的增长结构和 S&D 完全不同 — S&D 靠 hypersonics 新增 program 拉动, MA 靠**存量 program 的产量爬坡和 sustainment 尾巴**.
+
+**MA 分部内部的 program 构成** (基于 10-K 产品系列描述 + Moog 投资者日 2024 披露 + 供应链公开名单交叉推断):
+
+| Program | ~% MA Rev | ~$M | Moog 角色 | 合同结构 | 生命周期位置 |
+|---|---|---|---|---|---|
+| **F-35 flight controls** | 28-32% | $250-285M | primary + secondary actuators, sole-source 多数位 | LRIP (固定价格) | 量产中期, LRIP 15-20年 |
+| **F/A-18 E/F + Growler** | 15-18% | $135-160M | primary flight actuators | sustainment (成本报价) | 晚期量产 + MRO |
+| **KC-46 tanker** | 8-10% | $70-90M | boom actuators + flight controls | 固定价格 | 爬产中 |
+| **F-15EX** | 5-7% | $45-60M | legacy flight controls 延续 | sustainment | 小批量新产 |
+| **V-22 Osprey** | 4-5% | $35-45M | nacelle tilt actuators | sustainment | 稳态+退役过渡 |
+| **P-8A / C-130** | 3-4% | $25-35M | subsystem controls | MRO dominant | 晚期 |
+| **其他 (classified + R&D)** | 20-25% | $180-225M | 新 program 工程 + 保密项目 | cost-plus R&D | 早期 |
+
+[DM-MA-PROG-001, 基于 10-K product description + 2024 Investor Day cross-reference]
+
+**MA 分部的三个结构特征**:
+
+**特征 1 — F-35 依赖度高 (28-32%)**: F-35 单个 program 占 MA 分部的近三分之一. 同业对比: TDG 最大单一 defense program 不超过 7%, HEI 不超过 5%. **MOG MA 分部对 F-35 的依赖度是同业的 4-6 倍**. 这意味着任何 F-35 program 的 adverse event — Block 4 延期、总采购量削减、Lockheed 成本谈判 — 都会直接冲击 MA 分部收入基线 [DM-MA-F35-001]. FY25 F-35 贡献约 $268M, 如果 LRIP 产量从 156 架/年降到 130 架 (特朗普评估的 downside 场景), Moog 的 ship-set content 按比例下降约 **$45M (-17%)**, 直接打掉 MA 分部 5pp 的 growth.
+
+**特征 2 — F/A-18 和 V-22 进入 sunset**: F/A-18 E/F Super Hornet 2025 年 4 月已经关闭生产线, 转入纯 sustainment/MRO 模式 [DM-MA-FA18-001]. V-22 Osprey 生产线 2026 年关闭. 这两个 program 合计贡献 MA 约 **$170-205M (19-23%)**. 虽然 MRO 尾巴会延续 10-15 年, 但 revenue 规模从量产高峰滚降 20-30% 是行业规律 — 因为 MRO 是"修坏了的", 数量和频率不确定, 而 OE 是"按合同交新的", 可预测. **这意味着 MA 分部 FY27-30 有 $50-60M/年 的自然流失 (sunset attrition)**, 需要新 program win 来替代.
+
+**特征 3 — 新 program pipeline 充足但变现时间长**: Moog 在 NGAD (Next Generation Air Dominance) / MQ-25 Stingray (无人加油机) / B-21 Raider (隐形轰炸机) 等下一代 program 上都有投标或早期研发参与的公开记录 [DM-MA-PIPELINE-001]. 但这些 program 从 R&D 到 LRIP 的典型周期是 **7-12 年**. NGAD 目前还在 EMD (Engineering and Manufacturing Development) 阶段, LRIP 最早 2032; B-21 的 actuator 供应商尚未公开选定; MQ-25 初始产量极低 (FY26 约 4 架). 所以 **MA 分部在 FY26-30 期间处于"旧 program 流失 + 新 program 未量产"的青黄不接期**, 年化 organic growth 约 **+1-3%**, 远低于 S&D 的 +8-12%.
+
+```mermaid
+graph TB
+    subgraph MA["Military Aircraft 分部 $888M"]
+        F35["F-35<br>$268M (30%)<br>量产中期"]
+        FA18["F/A-18<br>$147M (17%)<br>⚠️ 生产线已关"]
+        KC46["KC-46<br>$80M (9%)<br>爬产中"]
+        F15["F-15EX<br>$53M (6%)"]
+        V22["V-22<br>$40M (4%)<br>⚠️ FY26关闭"]
+        OTHER["其他+R&D<br>$200M (23%)"]
+    end
+    style F35 fill:#ffe,stroke:#990
+    style FA18 fill:#fee,stroke:#900
+    style V22 fill:#fee,stroke:#900
+    style KC46 fill:#eef,stroke:#009
+```
+
+**MA 分部的估值含义**: 市场用 MA 的 **14.1% OM × 6-8% growth** 做多头叙事, 但真实情况是: (a) 14.1% OM 中 F/A-18 和 V-22 的 sustainment 毛利率**高于平均** (MRO 的 GM 30-35% vs OE 的 22-25%), 这两个 program sunset 后 MA blended OM 会**下降** 100-150bp 到约 12.5-13.0%; (b) organic growth +1-3% 不是"稳态", 是"sunset attrition 和新 program 对冲后的净值". 如果 F-35 采购削减 materializes, 净增长变为 **−1% 到 0%**. 这是 Ch 5 bear case 的关键假设之一.
+
+#### 2.3.5 Commercial Aircraft 分部: OE/Aftermarket 拆解尝试
+
+CA 分部 FY25 收入 ~$904M, OM 11.8%. 在 2.3.2 节我们分析了 OM 低于同业的三个原因. 这里我们尝试对 CA 的 OE/aftermarket 做数据拆解 — Moog 不公开这个 split, 但可以从多个信号三角交叉 [CQ-SEG-02]:
+
+**信号 1 — 波音/空客年度产量 vs Moog CA revenue**: FY20-21 波音 737+787 月产量从 ~55/月 降到 ~20/月 (COVID + 737 MAX grounding), 同期 Moog CA revenue 从 ~$750M 降到 ~$600M (**−20%**). 但如果 CA 是 100% OE, revenue 应该降 ~63% (和产量同步). CA 只降 20% 说明有一个**非产量依赖的底盘** — 这就是 aftermarket. 倒推: aftermarket base ≈ **$250-300M**, 占 CA 的 **28-33%**. 加上 Airbus 产量未大幅下降 (A320 生产未停), 纯 Boeing aftermarket 约 **$150-180M**, Airbus aftermarket 约 **$80-100M**.
+
+**信号 2 — Moog 10-K 措辞**: Moog 2025 10-K 说 "Commercial Aircraft segment includes the repair and overhaul of our flight control actuation systems and related products" — 但**没有单独定量 aftermarket**. 这在 A&D 上市公司中罕见: PH 公开 "Aerospace Systems aftermarket mix", TDG 公开 "commercial aftermarket" 作为独立分部. Moog 的不披露是一个**自我选择信号** — 如果 aftermarket mix 是 40%+ (像 TDG/HEI 那样好看), management 有动机公开它来争取更高估值. 不公开暗示 mix 不够好看, 支持 28-33% 的估计 [DM-CA-AFT-001].
+
+**信号 3 — Peer aftermarket margin 反推**: 假设 CA aftermarket GM 35% (HEI Commercial Aftermarket 的保守端), CA OE GM 18% (同业 OE median). 按 aftermarket mix 30%: blended GM = 0.30 × 35% + 0.70 × 18% = **23.1%**. 用 SG&A 率 8% + R&D 率 2.5%, 得 OM = 23.1% − 10.5% = **12.6%**. 实际 OM 11.8%, 差 0.8pp, 大约被 Boeing cost-down pressure 解释. 如果 aftermarket mix 只有 22% (下限): blended GM = 0.22 × 35% + 0.78 × 18% = **21.7%**, OM = 11.2%. 差距收窄但仍然 plausible. **综合判断: CA aftermarket mix 25-33%, 中心估计 30%** [DM-CA-MIX-001].
+
+| CA 分部估算 | Revenue ($M) | GM% (est) | OI ($M) | OM% |
+|---|---|---|---|---|
+| OE (波音+空客 新机装机) | ~$630M (70%) | ~18% | ~$47M | ~7.5% |
+| Aftermarket (MRO + spare parts) | ~$274M (30%) | ~35% | ~$60M | ~21.9% |
+| **CA 合计 (reported)** | **$904M** | **~23%** | **$107M** | **11.8%** |
+
+[DM-CA-DECOMP-001, 三角交叉估算]
+
+**CA aftermarket 的价值锁定**: CA 分部 30% 的 aftermarket ($274M) 贡献了 **56% 的 OI ($60M/$107M)**. 这意味着 CA 的 OE 业务 ($630M) 几乎**不赚钱** (OM ~7.5%), 它的存在价值是 (a) 获得装机份额从而锁定后续 aftermarket; (b) 给集团贡献 revenue top line 让 overhead 可以分摊. 这是一个"OE 补贴 aftermarket" 的跨期经济模型, 和 Rolls-Royce 的发动机业务结构一致.
+
+**对 CA 分部 margin 改善的 recalibration**: 市场叙事里"波音产量恢复 → CA OM 从 11.8% 升到 14%+" — 这里面暗含假设是 revenue 增量主要来自 OE, 按 OE OM ~7.5% 的增量边际贡献 marginal contribution, **OE 增量 $100M 只带来 ~$7.5M OI 增量, 约 7bp OM 改善**. 真正 move the needle 的是 aftermarket 增量, 但 aftermarket 增速取决于 **installed base 年龄** 和 **flight hours**, 不取决于新机交付率. 所以"波音加速交付新机" 对 CA aftermarket 的传导有 **3-5 年延迟** — 新机第一次 MRO 在交付后 3-5 年, 大修在 8-10 年. 这意味着 FY26-28 的 CA aftermarket 增长主要来自 **2018-2023 交付的机队进入 MRO 周期**, 不是 FY26-28 的新机交付.
+
+CA 分部 FY27 OM 的合理预期: OE revenue +$60M (737 MAX 38→42/月) × 7.5% OM + aftermarket +$25M (installed base aging) × 22% OM = 增量 OI $4.5M + $5.5M = $10M. 基数 $107M → FY27 OI $117M, OM = 117/964 = **12.1%** (+30bp vs FY25). 不是 14%, 是 12.1%. 市场的 14%+ 预期多出的 **200bp** 必须来自 (a) Boeing cost-down 停止 (证据不足) 或 (b) aftermarket 非线性加速 (缺乏先例). 这两个假设都是"希望", 不是"证据".
+
+```mermaid
+pie title CA 分部 OI 构成 (FY25 估算)
+    "OE — Boeing" : 28
+    "OE — Airbus" : 19
+    "Aftermarket" : 56
+    "Aftermarket hidden OI share" : 0
+```
+
+#### 2.3.6 四分部全景: Revenue 与 OI 双视图
+
+把四个分部的 revenue 和 OI 放在一起看, 集团的经济学一目了然:
+
+```mermaid
+graph TB
+    subgraph REV["Revenue 视图 ($3,861M)"]
+        R_SD["S&D<br>$1,108M (29%)"]
+        R_IND["Industrial<br>$956M (25%)"]
+        R_CA["CA<br>$904M (23%)"]
+        R_MA["MA<br>$888M (23%)"]
+    end
+    subgraph OI["OI 视图 ($410M)"]
+        O_SD["S&D<br>$167M (41%)"]
+        O_MA["MA<br>$125M (30%)"]
+        O_CA["CA<br>$107M (26%)"]
+        O_IND["Industrial<br>$91M (22%)<br>⚠️ 剥离中"]
+    end
+    R_SD -.->|"15.1% OM"| O_SD
+    R_MA -.->|"14.1% OM"| O_MA
+    R_CA -.->|"11.8% OM"| O_CA
+    R_IND -.->|"9.5% OM"| O_IND
+    style R_SD fill:#cfc
+    style O_SD fill:#cfc
+    style R_IND fill:#fcc
+    style O_IND fill:#fcc
+```
+
+**四个结论从这张图读出来**:
+
+1. **S&D 是真正的 profit engine**: 29% 的收入产出 41% 的 OI. Industrial 剥离后, S&D 占 pro-forma 收入 38%, pro-forma OI 52%. **剥离后的 Moog 本质上是一家被 S&D 驱动的公司**.
+
+2. **Industrial 不仅 OM 低, revenue 还在萎缩**: FY25 Industrial revenue YoY −4%, 是唯一负增长分部 [DM-IND-REV-001]. 这进一步确认剥离的合理性 — 不仅从估值叙事角度, 从业务基本面角度 Industrial 也是在拖后腿.
+
+3. **CA 的 OI 贡献 (26%) 与 revenue 贡献 (23%) 大致匹配**: CA 不是 S&D 那样的"超额利润源", 也不是 Industrial 那样的"利润稀释源". 它是一个**中性分部**, 能否改善取决于 Boeing 产量恢复 + aftermarket installed base aging, 这两个变量都在 Moog 控制范围之外.
+
+4. **OI% 从 15.1% (S&D) 到 9.5% (Industrial) 跨度 5.6pp**: 这个内部分散度比多数同业大. PH 的分部间 OM 跨度约 3pp, CW 约 4pp. **高分散度意味着分部 mix shift 对集团 margin 的杠杆更大** — 每 1% 的 revenue 从 Industrial 转移到 S&D, 集团 OM 提升约 **5.6bp**. 所以 Industrial 剥离的"机械 OM lift" 约 +100-150bp, 来自消除最低 OM 分部. 但这是一次性 step-up, 不是持续改善.
+
 ### 2.4 客户集中度与 program 暴露
 
 Moog 的客户集中度中等偏高: Top 5 客户占约 **35-40%** 的 revenue (Lockheed Martin / Boeing / Raytheon [现 RTX] / Airbus / U.S. Government 直购) [DM-BIZ-002, 基于 10-K customer concentration disclosure]. 但真正重要的是**program 集中度**:
@@ -249,7 +363,112 @@ graph LR
 
 **Program 集中度的双刃性**: 单个 program 拿到就吃 15-40 年 (好), 但拿到之后就锁死了, 任何 program 削减/延期直接打掉 top line (坏). 这是 A&D Tier-2 供应商的共同命运, MOG 不是特例 — 但 MOG 的集中度**没有 TDG/HEI 那种"高度分散 + 单个 program ≤2% of revenue"的保险**. F-35 占 6-7%, 737 MAX actuators 占 5%, 这两个 program 加起来就能 move the needle. 一个结构性的 3% downside 对集团 revenue 的冲击大于对多数 peer.
 
-### 2.5 护城河本质: 保护存量份额, 不保护现金
+### 2.5 Backlog 质量审计: $6.7B 中有多少是"真 revenue visibility"
+
+Moog 在 Q1 FY26 10-Q 中报告 total backlog **$6.7B**, 同比 +18% [DM-BKL-001]. 这是市场多头叙事的第二承重柱 (第一承重柱是 "A&D cycle upswing"). Backlog/Revenue = **1.74x**, 意味着 "1.7 年的收入已经下了单". 这听起来非常安全. 但 backlog 的真实"可转换度"取决于三个层次:
+
+**层次 1 — 合同类型拆解**:
+
+| 合同类型 | ~% Backlog | ~$B | 利润率特征 | 转换确定度 |
+|---|---|---|---|---|
+| Firm fixed-price (FFP) | 40-45% | $2.7-3.0B | 12-18% OM | 高 (合同锁定数量和价格) |
+| Fixed-price incentive (FPI) | 15-20% | $1.0-1.3B | 10-15% OM (含 incentive) | 中高 (数量锁定, margin 浮动) |
+| Cost-plus (CP/CPFF/CPIF) | 25-30% | $1.7-2.0B | **6-10% OM** | 中 (数量和范围可调) |
+| IDIQ (不定量/不定期) | 10-15% | $0.7-1.0B | varies | **低** (ordering 可选择不执行) |
+
+[DM-BKL-TYPE-001, 基于 10-K backlog note + A&D 行业惯例]
+
+**关键观察**: $6.7B backlog 中, **35-45% ($2.4-3.0B) 的转换确定度为"中"或"低"** — 主要是 cost-plus R&D 阶段的 hypersonics 和 Sentinel 合同 (scope 和 timeline 经常调整) + IDIQ 型合同 (政府可以选择不行使). 这不是 TDG 式的"aftermarket spare parts 已下单, 90% 在 12 个月内交付"的 backlog. **Moog 的 backlog 里有大量"承诺意向"而非"确定订单"**.
+
+**层次 2 — 时间分布**:
+
+Moog 不公开 backlog 的 year-by-year conversion schedule, 但我们可以从行业惯例和 10-K 措辞推断:
+
+- **FY26 expected conversion (~45-50%)**: $3.0-3.3B → 对应 FY26 revenue 指引 $4.05B 的 **74-82%**, 剩余 18-26% 需要来自 FY26 new orders
+- **FY27 expected conversion (~25-30%)**: $1.7-2.0B
+- **FY28+ conversion (~20-30%)**: $1.3-2.0B → 大部分是 long-cycle R&D 和 sustainment 合同
+
+FY26 revenue 指引 $4.05B 里, $3.0-3.3B 来自 existing backlog, $0.7-1.0B 需要 FY26 内新签. 新签部分对应的主要是 aftermarket + short-cycle Industrial orders + 补充采购. 这个 coverage 比率 (~80%) 对 A&D 来说是正常的 — PH/CW/TDG 的 FY+1 backlog coverage 通常也在 75-85%. **所以 backlog coverage 本身不构成 alpha, 不构成风险, 它就是行业 standard**.
+
+**层次 3 — Backlog 质量的"margin content"**:
+
+这是市场没有拆的一层. $6.7B backlog × average OM 不是报告的 13.0% — 因为 backlog 的 mix 和当年 revenue 的 mix 不同. Backlog 里 hypersonics 占比更高 (因为是 multi-year R&D 一次性入 backlog), 而 hypersonics 的 cost-plus OM 只有 6-10%. 如果 backlog 里 cost-plus 占 25-30% (而当年 revenue 里只占 15-20%, 因为 R&D 合同 revenue recognition 比 FFP 慢), 那 backlog 的 **implied average OM 约 11.0-11.5%**, 比 FY25 reported 13.0% 低 **150-200bp**.
+
+**这意味着**: 当这些 backlog 在 FY26-28 转换成 revenue 时, 增量 revenue 的 margin 会比现有 base 低. 直觉是"backlog 增长 → revenue 增长 → EPS 增长", 但如果增量 backlog 的 margin 比 base 低 200bp, 增量 EPS 的 quality 显著低于 base EPS. **FY26-28 的 EPS 增长有 "margin dilution" 成分**, 卖方模型不拆这个 [DM-BKL-MARGIN-001].
+
+**Backlog +18% 并没有给 margin 增长预期提供支撑. 它给了 revenue 增长预期支撑, 但 revenue 增量的 margin 低于均值 — 所以 backlog 增长和 margin 扩张是 partially 矛盾的两个叙事, 不能同时线性外推**.
+
+### 2.6 供应链交叉验证 (铁律 Q): 上下游给出的校准信号
+
+Moog 处于 A&D 供应链的中间位置 — **上游**是原材料供应商 (钛合金铸件、航空级电子元件、特种钢材) 和外协加工商, **下游**是 prime contractors (Lockheed / Boeing / RTX / Northrop / GD) 和 end users (USAF / USN / NASA / 外国军方). 铁律 Q 要求验证管理层叙事与上下游实际数据的一致性.
+
+#### 2.6.1 上游信号: 原材料供应商的 lead time 和定价
+
+**钛合金 (核心原材料, 占 MOG COGS ~8-12%)**:
+
+全球航空级钛合金供应被两家巨头主导: VSMPO-AVISMA (俄罗斯, 2022 年后因制裁退出西方市场) 和 Precision Castparts (PCC, Berkshire 子公司, 美国). 俄乌冲突后, 西方 A&D 供应链被迫加速 de-risk:
+
+- **2022 年前**: VSMPO 供应全球航空钛 ~35%, PCC ~25%, Arconic ~15%, 日本/韩国 ~15%. Lead time 6-8 个月.
+- **2025 年**: VSMPO 份额降到 <5% (几乎全退出), PCC 份额升到 ~40%, Arconic ~20%. **供给收缩 + 需求 surge = lead time 膨胀到 12-18 个月** [DM-SC-TI-001].
+- **2026 年 Q1 状况**: PCC 和 Arconic 都在扩产, lead time 有从 18 个月向 14 个月缩的迹象, 但仍远高于 2020 前的 6-8 个月. 完全回归 2020 水平的时间点行业估计是 **2028-2029**.
+
+**对 Moog 的含义**: 钛合金 lead time 直接驱动 DIO. 我们在 3.9 节估算 DIO 从 168 天降到 150 天需要供应链 lead time 从 18 降到 12 个月. 上游数据支持 2027-28 达到 12 个月, 所以 DIO 改善 timeline 与上游一致, 不是 management wishful thinking. **但幅度有限**: 2028 DIO 降到 ~148-152 天, 不会降到 PH 的 110 天, 因为 Moog 的产品对钛合金依赖度更高 (actuator 壳体 vs PH 的密封件用铝合金多).
+
+**航空级电子元件**:
+
+Moog 的 servo controllers 和 motor drives 使用的高可靠性 FPGA (Xilinx / Microsemi) 和 Power MOSFETs (Infineon / STMicroelectronics) lead time 在 2024-25 年从 26 周缩到 **16-20 周** [DM-SC-ELEC-001], 但仍高于 2019 水平的 12 周. 电子元器件价格同比持平 (2024 的涨价已被吸收). 这意味着 Moog 的电子 BOM cost 在 FY26 不会再涨, 是 margin 的微弱 tailwind.
+
+#### 2.6.2 下游信号: Prime contractors 的 guidance 和 backlog
+
+**Lockheed Martin (LMT)**: FY25 revenue guidance $73B (+6%), backlog $176B (record). F-35 交付指引 FY26 156 架 (vs FY25 150). Lockheed 在 Q4 FY25 earnings call 上说 "supply chain remains the binding constraint on F-35 ramp rate" — 这对 Moog 双重含义: (a) 需求端没有问题 (LMT backlog 创纪录), (b) 供应端 (包括 Moog) 是产量瓶颈, 意味着 LMT 有动机催 Moog 加速交付, **也有动机在谈判中压 Moog 的 margin** ("你不降价我就培育 alternative source").
+
+**Boeing (BA)**: 737 MAX FY26 月产量指引 38 架 (vs FY25 ~31), 787 指引 7 架 (vs 5). Boeing 的 Q1 FY26 call 上提到 "incremental cost pressure on Tier-2 suppliers will continue" — 这确认了我们在 2.3.5 节的判断: Boeing cost-down pressure 是结构性的, 不会因产量恢复而消失 [DM-SC-BA-001].
+
+**RTX (Raytheon)**: Defense & Space 分部 FY25 revenue +9%, backlog $91B (record). RTX 是 Moog S&D 的最大客户之一 (Patriot / NASAMS / SM-6 的控制器). RTX 管理层说 "supplemental funding for munitions is the single biggest driver of Tier-2 demand" — 这和 Moog 的 S&D +17% YoY 一致, 验证了 Moog 的 S&D 增长不是管理层 overstate, 是真实需求 pull [DM-SC-RTX-001].
+
+**Northrop Grumman (NOC)**: Defense Systems + Space Systems 分部 FY25 backlog +14%, 其中 Sentinel ICBM 和 hypersonics 是 Moog 的直接 program 相关. NOC 的 Sentinel program 因为成本超支被 Pentagon 在 2025-07 做了 Nunn-McCurdy breach 审查, 但最终决定继续 (因为没有替代方案). **这是一个 tail risk 事件但已经解决** — 对 Moog 的含义是 Sentinel 合同仍然有效, 但 program 延期 2-3 年 (原计划 2029 IOC 推到 2032), 对 Moog 的 backlog conversion timing 有影响 [DM-SC-NOC-001].
+
+```mermaid
+graph LR
+    subgraph Upstream["上游供应商"]
+        PCC["PCC/Arconic<br>钛合金<br>Lead 14-18m"]
+        ELEC["Xilinx/Infineon<br>航空FPGA/MOSFET<br>Lead 16-20w"]
+    end
+    subgraph MOG["Moog Inc."]
+        INV["Inventory<br>$914M (+$190M 3yr)"]
+        MFG["制造<br>actuators/valves"]
+    end
+    subgraph Downstream["下游 Prime"]
+        LMT["Lockheed Martin<br>F-35/Sentinel"]
+        BA["Boeing<br>737/787"]
+        RTX["RTX<br>Patriot/SM-6"]
+        NOC["Northrop<br>LRHW/CPS"]
+    end
+    PCC -->|"价格+3%/yr"| INV
+    ELEC -->|"价格持平"| INV
+    INV --> MFG
+    MFG -->|"OM 13%"| LMT
+    MFG -->|"cost-down -3%/yr"| BA
+    MFG -->|"supplemental surge"| RTX
+    MFG -->|"cost-plus 8-10%"| NOC
+    style INV fill:#ffd,stroke:#990
+    style BA fill:#fee,stroke:#900
+```
+
+#### 2.6.3 供应链交叉验证总结
+
+| 维度 | 管理层叙事 | 上下游验证 | 一致性 |
+|---|---|---|---|
+| Revenue +5% FY26 | Backlog support | LMT/RTX/BA backlog 均创纪录 | ✅ 一致 |
+| S&D +17% driven by munitions | Supplemental funding | RTX 确认 supplemental 是 #1 driver | ✅ 一致 |
+| Margin 扩张到 14-15% | Mix shift + scale | Boeing 持续 cost-down 压力; hypersonics cost-plus 拖累 | ⚠️ 部分冲突 |
+| Backlog quality | "+18% = strong visibility" | Cost-plus 占比高, IDIQ 转换不确定 | ⚠️ 高估 |
+| CapEx 会下降 | "Past peak investment cycle" | 钛合金 lead time 仍 14 个月 → inventory 仍需前置 | ⚠️ 部分冲突 |
+| WC 会释放 | "Operational efficiency" | DSO 取决于 DoD 行政 (不受 Moog 控制) | ❌ 不支持 |
+
+**综合判断**: 上下游数据**支持 revenue 增长叙事** (需求端真实), 但**不支持 margin 扩张 + WC 改善的速度** (Boeing 压价 + DoD 行政效率 + 供应链 lead time 仍高). 管理层的 top-line 指引是可信的, bottom-line (margin + FCF) 指引**过于乐观**.
+
+### 2.7 护城河本质: 保护存量份额, 不保护现金
 
 把前面的 2.1-2.4 结合, 我们对 Moog 护城河的判断是:
 
@@ -546,9 +765,171 @@ Moog 的 Capital Turnover **1.35x 是同业中最高的**. 这反直觉 — turn
 
 三个路径合起来, 乐观情景下 FY28 ROIC 可能达到 **10.5-11.0%**, 仍然低于 PH/HEI 的 12-14%. **MOG 永远不会成为 "资本效率优等生"**, 这是结构决定的.
 
-### 3.9 财务章节小结
+### 3.9 营运资金吞噬: DSO / DIO / DPO 六年趋势
 
-把 Ch 3 的五个发现凝成一句话: **Moog 是一台把 backlog 持续翻译成 GAAP 净利润但在转换成股东 FCFE 的路上被 WC + CapEx 两次吸收的公司, 结果是 ROIC 永远低于 WACC, 股东 6 年累计真实拿到 $163M 而市场追加了 $7.7B 市值**. 这句话没有任何审美判断, 全是可以用 10-K 数据校验的机制描述.
+ROIC 的分母问题 (3.8 节) 有很大一部分来自**营运资金**. 我们把 CCC (Cash Conversion Cycle, 现金转换周期) 的三个组成部分 — DSO (Days Sales Outstanding, 应收天数)、DIO (Days Inventory Outstanding, 存货天数)、DPO (Days Payable Outstanding, 应付天数) — 拆开看, 定位具体的吞噬来源:
+
+| FY | DSO (天) | DIO (天) | DPO (天) | **CCC (天)** | Δ YoY |
+|---|---|---|---|---|---|
+| FY20 | 62 | 125 | 51 | **136** | — |
+| FY21 | 65 | 131 | 48 | **148** | +12 |
+| FY22 | 70 | 142 | 52 | **160** | +12 |
+| FY23 | 78 | 161 | 55 | **184** | +24 ★ |
+| FY24 | 82 | 164 | 53 | **193** | +9 |
+| **FY25** | **80** | **168** | **52** | **196** | **+3** |
+
+[DM-WC-CCC-001, 基于 10-K balance sheet items / quarterly revenue annualized]
+
+**六年 CCC 从 136 天扩张到 196 天, 增加 60 天 (44%)**. 按 FY25 daily revenue ($3,861M / 365 = $10.58M/天), 每多 1 天 CCC 锁定 $10.58M 资金. **60 天 = $635M 额外被锁定在营运资金里**, 这笔钱既不在股东口袋, 也不在银行账户.
+
+**DSO 从 62 天恶化到 80 天 (+18 天, +29%)**:
+
+主因是 **DoD cost-plus 合同的里程碑计费结构**. Moog 的 S&D 和 MA 分部在 hypersonics 和 F-35 Block 4 等大型 R&D program 上, 按合同里程碑 (milestone) 计费, 而非按月/季度计费. 里程碑之间的间隔从 FY20 的 ~60 天拉长到 FY25 的 ~90 天, 因为 (a) 更多 program 进入 R&D 前期阶段 (里程碑间距更长) 和 (b) DoD 审计要求加严 (DCAA, Defense Contract Audit Agency 的审计时间从 ~45 天延长到 ~65 天) [DM-WC-DSO-001]. 这是**制度性的**, Moog 无法单方面缩短. 它的 DSO 取决于 DoD 的行政效率, 不取决于 Moog 的收款能力.
+
+**DIO 从 125 天恶化到 168 天 (+43 天, +34%)**:
+
+这是 CCC 恶化的**最大单一驱动**, 贡献了 60 天增量中的 43 天 (72%). 三个叠加因素:
+
+1. **供应链 long-lead 前置采购**: 钛合金 (Ti-6Al-4V) 和航空级不锈钢 (Inconel 718) 的供应商交货前置时间从 2020 年的 6-8 个月延长到 2024-25 年的 **12-18 个月**, 因为全球 A&D 行业同步补库 [DM-WC-SUPPLY-001]. Moog 不得不提前下单锁定原材料, 导致 raw material inventory 从 FY20 $180M 膨胀到 FY25 $310M (+$130M, +72%).
+
+2. **Hypersonics WIP 堆积**: 高超声速武器的姿态控制系统从原型到量产 qualification 需要 3-5 年. 这期间的 WIP (在制品) 不能计入 revenue (因为 cost-plus 合同 revenue 按里程碑确认), 但原材料和工时已经投入. WIP inventory 从 FY22 $195M 涨到 FY25 $320M (+$125M), 主要来自 LRHW 和 CPS program [DM-WC-WIP-001].
+
+3. **成品 buffer stock**: 737 MAX 供应链不确定性 (波音在 2024 年多次修改交付时间表), 导致 Moog 建立了约 $50M 的 finished goods safety stock [DM-WC-FG-001], 以应对波音突然加速交付时的短期需求. 这是"防御性"的 inventory, 但锁定了资金.
+
+**DPO 稳定在 50-55 天**: Moog 的供应商 (钛合金铸件商如 Precision Castparts / Arconic, 电子元器件商如 TE Connectivity / Amphenol) 议价能力较强, Moog 无法单方面延长付款期. DPO 稳定是正常的, 也意味着**DPO 不会帮忙吸收 DSO 和 DIO 的恶化**.
+
+**同业 CCC 对标**:
+
+| 公司 | DSO | DIO | DPO | **CCC** | vs MOG |
+|---|---|---|---|---|---|
+| PH | 55 | 110 | 48 | **117** | −79 天 |
+| HEI | 52 | 95 | 42 | **105** | −91 天 |
+| CW | 58 | 115 | 50 | **123** | −73 天 |
+| TDG | 60 | 140 | 55 | **145** | −51 天 |
+| HWM | 45 | 62 | 38 | **69** | −127 天 |
+| **MOG** | **80** | **168** | **52** | **196** | — |
+| **同业中位数** | **55** | **110** | **48** | **117** | −79 天 |
+
+[DM-WC-PEER-001]
+
+**Moog 的 CCC 比同业中位数多 79 天 — 按 daily revenue $10.58M 计算, 锁定 $836M 额外资金**. 这 $836M 不是"市场看不到的隐藏价值" — 它是被锁在应收和存货里的钱, 无法分红、无法回购、无法还债.
+
+**如果 Moog 把 CCC 从 196 天缩到同业中位数 117 天 (−79 天), 一次性释放 $836M 现金**. 这相当于 26 元/股 (以 31.74M 股计). 但这不现实: DSO 取决于 DoD 行政效率 (institutional), DIO 取决于全球供应链 lead time (macro), DPO 取决于供应商议价权 (structural). **三个因素全在 Moog 控制范围之外**, 所以 CCC 缩短 79 天的概率接近零.
+
+合理预期是: 供应链 lead time 2027-28 从 18 个月缩到 12 个月 → DIO 下降 15-20 天 → CCC 缩到 **175-180 天**, 释放 **$170-210M 一次性现金** (约 $5-7/股). 这是 Ch 5 乐观情景中"WC release"的来源.
+
+### 3.10 FCF 六年轨迹与"回归均值"假设的检验
+
+市场多头的核心假设之一是 "FY23 的负 FCF 是异常, FY25 的 $128M 是回归常态, FY26-28 会持续改善到 $200-300M/年". 这个假设值得用一张完整的六年图来检验:
+
+```mermaid
+xychart-beta
+    title "MOG FCF 六年轨迹 vs A&D 同业中位数 FCF/Rev"
+    x-axis ["FY20", "FY21", "FY22", "FY23", "FY24", "FY25"]
+    y-axis "FCF ($M)" -50 --> 250
+    bar [191, 164, 107, -37, 46, 128]
+    line [193, 179, 188, 207, 226, 242]
+```
+
+(注: bar = MOG 实际 FCF; line = 如果 MOG FCF/Rev 等于同业中位数 6.3% 的理论值)
+
+**六年趋势的三个观察**:
+
+1. **FY20 的 $191M 不是"正常水平", 是 COVID 偶然**: FY20 Moog FCF 高是因为 CapEx 被大幅削减 ($119M vs FY19 $135M) + 营运资金 release (COVID 期间应收快速回款). 把 FY20 作为"回归目标"是锚定偏差.
+
+2. **FY22-FY24 的三年均值只有 $39M**: 这才是**结构性中枢**. FY22 ($107M) + FY23 (−$37M) + FY24 ($46M) 三年均值 $38.7M, 对应 FCF/Rev **1.1%**. 这三年 Moog 开始 hypersonics ramp + F-35 Block 4 产能扩张 + 供应链 inventory build-up — 这些不是"一次性", 而是 FY26-28 仍会持续的投入.
+
+3. **FY25 的 $128M 改善是 CapEx 减速 + 部分 WC release**: FY25 CapEx $145M 比 FY23-24 均值 $163M 降了 $18M; 应收回款改善 $35M (DSO 从 82 天降到 80 天). 两项合计 $53M, 占 FY24→FY25 FCF 改善额 ($82M) 的 **65%**. 这不是"operating improvement", 是 CapEx 节奏调整 + 一次性 WC 回款.
+
+**"回归均值"假设的检验**: 如果 Moog 的 FCF/Rev 目标是回到 FY20 的 6.7%, 需要 FCF 达到 $259M. 这要求:
+- CapEx 从 $145M 降到 $100M (CapEx/D&A 回到 1.05x) — 需要 hypersonics CapEx 结束 + F-35 Block 4 产能完成
+- OCF/Rev 从 7.1% 升到 9.3% — 需要 OM 扩张 + WC 改善同时发生
+- 两者同时满足的时间: **最早 FY28-29**, 不是 FY26-27
+
+**对 thesis 的含义**: 市场按 FY26E adj EPS $10.18 × 30x = $305 定价, 隐含假设是"FY26 的 EPS 质量和同业一样". 但 MOG 的 $10.18 EPS 只转换成 $128M / 31.74M 股 = **$4.03/股的 FCF**. 市场按 EPS $10.18 定价, 实际 FCF 只有 $4.03. **$10.18 中有 $6.15 是"不会变成现金的纸利润"**. 同业的 EPS/FCF 转换率 90-120%, 所以同业 $10 EPS 对应 $9-12 FCF. MOG 只对应 $4 FCF. 如果市场按 FCF yield 给价, MOG 只值 $4.03 / 5% yield = **$80/股**. 这再次和 Ch 5 的 OE DCF 方法 ($78) 收敛.
+
+### 3.11 FY27-28 前瞻: 市场的 EPS 增长预期 vs 我们的 bottom-up 投射
+
+把 Ch 3 的所有发现 (revenue waterfall, margin Bridge, EPS 瀑布, FCF 剪刀差, WC decomposition, ROIC) 合在一起, 我们可以独立构建 FY27-28 的 bottom-up 预测, 然后和卖方共识做比较:
+
+**FY27 Bottom-Up 构建**:
+
+```
+FY26 Revenue $4,054M (管理层指引中点)
+  + S&D organic growth +8% ($89M, hypersonics LRIP 开始)
+  + MA organic growth +2% ($18M, F-35 稳产 - sunset attrition)
+  + CA organic growth +4% ($36M, 737 MAX 42/月 + aftermarket aging)
+  − Industrial (剥离, −$956M)
+FY27 Revenue ~$3,241M (post-divestiture, pro-forma +7% ex-Industrial)
+```
+
+```
+FY27 Adj OM: 
+  FY26 Adj OM 13.2% (指引)
+  + Structural mix shift (Industrial 剥离, 机械 lift)   → +100bp
+  + Hypersonics R&D → LRIP 过渡 (partial)              → +20bp
+  + Boeing 产量恢复 scale (737 MAX 38→42)               → +10bp
+  − Boeing cost-down 继续 (−3%/yr on CA OE)              → −20bp
+  − Inflation catch-up 耗尽 (FY25-26 最后一波)           → −40bp
+FY27 Adj OM ~13.5% (vs 卖方共识 14.0-14.5%)
+```
+
+```
+FY27 Adj EPS:
+  Revenue $3,241M × OM 13.5% = OI $438M
+  − Interest $55M (post-divestiture debt paydown)
+  × (1 − 22% tax) = NI ~$299M
+  / 31.74M shares
+  = **$9.42** (vs 卖方共识 $10.50-11.20)
+```
+
+**FY28 Bottom-Up 构建**:
+
+```
+FY28 Revenue $3,241M × (1 + 6%) = ~$3,435M
+  + S&D +9% (hypersonics LRIP ramp)
+  + MA +1% (sunset drag continues)
+  + CA +5% (787 ramp + aftermarket acceleration)
+  Blended organic +6%
+
+FY28 Adj OM:
+  FY27 13.5%
+  + Hypersonics量产margin释放 (+30-50bp, 8-10% → 12-14% on 已转换部分)
+  + CCC slight improvement (−15天) → WC contribution → OI not affected but OCF ↑
+  − No remaining inflation catch-up
+  FY28 Adj OM ~13.8-14.0%
+
+FY28 Adj EPS:
+  Revenue $3,435M × OM 14.0% = OI $481M
+  − Interest $48M (continued paydown)
+  × (1 − 22%) = NI ~$338M
+  / 31.74M shares
+  = **$10.65**
+```
+
+[DM-FWD-EPS-001, bottom-up 模型构建]
+
+**我们的投射 vs 卖方共识**:
+
+| Year | 我们的 Adj EPS | 卖方共识 | 差额 | 差额 × 30x PE = 估值差 |
+|---|---|---|---|---|
+| FY26 | $9.38 (去除一次性) | $10.18 (含一次性) | −$0.80 | −$24/股 |
+| FY27 | $9.42 | $10.85 (共识中点) | −$1.43 | −$43/股 |
+| FY28 | $10.65 | $12.20 (共识中点) | −$1.55 | −$47/股 |
+
+**FY28 我们给 $10.65, 卖方给 $12.20, 差 $1.55/股 (−13%)**. 差距的三个来源:
+
+1. **OM 预期**: 我们给 14.0%, 卖方给 15.2%. 差 1.2pp. 这 1.2pp 中 ~40bp 是 Boeing cost-down 压力 (卖方不 model), ~40bp 是 inflation catch-up 消失 (卖方继续外推), ~40bp 是 hypersonics cost-plus 拖累 (卖方按量产 margin 算全部 S&D). 每个因素单独看不大, 合起来 1.2pp × $3,435M = **$41M OI 差距**, 税后 per share 差距 $1.01. 这就是差额的 **65%**.
+
+2. **Revenue growth**: 我们给 +6%, 卖方给 +8%. 差 2pp. 原因: 卖方 model F-35 产量 180/年 (高端), 我们给 170 (保守端, 考虑特朗普评估). 差 10 架 × $650K ship-set = $6.5M revenue → negligible per share impact (<$0.05). Revenue 差距不是主要分歧来源.
+
+3. **一次性 vs 正常化基线**: FY26 的 $0.80 一次性, 卖方 embed 在基线里, FY27 从 $10.18 起算. 我们从 $9.38 正常化基线起算. 这个基线差异传导到 FY27-28 是 **$0.40/股** 的 compounding 差.
+
+**对估值的含义**: 如果 FY28 实际 EPS 接近我们的 $10.65 而非卖方的 $12.20, 按同样 30x PE, 估值应该是 $10.65 × 30 = **$320**. 似乎接近当前股价 $313? 但注意: 30x PE 是当前 trading PE, 对一家 ROIC<WACC 的公司, **合理 PE 不是 30x, 是 15-20x** (下一章 Ch 5 的 peer-adjusted PE 区间). 如果用 18x PE × $10.65 = **$192**, 仍然远低于 $313. 所以无论用卖方的 EPS 还是我们的 EPS, **真正的分歧在倍数, 不在 EPS**. 而倍数的分歧根源在于: 市场把 MOG 按 A&D peer median PE (30x) 定价, 但 MOG 的 FCF quality 只有 peer median 的 40%.
+
+### 3.12 财务章节小结
+
+把 Ch 3 的发现凝成一句话: **Moog 是一台把 backlog 持续翻译成 GAAP 净利润但在转换成股东 FCFE 的路上被 WC + CapEx 两次吸收的公司, 结果是 ROIC 永远低于 WACC, 股东 6 年累计真实拿到 $163M 而市场追加了 $7.7B 市值**. 这句话没有任何审美判断, 全是可以用 10-K 数据校验的机制描述.
 
 这就是"会计 EPS 的现金幻觉结构"的全部内容. 下一章我们把 MOG 与 A&D 同业做系统对比, 验证这个机制是不是 MOG 特有, 还是行业共性.
 
@@ -687,15 +1068,86 @@ HEI 的 PMA (Parts Manufacturer Approval) 业务 — 非 OEM 认证的飞机零�
 
 **卖方做这种类比**, 要么是因为没有做 deep dive (懒), 要么是因为想为看多论点找 peer 锚 (bias). 无论哪种, 它都是"basket mispricing"的来源.
 
-### 4.6 本章小结
+### 4.6 WWD 对标: Woodward 是"Moog 如果做对了"的样本
 
-六家 peer 对比给出的结论:
-1. Moog 的 FCF/NI conversion 43% 是 A&D Tier-2 行业**唯一**的异常值. 不是通病.
-2. 和最相似的 PH Aero 相比, Moog margin 低 12pp, 原因是 aftermarket mix 低 + 有 cost-plus 拖累 + 规模效应弱. 这**是结构性的**, 不可通过 operational improvement 追赶.
-3. 和 mix 相近的 CW 相比, Moog margin 低 6pp, 原因是 CW 有 naval nuclear power 这种更高 defensibility 的细分. Moog 的 "sole-source" 比 CW 的 "sole-source" commodity 程度更高.
-4. HEI 不是 MOG 的合理 peer, 类比错误. 卖方用 HEI 做 benchmark 是误导.
+Woodward (WWD) 和 Moog 的相似度常被忽视, 但它在多个维度上是 **MOG 的最佳可比**:
 
-**对估值的含义**: Moog 的合理相对估值应该是 **PH Aero (18x) × 0.41 quality adjustment = 7.4x EV/EBITDA**, 对应 per share $86. 这是相对法, 和绝对法 (Ch 5 DCF) 独立交叉.
+| 维度 | WWD | MOG | 相似度 |
+|---|---|---|---|
+| Revenue 规模 | $3.3B | $3.86B | 接近 |
+| 主业 | 燃油系统 + 控制系统 (A&D + Industrial) | 运动控制 + 伺服阀 (A&D + Industrial) | 高 |
+| OE/Aftermarket mix | ~65/35 | ~75/25 | 中等 |
+| 客户重叠 | Boeing / Lockheed / GE Aerospace / Pratt | Boeing / Lockheed / RTX / Airbus | 高 |
+| Industrial 占比 | ~35% | ~25% (剥离前) | 接近 |
+| 市值 | $12.0B | $9.94B | 接近 |
+| **FCF/Rev** | **8.3%** | **3.3%** | **差 2.5 倍** |
+| **FCF/NI** | **102%** | **43%** | **差 2.4 倍** |
+| **ROIC** | **12.9%** | **9.31%** | **差 3.6pp** |
+| **EV/EBITDA** | **22.4x** | **22.2x** | **几乎一致** |
+
+[DM-PEER-WWD-001, 基于 FMP FY25 data]
+
+**这张表里最刺眼的数据**: WWD 和 MOG 的 EV/EBITDA 几乎一样 (22.4x vs 22.2x), 但 WWD 的 FCF/NI 是 MOG 的 **2.4 倍** (102% vs 43%). 市场给了几乎相同的估值倍数, 但 WWD 的一美元 EPS 对应的现金是 MOG 的 2.4 倍. **这是 "same price, different quality" 的典型案例**.
+
+**WWD 为什么 FCF/NI 好 2.4 倍**? 不是因为毛利率 (WWD GM 26.1% 实际比 MOG 27.4% 低), 而是因为:
+
+1. **CapEx/Rev 更低**: WWD 2.5% vs MOG 3.76%. WWD 的产品 (燃油控制器、涡轮叶片夹具) 不需要 MOG hypersonics 产线那种重资本投入. 差距 1.26pp × $3.86B revenue = **$49M/年 FCF 差距的 39%** [DM-PEER-CAPEX-001].
+
+2. **CCC 更短**: WWD 128 天 vs MOG 196 天. WWD 的供应链不需要 18 个月 lead time 的钛合金 (WWD 主要用不锈钢和铸铁, lead time 6-9 个月), 所以 DIO 更低. 68 天差距 × MOG daily revenue $10.58M = **$719M 额外锁定在 MOG WC 里**. 这解释了 FCF 差距的大部分.
+
+3. **没有 hypersonics 的 cost-plus R&D 拖累**: WWD 没有参与高超声速武器项目, 因此没有 cost-plus 合同带来的低利润率 + 长里程碑计费问题. 这让 WWD 的 DSO 稳定在 55-60 天, 而 MOG 被 DoD 合同拖到 80 天.
+
+**WWD 给 MOG thesis 的校准**: 如果市场给 WWD 22.4x EV/EBITDA 的前提是 "FCF/NI 102%, ROIC 12.9%", 那给 MOG 22.2x 的前提应该是**相同或更好的 FCF 和 ROIC**. 但 MOG 的 FCF/NI 只有 43%, ROIC 只有 9.31%. **MOG 拿到了 WWD 的倍数, 但没有 WWD 的经济学**. 这是"basket mispricing"的另一个证据 — 市场把 MOG 和 WWD 放在同一个 "mid-tier A&D" 篮子里定价, 但两家公司的现金流品质完全不同.
+
+**合理的 MOG 倍数 vs WWD**: 如果用 FCF quality adjustment (FCF/NI 比率), MOG 的 quality factor = 43% / 102% = **0.42**. MOG 合理 EV/EBITDA = WWD 22.4x × 0.42 = **9.4x**. 对应 FY25 EBITDA $488M × 9.4x = EV $4.59B, 减 net debt $884M = Equity $3.70B, per share = **$117**. 这比 PH Aero 对标 ($86) 高, 因为 WWD 的 peer quality 本身就比 PH Aero 低一档 (PH Aero OM 25% vs WWD 15%), 所以 WWD 对标给了 MOG 更宽松的 benchmark.
+
+三种独立的 peer-based 估值:
+- PH Aero 对标: **$86** (4.3 节)
+- CW 对标: **$95** (4.4 节隐含, 33.8x × 0.28 quality adj = 9.5x)
+- WWD 对标: **$117** (本节)
+
+**中位数 $95, 对应当前 $313.25 的下跌空间 −70%**. 这和 Ch 5 DCF ($104) 独立交叉, 方向完全一致 [DM-PEER-FV-001].
+
+### 4.7 ROIC 与 FCF/NI 的交叉视图
+
+把七家公司的 ROIC 和 FCF/NI conversion 放在同一张图上, MOG 的**双重落后**一目了然:
+
+```mermaid
+quadrantChart
+    title ROIC vs FCF/NI Conversion (A&D Tier-2)
+    x-axis "ROIC 低" --> "ROIC 高"
+    y-axis "FCF/NI 低" --> "FCF/NI 高"
+    quadrant-1 "High Quality"
+    quadrant-2 "Cash Machine (low return)"
+    quadrant-3 "⚠️ Value Trap"
+    quadrant-4 "Efficient but Cash-Light"
+    TDG: [0.90, 0.95]
+    HWM: [0.60, 0.55]
+    HEI: [0.45, 0.80]
+    CW: [0.50, 0.78]
+    PH: [0.58, 0.58]
+    WWD: [0.52, 0.65]
+    MOG: [0.25, 0.18]
+```
+
+**MOG 是唯一一家落在 Quadrant 3 ("Value Trap" 象限) 的公司** — ROIC 最低且 FCF/NI 最低. 其他六家都在 Quadrant 1 (High Quality) 或 Quadrant 2/4 的边界. 这不是"MOG 比同业差一点", 是"MOG 和同业不在同一个品质平面上".
+
+**Quadrant 3 的含义**: 一家 ROIC < WACC 且 FCF/NI < 50% 的公司, 增长**不创造价值**且 EPS **不转换成现金**. 市场给它超过 book value 的溢价的唯一合理理由是"即将脱离 Quadrant 3". 但 3.8-3.10 节已经论证, MOG 脱离 Q3 的路径 (OM 扩张 + CapEx holiday + WC release) 在 FY26-28 内**不会同时满足**, 最早在 FY29 有机会. 用 $313 买一张 "3 年后脱离 Value Trap" 的期权, 定价太贵了.
+
+### 4.8 本章小结
+
+七家 peer 对比给出的结论:
+
+1. **FCF/NI 43% 是行业唯一异常值**: 六个 peer 的 FCF/NI 在 90-153% 区间, 只有 MOG 在 43%. 这是 MOG 特有问题, 不是行业通病.
+2. **PH Aero**: margin 低 12pp, 结构性 (aftermarket mix + cost-plus + 规模). 不可追赶 [DM-PEER-PH-001].
+3. **CW**: margin 低 6pp, 因为 CW 有 nuclear 细分的更高 defensibility. Moog 的 "sole-source" commodity 程度更高.
+4. **HEI**: 不是合理 peer. PMA + aftermarket pure-play, 商业模式 fundamentally 不同. 卖方类比是误导.
+5. **WWD**: 和 MOG 最接近的 mix + 规模, 但 FCF/NI 是 MOG 的 2.4 倍. 市场给了几乎相同倍数 (22.4x vs 22.2x) — "same price, different quality" [DM-PEER-WWD-002].
+6. **ROIC×FCF/NI 交叉图**: MOG 是唯一落在 "Value Trap" 象限的公司 (ROIC<WACC 且 FCF/NI<50%), 与同业不在同一个品质平面.
+
+**三种独立的 peer-based 估值收敛**:
+- PH Aero 对标: **$86** | CW 对标: **$95** | WWD 对标: **$117** | **中位数 $95**
+- 对应当前 $313.25 的下跌空间 **−70%**, 和 Ch 5 DCF ($104) 独立交叉 [DM-PEER-FV-002].
 
 ---
 
@@ -3803,6 +4255,70 @@ graph LR
 | **CQ8** | 可执行吗? | ✅ 不是立即 short, 是 Q2 后递进 (Druckenmiller timing) | 中 |
 
 [DM-CQ-SUMMARY-001]
+
+---
+
+## 催化剂日历 (投资日历)
+
+| 日期 | 事件 | 影响变量 | Kill Switch 联动 |
+|---|---|---|---|
+| **2026-04-24** | Q2 FY26 Earnings | Revenue YoY, OM%, FCF, BTB | ★ 红灯/黄灯第一触发窗口 |
+| 2026-05 | Industrial 分部剥离方案公布 (预期) | 剥离价, pro-forma guidance | 上修/下修触发 |
+| 2026-07 | Q3 FY26 Earnings | Hypersonics backlog conversion | 黄灯验证 |
+| 2026-08 | F-35 FY27 采购量国会决议 | MA 分部 revenue 基线 | 红灯 [KS-RED-002] |
+| 2026-10 | Q4 FY26 / Full Year | FY26 FCF actual, FY27 指引 | 全 Kill Switch 矩阵更新 |
+| 2027-01 | FY27 初始指引 | OM% 目标, CapEx 计划 | OM 14%+ 验证/证伪 |
+| 2027-04 | Q2 FY27 | Post-divestiture pro-forma 首次报告 | ROIC 改善路径检验 |
+
+**可验证预测 (VP)**:
+
+| VP ID | 预测内容 | 验证时点 | 验证方法 |
+|---|---|---|---|
+| **VP-001** | Q2 FY26 revenue YoY ≤ +8% (我们) vs 卖方 +12% | 2026-04-24 | Earnings release |
+| **VP-002** | FY26 Full Year FCF < $180M (我们 $150M) vs 卖方 $220M+ | 2026-10 | Annual FCF |
+| **VP-003** | FY27 Pro-forma OM ≤ 14.0% (我们) vs 卖方 14.5-15% | 2027-04 | Q2 FY27 segment data |
+| **VP-004** | Industrial 剥离价 ≤ $900M (8-10x EBITDA) | 2026-05~08 | Transaction announcement |
+| **VP-005** | FY27 CCC 仍 ≥ 180 天 (我们) vs 管理层暗示 < 170 天 | 2027-04 | Balance sheet |
+| **VP-006** | F-35 FY27 交付量 ≤ 165 架 (我们) vs LMT 指引 170-180 | 2027-10 | LMT annual report |
+
+## 90 天行动清单
+
+**Q2 FY26 Earnings (2026-04-24) 前**:
+1. 监控 F-35 采购量评估进展 (Congressional defense appropriations markup)
+2. 跟踪 Industrial 分部 strategic review 公告
+3. 准备 Kill Switch 四档矩阵的快速更新模板
+
+**Q2 FY26 Earnings 后 (2026-04-25 起)**:
+1. 按 Kill Switch 红灯/黄灯/上修/下修判定
+2. 如果红灯 (Rev YoY ≤ +10% AND BTB ≤ 1.2x): 报告评级从"审慎关注(临界)"升级为"审慎关注(确认)"
+3. 如果黄灯 (OM < 12.5%): 下调三点估值中 base case 概率从 50% → 40%, bear from 30% → 40%
+4. 如果上修 (FCF > $60M in Q2 alone): 保持评级, 计划 Q3 验证
+5. 更新 handoff note + digest card
+
+## 数据审计摘要
+
+本报告共引用 **600 个 DM 锚点**, 覆盖以下数据源:
+
+| 数据源类型 | DM 数量 | 覆盖范围 | 验证方法 |
+|---|---|---|---|
+| FMP API 财务数据 | ~120 | Revenue/NI/EPS/OCF/CapEx/BS | Python model 交叉 |
+| 10-K / 10-Q segment note | ~150 | 分部 revenue/OM, backlog, 客户集中度 | 原始 filing 交叉 |
+| Peer 公司 10-K | ~80 | PH/HEI/TDG/CW/HWM/WWD 财务指标 | FMP + filing 交叉 |
+| 管理层 guidance / Investor Day | ~60 | FY26 指引, OM target, CapEx plan | Earnings call transcript |
+| 行业数据 / 供应链 | ~50 | 钛合金 lead time, 波音产量, DoD budget | WebSearch 多源交叉 |
+| Python 估值模型输出 | ~40 | 6 模型 fair value, 敏感性, WACC | 模型可重复运行 |
+| 推断/计算 (标注) | ~100 | Aftermarket mix, 分部 GM, CCC 分解 | 三角交叉 + 标注为推断 |
+
+DM 覆盖率: **600 DM / 237K 字符 = 2.53/千字** (目标 ≥1.5, 远超).
+
+**收入归因** 见 Ch 3.2 (FY20-FY25 revenue waterfall: 量 69% + 价 25% + mix 5%).
+**毛利率 Bridge** 见 Ch 3.3 (FY22-FY25 +300bp: 规模效应 40% + 通胀 catch-up 30% + 结构性 30%).
+**EPS 瀑布** 见 Ch 3.4 (FY25 $8.28 → FY26 $10.18: 一次性 $0.80 占 31%).
+**贡献分解**: 四分部 OI 贡献 — S&D 41% / MA 30% / CA 26% / Industrial 22%.
+
+## 免责声明
+
+本报告不构成投资建议, 不构成买入或卖出任何证券的推荐. 报告中的分析、估值和评级仅代表作者基于公开信息的独立判断, 不保证准确性、完整性或时效性. 投资者应基于自身的独立分析和风险承受能力做出投资决策. 过去的表现不代表未来的结果. 作者及其关联方在撰写本报告时不持有 MOG.A / MOG.B 的任何头寸.
 
 ---
 
