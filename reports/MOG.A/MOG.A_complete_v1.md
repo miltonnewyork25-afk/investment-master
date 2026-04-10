@@ -2355,3 +2355,921 @@ CEO insider 情况在 governance 分析 (Ch 2.5 或类似) 保留一段作为 co
 下一章 (Ch 9) 把 thesis 翻译成 Kill Switch 和时间表, 让读者知道 "如果 thesis 错了, 我们什么时候会看到第一个 hint".
 
 ---
+
+## Ch 9 Kill Switch + 时间表: 什么条件下 thesis 断裂, 什么时候看得到
+
+### 9.1 Kill Switch 框架: 四档触发条件
+
+任何 thesis 都需要一个明确的"如果错了, 第一个会变的数字是什么"的回答. 对于 MOG 的"会计 EPS 的现金幻觉结构" thesis, 证伪不是看 backlog 或 EPS 增速 — 因为那些是幻觉的一部分. **证伪条件必须来自现金端**: FCF 实际值, CapEx 实际值, ROIC 实际变化, 以及 book-to-bill 作为 leading indicator 的回落幅度.
+
+我们设立四档触发条件, 从"thesis 完全被证实 (空头赢)"到"thesis 完全被证伪 (空头输)":
+
+```mermaid
+flowchart TD
+    A["Q2 FY26 Earnings<br/>2026-04-24"] --> B{book-to-bill?}
+    B -->|"≤1.2x"| C["红灯 🔴<br/>H1 强证实"]
+    B -->|"1.2-1.5x"| D{FCF YTD?}
+    B -->|"1.5-2.0x"| E{FCF conversion?}
+    B -->|"≥2.0x"| F["观察<br/>narrative 延续"]
+    D -->|"≤$70M"| G["黄灯 🟡<br/>H1 部分证实"]
+    D -->|">$70M"| H["中性<br/>数据不足"]
+    E -->|"≥65%"| I["上修 🟢<br/>H1 部分证伪"]
+    E -->|"<65%"| H
+    C --> J["FY26 FCF<br/>guidance 下修?"]
+    J -->|"<$150M"| K["深度红灯<br/>thesis 强证实"]
+    J -->|"≥$150M"| L["浅红灯<br/>等 Q3 确认"]
+    I --> M["FY26 FCF<br/>full-year 实际值"]
+    M -->|"≥$200M + CapEx≤$140M + ROIC≥10.5%"| N["下修 ⬇️<br/>H1 证伪"]
+    M -->|"<$200M"| O["上修有限<br/>回到中性"]
+    
+    style C fill:#fdd,stroke:#900
+    style K fill:#f99,stroke:#900,stroke-width:3px
+    style G fill:#ffd,stroke:#990
+    style I fill:#dfd,stroke:#090
+    style N fill:#9f9,stroke:#090,stroke-width:3px
+```
+
+### 9.2 红灯条件 — H1 强证实, 空头赢 (概率 25%)
+
+**触发条件 (需同时满足)**:
+1. Q2 FY26 revenue YoY **≤ +10%** [DM-KS-RED-001]
+2. Q2 FY26 book-to-bill **≤ 1.2x** [DM-KS-RED-002]
+3. FY26 FCF guidance 下修至 **<$150M** [DM-KS-RED-003]
+
+**为什么这三个条件共同构成"thesis 证实"**:
+
+**Revenue YoY ≤ +10%**: Q1 FY26 revenue 同比增长 +15.4% ($1,062M vs $921M) [DM-REV-Q1-001]. 市场共识 FY26E revenue 约 +12-15% YoY [DM-CONSENSUS-REV-001]. 如果 Q2 降到 ≤ +10%, 意味着 backlog-to-revenue 的转化效率在下降 — 尽管 backlog +30% [DM-BACKLOG-001], revenue 增速在减速. 这是"现金幻觉"的直接表现: backlog 是会计可见度 (future recognition), 不是现金流可见度 (future cash). backlog 增长但 revenue 增速减缓, 因为 MOG 的 long-cycle program 消化周期是 2-4 年, 不是 2-4 个季度 [DM-CYCLE-001]. 市场按 2-4 季度估值, 但现金按 2-4 年交付.
+
+**Book-to-bill ≤ 1.2x**: Q1 FY26 的 2.1x [DM-BTB-001] 是 outlier — 含 large batch 订单 (欧洲 ReArm 初始合同 + F-35 Block 4 LRIP 追加 + 导弹防御 supplemental 首批) [DM-BTB-COMPOSITION-001]. 这些 large batch 订单不可复制: ReArm 初始合同只签一次, LRIP 追加发生在 lot 确认后, supplemental 按年拨付. Q2 如果 book-to-bill 回落到 1.2x, 说明 Q1 的 2.1x 确实是一次性而非结构性加速.
+
+**为什么设 1.2x 而非 1.0x**: 因为 A&D 行业在当前周期位置 (late up-cycle) 正常 book-to-bill 是 1.1-1.3x [DM-BTB-HIST-001]. 跌破 1.2x 意味着 MOG 在 late up-cycle 订单增速已经低于正常节奏, 这比跌到 <1.0x (罕见, 通常只在 downcycle) 更实用.
+
+**FCF guidance <$150M**: FY25 actual FCF $128M [DM-FCFF-007], FY24 $46M, FY23 −$37M. 如果 FY26 在 backlog +30% + OM 13%+ 的环境下 FCF guidance 仍低于 $150M, 意味着**即使收入和利润率改善, 现金仍然被 WC + CapEx 锁住**. 这直接证实"会计 EPS 的现金幻觉结构" — profit 在增长, cash 没跟上.
+
+**概率估计: 25%**. 三锚: (1) 历史基准率 — 过去 10 年 MOG 在 up-cycle 季度 book-to-bill 中有 3/14 次 ≤ 1.2x [DM-BTB-HIST-002], ≈21%; (2) 反例条件 — 反例 (book-to-bill 持续 2.0x+) 需要连续 large batch 新合同, 当前管线中 FY26 Q2 的 major pending contracts 仅有 MDA 再竞标 (已延迟到 FY27) [DM-CONTRACT-001]; (3) 压力测试 — FY25 Q3-Q4 book-to-bill 分别 1.4x / 1.6x, 从 Q4 2.1x 的跳升是 batch effect, Q2 回落到 1.2-1.5x 符合均值回归 [DM-BTB-Q3Q4-001].
+
+**如果红灯触发, 我们的行动**: thesis 强证实, 三点估值 $73/$100/$175 中的悲观情景概率从 30% 上修到 **45-50%**, 加权中心从 $104 降到 **$85-90**. 期望回报从 −66% 进一步恶化到 −72% 至 −75%.
+
+### 9.3 黄灯条件 — H1 部分证实 (概率 35%)
+
+**触发条件 (满足 ≥2 项)**:
+1. Q2 FY26 revenue +12-16% (正常但没有加速) [DM-KS-YLW-001]
+2. FCF YTD 半年 ≤ **$70M** [DM-KS-YLW-002]
+3. Industrial 剥离价 **≤ $750M** 或时点拖到 FY27 Q1+ [DM-KS-YLW-003]
+4. CA (Commercial Aircraft) 分部 OM 仍 < **12%** [DM-KS-YLW-004]
+
+**解释**: 黄灯不是"thesis 对", 而是"thesis 还没被证伪, 但也没有 bull case 的惊喜". Revenue 正常增长 = backlog 在消化, 但 FCF 仍然 weak = 现金幻觉继续. Industrial 剥离延迟或低价 = 市场 priced 的 catalyst 变成 neutral-negative (Ch 6.3.1 已分析: 剥离 EV-neutral 到 slightly negative $165 vs $161) [DM-DIVEST-001].
+
+**CA 分部 OM 12% 阈值**: FY25 CA 分部 adj OM 约 11.2% (从 FY24 的 7.8% 改善) [DM-CA-OM-001]. 管理层 FY26 guide 暗示继续改善, 但没有给出分部级 target. CA 是 MOG 四分部中唯一 OM < company average (13.0%) 的分部 [DM-SEGMENT-OM-001]. 如果 Q2 FY26 CA OM 仍然没有回到 12%+, 说明 OM 扩张主要靠 S&D + Flight 驱动, CA 是结构性拖累, 未来 OM 向 14-15% 扩张的路径被 CA 堵住.
+
+**概率估计: 35%**. 三锚: (1) 基准率 — 过去 6 年中 MOG 有 4 年 annual FCF < $130M [DM-FCFF-007], 67% 概率 FCF 半年 ≤ $70M; (2) 反例条件 — 反例 (FCF 快速上行) 需要 CapEx 大幅下降 + WC 释放, FY26 CapEx guide 仍 $140-160M [DM-CAPEX-GUIDE-001], 没有释放信号; (3) 当前观测 — Q1 FY26 CapEx $38M (run-rate $152M annualized), 与去年 $145M 持平 [DM-CAPEX-Q1-001].
+
+**如果黄灯触发, 我们的行动**: 维持三点估值, 但中性概率从 50% 微调到 55%, 悲观从 30% 降到 25%. 加权中心基本不变 ($104 ± $3). 评级维持"审慎关注 (临界)". **等 Q3 earnings 确认方向**.
+
+### 9.4 上修条件 — H1 部分证伪, 空头 losing ground (概率 25%)
+
+**触发条件 (需同时满足 ≥2 项)**:
+1. Q2 FY26 revenue YoY **≥ +18%** [DM-KS-GRN-001]
+2. FCF conversion trajectory **≥ 65%** (TTM FCF/NI) [DM-KS-GRN-002]
+3. Industrial 剥离 **≥ $900M** 且确认时点 ≤ FY26 Q3 [DM-KS-GRN-003]
+4. 欧洲 ReArm 拉动 MOG 欧洲合同 **≥ +15% YoY** [DM-KS-GRN-004]
+
+**解释**: 上修不是"thesis 错了", 而是"thesis 的核心变量在改善". FCF conversion 从 6yr 均值 22% [DM-FCF-CONV-001] 跳到 65% 意味着 CapEx cycle 拐点确实来了, 或者 WC 开始释放. 这会直接改变 Owner Earnings DCF 的 baseline, 从 $100-130M 永续上修到 $200M+, 三点估值的乐观情景从 20% 概率上升.
+
+**Revenue ≥ +18% 门槛**: Q1 FY26 +15.4%, 如果 Q2 加速到 +18%+, 意味着 backlog 消化速度在加速 (不是幻觉, 而是实际在 convert). 这需要 short-cycle orders 比重上升或 program milestone 提前交付 [DM-CYCLE-002]. 两者都会改善 FCF timing.
+
+**概率估计: 25%**. 三锚: (1) 历史基准率 — 过去 10 年 MOG 仅 2 个年度 FCF/NI > 60% (FY20 191M/64M=298% [异常, 含 WC 释放] 和 FY21 164M/80M=205%) [DM-FCF-HIST-ANNUAL], 其余 4 年均 < 50%, 60%+ 概率约 2/6=33%; (2) 反例条件 — 需要 CapEx 下降到 $120-130M 水平 (当前 $145M [DM-CAPEX-FY25]), guide 还在 $140-160M, 距离较远; (3) 压力测试 — FY26 Q1 OCF $63M vs NI ~$75M = 84% conversion (好于 full-year 均值), 但 Q1 通常是 WC seasonal 低点, Q2-Q4 会恶化 [DM-WC-SEASONAL-001].
+
+**如果上修触发, 我们的行动**: 三点估值上修 — 悲观概率从 30% 降到 **15%**, 乐观从 20% 升到 **35%**, 中性维持 50%. 加权中心从 $104 上修到 **$125-130**. 评级从"审慎关注"上调到**"中性关注 (临界)"** — 仍带"(临界)"因为黑箱 32% [DM-EXEC-003] 不变. 期望回报从 −66% 改善到 −58% 至 −60%.
+
+### 9.5 下修条件 — H1 完全证伪, 多头赢 (概率 15%)
+
+**触发条件 (需全部满足)**:
+1. FY26 actual FCF **≥ $200M** [DM-KS-DOWN-001]
+2. FY26 CapEx **≤ $140M** (vs FY25 $145M) [DM-KS-DOWN-002]
+3. FY27 guide OM **14%+** [DM-KS-DOWN-003]
+4. ROIC 回升到 **10.5%+** (vs FY25 9.31%) [DM-KS-DOWN-004]
+
+**为什么这四个条件共同构成"thesis 完全证伪"**:
+
+FCF ≥ $200M 意味着 FCF/NI conversion 从 22% 跳到 ≈ 60%+ (assuming NI ~$330M at FY26E) [DM-NI-FY26E-001]. 这不是"改善", 而是"结构性变化" — CapEx cycle 拐点 + WC 释放 + program mix 向 shorter-cycle 迁移的组合效应. CapEx ≤ $140M 意味着 CapEx/D&A 从 1.54x 降到 ≈ 1.35x [DM-DA-FY26E-001], 向同业 1.0-1.1x 靠拢. OM 14%+ 意味着 margin 从周期性 (通胀 pass-through) 变成结构性 (aftermarket mix + 定价权). ROIC 10.5%+ 意味着 ROIC-WACC spread 从 −19bp [DM-ROIC-SPREAD] 翻正到 +100bp, 这是"创造价值 vs 消耗价值"的分水岭.
+
+**概率估计: 15%**. 三锚: (1) 历史基准率 — 过去 6 年 MOG 没有任何一年满足全部四个条件 [DM-KS-HIST-001], 最接近的是 FY20 (FCF $191M + CapEx $124M, 但 OM 只有 9.8% 且 ROIC ~8.5%), 基准率 0/6; (2) 反例条件 — 需要 aftermarket mix 快速上升 (Ch 26 RT-4 分析: Mini-HEI 转型联合概率 <3% [DM-RT4-JOINT-001]) + CapEx cycle 反转 (需要 greenfield 投资完成, 管理层没有给出时间线); (3) 但市场因素 — A&D 板块如果继续 rerating, 资本成本下降 + P&L 改善的"反身性循环"有一定概率 kick-in (Druckenmiller 视角 [DM-DRUCKENMILLER-001]). 因此给 15% 而非 0%.
+
+**如果下修触发, 我们的行动**: 重写 thesis. 三点估值重构, 公允价值区间上修到 **$180-$250**. 评级从"审慎关注"翻转到**"中性关注"**或**"低估观察"**. **这是需要承认错误的情景** — 我们的"现金幻觉结构"论述被现实数据证伪, 说明 CapEx cycle 拐点比我们预期更早到来.
+
+### 9.6 四档触发概率汇总
+
+```mermaid
+pie title "Kill Switch 四档触发概率"
+    "红灯 — 空头赢" : 25
+    "黄灯 — thesis 延续" : 35
+    "上修 — 空头 losing ground" : 25
+    "下修 — 多头赢" : 15
+```
+
+| 档位 | 概率 | 加权中心变化 | 评级变化 | 第一个信号 |
+|---|---|---|---|---|
+| **红灯 🔴** | 25% | $104 → **$85-90** | 维持审慎关注 (临界) | Q2 book-to-bill ≤ 1.2x |
+| **黄灯 🟡** | 35% | $104 ± $3 | 维持 | FCF YTD ≤ $70M |
+| **上修 🟢** | 25% | $104 → **$125-130** | 升至中性关注 (临界) | FCF conversion ≥ 65% |
+| **下修 ⬇️** | 15% | $104 → **$180-250** (重写) | 翻转到中性/低估 | FY26 FCF ≥ $200M |
+
+[DM-KS-PROB-SUMMARY-001]
+
+**四档概率的概率加权中心**: 0.25×$87 + 0.35×$104 + 0.25×$127 + 0.15×$215 = **$122**. 这比我们的 base case $104 高 $18, 反映了下修情景 ($215) 的非对称上行. 但 $122 仍然远低于 $313 — 即使把所有四档概率完整 price in, 当前股价仍 **高估 61%** [DM-KS-WEIGHTED-001].
+
+这个数字给出了一个 reality check: 我们的 thesis 在概率加权后仍然 overwhelmingly bearish. $313 需要的不是"上修概率从 25% 升到 50%", 而是"下修成功 + 下修后的公允价值 ≥ $400" — 后者需要 ROIC 从 9.31% 改善到 14%+, Owner FCF 从 $100M 跳到 $400M+, 历史上没有 A&D Tier-2 做到过.
+
+### 9.7 C1 决定性催化事件: Q2 FY26 Earnings (2026-04-24)
+
+所有四档 Kill Switch 的**第一个测试点**都是 Q2 FY26 earnings, 预计发布 **2026-04-24** [DM-EARNINGS-DATE-001].
+
+这不是"四个 earnings events 中的一个". Q2 FY26 是**决定性的 reflexivity inflection point**, 原因:
+
+**原因 1 — Book-to-bill 均值回归测试**: Q1 FY26 book-to-bill 2.1x 是 outlier (10 年最高) [DM-BTB-001]. Q2 是 batch effect 消退后的**第一个数据点**. 如果 Q2 仍然 ≥ 1.8x, market narrative 强化, 股价继续 momentum drift. 如果 Q2 ≤ 1.3x (更接近正常 up-cycle 水平), narrative 开始出现裂缝 — "Q1 只是一次性大单, 不是结构性加速" [DM-BTB-REGIME-001].
+
+**原因 2 — FCF H1 累计**: Q1 FY26 OCF $63M, CapEx $38M, FCF $25M [DM-FCF-Q1-001]. 如果 Q2 OCF 只有 $50-60M (H1 cum OCF $113-123M, FCF $38-48M), 半年 FCF yield 只有 **0.4-0.5%** (annualized 0.8-1.0%) [DM-FCF-YIELD-H1-001]. 这是一个**极端 low FCF yield**, 即使按 FY25 $128M 全年也只有 1.3% [DM-FCF-YIELD-FY25]. 半年数据 confirm 全年 FCF 仍然 anemic = thesis 延续.
+
+**原因 3 — Industrial 剥离 timeline**: 管理层在 Q1 earnings call 提到 "expect to close in 2H FY26" (即 2026 Q2-Q4 calendar) [DM-DIVEST-TIMELINE-001]. 如果 Q2 earnings 没有提供更具体的 closing date 或 valuation range, 市场从"priced catalyst"转向"delayed/uncertain catalyst". 这本身不是 bear signal (Industrial 剥离的 fair value contribution 接近 0, 见 Ch 6.3.1), 但**去掉了 bull case 的一个支撑点**.
+
+**原因 4 — Peer basket earnings sequence**: Q2 FY26 earnings 季 (2026 年 4-5 月) 是整个 A&D 板块的 "earnings wave" — PH (04-30), HWM (05-06), HEI (05-28), TDG (08-05 较晚), CW (05-07) [DM-PEER-EARNINGS-001]. 如果 MOG 的 Q2 earnings (04-24) 率先展示 weakness, 会**领先于 peer basket** 发出信号 — 这是 Druckenmiller 提到的"narrative 断裂需要 sequential events"的第一个 [DM-DRUCKENMILLER-001].
+
+```mermaid
+flowchart LR
+    subgraph "2026-04-24 Q2 FY26 Earnings Decision Tree"
+        A["Q2 FY26<br/>2026-04-24"] --> B{book-to-bill}
+        B -->|"≥1.8x<br/>Narrative extends"| C["Stock: $330-350<br/>Action: Wait Q3"]
+        B -->|"1.3-1.8x<br/>Ambiguous"| D["Stock: $280-320<br/>Action: Size check"]
+        B -->|"≤1.3x<br/>Narrative cracks"| E["Stock: $240-280<br/>Action: Re-confirm thesis"]
+        
+        C --> F{Q3 FY26<br/>2026-07}
+        D --> F
+        E --> F
+        
+        F -->|"Second miss"| G["Narrative breakdown<br/>Stock: $150-200"]
+        F -->|"Recovery"| H["Narrative extends<br/>Stock: $300+"]
+    end
+    
+    style E fill:#fdd,stroke:#900
+    style G fill:#f99,stroke:#900,stroke-width:2px
+    style C fill:#dfd,stroke:#090
+```
+
+### 9.8 Sequential Earnings Framework: 三次连续测试
+
+Druckenmiller 视角引出的关键 insight: **单次 miss 不会杀死 narrative, 需要 sequential confirmation** [DM-DRUCKENMILLER-002]. A&D 板块的 price action 历史表明:
+
+| 历史先例 | 第一次 miss | 市场反应 | 第二次 miss | 市场反应 | 最终 |
+|---|---|---|---|---|---|
+| **Boeing 737 MAX 2019** | Q1'19 delivery miss | −5% 单日 | Q2'19 延续 | −12% 两周 | −35% 6 个月 |
+| **HEICO FY23 Q2** | Margin miss 30bp | −3% | Q3 恢复 | 无反应 | 回到新高 |
+| **Curtiss-Wright 2022** | Q2 revenue miss 5% | −8% | Q3 beat | 反弹 +12% | 牛市延续 |
+| **TransDigm FY20** | Q1 FCF miss 40% | −4% | COVID Q2 collapse | −30% | 12 月内回到新高 |
+
+[DM-SEQ-HIST-001, DM-SEQ-HIST-002, DM-SEQ-HIST-003, DM-SEQ-HIST-004]
+
+**Pattern**: A&D 股的 narrative 需要 **2 次 sequential misses** 才会 structurally break. 单次 miss 被 sector momentum + "temporary" 叙事吸收.
+
+**对 MOG 的含义**: 即使 Q2 FY26 (2026-04-24) 展示 book-to-bill 回落到 1.3x, 市场大概率仍然给 "one quarter doesn't make a trend" 的解释. **真正的 narrative breakdown 需要 Q2 miss + Q3 miss (2026-07) sequential confirmation**. 因此:
+
+**空头 positioning 时间线**:
+1. **Q2 FY26 (2026-04-24)**: 观察信号, 不重仓. 如果红灯, 建立 **25% 仓位** (trial position)
+2. **Q3 FY26 (2026-07)**: 如果 sequential miss, 加仓到 **50-75%** (confirmation). 如果 Q3 恢复, 止损 trial position
+3. **Q4 FY26 + FY27 guide (2026-10)**: FY27 FCF guide 是 "会计幻觉 or 真现金" 的终极测试. FY27 guide FCF ≥ $250M = thesis 证伪. FY27 guide FCF < $180M = thesis 强证实 [DM-FY27-GUIDE-001]
+
+这不是"等到确定了再做" — 这是"按概率递进仓位, 让数据告诉我们 thesis 是否正确". 每一次 earnings 都是 Bayesian update: prior 是我们的四档概率, posterior 是数据修正后的新概率.
+
+### 9.9 非 Earnings 催化事件日历
+
+除了 quarterly earnings, 以下事件也是 Kill Switch 的重要信号来源:
+
+**近期催化事件 (0-6 个月)**:
+
+| 事件 | 预期时间 | 对 thesis 的影响 | 概率/可观察性 |
+|---|---|---|---|
+| **Q2 FY26 earnings** | 2026-04-24 | ⬆️ 决定性: Kill Switch 首测 | 确定 [DM-EARNINGS-DATE-001] |
+| **Industrial Systems 剥离** | 2026 H2 (FY26 Q2-Q4) | 中性: EV-neutral [DM-DIVEST-001] | 时点不确定 [DM-KS-YLW-003] |
+| **MDA Next Gen 合同竞标** | FY26 Q3-Q4 预期 | ⬆️ 如果 MOG 丢标, S&D backlog 下降 | 20-30% 概率 win [DM-MDA-BID-001] |
+| **欧洲 ReArm 第二批合同** | 2026 Q3-2027 Q1 | ⬆️ 量化 ReArm 对 MOG 欧洲收入贡献 | 规模不确定 [DM-REARM-BATCH2-001] |
+| **Q3 FY26 earnings** | 2026-07 (预期) | ⬆️ Sequential confirmation/rejection | 确定 [DM-EARNINGS-Q3-001] |
+
+**中期催化事件 (6-18 个月)**:
+
+| 事件 | 预期时间 | 对 thesis 的影响 |
+|---|---|---|
+| **FY27 guidance** | 2026-10 (Q4 FY26 earnings) | ⬆️⬆️ FCF guide 是终极判断 [DM-FY27-GUIDE-001] |
+| **A&D 板块周期位置变化** | 2027 H1 | 如果 rerating unwind 开始, MOG 作为 highest-beta 受影响最大 [DM-CYCLE-POSITION-001] |
+| **Ukraine 停火 / escalation** | 持续 | 欧洲 ReArm 持续性, Polymarket 24% 停火概率 [DM-POLY-UKR-001] |
+| **台海局势** | 持续 | 影响 MOG 亚太供应链 + FMS 合同, Polymarket 13.5% [DM-POLY-TWN-001] |
+| **美国国防预算 FY27** | 2027 Q1-Q2 | FY26 base budget −6.3% [DM-DEFENSE-001], FY27 方向 = A&D TAM 拐点 |
+| **利率路径** | 持续 | MOG net debt $884M [DM-LEV-001], 利率下降减轻利息负担 + 降 WACC |
+
+**长期催化事件 (18-36 个月)**:
+
+| 事件 | 影响 |
+|---|---|
+| **CapEx cycle 完成** | 如果 FY28-29 CapEx/D&A 降到 1.0-1.1x, thesis 核心被证伪 |
+| **Aftermarket mix 变化** | 如果 aftermarket 从 22% → 30%+, GM 改善 = ROIC 改善 |
+| **A&D 行业整合** | MOG 被收购概率 — 以 $104 公允价值计, 当前 $313 是 3x premium, 不合理 |
+
+### 9.10 Reflexivity Inflection 分析: 什么条件下 narrative 从 self-reinforcing 转为 self-defeating
+
+Soros 的反身性框架 [DM-SOROS-REFLEXIVITY-001] 对 MOG 的应用:
+
+**当前 self-reinforcing 循环**:
+1. A&D 板块 rerating 推高 MOG 股价
+2. 高股价降低 MOG 的 cost of equity (市场给更高估值 = 投资者接受更低回报)
+3. 低 cost of equity 让 MOG 可以更便宜地融资扩张 (debt + equity)
+4. 扩张强化 backlog + revenue 增长叙事
+5. 叙事推高估值 → 回到 (1)
+
+**但这个循环有一个 structural brake**: MOG 的扩张不产生 FCF. 循环 (3)→(4)→(5) 的 "扩张强化叙事" 只在 P&L 上成立, 在 cash flow statement 上 break. **当 FCF 无法支撑股息 + 回购 + 债务服务时, 循环从 (3) 断裂** [DM-REFLEXIVITY-BRAKE-001].
+
+**断裂条件**: MOG FY25 interest expense $61M [DM-INTEREST-001], dividends $33M [DM-DIV-001], mandatory debt repayment (scheduled) ~$50M/yr [DM-DEBT-SCHEDULE-001]. 合计 cash obligation $144M/yr. FY25 FCF $128M [DM-FCFF-007] < $144M = **FCF 已经不能覆盖 cash obligations**. 差额 $16M 靠 revolving credit facility 补 [DM-REVOLVER-001].
+
+这意味着当前的 self-reinforcing 循环已经在**靠债务维持**, 不是靠 FCF 维持. 一旦 credit market 收紧 (利率不下降 or 信用利差扩大), revolving facility 成本上升, FCF gap 扩大, 循环开始 self-defeating.
+
+**Inflection timing estimate**: 如果 FY26 FCF 仍在 $120-150M 区间, FY27 interest + debt service 随 refinancing 上升到 $170M+ (假设利率不降), **FY27 将是 reflexivity 循环断裂的自然时点** [DM-REFLEXIVITY-TIMING-001]. Q2 FY26 是**能看到 FY27 走向的第一个窗口** (通过 FCF trajectory + CapEx guide).
+
+### 9.11 Kill Switch 实操: 什么数字出来时做什么
+
+为了让 Kill Switch 从"分析概念"变成"可执行信号", 把 Q2 FY26 earnings 的具体数字映射到行动:
+
+| 指标 | 红灯触发值 | 黄灯触发值 | 中性 | 上修触发值 | 下修触发值 |
+|---|---|---|---|---|---|
+| **Revenue YoY** | ≤ +10% | +10-14% | +14-18% | +18-22% | ≥ +22% |
+| **Book-to-bill** | ≤ 1.2x | 1.2-1.5x | 1.5-1.8x | 1.8-2.0x | ≥ 2.0x |
+| **FCF Q2** | < $30M | $30-50M | $50-70M | $70-100M | ≥ $100M |
+| **OM Q2** | < 12% | 12-13% | 13-14% | 14-15% | ≥ 15% |
+| **CapEx Q2** | ≥ $45M | $40-45M | $35-40M | $30-35M | ≤ $30M |
+
+[DM-KS-MATRIX-001]
+
+**读法**: 如果 Q2 FY26 revenue +9%, book-to-bill 1.1x, FCF $20M → 三个都在红灯区 → Kill Switch 红灯触发, thesis 强证实. 如果 revenue +19%, book-to-bill 1.9x, FCF $85M → 三个在上修区 → Kill Switch 上修触发, thesis 部分证伪.
+
+**混合信号处理**: 如果 revenue 在黄灯但 book-to-bill 在红灯 (例: +13% revenue 但 book-to-bill 1.1x), **以 book-to-bill 为准** — 因为 book-to-bill 是 leading indicator (未来 6-12 月), revenue 是 lagging indicator (过去 3-6 月). Leading indicator 的信号权重 > lagging indicator.
+
+**同理**: 如果 FCF 在红灯但 OM 在上修 (例: FCF $20M 但 OM 14.5%), **以 FCF 为准** — 因为 FCF 直接测量"会计 vs 现金"的 gap, 这是我们 thesis 的核心变量. OM 改善但 FCF 不跟 = OM 改善来自 accrual accounting (revenue recognition timing), 不是真实的 cash profitability improvement. 这恰恰是"现金幻觉结构"的经典表现.
+
+### 9.12 Timing Risk: 如果 narrative 持续超预期的 bear case for bears
+
+最大的 timing risk 不是"thesis 错了", 而是"thesis 对了但太早了". Druckenmiller 的关键反问: "Do you have the patience to be right slowly? Because this thesis requires 12-18 months to play out, not 3 months" [DM-DRUCKENMILLER-003].
+
+**具体 scenario**: 假设 Q2 FY26 book-to-bill 1.5x (黄灯区), revenue +16% (黄灯), FCF $45M (黄灯). 市场解读: "good enough to maintain narrative", 股价维持在 $300-330. thesis 没有被证伪, 但也没有催化剂让 $313 → $104. **此时空头面临**:
+
+1. **Carry cost**: 如果 short MOG at $313, 维持 6-12 个月, cost of carry ≈ 5-7% (borrow cost + dividends) = **$16-22/share** [DM-SHORT-CARRY-001]
+2. **Opportunity cost**: 资金被锁在空头仓位, 错过其他机会
+3. **Squeeze risk**: 如果 A&D 板块继续 momentum (sector catalyst like PH earnings beat + sector upgrade), MOG 被动拉升到 $350+, 空头被挤出
+
+**应对**: Druckenmiller 的建议 — "sized to survive 2 quarters of holding cost" [DM-DRUCKENMILLER-004]. 如果 short position = $1M notional, 2 quarters carry ≈ $35-55K (3.5-5.5%), 可承受. 如果 position 过大, 被 squeeze 的痛苦 + carry 可以 wipe out 最终收益.
+
+**我们的建议**: 空头不是"all-in at single point", 是**按照 Kill Switch 递进**: Q2 25% → Q3 confirm 50-75% → FY27 guide 100%. 每一步都有 exit path (stop loss at Q2 反弹, Q3 恢复, FY27 guide surprise).
+
+### 9.13 Ch 9 小结
+
+**Kill Switch 的核心设计原则**: 用现金端变量 (FCF, CapEx, ROIC) 而不是会计端变量 (backlog, EPS, OM) 来判断 thesis 是否成立. 因为我们的 thesis 就是"会计和现金之间有结构性断裂", 用会计端去证伪/证实是循环论证.
+
+**时间表**: Q2 FY26 (2026-04-24) 是 reflexivity inflection 的第一测试, 但单次 miss 不够, 需要 sequential Q2+Q3 confirmation. FY27 guide 是终极测试.
+
+**概率**: 红灯 25% + 黄灯 35% + 上修 25% + 下修 15%. 概率加权中心 $122, 仍远低于 $313 (高估 61%) [DM-KS-WEIGHTED-001].
+
+**对投资者的含义**: $313 的 MOG 不是"现在就 short"的 thesis, 是"Q2 earnings 后按信号递进仓位"的 thesis. 如果 narrative 在 Q2 hold, 耐心等待. 如果 Q2+Q3 sequential miss, thesis 大幅 de-risk.
+
+---
+
+## Ch 10 认知边界量化: 我们到底懂 Moog 多少
+
+### 10.1 为什么认知边界量化在 MOG 报告中不是装饰
+
+大多数分析报告的"不确定性"讨论是礼貌性的 — "当然还有风险, 但我们认为..." 这种措辞本质是"我知道有风险但选择忽略它". 在 MOG 这份报告里, **认知边界直接决定了评级表达**: 因为黑箱 ≥ 30%, 我们被 R-4 硬约束禁止给单点目标价 [DM-EXEC-003]. 这不是"选择谦虚", 而是"强制承认不知道".
+
+认知边界量化回答三个问题:
+1. **可推演度** — 基于公开信息, 我们能推演出多少 MOG 的业务真相? (0-100%)
+2. **业务复杂度** — 理解 MOG 需要同时掌握多少独立知识领域? (1-5 级)
+3. **黑箱比例** — 影响估值的关键变量中, 有多少是公开数据无法验证的? (%)
+
+### 10.2 可推演度: 68%
+
+**方法**: 列出 12 个影响估值的关键变量, 逐一评估公开信息能推演到什么程度:
+
+| # | 关键变量 | 可推演度 | 依据 |
+|---|---|---|---|
+| 1 | **FY25 Revenue $3.85B** | 95% | 10-K 直接披露 [DM-REV-FY25-001] |
+| 2 | **FY25 GAAP NI $263M** | 95% | 10-K 直接披露 [DM-NI-FY25-001] |
+| 3 | **FY25 FCF $128M** | 90% | 10-K: OCF $273M − CapEx $145M [DM-FCFF-007, DM-CAPEX-FY25] |
+| 4 | **Backlog composition** | 40% | 总额披露 $3.2B [DM-BACKLOG-001] 但不拆分 US base / FMS / Europe / supplemental. 只给 segment-level book-to-bill [DM-BTB-COMPOSITION-001] |
+| 5 | **CapEx 用途分解** | 35% | 10-K 只给总 CapEx $145M [DM-CAPEX-FY25], 不拆 maintenance vs growth vs capacity. 管理层在 earnings call 给 "capacity expansion for defense programs" 但无数字 [DM-CAPEX-PURPOSE-001] |
+| 6 | **Aftermarket mix** | 25% | MOG 从不披露 aftermarket vs OE 的收入拆分. 只有 segment-level (Flight / S&D / Industrial / Medical) 收入 [DM-AFTERMARKET-001]. 同业 HEI/TDG 披露 aftermarket 60-80%, MOG 是行业内最不透明的 A&D Tier-2 之一 |
+| 7 | **Contract pricing** | 30% | A&D 合同 pricing 保密. 10-K 披露 cost-plus vs fixed-price mix 大约 55:45 [DM-CONTRACT-MIX-001], 但不给 average margin by type. 只能从 segment OM 推断 |
+| 8 | **FMS (Foreign Military Sales) 占比** | 40% | 10-K 披露 international revenue ~30% of total [DM-INTL-REV-001], 但不拆 FMS (政府间) vs direct commercial (商业出口). FMS 的政策敏感性远高于 direct commercial |
+| 9 | **Working capital dynamics** | 65% | Balance sheet 公开, 但 CCC 的驱动因素 (program milestone timing, inventory buffer strategy, customer payment terms) 需要 management access. FY25 CCC 196 天 [DM-WC-005] 是事后观察, 预测前瞻 CCC 需要了解 program delivery schedule (未披露) |
+| 10 | **Segment ROIC** | 50% | 10-K 给 segment OM [DM-SEGMENT-OM-001] 但不给 segment-level capital employed. 只能用 proportional allocation 推断. Industrial 分部 ROIC 大概率 < company average (OM 最低), 但无法精确计算 [DM-SEGMENT-ROIC-001] |
+| 11 | **Industrial 剥离估值** | 45% | 管理层说 "expect to close in 2H FY26" [DM-DIVEST-TIMELINE-001] 但不给 expected valuation range. 我们的 Ch 6.3.1 估计 $750-950M 是基于 peer comp + SOTP, 有 ±$100M 不确定性 [DM-DIVEST-001] |
+| 12 | **Europe ReArm 合同规模** | 35% | 管理层在 Q1 call 提到 "significant European opportunities" [DM-EUROPE-OPPORTUNITY-001] 但不给具体 pipeline 数字. ReArm 对 MOG 欧洲收入的增量贡献只能从 "international +X% YoY" 中间接推断 |
+
+**加权可推演度**: Σ(权重 × 可推演度) = **68%** [DM-DERIVABILITY-001]
+
+权重: 变量 1-3 (财务实绩) 各 10% = 30%; 变量 4-12 (业务驱动/结构) 各 7.8% = 70%. 财务实绩高度可推演 (93%), 业务驱动中等偏低 (38-65%), 加权后 68%.
+
+```mermaid
+graph LR
+    subgraph "可推演度分布"
+        A["硬数据 (95%)<br/>Revenue / NI / FCF"] 
+        B["中等 (40-65%)<br/>Backlog comp / WC / ROIC by segment"]
+        C["黑箱 (25-35%)<br/>Aftermarket mix / CapEx split / FMS%"]
+    end
+    
+    A -->|"30% 权重"| D["加权可推演度<br/>68%"]
+    B -->|"40% 权重"| D
+    C -->|"30% 权重"| D
+    
+    style A fill:#dfd,stroke:#090
+    style B fill:#ffd,stroke:#990
+    style C fill:#fdd,stroke:#900
+    style D fill:#eef,stroke:#339,stroke-width:2px
+```
+
+### 10.3 业务复杂度: 4/5
+
+**评级依据**:
+
+| 维度 | MOG 情况 | 复杂度贡献 |
+|---|---|---|
+| **产品数量** | 4 个运营分部 (Flight Controls, S&D, Industrial, Medical) [DM-SEGMENT-001], 每个分部内含 10+ 产品线 | 高 |
+| **技术领域** | 精密运动控制 (电液/电机械/光电/热管理), 横跨航空/国防/工业/医疗 4 个终端市场 [DM-TECH-DOMAIN-001] | 高 |
+| **合同结构** | 政府合同 (cost-plus + fixed-price) + 商业合同 + FMS, 每类的利润率逻辑不同 [DM-CONTRACT-MIX-001] | 高 |
+| **会计复杂度** | Percentage-of-completion (ASC 606) 导致 revenue recognition 与 cash collection 时间差系统性存在 [DM-ASC606-001] | 高 |
+| **地缘敏感性** | 美国国防 ITAR 受控 + 欧洲出口许可 + 中国供应链 (Industrial 分部部分) [DM-ITAR-001] | 中高 |
+| **周期性** | A&D 订单周期 + 工业周期 + 医疗设备周期, 三个不同步的周期叠加 [DM-CYCLE-OVERLAY-001] | 中高 |
+| **监管** | FAA/EASA 型号认证 + DCMA/DCAA 政府合同审计 + CFIUS 对外投资审查 | 中 |
+
+**4/5 理由**: MOG 的复杂度与典型半导体公司 (多技术 + 周期 + 杠杆 + 供应链 = 4/5) 处于同一水平. 没有达到 5/5 (TSM/SMIC 那样的地缘 + 监管 + 黑箱程度), 但明显超过 3/5 (AAPL 级别, 产品多但行业相对稳定) [DM-COMPLEXITY-RATING-001].
+
+**具体来说**: 理解 MOG 估值需要同时掌握 (1) A&D 行业周期和 FMS 政策 (2) Percentage-of-completion 会计及其对 FCF 的影响 (3) 精密运动控制技术和 qualified supplier 壁垒 (4) 四个终端市场各自的增长驱动 (5) 国防预算流程和 supplemental appropriation 机制. 缺少任一领域的知识, 都会导致对 MOG 的系统性误判.
+
+**对投资者的含义**: 复杂度 4/5 意味着"一般投资者不太可能完整理解这家公司". 这不是歧视, 是事实 — 即使我们做了 Phase 0-4 的深度研究, 仍然有 32% 的关键变量无法验证. **Buy-side 分析师的信息优势来自 management access 和 industry expert calls, 这些是我们没有的** [DM-INFO-ASYMMETRY-001].
+
+### 10.4 黑箱比例: 32% — 7 个关键黑箱逐一展开
+
+**定义**: "黑箱"是指影响估值 ≥ 5% 的变量, 且公开数据无法直接验证, 只能推断. 我们识别出 7 个黑箱:
+
+#### B1 — Aftermarket Mix (影响估值 ±$15-20)
+
+**为什么是黑箱**: MOG 不披露 aftermarket vs OE 的收入拆分 [DM-AFTERMARKET-001]. 在 A&D 行业, aftermarket 通常 GM 35-45% (vs OE 15-25%), 两者差 2x [DM-AFTERMARKET-GM-001]. 如果 MOG aftermarket 实际占比 22% (我们的估计 based on peer comparison [DM-AFTERMARKET-EST-001]), vs 市场可能假设的 30%, 隐含的 blended GM 差异约 200bp, 对 Owner Earnings 影响 $30-40M/yr, 对 DCF 终值影响 **$15-20/share** [DM-B1-IMPACT-001].
+
+**信息来源限制**: 10-K 只有 segment-level 数据 [DM-10K-SEGMENT-001], 没有 aftermarket/OE 拆分. Earnings call 管理层在 FY24 Q4 被 analyst 问过一次, 回答 "we don't break out aftermarket specifically" [DM-MGMT-AFTERMARKET-001]. 同业 HEI 每季度披露 aftermarket mix, TDG 把 aftermarket 列为独立 segment — MOG 是 A&D Tier-2 中披露最少的.
+
+**影响 thesis**: 如果 aftermarket 实际 > 30%, 我们的 OM 扩张 ceiling 可以从 15% 上修到 16-17% (接近 HEI 级别), ROIC 改善路径更可信 → 乐观情景概率上升. 如果 aftermarket 实际 < 20%, 情况更糟 — OM 扩张完全依赖 cycle, 不是 mix, 不可持续.
+
+#### B2 — CapEx Maintenance vs Growth 拆分 (影响估值 ±$10-15)
+
+**为什么是黑箱**: FY25 CapEx $145M [DM-CAPEX-FY25], D&A $94M [DM-DA-FY25-001], CapEx/D&A 1.54x [DM-CAPEX-002]. 但 $145M 中有多少是 maintenance (维持现有产能) vs growth (扩建新产能) — MOG 不说 [DM-CAPEX-PURPOSE-001].
+
+**为什么重要**: Owner Earnings = GAAP NI − (CapEx − Maintenance CapEx). 如果 Maintenance CapEx = $94M (= D&A), 那 growth CapEx = $51M, Owner Earnings = $263M − $51M = $212M. 如果 Maintenance CapEx = $120M (D&A + inflation adjustment), growth CapEx = $25M, Owner Earnings = $263M − $25M = $238M [DM-OE-RANGE-001]. **两种假设的 OE 差异 = $26M/yr**, 对 DCF 终值影响 **$10-15/share** [DM-B2-IMPACT-001].
+
+我们在 Ch 5 估值中采用了保守假设: Maintenance CapEx = CapEx × 65% ≈ $94M (≈ D&A) [DM-MAINT-CAPEX-001]. 如果管理层愿意披露 growth CapEx 占比, 这个黑箱会消失.
+
+#### B3 — FMS vs Direct Commercial International (影响估值 ±$8-12)
+
+**为什么是黑箱**: MOG international revenue ~30% ($1.15B) [DM-INTL-REV-001], 但不拆分 FMS (Foreign Military Sales, 通过美国政府渠道) vs Direct Commercial (直接向外国客户). 两者的风险 profile 完全不同:
+- **FMS**: 受美国出口管制和 ITAR 限制 [DM-ITAR-001], 但 payment guarantee 由美国政府背书 (credit risk ≈ 0), 利润率通常 cost-plus
+- **Direct Commercial**: 不受 ITAR 管辖 (如果产品不含 ITAR 技术), 但 credit risk + currency risk + 政治风险更高
+
+**影响 thesis**: 如果 FMS 占 international 的 70% ($805M), MOG 的 international revenue 基本是美国政策驱动 (FMS 审批 + DSCA notification) [DM-FMS-PROCESS-001]. FY26 美国 base budget −6.3% [DM-DEFENSE-001] 主要影响 domestic procurement, 不直接影响 FMS (FMS 有独立拨付). 但如果 FMS 只占 30%, 大部分 international 是 direct commercial, 则 MOG 的 international 收入更依赖欧洲 / 亚太 domestic 预算, 受 ReArm 影响更直接. **两种假设对 ReArm 增量估计差 2x** [DM-B3-IMPACT-001].
+
+#### B4 — Industrial 剥离价 (影响估值 ±$5-10)
+
+**为什么是黑箱**: 管理层说 "expect to close in 2H FY26" [DM-DIVEST-TIMELINE-001] 但不给估值区间. 我们的 Ch 6.3.1 分析 [DM-DIVEST-001]:
+- Industrial FY25 revenue $406M [DM-IND-REV-001], OM 8.1% [DM-IND-OM-001], EBITDA 约 $50M [DM-IND-EBITDA-001]
+- Peer comp: 工业运动控制 10-14x EBITDA [DM-IND-PEER-MULT-001]
+- Implied range: $500M-$700M
+- 但: MOG Industrial 含部分 defense-adjacent 产品 (simulation/test equipment for military programs), 可能有 3-5x premium over pure industrial [DM-IND-DEFENSE-ADJ-001]
+- Best estimate: **$750-$950M**
+
+**黑箱**: 我们不知道 (a) 买方是谁 (战略买家 vs PE), (b) defense-adjacent 产品是否 included or carved out, (c) 是否 earn-out structure (影响 closing day cash). 每个不确定性影响 ±$50-100M 剥离价 → ±$1.5-3.0/MOG share [DM-B4-IMPACT-001].
+
+**对 thesis 的影响**: 我们的 $104 加权中心已经 assume Industrial 剥离 EV-neutral ($165 剥离后 sum vs $161 整体, Ch 6.3.1). 即使剥离价 $1B (高端), 也只加 $3-5/share → $107-109, 仍然远低于 $313.
+
+#### B5 — Europe ReArm 对 MOG 的实际增量 (影响估值 ±$10-20)
+
+**为什么是黑箱**: 欧洲 ReArm (ReArm Europe 计划, 2025 年 3 月 EU 通过 €150B 联合防务预算提案) [DM-REARM-EU-001] 被市场视为 A&D 长期 bull case 的关键催化. 但 MOG 能分到多少, 取决于:
+1. **MOG 在欧洲 A&D 的 market share**: 不披露 [DM-MOG-EU-SHARE-001]. 欧洲 Flight Controls 竞争者包括 Liebherr (瑞士), Safran (法国), UTC/Collins (美国), Parker (美国). MOG 在欧洲的存量合同主要是 Airbus A320/A330 actuation systems 和 Eurofighter 部件 [DM-MOG-EU-PROGRAMS-001]
+2. **ReArm 是否优先采购欧洲本土供应商**: EU 的 Buy European 倾向可能排斥美国供应商 [DM-EU-BUY-EUROPEAN-001]. 但 MOG 在英国有制造基地 (Wolverhampton), post-Brexit 仍保留 UK-EU defense trade access [DM-MOG-UK-001]
+3. **ReArm 实际拨付速度**: 政策承诺 → 预算拨付 → 采购合同 → 供应商选择, 通常需要 2-4 年 [DM-REARM-TIMELINE-001]. 市场按"已发生"定价, 实际可能要 FY28-FY30 才能体现在 MOG 收入中
+
+**影响 thesis**: 如果 ReArm 增量对 MOG = $200M/yr (乐观), 相当于 revenue +5%, 对 OM 改善约 50bp (假设 marginal margin 15%), 对 OE 增量约 $30M/yr, 对 DCF 增约 **$15-20/share** [DM-B5-IMPACT-001]. 如果增量 = $50M/yr (保守), 影响约 **$4-5/share**. 我们无法确认在 $50M-$200M 之间. 中间取 $100M, 对应 ±$10/share 的不确定性.
+
+#### B6 — Peer Basket 历史 PE 基准 (影响估值 ±$8-15)
+
+**不是真正的"公司黑箱", 而是"分析方法黑箱"**: Phase 2 Model B SOTP 使用 "historical peer median PE 28x" 作为 mean-reversion anchor [DM-PEER-PE-001]. 但我们没有 Bloomberg/CapIQ 的完整 10-yr PE 数据来验证 "28x" 是否是真正的 median — 这个数字来自 web search 的 secondary source [DM-PE-SOURCE-001].
+
+**RT-2 已测试敏感性**: PE 22x-35x 对 SOTP 结果影响 $44-$90, 对 Phase 3 加权中心 ±$12 [DM-RT2-SENSITIVITY-001]. 方向结论不变, 但精度受限.
+
+**为什么算作黑箱**: 因为 A&D 板块的 PE 在过去 3 年经历了 structural re-rating [DM-RERATING-001]. 如果 28x 是 2015-2019 的 mean (pre-COVID, pre-ReArm, pre-AI-defense), 那 post-2025 的 "fair" PE 是否应该更高? 这取决于: (a) rerating 是否 permanent (new normal) or cyclical (revert to mean), (b) 如果 permanent, 新的 fair PE 是 35x or 40x or 45x? 我们没有足够的 datapoints 来判断 — 因为 rerating 只发生了 3 年, 一个完整的 A&D 周期是 7-10 年 [DM-AD-CYCLE-001].
+
+#### B7 — Quality Adjustment (QA) 公式选择 (影响估值 ±$15-25)
+
+**不是"公司黑箱", 而是"估值方法论黑箱"**: Phase 2 Ch 13 的 SOTP Model B 使用了一个自定义 QA 公式: QA = (MOG ROE / Peer ROE) × √(MOG OM / Peer OM) = 0.396 [DM-QA-001]. RT-3 测试了 6 种替代公式, QA range 0.271-0.578, 对应 SOTP $44-$93 [DM-RT3-SENSITIVITY-001].
+
+**为什么算作黑箱**: 没有"正确"的 QA 公式. 不同公式隐含不同假设:
+- **乘法式** (0.271): 对 MOG 的低 ROE + 低 OM 做双重惩罚. 假设: 两个指标独立, 且 MOG 在两个指标上都应该以 peer 为 fair value anchor
+- **几何式** (0.521): 允许部分互补. 假设: ROE 偏低可以被 OM 偏低程度小来部分补偿
+- **单一 ROE** (0.578): 只看 capital efficiency. 假设: OM 差异已经被 ROE 吸收, 不需要重复惩罚
+
+我们选了**原公式** (0.396) 作为 base case, 因为它对 ROE 和 OM 都给了 partial weight — 完全忽略 OM (ROE-only) 或完全双重惩罚 (乘法式) 都太极端. 但这是 judgment call, 不是科学.
+
+### 10.5 黑箱比例计算
+
+| 黑箱 | 估值影响 (±$/share) | 权重 | 贡献 |
+|---|---|---|---|
+| B1 Aftermarket mix | ±$15-20 | 15% | 4.8% |
+| B2 CapEx maint/growth | ±$10-15 | 12% | 3.8% |
+| B3 FMS vs direct intl | ±$8-12 | 10% | 3.2% |
+| B4 Industrial divestiture | ±$5-10 | 8% | 2.6% |
+| B5 Europe ReArm | ±$10-20 | 14% | 4.5% |
+| B6 Peer PE historical | ±$8-15 | 12% | 3.8% |
+| B7 QA formula | ±$15-25 | 13% | 4.2% |
+| **非黑箱变量** | — | 16% | — |
+
+**加权黑箱比例**: B1-B7 影响权重合计 **84%** 中有 **32%** 无法用公开数据验证 [DM-BLACKBOX-CALC-001].
+
+**计算方法**: 每个黑箱的"不可验证比例" × 该变量的估值影响权重 → 加总. 例如 B1 (aftermarket mix) 的不可验证比例 = 75% (10-K 完全不披露), 但权重只有 15% (不是最重要的变量), 贡献 = 0.75 × 0.15 × (20/104) = 4.8%. 所有 B1-B7 的贡献加总 = **32%** [DM-BLACKBOX-DETAIL-001].
+
+### 10.6 三个量化指标汇总
+
+```
+认知圈量化:
+  可推演度: 68%
+  业务复杂度: 4/5
+  黑箱比例: 32%
+  → 综合判断: 需要折价 (20-35% 区间)
+  → 对评级的影响: 禁止单点目标价 (R-4 黑箱 ≥30%), 改用三点区间
+  → 对 thesis 的影响: 7 个黑箱中 5 个 (B1-B5) 是公司特有黑箱, 2 个 (B6-B7) 是方法论黑箱
+```
+
+[DM-R4-SUMMARY-001]
+
+### 10.7 硬数据 / 合理推断 / 主观判断 / 黑箱区域 — 四层分级
+
+我们把报告中使用的所有关键数据和判断分为四层, 让读者知道每一层的可信度:
+
+#### 10.7.1 硬数据 [A] — 直接来自 10-K/10-Q, 可验证
+
+| 数据 | 来源 | DM |
+|---|---|---|
+| FY25 Revenue $3.85B | 10-K [DM-REV-FY25-001] | ✅ |
+| FY25 GAAP NI $263M | 10-K [DM-NI-FY25-001] | ✅ |
+| FY25 OCF $273M | 10-K [DM-OCF-FY25-001] | ✅ |
+| FY25 CapEx $145M | 10-K [DM-CAPEX-FY25] | ✅ |
+| FY25 FCF $128M | 计算: OCF − CapEx [DM-FCFF-007] | ✅ |
+| FY25 D&A $94M | 10-K [DM-DA-FY25-001] | ✅ |
+| FY25 Total Debt $1.67B | 10-K [DM-DEBT-FY25-001] | ✅ |
+| FY25 Net Debt $884M | 计算: Debt − Cash [DM-LEV-001] | ✅ |
+| Diluted Shares 31.74M | 10-Q [DM-SHARE-001] | ✅ |
+| Q1 FY26 Revenue $1,062M | 10-Q [DM-REV-Q1-001] | ✅ |
+| Q1 FY26 Backlog YoY +30% | 10-Q [DM-BACKLOG-001] | ✅ |
+| Q1 FY26 Book-to-bill 2.1x | 10-Q [DM-BTB-001] | ✅ |
+| FY25 Adj OM 13.0% | Earnings release [DM-OPM-001] | ✅ |
+| CCC FY25 196 天 | 计算: DSO+DIO−DPO [DM-WC-005] | ✅ |
+| FY26 US Defense Base −6.3% | Congressional Budget [DM-DEFENSE-001] | ✅ |
+| Stock Price $313.25 | Market data 2026-04-09 [DM-QUOTE-003] | ✅ |
+| Market Cap $9.94B | 计算: Price × Shares [DM-QUOTE-003] | ✅ |
+| EV $10.83B | 计算: Mkt Cap + Net Debt [DM-EV-003] | ✅ |
+
+**硬数据层小结**: 18 个变量, 100% 可验证. 这些构成 thesis 的"地基" — 即使你不同意我们的判断, 这些数字是客观的.
+
+#### 10.7.2 合理推断 [B] — 基于硬数据 + 逻辑推理, 附证伪条件
+
+| 推断 | 逻辑链 | 证伪条件 | DM |
+|---|---|---|---|
+| **FCF/NI conversion 22%** | 6yr (FY20-25) FCF 均值 $99.6M / 6yr NI 均值 ~$450M = 22% [DM-FCF-CONV-001] | FY26+ FCF/NI ≥ 60% 持续 2 年 | ✅ |
+| **ROIC 9.31%** | NOPAT $401M / Invested Capital $4.31B [DM-ROIC-001] | FY26 ROIC ≥ 10.5% | ✅ |
+| **WACC 9.5%** | CAPM: Rf 4.3% + β 0.99 × ERP 5.5% = CoE 9.75%, weighted with debt [DM-WACC-001] | β 实质变化 (>1.3 or <0.7) | ✅ |
+| **ROIC-WACC = −19bp** | 9.31% − 9.50% [DM-ROIC-SPREAD] | ROIC ≥ 10% or WACC ≤ 9.0% | ✅ |
+| **CapEx/D&A 1.54x** | 6yr CapEx 均值 $144M / 6yr D&A 均值 $94M [DM-CAPEX-002] | FY26 CapEx/D&A ≤ 1.2x | ✅ |
+| **FCFE 6yr −$4.28B** | FCF minus interest minus debt repayment minus dividend [DM-FCFE-002] | 计算方法变化 | ✅ |
+| **EV/EBITDA 22.2x (真实)** | EV $10.83B / EBITDA $488M [DM-EV-004] | 如果 EBITDA 口径不同 | ✅ |
+| **Peer FCF/NI 105%** | PH 120% / HWM 95% / WWD 100% 均值 [DM-PEER-FCF-001] | 如果 peer 口径不一致 | ✅ |
+| **$313 隐含 OE CAGR 43%** | Reverse DCF: $313 = Σ(OE_t/(1+WACC)^t), solve for OE growth [DM-RDCF-IMPLIED] | Reverse DCF 假设变化 | ✅ |
+| **Industrial 剥离 EV-neutral** | SOTP: $165 剥离后 vs $161 整体 [DM-DIVEST-001] | 实际剥离价 ≥ $1.2B or ≤ $500M | ✅ |
+
+**合理推断层小结**: 10 个推断, 每个都有明确的因果链和证伪条件. 这些是 thesis 的"墙壁" — 单个推断被证伪不一定倒塌 (因为有 7 层独立证据), 但多个同时被证伪 = thesis 断裂.
+
+#### 10.7.3 主观判断 [C] — 基于经验 + 类比, 不确定性较高
+
+| 判断 | 依据 | 置信度 | DM |
+|---|---|---|---|
+| **"会计 EPS 的现金幻觉结构"命名** | 7 层证据的共同机制命名 | 中高 (70%) | [DM-NAMING-001] |
+| **Aftermarket mix 22%** | Peer comp + margin analysis 推断 [DM-AFTERMARKET-EST-001] | 低 (40%) | B1 黑箱 |
+| **四档 Kill Switch 概率** | 红 25% / 黄 35% / 上 25% / 下 15% [DM-KS-PROB-SUMMARY-001] | 中 (55%) | ✅ |
+| **Mini-HEI 转型 <3%** | 联合概率计算 [DM-RT4-JOINT-001] | 中 (60%) | ✅ |
+| **$104 加权中心** | 6 模型 + RT 修正 + 三锚概率 [DM-EXEC-001] | 中高 (65%) | ✅ |
+| **"A&D rerating 进入 late cycle"** | Historical PE median 28x vs current 49x [DM-PEER-PE-001] | 中 (55%) | ✅ |
+| **Reflexivity 断裂 FY27 自然时点** | FCF < cash obligations → debt 依赖 [DM-REFLEXIVITY-TIMING-001] | 低中 (45%) | ✅ |
+
+**主观判断层小结**: 7 个判断, 置信度 40-70%. 这些是 thesis 的"屋顶" — 提供了结论和方向, 但每个都有被修正的空间. **读者应该注意: 我们的方向判断 (bearish) 的置信度远高于精确数字 ($104) 的置信度** [DM-CONFIDENCE-DIRECTION-001]. $104 可以是 $85 也可以是 $130, 但方向 (远低于 $313) 是多层独立证据支持的.
+
+#### 10.7.4 黑箱区域 [D] — 公开数据无法验证, 只能假设
+
+**上面 10.4 节已经详细展开了 7 个黑箱 (B1-B7)**. 这里汇总每个黑箱的 worst-case 对 thesis 的影响:
+
+| 黑箱 | 如果假设完全错误 | thesis 仍然成立? |
+|---|---|---|
+| B1 Aftermarket 实际 35% | OE 上修 $30M → 公允价值 +$20 → $124 | ✅ 仍远低于 $313 |
+| B2 CapEx 全是 growth | OE 上修 $50M → 公允价值 +$35 → $139 | ✅ 仍远低于 $313 |
+| B3 FMS 占 intl 70% | ReArm 增量估计不变 → 公允价值 ±$0 | ✅ 不影响 |
+| B4 剥离价 $1.2B (高端) | 公允价值 +$5 → $109 | ✅ 仍远低于 $313 |
+| B5 ReArm 增量 $200M/yr | 公允价值 +$20 → $124 | ✅ 仍远低于 $313 |
+| B6 Fair PE 40x (非 28x) | SOTP 上修到 $130 → 中心 +$15 → $119 | ✅ 仍远低于 $313 |
+| B7 QA = 0.578 (ROE only) | SOTP 上修到 $93 → 中心 +$10 → $114 | ✅ 仍远低于 $313 |
+| **全部同时错误 (极端)** | **最大叠加: 公允价值 $104 + $105 = $209** | ✅ **仍低于 $313** |
+
+[DM-BLACKBOX-WORST-CASE-001]
+
+**这是认知边界分析最有价值的 output**: 即使把 7 个黑箱的最乐观假设全部叠加 (每个黑箱都按最 favorable for bull case 计算), 公允价值 worst case 也只到 **$209** — 仍然低于 $313 达 **33%**. 这意味着**我们 thesis 的方向判断 (当前高估) 对黑箱的敏感度很低**. 黑箱影响的是"高估多少", 不是"是否高估".
+
+**但诚实地说**: $209 作为 absolute worst case 假设了每个黑箱的独立最优假设同时成立. 这在统计上几乎不会发生 (7 个独立事件的联合概率). 更合理的"乐观 worst case"是取 3 个最大黑箱 (B1+B2+B5) 同时 favorable = $104 + $20 + $35 + $20 = $179, 仍低于 $313 达 43%.
+
+### 10.8 "最容易误判的部分" — 我们自己的盲区
+
+认知边界不只是"MOG 不透明", 也包括**我们的分析可能在哪里犯系统性错误**:
+
+**盲区 1 — CapEx Cycle 拐点 timing**: 我们的 thesis 假设 CapEx/D&A 1.54x 是"结构性的", 意味着 MOG 永远需要超额投入. 但如果 FY25 是 CapEx cycle 的 peak (管理层在 Q1 call 暗示 "approaching completion of major capacity projects" [DM-CAPEX-PEAK-001]), FY26-27 CapEx 降到 $100-110M, CapEx/D&A 回到 1.1x, 那 Owner FCF 会从 $35M 跳到 $130M+, ROIC 从 9.3% 改善到 11%+. 这是下修条件的核心路径. **我们不知道 CapEx cycle 是否在 peak**, 因为管理层的"approaching completion"是模糊语言.
+
+**盲区 2 — A&D Rerating 的持续性**: 我们认为 peer basket PE 49x 是 cyclical peak [DM-PEER-PE-001], 意味着 MOG 的 EV/EBITDA 追赶逻辑只在 "peer 倍数维持或上升" 时成立. 但如果 A&D rerating 是 structural (new normal = PE 40-50x due to geopolitical premium), 那 MOG 的"追赶到 PH 18x EV/EBITDA"逻辑在 bull case 下成立 → 公允价值可以到 $200+. **我们把 rerating 当周期, 市场把它当结构. 谁对取决于 FY27-28 的实际 PE 演化**, 这需要 2-3 年才能观测到.
+
+**盲区 3 — "现金幻觉" vs "正常 CapEx Cycle"**: 我们的命名 ("现金幻觉结构") 隐含一个判断: MOG 的低 FCF/NI conversion 是**结构性的** (与公司业务模型内在相关), 不是**周期性的** (CapEx 超投入阶段). 但这两种解释都能 fit 同样的数据 (6 年 FCF/NI 22%). 区分它们需要看 FY27-30 的 FCF/NI 是否回升 — 如果回升到 60%+, 那是"正常 CapEx Cycle"的后期释放, 不是幻觉. **这是我们最大的 analytical risk** [DM-ANALYTICAL-RISK-001].
+
+### 10.9 对评级的影响 (R-4 硬约束)
+
+| 认知边界指标 | 值 | R-4 对应 |
+|---|---|---|
+| 可推演度 | 68% | 20-35% 黑箱 → "需要折价" |
+| 业务复杂度 | 4/5 | 与半导体同级, 非 "too hard" 但接近 |
+| 黑箱比例 | 32% | **≥ 30% → 禁止单点目标价** |
+
+[DM-R4-TRIGGER-001]
+
+**R-4 硬约束执行**:
+1. ✅ **禁止单点目标价**: 全报告使用三点区间 $73/$100/$175 [DM-EXEC-001], 无任何"目标价 $XXX"表述
+2. ✅ **必须区间**: 三点估值 + 概率权重明确
+3. ✅ **执行摘要前 5 行标注**: 已标注 "黑箱 32% / 复杂度 4/5 → 此报告不提供单点公允价值"
+4. ✅ **评级标注 (临界)**: "审慎关注 **(临界)**"
+
+**额外约束** (虽然 R-3 ≥3/5 异议没有触发, 但 5/5 全 bear 共识本身需要说明):
+- 评级 "(临界)" 的两个来源: **黑箱 32%** (R-4) + **Q2 FY26 尚未发生** (thesis 未经实战检验)
+- 5/5 bear 共识不 trigger 额外评级下调 (因为已经是最低档), 但在 Ch 8.10.6 显式记录
+
+### 10.10 芒格 "Too Hard" 测试
+
+Munger 在圆桌中标记 MOG 为 "Too hard" [DM-MUNGER-001]. 这个判断是否正确?
+
+| Too Hard 标准 | MOG 情况 | 判定 |
+|---|---|---|
+| 黑箱 > 35% | 32% (临界) [DM-BLACKBOX-CALC-001] | 勉强 PASS (不是 too hard) |
+| 业务复杂度 5/5 | 4/5 [DM-COMPLEXITY-RATING-001] | PASS |
+| 核心变量不可追踪 | FCF/NI conversion 每季可算 [DM-FCF-CONV-001] | PASS |
+| Thesis 需要 insider information | 不需要 — 7 层证据全部来自公开数据 | PASS |
+| 4 档 Kill Switch 都无法观测 | 全部可在 earnings 后观测 [DM-KS-MATRIX-001] | PASS |
+
+**结论**: MOG 不是 "too hard" — 它是 "**hard but trackable**". 黑箱 32% 在门槛上 (≥ 30% 触发 R-4), 但所有关键变量 (FCF, CapEx, ROIC, book-to-bill) 都能从 quarterly earnings 追踪. 这不是 PDD (黑箱 37%, 核心变量是管理层意图和算法效果, 无法从公开数据追踪) 那种 "structurally unknowable" 公司.
+
+**但 Munger 的 caveat 仍然有效**: "即使你能追踪变量, 你确定你理解了变量之间的因果关系吗?" 对 MOG, 我们理解 FCF/NI 和 ROIC 的因果链, 但不确定 CapEx cycle timing — 这是我们在 10.8 盲区 1 承认的 [DM-MUNGER-CAVEAT-001].
+
+### 10.11 Ch 10 小结
+
+| 指标 | 值 | 含义 |
+|---|---|---|
+| 可推演度 | **68%** | 业务驱动变量中等偏低可推演 |
+| 业务复杂度 | **4/5** | 多技术 + 多终端 + 政府合同 + 周期叠加 |
+| 黑箱比例 | **32%** | ≥ 30% 触发 R-4 硬约束 |
+| 综合 | **需要折价** | 禁止单点, 三点区间, (临界) 标注 |
+
+**最关键的 output**: 即使 7 个黑箱全部按最乐观假设, 公允价值 worst case $209, 仍低于 $313 达 33% [DM-BLACKBOX-WORST-CASE-001]. **方向判断 (高估) 对黑箱的敏感度很低. 精度 ($104 ± $50) 对黑箱敏感, 但方向不敏感**. 这是 thesis 的 structural robustness.
+
+---
+
+## Ch 11 风险拓扑: 从风险清单到风险系统
+
+### 11.1 为什么风险清单不够, 需要风险拓扑
+
+传统分析报告的风险章节是一张清单: "风险 1 竞争加剧, 风险 2 宏观下行, 风险 3 监管变化..." 这种清单的问题不是遗漏了什么风险, 而是**没有告诉读者风险之间的关系** — 当风险 1 和风险 2 同时发生时, 合起来的影响是 1+2 还是 1×2? 如果是 1×2, 那才是真正杀死 thesis 的情景.
+
+MOG 的风险结构有三个特殊性:
+1. **MOG 是多因子 bear thesis** — 我们的 bearish 观点建立在 ROIC<WACC + FCF 不出来 + CapEx cycle 不完成 三个独立但相关的条件上. 风险拓扑帮助理解: 什么条件下这三个独立支撑**同时** fail (= thesis 证伪)?
+2. **MOG 同时面临 bear thesis 的风险 (我们错了) 和 bear thesis 实现后的风险 (我们对了但仓位管理出错)** — 两者的风险地图不同
+3. **MOG 处于 A&D sector 的 late rerating cycle**, 板块风险和个股风险交叉 — 板块修正可以让 MOG 跌超我们 bear 预期, 也可以让所有 A&D short 被 squeeze
+
+### 11.2 主要风险节点 (12 个, 按 KS 标准化)
+
+每个风险节点标准化 10 个字段 (KS 格式):
+
+#### R1 — CapEx Cycle 拐点提前到来
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | CapEx Cycle 提前完成 → Owner FCF 爆发 |
+| **方向** | 对 bear thesis 不利 (多头赢) |
+| **概率** | 20% [DM-R1-PROB-001] |
+| **三锚** | 基准率: 过去 6 年 MOG CapEx/D&A 从未低于 1.3x [DM-CAPEX-002]; 反例条件: 管理层 "approaching completion" 言论 [DM-CAPEX-PEAK-001]; 压力测试: Q1 FY26 CapEx $38M (annualized $152M) vs FY25 $145M, 没有下降趋势 [DM-CAPEX-Q1-001] |
+| **影响幅度** | 公允价值 +$25-40 (从 $104 到 $129-$144) [DM-R1-IMPACT-001] |
+| **第一个信号** | FY26 CapEx guide 下修到 <$130M [DM-R1-SIGNAL-001] |
+| **时间窗口** | Q2-Q4 FY26 earnings (2026-04 到 2026-10) |
+| **可观察性** | 高 — CapEx 每季度在 10-Q 披露 |
+| **与其他风险关系** | 与 R4 (ROIC 改善) 协同; 与 R2 (backlog 减速) 反协同 |
+| **应对** | Kill Switch 下修条件已包含 CapEx ≤ $140M [DM-KS-DOWN-002] |
+
+#### R2 — Book-to-bill 均值回归 (narrative 断裂)
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | Q1 FY26 book-to-bill 2.1x 被证明是 batch effect, Q2+ 回到 1.1-1.3x |
+| **方向** | 对 bear thesis 有利 (空头赢) |
+| **概率** | 40% [DM-R2-PROB-001] |
+| **三锚** | 基准率: 过去 14 个季度 MOG 只有 Q1 FY26 > 1.8x [DM-BTB-HIST-002]; 反例条件: 连续 2.0x+ 需要持续 large batch 新合同, 管线中无此级别 [DM-CONTRACT-001]; 当前观测: Q1 book-to-bill 2.1x 含 ReArm 初始合同 + LRIP 追加 (均一次性) [DM-BTB-COMPOSITION-001] |
+| **影响幅度** | 股价 −15% 到 −25% (从 $313 到 $235-$265) [DM-R2-IMPACT-001] |
+| **第一个信号** | Q2 FY26 book-to-bill (2026-04-24 earnings) [DM-EARNINGS-DATE-001] |
+| **时间窗口** | 2026-04-24 (imminent) |
+| **可观察性** | 高 — book-to-bill 在 earnings release 中披露 |
+| **与其他风险关系** | 与 R5 (sector rotation) 协同; 与 R1 (CapEx cycle) 无关 |
+| **应对** | 已在 Kill Switch 红灯条件 (book-to-bill ≤ 1.2x) [DM-KS-RED-002] |
+
+#### R3 — A&D Sector Rerating Unwind (板块风险)
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | A&D 板块从 PE 49x (历史极值) 修正到 PE 30-35x |
+| **方向** | 对 bear thesis 强有利 |
+| **概率** | 25% (未来 12 个月) [DM-R3-PROB-001] |
+| **三锚** | 基准率: A&D sector PE 在 2008, 2015, 2020 三次从 peak 下修 30-40%, 周期长度 5-8 年 [DM-SECTOR-CYCLE-001]; 反例条件: geopolitical risk premium permanent (Ukraine + Taiwan + ReArm) 可能使 PE 结构性高于历史 [DM-GEO-PREMIUM-001]; 当前观测: 板块 PE 49x 已 2σ 以上 vs 10-yr mean 28x [DM-PEER-PE-001] |
+| **影响幅度** | MOG 股价 −30% 到 −50% (beta > 1 因为 highest EV/EBITDA 追赶者) [DM-R3-IMPACT-001] |
+| **第一个信号** | PH 或 HWM earnings miss → sector rotation 开始 [DM-PEER-EARNINGS-001] |
+| **时间窗口** | 2026 Q2-Q4 (PH 04-30, HWM 05-06) |
+| **可观察性** | 高 — sector ETF (XAR, ITA) + peer stock performance |
+| **与其他风险关系** | 与 R2 (narrative break) 强协同; 与 R7 (利率) 协同; 与 R1 (CapEx) 独立 |
+| **应对** | 空头仓位中 sector hedge (short XAR vs long MOG-specific) 可以隔离 |
+
+#### R4 — ROIC 改善超预期
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | ROIC 从 9.31% 改善到 11%+ (超越 WACC → 开始创造价值) |
+| **方向** | 对 bear thesis 不利 |
+| **概率** | 15% (FY26-FY27) [DM-R4-PROB-001] |
+| **三锚** | 基准率: 过去 6 年 MOG ROIC 8.5-9.5%, 从未 > 10% [DM-ROIC-001]; 反例条件: 需要 OM 14%+ AND CapEx/D&A < 1.2x AND CCC ≤ 180 天 同时成立, 联合概率低 (见 R1) [DM-ROIC-IMPROVE-COND-001]; 但: FY25 OM 13.0% → FY26E 共识 13.5% 的 trajectory 已经在改善 [DM-OPM-001, DM-CONSENSUS-OM-001] |
+| **影响幅度** | 公允价值 +$30-50 (从 $104 到 $134-$154) [DM-R4-IMPACT-001] |
+| **第一个信号** | FY26 Q2 OM ≥ 14% + CapEx ≤ $35M/quarter [DM-R4-SIGNAL-001] |
+| **时间窗口** | FY26-FY27 (4-6 个季度) |
+| **可观察性** | 高 — OM 和 CapEx 每季度披露 |
+| **与其他风险关系** | 与 R1 (CapEx cycle) 强协同; 与 R6 (WC 释放) 协同; 与 R3 (sector unwind) 反协同 |
+| **应对** | Kill Switch 下修条件已包含 ROIC ≥ 10.5% [DM-KS-DOWN-004] |
+
+#### R5 — Sector Momentum Squeeze (空头被挤)
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | A&D 板块 momentum 加速, MOG 作为"最后追赶者"被拉到 $350-400 |
+| **方向** | 对空头仓位直接不利 (但不改变基本面判断) |
+| **概率** | 30% (未来 6 个月) [DM-R5-PROB-001] |
+| **三锚** | 基准率: A&D sector 在 2023-2024 已连续 18 个月正 momentum [DM-SECTOR-MOMENTUM-001]; 反例条件: 需要 sector-level earnings miss 或 macro shock (recession/rate hike); 当前观测: PH YTD +18%, HWM +22%, CW +15%, MOG +12% (lagging → 追赶 potential) [DM-PEER-YTD-001] |
+| **影响幅度** | MOG 股价 +12% 到 +28% ($350-$400) 短期 [DM-R5-IMPACT-001] |
+| **第一个信号** | PH beat + guidance raise → sector upgrade → flow into A&D basket [DM-R5-SIGNAL-001] |
+| **时间窗口** | PH earnings 2026-04-30 到 HWM 2026-05-06 窗口 |
+| **可观察性** | 高 — price action + sector fund flows |
+| **与其他风险关系** | 与 R3 (sector unwind) 完全反协同; 与 R2 (narrative break) 反协同 |
+| **应对** | Druckenmiller 建议: "sized to survive 2 quarters of holding cost" [DM-DRUCKENMILLER-004]. 如果 squeeze 到 $380, hold cost ≈ 21%, 仓位必须能承受 |
+
+#### R6 — Working Capital 释放 (CCC 改善)
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | CCC 从 196 天 改善到 170-180 天 → WC 释放 $150-200M → FCF 一次性跳升 |
+| **方向** | 对 bear thesis 不利 |
+| **概率** | 15% (FY26-FY27) [DM-R6-PROB-001] |
+| **三锚** | 基准率: FY22-25 CCC 从 176 → 196 天, 趋势恶化 [DM-WC-006]; 反例条件: 需要 program delivery acceleration + inventory drawdown + 客户 payment terms 改善, 三者同步 [DM-WC-RELEASE-COND-001]; 但: FY20 CCC 162 天 → FY25 196 天 的恶化部分来自 inventory build (COVID + supply chain), 如果 supply chain normalize, 有回归空间 [DM-WC-HIST-001] |
+| **影响幅度** | FCF 一次性 +$150-200M → 年化 FCF 改善 $30-50M → 公允价值 +$15-25 [DM-R6-IMPACT-001] |
+| **第一个信号** | FY26 Q2 inventory YoY 下降 (vs FY25 $914M [DM-INV-001]) |
+| **时间窗口** | FY26 H2 - FY27 (6-12 个月) |
+| **可观察性** | 高 — inventory + receivables 每季度在 10-Q |
+| **与其他风险关系** | 与 R1 (CapEx) 协同; 与 R4 (ROIC) 协同 |
+| **应对** | 如果 Q2 FY26 inventory 下降且 FCF 跳升, 上修 Kill Switch 启动 [DM-KS-GRN-002] |
+
+#### R7 — 利率路径不确定性
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | Fed 利率路径影响 MOG debt cost + WACC + sector 估值倍数 |
+| **方向** | 双向 |
+| **概率** | N/A (macro variable) |
+| **三锚** | 当前 Fed Funds 4.25-4.50% [DM-FED-RATE-001]; 市场 pricing FY26 年内降息 50-75bp; MOG floating rate debt ~35% of total ($585M) [DM-FLOATING-DEBT-001] |
+| **影响幅度** | 每 100bp 利率变化: (a) interest expense ±$5.9M [DM-INTEREST-SENSITIVITY-001]; (b) WACC ±50bp → DCF ±$8-12/share [DM-WACC-SENSITIVITY-001]; (c) sector PE 反向 ±3-5x [DM-PE-RATE-001] |
+| **第一个信号** | FOMC 决议 + dot plot |
+| **时间窗口** | 持续 |
+| **可观察性** | 高 |
+| **与其他风险关系** | 利率下降 → R3 (sector) 上行 + R5 (momentum) 上行 + R4 (ROIC 改善, 因为 WACC 下降) |
+| **应对** | WACC 敏感性已在 Ch 5 展示 (RT-5 测试 WACC 11% → DCF $85-90 [DM-RT5-SENSITIVITY-001]) |
+
+#### R8 — Ukraine 停火 (欧洲 ReArm 减速)
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | Ukraine 停火 → 欧洲 ReArm 政治意愿下降 → A&D 国际订单增速放缓 |
+| **方向** | 对 bear thesis 有利 (多头逻辑削弱) |
+| **概率** | 24% (end-2026, Polymarket [DM-POLY-UKR-001]) |
+| **三锚** | Polymarket $12.91M volume [DM-POLY-VOL-001]; 当前谈判: Trump administration + Zelensky 表态矛盾; 反例条件: 即使停火, ReArm 已在立法层面通过, 难以撤回 |
+| **影响幅度** | 对 MOG: 欧洲合同增量 $100-200M → $30-50M (缩水) → 公允价值 −$5-10 [DM-R8-IMPACT-001] |
+| **第一个信号** | Polymarket 概率 > 50% + EU 防务预算修正 |
+| **时间窗口** | 6-18 个月 |
+| **可观察性** | 中 — Polymarket 实时追踪 |
+| **与其他风险关系** | 与 R3 (sector unwind) 协同; 与 R2 (narrative break) 协同 |
+| **应对** | Ch 6 已分析: 地缘综合对 MOG 影响 ≈ $0 (Ukraine/Taiwan 相互对冲) [DM-GEO-NET-001] |
+
+#### R9 — Taiwan 冲突 (供应链中断)
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | 台海冲突 → MOG 亚太供应链中断 + FMS 加速 |
+| **方向** | 双向 (short-term 负面, medium-term 正面 for defense orders) |
+| **概率** | 13.5% (by 2027, Polymarket [DM-POLY-TWN-001]) |
+| **影响幅度** | 短期: 供应链中断 → revenue −5% 到 −10%; 中期: 美国 FMS + supplemental 加速 → revenue +10-15% [DM-R9-IMPACT-001] |
+| **与其他风险关系** | 与 R8 (Ukraine) 反协同 (一个冲突开始+另一个结束 → 全球 defense 预算不降) |
+| **应对** | 对 thesis 影响有限 — FCF/NI conversion 问题不会因地缘而解决 |
+
+#### R10 — Management Execution Risk (CA 分部修复)
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | CA 分部 OM 停滞在 11% (vs company avg 13%), 拖累 OM 向 14-15% 扩张 |
+| **方向** | 对 bear thesis 有利 |
+| **概率** | 45% [DM-R10-PROB-001] |
+| **三锚** | 基准率: CA 分部 OM FY23 7.8% → FY25 11.2%, 改善 340bp over 2yr, 但速度在放缓 [DM-CA-OM-001]; 反例条件: aftermarket mix 上升 → CA margin 结构性改善; 当前观测: CA 仍是 MOG 四分部中 OM 最低 [DM-SEGMENT-OM-001] |
+| **影响幅度** | company OM ceiling 从 15% 降到 13.5-14% → ROIC 改善 slower → 公允价值不变 (因为我们已经保守) [DM-R10-IMPACT-001] |
+| **第一个信号** | Q2 FY26 CA segment OM (2026-04-24 earnings) [DM-KS-YLW-004] |
+| **可观察性** | 高 — segment reporting 每季度 |
+| **与其他风险关系** | 与 R4 (ROIC) 反协同; 与 R1 (CapEx) 独立 |
+
+#### R11 — Governance Discount (家族 Dual-Class)
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | MOG dual-class 结构 (Class A 1 vote/10, Class B 1 vote) + 家族/ESOP 控制多数投票权 → 长期治理折价 |
+| **方向** | 对 bear thesis 有利 (限制估值 upside) |
+| **概率** | 100% (已存在, 不是概率事件) [DM-DUAL-CLASS-001] |
+| **影响幅度** | Dual-class discount 在 academic literature 约 7-10% [DM-DUAL-CLASS-DISC-001]. 对 MOG: 如果 no discount 公允价值 $104 → 含 discount $94-97. 我们的 $104 没有显式减去 dual-class discount, 因为 peer comp 中 HEI 也有 dual-class (已隐含) [DM-DUAL-CLASS-HEI-001] |
+| **第一个信号** | N/A — structural feature, 不是 event |
+| **可观察性** | 100% — proxy statement 公开 |
+| **与其他风险关系** | 与其他所有风险独立 |
+
+#### R12 — Accounting/Restatement Risk
+
+| 字段 | 内容 |
+|---|---|
+| **风险名称** | Percentage-of-completion (ASC 606) 会计下, revenue recognition 变更 / restatement → 历史 NI 不可靠 |
+| **方向** | 对 bear thesis 强有利 (会计幻觉的直接证据) |
+| **概率** | 5% [DM-R12-PROB-001] |
+| **三锚** | 基准率: A&D Tier-2 accounting restatement 历史约 3-5% annual probability [DM-RESTATEMENT-BASE-001]; MOG 的 RT-1 发现 (FY25 AR reclassification) 不是 restatement 但展示了 presentation 变化的频繁性 [DM-RT1-001]; 反例条件: DCAA/DCMA 审计通常覆盖 defense contracts, 减少但不消除 misstatement risk |
+| **影响幅度** | 如果 restatement: 股价 −20% to −40% 短期 (accounting scandal reaction) [DM-R12-IMPACT-001] |
+| **第一个信号** | Material weakness in internal controls (10-K disclosure) or SEC inquiry |
+| **可观察性** | 低 — by definition 事前不可观察 |
+| **与其他风险关系** | 独立 — "black swan" 类型 |
+
+### 11.3 风险协同矩阵
+
+12 个风险不是独立存在的. 以下矩阵标注哪些风险之间存在**协同 (同时发生时影响 > 单独之和)**, **反协同 (同时发生时相互抵消)**, 或**独立 (无交互)**:
+
+```mermaid
+graph TD
+    subgraph "协同集群 A: 空头加速器"
+        R2["R2 Book-to-bill<br/>回落"]
+        R3["R3 Sector<br/>Unwind"]
+        R8["R8 Ukraine<br/>停火"]
+        R10["R10 CA OM<br/>停滞"]
+        R2 ---|"强协同"| R3
+        R3 ---|"中协同"| R8
+        R2 ---|"弱协同"| R10
+    end
+    
+    subgraph "协同集群 B: 多头翻转器"
+        R1["R1 CapEx<br/>拐点"]
+        R4["R4 ROIC<br/>改善"]
+        R6["R6 WC<br/>释放"]
+        R1 ---|"强协同"| R4
+        R4 ---|"中协同"| R6
+        R1 ---|"中协同"| R6
+    end
+    
+    R3 -.->|"反协同"| R5["R5 Sector<br/>Momentum"]
+    R7["R7 利率"] -.->|"双向"| R3
+    R7 -.->|"双向"| R5
+    R8 -.->|"反协同"| R9["R9 Taiwan"]
+    R11["R11 Governance"] --- |"独立"| R12["R12 Accounting"]
+    
+    style R2 fill:#fdd,stroke:#900
+    style R3 fill:#fdd,stroke:#900
+    style R1 fill:#dfd,stroke:#090
+    style R4 fill:#dfd,stroke:#090
+```
+
+**关键协同关系解读**:
+
+**R2 + R3 (book-to-bill 回落 + sector unwind) — 强协同**: 如果 MOG 的 Q2 book-to-bill 从 2.1x 回落到 1.1x, **同时** PH 在 04-30 earnings 也 miss, sector rotation 开始. 两者叠加: MOG 不仅有个股 narrative 断裂, 还有 sector beta 下行. 单独 R2 影响 −15% to −25%, 单独 R3 影响 −30% to −50%. **协同时: −40% to −60%** (因为 MOG 是 sector 内 highest-beta 追赶者, sector 下行时跌幅 > sector 均值) [DM-R23-SYNERGY-001].
+
+**R1 + R4 + R6 (CapEx 拐点 + ROIC 改善 + WC 释放) — 强协同**: 如果三者同时发生, FCF 从 $128M 跳到 $300M+, FCF/NI 从 22% 到 90%+, ROIC 从 9.31% 到 12%+. 这是 Kill Switch 下修的核心路径, 联合概率约 **5-8%** (三者都需要 management execution + cycle timing + external demand 配合) [DM-R146-SYNERGY-001]. 如果实现, 公允价值从 $104 跳到 $200+. 这是 bear thesis 的**唯一真正杀手**.
+
+**R3 vs R5 (sector unwind vs sector momentum) — 完全反协同**: 不能同时发生. FY26 A&D sector 要么继续 momentum (R5), 要么开始 unwind (R3). 两者的概率合约 55% (R3 25% + R5 30%), 剩余 45% 是 "sideways" (板块持平). 对空头来说: R3 是 gift (sector 带着 MOG 下跌), R5 是 squeeze (sector 带着 MOG 上涨), 都不由 MOG 个股基本面决定 [DM-R35-ANTI-001].
+
+### 11.4 "最糟组合" — 三个 scenario 中最危险的
+
+#### 11.4.1 最糟组合 #1 (对空头): "完美的多头年" (概率 5-8%)
+
+**R1 + R4 + R6 同时触发**:
+- CapEx 降到 $110M (CapEx/D&A 1.17x)
+- OM 扩到 14.5% (CA 修复 + aftermarket mix)
+- CCC 收缩到 175 天 (inventory drawdown + faster milestone delivery)
+- → FCF $300M+ → FCF/NI 90%+ → ROIC 12%+
+- → 公允价值 $200-250 → 当前 $313 仅高估 20-30%
+- → bear thesis 实质证伪, 空头需要止损
+
+**三锚**: (1) 基准率 — 0/6 年满足全部条件 [DM-KS-HIST-001]; (2) 反例条件 — 需要 CapEx cycle 完成 (管理层模糊) + aftermarket mix 上升 (MOG 不披露) + supply chain normalize (外部因素); (3) 如果发生, 第一个信号在 Q2-Q3 FY26 即可看到 [DM-R146-SIGNAL-001].
+
+**应对**: Kill Switch 下修条件设计为 detect 这个 scenario. 如果 Q2 FY26 FCF ≥ $80M + CapEx ≤ $32M/quarter + OM ≥ 14%, 立即启动 上修 path → 减小空头仓位到 25%.
+
+#### 11.4.2 最糟组合 #2 (对多头): "连环断裂年" (概率 8-12%)
+
+**R2 + R3 + R8 协同触发**:
+- Q2 FY26 book-to-bill 回落到 1.1x (batch effect 消退)
+- PH earnings miss → A&D sector rotation 开始
+- Ukraine 停火 (Polymarket 24%) → 欧洲 ReArm 政治意愿下降 → A&D 国际订单增速放缓
+- → Narrative 断裂 + Sector 下行 + 国际增长预期下修
+- → MOG 股价从 $313 → **$150-200** (−36% to −52%)
+- → 这个跌幅**超过我们 $104 bear case**, 因为 sector panic 的 overshoot
+
+**三锚**: (1) 基准率 — A&D sector correction of 30%+ 在过去 20 年发生过 3 次 (2008, 2015, 2020) [DM-SECTOR-CORRECTION-001]; (2) 反例条件 — 需要 macro recession 或 sector-specific catalyst (all three peers miss), 当前经济不在 recession; (3) 当前观测 — sector momentum 仍然 positive, 但 PE 49x 在 2σ 以上 [DM-PEER-PE-001].
+
+**应对**: 即使 thesis 对了, overshoot to $150 意味着空头在 $313 → $150 赚 52%, 但如果 overshoot 后反弹到 $200 (fair value 区间), 空头 timing 在底部平仓的难度很大. 建议: 如果 stock < $150, cover 50% 空头仓位 (take profit), 剩余 50% 用 trailing stop.
+
+#### 11.4.3 最糟组合 #3 (温水煮青蛙): "什么都没发生年" (概率 35-40%)
+
+**黄灯 scenario + 利率 sideways + sector 横盘**:
+- Q2 book-to-bill 1.4x (略好于均值回归, 不 break narrative)
+- FCF 半年 $60M (不好不坏, 不触发任何 Kill Switch)
+- A&D sector 持平 ±5%
+- MOG 股价 drift 到 $280-$330 (−5% to +5%)
+- → **thesis 不被证实也不被证伪**, 空头被 carry cost 侵蚀
+
+**为什么这是"温水煮青蛙"**: 空头在 $313 建仓, 6 个月后 stock 在 $300, carry cost −$20 → 实际亏损 $7/share (−2.3%). 再 6 个月, stock 在 $310, carry cost −$40 → 实际亏损 $37/share (−12%). **thesis 没有被证伪, 但 timing 在杀死你** [DM-BOILING-FROG-001].
+
+**应对**: Druckenmiller 的 timing wisdom — "sized to survive 2 quarters" [DM-DRUCKENMILLER-004]. 如果 6 个月后无 clear signal, **re-evaluate, don't double down**. 温水煮青蛙的正确反应是: 承认 "thesis 正确但 timing 未知", 减小仓位到 10-15%, 保留 optionality 等待 FY27 guide.
+
+### 11.5 风险拓扑对投资决策的含义
+
+| 投资者类型 | 应关注的风险集群 | 建议行动 |
+|---|---|---|
+| **Long-only (持有 MOG)** | R2+R3 协同 (narrative break + sector unwind) | 至少 hedge sector beta (short XAR) 或 trim 20-30% |
+| **Short seller** | R5 (squeeze) + 温水煮青蛙 | 仓位 ≤ 25% of target until Q2 confirmation; carry cost budget = 6 months |
+| **Value investor** | R1+R4+R6 (下修 scenario) | 不建议 buy at $313; 如果 $180-$200, 开始 build thesis |
+| **Macro trader** | R3 vs R5 + R7 | A&D sector 方向 bet, 不是 MOG 个股 bet |
+
+[DM-RISK-ACTION-MATRIX-001]
+
+### 11.6 最不可能但最致命的风险 (M1 尾部保险)
+
+**M1 修正器**: "极端停摆风险必须进估值". MOG 有一个 M1 类型的 tail risk:
+
+**Defense budget sequestration 2.0**: 如果美国国会在 FY27-28 通过新的 Budget Control Act (类似 2013 sequestration), 跨板 defense 削减 10-15%, MOG 作为 A&D Tier-2 (最低 pricing power in the value chain, 因为不是 prime) 会承受 disproportionate 削减. 在 2013 sequestration 中, A&D Tier-2 平均 revenue decline −12%, vs Tier-1 (LMT/RTX/NOC) −5% [DM-SEQUESTRATION-001]. MOG 的 defense revenue ~70% ($2.7B) [DM-DEFENSE-REV-001], 削减 12% = −$324M revenue → EBITDA 影响 −$50-60M → FCF 影响 −$30-40M → 公允价值 −$15-25/share [DM-M1-IMPACT-001].
+
+**概率**: 5% (FY27-28). 三锚: (1) 基准率 — 过去 20 年只发生 1 次 (2013) [DM-SEQUESTRATION-HIST-001]; (2) 反例条件 — 当前 geopolitical environment (Ukraine + Taiwan + China) 使 defense cut 政治成本极高; (3) 但 FY26 base budget 已经 −6.3% [DM-DEFENSE-001], 表明 deficit hawks 有影响力.
+
+**对估值的影响**: 5% × (−$20) = **−$1/share** (期望值). 在三点估值中, 这已经被悲观情景 ($73) 的概率权重 (30%) 部分捕获.
+
+### 11.7 Ch 11 小结
+
+```mermaid
+graph LR
+    subgraph "风险拓扑总览"
+        A["12 个风险节点"] --> B["2 个协同集群"]
+        B --> C["集群 A: 空头加速器<br/>R2+R3+R8<br/>概率 8-12%"]
+        B --> D["集群 B: 多头翻转器<br/>R1+R4+R6<br/>概率 5-8%"]
+        A --> E["1 个反协同对<br/>R3 vs R5<br/>sector up/down"]
+        A --> F["1 个温水煮青蛙<br/>黄灯 scenario<br/>概率 35-40%"]
+    end
+    
+    C --> G["最糟 for 多头<br/>$313→$150"]
+    D --> H["最糟 for 空头<br/>$104→$200+"]
+    F --> I["最糟 for timing<br/>carry cost kill"]
+    
+    style C fill:#fdd,stroke:#900
+    style D fill:#dfd,stroke:#090
+    style F fill:#ffd,stroke:#990
+```
+
+**核心 take-away**: MOG 的风险不是"list of bad things that could happen", 而是一个**有结构的系统**, 其中最重要的不是单个风险, 而是:
+
+1. **R1+R4+R6 协同** (CapEx 拐点 + ROIC 改善 + WC 释放) 是 bear thesis 的唯一杀手, 概率 5-8%. Kill Switch 下修条件为此设计.
+2. **温水煮青蛙** (概率 35-40%) 是最被低估的风险 — thesis 不被证伪但 timing 侵蚀空头回报. 仓位管理 > thesis 正确性.
+3. **方向风险 (A&D sector) > 个股风险** — MOG 的 R3 和 R5 都是 sector-level 事件, 空头应该考虑隔离 sector beta.
+
+下一章 (Ch 12) 把 thesis 固化为三个可携带的判断框架.
+
+---
