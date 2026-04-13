@@ -1,0 +1,17 @@
+{
+  "sotp_bear": 158.0,
+  "sotp_base": 250.6,
+  "sotp_bull": 358.1,
+  "probability_weighted": 249.7,
+  "current_price": 307.5,
+  "upside_downside_pct": -18.8,
+  "implied_5yr_cagr": 36.1,
+  "consensus_3yr_cagr": 21.7,
+  "fy26e_gaap_eps": 4.25,
+  "fy26e_nongaap_eps": 5.35,
+  "owner_fcf_fy25": 33,
+  "roic_fy25": 4.2,
+  "gaap_pe_fy26": 72.4,
+  "owner_pe_fy26": 93.8,
+  "nongaap_pe_fy26": 57.5
+}
