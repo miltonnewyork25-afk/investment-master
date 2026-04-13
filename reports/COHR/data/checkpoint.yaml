@@ -1,7 +1,7 @@
 ticker: COHR
 company: Coherent Corp
 industry: semiconductor/optical_components
-current_phase: P1_complete
+current_phase: P2_complete
 target_quality: 4.4
 target_chars: 200000
 framework_version: v22.0
@@ -66,8 +66,37 @@ phases_completed:
       CQ7: "50% → 40% (-10pp): FCF negative + NVIDIA not debt-funding = CapEx crowds out deleveraging"
       CQ8: "60% → 60% (0pp): Malaysia manufacturing confirmed, tariff advantage stable"
 
-next_phase: "Phase 2"
-next_priority: "Quantitative SOTP modeling (CQ3) + Financial attribution (R-1) + Scissor gap analysis (R-2)"
+  - phase: "Phase 2"
+    date: "2026-04-13"
+    outputs:
+      - "staging/P2_financial_deep_dive.md (18,837 chars, Ch11-Ch16)"
+      - "staging/P2_supplement_gaps.md (7,853 chars, S1-S5)"
+      - "data/valuation_model.py (Python SOTP model)"
+      - "data/valuation_summary.json"
+    total_chars: 26690
+    new_dm_anchors: 104
+    mermaid_count: 7
+    key_findings:
+      - "SOTP: Bear $158 / Base $251 / Bull $358, weighted $250 vs $307.50 = -18.8%"
+      - "Three PE (FY26E): GAAP 72.4x / Owner 93.8x / Non-GAAP 57.5x"
+      - "Owner FCF FY25: $33M (yield 0.06%), FY28E: $480M (yield 0.95%)"
+      - "ROIC 4.2% < WACC 10% — currently destroying value"
+      - "Revenue 80%+ dependent on AI single engine"
+      - "D&A decline $554M→$300M (FY29E) most certain positive catalyst"
+      - "Interest savings FY25→FY28E: $143M = +$0.74 EPS"
+      - "INVENTORY RED FLAG: $1,438M→$1,848M (+28.5% in 6mo vs rev +10.3%)"
+      - "SOTP sensitivity: $307.50 needs 9x AI Networking EV/Rev or 8x+Bull"
+      - "Probability-weighted inventory write-down: ~$100M (-$0.52/share)"
+    cq_changes:
+      CQ1: "55% → 50% (-5pp): inventory red flag + CapEx cycle risk"
+      CQ3: "confirmed: SOTP base $251 < $307.50"
+      CQ4: "70% → 75% (+5pp): FY25 repaid $435M confirmed"
+      CQ5: "new: SiC option $1.5-5.0B, high uncertainty"
+      CQ7: "60% → 55% (-5pp): Owner FCF ≈ 0, CapEx/OCF = 70%"
+    cq_weighted: 50.8
+
+next_phase: "Phase 3"
+next_priority: "Competition deep dive (LITE vs COHR 1.6T) + Supply chain cross-validation (铁律Q) + CPO analysis + Game theory lens"
 
 reference_reports:
   - ticker: LITE
