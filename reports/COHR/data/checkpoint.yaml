@@ -1,0 +1,46 @@
+ticker: COHR
+company: Coherent Corp
+industry: semiconductor/optical_components
+current_phase: P0_complete
+target_quality: 4.4
+target_chars: 200000
+framework_version: v22.0
+
+phases_completed:
+  - phase: "Phase -1/0"
+    date: "2026-04-13"
+    outputs:
+      - "data/launch_brief.md"
+      - "staging/P0_foundation.md"
+      - "data/agent_findings_summary.md"
+    key_findings:
+      - "Market cap ~$48B, Forward PE 41x FY2027"
+      - "Mixed business: 72% AI Networking (+34%) + 28% Industrial (-10%)"
+      - "Net Debt $2.68B deleveraging from $3.67B"
+      - "FCF negative (-$96M) due to CapEx acceleration"
+      - "NVIDIA $2B investment, CPO from 2027"
+      - "SiC: Wolfspeed Ch.11, DENSO/Mitsubishi $1B"
+
+  - phase: "Phase 0.75"
+    date: "2026-04-13"
+    outputs:
+      - "staging/P0.75_thesis_crystallization.md"
+      - "staging/COHR_default_map_audit.md"
+    key_findings:
+      - "5 anomalies identified (PE/growth mismatch, inventory surge, FCF negative, preferred stock vanish, SiC rewrite)"
+      - "3 constraint collisions (AI growth vs mix drag, deleveraging vs CapEx, vertical integration vs competition)"
+      - "3 hypotheses registered (deleverage+SOTP, SiC hidden option, preferred stock event)"
+      - "CQ1-CQ8 routed"
+      - "Default map audit: 4 failure points"
+
+next_phase: "Phase 1"
+next_priority: "M0 mixed business decomposition + M4 moat analysis + M2 tech barriers"
+
+reference_reports:
+  - ticker: LITE
+    version: v1.0
+    quality: 3.8
+    chars: 181000
+    lessons: "M8=0, M10=0, causal density 4.74, assembly structure 3.0"
+
+core_question: "COHR $48B市值中多少是AI标签溢价, 多少是SOTP实质价值, 多少是去杠杆释放?"
