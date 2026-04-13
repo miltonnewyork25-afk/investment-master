@@ -1,7 +1,7 @@
 ticker: COHR
 company: Coherent Corp
 industry: semiconductor/optical_components
-current_phase: P2_complete
+current_phase: P3_complete
 target_quality: 4.4
 target_chars: 200000
 framework_version: v22.0
@@ -95,8 +95,34 @@ phases_completed:
       CQ7: "60% → 55% (-5pp): Owner FCF ≈ 0, CapEx/OCF = 70%"
     cq_weighted: 50.8
 
-next_phase: "Phase 3"
-next_priority: "Competition deep dive (LITE vs COHR 1.6T) + Supply chain cross-validation (铁律Q) + CPO analysis + Game theory lens"
+  - phase: "Phase 3"
+    date: "2026-04-13"
+    outputs:
+      - "staging/P3_competition_strategy.md (13,101 chars, Ch17-Ch22)"
+    total_chars: 13101
+    new_dm_anchors: 61
+    mermaid_count: 4
+    causal_density: 9.16
+    dm_density: 4.66
+    key_findings:
+      - "NVIDIA $4B investment ($2B COHR + $2B LITE, March 2026) locks Western photonics supply chain"
+      - "Competition bifurcation: laser chip layer (COHR has pricing power) vs module layer (Innolight has share)"
+      - "1.6T: Innolight 50-60% module share, SiPh ~60% of routes, EML ~40%"
+      - "InP substrate shortage: 2M demand vs 600K capacity (70% gap)"
+      - "CPO does NOT kill InP: ELS architecture requires high-power InP CW lasers (400mW)"
+      - "Ayar Labs $500M Series E: deeper CPO integration but 2028+ timeline"
+      - "Moat upgraded: 3.3/5 → 3.8/5 (NVIDIA investment + InP scarcity + geo diversification)"
+      - "Hyperscaler CapEx $600-690B in 2026 (+36%), but CapEx growth 5x revenue growth = sustainability risk"
+      - "AXT geopolitical risk: 60-70% InP substrate share with Beijing production, China indium export controls"
+    cq_changes:
+      CQ1: "50% → 55% (+5pp): CapEx still accelerating, NVIDIA demand locked"
+      CQ4: "75% → 82% (+7pp): NVIDIA investment + InP scarcity + geo hedge triple confirm"
+      CQ7: "55% → 58% (+3pp): NVIDIA $2B cash injection accelerates deleveraging"
+      CQ8: "60% → 65% (+5pp): Malaysia + geo diversification + AXT risk = relative advantage"
+    cq_weighted: 55.1
+
+next_phase: "Phase 4"
+next_priority: "Red team 7 questions + dual calibration (upside: AXT controls, downside: CapEx collapse) + M4 label collapse + probability reassignment"
 
 reference_reports:
   - ticker: LITE
