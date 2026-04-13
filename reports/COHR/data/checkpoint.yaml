@@ -1,7 +1,7 @@
 ticker: COHR
 company: Coherent Corp
 industry: semiconductor/optical_components
-current_phase: P0_complete
+current_phase: P1_complete
 target_quality: 4.4
 target_chars: 200000
 framework_version: v22.0
@@ -33,8 +33,41 @@ phases_completed:
       - "CQ1-CQ8 routed"
       - "Default map audit: 4 failure points"
 
-next_phase: "Phase 1"
-next_priority: "M0 mixed business decomposition + M4 moat analysis + M2 tech barriers"
+  - phase: "Phase 1"
+    date: "2026-04-13"
+    outputs:
+      - "staging/P1_A_business.md (18,609 chars, Ch1-Ch4)"
+      - "staging/P1_B_moat_competition.md (22,529 chars, Ch5-Ch7)"
+      - "staging/P1_C_risk_cq.md (19,628 chars, Ch8-Ch10)"
+    total_chars: 60766
+    new_dm_anchors: 332
+    mermaid_count: 10
+    causal_density: 8.5
+    dm_density: 5.46
+    key_findings:
+      - "M0 three-engine decomposition: AI Datacom ~55-60% rev, SiC ~5-8%, Industrial ~28%"
+      - "Preferred stock $2.5B: Bain waiver Nov 2025 + mandatory conversion Dec 2025, ~8.5% dilution to 165M shares"
+      - "D&A decline trajectory: $554M(FY25) → ~$300M(FY29), contributing ~10-11% of FY27 EPS mechanically"
+      - "Moat composite 3.3/5 (improving): tech barriers 4/5, entry barriers 4/5, switching cost 3/5, scale 3/5"
+      - "LITE has 200G/lane EML performance lead (12-18 months), COHR has 6-inch InP cost advantage (die cost -60%)"
+      - "Innolight #1 in 800G modules (40-45% share), COHR #2-3 at chip level"
+      - "InP BOM value share: 30-40% (pluggable) → 10-15% (CPO era) = long-term risk to vertical integration thesis"
+      - "R1+R2 (CapEx downturn + label collapse) most dangerous combination: 20-25% prob, -50%+ impact"
+      - "Reverse DCF: B4 (AI CapEx sustained 3+ years) most fragile belief, failure implies $163 (-47%)"
+      - "CQ weighted average confidence: 41.5% (below 50%, more downside than upside risk)"
+      - "Total dilution FY25→FY28: ~21% (preferred conversion + NVIDIA + SBC)"
+    cq_changes:
+      CQ1: "40% → 35% (-5pp): growth acceleration requires Networking >30%, evidence mixed"
+      CQ2: "55% → 60% (+5pp): D&A decline + preferred conversion mechanism now clear"
+      CQ3: "35% → 35% (0pp): needs quantitative SOTP in Phase 2"
+      CQ4: "45% → 45% (0pp): 6-inch cost advantage confirmed but EML performance gap persists"
+      CQ5: "30% → 30% (0pp): SiC analysis needs Phase 2 financial model"
+      CQ6: "20% → 55% (+35pp): preferred stock mechanism fully clarified"
+      CQ7: "50% → 40% (-10pp): FCF negative + NVIDIA not debt-funding = CapEx crowds out deleveraging"
+      CQ8: "60% → 60% (0pp): Malaysia manufacturing confirmed, tariff advantage stable"
+
+next_phase: "Phase 2"
+next_priority: "Quantitative SOTP modeling (CQ3) + Financial attribution (R-1) + Scissor gap analysis (R-2)"
 
 reference_reports:
   - ticker: LITE
