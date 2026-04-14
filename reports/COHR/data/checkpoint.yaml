@@ -121,6 +121,27 @@ phases_completed:
       CQ8: "60% → 65% (+5pp): Malaysia + geo diversification + AXT risk = relative advantage"
     cq_weighted: 55.1
 
+  - phase: "Phase 3 Supplement"
+    date: "2026-04-14"
+    outputs:
+      - "staging/P3_supplement_corrections.md (8,120 chars, S1-S7)"
+    total_chars: 8120
+    new_dm_anchors: 49
+    mermaid_count: 1
+    key_corrections:
+      - "CORRECTION: COHR sells modules not bare chips — 'pricing power at laser layer' revised to 'cost advantage at chip layer manifesting in module GM'"
+      - "NVIDIA $2B dilution: 7.8M shares, ~5% dilution, SOTP revised from $251 to ~$239, range -18% to -22%"
+      - "Industrial is 31% of revenue (not 28%), flat growth, Chinese competition (Han's Laser) compressing margins"
+      - "LITE PE premium explained: 85% growth vs 22%, 42.5% GM vs 37-39%, >90% AI purity vs 69%"
+      - "800G ASP flat-to-declining, margin expansion = mix + cost, NOT pricing power"
+      - "Three probability anchors added: Ayar 15-20% (PoC→30% share history 7yr), AXT 25%±5% (China export control frequency), CapEx collapse 17%±3% (12% base rate + environment)"
+      - "Q2 FY26 actual: $1.69B rev beat, $1.29 EPS beat, GM 36.9%, DC +44% YoY"
+    cq_changes_supplement:
+      CQ1: "55% → 57% (+2pp): Q2 beat + Q3 guidance + FY27>FY26 growth statement"
+      CQ3: "-18.8% → -18% to -22%: NVIDIA dilution widens SOTP discount"
+      CQ4: "82% → 80% (-2pp): pricing power revised to cost advantage, moat slightly weaker"
+    cq_weighted: 55.6
+
 next_phase: "Phase 4"
 next_priority: "Red team 7 questions + dual calibration (upside: AXT controls, downside: CapEx collapse) + M4 label collapse + probability reassignment"
 
