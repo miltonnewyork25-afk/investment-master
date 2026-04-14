@@ -142,8 +142,41 @@ phases_completed:
       CQ4: "82% → 80% (-2pp): pricing power revised to cost advantage, moat slightly weaker"
     cq_weighted: 55.6
 
-next_phase: "Phase 4"
-next_priority: "Red team 7 questions + dual calibration (upside: AXT controls, downside: CapEx collapse) + M4 label collapse + probability reassignment"
+  - phase: "Phase 4"
+    date: "2026-04-14"
+    outputs:
+      - "staging/P4_red_team.md (15,500 chars, Ch23-Ch30)"
+      - "data/roundtable_transcript.md (圆桌5大师Standard模式)"
+    total_chars: 15500
+    new_dm_anchors: 18
+    mermaid_count: 0
+    key_findings:
+      - "RT-1: 承重墙(B4 AI CapEx 3yr+)有裂缝但未断裂; CapEx放缓(>70%概率)应入base case而非risk case"
+      - "RT-2: P1-P3轻度偏空(5-8%), InP供应垄断+D&A确定性被低估, NVIDIA投资+护城河被高估, 部分抵消"
+      - "RT-5 M4新发现: 标签坍塌是独立风险(30%±5%), 可在CapEx不崩塌时内生触发(份额+ASP+mix)"
+      - "概率重校: Bear 25%→30%, Base 50%→45%, Bull 25%→25%; SOTP $249.0(方向不变)"
+      - "护城河3.8/5→3.5/5: 成本优势≠护城河, NVIDIA非独特锁定, 6-inch可能被超越"
+      - "圆桌5/5一致审慎关注: 核心洞见='时间换空间'论文窗口比预期更窄(2027H1关键)"
+      - "圆桌4个碰撞洞见: 时间系统性脆弱/D&A定价真空/NVIDIA对冲属性/利率双通道Beta"
+    cq_changes:
+      CQ1: "57% → 52% (-5pp): base case增速应从22%下调到17-19%; 份额流失是内生风险"
+      CQ2: "60% → 62% (+2pp): D&A递减确定性被低估"
+      CQ4: "80% → 75% (-5pp): 成本优势≠护城河; NVIDIA非独特锁定"
+      CQ7: "58% → 55% (-3pp): FCF转负是硬事实"
+    cq_weighted: 53.4
+    roundtable:
+      mode: "Standard (5 masters)"
+      vote: "5/5 审慎关注"
+      dissent: "0/5 (Bear偏强但不反对评级方向)"
+      key_insight: "时间换空间论文的系统性脆弱——ROIC<WACC意味着等待期消耗价值"
+    valuation_revision:
+      bear_case: "$158 (30%概率, 从25%上调)"
+      base_case: "$245 (45%概率, 从50%下调; SOTP从$251下调)"
+      bull_case: "$375 (25%概率; 从$358上调)"
+      weighted: "$249.0 (vs P2的$249.7, 基本不变)"
+
+next_phase: "Phase 4.5"
+next_priority: "Compression test + Top 5 lens crystallization + P4.5→P5 engineering checklist"
 
 reference_reports:
   - ticker: LITE
@@ -152,4 +185,4 @@ reference_reports:
     chars: 181000
     lessons: "M8=0, M10=0, causal density 4.74, assembly structure 3.0"
 
-core_question: "COHR $48B市值中多少是AI标签溢价, 多少是SOTP实质价值, 多少是去杠杆释放?"
+core_question: "COHR $48B市值中~$15-20B是AI标签溢价, ~$5-8B是去杠杆预期, $25-30B是SOTP实质——当前价格把标签+去杠杆全买满, 没有安全边际"
