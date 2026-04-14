@@ -169,11 +169,23 @@ phases_completed:
       vote: "5/5 审慎关注"
       dissent: "0/5 (Bear偏强但不反对评级方向)"
       key_insight: "时间换空间论文的系统性脆弱——ROIC<WACC意味着等待期消耗价值"
+
+  - phase: "Phase 4 Supplement"
+    date: "2026-04-14"
+    outputs:
+      - "staging/P4_supplement.md (5,753 chars, S1-S3)"
+      - "data/valuation_p4_revision.json"
+    new_dm_anchors: 15
+    key_corrections:
+      - "SOTP Python精确化: $249.0→$226.6(-26.3%), 差异来自NVIDIA稀释(173M shares)+增速下调"
+      - "库存forensic: 向下刚性确认, 概率加权减值~$90M(-$0.44/share), 与P2一致"
+      - "Bookings质量: firm估计30-45%, soft 55-70%, 管理层模糊措辞是负面信号"
     valuation_revision:
-      bear_case: "$158 (30%概率, 从25%上调)"
-      base_case: "$245 (45%概率, 从50%下调; SOTP从$251下调)"
-      bull_case: "$375 (25%概率; 从$358上调)"
-      weighted: "$249.0 (vs P2的$249.7, 基本不变)"
+      bear_case: "$150.7 (30%概率)"
+      base_case: "$211.8 (45%概率)"
+      bull_case: "$344.4 (25%概率)"
+      weighted: "$226.6 (-26.3% vs $307.50)"
+      shares_diluted: "173M (165M + NVIDIA 7.8M)"
 
 next_phase: "Phase 4.5"
 next_priority: "Compression test + Top 5 lens crystallization + P4.5→P5 engineering checklist"
