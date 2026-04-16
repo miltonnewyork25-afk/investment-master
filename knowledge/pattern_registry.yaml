@@ -1,0 +1,170 @@
+# Pattern Registry v1.1 — 从37条ticker事件蒸馏为可迁移模式
+# 替代 evolution_log.yaml 的"流水账"存储方式
+# 每个模式: 原则(≤150字) + 触发条件(≤50字) + 实例列表 + 修复方案 + lifecycle 元数据
+# AI在Phase -1读取本文件(≤8KB), 不读37条evolution_log(42KB)
+#
+# v1.1 新增 (LLM Wiki v2 借鉴): lifecycle 元数据 — 让旧信念显式退休
+#   status: active | superseded | invalidated | archived
+#   confidence: 0.0-1.0 (0.8+ 高置信, 0.5-0.8 中置信, <0.5 低置信/待验证)
+#   last_validated_at: 最近一次被新报告验证的日期
+#   supersedes: [被本 pattern 替代的旧 ID]
+#   superseded_by: 被哪个新 pattern 取代 (仅当 status=superseded)
+#   invalidated_by: 被哪个证据推翻 (仅当 status=invalidated)
+#
+# 默认检索: 只返回 status=active 的 pattern
+# Audit 模式: 可见 superseded 和 invalidated (用于复盘/调试)
+#
+# 压缩协议: 新教训写入前必须回答——
+#   Q1: 这是新模式还是已有模式的新实例? → 新实例加入instances, 不创建新条目
+#   Q2: 剥离ticker后, 原则是否仍然成立? → 不成立=ticker-specific, 不入本文件
+#   Q3: ≤150字能否表达完整? → 不能=还没理解透, 继续压缩
+#   Q4: 这是否 supersede 某个旧 pattern? → 是 → 旧 pattern status=superseded, 新 pattern supersedes=[旧ID]
+
+patterns:
+
+  # === 数据层 (Phase 0-1) ===
+
+  - id: PAT-01
+    name: "数据口径传染链"
+    principle: "P0数据口径错误(集团vs上市/GAAP vs Non-GAAP/会计PB vs NAV PB)每Phase放大10x。Phase 5时一个P0错误可能导致整篇报告重写。"
+    trigger: "公司有多口径数据源(合并报表/分部/不同会计准则)"
+    fix: "Phase 0强制标注口径+≥2源交叉验证。铁律data-integrity条4"
+    severity: critical
+    instances:
+      - "RBLX: SBC四源交叉发现FMP SBC=$0"
+      - "FRO/COSCO: 集团vs上市实体收入差10x"
+      - "EDAF: 会计PB vs NAV PB差2x"
+      - "LRCX: MacroTrends口径混淆"
+    first_seen: "2026-02-16"
+    occurrences: 4
+    status: active
+    confidence: 0.95
+    last_validated_at: "2026-04-01"
+
+  - id: PAT-02
+    name: "LLM不能做算术"
+    principle: "LLM直接计算FCFF/WACC/敏感性矩阵时错误率>50%。WACC±100bps可跨3个评级区间。所有影响估值的数学必须Python验证。"
+    trigger: "任何涉及FCFF/DCF/WACC/敏感性/概率加权的计算"
+    fix: "Python脚本强制(铁律G6)。verify_dcf_arithmetic.py"
+    severity: critical
+    instances:
+      - "MSFT: WACC±100bps跨3评级区间"
+      - "AAPL v2: 多Agent组装估值冲突43处"
+      - "MCO: 6个估值4个说高估但评级说低估"
+    first_seen: "2026-02-17"
+    occurrences: 3
+    status: active
+    confidence: 0.95
+    last_validated_at: "2026-03-15"
+
+  # === 方法层 (Phase 2-4) ===
+
+  - id: PAT-03
+    name: "方法伪独立"
+    principle: "多种估值方法共享同一组假设时, 低离散度=伪精确而非真收敛。5种方法中3种共享增速假设=实际2.5种独立方法。"
+    trigger: "估值离散度<15%且方法数≥4"
+    fix: "每种方法标注依赖的核心假设, 计算真实独立方法数。铁律K + assumption-audit skill"
+    severity: high
+    instances:
+      - "AMAT: 5方法中3共享假设=实际2.5方法"
+      - "AAPL v2: 方法伪独立是系统性问题"
+      - "V(Visa): 6种方法离散度仅10.3%但实际独立约2.5种"
+    first_seen: "2026-02-17"
+    occurrences: 3
+    status: active
+    confidence: 0.90
+    last_validated_at: "2026-03-10"
+
+  - id: PAT-04
+    name: "叙事方向锁定"
+    principle: "P1预设方向(bullish/bearish)后, P2-P3会选择性收集支持证据。即使P4红队推翻, P1-P2的叙事已无法与P4调和。中性起点比任何分析技术都重要。"
+    trigger: "Phase 1出现明确方向性判断(目标价/评级)"
+    fix: "Phase 1禁止方向性结论。铁律O(Reverse DCF前置) + 中性起点协议"
+    severity: critical
+    instances:
+      - "CRM v1.0: P1 bullish→P4推翻→无法组装→完全失败"
+      - "PANW: P1预设$235/+34%→P3推翻→P4 neutral→不可调和"
+      - "ADBE: KLAC对标直到P3才引入→P1错过纠偏信号"
+    first_seen: "2026-02-19"
+    occurrences: 3
+    status: active
+    confidence: 0.95
+    last_validated_at: "2026-04-01"
+
+  - id: PAT-05
+    name: "DM密度组装衰减"
+    principle: "多Agent组装时DM锚点系统性丢失(典型衰减45%)。Agent不继承DM/CI标注规范。组装后DM密度≤P1-P4平均的55%。"
+    trigger: "Phase 5多Agent组装 或 扩写Agent补充内容"
+    fix: "P4.5 handoff含DM锚点清单(≥30项)。铁律J-3工程清单强制"
+    severity: high
+    instances:
+      - "INTC: 187→102 DM, 45%丢失"
+      - "ETN: 扩写Agent输出零DM标注"
+      - "VRT: Agent不继承DM/CI规范, CG8/CG9双FAIL"
+    first_seen: "2026-02-21"
+    occurrences: 3
+    status: active
+    confidence: 0.90
+    last_validated_at: "2026-04-01"
+
+  # === 结构层 (Phase 5) ===
+
+  - id: PAT-06
+    name: "密度>体量"
+    principle: "报告质量与字数无正相关。KLAC 254K=4.5分 > APP 452K=4.1分。一次写对(v1.0)>多轮补丁(v1.x)。补强模块打断阅读流且格式不统一。"
+    trigger: "报告字数超过标杆但质量未超过"
+    fix: "铁律M(反膨胀) + 单章≤15% + v1.0>v1.x原则"
+    severity: high
+    instances:
+      - "KLAC 254K=4.5 vs APP 452K=4.1"
+      - "MCO: 414个DM但零数学交叉验证"
+      - "MSCI v1.0: 77个补强模块打断阅读流"
+    first_seen: "2026-02-17"
+    occurrences: 3
+    status: active
+    confidence: 0.90
+    last_validated_at: "2026-03-24"
+
+  - id: PAT-07
+    name: "CQ单调上升=确认偏差"
+    principle: "CQ(置信度问题)全线上调概率仅2.8%。7/7上调≈确认偏差。需要自动检测: 连续上调>5个CQ触发强制反方审查。"
+    trigger: "Phase 4后CQ上调数/总数 > 5/7"
+    fix: "cq-lifecycle-tracker skill + 单调上升检测"
+    severity: medium
+    instances:
+      - "NOW v1.0: CQ全线上调7/7"
+      - "HRB: CQ上调但红队有效性低"
+    first_seen: "2026-03-26"
+    occurrences: 2
+    status: active
+    confidence: 0.75
+    last_validated_at: "2026-03-26"
+
+  # === 行业特殊 ===
+
+  - id: PAT-08
+    name: "黑箱维度强行闭合"
+    principle: "黑箱≥30%的公司不应给单点目标价。强行用低置信度判断闭合每个维度是AI味第一根因。留缺是判断力体现, 不是分析不完整。"
+    trigger: "认知边界评估黑箱比例≥30%"
+    fix: "铁律R-4硬约束(区间估值) + D7反过度完型"
+    severity: high
+    instances:
+      - "PDD: 黑箱37%→三点估值+6%/+13%/+23%"
+      - "LITE: NVIDIA非公开条款→可推演度<60%"
+    first_seen: "2026-04-01"
+    occurrences: 2
+    status: active
+    confidence: 0.80
+    last_validated_at: "2026-04-09"
+
+# === 压缩协议 ===
+# 新教训写入规则:
+#   1. 先在本文件搜索是否匹配已有pattern (grep principle/trigger)
+#   2. 匹配 → 加入instances列表, occurrences+1, 不创建新条目
+#   3. 不匹配 → 创建新pattern, 必须满足:
+#      - principle ≤150字 (剥离所有ticker-specific细节)
+#      - trigger ≤50字 (什么条件下这个模式会出现)
+#      - fix 指向具体铁律/脚本/skill (不是"注意X")
+#      - ≥2个instances才能确认为pattern (单实例=可能是噪音, 暂存evolution_log)
+#   4. evolution_log.yaml 降级为"原始信号收集器", AI不直接读取
+#      pattern_registry.yaml 升级为"可迁移知识", AI在Phase -1读取

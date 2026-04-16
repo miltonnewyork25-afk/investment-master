@@ -1,0 +1,127 @@
+# ============================================================
+# Research Modes v1.0 — 三档分析模式切换
+# ============================================================
+# 借鉴: MiroFlow config-driven reasoning_effort
+# 核心: 不是所有任务都需要最重模式。重模式可切换、可配置。
+#
+# 使用: Phase 开始前根据任务性质选择模式
+# 默认: baseline (除非触发 high-stakes 条件)
+# ============================================================
+
+# --- 模式定义 ---
+modes:
+
+  baseline:
+    description: "初筛、事实补全、轻量研究"
+    triggers:
+      - "quick-scan / Tier 1"
+      - "数据收集 / 事实核查"
+      - "Phase -1/-0.5 数据预取"
+      - "背景信息补全"
+    requirements:
+      evidence_layers: 1            # 数据层即可
+      counter_evidence: false       # 不强制反证
+      dual_path_reasoning: false    # 单路径
+      confidence_output: false      # 不强制置信度
+      stop_threshold: "有初步判断即可"
+    max_skill_calls: 3
+    target_depth: "事实确认"
+
+  deep_audit:
+    description: "关键数据口径、竞争判断、管理层叙事核验"
+    triggers:
+      - "Phase 1-3 核心章节"
+      - "财务归因分析 (R-1)"
+      - "剪刀差分析 (R-2)"
+      - "竞争格局判断"
+      - "关键假设验证"
+    requirements:
+      evidence_layers: 3            # 数据+机制+含义
+      counter_evidence: true        # 每个核心论点 ≥1 反面
+      dual_path_reasoning: false    # 单路径但有反证
+      confidence_output: true       # 输出 [A]/[B]/[C] 分级
+      stop_threshold: "因果链完整 + 反面考量"
+    max_skill_calls: 5
+    target_depth: "因果链闭合"
+
+  high_stakes:
+    description: "最终投资结论、高权重估值、Thesis 反转"
+    triggers:
+      - "Phase 4 红队 — 评级可能被推翻"
+      - "Phase 4.5 结晶 — 最终投资判断"
+      - "Kill Switch 证据出现"
+      - "反证与主结论严重冲突"
+      - "概率加权估值 — 影响评级方向"
+      - "圆桌讨论 (R-3) — 异议 ≥3/5"
+    requirements:
+      evidence_layers: 4            # 数据+机制+含义+证伪 (完整四层)
+      counter_evidence: true        # 强制反证优先
+      dual_path_reasoning: true     # 主叙事+反向叙事双路径
+      confidence_output: true       # 必须输出 confidence reason
+      remaining_unknowns: true      # 必须列出未解决问题
+      monitoring_triggers: true     # 必须输出跟踪信号
+      stop_threshold: "证据不足不给强结论"
+    max_skill_calls: 8
+    target_depth: "可证伪的投资判断"
+
+# --- High-Stakes 额外强制要求 (5 件事) ---
+high_stakes_extras:
+  1_dual_path:
+    name: "双路径推理"
+    what: "主叙事一条, 反向叙事一条, 最后对比"
+    why: "防止确认偏差 — 人类和 AI 都倾向只寻找支持当前结论的证据"
+
+  2_evidence_recheck:
+    name: "证据重检"
+    what: "关键数字和关键断言回到原始证据层复核"
+    why: "长推理链中, 第一层的'大约30%'到第五层可能变成'确定30%'"
+
+  3_counter_first:
+    name: "反证优先"
+    what: "先问什么会推翻当前结论, 再完善结论"
+    why: "先润色后反证 = 确认偏差; 先反证后润色 = 真正的红队"
+
+  4_higher_stop:
+    name: "更高停止门槛"
+    what: "证据不足时输出 UNKNOWN, 不给强结论"
+    why: "MiroFlow 的核心洞见: UNKNOWN 不是失败, 是合法输出"
+
+  5_audit_output:
+    name: "审计输出"
+    what: "confidence reason + remaining unknowns + monitoring triggers"
+    why: "让后续 session 知道当前判断的脆弱点在哪"
+
+# --- 失败摘要模板 (MiroFlow exceed-max-turn summary 借鉴) ---
+# 当 Phase 失败/未达标/需要 retry 时, 生成此格式的摘要
+# 写入 handoff note 的 §4.5 "失败上下文" 段
+failure_context_template:
+  what_was_attempted: "本 Phase 试图回答什么问题"
+  what_was_found: "找到了什么证据 (含 DM 锚点)"
+  what_failed: "具体失败原因 (数据缺失/工具故障/推理跑偏/证据冲突)"
+  failure_type: "retrieval_failure | evidence_conflict | tool_failure | reasoning_drift | schema_invalid"
+  what_not_to_repeat: "下次 retry 不要重复的方向 (具体到查询/数据源/分析角度)"
+  suggested_retry_strategy: "建议的重试策略 (改 query/改 source/改角度/进入 conflict node)"
+  remaining_useful_artifacts: "本次虽然失败, 但哪些中间产物可以保留"
+
+# --- 失败类型 → 重试策略映射 (MiroFlow 四类回滚) ---
+failure_retry_map:
+  retrieval_failure:
+    description: "搜索/MCP 工具未返回有效数据"
+    retry_strategy: "改 query 关键词 / 换数据源 / 改时间窗口"
+    max_retries: 2
+  evidence_conflict:
+    description: "找到的证据互相矛盾"
+    retry_strategy: "不重试, 进入 conflict node — 记录矛盾, 标注 UNKNOWN"
+    max_retries: 0
+  tool_failure:
+    description: "MCP/Bash/Python 工具执行失败"
+    retry_strategy: "技术层重试 (换参数/换工具)"
+    max_retries: 2
+  reasoning_drift:
+    description: "分析偏离核心矛盾 (research_rollback.sh 检测到)"
+    retry_strategy: "回到上一个 checkpoint, 重读 thesis_crystallization, 用更窄任务重跑"
+    max_retries: 1
+  schema_invalid:
+    description: "输出格式不符合门控要求 (DM 不足/Mermaid 缺失等)"
+    retry_strategy: "保留分析内容, 补充缺失格式元素"
+    max_retries: 1

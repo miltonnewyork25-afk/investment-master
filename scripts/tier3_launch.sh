@@ -56,6 +56,11 @@ echo "🔧 Running original analysis pipeline with harness supervision..."
 # Create reports directory if it doesn't exist
 mkdir -p "reports/${TICKER}/data"
 
+# 2.5 自动 learnings 注入 (gstack 借鉴, 非关键路径, 失败不阻断)
+echo "📚 Auto-injecting relevant past learnings..."
+bash scripts/phase_context_inject.sh "${TICKER}" --industry "${INDUSTRY}" --phase 0 --limit 3 2>/dev/null || \
+    echo "  (未找到相关 learnings, 继续执行)"
+
 # Run the original tier3_launch.sh but with harness context
 bash scripts/tier3_launch_original.sh "${TICKER}" "${INDUSTRY}"
 

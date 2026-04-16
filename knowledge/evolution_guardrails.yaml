@@ -1,0 +1,83 @@
+# ============================================================
+# Evolution Guardrails v1.0
+# ============================================================
+# 借鉴: Hermes Agent self-evolution 的约束门控流水线
+# 核心: 自我改进必须经过 "候选生成 → 评测 → 约束门控 → 人审"
+# 原则: 任何框架/skill/规则修改都必须通过门控，绝不直接 commit
+#
+# 验证脚本: bash scripts/evolution_gate.sh <target_file>
+# ============================================================
+
+# --- Pattern Registry 约束 ---
+pattern_registry:
+  max_file_size: 8192          # 字节, 已有规则现在硬编码
+  max_patterns: 15             # 模式数上限, 超过 → 强制合并或淘汰
+  max_principle_length: 150    # 字符, 每条 principle
+  max_trigger_length: 50       # 字符, 每条 trigger
+  growth_per_report: 2         # 单份报告最多贡献 2 个新 pattern
+  min_instances_for_new: 2     # 新 pattern 至少需要 2 个独立实例
+  stale_threshold_months: 6    # 6月未引用 → 候选删除
+
+# --- Skill 文件约束 ---
+skill_files:
+  max_file_size: 12288         # 字节, SKILL.md 上限
+  required_fields:             # 必须有的 frontmatter 字段
+    - name
+    - description
+  recommended_fields:
+    - trigger
+    - phase
+  max_description_length: 250  # 字符, skill 描述 (G9/G15 纪律)
+  test_before_merge: true      # 修改 SKILL.md 前必须跑 quality_gate
+  worktree_for_changes: true   # skill 修改走 worktree, 不直接改 main
+
+# --- 铁律规则文件约束 ---
+rule_files:
+  max_file_size: 20480         # 字节, rule-*.md 上限 (rule-S 25.7KB 是特例)
+  max_rule_count: 20           # 总铁律数上限
+  required_sections:           # 每条铁律必须有
+    - "源自"                   # 来源/教训
+    - "禁止"                   # 反向约束
+  no_duplicate_check: true     # 与 V-1 注册表交叉检查
+  review_questions: 2          # 修改前必答 2 问 (V-3)
+
+# --- CLAUDE.md 约束 ---
+claude_md:
+  max_line_count: 280          # 行数上限 (当前 ~240 行)
+  max_file_size: 22528         # 字节上限 (~22KB, 当前 ~20KB, 留 10% buffer)
+  review_questions: 3          # 修改前必答 3 问 (V-3)
+  stability: "STABLE"          # 免疫压缩, 不频繁修改
+
+# --- 进化流程约束 (Hermes 流水线借鉴) ---
+evolution_pipeline:
+  # Step 1: 候选生成 — 从报告 autopsy / 用户反馈 / 模式匹配
+  candidate_sources:
+    - report_autopsy            # 报告复盘
+    - user_feedback             # 用户直接反馈
+    - pattern_match             # evolution_log 中 ≥2 实例的重复模式
+
+  # Step 2: 评测 — 验证候选变更的有效性
+  evaluation:
+    min_reports_for_promotion: 2  # 灰度 → 推广需 ≥2 份报告验证
+    regression_check: true        # 新规则不能让已有门控退化
+
+  # Step 3: 约束门控 — 必须全部通过
+  gates:
+    - size_gate                 # 文件大小 ≤ 上限
+    - growth_gate               # 单次修改增长 ≤ 20%
+    - structure_gate            # 必须字段齐全
+    - duplicate_gate            # 不与现有规则重复 (V-1 交叉检查)
+    - test_gate                 # 相关脚本仍能通过
+
+  # Step 4: 人审 — 绝不直接 commit
+  review:
+    require_user_approval: true   # 框架修改必须用户确认
+    pr_not_direct_commit: true    # 走 worktree 或独立 branch
+    max_files_per_change: 5       # 单次修改 ≤5 个文件, 超过先确认
+
+# --- 反膨胀约束 (铁律 M 量化) ---
+anti_bloat:
+  max_total_rules_size: 163840   # 所有 rule-*.md 总计 ≤ 160KB
+  max_total_skills_size: 327680  # 所有 SKILL.md 总计 ≤ 320KB
+  density_over_volume: true      # 密度 > 体量 (铁律 M 核心)
+  evo_concentration_limit: 2.0   # 浓度上限: 单 Phase 不超过均值 2 倍
