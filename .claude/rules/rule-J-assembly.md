@@ -57,7 +57,52 @@ phase5_engineering_requirements:
 2. **mermaid_diagrams_to_add 至少 10 项** (300K+ 报告 15 项+)
 3. **mid_assembly_checkpoints 必须 ≥4 个时点** (覆盖 50K/100K/150K/200K)
 
-**Phase 5 启动时**: AI 必须先读 handoff 的 `phase5_engineering_requirements`, 把它作为写作清单。**违反清单 = 违反铁律 J**, 提交时被 quality_gate_complete.sh 阻断。
+### J-3b v22.8 新增: Phase 5 启动自检三问 (过程无痕化锚)
+
+> **源自**: COHR audit + 用户洞察"头痛医头脚痛医脚, 永远抓不完具体词"
+> **根本**: 第零律 2 "过程无痕化" — Agent 必须在 Phase 5 启动前**切换心智**
+> 从"拼接 staging" → "给投资者写成品"
+
+handoff 的 `phase5_engineering_requirements` 必须包含以下自检:
+
+```yaml
+phase5_process_erasure_check:
+  # Phase 5 写每个段落前必答三问, 回答写入 handoff 防止遗忘
+  q1_reader_ignorance_test: |
+    如果读者不知道 "Phase / Agent / staging" 是什么, 他们能看懂这段吗?
+    我的回答: __________
+
+  q2_engineering_perspective_check: |
+    我正在写的这段话, 有没有 "谁做了什么" 的工程化视角?
+    (例: "Phase 4 完成后" / "Agent B 的分析显示" / "调用 xxx skill")
+    我的回答: __________
+
+  q3_bloomberg_test: |
+    这段话能直接放进 Bloomberg 研报 / Morgan Stanley research note 吗?
+    投资者读到会不会觉得"为什么作者在谈他们的工作流程"?
+    我的回答: __________
+
+  # 5 家族自查清单 (写之前心里过一遍)
+  process_language_families_to_avoid:
+    agent_family: ["Agent findings", "子 Agent", "并行 Agent", "P[0-9]+ Agent", "Agent X 产出"]
+    phase_family: ["Phase X 完成", "P1-A", "P4 回流", "P4.5 结晶"]
+    workflow_family: ["staging 文件", "handoff note", "checkpoint.yaml", "preamble"]
+    llm_family: ["LLM 调用", "prompt 注入", "context window"]
+    skill_family: ["调用 xxx-skill", "xxx-skill 产出"]
+```
+
+**心智切换锚** (Phase 5 启动时先想这个, 再动笔):
+
+```
+错的心智: "把 Phase 1-4 staging 拼成报告"
+         → staging 天然带工程化语言 → 泄漏
+
+对的心智: "从 Phase 1-4 材料中提炼给投资者看的成品"
+         → 读者是投资者, 不是研究同行
+         → 就像餐厅菜单不会写"这道菜用了 3 位厨师分工协作"
+```
+
+**Phase 5 启动时**: AI 必须先读 handoff 的 `phase5_engineering_requirements`, 把它作为写作清单。**违反清单 = 违反铁律 J**, 提交时被 quality_gate_complete.sh 阻断 (CG23 5 家族检测 + mid_assembly_check process 无痕化 BLOCK)。
 
 ### J-4 v3.0 新增: Phase 5 中场检测强制 (mid_assembly_check.sh)
 
