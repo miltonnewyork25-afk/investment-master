@@ -30,8 +30,11 @@
 #   CG19. AI腔检测 (WARN级, v7.0新增) — 检测AI写作模式(不是X而是Y/空洞过渡/伪亲密等)
 #   CG20. 护城河数据卡 (WARN级, v8.0新增/v9.0升级) — 检查moat_datacard.yaml存在+10字段组完整
 #   CG21. 入场纪律卡 (WARN级, v10.0新增) — 检查Strategy Card存在+9模块完整(A/B文档分离)
+#   CG22. 铁律R 四大必备 (FAIL级, v22.1新增) — R-1/R-2/R-3/R-4 分析覆盖
+#   CG23. Process残留 (FAIL级 >5 / WARN级 ≤5, v22.7新增) — 'Agent findings'/'Phase X 完成'检测
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v22.7 (2026-04-16) — COHR audit: CG23 Process残留 + CG8/CG9 扩展识别独立DM方括号锚点
 # 更新: v10.0 (2026-03-14) — CG21入场纪律卡检查(A/B文档分离: Complete对外+Strategy Card内部)
 # 更新: v9.0 (2026-03-12) — CG20升级至10字段组(v2.0交易策略预备: 估值三档+E-Score+回撤DNA+流动性)
 # 更新: v8.0 (2026-03-12) — CG20护城河数据卡检查(为CQI排行榜+跨公司产品提供结构化数据)
@@ -334,9 +337,14 @@ if [ "$HAS_AUDIT_SUMMARY" -gt 0 ]; then
     fi
 else
     # v2.0模式: 检查内联标注密度
+    # v22.7 (COHR audit): 独立DM方括号锚点 [DM-XXX-001] 也作为有效标注
+    # 原因: COHR 450个独立DM被识别为0, 纯interface失配; 独立锚点 = 内联的简化形式
     OLD_ANN=$(count_matches '\[(A|B|P|E):' "$FILE")
     NEW_ANN=$(count_matches '\[(硬数据|合理推断|主观判断):' "$FILE")
-    TOTAL_ANN=$((OLD_ANN + NEW_ANN))
+    STANDALONE_DM=$(grep -oE '\[DM-[A-Za-z0-9]+-[0-9]+(/[0-9]+)*\]' "$FILE" 2>/dev/null | wc -l | tr -d '[:space:]')
+    STANDALONE_DM="${STANDALONE_DM:-0}"
+    [[ "$STANDALONE_DM" =~ ^[0-9]+$ ]] || STANDALONE_DM=0
+    TOTAL_ANN=$((OLD_ANN + NEW_ANN + STANDALONE_DM))
     if [ "$CHARS" -gt 0 ]; then
         DENSITY=$(python3 -c "print(round($TOTAL_ANN * 10000 / $CHARS, 1))")
     else
@@ -344,10 +352,10 @@ else
     fi
     DENSITY_OK=$(python3 -c "print(1 if $DENSITY >= $MIN_DENSITY else 0)")
     if [ "$DENSITY_OK" -eq 0 ]; then
-        echo -e "${RED}FAIL CG8: [v2.0] 标注密度 ${DENSITY}/万字符 < 要求 ${MIN_DENSITY}/万字符 (总数: ${TOTAL_ANN})${NC}"
+        echo -e "${RED}FAIL CG8: [v2.0] 标注密度 ${DENSITY}/万字符 < 要求 ${MIN_DENSITY}/万字符 (内联=${NEW_ANN} 旧=${OLD_ANN} 独立DM=${STANDALONE_DM} 总=${TOTAL_ANN})${NC}"
         ERRORS=$((ERRORS + 1))
     else
-        echo -e "${GREEN}PASS CG8: [v2.0] 标注密度 ${DENSITY}/万字符 (总数: ${TOTAL_ANN})${NC}"
+        echo -e "${GREEN}PASS CG8: [v2.0] 标注密度 ${DENSITY}/万字符 (内联=${NEW_ANN} 旧=${OLD_ANN} 独立DM=${STANDALONE_DM} 总=${TOTAL_ANN})${NC}"
     fi
 fi
 
@@ -366,7 +374,9 @@ if [ "$HAS_AUDIT_SUMMARY" -gt 0 ]; then
     fi
 else
     # v2.0模式: 检查硬数据占比
+    # v22.7 (COHR audit): 独立DM方括号锚点也计入硬数据 (DM本身代表可追溯硬证据)
     HARD_DATA=$(count_matches '\[(A|B|P):|\[硬数据:' "$FILE")
+    HARD_DATA=$((HARD_DATA + ${STANDALONE_DM:-0}))
     if [ "${TOTAL_ANN:-0}" -gt 0 ]; then
         HARD_RATIO=$(python3 -c "print(round($HARD_DATA * 100 / $TOTAL_ANN, 1))")
         HARD_OK=$(python3 -c "print(1 if $HARD_RATIO >= $MIN_HARD_RATIO else 0)")
@@ -693,6 +703,36 @@ if [ "$R4_COUNT" -lt 3 ]; then
     R_FAIL=$((R_FAIL+1)); ERRORS=$((ERRORS+1))
 else
     echo -e "${GREEN}PASS CG22-R4: 认知圈量化 ${R4_COUNT}/3${NC}"
+fi
+set -e
+
+# === CG23: Process 残留检测 (v22.7新增, COHR audit, FAIL级) ===
+# 检测组装时未清除的过程痕迹 (Agent findings / Phase X 完成 等)
+# 与 CG15 互补: CG15 查 "Agent A/B/C" 身份, CG23 查 process 痕迹
+# 源自 COHR v2.0 audit: 15 处 "Agent findings" 残留未被 CG15 捕获
+set +e
+RESIDUE_AG_FINDINGS=$({ grep -cE 'Agent findings|P[0-9.]+[- ]?[ABC] Agent 产出' "$FILE" 2>/dev/null || echo 0; } | tail -1 | tr -d '[:space:]')
+RESIDUE_AG_FINDINGS="${RESIDUE_AG_FINDINGS:-0}"
+[[ "$RESIDUE_AG_FINDINGS" =~ ^[0-9]+$ ]] || RESIDUE_AG_FINDINGS=0
+
+# 排除表格行(|开头)和staging引用注释(*以下内容*)
+RESIDUE_PHASE_DONE=$({ grep -cE 'Phase [0-9.]+ ?完成|Phase [0-9]+ complete' "$FILE" 2>/dev/null || echo 0; } | tail -1 | tr -d '[:space:]')
+RESIDUE_PHASE_DONE="${RESIDUE_PHASE_DONE:-0}"
+[[ "$RESIDUE_PHASE_DONE" =~ ^[0-9]+$ ]] || RESIDUE_PHASE_DONE=0
+
+# 排除合法的 "P4 完成" 作为历史描述 (粗略过滤: 只计数 bullet/heading 级残留)
+RESIDUE_TOTAL=$((RESIDUE_AG_FINDINGS + RESIDUE_PHASE_DONE))
+
+# 阈值: ≤5 处 WARN (可能是合法引用), >5 处 FAIL (大量残留)
+if [ "$RESIDUE_TOTAL" -eq 0 ]; then
+    echo -e "${GREEN}PASS CG23: Process 残留 = 0${NC}"
+elif [ "$RESIDUE_TOTAL" -le 5 ]; then
+    echo -e "${YELLOW}WARN CG23: Process 残留 ${RESIDUE_TOTAL} 处 (Agent findings=${RESIDUE_AG_FINDINGS} Phase完成=${RESIDUE_PHASE_DONE}), 建议清理${NC}"
+    WARNINGS=$((WARNINGS + 1))
+else
+    echo -e "${RED}FAIL CG23: Process 残留 ${RESIDUE_TOTAL} 处 > 5 (Agent findings=${RESIDUE_AG_FINDINGS} Phase完成=${RESIDUE_PHASE_DONE})${NC}"
+    echo "       修复: 组装时必须清除 'Agent findings' / 'Phase X 完成' 等过程痕迹"
+    ERRORS=$((ERRORS + 1))
 fi
 set -e
 

@@ -9,6 +9,7 @@
 - [STORM 借鉴升级](feedback_storm_borrowing_2026-04-16.md) — v22.6: 仅 1 项 (Co-STORM Moderator 未引用证据检测), 其他 4 项已有或不适用
 - [GPT-R + ODR 评估](feedback_evaluated_not_borrowed_2026-04-16.md) — 两个项目读过代码但决定不实施任何借鉴 (成功率 5/7 健康)
 - [v22 累积复盘](feedback_v22_cumulative_retrospective_2026-04-16.md) — 5 次借鉴 + 2 次拒绝后的阶段性复盘 (意外发现 DM 密度 -65.3% 趋势)
+- [COHR audit C1+C2](feedback_cohr_audit_c1c2_2026-04-16.md) — v22.7: quality_gate CG23 process 残留 + CG8/CG9 识别独立 DM 锚点
 
 ## 报告教训
 - [LITE灾难性失败](feedback_lite_catastrophic_failure.md) — v2.0仅7.6K/200K, Evaluator共谋+框架开销+Phase 5删除
