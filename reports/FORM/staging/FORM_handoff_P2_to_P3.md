@@ -28,20 +28,28 @@ FORM Tier 3深度报告, 目标150K+字符 / 4.5+质量分。Phase 2完成财务
 
 ### 3. [REFRESH] 文件清单 + 关键数据
 
-**Phase 2新产出**:
-- `staging/FORM_P2_financial_depth.md` — ~12K字符, ~25 DM锚点, 3个关键发现
-- `/tmp/form_p2_valuation.py` — Python估值脚本 (ROIC路径/Reverse DCF/FCF压力测试/三PE)
+**Phase 2新产出 (3个staging文件)**:
+- `staging/FORM_P2_financial_depth.md` — 11.2K字符, 27 DM, R-1/R-2/ROIC/DCF/三PE/FCF
+- `staging/FORM_P2_supplement.md` — 17.6K字符, 41 DM, FB IRR/DCF敏感度/ROIC矩阵/资本配置/运营资本/季度/段别/Bull Case
+- `staging/FORM_P2_data_corrections_and_depth.md` — 10.2K字符, 16 DM, 10-K精确修正/Cantor对抗/HBM量化/经营杠杆/Insider
+- `/tmp/form_p2_valuation.py` + `/tmp/form_p2_supplement.py` — Python估值脚本
 
-**Phase 1+2累计**: ~34K字符staging, ~79 DM锚点 (密度~2.3/千字)
+**Phase 2合计**: 39K字符, 84 DM锚点 (密度~2.2/千字)
+**Phase 1+2累计**: ~61K字符staging, ~138 DM锚点
 
 **关键数字 (Phase 3需要)**:
-- GAAP PE 185x / Owner PE 666x / Forward PE 71x
-- EV/Sales 12.7x → 公允价值$56-$72 (工业设备comp)
-- Reverse DCF PV: $4.5B vs EV $9.9B = 高估55%
-- ROIC: 4.9% vs WACC 9.0% → Bear 7.6% (仍<WACC), Base 11.5%, Bull 16.1%
-- Owner FCF: -$27M (FY25), 正常化后$28M (yield 0.3%)
-- FCF yield: 0.1% (当前), 1.6% (Full Target Model)
-- 估值/护城河比率: 31.8x (阈值4.0x, 品质陷阱信号)
+- 10-K精确segment: PC $638M (F&L $370M/DRAM $247M/Flash $21M), Systems $147M
+- FY24→FY25收入增长只有**2.8%** (非18.4%) — 股价+180% vs 收入+3%
+- GAAP PE 185x / Owner PE 666x / Forward PE 71x / EV/Sales 12.7x
+- Reverse DCF敏感度: 即使8%/35x最宽松仍需$381M FCF (Target Model 2.4x)
+- 概率加权公允价值: **$69** (高估46%)
+- ROIC: 4.9% < WACC 9.0% → 三维矩阵显示跨越需GM>45%+OpEx/Rev<27%
+- Farmers Branch IRR: 8.1% < WACC 9.0%, payback 9年
+- 回购η: 0.13-0.22 (双重价值毁灭) + CEO同时减持$5.8M
+- CCC恶化: 81天→107天 (+26天), DPO骤降-14天
+- 正常化FY23 EPS: $0.70 (非$1.05, 剔除FRT出售$73M)
+- Cantor $125: 31x × CY27 EPS $4.00, 需$1,050M rev + 22%+ OPM
+- HBM4 pin count翻倍→磨损加速是Cantor最强论点, 量化存在黑箱
 
 ---
 
