@@ -21,6 +21,14 @@ FORM Tier 3深度报告, 目标150K+字符 / 4.5+质量分。Phase 3完成竞争
 4. ✅ HBM content per wafer"翻倍"叙事被过度简化(实际1.3-1.6x, 非2x)
 5. ✅ FORM EV/Sales 12.7x溢价WFE comp 81%, 唯一解释是HBM叙事溢价
 
+**Phase 3补强新增发现**:
+6. ✅ Disco设备垄断=不构成FORM壁垒(上游共享), 且FORM无法向下游转嫁成本
+7. ✅ ATE市场Teradyne Compute+90%验证AI测试需求真实, 但传导衰减(ATE 31% vs 探针卡9.3%)
+8. ✅ 中国强一半导体(MaxOne)全球第9/CAGR 58.85%→长期第三条竞争战线
+9. ✅ HBM4→4E→C-HBM4E完整路线图: CoWoS瓶颈=HBM测试需求天花板, 2027台阶式释放
+10. ✅ CEO 2026年减持$3.3M(30K+股)加速 vs 回购仅$36.6M → 资本配置差信号
+11. ✅ LITE M11/M12对比: FORM在定价权/替代威胁/传导衰减/管理层信号7维度均弱于LITE
+
 **第一变量**: ROIC跨越WACC的时间点 (当前4.9% vs ~9%)
 **Kill Switch**: ①Hyperscaler CapEx<+10% ②ROIC FY27仍<WACC ③Technoprobe获HBM量产订单 ④GM<38%连续2季 ⑤**新增**: SK Hynix开始Technoprobe DRAM探针卡认证
 
@@ -28,10 +36,11 @@ FORM Tier 3深度报告, 目标150K+字符 / 4.5+质量分。Phase 3完成竞争
 
 ### 3. [REFRESH] 文件清单 + 关键数据
 
-**Phase 3产出 (1个staging文件)**:
+**Phase 3产出 (2个staging文件)**:
 - `staging/FORM_P3_competitive_depth.md` — 14.4K字符, 54 DM, 竞争对标/博弈论/供应链传导/WFE comp/风险拓扑
+- `staging/FORM_P3_supplement_industry_chain.md` — 10.5K字符, 35 DM, 上下游产业链/中国竞争/AI技术路线/CEO减持/LITE框架映射
 
-**Phase 1-3累计**: ~75K字符staging, ~192 DM锚点
+**Phase 1-3累计**: ~86K字符staging, ~227 DM锚点
 
 **关键数字 (Phase 4需要)**:
 - Technoprobe 9M2025: €466.6M (+20.6%), EBITDA率32.6%, 现金€657M
@@ -74,10 +83,10 @@ FORM Tier 3深度报告, 目标150K+字符 / 4.5+质量分。Phase 3完成竞争
 
 ### 7. [REFRESH] 当前精确状态
 
-- **Phase**: 3完成 (竞争对标✓, 博弈论✓, 供应链传导✓, WFE comp✓, 风险拓扑✓)
+- **Phase**: 3完成+补强 (竞争对标✓, 博弈论✓, 供应链传导✓, WFE comp✓, 风险拓扑✓, 上下游✓, 中国竞争✓, AI路线✓, Insider✓, LITE映射✓)
 - **下一步**: Phase 4 (红队+双向校准)
-- **已产出文件**: staging 5个 (P0.75: thesis_crystallization等 + P1: 2个 + P2: 3个 + P3: 1个)
-- **staging总字符**: ~75K (Phase 1-3正文)
+- **已产出文件**: staging 6个 (P0.75: thesis等 + P1: 2个 + P2: 3个 + P3: 2个)
+- **staging总字符**: ~86K (Phase 1-3正文)
 
 ---
 
