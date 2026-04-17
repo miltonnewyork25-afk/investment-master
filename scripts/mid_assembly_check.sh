@@ -148,6 +148,31 @@ else
 fi
 
 # ─────────────────────────────────────────
+# 硬指标 3 (v22.8): Process 语言家族检测 — 第零律 2 "过程无痕化"
+# 5 家族: Agent / Phase / 工作流 / LLM / Skill
+# ─────────────────────────────────────────
+PROC_F1=$(grep -cE 'Agent[[:space:]]*[A-C]?[[:space:]]*(findings|产出|完成|分析|调用|输出|汇总)|子[[:space:]]*Agent|并行[[:space:]]*Agent|P[0-9.]+[[:space:]]*Agent' "$FILE" 2>/dev/null || echo 0)
+PROC_F2=$(grep -cE 'Phase[[:space:]]*[0-9.]+[[:space:]]*(完成|产出|启动|结晶|回流)|P[0-9]+-[ABC]\b|P4\.5[[:space:]]*结晶|P4[[:space:]]*回流' "$FILE" 2>/dev/null || echo 0)
+PROC_F3=$(grep -cE 'staging[[:space:]]*(文件|内容|记录|目录)|handoff[[:space:]]*note|checkpoint\.yaml|phase_context_preamble' "$FILE" 2>/dev/null || echo 0)
+PROC_F4=$(grep -cE 'LLM[[:space:]]*(调用|分析|产出)|prompt[[:space:]]*(注入|工程)|context[[:space:]]*window' "$FILE" 2>/dev/null || echo 0)
+PROC_F5=$(grep -cE '调用.{0,10}skill|skill.{0,10}(产出|分析|调用)|[a-z]+-skill[[:space:]]*(分析|调用|输出)' "$FILE" 2>/dev/null || echo 0)
+PROC_F1=$(echo "$PROC_F1" | tail -1 | tr -d '[:space:]'); [[ "$PROC_F1" =~ ^[0-9]+$ ]] || PROC_F1=0
+PROC_F2=$(echo "$PROC_F2" | tail -1 | tr -d '[:space:]'); [[ "$PROC_F2" =~ ^[0-9]+$ ]] || PROC_F2=0
+PROC_F3=$(echo "$PROC_F3" | tail -1 | tr -d '[:space:]'); [[ "$PROC_F3" =~ ^[0-9]+$ ]] || PROC_F3=0
+PROC_F4=$(echo "$PROC_F4" | tail -1 | tr -d '[:space:]'); [[ "$PROC_F4" =~ ^[0-9]+$ ]] || PROC_F4=0
+PROC_F5=$(echo "$PROC_F5" | tail -1 | tr -d '[:space:]'); [[ "$PROC_F5" =~ ^[0-9]+$ ]] || PROC_F5=0
+PROC_TOTAL=$((PROC_F1 + PROC_F2 + PROC_F3 + PROC_F4 + PROC_F5))
+
+if [ "$PROC_TOTAL" -le 5 ]; then
+    echo -e "  ${GREEN}✓${NC} Process 无痕化: ${PROC_TOTAL} 处 (≤5, 第零律 2)"
+else
+    echo -e "  ${RED}✗ BLOCK${NC} Process 无痕化: ${PROC_TOTAL} 处 > 5 (Agent=${PROC_F1} Phase=${PROC_F2} 工作流=${PROC_F3} LLM=${PROC_F4} Skill=${PROC_F5})"
+    echo -e "    → ${CYAN}第零律 2 \"过程无痕化\": 读者不知道 Phase/Agent/staging 是什么${NC}"
+    echo -e "    → 自检三问: (1)读者不懂 Phase 还能看懂吗? (2)有无'谁做了什么'视角? (3)能放 Bloomberg 研报吗?"
+    BLOCK=$((BLOCK + 1))
+fi
+
+# ─────────────────────────────────────────
 # 200K+ 超长报告附加检查
 # ─────────────────────────────────────────
 if [ "$KCHARS" -ge 200 ]; then

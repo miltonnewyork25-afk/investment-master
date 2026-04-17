@@ -30,8 +30,12 @@
 #   CG19. AI腔检测 (WARN级, v7.0新增) — 检测AI写作模式(不是X而是Y/空洞过渡/伪亲密等)
 #   CG20. 护城河数据卡 (WARN级, v8.0新增/v9.0升级) — 检查moat_datacard.yaml存在+10字段组完整
 #   CG21. 入场纪律卡 (WARN级, v10.0新增) — 检查Strategy Card存在+9模块完整(A/B文档分离)
+#   CG22. 铁律R 四大必备 (FAIL级, v22.1新增) — R-1/R-2/R-3/R-4 分析覆盖
+#   CG23. Process残留 (FAIL级 >5 / WARN级 ≤5, v22.7新增, v22.8升级) — 5 家族检测 (Agent/Phase/工作流/LLM/Skill)
 #
 # 退出码: 0=全部通过, 1=有失败项
+# 更新: v22.8 (2026-04-16) — CG23 从枚举升级为 5 家族语义检测, 基于第零律 2 "过程无痕化"
+# 更新: v22.7 (2026-04-16) — COHR audit: CG23 Process残留 + CG8/CG9 扩展识别独立DM方括号锚点
 # 更新: v10.0 (2026-03-14) — CG21入场纪律卡检查(A/B文档分离: Complete对外+Strategy Card内部)
 # 更新: v9.0 (2026-03-12) — CG20升级至10字段组(v2.0交易策略预备: 估值三档+E-Score+回撤DNA+流动性)
 # 更新: v8.0 (2026-03-12) — CG20护城河数据卡检查(为CQI排行榜+跨公司产品提供结构化数据)
@@ -334,9 +338,14 @@ if [ "$HAS_AUDIT_SUMMARY" -gt 0 ]; then
     fi
 else
     # v2.0模式: 检查内联标注密度
+    # v22.7 (COHR audit): 独立DM方括号锚点 [DM-XXX-001] 也作为有效标注
+    # 原因: COHR 450个独立DM被识别为0, 纯interface失配; 独立锚点 = 内联的简化形式
     OLD_ANN=$(count_matches '\[(A|B|P|E):' "$FILE")
     NEW_ANN=$(count_matches '\[(硬数据|合理推断|主观判断):' "$FILE")
-    TOTAL_ANN=$((OLD_ANN + NEW_ANN))
+    STANDALONE_DM=$(grep -oE '\[DM-[A-Za-z0-9]+-[0-9]+(/[0-9]+)*\]' "$FILE" 2>/dev/null | wc -l | tr -d '[:space:]')
+    STANDALONE_DM="${STANDALONE_DM:-0}"
+    [[ "$STANDALONE_DM" =~ ^[0-9]+$ ]] || STANDALONE_DM=0
+    TOTAL_ANN=$((OLD_ANN + NEW_ANN + STANDALONE_DM))
     if [ "$CHARS" -gt 0 ]; then
         DENSITY=$(python3 -c "print(round($TOTAL_ANN * 10000 / $CHARS, 1))")
     else
@@ -344,10 +353,10 @@ else
     fi
     DENSITY_OK=$(python3 -c "print(1 if $DENSITY >= $MIN_DENSITY else 0)")
     if [ "$DENSITY_OK" -eq 0 ]; then
-        echo -e "${RED}FAIL CG8: [v2.0] 标注密度 ${DENSITY}/万字符 < 要求 ${MIN_DENSITY}/万字符 (总数: ${TOTAL_ANN})${NC}"
+        echo -e "${RED}FAIL CG8: [v2.0] 标注密度 ${DENSITY}/万字符 < 要求 ${MIN_DENSITY}/万字符 (内联=${NEW_ANN} 旧=${OLD_ANN} 独立DM=${STANDALONE_DM} 总=${TOTAL_ANN})${NC}"
         ERRORS=$((ERRORS + 1))
     else
-        echo -e "${GREEN}PASS CG8: [v2.0] 标注密度 ${DENSITY}/万字符 (总数: ${TOTAL_ANN})${NC}"
+        echo -e "${GREEN}PASS CG8: [v2.0] 标注密度 ${DENSITY}/万字符 (内联=${NEW_ANN} 旧=${OLD_ANN} 独立DM=${STANDALONE_DM} 总=${TOTAL_ANN})${NC}"
     fi
 fi
 
@@ -366,7 +375,9 @@ if [ "$HAS_AUDIT_SUMMARY" -gt 0 ]; then
     fi
 else
     # v2.0模式: 检查硬数据占比
+    # v22.7 (COHR audit): 独立DM方括号锚点也计入硬数据 (DM本身代表可追溯硬证据)
     HARD_DATA=$(count_matches '\[(A|B|P):|\[硬数据:' "$FILE")
+    HARD_DATA=$((HARD_DATA + ${STANDALONE_DM:-0}))
     if [ "${TOTAL_ANN:-0}" -gt 0 ]; then
         HARD_RATIO=$(python3 -c "print(round($HARD_DATA * 100 / $TOTAL_ANN, 1))")
         HARD_OK=$(python3 -c "print(1 if $HARD_RATIO >= $MIN_HARD_RATIO else 0)")
@@ -693,6 +704,54 @@ if [ "$R4_COUNT" -lt 3 ]; then
     R_FAIL=$((R_FAIL+1)); ERRORS=$((ERRORS+1))
 else
     echo -e "${GREEN}PASS CG22-R4: 认知圈量化 ${R4_COUNT}/3${NC}"
+fi
+set -e
+
+# === CG23: Process 残留检测 (v22.8 升级为 5 家族, COHR audit, FAIL级) ===
+# 检测组装时未清除的过程痕迹 — 从枚举模式升级为语义家族检测
+# 与 CG15 互补: CG15 查 "Agent A/B/C" 身份, CG23 查 process 语言家族
+# 源自 COHR v2.0 audit: 15 处残留 + 用户洞察"头痛医头脚痛医脚"
+# 根据第零律 2 "过程无痕化" 原则
+set +e
+
+# 家族 1: Agent 工程化 (限定 Agent + 动作词, 避开 "research agent" 产品名)
+# 模式: "Agent findings / 产出 / 完成 / 分析 / 调用 / 输出", "子 Agent", "并行 Agent", "P[0-9] Agent"
+F1_AGENT=$({ grep -cE 'Agent[[:space:]]*[A-C]?[[:space:]]*(findings|产出|完成|分析|调用|输出|汇总|协作)' "$FILE" 2>/dev/null || echo 0; } | tail -1 | tr -d '[:space:]')
+F1B_AGENT=$({ grep -cE '子[[:space:]]*Agent|并行[[:space:]]*Agent|P[0-9.]+[[:space:]]*Agent|worker[[:space:]]*Agent' "$FILE" 2>/dev/null || echo 0; } | tail -1 | tr -d '[:space:]')
+F1_AGENT=$((${F1_AGENT:-0} + ${F1B_AGENT:-0}))
+[[ "$F1_AGENT" =~ ^[0-9]+$ ]] || F1_AGENT=0
+
+# 家族 2: Phase 工程化
+F2_PHASE=$({ grep -cE 'Phase[[:space:]]*[0-9.]+[[:space:]]*(完成|产出|启动|结晶|回流)|P[0-9]+-[ABC]\b|P4\.5[[:space:]]*结晶|P4[[:space:]]*回流' "$FILE" 2>/dev/null || echo 0; } | tail -1 | tr -d '[:space:]')
+[[ "$F2_PHASE" =~ ^[0-9]+$ ]] || F2_PHASE=0
+
+# 家族 3: 工作流协议
+# "staging 文件/内容/记录", "handoff note", "checkpoint.yaml", "preamble"
+F3_WORKFLOW=$({ grep -cE 'staging[[:space:]]*(文件|内容|记录|目录)|handoff[[:space:]]*(note|文件)|checkpoint\.yaml|phase_context_preamble|compression[[:space:]]*(触发|结果)' "$FILE" 2>/dev/null || echo 0; } | tail -1 | tr -d '[:space:]')
+[[ "$F3_WORKFLOW" =~ ^[0-9]+$ ]] || F3_WORKFLOW=0
+
+# 家族 4: LLM 技术语 (慎用 — 分析 AI 公司时 LLM/prompt 合法)
+# 只抓"LLM 调用 / prompt 注入 / context window"这类明确工程用法
+F4_LLM=$({ grep -cE 'LLM[[:space:]]*(调用|分析|产出)|prompt[[:space:]]*(注入|工程|engineering)|context[[:space:]]*window|thread[[:space:]]*(切换|管理)' "$FILE" 2>/dev/null || echo 0; } | tail -1 | tr -d '[:space:]')
+[[ "$F4_LLM" =~ ^[0-9]+$ ]] || F4_LLM=0
+
+# 家族 5: Skill 机制 ("调用 .* skill" / "X-skill 分析")
+F5_SKILL=$({ grep -cE '调用.{0,10}skill|skill.{0,10}(产出|分析|调用)|[a-z]+-skill[[:space:]]*(分析|调用|输出)' "$FILE" 2>/dev/null || echo 0; } | tail -1 | tr -d '[:space:]')
+[[ "$F5_SKILL" =~ ^[0-9]+$ ]] || F5_SKILL=0
+
+RESIDUE_TOTAL=$((F1_AGENT + F2_PHASE + F3_WORKFLOW + F4_LLM + F5_SKILL))
+
+# 阈值: 0=PASS, 1-5=WARN, >5=FAIL
+if [ "$RESIDUE_TOTAL" -eq 0 ]; then
+    echo -e "${GREEN}PASS CG23: Process 残留 = 0 (5 家族全清)${NC}"
+elif [ "$RESIDUE_TOTAL" -le 5 ]; then
+    echo -e "${YELLOW}WARN CG23: Process 残留 ${RESIDUE_TOTAL} 处 (Agent=${F1_AGENT} Phase=${F2_PHASE} 工作流=${F3_WORKFLOW} LLM=${F4_LLM} Skill=${F5_SKILL})${NC}"
+    WARNINGS=$((WARNINGS + 1))
+else
+    echo -e "${RED}FAIL CG23: Process 残留 ${RESIDUE_TOTAL} 处 > 5 (Agent=${F1_AGENT} Phase=${F2_PHASE} 工作流=${F3_WORKFLOW} LLM=${F4_LLM} Skill=${F5_SKILL})${NC}"
+    echo "       违反第零律 2 '过程无痕化'. 组装时必须清除所有工程化词汇家族"
+    echo "       自检三问: (1)读者不懂 Phase/Agent 还能看懂吗? (2)有无'谁做了什么'视角? (3)能放 Bloomberg 研报吗?"
+    ERRORS=$((ERRORS + 1))
 fi
 set -e
 

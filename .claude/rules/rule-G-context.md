@@ -53,32 +53,37 @@
 
 > **Ch9启示**: 压缩摘要按9段结构组织。Handoff Note对齐这个结构=压缩时信息保留率最高。
 
-**Handoff Note标准结构** (对齐压缩模板):
+**Handoff Note标准结构** (对齐压缩模板 + 稳定性标记):
 ```markdown
 ## Handoff Note — {TICKER} Phase {N} → Phase {N+1}
 
-### 1. 主要请求与意图 (对齐段1)
+### 1. [SESSION] 主要请求与意图
 当前研究目标 + 用户的显式要求
+⚠️ 压缩后必须保留: 这是恢复context的第一入口
 
-### 2. 关键技术概念 (对齐段2)
-核心矛盾 + 主线thesis + 关键变量
+### 2. [SESSION] 核心矛盾 + Thesis + 变量
+核心矛盾 + 主线thesis + 关键变量 + Kill Switch
+⚠️ 压缩后必须保留: 跨Phase推理链的锚点
 
-### 3. 已完成的文件和产出 (对齐段3)
+### 3. [REFRESH] 文件清单 + 关键数据
 文件路径 + 关键数据点(完整，非摘要)
+⚠️ 这些文件在下个session必须重新Read, NEVER使用旧context中的版本
 
-### 4. 已解决的问题 (对齐段4+5)
+### 4. [SESSION] 已解决的问题 + 被否决方案
 Phase中遇到的问题 + 如何修复 + 被否决的方案及原因
+⚠️ 高丢失风险: 压缩模板侧重"做了什么", "为什么不做X"最容易被压没
 
-### 5. 用户反馈记录 (对齐段6)
+### 5. [SESSION] 用户反馈记录
 用户在本Phase中的所有关键指令/偏好/纠正
+⚠️ 高丢失风险: 早期偏好多次压缩后消失
 
-### 6. 待办任务 (对齐段7)
+### 6. [SESSION] 待办任务
 未完成的分析 + 需要验证的假设
 
-### 7. 当前精确状态 (对齐段8)
-最后在做什么 + 数据/staging/报告的完成度
+### 7. [REFRESH] 当前精确状态
+最后在做什么 + checkpoint.yaml状态 + 完成度数字
 
-### 8. 下一步唯一优先 (对齐段9)
+### 8. [SESSION] 下一步唯一优先
 下一Phase的第一个动作 + 不要重复的事
 ```
 
@@ -119,6 +124,58 @@ Phase中遇到的问题 + 如何修复 + 被否决的方案及原因
 - **CLAUDE.md** — 通过系统提示词注入，永远存在
 - **Plan附件** — 独立恢复通道，不占50K文件预算
 - **Delta重播** — 工具声明/Agent列表/MCP指令完整重播
+
+### G7.5: 信息稳定性分类 (Ch5缓存架构映射, v5.1新增)
+
+> **源自**: Claude Code Ch5 systemPromptSection vs DANGEROUS_uncachedSystemPromptSection
+> **核心**: 不是所有信息都一样稳定。显式分类→压缩时知道保留什么、丢弃什么、必须刷新什么。
+
+**三级稳定性分类**:
+
+| 级别 | 标记 | 含义 | 保鲜期 | 等价物 | 示例 |
+|------|------|------|--------|--------|------|
+| **CACHED** | `[STABLE]` | 整个会话不变, 压缩后无需重新获取 | 会话级 | systemPromptSection | CLAUDE.md, 铁律规则文件, L0/L1原则, 质量门控阈值 |
+| **SESSION** | `[SESSION]` | 会话内可能变化, Phase切换时应刷新 | Phase级 | 动态区段落 | thesis/主线, Kill Switch, Phase进度, staging摘要 |
+| **VOLATILE** | `[REFRESH]` | 每次使用前必须重新读取, NEVER使用缓存版本 | 单轮级 | DANGEROUS_uncached | checkpoint.yaml, MCP财务数据, 当前股价, staging完整内容 |
+
+**为什么需要这个分类**:
+- 压缩后AI重新读取刚读过的文件(G10信号) → 如果是[STABLE]文件, 不需要重读(浪费恢复名额)
+- 压缩后AI用旧staging数据继续写 → 如果staging标记了[REFRESH], 会被提醒先重读
+- Phase切换时AI忘记上一Phase的thesis → [SESSION]标记提醒在handoff中持久化
+
+**文件稳定性清单** (投资大师框架):
+
+```
+[STABLE] — 压缩后不需要重读, CLAUDE.md免疫压缩自动保证:
+  CLAUDE.md                          ← 系统提示词注入, 永远存在
+  .claude/rules/*.md                 ← 铁律规则, 会话内不变
+  knowledge/analysis_modules/*.md    ← 分析模板, 会话内不变
+  knowledge/industry_modules/*.md    ← 行业模块, 会话内不变
+
+[SESSION] — Phase切换时写入handoff持久化, 压缩后从handoff恢复:
+  当前thesis + 核心矛盾              ← 写入handoff §2 "关键技术概念"
+  Kill Switch条件                    ← 写入handoff §2
+  被否决方案+原因                    ← 写入handoff §4 (G2高丢失风险#1)
+  用户本session偏好/纠正             ← 写入handoff §5 (G2高丢失风险#2)
+  Phase进度+完成状态                 ← 写入handoff §7
+  Python估值结果(精确数字)           ← 写入data/文件 (G2高丢失风险#3)
+
+[REFRESH] — NEVER使用context中的旧版本, 每次使用前必须重新Read:
+  staging/{TICKER}_*.md              ← 内容随Phase推进变化
+  data/checkpoint.yaml               ← 当前状态, 随时更新
+  reports/{TICKER}/*.md              ← 组装中内容持续变化
+  MCP工具返回的财务数据               ← 市场数据每日变化
+  evolution_log.yaml                 ← 可能有新条目
+```
+
+**Agent行为规则**:
+1. **压缩后恢复时**: 先读[SESSION]级的handoff note(含thesis/Kill Switch/进度), NEVER假设还记得
+2. **Phase切换时**: [SESSION]级信息全部写入handoff, 不依赖context存活
+3. **使用staging/data文件时**: [REFRESH]级文件必须先Read再使用, NEVER引用context中的旧内容
+4. **[STABLE]文件不浪费恢复名额**: 压缩后如果需要铁律规则, 按需加载即可(CLAUDE.md免疫压缩), 不占G7的5个文件名额
+5. **刷新时间戳优先给[REFRESH]文件**: 感觉压缩即将触发时, 刷新staging/checkpoint的时间戳(G8策略), 不刷新[STABLE]文件
+
+**与G2/G7/G8的关系**: G7.5是G2(什么容易丢)+G7(恢复预算)+G8(时间戳策略)的**上游分类系统** — 先分类稳定性, 再决定保存/恢复/刷新策略。
 
 ### G8: 文件读取策略 (利用时间戳排序)
 
@@ -251,6 +308,45 @@ Phase中遇到的问题 + 如何修复 + 被否决的方案及原因
 3. **MCP工具成本意识**: 我们的MCP工具(investment-master)使系统提示词缓存从global降级到org级别。MCP调用越多→缓存命中率可能越低。**批量MCP调用 > 散点MCP调用**
 
 4. **Session稳定性**: 避免mid-session配置变化(切换模型/切换fast mode)。每次切换可能破坏50-70K tokens缓存
+
+---
+
+### G16: Ephemeral Injection (v5.1新增, Hermes Agent借鉴)
+
+> **源自**: Hermes Agent prompt_builder.py — memory和plugin context只在API调用时注入user message，永不写入系统提示词或持久化messages列表。这保护了prompt cache prefix不被破坏。
+> **核心**: 区分"持久消息"和"临时注入"，压缩时临时注入最先被清除。
+
+**三级消息分类** (与G7.5稳定性分类互补):
+
+| 级别 | 含义 | 压缩优先级 | 示例 |
+|------|------|-----------|------|
+| **PERSISTENT** | 持久消息——用户指令+关键分析结论+thesis | 最后压缩 | 用户显式指令、Phase结论、Kill Switch |
+| **TOOL_RESULT** | 工具返回——有价值但可替代 | 中等，裁剪为一行摘要 | MCP财务数据、Bash输出、Grep结果 |
+| **EPHEMERAL** | 临时注入——用完即可丢弃 | 最先压缩 | Skill全文、中间计算过程、重复搜索 |
+
+**Agent行为规则**:
+1. **MCP数据立即提取**: 工具返回的JSON立即提取关键数字写入staging，不依赖原始JSON在context中存活
+2. **Skill内容用完释放**: Skill调用结果形成结论后，原始Skill输出可安全丢弃(结论已持久化)
+3. **工具摘要替代全文**: 压缩时用`context_compress.sh`生成的一行摘要替代完整工具结果(Hermes tool pruning模式)
+4. **PERSISTENT内容自包含**: 写入staging/handoff的结论必须自包含核心证据，不写"如前所述"
+
+**与G7.5的关系**: G7.5的`[STABLE]/[SESSION]/[REFRESH]`分类是**文件级**稳定性(哪些文件需要重读)。G16的Ephemeral分类是**消息级**优先级(context中哪些消息先压缩)。两者互补，不冲突。
+
+### G17: 主动压缩脚本 (v5.1新增, Hermes Agent借鉴)
+
+> **源自**: Hermes Agent context_compressor.py — 在50%上下文窗口时主动触发压缩，而非等到83.5%被动触发。
+> **核心**: 主动压缩比被动压缩信息保留率更高。
+
+**脚本**: `bash scripts/context_compress.sh <TICKER>`
+
+**触发时机**:
+1. **Phase完成时**: `phase_complete.sh`已自动调用(v1.1, Step 4.5)
+2. **Phase中期**: 写完大章节(≥30K字符)后主动调用
+3. **感觉context压力上升时**: 不等自动触发
+
+**产出**: `reports/{TICKER}/data/tool_execution_summary.md` — 所有工具操作的一行摘要，压缩后可用此文件恢复"做过什么"。
+
+**与G3(/compact)的关系**: G17先生成摘要(保留信息)→再/compact(释放空间)。顺序不能反——先compact会丢失工具结果，之后无法生成摘要。
 
 ---
 

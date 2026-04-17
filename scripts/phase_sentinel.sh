@@ -321,6 +321,42 @@ if [ "$PHASE" -ge 1 ]; then
         echo "         → Agent prompt是否遗漏DM标注要求? 每Phase应≥30个DM引用"
     fi
 
+    # P1 升级 (PDD v2.0教训, v22.2): Staging 累积 DM 密度前移检查
+    # 目的: 给 Phase 5 留缓冲。如果 staging 已经≥1.5/千字, P5 即使加 60K 0-DM 章节也仅稀释到 ~1.2
+    # PDD v2.0 失败模式: staging ~0.6/千字, P5 加 65K 0-DM → 总 0.57 (BLOCK)
+    if [ "$PHASE" -ge 2 ] && [ "$PHASE" -le 4 ]; then
+        STAGING_CHARS=0
+        STAGING_DM=0
+        for f in "$STAGING"/*.md; do
+            if [ -f "$f" ]; then
+                FC=$(wc -m < "$f" | tr -d ' ')
+                STAGING_CHARS=$((STAGING_CHARS + ${FC:-0}))
+                FD=$({ grep -c 'DM-' "$f" 2>/dev/null || echo "0"; } | head -1 | tr -d ' ')
+                STAGING_DM=$((STAGING_DM + ${FD:-0}))
+            fi
+        done
+        if [ "$STAGING_CHARS" -gt 5000 ]; then
+            STAGING_DENSITY_X100=$((STAGING_DM * 1000 * 100 / STAGING_CHARS))  # x100 整数算术
+            # Phase 阈值: P2≥100 (1.0), P3≥120 (1.2), P4≥150 (1.5)
+            case "$PHASE" in
+                2) STAGING_TARGET=100 ;;
+                3) STAGING_TARGET=120 ;;
+                4) STAGING_TARGET=150 ;;
+            esac
+            STAGING_DENSITY_DISPLAY=$(awk "BEGIN { printf \"%.2f\", $STAGING_DENSITY_X100 / 100 }")
+            if [ "$STAGING_DENSITY_X100" -ge "$STAGING_TARGET" ]; then
+                check_pass "Staging DM 密度: ${STAGING_DENSITY_DISPLAY}/千字 (≥$(awk "BEGIN{printf \"%.1f\", $STAGING_TARGET/100}") for P${PHASE}, P5 缓冲足够)"
+            elif [ "$STAGING_DENSITY_X100" -ge $((STAGING_TARGET * 70 / 100)) ]; then
+                check_warn "Staging DM 密度偏低: ${STAGING_DENSITY_DISPLAY}/千字 (P${PHASE}目标 $(awk "BEGIN{printf \"%.1f\", $STAGING_TARGET/100}"))"
+                echo "         → P5 加新章节会进一步稀释 — 建议本 Phase 补 DM 而不是留给 P5"
+            else
+                check_fail "Staging DM 密度严重不足: ${STAGING_DENSITY_DISPLAY}/千字 (P${PHASE}目标 $(awk "BEGIN{printf \"%.1f\", $STAGING_TARGET/100}"))"
+                echo "         → PDD v2.0 教训: staging ~0.6 → P5 加 65K 后 → 0.57 BLOCK 提交"
+                echo "         → 必须本 Phase 补 DM, 不能拖到 P5"
+            fi
+        fi
+    fi
+
     # EVO-SPGI-003: Phase 5 DM密度比检查 (扩写同步规则)
     if [ "$PHASE" -ge 5 ]; then
         COMPLETE_FILE=""

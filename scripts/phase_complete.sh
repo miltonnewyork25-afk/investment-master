@@ -261,6 +261,55 @@ else
 fi
 echo ""
 
+# --- Step 4.5: 工具执行摘要 (Hermes-inspired, v1.1新增) ---
+echo -e "${CYAN}[4.5/6] 生成工具执行摘要...${NC}"
+COMPRESS_SCRIPT="${REPO_ROOT}/scripts/context_compress.sh"
+if [ -f "$COMPRESS_SCRIPT" ]; then
+    bash "$COMPRESS_SCRIPT" "$TICKER" 2>/dev/null && {
+        TOOL_SUMMARY="reports/${TICKER}/data/tool_execution_summary.md"
+        [ -f "$TOOL_SUMMARY" ] && FILES_TO_ADD+=("$TOOL_SUMMARY")
+        echo -e "${GREEN}  工具执行摘要已生成${NC}"
+    } || echo -e "${YELLOW}  工具摘要生成跳过 (非关键)${NC}"
+else
+    echo "  context_compress.sh not found (跳过)"
+fi
+echo ""
+
+# --- Step 4.55: 未引用证据检测 (Co-STORM 借鉴, v1.3新增) ---
+# 仅在 Phase 4 完成时触发 — 为 Phase 5 组装提供盲点清单
+if [ "$PHASE" == "4" ] || [ "$PHASE" == "4.5" ]; then
+    echo -e "${CYAN}[4.55/6] 未引用证据检测 (Phase 4→5)...${NC}"
+    UNUSED_SCRIPT="${REPO_ROOT}/scripts/unused_evidence_detector.sh"
+    if [ -f "$UNUSED_SCRIPT" ]; then
+        if bash "$UNUSED_SCRIPT" "$TICKER" --limit 10 --phase "$PHASE" 2>/dev/null; then
+            UNUSED_REPORT="reports/${TICKER}/data/unused_evidence_report.md"
+            [ -f "$UNUSED_REPORT" ] && FILES_TO_ADD+=("$UNUSED_REPORT")
+            echo -e "${GREEN}  → Phase 5 组装前请检查 ${UNUSED_REPORT}${NC}"
+        else
+            echo -e "${GREEN}  无未引用证据 (或暂不触发)${NC}"
+        fi
+    else
+        echo "  unused_evidence_detector.sh not found (跳过)"
+    fi
+    echo ""
+fi
+
+# --- Step 4.6: 下个 Phase 的 learnings 注入 preamble (gstack 借鉴, v1.2新增) ---
+echo -e "${CYAN}[4.6/6] 为下个 Phase 生成 learnings preamble...${NC}"
+INJECT_SCRIPT="${REPO_ROOT}/scripts/phase_context_inject.sh"
+NEXT_PHASE=$((${PHASE%.*} + 1))
+if [ -f "$INJECT_SCRIPT" ]; then
+    if bash "$INJECT_SCRIPT" "$TICKER" --phase "$NEXT_PHASE" --limit 3 2>/dev/null; then
+        PREAMBLE="reports/${TICKER}/data/phase_context_preamble.md"
+        [ -f "$PREAMBLE" ] && FILES_TO_ADD+=("$PREAMBLE")
+    else
+        echo -e "${YELLOW}  无相关 learnings (非关键, 跳过)${NC}"
+    fi
+else
+    echo "  phase_context_inject.sh not found (跳过)"
+fi
+echo ""
+
 # --- Step 5: Git add + commit ---
 echo -e "${CYAN}[5/6] Git commit...${NC}"
 

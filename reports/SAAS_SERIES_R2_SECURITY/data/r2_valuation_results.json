@@ -1,0 +1,133 @@
+{
+  "model_version": "R2_Security_v1.0",
+  "date": "2026-04-10",
+  "wacc": 0.1,
+  "companies": {
+    "CRWD": {
+      "price": 394.68,
+      "mkt_cap_B": 100.1,
+      "weighted_fair_value": 206.5,
+      "expected_return_pct": -47.7,
+      "implied_fcf_growth": 24.7,
+      "owner_fcf_M": 213,
+      "sbc_rev_pct": 22.8,
+      "p_owner_fcf": 470.0,
+      "scenarios": [
+        {
+          "case": "bull",
+          "label": "\u98de\u8f6e\u91cd\u52a0\u901f (NRR>120, Defender\u4efd\u989d\u7a33\u5b9a)",
+          "prob": 0.2,
+          "rev_5y_B": 13.005431681318399,
+          "fcf_5y_B": 4.161738138021888,
+          "ev_5y_B": 145.66083483076608,
+          "price": 369.4068898915936,
+          "return_pct": -6.403443323301506
+        },
+        {
+          "case": "base",
+          "label": "\u98de\u8f6e\u51cf\u901f (NRR 110-115, \u6e10\u8fdb\u589e\u957f)",
+          "prob": 0.5,
+          "rev_5y_B": 10.106844056371196,
+          "fcf_5y_B": 2.829916335783935,
+          "ev_5y_B": 79.23765740195017,
+          "price": 209.61003901637713,
+          "return_pct": -46.89114244036254
+        },
+        {
+          "case": "bear",
+          "label": "\u98de\u8f6e\u65ad\u88c2 (Defender>35%, \u5185\u6838\u79fb\u9664\u52a0\u901f)",
+          "prob": 0.3,
+          "rev_5y_B": 7.749774120000003,
+          "fcf_5y_B": 1.7049503064000007,
+          "ev_5y_B": 30.689105515200012,
+          "price": 92.81487795428127,
+          "return_pct": -76.48351121052973
+        }
+      ]
+    },
+    "PANW": {
+      "price": 166.99,
+      "mkt_cap_B": 113.8,
+      "weighted_fair_value": 141.2,
+      "expected_return_pct": -15.4,
+      "implied_fcf_growth": 13.1,
+      "owner_fcf_M": 2175,
+      "sbc_rev_pct": 14.0,
+      "p_owner_fcf": 52.3,
+      "scenarios": [
+        {
+          "case": "bull",
+          "label": "\u5e73\u53f0\u5316\u6210\u529f (\u8f6c\u5316\u7387>5%, CyberArk\u6574\u5408\u987a\u5229)",
+          "prob": 0.2,
+          "rev_5y_B": 22.947287039999992,
+          "fcf_5y_B": 8.719969075199996,
+          "ev_5y_B": 261.5990722559999,
+          "price": 237.1809418528732,
+          "return_pct": 42.033021050885196
+        },
+        {
+          "case": "base",
+          "label": "\u5e73\u53f0\u5316\u7f13\u6162 (\u8f6c\u5316\u73872-3%, \u6709\u673a\u589e\u901f13-15%)",
+          "prob": 0.5,
+          "rev_5y_B": 17.75617327889281,
+          "fcf_5y_B": 6.214660647612483,
+          "ev_5y_B": 155.36651619031207,
+          "price": 144.1849468376994,
+          "return_pct": -13.65653821324666
+        },
+        {
+          "case": "bear",
+          "label": "\u5e73\u53f0\u5316\u5931\u8d25 (Magic Number<0.3, M&A\u6574\u5408\u5931\u8d25)",
+          "prob": 0.3,
+          "rev_5y_B": 13.550143524249604,
+          "fcf_5y_B": 4.065043057274881,
+          "ev_5y_B": 73.17077503094787,
+          "price": 72.2307830839982,
+          "return_pct": -56.745443988263844
+        }
+      ]
+    },
+    "FTNT": {
+      "price": 80.66,
+      "mkt_cap_B": 60.0,
+      "weighted_fair_value": 72.1,
+      "expected_return_pct": -10.6,
+      "implied_fcf_growth": 10.9,
+      "owner_fcf_M": 1946,
+      "sbc_rev_pct": 4.1,
+      "p_owner_fcf": 30.8,
+      "scenarios": [
+        {
+          "case": "bull",
+          "label": "SASE\u7a81\u7834 + \u5237\u65b0\u5468\u671f\u5ef6\u7eed",
+          "prob": 0.25,
+          "rev_5y_B": 14.282323271679994,
+          "fcf_5y_B": 4.998813145087998,
+          "ev_5y_B": 139.96676806246393,
+          "price": 117.79191284713768,
+          "return_pct": 46.03510147177992
+        },
+        {
+          "case": "base",
+          "label": "\u6e20\u9053\u7a33\u6001 + SASE\u6e10\u8fdb (\u6709\u673a8-10%)",
+          "prob": 0.5,
+          "rev_5y_B": 10.951468000000004,
+          "fcf_5y_B": 3.6139844400000016,
+          "ev_5y_B": 79.50765768000004,
+          "price": 67.60427807486631,
+          "return_pct": -16.1861169416485
+        },
+        {
+          "case": "bear",
+          "label": "ASIC\u4f18\u52bf\u4e91\u7aef\u5931\u6548 + \u540e\u5237\u65b0\u51cf\u901f",
+          "prob": 0.25,
+          "rev_5y_B": 9.099933927680002,
+          "fcf_5y_B": 2.5479814997504007,
+          "ev_5y_B": 40.76770399600641,
+          "price": 35.445904683535154,
+          "return_pct": -56.05516404223263
+        }
+      ]
+    }
+  }
+}
