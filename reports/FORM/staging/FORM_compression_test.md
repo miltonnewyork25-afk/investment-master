@@ -22,8 +22,9 @@ compression_result:
 
   # 链接3: 解释旧框架解释不了的现象
   explained_anomaly:
-    anomaly: "收入翻倍但EPS下降(DRAM +117% FY23-25, 但EPS $1.05→$0.69 -34%)"
-    new_explanation: "增长方向(DRAM, 低毛利)和利润方向(F&L, 高毛利)结构性相反。低毛利品类替换高毛利品类=收入增长的边际质量递减, 解释了为什么收入+18%但EPS零增长"
+    anomaly: "收入+18%(FY23→FY25)但正常化EPS零增长($0.70→$0.69), 增长未转化为利润"
+    note: "FY2023报告EPS $1.05含$73M一次性投资收益, 正常化后约$0.70 [DM-RT-007]"
+    new_explanation: "低毛利DRAM(占比+5pp)替换高毛利F&L = 增长边际质量递减。收入增长被D&A增加($37M→$47M, Farmers Branch)+ mix shift完全吃掉, 解释了为什么收入+18%但利润零增长"
 
   # 真压缩硬测试
   expansion_test:
