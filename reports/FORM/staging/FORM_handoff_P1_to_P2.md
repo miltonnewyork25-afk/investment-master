@@ -33,8 +33,10 @@ FORM Tier 3深度报告, 目标150K+字符 / 4.5+质量分。Phase 1完成业务
 ### 3. [REFRESH] 文件清单 + 关键数据
 
 **Phase 1新产出**:
-- `staging/FORM_P1_business_moat.md` — 14.5K字符, 39 DM锚点 (密度2.68/千字), 3个关键发现
+- `staging/FORM_P1_business_moat.md` — 14.5K字符, 39 DM锚点, 3个关键发现
+- `staging/FORM_P1_addendum.md` — 7.3K字符, 15 DM锚点, 周期韧性+供应链验证+Target Model+预期差
 - `data/quality_scorecard.md` — CQI 40, 护城河v2.0评分卡
+- **Phase 1合计**: 21.9K字符, 54 DM锚点 (密度2.47/千字)
 
 **关键数字 (Phase 2需要)**:
 - 探针卡ASP: 基础逻辑$15-25K / HBM $500K+ (20-30x溢价)
@@ -51,10 +53,13 @@ FORM Tier 3深度报告, 目标150K+字符 / 4.5+质量分。Phase 1完成业务
 
 ### 4. [SESSION] 已解决的问题 + 被否决方案
 
-- **CQ2 竞争壁垒**: 从35%→55%置信度。MEMS技术壁垒真实但Technoprobe已追上逻辑端
-- **CQ6 Replacement cycle**: 从35%→60%置信度。HBM加速cycle但SP-HBM4可能减速
-- **CQ8 客户集中度**: 从45%→50%置信度。SK Hynix 20-25%中等风险, Q4下降可能季节性
-- **被否决**: "探针卡=科技消耗品"叙事 → 实际是工业消耗品 (GM/ROIC/CapEx密度不匹配)
+- **CQ2 竞争壁垒**: 35%→55%。MEMS壁垒真实但Technoprobe追上逻辑端; TSE 80%低价威胁Samsung
+- **CQ6 Replacement cycle**: 35%→60%。HBM加速cycle但SP-HBM4可能减速
+- **CQ7 CapEx减速时滞**: 30%→45%。Hyperscaler $690B零减速 + 2-3季时滞 = 近期安全
+- **CQ8 客户集中度**: 45%→50%。SK Hynix 20-25%中等风险
+- **被否决**: "探针卡=科技消耗品"叙事 → 工业消耗品 (GM/ROIC/CapEx密度不匹配)
+- **新增风险**: TSE (韩国) 80%低价竞争Samsung探针卡 → HBM堡垒可能不绝对
+- **Target model差距**: $850M/47%GM/22%OPM是post-build稳态, 最早FY27, 不是FY26
 
 ---
 
