@@ -51,16 +51,21 @@ from
 ## Default workflow
 
 ### Step 1: Define the trend core
+
+**v2.2 note (from Quanta + MDT validations)**: some nodes attach to a **multi-chain trend** rather than a single trend. Identify a **primary trend** and list **sibling trends** the node also serves. Do not force a single core if economics are genuinely multi-sourced — the subsequent Bridge test (Step 5) relies on this distinction to assess trigger independence.
+
 Identify:
 
 - the original source of demand
 - the immediate product or system bottleneck
 - the first economic owner
+- (for bridge-native nodes) sibling trends the node also sits on, each with its own source-variable description
 
 Ask:
 
 - what absolutely must happen first?
 - what cannot be skipped?
+- (for bridge-native nodes) are there multiple demands whose trigger mechanisms are independent, each requiring this same node?
 
 ### Step 2: Map the direct chain
 List the nodes that directly enable the trend.
@@ -114,6 +119,18 @@ Chains that are merely "two expressions of the same driver" fail the test. What 
 - Does this company keep getting paid after initial deployment?
 - Does it monetize installed base, replacement, service, maintenance, certification, or long-tail recurring economics?
 - Is the market still overfocused on the early-wave beneficiary?
+
+##### Hard test (v2.2, from MDT + GE + LNG validation)
+
+Passing "duration owner" requires **all**:
+
+1. **Installed-base monetization window ≥ 2× deployment cycle**, OR the alternative form **monetization_window − deployment_cycle ≥ 20 years** (absolute-years fallback for industries where a long deployment period drags the ratio, e.g., commercial aviation engines with a 15-year delivery tail).
+2. **Quantifiable switching cost** — an identifiable mechanism (regulatory recertification, physical lock-in, software / workflow integration, multi-year contract) with an estimable cost or time lead.
+3. **Segment-by-segment application for multi-line owners** — do NOT apply at the company level for companies with materially different economics across segments. Run the test per major segment, then report weighted pass-rate by revenue share. Any segment that fails must be flagged as a duration exception, not averaged away.
+
+**Contract renewal extension** (optional): if the nominal monetization window is shorter than 2× deployment but the historical renewal rate is ≥80%, the effective monetization window may be taken as the asset's useful life rather than the nominal contract term. Cite the renewal rate evidence when using this extension.
+
+Companies or segments that fail all of the above fail the test. Mixed results produce a weighted verdict with explicit exception flags.
 
 ### Step 6: Map time sequence
 Estimate the order in which layers should move economically, not just narratively.
