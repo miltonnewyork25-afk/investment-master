@@ -5,6 +5,7 @@
 > **Framework**: FROG + SCOPE-A v2 + 8 first principles (see `00_`, `03_`, `03A_`, `07_`)
 > **v2 关键修正**: 财务数据(PE / FCF / 52w return / margin)从"决策驱动"降为"验证+风险仓位"。因果链 S/C/O/Pace/E 先定排名, 财务只回答"因果链有没有断"。原 v1.5 用价格动能 + 单季 rev 驱动排名是 financial-as-decision 误用 (CLAUDE.md 跨层硬规则 #6)
 > **Underlying thesis**: Aging fleet + Boeing/Airbus 交付延迟 + GTF 停场 → 被迫延寿 + MRO 产能紧 + 旧平台售后利润集中
+> **needs_patch**: true — GE Obs-2 duration vector 未回流(GE 已 validated 2026-04-19, 见 `ge_aero_v2_validation_2026-04-19.md`)。下次扫描应把 "leader 层已被共识" 的迁入 trigger 修正为 "time-horizon frame 切换 / sell-side 启用 shop-visit NPV model / 2027-2028 shop visit cadence 超 consensus". 触发协议见 `08_CANDIDATE_QUEUE_MECHANISM.md` R3
 
 ---
 

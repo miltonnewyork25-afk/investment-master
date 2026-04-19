@@ -1,0 +1,57 @@
+# Candidate Queue — Trend Profit Window Agent
+# Mechanism spec: 08_CANDIDATE_QUEUE_MECHANISM.md
+# Status values: raw | watchlist | validated | archived
+# Sort order (per doc §4):
+#   1. watchlist & last_reviewed > 60 days
+#   2. raw & source_engine in [propagation-mapper, trend-source-mapper]
+#   3. remaining raw by created_at desc
+#   4. validated (periodic review only)
+#   5. archived (hidden by default)
+
+candidates:
+  - ticker: PWR
+    trend_attached: "北美电力基础设施多触发共振 (grid aging + DC CapEx + renewables + 电气化, 四触发机制独立)"
+    source_engine: user-hypothesis
+    source_output: outputs/pwr_quanta_v2_validation_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: validated
+    action_state: Initiate
+    notes: >
+      Bridge hard test pass (trigger independence + α-chain ≥40% resilience).
+      v2.1 硬测试升级的触发案例. Kill Switch: α + β/γ/δ 中两条同时崩溃.
+
+  - ticker: GE
+    trend_attached: "商用航空发动机 MRO super-cycle (LEAP shop visit 2026-2033+ 叠 CFM56 延寿)"
+    source_engine: user-hypothesis
+    source_output: outputs/ge_aero_v2_validation_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: validated
+    action_state: "Observation (等 time-horizon frame 切换)"
+    notes: >
+      Duration owner pass (installed-base 2.0-2.5x deployment, 刚过 2x 门槛).
+      v1 诊断 "leader 层已被共识" 被 v2 修正为 "time-horizon mismatch".
+      Upgrade trigger: sell-side 启用 shop-visit NPV model / 2027-2028 shop visit cadence 超 consensus.
+
+  - ticker: TDG
+    trend_attached: "航空 aftermarket sole-source 结构性 owner (OP margin 47%, 极致 sole-source)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/aviation_top5_2026-04-18.md
+    created_at: 2026-04-18
+    last_reviewed: 2026-04-18
+    status: watchlist
+    notes: >
+      Top-quality owner 但无 active catalyst, 稳态复利已被完全定价.
+      Upgrade trigger: 新大并购 (>$5B) deployment / 板块轮动带出 -20%+ 回调.
+
+  - ticker: AER
+    trend_attached: "Boeing 交付延迟+供应紧张的航空 lessor 周期错价 (PE 7x / BV 1.35x / 折价回购)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/aviation_top5_2026-04-18.md
+    created_at: 2026-04-18
+    last_reviewed: 2026-04-18
+    status: watchlist
+    notes: >
+      Cyclical mispricing 不同 alpha category (非结构性 owner).
+      Kill Switch: Boeing 月产 ≥42 = Trim / ≥48 = Exit.
