@@ -72,6 +72,18 @@ Chains that are merely "two expressions of the same driver" fail the test. What 
 ### 6. Duration owner
 May not move first, but can monetize the installed base, maintenance, replacement, or long-tail economics better than the early winner.
 
+#### Hard test (v2.2, from MDT + GE + LNG validation)
+
+Passing "duration owner" requires **all**:
+
+1. **Installed-base monetization window ≥ 2× deployment cycle**, OR the alternative form **monetization_window − deployment_cycle ≥ 20 years** (absolute-years fallback for industries where a long deployment period drags the ratio, e.g., commercial aviation engines with a 15-year delivery tail).
+2. **Quantifiable switching cost** — an identifiable mechanism (regulatory recertification, physical lock-in, software / workflow integration, multi-year contract) with an estimable cost or time lead.
+3. **Segment-by-segment application for multi-line owners** — do NOT apply at the company level for companies with materially different economics across segments. Run the test per major segment, then report weighted pass-rate by revenue share. Any segment that fails must be flagged as a duration exception, not averaged away.
+
+**Contract renewal extension** (optional): if the nominal monetization window is shorter than 2× deployment but the historical renewal rate is ≥80%, the effective monetization window may be taken as the asset's useful life rather than the nominal contract term. Cite the renewal rate evidence when using this extension.
+
+Companies or segments that fail all of the above fail the test. Mixed results produce a weighted verdict with explicit exception flags.
+
 ### 7. No-trade
 The trend may be real, but the current expression may be too crowded, too early, too speculative, or too fully priced.
 
