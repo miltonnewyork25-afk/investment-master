@@ -60,16 +60,19 @@ candidates:
   # Top 5 structural duration owner bucket
 
   - ticker: MDT
-    trend_attached: "医疗 multi-line duration owner (cardiac rhythm + spine + diabetes + neuromod, 四 trigger 相对独立)"
+    trend_attached: "医疗 multi-chain bridge × duration — 3 条独立 trigger (心律 / 椎间盘+运动障碍 / T1糖尿病) 驱动的 Sharpe-like 结构性 owner"
     source_engine: sector-expectation-gap-scanner
-    source_output: outputs/medical_devices_top5_2026-04-19.md
+    source_output: outputs/mdt_medtronic_v2_validation_2026-04-19.md
     created_at: 2026-04-19
     last_reviewed: 2026-04-19
-    status: raw
+    status: validated
+    action_state: "Initiate (light)"
     notes: >
-      Scanner #1: Initiate (light). 最高优先 validation 对象 — bridge × duration 双潜在通过 +
-      v1 认知空白最大. Bridge 硬测试按 trigger-independence 通过 (心律 ≠ 椎间盘 ≠ T1 ≠ 慢性疼痛);
-      Duration 硬测试 installed-base / deployment ratio ~3-5x.
+      首个**双硬测试通过** candidate. Bridge: resilience 任一 chain 崩 revenue ≥82%.
+      Duration: weighted 88% pass (CRM + Mazor + DBS + Diabetes 强, 结构性心为 12% exception).
+      Kill Switch: 至少 2 条独立 chain 同时崩 (非单 Diabetes 被 GLP-1 decimates).
+      首次暴露要求: duration hard test 必须 segment-by-segment 应用 (v2.2 补丁建议 #1).
+      Scanner 发现于 medical_devices_top5_2026-04-19.md.
 
   - ticker: GEHC
     trend_attached: "医疗影像 installed base + 长期服务合同 (post-spin duration owner)"
