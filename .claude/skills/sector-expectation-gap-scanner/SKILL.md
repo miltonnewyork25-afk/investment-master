@@ -200,6 +200,23 @@ If using custom themes, define:
 
 If a labeled sector contains different economic engines, split it now rather than later.
 
+### Step 1.5: Universe coverage check (hard gate, v1.1 升级)
+Before proceeding to measurement, verify the initial universe spans all five gap buckets.
+
+Each bucket must contain **≥2 candidates**. Otherwise the universe is biased toward the analyst's default lens (usually industrial chokepoint) and must be expanded before any measurement begins.
+
+Required buckets:
+
+- **A · Structural owner** — forced demand × durable chokepoint (e.g. LNG midstream, aerospace aftermarket, advanced packaging upstream)
+- **B · Cyclical re-rating** — supply tightness or asset re-rating (e.g. tankers, uranium miners, refiners)
+- **C · Policy / regulation** — government spending / statutory mandate / capacity expansion (e.g. Private Prisons / ICE detention, fire code updates, tobacco alternatives)
+- **D · Workflow shift / software** — new workflow replacing old (e.g. agentic customer support, AI-native coding, agent orchestration layer)
+- **E · Long-duration optionality** — realization clock not yet started but structure identifiable (e.g. humanoid robotics components, small sat constellations, stablecoin rails)
+
+If any bucket has <2 candidates → **STOP**. Expand the universe before continuing. Do not proceed to Step 2 with a biased universe — measurement will only confirm the bias, not correct it.
+
+**Why this gate exists**: without it, the analyst defaults to the bucket where priors are strongest (usually A or B for industrial / chokepoint) and misses C (policy) or D (software) entirely. A missing bucket is a universe-construction failure, not an analysis failure — and no amount of deeper Step 2–6 work will recover the missing candidates.
+
 ### Step 2: Measure fundamental acceleration
 Look for:
 
@@ -238,7 +255,47 @@ Look for:
 Goal:
 Estimate how fully the market has already discovered the sector.
 
+### Step 4.5: Pace gate (hard gate, v1.1 升级)
+Before classifying the gap, apply the Pace filter to every FROG-pass candidate.
+
+Answer three questions per candidate:
+
+- **Q1 · Realization clock**: How much of the thesis has already shown up in earnings / signed contracts / order book? (e.g. "LEU fuel-services revenue confirmed ~5%; most confirmation is 2026–28")
+- **Q2 · Diffusion clock**: How much has the market already bought in? (generalist fund ownership, sell-side coverage density, 52-week return vs peers, valuation re-rating already reflected)
+- **Q3 · Relative position**: Is Realization **ahead of** or **behind** Diffusion?
+
+Hard rule:
+
+- **Realization > Diffusion** → candidate may compete for top ranks (market has not yet caught up with confirmed reality)
+- **Realization ≈ Diffusion** → candidate ranks mid-bucket (fair pricing, good business but no special alpha)
+- **Realization < Diffusion** → candidate **cannot be ranked top-3 in its bucket**, regardless of FROG quality (market has already priced in more than earnings have confirmed; residual alpha depends on acceleration the analyst cannot yet see)
+
+**Why this gate exists**: FROG is a structural quality test. Pace is an action-state test. A FROG-all-Pass candidate can still be a bad current action if the diffusion clock has already run (e.g. uranium miners after a 5x move, AI compute leaders after the 2023 re-rating). Without a Pace gate, "FROG Pass = top rank" becomes an automatic rule, which violates Article II.5 (respect timing) and 跨层硬规则 6 (financials verify, not decide). This gate forces the analyst to separate "this should be owned eventually" from "this is the right owner right now".
+
 ### Step 5: Classify the expectation gap
+
+#### Step 5a: Investability binary (hard pre-filter, v1.1 升级)
+Before classifying the gap type, apply the investability binary.
+
+For each candidate, check:
+
+- Is at least one of the **top 3 economic owners** a US-listed company (or liquid ADR / primary foreign listing) with **theme purity > ~60%** (i.e. the theme drives the majority of the company's revenue and profit)?
+
+Binary outcome:
+
+- **Yes** → candidate proceeds to gap classification and ranking
+- **No** → candidate moves to a separate **"Research only, not ranked"** bucket. It does not compete for top-10 slots.
+
+Examples that fail this gate:
+
+- GLP-1 peptide CDMO — top owners Bachem / Lonza / Evotec are non-US-listed; US-listed exposure is diluted
+- Spent nuclear fuel backend — Holtec is private; US-listed owners have <30% purity
+- Electronics specialty industrial gases — top owners Merck KGaA / 关东电化 are non-US-listed
+
+**Why this gate exists**: "strong thesis but weak investability" is a straddle. Carrying it into the ranked top-10 dilutes decision density by occupying a slot that cannot be acted on. Top-10 ranking slots are scarce; un-investable themes belong in "research only", not in the investment ranking. "Research only" is not dismissal — it flags the theme for monitoring (e.g. if a pure US-listed owner emerges via IPO / spin-off, the theme becomes investable and re-enters the ranked universe).
+
+#### Step 5b: Classify the gap type
+Compare:
 Compare:
 
 - fundamental acceleration
@@ -275,6 +332,26 @@ Before presenting a final ranking, separate sectors into gap categories such as:
 Then decide whether a single cross-bucket ranking is even appropriate.
 
 If a blended ranking is still shown, explicitly warn that the sectors are not comparable in the same way.
+
+### Step 7.5: Bucket D disintermediation check (hard gate, v1.1 升级)
+Bucket D (workflow shift / software) candidates require one additional check before Owner clarity (the O in FROG) can be rated Pass.
+
+For each Bucket D candidate, answer:
+
+- Is the proposed owner's core revenue model (seat-based, license-based, transaction-based) itself being replaced by the new workflow's pricing model (outcome-based, per-agent-call, per-resolved-ticket)?
+- If the new workflow prices on resolved outcomes but the incumbent still sells seats, the incumbent is a **disruptee**, not a disruptor — even if the incumbent's headline metrics still look healthy.
+
+Hard rule:
+
+- Proposed owner is a **disruptee** (seat / license incumbent facing outcome-priced replacement) → FROG's O downgrades to **Fail**, candidate does not enter the ranking
+- Proposed owner is a **disruptor** or a **bridge owner** (captures the workflow shift and monetizes the new pricing model) → O pass, candidate proceeds normally
+
+Common trap:
+
+- Naming a seat-based incumbent as the "beneficiary" of an agentic workflow shift — the incumbent is often the revenue source being cannibalized, not the profit capturer.
+- Historical analog: Zendesk / Genesys were correctly identified as SaaS-era customer-service winners but were later displaced as the pricing model shifted. Identifying the right direction did not translate to picking the right owner.
+
+**Why this gate exists**: Buckets A–C use a chokepoint test for Owner clarity. Bucket D has a distinct failure mode — "right direction, wrong owner" — because the chokepoint in software is the workflow control layer, which may be captured by a different company than the current revenue leader. Without this gate, the analyst risks buying the 2010s seat-based incumbent as a "workflow shift beneficiary" while the profit actually accrues to the agent-native disruptor.
 
 ## Recommended output
 For each sector, sub-industry, or custom theme, report:
