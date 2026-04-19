@@ -40,7 +40,7 @@ candidates:
 
 ## 2. Append Triggers (3 条)
 
-**T1 · Sector 扫描产出时**: `sector-expectation-gap-scanner` 或任何 `*_top{N}_*.md` 产出时, **Observation list 未入 Top 的 ticker** append 为 `raw`。理由: 被看见但没入 Top 的下一轮可能变 Top, 不能让它消失。
+**T1 · Sector 扫描产出时**: `sector-expectation-gap-scanner` 或任何 `*_top{N}_*.md` 产出时, **Top N + Observation list 全部** ticker append 为 `raw`. Top N 在 `notes` 标注 scanner 建议的 preliminary action (e.g. "scanner: Initiate, pending validation memo"); Observation 在 `notes` 标注所属不同 bucket (narrative re-rate / cyclical decel / bridge-but-known)。硬 Fail (Avoid) 列表不入队。理由: 被扫描看见但没完整 validation 的 ticker 不能只留在 source_output, 否则 queue 不 track 最高优先待验证对象 (medical_devices scan 首次暴露此 gap, 2026-04-19 修正)。
 
 **T2 · Propagation mapper 跑完时**: Step 5 识别出**当前 queue 未列的** US-listed bridge / duration owner → append 为 `raw`。PWR 漏识别即此 trigger 缺失。
 

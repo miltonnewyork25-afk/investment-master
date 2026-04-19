@@ -55,3 +55,108 @@ candidates:
     notes: >
       Cyclical mispricing 不同 alpha category (非结构性 owner).
       Kill Switch: Boeing 月产 ≥42 = Trim / ≥48 = Exit.
+
+  # === Medical Devices scan (2026-04-19), T1 trigger ===
+  # Top 5 structural duration owner bucket
+
+  - ticker: MDT
+    trend_attached: "医疗 multi-line duration owner (cardiac rhythm + spine + diabetes + neuromod, 四 trigger 相对独立)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/medical_devices_top5_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: raw
+    notes: >
+      Scanner #1: Initiate (light). 最高优先 validation 对象 — bridge × duration 双潜在通过 +
+      v1 认知空白最大. Bridge 硬测试按 trigger-independence 通过 (心律 ≠ 椎间盘 ≠ T1 ≠ 慢性疼痛);
+      Duration 硬测试 installed-base / deployment ratio ~3-5x.
+
+  - ticker: GEHC
+    trend_attached: "医疗影像 installed base + 长期服务合同 (post-spin duration owner)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/medical_devices_top5_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: raw
+    notes: >
+      Scanner #2: Initiate. 设备 10-15 年 + 服务 15-25 年, ratio ~5-8x, 切换成本 = PACS+培训.
+      Chokepoint: 全球仅 4 家 MR/CT OEM.
+
+  - ticker: BDX
+    trend_attached: "医院 consumables razor+blade (workflow lock-in 形式的 duration)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/medical_devices_top5_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: raw
+    notes: >
+      Scanner #3: Initiate. Waters spin (2025) 消化期 PE 压低; GLP-1 注射设备反向受益.
+      新发现: "workflow procedure lock-in" 是 installed base 的第二种形式 (v2.2 reminder).
+
+  - ticker: ISRG
+    trend_attached: "手术机器人 installed base + I&A recurring (textbook duration)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/medical_devices_top5_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: raw
+    notes: >
+      Scanner #4: Track Position (hot-theme penalty 启用). Duration ratio 最强 (~6-8x) 但 expectation
+      gap 窄, generalist 饱和. 仅在 SP / Ion 渗透超预期或 Hugo/Mako 装机 <2% 时 upgrade.
+
+  - ticker: STE
+    trend_attached: "院内灭菌服务 + 器械维修 (隐性 duration owner)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/medical_devices_top5_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: raw
+    notes: >
+      Scanner #5: Initiate (light). Cantel 整合消化期 + COVID 回吐后恢复; EtO 监管变化是
+      reverse kill switch.
+
+  # Observation (different buckets, 不与 Top 5 混排)
+
+  - ticker: RMD
+    trend_attached: "CPAP 睡眠呼吸暂停 installed base (受 GLP-1 narrative 压制)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/medical_devices_top5_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: raw
+    notes: >
+      Observation bucket: narrative re-rate (GLP-1 overhang). Duration 硬测试通过 (~4-6x),
+      但当前股价由 GLP-1 减重减 OSA 叙事主导. Upgrade: Q2-Q3 2026 earnings 证伪 GLP-1 影响 >10%.
+
+  - ticker: DXCM
+    trend_attached: "连续血糖监测 (CGM) razor+blade (T1 forced + T2 受 GLP-1 压制)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/medical_devices_top5_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: raw
+    notes: >
+      Observation bucket: narrative + competition (GLP-1 + ABT Libre). Upgrade: T1 growth ≥15% YoY +
+      T2 sensor 频率未因 GLP-1 下降.
+
+  - ticker: EW
+    trend_attached: "TAVR 结构性心 durable implant (新增量增速放缓)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/medical_devices_top5_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: raw
+    notes: >
+      Observation bucket: growth decel. Duration ratio 临界 (~2-3x), 再被 BSX Acurate / MDT Evolut
+      竞争压缩. Upgrade: TAVR global volume 加速 >15% 或 MitraClip 新 indication.
+
+  - ticker: ABT
+    trend_attached: "医疗多线 bridge (cardio + diabetes Libre + diagnostics + nutrition, 4 独立 trigger)"
+    source_engine: sector-expectation-gap-scanner
+    source_output: outputs/medical_devices_top5_2026-04-19.md
+    created_at: 2026-04-19
+    last_reviewed: 2026-04-19
+    status: raw
+    notes: >
+      Observation bucket: bridge-but-generalist-known. $180B 市值, 充分覆盖, expectation gap 窄.
+      Upgrade: -15% 回调或某 segment 意外加速.
