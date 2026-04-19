@@ -337,22 +337,45 @@ Look for:
 Goal:
 Estimate how fully the market has already discovered the sector.
 
-### Step 4.5: Pace gate (hard gate, v1.1 升级)
-Before classifying the gap, apply the Pace filter to every FROG-pass candidate.
+### Step 4.5: Pace gate (hard gate, v1.3 升级 — 三时钟拆分)
+Before classifying the gap, apply the Pace filter to every FROG-pass candidate. Pace measures **three clocks**, not one — the v1.1 single-clock version systematically under-ranked "contract-ramp" themes where signed contracts trail into earnings over 1–3 years.
 
-Answer three questions per candidate:
+**Three clocks per candidate**:
 
-- **Q1 · Realization clock**: How much of the thesis has already shown up in earnings / signed contracts / order book? (e.g. "LEU fuel-services revenue confirmed ~5%; most confirmation is 2026–28")
-- **Q2 · Diffusion clock**: How much has the market already bought in? (generalist fund ownership, sell-side coverage density, 52-week return vs peers, valuation re-rating already reflected)
-- **Q3 · Relative position**: Is Realization **ahead of** or **behind** Diffusion?
+- **C · Contracted Realization**: demand locked in via signed commercial contracts / firm order book / legislated funding schedule / long-term supply agreements with delivery dates. Count only items with firm commercial terms and ramp schedule. Do NOT count MOUs, letters of intent, marketing "pipeline", or indicative guidance.
+- **R · Recognized Realization**: portion of the thesis already booked in trailing 4-quarter earnings / revenue / margin improvement attributable to the theme specifically (not company-wide growth).
+- **D · Diffusion**: how much market has already priced in — generalist fund ownership shift, sell-side coverage density, 52-week return vs peers, valuation multiple re-rating vs 5-yr history.
 
-Hard rule:
+**Decision matrix**:
 
-- **Realization > Diffusion** → candidate may compete for top ranks (market has not yet caught up with confirmed reality)
-- **Realization ≈ Diffusion** → candidate ranks mid-bucket (fair pricing, good business but no special alpha)
-- **Realization < Diffusion** → candidate **cannot be ranked top-3 in its bucket**, regardless of FROG quality (market has already priced in more than earnings have confirmed; residual alpha depends on acceleration the analyst cannot yet see)
+| Clock order | Interpretation | Top-3 in bucket allowed? |
+|------------|---------------|--------------------------|
+| **R > D** | Market behind even booked earnings — fully undiscovered | **Yes (strongest)** |
+| **C > D > R** | Market ahead of booked earnings but behind contracted ramp — the Contracted→Recognized gap IS the alpha | **Yes** |
+| **D ≈ C > R** | Market priced to contracts, earnings will catch up fairly | Mid-bucket only |
+| **D > C ≥ R** | Market priced beyond even contracted backlog — residual alpha depends on acceleration not yet signed | **No (Pace block)** |
+| **R ≈ D** | Fully priced on booked earnings | Mid-bucket only |
 
-**Why this gate exists**: FROG is a structural quality test. Pace is an action-state test. A FROG-all-Pass candidate can still be a bad current action if the diffusion clock has already run (e.g. uranium miners after a 5x move, AI compute leaders after the 2023 re-rating). Without a Pace gate, "FROG Pass = top rank" becomes an automatic rule, which violates Article II.5 (respect timing) and 跨层硬规则 6 (financials verify, not decide). This gate forces the analyst to separate "this should be owned eventually" from "this is the right owner right now".
+**Why v1.3 split this** (upgrade from v1.1 single-clock):
+
+The v1.1 gate treated Realization as one clock measured by trailing earnings. This systematically under-ranked themes where 2024–25 signed contracts ramp into 2026–28 earnings.
+
+Worked examples:
+
+- **Nuclear fuel cycle** (DOE Russian LEU ban guidance 2024, HALEU contracts, SMR-utility MOUs with commercial terms) — C jumped 2024-25, R will ramp 2026-28, D had major re-rating 2023-24. Under v1.1 this was **"D > R" → blocked**. Under v1.3 it is **"C > D > R" → allowed top-3** because Contracted→Recognized gap IS the alpha window.
+- **Commercial HVAC refrigerant transition** (EPA AIM Act 2020, R-410A phase-down hitting 2025+) — same pattern, allowed.
+- **Data-center electrical** (FIX/EME backlog already in contracts AND already booking in earnings) — C high, R high, D extreme. Under v1.3 still blocked correctly: **D > C ≈ R**.
+- **AI compute leaders** (NVDA/AVGO) — C high, R high, D extreme. Still blocked: **D > C ≈ R**.
+
+**Measurement discipline**:
+
+- **C measurement**: cite specific contract value + ramp period from company filings or regulatory disclosure. "$X signed for delivery 20XX–20XX per 10-K / earnings call." No paper trail → **C = 0**, guard against inflation.
+- **R measurement**: cite trailing 4Q revenue / margin improvement attributable to the theme, separated from broader company growth.
+- **D measurement**: cite specific multiple re-rating vs 5-yr history + institutional ownership change. Anecdotal "this has been hot" is not a measurement.
+
+**Failure mode**: analyst inflates C to justify desired ranking ("contracts are coming", "pipeline is strong"). Guard: if C cannot cite a specific $ value and delivery window from a disclosed document, C is set to 0 for Pace purposes. MOUs without commercial terms do not count.
+
+**Why this gate exists**: structural quality (FROG) alone does not determine whether a theme is the right action now. Pace separates "this should be owned eventually" from "this is the right owner right now". The v1.3 refinement further separates "signed but not yet booked" (alpha window) from "neither signed nor booked" (speculation). Ignoring Pace violates Article II.5 (respect timing) and 跨层硬规则 6 (financials verify, not decide).
 
 ### Step 5: Classify the expectation gap
 
