@@ -168,16 +168,19 @@ candidates:
   # Top 5 structural owner composite (chokepoint + duration + bridge)
 
   - ticker: GTLS
-    trend_attached: "低温设备 + 压缩 chokepoint bridge (LNG + H2 + CCUS + 工业气 + maintenance, 5 独立 trigger)"
+    trend_attached: "能源转型 + 工业 chokepoint × bridge × duration 三重叠加 (IPSMR cryogenic + Howden 压缩, 5 独立 trigger: LNG + H2 + CCUS + 工业气 + maintenance)"
     source_engine: sector-expectation-gap-scanner
-    source_output: outputs/lng_top5_2026-04-19.md
+    source_output: outputs/gtls_chart_v2_validation_2026-04-19.md
     created_at: 2026-04-19
     last_reviewed: 2026-04-19
-    status: raw
+    status: validated
+    action_state: "Initiate (standard, 带回调纪律)"
     notes: >
-      Scanner #1: Initiate. LNG scan 最高优先 validation 对象 — 潜在第二个 bridge × duration
-      双通过. Bridge 硬测试 4 trigger 独立 (任一崩 resilience 55-75%), Duration ratio ~4-7x.
-      Less-crowded vs LNG/KMI (rule #7). 关键未验证: Howden segment-by-segment duration + backlog 精确值.
+      **首个 chokepoint + bridge + duration 三重通过** candidate, v2.2 新补丁 (#1 segment-by-segment
+      + #2 multi-core Step 1) 首次实战成功. Bridge: 5 trigger 独立, 任一崩 resilience 70-85%, 双崩
+      仍 >45%. Duration: 100% segment pass (vs MDT 88% 含结构性心 exception) — 无 exception 段落.
+      Kill Switch: 至少 3 chain 同时崩才触发 (极少见). 整合执行前提: Howden FY26 margin 回 mid-teens
+      OPM + FCF conversion >70%. v2.2 补丁 #3/#4 未 invoke, 等未来临界 case 测试.
 
   - ticker: LNG
     trend_attached: "液化终端 20 年 SPA 合同 (textbook duration, hot-theme)"
