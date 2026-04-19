@@ -86,15 +86,19 @@ candidates:
       Chokepoint: 全球仅 4 家 MR/CT OEM.
 
   - ticker: BDX
-    trend_attached: "医院 consumables razor+blade (workflow lock-in 形式的 duration)"
+    trend_attached: "医院 consumables workflow lock-in duration (bridge 属性被 v2.1 硬测试正式边界否决)"
     source_engine: sector-expectation-gap-scanner
-    source_output: outputs/medical_devices_top5_2026-04-19.md
+    source_output: outputs/bdx_becton_v2_validation_2026-04-19.md
     created_at: 2026-04-19
     last_reviewed: 2026-04-19
-    status: raw
+    status: validated
+    action_state: "Initiate (light)"
     notes: >
-      Scanner #3: Initiate. Waters spin (2025) 消化期 PE 压低; GLP-1 注射设备反向受益.
-      新发现: "workflow procedure lock-in" 是 installed base 的第二种形式 (v2.2 reminder).
+      **首个 scanner action_state 下调案例** (scanner Initiate → validated Initiate light).
+      Bridge 硬测试 borderline: 仅 2 trigger 真正独立 (医院运营 α+δ+γ 占 75-80% 高度相关,
+      Pharma 预填充 β 真正独立 15-20%); 某些情境下 resilience 低于 30% threshold.
+      Duration 硬测试: 100% segment pass (workflow lock-in 形式). 硬测试严肃性首次实证.
+      Scanner 发现于 medical_devices_top5_2026-04-19.md.
 
   - ticker: ISRG
     trend_attached: "手术机器人 installed base + I&A recurring (textbook duration)"

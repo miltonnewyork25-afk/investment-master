@@ -6,6 +6,7 @@
 > **Validation target**: 在非航空 / 非电力的第三类行业上测试 v2.1 duration owner 硬测试(installed-base 窗口 ≥ 2× deployment + 可量化切换成本)的可迁移性. 医疗器械是 duration owner textbook 土壤 (implant + service + consumable + regulation lock-in), 适合检验 GE/PWR 的 framework 是否真迁移得过来
 > **Data basis**: 训练知识截至 2026-01; FY24 数据 + Q1-Q3 2025 业绩. Q1 2026 earnings + 当前估值多档未 MCP 验证, 相关处用 ⚠ 标注
 > **Underlying thesis**: 医疗器械当前处于 "低 attention × 混合 fundamentals" 状态 — GLP-1 narrative 压制部分 sub-sector 估值 + 手术机器人 / 影像 AI / 心血管介入等 sub-sector 继续累积 installed base + monetization. 市场缺少统一 narrative 让它处于 "quiet improvement / underfollowed" 最佳 duration owner 猎场
+> **needs_patch**: true — BDX 的 "Multi-workflow bridge (weak)" 描述在 validation memo (`bdx_becton_v2_validation_2026-04-19.md`) 中被 v2.1 硬测试正式边界否决. 下次扫描应修正 BDX 定位为 "duration-only, 不是 bridge"; MDT 的 action_state 从 "Initiate light" 仍成立(post-validation 确认). 触发协议见 `08_CANDIDATE_QUEUE_MECHANISM.md` R3
 
 ---
 
