@@ -30,3 +30,15 @@ Correct trend does not mean correct expression.
 
 ## Flexibility
 If the best answer is "watch, don't own yet," say so.
+
+---
+
+## Extensions to test (pending real-case validation, not default choice set)
+
+Two candidate expression types to flag alongside the default five, for case-level validation before promotion:
+
+**Bridge owner expression** — monetizes ≥2 *independent* L1 forced demand sources (not two expressions of the same demand). Test: if one bucket fades, does a second demand still drive meaningful economics?
+
+**Duration owner expression** — installed-base / replacement / service monetization window ≥ 2× initial deployment cycle, with quantifiable switching cost.
+
+Also test: whether the best expression switches across time (early-wave chokepoint → late-wave duration owner) — v1 picks one answer, reality may require a time-indexed pair. Validation queued: GE Aerospace, Quanta. Upgrade the default choice set only after ≥1 case where v1 demonstrably missed the best answer.

@@ -40,3 +40,15 @@ Do not confuse participation with ownership.
 ## Flexibility
 If ownership is split across several layers, say so.
 Do not force a single winner if economics are genuinely mixed.
+
+---
+
+## Extensions to test (pending real-case validation, not default workflow)
+
+Two candidate owner roles worth testing in real cases before adding to default workflow:
+
+**Bridge owner hypothesis** — a company whose economics are driven by ≥2 *independent* L1 forced demand sources (not two expressions of the same demand). Hard test: if one demand bucket fades, does a second independent demand still pull meaningful revenue / margin / cash?
+
+**Duration owner hypothesis** — a company whose installed-base / replacement / maintenance / service monetization window is ≥ 2× the initial deployment cycle, with quantifiable switching cost. Hard test: can you name the replacement period and the $/unit over that period?
+
+Soft definitions ("benefits from recurring service") fail the test — they include every SaaS and every insurance broker. Validation queued: GE Aerospace (duration), Quanta (bridge). Upgrade only after ≥1 case where v1 missed the role.

@@ -230,3 +230,15 @@ The skill should help determine:
 - what is early adjacent
 - what is delayed but real
 - what is only thematic
+
+---
+
+## Extensions to test (pending real-case validation, not default workflow)
+
+Two candidate node types to flag during propagation mapping, for case-level validation before promoting to default workflow:
+
+**Bridge node hypothesis** — a node that sits on ≥2 *independent* L1 forced demand chains (not two expressions of the same demand). During mapping, flag any node that appears in more than one chain diagram.
+
+**Duration node hypothesis** — a node whose economics extend into replacement / maintenance / service layers with monetization window ≥ 2× the initial deployment cycle. During Step 6 time-sequencing, flag long-tail layer owners explicitly.
+
+Validation cases queued: GE Aerospace (duration), Quanta (bridge). Upgrade this skill only after ≥1 case where v1 demonstrably failed to surface these nodes.
