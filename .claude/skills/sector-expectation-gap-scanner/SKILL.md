@@ -173,6 +173,88 @@ It should allow custom themes such as:
 
 ## Default workflow
 
+### Step -1: Multi-entry discovery (hard gate, v1.2 升级)
+Before starting with a wide universe (Step 0), run five structured discovery queries in parallel. Each query generates seed candidates from a different input axis — each axis produces candidates that would NOT emerge from sector-first taxonomy.
+
+Run at least three of the five before proceeding. Seed candidates from Step -1 feed into Step 0's universe.
+
+**Coverage constraint**: seed candidates from Step -1 must populate ≥3 of the 5 gap buckets (A/B/C/D/E defined in Step 1.5). If all seeds fall into 1–2 buckets → re-run with different methods.
+
+#### M1 · Mandate-Budget-to-Vendor scan
+Start from regulations with deadlines and appropriated funding. Reverse to vendors.
+
+Two-layer query:
+
+- **Upper layer (mandate)**: rules with binding deadlines — EPA rulemaking, FERC orders, FDA final rules, FAA airworthiness directives, NRC regulations, SEC/state climate disclosure, IMO maritime rules.
+- **Lower layer (budget)**: money already committed — IIJA/BIL tranches, CHIPS Act awards, IRA incentives, state revolving funds, federal contract awards (SAM.gov, USASpending).
+
+Both layers must confirm; mandate alone without funding = slippage risk, funding alone without mandate = optional spending.
+
+Output: for each mandate-with-funding, identify top 3 vendors / operators / capacity owners.
+Example: EPA Lead & Copper Rule Improvements (10-yr deadline) + DWSRF appropriations → MWA / MLI / AOS.
+
+**Why this query exists**: answers Article I Q1 (forced demand) from the input side. Without structured mandate input, the analyst relies on what the market is already discussing — which is by definition NOT the expectation gap.
+
+#### M3 · Installed-base aging radar
+Start from aging assets where failure cost grows non-linearly with age. Reverse to replacement-capacity owners.
+
+Key test (distinguishes forced replacement from discretionary upgrade):
+
+- If the asset continues running, does insurance premium / downtime probability / compliance penalty / safety incident rate rise **non-linearly** with age?
+- Yes → forced replacement → scan for capacity owners with certification / PMA / approved-vendor status
+- No → discretionary upgrade → not a mandate-strength thesis
+
+Sources: industry reliability databases, insurance loss reports, FAA/FERC/NRC filings on asset age, trade association aging surveys.
+
+Example: FAA engine TBO cycle × PMA certifications → TDG / HEI / GE Aerospace. 40-yr average US transformer age × utility insurance loss data → HWM alloy layer.
+
+**Why this query exists**: aging-driven demand is often NOT covered by M1 (no new mandate, just existing mandate triggering on age). It produces candidates that look like boring "industrials" but are actually forced-replacement monopolies.
+
+#### M4 · Negative-screen inversion
+Start from sectors where capital is structurally avoiding despite improving fundamentals.
+
+Critical subtype distinction (do not collapse):
+
+- **Type A · Structural avoidance** — codified in institutional mandates: ESG exclusion lists, fund prospectus restrictions, regulatory prudential limits, sovereign wealth exclusions. Persistent and mechanical. Examples: Private Prisons, tobacco, firearms, gambling subsegments, fossil-fuel subsegments.
+- **Type B · Temporary avoidance** — event-driven sell-off, sentiment-driven avoidance. Mean-reverts as memory fades. Examples: regional banks post-SVB (recovered in 9 months), specific biotech after FDA rejection.
+
+Only **Type A produces durable expectation gaps**. Type B is value-trap prone.
+
+Test for Type A: is the avoidance codified in investment policy statements / fund prospectus / prudential rules? If yes → Type A. If "investors just don't like it" → Type B (unstable).
+
+**Why this query exists**: systematic capital avoidance creates a persistent bid-side vacuum. Fundamentals can improve for years before marginal buyer emerges. Produces exceptional expectation gaps but requires political / reputational risk tolerance.
+
+#### M-hop · Multi-hop chokepoint walk
+Start from a hot theme's most-bought owner. Walk 3–4 hops upstream. Each hop, ask: "What is the critical single-source / near-single-source supplier to this layer?"
+
+Stopping rule: continue walking while each hop has quantifiable flow-through economics; stop when (a) supplier becomes non-US-listed with no liquid ADR, or (b) causal chain becomes hand-waving ("will trickle down"). Applies 跨层硬规则 9 (causal distance limit).
+
+Example chains:
+
+- AI compute → HBM memory → probe-card testing → test architecture IP (verification subsegments of CDNS / SNPS)
+- AI power → transformer → grain-oriented electrical steel (CLF segment) → silicon alloy
+- Aerospace aftermarket → nickel-based superalloy (HWM) → titanium sponge (ATI as sole US producer)
+
+**Why this query exists**: Article I.2 "find constrained node" stops at hop 1 by default. Multi-hop walk finds chokepoints 2–3 removes from obvious theme leaders — often uncrowded because buyers of the theme leader don't know these layers exist.
+
+#### M-mono · Hidden monopoly behind commodity
+Start from commodities that look like price-taker businesses. Ask: is there an embedded IP / certification / geographic / scale monopoly that captures most of the economic profit?
+
+Test: separate revenue from EBITDA by segment. Even if the headline business is commodity, if >50% of EBITDA comes from a specific patented active / certified facility / geographic monopoly / approved-vendor status, that segment is a hidden monopoly.
+
+Examples:
+
+- Fertilizer → crop-protection active ingredients (CTVA patented actives vs generic commodities)
+- Industrial gases → noble gas supply (neon / xenon for lithography, disrupted by Ukraine war)
+- Steel → GOES segment (already in M-hop example)
+- Agriculture → seed genetics IP (CTVA again, BAYN-AG subsegment)
+
+Warning: these candidates often fail Gate 5a Investability (the profitable segment is a sub-business, not a pure play). Note the limitation before investing deeper time.
+
+**Why this query exists**: M4 Negative-Screen catches sectors "no one wants to own". M-mono catches sectors "everyone thinks they own but doesn't" — the profit sits in a buried layer that doesn't have its own ticker.
+
+---
+
 ### Step 0: Start with a wide universe
 Begin with a broad sector and theme map across the market.
 
@@ -352,6 +434,22 @@ Common trap:
 - Historical analog: Zendesk / Genesys were correctly identified as SaaS-era customer-service winners but were later displaced as the pricing model shifted. Identifying the right direction did not translate to picking the right owner.
 
 **Why this gate exists**: Buckets A–C use a chokepoint test for Owner clarity. Bucket D has a distinct failure mode — "right direction, wrong owner" — because the chokepoint in software is the workflow control layer, which may be captured by a different company than the current revenue leader. Without this gate, the analyst risks buying the 2010s seat-based incumbent as a "workflow shift beneficiary" while the profit actually accrues to the agent-native disruptor.
+
+### Step 7.6: Bridge-owner overlay (hard gate, v1.2 升级)
+After the ranked list is produced, run one additional query on the owner layer.
+
+For each top-ranked theme, ask:
+
+- Does any candidate owner simultaneously capture a **second independent forcing mechanism** that the market is NOT pricing?
+- If yes, and the market prices the owner only on the primary narrative → this owner is the preferred expression for this theme, replacing any "obvious owner" the sector scan produced.
+
+Example: KMI / WMB are priced as LNG midstream owners. They also carry natural gas pipeline exposure feeding AI data-center power build-out. The market prices the LNG narrative; AI-power exposure is a free option embedded in the same stock.
+
+Distinguishing note vs M-hop (multi-hop chokepoint walk): M-hop is **vertical** — one demand chain × 3–4 hops deep. Bridge-owner is **horizontal** — one company × 2+ independent demand chains converging.
+
+Rule: if overlay produces a candidate owner that captures 2 independent forcing mechanisms with the market pricing only 1 → replace the default obvious owner for that theme.
+
+**Why this gate exists**: Step -1 discovery methods and Steps 1.5–7.5 gates structure candidates at the theme level. Bridge-owner overlay structures selection at the owner level. A decent theme with a bridge owner often beats a great theme with an obvious owner, because the market scores obvious owners on single-factor exposure.
 
 ## Recommended output
 For each sector, sub-industry, or custom theme, report:
