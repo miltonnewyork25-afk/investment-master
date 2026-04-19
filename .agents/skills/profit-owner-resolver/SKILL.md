@@ -74,6 +74,15 @@ These often include installed-base service owners, certified aftermarket owners,
 - Would it still win if one narrative cooled down?
 - Is the market misclassifying it into only one bucket?
 
+#### Hard test (v2.1, from Quanta validation)
+
+Passing "bridge owner" requires **both**:
+
+1. **Trigger-mechanism independence** — the demand chains must be driven by *different forcing mechanisms* (e.g., asset aging + hyperscaler CapEx + policy mandate + industrial policy). Chains that share the same terminal demand (e.g., "more electricity") can still qualify *if* their trigger mechanisms are independent.
+2. **Resilience threshold** — if the dominant chain collapses, at least one other chain must independently sustain ≥30% of current revenue or economics.
+
+Chains that are merely "two expressions of the same driver" fail the test. What matters is whether collapse in one driver leaves meaningful economics intact.
+
 ### Duration owner questions
 - Does this company monetize what gets installed after the market stops focusing on initial deployment?
 - Does it benefit from service, maintenance, replacement, software, certification, parts, or lifecycle economics?
