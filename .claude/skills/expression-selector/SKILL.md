@@ -60,6 +60,15 @@ Has real economics but is not widely recognized as part of the trend.
 Connects multiple propagation chains or thematic buckets.
 May have a better setup than the obvious theme leader because it monetizes multiple demand flows.
 
+#### Hard test (v2.1, from Quanta validation)
+
+Passing "bridge owner" requires **both**:
+
+1. **Trigger-mechanism independence** — the demand chains must be driven by *different forcing mechanisms* (e.g., asset aging + hyperscaler CapEx + policy mandate + industrial policy). Chains that share the same terminal demand (e.g., "more electricity") can still qualify *if* their trigger mechanisms are independent.
+2. **Resilience threshold** — if the dominant chain collapses, at least one other chain must independently sustain ≥30% of current revenue or economics.
+
+Chains that are merely "two expressions of the same driver" fail the test. What matters is whether collapse in one driver leaves meaningful economics intact.
+
 ### 6. Duration owner
 May not move first, but can monetize the installed base, maintenance, replacement, or long-tail economics better than the early winner.
 
