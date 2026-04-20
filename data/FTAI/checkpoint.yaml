@@ -2,10 +2,10 @@ ticker: FTAI
 analysis_target: "FTAI Aviation Ltd. - 航空租赁和航空产品"
 quality_target: 4.5
 output_target: ">150KB"
-current_phase: "Phase 0 - 数据收集85%完成，准备进入Phase 0.5"
+current_phase: "Phase 0.5 完成 - 核心矛盾结晶已产出, 准备Phase 1"
 date_started: "2026-04-19"
 date_updated: "2026-04-20"
-progress_status: "完成两轮深度数据收集，关键缺失数据大幅补充，数据完整度85%"
+progress_status: "P0.5完成: default_map_audit(6,837字符)+thesis_crystallization(10,720字符), 4候选范畴+4非共识假说登记完毕"
 
 completed_phases:
   - phase: "Phase -1"
@@ -31,6 +31,35 @@ completed_phases:
     files_created:
       - "staging/FTAI_P0_continued_data_collection.md"
       - "staging/FTAI_P0_continued_data_collection_supplement.md"
+
+  - phase: "Phase 0.5 核心矛盾结晶"
+    description: "Default map audit + Thesis crystallization, 4候选范畴+4非共识假说"
+    status: "完成"
+    date_completed: "2026-04-20"
+    files_created:
+      - "staging/FTAI_default_map_audit.md (6,837字符, 5 failure_points)"
+      - "staging/FTAI_thesis_crystallization.md (10,720字符, 4候选+4假说)"
+    key_outputs:
+      failure_points:
+        - "FP1: 负FCF 3年累计-\$3.1B vs compounder叙事"
+        - "FP2: DIO+132天 vs 毛利率同期+19pp"
+        - "FP3: PE 56x vs WLFC 5x (11倍)"
+        - "FP4: CapEx 3:7 + 2026+塌陷70%"
+        - "FP5: CEO+16.7x持股 vs Q4连续miss"
+      category_candidates:
+        - "A: 航空租赁+产品混合成长股(旧地图)"
+        - "B: CFM56 Module Manufacturing Specialist"
+        - "C: 垂直整合航空售后帝国 (Hybrid闭环)"
+        - "D: CFM56最后5-10年现金流提取 (时间窗口)"
+      non_consensus_hypotheses:
+        - "H1: FTAI应像TransDigm估值 (PE 30-40x)"
+        - "H2: 负FCF是资本金吸纳模式(类Ponzi)"
+        - "H3: 56x PE来自垂直整合稀缺性溢价"
+        - "H4: Alpha来自feedstock套利"
+      top_3_key_variables:
+        - "2026年模块交付数 (Q1≥220, H1≥440, FY≥840 = 80%下限)"
+        - "2026年FCF trajectory (H1≥+\$400M to track +\$915M)"
+        - "Aerospace Products EBITDA margin稳定性 (维持≥36%, 向40%迈进)"
     key_findings:
       - "CFM56退役曲线: 2030年前仍为主导机型，为FTAI提供5-10年增长窗口"
       - "分部门利润引擎: Aerospace Products EBITDA $671M(36%利润率) > Aviation Leasing $609M"
