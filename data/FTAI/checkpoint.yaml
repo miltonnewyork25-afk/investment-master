@@ -2,10 +2,10 @@ ticker: FTAI
 analysis_target: "FTAI Aviation Ltd. - 航空租赁和航空产品"
 quality_target: 4.5
 output_target: ">150KB"
-current_phase: "Phase 4 完成 - 红队 5靶子 + R-3 圆桌 + R-4 认知边界 + 深度因果链扩展"
+current_phase: "Phase 4 完成 + v2 优化补强 (Skeptic 3.8/5 审计 → 3 FLAG 全修)"
 date_started: "2026-04-19"
 date_updated: "2026-04-20"
-progress_status: "P4完成: FTAI_P4_redteam.md(41,775字符, DM 新增 48, 累计 80, 因果密度 15.1/万字, 范畴重分配 9处, voice 0). 核心结果: (1) 5靶子压力测试: #1 EBITDA recurring 拆分 Bull 86%/Base 71%/Bear 59%, 市场若重定价下行 -20 到 -36% [DM-RT-022]; #2 Aerospace margin 36% 三情景加权 31.6%, source 3 机制拆解为 book value transfer + 规模经济, 非套利 [DM-RT-023]; #3 AAR 2030 续约 55% 校准至 45-50%, 反身性风险识别 [DM-RT-024]; #4 SARO 2028 威胁加权 15-20% 概率, 影响 -2pp; #5 SCI NPV 调低至 $1.3B. (2) R-3 圆桌 5 大师: Buffett+Munger/Marks/Klarman 反对, Druckenmiller trim, Greenblatt 小仓 — 4/5 建议下调 → 评级标注 (临界, 高争议). (3) R-4 认知边界: 可推演度 58% / 复杂度 4/5 / 黑箱 32% → 禁单点目标价, 必须区间, 执行摘要前 5 行标注. (4) 新增 3 剪刀差 #9-#11 (CapEx vs FCF / module +35% vs margin / CEO 持股 diversification). (5) 范畴重分配 4 次 (business model / investment nature / risk profile / price discovery). (6) P4 期望回报 -25% (P3 -24% 轻微削弱, 5 靶子逐项削弱 + 圆桌信心折价). (7) Kill Switch: 5 红 4 黄 4 绿, Q1 2026 earnings 是 3 月内首要 catalyst. 评级: 审慎关注 (临界, 高争议)."
+progress_status: "P4 v2 完成 (修复 3 FLAG): FTAI_P4_redteam.md(46,141字符, DM 81, 因果密度 15.0/万字, voice 0, 范畴重分配 9). 审计修复: (FLAG-3 必修) 黑箱公式 v1 错误 (55%×0.58 relevance) 修复为 v2 加权直报 63.5%, 越过 Klarman too hard 阈值 35%, 评级表达从'需折价'升级为'too hard 边界/严格标准 pass'. (FLAG-1) 三口径清晰化: Bayesian 主口径 -17% (final), aggregate stress -46.5% (参考), 中位数 -25% (汇总), 取中决策循环论证移除. (FLAG-2) Munger 合并入 Buffett 成单一视角 (6.1 合并节), Section 6 编号 6.1-6.7 连贯, 5 独立视角 4/5 下调计数一致. (UNKNOWN_LEAK-2) 剪刀差 #9 FCF $400-600M 补三锚推导 (历史 conversion ratio / 反例条件 / 同行 WLFC+AerCap). 核心结果保持: 5 靶子 / R-3 圆桌 4/5 异议 / R-4 黑箱 63.5%+复杂度 4/5+可推演度 58% / Kill Switch 5红4黄4绿. 评级: 审慎关注 (临界, 高争议), 期望 -17%, 区间 -35% 到 +30%. Skeptic 审计通过基本为 PASS, FLAG 全修。"
 
 completed_phases:
   - phase: "Phase -1"

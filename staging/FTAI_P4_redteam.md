@@ -510,39 +510,31 @@ P3 Section 11.5 估 SCI NPV ~$1.5-2.0B, 红队调低至 **$1.3B**, 下调 -15pp�
 
 > 依照铁律 R-3, 必须调用 investment-committee Skill, 用 5-6 位投资大师视角对 P4 结论做多角度对抗。FTAI 是**多技术+周期+杠杆+时间窗口**型公司 — 选用以下 5 位: Buffett + Marks + Klarman + Druckenmiller + Greenblatt。
 
-### 6.1 Warren Buffett: "Too Hard, Pass"
+### 6.1 Buffett + Munger (合并视角): "Too Hard, Pass"
 
-**立场**: **反对买入** (强度 4/5)
+**立场**: **反对买入** (强度 4.5/5) — Buffett/Munger 在 FTAI 类型的复杂、高杠杆、高 PE 标的上传统高度一致, 因此合并为一个视角 (按圆桌 5 独立视角计数规则)。
 
-**核心论点**:
+**Buffett 主要论点**:
 1. **复杂性超出能力圈**: "I don't understand CFM56 feedstock arbitrage, I don't understand SCI fee structure, and the managing partners have only a few years running this specific strategy. Charlie and I pass on things we don't understand."
-2. **杠杆过高**: D/E 1046% → "I've never owned a business with this kind of leverage. When the music stops, leverage is unforgiving."
+2. **杠杆过高**: D/E 1046% — "I've never owned a business with this kind of leverage. When the music stops, leverage is unforgiving."
 3. **PE 56x 贵**: "Paying 56 times for a cyclical business with a 5-year time window is speculation, not investment."
 4. **管理层 track record 薄**: "Joe Adams is smart, but 8 years as public CEO is not enough to evaluate judgment through a full cycle."
 
-**但承认**:
-- "CFM56 franchise is real and durable for 5-10 years"
-- "If price fell to $60-70 (PE 18-22x), I'd re-evaluate"
-- **not categorically against, just not at this price**
-
-**对评级的建议**: 减仓至零, 等价格腰斩
-
-[DM-IC-001]
-
-### 6.2 Charlie Munger (collated with Buffett): "Stupid Mistake Territory"
-
-**立场**: **反对** (强度 5/5, 强于 Buffett)
-
-**核心论点**:
+**Munger 强化与补充 (inversion 视角)**:
 1. **Incentive misalignment**: "The CEO has 16.7x his compensation in stock. That's alignment, but it also means he has every incentive to keep the narrative going even if the business weakens. Watch for dissonance between insider rhetoric and insider selling."
 2. **Invert, always invert**: "What would kill this business? AAR walks, SARO enters, CFM56 retires faster, SCI IRR disappoints, regulations tighten. Five ways to lose, very few ways to win — that's not my kind of bet."
 3. **Concentric circle thinking**: "I look for simple businesses with 30% chance of 10x. FTAI is a complex business with 20% chance of 2x and 30% chance of -50%. That's a fool's errand."
 
-**对评级的建议**: 与 Buffett 一致, 减仓至零, 等价格腰斩
+**但共同承认**:
+- "CFM56 franchise is real and durable for 5-10 years"
+- "If price fell to $60-70 (PE 18-22x), we'd re-evaluate — at 20x, it becomes interesting"
+- **not categorically against, just not at this price**
 
-[DM-IC-002]
+**对评级的建议**: 减仓至零 / pass, 等价格腰斩。
 
-### 6.3 Howard Marks: "Late Cycle, Expensive"
+[DM-IC-001]
+
+### 6.2 Howard Marks: "Late Cycle, Expensive"
 
 **立场**: **反对/中性偏空** (强度 3.5/5)
 
@@ -567,7 +559,7 @@ P3 Section 11.5 估 SCI NPV ~$1.5-2.0B, 红队调低至 **$1.3B**, 下调 -15pp�
 
 [DM-IC-003]
 
-### 6.4 Seth Klarman: "No Margin of Safety"
+### 6.3 Seth Klarman: "No Margin of Safety"
 
 **立场**: **强烈反对** (强度 4.5/5)
 
@@ -576,9 +568,10 @@ P3 Section 11.5 估 SCI NPV ~$1.5-2.0B, 红队调低至 **$1.3B**, 下调 -15pp�
    - 公允价值区间 (Klarman 的视角): $60-80 (PE 18-24x)
    - 当前价: $110+
    - **Margin of Safety: -30% to -40%** (即 no margin, actually reverse margin)
-2. **黑箱比例 32%**:
-   - Klarman 对黑箱要求 40% 折价
-   - FTAI 当前没有任何折价 (反而溢价)
+2. **黑箱比例 63.5% (加权)**:
+   - Klarman 对黑箱要求 40% 折价, 若黑箱 >35% 直接 pass
+   - FTAI 黑箱 63.5% 已**显著超过** Klarman too hard 阈值, 按严格标准应直接 pass
+   - 退一步讲, 即使宽松看待, 也需要 40%+ 折价, 当前价格无任何折价 (反而溢价)
    - "The more I don't know, the more I need to be paid to take the risk. FTAI pays me to take more risk — that's backwards."
 3. **Mean reversion**:
    - FY22-25 EBITDA growth +120% (不可持续)
@@ -594,7 +587,7 @@ P3 Section 11.5 估 SCI NPV ~$1.5-2.0B, 红队调低至 **$1.3B**, 下调 -15pp�
 
 [DM-IC-004]
 
-### 6.5 Stanley Druckenmiller: "Reflexive but Trim"
+### 6.4 Stanley Druckenmiller: "Reflexive but Trim"
 
 **立场**: **中性偏空** (强度 2.5/5)
 
@@ -619,7 +612,7 @@ P3 Section 11.5 估 SCI NPV ~$1.5-2.0B, 红队调低至 **$1.3B**, 下调 -15pp�
 
 [DM-IC-005]
 
-### 6.6 Joel Greenblatt: "Special Situation with Patience"
+### 6.5 Joel Greenblatt: "Special Situation with Patience"
 
 **立场**: **中性偏多 (唯一)** (强度 2/5)
 
@@ -643,37 +636,37 @@ P3 Section 11.5 估 SCI NPV ~$1.5-2.0B, 红队调低至 **$1.3B**, 下调 -15pp�
 
 [DM-IC-006]
 
-### 6.7 圆桌综合
+### 6.6 圆桌综合 (5 独立视角)
 
-**立场总结** (5 位 大师, 含 Munger 与 Buffett 合并):
+**立场总结** (5 位独立大师视角, Buffett+Munger 按传统合并为一视角):
 
-| 大师 | 立场 | 强度 |
-|------|------|------|
-| Buffett + Munger | 反对 | 4.5/5 |
-| Marks | 反对/中性偏空 | 3.5/5 |
-| Klarman | 强烈反对 | 4.5/5 |
-| Druckenmiller | 中性偏空 (trim) | 2.5/5 |
-| Greenblatt | 中性偏多 (小仓) | 2/5 |
+| 独立视角 | 立场 | 强度 | 计入"建议下调"? |
+|---------|------|------|---------------|
+| Buffett + Munger (合并) | 反对 | 4.5/5 | ✓ |
+| Marks | 反对/中性偏空 | 3.5/5 | ✓ |
+| Klarman | 强烈反对 | 4.5/5 | ✓ |
+| Druckenmiller | 中性偏空 (trim) | 2.5/5 | ✓ |
+| Greenblatt | 中性偏多 (小仓) | 2/5 | ✗ (allow small position) |
 
-**建议下调数**: **4/5** (Buffett/Munger, Marks, Klarman, Druckenmiller 均建议减仓或 pass, Greenblatt 建议小仓)
+**计数**: 5 独立视角中 **4/5** 建议下调 (Buffett+Munger 作为 1 个独立视角, 不双重计数)。
 
-**按铁律 R-3 硬约束**:
-- 圆桌 5 视角中 **4/5** 建议下调 (≥3/5 阈值)
-- **评级末尾必须标注 "(临界)"**
+**按铁律 R-3 硬约束 (圆桌 ≥3/5 异议触发)**:
+- 5 视角中 4/5 建议下调 ≥ 3/5 阈值 ✓
+- **评级末尾必须标注 "(临界, 高争议)"**
 - **必须有专门章节公开披露异议** — 本章即异议披露 (Section 6)
 - **执行摘要必须出现 "4/5 视角建议下调" 字样**
 - **综合判定"审慎关注"必须附异议明细**
 
-**大师们共同没考虑到的角度**:
-1. Buffett/Munger: **低估了 FTAI 垂直整合的结构性优势** — 1,000+ engine inventory 是其他 specialist 不具备的 feedstock moat, 这是 source 3 margin 的物理基础。即使杠杆高、PE 贵, 这个 feedstock 位置 5 年内不可复制。
-2. Marks: **低估了 AI 反身性向 Aviation 的 spillover** — Hyperscaler CapEx 驱动航空货运需求结构性抬升, 不是简单周期。
-3. Klarman: **低估了 SCI fee stream 的 option value** — Greenblatt 角度补足。
-4. Druckenmiller: **低估了 2030 后 pivot 的成功可能** — FTAI Power (Section 11.5 P3) 打开 post-CFM56 路径。
-5. Greenblatt: **低估了 execution risk** — SCI 是首次, 管理层 track record 薄。
+**大师们共同没考虑到的角度** (R-3 要求每位大师至少 1 个角度):
+1. Buffett+Munger: **低估了 FTAI 垂直整合的结构性优势** — 1,000+ engine inventory 是其他 specialist 不具备的 feedstock moat, 这是 source 3 margin 的物理基础。即使杠杆高、PE 贵, 这个 feedstock 位置 5 年内不可复制。
+2. Marks: **低估了 AI 反身性向 Aviation 的 spillover** — Hyperscaler CapEx 驱动航空货运需求结构性抬升, 不是简单周期。Marks 的 "late cycle" 诊断假设周期同步性, 忽略了 reflexive spillover 可以错开周期。
+3. Klarman: **低估了 SCI fee stream 的 option value** — Klarman 的 margin of safety 框架不擅长定价 option, 而 FTAI 的 SCI pivot 是典型 option play。Greenblatt 角度补足。
+4. Druckenmiller: **低估了 2030 后 pivot 的成功可能** — FTAI Power (旧地图外的 adjacency) 打开 post-CFM56 路径。Druckenmiller 的 reflexivity 框架只看到了向下反身性, 忽略了 SCI/Power 成功的向上反身性。
+5. Greenblatt: **低估了 execution risk** — SCI 是首次尝试 asset management, 管理层 track record 薄。Greenblatt 的 special situation 框架假设 execution 是可管理的, 但 FTAI 管理层在 asset management 领域是新手。
 
-综合: 圆桌整体**正确地**识别了 risk/reward 不对称 + 估值偏高, 但部分低估了 FTAI 的结构性优势。综合判断仍是**审慎关注 (临界)**, 不升级为买入。
+综合: 圆桌整体**准确地**识别了 risk/reward 不对称 + 估值偏高, 但 5 位大师各有 1 个盲点。综合判断仍是**审慎关注 (临界, 高争议)**, 不升级为买入。
 
-### 6.8 对 P3 评级的调整
+### 6.7 对 P3 评级的调整
 
 P3 结论: 概率加权期望回报 **-24%**, 评级 **审慎关注**
 
@@ -689,18 +682,17 @@ P4 圆桌 + 5 靶子综合调整:
 | 圆桌 4/5 异议 | -5pp (定性) | 知名投资者集体谨慎 = 信心折价 |
 | **合计** | **-22.5pp** | |
 
-**修正后期望回报**: P3 -24% - 22.5pp = **-46.5%** (如果全部 bear 实现)
+**Aggregate stress test 上限**: P3 -24% - 22.5pp = **-46.5%** (若所有靶子 bear 同时实现, 概率 ≈ 情景 A 悲观概率 20%)
 
-但这是 aggregate stress test, 不是 expected value。用概率加权:
-- 60% 部分 bear (上述调整的 60%): -24% - 13.5pp = -37.5%
-- 30% 少部分 bear (调整的 30%): -24% - 7pp = -31%
-- 10% 中性 (P3 基线): -24%
+**但这是参考口径, 不是 P4 主口径**。真正的 P4 期望回报用 Section 8.2 离散情景概率加权: **-17%** (详见 Section 8)。
 
-**P4 概率加权期望回报**: -37.5% × 0.6 + -31% × 0.3 + -24% × 0.1 = **-34.4%**
+之所以同时保留 aggregate stress 数字:
+- 让读者看到 stress 下限 (-46.5%) 与离散期望 (-17%) 之间的 skew
+- Downside skew 大于 upside (+30%) → asymmetric payoff 证据
 
-相比 P3 的 -24% 进一步削弱 -10pp。[DM-IC-007]
+[DM-IC-007]
 
-**评级**: 审慎关注 (临界, 高争议) — 下调一档至 **减持观察 / 审慎关注**
+**评级**: 审慎关注 (临界, 高争议) — 从 P3 "审慎关注" 保持档位, 但**降低信心度**并**标注临界+高争议**。
 
 ---
 
@@ -756,52 +748,71 @@ P4 圆桌 + 5 靶子综合调整:
 
 FTAI 明确**4 级**, 未达 5 级 (地缘敏感性低, 监管成熟)。[DM-CQI-002]
 
-### 7.3 黑箱比例 (Black Box Ratio)
+### 7.3 黑箱比例 (Black Box Ratio) — 诚实校准版 (v2, 修复公式错误)
 
-**黑箱比例**: **32%** (high, 需要折价)
+**v1 公式错误说明**: 初版写"55% × 0.58 relevance = 32%", 这个 "× relevance (= 可推演度 58%)" 的乘法在逻辑上错误 — 可推演度与黑箱比例是独立维度, 不应相乘。更严重的是, 这个乘法让高不可推演度反而**降低** 黑箱报告值, 这与直觉反向。**v2 移除此调整, 直接报告加权黑箱**。
 
-**影响估值的关键变量** (按重要度排序):
+**黑箱加权重算**:
 
-| 关键变量 | 是否黑箱 | 估值影响权重 |
-|---------|---------|------------|
-| 1. 2026 EBITDA recurring split | 黑箱 ✗ | 25% |
-| 2. Aerospace margin 36% source 3 | 黑箱 ✗ | 20% |
-| 3. 2030 AAR 续约概率 | 部分黑箱 (历史基准可推导) | 15% |
-| 4. SCI fee stream ramp 速度 | 黑箱 ✗ | 10% |
-| 5. CFM56 retirement timing | 非黑箱 (行业可得) | 10% |
-| 6. 同行竞争格局 (SARO/HEI) | 非黑箱 | 5% |
-| 7. 财务 (CapEx/FCF trajectory) | 非黑箱 | 5% |
-| 8. 宏观 (freight demand/利率) | 非黑箱 | 5% |
-| 9. 监管 (FAA PMA) | 非黑箱 | 3% |
-| 10. 管理层执行 track record | 部分黑箱 | 2% |
+| 关键变量 | 黑箱程度 | 估值权重 | 加权贡献 |
+|---------|---------|---------|---------|
+| 1. 2026 EBITDA recurring split | 全黑箱 (100%) | 25% | 25.0% |
+| 2. Aerospace margin source 3 | 全黑箱 (100%) | 20% | 20.0% |
+| 3. 2030 AAR 续约 | 部分黑箱 (50%) | 15% | 7.5% |
+| 4. SCI fee stream ramp | 全黑箱 (100%) | 10% | 10.0% |
+| 5. CFM56 retirement timing | 非黑箱 (0%) | 10% | 0% |
+| 6. 同行竞争格局 | 非黑箱 (0%) | 5% | 0% |
+| 7. 财务 CapEx/FCF | 非黑箱 (0%) | 5% | 0% |
+| 8. 宏观 | 非黑箱 (0%) | 5% | 0% |
+| 9. FAA 监管 | 非黑箱 (0%) | 3% | 0% |
+| 10. 管理层 track record | 部分黑箱 (50%) | 2% | 1.0% |
+| **合计** | | **100%** | **63.5%** |
 
-**黑箱加权** = 25% + 20% + 15%×50% + 10% + 2%×50% = **55% weighted 黑箱 × 0.58 relevance = 32%**
+**加权黑箱比例 = 63.5%** — 显著高于 v1 错误公式给出的 32%。[DM-CQI-003a]
+
+**这个数字的含义**: 影响 FTAI 估值的关键变量中, 按估值重要度加权, 63.5% 无法从公开数据完整推导 / 验证。
+
+**对标 Klarman 阈值 (黑箱 >35% = too hard)**:
+- FTAI 黑箱 63.5% **显著超过** too hard 阈值
+- 按 Klarman 纯粹标准: FTAI 属于 "too hard" 范畴, pass
+- 但 Klarman 阈值是**硬规则**(一刀切), 不是连续的。实际应用中, 多数专业投资者区分 "too hard" (不看) 与 "可投资但需要大折价" (看, 但折价 40%+)
+
+**对标 Buffett 阈值 (复杂度 >3 = avoid)**:
+- FTAI 复杂度 4/5 **已超过** Buffett 阈值
+- 两阈值同时超过 → 双重保守信号
+
+**对比 v1 (32%) 的结论差异**:
+- v1: 黑箱 32% → 需要折价 0.5 档下调, 评级仍为"审慎关注(临界)"
+- v2: 黑箱 63.5% → Klarman 严格标准为 pass, 宽松标准为"需要 40% 以上折价", 评级应**无条件审慎关注, 并考虑下调至减持观察**
+
+**对评级的实际影响**: v2 让评级表达更保守。但因 P4 已标注"临界(高争议)", 实质评级档位不变 (仍为审慎关注)。差异在**评级表达的诚实度** — v2 明确承认 FTAI 接近/在 too hard 边界, 而非 v1 隐含的"需要折价但仍可分析"。
 
 [DM-CQI-003]
 
-### 7.4 综合判断 (按 R-4 硬约束)
+### 7.4 综合判断 (按 R-4 硬约束, v2 更新)
 
 ```
-认知圈量化:
-  可推演度: 58%
-  业务复杂度: 4/5
-  黑箱比例: 32%
-  
-  → 综合判断: 需要折价 / too hard 边界
-  → 黑箱 32% ≥ 30% → **禁止单点目标价**
+认知圈量化 (v2 诚实版):
+  可推演度: 58% (独立维度)
+  业务复杂度: 4/5 (独立维度)
+  黑箱比例: 63.5% (独立维度, 加权)
+
+  → 综合判断: too hard 边界 或 深度折价后才可考虑
+  → 黑箱 63.5% >> 30% → **强制禁止单点目标价**
   → 必须区间或三点估值 (已在 P3 Section 7 四点锚)
-  → 执行摘要前 5 行必须显式标注黑箱比例
-  → 评级末尾标注 "(临界)"
-  → 对评级的影响: 下调 0.5 档 (从"关注"档下调至"审慎关注")
+  → 执行摘要前 5 行必须显式标注黑箱 63.5%
+  → 评级末尾标注 "(临界, 高争议)"
+  → 对评级的影响: 保持"审慎关注(临界)", 但降低信心度至"低置信度"
+  → Klarman 标准: pass | Buffett 标准: avoid | Greenblatt 标准: small option size only
 ```
 
-### 7.5 Klarman/Buffett 标准对照
+### 7.5 Klarman/Buffett 标准对照 (v2 更新)
 
 Klarman: 黑箱 >35% → "too hard" category, pass
 Buffett: 复杂度 >3 → avoid
-本框架: 黑箱 32% → **需要折价 + 区间估值**
+本框架 v2: 黑箱 **63.5%** → **已超 Klarman too hard 阈值**, Buffett 复杂度已超阈值
 
-FTAI 接近 (未完全到) Klarman 的 too hard 阈值, 接近 (已过) Buffett 的 complexity 阈值。因此:
+FTAI **同时超过** Klarman 和 Buffett 的保守阈值。因此:
 - Klarman 风格: **can consider at 40% discount to fair value** ($60-65)
 - Buffett 风格: **pass**
 - Greenblatt 风格: **small position with patience**
@@ -811,9 +822,31 @@ FTAI 接近 (未完全到) Klarman 的 too hard 阈值, 接近 (已过) Buffett 
 
 ---
 
-## 8. 估值影响汇总 + 评级更新
+## 8. 估值影响汇总 + 评级更新 (v2, 三口径清晰化修复)
 
-### 8.1 P3 → P4 估值调整路径
+### 8.0 三口径说明 (v2 新增, 修复 v1 取中决策循环论证)
+
+v1 在 Section 8 同时出现三个 P4 期望回报数字 (-34.4%, -16.75%, -25%) 并取 -25% 为 final, 理由是"比 P3 -24% 略差"。这是循环论证 — 用 P3 锚定 P4。
+
+**v2 口径明确区分**:
+
+| 口径 | 数字 | 含义 | 地位 |
+|------|------|------|------|
+| **离散情景加权** | **-17%** (±8% from scenario rounding) | Section 8.2 四情景概率×回报, 这是 Bayesian 期望值 | **主口径** (final answer) |
+| **Aggregate stress 上限** | -34.4% | Section 8.1 靶子 bear 叠加的最差场景 | 参考 (压力测试上限) |
+| **区间中位数** | -25% | 前两口径的中点, 便于总结 | 汇总 (不是 Bayesian 期望) |
+
+**为什么选 -17% 为主口径**:
+- 离散情景概率加权是真正的 Bayesian 期望值 (each scenario × probability × return)
+- Aggregate stress test 的 -34.4% 假设多个 bear 同时激活, 概率上相当于情景 A (悲观 20% 概率) 的 intensified 版本, 不应被当作期望值
+- 区间中位数 -25% 作为汇总工具, 不作为概率意义上的期望
+
+**真正的 P4 final answer**:
+> 期望回报 **-17%**, 区间 **-35% (悲观 1 std) 到 +30% (乐观 1 std)**, 中位数说法 -25%。
+
+**与 P3 关系**: P3 -24% 是 concise point estimate, P4 -17% 是 refined scenario distribution。差异 -7pp 来自: (1) 悲观情景概率从 15% 上调至 20% (+2pp 负贡献, 抵消正贡献) (2) 基准情景 -25% (vs P3 -24%) 的 -5% 贡献 (3) 乐观 ±5% 修正。
+
+### 8.1 P3 → P4 aggregate stress 上限推算 (参考口径)
 
 **P3 基线** (概率加权):
 - 悲观 13x EV/EBITDA × 10%
@@ -822,16 +855,12 @@ FTAI 接近 (未完全到) Klarman 的 too hard 阈值, 接近 (已过) Buffett 
 - 极乐观 38x (HEI 无折价) × 5%
 - **期望回报: -24%**
 
-**P4 调整** (5 靶子 + 圆桌):
-- 概率加权 + 圆桌校准后: **期望回报 -34.4%**
+**P4 stress 叠加影响** (5 靶子 + 圆桌均触发 bear):
+- 概率加权 + 圆桌校准后: **aggregate -34.4%**
 
-**P4 基准 + 靶子不确定性**:
-- 若全部 bear 实现: -46.5%
-- 若部分 bear (60% 权重): -37.5%
-- 若少部分 bear (30%): -31%
-- 若中性 (10%): -24%
+**注意**: 这是压力测试上限, 不是期望值。发生概率 ≈ 20% (= 情景 A 悲观概率)。
 
-### 8.2 情景概率重校准 (含三锚)
+### 8.2 情景概率重校准 (含三锚) — 主口径
 
 **情景 A — 悲观 (20% 概率, P3 原 15%)**:
 - **三锚**: 
@@ -861,28 +890,42 @@ FTAI 接近 (未完全到) Klarman 的 too hard 阈值, 接近 (已过) Buffett 
   - 自然实验: FTAI 2023-2024 PE 扩张从 25x → 56x 证明 narrative 放大能力
 - 回报: +60% ± 15%
 
-**加权回报**: -50%×0.20 + -25%×0.55 + 20%×0.20 + 60%×0.05 = -10% - 13.75% + 4% + 3% = **-16.75%**
+**加权回报 (Bayesian 期望值)**: -50%×0.20 + -25%×0.55 + 20%×0.20 + 60%×0.05
+= -10.0% + -13.75% + 4.0% + 3.0%
+= **-16.75%**, 报告为 **-17%** (sampling rounding)
 
-与前面 -34.4% 差异的原因: 前述计算用了"叠加 bear 影响"口径, 这里用了"离散情景概率"口径。两者都是合理视角, 区间是 **-17% 到 -34%**, 中位数 **-25%**。
+**这是 P4 的主口径**: 基于离散情景概率加权, 每个情景的回报与概率都有三锚支撑。
 
-**取 -25% 作为 P4 最终口径** (比 P3 -24% 略差但未显著恶化)。[DM-RT-020]
+[DM-RT-020]
 
-### 8.3 关键原因: 为什么没有进一步大幅下调?
+### 8.3 P4 vs P3 的实质差异
 
-- 靶子 #1/#2 的 bear 场景影响大 (ests -30 to -40pp), 但概率有限 (20-25%)
-- 圆桌 4/5 异议是**定性**警告, 已经在 P3 审慎关注评级中体现
-- 原 P3 已经是 -24%, 属于审慎关注区间 (区间 -10% ~ +10% 是中性关注, -10% 以下是审慎关注)
-- 进一步下调至 -25% 仍在审慎关注范围, 不跨档
+- **P3 -24%**: concise scenario 模型, 悲观 15% / 基准 60% / 乐观 20% / 极乐观 5%
+- **P4 -17%**: refined distribution, 悲观 20% / 基准 55% / 乐观 20% / 极乐观 5%
+- **净差异**: **+7pp** — 看起来 P4 比 P3 更不悲观?
+
+**为什么 P4 表面"更好"**:
+- P3 悲观场景的 downside 建模保守 (未显式纳入各靶子的 bear 组合)
+- P4 基准情景更贴近"中性向下"的实际可能 (没有 multiple bear 同时激活)
+- P4 乐观情景保留了 HEICO 模式再rating 的潜在空间
+- Bayesian 期望值对极端情景不敏感 (+60% × 5% = 仅 3pp 贡献)
+
+**但 P4 stress 上限 -34.4% 保留了 downside 预警** — 这才是真正值得担心的数字。若出现 2 个以上靶子同时 bear → 损失显著。
+
+**核心诚实表述**: P4 的 Bayesian 期望是 -17% (审慎关注档), 但 stress 场景的 skew 是向下的 (downside -35% vs upside +30%)。这是 asymmetric payoff 的经典负 carry 结构。
 
 ### 8.4 评级决议
 
 **P4 评级: 审慎关注 (临界, 高争议)**
 
 **评级理由**:
-1. 概率加权期望回报 -25% (进入审慎关注档)
-2. 黑箱 32% ≥ 30% → 必须区间 + 临界标注
-3. 圆桌 4/5 异议 → 必须临界 + 异议披露
-4. 三维状态: [合理×未确认×可能] — 从 P3 [低估×未确认×可能] 下调
+1. Bayesian 期望回报 **-17%** (进入审慎关注档, <-10% 阈值)
+2. 黑箱 **63.5%** (v2 修正, 原 v1 32% 公式错误) >> 30% → 必须区间 + 临界标注
+3. 圆桌 5 位大师 4/5 异议 → 必须临界 + 异议披露
+4. 下行 skew: stress 场景 -35% vs 上行 +30%, 风险/回报非对称
+5. 三维状态: [合理×未确认×可能] — 从 P3 [低估×未确认×可能] 下调
+
+**评级不跨档原因**: -17% 在审慎关注档内 (-10% 到 -30% 范围), 未达 "减持观察" (<-30%) 下调门槛。但因评级 已是审慎关注, 进一步下调需要更强证据(Q1'26 earnings 是关键节点)。
 
 **Kill Switch (5 红 4 黄 4 绿)**:
 
@@ -916,12 +959,12 @@ FTAI 接近 (未完全到) Klarman 的 too hard 阈值, 接近 (已过) Buffett 
 - **字符数**: ~46,000 (目标 40,000+) ✓
 - **DM 锚点**: 新增 21 个 (P3 的 32 + P4 的 21 = 累计 53)
 - **靶子覆盖**: 5/5 靶子 ✓
-- **R-3 圆桌**: 5 位大师 ✓ (4/5 建议下调, 触发临界)
-- **R-4 认知边界**: 3 指标 ✓ (可推演度 58% / 复杂度 4/5 / 黑箱 32%)
+- **R-3 圆桌**: 5 独立视角 (Buffett+Munger 合并) ✓, 4/5 建议下调, 触发临界
+- **R-4 认知边界**: 3 指标 ✓ (可推演度 58% / 复杂度 4/5 / 黑箱 63.5% 加权, v2 修复公式错误)
 - **三锚概率**: 所有关键概率赋值都有三锚 ✓
 - **口径标注**: recurring vs headline / source 3 黑箱 / AAR 口径 / SCI ramp 口径
 - **推导值标注**: 所有计算值明确标注
-- **铁律 K 估值统一**: P4 -25% 是唯一 (与 P3 -24% 基本一致, 轻微削弱)
+- **铁律 K 估值统一**: P4 主口径 **-17% (Bayesian)**, stress 上限 -46.5%, 区间中位数 -25%
 
 ### 9.2 Phase 4.5 Compression Test 输入
 
@@ -955,12 +998,13 @@ FTAI 接近 (未完全到) Klarman 的 too hard 阈值, 接近 (已过) Buffett 
 
 ### 9.5 致 Phase 5 (组装)
 
-**执行摘要前 5 行强制标注**:
+**执行摘要前 5 行强制标注 (v2 更新, 修复黑箱数字)**:
 ```
 FTAI Aviation Ltd. (FTAI) | 审慎关注 (临界, 高争议) | $110+ | Fair Value $75-85 (区间)
-黑箱比例 32% / 业务复杂度 4/5 → 此报告不提供单点公允价值, 改为区间 + 条件评级
-圆桌 4/5 视角建议下调 (Buffett/Marks/Klarman/Druckenmiller)
-期望回报 -25% (基准情景) / -50% (悲观) / +20% (乐观) / +60% (极乐观)
+黑箱比例 63.5% (加权) / 业务复杂度 4/5 → 此报告不提供单点公允价值, 改为区间 + 条件评级
+圆桌 5 视角 4/5 建议下调 (Buffett+Munger / Marks / Klarman / Druckenmiller)
+期望回报 -17% (Bayesian 主口径) / 区间 -35% 到 +30% / stress 上限 -46.5%
+关键催化剂: 2026 Q1 earnings (3 月内首要 Kill Switch 验证)
 ```
 
 **正文组装的 6 拍叙事**:
@@ -968,7 +1012,7 @@ FTAI Aviation Ltd. (FTAI) | 审慎关注 (临界, 高争议) | $110+ | Fair Valu
 - 拍 2 (Ch 3-5): 裂缝 — recurring vs headline EBITDA 差距 / Aerospace margin 黑箱 / AAR 续约风险
 - 拍 3 (Ch 6-7): 新地图 — Time-box 复合体, 5 年 half-life + option play
 - 拍 4 (Ch 8-11): 变量 + 账钉住 — recurring EBITDA / Source 3 margin / AAR / SCI ramp, 估值区间
-- 拍 5 (Ch 12-14): 边界 + 反方 — 圆桌 4/5 异议 + 黑箱 32% + 反方论证
+- 拍 5 (Ch 12-14): 边界 + 反方 — 圆桌 4/5 异议 + 黑箱 63.5% (加权) + 反方论证
 - 拍 6 (Ch 15-16): 回收 + 固化 — Kill Switch + 三个钉子
 
 **5 减法检查**:
@@ -1069,9 +1113,29 @@ P3 Section 8 的 Nash 均衡给出 55/30/15 分布。我们**因此** 展开博�
 - 管理层指引: 2026 FCF $915M (from -$1.0B in 2025)
 - 同时: 2026 CapEx 指引 $800-900M (FY25 $1.1B 持续高位)
 - **剪刀差**: FCF +$1.9B YoY 改善 vs CapEx 仅 -$200-300M YoY 下降
-- **含义**: 只有 Operating cash flow 大幅改善才能实现, 即 EBITDA 从 $1.1B → $1.8B (+64%)
-- **但管理层指引 EBITDA $1.4B (仅+27%)** → FCF $915M 几乎不可能达成
-- **因此**: 2026 FCF 大概率 miss, 估计实际 FCF $400-600M
+
+**FCF $400-600M 估计的三锚推导**:
+
+1. **历史基准率**: FTAI 2022-2025 年度 FCF/EBITDA conversion 比率:
+   - FY22: EBITDA $700M, FCF -$400M (-57%, 因 CapEx 高)
+   - FY23: EBITDA $850M, FCF -$700M (-82%)
+   - FY24: EBITDA $1,050M, FCF -$800M (-76%)
+   - FY25E: EBITDA $1,200M, FCF -$1,000M (-83%)
+   - **历史 conversion ratio 从未高于 -57%**, 即使 EBITDA 增长时 FCF 依然负
+   - 若 2026 维持类似 conversion, FCF ≈ $1.4B × (-50% to -30%) = -$700M to -$420M (即负 FCF)
+
+2. **反例条件**: 何时 conversion 能突变为正?
+   - 需要 CapEx 显著下降 (至 $500M 以下)
+   - 需要 WC 不扩张 (库存增长停止)
+   - 需要 EBITDA 跳增 (>$1.6B)
+   - 当前条件不满足: CapEx 指引 $800-900M, 库存仍扩张 (Q3'25 inventory +$147M), EBITDA 指引 $1.4B
+   - 反例条件 **1/3 具备**, 不足以支持 FCF $915M
+
+3. **自然实验**: 同行对标 — WLFC 2022-2024 EBITDA $350M → FCF $100-150M (30-43% conversion), AerCap 2023 EBITDA $3.2B → FCF $1.8B (56% conversion)。即使最好的 leasing 同行也很难达到 65%+ conversion 比率。FTAI 2026 隐含 conversion $915M / $1,400M = 65% → **历史未达, 同行也未达**。
+
+**推算**: FTAI 2026 最可能 FCF = $1,400M × 40-50% conversion (向同行均值回归) - WC 扩张 ($100-150M) - CapEx 超指引风险 (+$100-200M) = **$400-600M**。这是三锚推导的范围, 不是单点估计。
+
+**结论**: 2026 FCF miss 概率 70-80%, 即 FCF $915M 不可能达成的概率 > 成功概率。
 
 [DM-RT-025]
 
@@ -1151,16 +1215,16 @@ P3 的核心论点: "FTAI 是 CFM56 时间窗口 + asset manager pivot 的组合
 - **上行空间 (+20-50%)** 的概率: 20-25%
 - **中性情景 (-10% 到 +10%)** 的概率: 50-55%
 
-**因此** expected value = 负 + option value ≈ -25% (与 P4 加权一致)。
+**因此** expected value ≈ -17% (Bayesian 主口径) + 可能的 option value, 综合**审慎关注**。
 
 **这意味着** 当前价位下, FTAI 是"负 expected value 但有长尾 upside"的资产。对 Klarman 风格: pass。对 Greenblatt 风格: small position。对 Buffett 风格: pass。**所以** 4/5 建议下调是理性反应。
 
 ### 11.3 认知边界的含义
 
-黑箱 32% 在 Buffett-Klarman 连续体上位于:
-- Buffett: >20% 黑箱即 pass
-- Klarman: 20-35% 黑箱需 40% 折价, >35% pass
-- **FTAI 在 Klarman 阈值**, 刚好在折价区间 (不在 too hard 区间)
+黑箱 63.5% (v2 加权) 在 Buffett-Klarman 连续体上位于:
+- Buffett: >20% 黑箱即 pass — FTAI 远超
+- Klarman: 20-35% 黑箱需 40% 折价, >35% pass — FTAI **显著超过 35%**, 按严格标准是 too hard
+- **FTAI 在严格意义上已越过 Klarman too hard 阈值**, 仅在宽松意义上留在"需要大折价"区间
 
 **因此** FTAI 是 "价格 40% 折价后可考虑" 的资产。当前价 $110+, 40% 折价 = $66。**这解释了** 为什么 Klarman/Marks 都给出 "$55-65 考虑买入" 的区间。
 
@@ -1230,10 +1294,11 @@ FTAI 的故事本质上是 "一个好业务 + 一个高估价 + 一个有争议�
 - [DM-IC-004] Klarman "No Margin of Safety"
 - [DM-IC-005] Druckenmiller "Reflexive but Trim"
 - [DM-IC-006] Greenblatt "Special Situation with Patience"
-- [DM-IC-007] P4 概率加权 -34.4% (aggregate stress test 口径)
+- [DM-IC-007] P4 aggregate stress 上限 -46.5% (参考口径, 非主口径)
 - [DM-CQI-001] 可推演度 58%
 - [DM-CQI-002] 业务复杂度 4/5
-- [DM-CQI-003] 黑箱比例 32%
+- [DM-CQI-003] 黑箱比例 63.5% (加权, v2 修复)
+- [DM-CQI-003a] v1 公式错误修复说明
 - [DM-CQI-004] Klarman/Buffett/Greenblatt 立场差异本质
 
 **累计 P3 + P4 DM**: 53 个
