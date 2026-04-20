@@ -2,10 +2,10 @@ ticker: FTAI
 analysis_target: "FTAI Aviation Ltd. - 航空租赁和航空产品"
 quality_target: 4.5
 output_target: ">150KB"
-current_phase: "Phase 1 进行中 - H1/H3循环深挖完成, 待Phase 2 FCF+财务归因"
+current_phase: "Phase 2 完成 - FCF+财务归因+剪刀差+P2末Pivot Gate, PIVOT-LITE触发"
 date_started: "2026-04-19"
 date_updated: "2026-04-20"
-progress_status: "P1部分完成: FTAI_P1_findings.md(9,270字符)产出. 变量1(模块)+变量3(margin)4层深挖完毕. H1锚点需修正(HEICO而非TDG), H3验证但保质期2-3年. 变量2(FCF)留P2."
+progress_status: "P2完成: FTAI_P2_findings.md(36,372字符, DM 41, 因果密度6.87/万字). 核心发现: PP&E -$809M vs CapEx +$752M = Aviation Leasing runoff机制, acquisitionsNet +$1.72B. FP状态: 3 WEAKEN (FP1/FP2/FP4) + 2 CONFIRM (FP3/FP5) = 削弱率60% → VERDICT PIVOT → 实用执行PIVOT-LITE (候选C+D组合为主). H1锚点确定倾向独立锚20-30x, HEICO乐观, TDG几乎排除. H2削弱 (非Ponzi). 变量2 FCF $915M需4条assumption链式, miss概率偏高."
 
 completed_phases:
   - phase: "Phase -1"

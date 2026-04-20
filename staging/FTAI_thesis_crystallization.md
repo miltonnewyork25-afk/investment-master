@@ -251,4 +251,62 @@
 
 ---
 
-**End of Thesis Crystallization** — 下一步: Phase 1围绕3个第一关键变量执行循环深挖 (数据→机制→含义→证伪).
+## 附录: P2末 PIVOT-LITE 更新 (2026-04-20 追加, 铁律W触发)
+
+> **触发**: Phase 2 末 thesis_pivot_gate 判定 削弱率 60% (3/5 FP WEAKEN), 严格W-2 VERDICT = PIVOT. 实用判定: **PIVOT-LITE** (候选空间内重排, 不重写).
+> **源**: staging/FTAI_P2_findings.md 发现#7 (FP对照) + 铁律W Pivot Gate 章节
+> **不删除原文**: 保留上述原P0.5判定作为对照基础, 本附录承载新权重
+
+### 4候选范畴的P2重排
+
+| 候选 | P0.5权重 | P2后权重 | 变更理由 |
+|------|----------|---------|---------|
+| A. 旧地图(航空租赁+产品混合成长股) | 基准 | **退场** | FP1 WEAKEN + FP2 WEAKEN + FP4 WEAKEN 三重否决 |
+| B. CFM56 Module Manufacturing Specialist | 候选 | 备选 | 忽略 Aviation Leasing 50% EBITDA 贡献, 不完整 |
+| C. 垂直整合航空售后帝国 | 候选 | **主候选** | 解释组合轮换cash cycle + margin gap |
+| D. CFM56最后5-10年现金流提取 | 候选 | **主候选** | 解释 CapEx 塌陷 + 有限增长路径 |
+| **C+D 组合 (垂直整合×时间窗口)** | 未列 | **最优** | 同时解释 5个 FP (3 WEAKEN + 2 CONFIRM) |
+
+### FP状态正式更新 (取代原P0.5判定)
+
+| FP | P0.5原描述 | P2 修正描述 | P2 VERDICT |
+|----|-----------|------------|-----------|
+| FP1 | 负FCF vs compounder | **范畴错** — 非compounder, 是"产能扩张×组合轮换"混合体 | WEAKEN |
+| FP2 | DIO+132天 vs GM +19pp | **一次性release + 稳态略降** — 全公司GM 已降到 28.8% | WEAKEN |
+| FP3 | PE 56x vs WLFC 5x (11倍) | 11倍 gap 基本被 3x operational gap + 垂直整合premium 解释, **但有2-3年时间限制** | CONFIRM (有限) |
+| FP4 | CapEx 2026+塌陷70% | **扩张期结束信号** — 自洽叙事, 支持候选D时间窗口 | WEAKEN |
+| FP5 | CEO持股+16.7x vs Q4 miss | 长期叙事未破信号, **量级有限 (0.47%持股)**, 不独立支撑 | CONFIRM (有限) |
+
+### H假说重排
+
+| H | P0.5描述 | P2 后状态 | 对评级 |
+|---|---------|----------|--------|
+| H1 (TDG估值锚 30-40x) | 非共识 | **削弱** — 独立锚 (20-30x) base, HEICO (35-45x) 乐观上限 | 偏负面 |
+| H2 (负FCF = 资本金吸纳/Ponzi) | 非共识 | **削弱** — SCI非Ponzi, 真实fee stream | 中性 |
+| H3 (56x PE = 稀缺性溢价) | 非共识 | 部分CONFIRM, operational 溢价 2x 已体现于 21.6x EV/EBITDA | 中性偏负 |
+| H4 (Alpha来自feedstock套利) | 非共识 | **Phase 3 决定** — 关键是 Aviation Leasing 独立 IRR 是否含 cross-subsidy | 取决于 P3 |
+
+### 第一关键变量状态更新
+
+| 变量 | P0.5排序 | P2 后排序 | 新证据 |
+|------|---------|----------|--------|
+| 变量1 (2026模块 1,050) | #1 | #2 | Rome ramp is key 风险, 但 P2剪刀差#1揭示"量vs单位经济 边际递减" |
+| 变量2 (2026 FCF $915M) | #2 | **#1** | P2 FCF trajectory 发现: 需要 4条 assumption 链式达成, miss 概率偏高 |
+| 变量3 (Aerospace margin 40%) | #3 | #3 | P2 发现全公司GM实际在28.8%下行, segment 与全公司张力 |
+
+### Phase 3 焦点调整 (基于 PIVOT-LITE)
+
+Phase 3 不再做"4候选平行验证", 改为:
+1. **优先验证 C+D 组合**: 是否真是最能解释, 还是 "两个故事硬拼"
+2. **Aviation Leasing 独立 IRR 审计**: H4 真假 + cross-subsidy 排除
+3. **AAR/HEICO/Standard Aero/MTU 竞争扫描**: FP3 时间限制精确化
+4. **SCI II 募资进度**: 决定组合轮换 cash stream 的可持续性
+5. **H1 锚点确定**: 基于 C+D 组合 + 可比 margin 精细对比, 确定用独立锚 (base) / HEICO 锚 (乐观) / TDG 锚 (几乎排除)
+
+---
+
+**End of P2 PIVOT-LITE Appendix** — 原文下列 "End of Thesis Crystallization" 留作 P0.5 原始判定的历史记录, 不删除。
+
+---
+
+**End of Thesis Crystallization (原P0.5)** — 下一步: Phase 1围绕3个第一关键变量执行循环深挖 (数据→机制→含义→证伪).
