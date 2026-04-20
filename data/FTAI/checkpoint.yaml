@@ -5,7 +5,7 @@ output_target: ">150KB"
 current_phase: "Phase 3 完成 - 竞争benchmark+时间窗口+AviationLeasing IRR+SCI+博弈+P3末Pivot Gate"
 date_started: "2026-04-19"
 date_updated: "2026-04-20"
-progress_status: "P3完成: FTAI_P3_findings.md(35,953字符, DM 33, 因果密度15/万字). 核心发现: (1) Margin Gap Triangulation - FTAI Aerospace 36% vs AAR 6%/SARO 13%/MTU 12%/HEI 27%, 差距由垂直整合source 1+2+3(feedstock)三重解释, source 3量化是关键黑箱 (2) CFM56时间窗口精确至2030 - 与LEAP crossover + AAR协议到期 + CapEx塌陷同一年 (3) Aviation Leasing独立IRR 10-11% ≈同行, feedstock价值在Aerospace margin而非Leasing IRR (H4方向反转) (4) SCI I $2B closed, SCI II启动→H2 final鲜削弱非Ponzi, FTAI pivot asset manager (5) C+D+SCI asset manager三层组合 = 新范畴E (6) H1最终锚: base 22x EV/EBITDA (60%概率), 乐观HEI调整30x (25%), 极乐观HEI无折价 (5%), TDG排除. P3末Pivot Gate: 削弱率80% (4/5 WEAKEN含FP5趋势转弱)但新范畴E在候选空间内→PIVOT-LITE Continue. 概率加权期望回报-24%, 评级审慎关注."
+progress_status: "P3完成(含修复): FTAI_P3_findings.md(38,542字符, DM 32, 因果密度16.1/万字, 口径标注 9处, 推导值标注 6处). 核心发现: (1) Margin Gap Triangulation - FTAI Aerospace 36% vs AAR 6%/SARO 13%/MTU 12%/HEI 27%, source 1+2+3三重解释, source 3量化是关键黑箱 (2) CFM56时间窗口精确至2030 - LEAP crossover + AAR协议到期 + CapEx塌陷同年 (3) Aviation Leasing recurring EBITDA/PP&E近似IRR 10-11% ≈同行 (非严格IRR口径已标注), feedstock价值在Aerospace margin非Leasing return (H4方向反转) (4) SCI I $2B closed, SCI II启动→H2 final削弱非Ponzi, FTAI pivot asset manager (5) C+D+SCI三层组合=新范畴E (6) H1最终锚: base 22x EV/EBITDA(推导值), 乐观HEI调整30x(HEI 37.9x×0.8折价, 推导值), 极乐观HEI无折价38x. P3末Pivot Gate: 削弱率80%但新范畴E在候选空间内→PIVOT-LITE Continue. 概率加权期望回报-24%(Section 11.6.3唯一口径, 四情景rule-N三锚齐全), 评级审慎关注. Skeptic审计3.5/5, 3硬问题已修: 估值统一/DM号去背书/概率三锚。"
 
 completed_phases:
   - phase: "Phase -1"

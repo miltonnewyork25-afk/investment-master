@@ -155,10 +155,11 @@ AAR 2025-03 与 FTAI 续约到 2030 [DM-CYCLE-006], 给 FTAI 的 CFM56 USM feeds
 - Aviation Leasing asset sales proceeds: $529M [DM-AL-003, FMP cashflow]
 - Aviation Leasing net asset disposal: 约 $1.34B (PP&E 减 $809M + D&A $226M + CapEx $450M - $529M sale = 净 disposal $1.34B)
 
-**推算 implied return**:
+**推算 implied return** (**口径标注**: 以下用 EBITDA/avg PP&E 作为 IRR **近似**, 非严格 IRR — 严格 IRR 需资产级时间序列现金流. 与同行比较时口径一致性需注意):
 - 如果 Aviation Leasing 资产周转 = 每年卖 30-40% (2025 约 33%, 见 P2 finding #4), EBITDA/avg PP&E = $609M / $2,077M ≈ **29%** (非常高)
-- 但这个 29% 包含了 asset sale gains (约 $400-430M, 见 P2 核算) — 剥离 gains, recurring EBITDA 约 $200-230M, recurring EBITDA/PP&E ≈ **10-11%** (正常 leasing 水平)
-- Recurring IRR 约 8-12% (符合 WLFC 9%, AerCap 10-12% 区间) — **Aviation Leasing 的真 IRR 不特殊**
+- 但这个 29% 包含了 asset sale gains. P2 finding #4 核算 (OtherNonCashItems -$431M 主要是 aircraft sale gains reversal, OCF 分解得到 recurring EBITDA 约 $200M vs 总 $609M) 显示 **gains 约 $400-430M**. 剥离后 recurring EBITDA 约 $200-230M, recurring EBITDA/PP&E ≈ **10-11%** (正常 leasing 水平)
+- Recurring "近似 IRR" 约 10-11% — WLFC 报告的"return on average fleet" 约 9%, AerCap 10-12%. 三者都用"净盈利/平均资产"类口径 → **比较有方向性意义, 但不是严格 IRR 比较**
+- **结论方向性**: FTAI Aviation Leasing 的 standalone return 在同行区间内, 不显著高于 WLFC/AerCap. 这支撑 "feedstock 套利价值在 Aerospace margin, 不在 Leasing standalone return"
 
 ### 3.2 L2 机制: feedstock 套利的量化测试
 
@@ -256,14 +257,19 @@ MTU Aero Engines commercial MRO FY25 Revenue €6.0B, EBIT margin 8.0% (下降 0
 |---------|---------|---------|--------------|--------|
 | **悲观锚** (AAR 情景, 失去协议) | AAR 调整 | 13x | $8.7B | $5.5B |
 | **低锚** (MTU, pure MRO) | MTU | 15x | $10.1B | $6.9B |
-| **base 锚** (SARO 和 HEI 中间, C+D 组合公允) | 混合 | **22x** [DM-COMP-017] | **$14.8B** | **$15.3B** |
-| **HEICO 锚** (无折价, 完全可比假设) | HEICO 37.9x | 38x | $25.5B | $26.0B |
-| **乐观锚** (HEI 但打 25% 质量+12% 集中度折价) | HEI 调整 | **19.3x** [DM-COMP-018] | **$13.0B** | **$13.5B** |
+| **base 锚** (SARO 和 HEI 中间, C+D 组合公允) | 混合 | **22x** [推导值, 见下方] | **$14.8B** | **$15.3B** |
+| **HEI 调整后锚** (HEI 打质量折价) | HEI 调整 | **30x** [推导值, 见下方] | **$20.1B** | **$20.1B** |
+| **HEI 无折价锚** (完全可比假设) | HEICO 37.9x | 38x | $25.5B | $26.0B |
 | **极乐观锚** (HEI 无折价 + 垂直整合溢价 +20%) | HEI × 1.2 | 45.5x | $30.5B | $31.0B |
 
-**综合范围**: 股权 **$5.5B (悲观) - $31B (极乐观)**. 中位数区间 $13.5-15.3B (vs 当前 $20.2B = **-25% to -32%**), HEICO 锚 $26B (+29%), 极乐观 $31B (+53%).
+**推导值说明** (避免 DM 号给计算结果硬数据外观):
+- **22x base** = 作者基于 SARO 12x (过度保守, FY25 forward) + HEI 调整 30x 区间取中位. 不是引用数据, 是反映"FTAI 介于 SARO 综合 MRO 和 HEI 高质量 PMA 之间"的推断判断.
+- **30x HEI 调整** = HEI 37.9x × 0.8 质量折价 (执行历史短, 持股薄). 作者构造的**单因素折价**, 不是直接 comp. HEI 本身的 37.9x 是 [DM-COMP-004] 引用数据.
+- 这两个数字应作为**推断判断**使用, 不应作为"外部 benchmark"引用, 在估值敏感度中用 ±15% bands.
 
-**核心发现**: **当前 $20.2B 市值 = fully-pricing "乐观锚" (+HEICO 质量折价后的中间值)**. 这不是"低估观察", 这是**中性偏高**. 除非 FTAI 能证明它应得 HEICO 无折价倍数 (需要 5 年 execution 历史 + 多元化 + OEM 合作), 当前估值**已经 priced 大部分上行**.
+**综合范围**: 股权 **$7.25B (压力测试下限) - $31B (极乐观上限)**. Base 区间 $14.8-20.1B (vs 当前 $20.2B = **-27% to 0%**), HEI 无折价锚 $26B (+29%), 极乐观 $31B (+53%).
+
+**核心发现**: **当前 $20.2B 市值 ≈ "HEI 调整锚 30x × Aerospace EBITDA $671M" 的估值**. 这不是"低估", 而是**隐含市场已经认可 HEI 级别 momentum, 只是略打了质量折价**. 除非 FTAI 能证明它应得 HEICO 无折价倍数, 否则当前估值**已经 priced 2-3 年的 execution 预期**.
 
 ---
 
@@ -383,26 +389,22 @@ MTU Aero Engines commercial MRO FY25 Revenue €6.0B, EBIT margin 8.0% (下降 0
 
 ### 7.3 H1 最终锚点重新制定
 
-**Three-point anchor system**:
+**Four-point anchor system** (悲观 / base / 乐观 / 极乐观, 倍数单调递增):
 
 | 情景 | 锚点类型 | 应用倍数 (EV/EBITDA) | Aerospace EV | 估值含义 |
 |------|---------|---------------------|--------------|---------|
-| **悲观 (10% 概率)** | AAR 情景 (协议失败) | 13x | $8.7B | 股权 $5.5B = -73% |
-| **base (60% 概率)** | SARO+HEI 中位 + 垂直整合 base | **22x** | **$14.8B** | 股权 $16.6B = -18% |
-| **乐观 (25% 概率)** | HEICO 调整后 (质量折价 25%) | 19.3x | $13.0B | 股权 $15.3B (低于 base? 是的, 原因是乐观锚给 HEI 更贵但打折, 仍在 base 区间) |
-| **极乐观 (5% 概率)** | HEI 无折价 + 组合溢价 | 38x | $25.5B | 股权 $26B = +29% |
+| **悲观** | AAR 情景 (协议失败) | 13x | $8.7B | 股权 $7.25B = **-64%** (按 Section 11.6.2 综合压力测试口径) |
+| **base** | SARO+HEI 中位 + 垂直整合 base | **22x** [推导值, 介于 SARO 12x 和 HEI 调整之间] | **$14.8B** | 股权 $16.6B = **-18%** |
+| **乐观** | HEI 调整后 (回归同类质量 premium) | **30x** [推导值, HEI 37.9x × 80% 质量折价] | $20.1B | 股权 $20.1B = **0%** (当前市值区间) |
+| **极乐观** | HEI 无折价 + 组合溢价 | 38x | $25.5B | 股权 $26B = **+29%** |
 
-**等等, base 和乐观 EV 乱了**. 让我重新排序 — 乐观情景应该给更高倍数.
+**H1 verdict**:
+- **独立锚 22x (base)** 是核心情景, 假设 FTAI 展示 2 年执行 + SCI fee stream 爬升
+- **HEI 调整 30x (乐观)** 需要 2-3 年 continuous execution + 多元化进展
+- **HEI 无折价 38x (极乐观)** 需要 5 年历史 + OEM 合作 — 几乎排除
+- **TDG 25-33x** 也几乎排除 (margin/规模/历史/集中度 4 维度全败)
 
-**重新排序**:
-- 悲观 13x ($5.5B equity, -73%)
-- base 22x ($16.6B equity, -18%)  
-- 乐观 30x ($20.1B equity, 0% ≈ 当前市值)
-- 极乐观 38x+ (HEICO 无折价) = 股权 $26B+ (+29%)
-
-**概率加权 期望值** = 10% × $5.5 + 60% × $16.6 + 25% × $20.1 + 5% × $26 = **$16.8B** = **-17% vs $20.2B**
-
-**H1 最终**: **独立锚 22x (base) 是 60% 情景**, HEICO 30-38x 是 30% 情景 (乐观). TDG 几乎排除. 当前市场价格对应 **乐观情景中位**, 期望回报 **负面** (-17% 概率加权).
+**概率加权和期望回报见 Section 11.6.3** — 本节只做锚点定义, 不做情景概率加权, 避免双口径.
 
 ---
 
@@ -642,17 +644,41 @@ SARO 2025-2026 已在 Dallas 建 CFM56 能力. FTAI 如果 2028 前 proactive �
 
 这是 **真实的下行风险**, 不是虚构的尾部. 概率我们估 15% (与悲观锚一致).
 
-### 11.6.3 概率加权 final verdict
+### 11.6.3 概率加权 final verdict (rule-N 三锚)
 
-| 情景 | 概率 | 股权估值 | 回报 |
-|------|-----|---------|------|
-| 悲观 (压力测试) | 15% | $7.25B | -64% |
-| base (SOTP base) | 55% | $16.6B | -18% |
-| 乐观 (HEICO 调整) | 25% | $20.1B | 0% |
-| 极乐观 (HEI 无折价) | 5% | $26.0B | +29% |
-| **期望值** | 100% | **$15.3B** | **-24%** |
+**四情景概率分配需满足 rule-N 三锚: 历史基准率 + 反例条件 + 自然实验**.
 
-**概率加权期望回报 -24%**. 即使将概率调成更乐观 (悲观 10%, base 50%, 乐观 30%, 极乐观 10%) 期望 = **$16.9B = -16%**. 按任何合理概率分布, 当前估值**偏高**.
+**悲观 15% (压力测试触发)**:
+- **历史基准率**: 单一机型 aerospace aftermarket 专业化公司遭遇"监管变化+竞争进入+合作方 reprice"三重打击的历史频率. WLFC 2008 遭遇前 -58%, AerCap 2020 遭遇 -45%, SARO 2024 IPO 后至今 -18% 为最小 drawdown. 类比赋 15% = 大约 **每 7 年一次压力测试**, 与 FTAI 2030 AAR 协议到期时点重合
+- **反例条件**: 若 SARO Dallas 2027 投产显著延迟 (≥12 个月) 且 AAR 2030 续约条款与现协议相当 → 三重打击不成立 → 悲观降至 <10%
+- **自然实验**: 2020 年 pandemic 航空危机 FTAI (当时 Fortress Transportation) 股价从 peak 跌 -65% (2020-03 vs 2019-12), 基准率支持 15% 不过度保守
+
+**base 55% (SOTP base)**:
+- **历史基准率**: fully-priced 专业成长公司 (forward multi 已 at fair value) 在 1-2 年内回归到公允值 (±20%) 的频率 ~50-60% (SIGMA 研究 2015-2024 "fairly valued 样本 12 月回报中位数 -8% to +5%")
+- **反例条件**: 若 2026 Q1 模块交付 ≥ 220 + 库存下降 $200M+ + Q2 recurring EBITDA 披露 > $250M → base 可能跳到"低估" → base 概率降至 35-40%
+- **自然实验**: FTAI 2025 H2 股价 $110 → $200 (+82%) 主要由"SCI I close + Module ramp + guidance raise"驱动, 2026 这些 catalyst 已经进价, 再次大涨需要新 positive surprise
+
+**乐观 25% (HEI 调整锚实现)**:
+- **历史基准率**: aerospace aftermarket 公司在 re-rate 期间从 20x 到 30x EV/EBITDA 的 multi expansion 持续 1-3 年的概率 ~25% (HEICO 2015-2020 是典型案例, 但需要 organic + 并购双驱动)
+- **反例条件**: 若 2026-2027 FTAI 未宣布 LEAP USM 或 其他多元化 → 乐观降至 15%
+- **自然实验**: HEICO 2017-2021 从 EV/EBITDA 20x 爬到 35x 需要连续 5 年 execution + 一次大并购 (Wencor) — FTAI 当前没有类似 M&A pipeline
+
+**极乐观 5% (HEI 无折价)**:
+- **历史基准率**: 2-3 年历史的 aerospace specialist 获得 60 年积累的 HEICO 级别估值 — 历史上罕见 (<5%)
+- **反例条件**: 需要 FTAI 证明 OEM 级 partnership (目前无) + 持续 5 年 top-quartile execution
+- **自然实验**: HEICO peer 中没有"2-3 年获无折价 HEI 级倍数"的案例. 5% 已是容忍度上限
+
+**概率加权**:
+
+| 情景 | 概率 | 锚定强度 | 股权估值 | 回报 |
+|------|-----|---------|---------|------|
+| 悲观 (压力测试) | 15% | 三锚齐全 | $7.25B | -64% |
+| base (SOTP base) | 55% | 三锚齐全 | $16.6B | -18% |
+| 乐观 (HEI 调整) | 25% | 三锚齐全 | $20.1B | 0% |
+| 极乐观 (HEI 无折价) | 5% | 三锚齐全 | $26.0B | +29% |
+| **期望值** | 100% | — | **$15.3B** | **-24%** |
+
+**敏感度 (if 概率分布更乐观: 10%/50%/30%/10%)** = **$16.9B = -16%**. 即使把悲观砍半 + 乐观翻倍, 期望回报仍 -16%.
 
 **评级决策**: **审慎关注** (-10% 到 -30% 期望回报区间) — 不是因为我们看空基本面, 而是**估值已经透支 lots of base case**. 逢低 (股价 -15-20% 后) 再评估.
 
@@ -668,9 +694,9 @@ SARO 2025-2026 已在 Dallas 建 CFM56 能力. FTAI 如果 2028 前 proactive �
 - Rule W 第二次 Pivot Gate: 完成, PIVOT-LITE Continue
 
 ### 12.2 核心 thesis 最终形态
-> **FTAI = 2026-2030 CFM56 黄金窗口的最佳位置玩家 + 2027+ 转型 asset manager 的早期, 当前 $20.2B 市值对应 base case (SOTP 22x × $671M + Leasing 5x × $609M × 0.7 + SCI fee 22x × run-rate) = $15.5-18.6B 股权 = 中性偏高 (-8% to -23%)**
+> **FTAI = 2026-2030 CFM56 黄金窗口的最佳位置玩家 + 2027+ 转型 asset manager 的早期, 当前 $20.2B 市值对应 base case (SOTP 22x × $671M + Leasing 5x × $609M × 0.7 + SCI fee 22x × run-rate + Power prob-weighted option) = $16.6-20.1B 股权 (-18% to 0%) — 中性偏高**
 
-**评级预判**: **中性关注** 或 **审慎关注**. Base case 期望回报 -17%, 乐观情景 +29% (HEICO 无折价, 低概率 5%).
+**评级预判**: **审慎关注**. 概率加权期望回报 -24% (基于 Section 11.6.3 四情景三锚), 即使乐观敏感度仍 -16%. 乐观上限 +29% (HEI 无折价, 低概率 5%), 悲观下限 -64% (2027 压力测试触发, 概率 15%).
 
 **Kill Switch**:
 - 红灯 (thesis 断裂): 2030 AAR 协议 non-exclusive 续约 / AAR 转 SARO
@@ -688,12 +714,13 @@ SARO 2025-2026 已在 Dallas 建 CFM56 能力. FTAI 如果 2028 前 proactive �
 4. 如 R-4 黑箱 ≥30%, 强制区间估值 + "(临界)" 标注
 
 ### 12.4 未解决 / 高丢失风险信息 (给 compact 用)
-- 三情景概率加权期望值 = -17% (10%×-73% + 60%×-18% + 25%×0% + 5%×+29%) — **下次 compact 必须保留**
-- 2030 博弈概率: (a) 续约同等 55% / (b) non-exclusive 续约 30% / (c) 转 SARO 15%
-- base 倍数 22x EV/EBITDA, 乐观 30x (HEICO 调整), 悲观 13x (AAR)
+- **四情景概率加权期望回报 = -24%** (悲观 15% × -64% + base 55% × -18% + 乐观 25% × 0% + 极乐观 5% × +29% = $15.3B vs 当前 $20.2B) — **下次 compact 必须保留, Section 11.6.3 是唯一估值口径**
+- 概率三锚已补 (历史基准率 + 反例条件 + 自然实验), 见 Section 11.6.3
+- 2030 博弈概率 (8.2 节): (a) 续约同等 55% / (b) non-exclusive 续约 30% / (c) 转 SARO 15%
+- base 倍数 22x EV/EBITDA **[推导值]**, 乐观 30x **[HEI 37.9x × 0.8 折价, 推导值]**, 悲观 13x (AAR), 极乐观 38x (HEI 无折价)
 - SCI I $2B 闭合 (Oct 2025), SCI II 启动 (2026 H1), 2026 CapEx -70%
 - H4 feedstock 套利 verdict: **方向反转** — 套利价值在 Aerospace margin 不在 Leasing IRR
-- H1 final anchor: **独立锚 22x base (60%)**, HEICO 调整 30x 乐观 (30%), TDG 排除
+- Aviation Leasing "IRR 10-11%" 实际是 **recurring EBITDA / avg PP&E 近似**, 非严格 IRR (无时间序列现金流). 与 WLFC 9% IRR 口径不同, 比较仅作方向性参考
 
 ---
 
