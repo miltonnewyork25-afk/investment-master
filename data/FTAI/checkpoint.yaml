@@ -2,10 +2,10 @@ ticker: FTAI
 analysis_target: "FTAI Aviation Ltd. - 航空租赁和航空产品"
 quality_target: 4.5
 output_target: ">150KB"
-current_phase: "Phase 0.5 完成 - 核心矛盾结晶已产出, 准备Phase 1"
+current_phase: "Phase 1 进行中 - H1/H3循环深挖完成, 待Phase 2 FCF+财务归因"
 date_started: "2026-04-19"
 date_updated: "2026-04-20"
-progress_status: "P0.5完成: default_map_audit(6,837字符)+thesis_crystallization(10,720字符), 4候选范畴+4非共识假说登记完毕"
+progress_status: "P1部分完成: FTAI_P1_findings.md(9,270字符)产出. 变量1(模块)+变量3(margin)4层深挖完毕. H1锚点需修正(HEICO而非TDG), H3验证但保质期2-3年. 变量2(FCF)留P2."
 
 completed_phases:
   - phase: "Phase -1"
