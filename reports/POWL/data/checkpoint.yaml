@@ -15,39 +15,45 @@ target_range: "240K-375K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 90000
-  latest_phase_chars: 9493
-  probability_weighted_fair_value: 95  # Phase 3 final
+  total_chars: 92000
+  latest_phase_chars: 11500  # Phase 3 v2 修复后
+  probability_weighted_fair_value: 89  # Phase 3 v2 修复后
   current_price: 240.97
-  downside_pct: -60
+  downside_pct: -63
   rating_expected: "审慎关注"
   thesis: "混合体被按纯 beta 错定价"
-  dm_anchors_total: 168
+  dm_anchors_total: 170
 
-key_outputs_phase3:
-  sotp_base: 102
-  reverse_dcf_base: 89
-  peer_multiple_base: 79
+key_outputs_phase3_v2:
+  sotp_base: 97  # from $102, -$5 (Net Cash 保守)
+  reverse_dcf_base: 84  # from $89, -$5 (EV adjusted)
+  peer_multiple_base: 70  # from $79, -$9 (严格中位 PE 20x → 应用 16x)
   probability_weighted_phase2: 87
-  four_method_mean_base: 89
-  dispersion_pct: 25.8
-  implied_fcf_cagr_at_current: 19.9
-  industrial_peer_median_pe: 22
-  pe_applied_powl: 18
-  probability_weighted_3method: 95
-  bull_3method: 129
-  base_3method: 90
-  bear_3method: 68
-  extreme_bear_kill_switch: 60
+  four_method_mean_base: 84.5  # dispersion 32% (共享参数)
+  truly_independent_mean: 90.5  # SOTP + DCF, dispersion 14.4% ✓
+  implied_fcf_cagr_at_current: 20.2
+  industrial_peer_strict_median_pe: 20
+  pe_applied_powl: 16  # -4x cycle discount
+  probability_weighted_3method: 89
+  bull_3method: 122
+  base_3method: 84
+  bear_3method: 63
+  extreme_bear_kill_switch_joint: "$33-45"
+  extreme_bear_joint_probability: 0.15
   blackbox_pct: 22
   recoverability_pct: 77
 
-phase3_valuation_summary:
-  bull_price: 129
-  base_price: 90
-  bear_price: 68
-  weighted: 95
-  downside: -60
+phase3_v2_valuation_summary:
+  bull_price: 122
+  base_price: 84
+  bear_price: 63
+  weighted: 89
+  downside: -63
+
+fixes_applied_phase3:
+  net_cash: "账面 $13.4/share → 保守 $8.5/share (剔除 $180M 预收款)"
+  peer_median_pe: "上中位 22x → 严格中位 20x, 应用 16x"
+  extreme_bear: "$55-65 无推导 → $33-45 (联合概率 15% + 双方法交叉)"
 
 fixes_applied_before_phase3:
   eaton_number_reconciled: "统一为 P0 baseline ~\\$30M + 披露不透明"

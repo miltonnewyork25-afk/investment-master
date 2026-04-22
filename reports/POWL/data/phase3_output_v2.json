@@ -1,0 +1,143 @@
+{
+  "fixes_applied": {
+    "fix_1_net_cash": "Changed from $13.4/share to $8.5/share (-$4.9/share, 剔除预收款)",
+    "fix_2_peer_pe": "Changed from 22x (上中位) to 20x (严格中位), applied 16x after -4x cycle discount",
+    "fix_3_extreme_bear": "Added 联合概率推导 + 区间上下限双方法"
+  },
+  "sotp_revised": {
+    "Bear": {
+      "core_per_share": 26.9,
+      "lng_premium": 15,
+      "dc_option": 10,
+      "net_cash_per_share": 8.5,
+      "total_sotp": 60.0,
+      "downside_vs_current": -74.9
+    },
+    "Base": {
+      "core_per_share": 43.6,
+      "lng_premium": 20,
+      "dc_option": 25,
+      "net_cash_per_share": 8.5,
+      "total_sotp": 97.0,
+      "downside_vs_current": -59.7
+    },
+    "Bull": {
+      "core_per_share": 58.9,
+      "lng_premium": 25,
+      "dc_option": 50,
+      "net_cash_per_share": 8.5,
+      "total_sotp": 142.0,
+      "downside_vs_current": -40.9
+    }
+  },
+  "reverse_dcf_revised": {
+    "net_cash_conservative": 309000000.0,
+    "ev_billion_conservative": 8.47,
+    "implied_10y_fcf_cagr": 20.2,
+    "scenarios": {
+      "Bear": {
+        "fcf_cagr": 0.03,
+        "ev_billion": 2.38,
+        "fair_value": 74.0,
+        "downside_pct": -69.5
+      },
+      "Base": {
+        "fcf_cagr": 0.05,
+        "ev_billion": 2.75,
+        "fair_value": 84.0,
+        "downside_pct": -65.2
+      },
+      "Bull": {
+        "fcf_cagr": 0.12,
+        "ev_billion": 4.63,
+        "fair_value": 135.0,
+        "downside_pct": -43.8
+      }
+    }
+  },
+  "peer_multiple_revised": {
+    "peer_pe_list": [
+      14,
+      16,
+      18,
+      22,
+      24,
+      28
+    ],
+    "strict_median_pe": 20.0,
+    "pe_applied": 16.0,
+    "scenarios": {
+      "Bull": {
+        "fy27_eps": 5.5,
+        "pe_applied": 16.0,
+        "fair_value": 88.0,
+        "downside_pct": -63.5
+      },
+      "Base": {
+        "fy27_eps": 4.4,
+        "pe_applied": 16.0,
+        "fair_value": 70.0,
+        "downside_pct": -70.8
+      },
+      "Bear": {
+        "fy27_eps": 3.4,
+        "pe_applied": 16.0,
+        "fair_value": 54.0,
+        "downside_pct": -77.4
+      }
+    }
+  },
+  "four_method_base": {
+    "methods": {
+      "SOTP (Base)": 97.0,
+      "Reverse DCF (CAGR 5%)": 84.0,
+      "Peer Multiple (Base, PE 16x)": 70.0,
+      "Probability-Weighted (Phase 2)": 87
+    },
+    "mean": 84.5,
+    "dispersion_pct": 32.0,
+    "dispersion_pass_30pct": false
+  },
+  "truly_independent_methods": {
+    "methods": {
+      "SOTP (Base)": 97.0,
+      "Reverse DCF (Base)": 84.0
+    },
+    "mean": 90.5,
+    "dispersion_pct": 14.4
+  },
+  "three_method_probability_weighted": {
+    "Bull": 122.0,
+    "Base": 84.0,
+    "Bear": 63.0,
+    "bull_weighted_contribution": 30.5,
+    "base_weighted_contribution": 46.2,
+    "bear_weighted_contribution": 12.6,
+    "final_weighted": 89.0,
+    "downside_pct": -62.9
+  },
+  "extreme_bear_derivation": {
+    "kcqi1_standalone_prob": 0.35,
+    "kgap1_standalone_prob": 0.25,
+    "joint_prob_independent": 0.0875,
+    "joint_prob_correlated": 0.15,
+    "extreme_eps_range": [
+      3.0,
+      3.4
+    ],
+    "extreme_pe_range": [
+      11,
+      13
+    ],
+    "extreme_value_via_peer_method": [
+      33.0,
+      44.199999999999996
+    ],
+    "extreme_value_via_sotp_method": [
+      45,
+      65
+    ],
+    "final_range": "$33-45 (交集)",
+    "note": "原 P3 $55-65 过于保守 (未考虑 PE trough), 正确区间 $33-45 更符合历史 peak-trough pattern"
+  }
+}
