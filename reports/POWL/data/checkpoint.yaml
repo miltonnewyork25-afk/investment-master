@@ -6,9 +6,9 @@ worktree: "electrical_equipment"
 industry: "electrical_equipment"
 last_updated: "2026-04-22T06:00:00+00:00"
 
-current_phase: 4
+current_phase: 4.5
 phase_status: complete
-phases_completed: [-1, 0, 0.75, 1, 2, 3, 4]
+phases_completed: [-1, 0, 0.75, 1, 2, 3, 4, 4.5]
 
 target_chars: 300000
 target_range: "240K-375K"
@@ -54,6 +54,34 @@ fixes_applied_phase3:
   net_cash: "账面 $13.4/share → 保守 $8.5/share (剔除 $180M 预收款)"
   peer_median_pe: "上中位 22x → 严格中位 20x, 应用 16x"
   extreme_bear: "$55-65 无推导 → $33-45 (联合概率 15% + 双方法交叉)"
+
+key_outputs_phase4_5:
+  new_definition: "被当纯 beta 定价的 LNG 混合体"
+  new_first_variable: "GM run-rate (F-C spread) + DC 营收占比突破 25% 阈值"
+  new_valuation_language: "SOTP 三段 (Core 16-18x PE + LNG DCF + DC 概率加权)"
+  explained_anomaly: "FY25 DC 2.4% 营收 vs 47x PE 与 VRT 50x PE 同档 (营收占比差 20x+ 但 PE 仅差 3x)"
+  expansion_test_modules: 7
+  top_5_lens:
+    - "Lens 1 (母): 被当纯 beta 定价的 LNG 混合体"
+    - "Lens 2: Peak-cycle 重工业承包商"
+    - "Lens 3: 小盘单产品壳 (非 VRT 级平台)"
+    - "Lens 4: Y3 kill switch 已触发"
+    - "Lens 5: Implied 20.2% FCF CAGR (历史 0/25 case)"
+  cognitive_boundary:
+    reasoning_degree: 72
+    complexity: 3.5
+    blackbox_pct: 28
+    verdict: "可投资但需要折价 10-15% (临界 20-30% 黑箱区间)"
+    expression_requirement: "必须用区间公允价值 \$80-105 (中位 \$92), 禁止单点目标价"
+  staging_sufficiency:
+    current_chars: 126000
+    target_chars: 280000
+    ratio: 0.45
+    decision: "方案 B (P4.5 参考扫描补视角, 不凑数)"
+  engineering_requirements:
+    dm_target: 140
+    mermaid_target: 15
+    checkpoints: [50000, 100000, 150000, 200000, 250000]
 
 key_outputs_phase4:
   red_team_verdict: "母命题成立 (4 方法独立估值 $78-$97 vs 当前 $241)"
