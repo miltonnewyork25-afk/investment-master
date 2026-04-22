@@ -1,0 +1,149 @@
+{
+  "sotp": {
+    "Bear": {
+      "core_per_share": 26.9,
+      "lng_premium": 15,
+      "dc_option": 10,
+      "net_cash_per_share": 13.4,
+      "total_sotp": 65.0,
+      "downside_vs_current": -72.9
+    },
+    "Base": {
+      "core_per_share": 43.6,
+      "lng_premium": 20,
+      "dc_option": 25,
+      "net_cash_per_share": 13.4,
+      "total_sotp": 102.0,
+      "downside_vs_current": -57.7
+    },
+    "Bull": {
+      "core_per_share": 58.9,
+      "lng_premium": 25,
+      "dc_option": 50,
+      "net_cash_per_share": 13.4,
+      "total_sotp": 147.0,
+      "downside_vs_current": -38.9
+    }
+  },
+  "reverse_dcf": {
+    "implied_10y_fcf_cagr_at_current_price": 19.9,
+    "scenarios": {
+      "Bear": {
+        "fcf_cagr": 0.03,
+        "ev_billion": 2.38,
+        "fair_value": 79.0,
+        "downside_pct": -67.4
+      },
+      "Base": {
+        "fcf_cagr": 0.05,
+        "ev_billion": 2.75,
+        "fair_value": 89.0,
+        "downside_pct": -63.1
+      },
+      "Bull": {
+        "fcf_cagr": 0.12,
+        "ev_billion": 4.63,
+        "fair_value": 140.0,
+        "downside_pct": -41.8
+      }
+    }
+  },
+  "peer_multiple": {
+    "industrial_peers_median_pe": 22,
+    "pe_applied_for_powl_cycle_peak": 18,
+    "scenarios": {
+      "Bull": {
+        "fy27_eps": 5.5,
+        "pe_applied": 18,
+        "fair_value": 99.0,
+        "downside_pct": -58.9
+      },
+      "Base": {
+        "fy27_eps": 4.4,
+        "pe_applied": 18,
+        "fair_value": 79.0,
+        "downside_pct": -67.1
+      },
+      "Bear": {
+        "fy27_eps": 3.4,
+        "pe_applied": 18,
+        "fair_value": 61.0,
+        "downside_pct": -74.6
+      }
+    }
+  },
+  "sensitivity_table": {
+    "EPS_$3.50": {
+      "PE_12x": 42.0,
+      "PE_15x": 52.0,
+      "PE_18x": 63.0,
+      "PE_20x": 70.0,
+      "PE_22x": 77.0,
+      "PE_25x": 88.0
+    },
+    "EPS_$4.00": {
+      "PE_12x": 48.0,
+      "PE_15x": 60.0,
+      "PE_18x": 72.0,
+      "PE_20x": 80.0,
+      "PE_22x": 88.0,
+      "PE_25x": 100.0
+    },
+    "EPS_$4.40": {
+      "PE_12x": 53.0,
+      "PE_15x": 66.0,
+      "PE_18x": 79.0,
+      "PE_20x": 88.0,
+      "PE_22x": 97.0,
+      "PE_25x": 110.0
+    },
+    "EPS_$5.00": {
+      "PE_12x": 60.0,
+      "PE_15x": 75.0,
+      "PE_18x": 90.0,
+      "PE_20x": 100.0,
+      "PE_22x": 110.0,
+      "PE_25x": 125.0
+    },
+    "EPS_$5.50": {
+      "PE_12x": 66.0,
+      "PE_15x": 82.0,
+      "PE_18x": 99.0,
+      "PE_20x": 110.0,
+      "PE_22x": 121.0,
+      "PE_25x": 138.0
+    },
+    "EPS_$6.00": {
+      "PE_12x": 72.0,
+      "PE_15x": 90.0,
+      "PE_18x": 108.0,
+      "PE_20x": 120.0,
+      "PE_22x": 132.0,
+      "PE_25x": 150.0
+    }
+  },
+  "three_method_summary_base": {
+    "methods": {
+      "SOTP (Base)": 102.0,
+      "Reverse DCF (CAGR 5%)": 89.0,
+      "Peer Multiple (Base)": 79.0,
+      "Probability-Weighted (Phase 2)": 87
+    },
+    "mean": 89.2,
+    "dispersion_pct": 25.8,
+    "dispersion_pass": true,
+    "downside_from_current": -63.0
+  },
+  "probability_weighted_three_method": {
+    "Bull": 129.0,
+    "Base": 90.0,
+    "Bear": 68.0
+  },
+  "final_weighted": {
+    "bull_weighted": 32.2,
+    "base_weighted": 49.5,
+    "bear_weighted": 13.6,
+    "total": 95.0,
+    "downside": -60.4
+  }
+}

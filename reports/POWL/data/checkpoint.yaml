@@ -4,37 +4,52 @@ company: "POWL"
 framework_version: v17.0
 worktree: "electrical_equipment"
 industry: "electrical_equipment"
-last_updated: "2026-04-22T04:43:00+00:00"
+last_updated: "2026-04-22T05:15:00+00:00"
 
-current_phase: 2
+current_phase: 3
 phase_status: complete
-phases_completed: [-1, 0, 0.75, 1, 2]
+phases_completed: [-1, 0, 0.75, 1, 2, 3]
 
 target_chars: 300000
 target_range: "240K-375K"
 hard_floor: 200000
 
 quick_ref:
-  total_chars: 77000
-  latest_phase_chars: 28969  # P1 deep + P2 attribution
-  probability_weighted_fair_value: 87
+  total_chars: 90000
+  latest_phase_chars: 9493
+  probability_weighted_fair_value: 95  # Phase 3 final
   current_price: 240.97
-  downside_pct: -64
+  downside_pct: -60
   rating_expected: "审慎关注"
   thesis: "混合体被按纯 beta 错定价"
-  dm_anchors_total: 150  # ~98 前 + 18 P1 deep + 25 P2 = ~141 + buffer
+  dm_anchors_total: 168
 
-key_outputs_phase2:
-  fy27_eps_ours: 4.40
-  fy27_eps_consensus: 5.50
-  fy27_eps_gap_pct: -20
-  gm_cyclical_pp: 12.0
-  gm_structural_pp: 1.5
-  steady_state_eps: 3.37
-  probability_weighted_price: 87
-  bull_price: 138
-  base_price: 79
-  bear_price: 44
-  insider_base_rate: "4/4"
-  peg_ratio: 7.8
-  scissor_gaps_count: 5
+key_outputs_phase3:
+  sotp_base: 102
+  reverse_dcf_base: 89
+  peer_multiple_base: 79
+  probability_weighted_phase2: 87
+  four_method_mean_base: 89
+  dispersion_pct: 25.8
+  implied_fcf_cagr_at_current: 19.9
+  industrial_peer_median_pe: 22
+  pe_applied_powl: 18
+  probability_weighted_3method: 95
+  bull_3method: 129
+  base_3method: 90
+  bear_3method: 68
+  extreme_bear_kill_switch: 60
+  blackbox_pct: 22
+  recoverability_pct: 77
+
+phase3_valuation_summary:
+  bull_price: 129
+  base_price: 90
+  bear_price: 68
+  weighted: 95
+  downside: -60
+
+fixes_applied_before_phase3:
+  eaton_number_reconciled: "统一为 P0 baseline ~\\$30M + 披露不透明"
+  phase1_to_phase2_bridge_added: "显式交代 \\$135 → \\$87 的 3 个修正"
+  probability_triple_anchoring: "Bull 25% / Base 55% / Bear 20% 三重锚定"
