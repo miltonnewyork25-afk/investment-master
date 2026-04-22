@@ -4,11 +4,11 @@ company: "POWL"
 framework_version: v17.0
 worktree: "electrical_equipment"
 industry: "electrical_equipment"
-last_updated: "2026-04-22T05:15:00+00:00"
+last_updated: "2026-04-22T06:00:00+00:00"
 
-current_phase: 3
+current_phase: 4
 phase_status: complete
-phases_completed: [-1, 0, 0.75, 1, 2, 3]
+phases_completed: [-1, 0, 0.75, 1, 2, 3, 4]
 
 target_chars: 300000
 target_range: "240K-375K"
@@ -54,6 +54,21 @@ fixes_applied_phase3:
   net_cash: "账面 $13.4/share → 保守 $8.5/share (剔除 $180M 预收款)"
   peer_median_pe: "上中位 22x → 严格中位 20x, 应用 16x"
   extreme_bear: "$55-65 无推导 → $33-45 (联合概率 15% + 双方法交叉)"
+
+key_outputs_phase4:
+  red_team_verdict: "母命题成立 (4 方法独立估值 $78-$97 vs 当前 $241)"
+  assumption_A1_peer_pe: "修正 16x → 18x (扩大 peer set, +$8/股)"
+  assumption_A2_dc_option: "修正 $25 → $22 (Bull 概率 20% → 10%)"
+  assumption_A3_cycle_discount: "保留 -4x (但 base PE 从 20x → 22x)"
+  assumption_A4_bear_probability: "修正 20% → 25% (Y3 触发 + 4/4 insider base rate)"
+  probability_weighted_phase4: 92  # ↑ from 89
+  downside_phase4: -62  # vs -63
+  dispersion_4method: 18.6  # ↓ from 32% ✓
+  roundtable_dissent: "3/5 倾向下调 (Munger/Buffett/Druckenmiller)"
+  rating_revised: "审慎关注 (临界)"  # R-3 强制标注
+  kill_switch_linked_to_masters:
+    - "GM 连续两季 <27% → 降级 '回避'"
+    - "DC backlog 单季 <$100M + insider 继续零买入 → 降级 '回避'"
 
 fixes_applied_before_phase3:
   eaton_number_reconciled: "统一为 P0 baseline ~\\$30M + 披露不透明"
