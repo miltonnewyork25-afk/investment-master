@@ -1,4 +1,42 @@
-# MSCI v4.3 — 三层价值引擎 (Q1 2026 重估, 发布版)
+# ⚠️ v4.3 已下架 — 请阅读 v4.4
+
+> ## 下架通知 (2026-04-24)
+>
+> **本版本 v4.3 因部分表达与 Kill Switch 规则存在二次审计发现的精度问题已下架**. 请阅读 **[MSCI_v4.4_Complete.md](./MSCI_v4.4_Complete.md)** 作为最新发布版.
+>
+> **v4.3 问题** (v4.4 已全部修正):
+> - Base return vs probability-weighted expected value 混用 (执行摘要未明确区分)
+> - 买点单层规则 (仅看价格), 未明确基本面状态 (价格 $540-567 且 PCS/margin 未转红才是买点)
+> - Kill Switch "连续 2 季" 与 Q2 earnings day 单季行动冲突 (未分 Yellow/Red/Stress-Direct 三级)
+> - AI ARR $30M+ 在上修触发表中单独激活 Bull (应为 Bull 增强项, 不单独激活)
+> - Source Index 仍偏内部 DM, 缺 URL/page/access date
+> - Market data snapshot 不醒目
+> - 缺 "当前价格 $598 隐含什么" 反推表
+> - 缺 Reverse PE sensitivity 表
+> - 缺 FY26E Adj EPS bridge
+> - 非 PCS PA 反推无 sensitivity (PCS 占比 30/40/50/60%)
+>
+> **v4.4 改进**:
+> - 执行摘要显式区分 Base return vs Probability-weighted expected value
+> - 买点改为两层规则 (价格 + 基本面), 明确 "价格只是必要条件, 不是充分条件"
+> - Kill Switch 分 Single-Quarter Yellow / Confirmed Red / Stress-Direct 三级
+> - AI ARR 降为 Bull 增强项 (+$5-10), 真正 Bull 激活仍依赖 incremental margin + PCS 同时确认
+> - Source Room 拆三层: Public Source Table (URL + access date) / Data Extraction Table / Judgment Table
+> - 标题下方首行醒目标注 "Market data snapshot as of..."
+> - 新增估值 4.1 "当前价格 $598 隐含什么" 反推表
+> - 新增 4.3 Reverse PE sensitivity 表
+> - 新增 4.4 FY26E Adj EPS Bridge (从 Q1 到全年)
+> - 新增 4.6 非 PCS PA 敏感性 (PCS 占比 30/40/50/60% 四情景)
+> - 标题改为 "MSCI Q1 2026 Review: Index 利润杠杆、PCS 分层与资本配置再平衡" (更投资化)
+> - 加粗钉子 "PA is not yet a margin story. It is a sales-quality story led by PCS."
+> - BlackRock 风险表达: "不是短期断裂风险, 而是长期议价权与 workflow 边界风险"
+> - M&A 语言统一三档: rebalance → rebalance confirmed → pivot
+>
+> **v4.4 结论与 v4.3 方向一致**, 表达更精确, 投资决策更清晰. 所有投资判断以 v4.4 为准.
+
+---
+
+# MSCI v4.3 — 三层价值引擎 (Q1 2026 重估, 发布版) (已下架)
 
 > **触发**: MSCI Q1 2026 earnings release (2026-04-21) + Form 10-Q
 > **当前股价**: $598.01 (2026-04-23 收盘)
