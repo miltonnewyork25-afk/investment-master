@@ -1,0 +1,159 @@
+#!/bin/bash
+# ============================================================
+# Pre-commit Hook: 报告质量硬门控
+# AI无法绕过此检查 (CLAUDE.md禁止--no-verify)
+#
+# 触发条件: git add + git commit 包含 *Complete*.md 文件
+# 检查项: DM密度 + 因果推理密度 + 广度下限
+# 不达标 = commit被拒绝
+# ============================================================
+
+# Only check if committing a Complete report
+COMPLETE_FILES=$(git diff --cached --name-only | grep -i "Complete.*\.md$" || true)
+
+if [ -z "$COMPLETE_FILES" ]; then
+    # Not committing a report, pass through
+    exit 0
+fi
+
+echo "═══════════════════════════════════════════════════════"
+echo "  报告质量门控 (pre-commit hook v1.0)"
+echo "═══════════════════════════════════════════════════════"
+echo ""
+
+FAILED=0
+
+for report in $COMPLETE_FILES; do
+    if [ ! -f "$report" ]; then
+        continue
+    fi
+
+    ticker=$(echo "$report" | sed 's|reports/||' | cut -d'/' -f1)
+    char_count=$(wc -m < "$report" | tr -d ' ')
+    dm_count=$(grep -c 'DM-' "$report" 2>/dev/null || echo 0)
+    causal_count=$(grep -c '因为\|因此\|这意味着\|这解释了' "$report" 2>/dev/null || echo 0)
+
+    # Calculate densities
+    if [ "$char_count" -gt 0 ]; then
+        dm_density=$(echo "scale=2; $dm_count * 1000 / $char_count" | bc 2>/dev/null || echo "0")
+        causal_density=$(echo "scale=2; $causal_count * 10000 / $char_count" | bc 2>/dev/null || echo "0")
+    else
+        dm_density="0"
+        causal_density="0"
+    fi
+
+    char_k=$((char_count / 1000))
+
+    echo "  报告: $ticker ($report)"
+    echo "  字符: ${char_k}K | DM: $dm_count ($dm_density/千字) | 因果: $causal_count ($causal_density/万字)"
+    echo ""
+
+    # ===== G1: 广度下限 (≥180K BLOCK, 180K-200K WARN弹性, ≥270K目标) =====
+    # 弹性区间(180K-200K): 防止机械误判, 例如199K差1K的情况
+    if [ "$char_count" -lt 180000 ]; then
+        echo "  ✗ BLOCK G1: 字符数 ${char_k}K < 180K (最低门槛)"
+        echo "    → 广度严重不足, 检查是否跳过了必要章节"
+        FAILED=1
+    elif [ "$char_count" -lt 200000 ]; then
+        echo "  ⚠ WARN G1: 字符数 ${char_k}K 在 180K-200K 弹性区间(允许提交)"
+        echo "    → 接近目标200K, 建议下一轮补充"
+    elif [ "$char_count" -lt 270000 ]; then
+        echo "  ⚠ WARN G1: 字符数 ${char_k}K < 270K (4.4目标, 用户已确认可豁免)"
+    else
+        echo "  ✓ G1 广度: ${char_k}K ≥ 270K"
+    fi
+
+    # ===== G2: DM密度 (≥1.5/千字, 4.4标准) =====
+    if [ "$(echo "$dm_density < 1.0" | bc -l 2>/dev/null || echo 1)" -eq 1 ]; then
+        echo "  ✗ BLOCK G2: DM密度 $dm_density/千字 < 1.0"
+        echo "    → 数据缺乏来源标注, 目标≥1.5"
+        FAILED=1
+    elif [ "$(echo "$dm_density < 1.5" | bc -l 2>/dev/null || echo 0)" -eq 1 ]; then
+        echo "  ⚠ WARN G2: DM密度 $dm_density/千字 (目标≥1.5)"
+    else
+        echo "  ✓ G2 DM密度: $dm_density/千字"
+    fi
+
+    # ===== G3: DM总数 (≥450, 4.4标准) =====
+    if [ "$dm_count" -lt 300 ]; then
+        echo "  ✗ BLOCK G3: DM总数 $dm_count < 300"
+        FAILED=1
+    elif [ "$dm_count" -lt 450 ]; then
+        echo "  ⚠ WARN G3: DM总数 $dm_count (目标≥450)"
+    else
+        echo "  ✓ G3 DM总数: $dm_count"
+    fi
+
+    # ===== G4: Mermaid (≥25, 4.4标准) =====
+    mermaid_count=$(grep -ci 'mermaid' "$report" 2>/dev/null || echo 0)
+    if [ "$mermaid_count" -lt 15 ]; then
+        echo "  ✗ BLOCK G4: Mermaid图 $mermaid_count < 15"
+        FAILED=1
+    elif [ "$mermaid_count" -lt 25 ]; then
+        echo "  ⚠ WARN G4: Mermaid图 $mermaid_count (目标≥25)"
+    else
+        echo "  ✓ G4 Mermaid: $mermaid_count"
+    fi
+
+    # ===== G5: 因果密度 (≥5.0/万字, 4.4标准) =====
+    if [ "$(echo "$causal_density < 3.0" | bc -l 2>/dev/null || echo 1)" -eq 1 ]; then
+        echo "  ✗ BLOCK G5: 因果密度 $causal_density/万字 < 3.0"
+        FAILED=1
+    elif [ "$(echo "$causal_density < 5.0" | bc -l 2>/dev/null || echo 0)" -eq 1 ]; then
+        echo "  ⚠ WARN G5: 因果密度 $causal_density/万字 (目标≥5.0, 标杆KLAC=9.28)"
+    else
+        echo "  ✓ G5 因果密度: $causal_density/万字"
+    fi
+
+    # ===== G8: CQ标记 =====
+    cq_count=$(grep -c 'CQ-[0-9]' "$report" 2>/dev/null || echo 0)
+    if [ "$cq_count" -lt 3 ]; then
+        echo "  ⚠ WARN G8: CQ标记 $cq_count (目标≥5)"
+    else
+        echo "  ✓ G8 CQ标记: $cq_count"
+    fi
+
+    # ===== 门控4: 单章占比 (≤15%) =====
+    # Count chapter sizes by splitting on ## headers
+    max_chapter_pct=0
+    max_chapter_name=""
+    current_chapter=""
+    current_size=0
+    while IFS= read -r line; do
+        if echo "$line" | grep -qE '^#{1,2} '; then
+            if [ -n "$current_chapter" ] && [ "$char_count" -gt 0 ]; then
+                pct=$(echo "scale=1; $current_size * 100 / $char_count" | bc 2>/dev/null || echo "0")
+                if [ "$(echo "$pct > $max_chapter_pct" | bc -l 2>/dev/null || echo 0)" -eq 1 ]; then
+                    max_chapter_pct="$pct"
+                    max_chapter_name="$current_chapter"
+                fi
+            fi
+            current_chapter="$line"
+            current_size=0
+        else
+            current_size=$((current_size + ${#line} + 1))
+        fi
+    done < "$report"
+
+    if [ "$(echo "$max_chapter_pct > 15" | bc -l 2>/dev/null || echo 0)" -eq 1 ]; then
+        echo "  ⚠ WARN: 最大章节占比 ${max_chapter_pct}% > 15% (铁律M)"
+        echo "    → 章节: $max_chapter_name"
+    fi
+
+    echo ""
+done
+
+if [ "$FAILED" -eq 1 ]; then
+    echo "═══════════════════════════════════════════════════════"
+    echo "  ✗ COMMIT BLOCKED — 报告质量未达标"
+    echo ""
+    echo "  修复后重新 git add + git commit"
+    echo "  如果确认是误报, 联系用户确认后才能豁免"
+    echo "═══════════════════════════════════════════════════════"
+    exit 1
+fi
+
+echo "═══════════════════════════════════════════════════════"
+echo "  ✓ 所有报告质量门控通过"
+echo "═══════════════════════════════════════════════════════"
+exit 0
