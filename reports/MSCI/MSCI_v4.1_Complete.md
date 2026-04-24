@@ -1,6 +1,26 @@
-# MSCI v4.1 — 三层价值引擎 (Q1 2026 重估)
+# ⚠️ v4.1 已下架 — 请阅读 v4.2
 
-> **版本**: v4.1 (2026-04-24, 替代 v4.0 因数据底座错误)
+> ## 下架通知 (2026-04-24)
+>
+> **本版本 v4.1 因研究细节压缩过头 + 估值 anchor 逻辑混乱已下架**. 请阅读 **[MSCI_v4.2_Complete.md](./MSCI_v4.2_Complete.md)** 作为最新基线.
+>
+> **v4.1 主要问题** (v4.2 已全部修正):
+> - **估值 anchor 混乱** — "v3 $609 × 80/73.4 = $664 但 anchor 不变" 逻辑不清; v4.2 从 EV / Adj EPS × PE 重建
+> - **错误表述**: "organic 增速含并购贡献" (官方 organic 已剔除 M&A); v4.2 删除
+> - **过度压缩** — 市场默认地图 / 旧模型为何失灵 / segment 利润层 / sales/cancellations / 圆桌 / BlackRock 客户集中度全部丢失
+> - **遗漏关键事实** — PA Adj EBITDA margin 21.1%→18.9% (PA 利润恶化); S&C net new recurring sales $0.9M vs $2.5M 恶化; BlackRock 占 Q1 revenue 11.7% (客户集中度 + 竞争张力); GAAP EPS +49.1% 含 $88M tax benefit 扰动
+> - **Debt 口径单行** — v4.2 展开为 Principal $6.45B / Carrying $6.404B / Cash $385.3M / Net $6.065B
+> - **R&D 阈值漏 capitalized software** — v4.2 改为 GAAP R&D + capitalized software 双阈值
+> - **PM Insights 时点混淆** — v4.2 明确 Q1 两起 (Vantager+Compass) + Q2 一起 (PM Insights 2026-04-07)
+> - **缺 thesis audit** — v4.2 完整补回 KS/CQ/weaken ratio 17%
+>
+> **v4.2 结论与 v4.1 方向一致**, 但证据链完整, 细节校准. 所有投资判断以 v4.2 为准.
+
+---
+
+# MSCI v4.1 — 三层价值引擎 (Q1 2026 重估) (已下架)
+
+> **版本**: ~~v4.1~~ **已下架 (见 v4.2)** (2026-04-24, 替代 v4.0 因数据底座错误)
 > **触发**: MSCI Q1 2026 earnings release (2026-04-21) + 10-Q filing
 > **基线**: v3.0 (2026-03-18, 股价 $560.41)
 > **当前股价**: $598.01 (2026-04-23 收盘)
