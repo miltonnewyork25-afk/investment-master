@@ -1,6 +1,37 @@
-# MSCI Q1 2026 Review: Index 利润杠杆、PCS 分层与资本配置再平衡
+# ⚠️ v4.4 已下架 — 请阅读 v4.5
 
-> **三层价值引擎下的重估: Base $575-605, 等待 Q2 验证**
+> ## 下架通知 (2026-04-24)
+>
+> **本版本 v4.4 因 FY26E Adj EPS bridge 双重扣税错误 + 多项微修已下架**. 请阅读 **[MSCI_v4.5_Complete.md](./MSCI_v4.5_Complete.md)** (发布候选版) 作为最新版本.
+>
+> **v4.4 问题** (v4.5 已全部修正):
+>
+> **必修**:
+> 1. **FY26E Adj EPS bridge 数学错误** — v4.4 从 Adjusted EPS $4.55 再扣 $88M tax benefit = 双重计数 (Adjusted EPS 已 normalize). v4.5 从 Adj EPS 起步, 不再扣.
+> 2. **Buy/Sell/Wait 表缺 $605-620 行** — v4.5 新增 "不追高 / 维持偏谨慎" 动作.
+> 3. **Source Room 缺 audit status** — v4.5 加 Public / Paywalled / Restricted / Model-derived 四级.
+> 4. **PCS / 非 PCS 敏感性缺公式** — v4.5 加显式公式 + 两组 PCS organic 假设 (15% vs 20%) + 诚实表达反推敏感度区间 +1% 到 -10%.
+> 5. **同业对标缺口径标记** — v4.5 每行加 fact / consensus / internal estimate 标记.
+>
+> **建议修**:
+> 6. PE 折价来源无区间 — v4.5 加**轻度 / Base / 重度**三档.
+> 7. "BR 明确承诺不自建 Preqin indexing" 触发过高权重 — v4.5 改为 "BR 公开减少 Preqin indexing 扩张" 观察性证据并下调权重.
+> 8. "Fed 降息 3 次" 过度依赖宏观预测 — v4.5 改为 "10Y Treasury <4.0% 或 real yield 显著下行".
+> 9. 圆桌异议稍冗 — v4.5 压缩 20%, 保留观点精简人物口吻.
+> 10. 标题 "发布版" 偏早 — v4.5 改为 "发布候选版 (v4.5 candidate)", 等 Q2 earnings 后确认 final.
+>
+> **评级语言对齐** (全报告统一使用框架标准术语, 不新造词):
+> - 深度关注 / **关注** / 低估观察 / **中性关注** / **审慎关注**
+> - Buy/Sell/Wait 表的"动作"语言 (加仓 / 维持 / 不追高 / 减仓 / 深度 review) 与"评级"语言分开
+> - v4.4 中"升级关注" / "降级审慎关注" 已对齐为标准"中性关注 → 关注" / "中性关注 → 审慎关注"
+>
+> **v4.5 结论与 v4.4 一致**, 表达更精确, 评级语言对齐标准. 所有投资判断以 v4.5 为准.
+
+---
+
+# MSCI Q1 2026 Review: Index 利润杠杆、PCS 分层与资本配置再平衡 (已下架)
+
+> **三层价值引擎下的重估: Base $575-605, 等待 Q2 验证** — **已下架, 见 v4.5**
 >
 > **Market data snapshot as of 2026-04-23 close; Consensus snapshot as of 2026-04-24**
 > 发布日: 2026-04-24 | 版本: v4.4 | 基线: v3.0 (2026-03-18)
