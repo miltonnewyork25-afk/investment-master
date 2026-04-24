@@ -1,6 +1,36 @@
-# MSCI v4.2 — 三层价值引擎 (Q1 2026 重估, 完整版)
+# ⚠️ v4.2 已下架 — 请阅读 v4.3
 
-> **版本**: v4.2 (2026-04-24), 继承 v4.1 数据底座 + 补回 v4.0 研究深度
+> ## 下架通知 (2026-04-24)
+>
+> **本版本 v4.2 因估值章节调试痕迹 + 多项细节错误已下架**. 请阅读 **[MSCI_v4.3_Complete.md](./MSCI_v4.3_Complete.md)** 作为最新发布版.
+>
+> **v4.2 主要问题** (v4.3 已全部修正):
+> - **估值章节调试痕迹** — 第 5 章 EV/EBITDA 14x → $301 后 "问题: 这个算出来比 Base 低太多, 让我重新校准" 暴露估值方法选择错误
+> - **Segment incremental bridge 算错** — v4.2 写 "差额 $6.6M 来自未分配 corporate" 错误, 官方 segment adj EBITDA 加总等于 consolidated. 正确: Index +$63.6M (80.4%) / S&C +$9.2M (11.6%) / Analytics +$6.8M (8.6%) / PA -$0.5M (-0.6%)
+> - **Operating margin YoY 写错** — v4.2 "+220bp" 错误, 实际 **+310bp** (53.7% vs 50.6%). Adj EBITDA margin 才是 +220bp (59.3% vs 57.1%)
+> - **成本结构分解错误** — v4.2 "SGA -280bp" 错误. 实际 S&M+G&A 合并持平. 真 driver: Cost of revenues -168bp + intangible amort -96bp + R&D -55bp
+> - **"Organic 剔除外延"残留错误** — v4.2 仍写 "Q1 +13.3% 超预期 + 外延贡献 2-3pp → 剔除后纯有机约 +10-11%". 官方 organic 已剔除 M&A, 不应再剔
+> - **PM Insights 会计归属错误** — 写 "PA / Secondary markets". 实际归属 Index reportable segment (MSCI 4/7 官方)
+> - **BR "building the machine" 时间归属错误** — 写成 Q1 2026 call 原话. 实为 BR/Preqin 2024 年收购交易早期战略表述. Q1 2026 证据是 Preqin 并表 $65M + tech services +22% + whole portfolio 定位
+> - **S&C retention delta 错误** — v4.2 写 -50bp (vs ~93.5%). 实际 -150bp (93.0% vs **94.5%**)
+> - **三层耦合叙事矛盾** — 既说官方 organic 已剔除并购又说三层耦合因并购; v4.3 明确为 "并购不在 organic, 三层耦合来自会计呈现"
+>
+> **v4.3 改进**:
+> - 估值改为 PE × Adjusted EPS 主方法 + EV/EBITDA 交叉验证, 四情景 (Stress $475-495 / Mild Bear $540-567 / Base $575-605 / Bull $620-650)
+> - 版本变更移到附录 A, 正文先给投资结论
+> - 21 变量 (非 v4.2 的 30 个, 过度工程化)
+> - DM 109 个加精确定位 (段/表/note)
+> - 资本配置分现金流 vs 经济口径
+> - BR-Preqin 风险分概率三层 (workflow 中高 / 自建 indexing 中 / iShares 切换 低)
+> - AI ARR 降为 optional upside, Top 5 聚焦核心变量
+>
+> **v4.3 结论与 v4.2 方向一致**, 但证据链完整, 估值逻辑清晰. 所有投资判断以 v4.3 为准.
+
+---
+
+# MSCI v4.2 — 三层价值引擎 (Q1 2026 重估, 完整版) (已下架)
+
+> **版本**: ~~v4.2~~ **已下架 (见 v4.3)** (2026-04-24), 继承 v4.1 数据底座 + 补回 v4.0 研究深度
 > **触发**: MSCI Q1 2026 earnings release (2026-04-21) + Form 10-Q + earnings presentation
 > **基线**: v3.0 (2026-03-18, 股价 $560.41)
 > **当前股价**: $598.01 (2026-04-23 收盘)
