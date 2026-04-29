@@ -186,6 +186,58 @@ target_company_position:
 
 ---
 
+## Step 4.5: 八维新控制点权限链 (v2.0 新增, 长牛 OS 吸收)
+
+> **来源**: 长牛 OS framework-software-control-point — 五维不够区分"产品有 AI"和"工作流权限真的迁移"。
+> **核心**: 真 shift 必须**进入收入、权限、客户标准**才算,不只是 layer 出现。
+
+**8 个维度评分(每维 0-3, 总分 0-24)**:
+
+| # | 维度 | 含义 | 关键检测 |
+|---|------|------|---------|
+| 1 | **Context owner** | 谁拥有上下文/历史/记忆 | 数据 retention, conversation history 归属 |
+| 2 | **Execution** | 谁拥有写入/触发/控制权 | 实际执行 action(下单/改配置/调参数) |
+| 3 | **Orchestration** | 谁编排多步任务/agent 协调 | multi-agent 调度, workflow DAG 拥有者 |
+| 4 | **Governance** | 谁拥有审计/合规/治理权 | audit log, compliance attestation, guardrail |
+| 5 | **Semantic** | 谁定义行业语言/分类/标准 | category names, vocabulary, taxonomy(FICO Score 模式) |
+| 6 | **Runtime** | 谁拥有运行时(模型/计算/SDK) | inference runtime, SDK 默认 import, base layer |
+| 7 | **Pricing meter** | 谁定义计价单位 | 谁有 metering API, 谁定 SKU,outcome 测量权 |
+| 8 | **Ecosystem** | 谁拥有开发者/伙伴/集成生态 | partner program, app marketplace, certified integrators |
+
+**判定**:
+- 总分 ≥ 18: 真控制点 owner — workflow shift 已 land
+- 总分 12-17: 部分控制点 — shift 在进行,需 12-24 个月验证
+- 总分 6-11: 候选 owner — 不要急于定价 alpha,可能被绕过
+- 总分 < 6: 旧层或边缘 — 是 workflow 受害者
+
+**关键纪律**:
+- **NEVER 把"产品有 AI feature"当 workflow shift** — 必须看 Pricing meter 是否变 + Execution 是否真在写入
+- **NEVER 单看 demo** — 必须看客户预算科目变化 + 旧角色是否减员 + 旧系统是否关停
+- 8 维中**Semantic + Pricing meter 是最难赢的两维** — 一旦赢得,持久性最强(FICO/MSCI 模式)
+
+**与 Step 4 五维的关系**: 五维是简版,八维是深版。五维已涵盖 1/2/4/7;八维新增 3/5/6/8。
+- Phase 1 默认: 用 Step 4 五维快速诊断
+- Phase 3 必须: 用 Step 4.5 八维做最终判定(尤其是 Semantic 和 Ecosystem,这两维容易被低估)
+
+**输出补充**:
+```yaml
+new_control_point_8dim:
+  context_owner: 0      # 0-3
+  execution: 0
+  orchestration: 0
+  governance: 0
+  semantic: 0
+  runtime: 0
+  pricing_meter: 0
+  ecosystem: 0
+  total: 0              # /24
+  verdict: "true_owner / partial / candidate / old_layer"
+  hardest_won_dimensions: []  # 哪些维度赢了(最持久)
+  weakest_dimensions: []      # 哪些维度还没赢(可被绕过)
+```
+
+---
+
 ## Step 5: 迁移阶段判定 (early / real / crowded)
 
 > 新 owner 即使看清,阶段不同赔率完全不同。这是联动 `expectation-gap` 的锚点。
